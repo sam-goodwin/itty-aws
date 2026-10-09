@@ -66,7 +66,7 @@ export interface AddGroupMigrationRequest {
   /** The full path name of the MigratingVm to add. */
   migratingVm?: string;
 }
-export const AddGroupMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const AddGroupMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migratingVm: S.optional(S.String),
   }),
@@ -78,7 +78,7 @@ export interface AddGroupMigrationProjectsLocationsGroupsRequest {
   /** Request body */
   body?: AddGroupMigrationRequest;
 }
-export const AddGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
     body: S.optional(AddGroupMigrationRequest.pipe(T.HttpBody())),
@@ -94,15 +94,10 @@ export const AddGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<AddGroupMigrationProjectsLocationsGroupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -113,7 +108,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -134,7 +129,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -146,7 +141,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for 'CancelImageImportJob' request. */
 export interface CancelImageImportJobRequest {}
-export const CancelImageImportJobRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelImageImportJobRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelImageImportJobRequest",
 }) as any as S.Schema<CancelImageImportJobRequest>;
 
@@ -156,33 +151,30 @@ export interface CancelProjectsLocationsImageImportsImageImportJobsRequest {
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const CancelProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+name}:cancel",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const CancelProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:cancel",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CancelProjectsLocationsImageImportsImageImportJobsRequest",
 }) as any as S.Schema<CancelProjectsLocationsImageImportsImageImportJobsRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export type CancelOperationRequest = CancelImageImportJobRequest;
-export const CancelOperationRequest = CancelImageImportJobRequest;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
@@ -199,19 +191,17 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelImageImportJobRequest as any as S.Schema<Empty>;
+const Empty = CancelImageImportJobRequest as any as S.Schema<Empty>;
 
 /** Request message for 'CancelDiskMigrationJob' request. */
 export type CancelDiskMigrationJobRequest = CancelImageImportJobRequest;
-export const CancelDiskMigrationJobRequest = CancelImageImportJobRequest;
-
 export interface CancelProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
   name: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const CancelProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
@@ -228,52 +218,46 @@ export const CancelProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE_
 
 /** Request message for 'CancelCloneJob' request. */
 export type CancelCloneJobRequest = CancelImageImportJobRequest;
-export const CancelCloneJobRequest = CancelImageImportJobRequest;
-
 export interface CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. The clone job id */
   name: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+name}:cancel",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:cancel",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
 }) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
 
 /** Request message for 'CancelCutoverJob' request. */
 export type CancelCutoverJobRequest = CancelImageImportJobRequest;
-export const CancelCutoverJobRequest = CancelImageImportJobRequest;
-
 export interface CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Required. The cutover job id */
   name: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+name}:cancel",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+name}:cancel",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
 }) as any as S.Schema<CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
@@ -282,7 +266,7 @@ export type GroupMigrationTargetTypeEnum =
   | "MIGRATION_TARGET_TYPE_UNSPECIFIED"
   | "MIGRATION_TARGET_TYPE_GCE"
   | "MIGRATION_TARGET_TYPE_DISKS";
-export const GroupMigrationTargetTypeEnum = S.String;
+const GroupMigrationTargetTypeEnum = S.String;
 
 /** Describes message for 'Group' resource. The Group is a collections of several MigratingVms. */
 export interface Group {
@@ -299,7 +283,7 @@ export interface Group {
   /** Output only. The update time timestamp. */
   updateTime?: string;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     description: S.optional(S.String),
@@ -320,7 +304,7 @@ export interface CreateProjectsLocationsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-export const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     groupId: S.optional(S.String.pipe(T.Query())),
@@ -338,14 +322,14 @@ export const CreateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateProjectsLocationsGroupsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Used when the image import is not using OS adaptation process. */
 export interface DataDiskImageImport {
   /** Optional. A list of guest OS features to apply to the imported image. These features are flags that are used by Compute Engine to enable certain capabilities for virtual machine instances that are created from the image. This field does not change the OS of the image; it only marks the image with the specified features. The user must ensure that the OS is compatible with the features. For a list of available features, see https://cloud.google.com/compute/docs/images/create-custom#guest-os-features. */
   guestOsFeatures?: StringList;
 }
-export const DataDiskImageImport = /*@__PURE__*/ S.suspend(() =>
+const DataDiskImageImport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guestOsFeatures: S.optional(StringList),
   }),
@@ -356,26 +340,26 @@ export interface Encryption {
   /** Required. The name of the encryption key that is stored in Google Cloud KMS. */
   kmsKey?: string;
 }
-export const Encryption = /*@__PURE__*/ S.suspend(() =>
+const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKey: S.optional(S.String),
   }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type ImageImportOsAdaptationParametersLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
   | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
-export const ImageImportOsAdaptationParametersLicenseTypeEnum = S.String;
+const ImageImportOsAdaptationParametersLicenseTypeEnum = S.String;
 
 export type ImageImportOsAdaptationParametersBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
   | "BIOS_TO_EFI";
-export const ImageImportOsAdaptationParametersBootConversionEnum = S.String;
+const ImageImportOsAdaptationParametersBootConversionEnum = S.String;
 
 /** AdaptationModifier a modifier to be used for configuration of the OS adaptation process. */
 export interface AdaptationModifier {
@@ -384,7 +368,7 @@ export interface AdaptationModifier {
   /** Optional. The value of the modifier. The actual value depends on the modifier and can also be empty. */
   value?: string;
 }
-export const AdaptationModifier = /*@__PURE__*/ S.suspend(() =>
+const AdaptationModifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modifier: S.optional(S.String),
     value: S.optional(S.String),
@@ -392,7 +376,7 @@ export const AdaptationModifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdaptationModifier" }) as any as S.Schema<AdaptationModifier>;
 
 export type AdaptationModifierList = Array<AdaptationModifier>;
-export const AdaptationModifierList = /*@__PURE__*/ S.Array(
+const AdaptationModifierList = /*@__PURE__*/ S.Array(
   AdaptationModifier,
 ) as any as S.Schema<AdaptationModifierList>;
 
@@ -407,7 +391,7 @@ export interface ImageImportOsAdaptationParameters {
   /** Optional. Modifiers to be used as configuration of the OS adaptation process. */
   adaptationModifiers?: AdaptationModifierList;
 }
-export const ImageImportOsAdaptationParameters = /*@__PURE__*/ S.suspend(() =>
+const ImageImportOsAdaptationParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     licenseType: S.optional(ImageImportOsAdaptationParametersLicenseTypeEnum),
     generalize: S.optional(S.Boolean),
@@ -441,7 +425,7 @@ export interface DiskImageTargetDetails {
   /** Optional. Additional licenses to assign to the image. Format: https://www.googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME Or https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/LICENSE_NAME */
   additionalLicenses?: StringList;
 }
-export const DiskImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
+const DiskImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDiskImageImport: S.optional(DataDiskImageImport),
     description: S.optional(S.String),
@@ -457,7 +441,7 @@ export const DiskImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskImageTargetDetails" }) as any as S.Schema<DiskImageTargetDetails>;
 
 export type ShieldedInstanceConfigSecureBootEnum = "SECURE_BOOT_UNSPECIFIED" | "TRUE" | "FALSE";
-export const ShieldedInstanceConfigSecureBootEnum = S.String;
+const ShieldedInstanceConfigSecureBootEnum = S.String;
 
 /** Shielded instance configuration. */
 export interface ShieldedInstanceConfig {
@@ -468,7 +452,7 @@ export interface ShieldedInstanceConfig {
   /** Optional. Defines whether the instance created by the machine image has Secure Boot enabled. This can be set to true only if the image boot option is EFI. */
   secureBoot?: ShieldedInstanceConfigSecureBootEnum | (string & {});
 }
-export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableVtpm: S.optional(S.Boolean),
     enableIntegrityMonitoring: S.optional(S.Boolean),
@@ -483,7 +467,7 @@ export interface ServiceAccount {
   /** Required. The email address of the service account. */
   email?: string;
 }
-export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: S.optional(StringList),
     email: S.optional(S.String),
@@ -494,7 +478,7 @@ export type NetworkInterfaceNetworkTierEnum =
   | "COMPUTE_ENGINE_NETWORK_TIER_UNSPECIFIED"
   | "NETWORK_TIER_STANDARD"
   | "NETWORK_TIER_PREMIUM";
-export const NetworkInterfaceNetworkTierEnum = S.String;
+const NetworkInterfaceNetworkTierEnum = S.String;
 
 /** NetworkInterface represents a NIC of a VM. */
 export interface NetworkInterface {
@@ -509,7 +493,7 @@ export interface NetworkInterface {
   /** Optional. The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path. */
   internalIp?: string;
 }
-export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkTier: S.optional(NetworkInterfaceNetworkTierEnum),
     network: S.optional(S.String),
@@ -520,20 +504,18 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
 
 export type NetworkInterfaceList = Array<NetworkInterface>;
-export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
+const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
 
 /** Mentions that the machine image import is not using OS adaptation process. */
 export type SkipOsAdaptation = CancelImageImportJobRequest;
-export const SkipOsAdaptation = CancelImageImportJobRequest;
-
 /** Parameters overriding decisions based on the source machine image configurations. */
 export interface MachineImageParametersOverrides {
   /** Optional. The machine type to create the MachineImage with. If empty, the service will choose a relevant machine type based on the information from the source image. For more information about machine types, please refer to https://cloud.google.com/compute/docs/machine-resource. */
   machineType?: string;
 }
-export const MachineImageParametersOverrides = /*@__PURE__*/ S.suspend(() =>
+const MachineImageParametersOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineType: S.optional(S.String),
   }),
@@ -572,7 +554,7 @@ export interface MachineImageTargetDetails {
   /** Immutable. The encryption to apply to the machine image. If the Image Import resource has an encryption, this field must be set to the same encryption key. */
   encryption?: Encryption;
 }
-export const MachineImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
+const MachineImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     machineImageName: S.optional(S.String),
@@ -594,7 +576,7 @@ export const MachineImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineImageTargetDetails>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 export type ImageImportJobStateEnum =
   | "STATE_UNSPECIFIED"
@@ -604,7 +586,7 @@ export type ImageImportJobStateEnum =
   | "FAILED"
   | "CANCELLING"
   | "CANCELLED";
-export const ImageImportJobStateEnum = S.String;
+const ImageImportJobStateEnum = S.String;
 
 /** Provides a localized error message that is safe to return to the user which can be attached to an RPC error. */
 export interface LocalizedMessage {
@@ -613,7 +595,7 @@ export interface LocalizedMessage {
   /** The localized error message in the above locale. */
   message?: string;
 }
-export const LocalizedMessage = /*@__PURE__*/ S.suspend(() =>
+const LocalizedMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String),
     message: S.optional(S.String),
@@ -621,7 +603,7 @@ export const LocalizedMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocalizedMessage" }) as any as S.Schema<LocalizedMessage>;
 
 export type MigrationWarningCodeEnum = "WARNING_CODE_UNSPECIFIED" | "ADAPTATION_WARNING";
-export const MigrationWarningCodeEnum = S.String;
+const MigrationWarningCodeEnum = S.String;
 
 /** Describes a URL link. */
 export interface Link {
@@ -630,7 +612,7 @@ export interface Link {
   /** The URL of the link. */
   url?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     url: S.optional(S.String),
@@ -638,7 +620,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 export type LinkList = Array<Link>;
-export const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
+const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
 
 /** Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations. */
 export interface MigrationWarning {
@@ -653,7 +635,7 @@ export interface MigrationWarning {
   /** Output only. Suggested action for solving the warning. */
   actionItem?: LocalizedMessage;
 }
-export const MigrationWarning = /*@__PURE__*/ S.suspend(() =>
+const MigrationWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warningMessage: S.optional(LocalizedMessage),
     code: S.optional(MigrationWarningCodeEnum),
@@ -664,26 +646,18 @@ export const MigrationWarning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrationWarning" }) as any as S.Schema<MigrationWarning>;
 
 export type MigrationWarningList = Array<MigrationWarning>;
-export const MigrationWarningList = /*@__PURE__*/ S.Array(
+const MigrationWarningList = /*@__PURE__*/ S.Array(
   MigrationWarning,
 ) as any as S.Schema<MigrationWarningList>;
 
 /** AdaptingOSStep contains specific step details. */
 export type AdaptingOSStep = CancelImageImportJobRequest;
-export const AdaptingOSStep = CancelImageImportJobRequest;
-
 /** LoadingImageSourceFilesStep contains specific step details. */
 export type LoadingImageSourceFilesStep = CancelImageImportJobRequest;
-export const LoadingImageSourceFilesStep = CancelImageImportJobRequest;
-
 /** CreatingImageStep contains specific step details. */
 export type CreatingImageStep = CancelImageImportJobRequest;
-export const CreatingImageStep = CancelImageImportJobRequest;
-
 /** InitializingImageImportStep contains specific step details. */
 export type InitializingImageImportStep = CancelImageImportJobRequest;
-export const InitializingImageImportStep = CancelImageImportJobRequest;
-
 /** ImageImportStep holds information about the image import step progress. */
 export interface ImageImportStep {
   /** Adapting OS step. */
@@ -699,7 +673,7 @@ export interface ImageImportStep {
   /** Initializing step. */
   initializing?: CancelImageImportJobRequest;
 }
-export const ImageImportStep = /*@__PURE__*/ S.suspend(() =>
+const ImageImportStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adaptingOs: S.optional(CancelImageImportJobRequest),
     loadingSourceFiles: S.optional(CancelImageImportJobRequest),
@@ -711,7 +685,7 @@ export const ImageImportStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageImportStep" }) as any as S.Schema<ImageImportStep>;
 
 export type ImageImportStepList = Array<ImageImportStep>;
-export const ImageImportStepList = /*@__PURE__*/ S.Array(
+const ImageImportStepList = /*@__PURE__*/ S.Array(
   ImageImportStep,
 ) as any as S.Schema<ImageImportStepList>;
 
@@ -740,7 +714,7 @@ export interface ImageImportJob {
   /** Output only. The time the image import was ended. */
   endTime?: string;
 }
-export const ImageImportJob = /*@__PURE__*/ S.suspend(() =>
+const ImageImportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     errors: S.optional(StatusList),
@@ -757,7 +731,7 @@ export const ImageImportJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageImportJob" }) as any as S.Schema<ImageImportJob>;
 
 export type ImageImportJobList = Array<ImageImportJob>;
-export const ImageImportJobList = /*@__PURE__*/ S.Array(
+const ImageImportJobList = /*@__PURE__*/ S.Array(
   ImageImportJob,
 ) as any as S.Schema<ImageImportJobList>;
 
@@ -778,7 +752,7 @@ export interface ImageImport {
   /** Output only. The result of the most recent runs for this ImageImport. All jobs for this ImageImport can be listed via ListImageImportJobs. */
   recentImageImportJobs?: ImageImportJobList;
 }
-export const ImageImport = /*@__PURE__*/ S.suspend(() =>
+const ImageImport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskImageTargetDefaults: S.optional(DiskImageTargetDetails),
     encryption: S.optional(Encryption),
@@ -800,7 +774,7 @@ export interface CreateProjectsLocationsImageImportsRequest {
   /** Request body */
   body?: ImageImport;
 }
-export const CreateProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     imageImportId: S.optional(S.String.pipe(T.Query())),
@@ -830,7 +804,7 @@ export interface VmwareSourceDetails {
   /** The credentials username. */
   username?: string;
 }
-export const VmwareSourceDetails = /*@__PURE__*/ S.suspend(() =>
+const VmwareSourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thumbprint: S.optional(S.String),
     resolvedVcenterHost: S.optional(S.String),
@@ -847,7 +821,7 @@ export interface Tag {
   /** Required. Value of tag. */
   value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -855,10 +829,10 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = Array<Tag>;
-export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
+const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 export type AwsSourceDetailsStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "ACTIVE";
-export const AwsSourceDetailsStateEnum = S.String;
+const AwsSourceDetailsStateEnum = S.String;
 
 /** Message describing AWS Credentials using access key id and secret. */
 export interface AccessKeyCredentials {
@@ -869,7 +843,7 @@ export interface AccessKeyCredentials {
   /** Input only. AWS secret access key. */
   secretAccessKey?: string;
 }
-export const AccessKeyCredentials = /*@__PURE__*/ S.suspend(() =>
+const AccessKeyCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionToken: S.optional(S.String),
     accessKeyId: S.optional(S.String),
@@ -896,7 +870,7 @@ export interface AwsSourceDetails {
   /** AWS Credentials using access key id and secret. */
   accessKeyCreds?: AccessKeyCredentials;
 }
-export const AwsSourceDetails = /*@__PURE__*/ S.suspend(() =>
+const AwsSourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySecurityGroupNames: S.optional(StringList),
     publicIp: S.optional(S.String),
@@ -910,7 +884,7 @@ export const AwsSourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AwsSourceDetails" }) as any as S.Schema<AwsSourceDetails>;
 
 export type AzureSourceDetailsStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "FAILED" | "ACTIVE";
-export const AzureSourceDetailsStateEnum = S.String;
+const AzureSourceDetailsStateEnum = S.String;
 
 /** Message describing Azure Credentials using tenant ID, client ID and secret. */
 export interface ClientSecretCredentials {
@@ -921,7 +895,7 @@ export interface ClientSecretCredentials {
   /** Azure tenant ID. */
   tenantId?: string;
 }
-export const ClientSecretCredentials = /*@__PURE__*/ S.suspend(() =>
+const ClientSecretCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     clientSecret: S.optional(S.String),
@@ -946,7 +920,7 @@ export interface AzureSourceDetails {
   /** User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`. */
   migrationResourcesUserTags?: StringMap;
 }
-export const AzureSourceDetails = /*@__PURE__*/ S.suspend(() =>
+const AzureSourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceGroupId: S.optional(S.String),
     error: S.optional(Status),
@@ -981,7 +955,7 @@ export interface Source {
   /** Azure type source details. */
   azure?: AzureSourceDetails;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -1006,7 +980,7 @@ export interface CreateProjectsLocationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-export const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1024,7 +998,7 @@ export const CreateProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateProjectsLocationsSourcesRequest>;
 
 export type UpgradeStatusStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "FAILED" | "SUCCEEDED";
-export const UpgradeStatusStateEnum = S.String;
+const UpgradeStatusStateEnum = S.String;
 
 /** UpgradeStatus contains information about upgradeAppliance operation. */
 export interface UpgradeStatus {
@@ -1039,7 +1013,7 @@ export interface UpgradeStatus {
   /** The time the operation was started. */
   startTime?: string;
 }
-export const UpgradeStatus = /*@__PURE__*/ S.suspend(() =>
+const UpgradeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(UpgradeStatusStateEnum),
     version: S.optional(S.String),
@@ -1060,7 +1034,7 @@ export interface ApplianceVersion {
   /** The appliance version. */
   version?: string;
 }
-export const ApplianceVersion = /*@__PURE__*/ S.suspend(() =>
+const ApplianceVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     critical: S.optional(S.Boolean),
@@ -1076,7 +1050,7 @@ export interface AvailableUpdates {
   /** The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance. */
   newDeployableAppliance?: ApplianceVersion;
 }
-export const AvailableUpdates = /*@__PURE__*/ S.suspend(() =>
+const AvailableUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inPlaceUpdate: S.optional(ApplianceVersion),
     newDeployableAppliance: S.optional(ApplianceVersion),
@@ -1089,7 +1063,7 @@ export type DatacenterConnectorStateEnum =
   | "OFFLINE"
   | "FAILED"
   | "ACTIVE";
-export const DatacenterConnectorStateEnum = S.String;
+const DatacenterConnectorStateEnum = S.String;
 
 /** DatacenterConnector message describes a connector between the Source and Google Cloud, which is installed on a vmware datacenter (an OVA vm installed by the user) to connect the Datacenter to Google Cloud and support vm migration data transfer. */
 export interface DatacenterConnector {
@@ -1122,7 +1096,7 @@ export interface DatacenterConnector {
   /** Output only. Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance. */
   applianceSoftwareVersion?: string;
 }
-export const DatacenterConnector = /*@__PURE__*/ S.suspend(() =>
+const DatacenterConnector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationId: S.optional(S.String),
     error: S.optional(Status),
@@ -1151,36 +1125,29 @@ export interface CreateProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Request body */
   body?: DatacenterConnector;
 }
-export const CreateProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      datacenterConnectorId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(DatacenterConnector.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+parent}/datacenterConnectors",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    datacenterConnectorId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(DatacenterConnector.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/datacenterConnectors",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsSourcesDatacenterConnectorsRequest",
 }) as any as S.Schema<CreateProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 /** CreatingSourceDiskSnapshotStep contains specific step details. */
 export type CreatingSourceDiskSnapshotStep = CancelImageImportJobRequest;
-export const CreatingSourceDiskSnapshotStep = CancelImageImportJobRequest;
-
 /** ProvisioningTargetDiskStep contains specific step details. */
 export type ProvisioningTargetDiskStep = CancelImageImportJobRequest;
-export const ProvisioningTargetDiskStep = CancelImageImportJobRequest;
-
 /** CopyingSourceDiskSnapshotStep contains specific step details. */
 export type CopyingSourceDiskSnapshotStep = CancelImageImportJobRequest;
-export const CopyingSourceDiskSnapshotStep = CancelImageImportJobRequest;
-
 /** DiskMigrationStep holds information about the disk migration step progress. */
 export interface DiskMigrationStep {
   /** Output only. The time the step has ended. */
@@ -1194,7 +1161,7 @@ export interface DiskMigrationStep {
   /** Output only. The time the step has started. */
   startTime?: string;
 }
-export const DiskMigrationStep = /*@__PURE__*/ S.suspend(() =>
+const DiskMigrationStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     creatingSourceDiskSnapshot: S.optional(CancelImageImportJobRequest),
@@ -1205,7 +1172,7 @@ export const DiskMigrationStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskMigrationStep" }) as any as S.Schema<DiskMigrationStep>;
 
 export type DiskMigrationStepList = Array<DiskMigrationStep>;
-export const DiskMigrationStepList = /*@__PURE__*/ S.Array(
+const DiskMigrationStepList = /*@__PURE__*/ S.Array(
   DiskMigrationStep,
 ) as any as S.Schema<DiskMigrationStepList>;
 
@@ -1216,7 +1183,7 @@ export type ComputeEngineDiskDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-export const ComputeEngineDiskDiskTypeEnum = S.String;
+const ComputeEngineDiskDiskTypeEnum = S.String;
 
 /** Compute Engine disk target details. */
 export interface ComputeEngineDisk {
@@ -1229,7 +1196,7 @@ export interface ComputeEngineDisk {
   /** Required. The disk type to use. */
   diskType?: ComputeEngineDiskDiskTypeEnum | (string & {});
 }
-export const ComputeEngineDisk = /*@__PURE__*/ S.suspend(() =>
+const ComputeEngineDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zone: S.optional(S.String),
     replicaZones: S.optional(StringList),
@@ -1249,7 +1216,7 @@ export interface DiskMigrationJobTargetDetails {
   /** Optional. The encryption to apply to the disk. If the DiskMigrationJob parent Source resource has an encryption, this field must be set to the same encryption key. */
   encryption?: Encryption;
 }
-export const DiskMigrationJobTargetDetails = /*@__PURE__*/ S.suspend(() =>
+const DiskMigrationJobTargetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     targetProject: S.optional(S.String),
@@ -1269,7 +1236,7 @@ export type AwsSourceDiskDetailsDiskTypeEnum =
   | "ST1"
   | "SC1"
   | "STANDARD";
-export const AwsSourceDiskDetailsDiskTypeEnum = S.String;
+const AwsSourceDiskDetailsDiskTypeEnum = S.String;
 
 /** Represents the source AWS Disk details. */
 export interface AwsSourceDiskDetails {
@@ -1282,7 +1249,7 @@ export interface AwsSourceDiskDetails {
   /** Optional. Output only. Disk type. */
   diskType?: AwsSourceDiskDetailsDiskTypeEnum | (string & {});
 }
-export const AwsSourceDiskDetails = /*@__PURE__*/ S.suspend(() =>
+const AwsSourceDiskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(StringMap),
     volumeId: S.optional(S.String),
@@ -1299,7 +1266,7 @@ export type DiskMigrationJobStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "FAILED";
-export const DiskMigrationJobStateEnum = S.String;
+const DiskMigrationJobStateEnum = S.String;
 
 /** Describes the disk which will be migrated from the source environment. The source disk has to be unattached. */
 export interface DiskMigrationJob {
@@ -1320,7 +1287,7 @@ export interface DiskMigrationJob {
   /** Output only. Identifier. The identifier of the DiskMigrationJob. */
   name?: string;
 }
-export const DiskMigrationJob = /*@__PURE__*/ S.suspend(() =>
+const DiskMigrationJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     steps: S.optional(DiskMigrationStepList),
@@ -1343,7 +1310,7 @@ export interface CreateProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: DiskMigrationJob;
 }
-export const CreateProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskMigrationJobId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1367,7 +1334,7 @@ export interface SchedulePolicy {
   /** A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine. */
   skipOsAdaptation?: boolean;
 }
-export const SchedulePolicy = /*@__PURE__*/ S.suspend(() =>
+const SchedulePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idleDuration: S.optional(S.String),
     skipOsAdaptation: S.optional(S.Boolean),
@@ -1383,7 +1350,7 @@ export interface VmwareDiskDetails {
   /** Output only. Size in GB. */
   sizeGb?: string;
 }
-export const VmwareDiskDetails = /*@__PURE__*/ S.suspend(() =>
+const VmwareDiskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     diskNumber: S.optional(S.Number),
@@ -1392,7 +1359,7 @@ export const VmwareDiskDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmwareDiskDetails" }) as any as S.Schema<VmwareDiskDetails>;
 
 export type VmwareDiskDetailsList = Array<VmwareDiskDetails>;
-export const VmwareDiskDetailsList = /*@__PURE__*/ S.Array(
+const VmwareDiskDetailsList = /*@__PURE__*/ S.Array(
   VmwareDiskDetails,
 ) as any as S.Schema<VmwareDiskDetailsList>;
 
@@ -1401,12 +1368,12 @@ export type VmCapabilitiesOsCapabilitiesItemEnum =
   | "OS_CAPABILITY_NVME_STORAGE_ACCESS"
   | "OS_CAPABILITY_GVNIC_NETWORK_INTERFACE"
   | "OS_CAPABILITY_IDPF_NETWORK_INTERFACE";
-export const VmCapabilitiesOsCapabilitiesItemEnum = S.String;
+const VmCapabilitiesOsCapabilitiesItemEnum = S.String;
 
 export type VmCapabilitiesOsCapabilitiesItemEnumList = Array<
   VmCapabilitiesOsCapabilitiesItemEnum | (string & {})
 >;
-export const VmCapabilitiesOsCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
+const VmCapabilitiesOsCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   VmCapabilitiesOsCapabilitiesItemEnum,
 ) as any as S.Schema<VmCapabilitiesOsCapabilitiesItemEnumList>;
 
@@ -1417,7 +1384,7 @@ export interface VmCapabilities {
   /** Output only. Unordered list. List of certain VM OS capabilities needed for some Compute Engine features. */
   osCapabilities?: VmCapabilitiesOsCapabilitiesItemEnumList;
 }
-export const VmCapabilities = /*@__PURE__*/ S.suspend(() =>
+const VmCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastOsCapabilitiesUpdateTime: S.optional(S.String),
     osCapabilities: S.optional(VmCapabilitiesOsCapabilitiesItemEnumList),
@@ -1425,13 +1392,13 @@ export const VmCapabilities = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmCapabilities" }) as any as S.Schema<VmCapabilities>;
 
 export type VmwareSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
-export const VmwareSourceVmDetailsFirmwareEnum = S.String;
+const VmwareSourceVmDetailsFirmwareEnum = S.String;
 
 export type VmwareSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-export const VmwareSourceVmDetailsArchitectureEnum = S.String;
+const VmwareSourceVmDetailsArchitectureEnum = S.String;
 
 /** Represent the source Vmware VM details. */
 export interface VmwareSourceVmDetails {
@@ -1446,7 +1413,7 @@ export interface VmwareSourceVmDetails {
   /** Output only. The VM architecture. */
   architecture?: VmwareSourceVmDetailsArchitectureEnum | (string & {});
 }
-export const VmwareSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
+const VmwareSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disks: S.optional(VmwareDiskDetailsList),
     vmCapabilitiesInfo: S.optional(VmCapabilities),
@@ -1465,7 +1432,7 @@ export interface Expiration {
   /** Output only. The number of times expiration was extended. */
   extensionCount?: number;
 }
-export const Expiration = /*@__PURE__*/ S.suspend(() =>
+const Expiration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extendable: S.optional(S.Boolean),
     expireTime: S.optional(S.String),
@@ -1475,8 +1442,6 @@ export const Expiration = /*@__PURE__*/ S.suspend(() =>
 
 /** Details for a disks-only migration. */
 export type DisksMigrationDisksTargetDetails = CancelImageImportJobRequest;
-export const DisksMigrationDisksTargetDetails = CancelImageImportJobRequest;
-
 /** Details of a created Persistent Disk. */
 export interface PersistentDisk {
   /** Output only. The ordinal number of the source VM disk. */
@@ -1484,7 +1449,7 @@ export interface PersistentDisk {
   /** Output only. The URI of the Persistent Disk. */
   diskUri?: string;
 }
-export const PersistentDisk = /*@__PURE__*/ S.suspend(() =>
+const PersistentDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceDiskNumber: S.optional(S.Number),
     diskUri: S.optional(S.String),
@@ -1492,7 +1457,7 @@ export const PersistentDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PersistentDisk" }) as any as S.Schema<PersistentDisk>;
 
 export type PersistentDiskList = Array<PersistentDisk>;
-export const PersistentDiskList = /*@__PURE__*/ S.Array(
+const PersistentDiskList = /*@__PURE__*/ S.Array(
   PersistentDisk,
 ) as any as S.Schema<PersistentDiskList>;
 
@@ -1501,7 +1466,7 @@ export interface DisksMigrationVmTargetDetails {
   /** Output only. The URI of the Compute Engine VM. */
   vmUri?: string;
 }
-export const DisksMigrationVmTargetDetails = /*@__PURE__*/ S.suspend(() =>
+const DisksMigrationVmTargetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmUri: S.optional(S.String),
   }),
@@ -1518,7 +1483,7 @@ export interface ComputeEngineDisksTargetDetails {
   /** Details for the VM the migrated data disks are attached to. */
   vmTargetDetails?: DisksMigrationVmTargetDetails;
 }
-export const ComputeEngineDisksTargetDetails = /*@__PURE__*/ S.suspend(() =>
+const ComputeEngineDisksTargetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disksTargetDetails: S.optional(CancelImageImportJobRequest),
     disks: S.optional(PersistentDiskList),
@@ -1529,7 +1494,7 @@ export const ComputeEngineDisksTargetDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputeEngineDisksTargetDetails>;
 
 export type SchedulingNodeAffinityOperatorEnum = "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN";
-export const SchedulingNodeAffinityOperatorEnum = S.String;
+const SchedulingNodeAffinityOperatorEnum = S.String;
 
 /** Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling */
 export interface SchedulingNodeAffinity {
@@ -1540,7 +1505,7 @@ export interface SchedulingNodeAffinity {
   /** The label key of Node resource to reference. */
   key?: string;
 }
-export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
+const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
     operator: S.optional(SchedulingNodeAffinityOperatorEnum),
@@ -1549,7 +1514,7 @@ export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchedulingNodeAffinity" }) as any as S.Schema<SchedulingNodeAffinity>;
 
 export type SchedulingNodeAffinityList = Array<SchedulingNodeAffinity>;
-export const SchedulingNodeAffinityList = /*@__PURE__*/ S.Array(
+const SchedulingNodeAffinityList = /*@__PURE__*/ S.Array(
   SchedulingNodeAffinity,
 ) as any as S.Schema<SchedulingNodeAffinityList>;
 
@@ -1557,13 +1522,13 @@ export type ComputeSchedulingOnHostMaintenanceEnum =
   | "ON_HOST_MAINTENANCE_UNSPECIFIED"
   | "TERMINATE"
   | "MIGRATE";
-export const ComputeSchedulingOnHostMaintenanceEnum = S.String;
+const ComputeSchedulingOnHostMaintenanceEnum = S.String;
 
 export type ComputeSchedulingRestartTypeEnum =
   | "RESTART_TYPE_UNSPECIFIED"
   | "AUTOMATIC_RESTART"
   | "NO_AUTOMATIC_RESTART";
-export const ComputeSchedulingRestartTypeEnum = S.String;
+const ComputeSchedulingRestartTypeEnum = S.String;
 
 /** Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes. Options for instance behavior when the host machine undergoes maintenance that may temporarily impact instance performance. */
 export interface ComputeScheduling {
@@ -1577,7 +1542,7 @@ export interface ComputeScheduling {
   /** Whether the Instance should be automatically restarted whenever it is terminated by Compute Engine (not terminated by user). This configuration is identical to `automaticRestart` field in Compute Engine create instance under scheduling. It was changed to an enum (instead of a boolean) to match the default value in Compute Engine which is automatic restart. */
   restartType?: ComputeSchedulingRestartTypeEnum | (string & {});
 }
-export const ComputeScheduling = /*@__PURE__*/ S.suspend(() =>
+const ComputeScheduling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minNodeCpus: S.optional(S.Number),
     automaticRestart: S.optional(S.Boolean),
@@ -1591,10 +1556,10 @@ export type ComputeEngineTargetDetailsBootOptionEnum =
   | "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED"
   | "COMPUTE_ENGINE_BOOT_OPTION_EFI"
   | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
-export const ComputeEngineTargetDetailsBootOptionEnum = S.String;
+const ComputeEngineTargetDetailsBootOptionEnum = S.String;
 
 export type AppliedLicenseTypeEnum = "TYPE_UNSPECIFIED" | "NONE" | "PAYG" | "BYOL";
-export const AppliedLicenseTypeEnum = S.String;
+const AppliedLicenseTypeEnum = S.String;
 
 /** AppliedLicense holds the license data returned by adaptation module report. */
 export interface AppliedLicense {
@@ -1603,7 +1568,7 @@ export interface AppliedLicense {
   /** The license type that was used in OS adaptation. */
   type?: AppliedLicenseTypeEnum | (string & {});
 }
-export const AppliedLicense = /*@__PURE__*/ S.suspend(() =>
+const AppliedLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osLicense: S.optional(S.String),
     type: S.optional(AppliedLicenseTypeEnum),
@@ -1614,13 +1579,13 @@ export type ComputeEngineTargetDetailsBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
   | "BIOS_TO_EFI";
-export const ComputeEngineTargetDetailsBootConversionEnum = S.String;
+const ComputeEngineTargetDetailsBootConversionEnum = S.String;
 
 export type ComputeEngineTargetDetailsLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
   | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
-export const ComputeEngineTargetDetailsLicenseTypeEnum = S.String;
+const ComputeEngineTargetDetailsLicenseTypeEnum = S.String;
 
 export type ComputeEngineTargetDetailsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
@@ -1629,7 +1594,7 @@ export type ComputeEngineTargetDetailsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-export const ComputeEngineTargetDetailsDiskTypeEnum = S.String;
+const ComputeEngineTargetDetailsDiskTypeEnum = S.String;
 
 /** ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project. */
 export interface ComputeEngineTargetDetails {
@@ -1684,7 +1649,7 @@ export interface ComputeEngineTargetDetails {
   /** The disk type to use in the VM. */
   diskType?: ComputeEngineTargetDetailsDiskTypeEnum | (string & {});
 }
-export const ComputeEngineTargetDetails = /*@__PURE__*/ S.suspend(() =>
+const ComputeEngineTargetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secureBoot: S.optional(S.Boolean),
     vmName: S.optional(S.String),
@@ -1717,7 +1682,7 @@ export const ComputeEngineTargetDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputeEngineTargetDetails>;
 
 export type TargetVMDetailsLicenseTypeEnum = "DEFAULT" | "PAYG" | "BYOL";
-export const TargetVMDetailsLicenseTypeEnum = S.String;
+const TargetVMDetailsLicenseTypeEnum = S.String;
 
 export type TargetVMDetailsDiskTypeEnum =
   | "DISK_TYPE_UNSPECIFIED"
@@ -1726,10 +1691,10 @@ export type TargetVMDetailsDiskTypeEnum =
   | "SSD"
   | "HYPERDISK_BALANCED"
   | "HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-export const TargetVMDetailsDiskTypeEnum = S.String;
+const TargetVMDetailsDiskTypeEnum = S.String;
 
 export type TargetVMDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
-export const TargetVMDetailsBootOptionEnum = S.String;
+const TargetVMDetailsBootOptionEnum = S.String;
 
 /** TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project. */
 export interface TargetVMDetails {
@@ -1776,7 +1741,7 @@ export interface TargetVMDetails {
   /** Output only. The project in which to create the VM. */
   project?: string;
 }
-export const TargetVMDetails = /*@__PURE__*/ S.suspend(() =>
+const TargetVMDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkTags: S.optional(StringList),
     machineType: S.optional(S.String),
@@ -1804,20 +1769,12 @@ export const TargetVMDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** ShuttingDownSourceVMStep contains specific step details. */
 export type ShuttingDownSourceVMStep = CancelImageImportJobRequest;
-export const ShuttingDownSourceVMStep = CancelImageImportJobRequest;
-
 /** InstantiatingMigratedVMStep contains specific step details. */
 export type InstantiatingMigratedVMStep = CancelImageImportJobRequest;
-export const InstantiatingMigratedVMStep = CancelImageImportJobRequest;
-
 /** InitializingReplicationStep contains specific step details. */
 export type InitializingReplicationStep = CancelImageImportJobRequest;
-export const InitializingReplicationStep = CancelImageImportJobRequest;
-
 /** PostProcessingStep contains specific step details. */
 export type PostProcessingStep = CancelImageImportJobRequest;
-export const PostProcessingStep = CancelImageImportJobRequest;
-
 /** ReplicatingStep contains specific step details. */
 export interface ReplicatingStep {
   /** Total bytes to be handled in the step. */
@@ -1829,7 +1786,7 @@ export interface ReplicatingStep {
   /** The source disks replication rate for the last 30 minutes in bytes per second. */
   lastThirtyMinutesAverageBytesPerSecond?: string;
 }
-export const ReplicatingStep = /*@__PURE__*/ S.suspend(() =>
+const ReplicatingStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalBytes: S.optional(S.String),
     replicatedBytes: S.optional(S.String),
@@ -1851,7 +1808,7 @@ export interface CycleStep {
   /** The time the cycle step has started. */
   startTime?: string;
 }
-export const CycleStep = /*@__PURE__*/ S.suspend(() =>
+const CycleStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initializingReplication: S.optional(CancelImageImportJobRequest),
     postProcessing: S.optional(CancelImageImportJobRequest),
@@ -1862,7 +1819,7 @@ export const CycleStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CycleStep" }) as any as S.Schema<CycleStep>;
 
 export type CycleStepList = Array<CycleStep>;
-export const CycleStepList = /*@__PURE__*/ S.Array(CycleStep) as any as S.Schema<CycleStepList>;
+const CycleStepList = /*@__PURE__*/ S.Array(CycleStep) as any as S.Schema<CycleStepList>;
 
 export type ReplicationCycleStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1870,7 +1827,7 @@ export type ReplicationCycleStateEnum =
   | "PAUSED"
   | "FAILED"
   | "SUCCEEDED";
-export const ReplicationCycleStateEnum = S.String;
+const ReplicationCycleStateEnum = S.String;
 
 /** ReplicationCycle contains information about the current replication cycle status. */
 export interface ReplicationCycle {
@@ -1897,7 +1854,7 @@ export interface ReplicationCycle {
   /** Output only. Warnings that occurred during the cycle. */
   warnings?: MigrationWarningList;
 }
-export const ReplicationCycle = /*@__PURE__*/ S.suspend(() =>
+const ReplicationCycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     steps: S.optional(CycleStepList),
@@ -1915,8 +1872,6 @@ export const ReplicationCycle = /*@__PURE__*/ S.suspend(() =>
 
 /** PreparingVMDisksStep contains specific step details. */
 export type PreparingVMDisksStep = CancelImageImportJobRequest;
-export const PreparingVMDisksStep = CancelImageImportJobRequest;
-
 /** CutoverStep holds information about the cutover step progress. */
 export interface CutoverStep {
   /** Shutting down VM step. */
@@ -1934,7 +1889,7 @@ export interface CutoverStep {
   /** Preparing VM disks step. */
   preparingVmDisks?: CancelImageImportJobRequest;
 }
-export const CutoverStep = /*@__PURE__*/ S.suspend(() =>
+const CutoverStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shuttingDownSourceVm: S.optional(CancelImageImportJobRequest),
     instantiatingMigratedVm: S.optional(CancelImageImportJobRequest),
@@ -1947,9 +1902,7 @@ export const CutoverStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CutoverStep" }) as any as S.Schema<CutoverStep>;
 
 export type CutoverStepList = Array<CutoverStep>;
-export const CutoverStepList = /*@__PURE__*/ S.Array(
-  CutoverStep,
-) as any as S.Schema<CutoverStepList>;
+const CutoverStepList = /*@__PURE__*/ S.Array(CutoverStep) as any as S.Schema<CutoverStepList>;
 
 export type CutoverJobStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1960,7 +1913,7 @@ export type CutoverJobStateEnum =
   | "CANCELLING"
   | "ACTIVE"
   | "ADAPTING_OS";
-export const CutoverJobStateEnum = S.String;
+const CutoverJobStateEnum = S.String;
 
 /** CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and cloning the VM using the replicated snapshot. */
 export interface CutoverJob {
@@ -1993,7 +1946,7 @@ export interface CutoverJob {
   /** Output only. The time the cutover job had finished. */
   endTime?: string;
 }
-export const CutoverJob = /*@__PURE__*/ S.suspend(() =>
+const CutoverJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computeEngineDisksTargetDetails: S.optional(ComputeEngineDisksTargetDetails),
     computeEngineTargetDetails: S.optional(ComputeEngineTargetDetails),
@@ -2013,14 +1966,14 @@ export const CutoverJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CutoverJob" }) as any as S.Schema<CutoverJob>;
 
 export type CutoverJobList = Array<CutoverJob>;
-export const CutoverJobList = /*@__PURE__*/ S.Array(CutoverJob) as any as S.Schema<CutoverJobList>;
+const CutoverJobList = /*@__PURE__*/ S.Array(CutoverJob) as any as S.Schema<CutoverJobList>;
 
 /** Details for attachment of the disk to a VM. */
 export interface VmAttachmentDetails {
   /** Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks. */
   deviceName?: string;
 }
-export const VmAttachmentDetails = /*@__PURE__*/ S.suspend(() =>
+const VmAttachmentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceName: S.optional(S.String),
   }),
@@ -2033,7 +1986,7 @@ export type PersistentDiskDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-export const PersistentDiskDefaultsDiskTypeEnum = S.String;
+const PersistentDiskDefaultsDiskTypeEnum = S.String;
 
 /** Details for creation of a Persistent Disk. */
 export interface PersistentDiskDefaults {
@@ -2050,7 +2003,7 @@ export interface PersistentDiskDefaults {
   /** Optional. The name of the Persistent Disk to create. */
   diskName?: string;
 }
-export const PersistentDiskDefaults = /*@__PURE__*/ S.suspend(() =>
+const PersistentDiskDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmAttachmentDetails: S.optional(VmAttachmentDetails),
     diskType: S.optional(PersistentDiskDefaultsDiskTypeEnum),
@@ -2062,7 +2015,7 @@ export const PersistentDiskDefaults = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PersistentDiskDefaults" }) as any as S.Schema<PersistentDiskDefaults>;
 
 export type PersistentDiskDefaultsList = Array<PersistentDiskDefaults>;
-export const PersistentDiskDefaultsList = /*@__PURE__*/ S.Array(
+const PersistentDiskDefaultsList = /*@__PURE__*/ S.Array(
   PersistentDiskDefaults,
 ) as any as S.Schema<PersistentDiskDefaultsList>;
 
@@ -2070,13 +2023,13 @@ export type ComputeEngineTargetDefaultsBootOptionEnum =
   | "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED"
   | "COMPUTE_ENGINE_BOOT_OPTION_EFI"
   | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
-export const ComputeEngineTargetDefaultsBootOptionEnum = S.String;
+const ComputeEngineTargetDefaultsBootOptionEnum = S.String;
 
 export type ComputeEngineTargetDefaultsBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
   | "BIOS_TO_EFI";
-export const ComputeEngineTargetDefaultsBootConversionEnum = S.String;
+const ComputeEngineTargetDefaultsBootConversionEnum = S.String;
 
 export type ComputeEngineTargetDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED"
@@ -2085,13 +2038,13 @@ export type ComputeEngineTargetDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-export const ComputeEngineTargetDefaultsDiskTypeEnum = S.String;
+const ComputeEngineTargetDefaultsDiskTypeEnum = S.String;
 
 export type ComputeEngineTargetDefaultsLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
   | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
-export const ComputeEngineTargetDefaultsLicenseTypeEnum = S.String;
+const ComputeEngineTargetDefaultsLicenseTypeEnum = S.String;
 
 /** ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project. */
 export interface ComputeEngineTargetDefaults {
@@ -2148,7 +2101,7 @@ export interface ComputeEngineTargetDefaults {
   /** Optional. Defines whether the instance has integrity monitoring enabled. This can be set to true only if the VM boot option is EFI, and vTPM is enabled. */
   enableIntegrityMonitoring?: boolean;
 }
-export const ComputeEngineTargetDefaults = /*@__PURE__*/ S.suspend(() =>
+const ComputeEngineTargetDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkTags: S.optional(StringList),
     storagePool: S.optional(S.String),
@@ -2186,7 +2139,7 @@ export interface ReplicationSync {
   /** The most updated snapshot created time in the source that finished replication. */
   lastSyncTime?: string;
 }
-export const ReplicationSync = /*@__PURE__*/ S.suspend(() =>
+const ReplicationSync = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastSyncTime: S.optional(S.String),
   }),
@@ -2197,7 +2150,7 @@ export interface CutoverForecast {
   /** Output only. Estimation of the CutoverJob duration. */
   estimatedCutoverJobDuration?: string;
 }
-export const CutoverForecast = /*@__PURE__*/ S.suspend(() =>
+const CutoverForecast = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimatedCutoverJobDuration: S.optional(S.String),
   }),
@@ -2210,14 +2163,14 @@ export type BootDiskDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
-export const BootDiskDefaultsDiskTypeEnum = S.String;
+const BootDiskDefaultsDiskTypeEnum = S.String;
 
 /** Contains details about the image source used to create the disk. */
 export interface DiskImageDefaults {
   /** Required. The Image resource used when creating the disk. */
   sourceImage?: string;
 }
-export const DiskImageDefaults = /*@__PURE__*/ S.suspend(() =>
+const DiskImageDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceImage: S.optional(S.String),
   }),
@@ -2236,7 +2189,7 @@ export interface BootDiskDefaults {
   /** Optional. The name of the disk. */
   diskName?: string;
 }
-export const BootDiskDefaults = /*@__PURE__*/ S.suspend(() =>
+const BootDiskDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceName: S.optional(S.String),
     diskType: S.optional(BootDiskDefaultsDiskTypeEnum),
@@ -2281,7 +2234,7 @@ export interface DisksMigrationVmTargetDefaults {
   /** Optional. A list of network tags to associate with the VM. */
   networkTags?: StringList;
 }
-export const DisksMigrationVmTargetDefaults = /*@__PURE__*/ S.suspend(() =>
+const DisksMigrationVmTargetDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalLicenses: S.optional(StringList),
     hostname: S.optional(S.String),
@@ -2306,8 +2259,6 @@ export const DisksMigrationVmTargetDefaults = /*@__PURE__*/ S.suspend(() =>
 
 /** Details for a disk only migration. */
 export type DisksMigrationDisksTargetDefaults = CancelImageImportJobRequest;
-export const DisksMigrationDisksTargetDefaults = CancelImageImportJobRequest;
-
 /** ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute Engine project. */
 export interface ComputeEngineDisksTargetDefaults {
   /** Details of the VM migration target. */
@@ -2321,7 +2272,7 @@ export interface ComputeEngineDisksTargetDefaults {
   /** The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks. */
   targetProject?: string;
 }
-export const ComputeEngineDisksTargetDefaults = /*@__PURE__*/ S.suspend(() =>
+const ComputeEngineDisksTargetDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmTargetDefaults: S.optional(DisksMigrationVmTargetDefaults),
     disks: S.optional(PersistentDiskDefaultsList),
@@ -2348,7 +2299,7 @@ export type MigratingVmStateEnum =
   | "ERROR"
   | "EXPIRED"
   | "FINALIZED_EXPIRED";
-export const MigratingVmStateEnum = S.String;
+const MigratingVmStateEnum = S.String;
 
 /** CloneStep holds information about the clone step progress. */
 export interface CloneStep {
@@ -2363,7 +2314,7 @@ export interface CloneStep {
   /** Adapting OS step. */
   adaptingOs?: CancelImageImportJobRequest;
 }
-export const CloneStep = /*@__PURE__*/ S.suspend(() =>
+const CloneStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instantiatingMigratedVm: S.optional(CancelImageImportJobRequest),
     preparingVmDisks: S.optional(CancelImageImportJobRequest),
@@ -2374,7 +2325,7 @@ export const CloneStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloneStep" }) as any as S.Schema<CloneStep>;
 
 export type CloneStepList = Array<CloneStep>;
-export const CloneStepList = /*@__PURE__*/ S.Array(CloneStep) as any as S.Schema<CloneStepList>;
+const CloneStepList = /*@__PURE__*/ S.Array(CloneStep) as any as S.Schema<CloneStepList>;
 
 export type CloneJobStateEnum =
   | "STATE_UNSPECIFIED"
@@ -2385,7 +2336,7 @@ export type CloneJobStateEnum =
   | "CANCELLED"
   | "CANCELLING"
   | "ADAPTING_OS";
-export const CloneJobStateEnum = S.String;
+const CloneJobStateEnum = S.String;
 
 /** CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone. */
 export interface CloneJob {
@@ -2412,7 +2363,7 @@ export interface CloneJob {
   /** Output only. The time the clone job was ended. */
   endTime?: string;
 }
-export const CloneJob = /*@__PURE__*/ S.suspend(() =>
+const CloneJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computeEngineVmDetails: S.optional(TargetVMDetails),
     stateTime: S.optional(S.String),
@@ -2429,7 +2380,7 @@ export const CloneJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloneJob" }) as any as S.Schema<CloneJob>;
 
 export type CloneJobList = Array<CloneJob>;
-export const CloneJobList = /*@__PURE__*/ S.Array(CloneJob) as any as S.Schema<CloneJobList>;
+const CloneJobList = /*@__PURE__*/ S.Array(CloneJob) as any as S.Schema<CloneJobList>;
 
 /** The details of an Azure VM disk. */
 export interface AzureDiskDetails {
@@ -2440,7 +2391,7 @@ export interface AzureDiskDetails {
   /** Output only. Size in GB. */
   sizeGb?: string;
 }
-export const AzureDiskDetails = /*@__PURE__*/ S.suspend(() =>
+const AzureDiskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskNumber: S.optional(S.Number),
     diskId: S.optional(S.String),
@@ -2449,18 +2400,18 @@ export const AzureDiskDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AzureDiskDetails" }) as any as S.Schema<AzureDiskDetails>;
 
 export type AzureDiskDetailsList = Array<AzureDiskDetails>;
-export const AzureDiskDetailsList = /*@__PURE__*/ S.Array(
+const AzureDiskDetailsList = /*@__PURE__*/ S.Array(
   AzureDiskDetails,
 ) as any as S.Schema<AzureDiskDetailsList>;
 
 export type AzureSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
-export const AzureSourceVmDetailsFirmwareEnum = S.String;
+const AzureSourceVmDetailsFirmwareEnum = S.String;
 
 export type AzureSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-export const AzureSourceVmDetailsArchitectureEnum = S.String;
+const AzureSourceVmDetailsArchitectureEnum = S.String;
 
 /** Represent the source Azure VM details. */
 export interface AzureSourceVmDetails {
@@ -2475,7 +2426,7 @@ export interface AzureSourceVmDetails {
   /** Output only. The total size of the disks being migrated in bytes. */
   committedStorageBytes?: string;
 }
-export const AzureSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
+const AzureSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disks: S.optional(AzureDiskDetailsList),
     vmCapabilitiesInfo: S.optional(VmCapabilities),
@@ -2489,7 +2440,7 @@ export type AwsSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-export const AwsSourceVmDetailsArchitectureEnum = S.String;
+const AwsSourceVmDetailsArchitectureEnum = S.String;
 
 /** The details of an AWS instance disk. */
 export interface AwsDiskDetails {
@@ -2500,7 +2451,7 @@ export interface AwsDiskDetails {
   /** Output only. Size in GB. */
   sizeGb?: string;
 }
-export const AwsDiskDetails = /*@__PURE__*/ S.suspend(() =>
+const AwsDiskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     diskNumber: S.optional(S.Number),
@@ -2509,12 +2460,12 @@ export const AwsDiskDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AwsDiskDetails" }) as any as S.Schema<AwsDiskDetails>;
 
 export type AwsDiskDetailsList = Array<AwsDiskDetails>;
-export const AwsDiskDetailsList = /*@__PURE__*/ S.Array(
+const AwsDiskDetailsList = /*@__PURE__*/ S.Array(
   AwsDiskDetails,
 ) as any as S.Schema<AwsDiskDetailsList>;
 
 export type AwsSourceVmDetailsFirmwareEnum = "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS";
-export const AwsSourceVmDetailsFirmwareEnum = S.String;
+const AwsSourceVmDetailsFirmwareEnum = S.String;
 
 /** Represent the source AWS VM details. */
 export interface AwsSourceVmDetails {
@@ -2529,7 +2480,7 @@ export interface AwsSourceVmDetails {
   /** Output only. The firmware type of the source VM. */
   firmware?: AwsSourceVmDetailsFirmwareEnum | (string & {});
 }
-export const AwsSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
+const AwsSourceVmDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     architecture: S.optional(AwsSourceVmDetailsArchitectureEnum),
     vmCapabilitiesInfo: S.optional(VmCapabilities),
@@ -2594,7 +2545,7 @@ export interface MigratingVm {
   /** The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead. */
   targetDefaults?: TargetVMDetails;
 }
-export const MigratingVm = /*@__PURE__*/ S.suspend(() =>
+const MigratingVm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(SchedulePolicy),
     name: S.optional(S.String),
@@ -2635,7 +2586,7 @@ export interface CreateProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: MigratingVm;
 }
-export const CreateProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     migratingVmId: S.optional(S.String.pipe(T.Query())),
@@ -2662,20 +2613,19 @@ export interface CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Request body */
   body?: CloneJob;
 }
-export const CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      cloneJobId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CloneJob.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+parent}/cloneJobs",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    cloneJobId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CloneJob.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/cloneJobs",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
 }) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
@@ -2690,26 +2640,25 @@ export interface CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Request body */
   body?: CutoverJob;
 }
-export const CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      cutoverJobId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CutoverJob.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+parent}/cutoverJobs",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    cutoverJobId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(CutoverJob.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+parent}/cutoverJobs",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
 }) as any as S.Schema<CreateProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
 
 export type UtilizationReportStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "SUCCEEDED" | "FAILED";
-export const UtilizationReportStateEnum = S.String;
+const UtilizationReportStateEnum = S.String;
 
 /** Utilization metrics values for a single VM. */
 export interface VmUtilizationMetrics {
@@ -2746,7 +2695,7 @@ export interface VmUtilizationMetrics {
   /** Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second. */
   networkThroughputAverageKbps?: string;
 }
-export const VmUtilizationMetrics = /*@__PURE__*/ S.suspend(() =>
+const VmUtilizationMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkThroughputMaxKbps: S.optional(S.String),
     cpuAveragePercent: S.optional(S.Number),
@@ -2771,13 +2720,13 @@ export type VmwareVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-export const VmwareVmDetailsArchitectureEnum = S.String;
+const VmwareVmDetailsArchitectureEnum = S.String;
 
 export type VmwareVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
-export const VmwareVmDetailsBootOptionEnum = S.String;
+const VmwareVmDetailsBootOptionEnum = S.String;
 
 export type VmwareVmDetailsPowerStateEnum = "POWER_STATE_UNSPECIFIED" | "ON" | "OFF" | "SUSPENDED";
-export const VmwareVmDetailsPowerStateEnum = S.String;
+const VmwareVmDetailsPowerStateEnum = S.String;
 
 /** VmwareVmDetails describes a VM in vCenter. */
 export interface VmwareVmDetails {
@@ -2810,7 +2759,7 @@ export interface VmwareVmDetails {
   /** The power state of the VM at the moment list was taken. */
   powerState?: VmwareVmDetailsPowerStateEnum | (string & {});
 }
-export const VmwareVmDetails = /*@__PURE__*/ S.suspend(() =>
+const VmwareVmDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuCount: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -2838,7 +2787,7 @@ export interface VmUtilizationInfo {
   /** The description of the VM in a Source of type Vmware. */
   vmwareVmDetails?: VmwareVmDetails;
 }
-export const VmUtilizationInfo = /*@__PURE__*/ S.suspend(() =>
+const VmUtilizationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     utilization: S.optional(VmUtilizationMetrics),
     vmId: S.optional(S.String),
@@ -2847,12 +2796,12 @@ export const VmUtilizationInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmUtilizationInfo" }) as any as S.Schema<VmUtilizationInfo>;
 
 export type VmUtilizationInfoList = Array<VmUtilizationInfo>;
-export const VmUtilizationInfoList = /*@__PURE__*/ S.Array(
+const VmUtilizationInfoList = /*@__PURE__*/ S.Array(
   VmUtilizationInfo,
 ) as any as S.Schema<VmUtilizationInfoList>;
 
 export type UtilizationReportTimeFrameEnum = "TIME_FRAME_UNSPECIFIED" | "WEEK" | "MONTH" | "YEAR";
-export const UtilizationReportTimeFrameEnum = S.String;
+const UtilizationReportTimeFrameEnum = S.String;
 
 /** Utilization report details the utilization (CPU, memory, etc.) of selected source VMs. */
 export interface UtilizationReport {
@@ -2879,7 +2828,7 @@ export interface UtilizationReport {
   /** Output only. Total number of VMs included in the report. */
   vmCount?: number;
 }
-export const UtilizationReport = /*@__PURE__*/ S.suspend(() =>
+const UtilizationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     stateTime: S.optional(S.String),
@@ -2905,7 +2854,7 @@ export interface CreateProjectsLocationsSourcesUtilizationReportsRequest {
   /** Request body */
   body?: UtilizationReport;
 }
-export const CreateProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     utilizationReportId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2935,7 +2884,7 @@ export interface TargetProject {
   /** Output only. The last time the target project resource was updated. */
   updateTime?: string;
 }
-export const TargetProject = /*@__PURE__*/ S.suspend(() =>
+const TargetProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2955,7 +2904,7 @@ export interface CreateProjectsLocationsTargetProjectsRequest {
   /** Request body */
   body?: TargetProject;
 }
-export const CreateProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     targetProjectId: S.optional(S.String.pipe(T.Query())),
@@ -2978,7 +2927,7 @@ export interface DeleteProjectsLocationsGroupsRequest {
   /** Required. The Group name. */
   name: string;
 }
-export const DeleteProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2999,7 +2948,7 @@ export interface DeleteProjectsLocationsImageImportsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3018,7 +2967,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3038,7 +2987,7 @@ export interface DeleteProjectsLocationsSourcesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3059,18 +3008,17 @@ export interface DeleteProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. The DatacenterConnector name. */
   name: string;
 }
-export const DeleteProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha1/{+name}",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsSourcesDatacenterConnectorsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsSourcesDatacenterConnectorsRequest>;
@@ -3079,7 +3027,7 @@ export interface DeleteProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
   name: string;
 }
-export const DeleteProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3097,7 +3045,7 @@ export interface DeleteProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   name: string;
 }
-export const DeleteProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3117,7 +3065,7 @@ export interface DeleteProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3138,7 +3086,7 @@ export interface DeleteProjectsLocationsTargetProjectsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3155,26 +3103,23 @@ export const DeleteProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.susp
 
 /** Request message for 'ExtendMigrationRequest' request. */
 export type ExtendMigrationRequest = CancelImageImportJobRequest;
-export const ExtendMigrationRequest = CancelImageImportJobRequest;
-
 export interface ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   migratingVm: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      migratingVm: S.String.pipe(T.Label()),
-      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+migratingVm}:extendMigration",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migratingVm: S.String.pipe(T.Label()),
+    body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+migratingVm}:extendMigration",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest",
 }) as any as S.Schema<ExtendMigrationProjectsLocationsSourcesMigratingVmsRequest>;
@@ -3189,7 +3134,7 @@ export interface FetchInventoryProjectsLocationsSourcesRequest {
   /** Required. The name of the Source. */
   source: string;
 }
-export const FetchInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
@@ -3207,7 +3152,7 @@ export const FetchInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<FetchInventoryProjectsLocationsSourcesRequest>;
 
 export type VmwareVmDetailsList = Array<VmwareVmDetails>;
-export const VmwareVmDetailsList = /*@__PURE__*/ S.Array(
+const VmwareVmDetailsList = /*@__PURE__*/ S.Array(
   VmwareVmDetails,
 ) as any as S.Schema<VmwareVmDetailsList>;
 
@@ -3216,7 +3161,7 @@ export interface VmwareVmsDetails {
   /** The details of the vmware VMs. */
   details?: VmwareVmDetailsList;
 }
-export const VmwareVmsDetails = /*@__PURE__*/ S.suspend(() =>
+const VmwareVmsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(VmwareVmDetailsList),
   }),
@@ -3231,7 +3176,7 @@ export interface OSDisk {
   /** The disk's size in GB. */
   sizeGb?: number;
 }
-export const OSDisk = /*@__PURE__*/ S.suspend(() =>
+const OSDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -3240,7 +3185,7 @@ export const OSDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OSDisk" }) as any as S.Schema<OSDisk>;
 
 export type AzureVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
-export const AzureVmDetailsBootOptionEnum = S.String;
+const AzureVmDetailsBootOptionEnum = S.String;
 
 /** A message describing the VM's OS. Including OS, Publisher, Offer and Plan if applicable. */
 export interface OSDescription {
@@ -3253,7 +3198,7 @@ export interface OSDescription {
   /** OS publisher. */
   publisher?: string;
 }
-export const OSDescription = /*@__PURE__*/ S.suspend(() =>
+const OSDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan: S.optional(S.String),
     type: S.optional(S.String),
@@ -3266,7 +3211,7 @@ export type AzureVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
   | "VM_ARCHITECTURE_ARM64";
-export const AzureVmDetailsArchitectureEnum = S.String;
+const AzureVmDetailsArchitectureEnum = S.String;
 
 export type AzureVmDetailsPowerStateEnum =
   | "POWER_STATE_UNSPECIFIED"
@@ -3277,7 +3222,7 @@ export type AzureVmDetailsPowerStateEnum =
   | "DEALLOCATING"
   | "DEALLOCATED"
   | "UNKNOWN";
-export const AzureVmDetailsPowerStateEnum = S.String;
+const AzureVmDetailsPowerStateEnum = S.String;
 
 /** A message describing a data disk. */
 export interface Disk {
@@ -3288,7 +3233,7 @@ export interface Disk {
   /** The disk name. */
   name?: string;
 }
-export const Disk = /*@__PURE__*/ S.suspend(() =>
+const Disk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeGb: S.optional(S.Number),
     lun: S.optional(S.Number),
@@ -3297,7 +3242,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 export type DiskList = Array<Disk>;
-export const DiskList = /*@__PURE__*/ S.Array(Disk) as any as S.Schema<DiskList>;
+const DiskList = /*@__PURE__*/ S.Array(Disk) as any as S.Schema<DiskList>;
 
 /** AzureVmDetails describes a VM in Azure. */
 export interface AzureVmDetails {
@@ -3330,7 +3275,7 @@ export interface AzureVmDetails {
   /** VM size as configured in Azure. Determines the VM's hardware spec. */
   vmSize?: string;
 }
-export const AzureVmDetails = /*@__PURE__*/ S.suspend(() =>
+const AzureVmDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuCount: S.optional(S.Number),
     osDisk: S.optional(OSDisk),
@@ -3350,7 +3295,7 @@ export const AzureVmDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AzureVmDetails" }) as any as S.Schema<AzureVmDetails>;
 
 export type AzureVmDetailsList = Array<AzureVmDetails>;
-export const AzureVmDetailsList = /*@__PURE__*/ S.Array(
+const AzureVmDetailsList = /*@__PURE__*/ S.Array(
   AzureVmDetails,
 ) as any as S.Schema<AzureVmDetailsList>;
 
@@ -3359,7 +3304,7 @@ export interface AzureVmsDetails {
   /** The details of the Azure VMs. */
   details?: AzureVmDetailsList;
 }
-export const AzureVmsDetails = /*@__PURE__*/ S.suspend(() =>
+const AzureVmsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(AzureVmDetailsList),
   }),
@@ -3371,7 +3316,7 @@ export type AwsVmDetailsPowerStateEnum =
   | "OFF"
   | "SUSPENDED"
   | "PENDING";
-export const AwsVmDetailsPowerStateEnum = S.String;
+const AwsVmDetailsPowerStateEnum = S.String;
 
 export type AwsVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
@@ -3379,7 +3324,7 @@ export type AwsVmDetailsArchitectureEnum =
   | "X86_64"
   | "ARM64"
   | "X86_64_MAC";
-export const AwsVmDetailsArchitectureEnum = S.String;
+const AwsVmDetailsArchitectureEnum = S.String;
 
 /** AwsSecurityGroup describes a security group of an AWS VM. */
 export interface AwsSecurityGroup {
@@ -3388,7 +3333,7 @@ export interface AwsSecurityGroup {
   /** The AWS security group id. */
   id?: string;
 }
-export const AwsSecurityGroup = /*@__PURE__*/ S.suspend(() =>
+const AwsSecurityGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -3396,18 +3341,18 @@ export const AwsSecurityGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AwsSecurityGroup" }) as any as S.Schema<AwsSecurityGroup>;
 
 export type AwsSecurityGroupList = Array<AwsSecurityGroup>;
-export const AwsSecurityGroupList = /*@__PURE__*/ S.Array(
+const AwsSecurityGroupList = /*@__PURE__*/ S.Array(
   AwsSecurityGroup,
 ) as any as S.Schema<AwsSecurityGroupList>;
 
 export type AwsVmDetailsBootOptionEnum = "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS";
-export const AwsVmDetailsBootOptionEnum = S.String;
+const AwsVmDetailsBootOptionEnum = S.String;
 
 export type AwsVmDetailsVirtualizationTypeEnum =
   | "VM_VIRTUALIZATION_TYPE_UNSPECIFIED"
   | "HVM"
   | "PARAVIRTUAL";
-export const AwsVmDetailsVirtualizationTypeEnum = S.String;
+const AwsVmDetailsVirtualizationTypeEnum = S.String;
 
 /** AwsVmDetails describes a VM in AWS. */
 export interface AwsVmDetails {
@@ -3450,7 +3395,7 @@ export interface AwsVmDetails {
   /** The display name of the VM. Note that this value is not necessarily unique. */
   displayName?: string;
 }
-export const AwsVmDetails = /*@__PURE__*/ S.suspend(() =>
+const AwsVmDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     powerState: S.optional(AwsVmDetailsPowerStateEnum),
     vmId: S.optional(S.String),
@@ -3475,16 +3420,14 @@ export const AwsVmDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AwsVmDetails" }) as any as S.Schema<AwsVmDetails>;
 
 export type AwsVmDetailsList = Array<AwsVmDetails>;
-export const AwsVmDetailsList = /*@__PURE__*/ S.Array(
-  AwsVmDetails,
-) as any as S.Schema<AwsVmDetailsList>;
+const AwsVmDetailsList = /*@__PURE__*/ S.Array(AwsVmDetails) as any as S.Schema<AwsVmDetailsList>;
 
 /** AWSVmsDetails describes VMs in AWS. */
 export interface AwsVmsDetails {
   /** The details of the AWS VMs. */
   details?: AwsVmDetailsList;
 }
-export const AwsVmsDetails = /*@__PURE__*/ S.suspend(() =>
+const AwsVmsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(AwsVmDetailsList),
   }),
@@ -3503,7 +3446,7 @@ export interface FetchInventoryResponse {
   /** The description of the VMs in a Source of type AWS. */
   awsVms?: AwsVmsDetails;
 }
-export const FetchInventoryResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchInventoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmwareVms: S.optional(VmwareVmsDetails),
     updateTime: S.optional(S.String),
@@ -3517,7 +3460,7 @@ export type FetchStorageInventoryProjectsLocationsSourcesTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "DISKS"
   | "SNAPSHOTS";
-export const FetchStorageInventoryProjectsLocationsSourcesTypeEnum = S.String;
+const FetchStorageInventoryProjectsLocationsSourcesTypeEnum = S.String;
 
 export interface FetchStorageInventoryProjectsLocationsSourcesRequest {
   /** Optional. If this flag is set to true, the source will be queried instead of using cached results. Using this flag will make the call slower. */
@@ -3531,7 +3474,7 @@ export interface FetchStorageInventoryProjectsLocationsSourcesRequest {
   /** Required. The type of the storage inventory to fetch. */
   type?: FetchStorageInventoryProjectsLocationsSourcesTypeEnum | (string & {});
 }
-export const FetchStorageInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchStorageInventoryProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
     source: S.String.pipe(T.Label()),
@@ -3554,14 +3497,14 @@ export interface SourceStorageResource {
   /** Source AWS volume details. */
   awsDiskDetails?: AwsSourceDiskDetails;
 }
-export const SourceStorageResource = /*@__PURE__*/ S.suspend(() =>
+const SourceStorageResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     awsDiskDetails: S.optional(AwsSourceDiskDetails),
   }),
 ).annotate({ identifier: "SourceStorageResource" }) as any as S.Schema<SourceStorageResource>;
 
 export type SourceStorageResourceList = Array<SourceStorageResource>;
-export const SourceStorageResourceList = /*@__PURE__*/ S.Array(
+const SourceStorageResourceList = /*@__PURE__*/ S.Array(
   SourceStorageResource,
 ) as any as S.Schema<SourceStorageResourceList>;
 
@@ -3574,7 +3517,7 @@ export interface FetchStorageInventoryResponse {
   /** Output only. The timestamp when the source was last queried (if the result is from the cache). */
   updateTime?: string;
 }
-export const FetchStorageInventoryResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchStorageInventoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(SourceStorageResourceList),
     nextPageToken: S.optional(S.String),
@@ -3586,26 +3529,23 @@ export const FetchStorageInventoryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for 'FinalizeMigration' request. */
 export type FinalizeMigrationRequest = CancelImageImportJobRequest;
-export const FinalizeMigrationRequest = CancelImageImportJobRequest;
-
 export interface FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   migratingVm: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      migratingVm: S.String.pipe(T.Label()),
-      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+migratingVm}:finalizeMigration",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migratingVm: S.String.pipe(T.Label()),
+    body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+migratingVm}:finalizeMigration",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest",
 }) as any as S.Schema<FinalizeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
@@ -3614,7 +3554,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3641,7 +3581,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     locationId: S.optional(S.String),
@@ -3655,7 +3595,7 @@ export interface GetProjectsLocationsGroupsRequest {
   /** Required. The group name. */
   name: string;
 }
-export const GetProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3673,7 +3613,7 @@ export interface GetProjectsLocationsImageImportsRequest {
   /** Required. The ImageImport name. */
   name: string;
 }
-export const GetProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3691,7 +3631,7 @@ export interface GetProjectsLocationsImageImportsImageImportJobsRequest {
   /** Required. The ImageImportJob name. */
   name: string;
 }
-export const GetProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3709,7 +3649,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3727,7 +3667,7 @@ export interface GetProjectsLocationsSourcesRequest {
   /** Required. The Source name. */
   name: string;
 }
-export const GetProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3745,7 +3685,7 @@ export interface GetProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Required. The name of the DatacenterConnector. */
   name: string;
 }
-export const GetProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3763,7 +3703,7 @@ export interface GetProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
   name: string;
 }
-export const GetProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3781,7 +3721,7 @@ export type GetProjectsLocationsSourcesMigratingVmsViewEnum =
   | "MIGRATING_VM_VIEW_UNSPECIFIED"
   | "MIGRATING_VM_VIEW_BASIC"
   | "MIGRATING_VM_VIEW_FULL";
-export const GetProjectsLocationsSourcesMigratingVmsViewEnum = S.String;
+const GetProjectsLocationsSourcesMigratingVmsViewEnum = S.String;
 
 export interface GetProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
@@ -3789,7 +3729,7 @@ export interface GetProjectsLocationsSourcesMigratingVmsRequest {
   /** Optional. The level of details of the migrating VM. */
   view?: GetProjectsLocationsSourcesMigratingVmsViewEnum | (string & {});
 }
-export const GetProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsSourcesMigratingVmsViewEnum.pipe(T.Query())),
@@ -3808,7 +3748,7 @@ export interface GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. The name of the CloneJob. */
   name: string;
 }
-export const GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3826,7 +3766,25 @@ export interface GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Required. The name of the CutoverJob. */
   name: string;
 }
-export const GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(
+const GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+name}",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
+}) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
+
+export interface GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest {
+  /** Required. The name of the ReplicationCycle. */
+  name: string;
+}
+const GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3838,33 +3796,14 @@ export const GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PU
       }),
     ),
 ).annotate({
-  identifier: "GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
-}) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
-
-export interface GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest {
-  /** Required. The name of the ReplicationCycle. */
-  name: string;
-}
-export const GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha1/{+name}",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
-  }) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
+  identifier: "GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
+}) as any as S.Schema<GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
 export type GetProjectsLocationsSourcesUtilizationReportsViewEnum =
   | "UTILIZATION_REPORT_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const GetProjectsLocationsSourcesUtilizationReportsViewEnum = S.String;
+const GetProjectsLocationsSourcesUtilizationReportsViewEnum = S.String;
 
 export interface GetProjectsLocationsSourcesUtilizationReportsRequest {
   /** Required. The Utilization Report name. */
@@ -3872,7 +3811,7 @@ export interface GetProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. The level of details of the report. Defaults to FULL */
   view?: GetProjectsLocationsSourcesUtilizationReportsViewEnum | (string & {});
 }
-export const GetProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsSourcesUtilizationReportsViewEnum.pipe(T.Query())),
@@ -3891,7 +3830,7 @@ export interface GetProjectsLocationsTargetProjectsRequest {
   /** Required. The TargetProject name. */
   name: string;
 }
-export const GetProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3917,7 +3856,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3936,7 +3875,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -3945,7 +3884,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -3964,7 +3903,7 @@ export interface ListProjectsLocationsGroupsRequest {
   /** Optional. The filter request. */
   filter?: string;
 }
-export const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3983,7 +3922,7 @@ export const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
 
 export type GroupList = Array<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
+const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
 
 /** Response message for 'ListGroups' request. */
 export interface ListGroupsResponse {
@@ -3994,7 +3933,7 @@ export interface ListGroupsResponse {
   /** Output only. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     groups: S.optional(GroupList),
@@ -4014,7 +3953,7 @@ export interface ListProjectsLocationsImageImportsRequest {
   /** Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4033,9 +3972,7 @@ export const ListProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsImageImportsRequest>;
 
 export type ImageImportList = Array<ImageImport>;
-export const ImageImportList = /*@__PURE__*/ S.Array(
-  ImageImport,
-) as any as S.Schema<ImageImportList>;
+const ImageImportList = /*@__PURE__*/ S.Array(ImageImport) as any as S.Schema<ImageImportList>;
 
 /** Response message for 'ListImageImports' call. */
 export interface ListImageImportsResponse {
@@ -4046,7 +3983,7 @@ export interface ListImageImportsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListImageImportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListImageImportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     imageImports: S.optional(ImageImportList),
@@ -4066,7 +4003,7 @@ export interface ListProjectsLocationsImageImportsImageImportJobsRequest {
   /** Optional. A page token, received from a previous `ListImageImportJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImageImportJobs` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsImageImportsImageImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4093,7 +4030,7 @@ export interface ListImageImportJobsResponse {
   /** Output only. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListImageImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListImageImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     imageImportJobs: S.optional(ImageImportJobList),
@@ -4115,7 +4052,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4134,7 +4071,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -4145,7 +4082,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -4165,7 +4102,7 @@ export interface ListProjectsLocationsSourcesRequest {
   /** Optional. The maximum number of sources to return. The service may return fewer than this value. If unspecified, at most 500 sources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -4184,7 +4121,7 @@ export const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
 
 export type SourceList = Array<Source>;
-export const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
+const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
 
 /** Response message for 'ListSources' request. */
 export interface ListSourcesResponse {
@@ -4195,7 +4132,7 @@ export interface ListSourcesResponse {
   /** Output only. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     sources: S.optional(SourceList),
@@ -4215,7 +4152,7 @@ export interface ListProjectsLocationsSourcesDatacenterConnectorsRequest {
   /** Optional. the order by fields for the result. */
   orderBy?: string;
 }
-export const ListProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4234,7 +4171,7 @@ export const ListProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export type DatacenterConnectorList = Array<DatacenterConnector>;
-export const DatacenterConnectorList = /*@__PURE__*/ S.Array(
+const DatacenterConnectorList = /*@__PURE__*/ S.Array(
   DatacenterConnector,
 ) as any as S.Schema<DatacenterConnectorList>;
 
@@ -4247,7 +4184,7 @@ export interface ListDatacenterConnectorsResponse {
   /** Output only. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListDatacenterConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatacenterConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     datacenterConnectors: S.optional(DatacenterConnectorList),
@@ -4269,7 +4206,7 @@ export interface ListProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Optional. A page token, received from a previous `ListDiskMigrationJobs` call. Provide this to retrieve the subsequent page. When paginating, all parameters provided to `ListDiskMigrationJobs` except `page_size` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4288,7 +4225,7 @@ export const ListProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*
 }) as any as S.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
 export type DiskMigrationJobList = Array<DiskMigrationJob>;
-export const DiskMigrationJobList = /*@__PURE__*/ S.Array(
+const DiskMigrationJobList = /*@__PURE__*/ S.Array(
   DiskMigrationJob,
 ) as any as S.Schema<DiskMigrationJobList>;
 
@@ -4301,7 +4238,7 @@ export interface ListDiskMigrationJobsResponse {
   /** Output only. The list of the disk migration jobs. */
   diskMigrationJobs?: DiskMigrationJobList;
 }
-export const ListDiskMigrationJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDiskMigrationJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -4315,7 +4252,7 @@ export type ListProjectsLocationsSourcesMigratingVmsViewEnum =
   | "MIGRATING_VM_VIEW_UNSPECIFIED"
   | "MIGRATING_VM_VIEW_BASIC"
   | "MIGRATING_VM_VIEW_FULL";
-export const ListProjectsLocationsSourcesMigratingVmsViewEnum = S.String;
+const ListProjectsLocationsSourcesMigratingVmsViewEnum = S.String;
 
 export interface ListProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. A page token, received from a previous `ListMigratingVms` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMigratingVms` must match the call that provided the page token. */
@@ -4331,7 +4268,7 @@ export interface ListProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The parent, which owns this collection of MigratingVms. */
   parent: string;
 }
-export const ListProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     view: S.optional(ListProjectsLocationsSourcesMigratingVmsViewEnum.pipe(T.Query())),
@@ -4351,9 +4288,7 @@ export const ListProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>;
 
 export type MigratingVmList = Array<MigratingVm>;
-export const MigratingVmList = /*@__PURE__*/ S.Array(
-  MigratingVm,
-) as any as S.Schema<MigratingVmList>;
+const MigratingVmList = /*@__PURE__*/ S.Array(MigratingVm) as any as S.Schema<MigratingVmList>;
 
 /** Response message for 'ListMigratingVms' request. */
 export interface ListMigratingVmsResponse {
@@ -4364,7 +4299,7 @@ export interface ListMigratingVmsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListMigratingVmsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMigratingVmsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     migratingVms: S.optional(MigratingVmList),
@@ -4384,21 +4319,20 @@ export interface ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest {
   /** Required. A page token, received from a previous `ListCloneJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCloneJobs` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha1/{+parent}/cloneJobs",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/cloneJobs",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCloneJobsRequest>;
@@ -4412,7 +4346,7 @@ export interface ListCloneJobsResponse {
   /** Output only. The list of clone jobs response. */
   cloneJobs?: CloneJobList;
 }
-export const ListCloneJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCloneJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -4432,21 +4366,20 @@ export interface ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest {
   /** Optional. the order by fields for the result. */
   orderBy?: string;
 }
-export const ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha1/{+parent}/cutoverJobs",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1alpha1/{+parent}/cutoverJobs",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsCutoverJobsRequest>;
@@ -4460,7 +4393,7 @@ export interface ListCutoverJobsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListCutoverJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCutoverJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     cutoverJobs: S.optional(CutoverJobList),
@@ -4480,8 +4413,8 @@ export interface ListProjectsLocationsSourcesMigratingVmsReplicationCyclesReques
   /** Required. A page token, received from a previous `ListReplicationCycles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReplicationCycles` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4495,12 +4428,12 @@ export const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
         baseUrl: "https://vmmigration.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
-  }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
+}) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
 export type ReplicationCycleList = Array<ReplicationCycle>;
-export const ReplicationCycleList = /*@__PURE__*/ S.Array(
+const ReplicationCycleList = /*@__PURE__*/ S.Array(
   ReplicationCycle,
 ) as any as S.Schema<ReplicationCycleList>;
 
@@ -4513,7 +4446,7 @@ export interface ListReplicationCyclesResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListReplicationCyclesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReplicationCyclesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     replicationCycles: S.optional(ReplicationCycleList),
@@ -4527,7 +4460,7 @@ export type ListProjectsLocationsSourcesUtilizationReportsViewEnum =
   | "UTILIZATION_REPORT_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const ListProjectsLocationsSourcesUtilizationReportsViewEnum = S.String;
+const ListProjectsLocationsSourcesUtilizationReportsViewEnum = S.String;
 
 export interface ListProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. The level of details of each report. Defaults to BASIC. */
@@ -4543,7 +4476,7 @@ export interface ListProjectsLocationsSourcesUtilizationReportsRequest {
   /** Optional. The maximum number of reports to return. The service may return fewer than this value. If unspecified, at most 500 reports will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListProjectsLocationsSourcesUtilizationReportsViewEnum.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4563,7 +4496,7 @@ export const ListProjectsLocationsSourcesUtilizationReportsRequest = /*@__PURE__
 }) as any as S.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>;
 
 export type UtilizationReportList = Array<UtilizationReport>;
-export const UtilizationReportList = /*@__PURE__*/ S.Array(
+const UtilizationReportList = /*@__PURE__*/ S.Array(
   UtilizationReport,
 ) as any as S.Schema<UtilizationReportList>;
 
@@ -4576,7 +4509,7 @@ export interface ListUtilizationReportsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListUtilizationReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUtilizationReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     utilizationReports: S.optional(UtilizationReportList),
     unreachable: S.optional(StringList),
@@ -4598,7 +4531,7 @@ export interface ListProjectsLocationsTargetProjectsRequest {
   /** Required. A page token, received from a previous `ListTargets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargets` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4617,7 +4550,7 @@ export const ListProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>;
 
 export type TargetProjectList = Array<TargetProject>;
-export const TargetProjectList = /*@__PURE__*/ S.Array(
+const TargetProjectList = /*@__PURE__*/ S.Array(
   TargetProject,
 ) as any as S.Schema<TargetProjectList>;
 
@@ -4630,7 +4563,7 @@ export interface ListTargetProjectsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListTargetProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTargetProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     targetProjects: S.optional(TargetProjectList),
@@ -4650,7 +4583,7 @@ export interface PatchProjectsLocationsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-export const PatchProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4677,7 +4610,7 @@ export interface PatchProjectsLocationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-export const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4704,7 +4637,7 @@ export interface PatchProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Request body */
   body?: DiskMigrationJob;
 }
-export const PatchProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4731,7 +4664,7 @@ export interface PatchProjectsLocationsSourcesMigratingVmsRequest {
   /** Request body */
   body?: MigratingVm;
 }
-export const PatchProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4758,7 +4691,7 @@ export interface PatchProjectsLocationsTargetProjectsRequest {
   /** Request body */
   body?: TargetProject;
 }
-export const PatchProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4777,26 +4710,23 @@ export const PatchProjectsLocationsTargetProjectsRequest = /*@__PURE__*/ S.suspe
 
 /** Request message for 'PauseMigration' request. */
 export type PauseMigrationRequest = CancelImageImportJobRequest;
-export const PauseMigrationRequest = CancelImageImportJobRequest;
-
 export interface PauseMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   migratingVm: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const PauseMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      migratingVm: S.String.pipe(T.Label()),
-      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+migratingVm}:pauseMigration",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const PauseMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migratingVm: S.String.pipe(T.Label()),
+    body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+migratingVm}:pauseMigration",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PauseMigrationProjectsLocationsSourcesMigratingVmsRequest",
 }) as any as S.Schema<PauseMigrationProjectsLocationsSourcesMigratingVmsRequest>;
@@ -4806,7 +4736,7 @@ export interface RemoveGroupMigrationRequest {
   /** The MigratingVm to remove. */
   migratingVm?: string;
 }
-export const RemoveGroupMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveGroupMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migratingVm: S.optional(S.String),
   }),
@@ -4820,7 +4750,7 @@ export interface RemoveGroupMigrationProjectsLocationsGroupsRequest {
   /** Request body */
   body?: RemoveGroupMigrationRequest;
 }
-export const RemoveGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
     body: S.optional(RemoveGroupMigrationRequest.pipe(T.HttpBody())),
@@ -4837,41 +4767,36 @@ export const RemoveGroupMigrationProjectsLocationsGroupsRequest = /*@__PURE__*/ 
 
 /** Request message for 'ResumeMigration' request. */
 export type ResumeMigrationRequest = CancelImageImportJobRequest;
-export const ResumeMigrationRequest = CancelImageImportJobRequest;
-
 export interface ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   migratingVm: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      migratingVm: S.String.pipe(T.Label()),
-      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+migratingVm}:resumeMigration",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migratingVm: S.String.pipe(T.Label()),
+    body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+migratingVm}:resumeMigration",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest",
 }) as any as S.Schema<ResumeMigrationProjectsLocationsSourcesMigratingVmsRequest>;
 
 /** Request message for 'RunDiskMigrationJobRequest' request. */
 export type RunDiskMigrationJobRequest = CancelImageImportJobRequest;
-export const RunDiskMigrationJobRequest = CancelImageImportJobRequest;
-
 export interface RunProjectsLocationsSourcesDiskMigrationJobsRequest {
   /** Required. The name of the DiskMigrationJob. */
   name: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const RunProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
@@ -4888,26 +4813,23 @@ export const RunProjectsLocationsSourcesDiskMigrationJobsRequest = /*@__PURE__*/
 
 /** Request message for 'StartMigrationRequest' request. */
 export type StartMigrationRequest = CancelImageImportJobRequest;
-export const StartMigrationRequest = CancelImageImportJobRequest;
-
 export interface StartMigrationProjectsLocationsSourcesMigratingVmsRequest {
   /** Required. The name of the MigratingVm. */
   migratingVm: string;
   /** Request body */
   body?: CancelImageImportJobRequest;
 }
-export const StartMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      migratingVm: S.String.pipe(T.Label()),
-      body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+migratingVm}:startMigration",
-        baseUrl: "https://vmmigration.googleapis.com/",
-      }),
-    ),
+const StartMigrationProjectsLocationsSourcesMigratingVmsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    migratingVm: S.String.pipe(T.Label()),
+    body: S.optional(CancelImageImportJobRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+migratingVm}:startMigration",
+      baseUrl: "https://vmmigration.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "StartMigrationProjectsLocationsSourcesMigratingVmsRequest",
 }) as any as S.Schema<StartMigrationProjectsLocationsSourcesMigratingVmsRequest>;
@@ -4917,7 +4839,7 @@ export interface UpgradeApplianceRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const UpgradeApplianceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeApplianceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -4929,8 +4851,8 @@ export interface UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsReq
   /** Request body */
   body?: UpgradeApplianceRequest;
 }
-export const UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       datacenterConnector: S.String.pipe(T.Label()),
       body: S.optional(UpgradeApplianceRequest.pipe(T.HttpBody())),
@@ -4941,9 +4863,9 @@ export const UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest
         baseUrl: "https://vmmigration.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest",
-  }) as any as S.Schema<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>;
+).annotate({
+  identifier: "UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest",
+}) as any as S.Schema<UpgradeApplianceProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
 export type AddGroupMigrationProjectsLocationsGroupsError =
   | NotFound

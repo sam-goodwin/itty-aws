@@ -47,7 +47,7 @@ export class UnprocessableEntity
 
 /** The product type. Indicates whether the product is physical or digital goods, or a service. */
 export type CreateProductRequestType = "PHYSICAL" | "DIGITAL" | "SERVICE";
-export const CreateProductRequestType = S.String;
+const CreateProductRequestType = S.String;
 
 /** The product category. */
 export type ProductCategory =
@@ -497,7 +497,7 @@ export type ProductCategory =
   | "WIRE_TRANSFER_AND_MONEY_ORDER"
   | "WOMEN_ACCESSORY_SPECIALITY"
   | "WOMEN_CLOTHING";
-export const ProductCategory = S.String;
+const ProductCategory = S.String;
 
 export interface CreateProductRequest {
   /** The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> */
@@ -518,7 +518,7 @@ export interface CreateProductRequest {
   /** The home page URL for the product. */
   home_url?: string;
 }
-export const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
     payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
@@ -534,7 +534,7 @@ export const CreateProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The product type. Indicates whether the product is physical or digital goods, or a service. */
 export type ProductType = "PHYSICAL" | "DIGITAL" | "SERVICE";
-export const ProductType = S.String;
+const ProductType = S.String;
 
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
@@ -546,7 +546,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -557,7 +557,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -567,7 +567,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/overview/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList = /*@__PURE__*/ S.Array(
+const LinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<LinkDescriptionList>;
 
@@ -592,7 +592,7 @@ export interface Product {
   update_time?: string;
   links?: LinkDescriptionList;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -611,7 +611,7 @@ export interface GetProductRequest {
   /** The product ID. */
   product_id: string;
 }
-export const GetProductRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/catalogs/products/{product_id}", code: 200 })),
@@ -625,7 +625,7 @@ export interface ListProductsRequest {
   /** Indicates whether to show the total items and total pages in the response. */
   total_required?: boolean;
 }
-export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page_size: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -645,7 +645,7 @@ export interface ProductCollectionElement {
   create_time?: string;
   links?: LinkDescriptionList;
 }
-export const ProductCollectionElement = /*@__PURE__*/ S.suspend(() =>
+const ProductCollectionElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -657,7 +657,7 @@ export const ProductCollectionElement = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of products. */
 export type ProductCollectionElementList = Array<ProductCollectionElement>;
-export const ProductCollectionElementList = /*@__PURE__*/ S.Array(
+const ProductCollectionElementList = /*@__PURE__*/ S.Array(
   ProductCollectionElement,
 ) as any as S.Schema<ProductCollectionElementList>;
 
@@ -670,7 +670,7 @@ export interface ProductCollection {
   total_pages?: number;
   links?: LinkDescriptionList;
 }
-export const ProductCollection = /*@__PURE__*/ S.suspend(() =>
+const ProductCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     products: S.optional(ProductCollectionElementList),
     total_items: S.optional(S.Number),
@@ -681,7 +681,7 @@ export const ProductCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
-export const PatchOp = S.String;
+const PatchOp = S.String;
 
 /** The JSON patch object to apply partial updates to resources. */
 export interface Patch {
@@ -694,7 +694,7 @@ export interface Patch {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
-export const Patch = /*@__PURE__*/ S.suspend(() =>
+const Patch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: PatchOp,
     path: S.optional(S.String),
@@ -705,14 +705,14 @@ export const Patch = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<Patch>;
-export const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
+const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
 
 export interface PatchProductRequest {
   /** The product ID. */
   product_id: string;
   body?: PatchRequest;
 }
-export const PatchProductRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product_id: S.String.pipe(T.Label()),
     body: S.optional(PatchRequest.pipe(T.HttpBody())),
@@ -720,7 +720,7 @@ export const PatchProductRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchProductRequest" }) as any as S.Schema<PatchProductRequest>;
 
 export interface PatchProductResponse {}
-export const PatchProductResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const PatchProductResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PatchProductResponse",
 }) as any as S.Schema<PatchProductResponse>;
 

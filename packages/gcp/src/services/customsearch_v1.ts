@@ -36,7 +36,7 @@ export class NotFound
   ) {}
 
 export type ListCseSiteSearchFilterEnum = "siteSearchFilterUndefined" | "e" | "i";
-export const ListCseSiteSearchFilterEnum = S.String;
+const ListCseSiteSearchFilterEnum = S.String;
 
 export type ListCseImgTypeEnum =
   | "imgTypeUndefined"
@@ -46,7 +46,7 @@ export type ListCseImgTypeEnum =
   | "stock"
   | "photo"
   | "animated";
-export const ListCseImgTypeEnum = S.String;
+const ListCseImgTypeEnum = S.String;
 
 export type ListCseImgDominantColorEnum =
   | "imgDominantColorUndefined"
@@ -62,13 +62,13 @@ export type ListCseImgDominantColorEnum =
   | "teal"
   | "white"
   | "yellow";
-export const ListCseImgDominantColorEnum = S.String;
+const ListCseImgDominantColorEnum = S.String;
 
 export type ListCseImgColorTypeEnum = "imgColorTypeUndefined" | "mono" | "gray" | "color" | "trans";
-export const ListCseImgColorTypeEnum = S.String;
+const ListCseImgColorTypeEnum = S.String;
 
 export type ListCseSafeEnum = "safeUndefined" | "active" | "high" | "medium" | "off";
-export const ListCseSafeEnum = S.String;
+const ListCseSafeEnum = S.String;
 
 export type ListCseImgSizeEnum =
   | "imgSizeUndefined"
@@ -79,10 +79,10 @@ export type ListCseImgSizeEnum =
   | "SMALL"
   | "XLARGE"
   | "XXLARGE";
-export const ListCseImgSizeEnum = S.String;
+const ListCseImgSizeEnum = S.String;
 
 export type ListCseSearchTypeEnum = "searchTypeUndefined" | "image";
-export const ListCseSearchTypeEnum = S.String;
+const ListCseSearchTypeEnum = S.String;
 
 export interface ListCseRequest {
   /** Controls turning on or off the duplicate content filter. * See [Automatic Filtering](https://developers.google.com/custom-search/docs/json_api_reference#automaticFiltering) for more information about Google's search results filters. Note that host crowding filtering applies only to multi-site searches. * By default, Google applies filtering to all search results to improve the quality of those results. Acceptable values are: * `0`: Turns off duplicate content filter. * `1`: Turns on duplicate content filter. */
@@ -152,7 +152,7 @@ export interface ListCseRequest {
   /** Identifies a phrase that all documents in the search results must contain. */
   exactTerms?: string;
 }
-export const ListCseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     highRange: S.optional(S.String.pipe(T.Query())),
@@ -202,7 +202,7 @@ export interface SearchUrl {
   /** The actual [OpenSearch template](http://www.opensearch.org/specifications/opensearch/1.1#opensearch_url_template_syntax) for this API. */
   template?: string;
 }
-export const SearchUrl = /*@__PURE__*/ S.suspend(() =>
+const SearchUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     template: S.optional(S.String),
@@ -210,10 +210,7 @@ export const SearchUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchUrl" }) as any as S.Schema<SearchUrl>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export interface SearchQueriesNextPageItem {
   /** A description of the query. */
@@ -289,7 +286,7 @@ export interface SearchQueriesNextPageItem {
   /** Specifies that results should be sorted according to the specified expression. For example, sort by date. */
   sort?: string;
 }
-export const SearchQueriesNextPageItem = /*@__PURE__*/ S.suspend(() =>
+const SearchQueriesNextPageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     dateRestrict: S.optional(S.String),
@@ -333,7 +330,7 @@ export const SearchQueriesNextPageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchQueriesNextPageItem>;
 
 export type SearchQueriesNextPageItemList = Array<SearchQueriesNextPageItem>;
-export const SearchQueriesNextPageItemList = /*@__PURE__*/ S.Array(
+const SearchQueriesNextPageItemList = /*@__PURE__*/ S.Array(
   SearchQueriesNextPageItem,
 ) as any as S.Schema<SearchQueriesNextPageItemList>;
 
@@ -411,7 +408,7 @@ export interface SearchQueriesRequestItem {
   /** Enables or disables the [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/json_api_reference#chineseSearch) feature. Supported values are: * `0`: enabled (default) * `1`: disabled */
   disableCnTwTranslation?: string;
 }
-export const SearchQueriesRequestItem = /*@__PURE__*/ S.suspend(() =>
+const SearchQueriesRequestItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orTerms: S.optional(S.String),
     sort: S.optional(S.String),
@@ -453,7 +450,7 @@ export const SearchQueriesRequestItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchQueriesRequestItem" }) as any as S.Schema<SearchQueriesRequestItem>;
 
 export type SearchQueriesRequestItemList = Array<SearchQueriesRequestItem>;
-export const SearchQueriesRequestItemList = /*@__PURE__*/ S.Array(
+const SearchQueriesRequestItemList = /*@__PURE__*/ S.Array(
   SearchQueriesRequestItem,
 ) as any as S.Schema<SearchQueriesRequestItemList>;
 
@@ -531,7 +528,7 @@ export interface SearchQueriesPreviousPageItem {
   /** Specifies the interface language (host language) of your user interface. Explicitly setting this parameter improves the performance and the quality of your search results. See the [Interface Languages](https://developers.google.com/custom-search/docs/json_api_reference#wsInterfaceLanguages) section of [Internationalizing Queries and Results Presentation](https://developers.google.com/custom-search/docs/json_api_reference#wsInternationalizing) for more information, and [Supported Interface Languages](https://developers.google.com/custom-search/docs/json_api_reference#interfaceLanguages) for a list of supported languages. */
   hl?: string;
 }
-export const SearchQueriesPreviousPageItem = /*@__PURE__*/ S.suspend(() =>
+const SearchQueriesPreviousPageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imgColorType: S.optional(S.String),
     sort: S.optional(S.String),
@@ -575,7 +572,7 @@ export const SearchQueriesPreviousPageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchQueriesPreviousPageItem>;
 
 export type SearchQueriesPreviousPageItemList = Array<SearchQueriesPreviousPageItem>;
-export const SearchQueriesPreviousPageItemList = /*@__PURE__*/ S.Array(
+const SearchQueriesPreviousPageItemList = /*@__PURE__*/ S.Array(
   SearchQueriesPreviousPageItem,
 ) as any as S.Schema<SearchQueriesPreviousPageItemList>;
 
@@ -587,7 +584,7 @@ export interface SearchQueries {
   /** Metadata representing the previous page of results, if applicable. */
   previousPage?: SearchQueriesPreviousPageItemList;
 }
-export const SearchQueries = /*@__PURE__*/ S.suspend(() =>
+const SearchQueries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPage: S.optional(SearchQueriesNextPageItemList),
     request: S.optional(SearchQueriesRequestItemList),
@@ -601,7 +598,7 @@ export interface SearchSpelling {
   /** The corrected query, formatted in HTML. */
   htmlCorrectedQuery?: string;
 }
-export const SearchSpelling = /*@__PURE__*/ S.suspend(() =>
+const SearchSpelling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctedQuery: S.optional(S.String),
     htmlCorrectedQuery: S.optional(S.String),
@@ -618,7 +615,7 @@ export interface SearchSearchInformation {
   /** The time taken for the server to return search results. */
   searchTime?: number;
 }
-export const SearchSearchInformation = /*@__PURE__*/ S.suspend(() =>
+const SearchSearchInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formattedSearchTime: S.optional(S.String),
     formattedTotalResults: S.optional(S.String),
@@ -643,7 +640,7 @@ export interface ResultImage {
   /** The height of the image, in pixels. */
   height?: number;
 }
-export const ResultImage = /*@__PURE__*/ S.suspend(() =>
+const ResultImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(S.Number),
     thumbnailHeight: S.optional(S.Number),
@@ -663,7 +660,7 @@ export interface ResultLabelsItem {
   /** The display name of a refinement label. This is the name you should display in your user interface. */
   displayName?: string;
 }
-export const ResultLabelsItem = /*@__PURE__*/ S.suspend(() =>
+const ResultLabelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     label_with_op: S.optional(S.String),
@@ -672,7 +669,7 @@ export const ResultLabelsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResultLabelsItem" }) as any as S.Schema<ResultLabelsItem>;
 
 export type ResultLabelsItemList = Array<ResultLabelsItem>;
-export const ResultLabelsItemList = /*@__PURE__*/ S.Array(
+const ResultLabelsItemList = /*@__PURE__*/ S.Array(
   ResultLabelsItem,
 ) as any as S.Schema<ResultLabelsItemList>;
 
@@ -709,7 +706,7 @@ export interface Result {
   /** The snippet of the search result, in plain text. */
   snippet?: string;
 }
-export const Result = /*@__PURE__*/ S.suspend(() =>
+const Result = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayLink: S.optional(S.String),
     title: S.optional(S.String),
@@ -730,7 +727,7 @@ export const Result = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
 export type ResultList = Array<Result>;
-export const ResultList = /*@__PURE__*/ S.Array(Result) as any as S.Schema<ResultList>;
+const ResultList = /*@__PURE__*/ S.Array(Result) as any as S.Schema<ResultList>;
 
 export interface PromotionBodyLinesItem {
   /** The URL of the block object's link, if it has one. */
@@ -742,7 +739,7 @@ export interface PromotionBodyLinesItem {
   /** The block object's text, if it has text. */
   title?: string;
 }
-export const PromotionBodyLinesItem = /*@__PURE__*/ S.suspend(() =>
+const PromotionBodyLinesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     htmlTitle: S.optional(S.String),
@@ -752,7 +749,7 @@ export const PromotionBodyLinesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PromotionBodyLinesItem" }) as any as S.Schema<PromotionBodyLinesItem>;
 
 export type PromotionBodyLinesItemList = Array<PromotionBodyLinesItem>;
-export const PromotionBodyLinesItemList = /*@__PURE__*/ S.Array(
+const PromotionBodyLinesItemList = /*@__PURE__*/ S.Array(
   PromotionBodyLinesItem,
 ) as any as S.Schema<PromotionBodyLinesItemList>;
 
@@ -764,7 +761,7 @@ export interface PromotionImage {
   /** URL of the image for this promotion link. */
   source?: string;
 }
-export const PromotionImage = /*@__PURE__*/ S.suspend(() =>
+const PromotionImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     width: S.optional(S.Number),
@@ -787,7 +784,7 @@ export interface Promotion {
   /** The URL of the promotion. */
   link?: string;
 }
-export const Promotion = /*@__PURE__*/ S.suspend(() =>
+const Promotion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayLink: S.optional(S.String),
     bodyLines: S.optional(PromotionBodyLinesItemList),
@@ -799,7 +796,7 @@ export const Promotion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Promotion" }) as any as S.Schema<Promotion>;
 
 export type PromotionList = Array<Promotion>;
-export const PromotionList = /*@__PURE__*/ S.Array(Promotion) as any as S.Schema<PromotionList>;
+const PromotionList = /*@__PURE__*/ S.Array(Promotion) as any as S.Schema<PromotionList>;
 
 /** Response to a custom search request. */
 export interface Search {
@@ -820,7 +817,7 @@ export interface Search {
   /** The set of [promotions](https://developers.google.com/custom-search/docs/promotions). Present only if the custom search engine's configuration files define any promotions for the given query. */
   promotions?: PromotionList;
 }
-export const Search = /*@__PURE__*/ S.suspend(() =>
+const Search = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(SearchUrl),
     context: S.optional(DocumentMap),
@@ -834,13 +831,13 @@ export const Search = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Search" }) as any as S.Schema<Search>;
 
 export type ListCseSiterestrictSafeEnum = "safeUndefined" | "active" | "high" | "medium" | "off";
-export const ListCseSiterestrictSafeEnum = S.String;
+const ListCseSiterestrictSafeEnum = S.String;
 
 export type ListCseSiterestrictSearchTypeEnum = "searchTypeUndefined" | "image";
-export const ListCseSiterestrictSearchTypeEnum = S.String;
+const ListCseSiterestrictSearchTypeEnum = S.String;
 
 export type ListCseSiterestrictSiteSearchFilterEnum = "siteSearchFilterUndefined" | "e" | "i";
-export const ListCseSiterestrictSiteSearchFilterEnum = S.String;
+const ListCseSiterestrictSiteSearchFilterEnum = S.String;
 
 export type ListCseSiterestrictImgDominantColorEnum =
   | "imgDominantColorUndefined"
@@ -856,7 +853,7 @@ export type ListCseSiterestrictImgDominantColorEnum =
   | "teal"
   | "white"
   | "yellow";
-export const ListCseSiterestrictImgDominantColorEnum = S.String;
+const ListCseSiterestrictImgDominantColorEnum = S.String;
 
 export type ListCseSiterestrictImgSizeEnum =
   | "imgSizeUndefined"
@@ -867,7 +864,7 @@ export type ListCseSiterestrictImgSizeEnum =
   | "SMALL"
   | "XLARGE"
   | "XXLARGE";
-export const ListCseSiterestrictImgSizeEnum = S.String;
+const ListCseSiterestrictImgSizeEnum = S.String;
 
 export type ListCseSiterestrictImgTypeEnum =
   | "imgTypeUndefined"
@@ -877,7 +874,7 @@ export type ListCseSiterestrictImgTypeEnum =
   | "stock"
   | "photo"
   | "animated";
-export const ListCseSiterestrictImgTypeEnum = S.String;
+const ListCseSiterestrictImgTypeEnum = S.String;
 
 export type ListCseSiterestrictImgColorTypeEnum =
   | "imgColorTypeUndefined"
@@ -885,7 +882,7 @@ export type ListCseSiterestrictImgColorTypeEnum =
   | "gray"
   | "color"
   | "trans";
-export const ListCseSiterestrictImgColorTypeEnum = S.String;
+const ListCseSiterestrictImgColorTypeEnum = S.String;
 
 export interface ListCseSiterestrictRequest {
   /** Specifies the ending value for a search range. * Use `lowRange` and `highRange` to append an inclusive search range of `lowRange...highRange` to the query. */
@@ -955,7 +952,7 @@ export interface ListCseSiterestrictRequest {
   /** Specifies that all search results should contain a link to a particular URL. */
   linkSite?: string;
 }
-export const ListCseSiterestrictRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCseSiterestrictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     highRange: S.optional(S.String.pipe(T.Query())),
     safe: S.optional(ListCseSiterestrictSafeEnum.pipe(T.Query())),

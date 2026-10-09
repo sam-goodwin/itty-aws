@@ -63,7 +63,7 @@ export class NotFound
 
 /** Message for approving a QueryTemplate. */
 export interface ApproveQueryTemplateRequest {}
-export const ApproveQueryTemplateRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ApproveQueryTemplateRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ApproveQueryTemplateRequest",
 }) as any as S.Schema<ApproveQueryTemplateRequest>;
 
@@ -73,24 +73,23 @@ export interface ApproveProjectsLocationsDataExchangesQueryTemplatesRequest {
   /** Request body */
   body?: ApproveQueryTemplateRequest;
 }
-export const ApproveProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ApproveQueryTemplateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:approve",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const ApproveProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ApproveQueryTemplateRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:approve",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ApproveProjectsLocationsDataExchangesQueryTemplatesRequest",
 }) as any as S.Schema<ApproveProjectsLocationsDataExchangesQueryTemplatesRequest>;
 
 export type RoutineRoutineTypeEnum = "ROUTINE_TYPE_UNSPECIFIED" | "TABLE_VALUED_FUNCTION";
-export const RoutineRoutineTypeEnum = S.String;
+const RoutineRoutineTypeEnum = S.String;
 
 /** Represents a bigquery routine. */
 export interface Routine {
@@ -99,7 +98,7 @@ export interface Routine {
   /** Optional. The definition body of the routine. */
   definitionBody?: string;
 }
-export const Routine = /*@__PURE__*/ S.suspend(() =>
+const Routine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routineType: S.optional(RoutineRoutineTypeEnum),
     definitionBody: S.optional(S.String),
@@ -112,14 +111,14 @@ export type QueryTemplateStateEnum =
   | "PENDING"
   | "DELETED"
   | "APPROVED";
-export const QueryTemplateStateEnum = S.String;
+const QueryTemplateStateEnum = S.String;
 
 /** Encryption configuration for the query template. */
 export interface EncryptionConfig {
   /** Optional. The KMS key used to encrypt the query template. Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}` */
   kmsKeyName?: string;
 }
-export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
   }),
@@ -150,7 +149,7 @@ export interface QueryTemplate {
   /** Optional. Deprecated: Use `primary_contact` instead. Email or URL of the primary point of contact of the QueryTemplate. Max Length: 1000 bytes. */
   proposer?: string;
 }
-export const QueryTemplate = /*@__PURE__*/ S.suspend(() =>
+const QueryTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routine: S.optional(Routine),
     createTime: S.optional(S.String),
@@ -168,8 +167,6 @@ export const QueryTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** Default Analytics Hub data exchange, used for secured data sharing. */
 export type DefaultExchangeConfig = ApproveQueryTemplateRequest;
-export const DefaultExchangeConfig = ApproveQueryTemplateRequest;
-
 /** Data Clean Room (DCR), used for privacy-safe and secured data sharing. */
 export interface DcrExchangeConfig {
   /** Output only. If True, when subscribing to this DCR, it will create only one linked dataset containing all resources shared within the cleanroom. If False, when subscribing to this DCR, it will create 1 linked dataset per listing. This is not configurable, and by default, all new DCRs will have the restriction set to True. */
@@ -177,7 +174,7 @@ export interface DcrExchangeConfig {
   /** Output only. If True, this DCR restricts the contributors to sharing only a single resource in a Listing. And no two resources should have the same IDs. So if a contributor adds a view with a conflicting name, the CreateListing API will reject the request. if False, the data contributor can publish an entire dataset (as before). This is not configurable, and by default, all new DCRs will have the restriction set to True. */
   singleSelectedResourceSharingRestriction?: boolean;
 }
-export const DcrExchangeConfig = /*@__PURE__*/ S.suspend(() =>
+const DcrExchangeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     singleLinkedDatasetPerCleanroom: S.optional(S.Boolean),
     singleSelectedResourceSharingRestriction: S.optional(S.Boolean),
@@ -191,7 +188,7 @@ export interface SharingEnvironmentConfig {
   /** Data Clean Room (DCR), used for privacy-safe and secured data sharing. */
   dcrExchangeConfig?: DcrExchangeConfig;
 }
-export const SharingEnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
+const SharingEnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultExchangeConfig: S.optional(ApproveQueryTemplateRequest),
     dcrExchangeConfig: S.optional(DcrExchangeConfig),
@@ -202,7 +199,7 @@ export type DataExchangeDiscoveryTypeEnum =
   | "DISCOVERY_TYPE_UNSPECIFIED"
   | "DISCOVERY_TYPE_PRIVATE"
   | "DISCOVERY_TYPE_PUBLIC";
-export const DataExchangeDiscoveryTypeEnum = S.String;
+const DataExchangeDiscoveryTypeEnum = S.String;
 
 /** A data exchange is a container that lets you share data. Along with the descriptive information about the data exchange, it contains listings that reference shared datasets. */
 export interface DataExchange {
@@ -227,7 +224,7 @@ export interface DataExchange {
   /** Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes. */
   primaryContact?: string;
 }
-export const DataExchange = /*@__PURE__*/ S.suspend(() =>
+const DataExchange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listingCount: S.optional(S.Number),
     documentation: S.optional(S.String),
@@ -250,7 +247,7 @@ export interface CreateProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: DataExchange;
 }
-export const CreateProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataExchangeId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -270,7 +267,7 @@ export type GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMar
   | "COMMERCIAL_STATE_UNSPECIFIED"
   | "ONBOARDING"
   | "ACTIVE";
-export const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfoCommercialStateEnum =
+const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfoCommercialStateEnum =
   S.String;
 
 /** Specifies the details of the Marketplace Data Product associated with the Listing. */
@@ -282,7 +279,7 @@ export interface GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleClo
   /** Output only. Resource name of the commercial service associated with the Marketplace Data Product. e.g. example.com */
   service?: string;
 }
-export const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo =
+const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       commercialState: S.optional(
@@ -299,7 +296,7 @@ export interface GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo {
   /** Output only. Details of the Marketplace Data Product associated with the Listing. */
   cloudMarketplace?: GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo;
 }
-export const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudMarketplace: S.optional(
       GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfo,
@@ -310,16 +307,16 @@ export const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo = /*@__PURE_
 }) as any as S.Schema<GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo>;
 
 export type ListingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
-export const ListingStateEnum = S.String;
+const ListingStateEnum = S.String;
 
 export type ListingResourceTypeEnum =
   | "SHARED_RESOURCE_TYPE_UNSPECIFIED"
   | "BIGQUERY_DATASET"
   | "PUBSUB_TOPIC";
-export const ListingResourceTypeEnum = S.String;
+const ListingResourceTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Resource in this dataset that is selectively shared. */
 export interface SelectedResource {
@@ -328,7 +325,7 @@ export interface SelectedResource {
   /** Optional. Format: For routine: `projects/{projectId}/datasets/{datasetId}/routines/{routineId}` Example:"projects/test_project/datasets/test_dataset/routines/test_routine" */
   routine?: string;
 }
-export const SelectedResource = /*@__PURE__*/ S.suspend(() =>
+const SelectedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     table: S.optional(S.String),
     routine: S.optional(S.String),
@@ -336,15 +333,15 @@ export const SelectedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SelectedResource" }) as any as S.Schema<SelectedResource>;
 
 export type SelectedResourceList = Array<SelectedResource>;
-export const SelectedResourceList = /*@__PURE__*/ S.Array(
+const SelectedResourceList = /*@__PURE__*/ S.Array(
   SelectedResource,
 ) as any as S.Schema<SelectedResourceList>;
 
 export type ReplicaReplicaStateEnum = "REPLICA_STATE_UNSPECIFIED" | "READY_TO_USE" | "UNAVAILABLE";
-export const ReplicaReplicaStateEnum = S.String;
+const ReplicaReplicaStateEnum = S.String;
 
 export type ReplicaPrimaryStateEnum = "PRIMARY_STATE_UNSPECIFIED" | "PRIMARY_REPLICA";
-export const ReplicaPrimaryStateEnum = S.String;
+const ReplicaPrimaryStateEnum = S.String;
 
 /** Represents the state of a replica of a shared dataset. It includes the geographic location of the replica and system-computed, output-only fields indicating its replication state and whether it is the primary replica. */
 export interface Replica {
@@ -355,7 +352,7 @@ export interface Replica {
   /** Output only. The geographic location where the replica resides. See [BigQuery locations](https://cloud.google.com/bigquery/docs/locations) for supported locations. Eg. "us-central1". */
   location?: string;
 }
-export const Replica = /*@__PURE__*/ S.suspend(() =>
+const Replica = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaState: S.optional(ReplicaReplicaStateEnum),
     primaryState: S.optional(ReplicaPrimaryStateEnum),
@@ -364,7 +361,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 export type ReplicaList = Array<Replica>;
-export const ReplicaList = /*@__PURE__*/ S.Array(Replica) as any as S.Schema<ReplicaList>;
+const ReplicaList = /*@__PURE__*/ S.Array(Replica) as any as S.Schema<ReplicaList>;
 
 /** Restricted export policy used to configure restricted export on linked dataset. */
 export interface RestrictedExportPolicy {
@@ -375,7 +372,7 @@ export interface RestrictedExportPolicy {
   /** Optional. If true, enable restricted export. */
   enabled?: boolean;
 }
-export const RestrictedExportPolicy = /*@__PURE__*/ S.suspend(() =>
+const RestrictedExportPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restrictDirectTableAccess: S.optional(S.Boolean),
     restrictQueryResult: S.optional(S.Boolean),
@@ -396,7 +393,7 @@ export interface BigQueryDatasetSource {
   /** Optional. If set, restricted export policy will be propagated and enforced on the linked dataset. */
   restrictedExportPolicy?: RestrictedExportPolicy;
 }
-export const BigQueryDatasetSource = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDatasetSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaLocations: S.optional(StringList),
     selectedResources: S.optional(SelectedResourceList),
@@ -413,7 +410,7 @@ export interface Publisher {
   /** Optional. Email or URL of the listing publisher. Max Length: 1000 bytes. */
   primaryContact?: string;
 }
-export const Publisher = /*@__PURE__*/ S.suspend(() =>
+const Publisher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     primaryContact: S.optional(S.String),
@@ -424,7 +421,7 @@ export type ListingDiscoveryTypeEnum =
   | "DISCOVERY_TYPE_UNSPECIFIED"
   | "DISCOVERY_TYPE_PRIVATE"
   | "DISCOVERY_TYPE_PUBLIC";
-export const ListingDiscoveryTypeEnum = S.String;
+const ListingDiscoveryTypeEnum = S.String;
 
 export type ListingCategoriesItemEnum =
   | "CATEGORY_UNSPECIFIED"
@@ -448,10 +445,10 @@ export type ListingCategoriesItemEnum =
   | "CATEGORY_TRANSPORTATION_AND_LOGISTICS"
   | "CATEGORY_TRAVEL_AND_TOURISM"
   | "CATEGORY_GOOGLE_EARTH_ENGINE";
-export const ListingCategoriesItemEnum = S.String;
+const ListingCategoriesItemEnum = S.String;
 
 export type ListingCategoriesItemEnumList = Array<ListingCategoriesItemEnum | (string & {})>;
-export const ListingCategoriesItemEnumList = /*@__PURE__*/ S.Array(
+const ListingCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   ListingCategoriesItemEnum,
 ) as any as S.Schema<ListingCategoriesItemEnumList>;
 
@@ -462,7 +459,7 @@ export interface DataProvider {
   /** Optional. Email or URL of the data provider. Max Length: 1000 bytes. */
   primaryContact?: string;
 }
-export const DataProvider = Publisher as any as S.Schema<DataProvider>;
+const DataProvider = Publisher as any as S.Schema<DataProvider>;
 
 /** Pub/Sub topic source. */
 export interface PubSubTopicSource {
@@ -471,7 +468,7 @@ export interface PubSubTopicSource {
   /** Optional. Region hint on where the data might be published. Data affinity regions are modifiable. See https://cloud.google.com/about/locations for full listing of possible Cloud regions. */
   dataAffinityRegions?: StringList;
 }
-export const PubSubTopicSource = /*@__PURE__*/ S.suspend(() =>
+const PubSubTopicSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(S.String),
     dataAffinityRegions: S.optional(StringList),
@@ -487,18 +484,15 @@ export interface RestrictedExportConfig {
   /** Optional. If true, enable restricted export. */
   enabled?: boolean;
 }
-export const RestrictedExportConfig =
-  RestrictedExportPolicy as any as S.Schema<RestrictedExportConfig>;
+const RestrictedExportConfig = RestrictedExportPolicy as any as S.Schema<RestrictedExportConfig>;
 
 export type StoredProcedureConfigAllowedStoredProcedureTypesItemEnum =
   | "STORED_PROCEDURE_TYPE_UNSPECIFIED"
   | "SQL_PROCEDURE";
-export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnum = S.String;
-
 export type StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList = Array<
   StoredProcedureConfigAllowedStoredProcedureTypesItemEnum | (string & {})
 >;
-export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList =
+const StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList =
   ListingCategoriesItemEnumList as any as S.Schema<StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList>;
 
 /** Stored procedure configuration, used to configure stored procedure sharing on linked dataset. */
@@ -508,7 +502,7 @@ export interface StoredProcedureConfig {
   /** Output only. Types of stored procedure supported to share. */
   allowedStoredProcedureTypes?: StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList;
 }
-export const StoredProcedureConfig = /*@__PURE__*/ S.suspend(() =>
+const StoredProcedureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     allowedStoredProcedureTypes: S.optional(
@@ -560,7 +554,7 @@ export interface Listing {
   /** Optional. If set, stored procedure configuration will be propagated and enforced on the linked dataset. */
   storedProcedureConfig?: StoredProcedureConfig;
 }
-export const Listing = /*@__PURE__*/ S.suspend(() =>
+const Listing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestAccess: S.optional(S.String),
     commercialInfo: S.optional(GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo),
@@ -593,7 +587,7 @@ export interface CreateProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: Listing;
 }
-export const CreateProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listingId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -617,19 +611,18 @@ export interface CreateProjectsLocationsDataExchangesQueryTemplatesRequest {
   /** Request body */
   body?: QueryTemplate;
 }
-export const CreateProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      queryTemplateId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(QueryTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/queryTemplates",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    queryTemplateId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(QueryTemplate.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/queryTemplates",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsDataExchangesQueryTemplatesRequest",
 }) as any as S.Schema<CreateProjectsLocationsDataExchangesQueryTemplatesRequest>;
@@ -638,7 +631,7 @@ export interface DeleteProjectsLocationsDataExchangesRequest {
   /** Required. The full name of the data exchange resource that you want to delete. For example, `projects/myproject/locations/us/dataExchanges/123`. */
   name: string;
 }
-export const DeleteProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -654,7 +647,7 @@ export const DeleteProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspe
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = ApproveQueryTemplateRequest as any as S.Schema<Empty>;
+const Empty = ApproveQueryTemplateRequest as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsDataExchangesListingsRequest {
   /** Required. Resource name of the listing to delete. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. */
@@ -662,7 +655,7 @@ export interface DeleteProjectsLocationsDataExchangesListingsRequest {
   /** Optional. If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally. */
   deleteCommercial?: boolean;
 }
-export const DeleteProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     deleteCommercial: S.optional(S.Boolean.pipe(T.Query())),
@@ -681,17 +674,16 @@ export interface DeleteProjectsLocationsDataExchangesQueryTemplatesRequest {
   /** Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. */
   name: string;
 }
-export const DeleteProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsDataExchangesQueryTemplatesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsDataExchangesQueryTemplatesRequest>;
@@ -700,7 +692,7 @@ export interface DeleteProjectsLocationsSubscriptionsRequest {
   /** Required. Resource name of the subscription to delete. e.g. projects/123/locations/us/subscriptions/456 */
   name: string;
 }
-export const DeleteProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -715,15 +707,10 @@ export const DeleteProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteProjectsLocationsSubscriptionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -734,7 +721,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -755,7 +742,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     error: S.optional(Status),
@@ -770,7 +757,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -781,7 +768,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -793,7 +780,7 @@ export interface GetIamPolicyProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -813,7 +800,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -822,7 +809,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -830,7 +817,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -841,7 +828,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -849,9 +836,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -864,7 +849,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     description: S.optional(S.String),
@@ -882,7 +867,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -891,7 +876,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -904,7 +889,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     etag: S.optional(S.String),
@@ -919,18 +904,17 @@ export interface GetIamPolicyProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsDataExchangesListingsRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsDataExchangesListingsRequest>;
@@ -941,7 +925,7 @@ export interface GetIamPolicyProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -960,7 +944,7 @@ export interface GetProjectsLocationsDataExchangesRequest {
   /** Required. The resource name of the data exchange. e.g. `projects/myproject/locations/us/dataExchanges/123`. */
   name: string;
 }
-export const GetProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -974,7 +958,7 @@ export interface GetProjectsLocationsDataExchangesListingsRequest {
   /** Required. The resource name of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. */
   name: string;
 }
-export const GetProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -988,7 +972,7 @@ export interface GetProjectsLocationsDataExchangesQueryTemplatesRequest {
   /** Required. The parent resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. */
   name: string;
 }
-export const GetProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1002,7 +986,7 @@ export interface GetProjectsLocationsSubscriptionsRequest {
   /** Required. Resource name of the subscription. e.g. projects/123/locations/us/subscriptions/456 */
   name: string;
 }
-export const GetProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1018,7 +1002,7 @@ export interface DestinationDatasetReference {
   /** Required. A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters. */
   datasetId?: string;
 }
-export const DestinationDatasetReference = /*@__PURE__*/ S.suspend(() =>
+const DestinationDatasetReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     datasetId: S.optional(S.String),
@@ -1028,7 +1012,7 @@ export const DestinationDatasetReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationDatasetReference>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Defines the destination bigquery dataset. */
 export interface DestinationDataset {
@@ -1045,7 +1029,7 @@ export interface DestinationDataset {
   /** Optional. A user-friendly description of the dataset. */
   description?: string;
 }
-export const DestinationDataset = /*@__PURE__*/ S.suspend(() =>
+const DestinationDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetReference: S.optional(DestinationDatasetReference),
     location: S.optional(S.String),
@@ -1061,7 +1045,7 @@ export interface GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoog
   /** Resource name of the Marketplace Order. */
   order?: string;
 }
-export const GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo =
+const GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       order: S.optional(S.String),
@@ -1076,13 +1060,12 @@ export interface GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo {
   /** Output only. This is set when the subscription is commercialised via Cloud Marketplace. */
   cloudMarketplace?: GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo;
 }
-export const GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cloudMarketplace: S.optional(
-        GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo,
-      ),
-    }),
+const GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudMarketplace: S.optional(
+      GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfoGoogleCloudMarketplaceInfo,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo",
 }) as any as S.Schema<GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo>;
@@ -1096,7 +1079,7 @@ export interface LinkedResource {
   /** Output only. Name of the Pub/Sub subscription, e.g. projects/subscriberproject/subscriptions/subscriptions/sub_id */
   linkedPubsubSubscription?: string;
 }
-export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
+const LinkedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedDataset: S.optional(S.String),
     listing: S.optional(S.String),
@@ -1105,7 +1088,7 @@ export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkedResource" }) as any as S.Schema<LinkedResource>;
 
 export type LinkedResourceMap = { [key: string]: LinkedResource | undefined };
-export const LinkedResourceMap = /*@__PURE__*/ S.Record(
+const LinkedResourceMap = /*@__PURE__*/ S.Record(
   S.String,
   LinkedResource,
 ) as any as S.Schema<LinkedResourceMap>;
@@ -1115,10 +1098,10 @@ export type SubscriptionStateEnum =
   | "STATE_ACTIVE"
   | "STATE_STALE"
   | "STATE_INACTIVE";
-export const SubscriptionStateEnum = S.String;
+const SubscriptionStateEnum = S.String;
 
 export type LinkedResourceList = Array<LinkedResource>;
-export const LinkedResourceList = /*@__PURE__*/ S.Array(
+const LinkedResourceList = /*@__PURE__*/ S.Array(
   LinkedResource,
 ) as any as S.Schema<LinkedResourceList>;
 
@@ -1126,7 +1109,7 @@ export type SubscriptionResourceTypeEnum =
   | "SHARED_RESOURCE_TYPE_UNSPECIFIED"
   | "BIGQUERY_DATASET"
   | "PUBSUB_TOPIC";
-export const SubscriptionResourceTypeEnum = S.String;
+const SubscriptionResourceTypeEnum = S.String;
 
 /** A subscription represents a subscribers' access to a particular set of published data. It contains references to associated listings, data exchanges, and linked datasets. */
 export interface Subscription {
@@ -1161,7 +1144,7 @@ export interface Subscription {
   /** Output only. Resource name of the source Data Exchange. e.g. projects/123/locations/us/dataExchanges/456 */
   dataExchange?: string;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationDataset: S.optional(DestinationDataset),
     commercialInfo: S.optional(GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo),
@@ -1189,7 +1172,7 @@ export interface ListOrganizationsLocationsDataExchangesRequest {
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1206,9 +1189,7 @@ export const ListOrganizationsLocationsDataExchangesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListOrganizationsLocationsDataExchangesRequest>;
 
 export type DataExchangeList = Array<DataExchange>;
-export const DataExchangeList = /*@__PURE__*/ S.Array(
-  DataExchange,
-) as any as S.Schema<DataExchangeList>;
+const DataExchangeList = /*@__PURE__*/ S.Array(DataExchange) as any as S.Schema<DataExchangeList>;
 
 /** Message for response to listing data exchanges in an organization and location. */
 export interface ListOrgDataExchangesResponse {
@@ -1217,7 +1198,7 @@ export interface ListOrgDataExchangesResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
-export const ListOrgDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataExchanges: S.optional(DataExchangeList),
     nextPageToken: S.optional(S.String),
@@ -1234,7 +1215,7 @@ export interface ListProjectsLocationsDataExchangesRequest {
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1257,7 +1238,7 @@ export interface ListDataExchangesResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
-export const ListDataExchangesResponse =
+const ListDataExchangesResponse =
   ListOrgDataExchangesResponse as any as S.Schema<ListDataExchangesResponse>;
 
 export interface ListProjectsLocationsDataExchangesListingsRequest {
@@ -1268,7 +1249,7 @@ export interface ListProjectsLocationsDataExchangesListingsRequest {
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1285,7 +1266,7 @@ export const ListProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsDataExchangesListingsRequest>;
 
 export type ListingList = Array<Listing>;
-export const ListingList = /*@__PURE__*/ S.Array(Listing) as any as S.Schema<ListingList>;
+const ListingList = /*@__PURE__*/ S.Array(Listing) as any as S.Schema<ListingList>;
 
 /** Message for response to the list of Listings. */
 export interface ListListingsResponse {
@@ -1294,7 +1275,7 @@ export interface ListListingsResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
-export const ListListingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListListingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listings: S.optional(ListingList),
     nextPageToken: S.optional(S.String),
@@ -1309,7 +1290,7 @@ export interface ListProjectsLocationsDataExchangesQueryTemplatesRequest {
   /** Optional. The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1326,7 +1307,7 @@ export const ListProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsDataExchangesQueryTemplatesRequest>;
 
 export type QueryTemplateList = Array<QueryTemplate>;
-export const QueryTemplateList = /*@__PURE__*/ S.Array(
+const QueryTemplateList = /*@__PURE__*/ S.Array(
   QueryTemplate,
 ) as any as S.Schema<QueryTemplateList>;
 
@@ -1337,7 +1318,7 @@ export interface ListQueryTemplatesResponse {
   /** The list of QueryTemplates. */
   queryTemplates?: QueryTemplateList;
 }
-export const ListQueryTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQueryTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     queryTemplates: S.optional(QueryTemplateList),
@@ -1356,7 +1337,7 @@ export interface ListProjectsLocationsSubscriptionsRequest {
   /** Page token, returned by a previous call. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1374,9 +1355,7 @@ export const ListProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** Message for response to the listing of subscriptions. */
 export interface ListSubscriptionsResponse {
@@ -1385,7 +1364,7 @@ export interface ListSubscriptionsResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptions: S.optional(SubscriptionList),
     nextPageToken: S.optional(S.String),
@@ -1404,7 +1383,7 @@ export interface ListSubscriptionsProjectsLocationsDataExchangesRequest {
   /** Page token, returned by a previous call. */
   pageToken?: string;
 }
-export const ListSubscriptionsProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     includeDeletedSubscriptions: S.optional(S.Boolean.pipe(T.Query())),
@@ -1428,7 +1407,7 @@ export interface ListSharedResourceSubscriptionsResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
-export const ListSharedResourceSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSharedResourceSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedResourceSubscriptions: S.optional(SubscriptionList),
     nextPageToken: S.optional(S.String),
@@ -1447,23 +1426,22 @@ export interface ListSubscriptionsProjectsLocationsDataExchangesListingsRequest 
   /** The maximum number of results to return in a single response page. */
   pageSize?: number;
 }
-export const ListSubscriptionsProjectsLocationsDataExchangesListingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      includeDeletedSubscriptions: S.optional(S.Boolean.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:listSubscriptions",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListSubscriptionsProjectsLocationsDataExchangesListingsRequest",
-  }) as any as S.Schema<ListSubscriptionsProjectsLocationsDataExchangesListingsRequest>;
+const ListSubscriptionsProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    includeDeletedSubscriptions: S.optional(S.Boolean.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:listSubscriptions",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListSubscriptionsProjectsLocationsDataExchangesListingsRequest",
+}) as any as S.Schema<ListSubscriptionsProjectsLocationsDataExchangesListingsRequest>;
 
 export interface PatchProjectsLocationsDataExchangesRequest {
   /** Output only. The resource name of the data exchange. e.g. `projects/myproject/locations/us/dataExchanges/123`. */
@@ -1473,7 +1451,7 @@ export interface PatchProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: DataExchange;
 }
-export const PatchProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1493,7 +1471,7 @@ export interface PatchProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: Listing;
 }
-export const PatchProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1513,34 +1491,31 @@ export interface PatchProjectsLocationsDataExchangesQueryTemplatesRequest {
   /** Request body */
   body?: QueryTemplate;
 }
-export const PatchProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(QueryTemplate.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(QueryTemplate.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsDataExchangesQueryTemplatesRequest",
 }) as any as S.Schema<PatchProjectsLocationsDataExchangesQueryTemplatesRequest>;
 
 /** Message for refreshing a subscription. */
 export type RefreshSubscriptionRequest = ApproveQueryTemplateRequest;
-export const RefreshSubscriptionRequest = ApproveQueryTemplateRequest;
-
 export interface RefreshProjectsLocationsSubscriptionsRequest {
   /** Required. Resource name of the Subscription to refresh. e.g. `projects/subscriberproject/locations/us/subscriptions/123` */
   name: string;
   /** Request body */
   body?: ApproveQueryTemplateRequest;
 }
-export const RefreshProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveQueryTemplateRequest.pipe(T.HttpBody())),
@@ -1560,7 +1535,7 @@ export interface RevokeSubscriptionRequest {
   /** Optional. If the subscription is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid revoking commercial subscriptions accidentally. */
   revokeCommercial?: boolean;
 }
-export const RevokeSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revokeCommercial: S.optional(S.Boolean),
   }),
@@ -1574,7 +1549,7 @@ export interface RevokeProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: RevokeSubscriptionRequest;
 }
-export const RevokeProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RevokeSubscriptionRequest.pipe(T.HttpBody())),
@@ -1591,7 +1566,7 @@ export const RevokeProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspe
 
 /** Message for response when you revoke a subscription. Empty for now. */
 export interface RevokeSubscriptionResponse {}
-export const RevokeSubscriptionResponse =
+const RevokeSubscriptionResponse =
   ApproveQueryTemplateRequest as any as S.Schema<RevokeSubscriptionResponse>;
 
 /** Request message for `SetIamPolicy` method. */
@@ -1601,7 +1576,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -1614,7 +1589,7 @@ export interface SetIamPolicyProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1635,18 +1610,17 @@ export interface SetIamPolicyProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsDataExchangesListingsRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsDataExchangesListingsRequest>;
@@ -1657,7 +1631,7 @@ export interface SetIamPolicyProjectsLocationsSubscriptionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1674,26 +1648,23 @@ export const SetIamPolicyProjectsLocationsSubscriptionsRequest = /*@__PURE__*/ S
 
 /** Message for submitting a QueryTemplate. */
 export type SubmitQueryTemplateRequest = ApproveQueryTemplateRequest;
-export const SubmitQueryTemplateRequest = ApproveQueryTemplateRequest;
-
 export interface SubmitProjectsLocationsDataExchangesQueryTemplatesRequest {
   /** Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. */
   name: string;
   /** Request body */
   body?: ApproveQueryTemplateRequest;
 }
-export const SubmitProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ApproveQueryTemplateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:submit",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const SubmitProjectsLocationsDataExchangesQueryTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ApproveQueryTemplateRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:submit",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SubmitProjectsLocationsDataExchangesQueryTemplatesRequest",
 }) as any as S.Schema<SubmitProjectsLocationsDataExchangesQueryTemplatesRequest>;
@@ -1709,7 +1680,7 @@ export interface SubscribeDataExchangeRequest {
   /** Email of the subscriber. */
   subscriberContact?: string;
 }
-export const SubscribeDataExchangeRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeDataExchangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationDataset: S.optional(DestinationDataset),
     subscription: S.optional(S.String),
@@ -1726,7 +1697,7 @@ export interface SubscribeProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: SubscribeDataExchangeRequest;
 }
-export const SubscribeProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SubscribeDataExchangeRequest.pipe(T.HttpBody())),
@@ -1743,8 +1714,6 @@ export const SubscribeProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.su
 
 /** Row key definition that reads the input message fields based on the field names of the table's [structured row key](https://cloud.google.com/bigtable/docs/manage-row-key-schemas). Note that if the field is nullable in the structured row key, then it need not be present in the message; `null` will be used instead. */
 export type RowKeySchema = ApproveQueryTemplateRequest;
-export const RowKeySchema = ApproveQueryTemplateRequest;
-
 /** Row key definition based on fields from the message. */
 export interface DelimitedKey {
   /** Optional. The key fields to construct from the row key. The fields must be present in the message as a top-level field, i.e. JSON path expressions will not traverse into nested objects. */
@@ -1752,7 +1721,7 @@ export interface DelimitedKey {
   /** Optional. Byte sequence used to delimit concatenated fields. Must be specified if multiple key fields are used. The delimiter must contain at least 1 character and at most 50 characters. */
   delimiter?: string;
 }
-export const DelimitedKey = /*@__PURE__*/ S.suspend(() =>
+const DelimitedKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyFields: S.optional(StringList),
     delimiter: S.optional(S.String),
@@ -1766,7 +1735,7 @@ export interface ColumnFamilyMapping {
   /** Optional. If set, the row key is constructed from the given key fields and delimiter. All key fields must be present in the message; otherwise, the message remains in the subscription backlog. */
   delimitedKey?: DelimitedKey;
 }
-export const ColumnFamilyMapping = /*@__PURE__*/ S.suspend(() =>
+const ColumnFamilyMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowKeySchema: S.optional(ApproveQueryTemplateRequest),
     delimitedKey: S.optional(DelimitedKey),
@@ -1786,7 +1755,7 @@ export interface BigtableConfig {
   /** Optional. Configuration that allows writing row keys and/or columns based on fields in the input message. The input message format must be JSON if this field is set. */
   columnFamilyMapping?: ColumnFamilyMapping;
 }
-export const BigtableConfig = /*@__PURE__*/ S.suspend(() =>
+const BigtableConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writeMetadata: S.optional(S.Boolean),
     serviceAccountEmail: S.optional(S.String),
@@ -1798,8 +1767,6 @@ export const BigtableConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The payload to the push endpoint is in the form of the JSON representation of a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage). */
 export type PubsubWrapper = ApproveQueryTemplateRequest;
-export const PubsubWrapper = ApproveQueryTemplateRequest;
-
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). */
 export interface OidcToken {
   /** Optional. Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used. */
@@ -1807,7 +1774,7 @@ export interface OidcToken {
   /** Optional. [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push). */
   serviceAccountEmail?: string;
 }
-export const OidcToken = /*@__PURE__*/ S.suspend(() =>
+const OidcToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience: S.optional(S.String),
     serviceAccountEmail: S.optional(S.String),
@@ -1819,7 +1786,7 @@ export interface NoWrapper {
   /** Optional. When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:` headers of the HTTP request. Writes the Pub/Sub message attributes to `:` headers of the HTTP request. */
   writeMetadata?: boolean;
 }
-export const NoWrapper = /*@__PURE__*/ S.suspend(() =>
+const NoWrapper = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writeMetadata: S.optional(S.Boolean),
   }),
@@ -1838,7 +1805,7 @@ export interface PushConfig {
   /** Optional. A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use `https://example.com/push`. */
   pushEndpoint?: string;
 }
-export const PushConfig = /*@__PURE__*/ S.suspend(() =>
+const PushConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubWrapper: S.optional(ApproveQueryTemplateRequest),
     attributes: S.optional(StringMap),
@@ -1855,7 +1822,7 @@ export interface RetryPolicy {
   /** Optional. The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds. */
   maximumBackoff?: string;
 }
-export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
+const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumBackoff: S.optional(S.String),
     maximumBackoff: S.optional(S.String),
@@ -1867,7 +1834,7 @@ export interface UnstructuredInference {
   /** Optional. A parameters object to be included in each inference request. The parameters object is combined with the data field of the Pub/Sub message to form the inference request. */
   parameters?: DocumentMap;
 }
-export const UnstructuredInference = /*@__PURE__*/ S.suspend(() =>
+const UnstructuredInference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(DocumentMap),
   }),
@@ -1882,7 +1849,7 @@ export interface AIInference {
   /** Optional. The service account to use to make prediction requests against endpoints. The resource creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used. */
   serviceAccountEmail?: string;
 }
-export const AIInference = /*@__PURE__*/ S.suspend(() =>
+const AIInference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     unstructuredInference: S.optional(UnstructuredInference),
@@ -1894,10 +1861,10 @@ export type CompressionCompressionModeEnum =
   | "COMPRESSION_MODE_UNSPECIFIED"
   | "COMPRESS"
   | "DECOMPRESS";
-export const CompressionCompressionModeEnum = S.String;
+const CompressionCompressionModeEnum = S.String;
 
 export type CompressionCompressionAlgorithmEnum = "COMPRESSION_ALGORITHM_UNSPECIFIED" | "ZLIB";
-export const CompressionCompressionAlgorithmEnum = S.String;
+const CompressionCompressionAlgorithmEnum = S.String;
 
 /** Configuration for compressing/decompressing message data using a user-specified compression algorithm. */
 export interface Compression {
@@ -1906,7 +1873,7 @@ export interface Compression {
   /** Required. Specifies the compression algorithm to use. */
   compressionAlgorithm?: CompressionCompressionAlgorithmEnum | (string & {});
 }
-export const Compression = /*@__PURE__*/ S.suspend(() =>
+const Compression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compressionMode: S.optional(CompressionCompressionModeEnum),
     compressionAlgorithm: S.optional(CompressionCompressionAlgorithmEnum),
@@ -1920,7 +1887,7 @@ export interface JavaScriptUDF {
   /** Required. JavaScript code that contains a function `function_name` with the below signature: ``` /** * Transforms a Pub/Sub message. * @return {(Object)>|null)} - To * filter a message, return `null`. To transform a message return a map * with the following keys: * - (required) 'data' : {string} * - (optional) 'attributes' : {Object} * Returning empty `attributes` will remove all attributes from the * message. * * @param {(Object)>} Pub/Sub * message. Keys: * - (required) 'data' : {string} * - (required) 'attributes' : {Object} * * @param {Object} metadata - Pub/Sub message metadata. * Keys: * - (required) 'message_id' : {string} * - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format * - (optional) 'ordering_key': {string} *\/ function (message, metadata) { } ``` */
   code?: string;
 }
-export const JavaScriptUDF = /*@__PURE__*/ S.suspend(() =>
+const JavaScriptUDF = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.optional(S.String),
     code: S.optional(S.String),
@@ -1940,7 +1907,7 @@ export interface MessageTransform {
   /** Optional. JavaScript User Defined Function. If multiple JavaScriptUDF's are specified on a resource, each must have a unique `function_name`. */
   javascriptUdf?: JavaScriptUDF;
 }
-export const MessageTransform = /*@__PURE__*/ S.suspend(() =>
+const MessageTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     aiInference: S.optional(AIInference),
@@ -1951,7 +1918,7 @@ export const MessageTransform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MessageTransform" }) as any as S.Schema<MessageTransform>;
 
 export type MessageTransformList = Array<MessageTransform>;
-export const MessageTransformList = /*@__PURE__*/ S.Array(
+const MessageTransformList = /*@__PURE__*/ S.Array(
   MessageTransform,
 ) as any as S.Schema<MessageTransformList>;
 
@@ -1970,7 +1937,7 @@ export interface BigQueryConfig {
   /** Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId} */
   table?: string;
 }
-export const BigQueryConfig = /*@__PURE__*/ S.suspend(() =>
+const BigQueryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useTableSchema: S.optional(S.Boolean),
     useTopicSchema: S.optional(S.Boolean),
@@ -1988,7 +1955,7 @@ export interface DeadLetterPolicy {
   /** Optional. The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost. */
   deadLetterTopic?: string;
 }
-export const DeadLetterPolicy = /*@__PURE__*/ S.suspend(() =>
+const DeadLetterPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxDeliveryAttempts: S.optional(S.Number),
     deadLetterTopic: S.optional(S.String),
@@ -1997,8 +1964,6 @@ export const DeadLetterPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration for writing message data in text format. Message payloads will be written to files as raw text, separated by a newline. */
 export type TextConfig = ApproveQueryTemplateRequest;
-export const TextConfig = ApproveQueryTemplateRequest;
-
 /** Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as an Avro binary. */
 export interface AvroConfig {
   /** Optional. When true, the output Cloud Storage file will be serialized using the topic schema, if it exists. */
@@ -2006,7 +1971,7 @@ export interface AvroConfig {
   /** Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional fields in the output. The subscription name, message_id, and publish_time fields are put in their own fields while all other message properties other than data (for example, an ordering_key, if present) are added as entries in the attributes map. */
   writeMetadata?: boolean;
 }
-export const AvroConfig = /*@__PURE__*/ S.suspend(() =>
+const AvroConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useTopicSchema: S.optional(S.Boolean),
     writeMetadata: S.optional(S.Boolean),
@@ -2036,7 +2001,7 @@ export interface CloudStorageConfig {
   /** Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents), service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used. */
   serviceAccountEmail?: string;
 }
-export const CloudStorageConfig = /*@__PURE__*/ S.suspend(() =>
+const CloudStorageConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxDuration: S.optional(S.String),
     filenameSuffix: S.optional(S.String),
@@ -2056,7 +2021,7 @@ export interface ExpirationPolicy {
   /** Optional. Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires. */
   ttl?: string;
 }
-export const ExpirationPolicy = /*@__PURE__*/ S.suspend(() =>
+const ExpirationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttl: S.optional(S.String),
   }),
@@ -2101,7 +2066,7 @@ export interface GooglePubsubV1Subscription {
   /** Optional. An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out. */
   filter?: string;
 }
-export const GooglePubsubV1Subscription = /*@__PURE__*/ S.suspend(() =>
+const GooglePubsubV1Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigtableConfig: S.optional(BigtableConfig),
     pushConfig: S.optional(PushConfig),
@@ -2131,7 +2096,7 @@ export interface DestinationPubSubSubscription {
   /** Required. Destination Pub/Sub subscription resource. */
   pubsubSubscription?: GooglePubsubV1Subscription;
 }
-export const DestinationPubSubSubscription = /*@__PURE__*/ S.suspend(() =>
+const DestinationPubSubSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubSubscription: S.optional(GooglePubsubV1Subscription),
   }),
@@ -2146,7 +2111,7 @@ export interface SubscribeListingRequest {
   /** Input only. Destination Pub/Sub subscription to create for the subscriber. */
   destinationPubsubSubscription?: DestinationPubSubSubscription;
 }
-export const SubscribeListingRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeListingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationDataset: S.optional(DestinationDataset),
     destinationPubsubSubscription: S.optional(DestinationPubSubSubscription),
@@ -2159,7 +2124,7 @@ export interface SubscribeProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: SubscribeListingRequest;
 }
-export const SubscribeProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SubscribeListingRequest.pipe(T.HttpBody())),
@@ -2179,7 +2144,7 @@ export interface SubscribeListingResponse {
   /** Subscription object created from this subscribe action. */
   subscription?: Subscription;
 }
-export const SubscribeListingResponse = /*@__PURE__*/ S.suspend(() =>
+const SubscribeListingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.optional(Subscription),
   }),
@@ -2190,7 +2155,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -2204,7 +2169,7 @@ export interface TestIamPermissionsProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2224,7 +2189,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsDataExchangesListingsRequest {
@@ -2233,8 +2198,8 @@ export interface TestIamPermissionsProjectsLocationsDataExchangesListingsRequest
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDataExchangesListingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2245,9 +2210,9 @@ export const TestIamPermissionsProjectsLocationsDataExchangesListingsRequest =
         baseUrl: "https://analyticshub.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsDataExchangesListingsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsDataExchangesListingsRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsDataExchangesListingsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsDataExchangesListingsRequest>;
 
 export type ApproveProjectsLocationsDataExchangesQueryTemplatesError =
   | NotFound

@@ -13,7 +13,7 @@ export interface Sku {
   /** Name of the SKU to be applied */
   name?: string;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -21,9 +21,9 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 
 /** Hybrid use benefit properties */
 export interface HybridUseBenefitPropertiesInput {}
-export const HybridUseBenefitPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "HybridUseBenefitPropertiesInput" },
-) as any as S.Schema<HybridUseBenefitPropertiesInput>;
+const HybridUseBenefitPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "HybridUseBenefitPropertiesInput",
+}) as any as S.Schema<HybridUseBenefitPropertiesInput>;
 
 export interface CreateHybridUseBenefitRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
@@ -35,7 +35,7 @@ export interface CreateHybridUseBenefitRequest {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitPropertiesInput;
 }
-export const CreateHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     planId: S.String.pipe(T.Label()),
@@ -55,7 +55,7 @@ export const CreateHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Represent the current state of the Reservation. */
 export type ProvisioningState = "Succeeded" | "Cancelled" | "Failed";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Hybrid use benefit properties */
 export interface HybridUseBenefitProperties {
@@ -66,7 +66,7 @@ export interface HybridUseBenefitProperties {
   /** Last updated date */
   lastUpdatedDate?: string;
 }
-export const HybridUseBenefitProperties = /*@__PURE__*/ S.suspend(() =>
+const HybridUseBenefitProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     createdDate: S.optional(S.String),
@@ -90,7 +90,7 @@ export interface CreateHybridUseBenefitResponse {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-export const CreateHybridUseBenefitResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHybridUseBenefitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -109,7 +109,7 @@ export interface DeleteHybridUseBenefitRequest {
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
 }
-export const DeleteHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     planId: S.String.pipe(T.Label()),
@@ -126,7 +126,7 @@ export const DeleteHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHybridUseBenefitRequest>;
 
 export interface DeleteHybridUseBenefitResponse {}
-export const DeleteHybridUseBenefitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteHybridUseBenefitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteHybridUseBenefitResponse",
 }) as any as S.Schema<DeleteHybridUseBenefitResponse>;
 
@@ -136,7 +136,7 @@ export interface GetHybridUseBenefitRequest {
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
 }
-export const GetHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     planId: S.String.pipe(T.Label()),
@@ -166,7 +166,7 @@ export interface GetHybridUseBenefitResponse {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-export const GetHybridUseBenefitResponse =
+const GetHybridUseBenefitResponse =
   CreateHybridUseBenefitResponse as any as S.Schema<GetHybridUseBenefitResponse>;
 
 export interface ListHybridUseBenefitRequest {
@@ -175,7 +175,7 @@ export interface ListHybridUseBenefitRequest {
   /** Supports applying filter on the type of SKU */
   _filter?: string;
 }
-export const ListHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -206,7 +206,7 @@ export interface HybridUseBenefitModel {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-export const HybridUseBenefitModel = /*@__PURE__*/ S.suspend(() =>
+const HybridUseBenefitModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -219,7 +219,7 @@ export const HybridUseBenefitModel = /*@__PURE__*/ S.suspend(() =>
 
 /** List of hybrid use benefits */
 export type HybridUseBenefitListResultValueList = Array<HybridUseBenefitModel>;
-export const HybridUseBenefitListResultValueList = /*@__PURE__*/ S.Array(
+const HybridUseBenefitListResultValueList = /*@__PURE__*/ S.Array(
   HybridUseBenefitModel,
 ) as any as S.Schema<HybridUseBenefitListResultValueList>;
 
@@ -230,7 +230,7 @@ export interface HybridUseBenefitListResult {
   /** Url to get the next page of items. */
   nextLink?: string;
 }
-export const HybridUseBenefitListResult = /*@__PURE__*/ S.suspend(() =>
+const HybridUseBenefitListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(HybridUseBenefitListResultValueList),
     nextLink: S.optional(S.String),
@@ -245,7 +245,7 @@ export interface ListHybridUseBenefitRevisionRequest {
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
 }
-export const ListHybridUseBenefitRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHybridUseBenefitRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     planId: S.String.pipe(T.Label()),
@@ -265,7 +265,7 @@ export interface ListOperationsRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
 }
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -289,7 +289,7 @@ export interface OperationDisplay {
   /** Description of the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -307,7 +307,7 @@ export interface OperationResponse {
   /** Origin of the response */
   origin?: string;
 }
-export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -317,7 +317,7 @@ export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all operations */
 export type OperationListValueList = Array<OperationResponse>;
-export const OperationListValueList = /*@__PURE__*/ S.Array(
+const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationResponse,
 ) as any as S.Schema<OperationListValueList>;
 
@@ -328,7 +328,7 @@ export interface OperationList {
   /** Url to get the next page of items. */
   nextLink?: string;
 }
-export const OperationList = /*@__PURE__*/ S.suspend(() =>
+const OperationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListValueList),
     nextLink: S.optional(S.String),
@@ -339,7 +339,7 @@ export interface RegisterSoftwarePlanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const RegisterSoftwarePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterSoftwarePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -355,7 +355,7 @@ export const RegisterSoftwarePlanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisterSoftwarePlanRequest>;
 
 export interface RegisterSoftwarePlanResponse {}
-export const RegisterSoftwarePlanResponse =
+const RegisterSoftwarePlanResponse =
   DeleteHybridUseBenefitResponse as any as S.Schema<RegisterSoftwarePlanResponse>;
 
 export interface UpdateHybridUseBenefitRequest {
@@ -368,7 +368,7 @@ export interface UpdateHybridUseBenefitRequest {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitPropertiesInput;
 }
-export const UpdateHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHybridUseBenefitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     planId: S.String.pipe(T.Label()),
@@ -400,7 +400,7 @@ export interface UpdateHybridUseBenefitResponse {
   /** Property bag for a hybrid use benefit response */
   properties?: HybridUseBenefitProperties;
 }
-export const UpdateHybridUseBenefitResponse =
+const UpdateHybridUseBenefitResponse =
   CreateHybridUseBenefitResponse as any as S.Schema<UpdateHybridUseBenefitResponse>;
 
 export type CreateHybridUseBenefitError = AzureOpError;

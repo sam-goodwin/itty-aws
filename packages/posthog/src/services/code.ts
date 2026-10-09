@@ -8,7 +8,7 @@ import * as T from "../traits.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 export interface ListCodeSandboxPricingRequest {}
-export const ListCodeSandboxPricingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCodeSandboxPricingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/code/sandbox-pricing/", code: 200 })),
 ).annotate({
   identifier: "ListCodeSandboxPricingRequest",
@@ -26,7 +26,7 @@ export interface ComputeRateCard {
   /** USD charged per GiB-second of memory as an exact decimal string. */
   memory_gib_second_usd: string;
 }
-export const ComputeRateCard = /*@__PURE__*/ S.suspend(() =>
+const ComputeRateCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
     effective_at: S.String,
@@ -38,7 +38,7 @@ export const ComputeRateCard = /*@__PURE__*/ S.suspend(() =>
 
 /** Expired sandbox compute rate cards, newest first. */
 export type SandboxComputePricingHistoryList = Array<ComputeRateCard>;
-export const SandboxComputePricingHistoryList = /*@__PURE__*/ S.Array(
+const SandboxComputePricingHistoryList = /*@__PURE__*/ S.Array(
   ComputeRateCard,
 ) as any as S.Schema<SandboxComputePricingHistoryList>;
 
@@ -48,7 +48,7 @@ export interface SandboxComputePricing {
   /** Expired sandbox compute rate cards, newest first. */
   history: SandboxComputePricingHistoryList;
 }
-export const SandboxComputePricing = /*@__PURE__*/ S.suspend(() =>
+const SandboxComputePricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current: S.NullOr(ComputeRateCard),
     history: SandboxComputePricingHistoryList,

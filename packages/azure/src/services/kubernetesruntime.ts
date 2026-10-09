@@ -18,7 +18,7 @@ export interface BgpPeerPropertiesInput {
   /** Peer Address */
   peerAddress: string;
 }
-export const BgpPeerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BgpPeerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     myAsn: S.Number,
     peerAsn: S.Number,
@@ -34,7 +34,7 @@ export interface BgpPeersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerPropertiesInput;
 }
-export const BgpPeersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BgpPeersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     bgpPeerName: S.String.pipe(T.Label()),
@@ -53,11 +53,11 @@ export const BgpPeersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -74,7 +74,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -94,7 +94,7 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Details of the BgpPeer. */
 export interface BgpPeerProperties {
@@ -107,7 +107,7 @@ export interface BgpPeerProperties {
   /** Resource provision state */
   provisioningState?: ProvisioningState;
 }
-export const BgpPeerProperties = /*@__PURE__*/ S.suspend(() =>
+const BgpPeerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     myAsn: S.Number,
     peerAsn: S.Number,
@@ -128,7 +128,7 @@ export interface BgpPeersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerProperties;
 }
-export const BgpPeersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BgpPeersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -146,7 +146,7 @@ export interface DeleteBgpPeerRequest {
   /** The name of the BgpPeer */
   bgpPeerName: string;
 }
-export const DeleteBgpPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBgpPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     bgpPeerName: S.String.pipe(T.Label()),
@@ -161,7 +161,7 @@ export const DeleteBgpPeerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBgpPeerRequest" }) as any as S.Schema<DeleteBgpPeerRequest>;
 
 export interface DeleteBgpPeerResponse {}
-export const DeleteBgpPeerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteBgpPeerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteBgpPeerResponse",
 }) as any as S.Schema<DeleteBgpPeerResponse>;
 
@@ -171,7 +171,7 @@ export interface DeleteLoadBalancerRequest {
   /** The name of the LoadBalancer */
   loadBalancerName: string;
 }
-export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     loadBalancerName: S.String.pipe(T.Label()),
@@ -188,7 +188,7 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoadBalancerRequest>;
 
 export interface DeleteLoadBalancerResponse {}
-export const DeleteLoadBalancerResponse =
+const DeleteLoadBalancerResponse =
   DeleteBgpPeerResponse as any as S.Schema<DeleteLoadBalancerResponse>;
 
 export interface DeleteServiceRequest {
@@ -197,7 +197,7 @@ export interface DeleteServiceRequest {
   /** The name of the the service */
   serviceName: string;
 }
-export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -212,8 +212,7 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse =
-  DeleteBgpPeerResponse as any as S.Schema<DeleteServiceResponse>;
+const DeleteServiceResponse = DeleteBgpPeerResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteStorageClassRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -221,7 +220,7 @@ export interface DeleteStorageClassRequest {
   /** The name of the the storage class */
   storageClassName: string;
 }
-export const DeleteStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     storageClassName: S.String.pipe(T.Label()),
@@ -238,7 +237,7 @@ export const DeleteStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageClassRequest>;
 
 export interface DeleteStorageClassResponse {}
-export const DeleteStorageClassResponse =
+const DeleteStorageClassResponse =
   DeleteBgpPeerResponse as any as S.Schema<DeleteStorageClassResponse>;
 
 export interface GetBgpPeerRequest {
@@ -247,7 +246,7 @@ export interface GetBgpPeerRequest {
   /** The name of the BgpPeer */
   bgpPeerName: string;
 }
-export const GetBgpPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBgpPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     bgpPeerName: S.String.pipe(T.Label()),
@@ -273,7 +272,7 @@ export interface GetBgpPeerResponse {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerProperties;
 }
-export const GetBgpPeerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBgpPeerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -289,7 +288,7 @@ export interface GetLoadBalancerRequest {
   /** The name of the LoadBalancer */
   loadBalancerName: string;
 }
-export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     loadBalancerName: S.String.pipe(T.Label()),
@@ -305,24 +304,24 @@ export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IP Range */
 export type LoadBalancerPropertiesAddressesList = Array<string>;
-export const LoadBalancerPropertiesAddressesList = /*@__PURE__*/ S.Array(
+const LoadBalancerPropertiesAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoadBalancerPropertiesAddressesList>;
 
 /** A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field. */
 export type LoadBalancerPropertiesServiceSelectorMap = { [key: string]: string | undefined };
-export const LoadBalancerPropertiesServiceSelectorMap = /*@__PURE__*/ S.Record(
+const LoadBalancerPropertiesServiceSelectorMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<LoadBalancerPropertiesServiceSelectorMap>;
 
 /** Enum of advertise mode */
 export type AdvertiseMode = "ARP" | "BGP" | "Both";
-export const AdvertiseMode = S.String;
+const AdvertiseMode = S.String;
 
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
 export type LoadBalancerPropertiesBgpPeersList = Array<string>;
-export const LoadBalancerPropertiesBgpPeersList =
+const LoadBalancerPropertiesBgpPeersList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesBgpPeersList>;
 
 /** Details of the LoadBalancer. */
@@ -338,7 +337,7 @@ export interface LoadBalancerProperties {
   /** Resource provision state */
   provisioningState?: ProvisioningState;
 }
-export const LoadBalancerProperties = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addresses: LoadBalancerPropertiesAddressesList,
     serviceSelector: S.optional(LoadBalancerPropertiesServiceSelectorMap),
@@ -360,7 +359,7 @@ export interface GetLoadBalancerResponse {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerProperties;
 }
-export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -376,7 +375,7 @@ export interface GetServiceRequest {
   /** The name of the the service */
   serviceName: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -397,7 +396,7 @@ export interface ServiceProperties {
   /** Resource provision state */
   provisioningState?: ProvisioningState;
 }
-export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rpObjectId: S.optional(S.String),
     provisioningState: S.optional(ProvisioningState),
@@ -416,7 +415,7 @@ export interface GetServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
 }
-export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -432,7 +431,7 @@ export interface GetStorageClassRequest {
   /** The name of the the storage class */
   storageClassName: string;
 }
-export const GetStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     storageClassName: S.String.pipe(T.Label()),
@@ -448,51 +447,51 @@ export const GetStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ability to expand volumes of a storage class */
 export type VolumeExpansion = "Allow" | "Disallow";
-export const VolumeExpansion = S.String;
+const VolumeExpansion = S.String;
 
 /** Additional mount options */
 export type StorageClassPropertiesMountOptionsList = Array<string>;
-export const StorageClassPropertiesMountOptionsList =
+const StorageClassPropertiesMountOptionsList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesMountOptionsList>;
 
 /** Storage class volume binding mode */
 export type VolumeBindingMode = "Immediate" | "WaitForFirstConsumer";
-export const VolumeBindingMode = S.String;
+const VolumeBindingMode = S.String;
 
 /** Storage Class Access Mode */
 export type AccessMode = "ReadWriteOnce" | "ReadWriteMany";
-export const AccessMode = S.String;
+const AccessMode = S.String;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
 export type StorageClassPropertiesAccessModesList = Array<AccessMode>;
-export const StorageClassPropertiesAccessModesList = /*@__PURE__*/ S.Array(
+const StorageClassPropertiesAccessModesList = /*@__PURE__*/ S.Array(
   AccessMode,
 ) as any as S.Schema<StorageClassPropertiesAccessModesList>;
 
 /** Data resilience tier of a storage class */
 export type DataResilienceTier = "NotDataResilient" | "DataResilient";
-export const DataResilienceTier = S.String;
+const DataResilienceTier = S.String;
 
 /** Failover tier of a storage class */
 export type FailoverTier = "NotAvailable" | "Slow" | "Fast" | "Super";
-export const FailoverTier = S.String;
+const FailoverTier = S.String;
 
 /** Limitations of the storage class */
 export type StorageClassPropertiesLimitationsList = Array<string>;
-export const StorageClassPropertiesLimitationsList =
+const StorageClassPropertiesLimitationsList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesLimitationsList>;
 
 /** Performance tier of a storage class */
 export type PerformanceTier = "Undefined" | "Basic" | "Standard" | "Premium" | "Ultra";
-export const PerformanceTier = S.String;
+const PerformanceTier = S.String;
 
 /** Type of a storage class */
 export type SCType = "Native" | "RWX" | "Blob" | "NFS" | "SMB";
-export const SCType = S.String;
+const SCType = S.String;
 
 /** The action to take when a NFS volume is deleted */
 export type NfsDirectoryActionOnVolumeDeletion = "Delete" | "Retain";
-export const NfsDirectoryActionOnVolumeDeletion = S.String;
+const NfsDirectoryActionOnVolumeDeletion = S.String;
 
 /** The properties of storage class of the StorageClass */
 export interface StorageClassTypeProperties {
@@ -523,7 +522,7 @@ export interface StorageClassTypeProperties {
   /** Server domain */
   domain?: string;
 }
-export const StorageClassTypeProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageClassTypeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SCType,
     backingStorageClassName: S.optional(S.String),
@@ -570,7 +569,7 @@ export interface StorageClassProperties {
   /** Resource provision state */
   provisioningState?: ProvisioningState;
 }
-export const StorageClassProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageClassProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowVolumeExpansion: S.optional(VolumeExpansion),
     mountOptions: S.optional(StorageClassPropertiesMountOptionsList),
@@ -599,7 +598,7 @@ export interface GetStorageClassResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
-export const GetStorageClassResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStorageClassResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -613,7 +612,7 @@ export interface ListBgpPeersRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListBgpPeersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBgpPeersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -639,11 +638,11 @@ export interface BgpPeer {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerProperties;
 }
-export const BgpPeer = GetBgpPeerResponse as any as S.Schema<BgpPeer>;
+const BgpPeer = GetBgpPeerResponse as any as S.Schema<BgpPeer>;
 
 /** The BgpPeer items on this page */
 export type BgpPeerListResultValueList = Array<BgpPeer>;
-export const BgpPeerListResultValueList = /*@__PURE__*/ S.Array(
+const BgpPeerListResultValueList = /*@__PURE__*/ S.Array(
   BgpPeer,
 ) as any as S.Schema<BgpPeerListResultValueList>;
 
@@ -654,7 +653,7 @@ export interface BgpPeerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const BgpPeerListResult = /*@__PURE__*/ S.suspend(() =>
+const BgpPeerListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: BgpPeerListResultValueList,
     nextLink: S.optional(S.String),
@@ -665,7 +664,7 @@ export interface ListLoadBalancersRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -691,11 +690,11 @@ export interface LoadBalancer {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerProperties;
 }
-export const LoadBalancer = GetLoadBalancerResponse as any as S.Schema<LoadBalancer>;
+const LoadBalancer = GetLoadBalancerResponse as any as S.Schema<LoadBalancer>;
 
 /** The LoadBalancer items on this page */
 export type LoadBalancerListResultValueList = Array<LoadBalancer>;
-export const LoadBalancerListResultValueList = /*@__PURE__*/ S.Array(
+const LoadBalancerListResultValueList = /*@__PURE__*/ S.Array(
   LoadBalancer,
 ) as any as S.Schema<LoadBalancerListResultValueList>;
 
@@ -706,7 +705,7 @@ export interface LoadBalancerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const LoadBalancerListResult = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: LoadBalancerListResultValueList,
     nextLink: S.optional(S.String),
@@ -714,7 +713,7 @@ export const LoadBalancerListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadBalancerListResult" }) as any as S.Schema<LoadBalancerListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -736,7 +735,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -747,11 +746,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -766,7 +765,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -778,7 +777,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -788,7 +787,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -799,7 +798,7 @@ export interface ListServicesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -825,11 +824,11 @@ export interface ServiceResource {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
 }
-export const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
+const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
 
 /** The ServiceResource items on this page */
 export type ServiceResourceListResultValueList = Array<ServiceResource>;
-export const ServiceResourceListResultValueList = /*@__PURE__*/ S.Array(
+const ServiceResourceListResultValueList = /*@__PURE__*/ S.Array(
   ServiceResource,
 ) as any as S.Schema<ServiceResourceListResultValueList>;
 
@@ -840,7 +839,7 @@ export interface ServiceResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServiceResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const ServiceResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ServiceResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -853,7 +852,7 @@ export interface ListStorageClassRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -879,12 +878,11 @@ export interface StorageClassResource {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
-export const StorageClassResource =
-  GetStorageClassResponse as any as S.Schema<StorageClassResource>;
+const StorageClassResource = GetStorageClassResponse as any as S.Schema<StorageClassResource>;
 
 /** The StorageClassResource items on this page */
 export type StorageClassResourceListResultValueList = Array<StorageClassResource>;
-export const StorageClassResourceListResultValueList = /*@__PURE__*/ S.Array(
+const StorageClassResourceListResultValueList = /*@__PURE__*/ S.Array(
   StorageClassResource,
 ) as any as S.Schema<StorageClassResourceListResultValueList>;
 
@@ -895,7 +893,7 @@ export interface StorageClassResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StorageClassResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const StorageClassResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StorageClassResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -906,17 +904,17 @@ export const StorageClassResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** IP Range */
 export type LoadBalancerPropertiesInputAddressesList = Array<string>;
-export const LoadBalancerPropertiesInputAddressesList =
+const LoadBalancerPropertiesInputAddressesList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesInputAddressesList>;
 
 /** A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field. */
 export type LoadBalancerPropertiesInputServiceSelectorMap = { [key: string]: string | undefined };
-export const LoadBalancerPropertiesInputServiceSelectorMap =
+const LoadBalancerPropertiesInputServiceSelectorMap =
   LoadBalancerPropertiesServiceSelectorMap as any as S.Schema<LoadBalancerPropertiesInputServiceSelectorMap>;
 
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
 export type LoadBalancerPropertiesInputBgpPeersList = Array<string>;
-export const LoadBalancerPropertiesInputBgpPeersList =
+const LoadBalancerPropertiesInputBgpPeersList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesInputBgpPeersList>;
 
 /** Details of the LoadBalancer. */
@@ -930,7 +928,7 @@ export interface LoadBalancerPropertiesInput {
   /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
   bgpPeers?: LoadBalancerPropertiesInputBgpPeersList;
 }
-export const LoadBalancerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addresses: LoadBalancerPropertiesInputAddressesList,
     serviceSelector: S.optional(LoadBalancerPropertiesInputServiceSelectorMap),
@@ -949,7 +947,7 @@ export interface LoadBalancersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerPropertiesInput;
 }
-export const LoadBalancersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     loadBalancerName: S.String.pipe(T.Label()),
@@ -978,7 +976,7 @@ export interface LoadBalancersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerProperties;
 }
-export const LoadBalancersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -992,8 +990,7 @@ export const LoadBalancersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties for the service resource */
 export interface ServicePropertiesInput {}
-export const ServicePropertiesInput =
-  DeleteBgpPeerResponse as any as S.Schema<ServicePropertiesInput>;
+const ServicePropertiesInput = DeleteBgpPeerResponse as any as S.Schema<ServicePropertiesInput>;
 
 export interface ServicesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1003,7 +1000,7 @@ export interface ServicesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ServicePropertiesInput;
 }
-export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1032,7 +1029,7 @@ export interface ServicesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
 }
-export const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1046,17 +1043,17 @@ export const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional mount options */
 export type StorageClassPropertiesInputMountOptionsList = Array<string>;
-export const StorageClassPropertiesInputMountOptionsList =
+const StorageClassPropertiesInputMountOptionsList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesInputMountOptionsList>;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
 export type StorageClassPropertiesInputAccessModesList = Array<AccessMode | (string & {})>;
-export const StorageClassPropertiesInputAccessModesList =
+const StorageClassPropertiesInputAccessModesList =
   StorageClassPropertiesAccessModesList as any as S.Schema<StorageClassPropertiesInputAccessModesList>;
 
 /** Limitations of the storage class */
 export type StorageClassPropertiesInputLimitationsList = Array<string>;
-export const StorageClassPropertiesInputLimitationsList =
+const StorageClassPropertiesInputLimitationsList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesInputLimitationsList>;
 
 /** Details of the StorageClass StorageClass. */
@@ -1084,7 +1081,7 @@ export interface StorageClassPropertiesInput {
   /** Properties of the StorageClass */
   typeProperties: StorageClassTypeProperties;
 }
-export const StorageClassPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageClassPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowVolumeExpansion: S.optional(VolumeExpansion),
     mountOptions: S.optional(StorageClassPropertiesInputMountOptionsList),
@@ -1110,7 +1107,7 @@ export interface StorageClassCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassPropertiesInput;
 }
-export const StorageClassCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageClassCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     storageClassName: S.String.pipe(T.Label()),
@@ -1139,7 +1136,7 @@ export interface StorageClassCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
-export const StorageClassCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const StorageClassCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1153,17 +1150,17 @@ export const StorageClassCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional mount options */
 export type StorageClassPropertiesUpdateMountOptionsList = Array<string>;
-export const StorageClassPropertiesUpdateMountOptionsList =
+const StorageClassPropertiesUpdateMountOptionsList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesUpdateMountOptionsList>;
 
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
 export type StorageClassPropertiesUpdateAccessModesList = Array<AccessMode | (string & {})>;
-export const StorageClassPropertiesUpdateAccessModesList =
+const StorageClassPropertiesUpdateAccessModesList =
   StorageClassPropertiesAccessModesList as any as S.Schema<StorageClassPropertiesUpdateAccessModesList>;
 
 /** Limitations of the storage class */
 export type StorageClassPropertiesUpdateLimitationsList = Array<string>;
-export const StorageClassPropertiesUpdateLimitationsList =
+const StorageClassPropertiesUpdateLimitationsList =
   LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesUpdateLimitationsList>;
 
 /** The model for update a storageClass */
@@ -1193,7 +1190,7 @@ export interface StorageClassTypePropertiesUpdate {
   /** Server domain */
   domain?: string;
 }
-export const StorageClassTypePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+const StorageClassTypePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backingStorageClassName: S.optional(S.String),
     azureStorageAccountName: S.optional(S.String),
@@ -1233,7 +1230,7 @@ export interface StorageClassPropertiesUpdate {
   /** New storage class type of storageClass */
   typeProperties?: StorageClassTypePropertiesUpdate;
 }
-export const StorageClassPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+const StorageClassPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowVolumeExpansion: S.optional(VolumeExpansion),
     mountOptions: S.optional(StorageClassPropertiesUpdateMountOptionsList),
@@ -1257,7 +1254,7 @@ export interface UpdateStorageClassRequest {
   /** The properties of StorageClass */
   properties?: StorageClassPropertiesUpdate;
 }
-export const UpdateStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     storageClassName: S.String.pipe(T.Label()),
@@ -1286,7 +1283,7 @@ export interface UpdateStorageClassResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
-export const UpdateStorageClassResponse =
+const UpdateStorageClassResponse =
   StorageClassCreateOrUpdateResponse as any as S.Schema<UpdateStorageClassResponse>;
 
 export type BgpPeersCreateOrUpdateError = AzureOpError;

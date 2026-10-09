@@ -41,7 +41,7 @@ export interface CreateEventSchemaRequest {
   event_definition?: string;
   property_group_id?: string;
 }
-export const CreateEventSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event_definition: S.optional(S.String),
@@ -51,7 +51,7 @@ export const CreateEventSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `DateTime` - DateTime * `String` - String * `Numeric` - Numeric * `Boolean` - Boolean * `Object` - Object */
 export type SchemaPropertyTypeEnum = "DateTime" | "String" | "Numeric" | "Boolean" | "Object";
-export const SchemaPropertyTypeEnum = S.String;
+const SchemaPropertyTypeEnum = S.String;
 
 export interface SchemaPropertyGroupProperty {
   id?: string;
@@ -63,7 +63,7 @@ export interface SchemaPropertyGroupProperty {
   created_at?: string;
   updated_at?: string;
 }
-export const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
+const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -79,7 +79,7 @@ export const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupProperty>;
 
 export type SchemaPropertyGroupPropertiesList = Array<SchemaPropertyGroupProperty>;
-export const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ S.Array(
+const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ S.Array(
   SchemaPropertyGroupProperty,
 ) as any as S.Schema<SchemaPropertyGroupPropertiesList>;
 
@@ -87,7 +87,7 @@ export interface EventDefinitionBasic {
   id?: string;
   name?: string;
 }
-export const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
+const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -95,12 +95,12 @@ export const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventDefinitionBasic" }) as any as S.Schema<EventDefinitionBasic>;
 
 export type SchemaPropertyGroupEventsList = Array<EventDefinitionBasic>;
-export const SchemaPropertyGroupEventsList = /*@__PURE__*/ S.Array(
+const SchemaPropertyGroupEventsList = /*@__PURE__*/ S.Array(
   EventDefinitionBasic,
 ) as any as S.Schema<SchemaPropertyGroupEventsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -116,14 +116,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -136,7 +131,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -160,7 +155,7 @@ export interface SchemaPropertyGroup {
   updated_at?: string;
   created_by?: UserBasic | null;
 }
-export const SchemaPropertyGroup = /*@__PURE__*/ S.suspend(() =>
+const SchemaPropertyGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -180,7 +175,7 @@ export interface EventSchemaOutput {
   created_at?: string;
   updated_at?: string;
 }
-export const EventSchemaOutput = /*@__PURE__*/ S.suspend(() =>
+const EventSchemaOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     event_definition: S.optional(S.String),
@@ -196,7 +191,7 @@ export interface EventSchemasDestroyRequest {
   /** A UUID string identifying this event schema. */
   id: string;
 }
-export const EventSchemasDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const EventSchemasDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -208,7 +203,7 @@ export const EventSchemasDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventSchemasDestroyRequest>;
 
 export interface EventSchemasDestroyResponse {}
-export const EventSchemasDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const EventSchemasDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "EventSchemasDestroyResponse",
 }) as any as S.Schema<EventSchemasDestroyResponse>;
 
@@ -220,7 +215,7 @@ export interface ListEventSchemasRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListEventSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -229,7 +224,7 @@ export const ListEventSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEventSchemasRequest" }) as any as S.Schema<ListEventSchemasRequest>;
 
 export type PaginatedEventSchemaListOutputResultsList = Array<EventSchemaOutput>;
-export const PaginatedEventSchemaListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedEventSchemaListOutputResultsList = /*@__PURE__*/ S.Array(
   EventSchemaOutput,
 ) as any as S.Schema<PaginatedEventSchemaListOutputResultsList>;
 
@@ -239,7 +234,7 @@ export interface PaginatedEventSchemaListOutput {
   previous?: string | null;
   results?: PaginatedEventSchemaListOutputResultsList;
 }
-export const PaginatedEventSchemaListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedEventSchemaListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -258,7 +253,7 @@ export interface UpdateEventSchemaRequest {
   event_definition?: string;
   property_group_id?: string;
 }
-export const UpdateEventSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -277,7 +272,7 @@ export interface UpdateEventSchemasPartialRequest {
   event_definition?: string;
   property_group_id?: string;
 }
-export const UpdateEventSchemasPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventSchemasPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

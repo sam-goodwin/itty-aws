@@ -66,7 +66,7 @@ export interface ApproveEntitlementPlanChangeRequest {
   /** Required. Name of the pending plan that's being approved. */
   pendingPlanName?: string;
 }
-export const ApproveEntitlementPlanChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveEntitlementPlanChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pendingPlanName: S.optional(S.String),
   }),
@@ -80,7 +80,7 @@ export interface ApprovePlanChangeProvidersEntitlementsRequest {
   /** Request body */
   body?: ApproveEntitlementPlanChangeRequest;
 }
-export const ApprovePlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApprovePlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveEntitlementPlanChangeRequest.pipe(T.HttpBody())),
@@ -97,12 +97,12 @@ export const ApprovePlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Request message for PartnerProcurementService.ApproveAccount. */
 export interface ApproveAccountRequest {
@@ -113,7 +113,7 @@ export interface ApproveAccountRequest {
   /** The name of the approval being approved. If absent and there is only one approval possible, that approval will be granted. If absent and there are many approvals possible, the request will fail with a 400 Bad Request. Optional. */
   approvalName?: string;
 }
-export const ApproveAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     properties: S.optional(StringMap),
@@ -127,7 +127,7 @@ export interface ApproveProvidersAccountsRequest {
   /** Request body */
   body?: ApproveAccountRequest;
 }
-export const ApproveProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveAccountRequest.pipe(T.HttpBody())),
@@ -149,7 +149,7 @@ export interface ApproveEntitlementRequest {
   /** Optional. The resource name of the entitlement that was migrated, with the format `providers/{provider_id}/entitlements/{entitlement_id}`. Should only be sent when resources have been migrated from entitlement_migrated to the new entitlement. Optional. */
   entitlementMigrated?: string;
 }
-export const ApproveEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(StringMap),
     entitlementMigrated: S.optional(S.String),
@@ -164,7 +164,7 @@ export interface ApproveProvidersEntitlementsRequest {
   /** Request body */
   body?: ApproveEntitlementRequest;
 }
-export const ApproveProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveEntitlementRequest.pipe(T.HttpBody())),
@@ -183,7 +183,7 @@ export type GetProvidersAccountsViewEnum =
   | "ACCOUNT_VIEW_UNSPECIFIED"
   | "ACCOUNT_VIEW_BASIC"
   | "ACCOUNT_VIEW_FULL";
-export const GetProvidersAccountsViewEnum = S.String;
+const GetProvidersAccountsViewEnum = S.String;
 
 export interface GetProvidersAccountsRequest {
   /** Required. The name of the account to retrieve. */
@@ -191,7 +191,7 @@ export interface GetProvidersAccountsRequest {
   /** Optional. What information to include in the response. */
   view?: GetProvidersAccountsViewEnum | (string & {});
 }
-export const GetProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProvidersAccountsViewEnum.pipe(T.Query())),
@@ -207,13 +207,10 @@ export const GetProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProvidersAccountsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type ApprovalStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "APPROVED" | "REJECTED";
-export const ApprovalStateEnum = S.String;
+const ApprovalStateEnum = S.String;
 
 /** An approval for some action on an account. */
 export interface Approval {
@@ -226,7 +223,7 @@ export interface Approval {
   /** Optional. The last update timestamp of the approval. */
   updateTime?: string;
 }
-export const Approval = /*@__PURE__*/ S.suspend(() =>
+const Approval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(ApprovalStateEnum),
@@ -236,13 +233,13 @@ export const Approval = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Approval" }) as any as S.Schema<Approval>;
 
 export type ApprovalList = Array<Approval>;
-export const ApprovalList = /*@__PURE__*/ S.Array(Approval) as any as S.Schema<ApprovalList>;
+const ApprovalList = /*@__PURE__*/ S.Array(Approval) as any as S.Schema<ApprovalList>;
 
 export type AccountStateEnum =
   | "ACCOUNT_STATE_UNSPECIFIED"
   | "ACCOUNT_ACTIVATION_REQUESTED"
   | "ACCOUNT_ACTIVE";
-export const AccountStateEnum = S.String;
+const AccountStateEnum = S.String;
 
 /** Represents an account that was established by the customer on the service provider's system. */
 export interface Account {
@@ -263,7 +260,7 @@ export interface Account {
   /** Output only. The state of the account. This is used to decide whether the customer is in good standing with the provider and is able to make purchases. An account might not be able to make a purchase if the billing account is suspended, for example. */
   state?: AccountStateEnum;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -280,7 +277,7 @@ export interface GetProvidersEntitlementsRequest {
   /** Required. The name of the entitlement to retrieve. */
   name: string;
 }
-export const GetProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -303,24 +300,24 @@ export type EntitlementStateEnum =
   | "ENTITLEMENT_PENDING_PLAN_CHANGE"
   | "ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL"
   | "ENTITLEMENT_SUSPENDED";
-export const EntitlementStateEnum = S.String;
+const EntitlementStateEnum = S.String;
 
 /** A resource using (consuming) this entitlement. */
 export interface Consumer {
   /** A project name with format `projects/`. */
   project?: string;
 }
-export const Consumer = /*@__PURE__*/ S.suspend(() =>
+const Consumer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
   }),
 ).annotate({ identifier: "Consumer" }) as any as S.Schema<Consumer>;
 
 export type ConsumerList = Array<Consumer>;
-export const ConsumerList = /*@__PURE__*/ S.Array(Consumer) as any as S.Schema<ConsumerList>;
+const ConsumerList = /*@__PURE__*/ S.Array(Consumer) as any as S.Schema<ConsumerList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a procured product of a customer. */
 export interface Entitlement {
@@ -377,7 +374,7 @@ export interface Entitlement {
   /** Output only. The identifier of the quote that was used to procure. Empty if the order is not purchased using a quote. */
   quoteExternalName?: string;
 }
-export const Entitlement = /*@__PURE__*/ S.suspend(() =>
+const Entitlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newPendingOfferDuration: S.optional(S.String),
     newPendingOffer: S.optional(S.String),
@@ -416,7 +413,7 @@ export interface ListProvidersAccountsRequest {
   /** The maximum number of entries that are requested. The default page size is 25 and the maximum page size is 200. */
   pageSize?: number;
 }
-export const ListProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -433,7 +430,7 @@ export const ListProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProvidersAccountsRequest>;
 
 export type AccountList = Array<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Response message for [PartnerProcurementService.ListAccounts[]. */
 export interface ListAccountsResponse {
@@ -442,7 +439,7 @@ export interface ListAccountsResponse {
   /** The list of accounts in this response. */
   accounts?: AccountList;
 }
-export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accounts: S.optional(AccountList),
@@ -459,7 +456,7 @@ export interface ListProvidersEntitlementsRequest {
   /** The filter that can be used to limit the list request. The filter is a query string that can match a selected set of attributes with string values. For example `account=E-1234-5678-ABCD-EFGH`, `state=pending_cancellation`, and `plan!=foo-plan`. Supported query attributes are * `account` * `customer_billing_account` with value in the format of: `billingAccounts/{id}` * `product_external_name` * `quote_external_name` * `offer` * `new_pending_offer` * `plan` * `newPendingPlan` or `new_pending_plan` * `state` * `services` * `consumers.project` * `change_history.new_offer` Note that the consumers and change_history.new_offer match works on repeated structures, so equality (`consumers.project=projects/123456789`) is not supported. Set membership can be expressed with the `:` operator. For example, `consumers.project:projects/123456789` finds entitlements with at least one consumer with project field equal to `projects/123456789`. `change_history.new_offer` retrieves all entitlements that were once associated or are currently active with the offer. Also note that the state name match is case-insensitive and query can omit the prefix "ENTITLEMENT_". For example, `state=active` is equivalent to `state=ENTITLEMENT_ACTIVE`. If the query contains some special characters other than letters, underscore, or digits, the phrase must be quoted with double quotes. For example, `product="providerId:productId"`, where the product name needs to be quoted because it contains special character colon. Queries can be combined with `AND`, `OR`, and `NOT` to form more complex queries. They can also be grouped to force a desired evaluation order. For example, `state=active AND (account=E-1234 OR account=5678) AND NOT (product=foo-product)`. Connective `AND` can be omitted between two predicates. For example `account=E-1234 state=active` is equivalent to `account=E-1234 AND state=active`. */
   filter?: string;
 }
-export const ListProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -477,9 +474,7 @@ export const ListProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProvidersEntitlementsRequest>;
 
 export type EntitlementList = Array<Entitlement>;
-export const EntitlementList = /*@__PURE__*/ S.Array(
-  Entitlement,
-) as any as S.Schema<EntitlementList>;
+const EntitlementList = /*@__PURE__*/ S.Array(Entitlement) as any as S.Schema<EntitlementList>;
 
 /** Response message for PartnerProcurementService.ListEntitlements. */
 export interface ListEntitlementsResponse {
@@ -488,7 +483,7 @@ export interface ListEntitlementsResponse {
   /** The list of entitlements in this response. */
   entitlements?: EntitlementList;
 }
-export const ListEntitlementsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEntitlementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     entitlements: S.optional(EntitlementList),
@@ -503,7 +498,7 @@ export interface PatchProvidersEntitlementsRequest {
   /** Request body */
   body?: Entitlement;
 }
-export const PatchProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -526,7 +521,7 @@ export interface RejectEntitlementPlanChangeRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
   reason?: string;
 }
-export const RejectEntitlementPlanChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectEntitlementPlanChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pendingPlanName: S.optional(S.String),
     reason: S.optional(S.String),
@@ -541,7 +536,7 @@ export interface RejectPlanChangeProvidersEntitlementsRequest {
   /** Request body */
   body?: RejectEntitlementPlanChangeRequest;
 }
-export const RejectPlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectPlanChangeProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RejectEntitlementPlanChangeRequest.pipe(T.HttpBody())),
@@ -563,7 +558,7 @@ export interface RejectAccountRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
   reason?: string;
 }
-export const RejectAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvalName: S.optional(S.String),
     reason: S.optional(S.String),
@@ -576,7 +571,7 @@ export interface RejectProvidersAccountsRequest {
   /** Request body */
   body?: RejectAccountRequest;
 }
-export const RejectProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RejectAccountRequest.pipe(T.HttpBody())),
@@ -596,7 +591,7 @@ export interface RejectEntitlementRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
   reason?: string;
 }
-export const RejectEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
   }),
@@ -608,7 +603,7 @@ export interface RejectProvidersEntitlementsRequest {
   /** Request body */
   body?: RejectEntitlementRequest;
 }
-export const RejectProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RejectEntitlementRequest.pipe(T.HttpBody())),
@@ -625,7 +620,7 @@ export const RejectProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for PartnerProcurementService.ResetAccount. */
 export interface ResetAccountRequest {}
-export const ResetAccountRequest = Empty as any as S.Schema<ResetAccountRequest>;
+const ResetAccountRequest = Empty as any as S.Schema<ResetAccountRequest>;
 
 export interface ResetProvidersAccountsRequest {
   /** Required. The resource name of the account. */
@@ -633,7 +628,7 @@ export interface ResetProvidersAccountsRequest {
   /** Request body */
   body?: ResetAccountRequest;
 }
-export const ResetProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetProvidersAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ResetAccountRequest.pipe(T.HttpBody())),
@@ -653,7 +648,7 @@ export interface SuspendEntitlementRequest {
   /** A free-form reason string, explaining the reason for suspension request. */
   reason?: string;
 }
-export const SuspendEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
   }),
@@ -667,7 +662,7 @@ export interface SuspendProvidersEntitlementsRequest {
   /** Request body */
   body?: SuspendEntitlementRequest;
 }
-export const SuspendProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendProvidersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SuspendEntitlementRequest.pipe(T.HttpBody())),

@@ -13,7 +13,7 @@ export interface ConfigurationPropertiesInput {
   /** When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited. */
   enforcePrivateMarkdownStorage?: boolean;
 }
-export const ConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforcePrivateMarkdownStorage: S.optional(S.Boolean),
   }),
@@ -27,7 +27,7 @@ export interface CreateTenantConfigurationRequest {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
-export const CreateTenantConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTenantConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationName: S.String.pipe(T.Label()),
     properties: S.optional(ConfigurationPropertiesInput),
@@ -45,11 +45,11 @@ export const CreateTenantConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -66,7 +66,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -79,7 +79,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const AzureResourceManagerResourceProvisioningState = S.String;
+const AzureResourceManagerResourceProvisioningState = S.String;
 
 /** Tenant Configuration Properties with Provisioning state */
 export interface ConfigurationProperties {
@@ -88,7 +88,7 @@ export interface ConfigurationProperties {
   /** The status of the last operation. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const ConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforcePrivateMarkdownStorage: S.optional(S.Boolean),
     provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
@@ -107,7 +107,7 @@ export interface CreateTenantConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
-export const CreateTenantConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTenantConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -121,7 +121,7 @@ export const CreateTenantConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DashboardsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DashboardsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const DashboardsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DashboardsCreateOrUpdateRequestTagsMap>;
@@ -139,7 +139,7 @@ export interface DashboardPartsPosition {
   /** The dashboard part's metadata. */
   metadata?: unknown;
 }
-export const DashboardPartsPosition = /*@__PURE__*/ S.suspend(() =>
+const DashboardPartsPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.Number,
     y: S.Number,
@@ -156,7 +156,7 @@ export interface DashboardParts {
   /** The dashboard part's metadata. */
   metadata?: unknown;
 }
-export const DashboardParts = /*@__PURE__*/ S.suspend(() =>
+const DashboardParts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     position: DashboardPartsPosition,
     metadata: S.optional(S.Unknown),
@@ -165,7 +165,7 @@ export const DashboardParts = /*@__PURE__*/ S.suspend(() =>
 
 /** The dashboard parts. */
 export type DashboardLensPartsList = Array<DashboardParts>;
-export const DashboardLensPartsList = /*@__PURE__*/ S.Array(
+const DashboardLensPartsList = /*@__PURE__*/ S.Array(
   DashboardParts,
 ) as any as S.Schema<DashboardLensPartsList>;
 
@@ -178,7 +178,7 @@ export interface DashboardLens {
   /** The dashboard len's metadata. */
   metadata?: unknown;
 }
-export const DashboardLens = /*@__PURE__*/ S.suspend(() =>
+const DashboardLens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order: S.Number,
     parts: DashboardLensPartsList,
@@ -188,7 +188,7 @@ export const DashboardLens = /*@__PURE__*/ S.suspend(() =>
 
 /** The dashboard lenses. */
 export type DashboardPropertiesWithProvisioningStateInputLensesList = Array<DashboardLens>;
-export const DashboardPropertiesWithProvisioningStateInputLensesList = /*@__PURE__*/ S.Array(
+const DashboardPropertiesWithProvisioningStateInputLensesList = /*@__PURE__*/ S.Array(
   DashboardLens,
 ) as any as S.Schema<DashboardPropertiesWithProvisioningStateInputLensesList>;
 
@@ -199,7 +199,7 @@ export interface DashboardPropertiesWithProvisioningStateInput {
   /** The dashboard metadata. */
   metadata?: unknown;
 }
-export const DashboardPropertiesWithProvisioningStateInput = /*@__PURE__*/ S.suspend(() =>
+const DashboardPropertiesWithProvisioningStateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lenses: S.optional(DashboardPropertiesWithProvisioningStateInputLensesList),
     metadata: S.optional(S.Unknown),
@@ -222,7 +222,7 @@ export interface DashboardsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningStateInput;
 }
-export const DashboardsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DashboardsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -244,12 +244,12 @@ export const DashboardsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DashboardsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DashboardsCreateOrUpdateResponseTagsMap =
+const DashboardsCreateOrUpdateResponseTagsMap =
   DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<DashboardsCreateOrUpdateResponseTagsMap>;
 
 /** The dashboard lenses. */
 export type DashboardPropertiesWithProvisioningStateLensesList = Array<DashboardLens>;
-export const DashboardPropertiesWithProvisioningStateLensesList =
+const DashboardPropertiesWithProvisioningStateLensesList =
   DashboardPropertiesWithProvisioningStateInputLensesList as any as S.Schema<DashboardPropertiesWithProvisioningStateLensesList>;
 
 /** Dashboard Properties with Provisioning state */
@@ -261,7 +261,7 @@ export interface DashboardPropertiesWithProvisioningState {
   /** The status of the last operation. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const DashboardPropertiesWithProvisioningState = /*@__PURE__*/ S.suspend(() =>
+const DashboardPropertiesWithProvisioningState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lenses: S.optional(DashboardPropertiesWithProvisioningStateLensesList),
     metadata: S.optional(S.Unknown),
@@ -287,7 +287,7 @@ export interface DashboardsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
-export const DashboardsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DashboardsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -309,7 +309,7 @@ export interface DeleteDashboardRequest {
   /** The name of the dashboard. */
   dashboardName: string;
 }
-export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -325,7 +325,7 @@ export const DeleteDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDashboardRequest" }) as any as S.Schema<DeleteDashboardRequest>;
 
 export interface DeleteDashboardResponse {}
-export const DeleteDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDashboardResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDashboardResponse",
 }) as any as S.Schema<DeleteDashboardResponse>;
 
@@ -333,7 +333,7 @@ export interface DeleteTenantConfigurationRequest {
   /** The name of the Configuration */
   configurationName: string;
 }
-export const DeleteTenantConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTenantConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationName: S.String.pipe(T.Label()),
   }).pipe(
@@ -349,9 +349,7 @@ export const DeleteTenantConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTenantConfigurationRequest>;
 
 export interface DeleteTenantConfigurationResponse {}
-export const DeleteTenantConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteTenantConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteTenantConfigurationResponse",
 }) as any as S.Schema<DeleteTenantConfigurationResponse>;
 
@@ -363,7 +361,7 @@ export interface GetDashboardRequest {
   /** The name of the dashboard. */
   dashboardName: string;
 }
-export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -380,7 +378,7 @@ export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDashboardResponseTagsMap = { [key: string]: string | undefined };
-export const GetDashboardResponseTagsMap =
+const GetDashboardResponseTagsMap =
   DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<GetDashboardResponseTagsMap>;
 
 export interface GetDashboardResponse {
@@ -399,7 +397,7 @@ export interface GetDashboardResponse {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
-export const GetDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -415,7 +413,7 @@ export interface GetTenantConfigurationRequest {
   /** The name of the Configuration */
   configurationName: string;
 }
-export const GetTenantConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTenantConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationName: S.String.pipe(T.Label()),
   }).pipe(
@@ -442,7 +440,7 @@ export interface GetTenantConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
-export const GetTenantConfigurationResponse =
+const GetTenantConfigurationResponse =
   CreateTenantConfigurationResponse as any as S.Schema<GetTenantConfigurationResponse>;
 
 export interface ListDashboardByResourceGroupRequest {
@@ -451,7 +449,7 @@ export interface ListDashboardByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListDashboardByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -469,9 +467,6 @@ export const ListDashboardByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DashboardTagsMap = { [key: string]: string | undefined };
-export const DashboardTagsMap =
-  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<DashboardTagsMap>;
-
 /** The shared dashboard resource definition. */
 export interface Dashboard {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -489,11 +484,11 @@ export interface Dashboard {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
-export const Dashboard = GetDashboardResponse as any as S.Schema<Dashboard>;
+const Dashboard = GetDashboardResponse as any as S.Schema<Dashboard>;
 
 /** The Dashboard items on this page */
 export type ListDashboardByResourceGroupResponseValueList = Array<Dashboard>;
-export const ListDashboardByResourceGroupResponseValueList = /*@__PURE__*/ S.Array(
+const ListDashboardByResourceGroupResponseValueList = /*@__PURE__*/ S.Array(
   Dashboard,
 ) as any as S.Schema<ListDashboardByResourceGroupResponseValueList>;
 
@@ -503,7 +498,7 @@ export interface ListDashboardByResourceGroupResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListDashboardByResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardByResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListDashboardByResourceGroupResponseValueList,
     nextLink: S.optional(S.String),
@@ -516,7 +511,7 @@ export interface ListDashboardBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListDashboardBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDashboardBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -533,20 +528,17 @@ export const ListDashboardBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Dashboard items on this page */
 export type ListDashboardBySubscriptionResponseValueList = Array<Dashboard>;
-export const ListDashboardBySubscriptionResponseValueList =
-  ListDashboardByResourceGroupResponseValueList as any as S.Schema<ListDashboardBySubscriptionResponseValueList>;
-
 export interface ListDashboardBySubscriptionResponse {
   /** The Dashboard items on this page */
   value: ListDashboardBySubscriptionResponseValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListDashboardBySubscriptionResponse =
+const ListDashboardBySubscriptionResponse =
   ListDashboardByResourceGroupResponse as any as S.Schema<ListDashboardBySubscriptionResponse>;
 
 export interface ListListTenantConfigurationViolationsRequest {}
-export const ListListTenantConfigurationViolationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListListTenantConfigurationViolationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -568,7 +560,7 @@ export interface Violation {
   /** Error message. */
   errorMessage?: string;
 }
-export const Violation = /*@__PURE__*/ S.suspend(() =>
+const Violation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     userId: S.optional(S.String),
@@ -578,7 +570,7 @@ export const Violation = /*@__PURE__*/ S.suspend(() =>
 
 /** The Violation items on this page */
 export type ListListTenantConfigurationViolationsResponseValueList = Array<Violation>;
-export const ListListTenantConfigurationViolationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListListTenantConfigurationViolationsResponseValueList = /*@__PURE__*/ S.Array(
   Violation,
 ) as any as S.Schema<ListListTenantConfigurationViolationsResponseValueList>;
 
@@ -588,7 +580,7 @@ export interface ListListTenantConfigurationViolationsResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListListTenantConfigurationViolationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListListTenantConfigurationViolationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListListTenantConfigurationViolationsResponseValueList,
     nextLink: S.optional(S.String),
@@ -598,7 +590,7 @@ export const ListListTenantConfigurationViolationsResponse = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListListTenantConfigurationViolationsResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -620,7 +612,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -631,11 +623,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -650,7 +642,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -662,7 +654,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -672,7 +664,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -680,7 +672,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperationsResponse" }) as any as S.Schema<ListOperationsResponse>;
 
 export interface ListTenantConfigurationsRequest {}
-export const ListTenantConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTenantConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -706,7 +698,7 @@ export interface Configuration {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
-export const Configuration = /*@__PURE__*/ S.suspend(() =>
+const Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -718,7 +710,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 
 /** The Configuration items on this page */
 export type ListTenantConfigurationsResponseValueList = Array<Configuration>;
-export const ListTenantConfigurationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListTenantConfigurationsResponseValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ListTenantConfigurationsResponseValueList>;
 
@@ -728,7 +720,7 @@ export interface ListTenantConfigurationsResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListTenantConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTenantConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListTenantConfigurationsResponseValueList,
     nextLink: S.optional(S.String),
@@ -739,7 +731,7 @@ export const ListTenantConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The dashboard lenses. */
 export type DashboardPropertiesLensesList = Array<DashboardLens>;
-export const DashboardPropertiesLensesList =
+const DashboardPropertiesLensesList =
   DashboardPropertiesWithProvisioningStateInputLensesList as any as S.Schema<DashboardPropertiesLensesList>;
 
 /** The shared dashboard properties. */
@@ -749,7 +741,7 @@ export interface DashboardProperties {
   /** The dashboard metadata. */
   metadata?: unknown;
 }
-export const DashboardProperties = /*@__PURE__*/ S.suspend(() =>
+const DashboardProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lenses: S.optional(DashboardPropertiesLensesList),
     metadata: S.optional(S.Unknown),
@@ -758,7 +750,7 @@ export const DashboardProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateDashboardRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDashboardRequestTagsMap =
+const UpdateDashboardRequestTagsMap =
   DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDashboardRequestTagsMap>;
 
 export interface UpdateDashboardRequest {
@@ -773,7 +765,7 @@ export interface UpdateDashboardRequest {
   /** Resource tags */
   tags?: UpdateDashboardRequestTagsMap;
 }
-export const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -792,9 +784,6 @@ export const UpdateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDashboardResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDashboardResponseTagsMap =
-  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDashboardResponseTagsMap>;
-
 export interface UpdateDashboardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -811,8 +800,7 @@ export interface UpdateDashboardResponse {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
-export const UpdateDashboardResponse =
-  GetDashboardResponse as any as S.Schema<UpdateDashboardResponse>;
+const UpdateDashboardResponse = GetDashboardResponse as any as S.Schema<UpdateDashboardResponse>;
 
 export type CreateTenantConfigurationError = AzureOpError;
 /** Create the tenant configuration. If configuration already exists - update it. User has to be a Tenant Admin for this operation. */

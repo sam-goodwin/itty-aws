@@ -15,7 +15,7 @@ export interface AssignFloatingIpRequest {
   /** [Server](#tag/servers) the [Floating IP](#tag/floating-ips) is assigned to. `null` if not assigned. */
   server: number | null;
 }
-export const AssignFloatingIpRequest = /*@__PURE__*/ S.suspend(() =>
+const AssignFloatingIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     server: S.NullOr(S.Number),
@@ -24,7 +24,7 @@ export const AssignFloatingIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type AssignFloatingIpResponseActionStatus = "running" | "success" | "error";
-export const AssignFloatingIpResponseActionStatus = S.String;
+const AssignFloatingIpResponseActionStatus = S.String;
 
 export interface AssignFloatingIpResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -32,7 +32,7 @@ export interface AssignFloatingIpResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const AssignFloatingIpResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const AssignFloatingIpResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -44,7 +44,7 @@ export const AssignFloatingIpResponseActionResourcesItem = /*@__PURE__*/ S.suspe
 /** Resources the Action relates to. */
 export type AssignFloatingIpResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const AssignFloatingIpResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const AssignFloatingIpResponseActionResourcesList = /*@__PURE__*/ S.Array(
   AssignFloatingIpResponseActionResourcesItem,
 ) as any as S.Schema<AssignFloatingIpResponseActionResourcesList>;
 
@@ -55,7 +55,7 @@ export interface AssignFloatingIpResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const AssignFloatingIpResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const AssignFloatingIpResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -82,7 +82,7 @@ export interface AssignFloatingIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
-export const AssignFloatingIpResponseAction = /*@__PURE__*/ S.suspend(() =>
+const AssignFloatingIpResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -100,7 +100,7 @@ export const AssignFloatingIpResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface AssignFloatingIpResponse {
   action: AssignFloatingIpResponseAction;
 }
-export const AssignFloatingIpResponse = /*@__PURE__*/ S.suspend(() =>
+const AssignFloatingIpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AssignFloatingIpResponseAction,
   }),
@@ -114,7 +114,7 @@ export interface ChangeFloatingIpDnsPtrRequest {
   /** Domain Name to point to. PTR record content used for reverse DNS. Set to null to reset (IPv4) to the default value or remove (IPv6) the record. */
   dns_ptr: string | null;
 }
-export const ChangeFloatingIpDnsPtrRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeFloatingIpDnsPtrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     ip: S.String,
@@ -126,23 +126,18 @@ export const ChangeFloatingIpDnsPtrRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeFloatingIpDnsPtrResponseActionStatus = "running" | "success" | "error";
-export const ChangeFloatingIpDnsPtrResponseActionStatus = S.String;
+const ChangeFloatingIpDnsPtrResponseActionStatus = S.String;
 
 export type ChangeFloatingIpDnsPtrResponseActionResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
-export const ChangeFloatingIpDnsPtrResponseActionResourcesItem =
-  AssignFloatingIpResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ChangeFloatingIpDnsPtrResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const ChangeFloatingIpDnsPtrResponseActionResourcesList =
+const ChangeFloatingIpDnsPtrResponseActionResourcesList =
   AssignFloatingIpResponseActionResourcesList as any as S.Schema<ChangeFloatingIpDnsPtrResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeFloatingIpDnsPtrResponseActionError = AssignFloatingIpResponseActionError;
-export const ChangeFloatingIpDnsPtrResponseActionError = AssignFloatingIpResponseActionError;
-
 export interface ChangeFloatingIpDnsPtrResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -161,7 +156,7 @@ export interface ChangeFloatingIpDnsPtrResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
-export const ChangeFloatingIpDnsPtrResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeFloatingIpDnsPtrResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -179,7 +174,7 @@ export const ChangeFloatingIpDnsPtrResponseAction = /*@__PURE__*/ S.suspend(() =
 export interface ChangeFloatingIpDnsPtrResponse {
   action: ChangeFloatingIpDnsPtrResponseAction;
 }
-export const ChangeFloatingIpDnsPtrResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeFloatingIpDnsPtrResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeFloatingIpDnsPtrResponseAction,
   }),
@@ -193,7 +188,7 @@ export interface ChangeFloatingIpProtectionRequest {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-export const ChangeFloatingIpProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeFloatingIpProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     delete: S.Boolean,
@@ -206,23 +201,18 @@ export const ChangeFloatingIpProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeFloatingIpProtectionResponseActionStatus = "running" | "success" | "error";
-export const ChangeFloatingIpProtectionResponseActionStatus = S.String;
+const ChangeFloatingIpProtectionResponseActionStatus = S.String;
 
 export type ChangeFloatingIpProtectionResponseActionResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
-export const ChangeFloatingIpProtectionResponseActionResourcesItem =
-  AssignFloatingIpResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ChangeFloatingIpProtectionResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const ChangeFloatingIpProtectionResponseActionResourcesList =
+const ChangeFloatingIpProtectionResponseActionResourcesList =
   AssignFloatingIpResponseActionResourcesList as any as S.Schema<ChangeFloatingIpProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeFloatingIpProtectionResponseActionError = AssignFloatingIpResponseActionError;
-export const ChangeFloatingIpProtectionResponseActionError = AssignFloatingIpResponseActionError;
-
 export interface ChangeFloatingIpProtectionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -241,7 +231,7 @@ export interface ChangeFloatingIpProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
-export const ChangeFloatingIpProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeFloatingIpProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -259,7 +249,7 @@ export const ChangeFloatingIpProtectionResponseAction = /*@__PURE__*/ S.suspend(
 export interface ChangeFloatingIpProtectionResponse {
   action: ChangeFloatingIpProtectionResponseAction;
 }
-export const ChangeFloatingIpProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeFloatingIpProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeFloatingIpProtectionResponseAction,
   }),
@@ -271,7 +261,7 @@ export interface GetFloatingIpsActionRequest {
   /** ID of the Action. */
   id: number;
 }
-export const GetFloatingIpsActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFloatingIpsActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/floating_ips/actions/{id}", code: 200 })),
@@ -281,23 +271,18 @@ export const GetFloatingIpsActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type GetFloatingIpsActionResponseActionStatus = "running" | "success" | "error";
-export const GetFloatingIpsActionResponseActionStatus = S.String;
+const GetFloatingIpsActionResponseActionStatus = S.String;
 
 export type GetFloatingIpsActionResponseActionResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
-export const GetFloatingIpsActionResponseActionResourcesItem =
-  AssignFloatingIpResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type GetFloatingIpsActionResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const GetFloatingIpsActionResponseActionResourcesList =
+const GetFloatingIpsActionResponseActionResourcesList =
   AssignFloatingIpResponseActionResourcesList as any as S.Schema<GetFloatingIpsActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetFloatingIpsActionResponseActionError = AssignFloatingIpResponseActionError;
-export const GetFloatingIpsActionResponseActionError = AssignFloatingIpResponseActionError;
-
 export interface GetFloatingIpsActionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -316,7 +301,7 @@ export interface GetFloatingIpsActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
-export const GetFloatingIpsActionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const GetFloatingIpsActionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -334,7 +319,7 @@ export const GetFloatingIpsActionResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface GetFloatingIpsActionResponse {
   action: GetFloatingIpsActionResponseAction;
 }
-export const GetFloatingIpsActionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFloatingIpsActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: GetFloatingIpsActionResponseAction,
   }),
@@ -358,23 +343,21 @@ export type ListFloatingIpActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListFloatingIpActionsRequestSortItem = S.String;
+const ListFloatingIpActionsRequestSortItem = S.String;
 
 export type ListFloatingIpActionsRequestSortList = Array<
   ListFloatingIpActionsRequestSortItem | (string & {})
 >;
-export const ListFloatingIpActionsRequestSortList = /*@__PURE__*/ S.Array(
+const ListFloatingIpActionsRequestSortList = /*@__PURE__*/ S.Array(
   ListFloatingIpActionsRequestSortItem,
 ) as any as S.Schema<ListFloatingIpActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListFloatingIpActionsRequestStatusItem = "running" | "success" | "error";
-export const ListFloatingIpActionsRequestStatusItem = S.String;
-
 export type ListFloatingIpActionsRequestStatusList = Array<
   ListFloatingIpActionsRequestStatusItem | (string & {})
 >;
-export const ListFloatingIpActionsRequestStatusList =
+const ListFloatingIpActionsRequestStatusList =
   ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpActionsRequestStatusList>;
 
 export interface ListFloatingIpActionsRequest {
@@ -389,7 +372,7 @@ export interface ListFloatingIpActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListFloatingIpActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFloatingIpActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     sort: S.optional(ListFloatingIpActionsRequestSortList.pipe(T.Query())),
@@ -403,23 +386,18 @@ export const ListFloatingIpActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListFloatingIpActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListFloatingIpActionsResponseActionsItemStatus = S.String;
+const ListFloatingIpActionsResponseActionsItemStatus = S.String;
 
 export type ListFloatingIpActionsResponseActionsItemResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
-export const ListFloatingIpActionsResponseActionsItemResourcesItem =
-  AssignFloatingIpResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListFloatingIpActionsResponseActionsItemResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const ListFloatingIpActionsResponseActionsItemResourcesList =
+const ListFloatingIpActionsResponseActionsItemResourcesList =
   AssignFloatingIpResponseActionResourcesList as any as S.Schema<ListFloatingIpActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFloatingIpActionsResponseActionsItemError = AssignFloatingIpResponseActionError;
-export const ListFloatingIpActionsResponseActionsItemError = AssignFloatingIpResponseActionError;
-
 export interface ListFloatingIpActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -438,7 +416,7 @@ export interface ListFloatingIpActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
-export const ListFloatingIpActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListFloatingIpActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -455,7 +433,7 @@ export const ListFloatingIpActionsResponseActionsItem = /*@__PURE__*/ S.suspend(
 
 export type ListFloatingIpActionsResponseActionsList =
   Array<ListFloatingIpActionsResponseActionsItem>;
-export const ListFloatingIpActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListFloatingIpActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListFloatingIpActionsResponseActionsItem,
 ) as any as S.Schema<ListFloatingIpActionsResponseActionsList>;
 
@@ -474,7 +452,7 @@ export interface ListFloatingIpActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListFloatingIpActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListFloatingIpActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -491,7 +469,7 @@ export interface ListFloatingIpActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListFloatingIpActionsResponseMetaPagination;
 }
-export const ListFloatingIpActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListFloatingIpActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListFloatingIpActionsResponseMetaPagination,
   }),
@@ -503,7 +481,7 @@ export interface ListFloatingIpActionsResponse {
   actions: ListFloatingIpActionsResponseActionsList;
   meta: ListFloatingIpActionsResponseMeta;
 }
-export const ListFloatingIpActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFloatingIpActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListFloatingIpActionsResponseActionsList,
     meta: ListFloatingIpActionsResponseMeta,
@@ -513,7 +491,7 @@ export const ListFloatingIpActionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFloatingIpActionsResponse>;
 
 export type ListFloatingIpsActionsRequestIdList = Array<number>;
-export const ListFloatingIpsActionsRequestIdList = /*@__PURE__*/ S.Array(
+const ListFloatingIpsActionsRequestIdList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListFloatingIpsActionsRequestIdList>;
 
@@ -533,22 +511,18 @@ export type ListFloatingIpsActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListFloatingIpsActionsRequestSortItem = S.String;
-
 export type ListFloatingIpsActionsRequestSortList = Array<
   ListFloatingIpsActionsRequestSortItem | (string & {})
 >;
-export const ListFloatingIpsActionsRequestSortList =
+const ListFloatingIpsActionsRequestSortList =
   ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpsActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListFloatingIpsActionsRequestStatusItem = "running" | "success" | "error";
-export const ListFloatingIpsActionsRequestStatusItem = S.String;
-
 export type ListFloatingIpsActionsRequestStatusList = Array<
   ListFloatingIpsActionsRequestStatusItem | (string & {})
 >;
-export const ListFloatingIpsActionsRequestStatusList =
+const ListFloatingIpsActionsRequestStatusList =
   ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpsActionsRequestStatusList>;
 
 export interface ListFloatingIpsActionsRequest {
@@ -563,7 +537,7 @@ export interface ListFloatingIpsActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListFloatingIpsActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFloatingIpsActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ListFloatingIpsActionsRequestIdList.pipe(T.Query())),
     sort: S.optional(ListFloatingIpsActionsRequestSortList.pipe(T.Query())),
@@ -577,23 +551,18 @@ export const ListFloatingIpsActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListFloatingIpsActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListFloatingIpsActionsResponseActionsItemStatus = S.String;
+const ListFloatingIpsActionsResponseActionsItemStatus = S.String;
 
 export type ListFloatingIpsActionsResponseActionsItemResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
-export const ListFloatingIpsActionsResponseActionsItemResourcesItem =
-  AssignFloatingIpResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListFloatingIpsActionsResponseActionsItemResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const ListFloatingIpsActionsResponseActionsItemResourcesList =
+const ListFloatingIpsActionsResponseActionsItemResourcesList =
   AssignFloatingIpResponseActionResourcesList as any as S.Schema<ListFloatingIpsActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFloatingIpsActionsResponseActionsItemError = AssignFloatingIpResponseActionError;
-export const ListFloatingIpsActionsResponseActionsItemError = AssignFloatingIpResponseActionError;
-
 export interface ListFloatingIpsActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -612,7 +581,7 @@ export interface ListFloatingIpsActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
-export const ListFloatingIpsActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListFloatingIpsActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -629,24 +598,19 @@ export const ListFloatingIpsActionsResponseActionsItem = /*@__PURE__*/ S.suspend
 
 export type ListFloatingIpsActionsResponseActionsList =
   Array<ListFloatingIpsActionsResponseActionsItem>;
-export const ListFloatingIpsActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListFloatingIpsActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListFloatingIpsActionsResponseActionsItem,
 ) as any as S.Schema<ListFloatingIpsActionsResponseActionsList>;
 
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListFloatingIpsActionsResponseMetaPagination =
   ListFloatingIpActionsResponseMetaPagination;
-export const ListFloatingIpsActionsResponseMetaPagination =
-  ListFloatingIpActionsResponseMetaPagination;
-
 export type ListFloatingIpsActionsResponseMeta = ListFloatingIpActionsResponseMeta;
-export const ListFloatingIpsActionsResponseMeta = ListFloatingIpActionsResponseMeta;
-
 export interface ListFloatingIpsActionsResponse {
   actions: ListFloatingIpsActionsResponseActionsList;
   meta: ListFloatingIpActionsResponseMeta;
 }
-export const ListFloatingIpsActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFloatingIpsActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListFloatingIpsActionsResponseActionsList,
     meta: ListFloatingIpActionsResponseMeta,
@@ -659,7 +623,7 @@ export interface UnassignFloatingIpRequest {
   /** ID of the Floating IP. */
   id: number;
 }
-export const UnassignFloatingIpRequest = /*@__PURE__*/ S.suspend(() =>
+const UnassignFloatingIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/floating_ips/{id}/actions/unassign", code: 200 })),
@@ -669,23 +633,18 @@ export const UnassignFloatingIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type UnassignFloatingIpResponseActionStatus = "running" | "success" | "error";
-export const UnassignFloatingIpResponseActionStatus = S.String;
+const UnassignFloatingIpResponseActionStatus = S.String;
 
 export type UnassignFloatingIpResponseActionResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
-export const UnassignFloatingIpResponseActionResourcesItem =
-  AssignFloatingIpResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type UnassignFloatingIpResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
-export const UnassignFloatingIpResponseActionResourcesList =
+const UnassignFloatingIpResponseActionResourcesList =
   AssignFloatingIpResponseActionResourcesList as any as S.Schema<UnassignFloatingIpResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UnassignFloatingIpResponseActionError = AssignFloatingIpResponseActionError;
-export const UnassignFloatingIpResponseActionError = AssignFloatingIpResponseActionError;
-
 export interface UnassignFloatingIpResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -704,7 +663,7 @@ export interface UnassignFloatingIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
-export const UnassignFloatingIpResponseAction = /*@__PURE__*/ S.suspend(() =>
+const UnassignFloatingIpResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -722,7 +681,7 @@ export const UnassignFloatingIpResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface UnassignFloatingIpResponse {
   action: UnassignFloatingIpResponseAction;
 }
-export const UnassignFloatingIpResponse = /*@__PURE__*/ S.suspend(() =>
+const UnassignFloatingIpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: UnassignFloatingIpResponseAction,
   }),

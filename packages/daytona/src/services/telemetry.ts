@@ -16,7 +16,7 @@ export interface GetOrganizationSandboxTelemetryTraceRequest {
   /** Trace ID */
   traceId: string;
 }
-export const GetOrganizationSandboxTelemetryTraceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationSandboxTelemetryTraceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     sandboxId: S.String.pipe(T.Label()),
@@ -33,7 +33,7 @@ export const GetOrganizationSandboxTelemetryTraceRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetOrganizationSandboxTelemetryTraceRequest>;
 
 export type ModelsSpanSpanAttributesMap = { [key: string]: string | undefined };
-export const ModelsSpanSpanAttributesMap = /*@__PURE__*/ S.Record(
+const ModelsSpanSpanAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ModelsSpanSpanAttributesMap>;
@@ -49,7 +49,7 @@ export interface ModelsSpan {
   timestamp?: string;
   traceId?: string;
 }
-export const ModelsSpan = /*@__PURE__*/ S.suspend(() =>
+const ModelsSpan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     durationMs: S.optional(S.Number),
     parentSpanId: S.optional(S.String),
@@ -64,13 +64,13 @@ export const ModelsSpan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelsSpan" }) as any as S.Schema<ModelsSpan>;
 
 export type GetOrganizationSandboxTelemetryTraceResponseBodyList = Array<ModelsSpan>;
-export const GetOrganizationSandboxTelemetryTraceResponseBodyList = /*@__PURE__*/ S.Array(
+const GetOrganizationSandboxTelemetryTraceResponseBodyList = /*@__PURE__*/ S.Array(
   ModelsSpan,
 ) as any as S.Schema<GetOrganizationSandboxTelemetryTraceResponseBodyList>;
 
 export type GetOrganizationSandboxTelemetryTraceResponse =
   GetOrganizationSandboxTelemetryTraceResponseBodyList;
-export const GetOrganizationSandboxTelemetryTraceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationSandboxTelemetryTraceResponse = /*@__PURE__*/ S.suspend(() =>
   GetOrganizationSandboxTelemetryTraceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetOrganizationSandboxTelemetryTraceResponse",
@@ -94,7 +94,7 @@ export interface ListOrganizationSandboxTelemetryLogsRequest {
   /** Offset */
   offset?: number;
 }
-export const ListOrganizationSandboxTelemetryLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSandboxTelemetryLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     sandboxId: S.String.pipe(T.Label()),
@@ -116,11 +116,11 @@ export const ListOrganizationSandboxTelemetryLogsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationSandboxTelemetryLogsRequest>;
 
 export type ModelsLogEntryLogAttributesMap = { [key: string]: string | undefined };
-export const ModelsLogEntryLogAttributesMap =
+const ModelsLogEntryLogAttributesMap =
   ModelsSpanSpanAttributesMap as any as S.Schema<ModelsLogEntryLogAttributesMap>;
 
 export type ModelsLogEntryResourceAttributesMap = { [key: string]: string | undefined };
-export const ModelsLogEntryResourceAttributesMap =
+const ModelsLogEntryResourceAttributesMap =
   ModelsSpanSpanAttributesMap as any as S.Schema<ModelsLogEntryResourceAttributesMap>;
 
 export interface ModelsLogEntry {
@@ -134,7 +134,7 @@ export interface ModelsLogEntry {
   timestamp?: string;
   traceId?: string;
 }
-export const ModelsLogEntry = /*@__PURE__*/ S.suspend(() =>
+const ModelsLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     logAttributes: S.optional(ModelsLogEntryLogAttributesMap),
@@ -149,13 +149,13 @@ export const ModelsLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelsLogEntry" }) as any as S.Schema<ModelsLogEntry>;
 
 export type ListOrganizationSandboxTelemetryLogsResponseBodyList = Array<ModelsLogEntry>;
-export const ListOrganizationSandboxTelemetryLogsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationSandboxTelemetryLogsResponseBodyList = /*@__PURE__*/ S.Array(
   ModelsLogEntry,
 ) as any as S.Schema<ListOrganizationSandboxTelemetryLogsResponseBodyList>;
 
 export type ListOrganizationSandboxTelemetryLogsResponse =
   ListOrganizationSandboxTelemetryLogsResponseBodyList;
-export const ListOrganizationSandboxTelemetryLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSandboxTelemetryLogsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationSandboxTelemetryLogsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationSandboxTelemetryLogsResponse",
@@ -173,7 +173,7 @@ export interface ListOrganizationSandboxTelemetryMetricsRequest {
   /** Comma-separated metric names */
   metricNames?: string;
 }
-export const ListOrganizationSandboxTelemetryMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSandboxTelemetryMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     sandboxId: S.String.pipe(T.Label()),
@@ -196,7 +196,7 @@ export interface ModelsMetricPoint {
   timestamp?: string;
   value?: number;
 }
-export const ModelsMetricPoint = /*@__PURE__*/ S.suspend(() =>
+const ModelsMetricPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricName: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -205,13 +205,13 @@ export const ModelsMetricPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelsMetricPoint" }) as any as S.Schema<ModelsMetricPoint>;
 
 export type ListOrganizationSandboxTelemetryMetricsResponseBodyList = Array<ModelsMetricPoint>;
-export const ListOrganizationSandboxTelemetryMetricsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationSandboxTelemetryMetricsResponseBodyList = /*@__PURE__*/ S.Array(
   ModelsMetricPoint,
 ) as any as S.Schema<ListOrganizationSandboxTelemetryMetricsResponseBodyList>;
 
 export type ListOrganizationSandboxTelemetryMetricsResponse =
   ListOrganizationSandboxTelemetryMetricsResponseBodyList;
-export const ListOrganizationSandboxTelemetryMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSandboxTelemetryMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationSandboxTelemetryMetricsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationSandboxTelemetryMetricsResponse",
@@ -231,7 +231,7 @@ export interface ListOrganizationSandboxTelemetryTracesRequest {
   /** Offset */
   offset?: number;
 }
-export const ListOrganizationSandboxTelemetryTracesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSandboxTelemetryTracesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     sandboxId: S.String.pipe(T.Label()),
@@ -259,7 +259,7 @@ export interface ModelsTraceSummary {
   totalDurationMs?: number;
   traceId?: string;
 }
-export const ModelsTraceSummary = /*@__PURE__*/ S.suspend(() =>
+const ModelsTraceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     rootSpanName: S.optional(S.String),
@@ -272,13 +272,13 @@ export const ModelsTraceSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelsTraceSummary" }) as any as S.Schema<ModelsTraceSummary>;
 
 export type ListOrganizationSandboxTelemetryTracesResponseBodyList = Array<ModelsTraceSummary>;
-export const ListOrganizationSandboxTelemetryTracesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationSandboxTelemetryTracesResponseBodyList = /*@__PURE__*/ S.Array(
   ModelsTraceSummary,
 ) as any as S.Schema<ListOrganizationSandboxTelemetryTracesResponseBodyList>;
 
 export type ListOrganizationSandboxTelemetryTracesResponse =
   ListOrganizationSandboxTelemetryTracesResponseBodyList;
-export const ListOrganizationSandboxTelemetryTracesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSandboxTelemetryTracesResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationSandboxTelemetryTracesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationSandboxTelemetryTracesResponse",

@@ -39,7 +39,7 @@ export interface GetDomainsRequest {
   /** The resource name of the domain. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name. */
   name: string;
 }
-export const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -52,7 +52,7 @@ export const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDomainsRequest" }) as any as S.Schema<GetDomainsRequest>;
 
 export type DomainPermissionEnum = "PERMISSION_UNSPECIFIED" | "OWNER" | "READER" | "NONE";
-export const DomainPermissionEnum = S.String;
+const DomainPermissionEnum = S.String;
 
 /** A registered domain resource in the Postmaster API. */
 export interface Domain {
@@ -63,7 +63,7 @@ export interface Domain {
   /** User's permission for this domain. Assigned by the server. */
   permission?: DomainPermissionEnum;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -75,7 +75,7 @@ export interface GetDomainsTrafficStatsRequest {
   /** The resource name of the traffic statistics to get. E.g., domains/mymail.mydomain.com/trafficStats/20160807. */
   name: string;
 }
-export const GetDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -96,7 +96,7 @@ export interface FeedbackLoop {
   /** Feedback loop identifier that uniquely identifies individual campaigns. */
   id?: string;
 }
-export const FeedbackLoop = /*@__PURE__*/ S.suspend(() =>
+const FeedbackLoop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spamRatio: S.optional(S.Number),
     id: S.optional(S.String),
@@ -104,9 +104,7 @@ export const FeedbackLoop = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeedbackLoop" }) as any as S.Schema<FeedbackLoop>;
 
 export type FeedbackLoopList = Array<FeedbackLoop>;
-export const FeedbackLoopList = /*@__PURE__*/ S.Array(
-  FeedbackLoop,
-) as any as S.Schema<FeedbackLoopList>;
+const FeedbackLoopList = /*@__PURE__*/ S.Array(FeedbackLoop) as any as S.Schema<FeedbackLoopList>;
 
 export type TrafficStatsDomainReputationEnum =
   | "REPUTATION_CATEGORY_UNSPECIFIED"
@@ -114,7 +112,7 @@ export type TrafficStatsDomainReputationEnum =
   | "MEDIUM"
   | "LOW"
   | "BAD";
-export const TrafficStatsDomainReputationEnum = S.String;
+const TrafficStatsDomainReputationEnum = S.String;
 
 export type DeliveryErrorErrorTypeEnum =
   | "DELIVERY_ERROR_TYPE_UNSPECIFIED"
@@ -128,13 +126,13 @@ export type DeliveryErrorErrorTypeEnum =
   | "IP_IN_RBL"
   | "DOMAIN_IN_RBL"
   | "BAD_PTR_RECORD";
-export const DeliveryErrorErrorTypeEnum = S.String;
+const DeliveryErrorErrorTypeEnum = S.String;
 
 export type DeliveryErrorErrorClassEnum =
   | "DELIVERY_ERROR_CLASS_UNSPECIFIED"
   | "PERMANENT_ERROR"
   | "TEMPORARY_ERROR";
-export const DeliveryErrorErrorClassEnum = S.String;
+const DeliveryErrorErrorClassEnum = S.String;
 
 /** Metric on a particular delivery error type. */
 export interface DeliveryError {
@@ -145,7 +143,7 @@ export interface DeliveryError {
   /** The ratio of messages where the error occurred vs all authenticated traffic. */
   errorRatio?: number;
 }
-export const DeliveryError = /*@__PURE__*/ S.suspend(() =>
+const DeliveryError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorType: S.optional(DeliveryErrorErrorTypeEnum),
     errorClass: S.optional(DeliveryErrorErrorClassEnum),
@@ -154,7 +152,7 @@ export const DeliveryError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeliveryError" }) as any as S.Schema<DeliveryError>;
 
 export type DeliveryErrorList = Array<DeliveryError>;
-export const DeliveryErrorList = /*@__PURE__*/ S.Array(
+const DeliveryErrorList = /*@__PURE__*/ S.Array(
   DeliveryError,
 ) as any as S.Schema<DeliveryErrorList>;
 
@@ -164,10 +162,10 @@ export type IpReputationReputationEnum =
   | "MEDIUM"
   | "LOW"
   | "BAD";
-export const IpReputationReputationEnum = S.String;
+const IpReputationReputationEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** IP Reputation information for a set of IPs in a specific reputation category. */
 export interface IpReputation {
@@ -178,7 +176,7 @@ export interface IpReputation {
   /** Total number of unique IPs in this reputation category. This metric only pertains to traffic that passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). */
   ipCount?: string;
 }
-export const IpReputation = /*@__PURE__*/ S.suspend(() =>
+const IpReputation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reputation: S.optional(IpReputationReputationEnum),
     sampleIps: S.optional(StringList),
@@ -187,9 +185,7 @@ export const IpReputation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpReputation" }) as any as S.Schema<IpReputation>;
 
 export type IpReputationList = Array<IpReputation>;
-export const IpReputationList = /*@__PURE__*/ S.Array(
-  IpReputation,
-) as any as S.Schema<IpReputationList>;
+const IpReputationList = /*@__PURE__*/ S.Array(IpReputation) as any as S.Schema<IpReputationList>;
 
 /** Email traffic statistics pertaining to a specific date. */
 export interface TrafficStats {
@@ -220,7 +216,7 @@ export interface TrafficStats {
   /** The ratio of mail that successfully authenticated with DKIM vs. all mail that attempted to authenticate with [DKIM](http://www.dkim.org/). Spoofed mail is excluded. */
   dkimSuccessRatio?: number;
 }
-export const TrafficStats = /*@__PURE__*/ S.suspend(() =>
+const TrafficStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dmarcSuccessRatio: S.optional(S.Number),
     spammyFeedbackLoops: S.optional(FeedbackLoopList),
@@ -244,7 +240,7 @@ export interface ListDomainsRequest {
   /** The next_page_token value returned from a previous List request, if any. This is the value of ListDomainsResponse.next_page_token returned from the previous call to `ListDomains` method. */
   pageToken?: string;
 }
-export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -258,7 +254,7 @@ export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDomainsRequest" }) as any as S.Schema<ListDomainsRequest>;
 
 export type DomainList = Array<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
+const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
 
 /** Response message for ListDomains. */
 export interface ListDomainsResponse {
@@ -267,7 +263,7 @@ export interface ListDomainsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(DomainList),
     nextPageToken: S.optional(S.String),
@@ -294,7 +290,7 @@ export interface ListDomainsTrafficStatsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "startDate.day"?: number;
 }
-export const ListDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "startDate.month": S.optional(S.Number.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -317,9 +313,7 @@ export const ListDomainsTrafficStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainsTrafficStatsRequest>;
 
 export type TrafficStatsList = Array<TrafficStats>;
-export const TrafficStatsList = /*@__PURE__*/ S.Array(
-  TrafficStats,
-) as any as S.Schema<TrafficStatsList>;
+const TrafficStatsList = /*@__PURE__*/ S.Array(TrafficStats) as any as S.Schema<TrafficStatsList>;
 
 /** Response message for ListTrafficStats. */
 export interface ListTrafficStatsResponse {
@@ -328,7 +322,7 @@ export interface ListTrafficStatsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListTrafficStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTrafficStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trafficStats: S.optional(TrafficStatsList),
     nextPageToken: S.optional(S.String),

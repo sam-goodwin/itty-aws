@@ -70,7 +70,7 @@ export interface ExternalAccountKey {
   /** Output only. Resource name. projects/{project}/locations/{location}/externalAccountKeys/{key_id} */
   name?: string;
 }
-export const ExternalAccountKey = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     b64MacKey: S.optional(S.String),
     keyId: S.optional(S.String),
@@ -84,7 +84,7 @@ export interface CreateProjectsLocationsExternalAccountKeysRequest {
   /** Request body */
   body?: ExternalAccountKey;
 }
-export const CreateProjectsLocationsExternalAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsExternalAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ExternalAccountKey.pipe(T.HttpBody())),

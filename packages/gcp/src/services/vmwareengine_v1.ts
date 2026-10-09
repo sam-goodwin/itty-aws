@@ -67,7 +67,7 @@ export type DatastoreStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING";
-export const DatastoreStateEnum = S.String;
+const DatastoreStateEnum = S.String;
 
 /** Google service file service configuration */
 export interface GoogleFileService {
@@ -76,7 +76,7 @@ export interface GoogleFileService {
   /** Google netapp volume resource name e.g. projects/my-project/locations/me-west1-b/volumes/my-volume */
   netappVolume?: string;
 }
-export const GoogleFileService = /*@__PURE__*/ S.suspend(() =>
+const GoogleFileService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filestoreInstance: S.optional(S.String),
     netappVolume: S.optional(S.String),
@@ -85,12 +85,12 @@ export const GoogleFileService = /*@__PURE__*/ S.suspend(() =>
 
 /** Volume message captures user inputs for creation of file services managed by GCVE */
 export interface GoogleVmwareFileService {}
-export const GoogleVmwareFileService = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleVmwareFileService = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleVmwareFileService",
 }) as any as S.Schema<GoogleVmwareFileService>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Third party file service configuration */
 export interface ThirdPartyFileService {
@@ -101,7 +101,7 @@ export interface ThirdPartyFileService {
   /** Required. Required to identify vpc peering used for NFS access network name of NFS's vpc e.g. projects/project-id/global/networks/my-network_id */
   network?: string;
 }
-export const ThirdPartyFileService = /*@__PURE__*/ S.suspend(() =>
+const ThirdPartyFileService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servers: S.optional(StringList),
     fileShare: S.optional(S.String),
@@ -118,7 +118,7 @@ export interface NfsDatastore {
   /** Third party file service configuration */
   thirdPartyFileService?: ThirdPartyFileService;
 }
-export const NfsDatastore = /*@__PURE__*/ S.suspend(() =>
+const NfsDatastore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleFileService: S.optional(GoogleFileService),
     googleVmwareFileService: S.optional(GoogleVmwareFileService),
@@ -147,7 +147,7 @@ export interface Datastore {
   /** Output only. Clusters to which the datastore is attached. */
   clusters?: StringList;
 }
-export const Datastore = /*@__PURE__*/ S.suspend(() =>
+const Datastore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     etag: S.optional(S.String),
@@ -171,7 +171,7 @@ export interface CreateProjectsLocationsDatastoresRequest {
   /** Request body */
   body?: Datastore;
 }
-export const CreateProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -189,15 +189,10 @@ export const CreateProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProjectsLocationsDatastoresRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -208,7 +203,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -229,7 +224,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
@@ -249,7 +244,7 @@ export type NetworkPeeringPeerNetworkTypeEnum =
   | "DELL_POWERSCALE"
   | "GOOGLE_CLOUD_NETAPP_VOLUMES"
   | "GOOGLE_CLOUD_FILESTORE_INSTANCES";
-export const NetworkPeeringPeerNetworkTypeEnum = S.String;
+const NetworkPeeringPeerNetworkTypeEnum = S.String;
 
 export type NetworkPeeringStateEnum =
   | "STATE_UNSPECIFIED"
@@ -257,7 +252,7 @@ export type NetworkPeeringStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING";
-export const NetworkPeeringStateEnum = S.String;
+const NetworkPeeringStateEnum = S.String;
 
 /** Details of a network peering. */
 export interface NetworkPeering {
@@ -294,7 +289,7 @@ export interface NetworkPeering {
   /** Output only. Last update time of this resource. */
   updateTime?: string;
 }
-export const NetworkPeering = /*@__PURE__*/ S.suspend(() =>
+const NetworkPeering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peerNetworkType: S.optional(NetworkPeeringPeerNetworkTypeEnum),
     state: S.optional(NetworkPeeringStateEnum),
@@ -327,7 +322,7 @@ export interface CreateProjectsLocationsNetworkPeeringsRequest {
   /** Request body */
   body?: NetworkPeering;
 }
-export const CreateProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -350,7 +345,7 @@ export type NetworkServiceStateEnum =
   | "UNPROVISIONED"
   | "RECONCILING"
   | "ACTIVE";
-export const NetworkServiceStateEnum = S.String;
+const NetworkServiceStateEnum = S.String;
 
 /** Represents a network service that is managed by a `NetworkPolicy` resource. A network service provides a way to control an aspect of external access to VMware workloads. For example, whether the VMware workloads in the private clouds governed by a network policy can access or be accessed from the internet. */
 export interface NetworkService {
@@ -359,7 +354,7 @@ export interface NetworkService {
   /** Output only. State of the service. New values may be added to this enum when appropriate. */
   state?: NetworkServiceStateEnum | (string & {});
 }
-export const NetworkService = /*@__PURE__*/ S.suspend(() =>
+const NetworkService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     state: S.optional(NetworkServiceStateEnum),
@@ -389,7 +384,7 @@ export interface NetworkPolicy {
   /** Output only. Identifier. The resource name of this network policy. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy` */
   name?: string;
 }
-export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
+const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalIp: S.optional(NetworkService),
     vmwareEngineNetwork: S.optional(S.String),
@@ -416,7 +411,7 @@ export interface CreateProjectsLocationsNetworkPoliciesRequest {
   /** Request body */
   body?: NetworkPolicy;
 }
-export const CreateProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -440,7 +435,7 @@ export type ExternalAccessRuleStateEnum =
   | "CREATING"
   | "UPDATING"
   | "DELETING";
-export const ExternalAccessRuleStateEnum = S.String;
+const ExternalAccessRuleStateEnum = S.String;
 
 /** An IP range provided in any one of the supported formats. */
 export interface IpRange {
@@ -451,7 +446,7 @@ export interface IpRange {
   /** A single IP address. For example: `10.0.0.5`. */
   ipAddress?: string;
 }
-export const IpRange = /*@__PURE__*/ S.suspend(() =>
+const IpRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalAddress: S.optional(S.String),
     ipAddressRange: S.optional(S.String),
@@ -460,10 +455,10 @@ export const IpRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpRange" }) as any as S.Schema<IpRange>;
 
 export type IpRangeList = Array<IpRange>;
-export const IpRangeList = /*@__PURE__*/ S.Array(IpRange) as any as S.Schema<IpRangeList>;
+const IpRangeList = /*@__PURE__*/ S.Array(IpRange) as any as S.Schema<IpRangeList>;
 
 export type ExternalAccessRuleActionEnum = "ACTION_UNSPECIFIED" | "ALLOW" | "DENY";
-export const ExternalAccessRuleActionEnum = S.String;
+const ExternalAccessRuleActionEnum = S.String;
 
 /** External access firewall rules for filtering incoming traffic destined to `ExternalAddress` resources. */
 export interface ExternalAccessRule {
@@ -494,7 +489,7 @@ export interface ExternalAccessRule {
   /** The action that the external access rule performs. */
   action?: ExternalAccessRuleActionEnum | (string & {});
 }
-export const ExternalAccessRule = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccessRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     sourcePorts: S.optional(StringList),
@@ -524,8 +519,8 @@ export interface CreateProjectsLocationsNetworkPoliciesExternalAccessRulesReques
   /** Request body */
   body?: ExternalAccessRule;
 }
-export const CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -539,12 +534,12 @@ export const CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
         baseUrl: "https://vmwareengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+}) as any as S.Schema<CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export type VcenterStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING";
-export const VcenterStateEnum = S.String;
+const VcenterStateEnum = S.String;
 
 /** Details about a vCenter Server management appliance. */
 export interface Vcenter {
@@ -557,7 +552,7 @@ export interface Vcenter {
   /** Fully qualified domain name of the appliance. */
   fqdn?: string;
 }
-export const Vcenter = /*@__PURE__*/ S.suspend(() =>
+const Vcenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     state: S.optional(VcenterStateEnum),
@@ -567,7 +562,7 @@ export const Vcenter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Vcenter" }) as any as S.Schema<Vcenter>;
 
 export type EncryptionConfigTypeEnum = "TYPE_UNSPECIFIED" | "CMEK" | "LEGACY_CMEK" | "OTHER";
-export const EncryptionConfigTypeEnum = S.String;
+const EncryptionConfigTypeEnum = S.String;
 
 /** Encryption configuration for a private cloud. */
 export interface EncryptionConfig {
@@ -576,7 +571,7 @@ export interface EncryptionConfig {
   /** Required. The encryption type of the private cloud. */
   type?: EncryptionConfigTypeEnum | (string & {});
 }
-export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptoKeyName: S.optional(S.String),
     type: S.optional(EncryptionConfigTypeEnum),
@@ -584,7 +579,7 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
 
 export type PrivateCloudTypeEnum = "STANDARD" | "TIME_LIMITED" | "STRETCHED";
-export const PrivateCloudTypeEnum = S.String;
+const PrivateCloudTypeEnum = S.String;
 
 /** Configuration of a stretched cluster. */
 export interface StretchedClusterConfig {
@@ -593,7 +588,7 @@ export interface StretchedClusterConfig {
   /** Required. Zone that will remain operational when connection between the two zones is lost. Specify the resource name or ID of a zone that belongs to the region of the private cloud. For example: `projects/{project}/locations/europe-west3-a` or `europe-west3-a`, where `{project}` can either be a project number or a project ID. */
   preferredLocation?: string;
 }
-export const StretchedClusterConfig = /*@__PURE__*/ S.suspend(() =>
+const StretchedClusterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secondaryLocation: S.optional(S.String),
     preferredLocation: S.optional(S.String),
@@ -607,7 +602,7 @@ export interface NodeTypeConfig {
   /** Optional. Customized number of cores available to each node of the type. This number must always be one of `nodeType.availableCustomCoreCounts`. If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used. */
   customCoreCount?: number;
 }
-export const NodeTypeConfig = /*@__PURE__*/ S.suspend(() =>
+const NodeTypeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeCount: S.optional(S.Number),
     customCoreCount: S.optional(S.Number),
@@ -615,7 +610,7 @@ export const NodeTypeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeTypeConfig" }) as any as S.Schema<NodeTypeConfig>;
 
 export type NodeTypeConfigMap = { [key: string]: NodeTypeConfig | undefined };
-export const NodeTypeConfigMap = /*@__PURE__*/ S.Record(
+const NodeTypeConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   NodeTypeConfig,
 ) as any as S.Schema<NodeTypeConfigMap>;
@@ -629,7 +624,7 @@ export interface ManagementCluster {
   /** Required. The map of cluster node types in this cluster, where the key is canonical identifier of the node type (corresponds to the `NodeType`). */
   nodeTypeConfigs?: NodeTypeConfigMap;
 }
-export const ManagementCluster = /*@__PURE__*/ S.suspend(() =>
+const ManagementCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stretchedClusterConfig: S.optional(StretchedClusterConfig),
     clusterId: S.optional(S.String),
@@ -638,7 +633,7 @@ export const ManagementCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagementCluster" }) as any as S.Schema<ManagementCluster>;
 
 export type HcxStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "ACTIVATING";
-export const HcxStateEnum = S.String;
+const HcxStateEnum = S.String;
 
 /** Details about a HCX Cloud Manager appliance. */
 export interface Hcx {
@@ -651,7 +646,7 @@ export interface Hcx {
   /** Internal IP address of the appliance. */
   internalIp?: string;
 }
-export const Hcx = /*@__PURE__*/ S.suspend(() =>
+const Hcx = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(HcxStateEnum),
     version: S.optional(S.String),
@@ -661,7 +656,7 @@ export const Hcx = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hcx" }) as any as S.Schema<Hcx>;
 
 export type NsxStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING";
-export const NsxStateEnum = S.String;
+const NsxStateEnum = S.String;
 
 /** Details about a NSX Manager appliance. */
 export interface Nsx {
@@ -674,7 +669,7 @@ export interface Nsx {
   /** Version of the appliance. */
   version?: string;
 }
-export const Nsx = /*@__PURE__*/ S.suspend(() =>
+const Nsx = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(NsxStateEnum),
     fqdn: S.optional(S.String),
@@ -696,7 +691,7 @@ export interface NetworkConfig {
   /** Output only. The canonical name of the VMware Engine network in the form: `projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` */
   vmwareEngineNetworkCanonical?: string;
 }
-export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementCidr: S.optional(S.String),
     managementIpAddressLayoutVersion: S.optional(S.Number),
@@ -714,7 +709,7 @@ export type PrivateCloudStateEnum =
   | "FAILED"
   | "DELETED"
   | "PURGING";
-export const PrivateCloudStateEnum = S.String;
+const PrivateCloudStateEnum = S.String;
 
 /** Represents a private cloud resource. Private clouds of type `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. */
 export interface PrivateCloud {
@@ -749,7 +744,7 @@ export interface PrivateCloud {
   /** Output only. State of the resource. New values may be added to this enum when appropriate. */
   state?: PrivateCloudStateEnum | (string & {});
 }
-export const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vcenter: S.optional(Vcenter),
     expireTime: S.optional(S.String),
@@ -781,7 +776,7 @@ export interface CreateProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: PrivateCloud;
 }
-export const CreateProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -806,7 +801,7 @@ export type ClusterStateEnum =
   | "UPDATING"
   | "DELETING"
   | "REPAIRING";
-export const ClusterStateEnum = S.String;
+const ClusterStateEnum = S.String;
 
 /** Thresholds define the utilization of resources triggering scale-out and scale-in operations. */
 export interface Thresholds {
@@ -815,7 +810,7 @@ export interface Thresholds {
   /** Required. The utilization triggering the scale-in operation in percent. */
   scaleIn?: number;
 }
-export const Thresholds = /*@__PURE__*/ S.suspend(() =>
+const Thresholds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scaleOut: S.optional(S.Number),
     scaleIn: S.optional(S.Number),
@@ -837,7 +832,7 @@ export interface AutoscalingPolicy {
   /** Optional. Utilization thresholds pertaining to amount of consumed storage. */
   storageThresholds?: Thresholds;
 }
-export const AutoscalingPolicy = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuThresholds: S.optional(Thresholds),
     scaleOutSize: S.optional(S.Number),
@@ -849,7 +844,7 @@ export const AutoscalingPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoscalingPolicy" }) as any as S.Schema<AutoscalingPolicy>;
 
 export type AutoscalingPolicyMap = { [key: string]: AutoscalingPolicy | undefined };
-export const AutoscalingPolicyMap = /*@__PURE__*/ S.Record(
+const AutoscalingPolicyMap = /*@__PURE__*/ S.Record(
   S.String,
   AutoscalingPolicy,
 ) as any as S.Schema<AutoscalingPolicyMap>;
@@ -865,7 +860,7 @@ export interface AutoscalingSettings {
   /** Optional. Maximum number of nodes of any type in a cluster. If not specified the default limits apply. */
   maxClusterNodeCount?: number;
 }
-export const AutoscalingSettings = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coolDownPeriod: S.optional(S.String),
     autoscalingPolicies: S.optional(AutoscalingPolicyMap),
@@ -875,7 +870,7 @@ export const AutoscalingSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoscalingSettings" }) as any as S.Schema<AutoscalingSettings>;
 
 export type DatastoreMountConfigNfsVersionEnum = "NFS_VERSION_UNSPECIFIED" | "NFS_V3";
-export const DatastoreMountConfigNfsVersionEnum = S.String;
+const DatastoreMountConfigNfsVersionEnum = S.String;
 
 /** The network configuration for the datastore. */
 export interface DatastoreNetwork {
@@ -888,7 +883,7 @@ export interface DatastoreNetwork {
   /** Required. The resource name of the subnet Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. e.g. projects/my-project/locations/us-central1/subnets/my-subnet */
   subnet?: string;
 }
-export const DatastoreNetwork = /*@__PURE__*/ S.suspend(() =>
+const DatastoreNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mtu: S.optional(S.Number),
     connectionCount: S.optional(S.Number),
@@ -901,7 +896,7 @@ export type DatastoreMountConfigAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "READ_ONLY"
   | "READ_WRITE";
-export const DatastoreMountConfigAccessModeEnum = S.String;
+const DatastoreMountConfigAccessModeEnum = S.String;
 
 /** The Datastore Mount configuration */
 export interface DatastoreMountConfig {
@@ -918,7 +913,7 @@ export interface DatastoreMountConfig {
   /** Output only. Server IP addresses of the NFS volume. For NFS 3, you can only provide a single server IP address or DNS names. */
   servers?: StringList;
 }
-export const DatastoreMountConfig = /*@__PURE__*/ S.suspend(() =>
+const DatastoreMountConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nfsVersion: S.optional(DatastoreMountConfigNfsVersionEnum),
     datastoreNetwork: S.optional(DatastoreNetwork),
@@ -930,7 +925,7 @@ export const DatastoreMountConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatastoreMountConfig" }) as any as S.Schema<DatastoreMountConfig>;
 
 export type DatastoreMountConfigList = Array<DatastoreMountConfig>;
-export const DatastoreMountConfigList = /*@__PURE__*/ S.Array(
+const DatastoreMountConfigList = /*@__PURE__*/ S.Array(
   DatastoreMountConfig,
 ) as any as S.Schema<DatastoreMountConfigList>;
 
@@ -957,7 +952,7 @@ export interface Cluster {
   /** Output only. True if the cluster is a management cluster; false otherwise. There can only be one management cluster in a private cloud and it has to be the first one. */
   management?: boolean;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
+const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ClusterStateEnum),
     autoscalingSettings: S.optional(AutoscalingSettings),
@@ -984,7 +979,7 @@ export interface CreateProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const CreateProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1008,7 +1003,7 @@ export type ExternalAddressStateEnum =
   | "CREATING"
   | "UPDATING"
   | "DELETING";
-export const ExternalAddressStateEnum = S.String;
+const ExternalAddressStateEnum = S.String;
 
 /** Represents an allocated external IP address and its corresponding internal IP address in a private cloud. */
 export interface ExternalAddress {
@@ -1029,7 +1024,7 @@ export interface ExternalAddress {
   /** Output only. The external IP address of a workload VM. */
   externalIp?: string;
 }
-export const ExternalAddress = /*@__PURE__*/ S.suspend(() =>
+const ExternalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -1054,27 +1049,26 @@ export interface CreateProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Request body */
   body?: ExternalAddress;
 }
-export const CreateProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      externalAddressId: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(ExternalAddress.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/externalAddresses",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    externalAddressId: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(ExternalAddress.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/externalAddresses",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsPrivateCloudsExternalAddressesRequest",
 }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsExternalAddressesRequest>;
 
 export type HcxActivationKeyStateEnum = "STATE_UNSPECIFIED" | "AVAILABLE" | "CONSUMED" | "CREATING";
-export const HcxActivationKeyStateEnum = S.String;
+const HcxActivationKeyStateEnum = S.String;
 
 /** HCX activation key. A default key is created during private cloud provisioning, but this behavior is subject to change and you should always verify active keys. Use VmwareEngine.ListHcxActivationKeys to retrieve existing keys and VmwareEngine.CreateHcxActivationKey to create new ones. */
 export interface HcxActivationKey {
@@ -1089,7 +1083,7 @@ export interface HcxActivationKey {
   /** Output only. HCX activation key. */
   activationKey?: string;
 }
-export const HcxActivationKey = /*@__PURE__*/ S.suspend(() =>
+const HcxActivationKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     state: S.optional(HcxActivationKeyStateEnum),
@@ -1109,20 +1103,19 @@ export interface CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** Request body */
   body?: HcxActivationKey;
 }
-export const CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      hcxActivationKeyId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(HcxActivationKey.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/hcxActivationKeys",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    hcxActivationKeyId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(HcxActivationKey.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/hcxActivationKeys",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
 }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
@@ -1134,10 +1127,10 @@ export type LoggingServerProtocolEnum =
   | "TLS"
   | "SSL"
   | "RELP";
-export const LoggingServerProtocolEnum = S.String;
+const LoggingServerProtocolEnum = S.String;
 
 export type LoggingServerSourceTypeEnum = "SOURCE_TYPE_UNSPECIFIED" | "ESXI" | "VCSA";
-export const LoggingServerSourceTypeEnum = S.String;
+const LoggingServerSourceTypeEnum = S.String;
 
 /** Logging server to receive vCenter or ESXi logs. */
 export interface LoggingServer {
@@ -1158,7 +1151,7 @@ export interface LoggingServer {
   /** Required. Fully-qualified domain name (FQDN) or IP Address of the logging server. */
   hostname?: string;
 }
-export const LoggingServer = /*@__PURE__*/ S.suspend(() =>
+const LoggingServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     uid: S.optional(S.String),
@@ -1181,20 +1174,19 @@ export interface CreateProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Request body */
   body?: LoggingServer;
 }
-export const CreateProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      loggingServerId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(LoggingServer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/loggingServers",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    loggingServerId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(LoggingServer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/loggingServers",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsPrivateCloudsLoggingServersRequest",
 }) as any as S.Schema<CreateProjectsLocationsPrivateCloudsLoggingServersRequest>;
@@ -1206,7 +1198,7 @@ export type ManagementDnsZoneBindingStateEnum =
   | "UPDATING"
   | "DELETING"
   | "FAILED";
-export const ManagementDnsZoneBindingStateEnum = S.String;
+const ManagementDnsZoneBindingStateEnum = S.String;
 
 /** Represents a binding between a network and the management DNS zone. A management DNS zone is the Cloud DNS cross-project binding zone that VMware Engine creates for each private cloud. It contains FQDNs and corresponding IP addresses for the private cloud's ESXi hosts and management VM appliances like vCenter and NSX Manager. */
 export interface ManagementDnsZoneBinding {
@@ -1227,7 +1219,7 @@ export interface ManagementDnsZoneBinding {
   /** Output only. The state of the resource. */
   state?: ManagementDnsZoneBindingStateEnum | (string & {});
 }
-export const ManagementDnsZoneBinding = /*@__PURE__*/ S.suspend(() =>
+const ManagementDnsZoneBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -1250,7 +1242,7 @@ export interface CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRe
   /** Request body */
   body?: ManagementDnsZoneBinding;
 }
-export const CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+const CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -1276,7 +1268,7 @@ export type PrivateConnectionStateEnum =
   | "DELETING"
   | "UNPROVISIONED"
   | "FAILED";
-export const PrivateConnectionStateEnum = S.String;
+const PrivateConnectionStateEnum = S.String;
 
 export type PrivateConnectionTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -1284,16 +1276,16 @@ export type PrivateConnectionTypeEnum =
   | "NETAPP_CLOUD_VOLUMES"
   | "DELL_POWERSCALE"
   | "THIRD_PARTY_SERVICE";
-export const PrivateConnectionTypeEnum = S.String;
+const PrivateConnectionTypeEnum = S.String;
 
 export type PrivateConnectionPeeringStateEnum =
   | "PEERING_STATE_UNSPECIFIED"
   | "PEERING_ACTIVE"
   | "PEERING_INACTIVE";
-export const PrivateConnectionPeeringStateEnum = S.String;
+const PrivateConnectionPeeringStateEnum = S.String;
 
 export type PrivateConnectionRoutingModeEnum = "ROUTING_MODE_UNSPECIFIED" | "GLOBAL" | "REGIONAL";
-export const PrivateConnectionRoutingModeEnum = S.String;
+const PrivateConnectionRoutingModeEnum = S.String;
 
 /** Private connection resource that provides connectivity for VMware Engine private clouds. */
 export interface PrivateConnection {
@@ -1324,7 +1316,7 @@ export interface PrivateConnection {
   /** Optional. Routing Mode. Default value is set to GLOBAL. For type = PRIVATE_SERVICE_ACCESS, this field can be set to GLOBAL or REGIONAL, for other types only GLOBAL is supported. */
   routingMode?: PrivateConnectionRoutingModeEnum | (string & {});
 }
-export const PrivateConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(PrivateConnectionStateEnum),
     serviceNetwork: S.optional(S.String),
@@ -1354,7 +1346,7 @@ export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Request body */
   body?: PrivateConnection;
 }
-export const CreateProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1373,7 +1365,7 @@ export const CreateProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>;
 
 export type VpcNetworkTypeEnum = "TYPE_UNSPECIFIED" | "INTRANET" | "INTERNET" | "GOOGLE_CLOUD";
-export const VpcNetworkTypeEnum = S.String;
+const VpcNetworkTypeEnum = S.String;
 
 /** Represents a VMware Engine VPC network that is managed by a VMware Engine network resource. */
 export interface VpcNetwork {
@@ -1382,7 +1374,7 @@ export interface VpcNetwork {
   /** Output only. The relative resource name of the service VPC network this VMware Engine network is attached to. For example: `projects/123123/global/networks/my-network` */
   network?: string;
 }
-export const VpcNetwork = /*@__PURE__*/ S.suspend(() =>
+const VpcNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(VpcNetworkTypeEnum),
     network: S.optional(S.String),
@@ -1390,7 +1382,7 @@ export const VpcNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcNetwork" }) as any as S.Schema<VpcNetwork>;
 
 export type VpcNetworkList = Array<VpcNetwork>;
-export const VpcNetworkList = /*@__PURE__*/ S.Array(VpcNetwork) as any as S.Schema<VpcNetworkList>;
+const VpcNetworkList = /*@__PURE__*/ S.Array(VpcNetwork) as any as S.Schema<VpcNetworkList>;
 
 export type VmwareEngineNetworkStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1398,10 +1390,10 @@ export type VmwareEngineNetworkStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING";
-export const VmwareEngineNetworkStateEnum = S.String;
+const VmwareEngineNetworkStateEnum = S.String;
 
 export type VmwareEngineNetworkTypeEnum = "TYPE_UNSPECIFIED" | "LEGACY" | "STANDARD";
-export const VmwareEngineNetworkTypeEnum = S.String;
+const VmwareEngineNetworkTypeEnum = S.String;
 
 /** VMware Engine network resource that provides connectivity for VMware Engine private clouds. */
 export interface VmwareEngineNetwork {
@@ -1424,7 +1416,7 @@ export interface VmwareEngineNetwork {
   /** Required. VMware Engine network type. */
   type?: VmwareEngineNetworkTypeEnum | (string & {});
 }
-export const VmwareEngineNetwork = /*@__PURE__*/ S.suspend(() =>
+const VmwareEngineNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     etag: S.optional(S.String),
@@ -1450,7 +1442,7 @@ export interface CreateProjectsLocationsVmwareEngineNetworksRequest {
   /** Request body */
   body?: VmwareEngineNetwork;
 }
-export const CreateProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1476,7 +1468,7 @@ export interface DeleteProjectsLocationsDatastoresRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1498,7 +1490,7 @@ export interface DeleteProjectsLocationsNetworkPeeringsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1519,7 +1511,7 @@ export interface DeleteProjectsLocationsNetworkPoliciesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1540,8 +1532,8 @@ export interface DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesReques
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -1552,15 +1544,15 @@ export const DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
         baseUrl: "https://vmwareengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1576,7 +1568,7 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = GoogleVmwareFileService as any as S.Schema<Empty>;
+const Empty = GoogleVmwareFileService as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsPrivateCloudsRequest {
   /** Optional. Time delay of the deletion specified in hours. The default value is `3`. Specifying a non-zero value for this field changes the value of `PrivateCloud.state` to `DELETED` and sets `expire_time` to the planned deletion time. Deletion can be cancelled before `expire_time` elapses using VmwareEngine.UndeletePrivateCloud. Specifying a value of `0` for this field instead begins the deletion process and ceases billing immediately. During the final deletion process, the value of `PrivateCloud.state` becomes `PURGING`. */
@@ -1588,7 +1580,7 @@ export interface DeleteProjectsLocationsPrivateCloudsRequest {
   /** Optional. If set to true, cascade delete is enabled and all children of this private cloud resource are also deleted. When this flag is set to false, the private cloud will not be deleted if there are any children other than the management cluster. The management cluster is always deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delayHours: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1611,7 +1603,7 @@ export interface DeleteProjectsLocationsPrivateCloudsClustersRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1632,18 +1624,17 @@ export interface DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Required. The resource name of the external IP address to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-ip` */
   name: string;
 }
-export const DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest>;
@@ -1654,18 +1645,17 @@ export interface DeleteProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Required. The resource name of the logging server to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server` */
   name: string;
 }
-export const DeleteProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsPrivateCloudsLoggingServersRequest",
 }) as any as S.Schema<DeleteProjectsLocationsPrivateCloudsLoggingServersRequest>;
@@ -1676,7 +1666,7 @@ export interface DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRe
   /** Required. The resource name of the management DNS zone binding to delete. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding` */
   name: string;
 }
-export const DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+const DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -1698,7 +1688,7 @@ export interface DeleteProjectsLocationsPrivateConnectionsRequest {
   /** Required. The resource name of the private connection to be deleted. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateConnections/my-connection` */
   name: string;
 }
-export const DeleteProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1721,7 +1711,7 @@ export interface DeleteProjectsLocationsVmwareEngineNetworksRequest {
   /** Optional. Checksum used to ensure that the user-provided value is up to date before the server processes the request. The server compares provided checksum with the current checksum of the resource. If the user-provided value is out of date, this request returns an `ABORTED` error. */
   etag?: string;
 }
-export const DeleteProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1745,25 +1735,24 @@ export interface FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest {
   /** The maximum number of external IP addresses to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      networkPolicy: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+networkPolicy}:fetchExternalAddresses",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest",
-  }) as any as S.Schema<FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest>;
+const FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    networkPolicy: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+networkPolicy}:fetchExternalAddresses",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest",
+}) as any as S.Schema<FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest>;
 
 export type ExternalAddressList = Array<ExternalAddress>;
-export const ExternalAddressList = /*@__PURE__*/ S.Array(
+const ExternalAddressList = /*@__PURE__*/ S.Array(
   ExternalAddress,
 ) as any as S.Schema<ExternalAddressList>;
 
@@ -1774,7 +1763,7 @@ export interface FetchNetworkPolicyExternalAddressesResponse {
   /** A list of external IP addresses assigned to VMware workload VMs within the scope of the given network policy. */
   externalAddresses?: ExternalAddressList;
 }
-export const FetchNetworkPolicyExternalAddressesResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchNetworkPolicyExternalAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     externalAddresses: S.optional(ExternalAddressList),
@@ -1787,7 +1776,7 @@ export interface GetDnsBindPermissionProjectsLocationsRequest {
   /** Required. The name of the resource which stores the users/service accounts having the permission to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global resource. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/dnsBindPermission` */
   name: string;
 }
-export const GetDnsBindPermissionProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnsBindPermissionProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1804,7 +1793,7 @@ export interface Principal {
   /** The user who needs to be granted permission. */
   user?: string;
 }
-export const Principal = /*@__PURE__*/ S.suspend(() =>
+const Principal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccount: S.optional(S.String),
     user: S.optional(S.String),
@@ -1812,7 +1801,7 @@ export const Principal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 
 export type PrincipalList = Array<Principal>;
-export const PrincipalList = /*@__PURE__*/ S.Array(Principal) as any as S.Schema<PrincipalList>;
+const PrincipalList = /*@__PURE__*/ S.Array(Principal) as any as S.Schema<PrincipalList>;
 
 /** DnsBindPermission resource that contains the accounts having the consumer DNS bind permission on the corresponding intranet VPC of the consumer project. */
 export interface DnsBindPermission {
@@ -1821,7 +1810,7 @@ export interface DnsBindPermission {
   /** Output only. Users/Service accounts which have access for binding on the intranet VPC project corresponding to the consumer project. */
   principals?: PrincipalList;
 }
-export const DnsBindPermission = /*@__PURE__*/ S.suspend(() =>
+const DnsBindPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     principals: S.optional(PrincipalList),
@@ -1832,7 +1821,7 @@ export interface GetDnsForwardingProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of a `DnsForwarding` to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding` */
   name: string;
 }
-export const GetDnsForwardingProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnsForwardingProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1849,7 +1838,7 @@ export interface ForwardingRule {
   /** Required. Domain used to resolve a `name_servers` list. */
   domain?: string;
 }
-export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
+const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameServers: S.optional(StringList),
     domain: S.optional(S.String),
@@ -1857,7 +1846,7 @@ export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForwardingRule" }) as any as S.Schema<ForwardingRule>;
 
 export type ForwardingRuleList = Array<ForwardingRule>;
-export const ForwardingRuleList = /*@__PURE__*/ S.Array(
+const ForwardingRuleList = /*@__PURE__*/ S.Array(
   ForwardingRule,
 ) as any as S.Schema<ForwardingRuleList>;
 
@@ -1872,7 +1861,7 @@ export interface DnsForwarding {
   /** Output only. Creation time of this resource. */
   createTime?: string;
 }
-export const DnsForwarding = /*@__PURE__*/ S.suspend(() =>
+const DnsForwarding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -1887,7 +1876,7 @@ export interface GetIamPolicyProjectsLocationsPrivateCloudsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -1907,7 +1896,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -1916,7 +1905,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -1924,7 +1913,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -1935,7 +1924,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -1943,9 +1932,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -1958,7 +1945,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     title: S.optional(S.String),
@@ -1976,7 +1963,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     members: S.optional(StringList),
@@ -1985,7 +1972,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1998,7 +1985,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     version: S.optional(S.Number),
@@ -2013,7 +2000,28 @@ export interface GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(
+const GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
+}) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>;
+
+export interface GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+}
+const GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -2026,36 +2034,14 @@ export const GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest = /*@__PU
       }),
     ),
 ).annotate({
-  identifier: "GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
-}) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>;
-
-export interface GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-}
-export const GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
+  identifier: "GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+}) as any as S.Schema<GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
 export interface GetNsxCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to be queried for credentials. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   privateCloud: string;
 }
-export const GetNsxCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNsxCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateCloud: S.String.pipe(T.Label()),
   }).pipe(
@@ -2076,7 +2062,7 @@ export interface Vmwareengine_Credentials {
   /** Initial username. */
   username?: string;
 }
-export const Vmwareengine_Credentials = /*@__PURE__*/ S.suspend(() =>
+const Vmwareengine_Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String),
     username: S.optional(S.String),
@@ -2087,7 +2073,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2098,7 +2084,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -2113,7 +2099,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     labels: S.optional(StringMap),
@@ -2127,7 +2113,7 @@ export interface GetProjectsLocationsAnnouncementsRequest {
   /** Required. The resource name of the announcement to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-west1-a/announcements/announcement-uuid` */
   name: string;
 }
-export const GetProjectsLocationsAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2143,7 +2129,7 @@ export type AnnouncementStateEnum =
   | "INACTIVE"
   | "DELETING"
   | "CREATING";
-export const AnnouncementStateEnum = S.String;
+const AnnouncementStateEnum = S.String;
 
 /** Announcement for the resources of Vmware Engine. */
 export interface Announcement {
@@ -2170,7 +2156,7 @@ export interface Announcement {
   /** Optional. Activity type of the announcement There can be only one active announcement for a given activity type and target resource. */
   activityType?: string;
 }
-export const Announcement = /*@__PURE__*/ S.suspend(() =>
+const Announcement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2190,7 +2176,7 @@ export interface GetProjectsLocationsDatastoresRequest {
   /** Required. The resource name of the Datastore to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/datastores/my-datastore` */
   name: string;
 }
-export const GetProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2204,7 +2190,7 @@ export interface GetProjectsLocationsNetworkPeeringsRequest {
   /** Required. The resource name of the network peering to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/networkPeerings/my-peering` */
   name: string;
 }
-export const GetProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2218,7 +2204,7 @@ export interface GetProjectsLocationsNetworkPoliciesRequest {
   /** Required. The resource name of the network policy to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy` */
   name: string;
 }
-export const GetProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2232,22 +2218,21 @@ export interface GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
   /** Required. The resource name of the external access firewall rule to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule` */
   name: string;
 }
-export const GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vmwareengine.googleapis.com/" }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
-  }) as any as S.Schema<GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+const GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vmwareengine.googleapis.com/" }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+}) as any as S.Schema<GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export interface GetProjectsLocationsNodeTypesRequest {
   /** Required. The resource name of the node type to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-proj/locations/us-central1-a/nodeTypes/standard-72` */
   name: string;
 }
-export const GetProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2258,18 +2243,18 @@ export const GetProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetProjectsLocationsNodeTypesRequest>;
 
 export type NodeTypeCapabilitiesItemEnum = "CAPABILITY_UNSPECIFIED" | "STRETCHED_CLUSTERS";
-export const NodeTypeCapabilitiesItemEnum = S.String;
+const NodeTypeCapabilitiesItemEnum = S.String;
 
 export type NodeTypeCapabilitiesItemEnumList = Array<NodeTypeCapabilitiesItemEnum>;
-export const NodeTypeCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
+const NodeTypeCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   NodeTypeCapabilitiesItemEnum,
 ) as any as S.Schema<NodeTypeCapabilitiesItemEnumList>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export type NodeTypeKindEnum = "KIND_UNSPECIFIED" | "STANDARD" | "STORAGE_ONLY";
-export const NodeTypeKindEnum = S.String;
+const NodeTypeKindEnum = S.String;
 
 /** Describes node type. */
 export interface NodeType {
@@ -2296,7 +2281,7 @@ export interface NodeType {
   /** Output only. The type of the resource. */
   kind?: NodeTypeKindEnum;
 }
-export const NodeType = /*@__PURE__*/ S.suspend(() =>
+const NodeType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -2316,7 +2301,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2330,7 +2315,7 @@ export interface GetProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2344,7 +2329,7 @@ export interface GetProjectsLocationsPrivateCloudsClustersRequest {
   /** Required. The cluster resource name to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2358,7 +2343,7 @@ export interface GetProjectsLocationsPrivateCloudsClustersNodesRequest {
   /** Required. The resource name of the node to retrieve. For example: `projects/{project}/locations/{location}/privateClouds/{private_cloud}/clusters/{cluster}/nodes/{node}` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsClustersNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPrivateCloudsClustersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2369,7 +2354,7 @@ export const GetProjectsLocationsPrivateCloudsClustersNodesRequest = /*@__PURE__
 }) as any as S.Schema<GetProjectsLocationsPrivateCloudsClustersNodesRequest>;
 
 export type NodeStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING" | "FAILED" | "UPGRADING";
-export const NodeStateEnum = S.String;
+const NodeStateEnum = S.String;
 
 /** Node in a cluster. */
 export interface Node {
@@ -2388,7 +2373,7 @@ export interface Node {
   /** Output only. The version number of the VMware ESXi management component in this cluster. */
   version?: string;
 }
-export const Node = /*@__PURE__*/ S.suspend(() =>
+const Node = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(NodeStateEnum),
     name: S.optional(S.String),
@@ -2404,13 +2389,12 @@ export interface GetProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Required. The resource name of the external IP address to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-ip` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vmwareengine.googleapis.com/" }),
-    ),
+const GetProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vmwareengine.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsPrivateCloudsExternalAddressesRequest",
 }) as any as S.Schema<GetProjectsLocationsPrivateCloudsExternalAddressesRequest>;
@@ -2419,13 +2403,12 @@ export interface GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** Required. The resource name of the HCX activation key to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateClouds/my-cloud/hcxActivationKeys/my-key` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vmwareengine.googleapis.com/" }),
-    ),
+const GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vmwareengine.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
 }) as any as S.Schema<GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
@@ -2434,7 +2417,7 @@ export interface GetProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Required. The resource name of the Logging Server to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2448,22 +2431,22 @@ export interface GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsReque
   /** Required. The resource name of the management DNS zone binding to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vmwareengine.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
-  }) as any as S.Schema<GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+).annotate({
+  identifier: "GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+}) as any as S.Schema<GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
 export interface GetProjectsLocationsPrivateCloudsSubnetsRequest {
   /** Required. The resource name of the subnet to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2481,7 +2464,7 @@ export type SubnetStateEnum =
   | "DELETING"
   | "RECONCILING"
   | "FAILED";
-export const SubnetStateEnum = S.String;
+const SubnetStateEnum = S.String;
 
 /** Subnet in a private cloud. Either `management` subnets (such as vMotion) that are read-only, or `userDefined`, which can also be updated. */
 export interface Subnet {
@@ -2498,7 +2481,7 @@ export interface Subnet {
   /** Output only. Identifier. The resource name of this subnet. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet` */
   name?: string;
 }
-export const Subnet = /*@__PURE__*/ S.suspend(() =>
+const Subnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     vlanId: S.optional(S.Number),
@@ -2513,7 +2496,7 @@ export interface GetProjectsLocationsPrivateCloudsUpgradesRequest {
   /** Required. The name of the `Upgrade` resource to be retrieved. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-west1-a/privateClouds/my-cloud/upgrades/my-upgrade` */
   name: string;
 }
-export const GetProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2532,7 +2515,7 @@ export type UpgradeTypeEnum =
   | "SWITCH_UPGRADE"
   | "OTHER"
   | "INFRASTRUCTURE_UPGRADE";
-export const UpgradeTypeEnum = S.String;
+const UpgradeTypeEnum = S.String;
 
 export type UpgradeStateEnum =
   | "STATE_UNSPECIFIED"
@@ -2544,10 +2527,10 @@ export type UpgradeStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "RESCHEDULING";
-export const UpgradeStateEnum = S.String;
+const UpgradeStateEnum = S.String;
 
 export type ScheduleLastEditorEnum = "EDITOR_UNSPECIFIED" | "SYSTEM" | "USER";
-export const ScheduleLastEditorEnum = S.String;
+const ScheduleLastEditorEnum = S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -2560,7 +2543,7 @@ export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
   minutes?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seconds: S.optional(S.Number),
     nanos: S.optional(S.Number),
@@ -2578,7 +2561,7 @@ export type TimeWindowDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const TimeWindowDayOfWeekEnum = S.String;
+const TimeWindowDayOfWeekEnum = S.String;
 
 /** Represents the time window to perform upgrade activities. */
 export interface TimeWindow {
@@ -2589,7 +2572,7 @@ export interface TimeWindow {
   /** Required. Day of the week for this window. */
   dayOfWeek?: TimeWindowDayOfWeekEnum | (string & {});
 }
-export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
+const TimeWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(TimeOfDay),
     duration: S.optional(S.String),
@@ -2598,7 +2581,7 @@ export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 
 export type TimeWindowList = Array<TimeWindow>;
-export const TimeWindowList = /*@__PURE__*/ S.Array(TimeWindow) as any as S.Schema<TimeWindowList>;
+const TimeWindowList = /*@__PURE__*/ S.Array(TimeWindow) as any as S.Schema<TimeWindowList>;
 
 export type WeeklyTimeIntervalStartDayEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -2609,7 +2592,7 @@ export type WeeklyTimeIntervalStartDayEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const WeeklyTimeIntervalStartDayEnum = S.String;
+const WeeklyTimeIntervalStartDayEnum = S.String;
 
 export type WeeklyTimeIntervalEndDayEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -2620,7 +2603,7 @@ export type WeeklyTimeIntervalEndDayEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const WeeklyTimeIntervalEndDayEnum = S.String;
+const WeeklyTimeIntervalEndDayEnum = S.String;
 
 /** Represents a time interval, spanning across days of the week. Until local timezones are supported, this interval is in UTC. */
 export interface WeeklyTimeInterval {
@@ -2633,7 +2616,7 @@ export interface WeeklyTimeInterval {
   /** Output only. The day on which the interval ends. Can be same as start day. */
   endDay?: WeeklyTimeIntervalEndDayEnum | (string & {});
 }
-export const WeeklyTimeInterval = /*@__PURE__*/ S.suspend(() =>
+const WeeklyTimeInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(TimeOfDay),
     startDay: S.optional(WeeklyTimeIntervalStartDayEnum),
@@ -2643,7 +2626,7 @@ export const WeeklyTimeInterval = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WeeklyTimeInterval" }) as any as S.Schema<WeeklyTimeInterval>;
 
 export type WeeklyTimeIntervalList = Array<WeeklyTimeInterval>;
-export const WeeklyTimeIntervalList = /*@__PURE__*/ S.Array(
+const WeeklyTimeIntervalList = /*@__PURE__*/ S.Array(
   WeeklyTimeInterval,
 ) as any as S.Schema<WeeklyTimeIntervalList>;
 
@@ -2654,7 +2637,7 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -2672,7 +2655,7 @@ export interface Constraints {
   /** Output only. Output Only. The user can only reschedule an upgrade that starts within this range. */
   rescheduleDateRange?: Interval;
 }
-export const Constraints = /*@__PURE__*/ S.suspend(() =>
+const Constraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disallowedIntervals: S.optional(WeeklyTimeIntervalList),
     minHoursDay: S.optional(S.Number),
@@ -2694,7 +2677,7 @@ export interface Schedule {
   /** Output only. Output Only. The schedule is open for edits during this time interval or window. */
   editWindow?: Interval;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastEditor: S.optional(ScheduleLastEditorEnum),
     weeklyWindows: S.optional(TimeWindowList),
@@ -2712,7 +2695,7 @@ export type VmwareUpgradeComponentStateEnum =
   | "FAILED"
   | "NOT_STARTED"
   | "NOT_APPLICABLE";
-export const VmwareUpgradeComponentStateEnum = S.String;
+const VmwareUpgradeComponentStateEnum = S.String;
 
 export type VmwareUpgradeComponentComponentTypeEnum =
   | "VMWARE_COMPONENT_TYPE_UNSPECIFIED"
@@ -2730,7 +2713,7 @@ export type VmwareUpgradeComponentComponentTypeEnum =
   | "NSXT"
   | "CLUSTER"
   | "VM_TOOLS";
-export const VmwareUpgradeComponentComponentTypeEnum = S.String;
+const VmwareUpgradeComponentComponentTypeEnum = S.String;
 
 /** Per component upgrade resource */
 export interface VmwareUpgradeComponent {
@@ -2739,7 +2722,7 @@ export interface VmwareUpgradeComponent {
   /** Output only. Type of component */
   componentType?: VmwareUpgradeComponentComponentTypeEnum | (string & {});
 }
-export const VmwareUpgradeComponent = /*@__PURE__*/ S.suspend(() =>
+const VmwareUpgradeComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(VmwareUpgradeComponentStateEnum),
     componentType: S.optional(VmwareUpgradeComponentComponentTypeEnum),
@@ -2747,7 +2730,7 @@ export const VmwareUpgradeComponent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmwareUpgradeComponent" }) as any as S.Schema<VmwareUpgradeComponent>;
 
 export type VmwareUpgradeComponentList = Array<VmwareUpgradeComponent>;
-export const VmwareUpgradeComponentList = /*@__PURE__*/ S.Array(
+const VmwareUpgradeComponentList = /*@__PURE__*/ S.Array(
   VmwareUpgradeComponent,
 ) as any as S.Schema<VmwareUpgradeComponentList>;
 
@@ -2784,7 +2767,7 @@ export interface Upgrade {
   /** Output only. Output Only. The list of component upgrades. */
   componentUpgrades?: VmwareUpgradeComponentList;
 }
-export const Upgrade = /*@__PURE__*/ S.suspend(() =>
+const Upgrade = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -2808,7 +2791,7 @@ export interface GetProjectsLocationsPrivateConnectionsRequest {
   /** Required. The resource name of the private connection to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateConnections/my-connection` */
   name: string;
 }
-export const GetProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2822,7 +2805,7 @@ export interface GetProjectsLocationsVmwareEngineNetworksRequest {
   /** Required. The resource name of the VMware Engine network to retrieve. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network` */
   name: string;
 }
-export const GetProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2838,18 +2821,17 @@ export interface GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Required. The resource name of the private cloud to be queried for credentials. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` */
   privateCloud: string;
 }
-export const GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      username: S.optional(S.String.pipe(T.Query())),
-      privateCloud: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+privateCloud}:showVcenterCredentials",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    username: S.optional(S.String.pipe(T.Query())),
+    privateCloud: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+privateCloud}:showVcenterCredentials",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest",
 }) as any as S.Schema<GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest>;
@@ -2861,7 +2843,7 @@ export interface GrantDnsBindPermissionRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const GrantDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const GrantDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principal: S.optional(Principal),
     requestId: S.optional(S.String),
@@ -2876,7 +2858,7 @@ export interface GrantProjectsLocationsDnsBindPermissionRequest {
   /** Request body */
   body?: GrantDnsBindPermissionRequest;
 }
-export const GrantProjectsLocationsDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const GrantProjectsLocationsDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GrantDnsBindPermissionRequest.pipe(T.HttpBody())),
@@ -2903,7 +2885,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2922,7 +2904,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2931,7 +2913,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -2950,7 +2932,7 @@ export interface ListProjectsLocationsAnnouncementsRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of announcement runs, you can exclude the ones named `example-announcement` by specifying `name != "example-announcement"`. You can also filter nested fields. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-announcement") (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "announcement-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "announcement-2") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2969,9 +2951,7 @@ export const ListProjectsLocationsAnnouncementsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsAnnouncementsRequest>;
 
 export type AnnouncementList = Array<Announcement>;
-export const AnnouncementList = /*@__PURE__*/ S.Array(
-  Announcement,
-) as any as S.Schema<AnnouncementList>;
+const AnnouncementList = /*@__PURE__*/ S.Array(Announcement) as any as S.Schema<AnnouncementList>;
 
 /** Response message for VmwareEngine.ListAnnouncements */
 export interface ListAnnouncementsResponse {
@@ -2982,7 +2962,7 @@ export interface ListAnnouncementsResponse {
   /** A list of announcement runs. */
   announcements?: AnnouncementList;
 }
-export const ListAnnouncementsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAnnouncementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -3006,7 +2986,7 @@ export interface ListProjectsLocationsDatastoresRequest {
   /** Optional. The maximum number of results to return in one page. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3026,7 +3006,7 @@ export const ListProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsDatastoresRequest>;
 
 export type DatastoreList = Array<Datastore>;
-export const DatastoreList = /*@__PURE__*/ S.Array(Datastore) as any as S.Schema<DatastoreList>;
+const DatastoreList = /*@__PURE__*/ S.Array(Datastore) as any as S.Schema<DatastoreList>;
 
 /** Response message for VmwareEngine.ListDatastores */
 export interface ListDatastoresResponse {
@@ -3037,7 +3017,7 @@ export interface ListDatastoresResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListDatastoresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatastoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     datastores: S.optional(DatastoreList),
@@ -3057,7 +3037,7 @@ export interface ListProjectsLocationsNetworkPeeringsRequest {
   /** The maximum number of network peerings to return in one page. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3076,7 +3056,7 @@ export const ListProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsNetworkPeeringsRequest>;
 
 export type NetworkPeeringList = Array<NetworkPeering>;
-export const NetworkPeeringList = /*@__PURE__*/ S.Array(
+const NetworkPeeringList = /*@__PURE__*/ S.Array(
   NetworkPeering,
 ) as any as S.Schema<NetworkPeeringList>;
 
@@ -3089,7 +3069,7 @@ export interface ListNetworkPeeringsResponse {
   /** Unreachable resources. */
   unreachable?: StringList;
 }
-export const ListNetworkPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkPeerings: S.optional(NetworkPeeringList),
     nextPageToken: S.optional(S.String),
@@ -3109,20 +3089,19 @@ export interface ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest {
   /** A page token, received from a previous `ListPeeringRoutes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPeeringRoutes` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/peeringRoutes",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/peeringRoutes",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest>;
@@ -3132,10 +3111,10 @@ export type PeeringRouteTypeEnum =
   | "DYNAMIC_PEERING_ROUTE"
   | "STATIC_PEERING_ROUTE"
   | "SUBNET_PEERING_ROUTE";
-export const PeeringRouteTypeEnum = S.String;
+const PeeringRouteTypeEnum = S.String;
 
 export type PeeringRouteDirectionEnum = "DIRECTION_UNSPECIFIED" | "INCOMING" | "OUTGOING";
-export const PeeringRouteDirectionEnum = S.String;
+const PeeringRouteDirectionEnum = S.String;
 
 /** Exchanged network peering route. */
 export interface PeeringRoute {
@@ -3152,7 +3131,7 @@ export interface PeeringRoute {
   /** Output only. Direction of the routes exchanged with the peer network, from the VMware Engine network perspective: * Routes of direction `INCOMING` are imported from the peer network. * Routes of direction `OUTGOING` are exported from the intranet VPC network of the VMware Engine network. */
   direction?: PeeringRouteDirectionEnum;
 }
-export const PeeringRoute = /*@__PURE__*/ S.suspend(() =>
+const PeeringRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PeeringRouteTypeEnum),
     imported: S.optional(S.Boolean),
@@ -3164,9 +3143,7 @@ export const PeeringRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PeeringRoute" }) as any as S.Schema<PeeringRoute>;
 
 export type PeeringRouteList = Array<PeeringRoute>;
-export const PeeringRouteList = /*@__PURE__*/ S.Array(
-  PeeringRoute,
-) as any as S.Schema<PeeringRouteList>;
+const PeeringRouteList = /*@__PURE__*/ S.Array(PeeringRoute) as any as S.Schema<PeeringRouteList>;
 
 /** Response message for VmwareEngine.ListPeeringRoutes */
 export interface ListPeeringRoutesResponse {
@@ -3175,7 +3152,7 @@ export interface ListPeeringRoutesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListPeeringRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peeringRoutes: S.optional(PeeringRouteList),
     nextPageToken: S.optional(S.String),
@@ -3196,7 +3173,7 @@ export interface ListProjectsLocationsNetworkPoliciesRequest {
   /** The maximum number of network policies to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3215,7 +3192,7 @@ export const ListProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesRequest>;
 
 export type NetworkPolicyList = Array<NetworkPolicy>;
-export const NetworkPolicyList = /*@__PURE__*/ S.Array(
+const NetworkPolicyList = /*@__PURE__*/ S.Array(
   NetworkPolicy,
 ) as any as S.Schema<NetworkPolicyList>;
 
@@ -3228,7 +3205,7 @@ export interface ListNetworkPoliciesResponse {
   /** A list of network policies. */
   networkPolicies?: NetworkPolicyList;
 }
-export const ListNetworkPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -3250,27 +3227,26 @@ export interface ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest 
   /** The maximum number of external access rules to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/externalAccessRules",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
-  }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+const ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/externalAccessRules",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+}) as any as S.Schema<ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export type ExternalAccessRuleList = Array<ExternalAccessRule>;
-export const ExternalAccessRuleList = /*@__PURE__*/ S.Array(
+const ExternalAccessRuleList = /*@__PURE__*/ S.Array(
   ExternalAccessRule,
 ) as any as S.Schema<ExternalAccessRuleList>;
 
@@ -3283,7 +3259,7 @@ export interface ListExternalAccessRulesResponse {
   /** A list of external access firewall rules. */
   externalAccessRules?: ExternalAccessRuleList;
 }
-export const ListExternalAccessRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExternalAccessRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -3303,7 +3279,7 @@ export interface ListProjectsLocationsNodeTypesRequest {
   /** A filter expression that matches resources returned in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`, `>`, or `<`. For example, if you are filtering a list of node types, you can exclude the ones named `standard-72` by specifying `name != "standard-72"`. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "standard-72") (virtual_cpu_count > 2) ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "standard-96") AND (virtual_cpu_count > 2) OR (name = "standard-72") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3321,7 +3297,7 @@ export const ListProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsNodeTypesRequest>;
 
 export type NodeTypeList = Array<NodeType>;
-export const NodeTypeList = /*@__PURE__*/ S.Array(NodeType) as any as S.Schema<NodeTypeList>;
+const NodeTypeList = /*@__PURE__*/ S.Array(NodeType) as any as S.Schema<NodeTypeList>;
 
 /** Response message for VmwareEngine.ListNodeTypes */
 export interface ListNodeTypesResponse {
@@ -3332,7 +3308,7 @@ export interface ListNodeTypesResponse {
   /** Locations that could not be reached when making an aggregated query using wildcards. */
   unreachable?: StringList;
 }
-export const ListNodeTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNodeTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeTypes: S.optional(NodeTypeList),
     nextPageToken: S.optional(S.String),
@@ -3352,7 +3328,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3371,7 +3347,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -3382,7 +3358,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     unreachable: S.optional(StringList),
@@ -3402,7 +3378,7 @@ export interface ListProjectsLocationsPrivateCloudsRequest {
   /** Sorts list results by a certain order. By default, returned results are ordered by `name` in ascending order. You can also sort results in descending order based on the `name` value using `orderBy="name desc"`. Currently, only ordering by `name` is supported. */
   orderBy?: string;
 }
-export const ListProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3421,9 +3397,7 @@ export const ListProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsPrivateCloudsRequest>;
 
 export type PrivateCloudList = Array<PrivateCloud>;
-export const PrivateCloudList = /*@__PURE__*/ S.Array(
-  PrivateCloud,
-) as any as S.Schema<PrivateCloudList>;
+const PrivateCloudList = /*@__PURE__*/ S.Array(PrivateCloud) as any as S.Schema<PrivateCloudList>;
 
 /** Response message for VmwareEngine.ListPrivateClouds */
 export interface ListPrivateCloudsResponse {
@@ -3434,7 +3408,7 @@ export interface ListPrivateCloudsResponse {
   /** A list of private clouds. */
   privateClouds?: PrivateCloudList;
 }
-export const ListPrivateCloudsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateCloudsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -3456,7 +3430,7 @@ export interface ListProjectsLocationsPrivateCloudsClustersRequest {
   /** To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (name = "example-cluster") (nodeCount = "3") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (name = "example-cluster-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-cluster-2") ``` */
   filter?: string;
 }
-export const ListProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3475,7 +3449,7 @@ export const ListProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersRequest>;
 
 export type ClusterList = Array<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
+const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
 
 /** Response message for VmwareEngine.ListClusters */
 export interface ListClustersResponse {
@@ -3486,7 +3460,7 @@ export interface ListClustersResponse {
   /** A list of private cloud clusters. */
   clusters?: ClusterList;
 }
-export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -3502,7 +3476,7 @@ export interface ListProjectsLocationsPrivateCloudsClustersNodesRequest {
   /** A page token, received from a previous `ListNodes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListNodes` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsPrivateCloudsClustersNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPrivateCloudsClustersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3519,7 +3493,7 @@ export const ListProjectsLocationsPrivateCloudsClustersNodesRequest = /*@__PURE_
 }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersNodesRequest>;
 
 export type NodeList = Array<Node>;
-export const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
+const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
 
 /** Response message for VmwareEngine.ListNodes */
 export interface ListNodesResponse {
@@ -3528,7 +3502,7 @@ export interface ListNodesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListNodesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodes: S.optional(NodeList),
     nextPageToken: S.optional(S.String),
@@ -3547,21 +3521,20 @@ export interface ListProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Sorts list results by a certain order. By default, returned results are ordered by `name` in ascending order. You can also sort results in descending order based on the `name` value using `orderBy="name desc"`. Currently, only ordering by `name` is supported. */
   orderBy?: string;
 }
-export const ListProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/externalAddresses",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/externalAddresses",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsPrivateCloudsExternalAddressesRequest",
 }) as any as S.Schema<ListProjectsLocationsPrivateCloudsExternalAddressesRequest>;
@@ -3575,7 +3548,7 @@ export interface ListExternalAddressesResponse {
   /** Locations that could not be reached when making an aggregated query using wildcards. */
   unreachable?: StringList;
 }
-export const ListExternalAddressesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExternalAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalAddresses: S.optional(ExternalAddressList),
     nextPageToken: S.optional(S.String),
@@ -3593,25 +3566,24 @@ export interface ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** A page token, received from a previous `ListHcxActivationKeys` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListHcxActivationKeys` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/hcxActivationKeys",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/hcxActivationKeys",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
 }) as any as S.Schema<ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
 export type HcxActivationKeyList = Array<HcxActivationKey>;
-export const HcxActivationKeyList = /*@__PURE__*/ S.Array(
+const HcxActivationKeyList = /*@__PURE__*/ S.Array(
   HcxActivationKey,
 ) as any as S.Schema<HcxActivationKeyList>;
 
@@ -3624,7 +3596,7 @@ export interface ListHcxActivationKeysResponse {
   /** Locations that could not be reached when making an aggregated query using wildcards. */
   unreachable?: StringList;
 }
-export const ListHcxActivationKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHcxActivationKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     hcxActivationKeys: S.optional(HcxActivationKeyList),
@@ -3646,7 +3618,7 @@ export interface ListProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** A page token, received from a previous `ListLoggingServersRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLoggingServersRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3665,7 +3637,7 @@ export const ListProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsPrivateCloudsLoggingServersRequest>;
 
 export type LoggingServerList = Array<LoggingServer>;
-export const LoggingServerList = /*@__PURE__*/ S.Array(
+const LoggingServerList = /*@__PURE__*/ S.Array(
   LoggingServer,
 ) as any as S.Schema<LoggingServerList>;
 
@@ -3678,7 +3650,7 @@ export interface ListLoggingServersResponse {
   /** A token, which can be send as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListLoggingServersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLoggingServersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loggingServers: S.optional(LoggingServerList),
     unreachable: S.optional(StringList),
@@ -3700,8 +3672,8 @@ export interface ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequ
   /** Sorts list results by a certain order. By default, returned results are ordered by `name` in ascending order. You can also sort results in descending order based on the `name` value using `orderBy="name desc"`. Currently, only ordering by `name` is supported. */
   orderBy?: string;
 }
-export const ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -3715,12 +3687,12 @@ export const ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest 
         baseUrl: "https://vmwareengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
-  }) as any as S.Schema<ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+}) as any as S.Schema<ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
 export type ManagementDnsZoneBindingList = Array<ManagementDnsZoneBinding>;
-export const ManagementDnsZoneBindingList = /*@__PURE__*/ S.Array(
+const ManagementDnsZoneBindingList = /*@__PURE__*/ S.Array(
   ManagementDnsZoneBinding,
 ) as any as S.Schema<ManagementDnsZoneBindingList>;
 
@@ -3733,7 +3705,7 @@ export interface ListManagementDnsZoneBindingsResponse {
   /** Locations that could not be reached when making an aggregated query using wildcards. */
   unreachable?: StringList;
 }
-export const ListManagementDnsZoneBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListManagementDnsZoneBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     managementDnsZoneBindings: S.optional(ManagementDnsZoneBindingList),
@@ -3751,7 +3723,7 @@ export interface ListProjectsLocationsPrivateCloudsSubnetsRequest {
   /** A page token, received from a previous `ListSubnetsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubnetsRequest` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3768,7 +3740,7 @@ export const ListProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsPrivateCloudsSubnetsRequest>;
 
 export type SubnetList = Array<Subnet>;
-export const SubnetList = /*@__PURE__*/ S.Array(Subnet) as any as S.Schema<SubnetList>;
+const SubnetList = /*@__PURE__*/ S.Array(Subnet) as any as S.Schema<SubnetList>;
 
 /** Response message for VmwareEngine.ListSubnets */
 export interface ListSubnetsResponse {
@@ -3779,7 +3751,7 @@ export interface ListSubnetsResponse {
   /** Locations that could not be reached when making an aggregated query using wildcards. */
   unreachable?: StringList;
 }
-export const ListSubnetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubnetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnets: S.optional(SubnetList),
     nextPageToken: S.optional(S.String),
@@ -3799,7 +3771,7 @@ export interface ListProjectsLocationsPrivateCloudsUpgradesRequest {
   /** The maximum number of `Upgrades` to return in one page. The service may return fewer resources than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3818,7 +3790,7 @@ export const ListProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsPrivateCloudsUpgradesRequest>;
 
 export type UpgradeList = Array<Upgrade>;
-export const UpgradeList = /*@__PURE__*/ S.Array(Upgrade) as any as S.Schema<UpgradeList>;
+const UpgradeList = /*@__PURE__*/ S.Array(Upgrade) as any as S.Schema<UpgradeList>;
 
 /** Response message for VmwareEngine.ListUpgrades. */
 export interface ListUpgradesResponse {
@@ -3829,7 +3801,7 @@ export interface ListUpgradesResponse {
   /** List of unreachable resources. */
   unreachable?: StringList;
 }
-export const ListUpgradesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUpgradesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgrades: S.optional(UpgradeList),
     nextPageToken: S.optional(S.String),
@@ -3849,7 +3821,7 @@ export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** The maximum number of private connections to return in one page. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3868,7 +3840,7 @@ export const ListProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
 export type PrivateConnectionList = Array<PrivateConnection>;
-export const PrivateConnectionList = /*@__PURE__*/ S.Array(
+const PrivateConnectionList = /*@__PURE__*/ S.Array(
   PrivateConnection,
 ) as any as S.Schema<PrivateConnectionList>;
 
@@ -3881,7 +3853,7 @@ export interface ListPrivateConnectionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListPrivateConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateConnections: S.optional(PrivateConnectionList),
     unreachable: S.optional(StringList),
@@ -3899,19 +3871,18 @@ export interface ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest {
   /** The maximum number of peering routes to return in one page. The service may return fewer than this value. The maximum value is coerced to 1000. The default value of this field is 500. */
   pageSize?: number;
 }
-export const ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/peeringRoutes",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/peeringRoutes",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest>;
@@ -3923,7 +3894,7 @@ export interface ListPrivateConnectionPeeringRoutesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListPrivateConnectionPeeringRoutesResponse =
+const ListPrivateConnectionPeeringRoutesResponse =
   ListPeeringRoutesResponse as any as S.Schema<ListPrivateConnectionPeeringRoutesResponse>;
 
 export interface ListProjectsLocationsVmwareEngineNetworksRequest {
@@ -3938,7 +3909,7 @@ export interface ListProjectsLocationsVmwareEngineNetworksRequest {
   /** Sorts list results by a certain order. By default, returned results are ordered by `name` in ascending order. You can also sort results in descending order based on the `name` value using `orderBy="name desc"`. Currently, only ordering by `name` is supported. */
   orderBy?: string;
 }
-export const ListProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3957,7 +3928,7 @@ export const ListProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsVmwareEngineNetworksRequest>;
 
 export type VmwareEngineNetworkList = Array<VmwareEngineNetwork>;
-export const VmwareEngineNetworkList = /*@__PURE__*/ S.Array(
+const VmwareEngineNetworkList = /*@__PURE__*/ S.Array(
   VmwareEngineNetwork,
 ) as any as S.Schema<VmwareEngineNetworkList>;
 
@@ -3970,7 +3941,7 @@ export interface ListVmwareEngineNetworksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListVmwareEngineNetworksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareEngineNetworksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmwareEngineNetworks: S.optional(VmwareEngineNetworkList),
     unreachable: S.optional(StringList),
@@ -3989,7 +3960,7 @@ export interface MigrateManagementVmsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const MigrateManagementVmsRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateManagementVmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     clusterId: S.optional(S.String),
@@ -4005,18 +3976,17 @@ export interface MigrateManagementVmsProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: MigrateManagementVmsRequest;
 }
-export const MigrateManagementVmsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(MigrateManagementVmsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:migrateManagementVms",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const MigrateManagementVmsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(MigrateManagementVmsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:migrateManagementVms",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "MigrateManagementVmsProjectsLocationsPrivateCloudsRequest",
 }) as any as S.Schema<MigrateManagementVmsProjectsLocationsPrivateCloudsRequest>;
@@ -4032,7 +4002,7 @@ export interface MountDatastoreRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const MountDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
+const MountDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datastoreMountConfig: S.optional(DatastoreMountConfig),
     validateOnly: S.optional(S.Boolean),
@@ -4047,18 +4017,17 @@ export interface MountDatastoreProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: MountDatastoreRequest;
 }
-export const MountDatastoreProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(MountDatastoreRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:mountDatastore",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const MountDatastoreProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(MountDatastoreRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:mountDatastore",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "MountDatastoreProjectsLocationsPrivateCloudsClustersRequest",
 }) as any as S.Schema<MountDatastoreProjectsLocationsPrivateCloudsClustersRequest>;
@@ -4073,7 +4042,7 @@ export interface PatchProjectsLocationsDatastoresRequest {
   /** Request body */
   body?: Datastore;
 }
-export const PatchProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4098,7 +4067,7 @@ export interface PatchProjectsLocationsNetworkPeeringsRequest {
   /** Request body */
   body?: NetworkPeering;
 }
-export const PatchProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsNetworkPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -4124,7 +4093,7 @@ export interface PatchProjectsLocationsNetworkPoliciesRequest {
   /** Request body */
   body?: NetworkPolicy;
 }
-export const PatchProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsNetworkPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4150,8 +4119,8 @@ export interface PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest
   /** Request body */
   body?: ExternalAccessRule;
 }
-export const PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
@@ -4165,9 +4134,9 @@ export const PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
         baseUrl: "https://vmwareengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
+}) as any as S.Schema<PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -4181,7 +4150,7 @@ export interface PatchProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: PrivateCloud;
 }
-export const PatchProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4207,7 +4176,7 @@ export interface PatchProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const PatchProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4233,21 +4202,20 @@ export interface PatchProjectsLocationsPrivateCloudsExternalAddressesRequest {
   /** Request body */
   body?: ExternalAddress;
 }
-export const PatchProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(ExternalAddress.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsPrivateCloudsExternalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(ExternalAddress.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsPrivateCloudsExternalAddressesRequest",
 }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsExternalAddressesRequest>;
@@ -4262,20 +4230,19 @@ export interface PatchProjectsLocationsPrivateCloudsLoggingServersRequest {
   /** Request body */
   body?: LoggingServer;
 }
-export const PatchProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(LoggingServer.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsPrivateCloudsLoggingServersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(LoggingServer.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsPrivateCloudsLoggingServersRequest",
 }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsLoggingServersRequest>;
@@ -4290,8 +4257,8 @@ export interface PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsReq
   /** Request body */
   body?: ManagementDnsZoneBinding;
 }
-export const PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       requestId: S.optional(S.String.pipe(T.Query())),
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4304,9 +4271,9 @@ export const PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest
         baseUrl: "https://vmwareengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
+}) as any as S.Schema<PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
 export interface PatchProjectsLocationsPrivateCloudsSubnetsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the `Subnet` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -4316,7 +4283,7 @@ export interface PatchProjectsLocationsPrivateCloudsSubnetsRequest {
   /** Request body */
   body?: Subnet;
 }
-export const PatchProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsPrivateCloudsSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4338,7 +4305,7 @@ export interface PatchProjectsLocationsPrivateCloudsUpgradesRequest {
   /** Request body */
   body?: Upgrade;
 }
-export const PatchProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsPrivateCloudsUpgradesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4363,7 +4330,7 @@ export interface PatchProjectsLocationsPrivateConnectionsRequest {
   /** Request body */
   body?: PrivateConnection;
 }
-export const PatchProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -4389,7 +4356,7 @@ export interface PatchProjectsLocationsVmwareEngineNetworksRequest {
   /** Request body */
   body?: VmwareEngineNetwork;
 }
-export const PatchProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsVmwareEngineNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -4410,7 +4377,7 @@ export interface AcceleratePrivateCloudDeletionRequest {
   /** Optional. Checksum used to ensure that the user-provided value is up to date before the server processes the request. The server compares provided checksum with the current checksum of the resource. If the user-provided value is out of date, this request returns an `ABORTED` error. */
   etag?: string;
 }
-export const AcceleratePrivateCloudDeletionRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceleratePrivateCloudDeletionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     etag: S.optional(S.String),
@@ -4425,18 +4392,17 @@ export interface PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: AcceleratePrivateCloudDeletionRequest;
 }
-export const PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AcceleratePrivateCloudDeletionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:privateCloudDeletionNow",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(AcceleratePrivateCloudDeletionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:privateCloudDeletionNow",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest",
 }) as any as S.Schema<PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest>;
@@ -4446,7 +4412,7 @@ export interface RepairManagementDnsZoneBindingRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const RepairManagementDnsZoneBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const RepairManagementDnsZoneBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -4460,7 +4426,7 @@ export interface RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRe
   /** Request body */
   body?: RepairManagementDnsZoneBindingRequest;
 }
-export const RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
+const RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -4481,7 +4447,7 @@ export interface ResetNsxCredentialsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const ResetNsxCredentialsRequest =
+const ResetNsxCredentialsRequest =
   RepairManagementDnsZoneBindingRequest as any as S.Schema<ResetNsxCredentialsRequest>;
 
 export interface ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest {
@@ -4490,18 +4456,17 @@ export interface ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: ResetNsxCredentialsRequest;
 }
-export const ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateCloud: S.String.pipe(T.Label()),
-      body: S.optional(ResetNsxCredentialsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+privateCloud}:resetNsxCredentials",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateCloud: S.String.pipe(T.Label()),
+    body: S.optional(ResetNsxCredentialsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+privateCloud}:resetNsxCredentials",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest",
 }) as any as S.Schema<ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest>;
@@ -4513,7 +4478,7 @@ export interface ResetVcenterCredentialsRequest {
   /** Optional. The username of the user to be to reset the credentials. The default value of this field is CloudOwner@gve.local. The provided value should be one of the following: solution-user-01@gve.local, solution-user-02@gve.local, solution-user-03@gve.local, solution-user-04@gve.local, solution-user-05@gve.local, zertoadmin@gve.local. */
   username?: string;
 }
-export const ResetVcenterCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetVcenterCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     username: S.optional(S.String),
@@ -4528,33 +4493,30 @@ export interface ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: ResetVcenterCredentialsRequest;
 }
-export const ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateCloud: S.String.pipe(T.Label()),
-      body: S.optional(ResetVcenterCredentialsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+privateCloud}:resetVcenterCredentials",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateCloud: S.String.pipe(T.Label()),
+    body: S.optional(ResetVcenterCredentialsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+privateCloud}:resetVcenterCredentials",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest",
 }) as any as S.Schema<ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest>;
 
 /** Request message for VmwareEngine.RevokeDnsBindPermission */
 export type RevokeDnsBindPermissionRequest = GrantDnsBindPermissionRequest;
-export const RevokeDnsBindPermissionRequest = GrantDnsBindPermissionRequest;
-
 export interface RevokeProjectsLocationsDnsBindPermissionRequest {
   /** Required. The name of the resource which stores the users/service accounts having the permission to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global resource. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/dnsBindPermission` */
   name: string;
   /** Request body */
   body?: GrantDnsBindPermissionRequest;
 }
-export const RevokeProjectsLocationsDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeProjectsLocationsDnsBindPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GrantDnsBindPermissionRequest.pipe(T.HttpBody())),
@@ -4576,7 +4538,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -4589,7 +4551,7 @@ export interface SetIamPolicyProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4610,7 +4572,28 @@ export interface SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(
+const SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
+}) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>;
+
+export interface SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+const SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -4623,37 +4606,15 @@ export const SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest = /*@__PU
       }),
     ),
 ).annotate({
-  identifier: "SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest",
-}) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest>;
-
-export interface SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-export const SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
+  identifier: "SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
+}) as any as S.Schema<SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -4667,7 +4628,7 @@ export interface TestIamPermissionsProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4687,7 +4648,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest {
@@ -4696,8 +4657,8 @@ export interface TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4708,9 +4669,9 @@ export const TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest =
         baseUrl: "https://vmwareengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -4718,7 +4679,7 @@ export interface TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKe
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
+const TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -4739,7 +4700,7 @@ export interface UndeletePrivateCloudRequest {
   /** Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const UndeletePrivateCloudRequest =
+const UndeletePrivateCloudRequest =
   RepairManagementDnsZoneBindingRequest as any as S.Schema<UndeletePrivateCloudRequest>;
 
 export interface UndeleteProjectsLocationsPrivateCloudsRequest {
@@ -4748,7 +4709,7 @@ export interface UndeleteProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: UndeletePrivateCloudRequest;
 }
-export const UndeleteProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UndeletePrivateCloudRequest.pipe(T.HttpBody())),
@@ -4772,7 +4733,7 @@ export interface UnmountDatastoreRequest {
   /** Required. The resource name of the datastore to unmount. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/datastores/my-datastore` */
   datastore?: string;
 }
-export const UnmountDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
+const UnmountDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     requestId: S.optional(S.String),
@@ -4786,21 +4747,20 @@ export interface UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest {
   /** Request body */
   body?: UnmountDatastoreRequest;
 }
-export const UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UnmountDatastoreRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:unmountDatastore",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest",
-  }) as any as S.Schema<UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest>;
+const UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UnmountDatastoreRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:unmountDatastore",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest",
+}) as any as S.Schema<UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest>;
 
 export interface UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the `DnsForwarding` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
@@ -4812,20 +4772,19 @@ export interface UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest {
   /** Request body */
   body?: DnsForwarding;
 }
-export const UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(DnsForwarding.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://vmwareengine.googleapis.com/",
-      }),
-    ),
+const UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(DnsForwarding.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://vmwareengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest",
 }) as any as S.Schema<UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest>;

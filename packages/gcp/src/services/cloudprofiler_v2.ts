@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type ProfileProfileTypeEnum =
   | "PROFILE_TYPE_UNSPECIFIED"
@@ -73,7 +73,7 @@ export type ProfileProfileTypeEnum =
   | "CONTENTION"
   | "PEAK_HEAP"
   | "HEAP_ALLOC";
-export const ProfileProfileTypeEnum = S.String;
+const ProfileProfileTypeEnum = S.String;
 
 /** Deployment contains the deployment identification information. */
 export interface Deployment {
@@ -84,7 +84,7 @@ export interface Deployment {
   /** Labels identify the deployment within the user universe and same target. Validation regex for label names: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$`. Value for an individual label must be <= 512 bytes, the total size of all label names and values must be <= 1024 bytes. Label named "language" can be used to record the programming language of the profiled deployment. The standard choices for the value include "java", "go", "python", "ruby", "nodejs", "php", "dotnet". For deployments running on Google Cloud Platform, "zone" or "region" label should be present describing the deployment location. An example of a zone is "us-central1-a", an example of a region is "us-central1" or "us-central". */
   labels?: StringMap;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     target: S.optional(S.String),
@@ -109,7 +109,7 @@ export interface Profile {
   /** Output only. Opaque, server-assigned, unique ID for this profile. */
   name?: string;
 }
-export const Profile = /*@__PURE__*/ S.suspend(() =>
+const Profile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     profileType: S.optional(ProfileProfileTypeEnum),
@@ -127,7 +127,7 @@ export interface CreateOfflineProjectsProfilesRequest {
   /** Request body */
   body?: Profile;
 }
-export const CreateOfflineProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOfflineProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Profile.pipe(T.HttpBody())),
@@ -151,12 +151,12 @@ export type CreateProfileRequestProfileTypeItemEnum =
   | "CONTENTION"
   | "PEAK_HEAP"
   | "HEAP_ALLOC";
-export const CreateProfileRequestProfileTypeItemEnum = S.String;
+const CreateProfileRequestProfileTypeItemEnum = S.String;
 
 export type CreateProfileRequestProfileTypeItemEnumList = Array<
   CreateProfileRequestProfileTypeItemEnum | (string & {})
 >;
-export const CreateProfileRequestProfileTypeItemEnumList = /*@__PURE__*/ S.Array(
+const CreateProfileRequestProfileTypeItemEnumList = /*@__PURE__*/ S.Array(
   CreateProfileRequestProfileTypeItemEnum,
 ) as any as S.Schema<CreateProfileRequestProfileTypeItemEnumList>;
 
@@ -167,7 +167,7 @@ export interface CreateProfileRequest {
   /** Deployment details. */
   deployment?: Deployment;
 }
-export const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileType: S.optional(CreateProfileRequestProfileTypeItemEnumList),
     deployment: S.optional(Deployment),
@@ -180,7 +180,7 @@ export interface CreateProjectsProfilesRequest {
   /** Request body */
   body?: CreateProfileRequest;
 }
-export const CreateProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateProfileRequest.pipe(T.HttpBody())),
@@ -203,7 +203,7 @@ export interface ListProjectsProfilesRequest {
   /** Optional. The token to continue pagination and get profiles from a particular page. When paginating, all other parameters provided to `ListProfiles` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -220,7 +220,7 @@ export const ListProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsProfilesRequest>;
 
 export type ProfileList = Array<Profile>;
-export const ProfileList = /*@__PURE__*/ S.Array(Profile) as any as S.Schema<ProfileList>;
+const ProfileList = /*@__PURE__*/ S.Array(Profile) as any as S.Schema<ProfileList>;
 
 /** ListProfileResponse contains the list of collected profiles for deployments in projects which the user has permissions to view. */
 export interface ListProfilesResponse {
@@ -231,7 +231,7 @@ export interface ListProfilesResponse {
   /** Number of profiles that were skipped in the current page since they were not able to be fetched successfully. This should typically be zero. A non-zero value may indicate a transient failure, in which case if the number is too high for your use case, the call may be retried. */
   skippedProfiles?: number;
 }
-export const ListProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profiles: S.optional(ProfileList),
     nextPageToken: S.optional(S.String),
@@ -247,7 +247,7 @@ export interface PatchProjectsProfilesRequest {
   /** Request body */
   body?: Profile;
 }
-export const PatchProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

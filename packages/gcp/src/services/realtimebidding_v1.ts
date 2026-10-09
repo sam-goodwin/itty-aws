@@ -77,9 +77,7 @@ export class NotFound
 
 /** A request to activate a pretargeting configuration. Sets the configuration's state to ACTIVE. */
 export interface ActivatePretargetingConfigRequest {}
-export const ActivatePretargetingConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ActivatePretargetingConfigRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ActivatePretargetingConfigRequest",
 }) as any as S.Schema<ActivatePretargetingConfigRequest>;
 
@@ -89,7 +87,7 @@ export interface ActivateBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: ActivatePretargetingConfigRequest;
 }
-export const ActivateBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivatePretargetingConfigRequest.pipe(T.HttpBody())),
@@ -109,12 +107,12 @@ export type PretargetingConfigIncludedFormatsItemEnum =
   | "HTML"
   | "VAST"
   | "NATIVE";
-export const PretargetingConfigIncludedFormatsItemEnum = S.String;
+const PretargetingConfigIncludedFormatsItemEnum = S.String;
 
 export type PretargetingConfigIncludedFormatsItemEnumList = Array<
   PretargetingConfigIncludedFormatsItemEnum | (string & {})
 >;
-export const PretargetingConfigIncludedFormatsItemEnumList = /*@__PURE__*/ S.Array(
+const PretargetingConfigIncludedFormatsItemEnumList = /*@__PURE__*/ S.Array(
   PretargetingConfigIncludedFormatsItemEnum,
 ) as any as S.Schema<PretargetingConfigIncludedFormatsItemEnumList>;
 
@@ -125,22 +123,20 @@ export type PretargetingConfigIncludedUserIdTypesItemEnum =
   | "DEVICE_ID"
   | "PUBLISHER_PROVIDED_ID"
   | "PUBLISHER_FIRST_PARTY_ID";
-export const PretargetingConfigIncludedUserIdTypesItemEnum = S.String;
-
 export type PretargetingConfigIncludedUserIdTypesItemEnumList = Array<
   PretargetingConfigIncludedUserIdTypesItemEnum | (string & {})
 >;
-export const PretargetingConfigIncludedUserIdTypesItemEnumList =
+const PretargetingConfigIncludedUserIdTypesItemEnumList =
   PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<PretargetingConfigIncludedUserIdTypesItemEnumList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type StringTargetingDimensionTargetingModeEnum =
   | "TARGETING_MODE_UNSPECIFIED"
   | "INCLUSIVE"
   | "EXCLUSIVE";
-export const StringTargetingDimensionTargetingModeEnum = S.String;
+const StringTargetingDimensionTargetingModeEnum = S.String;
 
 /** Generic targeting with string values used in app, website and publisher targeting. */
 export interface StringTargetingDimension {
@@ -149,7 +145,7 @@ export interface StringTargetingDimension {
   /** How the items in this list should be targeted. */
   targetingMode?: StringTargetingDimensionTargetingModeEnum | (string & {});
 }
-export const StringTargetingDimension = /*@__PURE__*/ S.suspend(() =>
+const StringTargetingDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
     targetingMode: S.optional(StringTargetingDimensionTargetingModeEnum),
@@ -163,7 +159,7 @@ export interface NumericTargetingDimension {
   /** The IDs excluded in a config. */
   excludedIds?: StringList;
 }
-export const NumericTargetingDimension = /*@__PURE__*/ S.suspend(() =>
+const NumericTargetingDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedIds: S.optional(StringList),
     excludedIds: S.optional(StringList),
@@ -179,7 +175,7 @@ export interface AppTargeting {
   /** Targeted app IDs. App IDs can refer to those found in an app store or ones that are not published in an app store. A maximum of 30,000 app IDs can be targeted. */
   mobileAppTargeting?: StringTargetingDimension;
 }
-export const AppTargeting = /*@__PURE__*/ S.suspend(() =>
+const AppTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mobileAppCategoryTargeting: S.optional(NumericTargetingDimension),
     mobileAppTargeting: S.optional(StringTargetingDimension),
@@ -193,7 +189,7 @@ export interface CreativeDimensions {
   /** The width of the creative in pixels. */
   width?: string;
 }
-export const CreativeDimensions = /*@__PURE__*/ S.suspend(() =>
+const CreativeDimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.String),
     width: S.optional(S.String),
@@ -201,23 +197,21 @@ export const CreativeDimensions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreativeDimensions" }) as any as S.Schema<CreativeDimensions>;
 
 export type CreativeDimensionsList = Array<CreativeDimensions>;
-export const CreativeDimensionsList = /*@__PURE__*/ S.Array(
+const CreativeDimensionsList = /*@__PURE__*/ S.Array(
   CreativeDimensions,
 ) as any as S.Schema<CreativeDimensionsList>;
 
 export type PretargetingConfigStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED";
-export const PretargetingConfigStateEnum = S.String;
+const PretargetingConfigStateEnum = S.String;
 
 export type PretargetingConfigAllowedUserTargetingModesItemEnum =
   | "USER_TARGETING_MODE_UNSPECIFIED"
   | "REMARKETING_ADS"
   | "INTEREST_BASED_TARGETING";
-export const PretargetingConfigAllowedUserTargetingModesItemEnum = S.String;
-
 export type PretargetingConfigAllowedUserTargetingModesItemEnumList = Array<
   PretargetingConfigAllowedUserTargetingModesItemEnum | (string & {})
 >;
-export const PretargetingConfigAllowedUserTargetingModesItemEnumList =
+const PretargetingConfigAllowedUserTargetingModesItemEnumList =
   PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<PretargetingConfigAllowedUserTargetingModesItemEnumList>;
 
 export type PretargetingConfigIncludedPlatformsItemEnum =
@@ -226,31 +220,27 @@ export type PretargetingConfigIncludedPlatformsItemEnum =
   | "PHONE"
   | "TABLET"
   | "CONNECTED_TV";
-export const PretargetingConfigIncludedPlatformsItemEnum = S.String;
-
 export type PretargetingConfigIncludedPlatformsItemEnumList = Array<
   PretargetingConfigIncludedPlatformsItemEnum | (string & {})
 >;
-export const PretargetingConfigIncludedPlatformsItemEnumList =
+const PretargetingConfigIncludedPlatformsItemEnumList =
   PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<PretargetingConfigIncludedPlatformsItemEnumList>;
 
 export type PretargetingConfigIncludedEnvironmentsItemEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "APP"
   | "WEB";
-export const PretargetingConfigIncludedEnvironmentsItemEnum = S.String;
-
 export type PretargetingConfigIncludedEnvironmentsItemEnumList = Array<
   PretargetingConfigIncludedEnvironmentsItemEnum | (string & {})
 >;
-export const PretargetingConfigIncludedEnvironmentsItemEnumList =
+const PretargetingConfigIncludedEnvironmentsItemEnumList =
   PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<PretargetingConfigIncludedEnvironmentsItemEnumList>;
 
 export type PretargetingConfigInterstitialTargetingEnum =
   | "INTERSTITIAL_TARGETING_UNSPECIFIED"
   | "ONLY_INTERSTITIAL_REQUESTS"
   | "ONLY_NON_INTERSTITIAL_REQUESTS";
-export const PretargetingConfigInterstitialTargetingEnum = S.String;
+const PretargetingConfigInterstitialTargetingEnum = S.String;
 
 /** Pretargeting config: a set of targeting dimensions applied at the pretargeting stage of the RTB funnel. These control which inventory a bidder will receive bid requests for. */
 export interface PretargetingConfig {
@@ -301,7 +291,7 @@ export interface PretargetingConfig {
   /** The verticals included or excluded in this config as defined in https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals */
   verticalTargeting?: NumericTargetingDimension;
 }
-export const PretargetingConfig = /*@__PURE__*/ S.suspend(() =>
+const PretargetingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedFormats: S.optional(PretargetingConfigIncludedFormatsItemEnumList),
     includedUserIdTypes: S.optional(PretargetingConfigIncludedUserIdTypesItemEnumList),
@@ -334,7 +324,7 @@ export interface AddDealsRequest {
   /** Required. The IDs of the deals to associate with the creative. This can include Programmatic Guaranteed, Private Auction, Preferred Deal, and Marketplace Package deal IDs. You can associate no more than 100 deal IDs per request. */
   dealIds?: StringList;
 }
-export const AddDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dealIds: S.optional(StringList),
   }),
@@ -346,7 +336,7 @@ export interface AddDealsBuyersCreativesRequest {
   /** Request body */
   body?: AddDealsRequest;
 }
-export const AddDealsBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDealsBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AddDealsRequest.pipe(T.HttpBody())),
@@ -367,7 +357,7 @@ export type VideoMetadataVastVersionEnum =
   | "VAST_VERSION_2_0"
   | "VAST_VERSION_3_0"
   | "VAST_VERSION_4_0";
-export const VideoMetadataVastVersionEnum = S.String;
+const VideoMetadataVastVersionEnum = S.String;
 
 export type MediaFileMimeTypeEnum =
   | "VIDEO_MIME_TYPE_UNSPECIFIED"
@@ -388,7 +378,7 @@ export type MediaFileMimeTypeEnum =
   | "MIME_AUDIO_MP4A"
   | "MIME_AUDIO_MP3"
   | "MIME_AUDIO_OGG";
-export const MediaFileMimeTypeEnum = S.String;
+const MediaFileMimeTypeEnum = S.String;
 
 /** Information about each media file in the VAST. */
 export interface MediaFile {
@@ -397,7 +387,7 @@ export interface MediaFile {
   /** Bitrate of the video file, in Kbps. Can be used to filter the response of the creatives.list method. */
   bitrate?: string;
 }
-export const MediaFile = /*@__PURE__*/ S.suspend(() =>
+const MediaFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(MediaFileMimeTypeEnum),
     bitrate: S.optional(S.String),
@@ -405,7 +395,7 @@ export const MediaFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MediaFile" }) as any as S.Schema<MediaFile>;
 
 export type MediaFileList = Array<MediaFile>;
-export const MediaFileList = /*@__PURE__*/ S.Array(MediaFile) as any as S.Schema<MediaFileList>;
+const MediaFileList = /*@__PURE__*/ S.Array(MediaFile) as any as S.Schema<MediaFileList>;
 
 /** Video metadata for a creative. */
 export interface VideoMetadata {
@@ -422,7 +412,7 @@ export interface VideoMetadata {
   /** The list of all media files declared in the VAST. If there are multiple VASTs in a wrapper chain, this includes the media files from the deepest one in the chain. */
   mediaFiles?: MediaFileList;
 }
-export const VideoMetadata = /*@__PURE__*/ S.suspend(() =>
+const VideoMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skipOffset: S.optional(S.String),
     duration: S.optional(S.String),
@@ -442,7 +432,7 @@ export interface VideoContent {
   /** Output only. Video metadata. */
   videoMetadata?: VideoMetadata;
 }
-export const VideoContent = /*@__PURE__*/ S.suspend(() =>
+const VideoContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoUrl: S.optional(S.String),
     videoVastXml: S.optional(S.String),
@@ -453,31 +443,27 @@ export const VideoContent = /*@__PURE__*/ S.suspend(() =>
 export type CreativeDeclaredRestrictedCategoriesItemEnum =
   | "RESTRICTED_CATEGORY_UNSPECIFIED"
   | "ALCOHOL";
-export const CreativeDeclaredRestrictedCategoriesItemEnum = S.String;
-
 export type CreativeDeclaredRestrictedCategoriesItemEnumList = Array<
   CreativeDeclaredRestrictedCategoriesItemEnum | (string & {})
 >;
-export const CreativeDeclaredRestrictedCategoriesItemEnumList =
+const CreativeDeclaredRestrictedCategoriesItemEnumList =
   PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<CreativeDeclaredRestrictedCategoriesItemEnumList>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export type CreativeCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "HTML"
   | "VIDEO"
   | "NATIVE";
-export const CreativeCreativeFormatEnum = S.String;
+const CreativeCreativeFormatEnum = S.String;
 
 export type CreativeRestrictedCategoriesItemEnum = "RESTRICTED_CATEGORY_UNSPECIFIED" | "ALCOHOL";
-export const CreativeRestrictedCategoriesItemEnum = S.String;
-
 export type CreativeRestrictedCategoriesItemEnumList = Array<
   CreativeRestrictedCategoriesItemEnum | (string & {})
 >;
-export const CreativeRestrictedCategoriesItemEnumList =
+const CreativeRestrictedCategoriesItemEnumList =
   PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
 
 /** HTML content for a creative. */
@@ -489,7 +475,7 @@ export interface HtmlContent {
   /** The height of the HTML snippet in pixels. Can be used to filter the response of the creatives.list method. */
   height?: number;
 }
-export const HtmlContent = /*@__PURE__*/ S.suspend(() =>
+const HtmlContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(S.Number),
     snippet: S.optional(S.String),
@@ -501,7 +487,7 @@ export type CreativeServingDecisionDetectedCategoriesTaxonomyEnum =
   | "AD_CATEGORY_TAXONOMY_UNSPECIFIED"
   | "GOOGLE_AD_CATEGORY_TAXONOMY"
   | "IAB_CONTENT_1_0";
-export const CreativeServingDecisionDetectedCategoriesTaxonomyEnum = S.String;
+const CreativeServingDecisionDetectedCategoriesTaxonomyEnum = S.String;
 
 /** The list of detected Ad Technology Providers for this creative. Bids placed for inventory that will serve to EEA or UK users are expected to comply with GDPR requirements. You must ensure that the creatives used in such bids should contain only user consented ad technology providers as indicated in the bid request. Google reserves the right to filter non-compliant bids. User consented ad technology providers can be found in the [Google Protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) with the `BidRequest.adslot.consented_providers_settings` field, and can be found as an [OpenRTB extension](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto) with the `BidRequest.user.ext.consented_providers_settings` and `BidRequest.user.ext.consent` fields. See https://support.google.com/authorizedbuyers/answer/9789378 for additional information about the Google TCF v2 integration. */
 export interface AdTechnologyProviders {
@@ -512,7 +498,7 @@ export interface AdTechnologyProviders {
   /** The detected [Google Ad Tech Providers (ATP)](https://support.google.com/admanager/answer/9012903) for this creative. See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for mapping of provider ID to provided name, a privacy policy URL, and a list of domains which can be attributed to the provider. */
   detectedProviderIds?: StringList;
 }
-export const AdTechnologyProviders = /*@__PURE__*/ S.suspend(() =>
+const AdTechnologyProviders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unidentifiedProviderDomains: S.optional(StringList),
     detectedGvlIds: S.optional(StringList),
@@ -526,32 +512,32 @@ export type PolicyComplianceStatusEnum =
   | "DISAPPROVED"
   | "APPROVED"
   | "CERTIFICATE_REQUIRED";
-export const PolicyComplianceStatusEnum = S.String;
+const PolicyComplianceStatusEnum = S.String;
 
 export type DestinationNotWorkingEvidenceDnsErrorEnum =
   | "DNS_ERROR_UNSPECIFIED"
   | "ERROR_DNS"
   | "GOOGLE_CRAWLER_DNS_ISSUE";
-export const DestinationNotWorkingEvidenceDnsErrorEnum = S.String;
+const DestinationNotWorkingEvidenceDnsErrorEnum = S.String;
 
 export type DestinationNotWorkingEvidencePlatformEnum =
   | "PLATFORM_UNSPECIFIED"
   | "PERSONAL_COMPUTER"
   | "ANDROID"
   | "IOS";
-export const DestinationNotWorkingEvidencePlatformEnum = S.String;
+const DestinationNotWorkingEvidencePlatformEnum = S.String;
 
 export type DestinationNotWorkingEvidenceInvalidPageEnum =
   | "INVALID_PAGE_UNSPECIFIED"
   | "EMPTY_OR_ERROR_PAGE";
-export const DestinationNotWorkingEvidenceInvalidPageEnum = S.String;
+const DestinationNotWorkingEvidenceInvalidPageEnum = S.String;
 
 export type DestinationNotWorkingEvidenceUrlRejectedEnum =
   | "URL_REJECTED_UNSPECIFIED"
   | "BAD_REQUEST"
   | "MALFORMED_URL"
   | "URL_REJECTED_UNKNOWN";
-export const DestinationNotWorkingEvidenceUrlRejectedEnum = S.String;
+const DestinationNotWorkingEvidenceUrlRejectedEnum = S.String;
 
 export type DestinationNotWorkingEvidenceRedirectionErrorEnum =
   | "REDIRECTION_ERROR_UNSPECIFIED"
@@ -559,7 +545,7 @@ export type DestinationNotWorkingEvidenceRedirectionErrorEnum =
   | "INVALID_REDIRECT"
   | "EMPTY_REDIRECT"
   | "REDIRECT_ERROR_UNKNOWN";
-export const DestinationNotWorkingEvidenceRedirectionErrorEnum = S.String;
+const DestinationNotWorkingEvidenceRedirectionErrorEnum = S.String;
 
 /** Evidence of the creative's destination URL not functioning properly or having been incorrectly set up. */
 export interface DestinationNotWorkingEvidence {
@@ -580,7 +566,7 @@ export interface DestinationNotWorkingEvidence {
   /** Approximate time when the ad destination was last checked. */
   lastCheckTime?: string;
 }
-export const DestinationNotWorkingEvidence = /*@__PURE__*/ S.suspend(() =>
+const DestinationNotWorkingEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expandedUrl: S.optional(S.String),
     dnsError: S.optional(DestinationNotWorkingEvidenceDnsErrorEnum),
@@ -600,7 +586,7 @@ export interface HttpCallEvidence {
   /** URLs of HTTP calls made by the creative. */
   urls?: StringList;
 }
-export const HttpCallEvidence = /*@__PURE__*/ S.suspend(() =>
+const HttpCallEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urls: S.optional(StringList),
   }),
@@ -612,7 +598,7 @@ export type DestinationNotCrawlableEvidenceReasonEnum =
   | "TIMEOUT_ROBOTS"
   | "ROBOTED_DENIED"
   | "UNKNOWN";
-export const DestinationNotCrawlableEvidenceReasonEnum = S.String;
+const DestinationNotCrawlableEvidenceReasonEnum = S.String;
 
 /** Evidence that the creative's destination URL was not crawlable by Google. */
 export interface DestinationNotCrawlableEvidence {
@@ -623,7 +609,7 @@ export interface DestinationNotCrawlableEvidence {
   /** Destination URL that was attempted to be crawled. */
   crawledUrl?: string;
 }
-export const DestinationNotCrawlableEvidence = /*@__PURE__*/ S.suspend(() =>
+const DestinationNotCrawlableEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(DestinationNotCrawlableEvidenceReasonEnum),
     crawlTime: S.optional(S.String),
@@ -640,7 +626,7 @@ export interface UrlDownloadSize {
   /** The normalized URL with query parameters and fragment removed. */
   normalizedUrl?: string;
 }
-export const UrlDownloadSize = /*@__PURE__*/ S.suspend(() =>
+const UrlDownloadSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadSizeKb: S.optional(S.Number),
     normalizedUrl: S.optional(S.String),
@@ -648,7 +634,7 @@ export const UrlDownloadSize = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UrlDownloadSize" }) as any as S.Schema<UrlDownloadSize>;
 
 export type UrlDownloadSizeList = Array<UrlDownloadSize>;
-export const UrlDownloadSizeList = /*@__PURE__*/ S.Array(
+const UrlDownloadSizeList = /*@__PURE__*/ S.Array(
   UrlDownloadSize,
 ) as any as S.Schema<UrlDownloadSizeList>;
 
@@ -659,7 +645,7 @@ export interface DownloadSizeEvidence {
   /** Download size broken down by URLs with the top download size. */
   topUrlDownloadSizeBreakdowns?: UrlDownloadSizeList;
 }
-export const DownloadSizeEvidence = /*@__PURE__*/ S.suspend(() =>
+const DownloadSizeEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalDownloadSizeKb: S.optional(S.Number),
     topUrlDownloadSizeBreakdowns: S.optional(UrlDownloadSizeList),
@@ -673,7 +659,7 @@ export interface DomainCalls {
   /** The domain name. */
   domain?: string;
 }
-export const DomainCalls = /*@__PURE__*/ S.suspend(() =>
+const DomainCalls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpCallCount: S.optional(S.Number),
     domain: S.optional(S.String),
@@ -681,9 +667,7 @@ export const DomainCalls = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainCalls" }) as any as S.Schema<DomainCalls>;
 
 export type DomainCallsList = Array<DomainCalls>;
-export const DomainCallsList = /*@__PURE__*/ S.Array(
-  DomainCalls,
-) as any as S.Schema<DomainCallsList>;
+const DomainCallsList = /*@__PURE__*/ S.Array(DomainCalls) as any as S.Schema<DomainCallsList>;
 
 /** Number of HTTP calls made by a creative, broken down by domain. */
 export interface DomainCallEvidence {
@@ -692,7 +676,7 @@ export interface DomainCallEvidence {
   /** Breakdown of the most frequent domains called through HTTP by the creative. */
   topHttpCallDomains?: DomainCallsList;
 }
-export const DomainCallEvidence = /*@__PURE__*/ S.suspend(() =>
+const DomainCallEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalHttpCallCount: S.optional(S.Number),
     topHttpCallDomains: S.optional(DomainCallsList),
@@ -704,7 +688,7 @@ export interface DestinationUrlEvidence {
   /** The full landing page URL of the destination. */
   destinationUrl?: string;
 }
-export const DestinationUrlEvidence = /*@__PURE__*/ S.suspend(() =>
+const DestinationUrlEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationUrl: S.optional(S.String),
   }),
@@ -717,7 +701,7 @@ export interface HttpCookieEvidence {
   /** Names of cookies that violate Google policies. For TOO_MANY_COOKIES policy, this will be the cookie names of top domains with the largest number of cookies. For other policies, this will be all the cookie names that violate the policy. */
   cookieNames?: StringList;
 }
-export const HttpCookieEvidence = /*@__PURE__*/ S.suspend(() =>
+const HttpCookieEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxCookieCount: S.optional(S.Number),
     cookieNames: S.optional(StringList),
@@ -741,7 +725,7 @@ export interface PolicyTopicEvidence {
   /** Evidence for HTTP cookie-related policy violations. */
   httpCookie?: HttpCookieEvidence;
 }
-export const PolicyTopicEvidence = /*@__PURE__*/ S.suspend(() =>
+const PolicyTopicEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationNotWorking: S.optional(DestinationNotWorkingEvidence),
     httpCall: S.optional(HttpCallEvidence),
@@ -754,7 +738,7 @@ export const PolicyTopicEvidence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyTopicEvidence" }) as any as S.Schema<PolicyTopicEvidence>;
 
 export type PolicyTopicEvidenceList = Array<PolicyTopicEvidence>;
-export const PolicyTopicEvidenceList = /*@__PURE__*/ S.Array(
+const PolicyTopicEvidenceList = /*@__PURE__*/ S.Array(
   PolicyTopicEvidence,
 ) as any as S.Schema<PolicyTopicEvidenceList>;
 
@@ -769,7 +753,7 @@ export interface PolicyTopicEntry {
   /** URL of the help center article describing this policy topic. */
   helpCenterUrl?: string;
 }
-export const PolicyTopicEntry = /*@__PURE__*/ S.suspend(() =>
+const PolicyTopicEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missingCertificate: S.optional(S.Boolean),
     policyTopic: S.optional(S.String),
@@ -779,7 +763,7 @@ export const PolicyTopicEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyTopicEntry" }) as any as S.Schema<PolicyTopicEntry>;
 
 export type PolicyTopicEntryList = Array<PolicyTopicEntry>;
-export const PolicyTopicEntryList = /*@__PURE__*/ S.Array(
+const PolicyTopicEntryList = /*@__PURE__*/ S.Array(
   PolicyTopicEntry,
 ) as any as S.Schema<PolicyTopicEntryList>;
 
@@ -790,7 +774,7 @@ export interface PolicyCompliance {
   /** Topics related to the policy compliance for this transaction type (for example, open auction, deals) or region (for example, China, Russia). Topics may be present only if status is DISAPPROVED. */
   topics?: PolicyTopicEntryList;
 }
-export const PolicyCompliance = /*@__PURE__*/ S.suspend(() =>
+const PolicyCompliance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PolicyComplianceStatusEnum),
     topics: S.optional(PolicyTopicEntryList),
@@ -808,7 +792,7 @@ export interface AdvertiserAndBrand {
   /** See https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt for the list of possible values. Can be used to filter the response of the creatives.list method. */
   advertiserId?: string;
 }
-export const AdvertiserAndBrand = /*@__PURE__*/ S.suspend(() =>
+const AdvertiserAndBrand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserName: S.optional(S.String),
     brandName: S.optional(S.String),
@@ -818,7 +802,7 @@ export const AdvertiserAndBrand = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdvertiserAndBrand" }) as any as S.Schema<AdvertiserAndBrand>;
 
 export type AdvertiserAndBrandList = Array<AdvertiserAndBrand>;
-export const AdvertiserAndBrandList = /*@__PURE__*/ S.Array(
+const AdvertiserAndBrandList = /*@__PURE__*/ S.Array(
   AdvertiserAndBrand,
 ) as any as S.Schema<AdvertiserAndBrandList>;
 
@@ -862,12 +846,10 @@ export type CreativeServingDecisionDetectedAttributesItemEnum =
   | "RENDERING_SIZELESS_ADX"
   | "OMSDK_1_0"
   | "RENDERING_PLAYABLE";
-export const CreativeServingDecisionDetectedAttributesItemEnum = S.String;
-
 export type CreativeServingDecisionDetectedAttributesItemEnumList = Array<
   CreativeServingDecisionDetectedAttributesItemEnum | (string & {})
 >;
-export const CreativeServingDecisionDetectedAttributesItemEnumList =
+const CreativeServingDecisionDetectedAttributesItemEnumList =
   PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<CreativeServingDecisionDetectedAttributesItemEnumList>;
 
 /** Top level status and detected attributes of a creative. */
@@ -909,7 +891,7 @@ export interface CreativeServingDecision {
   /** The policy compliance of this creative in Russia. When approved or disapproved, this applies to both deals and open auction in Russia. When pending review, this creative is allowed to serve for deals but not for open auction. */
   russiaPolicyCompliance?: PolicyCompliance;
 }
-export const CreativeServingDecision = /*@__PURE__*/ S.suspend(() =>
+const CreativeServingDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectedCategoriesTaxonomy: S.optional(CreativeServingDecisionDetectedCategoriesTaxonomyEnum),
     adTechnologyProviders: S.optional(AdTechnologyProviders),
@@ -940,7 +922,7 @@ export interface Image {
   /** Image height in pixels. */
   height?: number;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     width: S.optional(S.Number),
@@ -977,7 +959,7 @@ export interface NativeContent {
   /** The app rating in the app store. Must be in the range [0-5]. */
   starRating?: number;
 }
-export const NativeContent = /*@__PURE__*/ S.suspend(() =>
+const NativeContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appIcon: S.optional(Image),
     clickTrackingUrl: S.optional(S.String),
@@ -1035,12 +1017,10 @@ export type CreativeDeclaredAttributesItemEnum =
   | "RENDERING_SIZELESS_ADX"
   | "OMSDK_1_0"
   | "RENDERING_PLAYABLE";
-export const CreativeDeclaredAttributesItemEnum = S.String;
-
 export type CreativeDeclaredAttributesItemEnumList = Array<
   CreativeDeclaredAttributesItemEnum | (string & {})
 >;
-export const CreativeDeclaredAttributesItemEnumList =
+const CreativeDeclaredAttributesItemEnumList =
   PretargetingConfigIncludedFormatsItemEnumList as any as S.Schema<CreativeDeclaredAttributesItemEnumList>;
 
 /** A creative and its classification data. */
@@ -1088,7 +1068,7 @@ export interface Creative {
   /** All declared attributes for the ads that may be shown from this creative. Can be used to filter the response of the creatives.list method. If the `excluded_attribute` field of a [bid request](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto") contains one of the attributes that were declared or detected for a given creative, and a bid is submitted with that creative, the bid will be filtered before the auction. */
   declaredAttributes?: CreativeDeclaredAttributesItemEnumList;
 }
-export const Creative = /*@__PURE__*/ S.suspend(() =>
+const Creative = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1118,7 +1098,7 @@ export type AddTargetedAppsRequestTargetingModeEnum =
   | "TARGETING_MODE_UNSPECIFIED"
   | "INCLUSIVE"
   | "EXCLUSIVE";
-export const AddTargetedAppsRequestTargetingModeEnum = S.String;
+const AddTargetedAppsRequestTargetingModeEnum = S.String;
 
 /** A request to start targeting the provided app IDs in a specific pretargeting configuration. The pretargeting configuration itself specifies how these apps are targeted. in PretargetingConfig.appTargeting.mobileAppTargeting. */
 export interface AddTargetedAppsRequest {
@@ -1127,7 +1107,7 @@ export interface AddTargetedAppsRequest {
   /** Required. The targeting mode that should be applied to the list of app IDs. If there are existing targeted app IDs, must be equal to the existing PretargetingConfig.appTargeting.mobileAppTargeting.targetingMode or a 400 bad request error will be returned. */
   targetingMode?: AddTargetedAppsRequestTargetingModeEnum | (string & {});
 }
-export const AddTargetedAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTargetedAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appIds: S.optional(StringList),
     targetingMode: S.optional(AddTargetedAppsRequestTargetingModeEnum),
@@ -1140,7 +1120,7 @@ export interface AddTargetedAppsBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: AddTargetedAppsRequest;
 }
-export const AddTargetedAppsBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTargetedAppsBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretargetingConfig: S.String.pipe(T.Label()),
     body: S.optional(AddTargetedAppsRequest.pipe(T.HttpBody())),
@@ -1159,7 +1139,7 @@ export type AddTargetedPublishersRequestTargetingModeEnum =
   | "TARGETING_MODE_UNSPECIFIED"
   | "INCLUSIVE"
   | "EXCLUSIVE";
-export const AddTargetedPublishersRequestTargetingModeEnum = S.String;
+const AddTargetedPublishersRequestTargetingModeEnum = S.String;
 
 /** A request to start targeting the provided publishers in a specific pretargeting configuration. The pretargeting configuration itself specifies how these publishers are targeted in PretargetingConfig.publisherTargeting. */
 export interface AddTargetedPublishersRequest {
@@ -1168,7 +1148,7 @@ export interface AddTargetedPublishersRequest {
   /** A list of publisher IDs to target in the pretargeting configuration. These values will be added to the list of targeted publisher IDs in PretargetingConfig.publisherTargeting.values. Publishers are identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/ for more details. */
   publisherIds?: StringList;
 }
-export const AddTargetedPublishersRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTargetedPublishersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingMode: S.optional(AddTargetedPublishersRequestTargetingModeEnum),
     publisherIds: S.optional(StringList),
@@ -1183,7 +1163,7 @@ export interface AddTargetedPublishersBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: AddTargetedPublishersRequest;
 }
-export const AddTargetedPublishersBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTargetedPublishersBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretargetingConfig: S.String.pipe(T.Label()),
     body: S.optional(AddTargetedPublishersRequest.pipe(T.HttpBody())),
@@ -1202,7 +1182,7 @@ export type AddTargetedSitesRequestTargetingModeEnum =
   | "TARGETING_MODE_UNSPECIFIED"
   | "INCLUSIVE"
   | "EXCLUSIVE";
-export const AddTargetedSitesRequestTargetingModeEnum = S.String;
+const AddTargetedSitesRequestTargetingModeEnum = S.String;
 
 /** A request to start targeting the provided sites in a specific pretargeting configuration. The pretargeting configuration itself specifies how these sites are targeted in PretargetingConfig.webTargeting. */
 export interface AddTargetedSitesRequest {
@@ -1211,7 +1191,7 @@ export interface AddTargetedSitesRequest {
   /** Required. The targeting mode that should be applied to the list of site URLs. If there are existing targeted sites, must be equal to the existing PretargetingConfig.webTargeting.targetingMode or a 400 bad request error will be returned. */
   targetingMode?: AddTargetedSitesRequestTargetingModeEnum | (string & {});
 }
-export const AddTargetedSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTargetedSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sites: S.optional(StringList),
     targetingMode: S.optional(AddTargetedSitesRequestTargetingModeEnum),
@@ -1224,7 +1204,7 @@ export interface AddTargetedSitesBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: AddTargetedSitesRequest;
 }
-export const AddTargetedSitesBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTargetedSitesBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretargetingConfig: S.String.pipe(T.Label()),
     body: S.optional(AddTargetedSitesRequest.pipe(T.HttpBody())),
@@ -1244,7 +1224,7 @@ export interface BatchApprovePublisherConnectionsRequest {
   /** Required. The names of the publishers with which connections will be approved. In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. */
   names?: StringList;
 }
-export const BatchApprovePublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchApprovePublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList),
   }),
@@ -1258,7 +1238,7 @@ export interface BatchApproveBiddersPublisherConnectionsRequest {
   /** Request body */
   body?: BatchApprovePublisherConnectionsRequest;
 }
-export const BatchApproveBiddersPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchApproveBiddersPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchApprovePublisherConnectionsRequest.pipe(T.HttpBody())),
@@ -1278,13 +1258,13 @@ export type PublisherConnectionBiddingStateEnum =
   | "PENDING"
   | "REJECTED"
   | "APPROVED";
-export const PublisherConnectionBiddingStateEnum = S.String;
+const PublisherConnectionBiddingStateEnum = S.String;
 
 export type PublisherConnectionPublisherPlatformEnum =
   | "PUBLISHER_PLATFORM_UNSPECIFIED"
   | "GOOGLE_AD_MANAGER"
   | "ADMOB";
-export const PublisherConnectionPublisherPlatformEnum = S.String;
+const PublisherConnectionPublisherPlatformEnum = S.String;
 
 /** An Open Bidding exchange's connection to a publisher. This is initiated by the publisher for the bidder to review. If approved by the bidder, this means that the bidder agrees to receive bid requests from the publisher. */
 export interface PublisherConnection {
@@ -1299,7 +1279,7 @@ export interface PublisherConnection {
   /** Output only. Name of the publisher connection. This follows the pattern `bidders/{bidder}/publisherConnections/{publisher}`, where `{bidder}` represents the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. */
   name?: string;
 }
-export const PublisherConnection = /*@__PURE__*/ S.suspend(() =>
+const PublisherConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     biddingState: S.optional(PublisherConnectionBiddingStateEnum),
@@ -1310,7 +1290,7 @@ export const PublisherConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublisherConnection" }) as any as S.Schema<PublisherConnection>;
 
 export type PublisherConnectionList = Array<PublisherConnection>;
-export const PublisherConnectionList = /*@__PURE__*/ S.Array(
+const PublisherConnectionList = /*@__PURE__*/ S.Array(
   PublisherConnection,
 ) as any as S.Schema<PublisherConnectionList>;
 
@@ -1319,7 +1299,7 @@ export interface BatchApprovePublisherConnectionsResponse {
   /** The publisher connections that have been approved. */
   publisherConnections?: PublisherConnectionList;
 }
-export const BatchApprovePublisherConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchApprovePublisherConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherConnections: S.optional(PublisherConnectionList),
   }),
@@ -1332,7 +1312,7 @@ export interface BatchRejectPublisherConnectionsRequest {
   /** Required. The names of the publishers with whom connection will be rejected. In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. */
   names?: StringList;
 }
-export const BatchRejectPublisherConnectionsRequest =
+const BatchRejectPublisherConnectionsRequest =
   BatchApprovePublisherConnectionsRequest as any as S.Schema<BatchRejectPublisherConnectionsRequest>;
 
 export interface BatchRejectBiddersPublisherConnectionsRequest {
@@ -1341,7 +1321,7 @@ export interface BatchRejectBiddersPublisherConnectionsRequest {
   /** Request body */
   body?: BatchRejectPublisherConnectionsRequest;
 }
-export const BatchRejectBiddersPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchRejectBiddersPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchRejectPublisherConnectionsRequest.pipe(T.HttpBody())),
@@ -1361,20 +1341,18 @@ export interface BatchRejectPublisherConnectionsResponse {
   /** The publisher connections that have been rejected. */
   publisherConnections?: PublisherConnectionList;
 }
-export const BatchRejectPublisherConnectionsResponse =
+const BatchRejectPublisherConnectionsResponse =
   BatchApprovePublisherConnectionsResponse as any as S.Schema<BatchRejectPublisherConnectionsResponse>;
 
 /** A request to close a specified user list. */
 export type CloseUserListRequest = ActivatePretargetingConfigRequest;
-export const CloseUserListRequest = ActivatePretargetingConfigRequest;
-
 export interface CloseBuyersUserListsRequest {
   /** Required. The name of the user list to close. See UserList.name */
   name: string;
   /** Request body */
   body?: ActivatePretargetingConfigRequest;
 }
-export const CloseBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const CloseBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivatePretargetingConfigRequest.pipe(T.HttpBody())),
@@ -1390,7 +1368,7 @@ export const CloseBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloseBuyersUserListsRequest>;
 
 export type UserListStatusEnum = "STATUS_UNSPECIFIED" | "OPEN" | "CLOSED";
-export const UserListStatusEnum = S.String;
+const UserListStatusEnum = S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Realtimebidding_Date {
@@ -1401,7 +1379,7 @@ export interface Realtimebidding_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Realtimebidding_Date = /*@__PURE__*/ S.suspend(() =>
+const Realtimebidding_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -1419,7 +1397,7 @@ export type UrlRestrictionRestrictionTypeEnum =
   | "DOES_NOT_CONTAIN"
   | "DOES_NOT_START_WITH"
   | "DOES_NOT_END_WITH";
-export const UrlRestrictionRestrictionTypeEnum = S.String;
+const UrlRestrictionRestrictionTypeEnum = S.String;
 
 /** Deprecated. This will be removed in October 2023. For more information, see the release notes: https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Represents the URL restriction (for the URL captured by the pixel callback) for a user list. */
 export interface UrlRestriction {
@@ -1432,7 +1410,7 @@ export interface UrlRestriction {
   /** Start date (if specified) of the URL restriction. */
   startDate?: Realtimebidding_Date;
 }
-export const UrlRestriction = /*@__PURE__*/ S.suspend(() =>
+const UrlRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(Realtimebidding_Date),
     url: S.optional(S.String),
@@ -1456,7 +1434,7 @@ export interface UserList {
   /** Required. Deprecated. This will be removed in October 2023. For more information, see the release notes: https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api The URL restriction for the user list. */
   urlRestriction?: UrlRestriction;
 }
-export const UserList = /*@__PURE__*/ S.suspend(() =>
+const UserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1473,7 +1451,7 @@ export interface CreateBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: PretargetingConfig;
 }
-export const CreateBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(PretargetingConfig.pipe(T.HttpBody())),
@@ -1494,7 +1472,7 @@ export interface CreateBuyersCreativesRequest {
   /** Request body */
   body?: Creative;
 }
-export const CreateBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Creative.pipe(T.HttpBody())),
@@ -1515,7 +1493,7 @@ export interface CreateBuyersUserListsRequest {
   /** Request body */
   body?: UserList;
 }
-export const CreateBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(UserList.pipe(T.HttpBody())),
@@ -1534,7 +1512,7 @@ export interface DeleteBiddersPretargetingConfigsRequest {
   /** Required. The name of the pretargeting configuration to delete. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} */
   name: string;
 }
-export const DeleteBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1550,7 +1528,7 @@ export const DeleteBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend((
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -1558,7 +1536,7 @@ export interface GetBiddersRequest {
   /** Required. Name of the bidder to get. Format: `bidders/{bidderAccountId}` */
   name: string;
 }
-export const GetBiddersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBiddersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1583,7 +1561,7 @@ export interface Bidder {
   /** Output only. The buyer's network ID used for cookie matching. This ID corresponds to the `google_nid` parameter in the URL used in cookie match requests. Refer to https://developers.google.com/authorized-buyers/rtb/cookie-guide for further information. */
   cookieMatchingNetworkId?: string;
 }
-export const Bidder = /*@__PURE__*/ S.suspend(() =>
+const Bidder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cookieMatchingUrl: S.optional(S.String),
     bypassNonguaranteedDealsPretargeting: S.optional(S.Boolean),
@@ -1597,7 +1575,7 @@ export interface GetBiddersEndpointsRequest {
   /** Required. Name of the bidder endpoint to get. Format: `bidders/{bidderAccountId}/endpoints/{endpointId}` */
   name: string;
 }
-export const GetBiddersEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBiddersEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1617,14 +1595,14 @@ export type EndpointTradingLocationEnum =
   | "US_EAST"
   | "EUROPE"
   | "ASIA";
-export const EndpointTradingLocationEnum = S.String;
+const EndpointTradingLocationEnum = S.String;
 
 export type EndpointBidProtocolEnum =
   | "BID_PROTOCOL_UNSPECIFIED"
   | "GOOGLE_RTB"
   | "OPENRTB_JSON"
   | "OPENRTB_PROTOBUF";
-export const EndpointBidProtocolEnum = S.String;
+const EndpointBidProtocolEnum = S.String;
 
 /** Bidder endpoint that receives bid requests. */
 export interface Endpoint {
@@ -1639,7 +1617,7 @@ export interface Endpoint {
   /** Output only. The URL that bid requests should be sent to. */
   url?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tradingLocation: S.optional(EndpointTradingLocationEnum),
     bidProtocol: S.optional(EndpointBidProtocolEnum),
@@ -1653,7 +1631,7 @@ export interface GetBiddersPretargetingConfigsRequest {
   /** Required. Name of the pretargeting configuration to get. Format: bidders/{bidderAccountId}/pretargetingConfigs/{configId} */
   name: string;
 }
-export const GetBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1671,7 +1649,7 @@ export interface GetBiddersPublisherConnectionsRequest {
   /** Required. Name of the publisher whose connection information is to be retrieved. In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. See publisherConnection.name. */
   name: string;
 }
-export const GetBiddersPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBiddersPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1689,7 +1667,7 @@ export interface GetBuyersRequest {
   /** Required. Name of the buyer to get. Format: `buyers/{buyerId}` */
   name: string;
 }
-export const GetBuyersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1716,7 +1694,7 @@ export interface Buyer {
   /** Output only. Name of the buyer resource that must follow the pattern `buyers/{buyerAccountId}`, where `{buyerAccountId}` is the account ID of the buyer account whose information is to be received. One can get their account ID on the Authorized Buyers or Open Bidding UI, or by contacting their Google account manager. */
   name?: string;
 }
-export const Buyer = /*@__PURE__*/ S.suspend(() =>
+const Buyer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingIds: S.optional(StringList),
     displayName: S.optional(S.String),
@@ -1731,7 +1709,7 @@ export type GetBuyersCreativesViewEnum =
   | "CREATIVE_VIEW_UNSPECIFIED"
   | "SERVING_DECISION_ONLY"
   | "FULL";
-export const GetBuyersCreativesViewEnum = S.String;
+const GetBuyersCreativesViewEnum = S.String;
 
 export interface GetBuyersCreativesRequest {
   /** Required. Name of the creative to retrieve. See creative.name. */
@@ -1739,7 +1717,7 @@ export interface GetBuyersCreativesRequest {
   /** Controls the amount of information included in the response. By default only creativeServingDecision is included. To retrieve the entire creative resource (including the declared fields and the creative content) specify the view as "FULL". */
   view?: GetBuyersCreativesViewEnum | (string & {});
 }
-export const GetBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetBuyersCreativesViewEnum.pipe(T.Query())),
@@ -1758,7 +1736,7 @@ export interface GetBuyersUserListsRequest {
   /** Required. The name of the user list to be retrieved. See UserList.name. */
   name: string;
 }
-export const GetBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1776,7 +1754,7 @@ export interface GetRemarketingTagBuyersRequest {
   /** Required. To fetch the remarketing tag for an account, the name must follow the pattern `buyers/{accountId}`, where `{accountId}` represents the ID of the buyer that owns the remarketing tag. For a bidder accessing the remarketing tag on behalf of a child seat buyer, `{accountId}` should represent the ID of the child seat buyer. To fetch the remarketing tag for a specific user list, the name must follow the pattern `buyers/{accountId}/userLists/{userListId}`. See UserList.name. */
   name: string;
 }
-export const GetRemarketingTagBuyersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRemarketingTagBuyersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1795,7 +1773,7 @@ export interface GetRemarketingTagResponse {
   /** An HTML tag that can be placed on the advertiser's page to add users to a user list. For more information and code samples on using snippets on your website, refer to [Tag your site for remarketing](https://support.google.com/google-ads/answer/2476688). */
   snippet?: string;
 }
-export const GetRemarketingTagResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRemarketingTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snippet: S.optional(S.String),
   }),
@@ -1807,7 +1785,7 @@ export interface GetRemarketingTagBuyersUserListsRequest {
   /** Required. To fetch the remarketing tag for an account, the name must follow the pattern `buyers/{accountId}`, where `{accountId}` represents the ID of the buyer that owns the remarketing tag. For a bidder accessing the remarketing tag on behalf of a child seat buyer, `{accountId}` should represent the ID of the child seat buyer. To fetch the remarketing tag for a specific user list, the name must follow the pattern `buyers/{accountId}/userLists/{userListId}`. See UserList.name. */
   name: string;
 }
-export const GetRemarketingTagBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRemarketingTagBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1827,7 +1805,7 @@ export interface ListBiddersRequest {
   /** The maximum number of bidders to return. If unspecified, at most 100 bidders will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
 }
-export const ListBiddersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1841,7 +1819,7 @@ export const ListBiddersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBiddersRequest" }) as any as S.Schema<ListBiddersRequest>;
 
 export type BidderList = Array<Bidder>;
-export const BidderList = /*@__PURE__*/ S.Array(Bidder) as any as S.Schema<BidderList>;
+const BidderList = /*@__PURE__*/ S.Array(Bidder) as any as S.Schema<BidderList>;
 
 /** A response containing bidders. */
 export interface ListBiddersResponse {
@@ -1850,7 +1828,7 @@ export interface ListBiddersResponse {
   /** A token which can be passed to a subsequent call to the `ListBidders` method to retrieve the next page of results in ListBiddersRequest.pageToken. */
   nextPageToken?: string;
 }
-export const ListBiddersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bidders: S.optional(BidderList),
     nextPageToken: S.optional(S.String),
@@ -1861,7 +1839,7 @@ export type ListBiddersCreativesViewEnum =
   | "CREATIVE_VIEW_UNSPECIFIED"
   | "SERVING_DECISION_ONLY"
   | "FULL";
-export const ListBiddersCreativesViewEnum = S.String;
+const ListBiddersCreativesViewEnum = S.String;
 
 export interface ListBiddersCreativesRequest {
   /** Controls the amount of information included in the response. By default only creativeServingDecision is included. To retrieve the entire creative resource (including the declared fields and the creative content) specify the view as "FULL". */
@@ -1875,7 +1853,7 @@ export interface ListBiddersCreativesRequest {
   /** Requested page size. The server may return fewer creatives than requested (due to timeout constraint) even if more are available through another call. If unspecified, server will pick an appropriate default. Acceptable values are 1 to 1000, inclusive. */
   pageSize?: number;
 }
-export const ListBiddersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListBiddersCreativesViewEnum.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1894,7 +1872,7 @@ export const ListBiddersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBiddersCreativesRequest>;
 
 export type CreativeList = Array<Creative>;
-export const CreativeList = /*@__PURE__*/ S.Array(Creative) as any as S.Schema<CreativeList>;
+const CreativeList = /*@__PURE__*/ S.Array(Creative) as any as S.Schema<CreativeList>;
 
 /** A response for listing creatives. */
 export interface ListCreativesResponse {
@@ -1903,7 +1881,7 @@ export interface ListCreativesResponse {
   /** The list of creatives. */
   creatives?: CreativeList;
 }
-export const ListCreativesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCreativesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     creatives: S.optional(CreativeList),
@@ -1918,7 +1896,7 @@ export interface ListBiddersEndpointsRequest {
   /** The maximum number of endpoints to return. If unspecified, at most 100 endpoints will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
 }
-export const ListBiddersEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1935,7 +1913,7 @@ export const ListBiddersEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBiddersEndpointsRequest>;
 
 export type EndpointList = Array<Endpoint>;
-export const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
+const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
 
 /** A response containing bidder endpoints. */
 export interface ListEndpointsResponse {
@@ -1944,7 +1922,7 @@ export interface ListEndpointsResponse {
   /** List of bidder endpoints. */
   endpoints?: EndpointList;
 }
-export const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     endpoints: S.optional(EndpointList),
@@ -1959,7 +1937,7 @@ export interface ListBiddersPretargetingConfigsRequest {
   /** Required. Name of the bidder whose pretargeting configurations will be listed. Format: bidders/{bidderAccountId} */
   parent: string;
 }
-export const ListBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1976,7 +1954,7 @@ export const ListBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListBiddersPretargetingConfigsRequest>;
 
 export type PretargetingConfigList = Array<PretargetingConfig>;
-export const PretargetingConfigList = /*@__PURE__*/ S.Array(
+const PretargetingConfigList = /*@__PURE__*/ S.Array(
   PretargetingConfig,
 ) as any as S.Schema<PretargetingConfigList>;
 
@@ -1987,7 +1965,7 @@ export interface ListPretargetingConfigsResponse {
   /** A token which can be passed to a subsequent call to the `ListPretargetingConfigs` method to retrieve the next page of results in ListPretargetingConfigsRequest.pageToken. */
   nextPageToken?: string;
 }
-export const ListPretargetingConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPretargetingConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretargetingConfigs: S.optional(PretargetingConfigList),
     nextPageToken: S.optional(S.String),
@@ -2008,7 +1986,7 @@ export interface ListBiddersPublisherConnectionsRequest {
   /** Requested page size. The server may return fewer results than requested (due to timeout constraint) even if more are available through another call. If unspecified, the server will pick an appropriate default. Acceptable values are 1 to 5000, inclusive. */
   pageSize?: number;
 }
-export const ListBiddersPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersPublisherConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2033,7 +2011,7 @@ export interface ListPublisherConnectionsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListPublisherConnectionsRequest.pageToken field in the subsequent call to the `ListPublisherConnections` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListPublisherConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublisherConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherConnections: S.optional(PublisherConnectionList),
     nextPageToken: S.optional(S.String),
@@ -2048,7 +2026,7 @@ export interface ListBuyersRequest {
   /** A token identifying a page of results the server should return. This value is received from a previous `ListBuyers` call in ListBuyersResponse.nextPageToken. */
   pageToken?: string;
 }
-export const ListBuyersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2058,7 +2036,7 @@ export const ListBuyersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBuyersRequest" }) as any as S.Schema<ListBuyersRequest>;
 
 export type BuyerList = Array<Buyer>;
-export const BuyerList = /*@__PURE__*/ S.Array(Buyer) as any as S.Schema<BuyerList>;
+const BuyerList = /*@__PURE__*/ S.Array(Buyer) as any as S.Schema<BuyerList>;
 
 /** A response containing buyer account information. */
 export interface ListBuyersResponse {
@@ -2067,7 +2045,7 @@ export interface ListBuyersResponse {
   /** A token which can be passed to a subsequent call to the `ListBuyers` method to retrieve the next page of results in ListBuyersRequest.pageToken. */
   nextPageToken?: string;
 }
-export const ListBuyersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buyers: S.optional(BuyerList),
     nextPageToken: S.optional(S.String),
@@ -2078,7 +2056,7 @@ export type ListBuyersCreativesViewEnum =
   | "CREATIVE_VIEW_UNSPECIFIED"
   | "SERVING_DECISION_ONLY"
   | "FULL";
-export const ListBuyersCreativesViewEnum = S.String;
+const ListBuyersCreativesViewEnum = S.String;
 
 export interface ListBuyersCreativesRequest {
   /** Query string to filter creatives. If no filter is specified, all active creatives will be returned. Example: 'accountId=12345 AND (dealsStatus:DISAPPROVED AND disapprovalReason:UNACCEPTABLE_CONTENT) OR declaredAttributes:IS_COOKIE_TARGETED' */
@@ -2092,7 +2070,7 @@ export interface ListBuyersCreativesRequest {
   /** Controls the amount of information included in the response. By default only creativeServingDecision is included. To retrieve the entire creative resource (including the declared fields and the creative content) specify the view as "FULL". */
   view?: ListBuyersCreativesViewEnum | (string & {});
 }
-export const ListBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2118,7 +2096,7 @@ export interface ListBuyersUserListsRequest {
   /** The number of results to return per page. */
   pageSize?: number;
 }
-export const ListBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2135,7 +2113,7 @@ export const ListBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuyersUserListsRequest>;
 
 export type UserListList = Array<UserList>;
-export const UserListList = /*@__PURE__*/ S.Array(UserList) as any as S.Schema<UserListList>;
+const UserListList = /*@__PURE__*/ S.Array(UserList) as any as S.Schema<UserListList>;
 
 /** The list user list response. */
 export interface ListUserListsResponse {
@@ -2144,7 +2122,7 @@ export interface ListUserListsResponse {
   /** The continuation page token to send back to the server in a subsequent request. Due to a currently known issue, it is recommended that the caller keep invoking the list method until the time a next page token is not returned, even if the result set is empty. */
   nextPageToken?: string;
 }
-export const ListUserListsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userLists: S.optional(UserListList),
     nextPageToken: S.optional(S.String),
@@ -2153,15 +2131,13 @@ export const ListUserListsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A request to open a specified user list. */
 export type OpenUserListRequest = ActivatePretargetingConfigRequest;
-export const OpenUserListRequest = ActivatePretargetingConfigRequest;
-
 export interface OpenBuyersUserListsRequest {
   /** Required. The name of the user list to open. See UserList.name */
   name: string;
   /** Request body */
   body?: ActivatePretargetingConfigRequest;
 }
-export const OpenBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const OpenBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivatePretargetingConfigRequest.pipe(T.HttpBody())),
@@ -2184,7 +2160,7 @@ export interface PatchBiddersEndpointsRequest {
   /** Request body */
   body?: Endpoint;
 }
-export const PatchBiddersEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBiddersEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2208,7 +2184,7 @@ export interface PatchBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: PretargetingConfig;
 }
-export const PatchBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2232,7 +2208,7 @@ export interface PatchBuyersCreativesRequest {
   /** Request body */
   body?: Creative;
 }
-export const PatchBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBuyersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2253,7 +2229,7 @@ export interface RemoveTargetedAppsRequest {
   /** A list of app IDs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted app IDs in PretargetingConfig.appTargeting.mobileAppTargeting.values. */
   appIds?: StringList;
 }
-export const RemoveTargetedAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTargetedAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appIds: S.optional(StringList),
   }),
@@ -2267,7 +2243,7 @@ export interface RemoveTargetedAppsBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: RemoveTargetedAppsRequest;
 }
-export const RemoveTargetedAppsBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTargetedAppsBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretargetingConfig: S.String.pipe(T.Label()),
     body: S.optional(RemoveTargetedAppsRequest.pipe(T.HttpBody())),
@@ -2287,7 +2263,7 @@ export interface RemoveTargetedPublishersRequest {
   /** A list of publisher IDs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted publisher IDs in PretargetingConfig.publisherTargeting.values. Publishers are identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/ for more details. */
   publisherIds?: StringList;
 }
-export const RemoveTargetedPublishersRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTargetedPublishersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherIds: S.optional(StringList),
   }),
@@ -2301,18 +2277,17 @@ export interface RemoveTargetedPublishersBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: RemoveTargetedPublishersRequest;
 }
-export const RemoveTargetedPublishersBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pretargetingConfig: S.String.pipe(T.Label()),
-      body: S.optional(RemoveTargetedPublishersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+pretargetingConfig}:removeTargetedPublishers",
-        baseUrl: "https://realtimebidding.googleapis.com/",
-      }),
-    ),
+const RemoveTargetedPublishersBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretargetingConfig: S.String.pipe(T.Label()),
+    body: S.optional(RemoveTargetedPublishersRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+pretargetingConfig}:removeTargetedPublishers",
+      baseUrl: "https://realtimebidding.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "RemoveTargetedPublishersBiddersPretargetingConfigsRequest",
 }) as any as S.Schema<RemoveTargetedPublishersBiddersPretargetingConfigsRequest>;
@@ -2322,7 +2297,7 @@ export interface RemoveTargetedSitesRequest {
   /** A list of site URLs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted URLs in PretargetingConfig.webTargeting.values. */
   sites?: StringList;
 }
-export const RemoveTargetedSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTargetedSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sites: S.optional(StringList),
   }),
@@ -2336,7 +2311,7 @@ export interface RemoveTargetedSitesBiddersPretargetingConfigsRequest {
   /** Request body */
   body?: RemoveTargetedSitesRequest;
 }
-export const RemoveTargetedSitesBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTargetedSitesBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretargetingConfig: S.String.pipe(T.Label()),
     body: S.optional(RemoveTargetedSitesRequest.pipe(T.HttpBody())),
@@ -2353,15 +2328,13 @@ export const RemoveTargetedSitesBiddersPretargetingConfigsRequest = /*@__PURE__*
 
 /** A request to suspend a pretargeting configuration. Sets the configuration's state to SUSPENDED. */
 export type SuspendPretargetingConfigRequest = ActivatePretargetingConfigRequest;
-export const SuspendPretargetingConfigRequest = ActivatePretargetingConfigRequest;
-
 export interface SuspendBiddersPretargetingConfigsRequest {
   /** Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} */
   name: string;
   /** Request body */
   body?: ActivatePretargetingConfigRequest;
 }
-export const SuspendBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendBiddersPretargetingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivatePretargetingConfigRequest.pipe(T.HttpBody())),
@@ -2382,7 +2355,7 @@ export interface UpdateBuyersUserListsRequest {
   /** Request body */
   body?: UserList;
 }
-export const UpdateBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UserList.pipe(T.HttpBody())),
@@ -2399,15 +2372,13 @@ export const UpdateBuyersUserListsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A request to receive push notifications when any of the creatives belonging to the bidder changes status. */
 export type WatchCreativesRequest = ActivatePretargetingConfigRequest;
-export const WatchCreativesRequest = ActivatePretargetingConfigRequest;
-
 export interface WatchBiddersCreativesRequest {
   /** Required. To watch all creatives pertaining to the bidder and all its child seat accounts, the bidder must follow the pattern `bidders/{bidderAccountId}`. */
   parent: string;
   /** Request body */
   body?: ActivatePretargetingConfigRequest;
 }
-export const WatchBiddersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchBiddersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ActivatePretargetingConfigRequest.pipe(T.HttpBody())),
@@ -2429,7 +2400,7 @@ export interface WatchCreativesResponse {
   /** The Pub/Sub topic that will be used to publish creative serving status notifications. This would be of the format `projects/{project_id}/topics/{topic_id}`. */
   topic?: string;
 }
-export const WatchCreativesResponse = /*@__PURE__*/ S.suspend(() =>
+const WatchCreativesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.optional(S.String),
     topic: S.optional(S.String),

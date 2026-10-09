@@ -82,7 +82,7 @@ export interface CreateRecipientRequest {
   /** The account that will receive the share. */
   recipientAccountId?: string;
 }
-export const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -104,7 +104,7 @@ export type RecipientsCreateResponseAssociationStatus =
   | "associated"
   | "disassociating"
   | "disassociated";
-export const RecipientsCreateResponseAssociationStatus = S.String;
+const RecipientsCreateResponseAssociationStatus = S.String;
 
 export interface RecipientsCreateResponseResourcesItem {
   /** Share Recipient error message. */
@@ -116,7 +116,7 @@ export interface RecipientsCreateResponseResourcesItem {
   /** Whether the error is terminal or will be continually retried. */
   terminal: boolean;
 }
-export const RecipientsCreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const RecipientsCreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.String,
     resourceId: S.String.pipe(T.Body("resource_id")),
@@ -128,7 +128,7 @@ export const RecipientsCreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RecipientsCreateResponseResourcesItem>;
 
 export type RecipientsCreateResponseResourcesList = Array<RecipientsCreateResponseResourcesItem>;
-export const RecipientsCreateResponseResourcesList = /*@__PURE__*/ S.Array(
+const RecipientsCreateResponseResourcesList = /*@__PURE__*/ S.Array(
   RecipientsCreateResponseResourcesItem,
 ) as any as S.Schema<RecipientsCreateResponseResourcesList>;
 
@@ -146,7 +146,7 @@ export interface CreateRecipientResponse {
   modified: string;
   resources?: RecipientsCreateResponseResourcesList | null;
 }
-export const CreateRecipientResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRecipientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -165,7 +165,7 @@ export type ResourcesCreateRequestResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ResourcesCreateRequestResourceType = S.String;
+const ResourcesCreateRequestResourceType = S.String;
 
 export interface CreateResourceRequest {
   /** Account identifier. */
@@ -181,7 +181,7 @@ export interface CreateResourceRequest {
   /** Resource Type. */
   resourceType: ResourcesCreateRequestResourceType | (string & {});
 }
-export const CreateResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -208,10 +208,10 @@ export type ResourcesCreateResponseResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ResourcesCreateResponseResourceType = S.String;
+const ResourcesCreateResponseResourceType = S.String;
 
 export type ResourcesCreateResponseStatus = "active" | "deleting" | "deleted";
-export const ResourcesCreateResponseStatus = S.String;
+const ResourcesCreateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateResourceResponse {
@@ -234,7 +234,7 @@ export interface CreateResourceResponse {
   /** Resource Status. */
   status: ResourcesCreateResponseStatus;
 }
-export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -256,7 +256,7 @@ export interface CreateRequestRecipientsItem {
   /** The account that will receive the share. */
   recipientAccountId?: string;
 }
-export const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String.pipe(T.Body("account_id"))),
     organizationId: S.optional(S.String.pipe(T.Body("organization_id"))),
@@ -267,7 +267,7 @@ export const CreateRequestRecipientsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestRecipientsItem>;
 
 export type CreateRequestRecipientsList = Array<CreateRequestRecipientsItem>;
-export const CreateRequestRecipientsList = /*@__PURE__*/ S.Array(
+const CreateRequestRecipientsList = /*@__PURE__*/ S.Array(
   CreateRequestRecipientsItem,
 ) as any as S.Schema<CreateRequestRecipientsList>;
 
@@ -279,7 +279,7 @@ export type CreateRequestResourcesItemResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const CreateRequestResourcesItemResourceType = S.String;
+const CreateRequestResourcesItemResourceType = S.String;
 
 export interface CreateRequestResourcesItem {
   /** Resource Metadata. */
@@ -291,7 +291,7 @@ export interface CreateRequestResourcesItem {
   /** Resource Type. */
   resourceType: CreateRequestResourcesItemResourceType | (string & {});
 }
-export const CreateRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: S.Unknown,
     resourceAccountId: S.String.pipe(T.Body("resource_account_id")),
@@ -303,7 +303,7 @@ export const CreateRequestResourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestResourcesItem>;
 
 export type CreateRequestResourcesList = Array<CreateRequestResourcesItem>;
-export const CreateRequestResourcesList = /*@__PURE__*/ S.Array(
+const CreateRequestResourcesList = /*@__PURE__*/ S.Array(
   CreateRequestResourcesItem,
 ) as any as S.Schema<CreateRequestResourcesList>;
 
@@ -315,7 +315,7 @@ export interface CreateResourceSharingRequest {
   recipients: CreateRequestRecipientsList;
   resources: CreateRequestResourcesList;
 }
-export const CreateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -329,13 +329,13 @@ export const CreateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResourceSharingRequest>;
 
 export type CreateResponseStatus = "active" | "deleting" | "deleted";
-export const CreateResponseStatus = S.String;
+const CreateResponseStatus = S.String;
 
 export type CreateResponseTargetType = "account" | "organization";
-export const CreateResponseTargetType = S.String;
+const CreateResponseTargetType = S.String;
 
 export type CreateResponseKind = "sent" | "received";
-export const CreateResponseKind = S.String;
+const CreateResponseKind = S.String;
 
 export type CreateResponseResourcesItemResourceType =
   | "custom-ruleset"
@@ -345,10 +345,10 @@ export type CreateResponseResourcesItemResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const CreateResponseResourcesItemResourceType = S.String;
+const CreateResponseResourcesItemResourceType = S.String;
 
 export type CreateResponseResourcesItemStatus = "active" | "deleting" | "deleted";
-export const CreateResponseResourcesItemStatus = S.String;
+const CreateResponseResourcesItemStatus = S.String;
 
 export interface CreateResponseResourcesItem {
   /** Share Resource identifier. */
@@ -370,7 +370,7 @@ export interface CreateResponseResourcesItem {
   /** Resource Status. */
   status: CreateResponseResourcesItemStatus;
 }
-export const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -387,7 +387,7 @@ export const CreateResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseResourcesItem>;
 
 export type CreateResponseResourcesList = Array<CreateResponseResourcesItem>;
-export const CreateResponseResourcesList = /*@__PURE__*/ S.Array(
+const CreateResponseResourcesList = /*@__PURE__*/ S.Array(
   CreateResponseResourcesItem,
 ) as any as S.Schema<CreateResponseResourcesList>;
 
@@ -421,7 +421,7 @@ export interface CreateResourceSharingResponse {
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: CreateResponseResourcesList | null;
 }
-export const CreateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -459,7 +459,7 @@ export interface DeleteRecipientRequest {
   /** Share Recipient identifier tag. */
   recipientId: string;
 }
-export const DeleteRecipientRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -480,13 +480,11 @@ export type RecipientsDeleteResponseAssociationStatus =
   | "associated"
   | "disassociating"
   | "disassociated";
-export const RecipientsDeleteResponseAssociationStatus = S.String;
+const RecipientsDeleteResponseAssociationStatus = S.String;
 
 export type RecipientsDeleteResponseResourcesItem = RecipientsCreateResponseResourcesItem;
-export const RecipientsDeleteResponseResourcesItem = RecipientsCreateResponseResourcesItem;
-
 export type RecipientsDeleteResponseResourcesList = Array<RecipientsCreateResponseResourcesItem>;
-export const RecipientsDeleteResponseResourcesList =
+const RecipientsDeleteResponseResourcesList =
   RecipientsCreateResponseResourcesList as any as S.Schema<RecipientsDeleteResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -503,7 +501,7 @@ export interface DeleteRecipientResponse {
   modified: string;
   resources?: RecipientsDeleteResponseResourcesList | null;
 }
-export const DeleteRecipientResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecipientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -522,7 +520,7 @@ export interface DeleteResourceRequest {
   /** Share Resource identifier. */
   shareResourceId: string;
 }
-export const DeleteResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -546,11 +544,7 @@ export type ResourcesDeleteResponseResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ResourcesDeleteResponseResourceType = S.String;
-
 export type ResourcesDeleteResponseStatus = "active" | "deleting" | "deleted";
-export const ResourcesDeleteResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResourceResponse {
   /** Share Resource identifier. */
@@ -572,8 +566,7 @@ export interface DeleteResourceResponse {
   /** Resource Status. */
   status: ResourcesDeleteResponseStatus;
 }
-export const DeleteResourceResponse =
-  CreateResourceResponse as any as S.Schema<DeleteResourceResponse>;
+const DeleteResourceResponse = CreateResourceResponse as any as S.Schema<DeleteResourceResponse>;
 
 export interface DeleteResourceSharingRequest {
   /** Account identifier. */
@@ -581,7 +574,7 @@ export interface DeleteResourceSharingRequest {
   /** Share identifier tag. */
   shareId: string;
 }
-export const DeleteResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -593,14 +586,8 @@ export const DeleteResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceSharingRequest>;
 
 export type DeleteResponseStatus = "active" | "deleting" | "deleted";
-export const DeleteResponseStatus = S.String;
-
 export type DeleteResponseTargetType = "account" | "organization";
-export const DeleteResponseTargetType = S.String;
-
 export type DeleteResponseKind = "sent" | "received";
-export const DeleteResponseKind = S.String;
-
 export type DeleteResponseResourcesItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
@@ -609,11 +596,7 @@ export type DeleteResponseResourcesItemResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const DeleteResponseResourcesItemResourceType = S.String;
-
 export type DeleteResponseResourcesItemStatus = "active" | "deleting" | "deleted";
-export const DeleteResponseResourcesItemStatus = S.String;
-
 export interface DeleteResponseResourcesItem {
   /** Share Resource identifier. */
   id: string;
@@ -634,13 +617,7 @@ export interface DeleteResponseResourcesItem {
   /** Resource Status. */
   status: DeleteResponseResourcesItemStatus;
 }
-export const DeleteResponseResourcesItem =
-  CreateResponseResourcesItem as any as S.Schema<DeleteResponseResourcesItem>;
-
 export type DeleteResponseResourcesList = Array<DeleteResponseResourcesItem>;
-export const DeleteResponseResourcesList =
-  CreateResponseResourcesList as any as S.Schema<DeleteResponseResourcesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteResourceSharingResponse {
   /** Share identifier tag. */
@@ -671,7 +648,7 @@ export interface DeleteResourceSharingResponse {
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: DeleteResponseResourcesList | null;
 }
-export const DeleteResourceSharingResponse =
+const DeleteResourceSharingResponse =
   CreateResourceSharingResponse as any as S.Schema<DeleteResourceSharingResponse>;
 
 export interface GetRecipientRequest {
@@ -684,7 +661,7 @@ export interface GetRecipientRequest {
   /** Include resources in the response. */
   includeResources?: boolean;
 }
-export const GetRecipientRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -706,13 +683,11 @@ export type RecipientsGetResponseAssociationStatus =
   | "associated"
   | "disassociating"
   | "disassociated";
-export const RecipientsGetResponseAssociationStatus = S.String;
+const RecipientsGetResponseAssociationStatus = S.String;
 
 export type RecipientsGetResponseResourcesItem = RecipientsCreateResponseResourcesItem;
-export const RecipientsGetResponseResourcesItem = RecipientsCreateResponseResourcesItem;
-
 export type RecipientsGetResponseResourcesList = Array<RecipientsCreateResponseResourcesItem>;
-export const RecipientsGetResponseResourcesList =
+const RecipientsGetResponseResourcesList =
   RecipientsCreateResponseResourcesList as any as S.Schema<RecipientsGetResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -729,7 +704,7 @@ export interface GetRecipientResponse {
   modified: string;
   resources?: RecipientsGetResponseResourcesList | null;
 }
-export const GetRecipientResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRecipientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -748,7 +723,7 @@ export interface GetResourceRequest {
   /** Share Resource identifier. */
   shareResourceId: string;
 }
-export const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -772,11 +747,7 @@ export type ResourcesGetResponseResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ResourcesGetResponseResourceType = S.String;
-
 export type ResourcesGetResponseStatus = "active" | "deleting" | "deleted";
-export const ResourcesGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResourceResponse {
   /** Share Resource identifier. */
@@ -798,7 +769,7 @@ export interface GetResourceResponse {
   /** Resource Status. */
   status: ResourcesGetResponseStatus;
 }
-export const GetResourceResponse = CreateResourceResponse as any as S.Schema<GetResourceResponse>;
+const GetResourceResponse = CreateResourceResponse as any as S.Schema<GetResourceResponse>;
 
 export interface GetResourceSharingRequest {
   /** Account identifier. */
@@ -810,7 +781,7 @@ export interface GetResourceSharingRequest {
   /** Include resources in the response. */
   includeResources?: boolean;
 }
-export const GetResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -824,13 +795,13 @@ export const GetResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourceSharingRequest>;
 
 export type GetResponseStatus = "active" | "deleting" | "deleted";
-export const GetResponseStatus = S.String;
+const GetResponseStatus = S.String;
 
 export type GetResponseTargetType = "account" | "organization";
-export const GetResponseTargetType = S.String;
+const GetResponseTargetType = S.String;
 
 export type GetResponseKind = "sent" | "received";
-export const GetResponseKind = S.String;
+const GetResponseKind = S.String;
 
 export type GetResponseResourcesItemResourceType =
   | "custom-ruleset"
@@ -840,10 +811,10 @@ export type GetResponseResourcesItemResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const GetResponseResourcesItemResourceType = S.String;
+const GetResponseResourcesItemResourceType = S.String;
 
 export type GetResponseResourcesItemStatus = "active" | "deleting" | "deleted";
-export const GetResponseResourcesItemStatus = S.String;
+const GetResponseResourcesItemStatus = S.String;
 
 export interface GetResponseResourcesItem {
   /** Share Resource identifier. */
@@ -865,7 +836,7 @@ export interface GetResponseResourcesItem {
   /** Resource Status. */
   status: GetResponseResourcesItemStatus;
 }
-export const GetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -880,7 +851,7 @@ export const GetResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponseResourcesItem" }) as any as S.Schema<GetResponseResourcesItem>;
 
 export type GetResponseResourcesList = Array<GetResponseResourcesItem>;
-export const GetResponseResourcesList = /*@__PURE__*/ S.Array(
+const GetResponseResourcesList = /*@__PURE__*/ S.Array(
   GetResponseResourcesItem,
 ) as any as S.Schema<GetResponseResourcesList>;
 
@@ -914,7 +885,7 @@ export interface GetResourceSharingResponse {
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: GetResponseResourcesList | null;
 }
-export const GetResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceSharingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -956,7 +927,7 @@ export interface ListRecipientsRequest {
   /** Number of objects to return per page. Defaults to `20` when `page` is supplied without `per_page`. May be omitted entirely along with `page` to receive a non-paginated response. */
   perPage?: number;
 }
-export const ListRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -979,13 +950,11 @@ export type RecipientsListResultItemAssociationStatus =
   | "associated"
   | "disassociating"
   | "disassociated";
-export const RecipientsListResultItemAssociationStatus = S.String;
+const RecipientsListResultItemAssociationStatus = S.String;
 
 export type RecipientsListResultItemResourcesItem = RecipientsCreateResponseResourcesItem;
-export const RecipientsListResultItemResourcesItem = RecipientsCreateResponseResourcesItem;
-
 export type RecipientsListResultItemResourcesList = Array<RecipientsCreateResponseResourcesItem>;
-export const RecipientsListResultItemResourcesList =
+const RecipientsListResultItemResourcesList =
   RecipientsCreateResponseResourcesList as any as S.Schema<RecipientsListResultItemResourcesList>;
 
 export interface RecipientsListResultItem {
@@ -1001,7 +970,7 @@ export interface RecipientsListResultItem {
   modified: string;
   resources?: RecipientsListResultItemResourcesList | null;
 }
-export const RecipientsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RecipientsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -1013,7 +982,7 @@ export const RecipientsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecipientsListResultItem" }) as any as S.Schema<RecipientsListResultItem>;
 
 export type RecipientsListResultList = Array<RecipientsListResultItem>;
-export const RecipientsListResultList = /*@__PURE__*/ S.Array(
+const RecipientsListResultList = /*@__PURE__*/ S.Array(
   RecipientsListResultItem,
 ) as any as S.Schema<RecipientsListResultList>;
 
@@ -1023,7 +992,7 @@ export interface ListRecipientsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRecipientsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecipientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RecipientsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1038,10 +1007,10 @@ export type ResourcesListRequestResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ResourcesListRequestResourceType = S.String;
+const ResourcesListRequestResourceType = S.String;
 
 export type ResourcesListRequestStatus = "active" | "deleting" | "deleted";
-export const ResourcesListRequestStatus = S.String;
+const ResourcesListRequestStatus = S.String;
 
 export interface ListResourcesRequest {
   /** Account identifier. */
@@ -1057,7 +1026,7 @@ export interface ListResourcesRequest {
   /** Filter share resources by status. */
   status?: ResourcesListRequestStatus | (string & {});
 }
-export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -1084,11 +1053,7 @@ export type ResourcesListResultItemResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ResourcesListResultItemResourceType = S.String;
-
 export type ResourcesListResultItemStatus = "active" | "deleting" | "deleted";
-export const ResourcesListResultItemStatus = S.String;
-
 export interface ResourcesListResultItem {
   /** Share Resource identifier. */
   id: string;
@@ -1109,11 +1074,8 @@ export interface ResourcesListResultItem {
   /** Resource Status. */
   status: ResourcesListResultItemStatus;
 }
-export const ResourcesListResultItem =
-  GetResponseResourcesItem as any as S.Schema<ResourcesListResultItem>;
-
 export type ResourcesListResultList = Array<ResourcesListResultItem>;
-export const ResourcesListResultList =
+const ResourcesListResultList =
   GetResponseResourcesList as any as S.Schema<ResourcesListResultList>;
 
 export interface ListResourcesResponse {
@@ -1122,7 +1084,7 @@ export interface ListResourcesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ResourcesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1130,13 +1092,13 @@ export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResourcesResponse" }) as any as S.Schema<ListResourcesResponse>;
 
 export type ListRequestDirection = "asc" | "desc";
-export const ListRequestDirection = S.String;
+const ListRequestDirection = S.String;
 
 export type ListRequestKind = "sent" | "received";
-export const ListRequestKind = S.String;
+const ListRequestKind = S.String;
 
 export type ListRequestOrder = "name" | "created";
-export const ListRequestOrder = S.String;
+const ListRequestOrder = S.String;
 
 export type ListRequestResourceTypes =
   | "custom-ruleset"
@@ -1146,23 +1108,21 @@ export type ListRequestResourceTypes =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ListRequestResourceTypes = S.String;
+const ListRequestResourceTypes = S.String;
 
 export type ListRequestResourceTypesList = Array<ListRequestResourceTypes | (string & {})>;
-export const ListRequestResourceTypesList = /*@__PURE__*/ S.Array(
+const ListRequestResourceTypesList = /*@__PURE__*/ S.Array(
   ListRequestResourceTypes,
 ) as any as S.Schema<ListRequestResourceTypesList>;
 
 export type ListRequestStatus = "active" | "deleting" | "deleted";
-export const ListRequestStatus = S.String;
+const ListRequestStatus = S.String;
 
 export type ListRequestTagList = Array<string>;
-export const ListRequestTagList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestTagList>;
+const ListRequestTagList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ListRequestTagList>;
 
 export type ListRequestTargetType = "account" | "organization";
-export const ListRequestTargetType = S.String;
+const ListRequestTargetType = S.String;
 
 export interface ListResourceSharingsRequest {
   /** Account identifier. */
@@ -1190,7 +1150,7 @@ export interface ListResourceSharingsRequest {
   /** Filter shares by target_type. */
   targetType?: ListRequestTargetType | (string & {});
 }
-export const ListResourceSharingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceSharingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
@@ -1212,13 +1172,13 @@ export const ListResourceSharingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourceSharingsRequest>;
 
 export type ListResultItemStatus = "active" | "deleting" | "deleted";
-export const ListResultItemStatus = S.String;
+const ListResultItemStatus = S.String;
 
 export type ListResultItemTargetType = "account" | "organization";
-export const ListResultItemTargetType = S.String;
+const ListResultItemTargetType = S.String;
 
 export type ListResultItemKind = "sent" | "received";
-export const ListResultItemKind = S.String;
+const ListResultItemKind = S.String;
 
 export type ListResultItemResourcesItemResourceType =
   | "custom-ruleset"
@@ -1228,11 +1188,7 @@ export type ListResultItemResourcesItemResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ListResultItemResourcesItemResourceType = S.String;
-
 export type ListResultItemResourcesItemStatus = "active" | "deleting" | "deleted";
-export const ListResultItemResourcesItemStatus = S.String;
-
 export interface ListResultItemResourcesItem {
   /** Share Resource identifier. */
   id: string;
@@ -1253,11 +1209,8 @@ export interface ListResultItemResourcesItem {
   /** Resource Status. */
   status: ListResultItemResourcesItemStatus;
 }
-export const ListResultItemResourcesItem =
-  CreateResponseResourcesItem as any as S.Schema<ListResultItemResourcesItem>;
-
 export type ListResultItemResourcesList = Array<ListResultItemResourcesItem>;
-export const ListResultItemResourcesList =
+const ListResultItemResourcesList =
   CreateResponseResourcesList as any as S.Schema<ListResultItemResourcesList>;
 
 export interface ListResultItem {
@@ -1289,7 +1242,7 @@ export interface ListResultItem {
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: ListResultItemResourcesList | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -1318,9 +1271,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListResourceSharingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -1328,7 +1279,7 @@ export interface ListResourceSharingsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListResourceSharingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourceSharingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1347,7 +1298,7 @@ export interface UpdateResourceRequest {
   /** Resource Metadata. */
   meta: unknown;
 }
-export const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -1372,11 +1323,7 @@ export type ResourcesUpdateResponseResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const ResourcesUpdateResponseResourceType = S.String;
-
 export type ResourcesUpdateResponseStatus = "active" | "deleting" | "deleted";
-export const ResourcesUpdateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResourceResponse {
   /** Share Resource identifier. */
@@ -1398,8 +1345,7 @@ export interface UpdateResourceResponse {
   /** Resource Status. */
   status: ResourcesUpdateResponseStatus;
 }
-export const UpdateResourceResponse =
-  CreateResourceResponse as any as S.Schema<UpdateResourceResponse>;
+const UpdateResourceResponse = CreateResourceResponse as any as S.Schema<UpdateResourceResponse>;
 
 export interface UpdateResourceSharingRequest {
   /** Account identifier. */
@@ -1409,7 +1355,7 @@ export interface UpdateResourceSharingRequest {
   /** The name of the share. */
   name: string;
 }
-export const UpdateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     shareId: S.String.pipe(T.Label("share_id")),
@@ -1422,14 +1368,8 @@ export const UpdateResourceSharingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResourceSharingRequest>;
 
 export type UpdateResponseStatus = "active" | "deleting" | "deleted";
-export const UpdateResponseStatus = S.String;
-
 export type UpdateResponseTargetType = "account" | "organization";
-export const UpdateResponseTargetType = S.String;
-
 export type UpdateResponseKind = "sent" | "received";
-export const UpdateResponseKind = S.String;
-
 export type UpdateResponseResourcesItemResourceType =
   | "custom-ruleset"
   | "gateway-policy"
@@ -1438,11 +1378,7 @@ export type UpdateResponseResourcesItemResourceType =
   | "gateway-extended-email-matching"
   | "idp-federation-grant"
   | "trust-grant";
-export const UpdateResponseResourcesItemResourceType = S.String;
-
 export type UpdateResponseResourcesItemStatus = "active" | "deleting" | "deleted";
-export const UpdateResponseResourcesItemStatus = S.String;
-
 export interface UpdateResponseResourcesItem {
   /** Share Resource identifier. */
   id: string;
@@ -1463,13 +1399,7 @@ export interface UpdateResponseResourcesItem {
   /** Resource Status. */
   status: UpdateResponseResourcesItemStatus;
 }
-export const UpdateResponseResourcesItem =
-  CreateResponseResourcesItem as any as S.Schema<UpdateResponseResourcesItem>;
-
 export type UpdateResponseResourcesList = Array<UpdateResponseResourcesItem>;
-export const UpdateResponseResourcesList =
-  CreateResponseResourcesList as any as S.Schema<UpdateResponseResourcesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResourceSharingResponse {
   /** Share identifier tag. */
@@ -1500,7 +1430,7 @@ export interface UpdateResourceSharingResponse {
   /** A list of resources that are part of the share. This field is only included when requested via the 'include_resources' parameter. */
   resources?: UpdateResponseResourcesList | null;
 }
-export const UpdateResourceSharingResponse =
+const UpdateResourceSharingResponse =
   CreateResourceSharingResponse as any as S.Schema<UpdateResourceSharingResponse>;
 
 export type CreateRecipientError = ShareNotFound | Forbidden | CloudflareOpError;

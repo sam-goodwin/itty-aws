@@ -21,7 +21,7 @@ export interface ApprovePipelineConnectionRequest {
   /** Reason for resource operation. */
   statusReason?: string;
 }
-export const ApprovePipelineConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ApprovePipelineConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -42,11 +42,11 @@ export const ApprovePipelineConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -63,7 +63,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -76,32 +76,32 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ApprovePipelineConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const ApprovePipelineConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
+const ApprovePipelineConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ApprovePipelineConnectionResponseTagsMap>;
 
 /** Direction of data movement */
 export type Direction = "Send" | "Receive";
-export const Direction = S.String;
+const Direction = S.String;
 
 /** Status of the connection */
 export type ConnectionStatus = "InReview" | "Approved" | "Rejected" | "Accepted";
-export const ConnectionStatus = S.String;
+const ConnectionStatus = S.String;
 
 /** Defines different disablement statuses and the circumstances in why they were disabled. */
 export type ForceDisabledStatus = "ConnectionForceDisabled" | "FlowTypeForceDisabled";
-export const ForceDisabledStatus = S.String;
+const ForceDisabledStatus = S.String;
 
 /** Force disablement status of the current connection */
 export type ConnectionPropertiesForceDisabledStatusList = Array<ForceDisabledStatus>;
-export const ConnectionPropertiesForceDisabledStatusList = /*@__PURE__*/ S.Array(
+const ConnectionPropertiesForceDisabledStatusList = /*@__PURE__*/ S.Array(
   ForceDisabledStatus,
 ) as any as S.Schema<ConnectionPropertiesForceDisabledStatusList>;
 
 /** Link status of the current pipeline, connection, flow. */
 export type LinkStatus = "Linked" | "Unlinked";
-export const LinkStatus = S.String;
+const LinkStatus = S.String;
 
 /** Flow type for the specified resource. FlowType will be deprecated starting from version 2025_05_30_preview - please create a FlowProfile resource instead. */
 export type FlowType =
@@ -119,35 +119,35 @@ export type FlowType =
   | "MissionOpaqueXML"
   | "DiskImages"
   | "API";
-export const FlowType = S.String;
+const FlowType = S.String;
 
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
 export type ConnectionPropertiesFlowTypesList = Array<FlowType>;
-export const ConnectionPropertiesFlowTypesList =
+const ConnectionPropertiesFlowTypesList =
   ConnectionPropertiesForceDisabledStatusList as any as S.Schema<ConnectionPropertiesFlowTypesList>;
 
 /** The secondary contacts for this connection request */
 export type ConnectionPropertiesSecondaryContactsList = Array<string>;
-export const ConnectionPropertiesSecondaryContactsList = /*@__PURE__*/ S.Array(
+const ConnectionPropertiesSecondaryContactsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesSecondaryContactsList>;
 
 /** Provisioning state of the pipeline, connection, flow. */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesPoliciesList = Array<string>;
-export const ConnectionPropertiesPoliciesList =
+const ConnectionPropertiesPoliciesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesPoliciesList>;
 
 /** Status of the schema. */
 export type SchemaStatus = "New" | "Approved";
-export const SchemaStatus = S.String;
+const SchemaStatus = S.String;
 
 /** The Schema Type. */
 export type SchemaType = "Xsd" | "Zip";
-export const SchemaType = S.String;
+const SchemaType = S.String;
 
 /** The schema object. Schemas has reached end of life support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead. */
 export interface Schema {
@@ -168,7 +168,7 @@ export interface Schema {
   /** The Schema Type */
   schemaType?: SchemaType | (string & {});
 }
-export const Schema = /*@__PURE__*/ S.suspend(() =>
+const Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     connectionId: S.optional(S.String),
@@ -183,13 +183,13 @@ export const Schema = /*@__PURE__*/ S.suspend(() =>
 
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesSchemasList = Array<Schema>;
-export const ConnectionPropertiesSchemasList = /*@__PURE__*/ S.Array(
+const ConnectionPropertiesSchemasList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<ConnectionPropertiesSchemasList>;
 
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesSchemaUrisList = Array<string>;
-export const ConnectionPropertiesSchemaUrisList =
+const ConnectionPropertiesSchemaUrisList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesSchemaUrisList>;
 
 /** Properties of connection */
@@ -235,7 +235,7 @@ export interface ConnectionProperties {
   /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
   schemaUris?: ConnectionPropertiesSchemaUrisList;
 }
-export const ConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline: S.String,
     direction: S.optional(Direction),
@@ -266,7 +266,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -275,7 +275,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -284,7 +284,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -298,7 +298,7 @@ export interface ApprovePipelineConnectionResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const ApprovePipelineConnectionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const ApprovePipelineConnectionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -327,7 +327,7 @@ export interface ApprovePipelineConnectionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const ApprovePipelineConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const ApprovePipelineConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -344,32 +344,32 @@ export const ApprovePipelineConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConnectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ConnectionsCreateOrUpdateRequestTagsMap =
+const ConnectionsCreateOrUpdateRequestTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<ConnectionsCreateOrUpdateRequestTagsMap>;
 
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
 export type ConnectionPropertiesInputFlowTypesList = Array<FlowType | (string & {})>;
-export const ConnectionPropertiesInputFlowTypesList =
+const ConnectionPropertiesInputFlowTypesList =
   ConnectionPropertiesFlowTypesList as any as S.Schema<ConnectionPropertiesInputFlowTypesList>;
 
 /** The secondary contacts for this connection request */
 export type ConnectionPropertiesInputSecondaryContactsList = Array<string>;
-export const ConnectionPropertiesInputSecondaryContactsList =
+const ConnectionPropertiesInputSecondaryContactsList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesInputSecondaryContactsList>;
 
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesInputPoliciesList = Array<string>;
-export const ConnectionPropertiesInputPoliciesList =
+const ConnectionPropertiesInputPoliciesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesInputPoliciesList>;
 
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesInputSchemasList = Array<Schema>;
-export const ConnectionPropertiesInputSchemasList =
+const ConnectionPropertiesInputSchemasList =
   ConnectionPropertiesSchemasList as any as S.Schema<ConnectionPropertiesInputSchemasList>;
 
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesInputSchemaUrisList = Array<string>;
-export const ConnectionPropertiesInputSchemaUrisList =
+const ConnectionPropertiesInputSchemaUrisList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesInputSchemaUrisList>;
 
 /** Properties of connection */
@@ -399,7 +399,7 @@ export interface ConnectionPropertiesInput {
   /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
   schemaUris?: ConnectionPropertiesInputSchemaUrisList;
 }
-export const ConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline: S.String,
     direction: S.optional(Direction),
@@ -420,7 +420,7 @@ export const ConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentityInput",
 }) as any as S.Schema<UserAssignedIdentityInput>;
 
@@ -428,7 +428,7 @@ export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct(
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -438,7 +438,7 @@ export interface ConnectionsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const ConnectionsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const ConnectionsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -463,7 +463,7 @@ export interface ConnectionsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
-export const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -486,13 +486,8 @@ export const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConnectionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ConnectionsCreateOrUpdateResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<ConnectionsCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ConnectionsCreateOrUpdateResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const ConnectionsCreateOrUpdateResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface ConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -511,7 +506,7 @@ export interface ConnectionsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const ConnectionsCreateOrUpdateResponse =
+const ConnectionsCreateOrUpdateResponse =
   ApprovePipelineConnectionResponse as any as S.Schema<ConnectionsCreateOrUpdateResponse>;
 
 export interface ConnectionsLinkRequest {
@@ -526,7 +521,7 @@ export interface ConnectionsLinkRequest {
   /** Reason for resource operation. */
   statusReason?: string;
 }
-export const ConnectionsLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectionsLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -545,13 +540,11 @@ export const ConnectionsLinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConnectionsLinkResponseTagsMap = { [key: string]: string | undefined };
-export const ConnectionsLinkResponseTagsMap =
+const ConnectionsLinkResponseTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<ConnectionsLinkResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ConnectionsLinkResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const ConnectionsLinkResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface ConnectionsLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -570,7 +563,7 @@ export interface ConnectionsLinkResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const ConnectionsLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionsLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -591,7 +584,7 @@ export interface DeleteConnectionRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -607,7 +600,7 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 
 export interface DeleteConnectionResponse {}
-export const DeleteConnectionResponse =
+const DeleteConnectionResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteConnectionResponse>;
 
 export interface DeleteFlowRequest {
@@ -620,7 +613,7 @@ export interface DeleteFlowRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const DeleteFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -637,7 +630,7 @@ export const DeleteFlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFlowRequest" }) as any as S.Schema<DeleteFlowRequest>;
 
 export interface DeleteFlowResponse {}
-export const DeleteFlowResponse = UserAssignedIdentityInput as any as S.Schema<DeleteFlowResponse>;
+const DeleteFlowResponse = UserAssignedIdentityInput as any as S.Schema<DeleteFlowResponse>;
 
 export interface DeletePipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -647,7 +640,7 @@ export interface DeletePipelineRequest {
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
 }
-export const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -663,8 +656,7 @@ export const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePipelineRequest" }) as any as S.Schema<DeletePipelineRequest>;
 
 export interface DeletePipelineResponse {}
-export const DeletePipelineResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeletePipelineResponse>;
+const DeletePipelineResponse = UserAssignedIdentityInput as any as S.Schema<DeletePipelineResponse>;
 
 export interface DisableFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -676,7 +668,7 @@ export interface DisableFlowRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const DisableFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -694,7 +686,7 @@ export const DisableFlowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DisableFlowResponseTagsMap = { [key: string]: string | undefined };
-export const DisableFlowResponseTagsMap =
+const DisableFlowResponseTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<DisableFlowResponseTagsMap>;
 
 /** A resource selected from ARM */
@@ -708,7 +700,7 @@ export interface SelectedResource {
   /** Name of the subscription with the connection */
   subscriptionName?: string;
 }
-export const SelectedResource = /*@__PURE__*/ S.suspend(() =>
+const SelectedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.String,
@@ -719,32 +711,32 @@ export const SelectedResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the current flow. */
 export type FlowStatus = "Enabled" | "Disabled";
-export const FlowStatus = S.String;
+const FlowStatus = S.String;
 
 /** Force disablement status of the current flow */
 export type FlowPropertiesForceDisabledStatusList = Array<ForceDisabledStatus>;
-export const FlowPropertiesForceDisabledStatusList =
+const FlowPropertiesForceDisabledStatusList =
   ConnectionPropertiesForceDisabledStatusList as any as S.Schema<FlowPropertiesForceDisabledStatusList>;
 
 /** Transfer Storage Blobs or Tables */
 export type DataType = "Blob" | "Table";
-export const DataType = S.String;
+const DataType = S.String;
 
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type FlowPropertiesPoliciesList = Array<string>;
-export const FlowPropertiesPoliciesList =
+const FlowPropertiesPoliciesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<FlowPropertiesPoliciesList>;
 
 /** Billing tier for this messaging flow. */
 export type FlowBillingTier = "BlobTransport" | "Standard" | "Premium";
-export const FlowBillingTier = S.String;
+const FlowBillingTier = S.String;
 
 /** The option associated with messaging flows. */
 export interface MessagingOptions {
   /** Billing tier for this messaging flow */
   billingTier?: FlowBillingTier | (string & {});
 }
-export const MessagingOptions = /*@__PURE__*/ S.suspend(() =>
+const MessagingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingTier: S.optional(FlowBillingTier),
   }),
@@ -752,11 +744,11 @@ export const MessagingOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked */
 export type ApiMode = "SDK" | "Endpoint";
-export const ApiMode = S.String;
+const ApiMode = S.String;
 
 /** Flag for if Azure Data Transfer API Flow should extract the user token */
 export type IdentityTranslation = "UserIdentity" | "ServiceIdentity";
-export const IdentityTranslation = S.String;
+const IdentityTranslation = S.String;
 
 /** Properties specific to API Flow Type */
 export interface ApiFlowOptions {
@@ -775,7 +767,7 @@ export interface ApiFlowOptions {
   /** Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead. */
   audienceOverride?: string;
 }
-export const ApiFlowOptions = /*@__PURE__*/ S.suspend(() =>
+const ApiFlowOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteEndpoint: S.optional(S.String),
     cname: S.optional(S.String),
@@ -789,11 +781,11 @@ export const ApiFlowOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The protocol of the stream */
 export type StreamProtocol = "UDP" | "SRT" | "RTP";
-export const StreamProtocol = S.String;
+const StreamProtocol = S.String;
 
 /** A source IP address or CIDR range */
 export type StreamSourceAddressesSourceAddressesList = Array<string>;
-export const StreamSourceAddressesSourceAddressesList =
+const StreamSourceAddressesSourceAddressesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<StreamSourceAddressesSourceAddressesList>;
 
 /** The source IP address and CIDR ranges of the stream */
@@ -801,7 +793,7 @@ export interface StreamSourceAddresses {
   /** A source IP address or CIDR range */
   sourceAddresses?: StreamSourceAddressesSourceAddressesList;
 }
-export const StreamSourceAddresses = /*@__PURE__*/ S.suspend(() =>
+const StreamSourceAddresses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceAddresses: S.optional(StreamSourceAddressesSourceAddressesList),
   }),
@@ -809,12 +801,12 @@ export const StreamSourceAddresses = /*@__PURE__*/ S.suspend(() =>
 
 /** The destination endpoints of the stream */
 export type FlowPropertiesDestinationEndpointsList = Array<string>;
-export const FlowPropertiesDestinationEndpointsList =
+const FlowPropertiesDestinationEndpointsList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<FlowPropertiesDestinationEndpointsList>;
 
 /** The destination endpoint ports of the stream */
 export type FlowPropertiesDestinationEndpointPortsList = Array<number>;
-export const FlowPropertiesDestinationEndpointPortsList = /*@__PURE__*/ S.Array(
+const FlowPropertiesDestinationEndpointPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FlowPropertiesDestinationEndpointPortsList>;
 
@@ -879,7 +871,7 @@ export interface FlowProperties {
   /** Event Hub Consumer Group */
   consumerGroup?: string;
 }
-export const FlowProperties = /*@__PURE__*/ S.suspend(() =>
+const FlowProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connection: S.optional(SelectedResource),
     flowId: S.optional(S.String),
@@ -926,7 +918,7 @@ export interface DisableFlowResponsePlan {
   /** The version of the desired product/artifact. */
   version?: string;
 }
-export const DisableFlowResponsePlan = /*@__PURE__*/ S.suspend(() =>
+const DisableFlowResponsePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     publisher: S.String,
@@ -938,8 +930,6 @@ export const DisableFlowResponsePlan = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type DisableFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const DisableFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface DisableFlowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -960,7 +950,7 @@ export interface DisableFlowResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const DisableFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -984,7 +974,7 @@ export interface EnableFlowRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const EnableFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1002,17 +992,10 @@ export const EnableFlowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EnableFlowResponseTagsMap = { [key: string]: string | undefined };
-export const EnableFlowResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<EnableFlowResponseTagsMap>;
-
 /** Plan for the resource. */
 export type EnableFlowResponsePlan = DisableFlowResponsePlan;
-export const EnableFlowResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type EnableFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const EnableFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface EnableFlowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1033,19 +1016,19 @@ export interface EnableFlowResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const EnableFlowResponse = DisableFlowResponse as any as S.Schema<EnableFlowResponse>;
+const EnableFlowResponse = DisableFlowResponse as any as S.Schema<EnableFlowResponse>;
 
 /** The type of action to be executed. */
 export type ActionType = "AllowUpdates" | "ForceDisable";
-export const ActionType = S.String;
+const ActionType = S.String;
 
 /** Type of target to execute the action on */
 export type TargetType = "Pipeline" | "Connection" | "FlowType";
-export const TargetType = S.String;
+const TargetType = S.String;
 
 /** Targets for the action */
 export type ExecutePipelineActionRequestTargetsList = Array<string>;
-export const ExecutePipelineActionRequestTargetsList =
+const ExecutePipelineActionRequestTargetsList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<ExecutePipelineActionRequestTargetsList>;
 
 export interface ExecutePipelineActionRequest {
@@ -1064,7 +1047,7 @@ export interface ExecutePipelineActionRequest {
   /** Business justification for the action */
   justification?: string;
 }
-export const ExecutePipelineActionRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecutePipelineActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1087,7 +1070,7 @@ export const ExecutePipelineActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ExecutePipelineActionResponseTagsMap = { [key: string]: string | undefined };
-export const ExecutePipelineActionResponseTagsMap =
+const ExecutePipelineActionResponseTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<ExecutePipelineActionResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1096,7 +1079,7 @@ export type ReadPipelineConnectionSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ReadPipelineConnectionSystemDataCreatedByType = S.String;
+const ReadPipelineConnectionSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ReadPipelineConnectionSystemDataLastModifiedByType =
@@ -1104,7 +1087,7 @@ export type ReadPipelineConnectionSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ReadPipelineConnectionSystemDataLastModifiedByType = S.String;
+const ReadPipelineConnectionSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ReadPipelineConnectionSystemData {
@@ -1121,7 +1104,7 @@ export interface ReadPipelineConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ReadPipelineConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
+const ReadPipelineConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(ReadPipelineConnectionSystemDataCreatedByType),
@@ -1136,7 +1119,7 @@ export const ReadPipelineConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Operation status for the last patch request for this connection. */
 export type OperationStatusEnum = "Failed" | "Succeeded";
-export const OperationStatusEnum = S.String;
+const OperationStatusEnum = S.String;
 
 /** Operation status associated with the last patch request */
 export interface OperationStatusProperties {
@@ -1147,7 +1130,7 @@ export interface OperationStatusProperties {
   /** Message for the operation for the last patch request for this connection. */
   message?: string;
 }
-export const OperationStatusProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(OperationStatusEnum),
     id: S.optional(S.String),
@@ -1164,7 +1147,7 @@ export interface InternalMetadataProperties {
   /** User that last set the approved status for this connection */
   statusSetBy?: string;
 }
-export const InternalMetadataProperties = /*@__PURE__*/ S.suspend(() =>
+const InternalMetadataProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationStatus: S.optional(OperationStatusProperties),
     statusSetBy: S.optional(S.String),
@@ -1178,7 +1161,7 @@ export interface PipelineConnectionProperties {
   /** Internal metadata of the connection inside pipeline. */
   internalMetadata?: InternalMetadataProperties;
 }
-export const PipelineConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PipelineConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internalMetadata: S.optional(InternalMetadataProperties),
   }),
@@ -1203,7 +1186,7 @@ export interface ReadPipelineConnection {
   /** Connection properties inside pipeline */
   properties?: PipelineConnectionProperties;
 }
-export const ReadPipelineConnection = /*@__PURE__*/ S.suspend(() =>
+const ReadPipelineConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -1217,7 +1200,7 @@ export const ReadPipelineConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Connections associated with pipeline */
 export type PipelinePropertiesConnectionsList = Array<ReadPipelineConnection>;
-export const PipelinePropertiesConnectionsList = /*@__PURE__*/ S.Array(
+const PipelinePropertiesConnectionsList = /*@__PURE__*/ S.Array(
   ReadPipelineConnection,
 ) as any as S.Schema<PipelinePropertiesConnectionsList>;
 
@@ -1228,7 +1211,7 @@ export interface Subscriber {
   /** Number specifying what notifications to receive */
   notifications?: number;
 }
-export const Subscriber = /*@__PURE__*/ S.suspend(() =>
+const Subscriber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     notifications: S.optional(S.Number),
@@ -1237,28 +1220,28 @@ export const Subscriber = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscribers of this resource */
 export type PipelinePropertiesSubscribersList = Array<Subscriber>;
-export const PipelinePropertiesSubscribersList = /*@__PURE__*/ S.Array(
+const PipelinePropertiesSubscribersList = /*@__PURE__*/ S.Array(
   Subscriber,
 ) as any as S.Schema<PipelinePropertiesSubscribersList>;
 
 /** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PipelinePropertiesPoliciesList = Array<string>;
-export const PipelinePropertiesPoliciesList =
+const PipelinePropertiesPoliciesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<PipelinePropertiesPoliciesList>;
 
 /** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PipelinePropertiesFlowTypesList = Array<FlowType>;
-export const PipelinePropertiesFlowTypesList =
+const PipelinePropertiesFlowTypesList =
   ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinePropertiesFlowTypesList>;
 
 /** The flow types that are disabled for this pipeline */
 export type PipelinePropertiesDisabledFlowTypesList = Array<FlowType>;
-export const PipelinePropertiesDisabledFlowTypesList =
+const PipelinePropertiesDisabledFlowTypesList =
   ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinePropertiesDisabledFlowTypesList>;
 
 /** Status of the current pipeline */
 export type PipelineStatus = "Enabled" | "Disabled";
-export const PipelineStatus = S.String;
+const PipelineStatus = S.String;
 
 /** Properties of pipeline */
 export interface PipelineProperties {
@@ -1285,7 +1268,7 @@ export interface PipelineProperties {
   /** Status of the current pipeline */
   status?: PipelineStatus;
 }
-export const PipelineProperties = /*@__PURE__*/ S.suspend(() =>
+const PipelineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteCloud: S.String,
     displayName: S.optional(S.String),
@@ -1303,8 +1286,6 @@ export const PipelineProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ExecutePipelineActionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const ExecutePipelineActionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface ExecutePipelineActionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1323,7 +1304,7 @@ export interface ExecutePipelineActionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const ExecutePipelineActionResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecutePipelineActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1340,22 +1321,22 @@ export const ExecutePipelineActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FlowsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const FlowsCreateOrUpdateRequestTagsMap =
+const FlowsCreateOrUpdateRequestTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<FlowsCreateOrUpdateRequestTagsMap>;
 
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type FlowPropertiesInputPoliciesList = Array<string>;
-export const FlowPropertiesInputPoliciesList =
+const FlowPropertiesInputPoliciesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<FlowPropertiesInputPoliciesList>;
 
 /** The destination endpoints of the stream */
 export type FlowPropertiesInputDestinationEndpointsList = Array<string>;
-export const FlowPropertiesInputDestinationEndpointsList =
+const FlowPropertiesInputDestinationEndpointsList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<FlowPropertiesInputDestinationEndpointsList>;
 
 /** The destination endpoint ports of the stream */
 export type FlowPropertiesInputDestinationEndpointPortsList = Array<number>;
-export const FlowPropertiesInputDestinationEndpointPortsList =
+const FlowPropertiesInputDestinationEndpointPortsList =
   FlowPropertiesDestinationEndpointPortsList as any as S.Schema<FlowPropertiesInputDestinationEndpointPortsList>;
 
 /** Properties of flow */
@@ -1409,7 +1390,7 @@ export interface FlowPropertiesInput {
   /** Event Hub Consumer Group */
   consumerGroup?: string;
 }
-export const FlowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FlowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connection: S.optional(SelectedResource),
     keyVaultUri: S.optional(S.String),
@@ -1440,12 +1421,8 @@ export const FlowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Plan for the resource. */
 export type FlowsCreateOrUpdateRequestPlan = DisableFlowResponsePlan;
-export const FlowsCreateOrUpdateRequestPlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type FlowsCreateOrUpdateRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-export const FlowsCreateOrUpdateRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-
 export interface FlowsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1466,7 +1443,7 @@ export interface FlowsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
-export const FlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1491,17 +1468,13 @@ export const FlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FlowsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const FlowsCreateOrUpdateResponseTagsMap =
+const FlowsCreateOrUpdateResponseTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<FlowsCreateOrUpdateResponseTagsMap>;
 
 /** Plan for the resource. */
 export type FlowsCreateOrUpdateResponsePlan = DisableFlowResponsePlan;
-export const FlowsCreateOrUpdateResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type FlowsCreateOrUpdateResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const FlowsCreateOrUpdateResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface FlowsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1522,7 +1495,7 @@ export interface FlowsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const FlowsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const FlowsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1552,7 +1525,7 @@ export interface FlowsLinkRequest {
   /** Reason for resource operation. */
   statusReason?: string;
 }
-export const FlowsLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const FlowsLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1572,17 +1545,10 @@ export const FlowsLinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FlowsLinkResponseTagsMap = { [key: string]: string | undefined };
-export const FlowsLinkResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<FlowsLinkResponseTagsMap>;
-
 /** Plan for the resource. */
 export type FlowsLinkResponsePlan = DisableFlowResponsePlan;
-export const FlowsLinkResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type FlowsLinkResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const FlowsLinkResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface FlowsLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1603,7 +1569,7 @@ export interface FlowsLinkResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const FlowsLinkResponse = DisableFlowResponse as any as S.Schema<FlowsLinkResponse>;
+const FlowsLinkResponse = DisableFlowResponse as any as S.Schema<FlowsLinkResponse>;
 
 export interface GenerateFlowPassphraseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1615,7 +1581,7 @@ export interface GenerateFlowPassphraseRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const GenerateFlowPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateFlowPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1635,17 +1601,10 @@ export const GenerateFlowPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GenerateFlowPassphraseResponseTagsMap = { [key: string]: string | undefined };
-export const GenerateFlowPassphraseResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<GenerateFlowPassphraseResponseTagsMap>;
-
 /** Plan for the resource. */
 export type GenerateFlowPassphraseResponsePlan = DisableFlowResponsePlan;
-export const GenerateFlowPassphraseResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GenerateFlowPassphraseResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const GenerateFlowPassphraseResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface GenerateFlowPassphraseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1666,7 +1625,7 @@ export interface GenerateFlowPassphraseResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const GenerateFlowPassphraseResponse =
+const GenerateFlowPassphraseResponse =
   FlowsCreateOrUpdateResponse as any as S.Schema<GenerateFlowPassphraseResponse>;
 
 export interface GetConnectionRequest {
@@ -1677,7 +1636,7 @@ export interface GetConnectionRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1694,13 +1653,8 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const GetConnectionResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<GetConnectionResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetConnectionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const GetConnectionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface GetConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1719,8 +1673,7 @@ export interface GetConnectionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const GetConnectionResponse =
-  ConnectionsLinkResponse as any as S.Schema<GetConnectionResponse>;
+const GetConnectionResponse = ConnectionsLinkResponse as any as S.Schema<GetConnectionResponse>;
 
 export interface GetFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1732,7 +1685,7 @@ export interface GetFlowRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const GetFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1750,17 +1703,10 @@ export const GetFlowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFlowResponseTagsMap = { [key: string]: string | undefined };
-export const GetFlowResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<GetFlowResponseTagsMap>;
-
 /** Plan for the resource. */
 export type GetFlowResponsePlan = DisableFlowResponsePlan;
-export const GetFlowResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const GetFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface GetFlowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1781,7 +1727,7 @@ export interface GetFlowResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const GetFlowResponse = DisableFlowResponse as any as S.Schema<GetFlowResponse>;
+const GetFlowResponse = DisableFlowResponse as any as S.Schema<GetFlowResponse>;
 
 export interface GetFlowDestinationEndpointPortsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1793,7 +1739,7 @@ export interface GetFlowDestinationEndpointPortsRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const GetFlowDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlowDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1813,7 +1759,7 @@ export const GetFlowDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(()
 
 /** The destination endpoint port for the flow stream */
 export type GetDestinationEndpointPortsResultPortsList = Array<number>;
-export const GetDestinationEndpointPortsResultPortsList =
+const GetDestinationEndpointPortsResultPortsList =
   FlowPropertiesDestinationEndpointPortsList as any as S.Schema<GetDestinationEndpointPortsResultPortsList>;
 
 /** List of destination endpoint ports for the flow stream */
@@ -1821,7 +1767,7 @@ export interface GetDestinationEndpointPortsResult {
   /** The destination endpoint port for the flow stream */
   ports?: GetDestinationEndpointPortsResultPortsList;
 }
-export const GetDestinationEndpointPortsResult = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationEndpointPortsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: S.optional(GetDestinationEndpointPortsResultPortsList),
   }),
@@ -1839,7 +1785,7 @@ export interface GetFlowDestinationEndpointsRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const GetFlowDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlowDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1859,7 +1805,7 @@ export const GetFlowDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The destination endpoints for the flow stream */
 export type GetDestinationEndpointsResultEndpointsList = Array<string>;
-export const GetDestinationEndpointsResultEndpointsList =
+const GetDestinationEndpointsResultEndpointsList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<GetDestinationEndpointsResultEndpointsList>;
 
 /** List of destination endpoints for the flow stream */
@@ -1867,7 +1813,7 @@ export interface GetDestinationEndpointsResult {
   /** The destination endpoints for the flow stream */
   endpoints?: GetDestinationEndpointsResultEndpointsList;
 }
-export const GetDestinationEndpointsResult = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationEndpointsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(GetDestinationEndpointsResultEndpointsList),
   }),
@@ -1885,7 +1831,7 @@ export interface GetFlowSourceAddressesRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const GetFlowSourceAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlowSourceAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1913,7 +1859,7 @@ export interface GetFlowStreamConnectionStringRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-export const GetFlowStreamConnectionStringRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlowStreamConnectionStringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1936,7 +1882,7 @@ export interface GetStreamConnectionStringResult {
   /** The connection string for the specified streaming flow */
   connectionString?: string | Redacted.Redacted<string>;
 }
-export const GetStreamConnectionStringResult = /*@__PURE__*/ S.suspend(() =>
+const GetStreamConnectionStringResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -1952,7 +1898,7 @@ export interface GetPipelineRequest {
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
 }
-export const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1969,13 +1915,11 @@ export const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPipelineResponseTagsMap = { [key: string]: string | undefined };
-export const GetPipelineResponseTagsMap =
+const GetPipelineResponseTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<GetPipelineResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetPipelineResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const GetPipelineResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface GetPipelineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1994,7 +1938,7 @@ export interface GetPipelineResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const GetPipelineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2013,7 +1957,7 @@ export interface ListAzureDataTransferApprovedSchemasRequest {
   /** The direction pipeline to filter approved schemas. */
   direction?: Direction | (string & {});
 }
-export const ListAzureDataTransferApprovedSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAzureDataTransferApprovedSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline: S.optional(S.String),
     direction: S.optional(Direction),
@@ -2031,7 +1975,7 @@ export const ListAzureDataTransferApprovedSchemasRequest = /*@__PURE__*/ S.suspe
 
 /** Schemas array. */
 export type SchemasListResultValueList = Array<Schema>;
-export const SchemasListResultValueList =
+const SchemasListResultValueList =
   ConnectionPropertiesSchemasList as any as S.Schema<SchemasListResultValueList>;
 
 /** The schemas list result. SchemaListResults has reached end of life support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead. */
@@ -2039,7 +1983,7 @@ export interface SchemasListResult {
   /** Schemas array. */
   value?: SchemasListResultValueList;
 }
-export const SchemasListResult = /*@__PURE__*/ S.suspend(() =>
+const SchemasListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SchemasListResultValueList),
   }),
@@ -2051,7 +1995,7 @@ export interface ListConnectionByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListConnectionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2069,13 +2013,8 @@ export const ListConnectionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type ConnectionTagsMap = { [key: string]: string | undefined };
-export const ConnectionTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<ConnectionTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ConnectionIdentity = ApprovePipelineConnectionResponseIdentity;
-export const ConnectionIdentity = ApprovePipelineConnectionResponseIdentity;
-
 /** The connection resource definition. */
 export interface Connection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2095,11 +2034,11 @@ export interface Connection {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const Connection = ConnectionsLinkResponse as any as S.Schema<Connection>;
+const Connection = ConnectionsLinkResponse as any as S.Schema<Connection>;
 
 /** The Connection items on this page */
 export type ConnectionListResultValueList = Array<Connection>;
-export const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
+const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListResultValueList>;
 
@@ -2110,7 +2049,7 @@ export interface ConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const ConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConnectionListResultValueList,
     nextLink: S.optional(S.String),
@@ -2121,7 +2060,7 @@ export interface ListConnectionBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListConnectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2144,7 +2083,7 @@ export interface ListFlowByConnectionRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-export const ListFlowByConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlowByConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2163,16 +2102,10 @@ export const ListFlowByConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type FlowTagsMap = { [key: string]: string | undefined };
-export const FlowTagsMap = ApprovePipelineConnectionResponseTagsMap as any as S.Schema<FlowTagsMap>;
-
 /** Plan for the resource. */
 export type FlowPlan = DisableFlowResponsePlan;
-export const FlowPlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type FlowIdentity = ApprovePipelineConnectionResponseIdentity;
-export const FlowIdentity = ApprovePipelineConnectionResponseIdentity;
-
 /** The flow resource definition. */
 export interface Flow {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2194,11 +2127,11 @@ export interface Flow {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const Flow = DisableFlowResponse as any as S.Schema<Flow>;
+const Flow = DisableFlowResponse as any as S.Schema<Flow>;
 
 /** The Flow items on this page */
 export type FlowListResultValueList = Array<Flow>;
-export const FlowListResultValueList = /*@__PURE__*/ S.Array(
+const FlowListResultValueList = /*@__PURE__*/ S.Array(
   Flow,
 ) as any as S.Schema<FlowListResultValueList>;
 
@@ -2209,7 +2142,7 @@ export interface FlowListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FlowListResult = /*@__PURE__*/ S.suspend(() =>
+const FlowListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FlowListResultValueList,
     nextLink: S.optional(S.String),
@@ -2218,7 +2151,7 @@ export const FlowListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Connection ID to target */
 export type ListListFlowsByPipelineRequestValueList = Array<string>;
-export const ListListFlowsByPipelineRequestValueList =
+const ListListFlowsByPipelineRequestValueList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<ListListFlowsByPipelineRequestValueList>;
 
 export interface ListListFlowsByPipelineRequest {
@@ -2231,7 +2164,7 @@ export interface ListListFlowsByPipelineRequest {
   /** Connection ID to target */
   value?: ListListFlowsByPipelineRequestValueList;
 }
-export const ListListFlowsByPipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const ListListFlowsByPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2251,7 +2184,7 @@ export const ListListFlowsByPipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of flows associated with the connection. */
 export type ListFlowsByPipelineConnectionFlowsList = Array<Flow>;
-export const ListFlowsByPipelineConnectionFlowsList =
+const ListFlowsByPipelineConnectionFlowsList =
   FlowListResultValueList as any as S.Schema<ListFlowsByPipelineConnectionFlowsList>;
 
 /** A connection resource id in addition to all child flow resources under this connection. */
@@ -2261,7 +2194,7 @@ export interface ListFlowsByPipelineConnection {
   /** List of flows associated with the connection. */
   flows?: ListFlowsByPipelineConnectionFlowsList;
 }
-export const ListFlowsByPipelineConnection = /*@__PURE__*/ S.suspend(() =>
+const ListFlowsByPipelineConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     flows: S.optional(ListFlowsByPipelineConnectionFlowsList),
@@ -2272,7 +2205,7 @@ export const ListFlowsByPipelineConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List flows by pipeline result by connection */
 export type ListFlowsByPipelineResultValueList = Array<ListFlowsByPipelineConnection>;
-export const ListFlowsByPipelineResultValueList = /*@__PURE__*/ S.Array(
+const ListFlowsByPipelineResultValueList = /*@__PURE__*/ S.Array(
   ListFlowsByPipelineConnection,
 ) as any as S.Schema<ListFlowsByPipelineResultValueList>;
 
@@ -2281,7 +2214,7 @@ export interface ListFlowsByPipelineResult {
   /** List flows by pipeline result by connection */
   value?: ListFlowsByPipelineResultValueList;
 }
-export const ListFlowsByPipelineResult = /*@__PURE__*/ S.suspend(() =>
+const ListFlowsByPipelineResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListFlowsByPipelineResultValueList),
   }),
@@ -2297,7 +2230,7 @@ export interface ListListPendingConnectionsRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-export const ListListPendingConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListListPendingConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2316,37 +2249,37 @@ export const ListListPendingConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Force disablement status of the current connection */
 export type PendingConnectionForceDisabledStatusList = Array<ForceDisabledStatus>;
-export const PendingConnectionForceDisabledStatusList =
+const PendingConnectionForceDisabledStatusList =
   ConnectionPropertiesForceDisabledStatusList as any as S.Schema<PendingConnectionForceDisabledStatusList>;
 
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
 export type PendingConnectionFlowTypesList = Array<FlowType>;
-export const PendingConnectionFlowTypesList =
+const PendingConnectionFlowTypesList =
   ConnectionPropertiesFlowTypesList as any as S.Schema<PendingConnectionFlowTypesList>;
 
 /** The secondary contacts for this connection request */
 export type PendingConnectionSecondaryContactsList = Array<string>;
-export const PendingConnectionSecondaryContactsList =
+const PendingConnectionSecondaryContactsList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingConnectionSecondaryContactsList>;
 
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PendingConnectionPoliciesList = Array<string>;
-export const PendingConnectionPoliciesList =
+const PendingConnectionPoliciesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingConnectionPoliciesList>;
 
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PendingConnectionSchemasList = Array<Schema>;
-export const PendingConnectionSchemasList =
+const PendingConnectionSchemasList =
   ConnectionPropertiesSchemasList as any as S.Schema<PendingConnectionSchemasList>;
 
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PendingConnectionSchemaUrisList = Array<string>;
-export const PendingConnectionSchemaUrisList =
+const PendingConnectionSchemaUrisList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingConnectionSchemaUrisList>;
 
 /** Resource tags. */
 export type PendingConnectionTagsMap = { [key: string]: string | undefined };
-export const PendingConnectionTagsMap =
+const PendingConnectionTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<PendingConnectionTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -2355,16 +2288,12 @@ export type PendingConnectionSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PendingConnectionSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PendingConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PendingConnectionSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PendingConnectionSystemData {
   /** The identity that created the resource. */
@@ -2380,7 +2309,7 @@ export interface PendingConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PendingConnectionSystemData =
+const PendingConnectionSystemData =
   ReadPipelineConnectionSystemData as any as S.Schema<PendingConnectionSystemData>;
 
 /** Pending connection object */
@@ -2440,7 +2369,7 @@ export interface PendingConnection {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PendingConnectionSystemData;
 }
-export const PendingConnection = /*@__PURE__*/ S.suspend(() =>
+const PendingConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     pipeline: S.String,
@@ -2474,7 +2403,7 @@ export const PendingConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The items on this page */
 export type PendingConnectionListResultValueList = Array<PendingConnection>;
-export const PendingConnectionListResultValueList = /*@__PURE__*/ S.Array(
+const PendingConnectionListResultValueList = /*@__PURE__*/ S.Array(
   PendingConnection,
 ) as any as S.Schema<PendingConnectionListResultValueList>;
 
@@ -2485,7 +2414,7 @@ export interface PendingConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PendingConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PendingConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PendingConnectionListResultValueList,
     nextLink: S.optional(S.String),
@@ -2502,7 +2431,7 @@ export interface ListListPendingFlowsRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-export const ListListPendingFlowsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListListPendingFlowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2521,41 +2450,37 @@ export const ListListPendingFlowsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Force disablement status of the current flow */
 export type PendingFlowForceDisabledStatusList = Array<ForceDisabledStatus>;
-export const PendingFlowForceDisabledStatusList =
+const PendingFlowForceDisabledStatusList =
   ConnectionPropertiesForceDisabledStatusList as any as S.Schema<PendingFlowForceDisabledStatusList>;
 
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PendingFlowPoliciesList = Array<string>;
-export const PendingFlowPoliciesList =
+const PendingFlowPoliciesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingFlowPoliciesList>;
 
 /** The destination endpoints of the stream */
 export type PendingFlowDestinationEndpointsList = Array<string>;
-export const PendingFlowDestinationEndpointsList =
+const PendingFlowDestinationEndpointsList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingFlowDestinationEndpointsList>;
 
 /** The destination endpoint ports of the stream */
 export type PendingFlowDestinationEndpointPortsList = Array<number>;
-export const PendingFlowDestinationEndpointPortsList =
+const PendingFlowDestinationEndpointPortsList =
   FlowPropertiesDestinationEndpointPortsList as any as S.Schema<PendingFlowDestinationEndpointPortsList>;
 
 /** Resource tags. */
 export type PendingFlowTagsMap = { [key: string]: string | undefined };
-export const PendingFlowTagsMap =
+const PendingFlowTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<PendingFlowTagsMap>;
 
 /** The type of identity that created the resource. */
 export type PendingFlowSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const PendingFlowSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PendingFlowSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PendingFlowSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PendingFlowSystemData {
   /** The identity that created the resource. */
@@ -2571,7 +2496,7 @@ export interface PendingFlowSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PendingFlowSystemData = SystemData as any as S.Schema<PendingFlowSystemData>;
+const PendingFlowSystemData = SystemData as any as S.Schema<PendingFlowSystemData>;
 
 /** Pending flow object */
 export interface PendingFlow {
@@ -2650,7 +2575,7 @@ export interface PendingFlow {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PendingFlowSystemData;
 }
-export const PendingFlow = /*@__PURE__*/ S.suspend(() =>
+const PendingFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     connectionId: S.optional(S.String),
@@ -2694,7 +2619,7 @@ export const PendingFlow = /*@__PURE__*/ S.suspend(() =>
 
 /** The items on this page */
 export type PendingFlowListResultValueList = Array<PendingFlow>;
-export const PendingFlowListResultValueList = /*@__PURE__*/ S.Array(
+const PendingFlowListResultValueList = /*@__PURE__*/ S.Array(
   PendingFlow,
 ) as any as S.Schema<PendingFlowListResultValueList>;
 
@@ -2705,7 +2630,7 @@ export interface PendingFlowListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PendingFlowListResult = /*@__PURE__*/ S.suspend(() =>
+const PendingFlowListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PendingFlowListResultValueList,
     nextLink: S.optional(S.String),
@@ -2736,7 +2661,7 @@ export interface ListListSchemasRequest {
   /** The Schema Type */
   schemaType?: SchemaType | (string & {});
 }
-export const ListListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2760,7 +2685,7 @@ export const ListListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListListSchemasRequest" }) as any as S.Schema<ListListSchemasRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2782,7 +2707,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2793,11 +2718,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -2812,7 +2737,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -2824,7 +2749,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -2834,7 +2759,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -2847,7 +2772,7 @@ export interface ListPipelineByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPipelineByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPipelineByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2865,13 +2790,8 @@ export const ListPipelineByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PipelineTagsMap = { [key: string]: string | undefined };
-export const PipelineTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<PipelineTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PipelineIdentity = ApprovePipelineConnectionResponseIdentity;
-export const PipelineIdentity = ApprovePipelineConnectionResponseIdentity;
-
 /** The pipeline resource definition. A Pipeline defines the scope and identity under which data replication scenarios are managed. */
 export interface Pipeline {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2891,11 +2811,11 @@ export interface Pipeline {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const Pipeline = GetPipelineResponse as any as S.Schema<Pipeline>;
+const Pipeline = GetPipelineResponse as any as S.Schema<Pipeline>;
 
 /** The Pipeline items on this page */
 export type PipelineListResultValueList = Array<Pipeline>;
-export const PipelineListResultValueList = /*@__PURE__*/ S.Array(
+const PipelineListResultValueList = /*@__PURE__*/ S.Array(
   Pipeline,
 ) as any as S.Schema<PipelineListResultValueList>;
 
@@ -2906,7 +2826,7 @@ export interface PipelineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PipelineListResult = /*@__PURE__*/ S.suspend(() =>
+const PipelineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PipelineListResultValueList,
     nextLink: S.optional(S.String),
@@ -2917,7 +2837,7 @@ export interface ListPipelineBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListPipelineBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPipelineBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2934,27 +2854,27 @@ export const ListPipelineBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PipelinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PipelinesCreateOrUpdateRequestTagsMap =
+const PipelinesCreateOrUpdateRequestTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<PipelinesCreateOrUpdateRequestTagsMap>;
 
 /** Subscribers of this resource */
 export type PipelinePropertiesInputSubscribersList = Array<Subscriber>;
-export const PipelinePropertiesInputSubscribersList =
+const PipelinePropertiesInputSubscribersList =
   PipelinePropertiesSubscribersList as any as S.Schema<PipelinePropertiesInputSubscribersList>;
 
 /** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PipelinePropertiesInputPoliciesList = Array<string>;
-export const PipelinePropertiesInputPoliciesList =
+const PipelinePropertiesInputPoliciesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<PipelinePropertiesInputPoliciesList>;
 
 /** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PipelinePropertiesInputFlowTypesList = Array<FlowType | (string & {})>;
-export const PipelinePropertiesInputFlowTypesList =
+const PipelinePropertiesInputFlowTypesList =
   ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinePropertiesInputFlowTypesList>;
 
 /** The flow types that are disabled for this pipeline */
 export type PipelinePropertiesInputDisabledFlowTypesList = Array<FlowType | (string & {})>;
-export const PipelinePropertiesInputDisabledFlowTypesList =
+const PipelinePropertiesInputDisabledFlowTypesList =
   ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinePropertiesInputDisabledFlowTypesList>;
 
 /** Properties of pipeline */
@@ -2978,7 +2898,7 @@ export interface PipelinePropertiesInput {
   /** Status of the current pipeline */
   status?: PipelineStatus | (string & {});
 }
-export const PipelinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PipelinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteCloud: S.String,
     displayName: S.optional(S.String),
@@ -2994,8 +2914,6 @@ export const PipelinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PipelinesCreateOrUpdateRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-export const PipelinesCreateOrUpdateRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-
 export interface PipelinesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3012,7 +2930,7 @@ export interface PipelinesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
-export const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3035,13 +2953,8 @@ export const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PipelinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PipelinesCreateOrUpdateResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<PipelinesCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PipelinesCreateOrUpdateResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const PipelinesCreateOrUpdateResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface PipelinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3060,7 +2973,7 @@ export interface PipelinesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const PipelinesCreateOrUpdateResponse =
+const PipelinesCreateOrUpdateResponse =
   ExecutePipelineActionResponse as any as S.Schema<PipelinesCreateOrUpdateResponse>;
 
 export interface RejectPipelineConnectionRequest {
@@ -3075,7 +2988,7 @@ export interface RejectPipelineConnectionRequest {
   /** Reason for resource operation. */
   statusReason?: string;
 }
-export const RejectPipelineConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectPipelineConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3096,13 +3009,8 @@ export const RejectPipelineConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type RejectPipelineConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const RejectPipelineConnectionResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<RejectPipelineConnectionResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type RejectPipelineConnectionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const RejectPipelineConnectionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface RejectPipelineConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3121,12 +3029,12 @@ export interface RejectPipelineConnectionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const RejectPipelineConnectionResponse =
+const RejectPipelineConnectionResponse =
   ApprovePipelineConnectionResponse as any as S.Schema<RejectPipelineConnectionResponse>;
 
 /** The specified flow destination endpoint ports */
 export type SetFlowDestinationEndpointPortsRequestPortsList = Array<number>;
-export const SetFlowDestinationEndpointPortsRequestPortsList =
+const SetFlowDestinationEndpointPortsRequestPortsList =
   FlowPropertiesDestinationEndpointPortsList as any as S.Schema<SetFlowDestinationEndpointPortsRequestPortsList>;
 
 export interface SetFlowDestinationEndpointPortsRequest {
@@ -3141,7 +3049,7 @@ export interface SetFlowDestinationEndpointPortsRequest {
   /** The specified flow destination endpoint ports */
   ports?: SetFlowDestinationEndpointPortsRequestPortsList;
 }
-export const SetFlowDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetFlowDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3162,19 +3070,11 @@ export const SetFlowDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type SetFlowDestinationEndpointPortsResponseTagsMap = { [key: string]: string | undefined };
-export const SetFlowDestinationEndpointPortsResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<SetFlowDestinationEndpointPortsResponseTagsMap>;
-
 /** Plan for the resource. */
 export type SetFlowDestinationEndpointPortsResponsePlan = DisableFlowResponsePlan;
-export const SetFlowDestinationEndpointPortsResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SetFlowDestinationEndpointPortsResponseIdentity =
   ApprovePipelineConnectionResponseIdentity;
-export const SetFlowDestinationEndpointPortsResponseIdentity =
-  ApprovePipelineConnectionResponseIdentity;
-
 export interface SetFlowDestinationEndpointPortsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3195,12 +3095,12 @@ export interface SetFlowDestinationEndpointPortsResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const SetFlowDestinationEndpointPortsResponse =
+const SetFlowDestinationEndpointPortsResponse =
   FlowsCreateOrUpdateResponse as any as S.Schema<SetFlowDestinationEndpointPortsResponse>;
 
 /** The specified flow destination endpoints. */
 export type SetFlowDestinationEndpointsRequestEndpointsList = Array<string>;
-export const SetFlowDestinationEndpointsRequestEndpointsList =
+const SetFlowDestinationEndpointsRequestEndpointsList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<SetFlowDestinationEndpointsRequestEndpointsList>;
 
 export interface SetFlowDestinationEndpointsRequest {
@@ -3215,7 +3115,7 @@ export interface SetFlowDestinationEndpointsRequest {
   /** The specified flow destination endpoints. */
   endpoints?: SetFlowDestinationEndpointsRequestEndpointsList;
 }
-export const SetFlowDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetFlowDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3236,18 +3136,10 @@ export const SetFlowDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SetFlowDestinationEndpointsResponseTagsMap = { [key: string]: string | undefined };
-export const SetFlowDestinationEndpointsResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<SetFlowDestinationEndpointsResponseTagsMap>;
-
 /** Plan for the resource. */
 export type SetFlowDestinationEndpointsResponsePlan = DisableFlowResponsePlan;
-export const SetFlowDestinationEndpointsResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SetFlowDestinationEndpointsResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const SetFlowDestinationEndpointsResponseIdentity =
-  ApprovePipelineConnectionResponseIdentity;
-
 export interface SetFlowDestinationEndpointsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3268,7 +3160,7 @@ export interface SetFlowDestinationEndpointsResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const SetFlowDestinationEndpointsResponse =
+const SetFlowDestinationEndpointsResponse =
   FlowsCreateOrUpdateResponse as any as S.Schema<SetFlowDestinationEndpointsResponse>;
 
 export interface SetFlowPassphraseRequest {
@@ -3283,7 +3175,7 @@ export interface SetFlowPassphraseRequest {
   /** The passphrase used for SRT streams (non-secret) */
   value?: string;
 }
-export const SetFlowPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
+const SetFlowPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3302,17 +3194,10 @@ export const SetFlowPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SetFlowPassphraseResponseTagsMap = { [key: string]: string | undefined };
-export const SetFlowPassphraseResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<SetFlowPassphraseResponseTagsMap>;
-
 /** Plan for the resource. */
 export type SetFlowPassphraseResponsePlan = DisableFlowResponsePlan;
-export const SetFlowPassphraseResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SetFlowPassphraseResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const SetFlowPassphraseResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface SetFlowPassphraseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3333,12 +3218,12 @@ export interface SetFlowPassphraseResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const SetFlowPassphraseResponse =
+const SetFlowPassphraseResponse =
   FlowsCreateOrUpdateResponse as any as S.Schema<SetFlowPassphraseResponse>;
 
 /** Source addresses */
 export type SetFlowSourceAddressesRequestValuesList = Array<string>;
-export const SetFlowSourceAddressesRequestValuesList =
+const SetFlowSourceAddressesRequestValuesList =
   ConnectionPropertiesSecondaryContactsList as any as S.Schema<SetFlowSourceAddressesRequestValuesList>;
 
 export interface SetFlowSourceAddressesRequest {
@@ -3353,7 +3238,7 @@ export interface SetFlowSourceAddressesRequest {
   /** Source addresses */
   values?: SetFlowSourceAddressesRequestValuesList;
 }
-export const SetFlowSourceAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetFlowSourceAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3374,17 +3259,10 @@ export const SetFlowSourceAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SetFlowSourceAddressesResponseTagsMap = { [key: string]: string | undefined };
-export const SetFlowSourceAddressesResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<SetFlowSourceAddressesResponseTagsMap>;
-
 /** Plan for the resource. */
 export type SetFlowSourceAddressesResponsePlan = DisableFlowResponsePlan;
-export const SetFlowSourceAddressesResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SetFlowSourceAddressesResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const SetFlowSourceAddressesResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface SetFlowSourceAddressesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3405,16 +3283,14 @@ export interface SetFlowSourceAddressesResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const SetFlowSourceAddressesResponse =
+const SetFlowSourceAddressesResponse =
   FlowsCreateOrUpdateResponse as any as S.Schema<SetFlowSourceAddressesResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateConnectionRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-export const UpdateConnectionRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-
 /** Resource tags. */
 export type UpdateConnectionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConnectionRequestTagsMap =
+const UpdateConnectionRequestTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdateConnectionRequestTagsMap>;
 
 export interface UpdateConnectionRequest {
@@ -3429,7 +3305,7 @@ export interface UpdateConnectionRequest {
   /** Resource tags. */
   tags?: UpdateConnectionRequestTagsMap;
 }
-export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3448,13 +3324,8 @@ export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConnectionResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdateConnectionResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateConnectionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const UpdateConnectionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface UpdateConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3473,16 +3344,14 @@ export interface UpdateConnectionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const UpdateConnectionResponse =
+const UpdateConnectionResponse =
   ConnectionsLinkResponse as any as S.Schema<UpdateConnectionResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateFlowRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-export const UpdateFlowRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-
 /** Resource tags. */
 export type UpdateFlowRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFlowRequestTagsMap =
+const UpdateFlowRequestTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdateFlowRequestTagsMap>;
 
 export interface UpdateFlowRequest {
@@ -3499,7 +3368,7 @@ export interface UpdateFlowRequest {
   /** Resource tags. */
   tags?: UpdateFlowRequestTagsMap;
 }
-export const UpdateFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3519,17 +3388,10 @@ export const UpdateFlowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFlowResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFlowResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdateFlowResponseTagsMap>;
-
 /** Plan for the resource. */
 export type UpdateFlowResponsePlan = DisableFlowResponsePlan;
-export const UpdateFlowResponsePlan = DisableFlowResponsePlan;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const UpdateFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface UpdateFlowResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3550,11 +3412,11 @@ export interface UpdateFlowResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const UpdateFlowResponse = DisableFlowResponse as any as S.Schema<UpdateFlowResponse>;
+const UpdateFlowResponse = DisableFlowResponse as any as S.Schema<UpdateFlowResponse>;
 
 /** The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead. */
 export type PipelinesPatchPropertiesFlowTypesList = Array<FlowType | (string & {})>;
-export const PipelinesPatchPropertiesFlowTypesList =
+const PipelinesPatchPropertiesFlowTypesList =
   ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinesPatchPropertiesFlowTypesList>;
 
 /** Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile resource instead. */
@@ -3562,7 +3424,7 @@ export interface PipelinesPatchProperties {
   /** The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead. */
   flowTypes?: PipelinesPatchPropertiesFlowTypesList;
 }
-export const PipelinesPatchProperties = /*@__PURE__*/ S.suspend(() =>
+const PipelinesPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowTypes: S.optional(PipelinesPatchPropertiesFlowTypesList),
   }),
@@ -3570,13 +3432,11 @@ export const PipelinesPatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePipelineRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePipelineRequestTagsMap =
+const UpdatePipelineRequestTagsMap =
   ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdatePipelineRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdatePipelineRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-export const UpdatePipelineRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
-
 export interface UpdatePipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3591,7 +3451,7 @@ export interface UpdatePipelineRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
-export const UpdatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3611,13 +3471,8 @@ export const UpdatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePipelineResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePipelineResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdatePipelineResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdatePipelineResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-export const UpdatePipelineResponseIdentity = ApprovePipelineConnectionResponseIdentity;
-
 export interface UpdatePipelineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3636,8 +3491,7 @@ export interface UpdatePipelineResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-export const UpdatePipelineResponse =
-  GetPipelineResponse as any as S.Schema<UpdatePipelineResponse>;
+const UpdatePipelineResponse = GetPipelineResponse as any as S.Schema<UpdatePipelineResponse>;
 
 export interface ValidateAzureDataTransferSchemaRequest {
   /** ID associated with this schema */
@@ -3657,7 +3511,7 @@ export interface ValidateAzureDataTransferSchemaRequest {
   /** The Schema Type */
   schemaType?: SchemaType | (string & {});
 }
-export const ValidateAzureDataTransferSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateAzureDataTransferSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     connectionId: S.optional(S.String),
@@ -3681,7 +3535,7 @@ export const ValidateAzureDataTransferSchemaRequest = /*@__PURE__*/ S.suspend(()
 
 /** Validation status of the schema */
 export type ValidateSchemaStatus = "Succeeded" | "Failed";
-export const ValidateSchemaStatus = S.String;
+const ValidateSchemaStatus = S.String;
 
 /** Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead. */
 export interface ValidateSchemaResult {
@@ -3690,7 +3544,7 @@ export interface ValidateSchemaResult {
   /** Message describing the schema validation */
   message?: string;
 }
-export const ValidateSchemaResult = /*@__PURE__*/ S.suspend(() =>
+const ValidateSchemaResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ValidateSchemaStatus),
     message: S.optional(S.String),

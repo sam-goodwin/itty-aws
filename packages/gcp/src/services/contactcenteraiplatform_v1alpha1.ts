@@ -77,7 +77,7 @@ export class ServiceDisabled
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -87,7 +87,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -104,7 +104,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type InstanceConfigInstanceSizeEnum =
   | "INSTANCE_SIZE_UNSPECIFIED"
@@ -124,21 +124,21 @@ export type InstanceConfigInstanceSizeEnum =
   | "SANDBOX_SMALL"
   | "TRIAL_SMALL"
   | "TIME_LIMITED_TRIAL_SMALL";
-export const InstanceConfigInstanceSizeEnum = S.String;
+const InstanceConfigInstanceSizeEnum = S.String;
 
 /** Message storing the instance configuration. */
 export interface InstanceConfig {
   /** The instance size of this the instance configuration. */
   instanceSize?: InstanceConfigInstanceSizeEnum | (string & {});
 }
-export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceSize: S.optional(InstanceConfigInstanceSizeEnum),
   }),
 ).annotate({ identifier: "InstanceConfig" }) as any as S.Schema<InstanceConfig>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Message storing the URIs of the ContactCenter. */
 export interface URIs {
@@ -151,7 +151,7 @@ export interface URIs {
   /** Media Uri of the ContactCenter. */
   mediaUri?: string;
 }
-export const URIs = /*@__PURE__*/ S.suspend(() =>
+const URIs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualAgentStreamingServiceUri: S.optional(S.String),
     rootUri: S.optional(S.String),
@@ -186,12 +186,12 @@ export type SAMLParamsAuthenticationContextsItemEnum =
   | "SECURE_REMOTE_PASSWORD"
   | "SSL_TLS_CERTIFICATE_BASED"
   | "TIME_SYNC_TOKEN";
-export const SAMLParamsAuthenticationContextsItemEnum = S.String;
+const SAMLParamsAuthenticationContextsItemEnum = S.String;
 
 export type SAMLParamsAuthenticationContextsItemEnumList = Array<
   SAMLParamsAuthenticationContextsItemEnum | (string & {})
 >;
-export const SAMLParamsAuthenticationContextsItemEnumList = /*@__PURE__*/ S.Array(
+const SAMLParamsAuthenticationContextsItemEnumList = /*@__PURE__*/ S.Array(
   SAMLParamsAuthenticationContextsItemEnum,
 ) as any as S.Schema<SAMLParamsAuthenticationContextsItemEnumList>;
 
@@ -210,7 +210,7 @@ export interface SAMLParams {
   /** Additional contexts used for authentication. */
   authenticationContexts?: SAMLParamsAuthenticationContextsItemEnumList;
 }
-export const SAMLParams = /*@__PURE__*/ S.suspend(() =>
+const SAMLParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate: S.optional(S.String),
     emailMapping: S.optional(S.String),
@@ -230,10 +230,8 @@ export type WeeklyScheduleDaysItemEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const WeeklyScheduleDaysItemEnum = S.String;
-
 export type WeeklyScheduleDaysItemEnumList = Array<WeeklyScheduleDaysItemEnum | (string & {})>;
-export const WeeklyScheduleDaysItemEnumList =
+const WeeklyScheduleDaysItemEnumList =
   SAMLParamsAuthenticationContextsItemEnumList as any as S.Schema<WeeklyScheduleDaysItemEnumList>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -247,7 +245,7 @@ export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
   minutes?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hours: S.optional(S.Number),
     seconds: S.optional(S.Number),
@@ -267,7 +265,7 @@ export interface WeeklySchedule {
   /** Optional. Daily end time of the schedule. If `end_time` is before `start_time`, the schedule will be considered as ending on the next day. */
   endTime?: TimeOfDay;
 }
-export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
+const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.String),
     days: S.optional(WeeklyScheduleDaysItemEnumList),
@@ -277,7 +275,7 @@ export const WeeklySchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WeeklySchedule" }) as any as S.Schema<WeeklySchedule>;
 
 export type WeeklyScheduleList = Array<WeeklySchedule>;
-export const WeeklyScheduleList = /*@__PURE__*/ S.Array(
+const WeeklyScheduleList = /*@__PURE__*/ S.Array(
   WeeklySchedule,
 ) as any as S.Schema<WeeklyScheduleList>;
 
@@ -286,7 +284,7 @@ export interface Critical {
   /** Required. Hours during which the instance should not be updated. */
   peakHours?: WeeklyScheduleList;
 }
-export const Critical = /*@__PURE__*/ S.suspend(() =>
+const Critical = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peakHours: S.optional(WeeklyScheduleList),
   }),
@@ -294,8 +292,6 @@ export const Critical = /*@__PURE__*/ S.suspend(() =>
 
 /** Instances in this Channel will receive updates after all instances in `Early` were updated + 2 days. */
 export type Normal = CancelOperationRequest;
-export const Normal = CancelOperationRequest;
-
 /** Message storing info about the first admin user. Next ID: 3 */
 export interface AdminUser {
   /** Optional. First/given name of the first admin user. */
@@ -303,7 +299,7 @@ export interface AdminUser {
   /** Optional. Last/family name of the first admin user. */
   familyName?: string;
 }
-export const AdminUser = /*@__PURE__*/ S.suspend(() =>
+const AdminUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     givenName: S.optional(S.String),
     familyName: S.optional(S.String),
@@ -312,8 +308,6 @@ export const AdminUser = /*@__PURE__*/ S.suspend(() =>
 
 /** LINT.IfChange First Channel to receive the updates. Meant to dev/test instances */
 export type Early = CancelOperationRequest;
-export const Early = CancelOperationRequest;
-
 export type ContactCenterStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_DEPLOYING"
@@ -327,16 +321,16 @@ export type ContactCenterStateEnum =
   | "STATE_DEGRADED"
   | "STATE_REPAIRING"
   | "STATE_EXPIRING";
-export const ContactCenterStateEnum = S.String;
+const ContactCenterStateEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface FeatureConfig {
   /** Optional. If true - enables the agent desktop feature. Default is false. */
   agentDesktopEnabled?: boolean;
 }
-export const FeatureConfig = /*@__PURE__*/ S.suspend(() =>
+const FeatureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentDesktopEnabled: S.optional(S.Boolean),
   }),
@@ -349,7 +343,7 @@ export interface Component {
   /** Name of the component. */
   name?: string;
 }
-export const Component = /*@__PURE__*/ S.suspend(() =>
+const Component = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAttachmentNames: S.optional(StringList),
     name: S.optional(S.String),
@@ -357,7 +351,7 @@ export const Component = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
 
 export type ComponentList = Array<Component>;
-export const ComponentList = /*@__PURE__*/ S.Array(Component) as any as S.Schema<ComponentList>;
+const ComponentList = /*@__PURE__*/ S.Array(Component) as any as S.Schema<ComponentList>;
 
 /** Private service connect settings. */
 export interface PscSetting {
@@ -366,7 +360,7 @@ export interface PscSetting {
   /** Output only. The CCAIP tenant project ids. */
   producerProjectIds?: StringList;
 }
-export const PscSetting = /*@__PURE__*/ S.suspend(() =>
+const PscSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedConsumerProjectIds: S.optional(StringList),
     producerProjectIds: S.optional(StringList),
@@ -382,7 +376,7 @@ export interface PrivateAccess {
   /** List of ingress components that should not be accessed via the Internet. For more information see go/ccaip-private-path-v2. */
   ingressSettings?: ComponentList;
 }
-export const PrivateAccess = /*@__PURE__*/ S.suspend(() =>
+const PrivateAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     egressSettings: S.optional(ComponentList),
     pscSetting: S.optional(PscSetting),
@@ -443,7 +437,7 @@ export interface ContactCenter {
   /** Optional. Whether the advanced reporting feature is enabled. */
   advancedReportingEnabled?: boolean;
 }
-export const ContactCenter = /*@__PURE__*/ S.suspend(() =>
+const ContactCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceConfig: S.optional(InstanceConfig),
     privateComponents: S.optional(StringList),
@@ -483,7 +477,7 @@ export interface CreateProjectsLocationsContactCentersRequest {
   /** Request body */
   body?: ContactCenter;
 }
-export const CreateProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactCenterId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -501,15 +495,10 @@ export const CreateProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateProjectsLocationsContactCentersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -520,7 +509,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -541,7 +530,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(Status),
@@ -557,7 +546,7 @@ export interface DeleteProjectsLocationsContactCentersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const DeleteProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -576,7 +565,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -603,7 +592,7 @@ export interface EventTemplate {
   /** Optional. Maximum number of minutes after the beginning of a shift that this event can start. */
   maximumMinutesAfterShiftStart?: number;
 }
-export const EventTemplate = /*@__PURE__*/ S.suspend(() =>
+const EventTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTimeIncrementMinutes: S.optional(S.Number),
     id: S.optional(S.String),
@@ -614,7 +603,7 @@ export const EventTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventTemplate" }) as any as S.Schema<EventTemplate>;
 
 export type EventTemplateList = Array<EventTemplate>;
-export const EventTemplateList = /*@__PURE__*/ S.Array(
+const EventTemplateList = /*@__PURE__*/ S.Array(
   EventTemplate,
 ) as any as S.Schema<EventTemplateList>;
 
@@ -627,7 +616,7 @@ export interface Contactcenteraiplatform_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Contactcenteraiplatform_Date = /*@__PURE__*/ S.suspend(() =>
+const Contactcenteraiplatform_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     month: S.optional(S.Number),
@@ -638,7 +627,7 @@ export const Contactcenteraiplatform_Date = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Contactcenteraiplatform_Date>;
 
 export type Contactcenteraiplatform_DateList = Array<Contactcenteraiplatform_Date>;
-export const Contactcenteraiplatform_DateList = /*@__PURE__*/ S.Array(
+const Contactcenteraiplatform_DateList = /*@__PURE__*/ S.Array(
   Contactcenteraiplatform_Date,
 ) as any as S.Schema<Contactcenteraiplatform_DateList>;
 
@@ -647,7 +636,7 @@ export interface DateList {
   /** Optional. Values in the list. */
   values?: Contactcenteraiplatform_DateList;
 }
-export const DateList = /*@__PURE__*/ S.suspend(() =>
+const DateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(Contactcenteraiplatform_DateList),
   }),
@@ -680,7 +669,7 @@ export interface ShiftTemplate {
   /** Optional. Minimum number of employees that can be assigned to all shifts generated by this template on working days. */
   minimumEmployeeCount?: number;
 }
-export const ShiftTemplate = /*@__PURE__*/ S.suspend(() =>
+const ShiftTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     earliestStartTime: S.optional(TimeOfDay),
     eventTemplates: S.optional(EventTemplateList),
@@ -698,7 +687,7 @@ export const ShiftTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ShiftTemplate" }) as any as S.Schema<ShiftTemplate>;
 
 export type ShiftTemplateList = Array<ShiftTemplate>;
-export const ShiftTemplateList = /*@__PURE__*/ S.Array(
+const ShiftTemplateList = /*@__PURE__*/ S.Array(
   ShiftTemplate,
 ) as any as S.Schema<ShiftTemplateList>;
 
@@ -707,7 +696,7 @@ export type SolverConfigScheduleTypeEnum =
   | "SINGLE_SHIFT"
   | "WEEKLY_WITH_FIXED_EVENTS"
   | "WEEKLY_WITH_VARIABLE_EVENTS";
-export const SolverConfigScheduleTypeEnum = S.String;
+const SolverConfigScheduleTypeEnum = S.String;
 
 /** Specifies additional parameters for the solver generating shifts. */
 export interface SolverConfig {
@@ -716,7 +705,7 @@ export interface SolverConfig {
   /** Required. Specifies the type of schedule to generate. */
   scheduleType?: SolverConfigScheduleTypeEnum | (string & {});
 }
-export const SolverConfig = /*@__PURE__*/ S.suspend(() =>
+const SolverConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maximumProcessingDuration: S.optional(S.String),
     scheduleType: S.optional(SolverConfigScheduleTypeEnum),
@@ -730,7 +719,7 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-export const TimeZone = /*@__PURE__*/ S.suspend(() =>
+const TimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -758,7 +747,7 @@ export interface DateTime {
   /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
   month?: number;
 }
-export const DateTime = /*@__PURE__*/ S.suspend(() =>
+const DateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(TimeZone),
     nanos: S.optional(S.Number),
@@ -781,7 +770,7 @@ export interface WorkforceDemand {
   /** Optional. Number of employees needed to cover the demand for this interval. */
   employeeCount?: number;
 }
-export const WorkforceDemand = /*@__PURE__*/ S.suspend(() =>
+const WorkforceDemand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(DateTime),
     endTime: S.optional(DateTime),
@@ -790,7 +779,7 @@ export const WorkforceDemand = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkforceDemand" }) as any as S.Schema<WorkforceDemand>;
 
 export type WorkforceDemandList_ = Array<WorkforceDemand>;
-export const WorkforceDemandList_ = /*@__PURE__*/ S.Array(
+const WorkforceDemandList_ = /*@__PURE__*/ S.Array(
   WorkforceDemand,
 ) as any as S.Schema<WorkforceDemandList_>;
 
@@ -799,7 +788,7 @@ export interface WorkforceDemandList {
   /** Optional. Values in the list. */
   values?: WorkforceDemandList_;
 }
-export const WorkforceDemandList = /*@__PURE__*/ S.suspend(() =>
+const WorkforceDemandList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(WorkforceDemandList_),
   }),
@@ -812,7 +801,7 @@ export interface UnwantedEventInterval {
   /** Required. Duration of the event. */
   durationMinutes?: number;
 }
-export const UnwantedEventInterval = /*@__PURE__*/ S.suspend(() =>
+const UnwantedEventInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(DateTime),
     durationMinutes: S.optional(S.Number),
@@ -820,7 +809,7 @@ export const UnwantedEventInterval = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnwantedEventInterval" }) as any as S.Schema<UnwantedEventInterval>;
 
 export type UnwantedEventIntervalList = Array<UnwantedEventInterval>;
-export const UnwantedEventIntervalList = /*@__PURE__*/ S.Array(
+const UnwantedEventIntervalList = /*@__PURE__*/ S.Array(
   UnwantedEventInterval,
 ) as any as S.Schema<UnwantedEventIntervalList>;
 
@@ -831,7 +820,7 @@ export interface EmployeeInfo {
   /** Optional. A list of unwanted event intervals for this employee. The start time of the interval must be in the planning horizon. */
   unwantedEventIntervals?: UnwantedEventIntervalList;
 }
-export const EmployeeInfo = /*@__PURE__*/ S.suspend(() =>
+const EmployeeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     unwantedEventIntervals: S.optional(UnwantedEventIntervalList),
@@ -839,9 +828,7 @@ export const EmployeeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmployeeInfo" }) as any as S.Schema<EmployeeInfo>;
 
 export type EmployeeInfoList = Array<EmployeeInfo>;
-export const EmployeeInfoList = /*@__PURE__*/ S.Array(
-  EmployeeInfo,
-) as any as S.Schema<EmployeeInfoList>;
+const EmployeeInfoList = /*@__PURE__*/ S.Array(EmployeeInfo) as any as S.Schema<EmployeeInfoList>;
 
 /** Specifies the time interval during which the solver should generate shifts. The start time must be before the end time. */
 export interface PlanningHorizon {
@@ -850,7 +837,7 @@ export interface PlanningHorizon {
   /** Required. Start of the time interval for the given demand (inclusive). These values are read down to the minute; seconds and all smaller units are ignored. */
   startTime?: DateTime;
 }
-export const PlanningHorizon = /*@__PURE__*/ S.suspend(() =>
+const PlanningHorizon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(DateTime),
     startTime: S.optional(DateTime),
@@ -870,7 +857,7 @@ export interface GenerateShiftsRequest {
   /** Required. The solver will generate the maximum number of shifts per shift template. */
   planningHorizon?: PlanningHorizon;
 }
-export const GenerateShiftsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateShiftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shiftTemplates: S.optional(ShiftTemplateList),
     solverConfig: S.optional(SolverConfig),
@@ -886,7 +873,7 @@ export interface GenerateShiftsProjectsLocationsRequest {
   /** Request body */
   body?: GenerateShiftsRequest;
 }
-export const GenerateShiftsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateShiftsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GenerateShiftsRequest.pipe(T.HttpBody())),
@@ -905,7 +892,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -932,7 +919,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -946,7 +933,7 @@ export interface GetProjectsLocationsContactCentersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const GetProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -964,7 +951,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -990,7 +977,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1009,7 +996,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1018,7 +1005,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1037,7 +1024,7 @@ export interface ListProjectsLocationsContactCentersRequest {
   /** Hint for how to order the results */
   orderBy?: string;
 }
-export const ListProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1056,7 +1043,7 @@ export const ListProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsContactCentersRequest>;
 
 export type ContactCenterList = Array<ContactCenter>;
-export const ContactCenterList = /*@__PURE__*/ S.Array(
+const ContactCenterList = /*@__PURE__*/ S.Array(
   ContactCenter,
 ) as any as S.Schema<ContactCenterList>;
 
@@ -1069,7 +1056,7 @@ export interface ListContactCentersResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListContactCentersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContactCentersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     contactCenters: S.optional(ContactCenterList),
@@ -1091,7 +1078,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1110,7 +1097,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1121,7 +1108,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1139,7 +1126,7 @@ export interface PatchProjectsLocationsContactCentersRequest {
   /** Request body */
   body?: ContactCenter;
 }
-export const PatchProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsContactCentersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1160,7 +1147,7 @@ export interface QueryContactCenterQuotaProjectsLocationsRequest {
   /** Required. Parent project resource id. */
   parent: string;
 }
-export const QueryContactCenterQuotaProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryContactCenterQuotaProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -1192,7 +1179,7 @@ export type QuotaContactCenterInstanceSizeEnum =
   | "SANDBOX_SMALL"
   | "TRIAL_SMALL"
   | "TIME_LIMITED_TRIAL_SMALL";
-export const QuotaContactCenterInstanceSizeEnum = S.String;
+const QuotaContactCenterInstanceSizeEnum = S.String;
 
 /** Quota details. */
 export interface Quota {
@@ -1203,7 +1190,7 @@ export interface Quota {
   /** Contact center instance type. */
   contactCenterInstanceSize?: QuotaContactCenterInstanceSizeEnum;
 }
-export const Quota = /*@__PURE__*/ S.suspend(() =>
+const Quota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactCenterCountSum: S.optional(S.Number),
     contactCenterCountLimit: S.optional(S.Number),
@@ -1212,7 +1199,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
 export type QuotaList = Array<Quota>;
-export const QuotaList = /*@__PURE__*/ S.Array(Quota) as any as S.Schema<QuotaList>;
+const QuotaList = /*@__PURE__*/ S.Array(Quota) as any as S.Schema<QuotaList>;
 
 /** Represents a quota for contact centers. */
 export interface ContactCenterQuota {
@@ -1223,7 +1210,7 @@ export interface ContactCenterQuota {
   /** Deprecated: Use the Quota fields instead. Reflects the count limit of contact centers on a billing account. */
   contactCenterCountLimit?: number;
 }
-export const ContactCenterQuota = /*@__PURE__*/ S.suspend(() =>
+const ContactCenterQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotas: S.optional(QuotaList),
     contactCenterCountSum: S.optional(S.Number),

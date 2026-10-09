@@ -55,7 +55,7 @@ export interface AddResourceGroupRequest {
   /** The resource group to add the repository to, if null, the repository will be removed from the resource group */
   resourceGroupId: string | null;
 }
-export const AddResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const AddResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -72,7 +72,7 @@ export type AddResourceGroupResponseType =
   | "bucket"
   | "kernel"
   | "container";
-export const AddResourceGroupResponseType = S.String;
+const AddResourceGroupResponseType = S.String;
 
 export interface AddResourceGroupResponse {
   name: string;
@@ -80,7 +80,7 @@ export interface AddResourceGroupResponse {
   private: boolean;
   addedBy: string;
 }
-export const AddResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const AddResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: AddResourceGroupResponseType,
@@ -93,7 +93,7 @@ export interface BatchFileOperationsRequest {
   namespace: string;
   repo: string;
 }
-export const BatchFileOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchFileOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -108,7 +108,7 @@ export interface BatchFileOperationsResponseFailedItem {
   /** Error message */
   error: string;
 }
-export const BatchFileOperationsResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
+const BatchFileOperationsResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     error: S.String,
@@ -119,7 +119,7 @@ export const BatchFileOperationsResponseFailedItem = /*@__PURE__*/ S.suspend(() 
 
 /** List of failed operations */
 export type BatchFileOperationsResponseFailedList = Array<BatchFileOperationsResponseFailedItem>;
-export const BatchFileOperationsResponseFailedList = /*@__PURE__*/ S.Array(
+const BatchFileOperationsResponseFailedList = /*@__PURE__*/ S.Array(
   BatchFileOperationsResponseFailedItem,
 ) as any as S.Schema<BatchFileOperationsResponseFailedList>;
 
@@ -133,7 +133,7 @@ export interface BatchFileOperationsResponse {
   /** List of failed operations */
   failed: BatchFileOperationsResponseFailedList;
 }
-export const BatchFileOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchFileOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     processed: S.Number,
@@ -146,19 +146,19 @@ export const BatchFileOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Bucket visibility. Cannot be specified along with private. */
 export type CreateBucketRequestVisibility = "private" | "public";
-export const CreateBucketRequestVisibility = S.String;
+const CreateBucketRequestVisibility = S.String;
 
 export type CreateBucketRequestCdnItemProvider = "gcp" | "aws";
-export const CreateBucketRequestCdnItemProvider = S.String;
+const CreateBucketRequestCdnItemProvider = S.String;
 
 export type CreateBucketRequestCdnItemRegion = "us" | "eu";
-export const CreateBucketRequestCdnItemRegion = S.String;
+const CreateBucketRequestCdnItemRegion = S.String;
 
 export interface CreateBucketRequestCdnItem {
   provider: CreateBucketRequestCdnItemProvider | (string & {});
   region: CreateBucketRequestCdnItemRegion | (string & {});
 }
-export const CreateBucketRequestCdnItem = /*@__PURE__*/ S.suspend(() =>
+const CreateBucketRequestCdnItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: CreateBucketRequestCdnItemProvider,
     region: CreateBucketRequestCdnItemRegion,
@@ -169,13 +169,13 @@ export const CreateBucketRequestCdnItem = /*@__PURE__*/ S.suspend(() =>
 
 /** CDN pre-warming regions */
 export type CreateBucketRequestCdnList = Array<CreateBucketRequestCdnItem>;
-export const CreateBucketRequestCdnList = /*@__PURE__*/ S.Array(
+const CreateBucketRequestCdnList = /*@__PURE__*/ S.Array(
   CreateBucketRequestCdnItem,
 ) as any as S.Schema<CreateBucketRequestCdnList>;
 
 /** The region where the bucket is hosted. */
 export type CreateBucketRequestRegion = "us" | "eu";
-export const CreateBucketRequestRegion = S.String;
+const CreateBucketRequestRegion = S.String;
 
 export interface CreateBucketRequest {
   namespace: string;
@@ -192,7 +192,7 @@ export interface CreateBucketRequest {
   /** Free-text description. */
   description?: string;
 }
-export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -211,7 +211,7 @@ export interface CreateBucketResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
 }
-export const CreateBucketResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBucketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     name: S.String,
@@ -223,7 +223,7 @@ export interface DeleteBucketRequest {
   namespace: string;
   repo: string;
 }
-export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -231,18 +231,18 @@ export const DeleteBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBucketRequest" }) as any as S.Schema<DeleteBucketRequest>;
 
 export interface DeleteBucketResponse {}
-export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteBucketResponse",
 }) as any as S.Schema<DeleteBucketResponse>;
 
 export type DuplicateXetFilesRequestTargetType = "model" | "space" | "dataset" | "kernel";
-export const DuplicateXetFilesRequestTargetType = S.String;
+const DuplicateXetFilesRequestTargetType = S.String;
 
 export interface DuplicateXetFilesRequestTarget {
   type: DuplicateXetFilesRequestTargetType | (string & {});
   name: string;
 }
-export const DuplicateXetFilesRequestTarget = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequestTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DuplicateXetFilesRequestTargetType,
     name: S.String,
@@ -256,7 +256,7 @@ export interface DuplicateXetFilesRequestFilesItem {
   sha256: string;
   filename?: string;
 }
-export const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xetHash: S.String,
     sha256: S.String,
@@ -267,7 +267,7 @@ export const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateXetFilesRequestFilesItem>;
 
 export type DuplicateXetFilesRequestFilesList = Array<DuplicateXetFilesRequestFilesItem>;
-export const DuplicateXetFilesRequestFilesList = /*@__PURE__*/ S.Array(
+const DuplicateXetFilesRequestFilesList = /*@__PURE__*/ S.Array(
   DuplicateXetFilesRequestFilesItem,
 ) as any as S.Schema<DuplicateXetFilesRequestFilesList>;
 
@@ -277,7 +277,7 @@ export interface DuplicateXetFilesRequest {
   target: DuplicateXetFilesRequestTarget;
   files: DuplicateXetFilesRequestFilesList;
 }
-export const DuplicateXetFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -300,7 +300,7 @@ export interface DuplicateXetFilesResponseFailedItem {
   /** Error message */
   error: string;
 }
-export const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xetHash: S.String,
     sha256: S.String,
@@ -312,7 +312,7 @@ export const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-file failures */
 export type DuplicateXetFilesResponseFailedList = Array<DuplicateXetFilesResponseFailedItem>;
-export const DuplicateXetFilesResponseFailedList = /*@__PURE__*/ S.Array(
+const DuplicateXetFilesResponseFailedList = /*@__PURE__*/ S.Array(
   DuplicateXetFilesResponseFailedItem,
 ) as any as S.Schema<DuplicateXetFilesResponseFailedList>;
 
@@ -326,7 +326,7 @@ export interface DuplicateXetFilesResponse {
   /** Per-file failures */
   failed: DuplicateXetFilesResponseFailedList;
 }
-export const DuplicateXetFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     processed: S.Number,
@@ -343,7 +343,7 @@ export interface FollowChangesRequest {
   cursor?: string;
   since?: string;
 }
-export const FollowChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const FollowChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -353,13 +353,13 @@ export const FollowChangesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FollowChangesRequest" }) as any as S.Schema<FollowChangesRequest>;
 
 export interface FollowChangesResponse {}
-export const FollowChangesResponse = DeleteBucketResponse as any as S.Schema<FollowChangesResponse>;
+const FollowChangesResponse = DeleteBucketResponse as any as S.Schema<FollowChangesResponse>;
 
 export interface GetBucketDetailsRequest {
   namespace: string;
   repo: string;
 }
-export const GetBucketDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBucketDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -367,10 +367,10 @@ export const GetBucketDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBucketDetailsRequest" }) as any as S.Schema<GetBucketDetailsRequest>;
 
 export type GetBucketDetailsResponseRepoType = "bucket" | "container";
-export const GetBucketDetailsResponseRepoType = S.String;
+const GetBucketDetailsResponseRepoType = S.String;
 
 export type GetBucketDetailsResponseAdminTagsList = Array<string>;
-export const GetBucketDetailsResponseAdminTagsList = /*@__PURE__*/ S.Array(
+const GetBucketDetailsResponseAdminTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBucketDetailsResponseAdminTagsList>;
 
@@ -378,7 +378,7 @@ export interface GetBucketDetailsResponseDisabled {
   reason: string;
   hideReadme?: boolean;
 }
-export const GetBucketDetailsResponseDisabled = /*@__PURE__*/ S.suspend(() =>
+const GetBucketDetailsResponseDisabled = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.String,
     hideReadme: S.optional(S.Boolean),
@@ -388,20 +388,13 @@ export const GetBucketDetailsResponseDisabled = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBucketDetailsResponseDisabled>;
 
 export type GetBucketDetailsResponseCdnRegionsItemProvider = "gcp" | "aws";
-export const GetBucketDetailsResponseCdnRegionsItemProvider = S.String;
-
 export type GetBucketDetailsResponseCdnRegionsItemRegion = "us" | "eu";
-export const GetBucketDetailsResponseCdnRegionsItemRegion = S.String;
-
 export interface GetBucketDetailsResponseCdnRegionsItem {
   provider: GetBucketDetailsResponseCdnRegionsItemProvider;
   region: GetBucketDetailsResponseCdnRegionsItemRegion;
 }
-export const GetBucketDetailsResponseCdnRegionsItem =
-  CreateBucketRequestCdnItem as any as S.Schema<GetBucketDetailsResponseCdnRegionsItem>;
-
 export type GetBucketDetailsResponseCdnRegionsList = Array<GetBucketDetailsResponseCdnRegionsItem>;
-export const GetBucketDetailsResponseCdnRegionsList =
+const GetBucketDetailsResponseCdnRegionsList =
   CreateBucketRequestCdnList as any as S.Schema<GetBucketDetailsResponseCdnRegionsList>;
 
 export interface GetBucketDetailsResponseResourceGroup {
@@ -410,7 +403,7 @@ export interface GetBucketDetailsResponseResourceGroup {
   name: string;
   numUsers?: number;
 }
-export const GetBucketDetailsResponseResourceGroup = /*@__PURE__*/ S.suspend(() =>
+const GetBucketDetailsResponseResourceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -441,7 +434,7 @@ export interface GetBucketDetailsResponse {
   cdnRegions: GetBucketDetailsResponseCdnRegionsList;
   resourceGroup?: GetBucketDetailsResponseResourceGroup;
 }
-export const GetBucketDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBucketDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     author: S.String,
@@ -468,7 +461,7 @@ export interface GetFileMetadataRequest {
   download?: string;
   accept?: string;
 }
-export const GetFileMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -493,7 +486,7 @@ export interface GetFileMetadataResponse {
   /** The content type of the file */
   contentType?: string;
 }
-export const GetFileMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFileMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String,
     refreshUrl: S.String,
@@ -508,7 +501,7 @@ export interface GetResourceGroupRequest {
   namespace: string;
   repo: string;
 }
-export const GetResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -523,7 +516,7 @@ export interface GetResourceGroupResponse {
   name: string;
   numUsers?: number;
 }
-export const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -533,11 +526,11 @@ export const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. `path` (default) sorts lexicographically; `uploadedAt` sorts by most recent upload first. In recursive mode `uploadedAt` is only supported at the bucket root (no path prefix). In non-recursive mode, only supported at root or exact folder prefixes. */
 export type ListFilesRequestSort = "path" | "uploadedAt";
-export const ListFilesRequestSort = S.String;
+const ListFilesRequestSort = S.String;
 
 /** Sort direction. Defaults to `asc` for `path` and `desc` for `uploadedAt`. */
 export type ListFilesRequestDirection = "asc" | "desc";
-export const ListFilesRequestDirection = S.String;
+const ListFilesRequestDirection = S.String;
 
 export interface ListFilesRequest {
   namespace: string;
@@ -549,7 +542,7 @@ export interface ListFilesRequest {
   sort?: ListFilesRequestSort | (string & {});
   direction?: ListFilesRequestDirection | (string & {});
 }
-export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -563,7 +556,7 @@ export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFilesRequest" }) as any as S.Schema<ListFilesRequest>;
 
 export type ListFilesResponseBodyItemType = "file" | "directory";
-export const ListFilesResponseBodyItemType = S.String;
+const ListFilesResponseBodyItemType = S.String;
 
 export interface ListFilesResponseBodyItem {
   type: ListFilesResponseBodyItemType;
@@ -577,7 +570,7 @@ export interface ListFilesResponseBodyItem {
   uploadedAt: string;
   contentType?: string;
 }
-export const ListFilesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ListFilesResponseBodyItemType,
     path: S.String,
@@ -593,12 +586,12 @@ export const ListFilesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFilesResponseBodyItem>;
 
 export type ListFilesResponseBodyList = Array<ListFilesResponseBodyItem>;
-export const ListFilesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFilesResponseBodyList = /*@__PURE__*/ S.Array(
   ListFilesResponseBodyItem,
 ) as any as S.Schema<ListFilesResponseBodyList>;
 
 export type ListFilesResponse = ListFilesResponseBodyList;
-export const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
   ListFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListFilesResponse" }) as any as S.Schema<ListFilesResponse>;
 
@@ -606,7 +599,7 @@ export interface ListNamespaceBucketsRequest {
   namespace: string;
   search?: string;
 }
-export const ListNamespaceBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     search: S.optional(S.String.pipe(T.Query())),
@@ -616,38 +609,26 @@ export const ListNamespaceBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamespaceBucketsRequest>;
 
 export type ListNamespaceBucketsResponseBodyItemRepoType = "bucket" | "container";
-export const ListNamespaceBucketsResponseBodyItemRepoType = S.String;
+const ListNamespaceBucketsResponseBodyItemRepoType = S.String;
 
 export type ListNamespaceBucketsResponseBodyItemAdminTagsList = Array<string>;
-export const ListNamespaceBucketsResponseBodyItemAdminTagsList =
+const ListNamespaceBucketsResponseBodyItemAdminTagsList =
   GetBucketDetailsResponseAdminTagsList as any as S.Schema<ListNamespaceBucketsResponseBodyItemAdminTagsList>;
 
 export type ListNamespaceBucketsResponseBodyItemDisabled = GetBucketDetailsResponseDisabled;
-export const ListNamespaceBucketsResponseBodyItemDisabled = GetBucketDetailsResponseDisabled;
-
 export type ListNamespaceBucketsResponseBodyItemCdnRegionsItemProvider = "gcp" | "aws";
-export const ListNamespaceBucketsResponseBodyItemCdnRegionsItemProvider = S.String;
-
 export type ListNamespaceBucketsResponseBodyItemCdnRegionsItemRegion = "us" | "eu";
-export const ListNamespaceBucketsResponseBodyItemCdnRegionsItemRegion = S.String;
-
 export interface ListNamespaceBucketsResponseBodyItemCdnRegionsItem {
   provider: ListNamespaceBucketsResponseBodyItemCdnRegionsItemProvider;
   region: ListNamespaceBucketsResponseBodyItemCdnRegionsItemRegion;
 }
-export const ListNamespaceBucketsResponseBodyItemCdnRegionsItem =
-  CreateBucketRequestCdnItem as any as S.Schema<ListNamespaceBucketsResponseBodyItemCdnRegionsItem>;
-
 export type ListNamespaceBucketsResponseBodyItemCdnRegionsList =
   Array<ListNamespaceBucketsResponseBodyItemCdnRegionsItem>;
-export const ListNamespaceBucketsResponseBodyItemCdnRegionsList =
+const ListNamespaceBucketsResponseBodyItemCdnRegionsList =
   CreateBucketRequestCdnList as any as S.Schema<ListNamespaceBucketsResponseBodyItemCdnRegionsList>;
 
 export type ListNamespaceBucketsResponseBodyItemResourceGroup =
   GetBucketDetailsResponseResourceGroup;
-export const ListNamespaceBucketsResponseBodyItemResourceGroup =
-  GetBucketDetailsResponseResourceGroup;
-
 /** Bucket overview information */
 export interface ListNamespaceBucketsResponseBodyItem {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -670,7 +651,7 @@ export interface ListNamespaceBucketsResponseBodyItem {
   cdnRegions: ListNamespaceBucketsResponseBodyItemCdnRegionsList;
   resourceGroup?: GetBucketDetailsResponseResourceGroup;
 }
-export const ListNamespaceBucketsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceBucketsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     author: S.String,
@@ -692,30 +673,27 @@ export const ListNamespaceBucketsResponseBodyItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListNamespaceBucketsResponseBodyItem>;
 
 export type ListNamespaceBucketsResponseBodyList = Array<ListNamespaceBucketsResponseBodyItem>;
-export const ListNamespaceBucketsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListNamespaceBucketsResponseBodyList = /*@__PURE__*/ S.Array(
   ListNamespaceBucketsResponseBodyItem,
 ) as any as S.Schema<ListNamespaceBucketsResponseBodyList>;
 
 export type ListNamespaceBucketsResponse = ListNamespaceBucketsResponseBodyList;
-export const ListNamespaceBucketsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceBucketsResponse = /*@__PURE__*/ S.suspend(() =>
   ListNamespaceBucketsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListNamespaceBucketsResponse",
 }) as any as S.Schema<ListNamespaceBucketsResponse>;
 
 export type ListPathsInfoRequestPathsCase0List = Array<string>;
-export const ListPathsInfoRequestPathsCase0List =
-  GetBucketDetailsResponseAdminTagsList as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
-
 export type ListPathsInfoRequestPaths = ListPathsInfoRequestPathsCase0List | string;
-export const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
+const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
 
 export interface ListPathsInfoRequest {
   namespace: string;
   repo: string;
   paths: ListPathsInfoRequestPaths;
 }
-export const ListPathsInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPathsInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -724,8 +702,6 @@ export const ListPathsInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPathsInfoRequest" }) as any as S.Schema<ListPathsInfoRequest>;
 
 export type ListPathsInfoResponseBodyItemType = "file" | "directory";
-export const ListPathsInfoResponseBodyItemType = S.String;
-
 export interface ListPathsInfoResponseBodyItem {
   type: ListPathsInfoResponseBodyItemType;
   path: string;
@@ -738,32 +714,19 @@ export interface ListPathsInfoResponseBodyItem {
   uploadedAt: string;
   contentType?: string;
 }
-export const ListPathsInfoResponseBodyItem =
-  ListFilesResponseBodyItem as any as S.Schema<ListPathsInfoResponseBodyItem>;
-
 export type ListPathsInfoResponseBodyList = Array<ListPathsInfoResponseBodyItem>;
-export const ListPathsInfoResponseBodyList =
-  ListFilesResponseBodyList as any as S.Schema<ListPathsInfoResponseBodyList>;
-
 export type ListPathsInfoResponse = ListPathsInfoResponseBodyList;
-export const ListPathsInfoResponse = ListFilesResponse as any as S.Schema<ListPathsInfoResponse>;
+const ListPathsInfoResponse = ListFilesResponse as any as S.Schema<ListPathsInfoResponse>;
 
 export type UpdateBucketSettingsRequestCdnRegionsItemProvider = "gcp" | "aws";
-export const UpdateBucketSettingsRequestCdnRegionsItemProvider = S.String;
-
 export type UpdateBucketSettingsRequestCdnRegionsItemRegion = "us" | "eu";
-export const UpdateBucketSettingsRequestCdnRegionsItemRegion = S.String;
-
 export interface UpdateBucketSettingsRequestCdnRegionsItem {
   provider: UpdateBucketSettingsRequestCdnRegionsItemProvider | (string & {});
   region: UpdateBucketSettingsRequestCdnRegionsItemRegion | (string & {});
 }
-export const UpdateBucketSettingsRequestCdnRegionsItem =
-  CreateBucketRequestCdnItem as any as S.Schema<UpdateBucketSettingsRequestCdnRegionsItem>;
-
 export type UpdateBucketSettingsRequestCdnRegionsList =
   Array<UpdateBucketSettingsRequestCdnRegionsItem>;
-export const UpdateBucketSettingsRequestCdnRegionsList =
+const UpdateBucketSettingsRequestCdnRegionsList =
   CreateBucketRequestCdnList as any as S.Schema<UpdateBucketSettingsRequestCdnRegionsList>;
 
 export interface UpdateBucketSettingsRequest {
@@ -772,7 +735,7 @@ export interface UpdateBucketSettingsRequest {
   private?: unknown;
   cdnRegions?: UpdateBucketSettingsRequestCdnRegionsList;
 }
-export const UpdateBucketSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBucketSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -784,28 +747,21 @@ export const UpdateBucketSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBucketSettingsRequest>;
 
 export type UpdateBucketSettingsResponseCdnRegionsItemProvider = "gcp" | "aws";
-export const UpdateBucketSettingsResponseCdnRegionsItemProvider = S.String;
-
 export type UpdateBucketSettingsResponseCdnRegionsItemRegion = "us" | "eu";
-export const UpdateBucketSettingsResponseCdnRegionsItemRegion = S.String;
-
 export interface UpdateBucketSettingsResponseCdnRegionsItem {
   provider: UpdateBucketSettingsResponseCdnRegionsItemProvider;
   region: UpdateBucketSettingsResponseCdnRegionsItemRegion;
 }
-export const UpdateBucketSettingsResponseCdnRegionsItem =
-  CreateBucketRequestCdnItem as any as S.Schema<UpdateBucketSettingsResponseCdnRegionsItem>;
-
 export type UpdateBucketSettingsResponseCdnRegionsList =
   Array<UpdateBucketSettingsResponseCdnRegionsItem>;
-export const UpdateBucketSettingsResponseCdnRegionsList =
+const UpdateBucketSettingsResponseCdnRegionsList =
   CreateBucketRequestCdnList as any as S.Schema<UpdateBucketSettingsResponseCdnRegionsList>;
 
 export interface UpdateBucketSettingsResponse {
   private?: boolean;
   cdnRegions?: UpdateBucketSettingsResponseCdnRegionsList;
 }
-export const UpdateBucketSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateBucketSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     private: S.optional(S.Boolean),
     cdnRegions: S.optional(UpdateBucketSettingsResponseCdnRegionsList),
@@ -818,7 +774,7 @@ export interface XetReadTokenRequest {
   namespace: string;
   repo: string;
 }
-export const XetReadTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const XetReadTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -832,7 +788,7 @@ export interface XetReadTokenResponse {
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-export const XetReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const XetReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     casUrl: S.String,
     exp: S.Number,
@@ -844,7 +800,7 @@ export interface XetWriteTokenRequest {
   namespace: string;
   repo: string;
 }
-export const XetWriteTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const XetWriteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -858,7 +814,7 @@ export interface XetWriteTokenResponse {
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-export const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
+const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
 
 export type AddResourceGroupError = HuggingFaceOpError;
 /** Add resource group Add the repository to a resource group */

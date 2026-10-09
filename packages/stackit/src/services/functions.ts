@@ -10,18 +10,18 @@ import * as T from "../traits.ts";
 export type { StackitOpError, StackitOpContext };
 
 export type CreateFunctionRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateFunctionRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreateFunctionRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateFunctionRequestLabelsMap>;
 
 /** Status of this function's latest revision. */
 export type CreateFunctionRequestState = "CREATING" | "ACTIVE" | "FAILED";
-export const CreateFunctionRequestState = S.String;
+const CreateFunctionRequestState = S.String;
 
 /** URLs that resolve to the function. */
 export type CreateFunctionRequestUrlList = Array<string>;
-export const CreateFunctionRequestUrlList = /*@__PURE__*/ S.Array(
+const CreateFunctionRequestUrlList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateFunctionRequestUrlList>;
 
@@ -46,7 +46,7 @@ export interface CreateFunctionRequest {
   /** URLs that resolve to the function. */
   url?: CreateFunctionRequestUrlList;
 }
-export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     created_at: S.optional(S.String),
@@ -69,16 +69,15 @@ export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFunctionRequest" }) as any as S.Schema<CreateFunctionRequest>;
 
 export type FunctionLabelsMap = { [key: string]: string | undefined };
-export const FunctionLabelsMap =
-  CreateFunctionRequestLabelsMap as any as S.Schema<FunctionLabelsMap>;
+const FunctionLabelsMap = CreateFunctionRequestLabelsMap as any as S.Schema<FunctionLabelsMap>;
 
 /** Status of this function's latest revision. */
 export type FunctionState = "CREATING" | "ACTIVE" | "FAILED";
-export const FunctionState = S.String;
+const FunctionState = S.String;
 
 /** URLs that resolve to the function. */
 export type FunctionUrlList = Array<string>;
-export const FunctionUrlList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FunctionUrlList>;
+const FunctionUrlList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FunctionUrlList>;
 
 /** Represents a STACKIT Functions function. */
 export interface Function {
@@ -100,7 +99,7 @@ export interface Function {
   /** URLs that resolve to the function. */
   url?: FunctionUrlList;
 }
-export const Function = /*@__PURE__*/ S.suspend(() =>
+const Function = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     current_revision: S.optional(S.String),
@@ -115,7 +114,7 @@ export const Function = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Function" }) as any as S.Schema<Function>;
 
 export type CreateFunctionRevisionRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateFunctionRevisionRequestLabelsMap =
+const CreateFunctionRevisionRequestLabelsMap =
   CreateFunctionRequestLabelsMap as any as S.Schema<CreateFunctionRevisionRequestLabelsMap>;
 
 /** Resource utilization limitations */
@@ -123,7 +122,7 @@ export interface ResourceLimits {
   concurrency: number;
   plan: string;
 }
-export const ResourceLimits = /*@__PURE__*/ S.suspend(() =>
+const ResourceLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     concurrency: S.Number,
     plan: S.String,
@@ -132,7 +131,7 @@ export const ResourceLimits = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of this revision. */
 export type CreateFunctionRevisionRequestState = "CANCELLED" | "CREATING" | "ACTIVE" | "FAILED";
-export const CreateFunctionRevisionRequestState = S.String;
+const CreateFunctionRevisionRequestState = S.String;
 
 /** Represents a variable value for a specific revision. */
 export interface RevisionVariable {
@@ -143,7 +142,7 @@ export interface RevisionVariable {
   /** Reference to the vault secret. Only present for secret variables. */
   vault_reference?: string | null;
 }
-export const RevisionVariable = /*@__PURE__*/ S.suspend(() =>
+const RevisionVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.optional(S.NullOr(S.String)),
@@ -153,7 +152,7 @@ export const RevisionVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** Variable values for this revision. Each variable must reference a variable definition on the function. */
 export type CreateFunctionRevisionRequestVariablesList = Array<RevisionVariable>;
-export const CreateFunctionRevisionRequestVariablesList = /*@__PURE__*/ S.Array(
+const CreateFunctionRevisionRequestVariablesList = /*@__PURE__*/ S.Array(
   RevisionVariable,
 ) as any as S.Schema<CreateFunctionRevisionRequestVariablesList>;
 
@@ -191,7 +190,7 @@ export interface CreateFunctionRevisionRequest {
   /** The version number of the revision. */
   version?: number;
 }
-export const CreateFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -223,16 +222,15 @@ export const CreateFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFunctionRevisionRequest>;
 
 export type RevisionLabelsMap = { [key: string]: string | undefined };
-export const RevisionLabelsMap =
-  CreateFunctionRequestLabelsMap as any as S.Schema<RevisionLabelsMap>;
+const RevisionLabelsMap = CreateFunctionRequestLabelsMap as any as S.Schema<RevisionLabelsMap>;
 
 /** Status of this revision. */
 export type RevisionState = "CANCELLED" | "CREATING" | "ACTIVE" | "FAILED";
-export const RevisionState = S.String;
+const RevisionState = S.String;
 
 /** Variable values for this revision. Each variable must reference a variable definition on the function. */
 export type RevisionVariablesList = Array<RevisionVariable>;
-export const RevisionVariablesList =
+const RevisionVariablesList =
   CreateFunctionRevisionRequestVariablesList as any as S.Schema<RevisionVariablesList>;
 
 /** The function revision */
@@ -266,7 +264,7 @@ export interface Revision {
   /** The version number of the revision. */
   version?: number;
 }
-export const Revision = /*@__PURE__*/ S.suspend(() =>
+const Revision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     digest: S.optional(S.String),
@@ -287,7 +285,7 @@ export const Revision = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Revision" }) as any as S.Schema<Revision>;
 
 export type CreatePullCredentialRequestLabelsMap = { [key: string]: string | undefined };
-export const CreatePullCredentialRequestLabelsMap =
+const CreatePullCredentialRequestLabelsMap =
   CreateFunctionRequestLabelsMap as any as S.Schema<CreatePullCredentialRequestLabelsMap>;
 
 export interface CreatePullCredentialRequest {
@@ -305,7 +303,7 @@ export interface CreatePullCredentialRequest {
   /** The username for the OCI registry pull-credentials. */
   username: string;
 }
-export const CreatePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     address: S.String,
@@ -327,7 +325,7 @@ export const CreatePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePullCredentialRequest>;
 
 export type PullCredentialLabelsMap = { [key: string]: string | undefined };
-export const PullCredentialLabelsMap =
+const PullCredentialLabelsMap =
   CreateFunctionRequestLabelsMap as any as S.Schema<PullCredentialLabelsMap>;
 
 export interface PullCredential {
@@ -343,7 +341,7 @@ export interface PullCredential {
   /** The username for the OCI registry pull-credentials. */
   username: string;
 }
-export const PullCredential = /*@__PURE__*/ S.suspend(() =>
+const PullCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.String,
     id: S.optional(S.String),
@@ -360,7 +358,7 @@ export interface DeleteFunctionRequest {
   /** The STACKIT Functions functionId */
   functionId: string;
 }
-export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -375,7 +373,7 @@ export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFunctionRequest" }) as any as S.Schema<DeleteFunctionRequest>;
 
 export interface DeleteFunctionResponse {}
-export const DeleteFunctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteFunctionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteFunctionResponse",
 }) as any as S.Schema<DeleteFunctionResponse>;
 
@@ -385,7 +383,7 @@ export interface DeletePullCredentialRequest {
   /** The identifier of the OCI registry pull credential configuration */
   pullCredentialId: string;
 }
-export const DeletePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     pullCredentialId: S.String.pipe(T.Label()),
@@ -402,7 +400,7 @@ export const DeletePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePullCredentialRequest>;
 
 export interface DeletePullCredentialResponse {}
-export const DeletePullCredentialResponse =
+const DeletePullCredentialResponse =
   DeleteFunctionResponse as any as S.Schema<DeletePullCredentialResponse>;
 
 export interface DeleteRevisionRequest {
@@ -413,7 +411,7 @@ export interface DeleteRevisionRequest {
   /** The identifier of the revision */
   revisionId: string;
 }
-export const DeleteRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -429,8 +427,7 @@ export const DeleteRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRevisionRequest" }) as any as S.Schema<DeleteRevisionRequest>;
 
 export interface DeleteRevisionResponse {}
-export const DeleteRevisionResponse =
-  DeleteFunctionResponse as any as S.Schema<DeleteRevisionResponse>;
+const DeleteRevisionResponse = DeleteFunctionResponse as any as S.Schema<DeleteRevisionResponse>;
 
 export interface GetFunctionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -438,7 +435,7 @@ export interface GetFunctionRequest {
   /** The STACKIT Functions functionId */
   functionId: string;
 }
-export const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -458,7 +455,7 @@ export interface GetPullCredentialRequest {
   /** The identifier of the OCI registry pull credential configuration */
   pullCredentialId: string;
 }
-export const GetPullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     pullCredentialId: S.String.pipe(T.Label()),
@@ -480,7 +477,7 @@ export interface GetRevisionRequest {
   /** The identifier of the revision */
   revisionId: string;
 }
-export const GetRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -499,7 +496,7 @@ export interface ListFunctionsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
 }
-export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -514,7 +511,7 @@ export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of functions. */
 export type ListFunctionsFunctionsList = Array<Function>;
-export const ListFunctionsFunctionsList = /*@__PURE__*/ S.Array(
+const ListFunctionsFunctionsList = /*@__PURE__*/ S.Array(
   Function,
 ) as any as S.Schema<ListFunctionsFunctionsList>;
 
@@ -524,7 +521,7 @@ export interface ListFunctions {
   /** Token for the next page of results. */
   next_page_token?: string;
 }
-export const ListFunctions = /*@__PURE__*/ S.suspend(() =>
+const ListFunctions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functions: S.optional(ListFunctionsFunctionsList),
     next_page_token: S.optional(S.String),
@@ -535,7 +532,7 @@ export interface ListPullCredentialsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
 }
-export const ListPullCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPullCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -552,7 +549,7 @@ export const ListPullCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of oci registries pull credentials associated with the project. */
 export type ListPullCredentialsPullCredentialsList = Array<PullCredential>;
-export const ListPullCredentialsPullCredentialsList = /*@__PURE__*/ S.Array(
+const ListPullCredentialsPullCredentialsList = /*@__PURE__*/ S.Array(
   PullCredential,
 ) as any as S.Schema<ListPullCredentialsPullCredentialsList>;
 
@@ -562,7 +559,7 @@ export interface ListPullCredentials {
   /** List of oci registries pull credentials associated with the project. */
   pull_credentials?: ListPullCredentialsPullCredentialsList;
 }
-export const ListPullCredentials = /*@__PURE__*/ S.suspend(() =>
+const ListPullCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_page_token: S.optional(S.String),
     pull_credentials: S.optional(ListPullCredentialsPullCredentialsList),
@@ -575,7 +572,7 @@ export interface ListRevisionsRequest {
   /** The STACKIT Functions functionId */
   functionId: string;
 }
-export const ListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -591,7 +588,7 @@ export const ListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of revisions. */
 export type ListRevisionsRevisionListList = Array<Revision>;
-export const ListRevisionsRevisionListList = /*@__PURE__*/ S.Array(
+const ListRevisionsRevisionListList = /*@__PURE__*/ S.Array(
   Revision,
 ) as any as S.Schema<ListRevisionsRevisionListList>;
 
@@ -603,7 +600,7 @@ export interface ListRevisions {
   /** List of revisions. */
   revisionList?: ListRevisionsRevisionListList;
 }
-export const ListRevisions = /*@__PURE__*/ S.suspend(() =>
+const ListRevisions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxItems: S.optional(S.Number),
     next_page_token: S.optional(S.String),
@@ -612,7 +609,7 @@ export const ListRevisions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRevisions" }) as any as S.Schema<ListRevisions>;
 
 export type UpdateFunctionRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateFunctionRequestLabelsMap =
+const UpdateFunctionRequestLabelsMap =
   CreateFunctionRequestLabelsMap as any as S.Schema<UpdateFunctionRequestLabelsMap>;
 
 export interface UpdateFunctionRequest {
@@ -624,7 +621,7 @@ export interface UpdateFunctionRequest {
   /** User-defined name of the function. */
   name?: string;
 }
-export const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -641,7 +638,7 @@ export const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateFunctionRequest" }) as any as S.Schema<UpdateFunctionRequest>;
 
 export type UpdatePullCredentialRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdatePullCredentialRequestLabelsMap =
+const UpdatePullCredentialRequestLabelsMap =
   CreateFunctionRequestLabelsMap as any as S.Schema<UpdatePullCredentialRequestLabelsMap>;
 
 export interface UpdatePullCredentialRequest {
@@ -659,7 +656,7 @@ export interface UpdatePullCredentialRequest {
   /** The username for the OCI registry pull-credentials. */
   username?: string;
 }
-export const UpdatePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     pullCredentialId: S.String.pipe(T.Label()),
@@ -681,7 +678,7 @@ export const UpdatePullCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePullCredentialRequest>;
 
 export type UpdateRevisionRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateRevisionRequestLabelsMap =
+const UpdateRevisionRequestLabelsMap =
   CreateFunctionRequestLabelsMap as any as S.Schema<UpdateRevisionRequestLabelsMap>;
 
 export interface UpdateRevisionRequest {
@@ -695,7 +692,7 @@ export interface UpdateRevisionRequest {
   /** The name of the the revision. Must be unique within the function. */
   name?: string;
 }
-export const UpdateRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),

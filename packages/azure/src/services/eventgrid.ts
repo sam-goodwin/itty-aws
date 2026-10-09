@@ -16,7 +16,7 @@ export interface ActivatePartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
-export const ActivatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -35,14 +35,14 @@ export const ActivatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type ActivatePartnerTopicResponseTagsMap = { [key: string]: string | undefined };
-export const ActivatePartnerTopicResponseTagsMap = /*@__PURE__*/ S.Record(
+const ActivatePartnerTopicResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ActivatePartnerTopicResponseTagsMap>;
 
 /** The kind of event type used. */
 export type EventTypeInfoKind = "Inline";
-export const EventTypeInfoKind = S.String;
+const EventTypeInfoKind = S.String;
 
 /** Additional information about every inline event. */
 export interface InlineEventProperties {
@@ -55,7 +55,7 @@ export interface InlineEventProperties {
   /** The dataSchemaUrl for the inline event. */
   dataSchemaUrl?: string;
 }
-export const InlineEventProperties = /*@__PURE__*/ S.suspend(() =>
+const InlineEventProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -66,7 +66,7 @@ export const InlineEventProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event. An example of a valid inline event name is "Contoso.OrderCreated". The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type. */
 export type EventTypeInfoInlineEventTypesMap = { [key: string]: InlineEventProperties | undefined };
-export const EventTypeInfoInlineEventTypesMap = /*@__PURE__*/ S.Record(
+const EventTypeInfoInlineEventTypesMap = /*@__PURE__*/ S.Record(
   S.String,
   InlineEventProperties,
 ) as any as S.Schema<EventTypeInfoInlineEventTypesMap>;
@@ -78,7 +78,7 @@ export interface EventTypeInfo {
   /** A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event. An example of a valid inline event name is "Contoso.OrderCreated". The inline event type values are of type InlineEventProperties and will contain additional information for every inline event type. */
   inlineEventTypes?: EventTypeInfoInlineEventTypesMap;
 }
-export const EventTypeInfo = /*@__PURE__*/ S.suspend(() =>
+const EventTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(EventTypeInfoKind),
     inlineEventTypes: S.optional(EventTypeInfoInlineEventTypesMap),
@@ -94,11 +94,11 @@ export type PartnerTopicPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "IdleDueToMirroredChannelResourceDeletion";
-export const PartnerTopicPropertiesProvisioningState = S.String;
+const PartnerTopicPropertiesProvisioningState = S.String;
 
 /** Activation state of the partner topic. */
 export type PartnerTopicPropertiesActivationState = "NeverActivated" | "Activated" | "Deactivated";
-export const PartnerTopicPropertiesActivationState = S.String;
+const PartnerTopicPropertiesActivationState = S.String;
 
 /** Properties of the Partner Topic. */
 export interface PartnerTopicProperties {
@@ -119,7 +119,7 @@ export interface PartnerTopicProperties {
   /** Context or helpful message that can be used during the approval process by the subscriber. */
   messageForActivation?: string;
 }
-export const PartnerTopicProperties = /*@__PURE__*/ S.suspend(() =>
+const PartnerTopicProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerRegistrationImmutableId: S.optional(S.String),
     source: S.optional(S.String),
@@ -138,7 +138,7 @@ export type ActivatePartnerTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ActivatePartnerTopicResponseSystemDataCreatedByType = S.String;
+const ActivatePartnerTopicResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ActivatePartnerTopicResponseSystemDataLastModifiedByType =
@@ -146,7 +146,7 @@ export type ActivatePartnerTopicResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ActivatePartnerTopicResponseSystemDataLastModifiedByType = S.String;
+const ActivatePartnerTopicResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ActivatePartnerTopicResponseSystemData {
@@ -163,7 +163,7 @@ export interface ActivatePartnerTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ActivatePartnerTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const ActivatePartnerTopicResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(ActivatePartnerTopicResponseSystemDataCreatedByType),
@@ -182,7 +182,7 @@ export type IdentityInfoType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-export const IdentityInfoType = S.String;
+const IdentityInfoType = S.String;
 
 /** The information about the user identity. */
 export interface UserIdentityProperties {
@@ -191,7 +191,7 @@ export interface UserIdentityProperties {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-export const UserIdentityProperties = /*@__PURE__*/ S.suspend(() =>
+const UserIdentityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -202,7 +202,7 @@ export const UserIdentityProperties = /*@__PURE__*/ S.suspend(() =>
 export type IdentityInfoUserAssignedIdentitiesMap = {
   [key: string]: UserIdentityProperties | undefined;
 };
-export const IdentityInfoUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityInfoUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserIdentityProperties,
 ) as any as S.Schema<IdentityInfoUserAssignedIdentitiesMap>;
@@ -218,7 +218,7 @@ export interface IdentityInfo {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. This property is currently not used and reserved for future usage. */
   userAssignedIdentities?: IdentityInfoUserAssignedIdentitiesMap;
 }
-export const IdentityInfo = /*@__PURE__*/ S.suspend(() =>
+const IdentityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(IdentityInfoType),
     principalId: S.optional(S.String),
@@ -245,7 +245,7 @@ export interface ActivatePartnerTopicResponse {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
-export const ActivatePartnerTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivatePartnerTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -272,7 +272,7 @@ export interface AuthorizePartnerConfigurationPartnerRequest {
   /** Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration. If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified. */
   authorizationExpirationTimeInUtc?: string;
 }
-export const AuthorizePartnerConfigurationPartnerRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizePartnerConfigurationPartnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -300,7 +300,7 @@ export interface Partner {
   /** Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration. If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified. */
   authorizationExpirationTimeInUtc?: string;
 }
-export const Partner = /*@__PURE__*/ S.suspend(() =>
+const Partner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerRegistrationImmutableId: S.optional(S.String),
     partnerName: S.optional(S.String),
@@ -310,7 +310,7 @@ export const Partner = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of authorized partners. */
 export type PartnerAuthorizationAuthorizedPartnersListList = Array<Partner>;
-export const PartnerAuthorizationAuthorizedPartnersListList = /*@__PURE__*/ S.Array(
+const PartnerAuthorizationAuthorizedPartnersListList = /*@__PURE__*/ S.Array(
   Partner,
 ) as any as S.Schema<PartnerAuthorizationAuthorizedPartnersListList>;
 
@@ -321,7 +321,7 @@ export interface PartnerAuthorization {
   /** The list of authorized partners. */
   authorizedPartnersList?: PartnerAuthorizationAuthorizedPartnersListList;
 }
-export const PartnerAuthorization = /*@__PURE__*/ S.suspend(() =>
+const PartnerAuthorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultMaximumExpirationTimeInDays: S.optional(S.Number),
     authorizedPartnersList: S.optional(PartnerAuthorizationAuthorizedPartnersListList),
@@ -336,7 +336,7 @@ export type PartnerConfigurationPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const PartnerConfigurationPropertiesProvisioningState = S.String;
+const PartnerConfigurationPropertiesProvisioningState = S.String;
 
 /** Properties of the partner configuration. */
 export interface PartnerConfigurationProperties {
@@ -345,7 +345,7 @@ export interface PartnerConfigurationProperties {
   /** Provisioning state of the partner configuration. */
   provisioningState?: PartnerConfigurationPropertiesProvisioningState | (string & {});
 }
-export const PartnerConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerAuthorization: S.optional(PartnerAuthorization),
     provisioningState: S.optional(PartnerConfigurationPropertiesProvisioningState),
@@ -360,7 +360,7 @@ export type AuthorizePartnerConfigurationPartnerResponseSystemDataCreatedByType 
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const AuthorizePartnerConfigurationPartnerResponseSystemDataCreatedByType = S.String;
+const AuthorizePartnerConfigurationPartnerResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type AuthorizePartnerConfigurationPartnerResponseSystemDataLastModifiedByType =
@@ -368,7 +368,7 @@ export type AuthorizePartnerConfigurationPartnerResponseSystemDataLastModifiedBy
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const AuthorizePartnerConfigurationPartnerResponseSystemDataLastModifiedByType = S.String;
+const AuthorizePartnerConfigurationPartnerResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AuthorizePartnerConfigurationPartnerResponseSystemData {
@@ -385,7 +385,7 @@ export interface AuthorizePartnerConfigurationPartnerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AuthorizePartnerConfigurationPartnerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const AuthorizePartnerConfigurationPartnerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(AuthorizePartnerConfigurationPartnerResponseSystemDataCreatedByType),
@@ -404,7 +404,7 @@ export const AuthorizePartnerConfigurationPartnerResponseSystemData = /*@__PURE_
 export type AuthorizePartnerConfigurationPartnerResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const AuthorizePartnerConfigurationPartnerResponseTagsMap =
+const AuthorizePartnerConfigurationPartnerResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<AuthorizePartnerConfigurationPartnerResponseTagsMap>;
 
 export interface AuthorizePartnerConfigurationPartnerResponse {
@@ -423,7 +423,7 @@ export interface AuthorizePartnerConfigurationPartnerResponse {
   /** Tags of the resource. */
   tags?: AuthorizePartnerConfigurationPartnerResponseTagsMap;
 }
-export const AuthorizePartnerConfigurationPartnerResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthorizePartnerConfigurationPartnerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -444,7 +444,7 @@ export interface CaCertificatePropertiesInput {
   /** Base64 encoded PEM (Privacy Enhanced Mail) format certificate data. */
   encodedCertificate?: string;
 }
-export const CaCertificatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CaCertificatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     encodedCertificate: S.optional(S.String),
@@ -465,7 +465,7 @@ export interface CaCertificatesCreateOrUpdateRequest {
   /** The properties of CA certificate. */
   properties?: CaCertificatePropertiesInput;
 }
-export const CaCertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CaCertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -493,7 +493,7 @@ export type CaCertificatePropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
-export const CaCertificatePropertiesProvisioningState = S.String;
+const CaCertificatePropertiesProvisioningState = S.String;
 
 /** The properties of CA certificate. */
 export interface CaCertificateProperties {
@@ -508,7 +508,7 @@ export interface CaCertificateProperties {
   /** Provisioning state of the CA Certificate resource. */
   provisioningState?: CaCertificatePropertiesProvisioningState;
 }
-export const CaCertificateProperties = /*@__PURE__*/ S.suspend(() =>
+const CaCertificateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     encodedCertificate: S.optional(S.String),
@@ -524,16 +524,12 @@ export type CaCertificatesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CaCertificatesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type CaCertificatesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CaCertificatesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CaCertificatesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -549,7 +545,7 @@ export interface CaCertificatesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CaCertificatesCreateOrUpdateResponseSystemData =
+const CaCertificatesCreateOrUpdateResponseSystemData =
   AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<CaCertificatesCreateOrUpdateResponseSystemData>;
 
 export interface CaCertificatesCreateOrUpdateResponse {
@@ -564,7 +560,7 @@ export interface CaCertificatesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CaCertificatesCreateOrUpdateResponseSystemData;
 }
-export const CaCertificatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CaCertificatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -578,7 +574,7 @@ export const CaCertificatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** The type of the event channel which represents the direction flow of events. */
 export type ChannelPropertiesChannelType = "PartnerTopic";
-export const ChannelPropertiesChannelType = S.String;
+const ChannelPropertiesChannelType = S.String;
 
 /** Properties of the corresponding partner topic of a Channel. */
 export interface PartnerTopicInfo {
@@ -593,7 +589,7 @@ export interface PartnerTopicInfo {
   /** The source information is provided by the publisher to determine the scope or context from which the events are originating. This information can be used by the subscriber during the approval process of the created partner topic. */
   source?: string;
 }
-export const PartnerTopicInfo = /*@__PURE__*/ S.suspend(() =>
+const PartnerTopicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureSubscriptionId: S.optional(S.String),
     resourceGroupName: S.optional(S.String),
@@ -612,11 +608,11 @@ export type ChannelPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "IdleDueToMirroredPartnerTopicDeletion";
-export const ChannelPropertiesProvisioningState = S.String;
+const ChannelPropertiesProvisioningState = S.String;
 
 /** The readiness state of the corresponding partner topic. */
 export type ChannelPropertiesReadinessState = "NeverActivated" | "Activated";
-export const ChannelPropertiesReadinessState = S.String;
+const ChannelPropertiesReadinessState = S.String;
 
 /** Properties of the Channel. */
 export interface ChannelProperties {
@@ -633,7 +629,7 @@ export interface ChannelProperties {
   /** Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated, the channel and corresponding partner topic are deleted. */
   expirationTimeIfNotActivatedUtc?: string;
 }
-export const ChannelProperties = /*@__PURE__*/ S.suspend(() =>
+const ChannelProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelType: S.optional(ChannelPropertiesChannelType),
     partnerTopicInfo: S.optional(PartnerTopicInfo),
@@ -656,7 +652,7 @@ export interface ChannelsCreateOrUpdateRequest {
   /** Properties of the Channel. */
   properties?: ChannelProperties;
 }
-export const ChannelsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ChannelsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -681,16 +677,12 @@ export type ChannelsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ChannelsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ChannelsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ChannelsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ChannelsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -706,7 +698,7 @@ export interface ChannelsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ChannelsCreateOrUpdateResponseSystemData =
+const ChannelsCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<ChannelsCreateOrUpdateResponseSystemData>;
 
 export interface ChannelsCreateOrUpdateResponse {
@@ -721,7 +713,7 @@ export interface ChannelsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ChannelsCreateOrUpdateResponseSystemData;
 }
-export const ChannelsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ChannelsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -740,7 +732,7 @@ export interface ClientGroupPropertiesInput {
   /** The grouping query for the clients. Example : attributes.keyName IN ['a', 'b', 'c']. */
   query?: string;
 }
-export const ClientGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClientGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     query: S.optional(S.String),
@@ -761,7 +753,7 @@ export interface ClientGroupsCreateOrUpdateRequest {
   /** The properties of client group. */
   properties?: ClientGroupPropertiesInput;
 }
-export const ClientGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClientGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -789,7 +781,7 @@ export type ClientGroupPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
-export const ClientGroupPropertiesProvisioningState = S.String;
+const ClientGroupPropertiesProvisioningState = S.String;
 
 /** The properties of client group. */
 export interface ClientGroupProperties {
@@ -800,7 +792,7 @@ export interface ClientGroupProperties {
   /** Provisioning state of the ClientGroup resource. */
   provisioningState?: ClientGroupPropertiesProvisioningState;
 }
-export const ClientGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const ClientGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     query: S.optional(S.String),
@@ -814,16 +806,12 @@ export type ClientGroupsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ClientGroupsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ClientGroupsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ClientGroupsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ClientGroupsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -839,7 +827,7 @@ export interface ClientGroupsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClientGroupsCreateOrUpdateResponseSystemData =
+const ClientGroupsCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<ClientGroupsCreateOrUpdateResponseSystemData>;
 
 export interface ClientGroupsCreateOrUpdateResponse {
@@ -854,7 +842,7 @@ export interface ClientGroupsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClientGroupsCreateOrUpdateResponseSystemData;
 }
-export const ClientGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClientGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -874,11 +862,11 @@ export type ClientCertificateAuthenticationValidationScheme =
   | "IpMatchesAuthenticationName"
   | "EmailMatchesAuthenticationName"
   | "ThumbprintMatch";
-export const ClientCertificateAuthenticationValidationScheme = S.String;
+const ClientCertificateAuthenticationValidationScheme = S.String;
 
 /** The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'. */
 export type ClientCertificateAuthenticationAllowedThumbprintsList = Array<string>;
-export const ClientCertificateAuthenticationAllowedThumbprintsList = /*@__PURE__*/ S.Array(
+const ClientCertificateAuthenticationAllowedThumbprintsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClientCertificateAuthenticationAllowedThumbprintsList>;
 
@@ -889,7 +877,7 @@ export interface ClientCertificateAuthentication {
   /** The list of thumbprints that are allowed during client authentication. This property is required only if the validationScheme is 'ThumbprintMatch'. */
   allowedThumbprints?: ClientCertificateAuthenticationAllowedThumbprintsList;
 }
-export const ClientCertificateAuthentication = /*@__PURE__*/ S.suspend(() =>
+const ClientCertificateAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validationScheme: S.optional(ClientCertificateAuthenticationValidationScheme),
     allowedThumbprints: S.optional(ClientCertificateAuthenticationAllowedThumbprintsList),
@@ -900,11 +888,11 @@ export const ClientCertificateAuthentication = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates if the client is enabled or not. Default value is Enabled. */
 export type ClientPropertiesInputState = "Enabled" | "Disabled";
-export const ClientPropertiesInputState = S.String;
+const ClientPropertiesInputState = S.String;
 
 /** Attributes for the client. Supported values are int, bool, string, string[]. Example: "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] } */
 export type ClientPropertiesInputAttributesMap = { [key: string]: unknown | undefined };
-export const ClientPropertiesInputAttributesMap = /*@__PURE__*/ S.Record(
+const ClientPropertiesInputAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ClientPropertiesInputAttributesMap>;
@@ -922,7 +910,7 @@ export interface ClientPropertiesInput {
   /** Attributes for the client. Supported values are int, bool, string, string[]. Example: "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] } */
   attributes?: ClientPropertiesInputAttributesMap;
 }
-export const ClientPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClientPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     authenticationName: S.optional(S.String),
@@ -944,7 +932,7 @@ export interface ClientsCreateOrUpdateRequest {
   /** The properties of client. */
   properties?: ClientPropertiesInput;
 }
-export const ClientsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClientsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -965,11 +953,11 @@ export const ClientsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates if the client is enabled or not. Default value is Enabled. */
 export type ClientPropertiesState = "Enabled" | "Disabled";
-export const ClientPropertiesState = S.String;
+const ClientPropertiesState = S.String;
 
 /** Attributes for the client. Supported values are int, bool, string, string[]. Example: "attributes": { "room": "345", "floor": 12, "deviceTypes": ["Fan", "Light"] } */
 export type ClientPropertiesAttributesMap = { [key: string]: unknown | undefined };
-export const ClientPropertiesAttributesMap =
+const ClientPropertiesAttributesMap =
   ClientPropertiesInputAttributesMap as any as S.Schema<ClientPropertiesAttributesMap>;
 
 /** Provisioning state of the Client resource. */
@@ -981,7 +969,7 @@ export type ClientPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
-export const ClientPropertiesProvisioningState = S.String;
+const ClientPropertiesProvisioningState = S.String;
 
 /** The properties of client. */
 export interface ClientProperties {
@@ -998,7 +986,7 @@ export interface ClientProperties {
   /** Provisioning state of the Client resource. */
   provisioningState?: ClientPropertiesProvisioningState;
 }
-export const ClientProperties = /*@__PURE__*/ S.suspend(() =>
+const ClientProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     authenticationName: S.optional(S.String),
@@ -1015,16 +1003,12 @@ export type ClientsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ClientsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ClientsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ClientsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ClientsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -1040,7 +1024,7 @@ export interface ClientsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClientsCreateOrUpdateResponseSystemData =
+const ClientsCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<ClientsCreateOrUpdateResponseSystemData>;
 
 export interface ClientsCreateOrUpdateResponse {
@@ -1055,7 +1039,7 @@ export interface ClientsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClientsCreateOrUpdateResponseSystemData;
 }
-export const ClientsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClientsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1075,7 +1059,7 @@ export interface DeactivatePartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
-export const DeactivatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1094,7 +1078,7 @@ export const DeactivatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type DeactivatePartnerTopicResponseTagsMap = { [key: string]: string | undefined };
-export const DeactivatePartnerTopicResponseTagsMap =
+const DeactivatePartnerTopicResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<DeactivatePartnerTopicResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1103,16 +1087,12 @@ export type DeactivatePartnerTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeactivatePartnerTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DeactivatePartnerTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeactivatePartnerTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DeactivatePartnerTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -1128,7 +1108,7 @@ export interface DeactivatePartnerTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeactivatePartnerTopicResponseSystemData =
+const DeactivatePartnerTopicResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<DeactivatePartnerTopicResponseSystemData>;
 
 export interface DeactivatePartnerTopicResponse {
@@ -1149,7 +1129,7 @@ export interface DeactivatePartnerTopicResponse {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
-export const DeactivatePartnerTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const DeactivatePartnerTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1174,7 +1154,7 @@ export interface DeleteCaCertificateRequest {
   /** Name of the CA certificate. */
   caCertificateName: string;
 }
-export const DeleteCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1193,7 +1173,7 @@ export const DeleteCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCaCertificateRequest>;
 
 export interface DeleteCaCertificateResponse {}
-export const DeleteCaCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCaCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCaCertificateResponse",
 }) as any as S.Schema<DeleteCaCertificateResponse>;
 
@@ -1207,7 +1187,7 @@ export interface DeleteChannelRequest {
   /** Name of the channel. */
   channelName: string;
 }
-export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1224,8 +1204,7 @@ export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse =
-  DeleteCaCertificateResponse as any as S.Schema<DeleteChannelResponse>;
+const DeleteChannelResponse = DeleteCaCertificateResponse as any as S.Schema<DeleteChannelResponse>;
 
 export interface DeleteClientRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1237,7 +1216,7 @@ export interface DeleteClientRequest {
   /** Name of the client. */
   clientName: string;
 }
-export const DeleteClientRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1254,8 +1233,7 @@ export const DeleteClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClientRequest" }) as any as S.Schema<DeleteClientRequest>;
 
 export interface DeleteClientResponse {}
-export const DeleteClientResponse =
-  DeleteCaCertificateResponse as any as S.Schema<DeleteClientResponse>;
+const DeleteClientResponse = DeleteCaCertificateResponse as any as S.Schema<DeleteClientResponse>;
 
 export interface DeleteClientGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1267,7 +1245,7 @@ export interface DeleteClientGroupRequest {
   /** Name of the client group. */
   clientGroupName: string;
 }
-export const DeleteClientGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClientGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1284,7 +1262,7 @@ export const DeleteClientGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClientGroupRequest" }) as any as S.Schema<DeleteClientGroupRequest>;
 
 export interface DeleteClientGroupResponse {}
-export const DeleteClientGroupResponse =
+const DeleteClientGroupResponse =
   DeleteCaCertificateResponse as any as S.Schema<DeleteClientGroupResponse>;
 
 export interface DeleteDomainRequest {
@@ -1295,7 +1273,7 @@ export interface DeleteDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
-export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1311,8 +1289,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse =
-  DeleteCaCertificateResponse as any as S.Schema<DeleteDomainResponse>;
+const DeleteDomainResponse = DeleteCaCertificateResponse as any as S.Schema<DeleteDomainResponse>;
 
 export interface DeleteDomainEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1324,7 +1301,7 @@ export interface DeleteDomainEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export const DeleteDomainEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1343,9 +1320,7 @@ export const DeleteDomainEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteDomainEventSubscriptionRequest>;
 
 export interface DeleteDomainEventSubscriptionResponse {}
-export const DeleteDomainEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteDomainEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDomainEventSubscriptionResponse",
 }) as any as S.Schema<DeleteDomainEventSubscriptionResponse>;
 
@@ -1359,7 +1334,7 @@ export interface DeleteDomainTopicRequest {
   /** Name of the domain topic. */
   domainTopicName: string;
 }
-export const DeleteDomainTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1376,7 +1351,7 @@ export const DeleteDomainTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDomainTopicRequest" }) as any as S.Schema<DeleteDomainTopicRequest>;
 
 export interface DeleteDomainTopicResponse {}
-export const DeleteDomainTopicResponse =
+const DeleteDomainTopicResponse =
   DeleteCaCertificateResponse as any as S.Schema<DeleteDomainTopicResponse>;
 
 export interface DeleteDomainTopicEventSubscriptionRequest {
@@ -1391,7 +1366,7 @@ export interface DeleteDomainTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export const DeleteDomainTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1411,7 +1386,7 @@ export const DeleteDomainTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteDomainTopicEventSubscriptionRequest>;
 
 export interface DeleteDomainTopicEventSubscriptionResponse {}
-export const DeleteDomainTopicEventSubscriptionResponse =
+const DeleteDomainTopicEventSubscriptionResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteDomainTopicEventSubscriptionResponse>;
 
 export interface DeleteEventSubscriptionRequest {
@@ -1420,7 +1395,7 @@ export interface DeleteEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export const DeleteEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     eventSubscriptionName: S.String.pipe(T.Label()),
@@ -1437,9 +1412,9 @@ export const DeleteEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEventSubscriptionRequest>;
 
 export interface DeleteEventSubscriptionResponse {}
-export const DeleteEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteEventSubscriptionResponse" },
-) as any as S.Schema<DeleteEventSubscriptionResponse>;
+const DeleteEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteEventSubscriptionResponse",
+}) as any as S.Schema<DeleteEventSubscriptionResponse>;
 
 export interface DeleteNamespaceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1449,7 +1424,7 @@ export interface DeleteNamespaceRequest {
   /** Name of the namespace. */
   namespaceName: string;
 }
-export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1465,7 +1440,7 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNamespaceRequest" }) as any as S.Schema<DeleteNamespaceRequest>;
 
 export interface DeleteNamespaceResponse {}
-export const DeleteNamespaceResponse =
+const DeleteNamespaceResponse =
   DeleteCaCertificateResponse as any as S.Schema<DeleteNamespaceResponse>;
 
 export interface DeleteNamespaceTopicRequest {
@@ -1478,7 +1453,7 @@ export interface DeleteNamespaceTopicRequest {
   /** Name of the topic. */
   topicName: string;
 }
-export const DeleteNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1497,7 +1472,7 @@ export const DeleteNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNamespaceTopicRequest>;
 
 export interface DeleteNamespaceTopicResponse {}
-export const DeleteNamespaceTopicResponse =
+const DeleteNamespaceTopicResponse =
   DeleteCaCertificateResponse as any as S.Schema<DeleteNamespaceTopicResponse>;
 
 export interface DeleteNamespaceTopicEventSubscriptionRequest {
@@ -1512,7 +1487,7 @@ export interface DeleteNamespaceTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export const DeleteNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1532,7 +1507,7 @@ export const DeleteNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteNamespaceTopicEventSubscriptionRequest>;
 
 export interface DeleteNamespaceTopicEventSubscriptionResponse {}
-export const DeleteNamespaceTopicEventSubscriptionResponse =
+const DeleteNamespaceTopicEventSubscriptionResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteNamespaceTopicEventSubscriptionResponse>;
 
 export interface DeletePartnerConfigurationRequest {
@@ -1541,7 +1516,7 @@ export interface DeletePartnerConfigurationRequest {
   /** The name of the resource group within the user's subscription. */
   resourceGroupName: string;
 }
-export const DeletePartnerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePartnerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1558,7 +1533,7 @@ export const DeletePartnerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePartnerConfigurationRequest>;
 
 export interface DeletePartnerConfigurationResponse {}
-export const DeletePartnerConfigurationResponse =
+const DeletePartnerConfigurationResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerConfigurationResponse>;
 
 export interface DeletePartnerNamespaceRequest {
@@ -1569,7 +1544,7 @@ export interface DeletePartnerNamespaceRequest {
   /** Name of the partner namespace. */
   partnerNamespaceName: string;
 }
-export const DeletePartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1587,7 +1562,7 @@ export const DeletePartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePartnerNamespaceRequest>;
 
 export interface DeletePartnerNamespaceResponse {}
-export const DeletePartnerNamespaceResponse =
+const DeletePartnerNamespaceResponse =
   DeleteCaCertificateResponse as any as S.Schema<DeletePartnerNamespaceResponse>;
 
 export interface DeletePartnerRegistrationRequest {
@@ -1598,7 +1573,7 @@ export interface DeletePartnerRegistrationRequest {
   /** Name of the partner registration. */
   partnerRegistrationName: string;
 }
-export const DeletePartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1616,7 +1591,7 @@ export const DeletePartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePartnerRegistrationRequest>;
 
 export interface DeletePartnerRegistrationResponse {}
-export const DeletePartnerRegistrationResponse =
+const DeletePartnerRegistrationResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerRegistrationResponse>;
 
 export interface DeletePartnerTopicRequest {
@@ -1627,7 +1602,7 @@ export interface DeletePartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
-export const DeletePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1645,7 +1620,7 @@ export const DeletePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePartnerTopicRequest>;
 
 export interface DeletePartnerTopicResponse {}
-export const DeletePartnerTopicResponse =
+const DeletePartnerTopicResponse =
   DeleteCaCertificateResponse as any as S.Schema<DeletePartnerTopicResponse>;
 
 export interface DeletePartnerTopicEventSubscriptionRequest {
@@ -1658,7 +1633,7 @@ export interface DeletePartnerTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export const DeletePartnerTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePartnerTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1677,7 +1652,7 @@ export const DeletePartnerTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeletePartnerTopicEventSubscriptionRequest>;
 
 export interface DeletePartnerTopicEventSubscriptionResponse {}
-export const DeletePartnerTopicEventSubscriptionResponse =
+const DeletePartnerTopicEventSubscriptionResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePartnerTopicEventSubscriptionResponse>;
 
 export interface DeletePermissionBindingRequest {
@@ -1690,7 +1665,7 @@ export interface DeletePermissionBindingRequest {
   /** Name of the permission binding. */
   permissionBindingName: string;
 }
-export const DeletePermissionBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePermissionBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1709,7 +1684,7 @@ export const DeletePermissionBindingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePermissionBindingRequest>;
 
 export interface DeletePermissionBindingResponse {}
-export const DeletePermissionBindingResponse =
+const DeletePermissionBindingResponse =
   DeleteEventSubscriptionResponse as any as S.Schema<DeletePermissionBindingResponse>;
 
 export type DeletePrivateEndpointConnectionRequestParentType =
@@ -1717,7 +1692,7 @@ export type DeletePrivateEndpointConnectionRequestParentType =
   | "domains"
   | "partnerNamespaces"
   | "namespaces";
-export const DeletePrivateEndpointConnectionRequestParentType = S.String;
+const DeletePrivateEndpointConnectionRequestParentType = S.String;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1731,7 +1706,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection connection. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1751,7 +1726,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteSystemTopicRequest {
@@ -1762,7 +1737,7 @@ export interface DeleteSystemTopicRequest {
   /** Name of the system topic. */
   systemTopicName: string;
 }
-export const DeleteSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1778,7 +1753,7 @@ export const DeleteSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSystemTopicRequest" }) as any as S.Schema<DeleteSystemTopicRequest>;
 
 export interface DeleteSystemTopicResponse {}
-export const DeleteSystemTopicResponse =
+const DeleteSystemTopicResponse =
   DeleteCaCertificateResponse as any as S.Schema<DeleteSystemTopicResponse>;
 
 export interface DeleteSystemTopicEventSubscriptionRequest {
@@ -1791,7 +1766,7 @@ export interface DeleteSystemTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export const DeleteSystemTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSystemTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1810,7 +1785,7 @@ export const DeleteSystemTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteSystemTopicEventSubscriptionRequest>;
 
 export interface DeleteSystemTopicEventSubscriptionResponse {}
-export const DeleteSystemTopicEventSubscriptionResponse =
+const DeleteSystemTopicEventSubscriptionResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteSystemTopicEventSubscriptionResponse>;
 
 export interface DeleteTopicRequest {
@@ -1821,7 +1796,7 @@ export interface DeleteTopicRequest {
   /** Name of the topic. */
   topicName: string;
 }
-export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1837,8 +1812,7 @@ export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTopicRequest" }) as any as S.Schema<DeleteTopicRequest>;
 
 export interface DeleteTopicResponse {}
-export const DeleteTopicResponse =
-  DeleteCaCertificateResponse as any as S.Schema<DeleteTopicResponse>;
+const DeleteTopicResponse = DeleteCaCertificateResponse as any as S.Schema<DeleteTopicResponse>;
 
 export interface DeleteTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1850,7 +1824,7 @@ export interface DeleteTopicEventSubscriptionRequest {
   /** Name of the event subscription to be deleted. */
   eventSubscriptionName: string;
 }
-export const DeleteTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1869,7 +1843,7 @@ export const DeleteTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTopicEventSubscriptionRequest>;
 
 export interface DeleteTopicEventSubscriptionResponse {}
-export const DeleteTopicEventSubscriptionResponse =
+const DeleteTopicEventSubscriptionResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<DeleteTopicEventSubscriptionResponse>;
 
 export interface DeleteTopicSpaceRequest {
@@ -1882,7 +1856,7 @@ export interface DeleteTopicSpaceRequest {
   /** Name of the Topic space. */
   topicSpaceName: string;
 }
-export const DeleteTopicSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTopicSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1899,7 +1873,7 @@ export const DeleteTopicSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTopicSpaceRequest" }) as any as S.Schema<DeleteTopicSpaceRequest>;
 
 export interface DeleteTopicSpaceResponse {}
-export const DeleteTopicSpaceResponse =
+const DeleteTopicSpaceResponse =
   DeleteCaCertificateResponse as any as S.Schema<DeleteTopicSpaceResponse>;
 
 /** Type of the endpoint for the event subscription destination. */
@@ -1913,7 +1887,7 @@ export type EventSubscriptionDestinationEndpointType =
   | "AzureFunction"
   | "MonitorAlert"
   | "NamespaceTopic";
-export const EventSubscriptionDestinationEndpointType = S.String;
+const EventSubscriptionDestinationEndpointType = S.String;
 
 /** Information about the destination for an event subscription. */
 export interface EventSubscriptionDestination {
@@ -1922,7 +1896,7 @@ export interface EventSubscriptionDestination {
   /** Endpoint-type-specific destination properties (polymorphic on `endpointType`), e.g. `{ resourceId, queueName }` for StorageQueue. */
   properties?: unknown;
 }
-export const EventSubscriptionDestination = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointType: EventSubscriptionDestinationEndpointType,
     properties: S.optional(S.Unknown),
@@ -1933,7 +1907,7 @@ export const EventSubscriptionDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'. */
 export type EventSubscriptionIdentityType = "SystemAssigned" | "UserAssigned";
-export const EventSubscriptionIdentityType = S.String;
+const EventSubscriptionIdentityType = S.String;
 
 /** The identity information with the event subscription. */
 export interface EventSubscriptionIdentity {
@@ -1942,7 +1916,7 @@ export interface EventSubscriptionIdentity {
   /** The user identity associated with the resource. */
   userAssignedIdentity?: string;
 }
-export const EventSubscriptionIdentity = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(EventSubscriptionIdentityType),
     userAssignedIdentity: S.optional(S.String),
@@ -1958,7 +1932,7 @@ export interface DeliveryWithResourceIdentity {
   /** Information about the destination where events have to be delivered for the event subscription. Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery. */
   destination?: EventSubscriptionDestination;
 }
-export const DeliveryWithResourceIdentity = /*@__PURE__*/ S.suspend(() =>
+const DeliveryWithResourceIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(EventSubscriptionIdentity),
     destination: S.optional(EventSubscriptionDestination),
@@ -1969,7 +1943,7 @@ export const DeliveryWithResourceIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
 export type EventSubscriptionFilterIncludedEventTypesList = Array<string>;
-export const EventSubscriptionFilterIncludedEventTypesList =
+const EventSubscriptionFilterIncludedEventTypesList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionFilterIncludedEventTypesList>;
 
 /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
@@ -1993,7 +1967,7 @@ export type AdvancedFilterOperatorType =
   | "StringNotContains"
   | "IsNullOrUndefined"
   | "IsNotNull";
-export const AdvancedFilterOperatorType = S.String;
+const AdvancedFilterOperatorType = S.String;
 
 /** This is the base type that represents an advanced filter. To configure an advanced filter, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class such as BoolEqualsAdvancedFilter, NumberInAdvancedFilter, StringEqualsAdvancedFilter etc. depending on the type of the key based on which you want to filter. */
 export interface AdvancedFilter {
@@ -2006,7 +1980,7 @@ export interface AdvancedFilter {
   /** Comparison values for NumberIn/StringIn/StringContains/NumberInRange-style operators (polymorphic on `operatorType`). */
   values?: unknown;
 }
-export const AdvancedFilter = /*@__PURE__*/ S.suspend(() =>
+const AdvancedFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorType: AdvancedFilterOperatorType,
     key: S.optional(S.String),
@@ -2017,7 +1991,7 @@ export const AdvancedFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of advanced filters that are used for filtering event subscriptions. */
 export type EventSubscriptionFilterAdvancedFiltersList = Array<AdvancedFilter>;
-export const EventSubscriptionFilterAdvancedFiltersList = /*@__PURE__*/ S.Array(
+const EventSubscriptionFilterAdvancedFiltersList = /*@__PURE__*/ S.Array(
   AdvancedFilter,
 ) as any as S.Schema<EventSubscriptionFilterAdvancedFiltersList>;
 
@@ -2036,7 +2010,7 @@ export interface EventSubscriptionFilter {
   /** An array of advanced filters that are used for filtering event subscriptions. */
   advancedFilters?: EventSubscriptionFilterAdvancedFiltersList;
 }
-export const EventSubscriptionFilter = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjectBeginsWith: S.optional(S.String),
     subjectEndsWith: S.optional(S.String),
@@ -2049,7 +2023,7 @@ export const EventSubscriptionFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user defined labels. */
 export type EventSubscriptionPropertiesInputLabelsList = Array<string>;
-export const EventSubscriptionPropertiesInputLabelsList =
+const EventSubscriptionPropertiesInputLabelsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionPropertiesInputLabelsList>;
 
 /** The event delivery schema for the event subscription. */
@@ -2057,7 +2031,7 @@ export type EventSubscriptionPropertiesInputEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
-export const EventSubscriptionPropertiesInputEventDeliverySchema = S.String;
+const EventSubscriptionPropertiesInputEventDeliverySchema = S.String;
 
 /** Information about the retry policy for an event subscription. */
 export interface RetryPolicy {
@@ -2066,7 +2040,7 @@ export interface RetryPolicy {
   /** Time To Live (in minutes) for events. */
   eventTimeToLiveInMinutes?: number;
 }
-export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
+const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxDeliveryAttempts: S.optional(S.Number),
     eventTimeToLiveInMinutes: S.optional(S.Number),
@@ -2075,7 +2049,7 @@ export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the endpoint for the dead letter destination */
 export type DeadLetterDestinationEndpointType = "StorageBlob";
-export const DeadLetterDestinationEndpointType = S.String;
+const DeadLetterDestinationEndpointType = S.String;
 
 /** Information about the dead letter destination for an event subscription. To configure a deadletter destination, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class. Currently, StorageBlobDeadLetterDestination is the only class that derives from this class. */
 export interface DeadLetterDestination {
@@ -2084,7 +2058,7 @@ export interface DeadLetterDestination {
   /** Endpoint-type-specific dead-letter properties (polymorphic on `endpointType`), e.g. `{ resourceId, blobContainerName }` for StorageBlob. */
   properties?: unknown;
 }
-export const DeadLetterDestination = /*@__PURE__*/ S.suspend(() =>
+const DeadLetterDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointType: DeadLetterDestinationEndpointType,
     properties: S.optional(S.Unknown),
@@ -2098,7 +2072,7 @@ export interface DeadLetterWithResourceIdentity {
   /** Information about the destination where events have to be delivered for the event subscription. Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering. */
   deadLetterDestination?: DeadLetterDestination;
 }
-export const DeadLetterWithResourceIdentity = /*@__PURE__*/ S.suspend(() =>
+const DeadLetterWithResourceIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(EventSubscriptionIdentity),
     deadLetterDestination: S.optional(DeadLetterDestination),
@@ -2128,7 +2102,7 @@ export interface EventSubscriptionPropertiesInput {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
-export const EventSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(EventSubscriptionDestination),
     deliveryWithResourceIdentity: S.optional(DeliveryWithResourceIdentity),
@@ -2156,7 +2130,7 @@ export interface DomainEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
-export const DomainEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2184,11 +2158,11 @@ export type EventSubscriptionPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "AwaitingManualAction";
-export const EventSubscriptionPropertiesProvisioningState = S.String;
+const EventSubscriptionPropertiesProvisioningState = S.String;
 
 /** List of user defined labels. */
 export type EventSubscriptionPropertiesLabelsList = Array<string>;
-export const EventSubscriptionPropertiesLabelsList =
+const EventSubscriptionPropertiesLabelsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<EventSubscriptionPropertiesLabelsList>;
 
 /** The event delivery schema for the event subscription. */
@@ -2196,7 +2170,7 @@ export type EventSubscriptionPropertiesEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
-export const EventSubscriptionPropertiesEventDeliverySchema = S.String;
+const EventSubscriptionPropertiesEventDeliverySchema = S.String;
 
 /** Properties of the Event Subscription. */
 export interface EventSubscriptionProperties {
@@ -2223,7 +2197,7 @@ export interface EventSubscriptionProperties {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
-export const EventSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(S.String),
     provisioningState: S.optional(EventSubscriptionPropertiesProvisioningState),
@@ -2247,7 +2221,7 @@ export type DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByTyp
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+const DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -2255,7 +2229,7 @@ export type DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModified
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+const DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainEventSubscriptionsCreateOrUpdateResponseSystemData {
@@ -2272,20 +2246,19 @@ export interface DomainEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainEventSubscriptionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
+const DomainEventSubscriptionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(
+      DomainEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
+    ),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      DomainEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DomainEventSubscriptionsCreateOrUpdateResponseSystemData",
 }) as any as S.Schema<DomainEventSubscriptionsCreateOrUpdateResponseSystemData>;
@@ -2302,7 +2275,7 @@ export interface DomainEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const DomainEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2316,23 +2289,23 @@ export const DomainEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.su
 
 /** Tags of the resource. */
 export type DomainsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateRequestTagsMap =
+const DomainsCreateOrUpdateRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainsCreateOrUpdateRequestTagsMap>;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type DomainPropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const DomainPropertiesInputMinimumTlsVersionAllowed = S.String;
+const DomainPropertiesInputMinimumTlsVersionAllowed = S.String;
 
 /** This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource. */
 export type DomainPropertiesInputInputSchema =
   | "EventGridSchema"
   | "CustomEventSchema"
   | "CloudEventSchemaV1_0";
-export const DomainPropertiesInputInputSchema = S.String;
+const DomainPropertiesInputInputSchema = S.String;
 
 /** Type of the custom mapping */
 export type InputSchemaMappingInputSchemaMappingType = "Json";
-export const InputSchemaMappingInputSchemaMappingType = S.String;
+const InputSchemaMappingInputSchemaMappingType = S.String;
 
 /** By default, Event Grid expects events to be in the Event Grid event schema. Specifying an input schema mapping enables publishing to Event Grid using a custom input schema. Currently, the only supported type of InputSchemaMapping is 'JsonInputSchemaMapping'. */
 export interface InputSchemaMapping {
@@ -2341,7 +2314,7 @@ export interface InputSchemaMapping {
   /** Mapping-type-specific properties (polymorphic on `inputSchemaMappingType`), e.g. JSON field mappings for `Json`. */
   properties?: unknown;
 }
-export const InputSchemaMapping = /*@__PURE__*/ S.suspend(() =>
+const InputSchemaMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputSchemaMappingType: InputSchemaMappingInputSchemaMappingType,
     properties: S.optional(S.Unknown),
@@ -2350,11 +2323,11 @@ export const InputSchemaMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" /> */
 export type DomainPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const DomainPropertiesInputPublicNetworkAccess = S.String;
+const DomainPropertiesInputPublicNetworkAccess = S.String;
 
 /** Action to perform based on the match or no match of the IpMask. */
 export type InboundIpRuleAction = "Allow";
-export const InboundIpRuleAction = S.String;
+const InboundIpRuleAction = S.String;
 
 export interface InboundIpRule {
   /** IP Address in CIDR notation e.g., 10.0.0.0/8. */
@@ -2362,7 +2335,7 @@ export interface InboundIpRule {
   /** Action to perform based on the match or no match of the IpMask. */
   action?: InboundIpRuleAction | (string & {});
 }
-export const InboundIpRule = /*@__PURE__*/ S.suspend(() =>
+const InboundIpRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipMask: S.optional(S.String),
     action: S.optional(InboundIpRuleAction),
@@ -2371,13 +2344,13 @@ export const InboundIpRule = /*@__PURE__*/ S.suspend(() =>
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainPropertiesInputInboundIpRulesList = Array<InboundIpRule>;
-export const DomainPropertiesInputInboundIpRulesList = /*@__PURE__*/ S.Array(
+const DomainPropertiesInputInboundIpRulesList = /*@__PURE__*/ S.Array(
   InboundIpRule,
 ) as any as S.Schema<DomainPropertiesInputInboundIpRulesList>;
 
 /** Data Residency Boundary of the resource. */
 export type DomainPropertiesInputDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
-export const DomainPropertiesInputDataResidencyBoundary = S.String;
+const DomainPropertiesInputDataResidencyBoundary = S.String;
 
 /** Properties of the Event Grid Domain Resource. */
 export interface DomainPropertiesInput {
@@ -2402,7 +2375,7 @@ export interface DomainPropertiesInput {
   /** Data Residency Boundary of the resource. */
   dataResidencyBoundary?: DomainPropertiesInputDataResidencyBoundary | (string & {});
 }
-export const DomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumTlsVersionAllowed: S.optional(DomainPropertiesInputMinimumTlsVersionAllowed),
     inputSchema: S.optional(DomainPropertiesInputInputSchema),
@@ -2433,7 +2406,7 @@ export interface DomainsCreateOrUpdateRequest {
   /** Identity information for the Event Grid Domain resource. */
   identity?: IdentityInfo;
 }
-export const DomainsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2456,7 +2429,7 @@ export const DomainsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type DomainsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DomainsCreateOrUpdateResponseTagsMap =
+const DomainsCreateOrUpdateResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainsCreateOrUpdateResponseTagsMap>;
 
 /** PrivateEndpoint information. */
@@ -2464,7 +2437,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -2472,12 +2445,12 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList =
+const PrivateEndpointConnectionPropertiesGroupIdsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** Status of the connection. */
 export type ConnectionStateStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
-export const ConnectionStateStatus = S.String;
+const ConnectionStateStatus = S.String;
 
 /** ConnectionState information. */
 export interface ConnectionState {
@@ -2488,7 +2461,7 @@ export interface ConnectionState {
   /** Actions required (if any). */
   actionsRequired?: string;
 }
-export const ConnectionState = /*@__PURE__*/ S.suspend(() =>
+const ConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ConnectionStateStatus),
     description: S.optional(S.String),
@@ -2504,7 +2477,7 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
+const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
 
 /** Properties of the private endpoint connection resource. */
 export interface PrivateEndpointConnectionProperties {
@@ -2517,7 +2490,7 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the Private Endpoint Connection. */
   provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState | (string & {});
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpoint),
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
@@ -2538,7 +2511,7 @@ export interface PrivateEndpointConnection {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2551,7 +2524,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections. */
 export type DomainPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const DomainPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const DomainPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<DomainPropertiesPrivateEndpointConnectionsList>;
 
@@ -2563,31 +2536,31 @@ export type DomainPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const DomainPropertiesProvisioningState = S.String;
+const DomainPropertiesProvisioningState = S.String;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type DomainPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const DomainPropertiesMinimumTlsVersionAllowed = S.String;
+const DomainPropertiesMinimumTlsVersionAllowed = S.String;
 
 /** This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource. */
 export type DomainPropertiesInputSchema =
   | "EventGridSchema"
   | "CustomEventSchema"
   | "CloudEventSchemaV1_0";
-export const DomainPropertiesInputSchema = S.String;
+const DomainPropertiesInputSchema = S.String;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules" /> */
 export type DomainPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const DomainPropertiesPublicNetworkAccess = S.String;
+const DomainPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const DomainPropertiesInboundIpRulesList =
+const DomainPropertiesInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<DomainPropertiesInboundIpRulesList>;
 
 /** Data Residency Boundary of the resource. */
 export type DomainPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
-export const DomainPropertiesDataResidencyBoundary = S.String;
+const DomainPropertiesDataResidencyBoundary = S.String;
 
 /** Properties of the Event Grid Domain Resource. */
 export interface DomainProperties {
@@ -2620,7 +2593,7 @@ export interface DomainProperties {
   /** Data Residency Boundary of the resource. */
   dataResidencyBoundary?: DomainPropertiesDataResidencyBoundary;
 }
-export const DomainProperties = /*@__PURE__*/ S.suspend(() =>
+const DomainProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpointConnections: S.optional(DomainPropertiesPrivateEndpointConnectionsList),
     provisioningState: S.optional(DomainPropertiesProvisioningState),
@@ -2645,16 +2618,12 @@ export type DomainsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DomainsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -2670,7 +2639,7 @@ export interface DomainsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainsCreateOrUpdateResponseSystemData =
+const DomainsCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<DomainsCreateOrUpdateResponseSystemData>;
 
 export interface DomainsCreateOrUpdateResponse {
@@ -2691,7 +2660,7 @@ export interface DomainsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainsCreateOrUpdateResponseSystemData;
 }
-export const DomainsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2720,7 +2689,7 @@ export interface DomainTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
-export const DomainTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2746,7 +2715,7 @@ export type DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreated
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -2754,8 +2723,7 @@ export type DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastMod
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
+const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
@@ -2772,23 +2740,22 @@ export interface DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData",
-  }) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
+const DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(
+      DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType,
+    ),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData",
+}) as any as S.Schema<DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface DomainTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
@@ -2802,7 +2769,7 @@ export interface DomainTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const DomainTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2824,7 +2791,7 @@ export interface DomainTopicsCreateOrUpdateRequest {
   /** Name of the domain topic. */
   domainTopicName: string;
 }
-export const DomainTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2850,14 +2817,14 @@ export type DomainTopicPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const DomainTopicPropertiesProvisioningState = S.String;
+const DomainTopicPropertiesProvisioningState = S.String;
 
 /** Properties of the Domain Topic. */
 export interface DomainTopicProperties {
   /** Provisioning state of the domain topic. */
   provisioningState?: DomainTopicPropertiesProvisioningState;
 }
-export const DomainTopicProperties = /*@__PURE__*/ S.suspend(() =>
+const DomainTopicProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(DomainTopicPropertiesProvisioningState),
   }),
@@ -2869,16 +2836,12 @@ export type DomainTopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainTopicsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DomainTopicsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainTopicsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainTopicsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -2894,7 +2857,7 @@ export interface DomainTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainTopicsCreateOrUpdateResponseSystemData =
+const DomainTopicsCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<DomainTopicsCreateOrUpdateResponseSystemData>;
 
 export interface DomainTopicsCreateOrUpdateResponse {
@@ -2909,7 +2872,7 @@ export interface DomainTopicsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainTopicsCreateOrUpdateResponseSystemData;
 }
-export const DomainTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2929,7 +2892,7 @@ export interface EventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
-export const EventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     eventSubscriptionName: S.String.pipe(T.Label()),
@@ -2952,16 +2915,12 @@ export type EventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const EventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type EventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const EventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface EventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -2977,7 +2936,7 @@ export interface EventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const EventSubscriptionsCreateOrUpdateResponseSystemData =
+const EventSubscriptionsCreateOrUpdateResponseSystemData =
   AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<EventSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface EventSubscriptionsCreateOrUpdateResponse {
@@ -2992,7 +2951,7 @@ export interface EventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: EventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const EventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3014,7 +2973,7 @@ export interface GetCaCertificateRequest {
   /** Name of the CA certificate. */
   caCertificateName: string;
 }
-export const GetCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3036,16 +2995,12 @@ export type GetCaCertificateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetCaCertificateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetCaCertificateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetCaCertificateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetCaCertificateResponseSystemData {
   /** The identity that created the resource. */
@@ -3061,7 +3016,7 @@ export interface GetCaCertificateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetCaCertificateResponseSystemData =
+const GetCaCertificateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetCaCertificateResponseSystemData>;
 
 export interface GetCaCertificateResponse {
@@ -3076,7 +3031,7 @@ export interface GetCaCertificateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetCaCertificateResponseSystemData;
 }
-export const GetCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3096,7 +3051,7 @@ export interface GetChannelRequest {
   /** Name of the channel. */
   channelName: string;
 }
-export const GetChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3118,16 +3073,12 @@ export type GetChannelResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetChannelResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetChannelResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetChannelResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetChannelResponseSystemData {
   /** The identity that created the resource. */
@@ -3143,7 +3094,7 @@ export interface GetChannelResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetChannelResponseSystemData =
+const GetChannelResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetChannelResponseSystemData>;
 
 export interface GetChannelResponse {
@@ -3158,7 +3109,7 @@ export interface GetChannelResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetChannelResponseSystemData;
 }
-export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3178,7 +3129,7 @@ export interface GetChannelFullUrlRequest {
   /** Name of the Channel. */
   channelName: string;
 }
-export const GetChannelFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChannelFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3199,7 +3150,7 @@ export interface EventSubscriptionFullUrl {
   /** The URL that represents the endpoint of the destination of an event subscription. */
   endpointUrl?: string;
 }
-export const EventSubscriptionFullUrl = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionFullUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointUrl: S.optional(S.String),
   }),
@@ -3215,7 +3166,7 @@ export interface GetClientRequest {
   /** Name of the client. */
   clientName: string;
 }
-export const GetClientRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3237,16 +3188,12 @@ export type GetClientResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetClientResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetClientResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetClientResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetClientResponseSystemData {
   /** The identity that created the resource. */
@@ -3262,7 +3209,7 @@ export interface GetClientResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetClientResponseSystemData =
+const GetClientResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetClientResponseSystemData>;
 
 export interface GetClientResponse {
@@ -3277,7 +3224,7 @@ export interface GetClientResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetClientResponseSystemData;
 }
-export const GetClientResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3297,7 +3244,7 @@ export interface GetClientGroupRequest {
   /** Name of the client group. */
   clientGroupName: string;
 }
-export const GetClientGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClientGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3319,16 +3266,12 @@ export type GetClientGroupResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetClientGroupResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetClientGroupResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetClientGroupResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetClientGroupResponseSystemData {
   /** The identity that created the resource. */
@@ -3344,7 +3287,7 @@ export interface GetClientGroupResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetClientGroupResponseSystemData =
+const GetClientGroupResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetClientGroupResponseSystemData>;
 
 export interface GetClientGroupResponse {
@@ -3359,7 +3302,7 @@ export interface GetClientGroupResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetClientGroupResponseSystemData;
 }
-export const GetClientGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClientGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3377,7 +3320,7 @@ export interface GetDomainRequest {
   /** Name of the domain. */
   domainName: string;
 }
-export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3394,7 +3337,7 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetDomainResponseTagsMap = { [key: string]: string | undefined };
-export const GetDomainResponseTagsMap =
+const GetDomainResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetDomainResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -3403,16 +3346,12 @@ export type GetDomainResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetDomainResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetDomainResponseSystemData {
   /** The identity that created the resource. */
@@ -3428,7 +3367,7 @@ export interface GetDomainResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainResponseSystemData =
+const GetDomainResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainResponseSystemData>;
 
 export interface GetDomainResponse {
@@ -3449,7 +3388,7 @@ export interface GetDomainResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainResponseSystemData;
 }
-export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3472,7 +3411,7 @@ export interface GetDomainEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
-export const GetDomainEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3496,16 +3435,12 @@ export type GetDomainEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetDomainEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetDomainEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -3521,7 +3456,7 @@ export interface GetDomainEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainEventSubscriptionResponseSystemData =
+const GetDomainEventSubscriptionResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainEventSubscriptionResponseSystemData>;
 
 export interface GetDomainEventSubscriptionResponse {
@@ -3536,7 +3471,7 @@ export interface GetDomainEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainEventSubscriptionResponseSystemData;
 }
-export const GetDomainEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3558,7 +3493,7 @@ export interface GetDomainEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetDomainEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3578,7 +3513,7 @@ export const GetDomainEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/
 
 /** Type of the delivery attribute or header name. */
 export type DeliveryAttributeMappingType = "Static" | "Dynamic";
-export const DeliveryAttributeMappingType = S.String;
+const DeliveryAttributeMappingType = S.String;
 
 /** Delivery attribute mapping details. */
 export interface DeliveryAttributeMapping {
@@ -3587,7 +3522,7 @@ export interface DeliveryAttributeMapping {
   /** Type of the delivery attribute or header name. */
   type: DeliveryAttributeMappingType;
 }
-export const DeliveryAttributeMapping = /*@__PURE__*/ S.suspend(() =>
+const DeliveryAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: DeliveryAttributeMappingType,
@@ -3596,7 +3531,7 @@ export const DeliveryAttributeMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of DeliveryAttributeMapping */
 export type DeliveryAttributeListResultValueList = Array<DeliveryAttributeMapping>;
-export const DeliveryAttributeListResultValueList = /*@__PURE__*/ S.Array(
+const DeliveryAttributeListResultValueList = /*@__PURE__*/ S.Array(
   DeliveryAttributeMapping,
 ) as any as S.Schema<DeliveryAttributeListResultValueList>;
 
@@ -3605,7 +3540,7 @@ export interface DeliveryAttributeListResult {
   /** A collection of DeliveryAttributeMapping */
   value?: DeliveryAttributeListResultValueList;
 }
-export const DeliveryAttributeListResult = /*@__PURE__*/ S.suspend(() =>
+const DeliveryAttributeListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DeliveryAttributeListResultValueList),
   }),
@@ -3623,7 +3558,7 @@ export interface GetDomainEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetDomainEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3651,7 +3586,7 @@ export interface GetDomainTopicRequest {
   /** Name of the topic. */
   domainTopicName: string;
 }
-export const GetDomainTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3673,16 +3608,12 @@ export type GetDomainTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetDomainTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetDomainTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -3698,7 +3629,7 @@ export interface GetDomainTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainTopicResponseSystemData =
+const GetDomainTopicResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetDomainTopicResponseSystemData>;
 
 export interface GetDomainTopicResponse {
@@ -3713,7 +3644,7 @@ export interface GetDomainTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainTopicResponseSystemData;
 }
-export const GetDomainTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3735,7 +3666,7 @@ export interface GetDomainTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
-export const GetDomainTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3760,16 +3691,12 @@ export type GetDomainTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetDomainTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetDomainTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -3785,9 +3712,6 @@ export interface GetDomainTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainTopicEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetDomainTopicEventSubscriptionResponseSystemData>;
-
 export interface GetDomainTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -3800,7 +3724,7 @@ export interface GetDomainTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDomainTopicEventSubscriptionResponseSystemData;
 }
-export const GetDomainTopicEventSubscriptionResponse =
+const GetDomainTopicEventSubscriptionResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetDomainTopicEventSubscriptionResponse>;
 
 export interface GetDomainTopicEventSubscriptionDeliveryAttributesRequest {
@@ -3815,22 +3739,21 @@ export interface GetDomainTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetDomainTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      domainName: S.String.pipe(T.Label()),
-      topicName: S.String.pipe(T.Label()),
-      eventSubscriptionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
-        code: 200,
-        apiVersion: "2025-02-15",
-      }),
-    ),
+const GetDomainTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    domainName: S.String.pipe(T.Label()),
+    topicName: S.String.pipe(T.Label()),
+    eventSubscriptionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/domains/{domainName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      code: 200,
+      apiVersion: "2025-02-15",
+    }),
+  ),
 ).annotate({
   identifier: "GetDomainTopicEventSubscriptionDeliveryAttributesRequest",
 }) as any as S.Schema<GetDomainTopicEventSubscriptionDeliveryAttributesRequest>;
@@ -3847,7 +3770,7 @@ export interface GetDomainTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetDomainTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3872,7 +3795,7 @@ export interface GetEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
-export const GetEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     eventSubscriptionName: S.String.pipe(T.Label()),
@@ -3894,16 +3817,12 @@ export type GetEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -3919,9 +3838,6 @@ export interface GetEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetEventSubscriptionResponseSystemData =
-  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetEventSubscriptionResponseSystemData>;
-
 export interface GetEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -3934,7 +3850,7 @@ export interface GetEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetEventSubscriptionResponseSystemData;
 }
-export const GetEventSubscriptionResponse =
+const GetEventSubscriptionResponse =
   GetDomainEventSubscriptionResponse as any as S.Schema<GetEventSubscriptionResponse>;
 
 export interface GetEventSubscriptionDeliveryAttributesRequest {
@@ -3943,7 +3859,7 @@ export interface GetEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     eventSubscriptionName: S.String.pipe(T.Label()),
@@ -3965,7 +3881,7 @@ export interface GetEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     eventSubscriptionName: S.String.pipe(T.Label()),
@@ -3985,7 +3901,7 @@ export interface GetExtensionTopicRequest {
   /** The identifier of the resource to which extension topic is queried. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for Azure resource. */
   scope: string;
 }
-export const GetExtensionTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -4005,7 +3921,7 @@ export interface ExtensionTopicProperties {
   /** System topic resource id which is mapped to the source. */
   systemTopic?: string;
 }
-export const ExtensionTopicProperties = /*@__PURE__*/ S.suspend(() =>
+const ExtensionTopicProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     systemTopic: S.optional(S.String),
@@ -4018,16 +3934,12 @@ export type GetExtensionTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetExtensionTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetExtensionTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetExtensionTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetExtensionTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -4043,7 +3955,7 @@ export interface GetExtensionTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetExtensionTopicResponseSystemData =
+const GetExtensionTopicResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetExtensionTopicResponseSystemData>;
 
 export interface GetExtensionTopicResponse {
@@ -4058,7 +3970,7 @@ export interface GetExtensionTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetExtensionTopicResponseSystemData;
 }
-export const GetExtensionTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4078,7 +3990,7 @@ export interface GetNamespaceRequest {
   /** Name of the namespace. */
   namespaceName: string;
 }
-export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4095,12 +4007,12 @@ export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetNamespaceResponseTagsMap =
+const GetNamespaceResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetNamespaceResponseTagsMap>;
 
 /** List of private endpoint connections. */
 export type NamespacePropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const NamespacePropertiesPrivateEndpointConnectionsList =
+const NamespacePropertiesPrivateEndpointConnectionsList =
   DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<NamespacePropertiesPrivateEndpointConnectionsList>;
 
 /** Provisioning state of the namespace resource. */
@@ -4115,18 +4027,18 @@ export type NamespacePropertiesProvisioningState =
   | "DeleteFailed"
   | "CreateFailed"
   | "UpdatedFailed";
-export const NamespacePropertiesProvisioningState = S.String;
+const NamespacePropertiesProvisioningState = S.String;
 
 /** Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated. */
 export type CustomDomainConfigurationValidationState =
   | "Pending"
   | "Approved"
   | "ErrorRetrievingDnsRecord";
-export const CustomDomainConfigurationValidationState = S.String;
+const CustomDomainConfigurationValidationState = S.String;
 
 /** The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'. */
 export type CustomDomainIdentityType = "SystemAssigned" | "UserAssigned";
-export const CustomDomainIdentityType = S.String;
+const CustomDomainIdentityType = S.String;
 
 /** The identity information for retrieving the certificate for the custom domain. */
 export interface CustomDomainIdentity {
@@ -4135,7 +4047,7 @@ export interface CustomDomainIdentity {
   /** The user identity associated with the resource. */
   userAssignedIdentity?: string;
 }
-export const CustomDomainIdentity = /*@__PURE__*/ S.suspend(() =>
+const CustomDomainIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CustomDomainIdentityType),
     userAssignedIdentity: S.optional(S.String),
@@ -4157,7 +4069,7 @@ export interface CustomDomainConfiguration {
   /** Expected DNS TXT record value. Event Grid will check for a TXT record with this value in the DNS record set of the custom domain name to prove ownership over the domain. */
   expectedTxtRecordValue?: string;
 }
-export const CustomDomainConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CustomDomainConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullyQualifiedDomainName: S.String,
     validationState: S.optional(CustomDomainConfigurationValidationState),
@@ -4172,7 +4084,7 @@ export const CustomDomainConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom domain configurations for the namespace. */
 export type TopicsConfigurationCustomDomainsList = Array<CustomDomainConfiguration>;
-export const TopicsConfigurationCustomDomainsList = /*@__PURE__*/ S.Array(
+const TopicsConfigurationCustomDomainsList = /*@__PURE__*/ S.Array(
   CustomDomainConfiguration,
 ) as any as S.Schema<TopicsConfigurationCustomDomainsList>;
 
@@ -4183,7 +4095,7 @@ export interface TopicsConfiguration {
   /** List of custom domain configurations for the namespace. */
   customDomains?: TopicsConfigurationCustomDomainsList;
 }
-export const TopicsConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TopicsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostname: S.optional(S.String),
     customDomains: S.optional(TopicsConfigurationCustomDomainsList),
@@ -4192,11 +4104,11 @@ export const TopicsConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
 export type TopicSpacesConfigurationState = "Disabled" | "Enabled";
-export const TopicSpacesConfigurationState = S.String;
+const TopicSpacesConfigurationState = S.String;
 
 /** Static routing enrichment value type. For e.g. this property value can be 'String'. */
 export type StaticRoutingEnrichmentValueType = "String";
-export const StaticRoutingEnrichmentValueType = S.String;
+const StaticRoutingEnrichmentValueType = S.String;
 
 /** Static routing enrichment details. */
 export interface StaticRoutingEnrichment {
@@ -4205,7 +4117,7 @@ export interface StaticRoutingEnrichment {
   /** Static routing enrichment value type. For e.g. this property value can be 'String'. */
   valueType: StaticRoutingEnrichmentValueType | (string & {});
 }
-export const StaticRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
+const StaticRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     valueType: StaticRoutingEnrichmentValueType,
@@ -4213,7 +4125,7 @@ export const StaticRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticRoutingEnrichment" }) as any as S.Schema<StaticRoutingEnrichment>;
 
 export type RoutingEnrichmentsStaticList = Array<StaticRoutingEnrichment>;
-export const RoutingEnrichmentsStaticList = /*@__PURE__*/ S.Array(
+const RoutingEnrichmentsStaticList = /*@__PURE__*/ S.Array(
   StaticRoutingEnrichment,
 ) as any as S.Schema<RoutingEnrichmentsStaticList>;
 
@@ -4223,7 +4135,7 @@ export interface DynamicRoutingEnrichment {
   /** Dynamic routing enrichment value. */
   value?: string;
 }
-export const DynamicRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
+const DynamicRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -4231,7 +4143,7 @@ export const DynamicRoutingEnrichment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DynamicRoutingEnrichment" }) as any as S.Schema<DynamicRoutingEnrichment>;
 
 export type RoutingEnrichmentsDynamicList = Array<DynamicRoutingEnrichment>;
-export const RoutingEnrichmentsDynamicList = /*@__PURE__*/ S.Array(
+const RoutingEnrichmentsDynamicList = /*@__PURE__*/ S.Array(
   DynamicRoutingEnrichment,
 ) as any as S.Schema<RoutingEnrichmentsDynamicList>;
 
@@ -4239,7 +4151,7 @@ export interface RoutingEnrichments {
   static?: RoutingEnrichmentsStaticList;
   dynamic?: RoutingEnrichmentsDynamicList;
 }
-export const RoutingEnrichments = /*@__PURE__*/ S.suspend(() =>
+const RoutingEnrichments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     static: S.optional(RoutingEnrichmentsStaticList),
     dynamic: S.optional(RoutingEnrichmentsDynamicList),
@@ -4248,19 +4160,17 @@ export const RoutingEnrichments = /*@__PURE__*/ S.suspend(() =>
 
 /** Routing identity type for topic spaces configuration. */
 export type RoutingIdentityInfoType = "None" | "SystemAssigned" | "UserAssigned";
-export const RoutingIdentityInfoType = S.String;
-
 /** Routing identity info for topic spaces configuration. */
 export interface RoutingIdentityInfo {
   /** Routing identity type for topic spaces configuration. */
   type?: RoutingIdentityInfoType | (string & {});
   userAssignedIdentity?: string;
 }
-export const RoutingIdentityInfo = CustomDomainIdentity as any as S.Schema<RoutingIdentityInfo>;
+const RoutingIdentityInfo = CustomDomainIdentity as any as S.Schema<RoutingIdentityInfo>;
 
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationCustomDomainsList = Array<CustomDomainConfiguration>;
-export const TopicSpacesConfigurationCustomDomainsList =
+const TopicSpacesConfigurationCustomDomainsList =
   TopicsConfigurationCustomDomainsList as any as S.Schema<TopicSpacesConfigurationCustomDomainsList>;
 
 /** Properties of the Topic Spaces Configuration. */
@@ -4282,7 +4192,7 @@ export interface TopicSpacesConfiguration {
   /** List of custom domain configurations for the namespace. */
   customDomains?: TopicSpacesConfigurationCustomDomainsList;
 }
-export const TopicSpacesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TopicSpacesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(TopicSpacesConfigurationState),
     routeTopicResourceId: S.optional(S.String),
@@ -4297,16 +4207,16 @@ export const TopicSpacesConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" /> */
 export type NamespacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const NamespacePropertiesPublicNetworkAccess = S.String;
+const NamespacePropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespacePropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const NamespacePropertiesInboundIpRulesList =
+const NamespacePropertiesInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespacePropertiesInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
 export type NamespacePropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const NamespacePropertiesMinimumTlsVersionAllowed = S.String;
+const NamespacePropertiesMinimumTlsVersionAllowed = S.String;
 
 /** Properties of the namespace resource. */
 export interface NamespaceProperties {
@@ -4327,7 +4237,7 @@ export interface NamespaceProperties {
   /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
   minimumTlsVersionAllowed?: NamespacePropertiesMinimumTlsVersionAllowed;
 }
-export const NamespaceProperties = /*@__PURE__*/ S.suspend(() =>
+const NamespaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpointConnections: S.optional(NamespacePropertiesPrivateEndpointConnectionsList),
     provisioningState: S.optional(NamespacePropertiesProvisioningState),
@@ -4342,7 +4252,7 @@ export const NamespaceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the SKU. */
 export type NamespaceSkuName = "Standard";
-export const NamespaceSkuName = S.String;
+const NamespaceSkuName = S.String;
 
 /** Represents available Sku pricing tiers. */
 export interface NamespaceSku {
@@ -4351,7 +4261,7 @@ export interface NamespaceSku {
   /** Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and max allowed capacity is 20. */
   capacity?: number;
 }
-export const NamespaceSku = /*@__PURE__*/ S.suspend(() =>
+const NamespaceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(NamespaceSkuName),
     capacity: S.optional(S.Number),
@@ -4364,16 +4274,12 @@ export type GetNamespaceResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetNamespaceResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetNamespaceResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetNamespaceResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetNamespaceResponseSystemData {
   /** The identity that created the resource. */
@@ -4389,7 +4295,7 @@ export interface GetNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNamespaceResponseSystemData =
+const GetNamespaceResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetNamespaceResponseSystemData>;
 
 export interface GetNamespaceResponse {
@@ -4412,7 +4318,7 @@ export interface GetNamespaceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetNamespaceResponseSystemData;
 }
-export const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4436,7 +4342,7 @@ export interface GetNamespaceTopicRequest {
   /** Name of the namespace topic. */
   topicName: string;
 }
-export const GetNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4464,15 +4370,15 @@ export type NamespaceTopicPropertiesProvisioningState =
   | "DeleteFailed"
   | "CreateFailed"
   | "UpdatedFailed";
-export const NamespaceTopicPropertiesProvisioningState = S.String;
+const NamespaceTopicPropertiesProvisioningState = S.String;
 
 /** Publisher type of the namespace topic. */
 export type NamespaceTopicPropertiesPublisherType = "Custom";
-export const NamespaceTopicPropertiesPublisherType = S.String;
+const NamespaceTopicPropertiesPublisherType = S.String;
 
 /** This determines the format that is expected for incoming events published to the topic. */
 export type NamespaceTopicPropertiesInputSchema = "CloudEventSchemaV1_0";
-export const NamespaceTopicPropertiesInputSchema = S.String;
+const NamespaceTopicPropertiesInputSchema = S.String;
 
 /** Properties of the namespace topic. */
 export interface NamespaceTopicProperties {
@@ -4485,7 +4391,7 @@ export interface NamespaceTopicProperties {
   /** Event retention for the namespace topic expressed in days. The property default value is 1 day. Min event retention duration value is 1 day and max event retention duration value is 1 day. */
   eventRetentionInDays?: number;
 }
-export const NamespaceTopicProperties = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopicProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(NamespaceTopicPropertiesProvisioningState),
     publisherType: S.optional(NamespaceTopicPropertiesPublisherType),
@@ -4500,16 +4406,12 @@ export type GetNamespaceTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetNamespaceTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetNamespaceTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetNamespaceTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetNamespaceTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -4525,7 +4427,7 @@ export interface GetNamespaceTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNamespaceTopicResponseSystemData =
+const GetNamespaceTopicResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetNamespaceTopicResponseSystemData>;
 
 export interface GetNamespaceTopicResponse {
@@ -4540,7 +4442,7 @@ export interface GetNamespaceTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetNamespaceTopicResponseSystemData;
 }
-export const GetNamespaceTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4564,7 +4466,7 @@ export interface GetNamespaceTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
-export const GetNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4596,11 +4498,11 @@ export type SubscriptionPropertiesProvisioningState =
   | "DeleteFailed"
   | "CreateFailed"
   | "UpdatedFailed";
-export const SubscriptionPropertiesProvisioningState = S.String;
+const SubscriptionPropertiesProvisioningState = S.String;
 
 /** Delivery mode of the event subscription. */
 export type DeliveryConfigurationDeliveryMode = "Queue" | "Push";
-export const DeliveryConfigurationDeliveryMode = S.String;
+const DeliveryConfigurationDeliveryMode = S.String;
 
 /** Properties of the Queue info for event subscription. */
 export interface QueueInfo {
@@ -4613,7 +4515,7 @@ export interface QueueInfo {
   /** Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published. This duration value is expressed using the following format: \'P(n)Y(n)M(n)DT(n)H(n)M(n)S\', where: - (n) is replaced by the value of each time element that follows the (n). - P is the duration (or Period) designator and is always placed at the beginning of the duration. - Y is the year designator, and it follows the value for the number of years. - M is the month designator, and it follows the value for the number of months. - W is the week designator, and it follows the value for the number of weeks. - D is the day designator, and it follows the value for the number of days. - T is the time designator, and it precedes the time components. - H is the hour designator, and it follows the value for the number of hours. - M is the minute designator, and it follows the value for the number of minutes. - S is the second designator, and it follows the value for the number of seconds. This duration value cannot be set greater than the topic's EventRetentionInDays. It is is an optional field where its minimum value is 1 minute, and its maximum is determined by topic's EventRetentionInDays value. The followings are examples of valid values: - \'P0DT23H12M\' or \'PT23H12M\': for duration of 23 hours and 12 minutes. - \'P1D\' or \'P1DT0H0M0S\': for duration of 1 day. */
   eventTimeToLive?: string;
 }
-export const QueueInfo = /*@__PURE__*/ S.suspend(() =>
+const QueueInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     receiveLockDurationInSeconds: S.optional(S.Number),
     maxDeliveryCount: S.optional(S.Number),
@@ -4635,7 +4537,7 @@ export interface PushInfo {
   /** Information about the destination where events have to be delivered for the event subscription. Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery. */
   destination?: EventSubscriptionDestination;
 }
-export const PushInfo = /*@__PURE__*/ S.suspend(() =>
+const PushInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxDeliveryCount: S.optional(S.Number),
     eventTimeToLive: S.optional(S.String),
@@ -4654,7 +4556,7 @@ export interface DeliveryConfiguration {
   /** This property should be populated when deliveryMode is push and represents information about the push subscription. */
   push?: PushInfo;
 }
-export const DeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deliveryMode: S.optional(DeliveryConfigurationDeliveryMode),
     queue: S.optional(QueueInfo),
@@ -4664,11 +4566,11 @@ export const DeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The event delivery schema for the event subscription. */
 export type SubscriptionPropertiesEventDeliverySchema = "CloudEventSchemaV1_0";
-export const SubscriptionPropertiesEventDeliverySchema = S.String;
+const SubscriptionPropertiesEventDeliverySchema = S.String;
 
 /** A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null. */
 export type FiltersConfigurationIncludedEventTypesList = Array<string>;
-export const FiltersConfigurationIncludedEventTypesList =
+const FiltersConfigurationIncludedEventTypesList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<FiltersConfigurationIncludedEventTypesList>;
 
 /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
@@ -4692,8 +4594,6 @@ export type FilterOperatorType =
   | "StringNotContains"
   | "IsNullOrUndefined"
   | "IsNotNull";
-export const FilterOperatorType = S.String;
-
 /** This is the base type that represents a filter. To configure a filter, do not directly instantiate an object of this class. Instead, instantiate an object of a derived class such as BoolEqualsFilter, NumberInFilter etc depending on the type of the key based on which you want to filter. */
 export interface Filter {
   /** The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others. */
@@ -4705,11 +4605,9 @@ export interface Filter {
   /** Comparison values (polymorphic on `operatorType`). */
   values?: unknown;
 }
-export const Filter = AdvancedFilter as any as S.Schema<Filter>;
-
 /** An array of filters that are used for filtering event subscriptions. */
 export type FiltersConfigurationFiltersList = Array<Filter>;
-export const FiltersConfigurationFiltersList =
+const FiltersConfigurationFiltersList =
   EventSubscriptionFilterAdvancedFiltersList as any as S.Schema<FiltersConfigurationFiltersList>;
 
 /** Filters configuration for the Event Subscription. */
@@ -4719,7 +4617,7 @@ export interface FiltersConfiguration {
   /** An array of filters that are used for filtering event subscriptions. */
   filters?: FiltersConfigurationFiltersList;
 }
-export const FiltersConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FiltersConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedEventTypes: S.optional(FiltersConfigurationIncludedEventTypesList),
     filters: S.optional(FiltersConfigurationFiltersList),
@@ -4739,7 +4637,7 @@ export interface SubscriptionProperties {
   /** Expiration time of the event subscription. */
   expirationTimeUtc?: string;
 }
-export const SubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(SubscriptionPropertiesProvisioningState),
     deliveryConfiguration: S.optional(DeliveryConfiguration),
@@ -4755,16 +4653,12 @@ export type GetNamespaceTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetNamespaceTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetNamespaceTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetNamespaceTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetNamespaceTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -4780,7 +4674,7 @@ export interface GetNamespaceTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNamespaceTopicEventSubscriptionResponseSystemData =
+const GetNamespaceTopicEventSubscriptionResponseSystemData =
   AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetNamespaceTopicEventSubscriptionResponseSystemData>;
 
 export interface GetNamespaceTopicEventSubscriptionResponse {
@@ -4795,7 +4689,7 @@ export interface GetNamespaceTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetNamespaceTopicEventSubscriptionResponseSystemData;
 }
-export const GetNamespaceTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceTopicEventSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4819,22 +4713,21 @@ export interface GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      namespaceName: S.String.pipe(T.Label()),
-      topicName: S.String.pipe(T.Label()),
-      eventSubscriptionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
-        code: 200,
-        apiVersion: "2025-02-15",
-      }),
-    ),
+const GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    namespaceName: S.String.pipe(T.Label()),
+    topicName: S.String.pipe(T.Label()),
+    eventSubscriptionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      code: 200,
+      apiVersion: "2025-02-15",
+    }),
+  ),
 ).annotate({
   identifier: "GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest",
 }) as any as S.Schema<GetNamespaceTopicEventSubscriptionDeliveryAttributesRequest>;
@@ -4851,7 +4744,7 @@ export interface GetNamespaceTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetNamespaceTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4875,7 +4768,7 @@ export interface SubscriptionFullUrl {
   /** The URL that represents the endpoint of the destination of an event subscription. */
   endpointUrl?: string;
 }
-export const SubscriptionFullUrl = EventSubscriptionFullUrl as any as S.Schema<SubscriptionFullUrl>;
+const SubscriptionFullUrl = EventSubscriptionFullUrl as any as S.Schema<SubscriptionFullUrl>;
 
 export interface GetPartnerConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -4883,7 +4776,7 @@ export interface GetPartnerConfigurationRequest {
   /** The name of the resource group within the user's subscription. */
   resourceGroupName: string;
 }
-export const GetPartnerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4905,16 +4798,12 @@ export type GetPartnerConfigurationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerConfigurationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPartnerConfigurationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerConfigurationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPartnerConfigurationResponseSystemData {
   /** The identity that created the resource. */
@@ -4930,12 +4819,12 @@ export interface GetPartnerConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerConfigurationResponseSystemData =
+const GetPartnerConfigurationResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerConfigurationResponseSystemData>;
 
 /** Tags of the resource. */
 export type GetPartnerConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerConfigurationResponseTagsMap =
+const GetPartnerConfigurationResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerConfigurationResponseTagsMap>;
 
 export interface GetPartnerConfigurationResponse {
@@ -4954,7 +4843,7 @@ export interface GetPartnerConfigurationResponse {
   /** Tags of the resource. */
   tags?: GetPartnerConfigurationResponseTagsMap;
 }
-export const GetPartnerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4976,7 +4865,7 @@ export interface GetPartnerNamespaceRequest {
   /** Name of the partner namespace. */
   partnerNamespaceName: string;
 }
-export const GetPartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4995,13 +4884,13 @@ export const GetPartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetPartnerNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerNamespaceResponseTagsMap =
+const GetPartnerNamespaceResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerNamespaceResponseTagsMap>;
 
 /** List of private endpoint connections. */
 export type PartnerNamespacePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
-export const PartnerNamespacePropertiesPrivateEndpointConnectionsList =
+const PartnerNamespacePropertiesPrivateEndpointConnectionsList =
   DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<PartnerNamespacePropertiesPrivateEndpointConnectionsList>;
 
 /** Provisioning state of the partner namespace. */
@@ -5012,26 +4901,26 @@ export type PartnerNamespacePropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const PartnerNamespacePropertiesProvisioningState = S.String;
+const PartnerNamespacePropertiesProvisioningState = S.String;
 
 /** Minimum TLS version of the publisher allowed to publish to this partner namespace */
 export type PartnerNamespacePropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const PartnerNamespacePropertiesMinimumTlsVersionAllowed = S.String;
+const PartnerNamespacePropertiesMinimumTlsVersionAllowed = S.String;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" /> */
 export type PartnerNamespacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const PartnerNamespacePropertiesPublicNetworkAccess = S.String;
+const PartnerNamespacePropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespacePropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const PartnerNamespacePropertiesInboundIpRulesList =
+const PartnerNamespacePropertiesInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespacePropertiesInboundIpRulesList>;
 
 /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
 export type PartnerNamespacePropertiesPartnerTopicRoutingMode =
   | "SourceEventAttribute"
   | "ChannelNameHeader";
-export const PartnerNamespacePropertiesPartnerTopicRoutingMode = S.String;
+const PartnerNamespacePropertiesPartnerTopicRoutingMode = S.String;
 
 /** Properties of the partner namespace. */
 export interface PartnerNamespaceProperties {
@@ -5054,7 +4943,7 @@ export interface PartnerNamespaceProperties {
   /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
   partnerTopicRoutingMode?: PartnerNamespacePropertiesPartnerTopicRoutingMode;
 }
-export const PartnerNamespaceProperties = /*@__PURE__*/ S.suspend(() =>
+const PartnerNamespaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpointConnections: S.optional(
       PartnerNamespacePropertiesPrivateEndpointConnectionsList,
@@ -5078,16 +4967,12 @@ export type GetPartnerNamespaceResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerNamespaceResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPartnerNamespaceResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerNamespaceResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPartnerNamespaceResponseSystemData {
   /** The identity that created the resource. */
@@ -5103,7 +4988,7 @@ export interface GetPartnerNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerNamespaceResponseSystemData =
+const GetPartnerNamespaceResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerNamespaceResponseSystemData>;
 
 export interface GetPartnerNamespaceResponse {
@@ -5122,7 +5007,7 @@ export interface GetPartnerNamespaceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPartnerNamespaceResponseSystemData;
 }
-export const GetPartnerNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5144,7 +5029,7 @@ export interface GetPartnerRegistrationRequest {
   /** Name of the partner registration. */
   partnerRegistrationName: string;
 }
-export const GetPartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5163,7 +5048,7 @@ export const GetPartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetPartnerRegistrationResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerRegistrationResponseTagsMap =
+const GetPartnerRegistrationResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerRegistrationResponseTagsMap>;
 
 /** Provisioning state of the partner registration. */
@@ -5174,7 +5059,7 @@ export type PartnerRegistrationPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const PartnerRegistrationPropertiesProvisioningState = S.String;
+const PartnerRegistrationPropertiesProvisioningState = S.String;
 
 /** Properties of the partner registration. */
 export interface PartnerRegistrationProperties {
@@ -5183,7 +5068,7 @@ export interface PartnerRegistrationProperties {
   /** The immutableId of the corresponding partner registration. Note: This property is marked for deprecation and is not supported in any future GA API version */
   partnerRegistrationImmutableId?: string;
 }
-export const PartnerRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
+const PartnerRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(PartnerRegistrationPropertiesProvisioningState),
     partnerRegistrationImmutableId: S.optional(S.String),
@@ -5198,16 +5083,12 @@ export type GetPartnerRegistrationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerRegistrationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPartnerRegistrationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerRegistrationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPartnerRegistrationResponseSystemData {
   /** The identity that created the resource. */
@@ -5223,7 +5104,7 @@ export interface GetPartnerRegistrationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerRegistrationResponseSystemData =
+const GetPartnerRegistrationResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerRegistrationResponseSystemData>;
 
 export interface GetPartnerRegistrationResponse {
@@ -5242,7 +5123,7 @@ export interface GetPartnerRegistrationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPartnerRegistrationResponseSystemData;
 }
-export const GetPartnerRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5264,7 +5145,7 @@ export interface GetPartnerTopicRequest {
   /** Name of the partner topic. */
   partnerTopicName: string;
 }
-export const GetPartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5281,7 +5162,7 @@ export const GetPartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetPartnerTopicResponseTagsMap = { [key: string]: string | undefined };
-export const GetPartnerTopicResponseTagsMap =
+const GetPartnerTopicResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetPartnerTopicResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -5290,16 +5171,12 @@ export type GetPartnerTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPartnerTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPartnerTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -5315,7 +5192,7 @@ export interface GetPartnerTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerTopicResponseSystemData =
+const GetPartnerTopicResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPartnerTopicResponseSystemData>;
 
 export interface GetPartnerTopicResponse {
@@ -5336,7 +5213,7 @@ export interface GetPartnerTopicResponse {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
-export const GetPartnerTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5359,7 +5236,7 @@ export interface GetPartnerTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
-export const GetPartnerTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5383,16 +5260,12 @@ export type GetPartnerTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPartnerTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPartnerTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPartnerTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -5408,9 +5281,6 @@ export interface GetPartnerTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPartnerTopicEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetPartnerTopicEventSubscriptionResponseSystemData>;
-
 export interface GetPartnerTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5423,7 +5293,7 @@ export interface GetPartnerTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPartnerTopicEventSubscriptionResponseSystemData;
 }
-export const GetPartnerTopicEventSubscriptionResponse =
+const GetPartnerTopicEventSubscriptionResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetPartnerTopicEventSubscriptionResponse>;
 
 export interface GetPartnerTopicEventSubscriptionDeliveryAttributesRequest {
@@ -5436,21 +5306,20 @@ export interface GetPartnerTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetPartnerTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      partnerTopicName: S.String.pipe(T.Label()),
-      eventSubscriptionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
-        code: 200,
-        apiVersion: "2025-02-15",
-      }),
-    ),
+const GetPartnerTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    partnerTopicName: S.String.pipe(T.Label()),
+    eventSubscriptionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      code: 200,
+      apiVersion: "2025-02-15",
+    }),
+  ),
 ).annotate({
   identifier: "GetPartnerTopicEventSubscriptionDeliveryAttributesRequest",
 }) as any as S.Schema<GetPartnerTopicEventSubscriptionDeliveryAttributesRequest>;
@@ -5465,7 +5334,7 @@ export interface GetPartnerTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetPartnerTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5493,7 +5362,7 @@ export interface GetPermissionBindingRequest {
   /** Name of the permission binding. */
   permissionBindingName: string;
 }
-export const GetPermissionBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPermissionBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5513,7 +5382,7 @@ export const GetPermissionBindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed permission. */
 export type PermissionBindingPropertiesPermission = "Publisher" | "Subscriber";
-export const PermissionBindingPropertiesPermission = S.String;
+const PermissionBindingPropertiesPermission = S.String;
 
 /** Provisioning state of the PermissionBinding resource. */
 export type PermissionBindingPropertiesProvisioningState =
@@ -5524,7 +5393,7 @@ export type PermissionBindingPropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
-export const PermissionBindingPropertiesProvisioningState = S.String;
+const PermissionBindingPropertiesProvisioningState = S.String;
 
 /** The properties of permission binding. */
 export interface PermissionBindingProperties {
@@ -5539,7 +5408,7 @@ export interface PermissionBindingProperties {
   /** Provisioning state of the PermissionBinding resource. */
   provisioningState?: PermissionBindingPropertiesProvisioningState;
 }
-export const PermissionBindingProperties = /*@__PURE__*/ S.suspend(() =>
+const PermissionBindingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     topicSpaceName: S.optional(S.String),
@@ -5557,16 +5426,12 @@ export type GetPermissionBindingResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPermissionBindingResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPermissionBindingResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPermissionBindingResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPermissionBindingResponseSystemData {
   /** The identity that created the resource. */
@@ -5582,7 +5447,7 @@ export interface GetPermissionBindingResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPermissionBindingResponseSystemData =
+const GetPermissionBindingResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetPermissionBindingResponseSystemData>;
 
 export interface GetPermissionBindingResponse {
@@ -5597,7 +5462,7 @@ export interface GetPermissionBindingResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPermissionBindingResponseSystemData;
 }
-export const GetPermissionBindingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPermissionBindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5614,7 +5479,7 @@ export type GetPrivateEndpointConnectionRequestParentType =
   | "domains"
   | "partnerNamespaces"
   | "namespaces";
-export const GetPrivateEndpointConnectionRequestParentType = S.String;
+const GetPrivateEndpointConnectionRequestParentType = S.String;
 
 export interface GetPrivateEndpointConnectionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -5628,7 +5493,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection connection. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5657,7 +5522,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
@@ -5672,7 +5537,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of private link resource will be either topic, domain, partnerNamespace or namespace. */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5692,11 +5557,11 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPrivateLinkResourceRequest>;
 
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 export interface PrivateLinkResourceProperties {
@@ -5705,7 +5570,7 @@ export interface PrivateLinkResourceProperties {
   requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -5727,7 +5592,7 @@ export interface PrivateLinkResource {
   /** Type of the resource. */
   type?: string;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PrivateLinkResourceProperties),
     id: S.optional(S.String),
@@ -5744,7 +5609,7 @@ export interface GetSystemTopicRequest {
   /** Name of the system topic. */
   systemTopicName: string;
 }
-export const GetSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5761,7 +5626,7 @@ export const GetSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetSystemTopicResponseTagsMap = { [key: string]: string | undefined };
-export const GetSystemTopicResponseTagsMap =
+const GetSystemTopicResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetSystemTopicResponseTagsMap>;
 
 /** Provisioning state of the system topic. */
@@ -5772,7 +5637,7 @@ export type SystemTopicPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const SystemTopicPropertiesProvisioningState = S.String;
+const SystemTopicPropertiesProvisioningState = S.String;
 
 /** Properties of the System Topic. */
 export interface SystemTopicProperties {
@@ -5785,7 +5650,7 @@ export interface SystemTopicProperties {
   /** Metric resource id for the system topic. */
   metricResourceId?: string;
 }
-export const SystemTopicProperties = /*@__PURE__*/ S.suspend(() =>
+const SystemTopicProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(SystemTopicPropertiesProvisioningState),
     source: S.optional(S.String),
@@ -5800,16 +5665,12 @@ export type GetSystemTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetSystemTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetSystemTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetSystemTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetSystemTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -5825,7 +5686,7 @@ export interface GetSystemTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSystemTopicResponseSystemData =
+const GetSystemTopicResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetSystemTopicResponseSystemData>;
 
 export interface GetSystemTopicResponse {
@@ -5846,7 +5707,7 @@ export interface GetSystemTopicResponse {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
-export const GetSystemTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSystemTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5869,7 +5730,7 @@ export interface GetSystemTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
-export const GetSystemTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSystemTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5893,16 +5754,12 @@ export type GetSystemTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetSystemTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetSystemTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetSystemTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetSystemTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -5918,9 +5775,6 @@ export interface GetSystemTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSystemTopicEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<GetSystemTopicEventSubscriptionResponseSystemData>;
-
 export interface GetSystemTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -5933,7 +5787,7 @@ export interface GetSystemTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetSystemTopicEventSubscriptionResponseSystemData;
 }
-export const GetSystemTopicEventSubscriptionResponse =
+const GetSystemTopicEventSubscriptionResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<GetSystemTopicEventSubscriptionResponse>;
 
 export interface GetSystemTopicEventSubscriptionDeliveryAttributesRequest {
@@ -5946,21 +5800,20 @@ export interface GetSystemTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetSystemTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      systemTopicName: S.String.pipe(T.Label()),
-      eventSubscriptionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
-        code: 200,
-        apiVersion: "2025-02-15",
-      }),
-    ),
+const GetSystemTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    systemTopicName: S.String.pipe(T.Label()),
+    eventSubscriptionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      code: 200,
+      apiVersion: "2025-02-15",
+    }),
+  ),
 ).annotate({
   identifier: "GetSystemTopicEventSubscriptionDeliveryAttributesRequest",
 }) as any as S.Schema<GetSystemTopicEventSubscriptionDeliveryAttributesRequest>;
@@ -5975,7 +5828,7 @@ export interface GetSystemTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetSystemTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSystemTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6001,7 +5854,7 @@ export interface GetTopicRequest {
   /** Name of the topic. */
   topicName: string;
 }
-export const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6018,12 +5871,12 @@ export const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type GetTopicResponseTagsMap = { [key: string]: string | undefined };
-export const GetTopicResponseTagsMap =
+const GetTopicResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<GetTopicResponseTagsMap>;
 
 /** List of private endpoint connections. */
 export type TopicPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const TopicPropertiesPrivateEndpointConnectionsList =
+const TopicPropertiesPrivateEndpointConnectionsList =
   DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<TopicPropertiesPrivateEndpointConnectionsList>;
 
 /** Provisioning state of the topic. */
@@ -6034,31 +5887,31 @@ export type TopicPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const TopicPropertiesProvisioningState = S.String;
+const TopicPropertiesProvisioningState = S.String;
 
 /** Minimum TLS version of the publisher allowed to publish to this topic */
 export type TopicPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const TopicPropertiesMinimumTlsVersionAllowed = S.String;
+const TopicPropertiesMinimumTlsVersionAllowed = S.String;
 
 /** This determines the format that Event Grid should expect for incoming events published to the topic. */
 export type TopicPropertiesInputSchema =
   | "EventGridSchema"
   | "CustomEventSchema"
   | "CloudEventSchemaV1_0";
-export const TopicPropertiesInputSchema = S.String;
+const TopicPropertiesInputSchema = S.String;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" /> */
 export type TopicPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const TopicPropertiesPublicNetworkAccess = S.String;
+const TopicPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const TopicPropertiesInboundIpRulesList =
+const TopicPropertiesInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicPropertiesInboundIpRulesList>;
 
 /** Data Residency Boundary of the resource. */
 export type TopicPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
-export const TopicPropertiesDataResidencyBoundary = S.String;
+const TopicPropertiesDataResidencyBoundary = S.String;
 
 /** Properties of the Topic. */
 export interface TopicProperties {
@@ -6087,7 +5940,7 @@ export interface TopicProperties {
   /** Data Residency Boundary of the resource. */
   dataResidencyBoundary?: TopicPropertiesDataResidencyBoundary;
 }
-export const TopicProperties = /*@__PURE__*/ S.suspend(() =>
+const TopicProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpointConnections: S.optional(TopicPropertiesPrivateEndpointConnectionsList),
     provisioningState: S.optional(TopicPropertiesProvisioningState),
@@ -6110,16 +5963,12 @@ export type GetTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -6135,7 +5984,7 @@ export interface GetTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTopicResponseSystemData =
+const GetTopicResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetTopicResponseSystemData>;
 
 export interface GetTopicResponse {
@@ -6156,7 +6005,7 @@ export interface GetTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTopicResponseSystemData;
 }
-export const GetTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6179,7 +6028,7 @@ export interface GetTopicEventSubscriptionRequest {
   /** Name of the event subscription to be found. */
   eventSubscriptionName: string;
 }
-export const GetTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6203,16 +6052,12 @@ export type GetTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -6228,9 +6073,6 @@ export interface GetTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTopicEventSubscriptionResponseSystemData =
-  ActivatePartnerTopicResponseSystemData as any as S.Schema<GetTopicEventSubscriptionResponseSystemData>;
-
 export interface GetTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -6243,7 +6085,7 @@ export interface GetTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTopicEventSubscriptionResponseSystemData;
 }
-export const GetTopicEventSubscriptionResponse =
+const GetTopicEventSubscriptionResponse =
   GetDomainEventSubscriptionResponse as any as S.Schema<GetTopicEventSubscriptionResponse>;
 
 export interface GetTopicEventSubscriptionDeliveryAttributesRequest {
@@ -6256,7 +6098,7 @@ export interface GetTopicEventSubscriptionDeliveryAttributesRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicEventSubscriptionDeliveryAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6284,7 +6126,7 @@ export interface GetTopicEventSubscriptionFullUrlRequest {
   /** Name of the event subscription. */
   eventSubscriptionName: string;
 }
-export const GetTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicEventSubscriptionFullUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6312,7 +6154,7 @@ export interface GetTopicSpaceRequest {
   /** Name of the Topic space. */
   topicSpaceName: string;
 }
-export const GetTopicSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6330,7 +6172,7 @@ export const GetTopicSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
 export type TopicSpacePropertiesTopicTemplatesList = Array<string>;
-export const TopicSpacePropertiesTopicTemplatesList =
+const TopicSpacePropertiesTopicTemplatesList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicSpacePropertiesTopicTemplatesList>;
 
 /** Provisioning state of the TopicSpace resource. */
@@ -6342,7 +6184,7 @@ export type TopicSpacePropertiesProvisioningState =
   | "Canceled"
   | "Failed"
   | "Deleted";
-export const TopicSpacePropertiesProvisioningState = S.String;
+const TopicSpacePropertiesProvisioningState = S.String;
 
 /** The properties of topic space. */
 export interface TopicSpaceProperties {
@@ -6353,7 +6195,7 @@ export interface TopicSpaceProperties {
   /** Provisioning state of the TopicSpace resource. */
   provisioningState?: TopicSpacePropertiesProvisioningState;
 }
-export const TopicSpaceProperties = /*@__PURE__*/ S.suspend(() =>
+const TopicSpaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     topicTemplates: S.optional(TopicSpacePropertiesTopicTemplatesList),
@@ -6367,16 +6209,12 @@ export type GetTopicSpaceResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetTopicSpaceResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetTopicSpaceResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetTopicSpaceResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetTopicSpaceResponseSystemData {
   /** The identity that created the resource. */
@@ -6392,7 +6230,7 @@ export interface GetTopicSpaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTopicSpaceResponseSystemData =
+const GetTopicSpaceResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetTopicSpaceResponseSystemData>;
 
 export interface GetTopicSpaceResponse {
@@ -6407,7 +6245,7 @@ export interface GetTopicSpaceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTopicSpaceResponseSystemData;
 }
-export const GetTopicSpaceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTopicSpaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6421,7 +6259,7 @@ export interface GetTopicTypeRequest {
   /** Name of the topic type. */
   topicTypeName: string;
 }
-export const GetTopicTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicTypeName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6436,7 +6274,7 @@ export const GetTopicTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Region type of the resource. */
 export type TopicTypePropertiesResourceRegionType = "RegionalResource" | "GlobalResource";
-export const TopicTypePropertiesResourceRegionType = S.String;
+const TopicTypePropertiesResourceRegionType = S.String;
 
 /** Provisioning state of the topic type. */
 export type TopicTypePropertiesProvisioningState =
@@ -6446,11 +6284,11 @@ export type TopicTypePropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const TopicTypePropertiesProvisioningState = S.String;
+const TopicTypePropertiesProvisioningState = S.String;
 
 /** List of locations supported by this topic type. */
 export type TopicTypePropertiesSupportedLocationsList = Array<string>;
-export const TopicTypePropertiesSupportedLocationsList =
+const TopicTypePropertiesSupportedLocationsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicTypePropertiesSupportedLocationsList>;
 
 export type TopicTypePropertiesSupportedScopesForSourceItem =
@@ -6458,12 +6296,12 @@ export type TopicTypePropertiesSupportedScopesForSourceItem =
   | "ResourceGroup"
   | "AzureSubscription"
   | "ManagementGroup";
-export const TopicTypePropertiesSupportedScopesForSourceItem = S.String;
+const TopicTypePropertiesSupportedScopesForSourceItem = S.String;
 
 /** Supported source scopes. */
 export type TopicTypePropertiesSupportedScopesForSourceList =
   Array<TopicTypePropertiesSupportedScopesForSourceItem>;
-export const TopicTypePropertiesSupportedScopesForSourceList = /*@__PURE__*/ S.Array(
+const TopicTypePropertiesSupportedScopesForSourceList = /*@__PURE__*/ S.Array(
   TopicTypePropertiesSupportedScopesForSourceItem,
 ) as any as S.Schema<TopicTypePropertiesSupportedScopesForSourceList>;
 
@@ -6471,7 +6309,7 @@ export interface TopicTypeAdditionalEnforcedPermission {
   permissionName?: string;
   isDataAction?: boolean;
 }
-export const TopicTypeAdditionalEnforcedPermission = /*@__PURE__*/ S.suspend(() =>
+const TopicTypeAdditionalEnforcedPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissionName: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -6483,7 +6321,7 @@ export const TopicTypeAdditionalEnforcedPermission = /*@__PURE__*/ S.suspend(() 
 /** Permissions which are enforced for creating and updating system topics of this this topic type. */
 export type TopicTypePropertiesAdditionalEnforcedPermissionsList =
   Array<TopicTypeAdditionalEnforcedPermission>;
-export const TopicTypePropertiesAdditionalEnforcedPermissionsList = /*@__PURE__*/ S.Array(
+const TopicTypePropertiesAdditionalEnforcedPermissionsList = /*@__PURE__*/ S.Array(
   TopicTypeAdditionalEnforcedPermission,
 ) as any as S.Schema<TopicTypePropertiesAdditionalEnforcedPermissionsList>;
 
@@ -6510,7 +6348,7 @@ export interface TopicTypeProperties {
   /** Permissions which are enforced for creating and updating system topics of this this topic type. */
   additionalEnforcedPermissions?: TopicTypePropertiesAdditionalEnforcedPermissionsList;
 }
-export const TopicTypeProperties = /*@__PURE__*/ S.suspend(() =>
+const TopicTypeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -6535,7 +6373,7 @@ export interface GetTopicTypeResponse {
   /** Properties of the topic type info */
   properties?: TopicTypeProperties;
 }
-export const GetTopicTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTopicTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6548,7 +6386,7 @@ export interface GetVerifiedPartnerRequest {
   /** Name of the verified partner. */
   verifiedPartnerName: string;
 }
-export const GetVerifiedPartnerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVerifiedPartnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifiedPartnerName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6572,7 +6410,7 @@ export interface PartnerDetails {
   /** URI of the partner website that can be used by Azure customers to setup Event Grid integration on an event source. */
   setupUri?: string;
 }
-export const PartnerDetails = /*@__PURE__*/ S.suspend(() =>
+const PartnerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     longDescription: S.optional(S.String),
@@ -6588,7 +6426,7 @@ export type VerifiedPartnerPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const VerifiedPartnerPropertiesProvisioningState = S.String;
+const VerifiedPartnerPropertiesProvisioningState = S.String;
 
 /** Properties of the verified partner. */
 export interface VerifiedPartnerProperties {
@@ -6603,7 +6441,7 @@ export interface VerifiedPartnerProperties {
   /** Provisioning state of the verified partner. */
   provisioningState?: VerifiedPartnerPropertiesProvisioningState;
 }
-export const VerifiedPartnerProperties = /*@__PURE__*/ S.suspend(() =>
+const VerifiedPartnerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerRegistrationImmutableId: S.optional(S.String),
     organizationName: S.optional(S.String),
@@ -6621,16 +6459,12 @@ export type GetVerifiedPartnerResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetVerifiedPartnerResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetVerifiedPartnerResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetVerifiedPartnerResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetVerifiedPartnerResponseSystemData {
   /** The identity that created the resource. */
@@ -6646,7 +6480,7 @@ export interface GetVerifiedPartnerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetVerifiedPartnerResponseSystemData =
+const GetVerifiedPartnerResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<GetVerifiedPartnerResponseSystemData>;
 
 export interface GetVerifiedPartnerResponse {
@@ -6661,7 +6495,7 @@ export interface GetVerifiedPartnerResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetVerifiedPartnerResponseSystemData;
 }
-export const GetVerifiedPartnerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVerifiedPartnerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6685,7 +6519,7 @@ export interface ListCaCertificateByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListCaCertificateByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCaCertificateByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6710,7 +6544,7 @@ export type CaCertificateSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CaCertificateSystemDataCreatedByType = S.String;
+const CaCertificateSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type CaCertificateSystemDataLastModifiedByType =
@@ -6718,7 +6552,7 @@ export type CaCertificateSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CaCertificateSystemDataLastModifiedByType = S.String;
+const CaCertificateSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CaCertificateSystemData {
@@ -6735,7 +6569,7 @@ export interface CaCertificateSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CaCertificateSystemData = /*@__PURE__*/ S.suspend(() =>
+const CaCertificateSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(CaCertificateSystemDataCreatedByType),
@@ -6759,7 +6593,7 @@ export interface CaCertificate {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CaCertificateSystemData;
 }
-export const CaCertificate = /*@__PURE__*/ S.suspend(() =>
+const CaCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6771,7 +6605,7 @@ export const CaCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of CA Certificate. */
 export type CaCertificatesListResultValueList = Array<CaCertificate>;
-export const CaCertificatesListResultValueList = /*@__PURE__*/ S.Array(
+const CaCertificatesListResultValueList = /*@__PURE__*/ S.Array(
   CaCertificate,
 ) as any as S.Schema<CaCertificatesListResultValueList>;
 
@@ -6782,7 +6616,7 @@ export interface CaCertificatesListResult {
   /** A link for the next page of CA Certificate. */
   nextLink?: string;
 }
-export const CaCertificatesListResult = /*@__PURE__*/ S.suspend(() =>
+const CaCertificatesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CaCertificatesListResultValueList),
     nextLink: S.optional(S.String),
@@ -6801,7 +6635,7 @@ export interface ListChannelByPartnerNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListChannelByPartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChannelByPartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6822,16 +6656,12 @@ export const ListChannelByPartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The type of identity that created the resource. */
 export type ChannelSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ChannelSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ChannelSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ChannelSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ChannelSystemData {
   /** The identity that created the resource. */
@@ -6847,7 +6677,7 @@ export interface ChannelSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ChannelSystemData = CaCertificateSystemData as any as S.Schema<ChannelSystemData>;
+const ChannelSystemData = CaCertificateSystemData as any as S.Schema<ChannelSystemData>;
 
 /** Channel info. */
 export interface Channel {
@@ -6862,7 +6692,7 @@ export interface Channel {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ChannelSystemData;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6874,7 +6704,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Channels. */
 export type ChannelsListResultValueList = Array<Channel>;
-export const ChannelsListResultValueList = /*@__PURE__*/ S.Array(
+const ChannelsListResultValueList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelsListResultValueList>;
 
@@ -6885,7 +6715,7 @@ export interface ChannelsListResult {
   /** A link for the next page of channels. */
   nextLink?: string;
 }
-export const ChannelsListResult = /*@__PURE__*/ S.suspend(() =>
+const ChannelsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ChannelsListResultValueList),
     nextLink: S.optional(S.String),
@@ -6904,7 +6734,7 @@ export interface ListClientByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListClientByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClientByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6925,12 +6755,8 @@ export const ListClientByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type ClientSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ClientSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ClientSystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ClientSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ClientSystemData {
   /** The identity that created the resource. */
@@ -6946,7 +6772,7 @@ export interface ClientSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClientSystemData = CaCertificateSystemData as any as S.Schema<ClientSystemData>;
+const ClientSystemData = CaCertificateSystemData as any as S.Schema<ClientSystemData>;
 
 /** The Client resource. */
 export interface Client {
@@ -6961,7 +6787,7 @@ export interface Client {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClientSystemData;
 }
-export const Client = /*@__PURE__*/ S.suspend(() =>
+const Client = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6973,7 +6799,7 @@ export const Client = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Client. */
 export type ClientsListResultValueList = Array<Client>;
-export const ClientsListResultValueList = /*@__PURE__*/ S.Array(
+const ClientsListResultValueList = /*@__PURE__*/ S.Array(
   Client,
 ) as any as S.Schema<ClientsListResultValueList>;
 
@@ -6984,7 +6810,7 @@ export interface ClientsListResult {
   /** A link for the next page of Client. */
   nextLink?: string;
 }
-export const ClientsListResult = /*@__PURE__*/ S.suspend(() =>
+const ClientsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClientsListResultValueList),
     nextLink: S.optional(S.String),
@@ -7003,7 +6829,7 @@ export interface ListClientGroupByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListClientGroupByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClientGroupByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7024,16 +6850,12 @@ export const ListClientGroupByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type ClientGroupSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ClientGroupSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ClientGroupSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ClientGroupSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ClientGroupSystemData {
   /** The identity that created the resource. */
@@ -7049,8 +6871,7 @@ export interface ClientGroupSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClientGroupSystemData =
-  CaCertificateSystemData as any as S.Schema<ClientGroupSystemData>;
+const ClientGroupSystemData = CaCertificateSystemData as any as S.Schema<ClientGroupSystemData>;
 
 /** The Client group resource. */
 export interface ClientGroup {
@@ -7065,7 +6886,7 @@ export interface ClientGroup {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClientGroupSystemData;
 }
-export const ClientGroup = /*@__PURE__*/ S.suspend(() =>
+const ClientGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7077,7 +6898,7 @@ export const ClientGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Client Group. */
 export type ClientGroupsListResultValueList = Array<ClientGroup>;
-export const ClientGroupsListResultValueList = /*@__PURE__*/ S.Array(
+const ClientGroupsListResultValueList = /*@__PURE__*/ S.Array(
   ClientGroup,
 ) as any as S.Schema<ClientGroupsListResultValueList>;
 
@@ -7088,7 +6909,7 @@ export interface ClientGroupsListResult {
   /** A link for the next page of Client Group. */
   nextLink?: string;
 }
-export const ClientGroupsListResult = /*@__PURE__*/ S.suspend(() =>
+const ClientGroupsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClientGroupsListResultValueList),
     nextLink: S.optional(S.String),
@@ -7105,7 +6926,7 @@ export interface ListDomainByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListDomainByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7125,16 +6946,12 @@ export const ListDomainByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type DomainTagsMap = { [key: string]: string | undefined };
-export const DomainTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainTagsMap>;
+const DomainTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<DomainTagsMap>;
 
 /** The type of identity that created the resource. */
 export type DomainSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const DomainSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DomainSystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const DomainSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainSystemData {
   /** The identity that created the resource. */
@@ -7150,7 +6967,7 @@ export interface DomainSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainSystemData = CaCertificateSystemData as any as S.Schema<DomainSystemData>;
+const DomainSystemData = CaCertificateSystemData as any as S.Schema<DomainSystemData>;
 
 /** EventGrid Domain. */
 export interface Domain {
@@ -7171,7 +6988,7 @@ export interface Domain {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainSystemData;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7186,7 +7003,7 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Domains. */
 export type DomainsListResultValueList = Array<Domain>;
-export const DomainsListResultValueList = /*@__PURE__*/ S.Array(
+const DomainsListResultValueList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainsListResultValueList>;
 
@@ -7197,7 +7014,7 @@ export interface DomainsListResult {
   /** A link for the next page of domains. */
   nextLink?: string;
 }
-export const DomainsListResult = /*@__PURE__*/ S.suspend(() =>
+const DomainsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DomainsListResultValueList),
     nextLink: S.optional(S.String),
@@ -7212,7 +7029,7 @@ export interface ListDomainBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListDomainBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -7241,7 +7058,7 @@ export interface ListDomainEventSubscriptionsRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListDomainEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7266,16 +7083,12 @@ export type EventSubscriptionSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const EventSubscriptionSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type EventSubscriptionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const EventSubscriptionSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface EventSubscriptionSystemData {
   /** The identity that created the resource. */
@@ -7291,7 +7104,7 @@ export interface EventSubscriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const EventSubscriptionSystemData =
+const EventSubscriptionSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<EventSubscriptionSystemData>;
 
 /** Event Subscription. */
@@ -7307,7 +7120,7 @@ export interface EventSubscription {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: EventSubscriptionSystemData;
 }
-export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
+const EventSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7319,7 +7132,7 @@ export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of EventSubscriptions */
 export type EventSubscriptionsListResultValueList = Array<EventSubscription>;
-export const EventSubscriptionsListResultValueList = /*@__PURE__*/ S.Array(
+const EventSubscriptionsListResultValueList = /*@__PURE__*/ S.Array(
   EventSubscription,
 ) as any as S.Schema<EventSubscriptionsListResultValueList>;
 
@@ -7330,7 +7143,7 @@ export interface EventSubscriptionsListResult {
   /** A link for the next page of event subscriptions */
   nextLink?: string;
 }
-export const EventSubscriptionsListResult = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EventSubscriptionsListResultValueList),
     nextLink: S.optional(S.String),
@@ -7347,7 +7160,7 @@ export interface ListDomainSharedAccessKeysRequest {
   /** Name of the domain. */
   domainName: string;
 }
-export const ListDomainSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7371,7 +7184,7 @@ export interface DomainSharedAccessKeys {
   /** Shared access key2 for the domain. */
   key2?: string;
 }
-export const DomainSharedAccessKeys = /*@__PURE__*/ S.suspend(() =>
+const DomainSharedAccessKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key1: S.optional(S.String),
     key2: S.optional(S.String),
@@ -7390,7 +7203,7 @@ export interface ListDomainTopicByDomainRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListDomainTopicByDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainTopicByDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7411,16 +7224,12 @@ export const ListDomainTopicByDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type DomainTopicSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const DomainTopicSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DomainTopicSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainTopicSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainTopicSystemData {
   /** The identity that created the resource. */
@@ -7436,8 +7245,7 @@ export interface DomainTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainTopicSystemData =
-  CaCertificateSystemData as any as S.Schema<DomainTopicSystemData>;
+const DomainTopicSystemData = CaCertificateSystemData as any as S.Schema<DomainTopicSystemData>;
 
 /** Domain Topic. */
 export interface DomainTopic {
@@ -7452,7 +7260,7 @@ export interface DomainTopic {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DomainTopicSystemData;
 }
-export const DomainTopic = /*@__PURE__*/ S.suspend(() =>
+const DomainTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7464,7 +7272,7 @@ export const DomainTopic = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Domain Topics. */
 export type DomainTopicsListResultValueList = Array<DomainTopic>;
-export const DomainTopicsListResultValueList = /*@__PURE__*/ S.Array(
+const DomainTopicsListResultValueList = /*@__PURE__*/ S.Array(
   DomainTopic,
 ) as any as S.Schema<DomainTopicsListResultValueList>;
 
@@ -7475,7 +7283,7 @@ export interface DomainTopicsListResult {
   /** A link for the next page of domain topics. */
   nextLink?: string;
 }
-export const DomainTopicsListResult = /*@__PURE__*/ S.suspend(() =>
+const DomainTopicsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DomainTopicsListResultValueList),
     nextLink: S.optional(S.String),
@@ -7496,7 +7304,7 @@ export interface ListDomainTopicEventSubscriptionsRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListDomainTopicEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainTopicEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7530,7 +7338,7 @@ export interface ListEventSubscriptionByDomainTopicRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionByDomainTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSubscriptionByDomainTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7566,7 +7374,7 @@ export interface ListEventSubscriptionByResourceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionByResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSubscriptionByResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7597,7 +7405,7 @@ export interface ListEventSubscriptionGlobalByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionGlobalByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSubscriptionGlobalByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7627,25 +7435,24 @@ export interface ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      topicTypeName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventSubscriptions",
-        code: 200,
-        apiVersion: "2025-02-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest",
-  }) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest>;
+const ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    topicTypeName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventSubscriptions",
+      code: 200,
+      apiVersion: "2025-02-15",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest",
+}) as any as S.Schema<ListEventSubscriptionGlobalByResourceGroupForTopicTypeRequest>;
 
 export interface ListEventSubscriptionGlobalBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -7655,7 +7462,7 @@ export interface ListEventSubscriptionGlobalBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionGlobalBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSubscriptionGlobalBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -7682,21 +7489,20 @@ export interface ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      topicTypeName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventSubscriptions",
-        code: 200,
-        apiVersion: "2025-02-15",
-      }),
-    ),
+const ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    topicTypeName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/topicTypes/{topicTypeName}/eventSubscriptions",
+      code: 200,
+      apiVersion: "2025-02-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest",
 }) as any as S.Schema<ListEventSubscriptionGlobalBySubscriptionForTopicTypeRequest>;
@@ -7713,7 +7519,7 @@ export interface ListEventSubscriptionRegionalByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionRegionalByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSubscriptionRegionalByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7746,8 +7552,8 @@ export interface ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -7763,9 +7569,9 @@ export const ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest =
         apiVersion: "2025-02-15",
       }),
     ),
-  ).annotate({
-    identifier: "ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest",
-  }) as any as S.Schema<ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest>;
+).annotate({
+  identifier: "ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest",
+}) as any as S.Schema<ListEventSubscriptionRegionalByResourceGroupForTopicTypeRequest>;
 
 export interface ListEventSubscriptionRegionalBySubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -7777,7 +7583,7 @@ export interface ListEventSubscriptionRegionalBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionRegionalBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventSubscriptionRegionalBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -7807,25 +7613,24 @@ export interface ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest 
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      topicTypeName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/locations/{location}/topicTypes/{topicTypeName}/eventSubscriptions",
-        code: 200,
-        apiVersion: "2025-02-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest",
-  }) as any as S.Schema<ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest>;
+const ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    topicTypeName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EventGrid/locations/{location}/topicTypes/{topicTypeName}/eventSubscriptions",
+      code: 200,
+      apiVersion: "2025-02-15",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest",
+}) as any as S.Schema<ListEventSubscriptionRegionalBySubscriptionForTopicTypeRequest>;
 
 export interface ListNamespaceByResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -7837,7 +7642,7 @@ export interface ListNamespaceByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7857,21 +7662,16 @@ export const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type NamespaceTagsMap = { [key: string]: string | undefined };
-export const NamespaceTagsMap =
-  ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespaceTagsMap>;
+const NamespaceTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespaceTagsMap>;
 
 /** The type of identity that created the resource. */
 export type NamespaceSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const NamespaceSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type NamespaceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespaceSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface NamespaceSystemData {
   /** The identity that created the resource. */
@@ -7887,7 +7687,7 @@ export interface NamespaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespaceSystemData = CaCertificateSystemData as any as S.Schema<NamespaceSystemData>;
+const NamespaceSystemData = CaCertificateSystemData as any as S.Schema<NamespaceSystemData>;
 
 /** Namespace resource. */
 export interface Namespace {
@@ -7910,7 +7710,7 @@ export interface Namespace {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespaceSystemData;
 }
-export const Namespace = /*@__PURE__*/ S.suspend(() =>
+const Namespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7926,7 +7726,7 @@ export const Namespace = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of namespaces. */
 export type NamespacesListResultValueList = Array<Namespace>;
-export const NamespacesListResultValueList = /*@__PURE__*/ S.Array(
+const NamespacesListResultValueList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<NamespacesListResultValueList>;
 
@@ -7937,7 +7737,7 @@ export interface NamespacesListResult {
   /** A link for the next page of namespaces. */
   nextLink?: string;
 }
-export const NamespacesListResult = /*@__PURE__*/ S.suspend(() =>
+const NamespacesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NamespacesListResultValueList),
     nextLink: S.optional(S.String),
@@ -7952,7 +7752,7 @@ export interface ListNamespaceBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListNamespaceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -7977,7 +7777,7 @@ export interface ListNamespaceSharedAccessKeysRequest {
   /** Name of the namespace. */
   namespaceName: string;
 }
-export const ListNamespaceSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8001,7 +7801,7 @@ export interface NamespaceSharedAccessKeys {
   /** Shared access key2 for the namespace. */
   key2?: string;
 }
-export const NamespaceSharedAccessKeys = /*@__PURE__*/ S.suspend(() =>
+const NamespaceSharedAccessKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key1: S.optional(S.String),
     key2: S.optional(S.String),
@@ -8022,7 +7822,7 @@ export interface ListNamespaceTopicByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListNamespaceTopicByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceTopicByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8047,16 +7847,12 @@ export type NamespaceTopicSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespaceTopicSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type NamespaceTopicSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespaceTopicSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface NamespaceTopicSystemData {
   /** The identity that created the resource. */
@@ -8072,7 +7868,7 @@ export interface NamespaceTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespaceTopicSystemData =
+const NamespaceTopicSystemData =
   CaCertificateSystemData as any as S.Schema<NamespaceTopicSystemData>;
 
 /** Namespace topic details. */
@@ -8088,7 +7884,7 @@ export interface NamespaceTopic {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespaceTopicSystemData;
 }
-export const NamespaceTopic = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8100,7 +7896,7 @@ export const NamespaceTopic = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of namespace topics. */
 export type NamespaceTopicsListResultValueList = Array<NamespaceTopic>;
-export const NamespaceTopicsListResultValueList = /*@__PURE__*/ S.Array(
+const NamespaceTopicsListResultValueList = /*@__PURE__*/ S.Array(
   NamespaceTopic,
 ) as any as S.Schema<NamespaceTopicsListResultValueList>;
 
@@ -8111,7 +7907,7 @@ export interface NamespaceTopicsListResult {
   /** A link for the next page of namespace topics. */
   nextLink?: string;
 }
-export const NamespaceTopicsListResult = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopicsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NamespaceTopicsListResultValueList),
     nextLink: S.optional(S.String),
@@ -8134,23 +7930,22 @@ export interface ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      namespaceName: S.String.pipe(T.Label()),
-      topicName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions",
-        code: 200,
-        apiVersion: "2025-02-15",
-      }),
-    ),
+const ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    namespaceName: S.String.pipe(T.Label()),
+    topicName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}/eventSubscriptions",
+      code: 200,
+      apiVersion: "2025-02-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest",
 }) as any as S.Schema<ListNamespaceTopicEventSubscriptionByNamespaceTopicRequest>;
@@ -8161,16 +7956,12 @@ export type SubscriptionSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SubscriptionSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SubscriptionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SubscriptionSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SubscriptionSystemData {
   /** The identity that created the resource. */
@@ -8186,8 +7977,7 @@ export interface SubscriptionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SubscriptionSystemData =
-  CaCertificateSystemData as any as S.Schema<SubscriptionSystemData>;
+const SubscriptionSystemData = CaCertificateSystemData as any as S.Schema<SubscriptionSystemData>;
 
 /** Event Subscription. */
 export interface Subscription {
@@ -8202,7 +7992,7 @@ export interface Subscription {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SubscriptionSystemData;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8214,7 +8004,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Subscriptions. */
 export type SubscriptionsListResultValueList = Array<Subscription>;
-export const SubscriptionsListResultValueList = /*@__PURE__*/ S.Array(
+const SubscriptionsListResultValueList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionsListResultValueList>;
 
@@ -8225,7 +8015,7 @@ export interface SubscriptionsListResult {
   /** A link for the next page of event subscriptions */
   nextLink?: string;
 }
-export const SubscriptionsListResult = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SubscriptionsListResultValueList),
     nextLink: S.optional(S.String),
@@ -8242,7 +8032,7 @@ export interface ListNamespaceTopicSharedAccessKeysRequest {
   /** Name of the topic. */
   topicName: string;
 }
-export const ListNamespaceTopicSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceTopicSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8267,11 +8057,10 @@ export interface TopicSharedAccessKeys {
   /** Shared access key2 for the topic. */
   key2?: string;
 }
-export const TopicSharedAccessKeys =
-  DomainSharedAccessKeys as any as S.Schema<TopicSharedAccessKeys>;
+const TopicSharedAccessKeys = DomainSharedAccessKeys as any as S.Schema<TopicSharedAccessKeys>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -8293,7 +8082,7 @@ export interface OperationInfo {
   /** Description of the operation */
   description?: string;
 }
-export const OperationInfo = /*@__PURE__*/ S.suspend(() =>
+const OperationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -8315,7 +8104,7 @@ export interface Operation {
   /** Properties of the operation. */
   properties?: unknown;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationInfo),
@@ -8327,7 +8116,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of operations */
 export type OperationsListResultValueList = Array<Operation>;
-export const OperationsListResultValueList = /*@__PURE__*/ S.Array(
+const OperationsListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResultValueList>;
 
@@ -8336,7 +8125,7 @@ export interface OperationsListResult {
   /** A collection of operations */
   value?: OperationsListResultValueList;
 }
-export const OperationsListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationsListResultValueList),
   }),
@@ -8348,7 +8137,7 @@ export interface ListPartnerConfigurationByResourceGroupRequest {
   /** The name of the resource group within the user's subscription. */
   resourceGroupName: string;
 }
-export const ListPartnerConfigurationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerConfigurationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8370,16 +8159,12 @@ export type PartnerConfigurationSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerConfigurationSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerConfigurationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerConfigurationSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerConfigurationSystemData {
   /** The identity that created the resource. */
@@ -8395,12 +8180,12 @@ export interface PartnerConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerConfigurationSystemData =
+const PartnerConfigurationSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerConfigurationSystemData>;
 
 /** Tags of the resource. */
 export type PartnerConfigurationTagsMap = { [key: string]: string | undefined };
-export const PartnerConfigurationTagsMap =
+const PartnerConfigurationTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationTagsMap>;
 
 /** Partner configuration information */
@@ -8420,7 +8205,7 @@ export interface PartnerConfiguration {
   /** Tags of the resource. */
   tags?: PartnerConfigurationTagsMap;
 }
-export const PartnerConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8434,7 +8219,7 @@ export const PartnerConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of partner configurations. */
 export type PartnerConfigurationsListResultValueList = Array<PartnerConfiguration>;
-export const PartnerConfigurationsListResultValueList = /*@__PURE__*/ S.Array(
+const PartnerConfigurationsListResultValueList = /*@__PURE__*/ S.Array(
   PartnerConfiguration,
 ) as any as S.Schema<PartnerConfigurationsListResultValueList>;
 
@@ -8445,7 +8230,7 @@ export interface PartnerConfigurationsListResult {
   /** A link for the next page of partner configurations. */
   nextLink?: string;
 }
-export const PartnerConfigurationsListResult = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfigurationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PartnerConfigurationsListResultValueList),
     nextLink: S.optional(S.String),
@@ -8462,7 +8247,7 @@ export interface ListPartnerConfigurationBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPartnerConfigurationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerConfigurationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -8489,7 +8274,7 @@ export interface ListPartnerNamespaceByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPartnerNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8509,7 +8294,7 @@ export const ListPartnerNamespaceByResourceGroupRequest = /*@__PURE__*/ S.suspen
 
 /** Tags of the resource. */
 export type PartnerNamespaceTagsMap = { [key: string]: string | undefined };
-export const PartnerNamespaceTagsMap =
+const PartnerNamespaceTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespaceTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -8518,16 +8303,12 @@ export type PartnerNamespaceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerNamespaceSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerNamespaceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerNamespaceSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerNamespaceSystemData {
   /** The identity that created the resource. */
@@ -8543,7 +8324,7 @@ export interface PartnerNamespaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerNamespaceSystemData =
+const PartnerNamespaceSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerNamespaceSystemData>;
 
 /** EventGrid Partner Namespace. */
@@ -8563,7 +8344,7 @@ export interface PartnerNamespace {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerNamespaceSystemData;
 }
-export const PartnerNamespace = /*@__PURE__*/ S.suspend(() =>
+const PartnerNamespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8577,7 +8358,7 @@ export const PartnerNamespace = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of partner namespaces. */
 export type PartnerNamespacesListResultValueList = Array<PartnerNamespace>;
-export const PartnerNamespacesListResultValueList = /*@__PURE__*/ S.Array(
+const PartnerNamespacesListResultValueList = /*@__PURE__*/ S.Array(
   PartnerNamespace,
 ) as any as S.Schema<PartnerNamespacesListResultValueList>;
 
@@ -8588,7 +8369,7 @@ export interface PartnerNamespacesListResult {
   /** A link for the next page of partner namespaces. */
   nextLink?: string;
 }
-export const PartnerNamespacesListResult = /*@__PURE__*/ S.suspend(() =>
+const PartnerNamespacesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PartnerNamespacesListResultValueList),
     nextLink: S.optional(S.String),
@@ -8605,7 +8386,7 @@ export interface ListPartnerNamespaceBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPartnerNamespaceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerNamespaceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -8630,7 +8411,7 @@ export interface ListPartnerNamespaceSharedAccessKeysRequest {
   /** Name of the partner namespace. */
   partnerNamespaceName: string;
 }
-export const ListPartnerNamespaceSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerNamespaceSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8654,7 +8435,7 @@ export interface PartnerNamespaceSharedAccessKeys {
   /** Shared access key2 for the partner namespace. */
   key2?: string;
 }
-export const PartnerNamespaceSharedAccessKeys =
+const PartnerNamespaceSharedAccessKeys =
   NamespaceSharedAccessKeys as any as S.Schema<PartnerNamespaceSharedAccessKeys>;
 
 export interface ListPartnerRegistrationByResourceGroupRequest {
@@ -8667,7 +8448,7 @@ export interface ListPartnerRegistrationByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPartnerRegistrationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerRegistrationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8687,7 +8468,7 @@ export const ListPartnerRegistrationByResourceGroupRequest = /*@__PURE__*/ S.sus
 
 /** Tags of the resource. */
 export type PartnerRegistrationTagsMap = { [key: string]: string | undefined };
-export const PartnerRegistrationTagsMap =
+const PartnerRegistrationTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -8696,16 +8477,12 @@ export type PartnerRegistrationSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerRegistrationSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerRegistrationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerRegistrationSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerRegistrationSystemData {
   /** The identity that created the resource. */
@@ -8721,7 +8498,7 @@ export interface PartnerRegistrationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerRegistrationSystemData =
+const PartnerRegistrationSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerRegistrationSystemData>;
 
 /** Information about a partner registration. */
@@ -8741,7 +8518,7 @@ export interface PartnerRegistration {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerRegistrationSystemData;
 }
-export const PartnerRegistration = /*@__PURE__*/ S.suspend(() =>
+const PartnerRegistration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8755,7 +8532,7 @@ export const PartnerRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of partner registrations. */
 export type PartnerRegistrationsListResultValueList = Array<PartnerRegistration>;
-export const PartnerRegistrationsListResultValueList = /*@__PURE__*/ S.Array(
+const PartnerRegistrationsListResultValueList = /*@__PURE__*/ S.Array(
   PartnerRegistration,
 ) as any as S.Schema<PartnerRegistrationsListResultValueList>;
 
@@ -8766,7 +8543,7 @@ export interface PartnerRegistrationsListResult {
   /** A link for the next page of partner registrations. */
   nextLink?: string;
 }
-export const PartnerRegistrationsListResult = /*@__PURE__*/ S.suspend(() =>
+const PartnerRegistrationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PartnerRegistrationsListResultValueList),
     nextLink: S.optional(S.String),
@@ -8783,7 +8560,7 @@ export interface ListPartnerRegistrationBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPartnerRegistrationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerRegistrationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -8810,7 +8587,7 @@ export interface ListPartnerTopicByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPartnerTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8830,7 +8607,7 @@ export const ListPartnerTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Tags of the resource. */
 export type PartnerTopicTagsMap = { [key: string]: string | undefined };
-export const PartnerTopicTagsMap =
+const PartnerTopicTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -8839,16 +8616,12 @@ export type PartnerTopicSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerTopicSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerTopicSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerTopicSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerTopicSystemData {
   /** The identity that created the resource. */
@@ -8864,8 +8637,7 @@ export interface PartnerTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerTopicSystemData =
-  CaCertificateSystemData as any as S.Schema<PartnerTopicSystemData>;
+const PartnerTopicSystemData = CaCertificateSystemData as any as S.Schema<PartnerTopicSystemData>;
 
 /** Event Grid Partner Topic. */
 export interface PartnerTopic {
@@ -8886,7 +8658,7 @@ export interface PartnerTopic {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
-export const PartnerTopic = /*@__PURE__*/ S.suspend(() =>
+const PartnerTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8901,7 +8673,7 @@ export const PartnerTopic = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of partner topics. */
 export type PartnerTopicsListResultValueList = Array<PartnerTopic>;
-export const PartnerTopicsListResultValueList = /*@__PURE__*/ S.Array(
+const PartnerTopicsListResultValueList = /*@__PURE__*/ S.Array(
   PartnerTopic,
 ) as any as S.Schema<PartnerTopicsListResultValueList>;
 
@@ -8912,7 +8684,7 @@ export interface PartnerTopicsListResult {
   /** A link for the next page of partner topics. */
   nextLink?: string;
 }
-export const PartnerTopicsListResult = /*@__PURE__*/ S.suspend(() =>
+const PartnerTopicsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PartnerTopicsListResultValueList),
     nextLink: S.optional(S.String),
@@ -8927,7 +8699,7 @@ export interface ListPartnerTopicBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPartnerTopicBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerTopicBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -8956,7 +8728,7 @@ export interface ListPartnerTopicEventSubscriptionByPartnerTopicRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPartnerTopicEventSubscriptionByPartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerTopicEventSubscriptionByPartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8987,7 +8759,7 @@ export interface ListPermissionBindingByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPermissionBindingByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionBindingByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9012,16 +8784,12 @@ export type PermissionBindingSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PermissionBindingSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PermissionBindingSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PermissionBindingSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PermissionBindingSystemData {
   /** The identity that created the resource. */
@@ -9037,7 +8805,7 @@ export interface PermissionBindingSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PermissionBindingSystemData =
+const PermissionBindingSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<PermissionBindingSystemData>;
 
 /** The Permission binding resource. */
@@ -9053,7 +8821,7 @@ export interface PermissionBinding {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PermissionBindingSystemData;
 }
-export const PermissionBinding = /*@__PURE__*/ S.suspend(() =>
+const PermissionBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9065,7 +8833,7 @@ export const PermissionBinding = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Permission Binding. */
 export type PermissionBindingsListResultValueList = Array<PermissionBinding>;
-export const PermissionBindingsListResultValueList = /*@__PURE__*/ S.Array(
+const PermissionBindingsListResultValueList = /*@__PURE__*/ S.Array(
   PermissionBinding,
 ) as any as S.Schema<PermissionBindingsListResultValueList>;
 
@@ -9076,7 +8844,7 @@ export interface PermissionBindingsListResult {
   /** A link for the next page of Permission Binding. */
   nextLink?: string;
 }
-export const PermissionBindingsListResult = /*@__PURE__*/ S.suspend(() =>
+const PermissionBindingsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PermissionBindingsListResultValueList),
     nextLink: S.optional(S.String),
@@ -9090,7 +8858,7 @@ export type ListPrivateEndpointConnectionByResourceRequestParentType =
   | "domains"
   | "partnerNamespaces"
   | "namespaces";
-export const ListPrivateEndpointConnectionByResourceRequestParentType = S.String;
+const ListPrivateEndpointConnectionByResourceRequestParentType = S.String;
 
 export interface ListPrivateEndpointConnectionByResourceRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -9106,7 +8874,7 @@ export interface ListPrivateEndpointConnectionByResourceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9128,7 +8896,7 @@ export const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ S.su
 
 /** A collection of private endpoint connection resources. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   DomainPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** Result of the list of all private endpoint connections operation. */
@@ -9138,7 +8906,7 @@ export interface PrivateEndpointConnectionListResult {
   /** A link for the next page of private endpoint connection resources. */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -9161,7 +8929,7 @@ export interface ListPrivateLinkResourceByResourceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListPrivateLinkResourceByResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9183,7 +8951,7 @@ export const ListPrivateLinkResourceByResourceRequest = /*@__PURE__*/ S.suspend(
 
 /** A collection of private link resources */
 export type PrivateLinkResourcesListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
 
@@ -9194,7 +8962,7 @@ export interface PrivateLinkResourcesListResult {
   /** A link for the next page of private link resources. */
   nextLink?: string;
 }
-export const PrivateLinkResourcesListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourcesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourcesListResultValueList),
     nextLink: S.optional(S.String),
@@ -9213,7 +8981,7 @@ export interface ListSystemTopicByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListSystemTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSystemTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9233,21 +9001,17 @@ export const ListSystemTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Tags of the resource. */
 export type SystemTopicTagsMap = { [key: string]: string | undefined };
-export const SystemTopicTagsMap =
+const SystemTopicTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicTagsMap>;
 
 /** The type of identity that created the resource. */
 export type SystemTopicSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemTopicSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemTopicSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SystemTopicSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemTopicSystemData {
   /** The identity that created the resource. */
@@ -9263,8 +9027,7 @@ export interface SystemTopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemTopicSystemData =
-  CaCertificateSystemData as any as S.Schema<SystemTopicSystemData>;
+const SystemTopicSystemData = CaCertificateSystemData as any as S.Schema<SystemTopicSystemData>;
 
 /** EventGrid System Topic. */
 export interface SystemTopic {
@@ -9285,7 +9048,7 @@ export interface SystemTopic {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
-export const SystemTopic = /*@__PURE__*/ S.suspend(() =>
+const SystemTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9300,7 +9063,7 @@ export const SystemTopic = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of system Topics. */
 export type SystemTopicsListResultValueList = Array<SystemTopic>;
-export const SystemTopicsListResultValueList = /*@__PURE__*/ S.Array(
+const SystemTopicsListResultValueList = /*@__PURE__*/ S.Array(
   SystemTopic,
 ) as any as S.Schema<SystemTopicsListResultValueList>;
 
@@ -9311,7 +9074,7 @@ export interface SystemTopicsListResult {
   /** A link for the next page of topics. */
   nextLink?: string;
 }
-export const SystemTopicsListResult = /*@__PURE__*/ S.suspend(() =>
+const SystemTopicsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SystemTopicsListResultValueList),
     nextLink: S.optional(S.String),
@@ -9326,7 +9089,7 @@ export interface ListSystemTopicBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListSystemTopicBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSystemTopicBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -9355,7 +9118,7 @@ export interface ListSystemTopicEventSubscriptionBySystemTopicRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListSystemTopicEventSubscriptionBySystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSystemTopicEventSubscriptionBySystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9384,7 +9147,7 @@ export interface ListTopicByResourceGroupRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9404,16 +9167,12 @@ export const ListTopicByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type TopicTagsMap = { [key: string]: string | undefined };
-export const TopicTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicTagsMap>;
+const TopicTagsMap = ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicTagsMap>;
 
 /** The type of identity that created the resource. */
 export type TopicSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const TopicSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type TopicSystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const TopicSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface TopicSystemData {
   /** The identity that created the resource. */
@@ -9429,7 +9188,7 @@ export interface TopicSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicSystemData = CaCertificateSystemData as any as S.Schema<TopicSystemData>;
+const TopicSystemData = CaCertificateSystemData as any as S.Schema<TopicSystemData>;
 
 /** EventGrid Topic */
 export interface Topic {
@@ -9450,7 +9209,7 @@ export interface Topic {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicSystemData;
 }
-export const Topic = /*@__PURE__*/ S.suspend(() =>
+const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9465,7 +9224,7 @@ export const Topic = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Topics */
 export type TopicsListResultValueList = Array<Topic>;
-export const TopicsListResultValueList = /*@__PURE__*/ S.Array(
+const TopicsListResultValueList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicsListResultValueList>;
 
@@ -9476,7 +9235,7 @@ export interface TopicsListResult {
   /** A link for the next page of topics */
   nextLink?: string;
 }
-export const TopicsListResult = /*@__PURE__*/ S.suspend(() =>
+const TopicsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(TopicsListResultValueList),
     nextLink: S.optional(S.String),
@@ -9491,7 +9250,7 @@ export interface ListTopicBySubscriptionRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListTopicBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -9520,7 +9279,7 @@ export interface ListTopicEventSubscriptionsRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListTopicEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9551,7 +9310,7 @@ export interface ListTopicEventTypesRequest {
   /** Name of the topic. */
   resourceName: string;
 }
-export const ListTopicEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9581,7 +9340,7 @@ export interface EventTypeProperties {
   /** IsInDefaultSet flag of the event type. */
   isInDefaultSet?: boolean;
 }
-export const EventTypeProperties = /*@__PURE__*/ S.suspend(() =>
+const EventTypeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     description: S.optional(S.String),
@@ -9601,7 +9360,7 @@ export interface EventType {
   /** Properties of the event type. */
   properties?: EventTypeProperties;
 }
-export const EventType = /*@__PURE__*/ S.suspend(() =>
+const EventType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9612,7 +9371,7 @@ export const EventType = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of event types */
 export type EventTypesListResultValueList = Array<EventType>;
-export const EventTypesListResultValueList = /*@__PURE__*/ S.Array(
+const EventTypesListResultValueList = /*@__PURE__*/ S.Array(
   EventType,
 ) as any as S.Schema<EventTypesListResultValueList>;
 
@@ -9621,7 +9380,7 @@ export interface EventTypesListResult {
   /** A collection of event types */
   value?: EventTypesListResultValueList;
 }
-export const EventTypesListResult = /*@__PURE__*/ S.suspend(() =>
+const EventTypesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EventTypesListResultValueList),
   }),
@@ -9635,7 +9394,7 @@ export interface ListTopicSharedAccessKeysRequest {
   /** Name of the topic. */
   topicName: string;
 }
-export const ListTopicSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicSharedAccessKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9664,7 +9423,7 @@ export interface ListTopicSpaceByNamespaceRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListTopicSpaceByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicSpaceByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9685,16 +9444,12 @@ export const ListTopicSpaceByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type TopicSpaceSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const TopicSpaceSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type TopicSpaceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TopicSpaceSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface TopicSpaceSystemData {
   /** The identity that created the resource. */
@@ -9710,8 +9465,7 @@ export interface TopicSpaceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicSpaceSystemData =
-  CaCertificateSystemData as any as S.Schema<TopicSpaceSystemData>;
+const TopicSpaceSystemData = CaCertificateSystemData as any as S.Schema<TopicSpaceSystemData>;
 
 /** The Topic space resource. */
 export interface TopicSpace {
@@ -9726,7 +9480,7 @@ export interface TopicSpace {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicSpaceSystemData;
 }
-export const TopicSpace = /*@__PURE__*/ S.suspend(() =>
+const TopicSpace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9738,7 +9492,7 @@ export const TopicSpace = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of Topic Space. */
 export type TopicSpacesListResultValueList = Array<TopicSpace>;
-export const TopicSpacesListResultValueList = /*@__PURE__*/ S.Array(
+const TopicSpacesListResultValueList = /*@__PURE__*/ S.Array(
   TopicSpace,
 ) as any as S.Schema<TopicSpacesListResultValueList>;
 
@@ -9749,7 +9503,7 @@ export interface TopicSpacesListResult {
   /** A link for the next page of Topic Space. */
   nextLink?: string;
 }
-export const TopicSpacesListResult = /*@__PURE__*/ S.suspend(() =>
+const TopicSpacesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(TopicSpacesListResultValueList),
     nextLink: S.optional(S.String),
@@ -9760,7 +9514,7 @@ export interface ListTopicTypeEventTypesRequest {
   /** Name of the topic type. */
   topicTypeName: string;
 }
-export const ListTopicTypeEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicTypeEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicTypeName: S.String.pipe(T.Label()),
   }).pipe(
@@ -9776,7 +9530,7 @@ export const ListTopicTypeEventTypesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTopicTypeEventTypesRequest>;
 
 export interface ListTopicTypesRequest {}
-export const ListTopicTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -9798,11 +9552,11 @@ export interface TopicTypeInfo {
   /** Properties of the topic type info */
   properties?: TopicTypeProperties;
 }
-export const TopicTypeInfo = GetTopicTypeResponse as any as S.Schema<TopicTypeInfo>;
+const TopicTypeInfo = GetTopicTypeResponse as any as S.Schema<TopicTypeInfo>;
 
 /** A collection of topic types */
 export type TopicTypesListResultValueList = Array<TopicTypeInfo>;
-export const TopicTypesListResultValueList = /*@__PURE__*/ S.Array(
+const TopicTypesListResultValueList = /*@__PURE__*/ S.Array(
   TopicTypeInfo,
 ) as any as S.Schema<TopicTypesListResultValueList>;
 
@@ -9811,7 +9565,7 @@ export interface TopicTypesListResult {
   /** A collection of topic types */
   value?: TopicTypesListResultValueList;
 }
-export const TopicTypesListResult = /*@__PURE__*/ S.suspend(() =>
+const TopicTypesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(TopicTypesListResultValueList),
   }),
@@ -9823,7 +9577,7 @@ export interface ListVerifiedPartnersRequest {
   /** The number of results to return per page for the list operation. Valid range for top parameter is 1 to 100. If not specified, the default number of results to be returned is 20 items per page. */
   _top?: number;
 }
-export const ListVerifiedPartnersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVerifiedPartnersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -9845,16 +9599,12 @@ export type VerifiedPartnerSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const VerifiedPartnerSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type VerifiedPartnerSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const VerifiedPartnerSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface VerifiedPartnerSystemData {
   /** The identity that created the resource. */
@@ -9870,7 +9620,7 @@ export interface VerifiedPartnerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const VerifiedPartnerSystemData =
+const VerifiedPartnerSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<VerifiedPartnerSystemData>;
 
 /** Verified partner information */
@@ -9886,7 +9636,7 @@ export interface VerifiedPartner {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: VerifiedPartnerSystemData;
 }
-export const VerifiedPartner = /*@__PURE__*/ S.suspend(() =>
+const VerifiedPartner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9898,7 +9648,7 @@ export const VerifiedPartner = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of verified partners. */
 export type VerifiedPartnersListResultValueList = Array<VerifiedPartner>;
-export const VerifiedPartnersListResultValueList = /*@__PURE__*/ S.Array(
+const VerifiedPartnersListResultValueList = /*@__PURE__*/ S.Array(
   VerifiedPartner,
 ) as any as S.Schema<VerifiedPartnersListResultValueList>;
 
@@ -9909,7 +9659,7 @@ export interface VerifiedPartnersListResult {
   /** A link for the next page of verified partners if any. */
   nextLink?: string;
 }
-export const VerifiedPartnersListResult = /*@__PURE__*/ S.suspend(() =>
+const VerifiedPartnersListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(VerifiedPartnersListResultValueList),
     nextLink: S.optional(S.String),
@@ -9920,14 +9670,14 @@ export const VerifiedPartnersListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type NamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateRequestTagsMap =
+const NamespacesCreateOrUpdateRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
 
 export interface PrivateEndpointConnectionInput {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PrivateEndpointConnectionProperties),
   }),
@@ -9938,13 +9688,13 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 /** List of private endpoint connections. */
 export type NamespacePropertiesInputPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
-export const NamespacePropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const NamespacePropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionInput,
 ) as any as S.Schema<NamespacePropertiesInputPrivateEndpointConnectionsList>;
 
 /** List of custom domain configurations for the namespace. */
 export type TopicsConfigurationInputCustomDomainsList = Array<CustomDomainConfiguration>;
-export const TopicsConfigurationInputCustomDomainsList =
+const TopicsConfigurationInputCustomDomainsList =
   TopicsConfigurationCustomDomainsList as any as S.Schema<TopicsConfigurationInputCustomDomainsList>;
 
 /** Properties of the Topics Configuration. */
@@ -9952,7 +9702,7 @@ export interface TopicsConfigurationInput {
   /** List of custom domain configurations for the namespace. */
   customDomains?: TopicsConfigurationInputCustomDomainsList;
 }
-export const TopicsConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const TopicsConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDomains: S.optional(TopicsConfigurationInputCustomDomainsList),
   }),
@@ -9960,11 +9710,11 @@ export const TopicsConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
 export type TopicSpacesConfigurationInputState = "Disabled" | "Enabled";
-export const TopicSpacesConfigurationInputState = S.String;
+const TopicSpacesConfigurationInputState = S.String;
 
 /** List of custom domain configurations for the namespace. */
 export type TopicSpacesConfigurationInputCustomDomainsList = Array<CustomDomainConfiguration>;
-export const TopicSpacesConfigurationInputCustomDomainsList =
+const TopicSpacesConfigurationInputCustomDomainsList =
   TopicsConfigurationCustomDomainsList as any as S.Schema<TopicSpacesConfigurationInputCustomDomainsList>;
 
 /** Properties of the Topic Spaces Configuration. */
@@ -9984,7 +9734,7 @@ export interface TopicSpacesConfigurationInput {
   /** List of custom domain configurations for the namespace. */
   customDomains?: TopicSpacesConfigurationInputCustomDomainsList;
 }
-export const TopicSpacesConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const TopicSpacesConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(TopicSpacesConfigurationInputState),
     routeTopicResourceId: S.optional(S.String),
@@ -10000,16 +9750,16 @@ export const TopicSpacesConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" /> */
 export type NamespacePropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const NamespacePropertiesInputPublicNetworkAccess = S.String;
+const NamespacePropertiesInputPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespacePropertiesInputInboundIpRulesList = Array<InboundIpRule>;
-export const NamespacePropertiesInputInboundIpRulesList =
+const NamespacePropertiesInputInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespacePropertiesInputInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
 export type NamespacePropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const NamespacePropertiesInputMinimumTlsVersionAllowed = S.String;
+const NamespacePropertiesInputMinimumTlsVersionAllowed = S.String;
 
 /** Properties of the namespace resource. */
 export interface NamespacePropertiesInput {
@@ -10028,7 +9778,7 @@ export interface NamespacePropertiesInput {
   /** Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported. */
   minimumTlsVersionAllowed?: NamespacePropertiesInputMinimumTlsVersionAllowed | (string & {});
 }
-export const NamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const NamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpointConnections: S.optional(NamespacePropertiesInputPrivateEndpointConnectionsList),
     topicsConfiguration: S.optional(TopicsConfigurationInput),
@@ -10058,7 +9808,7 @@ export interface NamespacesCreateOrUpdateRequest {
   /** Identity information for the Namespace resource. */
   identity?: IdentityInfo;
 }
-export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10082,7 +9832,7 @@ export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type NamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NamespacesCreateOrUpdateResponseTagsMap =
+const NamespacesCreateOrUpdateResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -10091,16 +9841,12 @@ export type NamespacesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespacesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type NamespacesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespacesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface NamespacesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -10116,7 +9862,7 @@ export interface NamespacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespacesCreateOrUpdateResponseSystemData =
+const NamespacesCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<NamespacesCreateOrUpdateResponseSystemData>;
 
 export interface NamespacesCreateOrUpdateResponse {
@@ -10139,7 +9885,7 @@ export interface NamespacesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespacesCreateOrUpdateResponseSystemData;
 }
-export const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10157,7 +9903,7 @@ export const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The event delivery schema for the event subscription. */
 export type SubscriptionPropertiesInputEventDeliverySchema = "CloudEventSchemaV1_0";
-export const SubscriptionPropertiesInputEventDeliverySchema = S.String;
+const SubscriptionPropertiesInputEventDeliverySchema = S.String;
 
 /** Properties of the event subscription. */
 export interface SubscriptionPropertiesInput {
@@ -10170,7 +9916,7 @@ export interface SubscriptionPropertiesInput {
   /** Expiration time of the event subscription. */
   expirationTimeUtc?: string;
 }
-export const SubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deliveryConfiguration: S.optional(DeliveryConfiguration),
     eventDeliverySchema: S.optional(SubscriptionPropertiesInputEventDeliverySchema),
@@ -10195,7 +9941,7 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: SubscriptionPropertiesInput;
 }
-export const NamespaceTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10221,18 +9967,12 @@ export type NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCrea
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -10248,7 +9988,7 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemDat
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
+const NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
   DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
 
 export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponse {
@@ -10263,7 +10003,7 @@ export interface NamespaceTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespaceTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const NamespaceTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10277,11 +10017,11 @@ export const NamespaceTopicEventSubscriptionsCreateOrUpdateResponse = /*@__PURE_
 
 /** Publisher type of the namespace topic. */
 export type NamespaceTopicPropertiesInputPublisherType = "Custom";
-export const NamespaceTopicPropertiesInputPublisherType = S.String;
+const NamespaceTopicPropertiesInputPublisherType = S.String;
 
 /** This determines the format that is expected for incoming events published to the topic. */
 export type NamespaceTopicPropertiesInputInputSchema = "CloudEventSchemaV1_0";
-export const NamespaceTopicPropertiesInputInputSchema = S.String;
+const NamespaceTopicPropertiesInputInputSchema = S.String;
 
 /** Properties of the namespace topic. */
 export interface NamespaceTopicPropertiesInput {
@@ -10292,7 +10032,7 @@ export interface NamespaceTopicPropertiesInput {
   /** Event retention for the namespace topic expressed in days. The property default value is 1 day. Min event retention duration value is 1 day and max event retention duration value is 1 day. */
   eventRetentionInDays?: number;
 }
-export const NamespaceTopicPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopicPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherType: S.optional(NamespaceTopicPropertiesInputPublisherType),
     inputSchema: S.optional(NamespaceTopicPropertiesInputInputSchema),
@@ -10314,7 +10054,7 @@ export interface NamespaceTopicsCreateOrUpdateRequest {
   /** Properties of the namespace topic. */
   properties?: NamespaceTopicPropertiesInput;
 }
-export const NamespaceTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10339,16 +10079,12 @@ export type NamespaceTopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespaceTopicsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type NamespaceTopicsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NamespaceTopicsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface NamespaceTopicsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -10364,7 +10100,7 @@ export interface NamespaceTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NamespaceTopicsCreateOrUpdateResponseSystemData =
+const NamespaceTopicsCreateOrUpdateResponseSystemData =
   AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<NamespaceTopicsCreateOrUpdateResponseSystemData>;
 
 export interface NamespaceTopicsCreateOrUpdateResponse {
@@ -10379,7 +10115,7 @@ export interface NamespaceTopicsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: NamespaceTopicsCreateOrUpdateResponseSystemData;
 }
-export const NamespaceTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10395,7 +10131,7 @@ export const NamespaceTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() 
 export type PartnerConfigurationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerConfigurationsCreateOrUpdateRequestTagsMap =
+const PartnerConfigurationsCreateOrUpdateRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsCreateOrUpdateRequestTagsMap>;
 
 export interface PartnerConfigurationsCreateOrUpdateRequest {
@@ -10410,7 +10146,7 @@ export interface PartnerConfigurationsCreateOrUpdateRequest {
   /** Tags of the resource. */
   tags?: PartnerConfigurationsCreateOrUpdateRequestTagsMap;
 }
-export const PartnerConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10435,16 +10171,12 @@ export type PartnerConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerConfigurationsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerConfigurationsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -10460,14 +10192,14 @@ export interface PartnerConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerConfigurationsCreateOrUpdateResponseSystemData =
+const PartnerConfigurationsCreateOrUpdateResponseSystemData =
   AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponseSystemData>;
 
 /** Tags of the resource. */
 export type PartnerConfigurationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerConfigurationsCreateOrUpdateResponseTagsMap =
+const PartnerConfigurationsCreateOrUpdateResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsCreateOrUpdateResponseTagsMap>;
 
 export interface PartnerConfigurationsCreateOrUpdateResponse {
@@ -10486,7 +10218,7 @@ export interface PartnerConfigurationsCreateOrUpdateResponse {
   /** Tags of the resource. */
   tags?: PartnerConfigurationsCreateOrUpdateResponseTagsMap;
 }
-export const PartnerConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10512,7 +10244,7 @@ export interface PartnerConfigurationsUnauthorizePartnerRequest {
   /** Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration. If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified. */
   authorizationExpirationTimeInUtc?: string;
 }
-export const PartnerConfigurationsUnauthorizePartnerRequest = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfigurationsUnauthorizePartnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10537,16 +10269,12 @@ export type PartnerConfigurationsUnauthorizePartnerResponseSystemDataCreatedByTy
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerConfigurationsUnauthorizePartnerResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerConfigurationsUnauthorizePartnerResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerConfigurationsUnauthorizePartnerResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerConfigurationsUnauthorizePartnerResponseSystemData {
   /** The identity that created the resource. */
@@ -10562,14 +10290,14 @@ export interface PartnerConfigurationsUnauthorizePartnerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerConfigurationsUnauthorizePartnerResponseSystemData =
+const PartnerConfigurationsUnauthorizePartnerResponseSystemData =
   DomainEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponseSystemData>;
 
 /** Tags of the resource. */
 export type PartnerConfigurationsUnauthorizePartnerResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerConfigurationsUnauthorizePartnerResponseTagsMap =
+const PartnerConfigurationsUnauthorizePartnerResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerConfigurationsUnauthorizePartnerResponseTagsMap>;
 
 export interface PartnerConfigurationsUnauthorizePartnerResponse {
@@ -10588,7 +10316,7 @@ export interface PartnerConfigurationsUnauthorizePartnerResponse {
   /** Tags of the resource. */
   tags?: PartnerConfigurationsUnauthorizePartnerResponseTagsMap;
 }
-export const PartnerConfigurationsUnauthorizePartnerResponse = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfigurationsUnauthorizePartnerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10604,27 +10332,27 @@ export const PartnerConfigurationsUnauthorizePartnerResponse = /*@__PURE__*/ S.s
 
 /** Tags of the resource. */
 export type PartnerNamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PartnerNamespacesCreateOrUpdateRequestTagsMap =
+const PartnerNamespacesCreateOrUpdateRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespacesCreateOrUpdateRequestTagsMap>;
 
 /** Minimum TLS version of the publisher allowed to publish to this partner namespace */
 export type PartnerNamespacePropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const PartnerNamespacePropertiesInputMinimumTlsVersionAllowed = S.String;
+const PartnerNamespacePropertiesInputMinimumTlsVersionAllowed = S.String;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" /> */
 export type PartnerNamespacePropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const PartnerNamespacePropertiesInputPublicNetworkAccess = S.String;
+const PartnerNamespacePropertiesInputPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespacePropertiesInputInboundIpRulesList = Array<InboundIpRule>;
-export const PartnerNamespacePropertiesInputInboundIpRulesList =
+const PartnerNamespacePropertiesInputInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespacePropertiesInputInboundIpRulesList>;
 
 /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
 export type PartnerNamespacePropertiesInputPartnerTopicRoutingMode =
   | "SourceEventAttribute"
   | "ChannelNameHeader";
-export const PartnerNamespacePropertiesInputPartnerTopicRoutingMode = S.String;
+const PartnerNamespacePropertiesInputPartnerTopicRoutingMode = S.String;
 
 /** Properties of the partner namespace. */
 export interface PartnerNamespacePropertiesInput {
@@ -10643,7 +10371,7 @@ export interface PartnerNamespacePropertiesInput {
   /** This determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. */
   partnerTopicRoutingMode?: PartnerNamespacePropertiesInputPartnerTopicRoutingMode | (string & {});
 }
-export const PartnerNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PartnerNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerRegistrationFullyQualifiedId: S.optional(S.String),
     minimumTlsVersionAllowed: S.optional(PartnerNamespacePropertiesInputMinimumTlsVersionAllowed),
@@ -10670,7 +10398,7 @@ export interface PartnerNamespacesCreateOrUpdateRequest {
   /** Properties of the Partner Namespace. */
   properties?: PartnerNamespacePropertiesInput;
 }
-export const PartnerNamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PartnerNamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10692,7 +10420,7 @@ export const PartnerNamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Tags of the resource. */
 export type PartnerNamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PartnerNamespacesCreateOrUpdateResponseTagsMap =
+const PartnerNamespacesCreateOrUpdateResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerNamespacesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -10701,16 +10429,12 @@ export type PartnerNamespacesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerNamespacesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerNamespacesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerNamespacesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerNamespacesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -10726,7 +10450,7 @@ export interface PartnerNamespacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerNamespacesCreateOrUpdateResponseSystemData =
+const PartnerNamespacesCreateOrUpdateResponseSystemData =
   AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerNamespacesCreateOrUpdateResponseSystemData>;
 
 export interface PartnerNamespacesCreateOrUpdateResponse {
@@ -10745,7 +10469,7 @@ export interface PartnerNamespacesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerNamespacesCreateOrUpdateResponseSystemData;
 }
-export const PartnerNamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PartnerNamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10763,7 +10487,7 @@ export const PartnerNamespacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend((
 export type PartnerRegistrationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerRegistrationsCreateOrUpdateRequestTagsMap =
+const PartnerRegistrationsCreateOrUpdateRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of the partner registration. */
@@ -10771,7 +10495,7 @@ export interface PartnerRegistrationPropertiesInput {
   /** The immutableId of the corresponding partner registration. Note: This property is marked for deprecation and is not supported in any future GA API version */
   partnerRegistrationImmutableId?: string;
 }
-export const PartnerRegistrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PartnerRegistrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerRegistrationImmutableId: S.optional(S.String),
   }),
@@ -10793,7 +10517,7 @@ export interface PartnerRegistrationsCreateOrUpdateRequest {
   /** Properties of the partner registration. */
   properties?: PartnerRegistrationPropertiesInput;
 }
-export const PartnerRegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PartnerRegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10817,7 +10541,7 @@ export const PartnerRegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 export type PartnerRegistrationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PartnerRegistrationsCreateOrUpdateResponseTagsMap =
+const PartnerRegistrationsCreateOrUpdateResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -10826,16 +10550,12 @@ export type PartnerRegistrationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerRegistrationsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerRegistrationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerRegistrationsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerRegistrationsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -10851,7 +10571,7 @@ export interface PartnerRegistrationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerRegistrationsCreateOrUpdateResponseSystemData =
+const PartnerRegistrationsCreateOrUpdateResponseSystemData =
   AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PartnerRegistrationsCreateOrUpdateResponseSystemData>;
 
 export interface PartnerRegistrationsCreateOrUpdateResponse {
@@ -10870,7 +10590,7 @@ export interface PartnerRegistrationsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerRegistrationsCreateOrUpdateResponseSystemData;
 }
-export const PartnerRegistrationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PartnerRegistrationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10896,7 +10616,7 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
-export const PartnerTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PartnerTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10921,17 +10641,12 @@ export type PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreate
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -10947,9 +10662,6 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData 
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
-  DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
-
 export interface PartnerTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -10962,12 +10674,12 @@ export interface PartnerTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PartnerTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const PartnerTopicEventSubscriptionsCreateOrUpdateResponse =
+const PartnerTopicEventSubscriptionsCreateOrUpdateResponse =
   DomainTopicEventSubscriptionsCreateOrUpdateResponse as any as S.Schema<PartnerTopicEventSubscriptionsCreateOrUpdateResponse>;
 
 /** Tags of the resource. */
 export type PartnerTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PartnerTopicsCreateOrUpdateRequestTagsMap =
+const PartnerTopicsCreateOrUpdateRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicsCreateOrUpdateRequestTagsMap>;
 
 /** Activation state of the partner topic. */
@@ -10975,7 +10687,7 @@ export type PartnerTopicPropertiesInputActivationState =
   | "NeverActivated"
   | "Activated"
   | "Deactivated";
-export const PartnerTopicPropertiesInputActivationState = S.String;
+const PartnerTopicPropertiesInputActivationState = S.String;
 
 /** Properties of the Partner Topic. */
 export interface PartnerTopicPropertiesInput {
@@ -10994,7 +10706,7 @@ export interface PartnerTopicPropertiesInput {
   /** Context or helpful message that can be used during the approval process by the subscriber. */
   messageForActivation?: string;
 }
-export const PartnerTopicPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PartnerTopicPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerRegistrationImmutableId: S.optional(S.String),
     source: S.optional(S.String),
@@ -11024,7 +10736,7 @@ export interface PartnerTopicsCreateOrUpdateRequest {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
-export const PartnerTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PartnerTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11047,7 +10759,7 @@ export const PartnerTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type PartnerTopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PartnerTopicsCreateOrUpdateResponseTagsMap =
+const PartnerTopicsCreateOrUpdateResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<PartnerTopicsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -11056,16 +10768,12 @@ export type PartnerTopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerTopicsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PartnerTopicsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PartnerTopicsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PartnerTopicsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -11081,7 +10789,7 @@ export interface PartnerTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PartnerTopicsCreateOrUpdateResponseSystemData =
+const PartnerTopicsCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<PartnerTopicsCreateOrUpdateResponseSystemData>;
 
 export interface PartnerTopicsCreateOrUpdateResponse {
@@ -11102,7 +10810,7 @@ export interface PartnerTopicsCreateOrUpdateResponse {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
-export const PartnerTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PartnerTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11119,7 +10827,7 @@ export const PartnerTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed permission. */
 export type PermissionBindingPropertiesInputPermission = "Publisher" | "Subscriber";
-export const PermissionBindingPropertiesInputPermission = S.String;
+const PermissionBindingPropertiesInputPermission = S.String;
 
 /** The properties of permission binding. */
 export interface PermissionBindingPropertiesInput {
@@ -11132,7 +10840,7 @@ export interface PermissionBindingPropertiesInput {
   /** The name of the client group resource that the permission is bound to. The client group needs to be a resource under the same namespace the permission binding is a part of. */
   clientGroupName?: string;
 }
-export const PermissionBindingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PermissionBindingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     topicSpaceName: S.optional(S.String),
@@ -11155,7 +10863,7 @@ export interface PermissionBindingsCreateOrUpdateRequest {
   /** The properties of permission binding. */
   properties?: PermissionBindingPropertiesInput;
 }
-export const PermissionBindingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PermissionBindingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11180,16 +10888,12 @@ export type PermissionBindingsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PermissionBindingsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PermissionBindingsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PermissionBindingsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PermissionBindingsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -11205,7 +10909,7 @@ export interface PermissionBindingsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PermissionBindingsCreateOrUpdateResponseSystemData =
+const PermissionBindingsCreateOrUpdateResponseSystemData =
   AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<PermissionBindingsCreateOrUpdateResponseSystemData>;
 
 export interface PermissionBindingsCreateOrUpdateResponse {
@@ -11220,7 +10924,7 @@ export interface PermissionBindingsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PermissionBindingsCreateOrUpdateResponseSystemData;
 }
-export const PermissionBindingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PermissionBindingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11242,7 +10946,7 @@ export interface RegenerateDomainKeyRequest {
   /** Key name to regenerate key1 or key2. */
   keyName: string;
 }
-export const RegenerateDomainKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateDomainKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11270,7 +10974,7 @@ export interface RegenerateNamespaceKeyRequest {
   /** Key name to regenerate key1 or key2. */
   keyName: string;
 }
-export const RegenerateNamespaceKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateNamespaceKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11300,7 +11004,7 @@ export interface RegenerateNamespaceTopicKeyRequest {
   /** Key name to regenerate key1 or key2 */
   keyName: string;
 }
-export const RegenerateNamespaceTopicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateNamespaceTopicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11329,7 +11033,7 @@ export interface RegeneratePartnerNamespaceKeyRequest {
   /** Key name to regenerate (key1 or key2). */
   keyName: string;
 }
-export const RegeneratePartnerNamespaceKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegeneratePartnerNamespaceKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11357,7 +11061,7 @@ export interface RegenerateTopicKeyRequest {
   /** Key name to regenerate key1 or key2 */
   keyName: string;
 }
-export const RegenerateTopicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateTopicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11387,7 +11091,7 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
-export const SystemTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SystemTopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11412,17 +11116,12 @@ export type SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreated
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -11438,9 +11137,6 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData =
-  DomainTopicEventSubscriptionsCreateOrUpdateResponseSystemData as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
-
 export interface SystemTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -11453,12 +11149,12 @@ export interface SystemTopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SystemTopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const SystemTopicEventSubscriptionsCreateOrUpdateResponse =
+const SystemTopicEventSubscriptionsCreateOrUpdateResponse =
   DomainTopicEventSubscriptionsCreateOrUpdateResponse as any as S.Schema<SystemTopicEventSubscriptionsCreateOrUpdateResponse>;
 
 /** Tags of the resource. */
 export type SystemTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SystemTopicsCreateOrUpdateRequestTagsMap =
+const SystemTopicsCreateOrUpdateRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of the System Topic. */
@@ -11468,7 +11164,7 @@ export interface SystemTopicPropertiesInput {
   /** TopicType for the system topic. */
   topicType?: string;
 }
-export const SystemTopicPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SystemTopicPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String),
     topicType: S.optional(S.String),
@@ -11493,7 +11189,7 @@ export interface SystemTopicsCreateOrUpdateRequest {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
-export const SystemTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SystemTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11516,7 +11212,7 @@ export const SystemTopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type SystemTopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SystemTopicsCreateOrUpdateResponseTagsMap =
+const SystemTopicsCreateOrUpdateResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<SystemTopicsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -11525,16 +11221,12 @@ export type SystemTopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SystemTopicsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemTopicsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SystemTopicsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemTopicsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -11550,7 +11242,7 @@ export interface SystemTopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemTopicsCreateOrUpdateResponseSystemData =
+const SystemTopicsCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<SystemTopicsCreateOrUpdateResponseSystemData>;
 
 export interface SystemTopicsCreateOrUpdateResponse {
@@ -11571,7 +11263,7 @@ export interface SystemTopicsCreateOrUpdateResponse {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
-export const SystemTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SystemTopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11598,7 +11290,7 @@ export interface TopicEventSubscriptionsCreateOrUpdateRequest {
   /** Properties of the event subscription. */
   properties?: EventSubscriptionPropertiesInput;
 }
-export const TopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TopicEventSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11623,16 +11315,12 @@ export type TopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TopicEventSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type TopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TopicEventSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface TopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -11648,9 +11336,6 @@ export interface TopicEventSubscriptionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicEventSubscriptionsCreateOrUpdateResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponseSystemData>;
-
 export interface TopicEventSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -11663,37 +11348,37 @@ export interface TopicEventSubscriptionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicEventSubscriptionsCreateOrUpdateResponseSystemData;
 }
-export const TopicEventSubscriptionsCreateOrUpdateResponse =
+const TopicEventSubscriptionsCreateOrUpdateResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<TopicEventSubscriptionsCreateOrUpdateResponse>;
 
 /** Tags of the resource. */
 export type TopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const TopicsCreateOrUpdateRequestTagsMap =
+const TopicsCreateOrUpdateRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicsCreateOrUpdateRequestTagsMap>;
 
 /** Minimum TLS version of the publisher allowed to publish to this topic */
 export type TopicPropertiesInputMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const TopicPropertiesInputMinimumTlsVersionAllowed = S.String;
+const TopicPropertiesInputMinimumTlsVersionAllowed = S.String;
 
 /** This determines the format that Event Grid should expect for incoming events published to the topic. */
 export type TopicPropertiesInputInputSchema =
   | "EventGridSchema"
   | "CustomEventSchema"
   | "CloudEventSchemaV1_0";
-export const TopicPropertiesInputInputSchema = S.String;
+const TopicPropertiesInputInputSchema = S.String;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" /> */
 export type TopicPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const TopicPropertiesInputPublicNetworkAccess = S.String;
+const TopicPropertiesInputPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicPropertiesInputInboundIpRulesList = Array<InboundIpRule>;
-export const TopicPropertiesInputInboundIpRulesList =
+const TopicPropertiesInputInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicPropertiesInputInboundIpRulesList>;
 
 /** Data Residency Boundary of the resource. */
 export type TopicPropertiesInputDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
-export const TopicPropertiesInputDataResidencyBoundary = S.String;
+const TopicPropertiesInputDataResidencyBoundary = S.String;
 
 /** Properties of the Topic. */
 export interface TopicPropertiesInput {
@@ -11714,7 +11399,7 @@ export interface TopicPropertiesInput {
   /** Data Residency Boundary of the resource. */
   dataResidencyBoundary?: TopicPropertiesInputDataResidencyBoundary | (string & {});
 }
-export const TopicPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const TopicPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTypeInfo: S.optional(EventTypeInfo),
     minimumTlsVersionAllowed: S.optional(TopicPropertiesInputMinimumTlsVersionAllowed),
@@ -11743,7 +11428,7 @@ export interface TopicsCreateOrUpdateRequest {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
-export const TopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11766,7 +11451,7 @@ export const TopicsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type TopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const TopicsCreateOrUpdateResponseTagsMap =
+const TopicsCreateOrUpdateResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<TopicsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -11775,16 +11460,12 @@ export type TopicsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TopicsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type TopicsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TopicsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface TopicsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -11800,7 +11481,7 @@ export interface TopicsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicsCreateOrUpdateResponseSystemData =
+const TopicsCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<TopicsCreateOrUpdateResponseSystemData>;
 
 export interface TopicsCreateOrUpdateResponse {
@@ -11821,7 +11502,7 @@ export interface TopicsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicsCreateOrUpdateResponseSystemData;
 }
-export const TopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const TopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11838,7 +11519,7 @@ export const TopicsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
 export type TopicSpacePropertiesInputTopicTemplatesList = Array<string>;
-export const TopicSpacePropertiesInputTopicTemplatesList =
+const TopicSpacePropertiesInputTopicTemplatesList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<TopicSpacePropertiesInputTopicTemplatesList>;
 
 /** The properties of topic space. */
@@ -11848,7 +11529,7 @@ export interface TopicSpacePropertiesInput {
   /** The topic filters in the topic space. Example: "topicTemplates": [ "devices/foo/bar", "devices/topic1/+", "devices/${principal.name}/${principal.attributes.keyName}" ]. */
   topicTemplates?: TopicSpacePropertiesInputTopicTemplatesList;
 }
-export const TopicSpacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const TopicSpacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     topicTemplates: S.optional(TopicSpacePropertiesInputTopicTemplatesList),
@@ -11869,7 +11550,7 @@ export interface TopicSpacesCreateOrUpdateRequest {
   /** The properties of topic space. */
   properties?: TopicSpacePropertiesInput;
 }
-export const TopicSpacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TopicSpacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11894,16 +11575,12 @@ export type TopicSpacesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TopicSpacesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type TopicSpacesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TopicSpacesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface TopicSpacesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -11919,7 +11596,7 @@ export interface TopicSpacesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TopicSpacesCreateOrUpdateResponseSystemData =
+const TopicSpacesCreateOrUpdateResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<TopicSpacesCreateOrUpdateResponseSystemData>;
 
 export interface TopicSpacesCreateOrUpdateResponse {
@@ -11934,7 +11611,7 @@ export interface TopicSpacesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: TopicSpacesCreateOrUpdateResponseSystemData;
 }
-export const TopicSpacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const TopicSpacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11951,7 +11628,7 @@ export interface PartnerUpdateTopicInfo {
   /** Event type info for the partner topic */
   eventTypeInfo?: EventTypeInfo;
 }
-export const PartnerUpdateTopicInfo = /*@__PURE__*/ S.suspend(() =>
+const PartnerUpdateTopicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTypeInfo: S.optional(EventTypeInfo),
   }),
@@ -11964,7 +11641,7 @@ export interface ChannelUpdateParametersProperties {
   /** Partner topic properties which can be updated if the channel is of type PartnerTopic. */
   partnerTopicInfo?: PartnerUpdateTopicInfo;
 }
-export const ChannelUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
+const ChannelUpdateParametersProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTimeIfNotActivatedUtc: S.optional(S.String),
     partnerTopicInfo: S.optional(PartnerUpdateTopicInfo),
@@ -11984,7 +11661,7 @@ export interface UpdateChannelRequest {
   channelName: string;
   properties?: ChannelUpdateParametersProperties;
 }
-export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12002,30 +11679,29 @@ export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateChannelRequest" }) as any as S.Schema<UpdateChannelRequest>;
 
 export interface UpdateChannelResponse {}
-export const UpdateChannelResponse =
-  DeleteCaCertificateResponse as any as S.Schema<UpdateChannelResponse>;
+const UpdateChannelResponse = DeleteCaCertificateResponse as any as S.Schema<UpdateChannelResponse>;
 
 /** Tags of the domains resource. */
 export type UpdateDomainRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainRequestTagsMap =
+const UpdateDomainRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateDomainRequestTagsMap>;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainUpdateParameterProperties.InboundIpRules" /> */
 export type DomainUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const DomainUpdateParameterPropertiesPublicNetworkAccess = S.String;
+const DomainUpdateParameterPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type DomainUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const DomainUpdateParameterPropertiesInboundIpRulesList =
+const DomainUpdateParameterPropertiesInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<DomainUpdateParameterPropertiesInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type DomainUpdateParameterPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const DomainUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
+const DomainUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
 
 /** The data residency boundary for the domain. */
 export type DomainUpdateParameterPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
-export const DomainUpdateParameterPropertiesDataResidencyBoundary = S.String;
+const DomainUpdateParameterPropertiesDataResidencyBoundary = S.String;
 
 /** Information of domain update parameter properties. */
 export interface DomainUpdateParameterProperties {
@@ -12048,7 +11724,7 @@ export interface DomainUpdateParameterProperties {
   /** The eventTypeInfo for the domain. */
   eventTypeInfo?: EventTypeInfo;
 }
-export const DomainUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
+const DomainUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(DomainUpdateParameterPropertiesPublicNetworkAccess),
     inboundIpRules: S.optional(DomainUpdateParameterPropertiesInboundIpRulesList),
@@ -12077,7 +11753,7 @@ export interface UpdateDomainRequest {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
-export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12096,12 +11772,11 @@ export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDomainRequest" }) as any as S.Schema<UpdateDomainRequest>;
 
 export interface UpdateDomainResponse {}
-export const UpdateDomainResponse =
-  DeleteCaCertificateResponse as any as S.Schema<UpdateDomainResponse>;
+const UpdateDomainResponse = DeleteCaCertificateResponse as any as S.Schema<UpdateDomainResponse>;
 
 /** List of user defined labels. */
 export type UpdateDomainEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateDomainEventSubscriptionRequestLabelsList =
+const UpdateDomainEventSubscriptionRequestLabelsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateDomainEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
@@ -12109,7 +11784,7 @@ export type UpdateDomainEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
-export const UpdateDomainEventSubscriptionRequestEventDeliverySchema = S.String;
+const UpdateDomainEventSubscriptionRequestEventDeliverySchema = S.String;
 
 export interface UpdateDomainEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -12139,7 +11814,7 @@ export interface UpdateDomainEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
-export const UpdateDomainEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12172,16 +11847,12 @@ export type UpdateDomainEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateDomainEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateDomainEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateDomainEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateDomainEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -12197,9 +11868,6 @@ export interface UpdateDomainEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateDomainEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateDomainEventSubscriptionResponseSystemData>;
-
 export interface UpdateDomainEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -12212,12 +11880,12 @@ export interface UpdateDomainEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDomainEventSubscriptionResponseSystemData;
 }
-export const UpdateDomainEventSubscriptionResponse =
+const UpdateDomainEventSubscriptionResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateDomainEventSubscriptionResponse>;
 
 /** List of user defined labels. */
 export type UpdateDomainTopicEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateDomainTopicEventSubscriptionRequestLabelsList =
+const UpdateDomainTopicEventSubscriptionRequestLabelsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateDomainTopicEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
@@ -12225,7 +11893,7 @@ export type UpdateDomainTopicEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
-export const UpdateDomainTopicEventSubscriptionRequestEventDeliverySchema = S.String;
+const UpdateDomainTopicEventSubscriptionRequestEventDeliverySchema = S.String;
 
 export interface UpdateDomainTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -12259,7 +11927,7 @@ export interface UpdateDomainTopicEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
-export const UpdateDomainTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12293,16 +11961,12 @@ export type UpdateDomainTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateDomainTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateDomainTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateDomainTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateDomainTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -12318,9 +11982,6 @@ export interface UpdateDomainTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateDomainTopicEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateDomainTopicEventSubscriptionResponseSystemData>;
-
 export interface UpdateDomainTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -12333,12 +11994,12 @@ export interface UpdateDomainTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDomainTopicEventSubscriptionResponseSystemData;
 }
-export const UpdateDomainTopicEventSubscriptionResponse =
+const UpdateDomainTopicEventSubscriptionResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateDomainTopicEventSubscriptionResponse>;
 
 /** List of user defined labels. */
 export type UpdateEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateEventSubscriptionRequestLabelsList =
+const UpdateEventSubscriptionRequestLabelsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
@@ -12346,7 +12007,7 @@ export type UpdateEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
-export const UpdateEventSubscriptionRequestEventDeliverySchema = S.String;
+const UpdateEventSubscriptionRequestEventDeliverySchema = S.String;
 
 export interface UpdateEventSubscriptionRequest {
   /** The scope of existing event subscription. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic. */
@@ -12372,7 +12033,7 @@ export interface UpdateEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
-export const UpdateEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     eventSubscriptionName: S.String.pipe(T.Label()),
@@ -12403,16 +12064,12 @@ export type UpdateEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -12428,9 +12085,6 @@ export interface UpdateEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateEventSubscriptionResponseSystemData =
-  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateEventSubscriptionResponseSystemData>;
-
 export interface UpdateEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -12443,21 +12097,21 @@ export interface UpdateEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateEventSubscriptionResponseSystemData;
 }
-export const UpdateEventSubscriptionResponse =
+const UpdateEventSubscriptionResponse =
   GetDomainEventSubscriptionResponse as any as S.Schema<UpdateEventSubscriptionResponse>;
 
 /** Tags of the namespace resource. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceRequestTagsMap =
+const UpdateNamespaceRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
 
 /** Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled. */
 export type UpdateTopicSpacesConfigurationInfoState = "Disabled" | "Enabled";
-export const UpdateTopicSpacesConfigurationInfoState = S.String;
+const UpdateTopicSpacesConfigurationInfoState = S.String;
 
 /** Custom domain info for topic spaces configuration. */
 export type UpdateTopicSpacesConfigurationInfoCustomDomainsList = Array<CustomDomainConfiguration>;
-export const UpdateTopicSpacesConfigurationInfoCustomDomainsList =
+const UpdateTopicSpacesConfigurationInfoCustomDomainsList =
   TopicsConfigurationCustomDomainsList as any as S.Schema<UpdateTopicSpacesConfigurationInfoCustomDomainsList>;
 
 /** Properties of the topic spaces configuration info of a namespace. */
@@ -12477,7 +12131,7 @@ export interface UpdateTopicSpacesConfigurationInfo {
   /** Custom domain info for topic spaces configuration. */
   customDomains?: UpdateTopicSpacesConfigurationInfoCustomDomainsList;
 }
-export const UpdateTopicSpacesConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
+const UpdateTopicSpacesConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(UpdateTopicSpacesConfigurationInfoState),
     routeTopicResourceId: S.optional(S.String),
@@ -12493,7 +12147,7 @@ export const UpdateTopicSpacesConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom domain info for topics configuration. */
 export type UpdateTopicsConfigurationInfoCustomDomainsList = Array<CustomDomainConfiguration>;
-export const UpdateTopicsConfigurationInfoCustomDomainsList =
+const UpdateTopicsConfigurationInfoCustomDomainsList =
   TopicsConfigurationCustomDomainsList as any as S.Schema<UpdateTopicsConfigurationInfoCustomDomainsList>;
 
 /** Properties of the topics configuration info of a namespace. */
@@ -12501,7 +12155,7 @@ export interface UpdateTopicsConfigurationInfo {
   /** Custom domain info for topics configuration. */
   customDomains?: UpdateTopicsConfigurationInfoCustomDomainsList;
 }
-export const UpdateTopicsConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
+const UpdateTopicsConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDomains: S.optional(UpdateTopicsConfigurationInfoCustomDomainsList),
   }),
@@ -12511,11 +12165,11 @@ export const UpdateTopicsConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceUpdateParameterProperties.InboundIpRules" /> */
 export type NamespaceUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const NamespaceUpdateParameterPropertiesPublicNetworkAccess = S.String;
+const NamespaceUpdateParameterPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type NamespaceUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const NamespaceUpdateParameterPropertiesInboundIpRulesList =
+const NamespaceUpdateParameterPropertiesInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<NamespaceUpdateParameterPropertiesInboundIpRulesList>;
 
 /** Information of namespace update parameter properties. */
@@ -12529,7 +12183,7 @@ export interface NamespaceUpdateParameterProperties {
   /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
   inboundIpRules?: NamespaceUpdateParameterPropertiesInboundIpRulesList;
 }
-export const NamespaceUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
+const NamespaceUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicSpacesConfiguration: S.optional(UpdateTopicSpacesConfigurationInfo),
     topicsConfiguration: S.optional(UpdateTopicsConfigurationInfo),
@@ -12556,7 +12210,7 @@ export interface UpdateNamespaceRequest {
   /** Properties of the namespace resource. */
   properties?: NamespaceUpdateParameterProperties;
 }
-export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12577,7 +12231,7 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNamespaceResponseTagsMap =
+const UpdateNamespaceResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateNamespaceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -12586,16 +12240,12 @@ export type UpdateNamespaceResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateNamespaceResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateNamespaceResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateNamespaceResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateNamespaceResponseSystemData {
   /** The identity that created the resource. */
@@ -12611,7 +12261,7 @@ export interface UpdateNamespaceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateNamespaceResponseSystemData =
+const UpdateNamespaceResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateNamespaceResponseSystemData>;
 
 export interface UpdateNamespaceResponse {
@@ -12634,7 +12284,7 @@ export interface UpdateNamespaceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceResponseSystemData;
 }
-export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12653,7 +12303,7 @@ export interface NamespaceTopicUpdateParameterProperties {
   /** Event retention for the namespace topic expressed in days. The property default value is 1 day. Min event retention duration value is 1 day and max event retention duration value is 1 day. */
   eventRetentionInDays?: number;
 }
-export const NamespaceTopicUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
+const NamespaceTopicUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventRetentionInDays: S.optional(S.Number),
   }),
@@ -12673,7 +12323,7 @@ export interface UpdateNamespaceTopicRequest {
   /** Properties of the namespace topic resource. */
   properties?: NamespaceTopicUpdateParameterProperties;
 }
-export const UpdateNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12698,16 +12348,12 @@ export type UpdateNamespaceTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateNamespaceTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateNamespaceTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateNamespaceTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateNamespaceTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -12723,9 +12369,6 @@ export interface UpdateNamespaceTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateNamespaceTopicResponseSystemData =
-  ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateNamespaceTopicResponseSystemData>;
-
 export interface UpdateNamespaceTopicResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -12738,13 +12381,11 @@ export interface UpdateNamespaceTopicResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceTopicResponseSystemData;
 }
-export const UpdateNamespaceTopicResponse =
+const UpdateNamespaceTopicResponse =
   GetNamespaceTopicResponse as any as S.Schema<UpdateNamespaceTopicResponse>;
 
 /** The event delivery schema for the event subscription. */
 export type SubscriptionUpdateParametersPropertiesEventDeliverySchema = "CloudEventSchemaV1_0";
-export const SubscriptionUpdateParametersPropertiesEventDeliverySchema = S.String;
-
 /** Properties of the Event Subscription update parameters. */
 export interface SubscriptionUpdateParametersProperties {
   /** Information about the delivery configuration of the event subscription. */
@@ -12756,7 +12397,7 @@ export interface SubscriptionUpdateParametersProperties {
   /** Expiration time of the event subscription. */
   expirationTimeUtc?: string;
 }
-export const SubscriptionUpdateParametersProperties =
+const SubscriptionUpdateParametersProperties =
   SubscriptionPropertiesInput as any as S.Schema<SubscriptionUpdateParametersProperties>;
 
 export interface UpdateNamespaceTopicEventSubscriptionRequest {
@@ -12772,7 +12413,7 @@ export interface UpdateNamespaceTopicEventSubscriptionRequest {
   eventSubscriptionName: string;
   properties?: SubscriptionUpdateParametersProperties;
 }
-export const UpdateNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12798,16 +12439,12 @@ export type UpdateNamespaceTopicEventSubscriptionResponseSystemDataCreatedByType
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateNamespaceTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateNamespaceTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateNamespaceTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateNamespaceTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -12823,9 +12460,6 @@ export interface UpdateNamespaceTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateNamespaceTopicEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponseSystemData>;
-
 export interface UpdateNamespaceTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -12838,12 +12472,12 @@ export interface UpdateNamespaceTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateNamespaceTopicEventSubscriptionResponseSystemData;
 }
-export const UpdateNamespaceTopicEventSubscriptionResponse =
+const UpdateNamespaceTopicEventSubscriptionResponse =
   GetNamespaceTopicEventSubscriptionResponse as any as S.Schema<UpdateNamespaceTopicEventSubscriptionResponse>;
 
 /** Tags of the partner configuration resource. */
 export type UpdatePartnerConfigurationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerConfigurationRequestTagsMap =
+const UpdatePartnerConfigurationRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerConfigurationRequestTagsMap>;
 
 /** Information of partner configuration update parameter properties. */
@@ -12851,7 +12485,7 @@ export interface PartnerConfigurationUpdateParameterProperties {
   /** The default time used to validate the maximum expiration time for each authorized partners in days. Allowed values ar between 1 and 365 days. */
   defaultMaximumExpirationTimeInDays?: number;
 }
-export const PartnerConfigurationUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
+const PartnerConfigurationUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultMaximumExpirationTimeInDays: S.optional(S.Number),
   }),
@@ -12869,7 +12503,7 @@ export interface UpdatePartnerConfigurationRequest {
   /** Properties of the Topic resource. */
   properties?: PartnerConfigurationUpdateParameterProperties;
 }
-export const UpdatePartnerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePartnerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12893,16 +12527,12 @@ export type UpdatePartnerConfigurationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdatePartnerConfigurationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdatePartnerConfigurationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdatePartnerConfigurationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdatePartnerConfigurationResponseSystemData {
   /** The identity that created the resource. */
@@ -12918,12 +12548,12 @@ export interface UpdatePartnerConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdatePartnerConfigurationResponseSystemData =
+const UpdatePartnerConfigurationResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdatePartnerConfigurationResponseSystemData>;
 
 /** Tags of the resource. */
 export type UpdatePartnerConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerConfigurationResponseTagsMap =
+const UpdatePartnerConfigurationResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerConfigurationResponseTagsMap>;
 
 export interface UpdatePartnerConfigurationResponse {
@@ -12942,7 +12572,7 @@ export interface UpdatePartnerConfigurationResponse {
   /** Tags of the resource. */
   tags?: UpdatePartnerConfigurationResponseTagsMap;
 }
-export const UpdatePartnerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdatePartnerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12958,16 +12588,16 @@ export const UpdatePartnerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the Partner Namespace. */
 export type UpdatePartnerNamespaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerNamespaceRequestTagsMap =
+const UpdatePartnerNamespaceRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerNamespaceRequestTagsMap>;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceUpdateParameterProperties.InboundIpRules" /> */
 export type PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess = S.String;
+const PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList =
+const PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
@@ -12975,7 +12605,7 @@ export type PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed =
   | "1.0"
   | "1.1"
   | "1.2";
-export const PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
+const PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
 
 /** Information of Partner Namespace update parameter properties. */
 export interface PartnerNamespaceUpdateParameterProperties {
@@ -12992,7 +12622,7 @@ export interface PartnerNamespaceUpdateParameterProperties {
   /** This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace. */
   disableLocalAuth?: boolean;
 }
-export const PartnerNamespaceUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
+const PartnerNamespaceUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess),
     inboundIpRules: S.optional(PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList),
@@ -13017,7 +12647,7 @@ export interface UpdatePartnerNamespaceRequest {
   /** Properties of the Partner Namespace. */
   properties?: PartnerNamespaceUpdateParameterProperties;
 }
-export const UpdatePartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13037,12 +12667,12 @@ export const UpdatePartnerNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePartnerNamespaceRequest>;
 
 export interface UpdatePartnerNamespaceResponse {}
-export const UpdatePartnerNamespaceResponse =
+const UpdatePartnerNamespaceResponse =
   DeleteCaCertificateResponse as any as S.Schema<UpdatePartnerNamespaceResponse>;
 
 /** Tags of the partner registration resource. */
 export type UpdatePartnerRegistrationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerRegistrationRequestTagsMap =
+const UpdatePartnerRegistrationRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerRegistrationRequestTagsMap>;
 
 export interface UpdatePartnerRegistrationRequest {
@@ -13055,7 +12685,7 @@ export interface UpdatePartnerRegistrationRequest {
   /** Tags of the partner registration resource. */
   tags?: UpdatePartnerRegistrationRequestTagsMap;
 }
-export const UpdatePartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13074,12 +12704,12 @@ export const UpdatePartnerRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePartnerRegistrationRequest>;
 
 export interface UpdatePartnerRegistrationResponse {}
-export const UpdatePartnerRegistrationResponse =
+const UpdatePartnerRegistrationResponse =
   DeleteDomainEventSubscriptionResponse as any as S.Schema<UpdatePartnerRegistrationResponse>;
 
 /** Tags of the Partner Topic resource. */
 export type UpdatePartnerTopicRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePartnerTopicRequestTagsMap =
+const UpdatePartnerTopicRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdatePartnerTopicRequestTagsMap>;
 
 export interface UpdatePartnerTopicRequest {
@@ -13094,7 +12724,7 @@ export interface UpdatePartnerTopicRequest {
   /** Identity information for the Partner Topic resource. */
   identity?: IdentityInfo;
 }
-export const UpdatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13114,12 +12744,12 @@ export const UpdatePartnerTopicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePartnerTopicRequest>;
 
 export interface UpdatePartnerTopicResponse {}
-export const UpdatePartnerTopicResponse =
+const UpdatePartnerTopicResponse =
   DeleteCaCertificateResponse as any as S.Schema<UpdatePartnerTopicResponse>;
 
 /** List of user defined labels. */
 export type UpdatePartnerTopicEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdatePartnerTopicEventSubscriptionRequestLabelsList =
+const UpdatePartnerTopicEventSubscriptionRequestLabelsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdatePartnerTopicEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
@@ -13127,7 +12757,7 @@ export type UpdatePartnerTopicEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
-export const UpdatePartnerTopicEventSubscriptionRequestEventDeliverySchema = S.String;
+const UpdatePartnerTopicEventSubscriptionRequestEventDeliverySchema = S.String;
 
 export interface UpdatePartnerTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -13159,7 +12789,7 @@ export interface UpdatePartnerTopicEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
-export const UpdatePartnerTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePartnerTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13192,16 +12822,12 @@ export type UpdatePartnerTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdatePartnerTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdatePartnerTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdatePartnerTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdatePartnerTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -13217,9 +12843,6 @@ export interface UpdatePartnerTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdatePartnerTopicEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponseSystemData>;
-
 export interface UpdatePartnerTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -13232,7 +12855,7 @@ export interface UpdatePartnerTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdatePartnerTopicEventSubscriptionResponseSystemData;
 }
-export const UpdatePartnerTopicEventSubscriptionResponse =
+const UpdatePartnerTopicEventSubscriptionResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdatePartnerTopicEventSubscriptionResponse>;
 
 export type UpdatePrivateEndpointConnectionRequestParentType =
@@ -13240,7 +12863,7 @@ export type UpdatePrivateEndpointConnectionRequestParentType =
   | "domains"
   | "partnerNamespaces"
   | "namespaces";
-export const UpdatePrivateEndpointConnectionRequestParentType = S.String;
+const UpdatePrivateEndpointConnectionRequestParentType = S.String;
 
 export interface UpdatePrivateEndpointConnectionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -13256,7 +12879,7 @@ export interface UpdatePrivateEndpointConnectionRequest {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13286,12 +12909,12 @@ export interface UpdatePrivateEndpointConnectionResponse {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdatePrivateEndpointConnectionResponse =
+const UpdatePrivateEndpointConnectionResponse =
   PrivateEndpointConnection as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
 
 /** Tags of the system topic. */
 export type UpdateSystemTopicRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSystemTopicRequestTagsMap =
+const UpdateSystemTopicRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateSystemTopicRequestTagsMap>;
 
 export interface UpdateSystemTopicRequest {
@@ -13306,7 +12929,7 @@ export interface UpdateSystemTopicRequest {
   /** Resource identity information. */
   identity?: IdentityInfo;
 }
-export const UpdateSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13325,7 +12948,7 @@ export const UpdateSystemTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags of the resource. */
 export type UpdateSystemTopicResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSystemTopicResponseTagsMap =
+const UpdateSystemTopicResponseTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateSystemTopicResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -13334,16 +12957,12 @@ export type UpdateSystemTopicResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateSystemTopicResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateSystemTopicResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateSystemTopicResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateSystemTopicResponseSystemData {
   /** The identity that created the resource. */
@@ -13359,7 +12978,7 @@ export interface UpdateSystemTopicResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateSystemTopicResponseSystemData =
+const UpdateSystemTopicResponseSystemData =
   ActivatePartnerTopicResponseSystemData as any as S.Schema<UpdateSystemTopicResponseSystemData>;
 
 export interface UpdateSystemTopicResponse {
@@ -13380,7 +12999,7 @@ export interface UpdateSystemTopicResponse {
   /** Identity information for the resource. */
   identity?: IdentityInfo;
 }
-export const UpdateSystemTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateSystemTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13397,7 +13016,7 @@ export const UpdateSystemTopicResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user defined labels. */
 export type UpdateSystemTopicEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateSystemTopicEventSubscriptionRequestLabelsList =
+const UpdateSystemTopicEventSubscriptionRequestLabelsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateSystemTopicEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
@@ -13405,7 +13024,7 @@ export type UpdateSystemTopicEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
-export const UpdateSystemTopicEventSubscriptionRequestEventDeliverySchema = S.String;
+const UpdateSystemTopicEventSubscriptionRequestEventDeliverySchema = S.String;
 
 export interface UpdateSystemTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -13437,7 +13056,7 @@ export interface UpdateSystemTopicEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
-export const UpdateSystemTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSystemTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13470,16 +13089,12 @@ export type UpdateSystemTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateSystemTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateSystemTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateSystemTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateSystemTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -13495,9 +13110,6 @@ export interface UpdateSystemTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateSystemTopicEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateSystemTopicEventSubscriptionResponseSystemData>;
-
 export interface UpdateSystemTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -13510,30 +13122,30 @@ export interface UpdateSystemTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateSystemTopicEventSubscriptionResponseSystemData;
 }
-export const UpdateSystemTopicEventSubscriptionResponse =
+const UpdateSystemTopicEventSubscriptionResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateSystemTopicEventSubscriptionResponse>;
 
 /** Tags of the Topic resource. */
 export type UpdateTopicRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateTopicRequestTagsMap =
+const UpdateTopicRequestTagsMap =
   ActivatePartnerTopicResponseTagsMap as any as S.Schema<UpdateTopicRequestTagsMap>;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicUpdateParameterProperties.InboundIpRules" /> */
 export type TopicUpdateParameterPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const TopicUpdateParameterPropertiesPublicNetworkAccess = S.String;
+const TopicUpdateParameterPropertiesPublicNetworkAccess = S.String;
 
 /** This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled. */
 export type TopicUpdateParameterPropertiesInboundIpRulesList = Array<InboundIpRule>;
-export const TopicUpdateParameterPropertiesInboundIpRulesList =
+const TopicUpdateParameterPropertiesInboundIpRulesList =
   DomainPropertiesInputInboundIpRulesList as any as S.Schema<TopicUpdateParameterPropertiesInboundIpRulesList>;
 
 /** Minimum TLS version of the publisher allowed to publish to this domain */
 export type TopicUpdateParameterPropertiesMinimumTlsVersionAllowed = "1.0" | "1.1" | "1.2";
-export const TopicUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
+const TopicUpdateParameterPropertiesMinimumTlsVersionAllowed = S.String;
 
 /** The data residency boundary for the topic. */
 export type TopicUpdateParameterPropertiesDataResidencyBoundary = "WithinGeopair" | "WithinRegion";
-export const TopicUpdateParameterPropertiesDataResidencyBoundary = S.String;
+const TopicUpdateParameterPropertiesDataResidencyBoundary = S.String;
 
 /** Information of topic update parameter properties. */
 export interface TopicUpdateParameterProperties {
@@ -13550,7 +13162,7 @@ export interface TopicUpdateParameterProperties {
   /** The eventTypeInfo for the topic. */
   eventTypeInfo?: EventTypeInfo;
 }
-export const TopicUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
+const TopicUpdateParameterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(TopicUpdateParameterPropertiesPublicNetworkAccess),
     inboundIpRules: S.optional(TopicUpdateParameterPropertiesInboundIpRulesList),
@@ -13577,7 +13189,7 @@ export interface UpdateTopicRequest {
   /** Properties of the Topic resource. */
   properties?: TopicUpdateParameterProperties;
 }
-export const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13596,12 +13208,11 @@ export const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTopicRequest" }) as any as S.Schema<UpdateTopicRequest>;
 
 export interface UpdateTopicResponse {}
-export const UpdateTopicResponse =
-  DeleteCaCertificateResponse as any as S.Schema<UpdateTopicResponse>;
+const UpdateTopicResponse = DeleteCaCertificateResponse as any as S.Schema<UpdateTopicResponse>;
 
 /** List of user defined labels. */
 export type UpdateTopicEventSubscriptionRequestLabelsList = Array<string>;
-export const UpdateTopicEventSubscriptionRequestLabelsList =
+const UpdateTopicEventSubscriptionRequestLabelsList =
   ClientCertificateAuthenticationAllowedThumbprintsList as any as S.Schema<UpdateTopicEventSubscriptionRequestLabelsList>;
 
 /** The event delivery schema for the event subscription. */
@@ -13609,7 +13220,7 @@ export type UpdateTopicEventSubscriptionRequestEventDeliverySchema =
   | "EventGridSchema"
   | "CustomInputSchema"
   | "CloudEventSchemaV1_0";
-export const UpdateTopicEventSubscriptionRequestEventDeliverySchema = S.String;
+const UpdateTopicEventSubscriptionRequestEventDeliverySchema = S.String;
 
 export interface UpdateTopicEventSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -13639,7 +13250,7 @@ export interface UpdateTopicEventSubscriptionRequest {
   /** The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination. Uses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering. */
   deadLetterWithResourceIdentity?: DeadLetterWithResourceIdentity;
 }
-export const UpdateTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTopicEventSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13672,16 +13283,12 @@ export type UpdateTopicEventSubscriptionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateTopicEventSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateTopicEventSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateTopicEventSubscriptionResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateTopicEventSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -13697,9 +13304,6 @@ export interface UpdateTopicEventSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateTopicEventSubscriptionResponseSystemData =
-  AuthorizePartnerConfigurationPartnerResponseSystemData as any as S.Schema<UpdateTopicEventSubscriptionResponseSystemData>;
-
 export interface UpdateTopicEventSubscriptionResponse {
   /** Fully qualified identifier of the resource. */
   id?: string;
@@ -13712,7 +13316,7 @@ export interface UpdateTopicEventSubscriptionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateTopicEventSubscriptionResponseSystemData;
 }
-export const UpdateTopicEventSubscriptionResponse =
+const UpdateTopicEventSubscriptionResponse =
   EventSubscriptionsCreateOrUpdateResponse as any as S.Schema<UpdateTopicEventSubscriptionResponse>;
 
 export interface ValidateNamespaceCustomDomainOwnershipRequest {
@@ -13723,7 +13327,7 @@ export interface ValidateNamespaceCustomDomainOwnershipRequest {
   /** Name of the Namespace. */
   namespaceName: string;
 }
-export const ValidateNamespaceCustomDomainOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateNamespaceCustomDomainOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13743,7 +13347,7 @@ export const ValidateNamespaceCustomDomainOwnershipRequest = /*@__PURE__*/ S.sus
 /** List of custom domain configurations for the namespace under topics configuration. */
 export type CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList =
   Array<CustomDomainConfiguration>;
-export const CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList =
+const CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList =
   /*@__PURE__*/ S.Array(
     CustomDomainConfiguration,
   ) as any as S.Schema<CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList>;
@@ -13751,7 +13355,7 @@ export const CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigur
 /** List of custom domain configurations for the namespace under topic spaces configuration. */
 export type CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
   Array<CustomDomainConfiguration>;
-export const CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
+const CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList =
   CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList as any as S.Schema<CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList>;
 
 /** Namespace custom domain ownership validation result. */
@@ -13761,7 +13365,7 @@ export interface CustomDomainOwnershipValidationResult {
   /** List of custom domain configurations for the namespace under topic spaces configuration. */
   customDomainsForTopicSpacesConfiguration?: CustomDomainOwnershipValidationResultCustomDomainsForTopicSpacesConfigurationList;
 }
-export const CustomDomainOwnershipValidationResult = /*@__PURE__*/ S.suspend(() =>
+const CustomDomainOwnershipValidationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDomainsForTopicsConfiguration: S.optional(
       CustomDomainOwnershipValidationResultCustomDomainsForTopicsConfigurationList,

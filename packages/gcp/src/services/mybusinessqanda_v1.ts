@@ -66,7 +66,7 @@ export type AuthorTypeEnum =
   | "REGULAR_USER"
   | "LOCAL_GUIDE"
   | "MERCHANT";
-export const AuthorTypeEnum = /*@__PURE__*/ S.String;
+const AuthorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the author of a question or answer */
 export interface Author {
@@ -77,7 +77,7 @@ export interface Author {
   /** The type of user the author is. */
   type?: AuthorTypeEnum | (string & {});
 }
-export const Author = /*@__PURE__*/ S.suspend(() =>
+const Author = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     profilePhotoUri: S.optional(S.String),
@@ -100,7 +100,7 @@ export interface Answer {
   /** Required. The text of the answer. It should contain at least one non-whitespace character. The maximum length is 4096 characters. */
   text?: string;
 }
-export const Answer = /*@__PURE__*/ S.suspend(() =>
+const Answer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upvoteCount: S.optional(S.Number),
     createTime: S.optional(S.String),
@@ -112,7 +112,7 @@ export const Answer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Answer" }) as any as S.Schema<Answer>;
 
 export type AnswerList = Array<Answer>;
-export const AnswerList = /*@__PURE__*/ S.Array(Answer) as any as S.Schema<AnswerList>;
+const AnswerList = /*@__PURE__*/ S.Array(Answer) as any as S.Schema<AnswerList>;
 
 /** Represents a single question and some of its answers. */
 export interface Question {
@@ -133,7 +133,7 @@ export interface Question {
   /** Output only. The total number of answers posted for this question. */
   totalAnswerCount?: number;
 }
-export const Question = /*@__PURE__*/ S.suspend(() =>
+const Question = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     author: S.optional(Author),
@@ -152,7 +152,7 @@ export interface CreateLocationsQuestionsRequest {
   /** Request body */
   body?: Question;
 }
-export const CreateLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Question.pipe(T.HttpBody())),
@@ -171,7 +171,7 @@ export interface DeleteLocationsQuestionsRequest {
   /** Required. The name of the question to delete. */
   name: string;
 }
-export const DeleteLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -187,7 +187,7 @@ export const DeleteLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -195,7 +195,7 @@ export interface DeleteLocationsQuestionsAnswersRequest {
   /** Required. The name of the question to delete an answer for. */
   name: string;
 }
-export const DeleteLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -223,7 +223,7 @@ export interface ListLocationsQuestionsRequest {
   /** Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. */
   answersPerQuestion?: number;
 }
-export const ListLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -243,7 +243,7 @@ export const ListLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsQuestionsRequest>;
 
 export type QuestionList = Array<Question>;
-export const QuestionList = /*@__PURE__*/ S.Array(Question) as any as S.Schema<QuestionList>;
+const QuestionList = /*@__PURE__*/ S.Array(Question) as any as S.Schema<QuestionList>;
 
 /** Response message for QuestionsAndAnswers.ListQuestions */
 export interface ListQuestionsResponse {
@@ -254,7 +254,7 @@ export interface ListQuestionsResponse {
   /** The requested questions, */
   questions?: QuestionList;
 }
-export const ListQuestionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQuestionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.Number),
     nextPageToken: S.optional(S.String),
@@ -274,7 +274,7 @@ export interface ListLocationsQuestionsAnswersRequest {
   /** Optional. The order to return the answers. Valid options include 'update_time desc' and 'upvote_count desc', which will return the answers sorted descendingly by the requested field. The default sort order is 'update_time desc'. */
   orderBy?: string;
 }
-export const ListLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -300,7 +300,7 @@ export interface ListAnswersResponse {
   /** The total number of answers posted for this question across all pages. */
   totalSize?: number;
 }
-export const ListAnswersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAnswersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answers: S.optional(AnswerList),
     nextPageToken: S.optional(S.String),
@@ -318,7 +318,7 @@ export interface PatchLocationsQuestionsRequest {
   /** Request body */
   body?: Question;
 }
-export const PatchLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLocationsQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -339,7 +339,7 @@ export interface UpsertAnswerRequest {
   /** Required. The new answer. */
   answer?: Answer;
 }
-export const UpsertAnswerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertAnswerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer: S.optional(Answer),
   }),
@@ -353,7 +353,7 @@ export interface UpsertLocationsQuestionsAnswersRequest {
   /** Request body */
   body?: UpsertAnswerRequest;
 }
-export const UpsertLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertLocationsQuestionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(UpsertAnswerRequest.pipe(T.HttpBody())),

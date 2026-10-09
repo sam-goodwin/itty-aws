@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export interface GetUserinfoRequest {}
-export const GetUserinfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserinfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "oauth2/v2/userinfo", baseUrl: "https://www.googleapis.com/" }),
   ),
@@ -92,7 +92,7 @@ export interface Userinfo {
   /** Boolean flag which is true if the email address is verified. Always verified because we only return the user's primary email address. */
   verified_email?: boolean;
 }
-export const Userinfo = /*@__PURE__*/ S.suspend(() =>
+const Userinfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     family_name: S.optional(S.String),
@@ -109,7 +109,7 @@ export const Userinfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Userinfo" }) as any as S.Schema<Userinfo>;
 
 export interface GetUserinfoV2MeRequest {}
-export const GetUserinfoV2MeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserinfoV2MeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "userinfo/v2/me", baseUrl: "https://www.googleapis.com/" }),
   ),
@@ -118,7 +118,7 @@ export const GetUserinfoV2MeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TokeninfoRequest {
   id_token?: string;
 }
-export const TokeninfoRequest = /*@__PURE__*/ S.suspend(() =>
+const TokeninfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_token: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -142,7 +142,7 @@ export interface Tokeninfo {
   /** Boolean flag which is true if the email address is verified. Present only if the email scope is present in the request. */
   verified_email?: boolean;
 }
-export const Tokeninfo = /*@__PURE__*/ S.suspend(() =>
+const Tokeninfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience: S.optional(S.String),
     email: S.optional(S.String),

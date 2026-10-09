@@ -14,7 +14,7 @@ export interface DeleteDependencyOfRelationshipRequest {
   /** Name of dependencyOf relationship. */
   name: string;
 }
-export const DeleteDependencyOfRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDependencyOfRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -31,11 +31,11 @@ export const DeleteDependencyOfRelationshipRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteDependencyOfRelationshipRequest>;
 
 export interface DeleteDependencyOfRelationshipResponse {}
-export const DeleteDependencyOfRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDependencyOfRelationshipResponse",
-}) as any as S.Schema<DeleteDependencyOfRelationshipResponse>;
+const DeleteDependencyOfRelationshipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "DeleteDependencyOfRelationshipResponse",
+  },
+) as any as S.Schema<DeleteDependencyOfRelationshipResponse>;
 
 export interface DeleteDependencyOfRelationshipsByServiceGroupRequest {
   /** The name of the service group. */
@@ -43,7 +43,7 @@ export interface DeleteDependencyOfRelationshipsByServiceGroupRequest {
   /** Name of dependencyOf relationship. */
   name: string;
 }
-export const DeleteDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -60,7 +60,7 @@ export const DeleteDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteDependencyOfRelationshipsByServiceGroupRequest>;
 
 export interface DeleteDependencyOfRelationshipsByServiceGroupResponse {}
-export const DeleteDependencyOfRelationshipsByServiceGroupResponse =
+const DeleteDependencyOfRelationshipsByServiceGroupResponse =
   DeleteDependencyOfRelationshipResponse as any as S.Schema<DeleteDependencyOfRelationshipsByServiceGroupResponse>;
 
 export interface DeleteServiceGroupMemberRelationshipRequest {
@@ -69,7 +69,7 @@ export interface DeleteServiceGroupMemberRelationshipRequest {
   /** Name of ServiceGroupMember relationship. */
   name: string;
 }
-export const DeleteServiceGroupMemberRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceGroupMemberRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -86,7 +86,7 @@ export const DeleteServiceGroupMemberRelationshipRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteServiceGroupMemberRelationshipRequest>;
 
 export interface DeleteServiceGroupMemberRelationshipResponse {}
-export const DeleteServiceGroupMemberRelationshipResponse =
+const DeleteServiceGroupMemberRelationshipResponse =
   DeleteDependencyOfRelationshipResponse as any as S.Schema<DeleteServiceGroupMemberRelationshipResponse>;
 
 /** dependencyOf relationship properties. */
@@ -96,7 +96,7 @@ export interface DependencyOfRelationshipPropertiesInput {
   /** The relationship target tenant id. */
   targetTenant?: string;
 }
-export const DependencyOfRelationshipPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DependencyOfRelationshipPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.String,
     targetTenant: S.optional(S.String),
@@ -113,31 +113,30 @@ export interface DependencyOfRelationshipsByServiceGroupCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipPropertiesInput;
 }
-export const DependencyOfRelationshipsByServiceGroupCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceGroupName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      properties: S.optional(DependencyOfRelationshipPropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.Relationships/dependencyOf/{name}",
-        code: 200,
-        apiVersion: "2026-08-01",
-      }),
-    ),
+const DependencyOfRelationshipsByServiceGroupCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceGroupName: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    properties: S.optional(DependencyOfRelationshipPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}/providers/Microsoft.Relationships/dependencyOf/{name}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
 ).annotate({
   identifier: "DependencyOfRelationshipsByServiceGroupCreateOrUpdateRequest",
 }) as any as S.Schema<DependencyOfRelationshipsByServiceGroupCreateOrUpdateRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -154,7 +153,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -171,7 +170,7 @@ export type RelationshipOrigins =
   | "SystemDiscoveredByRule"
   | "UserExplicitlyCreated"
   | "UserDiscoveredByRule";
-export const RelationshipOrigins = S.String;
+const RelationshipOrigins = S.String;
 
 /** Provides information about the origin of a relationship. */
 export interface RelationshipOriginInformation {
@@ -180,7 +179,7 @@ export interface RelationshipOriginInformation {
   /** The name of the discovery engine that created the relationship. */
   discoveryEngine?: string;
 }
-export const RelationshipOriginInformation = /*@__PURE__*/ S.suspend(() =>
+const RelationshipOriginInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relationshipOriginType: RelationshipOrigins,
     discoveryEngine: S.optional(S.String),
@@ -196,7 +195,7 @@ export interface RelationshipMetadata {
   /** The type of the relationship target resource. */
   targetType: string;
 }
-export const RelationshipMetadata = /*@__PURE__*/ S.suspend(() =>
+const RelationshipMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: S.String,
     targetType: S.String,
@@ -212,7 +211,7 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** dependencyOf relationship properties. */
 export interface DependencyOfRelationshipProperties {
@@ -229,7 +228,7 @@ export interface DependencyOfRelationshipProperties {
   /** The provisioning state of the relationship. */
   provisioningState?: ProvisioningState;
 }
-export const DependencyOfRelationshipProperties = /*@__PURE__*/ S.suspend(() =>
+const DependencyOfRelationshipProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceId: S.optional(S.String),
     targetId: S.String,
@@ -254,18 +253,17 @@ export interface DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
 }
-export const DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(DependencyOfRelationshipProperties),
-    }),
-  ).annotate({
-    identifier: "DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse",
-  }) as any as S.Schema<DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse>;
+const DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DependencyOfRelationshipProperties),
+  }),
+).annotate({
+  identifier: "DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse",
+}) as any as S.Schema<DependencyOfRelationshipsByServiceGroupCreateOrUpdateResponse>;
 
 export interface DependencyOfRelationshipsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -275,7 +273,7 @@ export interface DependencyOfRelationshipsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipPropertiesInput;
 }
-export const DependencyOfRelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DependencyOfRelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -304,7 +302,7 @@ export interface DependencyOfRelationshipsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
 }
-export const DependencyOfRelationshipsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DependencyOfRelationshipsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -322,7 +320,7 @@ export interface GetDependencyOfRelationshipRequest {
   /** Name of dependencyOf relationship. */
   name: string;
 }
-export const GetDependencyOfRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDependencyOfRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -350,7 +348,7 @@ export interface GetDependencyOfRelationshipResponse {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
 }
-export const GetDependencyOfRelationshipResponse =
+const GetDependencyOfRelationshipResponse =
   DependencyOfRelationshipsCreateOrUpdateResponse as any as S.Schema<GetDependencyOfRelationshipResponse>;
 
 export interface GetDependencyOfRelationshipsByServiceGroupRequest {
@@ -359,7 +357,7 @@ export interface GetDependencyOfRelationshipsByServiceGroupRequest {
   /** Name of dependencyOf relationship. */
   name: string;
 }
-export const GetDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -387,7 +385,7 @@ export interface GetDependencyOfRelationshipsByServiceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
 }
-export const GetDependencyOfRelationshipsByServiceGroupResponse =
+const GetDependencyOfRelationshipsByServiceGroupResponse =
   DependencyOfRelationshipsCreateOrUpdateResponse as any as S.Schema<GetDependencyOfRelationshipsByServiceGroupResponse>;
 
 export interface GetServiceGroupMemberRelationshipRequest {
@@ -396,7 +394,7 @@ export interface GetServiceGroupMemberRelationshipRequest {
   /** Name of ServiceGroupMember relationship. */
   name: string;
 }
-export const GetServiceGroupMemberRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceGroupMemberRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -427,7 +425,7 @@ export interface ServiceGroupMemberRelationshipPropertiesV2 {
   /** The provisioning state of the relationship. */
   provisioningState?: ProvisioningState;
 }
-export const ServiceGroupMemberRelationshipPropertiesV2 = /*@__PURE__*/ S.suspend(() =>
+const ServiceGroupMemberRelationshipPropertiesV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceId: S.String,
     targetId: S.optional(S.String),
@@ -452,7 +450,7 @@ export interface GetServiceGroupMemberRelationshipResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServiceGroupMemberRelationshipPropertiesV2;
 }
-export const GetServiceGroupMemberRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceGroupMemberRelationshipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -472,7 +470,7 @@ export interface ListContainsRelationshipByResourceGroupRequest {
   /** Filters the results by target resource type. Example: properties.metadata.targetType eq 'Microsoft.Compute/virtualMachines' */
   _filter?: string;
 }
-export const ListContainsRelationshipByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContainsRelationshipByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -504,7 +502,7 @@ export interface ContainsRelationshipProperties {
   /** The provisioning state of the relationship. */
   provisioningState?: ProvisioningState;
 }
-export const ContainsRelationshipProperties =
+const ContainsRelationshipProperties =
   DependencyOfRelationshipProperties as any as S.Schema<ContainsRelationshipProperties>;
 
 /** Defines a contains relationship resource. */
@@ -520,7 +518,7 @@ export interface ContainsRelationship {
   /** The resource-specific properties for this resource. */
   properties?: ContainsRelationshipProperties;
 }
-export const ContainsRelationship = /*@__PURE__*/ S.suspend(() =>
+const ContainsRelationship = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -532,7 +530,7 @@ export const ContainsRelationship = /*@__PURE__*/ S.suspend(() =>
 
 /** The ContainsRelationship items on this page */
 export type ContainsRelationshipListResultValueList = Array<ContainsRelationship>;
-export const ContainsRelationshipListResultValueList = /*@__PURE__*/ S.Array(
+const ContainsRelationshipListResultValueList = /*@__PURE__*/ S.Array(
   ContainsRelationship,
 ) as any as S.Schema<ContainsRelationshipListResultValueList>;
 
@@ -543,7 +541,7 @@ export interface ContainsRelationshipListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ContainsRelationshipListResult = /*@__PURE__*/ S.suspend(() =>
+const ContainsRelationshipListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ContainsRelationshipListResultValueList,
     nextLink: S.optional(S.String),
@@ -558,7 +556,7 @@ export interface ListContainsRelationshipBySubscriptionRequest {
   /** Filters the results by target resource type. Example: properties.metadata.targetType eq 'Microsoft.Compute/virtualMachines' */
   _filter?: string;
 }
-export const ListContainsRelationshipBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContainsRelationshipBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -578,7 +576,7 @@ export interface ListDependencyOfRelationshipByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListDependencyOfRelationshipByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDependencyOfRelationshipByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -606,14 +604,8 @@ export interface DependencyOfRelationship {
   /** The resource-specific properties for this resource. */
   properties?: DependencyOfRelationshipProperties;
 }
-export const DependencyOfRelationship =
-  ContainsRelationship as any as S.Schema<DependencyOfRelationship>;
-
 /** The DependencyOfRelationship items on this page */
 export type DependencyOfRelationshipListResultValueList = Array<DependencyOfRelationship>;
-export const DependencyOfRelationshipListResultValueList =
-  ContainsRelationshipListResultValueList as any as S.Schema<DependencyOfRelationshipListResultValueList>;
-
 /** The response of a DependencyOfRelationship list operation. */
 export interface DependencyOfRelationshipListResult {
   /** The DependencyOfRelationship items on this page */
@@ -621,14 +613,14 @@ export interface DependencyOfRelationshipListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DependencyOfRelationshipListResult =
+const DependencyOfRelationshipListResult =
   ContainsRelationshipListResult as any as S.Schema<DependencyOfRelationshipListResult>;
 
 export interface ListDependencyOfRelationshipsByServiceGroupRequest {
   /** The name of the service group. */
   serviceGroupName: string;
 }
-export const ListDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceGroupName: S.String.pipe(T.Label()),
   }).pipe(
@@ -644,7 +636,7 @@ export const ListDependencyOfRelationshipsByServiceGroupRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListDependencyOfRelationshipsByServiceGroupRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -666,7 +658,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -677,11 +669,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -696,7 +688,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -708,7 +700,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -718,7 +710,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -729,7 +721,7 @@ export interface ListServiceGroupMemberRelationshipByParentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListServiceGroupMemberRelationshipByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceGroupMemberRelationshipByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -757,13 +749,13 @@ export interface ServiceGroupMemberRelationship {
   /** The resource-specific properties for this resource. */
   properties?: ServiceGroupMemberRelationshipPropertiesV2;
 }
-export const ServiceGroupMemberRelationship =
+const ServiceGroupMemberRelationship =
   GetServiceGroupMemberRelationshipResponse as any as S.Schema<ServiceGroupMemberRelationship>;
 
 /** The ServiceGroupMemberRelationship items on this page */
 export type ServiceGroupMemberRelationshipListResultValueList =
   Array<ServiceGroupMemberRelationship>;
-export const ServiceGroupMemberRelationshipListResultValueList = /*@__PURE__*/ S.Array(
+const ServiceGroupMemberRelationshipListResultValueList = /*@__PURE__*/ S.Array(
   ServiceGroupMemberRelationship,
 ) as any as S.Schema<ServiceGroupMemberRelationshipListResultValueList>;
 
@@ -774,7 +766,7 @@ export interface ServiceGroupMemberRelationshipListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServiceGroupMemberRelationshipListResult = /*@__PURE__*/ S.suspend(() =>
+const ServiceGroupMemberRelationshipListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ServiceGroupMemberRelationshipListResultValueList,
     nextLink: S.optional(S.String),
@@ -790,7 +782,7 @@ export interface ServiceGroupMemberRelationshipPropertiesPreviewInput {
   /** The tenant of the target service group. */
   targetTenant?: string;
 }
-export const ServiceGroupMemberRelationshipPropertiesPreviewInput =
+const ServiceGroupMemberRelationshipPropertiesPreviewInput =
   DependencyOfRelationshipPropertiesInput as any as S.Schema<ServiceGroupMemberRelationshipPropertiesPreviewInput>;
 
 export interface ServiceGroupMemberRelationshipsCreateOrUpdateRequest {
@@ -801,7 +793,7 @@ export interface ServiceGroupMemberRelationshipsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ServiceGroupMemberRelationshipPropertiesPreviewInput;
 }
-export const ServiceGroupMemberRelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceGroupMemberRelationshipsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -833,7 +825,7 @@ export interface ServiceGroupMemberRelationshipPropertiesPreview {
   /** The provisioning state of the relationship. */
   provisioningState?: ProvisioningState;
 }
-export const ServiceGroupMemberRelationshipPropertiesPreview = /*@__PURE__*/ S.suspend(() =>
+const ServiceGroupMemberRelationshipPropertiesPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.optional(S.String),
     sourceId: S.optional(S.String),
@@ -858,7 +850,7 @@ export interface ServiceGroupMemberRelationshipsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServiceGroupMemberRelationshipPropertiesPreview;
 }
-export const ServiceGroupMemberRelationshipsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceGroupMemberRelationshipsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

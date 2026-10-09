@@ -230,7 +230,7 @@ export type AttachmentId = string;
 export interface AcceptAttachmentRequest {
   AttachmentId: string;
 }
-export const AcceptAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/attachments/{AttachmentId}/accept" }),
@@ -252,7 +252,7 @@ export type AttachmentType =
   | "DIRECT_CONNECT_GATEWAY"
   | "TRANSIT_GATEWAY_ROUTE_TABLE"
   | (string & {});
-export const AttachmentType = S.String;
+const AttachmentType = S.String;
 
 export type AttachmentState =
   | "REJECTED"
@@ -265,11 +265,11 @@ export type AttachmentState =
   | "PENDING_TAG_ACCEPTANCE"
   | "DELETING"
   | (string & {});
-export const AttachmentState = S.String;
+const AttachmentState = S.String;
 
 export type ExternalRegionCode = string;
 export type ExternalRegionCodeList = string[];
-export const ExternalRegionCodeList = /*@__PURE__*/ S.Array(S.String);
+const ExternalRegionCodeList = /*@__PURE__*/ S.Array(S.String);
 export type ResourceArn = string;
 export type ConstrainedString = string;
 export type NetworkFunctionGroupName = string;
@@ -279,17 +279,17 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ProposedSegmentChange {
   Tags?: Tag[];
   AttachmentPolicyRuleNumber?: number;
   SegmentName?: string;
 }
-export const ProposedSegmentChange = /*@__PURE__*/ S.suspend(() =>
+const ProposedSegmentChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Tags: S.optional(TagList),
     AttachmentPolicyRuleNumber: S.optional(S.Number),
@@ -301,7 +301,7 @@ export interface ProposedNetworkFunctionGroupChange {
   AttachmentPolicyRuleNumber?: number;
   NetworkFunctionGroupName?: string;
 }
-export const ProposedNetworkFunctionGroupChange = /*@__PURE__*/ S.suspend(() =>
+const ProposedNetworkFunctionGroupChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Tags: S.optional(TagList),
     AttachmentPolicyRuleNumber: S.optional(S.Number),
@@ -325,7 +325,7 @@ export type AttachmentErrorCode =
   | "VPN_EXISTING_ASSOCIATIONS"
   | "VPC_UNSUPPORTED_FEATURES"
   | (string & {});
-export const AttachmentErrorCode = S.String;
+const AttachmentErrorCode = S.String;
 
 export type ServerSideString = string;
 export interface AttachmentError {
@@ -334,7 +334,7 @@ export interface AttachmentError {
   ResourceArn?: string;
   RequestId?: string;
 }
-export const AttachmentError = /*@__PURE__*/ S.suspend(() =>
+const AttachmentError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Code: S.optional(AttachmentErrorCode),
     Message: S.optional(S.String),
@@ -343,7 +343,7 @@ export const AttachmentError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachmentError" }) as any as S.Schema<AttachmentError>;
 export type AttachmentErrorList = AttachmentError[];
-export const AttachmentErrorList = /*@__PURE__*/ S.Array(AttachmentError);
+const AttachmentErrorList = /*@__PURE__*/ S.Array(AttachmentError);
 export interface Attachment {
   CoreNetworkId?: string;
   CoreNetworkArn?: string;
@@ -364,7 +364,7 @@ export interface Attachment {
   UpdatedAt?: Date;
   LastModificationErrors?: AttachmentError[];
 }
-export const Attachment = /*@__PURE__*/ S.suspend(() =>
+const Attachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     CoreNetworkArn: S.optional(S.String),
@@ -389,7 +389,7 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
 export interface AcceptAttachmentResponse {
   Attachment?: Attachment;
 }
-export const AcceptAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Attachment: S.optional(Attachment) }),
 ).annotate({ identifier: "AcceptAttachmentResponse" }) as any as S.Schema<AcceptAttachmentResponse>;
 export type GlobalNetworkId = string;
@@ -402,7 +402,7 @@ export interface AssociateConnectPeerRequest {
   DeviceId: string;
   LinkId?: string;
 }
-export const AssociateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     ConnectPeerId: S.String,
@@ -430,7 +430,7 @@ export type ConnectPeerAssociationState =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const ConnectPeerAssociationState = S.String;
+const ConnectPeerAssociationState = S.String;
 
 export interface ConnectPeerAssociation {
   ConnectPeerId?: string;
@@ -439,7 +439,7 @@ export interface ConnectPeerAssociation {
   LinkId?: string;
   State?: ConnectPeerAssociationState;
 }
-export const ConnectPeerAssociation = /*@__PURE__*/ S.suspend(() =>
+const ConnectPeerAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConnectPeerId: S.optional(S.String),
     GlobalNetworkId: S.optional(S.String),
@@ -451,7 +451,7 @@ export const ConnectPeerAssociation = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateConnectPeerResponse {
   ConnectPeerAssociation?: ConnectPeerAssociation;
 }
-export const AssociateConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConnectPeerAssociation: S.optional(ConnectPeerAssociation) }),
 ).annotate({
   identifier: "AssociateConnectPeerResponse",
@@ -463,7 +463,7 @@ export interface AssociateCustomerGatewayRequest {
   DeviceId: string;
   LinkId?: string;
 }
-export const AssociateCustomerGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateCustomerGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CustomerGatewayArn: S.String,
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
@@ -491,7 +491,7 @@ export type CustomerGatewayAssociationState =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const CustomerGatewayAssociationState = S.String;
+const CustomerGatewayAssociationState = S.String;
 
 export interface CustomerGatewayAssociation {
   CustomerGatewayArn?: string;
@@ -500,7 +500,7 @@ export interface CustomerGatewayAssociation {
   LinkId?: string;
   State?: CustomerGatewayAssociationState;
 }
-export const CustomerGatewayAssociation = /*@__PURE__*/ S.suspend(() =>
+const CustomerGatewayAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CustomerGatewayArn: S.optional(S.String),
     GlobalNetworkId: S.optional(S.String),
@@ -514,7 +514,7 @@ export const CustomerGatewayAssociation = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateCustomerGatewayResponse {
   CustomerGatewayAssociation?: CustomerGatewayAssociation;
 }
-export const AssociateCustomerGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateCustomerGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CustomerGatewayAssociation: S.optional(CustomerGatewayAssociation) }),
 ).annotate({
   identifier: "AssociateCustomerGatewayResponse",
@@ -524,7 +524,7 @@ export interface AssociateLinkRequest {
   DeviceId: string;
   LinkId: string;
 }
-export const AssociateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     DeviceId: S.String,
@@ -541,7 +541,7 @@ export const AssociateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AssociateLinkRequest" }) as any as S.Schema<AssociateLinkRequest>;
 export type LinkAssociationState = "PENDING" | "AVAILABLE" | "DELETING" | "DELETED" | (string & {});
-export const LinkAssociationState = S.String;
+const LinkAssociationState = S.String;
 
 export interface LinkAssociation {
   GlobalNetworkId?: string;
@@ -549,7 +549,7 @@ export interface LinkAssociation {
   LinkId?: string;
   LinkAssociationState?: LinkAssociationState;
 }
-export const LinkAssociation = /*@__PURE__*/ S.suspend(() =>
+const LinkAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.optional(S.String),
     DeviceId: S.optional(S.String),
@@ -560,7 +560,7 @@ export const LinkAssociation = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateLinkResponse {
   LinkAssociation?: LinkAssociation;
 }
-export const AssociateLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LinkAssociation: S.optional(LinkAssociation) }),
 ).annotate({ identifier: "AssociateLinkResponse" }) as any as S.Schema<AssociateLinkResponse>;
 export type TransitGatewayConnectPeerArn = string;
@@ -570,7 +570,7 @@ export interface AssociateTransitGatewayConnectPeerRequest {
   DeviceId: string;
   LinkId?: string;
 }
-export const AssociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     TransitGatewayConnectPeerArn: S.String,
@@ -598,7 +598,7 @@ export type TransitGatewayConnectPeerAssociationState =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const TransitGatewayConnectPeerAssociationState = S.String;
+const TransitGatewayConnectPeerAssociationState = S.String;
 
 export interface TransitGatewayConnectPeerAssociation {
   TransitGatewayConnectPeerArn?: string;
@@ -607,7 +607,7 @@ export interface TransitGatewayConnectPeerAssociation {
   LinkId?: string;
   State?: TransitGatewayConnectPeerAssociationState;
 }
-export const TransitGatewayConnectPeerAssociation = /*@__PURE__*/ S.suspend(() =>
+const TransitGatewayConnectPeerAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TransitGatewayConnectPeerArn: S.optional(S.String),
     GlobalNetworkId: S.optional(S.String),
@@ -621,7 +621,7 @@ export const TransitGatewayConnectPeerAssociation = /*@__PURE__*/ S.suspend(() =
 export interface AssociateTransitGatewayConnectPeerResponse {
   TransitGatewayConnectPeerAssociation?: TransitGatewayConnectPeerAssociation;
 }
-export const AssociateTransitGatewayConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateTransitGatewayConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TransitGatewayConnectPeerAssociation: S.optional(TransitGatewayConnectPeerAssociation),
   }),
@@ -629,12 +629,12 @@ export const AssociateTransitGatewayConnectPeerResponse = /*@__PURE__*/ S.suspen
   identifier: "AssociateTransitGatewayConnectPeerResponse",
 }) as any as S.Schema<AssociateTransitGatewayConnectPeerResponse>;
 export type TunnelProtocol = "GRE" | "NO_ENCAP" | (string & {});
-export const TunnelProtocol = S.String;
+const TunnelProtocol = S.String;
 
 export interface ConnectAttachmentOptions {
   Protocol?: TunnelProtocol;
 }
-export const ConnectAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
+const ConnectAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Protocol: S.optional(TunnelProtocol) }),
 ).annotate({ identifier: "ConnectAttachmentOptions" }) as any as S.Schema<ConnectAttachmentOptions>;
 export type ClientToken = string;
@@ -647,7 +647,7 @@ export interface CreateConnectAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-export const CreateConnectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String,
     EdgeLocation: S.String,
@@ -667,7 +667,7 @@ export interface ConnectAttachment {
   TransportAttachmentId?: string;
   Options?: ConnectAttachmentOptions;
 }
-export const ConnectAttachment = /*@__PURE__*/ S.suspend(() =>
+const ConnectAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Attachment: S.optional(Attachment),
     TransportAttachmentId: S.optional(S.String),
@@ -677,7 +677,7 @@ export const ConnectAttachment = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConnectAttachmentResponse {
   ConnectAttachment?: ConnectAttachment;
 }
-export const CreateConnectAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConnectAttachment: S.optional(ConnectAttachment) }),
 ).annotate({
   identifier: "CreateConnectAttachmentResponse",
@@ -691,7 +691,7 @@ export interface CreateConnectionRequest {
   Description?: string;
   Tags?: Tag[];
 }
-export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     DeviceId: S.String,
@@ -714,7 +714,7 @@ export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionId = string;
 export type ConnectionArn = string;
 export type ConnectionState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
-export const ConnectionState = S.String;
+const ConnectionState = S.String;
 
 export interface Connection {
   ConnectionId?: string;
@@ -729,7 +729,7 @@ export interface Connection {
   State?: ConnectionState;
   Tags?: Tag[];
 }
-export const Connection = /*@__PURE__*/ S.suspend(() =>
+const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConnectionId: S.optional(S.String),
     ConnectionArn: S.optional(S.String),
@@ -747,19 +747,18 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConnectionResponse {
   Connection?: Connection;
 }
-export const CreateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Connection: S.optional(Connection) }),
 ).annotate({ identifier: "CreateConnectionResponse" }) as any as S.Schema<CreateConnectionResponse>;
 export type IPAddress = string;
 export interface BgpOptions {
   PeerAsn?: number;
 }
-export const BgpOptions = /*@__PURE__*/ S.suspend(() =>
+const BgpOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PeerAsn: S.optional(S.Number) }),
 ).annotate({ identifier: "BgpOptions" }) as any as S.Schema<BgpOptions>;
 export type ConstrainedStringList = string[];
-export const ConstrainedStringList =
-  ExternalRegionCodeList as any as S.Schema<ConstrainedStringList>;
+const ConstrainedStringList = ExternalRegionCodeList as any as S.Schema<ConstrainedStringList>;
 export type SubnetArn = string;
 export interface CreateConnectPeerRequest {
   ConnectAttachmentId: string;
@@ -771,7 +770,7 @@ export interface CreateConnectPeerRequest {
   ClientToken?: string;
   SubnetArn?: string;
 }
-export const CreateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConnectAttachmentId: S.String,
     CoreNetworkAddress: S.optional(S.String),
@@ -784,7 +783,7 @@ export const CreateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/connect-peers" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateConnectPeerRequest" }) as any as S.Schema<CreateConnectPeerRequest>;
 export type ConnectPeerState = "CREATING" | "FAILED" | "AVAILABLE" | "DELETING" | (string & {});
-export const ConnectPeerState = S.String;
+const ConnectPeerState = S.String;
 
 export interface ConnectPeerBgpConfiguration {
   CoreNetworkAsn?: number;
@@ -792,7 +791,7 @@ export interface ConnectPeerBgpConfiguration {
   CoreNetworkAddress?: string;
   PeerAddress?: string;
 }
-export const ConnectPeerBgpConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ConnectPeerBgpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkAsn: S.optional(S.Number),
     PeerAsn: S.optional(S.Number),
@@ -803,7 +802,7 @@ export const ConnectPeerBgpConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectPeerBgpConfiguration",
 }) as any as S.Schema<ConnectPeerBgpConfiguration>;
 export type ConnectPeerBgpConfigurationList = ConnectPeerBgpConfiguration[];
-export const ConnectPeerBgpConfigurationList = /*@__PURE__*/ S.Array(ConnectPeerBgpConfiguration);
+const ConnectPeerBgpConfigurationList = /*@__PURE__*/ S.Array(ConnectPeerBgpConfiguration);
 export interface ConnectPeerConfiguration {
   CoreNetworkAddress?: string;
   PeerAddress?: string;
@@ -811,7 +810,7 @@ export interface ConnectPeerConfiguration {
   Protocol?: TunnelProtocol;
   BgpConfigurations?: ConnectPeerBgpConfiguration[];
 }
-export const ConnectPeerConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ConnectPeerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkAddress: S.optional(S.String),
     PeerAddress: S.optional(S.String),
@@ -828,17 +827,14 @@ export type ConnectPeerErrorCode =
   | "INVALID_INSIDE_CIDR_BLOCK"
   | "NO_ASSOCIATED_CIDR_BLOCK"
   | (string & {});
-export const ConnectPeerErrorCode = S.String;
-
 export interface ConnectPeerError {
   Code?: ConnectPeerErrorCode;
   Message?: string;
   ResourceArn?: string;
   RequestId?: string;
 }
-export const ConnectPeerError = AttachmentError as any as S.Schema<ConnectPeerError>;
 export type ConnectPeerErrorList = ConnectPeerError[];
-export const ConnectPeerErrorList = AttachmentErrorList as any as S.Schema<ConnectPeerErrorList>;
+const ConnectPeerErrorList = AttachmentErrorList as any as S.Schema<ConnectPeerErrorList>;
 export interface ConnectPeer {
   CoreNetworkId?: string;
   ConnectAttachmentId?: string;
@@ -851,7 +847,7 @@ export interface ConnectPeer {
   SubnetArn?: string;
   LastModificationErrors?: ConnectPeerError[];
 }
-export const ConnectPeer = /*@__PURE__*/ S.suspend(() =>
+const ConnectPeer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     ConnectAttachmentId: S.optional(S.String),
@@ -868,7 +864,7 @@ export const ConnectPeer = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConnectPeerResponse {
   ConnectPeer?: ConnectPeer;
 }
-export const CreateConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConnectPeer: S.optional(ConnectPeer) }),
 ).annotate({
   identifier: "CreateConnectPeerResponse",
@@ -881,7 +877,7 @@ export interface CreateCoreNetworkRequest {
   PolicyDocument?: string;
   ClientToken?: string;
 }
-export const CreateCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String,
     Description: S.optional(S.String),
@@ -891,14 +887,14 @@ export const CreateCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/core-networks" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateCoreNetworkRequest" }) as any as S.Schema<CreateCoreNetworkRequest>;
 export type CoreNetworkState = "CREATING" | "UPDATING" | "AVAILABLE" | "DELETING" | (string & {});
-export const CoreNetworkState = S.String;
+const CoreNetworkState = S.String;
 
 export interface CoreNetworkSegment {
   Name?: string;
   EdgeLocations?: string[];
   SharedSegments?: string[];
 }
-export const CoreNetworkSegment = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     EdgeLocations: S.optional(ExternalRegionCodeList),
@@ -906,12 +902,12 @@ export const CoreNetworkSegment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CoreNetworkSegment" }) as any as S.Schema<CoreNetworkSegment>;
 export type CoreNetworkSegmentList = CoreNetworkSegment[];
-export const CoreNetworkSegmentList = /*@__PURE__*/ S.Array(CoreNetworkSegment);
+const CoreNetworkSegmentList = /*@__PURE__*/ S.Array(CoreNetworkSegment);
 export interface ServiceInsertionSegments {
   SendVia?: string[];
   SendTo?: string[];
 }
-export const ServiceInsertionSegments = /*@__PURE__*/ S.suspend(() =>
+const ServiceInsertionSegments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SendVia: S.optional(ConstrainedStringList),
     SendTo: S.optional(ConstrainedStringList),
@@ -922,7 +918,7 @@ export interface CoreNetworkNetworkFunctionGroup {
   EdgeLocations?: string[];
   Segments?: ServiceInsertionSegments;
 }
-export const CoreNetworkNetworkFunctionGroup = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkNetworkFunctionGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     EdgeLocations: S.optional(ExternalRegionCodeList),
@@ -932,15 +928,13 @@ export const CoreNetworkNetworkFunctionGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "CoreNetworkNetworkFunctionGroup",
 }) as any as S.Schema<CoreNetworkNetworkFunctionGroup>;
 export type CoreNetworkNetworkFunctionGroupList = CoreNetworkNetworkFunctionGroup[];
-export const CoreNetworkNetworkFunctionGroupList = /*@__PURE__*/ S.Array(
-  CoreNetworkNetworkFunctionGroup,
-);
+const CoreNetworkNetworkFunctionGroupList = /*@__PURE__*/ S.Array(CoreNetworkNetworkFunctionGroup);
 export interface CoreNetworkEdge {
   EdgeLocation?: string;
   Asn?: number;
   InsideCidrBlocks?: string[];
 }
-export const CoreNetworkEdge = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkEdge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EdgeLocation: S.optional(S.String),
     Asn: S.optional(S.Number),
@@ -948,7 +942,7 @@ export const CoreNetworkEdge = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CoreNetworkEdge" }) as any as S.Schema<CoreNetworkEdge>;
 export type CoreNetworkEdgeList = CoreNetworkEdge[];
-export const CoreNetworkEdgeList = /*@__PURE__*/ S.Array(CoreNetworkEdge);
+const CoreNetworkEdgeList = /*@__PURE__*/ S.Array(CoreNetworkEdge);
 export interface CoreNetwork {
   GlobalNetworkId?: string;
   CoreNetworkId?: string;
@@ -961,7 +955,7 @@ export interface CoreNetwork {
   Edges?: CoreNetworkEdge[];
   Tags?: Tag[];
 }
-export const CoreNetwork = /*@__PURE__*/ S.suspend(() =>
+const CoreNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.optional(S.String),
     CoreNetworkId: S.optional(S.String),
@@ -978,7 +972,7 @@ export const CoreNetwork = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCoreNetworkResponse {
   CoreNetwork?: CoreNetwork;
 }
-export const CreateCoreNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCoreNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CoreNetwork: S.optional(CoreNetwork) }),
 ).annotate({
   identifier: "CreateCoreNetworkResponse",
@@ -990,7 +984,7 @@ export interface CreateCoreNetworkPrefixListAssociationRequest {
   PrefixListAlias: string;
   ClientToken?: string;
 }
-export const CreateCoreNetworkPrefixListAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoreNetworkPrefixListAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String,
     PrefixListArn: S.String,
@@ -1005,7 +999,7 @@ export interface CreateCoreNetworkPrefixListAssociationResponse {
   PrefixListArn?: string;
   PrefixListAlias?: string;
 }
-export const CreateCoreNetworkPrefixListAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCoreNetworkPrefixListAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     PrefixListArn: S.optional(S.String),
@@ -1018,7 +1012,7 @@ export interface AWSLocation {
   Zone?: string;
   SubnetArn?: string;
 }
-export const AWSLocation = /*@__PURE__*/ S.suspend(() =>
+const AWSLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Zone: S.optional(S.String), SubnetArn: S.optional(S.String) }),
 ).annotate({ identifier: "AWSLocation" }) as any as S.Schema<AWSLocation>;
 export interface Location {
@@ -1026,7 +1020,7 @@ export interface Location {
   Latitude?: string;
   Longitude?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Address: S.optional(S.String),
     Latitude: S.optional(S.String),
@@ -1046,7 +1040,7 @@ export interface CreateDeviceRequest {
   SiteId?: string;
   Tags?: Tag[];
 }
-export const CreateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     AWSLocation: S.optional(AWSLocation),
@@ -1071,7 +1065,7 @@ export const CreateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDeviceRequest" }) as any as S.Schema<CreateDeviceRequest>;
 export type DeviceArn = string;
 export type DeviceState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
-export const DeviceState = S.String;
+const DeviceState = S.String;
 
 export interface Device {
   DeviceId?: string;
@@ -1089,7 +1083,7 @@ export interface Device {
   State?: DeviceState;
   Tags?: Tag[];
 }
-export const Device = /*@__PURE__*/ S.suspend(() =>
+const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DeviceId: S.optional(S.String),
     DeviceArn: S.optional(S.String),
@@ -1110,7 +1104,7 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDeviceResponse {
   Device?: Device;
 }
-export const CreateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Device: S.optional(Device) }),
 ).annotate({ identifier: "CreateDeviceResponse" }) as any as S.Schema<CreateDeviceResponse>;
 export type DirectConnectGatewayArn = string;
@@ -1122,7 +1116,7 @@ export interface CreateDirectConnectGatewayAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-export const CreateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String,
     DirectConnectGatewayArn: S.String,
@@ -1147,7 +1141,7 @@ export interface DirectConnectGatewayAttachment {
   Attachment?: Attachment;
   DirectConnectGatewayArn?: string;
 }
-export const DirectConnectGatewayAttachment = /*@__PURE__*/ S.suspend(() =>
+const DirectConnectGatewayAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Attachment: S.optional(Attachment), DirectConnectGatewayArn: S.optional(S.String) }),
 ).annotate({
   identifier: "DirectConnectGatewayAttachment",
@@ -1155,7 +1149,7 @@ export const DirectConnectGatewayAttachment = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDirectConnectGatewayAttachmentResponse {
   DirectConnectGatewayAttachment?: DirectConnectGatewayAttachment;
 }
-export const CreateDirectConnectGatewayAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDirectConnectGatewayAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DirectConnectGatewayAttachment: S.optional(DirectConnectGatewayAttachment) }),
 ).annotate({
   identifier: "CreateDirectConnectGatewayAttachmentResponse",
@@ -1164,7 +1158,7 @@ export interface CreateGlobalNetworkRequest {
   Description?: string;
   Tags?: Tag[];
 }
-export const CreateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Description: S.optional(S.String), Tags: S.optional(TagList) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/global-networks" }), svc, auth, proto, ver, rules),
   ),
@@ -1173,7 +1167,7 @@ export const CreateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGlobalNetworkRequest>;
 export type GlobalNetworkArn = string;
 export type GlobalNetworkState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
-export const GlobalNetworkState = S.String;
+const GlobalNetworkState = S.String;
 
 export interface GlobalNetwork {
   GlobalNetworkId?: string;
@@ -1183,7 +1177,7 @@ export interface GlobalNetwork {
   State?: GlobalNetworkState;
   Tags?: Tag[];
 }
-export const GlobalNetwork = /*@__PURE__*/ S.suspend(() =>
+const GlobalNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.optional(S.String),
     GlobalNetworkArn: S.optional(S.String),
@@ -1196,7 +1190,7 @@ export const GlobalNetwork = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGlobalNetworkResponse {
   GlobalNetwork?: GlobalNetwork;
 }
-export const CreateGlobalNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGlobalNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalNetwork: S.optional(GlobalNetwork) }),
 ).annotate({
   identifier: "CreateGlobalNetworkResponse",
@@ -1205,7 +1199,7 @@ export interface Bandwidth {
   UploadSpeed?: number;
   DownloadSpeed?: number;
 }
-export const Bandwidth = /*@__PURE__*/ S.suspend(() =>
+const Bandwidth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UploadSpeed: S.optional(S.Number), DownloadSpeed: S.optional(S.Number) }),
 ).annotate({ identifier: "Bandwidth" }) as any as S.Schema<Bandwidth>;
 export interface CreateLinkRequest {
@@ -1217,7 +1211,7 @@ export interface CreateLinkRequest {
   SiteId: string;
   Tags?: Tag[];
 }
-export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     Description: S.optional(S.String),
@@ -1239,7 +1233,7 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateLinkRequest" }) as any as S.Schema<CreateLinkRequest>;
 export type LinkArn = string;
 export type LinkState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
-export const LinkState = S.String;
+const LinkState = S.String;
 
 export interface Link {
   LinkId?: string;
@@ -1254,7 +1248,7 @@ export interface Link {
   State?: LinkState;
   Tags?: Tag[];
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LinkId: S.optional(S.String),
     LinkArn: S.optional(S.String),
@@ -1272,7 +1266,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 export interface CreateLinkResponse {
   Link?: Link;
 }
-export const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Link: S.optional(Link) }),
 ).annotate({ identifier: "CreateLinkResponse" }) as any as S.Schema<CreateLinkResponse>;
 export interface CreateSiteRequest {
@@ -1281,7 +1275,7 @@ export interface CreateSiteRequest {
   Location?: Location;
   Tags?: Tag[];
 }
-export const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     Description: S.optional(S.String),
@@ -1300,7 +1294,7 @@ export const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSiteRequest" }) as any as S.Schema<CreateSiteRequest>;
 export type SiteArn = string;
 export type SiteState = "PENDING" | "AVAILABLE" | "DELETING" | "UPDATING" | (string & {});
-export const SiteState = S.String;
+const SiteState = S.String;
 
 export interface Site {
   SiteId?: string;
@@ -1312,7 +1306,7 @@ export interface Site {
   State?: SiteState;
   Tags?: Tag[];
 }
-export const Site = /*@__PURE__*/ S.suspend(() =>
+const Site = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SiteId: S.optional(S.String),
     SiteArn: S.optional(S.String),
@@ -1327,7 +1321,7 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSiteResponse {
   Site?: Site;
 }
-export const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Site: S.optional(Site) }),
 ).annotate({ identifier: "CreateSiteResponse" }) as any as S.Schema<CreateSiteResponse>;
 export type VpnConnectionArn = string;
@@ -1338,7 +1332,7 @@ export interface CreateSiteToSiteVpnAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-export const CreateSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String,
     VpnConnectionArn: S.String,
@@ -1362,13 +1356,13 @@ export interface SiteToSiteVpnAttachment {
   Attachment?: Attachment;
   VpnConnectionArn?: string;
 }
-export const SiteToSiteVpnAttachment = /*@__PURE__*/ S.suspend(() =>
+const SiteToSiteVpnAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Attachment: S.optional(Attachment), VpnConnectionArn: S.optional(S.String) }),
 ).annotate({ identifier: "SiteToSiteVpnAttachment" }) as any as S.Schema<SiteToSiteVpnAttachment>;
 export interface CreateSiteToSiteVpnAttachmentResponse {
   SiteToSiteVpnAttachment?: SiteToSiteVpnAttachment;
 }
-export const CreateSiteToSiteVpnAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSiteToSiteVpnAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SiteToSiteVpnAttachment: S.optional(SiteToSiteVpnAttachment) }),
 ).annotate({
   identifier: "CreateSiteToSiteVpnAttachmentResponse",
@@ -1380,7 +1374,7 @@ export interface CreateTransitGatewayPeeringRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-export const CreateTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String,
     TransitGatewayArn: S.String,
@@ -1401,10 +1395,10 @@ export const CreateTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTransitGatewayPeeringRequest>;
 export type PeeringId = string;
 export type PeeringType = "TRANSIT_GATEWAY" | (string & {});
-export const PeeringType = S.String;
+const PeeringType = S.String;
 
 export type PeeringState = "CREATING" | "FAILED" | "AVAILABLE" | "DELETING" | (string & {});
-export const PeeringState = S.String;
+const PeeringState = S.String;
 
 export type PeeringErrorCode =
   | "TRANSIT_GATEWAY_NOT_FOUND"
@@ -1414,12 +1408,12 @@ export type PeeringErrorCode =
   | "EDGE_LOCATION_PEER_DUPLICATE"
   | "INVALID_TRANSIT_GATEWAY_STATE"
   | (string & {});
-export const PeeringErrorCode = S.String;
+const PeeringErrorCode = S.String;
 
 export interface PermissionsErrorContext {
   MissingPermission?: string;
 }
-export const PermissionsErrorContext = /*@__PURE__*/ S.suspend(() =>
+const PermissionsErrorContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MissingPermission: S.optional(S.String) }),
 ).annotate({ identifier: "PermissionsErrorContext" }) as any as S.Schema<PermissionsErrorContext>;
 export interface PeeringError {
@@ -1429,7 +1423,7 @@ export interface PeeringError {
   RequestId?: string;
   MissingPermissionsContext?: PermissionsErrorContext;
 }
-export const PeeringError = /*@__PURE__*/ S.suspend(() =>
+const PeeringError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Code: S.optional(PeeringErrorCode),
     Message: S.optional(S.String),
@@ -1439,7 +1433,7 @@ export const PeeringError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PeeringError" }) as any as S.Schema<PeeringError>;
 export type PeeringErrorList = PeeringError[];
-export const PeeringErrorList = /*@__PURE__*/ S.Array(PeeringError);
+const PeeringErrorList = /*@__PURE__*/ S.Array(PeeringError);
 export interface Peering {
   CoreNetworkId?: string;
   CoreNetworkArn?: string;
@@ -1453,7 +1447,7 @@ export interface Peering {
   CreatedAt?: Date;
   LastModificationErrors?: PeeringError[];
 }
-export const Peering = /*@__PURE__*/ S.suspend(() =>
+const Peering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     CoreNetworkArn: S.optional(S.String),
@@ -1474,7 +1468,7 @@ export interface TransitGatewayPeering {
   TransitGatewayArn?: string;
   TransitGatewayPeeringAttachmentId?: string;
 }
-export const TransitGatewayPeering = /*@__PURE__*/ S.suspend(() =>
+const TransitGatewayPeering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Peering: S.optional(Peering),
     TransitGatewayArn: S.optional(S.String),
@@ -1484,7 +1478,7 @@ export const TransitGatewayPeering = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTransitGatewayPeeringResponse {
   TransitGatewayPeering?: TransitGatewayPeering;
 }
-export const CreateTransitGatewayPeeringResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTransitGatewayPeeringResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TransitGatewayPeering: S.optional(TransitGatewayPeering) }),
 ).annotate({
   identifier: "CreateTransitGatewayPeeringResponse",
@@ -1497,7 +1491,7 @@ export interface CreateTransitGatewayRouteTableAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-export const CreateTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PeeringId: S.String,
     TransitGatewayRouteTableArn: S.String,
@@ -1522,7 +1516,7 @@ export interface TransitGatewayRouteTableAttachment {
   PeeringId?: string;
   TransitGatewayRouteTableArn?: string;
 }
-export const TransitGatewayRouteTableAttachment = /*@__PURE__*/ S.suspend(() =>
+const TransitGatewayRouteTableAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Attachment: S.optional(Attachment),
     PeeringId: S.optional(S.String),
@@ -1534,21 +1528,21 @@ export const TransitGatewayRouteTableAttachment = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTransitGatewayRouteTableAttachmentResponse {
   TransitGatewayRouteTableAttachment?: TransitGatewayRouteTableAttachment;
 }
-export const CreateTransitGatewayRouteTableAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTransitGatewayRouteTableAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TransitGatewayRouteTableAttachment: S.optional(TransitGatewayRouteTableAttachment) }),
 ).annotate({
   identifier: "CreateTransitGatewayRouteTableAttachmentResponse",
 }) as any as S.Schema<CreateTransitGatewayRouteTableAttachmentResponse>;
 export type VpcArn = string;
 export type SubnetArnList = string[];
-export const SubnetArnList = ExternalRegionCodeList as any as S.Schema<SubnetArnList>;
+const SubnetArnList = ExternalRegionCodeList as any as S.Schema<SubnetArnList>;
 export interface VpcOptions {
   Ipv6Support?: boolean;
   ApplianceModeSupport?: boolean;
   DnsSupport?: boolean;
   SecurityGroupReferencingSupport?: boolean;
 }
-export const VpcOptions = /*@__PURE__*/ S.suspend(() =>
+const VpcOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Ipv6Support: S.optional(S.Boolean),
     ApplianceModeSupport: S.optional(S.Boolean),
@@ -1565,7 +1559,7 @@ export interface CreateVpcAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
-export const CreateVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String,
     VpcArn: S.String,
@@ -1583,7 +1577,7 @@ export interface VpcAttachment {
   SubnetArns?: string[];
   Options?: VpcOptions;
 }
-export const VpcAttachment = /*@__PURE__*/ S.suspend(() =>
+const VpcAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Attachment: S.optional(Attachment),
     SubnetArns: S.optional(SubnetArnList),
@@ -1593,7 +1587,7 @@ export const VpcAttachment = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVpcAttachmentResponse {
   VpcAttachment?: VpcAttachment;
 }
-export const CreateVpcAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcAttachment: S.optional(VpcAttachment) }),
 ).annotate({
   identifier: "CreateVpcAttachmentResponse",
@@ -1601,7 +1595,7 @@ export const CreateVpcAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAttachmentRequest {
   AttachmentId: string;
 }
-export const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/attachments/{AttachmentId}" }),
@@ -1616,13 +1610,13 @@ export const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAttachmentResponse {
   Attachment?: Attachment;
 }
-export const DeleteAttachmentResponse =
+const DeleteAttachmentResponse =
   AcceptAttachmentResponse as any as S.Schema<DeleteAttachmentResponse>;
 export interface DeleteConnectionRequest {
   GlobalNetworkId: string;
   ConnectionId: string;
 }
-export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")),
@@ -1643,12 +1637,12 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConnectionResponse {
   Connection?: Connection;
 }
-export const DeleteConnectionResponse =
+const DeleteConnectionResponse =
   CreateConnectionResponse as any as S.Schema<DeleteConnectionResponse>;
 export interface DeleteConnectPeerRequest {
   ConnectPeerId: string;
 }
-export const DeleteConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/connect-peers/{ConnectPeerId}" }),
@@ -1663,12 +1657,12 @@ export const DeleteConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConnectPeerResponse {
   ConnectPeer?: ConnectPeer;
 }
-export const DeleteConnectPeerResponse =
+const DeleteConnectPeerResponse =
   CreateConnectPeerResponse as any as S.Schema<DeleteConnectPeerResponse>;
 export interface DeleteCoreNetworkRequest {
   CoreNetworkId: string;
 }
-export const DeleteCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/core-networks/{CoreNetworkId}" }),
@@ -1683,13 +1677,13 @@ export const DeleteCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCoreNetworkResponse {
   CoreNetwork?: CoreNetwork;
 }
-export const DeleteCoreNetworkResponse =
+const DeleteCoreNetworkResponse =
   CreateCoreNetworkResponse as any as S.Schema<DeleteCoreNetworkResponse>;
 export interface DeleteCoreNetworkPolicyVersionRequest {
   CoreNetworkId: string;
   PolicyVersionId: number;
 }
-export const DeleteCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
@@ -1710,7 +1704,7 @@ export const DeleteCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteCoreNetworkPolicyVersionRequest",
 }) as any as S.Schema<DeleteCoreNetworkPolicyVersionRequest>;
 export type CoreNetworkPolicyAlias = "LIVE" | "LATEST" | (string & {});
-export const CoreNetworkPolicyAlias = S.String;
+const CoreNetworkPolicyAlias = S.String;
 
 export type ChangeSetState =
   | "PENDING_GENERATION"
@@ -1720,18 +1714,18 @@ export type ChangeSetState =
   | "EXECUTION_SUCCEEDED"
   | "OUT_OF_DATE"
   | (string & {});
-export const ChangeSetState = S.String;
+const ChangeSetState = S.String;
 
 export interface CoreNetworkPolicyError {
   ErrorCode: string;
   Message: string;
   Path?: string;
 }
-export const CoreNetworkPolicyError = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkPolicyError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorCode: S.String, Message: S.String, Path: S.optional(S.String) }),
 ).annotate({ identifier: "CoreNetworkPolicyError" }) as any as S.Schema<CoreNetworkPolicyError>;
 export type CoreNetworkPolicyErrorList = CoreNetworkPolicyError[];
-export const CoreNetworkPolicyErrorList = /*@__PURE__*/ S.Array(CoreNetworkPolicyError);
+const CoreNetworkPolicyErrorList = /*@__PURE__*/ S.Array(CoreNetworkPolicyError);
 export type SynthesizedJsonCoreNetworkPolicyDocument = string;
 export interface CoreNetworkPolicy {
   CoreNetworkId?: string;
@@ -1743,7 +1737,7 @@ export interface CoreNetworkPolicy {
   PolicyErrors?: CoreNetworkPolicyError[];
   PolicyDocument?: string;
 }
-export const CoreNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     PolicyVersionId: S.optional(S.Number),
@@ -1758,7 +1752,7 @@ export const CoreNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCoreNetworkPolicyVersionResponse {
   CoreNetworkPolicy?: CoreNetworkPolicy;
 }
-export const DeleteCoreNetworkPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoreNetworkPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CoreNetworkPolicy: S.optional(CoreNetworkPolicy) }),
 ).annotate({
   identifier: "DeleteCoreNetworkPolicyVersionResponse",
@@ -1767,7 +1761,7 @@ export interface DeleteCoreNetworkPrefixListAssociationRequest {
   CoreNetworkId: string;
   PrefixListArn: string;
 }
-export const DeleteCoreNetworkPrefixListAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoreNetworkPrefixListAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PrefixListArn: S.String.pipe(T.HttpLabel("PrefixListArn")),
@@ -1791,7 +1785,7 @@ export interface DeleteCoreNetworkPrefixListAssociationResponse {
   CoreNetworkId?: string;
   PrefixListArn?: string;
 }
-export const DeleteCoreNetworkPrefixListAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoreNetworkPrefixListAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CoreNetworkId: S.optional(S.String), PrefixListArn: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteCoreNetworkPrefixListAssociationResponse",
@@ -1800,7 +1794,7 @@ export interface DeleteDeviceRequest {
   GlobalNetworkId: string;
   DeviceId: string;
 }
-export const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     DeviceId: S.String.pipe(T.HttpLabel("DeviceId")),
@@ -1818,11 +1812,11 @@ export const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDeviceResponse {
   Device?: Device;
 }
-export const DeleteDeviceResponse = CreateDeviceResponse as any as S.Schema<DeleteDeviceResponse>;
+const DeleteDeviceResponse = CreateDeviceResponse as any as S.Schema<DeleteDeviceResponse>;
 export interface DeleteGlobalNetworkRequest {
   GlobalNetworkId: string;
 }
-export const DeleteGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/global-networks/{GlobalNetworkId}" }),
@@ -1839,13 +1833,13 @@ export const DeleteGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGlobalNetworkResponse {
   GlobalNetwork?: GlobalNetwork;
 }
-export const DeleteGlobalNetworkResponse =
+const DeleteGlobalNetworkResponse =
   CreateGlobalNetworkResponse as any as S.Schema<DeleteGlobalNetworkResponse>;
 export interface DeleteLinkRequest {
   GlobalNetworkId: string;
   LinkId: string;
 }
-export const DeleteLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     LinkId: S.String.pipe(T.HttpLabel("LinkId")),
@@ -1863,11 +1857,11 @@ export const DeleteLinkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLinkResponse {
   Link?: Link;
 }
-export const DeleteLinkResponse = CreateLinkResponse as any as S.Schema<DeleteLinkResponse>;
+const DeleteLinkResponse = CreateLinkResponse as any as S.Schema<DeleteLinkResponse>;
 export interface DeletePeeringRequest {
   PeeringId: string;
 }
-export const DeletePeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PeeringId: S.String.pipe(T.HttpLabel("PeeringId")) }).pipe(
     T.all(T.Http({ method: "DELETE", uri: "/peerings/{PeeringId}" }), svc, auth, proto, ver, rules),
   ),
@@ -1875,13 +1869,13 @@ export const DeletePeeringRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePeeringResponse {
   Peering?: Peering;
 }
-export const DeletePeeringResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePeeringResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Peering: S.optional(Peering) }),
 ).annotate({ identifier: "DeletePeeringResponse" }) as any as S.Schema<DeletePeeringResponse>;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
-export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/resource-policy/{ResourceArn}" }),
@@ -1896,14 +1890,14 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteResourcePolicyResponse",
 }) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteSiteRequest {
   GlobalNetworkId: string;
   SiteId: string;
 }
-export const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     SiteId: S.String.pipe(T.HttpLabel("SiteId")),
@@ -1921,12 +1915,12 @@ export const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSiteResponse {
   Site?: Site;
 }
-export const DeleteSiteResponse = CreateSiteResponse as any as S.Schema<DeleteSiteResponse>;
+const DeleteSiteResponse = CreateSiteResponse as any as S.Schema<DeleteSiteResponse>;
 export interface DeregisterTransitGatewayRequest {
   GlobalNetworkId: string;
   TransitGatewayArn: string;
 }
-export const DeregisterTransitGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const DeregisterTransitGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     TransitGatewayArn: S.String.pipe(T.HttpLabel("TransitGatewayArn")),
@@ -1953,13 +1947,13 @@ export type TransitGatewayRegistrationState =
   | "DELETED"
   | "FAILED"
   | (string & {});
-export const TransitGatewayRegistrationState = S.String;
+const TransitGatewayRegistrationState = S.String;
 
 export interface TransitGatewayRegistrationStateReason {
   Code?: TransitGatewayRegistrationState;
   Message?: string;
 }
-export const TransitGatewayRegistrationStateReason = /*@__PURE__*/ S.suspend(() =>
+const TransitGatewayRegistrationStateReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Code: S.optional(TransitGatewayRegistrationState), Message: S.optional(S.String) }),
 ).annotate({
   identifier: "TransitGatewayRegistrationStateReason",
@@ -1969,7 +1963,7 @@ export interface TransitGatewayRegistration {
   TransitGatewayArn?: string;
   State?: TransitGatewayRegistrationStateReason;
 }
-export const TransitGatewayRegistration = /*@__PURE__*/ S.suspend(() =>
+const TransitGatewayRegistration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.optional(S.String),
     TransitGatewayArn: S.optional(S.String),
@@ -1981,13 +1975,13 @@ export const TransitGatewayRegistration = /*@__PURE__*/ S.suspend(() =>
 export interface DeregisterTransitGatewayResponse {
   TransitGatewayRegistration?: TransitGatewayRegistration;
 }
-export const DeregisterTransitGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const DeregisterTransitGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TransitGatewayRegistration: S.optional(TransitGatewayRegistration) }),
 ).annotate({
   identifier: "DeregisterTransitGatewayResponse",
 }) as any as S.Schema<DeregisterTransitGatewayResponse>;
 export type GlobalNetworkIdList = string[];
-export const GlobalNetworkIdList = ExternalRegionCodeList as any as S.Schema<GlobalNetworkIdList>;
+const GlobalNetworkIdList = ExternalRegionCodeList as any as S.Schema<GlobalNetworkIdList>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface DescribeGlobalNetworksRequest {
@@ -1995,7 +1989,7 @@ export interface DescribeGlobalNetworksRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeGlobalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeGlobalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkIds: S.optional(GlobalNetworkIdList).pipe(T.HttpQuery("globalNetworkIds")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2005,12 +1999,12 @@ export const DescribeGlobalNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeGlobalNetworksRequest",
 }) as any as S.Schema<DescribeGlobalNetworksRequest>;
 export type GlobalNetworkList = GlobalNetwork[];
-export const GlobalNetworkList = /*@__PURE__*/ S.Array(GlobalNetwork);
+const GlobalNetworkList = /*@__PURE__*/ S.Array(GlobalNetwork);
 export interface DescribeGlobalNetworksResponse {
   GlobalNetworks?: GlobalNetwork[];
   NextToken?: string;
 }
-export const DescribeGlobalNetworksResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeGlobalNetworksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalNetworks: S.optional(GlobalNetworkList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DescribeGlobalNetworksResponse",
@@ -2019,7 +2013,7 @@ export interface DisassociateConnectPeerRequest {
   GlobalNetworkId: string;
   ConnectPeerId: string;
 }
-export const DisassociateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")),
@@ -2042,13 +2036,13 @@ export const DisassociateConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateConnectPeerResponse {
   ConnectPeerAssociation?: ConnectPeerAssociation;
 }
-export const DisassociateConnectPeerResponse =
+const DisassociateConnectPeerResponse =
   AssociateConnectPeerResponse as any as S.Schema<DisassociateConnectPeerResponse>;
 export interface DisassociateCustomerGatewayRequest {
   GlobalNetworkId: string;
   CustomerGatewayArn: string;
 }
-export const DisassociateCustomerGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateCustomerGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     CustomerGatewayArn: S.String.pipe(T.HttpLabel("CustomerGatewayArn")),
@@ -2071,14 +2065,14 @@ export const DisassociateCustomerGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateCustomerGatewayResponse {
   CustomerGatewayAssociation?: CustomerGatewayAssociation;
 }
-export const DisassociateCustomerGatewayResponse =
+const DisassociateCustomerGatewayResponse =
   AssociateCustomerGatewayResponse as any as S.Schema<DisassociateCustomerGatewayResponse>;
 export interface DisassociateLinkRequest {
   GlobalNetworkId: string;
   DeviceId: string;
   LinkId: string;
 }
-export const DisassociateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     DeviceId: S.String.pipe(T.HttpQuery("deviceId")),
@@ -2097,13 +2091,12 @@ export const DisassociateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateLinkResponse {
   LinkAssociation?: LinkAssociation;
 }
-export const DisassociateLinkResponse =
-  AssociateLinkResponse as any as S.Schema<DisassociateLinkResponse>;
+const DisassociateLinkResponse = AssociateLinkResponse as any as S.Schema<DisassociateLinkResponse>;
 export interface DisassociateTransitGatewayConnectPeerRequest {
   GlobalNetworkId: string;
   TransitGatewayConnectPeerArn: string;
 }
-export const DisassociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     TransitGatewayConnectPeerArn: S.String.pipe(T.HttpLabel("TransitGatewayConnectPeerArn")),
@@ -2126,13 +2119,13 @@ export const DisassociateTransitGatewayConnectPeerRequest = /*@__PURE__*/ S.susp
 export interface DisassociateTransitGatewayConnectPeerResponse {
   TransitGatewayConnectPeerAssociation?: TransitGatewayConnectPeerAssociation;
 }
-export const DisassociateTransitGatewayConnectPeerResponse =
+const DisassociateTransitGatewayConnectPeerResponse =
   AssociateTransitGatewayConnectPeerResponse as any as S.Schema<DisassociateTransitGatewayConnectPeerResponse>;
 export interface ExecuteCoreNetworkChangeSetRequest {
   CoreNetworkId: string;
   PolicyVersionId: number;
 }
-export const ExecuteCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
@@ -2153,15 +2146,13 @@ export const ExecuteCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecuteCoreNetworkChangeSetRequest",
 }) as any as S.Schema<ExecuteCoreNetworkChangeSetRequest>;
 export interface ExecuteCoreNetworkChangeSetResponse {}
-export const ExecuteCoreNetworkChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ExecuteCoreNetworkChangeSetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ExecuteCoreNetworkChangeSetResponse",
 }) as any as S.Schema<ExecuteCoreNetworkChangeSetResponse>;
 export interface GetConnectAttachmentRequest {
   AttachmentId: string;
 }
-export const GetConnectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/connect-attachments/{AttachmentId}" }),
@@ -2178,10 +2169,10 @@ export const GetConnectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConnectAttachmentResponse {
   ConnectAttachment?: ConnectAttachment;
 }
-export const GetConnectAttachmentResponse =
+const GetConnectAttachmentResponse =
   CreateConnectAttachmentResponse as any as S.Schema<GetConnectAttachmentResponse>;
 export type ConnectionIdList = string[];
-export const ConnectionIdList = ExternalRegionCodeList as any as S.Schema<ConnectionIdList>;
+const ConnectionIdList = ExternalRegionCodeList as any as S.Schema<ConnectionIdList>;
 export interface GetConnectionsRequest {
   GlobalNetworkId: string;
   ConnectionIds?: string[];
@@ -2189,7 +2180,7 @@ export interface GetConnectionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     ConnectionIds: S.optional(ConnectionIdList).pipe(T.HttpQuery("connectionIds")),
@@ -2208,18 +2199,18 @@ export const GetConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetConnectionsRequest" }) as any as S.Schema<GetConnectionsRequest>;
 export type ConnectionList = Connection[];
-export const ConnectionList = /*@__PURE__*/ S.Array(Connection);
+const ConnectionList = /*@__PURE__*/ S.Array(Connection);
 export interface GetConnectionsResponse {
   Connections?: Connection[];
   NextToken?: string;
 }
-export const GetConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Connections: S.optional(ConnectionList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetConnectionsResponse" }) as any as S.Schema<GetConnectionsResponse>;
 export interface GetConnectPeerRequest {
   ConnectPeerId: string;
 }
-export const GetConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConnectPeerId: S.String.pipe(T.HttpLabel("ConnectPeerId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/connect-peers/{ConnectPeerId}" }),
@@ -2234,18 +2225,18 @@ export const GetConnectPeerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConnectPeerResponse {
   ConnectPeer?: ConnectPeer;
 }
-export const GetConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConnectPeer: S.optional(ConnectPeer) }),
 ).annotate({ identifier: "GetConnectPeerResponse" }) as any as S.Schema<GetConnectPeerResponse>;
 export type ConnectPeerIdList = string[];
-export const ConnectPeerIdList = ExternalRegionCodeList as any as S.Schema<ConnectPeerIdList>;
+const ConnectPeerIdList = ExternalRegionCodeList as any as S.Schema<ConnectPeerIdList>;
 export interface GetConnectPeerAssociationsRequest {
   GlobalNetworkId: string;
   ConnectPeerIds?: string[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetConnectPeerAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectPeerAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     ConnectPeerIds: S.optional(ConnectPeerIdList).pipe(T.HttpQuery("connectPeerIds")),
@@ -2268,12 +2259,12 @@ export const GetConnectPeerAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectPeerAssociationsRequest",
 }) as any as S.Schema<GetConnectPeerAssociationsRequest>;
 export type ConnectPeerAssociationList = ConnectPeerAssociation[];
-export const ConnectPeerAssociationList = /*@__PURE__*/ S.Array(ConnectPeerAssociation);
+const ConnectPeerAssociationList = /*@__PURE__*/ S.Array(ConnectPeerAssociation);
 export interface GetConnectPeerAssociationsResponse {
   ConnectPeerAssociations?: ConnectPeerAssociation[];
   NextToken?: string;
 }
-export const GetConnectPeerAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectPeerAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConnectPeerAssociations: S.optional(ConnectPeerAssociationList),
     NextToken: S.optional(S.String),
@@ -2284,7 +2275,7 @@ export const GetConnectPeerAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCoreNetworkRequest {
   CoreNetworkId: string;
 }
-export const GetCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/core-networks/{CoreNetworkId}" }),
@@ -2299,7 +2290,7 @@ export const GetCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCoreNetworkResponse {
   CoreNetwork?: CoreNetwork;
 }
-export const GetCoreNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCoreNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CoreNetwork: S.optional(CoreNetwork) }),
 ).annotate({ identifier: "GetCoreNetworkResponse" }) as any as S.Schema<GetCoreNetworkResponse>;
 export interface GetCoreNetworkChangeEventsRequest {
@@ -2308,7 +2299,7 @@ export interface GetCoreNetworkChangeEventsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetCoreNetworkChangeEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoreNetworkChangeEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
@@ -2346,22 +2337,22 @@ export type ChangeType =
   | "SEGMENT_ACTIONS_CONFIGURATION"
   | "ATTACHMENT_POLICIES_CONFIGURATION"
   | (string & {});
-export const ChangeType = S.String;
+const ChangeType = S.String;
 
 export type ChangeAction = "ADD" | "MODIFY" | "REMOVE" | (string & {});
-export const ChangeAction = S.String;
+const ChangeAction = S.String;
 
 export type ChangeStatus = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETE" | "FAILED" | (string & {});
-export const ChangeStatus = S.String;
+const ChangeStatus = S.String;
 
 export type RoutingPolicyDirection = "inbound" | "outbound" | (string & {});
-export const RoutingPolicyDirection = S.String;
+const RoutingPolicyDirection = S.String;
 
 export interface RoutingPolicyAssociationDetail {
   RoutingPolicyNames?: string[];
   SharedSegments?: string[];
 }
-export const RoutingPolicyAssociationDetail = /*@__PURE__*/ S.suspend(() =>
+const RoutingPolicyAssociationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoutingPolicyNames: S.optional(ConstrainedStringList),
     SharedSegments: S.optional(ConstrainedStringList),
@@ -2370,9 +2361,7 @@ export const RoutingPolicyAssociationDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutingPolicyAssociationDetail",
 }) as any as S.Schema<RoutingPolicyAssociationDetail>;
 export type RoutingPolicyAssociationDetailsList = RoutingPolicyAssociationDetail[];
-export const RoutingPolicyAssociationDetailsList = /*@__PURE__*/ S.Array(
-  RoutingPolicyAssociationDetail,
-);
+const RoutingPolicyAssociationDetailsList = /*@__PURE__*/ S.Array(RoutingPolicyAssociationDetail);
 export interface CoreNetworkChangeEventValues {
   EdgeLocation?: string;
   PeerEdgeLocation?: string;
@@ -2383,7 +2372,7 @@ export interface CoreNetworkChangeEventValues {
   Cidr?: string;
   RoutingPolicyAssociationDetails?: RoutingPolicyAssociationDetail[];
 }
-export const CoreNetworkChangeEventValues = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkChangeEventValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EdgeLocation: S.optional(S.String),
     PeerEdgeLocation: S.optional(S.String),
@@ -2405,7 +2394,7 @@ export interface CoreNetworkChangeEvent {
   Status?: ChangeStatus;
   Values?: CoreNetworkChangeEventValues;
 }
-export const CoreNetworkChangeEvent = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkChangeEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(ChangeType),
     Action: S.optional(ChangeAction),
@@ -2416,12 +2405,12 @@ export const CoreNetworkChangeEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CoreNetworkChangeEvent" }) as any as S.Schema<CoreNetworkChangeEvent>;
 export type CoreNetworkChangeEventList = CoreNetworkChangeEvent[];
-export const CoreNetworkChangeEventList = /*@__PURE__*/ S.Array(CoreNetworkChangeEvent);
+const CoreNetworkChangeEventList = /*@__PURE__*/ S.Array(CoreNetworkChangeEvent);
 export interface GetCoreNetworkChangeEventsResponse {
   CoreNetworkChangeEvents?: CoreNetworkChangeEvent[];
   NextToken?: string;
 }
-export const GetCoreNetworkChangeEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCoreNetworkChangeEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkChangeEvents: S.optional(CoreNetworkChangeEventList),
     NextToken: S.optional(S.String),
@@ -2435,7 +2424,7 @@ export interface GetCoreNetworkChangeSetRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
@@ -2458,46 +2447,45 @@ export const GetCoreNetworkChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCoreNetworkChangeSetRequest",
 }) as any as S.Schema<GetCoreNetworkChangeSetRequest>;
 export type SegmentActionServiceInsertion = "send-via" | "send-to" | (string & {});
-export const SegmentActionServiceInsertion = S.String;
+const SegmentActionServiceInsertion = S.String;
 
 export type SendViaMode = "dual-hop" | "single-hop" | (string & {});
-export const SendViaMode = S.String;
+const SendViaMode = S.String;
 
 export type WhenSentToSegmentsList = string[];
-export const WhenSentToSegmentsList =
-  ExternalRegionCodeList as any as S.Schema<WhenSentToSegmentsList>;
+const WhenSentToSegmentsList = ExternalRegionCodeList as any as S.Schema<WhenSentToSegmentsList>;
 export interface WhenSentTo {
   WhenSentToSegmentsList?: string[];
 }
-export const WhenSentTo = /*@__PURE__*/ S.suspend(() =>
+const WhenSentTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ WhenSentToSegmentsList: S.optional(WhenSentToSegmentsList) }),
 ).annotate({ identifier: "WhenSentTo" }) as any as S.Schema<WhenSentTo>;
 export interface NetworkFunctionGroup {
   Name?: string;
 }
-export const NetworkFunctionGroup = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "NetworkFunctionGroup" }) as any as S.Schema<NetworkFunctionGroup>;
 export type NetworkFunctionGroupList = NetworkFunctionGroup[];
-export const NetworkFunctionGroupList = /*@__PURE__*/ S.Array(NetworkFunctionGroup);
+const NetworkFunctionGroupList = /*@__PURE__*/ S.Array(NetworkFunctionGroup);
 export type EdgeSet = string[];
-export const EdgeSet = ExternalRegionCodeList as any as S.Schema<EdgeSet>;
+const EdgeSet = ExternalRegionCodeList as any as S.Schema<EdgeSet>;
 export type EdgeSetList = string[][];
-export const EdgeSetList = /*@__PURE__*/ S.Array(EdgeSet);
+const EdgeSetList = /*@__PURE__*/ S.Array(EdgeSet);
 export interface EdgeOverride {
   EdgeSets?: string[][];
   UseEdge?: string;
 }
-export const EdgeOverride = /*@__PURE__*/ S.suspend(() =>
+const EdgeOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EdgeSets: S.optional(EdgeSetList), UseEdge: S.optional(S.String) }),
 ).annotate({ identifier: "EdgeOverride" }) as any as S.Schema<EdgeOverride>;
 export type WithEdgeOverridesList = EdgeOverride[];
-export const WithEdgeOverridesList = /*@__PURE__*/ S.Array(EdgeOverride);
+const WithEdgeOverridesList = /*@__PURE__*/ S.Array(EdgeOverride);
 export interface Via {
   NetworkFunctionGroups?: NetworkFunctionGroup[];
   WithEdgeOverrides?: EdgeOverride[];
 }
-export const Via = /*@__PURE__*/ S.suspend(() =>
+const Via = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkFunctionGroups: S.optional(NetworkFunctionGroupList),
     WithEdgeOverrides: S.optional(WithEdgeOverridesList),
@@ -2509,7 +2497,7 @@ export interface ServiceInsertionAction {
   WhenSentTo?: WhenSentTo;
   Via?: Via;
 }
-export const ServiceInsertionAction = /*@__PURE__*/ S.suspend(() =>
+const ServiceInsertionAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Action: S.optional(SegmentActionServiceInsertion),
     Mode: S.optional(SendViaMode),
@@ -2518,7 +2506,7 @@ export const ServiceInsertionAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceInsertionAction" }) as any as S.Schema<ServiceInsertionAction>;
 export type ServiceInsertionActionList = ServiceInsertionAction[];
-export const ServiceInsertionActionList = /*@__PURE__*/ S.Array(ServiceInsertionAction);
+const ServiceInsertionActionList = /*@__PURE__*/ S.Array(ServiceInsertionAction);
 export interface CoreNetworkChangeValues {
   SegmentName?: string;
   NetworkFunctionGroupName?: string;
@@ -2538,7 +2526,7 @@ export interface CoreNetworkChangeValues {
   AttachmentId?: string;
   RoutingPolicyAssociationDetails?: RoutingPolicyAssociationDetail[];
 }
-export const CoreNetworkChangeValues = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkChangeValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SegmentName: S.optional(S.String),
     NetworkFunctionGroupName: S.optional(S.String),
@@ -2567,7 +2555,7 @@ export interface CoreNetworkChange {
   NewValues?: CoreNetworkChangeValues;
   IdentifierPath?: string;
 }
-export const CoreNetworkChange = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(ChangeType),
     Action: S.optional(ChangeAction),
@@ -2578,12 +2566,12 @@ export const CoreNetworkChange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CoreNetworkChange" }) as any as S.Schema<CoreNetworkChange>;
 export type CoreNetworkChangeList = CoreNetworkChange[];
-export const CoreNetworkChangeList = /*@__PURE__*/ S.Array(CoreNetworkChange);
+const CoreNetworkChangeList = /*@__PURE__*/ S.Array(CoreNetworkChange);
 export interface GetCoreNetworkChangeSetResponse {
   CoreNetworkChanges?: CoreNetworkChange[];
   NextToken?: string;
 }
-export const GetCoreNetworkChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCoreNetworkChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkChanges: S.optional(CoreNetworkChangeList),
     NextToken: S.optional(S.String),
@@ -2596,7 +2584,7 @@ export interface GetCoreNetworkPolicyRequest {
   PolicyVersionId?: number;
   Alias?: CoreNetworkPolicyAlias;
 }
-export const GetCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PolicyVersionId: S.optional(S.Number).pipe(T.HttpQuery("policyVersionId")),
@@ -2617,18 +2605,17 @@ export const GetCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCoreNetworkPolicyResponse {
   CoreNetworkPolicy?: CoreNetworkPolicy;
 }
-export const GetCoreNetworkPolicyResponse =
+const GetCoreNetworkPolicyResponse =
   DeleteCoreNetworkPolicyVersionResponse as any as S.Schema<GetCoreNetworkPolicyResponse>;
 export type CustomerGatewayArnList = string[];
-export const CustomerGatewayArnList =
-  ExternalRegionCodeList as any as S.Schema<CustomerGatewayArnList>;
+const CustomerGatewayArnList = ExternalRegionCodeList as any as S.Schema<CustomerGatewayArnList>;
 export interface GetCustomerGatewayAssociationsRequest {
   GlobalNetworkId: string;
   CustomerGatewayArns?: string[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetCustomerGatewayAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerGatewayAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     CustomerGatewayArns: S.optional(CustomerGatewayArnList).pipe(
@@ -2653,12 +2640,12 @@ export const GetCustomerGatewayAssociationsRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "GetCustomerGatewayAssociationsRequest",
 }) as any as S.Schema<GetCustomerGatewayAssociationsRequest>;
 export type CustomerGatewayAssociationList = CustomerGatewayAssociation[];
-export const CustomerGatewayAssociationList = /*@__PURE__*/ S.Array(CustomerGatewayAssociation);
+const CustomerGatewayAssociationList = /*@__PURE__*/ S.Array(CustomerGatewayAssociation);
 export interface GetCustomerGatewayAssociationsResponse {
   CustomerGatewayAssociations?: CustomerGatewayAssociation[];
   NextToken?: string;
 }
-export const GetCustomerGatewayAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerGatewayAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CustomerGatewayAssociations: S.optional(CustomerGatewayAssociationList),
     NextToken: S.optional(S.String),
@@ -2667,7 +2654,7 @@ export const GetCustomerGatewayAssociationsResponse = /*@__PURE__*/ S.suspend(()
   identifier: "GetCustomerGatewayAssociationsResponse",
 }) as any as S.Schema<GetCustomerGatewayAssociationsResponse>;
 export type DeviceIdList = string[];
-export const DeviceIdList = ExternalRegionCodeList as any as S.Schema<DeviceIdList>;
+const DeviceIdList = ExternalRegionCodeList as any as S.Schema<DeviceIdList>;
 export interface GetDevicesRequest {
   GlobalNetworkId: string;
   DeviceIds?: string[];
@@ -2675,7 +2662,7 @@ export interface GetDevicesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     DeviceIds: S.optional(DeviceIdList).pipe(T.HttpQuery("deviceIds")),
@@ -2694,18 +2681,18 @@ export const GetDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetDevicesRequest" }) as any as S.Schema<GetDevicesRequest>;
 export type DeviceList = Device[];
-export const DeviceList = /*@__PURE__*/ S.Array(Device);
+const DeviceList = /*@__PURE__*/ S.Array(Device);
 export interface GetDevicesResponse {
   Devices?: Device[];
   NextToken?: string;
 }
-export const GetDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Devices: S.optional(DeviceList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetDevicesResponse" }) as any as S.Schema<GetDevicesResponse>;
 export interface GetDirectConnectGatewayAttachmentRequest {
   AttachmentId: string;
 }
-export const GetDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/direct-connect-gateway-attachments/{AttachmentId}" }),
@@ -2722,7 +2709,7 @@ export const GetDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(
 export interface GetDirectConnectGatewayAttachmentResponse {
   DirectConnectGatewayAttachment?: DirectConnectGatewayAttachment;
 }
-export const GetDirectConnectGatewayAttachmentResponse =
+const GetDirectConnectGatewayAttachmentResponse =
   CreateDirectConnectGatewayAttachmentResponse as any as S.Schema<GetDirectConnectGatewayAttachmentResponse>;
 export interface GetLinkAssociationsRequest {
   GlobalNetworkId: string;
@@ -2731,7 +2718,7 @@ export interface GetLinkAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetLinkAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinkAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     DeviceId: S.optional(S.String).pipe(T.HttpQuery("deviceId")),
@@ -2752,18 +2739,18 @@ export const GetLinkAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLinkAssociationsRequest",
 }) as any as S.Schema<GetLinkAssociationsRequest>;
 export type LinkAssociationList = LinkAssociation[];
-export const LinkAssociationList = /*@__PURE__*/ S.Array(LinkAssociation);
+const LinkAssociationList = /*@__PURE__*/ S.Array(LinkAssociation);
 export interface GetLinkAssociationsResponse {
   LinkAssociations?: LinkAssociation[];
   NextToken?: string;
 }
-export const GetLinkAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLinkAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LinkAssociations: S.optional(LinkAssociationList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetLinkAssociationsResponse",
 }) as any as S.Schema<GetLinkAssociationsResponse>;
 export type LinkIdList = string[];
-export const LinkIdList = ExternalRegionCodeList as any as S.Schema<LinkIdList>;
+const LinkIdList = ExternalRegionCodeList as any as S.Schema<LinkIdList>;
 export interface GetLinksRequest {
   GlobalNetworkId: string;
   LinkIds?: string[];
@@ -2773,7 +2760,7 @@ export interface GetLinksRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     LinkIds: S.optional(LinkIdList).pipe(T.HttpQuery("linkIds")),
@@ -2794,12 +2781,12 @@ export const GetLinksRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetLinksRequest" }) as any as S.Schema<GetLinksRequest>;
 export type LinkList = Link[];
-export const LinkList = /*@__PURE__*/ S.Array(Link);
+const LinkList = /*@__PURE__*/ S.Array(Link);
 export interface GetLinksResponse {
   Links?: Link[];
   NextToken?: string;
 }
-export const GetLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Links: S.optional(LinkList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetLinksResponse" }) as any as S.Schema<GetLinksResponse>;
 export interface GetNetworkResourceCountsRequest {
@@ -2808,7 +2795,7 @@ export interface GetNetworkResourceCountsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetNetworkResourceCountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkResourceCountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     ResourceType: S.optional(S.String).pipe(T.HttpQuery("resourceType")),
@@ -2831,16 +2818,16 @@ export interface NetworkResourceCount {
   ResourceType?: string;
   Count?: number;
 }
-export const NetworkResourceCount = /*@__PURE__*/ S.suspend(() =>
+const NetworkResourceCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceType: S.optional(S.String), Count: S.optional(S.Number) }),
 ).annotate({ identifier: "NetworkResourceCount" }) as any as S.Schema<NetworkResourceCount>;
 export type NetworkResourceCountList = NetworkResourceCount[];
-export const NetworkResourceCountList = /*@__PURE__*/ S.Array(NetworkResourceCount);
+const NetworkResourceCountList = /*@__PURE__*/ S.Array(NetworkResourceCount);
 export interface GetNetworkResourceCountsResponse {
   NetworkResourceCounts?: NetworkResourceCount[];
   NextToken?: string;
 }
-export const GetNetworkResourceCountsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkResourceCountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkResourceCounts: S.optional(NetworkResourceCountList),
     NextToken: S.optional(S.String),
@@ -2859,7 +2846,7 @@ export interface GetNetworkResourceRelationshipsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetNetworkResourceRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkResourceRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
@@ -2890,16 +2877,16 @@ export interface Relationship {
   From?: string;
   To?: string;
 }
-export const Relationship = /*@__PURE__*/ S.suspend(() =>
+const Relationship = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ From: S.optional(S.String), To: S.optional(S.String) }),
 ).annotate({ identifier: "Relationship" }) as any as S.Schema<Relationship>;
 export type RelationshipList = Relationship[];
-export const RelationshipList = /*@__PURE__*/ S.Array(Relationship);
+const RelationshipList = /*@__PURE__*/ S.Array(Relationship);
 export interface GetNetworkResourceRelationshipsResponse {
   Relationships?: Relationship[];
   NextToken?: string;
 }
-export const GetNetworkResourceRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkResourceRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Relationships: S.optional(RelationshipList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetNetworkResourceRelationshipsResponse",
@@ -2915,7 +2902,7 @@ export interface GetNetworkResourcesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetNetworkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
@@ -2940,7 +2927,7 @@ export const GetNetworkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNetworkResourcesRequest",
 }) as any as S.Schema<GetNetworkResourcesRequest>;
 export type NetworkResourceMetadataMap = { [key: string]: string | undefined };
-export const NetworkResourceMetadataMap = /*@__PURE__*/ S.Record(
+const NetworkResourceMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -2957,7 +2944,7 @@ export interface NetworkResource {
   Tags?: Tag[];
   Metadata?: { [key: string]: string | undefined };
 }
-export const NetworkResource = /*@__PURE__*/ S.suspend(() =>
+const NetworkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RegisteredGatewayArn: S.optional(S.String),
     CoreNetworkId: S.optional(S.String),
@@ -2973,12 +2960,12 @@ export const NetworkResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkResource" }) as any as S.Schema<NetworkResource>;
 export type NetworkResourceList = NetworkResource[];
-export const NetworkResourceList = /*@__PURE__*/ S.Array(NetworkResource);
+const NetworkResourceList = /*@__PURE__*/ S.Array(NetworkResource);
 export interface GetNetworkResourcesResponse {
   NetworkResources?: NetworkResource[];
   NextToken?: string;
 }
-export const GetNetworkResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NetworkResources: S.optional(NetworkResourceList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetNetworkResourcesResponse",
@@ -2988,7 +2975,7 @@ export interface CoreNetworkSegmentEdgeIdentifier {
   SegmentName?: string;
   EdgeLocation?: string;
 }
-export const CoreNetworkSegmentEdgeIdentifier = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkSegmentEdgeIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     SegmentName: S.optional(S.String),
@@ -3002,7 +2989,7 @@ export interface CoreNetworkNetworkFunctionGroupIdentifier {
   NetworkFunctionGroupName?: string;
   EdgeLocation?: string;
 }
-export const CoreNetworkNetworkFunctionGroupIdentifier = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkNetworkFunctionGroupIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     NetworkFunctionGroupName: S.optional(S.String),
@@ -3016,7 +3003,7 @@ export interface RouteTableIdentifier {
   CoreNetworkSegmentEdge?: CoreNetworkSegmentEdgeIdentifier;
   CoreNetworkNetworkFunctionGroup?: CoreNetworkNetworkFunctionGroupIdentifier;
 }
-export const RouteTableIdentifier = /*@__PURE__*/ S.suspend(() =>
+const RouteTableIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TransitGatewayRouteTableArn: S.optional(S.String),
     CoreNetworkSegmentEdge: S.optional(CoreNetworkSegmentEdgeIdentifier),
@@ -3024,24 +3011,21 @@ export const RouteTableIdentifier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouteTableIdentifier" }) as any as S.Schema<RouteTableIdentifier>;
 export type RouteState = "ACTIVE" | "BLACKHOLE" | (string & {});
-export const RouteState = S.String;
+const RouteState = S.String;
 
 export type RouteStateList = RouteState[];
-export const RouteStateList = /*@__PURE__*/ S.Array(RouteState);
+const RouteStateList = /*@__PURE__*/ S.Array(RouteState);
 export type RouteType = "PROPAGATED" | "STATIC" | (string & {});
-export const RouteType = S.String;
+const RouteType = S.String;
 
 export type RouteTypeList = RouteType[];
-export const RouteTypeList = RouteStateList as any as S.Schema<RouteTypeList>;
+const RouteTypeList = RouteStateList as any as S.Schema<RouteTypeList>;
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValues = string[];
-export const FilterValues = ExternalRegionCodeList as any as S.Schema<FilterValues>;
+const FilterValues = ExternalRegionCodeList as any as S.Schema<FilterValues>;
 export type FilterMap = { [key: string]: string[] | undefined };
-export const FilterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ FilterValues.pipe(S.optional),
-);
+const FilterMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FilterValues.pipe(S.optional));
 export interface GetNetworkRoutesRequest {
   GlobalNetworkId: string;
   RouteTableIdentifier: RouteTableIdentifier;
@@ -3054,7 +3038,7 @@ export interface GetNetworkRoutesRequest {
   Types?: RouteType[];
   DestinationFilters?: { [key: string]: string[] | undefined };
 }
-export const GetNetworkRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     RouteTableIdentifier: RouteTableIdentifier,
@@ -3082,7 +3066,7 @@ export type RouteTableType =
   | "CORE_NETWORK_SEGMENT"
   | "NETWORK_FUNCTION_GROUP"
   | (string & {});
-export const RouteTableType = S.String;
+const RouteTableType = S.String;
 
 export type TransitGatewayAttachmentId = string;
 export interface NetworkRouteDestination {
@@ -3094,7 +3078,7 @@ export interface NetworkRouteDestination {
   ResourceType?: string;
   ResourceId?: string;
 }
-export const NetworkRouteDestination = /*@__PURE__*/ S.suspend(() =>
+const NetworkRouteDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkAttachmentId: S.optional(S.String),
     TransitGatewayAttachmentId: S.optional(S.String),
@@ -3106,7 +3090,7 @@ export const NetworkRouteDestination = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkRouteDestination" }) as any as S.Schema<NetworkRouteDestination>;
 export type NetworkRouteDestinationList = NetworkRouteDestination[];
-export const NetworkRouteDestinationList = /*@__PURE__*/ S.Array(NetworkRouteDestination);
+const NetworkRouteDestinationList = /*@__PURE__*/ S.Array(NetworkRouteDestination);
 export interface NetworkRoute {
   DestinationCidrBlock?: string;
   Destinations?: NetworkRouteDestination[];
@@ -3114,7 +3098,7 @@ export interface NetworkRoute {
   State?: RouteState;
   Type?: RouteType;
 }
-export const NetworkRoute = /*@__PURE__*/ S.suspend(() =>
+const NetworkRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DestinationCidrBlock: S.optional(S.String),
     Destinations: S.optional(NetworkRouteDestinationList),
@@ -3124,7 +3108,7 @@ export const NetworkRoute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkRoute" }) as any as S.Schema<NetworkRoute>;
 export type NetworkRouteList = NetworkRoute[];
-export const NetworkRouteList = /*@__PURE__*/ S.Array(NetworkRoute);
+const NetworkRouteList = /*@__PURE__*/ S.Array(NetworkRoute);
 export interface GetNetworkRoutesResponse {
   RouteTableArn?: string;
   CoreNetworkSegmentEdge?: CoreNetworkSegmentEdgeIdentifier;
@@ -3132,7 +3116,7 @@ export interface GetNetworkRoutesResponse {
   RouteTableTimestamp?: Date;
   NetworkRoutes?: NetworkRoute[];
 }
-export const GetNetworkRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RouteTableArn: S.optional(S.String),
     CoreNetworkSegmentEdge: S.optional(CoreNetworkSegmentEdgeIdentifier),
@@ -3152,7 +3136,7 @@ export interface GetNetworkTelemetryRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetNetworkTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
@@ -3177,17 +3161,17 @@ export const GetNetworkTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNetworkTelemetryRequest",
 }) as any as S.Schema<GetNetworkTelemetryRequest>;
 export type ConnectionType = "BGP" | "IPSEC" | (string & {});
-export const ConnectionType = S.String;
+const ConnectionType = S.String;
 
 export type ConnectionStatus = "UP" | "DOWN" | (string & {});
-export const ConnectionStatus = S.String;
+const ConnectionStatus = S.String;
 
 export interface ConnectionHealth {
   Type?: ConnectionType;
   Status?: ConnectionStatus;
   Timestamp?: Date;
 }
-export const ConnectionHealth = /*@__PURE__*/ S.suspend(() =>
+const ConnectionHealth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(ConnectionType),
     Status: S.optional(ConnectionStatus),
@@ -3205,7 +3189,7 @@ export interface NetworkTelemetry {
   Address?: string;
   Health?: ConnectionHealth;
 }
-export const NetworkTelemetry = /*@__PURE__*/ S.suspend(() =>
+const NetworkTelemetry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RegisteredGatewayArn: S.optional(S.String),
     CoreNetworkId: S.optional(S.String),
@@ -3219,12 +3203,12 @@ export const NetworkTelemetry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkTelemetry" }) as any as S.Schema<NetworkTelemetry>;
 export type NetworkTelemetryList = NetworkTelemetry[];
-export const NetworkTelemetryList = /*@__PURE__*/ S.Array(NetworkTelemetry);
+const NetworkTelemetryList = /*@__PURE__*/ S.Array(NetworkTelemetry);
 export interface GetNetworkTelemetryResponse {
   NetworkTelemetry?: NetworkTelemetry[];
   NextToken?: string;
 }
-export const GetNetworkTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NetworkTelemetry: S.optional(NetworkTelemetryList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetNetworkTelemetryResponse",
@@ -3232,7 +3216,7 @@ export const GetNetworkTelemetryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourcePolicyRequest {
   ResourceArn: string;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/resource-policy/{ResourceArn}" }),
@@ -3248,7 +3232,7 @@ export type SynthesizedJsonResourcePolicyDocument = string;
 export interface GetResourcePolicyResponse {
   PolicyDocument?: string;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PolicyDocument: S.optional(S.String) }),
 ).annotate({
   identifier: "GetResourcePolicyResponse",
@@ -3257,7 +3241,7 @@ export interface GetRouteAnalysisRequest {
   GlobalNetworkId: string;
   RouteAnalysisId: string;
 }
-export const GetRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     RouteAnalysisId: S.String.pipe(T.HttpLabel("RouteAnalysisId")),
@@ -3276,7 +3260,7 @@ export const GetRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRouteAnalysisRequest" }) as any as S.Schema<GetRouteAnalysisRequest>;
 export type RouteAnalysisStatus = "RUNNING" | "COMPLETED" | "FAILED" | (string & {});
-export const RouteAnalysisStatus = S.String;
+const RouteAnalysisStatus = S.String;
 
 export type TransitGatewayAttachmentArn = string;
 export interface RouteAnalysisEndpointOptions {
@@ -3284,7 +3268,7 @@ export interface RouteAnalysisEndpointOptions {
   TransitGatewayArn?: string;
   IpAddress?: string;
 }
-export const RouteAnalysisEndpointOptions = /*@__PURE__*/ S.suspend(() =>
+const RouteAnalysisEndpointOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TransitGatewayAttachmentArn: S.optional(S.String),
     TransitGatewayArn: S.optional(S.String),
@@ -3294,7 +3278,7 @@ export const RouteAnalysisEndpointOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteAnalysisEndpointOptions",
 }) as any as S.Schema<RouteAnalysisEndpointOptions>;
 export type RouteAnalysisCompletionResultCode = "CONNECTED" | "NOT_CONNECTED" | (string & {});
-export const RouteAnalysisCompletionResultCode = S.String;
+const RouteAnalysisCompletionResultCode = S.String;
 
 export type RouteAnalysisCompletionReasonCode =
   | "TRANSIT_GATEWAY_ATTACHMENT_NOT_FOUND"
@@ -3309,18 +3293,18 @@ export type RouteAnalysisCompletionReasonCode =
   | "POSSIBLE_MIDDLEBOX"
   | "NO_DESTINATION_ARN_PROVIDED"
   | (string & {});
-export const RouteAnalysisCompletionReasonCode = S.String;
+const RouteAnalysisCompletionReasonCode = S.String;
 
 export type ReasonContextKey = string;
 export type ReasonContextValue = string;
 export type ReasonContextMap = { [key: string]: string | undefined };
-export const ReasonContextMap = NetworkResourceMetadataMap as any as S.Schema<ReasonContextMap>;
+const ReasonContextMap = NetworkResourceMetadataMap as any as S.Schema<ReasonContextMap>;
 export interface RouteAnalysisCompletion {
   ResultCode?: RouteAnalysisCompletionResultCode;
   ReasonCode?: RouteAnalysisCompletionReasonCode;
   ReasonContext?: { [key: string]: string | undefined };
 }
-export const RouteAnalysisCompletion = /*@__PURE__*/ S.suspend(() =>
+const RouteAnalysisCompletion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResultCode: S.optional(RouteAnalysisCompletionResultCode),
     ReasonCode: S.optional(RouteAnalysisCompletionReasonCode),
@@ -3335,7 +3319,7 @@ export interface NetworkResourceSummary {
   NameTag?: string;
   IsMiddlebox?: boolean;
 }
-export const NetworkResourceSummary = /*@__PURE__*/ S.suspend(() =>
+const NetworkResourceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RegisteredGatewayArn: S.optional(S.String),
     ResourceArn: S.optional(S.String),
@@ -3350,7 +3334,7 @@ export interface PathComponent {
   Resource?: NetworkResourceSummary;
   DestinationCidrBlock?: string;
 }
-export const PathComponent = /*@__PURE__*/ S.suspend(() =>
+const PathComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Sequence: S.optional(S.Number),
     Resource: S.optional(NetworkResourceSummary),
@@ -3358,12 +3342,12 @@ export const PathComponent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathComponent" }) as any as S.Schema<PathComponent>;
 export type PathComponentList = PathComponent[];
-export const PathComponentList = /*@__PURE__*/ S.Array(PathComponent);
+const PathComponentList = /*@__PURE__*/ S.Array(PathComponent);
 export interface RouteAnalysisPath {
   CompletionStatus?: RouteAnalysisCompletion;
   Path?: PathComponent[];
 }
-export const RouteAnalysisPath = /*@__PURE__*/ S.suspend(() =>
+const RouteAnalysisPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CompletionStatus: S.optional(RouteAnalysisCompletion),
     Path: S.optional(PathComponentList),
@@ -3382,7 +3366,7 @@ export interface RouteAnalysis {
   ForwardPath?: RouteAnalysisPath;
   ReturnPath?: RouteAnalysisPath;
 }
-export const RouteAnalysis = /*@__PURE__*/ S.suspend(() =>
+const RouteAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.optional(S.String),
     OwnerAccountId: S.optional(S.String),
@@ -3400,18 +3384,18 @@ export const RouteAnalysis = /*@__PURE__*/ S.suspend(() =>
 export interface GetRouteAnalysisResponse {
   RouteAnalysis?: RouteAnalysis;
 }
-export const GetRouteAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRouteAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RouteAnalysis: S.optional(RouteAnalysis) }),
 ).annotate({ identifier: "GetRouteAnalysisResponse" }) as any as S.Schema<GetRouteAnalysisResponse>;
 export type SiteIdList = string[];
-export const SiteIdList = ExternalRegionCodeList as any as S.Schema<SiteIdList>;
+const SiteIdList = ExternalRegionCodeList as any as S.Schema<SiteIdList>;
 export interface GetSitesRequest {
   GlobalNetworkId: string;
   SiteIds?: string[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     SiteIds: S.optional(SiteIdList).pipe(T.HttpQuery("siteIds")),
@@ -3429,18 +3413,18 @@ export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetSitesRequest" }) as any as S.Schema<GetSitesRequest>;
 export type SiteList = Site[];
-export const SiteList = /*@__PURE__*/ S.Array(Site);
+const SiteList = /*@__PURE__*/ S.Array(Site);
 export interface GetSitesResponse {
   Sites?: Site[];
   NextToken?: string;
 }
-export const GetSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Sites: S.optional(SiteList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetSitesResponse" }) as any as S.Schema<GetSitesResponse>;
 export interface GetSiteToSiteVpnAttachmentRequest {
   AttachmentId: string;
 }
-export const GetSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/site-to-site-vpn-attachments/{AttachmentId}" }),
@@ -3457,10 +3441,10 @@ export const GetSiteToSiteVpnAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSiteToSiteVpnAttachmentResponse {
   SiteToSiteVpnAttachment?: SiteToSiteVpnAttachment;
 }
-export const GetSiteToSiteVpnAttachmentResponse =
+const GetSiteToSiteVpnAttachmentResponse =
   CreateSiteToSiteVpnAttachmentResponse as any as S.Schema<GetSiteToSiteVpnAttachmentResponse>;
 export type TransitGatewayConnectPeerArnList = string[];
-export const TransitGatewayConnectPeerArnList =
+const TransitGatewayConnectPeerArnList =
   ExternalRegionCodeList as any as S.Schema<TransitGatewayConnectPeerArnList>;
 export interface GetTransitGatewayConnectPeerAssociationsRequest {
   GlobalNetworkId: string;
@@ -3468,7 +3452,7 @@ export interface GetTransitGatewayConnectPeerAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetTransitGatewayConnectPeerAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransitGatewayConnectPeerAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     TransitGatewayConnectPeerArns: S.optional(TransitGatewayConnectPeerArnList).pipe(
@@ -3493,14 +3477,14 @@ export const GetTransitGatewayConnectPeerAssociationsRequest = /*@__PURE__*/ S.s
   identifier: "GetTransitGatewayConnectPeerAssociationsRequest",
 }) as any as S.Schema<GetTransitGatewayConnectPeerAssociationsRequest>;
 export type TransitGatewayConnectPeerAssociationList = TransitGatewayConnectPeerAssociation[];
-export const TransitGatewayConnectPeerAssociationList = /*@__PURE__*/ S.Array(
+const TransitGatewayConnectPeerAssociationList = /*@__PURE__*/ S.Array(
   TransitGatewayConnectPeerAssociation,
 );
 export interface GetTransitGatewayConnectPeerAssociationsResponse {
   TransitGatewayConnectPeerAssociations?: TransitGatewayConnectPeerAssociation[];
   NextToken?: string;
 }
-export const GetTransitGatewayConnectPeerAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTransitGatewayConnectPeerAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TransitGatewayConnectPeerAssociations: S.optional(TransitGatewayConnectPeerAssociationList),
     NextToken: S.optional(S.String),
@@ -3511,7 +3495,7 @@ export const GetTransitGatewayConnectPeerAssociationsResponse = /*@__PURE__*/ S.
 export interface GetTransitGatewayPeeringRequest {
   PeeringId: string;
 }
-export const GetTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PeeringId: S.String.pipe(T.HttpLabel("PeeringId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/transit-gateway-peerings/{PeeringId}" }),
@@ -3528,18 +3512,17 @@ export const GetTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTransitGatewayPeeringResponse {
   TransitGatewayPeering?: TransitGatewayPeering;
 }
-export const GetTransitGatewayPeeringResponse =
+const GetTransitGatewayPeeringResponse =
   CreateTransitGatewayPeeringResponse as any as S.Schema<GetTransitGatewayPeeringResponse>;
 export type TransitGatewayArnList = string[];
-export const TransitGatewayArnList =
-  ExternalRegionCodeList as any as S.Schema<TransitGatewayArnList>;
+const TransitGatewayArnList = ExternalRegionCodeList as any as S.Schema<TransitGatewayArnList>;
 export interface GetTransitGatewayRegistrationsRequest {
   GlobalNetworkId: string;
   TransitGatewayArns?: string[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetTransitGatewayRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransitGatewayRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     TransitGatewayArns: S.optional(TransitGatewayArnList).pipe(T.HttpQuery("transitGatewayArns")),
@@ -3562,12 +3545,12 @@ export const GetTransitGatewayRegistrationsRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "GetTransitGatewayRegistrationsRequest",
 }) as any as S.Schema<GetTransitGatewayRegistrationsRequest>;
 export type TransitGatewayRegistrationList = TransitGatewayRegistration[];
-export const TransitGatewayRegistrationList = /*@__PURE__*/ S.Array(TransitGatewayRegistration);
+const TransitGatewayRegistrationList = /*@__PURE__*/ S.Array(TransitGatewayRegistration);
 export interface GetTransitGatewayRegistrationsResponse {
   TransitGatewayRegistrations?: TransitGatewayRegistration[];
   NextToken?: string;
 }
-export const GetTransitGatewayRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTransitGatewayRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TransitGatewayRegistrations: S.optional(TransitGatewayRegistrationList),
     NextToken: S.optional(S.String),
@@ -3578,7 +3561,7 @@ export const GetTransitGatewayRegistrationsResponse = /*@__PURE__*/ S.suspend(()
 export interface GetTransitGatewayRouteTableAttachmentRequest {
   AttachmentId: string;
 }
-export const GetTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/transit-gateway-route-table-attachments/{AttachmentId}" }),
@@ -3595,12 +3578,12 @@ export const GetTransitGatewayRouteTableAttachmentRequest = /*@__PURE__*/ S.susp
 export interface GetTransitGatewayRouteTableAttachmentResponse {
   TransitGatewayRouteTableAttachment?: TransitGatewayRouteTableAttachment;
 }
-export const GetTransitGatewayRouteTableAttachmentResponse =
+const GetTransitGatewayRouteTableAttachmentResponse =
   CreateTransitGatewayRouteTableAttachmentResponse as any as S.Schema<GetTransitGatewayRouteTableAttachmentResponse>;
 export interface GetVpcAttachmentRequest {
   AttachmentId: string;
 }
-export const GetVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/vpc-attachments/{AttachmentId}" }),
@@ -3615,7 +3598,7 @@ export const GetVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetVpcAttachmentResponse {
   VpcAttachment?: VpcAttachment;
 }
-export const GetVpcAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVpcAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcAttachment: S.optional(VpcAttachment) }),
 ).annotate({ identifier: "GetVpcAttachmentResponse" }) as any as S.Schema<GetVpcAttachmentResponse>;
 export interface ListAttachmentRoutingPolicyAssociationsRequest {
@@ -3624,7 +3607,7 @@ export interface ListAttachmentRoutingPolicyAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListAttachmentRoutingPolicyAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttachmentRoutingPolicyAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     AttachmentId: S.optional(S.String).pipe(T.HttpQuery("attachmentId")),
@@ -3649,7 +3632,7 @@ export interface AttachmentRoutingPolicyAssociationSummary {
   AssociatedRoutingPolicies?: string[];
   RoutingPolicyLabel?: string;
 }
-export const AttachmentRoutingPolicyAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+const AttachmentRoutingPolicyAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AttachmentId: S.optional(S.String),
     PendingRoutingPolicies: S.optional(ConstrainedStringList),
@@ -3660,14 +3643,14 @@ export const AttachmentRoutingPolicyAssociationSummary = /*@__PURE__*/ S.suspend
   identifier: "AttachmentRoutingPolicyAssociationSummary",
 }) as any as S.Schema<AttachmentRoutingPolicyAssociationSummary>;
 export type AttachmentRoutingPolicyAssociationsList = AttachmentRoutingPolicyAssociationSummary[];
-export const AttachmentRoutingPolicyAssociationsList = /*@__PURE__*/ S.Array(
+const AttachmentRoutingPolicyAssociationsList = /*@__PURE__*/ S.Array(
   AttachmentRoutingPolicyAssociationSummary,
 );
 export interface ListAttachmentRoutingPolicyAssociationsResponse {
   AttachmentRoutingPolicyAssociations?: AttachmentRoutingPolicyAssociationSummary[];
   NextToken?: string;
 }
-export const ListAttachmentRoutingPolicyAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttachmentRoutingPolicyAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AttachmentRoutingPolicyAssociations: S.optional(AttachmentRoutingPolicyAssociationsList),
     NextToken: S.optional(S.String),
@@ -3683,7 +3666,7 @@ export interface ListAttachmentsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
     AttachmentType: S.optional(AttachmentType).pipe(T.HttpQuery("attachmentType")),
@@ -3694,12 +3677,12 @@ export const ListAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/attachments" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListAttachmentsRequest" }) as any as S.Schema<ListAttachmentsRequest>;
 export type AttachmentList = Attachment[];
-export const AttachmentList = /*@__PURE__*/ S.Array(Attachment);
+const AttachmentList = /*@__PURE__*/ S.Array(Attachment);
 export interface ListAttachmentsResponse {
   Attachments?: Attachment[];
   NextToken?: string;
 }
-export const ListAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Attachments: S.optional(AttachmentList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListAttachmentsResponse" }) as any as S.Schema<ListAttachmentsResponse>;
 export interface ListConnectPeersRequest {
@@ -3708,7 +3691,7 @@ export interface ListConnectPeersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListConnectPeersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectPeersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
     ConnectAttachmentId: S.optional(S.String).pipe(T.HttpQuery("connectAttachmentId")),
@@ -3726,7 +3709,7 @@ export interface ConnectPeerSummary {
   Tags?: Tag[];
   SubnetArn?: string;
 }
-export const ConnectPeerSummary = /*@__PURE__*/ S.suspend(() =>
+const ConnectPeerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     ConnectAttachmentId: S.optional(S.String),
@@ -3739,12 +3722,12 @@ export const ConnectPeerSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConnectPeerSummary" }) as any as S.Schema<ConnectPeerSummary>;
 export type ConnectPeerSummaryList = ConnectPeerSummary[];
-export const ConnectPeerSummaryList = /*@__PURE__*/ S.Array(ConnectPeerSummary);
+const ConnectPeerSummaryList = /*@__PURE__*/ S.Array(ConnectPeerSummary);
 export interface ListConnectPeersResponse {
   ConnectPeers?: ConnectPeerSummary[];
   NextToken?: string;
 }
-export const ListConnectPeersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectPeersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConnectPeers: S.optional(ConnectPeerSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListConnectPeersResponse" }) as any as S.Schema<ListConnectPeersResponse>;
 export interface ListCoreNetworkPolicyVersionsRequest {
@@ -3752,7 +3735,7 @@ export interface ListCoreNetworkPolicyVersionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListCoreNetworkPolicyVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoreNetworkPolicyVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3778,7 +3761,7 @@ export interface CoreNetworkPolicyVersion {
   CreatedAt?: Date;
   ChangeSetState?: ChangeSetState;
 }
-export const CoreNetworkPolicyVersion = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkPolicyVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     PolicyVersionId: S.optional(S.Number),
@@ -3789,12 +3772,12 @@ export const CoreNetworkPolicyVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CoreNetworkPolicyVersion" }) as any as S.Schema<CoreNetworkPolicyVersion>;
 export type CoreNetworkPolicyVersionList = CoreNetworkPolicyVersion[];
-export const CoreNetworkPolicyVersionList = /*@__PURE__*/ S.Array(CoreNetworkPolicyVersion);
+const CoreNetworkPolicyVersionList = /*@__PURE__*/ S.Array(CoreNetworkPolicyVersion);
 export interface ListCoreNetworkPolicyVersionsResponse {
   CoreNetworkPolicyVersions?: CoreNetworkPolicyVersion[];
   NextToken?: string;
 }
-export const ListCoreNetworkPolicyVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCoreNetworkPolicyVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkPolicyVersions: S.optional(CoreNetworkPolicyVersionList),
     NextToken: S.optional(S.String),
@@ -3808,7 +3791,7 @@ export interface ListCoreNetworkPrefixListAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListCoreNetworkPrefixListAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoreNetworkPrefixListAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PrefixListArn: S.optional(S.String).pipe(T.HttpQuery("prefixListArn")),
@@ -3832,7 +3815,7 @@ export interface PrefixListAssociation {
   PrefixListArn?: string;
   PrefixListAlias?: string;
 }
-export const PrefixListAssociation = /*@__PURE__*/ S.suspend(() =>
+const PrefixListAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     PrefixListArn: S.optional(S.String),
@@ -3840,12 +3823,12 @@ export const PrefixListAssociation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PrefixListAssociation" }) as any as S.Schema<PrefixListAssociation>;
 export type PrefixListAssociationList = PrefixListAssociation[];
-export const PrefixListAssociationList = /*@__PURE__*/ S.Array(PrefixListAssociation);
+const PrefixListAssociationList = /*@__PURE__*/ S.Array(PrefixListAssociation);
 export interface ListCoreNetworkPrefixListAssociationsResponse {
   PrefixListAssociations?: PrefixListAssociation[];
   NextToken?: string;
 }
-export const ListCoreNetworkPrefixListAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCoreNetworkPrefixListAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PrefixListAssociations: S.optional(PrefixListAssociationList),
     NextToken: S.optional(S.String),
@@ -3865,7 +3848,7 @@ export interface ListCoreNetworkRoutingInformationRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListCoreNetworkRoutingInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoreNetworkRoutingInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     SegmentName: S.String,
@@ -3901,7 +3884,7 @@ export interface RoutingInformationNextHop {
   SegmentName?: string;
   EdgeLocation?: string;
 }
-export const RoutingInformationNextHop = /*@__PURE__*/ S.suspend(() =>
+const RoutingInformationNextHop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IpAddress: S.optional(S.String),
     CoreNetworkAttachmentId: S.optional(S.String),
@@ -3921,7 +3904,7 @@ export interface CoreNetworkRoutingInformation {
   AsPath?: string[];
   Communities?: string[];
 }
-export const CoreNetworkRoutingInformation = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkRoutingInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Prefix: S.optional(S.String),
     NextHop: S.optional(RoutingInformationNextHop),
@@ -3934,14 +3917,12 @@ export const CoreNetworkRoutingInformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "CoreNetworkRoutingInformation",
 }) as any as S.Schema<CoreNetworkRoutingInformation>;
 export type CoreNetworkRoutingInformationList = CoreNetworkRoutingInformation[];
-export const CoreNetworkRoutingInformationList = /*@__PURE__*/ S.Array(
-  CoreNetworkRoutingInformation,
-);
+const CoreNetworkRoutingInformationList = /*@__PURE__*/ S.Array(CoreNetworkRoutingInformation);
 export interface ListCoreNetworkRoutingInformationResponse {
   CoreNetworkRoutingInformation?: CoreNetworkRoutingInformation[];
   NextToken?: string;
 }
-export const ListCoreNetworkRoutingInformationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCoreNetworkRoutingInformationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkRoutingInformation: S.optional(CoreNetworkRoutingInformationList),
     NextToken: S.optional(S.String),
@@ -3953,7 +3934,7 @@ export interface ListCoreNetworksRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListCoreNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoreNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -3968,7 +3949,7 @@ export interface CoreNetworkSummary {
   Description?: string;
   Tags?: Tag[];
 }
-export const CoreNetworkSummary = /*@__PURE__*/ S.suspend(() =>
+const CoreNetworkSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     CoreNetworkArn: S.optional(S.String),
@@ -3980,19 +3961,19 @@ export const CoreNetworkSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CoreNetworkSummary" }) as any as S.Schema<CoreNetworkSummary>;
 export type CoreNetworkSummaryList = CoreNetworkSummary[];
-export const CoreNetworkSummaryList = /*@__PURE__*/ S.Array(CoreNetworkSummary);
+const CoreNetworkSummaryList = /*@__PURE__*/ S.Array(CoreNetworkSummary);
 export interface ListCoreNetworksResponse {
   CoreNetworks?: CoreNetworkSummary[];
   NextToken?: string;
 }
-export const ListCoreNetworksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCoreNetworksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CoreNetworks: S.optional(CoreNetworkSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListCoreNetworksResponse" }) as any as S.Schema<ListCoreNetworksResponse>;
 export interface ListOrganizationServiceAccessStatusRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListOrganizationServiceAccessStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationServiceAccessStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4017,18 +3998,18 @@ export interface AccountStatus {
   AccountId?: string;
   SLRDeploymentStatus?: string;
 }
-export const AccountStatus = /*@__PURE__*/ S.suspend(() =>
+const AccountStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccountId: S.optional(S.String), SLRDeploymentStatus: S.optional(S.String) }),
 ).annotate({ identifier: "AccountStatus" }) as any as S.Schema<AccountStatus>;
 export type AccountStatusList = AccountStatus[];
-export const AccountStatusList = /*@__PURE__*/ S.Array(AccountStatus);
+const AccountStatusList = /*@__PURE__*/ S.Array(AccountStatus);
 export interface OrganizationStatus {
   OrganizationId?: string;
   OrganizationAwsServiceAccessStatus?: string;
   SLRDeploymentStatus?: string;
   AccountStatusList?: AccountStatus[];
 }
-export const OrganizationStatus = /*@__PURE__*/ S.suspend(() =>
+const OrganizationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrganizationId: S.optional(S.String),
     OrganizationAwsServiceAccessStatus: S.optional(S.String),
@@ -4040,7 +4021,7 @@ export interface ListOrganizationServiceAccessStatusResponse {
   OrganizationStatus?: OrganizationStatus;
   NextToken?: string;
 }
-export const ListOrganizationServiceAccessStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationServiceAccessStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationStatus: S.optional(OrganizationStatus), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListOrganizationServiceAccessStatusResponse",
@@ -4053,7 +4034,7 @@ export interface ListPeeringsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String).pipe(T.HttpQuery("coreNetworkId")),
     PeeringType: S.optional(PeeringType).pipe(T.HttpQuery("peeringType")),
@@ -4064,18 +4045,18 @@ export const ListPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/peerings" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListPeeringsRequest" }) as any as S.Schema<ListPeeringsRequest>;
 export type PeeringList = Peering[];
-export const PeeringList = /*@__PURE__*/ S.Array(Peering);
+const PeeringList = /*@__PURE__*/ S.Array(Peering);
 export interface ListPeeringsResponse {
   Peerings?: Peering[];
   NextToken?: string;
 }
-export const ListPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Peerings: S.optional(PeeringList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListPeeringsResponse" }) as any as S.Schema<ListPeeringsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -4085,7 +4066,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   TagList?: Tag[];
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -4096,7 +4077,7 @@ export interface PutAttachmentRoutingPolicyLabelRequest {
   RoutingPolicyLabel: string;
   ClientToken?: string;
 }
-export const PutAttachmentRoutingPolicyLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAttachmentRoutingPolicyLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String,
     AttachmentId: S.String,
@@ -4113,7 +4094,7 @@ export interface PutAttachmentRoutingPolicyLabelResponse {
   AttachmentId?: string;
   RoutingPolicyLabel?: string;
 }
-export const PutAttachmentRoutingPolicyLabelResponse = /*@__PURE__*/ S.suspend(() =>
+const PutAttachmentRoutingPolicyLabelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.optional(S.String),
     AttachmentId: S.optional(S.String),
@@ -4129,7 +4110,7 @@ export interface PutCoreNetworkPolicyRequest {
   LatestVersionId?: number;
   ClientToken?: string;
 }
-export const PutCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PolicyDocument: S.String,
@@ -4152,13 +4133,13 @@ export const PutCoreNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutCoreNetworkPolicyResponse {
   CoreNetworkPolicy?: CoreNetworkPolicy;
 }
-export const PutCoreNetworkPolicyResponse =
+const PutCoreNetworkPolicyResponse =
   DeleteCoreNetworkPolicyVersionResponse as any as S.Schema<PutCoreNetworkPolicyResponse>;
 export interface PutResourcePolicyRequest {
   PolicyDocument: string;
   ResourceArn: string;
 }
-export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PolicyDocument: S.String,
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
@@ -4174,13 +4155,13 @@ export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutResourcePolicyRequest" }) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
-export const PutResourcePolicyResponse =
+const PutResourcePolicyResponse =
   DeleteResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RegisterTransitGatewayRequest {
   GlobalNetworkId: string;
   TransitGatewayArn: string;
 }
-export const RegisterTransitGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterTransitGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     TransitGatewayArn: S.String,
@@ -4203,12 +4184,12 @@ export const RegisterTransitGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterTransitGatewayResponse {
   TransitGatewayRegistration?: TransitGatewayRegistration;
 }
-export const RegisterTransitGatewayResponse =
+const RegisterTransitGatewayResponse =
   DeregisterTransitGatewayResponse as any as S.Schema<RegisterTransitGatewayResponse>;
 export interface RejectAttachmentRequest {
   AttachmentId: string;
 }
-export const RejectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/attachments/{AttachmentId}/reject" }),
@@ -4223,13 +4204,13 @@ export const RejectAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RejectAttachmentResponse {
   Attachment?: Attachment;
 }
-export const RejectAttachmentResponse =
+const RejectAttachmentResponse =
   AcceptAttachmentResponse as any as S.Schema<RejectAttachmentResponse>;
 export interface RemoveAttachmentRoutingPolicyLabelRequest {
   CoreNetworkId: string;
   AttachmentId: string;
 }
-export const RemoveAttachmentRoutingPolicyLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAttachmentRoutingPolicyLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
@@ -4254,13 +4235,13 @@ export interface RemoveAttachmentRoutingPolicyLabelResponse {
   AttachmentId?: string;
   RoutingPolicyLabel?: string;
 }
-export const RemoveAttachmentRoutingPolicyLabelResponse =
+const RemoveAttachmentRoutingPolicyLabelResponse =
   PutAttachmentRoutingPolicyLabelResponse as any as S.Schema<RemoveAttachmentRoutingPolicyLabelResponse>;
 export interface RestoreCoreNetworkPolicyVersionRequest {
   CoreNetworkId: string;
   PolicyVersionId: number;
 }
-export const RestoreCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     PolicyVersionId: S.Number.pipe(T.HttpLabel("PolicyVersionId")),
@@ -4283,13 +4264,13 @@ export const RestoreCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(()
 export interface RestoreCoreNetworkPolicyVersionResponse {
   CoreNetworkPolicy?: CoreNetworkPolicy;
 }
-export const RestoreCoreNetworkPolicyVersionResponse =
+const RestoreCoreNetworkPolicyVersionResponse =
   DeleteCoreNetworkPolicyVersionResponse as any as S.Schema<RestoreCoreNetworkPolicyVersionResponse>;
 export type Action = string;
 export interface StartOrganizationServiceAccessUpdateRequest {
   Action: string;
 }
-export const StartOrganizationServiceAccessUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StartOrganizationServiceAccessUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Action: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/organizations/service-access" }),
@@ -4306,7 +4287,7 @@ export const StartOrganizationServiceAccessUpdateRequest = /*@__PURE__*/ S.suspe
 export interface StartOrganizationServiceAccessUpdateResponse {
   OrganizationStatus?: OrganizationStatus;
 }
-export const StartOrganizationServiceAccessUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const StartOrganizationServiceAccessUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OrganizationStatus: S.optional(OrganizationStatus) }),
 ).annotate({
   identifier: "StartOrganizationServiceAccessUpdateResponse",
@@ -4315,7 +4296,7 @@ export interface RouteAnalysisEndpointOptionsSpecification {
   TransitGatewayAttachmentArn?: string;
   IpAddress?: string;
 }
-export const RouteAnalysisEndpointOptionsSpecification = /*@__PURE__*/ S.suspend(() =>
+const RouteAnalysisEndpointOptionsSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TransitGatewayAttachmentArn: S.optional(S.String), IpAddress: S.optional(S.String) }),
 ).annotate({
   identifier: "RouteAnalysisEndpointOptionsSpecification",
@@ -4327,7 +4308,7 @@ export interface StartRouteAnalysisRequest {
   IncludeReturnPath?: boolean;
   UseMiddleboxes?: boolean;
 }
-export const StartRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+const StartRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     Source: RouteAnalysisEndpointOptionsSpecification,
@@ -4350,7 +4331,7 @@ export const StartRouteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartRouteAnalysisResponse {
   RouteAnalysis?: RouteAnalysis;
 }
-export const StartRouteAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+const StartRouteAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RouteAnalysis: S.optional(RouteAnalysis) }),
 ).annotate({
   identifier: "StartRouteAnalysisResponse",
@@ -4359,21 +4340,20 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = ExternalRegionCodeList as any as S.Schema<TagKeyList>;
+const TagKeyList = ExternalRegionCodeList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -4382,7 +4362,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
+const UntagResourceResponse =
   DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectionRequest {
   GlobalNetworkId: string;
@@ -4391,7 +4371,7 @@ export interface UpdateConnectionRequest {
   ConnectedLinkId?: string;
   Description?: string;
 }
-export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     ConnectionId: S.String.pipe(T.HttpLabel("ConnectionId")),
@@ -4415,13 +4395,13 @@ export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConnectionResponse {
   Connection?: Connection;
 }
-export const UpdateConnectionResponse =
+const UpdateConnectionResponse =
   CreateConnectionResponse as any as S.Schema<UpdateConnectionResponse>;
 export interface UpdateCoreNetworkRequest {
   CoreNetworkId: string;
   Description?: string;
 }
-export const UpdateCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CoreNetworkId: S.String.pipe(T.HttpLabel("CoreNetworkId")),
     Description: S.optional(S.String),
@@ -4439,7 +4419,7 @@ export const UpdateCoreNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCoreNetworkResponse {
   CoreNetwork?: CoreNetwork;
 }
-export const UpdateCoreNetworkResponse =
+const UpdateCoreNetworkResponse =
   CreateCoreNetworkResponse as any as S.Schema<UpdateCoreNetworkResponse>;
 export interface UpdateDeviceRequest {
   GlobalNetworkId: string;
@@ -4453,7 +4433,7 @@ export interface UpdateDeviceRequest {
   Location?: Location;
   SiteId?: string;
 }
-export const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     DeviceId: S.String.pipe(T.HttpLabel("DeviceId")),
@@ -4479,12 +4459,12 @@ export const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDeviceResponse {
   Device?: Device;
 }
-export const UpdateDeviceResponse = CreateDeviceResponse as any as S.Schema<UpdateDeviceResponse>;
+const UpdateDeviceResponse = CreateDeviceResponse as any as S.Schema<UpdateDeviceResponse>;
 export interface UpdateDirectConnectGatewayAttachmentRequest {
   AttachmentId: string;
   EdgeLocations?: string[];
 }
-export const UpdateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
     EdgeLocations: S.optional(ExternalRegionCodeList),
@@ -4504,13 +4484,13 @@ export const UpdateDirectConnectGatewayAttachmentRequest = /*@__PURE__*/ S.suspe
 export interface UpdateDirectConnectGatewayAttachmentResponse {
   DirectConnectGatewayAttachment?: DirectConnectGatewayAttachment;
 }
-export const UpdateDirectConnectGatewayAttachmentResponse =
+const UpdateDirectConnectGatewayAttachmentResponse =
   CreateDirectConnectGatewayAttachmentResponse as any as S.Schema<UpdateDirectConnectGatewayAttachmentResponse>;
 export interface UpdateGlobalNetworkRequest {
   GlobalNetworkId: string;
   Description?: string;
 }
-export const UpdateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     Description: S.optional(S.String),
@@ -4530,7 +4510,7 @@ export const UpdateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGlobalNetworkResponse {
   GlobalNetwork?: GlobalNetwork;
 }
-export const UpdateGlobalNetworkResponse =
+const UpdateGlobalNetworkResponse =
   CreateGlobalNetworkResponse as any as S.Schema<UpdateGlobalNetworkResponse>;
 export interface UpdateLinkRequest {
   GlobalNetworkId: string;
@@ -4540,7 +4520,7 @@ export interface UpdateLinkRequest {
   Bandwidth?: Bandwidth;
   Provider?: string;
 }
-export const UpdateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     LinkId: S.String.pipe(T.HttpLabel("LinkId")),
@@ -4562,13 +4542,13 @@ export const UpdateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateLinkResponse {
   Link?: Link;
 }
-export const UpdateLinkResponse = CreateLinkResponse as any as S.Schema<UpdateLinkResponse>;
+const UpdateLinkResponse = CreateLinkResponse as any as S.Schema<UpdateLinkResponse>;
 export interface UpdateNetworkResourceMetadataRequest {
   GlobalNetworkId: string;
   ResourceArn: string;
   Metadata: { [key: string]: string | undefined };
 }
-export const UpdateNetworkResourceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkResourceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
@@ -4593,7 +4573,7 @@ export interface UpdateNetworkResourceMetadataResponse {
   ResourceArn?: string;
   Metadata?: { [key: string]: string | undefined };
 }
-export const UpdateNetworkResourceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkResourceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.optional(S.String), Metadata: S.optional(NetworkResourceMetadataMap) }),
 ).annotate({
   identifier: "UpdateNetworkResourceMetadataResponse",
@@ -4604,7 +4584,7 @@ export interface UpdateSiteRequest {
   Description?: string;
   Location?: Location;
 }
-export const UpdateSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalNetworkId: S.String.pipe(T.HttpLabel("GlobalNetworkId")),
     SiteId: S.String.pipe(T.HttpLabel("SiteId")),
@@ -4624,14 +4604,14 @@ export const UpdateSiteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSiteResponse {
   Site?: Site;
 }
-export const UpdateSiteResponse = CreateSiteResponse as any as S.Schema<UpdateSiteResponse>;
+const UpdateSiteResponse = CreateSiteResponse as any as S.Schema<UpdateSiteResponse>;
 export interface UpdateVpcAttachmentRequest {
   AttachmentId: string;
   AddSubnetArns?: string[];
   RemoveSubnetArns?: string[];
   Options?: VpcOptions;
 }
-export const UpdateVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AttachmentId: S.String.pipe(T.HttpLabel("AttachmentId")),
     AddSubnetArns: S.optional(SubnetArnList),
@@ -4653,31 +4633,30 @@ export const UpdateVpcAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVpcAttachmentResponse {
   VpcAttachment?: VpcAttachment;
 }
-export const UpdateVpcAttachmentResponse =
+const UpdateVpcAttachmentResponse =
   CreateVpcAttachmentResponse as any as S.Schema<UpdateVpcAttachmentResponse>;
 export type RetryAfterSeconds = number;
 export type ExceptionContextKey = string;
 export type ExceptionContextValue = string;
 export type ExceptionContextMap = { [key: string]: string | undefined };
-export const ExceptionContextMap =
-  NetworkResourceMetadataMap as any as S.Schema<ExceptionContextMap>;
+const ExceptionContextMap = NetworkResourceMetadataMap as any as S.Schema<ExceptionContextMap>;
 export type ValidationExceptionReason =
   | "UnknownOperation"
   | "CannotParse"
   | "FieldValidationFailed"
   | "Other"
   | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type AcceptAttachmentError =
   | AccessDeniedException
   | ConflictException

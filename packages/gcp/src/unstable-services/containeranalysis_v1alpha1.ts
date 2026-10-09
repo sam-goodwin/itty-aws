@@ -68,14 +68,14 @@ export type CVSSVulnerableSystemIntegrityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSVulnerableSystemIntegrityImpactEnum = S.String;
+const CVSSVulnerableSystemIntegrityImpactEnum = S.String;
 
 export type CVSSPrivilegesRequiredEnum =
   | "PRIVILEGES_REQUIRED_UNSPECIFIED"
   | "PRIVILEGES_REQUIRED_NONE"
   | "PRIVILEGES_REQUIRED_LOW"
   | "PRIVILEGES_REQUIRED_HIGH";
-export const CVSSPrivilegesRequiredEnum = S.String;
+const CVSSPrivilegesRequiredEnum = S.String;
 
 export type CVSSAttackVectorEnum =
   | "ATTACK_VECTOR_UNSPECIFIED"
@@ -83,7 +83,7 @@ export type CVSSAttackVectorEnum =
   | "ATTACK_VECTOR_ADJACENT"
   | "ATTACK_VECTOR_LOCAL"
   | "ATTACK_VECTOR_PHYSICAL";
-export const CVSSAttackVectorEnum = S.String;
+const CVSSAttackVectorEnum = S.String;
 
 export type CVSSVulnerableSystemAvailabilityImpactEnum =
   | "IMPACT_UNSPECIFIED"
@@ -92,7 +92,7 @@ export type CVSSVulnerableSystemAvailabilityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSVulnerableSystemAvailabilityImpactEnum = S.String;
+const CVSSVulnerableSystemAvailabilityImpactEnum = S.String;
 
 export type CVSSExploitMaturityEnum =
   | "EXPLOIT_MATURITY_UNSPECIFIED"
@@ -100,7 +100,7 @@ export type CVSSExploitMaturityEnum =
   | "EXPLOIT_MATURITY_ATTACKED"
   | "EXPLOIT_MATURITY_POC"
   | "EXPLOIT_MATURITY_UNREPORTED";
-export const CVSSExploitMaturityEnum = S.String;
+const CVSSExploitMaturityEnum = S.String;
 
 export type CVSSUserInteractionEnum =
   | "USER_INTERACTION_UNSPECIFIED"
@@ -108,7 +108,7 @@ export type CVSSUserInteractionEnum =
   | "USER_INTERACTION_REQUIRED"
   | "USER_INTERACTION_PASSIVE"
   | "USER_INTERACTION_ACTIVE";
-export const CVSSUserInteractionEnum = S.String;
+const CVSSUserInteractionEnum = S.String;
 
 export type CVSSConfidentialityImpactEnum =
   | "IMPACT_UNSPECIFIED"
@@ -117,7 +117,7 @@ export type CVSSConfidentialityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSConfidentialityImpactEnum = S.String;
+const CVSSConfidentialityImpactEnum = S.String;
 
 export type CVSSSubsequentSystemAvailabilityImpactEnum =
   | "IMPACT_UNSPECIFIED"
@@ -126,13 +126,13 @@ export type CVSSSubsequentSystemAvailabilityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSSubsequentSystemAvailabilityImpactEnum = S.String;
+const CVSSSubsequentSystemAvailabilityImpactEnum = S.String;
 
 export type CVSSAttackRequirementsEnum =
   | "ATTACK_REQUIREMENTS_UNSPECIFIED"
   | "ATTACK_REQUIREMENTS_NONE"
   | "ATTACK_REQUIREMENTS_PRESENT";
-export const CVSSAttackRequirementsEnum = S.String;
+const CVSSAttackRequirementsEnum = S.String;
 
 export type CVSSVulnerableSystemConfidentialityImpactEnum =
   | "IMPACT_UNSPECIFIED"
@@ -141,7 +141,7 @@ export type CVSSVulnerableSystemConfidentialityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSVulnerableSystemConfidentialityImpactEnum = S.String;
+const CVSSVulnerableSystemConfidentialityImpactEnum = S.String;
 
 export type CVSSSubsequentSystemConfidentialityImpactEnum =
   | "IMPACT_UNSPECIFIED"
@@ -150,17 +150,17 @@ export type CVSSSubsequentSystemConfidentialityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSSubsequentSystemConfidentialityImpactEnum = S.String;
+const CVSSSubsequentSystemConfidentialityImpactEnum = S.String;
 
 export type CVSSScopeEnum = "SCOPE_UNSPECIFIED" | "SCOPE_UNCHANGED" | "SCOPE_CHANGED";
-export const CVSSScopeEnum = S.String;
+const CVSSScopeEnum = S.String;
 
 export type CVSSAuthenticationEnum =
   | "AUTHENTICATION_UNSPECIFIED"
   | "AUTHENTICATION_MULTIPLE"
   | "AUTHENTICATION_SINGLE"
   | "AUTHENTICATION_NONE";
-export const CVSSAuthenticationEnum = S.String;
+const CVSSAuthenticationEnum = S.String;
 
 export type CVSSIntegrityImpactEnum =
   | "IMPACT_UNSPECIFIED"
@@ -169,14 +169,14 @@ export type CVSSIntegrityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSIntegrityImpactEnum = S.String;
+const CVSSIntegrityImpactEnum = S.String;
 
 export type CVSSAttackComplexityEnum =
   | "ATTACK_COMPLEXITY_UNSPECIFIED"
   | "ATTACK_COMPLEXITY_LOW"
   | "ATTACK_COMPLEXITY_HIGH"
   | "ATTACK_COMPLEXITY_MEDIUM";
-export const CVSSAttackComplexityEnum = S.String;
+const CVSSAttackComplexityEnum = S.String;
 
 export type CVSSAvailabilityImpactEnum =
   | "IMPACT_UNSPECIFIED"
@@ -185,7 +185,7 @@ export type CVSSAvailabilityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSAvailabilityImpactEnum = S.String;
+const CVSSAvailabilityImpactEnum = S.String;
 
 export type CVSSSubsequentSystemIntegrityImpactEnum =
   | "IMPACT_UNSPECIFIED"
@@ -194,7 +194,7 @@ export type CVSSSubsequentSystemIntegrityImpactEnum =
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
   | "IMPACT_COMPLETE";
-export const CVSSSubsequentSystemIntegrityImpactEnum = S.String;
+const CVSSSubsequentSystemIntegrityImpactEnum = S.String;
 
 /** Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4 details, see https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator */
 export interface CVSS {
@@ -241,7 +241,7 @@ export interface CVSS {
   /** Optional. Subsequent System Integrity Impact (SI). Defined in CVSS v4. */
   subsequentSystemIntegrityImpact?: CVSSSubsequentSystemIntegrityImpactEnum | (string & {});
 }
-export const CVSS = /*@__PURE__*/ S.suspend(() =>
+const CVSS = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vulnerableSystemIntegrityImpact: S.optional(CVSSVulnerableSystemIntegrityImpactEnum),
     privilegesRequired: S.optional(CVSSPrivilegesRequiredEnum),
@@ -271,7 +271,7 @@ export const CVSS = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CVSS" }) as any as S.Schema<CVSS>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type VulnerabilityTypeSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
@@ -280,10 +280,10 @@ export type VulnerabilityTypeSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const VulnerabilityTypeSeverityEnum = S.String;
+const VulnerabilityTypeSeverityEnum = S.String;
 
 export type VersionKindEnum = "NORMAL" | "MINIMUM" | "MAXIMUM";
-export const VersionKindEnum = S.String;
+const VersionKindEnum = S.String;
 
 /** Version contains structured information about the version of the package. For a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/debian-packages-version-convention For a discussion of this in Redhat/Fedora/Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/ */
 export interface Version {
@@ -298,7 +298,7 @@ export interface Version {
   /** Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not */
   inclusive?: boolean;
 }
-export const Version = /*@__PURE__*/ S.suspend(() =>
+const Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(VersionKindEnum),
     epoch: S.optional(S.Number),
@@ -319,7 +319,7 @@ export interface BaseImage {
   /** The registry of the base image. */
   registry?: string;
 }
-export const BaseImage = /*@__PURE__*/ S.suspend(() =>
+const BaseImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     layerCount: S.optional(S.Number),
@@ -329,7 +329,7 @@ export const BaseImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BaseImage" }) as any as S.Schema<BaseImage>;
 
 export type BaseImageList = Array<BaseImage>;
-export const BaseImageList = /*@__PURE__*/ S.Array(BaseImage) as any as S.Schema<BaseImageList>;
+const BaseImageList = /*@__PURE__*/ S.Array(BaseImage) as any as S.Schema<BaseImageList>;
 
 /** Details about the layer a package was found in. */
 export interface LayerDetails {
@@ -344,7 +344,7 @@ export interface LayerDetails {
   /** The diff ID (sha256 hash) of the layer in the container image. */
   diffId?: string;
 }
-export const LayerDetails = /*@__PURE__*/ S.suspend(() =>
+const LayerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.Number),
     baseImages: S.optional(BaseImageList),
@@ -363,7 +363,7 @@ export interface FileLocation {
   /** Line number in the file where the package is found. Optional field that only applies to source repository scanning. */
   lineNumber?: number;
 }
-export const FileLocation = /*@__PURE__*/ S.suspend(() =>
+const FileLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layerDetails: S.optional(LayerDetails),
     filePath: S.optional(S.String),
@@ -372,9 +372,7 @@ export const FileLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileLocation" }) as any as S.Schema<FileLocation>;
 
 export type FileLocationList = Array<FileLocation>;
-export const FileLocationList = /*@__PURE__*/ S.Array(
-  FileLocation,
-) as any as S.Schema<FileLocationList>;
+const FileLocationList = /*@__PURE__*/ S.Array(FileLocation) as any as S.Schema<FileLocationList>;
 
 /** The location of the vulnerability */
 export interface VulnerabilityLocation {
@@ -387,7 +385,7 @@ export interface VulnerabilityLocation {
   /** The file location at which this package was found. */
   fileLocation?: FileLocationList;
 }
-export const VulnerabilityLocation = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(Version),
     cpeUri: S.optional(S.String),
@@ -421,7 +419,7 @@ export interface Detail {
   /** The severity (eg: distro assigned severity) for this vulnerability. */
   severityName?: string;
 }
-export const Detail = /*@__PURE__*/ S.suspend(() =>
+const Detail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     minAffectedVersion: S.optional(Version),
@@ -438,14 +436,14 @@ export const Detail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Detail" }) as any as S.Schema<Detail>;
 
 export type DetailList = Array<Detail>;
-export const DetailList = /*@__PURE__*/ S.Array(Detail) as any as S.Schema<DetailList>;
+const DetailList = /*@__PURE__*/ S.Array(Detail) as any as S.Schema<DetailList>;
 
 export type VulnerabilityTypeCvssVersionEnum =
   | "CVSS_VERSION_UNSPECIFIED"
   | "CVSS_VERSION_2"
   | "CVSS_VERSION_3"
   | "CVSS_VERSION_4";
-export const VulnerabilityTypeCvssVersionEnum = S.String;
+const VulnerabilityTypeCvssVersionEnum = S.String;
 
 /** VulnerabilityType provides metadata about a security vulnerability. */
 export interface VulnerabilityType {
@@ -466,7 +464,7 @@ export interface VulnerabilityType {
   /** Time this advisory was published by the source. */
   advisoryPublishTime?: string;
 }
-export const VulnerabilityType = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cvssV4: S.optional(CVSS),
     cwe: S.optional(StringList),
@@ -499,14 +497,14 @@ export type DiscoveryAnalysisKindEnum =
   | "SBOM_REFERENCE"
   | "SECRET"
   | "AI_SKILL_ANALYSIS";
-export const DiscoveryAnalysisKindEnum = S.String;
+const DiscoveryAnalysisKindEnum = S.String;
 
 /** A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started. */
 export interface Discovery {
   /** The kind of analysis that is handled by this discovery. */
   analysisKind?: DiscoveryAnalysisKindEnum | (string & {});
 }
-export const Discovery = /*@__PURE__*/ S.suspend(() =>
+const Discovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analysisKind: S.optional(DiscoveryAnalysisKindEnum),
   }),
@@ -519,7 +517,7 @@ export interface License {
   /** Comments */
   comments?: string;
 }
-export const License = /*@__PURE__*/ S.suspend(() =>
+const License = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     comments: S.optional(S.String),
@@ -532,7 +530,7 @@ export type ExternalRefCategoryEnum =
   | "PACKAGE_MANAGER"
   | "PERSISTENT_ID"
   | "OTHER";
-export const ExternalRefCategoryEnum = S.String;
+const ExternalRefCategoryEnum = S.String;
 
 /** An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package */
 export interface ExternalRef {
@@ -545,7 +543,7 @@ export interface ExternalRef {
   /** Human-readable information about the purpose and target of the reference */
   comment?: string;
 }
-export const ExternalRef = /*@__PURE__*/ S.suspend(() =>
+const ExternalRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locator: S.optional(S.String),
     type: S.optional(S.String),
@@ -555,9 +553,7 @@ export const ExternalRef = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExternalRef" }) as any as S.Schema<ExternalRef>;
 
 export type ExternalRefList = Array<ExternalRef>;
-export const ExternalRefList = /*@__PURE__*/ S.Array(
-  ExternalRef,
-) as any as S.Schema<ExternalRefList>;
+const ExternalRefList = /*@__PURE__*/ S.Array(ExternalRef) as any as S.Schema<ExternalRefList>;
 
 /** PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/ */
 export interface PackageInfoNote {
@@ -596,7 +592,7 @@ export interface PackageInfoNote {
   /** Provide an independently reproducible mechanism that permits unique identification of a specific package that correlates to the data in this SPDX file */
   checksum?: string;
 }
-export const PackageInfoNote = /*@__PURE__*/ S.suspend(() =>
+const PackageInfoNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     licenseDeclared: S.optional(License),
     filesLicenseInfo: S.optional(StringList),
@@ -623,7 +619,7 @@ export interface Deployable {
   /** Resource URI for the artifact being deployed. */
   resourceUri?: StringList;
 }
-export const Deployable = /*@__PURE__*/ S.suspend(() =>
+const Deployable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.optional(StringList),
   }),
@@ -649,7 +645,7 @@ export type NoteKindEnum =
   | "SBOM_REFERENCE"
   | "SECRET"
   | "AI_SKILL_ANALYSIS";
-export const NoteKindEnum = S.String;
+const NoteKindEnum = S.String;
 
 export type FileNoteFileTypeEnum =
   | "FILE_TYPE_UNSPECIFIED"
@@ -664,7 +660,7 @@ export type FileNoteFileTypeEnum =
   | "DOCUMENTATION"
   | "SPDX"
   | "OTHER";
-export const FileNoteFileTypeEnum = S.String;
+const FileNoteFileTypeEnum = S.String;
 
 /** FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/ */
 export interface FileNote {
@@ -675,7 +671,7 @@ export interface FileNote {
   /** Identify the full path and filename that corresponds to the file information in this section */
   title?: string;
 }
-export const FileNote = /*@__PURE__*/ S.suspend(() =>
+const FileNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileType: S.optional(FileNoteFileTypeEnum),
     checksum: S.optional(StringList),
@@ -684,7 +680,7 @@ export const FileNote = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileNote" }) as any as S.Schema<FileNote>;
 
 export type DistributionArchitectureEnum = "ARCHITECTURE_UNSPECIFIED" | "X86" | "X64";
-export const DistributionArchitectureEnum = S.String;
+const DistributionArchitectureEnum = S.String;
 
 /** This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror */
 export interface Distribution {
@@ -701,7 +697,7 @@ export interface Distribution {
   /** The CPU architecture for which packages in this distribution channel were built */
   architecture?: DistributionArchitectureEnum | (string & {});
 }
-export const Distribution = /*@__PURE__*/ S.suspend(() =>
+const Distribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintainer: S.optional(S.String),
     latestVersion: S.optional(Version),
@@ -713,12 +709,10 @@ export const Distribution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Distribution" }) as any as S.Schema<Distribution>;
 
 export type DistributionList = Array<Distribution>;
-export const DistributionList = /*@__PURE__*/ S.Array(
-  Distribution,
-) as any as S.Schema<DistributionList>;
+const DistributionList = /*@__PURE__*/ S.Array(Distribution) as any as S.Schema<DistributionList>;
 
 export type PackageArchitectureEnum = "ARCHITECTURE_UNSPECIFIED" | "X86" | "X64";
-export const PackageArchitectureEnum = S.String;
+const PackageArchitectureEnum = S.String;
 
 /** Digest information. */
 export interface Digest {
@@ -727,7 +721,7 @@ export interface Digest {
   /** Value of the digest. */
   digestBytes?: string;
 }
-export const Digest = /*@__PURE__*/ S.suspend(() =>
+const Digest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algo: S.optional(S.String),
     digestBytes: S.optional(S.String),
@@ -735,7 +729,7 @@ export const Digest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Digest" }) as any as S.Schema<Digest>;
 
 export type DigestList = Array<Digest>;
-export const DigestList = /*@__PURE__*/ S.Array(Digest) as any as S.Schema<DigestList>;
+const DigestList = /*@__PURE__*/ S.Array(Digest) as any as S.Schema<DigestList>;
 
 /** This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions. */
 export interface Package {
@@ -762,7 +756,7 @@ export interface Package {
   /** The homepage for this package. */
   url?: string;
 }
-export const Package = /*@__PURE__*/ S.suspend(() =>
+const Package = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpeUri: S.optional(S.String),
     distribution: S.optional(DistributionList),
@@ -783,7 +777,7 @@ export interface AttestationAuthorityHint {
   /** The human readable name of this Attestation Authority, for example "qa". */
   humanReadableName?: string;
 }
-export const AttestationAuthorityHint = /*@__PURE__*/ S.suspend(() =>
+const AttestationAuthorityHint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     humanReadableName: S.optional(S.String),
   }),
@@ -793,7 +787,7 @@ export const AttestationAuthorityHint = /*@__PURE__*/ S.suspend(() =>
 export interface AttestationAuthority {
   hint?: AttestationAuthorityHint;
 }
-export const AttestationAuthority = /*@__PURE__*/ S.suspend(() =>
+const AttestationAuthority = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hint: S.optional(AttestationAuthorityHint),
   }),
@@ -808,7 +802,7 @@ export interface ComplianceVersion {
   /** The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS". */
   benchmarkDocument?: string;
 }
-export const ComplianceVersion = /*@__PURE__*/ S.suspend(() =>
+const ComplianceVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpeUri: S.optional(S.String),
     version: S.optional(S.String),
@@ -817,7 +811,7 @@ export const ComplianceVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ComplianceVersion" }) as any as S.Schema<ComplianceVersion>;
 
 export type ComplianceVersionList = Array<ComplianceVersion>;
-export const ComplianceVersionList = /*@__PURE__*/ S.Array(
+const ComplianceVersionList = /*@__PURE__*/ S.Array(
   ComplianceVersion,
 ) as any as S.Schema<ComplianceVersionList>;
 
@@ -828,7 +822,7 @@ export type CisBenchmarkSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const CisBenchmarkSeverityEnum = S.String;
+const CisBenchmarkSeverityEnum = S.String;
 
 /** A compliance check that is a CIS benchmark. */
 export interface CisBenchmark {
@@ -837,7 +831,7 @@ export interface CisBenchmark {
   /** The severity level of this CIS benchmark check. */
   severity?: CisBenchmarkSeverityEnum | (string & {});
 }
-export const CisBenchmark = /*@__PURE__*/ S.suspend(() =>
+const CisBenchmark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileLevel: S.optional(S.Number),
     severity: S.optional(CisBenchmarkSeverityEnum),
@@ -863,7 +857,7 @@ export interface ComplianceNote {
   /** The title that identifies this compliance check. */
   title?: string;
 }
-export const ComplianceNote = /*@__PURE__*/ S.suspend(() =>
+const ComplianceNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanInstructions: S.optional(S.String),
     remediation: S.optional(S.String),
@@ -921,21 +915,21 @@ export type RelationshipNoteTypeEnum =
   | "PREREQUISITE_FOR"
   | "HAS_PREREQUISITE"
   | "OTHER";
-export const RelationshipNoteTypeEnum = S.String;
+const RelationshipNoteTypeEnum = S.String;
 
 /** RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/ */
 export interface RelationshipNote {
   /** The type of relationship between the source and target SPDX elements */
   type?: RelationshipNoteTypeEnum | (string & {});
 }
-export const RelationshipNote = /*@__PURE__*/ S.suspend(() =>
+const RelationshipNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(RelationshipNoteTypeEnum),
   }),
 ).annotate({ identifier: "RelationshipNote" }) as any as S.Schema<RelationshipNote>;
 
 export type IdentifierHelperFieldEnum = "IDENTIFIER_HELPER_FIELD_UNSPECIFIED" | "GENERIC_URI";
-export const IdentifierHelperFieldEnum = S.String;
+const IdentifierHelperFieldEnum = S.String;
 
 /** Helps in identifying the underlying product. This should be treated like a one-of field. Only one field should be set in this proto. This is a workaround because spanner indexes on one-of fields restrict addition and deletion of fields. */
 export interface IdentifierHelper {
@@ -944,7 +938,7 @@ export interface IdentifierHelper {
   /** Contains a URI which is vendor-specific. Example: The artifact repository URL of an image. */
   genericUri?: string;
 }
-export const IdentifierHelper = /*@__PURE__*/ S.suspend(() =>
+const IdentifierHelper = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(IdentifierHelperFieldEnum),
     genericUri: S.optional(S.String),
@@ -960,7 +954,7 @@ export interface Product {
   /** Helps in identifying the underlying product. */
   identifierHelper?: IdentifierHelper;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -975,7 +969,7 @@ export interface URI {
   /** A label for the URI. */
   label?: string;
 }
-export const URI = /*@__PURE__*/ S.suspend(() =>
+const URI = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     label: S.optional(S.String),
@@ -989,7 +983,7 @@ export type RemediationRemediationTypeEnum =
   | "NONE_AVAILABLE"
   | "VENDOR_FIX"
   | "WORKAROUND";
-export const RemediationRemediationTypeEnum = S.String;
+const RemediationRemediationTypeEnum = S.String;
 
 /** Specifies details on how to handle (and presumably, fix) a vulnerability. */
 export interface Remediation {
@@ -1000,7 +994,7 @@ export interface Remediation {
   /** The type of remediation that can be applied. */
   remediationType?: RemediationRemediationTypeEnum | (string & {});
 }
-export const Remediation = /*@__PURE__*/ S.suspend(() =>
+const Remediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(S.String),
     remediationUri: S.optional(URI),
@@ -1009,12 +1003,10 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 
 export type RemediationList = Array<Remediation>;
-export const RemediationList = /*@__PURE__*/ S.Array(
-  Remediation,
-) as any as S.Schema<RemediationList>;
+const RemediationList = /*@__PURE__*/ S.Array(Remediation) as any as S.Schema<RemediationList>;
 
 export type URIList = Array<URI>;
-export const URIList = /*@__PURE__*/ S.Array(URI) as any as S.Schema<URIList>;
+const URIList = /*@__PURE__*/ S.Array(URI) as any as S.Schema<URIList>;
 
 export type JustificationJustificationTypeEnum =
   | "JUSTIFICATION_TYPE_UNSPECIFIED"
@@ -1023,7 +1015,7 @@ export type JustificationJustificationTypeEnum =
   | "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH"
   | "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY"
   | "INLINE_MITIGATIONS_ALREADY_EXIST";
-export const JustificationJustificationTypeEnum = S.String;
+const JustificationJustificationTypeEnum = S.String;
 
 /** Justification provides the justification when the state of the assessment if NOT_AFFECTED. */
 export interface Justification {
@@ -1032,7 +1024,7 @@ export interface Justification {
   /** Additional details on why this justification was chosen. */
   details?: string;
 }
-export const Justification = /*@__PURE__*/ S.suspend(() =>
+const Justification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     justificationType: S.optional(JustificationJustificationTypeEnum),
     details: S.optional(S.String),
@@ -1045,7 +1037,7 @@ export type AssessmentStateEnum =
   | "NOT_AFFECTED"
   | "FIXED"
   | "UNDER_INVESTIGATION";
-export const AssessmentStateEnum = S.String;
+const AssessmentStateEnum = S.String;
 
 /** Assessment provides all information that is related to a single vulnerability for this product. */
 export interface Assessment {
@@ -1068,7 +1060,7 @@ export interface Assessment {
   /** Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability. */
   cve?: string;
 }
-export const Assessment = /*@__PURE__*/ S.suspend(() =>
+const Assessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longDescription: S.optional(S.String),
     remediations: S.optional(RemediationList),
@@ -1091,7 +1083,7 @@ export interface Publisher {
   /** The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io */
   publisherNamespace?: string;
 }
-export const Publisher = /*@__PURE__*/ S.suspend(() =>
+const Publisher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuingAuthority: S.optional(S.String),
     name: S.optional(S.String),
@@ -1116,7 +1108,7 @@ export interface VulnerabilityAssessmentNote {
   /** Publisher details of this Note. */
   publisher?: Publisher;
 }
-export const VulnerabilityAssessmentNote = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityAssessmentNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     shortDescription: S.optional(S.String),
@@ -1139,7 +1131,7 @@ export interface Fingerprint {
   /** The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests. */
   v1Name?: string;
 }
-export const Fingerprint = /*@__PURE__*/ S.suspend(() =>
+const Fingerprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     v2Blob: S.optional(StringList),
     v2Name: S.optional(S.String),
@@ -1154,7 +1146,7 @@ export interface Basis {
   /** The fingerprint of the base image. */
   fingerprint?: Fingerprint;
 }
-export const Basis = /*@__PURE__*/ S.suspend(() =>
+const Basis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUrl: S.optional(S.String),
     fingerprint: S.optional(Fingerprint),
@@ -1166,17 +1158,15 @@ export interface DSSEHint {
   /** Required. The human readable name of this attestation authority, for example "cloudbuild-prod". */
   humanReadableName?: string;
 }
-export const DSSEHint = AttestationAuthorityHint as any as S.Schema<DSSEHint>;
-
 /** A note describing an attestation */
 export interface DSSEAttestationNote {
   /** DSSEHint hints at the purpose of the attestation authority. */
   hint?: DSSEHint;
 }
-export const DSSEAttestationNote = AttestationAuthority as any as S.Schema<DSSEAttestationNote>;
+const DSSEAttestationNote = AttestationAuthority as any as S.Schema<DSSEAttestationNote>;
 
 export type BuildSignatureKeyTypeEnum = "KEY_TYPE_UNSPECIFIED" | "PGP_ASCII_ARMORED" | "PKIX_PEM";
-export const BuildSignatureKeyTypeEnum = S.String;
+const BuildSignatureKeyTypeEnum = S.String;
 
 /** Message encapsulating the signature of the verified build. */
 export interface BuildSignature {
@@ -1189,7 +1179,7 @@ export interface BuildSignature {
   /** Signature of the related `BuildProvenance`, encoded in a base64 string. */
   signature?: string;
 }
-export const BuildSignature = /*@__PURE__*/ S.suspend(() =>
+const BuildSignature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyType: S.optional(BuildSignatureKeyTypeEnum),
     keyId: S.optional(S.String),
@@ -1205,7 +1195,7 @@ export interface BuildType {
   /** Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`. */
   signature?: BuildSignature;
 }
-export const BuildType = /*@__PURE__*/ S.suspend(() =>
+const BuildType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     builderVersion: S.optional(S.String),
     signature: S.optional(BuildSignature),
@@ -1214,7 +1204,7 @@ export const BuildType = /*@__PURE__*/ S.suspend(() =>
 
 /** The note representing a secret. */
 export interface SecretNote {}
-export const SecretNote = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SecretNote = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SecretNote",
 }) as any as S.Schema<SecretNote>;
 
@@ -1225,7 +1215,7 @@ export interface SBOMReferenceNote {
   /** The format that SBOM takes. E.g. may be spdx, cyclonedx, etc... */
   format?: string;
 }
-export const SBOMReferenceNote = /*@__PURE__*/ S.suspend(() =>
+const SBOMReferenceNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     format: S.optional(S.String),
@@ -1239,7 +1229,7 @@ export interface RelatedUrl {
   /** Specific URL to associate with the note */
   url?: string;
 }
-export const RelatedUrl = /*@__PURE__*/ S.suspend(() =>
+const RelatedUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     url: S.optional(S.String),
@@ -1247,12 +1237,10 @@ export const RelatedUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedUrl" }) as any as S.Schema<RelatedUrl>;
 
 export type RelatedUrlList = Array<RelatedUrl>;
-export const RelatedUrlList = /*@__PURE__*/ S.Array(RelatedUrl) as any as S.Schema<RelatedUrlList>;
+const RelatedUrlList = /*@__PURE__*/ S.Array(RelatedUrl) as any as S.Schema<RelatedUrlList>;
 
 /** AISkillAnalysisNote provides the metadata of an AI-based skill analysis. */
 export type AISkillAnalysisNote = SecretNote;
-export const AISkillAnalysisNote = SecretNote;
-
 /** The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities. */
 export interface UpgradeDistribution {
   /** The severity as specified by the upstream operating system. */
@@ -1264,7 +1252,7 @@ export interface UpgradeDistribution {
   /** The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed. */
   classification?: string;
 }
-export const UpgradeDistribution = /*@__PURE__*/ S.suspend(() =>
+const UpgradeDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(S.String),
     cpeUri: S.optional(S.String),
@@ -1274,7 +1262,7 @@ export const UpgradeDistribution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpgradeDistribution" }) as any as S.Schema<UpgradeDistribution>;
 
 export type UpgradeDistributionList = Array<UpgradeDistribution>;
-export const UpgradeDistributionList = /*@__PURE__*/ S.Array(
+const UpgradeDistributionList = /*@__PURE__*/ S.Array(
   UpgradeDistribution,
 ) as any as S.Schema<UpgradeDistributionList>;
 
@@ -1287,7 +1275,7 @@ export interface UpgradeNote {
   /** Metadata about the upgrade for each specific operating system. */
   distributions?: UpgradeDistributionList;
 }
-export const UpgradeNote = /*@__PURE__*/ S.suspend(() =>
+const UpgradeNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package: S.optional(S.String),
     version: S.optional(Version),
@@ -1302,7 +1290,7 @@ export interface DocumentNote {
   /** Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata") */
   dataLicence?: string;
 }
-export const DocumentNote = /*@__PURE__*/ S.suspend(() =>
+const DocumentNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spdxVersion: S.optional(S.String),
     dataLicence: S.optional(S.String),
@@ -1364,7 +1352,7 @@ export interface Note {
   /** A note describing a software bill of materials. */
   sbom?: DocumentNote;
 }
-export const Note = /*@__PURE__*/ S.suspend(() =>
+const Note = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shortDescription: S.optional(S.String),
     vulnerabilityType: S.optional(VulnerabilityType),
@@ -1405,7 +1393,7 @@ export interface CreateProjectsNotesRequest {
   /** Request body */
   body?: Note;
 }
-export const CreateProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     name: S.optional(S.String.pipe(T.Query())),
@@ -1442,7 +1430,7 @@ export type OccurrenceKindEnum =
   | "SBOM_REFERENCE"
   | "SECRET"
   | "AI_SKILL_ANALYSIS";
-export const OccurrenceKindEnum = S.String;
+const OccurrenceKindEnum = S.String;
 
 /** An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status */
 export interface Location {
@@ -1453,7 +1441,7 @@ export interface Location {
   /** Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. */
   cpeUri?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     version: S.optional(Version),
@@ -1462,10 +1450,10 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 export type InstallationArchitectureEnum = "ARCHITECTURE_UNSPECIFIED" | "X86" | "X64";
-export const InstallationArchitectureEnum = S.String;
+const InstallationArchitectureEnum = S.String;
 
 /** This represents how a particular software package may be installed on a system. */
 export interface Installation {
@@ -1484,7 +1472,7 @@ export interface Installation {
   /** Output only. The version of the package. */
   version?: Version;
 }
-export const Installation = /*@__PURE__*/ S.suspend(() =>
+const Installation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(LocationList),
     architecture: S.optional(InstallationArchitectureEnum),
@@ -1515,7 +1503,7 @@ export interface FileOccurrence {
   /** Uniquely identify any element in an SPDX document which may be referenced by other elements */
   id?: string;
 }
-export const FileOccurrence = /*@__PURE__*/ S.suspend(() =>
+const FileOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notice: S.optional(S.String),
     attributions: S.optional(StringList),
@@ -1535,7 +1523,7 @@ export interface EnvelopeSignature {
   /** A reference id to the key being used for signing */
   keyid?: string;
 }
-export const EnvelopeSignature = /*@__PURE__*/ S.suspend(() =>
+const EnvelopeSignature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sig: S.optional(S.String),
     keyid: S.optional(S.String),
@@ -1543,7 +1531,7 @@ export const EnvelopeSignature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnvelopeSignature" }) as any as S.Schema<EnvelopeSignature>;
 
 export type EnvelopeSignatureList = Array<EnvelopeSignature>;
-export const EnvelopeSignatureList = /*@__PURE__*/ S.Array(
+const EnvelopeSignatureList = /*@__PURE__*/ S.Array(
   EnvelopeSignature,
 ) as any as S.Schema<EnvelopeSignatureList>;
 
@@ -1556,7 +1544,7 @@ export interface Envelope {
   /** The type of payload being signed */
   payloadType?: string;
 }
-export const Envelope = /*@__PURE__*/ S.suspend(() =>
+const Envelope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(S.String),
     signatures: S.optional(EnvelopeSignatureList),
@@ -1567,7 +1555,7 @@ export const Envelope = /*@__PURE__*/ S.suspend(() =>
 export interface BuilderConfig {
   id?: string;
 }
-export const BuilderConfig = /*@__PURE__*/ S.suspend(() =>
+const BuilderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -1582,7 +1570,7 @@ export interface Completeness {
   /** If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic". */
   materials?: boolean;
 }
-export const Completeness = /*@__PURE__*/ S.suspend(() =>
+const Completeness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arguments: S.optional(S.Boolean),
     environment: S.optional(S.Boolean),
@@ -1603,7 +1591,7 @@ export interface Metadata {
   /** Indicates that the builder claims certain fields in this message to be complete. */
   completeness?: Completeness;
 }
-export const Metadata = /*@__PURE__*/ S.suspend(() =>
+const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildInvocationId: S.optional(S.String),
     reproducible: S.optional(S.Boolean),
@@ -1614,15 +1602,10 @@ export const Metadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe. */
 export interface Recipe {
@@ -1637,7 +1620,7 @@ export interface Recipe {
   /** URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials. */
   type?: string;
 }
-export const Recipe = /*@__PURE__*/ S.suspend(() =>
+const Recipe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryPoint: S.optional(S.String),
     definedInMaterial: S.optional(S.String),
@@ -1656,7 +1639,7 @@ export interface InTotoProvenance {
   /** Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe the build, such that re-running this recipe results in bit-for-bit identical output (if the build is reproducible). required */
   recipe?: Recipe;
 }
-export const InTotoProvenance = /*@__PURE__*/ S.suspend(() =>
+const InTotoProvenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     builderConfig: S.optional(BuilderConfig),
     metadata: S.optional(Metadata),
@@ -1666,7 +1649,7 @@ export const InTotoProvenance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InTotoProvenance" }) as any as S.Schema<InTotoProvenance>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Subject refers to the subject of the intoto statement */
 export interface Subject {
@@ -1675,7 +1658,7 @@ export interface Subject {
   /** "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/v1/digest_set.md. */
   digest?: StringMap;
 }
-export const Subject = /*@__PURE__*/ S.suspend(() =>
+const Subject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     digest: S.optional(StringMap),
@@ -1683,7 +1666,7 @@ export const Subject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subject" }) as any as S.Schema<Subject>;
 
 export type SubjectList = Array<Subject>;
-export const SubjectList = /*@__PURE__*/ S.Array(Subject) as any as S.Schema<SubjectList>;
+const SubjectList = /*@__PURE__*/ S.Array(Subject) as any as S.Schema<SubjectList>;
 
 /** Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe. */
 export interface SlsaRecipe {
@@ -1698,7 +1681,7 @@ export interface SlsaRecipe {
   /** Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Depending on the recipe Type, the structure may be different. */
   arguments?: DocumentMap;
 }
-export const SlsaRecipe = /*@__PURE__*/ S.suspend(() =>
+const SlsaRecipe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     environment: S.optional(DocumentMap),
@@ -1715,7 +1698,7 @@ export interface Material {
   /** uri is the uri of the material */
   uri?: string;
 }
-export const Material = /*@__PURE__*/ S.suspend(() =>
+const Material = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     digest: S.optional(StringMap),
     uri: S.optional(S.String),
@@ -1723,14 +1706,14 @@ export const Material = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Material" }) as any as S.Schema<Material>;
 
 export type MaterialList = Array<Material>;
-export const MaterialList = /*@__PURE__*/ S.Array(Material) as any as S.Schema<MaterialList>;
+const MaterialList = /*@__PURE__*/ S.Array(Material) as any as S.Schema<MaterialList>;
 
 /** SlsaBuilder encapsulates the identity of the builder of this provenance. */
 export interface SlsaBuilder {
   /** id is the id of the slsa provenance builder */
   id?: string;
 }
-export const SlsaBuilder = BuilderConfig as any as S.Schema<SlsaBuilder>;
+const SlsaBuilder = BuilderConfig as any as S.Schema<SlsaBuilder>;
 
 /** Indicates that the builder claims certain fields in this message to be complete. */
 export interface SlsaCompleteness {
@@ -1741,7 +1724,7 @@ export interface SlsaCompleteness {
   /** If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe. */
   arguments?: boolean;
 }
-export const SlsaCompleteness = /*@__PURE__*/ S.suspend(() =>
+const SlsaCompleteness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(S.Boolean),
     materials: S.optional(S.Boolean),
@@ -1762,7 +1745,7 @@ export interface SlsaMetadata {
   /** If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output. */
   reproducible?: boolean;
 }
-export const SlsaMetadata = /*@__PURE__*/ S.suspend(() =>
+const SlsaMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildFinishedOn: S.optional(S.String),
     completeness: S.optional(SlsaCompleteness),
@@ -1783,7 +1766,7 @@ export interface SlsaProvenance {
   /** metadata is the metadata of the provenance */
   metadata?: SlsaMetadata;
 }
-export const SlsaProvenance = /*@__PURE__*/ S.suspend(() =>
+const SlsaProvenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipe: S.optional(SlsaRecipe),
     materials: S.optional(MaterialList),
@@ -1801,7 +1784,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSls
   /** Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri. */
   digest?: StringMap;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource =
+const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       entryPoint: S.optional(S.String),
@@ -1821,7 +1804,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSls
   /** Collection of all external inputs that influenced the build on top of invocation.configSource. */
   parameters?: DocumentMap;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation =
+const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configSource: S.optional(
@@ -1843,7 +1826,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSls
   /** If true, the builder claims that invocation.parameters is complete. */
   parameters?: boolean;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness =
+const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       materials: S.optional(S.Boolean),
@@ -1867,7 +1850,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSls
   /** Indicates that the builder claims certain fields in this message to be complete. */
   completeness?: GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata =
+const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       buildInvocationId: S.optional(S.String),
@@ -1887,7 +1870,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSls
   /** URI indicating the builder's identity. */
   id?: string;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder =
+const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilder =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -1903,7 +1886,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSls
   /** Collection of cryptographic digests for the contents of this artifact. */
   digest?: StringMap;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial =
+const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       uri: S.optional(S.String),
@@ -1915,7 +1898,7 @@ export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMat
 
 export type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialList =
   Array<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>;
-export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialList =
+const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialList =
   /*@__PURE__*/ S.Array(
     GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial,
   ) as any as S.Schema<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialList>;
@@ -1935,7 +1918,7 @@ export interface SlsaProvenanceZeroTwo {
   /** Lists the steps in the build. */
   buildConfig?: DocumentMap;
 }
-export const SlsaProvenanceZeroTwo = /*@__PURE__*/ S.suspend(() =>
+const SlsaProvenanceZeroTwo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildType: S.optional(S.String),
     invocation: S.optional(
@@ -1965,7 +1948,7 @@ export interface InTotoStatement {
   /** Always "https://in-toto.io/Statement/v0.1". */
   _type?: string;
 }
-export const InTotoStatement = /*@__PURE__*/ S.suspend(() =>
+const InTotoStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provenance: S.optional(InTotoProvenance),
     predicateType: S.optional(S.String),
@@ -1982,7 +1965,7 @@ export interface DSSEAttestationOccurrence {
   envelope?: Envelope;
   statement?: InTotoStatement;
 }
-export const DSSEAttestationOccurrence = /*@__PURE__*/ S.suspend(() =>
+const DSSEAttestationOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envelope: S.optional(Envelope),
     statement: S.optional(InTotoStatement),
@@ -1992,7 +1975,7 @@ export const DSSEAttestationOccurrence = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DSSEAttestationOccurrence>;
 
 export type DeploymentPlatformEnum = "PLATFORM_UNSPECIFIED" | "GKE" | "FLEX" | "CUSTOM";
-export const DeploymentPlatformEnum = S.String;
+const DeploymentPlatformEnum = S.String;
 
 /** The period during which some deployable was active in a runtime. */
 export interface Deployment {
@@ -2011,7 +1994,7 @@ export interface Deployment {
   /** Beginning of the lifetime of this deployment. */
   deployTime?: string;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     platform: S.optional(DeploymentPlatformEnum),
@@ -2028,19 +2011,19 @@ export interface SecretLocation {
   /** The secret is found from a file. */
   fileLocation?: FileLocation;
 }
-export const SecretLocation = /*@__PURE__*/ S.suspend(() =>
+const SecretLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileLocation: S.optional(FileLocation),
   }),
 ).annotate({ identifier: "SecretLocation" }) as any as S.Schema<SecretLocation>;
 
 export type SecretLocationList = Array<SecretLocation>;
-export const SecretLocationList = /*@__PURE__*/ S.Array(
+const SecretLocationList = /*@__PURE__*/ S.Array(
   SecretLocation,
 ) as any as S.Schema<SecretLocationList>;
 
 export type SecretStatusStatusEnum = "STATUS_UNSPECIFIED" | "UNKNOWN" | "VALID" | "INVALID";
-export const SecretStatusStatusEnum = S.String;
+const SecretStatusStatusEnum = S.String;
 
 /** The status of the secret with a timestamp. */
 export interface SecretStatus {
@@ -2051,7 +2034,7 @@ export interface SecretStatus {
   /** Optional. Optional message about the status code. */
   message?: string;
 }
-export const SecretStatus = /*@__PURE__*/ S.suspend(() =>
+const SecretStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     status: S.optional(SecretStatusStatusEnum),
@@ -2060,9 +2043,7 @@ export const SecretStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretStatus" }) as any as S.Schema<SecretStatus>;
 
 export type SecretStatusList = Array<SecretStatus>;
-export const SecretStatusList = /*@__PURE__*/ S.Array(
-  SecretStatus,
-) as any as S.Schema<SecretStatusList>;
+const SecretStatusList = /*@__PURE__*/ S.Array(SecretStatus) as any as S.Schema<SecretStatusList>;
 
 export type SecretOccurrenceKindEnum =
   | "SECRET_KIND_UNSPECIFIED"
@@ -2088,7 +2069,7 @@ export type SecretOccurrenceKindEnum =
   | "SECRET_KIND_STRIPE_SECRET_KEY"
   | "SECRET_KIND_STRIPE_RESTRICTED_KEY"
   | "SECRET_KIND_STRIPE_WEBHOOK_SECRET";
-export const SecretOccurrenceKindEnum = S.String;
+const SecretOccurrenceKindEnum = S.String;
 
 /** The occurrence provides details of a secret. */
 export interface SecretOccurrence {
@@ -2099,7 +2080,7 @@ export interface SecretOccurrence {
   /** Required. Type of secret. */
   kind?: SecretOccurrenceKindEnum | (string & {});
 }
-export const SecretOccurrence = /*@__PURE__*/ S.suspend(() =>
+const SecretOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(SecretLocationList),
     statuses: S.optional(SecretStatusList),
@@ -2116,7 +2097,7 @@ export interface ResourceDescriptor {
   content?: string;
   uri?: string;
 }
-export const ResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
+const ResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaType: S.optional(S.String),
     digest: S.optional(StringMap),
@@ -2129,7 +2110,7 @@ export const ResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceDescriptor" }) as any as S.Schema<ResourceDescriptor>;
 
 export type ResourceDescriptorList = Array<ResourceDescriptor>;
-export const ResourceDescriptorList = /*@__PURE__*/ S.Array(
+const ResourceDescriptorList = /*@__PURE__*/ S.Array(
   ResourceDescriptor,
 ) as any as S.Schema<ResourceDescriptorList>;
 
@@ -2138,7 +2119,7 @@ export interface ProvenanceBuilder {
   version?: StringMap;
   id?: string;
 }
-export const ProvenanceBuilder = /*@__PURE__*/ S.suspend(() =>
+const ProvenanceBuilder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     builderDependencies: S.optional(ResourceDescriptorList),
     version: S.optional(StringMap),
@@ -2151,7 +2132,7 @@ export interface BuildMetadata {
   finishedOn?: string;
   startedOn?: string;
 }
-export const BuildMetadata = /*@__PURE__*/ S.suspend(() =>
+const BuildMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invocationId: S.optional(S.String),
     finishedOn: S.optional(S.String),
@@ -2164,7 +2145,7 @@ export interface RunDetails {
   builder?: ProvenanceBuilder;
   metadata?: BuildMetadata;
 }
-export const RunDetails = /*@__PURE__*/ S.suspend(() =>
+const RunDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     byproducts: S.optional(ResourceDescriptorList),
     builder: S.optional(ProvenanceBuilder),
@@ -2178,7 +2159,7 @@ export interface BuildDefinition {
   resolvedDependencies?: ResourceDescriptorList;
   buildType?: string;
 }
-export const BuildDefinition = /*@__PURE__*/ S.suspend(() =>
+const BuildDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalParameters: S.optional(DocumentMap),
     internalParameters: S.optional(DocumentMap),
@@ -2192,7 +2173,7 @@ export interface SlsaProvenanceV1 {
   runDetails?: RunDetails;
   buildDefinition?: BuildDefinition;
 }
-export const SlsaProvenanceV1 = /*@__PURE__*/ S.suspend(() =>
+const SlsaProvenanceV1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runDetails: S.optional(RunDetails),
     buildDefinition: S.optional(BuildDefinition),
@@ -2206,7 +2187,7 @@ export interface InTotoSlsaProvenanceV1 {
   _type?: string;
   subject?: SubjectList;
 }
-export const InTotoSlsaProvenanceV1 = /*@__PURE__*/ S.suspend(() =>
+const InTotoSlsaProvenanceV1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predicateType: S.optional(S.String),
     predicate: S.optional(SlsaProvenanceV1),
@@ -2228,7 +2209,7 @@ export interface RepoSource {
   /** Name of the branch to build. */
   branchName?: string;
 }
-export const RepoSource = /*@__PURE__*/ S.suspend(() =>
+const RepoSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagName: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -2247,7 +2228,7 @@ export interface StorageSource {
   /** Google Cloud Storage generation for the object. */
   generation?: string;
 }
-export const StorageSource = /*@__PURE__*/ S.suspend(() =>
+const StorageSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     object: S.optional(S.String),
@@ -2256,7 +2237,7 @@ export const StorageSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageSource" }) as any as S.Schema<StorageSource>;
 
 export type HashTypeEnum = "NONE" | "SHA256" | "GO_MODULE_H1" | "DIRSUM_SHA256";
-export const HashTypeEnum = S.String;
+const HashTypeEnum = S.String;
 
 /** Container message for hash values. */
 export interface Hash {
@@ -2265,7 +2246,7 @@ export interface Hash {
   /** The type of hash that was performed. */
   type?: HashTypeEnum | (string & {});
 }
-export const Hash = /*@__PURE__*/ S.suspend(() =>
+const Hash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     type: S.optional(HashTypeEnum),
@@ -2273,21 +2254,21 @@ export const Hash = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
 export type HashList = Array<Hash>;
-export const HashList = /*@__PURE__*/ S.Array(Hash) as any as S.Schema<HashList>;
+const HashList = /*@__PURE__*/ S.Array(Hash) as any as S.Schema<HashList>;
 
 /** Container message for hashes of byte content of files, used in Source messages to verify integrity of source input to the build. */
 export interface FileHashes {
   /** Collection of file hashes. */
   fileHash?: HashList;
 }
-export const FileHashes = /*@__PURE__*/ S.suspend(() =>
+const FileHashes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileHash: S.optional(HashList),
   }),
 ).annotate({ identifier: "FileHashes" }) as any as S.Schema<FileHashes>;
 
 export type FileHashesMap = { [key: string]: FileHashes | undefined };
-export const FileHashesMap = /*@__PURE__*/ S.Record(
+const FileHashesMap = /*@__PURE__*/ S.Record(
   S.String,
   FileHashes,
 ) as any as S.Schema<FileHashesMap>;
@@ -2297,7 +2278,7 @@ export type GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindEnum =
   | "FIXED"
   | "MOVABLE"
   | "OTHER";
-export const GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindEnum = S.String;
+const GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindEnum = S.String;
 
 /** An alias to a repo revision. */
 export interface GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
@@ -2306,7 +2287,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
   /** The alias kind. */
   kind?: GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindEnum | (string & {});
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1AliasContext = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsContaineranalysisV1alpha1AliasContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     kind: S.optional(GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindEnum),
@@ -2322,7 +2303,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId {
   /** The name of the repo. Leave empty for the default repo. */
   repoName?: string;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     repoName: S.optional(S.String),
@@ -2338,7 +2319,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1RepoId {
   /** A combination of a project ID and a repo name. */
   projectRepoId?: GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1RepoId = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsContaineranalysisV1alpha1RepoId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     projectRepoId: S.optional(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId),
@@ -2356,16 +2337,15 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
   /** The ID of the repo. */
   repoId?: GoogleDevtoolsContaineranalysisV1alpha1RepoId;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      aliasContext: S.optional(GoogleDevtoolsContaineranalysisV1alpha1AliasContext),
-      revisionId: S.optional(S.String),
-      repoId: S.optional(GoogleDevtoolsContaineranalysisV1alpha1RepoId),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext",
-  }) as any as S.Schema<GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext>;
+const GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    aliasContext: S.optional(GoogleDevtoolsContaineranalysisV1alpha1AliasContext),
+    revisionId: S.optional(S.String),
+    repoId: S.optional(GoogleDevtoolsContaineranalysisV1alpha1RepoId),
+  }),
+).annotate({
+  identifier: "GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext",
+}) as any as S.Schema<GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext>;
 
 /** A SourceContext referring to a Gerrit project. */
 export interface GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
@@ -2378,14 +2358,13 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
   /** An alias, which may be a branch or tag. */
   aliasContext?: GoogleDevtoolsContaineranalysisV1alpha1AliasContext;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      revisionId: S.optional(S.String),
-      hostUri: S.optional(S.String),
-      gerritProject: S.optional(S.String),
-      aliasContext: S.optional(GoogleDevtoolsContaineranalysisV1alpha1AliasContext),
-    }),
+const GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    revisionId: S.optional(S.String),
+    hostUri: S.optional(S.String),
+    gerritProject: S.optional(S.String),
+    aliasContext: S.optional(GoogleDevtoolsContaineranalysisV1alpha1AliasContext),
+  }),
 ).annotate({
   identifier: "GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext",
 }) as any as S.Schema<GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext>;
@@ -2397,7 +2376,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
   /** Required. Git commit hash. */
   revisionId?: string;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     revisionId: S.optional(S.String),
@@ -2417,7 +2396,7 @@ export interface GoogleDevtoolsContaineranalysisV1alpha1SourceContext {
   /** A SourceContext referring to any third party Git repo (e.g., GitHub). */
   git?: GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext;
 }
-export const GoogleDevtoolsContaineranalysisV1alpha1SourceContext = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsContaineranalysisV1alpha1SourceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     cloudRepo: S.optional(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext),
@@ -2430,7 +2409,7 @@ export const GoogleDevtoolsContaineranalysisV1alpha1SourceContext = /*@__PURE__*
 
 export type GoogleDevtoolsContaineranalysisV1alpha1SourceContextList =
   Array<GoogleDevtoolsContaineranalysisV1alpha1SourceContext>;
-export const GoogleDevtoolsContaineranalysisV1alpha1SourceContextList = /*@__PURE__*/ S.Array(
+const GoogleDevtoolsContaineranalysisV1alpha1SourceContextList = /*@__PURE__*/ S.Array(
   GoogleDevtoolsContaineranalysisV1alpha1SourceContext,
 ) as any as S.Schema<GoogleDevtoolsContaineranalysisV1alpha1SourceContextList>;
 
@@ -2449,7 +2428,7 @@ export interface Source {
   /** If provided, the source code used for the build came from this location. */
   context?: GoogleDevtoolsContaineranalysisV1alpha1SourceContext;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoSource: S.optional(RepoSource),
     storageSource: S.optional(StorageSource),
@@ -2471,7 +2450,7 @@ export interface Artifact {
   /** Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto. */
   name?: string;
 }
-export const Artifact = /*@__PURE__*/ S.suspend(() =>
+const Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList),
     id: S.optional(S.String),
@@ -2481,7 +2460,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 export type ArtifactList = Array<Artifact>;
-export const ArtifactList = /*@__PURE__*/ S.Array(Artifact) as any as S.Schema<ArtifactList>;
+const ArtifactList = /*@__PURE__*/ S.Array(Artifact) as any as S.Schema<ArtifactList>;
 
 /** Command describes a step performed as part of the build pipeline. */
 export interface Command {
@@ -2498,7 +2477,7 @@ export interface Command {
   /** The ID(s) of the Command(s) that this Command depends on. */
   waitFor?: StringList;
 }
-export const Command = /*@__PURE__*/ S.suspend(() =>
+const Command = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     dir: S.optional(S.String),
@@ -2510,7 +2489,7 @@ export const Command = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Command" }) as any as S.Schema<Command>;
 
 export type CommandList = Array<Command>;
-export const CommandList = /*@__PURE__*/ S.Array(Command) as any as S.Schema<CommandList>;
+const CommandList = /*@__PURE__*/ S.Array(Command) as any as S.Schema<CommandList>;
 
 /** Provenance of a build. Contains all information needed to verify the full details about the build from source to completion. */
 export interface BuildProvenance {
@@ -2541,7 +2520,7 @@ export interface BuildProvenance {
   /** Google Cloud Storage bucket where logs were written. */
   logsBucket?: string;
 }
-export const BuildProvenance = /*@__PURE__*/ S.suspend(() =>
+const BuildProvenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     buildOptions: S.optional(StringMap),
@@ -2572,7 +2551,7 @@ export interface BuildDetails {
   /** In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope. */
   intotoStatement?: InTotoStatement;
 }
-export const BuildDetails = /*@__PURE__*/ S.suspend(() =>
+const BuildDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inTotoSlsaProvenanceV1: S.optional(InTotoSlsaProvenanceV1),
     provenance: S.optional(BuildProvenance),
@@ -2583,7 +2562,7 @@ export const BuildDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuildDetails" }) as any as S.Schema<BuildDetails>;
 
 export type SBOMStatusSbomStateEnum = "SBOM_STATE_UNSPECIFIED" | "PENDING" | "COMPLETE";
-export const SBOMStatusSbomStateEnum = S.String;
+const SBOMStatusSbomStateEnum = S.String;
 
 /** The status of an SBOM generation. */
 export interface SBOMStatus {
@@ -2592,7 +2571,7 @@ export interface SBOMStatus {
   /** Output only. If there was an error generating an SBOM, this will indicate what that error was. */
   error?: string;
 }
-export const SBOMStatus = /*@__PURE__*/ S.suspend(() =>
+const SBOMStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sbomState: S.optional(SBOMStatusSbomStateEnum),
     error: S.optional(S.String),
@@ -2607,7 +2586,7 @@ export type DiscoveredAnalysisStatusEnum =
   | "FINISHED_SUCCESS"
   | "FINISHED_FAILED"
   | "FINISHED_UNSUPPORTED";
-export const DiscoveredAnalysisStatusEnum = S.String;
+const DiscoveredAnalysisStatusEnum = S.String;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -2618,7 +2597,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -2639,7 +2618,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -2654,14 +2633,14 @@ export interface AnalysisCompleted {
   /** type of analysis that were completed on a resource. */
   analysisType?: StringList;
 }
-export const AnalysisCompleted = /*@__PURE__*/ S.suspend(() =>
+const AnalysisCompleted = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analysisType: S.optional(StringList),
   }),
 ).annotate({ identifier: "AnalysisCompleted" }) as any as S.Schema<AnalysisCompleted>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** A file as part of a resource. */
 export interface File {
@@ -2670,22 +2649,20 @@ export interface File {
   /** Optional. The digest(s) of the file. */
   digest?: StringMap;
 }
-export const File = Subject as any as S.Schema<File>;
-
 export type FileList = Array<File>;
-export const FileList = SubjectList as any as S.Schema<FileList>;
+const FileList = SubjectList as any as S.Schema<FileList>;
 
 export type DiscoveredContinuousAnalysisEnum =
   | "CONTINUOUS_ANALYSIS_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE";
-export const DiscoveredContinuousAnalysisEnum = S.String;
+const DiscoveredContinuousAnalysisEnum = S.String;
 
 export type VulnerabilityAttestationStateEnum =
   | "VULNERABILITY_ATTESTATION_STATE_UNSPECIFIED"
   | "SUCCESS"
   | "FAILURE";
-export const VulnerabilityAttestationStateEnum = S.String;
+const VulnerabilityAttestationStateEnum = S.String;
 
 /** The status of a vulnerability attestation generation. */
 export interface VulnerabilityAttestation {
@@ -2696,7 +2673,7 @@ export interface VulnerabilityAttestation {
   /** Output only. The success/failure state of the latest attestation attempt. */
   state?: VulnerabilityAttestationStateEnum | (string & {});
 }
-export const VulnerabilityAttestation = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityAttestation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastAttemptTime: S.optional(S.String),
     error: S.optional(S.String),
@@ -2733,7 +2710,7 @@ export interface Discovered {
   /** Output only. The status of a vulnerability attestation generation. */
   vulnerabilityAttestation?: VulnerabilityAttestation;
 }
-export const Discovered = /*@__PURE__*/ S.suspend(() =>
+const Discovered = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sbomStatus: S.optional(SBOMStatus),
     lastScanTime: S.optional(S.String),
@@ -2758,7 +2735,7 @@ export interface FindingLocation {
   /** Optional. Line number (1-based), or 0 if whole File / unknown. */
   lineNumber?: string;
 }
-export const FindingLocation = /*@__PURE__*/ S.suspend(() =>
+const FindingLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filePath: S.optional(S.String),
     lineNumber: S.optional(S.String),
@@ -2766,7 +2743,7 @@ export const FindingLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FindingLocation" }) as any as S.Schema<FindingLocation>;
 
 export type FindingSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH";
-export const FindingSeverityEnum = S.String;
+const FindingSeverityEnum = S.String;
 
 export type FindingScannerEnum =
   | "SCANNER_UNSPECIFIED"
@@ -2774,7 +2751,7 @@ export type FindingScannerEnum =
   | "LLM"
   | "WS_POLICY"
   | "GOOGLE_ANTIVIRUS";
-export const FindingScannerEnum = S.String;
+const FindingScannerEnum = S.String;
 
 /** Finding provides details for a single finding within an AISkillAnalysisOccurrence. */
 export interface Finding {
@@ -2789,7 +2766,7 @@ export interface Finding {
   /** Optional. Description of the finding category. */
   details?: string;
 }
-export const Finding = /*@__PURE__*/ S.suspend(() =>
+const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.String),
     location: S.optional(FindingLocation),
@@ -2800,22 +2777,22 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 
 export type FindingList = Array<Finding>;
-export const FindingList = /*@__PURE__*/ S.Array(Finding) as any as S.Schema<FindingList>;
+const FindingList = /*@__PURE__*/ S.Array(Finding) as any as S.Schema<FindingList>;
 
 export type AISkillAnalysisOccurrenceMaxSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH";
-export const AISkillAnalysisOccurrenceMaxSeverityEnum = S.String;
+const AISkillAnalysisOccurrenceMaxSeverityEnum = S.String;
 
 export type MaliciousContentStaticResultMaxSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
   | "HIGH";
-export const MaliciousContentStaticResultMaxSeverityEnum = S.String;
+const MaliciousContentStaticResultMaxSeverityEnum = S.String;
 
 export type MaliciousContentStaticResultScanStateEnum =
   | "SCAN_STATE_UNSPECIFIED"
   | "PERFORMED"
   | "NOT_PERFORMED";
-export const MaliciousContentStaticResultScanStateEnum = S.String;
+const MaliciousContentStaticResultScanStateEnum = S.String;
 
 /** Result of Malicious Content Static scan. */
 export interface MaliciousContentStaticResult {
@@ -2824,7 +2801,7 @@ export interface MaliciousContentStaticResult {
   /** Output only. State of the scan. */
   scanState?: MaliciousContentStaticResultScanStateEnum | (string & {});
 }
-export const MaliciousContentStaticResult = /*@__PURE__*/ S.suspend(() =>
+const MaliciousContentStaticResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxSeverity: S.optional(MaliciousContentStaticResultMaxSeverityEnum),
     scanState: S.optional(MaliciousContentStaticResultScanStateEnum),
@@ -2834,13 +2811,13 @@ export const MaliciousContentStaticResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaliciousContentStaticResult>;
 
 export type MalwareScanResultVerdictEnum = "VERDICT_UNSPECIFIED" | "PASSED" | "FAILED";
-export const MalwareScanResultVerdictEnum = S.String;
+const MalwareScanResultVerdictEnum = S.String;
 
 export type MalwareScanResultScanStateEnum =
   | "SCAN_STATE_UNSPECIFIED"
   | "PERFORMED"
   | "NOT_PERFORMED";
-export const MalwareScanResultScanStateEnum = S.String;
+const MalwareScanResultScanStateEnum = S.String;
 
 /** Result of Malware scan. */
 export interface MalwareScanResult {
@@ -2849,7 +2826,7 @@ export interface MalwareScanResult {
   /** Output only. State of the scan. */
   scanState?: MalwareScanResultScanStateEnum | (string & {});
 }
-export const MalwareScanResult = /*@__PURE__*/ S.suspend(() =>
+const MalwareScanResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verdict: S.optional(MalwareScanResultVerdictEnum),
     scanState: S.optional(MalwareScanResultScanStateEnum),
@@ -2857,7 +2834,7 @@ export const MalwareScanResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MalwareScanResult" }) as any as S.Schema<MalwareScanResult>;
 
 export type MaliciousContentLLMResultMaxSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH";
-export const MaliciousContentLLMResultMaxSeverityEnum = S.String;
+const MaliciousContentLLMResultMaxSeverityEnum = S.String;
 
 /** Token usage associated with an AI scan. */
 export interface TokenUsage {
@@ -2872,7 +2849,7 @@ export interface TokenUsage {
   /** Output only. Tokens in the model response. */
   candidateCount?: string;
 }
-export const TokenUsage = /*@__PURE__*/ S.suspend(() =>
+const TokenUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolUsePromptCount: S.optional(S.String),
     cacheCount: S.optional(S.String),
@@ -2886,7 +2863,7 @@ export type MaliciousContentLLMResultScanStateEnum =
   | "SCAN_STATE_UNSPECIFIED"
   | "PERFORMED"
   | "NOT_PERFORMED";
-export const MaliciousContentLLMResultScanStateEnum = S.String;
+const MaliciousContentLLMResultScanStateEnum = S.String;
 
 /** Result of Malicious Content LLM scan. */
 export interface MaliciousContentLLMResult {
@@ -2899,7 +2876,7 @@ export interface MaliciousContentLLMResult {
   /** Output only. State of the scan. */
   scanState?: MaliciousContentLLMResultScanStateEnum | (string & {});
 }
-export const MaliciousContentLLMResult = /*@__PURE__*/ S.suspend(() =>
+const MaliciousContentLLMResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxSeverity: S.optional(MaliciousContentLLMResultMaxSeverityEnum),
     modelId: S.optional(S.String),
@@ -2911,14 +2888,10 @@ export const MaliciousContentLLMResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaliciousContentLLMResult>;
 
 export type WorkspacePolicyResultVerdictEnum = "VERDICT_UNSPECIFIED" | "PASSED" | "FAILED";
-export const WorkspacePolicyResultVerdictEnum = S.String;
-
 export type WorkspacePolicyResultScanStateEnum =
   | "SCAN_STATE_UNSPECIFIED"
   | "PERFORMED"
   | "NOT_PERFORMED";
-export const WorkspacePolicyResultScanStateEnum = S.String;
-
 /** Result of Workspace Policy scan. */
 export interface WorkspacePolicyResult {
   /** Optional. Verdict of the scan. */
@@ -2926,7 +2899,7 @@ export interface WorkspacePolicyResult {
   /** Output only. State of the scan. */
   scanState?: WorkspacePolicyResultScanStateEnum | (string & {});
 }
-export const WorkspacePolicyResult = MalwareScanResult as any as S.Schema<WorkspacePolicyResult>;
+const WorkspacePolicyResult = MalwareScanResult as any as S.Schema<WorkspacePolicyResult>;
 
 /** Per scanner verdict details. */
 export interface PerScannerVerdict {
@@ -2939,7 +2912,7 @@ export interface PerScannerVerdict {
   /** Optional. Workspace Policy scan result. */
   workspacePolicy?: WorkspacePolicyResult;
 }
-export const PerScannerVerdict = /*@__PURE__*/ S.suspend(() =>
+const PerScannerVerdict = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maliciousContentStaticResult: S.optional(MaliciousContentStaticResult),
     malwareScan: S.optional(MalwareScanResult),
@@ -2959,7 +2932,7 @@ export interface AISkillAnalysisOccurrence {
   /** Optional. Per scanner verdict. */
   perScannerVerdict?: PerScannerVerdict;
 }
-export const AISkillAnalysisOccurrence = /*@__PURE__*/ S.suspend(() =>
+const AISkillAnalysisOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skillName: S.optional(S.String),
     findings: S.optional(FindingList),
@@ -2993,7 +2966,7 @@ export interface PackageInfoOccurrence {
   /** Provide the actual file name of the package, or path of the directory being treated as a package */
   filename?: string;
 }
-export const PackageInfoOccurrence = /*@__PURE__*/ S.suspend(() =>
+const PackageInfoOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summaryDescription: S.optional(S.String),
     version: S.optional(S.String),
@@ -3053,7 +3026,7 @@ export type RelationshipOccurrenceTypeEnum =
   | "PREREQUISITE_FOR"
   | "HAS_PREREQUISITE"
   | "OTHER";
-export const RelationshipOccurrenceTypeEnum = S.String;
+const RelationshipOccurrenceTypeEnum = S.String;
 
 /** RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/ */
 export interface RelationshipOccurrence {
@@ -3066,7 +3039,7 @@ export interface RelationshipOccurrence {
   /** Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an SPDX element (package/file/snippet) has no other elements connected by some relationship to it */
   target?: string;
 }
-export const RelationshipOccurrence = /*@__PURE__*/ S.suspend(() =>
+const RelationshipOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String),
     type: S.optional(RelationshipOccurrenceTypeEnum),
@@ -3094,7 +3067,7 @@ export type LayerDirectiveEnum =
   | "STOPSIGNAL"
   | "HEALTHCHECK"
   | "SHELL";
-export const LayerDirectiveEnum = S.String;
+const LayerDirectiveEnum = S.String;
 
 /** Layer holds metadata specific to a layer of a Docker image. */
 export interface Layer {
@@ -3103,7 +3076,7 @@ export interface Layer {
   /** The recovered arguments to the Dockerfile directive. */
   arguments?: string;
 }
-export const Layer = /*@__PURE__*/ S.suspend(() =>
+const Layer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directive: S.optional(LayerDirectiveEnum),
     arguments: S.optional(S.String),
@@ -3111,7 +3084,7 @@ export const Layer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Layer" }) as any as S.Schema<Layer>;
 
 export type LayerList = Array<Layer>;
-export const LayerList = /*@__PURE__*/ S.Array(Layer) as any as S.Schema<LayerList>;
+const LayerList = /*@__PURE__*/ S.Array(Layer) as any as S.Schema<LayerList>;
 
 /** Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM . */
 export interface Derived {
@@ -3124,7 +3097,7 @@ export interface Derived {
   /** Output only. This contains the base image URL for the derived image occurrence. */
   baseResourceUrl?: string;
 }
-export const Derived = /*@__PURE__*/ S.suspend(() =>
+const Derived = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layerInfo: S.optional(LayerList),
     fingerprint: S.optional(Fingerprint),
@@ -3144,7 +3117,7 @@ export interface SbomReferenceIntotoPredicate {
   /** The mime type of the SBOM. */
   mimeType?: string;
 }
-export const SbomReferenceIntotoPredicate = /*@__PURE__*/ S.suspend(() =>
+const SbomReferenceIntotoPredicate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     digest: S.optional(StringMap),
     location: S.optional(S.String),
@@ -3166,7 +3139,7 @@ export interface SbomReferenceIntotoPayload {
   /** Additional parameters of the Predicate. Includes the actual data about the SBOM. */
   predicate?: SbomReferenceIntotoPredicate;
 }
-export const SbomReferenceIntotoPayload = /*@__PURE__*/ S.suspend(() =>
+const SbomReferenceIntotoPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predicateType: S.optional(S.String),
     subject: S.optional(SubjectList),
@@ -3186,7 +3159,7 @@ export interface SBOMReferenceOccurrence {
   /** The signatures over the payload. */
   signatures?: EnvelopeSignatureList;
 }
-export const SBOMReferenceOccurrence = /*@__PURE__*/ S.suspend(() =>
+const SBOMReferenceOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payloadType: S.optional(S.String),
     payload: S.optional(SbomReferenceIntotoPayload),
@@ -3215,7 +3188,7 @@ export interface DocumentOccurrence {
   /** Identify name of this document as designated by creator */
   title?: string;
 }
-export const DocumentOccurrence = /*@__PURE__*/ S.suspend(() =>
+const DocumentOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalDocumentRefs: S.optional(StringList),
     id: S.optional(S.String),
@@ -3238,7 +3211,7 @@ export interface NonCompliantFile {
   /** Command to display the non-compliant files. */
   displayCommand?: string;
 }
-export const NonCompliantFile = /*@__PURE__*/ S.suspend(() =>
+const NonCompliantFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     path: S.optional(S.String),
@@ -3247,7 +3220,7 @@ export const NonCompliantFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NonCompliantFile" }) as any as S.Schema<NonCompliantFile>;
 
 export type NonCompliantFileList = Array<NonCompliantFile>;
-export const NonCompliantFileList = /*@__PURE__*/ S.Array(
+const NonCompliantFileList = /*@__PURE__*/ S.Array(
   NonCompliantFile,
 ) as any as S.Schema<NonCompliantFileList>;
 
@@ -3260,7 +3233,7 @@ export interface ComplianceOccurrence {
   /** A list of files which are violating compliance checks. */
   nonCompliantFiles?: NonCompliantFileList;
 }
-export const ComplianceOccurrence = /*@__PURE__*/ S.suspend(() =>
+const ComplianceOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(ComplianceVersion),
     nonComplianceReason: S.optional(S.String),
@@ -3275,7 +3248,7 @@ export interface ExploitPredictionScoringSystem {
   /** Optional. The percentile of the current score, the proportion of all scored vulnerabilities with the same or a lower EPSS score */
   percentile?: number;
 }
-export const ExploitPredictionScoringSystem = /*@__PURE__*/ S.suspend(() =>
+const ExploitPredictionScoringSystem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     score: S.optional(S.Number),
     percentile: S.optional(S.Number),
@@ -3289,7 +3262,7 @@ export interface CISAKnownExploitedVulnerabilities {
   /** Optional. Whether the vulnerability is known to have been leveraged as part of a ransomware campaign. */
   knownRansomwareCampaignUse?: string;
 }
-export const CISAKnownExploitedVulnerabilities = /*@__PURE__*/ S.suspend(() =>
+const CISAKnownExploitedVulnerabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     knownRansomwareCampaignUse: S.optional(S.String),
   }),
@@ -3304,7 +3277,7 @@ export interface Risk {
   /** Optional. CISA maintains the authoritative source of vulnerabilities that have been exploited in the wild. */
   cisaKev?: CISAKnownExploitedVulnerabilities;
 }
-export const Risk = /*@__PURE__*/ S.suspend(() =>
+const Risk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     epss: S.optional(ExploitPredictionScoringSystem),
     cisaKev: S.optional(CISAKnownExploitedVulnerabilities),
@@ -3316,7 +3289,7 @@ export type VulnerabilityDetailsCvssVersionEnum =
   | "CVSS_VERSION_2"
   | "CVSS_VERSION_3"
   | "CVSS_VERSION_4";
-export const VulnerabilityDetailsCvssVersionEnum = S.String;
+const VulnerabilityDetailsCvssVersionEnum = S.String;
 
 export type VexAssessmentStateEnum =
   | "STATE_UNSPECIFIED"
@@ -3324,7 +3297,7 @@ export type VexAssessmentStateEnum =
   | "NOT_AFFECTED"
   | "FIXED"
   | "UNDER_INVESTIGATION";
-export const VexAssessmentStateEnum = S.String;
+const VexAssessmentStateEnum = S.String;
 
 /** VexAssessment provides all publisher provided Vex information that is related to this vulnerability. */
 export interface VexAssessment {
@@ -3345,7 +3318,7 @@ export interface VexAssessment {
   /** Specifies details on how to handle (and presumably, fix) a vulnerability. */
   remediations?: RemediationList;
 }
-export const VexAssessment = /*@__PURE__*/ S.suspend(() =>
+const VexAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cve: S.optional(S.String),
     justification: S.optional(Justification),
@@ -3365,7 +3338,7 @@ export type PackageIssueEffectiveSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const PackageIssueEffectiveSeverityEnum = S.String;
+const PackageIssueEffectiveSeverityEnum = S.String;
 
 /** This message wraps a location affected by a vulnerability and its associated fix (if one is available). */
 export interface PackageIssue {
@@ -3379,7 +3352,7 @@ export interface PackageIssue {
   /** The location of the available fix for vulnerability. */
   fixedLocation?: VulnerabilityLocation;
 }
-export const PackageIssue = /*@__PURE__*/ S.suspend(() =>
+const PackageIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageType: S.optional(S.String),
     effectiveSeverity: S.optional(PackageIssueEffectiveSeverityEnum),
@@ -3390,9 +3363,7 @@ export const PackageIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PackageIssue" }) as any as S.Schema<PackageIssue>;
 
 export type PackageIssueList = Array<PackageIssue>;
-export const PackageIssueList = /*@__PURE__*/ S.Array(
-  PackageIssue,
-) as any as S.Schema<PackageIssueList>;
+const PackageIssueList = /*@__PURE__*/ S.Array(PackageIssue) as any as S.Schema<PackageIssueList>;
 
 export type VulnerabilityDetailsSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
@@ -3401,7 +3372,7 @@ export type VulnerabilityDetailsSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const VulnerabilityDetailsSeverityEnum = S.String;
+const VulnerabilityDetailsSeverityEnum = S.String;
 
 export type VulnerabilityDetailsEffectiveSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
@@ -3410,7 +3381,7 @@ export type VulnerabilityDetailsEffectiveSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const VulnerabilityDetailsEffectiveSeverityEnum = S.String;
+const VulnerabilityDetailsEffectiveSeverityEnum = S.String;
 
 /** Used by Occurrence to point to where the vulnerability exists and how to fix it. */
 export interface VulnerabilityDetails {
@@ -3439,7 +3410,7 @@ export interface VulnerabilityDetails {
   /** Occurrence-specific extra details about the vulnerability. */
   extraDetails?: string;
 }
-export const VulnerabilityDetails = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cvssV4: S.optional(CVSS),
     risk: S.optional(Risk),
@@ -3459,7 +3430,7 @@ export const VulnerabilityDetails = /*@__PURE__*/ S.suspend(() =>
 export type PgpSignedAttestationContentTypeEnum =
   | "CONTENT_TYPE_UNSPECIFIED"
   | "SIMPLE_SIGNING_JSON";
-export const PgpSignedAttestationContentTypeEnum = S.String;
+const PgpSignedAttestationContentTypeEnum = S.String;
 
 /** An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file. */
 export interface PgpSignedAttestation {
@@ -3470,7 +3441,7 @@ export interface PgpSignedAttestation {
   /** The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`. */
   pgpKeyId?: string;
 }
-export const PgpSignedAttestation = /*@__PURE__*/ S.suspend(() =>
+const PgpSignedAttestation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signature: S.optional(S.String),
     contentType: S.optional(PgpSignedAttestationContentTypeEnum),
@@ -3482,7 +3453,7 @@ export const PgpSignedAttestation = /*@__PURE__*/ S.suspend(() =>
 export interface Attestation {
   pgpSignedAttestation?: PgpSignedAttestation;
 }
-export const Attestation = /*@__PURE__*/ S.suspend(() =>
+const Attestation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pgpSignedAttestation: S.optional(PgpSignedAttestation),
   }),
@@ -3497,7 +3468,7 @@ export interface Resource {
   /** The name of the resource. E.g., the name of a Docker image - "Debian". */
   name?: string;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentHash: S.optional(Hash),
     uri: S.optional(S.String),
@@ -3514,7 +3485,7 @@ export interface UpgradeOccurrence {
   /** Required - The package this Upgrade is for. */
   package?: string;
 }
-export const UpgradeOccurrence = /*@__PURE__*/ S.suspend(() =>
+const UpgradeOccurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distribution: S.optional(UpgradeDistribution),
     parsedVersion: S.optional(Version),
@@ -3577,7 +3548,7 @@ export interface Occurrence {
   /** Describes an upgrade. */
   upgrade?: UpgradeOccurrence;
 }
-export const Occurrence = /*@__PURE__*/ S.suspend(() =>
+const Occurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(OccurrenceKindEnum),
     installation: S.optional(Installation),
@@ -3616,7 +3587,7 @@ export interface CreateProjectsOccurrencesRequest {
   /** Request body */
   body?: Occurrence;
 }
-export const CreateProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3639,7 +3610,7 @@ export interface CreateOperationRequest {
   /** The operation to create. */
   operation?: Operation;
 }
-export const CreateOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     operation: S.optional(Operation),
@@ -3652,7 +3623,7 @@ export interface CreateProjectsOperationsRequest {
   /** Request body */
   body?: CreateOperationRequest;
 }
-export const CreateProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateOperationRequest.pipe(T.HttpBody())),
@@ -3677,7 +3648,7 @@ export interface CreateProvidersNotesRequest {
   /** Request body */
   body?: Note;
 }
-export const CreateProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3698,7 +3669,7 @@ export interface DeleteProjectsNotesRequest {
   /** The name of the note in the form of "providers/{provider_id}/notes/{NOTE_ID}" */
   name: string;
 }
-export const DeleteProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3714,13 +3685,13 @@ export const DeleteProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = SecretNote as any as S.Schema<Empty>;
+const Empty = SecretNote as any as S.Schema<Empty>;
 
 export interface DeleteProjectsOccurrencesRequest {
   /** The name of the occurrence in the form of "projects/{project_id}/occurrences/{OCCURRENCE_ID}" */
   name: string;
 }
-export const DeleteProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3738,7 +3709,7 @@ export interface DeleteProvidersNotesRequest {
   /** The name of the note in the form of "providers/{provider_id}/notes/{NOTE_ID}" */
   name: string;
 }
-export const DeleteProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3757,7 +3728,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -3768,7 +3739,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -3780,7 +3751,7 @@ export interface GetIamPolicyProjectsNotesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3806,7 +3777,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     location: S.optional(S.String),
@@ -3824,7 +3795,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -3833,7 +3804,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -3844,7 +3815,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     version: S.optional(S.Number),
@@ -3858,7 +3829,7 @@ export interface GetIamPolicyProjectsOccurrencesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3879,7 +3850,7 @@ export interface GetIamPolicyProvidersNotesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3898,7 +3869,7 @@ export interface GetNotesProjectsOccurrencesRequest {
   /** The name of the occurrence in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}" */
   name: string;
 }
-export const GetNotesProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotesProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3916,7 +3887,7 @@ export interface GetProjectsNotesRequest {
   /** The name of the note in the form of "providers/{provider_id}/notes/{NOTE_ID}" */
   name: string;
 }
-export const GetProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3932,7 +3903,7 @@ export interface GetProjectsOccurrencesRequest {
   /** The name of the occurrence of the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}" */
   name: string;
 }
-export const GetProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3950,7 +3921,7 @@ export interface GetProjectsScanConfigsRequest {
   /** The name of the ScanConfig in the form projects/{project_id}/scanConfigs/{scan_config_id} */
   name: string;
 }
-export const GetProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3977,7 +3948,7 @@ export interface ScanConfig {
   /** Indicates whether the Scan is enabled. */
   enabled?: boolean;
 }
-export const ScanConfig = /*@__PURE__*/ S.suspend(() =>
+const ScanConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -3991,7 +3962,7 @@ export interface GetProvidersNotesRequest {
   /** The name of the note in the form of "providers/{provider_id}/notes/{NOTE_ID}" */
   name: string;
 }
-export const GetProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4009,7 +3980,7 @@ export interface GetVulnerabilitySummaryProjectsOccurrencesRequest {
   /** The filter expression. */
   filter?: string;
 }
-export const GetVulnerabilitySummaryProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVulnerabilitySummaryProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4031,7 +4002,7 @@ export type SeverityCountSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const SeverityCountSeverityEnum = S.String;
+const SeverityCountSeverityEnum = S.String;
 
 /** The number of occurrences created for a specific severity. */
 export interface SeverityCount {
@@ -4040,7 +4011,7 @@ export interface SeverityCount {
   /** The severity of the occurrences. */
   severity?: SeverityCountSeverityEnum;
 }
-export const SeverityCount = /*@__PURE__*/ S.suspend(() =>
+const SeverityCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     severity: S.optional(SeverityCountSeverityEnum),
@@ -4048,7 +4019,7 @@ export const SeverityCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SeverityCount" }) as any as S.Schema<SeverityCount>;
 
 export type SeverityCountList = Array<SeverityCount>;
-export const SeverityCountList = /*@__PURE__*/ S.Array(
+const SeverityCountList = /*@__PURE__*/ S.Array(
   SeverityCount,
 ) as any as S.Schema<SeverityCountList>;
 
@@ -4057,7 +4028,7 @@ export interface GetVulnzOccurrencesSummaryResponse {
   /** A map of how many occurrences were found for each severity. */
   counts?: SeverityCountList;
 }
-export const GetVulnzOccurrencesSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVulnzOccurrencesSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counts: S.optional(SeverityCountList),
   }),
@@ -4077,7 +4048,7 @@ export interface ListProjectsNotesRequest {
   /** The filter expression. */
   filter?: string;
 }
-export const ListProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4094,7 +4065,7 @@ export const ListProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsNotesRequest" }) as any as S.Schema<ListProjectsNotesRequest>;
 
 export type NoteList = Array<Note>;
-export const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
+const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
 
 /** Response including listed notes. */
 export interface ListNotesResponse {
@@ -4103,7 +4074,7 @@ export interface ListNotesResponse {
   /** The next pagination token in the list response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
 }
-export const ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notes: S.optional(NoteList),
     nextPageToken: S.optional(S.String),
@@ -4120,7 +4091,7 @@ export interface ListProjectsNotesOccurrencesRequest {
   /** Token to provide to skip to a particular spot in the list. */
   pageToken?: string;
 }
-export const ListProjectsNotesOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsNotesOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4138,7 +4109,7 @@ export const ListProjectsNotesOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsNotesOccurrencesRequest>;
 
 export type OccurrenceList = Array<Occurrence>;
-export const OccurrenceList = /*@__PURE__*/ S.Array(Occurrence) as any as S.Schema<OccurrenceList>;
+const OccurrenceList = /*@__PURE__*/ S.Array(Occurrence) as any as S.Schema<OccurrenceList>;
 
 /** Response including listed occurrences for a note. */
 export interface ListNoteOccurrencesResponse {
@@ -4147,7 +4118,7 @@ export interface ListNoteOccurrencesResponse {
   /** Token to receive the next page of notes. */
   nextPageToken?: string;
 }
-export const ListNoteOccurrencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNoteOccurrencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     occurrences: S.optional(OccurrenceList),
     nextPageToken: S.optional(S.String),
@@ -4176,7 +4147,7 @@ export type ListProjectsOccurrencesKindEnum =
   | "SBOM_REFERENCE"
   | "SECRET"
   | "AI_SKILL_ANALYSIS";
-export const ListProjectsOccurrencesKindEnum = S.String;
+const ListProjectsOccurrencesKindEnum = S.String;
 
 export interface ListProjectsOccurrencesRequest {
   /** This contains the project Id for example: projects/{project_id}. */
@@ -4192,7 +4163,7 @@ export interface ListProjectsOccurrencesRequest {
   /** The name field contains the project Id. For example: "projects/{project_id} @Deprecated */
   name?: string;
 }
-export const ListProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4218,7 +4189,7 @@ export interface ListOccurrencesResponse {
   /** The next pagination token in the list response. It should be used as `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
 }
-export const ListOccurrencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOccurrencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     occurrences: S.optional(OccurrenceList),
     nextPageToken: S.optional(S.String),
@@ -4235,7 +4206,7 @@ export interface ListProjectsScanConfigsRequest {
   /** The filter expression. */
   filter?: string;
 }
-export const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4253,7 +4224,7 @@ export const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsScanConfigsRequest>;
 
 export type ScanConfigList = Array<ScanConfig>;
-export const ScanConfigList = /*@__PURE__*/ S.Array(ScanConfig) as any as S.Schema<ScanConfigList>;
+const ScanConfigList = /*@__PURE__*/ S.Array(ScanConfig) as any as S.Schema<ScanConfigList>;
 
 /** A list of scan configs for the project. */
 export interface ListScanConfigsResponse {
@@ -4262,7 +4233,7 @@ export interface ListScanConfigsResponse {
   /** The set of scan configs. */
   scanConfigs?: ScanConfigList;
 }
-export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     scanConfigs: S.optional(ScanConfigList),
@@ -4281,7 +4252,7 @@ export interface ListProvidersNotesRequest {
   /** The filter expression. */
   filter?: string;
 }
-export const ListProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4309,7 +4280,7 @@ export interface ListProvidersNotesOccurrencesRequest {
   /** The filter expression. */
   filter?: string;
 }
-export const ListProvidersNotesOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvidersNotesOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4334,7 +4305,7 @@ export interface PatchProjectsNotesRequest {
   /** Request body */
   body?: Note;
 }
-export const PatchProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4358,7 +4329,7 @@ export interface PatchProjectsOccurrencesRequest {
   /** Request body */
   body?: Occurrence;
 }
-export const PatchProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4381,7 +4352,7 @@ export interface UpdateOperationRequest {
   /** The operation to create. */
   operation?: Operation;
 }
-export const UpdateOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     operation: S.optional(Operation),
@@ -4394,7 +4365,7 @@ export interface PatchProjectsOperationsRequest {
   /** Request body */
   body?: UpdateOperationRequest;
 }
-export const PatchProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateOperationRequest.pipe(T.HttpBody())),
@@ -4417,7 +4388,7 @@ export interface PatchProjectsScanConfigsRequest {
   /** Request body */
   body?: ScanConfig;
 }
-export const PatchProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4441,7 +4412,7 @@ export interface PatchProvidersNotesRequest {
   /** Request body */
   body?: Note;
 }
-export const PatchProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4462,7 +4433,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -4474,7 +4445,7 @@ export interface SetIamPolicyProjectsNotesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4495,7 +4466,7 @@ export interface SetIamPolicyProjectsOccurrencesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4516,7 +4487,7 @@ export interface SetIamPolicyProvidersNotesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4536,7 +4507,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -4550,7 +4521,7 @@ export interface TestIamPermissionsProjectsNotesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4570,7 +4541,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsOccurrencesRequest {
@@ -4579,7 +4550,7 @@ export interface TestIamPermissionsProjectsOccurrencesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4600,7 +4571,7 @@ export interface TestIamPermissionsProvidersNotesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProvidersNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),

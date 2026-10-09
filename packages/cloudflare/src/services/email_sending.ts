@@ -59,7 +59,7 @@ export interface CreateSubdomainRequest {
   /** The domain name within the zone. A wildcard is allowed only as the complete leftmost label (`*.example.com`) and requires the account wildcard Email Sending entitlement. */
   name: string;
 }
-export const CreateSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
@@ -89,7 +89,7 @@ export interface CreateSubdomainResponse {
   /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.&lt;base&gt;`. */
   returnPathDomain?: string | null;
 }
-export const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     name: S.String,
@@ -106,42 +106,21 @@ export const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSubdomainResponse" }) as any as S.Schema<CreateSubdomainResponse>;
 
 export type CreateSuppressionRequestScopeTypeType = "account";
-export const CreateSuppressionRequestScopeTypeType = S.String;
-
 export interface CreateSuppressionRequestScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: CreateSuppressionRequestScopeTypeType;
 }
-export const CreateSuppressionRequestScopeType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateSuppressionRequestScopeTypeType,
-  }),
-).annotate({
-  identifier: "CreateSuppressionRequestScopeType",
-}) as any as S.Schema<CreateSuppressionRequestScopeType>;
-
 export type CreateSuppressionRequestScopeCase1Type = "sending_domain";
-export const CreateSuppressionRequestScopeCase1Type = S.String;
-
 export interface CreateSuppressionRequestScopeCase1 {
   /** Blocks the recipient only for mail whose envelope MAIL FROM uses `value`. */
   type: CreateSuppressionRequestScopeCase1Type;
   /** The sending domain to suppress for: the domain part of the envelope MAIL FROM. It is lowercased and trailing dots are removed. Internationalized domains must use the ASCII (punycode) form. Ownership is not checked; a domain the account does not send from never matches. */
   value: string;
 }
-export const CreateSuppressionRequestScopeCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateSuppressionRequestScopeCase1Type,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "CreateSuppressionRequestScopeCase1",
-}) as any as S.Schema<CreateSuppressionRequestScopeCase1>;
-
 export type CreateSuppressionRequestScope =
   | CreateSuppressionRequestScopeType
   | CreateSuppressionRequestScopeCase1;
-export const CreateSuppressionRequestScope = /*@__PURE__*/ S.Unknown.pipe(
+const CreateSuppressionRequestScope = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
@@ -160,7 +139,7 @@ export interface CreateSuppressionRequest {
   /** Where the suppression applies. Omit for `{ "type": "account" }`, which blocks the recipient for every sending domain of the account. */
   scope?: CreateSuppressionRequestScope;
 }
-export const CreateSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     email: S.String,
@@ -179,31 +158,21 @@ export const CreateSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSuppressionRequest" }) as any as S.Schema<CreateSuppressionRequest>;
 
 export type CreateSuppressionResponseScopeTypeType = "account";
-export const CreateSuppressionResponseScopeTypeType = S.String;
-
 export interface CreateSuppressionResponseScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: CreateSuppressionResponseScopeTypeType;
 }
-export const CreateSuppressionResponseScopeType =
-  CreateSuppressionRequestScopeType as any as S.Schema<CreateSuppressionResponseScopeType>;
-
 export type CreateSuppressionResponseScopeCase1Type = "sending_domain";
-export const CreateSuppressionResponseScopeCase1Type = S.String;
-
 export interface CreateSuppressionResponseScopeCase1 {
   /** Blocks the recipient only for mail whose envelope MAIL FROM uses `value`. */
   type: CreateSuppressionResponseScopeCase1Type;
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const CreateSuppressionResponseScopeCase1 =
-  CreateSuppressionRequestScopeCase1 as any as S.Schema<CreateSuppressionResponseScopeCase1>;
-
 export type CreateSuppressionResponseScope =
   | CreateSuppressionResponseScopeType
   | CreateSuppressionResponseScopeCase1;
-export const CreateSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
+const CreateSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
@@ -217,7 +186,7 @@ export interface CreateSuppressionResponse {
   /** Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain. */
   scope?: CreateSuppressionResponseScope | null;
 }
-export const CreateSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scope: S.optional(S.NullOr(CreateSuppressionResponseScope)),
@@ -232,7 +201,7 @@ export interface DeleteSubdomainRequest {
   /** Sending subdomain identifier. */
   subdomainId: string;
 }
-export const DeleteSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomainId: S.String.pipe(T.Label("subdomain_id")),
@@ -248,7 +217,7 @@ export const DeleteSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSubdomainRequest" }) as any as S.Schema<DeleteSubdomainRequest>;
 
 export interface DeleteSubdomainResponse {}
-export const DeleteSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteSubdomainResponse" }) as any as S.Schema<DeleteSubdomainResponse>;
 
@@ -258,7 +227,7 @@ export interface DeleteSuppressionRequest {
   /** The suppression's identifier. */
   suppressionId: string;
 }
-export const DeleteSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     suppressionId: S.String.pipe(T.Label("suppression_id")),
@@ -274,31 +243,21 @@ export const DeleteSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSuppressionRequest" }) as any as S.Schema<DeleteSuppressionRequest>;
 
 export type DeleteSuppressionResponseScopeTypeType = "account";
-export const DeleteSuppressionResponseScopeTypeType = S.String;
-
 export interface DeleteSuppressionResponseScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: DeleteSuppressionResponseScopeTypeType;
 }
-export const DeleteSuppressionResponseScopeType =
-  CreateSuppressionRequestScopeType as any as S.Schema<DeleteSuppressionResponseScopeType>;
-
 export type DeleteSuppressionResponseScopeCase1Type = "sending_domain";
-export const DeleteSuppressionResponseScopeCase1Type = S.String;
-
 export interface DeleteSuppressionResponseScopeCase1 {
   /** Blocks the recipient only for mail whose envelope MAIL FROM uses `value`. */
   type: DeleteSuppressionResponseScopeCase1Type;
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const DeleteSuppressionResponseScopeCase1 =
-  CreateSuppressionRequestScopeCase1 as any as S.Schema<DeleteSuppressionResponseScopeCase1>;
-
 export type DeleteSuppressionResponseScope =
   | DeleteSuppressionResponseScopeType
   | DeleteSuppressionResponseScopeCase1;
-export const DeleteSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
+const DeleteSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
@@ -312,7 +271,7 @@ export interface DeleteSuppressionResponse {
   /** Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain. */
   scope?: DeleteSuppressionResponseScope | null;
 }
-export const DeleteSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scope: S.optional(S.NullOr(DeleteSuppressionResponseScope)),
@@ -331,7 +290,7 @@ export interface EditSubdomainRequest {
   /** Whether sent messages from this subdomain can be previewed in the activity log. */
   previewEnabled?: boolean;
 }
-export const EditSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
+const EditSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomainId: S.String.pipe(T.Label("subdomain_id")),
@@ -369,8 +328,7 @@ export interface EditSubdomainResponse {
   /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.&lt;base&gt;`. */
   returnPathDomain?: string | null;
 }
-export const EditSubdomainResponse =
-  CreateSubdomainResponse as any as S.Schema<EditSubdomainResponse>;
+const EditSubdomainResponse = CreateSubdomainResponse as any as S.Schema<EditSubdomainResponse>;
 
 export interface EditSuppressionRequest {
   /** Cloudflare account ID. */
@@ -384,7 +342,7 @@ export interface EditSuppressionRequest {
   /** Not editable. Scope is fixed when the suppression is created; any value returns 400 with code `scope_immutable`. Delete and recreate the suppression to change it. */
   scope?: unknown;
 }
-export const EditSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const EditSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     suppressionId: S.String.pipe(T.Label("suppression_id")),
@@ -403,31 +361,21 @@ export const EditSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditSuppressionRequest" }) as any as S.Schema<EditSuppressionRequest>;
 
 export type EditSuppressionResponseScopeTypeType = "account";
-export const EditSuppressionResponseScopeTypeType = S.String;
-
 export interface EditSuppressionResponseScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: EditSuppressionResponseScopeTypeType;
 }
-export const EditSuppressionResponseScopeType =
-  CreateSuppressionRequestScopeType as any as S.Schema<EditSuppressionResponseScopeType>;
-
 export type EditSuppressionResponseScopeCase1Type = "sending_domain";
-export const EditSuppressionResponseScopeCase1Type = S.String;
-
 export interface EditSuppressionResponseScopeCase1 {
   /** Blocks the recipient only for mail whose envelope MAIL FROM uses `value`. */
   type: EditSuppressionResponseScopeCase1Type;
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const EditSuppressionResponseScopeCase1 =
-  CreateSuppressionRequestScopeCase1 as any as S.Schema<EditSuppressionResponseScopeCase1>;
-
 export type EditSuppressionResponseScope =
   | EditSuppressionResponseScopeType
   | EditSuppressionResponseScopeCase1;
-export const EditSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
+const EditSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
@@ -453,7 +401,7 @@ export interface EditSuppressionResponse {
   /** Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain. */
   scope?: EditSuppressionResponseScope | null;
 }
-export const EditSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
+const EditSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -472,7 +420,7 @@ export interface GetSubdomainRequest {
   /** Sending subdomain identifier. */
   subdomainId: string;
 }
-export const GetSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomainId: S.String.pipe(T.Label("subdomain_id")),
@@ -508,8 +456,7 @@ export interface GetSubdomainResponse {
   /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.&lt;base&gt;`. */
   returnPathDomain?: string | null;
 }
-export const GetSubdomainResponse =
-  CreateSubdomainResponse as any as S.Schema<GetSubdomainResponse>;
+const GetSubdomainResponse = CreateSubdomainResponse as any as S.Schema<GetSubdomainResponse>;
 
 export interface GetSubdomainDnsRequest {
   /** Identifier. */
@@ -517,7 +464,7 @@ export interface GetSubdomainDnsRequest {
   /** Sending subdomain identifier. */
   subdomainId: string;
 }
-export const GetSubdomainDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubdomainDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomainId: S.String.pipe(T.Label("subdomain_id")),
@@ -551,7 +498,7 @@ export type SubdomainsDnsGetResultItemType =
   | "SVCB"
   | "TLSA"
   | "URI";
-export const SubdomainsDnsGetResultItemType = S.String;
+const SubdomainsDnsGetResultItemType = S.String;
 
 export interface SubdomainsDnsGetResultItem {
   /** DNS record content. */
@@ -565,7 +512,7 @@ export interface SubdomainsDnsGetResultItem {
   /** DNS record type. */
   type?: SubdomainsDnsGetResultItemType | null;
 }
-export const SubdomainsDnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const SubdomainsDnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -578,7 +525,7 @@ export const SubdomainsDnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubdomainsDnsGetResultItem>;
 
 export type SubdomainsDnsGetResultList = Array<SubdomainsDnsGetResultItem>;
-export const SubdomainsDnsGetResultList = /*@__PURE__*/ S.Array(
+const SubdomainsDnsGetResultList = /*@__PURE__*/ S.Array(
   SubdomainsDnsGetResultItem,
 ) as any as S.Schema<SubdomainsDnsGetResultList>;
 
@@ -588,7 +535,7 @@ export interface GetSubdomainDnsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetSubdomainDnsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSubdomainDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SubdomainsDnsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -601,7 +548,7 @@ export interface GetSuppressionRequest {
   /** The suppression's identifier. */
   suppressionId: string;
 }
-export const GetSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     suppressionId: S.String.pipe(T.Label("suppression_id")),
@@ -617,31 +564,21 @@ export const GetSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSuppressionRequest" }) as any as S.Schema<GetSuppressionRequest>;
 
 export type GetSuppressionResponseScopeTypeType = "account";
-export const GetSuppressionResponseScopeTypeType = S.String;
-
 export interface GetSuppressionResponseScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: GetSuppressionResponseScopeTypeType;
 }
-export const GetSuppressionResponseScopeType =
-  CreateSuppressionRequestScopeType as any as S.Schema<GetSuppressionResponseScopeType>;
-
 export type GetSuppressionResponseScopeCase1Type = "sending_domain";
-export const GetSuppressionResponseScopeCase1Type = S.String;
-
 export interface GetSuppressionResponseScopeCase1 {
   /** Blocks the recipient only for mail whose envelope MAIL FROM uses `value`. */
   type: GetSuppressionResponseScopeCase1Type;
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const GetSuppressionResponseScopeCase1 =
-  CreateSuppressionRequestScopeCase1 as any as S.Schema<GetSuppressionResponseScopeCase1>;
-
 export type GetSuppressionResponseScope =
   | GetSuppressionResponseScopeType
   | GetSuppressionResponseScopeCase1;
-export const GetSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
+const GetSuppressionResponseScope = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
@@ -667,7 +604,7 @@ export interface GetSuppressionResponse {
   /** Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain. */
   scope?: GetSuppressionResponseScope | null;
 }
-export const GetSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -681,31 +618,21 @@ export const GetSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSuppressionResponse" }) as any as S.Schema<GetSuppressionResponse>;
 
 export type ImportSuppressionRequestItemsItemScopeTypeType = "account";
-export const ImportSuppressionRequestItemsItemScopeTypeType = S.String;
-
 export interface ImportSuppressionRequestItemsItemScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: ImportSuppressionRequestItemsItemScopeTypeType;
 }
-export const ImportSuppressionRequestItemsItemScopeType =
-  CreateSuppressionRequestScopeType as any as S.Schema<ImportSuppressionRequestItemsItemScopeType>;
-
 export type ImportSuppressionRequestItemsItemScopeCase1Type = "sending_domain";
-export const ImportSuppressionRequestItemsItemScopeCase1Type = S.String;
-
 export interface ImportSuppressionRequestItemsItemScopeCase1 {
   /** Blocks the recipient only for mail whose envelope MAIL FROM uses `value`. */
   type: ImportSuppressionRequestItemsItemScopeCase1Type;
   /** The sending domain to suppress for: the domain part of the envelope MAIL FROM. It is lowercased and trailing dots are removed. Internationalized domains must use the ASCII (punycode) form. Ownership is not checked; a domain the account does not send from never matches. */
   value: string;
 }
-export const ImportSuppressionRequestItemsItemScopeCase1 =
-  CreateSuppressionRequestScopeCase1 as any as S.Schema<ImportSuppressionRequestItemsItemScopeCase1>;
-
 export type ImportSuppressionRequestItemsItemScope =
   | ImportSuppressionRequestItemsItemScopeType
   | ImportSuppressionRequestItemsItemScopeCase1;
-export const ImportSuppressionRequestItemsItemScope = /*@__PURE__*/ S.Unknown.pipe(
+const ImportSuppressionRequestItemsItemScope = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
@@ -722,7 +649,7 @@ export interface ImportSuppressionRequestItemsItem {
   /** Where the suppression applies. Omit for `{ "type": "account" }`, which blocks the recipient for every sending domain of the account. */
   scope?: ImportSuppressionRequestItemsItemScope;
 }
-export const ImportSuppressionRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ImportSuppressionRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
@@ -734,7 +661,7 @@ export const ImportSuppressionRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportSuppressionRequestItemsItem>;
 
 export type ImportSuppressionRequestItemsList = Array<ImportSuppressionRequestItemsItem>;
-export const ImportSuppressionRequestItemsList = /*@__PURE__*/ S.Array(
+const ImportSuppressionRequestItemsList = /*@__PURE__*/ S.Array(
   ImportSuppressionRequestItemsItem,
 ) as any as S.Schema<ImportSuppressionRequestItemsList>;
 
@@ -744,7 +671,7 @@ export interface ImportSuppressionRequest {
   /** Suppressions to import. Items with the same email address and scope are deduplicated before processing. */
   items: ImportSuppressionRequestItemsList;
 }
-export const ImportSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     items: ImportSuppressionRequestItemsList,
@@ -764,34 +691,24 @@ export type ImportSuppressionResponseItemsItemStatus =
   | "invalid"
   | "error"
   | "skipped";
-export const ImportSuppressionResponseItemsItemStatus = S.String;
+const ImportSuppressionResponseItemsItemStatus = S.String;
 
 export type ImportSuppressionResponseItemsItemScopeTypeType = "account";
-export const ImportSuppressionResponseItemsItemScopeTypeType = S.String;
-
 export interface ImportSuppressionResponseItemsItemScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: ImportSuppressionResponseItemsItemScopeTypeType;
 }
-export const ImportSuppressionResponseItemsItemScopeType =
-  CreateSuppressionRequestScopeType as any as S.Schema<ImportSuppressionResponseItemsItemScopeType>;
-
 export type ImportSuppressionResponseItemsItemScopeCase1Type = "sending_domain";
-export const ImportSuppressionResponseItemsItemScopeCase1Type = S.String;
-
 export interface ImportSuppressionResponseItemsItemScopeCase1 {
   /** Blocks the recipient only for mail whose envelope MAIL FROM uses `value`. */
   type: ImportSuppressionResponseItemsItemScopeCase1Type;
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const ImportSuppressionResponseItemsItemScopeCase1 =
-  CreateSuppressionRequestScopeCase1 as any as S.Schema<ImportSuppressionResponseItemsItemScopeCase1>;
-
 export type ImportSuppressionResponseItemsItemScope =
   | ImportSuppressionResponseItemsItemScopeType
   | ImportSuppressionResponseItemsItemScopeCase1;
-export const ImportSuppressionResponseItemsItemScope = /*@__PURE__*/ S.Unknown.pipe(
+const ImportSuppressionResponseItemsItemScope = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
@@ -812,7 +729,7 @@ export interface ImportSuppressionResponseItemsItem {
   /** Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain. */
   scope?: ImportSuppressionResponseItemsItemScope | null;
 }
-export const ImportSuppressionResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ImportSuppressionResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.Number,
     status: ImportSuppressionResponseItemsItemStatus,
@@ -826,7 +743,7 @@ export const ImportSuppressionResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportSuppressionResponseItemsItem>;
 
 export type ImportSuppressionResponseItemsList = Array<ImportSuppressionResponseItemsItem>;
-export const ImportSuppressionResponseItemsList = /*@__PURE__*/ S.Array(
+const ImportSuppressionResponseItemsList = /*@__PURE__*/ S.Array(
   ImportSuppressionResponseItemsItem,
 ) as any as S.Schema<ImportSuppressionResponseItemsList>;
 
@@ -847,7 +764,7 @@ export interface ImportSuppressionResponse {
   /** Total number of items in the request body, including duplicates. */
   total: number;
 }
-export const ImportSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deduplicated: S.Number,
     errors: S.Number,
@@ -865,7 +782,7 @@ export interface ListSubdomainsRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ListSubdomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubdomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -893,7 +810,7 @@ export interface SubdomainsListResultItem {
   /** The return-path domain used for bounce handling. Wildcard rows use `cf-bounce.&lt;base&gt;`. */
   returnPathDomain?: string | null;
 }
-export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     name: S.String,
@@ -910,7 +827,7 @@ export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubdomainsListResultItem" }) as any as S.Schema<SubdomainsListResultItem>;
 
 export type SubdomainsListResultList = Array<SubdomainsListResultItem>;
-export const SubdomainsListResultList = /*@__PURE__*/ S.Array(
+const SubdomainsListResultList = /*@__PURE__*/ S.Array(
   SubdomainsListResultItem,
 ) as any as S.Schema<SubdomainsListResultList>;
 
@@ -920,7 +837,7 @@ export interface ListSubdomainsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListSubdomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubdomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SubdomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -933,10 +850,10 @@ export type ListSuppressionsRequestReason =
   | "hard_bounce"
   | "soft_bounce"
   | "policy";
-export const ListSuppressionsRequestReason = S.String;
+const ListSuppressionsRequestReason = S.String;
 
 export type ListSuppressionsRequestScopeType = "account" | "sending_domain";
-export const ListSuppressionsRequestScopeType = S.String;
+const ListSuppressionsRequestScopeType = S.String;
 
 export interface ListSuppressionsRequest {
   /** Cloudflare account ID. */
@@ -956,7 +873,7 @@ export interface ListSuppressionsRequest {
   /** A complete address is an exact match; a value ending in `@` matches that username across every domain. Prefix searches may return short intermediate pages while the bounded account scan advances. */
   search?: string;
 }
-export const ListSuppressionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSuppressionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -978,31 +895,21 @@ export const ListSuppressionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSuppressionsRequest" }) as any as S.Schema<ListSuppressionsRequest>;
 
 export type ListSuppressionsResultItemScopeTypeType = "account";
-export const ListSuppressionsResultItemScopeTypeType = S.String;
-
 export interface ListSuppressionsResultItemScopeType {
   /** Blocks the recipient for every sending domain of the account. */
   type: ListSuppressionsResultItemScopeTypeType;
 }
-export const ListSuppressionsResultItemScopeType =
-  CreateSuppressionRequestScopeType as any as S.Schema<ListSuppressionsResultItemScopeType>;
-
 export type ListSuppressionsResultItemScopeCase1Type = "sending_domain";
-export const ListSuppressionsResultItemScopeCase1Type = S.String;
-
 export interface ListSuppressionsResultItemScopeCase1 {
   /** Blocks the recipient only for mail whose envelope MAIL FROM uses `value`. */
   type: ListSuppressionsResultItemScopeCase1Type;
   /** The sending domain: the domain part of the envelope MAIL FROM, lowercase, without a trailing dot. */
   value: string;
 }
-export const ListSuppressionsResultItemScopeCase1 =
-  CreateSuppressionRequestScopeCase1 as any as S.Schema<ListSuppressionsResultItemScopeCase1>;
-
 export type ListSuppressionsResultItemScope =
   | ListSuppressionsResultItemScopeType
   | ListSuppressionsResultItemScopeCase1;
-export const ListSuppressionsResultItemScope = /*@__PURE__*/ S.Unknown.pipe(
+const ListSuppressionsResultItemScope = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
     key: "type",
     values: ["account", "sending_domain"],
@@ -1027,7 +934,7 @@ export interface ListSuppressionsResultItem {
   /** Where the suppression applies: `account` for every sending domain of the account, or `sending_domain` for one envelope MAIL FROM domain. */
   scope?: ListSuppressionsResultItemScope | null;
 }
-export const ListSuppressionsResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListSuppressionsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -1043,12 +950,12 @@ export const ListSuppressionsResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSuppressionsResultItem>;
 
 export type ListSuppressionsResultList = Array<ListSuppressionsResultItem>;
-export const ListSuppressionsResultList = /*@__PURE__*/ S.Array(
+const ListSuppressionsResultList = /*@__PURE__*/ S.Array(
   ListSuppressionsResultItem,
 ) as any as S.Schema<ListSuppressionsResultList>;
 
 export type ListSuppressionsResponse = ListSuppressionsResultList;
-export const ListSuppressionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSuppressionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSuppressionsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListSuppressionsResponse" }) as any as S.Schema<ListSuppressionsResponse>;
 
@@ -1056,7 +963,7 @@ export interface SendEmailSendingRequest {
   /** Identifier of the account. */
   accountId: string;
 }
-export const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
+const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1065,20 +972,19 @@ export const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendEmailSendingRequest" }) as any as S.Schema<SendEmailSendingRequest>;
 
 export type SendResponseDeliveredList = Array<string>;
-export const SendResponseDeliveredList = /*@__PURE__*/ S.Array(
+const SendResponseDeliveredList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendResponseDeliveredList>;
 
 export type SendResponsePermanentBouncesList = Array<string>;
-export const SendResponsePermanentBouncesList =
+const SendResponsePermanentBouncesList =
   SendResponseDeliveredList as any as S.Schema<SendResponsePermanentBouncesList>;
 
 export type SendResponseQueuedList = Array<string>;
-export const SendResponseQueuedList =
-  SendResponseDeliveredList as any as S.Schema<SendResponseQueuedList>;
+const SendResponseQueuedList = SendResponseDeliveredList as any as S.Schema<SendResponseQueuedList>;
 
 export type SendResponseSuppressedRecipientsList = Array<string>;
-export const SendResponseSuppressedRecipientsList =
+const SendResponseSuppressedRecipientsList =
   SendResponseDeliveredList as any as S.Schema<SendResponseSuppressedRecipientsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1094,7 +1000,7 @@ export interface SendEmailSendingResponse {
   /** Email addresses dropped because they are on the suppression list. Returned when suppressed-recipient dropping is enabled for the sending subdomain; otherwise the request fails instead. */
   suppressedRecipients: SendResponseSuppressedRecipientsList;
 }
-export const SendEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
+const SendEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delivered: SendResponseDeliveredList,
     messageId: S.String.pipe(T.Body("message_id")),
@@ -1107,7 +1013,7 @@ export const SendEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendEmailSendingResponse" }) as any as S.Schema<SendEmailSendingResponse>;
 
 export type SendRawRequestRecipientsList = Array<string>;
-export const SendRawRequestRecipientsList =
+const SendRawRequestRecipientsList =
   SendResponseDeliveredList as any as S.Schema<SendRawRequestRecipientsList>;
 
 export interface SendRawEmailSendingRequest {
@@ -1120,7 +1026,7 @@ export interface SendRawEmailSendingRequest {
   /** List of recipient email addresses. */
   recipients: SendRawRequestRecipientsList;
 }
-export const SendRawEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
+const SendRawEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.String,
@@ -1136,19 +1042,19 @@ export const SendRawEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SendRawEmailSendingRequest>;
 
 export type SendRawResponseDeliveredList = Array<string>;
-export const SendRawResponseDeliveredList =
+const SendRawResponseDeliveredList =
   SendResponseDeliveredList as any as S.Schema<SendRawResponseDeliveredList>;
 
 export type SendRawResponsePermanentBouncesList = Array<string>;
-export const SendRawResponsePermanentBouncesList =
+const SendRawResponsePermanentBouncesList =
   SendResponseDeliveredList as any as S.Schema<SendRawResponsePermanentBouncesList>;
 
 export type SendRawResponseQueuedList = Array<string>;
-export const SendRawResponseQueuedList =
+const SendRawResponseQueuedList =
   SendResponseDeliveredList as any as S.Schema<SendRawResponseQueuedList>;
 
 export type SendRawResponseSuppressedRecipientsList = Array<string>;
-export const SendRawResponseSuppressedRecipientsList =
+const SendRawResponseSuppressedRecipientsList =
   SendResponseDeliveredList as any as S.Schema<SendRawResponseSuppressedRecipientsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1164,7 +1070,7 @@ export interface SendRawEmailSendingResponse {
   /** Email addresses dropped because they are on the suppression list. Returned when suppressed-recipient dropping is enabled for the sending subdomain; otherwise the request fails instead. */
   suppressedRecipients: SendRawResponseSuppressedRecipientsList;
 }
-export const SendRawEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
+const SendRawEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delivered: SendRawResponseDeliveredList,
     messageId: S.String.pipe(T.Body("message_id")),

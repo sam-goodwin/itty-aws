@@ -16,7 +16,7 @@ export interface StartServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
+const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -32,7 +32,7 @@ export const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartServerRequest" }) as any as S.Schema<StartServerRequest>;
 
 export interface StartServerResponse {}
-export const StartServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const StartServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "StartServerResponse",
 }) as any as S.Schema<StartServerResponse>;
 
@@ -44,7 +44,7 @@ export interface StopServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
+const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -60,7 +60,7 @@ export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServerRequest" }) as any as S.Schema<StopServerRequest>;
 
 export interface StopServerResponse {}
-export const StopServerResponse = StartServerResponse as any as S.Schema<StopServerResponse>;
+const StopServerResponse = StartServerResponse as any as S.Schema<StopServerResponse>;
 
 export type StartServerError = AzureOpError;
 /** Starts a stopped server. */

@@ -11,7 +11,7 @@ export type { NotionOpError, NotionOpContext };
 
 /** The type of parent. */
 export type CreateDatabaseRequestParentType = "page_id" | "workspace";
-export const CreateDatabaseRequestParentType = S.String;
+const CreateDatabaseRequestParentType = S.String;
 
 /** The parent page or workspace where the database will be created. */
 export interface CreateDatabaseRequestParent {
@@ -21,7 +21,7 @@ export interface CreateDatabaseRequestParent {
   /** Always `true` */
   workspace?: boolean;
 }
-export const CreateDatabaseRequestParent = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequestParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CreateDatabaseRequestParentType,
     page_id: S.optional(S.String),
@@ -53,7 +53,7 @@ export type ApiColor =
   | "purple_background"
   | "pink_background"
   | "red_background";
-export const ApiColor = S.String;
+const ApiColor = S.String;
 
 export interface AnnotationRequest {
   /** Whether the text is formatted as bold. */
@@ -69,7 +69,7 @@ export interface AnnotationRequest {
   /** The color of the text. */
   color?: ApiColor | (string & {});
 }
-export const AnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const AnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bold: S.optional(S.Boolean),
     italic: S.optional(S.Boolean),
@@ -84,7 +84,7 @@ export interface RichTextItemRequestTextLink {
   /** The URL of the link. */
   url: string;
 }
-export const RichTextItemRequestTextLink = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemRequestTextLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -99,7 +99,7 @@ export interface RichTextItemRequestText {
   /** An object with information about any inline link in this text, if included. */
   link?: RichTextItemRequestTextLink | null;
 }
-export const RichTextItemRequestText = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemRequestText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     link: S.optional(S.NullOr(RichTextItemRequestTextLink)),
@@ -112,28 +112,12 @@ export interface PartialUserObjectRequest {
   /** The user object type name. */
   object?: string;
 }
-export const PartialUserObjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.optional(S.String),
-  }),
-).annotate({ identifier: "PartialUserObjectRequest" }) as any as S.Schema<PartialUserObjectRequest>;
-
 export interface RichTextItemRequestMentionCase0 {
   /** Always `user` */
   type?: string;
   /** Details of the user mention. */
   user: PartialUserObjectRequest;
 }
-export const RichTextItemRequestMentionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    user: PartialUserObjectRequest,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase0",
-}) as any as S.Schema<RichTextItemRequestMentionCase0>;
-
 export interface DateRequest {
   /** The start date of the date object. */
   start: string;
@@ -142,84 +126,36 @@ export interface DateRequest {
   /** The time zone of the date object, if any. E.g. America/Los_Angeles, Europe/London, etc. */
   time_zone?: string | null;
 }
-export const DateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.String,
-    end: S.optional(S.NullOr(S.String)),
-    time_zone: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "DateRequest" }) as any as S.Schema<DateRequest>;
-
 export interface RichTextItemRequestMentionCase1 {
   /** Always `date` */
   type?: string;
   /** Details of the date mention. */
   date: DateRequest;
 }
-export const RichTextItemRequestMentionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    date: DateRequest,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase1",
-}) as any as S.Schema<RichTextItemRequestMentionCase1>;
-
 /** Details of the page mention. */
 export interface RichTextItemRequestMentionCase2Page {
   /** The ID of the page in the mention. */
   id: string;
 }
-export const RichTextItemRequestMentionCase2Page = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase2Page",
-}) as any as S.Schema<RichTextItemRequestMentionCase2Page>;
-
 export interface RichTextItemRequestMentionCase2 {
   /** Always `page` */
   type?: string;
   /** Details of the page mention. */
   page: RichTextItemRequestMentionCase2Page;
 }
-export const RichTextItemRequestMentionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    page: RichTextItemRequestMentionCase2Page,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase2",
-}) as any as S.Schema<RichTextItemRequestMentionCase2>;
-
 /** Details of the database mention. */
 export interface RichTextItemRequestMentionCase3Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemRequestMentionCase3Database =
-  RichTextItemRequestMentionCase2Page as any as S.Schema<RichTextItemRequestMentionCase3Database>;
-
 export interface RichTextItemRequestMentionCase3 {
   /** Always `database` */
   type?: string;
   /** Details of the database mention. */
   database: RichTextItemRequestMentionCase3Database;
 }
-export const RichTextItemRequestMentionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    database: RichTextItemRequestMentionCase3Database,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase3",
-}) as any as S.Schema<RichTextItemRequestMentionCase3>;
-
 /** The date of the template mention. */
 export type TemplateMentionDateTemplateMentionRequestTemplateMentionDate = "today" | "now";
-export const TemplateMentionDateTemplateMentionRequestTemplateMentionDate = S.String;
-
 export interface TemplateMentionDateTemplateMentionRequest {
   /** Always `template_mention_date` */
   type?: string;
@@ -228,51 +164,21 @@ export interface TemplateMentionDateTemplateMentionRequest {
     | TemplateMentionDateTemplateMentionRequestTemplateMentionDate
     | (string & {});
 }
-export const TemplateMentionDateTemplateMentionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    template_mention_date: TemplateMentionDateTemplateMentionRequestTemplateMentionDate,
-  }),
-).annotate({
-  identifier: "TemplateMentionDateTemplateMentionRequest",
-}) as any as S.Schema<TemplateMentionDateTemplateMentionRequest>;
-
 export interface TemplateMentionUserTemplateMentionRequest {
   /** Always `template_mention_user` */
   type?: string;
   /** The user of the template mention. */
   template_mention_user: string;
 }
-export const TemplateMentionUserTemplateMentionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    template_mention_user: S.String,
-  }),
-).annotate({
-  identifier: "TemplateMentionUserTemplateMentionRequest",
-}) as any as S.Schema<TemplateMentionUserTemplateMentionRequest>;
-
 export type TemplateMentionRequest =
   | TemplateMentionDateTemplateMentionRequest
   | TemplateMentionUserTemplateMentionRequest;
-export const TemplateMentionRequest =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TemplateMentionRequest>;
-
 export interface RichTextItemRequestMentionCase4 {
   /** Always `template_mention` */
   type?: string;
   /** Details of the template mention. */
   template_mention: TemplateMentionRequest;
 }
-export const RichTextItemRequestMentionCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    template_mention: TemplateMentionRequest,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase4",
-}) as any as S.Schema<RichTextItemRequestMentionCase4>;
-
 /** Details of the custom emoji mention. */
 export interface RichTextItemRequestMentionCase5CustomEmoji {
   /** The ID of the custom emoji. */
@@ -282,31 +188,12 @@ export interface RichTextItemRequestMentionCase5CustomEmoji {
   /** The URL of the custom emoji. */
   url?: string;
 }
-export const RichTextItemRequestMentionCase5CustomEmoji = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase5CustomEmoji",
-}) as any as S.Schema<RichTextItemRequestMentionCase5CustomEmoji>;
-
 export interface RichTextItemRequestMentionCase5 {
   /** Always `custom_emoji` */
   type?: string;
   /** Details of the custom emoji mention. */
   custom_emoji: RichTextItemRequestMentionCase5CustomEmoji;
 }
-export const RichTextItemRequestMentionCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    custom_emoji: RichTextItemRequestMentionCase5CustomEmoji,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase5",
-}) as any as S.Schema<RichTextItemRequestMentionCase5>;
-
 /** Mention objects represent an inline mention of a database, date, link preview mention, page, template mention, or user. A mention is created in the Notion UI when a user types `@` followed by the name of the reference. */
 export type RichTextItemRequestMention =
   | RichTextItemRequestMentionCase0
@@ -315,7 +202,7 @@ export type RichTextItemRequestMention =
   | RichTextItemRequestMentionCase3
   | RichTextItemRequestMentionCase4
   | RichTextItemRequestMentionCase5;
-export const RichTextItemRequestMention =
+const RichTextItemRequestMention =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemRequestMention>;
 
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
@@ -323,7 +210,7 @@ export interface RichTextItemRequestEquation {
   /** A KaTeX compatible string. */
   expression: string;
 }
-export const RichTextItemRequestEquation = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemRequestEquation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
   }),
@@ -343,7 +230,7 @@ export interface RichTextItemRequest {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemRequestEquation;
 }
-export const RichTextItemRequest = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(AnnotationRequest),
     type: S.optional(S.String),
@@ -355,19 +242,19 @@ export const RichTextItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The title of the database. */
 export type CreateDatabaseRequestTitleList = Array<RichTextItemRequest>;
-export const CreateDatabaseRequestTitleList = /*@__PURE__*/ S.Array(
+const CreateDatabaseRequestTitleList = /*@__PURE__*/ S.Array(
   RichTextItemRequest,
 ) as any as S.Schema<CreateDatabaseRequestTitleList>;
 
 /** The description of the database. */
 export type CreateDatabaseRequestDescriptionList = Array<RichTextItemRequest>;
-export const CreateDatabaseRequestDescriptionList =
+const CreateDatabaseRequestDescriptionList =
   CreateDatabaseRequestTitleList as any as S.Schema<CreateDatabaseRequestDescriptionList>;
 
 export interface PropertyConfigurationRequestNumber {
   format?: string;
 }
-export const PropertyConfigurationRequestNumber = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequestNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(S.String),
   }),
@@ -378,7 +265,7 @@ export const PropertyConfigurationRequestNumber = /*@__PURE__*/ S.suspend(() =>
 export interface PropertyConfigurationRequestFormula {
   expression?: string;
 }
-export const PropertyConfigurationRequestFormula = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequestFormula = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
   }),
@@ -398,14 +285,14 @@ export type SelectColor =
   | "purple"
   | "pink"
   | "red";
-export const SelectColor = S.String;
+const SelectColor = S.String;
 
 export interface PropertyConfigurationRequestSelectOptionsItem {
   name: string;
   color?: SelectColor | (string & {});
   description?: string | null;
 }
-export const PropertyConfigurationRequestSelectOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequestSelectOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     color: S.optional(SelectColor),
@@ -417,14 +304,14 @@ export const PropertyConfigurationRequestSelectOptionsItem = /*@__PURE__*/ S.sus
 
 export type PropertyConfigurationRequestSelectOptionsList =
   Array<PropertyConfigurationRequestSelectOptionsItem>;
-export const PropertyConfigurationRequestSelectOptionsList = /*@__PURE__*/ S.Array(
+const PropertyConfigurationRequestSelectOptionsList = /*@__PURE__*/ S.Array(
   PropertyConfigurationRequestSelectOptionsItem,
 ) as any as S.Schema<PropertyConfigurationRequestSelectOptionsList>;
 
 export interface PropertyConfigurationRequestSelect {
   options?: PropertyConfigurationRequestSelectOptionsList;
 }
-export const PropertyConfigurationRequestSelect = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequestSelect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(PropertyConfigurationRequestSelectOptionsList),
   }),
@@ -434,23 +321,17 @@ export const PropertyConfigurationRequestSelect = /*@__PURE__*/ S.suspend(() =>
 
 export type PropertyConfigurationRequestMultiSelectOptionsItem =
   PropertyConfigurationRequestSelectOptionsItem;
-export const PropertyConfigurationRequestMultiSelectOptionsItem =
-  PropertyConfigurationRequestSelectOptionsItem;
-
 export type PropertyConfigurationRequestMultiSelectOptionsList =
   Array<PropertyConfigurationRequestSelectOptionsItem>;
-export const PropertyConfigurationRequestMultiSelectOptionsList =
-  PropertyConfigurationRequestSelectOptionsList as any as S.Schema<PropertyConfigurationRequestMultiSelectOptionsList>;
-
 export interface PropertyConfigurationRequestMultiSelect {
   options?: PropertyConfigurationRequestMultiSelectOptionsList;
 }
-export const PropertyConfigurationRequestMultiSelect =
+const PropertyConfigurationRequestMultiSelect =
   PropertyConfigurationRequestSelect as any as S.Schema<PropertyConfigurationRequestMultiSelect>;
 
 /** One of: `To-do`, `In progress`, `Complete` */
 export type StatusOptionGroup = "To-do" | "In progress" | "Complete";
-export const StatusOptionGroup = S.String;
+const StatusOptionGroup = S.String;
 
 export interface StatusOptionRequest {
   name: string;
@@ -458,7 +339,7 @@ export interface StatusOptionRequest {
   description?: string | null;
   group?: StatusOptionGroup | (string & {});
 }
-export const StatusOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const StatusOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     color: S.optional(SelectColor),
@@ -468,7 +349,7 @@ export const StatusOptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatusOptionRequest" }) as any as S.Schema<StatusOptionRequest>;
 
 export type StatusOptionRequestArray = Array<StatusOptionRequest>;
-export const StatusOptionRequestArray = /*@__PURE__*/ S.Array(
+const StatusOptionRequestArray = /*@__PURE__*/ S.Array(
   StatusOptionRequest,
 ) as any as S.Schema<StatusOptionRequestArray>;
 
@@ -476,7 +357,7 @@ export interface StatusPropertyConfigRequest {
   /** The initial status options. If not provided, defaults are created. */
   options?: StatusOptionRequestArray;
 }
-export const StatusPropertyConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const StatusPropertyConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(StatusOptionRequestArray),
   }),
@@ -488,7 +369,7 @@ export interface PropertyConfigurationRequestRelationDualProperty {
   synced_property_id?: string;
   synced_property_name?: string;
 }
-export const PropertyConfigurationRequestRelationDualProperty = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequestRelationDualProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synced_property_id: S.optional(S.String),
     synced_property_name: S.optional(S.String),
@@ -504,7 +385,7 @@ export interface PropertyConfigurationRequestRelation {
   single_property?: unknown;
   dual_property?: PropertyConfigurationRequestRelationDualProperty;
 }
-export const PropertyConfigurationRequestRelation = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequestRelation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_source_id: S.String,
     type: S.optional(S.String),
@@ -540,7 +421,7 @@ export type RollupFunction =
   | "count_per_group"
   | "percent_per_group"
   | "show_original";
-export const RollupFunction = S.String;
+const RollupFunction = S.String;
 
 export interface PropertyConfigurationRequestRollup {
   /** The function to use for the rollup, e.g. count, count_values, percent_not_empty, max. */
@@ -550,7 +431,7 @@ export interface PropertyConfigurationRequestRollup {
   relation_property_id?: string;
   rollup_property_id?: string;
 }
-export const PropertyConfigurationRequestRollup = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequestRollup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: RollupFunction,
     relation_property_name: S.optional(S.String),
@@ -565,7 +446,7 @@ export const PropertyConfigurationRequestRollup = /*@__PURE__*/ S.suspend(() =>
 export interface PropertyConfigurationRequestUniqueId {
   prefix?: string | null;
 }
-export const PropertyConfigurationRequestUniqueId = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequestUniqueId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.NullOr(S.String)),
   }),
@@ -605,7 +486,7 @@ export interface PropertyConfigurationRequest {
   last_visited_time?: unknown;
   place?: unknown;
 }
-export const PropertyConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PropertyConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     type: S.optional(S.String),
@@ -644,7 +525,7 @@ export const PropertyConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export type InitialDataSourceRequestPropertiesMap = {
   [key: string]: PropertyConfigurationRequest | undefined;
 };
-export const InitialDataSourceRequestPropertiesMap = /*@__PURE__*/ S.Record(
+const InitialDataSourceRequestPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   PropertyConfigurationRequest,
 ) as any as S.Schema<InitialDataSourceRequestPropertiesMap>;
@@ -653,7 +534,7 @@ export interface InitialDataSourceRequest {
   /** Property schema for the initial data source, if you'd like to create one. */
   properties?: InitialDataSourceRequestPropertiesMap;
 }
-export const InitialDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const InitialDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(InitialDataSourceRequestPropertiesMap),
   }),
@@ -661,72 +542,38 @@ export const InitialDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Create a typed database with Notion's canonical schema. One of `tasks`, `projects`, or `skills`. Cannot be combined with `initial_data_source`. When `title` is omitted, the database is named after the type. */
 export type CreateDatabaseRequestDatabaseType = "tasks" | "projects" | "skills";
-export const CreateDatabaseRequestDatabaseType = S.String;
+const CreateDatabaseRequestDatabaseType = S.String;
 
 export interface FileUploadPageIconRequestFileUpload {
   /** ID of a FileUpload object that has the status `uploaded`. */
   id: string;
 }
-export const FileUploadPageIconRequestFileUpload =
-  RichTextItemRequestMentionCase2Page as any as S.Schema<FileUploadPageIconRequestFileUpload>;
-
 export interface FileUploadPageIconRequest {
   /** Always `file_upload` */
   type?: string;
   file_upload: FileUploadPageIconRequestFileUpload;
 }
-export const FileUploadPageIconRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    file_upload: FileUploadPageIconRequestFileUpload,
-  }),
-).annotate({
-  identifier: "FileUploadPageIconRequest",
-}) as any as S.Schema<FileUploadPageIconRequest>;
-
 export interface EmojiPageIconRequest {
   /** Always `emoji` */
   type?: string;
   /** An emoji character. */
   emoji: string;
 }
-export const EmojiPageIconRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    emoji: S.String,
-  }),
-).annotate({ identifier: "EmojiPageIconRequest" }) as any as S.Schema<EmojiPageIconRequest>;
-
 export interface ExternalPageIconRequestExternal {
   /** The URL of the external file. */
   url: string;
 }
-export const ExternalPageIconRequestExternal =
-  RichTextItemRequestTextLink as any as S.Schema<ExternalPageIconRequestExternal>;
-
 export interface ExternalPageIconRequest {
   /** Always `external` */
   type?: string;
   external: ExternalPageIconRequestExternal;
 }
-export const ExternalPageIconRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    external: ExternalPageIconRequestExternal,
-  }),
-).annotate({ identifier: "ExternalPageIconRequest" }) as any as S.Schema<ExternalPageIconRequest>;
-
 export type CustomEmojiPageIconRequestCustomEmoji = RichTextItemRequestMentionCase5CustomEmoji;
-export const CustomEmojiPageIconRequestCustomEmoji = RichTextItemRequestMentionCase5CustomEmoji;
-
 export interface CustomEmojiPageIconRequest {
   /** Always `custom_emoji` */
   type?: string;
   custom_emoji: RichTextItemRequestMentionCase5CustomEmoji;
 }
-export const CustomEmojiPageIconRequest =
-  RichTextItemRequestMentionCase5 as any as S.Schema<CustomEmojiPageIconRequest>;
-
 /** One of: `gray`, `lightgray`, `brown`, `yellow`, `orange`, `green`, `blue`, `purple`, `pink`, `red` */
 export type NoticonColor =
   | "gray"
@@ -739,8 +586,6 @@ export type NoticonColor =
   | "purple"
   | "pink"
   | "red";
-export const NoticonColor = S.String;
-
 /** A Notion native icon, specified by name and optional color. */
 export interface IconPageIconRequestIcon {
   /** The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names. */
@@ -748,62 +593,38 @@ export interface IconPageIconRequestIcon {
   /** The color variant of the icon. Defaults to gray if not specified. Valid values: gray, lightgray, brown, yellow, orange, green, blue, purple, pink, red. */
   color?: NoticonColor | (string & {});
 }
-export const IconPageIconRequestIcon = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    color: S.optional(NoticonColor),
-  }),
-).annotate({ identifier: "IconPageIconRequestIcon" }) as any as S.Schema<IconPageIconRequestIcon>;
-
 export interface IconPageIconRequest {
   /** Always `icon` */
   type?: string;
   /** A Notion native icon, specified by name and optional color. */
   icon: IconPageIconRequestIcon;
 }
-export const IconPageIconRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    icon: IconPageIconRequestIcon,
-  }),
-).annotate({ identifier: "IconPageIconRequest" }) as any as S.Schema<IconPageIconRequest>;
-
 export type PageIconRequest =
   | FileUploadPageIconRequest
   | EmojiPageIconRequest
   | ExternalPageIconRequest
   | CustomEmojiPageIconRequest
   | IconPageIconRequest;
-export const PageIconRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageIconRequest>;
+const PageIconRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageIconRequest>;
 
 /** The file upload for the cover. */
 export type FileUploadPageCoverRequestFileUpload = FileUploadPageIconRequestFileUpload;
-export const FileUploadPageCoverRequestFileUpload = FileUploadPageIconRequestFileUpload;
-
 export interface FileUploadPageCoverRequest {
   /** Always `file_upload` */
   type?: string;
   /** The file upload for the cover. */
   file_upload: FileUploadPageIconRequestFileUpload;
 }
-export const FileUploadPageCoverRequest =
-  FileUploadPageIconRequest as any as S.Schema<FileUploadPageCoverRequest>;
-
 /** External URL for the cover. */
 export type ExternalPageCoverRequestExternal = ExternalPageIconRequestExternal;
-export const ExternalPageCoverRequestExternal = ExternalPageIconRequestExternal;
-
 export interface ExternalPageCoverRequest {
   /** Always `external` */
   type?: string;
   /** External URL for the cover. */
   external: ExternalPageIconRequestExternal;
 }
-export const ExternalPageCoverRequest =
-  ExternalPageIconRequest as any as S.Schema<ExternalPageCoverRequest>;
-
 export type PageCoverRequest = FileUploadPageCoverRequest | ExternalPageCoverRequest;
-export const PageCoverRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageCoverRequest>;
+const PageCoverRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageCoverRequest>;
 
 export interface CreateDatabaseRequest {
   /** The parent page or workspace where the database will be created. */
@@ -823,7 +644,7 @@ export interface CreateDatabaseRequest {
   /** The cover image for the database. */
   cover?: PageCoverRequest;
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: CreateDatabaseRequestParent,
     title: S.optional(CreateDatabaseRequestTitleList),
@@ -842,15 +663,6 @@ export interface PartialDatabaseObjectResponse {
   /** The ID of the database. */
   id: string;
 }
-export const PartialDatabaseObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PartialDatabaseObjectResponse",
-}) as any as S.Schema<PartialDatabaseObjectResponse>;
-
 export interface AnnotationResponse {
   bold: boolean;
   italic: boolean;
@@ -859,20 +671,7 @@ export interface AnnotationResponse {
   code: boolean;
   color: ApiColor;
 }
-export const AnnotationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bold: S.Boolean,
-    italic: S.Boolean,
-    strikethrough: S.Boolean,
-    underline: S.Boolean,
-    code: S.Boolean,
-    color: ApiColor,
-  }),
-).annotate({ identifier: "AnnotationResponse" }) as any as S.Schema<AnnotationResponse>;
-
 export type RichTextItemResponseTextLink = RichTextItemRequestTextLink;
-export const RichTextItemResponseTextLink = RichTextItemRequestTextLink;
-
 /** If a rich text object's type value is `text`, then the corresponding text field contains an object including the text content and any inline link. */
 export interface RichTextItemResponseText {
   /** The actual text content of the text. */
@@ -880,27 +679,11 @@ export interface RichTextItemResponseText {
   /** An object with information about any inline link in this text, if included. */
   link: RichTextItemRequestTextLink | null;
 }
-export const RichTextItemResponseText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    link: S.NullOr(RichTextItemRequestTextLink),
-  }),
-).annotate({ identifier: "RichTextItemResponseText" }) as any as S.Schema<RichTextItemResponseText>;
-
 export interface PartialUserObjectResponse {
   id: string;
   /** Always `user` */
   object: string;
 }
-export const PartialUserObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-  }),
-).annotate({
-  identifier: "PartialUserObjectResponse",
-}) as any as S.Schema<PartialUserObjectResponse>;
-
 /** Details about the person, when the `type` of the user is `person`. */
 export interface UserObjectResponsePerson {
   /** The email of the person. */
@@ -908,17 +691,8 @@ export interface UserObjectResponsePerson {
   /** Whether the person's email is verified. */
   email_verified?: boolean;
 }
-export const UserObjectResponsePerson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    email_verified: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UserObjectResponsePerson" }) as any as S.Schema<UserObjectResponsePerson>;
-
 /** The person info of the user. */
 export type BotInfoResponseOwnerCase0UserCase0Person = UserObjectResponsePerson;
-export const BotInfoResponseOwnerCase0UserCase0Person = UserObjectResponsePerson;
-
 export interface BotInfoResponseOwnerCase0UserCase0 {
   /** The ID of the user. */
   id: string;
@@ -933,74 +707,29 @@ export interface BotInfoResponseOwnerCase0UserCase0 {
   /** The person info of the user. */
   person: UserObjectResponsePerson;
 }
-export const BotInfoResponseOwnerCase0UserCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-    name: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-    type: S.String,
-    person: UserObjectResponsePerson,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase0UserCase0",
-}) as any as S.Schema<BotInfoResponseOwnerCase0UserCase0>;
-
 /** Details about the owner of the bot, when the `type` of the owner is `user`. This means the bot is for a integration. */
 export type BotInfoResponseOwnerCase0User =
   | BotInfoResponseOwnerCase0UserCase0
   | PartialUserObjectResponse;
-export const BotInfoResponseOwnerCase0User =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BotInfoResponseOwnerCase0User>;
-
 export interface BotInfoResponseOwnerCase0 {
   /** Always `user` */
   type: string;
   /** Details about the owner of the bot, when the `type` of the owner is `user`. This means the bot is for a integration. */
   user: BotInfoResponseOwnerCase0User;
 }
-export const BotInfoResponseOwnerCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    user: BotInfoResponseOwnerCase0User,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase0",
-}) as any as S.Schema<BotInfoResponseOwnerCase0>;
-
 export interface BotInfoResponseOwnerCase1 {
   /** Always `workspace` */
   type: string;
   /** Details about the owner of the bot, when the `type` of the owner is `workspace`. This means the bot is for an internal integration. */
   workspace: boolean;
 }
-export const BotInfoResponseOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    workspace: S.Boolean,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase1",
-}) as any as S.Schema<BotInfoResponseOwnerCase1>;
-
 /** Details about the owner of the bot. */
 export type BotInfoResponseOwner = BotInfoResponseOwnerCase0 | BotInfoResponseOwnerCase1;
-export const BotInfoResponseOwner =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BotInfoResponseOwner>;
-
 /** Limits and restrictions that apply to the bot's workspace */
 export interface BotInfoResponseWorkspaceLimits {
   /** The maximum allowable size of a file upload, in bytes */
   max_file_upload_size_in_bytes: number;
 }
-export const BotInfoResponseWorkspaceLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_file_upload_size_in_bytes: S.Number,
-  }),
-).annotate({
-  identifier: "BotInfoResponseWorkspaceLimits",
-}) as any as S.Schema<BotInfoResponseWorkspaceLimits>;
-
 export interface BotInfoResponse {
   /** Details about the owner of the bot. */
   owner: BotInfoResponseOwner;
@@ -1011,20 +740,8 @@ export interface BotInfoResponse {
   /** The name of the bot's workspace. */
   workspace_name: string | null;
 }
-export const BotInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: BotInfoResponseOwner,
-    workspace_id: S.String,
-    workspace_limits: BotInfoResponseWorkspaceLimits,
-    workspace_name: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "BotInfoResponse" }) as any as S.Schema<BotInfoResponse>;
-
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type UserObjectResponseBot = unknown | BotInfoResponse;
-export const UserObjectResponseBot =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserObjectResponseBot>;
-
 export interface UserObjectResponse {
   /** The ID of the user. */
   id: string;
@@ -1041,36 +758,13 @@ export interface UserObjectResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: UserObjectResponseBot;
 }
-export const UserObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-    name: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-    type: S.optional(S.String),
-    person: S.optional(UserObjectResponsePerson),
-    bot: S.optional(UserObjectResponseBot),
-  }),
-).annotate({ identifier: "UserObjectResponse" }) as any as S.Schema<UserObjectResponse>;
-
 export type UserValueResponse = PartialUserObjectResponse | UserObjectResponse;
-export const UserValueResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<UserValueResponse>;
-
 export interface RichTextItemResponseMentionCase0 {
   /** Always `user` */
   type: string;
   /** Details of the user mention. */
   user: UserValueResponse;
 }
-export const RichTextItemResponseMentionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    user: UserValueResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase0",
-}) as any as S.Schema<RichTextItemResponseMentionCase0>;
-
 export interface DateResponse {
   /** The start date of the date object. */
   start: string;
@@ -1079,51 +773,22 @@ export interface DateResponse {
   /** The time zone of the date object. */
   time_zone: string | null;
 }
-export const DateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.String,
-    end: S.NullOr(S.String),
-    time_zone: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "DateResponse" }) as any as S.Schema<DateResponse>;
-
 export interface RichTextItemResponseMentionCase1 {
   /** Always `date` */
   type: string;
   /** Details of the date mention. */
   date: DateResponse;
 }
-export const RichTextItemResponseMentionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    date: DateResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase1",
-}) as any as S.Schema<RichTextItemResponseMentionCase1>;
-
 export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse =
-  RichTextItemRequestTextLink as any as S.Schema<LinkPreviewMentionResponse>;
-
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
   type: string;
   /** Details of the link preview mention. */
   link_preview: LinkPreviewMentionResponse;
 }
-export const RichTextItemResponseMentionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    link_preview: LinkPreviewMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase2",
-}) as any as S.Schema<RichTextItemResponseMentionCase2>;
-
 export interface LinkMentionResponse {
   /** The href of the link mention. */
   href: string;
@@ -1148,130 +813,51 @@ export interface LinkMentionResponse {
   /** The top padding of the link preview iframe. */
   padding_top?: number;
 }
-export const LinkMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    link_author: S.optional(S.String),
-    link_provider: S.optional(S.String),
-    thumbnail_url: S.optional(S.String),
-    icon_url: S.optional(S.String),
-    iframe_url: S.optional(S.String),
-    height: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    padding_top: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LinkMentionResponse" }) as any as S.Schema<LinkMentionResponse>;
-
 export interface RichTextItemResponseMentionCase3 {
   /** Always `link_mention` */
   type: string;
   /** Details of the link mention. */
   link_mention: LinkMentionResponse;
 }
-export const RichTextItemResponseMentionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    link_mention: LinkMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase3",
-}) as any as S.Schema<RichTextItemResponseMentionCase3>;
-
 /** Details of the page mention. */
 export type RichTextItemResponseMentionCase4Page = RichTextItemRequestMentionCase2Page;
-export const RichTextItemResponseMentionCase4Page = RichTextItemRequestMentionCase2Page;
-
 export interface RichTextItemResponseMentionCase4 {
   /** Always `page` */
   type: string;
   /** Details of the page mention. */
   page: RichTextItemRequestMentionCase2Page;
 }
-export const RichTextItemResponseMentionCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    page: RichTextItemRequestMentionCase2Page,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase4",
-}) as any as S.Schema<RichTextItemResponseMentionCase4>;
-
 /** Details of the database mention. */
 export type RichTextItemResponseMentionCase5Database = RichTextItemRequestMentionCase3Database;
-export const RichTextItemResponseMentionCase5Database = RichTextItemRequestMentionCase3Database;
-
 export interface RichTextItemResponseMentionCase5 {
   /** Always `database` */
   type: string;
   /** Details of the database mention. */
   database: RichTextItemRequestMentionCase3Database;
 }
-export const RichTextItemResponseMentionCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    database: RichTextItemRequestMentionCase3Database,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase5",
-}) as any as S.Schema<RichTextItemResponseMentionCase5>;
-
 /** The date of the template mention. */
 export type TemplateMentionDateTemplateMentionResponseTemplateMentionDate = "today" | "now";
-export const TemplateMentionDateTemplateMentionResponseTemplateMentionDate = S.String;
-
 export interface TemplateMentionDateTemplateMentionResponse {
   /** Always `template_mention_date` */
   type: string;
   /** The date of the template mention. */
   template_mention_date: TemplateMentionDateTemplateMentionResponseTemplateMentionDate;
 }
-export const TemplateMentionDateTemplateMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention_date: TemplateMentionDateTemplateMentionResponseTemplateMentionDate,
-  }),
-).annotate({
-  identifier: "TemplateMentionDateTemplateMentionResponse",
-}) as any as S.Schema<TemplateMentionDateTemplateMentionResponse>;
-
 export interface TemplateMentionUserTemplateMentionResponse {
   /** Always `template_mention_user` */
   type: string;
   /** The user of the template mention. */
   template_mention_user: string;
 }
-export const TemplateMentionUserTemplateMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention_user: S.String,
-  }),
-).annotate({
-  identifier: "TemplateMentionUserTemplateMentionResponse",
-}) as any as S.Schema<TemplateMentionUserTemplateMentionResponse>;
-
 export type TemplateMentionResponse =
   | TemplateMentionDateTemplateMentionResponse
   | TemplateMentionUserTemplateMentionResponse;
-export const TemplateMentionResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TemplateMentionResponse>;
-
 export interface RichTextItemResponseMentionCase6 {
   /** Always `template_mention` */
   type: string;
   /** Details of the template mention. */
   template_mention: TemplateMentionResponse;
 }
-export const RichTextItemResponseMentionCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention: TemplateMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase6",
-}) as any as S.Schema<RichTextItemResponseMentionCase6>;
-
 export interface CustomEmojiResponse {
   /** The ID of the custom emoji. */
   id: string;
@@ -1280,29 +866,12 @@ export interface CustomEmojiResponse {
   /** The URL of the custom emoji. */
   url: string;
 }
-export const CustomEmojiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    url: S.String,
-  }),
-).annotate({ identifier: "CustomEmojiResponse" }) as any as S.Schema<CustomEmojiResponse>;
-
 export interface RichTextItemResponseMentionCase7 {
   /** Always `custom_emoji` */
   type: string;
   /** Details of the custom emoji mention. */
   custom_emoji: CustomEmojiResponse;
 }
-export const RichTextItemResponseMentionCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    custom_emoji: CustomEmojiResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase7",
-}) as any as S.Schema<RichTextItemResponseMentionCase7>;
-
 /** Mention objects represent an inline mention of a database, date, link preview mention, page, template mention, or user. A mention is created in the Notion UI when a user types `@` followed by the name of the reference. */
 export type RichTextItemResponseMention =
   | RichTextItemResponseMentionCase0
@@ -1313,13 +882,8 @@ export type RichTextItemResponseMention =
   | RichTextItemResponseMentionCase5
   | RichTextItemResponseMentionCase6
   | RichTextItemResponseMentionCase7;
-export const RichTextItemResponseMention =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemResponseMention>;
-
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
 export type RichTextItemResponseEquation = RichTextItemRequestEquation;
-export const RichTextItemResponseEquation = RichTextItemRequestEquation;
-
 export interface RichTextItemResponse {
   /** The plain text content of the rich text object, without any styling. */
   plain_text: string | Redacted.Redacted<string>;
@@ -1336,89 +900,39 @@ export interface RichTextItemResponse {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemRequestEquation;
 }
-export const RichTextItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    plain_text: S.String.pipe(T.SensitiveValue({})),
-    href: S.NullOr(S.String),
-    annotations: AnnotationResponse,
-    type: S.optional(S.String),
-    text: S.optional(RichTextItemResponseText),
-    mention: S.optional(RichTextItemResponseMention),
-    equation: S.optional(RichTextItemRequestEquation),
-  }),
-).annotate({ identifier: "RichTextItemResponse" }) as any as S.Schema<RichTextItemResponse>;
-
 /** The title of the database. */
 export type DatabaseObjectResponseTitleList = Array<RichTextItemResponse>;
-export const DatabaseObjectResponseTitleList = /*@__PURE__*/ S.Array(
-  RichTextItemResponse,
-) as any as S.Schema<DatabaseObjectResponseTitleList>;
-
 /** The description of the database. */
 export type DatabaseObjectResponseDescriptionList = Array<RichTextItemResponse>;
-export const DatabaseObjectResponseDescriptionList =
-  DatabaseObjectResponseTitleList as any as S.Schema<DatabaseObjectResponseDescriptionList>;
-
 export interface PageIdParentForBlockBasedObjectResponse {
   /** The parent type. */
   type: string;
   /** The ID of the parent page. */
   page_id: string;
 }
-export const PageIdParentForBlockBasedObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    page_id: S.String,
-  }),
-).annotate({
-  identifier: "PageIdParentForBlockBasedObjectResponse",
-}) as any as S.Schema<PageIdParentForBlockBasedObjectResponse>;
-
 export interface WorkspaceParentForBlockBasedObjectResponse {
   /** The parent type. */
   type: string;
   /** Always true for workspace parent. */
   workspace: boolean;
 }
-export const WorkspaceParentForBlockBasedObjectResponse =
-  BotInfoResponseOwnerCase1 as any as S.Schema<WorkspaceParentForBlockBasedObjectResponse>;
-
 export interface DatabaseParentResponse {
   /** The parent type. */
   type: string;
   /** The ID of the parent database. */
   database_id: string;
 }
-export const DatabaseParentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    database_id: S.String,
-  }),
-).annotate({ identifier: "DatabaseParentResponse" }) as any as S.Schema<DatabaseParentResponse>;
-
 export interface BlockIdParentForBlockBasedObjectResponse {
   /** The parent type. */
   type: string;
   /** The ID of the parent block. */
   block_id: string;
 }
-export const BlockIdParentForBlockBasedObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    block_id: S.String,
-  }),
-).annotate({
-  identifier: "BlockIdParentForBlockBasedObjectResponse",
-}) as any as S.Schema<BlockIdParentForBlockBasedObjectResponse>;
-
 export type ParentOfDatabaseResponse =
   | PageIdParentForBlockBasedObjectResponse
   | WorkspaceParentForBlockBasedObjectResponse
   | DatabaseParentResponse
   | BlockIdParentForBlockBasedObjectResponse;
-export const ParentOfDatabaseResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ParentOfDatabaseResponse>;
-
 /** One of: `tasks`, `projects`, `sprints`, `docs`, `wiki`, `meetings`, `meeting_notes`, `skills`, `github_prs` */
 export type DatabaseObjectResponseDatabaseType =
   | "tasks"
@@ -1430,162 +944,82 @@ export type DatabaseObjectResponseDatabaseType =
   | "meeting_notes"
   | "skills"
   | "github_prs";
-export const DatabaseObjectResponseDatabaseType = S.String;
-
 export interface DataSourceReferenceResponse {
   /** The ID of the data source. */
   id: string;
   /** The name of the data source. */
   name: string;
 }
-export const DataSourceReferenceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "DataSourceReferenceResponse",
-}) as any as S.Schema<DataSourceReferenceResponse>;
-
 /** The data sources of the database. */
 export type DatabaseObjectResponseDataSourcesList = Array<DataSourceReferenceResponse>;
-export const DatabaseObjectResponseDataSourcesList = /*@__PURE__*/ S.Array(
-  DataSourceReferenceResponse,
-) as any as S.Schema<DatabaseObjectResponseDataSourcesList>;
-
 export interface EmojiPageIconResponse {
   /** Type of icon. In this case, an emoji. */
   type: string;
   /** The emoji character used as the icon. */
   emoji: string;
 }
-export const EmojiPageIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    emoji: S.String,
-  }),
-).annotate({ identifier: "EmojiPageIconResponse" }) as any as S.Schema<EmojiPageIconResponse>;
-
 export interface InternalFileResponse {
   /** The URL of the file. */
   url: string;
   /** The time when the URL will expire. */
   expiry_time: string;
 }
-export const InternalFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    expiry_time: S.String,
-  }),
-).annotate({ identifier: "InternalFileResponse" }) as any as S.Schema<InternalFileResponse>;
-
 export interface FilePageIconResponse {
   /** Type of icon. In this case, a file. */
   type: string;
   /** The file URL for the icon. */
   file: InternalFileResponse;
 }
-export const FilePageIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    file: InternalFileResponse,
-  }),
-).annotate({ identifier: "FilePageIconResponse" }) as any as S.Schema<FilePageIconResponse>;
-
 /** The external URL for the icon. */
 export interface ExternalPageIconResponseExternal {
   /** The URL of the external file or resource. */
   url: string;
 }
-export const ExternalPageIconResponseExternal =
-  RichTextItemRequestTextLink as any as S.Schema<ExternalPageIconResponseExternal>;
-
 export interface ExternalPageIconResponse {
   /** Type of icon. In this case, an external URL. */
   type: string;
   /** The external URL for the icon. */
   external: ExternalPageIconResponseExternal;
 }
-export const ExternalPageIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    external: ExternalPageIconResponseExternal,
-  }),
-).annotate({ identifier: "ExternalPageIconResponse" }) as any as S.Schema<ExternalPageIconResponse>;
-
 export interface CustomEmojiPageIconResponse {
   /** Type of icon. In this case, a custom emoji. */
   type: string;
   /** The custom emoji details for the icon. */
   custom_emoji: CustomEmojiResponse;
 }
-export const CustomEmojiPageIconResponse =
-  RichTextItemResponseMentionCase7 as any as S.Schema<CustomEmojiPageIconResponse>;
-
 export interface NoticonIconResponse {
   /** The name of the Notion icon (e.g. pizza, meeting, home). See the Notion icon picker for valid names. */
   name: string;
   /** The color variant of the icon. Valid values: gray, lightgray, brown, yellow, orange, green, blue, purple, pink, red. */
   color: NoticonColor;
 }
-export const NoticonIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    color: NoticonColor,
-  }),
-).annotate({ identifier: "NoticonIconResponse" }) as any as S.Schema<NoticonIconResponse>;
-
 export interface IconPageIconResponse {
   /** Type of icon. In this case, a Notion native icon. */
   type: string;
   /** The Notion native icon, specified by name and color. */
   icon: NoticonIconResponse;
 }
-export const IconPageIconResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    icon: NoticonIconResponse,
-  }),
-).annotate({ identifier: "IconPageIconResponse" }) as any as S.Schema<IconPageIconResponse>;
-
 export type PageIconResponse =
   | EmojiPageIconResponse
   | FilePageIconResponse
   | ExternalPageIconResponse
   | CustomEmojiPageIconResponse
   | IconPageIconResponse;
-export const PageIconResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<PageIconResponse>;
-
 export interface FilePageCoverResponse {
   /** Type of cover. In this case, a file. */
   type: string;
   /** The file URL for the cover. */
   file: InternalFileResponse;
 }
-export const FilePageCoverResponse = FilePageIconResponse as any as S.Schema<FilePageCoverResponse>;
-
 /** The external URL for the cover. */
 export type ExternalPageCoverResponseExternal = ExternalPageIconResponseExternal;
-export const ExternalPageCoverResponseExternal = ExternalPageIconResponseExternal;
-
 export interface ExternalPageCoverResponse {
   /** Type of cover. In this case, an external URL. */
   type: string;
   /** The external URL for the cover. */
   external: ExternalPageIconResponseExternal;
 }
-export const ExternalPageCoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    external: ExternalPageIconResponseExternal,
-  }),
-).annotate({
-  identifier: "ExternalPageCoverResponse",
-}) as any as S.Schema<ExternalPageCoverResponse>;
-
 export type PageCoverResponse = FilePageCoverResponse | ExternalPageCoverResponse;
-export const PageCoverResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<PageCoverResponse>;
-
 export interface DatabaseObjectResponse {
   /** The database object type name. */
   object: string;
@@ -1620,58 +1054,34 @@ export interface DatabaseObjectResponse {
   /** The public URL of the database if it is publicly accessible. */
   public_url: string | null;
 }
-export const DatabaseObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-    title: DatabaseObjectResponseTitleList,
-    description: DatabaseObjectResponseDescriptionList,
-    parent: ParentOfDatabaseResponse,
-    is_inline: S.Boolean,
-    database_type: S.NullOr(DatabaseObjectResponseDatabaseType),
-    in_trash: S.Boolean,
-    is_locked: S.Boolean,
-    created_time: S.String,
-    last_edited_time: S.String,
-    data_sources: DatabaseObjectResponseDataSourcesList,
-    icon: S.NullOr(PageIconResponse),
-    cover: S.NullOr(PageCoverResponse),
-    url: S.String,
-    public_url: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "DatabaseObjectResponse" }) as any as S.Schema<DatabaseObjectResponse>;
-
 export type CreateDatabaseResponseBody = PartialDatabaseObjectResponse | DatabaseObjectResponse;
-export const CreateDatabaseResponseBody =
+const CreateDatabaseResponseBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateDatabaseResponseBody>;
 
 export type CreateDatabaseResponse = CreateDatabaseResponseBody;
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   CreateDatabaseResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "CreateDatabaseResponse" }) as any as S.Schema<CreateDatabaseResponse>;
 
 export interface GetDatabaseRequest {
   database_id: string;
 }
-export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/databases/{database_id}", code: 200 })),
 ).annotate({ identifier: "GetDatabaseRequest" }) as any as S.Schema<GetDatabaseRequest>;
 
 export type GetDatabaseResponseBody = PartialDatabaseObjectResponse | DatabaseObjectResponse;
-export const GetDatabaseResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetDatabaseResponseBody>;
+const GetDatabaseResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetDatabaseResponseBody>;
 
 export type GetDatabaseResponse = GetDatabaseResponseBody;
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   GetDatabaseResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetDatabaseResponse" }) as any as S.Schema<GetDatabaseResponse>;
 
 /** The type of parent. */
 export type UpdateDatabaseRequestParentType = "page_id" | "workspace";
-export const UpdateDatabaseRequestParentType = S.String;
-
 /** The parent page or workspace to move the database to. If not provided, the database will not be moved. */
 export interface UpdateDatabaseRequestParent {
   /** The type of parent. */
@@ -1680,17 +1090,17 @@ export interface UpdateDatabaseRequestParent {
   /** Always `true` */
   workspace?: boolean;
 }
-export const UpdateDatabaseRequestParent =
+const UpdateDatabaseRequestParent =
   CreateDatabaseRequestParent as any as S.Schema<UpdateDatabaseRequestParent>;
 
 /** The updated title of the database, if any. If not provided, the title will not be updated. */
 export type UpdateDatabaseRequestTitleList = Array<RichTextItemRequest>;
-export const UpdateDatabaseRequestTitleList =
+const UpdateDatabaseRequestTitleList =
   CreateDatabaseRequestTitleList as any as S.Schema<UpdateDatabaseRequestTitleList>;
 
 /** The updated description of the database, if any. If not provided, the description will not be updated. */
 export type UpdateDatabaseRequestDescriptionList = Array<RichTextItemRequest>;
-export const UpdateDatabaseRequestDescriptionList =
+const UpdateDatabaseRequestDescriptionList =
   CreateDatabaseRequestTitleList as any as S.Schema<UpdateDatabaseRequestDescriptionList>;
 
 export interface UpdateDatabaseRequest {
@@ -1712,7 +1122,7 @@ export interface UpdateDatabaseRequest {
   /** Whether the database should be locked from editing in the Notion app UI. If not provided, the locked state will not be updated. */
   is_locked?: boolean;
 }
-export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database_id: S.String.pipe(T.Label()),
     parent: S.optional(UpdateDatabaseRequestParent),
@@ -1727,11 +1137,11 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDatabaseRequest" }) as any as S.Schema<UpdateDatabaseRequest>;
 
 export type UpdateDatabaseResponseBody = PartialDatabaseObjectResponse | DatabaseObjectResponse;
-export const UpdateDatabaseResponseBody =
+const UpdateDatabaseResponseBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateDatabaseResponseBody>;
 
 export type UpdateDatabaseResponse = UpdateDatabaseResponseBody;
-export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateDatabaseResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UpdateDatabaseResponse" }) as any as S.Schema<UpdateDatabaseResponse>;
 

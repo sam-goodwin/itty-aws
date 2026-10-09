@@ -39,7 +39,7 @@ export interface GetSitesRequest {
   /** Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}` */
   name: string;
 }
-export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -52,18 +52,18 @@ export const GetSitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSitesRequest" }) as any as S.Schema<GetSitesRequest>;
 
 export type PlatformSummaryRegionItemEnum = "REGION_UNKNOWN" | "REGION_A" | "REGION_B" | "REGION_C";
-export const PlatformSummaryRegionItemEnum = S.String;
+const PlatformSummaryRegionItemEnum = S.String;
 
 export type PlatformSummaryRegionItemEnumList = Array<PlatformSummaryRegionItemEnum>;
-export const PlatformSummaryRegionItemEnumList = /*@__PURE__*/ S.Array(
+const PlatformSummaryRegionItemEnumList = /*@__PURE__*/ S.Array(
   PlatformSummaryRegionItemEnum,
 ) as any as S.Schema<PlatformSummaryRegionItemEnumList>;
 
 export type PlatformSummaryFilterStatusEnum = "UNKNOWN" | "ON" | "OFF" | "PAUSED" | "PENDING";
-export const PlatformSummaryFilterStatusEnum = S.String;
+const PlatformSummaryFilterStatusEnum = S.String;
 
 export type PlatformSummaryBetterAdsStatusEnum = "UNKNOWN" | "PASSING" | "WARNING" | "FAILING";
-export const PlatformSummaryBetterAdsStatusEnum = S.String;
+const PlatformSummaryBetterAdsStatusEnum = S.String;
 
 /** A site's Ad Experience Report summary on a single platform. */
 export interface PlatformSummary {
@@ -82,7 +82,7 @@ export interface PlatformSummary {
   /** The time at which the site's status last changed on this platform. */
   lastChangeTime?: string;
 }
-export const PlatformSummary = /*@__PURE__*/ S.suspend(() =>
+const PlatformSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     underReview: S.optional(S.Boolean),
     region: S.optional(PlatformSummaryRegionItemEnumList),
@@ -103,7 +103,7 @@ export interface SiteSummaryResponse {
   /** The name of the reviewed site, e.g. `google.com`. */
   reviewedSite?: string;
 }
-export const SiteSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const SiteSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mobileSummary: S.optional(PlatformSummary),
     desktopSummary: S.optional(PlatformSummary),
@@ -112,7 +112,7 @@ export const SiteSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteSummaryResponse" }) as any as S.Schema<SiteSummaryResponse>;
 
 export interface ListViolatingSitesRequest {}
-export const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -125,7 +125,7 @@ export const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListViolatingSitesRequest>;
 
 export type SiteSummaryResponseList = Array<SiteSummaryResponse>;
-export const SiteSummaryResponseList = /*@__PURE__*/ S.Array(
+const SiteSummaryResponseList = /*@__PURE__*/ S.Array(
   SiteSummaryResponse,
 ) as any as S.Schema<SiteSummaryResponseList>;
 
@@ -134,7 +134,7 @@ export interface ViolatingSitesResponse {
   /** The list of violating sites. */
   violatingSites?: SiteSummaryResponseList;
 }
-export const ViolatingSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ViolatingSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     violatingSites: S.optional(SiteSummaryResponseList),
   }),

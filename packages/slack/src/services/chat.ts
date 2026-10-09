@@ -11,7 +11,7 @@ export type { SlackOpError, SlackOpContext };
 
 /** Array of streaming chunks. */
 export type AppendStreamRequestChunksList = Array<unknown>;
-export const AppendStreamRequestChunksList = /*@__PURE__*/ S.Array(
+const AppendStreamRequestChunksList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AppendStreamRequestChunksList>;
 
@@ -25,7 +25,7 @@ export interface AppendStreamRequest {
   /** Accepts message text formatted in markdown. Limit this field to 12,000 characters. This text is what will be appended to the message received so far. */
   markdown_text?: string;
 }
-export const AppendStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const AppendStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     chunks: S.optional(AppendStreamRequestChunksList),
@@ -40,7 +40,7 @@ export interface AppendStreamResponse {
   channel: string;
   ts: string;
 }
-export const AppendStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const AppendStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.String,
@@ -50,7 +50,7 @@ export const AppendStreamResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The source of the link to unfurl. The source may either be `composer`, when the link is inside the message composer, or `conversations_history`, when the link has been posted to a conversation. */
 export type ChatUnfurlRequestSource = "composer" | "conversations_history";
-export const ChatUnfurlRequestSource = S.String;
+const ChatUnfurlRequestSource = S.String;
 
 export interface ChatUnfurlRequest {
   /** Channel ID of the message. Both `channel` and `ts` must be provided together, *or* `unfurl_id` and `source` must be provided together. Required for public channels. */
@@ -72,7 +72,7 @@ export interface ChatUnfurlRequest {
   /** The source of the link to unfurl. The source may either be `composer`, when the link is inside the message composer, or `conversations_history`, when the link has been posted to a conversation. */
   source?: ChatUnfurlRequestSource | (string & {});
 }
-export const ChatUnfurlRequest = /*@__PURE__*/ S.suspend(() =>
+const ChatUnfurlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.String),
     ts: S.optional(S.String),
@@ -90,7 +90,7 @@ export interface ChatUnfurlResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ChatUnfurlResponse = /*@__PURE__*/ S.suspend(() =>
+const ChatUnfurlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -104,7 +104,7 @@ export interface DeleteChatRequest {
   /** Timestamp of the message to be deleted. */
   ts: string;
 }
-export const DeleteChatRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     as_user: S.optional(S.Boolean),
     channel: S.String,
@@ -118,7 +118,7 @@ export interface DeleteChatResponse {
   channel: string;
   ts: string;
 }
-export const DeleteChatResponse = AppendStreamResponse as any as S.Schema<DeleteChatResponse>;
+const DeleteChatResponse = AppendStreamResponse as any as S.Schema<DeleteChatResponse>;
 
 export interface DeleteScheduledMessageRequest {
   /** Pass true to delete the message as the authed user with `chat:write:user` scope. Bot users in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope. */
@@ -128,7 +128,7 @@ export interface DeleteScheduledMessageRequest {
   /** `scheduled_message_id` returned from call to chat.scheduleMessage */
   scheduled_message_id: string;
 }
-export const DeleteScheduledMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduledMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     as_user: S.optional(S.Boolean),
     channel: S.String,
@@ -142,7 +142,7 @@ export interface DeleteScheduledMessageResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeleteScheduledMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduledMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -156,7 +156,7 @@ export interface GetPermalinkRequest {
   /** A message's `ts` value, uniquely identifying it within a channel */
   message_ts: string;
 }
-export const GetPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPermalinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String.pipe(T.Query()),
     message_ts: S.String.pipe(T.Query()),
@@ -169,7 +169,7 @@ export interface GetPermalinkResponse {
   permalink: string;
   channel: string;
 }
-export const GetPermalinkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPermalinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     permalink: S.String,
@@ -191,7 +191,7 @@ export interface ListScheduledMessagesRequest {
   /** encoded team id to list channels in, required if org token is used */
   team_id?: string;
 }
-export const ListScheduledMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.String),
     cursor: S.optional(S.String),
@@ -211,7 +211,7 @@ export interface ListScheduledMessagesResponseScheduledMessagesItem {
   date_created: number;
   text?: string;
 }
-export const ListScheduledMessagesResponseScheduledMessagesItem = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledMessagesResponseScheduledMessagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     channel_id: S.String,
@@ -225,7 +225,7 @@ export const ListScheduledMessagesResponseScheduledMessagesItem = /*@__PURE__*/ 
 
 export type ListScheduledMessagesResponseScheduledMessagesList =
   Array<ListScheduledMessagesResponseScheduledMessagesItem>;
-export const ListScheduledMessagesResponseScheduledMessagesList = /*@__PURE__*/ S.Array(
+const ListScheduledMessagesResponseScheduledMessagesList = /*@__PURE__*/ S.Array(
   ListScheduledMessagesResponseScheduledMessagesItem,
 ) as any as S.Schema<ListScheduledMessagesResponseScheduledMessagesList>;
 
@@ -234,7 +234,7 @@ export interface ListScheduledMessagesResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const ListScheduledMessagesResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledMessagesResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -249,7 +249,7 @@ export interface ListScheduledMessagesResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListScheduledMessagesResponseResponseMetadata;
 }
-export const ListScheduledMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     scheduled_messages: ListScheduledMessagesResponseScheduledMessagesList,
@@ -265,7 +265,7 @@ export interface MeMessageRequest {
   /** Text of the message to send. */
   text: string;
 }
-export const MeMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const MeMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     text: S.String,
@@ -278,7 +278,7 @@ export interface MeMessageResponse {
   ts?: string;
   channel?: string;
 }
-export const MeMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const MeMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     ts: S.optional(S.String),
@@ -287,39 +287,33 @@ export const MeMessageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MeMessageResponse" }) as any as S.Schema<MeMessageResponse>;
 
 export type PostEphemeralRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
-export const PostEphemeralRequestAttachmentsCase1ItemMap = /*@__PURE__*/ S.Record(
+const PostEphemeralRequestAttachmentsCase1ItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<PostEphemeralRequestAttachmentsCase1ItemMap>;
 
 export type PostEphemeralRequestAttachmentsCase1List =
   Array<PostEphemeralRequestAttachmentsCase1ItemMap>;
-export const PostEphemeralRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
+const PostEphemeralRequestAttachmentsCase1List = /*@__PURE__*/ S.Array(
   PostEphemeralRequestAttachmentsCase1ItemMap,
 ) as any as S.Schema<PostEphemeralRequestAttachmentsCase1List>;
 
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type PostEphemeralRequestAttachments = string | PostEphemeralRequestAttachmentsCase1List;
-export const PostEphemeralRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
+const PostEphemeralRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PostEphemeralRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const PostEphemeralRequestBlocksCase1ItemMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<PostEphemeralRequestBlocksCase1ItemMap>;
-
 export type PostEphemeralRequestBlocksCase1List = Array<PostEphemeralRequestBlocksCase1ItemMap>;
-export const PostEphemeralRequestBlocksCase1List =
-  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<PostEphemeralRequestBlocksCase1List>;
-
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type PostEphemeralRequestBlocks = string | PostEphemeralRequestBlocksCase1List;
-export const PostEphemeralRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+const PostEphemeralRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PostEphemeralRequestParse = "" | "none" | "full" | "mrkdwn" | "false";
-export const PostEphemeralRequestParse = S.String;
+const PostEphemeralRequestParse = S.String;
 
 export interface PostEphemeralRequest {
   /** (Legacy) Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false. */
@@ -351,7 +345,7 @@ export interface PostEphemeralRequest {
   /** Set your bot's user name. */
   username?: string;
 }
-export const PostEphemeralRequest = /*@__PURE__*/ S.suspend(() =>
+const PostEphemeralRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     as_user: S.optional(S.Boolean),
     attachments: S.optional(PostEphemeralRequestAttachments),
@@ -375,7 +369,7 @@ export interface PostEphemeralResponse {
   ok: boolean;
   message_ts: string;
 }
-export const PostEphemeralResponse = /*@__PURE__*/ S.suspend(() =>
+const PostEphemeralResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     message_ts: S.String,
@@ -383,33 +377,19 @@ export const PostEphemeralResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostEphemeralResponse" }) as any as S.Schema<PostEphemeralResponse>;
 
 export type PostMessageRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
-export const PostMessageRequestAttachmentsCase1ItemMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<PostMessageRequestAttachmentsCase1ItemMap>;
-
 export type PostMessageRequestAttachmentsCase1List =
   Array<PostMessageRequestAttachmentsCase1ItemMap>;
-export const PostMessageRequestAttachmentsCase1List =
-  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<PostMessageRequestAttachmentsCase1List>;
-
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type PostMessageRequestAttachments = string | PostMessageRequestAttachmentsCase1List;
-export const PostMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
+const PostMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PostMessageRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const PostMessageRequestBlocksCase1ItemMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<PostMessageRequestBlocksCase1ItemMap>;
-
 export type PostMessageRequestBlocksCase1List = Array<PostMessageRequestBlocksCase1ItemMap>;
-export const PostMessageRequestBlocksCase1List =
-  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<PostMessageRequestBlocksCase1List>;
-
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type PostMessageRequestBlocks = string | PostMessageRequestBlocksCase1List;
-export const PostMessageRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
+const PostMessageRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface PostMessageRequest {
   /** (Legacy) Pass true to post the message as the authed user instead of as a bot. Defaults to false. Can only be used by classic apps. See [legacy `as_user` parameter](#legacy_as_user) below. */
@@ -451,7 +431,7 @@ export interface PostMessageRequest {
   /** Pass true to unfurl links from installed apps, or false to prevent app links from unfurling. When omitted, app links follow the `unfurl_links` setting. */
   unfurl_app_links?: boolean;
 }
-export const PostMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const PostMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     as_user: S.optional(S.Boolean),
     attachments: S.optional(PostMessageRequestAttachments),
@@ -484,7 +464,7 @@ export interface PostMessageResponse {
   /** Pass true if duplicate message is attempted to be sent. */
   is_duplicate?: boolean;
 }
-export const PostMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const PostMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.String,
@@ -495,37 +475,25 @@ export const PostMessageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostMessageResponse" }) as any as S.Schema<PostMessageResponse>;
 
 export type ScheduleMessageRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
-export const ScheduleMessageRequestAttachmentsCase1ItemMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<ScheduleMessageRequestAttachmentsCase1ItemMap>;
-
 export type ScheduleMessageRequestAttachmentsCase1List =
   Array<ScheduleMessageRequestAttachmentsCase1ItemMap>;
-export const ScheduleMessageRequestAttachmentsCase1List =
-  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<ScheduleMessageRequestAttachmentsCase1List>;
-
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type ScheduleMessageRequestAttachments = string | ScheduleMessageRequestAttachmentsCase1List;
-export const ScheduleMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
+const ScheduleMessageRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type ScheduleMessageRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const ScheduleMessageRequestBlocksCase1ItemMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<ScheduleMessageRequestBlocksCase1ItemMap>;
-
 export type ScheduleMessageRequestBlocksCase1List = Array<ScheduleMessageRequestBlocksCase1ItemMap>;
-export const ScheduleMessageRequestBlocksCase1List =
-  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<ScheduleMessageRequestBlocksCase1List>;
-
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type ScheduleMessageRequestBlocks = string | ScheduleMessageRequestBlocksCase1List;
-export const ScheduleMessageRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+const ScheduleMessageRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 /** Change how messages are treated. See [chat.postMessage](chat.postMessage#formatting). */
 export type ScheduleMessageRequestParse = "none" | "full";
-export const ScheduleMessageRequestParse = S.String;
+const ScheduleMessageRequestParse = S.String;
 
 export interface ScheduleMessageRequest {
   /** Set to `true` to post the message as the authed user, instead of as a bot. Defaults to false. Cannot be used by [new Slack apps](/quickstart). See [chat.postMessage](chat.postMessage#authorship). */
@@ -557,7 +525,7 @@ export interface ScheduleMessageRequest {
   /** JSON object with event_type and event_payload fields, presented as a URL-encoded string. Metadata you post to Slack is accessible to any app or user who is a member of that workspace. */
   metadata?: string | null;
 }
-export const ScheduleMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     as_user: S.optional(S.Boolean),
     attachments: S.optional(ScheduleMessageRequestAttachments),
@@ -577,7 +545,7 @@ export const ScheduleMessageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleMessageRequest" }) as any as S.Schema<ScheduleMessageRequest>;
 
 export type ScheduleMessageResponseMessageMap = { [key: string]: unknown | undefined };
-export const ScheduleMessageResponseMessageMap =
+const ScheduleMessageResponseMessageMap =
   PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<ScheduleMessageResponseMessageMap>;
 
 export interface ScheduleMessageResponse {
@@ -588,7 +556,7 @@ export interface ScheduleMessageResponse {
   scheduled_message_id: string;
   message: ScheduleMessageResponseMessageMap;
 }
-export const ScheduleMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const ScheduleMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.String,
@@ -600,12 +568,12 @@ export const ScheduleMessageResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of streaming chunks. Can include [markdown text chunk](#markdown_text-chunks) objects, [task update chunk](#task_update-chunks) objects, [plan update chunks](#plan_update-chunks), or [blocks chunks](#blocks-chunks). */
 export type StartStreamRequestChunksList = Array<unknown>;
-export const StartStreamRequestChunksList =
+const StartStreamRequestChunksList =
   AppendStreamRequestChunksList as any as S.Schema<StartStreamRequestChunksList>;
 
 /** Specifies how tasks are displayed in the message. `timeline` task updates render as individual task cards interleaved with streamed text. `plan` task updates render together in a plan block. */
 export type StartStreamRequestTaskDisplayMode = "timeline" | "plan";
-export const StartStreamRequestTaskDisplayMode = S.String;
+const StartStreamRequestTaskDisplayMode = S.String;
 
 export interface StartStreamRequest {
   /** An encoded ID that represents a channel, thread, or DM. */
@@ -629,7 +597,7 @@ export interface StartStreamRequest {
   /** The bot's username to display. */
   username?: string | null;
 }
-export const StartStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const StartStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     chunks: S.optional(StartStreamRequestChunksList),
@@ -651,11 +619,11 @@ export interface StartStreamResponse {
   /** The timestamp of the streaming message. */
   ts: string;
 }
-export const StartStreamResponse = AppendStreamResponse as any as S.Schema<StartStreamResponse>;
+const StartStreamResponse = AppendStreamResponse as any as S.Schema<StartStreamResponse>;
 
 /** The session status to set after stopping the stream. */
 export type StopStreamRequestSessionStatus = "active" | "processing" | "suspended" | "closed";
-export const StopStreamRequestSessionStatus = S.String;
+const StopStreamRequestSessionStatus = S.String;
 
 export interface StopStreamRequest {
   /** An encoded ID that represents a channel, private group, or DM */
@@ -673,7 +641,7 @@ export interface StopStreamRequest {
   /** The session status to set after stopping the stream. */
   session_status?: StopStreamRequestSessionStatus | (string & {});
 }
-export const StopStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const StopStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     chunks: S.optional(S.Unknown),
@@ -692,7 +660,7 @@ export interface StopStreamResponse {
   ts: string;
   message: unknown;
 }
-export const StopStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const StopStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.String,
@@ -703,47 +671,31 @@ export const StopStreamResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Pass true to update the message as the authed user. Bot users in this context are considered authed users. */
 export type UpdateChatRequestAsUser = boolean | string;
-export const UpdateChatRequestAsUser = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
+const UpdateChatRequestAsUser = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type UpdateChatRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
-export const UpdateChatRequestAttachmentsCase1ItemMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatRequestAttachmentsCase1ItemMap>;
-
 export type UpdateChatRequestAttachmentsCase1List = Array<UpdateChatRequestAttachmentsCase1ItemMap>;
-export const UpdateChatRequestAttachmentsCase1List =
-  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<UpdateChatRequestAttachmentsCase1List>;
-
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type UpdateChatRequestAttachments = string | UpdateChatRequestAttachmentsCase1List;
-export const UpdateChatRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
+const UpdateChatRequestAttachments = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type UpdateChatRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const UpdateChatRequestBlocksCase1ItemMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatRequestBlocksCase1ItemMap>;
-
 export type UpdateChatRequestBlocksCase1List = Array<UpdateChatRequestBlocksCase1ItemMap>;
-export const UpdateChatRequestBlocksCase1List =
-  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<UpdateChatRequestBlocksCase1List>;
-
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type UpdateChatRequestBlocks = string | UpdateChatRequestBlocksCase1List;
-export const UpdateChatRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
+const UpdateChatRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 /** Find and link channel names and usernames. Defaults to `none`. If you do not specify a value for this field, the original value set for the message will be overwritten with the default, `none`. */
 export type UpdateChatRequestLinkNames = boolean | string;
-export const UpdateChatRequestLinkNames = /*@__PURE__*/ S.Unknown.pipe(
+const UpdateChatRequestLinkNames = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 /** Array of new file ids that will be sent with this message. */
 export type UpdateChatRequestFileIdsList = Array<string>;
-export const UpdateChatRequestFileIdsList = /*@__PURE__*/ S.Array(
+const UpdateChatRequestFileIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateChatRequestFileIdsList>;
 
@@ -775,7 +727,7 @@ export interface UpdateChatRequest {
   /** Array of new file ids that will be sent with this message. */
   file_ids?: UpdateChatRequestFileIdsList;
 }
-export const UpdateChatRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     as_user: S.optional(S.NullOr(UpdateChatRequestAsUser)),
     attachments: S.optional(UpdateChatRequestAttachments),
@@ -794,16 +746,13 @@ export const UpdateChatRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateChatRequest" }) as any as S.Schema<UpdateChatRequest>;
 
 export type UpdateChatResponseMessageAttachmentsItemMap = { [key: string]: unknown | undefined };
-export const UpdateChatResponseMessageAttachmentsItemMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatResponseMessageAttachmentsItemMap>;
-
 export type UpdateChatResponseMessageAttachmentsList =
   Array<UpdateChatResponseMessageAttachmentsItemMap>;
-export const UpdateChatResponseMessageAttachmentsList =
+const UpdateChatResponseMessageAttachmentsList =
   PostEphemeralRequestAttachmentsCase1List as any as S.Schema<UpdateChatResponseMessageAttachmentsList>;
 
 export type UpdateChatResponseMessageMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateChatResponseMessageMetadataMap =
+const UpdateChatResponseMessageMetadataMap =
   PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatResponseMessageMetadataMap>;
 
 export interface UpdateChatResponseMessage {
@@ -812,7 +761,7 @@ export interface UpdateChatResponseMessage {
   attachments?: UpdateChatResponseMessageAttachmentsList;
   metadata?: UpdateChatResponseMessageMetadataMap;
 }
-export const UpdateChatResponseMessage = /*@__PURE__*/ S.suspend(() =>
+const UpdateChatResponseMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.String,
     blocks: S.optional(S.Unknown),
@@ -831,7 +780,7 @@ export interface UpdateChatResponse {
   text: string;
   message: UpdateChatResponseMessage;
 }
-export const UpdateChatResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateChatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.String,

@@ -39,7 +39,7 @@ export interface GetJsSnippetResolveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetJsSnippetResolveRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJsSnippetResolveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -50,13 +50,13 @@ export const GetJsSnippetResolveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetJsSnippetResolveRequest>;
 
 export type GetJsSnippetResolveResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetJsSnippetResolveResponseBodyMap = /*@__PURE__*/ S.Record(
+const GetJsSnippetResolveResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<GetJsSnippetResolveResponseBodyMap>;
 
 export type GetJsSnippetResolveResponse = GetJsSnippetResolveResponseBodyMap;
-export const GetJsSnippetResolveResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJsSnippetResolveResponse = /*@__PURE__*/ S.suspend(() =>
   GetJsSnippetResolveResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetJsSnippetResolveResponse",
@@ -66,7 +66,7 @@ export interface GetJsSnippetVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetJsSnippetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJsSnippetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -77,11 +77,8 @@ export const GetJsSnippetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetJsSnippetVersionRequest>;
 
 export type GetJsSnippetVersionResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetJsSnippetVersionResponseBodyMap =
-  GetJsSnippetResolveResponseBodyMap as any as S.Schema<GetJsSnippetVersionResponseBodyMap>;
-
 export type GetJsSnippetVersionResponse = GetJsSnippetVersionResponseBodyMap;
-export const GetJsSnippetVersionResponse =
+const GetJsSnippetVersionResponse =
   GetJsSnippetResolveResponse as any as S.Schema<GetJsSnippetVersionResponse>;
 
 export interface UpdateJsSnippetVersionPartialRequest {
@@ -90,7 +87,7 @@ export interface UpdateJsSnippetVersionPartialRequest {
   /** Version pin: null for latest, "1.358.0" for exact, "1" for major, "1.358" for minor */
   js_snippet_version?: string | null;
 }
-export const UpdateJsSnippetVersionPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJsSnippetVersionPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     js_snippet_version: S.optional(S.NullOr(S.String)),
@@ -102,11 +99,8 @@ export const UpdateJsSnippetVersionPartialRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateJsSnippetVersionPartialRequest>;
 
 export type UpdateJsSnippetVersionPartialResponseBodyMap = { [key: string]: unknown | undefined };
-export const UpdateJsSnippetVersionPartialResponseBodyMap =
-  GetJsSnippetResolveResponseBodyMap as any as S.Schema<UpdateJsSnippetVersionPartialResponseBodyMap>;
-
 export type UpdateJsSnippetVersionPartialResponse = UpdateJsSnippetVersionPartialResponseBodyMap;
-export const UpdateJsSnippetVersionPartialResponse =
+const UpdateJsSnippetVersionPartialResponse =
   GetJsSnippetResolveResponse as any as S.Schema<UpdateJsSnippetVersionPartialResponse>;
 
 export type GetJsSnippetResolveError = Forbidden | NotFound | PosthogOpError;

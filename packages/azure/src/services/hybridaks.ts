@@ -10,22 +10,22 @@ export type { AzureOpError, AzureOpContext };
 
 /** OSType to be used to specify OS type for the VMs. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows' */
 export type OSType = "Linux" | "Windows";
-export const OSType = S.String;
+const OSType = S.String;
 
 /** Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows. */
 export type OSSKU = "CBLMariner" | "Windows2019" | "Windows2022";
-export const OSSKU = S.String;
+const OSSKU = S.String;
 
 /** The node labels to be persisted across all nodes in agent pool. */
 export type AgentPoolPropertiesInputNodeLabelsMap = { [key: string]: string | undefined };
-export const AgentPoolPropertiesInputNodeLabelsMap = /*@__PURE__*/ S.Record(
+const AgentPoolPropertiesInputNodeLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AgentPoolPropertiesInputNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type AgentPoolPropertiesInputNodeTaintsList = Array<string>;
-export const AgentPoolPropertiesInputNodeTaintsList = /*@__PURE__*/ S.Array(
+const AgentPoolPropertiesInputNodeTaintsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentPoolPropertiesInputNodeTaintsList>;
 
@@ -36,7 +36,7 @@ export interface AgentPoolUpdateProfileInput {
   /** The VM sku size of the agent pool node VMs. */
   vmSize?: string;
 }
-export const AgentPoolUpdateProfileInput = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolUpdateProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     vmSize: S.optional(S.String),
@@ -46,7 +46,7 @@ export const AgentPoolUpdateProfileInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentPoolUpdateProfileInput>;
 
 export type AgentPoolPropertiesInputStatusReadyReplicasList = Array<AgentPoolUpdateProfileInput>;
-export const AgentPoolPropertiesInputStatusReadyReplicasList = /*@__PURE__*/ S.Array(
+const AgentPoolPropertiesInputStatusReadyReplicasList = /*@__PURE__*/ S.Array(
   AgentPoolUpdateProfileInput,
 ) as any as S.Schema<AgentPoolPropertiesInputStatusReadyReplicasList>;
 
@@ -56,7 +56,7 @@ export interface AgentPoolPropertiesInputStatus {
   errorMessage?: string;
   readyReplicas?: AgentPoolPropertiesInputStatusReadyReplicasList;
 }
-export const AgentPoolPropertiesInputStatus = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolPropertiesInputStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     readyReplicas: S.optional(AgentPoolPropertiesInputStatusReadyReplicasList),
@@ -88,7 +88,7 @@ export interface AgentPoolPropertiesInput {
   /** The observed status of the agent pool. */
   status?: AgentPoolPropertiesInputStatus;
 }
-export const AgentPoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: S.optional(OSType),
     osSKU: S.optional(OSSKU),
@@ -106,12 +106,12 @@ export const AgentPoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type AgentPoolCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AgentPoolCreateOrUpdateRequestTagsMap =
+const AgentPoolCreateOrUpdateRequestTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolCreateOrUpdateRequestTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type ExtendedLocationType = "CustomLocation";
-export const ExtendedLocationType = S.String;
+const ExtendedLocationType = S.String;
 
 /** Extended location pointing to the underlying infrastructure */
 export interface ExtendedLocation {
@@ -120,7 +120,7 @@ export interface ExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ExtendedLocationType),
     name: S.optional(S.String),
@@ -137,7 +137,7 @@ export interface AgentPoolCreateOrUpdateRequest {
   tags?: AgentPoolCreateOrUpdateRequestTagsMap;
   extendedLocation?: ExtendedLocation;
 }
-export const AgentPoolCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
     agentPoolName: S.String.pipe(T.Label()),
@@ -158,11 +158,11 @@ export const AgentPoolCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -179,7 +179,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -192,12 +192,12 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The node labels to be persisted across all nodes in agent pool. */
 export type AgentPoolPropertiesNodeLabelsMap = { [key: string]: string | undefined };
-export const AgentPoolPropertiesNodeLabelsMap =
+const AgentPoolPropertiesNodeLabelsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolPropertiesNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type AgentPoolPropertiesNodeTaintsList = Array<string>;
-export const AgentPoolPropertiesNodeTaintsList =
+const AgentPoolPropertiesNodeTaintsList =
   AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<AgentPoolPropertiesNodeTaintsList>;
 
 /** Provisioning state of the resource */
@@ -211,7 +211,7 @@ export type ProvisioningState =
   | "Updating"
   | "Upgrading"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Profile for agent pool properties that can be updated */
 export interface AgentPoolUpdateProfile {
@@ -222,7 +222,7 @@ export interface AgentPoolUpdateProfile {
   /** Version of Kubernetes in use by the agent pool. This is inherited from the kubernetesVersion of the provisioned cluster. */
   kubernetesVersion?: string;
 }
-export const AgentPoolUpdateProfile = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolUpdateProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     vmSize: S.optional(S.String),
@@ -231,7 +231,7 @@ export const AgentPoolUpdateProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentPoolUpdateProfile" }) as any as S.Schema<AgentPoolUpdateProfile>;
 
 export type AgentPoolPropertiesStatusReadyReplicasList = Array<AgentPoolUpdateProfile>;
-export const AgentPoolPropertiesStatusReadyReplicasList = /*@__PURE__*/ S.Array(
+const AgentPoolPropertiesStatusReadyReplicasList = /*@__PURE__*/ S.Array(
   AgentPoolUpdateProfile,
 ) as any as S.Schema<AgentPoolPropertiesStatusReadyReplicasList>;
 
@@ -243,7 +243,7 @@ export interface AgentPoolPropertiesStatus {
   errorMessage?: string;
   readyReplicas?: AgentPoolPropertiesStatusReadyReplicasList;
 }
-export const AgentPoolPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentState: S.optional(ProvisioningState),
     errorMessage: S.optional(S.String),
@@ -280,7 +280,7 @@ export interface AgentPoolProperties {
   /** The observed status of the agent pool. */
   status?: AgentPoolPropertiesStatus;
 }
-export const AgentPoolProperties = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: S.optional(OSType),
     osSKU: S.optional(OSSKU),
@@ -300,7 +300,7 @@ export const AgentPoolProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type AgentPoolCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AgentPoolCreateOrUpdateResponseTagsMap =
+const AgentPoolCreateOrUpdateResponseTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolCreateOrUpdateResponseTagsMap>;
 
 export interface AgentPoolCreateOrUpdateResponse {
@@ -317,7 +317,7 @@ export interface AgentPoolCreateOrUpdateResponse {
   tags?: AgentPoolCreateOrUpdateResponseTagsMap;
   extendedLocation?: ExtendedLocation;
 }
-export const AgentPoolCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -337,7 +337,7 @@ export interface DeleteAgentPoolRequest {
   /** Parameter for the name of the agent pool in the provisioned cluster. */
   agentPoolName: string;
 }
-export const DeleteAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
     agentPoolName: S.String.pipe(T.Label()),
@@ -352,7 +352,7 @@ export const DeleteAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAgentPoolRequest" }) as any as S.Schema<DeleteAgentPoolRequest>;
 
 export interface DeleteAgentPoolResponse {}
-export const DeleteAgentPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAgentPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAgentPoolResponse",
 }) as any as S.Schema<DeleteAgentPoolResponse>;
 
@@ -360,7 +360,7 @@ export interface DeleteHybridIdentityMetadataRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const DeleteHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -376,9 +376,7 @@ export const DeleteHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHybridIdentityMetadataRequest>;
 
 export interface DeleteHybridIdentityMetadataResponse {}
-export const DeleteHybridIdentityMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteHybridIdentityMetadataResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteHybridIdentityMetadataResponse",
 }) as any as S.Schema<DeleteHybridIdentityMetadataResponse>;
 
@@ -386,7 +384,7 @@ export interface DeleteKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
-export const DeleteKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -402,14 +400,14 @@ export const DeleteKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKubernetesVersionsRequest>;
 
 export interface DeleteKubernetesVersionsResponse {}
-export const DeleteKubernetesVersionsResponse =
+const DeleteKubernetesVersionsResponse =
   DeleteHybridIdentityMetadataResponse as any as S.Schema<DeleteKubernetesVersionsResponse>;
 
 export interface DeleteProvisionedClusterInstanceRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const DeleteProvisionedClusterInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProvisionedClusterInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -425,7 +423,7 @@ export const DeleteProvisionedClusterInstanceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteProvisionedClusterInstanceRequest>;
 
 export interface DeleteProvisionedClusterInstanceResponse {}
-export const DeleteProvisionedClusterInstanceResponse =
+const DeleteProvisionedClusterInstanceResponse =
   DeleteHybridIdentityMetadataResponse as any as S.Schema<DeleteProvisionedClusterInstanceResponse>;
 
 export interface DeleteVirtualNetworkRequest {
@@ -436,7 +434,7 @@ export interface DeleteVirtualNetworkRequest {
   /** Parameter for the name of the virtual network */
   virtualNetworkName: string;
 }
-export const DeleteVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -454,14 +452,14 @@ export const DeleteVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualNetworkRequest>;
 
 export interface DeleteVirtualNetworkResponse {}
-export const DeleteVirtualNetworkResponse =
+const DeleteVirtualNetworkResponse =
   DeleteAgentPoolResponse as any as S.Schema<DeleteVirtualNetworkResponse>;
 
 export interface DeleteVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
-export const DeleteVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -475,8 +473,7 @@ export const DeleteVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVMSkusRequest" }) as any as S.Schema<DeleteVMSkusRequest>;
 
 export interface DeleteVMSkusResponse {}
-export const DeleteVMSkusResponse =
-  DeleteAgentPoolResponse as any as S.Schema<DeleteVMSkusResponse>;
+const DeleteVMSkusResponse = DeleteAgentPoolResponse as any as S.Schema<DeleteVMSkusResponse>;
 
 export interface GetAgentPoolRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
@@ -484,7 +481,7 @@ export interface GetAgentPoolRequest {
   /** Parameter for the name of the agent pool in the provisioned cluster. */
   agentPoolName: string;
 }
-export const GetAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
     agentPoolName: S.String.pipe(T.Label()),
@@ -500,7 +497,7 @@ export const GetAgentPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetAgentPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetAgentPoolResponseTagsMap =
+const GetAgentPoolResponseTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<GetAgentPoolResponseTagsMap>;
 
 export interface GetAgentPoolResponse {
@@ -517,7 +514,7 @@ export interface GetAgentPoolResponse {
   tags?: GetAgentPoolResponseTagsMap;
   extendedLocation?: ExtendedLocation;
 }
-export const GetAgentPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAgentPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -533,7 +530,7 @@ export interface GetHybridIdentityMetadataRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const GetHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -556,7 +553,7 @@ export interface HybridIdentityMetadataProperties {
   publicKey?: string;
   provisioningState?: ProvisioningState;
 }
-export const HybridIdentityMetadataProperties = /*@__PURE__*/ S.suspend(() =>
+const HybridIdentityMetadataProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUid: S.optional(S.String),
     publicKey: S.optional(S.String),
@@ -578,7 +575,7 @@ export interface GetHybridIdentityMetadataResponse {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
-export const GetHybridIdentityMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHybridIdentityMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -594,7 +591,7 @@ export interface GetKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
-export const GetKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -611,7 +608,7 @@ export const GetKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The particular KubernetesVersion Image OS Type (Linux, Windows) */
 export type KubernetesVersionReadinessOsType = "Windows" | "Linux";
-export const KubernetesVersionReadinessOsType = S.String;
+const KubernetesVersionReadinessOsType = S.String;
 
 /** Indicates whether the kubernetes version image is ready or not */
 export interface KubernetesVersionReadiness {
@@ -623,7 +620,7 @@ export interface KubernetesVersionReadiness {
   /** The error message for version not being ready */
   errorMessage?: string;
 }
-export const KubernetesVersionReadiness = /*@__PURE__*/ S.suspend(() =>
+const KubernetesVersionReadiness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: S.optional(KubernetesVersionReadinessOsType),
     osSku: S.optional(OSSKU),
@@ -636,13 +633,13 @@ export const KubernetesVersionReadiness = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether the kubernetes version image is ready or not */
 export type KubernetesPatchVersionsReadinessList = Array<KubernetesVersionReadiness>;
-export const KubernetesPatchVersionsReadinessList = /*@__PURE__*/ S.Array(
+const KubernetesPatchVersionsReadinessList = /*@__PURE__*/ S.Array(
   KubernetesVersionReadiness,
 ) as any as S.Schema<KubernetesPatchVersionsReadinessList>;
 
 /** Possible upgrade paths for given patch version */
 export type KubernetesPatchVersionsUpgradesList = Array<string>;
-export const KubernetesPatchVersionsUpgradesList =
+const KubernetesPatchVersionsUpgradesList =
   AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<KubernetesPatchVersionsUpgradesList>;
 
 /** Kubernetes Patch Version profile */
@@ -652,7 +649,7 @@ export interface KubernetesPatchVersions {
   /** Possible upgrade paths for given patch version */
   upgrades?: KubernetesPatchVersionsUpgradesList;
 }
-export const KubernetesPatchVersions = /*@__PURE__*/ S.suspend(() =>
+const KubernetesPatchVersions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readiness: S.optional(KubernetesPatchVersionsReadinessList),
     upgrades: S.optional(KubernetesPatchVersionsUpgradesList),
@@ -663,7 +660,7 @@ export const KubernetesPatchVersions = /*@__PURE__*/ S.suspend(() =>
 export type KubernetesVersionPropertiesPatchVersionsMap = {
   [key: string]: KubernetesPatchVersions | undefined;
 };
-export const KubernetesVersionPropertiesPatchVersionsMap = /*@__PURE__*/ S.Record(
+const KubernetesVersionPropertiesPatchVersionsMap = /*@__PURE__*/ S.Record(
   S.String,
   KubernetesPatchVersions,
 ) as any as S.Schema<KubernetesVersionPropertiesPatchVersionsMap>;
@@ -677,7 +674,7 @@ export interface KubernetesVersionProperties {
   /** Patch versions of a Kubernetes release */
   patchVersions?: KubernetesVersionPropertiesPatchVersionsMap;
 }
-export const KubernetesVersionProperties = /*@__PURE__*/ S.suspend(() =>
+const KubernetesVersionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     isPreview: S.optional(S.Boolean),
@@ -689,7 +686,7 @@ export const KubernetesVersionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type GetKubernetesVersionsResponsePropertiesValuesList = Array<KubernetesVersionProperties>;
-export const GetKubernetesVersionsResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
+const GetKubernetesVersionsResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
   KubernetesVersionProperties,
 ) as any as S.Schema<GetKubernetesVersionsResponsePropertiesValuesList>;
 
@@ -698,7 +695,7 @@ export interface GetKubernetesVersionsResponseProperties {
   /** List of supported Kubernetes versions */
   values?: GetKubernetesVersionsResponsePropertiesValuesList;
 }
-export const GetKubernetesVersionsResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetKubernetesVersionsResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     values: S.optional(GetKubernetesVersionsResponsePropertiesValuesList),
@@ -719,7 +716,7 @@ export interface GetKubernetesVersionsResponse {
   extendedLocation?: ExtendedLocation;
   properties?: GetKubernetesVersionsResponseProperties;
 }
-export const GetKubernetesVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetKubernetesVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -736,7 +733,7 @@ export interface GetProvisionedClusterInstanceRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const GetProvisionedClusterInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProvisionedClusterInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -755,7 +752,7 @@ export interface LinuxProfilePropertiesSshPublicKeysItem {
   /** Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers. */
   keyData?: string;
 }
-export const LinuxProfilePropertiesSshPublicKeysItem = /*@__PURE__*/ S.suspend(() =>
+const LinuxProfilePropertiesSshPublicKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyData: S.optional(S.String),
   }),
@@ -766,7 +763,7 @@ export const LinuxProfilePropertiesSshPublicKeysItem = /*@__PURE__*/ S.suspend((
 /** The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified. */
 export type LinuxProfilePropertiesSshPublicKeysList =
   Array<LinuxProfilePropertiesSshPublicKeysItem>;
-export const LinuxProfilePropertiesSshPublicKeysList = /*@__PURE__*/ S.Array(
+const LinuxProfilePropertiesSshPublicKeysList = /*@__PURE__*/ S.Array(
   LinuxProfilePropertiesSshPublicKeysItem,
 ) as any as S.Schema<LinuxProfilePropertiesSshPublicKeysList>;
 
@@ -775,7 +772,7 @@ export interface LinuxProfilePropertiesSsh {
   /** The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified. */
   publicKeys?: LinuxProfilePropertiesSshPublicKeysList;
 }
-export const LinuxProfilePropertiesSsh = /*@__PURE__*/ S.suspend(() =>
+const LinuxProfilePropertiesSsh = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKeys: S.optional(LinuxProfilePropertiesSshPublicKeysList),
   }),
@@ -788,7 +785,7 @@ export interface LinuxProfileProperties {
   /** SSH configuration for VMs of the provisioned cluster. */
   ssh?: LinuxProfilePropertiesSsh;
 }
-export const LinuxProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const LinuxProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ssh: S.optional(LinuxProfilePropertiesSsh),
   }),
@@ -799,7 +796,7 @@ export interface ControlPlaneProfileControlPlaneEndpoint {
   /** IP address of the Kubernetes API server */
   hostIP?: string;
 }
-export const ControlPlaneProfileControlPlaneEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ControlPlaneProfileControlPlaneEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostIP: S.optional(S.String),
   }),
@@ -816,7 +813,7 @@ export interface ControlPlaneProfile {
   /** IP Address of the Kubernetes API server */
   controlPlaneEndpoint?: ControlPlaneProfileControlPlaneEndpoint;
 }
-export const ControlPlaneProfile = /*@__PURE__*/ S.suspend(() =>
+const ControlPlaneProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     vmSize: S.optional(S.String),
@@ -829,7 +826,7 @@ export interface NetworkProfileLoadBalancerProfile {
   /** Number of HA Proxy load balancer VMs. The default value is 0. */
   count?: number;
 }
-export const NetworkProfileLoadBalancerProfile = /*@__PURE__*/ S.suspend(() =>
+const NetworkProfileLoadBalancerProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
   }),
@@ -839,7 +836,7 @@ export const NetworkProfileLoadBalancerProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Network policy used for building Kubernetes network. Possible values include: 'calico'. */
 export type NetworkProfileNetworkPolicy = "calico";
-export const NetworkProfileNetworkPolicy = S.String;
+const NetworkProfileNetworkPolicy = S.String;
 
 /** The network configuration profile for the provisioned cluster. */
 export interface NetworkProfile {
@@ -850,7 +847,7 @@ export interface NetworkProfile {
   /** A CIDR notation IP Address range from which to assign pod IPs. */
   podCidr?: string;
 }
-export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loadBalancerProfile: S.optional(NetworkProfileLoadBalancerProfile),
     networkPolicy: S.optional(NetworkProfileNetworkPolicy),
@@ -863,7 +860,7 @@ export interface StorageProfileSmbCSIDriver {
   /** Indicates whether to enable SMB CSI Driver. The default value is true. */
   enabled?: boolean;
 }
-export const StorageProfileSmbCSIDriver = /*@__PURE__*/ S.suspend(() =>
+const StorageProfileSmbCSIDriver = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -876,7 +873,7 @@ export interface StorageProfileNfsCSIDriver {
   /** Indicates whether to enable NFS CSI Driver. The default value is true. */
   enabled?: boolean;
 }
-export const StorageProfileNfsCSIDriver =
+const StorageProfileNfsCSIDriver =
   StorageProfileSmbCSIDriver as any as S.Schema<StorageProfileNfsCSIDriver>;
 
 /** The storage configuration profile for the provisioned cluster. */
@@ -886,7 +883,7 @@ export interface StorageProfile {
   /** NFS CSI Driver settings for the storage profile. */
   nfsCsiDriver?: StorageProfileNfsCSIDriver;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
+const StorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smbCsiDriver: S.optional(StorageProfileSmbCSIDriver),
     nfsCsiDriver: S.optional(StorageProfileNfsCSIDriver),
@@ -898,7 +895,7 @@ export interface ClusterVMAccessProfile {
   /** IP Address or CIDR for SSH access to VMs in the provisioned cluster */
   authorizedIPRanges?: string;
 }
-export const ClusterVMAccessProfile = /*@__PURE__*/ S.suspend(() =>
+const ClusterVMAccessProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizedIPRanges: S.optional(S.String),
   }),
@@ -906,12 +903,12 @@ export const ClusterVMAccessProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The node labels to be persisted across all nodes in agent pool. */
 export type NamedAgentPoolProfileNodeLabelsMap = { [key: string]: string | undefined };
-export const NamedAgentPoolProfileNodeLabelsMap =
+const NamedAgentPoolProfileNodeLabelsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<NamedAgentPoolProfileNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type NamedAgentPoolProfileNodeTaintsList = Array<string>;
-export const NamedAgentPoolProfileNodeTaintsList =
+const NamedAgentPoolProfileNodeTaintsList =
   AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<NamedAgentPoolProfileNodeTaintsList>;
 
 /** Profile of the default agent pool along with a name parameter */
@@ -939,7 +936,7 @@ export interface NamedAgentPoolProfile {
   /** Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1 */
   name?: string;
 }
-export const NamedAgentPoolProfile = /*@__PURE__*/ S.suspend(() =>
+const NamedAgentPoolProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: S.optional(OSType),
     osSKU: S.optional(OSSKU),
@@ -958,13 +955,13 @@ export const NamedAgentPoolProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The agent pool properties for the provisioned cluster. */
 export type ProvisionedClusterPropertiesAgentPoolProfilesList = Array<NamedAgentPoolProfile>;
-export const ProvisionedClusterPropertiesAgentPoolProfilesList = /*@__PURE__*/ S.Array(
+const ProvisionedClusterPropertiesAgentPoolProfilesList = /*@__PURE__*/ S.Array(
   NamedAgentPoolProfile,
 ) as any as S.Schema<ProvisionedClusterPropertiesAgentPoolProfilesList>;
 
 /** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
 export type CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList = Array<string>;
-export const CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
+const CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
   AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList>;
 
 /** The profile for the infrastructure networks used by the provisioned cluster */
@@ -972,7 +969,7 @@ export interface CloudProviderProfileInfraNetworkProfile {
   /** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
   vnetSubnetIds?: CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList;
 }
-export const CloudProviderProfileInfraNetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const CloudProviderProfileInfraNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vnetSubnetIds: S.optional(CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList),
   }),
@@ -985,7 +982,7 @@ export interface CloudProviderProfile {
   /** The profile for the infrastructure networks used by the provisioned cluster */
   infraNetworkProfile?: CloudProviderProfileInfraNetworkProfile;
 }
-export const CloudProviderProfile = /*@__PURE__*/ S.suspend(() =>
+const CloudProviderProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infraNetworkProfile: S.optional(CloudProviderProfileInfraNetworkProfile),
   }),
@@ -1001,7 +998,7 @@ export type AddonStatusProfilePhase =
   | "deleting"
   | "failed"
   | "upgrading";
-export const AddonStatusProfilePhase = S.String;
+const AddonStatusProfilePhase = S.String;
 
 /** The status profile of the addons and other kubernetes components */
 export interface AddonStatusProfile {
@@ -1014,7 +1011,7 @@ export interface AddonStatusProfile {
   /** Observed error message from the addon or component */
   errorMessage?: string;
 }
-export const AddonStatusProfile = /*@__PURE__*/ S.suspend(() =>
+const AddonStatusProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     phase: S.optional(AddonStatusProfilePhase),
@@ -1025,7 +1022,7 @@ export const AddonStatusProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The detailed status of the provisioned cluster components including addons. */
 export type ProvisionedClusterPropertiesStatusControlPlaneStatusList = Array<AddonStatusProfile>;
-export const ProvisionedClusterPropertiesStatusControlPlaneStatusList = /*@__PURE__*/ S.Array(
+const ProvisionedClusterPropertiesStatusControlPlaneStatusList = /*@__PURE__*/ S.Array(
   AddonStatusProfile,
 ) as any as S.Schema<ProvisionedClusterPropertiesStatusControlPlaneStatusList>;
 
@@ -1038,7 +1035,7 @@ export interface ProvisionedClusterPropertiesStatus {
   /** Error messages during a provisioned cluster operation or steady state. */
   errorMessage?: string;
 }
-export const ProvisionedClusterPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlPlaneStatus: S.optional(ProvisionedClusterPropertiesStatusControlPlaneStatusList),
     currentState: S.optional(ProvisioningState),
@@ -1050,14 +1047,14 @@ export const ProvisionedClusterPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
 export type ProvisionedClusterLicenseProfileAzureHybridBenefit = "True" | "False" | "NotApplicable";
-export const ProvisionedClusterLicenseProfileAzureHybridBenefit = S.String;
+const ProvisionedClusterLicenseProfileAzureHybridBenefit = S.String;
 
 /** The license profile of the provisioned cluster. */
 export interface ProvisionedClusterLicenseProfile {
   /** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
   azureHybridBenefit?: ProvisionedClusterLicenseProfileAzureHybridBenefit | (string & {});
 }
-export const ProvisionedClusterLicenseProfile = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterLicenseProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureHybridBenefit: S.optional(ProvisionedClusterLicenseProfileAzureHybridBenefit),
   }),
@@ -1071,7 +1068,7 @@ export type ProvisionedClusterPropertiesAutoScalerProfileExpander =
   | "most-pods"
   | "priority"
   | "random";
-export const ProvisionedClusterPropertiesAutoScalerProfileExpander = S.String;
+const ProvisionedClusterPropertiesAutoScalerProfileExpander = S.String;
 
 /** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
 export interface ProvisionedClusterPropertiesAutoScalerProfile {
@@ -1110,7 +1107,7 @@ export interface ProvisionedClusterPropertiesAutoScalerProfile {
   /** The default is true. */
   skip_nodes_with_system_pods?: string;
 }
-export const ProvisionedClusterPropertiesAutoScalerProfile = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterPropertiesAutoScalerProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance_similar_node_groups: S.optional(S.String.pipe(T.Body("balance-similar-node-groups"))),
     expander: S.optional(ProvisionedClusterPropertiesAutoScalerProfileExpander),
@@ -1169,7 +1166,7 @@ export interface ProvisionedClusterProperties {
   /** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
   autoScalerProfile?: ProvisionedClusterPropertiesAutoScalerProfile;
 }
-export const ProvisionedClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linuxProfile: S.optional(LinuxProfileProperties),
     controlPlane: S.optional(ControlPlaneProfile),
@@ -1200,7 +1197,7 @@ export interface GetProvisionedClusterInstanceResponse {
   properties?: ProvisionedClusterProperties;
   extendedLocation?: ExtendedLocation;
 }
-export const GetProvisionedClusterInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProvisionedClusterInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1217,7 +1214,7 @@ export interface GetProvisionedClusterInstanceUpgradeProfileRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const GetProvisionedClusterInstanceUpgradeProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProvisionedClusterInstanceUpgradeProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1239,7 +1236,7 @@ export interface ProvisionedClusterPoolUpgradeProfileProperties {
   /** Whether the Kubernetes version is currently in preview. */
   isPreview?: boolean;
 }
-export const ProvisionedClusterPoolUpgradeProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterPoolUpgradeProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kubernetesVersion: S.optional(S.String),
     isPreview: S.optional(S.Boolean),
@@ -1251,7 +1248,7 @@ export const ProvisionedClusterPoolUpgradeProfileProperties = /*@__PURE__*/ S.su
 /** List of available kubernetes versions for upgrade. */
 export type ProvisionedClusterPoolUpgradeProfileUpgradesList =
   Array<ProvisionedClusterPoolUpgradeProfileProperties>;
-export const ProvisionedClusterPoolUpgradeProfileUpgradesList = /*@__PURE__*/ S.Array(
+const ProvisionedClusterPoolUpgradeProfileUpgradesList = /*@__PURE__*/ S.Array(
   ProvisionedClusterPoolUpgradeProfileProperties,
 ) as any as S.Schema<ProvisionedClusterPoolUpgradeProfileUpgradesList>;
 
@@ -1263,7 +1260,7 @@ export interface ProvisionedClusterPoolUpgradeProfile {
   /** List of available kubernetes versions for upgrade. */
   upgrades?: ProvisionedClusterPoolUpgradeProfileUpgradesList;
 }
-export const ProvisionedClusterPoolUpgradeProfile = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterPoolUpgradeProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kubernetesVersion: S.optional(S.String),
     osType: S.optional(OSType),
@@ -1279,7 +1276,7 @@ export interface ProvisionedClusterUpgradeProfileProperties {
   /** The list of available kubernetes version upgrades for the control plane. */
   controlPlaneProfile: ProvisionedClusterPoolUpgradeProfile;
 }
-export const ProvisionedClusterUpgradeProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterUpgradeProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     controlPlaneProfile: ProvisionedClusterPoolUpgradeProfile,
@@ -1300,7 +1297,7 @@ export interface GetProvisionedClusterInstanceUpgradeProfileResponse {
   /** The properties of the upgrade profile. */
   properties: ProvisionedClusterUpgradeProfileProperties;
 }
-export const GetProvisionedClusterInstanceUpgradeProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProvisionedClusterInstanceUpgradeProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1320,7 +1317,7 @@ export interface GetVirtualNetworkRequest {
   /** Parameter for the name of the virtual network */
   virtualNetworkName: string;
 }
-export const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1337,7 +1334,7 @@ export const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualNetworkResponseTagsMap =
+const GetVirtualNetworkResponseTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
 
 /** Infrastructure network profile for HCI platform */
@@ -1349,7 +1346,7 @@ export interface VirtualNetworkPropertiesInfraVnetProfileHci {
   /** Virtual Network name in MOC(Microsoft On-premises Cloud) */
   mocVnetName?: string;
 }
-export const VirtualNetworkPropertiesInfraVnetProfileHci = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkPropertiesInfraVnetProfileHci = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mocGroup: S.optional(S.String),
     mocLocation: S.optional(S.String),
@@ -1363,7 +1360,7 @@ export interface VirtualNetworkPropertiesInfraVnetProfile {
   /** Infrastructure network profile for HCI platform */
   hci?: VirtualNetworkPropertiesInfraVnetProfileHci;
 }
-export const VirtualNetworkPropertiesInfraVnetProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkPropertiesInfraVnetProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hci: S.optional(VirtualNetworkPropertiesInfraVnetProfileHci),
   }),
@@ -1377,7 +1374,7 @@ export interface VirtualNetworkPropertiesVipPoolItem {
   /** Starting IP address for the IP Pool */
   startIP?: string;
 }
-export const VirtualNetworkPropertiesVipPoolItem = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkPropertiesVipPoolItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endIP: S.optional(S.String),
     startIP: S.optional(S.String),
@@ -1388,21 +1385,19 @@ export const VirtualNetworkPropertiesVipPoolItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesVipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
-export const VirtualNetworkPropertiesVipPoolList = /*@__PURE__*/ S.Array(
+const VirtualNetworkPropertiesVipPoolList = /*@__PURE__*/ S.Array(
   VirtualNetworkPropertiesVipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesVipPoolList>;
 
 export type VirtualNetworkPropertiesVmipPoolItem = VirtualNetworkPropertiesVipPoolItem;
-export const VirtualNetworkPropertiesVmipPoolItem = VirtualNetworkPropertiesVipPoolItem;
-
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesVmipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
-export const VirtualNetworkPropertiesVmipPoolList =
+const VirtualNetworkPropertiesVmipPoolList =
   VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
 export type VirtualNetworkPropertiesDnsServersList = Array<string>;
-export const VirtualNetworkPropertiesDnsServersList =
+const VirtualNetworkPropertiesDnsServersList =
   AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<VirtualNetworkPropertiesDnsServersList>;
 
 export type VirtualNetworkPropertiesProvisioningState =
@@ -1414,7 +1409,7 @@ export type VirtualNetworkPropertiesProvisioningState =
   | "Deleting"
   | "Updating"
   | "Accepted";
-export const VirtualNetworkPropertiesProvisioningState = S.String;
+const VirtualNetworkPropertiesProvisioningState = S.String;
 
 /** The error if any from the operation. */
 export interface VirtualNetworkPropertiesStatusOperationStatusError {
@@ -1423,7 +1418,7 @@ export interface VirtualNetworkPropertiesStatusOperationStatusError {
   /** The error message from the operation. */
   message?: string;
 }
-export const VirtualNetworkPropertiesStatusOperationStatusError = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkPropertiesStatusOperationStatusError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1441,7 +1436,7 @@ export interface VirtualNetworkPropertiesStatusOperationStatus {
   /** The status of the operation. */
   status?: string;
 }
-export const VirtualNetworkPropertiesStatusOperationStatus = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkPropertiesStatusOperationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(VirtualNetworkPropertiesStatusOperationStatusError),
     operationId: S.optional(S.String),
@@ -1456,7 +1451,7 @@ export interface VirtualNetworkPropertiesStatus {
   /** The detailed status of the long running operation. */
   operationStatus?: VirtualNetworkPropertiesStatusOperationStatus;
 }
-export const VirtualNetworkPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationStatus: S.optional(VirtualNetworkPropertiesStatusOperationStatus),
   }),
@@ -1483,7 +1478,7 @@ export interface VirtualNetworkProperties {
   /** Status of the virtual network resource */
   status?: VirtualNetworkPropertiesStatus;
 }
-export const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infraVnetProfile: S.optional(VirtualNetworkPropertiesInfraVnetProfile),
     vipPool: S.optional(VirtualNetworkPropertiesVipPoolList),
@@ -1499,7 +1494,7 @@ export const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type GetVirtualNetworkResponseExtendedLocationType = "CustomLocation";
-export const GetVirtualNetworkResponseExtendedLocationType = S.String;
+const GetVirtualNetworkResponseExtendedLocationType = S.String;
 
 /** Extended location pointing to the underlying infrastructure */
 export interface GetVirtualNetworkResponseExtendedLocation {
@@ -1508,7 +1503,7 @@ export interface GetVirtualNetworkResponseExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const GetVirtualNetworkResponseExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualNetworkResponseExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GetVirtualNetworkResponseExtendedLocationType),
     name: S.optional(S.String),
@@ -1534,7 +1529,7 @@ export interface GetVirtualNetworkResponse {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: GetVirtualNetworkResponseExtendedLocation;
 }
-export const GetVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1553,7 +1548,7 @@ export interface GetVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
-export const GetVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1573,7 +1568,7 @@ export interface VmSkuCapabilities {
   /** Value of the VM SKU capability */
   value?: string;
 }
-export const VmSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
+const VmSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -1582,7 +1577,7 @@ export const VmSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc. */
 export type VmSkuPropertiesCapabilitiesList = Array<VmSkuCapabilities>;
-export const VmSkuPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
+const VmSkuPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   VmSkuCapabilities,
 ) as any as S.Schema<VmSkuPropertiesCapabilitiesList>;
 
@@ -1599,7 +1594,7 @@ export interface VmSkuProperties {
   /** The size of the VM SKU */
   size?: string;
 }
-export const VmSkuProperties = /*@__PURE__*/ S.suspend(() =>
+const VmSkuProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     capabilities: S.optional(VmSkuPropertiesCapabilitiesList),
@@ -1611,7 +1606,7 @@ export const VmSkuProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported VM SKUs. */
 export type GetVMSkusResponsePropertiesValuesList = Array<VmSkuProperties>;
-export const GetVMSkusResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
+const GetVMSkusResponsePropertiesValuesList = /*@__PURE__*/ S.Array(
   VmSkuProperties,
 ) as any as S.Schema<GetVMSkusResponsePropertiesValuesList>;
 
@@ -1620,7 +1615,7 @@ export interface GetVMSkusResponseProperties {
   /** List of supported VM SKUs. */
   values?: GetVMSkusResponsePropertiesValuesList;
 }
-export const GetVMSkusResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetVMSkusResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     values: S.optional(GetVMSkusResponsePropertiesValuesList),
@@ -1641,7 +1636,7 @@ export interface GetVMSkusResponse {
   extendedLocation?: ExtendedLocation;
   properties?: GetVMSkusResponseProperties;
 }
-export const GetVMSkusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVMSkusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1656,7 +1651,7 @@ export interface ListAgentPoolByProvisionedClusterRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const ListAgentPoolByProvisionedClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentPoolByProvisionedClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1673,9 +1668,6 @@ export const ListAgentPoolByProvisionedClusterRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags */
 export type AgentPoolTagsMap = { [key: string]: string | undefined };
-export const AgentPoolTagsMap =
-  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolTagsMap>;
-
 /** The agentPool resource definition */
 export interface AgentPool {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1691,10 +1683,10 @@ export interface AgentPool {
   tags?: AgentPoolTagsMap;
   extendedLocation?: ExtendedLocation;
 }
-export const AgentPool = GetAgentPoolResponse as any as S.Schema<AgentPool>;
+const AgentPool = GetAgentPoolResponse as any as S.Schema<AgentPool>;
 
 export type AgentPoolListResultValueList = Array<AgentPool>;
-export const AgentPoolListResultValueList = /*@__PURE__*/ S.Array(
+const AgentPoolListResultValueList = /*@__PURE__*/ S.Array(
   AgentPool,
 ) as any as S.Schema<AgentPoolListResultValueList>;
 
@@ -1703,7 +1695,7 @@ export interface AgentPoolListResult {
   value?: AgentPoolListResultValueList;
   nextLink?: string;
 }
-export const AgentPoolListResult = /*@__PURE__*/ S.suspend(() =>
+const AgentPoolListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AgentPoolListResultValueList),
     nextLink: S.optional(S.String),
@@ -1714,7 +1706,7 @@ export interface ListHybridIdentityMetadataByClusterRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const ListHybridIdentityMetadataByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHybridIdentityMetadataByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1742,7 +1734,7 @@ export interface HybridIdentityMetadata {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
-export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
+const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1754,7 +1746,7 @@ export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of hybridIdentityMetadata */
 export type HybridIdentityMetadataListValueList = Array<HybridIdentityMetadata>;
-export const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
+const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
   HybridIdentityMetadata,
 ) as any as S.Schema<HybridIdentityMetadataListValueList>;
 
@@ -1765,7 +1757,7 @@ export interface HybridIdentityMetadataList {
   /** Array of hybridIdentityMetadata */
   value: HybridIdentityMetadataListValueList;
 }
-export const HybridIdentityMetadataList = /*@__PURE__*/ S.suspend(() =>
+const HybridIdentityMetadataList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: HybridIdentityMetadataListValueList,
@@ -1778,7 +1770,7 @@ export interface ListKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
-export const ListKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1795,15 +1787,12 @@ export const ListKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type KubernetesVersionProfilePropertiesValuesList = Array<KubernetesVersionProperties>;
-export const KubernetesVersionProfilePropertiesValuesList =
-  GetKubernetesVersionsResponsePropertiesValuesList as any as S.Schema<KubernetesVersionProfilePropertiesValuesList>;
-
 export interface KubernetesVersionProfileProperties {
   provisioningState?: ProvisioningState;
   /** List of supported Kubernetes versions */
   values?: KubernetesVersionProfilePropertiesValuesList;
 }
-export const KubernetesVersionProfileProperties =
+const KubernetesVersionProfileProperties =
   GetKubernetesVersionsResponseProperties as any as S.Schema<KubernetesVersionProfileProperties>;
 
 /** The supported kubernetes versions. */
@@ -1819,7 +1808,7 @@ export interface KubernetesVersionProfile {
   extendedLocation?: ExtendedLocation;
   properties?: KubernetesVersionProfileProperties;
 }
-export const KubernetesVersionProfile = /*@__PURE__*/ S.suspend(() =>
+const KubernetesVersionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1831,7 +1820,7 @@ export const KubernetesVersionProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KubernetesVersionProfile" }) as any as S.Schema<KubernetesVersionProfile>;
 
 export type KubernetesVersionProfileListValueList = Array<KubernetesVersionProfile>;
-export const KubernetesVersionProfileListValueList = /*@__PURE__*/ S.Array(
+const KubernetesVersionProfileListValueList = /*@__PURE__*/ S.Array(
   KubernetesVersionProfile,
 ) as any as S.Schema<KubernetesVersionProfileListValueList>;
 
@@ -1840,7 +1829,7 @@ export interface KubernetesVersionProfileList {
   value?: KubernetesVersionProfileListValueList;
   nextLink?: string;
 }
-export const KubernetesVersionProfileList = /*@__PURE__*/ S.suspend(() =>
+const KubernetesVersionProfileList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(KubernetesVersionProfileListValueList),
     nextLink: S.optional(S.String),
@@ -1850,7 +1839,7 @@ export const KubernetesVersionProfileList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubernetesVersionProfileList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1872,7 +1861,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1883,11 +1872,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -1902,7 +1891,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1914,7 +1903,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -1924,7 +1913,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -1935,7 +1924,7 @@ export interface ListProvisionedClusterInstanceAdminKubeconfigRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const ListProvisionedClusterInstanceAdminKubeconfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvisionedClusterInstanceAdminKubeconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1954,7 +1943,7 @@ export interface ListCredentialResponseError {
   code?: string;
   message?: string;
 }
-export const ListCredentialResponseError =
+const ListCredentialResponseError =
   VirtualNetworkPropertiesStatusOperationStatusError as any as S.Schema<ListCredentialResponseError>;
 
 /** The credential result response. */
@@ -1964,18 +1953,16 @@ export interface CredentialResult {
   /** Base64-encoded Kubernetes configuration file. */
   value?: string;
 }
-export const CredentialResult = VmSkuCapabilities as any as S.Schema<CredentialResult>;
-
 /** Base64-encoded Kubernetes configuration file. */
 export type ListCredentialResponsePropertiesKubeconfigsList = Array<CredentialResult>;
-export const ListCredentialResponsePropertiesKubeconfigsList =
+const ListCredentialResponsePropertiesKubeconfigsList =
   VmSkuPropertiesCapabilitiesList as any as S.Schema<ListCredentialResponsePropertiesKubeconfigsList>;
 
 export interface ListCredentialResponseProperties {
   /** Base64-encoded Kubernetes configuration file. */
   kubeconfigs?: ListCredentialResponsePropertiesKubeconfigsList;
 }
-export const ListCredentialResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kubeconfigs: S.optional(ListCredentialResponsePropertiesKubeconfigsList),
   }),
@@ -1995,7 +1982,7 @@ export interface ListCredentialResponse {
   error?: ListCredentialResponseError;
   properties?: ListCredentialResponseProperties;
 }
-export const ListCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2010,7 +1997,7 @@ export interface ListProvisionedClusterInstancesRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const ListProvisionedClusterInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvisionedClusterInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -2038,7 +2025,7 @@ export interface ProvisionedCluster {
   properties?: ProvisionedClusterProperties;
   extendedLocation?: ExtendedLocation;
 }
-export const ProvisionedCluster = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2050,7 +2037,7 @@ export const ProvisionedCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProvisionedCluster" }) as any as S.Schema<ProvisionedCluster>;
 
 export type ProvisionedClusterListResultValueList = Array<ProvisionedCluster>;
-export const ProvisionedClusterListResultValueList = /*@__PURE__*/ S.Array(
+const ProvisionedClusterListResultValueList = /*@__PURE__*/ S.Array(
   ProvisionedCluster,
 ) as any as S.Schema<ProvisionedClusterListResultValueList>;
 
@@ -2059,7 +2046,7 @@ export interface ProvisionedClusterListResult {
   value?: ProvisionedClusterListResultValueList;
   nextLink?: string;
 }
-export const ProvisionedClusterListResult = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ProvisionedClusterListResultValueList),
     nextLink: S.optional(S.String),
@@ -2072,7 +2059,7 @@ export interface ListProvisionedClusterInstanceUserKubeconfigRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
-export const ListProvisionedClusterInstanceUserKubeconfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvisionedClusterInstanceUserKubeconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -2093,7 +2080,7 @@ export interface ListVirtualNetworkByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2111,13 +2098,11 @@ export const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworkTagsMap =
+const VirtualNetworkTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworkTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworkExtendedLocationType = "CustomLocation";
-export const VirtualNetworkExtendedLocationType = S.String;
-
 /** Extended location pointing to the underlying infrastructure */
 export interface VirtualNetworkExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
@@ -2125,7 +2110,7 @@ export interface VirtualNetworkExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const VirtualNetworkExtendedLocation =
+const VirtualNetworkExtendedLocation =
   GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworkExtendedLocation>;
 
 /** The Virtual Network resource definition. */
@@ -2146,7 +2131,7 @@ export interface VirtualNetwork {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: VirtualNetworkExtendedLocation;
 }
-export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2160,7 +2145,7 @@ export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualNetwork" }) as any as S.Schema<VirtualNetwork>;
 
 export type VirtualNetworksListResultValueList = Array<VirtualNetwork>;
-export const VirtualNetworksListResultValueList = /*@__PURE__*/ S.Array(
+const VirtualNetworksListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<VirtualNetworksListResultValueList>;
 
@@ -2169,7 +2154,7 @@ export interface VirtualNetworksListResult {
   value?: VirtualNetworksListResultValueList;
   nextLink?: string;
 }
-export const VirtualNetworksListResult = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworksListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(VirtualNetworksListResultValueList),
     nextLink: S.optional(S.String),
@@ -2182,7 +2167,7 @@ export interface ListVirtualNetworkBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListVirtualNetworkBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualNetworkBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2201,7 +2186,7 @@ export interface ListVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
-export const ListVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -2216,7 +2201,7 @@ export const ListVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported VM SKUs. */
 export type VmSkuProfilePropertiesValuesList = Array<VmSkuProperties>;
-export const VmSkuProfilePropertiesValuesList =
+const VmSkuProfilePropertiesValuesList =
   GetVMSkusResponsePropertiesValuesList as any as S.Schema<VmSkuProfilePropertiesValuesList>;
 
 export interface VmSkuProfileProperties {
@@ -2224,7 +2209,7 @@ export interface VmSkuProfileProperties {
   /** List of supported VM SKUs. */
   values?: VmSkuProfilePropertiesValuesList;
 }
-export const VmSkuProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const VmSkuProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     values: S.optional(VmSkuProfilePropertiesValuesList),
@@ -2244,7 +2229,7 @@ export interface VmSkuProfile {
   extendedLocation?: ExtendedLocation;
   properties?: VmSkuProfileProperties;
 }
-export const VmSkuProfile = /*@__PURE__*/ S.suspend(() =>
+const VmSkuProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2256,7 +2241,7 @@ export const VmSkuProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmSkuProfile" }) as any as S.Schema<VmSkuProfile>;
 
 export type VmSkuProfileListValueList = Array<VmSkuProfile>;
-export const VmSkuProfileListValueList = /*@__PURE__*/ S.Array(
+const VmSkuProfileListValueList = /*@__PURE__*/ S.Array(
   VmSkuProfile,
 ) as any as S.Schema<VmSkuProfileListValueList>;
 
@@ -2265,7 +2250,7 @@ export interface VmSkuProfileList {
   value?: VmSkuProfileListValueList;
   nextLink?: string;
 }
-export const VmSkuProfileList = /*@__PURE__*/ S.suspend(() =>
+const VmSkuProfileList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(VmSkuProfileListValueList),
     nextLink: S.optional(S.String),
@@ -2274,12 +2259,12 @@ export const VmSkuProfileList = /*@__PURE__*/ S.suspend(() =>
 
 /** The node labels to be persisted across all nodes in agent pool. */
 export type NamedAgentPoolProfileInputNodeLabelsMap = { [key: string]: string | undefined };
-export const NamedAgentPoolProfileInputNodeLabelsMap =
+const NamedAgentPoolProfileInputNodeLabelsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<NamedAgentPoolProfileInputNodeLabelsMap>;
 
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type NamedAgentPoolProfileInputNodeTaintsList = Array<string>;
-export const NamedAgentPoolProfileInputNodeTaintsList =
+const NamedAgentPoolProfileInputNodeTaintsList =
   AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<NamedAgentPoolProfileInputNodeTaintsList>;
 
 /** Profile of the default agent pool along with a name parameter */
@@ -2305,7 +2290,7 @@ export interface NamedAgentPoolProfileInput {
   /** Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1 */
   name?: string;
 }
-export const NamedAgentPoolProfileInput = /*@__PURE__*/ S.suspend(() =>
+const NamedAgentPoolProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: S.optional(OSType),
     osSKU: S.optional(OSSKU),
@@ -2326,7 +2311,7 @@ export const NamedAgentPoolProfileInput = /*@__PURE__*/ S.suspend(() =>
 /** The agent pool properties for the provisioned cluster. */
 export type ProvisionedClusterPropertiesInputAgentPoolProfilesList =
   Array<NamedAgentPoolProfileInput>;
-export const ProvisionedClusterPropertiesInputAgentPoolProfilesList = /*@__PURE__*/ S.Array(
+const ProvisionedClusterPropertiesInputAgentPoolProfilesList = /*@__PURE__*/ S.Array(
   NamedAgentPoolProfileInput,
 ) as any as S.Schema<ProvisionedClusterPropertiesInputAgentPoolProfilesList>;
 
@@ -2336,8 +2321,6 @@ export type ProvisionedClusterPropertiesInputAutoScalerProfileExpander =
   | "most-pods"
   | "priority"
   | "random";
-export const ProvisionedClusterPropertiesInputAutoScalerProfileExpander = S.String;
-
 /** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
 export interface ProvisionedClusterPropertiesInputAutoScalerProfile {
   /** Valid values are 'true' and 'false' */
@@ -2375,7 +2358,7 @@ export interface ProvisionedClusterPropertiesInputAutoScalerProfile {
   /** The default is true. */
   skip_nodes_with_system_pods?: string;
 }
-export const ProvisionedClusterPropertiesInputAutoScalerProfile =
+const ProvisionedClusterPropertiesInputAutoScalerProfile =
   ProvisionedClusterPropertiesAutoScalerProfile as any as S.Schema<ProvisionedClusterPropertiesInputAutoScalerProfile>;
 
 /** Properties of the provisioned cluster. */
@@ -2401,7 +2384,7 @@ export interface ProvisionedClusterPropertiesInput {
   /** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
   autoScalerProfile?: ProvisionedClusterPropertiesInputAutoScalerProfile;
 }
-export const ProvisionedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linuxProfile: S.optional(LinuxProfileProperties),
     controlPlane: S.optional(ControlPlaneProfile),
@@ -2424,7 +2407,7 @@ export interface ProvisionedClusterInstancesCreateOrUpdateRequest {
   properties?: ProvisionedClusterPropertiesInput;
   extendedLocation?: ExtendedLocation;
 }
-export const ProvisionedClusterInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedClusterInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
     properties: S.optional(ProvisionedClusterPropertiesInput),
@@ -2453,7 +2436,7 @@ export interface ProvisionedClusterInstancesCreateOrUpdateResponse {
   properties?: ProvisionedClusterProperties;
   extendedLocation?: ExtendedLocation;
 }
-export const ProvisionedClusterInstancesCreateOrUpdateResponse =
+const ProvisionedClusterInstancesCreateOrUpdateResponse =
   GetProvisionedClusterInstanceResponse as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateResponse>;
 
 /** Defines the resource properties for the hybrid identity metadata. */
@@ -2463,7 +2446,7 @@ export interface HybridIdentityMetadataPropertiesInput {
   /** Onboarding public key for provisioning the Managed identity for the connected cluster. */
   publicKey?: string;
 }
-export const HybridIdentityMetadataPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const HybridIdentityMetadataPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUid: S.optional(S.String),
     publicKey: S.optional(S.String),
@@ -2478,7 +2461,7 @@ export interface PutHybridIdentityMetadataRequest {
   /** Resource properties. */
   properties: HybridIdentityMetadataPropertiesInput;
 }
-export const PutHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHybridIdentityMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedClusterResourceUri: S.String.pipe(T.Label()),
     properties: HybridIdentityMetadataPropertiesInput,
@@ -2506,7 +2489,7 @@ export interface PutHybridIdentityMetadataResponse {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
-export const PutHybridIdentityMetadataResponse =
+const PutHybridIdentityMetadataResponse =
   GetHybridIdentityMetadataResponse as any as S.Schema<PutHybridIdentityMetadataResponse>;
 
 export interface PutKubernetesVersionsRequest {
@@ -2514,7 +2497,7 @@ export interface PutKubernetesVersionsRequest {
   customLocationResourceUri: string;
   extendedLocation?: ExtendedLocation;
 }
-export const PutKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
     extendedLocation: S.optional(ExtendedLocation),
@@ -2532,17 +2515,11 @@ export const PutKubernetesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Kubernetes versions */
 export type PutKubernetesVersionsResponsePropertiesValuesList = Array<KubernetesVersionProperties>;
-export const PutKubernetesVersionsResponsePropertiesValuesList =
-  GetKubernetesVersionsResponsePropertiesValuesList as any as S.Schema<PutKubernetesVersionsResponsePropertiesValuesList>;
-
 export interface PutKubernetesVersionsResponseProperties {
   provisioningState?: ProvisioningState;
   /** List of supported Kubernetes versions */
   values?: PutKubernetesVersionsResponsePropertiesValuesList;
 }
-export const PutKubernetesVersionsResponseProperties =
-  GetKubernetesVersionsResponseProperties as any as S.Schema<PutKubernetesVersionsResponseProperties>;
-
 export interface PutKubernetesVersionsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2555,7 +2532,7 @@ export interface PutKubernetesVersionsResponse {
   extendedLocation?: ExtendedLocation;
   properties?: PutKubernetesVersionsResponseProperties;
 }
-export const PutKubernetesVersionsResponse =
+const PutKubernetesVersionsResponse =
   GetKubernetesVersionsResponse as any as S.Schema<PutKubernetesVersionsResponse>;
 
 export interface PutVMSkusRequest {
@@ -2563,7 +2540,7 @@ export interface PutVMSkusRequest {
   customLocationResourceUri: string;
   extendedLocation?: ExtendedLocation;
 }
-export const PutVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocationResourceUri: S.String.pipe(T.Label()),
     extendedLocation: S.optional(ExtendedLocation),
@@ -2579,17 +2556,11 @@ export const PutVMSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported VM SKUs. */
 export type PutVMSkusResponsePropertiesValuesList = Array<VmSkuProperties>;
-export const PutVMSkusResponsePropertiesValuesList =
-  GetVMSkusResponsePropertiesValuesList as any as S.Schema<PutVMSkusResponsePropertiesValuesList>;
-
 export interface PutVMSkusResponseProperties {
   provisioningState?: ProvisioningState;
   /** List of supported VM SKUs. */
   values?: PutVMSkusResponsePropertiesValuesList;
 }
-export const PutVMSkusResponseProperties =
-  GetVMSkusResponseProperties as any as S.Schema<PutVMSkusResponseProperties>;
-
 export interface PutVMSkusResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2602,11 +2573,11 @@ export interface PutVMSkusResponse {
   extendedLocation?: ExtendedLocation;
   properties?: PutVMSkusResponseProperties;
 }
-export const PutVMSkusResponse = GetVMSkusResponse as any as S.Schema<PutVMSkusResponse>;
+const PutVMSkusResponse = GetVMSkusResponse as any as S.Schema<PutVMSkusResponse>;
 
 /** Resource tags */
 export type UpdateVirtualNetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkRequestTagsMap =
+const UpdateVirtualNetworkRequestTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
 
 export interface UpdateVirtualNetworkRequest {
@@ -2619,7 +2590,7 @@ export interface UpdateVirtualNetworkRequest {
   /** Resource tags */
   tags?: UpdateVirtualNetworkRequestTagsMap;
 }
-export const UpdateVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2639,13 +2610,11 @@ export const UpdateVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkResponseTagsMap =
+const UpdateVirtualNetworkResponseTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<UpdateVirtualNetworkResponseTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type UpdateVirtualNetworkResponseExtendedLocationType = "CustomLocation";
-export const UpdateVirtualNetworkResponseExtendedLocationType = S.String;
-
 /** Extended location pointing to the underlying infrastructure */
 export interface UpdateVirtualNetworkResponseExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
@@ -2653,7 +2622,7 @@ export interface UpdateVirtualNetworkResponseExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const UpdateVirtualNetworkResponseExtendedLocation =
+const UpdateVirtualNetworkResponseExtendedLocation =
   GetVirtualNetworkResponseExtendedLocation as any as S.Schema<UpdateVirtualNetworkResponseExtendedLocation>;
 
 export interface UpdateVirtualNetworkResponse {
@@ -2673,7 +2642,7 @@ export interface UpdateVirtualNetworkResponse {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: UpdateVirtualNetworkResponseExtendedLocation;
 }
-export const UpdateVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2690,39 +2659,29 @@ export const UpdateVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworksCreateOrUpdateRequestTagsMap =
+const VirtualNetworksCreateOrUpdateRequestTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
 
 /** Infrastructure network profile for HCI platform */
 export type VirtualNetworkPropertiesInputInfraVnetProfileHci =
   VirtualNetworkPropertiesInfraVnetProfileHci;
-export const VirtualNetworkPropertiesInputInfraVnetProfileHci =
-  VirtualNetworkPropertiesInfraVnetProfileHci;
-
 export type VirtualNetworkPropertiesInputInfraVnetProfile =
   VirtualNetworkPropertiesInfraVnetProfile;
-export const VirtualNetworkPropertiesInputInfraVnetProfile =
-  VirtualNetworkPropertiesInfraVnetProfile;
-
 export type VirtualNetworkPropertiesInputVipPoolItem = VirtualNetworkPropertiesVipPoolItem;
-export const VirtualNetworkPropertiesInputVipPoolItem = VirtualNetworkPropertiesVipPoolItem;
-
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesInputVipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
-export const VirtualNetworkPropertiesInputVipPoolList =
+const VirtualNetworkPropertiesInputVipPoolList =
   VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesInputVipPoolList>;
 
 export type VirtualNetworkPropertiesInputVmipPoolItem = VirtualNetworkPropertiesVipPoolItem;
-export const VirtualNetworkPropertiesInputVmipPoolItem = VirtualNetworkPropertiesVipPoolItem;
-
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesInputVmipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
-export const VirtualNetworkPropertiesInputVmipPoolList =
+const VirtualNetworkPropertiesInputVmipPoolList =
   VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
 export type VirtualNetworkPropertiesInputDnsServersList = Array<string>;
-export const VirtualNetworkPropertiesInputDnsServersList =
+const VirtualNetworkPropertiesInputDnsServersList =
   AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<VirtualNetworkPropertiesInputDnsServersList>;
 
 /** Properties of the virtual network resource */
@@ -2741,7 +2700,7 @@ export interface VirtualNetworkPropertiesInput {
   /** VLAN Id used by the network */
   vlanID?: number;
 }
-export const VirtualNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infraVnetProfile: S.optional(VirtualNetworkPropertiesInfraVnetProfile),
     vipPool: S.optional(VirtualNetworkPropertiesInputVipPoolList),
@@ -2757,8 +2716,6 @@ export const VirtualNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksCreateOrUpdateRequestExtendedLocationType = "CustomLocation";
-export const VirtualNetworksCreateOrUpdateRequestExtendedLocationType = S.String;
-
 /** Extended location pointing to the underlying infrastructure */
 export interface VirtualNetworksCreateOrUpdateRequestExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
@@ -2766,7 +2723,7 @@ export interface VirtualNetworksCreateOrUpdateRequestExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const VirtualNetworksCreateOrUpdateRequestExtendedLocation =
+const VirtualNetworksCreateOrUpdateRequestExtendedLocation =
   GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworksCreateOrUpdateRequestExtendedLocation>;
 
 export interface VirtualNetworksCreateOrUpdateRequest {
@@ -2784,7 +2741,7 @@ export interface VirtualNetworksCreateOrUpdateRequest {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: VirtualNetworksCreateOrUpdateRequestExtendedLocation;
 }
-export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2807,13 +2764,11 @@ export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworksCreateOrUpdateResponseTagsMap =
+const VirtualNetworksCreateOrUpdateResponseTagsMap =
   AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworksCreateOrUpdateResponseTagsMap>;
 
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksCreateOrUpdateResponseExtendedLocationType = "CustomLocation";
-export const VirtualNetworksCreateOrUpdateResponseExtendedLocationType = S.String;
-
 /** Extended location pointing to the underlying infrastructure */
 export interface VirtualNetworksCreateOrUpdateResponseExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
@@ -2821,7 +2776,7 @@ export interface VirtualNetworksCreateOrUpdateResponseExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
-export const VirtualNetworksCreateOrUpdateResponseExtendedLocation =
+const VirtualNetworksCreateOrUpdateResponseExtendedLocation =
   GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworksCreateOrUpdateResponseExtendedLocation>;
 
 export interface VirtualNetworksCreateOrUpdateResponse {
@@ -2841,7 +2796,7 @@ export interface VirtualNetworksCreateOrUpdateResponse {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: VirtualNetworksCreateOrUpdateResponseExtendedLocation;
 }
-export const VirtualNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

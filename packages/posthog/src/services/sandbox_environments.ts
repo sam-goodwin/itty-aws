@@ -37,17 +37,17 @@ export class NotFound
 
 /** * `trusted` - Trusted * `full` - Full * `custom` - Custom */
 export type SandboxEnvironmentNetworkAccessLevelEnum = "trusted" | "full" | "custom";
-export const SandboxEnvironmentNetworkAccessLevelEnum = S.String;
+const SandboxEnvironmentNetworkAccessLevelEnum = S.String;
 
 /** Allowed domains for custom network access. */
 export type CreateSandboxRequestAllowedDomainsList = Array<string>;
-export const CreateSandboxRequestAllowedDomainsList = /*@__PURE__*/ S.Array(
+const CreateSandboxRequestAllowedDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateSandboxRequestAllowedDomainsList>;
 
 /** Repositories this environment applies to (format: org/repo). */
 export type CreateSandboxRequestRepositoriesList = Array<string>;
-export const CreateSandboxRequestRepositoriesList =
+const CreateSandboxRequestRepositoriesList =
   CreateSandboxRequestAllowedDomainsList as any as S.Schema<CreateSandboxRequestRepositoriesList>;
 
 export interface CreateSandboxRequest {
@@ -70,7 +70,7 @@ export interface CreateSandboxRequest {
   /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
   custom_image_id?: string | null;
 }
-export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -87,24 +87,24 @@ export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSandboxRequest" }) as any as S.Schema<CreateSandboxRequest>;
 
 export type SandboxEnvironmentDTOAllowedDomainsList = Array<string>;
-export const SandboxEnvironmentDTOAllowedDomainsList =
+const SandboxEnvironmentDTOAllowedDomainsList =
   CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOAllowedDomainsList>;
 
 export type SandboxEnvironmentDTORepositoriesList = Array<string>;
-export const SandboxEnvironmentDTORepositoriesList =
+const SandboxEnvironmentDTORepositoriesList =
   CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTORepositoriesList>;
 
 /** Names of the environment variables that are set, sorted. Values are write-only and never returned. */
 export type SandboxEnvironmentDTOEnvironmentVariableKeysList = Array<string>;
-export const SandboxEnvironmentDTOEnvironmentVariableKeysList =
+const SandboxEnvironmentDTOEnvironmentVariableKeysList =
   CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOEnvironmentVariableKeysList>;
 
 export type SandboxEnvironmentDTOEffectiveDomainsList = Array<string>;
-export const SandboxEnvironmentDTOEffectiveDomainsList =
+const SandboxEnvironmentDTOEffectiveDomainsList =
   CreateSandboxRequestAllowedDomainsList as any as S.Schema<SandboxEnvironmentDTOEffectiveDomainsList>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
@@ -121,7 +121,7 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -157,7 +157,7 @@ export interface SandboxEnvironmentDTO {
   custom_image_name?: string | null;
   custom_image_status?: string | null;
 }
-export const SandboxEnvironmentDTO = /*@__PURE__*/ S.suspend(() =>
+const SandboxEnvironmentDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -184,7 +184,7 @@ export interface GetSandboxRequest {
   project_id: string;
   id: string;
 }
-export const GetSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -205,7 +205,7 @@ export interface ListSandboxRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -216,7 +216,7 @@ export const ListSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSandboxRequest" }) as any as S.Schema<ListSandboxRequest>;
 
 export type PaginatedSandboxEnvironmentDTOListResultsList = Array<SandboxEnvironmentDTO>;
-export const PaginatedSandboxEnvironmentDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSandboxEnvironmentDTOListResultsList = /*@__PURE__*/ S.Array(
   SandboxEnvironmentDTO,
 ) as any as S.Schema<PaginatedSandboxEnvironmentDTOListResultsList>;
 
@@ -226,7 +226,7 @@ export interface PaginatedSandboxEnvironmentDTOList {
   previous?: string | null;
   results: PaginatedSandboxEnvironmentDTOListResultsList;
 }
-export const PaginatedSandboxEnvironmentDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSandboxEnvironmentDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -242,7 +242,7 @@ export interface SandboxDestroyRequest {
   project_id: string;
   id: string;
 }
-export const SandboxDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -256,18 +256,18 @@ export const SandboxDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxDestroyRequest" }) as any as S.Schema<SandboxDestroyRequest>;
 
 export interface SandboxDestroyResponse {}
-export const SandboxDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SandboxDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SandboxDestroyResponse",
 }) as any as S.Schema<SandboxDestroyResponse>;
 
 /** Allowed domains for custom network access. */
 export type UpdateSandboxPartialRequestAllowedDomainsList = Array<string>;
-export const UpdateSandboxPartialRequestAllowedDomainsList =
+const UpdateSandboxPartialRequestAllowedDomainsList =
   CreateSandboxRequestAllowedDomainsList as any as S.Schema<UpdateSandboxPartialRequestAllowedDomainsList>;
 
 /** Repositories this environment applies to (format: org/repo). */
 export type UpdateSandboxPartialRequestRepositoriesList = Array<string>;
-export const UpdateSandboxPartialRequestRepositoriesList =
+const UpdateSandboxPartialRequestRepositoriesList =
   CreateSandboxRequestAllowedDomainsList as any as S.Schema<UpdateSandboxPartialRequestRepositoriesList>;
 
 export interface UpdateSandboxPartialRequest {
@@ -291,7 +291,7 @@ export interface UpdateSandboxPartialRequest {
   /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
   custom_image_id?: string | null;
 }
-export const UpdateSandboxPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSandboxPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

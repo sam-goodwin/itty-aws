@@ -652,7 +652,7 @@ export interface AddSourceIdentifierToSubscriptionMessage {
   SubscriptionName?: string;
   SourceIdentifier?: string;
 }
-export const AddSourceIdentifierToSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const AddSourceIdentifierToSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SubscriptionName: S.optional(S.String), SourceIdentifier: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -660,11 +660,11 @@ export const AddSourceIdentifierToSubscriptionMessage = /*@__PURE__*/ S.suspend(
   identifier: "AddSourceIdentifierToSubscriptionMessage",
 }) as any as S.Schema<AddSourceIdentifierToSubscriptionMessage>;
 export type SourceIdsList = string[];
-export const SourceIdsList = /*@__PURE__*/ S.Array(
+const SourceIdsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SourceId")),
 );
 export type EventCategoriesList = string[];
-export const EventCategoriesList = /*@__PURE__*/ S.Array(
+const EventCategoriesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EventCategory")),
 );
 export interface EventSubscription {
@@ -679,7 +679,7 @@ export interface EventSubscription {
   Enabled?: boolean;
   EventSubscriptionArn?: string;
 }
-export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
+const EventSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CustomerAwsId: S.optional(S.String),
     CustSubscriptionId: S.optional(S.String),
@@ -696,7 +696,7 @@ export const EventSubscription = /*@__PURE__*/ S.suspend(() =>
 export interface AddSourceIdentifierToSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-export const AddSourceIdentifierToSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+const AddSourceIdentifierToSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
 ).annotate({
   identifier: "AddSourceIdentifierToSubscriptionResult",
@@ -705,26 +705,24 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(
+const TagList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ Tag.pipe(/*@__PURE__*/ T.XmlName("Tag")).annotate({ identifier: "Tag" }),
 );
 export interface AddTagsToResourceMessage {
   ResourceName?: string;
   Tags?: Tag[];
 }
-export const AddTagsToResourceMessage = /*@__PURE__*/ S.suspend(() =>
+const AddTagsToResourceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceName: S.optional(S.String), Tags: S.optional(TagList) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "AddTagsToResourceMessage" }) as any as S.Schema<AddTagsToResourceMessage>;
 export interface AddTagsToResourceResponse {}
-export const AddTagsToResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
+const AddTagsToResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "AddTagsToResourceResponse",
 }) as any as S.Schema<AddTagsToResourceResponse>;
 export interface ApplyPendingMaintenanceActionMessage {
@@ -732,7 +730,7 @@ export interface ApplyPendingMaintenanceActionMessage {
   ApplyAction?: string;
   OptInType?: string;
 }
-export const ApplyPendingMaintenanceActionMessage = /*@__PURE__*/ S.suspend(() =>
+const ApplyPendingMaintenanceActionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceIdentifier: S.optional(S.String),
     ApplyAction: S.optional(S.String),
@@ -749,7 +747,7 @@ export interface PendingMaintenanceAction {
   CurrentApplyDate?: Date;
   Description?: string;
 }
-export const PendingMaintenanceAction = /*@__PURE__*/ S.suspend(() =>
+const PendingMaintenanceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Action: S.optional(S.String),
     AutoAppliedAfterDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -760,7 +758,7 @@ export const PendingMaintenanceAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PendingMaintenanceAction" }) as any as S.Schema<PendingMaintenanceAction>;
 export type PendingMaintenanceActionDetails = PendingMaintenanceAction[];
-export const PendingMaintenanceActionDetails = /*@__PURE__*/ S.Array(
+const PendingMaintenanceActionDetails = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ PendingMaintenanceAction.pipe(
     /*@__PURE__*/ T.XmlName("PendingMaintenanceAction"),
   ).annotate({
@@ -771,7 +769,7 @@ export interface ResourcePendingMaintenanceActions {
   ResourceIdentifier?: string;
   PendingMaintenanceActionDetails?: PendingMaintenanceAction[];
 }
-export const ResourcePendingMaintenanceActions = /*@__PURE__*/ S.suspend(() =>
+const ResourcePendingMaintenanceActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceIdentifier: S.optional(S.String),
     PendingMaintenanceActionDetails: S.optional(PendingMaintenanceActionDetails),
@@ -782,7 +780,7 @@ export const ResourcePendingMaintenanceActions = /*@__PURE__*/ S.suspend(() =>
 export interface ApplyPendingMaintenanceActionResult {
   ResourcePendingMaintenanceActions?: ResourcePendingMaintenanceActions;
 }
-export const ApplyPendingMaintenanceActionResult = /*@__PURE__*/ S.suspend(() =>
+const ApplyPendingMaintenanceActionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourcePendingMaintenanceActions: S.optional(ResourcePendingMaintenanceActions),
   }).pipe(ns),
@@ -795,7 +793,7 @@ export interface CopyDBClusterParameterGroupMessage {
   TargetDBClusterParameterGroupDescription?: string;
   Tags?: Tag[];
 }
-export const CopyDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const CopyDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceDBClusterParameterGroupIdentifier: S.optional(S.String),
     TargetDBClusterParameterGroupIdentifier: S.optional(S.String),
@@ -811,7 +809,7 @@ export interface DBClusterParameterGroup {
   Description?: string;
   DBClusterParameterGroupArn?: string;
 }
-export const DBClusterParameterGroup = /*@__PURE__*/ S.suspend(() =>
+const DBClusterParameterGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterParameterGroupName: S.optional(S.String),
     DBParameterGroupFamily: S.optional(S.String),
@@ -822,7 +820,7 @@ export const DBClusterParameterGroup = /*@__PURE__*/ S.suspend(() =>
 export interface CopyDBClusterParameterGroupResult {
   DBClusterParameterGroup?: DBClusterParameterGroup;
 }
-export const CopyDBClusterParameterGroupResult = /*@__PURE__*/ S.suspend(() =>
+const CopyDBClusterParameterGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterParameterGroup: S.optional(DBClusterParameterGroup) }).pipe(ns),
 ).annotate({
   identifier: "CopyDBClusterParameterGroupResult",
@@ -835,7 +833,7 @@ export interface CopyDBClusterSnapshotMessage {
   CopyTags?: boolean;
   Tags?: Tag[];
 }
-export const CopyDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+const CopyDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceDBClusterSnapshotIdentifier: S.optional(S.String),
     TargetDBClusterSnapshotIdentifier: S.optional(S.String),
@@ -848,7 +846,7 @@ export const CopyDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "CopyDBClusterSnapshotMessage",
 }) as any as S.Schema<CopyDBClusterSnapshotMessage>;
 export type AvailabilityZones = string[];
-export const AvailabilityZones = /*@__PURE__*/ S.Array(
+const AvailabilityZones = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone")),
 );
 export interface DBClusterSnapshot {
@@ -871,7 +869,7 @@ export interface DBClusterSnapshot {
   SourceDBClusterSnapshotArn?: string;
   StorageType?: string;
 }
-export const DBClusterSnapshot = /*@__PURE__*/ S.suspend(() =>
+const DBClusterSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AvailabilityZones: S.optional(AvailabilityZones),
     DBClusterSnapshotIdentifier: S.optional(S.String),
@@ -896,23 +894,23 @@ export const DBClusterSnapshot = /*@__PURE__*/ S.suspend(() =>
 export interface CopyDBClusterSnapshotResult {
   DBClusterSnapshot?: DBClusterSnapshot;
 }
-export const CopyDBClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+const CopyDBClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterSnapshot: S.optional(DBClusterSnapshot) }).pipe(ns),
 ).annotate({
   identifier: "CopyDBClusterSnapshotResult",
 }) as any as S.Schema<CopyDBClusterSnapshotResult>;
 export type VpcSecurityGroupIdList = string[];
-export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(
+const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupId")),
 );
 export type LogTypeList = string[];
-export const LogTypeList = /*@__PURE__*/ S.Array(S.String);
+const LogTypeList = /*@__PURE__*/ S.Array(S.String);
 export type GlobalClusterIdentifier = string;
 export interface ServerlessV2ScalingConfiguration {
   MinCapacity?: number;
   MaxCapacity?: number;
 }
-export const ServerlessV2ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ServerlessV2ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MinCapacity: S.optional(S.Number), MaxCapacity: S.optional(S.Number) }),
 ).annotate({
   identifier: "ServerlessV2ScalingConfiguration",
@@ -945,7 +943,7 @@ export interface CreateDBClusterMessage {
   NetworkType?: string;
   CopyTagsToSnapshot?: boolean;
 }
-export const CreateDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AvailabilityZones: S.optional(AvailabilityZones),
     BackupRetentionPeriod: S.optional(S.Number),
@@ -976,7 +974,7 @@ export const CreateDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateDBClusterMessage" }) as any as S.Schema<CreateDBClusterMessage>;
 export type ReadReplicaIdentifierList = string[];
-export const ReadReplicaIdentifierList = /*@__PURE__*/ S.Array(
+const ReadReplicaIdentifierList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReadReplicaIdentifier")),
 );
 export interface DBClusterMember {
@@ -985,7 +983,7 @@ export interface DBClusterMember {
   DBClusterParameterGroupStatus?: string;
   PromotionTier?: number;
 }
-export const DBClusterMember = /*@__PURE__*/ S.suspend(() =>
+const DBClusterMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBInstanceIdentifier: S.optional(S.String),
     IsClusterWriter: S.optional(S.Boolean),
@@ -994,7 +992,7 @@ export const DBClusterMember = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DBClusterMember" }) as any as S.Schema<DBClusterMember>;
 export type DBClusterMemberList = DBClusterMember[];
-export const DBClusterMemberList = /*@__PURE__*/ S.Array(
+const DBClusterMemberList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBClusterMember.pipe(/*@__PURE__*/ T.XmlName("DBClusterMember")).annotate({
     identifier: "DBClusterMember",
   }),
@@ -1003,13 +1001,13 @@ export interface VpcSecurityGroupMembership {
   VpcSecurityGroupId?: string;
   Status?: string;
 }
-export const VpcSecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
+const VpcSecurityGroupMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcSecurityGroupId: S.optional(S.String), Status: S.optional(S.String) }),
 ).annotate({
   identifier: "VpcSecurityGroupMembership",
 }) as any as S.Schema<VpcSecurityGroupMembership>;
 export type VpcSecurityGroupMembershipList = VpcSecurityGroupMembership[];
-export const VpcSecurityGroupMembershipList = /*@__PURE__*/ S.Array(
+const VpcSecurityGroupMembershipList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ VpcSecurityGroupMembership.pipe(
     /*@__PURE__*/ T.XmlName("VpcSecurityGroupMembership"),
   ).annotate({
@@ -1020,11 +1018,11 @@ export interface DBClusterRole {
   RoleArn?: string;
   Status?: string;
 }
-export const DBClusterRole = /*@__PURE__*/ S.suspend(() =>
+const DBClusterRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RoleArn: S.optional(S.String), Status: S.optional(S.String) }),
 ).annotate({ identifier: "DBClusterRole" }) as any as S.Schema<DBClusterRole>;
 export type DBClusterRoles = DBClusterRole[];
-export const DBClusterRoles = /*@__PURE__*/ S.Array(
+const DBClusterRoles = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBClusterRole.pipe(/*@__PURE__*/ T.XmlName("DBClusterRole")).annotate({
     identifier: "DBClusterRole",
   }),
@@ -1033,7 +1031,7 @@ export interface ServerlessV2ScalingConfigurationInfo {
   MinCapacity?: number;
   MaxCapacity?: number;
 }
-export const ServerlessV2ScalingConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
+const ServerlessV2ScalingConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MinCapacity: S.optional(S.Number), MaxCapacity: S.optional(S.Number) }),
 ).annotate({
   identifier: "ServerlessV2ScalingConfigurationInfo",
@@ -1043,7 +1041,7 @@ export interface ClusterMasterUserSecret {
   SecretStatus?: string;
   KmsKeyId?: string;
 }
-export const ClusterMasterUserSecret = /*@__PURE__*/ S.suspend(() =>
+const ClusterMasterUserSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SecretArn: S.optional(S.String),
     SecretStatus: S.optional(S.String),
@@ -1090,7 +1088,7 @@ export interface DBCluster {
   NetworkType?: string;
   CopyTagsToSnapshot?: boolean;
 }
-export const DBCluster = /*@__PURE__*/ S.suspend(() =>
+const DBCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AvailabilityZones: S.optional(AvailabilityZones),
     BackupRetentionPeriod: S.optional(S.Number),
@@ -1137,7 +1135,7 @@ export const DBCluster = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDBClusterResult {
   DBCluster?: DBCluster;
 }
-export const CreateDBClusterResult = /*@__PURE__*/ S.suspend(() =>
+const CreateDBClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBCluster: S.optional(DBCluster) }).pipe(ns),
 ).annotate({ identifier: "CreateDBClusterResult" }) as any as S.Schema<CreateDBClusterResult>;
 export interface CreateDBClusterParameterGroupMessage {
@@ -1146,7 +1144,7 @@ export interface CreateDBClusterParameterGroupMessage {
   Description?: string;
   Tags?: Tag[];
 }
-export const CreateDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterParameterGroupName: S.optional(S.String),
     DBParameterGroupFamily: S.optional(S.String),
@@ -1159,7 +1157,7 @@ export const CreateDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =
 export interface CreateDBClusterParameterGroupResult {
   DBClusterParameterGroup?: DBClusterParameterGroup;
 }
-export const CreateDBClusterParameterGroupResult = /*@__PURE__*/ S.suspend(() =>
+const CreateDBClusterParameterGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterParameterGroup: S.optional(DBClusterParameterGroup) }).pipe(ns),
 ).annotate({
   identifier: "CreateDBClusterParameterGroupResult",
@@ -1169,7 +1167,7 @@ export interface CreateDBClusterSnapshotMessage {
   DBClusterIdentifier?: string;
   Tags?: Tag[];
 }
-export const CreateDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterSnapshotIdentifier: S.optional(S.String),
     DBClusterIdentifier: S.optional(S.String),
@@ -1181,7 +1179,7 @@ export const CreateDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDBClusterSnapshotResult {
   DBClusterSnapshot?: DBClusterSnapshot;
 }
-export const CreateDBClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+const CreateDBClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterSnapshot: S.optional(DBClusterSnapshot) }).pipe(ns),
 ).annotate({
   identifier: "CreateDBClusterSnapshotResult",
@@ -1201,7 +1199,7 @@ export interface CreateDBInstanceMessage {
   PerformanceInsightsKMSKeyId?: string;
   CACertificateIdentifier?: string;
 }
-export const CreateDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBInstanceIdentifier: S.optional(S.String),
     DBInstanceClass: S.optional(S.String),
@@ -1223,7 +1221,7 @@ export interface Endpoint {
   Port?: number;
   HostedZoneId?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Address: S.optional(S.String),
     Port: S.optional(S.Number),
@@ -1233,7 +1231,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 export interface AvailabilityZone {
   Name?: string;
 }
-export const AvailabilityZone = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String) }),
 ).annotate({ identifier: "AvailabilityZone" }) as any as S.Schema<AvailabilityZone>;
 export interface Subnet {
@@ -1241,7 +1239,7 @@ export interface Subnet {
   SubnetAvailabilityZone?: AvailabilityZone;
   SubnetStatus?: string;
 }
-export const Subnet = /*@__PURE__*/ S.suspend(() =>
+const Subnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubnetIdentifier: S.optional(S.String),
     SubnetAvailabilityZone: S.optional(AvailabilityZone),
@@ -1249,11 +1247,11 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 export type SubnetList = Subnet[];
-export const SubnetList = /*@__PURE__*/ S.Array(
+const SubnetList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ Subnet.pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({ identifier: "Subnet" }),
 );
 export type NetworkTypeList = string[];
-export const NetworkTypeList = /*@__PURE__*/ S.Array(S.String);
+const NetworkTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface DBSubnetGroup {
   DBSubnetGroupName?: string;
   DBSubnetGroupDescription?: string;
@@ -1263,7 +1261,7 @@ export interface DBSubnetGroup {
   DBSubnetGroupArn?: string;
   SupportedNetworkTypes?: string[];
 }
-export const DBSubnetGroup = /*@__PURE__*/ S.suspend(() =>
+const DBSubnetGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBSubnetGroupName: S.optional(S.String),
     DBSubnetGroupDescription: S.optional(S.String),
@@ -1278,7 +1276,7 @@ export interface PendingCloudwatchLogsExports {
   LogTypesToEnable?: string[];
   LogTypesToDisable?: string[];
 }
-export const PendingCloudwatchLogsExports = /*@__PURE__*/ S.suspend(() =>
+const PendingCloudwatchLogsExports = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LogTypesToEnable: S.optional(LogTypeList),
     LogTypesToDisable: S.optional(LogTypeList),
@@ -1302,7 +1300,7 @@ export interface PendingModifiedValues {
   DBSubnetGroupName?: string;
   PendingCloudwatchLogsExports?: PendingCloudwatchLogsExports;
 }
-export const PendingModifiedValues = /*@__PURE__*/ S.suspend(() =>
+const PendingModifiedValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBInstanceClass: S.optional(S.String),
     AllocatedStorage: S.optional(S.Number),
@@ -1326,7 +1324,7 @@ export interface DBInstanceStatusInfo {
   Status?: string;
   Message?: string;
 }
-export const DBInstanceStatusInfo = /*@__PURE__*/ S.suspend(() =>
+const DBInstanceStatusInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StatusType: S.optional(S.String),
     Normal: S.optional(S.Boolean),
@@ -1335,7 +1333,7 @@ export const DBInstanceStatusInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DBInstanceStatusInfo" }) as any as S.Schema<DBInstanceStatusInfo>;
 export type DBInstanceStatusInfoList = DBInstanceStatusInfo[];
-export const DBInstanceStatusInfoList = /*@__PURE__*/ S.Array(
+const DBInstanceStatusInfoList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBInstanceStatusInfo.pipe(/*@__PURE__*/ T.XmlName("DBInstanceStatusInfo")).annotate(
     {
       identifier: "DBInstanceStatusInfo",
@@ -1346,7 +1344,7 @@ export interface CertificateDetails {
   CAIdentifier?: string;
   ValidTill?: Date;
 }
-export const CertificateDetails = /*@__PURE__*/ S.suspend(() =>
+const CertificateDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CAIdentifier: S.optional(S.String),
     ValidTill: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -1384,7 +1382,7 @@ export interface DBInstance {
   PerformanceInsightsEnabled?: boolean;
   PerformanceInsightsKMSKeyId?: string;
 }
-export const DBInstance = /*@__PURE__*/ S.suspend(() =>
+const DBInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBInstanceIdentifier: S.optional(S.String),
     DBInstanceClass: S.optional(S.String),
@@ -1421,11 +1419,11 @@ export const DBInstance = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDBInstanceResult {
   DBInstance?: DBInstance;
 }
-export const CreateDBInstanceResult = /*@__PURE__*/ S.suspend(() =>
+const CreateDBInstanceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBInstance: S.optional(DBInstance) }).pipe(ns),
 ).annotate({ identifier: "CreateDBInstanceResult" }) as any as S.Schema<CreateDBInstanceResult>;
 export type SubnetIdentifierList = string[];
-export const SubnetIdentifierList = /*@__PURE__*/ S.Array(
+const SubnetIdentifierList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")),
 );
 export interface CreateDBSubnetGroupMessage {
@@ -1434,7 +1432,7 @@ export interface CreateDBSubnetGroupMessage {
   SubnetIds?: string[];
   Tags?: Tag[];
 }
-export const CreateDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBSubnetGroupName: S.optional(S.String),
     DBSubnetGroupDescription: S.optional(S.String),
@@ -1447,7 +1445,7 @@ export const CreateDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDBSubnetGroupResult {
   DBSubnetGroup?: DBSubnetGroup;
 }
-export const CreateDBSubnetGroupResult = /*@__PURE__*/ S.suspend(() =>
+const CreateDBSubnetGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBSubnetGroup: S.optional(DBSubnetGroup) }).pipe(ns),
 ).annotate({
   identifier: "CreateDBSubnetGroupResult",
@@ -1461,7 +1459,7 @@ export interface CreateEventSubscriptionMessage {
   Enabled?: boolean;
   Tags?: Tag[];
 }
-export const CreateEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubscriptionName: S.optional(S.String),
     SnsTopicArn: S.optional(S.String),
@@ -1477,7 +1475,7 @@ export const CreateEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEventSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-export const CreateEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+const CreateEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
 ).annotate({
   identifier: "CreateEventSubscriptionResult",
@@ -1491,7 +1489,7 @@ export interface CreateGlobalClusterMessage {
   DatabaseName?: string;
   StorageEncrypted?: boolean;
 }
-export const CreateGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalClusterIdentifier: S.optional(S.String),
     SourceDBClusterIdentifier: S.optional(S.String),
@@ -1505,12 +1503,12 @@ export const CreateGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGlobalClusterMessage",
 }) as any as S.Schema<CreateGlobalClusterMessage>;
 export type ReadersArnList = string[];
-export const ReadersArnList = /*@__PURE__*/ S.Array(S.String);
+const ReadersArnList = /*@__PURE__*/ S.Array(S.String);
 export type GlobalClusterMemberSynchronizationStatus =
   | "connected"
   | "pending-resync"
   | (string & {});
-export const GlobalClusterMemberSynchronizationStatus = S.String;
+const GlobalClusterMemberSynchronizationStatus = S.String;
 
 export interface GlobalClusterMember {
   DBClusterArn?: string;
@@ -1518,7 +1516,7 @@ export interface GlobalClusterMember {
   IsWriter?: boolean;
   SynchronizationStatus?: GlobalClusterMemberSynchronizationStatus;
 }
-export const GlobalClusterMember = /*@__PURE__*/ S.suspend(() =>
+const GlobalClusterMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterArn: S.optional(S.String),
     Readers: S.optional(ReadersArnList),
@@ -1527,13 +1525,13 @@ export const GlobalClusterMember = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GlobalClusterMember" }) as any as S.Schema<GlobalClusterMember>;
 export type GlobalClusterMemberList = GlobalClusterMember[];
-export const GlobalClusterMemberList = /*@__PURE__*/ S.Array(
+const GlobalClusterMemberList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ GlobalClusterMember.pipe(/*@__PURE__*/ T.XmlName("GlobalClusterMember")).annotate({
     identifier: "GlobalClusterMember",
   }),
 );
 export type FailoverStatus = "pending" | "failing-over" | "cancelling" | (string & {});
-export const FailoverStatus = S.String;
+const FailoverStatus = S.String;
 
 export interface FailoverState {
   Status?: FailoverStatus;
@@ -1541,7 +1539,7 @@ export interface FailoverState {
   ToDbClusterArn?: string;
   IsDataLossAllowed?: boolean;
 }
-export const FailoverState = /*@__PURE__*/ S.suspend(() =>
+const FailoverState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(FailoverStatus),
     FromDbClusterArn: S.optional(S.String),
@@ -1563,7 +1561,7 @@ export interface GlobalCluster {
   FailoverState?: FailoverState;
   TagList?: Tag[];
 }
-export const GlobalCluster = /*@__PURE__*/ S.suspend(() =>
+const GlobalCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalClusterIdentifier: S.optional(S.String),
     GlobalClusterResourceId: S.optional(S.String),
@@ -1582,7 +1580,7 @@ export const GlobalCluster = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGlobalClusterResult {
   GlobalCluster?: GlobalCluster;
 }
-export const CreateGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
+const CreateGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalCluster: S.optional(GlobalCluster) }).pipe(ns),
 ).annotate({
   identifier: "CreateGlobalClusterResult",
@@ -1592,7 +1590,7 @@ export interface DeleteDBClusterMessage {
   SkipFinalSnapshot?: boolean;
   FinalDBSnapshotIdentifier?: string;
 }
-export const DeleteDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterIdentifier: S.optional(S.String),
     SkipFinalSnapshot: S.optional(S.Boolean),
@@ -1602,13 +1600,13 @@ export const DeleteDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDBClusterResult {
   DBCluster?: DBCluster;
 }
-export const DeleteDBClusterResult = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBCluster: S.optional(DBCluster) }).pipe(ns),
 ).annotate({ identifier: "DeleteDBClusterResult" }) as any as S.Schema<DeleteDBClusterResult>;
 export interface DeleteDBClusterParameterGroupMessage {
   DBClusterParameterGroupName?: string;
 }
-export const DeleteDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterParameterGroupName: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1616,7 +1614,7 @@ export const DeleteDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =
   identifier: "DeleteDBClusterParameterGroupMessage",
 }) as any as S.Schema<DeleteDBClusterParameterGroupMessage>;
 export interface DeleteDBClusterParameterGroupResponse {}
-export const DeleteDBClusterParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBClusterParameterGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteDBClusterParameterGroupResponse",
@@ -1624,7 +1622,7 @@ export const DeleteDBClusterParameterGroupResponse = /*@__PURE__*/ S.suspend(() 
 export interface DeleteDBClusterSnapshotMessage {
   DBClusterSnapshotIdentifier?: string;
 }
-export const DeleteDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterSnapshotIdentifier: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1634,7 +1632,7 @@ export const DeleteDBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDBClusterSnapshotResult {
   DBClusterSnapshot?: DBClusterSnapshot;
 }
-export const DeleteDBClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterSnapshot: S.optional(DBClusterSnapshot) }).pipe(ns),
 ).annotate({
   identifier: "DeleteDBClusterSnapshotResult",
@@ -1642,7 +1640,7 @@ export const DeleteDBClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDBInstanceMessage {
   DBInstanceIdentifier?: string;
 }
-export const DeleteDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBInstanceIdentifier: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1650,13 +1648,13 @@ export const DeleteDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDBInstanceResult {
   DBInstance?: DBInstance;
 }
-export const DeleteDBInstanceResult = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBInstanceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBInstance: S.optional(DBInstance) }).pipe(ns),
 ).annotate({ identifier: "DeleteDBInstanceResult" }) as any as S.Schema<DeleteDBInstanceResult>;
 export interface DeleteDBSubnetGroupMessage {
   DBSubnetGroupName?: string;
 }
-export const DeleteDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBSubnetGroupName: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1664,15 +1662,13 @@ export const DeleteDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDBSubnetGroupMessage",
 }) as any as S.Schema<DeleteDBSubnetGroupMessage>;
 export interface DeleteDBSubnetGroupResponse {}
-export const DeleteDBSubnetGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
+const DeleteDBSubnetGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "DeleteDBSubnetGroupResponse",
 }) as any as S.Schema<DeleteDBSubnetGroupResponse>;
 export interface DeleteEventSubscriptionMessage {
   SubscriptionName?: string;
 }
-export const DeleteEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SubscriptionName: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1682,7 +1678,7 @@ export const DeleteEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEventSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-export const DeleteEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
 ).annotate({
   identifier: "DeleteEventSubscriptionResult",
@@ -1690,7 +1686,7 @@ export const DeleteEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGlobalClusterMessage {
   GlobalClusterIdentifier?: string;
 }
-export const DeleteGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const DeleteGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalClusterIdentifier: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1700,24 +1696,24 @@ export const DeleteGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteGlobalClusterResult {
   GlobalCluster?: GlobalCluster;
 }
-export const DeleteGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
+const DeleteGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalCluster: S.optional(GlobalCluster) }).pipe(ns),
 ).annotate({
   identifier: "DeleteGlobalClusterResult",
 }) as any as S.Schema<DeleteGlobalClusterResult>;
 export type FilterValueList = string[];
-export const FilterValueList = /*@__PURE__*/ S.Array(
+const FilterValueList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")),
 );
 export interface Filter {
   Name?: string;
   Values?: string[];
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), Values: S.optional(FilterValueList) }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(
+const FilterList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ Filter.pipe(/*@__PURE__*/ T.XmlName("Filter")).annotate({ identifier: "Filter" }),
 );
 export interface DescribeCertificatesMessage {
@@ -1726,7 +1722,7 @@ export interface DescribeCertificatesMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeCertificatesMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeCertificatesMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateIdentifier: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -1744,7 +1740,7 @@ export interface Certificate {
   ValidTill?: Date;
   CertificateArn?: string;
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
+const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateIdentifier: S.optional(S.String),
     CertificateType: S.optional(S.String),
@@ -1755,7 +1751,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 export type CertificateList = Certificate[];
-export const CertificateList = /*@__PURE__*/ S.Array(
+const CertificateList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ Certificate.pipe(/*@__PURE__*/ T.XmlName("Certificate")).annotate({
     identifier: "Certificate",
   }),
@@ -1764,7 +1760,7 @@ export interface CertificateMessage {
   Certificates?: Certificate[];
   Marker?: string;
 }
-export const CertificateMessage = /*@__PURE__*/ S.suspend(() =>
+const CertificateMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Certificates: S.optional(CertificateList), Marker: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "CertificateMessage" }) as any as S.Schema<CertificateMessage>;
 export interface DescribeDBClusterParameterGroupsMessage {
@@ -1773,7 +1769,7 @@ export interface DescribeDBClusterParameterGroupsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDBClusterParameterGroupsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBClusterParameterGroupsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterParameterGroupName: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -1784,7 +1780,7 @@ export const DescribeDBClusterParameterGroupsMessage = /*@__PURE__*/ S.suspend((
   identifier: "DescribeDBClusterParameterGroupsMessage",
 }) as any as S.Schema<DescribeDBClusterParameterGroupsMessage>;
 export type DBClusterParameterGroupList = DBClusterParameterGroup[];
-export const DBClusterParameterGroupList = /*@__PURE__*/ S.Array(
+const DBClusterParameterGroupList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBClusterParameterGroup.pipe(
     /*@__PURE__*/ T.XmlName("DBClusterParameterGroup"),
   ).annotate({
@@ -1795,7 +1791,7 @@ export interface DBClusterParameterGroupsMessage {
   Marker?: string;
   DBClusterParameterGroups?: DBClusterParameterGroup[];
 }
-export const DBClusterParameterGroupsMessage = /*@__PURE__*/ S.suspend(() =>
+const DBClusterParameterGroupsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Marker: S.optional(S.String),
     DBClusterParameterGroups: S.optional(DBClusterParameterGroupList),
@@ -1810,7 +1806,7 @@ export interface DescribeDBClusterParametersMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterParameterGroupName: S.optional(S.String),
     Source: S.optional(S.String),
@@ -1822,7 +1818,7 @@ export const DescribeDBClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBClusterParametersMessage",
 }) as any as S.Schema<DescribeDBClusterParametersMessage>;
 export type ApplyMethod = "immediate" | "pending-reboot" | (string & {});
-export const ApplyMethod = S.String;
+const ApplyMethod = S.String;
 
 export interface Parameter {
   ParameterName?: string;
@@ -1836,7 +1832,7 @@ export interface Parameter {
   MinimumEngineVersion?: string;
   ApplyMethod?: ApplyMethod;
 }
-export const Parameter = /*@__PURE__*/ S.suspend(() =>
+const Parameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ParameterName: S.optional(S.String),
     ParameterValue: S.optional(S.String),
@@ -1851,7 +1847,7 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 export type ParametersList = Parameter[];
-export const ParametersList = /*@__PURE__*/ S.Array(
+const ParametersList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ Parameter.pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
     identifier: "Parameter",
   }),
@@ -1860,7 +1856,7 @@ export interface DBClusterParameterGroupDetails {
   Parameters?: Parameter[];
   Marker?: string;
 }
-export const DBClusterParameterGroupDetails = /*@__PURE__*/ S.suspend(() =>
+const DBClusterParameterGroupDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Parameters: S.optional(ParametersList), Marker: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "DBClusterParameterGroupDetails",
@@ -1871,7 +1867,7 @@ export interface DescribeDBClustersMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDBClustersMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBClustersMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterIdentifier: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -1882,7 +1878,7 @@ export const DescribeDBClustersMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBClustersMessage",
 }) as any as S.Schema<DescribeDBClustersMessage>;
 export type DBClusterList = DBCluster[];
-export const DBClusterList = /*@__PURE__*/ S.Array(
+const DBClusterList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBCluster.pipe(/*@__PURE__*/ T.XmlName("DBCluster")).annotate({
     identifier: "DBCluster",
   }),
@@ -1891,13 +1887,13 @@ export interface DBClusterMessage {
   Marker?: string;
   DBClusters?: DBCluster[];
 }
-export const DBClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const DBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Marker: S.optional(S.String), DBClusters: S.optional(DBClusterList) }).pipe(ns),
 ).annotate({ identifier: "DBClusterMessage" }) as any as S.Schema<DBClusterMessage>;
 export interface DescribeDBClusterSnapshotAttributesMessage {
   DBClusterSnapshotIdentifier?: string;
 }
-export const DescribeDBClusterSnapshotAttributesMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBClusterSnapshotAttributesMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterSnapshotIdentifier: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1905,14 +1901,14 @@ export const DescribeDBClusterSnapshotAttributesMessage = /*@__PURE__*/ S.suspen
   identifier: "DescribeDBClusterSnapshotAttributesMessage",
 }) as any as S.Schema<DescribeDBClusterSnapshotAttributesMessage>;
 export type AttributeValueList = string[];
-export const AttributeValueList = /*@__PURE__*/ S.Array(
+const AttributeValueList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AttributeValue")),
 );
 export interface DBClusterSnapshotAttribute {
   AttributeName?: string;
   AttributeValues?: string[];
 }
-export const DBClusterSnapshotAttribute = /*@__PURE__*/ S.suspend(() =>
+const DBClusterSnapshotAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AttributeName: S.optional(S.String),
     AttributeValues: S.optional(AttributeValueList),
@@ -1921,7 +1917,7 @@ export const DBClusterSnapshotAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "DBClusterSnapshotAttribute",
 }) as any as S.Schema<DBClusterSnapshotAttribute>;
 export type DBClusterSnapshotAttributeList = DBClusterSnapshotAttribute[];
-export const DBClusterSnapshotAttributeList = /*@__PURE__*/ S.Array(
+const DBClusterSnapshotAttributeList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBClusterSnapshotAttribute.pipe(
     /*@__PURE__*/ T.XmlName("DBClusterSnapshotAttribute"),
   ).annotate({
@@ -1932,7 +1928,7 @@ export interface DBClusterSnapshotAttributesResult {
   DBClusterSnapshotIdentifier?: string;
   DBClusterSnapshotAttributes?: DBClusterSnapshotAttribute[];
 }
-export const DBClusterSnapshotAttributesResult = /*@__PURE__*/ S.suspend(() =>
+const DBClusterSnapshotAttributesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterSnapshotIdentifier: S.optional(S.String),
     DBClusterSnapshotAttributes: S.optional(DBClusterSnapshotAttributeList),
@@ -1943,7 +1939,7 @@ export const DBClusterSnapshotAttributesResult = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDBClusterSnapshotAttributesResult {
   DBClusterSnapshotAttributesResult?: DBClusterSnapshotAttributesResult;
 }
-export const DescribeDBClusterSnapshotAttributesResult = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBClusterSnapshotAttributesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterSnapshotAttributesResult: S.optional(DBClusterSnapshotAttributesResult),
   }).pipe(ns),
@@ -1960,7 +1956,7 @@ export interface DescribeDBClusterSnapshotsMessage {
   IncludeShared?: boolean;
   IncludePublic?: boolean;
 }
-export const DescribeDBClusterSnapshotsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBClusterSnapshotsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterIdentifier: S.optional(S.String),
     DBClusterSnapshotIdentifier: S.optional(S.String),
@@ -1975,7 +1971,7 @@ export const DescribeDBClusterSnapshotsMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBClusterSnapshotsMessage",
 }) as any as S.Schema<DescribeDBClusterSnapshotsMessage>;
 export type DBClusterSnapshotList = DBClusterSnapshot[];
-export const DBClusterSnapshotList = /*@__PURE__*/ S.Array(
+const DBClusterSnapshotList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBClusterSnapshot.pipe(/*@__PURE__*/ T.XmlName("DBClusterSnapshot")).annotate({
     identifier: "DBClusterSnapshot",
   }),
@@ -1984,7 +1980,7 @@ export interface DBClusterSnapshotMessage {
   Marker?: string;
   DBClusterSnapshots?: DBClusterSnapshot[];
 }
-export const DBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+const DBClusterSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Marker: S.optional(S.String),
     DBClusterSnapshots: S.optional(DBClusterSnapshotList),
@@ -2001,7 +1997,7 @@ export interface DescribeDBEngineVersionsMessage {
   ListSupportedCharacterSets?: boolean;
   ListSupportedTimezones?: boolean;
 }
-export const DescribeDBEngineVersionsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBEngineVersionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Engine: S.optional(S.String),
     EngineVersion: S.optional(S.String),
@@ -2023,7 +2019,7 @@ export interface UpgradeTarget {
   AutoUpgrade?: boolean;
   IsMajorVersionUpgrade?: boolean;
 }
-export const UpgradeTarget = /*@__PURE__*/ S.suspend(() =>
+const UpgradeTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Engine: S.optional(S.String),
     EngineVersion: S.optional(S.String),
@@ -2033,18 +2029,18 @@ export const UpgradeTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpgradeTarget" }) as any as S.Schema<UpgradeTarget>;
 export type ValidUpgradeTargetList = UpgradeTarget[];
-export const ValidUpgradeTargetList = /*@__PURE__*/ S.Array(
+const ValidUpgradeTargetList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ UpgradeTarget.pipe(/*@__PURE__*/ T.XmlName("UpgradeTarget")).annotate({
     identifier: "UpgradeTarget",
   }),
 );
 export type CACertificateIdentifiersList = string[];
-export const CACertificateIdentifiersList = /*@__PURE__*/ S.Array(S.String);
+const CACertificateIdentifiersList = /*@__PURE__*/ S.Array(S.String);
 export interface ServerlessV2FeaturesSupport {
   MinCapacity?: number;
   MaxCapacity?: number;
 }
-export const ServerlessV2FeaturesSupport = /*@__PURE__*/ S.suspend(() =>
+const ServerlessV2FeaturesSupport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MinCapacity: S.optional(S.Number), MaxCapacity: S.optional(S.Number) }),
 ).annotate({
   identifier: "ServerlessV2FeaturesSupport",
@@ -2062,7 +2058,7 @@ export interface DBEngineVersion {
   SupportsCertificateRotationWithoutRestart?: boolean;
   ServerlessV2FeaturesSupport?: ServerlessV2FeaturesSupport;
 }
-export const DBEngineVersion = /*@__PURE__*/ S.suspend(() =>
+const DBEngineVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Engine: S.optional(S.String),
     EngineVersion: S.optional(S.String),
@@ -2078,7 +2074,7 @@ export const DBEngineVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DBEngineVersion" }) as any as S.Schema<DBEngineVersion>;
 export type DBEngineVersionList = DBEngineVersion[];
-export const DBEngineVersionList = /*@__PURE__*/ S.Array(
+const DBEngineVersionList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBEngineVersion.pipe(/*@__PURE__*/ T.XmlName("DBEngineVersion")).annotate({
     identifier: "DBEngineVersion",
   }),
@@ -2087,7 +2083,7 @@ export interface DBEngineVersionMessage {
   Marker?: string;
   DBEngineVersions?: DBEngineVersion[];
 }
-export const DBEngineVersionMessage = /*@__PURE__*/ S.suspend(() =>
+const DBEngineVersionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Marker: S.optional(S.String),
     DBEngineVersions: S.optional(DBEngineVersionList),
@@ -2099,7 +2095,7 @@ export interface DescribeDBInstancesMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDBInstancesMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBInstancesMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBInstanceIdentifier: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -2110,7 +2106,7 @@ export const DescribeDBInstancesMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBInstancesMessage",
 }) as any as S.Schema<DescribeDBInstancesMessage>;
 export type DBInstanceList = DBInstance[];
-export const DBInstanceList = /*@__PURE__*/ S.Array(
+const DBInstanceList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBInstance.pipe(/*@__PURE__*/ T.XmlName("DBInstance")).annotate({
     identifier: "DBInstance",
   }),
@@ -2119,7 +2115,7 @@ export interface DBInstanceMessage {
   Marker?: string;
   DBInstances?: DBInstance[];
 }
-export const DBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+const DBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Marker: S.optional(S.String), DBInstances: S.optional(DBInstanceList) }).pipe(ns),
 ).annotate({ identifier: "DBInstanceMessage" }) as any as S.Schema<DBInstanceMessage>;
 export interface DescribeDBSubnetGroupsMessage {
@@ -2128,7 +2124,7 @@ export interface DescribeDBSubnetGroupsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeDBSubnetGroupsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeDBSubnetGroupsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBSubnetGroupName: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -2139,7 +2135,7 @@ export const DescribeDBSubnetGroupsMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDBSubnetGroupsMessage",
 }) as any as S.Schema<DescribeDBSubnetGroupsMessage>;
 export type DBSubnetGroups = DBSubnetGroup[];
-export const DBSubnetGroups = /*@__PURE__*/ S.Array(
+const DBSubnetGroups = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ DBSubnetGroup.pipe(/*@__PURE__*/ T.XmlName("DBSubnetGroup")).annotate({
     identifier: "DBSubnetGroup",
   }),
@@ -2148,7 +2144,7 @@ export interface DBSubnetGroupMessage {
   Marker?: string;
   DBSubnetGroups?: DBSubnetGroup[];
 }
-export const DBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const DBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Marker: S.optional(S.String), DBSubnetGroups: S.optional(DBSubnetGroups) }).pipe(ns),
 ).annotate({ identifier: "DBSubnetGroupMessage" }) as any as S.Schema<DBSubnetGroupMessage>;
 export interface DescribeEngineDefaultClusterParametersMessage {
@@ -2157,7 +2153,7 @@ export interface DescribeEngineDefaultClusterParametersMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEngineDefaultClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeEngineDefaultClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBParameterGroupFamily: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -2172,7 +2168,7 @@ export interface EngineDefaults {
   Marker?: string;
   Parameters?: Parameter[];
 }
-export const EngineDefaults = /*@__PURE__*/ S.suspend(() =>
+const EngineDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBParameterGroupFamily: S.optional(S.String),
     Marker: S.optional(S.String),
@@ -2182,7 +2178,7 @@ export const EngineDefaults = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeEngineDefaultClusterParametersResult {
   EngineDefaults?: EngineDefaults;
 }
-export const DescribeEngineDefaultClusterParametersResult = /*@__PURE__*/ S.suspend(() =>
+const DescribeEngineDefaultClusterParametersResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EngineDefaults: S.optional(EngineDefaults) }).pipe(ns),
 ).annotate({
   identifier: "DescribeEngineDefaultClusterParametersResult",
@@ -2191,7 +2187,7 @@ export interface DescribeEventCategoriesMessage {
   SourceType?: string;
   Filters?: Filter[];
 }
-export const DescribeEventCategoriesMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeEventCategoriesMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SourceType: S.optional(S.String), Filters: S.optional(FilterList) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2202,11 +2198,11 @@ export interface EventCategoriesMap {
   SourceType?: string;
   EventCategories?: string[];
 }
-export const EventCategoriesMap = /*@__PURE__*/ S.suspend(() =>
+const EventCategoriesMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SourceType: S.optional(S.String), EventCategories: S.optional(EventCategoriesList) }),
 ).annotate({ identifier: "EventCategoriesMap" }) as any as S.Schema<EventCategoriesMap>;
 export type EventCategoriesMapList = EventCategoriesMap[];
-export const EventCategoriesMapList = /*@__PURE__*/ S.Array(
+const EventCategoriesMapList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ EventCategoriesMap.pipe(/*@__PURE__*/ T.XmlName("EventCategoriesMap")).annotate({
     identifier: "EventCategoriesMap",
   }),
@@ -2214,7 +2210,7 @@ export const EventCategoriesMapList = /*@__PURE__*/ S.Array(
 export interface EventCategoriesMessage {
   EventCategoriesMapList?: EventCategoriesMap[];
 }
-export const EventCategoriesMessage = /*@__PURE__*/ S.suspend(() =>
+const EventCategoriesMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventCategoriesMapList: S.optional(EventCategoriesMapList) }).pipe(ns),
 ).annotate({ identifier: "EventCategoriesMessage" }) as any as S.Schema<EventCategoriesMessage>;
 export type SourceType =
@@ -2225,7 +2221,7 @@ export type SourceType =
   | "db-cluster"
   | "db-cluster-snapshot"
   | (string & {});
-export const SourceType = S.String;
+const SourceType = S.String;
 
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
@@ -2238,7 +2234,7 @@ export interface DescribeEventsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEventsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeEventsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceIdentifier: S.optional(S.String),
     SourceType: S.optional(SourceType),
@@ -2259,7 +2255,7 @@ export interface Event {
   Date?: Date;
   SourceArn?: string;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceIdentifier: S.optional(S.String),
     SourceType: S.optional(SourceType),
@@ -2270,14 +2266,14 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 export type EventList = Event[];
-export const EventList = /*@__PURE__*/ S.Array(
+const EventList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ Event.pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({ identifier: "Event" }),
 );
 export interface EventsMessage {
   Marker?: string;
   Events?: Event[];
 }
-export const EventsMessage = /*@__PURE__*/ S.suspend(() =>
+const EventsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Marker: S.optional(S.String), Events: S.optional(EventList) }).pipe(ns),
 ).annotate({ identifier: "EventsMessage" }) as any as S.Schema<EventsMessage>;
 export interface DescribeEventSubscriptionsMessage {
@@ -2286,7 +2282,7 @@ export interface DescribeEventSubscriptionsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeEventSubscriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeEventSubscriptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubscriptionName: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -2297,7 +2293,7 @@ export const DescribeEventSubscriptionsMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeEventSubscriptionsMessage",
 }) as any as S.Schema<DescribeEventSubscriptionsMessage>;
 export type EventSubscriptionsList = EventSubscription[];
-export const EventSubscriptionsList = /*@__PURE__*/ S.Array(
+const EventSubscriptionsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ EventSubscription.pipe(/*@__PURE__*/ T.XmlName("EventSubscription")).annotate({
     identifier: "EventSubscription",
   }),
@@ -2306,7 +2302,7 @@ export interface EventSubscriptionsMessage {
   Marker?: string;
   EventSubscriptionsList?: EventSubscription[];
 }
-export const EventSubscriptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const EventSubscriptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Marker: S.optional(S.String),
     EventSubscriptionsList: S.optional(EventSubscriptionsList),
@@ -2320,7 +2316,7 @@ export interface DescribeGlobalClustersMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeGlobalClustersMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeGlobalClustersMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalClusterIdentifier: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -2331,7 +2327,7 @@ export const DescribeGlobalClustersMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeGlobalClustersMessage",
 }) as any as S.Schema<DescribeGlobalClustersMessage>;
 export type GlobalClusterList = GlobalCluster[];
-export const GlobalClusterList = /*@__PURE__*/ S.Array(
+const GlobalClusterList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ GlobalCluster.pipe(/*@__PURE__*/ T.XmlName("GlobalClusterMember")).annotate({
     identifier: "GlobalCluster",
   }),
@@ -2340,7 +2336,7 @@ export interface GlobalClustersMessage {
   Marker?: string;
   GlobalClusters?: GlobalCluster[];
 }
-export const GlobalClustersMessage = /*@__PURE__*/ S.suspend(() =>
+const GlobalClustersMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Marker: S.optional(S.String), GlobalClusters: S.optional(GlobalClusterList) }).pipe(
     ns,
   ),
@@ -2355,7 +2351,7 @@ export interface DescribeOrderableDBInstanceOptionsMessage {
   MaxRecords?: number;
   Marker?: string;
 }
-export const DescribeOrderableDBInstanceOptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribeOrderableDBInstanceOptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Engine: S.optional(S.String),
     EngineVersion: S.optional(S.String),
@@ -2370,7 +2366,7 @@ export const DescribeOrderableDBInstanceOptionsMessage = /*@__PURE__*/ S.suspend
   identifier: "DescribeOrderableDBInstanceOptionsMessage",
 }) as any as S.Schema<DescribeOrderableDBInstanceOptionsMessage>;
 export type AvailabilityZoneList = AvailabilityZone[];
-export const AvailabilityZoneList = /*@__PURE__*/ S.Array(
+const AvailabilityZoneList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ AvailabilityZone.pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone")).annotate({
     identifier: "AvailabilityZone",
   }),
@@ -2384,7 +2380,7 @@ export interface OrderableDBInstanceOption {
   Vpc?: boolean;
   StorageType?: string;
 }
-export const OrderableDBInstanceOption = /*@__PURE__*/ S.suspend(() =>
+const OrderableDBInstanceOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Engine: S.optional(S.String),
     EngineVersion: S.optional(S.String),
@@ -2398,7 +2394,7 @@ export const OrderableDBInstanceOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrderableDBInstanceOption",
 }) as any as S.Schema<OrderableDBInstanceOption>;
 export type OrderableDBInstanceOptionsList = OrderableDBInstanceOption[];
-export const OrderableDBInstanceOptionsList = /*@__PURE__*/ S.Array(
+const OrderableDBInstanceOptionsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ OrderableDBInstanceOption.pipe(
     /*@__PURE__*/ T.XmlName("OrderableDBInstanceOption"),
   ).annotate({
@@ -2409,7 +2405,7 @@ export interface OrderableDBInstanceOptionsMessage {
   OrderableDBInstanceOptions?: OrderableDBInstanceOption[];
   Marker?: string;
 }
-export const OrderableDBInstanceOptionsMessage = /*@__PURE__*/ S.suspend(() =>
+const OrderableDBInstanceOptionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OrderableDBInstanceOptions: S.optional(OrderableDBInstanceOptionsList),
     Marker: S.optional(S.String),
@@ -2423,7 +2419,7 @@ export interface DescribePendingMaintenanceActionsMessage {
   Marker?: string;
   MaxRecords?: number;
 }
-export const DescribePendingMaintenanceActionsMessage = /*@__PURE__*/ S.suspend(() =>
+const DescribePendingMaintenanceActionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceIdentifier: S.optional(S.String),
     Filters: S.optional(FilterList),
@@ -2434,7 +2430,7 @@ export const DescribePendingMaintenanceActionsMessage = /*@__PURE__*/ S.suspend(
   identifier: "DescribePendingMaintenanceActionsMessage",
 }) as any as S.Schema<DescribePendingMaintenanceActionsMessage>;
 export type PendingMaintenanceActions = ResourcePendingMaintenanceActions[];
-export const PendingMaintenanceActions = /*@__PURE__*/ S.Array(
+const PendingMaintenanceActions = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ ResourcePendingMaintenanceActions.pipe(
     /*@__PURE__*/ T.XmlName("ResourcePendingMaintenanceActions"),
   ).annotate({
@@ -2445,7 +2441,7 @@ export interface PendingMaintenanceActionsMessage {
   PendingMaintenanceActions?: ResourcePendingMaintenanceActions[];
   Marker?: string;
 }
-export const PendingMaintenanceActionsMessage = /*@__PURE__*/ S.suspend(() =>
+const PendingMaintenanceActionsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PendingMaintenanceActions: S.optional(PendingMaintenanceActions),
     Marker: S.optional(S.String),
@@ -2457,7 +2453,7 @@ export interface FailoverDBClusterMessage {
   DBClusterIdentifier?: string;
   TargetDBInstanceIdentifier?: string;
 }
-export const FailoverDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const FailoverDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterIdentifier: S.optional(S.String),
     TargetDBInstanceIdentifier: S.optional(S.String),
@@ -2466,7 +2462,7 @@ export const FailoverDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface FailoverDBClusterResult {
   DBCluster?: DBCluster;
 }
-export const FailoverDBClusterResult = /*@__PURE__*/ S.suspend(() =>
+const FailoverDBClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBCluster: S.optional(DBCluster) }).pipe(ns),
 ).annotate({ identifier: "FailoverDBClusterResult" }) as any as S.Schema<FailoverDBClusterResult>;
 export type DBClusterIdentifier = string;
@@ -2476,7 +2472,7 @@ export interface FailoverGlobalClusterMessage {
   AllowDataLoss?: boolean;
   Switchover?: boolean;
 }
-export const FailoverGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const FailoverGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalClusterIdentifier: S.optional(S.String),
     TargetDbClusterIdentifier: S.optional(S.String),
@@ -2489,7 +2485,7 @@ export const FailoverGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface FailoverGlobalClusterResult {
   GlobalCluster?: GlobalCluster;
 }
-export const FailoverGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
+const FailoverGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalCluster: S.optional(GlobalCluster) }).pipe(ns),
 ).annotate({
   identifier: "FailoverGlobalClusterResult",
@@ -2498,7 +2494,7 @@ export interface ListTagsForResourceMessage {
   ResourceName?: string;
   Filters?: Filter[];
 }
-export const ListTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceName: S.optional(S.String), Filters: S.optional(FilterList) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2508,14 +2504,14 @@ export const ListTagsForResourceMessage = /*@__PURE__*/ S.suspend(() =>
 export interface TagListMessage {
   TagList?: Tag[];
 }
-export const TagListMessage = /*@__PURE__*/ S.suspend(() =>
+const TagListMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({ identifier: "TagListMessage" }) as any as S.Schema<TagListMessage>;
 export interface CloudwatchLogsExportConfiguration {
   EnableLogTypes?: string[];
   DisableLogTypes?: string[];
 }
-export const CloudwatchLogsExportConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CloudwatchLogsExportConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EnableLogTypes: S.optional(LogTypeList), DisableLogTypes: S.optional(LogTypeList) }),
 ).annotate({
   identifier: "CloudwatchLogsExportConfiguration",
@@ -2543,7 +2539,7 @@ export interface ModifyDBClusterMessage {
   NetworkType?: string;
   CopyTagsToSnapshot?: boolean;
 }
-export const ModifyDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterIdentifier: S.optional(S.String),
     NewDBClusterIdentifier: S.optional(S.String),
@@ -2571,14 +2567,14 @@ export const ModifyDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyDBClusterResult {
   DBCluster?: DBCluster;
 }
-export const ModifyDBClusterResult = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBCluster: S.optional(DBCluster) }).pipe(ns),
 ).annotate({ identifier: "ModifyDBClusterResult" }) as any as S.Schema<ModifyDBClusterResult>;
 export interface ModifyDBClusterParameterGroupMessage {
   DBClusterParameterGroupName?: string;
   Parameters?: Parameter[];
 }
-export const ModifyDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterParameterGroupName: S.optional(S.String),
     Parameters: S.optional(ParametersList),
@@ -2589,7 +2585,7 @@ export const ModifyDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =
 export interface DBClusterParameterGroupNameMessage {
   DBClusterParameterGroupName?: string;
 }
-export const DBClusterParameterGroupNameMessage = /*@__PURE__*/ S.suspend(() =>
+const DBClusterParameterGroupNameMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterParameterGroupName: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "DBClusterParameterGroupNameMessage",
@@ -2600,7 +2596,7 @@ export interface ModifyDBClusterSnapshotAttributeMessage {
   ValuesToAdd?: string[];
   ValuesToRemove?: string[];
 }
-export const ModifyDBClusterSnapshotAttributeMessage = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBClusterSnapshotAttributeMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterSnapshotIdentifier: S.optional(S.String),
     AttributeName: S.optional(S.String),
@@ -2613,7 +2609,7 @@ export const ModifyDBClusterSnapshotAttributeMessage = /*@__PURE__*/ S.suspend((
 export interface ModifyDBClusterSnapshotAttributeResult {
   DBClusterSnapshotAttributesResult?: DBClusterSnapshotAttributesResult;
 }
-export const ModifyDBClusterSnapshotAttributeResult = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBClusterSnapshotAttributeResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterSnapshotAttributesResult: S.optional(DBClusterSnapshotAttributesResult),
   }).pipe(ns),
@@ -2634,7 +2630,7 @@ export interface ModifyDBInstanceMessage {
   PerformanceInsightsKMSKeyId?: string;
   CertificateRotationRestart?: boolean;
 }
-export const ModifyDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBInstanceIdentifier: S.optional(S.String),
     DBInstanceClass: S.optional(S.String),
@@ -2653,7 +2649,7 @@ export const ModifyDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyDBInstanceResult {
   DBInstance?: DBInstance;
 }
-export const ModifyDBInstanceResult = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBInstanceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBInstance: S.optional(DBInstance) }).pipe(ns),
 ).annotate({ identifier: "ModifyDBInstanceResult" }) as any as S.Schema<ModifyDBInstanceResult>;
 export interface ModifyDBSubnetGroupMessage {
@@ -2661,7 +2657,7 @@ export interface ModifyDBSubnetGroupMessage {
   DBSubnetGroupDescription?: string;
   SubnetIds?: string[];
 }
-export const ModifyDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBSubnetGroupName: S.optional(S.String),
     DBSubnetGroupDescription: S.optional(S.String),
@@ -2673,7 +2669,7 @@ export const ModifyDBSubnetGroupMessage = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyDBSubnetGroupResult {
   DBSubnetGroup?: DBSubnetGroup;
 }
-export const ModifyDBSubnetGroupResult = /*@__PURE__*/ S.suspend(() =>
+const ModifyDBSubnetGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBSubnetGroup: S.optional(DBSubnetGroup) }).pipe(ns),
 ).annotate({
   identifier: "ModifyDBSubnetGroupResult",
@@ -2685,7 +2681,7 @@ export interface ModifyEventSubscriptionMessage {
   EventCategories?: string[];
   Enabled?: boolean;
 }
-export const ModifyEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const ModifyEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubscriptionName: S.optional(S.String),
     SnsTopicArn: S.optional(S.String),
@@ -2699,7 +2695,7 @@ export const ModifyEventSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyEventSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-export const ModifyEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+const ModifyEventSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
 ).annotate({
   identifier: "ModifyEventSubscriptionResult",
@@ -2709,7 +2705,7 @@ export interface ModifyGlobalClusterMessage {
   NewGlobalClusterIdentifier?: string;
   DeletionProtection?: boolean;
 }
-export const ModifyGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const ModifyGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalClusterIdentifier: S.optional(S.String),
     NewGlobalClusterIdentifier: S.optional(S.String),
@@ -2721,7 +2717,7 @@ export const ModifyGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface ModifyGlobalClusterResult {
   GlobalCluster?: GlobalCluster;
 }
-export const ModifyGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
+const ModifyGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalCluster: S.optional(GlobalCluster) }).pipe(ns),
 ).annotate({
   identifier: "ModifyGlobalClusterResult",
@@ -2730,7 +2726,7 @@ export interface RebootDBInstanceMessage {
   DBInstanceIdentifier?: string;
   ForceFailover?: boolean;
 }
-export const RebootDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+const RebootDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBInstanceIdentifier: S.optional(S.String),
     ForceFailover: S.optional(S.Boolean),
@@ -2739,14 +2735,14 @@ export const RebootDBInstanceMessage = /*@__PURE__*/ S.suspend(() =>
 export interface RebootDBInstanceResult {
   DBInstance?: DBInstance;
 }
-export const RebootDBInstanceResult = /*@__PURE__*/ S.suspend(() =>
+const RebootDBInstanceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBInstance: S.optional(DBInstance) }).pipe(ns),
 ).annotate({ identifier: "RebootDBInstanceResult" }) as any as S.Schema<RebootDBInstanceResult>;
 export interface RemoveFromGlobalClusterMessage {
   GlobalClusterIdentifier?: string;
   DbClusterIdentifier?: string;
 }
-export const RemoveFromGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const RemoveFromGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalClusterIdentifier: S.optional(S.String),
     DbClusterIdentifier: S.optional(S.String),
@@ -2757,7 +2753,7 @@ export const RemoveFromGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveFromGlobalClusterResult {
   GlobalCluster?: GlobalCluster;
 }
-export const RemoveFromGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
+const RemoveFromGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalCluster: S.optional(GlobalCluster) }).pipe(ns),
 ).annotate({
   identifier: "RemoveFromGlobalClusterResult",
@@ -2766,7 +2762,7 @@ export interface RemoveSourceIdentifierFromSubscriptionMessage {
   SubscriptionName?: string;
   SourceIdentifier?: string;
 }
-export const RemoveSourceIdentifierFromSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
+const RemoveSourceIdentifierFromSubscriptionMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SubscriptionName: S.optional(S.String), SourceIdentifier: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2776,18 +2772,18 @@ export const RemoveSourceIdentifierFromSubscriptionMessage = /*@__PURE__*/ S.sus
 export interface RemoveSourceIdentifierFromSubscriptionResult {
   EventSubscription?: EventSubscription;
 }
-export const RemoveSourceIdentifierFromSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
+const RemoveSourceIdentifierFromSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventSubscription: S.optional(EventSubscription) }).pipe(ns),
 ).annotate({
   identifier: "RemoveSourceIdentifierFromSubscriptionResult",
 }) as any as S.Schema<RemoveSourceIdentifierFromSubscriptionResult>;
 export type KeyList = string[];
-export const KeyList = /*@__PURE__*/ S.Array(S.String);
+const KeyList = /*@__PURE__*/ S.Array(S.String);
 export interface RemoveTagsFromResourceMessage {
   ResourceName?: string;
   TagKeys?: string[];
 }
-export const RemoveTagsFromResourceMessage = /*@__PURE__*/ S.suspend(() =>
+const RemoveTagsFromResourceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceName: S.optional(S.String), TagKeys: S.optional(KeyList) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2795,7 +2791,7 @@ export const RemoveTagsFromResourceMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveTagsFromResourceMessage",
 }) as any as S.Schema<RemoveTagsFromResourceMessage>;
 export interface RemoveTagsFromResourceResponse {}
-export const RemoveTagsFromResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveTagsFromResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "RemoveTagsFromResourceResponse",
@@ -2805,7 +2801,7 @@ export interface ResetDBClusterParameterGroupMessage {
   ResetAllParameters?: boolean;
   Parameters?: Parameter[];
 }
-export const ResetDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
+const ResetDBClusterParameterGroupMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterParameterGroupName: S.optional(S.String),
     ResetAllParameters: S.optional(S.Boolean),
@@ -2833,7 +2829,7 @@ export interface RestoreDBClusterFromSnapshotMessage {
   NetworkType?: string;
   CopyTagsToSnapshot?: boolean;
 }
-export const RestoreDBClusterFromSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
+const RestoreDBClusterFromSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AvailabilityZones: S.optional(AvailabilityZones),
     DBClusterIdentifier: S.optional(S.String),
@@ -2859,7 +2855,7 @@ export const RestoreDBClusterFromSnapshotMessage = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreDBClusterFromSnapshotResult {
   DBCluster?: DBCluster;
 }
-export const RestoreDBClusterFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
+const RestoreDBClusterFromSnapshotResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBCluster: S.optional(DBCluster) }).pipe(ns),
 ).annotate({
   identifier: "RestoreDBClusterFromSnapshotResult",
@@ -2882,7 +2878,7 @@ export interface RestoreDBClusterToPointInTimeMessage {
   NetworkType?: string;
   CopyTagsToSnapshot?: boolean;
 }
-export const RestoreDBClusterToPointInTimeMessage = /*@__PURE__*/ S.suspend(() =>
+const RestoreDBClusterToPointInTimeMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DBClusterIdentifier: S.optional(S.String),
     RestoreType: S.optional(S.String),
@@ -2907,7 +2903,7 @@ export const RestoreDBClusterToPointInTimeMessage = /*@__PURE__*/ S.suspend(() =
 export interface RestoreDBClusterToPointInTimeResult {
   DBCluster?: DBCluster;
 }
-export const RestoreDBClusterToPointInTimeResult = /*@__PURE__*/ S.suspend(() =>
+const RestoreDBClusterToPointInTimeResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBCluster: S.optional(DBCluster) }).pipe(ns),
 ).annotate({
   identifier: "RestoreDBClusterToPointInTimeResult",
@@ -2915,7 +2911,7 @@ export const RestoreDBClusterToPointInTimeResult = /*@__PURE__*/ S.suspend(() =>
 export interface StartDBClusterMessage {
   DBClusterIdentifier?: string;
 }
-export const StartDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const StartDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterIdentifier: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2923,13 +2919,13 @@ export const StartDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface StartDBClusterResult {
   DBCluster?: DBCluster;
 }
-export const StartDBClusterResult = /*@__PURE__*/ S.suspend(() =>
+const StartDBClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBCluster: S.optional(DBCluster) }).pipe(ns),
 ).annotate({ identifier: "StartDBClusterResult" }) as any as S.Schema<StartDBClusterResult>;
 export interface StopDBClusterMessage {
   DBClusterIdentifier?: string;
 }
-export const StopDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const StopDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBClusterIdentifier: S.optional(S.String) }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2937,14 +2933,14 @@ export const StopDBClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface StopDBClusterResult {
   DBCluster?: DBCluster;
 }
-export const StopDBClusterResult = /*@__PURE__*/ S.suspend(() =>
+const StopDBClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DBCluster: S.optional(DBCluster) }).pipe(ns),
 ).annotate({ identifier: "StopDBClusterResult" }) as any as S.Schema<StopDBClusterResult>;
 export interface SwitchoverGlobalClusterMessage {
   GlobalClusterIdentifier?: string;
   TargetDbClusterIdentifier?: string;
 }
-export const SwitchoverGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
+const SwitchoverGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GlobalClusterIdentifier: S.optional(S.String),
     TargetDbClusterIdentifier: S.optional(S.String),
@@ -2955,7 +2951,7 @@ export const SwitchoverGlobalClusterMessage = /*@__PURE__*/ S.suspend(() =>
 export interface SwitchoverGlobalClusterResult {
   GlobalCluster?: GlobalCluster;
 }
-export const SwitchoverGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
+const SwitchoverGlobalClusterResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GlobalCluster: S.optional(GlobalCluster) }).pipe(ns),
 ).annotate({
   identifier: "SwitchoverGlobalClusterResult",

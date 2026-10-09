@@ -68,7 +68,7 @@ export interface Organization {
   /** Optional. A human-readable name of the organization, to help recognize the organization. */
   organizationName?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.optional(S.String),
     organizationName: S.optional(S.String),
@@ -76,9 +76,7 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type OrganizationList = Array<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<OrganizationList>;
+const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
 
 /** This resource represents a custom app. */
 export interface CustomApp {
@@ -91,7 +89,7 @@ export interface CustomApp {
   /** Organizations to which the custom app should be made available. If the request contains any organizations, then the app will be restricted to only these organizations. To support the organization linked to the developer account, the organization ID should be provided explicitly together with other organizations. If no organizations are provided, then the app is only available to the organization linked to the developer account. */
   organizations?: OrganizationList;
 }
-export const CustomApp = /*@__PURE__*/ S.suspend(() =>
+const CustomApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     languageCode: S.optional(S.String),
@@ -106,7 +104,7 @@ export interface CreateAccountsCustomAppsRequest {
   /** Request body */
   body?: CustomApp;
 }
-export const CreateAccountsCustomAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsCustomAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.String.pipe(T.Label()),
     body: S.optional(CustomApp.pipe(T.HttpBody())),

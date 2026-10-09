@@ -9,7 +9,7 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `trends` - trends * `funnel` - funnel * `retention` - retention * `sql` - sql */
 export type InsightTypeEnum = "trends" | "funnel" | "retention" | "sql";
-export const InsightTypeEnum = S.String;
+const InsightTypeEnum = S.String;
 
 export interface MaxToolsCreateAndQueryInsightCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -17,7 +17,7 @@ export interface MaxToolsCreateAndQueryInsightCreateRequest {
   query?: string;
   insight_type?: InsightTypeEnum | (string & {});
 }
-export const MaxToolsCreateAndQueryInsightCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MaxToolsCreateAndQueryInsightCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.optional(S.String),
@@ -36,14 +36,14 @@ export const MaxToolsCreateAndQueryInsightCreateRequest = /*@__PURE__*/ S.suspen
 export type MaxToolsCreateAndQueryInsightCreateResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const MaxToolsCreateAndQueryInsightCreateResponseBodyMap = /*@__PURE__*/ S.Record(
+const MaxToolsCreateAndQueryInsightCreateResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateResponseBodyMap>;
 
 export type MaxToolsCreateAndQueryInsightCreateResponse =
   MaxToolsCreateAndQueryInsightCreateResponseBodyMap;
-export const MaxToolsCreateAndQueryInsightCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const MaxToolsCreateAndQueryInsightCreateResponse = /*@__PURE__*/ S.suspend(() =>
   MaxToolsCreateAndQueryInsightCreateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "MaxToolsCreateAndQueryInsightCreateResponse",

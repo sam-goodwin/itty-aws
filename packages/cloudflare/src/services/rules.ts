@@ -61,7 +61,7 @@ export class ListNotFound
   ) {}
 
 export type ListsCreateRequestKind = "ip" | "redirect" | "hostname" | "asn";
-export const ListsCreateRequestKind = S.String;
+const ListsCreateRequestKind = S.String;
 
 export interface CreateListRequest {
   /** The Account ID for this resource. */
@@ -73,7 +73,7 @@ export interface CreateListRequest {
   /** An informative summary of the list. */
   description?: string;
 }
-export const CreateListRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     kind: ListsCreateRequestKind,
@@ -85,7 +85,7 @@ export const CreateListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateListRequest" }) as any as S.Schema<CreateListRequest>;
 
 export type ListsCreateResponseKind = "ip" | "redirect" | "hostname" | "asn";
-export const ListsCreateResponseKind = S.String;
+const ListsCreateResponseKind = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateListResponse {
@@ -106,7 +106,7 @@ export interface CreateListResponse {
   /** An informative summary of the list. */
   description?: string | null;
 }
-export const CreateListResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -125,23 +125,11 @@ export interface ListsItemsCreateRequestBodyItemListsListItemIPComment {
   /** Defines an informative summary of the list item. */
   comment?: string;
 }
-export const ListsItemsCreateRequestBodyItemListsListItemIPComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ip: S.String,
-    comment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListsItemsCreateRequestBodyItemListsListItemIPComment",
-}) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemIPComment>;
-
 export type ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
   | 301
   | 302
   | 307
   | 308;
-export const ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
-  S.Number;
-
 export interface ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect {
   sourceUrl: string;
   targetUrl: string;
@@ -153,93 +141,35 @@ export interface ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedi
     | (number & {});
   subpathMatching?: boolean;
 }
-export const ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sourceUrl: S.String.pipe(T.Body("source_url")),
-      targetUrl: S.String.pipe(T.Body("target_url")),
-      includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
-      preservePathSuffix: S.optional(S.Boolean.pipe(T.Body("preserve_path_suffix"))),
-      preserveQueryString: S.optional(S.Boolean.pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode.pipe(
-          T.Body("status_code"),
-        ),
-      ),
-      subpathMatching: S.optional(S.Boolean.pipe(T.Body("subpath_matching"))),
-    }),
-  ).annotate({
-    identifier: "ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect",
-  }) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect>;
-
 export interface ListsItemsCreateRequestBodyItemListsListItemRedirectComment {
   /** The definition of the redirect. */
   redirect: ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect;
   /** Defines an informative summary of the list item. */
   comment?: string;
 }
-export const ListsItemsCreateRequestBodyItemListsListItemRedirectComment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      redirect: ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect,
-      comment: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListsItemsCreateRequestBodyItemListsListItemRedirectComment",
-}) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemRedirectComment>;
-
 export interface ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname {
   urlHostname: string;
   /** Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains. */
   excludeExactHostname?: boolean;
 }
-export const ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      urlHostname: S.String.pipe(T.Body("url_hostname")),
-      excludeExactHostname: S.optional(S.Boolean.pipe(T.Body("exclude_exact_hostname"))),
-    }),
-  ).annotate({
-    identifier: "ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname",
-  }) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname>;
-
 export interface ListsItemsCreateRequestBodyItemListsListItemHostnameComment {
   /** Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-). */
   hostname: ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname;
   /** Defines an informative summary of the list item. */
   comment?: string;
 }
-export const ListsItemsCreateRequestBodyItemListsListItemHostnameComment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname,
-      comment: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListsItemsCreateRequestBodyItemListsListItemHostnameComment",
-}) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemHostnameComment>;
-
 export interface ListsItemsCreateRequestBodyItemListsListItemASNComment {
   /** Defines a non-negative 32 bit integer. */
   asn: number;
   /** Defines an informative summary of the list item. */
   comment?: string;
 }
-export const ListsItemsCreateRequestBodyItemListsListItemASNComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asn: S.Number,
-    comment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListsItemsCreateRequestBodyItemListsListItemASNComment",
-}) as any as S.Schema<ListsItemsCreateRequestBodyItemListsListItemASNComment>;
-
 export type ListsItemsCreateRequestBodyItem =
   | ListsItemsCreateRequestBodyItemListsListItemIPComment
   | ListsItemsCreateRequestBodyItemListsListItemRedirectComment
   | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
   | ListsItemsCreateRequestBodyItemListsListItemASNComment;
-export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
+const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["ip", "comment"],
     ["redirect", "comment"],
@@ -249,7 +179,7 @@ export const ListsItemsCreateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type ListsItemsCreateRequestBodyList = Array<ListsItemsCreateRequestBodyItem>;
-export const ListsItemsCreateRequestBodyList = /*@__PURE__*/ S.Array(
+const ListsItemsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   ListsItemsCreateRequestBodyItem,
 ) as any as S.Schema<ListsItemsCreateRequestBodyList>;
 
@@ -260,7 +190,7 @@ export interface CreateListItemRequest {
   listId: string;
   body: ListsItemsCreateRequestBodyList;
 }
-export const CreateListItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateListItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
@@ -281,7 +211,7 @@ export interface CreateListItemResponse {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
-export const CreateListItemResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateListItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.String.pipe(T.Body("operation_id")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -293,7 +223,7 @@ export interface DeleteListRequest {
   /** The unique ID of the list. */
   listId: string;
 }
-export const DeleteListRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
@@ -309,7 +239,7 @@ export interface DeleteListResponse {
   /** The unique ID of the list. */
   id: string;
 }
-export const DeleteListResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -319,7 +249,7 @@ export interface ListsItemsDeleteRequestItemsItem {
   /** Defines the unique ID of the item in the List. */
   id: string;
 }
-export const ListsItemsDeleteRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
+const ListsItemsDeleteRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -328,7 +258,7 @@ export const ListsItemsDeleteRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListsItemsDeleteRequestItemsItem>;
 
 export type ListsItemsDeleteRequestItemsList = Array<ListsItemsDeleteRequestItemsItem>;
-export const ListsItemsDeleteRequestItemsList = /*@__PURE__*/ S.Array(
+const ListsItemsDeleteRequestItemsList = /*@__PURE__*/ S.Array(
   ListsItemsDeleteRequestItemsItem,
 ) as any as S.Schema<ListsItemsDeleteRequestItemsList>;
 
@@ -340,7 +270,7 @@ export interface DeleteListItemRequest {
   /** The list items to delete, identified by their unique IDs. */
   items?: ListsItemsDeleteRequestItemsList;
 }
-export const DeleteListItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteListItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
@@ -361,8 +291,7 @@ export interface DeleteListItemResponse {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
-export const DeleteListItemResponse =
-  CreateListItemResponse as any as S.Schema<DeleteListItemResponse>;
+const DeleteListItemResponse = CreateListItemResponse as any as S.Schema<DeleteListItemResponse>;
 
 export interface GetListRequest {
   /** The Account ID for this resource. */
@@ -370,7 +299,7 @@ export interface GetListRequest {
   /** The unique ID of the list. */
   listId: string;
 }
-export const GetListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
@@ -380,8 +309,6 @@ export const GetListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetListRequest" }) as any as S.Schema<GetListRequest>;
 
 export type ListsGetResponseKind = "ip" | "redirect" | "hostname" | "asn";
-export const ListsGetResponseKind = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetListResponse {
   /** The unique ID of the list. */
@@ -401,7 +328,7 @@ export interface GetListResponse {
   /** An informative summary of the list. */
   description?: string | null;
 }
-export const GetListResponse = CreateListResponse as any as S.Schema<GetListResponse>;
+const GetListResponse = CreateListResponse as any as S.Schema<GetListResponse>;
 
 export interface GetListBulkOperationRequest {
   /** The Account ID for this resource. */
@@ -409,7 +336,7 @@ export interface GetListBulkOperationRequest {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
-export const GetListBulkOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetListBulkOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     operationId: S.String.pipe(T.Label("operation_id")),
@@ -429,27 +356,13 @@ export const GetListBulkOperationRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus =
   | "pending"
   | "running";
-export const ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus = S.String;
-
 export interface ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning {
   /** The unique operation ID of the asynchronous action. */
   id: string;
   /** The current status of the asynchronous operation. */
   status: ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus;
 }
-export const ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      status: ListsBulkOperationsGetResultListsBulkOperationPendingOrRunningStatus,
-    }),
-  ).annotate({
-    identifier: "ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning",
-  }) as any as S.Schema<ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning>;
-
 export type ListsBulkOperationsGetResultListsBulkOperationCompletedStatus = "completed";
-export const ListsBulkOperationsGetResultListsBulkOperationCompletedStatus = S.String;
-
 export interface ListsBulkOperationsGetResultListsBulkOperationCompleted {
   /** The unique operation ID of the asynchronous action. */
   id: string;
@@ -458,19 +371,7 @@ export interface ListsBulkOperationsGetResultListsBulkOperationCompleted {
   /** The current status of the asynchronous operation. */
   status: ListsBulkOperationsGetResultListsBulkOperationCompletedStatus;
 }
-export const ListsBulkOperationsGetResultListsBulkOperationCompleted = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    completed: S.String,
-    status: ListsBulkOperationsGetResultListsBulkOperationCompletedStatus,
-  }),
-).annotate({
-  identifier: "ListsBulkOperationsGetResultListsBulkOperationCompleted",
-}) as any as S.Schema<ListsBulkOperationsGetResultListsBulkOperationCompleted>;
-
 export type ListsBulkOperationsGetResultListsBulkOperationFailedStatus = "failed";
-export const ListsBulkOperationsGetResultListsBulkOperationFailedStatus = S.String;
-
 export interface ListsBulkOperationsGetResultListsBulkOperationFailed {
   /** The unique operation ID of the asynchronous action. */
   id: string;
@@ -481,22 +382,11 @@ export interface ListsBulkOperationsGetResultListsBulkOperationFailed {
   /** The current status of the asynchronous operation. */
   status: ListsBulkOperationsGetResultListsBulkOperationFailedStatus;
 }
-export const ListsBulkOperationsGetResultListsBulkOperationFailed = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    completed: S.String,
-    error: S.String,
-    status: ListsBulkOperationsGetResultListsBulkOperationFailedStatus,
-  }),
-).annotate({
-  identifier: "ListsBulkOperationsGetResultListsBulkOperationFailed",
-}) as any as S.Schema<ListsBulkOperationsGetResultListsBulkOperationFailed>;
-
 export type ListsBulkOperationsGetResult =
   | ListsBulkOperationsGetResultListsBulkOperationPendingOrRunning
   | ListsBulkOperationsGetResultListsBulkOperationCompleted
   | ListsBulkOperationsGetResultListsBulkOperationFailed;
-export const ListsBulkOperationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const ListsBulkOperationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["id", "status"],
     ["id", "completed", "status"],
@@ -505,7 +395,7 @@ export const ListsBulkOperationsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type GetListBulkOperationResponse = ListsBulkOperationsGetResult;
-export const GetListBulkOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetListBulkOperationResponse = /*@__PURE__*/ S.suspend(() =>
   ListsBulkOperationsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetListBulkOperationResponse",
@@ -519,7 +409,7 @@ export interface GetListItemRequest {
   /** Defines the unique ID of the item in the List. */
   itemId: string;
 }
-export const GetListItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetListItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
@@ -547,32 +437,11 @@ export interface ListsItemsGetResultListsListItemIPFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-export const ListsItemsGetResultListsListItemIPFull = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    ip: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    comment: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListsItemsGetResultListsListItemIPFull",
-}) as any as S.Schema<ListsItemsGetResultListsListItemIPFull>;
-
 export interface ListsItemsGetResultListsListItemHostnameFullHostname {
   urlHostname: string;
   /** Only applies to wildcard hostnames (e.g., *.example.com). When true (default), the rule blocks only subdomains. When false, the rule blocks both the root domain and subdomains. */
   excludeExactHostname?: boolean | null;
 }
-export const ListsItemsGetResultListsListItemHostnameFullHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    urlHostname: S.String.pipe(T.Body("url_hostname")),
-    excludeExactHostname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("exclude_exact_hostname"))),
-  }),
-).annotate({
-  identifier: "ListsItemsGetResultListsListItemHostnameFullHostname",
-}) as any as S.Schema<ListsItemsGetResultListsListItemHostnameFullHostname>;
-
 export interface ListsItemsGetResultListsListItemHostnameFull {
   /** Defines the unique ID of the item in the List. */
   id: string;
@@ -585,21 +454,7 @@ export interface ListsItemsGetResultListsListItemHostnameFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-export const ListsItemsGetResultListsListItemHostnameFull = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    hostname: ListsItemsGetResultListsListItemHostnameFullHostname,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    comment: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListsItemsGetResultListsListItemHostnameFull",
-}) as any as S.Schema<ListsItemsGetResultListsListItemHostnameFull>;
-
 export type ListsItemsGetResultListsListItemRedirectFullRedirectStatusCode = 301 | 302 | 307 | 308;
-export const ListsItemsGetResultListsListItemRedirectFullRedirectStatusCode = S.Number;
-
 export interface ListsItemsGetResultListsListItemRedirectFullRedirect {
   sourceUrl: string;
   targetUrl: string;
@@ -609,24 +464,6 @@ export interface ListsItemsGetResultListsListItemRedirectFullRedirect {
   statusCode?: ListsItemsGetResultListsListItemRedirectFullRedirectStatusCode | null;
   subpathMatching?: boolean | null;
 }
-export const ListsItemsGetResultListsListItemRedirectFullRedirect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceUrl: S.String.pipe(T.Body("source_url")),
-    targetUrl: S.String.pipe(T.Body("target_url")),
-    includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-    preservePathSuffix: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_path_suffix"))),
-    preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-    statusCode: S.optional(
-      S.NullOr(ListsItemsGetResultListsListItemRedirectFullRedirectStatusCode).pipe(
-        T.Body("status_code"),
-      ),
-    ),
-    subpathMatching: S.optional(S.NullOr(S.Boolean).pipe(T.Body("subpath_matching"))),
-  }),
-).annotate({
-  identifier: "ListsItemsGetResultListsListItemRedirectFullRedirect",
-}) as any as S.Schema<ListsItemsGetResultListsListItemRedirectFullRedirect>;
-
 export interface ListsItemsGetResultListsListItemRedirectFull {
   /** Defines the unique ID of the item in the List. */
   id: string;
@@ -639,18 +476,6 @@ export interface ListsItemsGetResultListsListItemRedirectFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-export const ListsItemsGetResultListsListItemRedirectFull = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    redirect: ListsItemsGetResultListsListItemRedirectFullRedirect,
-    comment: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListsItemsGetResultListsListItemRedirectFull",
-}) as any as S.Schema<ListsItemsGetResultListsListItemRedirectFull>;
-
 export interface ListsItemsGetResultListsListItemASNFull {
   /** Defines the unique ID of the item in the List. */
   id: string;
@@ -663,24 +488,12 @@ export interface ListsItemsGetResultListsListItemASNFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-export const ListsItemsGetResultListsListItemASNFull = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    asn: S.Number,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    comment: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListsItemsGetResultListsListItemASNFull",
-}) as any as S.Schema<ListsItemsGetResultListsListItemASNFull>;
-
 export type ListsItemsGetResult =
   | ListsItemsGetResultListsListItemIPFull
   | ListsItemsGetResultListsListItemHostnameFull
   | ListsItemsGetResultListsListItemRedirectFull
   | ListsItemsGetResultListsListItemASNFull;
-export const ListsItemsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const ListsItemsGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "ip", "modifiedOn", "comment"],
     ["id", "createdOn", "hostname", "modifiedOn", "comment"],
@@ -690,7 +503,7 @@ export const ListsItemsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type GetListItemResponse = ListsItemsGetResult;
-export const GetListItemResponse = /*@__PURE__*/ S.suspend(() =>
+const GetListItemResponse = /*@__PURE__*/ S.suspend(() =>
   ListsItemsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetListItemResponse" }) as any as S.Schema<GetListItemResponse>;
 
@@ -706,7 +519,7 @@ export interface ListListItemsRequest {
   /** A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly. */
   search?: string;
 }
-export const ListListItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListListItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
@@ -725,25 +538,15 @@ export const ListListItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListListItemsRequest" }) as any as S.Schema<ListListItemsRequest>;
 
 export type ListsItemsListResultItemListsListItemIPFull = ListsItemsGetResultListsListItemIPFull;
-export const ListsItemsListResultItemListsListItemIPFull = ListsItemsGetResultListsListItemIPFull;
-
 export type ListsItemsListResultItemListsListItemHostnameFullHostname =
   ListsItemsGetResultListsListItemHostnameFullHostname;
-export const ListsItemsListResultItemListsListItemHostnameFullHostname =
-  ListsItemsGetResultListsListItemHostnameFullHostname;
-
 export type ListsItemsListResultItemListsListItemHostnameFull =
   ListsItemsGetResultListsListItemHostnameFull;
-export const ListsItemsListResultItemListsListItemHostnameFull =
-  ListsItemsGetResultListsListItemHostnameFull;
-
 export type ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode =
   | 301
   | 302
   | 307
   | 308;
-export const ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode = S.Number;
-
 export interface ListsItemsListResultItemListsListItemRedirectFullRedirect {
   sourceUrl: string;
   targetUrl: string;
@@ -753,25 +556,6 @@ export interface ListsItemsListResultItemListsListItemRedirectFullRedirect {
   statusCode?: ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode | null;
   subpathMatching?: boolean | null;
 }
-export const ListsItemsListResultItemListsListItemRedirectFullRedirect = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sourceUrl: S.String.pipe(T.Body("source_url")),
-      targetUrl: S.String.pipe(T.Body("target_url")),
-      includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-      preservePathSuffix: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_path_suffix"))),
-      preserveQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preserve_query_string"))),
-      statusCode: S.optional(
-        S.NullOr(ListsItemsListResultItemListsListItemRedirectFullRedirectStatusCode).pipe(
-          T.Body("status_code"),
-        ),
-      ),
-      subpathMatching: S.optional(S.NullOr(S.Boolean).pipe(T.Body("subpath_matching"))),
-    }),
-).annotate({
-  identifier: "ListsItemsListResultItemListsListItemRedirectFullRedirect",
-}) as any as S.Schema<ListsItemsListResultItemListsListItemRedirectFullRedirect>;
-
 export interface ListsItemsListResultItemListsListItemRedirectFull {
   /** Defines the unique ID of the item in the List. */
   id: string;
@@ -784,27 +568,13 @@ export interface ListsItemsListResultItemListsListItemRedirectFull {
   /** Defines an informative summary of the list item. */
   comment?: string | null;
 }
-export const ListsItemsListResultItemListsListItemRedirectFull = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    redirect: ListsItemsListResultItemListsListItemRedirectFullRedirect,
-    comment: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ListsItemsListResultItemListsListItemRedirectFull",
-}) as any as S.Schema<ListsItemsListResultItemListsListItemRedirectFull>;
-
 export type ListsItemsListResultItemListsListItemASNFull = ListsItemsGetResultListsListItemASNFull;
-export const ListsItemsListResultItemListsListItemASNFull = ListsItemsGetResultListsListItemASNFull;
-
 export type ListsItemsListResultItem =
   | ListsItemsGetResultListsListItemIPFull
   | ListsItemsGetResultListsListItemHostnameFull
   | ListsItemsListResultItemListsListItemRedirectFull
   | ListsItemsGetResultListsListItemASNFull;
-export const ListsItemsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+const ListsItemsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["id", "createdOn", "ip", "modifiedOn", "comment"],
     ["id", "createdOn", "hostname", "modifiedOn", "comment"],
@@ -814,7 +584,7 @@ export const ListsItemsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type ListsItemsListResultList = Array<ListsItemsListResultItem>;
-export const ListsItemsListResultList = /*@__PURE__*/ S.Array(
+const ListsItemsListResultList = /*@__PURE__*/ S.Array(
   ListsItemsListResultItem,
 ) as any as S.Schema<ListsItemsListResultList>;
 
@@ -824,7 +594,7 @@ export interface ListListItemsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListListItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListsItemsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -835,7 +605,7 @@ export interface ListListsRequest {
   /** The Account ID for this resource. */
   accountId: string;
 }
-export const ListListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -844,7 +614,7 @@ export const ListListsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListListsRequest" }) as any as S.Schema<ListListsRequest>;
 
 export type ListsListResultItemKind = "ip" | "redirect" | "hostname" | "asn";
-export const ListsListResultItemKind = S.String;
+const ListsListResultItemKind = S.String;
 
 export interface ListsListResultItem {
   /** The unique ID of the list. */
@@ -864,7 +634,7 @@ export interface ListsListResultItem {
   /** An informative summary of the list. */
   description?: string | null;
 }
-export const ListsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -878,7 +648,7 @@ export const ListsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListsListResultItem" }) as any as S.Schema<ListsListResultItem>;
 
 export type ListsListResultList = Array<ListsListResultItem>;
-export const ListsListResultList = /*@__PURE__*/ S.Array(
+const ListsListResultList = /*@__PURE__*/ S.Array(
   ListsListResultItem,
 ) as any as S.Schema<ListsListResultList>;
 
@@ -888,7 +658,7 @@ export interface ListListsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListListsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -903,7 +673,7 @@ export interface UpdateListRequest {
   /** An informative summary of the list. */
   description?: string;
 }
-export const UpdateListRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
@@ -914,8 +684,6 @@ export const UpdateListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateListRequest" }) as any as S.Schema<UpdateListRequest>;
 
 export type ListsUpdateResponseKind = "ip" | "redirect" | "hostname" | "asn";
-export const ListsUpdateResponseKind = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateListResponse {
   /** The unique ID of the list. */
@@ -935,21 +703,15 @@ export interface UpdateListResponse {
   /** An informative summary of the list. */
   description?: string | null;
 }
-export const UpdateListResponse = CreateListResponse as any as S.Schema<UpdateListResponse>;
+const UpdateListResponse = CreateListResponse as any as S.Schema<UpdateListResponse>;
 
 export type ListsItemsUpdateRequestBodyItemListsListItemIPComment =
   ListsItemsCreateRequestBodyItemListsListItemIPComment;
-export const ListsItemsUpdateRequestBodyItemListsListItemIPComment =
-  ListsItemsCreateRequestBodyItemListsListItemIPComment;
-
 export type ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
   | 301
   | 302
   | 307
   | 308;
-export const ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirectStatusCode =
-  S.Number;
-
 export interface ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect {
   sourceUrl: string;
   targetUrl: string;
@@ -961,39 +723,24 @@ export interface ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedi
     | (number & {});
   subpathMatching?: boolean;
 }
-export const ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect =
-  ListsItemsCreateRequestBodyItemListsListItemRedirectCommentRedirect as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect>;
-
 export interface ListsItemsUpdateRequestBodyItemListsListItemRedirectComment {
   /** The definition of the redirect. */
   redirect: ListsItemsUpdateRequestBodyItemListsListItemRedirectCommentRedirect;
   /** Defines an informative summary of the list item. */
   comment?: string;
 }
-export const ListsItemsUpdateRequestBodyItemListsListItemRedirectComment =
-  ListsItemsCreateRequestBodyItemListsListItemRedirectComment as any as S.Schema<ListsItemsUpdateRequestBodyItemListsListItemRedirectComment>;
-
 export type ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname =
   ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname;
-export const ListsItemsUpdateRequestBodyItemListsListItemHostnameCommentHostname =
-  ListsItemsCreateRequestBodyItemListsListItemHostnameCommentHostname;
-
 export type ListsItemsUpdateRequestBodyItemListsListItemHostnameComment =
   ListsItemsCreateRequestBodyItemListsListItemHostnameComment;
-export const ListsItemsUpdateRequestBodyItemListsListItemHostnameComment =
-  ListsItemsCreateRequestBodyItemListsListItemHostnameComment;
-
 export type ListsItemsUpdateRequestBodyItemListsListItemASNComment =
   ListsItemsCreateRequestBodyItemListsListItemASNComment;
-export const ListsItemsUpdateRequestBodyItemListsListItemASNComment =
-  ListsItemsCreateRequestBodyItemListsListItemASNComment;
-
 export type ListsItemsUpdateRequestBodyItem =
   | ListsItemsCreateRequestBodyItemListsListItemIPComment
   | ListsItemsUpdateRequestBodyItemListsListItemRedirectComment
   | ListsItemsCreateRequestBodyItemListsListItemHostnameComment
   | ListsItemsCreateRequestBodyItemListsListItemASNComment;
-export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
+const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["ip", "comment"],
     ["redirect", "comment"],
@@ -1003,7 +750,7 @@ export const ListsItemsUpdateRequestBodyItem = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type ListsItemsUpdateRequestBodyList = Array<ListsItemsUpdateRequestBodyItem>;
-export const ListsItemsUpdateRequestBodyList = /*@__PURE__*/ S.Array(
+const ListsItemsUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   ListsItemsUpdateRequestBodyItem,
 ) as any as S.Schema<ListsItemsUpdateRequestBodyList>;
 
@@ -1014,7 +761,7 @@ export interface UpdateListItemRequest {
   listId: string;
   body: ListsItemsUpdateRequestBodyList;
 }
-export const UpdateListItemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateListItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     listId: S.String.pipe(T.Label("list_id")),
@@ -1035,8 +782,7 @@ export interface UpdateListItemResponse {
   /** The unique operation ID of the asynchronous action. */
   operationId: string;
 }
-export const UpdateListItemResponse =
-  CreateListItemResponse as any as S.Schema<UpdateListItemResponse>;
+const UpdateListItemResponse = CreateListItemResponse as any as S.Schema<UpdateListItemResponse>;
 
 export type CreateListError = ListAlreadyExists | Forbidden | CloudflareOpError;
 /** Creates a new list of the specified kind. */

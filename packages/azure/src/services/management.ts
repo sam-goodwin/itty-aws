@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** fully qualified resource type which includes provider namespace */
 export type CheckNameAvailabilityRequestType = "Microsoft.Management/managementGroups";
-export const CheckNameAvailabilityRequestType = S.String;
+const CheckNameAvailabilityRequestType = S.String;
 
 export interface CheckNameAvailabilityRequest {
   /** the name to check for availability */
@@ -18,7 +18,7 @@ export interface CheckNameAvailabilityRequest {
   /** fully qualified resource type which includes provider namespace */
   type?: CheckNameAvailabilityRequestType | (string & {});
 }
-export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(CheckNameAvailabilityRequestType),
@@ -36,7 +36,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Required if nameAvailable == false. Invalid indicates the name provided does not match the resource provider's naming requirements (incorrect length, unsupported characters, etc.) AlreadyExists indicates that the name is already in use and is therefore unavailable. */
 export type Reason = "Invalid" | "AlreadyExists";
-export const Reason = S.String;
+const Reason = S.String;
 
 /** Describes the result of the request to check management group name availability. */
 export interface CheckNameAvailabilityResult {
@@ -47,7 +47,7 @@ export interface CheckNameAvailabilityResult {
   /** Required if nameAvailable == false. Localized. If reason == invalid, provide the user with the reason why the given name is invalid, and provide the resource naming requirements so that the user can select a valid name. If reason == AlreadyExists, explain that is already in use, and direct them to select a different name. */
   message?: string;
 }
-export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(Reason),
@@ -63,7 +63,7 @@ export interface CreateManagementGroupSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: string;
 }
-export const CreateManagementGroupSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateManagementGroupSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -81,11 +81,11 @@ export const CreateManagementGroupSubscriptionRequest = /*@__PURE__*/ S.suspend(
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -102,7 +102,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -118,7 +118,7 @@ export interface DescendantParentGroupInfo {
   /** The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
   id?: string;
 }
-export const DescendantParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
+const DescendantParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -137,7 +137,7 @@ export interface SubscriptionUnderManagementGroupProperties {
   /** The state of the subscription. */
   state?: string;
 }
-export const SubscriptionUnderManagementGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionUnderManagementGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -160,7 +160,7 @@ export interface CreateManagementGroupSubscriptionResponse {
   /** The generic properties of subscription under a management group. */
   properties?: SubscriptionUnderManagementGroupProperties;
 }
-export const CreateManagementGroupSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateManagementGroupSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -174,14 +174,14 @@ export const CreateManagementGroupSubscriptionResponse = /*@__PURE__*/ S.suspend
 
 /** The provisioning state of the serviceGroup. For example, Running */
 export type ProvisioningState = "NotStarted" | "Running" | "Succeeded" | "Failed" | "Canceled";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** The attributes of the serviceGroup. */
 export interface ServiceGroupAttributes {
   /** The criticality designation of the service group. Valid values range from 0 through 4. */
   criticality?: number;
 }
-export const ServiceGroupAttributes = /*@__PURE__*/ S.suspend(() =>
+const ServiceGroupAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criticality: S.optional(S.Number),
   }),
@@ -192,7 +192,7 @@ export interface ParentServiceGroupProperties {
   /** The fully qualified ID of the parent serviceGroup. For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup' */
   resourceId?: string;
 }
-export const ParentServiceGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const ParentServiceGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
   }),
@@ -211,7 +211,7 @@ export interface ServiceGroupProperties {
   /** The details of the parent serviceGroup. */
   parent?: ParentServiceGroupProperties;
 }
-export const ServiceGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const ServiceGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     displayName: S.optional(S.String),
@@ -222,7 +222,7 @@ export const ServiceGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The serviceGroup tags. */
 export type CreateOrUpdateServiceGroupRequestTagsMap = { [key: string]: string | undefined };
-export const CreateOrUpdateServiceGroupRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateOrUpdateServiceGroupRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateOrUpdateServiceGroupRequestTagsMap>;
@@ -237,7 +237,7 @@ export interface CreateOrUpdateServiceGroupRequest {
   /** The serviceGroup tags. */
   tags?: CreateOrUpdateServiceGroupRequestTagsMap;
 }
-export const CreateOrUpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceGroupName: S.String.pipe(T.Label()),
     properties: S.optional(ServiceGroupProperties),
@@ -257,7 +257,7 @@ export const CreateOrUpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The serviceGroup tags. */
 export type CreateOrUpdateServiceGroupResponseTagsMap = { [key: string]: string | undefined };
-export const CreateOrUpdateServiceGroupResponseTagsMap =
+const CreateOrUpdateServiceGroupResponseTagsMap =
   CreateOrUpdateServiceGroupRequestTagsMap as any as S.Schema<CreateOrUpdateServiceGroupResponseTagsMap>;
 
 export interface CreateOrUpdateServiceGroupResponse {
@@ -276,7 +276,7 @@ export interface CreateOrUpdateServiceGroupResponse {
   /** The serviceGroup tags. */
   tags?: CreateOrUpdateServiceGroupResponseTagsMap;
 }
-export const CreateOrUpdateServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -294,7 +294,7 @@ export interface DeleteHierarchySettingsRequest {
   /** Management Group ID. */
   groupId: string;
 }
-export const DeleteHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
   }).pipe(
@@ -310,15 +310,15 @@ export const DeleteHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHierarchySettingsRequest>;
 
 export interface DeleteHierarchySettingsResponse {}
-export const DeleteHierarchySettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteHierarchySettingsResponse" },
-) as any as S.Schema<DeleteHierarchySettingsResponse>;
+const DeleteHierarchySettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteHierarchySettingsResponse",
+}) as any as S.Schema<DeleteHierarchySettingsResponse>;
 
 export interface DeleteManagementGroupRequest {
   /** Management Group ID. */
   groupId: string;
 }
-export const DeleteManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
   }).pipe(
@@ -334,7 +334,7 @@ export const DeleteManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagementGroupRequest>;
 
 export interface DeleteManagementGroupResponse {}
-export const DeleteManagementGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteManagementGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteManagementGroupResponse",
 }) as any as S.Schema<DeleteManagementGroupResponse>;
 
@@ -344,7 +344,7 @@ export interface DeleteManagementGroupSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: string;
 }
-export const DeleteManagementGroupSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteManagementGroupSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -361,7 +361,7 @@ export const DeleteManagementGroupSubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteManagementGroupSubscriptionRequest>;
 
 export interface DeleteManagementGroupSubscriptionResponse {}
-export const DeleteManagementGroupSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteManagementGroupSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteManagementGroupSubscriptionResponse",
@@ -371,7 +371,7 @@ export interface DeleteServiceGroupRequest {
   /** ServiceGroup Name. */
   serviceGroupName: string;
 }
-export const DeleteServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceGroupName: S.String.pipe(T.Label()),
   }).pipe(
@@ -387,14 +387,14 @@ export const DeleteServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceGroupRequest>;
 
 export interface DeleteServiceGroupResponse {}
-export const DeleteServiceGroupResponse =
+const DeleteServiceGroupResponse =
   DeleteManagementGroupResponse as any as S.Schema<DeleteServiceGroupResponse>;
 
 export interface GetHierarchySettingsRequest {
   /** Management Group ID. */
   groupId: string;
 }
-export const GetHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
   }).pipe(
@@ -418,7 +418,7 @@ export interface HierarchySettingsProperties {
   /** Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup */
   defaultManagementGroup?: string;
 }
-export const HierarchySettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const HierarchySettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     requireAuthorizationForGroupCreation: S.optional(S.Boolean),
@@ -440,7 +440,7 @@ export interface GetHierarchySettingsResponse {
   /** The generic properties of hierarchy settings. */
   properties?: HierarchySettingsProperties;
 }
-export const GetHierarchySettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHierarchySettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -453,7 +453,7 @@ export const GetHierarchySettingsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHierarchySettingsResponse>;
 
 export type GetManagementGroupRequestExpand = "children" | "path" | "ancestors";
-export const GetManagementGroupRequestExpand = S.String;
+const GetManagementGroupRequestExpand = S.String;
 
 export interface GetManagementGroupRequest {
   /** Management Group ID. */
@@ -465,7 +465,7 @@ export interface GetManagementGroupRequest {
   /** A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription') */
   _filter?: string;
 }
-export const GetManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     _expand: S.optional(GetManagementGroupRequestExpand.pipe(T.Query("$expand"))),
@@ -492,7 +492,7 @@ export interface ParentGroupInfo {
   /** The friendly name of the parent management group. */
   displayName?: string;
 }
-export const ParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
+const ParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -507,7 +507,7 @@ export interface ManagementGroupPathElement {
   /** The friendly name of the group. */
   displayName?: string;
 }
-export const ManagementGroupPathElement = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupPathElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -518,20 +518,20 @@ export const ManagementGroupPathElement = /*@__PURE__*/ S.suspend(() =>
 
 /** The path from the root to the current group. */
 export type ManagementGroupDetailsPathList = Array<ManagementGroupPathElement>;
-export const ManagementGroupDetailsPathList = /*@__PURE__*/ S.Array(
+const ManagementGroupDetailsPathList = /*@__PURE__*/ S.Array(
   ManagementGroupPathElement,
 ) as any as S.Schema<ManagementGroupDetailsPathList>;
 
 /** The ancestors of the management group. */
 export type ManagementGroupDetailsManagementGroupAncestorsList = Array<string>;
-export const ManagementGroupDetailsManagementGroupAncestorsList = /*@__PURE__*/ S.Array(
+const ManagementGroupDetailsManagementGroupAncestorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagementGroupDetailsManagementGroupAncestorsList>;
 
 /** The ancestors of the management group displayed in reversed order, from immediate parent to the root. */
 export type ManagementGroupDetailsManagementGroupAncestorsChainList =
   Array<ManagementGroupPathElement>;
-export const ManagementGroupDetailsManagementGroupAncestorsChainList =
+const ManagementGroupDetailsManagementGroupAncestorsChainList =
   ManagementGroupDetailsPathList as any as S.Schema<ManagementGroupDetailsManagementGroupAncestorsChainList>;
 
 /** The details of a management group. */
@@ -551,7 +551,7 @@ export interface ManagementGroupDetails {
   /** The ancestors of the management group displayed in reversed order, from immediate parent to the root. */
   managementGroupAncestorsChain?: ManagementGroupDetailsManagementGroupAncestorsChainList;
 }
-export const ManagementGroupDetails = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     updatedTime: S.optional(S.String),
@@ -569,11 +569,11 @@ export const ManagementGroupDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of child resource. */
 export type ManagementGroupChildType = "Microsoft.Management/managementGroups" | "/subscriptions";
-export const ManagementGroupChildType = S.String;
+const ManagementGroupChildType = S.String;
 
 /** The list of children. */
 export type ManagementGroupChildInfoChildrenList = Array<ManagementGroupChildInfo>;
-export const ManagementGroupChildInfoChildrenList = /*@__PURE__*/ S.Array(
+const ManagementGroupChildInfoChildrenList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ManagementGroupChildInfo),
 ) as any as S.Schema<ManagementGroupChildInfoChildrenList>;
 
@@ -590,7 +590,7 @@ export interface ManagementGroupChildInfo {
   /** The list of children. */
   children?: ManagementGroupChildInfoChildrenList;
 }
-export const ManagementGroupChildInfo = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupChildInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ManagementGroupChildType),
     id: S.optional(S.String),
@@ -602,7 +602,7 @@ export const ManagementGroupChildInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of children. */
 export type ManagementGroupPropertiesChildrenList = Array<ManagementGroupChildInfo>;
-export const ManagementGroupPropertiesChildrenList = /*@__PURE__*/ S.Array(
+const ManagementGroupPropertiesChildrenList = /*@__PURE__*/ S.Array(
   ManagementGroupChildInfo,
 ) as any as S.Schema<ManagementGroupPropertiesChildrenList>;
 
@@ -617,7 +617,7 @@ export interface ManagementGroupProperties {
   /** The list of children. */
   children?: ManagementGroupPropertiesChildrenList | null;
 }
-export const ManagementGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -640,7 +640,7 @@ export interface GetManagementGroupResponse {
   /** The generic properties of a management group. */
   properties?: ManagementGroupProperties;
 }
-export const GetManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -660,7 +660,7 @@ export interface GetManagementGroupDescendantsRequest {
   /** Number of elements to return when retrieving results. Passing this in will override $skipToken. */
   _top?: number;
 }
-export const GetManagementGroupDescendantsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagementGroupDescendantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
@@ -684,7 +684,7 @@ export interface DescendantInfoProperties {
   /** The ID of the parent management group. */
   parent?: DescendantParentGroupInfo | null;
 }
-export const DescendantInfoProperties = /*@__PURE__*/ S.suspend(() =>
+const DescendantInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     parent: S.optional(S.NullOr(DescendantParentGroupInfo)),
@@ -702,7 +702,7 @@ export interface DescendantInfo {
   /** The generic properties of an descendant. */
   properties?: DescendantInfoProperties | null;
 }
-export const DescendantInfo = /*@__PURE__*/ S.suspend(() =>
+const DescendantInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(S.String)),
@@ -713,7 +713,7 @@ export const DescendantInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The DescendantInfo items on this page */
 export type DescendantListResultValueList = Array<DescendantInfo>;
-export const DescendantListResultValueList = /*@__PURE__*/ S.Array(
+const DescendantListResultValueList = /*@__PURE__*/ S.Array(
   DescendantInfo,
 ) as any as S.Schema<DescendantListResultValueList>;
 
@@ -724,7 +724,7 @@ export interface DescendantListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DescendantListResult = /*@__PURE__*/ S.suspend(() =>
+const DescendantListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DescendantListResultValueList,
     nextLink: S.optional(S.String),
@@ -737,7 +737,7 @@ export interface GetManagementGroupSubscriptionSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: string;
 }
-export const GetManagementGroupSubscriptionSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagementGroupSubscriptionSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -765,7 +765,7 @@ export interface GetManagementGroupSubscriptionSubscriptionResponse {
   /** The generic properties of subscription under a management group. */
   properties?: SubscriptionUnderManagementGroupProperties;
 }
-export const GetManagementGroupSubscriptionSubscriptionResponse =
+const GetManagementGroupSubscriptionSubscriptionResponse =
   CreateManagementGroupSubscriptionResponse as any as S.Schema<GetManagementGroupSubscriptionSubscriptionResponse>;
 
 export interface GetManagementGroupSubscriptionSubscriptionsUnderManagementGroupRequest {
@@ -774,7 +774,7 @@ export interface GetManagementGroupSubscriptionSubscriptionsUnderManagementGroup
   /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const GetManagementGroupSubscriptionSubscriptionsUnderManagementGroupRequest =
+const GetManagementGroupSubscriptionSubscriptionsUnderManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       groupId: S.String.pipe(T.Label()),
@@ -804,12 +804,12 @@ export interface SubscriptionUnderManagementGroup {
   /** The generic properties of subscription under a management group. */
   properties?: SubscriptionUnderManagementGroupProperties;
 }
-export const SubscriptionUnderManagementGroup =
+const SubscriptionUnderManagementGroup =
   CreateManagementGroupSubscriptionResponse as any as S.Schema<SubscriptionUnderManagementGroup>;
 
 /** The SubscriptionUnderManagementGroup items on this page */
 export type ListSubscriptionUnderManagementGroupValueList = Array<SubscriptionUnderManagementGroup>;
-export const ListSubscriptionUnderManagementGroupValueList = /*@__PURE__*/ S.Array(
+const ListSubscriptionUnderManagementGroupValueList = /*@__PURE__*/ S.Array(
   SubscriptionUnderManagementGroup,
 ) as any as S.Schema<ListSubscriptionUnderManagementGroupValueList>;
 
@@ -820,7 +820,7 @@ export interface ListSubscriptionUnderManagementGroup {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListSubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListSubscriptionUnderManagementGroupValueList,
     nextLink: S.optional(S.String),
@@ -833,7 +833,7 @@ export interface GetServiceGroupRequest {
   /** ServiceGroup Name. */
   serviceGroupName: string;
 }
-export const GetServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceGroupName: S.String.pipe(T.Label()),
   }).pipe(
@@ -848,7 +848,7 @@ export const GetServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The serviceGroup tags. */
 export type GetServiceGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceGroupResponseTagsMap =
+const GetServiceGroupResponseTagsMap =
   CreateOrUpdateServiceGroupRequestTagsMap as any as S.Schema<GetServiceGroupResponseTagsMap>;
 
 export interface GetServiceGroupResponse {
@@ -867,7 +867,7 @@ export interface GetServiceGroupResponse {
   /** The serviceGroup tags. */
   tags?: GetServiceGroupResponseTagsMap;
 }
-export const GetServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -886,7 +886,7 @@ export interface CreateOrUpdateSettingsProperties {
   /** Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup */
   defaultManagementGroup?: string;
 }
-export const CreateOrUpdateSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requireAuthorizationForGroupCreation: S.optional(S.Boolean),
     defaultManagementGroup: S.optional(S.String),
@@ -901,7 +901,7 @@ export interface HierarchySettingsCreateOrUpdateRequest {
   /** The properties of the request to create or update Management Group settings */
   properties?: CreateOrUpdateSettingsProperties;
 }
-export const HierarchySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const HierarchySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     properties: S.optional(CreateOrUpdateSettingsProperties),
@@ -929,7 +929,7 @@ export interface HierarchySettingsCreateOrUpdateResponse {
   /** The generic properties of hierarchy settings. */
   properties?: HierarchySettingsProperties;
 }
-export const HierarchySettingsCreateOrUpdateResponse =
+const HierarchySettingsCreateOrUpdateResponse =
   GetHierarchySettingsResponse as any as S.Schema<HierarchySettingsCreateOrUpdateResponse>;
 
 export type ListEntitiesRequestSearch =
@@ -938,14 +938,14 @@ export type ListEntitiesRequestSearch =
   | "ParentAndFirstLevelChildren"
   | "ParentOnly"
   | "ChildrenOnly";
-export const ListEntitiesRequestSearch = S.String;
+const ListEntitiesRequestSearch = S.String;
 
 export type ListEntitiesRequestView =
   | "FullHierarchy"
   | "GroupsOnly"
   | "SubscriptionsOnly"
   | "Audit";
-export const ListEntitiesRequestView = S.String;
+const ListEntitiesRequestView = S.String;
 
 export interface ListEntitiesRequest {
   /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
@@ -965,7 +965,7 @@ export interface ListEntitiesRequest {
   /** A filter which allows the get entities call to focus on a particular group (i.e. "$filter=name eq 'groupName'") */
   groupName?: string;
 }
-export const ListEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
     _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
@@ -987,20 +987,18 @@ export const ListEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** (Optional) The ID of the parent management group. */
 export type EntityParentGroupInfo = DescendantParentGroupInfo;
-export const EntityParentGroupInfo = DescendantParentGroupInfo;
-
 /** The users specific permissions to this item. */
 export type Permissions = "noaccess" | "view" | "edit" | "delete";
-export const Permissions = S.String;
+const Permissions = S.String;
 
 /** The parent display name chain from the root group to the immediate parent */
 export type EntityInfoPropertiesParentDisplayNameChainList = Array<string>;
-export const EntityInfoPropertiesParentDisplayNameChainList =
+const EntityInfoPropertiesParentDisplayNameChainList =
   ManagementGroupDetailsManagementGroupAncestorsList as any as S.Schema<EntityInfoPropertiesParentDisplayNameChainList>;
 
 /** The parent name chain from the root group to the immediate parent */
 export type EntityInfoPropertiesParentNameChainList = Array<string>;
-export const EntityInfoPropertiesParentNameChainList =
+const EntityInfoPropertiesParentNameChainList =
   ManagementGroupDetailsManagementGroupAncestorsList as any as S.Schema<EntityInfoPropertiesParentNameChainList>;
 
 /** The generic properties of an entity. */
@@ -1026,7 +1024,7 @@ export interface EntityInfoProperties {
   /** The parent name chain from the root group to the immediate parent */
   parentNameChain?: EntityInfoPropertiesParentNameChainList | null;
 }
-export const EntityInfoProperties = /*@__PURE__*/ S.suspend(() =>
+const EntityInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.NullOr(S.String)),
     displayName: S.optional(S.NullOr(S.String)),
@@ -1052,7 +1050,7 @@ export interface EntityInfo {
   /** The generic properties of an entity. */
   properties?: EntityInfoProperties | null;
 }
-export const EntityInfo = /*@__PURE__*/ S.suspend(() =>
+const EntityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(S.String)),
@@ -1063,7 +1061,7 @@ export const EntityInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The EntityInfo items on this page */
 export type EntityListResultValueList = Array<EntityInfo>;
-export const EntityListResultValueList = /*@__PURE__*/ S.Array(
+const EntityListResultValueList = /*@__PURE__*/ S.Array(
   EntityInfo,
 ) as any as S.Schema<EntityListResultValueList>;
 
@@ -1076,7 +1074,7 @@ export interface EntityListResult {
   /** Total count of records that match the filter. */
   count?: number;
 }
-export const EntityListResult = /*@__PURE__*/ S.suspend(() =>
+const EntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EntityListResultValueList,
     nextLink: S.optional(S.String),
@@ -1088,7 +1086,7 @@ export interface ListHierarchySettingsRequest {
   /** Management Group ID. */
   groupId: string;
 }
-export const ListHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1114,7 +1112,7 @@ export interface HierarchySettingsInfo {
   /** The generic properties of hierarchy settings. */
   properties?: HierarchySettingsProperties;
 }
-export const HierarchySettingsInfo = /*@__PURE__*/ S.suspend(() =>
+const HierarchySettingsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -1125,7 +1123,7 @@ export const HierarchySettingsInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of hierarchy settings. */
 export type HierarchySettingsListValueList = Array<HierarchySettingsInfo>;
-export const HierarchySettingsListValueList = /*@__PURE__*/ S.Array(
+const HierarchySettingsListValueList = /*@__PURE__*/ S.Array(
   HierarchySettingsInfo,
 ) as any as S.Schema<HierarchySettingsListValueList>;
 
@@ -1136,7 +1134,7 @@ export interface HierarchySettingsList {
   /** The URL to use for getting the next set of results. */
   _nextLink?: string;
 }
-export const HierarchySettingsList = /*@__PURE__*/ S.suspend(() =>
+const HierarchySettingsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(HierarchySettingsListValueList),
     _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
@@ -1147,7 +1145,7 @@ export interface ListManagementGroupsRequest {
   /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListManagementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListManagementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
   }).pipe(
@@ -1169,7 +1167,7 @@ export interface ManagementGroupInfoProperties {
   /** The friendly name of the management group. */
   displayName?: string;
 }
-export const ManagementGroupInfoProperties = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1189,7 +1187,7 @@ export interface ManagementGroupInfo {
   /** The generic properties of a management group. */
   properties?: ManagementGroupInfoProperties;
 }
-export const ManagementGroupInfo = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -1200,7 +1198,7 @@ export const ManagementGroupInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of management groups. */
 export type ManagementGroupListResultValueList = Array<ManagementGroupInfo>;
-export const ManagementGroupListResultValueList = /*@__PURE__*/ S.Array(
+const ManagementGroupListResultValueList = /*@__PURE__*/ S.Array(
   ManagementGroupInfo,
 ) as any as S.Schema<ManagementGroupListResultValueList>;
 
@@ -1211,7 +1209,7 @@ export interface ManagementGroupListResult {
   /** The URL to use for getting the next set of results. */
   _nextLink?: string;
 }
-export const ManagementGroupListResult = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ManagementGroupListResultValueList),
     _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
@@ -1221,7 +1219,7 @@ export const ManagementGroupListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementGroupListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1243,7 +1241,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1254,11 +1252,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -1273,7 +1271,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1285,7 +1283,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -1295,7 +1293,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -1304,14 +1302,12 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** (Optional) The ID of the parent management group used during creation. */
 export type CreateParentGroupInfoInput = DescendantParentGroupInfo;
-export const CreateParentGroupInfoInput = DescendantParentGroupInfo;
-
 /** The details of a management group used during creation. */
 export interface CreateManagementGroupDetailsInput {
   /** (Optional) The ID of the parent management group used during creation. */
   parent?: DescendantParentGroupInfo;
 }
-export const CreateManagementGroupDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const CreateManagementGroupDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(DescendantParentGroupInfo),
   }),
@@ -1326,7 +1322,7 @@ export interface CreateManagementGroupPropertiesInput {
   /** The details of a management group used during creation. */
   details?: CreateManagementGroupDetailsInput;
 }
-export const CreateManagementGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CreateManagementGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     details: S.optional(CreateManagementGroupDetailsInput),
@@ -1343,7 +1339,7 @@ export interface ManagementGroupsCreateOrUpdateRequest {
   /** The generic properties of a management group used during creation. */
   properties?: CreateManagementGroupPropertiesInput;
 }
-export const ManagementGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -1372,11 +1368,11 @@ export interface ManagementGroupsCreateOrUpdateResponse {
   /** The generic properties of a management group. */
   properties?: ManagementGroupProperties;
 }
-export const ManagementGroupsCreateOrUpdateResponse =
+const ManagementGroupsCreateOrUpdateResponse =
   GetManagementGroupResponse as any as S.Schema<ManagementGroupsCreateOrUpdateResponse>;
 
 export interface StartTenantBackfillRequest {}
-export const StartTenantBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const StartTenantBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -1397,7 +1393,7 @@ export type Status =
   | "Failed"
   | "Cancelled"
   | "Completed";
-export const Status = S.String;
+const Status = S.String;
 
 /** The tenant backfill status */
 export interface TenantBackfillStatusResult {
@@ -1406,7 +1402,7 @@ export interface TenantBackfillStatusResult {
   /** The status of the Tenant Backfill */
   status?: Status;
 }
-export const TenantBackfillStatusResult = /*@__PURE__*/ S.suspend(() =>
+const TenantBackfillStatusResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     status: S.optional(Status),
@@ -1416,7 +1412,7 @@ export const TenantBackfillStatusResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantBackfillStatusResult>;
 
 export interface TenantBackfillStatusRequest {}
-export const TenantBackfillStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const TenantBackfillStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -1435,7 +1431,7 @@ export interface UpdateHierarchySettingsRequest {
   /** The properties of the request to create or update Management Group settings */
   properties?: CreateOrUpdateSettingsProperties;
 }
-export const UpdateHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHierarchySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     properties: S.optional(CreateOrUpdateSettingsProperties),
@@ -1463,7 +1459,7 @@ export interface UpdateHierarchySettingsResponse {
   /** The generic properties of hierarchy settings. */
   properties?: HierarchySettingsProperties;
 }
-export const UpdateHierarchySettingsResponse =
+const UpdateHierarchySettingsResponse =
   GetHierarchySettingsResponse as any as S.Schema<UpdateHierarchySettingsResponse>;
 
 export interface UpdateManagementGroupRequest {
@@ -1474,7 +1470,7 @@ export interface UpdateManagementGroupRequest {
   /** (Optional) The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
   parentGroupId?: string;
 }
-export const UpdateManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     displayName: S.optional(S.String),
@@ -1503,12 +1499,12 @@ export interface UpdateManagementGroupResponse {
   /** The generic properties of a management group. */
   properties?: ManagementGroupProperties;
 }
-export const UpdateManagementGroupResponse =
+const UpdateManagementGroupResponse =
   GetManagementGroupResponse as any as S.Schema<UpdateManagementGroupResponse>;
 
 /** The serviceGroup tags. */
 export type UpdateServiceGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceGroupRequestTagsMap =
+const UpdateServiceGroupRequestTagsMap =
   CreateOrUpdateServiceGroupRequestTagsMap as any as S.Schema<UpdateServiceGroupRequestTagsMap>;
 
 export interface UpdateServiceGroupRequest {
@@ -1521,7 +1517,7 @@ export interface UpdateServiceGroupRequest {
   /** The serviceGroup tags. */
   tags?: UpdateServiceGroupRequestTagsMap;
 }
-export const UpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceGroupName: S.String.pipe(T.Label()),
     properties: S.optional(ServiceGroupProperties),
@@ -1541,9 +1537,6 @@ export const UpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The serviceGroup tags. */
 export type UpdateServiceGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceGroupResponseTagsMap =
-  CreateOrUpdateServiceGroupRequestTagsMap as any as S.Schema<UpdateServiceGroupResponseTagsMap>;
-
 export interface UpdateServiceGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1560,7 +1553,7 @@ export interface UpdateServiceGroupResponse {
   /** The serviceGroup tags. */
   tags?: UpdateServiceGroupResponseTagsMap;
 }
-export const UpdateServiceGroupResponse =
+const UpdateServiceGroupResponse =
   CreateOrUpdateServiceGroupResponse as any as S.Schema<UpdateServiceGroupResponse>;
 
 export type CheckNameAvailabilityError = AzureOpError;

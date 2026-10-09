@@ -41,7 +41,7 @@ export interface AnnotationsDestroyRequest {
   /** A unique integer value identifying this annotation. */
   id: number;
 }
-export const AnnotationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const AnnotationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -53,13 +53,13 @@ export const AnnotationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnotationsDestroyRequest>;
 
 export interface AnnotationsDestroyResponse {}
-export const AnnotationsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AnnotationsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AnnotationsDestroyResponse",
 }) as any as S.Schema<AnnotationsDestroyResponse>;
 
 /** * `USR` - user * `GIT` - GitHub */
 export type AnnotationCreationTypeEnum = "USR" | "GIT";
-export const AnnotationCreationTypeEnum = S.String;
+const AnnotationCreationTypeEnum = S.String;
 
 /** * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
 export type AnnotationScopeEnum =
@@ -68,7 +68,7 @@ export type AnnotationScopeEnum =
   | "project"
   | "organization"
   | "recording";
-export const AnnotationScopeEnum = S.String;
+const AnnotationScopeEnum = S.String;
 
 export interface CreateAnnotationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -92,7 +92,7 @@ export interface CreateAnnotationRequest {
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
   hidden_in_user_interface?: boolean | null;
 }
-export const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     content: S.optional(S.NullOr(S.String)),
@@ -108,7 +108,7 @@ export const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAnnotationRequest" }) as any as S.Schema<CreateAnnotationRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -124,14 +124,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -144,7 +139,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -186,7 +181,7 @@ export interface Annotation {
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
   hidden_in_user_interface?: boolean | null;
 }
-export const Annotation = /*@__PURE__*/ S.suspend(() =>
+const Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     content: S.optional(S.NullOr(S.String)),
@@ -214,7 +209,7 @@ export interface GetAnnotationRequest {
   /** A unique integer value identifying this annotation. */
   id: number;
 }
-export const GetAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -233,7 +228,7 @@ export interface ListAnnotationsRequest {
   /** A search term. */
   search?: string;
 }
-export const ListAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -243,7 +238,7 @@ export const ListAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAnnotationsRequest" }) as any as S.Schema<ListAnnotationsRequest>;
 
 export type PaginatedAnnotationListResultsList = Array<Annotation>;
-export const PaginatedAnnotationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAnnotationListResultsList = /*@__PURE__*/ S.Array(
   Annotation,
 ) as any as S.Schema<PaginatedAnnotationListResultsList>;
 
@@ -253,7 +248,7 @@ export interface PaginatedAnnotationList {
   previous?: string | null;
   results?: PaginatedAnnotationListResultsList;
 }
-export const PaginatedAnnotationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAnnotationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -286,7 +281,7 @@ export interface UpdateAnnotationRequest {
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
   hidden_in_user_interface?: boolean | null;
 }
-export const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -328,7 +323,7 @@ export interface UpdateAnnotationsPartialRequest {
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
   hidden_in_user_interface?: boolean | null;
 }
-export const UpdateAnnotationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAnnotationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

@@ -9,44 +9,44 @@ import * as T from "../traits.ts";
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface GetUserHomeDirRequest {}
-export const GetUserHomeDirRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserHomeDirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user-home-dir", code: 200 })),
 ).annotate({ identifier: "GetUserHomeDirRequest" }) as any as S.Schema<GetUserHomeDirRequest>;
 
 export interface UserHomeDirResponse {
   dir: string;
 }
-export const UserHomeDirResponse = /*@__PURE__*/ S.suspend(() =>
+const UserHomeDirResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dir: S.String,
   }),
 ).annotate({ identifier: "UserHomeDirResponse" }) as any as S.Schema<UserHomeDirResponse>;
 
 export interface GetVersionRequest {}
-export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/version", code: 200 })),
 ).annotate({ identifier: "GetVersionRequest" }) as any as S.Schema<GetVersionRequest>;
 
 export type GetVersionResponseBodyMap = { [key: string]: string | undefined };
-export const GetVersionResponseBodyMap = /*@__PURE__*/ S.Record(
+const GetVersionResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetVersionResponseBodyMap>;
 
 export type GetVersionResponse = GetVersionResponseBodyMap;
-export const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   GetVersionResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetVersionResponse" }) as any as S.Schema<GetVersionResponse>;
 
 export interface GetWorkDirRequest {}
-export const GetWorkDirRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkDirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/work-dir", code: 200 })),
 ).annotate({ identifier: "GetWorkDirRequest" }) as any as S.Schema<GetWorkDirRequest>;
 
 export interface WorkDirResponse {
   dir: string;
 }
-export const WorkDirResponse = UserHomeDirResponse as any as S.Schema<WorkDirResponse>;
+const WorkDirResponse = UserHomeDirResponse as any as S.Schema<WorkDirResponse>;
 
 export type GetUserHomeDirError = DaytonaOpError;
 /** Get user home directory Get the current user home directory path. */

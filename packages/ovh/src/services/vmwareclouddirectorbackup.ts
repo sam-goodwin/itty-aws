@@ -12,7 +12,7 @@ export interface CreateVmwareCloudDirectorOrganizationPasswordRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const CreateVmwareCloudDirectorOrganizationPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVmwareCloudDirectorOrganizationPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -27,7 +27,7 @@ export const CreateVmwareCloudDirectorOrganizationPasswordRequest = /*@__PURE__*
 }) as any as S.Schema<CreateVmwareCloudDirectorOrganizationPasswordRequest>;
 
 export interface CreateVmwareCloudDirectorOrganizationPasswordResponse {}
-export const CreateVmwareCloudDirectorOrganizationPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVmwareCloudDirectorOrganizationPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateVmwareCloudDirectorOrganizationPasswordResponse",
@@ -37,7 +37,7 @@ export interface GetVmwareCloudDirectorBackupRequest {
   /** Backup ID */
   backupId: string;
 }
-export const GetVmwareCloudDirectorBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmwareCloudDirectorBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vmwareCloudDirector/backup/{backupId}", code: 200 })),
@@ -53,11 +53,11 @@ export type VmwareCloudDirectorAZNameEnum =
   | "eu-west-lim-a"
   | "eu-west-rbx-a"
   | "eu-west-sbg-a";
-export const VmwareCloudDirectorAZNameEnum = S.String;
+const VmwareCloudDirectorAZNameEnum = S.String;
 
 /** The backup offer type of your VMware Cloud Director project */
 export type VmwareCloudDirectorBackupOfferNameEnum = "BRONZE" | "GOLD" | "SILVER";
-export const VmwareCloudDirectorBackupOfferNameEnum = S.String;
+const VmwareCloudDirectorBackupOfferNameEnum = S.String;
 
 /** The region of your VMware Cloud Director project */
 export type VmwareCloudDirectorRegionNameEnum =
@@ -74,7 +74,7 @@ export type VmwareCloudDirectorRegionNameEnum =
   | "eu-west-sbg"
   | "us-east-vin"
   | "us-west-hil";
-export const VmwareCloudDirectorRegionNameEnum = S.String;
+const VmwareCloudDirectorRegionNameEnum = S.String;
 
 /** Status of VMware Cloud Director backup service */
 export type VmwareCloudDirectorBackupResourceStatusEnum =
@@ -85,7 +85,7 @@ export type VmwareCloudDirectorBackupResourceStatusEnum =
   | "REMOVED"
   | "REMOVING"
   | "UPDATING";
-export const VmwareCloudDirectorBackupResourceStatusEnum = S.String;
+const VmwareCloudDirectorBackupResourceStatusEnum = S.String;
 
 /** VMware Cloud Director Backup current state */
 export interface VmwareCloudDirectorBackupCurrentStateOffer {
@@ -102,7 +102,7 @@ export interface VmwareCloudDirectorBackupCurrentStateOffer {
   /** Backup repository used space in GB */
   usedSpaceInGB?: number;
 }
-export const VmwareCloudDirectorBackupCurrentStateOffer = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorBackupCurrentStateOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(VmwareCloudDirectorBackupOfferNameEnum),
     protectionPrimaryRegion: S.optional(VmwareCloudDirectorRegionNameEnum),
@@ -118,7 +118,7 @@ export const VmwareCloudDirectorBackupCurrentStateOffer = /*@__PURE__*/ S.suspen
 /** List of your VMware Cloud Director organization backup offers */
 export type VmwareCloudDirectorBackupCurrentStateOffersList =
   Array<VmwareCloudDirectorBackupCurrentStateOffer>;
-export const VmwareCloudDirectorBackupCurrentStateOffersList = /*@__PURE__*/ S.Array(
+const VmwareCloudDirectorBackupCurrentStateOffersList = /*@__PURE__*/ S.Array(
   VmwareCloudDirectorBackupCurrentStateOffer,
 ) as any as S.Schema<VmwareCloudDirectorBackupCurrentStateOffersList>;
 
@@ -129,7 +129,7 @@ export interface VmwareCloudDirectorBackupCurrentState {
   /** List of your VMware Cloud Director organization backup offers */
   offers?: VmwareCloudDirectorBackupCurrentStateOffersList;
 }
-export const VmwareCloudDirectorBackupCurrentState = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorBackupCurrentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azName: S.optional(VmwareCloudDirectorAZNameEnum),
     offers: S.optional(VmwareCloudDirectorBackupCurrentStateOffersList),
@@ -140,7 +140,7 @@ export const VmwareCloudDirectorBackupCurrentState = /*@__PURE__*/ S.suspend(() 
 
 /** Current status of a task. A task in ERROR cannot be retried without your inputs. PENDING tasks will be executed as soon as possible. A RUNNING task is currently executing your original request. SCHEDULED is used for tasks that will be executed in the future */
 export type CommonCurrentTaskStatusEnum = "ERROR" | "PENDING" | "RUNNING" | "SCHEDULED";
-export const CommonCurrentTaskStatusEnum = S.String;
+const CommonCurrentTaskStatusEnum = S.String;
 
 /** Asynchronous operation currently running */
 export interface CommonCurrentTask {
@@ -153,7 +153,7 @@ export interface CommonCurrentTask {
   /** Type of the current task */
   type?: string;
 }
-export const CommonCurrentTask = /*@__PURE__*/ S.suspend(() =>
+const CommonCurrentTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     link: S.optional(S.String),
@@ -165,13 +165,13 @@ export const CommonCurrentTask = /*@__PURE__*/ S.suspend(() =>
 /** Asynchronous operations ongoing on the VMware Cloud Director organization backup service */
 export type VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList =
   Array<CommonCurrentTask>;
-export const VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList = /*@__PURE__*/ S.Array(
+const VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList = /*@__PURE__*/ S.Array(
   CommonCurrentTask,
 ) as any as S.Schema<VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList>;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -187,7 +187,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -203,7 +203,7 @@ export interface VmwareCloudDirectorBackupTargetOffer {
   /** Backup repository quota in TB */
   quotaInTB: number;
 }
-export const VmwareCloudDirectorBackupTargetOffer = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorBackupTargetOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: VmwareCloudDirectorBackupOfferNameEnum,
     quotaInTB: S.Number,
@@ -215,7 +215,7 @@ export const VmwareCloudDirectorBackupTargetOffer = /*@__PURE__*/ S.suspend(() =
 /** List of your VMware Cloud Director backup offers */
 export type VmwareCloudDirectorBackupTargetSpecOffersList =
   Array<VmwareCloudDirectorBackupTargetOffer>;
-export const VmwareCloudDirectorBackupTargetSpecOffersList = /*@__PURE__*/ S.Array(
+const VmwareCloudDirectorBackupTargetSpecOffersList = /*@__PURE__*/ S.Array(
   VmwareCloudDirectorBackupTargetOffer,
 ) as any as S.Schema<VmwareCloudDirectorBackupTargetSpecOffersList>;
 
@@ -224,7 +224,7 @@ export interface VmwareCloudDirectorBackupTargetSpec {
   /** List of your VMware Cloud Director backup offers */
   offers: VmwareCloudDirectorBackupTargetSpecOffersList;
 }
-export const VmwareCloudDirectorBackupTargetSpec = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorBackupTargetSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offers: VmwareCloudDirectorBackupTargetSpecOffersList,
   }),
@@ -249,7 +249,7 @@ export interface VmwareCloudDirectorBackupBackupDetailsWithIAM {
   /** Datetime when backup is modified */
   updatedAt?: string;
 }
-export const VmwareCloudDirectorBackupBackupDetailsWithIAM = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorBackupBackupDetailsWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     currentState: S.optional(VmwareCloudDirectorBackupCurrentState),
@@ -272,7 +272,7 @@ export interface GetVmwareCloudDirectorBackupTaskRequest {
   /** Task ID */
   taskId: string;
 }
-export const GetVmwareCloudDirectorBackupTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmwareCloudDirectorBackupTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupId: S.String.pipe(T.Label()),
     taskId: S.String.pipe(T.Label()),
@@ -292,7 +292,7 @@ export interface CommonTaskError {
   /** Error description */
   message?: string;
 }
-export const CommonTaskError = /*@__PURE__*/ S.suspend(() =>
+const CommonTaskError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -300,13 +300,13 @@ export const CommonTaskError = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors that occured on the task */
 export type CommonTaskErrorsList = Array<CommonTaskError>;
-export const CommonTaskErrorsList = /*@__PURE__*/ S.Array(
+const CommonTaskErrorsList = /*@__PURE__*/ S.Array(
   CommonTaskError,
 ) as any as S.Schema<CommonTaskErrorsList>;
 
 /** TaskStatusEnum */
 export type CommonTaskStatusEnum = "DONE" | "ERROR" | "PENDING" | "RUNNING" | "SCHEDULED";
-export const CommonTaskStatusEnum = S.String;
+const CommonTaskStatusEnum = S.String;
 
 /** Detailed information about an asynchronous operation progress steps */
 export interface CommonTaskProgress {
@@ -315,7 +315,7 @@ export interface CommonTaskProgress {
   /** Current status of the progress step */
   status?: CommonTaskStatusEnum;
 }
-export const CommonTaskProgress = /*@__PURE__*/ S.suspend(() =>
+const CommonTaskProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(CommonTaskStatusEnum),
@@ -324,7 +324,7 @@ export const CommonTaskProgress = /*@__PURE__*/ S.suspend(() =>
 
 /** Progress steps of the asynchronous operation */
 export type CommonTaskProgressList = Array<CommonTaskProgress>;
-export const CommonTaskProgressList = /*@__PURE__*/ S.Array(
+const CommonTaskProgressList = /*@__PURE__*/ S.Array(
   CommonTaskProgress,
 ) as any as S.Schema<CommonTaskProgressList>;
 
@@ -353,7 +353,7 @@ export interface CommonTask {
   /** Last update of the task */
   updatedAt?: string;
 }
-export const CommonTask = /*@__PURE__*/ S.suspend(() =>
+const CommonTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     errors: S.optional(S.NullOr(CommonTaskErrorsList)),
@@ -373,7 +373,7 @@ export interface GetVmwareCloudDirectorOrganizationRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const GetVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -385,7 +385,7 @@ export const GetVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspend
 
 /** The billing type of your VMware Cloud Director project */
 export type VmwareCloudDirectorBillingTypeEnum = "DEMO" | "MONTHLY";
-export const VmwareCloudDirectorBillingTypeEnum = S.String;
+const VmwareCloudDirectorBillingTypeEnum = S.String;
 
 /** Current status of VMware Cloud Director organization service */
 export interface VmwareCloudDirectorOrganizationCurrentState {
@@ -406,7 +406,7 @@ export interface VmwareCloudDirectorOrganizationCurrentState {
   /** URL to administrate your VMware Cloud Director organization on OVHcloud */
   webInterfaceUrl?: string;
 }
-export const VmwareCloudDirectorOrganizationCurrentState = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorOrganizationCurrentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiUrl: S.optional(S.String),
     billingType: S.optional(VmwareCloudDirectorBillingTypeEnum),
@@ -423,7 +423,7 @@ export const VmwareCloudDirectorOrganizationCurrentState = /*@__PURE__*/ S.suspe
 
 /** Asynchronous operations ongoing on the VMware Cloud Director organization */
 export type VmwareCloudDirectorOrganizationWithIAMCurrentTasksList = Array<CommonCurrentTask>;
-export const VmwareCloudDirectorOrganizationWithIAMCurrentTasksList =
+const VmwareCloudDirectorOrganizationWithIAMCurrentTasksList =
   VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList as any as S.Schema<VmwareCloudDirectorOrganizationWithIAMCurrentTasksList>;
 
 /** ResourceStatusEnum */
@@ -434,7 +434,7 @@ export type CommonResourceStatusEnum =
   | "READY"
   | "SUSPENDED"
   | "UPDATING";
-export const CommonResourceStatusEnum = S.String;
+const CommonResourceStatusEnum = S.String;
 
 /** Target specification of VMware Cloud Director organization service */
 export interface VmwareCloudDirectorOrganizationTargetSpec {
@@ -443,7 +443,7 @@ export interface VmwareCloudDirectorOrganizationTargetSpec {
   /** Human readable full name of your VMware Cloud Director organization */
   fullName: string;
 }
-export const VmwareCloudDirectorOrganizationTargetSpec = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorOrganizationTargetSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     fullName: S.String,
@@ -466,7 +466,7 @@ export interface VmwareCloudDirectorOrganizationWithIAM {
   targetSpec?: VmwareCloudDirectorOrganizationTargetSpec;
   updatedAt?: string;
 }
-export const VmwareCloudDirectorOrganizationWithIAM = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorOrganizationWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentState: S.optional(VmwareCloudDirectorOrganizationCurrentState),
     currentTasks: S.optional(S.NullOr(VmwareCloudDirectorOrganizationWithIAMCurrentTasksList)),
@@ -486,7 +486,7 @@ export interface GetVmwareCloudDirectorOrganizationTaskRequest {
   /** Task ID */
   taskId: string;
 }
-export const GetVmwareCloudDirectorOrganizationTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmwareCloudDirectorOrganizationTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     taskId: S.String.pipe(T.Label()),
@@ -507,25 +507,24 @@ export interface GetVmwareCloudDirectorOrganizationVirtualDataCenterRequest {
   /** Virtual data center ID */
   virtualDataCenterId: string;
 }
-export const GetVmwareCloudDirectorOrganizationVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organizationId: S.String.pipe(T.Label()),
-      virtualDataCenterId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/vmwareCloudDirector/organization/{organizationId}/virtualDataCenter/{virtualDataCenterId}",
-        code: 200,
-      }),
-    ),
+const GetVmwareCloudDirectorOrganizationVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationId: S.String.pipe(T.Label()),
+    virtualDataCenterId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/vmwareCloudDirector/organization/{organizationId}/virtualDataCenter/{virtualDataCenterId}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetVmwareCloudDirectorOrganizationVirtualDataCenterRequest",
 }) as any as S.Schema<GetVmwareCloudDirectorOrganizationVirtualDataCenterRequest>;
 
 /** The commercial range of your VMware Cloud Director project */
 export type VmwareCloudDirectorCommercialRangeEnum = "NSX" | "STANDARD" | "VSAN-NSX";
-export const VmwareCloudDirectorCommercialRangeEnum = S.String;
+const VmwareCloudDirectorCommercialRangeEnum = S.String;
 
 /** Current status of organization Virtual DataCenter service */
 export interface VmwareCloudDirectorVirtualDataCenterCurrentState {
@@ -548,7 +547,7 @@ export interface VmwareCloudDirectorVirtualDataCenterCurrentState {
   /** Effective vCPU speed (GHz) for VMs in your organization Virtual DataCenter */
   vCPUSpeed?: number;
 }
-export const VmwareCloudDirectorVirtualDataCenterCurrentState = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorVirtualDataCenterCurrentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commercialRange: S.optional(VmwareCloudDirectorCommercialRangeEnum),
     description: S.optional(S.String),
@@ -566,7 +565,7 @@ export const VmwareCloudDirectorVirtualDataCenterCurrentState = /*@__PURE__*/ S.
 
 /** Asynchronous operations ongoing on the organization Virtual DataCenter */
 export type VmwareCloudDirectorVirtualDataCenterWithIAMCurrentTasksList = Array<CommonCurrentTask>;
-export const VmwareCloudDirectorVirtualDataCenterWithIAMCurrentTasksList =
+const VmwareCloudDirectorVirtualDataCenterWithIAMCurrentTasksList =
   VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList as any as S.Schema<VmwareCloudDirectorVirtualDataCenterWithIAMCurrentTasksList>;
 
 /** Target specification of organization Virtual DataCenter service */
@@ -576,7 +575,7 @@ export interface VmwareCloudDirectorVirtualDataCenterTargetSpec {
   /** Effective vCPU speed (GHz) for VMs in your organization Virtual DataCenter */
   vCPUSpeed: number;
 }
-export const VmwareCloudDirectorVirtualDataCenterTargetSpec = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorVirtualDataCenterTargetSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     vCPUSpeed: S.Number,
@@ -599,7 +598,7 @@ export interface VmwareCloudDirectorVirtualDataCenterWithIAM {
   targetSpec?: VmwareCloudDirectorVirtualDataCenterTargetSpec;
   updatedAt?: string;
 }
-export const VmwareCloudDirectorVirtualDataCenterWithIAM = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorVirtualDataCenterWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentState: S.optional(VmwareCloudDirectorVirtualDataCenterCurrentState),
     currentTasks: S.optional(S.NullOr(VmwareCloudDirectorVirtualDataCenterWithIAMCurrentTasksList)),
@@ -621,8 +620,8 @@ export interface GetVmwareCloudDirectorOrganizationVirtualDataCenterComputeReque
   /** Compute ID */
   computeId: string;
 }
-export const GetVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
       virtualDataCenterId: S.String.pipe(T.Label()),
@@ -634,9 +633,9 @@ export const GetVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "GetVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest",
-  }) as any as S.Schema<GetVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest>;
+).annotate({
+  identifier: "GetVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest",
+}) as any as S.Schema<GetVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest>;
 
 /** Current status of organization Virtual DataCenter compute resource */
 export interface VmwareCloudDirectorComputeCurrentState {
@@ -651,7 +650,7 @@ export interface VmwareCloudDirectorComputeCurrentState {
   /** vCPU core count allocated to your organization Virtual DataCenter compute resource */
   vCPUCount?: number;
 }
-export const VmwareCloudDirectorComputeCurrentState = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorComputeCurrentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingType: S.optional(VmwareCloudDirectorBillingTypeEnum),
     memoryQuota: S.optional(S.Number),
@@ -665,7 +664,7 @@ export const VmwareCloudDirectorComputeCurrentState = /*@__PURE__*/ S.suspend(()
 
 /** Asynchronous operations ongoing on the organization Virtual DataCenter compute resource */
 export type VmwareCloudDirectorComputeCurrentTasksList = Array<CommonCurrentTask>;
-export const VmwareCloudDirectorComputeCurrentTasksList =
+const VmwareCloudDirectorComputeCurrentTasksList =
   VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList as any as S.Schema<VmwareCloudDirectorComputeCurrentTasksList>;
 
 /** Organization Virtual DataCenter compute resource */
@@ -679,7 +678,7 @@ export interface VmwareCloudDirectorCompute {
   resourceStatus?: CommonResourceStatusEnum;
   updatedAt?: string;
 }
-export const VmwareCloudDirectorCompute = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorCompute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentState: S.optional(VmwareCloudDirectorComputeCurrentState),
     currentTasks: S.optional(S.NullOr(VmwareCloudDirectorComputeCurrentTasksList)),
@@ -699,8 +698,8 @@ export interface GetVmwareCloudDirectorOrganizationVirtualDataCenterStorageReque
   /** Storage ID */
   storageId: string;
 }
-export const GetVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
       virtualDataCenterId: S.String.pipe(T.Label()),
@@ -712,9 +711,9 @@ export const GetVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "GetVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest",
-  }) as any as S.Schema<GetVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest>;
+).annotate({
+  identifier: "GetVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest",
+}) as any as S.Schema<GetVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest>;
 
 /** Current status of organization Virtual DataCenter storage resource */
 export interface VmwareCloudDirectorStorageCurrentState {
@@ -729,7 +728,7 @@ export interface VmwareCloudDirectorStorageCurrentState {
   /** Type of your organization Virtual DataCenter storage resource */
   type?: string;
 }
-export const VmwareCloudDirectorStorageCurrentState = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorStorageCurrentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingType: S.optional(VmwareCloudDirectorBillingTypeEnum),
     capacity: S.optional(S.Number),
@@ -743,7 +742,7 @@ export const VmwareCloudDirectorStorageCurrentState = /*@__PURE__*/ S.suspend(()
 
 /** Asynchronous operations ongoing on the organization Virtual DataCenter storage resource */
 export type VmwareCloudDirectorStorageCurrentTasksList = Array<CommonCurrentTask>;
-export const VmwareCloudDirectorStorageCurrentTasksList =
+const VmwareCloudDirectorStorageCurrentTasksList =
   VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList as any as S.Schema<VmwareCloudDirectorStorageCurrentTasksList>;
 
 /** Organization Virtual DataCenter storage resource */
@@ -757,7 +756,7 @@ export interface VmwareCloudDirectorStorage {
   resourceStatus?: CommonResourceStatusEnum;
   updatedAt?: string;
 }
-export const VmwareCloudDirectorStorage = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorStorage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentState: S.optional(VmwareCloudDirectorStorageCurrentState),
     currentTasks: S.optional(S.NullOr(VmwareCloudDirectorStorageCurrentTasksList)),
@@ -777,38 +776,37 @@ export interface GetVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest 
   /** Task ID */
   taskId: string;
 }
-export const GetVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      organizationId: S.String.pipe(T.Label()),
-      virtualDataCenterId: S.String.pipe(T.Label()),
-      taskId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/vmwareCloudDirector/organization/{organizationId}/virtualDataCenter/{virtualDataCenterId}/task/{taskId}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "GetVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest",
-  }) as any as S.Schema<GetVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest>;
+const GetVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationId: S.String.pipe(T.Label()),
+    virtualDataCenterId: S.String.pipe(T.Label()),
+    taskId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/vmwareCloudDirector/organization/{organizationId}/virtualDataCenter/{virtualDataCenterId}/task/{taskId}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest",
+}) as any as S.Schema<GetVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest>;
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListVmwareCloudDirectorBackupRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListVmwareCloudDirectorBackupRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListVmwareCloudDirectorBackupRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListVmwareCloudDirectorBackupRequestIamTagsValueList>;
 
 export type ListVmwareCloudDirectorBackupRequestIamTagsMap = {
   [key: string]: ListVmwareCloudDirectorBackupRequestIamTagsValueList | undefined;
 };
-export const ListVmwareCloudDirectorBackupRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListVmwareCloudDirectorBackupRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListVmwareCloudDirectorBackupRequestIamTagsValueList,
 ) as any as S.Schema<ListVmwareCloudDirectorBackupRequestIamTagsMap>;
@@ -821,7 +819,7 @@ export interface ListVmwareCloudDirectorBackupRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListVmwareCloudDirectorBackupRequestIamTagsMap.pipe(T.Query())),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -833,12 +831,12 @@ export const ListVmwareCloudDirectorBackupRequest = /*@__PURE__*/ S.suspend(() =
 
 export type ListVmwareCloudDirectorBackupResponseBodyList =
   Array<VmwareCloudDirectorBackupBackupDetailsWithIAM>;
-export const ListVmwareCloudDirectorBackupResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVmwareCloudDirectorBackupResponseBodyList = /*@__PURE__*/ S.Array(
   VmwareCloudDirectorBackupBackupDetailsWithIAM,
 ) as any as S.Schema<ListVmwareCloudDirectorBackupResponseBodyList>;
 
 export type ListVmwareCloudDirectorBackupResponse = ListVmwareCloudDirectorBackupResponseBodyList;
-export const ListVmwareCloudDirectorBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorBackupResponse = /*@__PURE__*/ S.suspend(() =>
   ListVmwareCloudDirectorBackupResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVmwareCloudDirectorBackupResponse",
@@ -852,7 +850,7 @@ export interface ListVmwareCloudDirectorBackupEventRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorBackupEventRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorBackupEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupId: S.String.pipe(T.Label()),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -870,7 +868,7 @@ export type CommonEventTypeEnum =
   | "TASK_ERROR"
   | "TASK_START"
   | "TASK_SUCCESS";
-export const CommonEventTypeEnum = S.String;
+const CommonEventTypeEnum = S.String;
 
 /** Represents an event for an async envelope */
 export interface CommonEvent {
@@ -885,7 +883,7 @@ export interface CommonEvent {
   /** Type of the event */
   type?: CommonEventTypeEnum;
 }
-export const CommonEvent = /*@__PURE__*/ S.suspend(() =>
+const CommonEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     kind: S.optional(S.String),
@@ -896,13 +894,13 @@ export const CommonEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommonEvent" }) as any as S.Schema<CommonEvent>;
 
 export type ListVmwareCloudDirectorBackupEventResponseBodyList = Array<CommonEvent>;
-export const ListVmwareCloudDirectorBackupEventResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVmwareCloudDirectorBackupEventResponseBodyList = /*@__PURE__*/ S.Array(
   CommonEvent,
 ) as any as S.Schema<ListVmwareCloudDirectorBackupEventResponseBodyList>;
 
 export type ListVmwareCloudDirectorBackupEventResponse =
   ListVmwareCloudDirectorBackupEventResponseBodyList;
-export const ListVmwareCloudDirectorBackupEventResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorBackupEventResponse = /*@__PURE__*/ S.suspend(() =>
   ListVmwareCloudDirectorBackupEventResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVmwareCloudDirectorBackupEventResponse",
@@ -916,7 +914,7 @@ export interface ListVmwareCloudDirectorBackupTaskRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorBackupTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorBackupTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupId: S.String.pipe(T.Label()),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -927,13 +925,13 @@ export const ListVmwareCloudDirectorBackupTaskRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListVmwareCloudDirectorBackupTaskRequest>;
 
 export type ListVmwareCloudDirectorBackupTaskResponseBodyList = Array<CommonTask>;
-export const ListVmwareCloudDirectorBackupTaskResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVmwareCloudDirectorBackupTaskResponseBodyList = /*@__PURE__*/ S.Array(
   CommonTask,
 ) as any as S.Schema<ListVmwareCloudDirectorBackupTaskResponseBodyList>;
 
 export type ListVmwareCloudDirectorBackupTaskResponse =
   ListVmwareCloudDirectorBackupTaskResponseBodyList;
-export const ListVmwareCloudDirectorBackupTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorBackupTaskResponse = /*@__PURE__*/ S.suspend(() =>
   ListVmwareCloudDirectorBackupTaskResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVmwareCloudDirectorBackupTaskResponse",
@@ -941,13 +939,10 @@ export const ListVmwareCloudDirectorBackupTaskResponse = /*@__PURE__*/ S.suspend
 
 export type ListVmwareCloudDirectorOrganizationRequestIamTagsValueList =
   Array<IamResourceTagFilterInput>;
-export const ListVmwareCloudDirectorOrganizationRequestIamTagsValueList =
-  ListVmwareCloudDirectorBackupRequestIamTagsValueList as any as S.Schema<ListVmwareCloudDirectorOrganizationRequestIamTagsValueList>;
-
 export type ListVmwareCloudDirectorOrganizationRequestIamTagsMap = {
   [key: string]: ListVmwareCloudDirectorOrganizationRequestIamTagsValueList | undefined;
 };
-export const ListVmwareCloudDirectorOrganizationRequestIamTagsMap =
+const ListVmwareCloudDirectorOrganizationRequestIamTagsMap =
   ListVmwareCloudDirectorBackupRequestIamTagsMap as any as S.Schema<ListVmwareCloudDirectorOrganizationRequestIamTagsMap>;
 
 export interface ListVmwareCloudDirectorOrganizationRequest {
@@ -958,7 +953,7 @@ export interface ListVmwareCloudDirectorOrganizationRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListVmwareCloudDirectorOrganizationRequestIamTagsMap.pipe(T.Query())),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -970,13 +965,13 @@ export const ListVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspen
 
 export type ListVmwareCloudDirectorOrganizationResponseBodyList =
   Array<VmwareCloudDirectorOrganizationWithIAM>;
-export const ListVmwareCloudDirectorOrganizationResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVmwareCloudDirectorOrganizationResponseBodyList = /*@__PURE__*/ S.Array(
   VmwareCloudDirectorOrganizationWithIAM,
 ) as any as S.Schema<ListVmwareCloudDirectorOrganizationResponseBodyList>;
 
 export type ListVmwareCloudDirectorOrganizationResponse =
   ListVmwareCloudDirectorOrganizationResponseBodyList;
-export const ListVmwareCloudDirectorOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   ListVmwareCloudDirectorOrganizationResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVmwareCloudDirectorOrganizationResponse",
@@ -990,7 +985,7 @@ export interface ListVmwareCloudDirectorOrganizationEventRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorOrganizationEventRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -1007,12 +1002,9 @@ export const ListVmwareCloudDirectorOrganizationEventRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListVmwareCloudDirectorOrganizationEventRequest>;
 
 export type ListVmwareCloudDirectorOrganizationEventResponseBodyList = Array<CommonEvent>;
-export const ListVmwareCloudDirectorOrganizationEventResponseBodyList =
-  ListVmwareCloudDirectorBackupEventResponseBodyList as any as S.Schema<ListVmwareCloudDirectorOrganizationEventResponseBodyList>;
-
 export type ListVmwareCloudDirectorOrganizationEventResponse =
   ListVmwareCloudDirectorOrganizationEventResponseBodyList;
-export const ListVmwareCloudDirectorOrganizationEventResponse =
+const ListVmwareCloudDirectorOrganizationEventResponse =
   ListVmwareCloudDirectorBackupEventResponse as any as S.Schema<ListVmwareCloudDirectorOrganizationEventResponse>;
 
 export interface ListVmwareCloudDirectorOrganizationTaskRequest {
@@ -1023,7 +1015,7 @@ export interface ListVmwareCloudDirectorOrganizationTaskRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorOrganizationTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -1040,17 +1032,14 @@ export const ListVmwareCloudDirectorOrganizationTaskRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListVmwareCloudDirectorOrganizationTaskRequest>;
 
 export type ListVmwareCloudDirectorOrganizationTaskResponseBodyList = Array<CommonTask>;
-export const ListVmwareCloudDirectorOrganizationTaskResponseBodyList =
-  ListVmwareCloudDirectorBackupTaskResponseBodyList as any as S.Schema<ListVmwareCloudDirectorOrganizationTaskResponseBodyList>;
-
 export type ListVmwareCloudDirectorOrganizationTaskResponse =
   ListVmwareCloudDirectorOrganizationTaskResponseBodyList;
-export const ListVmwareCloudDirectorOrganizationTaskResponse =
+const ListVmwareCloudDirectorOrganizationTaskResponse =
   ListVmwareCloudDirectorBackupTaskResponse as any as S.Schema<ListVmwareCloudDirectorOrganizationTaskResponse>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsValueList =
   Array<IamResourceTagFilterInput>;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsValueList =
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsValueList =
   /*@__PURE__*/ S.Array(
     IamResourceTagFilterInput,
   ) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsValueList>;
@@ -1060,7 +1049,7 @@ export type ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsMa
     | ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsValueList
     | undefined;
 };
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsMap =
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsValueList,
@@ -1076,38 +1065,35 @@ export interface ListVmwareCloudDirectorOrganizationVirtualDataCenterRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organizationId: S.String.pipe(T.Label()),
-      iamTags: S.optional(
-        ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsMap.pipe(T.Query()),
-      ),
-      xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-      xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/vmwareCloudDirector/organization/{organizationId}/virtualDataCenter",
-        code: 200,
-      }),
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationId: S.String.pipe(T.Label()),
+    iamTags: S.optional(
+      ListVmwareCloudDirectorOrganizationVirtualDataCenterRequestIamTagsMap.pipe(T.Query()),
     ),
+    xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+    xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/vmwareCloudDirector/organization/{organizationId}/virtualDataCenter",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterRequest",
 }) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterRequest>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterResponseBodyList =
   Array<VmwareCloudDirectorVirtualDataCenterWithIAM>;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    VmwareCloudDirectorVirtualDataCenterWithIAM,
-  ) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterResponseBodyList>;
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterResponseBodyList = /*@__PURE__*/ S.Array(
+  VmwareCloudDirectorVirtualDataCenterWithIAM,
+) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterResponseBodyList>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterResponse =
   ListVmwareCloudDirectorOrganizationVirtualDataCenterResponseBodyList;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListVmwareCloudDirectorOrganizationVirtualDataCenterResponseBodyList.pipe(T.RawResponseRoot()),
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterResponse = /*@__PURE__*/ S.suspend(() =>
+  ListVmwareCloudDirectorOrganizationVirtualDataCenterResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterResponse",
 }) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterResponse>;
@@ -1122,8 +1108,8 @@ export interface ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequ
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
       virtualDataCenterId: S.String.pipe(T.Label()),
@@ -1136,27 +1122,27 @@ export const ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest",
-  }) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest>;
+).annotate({
+  identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest",
+}) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeRequest>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponseBodyList =
   Array<VmwareCloudDirectorCompute>;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponseBodyList =
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponseBodyList =
   /*@__PURE__*/ S.Array(
     VmwareCloudDirectorCompute,
   ) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponseBodyList>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponse =
   ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponseBodyList;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponse = /*@__PURE__*/ S.suspend(
+  () =>
     ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponseBodyList.pipe(
       T.RawResponseRoot(),
     ),
-  ).annotate({
-    identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponse",
-  }) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponse>;
+).annotate({
+  identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponse",
+}) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterComputeResponse>;
 
 export interface ListVmwareCloudDirectorOrganizationVirtualDataCenterOrderableResourceRequest {
   /** Organization ID */
@@ -1164,7 +1150,7 @@ export interface ListVmwareCloudDirectorOrganizationVirtualDataCenterOrderableRe
   /** Virtual data center ID */
   virtualDataCenterId: string;
 }
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterOrderableResourceRequest =
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterOrderableResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
@@ -1193,7 +1179,7 @@ export interface VmwareCloudDirectorOrderableResourceCompute {
   /** Effective vCPU speed (GHz) for VMs in your organization Virtual DataCenter compute profile */
   vCPUSpeed?: number;
 }
-export const VmwareCloudDirectorOrderableResourceCompute = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorOrderableResourceCompute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryQuota: S.optional(S.Number),
     name: S.optional(S.String),
@@ -1208,7 +1194,7 @@ export const VmwareCloudDirectorOrderableResourceCompute = /*@__PURE__*/ S.suspe
 /** Available orderable compute resources to your organization Virtual DataCenter */
 export type VmwareCloudDirectorOrderableResourceComputeList =
   Array<VmwareCloudDirectorOrderableResourceCompute>;
-export const VmwareCloudDirectorOrderableResourceComputeList = /*@__PURE__*/ S.Array(
+const VmwareCloudDirectorOrderableResourceComputeList = /*@__PURE__*/ S.Array(
   VmwareCloudDirectorOrderableResourceCompute,
 ) as any as S.Schema<VmwareCloudDirectorOrderableResourceComputeList>;
 
@@ -1225,7 +1211,7 @@ export interface VmwareCloudDirectorOrderableResourceStorage {
   /** Type of your organization Virtual DataCenter storage resource */
   type?: string;
 }
-export const VmwareCloudDirectorOrderableResourceStorage = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorOrderableResourceStorage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacity: S.optional(S.Number),
     name: S.optional(S.String),
@@ -1240,7 +1226,7 @@ export const VmwareCloudDirectorOrderableResourceStorage = /*@__PURE__*/ S.suspe
 /** Available orderable storage resources to your organization Virtual DataCenter */
 export type VmwareCloudDirectorOrderableResourceStorageList =
   Array<VmwareCloudDirectorOrderableResourceStorage>;
-export const VmwareCloudDirectorOrderableResourceStorageList = /*@__PURE__*/ S.Array(
+const VmwareCloudDirectorOrderableResourceStorageList = /*@__PURE__*/ S.Array(
   VmwareCloudDirectorOrderableResourceStorage,
 ) as any as S.Schema<VmwareCloudDirectorOrderableResourceStorageList>;
 
@@ -1251,7 +1237,7 @@ export interface VmwareCloudDirectorOrderableResource {
   /** Available orderable storage resources to your organization Virtual DataCenter */
   storage?: VmwareCloudDirectorOrderableResourceStorageList;
 }
-export const VmwareCloudDirectorOrderableResource = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorOrderableResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compute: S.optional(VmwareCloudDirectorOrderableResourceComputeList),
     storage: S.optional(VmwareCloudDirectorOrderableResourceStorageList),
@@ -1270,8 +1256,8 @@ export interface ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequ
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
       virtualDataCenterId: S.String.pipe(T.Label()),
@@ -1284,27 +1270,27 @@ export const ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest",
-  }) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest>;
+).annotate({
+  identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest",
+}) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageRequest>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponseBodyList =
   Array<VmwareCloudDirectorStorage>;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponseBodyList =
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponseBodyList =
   /*@__PURE__*/ S.Array(
     VmwareCloudDirectorStorage,
   ) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponseBodyList>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponse =
   ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponseBodyList;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponse = /*@__PURE__*/ S.suspend(
+  () =>
     ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponseBodyList.pipe(
       T.RawResponseRoot(),
     ),
-  ).annotate({
-    identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponse",
-  }) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponse>;
+).annotate({
+  identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponse",
+}) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterStorageResponse>;
 
 export interface ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest {
   /** Organization ID */
@@ -1316,8 +1302,8 @@ export interface ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       organizationId: S.String.pipe(T.Label()),
       virtualDataCenterId: S.String.pipe(T.Label()),
@@ -1330,27 +1316,27 @@ export const ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest",
-  }) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest>;
+).annotate({
+  identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest",
+}) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskRequest>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponseBodyList =
   Array<CommonTask>;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponseBodyList =
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponseBodyList =
   /*@__PURE__*/ S.Array(
     CommonTask,
   ) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponseBodyList>;
 
 export type ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponse =
   ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponseBodyList;
-export const ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponse = /*@__PURE__*/ S.suspend(
+  () =>
     ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponseBodyList.pipe(
       T.RawResponseRoot(),
     ),
-  ).annotate({
-    identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponse",
-  }) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponse>;
+).annotate({
+  identifier: "ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponse",
+}) as any as S.Schema<ListVmwareCloudDirectorOrganizationVirtualDataCenterTaskResponse>;
 
 export interface ListVmwareCloudDirectorReferenceRegionRequest {
   /** Pagination cursor */
@@ -1358,7 +1344,7 @@ export interface ListVmwareCloudDirectorReferenceRegionRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVmwareCloudDirectorReferenceRegionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorReferenceRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
     xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
@@ -1381,7 +1367,7 @@ export type VmwareCloudDirectorRegionLocationEnum =
   | "North America (Canada - East - Beauharnois)"
   | "North America (US - East - Vinthill)"
   | "North America (US - West - Hillsboro)";
-export const VmwareCloudDirectorRegionLocationEnum = S.String;
+const VmwareCloudDirectorRegionLocationEnum = S.String;
 
 /** Hosting location */
 export interface VmwareCloudDirectorRegion {
@@ -1390,7 +1376,7 @@ export interface VmwareCloudDirectorRegion {
   /** Region */
   region?: VmwareCloudDirectorRegionNameEnum;
 }
-export const VmwareCloudDirectorRegion = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(VmwareCloudDirectorRegionLocationEnum),
     region: S.optional(VmwareCloudDirectorRegionNameEnum),
@@ -1401,13 +1387,13 @@ export const VmwareCloudDirectorRegion = /*@__PURE__*/ S.suspend(() =>
 
 export type ListVmwareCloudDirectorReferenceRegionResponseBodyList =
   Array<VmwareCloudDirectorRegion>;
-export const ListVmwareCloudDirectorReferenceRegionResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVmwareCloudDirectorReferenceRegionResponseBodyList = /*@__PURE__*/ S.Array(
   VmwareCloudDirectorRegion,
 ) as any as S.Schema<ListVmwareCloudDirectorReferenceRegionResponseBodyList>;
 
 export type ListVmwareCloudDirectorReferenceRegionResponse =
   ListVmwareCloudDirectorReferenceRegionResponseBodyList;
-export const ListVmwareCloudDirectorReferenceRegionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCloudDirectorReferenceRegionResponse = /*@__PURE__*/ S.suspend(() =>
   ListVmwareCloudDirectorReferenceRegionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVmwareCloudDirectorReferenceRegionResponse",
@@ -1419,7 +1405,7 @@ export interface PutVmwareCloudDirectorBackupRequest {
   /** New target specification for the VMware Cloud Director organization backup service and offers */
   targetSpec: VmwareCloudDirectorBackupTargetSpec;
 }
-export const PutVmwareCloudDirectorBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVmwareCloudDirectorBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupId: S.String.pipe(T.Label()),
     targetSpec: VmwareCloudDirectorBackupTargetSpec,
@@ -1430,7 +1416,7 @@ export const PutVmwareCloudDirectorBackupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Asynchronous operations ongoing on the VMware Cloud Director organization backup service */
 export type VmwareCloudDirectorBackupBackupDetailsCurrentTasksList = Array<CommonCurrentTask>;
-export const VmwareCloudDirectorBackupBackupDetailsCurrentTasksList =
+const VmwareCloudDirectorBackupBackupDetailsCurrentTasksList =
   VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList as any as S.Schema<VmwareCloudDirectorBackupBackupDetailsCurrentTasksList>;
 
 /** VMware Cloud Director Backup service */
@@ -1448,7 +1434,7 @@ export interface VmwareCloudDirectorBackupBackupDetails {
   /** Datetime when backup is modified */
   updatedAt?: string;
 }
-export const VmwareCloudDirectorBackupBackupDetails = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorBackupBackupDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     currentState: S.optional(VmwareCloudDirectorBackupCurrentState),
@@ -1468,7 +1454,7 @@ export interface PutVmwareCloudDirectorOrganizationRequest {
   /** New target specification for the VMware Cloud Director organization */
   targetSpec: VmwareCloudDirectorOrganizationTargetSpec;
 }
-export const PutVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     targetSpec: VmwareCloudDirectorOrganizationTargetSpec,
@@ -1481,7 +1467,7 @@ export const PutVmwareCloudDirectorOrganizationRequest = /*@__PURE__*/ S.suspend
 
 /** Asynchronous operations ongoing on the VMware Cloud Director organization */
 export type VmwareCloudDirectorOrganizationCurrentTasksList = Array<CommonCurrentTask>;
-export const VmwareCloudDirectorOrganizationCurrentTasksList =
+const VmwareCloudDirectorOrganizationCurrentTasksList =
   VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList as any as S.Schema<VmwareCloudDirectorOrganizationCurrentTasksList>;
 
 /** VMware Cloud Director organization service */
@@ -1496,7 +1482,7 @@ export interface VmwareCloudDirectorOrganization {
   targetSpec?: VmwareCloudDirectorOrganizationTargetSpec;
   updatedAt?: string;
 }
-export const VmwareCloudDirectorOrganization = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentState: S.optional(VmwareCloudDirectorOrganizationCurrentState),
     currentTasks: S.optional(S.NullOr(VmwareCloudDirectorOrganizationCurrentTasksList)),
@@ -1517,26 +1503,25 @@ export interface PutVmwareCloudDirectorOrganizationVirtualDataCenterRequest {
   /** New target specification for the organization Virtual DataCenter */
   targetSpec: VmwareCloudDirectorVirtualDataCenterTargetSpec;
 }
-export const PutVmwareCloudDirectorOrganizationVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      organizationId: S.String.pipe(T.Label()),
-      virtualDataCenterId: S.String.pipe(T.Label()),
-      targetSpec: VmwareCloudDirectorVirtualDataCenterTargetSpec,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/vmwareCloudDirector/organization/{organizationId}/virtualDataCenter/{virtualDataCenterId}",
-        code: 200,
-      }),
-    ),
+const PutVmwareCloudDirectorOrganizationVirtualDataCenterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationId: S.String.pipe(T.Label()),
+    virtualDataCenterId: S.String.pipe(T.Label()),
+    targetSpec: VmwareCloudDirectorVirtualDataCenterTargetSpec,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/vmwareCloudDirector/organization/{organizationId}/virtualDataCenter/{virtualDataCenterId}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PutVmwareCloudDirectorOrganizationVirtualDataCenterRequest",
 }) as any as S.Schema<PutVmwareCloudDirectorOrganizationVirtualDataCenterRequest>;
 
 /** Asynchronous operations ongoing on the organization Virtual DataCenter */
 export type VmwareCloudDirectorVirtualDataCenterCurrentTasksList = Array<CommonCurrentTask>;
-export const VmwareCloudDirectorVirtualDataCenterCurrentTasksList =
+const VmwareCloudDirectorVirtualDataCenterCurrentTasksList =
   VmwareCloudDirectorBackupBackupDetailsWithIAMCurrentTasksList as any as S.Schema<VmwareCloudDirectorVirtualDataCenterCurrentTasksList>;
 
 /** Organization Virtual DataCenter service */
@@ -1551,7 +1536,7 @@ export interface VmwareCloudDirectorVirtualDataCenter {
   targetSpec?: VmwareCloudDirectorVirtualDataCenterTargetSpec;
   updatedAt?: string;
 }
-export const VmwareCloudDirectorVirtualDataCenter = /*@__PURE__*/ S.suspend(() =>
+const VmwareCloudDirectorVirtualDataCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentState: S.optional(VmwareCloudDirectorVirtualDataCenterCurrentState),
     currentTasks: S.optional(S.NullOr(VmwareCloudDirectorVirtualDataCenterCurrentTasksList)),

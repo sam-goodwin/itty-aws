@@ -27,7 +27,7 @@ export interface CreateCustomPropertySourceRequest {
   /** Whether the source syncs. Auto-disabled after repeated failures or a missing view; re-enabling resets the failure count. */
   is_enabled?: boolean;
 }
-export const CreateCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     definition: S.String,
@@ -51,11 +51,11 @@ export const CreateCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `tracked` - tracked * `ignored` - ignored */
 export type SyncSegmentEnum = "tracked" | "ignored";
-export const SyncSegmentEnum = S.String;
+const SyncSegmentEnum = S.String;
 
 /** * `staging` - staging * `dispatching` - dispatching * `syncing` - syncing * `completed` - completed */
 export type SyncPhaseEnum = "staging" | "dispatching" | "syncing" | "completed";
-export const SyncPhaseEnum = S.String;
+const SyncPhaseEnum = S.String;
 
 /** One warehouse-backed custom property sync run. */
 export interface CustomPropertySyncRun {
@@ -97,7 +97,7 @@ export interface CustomPropertySyncRun {
   /** When the run row was recorded. */
   created_at: string;
 }
-export const CustomPropertySyncRun = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertySyncRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     job_id: S.NullOr(S.String),
@@ -162,7 +162,7 @@ export interface CustomPropertySource {
   /** View-bound person and group sources only: the materialized view's name, so the UI can tell a view-backed source from a table-backed one. Null for account and table-bound sources. */
   saved_query_name: string | null;
 }
-export const CustomPropertySource = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     definition: S.String,
@@ -193,7 +193,7 @@ export interface CustomPropertySourcesBackfillRequest {
   project_id: string;
   id: string;
 }
-export const CustomPropertySourcesBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertySourcesBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -209,9 +209,7 @@ export const CustomPropertySourcesBackfillRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CustomPropertySourcesBackfillRequest>;
 
 export interface CustomPropertySourcesBackfillResponse {}
-export const CustomPropertySourcesBackfillResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CustomPropertySourcesBackfillResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CustomPropertySourcesBackfillResponse",
 }) as any as S.Schema<CustomPropertySourcesBackfillResponse>;
 
@@ -220,7 +218,7 @@ export interface CustomPropertySourcesDestroyRequest {
   project_id: string;
   id: string;
 }
-export const CustomPropertySourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertySourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -236,7 +234,7 @@ export const CustomPropertySourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomPropertySourcesDestroyRequest>;
 
 export interface CustomPropertySourcesDestroyResponse {}
-export const CustomPropertySourcesDestroyResponse =
+const CustomPropertySourcesDestroyResponse =
   CustomPropertySourcesBackfillResponse as any as S.Schema<CustomPropertySourcesDestroyResponse>;
 
 export interface GetCustomPropertySourceRequest {
@@ -244,7 +242,7 @@ export interface GetCustomPropertySourceRequest {
   project_id: string;
   id: string;
 }
-export const GetCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -267,7 +265,7 @@ export interface ListCustomPropertySourcesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListCustomPropertySourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomPropertySourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -284,7 +282,7 @@ export const ListCustomPropertySourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomPropertySourcesRequest>;
 
 export type PaginatedCustomPropertySourceListResultsList = Array<CustomPropertySource>;
-export const PaginatedCustomPropertySourceListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedCustomPropertySourceListResultsList = /*@__PURE__*/ S.Array(
   CustomPropertySource,
 ) as any as S.Schema<PaginatedCustomPropertySourceListResultsList>;
 
@@ -294,7 +292,7 @@ export interface PaginatedCustomPropertySourceList {
   previous?: string | null;
   results: PaginatedCustomPropertySourceListResultsList;
 }
-export const PaginatedCustomPropertySourceList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCustomPropertySourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -316,7 +314,7 @@ export interface ListCustomPropertySourcesRunsRequest {
   /** Match run IDs, workflow IDs, job IDs, statuses, segments, triggers, or errors. */
   search?: string;
 }
-export const ListCustomPropertySourcesRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomPropertySourcesRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -335,7 +333,7 @@ export const ListCustomPropertySourcesRunsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListCustomPropertySourcesRunsRequest>;
 
 export type PaginatedCustomPropertySyncRunListResultsList = Array<CustomPropertySyncRun>;
-export const PaginatedCustomPropertySyncRunListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedCustomPropertySyncRunListResultsList = /*@__PURE__*/ S.Array(
   CustomPropertySyncRun,
 ) as any as S.Schema<PaginatedCustomPropertySyncRunListResultsList>;
 
@@ -345,7 +343,7 @@ export interface PaginatedCustomPropertySyncRunList {
   previous?: string | null;
   results: PaginatedCustomPropertySyncRunListResultsList;
 }
-export const PaginatedCustomPropertySyncRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCustomPropertySyncRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -361,7 +359,7 @@ export interface SyncCustomPropertySourceRequest {
   project_id: string;
   id: string;
 }
-export const SyncCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -377,7 +375,7 @@ export const SyncCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncCustomPropertySourceRequest>;
 
 export interface SyncCustomPropertySourceResponse {}
-export const SyncCustomPropertySourceResponse =
+const SyncCustomPropertySourceResponse =
   CustomPropertySourcesBackfillResponse as any as S.Schema<SyncCustomPropertySourceResponse>;
 
 export interface UpdateCustomPropertySourceRequest {
@@ -395,7 +393,7 @@ export interface UpdateCustomPropertySourceRequest {
   /** Whether the source syncs; re-enabling it resets the failure count. */
   is_enabled?: boolean;
 }
-export const UpdateCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomPropertySourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -430,7 +428,7 @@ export interface UpdateCustomPropertySourcesPartialRequest {
   /** Whether the source syncs; re-enabling it resets the failure count. */
   is_enabled?: boolean;
 }
-export const UpdateCustomPropertySourcesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomPropertySourcesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

@@ -9,14 +9,14 @@ import * as T from "../traits.ts";
 export type { S2OpError, S2OpContext };
 
 export type Format = "raw" | "base64";
-export const Format = S.String;
+const Format = S.String;
 
 export type Header = Array<string>;
-export const Header = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Header>;
+const Header = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Header>;
 
 /** Series of name-value pairs for this record. */
 export type AppendRecordHeadersList = Array<Header>;
-export const AppendRecordHeadersList = /*@__PURE__*/ S.Array(
+const AppendRecordHeadersList = /*@__PURE__*/ S.Array(
   Header,
 ) as any as S.Schema<AppendRecordHeadersList>;
 
@@ -28,7 +28,7 @@ export interface AppendRecord {
   headers?: AppendRecordHeadersList;
   timestamp?: number | null;
 }
-export const AppendRecord = /*@__PURE__*/ S.suspend(() =>
+const AppendRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     headers: S.optional(AppendRecordHeadersList),
@@ -38,7 +38,7 @@ export const AppendRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Batch of records to append atomically, which must contain at least one record, and no more than 1000. The total size of a batch of records may not exceed 1 MiB of metered bytes. */
 export type AppendRequestRecordsList = Array<AppendRecord>;
-export const AppendRequestRecordsList = /*@__PURE__*/ S.Array(
+const AppendRequestRecordsList = /*@__PURE__*/ S.Array(
   AppendRecord,
 ) as any as S.Schema<AppendRequestRecordsList>;
 
@@ -56,7 +56,7 @@ export interface AppendRequest {
   /** Batch of records to append atomically, which must contain at least one record, and no more than 1000. The total size of a batch of records may not exceed 1 MiB of metered bytes. */
   records: AppendRequestRecordsList;
 }
-export const AppendRequest = /*@__PURE__*/ S.suspend(() =>
+const AppendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stream: S.String.pipe(T.Label()),
     s2Format: S.optional(Format.pipe(T.Header("s2-format"))),
@@ -75,7 +75,7 @@ export interface StreamPosition {
   /** Timestamp, which may be client-specified or assigned by the service. If it is assigned by the service, it will represent milliseconds since Unix epoch. */
   timestamp: number;
 }
-export const StreamPosition = /*@__PURE__*/ S.suspend(() =>
+const StreamPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seq_num: S.Number,
     timestamp: S.Number,
@@ -91,7 +91,7 @@ export interface AppendAck {
   /** Sequence number that will be assigned to the next record on the stream, and timestamp of the last record on the stream. This can be greater than the `end` position in case of concurrent appends. */
   tail: StreamPosition;
 }
-export const AppendAck = /*@__PURE__*/ S.suspend(() =>
+const AppendAck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: StreamPosition,
     start: StreamPosition,
@@ -103,7 +103,7 @@ export interface CheckTailRequest {
   /** Stream name. */
   stream: string;
 }
-export const CheckTailRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckTailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stream: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/streams/{stream}/records/tail", code: 200 })),
@@ -113,7 +113,7 @@ export interface TailResponse {
   /** Sequence number that will be assigned to the next record on the stream, and timestamp of the last record. */
   tail: StreamPosition;
 }
-export const TailResponse = /*@__PURE__*/ S.suspend(() =>
+const TailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tail: StreamPosition,
   }),
@@ -145,7 +145,7 @@ export interface ReadRequest {
   /** JSON-encoded `StreamConfig` to apply if the stream is created on append or read. Unset fields inherit the basin's default stream configuration. Ignored if the stream already exists. Compact JSON is preferred. */
   s2StreamConfig?: string;
 }
-export const ReadRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stream: S.String.pipe(T.Label()),
     seq_num: S.optional(S.Number.pipe(T.Query())),
@@ -164,7 +164,7 @@ export const ReadRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Series of name-value pairs for this record. */
 export type SequencedRecordHeadersList = Array<Header>;
-export const SequencedRecordHeadersList =
+const SequencedRecordHeadersList =
   AppendRecordHeadersList as any as S.Schema<SequencedRecordHeadersList>;
 
 /** Record that is durably sequenced on a stream. */
@@ -178,7 +178,7 @@ export interface SequencedRecord {
   /** Timestamp for this record. */
   timestamp: number;
 }
-export const SequencedRecord = /*@__PURE__*/ S.suspend(() =>
+const SequencedRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     headers: S.optional(SequencedRecordHeadersList),
@@ -189,7 +189,7 @@ export const SequencedRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Records that are durably sequenced on the stream, retrieved based on the requested criteria. This can only be empty in response to a unary read (i.e. not SSE), if the request cannot be satisfied without violating an explicit bound (`count`, `bytes`, or `until`). */
 export type ReadBatchRecordsList = Array<SequencedRecord>;
-export const ReadBatchRecordsList = /*@__PURE__*/ S.Array(
+const ReadBatchRecordsList = /*@__PURE__*/ S.Array(
   SequencedRecord,
 ) as any as S.Schema<ReadBatchRecordsList>;
 
@@ -198,7 +198,7 @@ export interface ReadBatch {
   records: ReadBatchRecordsList;
   tail?: StreamPosition | null;
 }
-export const ReadBatch = /*@__PURE__*/ S.suspend(() =>
+const ReadBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     records: ReadBatchRecordsList,
     tail: S.optional(S.NullOr(StreamPosition)),

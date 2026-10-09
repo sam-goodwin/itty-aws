@@ -17,7 +17,7 @@ export interface GetRobotRequest {
   /** Optional subdomain to fetch robots.txt for. If omitted, fetches robots.txt for the zone apex domain. */
   subdomain?: string;
 }
-export const GetRobotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRobotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomain: S.optional(S.String.pipe(T.Query())),
@@ -25,22 +25,22 @@ export const GetRobotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRobotRequest" }) as any as S.Schema<GetRobotRequest>;
 
 export type GetRobotResponseUserAgentsValueAllowList = Array<string>;
-export const GetRobotResponseUserAgentsValueAllowList = /*@__PURE__*/ S.Array(
+const GetRobotResponseUserAgentsValueAllowList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetRobotResponseUserAgentsValueAllowList>;
 
 export type GetRobotResponseUserAgentsValueDisallowList = Array<string>;
-export const GetRobotResponseUserAgentsValueDisallowList =
+const GetRobotResponseUserAgentsValueDisallowList =
   GetRobotResponseUserAgentsValueAllowList as any as S.Schema<GetRobotResponseUserAgentsValueDisallowList>;
 
 export type GetRobotResponseUserAgentsValueContentSignalsAiInput = "yes" | "no";
-export const GetRobotResponseUserAgentsValueContentSignalsAiInput = S.String;
+const GetRobotResponseUserAgentsValueContentSignalsAiInput = S.String;
 
 export type GetRobotResponseUserAgentsValueContentSignalsAiTrain = "yes" | "no";
-export const GetRobotResponseUserAgentsValueContentSignalsAiTrain = S.String;
+const GetRobotResponseUserAgentsValueContentSignalsAiTrain = S.String;
 
 export type GetRobotResponseUserAgentsValueContentSignalsSearch = "yes" | "no";
-export const GetRobotResponseUserAgentsValueContentSignalsSearch = S.String;
+const GetRobotResponseUserAgentsValueContentSignalsSearch = S.String;
 
 export interface GetRobotResponseUserAgentsValueContentSignals {
   /** Whether AI input usage is permitted. */
@@ -50,7 +50,7 @@ export interface GetRobotResponseUserAgentsValueContentSignals {
   /** Whether search indexing is permitted. */
   search?: GetRobotResponseUserAgentsValueContentSignalsSearch | null;
 }
-export const GetRobotResponseUserAgentsValueContentSignals = /*@__PURE__*/ S.suspend(() =>
+const GetRobotResponseUserAgentsValueContentSignals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aiInput: S.optional(
       S.NullOr(GetRobotResponseUserAgentsValueContentSignalsAiInput).pipe(T.Body("ai-input")),
@@ -74,7 +74,7 @@ export interface GetRobotResponseUserAgentsValue {
   /** Crawl delay in seconds. */
   crawlDelay?: number | null;
 }
-export const GetRobotResponseUserAgentsValue = /*@__PURE__*/ S.suspend(() =>
+const GetRobotResponseUserAgentsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow: GetRobotResponseUserAgentsValueAllowList,
     disallow: GetRobotResponseUserAgentsValueDisallowList,
@@ -88,13 +88,13 @@ export const GetRobotResponseUserAgentsValue = /*@__PURE__*/ S.suspend(() =>
 export type GetRobotResponseUserAgentsMap = {
   [key: string]: GetRobotResponseUserAgentsValue | undefined;
 };
-export const GetRobotResponseUserAgentsMap = /*@__PURE__*/ S.Record(
+const GetRobotResponseUserAgentsMap = /*@__PURE__*/ S.Record(
   S.String,
   GetRobotResponseUserAgentsValue,
 ) as any as S.Schema<GetRobotResponseUserAgentsMap>;
 
 export type GetRobotResponseSitemapsList = Array<string>;
-export const GetRobotResponseSitemapsList =
+const GetRobotResponseSitemapsList =
   GetRobotResponseUserAgentsValueAllowList as any as S.Schema<GetRobotResponseSitemapsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -106,7 +106,7 @@ export interface GetRobotResponse {
   /** HTTP status code from fetching the robots.txt file. */
   status?: number | null;
 }
-export const GetRobotResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRobotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAgents: GetRobotResponseUserAgentsMap,
     sitemaps: S.optional(S.NullOr(GetRobotResponseSitemapsList)),
@@ -115,7 +115,7 @@ export const GetRobotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRobotResponse" }) as any as S.Schema<GetRobotResponse>;
 
 export type RobotsBulkGetRequestBodyList = Array<string>;
-export const RobotsBulkGetRequestBodyList =
+const RobotsBulkGetRequestBodyList =
   GetRobotResponseUserAgentsValueAllowList as any as S.Schema<RobotsBulkGetRequestBodyList>;
 
 export interface RobotsBulkGetRequest {
@@ -123,7 +123,7 @@ export interface RobotsBulkGetRequest {
   /** Array of domain hostnames to fetch robots.txt for. Each domain must end with the zone name. Maximum 25 domains per request. */
   body: RobotsBulkGetRequestBodyList;
 }
-export const RobotsBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
+const RobotsBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: RobotsBulkGetRequestBodyList.pipe(T.HttpBody()),
@@ -131,21 +131,21 @@ export const RobotsBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RobotsBulkGetRequest" }) as any as S.Schema<RobotsBulkGetRequest>;
 
 export type RobotsBulkGetResultValueUserAgentsValueAllowList = Array<string>;
-export const RobotsBulkGetResultValueUserAgentsValueAllowList =
+const RobotsBulkGetResultValueUserAgentsValueAllowList =
   GetRobotResponseUserAgentsValueAllowList as any as S.Schema<RobotsBulkGetResultValueUserAgentsValueAllowList>;
 
 export type RobotsBulkGetResultValueUserAgentsValueDisallowList = Array<string>;
-export const RobotsBulkGetResultValueUserAgentsValueDisallowList =
+const RobotsBulkGetResultValueUserAgentsValueDisallowList =
   GetRobotResponseUserAgentsValueAllowList as any as S.Schema<RobotsBulkGetResultValueUserAgentsValueDisallowList>;
 
 export type RobotsBulkGetResultValueUserAgentsValueContentSignalsAiInput = "yes" | "no";
-export const RobotsBulkGetResultValueUserAgentsValueContentSignalsAiInput = S.String;
+const RobotsBulkGetResultValueUserAgentsValueContentSignalsAiInput = S.String;
 
 export type RobotsBulkGetResultValueUserAgentsValueContentSignalsAiTrain = "yes" | "no";
-export const RobotsBulkGetResultValueUserAgentsValueContentSignalsAiTrain = S.String;
+const RobotsBulkGetResultValueUserAgentsValueContentSignalsAiTrain = S.String;
 
 export type RobotsBulkGetResultValueUserAgentsValueContentSignalsSearch = "yes" | "no";
-export const RobotsBulkGetResultValueUserAgentsValueContentSignalsSearch = S.String;
+const RobotsBulkGetResultValueUserAgentsValueContentSignalsSearch = S.String;
 
 export interface RobotsBulkGetResultValueUserAgentsValueContentSignals {
   /** Whether AI input usage is permitted. */
@@ -155,7 +155,7 @@ export interface RobotsBulkGetResultValueUserAgentsValueContentSignals {
   /** Whether search indexing is permitted. */
   search?: RobotsBulkGetResultValueUserAgentsValueContentSignalsSearch | null;
 }
-export const RobotsBulkGetResultValueUserAgentsValueContentSignals = /*@__PURE__*/ S.suspend(() =>
+const RobotsBulkGetResultValueUserAgentsValueContentSignals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aiInput: S.optional(
       S.NullOr(RobotsBulkGetResultValueUserAgentsValueContentSignalsAiInput).pipe(
@@ -183,7 +183,7 @@ export interface RobotsBulkGetResultValueUserAgentsValue {
   /** Crawl delay in seconds. */
   crawlDelay?: number | null;
 }
-export const RobotsBulkGetResultValueUserAgentsValue = /*@__PURE__*/ S.suspend(() =>
+const RobotsBulkGetResultValueUserAgentsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow: RobotsBulkGetResultValueUserAgentsValueAllowList,
     disallow: RobotsBulkGetResultValueUserAgentsValueDisallowList,
@@ -197,13 +197,13 @@ export const RobotsBulkGetResultValueUserAgentsValue = /*@__PURE__*/ S.suspend((
 export type RobotsBulkGetResultValueUserAgentsMap = {
   [key: string]: RobotsBulkGetResultValueUserAgentsValue | undefined;
 };
-export const RobotsBulkGetResultValueUserAgentsMap = /*@__PURE__*/ S.Record(
+const RobotsBulkGetResultValueUserAgentsMap = /*@__PURE__*/ S.Record(
   S.String,
   RobotsBulkGetResultValueUserAgentsValue,
 ) as any as S.Schema<RobotsBulkGetResultValueUserAgentsMap>;
 
 export type RobotsBulkGetResultValueSitemapsList = Array<string>;
-export const RobotsBulkGetResultValueSitemapsList =
+const RobotsBulkGetResultValueSitemapsList =
   GetRobotResponseUserAgentsValueAllowList as any as S.Schema<RobotsBulkGetResultValueSitemapsList>;
 
 export interface RobotsBulkGetResultValue {
@@ -214,7 +214,7 @@ export interface RobotsBulkGetResultValue {
   /** HTTP status code from fetching the robots.txt file. */
   status?: number | null;
 }
-export const RobotsBulkGetResultValue = /*@__PURE__*/ S.suspend(() =>
+const RobotsBulkGetResultValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAgents: RobotsBulkGetResultValueUserAgentsMap,
     sitemaps: S.optional(S.NullOr(RobotsBulkGetResultValueSitemapsList)),
@@ -223,13 +223,13 @@ export const RobotsBulkGetResultValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RobotsBulkGetResultValue" }) as any as S.Schema<RobotsBulkGetResultValue>;
 
 export type RobotsBulkGetResultMap = { [key: string]: RobotsBulkGetResultValue | undefined };
-export const RobotsBulkGetResultMap = /*@__PURE__*/ S.Record(
+const RobotsBulkGetResultMap = /*@__PURE__*/ S.Record(
   S.String,
   RobotsBulkGetResultValue,
 ) as any as S.Schema<RobotsBulkGetResultMap>;
 
 export type RobotsBulkGetResponse = RobotsBulkGetResultMap;
-export const RobotsBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
+const RobotsBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
   RobotsBulkGetResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "RobotsBulkGetResponse" }) as any as S.Schema<RobotsBulkGetResponse>;
 

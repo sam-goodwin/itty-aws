@@ -76,7 +76,7 @@ export interface Job {
   /** The type of reports this job creates. Corresponds to the ID of a ReportType. */
   reportTypeId?: string;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String),
     systemManaged: S.optional(S.Boolean),
@@ -93,7 +93,7 @@ export interface CreateJobsRequest {
   /** Request body */
   body?: Job;
 }
-export const CreateJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Job.pipe(T.HttpBody())),
@@ -108,7 +108,7 @@ export interface DeleteJobsRequest {
   /** The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). */
   onBehalfOfContentOwner?: string;
 }
-export const DeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -123,7 +123,7 @@ export const DeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -131,7 +131,7 @@ export interface DownloadMediaRequest {
   /** Name of the media that is being downloaded. */
   resourceName: string;
 }
-export const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -157,7 +157,7 @@ export type GdataMediaReferenceTypeEnum =
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
   | "ARBITRARY_BYTES";
-export const GdataMediaReferenceTypeEnum = S.String;
+const GdataMediaReferenceTypeEnum = S.String;
 
 /** gdata */
 export interface GdataBlobstore2Info {
@@ -176,7 +176,7 @@ export interface GdataBlobstore2Info {
   /** gdata */
   downloadExternalReadToken?: string;
 }
-export const GdataBlobstore2Info = /*@__PURE__*/ S.suspend(() =>
+const GdataBlobstore2Info = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uploadMetadataContainer: S.optional(S.String),
     uploadFragmentListCreationInfo: S.optional(S.String),
@@ -197,7 +197,7 @@ export interface GdataObjectId {
   /** gdata */
   objectName?: string;
 }
-export const GdataObjectId = /*@__PURE__*/ S.suspend(() =>
+const GdataObjectId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
     generation: S.optional(S.String),
@@ -211,7 +211,7 @@ export type GdataCompositeMediaReferenceTypeEnum =
   | "INLINE"
   | "BIGSTORE_REF"
   | "COSMO_BINARY_REFERENCE";
-export const GdataCompositeMediaReferenceTypeEnum = S.String;
+const GdataCompositeMediaReferenceTypeEnum = S.String;
 
 /** gdata */
 export interface GdataCompositeMedia {
@@ -238,7 +238,7 @@ export interface GdataCompositeMedia {
   /** gdata */
   length?: string;
 }
-export const GdataCompositeMedia = /*@__PURE__*/ S.suspend(() =>
+const GdataCompositeMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     md5Hash: S.optional(S.String),
     blobstore2Info: S.optional(GdataBlobstore2Info),
@@ -261,7 +261,7 @@ export interface GdataDiffUploadResponse {
   /** gdata */
   objectVersion?: string;
 }
-export const GdataDiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalObject: S.optional(GdataCompositeMedia),
     objectVersion: S.optional(S.String),
@@ -275,7 +275,7 @@ export interface GdataDownloadParameters {
   /** gdata */
   ignoreRange?: boolean;
 }
-export const GdataDownloadParameters = /*@__PURE__*/ S.suspend(() =>
+const GdataDownloadParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowGzipCompression: S.optional(S.Boolean),
     ignoreRange: S.optional(S.Boolean),
@@ -299,7 +299,7 @@ export interface GdataContentTypeInfo {
   /** gdata */
   bestGuess?: string;
 }
-export const GdataContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
+const GdataContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromBytes: S.optional(S.String),
     fromFusionId: S.optional(S.String),
@@ -320,7 +320,7 @@ export interface GdataDiffUploadRequest {
   /** gdata */
   checksumsInfo?: GdataCompositeMedia;
 }
-export const GdataDiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectInfo: S.optional(GdataCompositeMedia),
     objectVersion: S.optional(S.String),
@@ -341,7 +341,7 @@ export interface GdataDiffChecksumsResponse {
   /** gdata */
   objectSizeBytes?: string;
 }
-export const GdataDiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checksumsLocation: S.optional(GdataCompositeMedia),
     objectVersion: S.optional(S.String),
@@ -354,7 +354,7 @@ export const GdataDiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GdataDiffChecksumsResponse>;
 
 export type GdataCompositeMediaList = Array<GdataCompositeMedia>;
-export const GdataCompositeMediaList = /*@__PURE__*/ S.Array(
+const GdataCompositeMediaList = /*@__PURE__*/ S.Array(
   GdataCompositeMedia,
 ) as any as S.Schema<GdataCompositeMediaList>;
 
@@ -365,7 +365,7 @@ export interface GdataDiffVersionResponse {
   /** gdata */
   objectSizeBytes?: string;
 }
-export const GdataDiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectVersion: S.optional(S.String),
     objectSizeBytes: S.optional(S.String),
@@ -377,7 +377,7 @@ export interface GdataDiffDownloadResponse {
   /** gdata */
   objectLocation?: GdataCompositeMedia;
 }
-export const GdataDiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
+const GdataDiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectLocation: S.optional(GdataCompositeMedia),
   }),
@@ -450,7 +450,7 @@ export interface GdataMedia {
   /** gdata */
   path?: string;
 }
-export const GdataMedia = /*@__PURE__*/ S.suspend(() =>
+const GdataMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceType: S.optional(GdataMediaReferenceTypeEnum),
     diffUploadResponse: S.optional(GdataDiffUploadResponse),
@@ -492,7 +492,7 @@ export interface GetJobsRequest {
   /** The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). */
   onBehalfOfContentOwner?: string;
 }
-export const GetJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -513,7 +513,7 @@ export interface GetJobsReportsRequest {
   /** The ID of the job. */
   jobId: string;
 }
-export const GetJobsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportId: S.String.pipe(T.Label()),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -544,7 +544,7 @@ export interface Report {
   /** The date/time when the job this report belongs to will expire/expired. */
   jobExpireTime?: string;
 }
-export const Report = /*@__PURE__*/ S.suspend(() =>
+const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -566,7 +566,7 @@ export interface ListJobsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs` method. */
   pageToken?: string;
 }
-export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -578,7 +578,7 @@ export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListJobsRequest" }) as any as S.Schema<ListJobsRequest>;
 
 export type JobList = Array<Job>;
-export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
+const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Response message for ReportingService.ListJobs. */
 export interface ListJobsResponse {
@@ -587,7 +587,7 @@ export interface ListJobsResponse {
   /** The list of jobs. */
   jobs?: JobList;
 }
-export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     jobs: S.optional(JobList),
@@ -610,7 +610,7 @@ export interface ListJobsReportsRequest {
   /** If set, only reports whose start time is greater than or equal the specified date/time are returned. */
   startTimeAtOrAfter?: string;
 }
-export const ListJobsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     jobId: S.String.pipe(T.Label()),
@@ -629,7 +629,7 @@ export const ListJobsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListJobsReportsRequest" }) as any as S.Schema<ListJobsReportsRequest>;
 
 export type ReportList = Array<Report>;
-export const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
+const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
 
 /** Response message for ReportingService.ListReports. */
 export interface ListReportsResponse {
@@ -638,7 +638,7 @@ export interface ListReportsResponse {
   /** A token to retrieve next page of results. Pass this value in the ListReportsRequest.page_token field in the subsequent call to `ListReports` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reports: S.optional(ReportList),
     nextPageToken: S.optional(S.String),
@@ -655,7 +655,7 @@ export interface ListReportTypesRequest {
   /** Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListReportTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     includeSystemManaged: S.optional(S.Boolean.pipe(T.Query())),
@@ -681,7 +681,7 @@ export interface ReportType {
   /** The name of the report type (max. 100 characters). */
   name?: string;
 }
-export const ReportType = /*@__PURE__*/ S.suspend(() =>
+const ReportType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemManaged: S.optional(S.Boolean),
     id: S.optional(S.String),
@@ -691,7 +691,7 @@ export const ReportType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportType" }) as any as S.Schema<ReportType>;
 
 export type ReportTypeList = Array<ReportType>;
-export const ReportTypeList = /*@__PURE__*/ S.Array(ReportType) as any as S.Schema<ReportTypeList>;
+const ReportTypeList = /*@__PURE__*/ S.Array(ReportType) as any as S.Schema<ReportTypeList>;
 
 /** Response message for ReportingService.ListReportTypes. */
 export interface ListReportTypesResponse {
@@ -700,7 +700,7 @@ export interface ListReportTypesResponse {
   /** A token to retrieve next page of results. Pass this value in the ListReportTypesRequest.page_token field in the subsequent call to `ListReportTypes` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListReportTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportTypes: S.optional(ReportTypeList),
     nextPageToken: S.optional(S.String),

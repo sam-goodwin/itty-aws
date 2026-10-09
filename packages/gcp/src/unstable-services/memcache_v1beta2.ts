@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request for ApplyParameters. */
 export interface ApplyParametersRequest {
@@ -71,7 +71,7 @@ export interface ApplyParametersRequest {
   /** Whether to apply instance-level parameter group to all nodes. If set to true, users are restricted from specifying individual nodes, and `ApplyParameters` updates all nodes within the instance. */
   applyAll?: boolean;
 }
-export const ApplyParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeIds: S.optional(StringList),
     applyAll: S.optional(S.Boolean),
@@ -84,7 +84,7 @@ export interface ApplyParametersProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ApplyParametersRequest;
 }
-export const ApplyParametersProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyParametersProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApplyParametersRequest.pipe(T.HttpBody())),
@@ -100,15 +100,10 @@ export const ApplyParametersProjectsLocationsInstancesRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ApplyParametersProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -119,7 +114,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -140,7 +135,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -157,7 +152,7 @@ export interface ApplySoftwareUpdateRequest {
   /** Nodes to which we should apply the update to. Note all the selected nodes are updated in parallel. */
   nodeIds?: StringList;
 }
-export const ApplySoftwareUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplySoftwareUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyAll: S.optional(S.Boolean),
     nodeIds: S.optional(StringList),
@@ -172,7 +167,7 @@ export interface ApplySoftwareUpdateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ApplySoftwareUpdateRequest;
 }
-export const ApplySoftwareUpdateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplySoftwareUpdateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     body: S.optional(ApplySoftwareUpdateRequest.pipe(T.HttpBody())),
@@ -189,7 +184,7 @@ export const ApplySoftwareUpdateProjectsLocationsInstancesRequest = /*@__PURE__*
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -199,7 +194,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -216,7 +211,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Upcoming maintenance schedule. */
 export interface MaintenanceSchedule {
@@ -227,7 +222,7 @@ export interface MaintenanceSchedule {
   /** Output only. The deadline that the maintenance schedule start time can not go beyond, including reschedule. */
   scheduleDeadlineTime?: string;
 }
-export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -242,7 +237,7 @@ export interface NodeConfig {
   /** Required. Number of cpus per Memcached node. */
   cpuCount?: number;
 }
-export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
+const NodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memorySizeMb: S.optional(S.Number),
     cpuCount: S.optional(S.Number),
@@ -250,16 +245,16 @@ export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeConfig" }) as any as S.Schema<NodeConfig>;
 
 export type NodeStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING" | "UPDATING";
-export const NodeStateEnum = S.String;
+const NodeStateEnum = S.String;
 
 export type NodeMemcacheVersionEnum =
   | "MEMCACHE_VERSION_UNSPECIFIED"
   | "MEMCACHE_1_5"
   | "MEMCACHE_1_6_15";
-export const NodeMemcacheVersionEnum = S.String;
+const NodeMemcacheVersionEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface MemcacheParameters {
   /** User defined set of parameters to use in the memcached process. */
@@ -267,7 +262,7 @@ export interface MemcacheParameters {
   /** Output only. The unique ID associated with this set of parameters. Users can use this id to determine if the parameters associated with the instance differ from the parameters associated with the nodes. A discrepancy between parameter ids can inform users that they may need to take action to apply parameters on nodes. */
   id?: string;
 }
-export const MemcacheParameters = /*@__PURE__*/ S.suspend(() =>
+const MemcacheParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     params: S.optional(StringMap),
     id: S.optional(S.String),
@@ -294,7 +289,7 @@ export interface Node {
   /** Output only. Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name. */
   nodeId?: string;
 }
-export const Node = /*@__PURE__*/ S.suspend(() =>
+const Node = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateAvailable: S.optional(S.Boolean),
     state: S.optional(NodeStateEnum),
@@ -309,10 +304,10 @@ export const Node = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
 export type NodeList = Array<Node>;
-export const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
+const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
 
 export type InstanceMessageCodeEnum = "CODE_UNSPECIFIED" | "ZONE_DISTRIBUTION_UNBALANCED";
-export const InstanceMessageCodeEnum = S.String;
+const InstanceMessageCodeEnum = S.String;
 
 export interface InstanceMessage {
   /** A code that correspond to one type of user-facing message. */
@@ -320,7 +315,7 @@ export interface InstanceMessage {
   /** Message on memcached instance which will be exposed to users. */
   message?: string;
 }
-export const InstanceMessage = /*@__PURE__*/ S.suspend(() =>
+const InstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(InstanceMessageCodeEnum),
     message: S.optional(S.String),
@@ -328,7 +323,7 @@ export const InstanceMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceMessage" }) as any as S.Schema<InstanceMessage>;
 
 export type InstanceMessageList = Array<InstanceMessage>;
-export const InstanceMessageList = /*@__PURE__*/ S.Array(
+const InstanceMessageList = /*@__PURE__*/ S.Array(
   InstanceMessage,
 ) as any as S.Schema<InstanceMessageList>;
 
@@ -340,13 +335,13 @@ export type InstanceStateEnum =
   | "DELETING"
   | "PERFORMING_MAINTENANCE"
   | "MEMCACHE_VERSION_UPGRADING";
-export const InstanceStateEnum = S.String;
+const InstanceStateEnum = S.String;
 
 export type InstanceMemcacheVersionEnum =
   | "MEMCACHE_VERSION_UNSPECIFIED"
   | "MEMCACHE_1_5"
   | "MEMCACHE_1_6_15";
-export const InstanceMemcacheVersionEnum = S.String;
+const InstanceMemcacheVersionEnum = S.String;
 
 export type WeeklyMaintenanceWindowDayEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -357,7 +352,7 @@ export type WeeklyMaintenanceWindowDayEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const WeeklyMaintenanceWindowDayEnum = S.String;
+const WeeklyMaintenanceWindowDayEnum = S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -370,7 +365,7 @@ export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nanos: S.optional(S.Number),
     minutes: S.optional(S.Number),
@@ -388,7 +383,7 @@ export interface WeeklyMaintenanceWindow {
   /** Required. Start time of the window in UTC. */
   startTime?: TimeOfDay;
 }
-export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.String),
     day: S.optional(WeeklyMaintenanceWindowDayEnum),
@@ -397,7 +392,7 @@ export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WeeklyMaintenanceWindow" }) as any as S.Schema<WeeklyMaintenanceWindow>;
 
 export type WeeklyMaintenanceWindowList = Array<WeeklyMaintenanceWindow>;
-export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
+const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   WeeklyMaintenanceWindow,
 ) as any as S.Schema<WeeklyMaintenanceWindowList>;
 
@@ -412,7 +407,7 @@ export interface GoogleCloudMemcacheV1beta2MaintenancePolicy {
   /** Output only. The time when the policy was updated. */
   updateTime?: string;
 }
-export const GoogleCloudMemcacheV1beta2MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudMemcacheV1beta2MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weeklyMaintenanceWindow: S.optional(WeeklyMaintenanceWindowList),
     description: S.optional(S.String),
@@ -476,7 +471,7 @@ export interface Instance {
   /** Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details. */
   name?: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceSchedule: S.optional(MaintenanceSchedule),
     effectiveMaintenanceVersion: S.optional(S.String),
@@ -514,7 +509,7 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     instanceId: S.optional(S.String.pipe(T.Query())),
@@ -534,7 +529,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. Memcached instance resource name in the format: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -552,7 +547,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -570,7 +565,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -593,7 +588,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -607,7 +602,7 @@ export interface GetProjectsLocationsInstancesRequest {
   /** Required. Memcached instance resource name in the format: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -621,7 +616,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -643,7 +638,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -662,7 +657,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -671,7 +666,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -690,7 +685,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** The `next_page_token` value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -709,7 +704,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = Array<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Response for ListInstances. */
 export interface ListInstancesResponse {
@@ -720,7 +715,7 @@ export interface ListInstancesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     resources: S.optional(InstanceList),
@@ -740,7 +735,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -759,7 +754,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -770,7 +765,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -786,7 +781,7 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -807,7 +802,7 @@ export type RescheduleMaintenanceRequestRescheduleTypeEnum =
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
   | "SPECIFIC_TIME";
-export const RescheduleMaintenanceRequestRescheduleTypeEnum = S.String;
+const RescheduleMaintenanceRequestRescheduleTypeEnum = S.String;
 
 /** Request for RescheduleMaintenance. */
 export interface RescheduleMaintenanceRequest {
@@ -816,7 +811,7 @@ export interface RescheduleMaintenanceRequest {
   /** Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example `2012-11-15T16:19:00.094Z`. */
   scheduleTime?: string;
 }
-export const RescheduleMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RescheduleMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rescheduleType: S.optional(RescheduleMaintenanceRequestRescheduleTypeEnum),
     scheduleTime: S.optional(S.String),
@@ -831,7 +826,7 @@ export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RescheduleMaintenanceRequest;
 }
-export const RescheduleMaintenanceProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RescheduleMaintenanceProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.String.pipe(T.Label()),
     body: S.optional(RescheduleMaintenanceRequest.pipe(T.HttpBody())),
@@ -853,7 +848,7 @@ export interface UpdateParametersRequest {
   /** The parameters to apply to the instance. */
   parameters?: MemcacheParameters;
 }
-export const UpdateParametersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateParametersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     parameters: S.optional(MemcacheParameters),
@@ -866,7 +861,7 @@ export interface UpdateParametersProjectsLocationsInstancesRequest {
   /** Request body */
   body?: UpdateParametersRequest;
 }
-export const UpdateParametersProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateParametersProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateParametersRequest.pipe(T.HttpBody())),
@@ -885,7 +880,7 @@ export type GoogleCloudMemcacheV1beta2UpgradeInstanceRequestMemcacheVersionEnum 
   | "MEMCACHE_VERSION_UNSPECIFIED"
   | "MEMCACHE_1_5"
   | "MEMCACHE_1_6_15";
-export const GoogleCloudMemcacheV1beta2UpgradeInstanceRequestMemcacheVersionEnum = S.String;
+const GoogleCloudMemcacheV1beta2UpgradeInstanceRequestMemcacheVersionEnum = S.String;
 
 /** Request for UpgradeInstance. */
 export interface GoogleCloudMemcacheV1beta2UpgradeInstanceRequest {
@@ -894,7 +889,7 @@ export interface GoogleCloudMemcacheV1beta2UpgradeInstanceRequest {
     | GoogleCloudMemcacheV1beta2UpgradeInstanceRequestMemcacheVersionEnum
     | (string & {});
 }
-export const GoogleCloudMemcacheV1beta2UpgradeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudMemcacheV1beta2UpgradeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memcacheVersion: S.optional(
       GoogleCloudMemcacheV1beta2UpgradeInstanceRequestMemcacheVersionEnum,
@@ -910,7 +905,7 @@ export interface UpgradeProjectsLocationsInstancesRequest {
   /** Request body */
   body?: GoogleCloudMemcacheV1beta2UpgradeInstanceRequest;
 }
-export const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudMemcacheV1beta2UpgradeInstanceRequest.pipe(T.HttpBody())),

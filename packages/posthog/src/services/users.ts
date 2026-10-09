@@ -39,7 +39,7 @@ export class NotFound
 export interface CreateUsersCredentialsReviewCompleteRequest {
   uuid: string;
 }
-export const CreateUsersCredentialsReviewCompleteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersCredentialsReviewCompleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -50,7 +50,7 @@ export const CreateUsersCredentialsReviewCompleteRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateUsersCredentialsReviewCompleteRequest>;
 
 export interface CreateUsersCredentialsReviewCompleteResponse {}
-export const CreateUsersCredentialsReviewCompleteResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersCredentialsReviewCompleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateUsersCredentialsReviewCompleteResponse",
@@ -64,7 +64,7 @@ export interface UserCodexAuthTokens {
   /** The OpenID id token from the same `tokens` object, when present. Used to read the account email. */
   id_token?: string | null;
 }
-export const UserCodexAuthTokens = /*@__PURE__*/ S.suspend(() =>
+const UserCodexAuthTokens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.String.pipe(T.SensitiveValue({})),
     refresh_token: S.String.pipe(T.SensitiveValue({})),
@@ -77,7 +77,7 @@ export interface CreateUsersIntegrationsCodexRequest {
   /** The `tokens` object of the `auth.json` that `codex login` wrote. PostHog refreshes the chain once, stores the rotated tokens, and refreshes them for cloud runs from then on. */
   tokens: UserCodexAuthTokens;
 }
-export const CreateUsersIntegrationsCodexRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersIntegrationsCodexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     tokens: UserCodexAuthTokens,
@@ -88,7 +88,7 @@ export const CreateUsersIntegrationsCodexRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `connected` - Connected * `reauth_required` - Reauth Required * `not_connected` - Not Connected */
 export type CodexIntegrationStatusEnum = "connected" | "reauth_required" | "not_connected";
-export const CodexIntegrationStatusEnum = S.String;
+const CodexIntegrationStatusEnum = S.String;
 
 export interface UserCodexIntegration {
   /** `connected` when cloud runs can use the account; `reauth_required` when OpenAI rejected the refresh token and the user must log in and connect again; `not_connected` when no account is connected. * `connected` - Connected * `reauth_required` - Reauth Required * `not_connected` - Not Connected */
@@ -100,7 +100,7 @@ export interface UserCodexIntegration {
   /** When the account was connected. */
   connected_at?: string | null;
 }
-export const UserCodexIntegration = /*@__PURE__*/ S.suspend(() =>
+const UserCodexIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: CodexIntegrationStatusEnum,
     plan_type: S.optional(S.NullOr(S.String)),
@@ -114,7 +114,7 @@ export interface CreateUsersIntegrationsGithubPrepareCallbackRequest {
   /** GitHub App installation id being managed on github.com. */
   installation_id: string;
 }
-export const CreateUsersIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     installation_id: S.String,
@@ -130,12 +130,12 @@ export const CreateUsersIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/
 }) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackRequest>;
 
 export interface CreateUsersIntegrationsGithubPrepareCallbackResponse {}
-export const CreateUsersIntegrationsGithubPrepareCallbackResponse =
+const CreateUsersIntegrationsGithubPrepareCallbackResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackResponse>;
 
 /** * `later` - Later * `other` - Other */
 export type OnboardingSkipRequestReasonEnum = "later" | "other";
-export const OnboardingSkipRequestReasonEnum = S.String;
+const OnboardingSkipRequestReasonEnum = S.String;
 
 export interface CreateUsersOnboardingSkipRequest {
   uuid: string;
@@ -144,7 +144,7 @@ export interface CreateUsersOnboardingSkipRequest {
   /** Onboarding step key the user was on when skipping, for analytics only. */
   step_at_skip?: string;
 }
-export const CreateUsersOnboardingSkipRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersOnboardingSkipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     reason: OnboardingSkipRequestReasonEnum,
@@ -156,7 +156,7 @@ export const CreateUsersOnboardingSkipRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UserOutputNotificationSettingsMap = { [key: string]: unknown | undefined };
-export const UserOutputNotificationSettingsMap = /*@__PURE__*/ S.Record(
+const UserOutputNotificationSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserOutputNotificationSettingsMap>;
@@ -174,7 +174,7 @@ export type SettingEnum =
   | "pipeline_notifications_disabled"
   | "project_weekly_digest_disabled"
   | "web_analytics_weekly_digest_project_enabled";
-export const SettingEnum = S.String;
+const SettingEnum = S.String;
 
 export interface OrganizationNotificationLock {
   /** Notification setting this rule enforces. * `data_catalog_weekly_digest` - data_catalog_weekly_digest * `discussions_mentioned` - discussions_mentioned * `error_tracking_issue_assigned` - error_tracking_issue_assigned * `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled * `materialized_view_sync_failed` - materialized_view_sync_failed * `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily * `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate * `organization_member_join_email_disabled` - organization_member_join_email_disabled * `pipeline_notifications_disabled` - pipeline_notifications_disabled * `project_weekly_digest_disabled` - project_weekly_digest_disabled * `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled */
@@ -184,7 +184,7 @@ export interface OrganizationNotificationLock {
   /** The value the organization enforces. */
   locked_value: boolean;
 }
-export const OrganizationNotificationLock = /*@__PURE__*/ S.suspend(() =>
+const OrganizationNotificationLock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setting: SettingEnum,
     scope_id: S.String,
@@ -196,19 +196,15 @@ export const OrganizationNotificationLock = /*@__PURE__*/ S.suspend(() =>
 
 /** Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only. */
 export type UserOutputNotificationLocksList = Array<OrganizationNotificationLock>;
-export const UserOutputNotificationLocksList = /*@__PURE__*/ S.Array(
+const UserOutputNotificationLocksList = /*@__PURE__*/ S.Array(
   OrganizationNotificationLock,
 ) as any as S.Schema<UserOutputNotificationLocksList>;
 
 /** * `disabled` - disabled * `toolbar` - toolbar */
 export type ToolbarModeEnum = "disabled" | "toolbar";
-export const ToolbarModeEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserOutputToolbarMode = ToolbarModeEnum | BlankEnum;
-export const UserOutputToolbarMode = S.Unknown as any as S.Schema<UserOutputToolbarMode>;
+const UserOutputToolbarMode = S.Unknown as any as S.Schema<UserOutputToolbarMode>;
 
 /** * `Africa/Abidjan` - Africa/Abidjan * `Africa/Accra` - Africa/Accra * `Africa/Addis_Ababa` - Africa/Addis_Ababa * `Africa/Algiers` - Africa/Algiers * `Africa/Asmara` - Africa/Asmara * `Africa/Asmera` - Africa/Asmera * `Africa/Bamako` - Africa/Bamako * `Africa/Bangui` - Africa/Bangui * `Africa/Banjul` - Africa/Banjul * `Africa/Bissau` - Africa/Bissau * `Africa/Blantyre` - Africa/Blantyre * `Africa/Brazzaville` - Africa/Brazzaville * `Africa/Bujumbura` - Africa/Bujumbura * `Africa/Cairo` - Africa/Cairo * `Africa/Casablanca` - Africa/Casablanca * `Africa/Ceuta` - Africa/Ceuta * `Africa/Conakry` - Africa/Conakry * `Africa/Dakar` - Africa/Dakar * `Africa/Dar_es_Salaam` - Africa/Dar_es_Salaam * `Africa/Djibouti` - Africa/Djibouti * `Africa/Douala` - Africa/Douala * `Africa/El_Aaiun` - Africa/El_Aaiun * `Africa/Freetown` - Africa/Freetown * `Africa/Gaborone` - Africa/Gaborone * `Africa/Harare` - Africa/Harare * `Africa/Johannesburg` - Africa/Johannesburg * `Africa/Juba` - Africa/Juba * `Africa/Kampala` - Africa/Kampala * `Africa/Khartoum` - Africa/Khartoum * `Africa/Kigali` - Africa/Kigali * `Africa/Kinshasa` - Africa/Kinshasa * `Africa/Lagos` - Africa/Lagos * `Africa/Libreville` - Africa/Libreville * `Africa/Lome` - Africa/Lome * `Africa/Luanda` - Africa/Luanda * `Africa/Lubumbashi` - Africa/Lubumbashi * `Africa/Lusaka` - Africa/Lusaka * `Africa/Malabo` - Africa/Malabo * `Africa/Maputo` - Africa/Maputo * `Africa/Maseru` - Africa/Maseru * `Africa/Mbabane` - Africa/Mbabane * `Africa/Mogadishu` - Africa/Mogadishu * `Africa/Monrovia` - Africa/Monrovia * `Africa/Nairobi` - Africa/Nairobi * `Africa/Ndjamena` - Africa/Ndjamena * `Africa/Niamey` - Africa/Niamey * `Africa/Nouakchott` - Africa/Nouakchott * `Africa/Ouagadougou` - Africa/Ouagadougou * `Africa/Porto-Novo` - Africa/Porto-Novo * `Africa/Sao_Tome` - Africa/Sao_Tome * `Africa/Timbuktu` - Africa/Timbuktu * `Africa/Tripoli` - Africa/Tripoli * `Africa/Tunis` - Africa/Tunis * `Africa/Windhoek` - Africa/Windhoek * `America/Adak` - America/Adak * `America/Anchorage` - America/Anchorage * `America/Anguilla` - America/Anguilla * `America/Antigua` - America/Antigua * `America/Araguaina` - America/Araguaina * `America/Argentina/Buenos_Aires` - America/Argentina/Buenos_Aires * `America/Argentina/Catamarca` - America/Argentina/Catamarca * `America/Argentina/ComodRivadavia` - America/Argentina/ComodRivadavia * `America/Argentina/Cordoba` - America/Argentina/Cordoba * `America/Argentina/Jujuy` - America/Argentina/Jujuy * `America/Argentina/La_Rioja` - America/Argentina/La_Rioja * `America/Argentina/Mendoza` - America/Argentina/Mendoza * `America/Argentina/Rio_Gallegos` - America/Argentina/Rio_Gallegos * `America/Argentina/Salta` - America/Argentina/Salta * `America/Argentina/San_Juan` - America/Argentina/San_Juan * `America/Argentina/San_Luis` - America/Argentina/San_Luis * `America/Argentina/Tucuman` - America/Argentina/Tucuman * `America/Argentina/Ushuaia` - America/Argentina/Ushuaia * `America/Aruba` - America/Aruba * `America/Asuncion` - America/Asuncion * `America/Atikokan` - America/Atikokan * `America/Atka` - America/Atka * `America/Bahia` - America/Bahia * `America/Bahia_Banderas` - America/Bahia_Banderas * `America/Barbados` - America/Barbados * `America/Belem` - America/Belem * `America/Belize` - America/Belize * `America/Blanc-Sablon` - America/Blanc-Sablon * `America/Boa_Vista` - America/Boa_Vista * `America/Bogota` - America/Bogota * `America/Boise` - America/Boise * `America/Buenos_Aires` - America/Buenos_Aires * `America/Cambridge_Bay` - America/Cambridge_Bay * `America/Campo_Grande` - America/Campo_Grande * `America/Cancun` - America/Cancun * `America/Caracas` - America/Caracas * `America/Catamarca` - America/Catamarca * `America/Cayenne` - America/Cayenne * `America/Cayman` - America/Cayman * `America/Chicago` - America/Chicago * `America/Chihuahua` - America/Chihuahua * `America/Ciudad_Juarez` - America/Ciudad_Juarez * `America/Coral_Harbour` - America/Coral_Harbour * `America/Cordoba` - America/Cordoba * `America/Costa_Rica` - America/Costa_Rica * `America/Creston` - America/Creston * `America/Cuiaba` - America/Cuiaba * `America/Curacao` - America/Curacao * `America/Danmarkshavn` - America/Danmarkshavn * `America/Dawson` - America/Dawson * `America/Dawson_Creek` - America/Dawson_Creek * `America/Denver` - America/Denver * `America/Detroit` - America/Detroit * `America/Dominica` - America/Dominica * `America/Edmonton` - America/Edmonton * `America/Eirunepe` - America/Eirunepe * `America/El_Salvador` - America/El_Salvador * `America/Ensenada` - America/Ensenada * `America/Fort_Nelson` - America/Fort_Nelson * `America/Fort_Wayne` - America/Fort_Wayne * `America/Fortaleza` - America/Fortaleza * `America/Glace_Bay` - America/Glace_Bay * `America/Godthab` - America/Godthab * `America/Goose_Bay` - America/Goose_Bay * `America/Grand_Turk` - America/Grand_Turk * `America/Grenada` - America/Grenada * `America/Guadeloupe` - America/Guadeloupe * `America/Guatemala` - America/Guatemala * `America/Guayaquil` - America/Guayaquil * `America/Guyana` - America/Guyana * `America/Halifax` - America/Halifax * `America/Havana` - America/Havana * `America/Hermosillo` - America/Hermosillo * `America/Indiana/Indianapolis` - America/Indiana/Indianapolis * `America/Indiana/Knox` - America/Indiana/Knox * `America/Indiana/Marengo` - America/Indiana/Marengo * `America/Indiana/Petersburg` - America/Indiana/Petersburg * `America/Indiana/Tell_City` - America/Indiana/Tell_City * `America/Indiana/Vevay` - America/Indiana/Vevay * `America/Indiana/Vincennes` - America/Indiana/Vincennes * `America/Indiana/Winamac` - America/Indiana/Winamac * `America/Indianapolis` - America/Indianapolis * `America/Inuvik` - America/Inuvik * `America/Iqaluit` - America/Iqaluit * `America/Jamaica` - America/Jamaica * `America/Jujuy` - America/Jujuy * `America/Juneau` - America/Juneau * `America/Kentucky/Louisville` - America/Kentucky/Louisville * `America/Kentucky/Monticello` - America/Kentucky/Monticello * `America/Knox_IN` - America/Knox_IN * `America/Kralendijk` - America/Kralendijk * `America/La_Paz` - America/La_Paz * `America/Lima` - America/Lima * `America/Los_Angeles` - America/Los_Angeles * `America/Louisville` - America/Louisville * `America/Lower_Princes` - America/Lower_Princes * `America/Maceio` - America/Maceio * `America/Managua` - America/Managua * `America/Manaus` - America/Manaus * `America/Marigot` - America/Marigot * `America/Martinique` - America/Martinique * `America/Matamoros` - America/Matamoros * `America/Mazatlan` - America/Mazatlan * `America/Mendoza` - America/Mendoza * `America/Menominee` - America/Menominee * `America/Merida` - America/Merida * `America/Metlakatla` - America/Metlakatla * `America/Mexico_City` - America/Mexico_City * `America/Miquelon` - America/Miquelon * `America/Moncton` - America/Moncton * `America/Monterrey` - America/Monterrey * `America/Montevideo` - America/Montevideo * `America/Montreal` - America/Montreal * `America/Montserrat` - America/Montserrat * `America/Nassau` - America/Nassau * `America/New_York` - America/New_York * `America/Nipigon` - America/Nipigon * `America/Nome` - America/Nome * `America/Noronha` - America/Noronha * `America/North_Dakota/Beulah` - America/North_Dakota/Beulah * `America/North_Dakota/Center` - America/North_Dakota/Center * `America/North_Dakota/New_Salem` - America/North_Dakota/New_Salem * `America/Nuuk` - America/Nuuk * `America/Ojinaga` - America/Ojinaga * `America/Panama` - America/Panama * `America/Pangnirtung` - America/Pangnirtung * `America/Paramaribo` - America/Paramaribo * `America/Phoenix` - America/Phoenix * `America/Port-au-Prince` - America/Port-au-Prince * `America/Port_of_Spain` - America/Port_of_Spain * `America/Porto_Acre` - America/Porto_Acre * `America/Porto_Velho` - America/Porto_Velho * `America/Puerto_Rico` - America/Puerto_Rico * `America/Punta_Arenas` - America/Punta_Arenas * `America/Rainy_River` - America/Rainy_River * `America/Rankin_Inlet` - America/Rankin_Inlet * `America/Recife` - America/Recife * `America/Regina` - America/Regina * `America/Resolute` - America/Resolute * `America/Rio_Branco` - America/Rio_Branco * `America/Rosario` - America/Rosario * `America/Santa_Isabel` - America/Santa_Isabel * `America/Santarem` - America/Santarem * `America/Santiago` - America/Santiago * `America/Santo_Domingo` - America/Santo_Domingo * `America/Sao_Paulo` - America/Sao_Paulo * `America/Scoresbysund` - America/Scoresbysund * `America/Shiprock` - America/Shiprock * `America/Sitka` - America/Sitka * `America/St_Barthelemy` - America/St_Barthelemy * `America/St_Johns` - America/St_Johns * `America/St_Kitts` - America/St_Kitts * `America/St_Lucia` - America/St_Lucia * `America/St_Thomas` - America/St_Thomas * `America/St_Vincent` - America/St_Vincent * `America/Swift_Current` - America/Swift_Current * `America/Tegucigalpa` - America/Tegucigalpa * `America/Thule` - America/Thule * `America/Thunder_Bay` - America/Thunder_Bay * `America/Tijuana` - America/Tijuana * `America/Toronto` - America/Toronto * `America/Tortola` - America/Tortola * `America/Vancouver` - America/Vancouver * `America/Virgin` - America/Virgin * `America/Whitehorse` - America/Whitehorse * `America/Winnipeg` - America/Winnipeg * `America/Yakutat` - America/Yakutat * `America/Yellowknife` - America/Yellowknife * `Antarctica/Casey` - Antarctica/Casey * `Antarctica/Davis` - Antarctica/Davis * `Antarctica/DumontDUrville` - Antarctica/DumontDUrville * `Antarctica/Macquarie` - Antarctica/Macquarie * `Antarctica/Mawson` - Antarctica/Mawson * `Antarctica/McMurdo` - Antarctica/McMurdo * `Antarctica/Palmer` - Antarctica/Palmer * `Antarctica/Rothera` - Antarctica/Rothera * `Antarctica/South_Pole` - Antarctica/South_Pole * `Antarctica/Syowa` - Antarctica/Syowa * `Antarctica/Troll` - Antarctica/Troll * `Antarctica/Vostok` - Antarctica/Vostok * `Arctic/Longyearbyen` - Arctic/Longyearbyen * `Asia/Aden` - Asia/Aden * `Asia/Almaty` - Asia/Almaty * `Asia/Amman` - Asia/Amman * `Asia/Anadyr` - Asia/Anadyr * `Asia/Aqtau` - Asia/Aqtau * `Asia/Aqtobe` - Asia/Aqtobe * `Asia/Ashgabat` - Asia/Ashgabat * `Asia/Ashkhabad` - Asia/Ashkhabad * `Asia/Atyrau` - Asia/Atyrau * `Asia/Baghdad` - Asia/Baghdad * `Asia/Bahrain` - Asia/Bahrain * `Asia/Baku` - Asia/Baku * `Asia/Bangkok` - Asia/Bangkok * `Asia/Barnaul` - Asia/Barnaul * `Asia/Beirut` - Asia/Beirut * `Asia/Bishkek` - Asia/Bishkek * `Asia/Brunei` - Asia/Brunei * `Asia/Calcutta` - Asia/Calcutta * `Asia/Chita` - Asia/Chita * `Asia/Choibalsan` - Asia/Choibalsan * `Asia/Chongqing` - Asia/Chongqing * `Asia/Chungking` - Asia/Chungking * `Asia/Colombo` - Asia/Colombo * `Asia/Dacca` - Asia/Dacca * `Asia/Damascus` - Asia/Damascus * `Asia/Dhaka` - Asia/Dhaka * `Asia/Dili` - Asia/Dili * `Asia/Dubai` - Asia/Dubai * `Asia/Dushanbe` - Asia/Dushanbe * `Asia/Famagusta` - Asia/Famagusta * `Asia/Gaza` - Asia/Gaza * `Asia/Harbin` - Asia/Harbin * `Asia/Hebron` - Asia/Hebron * `Asia/Ho_Chi_Minh` - Asia/Ho_Chi_Minh * `Asia/Hong_Kong` - Asia/Hong_Kong * `Asia/Hovd` - Asia/Hovd * `Asia/Irkutsk` - Asia/Irkutsk * `Asia/Istanbul` - Asia/Istanbul * `Asia/Jakarta` - Asia/Jakarta * `Asia/Jayapura` - Asia/Jayapura * `Asia/Jerusalem` - Asia/Jerusalem * `Asia/Kabul` - Asia/Kabul * `Asia/Kamchatka` - Asia/Kamchatka * `Asia/Karachi` - Asia/Karachi * `Asia/Kashgar` - Asia/Kashgar * `Asia/Kathmandu` - Asia/Kathmandu * `Asia/Katmandu` - Asia/Katmandu * `Asia/Khandyga` - Asia/Khandyga * `Asia/Kolkata` - Asia/Kolkata * `Asia/Krasnoyarsk` - Asia/Krasnoyarsk * `Asia/Kuala_Lumpur` - Asia/Kuala_Lumpur * `Asia/Kuching` - Asia/Kuching * `Asia/Kuwait` - Asia/Kuwait * `Asia/Macao` - Asia/Macao * `Asia/Macau` - Asia/Macau * `Asia/Magadan` - Asia/Magadan * `Asia/Makassar` - Asia/Makassar * `Asia/Manila` - Asia/Manila * `Asia/Muscat` - Asia/Muscat * `Asia/Nicosia` - Asia/Nicosia * `Asia/Novokuznetsk` - Asia/Novokuznetsk * `Asia/Novosibirsk` - Asia/Novosibirsk * `Asia/Omsk` - Asia/Omsk * `Asia/Oral` - Asia/Oral * `Asia/Phnom_Penh` - Asia/Phnom_Penh * `Asia/Pontianak` - Asia/Pontianak * `Asia/Pyongyang` - Asia/Pyongyang * `Asia/Qatar` - Asia/Qatar * `Asia/Qostanay` - Asia/Qostanay * `Asia/Qyzylorda` - Asia/Qyzylorda * `Asia/Rangoon` - Asia/Rangoon * `Asia/Riyadh` - Asia/Riyadh * `Asia/Saigon` - Asia/Saigon * `Asia/Sakhalin` - Asia/Sakhalin * `Asia/Samarkand` - Asia/Samarkand * `Asia/Seoul` - Asia/Seoul * `Asia/Shanghai` - Asia/Shanghai * `Asia/Singapore` - Asia/Singapore * `Asia/Srednekolymsk` - Asia/Srednekolymsk * `Asia/Taipei` - Asia/Taipei * `Asia/Tashkent` - Asia/Tashkent * `Asia/Tbilisi` - Asia/Tbilisi * `Asia/Tehran` - Asia/Tehran * `Asia/Tel_Aviv` - Asia/Tel_Aviv * `Asia/Thimbu` - Asia/Thimbu * `Asia/Thimphu` - Asia/Thimphu * `Asia/Tokyo` - Asia/Tokyo * `Asia/Tomsk` - Asia/Tomsk * `Asia/Ujung_Pandang` - Asia/Ujung_Pandang * `Asia/Ulaanbaatar` - Asia/Ulaanbaatar * `Asia/Ulan_Bator` - Asia/Ulan_Bator * `Asia/Urumqi` - Asia/Urumqi * `Asia/Ust-Nera` - Asia/Ust-Nera * `Asia/Vientiane` - Asia/Vientiane * `Asia/Vladivostok` - Asia/Vladivostok * `Asia/Yakutsk` - Asia/Yakutsk * `Asia/Yangon` - Asia/Yangon * `Asia/Yekaterinburg` - Asia/Yekaterinburg * `Asia/Yerevan` - Asia/Yerevan * `Atlantic/Azores` - Atlantic/Azores * `Atlantic/Bermuda` - Atlantic/Bermuda * `Atlantic/Canary` - Atlantic/Canary * `Atlantic/Cape_Verde` - Atlantic/Cape_Verde * `Atlantic/Faeroe` - Atlantic/Faeroe * `Atlantic/Faroe` - Atlantic/Faroe * `Atlantic/Jan_Mayen` - Atlantic/Jan_Mayen * `Atlantic/Madeira` - Atlantic/Madeira * `Atlantic/Reykjavik` - Atlantic/Reykjavik * `Atlantic/South_Georgia` - Atlantic/South_Georgia * `Atlantic/St_Helena` - Atlantic/St_Helena * `Atlantic/Stanley` - Atlantic/Stanley * `Australia/ACT` - Australia/ACT * `Australia/Adelaide` - Australia/Adelaide * `Australia/Brisbane` - Australia/Brisbane * `Australia/Broken_Hill` - Australia/Broken_Hill * `Australia/Canberra` - Australia/Canberra * `Australia/Currie` - Australia/Currie * `Australia/Darwin` - Australia/Darwin * `Australia/Eucla` - Australia/Eucla * `Australia/Hobart` - Australia/Hobart * `Australia/LHI` - Australia/LHI * `Australia/Lindeman` - Australia/Lindeman * `Australia/Lord_Howe` - Australia/Lord_Howe * `Australia/Melbourne` - Australia/Melbourne * `Australia/NSW` - Australia/NSW * `Australia/North` - Australia/North * `Australia/Perth` - Australia/Perth * `Australia/Queensland` - Australia/Queensland * `Australia/South` - Australia/South * `Australia/Sydney` - Australia/Sydney * `Australia/Tasmania` - Australia/Tasmania * `Australia/Victoria` - Australia/Victoria * `Australia/West` - Australia/West * `Australia/Yancowinna` - Australia/Yancowinna * `Brazil/Acre` - Brazil/Acre * `Brazil/DeNoronha` - Brazil/DeNoronha * `Brazil/East` - Brazil/East * `Brazil/West` - Brazil/West * `CET` - CET * `CST6CDT` - CST6CDT * `Canada/Atlantic` - Canada/Atlantic * `Canada/Central` - Canada/Central * `Canada/Eastern` - Canada/Eastern * `Canada/Mountain` - Canada/Mountain * `Canada/Newfoundland` - Canada/Newfoundland * `Canada/Pacific` - Canada/Pacific * `Canada/Saskatchewan` - Canada/Saskatchewan * `Canada/Yukon` - Canada/Yukon * `Chile/Continental` - Chile/Continental * `Chile/EasterIsland` - Chile/EasterIsland * `Cuba` - Cuba * `EET` - EET * `EST` - EST * `EST5EDT` - EST5EDT * `Egypt` - Egypt * `Eire` - Eire * `Etc/GMT` - Etc/GMT * `Etc/GMT+0` - Etc/GMT+0 * `Etc/GMT+1` - Etc/GMT+1 * `Etc/GMT+10` - Etc/GMT+10 * `Etc/GMT+11` - Etc/GMT+11 * `Etc/GMT+12` - Etc/GMT+12 * `Etc/GMT+2` - Etc/GMT+2 * `Etc/GMT+3` - Etc/GMT+3 * `Etc/GMT+4` - Etc/GMT+4 * `Etc/GMT+5` - Etc/GMT+5 * `Etc/GMT+6` - Etc/GMT+6 * `Etc/GMT+7` - Etc/GMT+7 * `Etc/GMT+8` - Etc/GMT+8 * `Etc/GMT+9` - Etc/GMT+9 * `Etc/GMT-0` - Etc/GMT-0 * `Etc/GMT-1` - Etc/GMT-1 * `Etc/GMT-10` - Etc/GMT-10 * `Etc/GMT-11` - Etc/GMT-11 * `Etc/GMT-12` - Etc/GMT-12 * `Etc/GMT-13` - Etc/GMT-13 * `Etc/GMT-14` - Etc/GMT-14 * `Etc/GMT-2` - Etc/GMT-2 * `Etc/GMT-3` - Etc/GMT-3 * `Etc/GMT-4` - Etc/GMT-4 * `Etc/GMT-5` - Etc/GMT-5 * `Etc/GMT-6` - Etc/GMT-6 * `Etc/GMT-7` - Etc/GMT-7 * `Etc/GMT-8` - Etc/GMT-8 * `Etc/GMT-9` - Etc/GMT-9 * `Etc/GMT0` - Etc/GMT0 * `Etc/Greenwich` - Etc/Greenwich * `Etc/UCT` - Etc/UCT * `Etc/UTC` - Etc/UTC * `Etc/Universal` - Etc/Universal * `Etc/Zulu` - Etc/Zulu * `Europe/Amsterdam` - Europe/Amsterdam * `Europe/Andorra` - Europe/Andorra * `Europe/Astrakhan` - Europe/Astrakhan * `Europe/Athens` - Europe/Athens * `Europe/Belfast` - Europe/Belfast * `Europe/Belgrade` - Europe/Belgrade * `Europe/Berlin` - Europe/Berlin * `Europe/Bratislava` - Europe/Bratislava * `Europe/Brussels` - Europe/Brussels * `Europe/Bucharest` - Europe/Bucharest * `Europe/Budapest` - Europe/Budapest * `Europe/Busingen` - Europe/Busingen * `Europe/Chisinau` - Europe/Chisinau * `Europe/Copenhagen` - Europe/Copenhagen * `Europe/Dublin` - Europe/Dublin * `Europe/Gibraltar` - Europe/Gibraltar * `Europe/Guernsey` - Europe/Guernsey * `Europe/Helsinki` - Europe/Helsinki * `Europe/Isle_of_Man` - Europe/Isle_of_Man * `Europe/Istanbul` - Europe/Istanbul * `Europe/Jersey` - Europe/Jersey * `Europe/Kaliningrad` - Europe/Kaliningrad * `Europe/Kiev` - Europe/Kiev * `Europe/Kirov` - Europe/Kirov * `Europe/Kyiv` - Europe/Kyiv * `Europe/Lisbon` - Europe/Lisbon * `Europe/Ljubljana` - Europe/Ljubljana * `Europe/London` - Europe/London * `Europe/Luxembourg` - Europe/Luxembourg * `Europe/Madrid` - Europe/Madrid * `Europe/Malta` - Europe/Malta * `Europe/Mariehamn` - Europe/Mariehamn * `Europe/Minsk` - Europe/Minsk * `Europe/Monaco` - Europe/Monaco * `Europe/Moscow` - Europe/Moscow * `Europe/Nicosia` - Europe/Nicosia * `Europe/Oslo` - Europe/Oslo * `Europe/Paris` - Europe/Paris * `Europe/Podgorica` - Europe/Podgorica * `Europe/Prague` - Europe/Prague * `Europe/Riga` - Europe/Riga * `Europe/Rome` - Europe/Rome * `Europe/Samara` - Europe/Samara * `Europe/San_Marino` - Europe/San_Marino * `Europe/Sarajevo` - Europe/Sarajevo * `Europe/Saratov` - Europe/Saratov * `Europe/Simferopol` - Europe/Simferopol * `Europe/Skopje` - Europe/Skopje * `Europe/Sofia` - Europe/Sofia * `Europe/Stockholm` - Europe/Stockholm * `Europe/Tallinn` - Europe/Tallinn * `Europe/Tirane` - Europe/Tirane * `Europe/Tiraspol` - Europe/Tiraspol * `Europe/Ulyanovsk` - Europe/Ulyanovsk * `Europe/Uzhgorod` - Europe/Uzhgorod * `Europe/Vaduz` - Europe/Vaduz * `Europe/Vatican` - Europe/Vatican * `Europe/Vienna` - Europe/Vienna * `Europe/Vilnius` - Europe/Vilnius * `Europe/Volgograd` - Europe/Volgograd * `Europe/Warsaw` - Europe/Warsaw * `Europe/Zagreb` - Europe/Zagreb * `Europe/Zaporozhye` - Europe/Zaporozhye * `Europe/Zurich` - Europe/Zurich * `GB` - GB * `GB-Eire` - GB-Eire * `GMT` - GMT * `GMT+0` - GMT+0 * `GMT-0` - GMT-0 * `GMT0` - GMT0 * `Greenwich` - Greenwich * `HST` - HST * `Hongkong` - Hongkong * `Iceland` - Iceland * `Indian/Antananarivo` - Indian/Antananarivo * `Indian/Chagos` - Indian/Chagos * `Indian/Christmas` - Indian/Christmas * `Indian/Cocos` - Indian/Cocos * `Indian/Comoro` - Indian/Comoro * `Indian/Kerguelen` - Indian/Kerguelen * `Indian/Mahe` - Indian/Mahe * `Indian/Maldives` - Indian/Maldives * `Indian/Mauritius` - Indian/Mauritius * `Indian/Mayotte` - Indian/Mayotte * `Indian/Reunion` - Indian/Reunion * `Iran` - Iran * `Israel` - Israel * `Jamaica` - Jamaica * `Japan` - Japan * `Kwajalein` - Kwajalein * `Libya` - Libya * `MET` - MET * `MST` - MST * `MST7MDT` - MST7MDT * `Mexico/BajaNorte` - Mexico/BajaNorte * `Mexico/BajaSur` - Mexico/BajaSur * `Mexico/General` - Mexico/General * `NZ` - NZ * `NZ-CHAT` - NZ-CHAT * `Navajo` - Navajo * `PRC` - PRC * `PST8PDT` - PST8PDT * `Pacific/Apia` - Pacific/Apia * `Pacific/Auckland` - Pacific/Auckland * `Pacific/Bougainville` - Pacific/Bougainville * `Pacific/Chatham` - Pacific/Chatham * `Pacific/Chuuk` - Pacific/Chuuk * `Pacific/Easter` - Pacific/Easter * `Pacific/Efate` - Pacific/Efate * `Pacific/Enderbury` - Pacific/Enderbury * `Pacific/Fakaofo` - Pacific/Fakaofo * `Pacific/Fiji` - Pacific/Fiji * `Pacific/Funafuti` - Pacific/Funafuti * `Pacific/Galapagos` - Pacific/Galapagos * `Pacific/Gambier` - Pacific/Gambier * `Pacific/Guadalcanal` - Pacific/Guadalcanal * `Pacific/Guam` - Pacific/Guam * `Pacific/Honolulu` - Pacific/Honolulu * `Pacific/Johnston` - Pacific/Johnston * `Pacific/Kanton` - Pacific/Kanton * `Pacific/Kiritimati` - Pacific/Kiritimati * `Pacific/Kosrae` - Pacific/Kosrae * `Pacific/Kwajalein` - Pacific/Kwajalein * `Pacific/Majuro` - Pacific/Majuro * `Pacific/Marquesas` - Pacific/Marquesas * `Pacific/Midway` - Pacific/Midway * `Pacific/Nauru` - Pacific/Nauru * `Pacific/Niue` - Pacific/Niue * `Pacific/Norfolk` - Pacific/Norfolk * `Pacific/Noumea` - Pacific/Noumea * `Pacific/Pago_Pago` - Pacific/Pago_Pago * `Pacific/Palau` - Pacific/Palau * `Pacific/Pitcairn` - Pacific/Pitcairn * `Pacific/Pohnpei` - Pacific/Pohnpei * `Pacific/Ponape` - Pacific/Ponape * `Pacific/Port_Moresby` - Pacific/Port_Moresby * `Pacific/Rarotonga` - Pacific/Rarotonga * `Pacific/Saipan` - Pacific/Saipan * `Pacific/Samoa` - Pacific/Samoa * `Pacific/Tahiti` - Pacific/Tahiti * `Pacific/Tarawa` - Pacific/Tarawa * `Pacific/Tongatapu` - Pacific/Tongatapu * `Pacific/Truk` - Pacific/Truk * `Pacific/Wake` - Pacific/Wake * `Pacific/Wallis` - Pacific/Wallis * `Pacific/Yap` - Pacific/Yap * `Poland` - Poland * `Portugal` - Portugal * `ROC` - ROC * `ROK` - ROK * `Singapore` - Singapore * `Turkey` - Turkey * `UCT` - UCT * `US/Alaska` - US/Alaska * `US/Aleutian` - US/Aleutian * `US/Arizona` - US/Arizona * `US/Central` - US/Central * `US/East-Indiana` - US/East-Indiana * `US/Eastern` - US/Eastern * `US/Hawaii` - US/Hawaii * `US/Indiana-Starke` - US/Indiana-Starke * `US/Michigan` - US/Michigan * `US/Mountain` - US/Mountain * `US/Pacific` - US/Pacific * `US/Samoa` - US/Samoa * `UTC` - UTC * `Universal` - Universal * `W-SU` - W-SU * `WET` - WET * `Zulu` - Zulu */
 export type TimezoneEnum =
@@ -808,7 +804,7 @@ export type TimezoneEnum =
   | "W-SU"
   | "WET"
   | "Zulu";
-export const TimezoneEnum = S.String;
+const TimezoneEnum = S.String;
 
 /** Serializer for `Team` model with minimal attributes to speeed up loading and transfer times. Also used for nested serializers. */
 export interface TeamBasic {
@@ -825,7 +821,7 @@ export interface TeamBasic {
   timezone?: TimezoneEnum;
   access_control?: boolean;
 }
-export const TeamBasic = /*@__PURE__*/ S.suspend(() =>
+const TeamBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -844,36 +840,32 @@ export const TeamBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** * `1` - member * `8` - administrator * `15` - owner */
 export type OrganizationMembershipLevelEnum = 1 | 8 | 15;
-export const OrganizationMembershipLevelEnum = S.Number;
+const OrganizationMembershipLevelEnum = S.Number;
 
 /** * `0` - none * `3` - config * `6` - install * `9` - root */
 export type OrganizationPluginsAccessLevelEnum = 0 | 3 | 6 | 9;
-export const OrganizationPluginsAccessLevelEnum = S.Number;
+const OrganizationPluginsAccessLevelEnum = S.Number;
 
 export type OrganizationTeamsItemMap = { [key: string]: unknown | undefined };
-export const OrganizationTeamsItemMap =
+const OrganizationTeamsItemMap =
   UserOutputNotificationSettingsMap as any as S.Schema<OrganizationTeamsItemMap>;
 
 export type OrganizationTeamsList = Array<OrganizationTeamsItemMap>;
-export const OrganizationTeamsList = /*@__PURE__*/ S.Array(
+const OrganizationTeamsList = /*@__PURE__*/ S.Array(
   OrganizationTeamsItemMap,
 ) as any as S.Schema<OrganizationTeamsList>;
 
 export type OrganizationProjectsItemMap = { [key: string]: unknown | undefined };
-export const OrganizationProjectsItemMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<OrganizationProjectsItemMap>;
-
 export type OrganizationProjectsList = Array<OrganizationProjectsItemMap>;
-export const OrganizationProjectsList =
-  OrganizationTeamsList as any as S.Schema<OrganizationProjectsList>;
+const OrganizationProjectsList = OrganizationTeamsList as any as S.Schema<OrganizationProjectsList>;
 
 export type OrganizationAvailableProductFeaturesList = Array<unknown>;
-export const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
+const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OrganizationAvailableProductFeaturesList>;
 
 export type OrganizationMetadataMap = { [key: string]: string | undefined };
-export const OrganizationMetadataMap = /*@__PURE__*/ S.Record(
+const OrganizationMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<OrganizationMetadataMap>;
@@ -884,7 +876,7 @@ export interface OrganizationMemberNoticeAction {
   /** Link the button opens in a new tab. Must use http or https. */
   url: string;
 }
-export const OrganizationMemberNoticeAction = /*@__PURE__*/ S.suspend(() =>
+const OrganizationMemberNoticeAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     url: S.String,
@@ -899,7 +891,7 @@ export interface OrganizationMemberNotice {
   /** Optional link button shown on the right of the banner. */
   action?: OrganizationMemberNoticeAction | null;
 }
-export const OrganizationMemberNotice = /*@__PURE__*/ S.suspend(() =>
+const OrganizationMemberNotice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     action: S.optional(S.NullOr(OrganizationMemberNoticeAction)),
@@ -959,7 +951,7 @@ export interface Organization {
   /** When True, access controls resolve with the most specific matching rule. When False, the legacy resolution order applies. */
   uses_most_specific_access_resolution?: boolean | null;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1014,7 +1006,7 @@ export interface OrganizationBasic {
   /** Set to True when org deletion has been initiated. Blocks all UI access until the async task completes. */
   is_pending_deletion?: boolean | null;
 }
-export const OrganizationBasic = /*@__PURE__*/ S.suspend(() =>
+const OrganizationBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1029,7 +1021,7 @@ export const OrganizationBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrganizationBasic" }) as any as S.Schema<OrganizationBasic>;
 
 export type UserOutputOrganizationsList = Array<OrganizationBasic>;
-export const UserOutputOrganizationsList = /*@__PURE__*/ S.Array(
+const UserOutputOrganizationsList = /*@__PURE__*/ S.Array(
   OrganizationBasic,
 ) as any as S.Schema<UserOutputOrganizationsList>;
 
@@ -1037,7 +1029,7 @@ export interface ScenePersonalisationBasic {
   scene?: string;
   dashboard?: number | null;
 }
-export const ScenePersonalisationBasic = /*@__PURE__*/ S.suspend(() =>
+const ScenePersonalisationBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scene: S.optional(S.String),
     dashboard: S.optional(S.NullOr(S.Number)),
@@ -1047,23 +1039,19 @@ export const ScenePersonalisationBasic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScenePersonalisationBasic>;
 
 export type UserOutputScenePersonalisationList = Array<ScenePersonalisationBasic>;
-export const UserOutputScenePersonalisationList = /*@__PURE__*/ S.Array(
+const UserOutputScenePersonalisationList = /*@__PURE__*/ S.Array(
   ScenePersonalisationBasic,
 ) as any as S.Schema<UserOutputScenePersonalisationList>;
 
 /** * `light` - Light * `dark` - Dark * `system` - System */
 export type ThemeModeEnum = "light" | "dark" | "system";
-export const ThemeModeEnum = S.String;
-
 export type UserOutputThemeMode = ThemeModeEnum | BlankEnum;
-export const UserOutputThemeMode = S.Unknown as any as S.Schema<UserOutputThemeMode>;
+const UserOutputThemeMode = S.Unknown as any as S.Schema<UserOutputThemeMode>;
 
 /** * `above` - Above * `below` - Below * `hidden` - Hidden */
 export type ShortcutPositionEnum = "above" | "below" | "hidden";
-export const ShortcutPositionEnum = S.String;
-
 export type UserOutputShortcutPosition = ShortcutPositionEnum | BlankEnum;
-export const UserOutputShortcutPosition = S.Unknown as any as S.Schema<UserOutputShortcutPosition>;
+const UserOutputShortcutPosition = S.Unknown as any as S.Schema<UserOutputShortcutPosition>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
@@ -1076,15 +1064,15 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
+const RoleAtOrganizationEnum = S.String;
 
 /** * `delegated` - Delegated to teammate * `later` - Skipped for later * `other` - Other * `provisioned` - Account provisioned by a partner */
 export type OnboardingSkippedReasonEnum = "delegated" | "later" | "other" | "provisioned";
-export const OnboardingSkippedReasonEnum = S.String;
+const OnboardingSkippedReasonEnum = S.String;
 
 /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
 export type UserOutputActiveRealtimeNotificationTypesList = Array<string>;
-export const UserOutputActiveRealtimeNotificationTypesList = /*@__PURE__*/ S.Array(
+const UserOutputActiveRealtimeNotificationTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserOutputActiveRealtimeNotificationTypesList>;
 
@@ -1096,7 +1084,7 @@ export interface PendingInvite {
   organization_name?: string;
   created_at?: string;
 }
-export const PendingInvite = /*@__PURE__*/ S.suspend(() =>
+const PendingInvite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     target_email: S.optional(S.String),
@@ -1107,7 +1095,7 @@ export const PendingInvite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PendingInvite" }) as any as S.Schema<PendingInvite>;
 
 export type UserOutputPendingInvitesList = Array<PendingInvite>;
-export const UserOutputPendingInvitesList = /*@__PURE__*/ S.Array(
+const UserOutputPendingInvitesList = /*@__PURE__*/ S.Array(
   PendingInvite,
 ) as any as S.Schema<UserOutputPendingInvitesList>;
 
@@ -1174,7 +1162,7 @@ export interface UserOutput {
   /** True if the user has at least one Personal API Key or passkey, or a third-party OAuth application that can currently act as them, and has not yet acknowledged that access. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
   requires_credential_review?: boolean;
 }
-export const UserOutput = /*@__PURE__*/ S.suspend(() =>
+const UserOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_joined: S.optional(S.String),
     uuid: S.optional(S.String),
@@ -1230,7 +1218,7 @@ export const UserOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** * `ios` - iOS * `android` - Android * `web` - Web */
 export type UserPushTokenPlatformEnum = "ios" | "android" | "web";
-export const UserPushTokenPlatformEnum = S.String;
+const UserPushTokenPlatformEnum = S.String;
 
 export interface CreateUsersPushTokenRequest {
   uuid: string;
@@ -1239,7 +1227,7 @@ export interface CreateUsersPushTokenRequest {
   /** Device platform the token was issued for. One of `ios`, `android`, or `web`. * `ios` - iOS * `android` - Android * `web` - Web */
   platform: UserPushTokenPlatformEnum | (string & {});
 }
-export const CreateUsersPushTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersPushTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     token: S.String,
@@ -1259,7 +1247,7 @@ export interface UserPushTokenItem {
   /** Last time the mobile app re-registered this token. */
   last_seen_at: string;
 }
-export const UserPushTokenItem = /*@__PURE__*/ S.suspend(() =>
+const UserPushTokenItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     platform: UserPushTokenPlatformEnum,
@@ -1272,24 +1260,23 @@ export const UserPushTokenItem = /*@__PURE__*/ S.suspend(() =>
 export type CreateUsersRequestEmailVerificationRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateUsersRequestEmailVerificationRequestNotificationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateUsersRequestEmailVerificationRequestNotificationSettingsMap>;
+const CreateUsersRequestEmailVerificationRequestNotificationSettingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CreateUsersRequestEmailVerificationRequestNotificationSettingsMap>;
 
 export type CreateUsersRequestEmailVerificationRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const CreateUsersRequestEmailVerificationRequestToolbarMode =
+const CreateUsersRequestEmailVerificationRequestToolbarMode =
   S.Unknown as any as S.Schema<CreateUsersRequestEmailVerificationRequestToolbarMode>;
 
 export type CreateUsersRequestEmailVerificationRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const CreateUsersRequestEmailVerificationRequestThemeMode =
+const CreateUsersRequestEmailVerificationRequestThemeMode =
   S.Unknown as any as S.Schema<CreateUsersRequestEmailVerificationRequestThemeMode>;
 
 export type CreateUsersRequestEmailVerificationRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-export const CreateUsersRequestEmailVerificationRequestShortcutPosition =
+const CreateUsersRequestEmailVerificationRequestShortcutPosition =
   S.Unknown as any as S.Schema<CreateUsersRequestEmailVerificationRequestShortcutPosition>;
 
 export interface CreateUsersRequestEmailVerificationRequest {
@@ -1323,7 +1310,7 @@ export interface CreateUsersRequestEmailVerificationRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const CreateUsersRequestEmailVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersRequestEmailVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
@@ -1357,28 +1344,28 @@ export const CreateUsersRequestEmailVerificationRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateUsersRequestEmailVerificationRequest>;
 
 export interface CreateUsersRequestEmailVerificationResponse {}
-export const CreateUsersRequestEmailVerificationResponse =
+const CreateUsersRequestEmailVerificationResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersRequestEmailVerificationResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersScenePersonalisationRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateUsersScenePersonalisationRequestNotificationSettingsMap =
+const CreateUsersScenePersonalisationRequestNotificationSettingsMap =
   UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersScenePersonalisationRequestNotificationSettingsMap>;
 
 export type CreateUsersScenePersonalisationRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const CreateUsersScenePersonalisationRequestToolbarMode =
+const CreateUsersScenePersonalisationRequestToolbarMode =
   S.Unknown as any as S.Schema<CreateUsersScenePersonalisationRequestToolbarMode>;
 
 export type CreateUsersScenePersonalisationRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const CreateUsersScenePersonalisationRequestThemeMode =
+const CreateUsersScenePersonalisationRequestThemeMode =
   S.Unknown as any as S.Schema<CreateUsersScenePersonalisationRequestThemeMode>;
 
 export type CreateUsersScenePersonalisationRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-export const CreateUsersScenePersonalisationRequestShortcutPosition =
+const CreateUsersScenePersonalisationRequestShortcutPosition =
   S.Unknown as any as S.Schema<CreateUsersScenePersonalisationRequestShortcutPosition>;
 
 export interface CreateUsersScenePersonalisationRequest {
@@ -1413,7 +1400,7 @@ export interface CreateUsersScenePersonalisationRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const CreateUsersScenePersonalisationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersScenePersonalisationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     first_name: S.optional(S.String),
@@ -1446,12 +1433,12 @@ export const CreateUsersScenePersonalisationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateUsersScenePersonalisationRequest>;
 
 export interface CreateUsersScenePersonalisationResponse {}
-export const CreateUsersScenePersonalisationResponse =
+const CreateUsersScenePersonalisationResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersScenePersonalisationResponse>;
 
 /** * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
 export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
-export const AutonomyPriorityEnum = S.String;
+const AutonomyPriorityEnum = S.String;
 
 export interface CreateUsersSignalAutonomyRequest {
   user_id: string;
@@ -1469,7 +1456,7 @@ export interface CreateUsersSignalAutonomyRequest {
   /** Open implementation pull requests for reports that suggest this user as reviewer ready for review instead of draft, so the full CI matrix runs without anybody clicking Ready. Null follows the project default. A ready pull request runs the full matrix on every push. */
   github_open_pull_request_ready?: boolean | null;
 }
-export const CreateUsersSignalAutonomyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersSignalAutonomyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     autostart_priority: S.optional(S.NullOr(AutonomyPriorityEnum)),
@@ -1491,7 +1478,7 @@ export interface User {
   last_name?: string;
   email?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -1502,12 +1489,12 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export type SignalUserAutonomyConfigAutostartPriority = AutonomyPriorityEnum | BlankEnum;
-export const SignalUserAutonomyConfigAutostartPriority =
+const SignalUserAutonomyConfigAutostartPriority =
   S.Unknown as any as S.Schema<SignalUserAutonomyConfigAutostartPriority>;
 
 /** Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority. When set, reports without a priority judgment do not notify. * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
 export type SignalUserAutonomyConfigSlackNotificationMinPriority = AutonomyPriorityEnum | BlankEnum;
-export const SignalUserAutonomyConfigSlackNotificationMinPriority =
+const SignalUserAutonomyConfigSlackNotificationMinPriority =
   S.Unknown as any as S.Schema<SignalUserAutonomyConfigSlackNotificationMinPriority>;
 
 export interface SignalUserAutonomyConfig {
@@ -1527,7 +1514,7 @@ export interface SignalUserAutonomyConfig {
   created_at?: string;
   updated_at?: string;
 }
-export const SignalUserAutonomyConfig = /*@__PURE__*/ S.suspend(() =>
+const SignalUserAutonomyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     user: S.optional(User),
@@ -1548,21 +1535,21 @@ export const SignalUserAutonomyConfig = /*@__PURE__*/ S.suspend(() =>
 export type CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap =
+const CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap =
   UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap>;
 
 export type CreateUsersTwoFactorBackupCodeRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const CreateUsersTwoFactorBackupCodeRequestToolbarMode =
+const CreateUsersTwoFactorBackupCodeRequestToolbarMode =
   S.Unknown as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestToolbarMode>;
 
 export type CreateUsersTwoFactorBackupCodeRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const CreateUsersTwoFactorBackupCodeRequestThemeMode =
+const CreateUsersTwoFactorBackupCodeRequestThemeMode =
   S.Unknown as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestThemeMode>;
 
 export type CreateUsersTwoFactorBackupCodeRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-export const CreateUsersTwoFactorBackupCodeRequestShortcutPosition =
+const CreateUsersTwoFactorBackupCodeRequestShortcutPosition =
   S.Unknown as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestShortcutPosition>;
 
 export interface CreateUsersTwoFactorBackupCodeRequest {
@@ -1597,7 +1584,7 @@ export interface CreateUsersTwoFactorBackupCodeRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const CreateUsersTwoFactorBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersTwoFactorBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     first_name: S.optional(S.String),
@@ -1628,26 +1615,26 @@ export const CreateUsersTwoFactorBackupCodeRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateUsersTwoFactorBackupCodeRequest>;
 
 export interface CreateUsersTwoFactorBackupCodeResponse {}
-export const CreateUsersTwoFactorBackupCodeResponse =
+const CreateUsersTwoFactorBackupCodeResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersTwoFactorBackupCodeResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersValidate2faRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateUsersValidate2faRequestNotificationSettingsMap =
+const CreateUsersValidate2faRequestNotificationSettingsMap =
   UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersValidate2faRequestNotificationSettingsMap>;
 
 export type CreateUsersValidate2faRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const CreateUsersValidate2faRequestToolbarMode =
+const CreateUsersValidate2faRequestToolbarMode =
   S.Unknown as any as S.Schema<CreateUsersValidate2faRequestToolbarMode>;
 
 export type CreateUsersValidate2faRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const CreateUsersValidate2faRequestThemeMode =
+const CreateUsersValidate2faRequestThemeMode =
   S.Unknown as any as S.Schema<CreateUsersValidate2faRequestThemeMode>;
 
 export type CreateUsersValidate2faRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-export const CreateUsersValidate2faRequestShortcutPosition =
+const CreateUsersValidate2faRequestShortcutPosition =
   S.Unknown as any as S.Schema<CreateUsersValidate2faRequestShortcutPosition>;
 
 export interface CreateUsersValidate2faRequest {
@@ -1682,7 +1669,7 @@ export interface CreateUsersValidate2faRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const CreateUsersValidate2faRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersValidate2faRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     first_name: S.optional(S.String),
@@ -1713,14 +1700,14 @@ export const CreateUsersValidate2faRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUsersValidate2faRequest>;
 
 export interface CreateUsersValidate2faResponse {}
-export const CreateUsersValidate2faResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateUsersValidate2faResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateUsersValidate2faResponse",
 }) as any as S.Schema<CreateUsersValidate2faResponse>;
 
 export interface GetUserRequest {
   uuid: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/", code: 200 })),
@@ -1729,7 +1716,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUsersGithubLoginRequest {
   uuid: string;
 }
-export const GetUsersGithubLoginRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersGithubLoginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/github_login/", code: 200 })),
@@ -1741,7 +1728,7 @@ export interface UserGithubLogin {
   /** The user's resolved GitHub login, or null when no GitHub identity is linked. */
   github_login: string | null;
 }
-export const UserGithubLogin = /*@__PURE__*/ S.suspend(() =>
+const UserGithubLogin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     github_login: S.NullOr(S.String),
   }),
@@ -1750,7 +1737,7 @@ export const UserGithubLogin = /*@__PURE__*/ S.suspend(() =>
 export interface GetUsersHedgehogConfigRequest {
   uuid: string;
 }
-export const GetUsersHedgehogConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersHedgehogConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/hedgehog_config/", code: 200 })),
@@ -1759,13 +1746,13 @@ export const GetUsersHedgehogConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsersHedgehogConfigRequest>;
 
 export interface GetUsersHedgehogConfigResponse {}
-export const GetUsersHedgehogConfigResponse =
+const GetUsersHedgehogConfigResponse =
   CreateUsersValidate2faResponse as any as S.Schema<GetUsersHedgehogConfigResponse>;
 
 export interface GetUsersIntegrationsCodexRequest {
   uuid: string;
 }
-export const GetUsersIntegrationsCodexRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersIntegrationsCodexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/integrations/codex/", code: 200 })),
@@ -1785,7 +1772,7 @@ export interface GetUsersIntegrationsGithubBranchRequest {
   /** Optional case-insensitive branch name search query. */
   search?: string;
 }
-export const GetUsersIntegrationsGithubBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersIntegrationsGithubBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     installation_id: S.String.pipe(T.Label()),
@@ -1806,7 +1793,7 @@ export const GetUsersIntegrationsGithubBranchRequest = /*@__PURE__*/ S.suspend((
 
 /** List of branch names */
 export type GitHubBranchesResponseBranchesList = Array<string>;
-export const GitHubBranchesResponseBranchesList =
+const GitHubBranchesResponseBranchesList =
   UserOutputActiveRealtimeNotificationTypesList as any as S.Schema<GitHubBranchesResponseBranchesList>;
 
 export interface GitHubBranchesResponse {
@@ -1817,7 +1804,7 @@ export interface GitHubBranchesResponse {
   /** Whether more branches exist beyond the returned page */
   has_more?: boolean;
 }
-export const GitHubBranchesResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubBranchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branches: S.optional(GitHubBranchesResponseBranchesList),
     default_branch: S.optional(S.NullOr(S.String)),
@@ -1837,7 +1824,7 @@ export interface GetUsersIntegrationsGithubReposRequest {
   /** Optional case-insensitive repository name search query. */
   search?: string;
 }
-export const GetUsersIntegrationsGithubReposRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersIntegrationsGithubReposRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     installation_id: S.String.pipe(T.Label()),
@@ -1876,7 +1863,7 @@ export interface GitHubRepo {
   /** Whether the PostHog GitHub App has write access -- required to open pull requests. */
   can_push?: boolean;
 }
-export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
+const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -1891,7 +1878,7 @@ export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
 
 export type GitHubReposResponseRepositoriesList = Array<GitHubRepo>;
-export const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
+const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
   GitHubRepo,
 ) as any as S.Schema<GitHubReposResponseRepositoriesList>;
 
@@ -1904,7 +1891,7 @@ export interface GitHubReposResponse {
   /** Total number of repositories matching the search query, across all pages. */
   total?: number;
 }
-export const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(GitHubReposResponseRepositoriesList),
     has_more: S.optional(S.Boolean),
@@ -1916,7 +1903,7 @@ export const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetUsersIntegrationsSlackLinkableWorkspaceRequest {
   uuid: string;
 }
-export const GetUsersIntegrationsSlackLinkableWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersIntegrationsSlackLinkableWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -1942,7 +1929,7 @@ export interface UserSlackLinkableWorkspaceItem {
   /** Slack workspace display name as known by PostHog. */
   slack_team_name?: string | null;
 }
-export const UserSlackLinkableWorkspaceItem = /*@__PURE__*/ S.suspend(() =>
+const UserSlackLinkableWorkspaceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     posthog_team_id: S.Number,
     posthog_team_name: S.String,
@@ -1957,7 +1944,7 @@ export const UserSlackLinkableWorkspaceItem = /*@__PURE__*/ S.suspend(() =>
 /** Slack workspaces the user could link to but hasn't yet. */
 export type UserSlackLinkableWorkspaceListResponseResultsList =
   Array<UserSlackLinkableWorkspaceItem>;
-export const UserSlackLinkableWorkspaceListResponseResultsList = /*@__PURE__*/ S.Array(
+const UserSlackLinkableWorkspaceListResponseResultsList = /*@__PURE__*/ S.Array(
   UserSlackLinkableWorkspaceItem,
 ) as any as S.Schema<UserSlackLinkableWorkspaceListResponseResultsList>;
 
@@ -1965,7 +1952,7 @@ export interface UserSlackLinkableWorkspaceListResponse {
   /** Slack workspaces the user could link to but hasn't yet. */
   results: UserSlackLinkableWorkspaceListResponseResultsList;
 }
-export const UserSlackLinkableWorkspaceListResponse = /*@__PURE__*/ S.suspend(() =>
+const UserSlackLinkableWorkspaceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: UserSlackLinkableWorkspaceListResponseResultsList,
   }),
@@ -1976,7 +1963,7 @@ export const UserSlackLinkableWorkspaceListResponse = /*@__PURE__*/ S.suspend(()
 export interface GetUsersSignalAutonomyRequest {
   user_id: string;
 }
-export const GetUsersSignalAutonomyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSignalAutonomyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{user_id}/signal_autonomy/", code: 200 })),
@@ -1987,7 +1974,7 @@ export const GetUsersSignalAutonomyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUsersStart2faSetupRequest {
   uuid: string;
 }
-export const GetUsersStart2faSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersStart2faSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/start_2fa_setup/", code: 200 })),
@@ -1996,13 +1983,13 @@ export const GetUsersStart2faSetupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsersStart2faSetupRequest>;
 
 export interface GetUsersStart2faSetupResponse {}
-export const GetUsersStart2faSetupResponse =
+const GetUsersStart2faSetupResponse =
   CreateUsersValidate2faResponse as any as S.Schema<GetUsersStart2faSetupResponse>;
 
 export interface GetUsersTwoFactorStatusRequest {
   uuid: string;
 }
-export const GetUsersTwoFactorStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersTwoFactorStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/two_factor_status/", code: 200 })),
@@ -2024,7 +2011,7 @@ export interface TwoFactorStatus {
   /** Whether passkeys count as a 2FA method. */
   passkeys_enabled_for_2fa: boolean;
 }
-export const TwoFactorStatus = /*@__PURE__*/ S.suspend(() =>
+const TwoFactorStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_enabled: S.Boolean,
     backup_codes_remaining: S.Number,
@@ -2039,7 +2026,7 @@ export interface InstallUsersIntegrationsGithubRequestsDestroyRequest {
   uuid: string;
   request_id: string;
 }
-export const InstallUsersIntegrationsGithubRequestsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const InstallUsersIntegrationsGithubRequestsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     request_id: S.String.pipe(T.Label()),
@@ -2055,7 +2042,7 @@ export const InstallUsersIntegrationsGithubRequestsDestroyRequest = /*@__PURE__*
 }) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyRequest>;
 
 export interface InstallUsersIntegrationsGithubRequestsDestroyResponse {}
-export const InstallUsersIntegrationsGithubRequestsDestroyResponse =
+const InstallUsersIntegrationsGithubRequestsDestroyResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyResponse>;
 
 export interface ListUsersRequest {
@@ -2066,7 +2053,7 @@ export interface ListUsersRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String.pipe(T.Query())),
     is_staff: S.optional(S.Boolean.pipe(T.Query())),
@@ -2076,7 +2063,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type PaginatedUserListOutputResultsList = Array<UserOutput>;
-export const PaginatedUserListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedUserListOutputResultsList = /*@__PURE__*/ S.Array(
   UserOutput,
 ) as any as S.Schema<PaginatedUserListOutputResultsList>;
 
@@ -2086,7 +2073,7 @@ export interface PaginatedUserListOutput {
   previous?: string | null;
   results?: PaginatedUserListOutputResultsList;
 }
-export const PaginatedUserListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedUserListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2096,7 +2083,7 @@ export const PaginatedUserListOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaginatedUserListOutput" }) as any as S.Schema<PaginatedUserListOutput>;
 
 export type ListUsersIntegrationsRequestKind = "github" | "slack";
-export const ListUsersIntegrationsRequestKind = S.String;
+const ListUsersIntegrationsRequestKind = S.String;
 
 export interface ListUsersIntegrationsRequest {
   uuid: string;
@@ -2107,7 +2094,7 @@ export interface ListUsersIntegrationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListUsersIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     kind: S.optional(ListUsersIntegrationsRequestKind.pipe(T.Query())),
@@ -2124,7 +2111,7 @@ export interface UserGitHubAccount {
   /** GitHub login or organization name tied to the installation. */
   name?: string | null;
 }
-export const UserGitHubAccount = /*@__PURE__*/ S.suspend(() =>
+const UserGitHubAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -2133,7 +2120,7 @@ export const UserGitHubAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** * `connected` - connected * `unavailable` - unavailable */
 export type InstallationStatusEnum = "connected" | "unavailable";
-export const InstallationStatusEnum = S.String;
+const InstallationStatusEnum = S.String;
 
 export interface UserGitHubIntegrationItem {
   /** PostHog UserIntegration row id. */
@@ -2157,7 +2144,7 @@ export interface UserGitHubIntegrationItem {
   /** When this integration row was created. */
   created_at: string;
 }
-export const UserGitHubIntegrationItem = /*@__PURE__*/ S.suspend(() =>
+const UserGitHubIntegrationItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.String,
@@ -2176,7 +2163,7 @@ export const UserGitHubIntegrationItem = /*@__PURE__*/ S.suspend(() =>
 
 /** GitHub personal integrations for the authenticated user. */
 export type UserGitHubIntegrationListResponseResultsList = Array<UserGitHubIntegrationItem>;
-export const UserGitHubIntegrationListResponseResultsList = /*@__PURE__*/ S.Array(
+const UserGitHubIntegrationListResponseResultsList = /*@__PURE__*/ S.Array(
   UserGitHubIntegrationItem,
 ) as any as S.Schema<UserGitHubIntegrationListResponseResultsList>;
 
@@ -2184,7 +2171,7 @@ export interface UserGitHubIntegrationListResponse {
   /** GitHub personal integrations for the authenticated user. */
   results: UserGitHubIntegrationListResponseResultsList;
 }
-export const UserGitHubIntegrationListResponse = /*@__PURE__*/ S.suspend(() =>
+const UserGitHubIntegrationListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: UserGitHubIntegrationListResponseResultsList,
   }),
@@ -2194,7 +2181,7 @@ export const UserGitHubIntegrationListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedUserGitHubIntegrationListResponseListResultsList =
   Array<UserGitHubIntegrationListResponse>;
-export const PaginatedUserGitHubIntegrationListResponseListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedUserGitHubIntegrationListResponseListResultsList = /*@__PURE__*/ S.Array(
   UserGitHubIntegrationListResponse,
 ) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseListResultsList>;
 
@@ -2204,7 +2191,7 @@ export interface PaginatedUserGitHubIntegrationListResponseList {
   previous?: string | null;
   results: PaginatedUserGitHubIntegrationListResponseListResultsList;
 }
-export const PaginatedUserGitHubIntegrationListResponseList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedUserGitHubIntegrationListResponseList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2220,7 +2207,7 @@ export interface ListUsersLoginSessionsRequest {
   email?: string;
   is_staff?: boolean;
 }
-export const ListUsersLoginSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersLoginSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     email: S.optional(S.String.pipe(T.Query())),
@@ -2247,7 +2234,7 @@ export interface UserAuthSession {
   /** Whether this is the login session making the current request. */
   is_current: boolean;
 }
-export const UserAuthSession = /*@__PURE__*/ S.suspend(() =>
+const UserAuthSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created_at: S.NullOr(S.String),
@@ -2260,12 +2247,12 @@ export const UserAuthSession = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserAuthSession" }) as any as S.Schema<UserAuthSession>;
 
 export type ListUsersLoginSessionsResponseBodyList = Array<UserAuthSession>;
-export const ListUsersLoginSessionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListUsersLoginSessionsResponseBodyList = /*@__PURE__*/ S.Array(
   UserAuthSession,
 ) as any as S.Schema<ListUsersLoginSessionsResponseBodyList>;
 
 export type ListUsersLoginSessionsResponse = ListUsersLoginSessionsResponseBodyList;
-export const ListUsersLoginSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersLoginSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListUsersLoginSessionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListUsersLoginSessionsResponse",
@@ -2275,7 +2262,7 @@ export interface LoginUserSessionsDestroyRequest {
   uuid: string;
   session_id: string;
 }
-export const LoginUserSessionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LoginUserSessionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     session_id: S.String.pipe(T.Label()),
@@ -2287,13 +2274,13 @@ export const LoginUserSessionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoginUserSessionsDestroyRequest>;
 
 export interface LoginUserSessionsDestroyResponse {}
-export const LoginUserSessionsDestroyResponse =
+const LoginUserSessionsDestroyResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<LoginUserSessionsDestroyResponse>;
 
 export interface SignalUserAutonomyDestroyRequest {
   user_id: string;
 }
-export const SignalUserAutonomyDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalUserAutonomyDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/users/{user_id}/signal_autonomy/", code: 200 })),
@@ -2302,23 +2289,22 @@ export const SignalUserAutonomyDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalUserAutonomyDestroyRequest>;
 
 export interface SignalUserAutonomyDestroyResponse {}
-export const SignalUserAutonomyDestroyResponse =
+const SignalUserAutonomyDestroyResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<SignalUserAutonomyDestroyResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUserRequestNotificationSettingsMap = { [key: string]: unknown | undefined };
-export const UpdateUserRequestNotificationSettingsMap =
+const UpdateUserRequestNotificationSettingsMap =
   UserOutputNotificationSettingsMap as any as S.Schema<UpdateUserRequestNotificationSettingsMap>;
 
 export type UpdateUserRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const UpdateUserRequestToolbarMode =
-  S.Unknown as any as S.Schema<UpdateUserRequestToolbarMode>;
+const UpdateUserRequestToolbarMode = S.Unknown as any as S.Schema<UpdateUserRequestToolbarMode>;
 
 export type UpdateUserRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const UpdateUserRequestThemeMode = S.Unknown as any as S.Schema<UpdateUserRequestThemeMode>;
+const UpdateUserRequestThemeMode = S.Unknown as any as S.Schema<UpdateUserRequestThemeMode>;
 
 export type UpdateUserRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-export const UpdateUserRequestShortcutPosition =
+const UpdateUserRequestShortcutPosition =
   S.Unknown as any as S.Schema<UpdateUserRequestShortcutPosition>;
 
 export interface UpdateUserRequest {
@@ -2353,7 +2339,7 @@ export interface UpdateUserRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     first_name: S.optional(S.String),
@@ -2385,21 +2371,21 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap =
+const UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap =
   CreateUsersRequestEmailVerificationRequestNotificationSettingsMap as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap>;
 
 export type UpdateUsersHedgehogConfigPartialRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const UpdateUsersHedgehogConfigPartialRequestToolbarMode =
+const UpdateUsersHedgehogConfigPartialRequestToolbarMode =
   S.Unknown as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestToolbarMode>;
 
 export type UpdateUsersHedgehogConfigPartialRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const UpdateUsersHedgehogConfigPartialRequestThemeMode =
+const UpdateUsersHedgehogConfigPartialRequestThemeMode =
   S.Unknown as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestThemeMode>;
 
 export type UpdateUsersHedgehogConfigPartialRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-export const UpdateUsersHedgehogConfigPartialRequestShortcutPosition =
+const UpdateUsersHedgehogConfigPartialRequestShortcutPosition =
   S.Unknown as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestShortcutPosition>;
 
 export interface UpdateUsersHedgehogConfigPartialRequest {
@@ -2434,7 +2420,7 @@ export interface UpdateUsersHedgehogConfigPartialRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const UpdateUsersHedgehogConfigPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersHedgehogConfigPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     first_name: S.optional(S.String),
@@ -2469,26 +2455,26 @@ export const UpdateUsersHedgehogConfigPartialRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UpdateUsersHedgehogConfigPartialRequest>;
 
 export interface UpdateUsersHedgehogConfigPartialResponse {}
-export const UpdateUsersHedgehogConfigPartialResponse =
+const UpdateUsersHedgehogConfigPartialResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UpdateUsersHedgehogConfigPartialResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUsersPartialRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateUsersPartialRequestNotificationSettingsMap =
+const UpdateUsersPartialRequestNotificationSettingsMap =
   UserOutputNotificationSettingsMap as any as S.Schema<UpdateUsersPartialRequestNotificationSettingsMap>;
 
 export type UpdateUsersPartialRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const UpdateUsersPartialRequestToolbarMode =
+const UpdateUsersPartialRequestToolbarMode =
   S.Unknown as any as S.Schema<UpdateUsersPartialRequestToolbarMode>;
 
 export type UpdateUsersPartialRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const UpdateUsersPartialRequestThemeMode =
+const UpdateUsersPartialRequestThemeMode =
   S.Unknown as any as S.Schema<UpdateUsersPartialRequestThemeMode>;
 
 export type UpdateUsersPartialRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-export const UpdateUsersPartialRequestShortcutPosition =
+const UpdateUsersPartialRequestShortcutPosition =
   S.Unknown as any as S.Schema<UpdateUsersPartialRequestShortcutPosition>;
 
 export interface UpdateUsersPartialRequest {
@@ -2523,7 +2509,7 @@ export interface UpdateUsersPartialRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const UpdateUsersPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     first_name: S.optional(S.String),
@@ -2560,7 +2546,7 @@ export interface UpdateUsersProductIntroSeenPartialRequest {
   /** Whether the intro counts as seen. Send false to show it again. */
   seen?: boolean;
 }
-export const UpdateUsersProductIntroSeenPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersProductIntroSeenPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     product_key: S.optional(S.String),
@@ -2573,14 +2559,14 @@ export const UpdateUsersProductIntroSeenPartialRequest = /*@__PURE__*/ S.suspend
 export type UpdateUsersProductIntroSeenPartialResponseBodyMap = {
   [key: string]: boolean | undefined;
 };
-export const UpdateUsersProductIntroSeenPartialResponseBodyMap = /*@__PURE__*/ S.Record(
+const UpdateUsersProductIntroSeenPartialResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Boolean,
 ) as any as S.Schema<UpdateUsersProductIntroSeenPartialResponseBodyMap>;
 
 export type UpdateUsersProductIntroSeenPartialResponse =
   UpdateUsersProductIntroSeenPartialResponseBodyMap;
-export const UpdateUsersProductIntroSeenPartialResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersProductIntroSeenPartialResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateUsersProductIntroSeenPartialResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateUsersProductIntroSeenPartialResponse",
@@ -2590,23 +2576,23 @@ export const UpdateUsersProductIntroSeenPartialResponse = /*@__PURE__*/ S.suspen
 export type UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap =
+const UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap =
   CreateUsersRequestEmailVerificationRequestNotificationSettingsMap as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap>;
 
 export type UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
   | ToolbarModeEnum
   | BlankEnum;
-export const UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
+const UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
   S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode>;
 
 export type UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
+const UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
   S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode>;
 
 export type UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-export const UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
+const UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
   S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition>;
 
 export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
@@ -2640,7 +2626,7 @@ export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const UsersCancelEmailChangeRequestPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersCancelEmailChangeRequestPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
@@ -2676,26 +2662,26 @@ export const UsersCancelEmailChangeRequestPartialUpdateRequest = /*@__PURE__*/ S
 }) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequest>;
 
 export interface UsersCancelEmailChangeRequestPartialUpdateResponse {}
-export const UsersCancelEmailChangeRequestPartialUpdateResponse =
+const UsersCancelEmailChangeRequestPartialUpdateResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>;
 
 export interface UsersDestroyRequest {
   uuid: string;
 }
-export const UsersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/users/{uuid}/", code: 200 })),
 ).annotate({ identifier: "UsersDestroyRequest" }) as any as S.Schema<UsersDestroyRequest>;
 
 export interface UsersDestroyResponse {}
-export const UsersDestroyResponse =
+const UsersDestroyResponse =
   CreateUsersValidate2faResponse as any as S.Schema<UsersDestroyResponse>;
 
 export interface UsersIntegrationsCodexDestroyRequest {
   uuid: string;
 }
-export const UsersIntegrationsCodexDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersIntegrationsCodexDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/users/{uuid}/integrations/codex/", code: 200 })),
@@ -2704,14 +2690,14 @@ export const UsersIntegrationsCodexDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UsersIntegrationsCodexDestroyRequest>;
 
 export interface UsersIntegrationsCodexDestroyResponse {}
-export const UsersIntegrationsCodexDestroyResponse =
+const UsersIntegrationsCodexDestroyResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsCodexDestroyResponse>;
 
 export interface UsersIntegrationsGithubDestroyRequest {
   uuid: string;
   installation_id: string;
 }
-export const UsersIntegrationsGithubDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersIntegrationsGithubDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     installation_id: S.String.pipe(T.Label()),
@@ -2727,13 +2713,13 @@ export const UsersIntegrationsGithubDestroyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UsersIntegrationsGithubDestroyRequest>;
 
 export interface UsersIntegrationsGithubDestroyResponse {}
-export const UsersIntegrationsGithubDestroyResponse =
+const UsersIntegrationsGithubDestroyResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsGithubDestroyResponse>;
 
 export interface UsersIntegrationsGithubInstallRequestsRetrieveRequest {
   uuid: string;
 }
-export const UsersIntegrationsGithubInstallRequestsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersIntegrationsGithubInstallRequestsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2749,7 +2735,7 @@ export const UsersIntegrationsGithubInstallRequestsRetrieveRequest = /*@__PURE__
 
 /** * `pending` - Pending * `approved` - Approved * `unidentified` - Unidentified */
 export type GitHubInstallRequestStatusEnum = "pending" | "approved" | "unidentified";
-export const GitHubInstallRequestStatusEnum = S.String;
+const GitHubInstallRequestStatusEnum = S.String;
 
 export interface GitHubInstallRequestItem {
   /** PostHog GitHubInstallRequest row id. */
@@ -2769,7 +2755,7 @@ export interface GitHubInstallRequestItem {
   /** When an org owner approved the request. */
   resolved_at?: string | null;
 }
-export const GitHubInstallRequestItem = /*@__PURE__*/ S.suspend(() =>
+const GitHubInstallRequestItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     github_login: S.String,
@@ -2784,7 +2770,7 @@ export const GitHubInstallRequestItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The user's GitHub App install-approval requests, newest first. */
 export type GitHubInstallRequestListResponseResultsList = Array<GitHubInstallRequestItem>;
-export const GitHubInstallRequestListResponseResultsList = /*@__PURE__*/ S.Array(
+const GitHubInstallRequestListResponseResultsList = /*@__PURE__*/ S.Array(
   GitHubInstallRequestItem,
 ) as any as S.Schema<GitHubInstallRequestListResponseResultsList>;
 
@@ -2794,7 +2780,7 @@ export interface GitHubInstallRequestListResponse {
   /** Shareable GitHub App install URL with no PostHog session state, for an org owner who needs to approve the install. Null when the GitHub App is not configured on this instance. */
   install_url?: string | null;
 }
-export const GitHubInstallRequestListResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubInstallRequestListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: GitHubInstallRequestListResponseResultsList,
     install_url: S.optional(S.NullOr(S.String)),
@@ -2807,7 +2793,7 @@ export interface UsersIntegrationsGithubReposRefreshCreateRequest {
   uuid: string;
   installation_id: string;
 }
-export const UsersIntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersIntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     installation_id: S.String.pipe(T.Label()),
@@ -2824,7 +2810,7 @@ export const UsersIntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ S.
 
 /** The refreshed repository cache. */
 export type GitHubReposRefreshResponseRepositoriesList = Array<GitHubRepo>;
-export const GitHubReposRefreshResponseRepositoriesList =
+const GitHubReposRefreshResponseRepositoriesList =
   GitHubReposResponseRepositoriesList as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
 
 export interface GitHubReposRefreshResponse {
@@ -2833,7 +2819,7 @@ export interface GitHubReposRefreshResponse {
   /** `unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one. * `connected` - connected * `unavailable` - unavailable */
   installation_status?: InstallationStatusEnum;
 }
-export const GitHubReposRefreshResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubReposRefreshResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(GitHubReposRefreshResponseRepositoriesList),
     installation_status: S.optional(InstallationStatusEnum),
@@ -2849,7 +2835,7 @@ export interface UsersIntegrationsGithubStartCreateRequest {
   /** Optional client hint (e.g. posthog_code) for return routing after OAuth. */
   connect_from?: string;
 }
-export const UsersIntegrationsGithubStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersIntegrationsGithubStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     team_id: S.optional(S.NullOr(S.Number)),
@@ -2867,7 +2853,7 @@ export interface UserGitHubLinkStartResponse {
   /** OAuth or install flow used for this GitHub connection. */
   connect_flow: string;
 }
-export const UserGitHubLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
+const UserGitHubLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     install_url: S.String,
     connect_flow: S.String,
@@ -2880,7 +2866,7 @@ export interface UsersIntegrationsSlackDestroyRequest {
   uuid: string;
   slack_user_id: string;
 }
-export const UsersIntegrationsSlackDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersIntegrationsSlackDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     slack_user_id: S.String.pipe(T.Label()),
@@ -2896,7 +2882,7 @@ export const UsersIntegrationsSlackDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UsersIntegrationsSlackDestroyRequest>;
 
 export interface UsersIntegrationsSlackDestroyResponse {}
-export const UsersIntegrationsSlackDestroyResponse =
+const UsersIntegrationsSlackDestroyResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsSlackDestroyResponse>;
 
 export interface UsersIntegrationsSlackStartCreateRequest {
@@ -2906,7 +2892,7 @@ export interface UsersIntegrationsSlackStartCreateRequest {
   /** Specific Slack workspace id to link against, scoped to the team. Disambiguates when one team has multiple Slack integrations (rare). */
   slack_team_id?: string | null;
 }
-export const UsersIntegrationsSlackStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersIntegrationsSlackStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     team_id: S.optional(S.NullOr(S.Number)),
@@ -2922,7 +2908,7 @@ export interface UserSlackLinkStartResponse {
   /** URL to open in the browser to start the Sign-in-with-Slack flow. */
   install_url: string;
 }
-export const UserSlackLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
+const UserSlackLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     install_url: S.String,
   }),
@@ -2933,7 +2919,7 @@ export const UserSlackLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UsersLoginSessionsRevokeOthersCreateRequest {
   uuid: string;
 }
-export const UsersLoginSessionsRevokeOthersCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersLoginSessionsRevokeOthersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2947,7 +2933,7 @@ export interface RevokeOtherSessionsResponse {
   /** Number of other login sessions that were revoked. */
   revoked_count: number;
 }
-export const RevokeOtherSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeOtherSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revoked_count: S.Number,
   }),
@@ -2960,7 +2946,7 @@ export interface UsersPushTokensUnregisterCreateRequest {
   /** The opaque push token to remove for the authenticated user. */
   token: string;
 }
-export const UsersPushTokensUnregisterCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersPushTokensUnregisterCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     token: S.String,
@@ -2970,26 +2956,26 @@ export const UsersPushTokensUnregisterCreateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UsersPushTokensUnregisterCreateRequest>;
 
 export interface UsersPushTokensUnregisterCreateResponse {}
-export const UsersPushTokensUnregisterCreateResponse =
+const UsersPushTokensUnregisterCreateResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersPushTokensUnregisterCreateResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersTwoFactorDisableCreateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UsersTwoFactorDisableCreateRequestNotificationSettingsMap =
+const UsersTwoFactorDisableCreateRequestNotificationSettingsMap =
   UserOutputNotificationSettingsMap as any as S.Schema<UsersTwoFactorDisableCreateRequestNotificationSettingsMap>;
 
 export type UsersTwoFactorDisableCreateRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const UsersTwoFactorDisableCreateRequestToolbarMode =
+const UsersTwoFactorDisableCreateRequestToolbarMode =
   S.Unknown as any as S.Schema<UsersTwoFactorDisableCreateRequestToolbarMode>;
 
 export type UsersTwoFactorDisableCreateRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const UsersTwoFactorDisableCreateRequestThemeMode =
+const UsersTwoFactorDisableCreateRequestThemeMode =
   S.Unknown as any as S.Schema<UsersTwoFactorDisableCreateRequestThemeMode>;
 
 export type UsersTwoFactorDisableCreateRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-export const UsersTwoFactorDisableCreateRequestShortcutPosition =
+const UsersTwoFactorDisableCreateRequestShortcutPosition =
   S.Unknown as any as S.Schema<UsersTwoFactorDisableCreateRequestShortcutPosition>;
 
 export interface UsersTwoFactorDisableCreateRequest {
@@ -3024,7 +3010,7 @@ export interface UsersTwoFactorDisableCreateRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     first_name: S.optional(S.String),
@@ -3055,13 +3041,13 @@ export const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersTwoFactorDisableCreateRequest>;
 
 export interface UsersTwoFactorDisableCreateResponse {}
-export const UsersTwoFactorDisableCreateResponse =
+const UsersTwoFactorDisableCreateResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorDisableCreateResponse>;
 
 export interface UsersTwoFactorStartSetupRetrieveRequest {
   uuid: string;
 }
-export const UsersTwoFactorStartSetupRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersTwoFactorStartSetupRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/two_factor_start_setup/", code: 200 })),
@@ -3070,26 +3056,26 @@ export const UsersTwoFactorStartSetupRetrieveRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UsersTwoFactorStartSetupRetrieveRequest>;
 
 export interface UsersTwoFactorStartSetupRetrieveResponse {}
-export const UsersTwoFactorStartSetupRetrieveResponse =
+const UsersTwoFactorStartSetupRetrieveResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorStartSetupRetrieveResponse>;
 
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersTwoFactorValidateCreateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const UsersTwoFactorValidateCreateRequestNotificationSettingsMap =
+const UsersTwoFactorValidateCreateRequestNotificationSettingsMap =
   UserOutputNotificationSettingsMap as any as S.Schema<UsersTwoFactorValidateCreateRequestNotificationSettingsMap>;
 
 export type UsersTwoFactorValidateCreateRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-export const UsersTwoFactorValidateCreateRequestToolbarMode =
+const UsersTwoFactorValidateCreateRequestToolbarMode =
   S.Unknown as any as S.Schema<UsersTwoFactorValidateCreateRequestToolbarMode>;
 
 export type UsersTwoFactorValidateCreateRequestThemeMode = ThemeModeEnum | BlankEnum;
-export const UsersTwoFactorValidateCreateRequestThemeMode =
+const UsersTwoFactorValidateCreateRequestThemeMode =
   S.Unknown as any as S.Schema<UsersTwoFactorValidateCreateRequestThemeMode>;
 
 export type UsersTwoFactorValidateCreateRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-export const UsersTwoFactorValidateCreateRequestShortcutPosition =
+const UsersTwoFactorValidateCreateRequestShortcutPosition =
   S.Unknown as any as S.Schema<UsersTwoFactorValidateCreateRequestShortcutPosition>;
 
 export interface UsersTwoFactorValidateCreateRequest {
@@ -3124,7 +3110,7 @@ export interface UsersTwoFactorValidateCreateRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-export const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     first_name: S.optional(S.String),
@@ -3155,7 +3141,7 @@ export const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersTwoFactorValidateCreateRequest>;
 
 export interface UsersTwoFactorValidateCreateResponse {}
-export const UsersTwoFactorValidateCreateResponse =
+const UsersTwoFactorValidateCreateResponse =
   CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorValidateCreateResponse>;
 
 export interface UsersVerifyEmailCreateRequest {
@@ -3164,7 +3150,7 @@ export interface UsersVerifyEmailCreateRequest {
   /** The 6-digit verification code from the email. Whitespace, invisible characters, and grouping hyphens are removed and compatibility digits are folded to ASCII before checking. */
   code: string;
 }
-export const UsersVerifyEmailCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersVerifyEmailCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
     code: S.String,
@@ -3174,7 +3160,7 @@ export const UsersVerifyEmailCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersVerifyEmailCreateRequest>;
 
 export interface UsersVerifyEmailCreateResponse {}
-export const UsersVerifyEmailCreateResponse =
+const UsersVerifyEmailCreateResponse =
   CreateUsersValidate2faResponse as any as S.Schema<UsersVerifyEmailCreateResponse>;
 
 export type CreateUsersCredentialsReviewCompleteError = PosthogOpError;

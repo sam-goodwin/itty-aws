@@ -62,13 +62,10 @@ export class NotFound
   ) {}
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A message that holds specific allowed and denied values. This message can define specific values and subtrees of the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used. */
 export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
@@ -77,7 +74,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   /** List of values allowed at this resource. */
   allowedValues?: StringList;
 }
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deniedValues: S.optional(StringList),
     allowedValues: S.optional(StringList),
@@ -97,7 +94,7 @@ export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     location: S.optional(S.String),
@@ -121,7 +118,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   /** A condition that determines whether this rule is used to evaluate the policy. When set, the google.type.Expr.expression field must contain 1 to 10 subexpressions, joined by the `||` or `&&` operators. Each subexpression must use the `resource.matchTag()`, `resource.matchTagId()`, `resource.hasTagKey()`, or `resource.hasTagKeyId()` Common Expression Language (CEL) function. The `resource.matchTag()` function takes the following arguments: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` * `value_name`: the short name of the tag value For example: `resource.matchTag('123456789012/environment, 'prod')` The `resource.matchTagId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` * `value_id`: the permanent ID of the tag value; for example, `tagValues/567890123456` For example: `resource.matchTagId('tagKeys/123456789012', 'tagValues/567890123456')` The `resource.hasTagKey()` function takes the following argument: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` For example: `resource.hasTagKey('123456789012/environment')` The `resource.hasTagKeyId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` For example: `resource.hasTagKeyId('tagKeys/123456789012')` */
   condition?: GoogleTypeExpr;
 }
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2PolicySpecPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denyAll: S.optional(S.Boolean),
     parameters: S.optional(DocumentMap),
@@ -136,7 +133,7 @@ export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
   Array<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2PolicySpecPolicyRule,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList>;
 
@@ -153,7 +150,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpec {
   /** Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false. */
   reset?: boolean;
 }
-export const GoogleCloudOrgpolicyV2PolicySpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2PolicySpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     rules: S.optional(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList),
@@ -172,7 +169,7 @@ export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /** Reference to the launch that will be used while audit logging and to control the launch. Set only in the alternate policy. */
   launch?: string;
 }
-export const GoogleCloudOrgpolicyV2AlternatePolicySpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2AlternatePolicySpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spec: S.optional(GoogleCloudOrgpolicyV2PolicySpec),
     launch: S.optional(S.String),
@@ -194,7 +191,7 @@ export interface GoogleCloudOrgpolicyV2Policy {
   /** Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This entity tag (ETag) is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const GoogleCloudOrgpolicyV2Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dryRunSpec: S.optional(GoogleCloudOrgpolicyV2PolicySpec),
     name: S.optional(S.String),
@@ -212,7 +209,7 @@ export interface CreateFoldersPoliciesRequest {
   /** Request body */
   body?: GoogleCloudOrgpolicyV2Policy;
 }
-export const CreateFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudOrgpolicyV2Policy.pipe(T.HttpBody())),
@@ -231,7 +228,7 @@ export type GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum = S.String;
+const GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum = S.String;
 
 export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   | "METHOD_TYPE_UNSPECIFIED"
@@ -240,12 +237,12 @@ export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   | "DELETE"
   | "REMOVE_GRANT"
   | "GOVERN_TAGS";
-export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum = S.String;
+const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum = S.String;
 
 export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList = Array<
   GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum | (string & {})
 >;
-export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList = /*@__PURE__*/ S.Array(
+const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList>;
 
@@ -268,7 +265,7 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   /** One line display name for the UI. The max length of the display_name is 200 characters. */
   displayName?: string;
 }
-export const GoogleCloudOrgpolicyV2CustomConstraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2CustomConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionType: S.optional(GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum),
     methodTypes: S.optional(GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList),
@@ -289,7 +286,7 @@ export interface CreateOrganizationsCustomConstraintsRequest {
   /** Request body */
   body?: GoogleCloudOrgpolicyV2CustomConstraint;
 }
-export const CreateOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudOrgpolicyV2CustomConstraint.pipe(T.HttpBody())),
@@ -310,7 +307,7 @@ export interface CreateOrganizationsPoliciesRequest {
   /** Request body */
   body?: GoogleCloudOrgpolicyV2Policy;
 }
-export const CreateOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudOrgpolicyV2Policy.pipe(T.HttpBody())),
@@ -331,7 +328,7 @@ export interface CreateProjectsPoliciesRequest {
   /** Request body */
   body?: GoogleCloudOrgpolicyV2Policy;
 }
-export const CreateProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudOrgpolicyV2Policy.pipe(T.HttpBody())),
@@ -352,7 +349,7 @@ export interface DeleteFoldersPoliciesRequest {
   /** Optional. The current entity tag (ETag) of the organization policy. If an ETag is provided and doesn't match the current ETag of the policy, deletion of the policy will be blocked and an `ABORTED` error will be returned. */
   etag?: string;
 }
-export const DeleteFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -365,7 +362,7 @@ export const DeleteFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -373,7 +370,7 @@ export interface DeleteOrganizationsCustomConstraintsRequest {
   /** Required. Name of the custom constraint to delete. See the custom constraint entry for naming rules. */
   name: string;
 }
-export const DeleteOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -389,7 +386,7 @@ export interface DeleteOrganizationsPoliciesRequest {
   /** Optional. The current entity tag (ETag) of the organization policy. If an ETag is provided and doesn't match the current ETag of the policy, deletion of the policy will be blocked and an `ABORTED` error will be returned. */
   etag?: string;
 }
-export const DeleteOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -406,7 +403,7 @@ export interface DeleteProjectsPoliciesRequest {
   /** Optional. The current entity tag (ETag) of the organization policy. If an ETag is provided and doesn't match the current ETag of the policy, deletion of the policy will be blocked and an `ABORTED` error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -421,7 +418,7 @@ export interface GetEffectivePolicyFoldersPoliciesRequest {
   /** Required. The effective policy to compute. See Policy for naming requirements. */
   name: string;
 }
-export const GetEffectivePolicyFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectivePolicyFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -439,7 +436,7 @@ export interface GetEffectivePolicyOrganizationsPoliciesRequest {
   /** Required. The effective policy to compute. See Policy for naming requirements. */
   name: string;
 }
-export const GetEffectivePolicyOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectivePolicyOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -457,7 +454,7 @@ export interface GetEffectivePolicyProjectsPoliciesRequest {
   /** Required. The effective policy to compute. See Policy for naming requirements. */
   name: string;
 }
-export const GetEffectivePolicyProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectivePolicyProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -475,7 +472,7 @@ export interface GetFoldersPoliciesRequest {
   /** Required. Resource name of the policy. See Policy for naming requirements. */
   name: string;
 }
-export const GetFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -489,7 +486,7 @@ export interface GetOrganizationsCustomConstraintsRequest {
   /** Required. Resource name of the custom or managed constraint. See the custom constraint entry for naming requirements. */
   name: string;
 }
-export const GetOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -503,7 +500,7 @@ export interface GetOrganizationsPoliciesRequest {
   /** Required. Resource name of the policy. See Policy for naming requirements. */
   name: string;
 }
-export const GetOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -517,7 +514,7 @@ export interface GetProjectsPoliciesRequest {
   /** Required. Resource name of the policy. See Policy for naming requirements. */
   name: string;
 }
-export const GetProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -535,7 +532,7 @@ export interface ListFoldersConstraintsRequest {
   /** Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. */
   pageSize?: number;
 }
-export const ListFoldersConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -555,7 +552,7 @@ export type GoogleCloudOrgpolicyV2ConstraintConstraintDefaultEnum =
   | "CONSTRAINT_DEFAULT_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GoogleCloudOrgpolicyV2ConstraintConstraintDefaultEnum = S.String;
+const GoogleCloudOrgpolicyV2ConstraintConstraintDefaultEnum = S.String;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum =
   | "METHOD_TYPE_UNSPECIFIED"
@@ -564,12 +561,11 @@ export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodType
   | "DELETE"
   | "REMOVE_GRANT"
   | "GOVERN_TAGS";
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum =
-  S.String;
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum = S.String;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList =
   Array<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum>;
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList =
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum,
   ) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList>;
@@ -578,21 +574,21 @@ export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionType
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionTypeEnum = S.String;
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionTypeEnum = S.String;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "LIST"
   | "STRING"
   | "BOOLEAN";
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterTypeEnum = S.String;
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterTypeEnum = S.String;
 
 /** Defines Metadata structure. */
 export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata {
   /** Detailed description of what this `parameter` is and its use. Mutable. */
   description?: string;
 }
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata =
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       description: S.optional(S.String),
@@ -606,7 +602,7 @@ export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterI
   | "LIST"
   | "STRING"
   | "BOOLEAN";
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterItemEnum = S.String;
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterItemEnum = S.String;
 
 /** Defines a parameter structure. */
 export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
@@ -621,8 +617,8 @@ export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParam
   /** Provides a CEL expression to specify the acceptable parameter values during assignment. For example, parameterName in ("parameterValue1", "parameterValue2"). */
   validValuesExpr?: string;
 }
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       type: S.optional(GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterTypeEnum),
       metadata: S.optional(
@@ -632,14 +628,14 @@ export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
       defaultValue: S.optional(S.Unknown),
       validValuesExpr: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter",
-  }) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>;
+).annotate({
+  identifier: "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter",
+}) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMap = {
   [key: string]: GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter | undefined;
 };
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMap =
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMap =
   /*@__PURE__*/ S.Record(
     S.String,
     GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter,
@@ -658,21 +654,18 @@ export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
   /** Org policy condition/expression. For example: `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters. */
   condition?: string;
 }
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      methodTypes: S.optional(
-        GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList,
-      ),
-      actionType: S.optional(
-        GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionTypeEnum,
-      ),
-      parameters: S.optional(
-        GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMap,
-      ),
-      resourceTypes: S.optional(StringList),
-      condition: S.optional(S.String),
-    }),
+const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    methodTypes: S.optional(
+      GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList,
+    ),
+    actionType: S.optional(
+      GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionTypeEnum,
+    ),
+    parameters: S.optional(GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMap),
+    resourceTypes: S.optional(StringList),
+    condition: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition",
 }) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition>;
@@ -682,7 +675,7 @@ export interface GoogleCloudOrgpolicyV2ConstraintBooleanConstraint {
   /** Custom constraint definition. Defines this as a managed constraint. */
   customConstraintDefinition?: GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition;
 }
-export const GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customConstraintDefinition: S.optional(
       GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition,
@@ -699,7 +692,7 @@ export interface GoogleCloudOrgpolicyV2ConstraintListConstraint {
   /** Indicates whether values grouped into categories can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"in:Python"` would match any value in the 'Python' group. */
   supportsIn?: boolean;
 }
-export const GoogleCloudOrgpolicyV2ConstraintListConstraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2ConstraintListConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportsUnder: S.optional(S.Boolean),
     supportsIn: S.optional(S.Boolean),
@@ -729,7 +722,7 @@ export interface GoogleCloudOrgpolicyV2Constraint {
   /** Defines this constraint as being a list constraint. */
   listConstraint?: GoogleCloudOrgpolicyV2ConstraintListConstraint;
 }
-export const GoogleCloudOrgpolicyV2Constraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2Constraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportsDryRun: S.optional(S.Boolean),
     constraintDefault: S.optional(GoogleCloudOrgpolicyV2ConstraintConstraintDefaultEnum),
@@ -746,7 +739,7 @@ export const GoogleCloudOrgpolicyV2Constraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudOrgpolicyV2Constraint>;
 
 export type GoogleCloudOrgpolicyV2ConstraintList = Array<GoogleCloudOrgpolicyV2Constraint>;
-export const GoogleCloudOrgpolicyV2ConstraintList = /*@__PURE__*/ S.Array(
+const GoogleCloudOrgpolicyV2ConstraintList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2Constraint,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintList>;
 
@@ -757,7 +750,7 @@ export interface GoogleCloudOrgpolicyV2ListConstraintsResponse {
   /** Page token used to retrieve the next page. This is not used. */
   nextPageToken?: string;
 }
-export const GoogleCloudOrgpolicyV2ListConstraintsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2ListConstraintsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraints: S.optional(GoogleCloudOrgpolicyV2ConstraintList),
     nextPageToken: S.optional(S.String),
@@ -774,7 +767,7 @@ export interface ListFoldersPoliciesRequest {
   /** Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` */
   parent: string;
 }
-export const ListFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -791,7 +784,7 @@ export const ListFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFoldersPoliciesRequest>;
 
 export type GoogleCloudOrgpolicyV2PolicyList = Array<GoogleCloudOrgpolicyV2Policy>;
-export const GoogleCloudOrgpolicyV2PolicyList = /*@__PURE__*/ S.Array(
+const GoogleCloudOrgpolicyV2PolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2Policy,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2PolicyList>;
 
@@ -802,7 +795,7 @@ export interface GoogleCloudOrgpolicyV2ListPoliciesResponse {
   /** Page token used to retrieve the next page. This is not used, but the server may at any point start supplying a valid token. */
   nextPageToken?: string;
 }
-export const GoogleCloudOrgpolicyV2ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policies: S.optional(GoogleCloudOrgpolicyV2PolicyList),
     nextPageToken: S.optional(S.String),
@@ -819,7 +812,7 @@ export interface ListOrganizationsConstraintsRequest {
   /** Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. */
   pageToken?: string;
 }
-export const ListOrganizationsConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -843,7 +836,7 @@ export interface ListOrganizationsCustomConstraintsRequest {
   /** Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. */
   pageToken?: string;
 }
-export const ListOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -861,7 +854,7 @@ export const ListOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudOrgpolicyV2CustomConstraintList =
   Array<GoogleCloudOrgpolicyV2CustomConstraint>;
-export const GoogleCloudOrgpolicyV2CustomConstraintList = /*@__PURE__*/ S.Array(
+const GoogleCloudOrgpolicyV2CustomConstraintList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2CustomConstraint,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraintList>;
 
@@ -872,7 +865,7 @@ export interface GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
   /** Page token used to retrieve the next page. This is not used, but the server may at any point start supplying a valid token. */
   nextPageToken?: string;
 }
-export const GoogleCloudOrgpolicyV2ListCustomConstraintsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV2ListCustomConstraintsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customConstraints: S.optional(GoogleCloudOrgpolicyV2CustomConstraintList),
     nextPageToken: S.optional(S.String),
@@ -889,7 +882,7 @@ export interface ListOrganizationsPoliciesRequest {
   /** Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. */
   pageSize?: number;
 }
-export const ListOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -913,7 +906,7 @@ export interface ListProjectsConstraintsRequest {
   /** Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. */
   pageSize?: number;
 }
-export const ListProjectsConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -937,7 +930,7 @@ export interface ListProjectsPoliciesRequest {
   /** Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. */
   pageToken?: string;
 }
-export const ListProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -961,7 +954,7 @@ export interface PatchFoldersPoliciesRequest {
   /** Request body */
   body?: GoogleCloudOrgpolicyV2Policy;
 }
-export const PatchFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -979,7 +972,7 @@ export interface PatchOrganizationsCustomConstraintsRequest {
   /** Request body */
   body?: GoogleCloudOrgpolicyV2CustomConstraint;
 }
-export const PatchOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsCustomConstraintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudOrgpolicyV2CustomConstraint.pipe(T.HttpBody())),
@@ -998,7 +991,7 @@ export interface PatchOrganizationsPoliciesRequest {
   /** Request body */
   body?: GoogleCloudOrgpolicyV2Policy;
 }
-export const PatchOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1018,7 +1011,7 @@ export interface PatchProjectsPoliciesRequest {
   /** Request body */
   body?: GoogleCloudOrgpolicyV2Policy;
 }
-export const PatchProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

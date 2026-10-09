@@ -53,7 +53,7 @@ export interface CreateReactionRequest {
   /** The unique identifier of the message or forum post to react to. */
   resource_id: string;
 }
-export const CreateReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emoji: S.optional(S.NullOr(S.String)),
     poll_option_id: S.optional(S.NullOr(S.String)),
@@ -70,7 +70,7 @@ export interface ReactionUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const ReactionUser = /*@__PURE__*/ S.suspend(() =>
+const ReactionUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -89,7 +89,7 @@ export interface Reaction {
   /** The user who left this reaction on the post. */
   user: ReactionUser;
 }
-export const Reaction = /*@__PURE__*/ S.suspend(() =>
+const Reaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emoji: S.NullOr(S.String),
     id: S.String,
@@ -103,7 +103,7 @@ export interface DeleteReactionRequest {
   id: string;
   emoji?: string;
 }
-export const DeleteReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     emoji: S.optional(S.String.pipe(T.Query())),
@@ -111,7 +111,7 @@ export const DeleteReactionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteReactionRequest" }) as any as S.Schema<DeleteReactionRequest>;
 
 export type DeleteReactionResponse = boolean;
-export const DeleteReactionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteReactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteReactionResponse" }) as any as S.Schema<DeleteReactionResponse>;
 
@@ -119,7 +119,7 @@ export interface GetReactionRequest {
   /** The unique identifier of the reaction to retrieve. */
   id: string;
 }
-export const GetReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/reactions/{id}", code: 200 })),
@@ -132,7 +132,7 @@ export interface ListReactionRequest {
   last?: number;
   resource_id: string;
 }
-export const ListReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -144,8 +144,6 @@ export const ListReactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The user who left this reaction on the post. */
 export type ReactionListItemUser = ReactionUser;
-export const ReactionListItemUser = ReactionUser;
-
 /** A single reaction left by a user on a feed post, such as a like or emoji. */
 export interface ReactionListItem {
   /** The emoji used for this reaction in shortcode format. Null if the reaction type is not emoji. */
@@ -157,11 +155,11 @@ export interface ReactionListItem {
   /** The user who left this reaction on the post. */
   user: ReactionUser;
 }
-export const ReactionListItem = Reaction as any as S.Schema<ReactionListItem>;
+const ReactionListItem = Reaction as any as S.Schema<ReactionListItem>;
 
 /** A list of nodes. */
 export type ListReactionResponseDataList = Array<ReactionListItem>;
-export const ListReactionResponseDataList = /*@__PURE__*/ S.Array(
+const ListReactionResponseDataList = /*@__PURE__*/ S.Array(
   ReactionListItem,
 ) as any as S.Schema<ListReactionResponseDataList>;
 
@@ -176,7 +174,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -191,7 +189,7 @@ export interface ListReactionResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListReactionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListReactionResponseDataList,
     page_info: PageInfo,

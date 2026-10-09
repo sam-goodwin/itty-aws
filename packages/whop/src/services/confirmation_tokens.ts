@@ -23,7 +23,7 @@ export interface GetConfirmationTokenRequest {
   /** The account (biz_) the token was minted for. */
   account_id: string;
 }
-export const GetConfirmationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfirmationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Query()),
@@ -48,7 +48,7 @@ export interface PaymentAddress {
   /** The state, province or region. */
   state: string | null;
 }
-export const PaymentAddress = /*@__PURE__*/ S.suspend(() =>
+const PaymentAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.NullOr(S.String),
     country: S.NullOr(S.String),
@@ -70,7 +70,7 @@ export interface PaymentBillingDetailsPreview {
   /** Postal or ZIP code. */
   postal_code: string | null;
 }
-export const PaymentBillingDetailsPreview = /*@__PURE__*/ S.suspend(() =>
+const PaymentBillingDetailsPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.NullOr(S.String),
     email: S.NullOr(S.String),
@@ -89,7 +89,7 @@ export interface PaymentMethodDisplayPreview {
   /** The last four digits of the card. */
   last4?: string;
 }
-export const PaymentMethodDisplayPreview = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodDisplayPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String),
     fingerprint: S.optional(S.String),
@@ -111,7 +111,7 @@ export type PaymentMethodDisplayCategory =
   | "balance"
   | "in_app_purchase"
   | "saved";
-export const PaymentMethodDisplayCategory = S.String;
+const PaymentMethodDisplayCategory = S.String;
 
 export interface PaymentMethodDisplay {
   /** Present when the category is `bank_debit`. Empty until the account is charged. */
@@ -131,7 +131,7 @@ export interface PaymentMethodDisplay {
   /** Details of the network token the wallet supplied, when the category is `wallet`. */
   wallet?: PaymentMethodDisplayPreview;
 }
-export const PaymentMethodDisplay = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bank_debit: S.optional(PaymentMethodDisplayPreview),
     card: S.optional(PaymentMethodDisplayPreview),
@@ -146,7 +146,7 @@ export const PaymentMethodDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** `pending` until it is used, then `consumed`; `expired` once its short lifetime elapses. Only a `pending` token can be charged. */
 export type ConfirmationTokenStatus = "pending" | "consumed" | "expired";
-export const ConfirmationTokenStatus = S.String;
+const ConfirmationTokenStatus = S.String;
 
 export interface ConfirmationToken {
   /** The collected billing address, including the name on the address. Null when not collected or without bearer authentication with payment:basic:read on the token's account. */
@@ -167,7 +167,7 @@ export interface ConfirmationToken {
   /** `pending` until it is used, then `consumed`; `expired` once its short lifetime elapses. Only a `pending` token can be charged. */
   status: ConfirmationTokenStatus;
 }
-export const ConfirmationToken = /*@__PURE__*/ S.suspend(() =>
+const ConfirmationToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_address: S.NullOr(PaymentAddress),
     billing_details: S.NullOr(PaymentBillingDetailsPreview),

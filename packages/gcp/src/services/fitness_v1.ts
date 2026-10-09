@@ -67,7 +67,7 @@ export interface BucketByActivity {
   /** The default activity stream will be used if a specific activityDataSourceId is not specified. */
   activityDataSourceId?: string;
 }
-export const BucketByActivity = /*@__PURE__*/ S.suspend(() =>
+const BucketByActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minDurationMillis: S.optional(S.String),
     activityDataSourceId: S.optional(S.String),
@@ -85,17 +85,17 @@ export type AggregateRequestFilteredDataQualityStandardItemEnum =
   | "dataQualityBloodPressureBhsBB"
   | "dataQualityBloodGlucoseIso151972003"
   | "dataQualityBloodGlucoseIso151972013";
-export const AggregateRequestFilteredDataQualityStandardItemEnum = S.String;
+const AggregateRequestFilteredDataQualityStandardItemEnum = S.String;
 
 export type AggregateRequestFilteredDataQualityStandardItemEnumList = Array<
   AggregateRequestFilteredDataQualityStandardItemEnum | (string & {})
 >;
-export const AggregateRequestFilteredDataQualityStandardItemEnumList = /*@__PURE__*/ S.Array(
+const AggregateRequestFilteredDataQualityStandardItemEnumList = /*@__PURE__*/ S.Array(
   AggregateRequestFilteredDataQualityStandardItemEnum,
 ) as any as S.Schema<AggregateRequestFilteredDataQualityStandardItemEnumList>;
 
 export type BucketByTimePeriodTypeEnum = "day" | "week" | "month";
-export const BucketByTimePeriodTypeEnum = S.String;
+const BucketByTimePeriodTypeEnum = S.String;
 
 export interface BucketByTimePeriod {
   type?: BucketByTimePeriodTypeEnum | (string & {});
@@ -103,7 +103,7 @@ export interface BucketByTimePeriod {
   timeZoneId?: string;
   value?: number;
 }
-export const BucketByTimePeriod = /*@__PURE__*/ S.suspend(() =>
+const BucketByTimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(BucketByTimePeriodTypeEnum),
     timeZoneId: S.optional(S.String),
@@ -116,7 +116,7 @@ export interface BucketByTime {
   durationMillis?: string;
   period?: BucketByTimePeriod;
 }
-export const BucketByTime = /*@__PURE__*/ S.suspend(() =>
+const BucketByTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     durationMillis: S.optional(S.String),
     period: S.optional(BucketByTimePeriod),
@@ -130,7 +130,7 @@ export interface AggregateBy {
   /** The data type to aggregate. All data sources providing this data type will contribute data to the aggregation. The response will contain a single dataset for this data type name. The dataset will have a data source ID of derived::com.google.android.gms:aggregated. If the user has no data for this data type, an empty data set will be returned. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both. */
   dataTypeName?: string;
 }
-export const AggregateBy = /*@__PURE__*/ S.suspend(() =>
+const AggregateBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceId: S.optional(S.String),
     dataTypeName: S.optional(S.String),
@@ -138,15 +138,13 @@ export const AggregateBy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AggregateBy" }) as any as S.Schema<AggregateBy>;
 
 export type AggregateByList = Array<AggregateBy>;
-export const AggregateByList = /*@__PURE__*/ S.Array(
-  AggregateBy,
-) as any as S.Schema<AggregateByList>;
+const AggregateByList = /*@__PURE__*/ S.Array(AggregateBy) as any as S.Schema<AggregateByList>;
 
 export interface BucketBySession {
   /** Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
   minDurationMillis?: string;
 }
-export const BucketBySession = /*@__PURE__*/ S.suspend(() =>
+const BucketBySession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minDurationMillis: S.optional(S.String),
   }),
@@ -171,7 +169,7 @@ export interface AggregateRequest {
   /** Specifies that data be aggregated by user sessions. Data that does not fall within the time range of a session will not be included in the response. Mutually exclusive of other bucketing specifications. */
   bucketBySession?: BucketBySession;
 }
-export const AggregateRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketByActivityType: S.optional(BucketByActivity),
     bucketByActivitySegment: S.optional(BucketByActivity),
@@ -192,7 +190,7 @@ export interface AggregateUsersDatasetRequest {
   /** Request body */
   body?: AggregateRequest;
 }
-export const AggregateUsersDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateUsersDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(AggregateRequest.pipe(T.HttpBody())),
@@ -217,7 +215,7 @@ export interface Application {
   /** An optional URI that can be used to link back to the application. */
   detailsUrl?: string;
 }
-export const Application = /*@__PURE__*/ S.suspend(() =>
+const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     name: S.optional(S.String),
@@ -247,7 +245,7 @@ export interface Session {
   /** An end time, in milliseconds since epoch, inclusive. */
   endTimeMillis?: string;
 }
-export const Session = /*@__PURE__*/ S.suspend(() =>
+const Session = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -266,7 +264,7 @@ export interface MapValue {
   /** Floating point value. */
   fpVal?: number;
 }
-export const MapValue = /*@__PURE__*/ S.suspend(() =>
+const MapValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fpVal: S.optional(S.Number),
   }),
@@ -276,7 +274,7 @@ export interface ValueMapValEntry {
   key?: string;
   value?: MapValue;
 }
-export const ValueMapValEntry = /*@__PURE__*/ S.suspend(() =>
+const ValueMapValEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(MapValue),
@@ -284,7 +282,7 @@ export const ValueMapValEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValueMapValEntry" }) as any as S.Schema<ValueMapValEntry>;
 
 export type ValueMapValEntryList = Array<ValueMapValEntry>;
-export const ValueMapValEntryList = /*@__PURE__*/ S.Array(
+const ValueMapValEntryList = /*@__PURE__*/ S.Array(
   ValueMapValEntry,
 ) as any as S.Schema<ValueMapValEntryList>;
 
@@ -299,7 +297,7 @@ export interface Value {
   /** Integer value. When this is set, other values must not be set. */
   intVal?: number;
 }
-export const Value = /*@__PURE__*/ S.suspend(() =>
+const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fpVal: S.optional(S.Number),
     mapVal: S.optional(ValueMapValEntryList),
@@ -309,7 +307,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueList = Array<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
+const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
 
 /** Represents a single data point, generated by a particular data source. A data point holds a value for each field, an end timestamp and an optional start time. The exact semantics of each of these attributes are specified in the documentation for the particular data type. A data point can represent an instantaneous measurement, reading or input observation, as well as averages or aggregates over a time interval. Check the data type documentation to determine which is the case for a particular data type. Data points always contain one value for each field of the data type. */
 export interface DataPoint {
@@ -330,7 +328,7 @@ export interface DataPoint {
   /** Indicates the last time this data point was modified. Useful only in contexts where we are listing the data changes, rather than representing the current state of the data. */
   modifiedTimeMillis?: string;
 }
-export const DataPoint = /*@__PURE__*/ S.suspend(() =>
+const DataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ValueList),
     rawTimestampNanos: S.optional(S.String),
@@ -344,7 +342,7 @@ export const DataPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
 
 export type DataPointList = Array<DataPoint>;
-export const DataPointList = /*@__PURE__*/ S.Array(DataPoint) as any as S.Schema<DataPointList>;
+const DataPointList = /*@__PURE__*/ S.Array(DataPoint) as any as S.Schema<DataPointList>;
 
 /** A dataset represents a projection container for data points. They do not carry any info of their own. Datasets represent a set of data points from a particular data source. A data point can be found in more than one dataset. */
 export interface Dataset {
@@ -359,7 +357,7 @@ export interface Dataset {
   /** The largest end time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the second part of the dataset identifier. */
   maxEndTimeNs?: string;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     point: S.optional(DataPointList),
     dataSourceId: S.optional(S.String),
@@ -370,7 +368,7 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
 export type DatasetList = Array<Dataset>;
-export const DatasetList = /*@__PURE__*/ S.Array(Dataset) as any as S.Schema<DatasetList>;
+const DatasetList = /*@__PURE__*/ S.Array(Dataset) as any as S.Schema<DatasetList>;
 
 export type AggregateBucketTypeEnum =
   | "unknown"
@@ -378,7 +376,7 @@ export type AggregateBucketTypeEnum =
   | "session"
   | "activityType"
   | "activitySegment";
-export const AggregateBucketTypeEnum = S.String;
+const AggregateBucketTypeEnum = S.String;
 
 export interface AggregateBucket {
   /** Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT */
@@ -394,7 +392,7 @@ export interface AggregateBucket {
   /** The type of a bucket signifies how the data aggregation is performed in the bucket. */
   type?: AggregateBucketTypeEnum;
 }
-export const AggregateBucket = /*@__PURE__*/ S.suspend(() =>
+const AggregateBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activity: S.optional(S.Number),
     endTimeMillis: S.optional(S.String),
@@ -406,7 +404,7 @@ export const AggregateBucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AggregateBucket" }) as any as S.Schema<AggregateBucket>;
 
 export type AggregateBucketList = Array<AggregateBucket>;
-export const AggregateBucketList = /*@__PURE__*/ S.Array(
+const AggregateBucketList = /*@__PURE__*/ S.Array(
   AggregateBucket,
 ) as any as S.Schema<AggregateBucketList>;
 
@@ -414,7 +412,7 @@ export interface AggregateResponse {
   /** A list of buckets containing the aggregated data. */
   bucket?: AggregateBucketList;
 }
-export const AggregateResponse = /*@__PURE__*/ S.suspend(() =>
+const AggregateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(AggregateBucketList),
   }),
@@ -429,7 +427,7 @@ export type DeviceTypeEnum =
   | "scale"
   | "headMounted"
   | "smartDisplay";
-export const DeviceTypeEnum = S.String;
+const DeviceTypeEnum = S.String;
 
 /** Representation of an integrated device (such as a phone or a wearable) that can hold sensors. Each sensor is exposed as a data source. The main purpose of the device information contained in this class is to identify the hardware of a particular data source. This can be useful in different ways, including: - Distinguishing two similar sensors on different devices (the step counter on two nexus 5 phones, for instance) - Display the source of data to the user (by using the device make / model) - Treat data differently depending on sensor type (accelerometers on a watch may give different patterns than those on a phone) - Build different analysis models for each device/version. */
 export interface Device {
@@ -444,7 +442,7 @@ export interface Device {
   /** The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form. The obfuscation preserves equality; that is, given two IDs, if id1 == id2, obfuscated(id1) == obfuscated(id2). */
   uid?: string;
 }
-export const Device = /*@__PURE__*/ S.suspend(() =>
+const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     type: S.optional(DeviceTypeEnum),
@@ -462,7 +460,7 @@ export type DataTypeFieldFormatEnum =
   | "integerList"
   | "floatList"
   | "blob";
-export const DataTypeFieldFormatEnum = S.String;
+const DataTypeFieldFormatEnum = S.String;
 
 /** In case of multi-dimensional data (such as an accelerometer with x, y, and z axes) each field represents one dimension. Each data type field has a unique name which identifies it. The field also defines the format of the data (int, float, etc.). This message is only instantiated in code and not used for wire comms or stored in any way. */
 export interface DataTypeField {
@@ -472,7 +470,7 @@ export interface DataTypeField {
   /** Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type. */
   name?: string;
 }
-export const DataTypeField = /*@__PURE__*/ S.suspend(() =>
+const DataTypeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(DataTypeFieldFormatEnum),
     optional: S.optional(S.Boolean),
@@ -481,7 +479,7 @@ export const DataTypeField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataTypeField" }) as any as S.Schema<DataTypeField>;
 
 export type DataTypeFieldList = Array<DataTypeField>;
-export const DataTypeFieldList = /*@__PURE__*/ S.Array(
+const DataTypeFieldList = /*@__PURE__*/ S.Array(
   DataTypeField,
 ) as any as S.Schema<DataTypeFieldList>;
 
@@ -491,7 +489,7 @@ export interface DataType {
   /** Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform. */
   name?: string;
 }
-export const DataType = /*@__PURE__*/ S.suspend(() =>
+const DataType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(DataTypeFieldList),
     name: S.optional(S.String),
@@ -499,7 +497,7 @@ export const DataType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataType" }) as any as S.Schema<DataType>;
 
 export type DataSourceTypeEnum = "raw" | "derived";
-export const DataSourceTypeEnum = S.String;
+const DataSourceTypeEnum = S.String;
 
 export type DataSourceDataQualityStandardItemEnum =
   | "dataQualityUnknown"
@@ -512,12 +510,10 @@ export type DataSourceDataQualityStandardItemEnum =
   | "dataQualityBloodPressureBhsBB"
   | "dataQualityBloodGlucoseIso151972003"
   | "dataQualityBloodGlucoseIso151972013";
-export const DataSourceDataQualityStandardItemEnum = S.String;
-
 export type DataSourceDataQualityStandardItemEnumList = Array<
   DataSourceDataQualityStandardItemEnum | (string & {})
 >;
-export const DataSourceDataQualityStandardItemEnumList =
+const DataSourceDataQualityStandardItemEnumList =
   AggregateRequestFilteredDataQualityStandardItemEnumList as any as S.Schema<DataSourceDataQualityStandardItemEnumList>;
 
 /** Definition of a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point inserted into or read from this service has an associated data source. The data source contains enough information to uniquely identify its data, including the hardware device and the application that collected and/or transformed the data. It also holds useful metadata, such as the hardware and application versions, and the device type. Each data source produces a unique stream of data, with a unique identifier. Not all changes to data source affect the stream identifier, so that data collected by updated versions of the same application/device can still be considered to belong to the same data stream. */
@@ -539,7 +535,7 @@ export interface DataSource {
   /** DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries. It will be removed in a future version entirely. */
   dataQualityStandard?: DataSourceDataQualityStandardItemEnumList;
 }
-export const DataSource = /*@__PURE__*/ S.suspend(() =>
+const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataStreamId: S.optional(S.String),
     application: S.optional(Application),
@@ -558,7 +554,7 @@ export interface CreateUsersDataSourcesRequest {
   /** Request body */
   body?: DataSource;
 }
-export const CreateUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(DataSource.pipe(T.HttpBody())),
@@ -579,7 +575,7 @@ export interface DeleteUsersDataSourcesRequest {
   /** The data stream ID of the data source to delete. */
   dataSourceId: string;
 }
-export const DeleteUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     dataSourceId: S.String.pipe(T.Label()),
@@ -602,7 +598,7 @@ export interface DeleteUsersDataSourcesDatasetsRequest {
   /** Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
 }
-export const DeleteUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceId: S.String.pipe(T.Label()),
     datasetId: S.String.pipe(T.Label()),
@@ -619,11 +615,11 @@ export const DeleteUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteUsersDataSourcesDatasetsRequest>;
 
 export interface DeleteUsersDataSourcesDatasetsResponse {}
-export const DeleteUsersDataSourcesDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteUsersDataSourcesDatasetsResponse",
-}) as any as S.Schema<DeleteUsersDataSourcesDatasetsResponse>;
+const DeleteUsersDataSourcesDatasetsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "DeleteUsersDataSourcesDatasetsResponse",
+  },
+) as any as S.Schema<DeleteUsersDataSourcesDatasetsResponse>;
 
 export interface DeleteUsersSessionsRequest {
   /** Delete a session for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
@@ -631,7 +627,7 @@ export interface DeleteUsersSessionsRequest {
   /** The ID of the session to be deleted. */
   sessionId: string;
 }
-export const DeleteUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     sessionId: S.String.pipe(T.Label()),
@@ -647,7 +643,7 @@ export const DeleteUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersSessionsRequest>;
 
 export interface DeleteUsersSessionsResponse {}
-export const DeleteUsersSessionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteUsersSessionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteUsersSessionsResponse",
 }) as any as S.Schema<DeleteUsersSessionsResponse>;
 
@@ -657,7 +653,7 @@ export interface GetUsersDataSourcesRequest {
   /** The data stream ID of the data source to retrieve. */
   dataSourceId: string;
 }
-export const GetUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     dataSourceId: S.String.pipe(T.Label()),
@@ -684,7 +680,7 @@ export interface GetUsersDataSourcesDatasetsRequest {
   /** Retrieve a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
 }
-export const GetUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     dataSourceId: S.String.pipe(T.Label()),
@@ -703,7 +699,7 @@ export const GetUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListUsersDataSourcesRequest {
   /** The names of data types to include in the list. If not specified, all data sources will be returned. */
@@ -711,7 +707,7 @@ export interface ListUsersDataSourcesRequest {
   /** List data sources for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
 }
-export const ListUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataTypeName: S.optional(StringList.pipe(T.Query())),
     userId: S.String.pipe(T.Label()),
@@ -727,13 +723,13 @@ export const ListUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUsersDataSourcesRequest>;
 
 export type DataSourceList = Array<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
 
 export interface ListDataSourcesResponse {
   /** A previously created data source. */
   dataSource?: DataSourceList;
 }
-export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSource: S.optional(DataSourceList),
   }),
@@ -749,7 +745,7 @@ export interface ListUsersDataSourcesDataPointChangesRequest {
   /** If specified, no more than this many data point changes will be included in the response. */
   limit?: number;
 }
-export const ListUsersDataSourcesDataPointChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersDataSourcesDataPointChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -776,7 +772,7 @@ export interface ListDataPointChangesResponse {
   /** Deleted data points for the user. Note, for modifications this should be parsed before handling insertions. */
   deletedDataPoint?: DataPointList;
 }
-export const ListDataPointChangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataPointChangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insertedDataPoint: S.optional(DataPointList),
     dataSourceId: S.optional(S.String),
@@ -788,7 +784,7 @@ export const ListDataPointChangesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDataPointChangesResponse>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export interface ListUsersSessionsRequest {
   /** An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned. */
@@ -804,7 +800,7 @@ export interface ListUsersSessionsRequest {
   /** If non-empty, only sessions with these activity types should be returned. */
   activityType?: IntegerList;
 }
-export const ListUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -822,7 +818,7 @@ export const ListUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersSessionsRequest" }) as any as S.Schema<ListUsersSessionsRequest>;
 
 export type SessionList = Array<Session>;
-export const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
+const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
 
 export interface ListSessionsResponse {
   /** Flag to indicate server has more data to transfer. DO NOT USE THIS FIELD. It is never populated in responses from the server. */
@@ -834,7 +830,7 @@ export interface ListSessionsResponse {
   /** If includeDeleted is set to true in the request, and startTime and endTime are omitted, this will include sessions which were deleted since the last sync. */
   deletedSession?: SessionList;
 }
-export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasMoreData: S.optional(S.Boolean),
     session: S.optional(SessionList),
@@ -853,7 +849,7 @@ export interface PatchUsersDataSourcesDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
-export const PatchUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     dataSourceId: S.String.pipe(T.Label()),
@@ -878,7 +874,7 @@ export interface UpdateUsersDataSourcesRequest {
   /** Request body */
   body?: DataSource;
 }
-export const UpdateUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     dataSourceId: S.String.pipe(T.Label()),
@@ -902,7 +898,7 @@ export interface UpdateUsersSessionsRequest {
   /** Request body */
   body?: Session;
 }
-export const UpdateUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),

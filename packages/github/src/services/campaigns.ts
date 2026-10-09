@@ -37,18 +37,18 @@ export class UnprocessableEntity
 
 /** The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied. */
 export type CreateCampaignRequestManagersList = Array<string>;
-export const CreateCampaignRequestManagersList = /*@__PURE__*/ S.Array(
+const CreateCampaignRequestManagersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCampaignRequestManagersList>;
 
 /** The slugs of the teams to set as the campaign managers. */
 export type CreateCampaignRequestTeamManagersList = Array<string>;
-export const CreateCampaignRequestTeamManagersList =
+const CreateCampaignRequestTeamManagersList =
   CreateCampaignRequestManagersList as any as S.Schema<CreateCampaignRequestTeamManagersList>;
 
 /** The alert numbers */
 export type CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList = Array<number>;
-export const CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList = /*@__PURE__*/ S.Array(
+const CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList>;
 
@@ -58,7 +58,7 @@ export interface CreateCampaignRequestCodeScanningAlertsItem {
   /** The alert numbers */
   alert_numbers: CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList;
 }
-export const CreateCampaignRequestCodeScanningAlertsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateCampaignRequestCodeScanningAlertsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_id: S.Number,
     alert_numbers: CreateCampaignRequestCodeScanningAlertsItemAlertNumbersList,
@@ -70,7 +70,7 @@ export const CreateCampaignRequestCodeScanningAlertsItem = /*@__PURE__*/ S.suspe
 /** The code scanning alerts to include in this campaign */
 export type CreateCampaignRequestCodeScanningAlertsList =
   Array<CreateCampaignRequestCodeScanningAlertsItem>;
-export const CreateCampaignRequestCodeScanningAlertsList = /*@__PURE__*/ S.Array(
+const CreateCampaignRequestCodeScanningAlertsList = /*@__PURE__*/ S.Array(
   CreateCampaignRequestCodeScanningAlertsItem,
 ) as any as S.Schema<CreateCampaignRequestCodeScanningAlertsList>;
 
@@ -94,7 +94,7 @@ export interface CreateCampaignRequest {
   /** If true, will automatically generate issues for the campaign. The default is false. */
   generate_issues?: boolean;
 }
-export const CreateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -133,7 +133,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -162,7 +162,7 @@ export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
 
 /** The campaign managers */
 export type CampaignSummaryManagersList = Array<SimpleUser>;
-export const CampaignSummaryManagersList = /*@__PURE__*/ S.Array(
+const CampaignSummaryManagersList = /*@__PURE__*/ S.Array(
   SimpleUser,
 ) as any as S.Schema<CampaignSummaryManagersList>;
 
@@ -173,7 +173,7 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
+const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull: S.Boolean,
     triage: S.Boolean,
@@ -185,15 +185,15 @@ export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
+const TeamType = S.String;
 
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
+const TeamAccessSource = S.String;
 
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
+const NullableTeamSimpleType = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
@@ -225,7 +225,7 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -271,7 +271,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -296,13 +296,13 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 
 /** The campaign team managers */
 export type CampaignSummaryTeamManagersList = Array<Team>;
-export const CampaignSummaryTeamManagersList = /*@__PURE__*/ S.Array(
+const CampaignSummaryTeamManagersList = /*@__PURE__*/ S.Array(
   Team,
 ) as any as S.Schema<CampaignSummaryTeamManagersList>;
 
 /** Indicates whether a campaign is open or closed */
 export type CampaignState = "open" | "closed";
-export const CampaignState = S.String;
+const CampaignState = S.String;
 
 export interface CampaignSummaryAlertStats {
   /** The number of open alerts */
@@ -312,7 +312,7 @@ export interface CampaignSummaryAlertStats {
   /** The number of in-progress alerts */
   in_progress_count: number;
 }
-export const CampaignSummaryAlertStats = /*@__PURE__*/ S.suspend(() =>
+const CampaignSummaryAlertStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     open_count: S.Number,
     closed_count: S.Number,
@@ -349,7 +349,7 @@ export interface CampaignSummary {
   contact_link: string | null;
   alert_stats?: CampaignSummaryAlertStats;
 }
-export const CampaignSummary = /*@__PURE__*/ S.suspend(() =>
+const CampaignSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     created_at: S.String,
@@ -373,7 +373,7 @@ export interface DeleteCampaignRequest {
   /** The campaign number. */
   campaign_number: number;
 }
-export const DeleteCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     campaign_number: S.Number.pipe(T.Label()),
@@ -381,7 +381,7 @@ export const DeleteCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCampaignRequest" }) as any as S.Schema<DeleteCampaignRequest>;
 
 export interface DeleteCampaignResponse {}
-export const DeleteCampaignResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCampaignResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCampaignResponse",
 }) as any as S.Schema<DeleteCampaignResponse>;
 
@@ -391,7 +391,7 @@ export interface GetCampaignSummaryRequest {
   /** The campaign number. */
   campaign_number: number;
 }
-export const GetCampaignSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCampaignSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     campaign_number: S.Number.pipe(T.Label()),
@@ -401,10 +401,10 @@ export const GetCampaignSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCampaignSummaryRequest>;
 
 export type ListOrgCampaignsRequestDirection = "asc" | "desc";
-export const ListOrgCampaignsRequestDirection = S.String;
+const ListOrgCampaignsRequestDirection = S.String;
 
 export type ListOrgCampaignsRequestSort = "created" | "updated" | "ends_at" | "published";
-export const ListOrgCampaignsRequestSort = S.String;
+const ListOrgCampaignsRequestSort = S.String;
 
 export interface ListOrgCampaignsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -420,7 +420,7 @@ export interface ListOrgCampaignsRequest {
   /** The property by which to sort the results. */
   sort?: ListOrgCampaignsRequestSort | (string & {});
 }
-export const ListOrgCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -432,23 +432,23 @@ export const ListOrgCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrgCampaignsRequest" }) as any as S.Schema<ListOrgCampaignsRequest>;
 
 export type ListOrgCampaignsResponseBodyList = Array<CampaignSummary>;
-export const ListOrgCampaignsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrgCampaignsResponseBodyList = /*@__PURE__*/ S.Array(
   CampaignSummary,
 ) as any as S.Schema<ListOrgCampaignsResponseBodyList>;
 
 export type ListOrgCampaignsResponse = ListOrgCampaignsResponseBodyList;
-export const ListOrgCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrgCampaignsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListOrgCampaignsResponse" }) as any as S.Schema<ListOrgCampaignsResponse>;
 
 /** The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied. */
 export type UpdateCampaignRequestManagersList = Array<string>;
-export const UpdateCampaignRequestManagersList =
+const UpdateCampaignRequestManagersList =
   CreateCampaignRequestManagersList as any as S.Schema<UpdateCampaignRequestManagersList>;
 
 /** The slugs of the teams to set as the campaign managers. */
 export type UpdateCampaignRequestTeamManagersList = Array<string>;
-export const UpdateCampaignRequestTeamManagersList =
+const UpdateCampaignRequestTeamManagersList =
   CreateCampaignRequestManagersList as any as S.Schema<UpdateCampaignRequestTeamManagersList>;
 
 export interface UpdateCampaignRequest {
@@ -470,7 +470,7 @@ export interface UpdateCampaignRequest {
   contact_link?: string | null;
   state?: CampaignState | (string & {});
 }
-export const UpdateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     campaign_number: S.Number.pipe(T.Label()),

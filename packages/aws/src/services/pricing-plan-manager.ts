@@ -81,7 +81,7 @@ export interface ApprovePaidSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-export const ApprovePaidSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+const ApprovePaidSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
@@ -100,7 +100,7 @@ export const ApprovePaidSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApprovePaidSubscriptionInput",
 }) as any as S.Schema<ApprovePaidSubscriptionInput>;
 export type ScheduledChangeType = "DOWNGRADE" | "CANCELLATION" | (string & {});
-export const ScheduledChangeType = S.String;
+const ScheduledChangeType = S.String;
 
 export interface ScheduledChange {
   changeType: ScheduledChangeType;
@@ -108,7 +108,7 @@ export interface ScheduledChange {
   planTier?: string;
   usageLevel?: string;
 }
-export const ScheduledChange = /*@__PURE__*/ S.suspend(() =>
+const ScheduledChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeType: ScheduledChangeType,
     effectiveDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -117,10 +117,10 @@ export const ScheduledChange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScheduledChange" }) as any as S.Schema<ScheduledChange>;
 export type Status = "PENDING_APPROVAL" | "ACTIVE" | "SYNC_IN_PROGRESS" | "FAILED" | (string & {});
-export const Status = S.String;
+const Status = S.String;
 
 export type ResourceArns = string[];
-export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
+const ResourceArns = /*@__PURE__*/ S.Array(S.String);
 export interface Subscription {
   arn: string;
   planFamily: string;
@@ -133,7 +133,7 @@ export interface Subscription {
   createdAt: Date;
   updatedAt: Date;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     planFamily: S.String,
@@ -151,7 +151,7 @@ export interface ApprovePaidSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const ApprovePaidSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
+const ApprovePaidSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
     eTag: S.String.pipe(T.HttpHeader("ETag")),
@@ -165,7 +165,7 @@ export interface AssociateResourcesToSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-export const AssociateResourcesToSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+const AssociateResourcesToSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     resourceArns: ResourceArns,
@@ -188,14 +188,14 @@ export interface AssociateResourcesToSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const AssociateResourcesToSubscriptionOutput =
+const AssociateResourcesToSubscriptionOutput =
   ApprovePaidSubscriptionOutput as any as S.Schema<AssociateResourcesToSubscriptionOutput>;
 export interface CancelSubscriptionInput {
   arn: string;
   ifMatch: string;
   clientToken?: string;
 }
-export const CancelSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+const CancelSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
@@ -208,7 +208,7 @@ export interface CancelSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const CancelSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
+const CancelSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: Subscription.pipe(T.HttpPayload()).annotate({ identifier: "Subscription" }),
     eTag: S.String.pipe(T.HttpHeader("ETag")),
@@ -219,7 +219,7 @@ export interface CancelSubscriptionChangeInput {
   ifMatch: string;
   clientToken?: string;
 }
-export const CancelSubscriptionChangeInput = /*@__PURE__*/ S.suspend(() =>
+const CancelSubscriptionChangeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     ifMatch: S.String.pipe(T.HttpHeader("If-Match")),
@@ -241,10 +241,10 @@ export interface CancelSubscriptionChangeOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const CancelSubscriptionChangeOutput =
+const CancelSubscriptionChangeOutput =
   ApprovePaidSubscriptionOutput as any as S.Schema<CancelSubscriptionChangeOutput>;
 export type ApprovalMode = "MANUAL" | "IMMEDIATE" | (string & {});
-export const ApprovalMode = S.String;
+const ApprovalMode = S.String;
 
 export interface CreateSubscriptionInput {
   planFamily: string;
@@ -254,7 +254,7 @@ export interface CreateSubscriptionInput {
   approvalMode?: ApprovalMode;
   clientToken?: string;
 }
-export const CreateSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planFamily: S.String,
     planTier: S.String,
@@ -270,7 +270,7 @@ export interface CreateSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const CreateSubscriptionOutput =
+const CreateSubscriptionOutput =
   CancelSubscriptionOutput as any as S.Schema<CreateSubscriptionOutput>;
 export interface DisassociateResourcesFromSubscriptionInput {
   arn: string;
@@ -278,7 +278,7 @@ export interface DisassociateResourcesFromSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-export const DisassociateResourcesFromSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+const DisassociateResourcesFromSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     resourceArns: ResourceArns,
@@ -301,12 +301,12 @@ export interface DisassociateResourcesFromSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const DisassociateResourcesFromSubscriptionOutput =
+const DisassociateResourcesFromSubscriptionOutput =
   ApprovePaidSubscriptionOutput as any as S.Schema<DisassociateResourcesFromSubscriptionOutput>;
 export interface GetSubscriptionInput {
   arn: string;
 }
-export const GetSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v1/GetSubscription" }), svc, auth, proto, ver, rules),
   ),
@@ -315,12 +315,11 @@ export interface GetSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const GetSubscriptionOutput =
-  CancelSubscriptionOutput as any as S.Schema<GetSubscriptionOutput>;
+const GetSubscriptionOutput = CancelSubscriptionOutput as any as S.Schema<GetSubscriptionOutput>;
 export interface ListSubscriptionsInput {
   nextToken?: string;
 }
-export const ListSubscriptionsInput = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v1/ListSubscriptions" }), svc, auth, proto, ver, rules),
   ),
@@ -338,7 +337,7 @@ export interface SubscriptionSummary {
   updatedAt: Date;
   eTag: string;
 }
-export const SubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     planFamily: S.String,
@@ -354,12 +353,12 @@ export const SubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SubscriptionSummary" }) as any as S.Schema<SubscriptionSummary>;
 export type SubscriptionSummaryList = SubscriptionSummary[];
-export const SubscriptionSummaryList = /*@__PURE__*/ S.Array(SubscriptionSummary);
+const SubscriptionSummaryList = /*@__PURE__*/ S.Array(SubscriptionSummary);
 export interface ListSubscriptionsOutput {
   subscriptionSummaries: SubscriptionSummary[];
   nextToken?: string;
 }
-export const ListSubscriptionsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ subscriptionSummaries: SubscriptionSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListSubscriptionsOutput" }) as any as S.Schema<ListSubscriptionsOutput>;
 export interface UpdateSubscriptionInput {
@@ -369,7 +368,7 @@ export interface UpdateSubscriptionInput {
   ifMatch: string;
   clientToken?: string;
 }
-export const UpdateSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     planTier: S.String,
@@ -384,7 +383,7 @@ export interface UpdateSubscriptionOutput {
   subscription: Subscription;
   eTag: string;
 }
-export const UpdateSubscriptionOutput =
+const UpdateSubscriptionOutput =
   CancelSubscriptionOutput as any as S.Schema<UpdateSubscriptionOutput>;
 export type ApprovePaidSubscriptionError =
   | AccessDeniedException

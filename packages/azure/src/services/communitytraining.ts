@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateCommunityTrainingRequestTagsMap = { [key: string]: string | undefined };
-export const CreateCommunityTrainingRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateCommunityTrainingRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateCommunityTrainingRequestTagsMap>;
@@ -37,7 +37,7 @@ export interface IdentityConfigurationProperties {
   /** The custom login parameters for the Community Training Resource */
   customLoginParameters?: string;
 }
-export const IdentityConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const IdentityConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityType: S.String,
     teamsEnabled: S.optional(S.Boolean),
@@ -62,7 +62,7 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Details of the Community CommunityTraining. */
 export interface CommunityTrainingProperties {
@@ -83,7 +83,7 @@ export interface CommunityTrainingProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState | (string & {});
 }
-export const CommunityTrainingProperties = /*@__PURE__*/ S.suspend(() =>
+const CommunityTrainingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     portalName: S.String,
     portalAdminEmailAddress: S.String,
@@ -100,7 +100,7 @@ export const CommunityTrainingProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
-export const SkuTier = S.String;
+const SkuTier = S.String;
 
 /** The resource model definition representing SKU */
 export interface CreateCommunityTrainingRequestSku {
@@ -114,7 +114,7 @@ export interface CreateCommunityTrainingRequestSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const CreateCommunityTrainingRequestSku = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunityTrainingRequestSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(SkuTier),
@@ -142,7 +142,7 @@ export interface CreateCommunityTrainingRequest {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingRequestSku;
 }
-export const CreateCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -165,11 +165,11 @@ export const CreateCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -186,7 +186,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -199,7 +199,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCommunityTrainingResponseTagsMap = { [key: string]: string | undefined };
-export const CreateCommunityTrainingResponseTagsMap =
+const CreateCommunityTrainingResponseTagsMap =
   CreateCommunityTrainingRequestTagsMap as any as S.Schema<CreateCommunityTrainingResponseTagsMap>;
 
 /** The resource model definition representing SKU */
@@ -214,7 +214,7 @@ export interface CreateCommunityTrainingResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const CreateCommunityTrainingResponseSku =
+const CreateCommunityTrainingResponseSku =
   CreateCommunityTrainingRequestSku as any as S.Schema<CreateCommunityTrainingResponseSku>;
 
 export interface CreateCommunityTrainingResponse {
@@ -235,7 +235,7 @@ export interface CreateCommunityTrainingResponse {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingResponseSku;
 }
-export const CreateCommunityTrainingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunityTrainingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -258,7 +258,7 @@ export interface DeleteCommunityTrainingRequest {
   /** The name of the Community Training Resource */
   communityTrainingName: string;
 }
-export const DeleteCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -276,9 +276,9 @@ export const DeleteCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCommunityTrainingRequest>;
 
 export interface DeleteCommunityTrainingResponse {}
-export const DeleteCommunityTrainingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteCommunityTrainingResponse" },
-) as any as S.Schema<DeleteCommunityTrainingResponse>;
+const DeleteCommunityTrainingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteCommunityTrainingResponse",
+}) as any as S.Schema<DeleteCommunityTrainingResponse>;
 
 export interface GetCommunityTrainingRequest {
   /** The ID of the target subscription. */
@@ -288,7 +288,7 @@ export interface GetCommunityTrainingRequest {
   /** The name of the Community Training Resource */
   communityTrainingName: string;
 }
-export const GetCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -307,13 +307,8 @@ export const GetCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCommunityTrainingResponseTagsMap = { [key: string]: string | undefined };
-export const GetCommunityTrainingResponseTagsMap =
-  CreateCommunityTrainingRequestTagsMap as any as S.Schema<GetCommunityTrainingResponseTagsMap>;
-
 /** The resource model definition representing SKU */
 export type GetCommunityTrainingResponseSku = CreateCommunityTrainingResponseSku;
-export const GetCommunityTrainingResponseSku = CreateCommunityTrainingResponseSku;
-
 export interface GetCommunityTrainingResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -332,7 +327,7 @@ export interface GetCommunityTrainingResponse {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingResponseSku;
 }
-export const GetCommunityTrainingResponse =
+const GetCommunityTrainingResponse =
   CreateCommunityTrainingResponse as any as S.Schema<GetCommunityTrainingResponse>;
 
 export interface ListCommunityTrainingByResourceGroupRequest {
@@ -341,7 +336,7 @@ export interface ListCommunityTrainingByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListCommunityTrainingByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommunityTrainingByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -359,13 +354,11 @@ export const ListCommunityTrainingByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type CommunityTrainingTagsMap = { [key: string]: string | undefined };
-export const CommunityTrainingTagsMap =
+const CommunityTrainingTagsMap =
   CreateCommunityTrainingRequestTagsMap as any as S.Schema<CommunityTrainingTagsMap>;
 
 /** The resource model definition representing SKU */
 export type CommunityTrainingSku = CreateCommunityTrainingResponseSku;
-export const CommunityTrainingSku = CreateCommunityTrainingResponseSku;
-
 /** A CommunityProviderHub resource */
 export interface CommunityTraining {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -385,7 +378,7 @@ export interface CommunityTraining {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingResponseSku;
 }
-export const CommunityTraining = /*@__PURE__*/ S.suspend(() =>
+const CommunityTraining = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -400,7 +393,7 @@ export const CommunityTraining = /*@__PURE__*/ S.suspend(() =>
 
 /** The CommunityTraining items on this page */
 export type CommunityTrainingListResultValueList = Array<CommunityTraining>;
-export const CommunityTrainingListResultValueList = /*@__PURE__*/ S.Array(
+const CommunityTrainingListResultValueList = /*@__PURE__*/ S.Array(
   CommunityTraining,
 ) as any as S.Schema<CommunityTrainingListResultValueList>;
 
@@ -411,7 +404,7 @@ export interface CommunityTrainingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CommunityTrainingListResult = /*@__PURE__*/ S.suspend(() =>
+const CommunityTrainingListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CommunityTrainingListResultValueList,
     nextLink: S.optional(S.String),
@@ -424,7 +417,7 @@ export interface ListCommunityTrainingBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListCommunityTrainingBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommunityTrainingBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -440,7 +433,7 @@ export const ListCommunityTrainingBySubscriptionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListCommunityTrainingBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -462,7 +455,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -473,11 +466,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -492,7 +485,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -504,7 +497,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -514,7 +507,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -523,11 +516,9 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource model definition representing SKU */
 export type UpdateCommunityTrainingRequestSku = CreateCommunityTrainingRequestSku;
-export const UpdateCommunityTrainingRequestSku = CreateCommunityTrainingRequestSku;
-
 /** Resource tags. */
 export type UpdateCommunityTrainingRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCommunityTrainingRequestTagsMap =
+const UpdateCommunityTrainingRequestTagsMap =
   CreateCommunityTrainingRequestTagsMap as any as S.Schema<UpdateCommunityTrainingRequestTagsMap>;
 
 /** Details of the Community CommunityTraining Identity Configuration */
@@ -551,7 +542,7 @@ export interface IdentityConfigurationPropertiesUpdate {
   /** The custom login parameters for the Community Training Resource */
   customLoginParameters?: string;
 }
-export const IdentityConfigurationPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+const IdentityConfigurationPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityType: S.optional(S.String),
     teamsEnabled: S.optional(S.Boolean),
@@ -572,7 +563,7 @@ export interface CommunityTrainingUpdateProperties {
   /** The identity configuration of the Community Training resource */
   identityConfiguration?: IdentityConfigurationPropertiesUpdate;
 }
-export const CommunityTrainingUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const CommunityTrainingUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityConfiguration: S.optional(IdentityConfigurationPropertiesUpdate),
   }),
@@ -594,7 +585,7 @@ export interface UpdateCommunityTrainingRequest {
   /** The resource-specific properties for this resource. */
   properties?: CommunityTrainingUpdateProperties;
 }
-export const UpdateCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -616,13 +607,8 @@ export const UpdateCommunityTrainingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCommunityTrainingResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCommunityTrainingResponseTagsMap =
-  CreateCommunityTrainingRequestTagsMap as any as S.Schema<UpdateCommunityTrainingResponseTagsMap>;
-
 /** The resource model definition representing SKU */
 export type UpdateCommunityTrainingResponseSku = CreateCommunityTrainingResponseSku;
-export const UpdateCommunityTrainingResponseSku = CreateCommunityTrainingResponseSku;
-
 export interface UpdateCommunityTrainingResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -641,7 +627,7 @@ export interface UpdateCommunityTrainingResponse {
   /** The resource model definition representing SKU */
   sku?: CreateCommunityTrainingResponseSku;
 }
-export const UpdateCommunityTrainingResponse =
+const UpdateCommunityTrainingResponse =
   CreateCommunityTrainingResponse as any as S.Schema<UpdateCommunityTrainingResponse>;
 
 export type CreateCommunityTrainingError = AzureOpError;

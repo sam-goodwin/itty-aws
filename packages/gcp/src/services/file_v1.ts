@@ -82,7 +82,7 @@ export class StorageQuotaExceeded
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -92,7 +92,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -105,10 +105,10 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type BackupStateEnum =
   | "STATE_UNSPECIFIED"
@@ -117,10 +117,10 @@ export type BackupStateEnum =
   | "READY"
   | "DELETING"
   | "INVALID";
-export const BackupStateEnum = S.String;
+const BackupStateEnum = S.String;
 
 export type BackupFileSystemProtocolEnum = "FILE_PROTOCOL_UNSPECIFIED" | "NFS_V3" | "NFS_V4_1";
-export const BackupFileSystemProtocolEnum = S.String;
+const BackupFileSystemProtocolEnum = S.String;
 
 export type BackupSourceInstanceTierEnum =
   | "TIER_UNSPECIFIED"
@@ -132,7 +132,7 @@ export type BackupSourceInstanceTierEnum =
   | "ENTERPRISE"
   | "ZONAL"
   | "REGIONAL";
-export const BackupSourceInstanceTierEnum = S.String;
+const BackupSourceInstanceTierEnum = S.String;
 
 /** A Filestore backup. */
 export interface Backup {
@@ -169,7 +169,7 @@ export interface Backup {
   /** Output only. The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion. */
   storageBytes?: string;
 }
-export const Backup = /*@__PURE__*/ S.suspend(() =>
+const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     capacityGb: S.optional(S.String),
@@ -198,7 +198,7 @@ export interface CreateProjectsLocationsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -215,15 +215,10 @@ export const CreateProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateProjectsLocationsBackupsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -234,7 +229,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -255,7 +250,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -271,12 +266,12 @@ export type ReplicaConfigStateReasonsItemEnum =
   | "REMOVE_FAILED"
   | "PAUSE_FAILED"
   | "RESUME_FAILED";
-export const ReplicaConfigStateReasonsItemEnum = S.String;
+const ReplicaConfigStateReasonsItemEnum = S.String;
 
 export type ReplicaConfigStateReasonsItemEnumList = Array<
   ReplicaConfigStateReasonsItemEnum | (string & {})
 >;
-export const ReplicaConfigStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
+const ReplicaConfigStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
   ReplicaConfigStateReasonsItemEnum,
 ) as any as S.Schema<ReplicaConfigStateReasonsItemEnumList>;
 
@@ -290,7 +285,7 @@ export type ReplicaConfigStateEnum =
   | "PAUSING"
   | "PAUSED"
   | "RESUMING";
-export const ReplicaConfigStateEnum = S.String;
+const ReplicaConfigStateEnum = S.String;
 
 /** Replica configuration for the instance. */
 export interface ReplicaConfig {
@@ -305,7 +300,7 @@ export interface ReplicaConfig {
   /** Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely. */
   lastActiveSyncTime?: string;
 }
-export const ReplicaConfig = /*@__PURE__*/ S.suspend(() =>
+const ReplicaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateReasons: S.optional(ReplicaConfigStateReasonsItemEnumList),
     stateUpdateTime: S.optional(S.String),
@@ -316,12 +311,12 @@ export const ReplicaConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaConfig" }) as any as S.Schema<ReplicaConfig>;
 
 export type ReplicaConfigList = Array<ReplicaConfig>;
-export const ReplicaConfigList = /*@__PURE__*/ S.Array(
+const ReplicaConfigList = /*@__PURE__*/ S.Array(
   ReplicaConfig,
 ) as any as S.Schema<ReplicaConfigList>;
 
 export type ReplicationRoleEnum = "ROLE_UNSPECIFIED" | "ACTIVE" | "STANDBY";
-export const ReplicationRoleEnum = S.String;
+const ReplicationRoleEnum = S.String;
 
 /** Optional. The configuration used to replicate an instance. */
 export interface Replication {
@@ -330,7 +325,7 @@ export interface Replication {
   /** Optional. The replication role. When creating a new replica, this field must be set to `STANDBY`. */
   role?: ReplicationRoleEnum | (string & {});
 }
-export const Replication = /*@__PURE__*/ S.suspend(() =>
+const Replication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicas: S.optional(ReplicaConfigList),
     role: S.optional(ReplicationRoleEnum),
@@ -338,12 +333,10 @@ export const Replication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replication" }) as any as S.Schema<Replication>;
 
 export type InstanceSuspensionReasonsItemEnum = "SUSPENSION_REASON_UNSPECIFIED" | "KMS_KEY_ISSUE";
-export const InstanceSuspensionReasonsItemEnum = S.String;
-
 export type InstanceSuspensionReasonsItemEnumList = Array<
   InstanceSuspensionReasonsItemEnum | (string & {})
 >;
-export const InstanceSuspensionReasonsItemEnumList =
+const InstanceSuspensionReasonsItemEnumList =
   ReplicaConfigStateReasonsItemEnumList as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
 
 /** IOPS per TB. Filestore defines TB as 1024^4 bytes (TiB). */
@@ -351,7 +344,7 @@ export interface IOPSPerTB {
   /** Required. Maximum IOPS per TiB. */
   maxIopsPerTb?: string;
 }
-export const IOPSPerTB = /*@__PURE__*/ S.suspend(() =>
+const IOPSPerTB = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxIopsPerTb: S.optional(S.String),
   }),
@@ -362,7 +355,7 @@ export interface FixedIOPS {
   /** Required. Maximum IOPS. */
   maxIops?: string;
 }
-export const FixedIOPS = /*@__PURE__*/ S.suspend(() =>
+const FixedIOPS = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxIops: S.optional(S.String),
   }),
@@ -375,7 +368,7 @@ export interface PerformanceConfig {
   /** Choose a fixed provisioned IOPS value for the instance, which will remain constant regardless of instance capacity. Value must be a multiple of 1000. If the chosen value is outside the supported range for the instance's capacity during instance creation, instance creation will fail with an `InvalidArgument` error. Similarly, if an instance capacity update would result in a value outside the supported range, the update will fail with an `InvalidArgument` error. */
   fixedIops?: FixedIOPS;
 }
-export const PerformanceConfig = /*@__PURE__*/ S.suspend(() =>
+const PerformanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iopsPerTb: S.optional(IOPSPerTB),
     fixedIops: S.optional(FixedIOPS),
@@ -383,16 +376,16 @@ export const PerformanceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PerformanceConfig" }) as any as S.Schema<PerformanceConfig>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type NfsExportOptionsSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_ROOT_SQUASH"
   | "ROOT_SQUASH";
-export const NfsExportOptionsSquashModeEnum = S.String;
+const NfsExportOptionsSquashModeEnum = S.String;
 
 export type NfsExportOptionsAccessModeEnum = "ACCESS_MODE_UNSPECIFIED" | "READ_ONLY" | "READ_WRITE";
-export const NfsExportOptionsAccessModeEnum = S.String;
+const NfsExportOptionsAccessModeEnum = S.String;
 
 /** NFS export options specifications. */
 export interface NfsExportOptions {
@@ -409,7 +402,7 @@ export interface NfsExportOptions {
   /** An integer representing the anonymous user id with a default value of 65534. Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be returned if this field is specified for other squash_mode settings. */
   anonUid?: string;
 }
-export const NfsExportOptions = /*@__PURE__*/ S.suspend(() =>
+const NfsExportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipRanges: S.optional(StringList),
     squashMode: S.optional(NfsExportOptionsSquashModeEnum),
@@ -421,7 +414,7 @@ export const NfsExportOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NfsExportOptions" }) as any as S.Schema<NfsExportOptions>;
 
 export type NfsExportOptionsList = Array<NfsExportOptions>;
-export const NfsExportOptionsList = /*@__PURE__*/ S.Array(
+const NfsExportOptionsList = /*@__PURE__*/ S.Array(
   NfsExportOptions,
 ) as any as S.Schema<NfsExportOptionsList>;
 
@@ -438,7 +431,7 @@ export interface FileShareConfig {
   /** File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. */
   capacityGb?: string;
 }
-export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
+const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     nfsExportOptions: S.optional(NfsExportOptionsList),
@@ -449,7 +442,7 @@ export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileShareConfig" }) as any as S.Schema<FileShareConfig>;
 
 export type FileShareConfigList = Array<FileShareConfig>;
-export const FileShareConfigList = /*@__PURE__*/ S.Array(
+const FileShareConfigList = /*@__PURE__*/ S.Array(
   FileShareConfig,
 ) as any as S.Schema<FileShareConfigList>;
 
@@ -460,7 +453,7 @@ export interface PscConfig {
   /** Optional. Immutable. Optional: The desired IP address for the instance. If not specified, an IP will be automatically allocated. The IP must be from the subnetwork range configured in the Service Connection Policy. This effective ip address is set in the ip_addresses field. use 3 instead of 2 to avoid conflict with the reserved_ip_range field. */
   requestedIpAddress?: string;
 }
-export const PscConfig = /*@__PURE__*/ S.suspend(() =>
+const PscConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointProject: S.optional(S.String),
     requestedIpAddress: S.optional(S.String),
@@ -468,10 +461,8 @@ export const PscConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
 export type NetworkConfigModesItemEnum = "ADDRESS_MODE_UNSPECIFIED" | "MODE_IPV4" | "MODE_IPV6";
-export const NetworkConfigModesItemEnum = S.String;
-
 export type NetworkConfigModesItemEnumList = Array<NetworkConfigModesItemEnum | (string & {})>;
-export const NetworkConfigModesItemEnumList =
+const NetworkConfigModesItemEnumList =
   ReplicaConfigStateReasonsItemEnumList as any as S.Schema<NetworkConfigModesItemEnumList>;
 
 export type NetworkConfigConnectModeEnum =
@@ -479,7 +470,7 @@ export type NetworkConfigConnectModeEnum =
   | "DIRECT_PEERING"
   | "PRIVATE_SERVICE_ACCESS"
   | "PRIVATE_SERVICE_CONNECT";
-export const NetworkConfigConnectModeEnum = S.String;
+const NetworkConfigConnectModeEnum = S.String;
 
 /** Network configuration for the instance. */
 export interface NetworkConfig {
@@ -496,7 +487,7 @@ export interface NetworkConfig {
   /** The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING. */
   connectMode?: NetworkConfigConnectModeEnum | (string & {});
 }
-export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pscConfig: S.optional(PscConfig),
     ipAddresses: S.optional(StringList),
@@ -508,7 +499,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 export type NetworkConfigList = Array<NetworkConfig>;
-export const NetworkConfigList = /*@__PURE__*/ S.Array(
+const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
 
@@ -523,7 +514,7 @@ export interface LdapConfig {
   /** Optional. The users Organizational Unit (OU) is optional. This parameter is a hint to allow faster lookup in the LDAP namespace. In case that this parameter is not provided, Filestore instance will query the whole LDAP namespace. */
   usersOu?: string;
 }
-export const LdapConfig = /*@__PURE__*/ S.suspend(() =>
+const LdapConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupsOu: S.optional(S.String),
     domain: S.optional(S.String),
@@ -537,7 +528,7 @@ export interface DirectoryServicesConfig {
   /** Configuration for LDAP servers. */
   ldap?: LdapConfig;
 }
-export const DirectoryServicesConfig = /*@__PURE__*/ S.suspend(() =>
+const DirectoryServicesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ldap: S.optional(LdapConfig),
   }),
@@ -556,7 +547,7 @@ export type InstanceStateEnum =
   | "RESUMING"
   | "REVERTING"
   | "PROMOTING";
-export const InstanceStateEnum = S.String;
+const InstanceStateEnum = S.String;
 
 export type InstanceTierEnum =
   | "TIER_UNSPECIFIED"
@@ -568,7 +559,7 @@ export type InstanceTierEnum =
   | "ENTERPRISE"
   | "ZONAL"
   | "REGIONAL";
-export const InstanceTierEnum = S.String;
+const InstanceTierEnum = S.String;
 
 /** The enforced performance limits, calculated from the instance's performance configuration. */
 export interface PerformanceLimits {
@@ -583,7 +574,7 @@ export interface PerformanceLimits {
   /** Output only. The maximum write IOPS. */
   maxWriteIops?: string;
 }
-export const PerformanceLimits = /*@__PURE__*/ S.suspend(() =>
+const PerformanceLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxReadThroughputBps: S.optional(S.String),
     maxIops: S.optional(S.String),
@@ -594,7 +585,7 @@ export const PerformanceLimits = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PerformanceLimits" }) as any as S.Schema<PerformanceLimits>;
 
 export type InstanceProtocolEnum = "FILE_PROTOCOL_UNSPECIFIED" | "NFS_V3" | "NFS_V4_1";
-export const InstanceProtocolEnum = S.String;
+const InstanceProtocolEnum = S.String;
 
 /** A Filestore instance. */
 export interface Instance {
@@ -651,7 +642,7 @@ export interface Instance {
   /** Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`. */
   protocol?: InstanceProtocolEnum | (string & {});
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replication: S.optional(Replication),
     suspensionReasons: S.optional(InstanceSuspensionReasonsItemEnumList),
@@ -690,7 +681,7 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     instanceId: S.optional(S.String.pipe(T.Query())),
@@ -707,7 +698,7 @@ export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type SnapshotStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "DELETING";
-export const SnapshotStateEnum = S.String;
+const SnapshotStateEnum = S.String;
 
 /** A Filestore snapshot. */
 export interface Snapshot {
@@ -726,7 +717,7 @@ export interface Snapshot {
   /** A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected. */
   description?: string;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SnapshotStateEnum),
     filesystemUsedBytes: S.optional(S.String),
@@ -746,7 +737,7 @@ export interface CreateProjectsLocationsInstancesSnapshotsRequest {
   /** Request body */
   body?: Snapshot;
 }
-export const CreateProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -766,7 +757,7 @@ export interface DeleteProjectsLocationsBackupsRequest {
   /** Required. The backup resource name, in the format `projects/{project_number}/locations/{location}/backups/{backup_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://file.googleapis.com/" })),
@@ -780,7 +771,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** If set to true, all snapshots of the instance will also be deleted. (Otherwise, the request will only work if the instance has no snapshots.) */
   force?: boolean;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -793,7 +784,7 @@ export interface DeleteProjectsLocationsInstancesSnapshotsRequest {
   /** Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://file.googleapis.com/" })),
@@ -805,7 +796,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://file.googleapis.com/" })),
@@ -817,7 +808,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://file.googleapis.com/" })),
@@ -838,7 +829,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     locationId: S.optional(S.String),
@@ -852,7 +843,7 @@ export interface GetProjectsLocationsBackupsRequest {
   /** Required. The backup resource name, in the format `projects/{project_number}/locations/{location}/backups/{backup_id}`. */
   name: string;
 }
-export const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://file.googleapis.com/" })),
@@ -864,7 +855,7 @@ export interface GetProjectsLocationsInstancesRequest {
   /** Required. The instance resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://file.googleapis.com/" })),
@@ -876,7 +867,7 @@ export interface GetProjectsLocationsInstancesSnapshotsRequest {
   /** Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}` */
   name: string;
 }
-export const GetProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://file.googleapis.com/" })),
@@ -888,7 +879,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://file.googleapis.com/" })),
@@ -908,7 +899,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -923,7 +914,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -932,7 +923,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -951,7 +942,7 @@ export interface ListProjectsLocationsBackupsRequest {
   /** The next_page_token value to use if there are additional results to retrieve for this list request. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -966,7 +957,7 @@ export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
 export type BackupList = Array<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
+const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
 
 /** ListBackupsResponse is the result of ListBackupsRequest. */
 export interface ListBackupsResponse {
@@ -977,7 +968,7 @@ export interface ListBackupsResponse {
   /** A list of backups in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of backups from all locations. If any location is unreachable, the response will only return backups in reachable locations and the "unreachable" field will be populated with a list of unreachable locations. */
   backups?: BackupList;
 }
-export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -997,7 +988,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1016,7 +1007,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = Array<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** ListInstancesResponse is the result of ListInstancesRequest. */
 export interface ListInstancesResponse {
@@ -1027,7 +1018,7 @@ export interface ListInstancesResponse {
   /** A list of instances in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of instances from all locations. If any location is unreachable, the response will only return instances in reachable locations and the "unreachable" field will be populated with a list of unreachable locations. */
   instances?: InstanceList;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1049,7 +1040,7 @@ export interface ListProjectsLocationsInstancesSnapshotsRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1069,7 +1060,7 @@ export const ListProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsInstancesSnapshotsRequest>;
 
 export type SnapshotList = Array<Snapshot>;
-export const SnapshotList = /*@__PURE__*/ S.Array(Snapshot) as any as S.Schema<SnapshotList>;
+const SnapshotList = /*@__PURE__*/ S.Array(Snapshot) as any as S.Schema<SnapshotList>;
 
 /** ListSnapshotsResponse is the result of ListSnapshotsRequest. */
 export interface ListSnapshotsResponse {
@@ -1080,7 +1071,7 @@ export interface ListSnapshotsResponse {
   /** A list of snapshots in the project for the specified instance. */
   snapshots?: SnapshotList;
 }
-export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1100,7 +1091,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1119,7 +1110,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1130,7 +1121,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1146,7 +1137,7 @@ export interface PatchProjectsLocationsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const PatchProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1164,7 +1155,7 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1182,7 +1173,7 @@ export interface PatchProjectsLocationsInstancesSnapshotsRequest {
   /** Request body */
   body?: Snapshot;
 }
-export const PatchProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1194,15 +1185,13 @@ export const PatchProjectsLocationsInstancesSnapshotsRequest = /*@__PURE__*/ S.s
 
 /** PauseReplicaRequest pauses a Filestore standby instance (replica). */
 export type PauseReplicaRequest = CancelOperationRequest;
-export const PauseReplicaRequest = CancelOperationRequest;
-
 export interface PauseReplicaProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const PauseReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1222,7 +1211,7 @@ export interface PromoteReplicaRequest {
   /** Optional. The resource name of the peer instance to promote, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. The peer instance is required if the operation is called on an active instance. */
   peerInstance?: string;
 }
-export const PromoteReplicaRequest = /*@__PURE__*/ S.suspend(() =>
+const PromoteReplicaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peerInstance: S.optional(S.String),
   }),
@@ -1234,7 +1223,7 @@ export interface PromoteReplicaProjectsLocationsInstancesRequest {
   /** Request body */
   body?: PromoteReplicaRequest;
 }
-export const PromoteReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PromoteReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PromoteReplicaRequest.pipe(T.HttpBody())),
@@ -1256,7 +1245,7 @@ export interface RestoreInstanceRequest {
   /** Required. Name of the file share in the Filestore instance that the backup is being restored to. */
   fileShare?: string;
 }
-export const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceBackup: S.optional(S.String),
     fileShare: S.optional(S.String),
@@ -1269,7 +1258,7 @@ export interface RestoreProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RestoreInstanceRequest;
 }
-export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
@@ -1282,15 +1271,13 @@ export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 
 /** ResumeReplicaRequest resumes a Filestore standby instance (replica). */
 export type ResumeReplicaRequest = CancelOperationRequest;
-export const ResumeReplicaRequest = CancelOperationRequest;
-
 export interface ResumeReplicaProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const ResumeReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeReplicaProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1310,7 +1297,7 @@ export interface RevertInstanceRequest {
   /** Required. The snapshot resource ID, in the format 'my-snapshot', where the specified ID is the {snapshot_id} of the fully qualified name like `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}` */
   targetSnapshotId?: string;
 }
-export const RevertInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RevertInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetSnapshotId: S.optional(S.String),
   }),
@@ -1322,7 +1309,7 @@ export interface RevertProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RevertInstanceRequest;
 }
-export const RevertProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RevertProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RevertInstanceRequest.pipe(T.HttpBody())),

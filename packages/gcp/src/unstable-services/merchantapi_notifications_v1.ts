@@ -65,7 +65,7 @@ export type NotificationSubscriptionRegisteredEventEnum =
   | "NOTIFICATION_EVENT_TYPE_UNSPECIFIED"
   | "PRODUCT_STATUS_CHANGE"
   | "ACCOUNT_SERVICE_CHANGE";
-export const NotificationSubscriptionRegisteredEventEnum = S.String;
+const NotificationSubscriptionRegisteredEventEnum = S.String;
 
 /** Represents a notification subscription owned by a Merchant account. See [Decode notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to decode the notification payload and how to interpret its contents. */
 export interface NotificationSubscription {
@@ -80,7 +80,7 @@ export interface NotificationSubscription {
   /** The event that the merchant wants to be notified about. */
   registeredEvent?: NotificationSubscriptionRegisteredEventEnum | (string & {});
 }
-export const NotificationSubscription = /*@__PURE__*/ S.suspend(() =>
+const NotificationSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetAccount: S.optional(S.String),
     allManagedAccounts: S.optional(S.Boolean),
@@ -96,7 +96,7 @@ export interface CreateAccountsNotificationsubscriptionsRequest {
   /** Request body */
   body?: NotificationSubscription;
 }
-export const CreateAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(NotificationSubscription.pipe(T.HttpBody())),
@@ -115,7 +115,7 @@ export interface DeleteAccountsNotificationsubscriptionsRequest {
   /** Required. The name of the notification subscription to be deleted. */
   name: string;
 }
-export const DeleteAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -131,7 +131,7 @@ export const DeleteAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.su
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -139,7 +139,7 @@ export interface GetAccountsNotificationsubscriptionsRequest {
   /** Required. The `name` of the notification subscription. */
   name: string;
 }
-export const GetAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -161,7 +161,7 @@ export interface ListAccountsNotificationsubscriptionsRequest {
   /** Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}` */
   parent: string;
 }
-export const ListAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -178,7 +178,7 @@ export const ListAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>;
 
 export type NotificationSubscriptionList = Array<NotificationSubscription>;
-export const NotificationSubscriptionList = /*@__PURE__*/ S.Array(
+const NotificationSubscriptionList = /*@__PURE__*/ S.Array(
   NotificationSubscription,
 ) as any as S.Schema<NotificationSubscriptionList>;
 
@@ -189,7 +189,7 @@ export interface ListNotificationSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListNotificationSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationSubscriptions: S.optional(NotificationSubscriptionList),
     nextPageToken: S.optional(S.String),
@@ -206,7 +206,7 @@ export interface PatchAccountsNotificationsubscriptionsRequest {
   /** Request body */
   body?: NotificationSubscription;
 }
-export const PatchAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsNotificationsubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

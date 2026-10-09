@@ -47,18 +47,18 @@ export class UnprocessableEntity
 
 /** The type of embed for a lesson */
 export type EmbedTypes = "youtube" | "loom";
-export const EmbedTypes = S.String;
+const EmbedTypes = S.String;
 
 /** The available types for a lesson */
 export type LessonTypes = "text" | "video" | "pdf" | "multi" | "quiz" | "knowledge_check";
-export const LessonTypes = S.String;
+const LessonTypes = S.String;
 
 /** The thumbnail image for the lesson in PNG, JPEG, or GIF format. */
 export interface CreateCourseLessonRequestThumbnail {
   /** The ID of an existing file object. */
   id: string;
 }
-export const CreateCourseLessonRequestThumbnail = /*@__PURE__*/ S.suspend(() =>
+const CreateCourseLessonRequestThumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -84,7 +84,7 @@ export interface CreateCourseLessonRequest {
   /** The display title of the lesson (e.g., "Getting Started with APIs"). */
   title?: string | null;
 }
-export const CreateCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chapter_id: S.String,
     content: S.optional(S.NullOr(S.String)),
@@ -110,7 +110,7 @@ export interface CourseLessonAssessmentQuestionsItemImage {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-export const CourseLessonAssessmentQuestionsItemImage = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonAssessmentQuestionsItemImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     filename: S.NullOr(S.String),
@@ -132,7 +132,7 @@ export interface CourseLessonAssessmentQuestionsItemOptionsItem {
   /** The order of this option within the question */
   order: number;
 }
-export const CourseLessonAssessmentQuestionsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonAssessmentQuestionsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     is_correct: S.NullOr(S.Boolean),
@@ -146,7 +146,7 @@ export const CourseLessonAssessmentQuestionsItemOptionsItem = /*@__PURE__*/ S.su
 /** The answer options for multiple choice/select questions */
 export type CourseLessonAssessmentQuestionsItemOptionsList =
   Array<CourseLessonAssessmentQuestionsItemOptionsItem>;
-export const CourseLessonAssessmentQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
+const CourseLessonAssessmentQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
   CourseLessonAssessmentQuestionsItemOptionsItem,
 ) as any as S.Schema<CourseLessonAssessmentQuestionsItemOptionsList>;
 
@@ -156,7 +156,7 @@ export type CoursesAssessmentQuestionTypes =
   | "true_false"
   | "multiple_choice"
   | "multiple_select";
-export const CoursesAssessmentQuestionTypes = S.String;
+const CoursesAssessmentQuestionTypes = S.String;
 
 /** An assessment question in a course quiz or knowledge check */
 export interface CourseLessonAssessmentQuestionsItem {
@@ -177,7 +177,7 @@ export interface CourseLessonAssessmentQuestionsItem {
   /** The type of the question */
   question_type: CoursesAssessmentQuestionTypes;
 }
-export const CourseLessonAssessmentQuestionsItem = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonAssessmentQuestionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correct_answer: S.NullOr(S.String),
     created_at: S.String,
@@ -194,30 +194,26 @@ export const CourseLessonAssessmentQuestionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of questions for quiz or knowledge check lessons. Empty for non-assessment lesson types. */
 export type CourseLessonAssessmentQuestionsList = Array<CourseLessonAssessmentQuestionsItem>;
-export const CourseLessonAssessmentQuestionsList = /*@__PURE__*/ S.Array(
+const CourseLessonAssessmentQuestionsList = /*@__PURE__*/ S.Array(
   CourseLessonAssessmentQuestionsItem,
 ) as any as S.Schema<CourseLessonAssessmentQuestionsList>;
 
 /** Represents an image attachment */
 export type CourseLessonAttachmentsItem = CourseLessonAssessmentQuestionsItemImage;
-export const CourseLessonAttachmentsItem = CourseLessonAssessmentQuestionsItemImage;
-
 /** All supplementary files attached to this lesson returned as a flat array rather than a paginated connection. */
 export type CourseLessonAttachmentsList = Array<CourseLessonAssessmentQuestionsItemImage>;
-export const CourseLessonAttachmentsList = /*@__PURE__*/ S.Array(
+const CourseLessonAttachmentsList = /*@__PURE__*/ S.Array(
   CourseLessonAssessmentQuestionsItemImage,
 ) as any as S.Schema<CourseLessonAttachmentsList>;
 
 /** The primary PDF document for PDF-type lessons. Null if this lesson is not a PDF lesson or no PDF has been uploaded. */
 export type CourseLessonMainPdf = CourseLessonAssessmentQuestionsItemImage;
-export const CourseLessonMainPdf = CourseLessonAssessmentQuestionsItemImage;
-
 /** The thumbnail image displayed on lesson cards and previews. Null if no thumbnail has been uploaded. */
 export interface CourseLessonThumbnail {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-export const CourseLessonThumbnail = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonThumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.NullOr(S.String),
   }),
@@ -225,7 +221,7 @@ export const CourseLessonThumbnail = /*@__PURE__*/ S.suspend(() =>
 
 /** Mux asset statuses */
 export type MuxAssetStatuses = "uploading" | "created" | "ready";
-export const MuxAssetStatuses = S.String;
+const MuxAssetStatuses = S.String;
 
 /** The Mux video asset for video-type lessons, used for streaming playback. Null if this lesson has no hosted video. */
 export interface CourseLessonVideoAsset {
@@ -256,7 +252,7 @@ export interface CourseLessonVideoAsset {
   /** The datetime the mux asset was last updated. */
   updated_at: string;
 }
-export const CourseLessonVideoAsset = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonVideoAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asset_id: S.NullOr(S.String),
     audio_only: S.Boolean,
@@ -276,7 +272,7 @@ export const CourseLessonVideoAsset = /*@__PURE__*/ S.suspend(() =>
 
 /** The available visibilities for a lesson. Determines how / whether a lesson is visible to users. */
 export type LessonVisibilities = "visible" | "hidden";
-export const LessonVisibilities = S.String;
+const LessonVisibilities = S.String;
 
 /** An individual learning unit within a chapter, which can contain text, video, PDF, or assessment content. */
 export interface CourseLesson {
@@ -311,7 +307,7 @@ export interface CourseLesson {
   /** The visibility setting that controls whether this lesson appears to students. One of: visible, hidden. */
   visibility: LessonVisibilities;
 }
-export const CourseLesson = /*@__PURE__*/ S.suspend(() =>
+const CourseLesson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessment_questions: CourseLessonAssessmentQuestionsList,
     attachments: CourseLessonAttachmentsList,
@@ -335,7 +331,7 @@ export interface DeleteCourseLessonRequest {
   /** The unique identifier of the lesson to delete (e.g., "les_XXXXX"). */
   id: string;
 }
-export const DeleteCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/course_lessons/{id}", code: 200 })),
@@ -344,7 +340,7 @@ export const DeleteCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCourseLessonRequest>;
 
 export type DeleteCourseLessonResponse = boolean;
-export const DeleteCourseLessonResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCourseLessonResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteCourseLessonResponse",
@@ -354,7 +350,7 @@ export interface GetCourseLessonRequest {
   /** The unique identifier of the lesson to retrieve. */
   id: string;
 }
-export const GetCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/course_lessons/{id}", code: 200 })),
@@ -368,7 +364,7 @@ export interface ListCourseLessonRequest {
   course_id?: string;
   chapter_id?: string;
 }
-export const ListCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -381,8 +377,6 @@ export const ListCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The thumbnail image displayed on lesson cards and previews. Null if no thumbnail has been uploaded. */
 export type CourseLessonListItemThumbnail = CourseLessonThumbnail;
-export const CourseLessonListItemThumbnail = CourseLessonThumbnail;
-
 /** An individual learning unit within a chapter, which can contain text, video, PDF, or assessment content. */
 export interface CourseLessonListItem {
   /** The Markdown content body of the lesson. Null if the lesson has no text content. */
@@ -408,7 +402,7 @@ export interface CourseLessonListItem {
   /** The visibility setting that controls whether this lesson appears to students. One of: visible, hidden. */
   visibility: LessonVisibilities;
 }
-export const CourseLessonListItem = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.NullOr(S.String),
     created_at: S.String,
@@ -426,7 +420,7 @@ export const CourseLessonListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListCourseLessonResponseDataList = Array<CourseLessonListItem>;
-export const ListCourseLessonResponseDataList = /*@__PURE__*/ S.Array(
+const ListCourseLessonResponseDataList = /*@__PURE__*/ S.Array(
   CourseLessonListItem,
 ) as any as S.Schema<ListCourseLessonResponseDataList>;
 
@@ -441,7 +435,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -456,7 +450,7 @@ export interface ListCourseLessonResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListCourseLessonResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCourseLessonResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCourseLessonResponseDataList,
     page_info: PageInfo,
@@ -467,7 +461,7 @@ export interface MarkAsCompletedCourseLessonRequest {
   /** The unique identifier of the lesson to mark as completed (e.g., "les_XXXXX"). */
   lesson_id: string;
 }
-export const MarkAsCompletedCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
+const MarkAsCompletedCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lesson_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -478,29 +472,28 @@ export const MarkAsCompletedCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarkAsCompletedCourseLessonRequest>;
 
 export type MarkAsCompletedCourseLessonResponse = boolean;
-export const MarkAsCompletedCourseLessonResponse =
+const MarkAsCompletedCourseLessonResponse =
   DeleteCourseLessonResponse as any as S.Schema<MarkAsCompletedCourseLessonResponse>;
 
 export interface StartCourseLessonRequest {
   /** The unique identifier of the lesson the user is starting (e.g., "les_XXXXX"). */
   lesson_id: string;
 }
-export const StartCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
+const StartCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lesson_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/course_lessons/{lesson_id}/start", code: 200 })),
 ).annotate({ identifier: "StartCourseLessonRequest" }) as any as S.Schema<StartCourseLessonRequest>;
 
 export type StartCourseLessonResponse = boolean;
-export const StartCourseLessonResponse =
+const StartCourseLessonResponse =
   DeleteCourseLessonResponse as any as S.Schema<StartCourseLessonResponse>;
 
 /** The IDs of the selected options (for multiple choice/select questions) */
 export type SubmitAssessmentCourseLessonRequestAnswersItemSelectedOptionIdsList = Array<string>;
-export const SubmitAssessmentCourseLessonRequestAnswersItemSelectedOptionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SubmitAssessmentCourseLessonRequestAnswersItemSelectedOptionIdsList>;
+const SubmitAssessmentCourseLessonRequestAnswersItemSelectedOptionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SubmitAssessmentCourseLessonRequestAnswersItemSelectedOptionIdsList>;
 
 /** Input for a single question's answer in an assessment submission */
 export interface SubmitAssessmentCourseLessonRequestAnswersItem {
@@ -511,7 +504,7 @@ export interface SubmitAssessmentCourseLessonRequestAnswersItem {
   /** The IDs of the selected options (for multiple choice/select questions) */
   selected_option_ids?: SubmitAssessmentCourseLessonRequestAnswersItemSelectedOptionIdsList | null;
 }
-export const SubmitAssessmentCourseLessonRequestAnswersItem = /*@__PURE__*/ S.suspend(() =>
+const SubmitAssessmentCourseLessonRequestAnswersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer_text: S.optional(S.NullOr(S.String)),
     question_id: S.String,
@@ -526,7 +519,7 @@ export const SubmitAssessmentCourseLessonRequestAnswersItem = /*@__PURE__*/ S.su
 /** The list of answers to submit for each assessment question. */
 export type SubmitAssessmentCourseLessonRequestAnswersList =
   Array<SubmitAssessmentCourseLessonRequestAnswersItem>;
-export const SubmitAssessmentCourseLessonRequestAnswersList = /*@__PURE__*/ S.Array(
+const SubmitAssessmentCourseLessonRequestAnswersList = /*@__PURE__*/ S.Array(
   SubmitAssessmentCourseLessonRequestAnswersItem,
 ) as any as S.Schema<SubmitAssessmentCourseLessonRequestAnswersList>;
 
@@ -536,7 +529,7 @@ export interface SubmitAssessmentCourseLessonRequest {
   /** The list of answers to submit for each assessment question. */
   answers: SubmitAssessmentCourseLessonRequestAnswersList;
 }
-export const SubmitAssessmentCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitAssessmentCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lesson_id: S.String.pipe(T.Label()),
     answers: SubmitAssessmentCourseLessonRequestAnswersList,
@@ -554,7 +547,7 @@ export interface SubmitAssessmentCourseLessonResponseLesson {
   /** The display name of the lesson shown to students. Maximum 120 characters. */
   title: string;
 }
-export const SubmitAssessmentCourseLessonResponseLesson = /*@__PURE__*/ S.suspend(() =>
+const SubmitAssessmentCourseLessonResponseLesson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -567,7 +560,7 @@ export const SubmitAssessmentCourseLessonResponseLesson = /*@__PURE__*/ S.suspen
 export type SubmitAssessmentCourseLessonResponseResultGradedQuestionsMap = {
   [key: string]: unknown | undefined;
 };
-export const SubmitAssessmentCourseLessonResponseResultGradedQuestionsMap = /*@__PURE__*/ S.Record(
+const SubmitAssessmentCourseLessonResponseResultGradedQuestionsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SubmitAssessmentCourseLessonResponseResultGradedQuestionsMap>;
@@ -581,7 +574,7 @@ export interface SubmitAssessmentCourseLessonResponseUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const SubmitAssessmentCourseLessonResponseUser = /*@__PURE__*/ S.suspend(() =>
+const SubmitAssessmentCourseLessonResponseUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -615,7 +608,7 @@ export interface SubmitAssessmentCourseLessonResponse {
   /** The user who took the assessment */
   user: SubmitAssessmentCourseLessonResponseUser;
 }
-export const SubmitAssessmentCourseLessonResponse = /*@__PURE__*/ S.suspend(() =>
+const SubmitAssessmentCourseLessonResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     id: S.String,
@@ -640,12 +633,11 @@ export interface UpdateCourseLessonRequestAssessmentCompletionRequirement {
   /** The minimum number of questions that must be answered correctly. Cannot be set together with minimum_grade_percent. */
   minimum_questions_correct?: number | null;
 }
-export const UpdateCourseLessonRequestAssessmentCompletionRequirement = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      minimum_grade_percent: S.optional(S.NullOr(S.Number)),
-      minimum_questions_correct: S.optional(S.NullOr(S.Number)),
-    }),
+const UpdateCourseLessonRequestAssessmentCompletionRequirement = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimum_grade_percent: S.optional(S.NullOr(S.Number)),
+    minimum_questions_correct: S.optional(S.NullOr(S.Number)),
+  }),
 ).annotate({
   identifier: "UpdateCourseLessonRequestAssessmentCompletionRequirement",
 }) as any as S.Schema<UpdateCourseLessonRequestAssessmentCompletionRequirement>;
@@ -653,9 +645,6 @@ export const UpdateCourseLessonRequestAssessmentCompletionRequirement = /*@__PUR
 /** Optional image attachment for the question */
 export type UpdateCourseLessonRequestAssessmentQuestionsItemImage =
   CreateCourseLessonRequestThumbnail;
-export const UpdateCourseLessonRequestAssessmentQuestionsItemImage =
-  CreateCourseLessonRequestThumbnail;
-
 /** Input for creating or updating an assessment question option */
 export interface UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem {
   /** The ID of an existing option. If provided, the option will be updated. If not provided, a new option will be created. */
@@ -665,13 +654,12 @@ export interface UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem {
   /** The text of the answer option */
   option_text: string;
 }
-export const UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.NullOr(S.String)),
-      is_correct: S.Boolean,
-      option_text: S.String,
-    }),
+const UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    is_correct: S.Boolean,
+    option_text: S.String,
+  }),
 ).annotate({
   identifier: "UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem",
 }) as any as S.Schema<UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem>;
@@ -679,7 +667,7 @@ export const UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem = /*@__
 /** The answer options for multiple choice/select questions */
 export type UpdateCourseLessonRequestAssessmentQuestionsItemOptionsList =
   Array<UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem>;
-export const UpdateCourseLessonRequestAssessmentQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
+const UpdateCourseLessonRequestAssessmentQuestionsItemOptionsList = /*@__PURE__*/ S.Array(
   UpdateCourseLessonRequestAssessmentQuestionsItemOptionsItem,
 ) as any as S.Schema<UpdateCourseLessonRequestAssessmentQuestionsItemOptionsList>;
 
@@ -698,7 +686,7 @@ export interface UpdateCourseLessonRequestAssessmentQuestionsItem {
   /** The type of the question */
   question_type: CoursesAssessmentQuestionTypes | (string & {});
 }
-export const UpdateCourseLessonRequestAssessmentQuestionsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateCourseLessonRequestAssessmentQuestionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correct_answer: S.String,
     id: S.optional(S.NullOr(S.String)),
@@ -714,28 +702,22 @@ export const UpdateCourseLessonRequestAssessmentQuestionsItem = /*@__PURE__*/ S.
 /** The full list of assessment questions for quiz or knowledge check lessons. Replaces all existing questions. */
 export type UpdateCourseLessonRequestAssessmentQuestionsList =
   Array<UpdateCourseLessonRequestAssessmentQuestionsItem>;
-export const UpdateCourseLessonRequestAssessmentQuestionsList = /*@__PURE__*/ S.Array(
+const UpdateCourseLessonRequestAssessmentQuestionsList = /*@__PURE__*/ S.Array(
   UpdateCourseLessonRequestAssessmentQuestionsItem,
 ) as any as S.Schema<UpdateCourseLessonRequestAssessmentQuestionsList>;
 
 /** Input for an attachment */
 export type UpdateCourseLessonRequestAttachmentsItem = CreateCourseLessonRequestThumbnail;
-export const UpdateCourseLessonRequestAttachmentsItem = CreateCourseLessonRequestThumbnail;
-
 /** File attachments for the lesson such as PDFs or documents. Replaces all existing attachments. */
 export type UpdateCourseLessonRequestAttachmentsList = Array<CreateCourseLessonRequestThumbnail>;
-export const UpdateCourseLessonRequestAttachmentsList = /*@__PURE__*/ S.Array(
+const UpdateCourseLessonRequestAttachmentsList = /*@__PURE__*/ S.Array(
   CreateCourseLessonRequestThumbnail,
 ) as any as S.Schema<UpdateCourseLessonRequestAttachmentsList>;
 
 /** The primary PDF document attached to this lesson for student reference. */
 export type UpdateCourseLessonRequestMainPdf = CreateCourseLessonRequestThumbnail;
-export const UpdateCourseLessonRequestMainPdf = CreateCourseLessonRequestThumbnail;
-
 /** The thumbnail image for the lesson in PNG, JPEG, or GIF format. */
 export type UpdateCourseLessonRequestThumbnail = CreateCourseLessonRequestThumbnail;
-export const UpdateCourseLessonRequestThumbnail = CreateCourseLessonRequestThumbnail;
-
 export interface UpdateCourseLessonRequest {
   /** The unique identifier of the lesson to update (e.g., "les_XXXXX"). */
   id: string;
@@ -768,7 +750,7 @@ export interface UpdateCourseLessonRequest {
   /** Controls whether this lesson is visible to students or hidden as a draft. */
   visibility?: LessonVisibilities | (string & {}) | null;
 }
-export const UpdateCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCourseLessonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     assessment_completion_requirement: S.optional(

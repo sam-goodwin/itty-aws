@@ -51,7 +51,7 @@ export interface CreateCourseChapterRequest {
   /** The display title of the chapter (e.g., "Module 1: Introduction"). */
   title?: string | null;
 }
-export const CreateCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     course_id: S.String,
     title: S.optional(S.NullOr(S.String)),
@@ -69,7 +69,7 @@ export interface CourseChapterLessonsItem {
   /** The display name of the lesson shown to students. Maximum 120 characters. */
   title: string;
 }
-export const CourseChapterLessonsItem = /*@__PURE__*/ S.suspend(() =>
+const CourseChapterLessonsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     order: S.Number,
@@ -79,7 +79,7 @@ export const CourseChapterLessonsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of lessons in this chapter, sorted by display position. Hidden lessons are excluded for non-admin users. */
 export type CourseChapterLessonsList = Array<CourseChapterLessonsItem>;
-export const CourseChapterLessonsList = /*@__PURE__*/ S.Array(
+const CourseChapterLessonsList = /*@__PURE__*/ S.Array(
   CourseChapterLessonsItem,
 ) as any as S.Schema<CourseChapterLessonsList>;
 
@@ -94,7 +94,7 @@ export interface CourseChapter {
   /** The display name of the chapter shown to students. Maximum 150 characters. */
   title: string;
 }
-export const CourseChapter = /*@__PURE__*/ S.suspend(() =>
+const CourseChapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     lessons: CourseChapterLessonsList,
@@ -107,7 +107,7 @@ export interface DeleteCourseChapterRequest {
   /** The unique identifier of the chapter to delete (e.g., "chap_XXXXX"). */
   id: string;
 }
-export const DeleteCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/course_chapters/{id}", code: 200 })),
@@ -116,7 +116,7 @@ export const DeleteCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCourseChapterRequest>;
 
 export type DeleteCourseChapterResponse = boolean;
-export const DeleteCourseChapterResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCourseChapterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteCourseChapterResponse",
@@ -126,7 +126,7 @@ export interface GetCourseChapterRequest {
   /** The unique identifier of the chapter to retrieve. */
   id: string;
 }
-export const GetCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/course_chapters/{id}", code: 200 })),
@@ -139,7 +139,7 @@ export interface ListCourseChapterRequest {
   last?: number;
   course_id: string;
 }
-export const ListCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -158,12 +158,9 @@ export interface CourseChapterListItem {
   /** The display name of the chapter shown to students. Maximum 150 characters. */
   title: string;
 }
-export const CourseChapterListItem =
-  CourseChapterLessonsItem as any as S.Schema<CourseChapterListItem>;
-
 /** A list of nodes. */
 export type ListCourseChapterResponseDataList = Array<CourseChapterListItem>;
-export const ListCourseChapterResponseDataList =
+const ListCourseChapterResponseDataList =
   CourseChapterLessonsList as any as S.Schema<ListCourseChapterResponseDataList>;
 
 /** Information about pagination in a connection. */
@@ -177,7 +174,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -192,7 +189,7 @@ export interface ListCourseChapterResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListCourseChapterResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCourseChapterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCourseChapterResponseDataList,
     page_info: PageInfo,
@@ -207,7 +204,7 @@ export interface UpdateCourseChapterRequest {
   /** The new display title of the chapter (e.g., "Module 1: Introduction"). */
   title: string;
 }
-export const UpdateCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCourseChapterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     title: S.String,

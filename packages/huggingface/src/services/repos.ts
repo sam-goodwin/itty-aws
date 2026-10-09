@@ -23,8 +23,6 @@ export class Conflict
 
 /** The region where the repository is hosted. */
 export type CreateRepositoryRequestBodyCase0Region = "us" | "eu";
-export const CreateRepositoryRequestBodyCase0Region = S.String;
-
 /** The license of the repository. You can select 'Other' if your license is not in the list */
 export type CreateRepositoryRequestBodyCase0License =
   | "apache-2.0"
@@ -110,36 +108,16 @@ export type CreateRepositoryRequestBodyCase0License =
   | "gemma"
   | "unknown"
   | "other";
-export const CreateRepositoryRequestBodyCase0License = S.String;
-
 /** Repository visibility. `protected` is only supported for Spaces. Cannot be specified along with private. */
 export type CreateRepositoryRequestBodyCase0Visibility = "private" | "public" | "protected";
-export const CreateRepositoryRequestBodyCase0Visibility = S.String;
-
 export type CreateRepositoryRequestBodyCase0FilesItemEncoding = "utf-8" | "base64";
-export const CreateRepositoryRequestBodyCase0FilesItemEncoding = S.String;
-
 export interface CreateRepositoryRequestBodyCase0FilesItem {
   content: string;
   path: string;
   encoding?: CreateRepositoryRequestBodyCase0FilesItemEncoding | (string & {});
 }
-export const CreateRepositoryRequestBodyCase0FilesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    path: S.String,
-    encoding: S.optional(CreateRepositoryRequestBodyCase0FilesItemEncoding),
-  }),
-).annotate({
-  identifier: "CreateRepositoryRequestBodyCase0FilesItem",
-}) as any as S.Schema<CreateRepositoryRequestBodyCase0FilesItem>;
-
 export type CreateRepositoryRequestBodyCase0FilesList =
   Array<CreateRepositoryRequestBodyCase0FilesItem>;
-export const CreateRepositoryRequestBodyCase0FilesList = /*@__PURE__*/ S.Array(
-  CreateRepositoryRequestBodyCase0FilesItem,
-) as any as S.Schema<CreateRepositoryRequestBodyCase0FilesList>;
-
 export interface CreateRepositoryRequestBodyCase0 {
   name: string;
   organization?: string | null;
@@ -157,28 +135,8 @@ export interface CreateRepositoryRequestBodyCase0 {
   files?: CreateRepositoryRequestBodyCase0FilesList;
   type: string;
 }
-export const CreateRepositoryRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    organization: S.optional(S.NullOr(S.String)),
-    region: S.optional(CreateRepositoryRequestBodyCase0Region),
-    license: S.optional(CreateRepositoryRequestBodyCase0License),
-    license_name: S.optional(S.String),
-    license_link: S.optional(S.String),
-    private: S.optional(S.NullOr(S.Boolean)),
-    visibility: S.optional(CreateRepositoryRequestBodyCase0Visibility),
-    resourceGroupId: S.optional(S.NullOr(S.String)),
-    files: S.optional(CreateRepositoryRequestBodyCase0FilesList),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "CreateRepositoryRequestBodyCase0",
-}) as any as S.Schema<CreateRepositoryRequestBodyCase0>;
-
 /** The region where the repository is hosted. */
 export type CreateRepositoryRequestBodyCase1Region = "us" | "eu";
-export const CreateRepositoryRequestBodyCase1Region = S.String;
-
 /** The license of the repository. You can select 'Other' if your license is not in the list */
 export type CreateRepositoryRequestBodyCase1License =
   | "apache-2.0"
@@ -264,28 +222,16 @@ export type CreateRepositoryRequestBodyCase1License =
   | "gemma"
   | "unknown"
   | "other";
-export const CreateRepositoryRequestBodyCase1License = S.String;
-
 /** Repository visibility. `protected` is only supported for Spaces. Cannot be specified along with private. */
 export type CreateRepositoryRequestBodyCase1Visibility = "private" | "public" | "protected";
-export const CreateRepositoryRequestBodyCase1Visibility = S.String;
-
 export type CreateRepositoryRequestBodyCase1FilesItemEncoding = "utf-8" | "base64";
-export const CreateRepositoryRequestBodyCase1FilesItemEncoding = S.String;
-
 export interface CreateRepositoryRequestBodyCase1FilesItem {
   content: string;
   path: string;
   encoding?: CreateRepositoryRequestBodyCase1FilesItemEncoding | (string & {});
 }
-export const CreateRepositoryRequestBodyCase1FilesItem =
-  CreateRepositoryRequestBodyCase0FilesItem as any as S.Schema<CreateRepositoryRequestBodyCase1FilesItem>;
-
 export type CreateRepositoryRequestBodyCase1FilesList =
   Array<CreateRepositoryRequestBodyCase1FilesItem>;
-export const CreateRepositoryRequestBodyCase1FilesList =
-  CreateRepositoryRequestBodyCase0FilesList as any as S.Schema<CreateRepositoryRequestBodyCase1FilesList>;
-
 export interface CreateRepositoryRequestBodyCase1 {
   name: string;
   organization?: string | null;
@@ -303,28 +249,8 @@ export interface CreateRepositoryRequestBodyCase1 {
   files?: CreateRepositoryRequestBodyCase1FilesList;
   type?: string;
 }
-export const CreateRepositoryRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    organization: S.optional(S.NullOr(S.String)),
-    region: S.optional(CreateRepositoryRequestBodyCase1Region),
-    license: S.optional(CreateRepositoryRequestBodyCase1License),
-    license_name: S.optional(S.String),
-    license_link: S.optional(S.String),
-    private: S.optional(S.NullOr(S.Boolean)),
-    visibility: S.optional(CreateRepositoryRequestBodyCase1Visibility),
-    resourceGroupId: S.optional(S.NullOr(S.String)),
-    files: S.optional(CreateRepositoryRequestBodyCase1FilesList),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateRepositoryRequestBodyCase1",
-}) as any as S.Schema<CreateRepositoryRequestBodyCase1>;
-
 /** The region where the repository is hosted. */
 export type CreateRepositoryRequestBodyCase2Region = "us" | "eu";
-export const CreateRepositoryRequestBodyCase2Region = S.String;
-
 /** The license of the repository. You can select 'Other' if your license is not in the list */
 export type CreateRepositoryRequestBodyCase2License =
   | "apache-2.0"
@@ -410,28 +336,16 @@ export type CreateRepositoryRequestBodyCase2License =
   | "gemma"
   | "unknown"
   | "other";
-export const CreateRepositoryRequestBodyCase2License = S.String;
-
 /** Repository visibility. `protected` is only supported for Spaces. Cannot be specified along with private. */
 export type CreateRepositoryRequestBodyCase2Visibility = "private" | "public" | "protected";
-export const CreateRepositoryRequestBodyCase2Visibility = S.String;
-
 export type CreateRepositoryRequestBodyCase2FilesItemEncoding = "utf-8" | "base64";
-export const CreateRepositoryRequestBodyCase2FilesItemEncoding = S.String;
-
 export interface CreateRepositoryRequestBodyCase2FilesItem {
   content: string;
   path: string;
   encoding?: CreateRepositoryRequestBodyCase2FilesItemEncoding | (string & {});
 }
-export const CreateRepositoryRequestBodyCase2FilesItem =
-  CreateRepositoryRequestBodyCase0FilesItem as any as S.Schema<CreateRepositoryRequestBodyCase2FilesItem>;
-
 export type CreateRepositoryRequestBodyCase2FilesList =
   Array<CreateRepositoryRequestBodyCase2FilesItem>;
-export const CreateRepositoryRequestBodyCase2FilesList =
-  CreateRepositoryRequestBodyCase0FilesList as any as S.Schema<CreateRepositoryRequestBodyCase2FilesList>;
-
 export interface CreateRepositoryRequestBodyCase2 {
   name: string;
   organization?: string | null;
@@ -449,13 +363,8 @@ export interface CreateRepositoryRequestBodyCase2 {
   files?: CreateRepositoryRequestBodyCase2FilesList;
   type: string;
 }
-export const CreateRepositoryRequestBodyCase2 =
-  CreateRepositoryRequestBodyCase0 as any as S.Schema<CreateRepositoryRequestBodyCase2>;
-
 /** The region where the repository is hosted. */
 export type CreateRepositoryRequestBodyCase3Region = "us" | "eu";
-export const CreateRepositoryRequestBodyCase3Region = S.String;
-
 /** The license of the repository. You can select 'Other' if your license is not in the list */
 export type CreateRepositoryRequestBodyCase3License =
   | "apache-2.0"
@@ -541,28 +450,16 @@ export type CreateRepositoryRequestBodyCase3License =
   | "gemma"
   | "unknown"
   | "other";
-export const CreateRepositoryRequestBodyCase3License = S.String;
-
 /** Repository visibility. `protected` is only supported for Spaces. Cannot be specified along with private. */
 export type CreateRepositoryRequestBodyCase3Visibility = "private" | "public" | "protected";
-export const CreateRepositoryRequestBodyCase3Visibility = S.String;
-
 export type CreateRepositoryRequestBodyCase3FilesItemEncoding = "utf-8" | "base64";
-export const CreateRepositoryRequestBodyCase3FilesItemEncoding = S.String;
-
 export interface CreateRepositoryRequestBodyCase3FilesItem {
   content: string;
   path: string;
   encoding?: CreateRepositoryRequestBodyCase3FilesItemEncoding | (string & {});
 }
-export const CreateRepositoryRequestBodyCase3FilesItem =
-  CreateRepositoryRequestBodyCase0FilesItem as any as S.Schema<CreateRepositoryRequestBodyCase3FilesItem>;
-
 export type CreateRepositoryRequestBodyCase3FilesList =
   Array<CreateRepositoryRequestBodyCase3FilesItem>;
-export const CreateRepositoryRequestBodyCase3FilesList =
-  CreateRepositoryRequestBodyCase0FilesList as any as S.Schema<CreateRepositoryRequestBodyCase3FilesList>;
-
 /** The hardware flavor of the space. If you select 'zero-a10g' or 'zerogpu', the SDK must be Gradio. */
 export type CreateRepositoryRequestBodyCase3Hardware =
   | "cpu-basic"
@@ -595,14 +492,12 @@ export type CreateRepositoryRequestBodyCase3Hardware =
   | "rtx-pro-6000x8"
   | "inf2x6"
   | "zerogpu";
-export const CreateRepositoryRequestBodyCase3Hardware = S.String;
-
 export interface CreateRepositoryRequestBodyCase3SecretsItem {
   key: string;
   description?: string;
   value: string;
 }
-export const CreateRepositoryRequestBodyCase3SecretsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryRequestBodyCase3SecretsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     description: S.optional(S.String),
@@ -614,30 +509,21 @@ export const CreateRepositoryRequestBodyCase3SecretsItem = /*@__PURE__*/ S.suspe
 
 export type CreateRepositoryRequestBodyCase3SecretsList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-export const CreateRepositoryRequestBodyCase3SecretsList = /*@__PURE__*/ S.Array(
+const CreateRepositoryRequestBodyCase3SecretsList = /*@__PURE__*/ S.Array(
   CreateRepositoryRequestBodyCase3SecretsItem,
 ) as any as S.Schema<CreateRepositoryRequestBodyCase3SecretsList>;
 
 export type CreateRepositoryRequestBodyCase3VariablesItem =
   CreateRepositoryRequestBodyCase3SecretsItem;
-export const CreateRepositoryRequestBodyCase3VariablesItem =
-  CreateRepositoryRequestBodyCase3SecretsItem;
-
 export type CreateRepositoryRequestBodyCase3VariablesList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-export const CreateRepositoryRequestBodyCase3VariablesList =
-  CreateRepositoryRequestBodyCase3SecretsList as any as S.Schema<CreateRepositoryRequestBodyCase3VariablesList>;
-
 export type CreateRepositoryRequestBodyCase3SleepTimeSeconds = number | number;
-export const CreateRepositoryRequestBodyCase3SleepTimeSeconds =
-  S.Unknown as any as S.Schema<CreateRepositoryRequestBodyCase3SleepTimeSeconds>;
-
 export type CreateRepositoryRequestBodyCase3VolumesItemType =
   | "bucket"
   | "model"
   | "dataset"
   | "space";
-export const CreateRepositoryRequestBodyCase3VolumesItemType = S.String;
+const CreateRepositoryRequestBodyCase3VolumesItemType = S.String;
 
 export interface CreateRepositoryRequestBodyCase3VolumesItem {
   type: CreateRepositoryRequestBodyCase3VolumesItemType | (string & {});
@@ -652,7 +538,7 @@ export interface CreateRepositoryRequestBodyCase3VolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const CreateRepositoryRequestBodyCase3VolumesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryRequestBodyCase3VolumesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CreateRepositoryRequestBodyCase3VolumesItemType,
     source: S.String,
@@ -668,14 +554,12 @@ export const CreateRepositoryRequestBodyCase3VolumesItem = /*@__PURE__*/ S.suspe
 /** HuggingFace Buckets or Repos to mount as volumes in the Space container. */
 export type CreateRepositoryRequestBodyCase3VolumesList =
   Array<CreateRepositoryRequestBodyCase3VolumesItem>;
-export const CreateRepositoryRequestBodyCase3VolumesList = /*@__PURE__*/ S.Array(
+const CreateRepositoryRequestBodyCase3VolumesList = /*@__PURE__*/ S.Array(
   CreateRepositoryRequestBodyCase3VolumesItem,
 ) as any as S.Schema<CreateRepositoryRequestBodyCase3VolumesList>;
 
 /** The Space SDK. `static` is free for everyone. `gradio` and `docker` run on compute: on the free `cpu-basic` flavor they require a subscription (PRO for users, Team/Enterprise for orgs), while paid hardware only requires billing (a payment method and prepaid credits). */
 export type CreateRepositoryRequestBodyCase3Sdk = "gradio" | "docker" | "static";
-export const CreateRepositoryRequestBodyCase3Sdk = S.String;
-
 export interface CreateRepositoryRequestBodyCase3 {
   name: string;
   organization?: string | null;
@@ -706,46 +590,17 @@ export interface CreateRepositoryRequestBodyCase3 {
   sdkVersion?: string | null;
   devModeEnabled?: boolean;
 }
-export const CreateRepositoryRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    organization: S.optional(S.NullOr(S.String)),
-    region: S.optional(CreateRepositoryRequestBodyCase3Region),
-    license: S.optional(CreateRepositoryRequestBodyCase3License),
-    license_name: S.optional(S.String),
-    license_link: S.optional(S.String),
-    private: S.optional(S.NullOr(S.Boolean)),
-    visibility: S.optional(CreateRepositoryRequestBodyCase3Visibility),
-    resourceGroupId: S.optional(S.NullOr(S.String)),
-    files: S.optional(CreateRepositoryRequestBodyCase3FilesList),
-    type: S.String,
-    template: S.optional(S.String),
-    short_description: S.optional(S.String),
-    hardware: S.optional(CreateRepositoryRequestBodyCase3Hardware),
-    secrets: S.optional(CreateRepositoryRequestBodyCase3SecretsList),
-    variables: S.optional(CreateRepositoryRequestBodyCase3VariablesList),
-    sleepTimeSeconds: S.optional(CreateRepositoryRequestBodyCase3SleepTimeSeconds),
-    volumes: S.optional(CreateRepositoryRequestBodyCase3VolumesList),
-    sdk: CreateRepositoryRequestBodyCase3Sdk,
-    sdkVersion: S.optional(S.NullOr(S.String)),
-    devModeEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateRepositoryRequestBodyCase3",
-}) as any as S.Schema<CreateRepositoryRequestBodyCase3>;
-
 export type CreateRepositoryRequestBody =
   | CreateRepositoryRequestBodyCase0
   | CreateRepositoryRequestBodyCase1
   | CreateRepositoryRequestBodyCase2
   | CreateRepositoryRequestBodyCase3;
-export const CreateRepositoryRequestBody =
-  S.Unknown as any as S.Schema<CreateRepositoryRequestBody>;
+const CreateRepositoryRequestBody = S.Unknown as any as S.Schema<CreateRepositoryRequestBody>;
 
 export interface CreateRepositoryRequest {
   body?: CreateRepositoryRequestBody;
 }
-export const CreateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CreateRepositoryRequestBody.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "/api/repos/create", code: 200 })),
@@ -758,7 +613,7 @@ export interface CreateRepositoryResponse {
   id: string;
   filesCopyPending?: boolean;
 }
-export const CreateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     name: S.String,
@@ -768,10 +623,10 @@ export const CreateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRepositoryResponse" }) as any as S.Schema<CreateRepositoryResponse>;
 
 export type DuplicateRepositoryRequestRepoType = "spaces";
-export const DuplicateRepositoryRequestRepoType = S.String;
+const DuplicateRepositoryRequestRepoType = S.String;
 
 export type DuplicateRepositoryRequestVisibility = "private" | "public" | "protected";
-export const DuplicateRepositoryRequestVisibility = S.String;
+const DuplicateRepositoryRequestVisibility = S.String;
 
 export type DuplicateRepositoryRequestHardware =
   | "cpu-basic"
@@ -804,31 +659,25 @@ export type DuplicateRepositoryRequestHardware =
   | "rtx-pro-6000x8"
   | "inf2x6"
   | "";
-export const DuplicateRepositoryRequestHardware = S.String;
+const DuplicateRepositoryRequestHardware = S.String;
 
 export type DuplicateRepositoryRequestSleepTimeSeconds = number | number;
-export const DuplicateRepositoryRequestSleepTimeSeconds =
+const DuplicateRepositoryRequestSleepTimeSeconds =
   S.Unknown as any as S.Schema<DuplicateRepositoryRequestSleepTimeSeconds>;
 
 export type DuplicateRepositoryRequestSecretsItem = CreateRepositoryRequestBodyCase3SecretsItem;
-export const DuplicateRepositoryRequestSecretsItem = CreateRepositoryRequestBodyCase3SecretsItem;
-
 export type DuplicateRepositoryRequestSecretsList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-export const DuplicateRepositoryRequestSecretsList =
+const DuplicateRepositoryRequestSecretsList =
   CreateRepositoryRequestBodyCase3SecretsList as any as S.Schema<DuplicateRepositoryRequestSecretsList>;
 
 export type DuplicateRepositoryRequestVariablesItem = CreateRepositoryRequestBodyCase3SecretsItem;
-export const DuplicateRepositoryRequestVariablesItem = CreateRepositoryRequestBodyCase3SecretsItem;
-
 export type DuplicateRepositoryRequestVariablesList =
   Array<CreateRepositoryRequestBodyCase3SecretsItem>;
-export const DuplicateRepositoryRequestVariablesList =
+const DuplicateRepositoryRequestVariablesList =
   CreateRepositoryRequestBodyCase3SecretsList as any as S.Schema<DuplicateRepositoryRequestVariablesList>;
 
 export type DuplicateRepositoryRequestVolumesItemType = "bucket" | "model" | "dataset" | "space";
-export const DuplicateRepositoryRequestVolumesItemType = S.String;
-
 export interface DuplicateRepositoryRequestVolumesItem {
   type: DuplicateRepositoryRequestVolumesItemType | (string & {});
   /** Source identifier, e.g. 'username/my-bucket' or 'username/my-model' */
@@ -842,12 +691,9 @@ export interface DuplicateRepositoryRequestVolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const DuplicateRepositoryRequestVolumesItem =
-  CreateRepositoryRequestBodyCase3VolumesItem as any as S.Schema<DuplicateRepositoryRequestVolumesItem>;
-
 /** HuggingFace Buckets or Repos to mount as volumes in the duplicated Space. */
 export type DuplicateRepositoryRequestVolumesList = Array<DuplicateRepositoryRequestVolumesItem>;
-export const DuplicateRepositoryRequestVolumesList =
+const DuplicateRepositoryRequestVolumesList =
   CreateRepositoryRequestBodyCase3VolumesList as any as S.Schema<DuplicateRepositoryRequestVolumesList>;
 
 export interface DuplicateRepositoryRequest {
@@ -865,7 +711,7 @@ export interface DuplicateRepositoryRequest {
   /** HuggingFace Buckets or Repos to mount as volumes in the duplicated Space. */
   volumes?: DuplicateRepositoryRequestVolumesList;
 }
-export const DuplicateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: DuplicateRepositoryRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -891,7 +737,7 @@ export interface DuplicateRepositoryResponse {
   /** True when the repo's LFS/Xet files are still being copied in the background; poll `.../duplicate/status` */
   filesCopyPending: boolean;
 }
-export const DuplicateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     filesCopyPending: S.Boolean,
@@ -901,14 +747,14 @@ export const DuplicateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateRepositoryResponse>;
 
 export type DuplicationStatusRequestRepoType = "models" | "datasets" | "spaces";
-export const DuplicationStatusRequestRepoType = S.String;
+const DuplicationStatusRequestRepoType = S.String;
 
 export interface DuplicationStatusRequest {
   repoType: DuplicationStatusRequestRepoType | (string & {});
   namespace: string;
   repo: string;
 }
-export const DuplicationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: DuplicationStatusRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -930,7 +776,7 @@ export interface DuplicationStatusResponse {
   /** Number of files copied so far */
   filesCopied?: number;
 }
-export const DuplicationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pending: S.Boolean,
     filesTotal: S.optional(S.Number),
@@ -941,14 +787,14 @@ export const DuplicationStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicationStatusResponse>;
 
 export type MoveRepoRequestType = "dataset" | "model" | "space" | "bucket" | "kernel" | "container";
-export const MoveRepoRequestType = S.String;
+const MoveRepoRequestType = S.String;
 
 export interface MoveRepoRequest {
   fromRepo: string;
   toRepo: string;
   type?: MoveRepoRequestType | (string & {});
 }
-export const MoveRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromRepo: S.String,
     toRepo: S.String,
@@ -957,7 +803,7 @@ export const MoveRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoveRepoRequest" }) as any as S.Schema<MoveRepoRequest>;
 
 export interface MoveRepoResponse {}
-export const MoveRepoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const MoveRepoResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "MoveRepoResponse",
 }) as any as S.Schema<MoveRepoResponse>;
 

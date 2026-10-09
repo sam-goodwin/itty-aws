@@ -15,7 +15,7 @@ export interface CreateTokenFlowRequest {
   nextUrl?: string;
   expiresInSeconds?: number;
 }
-export const CreateTokenFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     utmSource: S.optional(S.String),
     localhostPort: S.optional(S.Number),
@@ -30,7 +30,7 @@ export interface CreateTokenFlowResponse {
   code?: string;
   waitSecret?: string | Redacted.Redacted<string>;
 }
-export const CreateTokenFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenFlowId: S.optional(S.String),
     webUrl: S.optional(S.String),
@@ -40,7 +40,7 @@ export const CreateTokenFlowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTokenFlowResponse" }) as any as S.Schema<CreateTokenFlowResponse>;
 
 export interface GetTokenInfoRequest {}
-export const GetTokenInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTokenInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/TokenInfoGet", code: 200 }),
   ),
@@ -50,7 +50,7 @@ export interface UserIdentity {
   userId?: string;
   username?: string;
 }
-export const UserIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     username: S.optional(S.String),
@@ -62,7 +62,7 @@ export interface ServiceUserIdentity {
   serviceUserName?: string;
   createdBy?: UserIdentity;
 }
-export const ServiceUserIdentity = /*@__PURE__*/ S.suspend(() =>
+const ServiceUserIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceUserId: S.optional(S.String),
     serviceUserName: S.optional(S.String),
@@ -81,7 +81,7 @@ export interface GetTokenInfoResponse {
   expiresAt?: string;
   tokenName?: string;
 }
-export const GetTokenInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTokenInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
     workspaceId: S.optional(S.String),
@@ -99,7 +99,7 @@ export interface WaitTokenFlowRequest {
   tokenFlowId?: string;
   waitSecret?: string | Redacted.Redacted<string>;
 }
-export const WaitTokenFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitTokenFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeout: S.optional(S.Number),
     tokenFlowId: S.optional(S.String),
@@ -113,7 +113,7 @@ export interface WaitTokenFlowResponse {
   timeout?: boolean;
   workspaceUsername?: string;
 }
-export const WaitTokenFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const WaitTokenFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
     tokenSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),

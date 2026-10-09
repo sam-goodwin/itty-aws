@@ -50,7 +50,7 @@ export interface DeleteIPListRequest {
   region: string;
   name: string;
 }
-export const DeleteIPListRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIPListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -66,7 +66,7 @@ export const DeleteIPListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIPListRequest" }) as any as S.Schema<DeleteIPListRequest>;
 
 export type DeleteIPListResponse2 = unknown;
-export const DeleteIPListResponse2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteIPListResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteIPListResponse2" }) as any as S.Schema<DeleteIPListResponse2>;
 
@@ -75,7 +75,7 @@ export interface GetIPListRequest {
   region: string;
   name: string;
 }
-export const GetIPListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIPListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -92,14 +92,14 @@ export const GetIPListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per IP list. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type GetIPListResponseLabelsMap = { [key: string]: string | undefined };
-export const GetIPListResponseLabelsMap = /*@__PURE__*/ S.Record(
+const GetIPListResponseLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetIPListResponseLabelsMap>;
 
 /** List of load balancers that reference this IP list. */
 export type IPListUsageItemsList = Array<string>;
-export const IPListUsageItemsList = /*@__PURE__*/ S.Array(
+const IPListUsageItemsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IPListUsageItemsList>;
 
@@ -110,7 +110,7 @@ export interface IPListUsage {
   /** List of load balancers that reference this IP list. */
   items?: IPListUsageItemsList;
 }
-export const IPListUsage = /*@__PURE__*/ S.suspend(() =>
+const IPListUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     items: S.optional(IPListUsageItemsList),
@@ -130,7 +130,7 @@ export interface GetIPListResponse {
   /** Current use of this IP list in load balancers. */
   usage?: IPListUsage;
 }
-export const GetIPListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIPListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentHash: S.optional(S.String),
     labels: S.optional(GetIPListResponseLabelsMap),
@@ -144,7 +144,7 @@ export interface GetQuotaRequest {
   projectId: string;
   region: string;
 }
-export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -165,7 +165,7 @@ export interface IPListsQuota {
   /** The number of IP lists that currently exist in this project. */
   usage?: number;
 }
-export const IPListsQuota = /*@__PURE__*/ S.suspend(() =>
+const IPListsQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     usage: S.optional(S.Number),
@@ -176,7 +176,7 @@ export const IPListsQuota = /*@__PURE__*/ S.suspend(() =>
 export interface Quotas {
   ipLists?: IPListsQuota;
 }
-export const Quotas = /*@__PURE__*/ S.suspend(() =>
+const Quotas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipLists: S.optional(IPListsQuota),
   }),
@@ -190,7 +190,7 @@ export interface GetQuotaResponse {
   /** Region */
   region?: string;
 }
-export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     quotas: S.optional(Quotas),
@@ -202,7 +202,7 @@ export interface ListIPListsRequest {
   projectId: string;
   region: string;
 }
-export const ListIPListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIPListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -218,7 +218,7 @@ export const ListIPListsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Every IP list in the project and region. Never includes the CIDR entries themselves. */
 export type ListIPListsResponseItemsList = Array<GetIPListResponse>;
-export const ListIPListsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListIPListsResponseItemsList = /*@__PURE__*/ S.Array(
   GetIPListResponse,
 ) as any as S.Schema<ListIPListsResponseItemsList>;
 
@@ -227,7 +227,7 @@ export interface ListIPListsResponse {
   /** Every IP list in the project and region. Never includes the CIDR entries themselves. */
   items?: ListIPListsResponseItemsList;
 }
-export const ListIPListsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIPListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListIPListsResponseItemsList),
   }),
@@ -235,7 +235,7 @@ export const ListIPListsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per IP list. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type UploadIPListRequestLabelsMap = { [key: string]: string | undefined };
-export const UploadIPListRequestLabelsMap =
+const UploadIPListRequestLabelsMap =
   GetIPListResponseLabelsMap as any as S.Schema<UploadIPListRequestLabelsMap>;
 
 export interface UploadIPListRequest {
@@ -247,7 +247,7 @@ export interface UploadIPListRequest {
   /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per IP list. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
   labels?: UploadIPListRequestLabelsMap;
 }
-export const UploadIPListRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadIPListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),

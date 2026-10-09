@@ -49,7 +49,7 @@ export interface GetCourseStudentRequest {
   /** The unique identifier of the course student record to retrieve. */
   id: string;
 }
-export const GetCourseStudentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCourseStudentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/course_students/{id}", code: 200 })),
@@ -60,7 +60,7 @@ export interface CourseStudentCourseExperience {
   /** The unique identifier for the experience. */
   id: string;
 }
-export const CourseStudentCourseExperience = /*@__PURE__*/ S.suspend(() =>
+const CourseStudentCourseExperience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -77,7 +77,7 @@ export interface CourseStudentCourse {
   /** The display name of the course shown to students. Null if no title has been set. */
   title: string | null;
 }
-export const CourseStudentCourse = /*@__PURE__*/ S.suspend(() =>
+const CourseStudentCourse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experience: CourseStudentCourseExperience,
     id: S.String,
@@ -94,7 +94,7 @@ export interface CourseStudentUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const CourseStudentUser = /*@__PURE__*/ S.suspend(() =>
+const CourseStudentUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -121,7 +121,7 @@ export interface CourseStudent {
   /** The user profile of the enrolled student. */
   user: CourseStudentUser;
 }
-export const CourseStudent = /*@__PURE__*/ S.suspend(() =>
+const CourseStudent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed_lessons_count: S.Number,
     completion_rate: S.Number,
@@ -142,7 +142,7 @@ export interface ListCourseStudentRequest {
   course_id: string;
   keyword?: string;
 }
-export const ListCourseStudentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCourseStudentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -155,8 +155,6 @@ export const ListCourseStudentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The user profile of the enrolled student. */
 export type CourseStudentListItemUser = CourseStudentUser;
-export const CourseStudentListItemUser = CourseStudentUser;
-
 /** An enrollment record for a student in a course, including progress and completion metrics. */
 export interface CourseStudentListItem {
   /** The total number of lessons this student has marked as completed in the course. */
@@ -174,7 +172,7 @@ export interface CourseStudentListItem {
   /** The user profile of the enrolled student. */
   user: CourseStudentUser;
 }
-export const CourseStudentListItem = /*@__PURE__*/ S.suspend(() =>
+const CourseStudentListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed_lessons_count: S.Number,
     completion_rate: S.Number,
@@ -188,7 +186,7 @@ export const CourseStudentListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListCourseStudentResponseDataList = Array<CourseStudentListItem>;
-export const ListCourseStudentResponseDataList = /*@__PURE__*/ S.Array(
+const ListCourseStudentResponseDataList = /*@__PURE__*/ S.Array(
   CourseStudentListItem,
 ) as any as S.Schema<ListCourseStudentResponseDataList>;
 
@@ -203,7 +201,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -218,7 +216,7 @@ export interface ListCourseStudentResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListCourseStudentResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCourseStudentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCourseStudentResponseDataList,
     page_info: PageInfo,

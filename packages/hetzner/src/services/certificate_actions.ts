@@ -13,7 +13,7 @@ export interface GetCertificatesActionRequest {
   /** ID of the Action. */
   id: number;
 }
-export const GetCertificatesActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificatesActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/certificates/actions/{id}", code: 200 })),
@@ -23,7 +23,7 @@ export const GetCertificatesActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type GetCertificatesActionResponseActionStatus = "running" | "success" | "error";
-export const GetCertificatesActionResponseActionStatus = S.String;
+const GetCertificatesActionResponseActionStatus = S.String;
 
 export interface GetCertificatesActionResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -31,7 +31,7 @@ export interface GetCertificatesActionResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const GetCertificatesActionResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const GetCertificatesActionResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -43,7 +43,7 @@ export const GetCertificatesActionResponseActionResourcesItem = /*@__PURE__*/ S.
 /** Resources the Action relates to. */
 export type GetCertificatesActionResponseActionResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-export const GetCertificatesActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const GetCertificatesActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
   GetCertificatesActionResponseActionResourcesItem,
 ) as any as S.Schema<GetCertificatesActionResponseActionResourcesList>;
 
@@ -54,7 +54,7 @@ export interface GetCertificatesActionResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const GetCertificatesActionResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const GetCertificatesActionResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -81,7 +81,7 @@ export interface GetCertificatesActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetCertificatesActionResponseActionError | null;
 }
-export const GetCertificatesActionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const GetCertificatesActionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -99,7 +99,7 @@ export const GetCertificatesActionResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface GetCertificatesActionResponse {
   action: GetCertificatesActionResponseAction;
 }
-export const GetCertificatesActionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCertificatesActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: GetCertificatesActionResponseAction,
   }),
@@ -123,23 +123,21 @@ export type ListCertificateActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListCertificateActionsRequestSortItem = S.String;
+const ListCertificateActionsRequestSortItem = S.String;
 
 export type ListCertificateActionsRequestSortList = Array<
   ListCertificateActionsRequestSortItem | (string & {})
 >;
-export const ListCertificateActionsRequestSortList = /*@__PURE__*/ S.Array(
+const ListCertificateActionsRequestSortList = /*@__PURE__*/ S.Array(
   ListCertificateActionsRequestSortItem,
 ) as any as S.Schema<ListCertificateActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListCertificateActionsRequestStatusItem = "running" | "success" | "error";
-export const ListCertificateActionsRequestStatusItem = S.String;
-
 export type ListCertificateActionsRequestStatusList = Array<
   ListCertificateActionsRequestStatusItem | (string & {})
 >;
-export const ListCertificateActionsRequestStatusList =
+const ListCertificateActionsRequestStatusList =
   ListCertificateActionsRequestSortList as any as S.Schema<ListCertificateActionsRequestStatusList>;
 
 export interface ListCertificateActionsRequest {
@@ -154,7 +152,7 @@ export interface ListCertificateActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListCertificateActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     sort: S.optional(ListCertificateActionsRequestSortList.pipe(T.Query())),
@@ -168,25 +166,19 @@ export const ListCertificateActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListCertificateActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListCertificateActionsResponseActionsItemStatus = S.String;
+const ListCertificateActionsResponseActionsItemStatus = S.String;
 
 export type ListCertificateActionsResponseActionsItemResourcesItem =
   GetCertificatesActionResponseActionResourcesItem;
-export const ListCertificateActionsResponseActionsItemResourcesItem =
-  GetCertificatesActionResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListCertificateActionsResponseActionsItemResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-export const ListCertificateActionsResponseActionsItemResourcesList =
+const ListCertificateActionsResponseActionsItemResourcesList =
   GetCertificatesActionResponseActionResourcesList as any as S.Schema<ListCertificateActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListCertificateActionsResponseActionsItemError =
   GetCertificatesActionResponseActionError;
-export const ListCertificateActionsResponseActionsItemError =
-  GetCertificatesActionResponseActionError;
-
 export interface ListCertificateActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -205,7 +197,7 @@ export interface ListCertificateActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetCertificatesActionResponseActionError | null;
 }
-export const ListCertificateActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -222,7 +214,7 @@ export const ListCertificateActionsResponseActionsItem = /*@__PURE__*/ S.suspend
 
 export type ListCertificateActionsResponseActionsList =
   Array<ListCertificateActionsResponseActionsItem>;
-export const ListCertificateActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListCertificateActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListCertificateActionsResponseActionsItem,
 ) as any as S.Schema<ListCertificateActionsResponseActionsList>;
 
@@ -241,7 +233,7 @@ export interface ListCertificateActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListCertificateActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -258,7 +250,7 @@ export interface ListCertificateActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListCertificateActionsResponseMetaPagination;
 }
-export const ListCertificateActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListCertificateActionsResponseMetaPagination,
   }),
@@ -270,7 +262,7 @@ export interface ListCertificateActionsResponse {
   actions: ListCertificateActionsResponseActionsList;
   meta: ListCertificateActionsResponseMeta;
 }
-export const ListCertificateActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListCertificateActionsResponseActionsList,
     meta: ListCertificateActionsResponseMeta,
@@ -280,7 +272,7 @@ export const ListCertificateActionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCertificateActionsResponse>;
 
 export type ListCertificatesActionsRequestIdList = Array<number>;
-export const ListCertificatesActionsRequestIdList = /*@__PURE__*/ S.Array(
+const ListCertificatesActionsRequestIdList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListCertificatesActionsRequestIdList>;
 
@@ -300,22 +292,18 @@ export type ListCertificatesActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListCertificatesActionsRequestSortItem = S.String;
-
 export type ListCertificatesActionsRequestSortList = Array<
   ListCertificatesActionsRequestSortItem | (string & {})
 >;
-export const ListCertificatesActionsRequestSortList =
+const ListCertificatesActionsRequestSortList =
   ListCertificateActionsRequestSortList as any as S.Schema<ListCertificatesActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListCertificatesActionsRequestStatusItem = "running" | "success" | "error";
-export const ListCertificatesActionsRequestStatusItem = S.String;
-
 export type ListCertificatesActionsRequestStatusList = Array<
   ListCertificatesActionsRequestStatusItem | (string & {})
 >;
-export const ListCertificatesActionsRequestStatusList =
+const ListCertificatesActionsRequestStatusList =
   ListCertificateActionsRequestSortList as any as S.Schema<ListCertificatesActionsRequestStatusList>;
 
 export interface ListCertificatesActionsRequest {
@@ -330,7 +318,7 @@ export interface ListCertificatesActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListCertificatesActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ListCertificatesActionsRequestIdList.pipe(T.Query())),
     sort: S.optional(ListCertificatesActionsRequestSortList.pipe(T.Query())),
@@ -344,25 +332,19 @@ export const ListCertificatesActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListCertificatesActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListCertificatesActionsResponseActionsItemStatus = S.String;
+const ListCertificatesActionsResponseActionsItemStatus = S.String;
 
 export type ListCertificatesActionsResponseActionsItemResourcesItem =
   GetCertificatesActionResponseActionResourcesItem;
-export const ListCertificatesActionsResponseActionsItemResourcesItem =
-  GetCertificatesActionResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListCertificatesActionsResponseActionsItemResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-export const ListCertificatesActionsResponseActionsItemResourcesList =
+const ListCertificatesActionsResponseActionsItemResourcesList =
   GetCertificatesActionResponseActionResourcesList as any as S.Schema<ListCertificatesActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListCertificatesActionsResponseActionsItemError =
   GetCertificatesActionResponseActionError;
-export const ListCertificatesActionsResponseActionsItemError =
-  GetCertificatesActionResponseActionError;
-
 export interface ListCertificatesActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -381,7 +363,7 @@ export interface ListCertificatesActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetCertificatesActionResponseActionError | null;
 }
-export const ListCertificatesActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -398,24 +380,19 @@ export const ListCertificatesActionsResponseActionsItem = /*@__PURE__*/ S.suspen
 
 export type ListCertificatesActionsResponseActionsList =
   Array<ListCertificatesActionsResponseActionsItem>;
-export const ListCertificatesActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListCertificatesActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListCertificatesActionsResponseActionsItem,
 ) as any as S.Schema<ListCertificatesActionsResponseActionsList>;
 
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListCertificatesActionsResponseMetaPagination =
   ListCertificateActionsResponseMetaPagination;
-export const ListCertificatesActionsResponseMetaPagination =
-  ListCertificateActionsResponseMetaPagination;
-
 export type ListCertificatesActionsResponseMeta = ListCertificateActionsResponseMeta;
-export const ListCertificatesActionsResponseMeta = ListCertificateActionsResponseMeta;
-
 export interface ListCertificatesActionsResponse {
   actions: ListCertificatesActionsResponseActionsList;
   meta: ListCertificateActionsResponseMeta;
 }
-export const ListCertificatesActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListCertificatesActionsResponseActionsList,
     meta: ListCertificateActionsResponseMeta,
@@ -428,7 +405,7 @@ export interface RetryCertificateRequest {
   /** ID of the Certificate. */
   id: number;
 }
-export const RetryCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const RetryCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/certificates/{id}/actions/retry", code: 200 })),
@@ -436,23 +413,18 @@ export const RetryCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type RetryCertificateResponseActionStatus = "running" | "success" | "error";
-export const RetryCertificateResponseActionStatus = S.String;
+const RetryCertificateResponseActionStatus = S.String;
 
 export type RetryCertificateResponseActionResourcesItem =
   GetCertificatesActionResponseActionResourcesItem;
-export const RetryCertificateResponseActionResourcesItem =
-  GetCertificatesActionResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type RetryCertificateResponseActionResourcesList =
   Array<GetCertificatesActionResponseActionResourcesItem>;
-export const RetryCertificateResponseActionResourcesList =
+const RetryCertificateResponseActionResourcesList =
   GetCertificatesActionResponseActionResourcesList as any as S.Schema<RetryCertificateResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RetryCertificateResponseActionError = GetCertificatesActionResponseActionError;
-export const RetryCertificateResponseActionError = GetCertificatesActionResponseActionError;
-
 export interface RetryCertificateResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -471,7 +443,7 @@ export interface RetryCertificateResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetCertificatesActionResponseActionError | null;
 }
-export const RetryCertificateResponseAction = /*@__PURE__*/ S.suspend(() =>
+const RetryCertificateResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -489,7 +461,7 @@ export const RetryCertificateResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface RetryCertificateResponse {
   action: RetryCertificateResponseAction;
 }
-export const RetryCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const RetryCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RetryCertificateResponseAction,
   }),

@@ -41,7 +41,7 @@ export interface GetCustomerLicenseRequest {
   /** The ID of the customer. */
   customerId: string;
 }
-export const GetCustomerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.Label()),
     customerId: S.String.pipe(T.Label()),
@@ -64,7 +64,7 @@ export interface Editions {
   /** (Deprecated) */
   assignedSeats?: number;
 }
-export const Editions = /*@__PURE__*/ S.suspend(() =>
+const Editions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editionId: S.optional(S.String),
     seatCount: S.optional(S.Number),
@@ -73,7 +73,7 @@ export const Editions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Editions" }) as any as S.Schema<Editions>;
 
 export type EditionsList = Array<Editions>;
-export const EditionsList = /*@__PURE__*/ S.Array(Editions) as any as S.Schema<EditionsList>;
+const EditionsList = /*@__PURE__*/ S.Array(Editions) as any as S.Schema<EditionsList>;
 
 export interface CustomerLicense {
   /** (Deprecated) */
@@ -89,7 +89,7 @@ export interface CustomerLicense {
   /** The ID of the application corresponding to this license query. */
   applicationId?: string;
 }
-export const CustomerLicense = /*@__PURE__*/ S.suspend(() =>
+const CustomerLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editions: S.optional(EditionsList),
     customerId: S.optional(S.String),
@@ -106,7 +106,7 @@ export interface GetUserLicenseRequest {
   /** The ID of the user. */
   userId: string;
 }
-export const GetUserLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -137,7 +137,7 @@ export interface UserLicense {
   /** The domain name of the user. */
   customerId?: string;
 }
-export const UserLicense = /*@__PURE__*/ S.suspend(() =>
+const UserLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editionId: S.optional(S.String),
     id: S.optional(S.String),

@@ -31,7 +31,7 @@ export class NotFound
 export interface CancelCardRequest {
   cardId: string;
 }
-export const CancelCardRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/cards/{cardId}/cancel", code: 200 })),
@@ -48,7 +48,7 @@ export interface CardBudget {
   /** Current-cycle limit minus recorded spend, clamped at zero, in cents. Authorization also uses cached allocations and in-flight holds, so its available amount may differ. */
   remainingAmountCents: number;
 }
-export const CardBudget = /*@__PURE__*/ S.suspend(() =>
+const CardBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountCents: S.Number,
     id: S.String,
@@ -59,9 +59,7 @@ export const CardBudget = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per active budget linked to this card and cardholder. Empty under cardLimit, or when this response has no active budget for the cardholder. */
 export type CardBudgetsList = Array<CardBudget>;
-export const CardBudgetsList = /*@__PURE__*/ S.Array(
-  CardBudget,
-) as any as S.Schema<CardBudgetsList>;
+const CardBudgetsList = /*@__PURE__*/ S.Array(CardBudget) as any as S.Schema<CardBudgetsList>;
 
 export type MercuryCategory =
   | "Other"
@@ -103,11 +101,11 @@ export type MercuryCategory =
   | "Taxes"
   | "Utilities"
   | "VehicleExpenses";
-export const MercuryCategory = S.String;
+const MercuryCategory = S.String;
 
 /** Mercury spend-category locks applied to this card, in no particular order. Empty when the card has no category restrictions. */
 export type CardCategoryLocksList = Array<MercuryCategory>;
-export const CardCategoryLocksList = /*@__PURE__*/ S.Array(
+const CardCategoryLocksList = /*@__PURE__*/ S.Array(
   MercuryCategory,
 ) as any as S.Schema<CardCategoryLocksList>;
 
@@ -117,7 +115,7 @@ export interface CardExpiration {
   /** Four-digit calendar year. */
   year: number;
 }
-export const CardExpiration = /*@__PURE__*/ S.suspend(() =>
+const CardExpiration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.Number,
     year: S.Number,
@@ -128,7 +126,7 @@ export interface CardMerchantLock {
   id: string;
   name: string;
 }
-export const CardMerchantLock = /*@__PURE__*/ S.suspend(() =>
+const CardMerchantLock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -142,7 +140,7 @@ export interface CardSpendLimit {
   atmAmountCents?: number | null;
   interval: unknown;
 }
-export const CardSpendLimit = /*@__PURE__*/ S.suspend(() =>
+const CardSpendLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountCents: S.Number,
     atmAmountCents: S.optional(S.NullOr(S.Number)),
@@ -180,7 +178,7 @@ export interface Card {
   /** Mercury User who owns the card. */
   userId: string;
 }
-export const Card = /*@__PURE__*/ S.suspend(() =>
+const Card = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String,
     budgets: CardBudgetsList,
@@ -207,14 +205,14 @@ export const Card = /*@__PURE__*/ S.suspend(() =>
 export interface CancelInvoiceRequest {
   invoiceId: string;
 }
-export const CancelInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoiceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/ar/invoices/{invoiceId}/cancel", code: 200 })),
 ).annotate({ identifier: "CancelInvoiceRequest" }) as any as S.Schema<CancelInvoiceRequest>;
 
 export interface CancelInvoiceResponse {}
-export const CancelInvoiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelInvoiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelInvoiceResponse",
 }) as any as S.Schema<CancelInvoiceResponse>;
 
@@ -223,7 +221,7 @@ export interface CreateCardRequestSpendLimit {
   amountCents: number;
   interval: unknown;
 }
-export const CreateCardRequestSpendLimit = /*@__PURE__*/ S.suspend(() =>
+const CreateCardRequestSpendLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountCents: S.Number,
     interval: S.Unknown,
@@ -241,7 +239,7 @@ export interface CreateCardRequest {
   type: unknown;
   userId: unknown;
 }
-export const CreateCardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.NullOr(S.Unknown)),
     kind: S.Unknown,
@@ -261,7 +259,7 @@ export interface CreateCategoryRequest {
   /** Whether this category is applicable to expense reimbursement transactions */
   visibleForReimbursements: boolean;
 }
-export const CreateCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.Unknown,
     visibleForCardSpend: S.Boolean,
@@ -282,7 +280,7 @@ export interface CategoryData {
   /** Whether this category is applicable to expense reimbursement transactions */
   visibleForReimbursements: boolean;
 }
-export const CategoryData = /*@__PURE__*/ S.suspend(() =>
+const CategoryData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Unknown,
     name: S.String,
@@ -306,7 +304,7 @@ export interface CreateCustomerRequestAddress {
   postalCode: string;
   region: unknown;
 }
-export const CreateCustomerRequestAddress = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomerRequestAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.String,
     address2: S.optional(S.NullOr(S.String)),
@@ -326,7 +324,7 @@ export interface CreateCustomerRequest {
   /** The name of the customer. */
   name: string;
 }
-export const CreateCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(CreateCustomerRequestAddress)),
     email: S.Unknown,
@@ -346,7 +344,7 @@ export interface ApiV1ArCustomerResponseDataAddress {
   postalCode: string;
   region: unknown;
 }
-export const ApiV1ArCustomerResponseDataAddress = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArCustomerResponseDataAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.String,
     address2: S.optional(S.NullOr(S.String)),
@@ -368,7 +366,7 @@ export interface ApiV1ArCustomerResponseData {
   /** Name of customer. */
   name: string;
 }
-export const ApiV1ArCustomerResponseData = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArCustomerResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(ApiV1ArCustomerResponseDataAddress)),
     deletedAt: S.optional(S.NullOr(S.Unknown)),
@@ -387,7 +385,7 @@ export interface CreateInternalTransferRequest {
   note?: string | null;
   sourceAccountId: string;
 }
-export const CreateInternalTransferRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInternalTransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     destinationAccountId: S.String,
@@ -400,14 +398,14 @@ export const CreateInternalTransferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateInternalTransferRequest>;
 
 export type TransactionAttachmentType = "checkImage" | "receipt" | "other";
-export const TransactionAttachmentType = S.String;
+const TransactionAttachmentType = S.String;
 
 export interface TransactionAttachment {
   attachmentType: TransactionAttachmentType;
   fileName: string;
   url: string;
 }
-export const TransactionAttachment = /*@__PURE__*/ S.suspend(() =>
+const TransactionAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachmentType: TransactionAttachmentType,
     fileName: S.String,
@@ -416,7 +414,7 @@ export const TransactionAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransactionAttachment" }) as any as S.Schema<TransactionAttachment>;
 
 export type TransactionAttachmentsList = Array<TransactionAttachment>;
-export const TransactionAttachmentsList = /*@__PURE__*/ S.Array(
+const TransactionAttachmentsList = /*@__PURE__*/ S.Array(
   TransactionAttachment,
 ) as any as S.Schema<TransactionAttachmentsList>;
 
@@ -431,7 +429,7 @@ export interface CurrencyExchangeInfo {
   feePercentage: number;
   feeTransactionId?: string | null;
 }
-export const CurrencyExchangeInfo = /*@__PURE__*/ S.suspend(() =>
+const CurrencyExchangeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     convertedFromAmount: S.Number,
     convertedFromCurrency: S.String,
@@ -496,7 +494,7 @@ export type USState =
   | "WV"
   | "WI"
   | "WY";
-export const USState = S.String;
+const USState = S.String;
 
 export interface AddressData {
   address1: string;
@@ -505,7 +503,7 @@ export interface AddressData {
   postalCode: string;
   state?: USState | (string & {}) | null;
 }
-export const AddressData = /*@__PURE__*/ S.suspend(() =>
+const AddressData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.String,
     address2: S.optional(S.NullOr(S.String)),
@@ -520,7 +518,7 @@ export interface CreditCardInfo {
   id: unknown;
   paymentMethod: string;
 }
-export const CreditCardInfo = /*@__PURE__*/ S.suspend(() =>
+const CreditCardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.NullOr(S.String)),
     id: S.Unknown,
@@ -531,7 +529,7 @@ export const CreditCardInfo = /*@__PURE__*/ S.suspend(() =>
 export interface DebitCardInfo {
   id: unknown;
 }
-export const DebitCardInfo = /*@__PURE__*/ S.suspend(() =>
+const DebitCardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Unknown,
   }),
@@ -545,7 +543,7 @@ export interface AddressWithoutName {
   postalCode: string;
   region: string;
 }
-export const AddressWithoutName = /*@__PURE__*/ S.suspend(() =>
+const AddressWithoutName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.String,
     address2: S.optional(S.NullOr(S.String)),
@@ -562,7 +560,7 @@ export interface DomesticWireRoutingInfo {
   bankName?: string | null;
   routingNumber: string;
 }
-export const DomesticWireRoutingInfo = /*@__PURE__*/ S.suspend(() =>
+const DomesticWireRoutingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountNumber: S.String,
     address: S.optional(S.NullOr(AddressWithoutName)),
@@ -580,7 +578,7 @@ export type ElectronicAccountType =
   | "personalGeneralLedger"
   | "businessLoan"
   | "personalLoan";
-export const ElectronicAccountType = S.String;
+const ElectronicAccountType = S.String;
 
 export interface ElectronicRoutingInfo {
   accountNumber: string;
@@ -589,7 +587,7 @@ export interface ElectronicRoutingInfo {
   electronicAccountType: ElectronicAccountType;
   routingNumber: string;
 }
-export const ElectronicRoutingInfo = /*@__PURE__*/ S.suspend(() =>
+const ElectronicRoutingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountNumber: S.String,
     address: S.optional(S.NullOr(AddressWithoutName)),
@@ -604,7 +602,7 @@ export interface SwiftCodeData {
   bankCountry: string;
   bankName: string;
 }
-export const SwiftCodeData = /*@__PURE__*/ S.suspend(() =>
+const SwiftCodeData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bankCityState: S.String,
     bankCountry: S.String,
@@ -617,7 +615,7 @@ export interface InternationalWireCorrespondentInfo {
   routingNumber?: string | null;
   swiftCode?: string | null;
 }
-export const InternationalWireCorrespondentInfo = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireCorrespondentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bankName: S.optional(S.NullOr(S.String)),
     routingNumber: S.optional(S.NullOr(S.String)),
@@ -630,7 +628,7 @@ export const InternationalWireCorrespondentInfo = /*@__PURE__*/ S.suspend(() =>
 export interface InternationalWireAustraliaSpecificData {
   bsbCode: string;
 }
-export const InternationalWireAustraliaSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireAustraliaSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bsbCode: S.String,
   }),
@@ -641,7 +639,7 @@ export const InternationalWireAustraliaSpecificData = /*@__PURE__*/ S.suspend(()
 export interface InternationalWireBrazilSpecificData {
   legalId: string;
 }
-export const InternationalWireBrazilSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireBrazilSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     legalId: S.String,
   }),
@@ -653,7 +651,7 @@ export interface InternationalWireCanadaSpecificData {
   bankCode: string;
   transitNumber: string;
 }
-export const InternationalWireCanadaSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireCanadaSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bankCode: S.String,
     transitNumber: S.String,
@@ -663,19 +661,15 @@ export const InternationalWireCanadaSpecificData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternationalWireCanadaSpecificData>;
 
 export type InternationalWireChileSpecificData = InternationalWireBrazilSpecificData;
-export const InternationalWireChileSpecificData = InternationalWireBrazilSpecificData;
-
 export type InternationalWireColombiaSpecificData = InternationalWireBrazilSpecificData;
-export const InternationalWireColombiaSpecificData = InternationalWireBrazilSpecificData;
-
 export type SwiftBankAccountType = "checking" | "savings";
-export const SwiftBankAccountType = S.String;
+const SwiftBankAccountType = S.String;
 
 export interface InternationalWireDominicanRepublicSpecificData {
   accountType: SwiftBankAccountType;
   legalId: string;
 }
-export const InternationalWireDominicanRepublicSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireDominicanRepublicSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountType: SwiftBankAccountType,
     legalId: S.String,
@@ -685,12 +679,10 @@ export const InternationalWireDominicanRepublicSpecificData = /*@__PURE__*/ S.su
 }) as any as S.Schema<InternationalWireDominicanRepublicSpecificData>;
 
 export type InternationalWireHondurasSpecificData = InternationalWireDominicanRepublicSpecificData;
-export const InternationalWireHondurasSpecificData = InternationalWireDominicanRepublicSpecificData;
-
 export interface InternationalWireIndiaSpecificData {
   ifscCode: string;
 }
-export const InternationalWireIndiaSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireIndiaSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ifscCode: S.String,
   }),
@@ -699,16 +691,14 @@ export const InternationalWireIndiaSpecificData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternationalWireIndiaSpecificData>;
 
 export type InternationalWireKazakhstanSpecificData = InternationalWireBrazilSpecificData;
-export const InternationalWireKazakhstanSpecificData = InternationalWireBrazilSpecificData;
-
 export type PakistaniLegalIdType = "CNIC" | "SNIC" | "Passport" | "NTN";
-export const PakistaniLegalIdType = S.String;
+const PakistaniLegalIdType = S.String;
 
 export interface InternationalWirePakistanSpecificData {
   legalId: string;
   legalIdType: PakistaniLegalIdType;
 }
-export const InternationalWirePakistanSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWirePakistanSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     legalId: S.String,
     legalIdType: PakistaniLegalIdType,
@@ -718,12 +708,10 @@ export const InternationalWirePakistanSpecificData = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<InternationalWirePakistanSpecificData>;
 
 export type InternationalWireParaguaySpecificData = InternationalWireBrazilSpecificData;
-export const InternationalWireParaguaySpecificData = InternationalWireBrazilSpecificData;
-
 export interface InternationalWirePhilippinesSpecificData {
   routingNumber: string;
 }
-export const InternationalWirePhilippinesSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWirePhilippinesSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routingNumber: S.String,
   }),
@@ -734,7 +722,7 @@ export const InternationalWirePhilippinesSpecificData = /*@__PURE__*/ S.suspend(
 export interface InternationalWireRussiaSpecificData {
   inn: string;
 }
-export const InternationalWireRussiaSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireRussiaSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inn: S.String,
   }),
@@ -745,7 +733,7 @@ export const InternationalWireRussiaSpecificData = /*@__PURE__*/ S.suspend(() =>
 export interface InternationalWireSouthAfricaSpecificData {
   branchCode: string;
 }
-export const InternationalWireSouthAfricaSpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireSouthAfricaSpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branchCode: S.String,
   }),
@@ -769,7 +757,7 @@ export interface InternationalWireCountrySpecificData {
   russia?: InternationalWireRussiaSpecificData | null;
   southAfrica?: InternationalWireSouthAfricaSpecificData | null;
 }
-export const InternationalWireCountrySpecificData = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireCountrySpecificData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     australia: S.optional(S.NullOr(InternationalWireAustraliaSpecificData)),
     brazil: S.optional(S.NullOr(InternationalWireBrazilSpecificData)),
@@ -800,7 +788,7 @@ export interface InternationalWireRoutingInfo {
   phoneNumber?: string | null;
   swiftCode: string;
 }
-export const InternationalWireRoutingInfo = /*@__PURE__*/ S.suspend(() =>
+const InternationalWireRoutingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(AddressWithoutName)),
     bankDetails: S.optional(S.NullOr(SwiftCodeData)),
@@ -823,7 +811,7 @@ export interface TransactionMethodData {
   electronicRoutingInfo?: ElectronicRoutingInfo | null;
   internationalWireRoutingInfo?: InternationalWireRoutingInfo | null;
 }
-export const TransactionMethodData = /*@__PURE__*/ S.suspend(() =>
+const TransactionMethodData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(AddressData)),
     creditCardInfo: S.optional(S.NullOr(CreditCardInfo)),
@@ -843,7 +831,7 @@ export interface GlAllocation {
   /** The name of the GL code from the connected accounting integration */
   glCodeName: string;
 }
-export const GlAllocation = /*@__PURE__*/ S.suspend(() =>
+const GlAllocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     description: S.optional(S.NullOr(S.String)),
@@ -853,7 +841,7 @@ export const GlAllocation = /*@__PURE__*/ S.suspend(() =>
 
 /** GL code allocations assigned to this transaction via a connected accounting software integration (e.g. QuickBooks, Xero, NetSuite). Each allocation has a GL code name and the amount allocated to it; amounts sum to the transaction total when the transaction is fully categorized. Empty if no GL codes have been assigned. Distinct from Mercury custom categories (see transactionCategoryData). */
 export type TransactionGlAllocationsList = Array<GlAllocation>;
-export const TransactionGlAllocationsList = /*@__PURE__*/ S.Array(
+const TransactionGlAllocationsList = /*@__PURE__*/ S.Array(
   GlAllocation,
 ) as any as S.Schema<TransactionGlAllocationsList>;
 
@@ -881,7 +869,7 @@ export type TransactionKind =
   | "exogenousWireDrawdown"
   | "interestPayment"
   | "other";
-export const TransactionKind = S.String;
+const TransactionKind = S.String;
 
 export interface TransactionMerchant {
   /** The transaction amount in the smallest unit of the merchant's currency (e.g., cents for USD/EUR, yen for JPY, fils for BHD). For debits this is negative, for credits positive. Use 'merchantCurrency' to determine the appropriate decimal scaling: most currencies use 2 decimal places (divide by 100), but JPY uses 0 (no division needed) and BHD/KWD/OMR use 3 (divide by 1000). This is useful for international transactions where the merchant charges in a currency different from the account currency. Nothing if not available. */
@@ -893,7 +881,7 @@ export interface TransactionMerchant {
   /** Merchant ID for card transactions */
   id?: string | null;
 }
-export const TransactionMerchant = /*@__PURE__*/ S.suspend(() =>
+const TransactionMerchant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.NullOr(S.Number)),
     category: S.optional(S.NullOr(S.Unknown)),
@@ -932,7 +920,7 @@ export type TransactionRelationKind =
   | "ReversalToProvisionalCredit"
   | "MerchantRefundToOriginalCharge"
   | "OriginalChargeToMerchantRefund";
-export const TransactionRelationKind = S.String;
+const TransactionRelationKind = S.String;
 
 /** A Public API version of RelatedTransactionData. */
 export interface RelatedTransactionData {
@@ -941,7 +929,7 @@ export interface RelatedTransactionData {
   id: string;
   relationKind: TransactionRelationKind;
 }
-export const RelatedTransactionData = /*@__PURE__*/ S.suspend(() =>
+const RelatedTransactionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String,
     amount: S.Number,
@@ -951,7 +939,7 @@ export const RelatedTransactionData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedTransactionData" }) as any as S.Schema<RelatedTransactionData>;
 
 export type TransactionRelatedTransactionsList = Array<RelatedTransactionData>;
-export const TransactionRelatedTransactionsList = /*@__PURE__*/ S.Array(
+const TransactionRelatedTransactionsList = /*@__PURE__*/ S.Array(
   RelatedTransactionData,
 ) as any as S.Schema<TransactionRelatedTransactionsList>;
 
@@ -962,7 +950,7 @@ export type TransactionStatus =
   | "failed"
   | "reversed"
   | "blocked";
-export const TransactionStatus = S.String;
+const TransactionStatus = S.String;
 
 export interface Transaction {
   accountId: unknown;
@@ -1005,7 +993,7 @@ export interface Transaction {
   /** Present for transactions that have tracking numbers (e.g., RTP, ACH, wires); Nothing otherwise. */
   trackingNumber?: string | null;
 }
-export const Transaction = /*@__PURE__*/ S.suspend(() =>
+const Transaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.Unknown,
     amount: S.Number,
@@ -1049,7 +1037,7 @@ export interface InternalTransferAPIResponse {
   creditTransaction: Transaction;
   debitTransaction: Transaction;
 }
-export const InternalTransferAPIResponse = /*@__PURE__*/ S.suspend(() =>
+const InternalTransferAPIResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creditTransaction: Transaction,
     debitTransaction: Transaction,
@@ -1060,7 +1048,7 @@ export const InternalTransferAPIResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails to be CCed on invoice notifications/reminders. */
 export type CreateInvoiceRequestCcEmailsList = Array<string>;
-export const CreateInvoiceRequestCcEmailsList = /*@__PURE__*/ S.Array(
+const CreateInvoiceRequestCcEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateInvoiceRequestCcEmailsList>;
 
@@ -1075,7 +1063,7 @@ export interface ApiV1ArLineItemData {
   /** the price of one unit of the item before sales tax */
   unitPrice: number;
 }
-export const ApiV1ArLineItemData = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArLineItemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     quantity: S.Number,
@@ -1086,7 +1074,7 @@ export const ApiV1ArLineItemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The line items for the invoice */
 export type CreateInvoiceRequestLineItemsList = Array<ApiV1ArLineItemData>;
-export const CreateInvoiceRequestLineItemsList = /*@__PURE__*/ S.Array(
+const CreateInvoiceRequestLineItemsList = /*@__PURE__*/ S.Array(
   ApiV1ArLineItemData,
 ) as any as S.Schema<CreateInvoiceRequestLineItemsList>;
 
@@ -1118,7 +1106,7 @@ export interface CreateInvoiceRequest {
   /** Whether or not the invoice payment instructions will show the real account and routing number for the destination account or use virtual account numbers instead. Virtual accounts are safer and are preferred in most cases. */
   useRealAccountNumber: boolean;
 }
-export const CreateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     achDebitEnabled: S.Boolean,
     ccEmails: CreateInvoiceRequestCcEmailsList,
@@ -1142,12 +1130,12 @@ export const CreateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails to be CCed on invoice notifications/reminders. */
 export type ApiV1ArInvoiceResponseCcEmailsList = Array<string>;
-export const ApiV1ArInvoiceResponseCcEmailsList =
+const ApiV1ArInvoiceResponseCcEmailsList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiV1ArInvoiceResponseCcEmailsList>;
 
 /** The line items for the invoice. */
 export type ApiV1ArInvoiceResponseLineItemsList = Array<ApiV1ArLineItemData>;
-export const ApiV1ArInvoiceResponseLineItemsList =
+const ApiV1ArInvoiceResponseLineItemsList =
   CreateInvoiceRequestLineItemsList as any as S.Schema<ApiV1ArInvoiceResponseLineItemsList>;
 
 /** The response type for an invoice in the api. */
@@ -1187,7 +1175,7 @@ export interface ApiV1ArInvoiceResponse {
   /** Whether or not the invoice payment instructions will show the real account and routing number for the destination account or use virtual account numbers instead. */
   useRealAccountNumber: boolean;
 }
-export const ApiV1ArInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     achDebitEnabled: S.Boolean,
     amount: S.Number,
@@ -1216,20 +1204,16 @@ export const ApiV1ArInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiV1ArInvoiceResponse" }) as any as S.Schema<ApiV1ArInvoiceResponse>;
 
 export type CheckInfoRawAddress = AddressWithoutName;
-export const CheckInfoRawAddress = AddressWithoutName;
-
 export interface CheckInfoRaw {
   address: AddressWithoutName;
 }
-export const CheckInfoRaw = /*@__PURE__*/ S.suspend(() =>
+const CheckInfoRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: AddressWithoutName,
   }),
 ).annotate({ identifier: "CheckInfoRaw" }) as any as S.Schema<CheckInfoRaw>;
 
 export type DomesticWireRoutingInfoRawAddress = AddressWithoutName;
-export const DomesticWireRoutingInfoRawAddress = AddressWithoutName;
-
 export interface DomesticWireRoutingInfoRaw {
   /** The account number of the bank account to use for domestic wire payments. */
   accountNumber: string;
@@ -1237,7 +1221,7 @@ export interface DomesticWireRoutingInfoRaw {
   /** The routing number of the bank account to use for domestic wire payments. */
   routingNumber: string;
 }
-export const DomesticWireRoutingInfoRaw = /*@__PURE__*/ S.suspend(() =>
+const DomesticWireRoutingInfoRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountNumber: S.String,
     address: AddressWithoutName,
@@ -1248,8 +1232,6 @@ export const DomesticWireRoutingInfoRaw = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomesticWireRoutingInfoRaw>;
 
 export type ElectronicRoutingInfoRawAddress = AddressWithoutName;
-export const ElectronicRoutingInfoRawAddress = AddressWithoutName;
-
 export interface ElectronicRoutingInfoRaw {
   /** The account number of the bank account to use for ACH payments. */
   accountNumber: string;
@@ -1258,7 +1240,7 @@ export interface ElectronicRoutingInfoRaw {
   /** The routing number of the bank account to use for ACH payments. */
   routingNumber: string;
 }
-export const ElectronicRoutingInfoRaw = /*@__PURE__*/ S.suspend(() =>
+const ElectronicRoutingInfoRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountNumber: S.String,
     address: AddressWithoutName,
@@ -1268,12 +1250,10 @@ export const ElectronicRoutingInfoRaw = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElectronicRoutingInfoRaw" }) as any as S.Schema<ElectronicRoutingInfoRaw>;
 
 export type CreateRecipientRequestEmailsList = Array<string>;
-export const CreateRecipientRequestEmailsList =
+const CreateRecipientRequestEmailsList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<CreateRecipientRequestEmailsList>;
 
 export type RealTimePaymentRoutingInfoRawAddress = AddressWithoutName;
-export const RealTimePaymentRoutingInfoRawAddress = AddressWithoutName;
-
 /** Routing information for real-time payments. */
 export interface RealTimePaymentRoutingInfoRaw {
   /** The account number of the bank account to use for real-time payments. */
@@ -1282,7 +1262,7 @@ export interface RealTimePaymentRoutingInfoRaw {
   /** The routing number of the bank account to use for real-time payments. */
   routingNumber: string;
 }
-export const RealTimePaymentRoutingInfoRaw =
+const RealTimePaymentRoutingInfoRaw =
   DomesticWireRoutingInfoRaw as any as S.Schema<RealTimePaymentRoutingInfoRaw>;
 
 export interface CreateRecipientRequest {
@@ -1302,7 +1282,7 @@ export interface CreateRecipientRequest {
   /** Information needed to send a real-time payment. */
   realTimePaymentRoutingInfo?: RealTimePaymentRoutingInfoRaw;
 }
-export const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(AddressData),
     checkInfo: S.optional(CheckInfoRaw),
@@ -1325,7 +1305,7 @@ export interface Address {
   postalCode: string;
   region: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.String,
     address2: S.optional(S.NullOr(S.String)),
@@ -1345,7 +1325,7 @@ export interface RecipientAttachment {
   /** Presigned URL to download the attachment (valid for 12 hours) */
   url: string;
 }
-export const RecipientAttachment = /*@__PURE__*/ S.suspend(() =>
+const RecipientAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileName: S.String,
     formType: S.optional(S.NullOr(S.Unknown)),
@@ -1355,30 +1335,26 @@ export const RecipientAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecipientAttachment" }) as any as S.Schema<RecipientAttachment>;
 
 export type RecipientInfoAttachmentsList = Array<RecipientAttachment>;
-export const RecipientInfoAttachmentsList = /*@__PURE__*/ S.Array(
+const RecipientInfoAttachmentsList = /*@__PURE__*/ S.Array(
   RecipientAttachment,
 ) as any as S.Schema<RecipientInfoAttachmentsList>;
 
 export type CheckInfo = CheckInfoRaw;
-export const CheckInfo = CheckInfoRaw;
-
 export type PaymentMethod =
   | "ach"
   | "check"
   | "domesticWire"
   | "internationalWire"
   | "realTimePayment";
-export const PaymentMethod = S.String;
+const PaymentMethod = S.String;
 
 export type RecipientInfoEmailsList = Array<string>;
-export const RecipientInfoEmailsList =
+const RecipientInfoEmailsList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<RecipientInfoEmailsList>;
 
 export type RealTimePaymentRoutingInfo = DomesticWireRoutingInfo;
-export const RealTimePaymentRoutingInfo = DomesticWireRoutingInfo;
-
 export type RecipientStatus = "active" | "deleted";
-export const RecipientStatus = S.String;
+const RecipientStatus = S.String;
 
 export interface RecipientInfo {
   address?: Address | null;
@@ -1400,7 +1376,7 @@ export interface RecipientInfo {
   realTimePaymentRoutingInfo?: DomesticWireRoutingInfo | null;
   status: RecipientStatus;
 }
-export const RecipientInfo = /*@__PURE__*/ S.suspend(() =>
+const RecipientInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(Address)),
     attachments: RecipientInfoAttachmentsList,
@@ -1425,7 +1401,7 @@ export const RecipientInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Payment methods the recipient may submit details for. */
 export type CreateRecipientInviteRequestPaymentMethodsList = Array<PaymentMethod | (string & {})>;
-export const CreateRecipientInviteRequestPaymentMethodsList =
+const CreateRecipientInviteRequestPaymentMethodsList =
   CardCategoryLocksList as any as S.Schema<CreateRecipientInviteRequestPaymentMethodsList>;
 
 export interface CreateRecipientInviteRequest {
@@ -1444,7 +1420,7 @@ export interface CreateRecipientInviteRequest {
   /** When true, sends an Email to the invitee. When false, does not send an email to the invitee. */
   sendEmail: boolean;
 }
-export const CreateRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactEmail: S.Unknown,
     name: S.optional(S.NullOr(S.String)),
@@ -1461,7 +1437,7 @@ export const CreateRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Payment methods the recipient may submit details for. */
 export type RecipientInviteApiResponsePaymentMethodsList = Array<PaymentMethod>;
-export const RecipientInviteApiResponsePaymentMethodsList =
+const RecipientInviteApiResponsePaymentMethodsList =
   CreateRecipientInviteRequestPaymentMethodsList as any as S.Schema<RecipientInviteApiResponsePaymentMethodsList>;
 
 export interface RecipientInviteApiResponse {
@@ -1482,7 +1458,7 @@ export interface RecipientInviteApiResponse {
   requireTaxDocument: boolean;
   status: unknown;
 }
-export const RecipientInviteApiResponse = /*@__PURE__*/ S.suspend(() =>
+const RecipientInviteApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactEmail: S.Unknown,
     createdAt: S.Unknown,
@@ -1501,7 +1477,7 @@ export const RecipientInviteApiResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecipientInviteApiResponse>;
 
 export type PostTransactionPaymentMethod = "ach" | "check" | "domesticWire" | "realTimePayment";
-export const PostTransactionPaymentMethod = S.String;
+const PostTransactionPaymentMethod = S.String;
 
 /** Payment category. */
 export type SimplePurposeCategory =
@@ -1518,7 +1494,7 @@ export type SimplePurposeCategory =
   | "expenses"
   | "travel"
   | "other";
-export const SimplePurposeCategory = S.String;
+const SimplePurposeCategory = S.String;
 
 export interface SimplePurpose {
   /** Additional information. Required for: Vendor (vendor name), Contractor (contractor name), Other (payment description). Optional for Subsidiary (subsidiary name). Not accepted for any other categories. */
@@ -1526,7 +1502,7 @@ export interface SimplePurpose {
   /** Payment category. */
   category: SimplePurposeCategory | (string & {});
 }
-export const SimplePurpose = /*@__PURE__*/ S.suspend(() =>
+const SimplePurpose = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalInfo: S.optional(S.String),
     category: SimplePurposeCategory,
@@ -1537,7 +1513,7 @@ export const SimplePurpose = /*@__PURE__*/ S.suspend(() =>
 export interface PostTransactionSendMoneyPurpose {
   simple?: SimplePurpose | null;
 }
-export const PostTransactionSendMoneyPurpose = /*@__PURE__*/ S.suspend(() =>
+const PostTransactionSendMoneyPurpose = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     simple: S.optional(S.NullOr(SimplePurpose)),
   }),
@@ -1562,7 +1538,7 @@ export interface CreateTransactionRequest {
   /** Recipient ID from the /recipients endpoint. */
   recipientId: string;
 }
-export const CreateTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     amount: S.Number,
@@ -1583,11 +1559,9 @@ export type WebhookEventType =
   | "treasuryAccount.balance.updated"
   | "investmentAccount.balance.updated"
   | "creditAccount.balance.updated";
-export const WebhookEventType = S.String;
-
 /** Optional array of event types to subscribe to. Nothing means subscribe to all event types. */
 export type CreateWebhookRequestEventTypesList = Array<WebhookEventType | (string & {})>;
-export const CreateWebhookRequestEventTypesList =
+const CreateWebhookRequestEventTypesList =
   CardCategoryLocksList as any as S.Schema<CreateWebhookRequestEventTypesList>;
 
 export type ResourceField =
@@ -1620,11 +1594,9 @@ export type ResourceField =
   | "creditAccount.availableBalance"
   | "creditAccount.currentBalance"
   | "creditAccount.inFlightBalance";
-export const ResourceField = S.String;
-
 /** Optional array of resource field paths to filter events by. When specified, webhook events will only be sent when one of these fields changes. Nothing means no filtering (all events are sent). */
 export type CreateWebhookRequestFilterPathsList = Array<ResourceField | (string & {})>;
-export const CreateWebhookRequestFilterPathsList =
+const CreateWebhookRequestFilterPathsList =
   CardCategoryLocksList as any as S.Schema<CreateWebhookRequestFilterPathsList>;
 
 export interface CreateWebhookRequest {
@@ -1635,7 +1607,7 @@ export interface CreateWebhookRequest {
   /** The URL to which webhook events will be delivered */
   url: string;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTypes: S.optional(S.NullOr(CreateWebhookRequestEventTypesList)),
     filterPaths: S.optional(S.NullOr(CreateWebhookRequestFilterPathsList)),
@@ -1645,12 +1617,12 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional array of event types this webhook is subscribed to. Nothing means all events. */
 export type ApiWebhookResponseEventTypesList = Array<WebhookEventType>;
-export const ApiWebhookResponseEventTypesList =
+const ApiWebhookResponseEventTypesList =
   CreateWebhookRequestEventTypesList as any as S.Schema<ApiWebhookResponseEventTypesList>;
 
 /** Optional array of resource field paths to filter events by. Nothing means no filtering. */
 export type ApiWebhookResponseFilterPathsList = Array<ResourceField>;
-export const ApiWebhookResponseFilterPathsList =
+const ApiWebhookResponseFilterPathsList =
   CreateWebhookRequestFilterPathsList as any as S.Schema<ApiWebhookResponseFilterPathsList>;
 
 /** Webhook configuration details */
@@ -1668,7 +1640,7 @@ export interface ApiWebhookResponse {
   /** The URL that will receive webhook POST requests */
   url: string;
 }
-export const ApiWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.Unknown,
     eventTypes: S.optional(S.NullOr(ApiWebhookResponseEventTypesList)),
@@ -1684,46 +1656,43 @@ export const ApiWebhookResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCategoryRequest {
   expenseCategoryId: string;
 }
-export const DeleteCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expenseCategoryId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/categories/{expenseCategoryId}", code: 200 })),
 ).annotate({ identifier: "DeleteCategoryRequest" }) as any as S.Schema<DeleteCategoryRequest>;
 
 export interface DeleteCategoryResponse {}
-export const DeleteCategoryResponse =
-  CancelInvoiceResponse as any as S.Schema<DeleteCategoryResponse>;
+const DeleteCategoryResponse = CancelInvoiceResponse as any as S.Schema<DeleteCategoryResponse>;
 
 export interface DeleteCustomerRequest {
   customerId: string;
 }
-export const DeleteCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/ar/customers/{customerId}", code: 200 })),
 ).annotate({ identifier: "DeleteCustomerRequest" }) as any as S.Schema<DeleteCustomerRequest>;
 
 export interface DeleteCustomerResponse {}
-export const DeleteCustomerResponse =
-  CancelInvoiceResponse as any as S.Schema<DeleteCustomerResponse>;
+const DeleteCustomerResponse = CancelInvoiceResponse as any as S.Schema<DeleteCustomerResponse>;
 
 export interface DeleteRecipientRequest {
   recipientId: string;
 }
-export const DeleteRecipientRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/recipient/{recipientId}", code: 200 })),
 ).annotate({ identifier: "DeleteRecipientRequest" }) as any as S.Schema<DeleteRecipientRequest>;
 
 export interface DeleteRecipientResponse {}
-export const DeleteRecipientResponse =
-  CancelInvoiceResponse as any as S.Schema<DeleteRecipientResponse>;
+const DeleteRecipientResponse = CancelInvoiceResponse as any as S.Schema<DeleteRecipientResponse>;
 
 export interface DeleteRecipientInviteRequest {
   inviteId: string;
 }
-export const DeleteRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inviteId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/recipients/invites/{inviteId}", code: 200 })),
@@ -1732,21 +1701,20 @@ export const DeleteRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRecipientInviteRequest>;
 
 export interface DeleteRecipientInviteResponse {}
-export const DeleteRecipientInviteResponse =
+const DeleteRecipientInviteResponse =
   CancelInvoiceResponse as any as S.Schema<DeleteRecipientInviteResponse>;
 
 export interface DeleteWebhookRequest {
   webhookEndpointId: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookEndpointId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{webhookEndpointId}", code: 200 })),
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse =
-  CancelInvoiceResponse as any as S.Schema<DeleteWebhookResponse>;
+const DeleteWebhookResponse = CancelInvoiceResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface EditCategoryRequest {
   expenseCategoryId: string;
@@ -1758,7 +1726,7 @@ export interface EditCategoryRequest {
   /** Whether this category is applicable to expense reimbursement transactions */
   visibleForReimbursements?: boolean | null;
 }
-export const EditCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const EditCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expenseCategoryId: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.Unknown)),
@@ -1771,7 +1739,7 @@ export const EditCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FreezeCardRequest {
   cardId: string;
 }
-export const FreezeCardRequest = /*@__PURE__*/ S.suspend(() =>
+const FreezeCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/cards/{cardId}/freeze", code: 200 })),
@@ -1780,27 +1748,25 @@ export const FreezeCardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAccountCardsRequest {
   accountId: string;
 }
-export const GetAccountCardsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountCardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/account/{accountId}/cards", code: 200 })),
 ).annotate({ identifier: "GetAccountCardsRequest" }) as any as S.Schema<GetAccountCardsRequest>;
 
 export type CardNetwork = "visa" | "mastercard";
-export const CardNetwork = S.String;
+const CardNetwork = S.String;
 
 export type PhysicalCardStatus = "inactive" | "active" | "locked";
-export const PhysicalCardStatus = S.String;
+const PhysicalCardStatus = S.String;
 
 /** Spending controls applied to a card */
 export type SpendLimit = CardSpendLimit;
-export const SpendLimit = CardSpendLimit;
-
 export type CardStatus = "active" | "frozen" | "cancelled" | "inactive" | "expired" | "suspended";
-export const CardStatus = S.String;
+const CardStatus = S.String;
 
 export type CardType = "virtual" | "physical";
-export const CardType = S.String;
+const CardType = S.String;
 
 /** Deprecated account card representation, used by the @/v1/account\/:id\/cards@ endpoint. */
 export interface AccountCard {
@@ -1816,7 +1782,7 @@ export interface AccountCard {
   updatedAt: string;
   userId: string;
 }
-export const AccountCard = /*@__PURE__*/ S.suspend(() =>
+const AccountCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardId: S.String,
     createdAt: S.String,
@@ -1833,14 +1799,14 @@ export const AccountCard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountCard" }) as any as S.Schema<AccountCard>;
 
 export type AccountCardsResponseCardsList = Array<AccountCard>;
-export const AccountCardsResponseCardsList = /*@__PURE__*/ S.Array(
+const AccountCardsResponseCardsList = /*@__PURE__*/ S.Array(
   AccountCard,
 ) as any as S.Schema<AccountCardsResponseCardsList>;
 
 export interface AccountCardsResponse {
   cards: AccountCardsResponseCardsList;
 }
-export const AccountCardsResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountCardsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cards: AccountCardsResponseCardsList,
   }),
@@ -1848,7 +1814,7 @@ export const AccountCardsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetAccountsRequestOrder = "asc" | "desc";
-export const GetAccountsRequestOrder = S.String;
+const GetAccountsRequestOrder = S.String;
 
 export interface GetAccountsRequest {
   limit?: number;
@@ -1856,7 +1822,7 @@ export interface GetAccountsRequest {
   start_after?: string;
   end_before?: string;
 }
-export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     order: S.optional(GetAccountsRequestOrder.pipe(T.Query())),
@@ -1866,10 +1832,10 @@ export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAccountsRequest" }) as any as S.Schema<GetAccountsRequest>;
 
 export type AccountStatus = "active" | "deleted" | "pending" | "archived";
-export const AccountStatus = S.String;
+const AccountStatus = S.String;
 
 export type AccountType = "mercury" | "external" | "recipient";
-export const AccountType = S.String;
+const AccountType = S.String;
 
 export interface Account {
   accountNumber: string;
@@ -1889,7 +1855,7 @@ export interface Account {
   status: AccountStatus;
   type: AccountType;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountNumber: S.String,
     availableBalance: S.Number,
@@ -1911,7 +1877,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 
 /** List of accounts in the current page */
 export type AccountsPaginatedResponseAccountsList = Array<Account>;
-export const AccountsPaginatedResponseAccountsList = /*@__PURE__*/ S.Array(
+const AccountsPaginatedResponseAccountsList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountsPaginatedResponseAccountsList>;
 
@@ -1920,7 +1886,7 @@ export interface AccountsPaginatedResponsePage {
   nextPage?: string;
   previousPage?: string;
 }
-export const AccountsPaginatedResponsePage = /*@__PURE__*/ S.suspend(() =>
+const AccountsPaginatedResponsePage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPage: S.optional(S.String),
     previousPage: S.optional(S.String),
@@ -1936,7 +1902,7 @@ export interface AccountsPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
-export const AccountsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accounts: AccountsPaginatedResponseAccountsList,
     page: AccountsPaginatedResponsePage,
@@ -1947,7 +1913,7 @@ export const AccountsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'desc' */
 export type GetAccountStatementsRequestOrder = "asc" | "desc";
-export const GetAccountStatementsRequestOrder = S.String;
+const GetAccountStatementsRequestOrder = S.String;
 
 export interface GetAccountStatementsRequest {
   accountId: string;
@@ -1958,7 +1924,7 @@ export interface GetAccountStatementsRequest {
   start?: string;
   end?: string;
 }
-export const GetAccountStatementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountStatementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1973,14 +1939,12 @@ export const GetAccountStatementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccountStatementsRequest>;
 
 export type DepositoryAccountStatementsPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const DepositoryAccountStatementsPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 export interface AccountStatementTransaction {
   createdAt: string;
   id: string;
   postedAt?: string | null;
 }
-export const AccountStatementTransaction = /*@__PURE__*/ S.suspend(() =>
+const AccountStatementTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     id: S.String,
@@ -1991,7 +1955,7 @@ export const AccountStatementTransaction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountStatementTransaction>;
 
 export type DepositoryAccountStatementTransactionsList = Array<AccountStatementTransaction>;
-export const DepositoryAccountStatementTransactionsList = /*@__PURE__*/ S.Array(
+const DepositoryAccountStatementTransactionsList = /*@__PURE__*/ S.Array(
   AccountStatementTransaction,
 ) as any as S.Schema<DepositoryAccountStatementTransactionsList>;
 
@@ -2008,7 +1972,7 @@ export interface DepositoryAccountStatement {
   startDate: string;
   transactions: DepositoryAccountStatementTransactionsList;
 }
-export const DepositoryAccountStatement = /*@__PURE__*/ S.suspend(() =>
+const DepositoryAccountStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountNumber: S.String,
     companyLegalAddress: Address,
@@ -2028,7 +1992,7 @@ export const DepositoryAccountStatement = /*@__PURE__*/ S.suspend(() =>
 
 export type DepositoryAccountStatementsPaginatedResponseStatementsList =
   Array<DepositoryAccountStatement>;
-export const DepositoryAccountStatementsPaginatedResponseStatementsList = /*@__PURE__*/ S.Array(
+const DepositoryAccountStatementsPaginatedResponseStatementsList = /*@__PURE__*/ S.Array(
   DepositoryAccountStatement,
 ) as any as S.Schema<DepositoryAccountStatementsPaginatedResponseStatementsList>;
 
@@ -2037,7 +2001,7 @@ export interface DepositoryAccountStatementsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   statements: DepositoryAccountStatementsPaginatedResponseStatementsList;
 }
-export const DepositoryAccountStatementsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const DepositoryAccountStatementsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: AccountsPaginatedResponsePage,
     statements: DepositoryAccountStatementsPaginatedResponseStatementsList,
@@ -2049,7 +2013,7 @@ export const DepositoryAccountStatementsPaginatedResponse = /*@__PURE__*/ S.susp
 export interface GetAttachmentRequest {
   attachmentId: string;
 }
-export const GetAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachmentId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ar/attachments/{attachmentId}", code: 200 })),
@@ -2063,7 +2027,7 @@ export interface ApiV1ArAttachmentResponseData {
   /** The signed download URL for the file itself. */
   url: string;
 }
-export const ApiV1ArAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileName: S.String,
     id: S.Unknown,
@@ -2076,7 +2040,7 @@ export const ApiV1ArAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface GetCardRequest {
   cardId: string;
 }
-export const GetCardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/cards/{cardId}", code: 200 })),
@@ -2085,7 +2049,7 @@ export const GetCardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCustomerRequest {
   customerId: string;
 }
-export const GetCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ar/customers/{customerId}", code: 200 })),
@@ -2094,7 +2058,7 @@ export const GetCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetEventRequest {
   eventId: string;
 }
-export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/events/{eventId}", code: 200 })),
@@ -2102,7 +2066,7 @@ export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of JSON paths that were modified in this event */
 export type ApiEventResponseChangedPathsList = Array<string>;
-export const ApiEventResponseChangedPathsList =
+const ApiEventResponseChangedPathsList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiEventResponseChangedPathsList>;
 
 /** Represents a single event in the Mercury API event stream. Events track changes to resources over time, providing an audit trail of all modifications with before/after values and metadata about what changed. */
@@ -2120,7 +2084,7 @@ export interface ApiEventResponse {
   resourceType: unknown;
   resourceVersion: unknown;
 }
-export const ApiEventResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changedPaths: ApiEventResponseChangedPathsList,
     id: S.Unknown,
@@ -2136,7 +2100,7 @@ export const ApiEventResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetEventsRequestOrder = "asc" | "desc";
-export const GetEventsRequestOrder = S.String;
+const GetEventsRequestOrder = S.String;
 
 export type GetEventsRequestResourceType =
   | "transaction"
@@ -2145,7 +2109,7 @@ export type GetEventsRequestResourceType =
   | "treasuryAccount"
   | "investmentAccount"
   | "creditAccount";
-export const GetEventsRequestResourceType = S.String;
+const GetEventsRequestResourceType = S.String;
 
 export interface GetEventsRequest {
   limit?: number;
@@ -2155,7 +2119,7 @@ export interface GetEventsRequest {
   resourceType?: GetEventsRequestResourceType | (string & {});
   resourceId?: string;
 }
-export const GetEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -2168,14 +2132,12 @@ export const GetEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of events in the current page */
 export type ApiEventsPaginatedResponseEventsList = Array<ApiEventResponse>;
-export const ApiEventsPaginatedResponseEventsList = /*@__PURE__*/ S.Array(
+const ApiEventsPaginatedResponseEventsList = /*@__PURE__*/ S.Array(
   ApiEventResponse,
 ) as any as S.Schema<ApiEventsPaginatedResponseEventsList>;
 
 /** Pagination information including cursors for navigating to next/previous pages */
 export type ApiEventsPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const ApiEventsPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** Paginated response containing a list of API events. | Use the page cursor information to fetch additional pages of events. */
 export interface ApiEventsPaginatedResponse {
   /** List of events in the current page */
@@ -2183,7 +2145,7 @@ export interface ApiEventsPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
-export const ApiEventsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiEventsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: ApiEventsPaginatedResponseEventsList,
     page: AccountsPaginatedResponsePage,
@@ -2195,7 +2157,7 @@ export const ApiEventsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetInvoiceRequest {
   invoiceId: string;
 }
-export const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoiceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ar/invoices/{invoiceId}", code: 200 })),
@@ -2204,18 +2166,17 @@ export const GetInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetInvoicePdfRequest {
   invoiceId: string;
 }
-export const GetInvoicePdfRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInvoicePdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoiceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ar/invoices/{invoiceId}/pdf", code: 200 })),
 ).annotate({ identifier: "GetInvoicePdfRequest" }) as any as S.Schema<GetInvoicePdfRequest>;
 
 export interface GetInvoicePdfResponse {}
-export const GetInvoicePdfResponse =
-  CancelInvoiceResponse as any as S.Schema<GetInvoicePdfResponse>;
+const GetInvoicePdfResponse = CancelInvoiceResponse as any as S.Schema<GetInvoicePdfResponse>;
 
 export interface GetOrganizationRequest {}
-export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/organization", code: 200 })),
 ).annotate({ identifier: "GetOrganizationRequest" }) as any as S.Schema<GetOrganizationRequest>;
 
@@ -2226,7 +2187,7 @@ export interface OrganizationDBA {
   /** The DBA name */
   dbaName: string;
 }
-export const OrganizationDBA = /*@__PURE__*/ S.suspend(() =>
+const OrganizationDBA = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dbaIsDefault: S.Boolean,
     dbaName: S.String,
@@ -2235,7 +2196,7 @@ export const OrganizationDBA = /*@__PURE__*/ S.suspend(() =>
 
 /** List of DBAs (Doing Business As names) for this organization */
 export type OrganizationResponseOrganizationDbasList = Array<OrganizationDBA>;
-export const OrganizationResponseOrganizationDbasList = /*@__PURE__*/ S.Array(
+const OrganizationResponseOrganizationDbasList = /*@__PURE__*/ S.Array(
   OrganizationDBA,
 ) as any as S.Schema<OrganizationResponseOrganizationDbasList>;
 
@@ -2251,7 +2212,7 @@ export interface OrganizationResponseOrganization {
   legalBusinessName: string;
   subscriptionTier: unknown;
 }
-export const OrganizationResponseOrganization = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResponseOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingCadence: S.Unknown,
     dbas: OrganizationResponseOrganizationDbasList,
@@ -2269,7 +2230,7 @@ export const OrganizationResponseOrganization = /*@__PURE__*/ S.suspend(() =>
 export interface OrganizationResponse {
   organization: OrganizationResponseOrganization;
 }
-export const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: OrganizationResponseOrganization,
   }),
@@ -2278,7 +2239,7 @@ export const OrganizationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetRecipientRequest {
   recipientId: string;
 }
-export const GetRecipientRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/recipient/{recipientId}", code: 200 })),
@@ -2287,7 +2248,7 @@ export const GetRecipientRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRecipientInviteRequest {
   inviteId: string;
 }
-export const GetRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inviteId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/recipients/invites/{inviteId}", code: 200 })),
@@ -2297,7 +2258,7 @@ export const GetRecipientInviteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetRecipientsRequestOrder = "asc" | "desc";
-export const GetRecipientsRequestOrder = S.String;
+const GetRecipientsRequestOrder = S.String;
 
 export interface GetRecipientsRequest {
   limit?: number;
@@ -2305,7 +2266,7 @@ export interface GetRecipientsRequest {
   end_before?: string;
   order?: GetRecipientsRequestOrder | (string & {});
 }
-export const GetRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -2316,11 +2277,9 @@ export const GetRecipientsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Pagination information including cursors for navigating to next/previous pages */
 export type RecipientsPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const RecipientsPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** List of recipients in the current page */
 export type RecipientsPaginatedResponseRecipientsList = Array<RecipientInfo>;
-export const RecipientsPaginatedResponseRecipientsList = /*@__PURE__*/ S.Array(
+const RecipientsPaginatedResponseRecipientsList = /*@__PURE__*/ S.Array(
   RecipientInfo,
 ) as any as S.Schema<RecipientsPaginatedResponseRecipientsList>;
 
@@ -2331,7 +2290,7 @@ export interface RecipientsPaginatedResponse {
   recipients: RecipientsPaginatedResponseRecipientsList;
   total: unknown;
 }
-export const RecipientsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const RecipientsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: AccountsPaginatedResponsePage,
     recipients: RecipientsPaginatedResponseRecipientsList,
@@ -2344,7 +2303,7 @@ export const RecipientsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSafeRequestRequest {
   safeRequestId: string;
 }
-export const GetSafeRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSafeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     safeRequestId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/safes/{safeRequestId}", code: 200 })),
@@ -2354,7 +2313,7 @@ export type SafeRequestInvestorType =
   | "SafeRequestInvestorTypeIndividual"
   | "SafeRequestInvestorTypeVentureFund"
   | "SafeRequestInvestorTypeOther";
-export const SafeRequestInvestorType = S.String;
+const SafeRequestInvestorType = S.String;
 
 /** Details about the investor buying the equity. */
 export interface APISafeRequestInvestor {
@@ -2366,7 +2325,7 @@ export interface APISafeRequestInvestor {
   signatoryName: string;
   signatoryTitle?: string | null;
 }
-export const APISafeRequestInvestor = /*@__PURE__*/ S.suspend(() =>
+const APISafeRequestInvestor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalBylines: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -2385,7 +2344,7 @@ export interface APISafeRequestOrganization {
   signatoryName: string;
   signatoryTitle: string;
 }
-export const APISafeRequestOrganization = /*@__PURE__*/ S.suspend(() =>
+const APISafeRequestOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     legalEntityName: S.String,
     signatoryEmail: S.String,
@@ -2397,7 +2356,7 @@ export const APISafeRequestOrganization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<APISafeRequestOrganization>;
 
 export type ValuationType = "PreMoney" | "PostMoney" | "NoValuation";
-export const ValuationType = S.String;
+const ValuationType = S.String;
 
 /** A summary of a SAFE request. */
 export interface APISafeRequest {
@@ -2419,7 +2378,7 @@ export interface APISafeRequest {
   valuationCap?: number | null;
   valuationType: ValuationType;
 }
-export const APISafeRequest = /*@__PURE__*/ S.suspend(() =>
+const APISafeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canceledAt: S.optional(S.NullOr(S.String)),
     discountRate: S.optional(S.NullOr(S.Number)),
@@ -2444,7 +2403,7 @@ export const APISafeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSafeRequestDocumentRequest {
   safeRequestId: string;
 }
-export const GetSafeRequestDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSafeRequestDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     safeRequestId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/safes/{safeRequestId}/document", code: 200 })),
@@ -2453,28 +2412,28 @@ export const GetSafeRequestDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSafeRequestDocumentRequest>;
 
 export interface GetSafeRequestDocumentResponse {}
-export const GetSafeRequestDocumentResponse =
+const GetSafeRequestDocumentResponse =
   CancelInvoiceResponse as any as S.Schema<GetSafeRequestDocumentResponse>;
 
 export interface GetSafeRequestsRequest {}
-export const GetSafeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSafeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/safes", code: 200 })),
 ).annotate({ identifier: "GetSafeRequestsRequest" }) as any as S.Schema<GetSafeRequestsRequest>;
 
 export type GetSafeRequestsResponseBodyList = Array<APISafeRequest>;
-export const GetSafeRequestsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetSafeRequestsResponseBodyList = /*@__PURE__*/ S.Array(
   APISafeRequest,
 ) as any as S.Schema<GetSafeRequestsResponseBodyList>;
 
 export type GetSafeRequestsResponse = GetSafeRequestsResponseBodyList;
-export const GetSafeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSafeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   GetSafeRequestsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetSafeRequestsResponse" }) as any as S.Schema<GetSafeRequestsResponse>;
 
 export interface GetSendMoneyApprovalRequestRequest {
   requestId: string;
 }
-export const GetSendMoneyApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSendMoneyApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/request-send-money/{requestId}", code: 200 })),
@@ -2488,17 +2447,17 @@ export type RequestSendMoneyPaymentMethod =
   | "domesticWire"
   | "internationalWire"
   | "realTimePayment";
-export const RequestSendMoneyPaymentMethod = S.String;
+const RequestSendMoneyPaymentMethod = S.String;
 
 export type PaymentApprovalReviewStatus = "approved" | "rejected";
-export const PaymentApprovalReviewStatus = S.String;
+const PaymentApprovalReviewStatus = S.String;
 
 export interface PaymentApprovalReview {
   reviewedAt: string;
   reviewerUserId: string;
   status: PaymentApprovalReviewStatus;
 }
-export const PaymentApprovalReview = /*@__PURE__*/ S.suspend(() =>
+const PaymentApprovalReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewedAt: S.String,
     reviewerUserId: S.String,
@@ -2508,12 +2467,12 @@ export const PaymentApprovalReview = /*@__PURE__*/ S.suspend(() =>
 
 /** Approval decisions recorded against this request, ordered from oldest to most recent. */
 export type SendMoneyApprovalRequestResponseReviewsList = Array<PaymentApprovalReview>;
-export const SendMoneyApprovalRequestResponseReviewsList = /*@__PURE__*/ S.Array(
+const SendMoneyApprovalRequestResponseReviewsList = /*@__PURE__*/ S.Array(
   PaymentApprovalReview,
 ) as any as S.Schema<SendMoneyApprovalRequestResponseReviewsList>;
 
 export type ReviewRequestStatus = "pendingApproval" | "approved" | "rejected" | "cancelled";
-export const ReviewRequestStatus = S.String;
+const ReviewRequestStatus = S.String;
 
 /** A pending or completed approval request for a Mercury payment. */
 export interface SendMoneyApprovalRequestResponse {
@@ -2534,7 +2493,7 @@ export interface SendMoneyApprovalRequestResponse {
   scheduledSendDate?: unknown | null;
   status: ReviewRequestStatus;
 }
-export const SendMoneyApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const SendMoneyApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String,
     amount: S.Number,
@@ -2557,21 +2516,20 @@ export const SendMoneyApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetStatementPdfRequest {
   statementId: string;
 }
-export const GetStatementPdfRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatementPdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statementId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/statements/{statementId}/pdf", code: 200 })),
 ).annotate({ identifier: "GetStatementPdfRequest" }) as any as S.Schema<GetStatementPdfRequest>;
 
 export interface GetStatementPdfResponse {}
-export const GetStatementPdfResponse =
-  CancelInvoiceResponse as any as S.Schema<GetStatementPdfResponse>;
+const GetStatementPdfResponse = CancelInvoiceResponse as any as S.Schema<GetStatementPdfResponse>;
 
 export interface GetTransactionRequest {
   accountId: string;
   transactionId: string;
 }
-export const GetTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     transactionId: S.String.pipe(T.Label()),
@@ -2583,7 +2541,7 @@ export const GetTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTransactionByTransactionIdRequest {
   transactionId: string;
 }
-export const GetTransactionByTransactionIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransactionByTransactionIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/transaction/{transactionId}", code: 200 })),
@@ -2593,7 +2551,7 @@ export const GetTransactionByTransactionIdRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetTreasuryRequestOrder = "asc" | "desc";
-export const GetTreasuryRequestOrder = S.String;
+const GetTreasuryRequestOrder = S.String;
 
 export interface GetTreasuryRequest {
   limit?: number;
@@ -2601,7 +2559,7 @@ export interface GetTreasuryRequest {
   end_before?: string;
   order?: GetTreasuryRequestOrder | (string & {});
 }
-export const GetTreasuryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTreasuryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -2620,7 +2578,7 @@ export interface TreasuryDividend {
   securityName: string;
   type: unknown;
 }
-export const TreasuryDividend = /*@__PURE__*/ S.suspend(() =>
+const TreasuryDividend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     id: S.String,
@@ -2631,7 +2589,7 @@ export const TreasuryDividend = /*@__PURE__*/ S.suspend(() =>
 
 /** List of dividends received by security */
 export type TreasuryNetReturnDividendsList = Array<TreasuryDividend>;
-export const TreasuryNetReturnDividendsList = /*@__PURE__*/ S.Array(
+const TreasuryNetReturnDividendsList = /*@__PURE__*/ S.Array(
   TreasuryDividend,
 ) as any as S.Schema<TreasuryNetReturnDividendsList>;
 
@@ -2646,7 +2604,7 @@ export interface TreasuryNetReturn {
   /** Treasury fee charged for this period (positive value) */
   treasuryFee: number;
 }
-export const TreasuryNetReturn = /*@__PURE__*/ S.suspend(() =>
+const TreasuryNetReturn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dividends: TreasuryNetReturnDividendsList,
     month: S.Unknown,
@@ -2658,7 +2616,7 @@ export const TreasuryNetReturn = /*@__PURE__*/ S.suspend(() =>
 
 /** Monthly net return breakdown with dividend and fee details */
 export type TreasuryAccountNetReturnsList = Array<TreasuryNetReturn>;
-export const TreasuryAccountNetReturnsList = /*@__PURE__*/ S.Array(
+const TreasuryAccountNetReturnsList = /*@__PURE__*/ S.Array(
   TreasuryNetReturn,
 ) as any as S.Schema<TreasuryAccountNetReturnsList>;
 
@@ -2671,7 +2629,7 @@ export interface TreasuryAccount {
   netReturns: TreasuryAccountNetReturnsList;
   status: AccountStatus;
 }
-export const TreasuryAccount = /*@__PURE__*/ S.suspend(() =>
+const TreasuryAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableBalance: S.Number,
     createdAt: S.String,
@@ -2684,14 +2642,12 @@ export const TreasuryAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** List of treasury accounts in the current page */
 export type TreasuryAccountsPaginatedResponseAccountsList = Array<TreasuryAccount>;
-export const TreasuryAccountsPaginatedResponseAccountsList = /*@__PURE__*/ S.Array(
+const TreasuryAccountsPaginatedResponseAccountsList = /*@__PURE__*/ S.Array(
   TreasuryAccount,
 ) as any as S.Schema<TreasuryAccountsPaginatedResponseAccountsList>;
 
 /** Pagination information including cursors for navigating to next/previous pages */
 export type TreasuryAccountsPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const TreasuryAccountsPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** Paginated response type for treasury accounts API endpoint */
 export interface TreasuryAccountsPaginatedResponse {
   /** List of treasury accounts in the current page */
@@ -2699,7 +2655,7 @@ export interface TreasuryAccountsPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
-export const TreasuryAccountsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const TreasuryAccountsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accounts: TreasuryAccountsPaginatedResponseAccountsList,
     page: AccountsPaginatedResponsePage,
@@ -2710,7 +2666,7 @@ export const TreasuryAccountsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetTreasuryStatementsRequestOrder = "asc" | "desc";
-export const GetTreasuryStatementsRequestOrder = S.String;
+const GetTreasuryStatementsRequestOrder = S.String;
 
 /** Filter statements by document type. */
 export type GetTreasuryStatementsRequestDocumentType =
@@ -2724,7 +2680,7 @@ export type GetTreasuryStatementsRequestDocumentType =
   | "1099Q"
   | "FMV"
   | "SDIRA";
-export const GetTreasuryStatementsRequestDocumentType = S.String;
+const GetTreasuryStatementsRequestDocumentType = S.String;
 
 export interface GetTreasuryStatementsRequest {
   treasuryId: string;
@@ -2734,7 +2690,7 @@ export interface GetTreasuryStatementsRequest {
   end_before?: string;
   documentType?: GetTreasuryStatementsRequestDocumentType | (string & {});
 }
-export const GetTreasuryStatementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTreasuryStatementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     treasuryId: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2748,8 +2704,6 @@ export const GetTreasuryStatementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTreasuryStatementsRequest>;
 
 export type TreasuryStatementsPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const TreasuryStatementsPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** Individual treasury statement in the response */
 export interface TreasuryStatement {
   accountId: unknown;
@@ -2765,7 +2719,7 @@ export interface TreasuryStatement {
   periodStart: unknown;
   updatedAt: unknown;
 }
-export const TreasuryStatement = /*@__PURE__*/ S.suspend(() =>
+const TreasuryStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.Unknown,
     createdAt: S.Unknown,
@@ -2781,7 +2735,7 @@ export const TreasuryStatement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TreasuryStatement" }) as any as S.Schema<TreasuryStatement>;
 
 export type TreasuryStatementsPaginatedResponseStatementsList = Array<TreasuryStatement>;
-export const TreasuryStatementsPaginatedResponseStatementsList = /*@__PURE__*/ S.Array(
+const TreasuryStatementsPaginatedResponseStatementsList = /*@__PURE__*/ S.Array(
   TreasuryStatement,
 ) as any as S.Schema<TreasuryStatementsPaginatedResponseStatementsList>;
 
@@ -2790,7 +2744,7 @@ export interface TreasuryStatementsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   statements: TreasuryStatementsPaginatedResponseStatementsList;
 }
-export const TreasuryStatementsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const TreasuryStatementsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: AccountsPaginatedResponsePage,
     statements: TreasuryStatementsPaginatedResponseStatementsList,
@@ -2801,7 +2755,7 @@ export const TreasuryStatementsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order for transactions. Can be 'asc' or 'desc'. Defaults to 'desc' */
 export type GetTreasuryTransactionsRequestOrder = "asc" | "desc";
-export const GetTreasuryTransactionsRequestOrder = S.String;
+const GetTreasuryTransactionsRequestOrder = S.String;
 
 export interface GetTreasuryTransactionsRequest {
   treasuryId: string;
@@ -2809,7 +2763,7 @@ export interface GetTreasuryTransactionsRequest {
   order?: GetTreasuryTransactionsRequestOrder | (string & {});
   cursor?: number;
 }
-export const GetTreasuryTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTreasuryTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     treasuryId: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2830,7 +2784,7 @@ export interface TreasuryTransactionDetails {
   tradeAction?: string | null;
   withdrawalCounterpartyId?: string | null;
 }
-export const TreasuryTransactionDetails = /*@__PURE__*/ S.suspend(() =>
+const TreasuryTransactionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creditDescription: S.optional(S.NullOr(S.String)),
     depositCounterpartyId: S.optional(S.NullOr(S.String)),
@@ -2879,7 +2833,7 @@ export type TreasuryTransactionType =
   | "oemsFixedIncomeOrderSettled"
   | "oemsFixedIncomeOrderCanceled"
   | "oemsFixedIncomeOrderRejected";
-export const TreasuryTransactionType = S.String;
+const TreasuryTransactionType = S.String;
 
 /** Treasury transaction data for external API consumption */
 export interface TreasuryTxn {
@@ -2894,7 +2848,7 @@ export interface TreasuryTxn {
   security?: string | null;
   type: TreasuryTransactionType;
 }
-export const TreasuryTxn = /*@__PURE__*/ S.suspend(() =>
+const TreasuryTxn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String,
     additionalDetails: S.optional(S.NullOr(S.String)),
@@ -2911,7 +2865,7 @@ export const TreasuryTxn = /*@__PURE__*/ S.suspend(() =>
 
 /** List of treasury transactions in the response */
 export type TreasuryTransactionsResponseTransactionsList = Array<TreasuryTxn>;
-export const TreasuryTransactionsResponseTransactionsList = /*@__PURE__*/ S.Array(
+const TreasuryTransactionsResponseTransactionsList = /*@__PURE__*/ S.Array(
   TreasuryTxn,
 ) as any as S.Schema<TreasuryTransactionsResponseTransactionsList>;
 
@@ -2921,7 +2875,7 @@ export interface TreasuryTransactionsResponse {
   /** List of treasury transactions in the response */
   transactions: TreasuryTransactionsResponseTransactionsList;
 }
-export const TreasuryTransactionsResponse = /*@__PURE__*/ S.suspend(() =>
+const TreasuryTransactionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.NullOr(S.Unknown)),
     transactions: TreasuryTransactionsResponseTransactionsList,
@@ -2933,7 +2887,7 @@ export const TreasuryTransactionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserRequest {
   userId: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{userId}", code: 200 })),
@@ -2950,7 +2904,7 @@ export interface UserDetails {
   organizationRole: unknown;
   userId: unknown;
 }
-export const UserDetails = /*@__PURE__*/ S.suspend(() =>
+const UserDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     firstName: S.String,
@@ -2962,7 +2916,7 @@ export const UserDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetUsersRequestOrder = "asc" | "desc";
-export const GetUsersRequestOrder = S.String;
+const GetUsersRequestOrder = S.String;
 
 export interface GetUsersRequest {
   limit?: number;
@@ -2970,7 +2924,7 @@ export interface GetUsersRequest {
   end_before?: string;
   order?: GetUsersRequestOrder | (string & {});
 }
-export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -2981,11 +2935,9 @@ export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Pagination information including cursors for navigating to next/previous pages */
 export type UsersPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const UsersPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** List of users in the current page */
 export type UsersPaginatedResponseUsersList = Array<UserDetails>;
-export const UsersPaginatedResponseUsersList = /*@__PURE__*/ S.Array(
+const UsersPaginatedResponseUsersList = /*@__PURE__*/ S.Array(
   UserDetails,
 ) as any as S.Schema<UsersPaginatedResponseUsersList>;
 
@@ -2996,7 +2948,7 @@ export interface UsersPaginatedResponse {
   /** List of users in the current page */
   users: UsersPaginatedResponseUsersList;
 }
-export const UsersPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const UsersPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: AccountsPaginatedResponsePage,
     users: UsersPaginatedResponseUsersList,
@@ -3006,22 +2958,20 @@ export const UsersPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetWebhookRequest {
   webhookEndpointId: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookEndpointId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/webhooks/{webhookEndpointId}", code: 200 })),
 ).annotate({ identifier: "GetWebhookRequest" }) as any as S.Schema<GetWebhookRequest>;
 
 export type GetWebhooksRequestStatusItem = "active" | "paused" | "disabled" | "deleted";
-export const GetWebhooksRequestStatusItem = S.String;
-
 export type GetWebhooksRequestStatusList = Array<GetWebhooksRequestStatusItem | (string & {})>;
-export const GetWebhooksRequestStatusList =
+const GetWebhooksRequestStatusList =
   CardCategoryLocksList as any as S.Schema<GetWebhooksRequestStatusList>;
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetWebhooksRequestOrder = "asc" | "desc";
-export const GetWebhooksRequestOrder = S.String;
+const GetWebhooksRequestOrder = S.String;
 
 export interface GetWebhooksRequest {
   status?: GetWebhooksRequestStatusList;
@@ -3030,7 +2980,7 @@ export interface GetWebhooksRequest {
   end_before?: string;
   order?: GetWebhooksRequestOrder | (string & {});
 }
-export const GetWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GetWebhooksRequestStatusList.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3042,11 +2992,9 @@ export const GetWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Pagination information including cursors for navigating to next/previous pages */
 export type ApiWebhooksPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const ApiWebhooksPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** List of webhooks in the current page */
 export type ApiWebhooksPaginatedResponseWebhooksList = Array<ApiWebhookResponse>;
-export const ApiWebhooksPaginatedResponseWebhooksList = /*@__PURE__*/ S.Array(
+const ApiWebhooksPaginatedResponseWebhooksList = /*@__PURE__*/ S.Array(
   ApiWebhookResponse,
 ) as any as S.Schema<ApiWebhooksPaginatedResponseWebhooksList>;
 
@@ -3057,7 +3005,7 @@ export interface ApiWebhooksPaginatedResponse {
   /** List of webhooks in the current page */
   webhooks: ApiWebhooksPaginatedResponseWebhooksList;
 }
-export const ApiWebhooksPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiWebhooksPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: AccountsPaginatedResponsePage,
     webhooks: ApiWebhooksPaginatedResponseWebhooksList,
@@ -3073,11 +3021,11 @@ export type ListAccountTransactionsRequestStatus =
   | "failed"
   | "reversed"
   | "blocked";
-export const ListAccountTransactionsRequestStatus = S.String;
+const ListAccountTransactionsRequestStatus = S.String;
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'desc' */
 export type ListAccountTransactionsRequestOrder = "asc" | "desc";
-export const ListAccountTransactionsRequestOrder = S.String;
+const ListAccountTransactionsRequestOrder = S.String;
 
 export interface ListAccountTransactionsRequest {
   accountId: string;
@@ -3092,7 +3040,7 @@ export interface ListAccountTransactionsRequest {
   mercuryCategory?: string;
   categoryId?: string;
 }
-export const ListAccountTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3111,7 +3059,7 @@ export const ListAccountTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountTransactionsRequest>;
 
 export type TransactionsResponseTransactionsList = Array<Transaction>;
-export const TransactionsResponseTransactionsList = /*@__PURE__*/ S.Array(
+const TransactionsResponseTransactionsList = /*@__PURE__*/ S.Array(
   Transaction,
 ) as any as S.Schema<TransactionsResponseTransactionsList>;
 
@@ -3119,7 +3067,7 @@ export interface TransactionsResponse {
   total: number;
   transactions: TransactionsResponseTransactionsList;
 }
-export const TransactionsResponse = /*@__PURE__*/ S.suspend(() =>
+const TransactionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     transactions: TransactionsResponseTransactionsList,
@@ -3128,7 +3076,7 @@ export const TransactionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter cards by one or more account IDs. */
 export type ListCardsRequestAccountIdList = Array<string>;
-export const ListCardsRequestAccountIdList =
+const ListCardsRequestAccountIdList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<ListCardsRequestAccountIdList>;
 
 export type ListCardsRequestStatusItem =
@@ -3138,32 +3086,24 @@ export type ListCardsRequestStatusItem =
   | "inactive"
   | "expired"
   | "suspended";
-export const ListCardsRequestStatusItem = S.String;
-
 /** Filter cards by one or more statuses. */
 export type ListCardsRequestStatusList = Array<ListCardsRequestStatusItem | (string & {})>;
-export const ListCardsRequestStatusList =
+const ListCardsRequestStatusList =
   CardCategoryLocksList as any as S.Schema<ListCardsRequestStatusList>;
 
 export type ListCardsRequestTypeItem = "virtual" | "physical";
-export const ListCardsRequestTypeItem = S.String;
-
 /** Filter cards by type (virtual or physical). */
 export type ListCardsRequestTypeList = Array<ListCardsRequestTypeItem | (string & {})>;
-export const ListCardsRequestTypeList =
-  CardCategoryLocksList as any as S.Schema<ListCardsRequestTypeList>;
+const ListCardsRequestTypeList = CardCategoryLocksList as any as S.Schema<ListCardsRequestTypeList>;
 
 export type ListCardsRequestKindItem = "debit" | "credit";
-export const ListCardsRequestKindItem = S.String;
-
 /** Filter cards by kind (debit or credit). */
 export type ListCardsRequestKindList = Array<ListCardsRequestKindItem | (string & {})>;
-export const ListCardsRequestKindList =
-  CardCategoryLocksList as any as S.Schema<ListCardsRequestKindList>;
+const ListCardsRequestKindList = CardCategoryLocksList as any as S.Schema<ListCardsRequestKindList>;
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListCardsRequestOrder = "asc" | "desc";
-export const ListCardsRequestOrder = S.String;
+const ListCardsRequestOrder = S.String;
 
 export interface ListCardsRequest {
   accountId?: ListCardsRequestAccountIdList;
@@ -3177,7 +3117,7 @@ export interface ListCardsRequest {
   start_after?: string;
   end_before?: string;
 }
-export const ListCardsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(ListCardsRequestAccountIdList.pipe(T.Query())),
     status: S.optional(ListCardsRequestStatusList.pipe(T.Query())),
@@ -3194,7 +3134,7 @@ export const ListCardsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of cards in the current page. */
 export type CardListResponseCardsList = Array<Card>;
-export const CardListResponseCardsList = /*@__PURE__*/ S.Array(
+const CardListResponseCardsList = /*@__PURE__*/ S.Array(
   Card,
 ) as any as S.Schema<CardListResponseCardsList>;
 
@@ -3205,7 +3145,7 @@ export interface CardListResponsePage {
   /** Unique identifier for a card */
   previousPage?: string;
 }
-export const CardListResponsePage = /*@__PURE__*/ S.suspend(() =>
+const CardListResponsePage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPage: S.optional(S.String),
     previousPage: S.optional(S.String),
@@ -3218,7 +3158,7 @@ export interface CardListResponse {
   /** Pagination cursors for navigating to next/previous pages. */
   page: CardListResponsePage;
 }
-export const CardListResponse = /*@__PURE__*/ S.suspend(() =>
+const CardListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cards: CardListResponseCardsList,
     page: CardListResponsePage,
@@ -3227,7 +3167,7 @@ export const CardListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListCategoriesRequestOrder = "asc" | "desc";
-export const ListCategoriesRequestOrder = S.String;
+const ListCategoriesRequestOrder = S.String;
 
 export interface ListCategoriesRequest {
   limit?: number;
@@ -3235,7 +3175,7 @@ export interface ListCategoriesRequest {
   start_after?: string;
   end_before?: string;
 }
-export const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     order: S.optional(ListCategoriesRequestOrder.pipe(T.Query())),
@@ -3246,14 +3186,12 @@ export const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of categories in the current page */
 export type CategoriesPaginatedResponseCategoriesList = Array<CategoryData>;
-export const CategoriesPaginatedResponseCategoriesList = /*@__PURE__*/ S.Array(
+const CategoriesPaginatedResponseCategoriesList = /*@__PURE__*/ S.Array(
   CategoryData,
 ) as any as S.Schema<CategoriesPaginatedResponseCategoriesList>;
 
 /** Pagination information including cursors for navigating to next/previous pages */
 export type CategoriesPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const CategoriesPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** Paginated response containing a list of categories. | Use the page cursor information to fetch additional pages of categories. */
 export interface CategoriesPaginatedResponse {
   /** List of categories in the current page */
@@ -3261,7 +3199,7 @@ export interface CategoriesPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
-export const CategoriesPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const CategoriesPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: CategoriesPaginatedResponseCategoriesList,
     page: AccountsPaginatedResponsePage,
@@ -3271,7 +3209,7 @@ export const CategoriesPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CategoriesPaginatedResponse>;
 
 export interface ListCreditRequest {}
-export const ListCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/credit", code: 200 })),
 ).annotate({ identifier: "ListCreditRequest" }) as any as S.Schema<ListCreditRequest>;
 
@@ -3282,7 +3220,7 @@ export interface CreditAccount {
   id: string;
   status: AccountStatus;
 }
-export const CreditAccount = /*@__PURE__*/ S.suspend(() =>
+const CreditAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableBalance: S.Number,
     createdAt: S.String,
@@ -3293,14 +3231,14 @@ export const CreditAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreditAccount" }) as any as S.Schema<CreditAccount>;
 
 export type CreditAccountsResponseAccountsList = Array<CreditAccount>;
-export const CreditAccountsResponseAccountsList = /*@__PURE__*/ S.Array(
+const CreditAccountsResponseAccountsList = /*@__PURE__*/ S.Array(
   CreditAccount,
 ) as any as S.Schema<CreditAccountsResponseAccountsList>;
 
 export interface CreditAccountsResponse {
   accounts: CreditAccountsResponseAccountsList;
 }
-export const CreditAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreditAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accounts: CreditAccountsResponseAccountsList,
   }),
@@ -3308,7 +3246,7 @@ export const CreditAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListCustomersRequestOrder = "asc" | "desc";
-export const ListCustomersRequestOrder = S.String;
+const ListCustomersRequestOrder = S.String;
 
 export interface ListCustomersRequest {
   limit?: number;
@@ -3316,7 +3254,7 @@ export interface ListCustomersRequest {
   end_before?: string;
   order?: ListCustomersRequestOrder | (string & {});
 }
-export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -3327,14 +3265,12 @@ export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of customers for this page */
 export type ApiV1ArCustomerPaginatedResponseDataCustomersList = Array<ApiV1ArCustomerResponseData>;
-export const ApiV1ArCustomerPaginatedResponseDataCustomersList = /*@__PURE__*/ S.Array(
+const ApiV1ArCustomerPaginatedResponseDataCustomersList = /*@__PURE__*/ S.Array(
   ApiV1ArCustomerResponseData,
 ) as any as S.Schema<ApiV1ArCustomerPaginatedResponseDataCustomersList>;
 
 /** Pagination cursors for navigating to next/previous pages */
 export type ApiV1ArCustomerPaginatedResponseDataPage = AccountsPaginatedResponsePage;
-export const ApiV1ArCustomerPaginatedResponseDataPage = AccountsPaginatedResponsePage;
-
 /** Paginated response data for Accounts Receivable customers API endpoint */
 export interface ApiV1ArCustomerPaginatedResponseData {
   /** The list of customers for this page */
@@ -3342,7 +3278,7 @@ export interface ApiV1ArCustomerPaginatedResponseData {
   /** Pagination cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
-export const ApiV1ArCustomerPaginatedResponseData = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArCustomerPaginatedResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customers: ApiV1ArCustomerPaginatedResponseDataCustomersList,
     page: AccountsPaginatedResponsePage,
@@ -3354,7 +3290,7 @@ export const ApiV1ArCustomerPaginatedResponseData = /*@__PURE__*/ S.suspend(() =
 export interface ListInvoiceAttachmentsRequest {
   invoiceId: string;
 }
-export const ListInvoiceAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvoiceAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoiceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ar/invoices/{invoiceId}/attachments", code: 200 })),
@@ -3364,7 +3300,7 @@ export const ListInvoiceAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of attachments */
 export type ApiV1ArAttachmentsResponseDataAttachmentsList = Array<ApiV1ArAttachmentResponseData>;
-export const ApiV1ArAttachmentsResponseDataAttachmentsList = /*@__PURE__*/ S.Array(
+const ApiV1ArAttachmentsResponseDataAttachmentsList = /*@__PURE__*/ S.Array(
   ApiV1ArAttachmentResponseData,
 ) as any as S.Schema<ApiV1ArAttachmentsResponseDataAttachmentsList>;
 
@@ -3373,7 +3309,7 @@ export interface ApiV1ArAttachmentsResponseData {
   /** The list of attachments */
   attachments: ApiV1ArAttachmentsResponseDataAttachmentsList;
 }
-export const ApiV1ArAttachmentsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArAttachmentsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: ApiV1ArAttachmentsResponseDataAttachmentsList,
   }),
@@ -3383,7 +3319,7 @@ export const ApiV1ArAttachmentsResponseData = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListInvoicesRequestOrder = "asc" | "desc";
-export const ListInvoicesRequestOrder = S.String;
+const ListInvoicesRequestOrder = S.String;
 
 export interface ListInvoicesRequest {
   limit?: number;
@@ -3391,7 +3327,7 @@ export interface ListInvoicesRequest {
   start_after?: string;
   end_before?: string;
 }
-export const ListInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     order: S.optional(ListInvoicesRequestOrder.pipe(T.Query())),
@@ -3402,7 +3338,7 @@ export const ListInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails to be CCed on invoice notifications/reminders. */
 export type ApiV1ArInvoicesDataCcEmailsList = Array<string>;
-export const ApiV1ArInvoicesDataCcEmailsList =
+const ApiV1ArInvoicesDataCcEmailsList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiV1ArInvoicesDataCcEmailsList>;
 
 /** Response data for Accounts Receivable invoices API Endpoint */
@@ -3438,7 +3374,7 @@ export interface ApiV1ArInvoicesData {
   /** Whether or not the invoice payment instructions will show the real account and routing number for the destination account or use virtual account numbers instead. */
   useRealAccountNumber: boolean;
 }
-export const ApiV1ArInvoicesData = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArInvoicesData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     achDebitEnabled: S.Boolean,
     amount: S.Number,
@@ -3465,14 +3401,12 @@ export const ApiV1ArInvoicesData = /*@__PURE__*/ S.suspend(() =>
 
 /** List of invoices in the current page */
 export type ApiV1ArInvoicesPaginatedResponseInvoicesList = Array<ApiV1ArInvoicesData>;
-export const ApiV1ArInvoicesPaginatedResponseInvoicesList = /*@__PURE__*/ S.Array(
+const ApiV1ArInvoicesPaginatedResponseInvoicesList = /*@__PURE__*/ S.Array(
   ApiV1ArInvoicesData,
 ) as any as S.Schema<ApiV1ArInvoicesPaginatedResponseInvoicesList>;
 
 /** Pagination information including cursors for navigating to next/previous pages */
 export type ApiV1ArInvoicesPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const ApiV1ArInvoicesPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** Paginated response containing a list of invoices. | Use the page cursor information to fetch additional pages of invoices. */
 export interface ApiV1ArInvoicesPaginatedResponse {
   /** List of invoices in the current page */
@@ -3480,7 +3414,7 @@ export interface ApiV1ArInvoicesPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
-export const ApiV1ArInvoicesPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiV1ArInvoicesPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoices: ApiV1ArInvoicesPaginatedResponseInvoicesList,
     page: AccountsPaginatedResponsePage,
@@ -3491,7 +3425,7 @@ export const ApiV1ArInvoicesPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListMerchantsRequestOrder = "asc" | "desc";
-export const ListMerchantsRequestOrder = S.String;
+const ListMerchantsRequestOrder = S.String;
 
 export interface ListMerchantsRequest {
   limit?: number;
@@ -3500,7 +3434,7 @@ export interface ListMerchantsRequest {
   end_before?: string;
   search?: string;
 }
-export const ListMerchantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMerchantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     order: S.optional(ListMerchantsRequestOrder.pipe(T.Query())),
@@ -3512,22 +3446,18 @@ export const ListMerchantsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Information about a merchant that can be used for spend controls like merchant locking. */
 export type MerchantInfo = CardMerchantLock;
-export const MerchantInfo = CardMerchantLock;
-
 export type MerchantsResponseDataList = Array<CardMerchantLock>;
-export const MerchantsResponseDataList = /*@__PURE__*/ S.Array(
+const MerchantsResponseDataList = /*@__PURE__*/ S.Array(
   CardMerchantLock,
 ) as any as S.Schema<MerchantsResponseDataList>;
 
 export type MerchantsResponsePage = AccountsPaginatedResponsePage;
-export const MerchantsResponsePage = AccountsPaginatedResponsePage;
-
 /** Paginated response for merchants endpoint */
 export interface MerchantsResponse {
   data: MerchantsResponseDataList;
   page: AccountsPaginatedResponsePage;
 }
-export const MerchantsResponse = /*@__PURE__*/ S.suspend(() =>
+const MerchantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: MerchantsResponseDataList,
     page: AccountsPaginatedResponsePage,
@@ -3536,10 +3466,10 @@ export const MerchantsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListRecipientInvitesRequestOrder = "asc" | "desc";
-export const ListRecipientInvitesRequestOrder = S.String;
+const ListRecipientInvitesRequestOrder = S.String;
 
 export type ListRecipientInvitesRequestStatus = "created" | "completed" | "expired";
-export const ListRecipientInvitesRequestStatus = S.String;
+const ListRecipientInvitesRequestStatus = S.String;
 
 export interface ListRecipientInvitesRequest {
   limit?: number;
@@ -3548,7 +3478,7 @@ export interface ListRecipientInvitesRequest {
   order?: ListRecipientInvitesRequestOrder | (string & {});
   status?: ListRecipientInvitesRequestStatus | (string & {});
 }
-export const ListRecipientInvitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecipientInvitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -3562,14 +3492,12 @@ export const ListRecipientInvitesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of invites in the current page. */
 export type RecipientInviteApiPaginatedResponseInvitesList = Array<RecipientInviteApiResponse>;
-export const RecipientInviteApiPaginatedResponseInvitesList = /*@__PURE__*/ S.Array(
+const RecipientInviteApiPaginatedResponseInvitesList = /*@__PURE__*/ S.Array(
   RecipientInviteApiResponse,
 ) as any as S.Schema<RecipientInviteApiPaginatedResponseInvitesList>;
 
 /** Pagination cursors (inviteId) for navigating to next/previous pages. */
 export type RecipientInviteApiPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const RecipientInviteApiPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 /** API response for listing recipient invites with pagination. */
 export interface RecipientInviteApiPaginatedResponse {
   /** List of invites in the current page. */
@@ -3577,7 +3505,7 @@ export interface RecipientInviteApiPaginatedResponse {
   /** Pagination cursors (inviteId) for navigating to next/previous pages. */
   page: AccountsPaginatedResponsePage;
 }
-export const RecipientInviteApiPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const RecipientInviteApiPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invites: RecipientInviteApiPaginatedResponseInvitesList,
     page: AccountsPaginatedResponsePage,
@@ -3588,7 +3516,7 @@ export const RecipientInviteApiPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListRecipientsAttachmentsRequestOrder = "asc" | "desc";
-export const ListRecipientsAttachmentsRequestOrder = S.String;
+const ListRecipientsAttachmentsRequestOrder = S.String;
 
 export interface ListRecipientsAttachmentsRequest {
   limit?: number;
@@ -3596,7 +3524,7 @@ export interface ListRecipientsAttachmentsRequest {
   end_before?: string;
   order?: ListRecipientsAttachmentsRequestOrder | (string & {});
 }
-export const ListRecipientsAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecipientsAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -3617,7 +3545,7 @@ export interface RecipientAttachmentWithId {
   /** Presigned URL to download the attachment (valid for 12 hours) */
   url: string;
 }
-export const RecipientAttachmentWithId = /*@__PURE__*/ S.suspend(() =>
+const RecipientAttachmentWithId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileName: S.String,
     formType: S.optional(S.NullOr(S.Unknown)),
@@ -3633,14 +3561,12 @@ export const RecipientAttachmentWithId = /*@__PURE__*/ S.suspend(() =>
 /** List of attachments with recipient IDs */
 export type RecipientsAttachmentsPaginatedResponseAttachmentsList =
   Array<RecipientAttachmentWithId>;
-export const RecipientsAttachmentsPaginatedResponseAttachmentsList = /*@__PURE__*/ S.Array(
+const RecipientsAttachmentsPaginatedResponseAttachmentsList = /*@__PURE__*/ S.Array(
   RecipientAttachmentWithId,
 ) as any as S.Schema<RecipientsAttachmentsPaginatedResponseAttachmentsList>;
 
 /** Pagination information */
 export type RecipientsAttachmentsPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const RecipientsAttachmentsPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 export interface RecipientsAttachmentsPaginatedResponse {
   /** List of attachments with recipient IDs */
   attachments: RecipientsAttachmentsPaginatedResponseAttachmentsList;
@@ -3648,7 +3574,7 @@ export interface RecipientsAttachmentsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   total: unknown;
 }
-export const RecipientsAttachmentsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const RecipientsAttachmentsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: RecipientsAttachmentsPaginatedResponseAttachmentsList,
     page: AccountsPaginatedResponsePage,
@@ -3663,7 +3589,7 @@ export type ListSendMoneyApprovalRequestsRequestStatus =
   | "approved"
   | "rejected"
   | "cancelled";
-export const ListSendMoneyApprovalRequestsRequestStatus = S.String;
+const ListSendMoneyApprovalRequestsRequestStatus = S.String;
 
 export interface ListSendMoneyApprovalRequestsRequest {
   accountId?: string;
@@ -3672,7 +3598,7 @@ export interface ListSendMoneyApprovalRequestsRequest {
   end_before?: string;
   limit?: number;
 }
-export const ListSendMoneyApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSendMoneyApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListSendMoneyApprovalRequestsRequestStatus.pipe(T.Query())),
@@ -3685,11 +3611,9 @@ export const ListSendMoneyApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListSendMoneyApprovalRequestsRequest>;
 
 export type SendMoneyApprovalRequestsPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const SendMoneyApprovalRequestsPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 export type SendMoneyApprovalRequestsPaginatedResponseRequestsList =
   Array<SendMoneyApprovalRequestResponse>;
-export const SendMoneyApprovalRequestsPaginatedResponseRequestsList = /*@__PURE__*/ S.Array(
+const SendMoneyApprovalRequestsPaginatedResponseRequestsList = /*@__PURE__*/ S.Array(
   SendMoneyApprovalRequestResponse,
 ) as any as S.Schema<SendMoneyApprovalRequestsPaginatedResponseRequestsList>;
 
@@ -3697,7 +3621,7 @@ export interface SendMoneyApprovalRequestsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   requests: SendMoneyApprovalRequestsPaginatedResponseRequestsList;
 }
-export const SendMoneyApprovalRequestsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const SendMoneyApprovalRequestsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: AccountsPaginatedResponsePage,
     requests: SendMoneyApprovalRequestsPaginatedResponseRequestsList,
@@ -3713,25 +3637,23 @@ export type ListTransactionsRequestStatusItem =
   | "failed"
   | "reversed"
   | "blocked";
-export const ListTransactionsRequestStatusItem = S.String;
-
 export type ListTransactionsRequestStatusList = Array<
   ListTransactionsRequestStatusItem | (string & {})
 >;
-export const ListTransactionsRequestStatusList =
+const ListTransactionsRequestStatusList =
   CardCategoryLocksList as any as S.Schema<ListTransactionsRequestStatusList>;
 
 export type ListTransactionsRequestAccountIdList = Array<string>;
-export const ListTransactionsRequestAccountIdList =
+const ListTransactionsRequestAccountIdList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<ListTransactionsRequestAccountIdList>;
 
 export type ListTransactionsRequestCardIdList = Array<string>;
-export const ListTransactionsRequestCardIdList =
+const ListTransactionsRequestCardIdList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<ListTransactionsRequestCardIdList>;
 
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListTransactionsRequestOrder = "asc" | "desc";
-export const ListTransactionsRequestOrder = S.String;
+const ListTransactionsRequestOrder = S.String;
 
 export interface ListTransactionsRequest {
   status?: ListTransactionsRequestStatusList;
@@ -3750,7 +3672,7 @@ export interface ListTransactionsRequest {
   limit?: number;
   order?: ListTransactionsRequestOrder | (string & {});
 }
-export const ListTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ListTransactionsRequestStatusList.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
@@ -3771,17 +3693,15 @@ export const ListTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTransactionsRequest" }) as any as S.Schema<ListTransactionsRequest>;
 
 export type TransactionsPaginatedResponsePage = AccountsPaginatedResponsePage;
-export const TransactionsPaginatedResponsePage = AccountsPaginatedResponsePage;
-
 export type TransactionsPaginatedResponseTransactionsList = Array<Transaction>;
-export const TransactionsPaginatedResponseTransactionsList =
+const TransactionsPaginatedResponseTransactionsList =
   TransactionsResponseTransactionsList as any as S.Schema<TransactionsPaginatedResponseTransactionsList>;
 
 export interface TransactionsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   transactions: TransactionsPaginatedResponseTransactionsList;
 }
-export const TransactionsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const TransactionsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: AccountsPaginatedResponsePage,
     transactions: TransactionsPaginatedResponseTransactionsList,
@@ -3792,7 +3712,7 @@ export const TransactionsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The grant type for the token request. Must be "authorization_code" for the authorization code flow or "refresh_token" when refreshing an access token. */
 export type ObtainAccessTokenRequestGrantType = "authorization_code" | "refresh_token";
-export const ObtainAccessTokenRequestGrantType = S.String;
+const ObtainAccessTokenRequestGrantType = S.String;
 
 export interface ObtainAccessTokenRequest {
   /** The authorization code received from the authorization server. Required when grant_type is "authorization_code". */
@@ -3808,7 +3728,7 @@ export interface ObtainAccessTokenRequest {
   /** A space-separated list of the scopes requested for the access token. Required when grant_type is \`refresh_token\`. Must be a subset of the scopes granted during the original authorization. */
   scope: string;
 }
-export const ObtainAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ObtainAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     code_verifier: S.String,
@@ -3831,7 +3751,7 @@ export interface OAuth2TokenResponse {
   /** The type of the token issued. Value is case insensitive and should be "Bearer". */
   token_type: string;
 }
-export const OAuth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
+const OAuth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.String.pipe(T.SensitiveValue({})),
     expires_in: S.optional(S.Number),
@@ -3843,7 +3763,7 @@ export const OAuth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Who pays intermediary bank fees on a USD international wire. Pass 'ours' so the recipient receives the full amount (Mercury charges a $15 fee), or 'shared' to split those fees. If omitted on a USD international wire, this defaults to 'ours'. Do not include this field for other payment methods or accounts that are not charged international-wire fees. */
 export type RequestSendMoneyRequestChargeType = "ours" | "shared";
-export const RequestSendMoneyRequestChargeType = S.String;
+const RequestSendMoneyRequestChargeType = S.String;
 
 export interface RequestSendMoneyRequest {
   accountId: string;
@@ -3864,7 +3784,7 @@ export interface RequestSendMoneyRequest {
   /** Recipient ID from the /recipients endpoint. */
   recipientId: string;
 }
-export const RequestSendMoneyRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestSendMoneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     amount: S.Number,
@@ -3885,7 +3805,7 @@ export interface RequestTransferMoneyRequest {
   note?: string | null;
   sourceAccountId: string;
 }
-export const RequestTransferMoneyRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestTransferMoneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     destinationAccountId: S.String,
@@ -3899,7 +3819,7 @@ export const RequestTransferMoneyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Approval decisions recorded on this request, oldest first. */
 export type TransferMoneyApprovalRequestResponseReviewsList = Array<PaymentApprovalReview>;
-export const TransferMoneyApprovalRequestResponseReviewsList =
+const TransferMoneyApprovalRequestResponseReviewsList =
   SendMoneyApprovalRequestResponseReviewsList as any as S.Schema<TransferMoneyApprovalRequestResponseReviewsList>;
 
 /** An approval request for a transfer between accounts. */
@@ -3922,7 +3842,7 @@ export interface TransferMoneyApprovalRequestResponse {
   sourceAccountId: unknown;
   status: ReviewRequestStatus;
 }
-export const TransferMoneyApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const TransferMoneyApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     createdAt: S.Unknown,
@@ -3944,15 +3864,13 @@ export const TransferMoneyApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =
 export interface RevealCardPanRequest {
   cardId: string;
 }
-export const RevealCardPanRequest = /*@__PURE__*/ S.suspend(() =>
+const RevealCardPanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/cards/{cardId}/reveal", code: 200 })),
 ).annotate({ identifier: "RevealCardPanRequest" }) as any as S.Schema<RevealCardPanRequest>;
 
 export type CardRevealResponseExpiration = CardExpiration;
-export const CardRevealResponseExpiration = CardExpiration;
-
 /** Sensitive card details returned by the card reveal endpoint: the card's full number, expiration, and CVC. */
 export interface CardRevealResponse {
   /** The card's full primary account number (PAN). */
@@ -3961,7 +3879,7 @@ export interface CardRevealResponse {
   cvc: string;
   expiration: CardExpiration;
 }
-export const CardRevealResponse = /*@__PURE__*/ S.suspend(() =>
+const CardRevealResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardNumber: S.String,
     cvc: S.String,
@@ -3985,7 +3903,7 @@ export interface StartOAuth2FlowRequest {
   /** Required for clients with PKCE flow. Must have value S256, the SHA256 function used to hash the code challenge. */
   code_challenge_method?: string;
 }
-export const StartOAuth2FlowRequest = /*@__PURE__*/ S.suspend(() =>
+const StartOAuth2FlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String.pipe(T.Query()),
     redirect_uri: S.String.pipe(T.Query()),
@@ -3998,27 +3916,24 @@ export const StartOAuth2FlowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartOAuth2FlowRequest" }) as any as S.Schema<StartOAuth2FlowRequest>;
 
 export interface StartOAuth2FlowResponse {}
-export const StartOAuth2FlowResponse =
-  CancelInvoiceResponse as any as S.Schema<StartOAuth2FlowResponse>;
+const StartOAuth2FlowResponse = CancelInvoiceResponse as any as S.Schema<StartOAuth2FlowResponse>;
 
 export interface UnfreezeCardRequest {
   cardId: string;
 }
-export const UnfreezeCardRequest = /*@__PURE__*/ S.suspend(() =>
+const UnfreezeCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/cards/{cardId}/unfreeze", code: 200 })),
 ).annotate({ identifier: "UnfreezeCardRequest" }) as any as S.Schema<UnfreezeCardRequest>;
 
 export type UpdateCardRequestSpendLimit = CardSpendLimit;
-export const UpdateCardRequestSpendLimit = CardSpendLimit;
-
 export interface UpdateCardRequest {
   cardId: string;
   nickname: unknown;
   spendLimit?: CardSpendLimit | null;
 }
-export const UpdateCardRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardId: S.String.pipe(T.Label()),
     nickname: S.Unknown,
@@ -4027,8 +3942,6 @@ export const UpdateCardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCardRequest" }) as any as S.Schema<UpdateCardRequest>;
 
 export type UpdateCustomerRequestAddress = CreateCustomerRequestAddress;
-export const UpdateCustomerRequestAddress = CreateCustomerRequestAddress;
-
 export interface UpdateCustomerRequest {
   customerId: string;
   address?: CreateCustomerRequestAddress | null;
@@ -4038,7 +3951,7 @@ export interface UpdateCustomerRequest {
   /** Open invoices for the customer will be resent with updated data when this is true. */
   resendOpenInvoices: boolean;
 }
-export const UpdateCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     address: S.optional(S.NullOr(CreateCustomerRequestAddress)),
@@ -4050,12 +3963,12 @@ export const UpdateCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of emails to be CCed on notifications/reminders. */
 export type UpdateInvoiceRequestCcEmailsList = Array<string>;
-export const UpdateInvoiceRequestCcEmailsList =
+const UpdateInvoiceRequestCcEmailsList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<UpdateInvoiceRequestCcEmailsList>;
 
 /** The line items for the invoice */
 export type UpdateInvoiceRequestLineItemsList = Array<ApiV1ArLineItemData>;
-export const UpdateInvoiceRequestLineItemsList =
+const UpdateInvoiceRequestLineItemsList =
   CreateInvoiceRequestLineItemsList as any as S.Schema<UpdateInvoiceRequestLineItemsList>;
 
 export interface UpdateInvoiceRequest {
@@ -4083,7 +3996,7 @@ export interface UpdateInvoiceRequest {
   /** Whether or not the invoice payment instructions will show the real account and routing number for the destination account or use virtual account numbers instead. */
   useRealAccountNumber: boolean;
 }
-export const UpdateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoiceId: S.String.pipe(T.Label()),
     achDebitEnabled: S.Boolean,
@@ -4103,7 +4016,7 @@ export const UpdateInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInvoiceRequest" }) as any as S.Schema<UpdateInvoiceRequest>;
 
 export type UpdateRecipientRequestEmailsList = Array<string>;
-export const UpdateRecipientRequestEmailsList =
+const UpdateRecipientRequestEmailsList =
   CreateInvoiceRequestCcEmailsList as any as S.Schema<UpdateRecipientRequestEmailsList>;
 
 export interface UpdateRecipientRequest {
@@ -4124,7 +4037,7 @@ export interface UpdateRecipientRequest {
   /** Information needed to send a real-time payment. */
   realTimePaymentRoutingInfo?: RealTimePaymentRoutingInfoRaw;
 }
-export const UpdateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecipientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientId: S.String.pipe(T.Label()),
     address: S.optional(AddressData),
@@ -4144,7 +4057,7 @@ export interface UpdateTransactionRequest {
   categoryId: unknown;
   note: unknown;
 }
-export const UpdateTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionId: S.String.pipe(T.Label()),
     categoryId: S.Unknown,
@@ -4154,12 +4067,12 @@ export const UpdateTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Event types to subscribe to. Send null to subscribe to all event types. Send an array to subscribe to specific types. Omit to leave unchanged. */
 export type UpdateWebhookRequestEventTypesList = Array<WebhookEventType | (string & {})>;
-export const UpdateWebhookRequestEventTypesList =
+const UpdateWebhookRequestEventTypesList =
   CreateWebhookRequestEventTypesList as any as S.Schema<UpdateWebhookRequestEventTypesList>;
 
 /** Resource field paths to filter events by. When specified, webhook events will only be sent when one of these fields changes. Send null for no filtering. Send an array to filter by specific fields. Omit to leave unchanged. */
 export type UpdateWebhookRequestFilterPathsList = Array<ResourceField | (string & {})>;
-export const UpdateWebhookRequestFilterPathsList =
+const UpdateWebhookRequestFilterPathsList =
   CreateWebhookRequestFilterPathsList as any as S.Schema<UpdateWebhookRequestFilterPathsList>;
 
 export interface UpdateWebhookRequest {
@@ -4172,7 +4085,7 @@ export interface UpdateWebhookRequest {
   /** The URL to which webhook events will be delivered. Omit to leave unchanged. */
   url?: string | null;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookEndpointId: S.String.pipe(T.Label()),
     eventTypes: S.optional(S.NullOr(UpdateWebhookRequestEventTypesList)),
@@ -4188,7 +4101,7 @@ export interface UploadRecipientAttachmentRequest {
   /** The file to upload (tax form document) */
   file: string;
 }
-export const UploadRecipientAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadRecipientAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipientId: S.String.pipe(T.Label()),
     file: S.String,
@@ -4205,15 +4118,13 @@ export const UploadRecipientAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadRecipientAttachmentRequest>;
 
 export interface UploadRecipientAttachmentResponse {}
-export const UploadRecipientAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const UploadRecipientAttachmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UploadRecipientAttachmentResponse",
 }) as any as S.Schema<UploadRecipientAttachmentResponse>;
 
 /** Type of attachment: 'receipt', 'bill', or 'other'. Defaults to 'other'. */
 export type UploadTransactionAttachmentRequestAttachmentType = "receipt" | "bill" | "other";
-export const UploadTransactionAttachmentRequestAttachmentType = S.String;
+const UploadTransactionAttachmentRequestAttachmentType = S.String;
 
 export interface UploadTransactionAttachmentRequest {
   /** ID of the transaction to attach the file to */
@@ -4223,7 +4134,7 @@ export interface UploadTransactionAttachmentRequest {
   /** The file to upload */
   file: string;
 }
-export const UploadTransactionAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadTransactionAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionId: S.String.pipe(T.Label()),
     attachmentType: S.optional(UploadTransactionAttachmentRequestAttachmentType),
@@ -4241,14 +4152,14 @@ export const UploadTransactionAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadTransactionAttachmentRequest>;
 
 export interface UploadTransactionAttachmentResponse {}
-export const UploadTransactionAttachmentResponse =
+const UploadTransactionAttachmentResponse =
   UploadRecipientAttachmentResponse as any as S.Schema<UploadTransactionAttachmentResponse>;
 
 export interface VerifyWebhookRequest {
   webhookEndpointId: string;
   eventType?: unknown | null;
 }
-export const VerifyWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookEndpointId: S.String.pipe(T.Label()),
     eventType: S.optional(S.NullOr(S.Unknown)),
@@ -4256,8 +4167,7 @@ export const VerifyWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifyWebhookRequest" }) as any as S.Schema<VerifyWebhookRequest>;
 
 export interface VerifyWebhookResponse {}
-export const VerifyWebhookResponse =
-  CancelInvoiceResponse as any as S.Schema<VerifyWebhookResponse>;
+const VerifyWebhookResponse = CancelInvoiceResponse as any as S.Schema<VerifyWebhookResponse>;
 
 export type CancelCardError = NotFound | MercuryOpError;
 /** Cancel a card Permanently cancel a card. This action cannot be undone. */

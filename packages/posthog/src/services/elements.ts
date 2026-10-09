@@ -36,7 +36,7 @@ export class NotFound
   ) {}
 
 export type CreateElementRequestAttrClassList = Array<string>;
-export const CreateElementRequestAttrClassList = /*@__PURE__*/ S.Array(
+const CreateElementRequestAttrClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateElementRequestAttrClassList>;
 
@@ -53,7 +53,7 @@ export interface CreateElementRequest {
   attributes?: unknown;
   order?: number | null;
 }
-export const CreateElementRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateElementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     text: S.optional(S.NullOr(S.String)),
@@ -69,7 +69,7 @@ export const CreateElementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateElementRequest" }) as any as S.Schema<CreateElementRequest>;
 
 export type ElementAttrClassList = Array<string>;
-export const ElementAttrClassList =
+const ElementAttrClassList =
   CreateElementRequestAttrClassList as any as S.Schema<ElementAttrClassList>;
 
 export interface Element {
@@ -83,7 +83,7 @@ export interface Element {
   attributes?: unknown;
   order?: number | null;
 }
-export const Element = /*@__PURE__*/ S.suspend(() =>
+const Element = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.NullOr(S.String)),
     tag_name: S.optional(S.NullOr(S.String)),
@@ -103,7 +103,7 @@ export interface ElementsDestroyRequest {
   /** A unique integer value identifying this element. */
   id: number;
 }
-export const ElementsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ElementsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -113,7 +113,7 @@ export const ElementsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElementsDestroyRequest" }) as any as S.Schema<ElementsDestroyRequest>;
 
 export interface ElementsDestroyResponse {}
-export const ElementsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ElementsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ElementsDestroyResponse",
 }) as any as S.Schema<ElementsDestroyResponse>;
 
@@ -123,7 +123,7 @@ export interface GetElementRequest {
   /** A unique integer value identifying this element. */
   id: number;
 }
-export const GetElementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetElementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -131,7 +131,7 @@ export const GetElementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetElementRequest" }) as any as S.Schema<GetElementRequest>;
 
 export type GetElementsStatRequestIncludeList = Array<string>;
-export const GetElementsStatRequestIncludeList =
+const GetElementsStatRequestIncludeList =
   CreateElementRequestAttrClassList as any as S.Schema<GetElementsStatRequestIncludeList>;
 
 export interface GetElementsStatRequest {
@@ -156,7 +156,7 @@ export interface GetElementsStatRequest {
   /** Sampling factor between 0 and 1 */
   sampling_factor?: number;
 }
-export const GetElementsStatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetElementsStatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     data_attributes: S.optional(S.String.pipe(T.Query())),
@@ -173,7 +173,7 @@ export const GetElementsStatRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Parsed elements of the chain, clicked element first */
 export type ElementStatsElementsList = Array<Element>;
-export const ElementStatsElementsList = /*@__PURE__*/ S.Array(
+const ElementStatsElementsList = /*@__PURE__*/ S.Array(
   Element,
 ) as any as S.Schema<ElementStatsElementsList>;
 
@@ -187,7 +187,7 @@ export interface ElementStats {
   /** Parsed elements of the chain, clicked element first */
   elements: ElementStatsElementsList;
 }
-export const ElementStats = /*@__PURE__*/ S.suspend(() =>
+const ElementStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     hash: S.NullOr(S.String),
@@ -198,7 +198,7 @@ export const ElementStats = /*@__PURE__*/ S.suspend(() =>
 
 /** Element chains with event counts, ordered by count */
 export type ElementStatsResponseResultsList = Array<ElementStats>;
-export const ElementStatsResponseResultsList = /*@__PURE__*/ S.Array(
+const ElementStatsResponseResultsList = /*@__PURE__*/ S.Array(
   ElementStats,
 ) as any as S.Schema<ElementStatsResponseResultsList>;
 
@@ -210,7 +210,7 @@ export interface ElementStatsResponse {
   /** URL for the previous page of results, if any */
   previous: string | null;
 }
-export const ElementStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const ElementStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ElementStatsResponseResultsList,
     next: S.NullOr(S.String),
@@ -226,7 +226,7 @@ export interface ListElementsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListElementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListElementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -235,7 +235,7 @@ export const ListElementsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListElementsRequest" }) as any as S.Schema<ListElementsRequest>;
 
 export type PaginatedElementListResultsList = Array<Element>;
-export const PaginatedElementListResultsList =
+const PaginatedElementListResultsList =
   ElementStatsElementsList as any as S.Schema<PaginatedElementListResultsList>;
 
 export interface PaginatedElementList {
@@ -244,7 +244,7 @@ export interface PaginatedElementList {
   previous?: string | null;
   results?: PaginatedElementListResultsList;
 }
-export const PaginatedElementList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedElementList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -261,7 +261,7 @@ export interface ListElementsValuesRequest {
   /** Optional substring to filter values by (case-sensitive contains match). */
   value?: string;
 }
-export const ListElementsValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListElementsValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key: S.String.pipe(T.Query()),
@@ -275,26 +275,26 @@ export interface ElementValue {
   /** A distinct value of the requested element property */
   name: string;
 }
-export const ElementValue = /*@__PURE__*/ S.suspend(() =>
+const ElementValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
 ).annotate({ identifier: "ElementValue" }) as any as S.Schema<ElementValue>;
 
 export type ListElementsValuesResponseBodyList = Array<ElementValue>;
-export const ListElementsValuesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListElementsValuesResponseBodyList = /*@__PURE__*/ S.Array(
   ElementValue,
 ) as any as S.Schema<ListElementsValuesResponseBodyList>;
 
 export type ListElementsValuesResponse = ListElementsValuesResponseBodyList;
-export const ListElementsValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListElementsValuesResponse = /*@__PURE__*/ S.suspend(() =>
   ListElementsValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListElementsValuesResponse",
 }) as any as S.Schema<ListElementsValuesResponse>;
 
 export type UpdateElementRequestAttrClassList = Array<string>;
-export const UpdateElementRequestAttrClassList =
+const UpdateElementRequestAttrClassList =
   CreateElementRequestAttrClassList as any as S.Schema<UpdateElementRequestAttrClassList>;
 
 export interface UpdateElementRequest {
@@ -312,7 +312,7 @@ export interface UpdateElementRequest {
   attributes?: unknown;
   order?: number | null;
 }
-export const UpdateElementRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateElementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -329,7 +329,7 @@ export const UpdateElementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateElementRequest" }) as any as S.Schema<UpdateElementRequest>;
 
 export type UpdateElementsPartialRequestAttrClassList = Array<string>;
-export const UpdateElementsPartialRequestAttrClassList =
+const UpdateElementsPartialRequestAttrClassList =
   CreateElementRequestAttrClassList as any as S.Schema<UpdateElementsPartialRequestAttrClassList>;
 
 export interface UpdateElementsPartialRequest {
@@ -347,7 +347,7 @@ export interface UpdateElementsPartialRequest {
   attributes?: unknown;
   order?: number | null;
 }
-export const UpdateElementsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateElementsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

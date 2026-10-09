@@ -14,7 +14,7 @@ export interface ActivateSnapshotRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const ActivateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -31,10 +31,10 @@ export type SnapshotState =
   | "error"
   | "build_failed"
   | "removing";
-export const SnapshotState = S.String;
+const SnapshotState = S.String;
 
 export type SnapshotDtoEntrypointList = Array<string>;
-export const SnapshotDtoEntrypointList = /*@__PURE__*/ S.Array(
+const SnapshotDtoEntrypointList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SnapshotDtoEntrypointList>;
 
@@ -46,11 +46,11 @@ export type GpuType =
   | "RTX-4090"
   | "RTX-5090"
   | "MI355X";
-export const GpuType = S.String;
+const GpuType = S.String;
 
 /** The context hashes used for the build */
 export type BuildInfoContextHashesList = Array<string>;
-export const BuildInfoContextHashesList =
+const BuildInfoContextHashesList =
   SnapshotDtoEntrypointList as any as S.Schema<BuildInfoContextHashesList>;
 
 export interface BuildInfo {
@@ -65,7 +65,7 @@ export interface BuildInfo {
   /** The snapshot reference */
   snapshotRef: string;
 }
-export const BuildInfo = /*@__PURE__*/ S.suspend(() =>
+const BuildInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dockerfileContent: S.optional(S.String),
     contextHashes: S.optional(BuildInfoContextHashesList),
@@ -77,12 +77,12 @@ export const BuildInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of regions where the snapshot is available */
 export type SnapshotDtoRegionIdsList = Array<string>;
-export const SnapshotDtoRegionIdsList =
+const SnapshotDtoRegionIdsList =
   SnapshotDtoEntrypointList as any as S.Schema<SnapshotDtoRegionIdsList>;
 
 /** The sandbox class of the snapshot */
 export type SnapshotDtoSandboxClass = "linux-vm" | "container" | "windows";
-export const SnapshotDtoSandboxClass = S.String;
+const SnapshotDtoSandboxClass = S.String;
 
 export interface SnapshotDto {
   id: string;
@@ -116,7 +116,7 @@ export interface SnapshotDto {
   /** The sandbox class of the snapshot */
   sandboxClass?: SnapshotDtoSandboxClass;
 }
-export const SnapshotDto = /*@__PURE__*/ S.suspend(() =>
+const SnapshotDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     organizationId: S.optional(S.String),
@@ -146,18 +146,18 @@ export const SnapshotDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The entrypoint command for the snapshot */
 export type CreateSnapshotRequestEntrypointList = Array<string>;
-export const CreateSnapshotRequestEntrypointList =
+const CreateSnapshotRequestEntrypointList =
   SnapshotDtoEntrypointList as any as S.Schema<CreateSnapshotRequestEntrypointList>;
 
 /** Preferred GPU type for the resulting sandbox. */
 export type CreateSnapshotRequestGpuTypeList = Array<GpuType | (string & {})>;
-export const CreateSnapshotRequestGpuTypeList = /*@__PURE__*/ S.Array(
+const CreateSnapshotRequestGpuTypeList = /*@__PURE__*/ S.Array(
   GpuType,
 ) as any as S.Schema<CreateSnapshotRequestGpuTypeList>;
 
 /** The context hashes used for the build */
 export type CreateBuildInfoContextHashesList = Array<string>;
-export const CreateBuildInfoContextHashesList =
+const CreateBuildInfoContextHashesList =
   SnapshotDtoEntrypointList as any as S.Schema<CreateBuildInfoContextHashesList>;
 
 export interface CreateBuildInfo {
@@ -166,7 +166,7 @@ export interface CreateBuildInfo {
   /** The context hashes used for the build */
   contextHashes?: CreateBuildInfoContextHashesList;
 }
-export const CreateBuildInfo = /*@__PURE__*/ S.suspend(() =>
+const CreateBuildInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dockerfileContent: S.String,
     contextHashes: S.optional(CreateBuildInfoContextHashesList),
@@ -174,7 +174,7 @@ export const CreateBuildInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateBuildInfo" }) as any as S.Schema<CreateBuildInfo>;
 
 export type SandboxClass = "linux-vm" | "container" | "windows";
-export const SandboxClass = S.String;
+const SandboxClass = S.String;
 
 export interface CreateSnapshotRequest {
   /** Use with JWT to specify the organization ID */
@@ -202,7 +202,7 @@ export interface CreateSnapshotRequest {
   /** Target sandbox class. Determines which runners can host sandboxes created from this snapshot. */
   sandboxClass?: SandboxClass | (string & {});
 }
-export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
     name: S.String,
@@ -225,7 +225,7 @@ export interface DeactivateSnapshotRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const DeactivateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -235,15 +235,15 @@ export const DeactivateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeactivateSnapshotRequest>;
 
 export interface DeactivateSnapshotResponse {}
-export const DeactivateSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeactivateSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeactivateSnapshotResponse",
 }) as any as S.Schema<DeactivateSnapshotResponse>;
 
 export type GetAllSnapshotsRequestSort = "name" | "state" | "lastUsedAt" | "createdAt";
-export const GetAllSnapshotsRequestSort = S.String;
+const GetAllSnapshotsRequestSort = S.String;
 
 export type GetAllSnapshotsRequestOrder = "asc" | "desc";
-export const GetAllSnapshotsRequestOrder = S.String;
+const GetAllSnapshotsRequestOrder = S.String;
 
 export interface GetAllSnapshotsRequest {
   /** Page number of the results */
@@ -261,7 +261,7 @@ export interface GetAllSnapshotsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetAllSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -274,7 +274,7 @@ export const GetAllSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAllSnapshotsRequest" }) as any as S.Schema<GetAllSnapshotsRequest>;
 
 export type PaginatedSnapshotsItemsList = Array<SnapshotDto>;
-export const PaginatedSnapshotsItemsList = /*@__PURE__*/ S.Array(
+const PaginatedSnapshotsItemsList = /*@__PURE__*/ S.Array(
   SnapshotDto,
 ) as any as S.Schema<PaginatedSnapshotsItemsList>;
 
@@ -284,7 +284,7 @@ export interface PaginatedSnapshots {
   page: number;
   totalPages: number;
 }
-export const PaginatedSnapshots = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSnapshots = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: PaginatedSnapshotsItemsList,
     total: S.Number,
@@ -299,7 +299,7 @@ export interface GetSnapshotRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -312,7 +312,7 @@ export interface GetSnapshotBuildLogsUrlRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetSnapshotBuildLogsUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotBuildLogsUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -325,7 +325,7 @@ export interface Url {
   /** URL response */
   url: string;
 }
-export const Url = /*@__PURE__*/ S.suspend(() =>
+const Url = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -337,7 +337,7 @@ export interface RemoveSnapshotRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const RemoveSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -345,7 +345,7 @@ export const RemoveSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveSnapshotRequest" }) as any as S.Schema<RemoveSnapshotRequest>;
 
 export interface RemoveSnapshotResponse {}
-export const RemoveSnapshotResponse =
+const RemoveSnapshotResponse =
   DeactivateSnapshotResponse as any as S.Schema<RemoveSnapshotResponse>;
 
 export type ActivateSnapshotError = DaytonaOpError;

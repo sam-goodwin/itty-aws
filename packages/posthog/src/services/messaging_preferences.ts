@@ -27,7 +27,7 @@ export interface GetMessagingPreferencesOptOutRequest {
   /** Case-insensitive substring match on the recipient identifier. */
   search?: string;
 }
-export const GetMessagingPreferencesOptOutRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMessagingPreferencesOptOutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     category_key: S.optional(S.String.pipe(T.Query())),
@@ -55,7 +55,7 @@ export interface MessagePreferences {
   /** Map of category ID to preference status (`OPTED_IN`, `OPTED_OUT` or `NO_PREFERENCE`). The reserved `$all` key covers every marketing message. */
   preferences: unknown;
 }
-export const MessagePreferences = /*@__PURE__*/ S.suspend(() =>
+const MessagePreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     identifier: S.String,
@@ -65,7 +65,7 @@ export const MessagePreferences = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MessagePreferences" }) as any as S.Schema<MessagePreferences>;
 
 export type PaginatedOptOutsResultsList = Array<MessagePreferences>;
-export const PaginatedOptOutsResultsList = /*@__PURE__*/ S.Array(
+const PaginatedOptOutsResultsList = /*@__PURE__*/ S.Array(
   MessagePreferences,
 ) as any as S.Schema<PaginatedOptOutsResultsList>;
 
@@ -79,7 +79,7 @@ export interface PaginatedOptOuts {
   previous: string | null;
   results: PaginatedOptOutsResultsList;
 }
-export const PaginatedOptOuts = /*@__PURE__*/ S.suspend(() =>
+const PaginatedOptOuts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.NullOr(S.String),
@@ -92,7 +92,7 @@ export interface GetMessagingPreferencesWebhookUrlRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetMessagingPreferencesWebhookUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMessagingPreferencesWebhookUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -110,7 +110,7 @@ export interface WebhookUrl {
   /** URL to register in Customer.io so it posts subscription changes to PostHog. */
   url: string;
 }
-export const WebhookUrl = /*@__PURE__*/ S.suspend(() =>
+const WebhookUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -124,7 +124,7 @@ export interface MessagingPreferencesAddOptOutCreateRequest {
   /** Optional message category key. If omitted, the recipient is opted out of all marketing messages. */
   category_key?: string;
 }
-export const MessagingPreferencesAddOptOutCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MessagingPreferencesAddOptOutCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     identifier: S.String,
@@ -146,7 +146,7 @@ export interface BulkOptOutEntry {
   /** Message category key for this recipient. Overrides the request-level category_key. */
   category_key?: string;
 }
-export const BulkOptOutEntry = /*@__PURE__*/ S.suspend(() =>
+const BulkOptOutEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     category_key: S.optional(S.String),
@@ -155,7 +155,7 @@ export const BulkOptOutEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Recipients to opt out, at most 1000 per request. */
 export type MessagingPreferencesBulkAddOptOutsCreateRequestOptOutsList = Array<BulkOptOutEntry>;
-export const MessagingPreferencesBulkAddOptOutsCreateRequestOptOutsList = /*@__PURE__*/ S.Array(
+const MessagingPreferencesBulkAddOptOutsCreateRequestOptOutsList = /*@__PURE__*/ S.Array(
   BulkOptOutEntry,
 ) as any as S.Schema<MessagingPreferencesBulkAddOptOutsCreateRequestOptOutsList>;
 
@@ -167,7 +167,7 @@ export interface MessagingPreferencesBulkAddOptOutsCreateRequest {
   /** Message category key applied to entries without their own. If omitted, recipients are opted out of all marketing messages. */
   category_key?: string;
 }
-export const MessagingPreferencesBulkAddOptOutsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MessagingPreferencesBulkAddOptOutsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     opt_outs: MessagingPreferencesBulkAddOptOutsCreateRequestOptOutsList,
@@ -185,7 +185,7 @@ export const MessagingPreferencesBulkAddOptOutsCreateRequest = /*@__PURE__*/ S.s
 
 /** The first few entry-level problems, so the caller can fix their list. */
 export type BulkAddOptOutsResultErrorsList = Array<string>;
-export const BulkAddOptOutsResultErrorsList = /*@__PURE__*/ S.Array(
+const BulkAddOptOutsResultErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkAddOptOutsResultErrorsList>;
 
@@ -199,7 +199,7 @@ export interface BulkAddOptOutsResult {
   /** The first few entry-level problems, so the caller can fix their list. */
   errors: BulkAddOptOutsResultErrorsList;
 }
-export const BulkAddOptOutsResult = /*@__PURE__*/ S.suspend(() =>
+const BulkAddOptOutsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     opted_out: S.Number,
@@ -214,7 +214,7 @@ export interface MessagingPreferencesExportOptOutsCsvRetrieveRequest {
   /** Message category key to export. If omitted, exports recipients opted out of all marketing messages. */
   category_key?: string;
 }
-export const MessagingPreferencesExportOptOutsCsvRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const MessagingPreferencesExportOptOutsCsvRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     category_key: S.optional(S.String.pipe(T.Query())),
@@ -230,7 +230,7 @@ export const MessagingPreferencesExportOptOutsCsvRetrieveRequest = /*@__PURE__*/
 }) as any as S.Schema<MessagingPreferencesExportOptOutsCsvRetrieveRequest>;
 
 export interface MessagingPreferencesExportOptOutsCsvRetrieveResponse {}
-export const MessagingPreferencesExportOptOutsCsvRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+const MessagingPreferencesExportOptOutsCsvRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "MessagingPreferencesExportOptOutsCsvRetrieveResponse",
@@ -242,7 +242,7 @@ export interface MessagingPreferencesGenerateLinkCreateRequest {
   /** Recipient to generate the link for. Defaults to the requesting user's own email address. */
   recipient?: string;
 }
-export const MessagingPreferencesGenerateLinkCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MessagingPreferencesGenerateLinkCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     recipient: S.optional(S.String),
@@ -261,7 +261,7 @@ export interface PreferencesLink {
   /** Token-gated URL where the recipient can manage their preferences. */
   preferences_url: string;
 }
-export const PreferencesLink = /*@__PURE__*/ S.suspend(() =>
+const PreferencesLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferences_url: S.String,
   }),
@@ -275,7 +275,7 @@ export interface MessagingPreferencesRemoveOptOutCreateRequest {
   /** Optional message category key. If omitted, the recipient is opted back in to all marketing messages. */
   category_key?: string;
 }
-export const MessagingPreferencesRemoveOptOutCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MessagingPreferencesRemoveOptOutCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     identifier: S.String,

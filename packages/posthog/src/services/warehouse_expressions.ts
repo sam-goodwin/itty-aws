@@ -21,7 +21,7 @@ export interface CreateWarehouseExpressionRequest {
   /** ExternalDataSource id to scope the expression to that connection's direct-query database. Null applies it to the default warehouse database. */
   connection_id?: string | null;
 }
-export const CreateWarehouseExpressionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -37,7 +37,7 @@ export const CreateWarehouseExpressionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWarehouseExpressionRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -53,14 +53,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -73,7 +68,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -102,7 +97,7 @@ export interface DataWarehouseExpression {
   /** ExternalDataSource id to scope the expression to that connection's direct-query database. Null applies it to the default warehouse database. */
   connection_id?: string | null;
 }
-export const DataWarehouseExpression = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -121,7 +116,7 @@ export interface GetWarehouseExpressionRequest {
   /** A UUID string identifying this data warehouse expression. */
   id: string;
 }
-export const GetWarehouseExpressionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -146,7 +141,7 @@ export interface ListWarehouseExpressionsRequest {
   /** A search term. */
   search?: string;
 }
-export const ListWarehouseExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWarehouseExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -160,7 +155,7 @@ export const ListWarehouseExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWarehouseExpressionsRequest>;
 
 export type PaginatedDataWarehouseExpressionListResultsList = Array<DataWarehouseExpression>;
-export const PaginatedDataWarehouseExpressionListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDataWarehouseExpressionListResultsList = /*@__PURE__*/ S.Array(
   DataWarehouseExpression,
 ) as any as S.Schema<PaginatedDataWarehouseExpressionListResultsList>;
 
@@ -170,7 +165,7 @@ export interface PaginatedDataWarehouseExpressionList {
   previous?: string | null;
   results: PaginatedDataWarehouseExpressionListResultsList;
 }
-export const PaginatedDataWarehouseExpressionList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataWarehouseExpressionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -197,7 +192,7 @@ export interface UpdateWarehouseExpressionRequest {
   /** ExternalDataSource id to scope the expression to that connection's direct-query database. Null applies it to the default warehouse database. */
   connection_id?: string | null;
 }
-export const UpdateWarehouseExpressionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseExpressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -233,7 +228,7 @@ export interface UpdateWarehouseExpressionsPartialRequest {
   /** ExternalDataSource id to scope the expression to that connection's direct-query database. Null applies it to the default warehouse database. */
   connection_id?: string | null;
 }
-export const UpdateWarehouseExpressionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseExpressionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -259,7 +254,7 @@ export interface WarehouseExpressionsDestroyRequest {
   /** A UUID string identifying this data warehouse expression. */
   id: string;
 }
-export const WarehouseExpressionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseExpressionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -275,9 +270,7 @@ export const WarehouseExpressionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WarehouseExpressionsDestroyRequest>;
 
 export interface WarehouseExpressionsDestroyResponse {}
-export const WarehouseExpressionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const WarehouseExpressionsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "WarehouseExpressionsDestroyResponse",
 }) as any as S.Schema<WarehouseExpressionsDestroyResponse>;
 

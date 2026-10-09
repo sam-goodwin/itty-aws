@@ -136,12 +136,12 @@ export class ValidationException
 export type FlowName = string;
 export type ExecutionId = string;
 export type ExecutionIds = string[];
-export const ExecutionIds = /*@__PURE__*/ S.Array(S.String);
+const ExecutionIds = /*@__PURE__*/ S.Array(S.String);
 export interface CancelFlowExecutionsRequest {
   flowName: string;
   executionIds?: string[];
 }
-export const CancelFlowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelFlowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowName: S.String, executionIds: S.optional(ExecutionIds) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/cancel-flow-executions" }), svc, auth, proto, ver, rules),
   ),
@@ -151,7 +151,7 @@ export const CancelFlowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CancelFlowExecutionsResponse {
   invalidExecutions?: string[];
 }
-export const CancelFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ invalidExecutions: S.optional(ExecutionIds) }),
 ).annotate({
   identifier: "CancelFlowExecutionsResponse",
@@ -184,23 +184,21 @@ export type ConnectorType =
   | "CustomConnector"
   | "Pardot"
   | (string & {});
-export const ConnectorType = S.String;
+const ConnectorType = S.String;
 
 export type ConnectorLabel = string;
 export type ConnectionMode = "Public" | "Private" | (string & {});
-export const ConnectionMode = S.String;
+const ConnectionMode = S.String;
 
 export interface AmplitudeConnectorProfileProperties {}
-export const AmplitudeConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AmplitudeConnectorProfileProperties = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AmplitudeConnectorProfileProperties",
 }) as any as S.Schema<AmplitudeConnectorProfileProperties>;
 export type InstanceUrl = string;
 export interface DatadogConnectorProfileProperties {
   instanceUrl: string;
 }
-export const DatadogConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const DatadogConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceUrl: S.String }),
 ).annotate({
   identifier: "DatadogConnectorProfileProperties",
@@ -208,23 +206,23 @@ export const DatadogConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 export interface DynatraceConnectorProfileProperties {
   instanceUrl: string;
 }
-export const DynatraceConnectorProfileProperties =
+const DynatraceConnectorProfileProperties =
   DatadogConnectorProfileProperties as any as S.Schema<DynatraceConnectorProfileProperties>;
 export interface GoogleAnalyticsConnectorProfileProperties {}
-export const GoogleAnalyticsConnectorProfileProperties =
+const GoogleAnalyticsConnectorProfileProperties =
   AmplitudeConnectorProfileProperties as any as S.Schema<GoogleAnalyticsConnectorProfileProperties>;
 export interface HoneycodeConnectorProfileProperties {}
-export const HoneycodeConnectorProfileProperties =
+const HoneycodeConnectorProfileProperties =
   AmplitudeConnectorProfileProperties as any as S.Schema<HoneycodeConnectorProfileProperties>;
 export interface InforNexusConnectorProfileProperties {
   instanceUrl: string;
 }
-export const InforNexusConnectorProfileProperties =
+const InforNexusConnectorProfileProperties =
   DatadogConnectorProfileProperties as any as S.Schema<InforNexusConnectorProfileProperties>;
 export interface MarketoConnectorProfileProperties {
   instanceUrl: string;
 }
-export const MarketoConnectorProfileProperties =
+const MarketoConnectorProfileProperties =
   DatadogConnectorProfileProperties as any as S.Schema<MarketoConnectorProfileProperties>;
 export type DatabaseUrl = string;
 export type BucketName = string;
@@ -245,7 +243,7 @@ export interface RedshiftConnectorProfileProperties {
   workgroupName?: string;
   databaseName?: string;
 }
-export const RedshiftConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const RedshiftConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseUrl: S.optional(S.String),
     bucketName: S.String,
@@ -265,7 +263,7 @@ export interface SalesforceConnectorProfileProperties {
   isSandboxEnvironment?: boolean;
   usePrivateLinkForMetadataAndAuthorization?: boolean;
 }
-export const SalesforceConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const SalesforceConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceUrl: S.optional(S.String),
     isSandboxEnvironment: S.optional(S.Boolean),
@@ -277,15 +275,15 @@ export const SalesforceConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =
 export interface ServiceNowConnectorProfileProperties {
   instanceUrl: string;
 }
-export const ServiceNowConnectorProfileProperties =
+const ServiceNowConnectorProfileProperties =
   DatadogConnectorProfileProperties as any as S.Schema<ServiceNowConnectorProfileProperties>;
 export interface SingularConnectorProfileProperties {}
-export const SingularConnectorProfileProperties =
+const SingularConnectorProfileProperties =
   AmplitudeConnectorProfileProperties as any as S.Schema<SingularConnectorProfileProperties>;
 export interface SlackConnectorProfileProperties {
   instanceUrl: string;
 }
-export const SlackConnectorProfileProperties =
+const SlackConnectorProfileProperties =
   DatadogConnectorProfileProperties as any as S.Schema<SlackConnectorProfileProperties>;
 export type Warehouse = string;
 export type Stage = string;
@@ -301,7 +299,7 @@ export interface SnowflakeConnectorProfileProperties {
   accountName?: string;
   region?: string;
 }
-export const SnowflakeConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const SnowflakeConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warehouse: S.String,
     stage: S.String,
@@ -315,17 +313,17 @@ export const SnowflakeConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnowflakeConnectorProfileProperties",
 }) as any as S.Schema<SnowflakeConnectorProfileProperties>;
 export interface TrendmicroConnectorProfileProperties {}
-export const TrendmicroConnectorProfileProperties =
+const TrendmicroConnectorProfileProperties =
   AmplitudeConnectorProfileProperties as any as S.Schema<TrendmicroConnectorProfileProperties>;
 export interface VeevaConnectorProfileProperties {
   instanceUrl: string;
 }
-export const VeevaConnectorProfileProperties =
+const VeevaConnectorProfileProperties =
   DatadogConnectorProfileProperties as any as S.Schema<VeevaConnectorProfileProperties>;
 export interface ZendeskConnectorProfileProperties {
   instanceUrl: string;
 }
-export const ZendeskConnectorProfileProperties =
+const ZendeskConnectorProfileProperties =
   DatadogConnectorProfileProperties as any as S.Schema<ZendeskConnectorProfileProperties>;
 export type ApplicationHostUrl = string;
 export type ApplicationServicePath = string;
@@ -336,13 +334,13 @@ export type TokenUrl = string;
 export type AuthCodeUrl = string;
 export type OAuthScope = string;
 export type OAuthScopeList = string[];
-export const OAuthScopeList = ExecutionIds as any as S.Schema<OAuthScopeList>;
+const OAuthScopeList = ExecutionIds as any as S.Schema<OAuthScopeList>;
 export interface OAuthProperties {
   tokenUrl: string;
   authCodeUrl: string;
   oAuthScopes: string[];
 }
-export const OAuthProperties = /*@__PURE__*/ S.suspend(() =>
+const OAuthProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tokenUrl: S.String, authCodeUrl: S.String, oAuthScopes: OAuthScopeList }),
 ).annotate({ identifier: "OAuthProperties" }) as any as S.Schema<OAuthProperties>;
 export interface SAPODataConnectorProfileProperties {
@@ -355,7 +353,7 @@ export interface SAPODataConnectorProfileProperties {
   oAuthProperties?: OAuthProperties;
   disableSSO?: boolean;
 }
-export const SAPODataConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const SAPODataConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationHostUrl: S.String,
     applicationServicePath: S.String,
@@ -372,7 +370,7 @@ export const SAPODataConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
 export type ProfilePropertyKey = string;
 export type ProfilePropertyValue = string;
 export type ProfilePropertiesMap = { [key: string]: string | undefined };
-export const ProfilePropertiesMap = /*@__PURE__*/ S.Record(
+const ProfilePropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -381,19 +379,18 @@ export type OAuth2GrantType =
   | "AUTHORIZATION_CODE"
   | "JWT_BEARER"
   | (string & {});
-export const OAuth2GrantType = S.String;
+const OAuth2GrantType = S.String;
 
 export type CustomPropertyKey = string;
 export type CustomPropertyValue = string;
 export type TokenUrlCustomProperties = { [key: string]: string | undefined };
-export const TokenUrlCustomProperties =
-  ProfilePropertiesMap as any as S.Schema<TokenUrlCustomProperties>;
+const TokenUrlCustomProperties = ProfilePropertiesMap as any as S.Schema<TokenUrlCustomProperties>;
 export interface OAuth2Properties {
   tokenUrl: string;
   oAuth2GrantType: OAuth2GrantType;
   tokenUrlCustomProperties?: { [key: string]: string | undefined };
 }
-export const OAuth2Properties = /*@__PURE__*/ S.suspend(() =>
+const OAuth2Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenUrl: S.String,
     oAuth2GrantType: OAuth2GrantType,
@@ -404,7 +401,7 @@ export interface CustomConnectorProfileProperties {
   profileProperties?: { [key: string]: string | undefined };
   oAuth2Properties?: OAuth2Properties;
 }
-export const CustomConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const CustomConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileProperties: S.optional(ProfilePropertiesMap),
     oAuth2Properties: S.optional(OAuth2Properties),
@@ -418,7 +415,7 @@ export interface PardotConnectorProfileProperties {
   isSandboxEnvironment?: boolean;
   businessUnitId?: string;
 }
-export const PardotConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const PardotConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceUrl: S.optional(S.String),
     isSandboxEnvironment: S.optional(S.Boolean),
@@ -448,7 +445,7 @@ export interface ConnectorProfileProperties {
   CustomConnector?: CustomConnectorProfileProperties;
   Pardot?: PardotConnectorProfileProperties;
 }
-export const ConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectorProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Amplitude: S.optional(AmplitudeConnectorProfileProperties),
     Datadog: S.optional(DatadogConnectorProfileProperties),
@@ -479,7 +476,7 @@ export interface AmplitudeConnectorProfileCredentials {
   apiKey: string | redacted.Redacted<string>;
   secretKey: string | redacted.Redacted<string>;
 }
-export const AmplitudeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const AmplitudeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiKey: SensitiveString, secretKey: SensitiveString }),
 ).annotate({
   identifier: "AmplitudeConnectorProfileCredentials",
@@ -489,7 +486,7 @@ export interface DatadogConnectorProfileCredentials {
   apiKey: string | redacted.Redacted<string>;
   applicationKey: string | redacted.Redacted<string>;
 }
-export const DatadogConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const DatadogConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiKey: SensitiveString, applicationKey: SensitiveString }),
 ).annotate({
   identifier: "DatadogConnectorProfileCredentials",
@@ -498,7 +495,7 @@ export type ApiToken = string;
 export interface DynatraceConnectorProfileCredentials {
   apiToken: string | redacted.Redacted<string>;
 }
-export const DynatraceConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const DynatraceConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiToken: SensitiveString }),
 ).annotate({
   identifier: "DynatraceConnectorProfileCredentials",
@@ -515,7 +512,7 @@ export interface ConnectorOAuthRequest {
   redirectUri?: string;
   codeVerifier?: string | redacted.Redacted<string>;
 }
-export const ConnectorOAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectorOAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authCode: S.optional(S.String),
     redirectUri: S.optional(S.String),
@@ -529,7 +526,7 @@ export interface GoogleAnalyticsConnectorProfileCredentials {
   refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const GoogleAnalyticsConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String,
     clientSecret: SensitiveString,
@@ -545,7 +542,7 @@ export interface HoneycodeConnectorProfileCredentials {
   refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const HoneycodeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const HoneycodeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(SensitiveString),
     refreshToken: S.optional(SensitiveString),
@@ -563,7 +560,7 @@ export interface InforNexusConnectorProfileCredentials {
   secretAccessKey: string | redacted.Redacted<string>;
   datakey: string | redacted.Redacted<string>;
 }
-export const InforNexusConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const InforNexusConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeyId: SensitiveString,
     userId: S.String,
@@ -579,7 +576,7 @@ export interface MarketoConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const MarketoConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const MarketoConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String,
     clientSecret: SensitiveString,
@@ -594,7 +591,7 @@ export interface RedshiftConnectorProfileCredentials {
   username?: string;
   password?: string | redacted.Redacted<string>;
 }
-export const RedshiftConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const RedshiftConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ username: S.optional(S.String), password: S.optional(SensitiveString) }),
 ).annotate({
   identifier: "RedshiftConnectorProfileCredentials",
@@ -609,7 +606,7 @@ export interface SalesforceConnectorProfileCredentials {
   oAuth2GrantType?: OAuth2GrantType;
   jwtToken?: string | redacted.Redacted<string>;
 }
-export const SalesforceConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const SalesforceConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(SensitiveString),
     refreshToken: S.optional(SensitiveString),
@@ -628,7 +625,7 @@ export interface OAuth2Credentials {
   refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const OAuth2Credentials = /*@__PURE__*/ S.suspend(() =>
+const OAuth2Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     clientSecret: S.optional(SensitiveString),
@@ -642,7 +639,7 @@ export interface ServiceNowConnectorProfileCredentials {
   password?: string | redacted.Redacted<string>;
   oAuth2Credentials?: OAuth2Credentials;
 }
-export const ServiceNowConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const ServiceNowConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(SensitiveString),
@@ -654,7 +651,7 @@ export const ServiceNowConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() 
 export interface SingularConnectorProfileCredentials {
   apiKey: string | redacted.Redacted<string>;
 }
-export const SingularConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const SingularConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiKey: SensitiveString }),
 ).annotate({
   identifier: "SingularConnectorProfileCredentials",
@@ -665,7 +662,7 @@ export interface SlackConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const SlackConnectorProfileCredentials =
+const SlackConnectorProfileCredentials =
   MarketoConnectorProfileCredentials as any as S.Schema<SlackConnectorProfileCredentials>;
 export type PrivateKey = string | redacted.Redacted<string>;
 export interface SnowflakeConnectorProfileCredentials {
@@ -673,7 +670,7 @@ export interface SnowflakeConnectorProfileCredentials {
   password?: string | redacted.Redacted<string>;
   privateKey?: string | redacted.Redacted<string>;
 }
-export const SnowflakeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const SnowflakeConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     password: S.optional(SensitiveString),
@@ -686,7 +683,7 @@ export type ApiSecretKey = string | redacted.Redacted<string>;
 export interface TrendmicroConnectorProfileCredentials {
   apiSecretKey: string | redacted.Redacted<string>;
 }
-export const TrendmicroConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const TrendmicroConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiSecretKey: SensitiveString }),
 ).annotate({
   identifier: "TrendmicroConnectorProfileCredentials",
@@ -695,7 +692,7 @@ export interface VeevaConnectorProfileCredentials {
   username: string;
   password: string | redacted.Redacted<string>;
 }
-export const VeevaConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const VeevaConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ username: S.String, password: SensitiveString }),
 ).annotate({
   identifier: "VeevaConnectorProfileCredentials",
@@ -706,13 +703,13 @@ export interface ZendeskConnectorProfileCredentials {
   accessToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const ZendeskConnectorProfileCredentials =
+const ZendeskConnectorProfileCredentials =
   MarketoConnectorProfileCredentials as any as S.Schema<ZendeskConnectorProfileCredentials>;
 export interface BasicAuthCredentials {
   username: string;
   password: string | redacted.Redacted<string>;
 }
-export const BasicAuthCredentials = /*@__PURE__*/ S.suspend(() =>
+const BasicAuthCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ username: S.String, password: SensitiveString }),
 ).annotate({ identifier: "BasicAuthCredentials" }) as any as S.Schema<BasicAuthCredentials>;
 export interface OAuthCredentials {
@@ -722,7 +719,7 @@ export interface OAuthCredentials {
   refreshToken?: string | redacted.Redacted<string>;
   oAuthRequest?: ConnectorOAuthRequest;
 }
-export const OAuthCredentials = /*@__PURE__*/ S.suspend(() =>
+const OAuthCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String,
     clientSecret: SensitiveString,
@@ -735,7 +732,7 @@ export interface SAPODataConnectorProfileCredentials {
   basicAuthCredentials?: BasicAuthCredentials;
   oAuthCredentials?: OAuthCredentials;
 }
-export const SAPODataConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const SAPODataConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basicAuthCredentials: S.optional(BasicAuthCredentials),
     oAuthCredentials: S.optional(OAuthCredentials),
@@ -744,20 +741,20 @@ export const SAPODataConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   identifier: "SAPODataConnectorProfileCredentials",
 }) as any as S.Schema<SAPODataConnectorProfileCredentials>;
 export type AuthenticationType = "OAUTH2" | "APIKEY" | "BASIC" | "CUSTOM" | (string & {});
-export const AuthenticationType = S.String;
+const AuthenticationType = S.String;
 
 export interface ApiKeyCredentials {
   apiKey: string | redacted.Redacted<string>;
   apiSecretKey?: string | redacted.Redacted<string>;
 }
-export const ApiKeyCredentials = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiKey: SensitiveString, apiSecretKey: S.optional(SensitiveString) }),
 ).annotate({ identifier: "ApiKeyCredentials" }) as any as S.Schema<ApiKeyCredentials>;
 export type CustomAuthenticationType = string;
 export type CredentialsMapKey = string | redacted.Redacted<string>;
 export type CredentialsMapValue = string | redacted.Redacted<string>;
 export type CredentialsMap = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const CredentialsMap = /*@__PURE__*/ S.Record(
+const CredentialsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ SensitiveString.pipe(S.optional),
 );
@@ -765,7 +762,7 @@ export interface CustomAuthCredentials {
   customAuthenticationType: string;
   credentialsMap?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const CustomAuthCredentials = /*@__PURE__*/ S.suspend(() =>
+const CustomAuthCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ customAuthenticationType: S.String, credentialsMap: S.optional(CredentialsMap) }),
 ).annotate({ identifier: "CustomAuthCredentials" }) as any as S.Schema<CustomAuthCredentials>;
 export interface CustomConnectorProfileCredentials {
@@ -775,7 +772,7 @@ export interface CustomConnectorProfileCredentials {
   apiKey?: ApiKeyCredentials;
   custom?: CustomAuthCredentials;
 }
-export const CustomConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const CustomConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationType: AuthenticationType,
     basic: S.optional(BasicAuthCredentials),
@@ -792,7 +789,7 @@ export interface PardotConnectorProfileCredentials {
   oAuthRequest?: ConnectorOAuthRequest;
   clientCredentialsArn?: string | redacted.Redacted<string>;
 }
-export const PardotConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const PardotConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(SensitiveString),
     refreshToken: S.optional(SensitiveString),
@@ -823,7 +820,7 @@ export interface ConnectorProfileCredentials {
   CustomConnector?: CustomConnectorProfileCredentials;
   Pardot?: PardotConnectorProfileCredentials;
 }
-export const ConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
+const ConnectorProfileCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Amplitude: S.optional(AmplitudeConnectorProfileCredentials),
     Datadog: S.optional(DatadogConnectorProfileCredentials),
@@ -852,7 +849,7 @@ export interface ConnectorProfileConfig {
   connectorProfileProperties: ConnectorProfileProperties;
   connectorProfileCredentials?: ConnectorProfileCredentials;
 }
-export const ConnectorProfileConfig = /*@__PURE__*/ S.suspend(() =>
+const ConnectorProfileConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorProfileProperties: ConnectorProfileProperties,
     connectorProfileCredentials: S.optional(ConnectorProfileCredentials),
@@ -868,7 +865,7 @@ export interface CreateConnectorProfileRequest {
   connectorProfileConfig: ConnectorProfileConfig;
   clientToken?: string;
 }
-export const CreateConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorProfileName: S.String,
     kmsArn: S.optional(S.String),
@@ -894,18 +891,18 @@ export type ConnectorProfileArn = string;
 export interface CreateConnectorProfileResponse {
   connectorProfileArn?: string;
 }
-export const CreateConnectorProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConnectorProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectorProfileArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateConnectorProfileResponse",
 }) as any as S.Schema<CreateConnectorProfileResponse>;
 export type FlowDescription = string;
 export type TriggerType = "Scheduled" | "Event" | "OnDemand" | (string & {});
-export const TriggerType = S.String;
+const TriggerType = S.String;
 
 export type ScheduleExpression = string;
 export type DataPullMode = "Incremental" | "Complete" | (string & {});
-export const DataPullMode = S.String;
+const DataPullMode = S.String;
 
 export type Timezone = string;
 export type ScheduleOffset = number;
@@ -920,7 +917,7 @@ export interface ScheduledTriggerProperties {
   firstExecutionFrom?: Date;
   flowErrorDeactivationThreshold?: number;
 }
-export const ScheduledTriggerProperties = /*@__PURE__*/ S.suspend(() =>
+const ScheduledTriggerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleExpression: S.String,
     dataPullMode: S.optional(DataPullMode),
@@ -937,21 +934,21 @@ export const ScheduledTriggerProperties = /*@__PURE__*/ S.suspend(() =>
 export interface TriggerProperties {
   Scheduled?: ScheduledTriggerProperties;
 }
-export const TriggerProperties = /*@__PURE__*/ S.suspend(() =>
+const TriggerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Scheduled: S.optional(ScheduledTriggerProperties) }),
 ).annotate({ identifier: "TriggerProperties" }) as any as S.Schema<TriggerProperties>;
 export interface TriggerConfig {
   triggerType: TriggerType;
   triggerProperties?: TriggerProperties;
 }
-export const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
+const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ triggerType: TriggerType, triggerProperties: S.optional(TriggerProperties) }),
 ).annotate({ identifier: "TriggerConfig" }) as any as S.Schema<TriggerConfig>;
 export type ApiVersion = string;
 export interface AmplitudeSourceProperties {
   object: string;
 }
-export const AmplitudeSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const AmplitudeSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ object: S.String }),
 ).annotate({
   identifier: "AmplitudeSourceProperties",
@@ -959,36 +956,35 @@ export const AmplitudeSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export interface DatadogSourceProperties {
   object: string;
 }
-export const DatadogSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const DatadogSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ object: S.String }),
 ).annotate({ identifier: "DatadogSourceProperties" }) as any as S.Schema<DatadogSourceProperties>;
 export interface DynatraceSourceProperties {
   object: string;
 }
-export const DynatraceSourceProperties =
+const DynatraceSourceProperties =
   AmplitudeSourceProperties as any as S.Schema<DynatraceSourceProperties>;
 export interface GoogleAnalyticsSourceProperties {
   object: string;
 }
-export const GoogleAnalyticsSourceProperties =
+const GoogleAnalyticsSourceProperties =
   AmplitudeSourceProperties as any as S.Schema<GoogleAnalyticsSourceProperties>;
 export interface InforNexusSourceProperties {
   object: string;
 }
-export const InforNexusSourceProperties =
+const InforNexusSourceProperties =
   AmplitudeSourceProperties as any as S.Schema<InforNexusSourceProperties>;
 export interface MarketoSourceProperties {
   object: string;
 }
-export const MarketoSourceProperties =
-  DatadogSourceProperties as any as S.Schema<MarketoSourceProperties>;
+const MarketoSourceProperties = DatadogSourceProperties as any as S.Schema<MarketoSourceProperties>;
 export type S3InputFileType = "CSV" | "JSON" | (string & {});
-export const S3InputFileType = S.String;
+const S3InputFileType = S.String;
 
 export interface S3InputFormatConfig {
   s3InputFileType?: S3InputFileType;
 }
-export const S3InputFormatConfig = /*@__PURE__*/ S.suspend(() =>
+const S3InputFormatConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3InputFileType: S.optional(S3InputFileType) }),
 ).annotate({ identifier: "S3InputFormatConfig" }) as any as S.Schema<S3InputFormatConfig>;
 export interface S3SourceProperties {
@@ -996,7 +992,7 @@ export interface S3SourceProperties {
   bucketPrefix?: string;
   s3InputFormatConfig?: S3InputFormatConfig;
 }
-export const S3SourceProperties = /*@__PURE__*/ S.suspend(() =>
+const S3SourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.String,
     bucketPrefix: S.optional(S.String),
@@ -1004,7 +1000,7 @@ export const S3SourceProperties = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "S3SourceProperties" }) as any as S.Schema<S3SourceProperties>;
 export type SalesforceDataTransferApi = "AUTOMATIC" | "BULKV2" | "REST_SYNC" | (string & {});
-export const SalesforceDataTransferApi = S.String;
+const SalesforceDataTransferApi = S.String;
 
 export interface SalesforceSourceProperties {
   object: string;
@@ -1012,7 +1008,7 @@ export interface SalesforceSourceProperties {
   includeDeletedRecords?: boolean;
   dataTransferApi?: SalesforceDataTransferApi;
 }
-export const SalesforceSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const SalesforceSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     enableDynamicFieldUpdate: S.optional(S.Boolean),
@@ -1025,22 +1021,21 @@ export const SalesforceSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export interface ServiceNowSourceProperties {
   object: string;
 }
-export const ServiceNowSourceProperties =
+const ServiceNowSourceProperties =
   AmplitudeSourceProperties as any as S.Schema<ServiceNowSourceProperties>;
 export interface SingularSourceProperties {
   object: string;
 }
-export const SingularSourceProperties =
+const SingularSourceProperties =
   DatadogSourceProperties as any as S.Schema<SingularSourceProperties>;
 export interface SlackSourceProperties {
   object: string;
 }
-export const SlackSourceProperties =
-  DatadogSourceProperties as any as S.Schema<SlackSourceProperties>;
+const SlackSourceProperties = DatadogSourceProperties as any as S.Schema<SlackSourceProperties>;
 export interface TrendmicroSourceProperties {
   object: string;
 }
-export const TrendmicroSourceProperties =
+const TrendmicroSourceProperties =
   AmplitudeSourceProperties as any as S.Schema<TrendmicroSourceProperties>;
 export type DocumentType = string;
 export interface VeevaSourceProperties {
@@ -1050,7 +1045,7 @@ export interface VeevaSourceProperties {
   includeRenditions?: boolean;
   includeAllVersions?: boolean;
 }
-export const VeevaSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const VeevaSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     documentType: S.optional(S.String),
@@ -1062,13 +1057,12 @@ export const VeevaSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export interface ZendeskSourceProperties {
   object: string;
 }
-export const ZendeskSourceProperties =
-  DatadogSourceProperties as any as S.Schema<ZendeskSourceProperties>;
+const ZendeskSourceProperties = DatadogSourceProperties as any as S.Schema<ZendeskSourceProperties>;
 export type SAPODataMaxParallelism = number;
 export interface SAPODataParallelismConfig {
   maxParallelism: number;
 }
-export const SAPODataParallelismConfig = /*@__PURE__*/ S.suspend(() =>
+const SAPODataParallelismConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxParallelism: S.Number }),
 ).annotate({
   identifier: "SAPODataParallelismConfig",
@@ -1077,7 +1071,7 @@ export type SAPODataMaxPageSize = number;
 export interface SAPODataPaginationConfig {
   maxPageSize: number;
 }
-export const SAPODataPaginationConfig = /*@__PURE__*/ S.suspend(() =>
+const SAPODataPaginationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxPageSize: S.Number }),
 ).annotate({ identifier: "SAPODataPaginationConfig" }) as any as S.Schema<SAPODataPaginationConfig>;
 export interface SAPODataSourceProperties {
@@ -1085,7 +1079,7 @@ export interface SAPODataSourceProperties {
   parallelismConfig?: SAPODataParallelismConfig;
   paginationConfig?: SAPODataPaginationConfig;
 }
-export const SAPODataSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const SAPODataSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectPath: S.optional(S.String),
     parallelismConfig: S.optional(SAPODataParallelismConfig),
@@ -1094,16 +1088,16 @@ export const SAPODataSourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SAPODataSourceProperties" }) as any as S.Schema<SAPODataSourceProperties>;
 export type EntityName = string;
 export type CustomProperties = { [key: string]: string | undefined };
-export const CustomProperties = ProfilePropertiesMap as any as S.Schema<CustomProperties>;
+const CustomProperties = ProfilePropertiesMap as any as S.Schema<CustomProperties>;
 export type DataTransferApiTypeName = string;
 export type DataTransferApiType = "SYNC" | "ASYNC" | "AUTOMATIC" | (string & {});
-export const DataTransferApiType = S.String;
+const DataTransferApiType = S.String;
 
 export interface DataTransferApi {
   Name?: string;
   Type?: DataTransferApiType;
 }
-export const DataTransferApi = /*@__PURE__*/ S.suspend(() =>
+const DataTransferApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), Type: S.optional(DataTransferApiType) }),
 ).annotate({ identifier: "DataTransferApi" }) as any as S.Schema<DataTransferApi>;
 export interface CustomConnectorSourceProperties {
@@ -1111,7 +1105,7 @@ export interface CustomConnectorSourceProperties {
   customProperties?: { [key: string]: string | undefined };
   dataTransferApi?: DataTransferApi;
 }
-export const CustomConnectorSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const CustomConnectorSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityName: S.String,
     customProperties: S.optional(CustomProperties),
@@ -1123,8 +1117,7 @@ export const CustomConnectorSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export interface PardotSourceProperties {
   object: string;
 }
-export const PardotSourceProperties =
-  DatadogSourceProperties as any as S.Schema<PardotSourceProperties>;
+const PardotSourceProperties = DatadogSourceProperties as any as S.Schema<PardotSourceProperties>;
 export interface SourceConnectorProperties {
   Amplitude?: AmplitudeSourceProperties;
   Datadog?: DatadogSourceProperties;
@@ -1144,7 +1137,7 @@ export interface SourceConnectorProperties {
   CustomConnector?: CustomConnectorSourceProperties;
   Pardot?: PardotSourceProperties;
 }
-export const SourceConnectorProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceConnectorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Amplitude: S.optional(AmplitudeSourceProperties),
     Datadog: S.optional(DatadogSourceProperties),
@@ -1171,7 +1164,7 @@ export type DatetimeTypeFieldName = string;
 export interface IncrementalPullConfig {
   datetimeTypeFieldName?: string;
 }
-export const IncrementalPullConfig = /*@__PURE__*/ S.suspend(() =>
+const IncrementalPullConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datetimeTypeFieldName: S.optional(S.String) }),
 ).annotate({ identifier: "IncrementalPullConfig" }) as any as S.Schema<IncrementalPullConfig>;
 export interface SourceFlowConfig {
@@ -1181,7 +1174,7 @@ export interface SourceFlowConfig {
   sourceConnectorProperties: SourceConnectorProperties;
   incrementalPullConfig?: IncrementalPullConfig;
 }
-export const SourceFlowConfig = /*@__PURE__*/ S.suspend(() =>
+const SourceFlowConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorType: ConnectorType,
     apiVersion: S.optional(S.String),
@@ -1195,7 +1188,7 @@ export interface ErrorHandlingConfig {
   bucketPrefix?: string;
   bucketName?: string;
 }
-export const ErrorHandlingConfig = /*@__PURE__*/ S.suspend(() =>
+const ErrorHandlingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failOnFirstDestinationError: S.optional(S.Boolean),
     bucketPrefix: S.optional(S.String),
@@ -1208,7 +1201,7 @@ export interface RedshiftDestinationProperties {
   bucketPrefix?: string;
   errorHandlingConfig?: ErrorHandlingConfig;
 }
-export const RedshiftDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const RedshiftDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     intermediateBucketName: S.String,
@@ -1219,25 +1212,25 @@ export const RedshiftDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "RedshiftDestinationProperties",
 }) as any as S.Schema<RedshiftDestinationProperties>;
 export type FileType = "CSV" | "JSON" | "PARQUET" | (string & {});
-export const FileType = S.String;
+const FileType = S.String;
 
 export type PrefixType = "FILENAME" | "PATH" | "PATH_AND_FILENAME" | (string & {});
-export const PrefixType = S.String;
+const PrefixType = S.String;
 
 export type PrefixFormat = "YEAR" | "MONTH" | "DAY" | "HOUR" | "MINUTE" | (string & {});
-export const PrefixFormat = S.String;
+const PrefixFormat = S.String;
 
 export type PathPrefix = "EXECUTION_ID" | "SCHEMA_VERSION" | (string & {});
-export const PathPrefix = S.String;
+const PathPrefix = S.String;
 
 export type PathPrefixHierarchy = PathPrefix[];
-export const PathPrefixHierarchy = /*@__PURE__*/ S.Array(PathPrefix);
+const PathPrefixHierarchy = /*@__PURE__*/ S.Array(PathPrefix);
 export interface PrefixConfig {
   prefixType?: PrefixType;
   prefixFormat?: PrefixFormat;
   pathPrefixHierarchy?: PathPrefix[];
 }
-export const PrefixConfig = /*@__PURE__*/ S.suspend(() =>
+const PrefixConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixType: S.optional(PrefixType),
     prefixFormat: S.optional(PrefixFormat),
@@ -1245,13 +1238,13 @@ export const PrefixConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PrefixConfig" }) as any as S.Schema<PrefixConfig>;
 export type AggregationType = "None" | "SingleFile" | (string & {});
-export const AggregationType = S.String;
+const AggregationType = S.String;
 
 export interface AggregationConfig {
   aggregationType?: AggregationType;
   targetFileSize?: number;
 }
-export const AggregationConfig = /*@__PURE__*/ S.suspend(() =>
+const AggregationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ aggregationType: S.optional(AggregationType), targetFileSize: S.optional(S.Number) }),
 ).annotate({ identifier: "AggregationConfig" }) as any as S.Schema<AggregationConfig>;
 export type JavaBoolean = boolean;
@@ -1261,7 +1254,7 @@ export interface S3OutputFormatConfig {
   aggregationConfig?: AggregationConfig;
   preserveSourceDataTyping?: boolean;
 }
-export const S3OutputFormatConfig = /*@__PURE__*/ S.suspend(() =>
+const S3OutputFormatConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileType: S.optional(FileType),
     prefixConfig: S.optional(PrefixConfig),
@@ -1274,7 +1267,7 @@ export interface S3DestinationProperties {
   bucketPrefix?: string;
   s3OutputFormatConfig?: S3OutputFormatConfig;
 }
-export const S3DestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const S3DestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.String,
     bucketPrefix: S.optional(S.String),
@@ -1283,9 +1276,9 @@ export const S3DestinationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3DestinationProperties" }) as any as S.Schema<S3DestinationProperties>;
 export type Name = string;
 export type IdFieldNameList = string[];
-export const IdFieldNameList = ExecutionIds as any as S.Schema<IdFieldNameList>;
+const IdFieldNameList = ExecutionIds as any as S.Schema<IdFieldNameList>;
 export type WriteOperationType = "INSERT" | "UPSERT" | "UPDATE" | "DELETE" | (string & {});
-export const WriteOperationType = S.String;
+const WriteOperationType = S.String;
 
 export interface SalesforceDestinationProperties {
   object: string;
@@ -1294,7 +1287,7 @@ export interface SalesforceDestinationProperties {
   writeOperationType?: WriteOperationType;
   dataTransferApi?: SalesforceDataTransferApi;
 }
-export const SalesforceDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const SalesforceDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     idFieldNames: S.optional(IdFieldNameList),
@@ -1311,19 +1304,19 @@ export interface SnowflakeDestinationProperties {
   bucketPrefix?: string;
   errorHandlingConfig?: ErrorHandlingConfig;
 }
-export const SnowflakeDestinationProperties =
+const SnowflakeDestinationProperties =
   RedshiftDestinationProperties as any as S.Schema<SnowflakeDestinationProperties>;
 export interface EventBridgeDestinationProperties {
   object: string;
   errorHandlingConfig?: ErrorHandlingConfig;
 }
-export const EventBridgeDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const EventBridgeDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ object: S.String, errorHandlingConfig: S.optional(ErrorHandlingConfig) }),
 ).annotate({
   identifier: "EventBridgeDestinationProperties",
 }) as any as S.Schema<EventBridgeDestinationProperties>;
 export interface LookoutMetricsDestinationProperties {}
-export const LookoutMetricsDestinationProperties =
+const LookoutMetricsDestinationProperties =
   AmplitudeConnectorProfileProperties as any as S.Schema<LookoutMetricsDestinationProperties>;
 export type UpsolverBucketName = string;
 export interface UpsolverS3OutputFormatConfig {
@@ -1331,7 +1324,7 @@ export interface UpsolverS3OutputFormatConfig {
   prefixConfig: PrefixConfig;
   aggregationConfig?: AggregationConfig;
 }
-export const UpsolverS3OutputFormatConfig = /*@__PURE__*/ S.suspend(() =>
+const UpsolverS3OutputFormatConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileType: S.optional(FileType),
     prefixConfig: PrefixConfig,
@@ -1345,7 +1338,7 @@ export interface UpsolverDestinationProperties {
   bucketPrefix?: string;
   s3OutputFormatConfig: UpsolverS3OutputFormatConfig;
 }
-export const UpsolverDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const UpsolverDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.String,
     bucketPrefix: S.optional(S.String),
@@ -1358,7 +1351,7 @@ export interface HoneycodeDestinationProperties {
   object: string;
   errorHandlingConfig?: ErrorHandlingConfig;
 }
-export const HoneycodeDestinationProperties =
+const HoneycodeDestinationProperties =
   EventBridgeDestinationProperties as any as S.Schema<HoneycodeDestinationProperties>;
 export type DomainName = string;
 export type ObjectTypeName = string;
@@ -1366,7 +1359,7 @@ export interface CustomerProfilesDestinationProperties {
   domainName: string;
   objectTypeName?: string;
 }
-export const CustomerProfilesDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfilesDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainName: S.String, objectTypeName: S.optional(S.String) }),
 ).annotate({
   identifier: "CustomerProfilesDestinationProperties",
@@ -1377,7 +1370,7 @@ export interface ZendeskDestinationProperties {
   errorHandlingConfig?: ErrorHandlingConfig;
   writeOperationType?: WriteOperationType;
 }
-export const ZendeskDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const ZendeskDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     idFieldNames: S.optional(IdFieldNameList),
@@ -1391,7 +1384,7 @@ export interface MarketoDestinationProperties {
   object: string;
   errorHandlingConfig?: ErrorHandlingConfig;
 }
-export const MarketoDestinationProperties =
+const MarketoDestinationProperties =
   EventBridgeDestinationProperties as any as S.Schema<MarketoDestinationProperties>;
 export interface CustomConnectorDestinationProperties {
   entityName: string;
@@ -1400,7 +1393,7 @@ export interface CustomConnectorDestinationProperties {
   idFieldNames?: string[];
   customProperties?: { [key: string]: string | undefined };
 }
-export const CustomConnectorDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const CustomConnectorDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityName: S.String,
     errorHandlingConfig: S.optional(ErrorHandlingConfig),
@@ -1415,7 +1408,7 @@ export interface SuccessResponseHandlingConfig {
   bucketPrefix?: string;
   bucketName?: string;
 }
-export const SuccessResponseHandlingConfig = /*@__PURE__*/ S.suspend(() =>
+const SuccessResponseHandlingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketPrefix: S.optional(S.String), bucketName: S.optional(S.String) }),
 ).annotate({
   identifier: "SuccessResponseHandlingConfig",
@@ -1427,7 +1420,7 @@ export interface SAPODataDestinationProperties {
   errorHandlingConfig?: ErrorHandlingConfig;
   writeOperationType?: WriteOperationType;
 }
-export const SAPODataDestinationProperties = /*@__PURE__*/ S.suspend(() =>
+const SAPODataDestinationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectPath: S.String,
     successResponseHandlingConfig: S.optional(SuccessResponseHandlingConfig),
@@ -1453,7 +1446,7 @@ export interface DestinationConnectorProperties {
   CustomConnector?: CustomConnectorDestinationProperties;
   SAPOData?: SAPODataDestinationProperties;
 }
-export const DestinationConnectorProperties = /*@__PURE__*/ S.suspend(() =>
+const DestinationConnectorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Redshift: S.optional(RedshiftDestinationProperties),
     S3: S.optional(S3DestinationProperties),
@@ -1478,7 +1471,7 @@ export interface DestinationFlowConfig {
   connectorProfileName?: string;
   destinationConnectorProperties: DestinationConnectorProperties;
 }
-export const DestinationFlowConfig = /*@__PURE__*/ S.suspend(() =>
+const DestinationFlowConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorType: ConnectorType,
     apiVersion: S.optional(S.String),
@@ -1487,11 +1480,11 @@ export const DestinationFlowConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DestinationFlowConfig" }) as any as S.Schema<DestinationFlowConfig>;
 export type DestinationFlowConfigList = DestinationFlowConfig[];
-export const DestinationFlowConfigList = /*@__PURE__*/ S.Array(DestinationFlowConfig);
+const DestinationFlowConfigList = /*@__PURE__*/ S.Array(DestinationFlowConfig);
 export type SourceFields = string[];
-export const SourceFields = ExecutionIds as any as S.Schema<SourceFields>;
+const SourceFields = ExecutionIds as any as S.Schema<SourceFields>;
 export type AmplitudeConnectorOperator = "BETWEEN" | (string & {});
-export const AmplitudeConnectorOperator = S.String;
+const AmplitudeConnectorOperator = S.String;
 
 export type DatadogConnectorOperator =
   | "PROJECTION"
@@ -1510,7 +1503,7 @@ export type DatadogConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const DatadogConnectorOperator = S.String;
+const DatadogConnectorOperator = S.String;
 
 export type DynatraceConnectorOperator =
   | "PROJECTION"
@@ -1529,10 +1522,10 @@ export type DynatraceConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const DynatraceConnectorOperator = S.String;
+const DynatraceConnectorOperator = S.String;
 
 export type GoogleAnalyticsConnectorOperator = "PROJECTION" | "BETWEEN" | (string & {});
-export const GoogleAnalyticsConnectorOperator = S.String;
+const GoogleAnalyticsConnectorOperator = S.String;
 
 export type InforNexusConnectorOperator =
   | "PROJECTION"
@@ -1551,7 +1544,7 @@ export type InforNexusConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const InforNexusConnectorOperator = S.String;
+const InforNexusConnectorOperator = S.String;
 
 export type MarketoConnectorOperator =
   | "PROJECTION"
@@ -1571,7 +1564,7 @@ export type MarketoConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const MarketoConnectorOperator = S.String;
+const MarketoConnectorOperator = S.String;
 
 export type S3ConnectorOperator =
   | "PROJECTION"
@@ -1595,7 +1588,7 @@ export type S3ConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const S3ConnectorOperator = S.String;
+const S3ConnectorOperator = S.String;
 
 export type SalesforceConnectorOperator =
   | "PROJECTION"
@@ -1620,7 +1613,7 @@ export type SalesforceConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const SalesforceConnectorOperator = S.String;
+const SalesforceConnectorOperator = S.String;
 
 export type ServiceNowConnectorOperator =
   | "PROJECTION"
@@ -1645,7 +1638,7 @@ export type ServiceNowConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const ServiceNowConnectorOperator = S.String;
+const ServiceNowConnectorOperator = S.String;
 
 export type SingularConnectorOperator =
   | "PROJECTION"
@@ -1663,7 +1656,7 @@ export type SingularConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const SingularConnectorOperator = S.String;
+const SingularConnectorOperator = S.String;
 
 export type SlackConnectorOperator =
   | "PROJECTION"
@@ -1686,7 +1679,7 @@ export type SlackConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const SlackConnectorOperator = S.String;
+const SlackConnectorOperator = S.String;
 
 export type TrendmicroConnectorOperator =
   | "PROJECTION"
@@ -1704,7 +1697,7 @@ export type TrendmicroConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const TrendmicroConnectorOperator = S.String;
+const TrendmicroConnectorOperator = S.String;
 
 export type VeevaConnectorOperator =
   | "PROJECTION"
@@ -1729,7 +1722,7 @@ export type VeevaConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const VeevaConnectorOperator = S.String;
+const VeevaConnectorOperator = S.String;
 
 export type ZendeskConnectorOperator =
   | "PROJECTION"
@@ -1747,7 +1740,7 @@ export type ZendeskConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const ZendeskConnectorOperator = S.String;
+const ZendeskConnectorOperator = S.String;
 
 export type SAPODataConnectorOperator =
   | "PROJECTION"
@@ -1772,7 +1765,7 @@ export type SAPODataConnectorOperator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const SAPODataConnectorOperator = S.String;
+const SAPODataConnectorOperator = S.String;
 
 export type Operator =
   | "PROJECTION"
@@ -1797,7 +1790,7 @@ export type Operator =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const Operator = S.String;
+const Operator = S.String;
 
 export type PardotConnectorOperator =
   | "PROJECTION"
@@ -1815,7 +1808,7 @@ export type PardotConnectorOperator =
   | "VALIDATE_NON_NEGATIVE"
   | "VALIDATE_NUMERIC"
   | (string & {});
-export const PardotConnectorOperator = S.String;
+const PardotConnectorOperator = S.String;
 
 export interface ConnectorOperator {
   Amplitude?: AmplitudeConnectorOperator;
@@ -1836,7 +1829,7 @@ export interface ConnectorOperator {
   CustomConnector?: Operator;
   Pardot?: PardotConnectorOperator;
 }
-export const ConnectorOperator = /*@__PURE__*/ S.suspend(() =>
+const ConnectorOperator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Amplitude: S.optional(AmplitudeConnectorOperator),
     Datadog: S.optional(DatadogConnectorOperator),
@@ -1870,7 +1863,7 @@ export type TaskType =
   | "Validate"
   | "Partition"
   | (string & {});
-export const TaskType = S.String;
+const TaskType = S.String;
 
 export type OperatorPropertiesKeys =
   | "VALUE"
@@ -1891,11 +1884,11 @@ export type OperatorPropertiesKeys =
   | "INCLUDE_NEW_FIELDS"
   | "ORDERED_PARTITION_KEYS_LIST"
   | (string & {});
-export const OperatorPropertiesKeys = S.String;
+const OperatorPropertiesKeys = S.String;
 
 export type Property = string;
 export type TaskPropertiesMap = { [key in OperatorPropertiesKeys]?: string };
-export const TaskPropertiesMap = /*@__PURE__*/ S.Record(
+const TaskPropertiesMap = /*@__PURE__*/ S.Record(
   OperatorPropertiesKeys,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -1906,7 +1899,7 @@ export interface Task {
   taskType: TaskType;
   taskProperties?: { [key: string]: string | undefined };
 }
-export const Task = /*@__PURE__*/ S.suspend(() =>
+const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceFields: SourceFields,
     connectorOperator: S.optional(ConnectorOperator),
@@ -1916,11 +1909,11 @@ export const Task = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 export type Tasks = Task[];
-export const Tasks = /*@__PURE__*/ S.Array(Task);
+const Tasks = /*@__PURE__*/ S.Array(Task);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type GlueDataCatalogIAMRole = string;
 export type GlueDataCatalogDatabaseName = string;
 export type GlueDataCatalogTablePrefix = string;
@@ -1929,13 +1922,13 @@ export interface GlueDataCatalogConfig {
   databaseName: string;
   tablePrefix: string;
 }
-export const GlueDataCatalogConfig = /*@__PURE__*/ S.suspend(() =>
+const GlueDataCatalogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ roleArn: S.String, databaseName: S.String, tablePrefix: S.String }),
 ).annotate({ identifier: "GlueDataCatalogConfig" }) as any as S.Schema<GlueDataCatalogConfig>;
 export interface MetadataCatalogConfig {
   glueDataCatalog?: GlueDataCatalogConfig;
 }
-export const MetadataCatalogConfig = /*@__PURE__*/ S.suspend(() =>
+const MetadataCatalogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ glueDataCatalog: S.optional(GlueDataCatalogConfig) }),
 ).annotate({ identifier: "MetadataCatalogConfig" }) as any as S.Schema<MetadataCatalogConfig>;
 export interface CreateFlowRequest {
@@ -1950,7 +1943,7 @@ export interface CreateFlowRequest {
   metadataCatalogConfig?: MetadataCatalogConfig;
   clientToken?: string;
 }
-export const CreateFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowName: S.String,
     description: S.optional(S.String),
@@ -1973,20 +1966,20 @@ export type FlowStatus =
   | "Errored"
   | "Suspended"
   | (string & {});
-export const FlowStatus = S.String;
+const FlowStatus = S.String;
 
 export interface CreateFlowResponse {
   flowArn?: string;
   flowStatus?: FlowStatus;
 }
-export const CreateFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowArn: S.optional(S.String), flowStatus: S.optional(FlowStatus) }),
 ).annotate({ identifier: "CreateFlowResponse" }) as any as S.Schema<CreateFlowResponse>;
 export interface DeleteConnectorProfileRequest {
   connectorProfileName: string;
   forceDelete?: boolean;
 }
-export const DeleteConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectorProfileName: S.String, forceDelete: S.optional(S.Boolean) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/delete-connector-profile" }),
@@ -2001,32 +1994,31 @@ export const DeleteConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteConnectorProfileRequest",
 }) as any as S.Schema<DeleteConnectorProfileRequest>;
 export interface DeleteConnectorProfileResponse {}
-export const DeleteConnectorProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteConnectorProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteConnectorProfileResponse",
 }) as any as S.Schema<DeleteConnectorProfileResponse>;
 export interface DeleteFlowRequest {
   flowName: string;
   forceDelete?: boolean;
 }
-export const DeleteFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowName: S.String, forceDelete: S.optional(S.Boolean) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/delete-flow" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteFlowRequest" }) as any as S.Schema<DeleteFlowRequest>;
 export interface DeleteFlowResponse {}
-export const DeleteFlowResponse =
-  DeleteConnectorProfileResponse as any as S.Schema<DeleteFlowResponse>;
+const DeleteFlowResponse = DeleteConnectorProfileResponse as any as S.Schema<DeleteFlowResponse>;
 export interface DescribeConnectorRequest {
   connectorType: ConnectorType;
   connectorLabel?: string;
 }
-export const DescribeConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectorType: ConnectorType, connectorLabel: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/describe-connector" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DescribeConnectorRequest" }) as any as S.Schema<DescribeConnectorRequest>;
 export type ConnectorTypeList = ConnectorType[];
-export const ConnectorTypeList = PathPrefixHierarchy as any as S.Schema<ConnectorTypeList>;
+const ConnectorTypeList = PathPrefixHierarchy as any as S.Schema<ConnectorTypeList>;
 export type ScheduleFrequencyType =
   | "BYMINUTE"
   | "HOURLY"
@@ -2035,48 +2027,43 @@ export type ScheduleFrequencyType =
   | "MONTHLY"
   | "ONCE"
   | (string & {});
-export const ScheduleFrequencyType = S.String;
-
 export type SchedulingFrequencyTypeList = ScheduleFrequencyType[];
-export const SchedulingFrequencyTypeList =
+const SchedulingFrequencyTypeList =
   PathPrefixHierarchy as any as S.Schema<SchedulingFrequencyTypeList>;
 export type TriggerTypeList = TriggerType[];
-export const TriggerTypeList = PathPrefixHierarchy as any as S.Schema<TriggerTypeList>;
+const TriggerTypeList = PathPrefixHierarchy as any as S.Schema<TriggerTypeList>;
 export interface AmplitudeMetadata {}
-export const AmplitudeMetadata =
-  DeleteConnectorProfileResponse as any as S.Schema<AmplitudeMetadata>;
+const AmplitudeMetadata = DeleteConnectorProfileResponse as any as S.Schema<AmplitudeMetadata>;
 export interface DatadogMetadata {}
-export const DatadogMetadata = DeleteConnectorProfileResponse as any as S.Schema<DatadogMetadata>;
+const DatadogMetadata = DeleteConnectorProfileResponse as any as S.Schema<DatadogMetadata>;
 export interface DynatraceMetadata {}
-export const DynatraceMetadata =
-  DeleteConnectorProfileResponse as any as S.Schema<DynatraceMetadata>;
+const DynatraceMetadata = DeleteConnectorProfileResponse as any as S.Schema<DynatraceMetadata>;
 export interface GoogleAnalyticsMetadata {
   oAuthScopes?: string[];
 }
-export const GoogleAnalyticsMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ oAuthScopes: S.optional(OAuthScopeList) }),
 ).annotate({ identifier: "GoogleAnalyticsMetadata" }) as any as S.Schema<GoogleAnalyticsMetadata>;
 export interface InforNexusMetadata {}
-export const InforNexusMetadata =
-  DeleteConnectorProfileResponse as any as S.Schema<InforNexusMetadata>;
+const InforNexusMetadata = DeleteConnectorProfileResponse as any as S.Schema<InforNexusMetadata>;
 export interface MarketoMetadata {}
-export const MarketoMetadata = DeleteConnectorProfileResponse as any as S.Schema<MarketoMetadata>;
+const MarketoMetadata = DeleteConnectorProfileResponse as any as S.Schema<MarketoMetadata>;
 export interface RedshiftMetadata {}
-export const RedshiftMetadata = DeleteConnectorProfileResponse as any as S.Schema<RedshiftMetadata>;
+const RedshiftMetadata = DeleteConnectorProfileResponse as any as S.Schema<RedshiftMetadata>;
 export interface S3Metadata {}
-export const S3Metadata = DeleteConnectorProfileResponse as any as S.Schema<S3Metadata>;
+const S3Metadata = DeleteConnectorProfileResponse as any as S.Schema<S3Metadata>;
 export type SalesforceDataTransferApiList = SalesforceDataTransferApi[];
-export const SalesforceDataTransferApiList =
+const SalesforceDataTransferApiList =
   PathPrefixHierarchy as any as S.Schema<SalesforceDataTransferApiList>;
 export type OAuth2GrantTypeSupportedList = OAuth2GrantType[];
-export const OAuth2GrantTypeSupportedList =
+const OAuth2GrantTypeSupportedList =
   PathPrefixHierarchy as any as S.Schema<OAuth2GrantTypeSupportedList>;
 export interface SalesforceMetadata {
   oAuthScopes?: string[];
   dataTransferApis?: SalesforceDataTransferApi[];
   oauth2GrantTypesSupported?: OAuth2GrantType[];
 }
-export const SalesforceMetadata = /*@__PURE__*/ S.suspend(() =>
+const SalesforceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oAuthScopes: S.optional(OAuthScopeList),
     dataTransferApis: S.optional(SalesforceDataTransferApiList),
@@ -2084,47 +2071,44 @@ export const SalesforceMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SalesforceMetadata" }) as any as S.Schema<SalesforceMetadata>;
 export interface ServiceNowMetadata {}
-export const ServiceNowMetadata =
-  DeleteConnectorProfileResponse as any as S.Schema<ServiceNowMetadata>;
+const ServiceNowMetadata = DeleteConnectorProfileResponse as any as S.Schema<ServiceNowMetadata>;
 export interface SingularMetadata {}
-export const SingularMetadata = DeleteConnectorProfileResponse as any as S.Schema<SingularMetadata>;
+const SingularMetadata = DeleteConnectorProfileResponse as any as S.Schema<SingularMetadata>;
 export interface SlackMetadata {
   oAuthScopes?: string[];
 }
-export const SlackMetadata = GoogleAnalyticsMetadata as any as S.Schema<SlackMetadata>;
+const SlackMetadata = GoogleAnalyticsMetadata as any as S.Schema<SlackMetadata>;
 export type RegionList = string[];
-export const RegionList = ExecutionIds as any as S.Schema<RegionList>;
+const RegionList = ExecutionIds as any as S.Schema<RegionList>;
 export interface SnowflakeMetadata {
   supportedRegions?: string[];
 }
-export const SnowflakeMetadata = /*@__PURE__*/ S.suspend(() =>
+const SnowflakeMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ supportedRegions: S.optional(RegionList) }),
 ).annotate({ identifier: "SnowflakeMetadata" }) as any as S.Schema<SnowflakeMetadata>;
 export interface TrendmicroMetadata {}
-export const TrendmicroMetadata =
-  DeleteConnectorProfileResponse as any as S.Schema<TrendmicroMetadata>;
+const TrendmicroMetadata = DeleteConnectorProfileResponse as any as S.Schema<TrendmicroMetadata>;
 export interface VeevaMetadata {}
-export const VeevaMetadata = DeleteConnectorProfileResponse as any as S.Schema<VeevaMetadata>;
+const VeevaMetadata = DeleteConnectorProfileResponse as any as S.Schema<VeevaMetadata>;
 export interface ZendeskMetadata {
   oAuthScopes?: string[];
 }
-export const ZendeskMetadata = GoogleAnalyticsMetadata as any as S.Schema<ZendeskMetadata>;
+const ZendeskMetadata = GoogleAnalyticsMetadata as any as S.Schema<ZendeskMetadata>;
 export interface EventBridgeMetadata {}
-export const EventBridgeMetadata =
-  DeleteConnectorProfileResponse as any as S.Schema<EventBridgeMetadata>;
+const EventBridgeMetadata = DeleteConnectorProfileResponse as any as S.Schema<EventBridgeMetadata>;
 export interface UpsolverMetadata {}
-export const UpsolverMetadata = DeleteConnectorProfileResponse as any as S.Schema<UpsolverMetadata>;
+const UpsolverMetadata = DeleteConnectorProfileResponse as any as S.Schema<UpsolverMetadata>;
 export interface CustomerProfilesMetadata {}
-export const CustomerProfilesMetadata =
+const CustomerProfilesMetadata =
   DeleteConnectorProfileResponse as any as S.Schema<CustomerProfilesMetadata>;
 export interface HoneycodeMetadata {
   oAuthScopes?: string[];
 }
-export const HoneycodeMetadata = GoogleAnalyticsMetadata as any as S.Schema<HoneycodeMetadata>;
+const HoneycodeMetadata = GoogleAnalyticsMetadata as any as S.Schema<HoneycodeMetadata>;
 export interface SAPODataMetadata {}
-export const SAPODataMetadata = DeleteConnectorProfileResponse as any as S.Schema<SAPODataMetadata>;
+const SAPODataMetadata = DeleteConnectorProfileResponse as any as S.Schema<SAPODataMetadata>;
 export interface PardotMetadata {}
-export const PardotMetadata = DeleteConnectorProfileResponse as any as S.Schema<PardotMetadata>;
+const PardotMetadata = DeleteConnectorProfileResponse as any as S.Schema<PardotMetadata>;
 export interface ConnectorMetadata {
   Amplitude?: AmplitudeMetadata;
   Datadog?: DatadogMetadata;
@@ -2149,7 +2133,7 @@ export interface ConnectorMetadata {
   SAPOData?: SAPODataMetadata;
   Pardot?: PardotMetadata;
 }
-export const ConnectorMetadata = /*@__PURE__*/ S.suspend(() =>
+const ConnectorMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Amplitude: S.optional(AmplitudeMetadata),
     Datadog: S.optional(DatadogMetadata),
@@ -2182,19 +2166,18 @@ export type ConnectorVersion = string;
 export type ARN = string;
 export type ConnectorMode = string;
 export type ConnectorModeList = string[];
-export const ConnectorModeList = ExecutionIds as any as S.Schema<ConnectorModeList>;
+const ConnectorModeList = ExecutionIds as any as S.Schema<ConnectorModeList>;
 export type TokenUrlList = string[];
-export const TokenUrlList = ExecutionIds as any as S.Schema<TokenUrlList>;
+const TokenUrlList = ExecutionIds as any as S.Schema<TokenUrlList>;
 export type AuthCodeUrlList = string[];
-export const AuthCodeUrlList = ExecutionIds as any as S.Schema<AuthCodeUrlList>;
+const AuthCodeUrlList = ExecutionIds as any as S.Schema<AuthCodeUrlList>;
 export type Label = string;
 export type Description = string;
 export type ConnectorSuppliedValue = string;
 export type ConnectorSuppliedValueList = string[];
-export const ConnectorSuppliedValueList =
-  ExecutionIds as any as S.Schema<ConnectorSuppliedValueList>;
+const ConnectorSuppliedValueList = ExecutionIds as any as S.Schema<ConnectorSuppliedValueList>;
 export type OAuth2CustomPropType = "TOKEN_URL" | "AUTH_URL" | (string & {});
-export const OAuth2CustomPropType = S.String;
+const OAuth2CustomPropType = S.String;
 
 export interface OAuth2CustomParameter {
   key?: string;
@@ -2205,7 +2188,7 @@ export interface OAuth2CustomParameter {
   connectorSuppliedValues?: string[];
   type?: OAuth2CustomPropType;
 }
-export const OAuth2CustomParameter = /*@__PURE__*/ S.suspend(() =>
+const OAuth2CustomParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     isRequired: S.optional(S.Boolean),
@@ -2217,7 +2200,7 @@ export const OAuth2CustomParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OAuth2CustomParameter" }) as any as S.Schema<OAuth2CustomParameter>;
 export type OAuth2CustomPropertiesList = OAuth2CustomParameter[];
-export const OAuth2CustomPropertiesList = /*@__PURE__*/ S.Array(OAuth2CustomParameter);
+const OAuth2CustomPropertiesList = /*@__PURE__*/ S.Array(OAuth2CustomParameter);
 export interface OAuth2Defaults {
   oauthScopes?: string[];
   tokenUrls?: string[];
@@ -2225,7 +2208,7 @@ export interface OAuth2Defaults {
   oauth2GrantTypesSupported?: OAuth2GrantType[];
   oauth2CustomProperties?: OAuth2CustomParameter[];
 }
-export const OAuth2Defaults = /*@__PURE__*/ S.suspend(() =>
+const OAuth2Defaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthScopes: S.optional(OAuthScopeList),
     tokenUrls: S.optional(TokenUrlList),
@@ -2242,7 +2225,7 @@ export interface AuthParameter {
   isSensitiveField?: boolean;
   connectorSuppliedValues?: string[];
 }
-export const AuthParameter = /*@__PURE__*/ S.suspend(() =>
+const AuthParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     isRequired: S.optional(S.Boolean),
@@ -2253,19 +2236,19 @@ export const AuthParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuthParameter" }) as any as S.Schema<AuthParameter>;
 export type AuthParameterList = AuthParameter[];
-export const AuthParameterList = /*@__PURE__*/ S.Array(AuthParameter);
+const AuthParameterList = /*@__PURE__*/ S.Array(AuthParameter);
 export interface CustomAuthConfig {
   customAuthenticationType?: string;
   authParameters?: AuthParameter[];
 }
-export const CustomAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customAuthenticationType: S.optional(S.String),
     authParameters: S.optional(AuthParameterList),
   }),
 ).annotate({ identifier: "CustomAuthConfig" }) as any as S.Schema<CustomAuthConfig>;
 export type CustomAuthConfigList = CustomAuthConfig[];
-export const CustomAuthConfigList = /*@__PURE__*/ S.Array(CustomAuthConfig);
+const CustomAuthConfigList = /*@__PURE__*/ S.Array(CustomAuthConfig);
 export interface AuthenticationConfig {
   isBasicAuthSupported?: boolean;
   isApiKeyAuthSupported?: boolean;
@@ -2274,7 +2257,7 @@ export interface AuthenticationConfig {
   oAuth2Defaults?: OAuth2Defaults;
   customAuthConfigs?: CustomAuthConfig[];
 }
-export const AuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isBasicAuthSupported: S.optional(S.Boolean),
     isApiKeyAuthSupported: S.optional(S.Boolean),
@@ -2287,7 +2270,7 @@ export const AuthenticationConfig = /*@__PURE__*/ S.suspend(() =>
 export type ConnectorRuntimeSettingDataType = string;
 export type ConnectorRuntimeSettingScope = string;
 export type ConnectorSuppliedValueOptionList = string[];
-export const ConnectorSuppliedValueOptionList =
+const ConnectorSuppliedValueOptionList =
   ExecutionIds as any as S.Schema<ConnectorSuppliedValueOptionList>;
 export interface ConnectorRuntimeSetting {
   key?: string;
@@ -2298,7 +2281,7 @@ export interface ConnectorRuntimeSetting {
   scope?: string;
   connectorSuppliedValueOptions?: string[];
 }
-export const ConnectorRuntimeSetting = /*@__PURE__*/ S.suspend(() =>
+const ConnectorRuntimeSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     dataType: S.optional(S.String),
@@ -2310,10 +2293,10 @@ export const ConnectorRuntimeSetting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConnectorRuntimeSetting" }) as any as S.Schema<ConnectorRuntimeSetting>;
 export type ConnectorRuntimeSettingList = ConnectorRuntimeSetting[];
-export const ConnectorRuntimeSettingList = /*@__PURE__*/ S.Array(ConnectorRuntimeSetting);
+const ConnectorRuntimeSettingList = /*@__PURE__*/ S.Array(ConnectorRuntimeSetting);
 export type SupportedApiVersion = string;
 export type SupportedApiVersionList = string[];
-export const SupportedApiVersionList = ExecutionIds as any as S.Schema<SupportedApiVersionList>;
+const SupportedApiVersionList = ExecutionIds as any as S.Schema<SupportedApiVersionList>;
 export type Operators =
   | "PROJECTION"
   | "LESS_THAN"
@@ -2337,20 +2320,18 @@ export type Operators =
   | "VALIDATE_NUMERIC"
   | "NO_OP"
   | (string & {});
-export const Operators = S.String;
-
 export type SupportedOperatorList = Operators[];
-export const SupportedOperatorList = PathPrefixHierarchy as any as S.Schema<SupportedOperatorList>;
+const SupportedOperatorList = PathPrefixHierarchy as any as S.Schema<SupportedOperatorList>;
 export type SupportedWriteOperationList = WriteOperationType[];
-export const SupportedWriteOperationList =
+const SupportedWriteOperationList =
   PathPrefixHierarchy as any as S.Schema<SupportedWriteOperationList>;
 export type ConnectorProvisioningType = "LAMBDA" | (string & {});
-export const ConnectorProvisioningType = S.String;
+const ConnectorProvisioningType = S.String;
 
 export interface LambdaConnectorProvisioningConfig {
   lambdaArn: string;
 }
-export const LambdaConnectorProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
+const LambdaConnectorProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ lambdaArn: S.String }),
 ).annotate({
   identifier: "LambdaConnectorProvisioningConfig",
@@ -2358,7 +2339,7 @@ export const LambdaConnectorProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
 export interface ConnectorProvisioningConfig {
   lambda?: LambdaConnectorProvisioningConfig;
 }
-export const ConnectorProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
+const ConnectorProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ lambda: S.optional(LambdaConnectorProvisioningConfig) }),
 ).annotate({
   identifier: "ConnectorProvisioningConfig",
@@ -2366,13 +2347,11 @@ export const ConnectorProvisioningConfig = /*@__PURE__*/ S.suspend(() =>
 export type LogoURL = string;
 export type RegisteredBy = string;
 export type SupportedDataTransferType = "RECORD" | "FILE" | (string & {});
-export const SupportedDataTransferType = S.String;
-
 export type SupportedDataTransferTypeList = SupportedDataTransferType[];
-export const SupportedDataTransferTypeList =
+const SupportedDataTransferTypeList =
   PathPrefixHierarchy as any as S.Schema<SupportedDataTransferTypeList>;
 export type SupportedDataTransferApis = DataTransferApi[];
-export const SupportedDataTransferApis = /*@__PURE__*/ S.Array(DataTransferApi);
+const SupportedDataTransferApis = /*@__PURE__*/ S.Array(DataTransferApi);
 export interface ConnectorConfiguration {
   canUseAsSource?: boolean;
   canUseAsDestination?: boolean;
@@ -2403,7 +2382,7 @@ export interface ConnectorConfiguration {
   supportedDataTransferTypes?: SupportedDataTransferType[];
   supportedDataTransferApis?: DataTransferApi[];
 }
-export const ConnectorConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ConnectorConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canUseAsSource: S.optional(S.Boolean),
     canUseAsDestination: S.optional(S.Boolean),
@@ -2438,7 +2417,7 @@ export const ConnectorConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeConnectorResponse {
   connectorConfiguration?: ConnectorConfiguration;
 }
-export const DescribeConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectorConfiguration: S.optional(ConnectorConfiguration) }),
 ).annotate({
   identifier: "DescribeConnectorResponse",
@@ -2449,7 +2428,7 @@ export interface DescribeConnectorEntityRequest {
   connectorProfileName?: string;
   apiVersion?: string;
 }
-export const DescribeConnectorEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeConnectorEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorEntityName: S.String,
     connectorType: S.optional(ConnectorType),
@@ -2471,15 +2450,15 @@ export const DescribeConnectorEntityRequest = /*@__PURE__*/ S.suspend(() =>
 export type Identifier = string;
 export type FieldType = string;
 export type FilterOperatorList = Operator[];
-export const FilterOperatorList = PathPrefixHierarchy as any as S.Schema<FilterOperatorList>;
+const FilterOperatorList = PathPrefixHierarchy as any as S.Schema<FilterOperatorList>;
 export type Value = string;
 export type SupportedValueList = string[];
-export const SupportedValueList = ExecutionIds as any as S.Schema<SupportedValueList>;
+const SupportedValueList = ExecutionIds as any as S.Schema<SupportedValueList>;
 export interface Range {
   maximum?: number;
   minimum?: number;
 }
-export const Range = /*@__PURE__*/ S.suspend(() =>
+const Range = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maximum: S.optional(S.Number), minimum: S.optional(S.Number) }),
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
 export interface FieldTypeDetails {
@@ -2491,7 +2470,7 @@ export interface FieldTypeDetails {
   fieldValueRange?: Range;
   fieldLengthRange?: Range;
 }
-export const FieldTypeDetails = /*@__PURE__*/ S.suspend(() =>
+const FieldTypeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldType: S.String,
     filterOperators: FilterOperatorList,
@@ -2505,7 +2484,7 @@ export const FieldTypeDetails = /*@__PURE__*/ S.suspend(() =>
 export interface SupportedFieldTypeDetails {
   v1: FieldTypeDetails;
 }
-export const SupportedFieldTypeDetails = /*@__PURE__*/ S.suspend(() =>
+const SupportedFieldTypeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ v1: FieldTypeDetails }),
 ).annotate({
   identifier: "SupportedFieldTypeDetails",
@@ -2515,7 +2494,7 @@ export interface SourceFieldProperties {
   isQueryable?: boolean;
   isTimestampFieldForIncrementalQueries?: boolean;
 }
-export const SourceFieldProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceFieldProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isRetrievable: S.optional(S.Boolean),
     isQueryable: S.optional(S.Boolean),
@@ -2530,7 +2509,7 @@ export interface DestinationFieldProperties {
   isDefaultedOnCreate?: boolean;
   supportedWriteOperations?: WriteOperationType[];
 }
-export const DestinationFieldProperties = /*@__PURE__*/ S.suspend(() =>
+const DestinationFieldProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isCreatable: S.optional(S.Boolean),
     isNullable: S.optional(S.Boolean),
@@ -2555,7 +2534,7 @@ export interface ConnectorEntityField {
   destinationProperties?: DestinationFieldProperties;
   customProperties?: { [key: string]: string | undefined };
 }
-export const ConnectorEntityField = /*@__PURE__*/ S.suspend(() =>
+const ConnectorEntityField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     parentIdentifier: S.optional(S.String),
@@ -2571,17 +2550,17 @@ export const ConnectorEntityField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConnectorEntityField" }) as any as S.Schema<ConnectorEntityField>;
 export type ConnectorEntityFieldList = ConnectorEntityField[];
-export const ConnectorEntityFieldList = /*@__PURE__*/ S.Array(ConnectorEntityField);
+const ConnectorEntityFieldList = /*@__PURE__*/ S.Array(ConnectorEntityField);
 export interface DescribeConnectorEntityResponse {
   connectorEntityFields: ConnectorEntityField[];
 }
-export const DescribeConnectorEntityResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeConnectorEntityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectorEntityFields: ConnectorEntityFieldList }),
 ).annotate({
   identifier: "DescribeConnectorEntityResponse",
 }) as any as S.Schema<DescribeConnectorEntityResponse>;
 export type ConnectorProfileNameList = string[];
-export const ConnectorProfileNameList = ExecutionIds as any as S.Schema<ConnectorProfileNameList>;
+const ConnectorProfileNameList = ExecutionIds as any as S.Schema<ConnectorProfileNameList>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface DescribeConnectorProfilesRequest {
@@ -2591,7 +2570,7 @@ export interface DescribeConnectorProfilesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const DescribeConnectorProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeConnectorProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorProfileNames: S.optional(ConnectorProfileNameList),
     connectorType: S.optional(ConnectorType),
@@ -2612,7 +2591,7 @@ export const DescribeConnectorProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeConnectorProfilesRequest",
 }) as any as S.Schema<DescribeConnectorProfilesRequest>;
 export type PrivateConnectionProvisioningStatus = "FAILED" | "PENDING" | "CREATED" | (string & {});
-export const PrivateConnectionProvisioningStatus = S.String;
+const PrivateConnectionProvisioningStatus = S.String;
 
 export type PrivateConnectionProvisioningFailureMessage = string;
 export type PrivateConnectionProvisioningFailureCause =
@@ -2622,14 +2601,14 @@ export type PrivateConnectionProvisioningFailureCause =
   | "ACCESS_DENIED"
   | "VALIDATION"
   | (string & {});
-export const PrivateConnectionProvisioningFailureCause = S.String;
+const PrivateConnectionProvisioningFailureCause = S.String;
 
 export interface PrivateConnectionProvisioningState {
   status?: PrivateConnectionProvisioningStatus;
   failureMessage?: string;
   failureCause?: PrivateConnectionProvisioningFailureCause;
 }
-export const PrivateConnectionProvisioningState = /*@__PURE__*/ S.suspend(() =>
+const PrivateConnectionProvisioningState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateConnectionProvisioningStatus),
     failureMessage: S.optional(S.String),
@@ -2650,7 +2629,7 @@ export interface ConnectorProfile {
   lastUpdatedAt?: Date;
   privateConnectionProvisioningState?: PrivateConnectionProvisioningState;
 }
-export const ConnectorProfile = /*@__PURE__*/ S.suspend(() =>
+const ConnectorProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorProfileArn: S.optional(S.String),
     connectorProfileName: S.optional(S.String),
@@ -2665,12 +2644,12 @@ export const ConnectorProfile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConnectorProfile" }) as any as S.Schema<ConnectorProfile>;
 export type ConnectorProfileDetailList = ConnectorProfile[];
-export const ConnectorProfileDetailList = /*@__PURE__*/ S.Array(ConnectorProfile);
+const ConnectorProfileDetailList = /*@__PURE__*/ S.Array(ConnectorProfile);
 export interface DescribeConnectorProfilesResponse {
   connectorProfileDetails?: ConnectorProfile[];
   nextToken?: string;
 }
-export const DescribeConnectorProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeConnectorProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorProfileDetails: S.optional(ConnectorProfileDetailList),
     nextToken: S.optional(S.String),
@@ -2683,7 +2662,7 @@ export interface DescribeConnectorsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const DescribeConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorTypes: S.optional(ConnectorTypeList),
     maxResults: S.optional(S.Number),
@@ -2695,7 +2674,7 @@ export const DescribeConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeConnectorsRequest",
 }) as any as S.Schema<DescribeConnectorsRequest>;
 export type ConnectorConfigurationsMap = { [key in ConnectorType]?: ConnectorConfiguration };
-export const ConnectorConfigurationsMap = /*@__PURE__*/ S.Record(
+const ConnectorConfigurationsMap = /*@__PURE__*/ S.Record(
   ConnectorType,
   /*@__PURE__*/ ConnectorConfiguration.pipe(S.optional),
 );
@@ -2714,7 +2693,7 @@ export interface ConnectorDetail {
   connectorModes?: string[];
   supportedDataTransferTypes?: SupportedDataTransferType[];
 }
-export const ConnectorDetail = /*@__PURE__*/ S.suspend(() =>
+const ConnectorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorDescription: S.optional(S.String),
     connectorName: S.optional(S.String),
@@ -2731,13 +2710,13 @@ export const ConnectorDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConnectorDetail" }) as any as S.Schema<ConnectorDetail>;
 export type ConnectorList = ConnectorDetail[];
-export const ConnectorList = /*@__PURE__*/ S.Array(ConnectorDetail);
+const ConnectorList = /*@__PURE__*/ S.Array(ConnectorDetail);
 export interface DescribeConnectorsResponse {
   connectorConfigurations?: { [key: string]: ConnectorConfiguration | undefined };
   connectors?: ConnectorDetail[];
   nextToken?: string;
 }
-export const DescribeConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorConfigurations: S.optional(ConnectorConfigurationsMap),
     connectors: S.optional(ConnectorList),
@@ -2749,7 +2728,7 @@ export const DescribeConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeFlowRequest {
   flowName: string;
 }
-export const DescribeFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowName: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/describe-flow" }), svc, auth, proto, ver, rules),
   ),
@@ -2763,14 +2742,14 @@ export type ExecutionStatus =
   | "CancelStarted"
   | "Canceled"
   | (string & {});
-export const ExecutionStatus = S.String;
+const ExecutionStatus = S.String;
 
 export interface ExecutionDetails {
   mostRecentExecutionMessage?: string;
   mostRecentExecutionTime?: Date;
   mostRecentExecutionStatus?: ExecutionStatus;
 }
-export const ExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const ExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mostRecentExecutionMessage: S.optional(S.String),
     mostRecentExecutionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2780,14 +2759,14 @@ export const ExecutionDetails = /*@__PURE__*/ S.suspend(() =>
 export type CreatedBy = string;
 export type UpdatedBy = string;
 export type CatalogType = "GLUE" | (string & {});
-export const CatalogType = S.String;
+const CatalogType = S.String;
 
 export interface RegistrationOutput {
   message?: string;
   result?: string;
   status?: ExecutionStatus;
 }
-export const RegistrationOutput = /*@__PURE__*/ S.suspend(() =>
+const RegistrationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     result: S.optional(S.String),
@@ -2800,7 +2779,7 @@ export interface MetadataCatalogDetail {
   tableRegistrationOutput?: RegistrationOutput;
   partitionRegistrationOutput?: RegistrationOutput;
 }
-export const MetadataCatalogDetail = /*@__PURE__*/ S.suspend(() =>
+const MetadataCatalogDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogType: S.optional(CatalogType),
     tableName: S.optional(S.String),
@@ -2809,7 +2788,7 @@ export const MetadataCatalogDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataCatalogDetail" }) as any as S.Schema<MetadataCatalogDetail>;
 export type MetadataCatalogDetails = MetadataCatalogDetail[];
-export const MetadataCatalogDetails = /*@__PURE__*/ S.Array(MetadataCatalogDetail);
+const MetadataCatalogDetails = /*@__PURE__*/ S.Array(MetadataCatalogDetail);
 export interface DescribeFlowResponse {
   flowArn?: string;
   description?: string;
@@ -2831,7 +2810,7 @@ export interface DescribeFlowResponse {
   lastRunMetadataCatalogDetails?: MetadataCatalogDetail[];
   schemaVersion?: number;
 }
-export const DescribeFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowArn: S.optional(S.String),
     description: S.optional(S.String),
@@ -2859,7 +2838,7 @@ export interface DescribeFlowExecutionRecordsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const DescribeFlowExecutionRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeFlowExecutionRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowName: S.String,
     maxResults: S.optional(S.Number),
@@ -2882,7 +2861,7 @@ export interface ErrorInfo {
   putFailuresCount?: number;
   executionMessage?: string;
 }
-export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ putFailuresCount: S.optional(S.Number), executionMessage: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorInfo" }) as any as S.Schema<ErrorInfo>;
 export interface ExecutionResult {
@@ -2893,7 +2872,7 @@ export interface ExecutionResult {
   numParallelProcesses?: number;
   maxPageSize?: number;
 }
-export const ExecutionResult = /*@__PURE__*/ S.suspend(() =>
+const ExecutionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorInfo: S.optional(ErrorInfo),
     bytesProcessed: S.optional(S.Number),
@@ -2913,7 +2892,7 @@ export interface ExecutionRecord {
   dataPullEndTime?: Date;
   metadataCatalogDetails?: MetadataCatalogDetail[];
 }
-export const ExecutionRecord = /*@__PURE__*/ S.suspend(() =>
+const ExecutionRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionId: S.optional(S.String),
     executionStatus: S.optional(ExecutionStatus),
@@ -2926,12 +2905,12 @@ export const ExecutionRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExecutionRecord" }) as any as S.Schema<ExecutionRecord>;
 export type FlowExecutionList = ExecutionRecord[];
-export const FlowExecutionList = /*@__PURE__*/ S.Array(ExecutionRecord);
+const FlowExecutionList = /*@__PURE__*/ S.Array(ExecutionRecord);
 export interface DescribeFlowExecutionRecordsResponse {
   flowExecutions?: ExecutionRecord[];
   nextToken?: string;
 }
-export const DescribeFlowExecutionRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeFlowExecutionRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowExecutions: S.optional(FlowExecutionList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DescribeFlowExecutionRecordsResponse",
@@ -2946,7 +2925,7 @@ export interface ListConnectorEntitiesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListConnectorEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorProfileName: S.optional(S.String),
     connectorType: S.optional(ConnectorType),
@@ -2973,7 +2952,7 @@ export interface ConnectorEntity {
   label?: string;
   hasNestedEntities?: boolean;
 }
-export const ConnectorEntity = /*@__PURE__*/ S.suspend(() =>
+const ConnectorEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     label: S.optional(S.String),
@@ -2981,9 +2960,9 @@ export const ConnectorEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConnectorEntity" }) as any as S.Schema<ConnectorEntity>;
 export type ConnectorEntityList = ConnectorEntity[];
-export const ConnectorEntityList = /*@__PURE__*/ S.Array(ConnectorEntity);
+const ConnectorEntityList = /*@__PURE__*/ S.Array(ConnectorEntity);
 export type ConnectorEntityMap = { [key: string]: ConnectorEntity[] | undefined };
-export const ConnectorEntityMap = /*@__PURE__*/ S.Record(
+const ConnectorEntityMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ ConnectorEntityList.pipe(S.optional),
 );
@@ -2991,7 +2970,7 @@ export interface ListConnectorEntitiesResponse {
   connectorEntityMap: { [key: string]: ConnectorEntity[] | undefined };
   nextToken?: string;
 }
-export const ListConnectorEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectorEntityMap: ConnectorEntityMap, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListConnectorEntitiesResponse",
@@ -3000,7 +2979,7 @@ export interface ListConnectorsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/list-connectors" }), svc, auth, proto, ver, rules),
   ),
@@ -3009,14 +2988,14 @@ export interface ListConnectorsResponse {
   connectors?: ConnectorDetail[];
   nextToken?: string;
 }
-export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectors: S.optional(ConnectorList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListConnectorsResponse" }) as any as S.Schema<ListConnectorsResponse>;
 export interface ListFlowsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListFlowsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/list-flows" }), svc, auth, proto, ver, rules),
   ),
@@ -3038,7 +3017,7 @@ export interface FlowDefinition {
   tags?: { [key: string]: string | undefined };
   lastRunExecutionDetails?: ExecutionDetails;
 }
-export const FlowDefinition = /*@__PURE__*/ S.suspend(() =>
+const FlowDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowArn: S.optional(S.String),
     description: S.optional(S.String),
@@ -3058,18 +3037,18 @@ export const FlowDefinition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlowDefinition" }) as any as S.Schema<FlowDefinition>;
 export type FlowList = FlowDefinition[];
-export const FlowList = /*@__PURE__*/ S.Array(FlowDefinition);
+const FlowList = /*@__PURE__*/ S.Array(FlowDefinition);
 export interface ListFlowsResponse {
   flows?: FlowDefinition[];
   nextToken?: string;
 }
-export const ListFlowsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFlowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flows: S.optional(FlowList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListFlowsResponse" }) as any as S.Schema<ListFlowsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -3079,7 +3058,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -3091,7 +3070,7 @@ export interface RegisterConnectorRequest {
   connectorProvisioningConfig?: ConnectorProvisioningConfig;
   clientToken?: string;
 }
-export const RegisterConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorLabel: S.optional(S.String),
     description: S.optional(S.String),
@@ -3105,7 +3084,7 @@ export const RegisterConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterConnectorResponse {
   connectorArn?: string;
 }
-export const RegisterConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectorArn: S.optional(S.String) }),
 ).annotate({
   identifier: "RegisterConnectorResponse",
@@ -3117,7 +3096,7 @@ export interface ResetConnectorMetadataCacheRequest {
   entitiesPath?: string;
   apiVersion?: string;
 }
-export const ResetConnectorMetadataCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetConnectorMetadataCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorProfileName: S.optional(S.String),
     connectorType: S.optional(ConnectorType),
@@ -3138,13 +3117,13 @@ export const ResetConnectorMetadataCacheRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetConnectorMetadataCacheRequest",
 }) as any as S.Schema<ResetConnectorMetadataCacheRequest>;
 export interface ResetConnectorMetadataCacheResponse {}
-export const ResetConnectorMetadataCacheResponse =
+const ResetConnectorMetadataCacheResponse =
   AmplitudeConnectorProfileProperties as any as S.Schema<ResetConnectorMetadataCacheResponse>;
 export interface StartFlowRequest {
   flowName: string;
   clientToken?: string;
 }
-export const StartFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const StartFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowName: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -3155,7 +3134,7 @@ export interface StartFlowResponse {
   flowStatus?: FlowStatus;
   executionId?: string;
 }
-export const StartFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const StartFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowArn: S.optional(S.String),
     flowStatus: S.optional(FlowStatus),
@@ -3165,7 +3144,7 @@ export const StartFlowResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StopFlowRequest {
   flowName: string;
 }
-export const StopFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const StopFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowName: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/stop-flow" }), svc, auth, proto, ver, rules),
   ),
@@ -3174,24 +3153,23 @@ export interface StopFlowResponse {
   flowArn?: string;
   flowStatus?: FlowStatus;
 }
-export const StopFlowResponse = CreateFlowResponse as any as S.Schema<StopFlowResponse>;
+const StopFlowResponse = CreateFlowResponse as any as S.Schema<StopFlowResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteConnectorProfileResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteConnectorProfileResponse as any as S.Schema<TagResourceResponse>;
 export interface UnregisterConnectorRequest {
   connectorLabel: string;
   forceDelete?: boolean;
 }
-export const UnregisterConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const UnregisterConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ connectorLabel: S.String, forceDelete: S.optional(S.Boolean) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/unregister-connector" }), svc, auth, proto, ver, rules),
   ),
@@ -3199,15 +3177,15 @@ export const UnregisterConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnregisterConnectorRequest",
 }) as any as S.Schema<UnregisterConnectorRequest>;
 export interface UnregisterConnectorResponse {}
-export const UnregisterConnectorResponse =
+const UnregisterConnectorResponse =
   DeleteConnectorProfileResponse as any as S.Schema<UnregisterConnectorResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = ExecutionIds as any as S.Schema<TagKeyList>;
+const TagKeyList = ExecutionIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -3216,7 +3194,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
+const UntagResourceResponse =
   DeleteConnectorProfileResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateConnectorProfileRequest {
   connectorProfileName: string;
@@ -3224,7 +3202,7 @@ export interface UpdateConnectorProfileRequest {
   connectorProfileConfig: ConnectorProfileConfig;
   clientToken?: string;
 }
-export const UpdateConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorProfileName: S.String,
     connectionMode: ConnectionMode,
@@ -3246,7 +3224,7 @@ export const UpdateConnectorProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConnectorProfileResponse {
   connectorProfileArn?: string;
 }
-export const UpdateConnectorProfileResponse =
+const UpdateConnectorProfileResponse =
   CreateConnectorProfileResponse as any as S.Schema<UpdateConnectorProfileResponse>;
 export interface UpdateConnectorRegistrationRequest {
   connectorLabel: string;
@@ -3254,7 +3232,7 @@ export interface UpdateConnectorRegistrationRequest {
   connectorProvisioningConfig?: ConnectorProvisioningConfig;
   clientToken?: string;
 }
-export const UpdateConnectorRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectorRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorLabel: S.String,
     description: S.optional(S.String),
@@ -3276,7 +3254,7 @@ export const UpdateConnectorRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateConnectorRegistrationResponse {
   connectorArn?: string;
 }
-export const UpdateConnectorRegistrationResponse =
+const UpdateConnectorRegistrationResponse =
   RegisterConnectorResponse as any as S.Schema<UpdateConnectorRegistrationResponse>;
 export interface UpdateFlowRequest {
   flowName: string;
@@ -3288,7 +3266,7 @@ export interface UpdateFlowRequest {
   metadataCatalogConfig?: MetadataCatalogConfig;
   clientToken?: string;
 }
-export const UpdateFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowName: S.String,
     description: S.optional(S.String),
@@ -3303,7 +3281,7 @@ export const UpdateFlowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFlowResponse {
   flowStatus?: FlowStatus;
 }
-export const UpdateFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowStatus: S.optional(FlowStatus) }),
 ).annotate({ identifier: "UpdateFlowResponse" }) as any as S.Schema<UpdateFlowResponse>;
 export type ErrorMessage = string;

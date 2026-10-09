@@ -63,7 +63,7 @@ export interface CreateCashbackRuleRequest {
   /** Client-generated key for replaying the same request safely for 24 hours. */
   idempotency_key?: string;
 }
-export const CreateCashbackRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCashbackRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     expires_at: S.optional(S.NullOr(S.String)),
@@ -104,7 +104,7 @@ export interface CashbackRule {
   /** When the rule was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const CashbackRule = /*@__PURE__*/ S.suspend(() =>
+const CashbackRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     description: S.NullOr(S.String),
@@ -122,10 +122,10 @@ export const CashbackRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CashbackRule" }) as any as S.Schema<CashbackRule>;
 
 export type ListCashbackRulesRequestOrder = "created_at";
-export const ListCashbackRulesRequestOrder = S.String;
+const ListCashbackRulesRequestOrder = S.String;
 
 export type ListCashbackRulesRequestDirection = "asc" | "desc";
-export const ListCashbackRulesRequestDirection = S.String;
+const ListCashbackRulesRequestDirection = S.String;
 
 export interface ListCashbackRulesRequest {
   /** Number of results to return from the start of the range. */
@@ -141,7 +141,7 @@ export interface ListCashbackRulesRequest {
   /** Sort direction. Defaults to desc. */
   direction?: ListCashbackRulesRequestDirection | (string & {});
 }
-export const ListCashbackRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCashbackRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.optional(S.Number.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -153,7 +153,7 @@ export const ListCashbackRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCashbackRulesRequest" }) as any as S.Schema<ListCashbackRulesRequest>;
 
 export type ListCashbackRulesResponseDataList = Array<CashbackRule>;
-export const ListCashbackRulesResponseDataList = /*@__PURE__*/ S.Array(
+const ListCashbackRulesResponseDataList = /*@__PURE__*/ S.Array(
   CashbackRule,
 ) as any as S.Schema<ListCashbackRulesResponseDataList>;
 
@@ -163,7 +163,7 @@ export interface ListCashbackRulesResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListCashbackRulesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListCashbackRulesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -178,7 +178,7 @@ export interface ListCashbackRulesResponse {
   data: ListCashbackRulesResponseDataList;
   page_info: ListCashbackRulesResponsePageInfo;
 }
-export const ListCashbackRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCashbackRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCashbackRulesResponseDataList,
     page_info: ListCashbackRulesResponsePageInfo,
@@ -197,7 +197,7 @@ export interface PayoutCashbackRulesRequest {
   /** Client-generated key for replaying the same request safely for 24 hours. */
   idempotency_key?: string;
 }
-export const PayoutCashbackRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PayoutCashbackRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.NullOr(S.String)),
     cashback_rule_id: S.optional(S.NullOr(S.String)),
@@ -210,7 +210,7 @@ export const PayoutCashbackRulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request status. `processing` means background processing was queued, not that payment completed. `failed` means the queue rejected the request. Subsequent transaction failures retry automatically. */
 export type CashbackPayoutStatus = "processing" | "failed";
-export const CashbackPayoutStatus = S.String;
+const CashbackPayoutStatus = S.String;
 
 export interface CashbackPayout {
   /** Connected account filter from the request, prefixed `biz_`. Omitted when not supplied. */
@@ -222,7 +222,7 @@ export interface CashbackPayout {
   /** Card transaction filter from the request, prefixed `citx_`. Omitted when not supplied. */
   transaction_id?: string | null;
 }
-export const CashbackPayout = /*@__PURE__*/ S.suspend(() =>
+const CashbackPayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.NullOr(S.String)),
     cashback_rule_id: S.optional(S.NullOr(S.String)),
@@ -243,7 +243,7 @@ export interface UpdateCashbackRuleRequest {
   /** Raw merchant name reported by the card provider. Set null to match any merchant name. Supplied names must contain a non-whitespace character and match together with any MCC filter. Clearing both filters requires an existing scoped_account_id. */
   merchant_name?: string | null;
 }
-export const UpdateCashbackRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCashbackRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),

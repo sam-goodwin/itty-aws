@@ -46,7 +46,7 @@ export type HogFunctionTypeEnum =
   | "transformation"
   | "transformation_log"
   | "legacy_destination";
-export const HogFunctionTypeEnum = S.String;
+const HogFunctionTypeEnum = S.String;
 
 /** * `string` - string * `number` - number * `boolean` - boolean * `dictionary` - dictionary * `choice` - choice * `json` - json * `integration` - integration * `integration_multi` - integration_multi * `integration_field` - integration_field * `email` - email * `native_email` - native_email * `posthog_assignee` - posthog_assignee * `posthog_ticket_tags` - posthog_ticket_tags * `posthog_business_hours` - posthog_business_hours * `non_failure_status_codes` - non_failure_status_codes * `customer_analytics_account_properties` - customer_analytics_account_properties * `customer_analytics_account_relationships` - customer_analytics_account_relationships * `task_model` - task_model * `task_repository` - task_repository * `task_mcp_installations` - task_mcp_installations * `signals_scout` - signals_scout * `task_skills` - task_skills */
 export type InputsSchemaItemTypeEnum =
@@ -72,24 +72,22 @@ export type InputsSchemaItemTypeEnum =
   | "task_mcp_installations"
   | "signals_scout"
   | "task_skills";
-export const InputsSchemaItemTypeEnum = S.String;
+const InputsSchemaItemTypeEnum = S.String;
 
 export type InputsSchemaItemChoicesItemMap = { [key: string]: unknown | undefined };
-export const InputsSchemaItemChoicesItemMap = /*@__PURE__*/ S.Record(
+const InputsSchemaItemChoicesItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<InputsSchemaItemChoicesItemMap>;
 
 export type InputsSchemaItemChoicesList = Array<InputsSchemaItemChoicesItemMap>;
-export const InputsSchemaItemChoicesList = /*@__PURE__*/ S.Array(
+const InputsSchemaItemChoicesList = /*@__PURE__*/ S.Array(
   InputsSchemaItemChoicesItemMap,
 ) as any as S.Schema<InputsSchemaItemChoicesList>;
 
 export type InputsSchemaItemTemplatingCase1 = "hog" | "liquid";
-export const InputsSchemaItemTemplatingCase1 = S.String;
-
 export type InputsSchemaItemTemplating = boolean | InputsSchemaItemTemplatingCase1;
-export const InputsSchemaItemTemplating = S.Unknown as any as S.Schema<InputsSchemaItemTemplating>;
+const InputsSchemaItemTemplating = S.Unknown as any as S.Schema<InputsSchemaItemTemplating>;
 
 export interface InputsSchemaItem {
   type?: InputsSchemaItemTypeEnum | (string & {});
@@ -109,7 +107,7 @@ export interface InputsSchemaItem {
   requiredScopes?: string;
   templating?: InputsSchemaItemTemplating;
 }
-export const InputsSchemaItem = /*@__PURE__*/ S.suspend(() =>
+const InputsSchemaItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(InputsSchemaItemTypeEnum),
     key: S.optional(S.String),
@@ -132,19 +130,19 @@ export const InputsSchemaItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Schema defining the configurable input parameters for this function. */
 export type CreateHogFunctionRequestInputsSchemaList = Array<InputsSchemaItem>;
-export const CreateHogFunctionRequestInputsSchemaList = /*@__PURE__*/ S.Array(
+const CreateHogFunctionRequestInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<CreateHogFunctionRequestInputsSchemaList>;
 
 /** * `hog` - hog * `liquid` - liquid */
 export type HogFunctionTemplatingEnum = "hog" | "liquid";
-export const HogFunctionTemplatingEnum = S.String;
+const HogFunctionTemplatingEnum = S.String;
 
 export interface InputsItemInput {
   value?: unknown;
   templating?: HogFunctionTemplatingEnum | (string & {});
 }
-export const InputsItemInput = /*@__PURE__*/ S.suspend(() =>
+const InputsItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Unknown),
     templating: S.optional(HogFunctionTemplatingEnum),
@@ -153,7 +151,7 @@ export const InputsItemInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Values for each input defined in inputs_schema. */
 export type CreateHogFunctionRequestInputsMap = { [key: string]: InputsItemInput | undefined };
-export const CreateHogFunctionRequestInputsMap = /*@__PURE__*/ S.Record(
+const CreateHogFunctionRequestInputsMap = /*@__PURE__*/ S.Record(
   S.String,
   InputsItemInput,
 ) as any as S.Schema<CreateHogFunctionRequestInputsMap>;
@@ -165,38 +163,26 @@ export type HogFunctionFiltersSourceEnum =
   | "person-updates"
   | "data-warehouse-table"
   | "data-warehouse-view";
-export const HogFunctionFiltersSourceEnum = S.String;
+const HogFunctionFiltersSourceEnum = S.String;
 
 export type HogFunctionFiltersActionsItemMap = { [key: string]: unknown | undefined };
-export const HogFunctionFiltersActionsItemMap =
-  InputsSchemaItemChoicesItemMap as any as S.Schema<HogFunctionFiltersActionsItemMap>;
-
 export type HogFunctionFiltersActionsList = Array<HogFunctionFiltersActionsItemMap>;
-export const HogFunctionFiltersActionsList =
+const HogFunctionFiltersActionsList =
   InputsSchemaItemChoicesList as any as S.Schema<HogFunctionFiltersActionsList>;
 
 export type HogFunctionFiltersEventsItemMap = { [key: string]: unknown | undefined };
-export const HogFunctionFiltersEventsItemMap =
-  InputsSchemaItemChoicesItemMap as any as S.Schema<HogFunctionFiltersEventsItemMap>;
-
 export type HogFunctionFiltersEventsList = Array<HogFunctionFiltersEventsItemMap>;
-export const HogFunctionFiltersEventsList =
+const HogFunctionFiltersEventsList =
   InputsSchemaItemChoicesList as any as S.Schema<HogFunctionFiltersEventsList>;
 
 export type HogFunctionFiltersDataWarehouseItemMap = { [key: string]: unknown | undefined };
-export const HogFunctionFiltersDataWarehouseItemMap =
-  InputsSchemaItemChoicesItemMap as any as S.Schema<HogFunctionFiltersDataWarehouseItemMap>;
-
 export type HogFunctionFiltersDataWarehouseList = Array<HogFunctionFiltersDataWarehouseItemMap>;
-export const HogFunctionFiltersDataWarehouseList =
+const HogFunctionFiltersDataWarehouseList =
   InputsSchemaItemChoicesList as any as S.Schema<HogFunctionFiltersDataWarehouseList>;
 
 export type HogFunctionFiltersPropertiesItemMap = { [key: string]: unknown | undefined };
-export const HogFunctionFiltersPropertiesItemMap =
-  InputsSchemaItemChoicesItemMap as any as S.Schema<HogFunctionFiltersPropertiesItemMap>;
-
 export type HogFunctionFiltersPropertiesList = Array<HogFunctionFiltersPropertiesItemMap>;
-export const HogFunctionFiltersPropertiesList =
+const HogFunctionFiltersPropertiesList =
   InputsSchemaItemChoicesList as any as S.Schema<HogFunctionFiltersPropertiesList>;
 
 export interface HogFunctionFilters {
@@ -211,7 +197,7 @@ export interface HogFunctionFilters {
   bytecode_error?: string;
   bytecode_contract?: string;
 }
-export const HogFunctionFilters = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(HogFunctionFiltersSourceEnum),
     actions: S.optional(HogFunctionFiltersActionsList),
@@ -236,7 +222,7 @@ export interface HogFunctionMasking {
   /** Compiled bytecode for the hash expression. Auto-generated. */
   bytecode?: unknown;
 }
-export const HogFunctionMasking = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionMasking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttl: S.optional(S.Number),
     threshold: S.optional(S.NullOr(S.Number)),
@@ -246,11 +232,11 @@ export const HogFunctionMasking = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogFunctionMasking" }) as any as S.Schema<HogFunctionMasking>;
 
 export type MappingsInputInputsSchemaList = Array<InputsSchemaItem>;
-export const MappingsInputInputsSchemaList =
+const MappingsInputInputsSchemaList =
   CreateHogFunctionRequestInputsSchemaList as any as S.Schema<MappingsInputInputsSchemaList>;
 
 export type MappingsInputInputsMap = { [key: string]: InputsItemInput | undefined };
-export const MappingsInputInputsMap =
+const MappingsInputInputsMap =
   CreateHogFunctionRequestInputsMap as any as S.Schema<MappingsInputInputsMap>;
 
 export interface MappingsInput {
@@ -259,7 +245,7 @@ export interface MappingsInput {
   inputs?: MappingsInputInputsMap;
   filters?: HogFunctionFilters;
 }
-export const MappingsInput = /*@__PURE__*/ S.suspend(() =>
+const MappingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     inputs_schema: S.optional(MappingsInputInputsSchemaList),
@@ -270,7 +256,7 @@ export const MappingsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
 export type CreateHogFunctionRequestMappingsList = Array<MappingsInput>;
-export const CreateHogFunctionRequestMappingsList = /*@__PURE__*/ S.Array(
+const CreateHogFunctionRequestMappingsList = /*@__PURE__*/ S.Array(
   MappingsInput,
 ) as any as S.Schema<CreateHogFunctionRequestMappingsList>;
 
@@ -309,7 +295,7 @@ export interface CreateHogFunctionRequest {
   /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
   base_updated_at?: string;
 }
-export const CreateHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     type: S.optional(S.NullOr(HogFunctionTypeEnum)),
@@ -332,7 +318,7 @@ export const CreateHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateHogFunctionRequest" }) as any as S.Schema<CreateHogFunctionRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   InputsSchemaItemChoicesItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -346,14 +332,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -366,7 +347,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -382,11 +363,11 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionOutputInputsSchemaList = Array<InputsSchemaItem>;
-export const HogFunctionOutputInputsSchemaList =
+const HogFunctionOutputInputsSchemaList =
   CreateHogFunctionRequestInputsSchemaList as any as S.Schema<HogFunctionOutputInputsSchemaList>;
 
 export type InputsItemBytecodeList = Array<unknown>;
-export const InputsItemBytecodeList = /*@__PURE__*/ S.Array(
+const InputsItemBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InputsItemBytecodeList>;
 
@@ -398,7 +379,7 @@ export interface InputsItem {
   order?: number;
   transpiled?: unknown;
 }
-export const InputsItem = /*@__PURE__*/ S.suspend(() =>
+const InputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Unknown),
     templating: S.optional(HogFunctionTemplatingEnum),
@@ -411,17 +392,17 @@ export const InputsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Values for each input defined in inputs_schema. */
 export type HogFunctionOutputInputsMap = { [key: string]: InputsItem | undefined };
-export const HogFunctionOutputInputsMap = /*@__PURE__*/ S.Record(
+const HogFunctionOutputInputsMap = /*@__PURE__*/ S.Record(
   S.String,
   InputsItem,
 ) as any as S.Schema<HogFunctionOutputInputsMap>;
 
 export type MappingsInputsSchemaList = Array<InputsSchemaItem>;
-export const MappingsInputsSchemaList =
+const MappingsInputsSchemaList =
   CreateHogFunctionRequestInputsSchemaList as any as S.Schema<MappingsInputsSchemaList>;
 
 export type MappingsInputsMap = { [key: string]: InputsItem | undefined };
-export const MappingsInputsMap = HogFunctionOutputInputsMap as any as S.Schema<MappingsInputsMap>;
+const MappingsInputsMap = HogFunctionOutputInputsMap as any as S.Schema<MappingsInputsMap>;
 
 export interface Mappings {
   name?: string;
@@ -429,7 +410,7 @@ export interface Mappings {
   inputs?: MappingsInputsMap;
   filters?: HogFunctionFilters;
 }
-export const Mappings = /*@__PURE__*/ S.suspend(() =>
+const Mappings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     inputs_schema: S.optional(MappingsInputsSchemaList),
@@ -440,7 +421,7 @@ export const Mappings = /*@__PURE__*/ S.suspend(() =>
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
 export type HogFunctionOutputMappingsList = Array<Mappings>;
-export const HogFunctionOutputMappingsList = /*@__PURE__*/ S.Array(
+const HogFunctionOutputMappingsList = /*@__PURE__*/ S.Array(
   Mappings,
 ) as any as S.Schema<HogFunctionOutputMappingsList>;
 
@@ -458,7 +439,7 @@ export interface HogFunctionMappingTemplate {
   /** Additional input schema fields specific to this mapping. */
   inputs_schema?: unknown;
 }
-export const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     include_by_default: S.optional(S.NullOr(S.Boolean)),
@@ -473,7 +454,7 @@ export const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** Pre-defined mapping configurations for destination templates. */
 export type HogFunctionTemplateMappingTemplatesList = Array<HogFunctionMappingTemplate>;
-export const HogFunctionTemplateMappingTemplatesList = /*@__PURE__*/ S.Array(
+const HogFunctionTemplateMappingTemplatesList = /*@__PURE__*/ S.Array(
   HogFunctionMappingTemplate,
 ) as any as S.Schema<HogFunctionTemplateMappingTemplatesList>;
 
@@ -507,7 +488,7 @@ export interface HogFunctionTemplate {
   /** Pre-defined mapping configurations for destination templates. */
   mapping_templates?: HogFunctionTemplateMappingTemplatesList | null;
 }
-export const HogFunctionTemplate = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -528,13 +509,13 @@ export const HogFunctionTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** * `0` - 0 * `1` - 1 * `2` - 2 * `3` - 3 * `11` - 11 * `12` - 12 */
 export type HogFunctionStatusStateEnum = 0 | 1 | 2 | 3 | 11 | 12;
-export const HogFunctionStatusStateEnum = S.Number;
+const HogFunctionStatusStateEnum = S.Number;
 
 export interface HogFunctionStatus {
   state?: HogFunctionStatusStateEnum;
   tokens?: number;
 }
-export const HogFunctionStatus = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(HogFunctionStatusStateEnum),
     tokens: S.optional(S.Number),
@@ -542,7 +523,7 @@ export const HogFunctionStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogFunctionStatus" }) as any as S.Schema<HogFunctionStatus>;
 
 export type SearchMatchTypeEnum = "exact" | "similar";
-export const SearchMatchTypeEnum = S.String;
+const SearchMatchTypeEnum = S.String;
 
 export interface HogFunctionOutput {
   id?: string;
@@ -587,7 +568,7 @@ export interface HogFunctionOutput {
   /** When config was last staged for review, or null when nothing is staged. */
   draft_updated_at?: string | null;
 }
-export const HogFunctionOutput = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.NullOr(HogFunctionTypeEnum)),
@@ -623,7 +604,7 @@ export interface CreateHogFunctionsDiscardDraftRequest {
   /** A UUID string identifying this hog function. */
   id: string;
 }
-export const CreateHogFunctionsDiscardDraftRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHogFunctionsDiscardDraftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -640,17 +621,17 @@ export const CreateHogFunctionsDiscardDraftRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionInputInputsSchemaList = Array<InputsSchemaItem>;
-export const HogFunctionInputInputsSchemaList =
+const HogFunctionInputInputsSchemaList =
   CreateHogFunctionRequestInputsSchemaList as any as S.Schema<HogFunctionInputInputsSchemaList>;
 
 /** Values for each input defined in inputs_schema. */
 export type HogFunctionInputInputsMap = { [key: string]: InputsItemInput | undefined };
-export const HogFunctionInputInputsMap =
+const HogFunctionInputInputsMap =
   CreateHogFunctionRequestInputsMap as any as S.Schema<HogFunctionInputInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
 export type HogFunctionInputMappingsList = Array<MappingsInput>;
-export const HogFunctionInputMappingsList =
+const HogFunctionInputMappingsList =
   CreateHogFunctionRequestMappingsList as any as S.Schema<HogFunctionInputMappingsList>;
 
 export interface HogFunctionInput {
@@ -686,7 +667,7 @@ export interface HogFunctionInput {
   /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
   base_updated_at?: string;
 }
-export const HogFunctionInput = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.NullOr(HogFunctionTypeEnum)),
     name: S.optional(S.NullOr(S.String)),
@@ -709,14 +690,14 @@ export const HogFunctionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Mock global variables available during test invocation. */
 export type CreateHogFunctionsInvocationRequestGlobalsMap = { [key: string]: unknown | undefined };
-export const CreateHogFunctionsInvocationRequestGlobalsMap =
+const CreateHogFunctionsInvocationRequestGlobalsMap =
   InputsSchemaItemChoicesItemMap as any as S.Schema<CreateHogFunctionsInvocationRequestGlobalsMap>;
 
 /** Mock ClickHouse event data to test the function with. */
 export type CreateHogFunctionsInvocationRequestClickhouseEventMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateHogFunctionsInvocationRequestClickhouseEventMap =
+const CreateHogFunctionsInvocationRequestClickhouseEventMap =
   InputsSchemaItemChoicesItemMap as any as S.Schema<CreateHogFunctionsInvocationRequestClickhouseEventMap>;
 
 export interface CreateHogFunctionsInvocationRequest {
@@ -737,7 +718,7 @@ export interface CreateHogFunctionsInvocationRequest {
   /** Optional invocation ID for correlation. */
   invocation_id?: string | null;
 }
-export const CreateHogFunctionsInvocationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHogFunctionsInvocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -760,7 +741,7 @@ export const CreateHogFunctionsInvocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Execution logs from the test invocation. */
 export type HogFunctionInvocationOutputLogsList = Array<unknown>;
-export const HogFunctionInvocationOutputLogsList =
+const HogFunctionInvocationOutputLogsList =
   InputsItemBytecodeList as any as S.Schema<HogFunctionInvocationOutputLogsList>;
 
 export interface HogFunctionInvocationOutput {
@@ -771,7 +752,7 @@ export interface HogFunctionInvocationOutput {
   /** Optional invocation ID for correlation. */
   invocation_id?: string | null;
 }
-export const HogFunctionInvocationOutput = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionInvocationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     logs: S.optional(HogFunctionInvocationOutputLogsList),
@@ -783,25 +764,25 @@ export const HogFunctionInvocationOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** * `running` - running * `succeeded` - succeeded * `failed` - failed * `canceled` - canceled */
 export type HogInvocationRerunFilterStatusEnum = "running" | "succeeded" | "failed" | "canceled";
-export const HogInvocationRerunFilterStatusEnum = S.String;
+const HogInvocationRerunFilterStatusEnum = S.String;
 
 /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
 export type HogInvocationRerunFilterStatusList = Array<
   HogInvocationRerunFilterStatusEnum | (string & {})
 >;
-export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
+const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
   HogInvocationRerunFilterStatusEnum,
 ) as any as S.Schema<HogInvocationRerunFilterStatusList>;
 
 /** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
 export type HogInvocationRerunFilterErrorKindList = Array<string>;
-export const HogInvocationRerunFilterErrorKindList = /*@__PURE__*/ S.Array(
+const HogInvocationRerunFilterErrorKindList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogInvocationRerunFilterErrorKindList>;
 
 /** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
 export type HogInvocationRerunFilterInvocationIdsList = Array<string>;
-export const HogInvocationRerunFilterInvocationIdsList =
+const HogInvocationRerunFilterInvocationIdsList =
   HogInvocationRerunFilterErrorKindList as any as S.Schema<HogInvocationRerunFilterInvocationIdsList>;
 
 /** Filter shape for the rerun endpoint. `window_start`/`window_end` are required. */
@@ -823,7 +804,7 @@ export interface HogInvocationRerunFilter {
   /** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
   invocation_ids?: HogInvocationRerunFilterInvocationIdsList;
 }
-export const HogInvocationRerunFilter = /*@__PURE__*/ S.suspend(() =>
+const HogInvocationRerunFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_start: S.String,
     window_end: S.String,
@@ -844,7 +825,7 @@ export interface CreateHogFunctionsRerunRequest {
   /** Required. `window_start` / `window_end` pin the query to a small set of date partitions on the `hog_invocation_results` table. Optional `invocation_ids` restricts to specific invocations within that window. */
   filter: HogInvocationRerunFilter;
 }
-export const CreateHogFunctionsRerunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHogFunctionsRerunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -869,7 +850,7 @@ export interface HogInvocationRerunResponse {
   /** Always 0 -- rerun runs asynchronously. Kept for response shape stability. */
   skipped_count: number;
 }
-export const HogInvocationRerunResponse = /*@__PURE__*/ S.suspend(() =>
+const HogInvocationRerunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rerun_job_id: S.String,
     queued_count: S.Number,
@@ -885,7 +866,7 @@ export interface GetHogFunctionRequest {
   /** A UUID string identifying this hog function. */
   id: string;
 }
-export const GetHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -898,7 +879,7 @@ export interface GetHogFunctionsIconRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetHogFunctionsIconRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionsIconRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -909,7 +890,7 @@ export const GetHogFunctionsIconRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHogFunctionsIconRequest>;
 
 export interface GetHogFunctionsIconResponse {}
-export const GetHogFunctionsIconResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetHogFunctionsIconResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetHogFunctionsIconResponse",
 }) as any as S.Schema<GetHogFunctionsIconResponse>;
 
@@ -917,7 +898,7 @@ export interface GetHogFunctionsIconRequest2 {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetHogFunctionsIconRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionsIconRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -928,7 +909,7 @@ export const GetHogFunctionsIconRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHogFunctionsIconRequest2>;
 
 export interface GetHogFunctionsIcon2Response {}
-export const GetHogFunctionsIcon2Response =
+const GetHogFunctionsIcon2Response =
   GetHogFunctionsIconResponse as any as S.Schema<GetHogFunctionsIcon2Response>;
 
 export interface GetHogFunctionsLogRequest {
@@ -949,7 +930,7 @@ export interface GetHogFunctionsLogRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
-export const GetHogFunctionsLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionsLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -971,14 +952,14 @@ export const GetHogFunctionsLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHogFunctionsLogRequest>;
 
 export interface GetHogFunctionsLogResponse {}
-export const GetHogFunctionsLogResponse =
+const GetHogFunctionsLogResponse =
   GetHogFunctionsIconResponse as any as S.Schema<GetHogFunctionsLogResponse>;
 
 export interface GetHogFunctionsMaskedSecretRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetHogFunctionsMaskedSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionsMaskedSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -994,12 +975,12 @@ export const GetHogFunctionsMaskedSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Keys of the live secret inputs to enter again. Only keys are returned, never values. */
 export type HogFunctionMaskedSecretInputKeysList = Array<string>;
-export const HogFunctionMaskedSecretInputKeysList =
+const HogFunctionMaskedSecretInputKeysList =
   HogInvocationRerunFilterErrorKindList as any as S.Schema<HogFunctionMaskedSecretInputKeysList>;
 
 /** Keys of the staged draft's secret inputs to enter again. Only keys are returned. */
 export type HogFunctionMaskedSecretDraftInputKeysList = Array<string>;
-export const HogFunctionMaskedSecretDraftInputKeysList =
+const HogFunctionMaskedSecretDraftInputKeysList =
   HogInvocationRerunFilterErrorKindList as any as S.Schema<HogFunctionMaskedSecretDraftInputKeysList>;
 
 export interface HogFunctionMaskedSecret {
@@ -1016,7 +997,7 @@ export interface HogFunctionMaskedSecret {
   /** Keys of the staged draft's secret inputs to enter again. Only keys are returned. */
   draft_input_keys: HogFunctionMaskedSecretDraftInputKeysList;
 }
-export const HogFunctionMaskedSecret = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionMaskedSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1028,22 +1009,22 @@ export const HogFunctionMaskedSecret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogFunctionMaskedSecret" }) as any as S.Schema<HogFunctionMaskedSecret>;
 
 export type GetHogFunctionsMaskedSecretResponseBodyList = Array<HogFunctionMaskedSecret>;
-export const GetHogFunctionsMaskedSecretResponseBodyList = /*@__PURE__*/ S.Array(
+const GetHogFunctionsMaskedSecretResponseBodyList = /*@__PURE__*/ S.Array(
   HogFunctionMaskedSecret,
 ) as any as S.Schema<GetHogFunctionsMaskedSecretResponseBodyList>;
 
 export type GetHogFunctionsMaskedSecretResponse = GetHogFunctionsMaskedSecretResponseBodyList;
-export const GetHogFunctionsMaskedSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionsMaskedSecretResponse = /*@__PURE__*/ S.suspend(() =>
   GetHogFunctionsMaskedSecretResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetHogFunctionsMaskedSecretResponse",
 }) as any as S.Schema<GetHogFunctionsMaskedSecretResponse>;
 
 export type GetHogFunctionsMetricsRequestBreakdownBy = "name" | "kind";
-export const GetHogFunctionsMetricsRequestBreakdownBy = S.String;
+const GetHogFunctionsMetricsRequestBreakdownBy = S.String;
 
 export type GetHogFunctionsMetricsRequestInterval = "hour" | "day" | "week";
-export const GetHogFunctionsMetricsRequestInterval = S.String;
+const GetHogFunctionsMetricsRequestInterval = S.String;
 
 export interface GetHogFunctionsMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1065,7 +1046,7 @@ export interface GetHogFunctionsMetricsRequest {
   /** Comma-separated metric names to filter by. */
   name?: string;
 }
-export const GetHogFunctionsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1088,11 +1069,11 @@ export const GetHogFunctionsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHogFunctionsMetricsRequest>;
 
 export type AppMetricsResponseLabelsList = Array<string>;
-export const AppMetricsResponseLabelsList =
+const AppMetricsResponseLabelsList =
   HogInvocationRerunFilterErrorKindList as any as S.Schema<AppMetricsResponseLabelsList>;
 
 export type AppMetricSeriesValuesList = Array<number>;
-export const AppMetricSeriesValuesList = /*@__PURE__*/ S.Array(
+const AppMetricSeriesValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AppMetricSeriesValuesList>;
 
@@ -1100,7 +1081,7 @@ export interface AppMetricSeries {
   name?: string;
   values?: AppMetricSeriesValuesList;
 }
-export const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
+const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     values: S.optional(AppMetricSeriesValuesList),
@@ -1108,7 +1089,7 @@ export const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppMetricSeries" }) as any as S.Schema<AppMetricSeries>;
 
 export type AppMetricsResponseSeriesList = Array<AppMetricSeries>;
-export const AppMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
+const AppMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
   AppMetricSeries,
 ) as any as S.Schema<AppMetricsResponseSeriesList>;
 
@@ -1116,7 +1097,7 @@ export interface AppMetricsResponse {
   labels?: AppMetricsResponseLabelsList;
   series?: AppMetricsResponseSeriesList;
 }
-export const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(AppMetricsResponseLabelsList),
     series: S.optional(AppMetricsResponseSeriesList),
@@ -1124,10 +1105,10 @@ export const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppMetricsResponse" }) as any as S.Schema<AppMetricsResponse>;
 
 export type GetHogFunctionsMetricsTotalRequestBreakdownBy = "name" | "kind";
-export const GetHogFunctionsMetricsTotalRequestBreakdownBy = S.String;
+const GetHogFunctionsMetricsTotalRequestBreakdownBy = S.String;
 
 export type GetHogFunctionsMetricsTotalRequestInterval = "hour" | "day" | "week";
-export const GetHogFunctionsMetricsTotalRequestInterval = S.String;
+const GetHogFunctionsMetricsTotalRequestInterval = S.String;
 
 export interface GetHogFunctionsMetricsTotalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1149,7 +1130,7 @@ export interface GetHogFunctionsMetricsTotalRequest {
   /** Comma-separated metric names to filter by. */
   name?: string;
 }
-export const GetHogFunctionsMetricsTotalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionsMetricsTotalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1172,7 +1153,7 @@ export const GetHogFunctionsMetricsTotalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetHogFunctionsMetricsTotalRequest>;
 
 export type AppMetricsTotalsResponseTotalsMap = { [key: string]: number | undefined };
-export const AppMetricsTotalsResponseTotalsMap = /*@__PURE__*/ S.Record(
+const AppMetricsTotalsResponseTotalsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<AppMetricsTotalsResponseTotalsMap>;
@@ -1180,7 +1161,7 @@ export const AppMetricsTotalsResponseTotalsMap = /*@__PURE__*/ S.Record(
 export interface AppMetricsTotalsResponse {
   totals?: AppMetricsTotalsResponseTotalsMap;
 }
-export const AppMetricsTotalsResponse = /*@__PURE__*/ S.suspend(() =>
+const AppMetricsTotalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totals: S.optional(AppMetricsTotalsResponseTotalsMap),
   }),
@@ -1194,7 +1175,7 @@ export interface GetHogFunctionsRevisionRequest {
   /** Function version to fetch. */
   version: number;
 }
-export const GetHogFunctionsRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionsRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1218,7 +1199,7 @@ export interface HogFunctionRevision {
   /** Full snapshot of the function's config fields (hog, inputs_schema, inputs, filters, mappings, masking) at this version. */
   content: unknown;
 }
-export const HogFunctionRevision = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.Number,
     created_at: S.String,
@@ -1233,7 +1214,7 @@ export interface HogFunctionsDestroyRequest {
   /** A UUID string identifying this hog function. */
   id: string;
 }
-export const HogFunctionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1245,24 +1226,24 @@ export const HogFunctionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFunctionsDestroyRequest>;
 
 export interface HogFunctionsDestroyResponse {}
-export const HogFunctionsDestroyResponse =
+const HogFunctionsDestroyResponse =
   GetHogFunctionsIconResponse as any as S.Schema<HogFunctionsDestroyResponse>;
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsEnableBackfillsCreateRequestInputsSchemaList = Array<InputsSchemaItem>;
-export const HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
+const HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
   CreateHogFunctionRequestInputsSchemaList as any as S.Schema<HogFunctionsEnableBackfillsCreateRequestInputsSchemaList>;
 
 /** Values for each input defined in inputs_schema. */
 export type HogFunctionsEnableBackfillsCreateRequestInputsMap = {
   [key: string]: InputsItemInput | undefined;
 };
-export const HogFunctionsEnableBackfillsCreateRequestInputsMap =
+const HogFunctionsEnableBackfillsCreateRequestInputsMap =
   CreateHogFunctionRequestInputsMap as any as S.Schema<HogFunctionsEnableBackfillsCreateRequestInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
 export type HogFunctionsEnableBackfillsCreateRequestMappingsList = Array<MappingsInput>;
-export const HogFunctionsEnableBackfillsCreateRequestMappingsList =
+const HogFunctionsEnableBackfillsCreateRequestMappingsList =
   CreateHogFunctionRequestMappingsList as any as S.Schema<HogFunctionsEnableBackfillsCreateRequestMappingsList>;
 
 export interface HogFunctionsEnableBackfillsCreateRequest {
@@ -1302,7 +1283,7 @@ export interface HogFunctionsEnableBackfillsCreateRequest {
   /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
   base_updated_at?: string;
 }
-export const HogFunctionsEnableBackfillsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionsEnableBackfillsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1334,7 +1315,7 @@ export const HogFunctionsEnableBackfillsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HogFunctionsEnableBackfillsCreateRequest>;
 
 export interface HogFunctionsEnableBackfillsCreateResponse {}
-export const HogFunctionsEnableBackfillsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionsEnableBackfillsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "HogFunctionsEnableBackfillsCreateResponse",
@@ -1350,7 +1331,7 @@ export interface HogFunctionsPublishCreateRequest {
   /** From the preview response, and required when confirm=true on an enabled function. Expires after 15 minutes, and any edit to the draft or the live config invalidates it (409), so you always publish the exact draft you previewed. */
   confirm_token?: string;
 }
-export const HogFunctionsPublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionsPublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1369,7 +1350,7 @@ export const HogFunctionsPublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews. */
 export type HogFunctionPublishResponseOutputChangedFieldsList = Array<string>;
-export const HogFunctionPublishResponseOutputChangedFieldsList =
+const HogFunctionPublishResponseOutputChangedFieldsList =
   HogInvocationRerunFilterErrorKindList as any as S.Schema<HogFunctionPublishResponseOutputChangedFieldsList>;
 
 export interface HogFunctionPublishResponseOutput {
@@ -1384,7 +1365,7 @@ export interface HogFunctionPublishResponseOutput {
   /** The function after publishing (only set when published=true). */
   function?: HogFunctionOutput | null;
 }
-export const HogFunctionPublishResponseOutput = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionPublishResponseOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     published: S.Boolean,
     draft_updated_at: S.NullOr(S.String),
@@ -1406,7 +1387,7 @@ export interface HogFunctionsRevisionsRestoreCreateRequest {
   /** Replace the open staged draft with this revision's config. Without it, restoring while a draft is open returns 409. */
   overwrite?: boolean;
 }
-export const HogFunctionsRevisionsRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionsRevisionsRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1424,7 +1405,7 @@ export const HogFunctionsRevisionsRestoreCreateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<HogFunctionsRevisionsRestoreCreateRequest>;
 
 export type ListHogFunctionsRequestTypeList = Array<string>;
-export const ListHogFunctionsRequestTypeList =
+const ListHogFunctionsRequestTypeList =
   HogInvocationRerunFilterErrorKindList as any as S.Schema<ListHogFunctionsRequestTypeList>;
 
 export interface ListHogFunctionsRequest {
@@ -1442,7 +1423,7 @@ export interface ListHogFunctionsRequest {
   type?: ListHogFunctionsRequestTypeList;
   updated_at?: string;
 }
-export const ListHogFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHogFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_at: S.optional(S.String.pipe(T.Query())),
@@ -1476,7 +1457,7 @@ export interface HogFunctionMinimal {
   /** When config was last staged for review, or null when nothing is staged. */
   draft_updated_at?: string | null;
 }
-export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.NullOr(S.String)),
@@ -1498,7 +1479,7 @@ export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogFunctionMinimal" }) as any as S.Schema<HogFunctionMinimal>;
 
 export type PaginatedHogFunctionMinimalListResultsList = Array<HogFunctionMinimal>;
-export const PaginatedHogFunctionMinimalListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedHogFunctionMinimalListResultsList = /*@__PURE__*/ S.Array(
   HogFunctionMinimal,
 ) as any as S.Schema<PaginatedHogFunctionMinimalListResultsList>;
 
@@ -1508,7 +1489,7 @@ export interface PaginatedHogFunctionMinimalList {
   previous?: string | null;
   results?: PaginatedHogFunctionMinimalListResultsList;
 }
-export const PaginatedHogFunctionMinimalList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedHogFunctionMinimalList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1529,7 +1510,7 @@ export interface ListHogFunctionsRevisionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListHogFunctionsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHogFunctionsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1552,7 +1533,7 @@ export interface HogFunctionRevisionBasic {
   created_at: string;
   created_by: UserBasic | null;
 }
-export const HogFunctionRevisionBasic = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionRevisionBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.Number,
     created_at: S.String,
@@ -1561,7 +1542,7 @@ export const HogFunctionRevisionBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HogFunctionRevisionBasic" }) as any as S.Schema<HogFunctionRevisionBasic>;
 
 export type PaginatedHogFunctionRevisionBasicListResultsList = Array<HogFunctionRevisionBasic>;
-export const PaginatedHogFunctionRevisionBasicListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedHogFunctionRevisionBasicListResultsList = /*@__PURE__*/ S.Array(
   HogFunctionRevisionBasic,
 ) as any as S.Schema<PaginatedHogFunctionRevisionBasicListResultsList>;
 
@@ -1571,7 +1552,7 @@ export interface PaginatedHogFunctionRevisionBasicList {
   previous?: string | null;
   results: PaginatedHogFunctionRevisionBasicListResultsList;
 }
-export const PaginatedHogFunctionRevisionBasicList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedHogFunctionRevisionBasicList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1584,17 +1565,17 @@ export const PaginatedHogFunctionRevisionBasicList = /*@__PURE__*/ S.suspend(() 
 
 /** Schema defining the configurable input parameters for this function. */
 export type UpdateHogFunctionRequestInputsSchemaList = Array<InputsSchemaItem>;
-export const UpdateHogFunctionRequestInputsSchemaList =
+const UpdateHogFunctionRequestInputsSchemaList =
   CreateHogFunctionRequestInputsSchemaList as any as S.Schema<UpdateHogFunctionRequestInputsSchemaList>;
 
 /** Values for each input defined in inputs_schema. */
 export type UpdateHogFunctionRequestInputsMap = { [key: string]: InputsItemInput | undefined };
-export const UpdateHogFunctionRequestInputsMap =
+const UpdateHogFunctionRequestInputsMap =
   CreateHogFunctionRequestInputsMap as any as S.Schema<UpdateHogFunctionRequestInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
 export type UpdateHogFunctionRequestMappingsList = Array<MappingsInput>;
-export const UpdateHogFunctionRequestMappingsList =
+const UpdateHogFunctionRequestMappingsList =
   CreateHogFunctionRequestMappingsList as any as S.Schema<UpdateHogFunctionRequestMappingsList>;
 
 export interface UpdateHogFunctionRequest {
@@ -1634,7 +1615,7 @@ export interface UpdateHogFunctionRequest {
   /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
   base_updated_at?: string;
 }
-export const UpdateHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1661,19 +1642,19 @@ export const UpdateHogFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Schema defining the configurable input parameters for this function. */
 export type UpdateHogFunctionsPartialRequestInputsSchemaList = Array<InputsSchemaItem>;
-export const UpdateHogFunctionsPartialRequestInputsSchemaList =
+const UpdateHogFunctionsPartialRequestInputsSchemaList =
   CreateHogFunctionRequestInputsSchemaList as any as S.Schema<UpdateHogFunctionsPartialRequestInputsSchemaList>;
 
 /** Values for each input defined in inputs_schema. */
 export type UpdateHogFunctionsPartialRequestInputsMap = {
   [key: string]: InputsItemInput | undefined;
 };
-export const UpdateHogFunctionsPartialRequestInputsMap =
+const UpdateHogFunctionsPartialRequestInputsMap =
   CreateHogFunctionRequestInputsMap as any as S.Schema<UpdateHogFunctionsPartialRequestInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
 export type UpdateHogFunctionsPartialRequestMappingsList = Array<MappingsInput>;
-export const UpdateHogFunctionsPartialRequestMappingsList =
+const UpdateHogFunctionsPartialRequestMappingsList =
   CreateHogFunctionRequestMappingsList as any as S.Schema<UpdateHogFunctionsPartialRequestMappingsList>;
 
 export interface UpdateHogFunctionsPartialRequest {
@@ -1713,7 +1694,7 @@ export interface UpdateHogFunctionsPartialRequest {
   /** Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally. */
   base_updated_at?: string;
 }
-export const UpdateHogFunctionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHogFunctionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1744,7 +1725,7 @@ export const UpdateHogFunctionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateHogFunctionsRearrangePartialRequestOrdersMap = {
   [key: string]: number | undefined;
 };
-export const UpdateHogFunctionsRearrangePartialRequestOrdersMap =
+const UpdateHogFunctionsRearrangePartialRequestOrdersMap =
   AppMetricsTotalsResponseTotalsMap as any as S.Schema<UpdateHogFunctionsRearrangePartialRequestOrdersMap>;
 
 export interface UpdateHogFunctionsRearrangePartialRequest {
@@ -1753,7 +1734,7 @@ export interface UpdateHogFunctionsRearrangePartialRequest {
   /** Map of hog function UUIDs to their new execution_order values. */
   orders?: UpdateHogFunctionsRearrangePartialRequestOrdersMap;
 }
-export const UpdateHogFunctionsRearrangePartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHogFunctionsRearrangePartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     orders: S.optional(UpdateHogFunctionsRearrangePartialRequestOrdersMap),
@@ -1769,13 +1750,13 @@ export const UpdateHogFunctionsRearrangePartialRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<UpdateHogFunctionsRearrangePartialRequest>;
 
 export type UpdateHogFunctionsRearrangePartialResponseBodyList = Array<HogFunctionOutput>;
-export const UpdateHogFunctionsRearrangePartialResponseBodyList = /*@__PURE__*/ S.Array(
+const UpdateHogFunctionsRearrangePartialResponseBodyList = /*@__PURE__*/ S.Array(
   HogFunctionOutput,
 ) as any as S.Schema<UpdateHogFunctionsRearrangePartialResponseBodyList>;
 
 export type UpdateHogFunctionsRearrangePartialResponse =
   UpdateHogFunctionsRearrangePartialResponseBodyList;
-export const UpdateHogFunctionsRearrangePartialResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateHogFunctionsRearrangePartialResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateHogFunctionsRearrangePartialResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateHogFunctionsRearrangePartialResponse",

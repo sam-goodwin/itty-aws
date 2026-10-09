@@ -46,7 +46,7 @@ export class ScanConfigNotFound
 export type ThreatEventsBulkCreateRequestDataItemRawDataMap = {
   [key: string]: unknown | undefined;
 };
-export const ThreatEventsBulkCreateRequestDataItemRawDataMap = /*@__PURE__*/ S.Record(
+const ThreatEventsBulkCreateRequestDataItemRawDataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ThreatEventsBulkCreateRequestDataItemRawDataMap>;
@@ -56,7 +56,7 @@ export interface ThreatEventsBulkCreateRequestDataItemRaw {
   source?: string;
   tlp?: string;
 }
-export const ThreatEventsBulkCreateRequestDataItemRaw = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsBulkCreateRequestDataItemRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ThreatEventsBulkCreateRequestDataItemRawDataMap,
     source: S.optional(S.String),
@@ -72,7 +72,7 @@ export interface ThreatEventsBulkCreateRequestDataItemIndicatorsItem {
   /** The indicator value (e.g., domain name, IP address, hash) */
   value: string;
 }
-export const ThreatEventsBulkCreateRequestDataItemIndicatorsItem = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsBulkCreateRequestDataItemIndicatorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indicatorType: S.String,
     value: S.String,
@@ -83,12 +83,12 @@ export const ThreatEventsBulkCreateRequestDataItemIndicatorsItem = /*@__PURE__*/
 
 export type ThreatEventsBulkCreateRequestDataItemIndicatorsList =
   Array<ThreatEventsBulkCreateRequestDataItemIndicatorsItem>;
-export const ThreatEventsBulkCreateRequestDataItemIndicatorsList = /*@__PURE__*/ S.Array(
+const ThreatEventsBulkCreateRequestDataItemIndicatorsList = /*@__PURE__*/ S.Array(
   ThreatEventsBulkCreateRequestDataItemIndicatorsItem,
 ) as any as S.Schema<ThreatEventsBulkCreateRequestDataItemIndicatorsList>;
 
 export type ThreatEventsBulkCreateRequestDataItemTagsList = Array<string>;
-export const ThreatEventsBulkCreateRequestDataItemTagsList = /*@__PURE__*/ S.Array(
+const ThreatEventsBulkCreateRequestDataItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsBulkCreateRequestDataItemTagsList>;
 
@@ -111,7 +111,7 @@ export interface ThreatEventsBulkCreateRequestDataItem {
   targetCountry?: string;
   targetIndustry?: string;
 }
-export const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.String,
     date: S.String,
@@ -135,7 +135,7 @@ export const ThreatEventsBulkCreateRequestDataItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ThreatEventsBulkCreateRequestDataItem>;
 
 export type ThreatEventsBulkCreateRequestDataList = Array<ThreatEventsBulkCreateRequestDataItem>;
-export const ThreatEventsBulkCreateRequestDataList = /*@__PURE__*/ S.Array(
+const ThreatEventsBulkCreateRequestDataList = /*@__PURE__*/ S.Array(
   ThreatEventsBulkCreateRequestDataItem,
 ) as any as S.Schema<ThreatEventsBulkCreateRequestDataList>;
 
@@ -147,7 +147,7 @@ export interface BulkCreateThreatEventsRequest {
   /** When true, response includes array of created event UUIDs and shard IDs. Useful for tracking which events were created and where. */
   includeCreatedEvents?: boolean;
 }
-export const BulkCreateThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     data: ThreatEventsBulkCreateRequestDataList,
@@ -174,7 +174,7 @@ export interface ThreatEventsBulkCreateResponseCreatedEventsItem {
   /** UUID of the created event */
   uuid: string;
 }
-export const ThreatEventsBulkCreateResponseCreatedEventsItem = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsBulkCreateResponseCreatedEventsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventIndex: S.Number,
     shardId: S.String,
@@ -186,7 +186,7 @@ export const ThreatEventsBulkCreateResponseCreatedEventsItem = /*@__PURE__*/ S.s
 
 export type ThreatEventsBulkCreateResponseCreatedEventsList =
   Array<ThreatEventsBulkCreateResponseCreatedEventsItem>;
-export const ThreatEventsBulkCreateResponseCreatedEventsList = /*@__PURE__*/ S.Array(
+const ThreatEventsBulkCreateResponseCreatedEventsList = /*@__PURE__*/ S.Array(
   ThreatEventsBulkCreateResponseCreatedEventsItem,
 ) as any as S.Schema<ThreatEventsBulkCreateResponseCreatedEventsList>;
 
@@ -205,7 +205,7 @@ export interface BulkCreateThreatEventsResponse {
   /** Array of created events with UUIDs and shard locations. Only present when includeCreatedEvents=true */
   createdEvents?: ThreatEventsBulkCreateResponseCreatedEventsList | null;
 }
-export const BulkCreateThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateThreatEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdEventsCount: S.Number,
     createdTagsCount: S.Number,
@@ -224,7 +224,7 @@ export interface CreateBinaryStorageRequest {
   /** The binary file content to upload. */
   file: unknown;
 }
-export const CreateBinaryStorageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBinaryStorageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     file: S.Unknown,
@@ -244,7 +244,7 @@ export interface CreateBinaryStorageResponse {
   sha1: string;
   sha256: string;
 }
-export const CreateBinaryStorageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBinaryStorageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.String.pipe(T.Body("content_type")),
     md5: S.String,
@@ -256,7 +256,7 @@ export const CreateBinaryStorageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBinaryStorageResponse>;
 
 export type RequestsCreateRequestTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const RequestsCreateRequestTlp = S.String;
+const RequestsCreateRequestTlp = S.String;
 
 export interface CreateRequestRequest {
   /** Identifier. */
@@ -272,7 +272,7 @@ export interface CreateRequestRequest {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp?: RequestsCreateRequestTlp | (string & {});
 }
-export const CreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     content: S.optional(S.String),
@@ -292,7 +292,7 @@ export const CreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRequestRequest" }) as any as S.Schema<CreateRequestRequest>;
 
 export type RequestsCreateResponseTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const RequestsCreateResponseTlp = S.String;
+const RequestsCreateResponseTlp = S.String;
 
 export type RequestsCreateResponseStatus =
   | "open"
@@ -301,7 +301,7 @@ export type RequestsCreateResponseStatus =
   | "approved"
   | "completed"
   | "declined";
-export const RequestsCreateResponseStatus = S.String;
+const RequestsCreateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRequestResponse {
@@ -328,7 +328,7 @@ export interface CreateRequestResponse {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const CreateRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     content: S.String,
@@ -356,7 +356,7 @@ export interface CreateRequestAssetRequest {
   /** Number of results per page. */
   perPage: number;
 }
-export const CreateRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -387,7 +387,7 @@ export interface RequestsAssetsCreateResultItem {
   /** Asset file type. */
   fileType?: string | null;
 }
-export const RequestsAssetsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+const RequestsAssetsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -400,7 +400,7 @@ export const RequestsAssetsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestsAssetsCreateResultItem>;
 
 export type RequestsAssetsCreateResultList = Array<RequestsAssetsCreateResultItem>;
-export const RequestsAssetsCreateResultList = /*@__PURE__*/ S.Array(
+const RequestsAssetsCreateResultList = /*@__PURE__*/ S.Array(
   RequestsAssetsCreateResultItem,
 ) as any as S.Schema<RequestsAssetsCreateResultList>;
 
@@ -410,7 +410,7 @@ export interface CreateRequestAssetResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const CreateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RequestsAssetsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -427,7 +427,7 @@ export interface CreateRequestMessageRequest {
   /** Content of message. */
   content?: string;
 }
-export const CreateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -460,7 +460,7 @@ export interface CreateRequestMessageResponse {
   /** Defines the message creation time. */
   created?: string | null;
 }
-export const CreateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     author: S.String,
@@ -474,11 +474,11 @@ export const CreateRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestMessageResponse>;
 
 export type RequestsPriorityCreateRequestLabelsList = Array<string>;
-export const RequestsPriorityCreateRequestLabelsList =
+const RequestsPriorityCreateRequestLabelsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<RequestsPriorityCreateRequestLabelsList>;
 
 export type RequestsPriorityCreateRequestTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const RequestsPriorityCreateRequestTlp = S.String;
+const RequestsPriorityCreateRequestTlp = S.String;
 
 export interface CreateRequestPriorityRequest {
   /** Identifier. */
@@ -492,7 +492,7 @@ export interface CreateRequestPriorityRequest {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp: RequestsPriorityCreateRequestTlp | (string & {});
 }
-export const CreateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     labels: RequestsPriorityCreateRequestLabelsList,
@@ -513,7 +513,7 @@ export const CreateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestPriorityRequest>;
 
 export type RequestsPriorityCreateResponseLabelsList = Array<string>;
-export const RequestsPriorityCreateResponseLabelsList =
+const RequestsPriorityCreateResponseLabelsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<RequestsPriorityCreateResponseLabelsList>;
 
 export type RequestsPriorityCreateResponseTlp =
@@ -522,7 +522,7 @@ export type RequestsPriorityCreateResponseTlp =
   | "amber-strict"
   | "green"
   | "red";
-export const RequestsPriorityCreateResponseTlp = S.String;
+const RequestsPriorityCreateResponseTlp = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRequestPriorityResponse {
@@ -541,7 +541,7 @@ export interface CreateRequestPriorityResponse {
   /** Priority last updated time. */
   updated: string;
 }
-export const CreateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -556,11 +556,11 @@ export const CreateRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestPriorityResponse>;
 
 export type ScansConfigCreateRequestIpsList = Array<string>;
-export const ScansConfigCreateRequestIpsList =
+const ScansConfigCreateRequestIpsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigCreateRequestIpsList>;
 
 export type ScansConfigCreateRequestPortsList = Array<string>;
-export const ScansConfigCreateRequestPortsList =
+const ScansConfigCreateRequestPortsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigCreateRequestPortsList>;
 
 export interface CreateScanConfigRequest {
@@ -573,7 +573,7 @@ export interface CreateScanConfigRequest {
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
   ports?: ScansConfigCreateRequestPortsList;
 }
-export const CreateScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ips: ScansConfigCreateRequestIpsList,
@@ -591,11 +591,11 @@ export const CreateScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateScanConfigRequest" }) as any as S.Schema<CreateScanConfigRequest>;
 
 export type ScansConfigCreateResponseIpsList = Array<string>;
-export const ScansConfigCreateResponseIpsList =
+const ScansConfigCreateResponseIpsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigCreateResponseIpsList>;
 
 export type ScansConfigCreateResponsePortsList = Array<string>;
-export const ScansConfigCreateResponsePortsList =
+const ScansConfigCreateResponsePortsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigCreateResponsePortsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -610,7 +610,7 @@ export interface CreateScanConfigResponse {
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
   ports: ScansConfigCreateResponsePortsList;
 }
-export const CreateScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -621,32 +621,26 @@ export const CreateScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateScanConfigResponse" }) as any as S.Schema<CreateScanConfigResponse>;
 
 export type ThreatEventsCreateRequestRawDataMap = { [key: string]: unknown | undefined };
-export const ThreatEventsCreateRequestRawDataMap =
-  ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<ThreatEventsCreateRequestRawDataMap>;
-
 export interface ThreatEventsCreateRequestRaw {
   data: ThreatEventsCreateRequestRawDataMap;
   source?: string;
   tlp?: string;
 }
-export const ThreatEventsCreateRequestRaw =
+const ThreatEventsCreateRequestRaw =
   ThreatEventsBulkCreateRequestDataItemRaw as any as S.Schema<ThreatEventsCreateRequestRaw>;
 
 export type ThreatEventsCreateRequestIndicatorsItem =
   ThreatEventsBulkCreateRequestDataItemIndicatorsItem;
-export const ThreatEventsCreateRequestIndicatorsItem =
-  ThreatEventsBulkCreateRequestDataItemIndicatorsItem;
-
 export type ThreatEventsCreateRequestIndicatorsList =
   Array<ThreatEventsBulkCreateRequestDataItemIndicatorsItem>;
-export const ThreatEventsCreateRequestIndicatorsList =
+const ThreatEventsCreateRequestIndicatorsList =
   ThreatEventsBulkCreateRequestDataItemIndicatorsList as any as S.Schema<ThreatEventsCreateRequestIndicatorsList>;
 
 export type ThreatEventsCreateRequestSourceResourceType = "article";
-export const ThreatEventsCreateRequestSourceResourceType = S.String;
+const ThreatEventsCreateRequestSourceResourceType = S.String;
 
 export type ThreatEventsCreateRequestSourceSystem = "threat-signals";
-export const ThreatEventsCreateRequestSourceSystem = S.String;
+const ThreatEventsCreateRequestSourceSystem = S.String;
 
 export interface ThreatEventsCreateRequestSource {
   resourceId: string;
@@ -655,7 +649,7 @@ export interface ThreatEventsCreateRequestSource {
   /** Threat Signals article title; null for historical provenance without a stored title. */
   title?: string;
 }
-export const ThreatEventsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String,
     resourceType: ThreatEventsCreateRequestSourceResourceType,
@@ -667,7 +661,7 @@ export const ThreatEventsCreateRequestSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThreatEventsCreateRequestSource>;
 
 export type ThreatEventsCreateRequestTagsList = Array<string>;
-export const ThreatEventsCreateRequestTagsList =
+const ThreatEventsCreateRequestTagsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCreateRequestTagsList>;
 
 export interface CreateThreatEventRequest {
@@ -692,7 +686,7 @@ export interface CreateThreatEventRequest {
   targetCountry?: string;
   targetIndustry?: string;
 }
-export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     category: S.String,
@@ -723,32 +717,32 @@ export const CreateThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateThreatEventRequest" }) as any as S.Schema<CreateThreatEventRequest>;
 
 export type ThreatEventsCreateResponseMitreAttackList = Array<string>;
-export const ThreatEventsCreateResponseMitreAttackList =
+const ThreatEventsCreateResponseMitreAttackList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCreateResponseMitreAttackList>;
 
 export type ThreatEventsCreateResponseMitreCapecList = Array<string>;
-export const ThreatEventsCreateResponseMitreCapecList =
+const ThreatEventsCreateResponseMitreCapecList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCreateResponseMitreCapecList>;
 
 export type ThreatEventsCreateResponseReferencedList = Array<string>;
-export const ThreatEventsCreateResponseReferencedList =
+const ThreatEventsCreateResponseReferencedList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCreateResponseReferencedList>;
 
 export type ThreatEventsCreateResponseReferencedIdsList = Array<number>;
-export const ThreatEventsCreateResponseReferencedIdsList = /*@__PURE__*/ S.Array(
+const ThreatEventsCreateResponseReferencedIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ThreatEventsCreateResponseReferencedIdsList>;
 
 export type ThreatEventsCreateResponseReferencesList = Array<string>;
-export const ThreatEventsCreateResponseReferencesList =
+const ThreatEventsCreateResponseReferencesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCreateResponseReferencesList>;
 
 export type ThreatEventsCreateResponseReferencesIdsList = Array<number>;
-export const ThreatEventsCreateResponseReferencesIdsList =
+const ThreatEventsCreateResponseReferencesIdsList =
   ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ThreatEventsCreateResponseReferencesIdsList>;
 
 export type ThreatEventsCreateResponseTagsList = Array<string>;
-export const ThreatEventsCreateResponseTagsList =
+const ThreatEventsCreateResponseTagsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCreateResponseTagsList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -783,7 +777,7 @@ export interface CreateThreatEventResponse {
   insight?: string | null;
   releasabilityId?: string | null;
 }
-export const CreateThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attacker: S.String,
     attackerCountry: S.String,
@@ -820,11 +814,11 @@ export const CreateThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateThreatEventResponse>;
 
 export type ThreatEventsCategoriesCreateRequestMitreAttackList = Array<string>;
-export const ThreatEventsCategoriesCreateRequestMitreAttackList =
+const ThreatEventsCategoriesCreateRequestMitreAttackList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesCreateRequestMitreAttackList>;
 
 export type ThreatEventsCategoriesCreateRequestMitreCapecList = Array<string>;
-export const ThreatEventsCategoriesCreateRequestMitreCapecList =
+const ThreatEventsCategoriesCreateRequestMitreCapecList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesCreateRequestMitreCapecList>;
 
 export interface CreateThreatEventCategoryRequest {
@@ -836,7 +830,7 @@ export interface CreateThreatEventCategoryRequest {
   mitreCapec?: ThreatEventsCategoriesCreateRequestMitreCapecList;
   shortname?: string;
 }
-export const CreateThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     killChain: S.Number,
@@ -858,11 +852,11 @@ export const CreateThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateThreatEventCategoryRequest>;
 
 export type ThreatEventsCategoriesCreateResponseMitreAttackList = Array<string>;
-export const ThreatEventsCategoriesCreateResponseMitreAttackList =
+const ThreatEventsCategoriesCreateResponseMitreAttackList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesCreateResponseMitreAttackList>;
 
 export type ThreatEventsCategoriesCreateResponseMitreCapecList = Array<string>;
-export const ThreatEventsCategoriesCreateResponseMitreCapecList =
+const ThreatEventsCategoriesCreateResponseMitreCapecList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesCreateResponseMitreCapecList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -874,7 +868,7 @@ export interface CreateThreatEventCategoryResponse {
   mitreCapec?: ThreatEventsCategoriesCreateResponseMitreCapecList | null;
   shortname?: string | null;
 }
-export const CreateThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     killChain: S.Number,
     name: S.String,
@@ -895,7 +889,7 @@ export interface CreateThreatEventDatasetRequest {
   /** Used to describe the dataset within the account context. */
   name: string;
 }
-export const CreateThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     isPublic: S.Boolean,
@@ -920,7 +914,7 @@ export interface CreateThreatEventDatasetResponse {
   name: string;
   uuid: string;
 }
-export const CreateThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAnalytics: S.Boolean,
     isPublic: S.Boolean,
@@ -932,7 +926,7 @@ export const CreateThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateThreatEventDatasetResponse>;
 
 export type ThreatEventsEventTagsCreateRequestTagsList = Array<string>;
-export const ThreatEventsEventTagsCreateRequestTagsList =
+const ThreatEventsEventTagsCreateRequestTagsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsEventTagsCreateRequestTagsList>;
 
 export interface CreateThreatEventEventTagRequest {
@@ -942,7 +936,7 @@ export interface CreateThreatEventEventTagRequest {
   eventId: string;
   tags: ThreatEventsEventTagsCreateRequestTagsList;
 }
-export const CreateThreatEventEventTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventEventTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
@@ -964,7 +958,7 @@ export const CreateThreatEventEventTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateThreatEventEventTagResponse {
   success: boolean;
 }
-export const CreateThreatEventEventTagResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventEventTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -976,7 +970,7 @@ export interface CreateThreatEventsGraphqlRequest {
   /** Account ID. */
   accountId: string;
 }
-export const CreateThreatEventsGraphqlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsGraphqlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -996,7 +990,7 @@ export const CreateThreatEventsGraphqlRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateThreatEventsGraphqlResponse {
   data?: unknown | null;
 }
-export const CreateThreatEventsGraphqlResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsGraphqlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.NullOr(S.Unknown)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1020,7 +1014,7 @@ export interface CreateThreatEventsQueryRequest {
   /** Scope for the rule */
   ruleScope?: string;
 }
-export const CreateThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     alertEnabled: S.Boolean.pipe(T.Body("alert_enabled")),
@@ -1071,7 +1065,7 @@ export interface CreateThreatEventsQueryResponse {
   /** Scope for the rule */
   ruleScope?: string | null;
 }
-export const CreateThreatEventsQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     accountId: S.Number.pipe(T.Body("account_id")),
@@ -1098,62 +1092,60 @@ export type CreateThreatEventsTagsCategoryRequestSchemaItemKind =
   | "date"
   | "array"
   | "object";
-export const CreateThreatEventsTagsCategoryRequestSchemaItemKind = S.String;
+const CreateThreatEventsTagsCategoryRequestSchemaItemKind = S.String;
 
 export type CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList = Array<string>;
-export const CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList>;
+const CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList>;
 
 export interface CreateThreatEventsTagsCategoryRequestSchemaItemAnnotations {
   confidence?: boolean;
   tlp?: boolean;
 }
-export const CreateThreatEventsTagsCategoryRequestSchemaItemAnnotations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      confidence: S.optional(S.Boolean),
-      tlp: S.optional(S.Boolean),
-    }),
+const CreateThreatEventsTagsCategoryRequestSchemaItemAnnotations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    confidence: S.optional(S.Boolean),
+    tlp: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "CreateThreatEventsTagsCategoryRequestSchemaItemAnnotations",
 }) as any as S.Schema<CreateThreatEventsTagsCategoryRequestSchemaItemAnnotations>;
 
 export type CreateThreatEventsTagsCategoryRequestSchemaItemDeprecatedValuesList = Array<string>;
-export const CreateThreatEventsTagsCategoryRequestSchemaItemDeprecatedValuesList =
+const CreateThreatEventsTagsCategoryRequestSchemaItemDeprecatedValuesList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<CreateThreatEventsTagsCategoryRequestSchemaItemDeprecatedValuesList>;
 
 export type CreateThreatEventsTagsCategoryRequestSchemaItemEnforcement = "error" | "warn" | "off";
-export const CreateThreatEventsTagsCategoryRequestSchemaItemEnforcement = S.String;
+const CreateThreatEventsTagsCategoryRequestSchemaItemEnforcement = S.String;
 
 export type CreateThreatEventsTagsCategoryRequestSchemaItemFormat =
   | "date"
   | "url"
   | "duration"
   | "country";
-export const CreateThreatEventsTagsCategoryRequestSchemaItemFormat = S.String;
+const CreateThreatEventsTagsCategoryRequestSchemaItemFormat = S.String;
 
 export interface CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint {
   integer?: boolean;
   max?: number;
   min?: number;
 }
-export const CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       integer: S.optional(S.Boolean),
       max: S.optional(S.Number),
       min: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint",
-  }) as any as S.Schema<CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint>;
+).annotate({
+  identifier: "CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint",
+}) as any as S.Schema<CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint>;
 
 export type CreateThreatEventsTagsCategoryRequestSchemaItemPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateThreatEventsTagsCategoryRequestSchemaItemPropertiesMap =
+const CreateThreatEventsTagsCategoryRequestSchemaItemPropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<CreateThreatEventsTagsCategoryRequestSchemaItemPropertiesMap>;
 
 export interface CreateThreatEventsTagsCategoryRequestSchemaItem {
@@ -1176,7 +1168,7 @@ export interface CreateThreatEventsTagsCategoryRequestSchemaItem {
   properties?: CreateThreatEventsTagsCategoryRequestSchemaItemPropertiesMap;
   required?: boolean;
 }
-export const CreateThreatEventsTagsCategoryRequestSchemaItem = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsTagsCategoryRequestSchemaItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     kind: CreateThreatEventsTagsCategoryRequestSchemaItemKind,
@@ -1201,7 +1193,7 @@ export const CreateThreatEventsTagsCategoryRequestSchemaItem = /*@__PURE__*/ S.s
 
 export type CreateThreatEventsTagsCategoryRequestSchemaList =
   Array<CreateThreatEventsTagsCategoryRequestSchemaItem>;
-export const CreateThreatEventsTagsCategoryRequestSchemaList = /*@__PURE__*/ S.Array(
+const CreateThreatEventsTagsCategoryRequestSchemaList = /*@__PURE__*/ S.Array(
   CreateThreatEventsTagsCategoryRequestSchemaItem,
 ) as any as S.Schema<CreateThreatEventsTagsCategoryRequestSchemaList>;
 
@@ -1213,7 +1205,7 @@ export interface CreateThreatEventsTagsCategoryRequest {
   /** Optional array of FieldDefinition objects defining custom fields for tags in this category. Persisted as JSON; returned as a parsed array. */
   schema?: CreateThreatEventsTagsCategoryRequestSchemaList;
 }
-export const CreateThreatEventsTagsCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsTagsCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -1239,60 +1231,59 @@ export type CreateThreatEventsTagsCategoryResponseSchemaItemKind =
   | "date"
   | "array"
   | "object";
-export const CreateThreatEventsTagsCategoryResponseSchemaItemKind = S.String;
+const CreateThreatEventsTagsCategoryResponseSchemaItemKind = S.String;
 
 export type CreateThreatEventsTagsCategoryResponseSchemaItemAllowedValuesList = Array<string>;
-export const CreateThreatEventsTagsCategoryResponseSchemaItemAllowedValuesList =
+const CreateThreatEventsTagsCategoryResponseSchemaItemAllowedValuesList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<CreateThreatEventsTagsCategoryResponseSchemaItemAllowedValuesList>;
 
 export interface CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations {
   confidence?: boolean | null;
   tlp?: boolean | null;
 }
-export const CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      confidence: S.optional(S.NullOr(S.Boolean)),
-      tlp: S.optional(S.NullOr(S.Boolean)),
-    }),
+const CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    confidence: S.optional(S.NullOr(S.Boolean)),
+    tlp: S.optional(S.NullOr(S.Boolean)),
+  }),
 ).annotate({
   identifier: "CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations",
 }) as any as S.Schema<CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations>;
 
 export type CreateThreatEventsTagsCategoryResponseSchemaItemDeprecatedValuesList = Array<string>;
-export const CreateThreatEventsTagsCategoryResponseSchemaItemDeprecatedValuesList =
+const CreateThreatEventsTagsCategoryResponseSchemaItemDeprecatedValuesList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<CreateThreatEventsTagsCategoryResponseSchemaItemDeprecatedValuesList>;
 
 export type CreateThreatEventsTagsCategoryResponseSchemaItemEnforcement = "error" | "warn" | "off";
-export const CreateThreatEventsTagsCategoryResponseSchemaItemEnforcement = S.String;
+const CreateThreatEventsTagsCategoryResponseSchemaItemEnforcement = S.String;
 
 export type CreateThreatEventsTagsCategoryResponseSchemaItemFormat =
   | "date"
   | "url"
   | "duration"
   | "country";
-export const CreateThreatEventsTagsCategoryResponseSchemaItemFormat = S.String;
+const CreateThreatEventsTagsCategoryResponseSchemaItemFormat = S.String;
 
 export interface CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint {
   integer?: boolean | null;
   max?: number | null;
   min?: number | null;
 }
-export const CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       integer: S.optional(S.NullOr(S.Boolean)),
       max: S.optional(S.NullOr(S.Number)),
       min: S.optional(S.NullOr(S.Number)),
     }),
-  ).annotate({
-    identifier: "CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint",
-  }) as any as S.Schema<CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint>;
+).annotate({
+  identifier: "CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint",
+}) as any as S.Schema<CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint>;
 
 export type CreateThreatEventsTagsCategoryResponseSchemaItemPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateThreatEventsTagsCategoryResponseSchemaItemPropertiesMap =
+const CreateThreatEventsTagsCategoryResponseSchemaItemPropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<CreateThreatEventsTagsCategoryResponseSchemaItemPropertiesMap>;
 
 export interface CreateThreatEventsTagsCategoryResponseSchemaItem {
@@ -1315,7 +1306,7 @@ export interface CreateThreatEventsTagsCategoryResponseSchemaItem {
   properties?: CreateThreatEventsTagsCategoryResponseSchemaItemPropertiesMap | null;
   required?: boolean | null;
 }
-export const CreateThreatEventsTagsCategoryResponseSchemaItem = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsTagsCategoryResponseSchemaItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     kind: CreateThreatEventsTagsCategoryResponseSchemaItemKind,
@@ -1344,7 +1335,7 @@ export const CreateThreatEventsTagsCategoryResponseSchemaItem = /*@__PURE__*/ S.
 
 export type CreateThreatEventsTagsCategoryResponseSchemaList =
   Array<CreateThreatEventsTagsCategoryResponseSchemaItem>;
-export const CreateThreatEventsTagsCategoryResponseSchemaList = /*@__PURE__*/ S.Array(
+const CreateThreatEventsTagsCategoryResponseSchemaList = /*@__PURE__*/ S.Array(
   CreateThreatEventsTagsCategoryResponseSchemaItem,
 ) as any as S.Schema<CreateThreatEventsTagsCategoryResponseSchemaList>;
 
@@ -1358,7 +1349,7 @@ export interface CreateThreatEventsTagsCategoryResponse {
   schema?: CreateThreatEventsTagsCategoryResponseSchemaList | null;
   updatedAt?: string | null;
 }
-export const CreateThreatEventsTagsCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventsTagsCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uuid: S.String,
@@ -1379,14 +1370,14 @@ export type ThreatEventsTagsCreateRequestActiveDurationCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestActiveDurationCase1Tlp = S.String;
+const ThreatEventsTagsCreateRequestActiveDurationCase1Tlp = S.String;
 
 export interface ThreatEventsTagsCreateRequestActiveDurationCase1 {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestActiveDurationCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestActiveDurationCase1 = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsTagsCreateRequestActiveDurationCase1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     confidence: S.optional(S.Number),
@@ -1399,7 +1390,7 @@ export const ThreatEventsTagsCreateRequestActiveDurationCase1 = /*@__PURE__*/ S.
 export type ThreatEventsTagsCreateRequestActiveDuration =
   | string
   | ThreatEventsTagsCreateRequestActiveDurationCase1;
-export const ThreatEventsTagsCreateRequestActiveDuration = /*@__PURE__*/ S.Unknown.pipe(
+const ThreatEventsTagsCreateRequestActiveDuration = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -1411,20 +1402,15 @@ export type ThreatEventsTagsCreateRequestActorCategoryCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestActorCategoryCase1Tlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestActorCategoryCase1 {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestActorCategoryCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestActorCategoryCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestActorCategoryCase1>;
-
 export type ThreatEventsTagsCreateRequestActorCategory =
   | string
   | ThreatEventsTagsCreateRequestActorCategoryCase1;
-export const ThreatEventsTagsCreateRequestActorCategory = /*@__PURE__*/ S.Unknown.pipe(
+const ThreatEventsTagsCreateRequestActorCategory = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -1436,28 +1422,26 @@ export type ThreatEventsTagsCreateRequestAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestAliasesItemTlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestAliasesItem {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestAliasesItem =
+const ThreatEventsTagsCreateRequestAliasesItem =
   ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestAliasesItem>;
 
 export type ThreatEventsTagsCreateRequestAliasesList =
   Array<ThreatEventsTagsCreateRequestAliasesItem>;
-export const ThreatEventsTagsCreateRequestAliasesList = /*@__PURE__*/ S.Array(
+const ThreatEventsTagsCreateRequestAliasesList = /*@__PURE__*/ S.Array(
   ThreatEventsTagsCreateRequestAliasesItem,
 ) as any as S.Schema<ThreatEventsTagsCreateRequestAliasesList>;
 
 export type ThreatEventsTagsCreateRequestAliasGroupNamesList = Array<string>;
-export const ThreatEventsTagsCreateRequestAliasGroupNamesList =
+const ThreatEventsTagsCreateRequestAliasGroupNamesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsTagsCreateRequestAliasGroupNamesList>;
 
 export type ThreatEventsTagsCreateRequestAliasGroupNamesInternalList = Array<string>;
-export const ThreatEventsTagsCreateRequestAliasGroupNamesInternalList =
+const ThreatEventsTagsCreateRequestAliasGroupNamesInternalList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsTagsCreateRequestAliasGroupNamesInternalList>;
 
 export type ThreatEventsTagsCreateRequestAttributionOrganizationCase1Tlp =
@@ -1468,40 +1452,27 @@ export type ThreatEventsTagsCreateRequestAttributionOrganizationCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestAttributionOrganizationCase1Tlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestAttributionOrganizationCase1 {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestAttributionOrganizationCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestAttributionOrganizationCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.String,
-      confidence: S.optional(S.Number),
-      tlp: S.optional(ThreatEventsTagsCreateRequestAttributionOrganizationCase1Tlp),
-    }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestAttributionOrganizationCase1",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestAttributionOrganizationCase1>;
-
 export type ThreatEventsTagsCreateRequestAttributionOrganization =
   | string
   | ThreatEventsTagsCreateRequestAttributionOrganizationCase1;
-export const ThreatEventsTagsCreateRequestAttributionOrganization = /*@__PURE__*/ S.Unknown.pipe(
+const ThreatEventsTagsCreateRequestAttributionOrganization = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestExternalReferenceLinksList = Array<string>;
-export const ThreatEventsTagsCreateRequestExternalReferenceLinksList =
+const ThreatEventsTagsCreateRequestExternalReferenceLinksList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsTagsCreateRequestExternalReferenceLinksList>;
 
 export interface ThreatEventsTagsCreateRequestExternalReferencesItem {
   url: string;
   description?: string;
 }
-export const ThreatEventsTagsCreateRequestExternalReferencesItem = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsTagsCreateRequestExternalReferencesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     description: S.optional(S.String),
@@ -1512,7 +1483,7 @@ export const ThreatEventsTagsCreateRequestExternalReferencesItem = /*@__PURE__*/
 
 export type ThreatEventsTagsCreateRequestExternalReferencesList =
   Array<ThreatEventsTagsCreateRequestExternalReferencesItem>;
-export const ThreatEventsTagsCreateRequestExternalReferencesList = /*@__PURE__*/ S.Array(
+const ThreatEventsTagsCreateRequestExternalReferencesList = /*@__PURE__*/ S.Array(
   ThreatEventsTagsCreateRequestExternalReferencesItem,
 ) as any as S.Schema<ThreatEventsTagsCreateRequestExternalReferencesList>;
 
@@ -1524,19 +1495,14 @@ export type ThreatEventsTagsCreateRequestInternalAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestInternalAliasesItemTlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestInternalAliasesItem {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestInternalAliasesItemTlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestInternalAliasesItem =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesItem>;
-
 export type ThreatEventsTagsCreateRequestInternalAliasesList =
   Array<ThreatEventsTagsCreateRequestInternalAliasesItem>;
-export const ThreatEventsTagsCreateRequestInternalAliasesList =
+const ThreatEventsTagsCreateRequestInternalAliasesList =
   ThreatEventsTagsCreateRequestAliasesList as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesList>;
 
 export type ThreatEventsTagsCreateRequestMotiveCase1Tlp =
@@ -1547,18 +1513,13 @@ export type ThreatEventsTagsCreateRequestMotiveCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestMotiveCase1Tlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestMotiveCase1 {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestMotiveCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestMotiveCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestMotiveCase1>;
-
 export type ThreatEventsTagsCreateRequestMotive = string | ThreatEventsTagsCreateRequestMotiveCase1;
-export const ThreatEventsTagsCreateRequestMotive = /*@__PURE__*/ S.Unknown.pipe(
+const ThreatEventsTagsCreateRequestMotive = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -1570,20 +1531,15 @@ export type ThreatEventsTagsCreateRequestOpsecLevelCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestOpsecLevelCase1Tlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestOpsecLevelCase1 {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestOpsecLevelCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestOpsecLevelCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestOpsecLevelCase1>;
-
 export type ThreatEventsTagsCreateRequestOpsecLevel =
   | string
   | ThreatEventsTagsCreateRequestOpsecLevelCase1;
-export const ThreatEventsTagsCreateRequestOpsecLevel = /*@__PURE__*/ S.Unknown.pipe(
+const ThreatEventsTagsCreateRequestOpsecLevel = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -1595,20 +1551,15 @@ export type ThreatEventsTagsCreateRequestOriginCountryISOCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestOriginCountryISOCase1Tlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestOriginCountryISOCase1 {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestOriginCountryISOCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestOriginCountryISOCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestOriginCountryISOCase1>;
-
 export type ThreatEventsTagsCreateRequestOriginCountryISO =
   | string
   | ThreatEventsTagsCreateRequestOriginCountryISOCase1;
-export const ThreatEventsTagsCreateRequestOriginCountryISO = /*@__PURE__*/ S.Unknown.pipe(
+const ThreatEventsTagsCreateRequestOriginCountryISO = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -1620,32 +1571,20 @@ export type ThreatEventsTagsCreateRequestPriorityCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestPriorityCase1Tlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestPriorityCase1 {
   value: number;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestPriorityCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestPriorityCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Number,
-    confidence: S.optional(S.Number),
-    tlp: S.optional(ThreatEventsTagsCreateRequestPriorityCase1Tlp),
-  }),
-).annotate({
-  identifier: "ThreatEventsTagsCreateRequestPriorityCase1",
-}) as any as S.Schema<ThreatEventsTagsCreateRequestPriorityCase1>;
-
 export type ThreatEventsTagsCreateRequestPriority =
   | number
   | ThreatEventsTagsCreateRequestPriorityCase1;
-export const ThreatEventsTagsCreateRequestPriority = /*@__PURE__*/ S.Unknown.pipe(
+const ThreatEventsTagsCreateRequestPriority = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type ThreatEventsTagsCreateRequestPropertiesMap = { [key: string]: unknown | undefined };
-export const ThreatEventsTagsCreateRequestPropertiesMap =
+const ThreatEventsTagsCreateRequestPropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<ThreatEventsTagsCreateRequestPropertiesMap>;
 
 export type ThreatEventsTagsCreateRequestSophisticationLevelCase1Tlp =
@@ -1656,20 +1595,15 @@ export type ThreatEventsTagsCreateRequestSophisticationLevelCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestSophisticationLevelCase1Tlp = S.String;
-
 export interface ThreatEventsTagsCreateRequestSophisticationLevelCase1 {
   value: string;
   confidence?: number;
   tlp?: ThreatEventsTagsCreateRequestSophisticationLevelCase1Tlp | (string & {});
 }
-export const ThreatEventsTagsCreateRequestSophisticationLevelCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<ThreatEventsTagsCreateRequestSophisticationLevelCase1>;
-
 export type ThreatEventsTagsCreateRequestSophisticationLevel =
   | string
   | ThreatEventsTagsCreateRequestSophisticationLevelCase1;
-export const ThreatEventsTagsCreateRequestSophisticationLevel = /*@__PURE__*/ S.Unknown.pipe(
+const ThreatEventsTagsCreateRequestSophisticationLevel = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -1681,7 +1615,7 @@ export type ThreatEventsTagsCreateRequestTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateRequestTlp = S.String;
+const ThreatEventsTagsCreateRequestTlp = S.String;
 
 export interface CreateThreatEventTagRequest {
   /** Account ID. */
@@ -1718,7 +1652,7 @@ export interface CreateThreatEventTagRequest {
   /** Tag-level TLP handling marking. Optional. Allowed values: red, amber, amber-strict, green, clear, purple, amber+strict. */
   tlp?: ThreatEventsTagsCreateRequestTlp | (string & {});
 }
-export const CreateThreatEventTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     value: S.String,
@@ -1765,13 +1699,13 @@ export type ThreatEventsTagsCreateResponseActiveDurationAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseActiveDurationAnnotatedTlp = S.String;
+const ThreatEventsTagsCreateResponseActiveDurationAnnotatedTlp = S.String;
 
 export interface ThreatEventsTagsCreateResponseActiveDurationAnnotated {
   value: string;
   tlp?: ThreatEventsTagsCreateResponseActiveDurationAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseActiveDurationAnnotated = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsTagsCreateResponseActiveDurationAnnotated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseActiveDurationAnnotatedTlp)),
@@ -1788,14 +1722,14 @@ export type ThreatEventsTagsCreateResponseActorCategoryAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseActorCategoryAnnotatedTlp = S.String;
+const ThreatEventsTagsCreateResponseActorCategoryAnnotatedTlp = S.String;
 
 export interface ThreatEventsTagsCreateResponseActorCategoryAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseActorCategoryAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseActorCategoryAnnotated = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsTagsCreateResponseActorCategoryAnnotated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     confidence: S.optional(S.NullOr(S.Number)),
@@ -1813,28 +1747,26 @@ export type ThreatEventsTagsCreateResponseAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseAliasesItemTlp = S.String;
-
 export interface ThreatEventsTagsCreateResponseAliasesItem {
   value: string;
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseAliasesItemTlp | null;
 }
-export const ThreatEventsTagsCreateResponseAliasesItem =
+const ThreatEventsTagsCreateResponseAliasesItem =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseAliasesItem>;
 
 export type ThreatEventsTagsCreateResponseAliasesList =
   Array<ThreatEventsTagsCreateResponseAliasesItem>;
-export const ThreatEventsTagsCreateResponseAliasesList = /*@__PURE__*/ S.Array(
+const ThreatEventsTagsCreateResponseAliasesList = /*@__PURE__*/ S.Array(
   ThreatEventsTagsCreateResponseAliasesItem,
 ) as any as S.Schema<ThreatEventsTagsCreateResponseAliasesList>;
 
 export type ThreatEventsTagsCreateResponseAliasGroupNamesList = Array<string>;
-export const ThreatEventsTagsCreateResponseAliasGroupNamesList =
+const ThreatEventsTagsCreateResponseAliasGroupNamesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsTagsCreateResponseAliasGroupNamesList>;
 
 export type ThreatEventsTagsCreateResponseAliasGroupNamesInternalList = Array<string>;
-export const ThreatEventsTagsCreateResponseAliasGroupNamesInternalList =
+const ThreatEventsTagsCreateResponseAliasGroupNamesInternalList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsTagsCreateResponseAliasGroupNamesInternalList>;
 
 export type ThreatEventsTagsCreateResponseAttributionOrganizationAnnotatedTlp =
@@ -1845,33 +1777,32 @@ export type ThreatEventsTagsCreateResponseAttributionOrganizationAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseAttributionOrganizationAnnotatedTlp = S.String;
+const ThreatEventsTagsCreateResponseAttributionOrganizationAnnotatedTlp = S.String;
 
 export interface ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseAttributionOrganizationAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.String,
-      confidence: S.optional(S.NullOr(S.Number)),
-      tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseAttributionOrganizationAnnotatedTlp)),
-    }),
-  ).annotate({
-    identifier: "ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated",
-  }) as any as S.Schema<ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated>;
+const ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.String,
+    confidence: S.optional(S.NullOr(S.Number)),
+    tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseAttributionOrganizationAnnotatedTlp)),
+  }),
+).annotate({
+  identifier: "ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated",
+}) as any as S.Schema<ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated>;
 
 export type ThreatEventsTagsCreateResponseExternalReferenceLinksList = Array<string>;
-export const ThreatEventsTagsCreateResponseExternalReferenceLinksList =
+const ThreatEventsTagsCreateResponseExternalReferenceLinksList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferenceLinksList>;
 
 export interface ThreatEventsTagsCreateResponseExternalReferencesItem {
   url: string;
   description?: string | null;
 }
-export const ThreatEventsTagsCreateResponseExternalReferencesItem = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsTagsCreateResponseExternalReferencesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -1882,7 +1813,7 @@ export const ThreatEventsTagsCreateResponseExternalReferencesItem = /*@__PURE__*
 
 export type ThreatEventsTagsCreateResponseExternalReferencesList =
   Array<ThreatEventsTagsCreateResponseExternalReferencesItem>;
-export const ThreatEventsTagsCreateResponseExternalReferencesList = /*@__PURE__*/ S.Array(
+const ThreatEventsTagsCreateResponseExternalReferencesList = /*@__PURE__*/ S.Array(
   ThreatEventsTagsCreateResponseExternalReferencesItem,
 ) as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferencesList>;
 
@@ -1894,25 +1825,24 @@ export type ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItemTlp = S.String;
+const ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItemTlp = S.String;
 
 export interface ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem {
   value: string;
   tlp?: ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItemTlp | null;
 }
-export const ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.String,
-      tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItemTlp)),
-    }),
-  ).annotate({
-    identifier: "ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem",
-  }) as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem>;
+const ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.String,
+    tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItemTlp)),
+  }),
+).annotate({
+  identifier: "ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem",
+}) as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem>;
 
 export type ThreatEventsTagsCreateResponseExternalReferencesAnnotatedList =
   Array<ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem>;
-export const ThreatEventsTagsCreateResponseExternalReferencesAnnotatedList = /*@__PURE__*/ S.Array(
+const ThreatEventsTagsCreateResponseExternalReferencesAnnotatedList = /*@__PURE__*/ S.Array(
   ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem,
 ) as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferencesAnnotatedList>;
 
@@ -1924,19 +1854,14 @@ export type ThreatEventsTagsCreateResponseInternalAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseInternalAliasesItemTlp = S.String;
-
 export interface ThreatEventsTagsCreateResponseInternalAliasesItem {
   value: string;
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseInternalAliasesItemTlp | null;
 }
-export const ThreatEventsTagsCreateResponseInternalAliasesItem =
-  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesItem>;
-
 export type ThreatEventsTagsCreateResponseInternalAliasesList =
   Array<ThreatEventsTagsCreateResponseInternalAliasesItem>;
-export const ThreatEventsTagsCreateResponseInternalAliasesList =
+const ThreatEventsTagsCreateResponseInternalAliasesList =
   ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesList>;
 
 export type ThreatEventsTagsCreateResponseMotiveAnnotatedTlp =
@@ -1947,14 +1872,12 @@ export type ThreatEventsTagsCreateResponseMotiveAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseMotiveAnnotatedTlp = S.String;
-
 export interface ThreatEventsTagsCreateResponseMotiveAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseMotiveAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseMotiveAnnotated =
+const ThreatEventsTagsCreateResponseMotiveAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseMotiveAnnotated>;
 
 export type ThreatEventsTagsCreateResponseOpsecLevelAnnotatedTlp =
@@ -1965,14 +1888,12 @@ export type ThreatEventsTagsCreateResponseOpsecLevelAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseOpsecLevelAnnotatedTlp = S.String;
-
 export interface ThreatEventsTagsCreateResponseOpsecLevelAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseOpsecLevelAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseOpsecLevelAnnotated =
+const ThreatEventsTagsCreateResponseOpsecLevelAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseOpsecLevelAnnotated>;
 
 export type ThreatEventsTagsCreateResponseOriginCountryISOAnnotatedTlp =
@@ -1983,14 +1904,12 @@ export type ThreatEventsTagsCreateResponseOriginCountryISOAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseOriginCountryISOAnnotatedTlp = S.String;
-
 export interface ThreatEventsTagsCreateResponseOriginCountryISOAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseOriginCountryISOAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseOriginCountryISOAnnotated =
+const ThreatEventsTagsCreateResponseOriginCountryISOAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ThreatEventsTagsCreateResponseOriginCountryISOAnnotated>;
 
 export type ThreatEventsTagsCreateResponsePriorityAnnotatedTlp =
@@ -2001,13 +1920,13 @@ export type ThreatEventsTagsCreateResponsePriorityAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponsePriorityAnnotatedTlp = S.String;
+const ThreatEventsTagsCreateResponsePriorityAnnotatedTlp = S.String;
 
 export interface ThreatEventsTagsCreateResponsePriorityAnnotated {
   value: number;
   tlp?: ThreatEventsTagsCreateResponsePriorityAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponsePriorityAnnotated = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsTagsCreateResponsePriorityAnnotated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.Number,
     tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponsePriorityAnnotatedTlp)),
@@ -2017,7 +1936,7 @@ export const ThreatEventsTagsCreateResponsePriorityAnnotated = /*@__PURE__*/ S.s
 }) as any as S.Schema<ThreatEventsTagsCreateResponsePriorityAnnotated>;
 
 export type ThreatEventsTagsCreateResponsePropertiesMap = { [key: string]: unknown | undefined };
-export const ThreatEventsTagsCreateResponsePropertiesMap =
+const ThreatEventsTagsCreateResponsePropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<ThreatEventsTagsCreateResponsePropertiesMap>;
 
 export type ThreatEventsTagsCreateResponseSophisticationLevelAnnotatedTlp =
@@ -2028,20 +1947,19 @@ export type ThreatEventsTagsCreateResponseSophisticationLevelAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseSophisticationLevelAnnotatedTlp = S.String;
+const ThreatEventsTagsCreateResponseSophisticationLevelAnnotatedTlp = S.String;
 
 export interface ThreatEventsTagsCreateResponseSophisticationLevelAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ThreatEventsTagsCreateResponseSophisticationLevelAnnotatedTlp | null;
 }
-export const ThreatEventsTagsCreateResponseSophisticationLevelAnnotated = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.String,
-      confidence: S.optional(S.NullOr(S.Number)),
-      tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseSophisticationLevelAnnotatedTlp)),
-    }),
+const ThreatEventsTagsCreateResponseSophisticationLevelAnnotated = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.String,
+    confidence: S.optional(S.NullOr(S.Number)),
+    tlp: S.optional(S.NullOr(ThreatEventsTagsCreateResponseSophisticationLevelAnnotatedTlp)),
+  }),
 ).annotate({
   identifier: "ThreatEventsTagsCreateResponseSophisticationLevelAnnotated",
 }) as any as S.Schema<ThreatEventsTagsCreateResponseSophisticationLevelAnnotated>;
@@ -2054,7 +1972,7 @@ export type ThreatEventsTagsCreateResponseTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ThreatEventsTagsCreateResponseTlp = S.String;
+const ThreatEventsTagsCreateResponseTlp = S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateThreatEventTagResponse {
@@ -2103,7 +2021,7 @@ export interface CreateThreatEventTagResponse {
   updatedAt?: string | null;
   version?: number | null;
 }
-export const CreateThreatEventTagResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatEventTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
     value: S.String,
@@ -2188,7 +2106,7 @@ export interface CreateThreatSignalsArticlesTagRequest {
   articleId: string;
   tagId: string;
 }
-export const CreateThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.String.pipe(T.Label("article_id")),
@@ -2207,7 +2125,7 @@ export const CreateThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateThreatSignalsArticlesTagRequest>;
 
 export type CreateThreatSignalsArticlesTagResponseAppliedBy = "ai" | "analyst" | "system";
-export const CreateThreatSignalsArticlesTagResponseAppliedBy = S.String;
+const CreateThreatSignalsArticlesTagResponseAppliedBy = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateThreatSignalsArticlesTagResponse {
@@ -2216,7 +2134,7 @@ export interface CreateThreatSignalsArticlesTagResponse {
   uuid: string;
   value: string;
 }
-export const CreateThreatSignalsArticlesTagResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatSignalsArticlesTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedBy: CreateThreatSignalsArticlesTagResponseAppliedBy.pipe(T.Body("applied_by")),
     categoryId: S.String,
@@ -2236,7 +2154,7 @@ export type CreateThreatSignalsFeedRequestCategoryId =
   | "bb0e4a94-38ab-5c14-80a7-28cee9f4b139"
   | "b1ef66d9-a73c-58dc-b269-22d34dfd11f4"
   | "ab02a976-0a20-5c76-a553-7f6325afacfe";
-export const CreateThreatSignalsFeedRequestCategoryId = S.String;
+const CreateThreatSignalsFeedRequestCategoryId = S.String;
 
 export interface CreateThreatSignalsFeedRequest {
   accountId: string;
@@ -2249,7 +2167,7 @@ export interface CreateThreatSignalsFeedRequest {
   title?: string;
   url?: string;
 }
-export const CreateThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.optional(CreateThreatSignalsFeedRequestCategoryId.pipe(T.Body("category_id"))),
@@ -2295,7 +2213,7 @@ export interface CreateThreatSignalsFeedResponse {
   updatedAt: string;
   url: string;
 }
-export const CreateThreatSignalsFeedResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatSignalsFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     categoryId: S.String.pipe(T.Body("category_id")),
@@ -2318,7 +2236,7 @@ export const CreateThreatSignalsFeedResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateThreatSignalsFeedResponse>;
 
 export type CreateThreatSignalsSkillRequestType = "summary" | "tags";
-export const CreateThreatSignalsSkillRequestType = S.String;
+const CreateThreatSignalsSkillRequestType = S.String;
 
 export interface CreateThreatSignalsSkillRequest {
   accountId: string;
@@ -2327,7 +2245,7 @@ export interface CreateThreatSignalsSkillRequest {
   prompt: string;
   type: CreateThreatSignalsSkillRequestType | (string & {});
 }
-export const CreateThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -2348,7 +2266,7 @@ export const CreateThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateThreatSignalsSkillRequest>;
 
 export type CreateThreatSignalsSkillResponseSource = "default" | "custom";
-export const CreateThreatSignalsSkillResponseSource = S.String;
+const CreateThreatSignalsSkillResponseSource = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateThreatSignalsSkillResponse {
@@ -2367,7 +2285,7 @@ export interface CreateThreatSignalsSkillResponse {
   type: string;
   updatedAt: string;
 }
-export const CreateThreatSignalsSkillResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatSignalsSkillResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     config: S.String,
@@ -2390,7 +2308,7 @@ export interface DeleteRequestRequest {
   /** UUID. */
   requestId: string;
 }
-export const DeleteRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -2406,7 +2324,7 @@ export const DeleteRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRequestRequest" }) as any as S.Schema<DeleteRequestRequest>;
 
 export interface DeleteRequestResponse {}
-export const DeleteRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteRequestResponse" }) as any as S.Schema<DeleteRequestResponse>;
 
@@ -2418,7 +2336,7 @@ export interface DeleteRequestAssetRequest {
   /** UUID. */
   assetId: string;
 }
-export const DeleteRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -2437,7 +2355,7 @@ export const DeleteRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRequestAssetRequest>;
 
 export interface DeleteRequestAssetResponse {}
-export const DeleteRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteRequestAssetResponse",
@@ -2450,7 +2368,7 @@ export interface DeleteRequestMessageRequest {
   requestId: string;
   messageId: number;
 }
-export const DeleteRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -2469,7 +2387,7 @@ export const DeleteRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRequestMessageRequest>;
 
 export interface DeleteRequestMessageResponse {}
-export const DeleteRequestMessageResponse =
+const DeleteRequestMessageResponse =
   DeleteRequestAssetResponse as any as S.Schema<DeleteRequestMessageResponse>;
 
 export interface DeleteRequestPriorityRequest {
@@ -2478,7 +2396,7 @@ export interface DeleteRequestPriorityRequest {
   /** UUID. */
   priorityId: string;
 }
-export const DeleteRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     priorityId: S.String.pipe(T.Label("priority_id")),
@@ -2496,7 +2414,7 @@ export const DeleteRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRequestPriorityRequest>;
 
 export interface DeleteRequestPriorityResponse {}
-export const DeleteRequestPriorityResponse =
+const DeleteRequestPriorityResponse =
   DeleteRequestAssetResponse as any as S.Schema<DeleteRequestPriorityResponse>;
 
 export interface DeleteScanConfigRequest {
@@ -2505,7 +2423,7 @@ export interface DeleteScanConfigRequest {
   /** Defines the Config ID. */
   configId: string;
 }
-export const DeleteScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     configId: S.String.pipe(T.Label("config_id")),
@@ -2521,7 +2439,7 @@ export const DeleteScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScanConfigRequest" }) as any as S.Schema<DeleteScanConfigRequest>;
 
 export type DeleteScanConfigResponse = unknown;
-export const DeleteScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteScanConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteScanConfigResponse" }) as any as S.Schema<DeleteScanConfigResponse>;
 
@@ -2531,7 +2449,7 @@ export interface DeleteThreatEventCategoryRequest {
   /** Category UUID. */
   categoryId: string;
 }
-export const DeleteThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
@@ -2552,7 +2470,7 @@ export const DeleteThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteThreatEventCategoryResponse {
   uuid: string;
 }
-export const DeleteThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2566,7 +2484,7 @@ export interface DeleteThreatEventEventTagRequest {
   /** Event UUID. */
   eventId: string;
 }
-export const DeleteThreatEventEventTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventEventTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
@@ -2587,7 +2505,7 @@ export const DeleteThreatEventEventTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteThreatEventEventTagResponse {
   success: boolean;
 }
-export const DeleteThreatEventEventTagResponse =
+const DeleteThreatEventEventTagResponse =
   CreateThreatEventEventTagResponse as any as S.Schema<DeleteThreatEventEventTagResponse>;
 
 export interface DeleteThreatEventRelateRequest {
@@ -2596,7 +2514,7 @@ export interface DeleteThreatEventRelateRequest {
   /** Event UUID. */
   eventId: string;
 }
-export const DeleteThreatEventRelateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventRelateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
@@ -2617,7 +2535,7 @@ export const DeleteThreatEventRelateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteThreatEventRelateResponse {
   success: boolean;
 }
-export const DeleteThreatEventRelateResponse =
+const DeleteThreatEventRelateResponse =
   CreateThreatEventEventTagResponse as any as S.Schema<DeleteThreatEventRelateResponse>;
 
 export interface DeleteThreatEventsDatasetRequest {
@@ -2626,7 +2544,7 @@ export interface DeleteThreatEventsDatasetRequest {
   /** Dataset ID to delete */
   datasetId: string;
 }
-export const DeleteThreatEventsDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventsDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -2648,7 +2566,7 @@ export interface DeleteThreatEventsDatasetResponse {
   name: string;
   uuid: string;
 }
-export const DeleteThreatEventsDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventsDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uuid: S.String,
@@ -2663,7 +2581,7 @@ export interface DeleteThreatEventsQueryRequest {
   /** Event query ID */
   queryId: number;
 }
-export const DeleteThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queryId: S.Number.pipe(T.Label("query_id")),
@@ -2681,7 +2599,7 @@ export const DeleteThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteThreatEventsQueryRequest>;
 
 export interface DeleteThreatEventsQueryResponse {}
-export const DeleteThreatEventsQueryResponse =
+const DeleteThreatEventsQueryResponse =
   DeleteRequestAssetResponse as any as S.Schema<DeleteThreatEventsQueryResponse>;
 
 export interface DeleteThreatEventsTagRequest {
@@ -2690,7 +2608,7 @@ export interface DeleteThreatEventsTagRequest {
   /** Tag UUID. */
   tagUuid: string;
 }
-export const DeleteThreatEventsTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventsTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tagUuid: S.String.pipe(T.Label("tag_uuid")),
@@ -2711,7 +2629,7 @@ export const DeleteThreatEventsTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteThreatEventsTagResponse {
   uuid: string;
 }
-export const DeleteThreatEventsTagResponse =
+const DeleteThreatEventsTagResponse =
   DeleteThreatEventCategoryResponse as any as S.Schema<DeleteThreatEventsTagResponse>;
 
 export interface DeleteThreatEventsTagsCategoryRequest {
@@ -2720,7 +2638,7 @@ export interface DeleteThreatEventsTagsCategoryRequest {
   /** Tag Category UUID. */
   categoryUuid: string;
 }
-export const DeleteThreatEventsTagsCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatEventsTagsCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryUuid: S.String.pipe(T.Label("category_uuid")),
@@ -2741,7 +2659,7 @@ export const DeleteThreatEventsTagsCategoryRequest = /*@__PURE__*/ S.suspend(() 
 export interface DeleteThreatEventsTagsCategoryResponse {
   uuid: string;
 }
-export const DeleteThreatEventsTagsCategoryResponse =
+const DeleteThreatEventsTagsCategoryResponse =
   DeleteThreatEventCategoryResponse as any as S.Schema<DeleteThreatEventsTagsCategoryResponse>;
 
 export interface DeleteThreatSignalsArticlesTagRequest {
@@ -2749,7 +2667,7 @@ export interface DeleteThreatSignalsArticlesTagRequest {
   articleId: string;
   tagId: string;
 }
-export const DeleteThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.String.pipe(T.Label("article_id")),
@@ -2768,8 +2686,6 @@ export const DeleteThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteThreatSignalsArticlesTagRequest>;
 
 export type DeleteThreatSignalsArticlesTagResponseAppliedBy = "ai" | "analyst" | "system";
-export const DeleteThreatSignalsArticlesTagResponseAppliedBy = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteThreatSignalsArticlesTagResponse {
   appliedBy: DeleteThreatSignalsArticlesTagResponseAppliedBy;
@@ -2777,14 +2693,14 @@ export interface DeleteThreatSignalsArticlesTagResponse {
   uuid: string;
   value: string;
 }
-export const DeleteThreatSignalsArticlesTagResponse =
+const DeleteThreatSignalsArticlesTagResponse =
   CreateThreatSignalsArticlesTagResponse as any as S.Schema<DeleteThreatSignalsArticlesTagResponse>;
 
 export interface DeleteThreatSignalsFeedRequest {
   accountId: string;
   feedId: string;
 }
-export const DeleteThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.String.pipe(T.Label("feed_id")),
@@ -2824,14 +2740,14 @@ export interface DeleteThreatSignalsFeedResponse {
   updatedAt: string;
   url: string;
 }
-export const DeleteThreatSignalsFeedResponse =
+const DeleteThreatSignalsFeedResponse =
   CreateThreatSignalsFeedResponse as any as S.Schema<DeleteThreatSignalsFeedResponse>;
 
 export interface DeleteThreatSignalsSkillRequest {
   accountId: string;
   skillId: string;
 }
-export const DeleteThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     skillId: S.String.pipe(T.Label("skill_id")),
@@ -2849,8 +2765,6 @@ export const DeleteThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteThreatSignalsSkillRequest>;
 
 export type DeleteThreatSignalsSkillResponseSource = "default" | "custom";
-export const DeleteThreatSignalsSkillResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteThreatSignalsSkillResponse {
   id: string;
@@ -2868,7 +2782,7 @@ export interface DeleteThreatSignalsSkillResponse {
   type: string;
   updatedAt: string;
 }
-export const DeleteThreatSignalsSkillResponse =
+const DeleteThreatSignalsSkillResponse =
   CreateThreatSignalsSkillResponse as any as S.Schema<DeleteThreatSignalsSkillResponse>;
 
 export interface EditThreatEventsQueryRequest {
@@ -2889,7 +2803,7 @@ export interface EditThreatEventsQueryRequest {
   /** Scope for the rule */
   ruleScope?: string;
 }
-export const EditThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const EditThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queryId: S.Number.pipe(T.Label("query_id")),
@@ -2941,7 +2855,7 @@ export interface EditThreatEventsQueryResponse {
   /** Scope for the rule */
   ruleScope?: string | null;
 }
-export const EditThreatEventsQueryResponse =
+const EditThreatEventsQueryResponse =
   CreateThreatEventsQueryResponse as any as S.Schema<EditThreatEventsQueryResponse>;
 
 export type EditThreatEventsTagRequestActiveDurationCase1Tlp =
@@ -2952,20 +2866,15 @@ export type EditThreatEventsTagRequestActiveDurationCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestActiveDurationCase1Tlp = S.String;
-
 export interface EditThreatEventsTagRequestActiveDurationCase1 {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestActiveDurationCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestActiveDurationCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestActiveDurationCase1>;
-
 export type EditThreatEventsTagRequestActiveDuration =
   | string
   | EditThreatEventsTagRequestActiveDurationCase1;
-export const EditThreatEventsTagRequestActiveDuration = /*@__PURE__*/ S.Unknown.pipe(
+const EditThreatEventsTagRequestActiveDuration = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -2977,20 +2886,15 @@ export type EditThreatEventsTagRequestActorCategoryCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestActorCategoryCase1Tlp = S.String;
-
 export interface EditThreatEventsTagRequestActorCategoryCase1 {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestActorCategoryCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestActorCategoryCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestActorCategoryCase1>;
-
 export type EditThreatEventsTagRequestActorCategory =
   | string
   | EditThreatEventsTagRequestActorCategoryCase1;
-export const EditThreatEventsTagRequestActorCategory = /*@__PURE__*/ S.Unknown.pipe(
+const EditThreatEventsTagRequestActorCategory = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -3002,26 +2906,21 @@ export type EditThreatEventsTagRequestAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestAliasesItemTlp = S.String;
-
 export interface EditThreatEventsTagRequestAliasesItem {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestAliasesItemTlp | (string & {});
 }
-export const EditThreatEventsTagRequestAliasesItem =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestAliasesItem>;
-
 export type EditThreatEventsTagRequestAliasesList = Array<EditThreatEventsTagRequestAliasesItem>;
-export const EditThreatEventsTagRequestAliasesList =
+const EditThreatEventsTagRequestAliasesList =
   ThreatEventsTagsCreateRequestAliasesList as any as S.Schema<EditThreatEventsTagRequestAliasesList>;
 
 export type EditThreatEventsTagRequestAliasGroupNamesList = Array<string>;
-export const EditThreatEventsTagRequestAliasGroupNamesList =
+const EditThreatEventsTagRequestAliasGroupNamesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<EditThreatEventsTagRequestAliasGroupNamesList>;
 
 export type EditThreatEventsTagRequestAliasGroupNamesInternalList = Array<string>;
-export const EditThreatEventsTagRequestAliasGroupNamesInternalList =
+const EditThreatEventsTagRequestAliasGroupNamesInternalList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<EditThreatEventsTagRequestAliasGroupNamesInternalList>;
 
 export type EditThreatEventsTagRequestAttributionOrganizationCase1Tlp =
@@ -3032,35 +2931,27 @@ export type EditThreatEventsTagRequestAttributionOrganizationCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestAttributionOrganizationCase1Tlp = S.String;
-
 export interface EditThreatEventsTagRequestAttributionOrganizationCase1 {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestAttributionOrganizationCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestAttributionOrganizationCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestAttributionOrganizationCase1>;
-
 export type EditThreatEventsTagRequestAttributionOrganization =
   | string
   | EditThreatEventsTagRequestAttributionOrganizationCase1;
-export const EditThreatEventsTagRequestAttributionOrganization = /*@__PURE__*/ S.Unknown.pipe(
+const EditThreatEventsTagRequestAttributionOrganization = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestExternalReferenceLinksList = Array<string>;
-export const EditThreatEventsTagRequestExternalReferenceLinksList =
+const EditThreatEventsTagRequestExternalReferenceLinksList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<EditThreatEventsTagRequestExternalReferenceLinksList>;
 
 export type EditThreatEventsTagRequestExternalReferencesItem =
   ThreatEventsTagsCreateRequestExternalReferencesItem;
-export const EditThreatEventsTagRequestExternalReferencesItem =
-  ThreatEventsTagsCreateRequestExternalReferencesItem;
-
 export type EditThreatEventsTagRequestExternalReferencesList =
   Array<ThreatEventsTagsCreateRequestExternalReferencesItem>;
-export const EditThreatEventsTagRequestExternalReferencesList =
+const EditThreatEventsTagRequestExternalReferencesList =
   ThreatEventsTagsCreateRequestExternalReferencesList as any as S.Schema<EditThreatEventsTagRequestExternalReferencesList>;
 
 export type EditThreatEventsTagRequestInternalAliasesItemTlp =
@@ -3071,19 +2962,14 @@ export type EditThreatEventsTagRequestInternalAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestInternalAliasesItemTlp = S.String;
-
 export interface EditThreatEventsTagRequestInternalAliasesItem {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestInternalAliasesItemTlp | (string & {});
 }
-export const EditThreatEventsTagRequestInternalAliasesItem =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestInternalAliasesItem>;
-
 export type EditThreatEventsTagRequestInternalAliasesList =
   Array<EditThreatEventsTagRequestInternalAliasesItem>;
-export const EditThreatEventsTagRequestInternalAliasesList =
+const EditThreatEventsTagRequestInternalAliasesList =
   ThreatEventsTagsCreateRequestAliasesList as any as S.Schema<EditThreatEventsTagRequestInternalAliasesList>;
 
 export type EditThreatEventsTagRequestMotiveCase1Tlp =
@@ -3094,18 +2980,13 @@ export type EditThreatEventsTagRequestMotiveCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestMotiveCase1Tlp = S.String;
-
 export interface EditThreatEventsTagRequestMotiveCase1 {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestMotiveCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestMotiveCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestMotiveCase1>;
-
 export type EditThreatEventsTagRequestMotive = string | EditThreatEventsTagRequestMotiveCase1;
-export const EditThreatEventsTagRequestMotive = /*@__PURE__*/ S.Unknown.pipe(
+const EditThreatEventsTagRequestMotive = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -3117,20 +2998,15 @@ export type EditThreatEventsTagRequestOpsecLevelCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestOpsecLevelCase1Tlp = S.String;
-
 export interface EditThreatEventsTagRequestOpsecLevelCase1 {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestOpsecLevelCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestOpsecLevelCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestOpsecLevelCase1>;
-
 export type EditThreatEventsTagRequestOpsecLevel =
   | string
   | EditThreatEventsTagRequestOpsecLevelCase1;
-export const EditThreatEventsTagRequestOpsecLevel = /*@__PURE__*/ S.Unknown.pipe(
+const EditThreatEventsTagRequestOpsecLevel = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -3142,20 +3018,15 @@ export type EditThreatEventsTagRequestOriginCountryISOCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestOriginCountryISOCase1Tlp = S.String;
-
 export interface EditThreatEventsTagRequestOriginCountryISOCase1 {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestOriginCountryISOCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestOriginCountryISOCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestOriginCountryISOCase1>;
-
 export type EditThreatEventsTagRequestOriginCountryISO =
   | string
   | EditThreatEventsTagRequestOriginCountryISOCase1;
-export const EditThreatEventsTagRequestOriginCountryISO = /*@__PURE__*/ S.Unknown.pipe(
+const EditThreatEventsTagRequestOriginCountryISO = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -3167,23 +3038,18 @@ export type EditThreatEventsTagRequestPriorityCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestPriorityCase1Tlp = S.String;
-
 export interface EditThreatEventsTagRequestPriorityCase1 {
   value: number;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestPriorityCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestPriorityCase1 =
-  ThreatEventsTagsCreateRequestPriorityCase1 as any as S.Schema<EditThreatEventsTagRequestPriorityCase1>;
-
 export type EditThreatEventsTagRequestPriority = number | EditThreatEventsTagRequestPriorityCase1;
-export const EditThreatEventsTagRequestPriority = /*@__PURE__*/ S.Unknown.pipe(
+const EditThreatEventsTagRequestPriority = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
 export type EditThreatEventsTagRequestPropertiesMap = { [key: string]: unknown | undefined };
-export const EditThreatEventsTagRequestPropertiesMap =
+const EditThreatEventsTagRequestPropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<EditThreatEventsTagRequestPropertiesMap>;
 
 export type EditThreatEventsTagRequestSophisticationLevelCase1Tlp =
@@ -3194,20 +3060,15 @@ export type EditThreatEventsTagRequestSophisticationLevelCase1Tlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestSophisticationLevelCase1Tlp = S.String;
-
 export interface EditThreatEventsTagRequestSophisticationLevelCase1 {
   value: string;
   confidence?: number;
   tlp?: EditThreatEventsTagRequestSophisticationLevelCase1Tlp | (string & {});
 }
-export const EditThreatEventsTagRequestSophisticationLevelCase1 =
-  ThreatEventsTagsCreateRequestActiveDurationCase1 as any as S.Schema<EditThreatEventsTagRequestSophisticationLevelCase1>;
-
 export type EditThreatEventsTagRequestSophisticationLevel =
   | string
   | EditThreatEventsTagRequestSophisticationLevelCase1;
-export const EditThreatEventsTagRequestSophisticationLevel = /*@__PURE__*/ S.Unknown.pipe(
+const EditThreatEventsTagRequestSophisticationLevel = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]),
 );
 
@@ -3219,7 +3080,7 @@ export type EditThreatEventsTagRequestTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagRequestTlp = S.String;
+const EditThreatEventsTagRequestTlp = S.String;
 
 export interface EditThreatEventsTagRequest {
   /** Account ID. */
@@ -3258,7 +3119,7 @@ export interface EditThreatEventsTagRequest {
   tlp?: EditThreatEventsTagRequestTlp | (string & {});
   value?: string;
 }
-export const EditThreatEventsTagRequest = /*@__PURE__*/ S.suspend(() =>
+const EditThreatEventsTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tagUuid: S.String.pipe(T.Label("tag_uuid")),
@@ -3306,13 +3167,11 @@ export type EditThreatEventsTagResponseActiveDurationAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseActiveDurationAnnotatedTlp = S.String;
-
 export interface EditThreatEventsTagResponseActiveDurationAnnotated {
   value: string;
   tlp?: EditThreatEventsTagResponseActiveDurationAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseActiveDurationAnnotated =
+const EditThreatEventsTagResponseActiveDurationAnnotated =
   ThreatEventsTagsCreateResponseActiveDurationAnnotated as any as S.Schema<EditThreatEventsTagResponseActiveDurationAnnotated>;
 
 export type EditThreatEventsTagResponseActorCategoryAnnotatedTlp =
@@ -3323,14 +3182,12 @@ export type EditThreatEventsTagResponseActorCategoryAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseActorCategoryAnnotatedTlp = S.String;
-
 export interface EditThreatEventsTagResponseActorCategoryAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseActorCategoryAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseActorCategoryAnnotated =
+const EditThreatEventsTagResponseActorCategoryAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseActorCategoryAnnotated>;
 
 export type EditThreatEventsTagResponseAliasesItemTlp =
@@ -3341,26 +3198,21 @@ export type EditThreatEventsTagResponseAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseAliasesItemTlp = S.String;
-
 export interface EditThreatEventsTagResponseAliasesItem {
   value: string;
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseAliasesItemTlp | null;
 }
-export const EditThreatEventsTagResponseAliasesItem =
-  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseAliasesItem>;
-
 export type EditThreatEventsTagResponseAliasesList = Array<EditThreatEventsTagResponseAliasesItem>;
-export const EditThreatEventsTagResponseAliasesList =
+const EditThreatEventsTagResponseAliasesList =
   ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<EditThreatEventsTagResponseAliasesList>;
 
 export type EditThreatEventsTagResponseAliasGroupNamesList = Array<string>;
-export const EditThreatEventsTagResponseAliasGroupNamesList =
+const EditThreatEventsTagResponseAliasGroupNamesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<EditThreatEventsTagResponseAliasGroupNamesList>;
 
 export type EditThreatEventsTagResponseAliasGroupNamesInternalList = Array<string>;
-export const EditThreatEventsTagResponseAliasGroupNamesInternalList =
+const EditThreatEventsTagResponseAliasGroupNamesInternalList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<EditThreatEventsTagResponseAliasGroupNamesInternalList>;
 
 export type EditThreatEventsTagResponseAttributionOrganizationAnnotatedTlp =
@@ -3371,28 +3223,23 @@ export type EditThreatEventsTagResponseAttributionOrganizationAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseAttributionOrganizationAnnotatedTlp = S.String;
-
 export interface EditThreatEventsTagResponseAttributionOrganizationAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseAttributionOrganizationAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseAttributionOrganizationAnnotated =
+const EditThreatEventsTagResponseAttributionOrganizationAnnotated =
   ThreatEventsTagsCreateResponseSophisticationLevelAnnotated as any as S.Schema<EditThreatEventsTagResponseAttributionOrganizationAnnotated>;
 
 export type EditThreatEventsTagResponseExternalReferenceLinksList = Array<string>;
-export const EditThreatEventsTagResponseExternalReferenceLinksList =
+const EditThreatEventsTagResponseExternalReferenceLinksList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<EditThreatEventsTagResponseExternalReferenceLinksList>;
 
 export type EditThreatEventsTagResponseExternalReferencesItem =
   ThreatEventsTagsCreateResponseExternalReferencesItem;
-export const EditThreatEventsTagResponseExternalReferencesItem =
-  ThreatEventsTagsCreateResponseExternalReferencesItem;
-
 export type EditThreatEventsTagResponseExternalReferencesList =
   Array<ThreatEventsTagsCreateResponseExternalReferencesItem>;
-export const EditThreatEventsTagResponseExternalReferencesList =
+const EditThreatEventsTagResponseExternalReferencesList =
   ThreatEventsTagsCreateResponseExternalReferencesList as any as S.Schema<EditThreatEventsTagResponseExternalReferencesList>;
 
 export type EditThreatEventsTagResponseExternalReferencesAnnotatedItemTlp =
@@ -3403,25 +3250,24 @@ export type EditThreatEventsTagResponseExternalReferencesAnnotatedItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseExternalReferencesAnnotatedItemTlp = S.String;
+const EditThreatEventsTagResponseExternalReferencesAnnotatedItemTlp = S.String;
 
 export interface EditThreatEventsTagResponseExternalReferencesAnnotatedItem {
   value: string;
   tlp?: EditThreatEventsTagResponseExternalReferencesAnnotatedItemTlp | null;
 }
-export const EditThreatEventsTagResponseExternalReferencesAnnotatedItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.String,
-      tlp: S.optional(S.NullOr(EditThreatEventsTagResponseExternalReferencesAnnotatedItemTlp)),
-    }),
+const EditThreatEventsTagResponseExternalReferencesAnnotatedItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.String,
+    tlp: S.optional(S.NullOr(EditThreatEventsTagResponseExternalReferencesAnnotatedItemTlp)),
+  }),
 ).annotate({
   identifier: "EditThreatEventsTagResponseExternalReferencesAnnotatedItem",
 }) as any as S.Schema<EditThreatEventsTagResponseExternalReferencesAnnotatedItem>;
 
 export type EditThreatEventsTagResponseExternalReferencesAnnotatedList =
   Array<EditThreatEventsTagResponseExternalReferencesAnnotatedItem>;
-export const EditThreatEventsTagResponseExternalReferencesAnnotatedList = /*@__PURE__*/ S.Array(
+const EditThreatEventsTagResponseExternalReferencesAnnotatedList = /*@__PURE__*/ S.Array(
   EditThreatEventsTagResponseExternalReferencesAnnotatedItem,
 ) as any as S.Schema<EditThreatEventsTagResponseExternalReferencesAnnotatedList>;
 
@@ -3433,19 +3279,14 @@ export type EditThreatEventsTagResponseInternalAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseInternalAliasesItemTlp = S.String;
-
 export interface EditThreatEventsTagResponseInternalAliasesItem {
   value: string;
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseInternalAliasesItemTlp | null;
 }
-export const EditThreatEventsTagResponseInternalAliasesItem =
-  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseInternalAliasesItem>;
-
 export type EditThreatEventsTagResponseInternalAliasesList =
   Array<EditThreatEventsTagResponseInternalAliasesItem>;
-export const EditThreatEventsTagResponseInternalAliasesList =
+const EditThreatEventsTagResponseInternalAliasesList =
   ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<EditThreatEventsTagResponseInternalAliasesList>;
 
 export type EditThreatEventsTagResponseMotiveAnnotatedTlp =
@@ -3456,14 +3297,12 @@ export type EditThreatEventsTagResponseMotiveAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseMotiveAnnotatedTlp = S.String;
-
 export interface EditThreatEventsTagResponseMotiveAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseMotiveAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseMotiveAnnotated =
+const EditThreatEventsTagResponseMotiveAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseMotiveAnnotated>;
 
 export type EditThreatEventsTagResponseOpsecLevelAnnotatedTlp =
@@ -3474,14 +3313,12 @@ export type EditThreatEventsTagResponseOpsecLevelAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseOpsecLevelAnnotatedTlp = S.String;
-
 export interface EditThreatEventsTagResponseOpsecLevelAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseOpsecLevelAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseOpsecLevelAnnotated =
+const EditThreatEventsTagResponseOpsecLevelAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseOpsecLevelAnnotated>;
 
 export type EditThreatEventsTagResponseOriginCountryISOAnnotatedTlp =
@@ -3492,14 +3329,12 @@ export type EditThreatEventsTagResponseOriginCountryISOAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseOriginCountryISOAnnotatedTlp = S.String;
-
 export interface EditThreatEventsTagResponseOriginCountryISOAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseOriginCountryISOAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseOriginCountryISOAnnotated =
+const EditThreatEventsTagResponseOriginCountryISOAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseOriginCountryISOAnnotated>;
 
 export type EditThreatEventsTagResponsePriorityAnnotatedTlp =
@@ -3510,17 +3345,15 @@ export type EditThreatEventsTagResponsePriorityAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponsePriorityAnnotatedTlp = S.String;
-
 export interface EditThreatEventsTagResponsePriorityAnnotated {
   value: number;
   tlp?: EditThreatEventsTagResponsePriorityAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponsePriorityAnnotated =
+const EditThreatEventsTagResponsePriorityAnnotated =
   ThreatEventsTagsCreateResponsePriorityAnnotated as any as S.Schema<EditThreatEventsTagResponsePriorityAnnotated>;
 
 export type EditThreatEventsTagResponsePropertiesMap = { [key: string]: unknown | undefined };
-export const EditThreatEventsTagResponsePropertiesMap =
+const EditThreatEventsTagResponsePropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<EditThreatEventsTagResponsePropertiesMap>;
 
 export type EditThreatEventsTagResponseSophisticationLevelAnnotatedTlp =
@@ -3531,14 +3364,12 @@ export type EditThreatEventsTagResponseSophisticationLevelAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseSophisticationLevelAnnotatedTlp = S.String;
-
 export interface EditThreatEventsTagResponseSophisticationLevelAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: EditThreatEventsTagResponseSophisticationLevelAnnotatedTlp | null;
 }
-export const EditThreatEventsTagResponseSophisticationLevelAnnotated =
+const EditThreatEventsTagResponseSophisticationLevelAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<EditThreatEventsTagResponseSophisticationLevelAnnotated>;
 
 export type EditThreatEventsTagResponseTlp =
@@ -3549,7 +3380,7 @@ export type EditThreatEventsTagResponseTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const EditThreatEventsTagResponseTlp = S.String;
+const EditThreatEventsTagResponseTlp = S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface EditThreatEventsTagResponse {
@@ -3598,7 +3429,7 @@ export interface EditThreatEventsTagResponse {
   updatedAt?: string | null;
   version?: number | null;
 }
-export const EditThreatEventsTagResponse = /*@__PURE__*/ S.suspend(() =>
+const EditThreatEventsTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
     value: S.String,
@@ -3683,40 +3514,34 @@ export type EditThreatEventsTagsCategoryRequestSchemaItemKind =
   | "date"
   | "array"
   | "object";
-export const EditThreatEventsTagsCategoryRequestSchemaItemKind = S.String;
+const EditThreatEventsTagsCategoryRequestSchemaItemKind = S.String;
 
 export type EditThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList = Array<string>;
-export const EditThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList =
+const EditThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<EditThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList>;
 
 export type EditThreatEventsTagsCategoryRequestSchemaItemAnnotations =
   CreateThreatEventsTagsCategoryRequestSchemaItemAnnotations;
-export const EditThreatEventsTagsCategoryRequestSchemaItemAnnotations =
-  CreateThreatEventsTagsCategoryRequestSchemaItemAnnotations;
-
 export type EditThreatEventsTagsCategoryRequestSchemaItemDeprecatedValuesList = Array<string>;
-export const EditThreatEventsTagsCategoryRequestSchemaItemDeprecatedValuesList =
+const EditThreatEventsTagsCategoryRequestSchemaItemDeprecatedValuesList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<EditThreatEventsTagsCategoryRequestSchemaItemDeprecatedValuesList>;
 
 export type EditThreatEventsTagsCategoryRequestSchemaItemEnforcement = "error" | "warn" | "off";
-export const EditThreatEventsTagsCategoryRequestSchemaItemEnforcement = S.String;
+const EditThreatEventsTagsCategoryRequestSchemaItemEnforcement = S.String;
 
 export type EditThreatEventsTagsCategoryRequestSchemaItemFormat =
   | "date"
   | "url"
   | "duration"
   | "country";
-export const EditThreatEventsTagsCategoryRequestSchemaItemFormat = S.String;
+const EditThreatEventsTagsCategoryRequestSchemaItemFormat = S.String;
 
 export type EditThreatEventsTagsCategoryRequestSchemaItemNumberConstraint =
   CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint;
-export const EditThreatEventsTagsCategoryRequestSchemaItemNumberConstraint =
-  CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint;
-
 export type EditThreatEventsTagsCategoryRequestSchemaItemPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const EditThreatEventsTagsCategoryRequestSchemaItemPropertiesMap =
+const EditThreatEventsTagsCategoryRequestSchemaItemPropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<EditThreatEventsTagsCategoryRequestSchemaItemPropertiesMap>;
 
 export interface EditThreatEventsTagsCategoryRequestSchemaItem {
@@ -3739,7 +3564,7 @@ export interface EditThreatEventsTagsCategoryRequestSchemaItem {
   properties?: EditThreatEventsTagsCategoryRequestSchemaItemPropertiesMap;
   required?: boolean;
 }
-export const EditThreatEventsTagsCategoryRequestSchemaItem = /*@__PURE__*/ S.suspend(() =>
+const EditThreatEventsTagsCategoryRequestSchemaItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     kind: EditThreatEventsTagsCategoryRequestSchemaItemKind,
@@ -3762,7 +3587,7 @@ export const EditThreatEventsTagsCategoryRequestSchemaItem = /*@__PURE__*/ S.sus
 
 export type EditThreatEventsTagsCategoryRequestSchemaList =
   Array<EditThreatEventsTagsCategoryRequestSchemaItem>;
-export const EditThreatEventsTagsCategoryRequestSchemaList = /*@__PURE__*/ S.Array(
+const EditThreatEventsTagsCategoryRequestSchemaList = /*@__PURE__*/ S.Array(
   EditThreatEventsTagsCategoryRequestSchemaItem,
 ) as any as S.Schema<EditThreatEventsTagsCategoryRequestSchemaList>;
 
@@ -3776,7 +3601,7 @@ export interface EditThreatEventsTagsCategoryRequest {
   /** Optional array of FieldDefinition objects. When provided, replaces the existing field schema. When omitted, the existing schema is preserved. */
   schema?: EditThreatEventsTagsCategoryRequestSchemaList;
 }
-export const EditThreatEventsTagsCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const EditThreatEventsTagsCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryUuid: S.String.pipe(T.Label("category_uuid")),
@@ -3803,40 +3628,34 @@ export type EditThreatEventsTagsCategoryResponseSchemaItemKind =
   | "date"
   | "array"
   | "object";
-export const EditThreatEventsTagsCategoryResponseSchemaItemKind = S.String;
+const EditThreatEventsTagsCategoryResponseSchemaItemKind = S.String;
 
 export type EditThreatEventsTagsCategoryResponseSchemaItemAllowedValuesList = Array<string>;
-export const EditThreatEventsTagsCategoryResponseSchemaItemAllowedValuesList =
+const EditThreatEventsTagsCategoryResponseSchemaItemAllowedValuesList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<EditThreatEventsTagsCategoryResponseSchemaItemAllowedValuesList>;
 
 export type EditThreatEventsTagsCategoryResponseSchemaItemAnnotations =
   CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations;
-export const EditThreatEventsTagsCategoryResponseSchemaItemAnnotations =
-  CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations;
-
 export type EditThreatEventsTagsCategoryResponseSchemaItemDeprecatedValuesList = Array<string>;
-export const EditThreatEventsTagsCategoryResponseSchemaItemDeprecatedValuesList =
+const EditThreatEventsTagsCategoryResponseSchemaItemDeprecatedValuesList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<EditThreatEventsTagsCategoryResponseSchemaItemDeprecatedValuesList>;
 
 export type EditThreatEventsTagsCategoryResponseSchemaItemEnforcement = "error" | "warn" | "off";
-export const EditThreatEventsTagsCategoryResponseSchemaItemEnforcement = S.String;
+const EditThreatEventsTagsCategoryResponseSchemaItemEnforcement = S.String;
 
 export type EditThreatEventsTagsCategoryResponseSchemaItemFormat =
   | "date"
   | "url"
   | "duration"
   | "country";
-export const EditThreatEventsTagsCategoryResponseSchemaItemFormat = S.String;
+const EditThreatEventsTagsCategoryResponseSchemaItemFormat = S.String;
 
 export type EditThreatEventsTagsCategoryResponseSchemaItemNumberConstraint =
   CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint;
-export const EditThreatEventsTagsCategoryResponseSchemaItemNumberConstraint =
-  CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint;
-
 export type EditThreatEventsTagsCategoryResponseSchemaItemPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const EditThreatEventsTagsCategoryResponseSchemaItemPropertiesMap =
+const EditThreatEventsTagsCategoryResponseSchemaItemPropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<EditThreatEventsTagsCategoryResponseSchemaItemPropertiesMap>;
 
 export interface EditThreatEventsTagsCategoryResponseSchemaItem {
@@ -3859,7 +3678,7 @@ export interface EditThreatEventsTagsCategoryResponseSchemaItem {
   properties?: EditThreatEventsTagsCategoryResponseSchemaItemPropertiesMap | null;
   required?: boolean | null;
 }
-export const EditThreatEventsTagsCategoryResponseSchemaItem = /*@__PURE__*/ S.suspend(() =>
+const EditThreatEventsTagsCategoryResponseSchemaItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     kind: EditThreatEventsTagsCategoryResponseSchemaItemKind,
@@ -3888,7 +3707,7 @@ export const EditThreatEventsTagsCategoryResponseSchemaItem = /*@__PURE__*/ S.su
 
 export type EditThreatEventsTagsCategoryResponseSchemaList =
   Array<EditThreatEventsTagsCategoryResponseSchemaItem>;
-export const EditThreatEventsTagsCategoryResponseSchemaList = /*@__PURE__*/ S.Array(
+const EditThreatEventsTagsCategoryResponseSchemaList = /*@__PURE__*/ S.Array(
   EditThreatEventsTagsCategoryResponseSchemaItem,
 ) as any as S.Schema<EditThreatEventsTagsCategoryResponseSchemaList>;
 
@@ -3902,7 +3721,7 @@ export interface EditThreatEventsTagsCategoryResponse {
   schema?: EditThreatEventsTagsCategoryResponseSchemaList | null;
   updatedAt?: string | null;
 }
-export const EditThreatEventsTagsCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+const EditThreatEventsTagsCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uuid: S.String,
@@ -3920,7 +3739,7 @@ export interface EditThreatSignalsArticleRequest {
   articleId: string;
   read: boolean;
 }
-export const EditThreatSignalsArticleRequest = /*@__PURE__*/ S.suspend(() =>
+const EditThreatSignalsArticleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.String.pipe(T.Label("article_id")),
@@ -3943,7 +3762,7 @@ export interface EditThreatSignalsArticleResponseBulletPoints {
   whatHappened: string;
   whoAffected: string;
 }
-export const EditThreatSignalsArticleResponseBulletPoints = /*@__PURE__*/ S.suspend(() =>
+const EditThreatSignalsArticleResponseBulletPoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impact: S.String,
     whatHappened: S.String.pipe(T.Body("what_happened")),
@@ -3958,14 +3777,14 @@ export type EditThreatSignalsArticleResponseIndicatorExtractionStatus =
   | "complete"
   | "failed"
   | "unknown";
-export const EditThreatSignalsArticleResponseIndicatorExtractionStatus = S.String;
+const EditThreatSignalsArticleResponseIndicatorExtractionStatus = S.String;
 
 export type EditThreatSignalsArticleResponseMetadataMap = { [key: string]: unknown | undefined };
-export const EditThreatSignalsArticleResponseMetadataMap =
+const EditThreatSignalsArticleResponseMetadataMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<EditThreatSignalsArticleResponseMetadataMap>;
 
 export type EditThreatSignalsArticleResponseTagsItemAppliedBy = "ai" | "analyst" | "system";
-export const EditThreatSignalsArticleResponseTagsItemAppliedBy = S.String;
+const EditThreatSignalsArticleResponseTagsItemAppliedBy = S.String;
 
 export interface EditThreatSignalsArticleResponseTagsItem {
   appliedBy: EditThreatSignalsArticleResponseTagsItemAppliedBy;
@@ -3973,7 +3792,7 @@ export interface EditThreatSignalsArticleResponseTagsItem {
   uuid: string;
   value: string;
 }
-export const EditThreatSignalsArticleResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
+const EditThreatSignalsArticleResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedBy: EditThreatSignalsArticleResponseTagsItemAppliedBy.pipe(T.Body("applied_by")),
     categoryId: S.String,
@@ -3986,7 +3805,7 @@ export const EditThreatSignalsArticleResponseTagsItem = /*@__PURE__*/ S.suspend(
 
 export type EditThreatSignalsArticleResponseTagsList =
   Array<EditThreatSignalsArticleResponseTagsItem>;
-export const EditThreatSignalsArticleResponseTagsList = /*@__PURE__*/ S.Array(
+const EditThreatSignalsArticleResponseTagsList = /*@__PURE__*/ S.Array(
   EditThreatSignalsArticleResponseTagsItem,
 ) as any as S.Schema<EditThreatSignalsArticleResponseTagsList>;
 
@@ -4014,7 +3833,7 @@ export interface EditThreatSignalsArticleResponse {
   skillVersion?: string | null;
   tagSkillVersion?: string | null;
 }
-export const EditThreatSignalsArticleResponse = /*@__PURE__*/ S.suspend(() =>
+const EditThreatSignalsArticleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     bulletPoints: EditThreatSignalsArticleResponseBulletPoints.pipe(T.Body("bullet_points")),
@@ -4051,7 +3870,7 @@ export type EditThreatSignalsFeedRequestCategoryId =
   | "bb0e4a94-38ab-5c14-80a7-28cee9f4b139"
   | "b1ef66d9-a73c-58dc-b269-22d34dfd11f4"
   | "ab02a976-0a20-5c76-a553-7f6325afacfe";
-export const EditThreatSignalsFeedRequestCategoryId = S.String;
+const EditThreatSignalsFeedRequestCategoryId = S.String;
 
 export interface EditThreatSignalsFeedRequest {
   accountId: string;
@@ -4063,7 +3882,7 @@ export interface EditThreatSignalsFeedRequest {
   pollIntervalS?: number;
   title?: string;
 }
-export const EditThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const EditThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.String.pipe(T.Label("feed_id")),
@@ -4108,7 +3927,7 @@ export interface EditThreatSignalsFeedResponse {
   updatedAt: string;
   url: string;
 }
-export const EditThreatSignalsFeedResponse =
+const EditThreatSignalsFeedResponse =
   CreateThreatSignalsFeedResponse as any as S.Schema<EditThreatSignalsFeedResponse>;
 
 export interface EditThreatSignalsSkillRequest {
@@ -4120,7 +3939,7 @@ export interface EditThreatSignalsSkillRequest {
   outputSchema?: string;
   prompt?: string;
 }
-export const EditThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const EditThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     skillId: S.String.pipe(T.Label("skill_id")),
@@ -4143,8 +3962,6 @@ export const EditThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditThreatSignalsSkillRequest>;
 
 export type EditThreatSignalsSkillResponseSource = "default" | "custom";
-export const EditThreatSignalsSkillResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditThreatSignalsSkillResponse {
   id: string;
@@ -4162,14 +3979,14 @@ export interface EditThreatSignalsSkillResponse {
   type: string;
   updatedAt: string;
 }
-export const EditThreatSignalsSkillResponse =
+const EditThreatSignalsSkillResponse =
   CreateThreatSignalsSkillResponse as any as S.Schema<EditThreatSignalsSkillResponse>;
 
 export interface GenerateThreatSignalsArticlesTagRequest {
   accountId: string;
   articleId: string;
 }
-export const GenerateThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.String.pipe(T.Label("article_id")),
@@ -4187,20 +4004,15 @@ export const GenerateThreatSignalsArticlesTagRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GenerateThreatSignalsArticlesTagRequest>;
 
 export type GenerateThreatSignalsArticlesTagResponseTagsItemAppliedBy = "ai" | "analyst" | "system";
-export const GenerateThreatSignalsArticlesTagResponseTagsItemAppliedBy = S.String;
-
 export interface GenerateThreatSignalsArticlesTagResponseTagsItem {
   appliedBy: GenerateThreatSignalsArticlesTagResponseTagsItemAppliedBy;
   categoryId: string;
   uuid: string;
   value: string;
 }
-export const GenerateThreatSignalsArticlesTagResponseTagsItem =
-  EditThreatSignalsArticleResponseTagsItem as any as S.Schema<GenerateThreatSignalsArticlesTagResponseTagsItem>;
-
 export type GenerateThreatSignalsArticlesTagResponseTagsList =
   Array<GenerateThreatSignalsArticlesTagResponseTagsItem>;
-export const GenerateThreatSignalsArticlesTagResponseTagsList =
+const GenerateThreatSignalsArticlesTagResponseTagsList =
   EditThreatSignalsArticleResponseTagsList as any as S.Schema<GenerateThreatSignalsArticlesTagResponseTagsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4209,7 +4021,7 @@ export interface GenerateThreatSignalsArticlesTagResponse {
   /** Final hydrated assignment set; may be empty when no applicable tags are selected. */
   tags: GenerateThreatSignalsArticlesTagResponseTagsList;
 }
-export const GenerateThreatSignalsArticlesTagResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateThreatSignalsArticlesTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagSkillVersion: S.String.pipe(T.Body("tag_skill_version")),
     tags: GenerateThreatSignalsArticlesTagResponseTagsList,
@@ -4224,7 +4036,7 @@ export interface GetBinaryStorageRequest {
   /** hash of the binary */
   hash: string;
 }
-export const GetBinaryStorageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBinaryStorageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     hash: S.String.pipe(T.Label()),
@@ -4240,8 +4052,7 @@ export const GetBinaryStorageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBinaryStorageRequest" }) as any as S.Schema<GetBinaryStorageRequest>;
 
 export interface GetBinaryStorageResponse {}
-export const GetBinaryStorageResponse =
-  DeleteRequestResponse as any as S.Schema<GetBinaryStorageResponse>;
+const GetBinaryStorageResponse = DeleteRequestResponse as any as S.Schema<GetBinaryStorageResponse>;
 
 export interface GetRequestRequest {
   /** Identifier. */
@@ -4249,7 +4060,7 @@ export interface GetRequestRequest {
   /** UUID. */
   requestId: string;
 }
-export const GetRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -4265,8 +4076,6 @@ export const GetRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRequestRequest" }) as any as S.Schema<GetRequestRequest>;
 
 export type RequestsGetResponseTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const RequestsGetResponseTlp = S.String;
-
 export type RequestsGetResponseStatus =
   | "open"
   | "accepted"
@@ -4274,8 +4083,6 @@ export type RequestsGetResponseStatus =
   | "approved"
   | "completed"
   | "declined";
-export const RequestsGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRequestResponse {
   /** UUID. */
@@ -4301,10 +4108,10 @@ export interface GetRequestResponse {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const GetRequestResponse = CreateRequestResponse as any as S.Schema<GetRequestResponse>;
+const GetRequestResponse = CreateRequestResponse as any as S.Schema<GetRequestResponse>;
 
 export type RequestsMessageGetRequestSortOrder = "asc" | "desc";
-export const RequestsMessageGetRequestSortOrder = S.String;
+const RequestsMessageGetRequestSortOrder = S.String;
 
 export interface GetRequestMessageRequest {
   /** Identifier. */
@@ -4324,7 +4131,7 @@ export interface GetRequestMessageRequest {
   /** Sort order (asc or desc). */
   sortOrder?: RequestsMessageGetRequestSortOrder | (string & {});
 }
-export const GetRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -4359,7 +4166,7 @@ export interface RequestsMessageGetResultItem {
   /** Defines the message creation time. */
   created?: string | null;
 }
-export const RequestsMessageGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const RequestsMessageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     author: S.String,
@@ -4373,7 +4180,7 @@ export const RequestsMessageGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestsMessageGetResultItem>;
 
 export type RequestsMessageGetResultList = Array<RequestsMessageGetResultItem>;
-export const RequestsMessageGetResultList = /*@__PURE__*/ S.Array(
+const RequestsMessageGetResultList = /*@__PURE__*/ S.Array(
   RequestsMessageGetResultItem,
 ) as any as S.Schema<RequestsMessageGetResultList>;
 
@@ -4383,7 +4190,7 @@ export interface GetRequestMessageResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RequestsMessageGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -4398,7 +4205,7 @@ export interface GetRequestPriorityRequest {
   /** UUID. */
   priorityId: string;
 }
-export const GetRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     priorityId: S.String.pipe(T.Label("priority_id")),
@@ -4416,7 +4223,7 @@ export const GetRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRequestPriorityRequest>;
 
 export type RequestsPriorityGetResponseTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const RequestsPriorityGetResponseTlp = S.String;
+const RequestsPriorityGetResponseTlp = S.String;
 
 export type RequestsPriorityGetResponseStatus =
   | "open"
@@ -4425,7 +4232,7 @@ export type RequestsPriorityGetResponseStatus =
   | "approved"
   | "completed"
   | "declined";
-export const RequestsPriorityGetResponseStatus = S.String;
+const RequestsPriorityGetResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRequestPriorityResponse {
@@ -4452,7 +4259,7 @@ export interface GetRequestPriorityResponse {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const GetRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     content: S.String,
@@ -4480,7 +4287,7 @@ export interface GetRequestsAssetRequest {
   /** UUID. */
   assetId: string;
 }
-export const GetRequestsAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequestsAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -4497,14 +4304,12 @@ export const GetRequestsAssetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRequestsAssetRequest" }) as any as S.Schema<GetRequestsAssetRequest>;
 
 export type GetRequestsAssetResultItem = RequestsAssetsCreateResultItem;
-export const GetRequestsAssetResultItem = RequestsAssetsCreateResultItem;
-
 export type GetRequestsAssetResultList = Array<RequestsAssetsCreateResultItem>;
-export const GetRequestsAssetResultList =
+const GetRequestsAssetResultList =
   RequestsAssetsCreateResultList as any as S.Schema<GetRequestsAssetResultList>;
 
 export type GetRequestsAssetResponse = GetRequestsAssetResultList;
-export const GetRequestsAssetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRequestsAssetResponse = /*@__PURE__*/ S.suspend(() =>
   GetRequestsAssetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRequestsAssetResponse" }) as any as S.Schema<GetRequestsAssetResponse>;
 
@@ -4514,7 +4319,7 @@ export interface GetScanResultRequest {
   /** Defines the Config ID. */
   configId: string;
 }
-export const GetScanResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScanResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     configId: S.String.pipe(T.Label("config_id")),
@@ -4534,7 +4339,7 @@ export interface ScansResultsGetResponse1111Item {
   proto?: string | null;
   status?: string | null;
 }
-export const ScansResultsGetResponse1111Item = /*@__PURE__*/ S.suspend(() =>
+const ScansResultsGetResponse1111Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.optional(S.NullOr(S.Number)),
     proto: S.optional(S.NullOr(S.String)),
@@ -4545,7 +4350,7 @@ export const ScansResultsGetResponse1111Item = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansResultsGetResponse1111Item>;
 
 export type ScansResultsGetResponse1111List = Array<ScansResultsGetResponse1111Item>;
-export const ScansResultsGetResponse1111List = /*@__PURE__*/ S.Array(
+const ScansResultsGetResponse1111List = /*@__PURE__*/ S.Array(
   ScansResultsGetResponse1111Item,
 ) as any as S.Schema<ScansResultsGetResponse1111List>;
 
@@ -4553,7 +4358,7 @@ export const ScansResultsGetResponse1111List = /*@__PURE__*/ S.Array(
 export interface GetScanResultResponse {
   "1_1_1_1": ScansResultsGetResponse1111List;
 }
-export const GetScanResultResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScanResultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "1_1_1_1": ScansResultsGetResponse1111List.pipe(T.Body("1.1.1.1")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -4565,7 +4370,7 @@ export interface GetThreatEventRequest {
   /** Event UUID. */
   eventId: string;
 }
-export const GetThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
@@ -4581,31 +4386,31 @@ export const GetThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetThreatEventRequest" }) as any as S.Schema<GetThreatEventRequest>;
 
 export type ThreatEventsGetResponseMitreAttackList = Array<string>;
-export const ThreatEventsGetResponseMitreAttackList =
+const ThreatEventsGetResponseMitreAttackList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsGetResponseMitreAttackList>;
 
 export type ThreatEventsGetResponseMitreCapecList = Array<string>;
-export const ThreatEventsGetResponseMitreCapecList =
+const ThreatEventsGetResponseMitreCapecList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsGetResponseMitreCapecList>;
 
 export type ThreatEventsGetResponseReferencedList = Array<string>;
-export const ThreatEventsGetResponseReferencedList =
+const ThreatEventsGetResponseReferencedList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsGetResponseReferencedList>;
 
 export type ThreatEventsGetResponseReferencedIdsList = Array<number>;
-export const ThreatEventsGetResponseReferencedIdsList =
+const ThreatEventsGetResponseReferencedIdsList =
   ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ThreatEventsGetResponseReferencedIdsList>;
 
 export type ThreatEventsGetResponseReferencesList = Array<string>;
-export const ThreatEventsGetResponseReferencesList =
+const ThreatEventsGetResponseReferencesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsGetResponseReferencesList>;
 
 export type ThreatEventsGetResponseReferencesIdsList = Array<number>;
-export const ThreatEventsGetResponseReferencesIdsList =
+const ThreatEventsGetResponseReferencesIdsList =
   ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ThreatEventsGetResponseReferencesIdsList>;
 
 export type ThreatEventsGetResponseTagsList = Array<string>;
-export const ThreatEventsGetResponseTagsList =
+const ThreatEventsGetResponseTagsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsGetResponseTagsList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -4640,7 +4445,7 @@ export interface GetThreatEventResponse {
   insight?: string | null;
   releasabilityId?: string | null;
 }
-export const GetThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attacker: S.String,
     attackerCountry: S.String,
@@ -4680,7 +4485,7 @@ export interface GetThreatEventCategoryRequest {
   /** Category UUID. */
   categoryId: string;
 }
-export const GetThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
@@ -4698,13 +4503,7 @@ export const GetThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetThreatEventCategoryRequest>;
 
 export type ThreatEventsCategoriesGetResponseMitreAttackList = Array<string>;
-export const ThreatEventsCategoriesGetResponseMitreAttackList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesGetResponseMitreAttackList>;
-
 export type ThreatEventsCategoriesGetResponseMitreCapecList = Array<string>;
-export const ThreatEventsCategoriesGetResponseMitreCapecList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesGetResponseMitreCapecList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetThreatEventCategoryResponse {
   killChain: number;
@@ -4714,7 +4513,7 @@ export interface GetThreatEventCategoryResponse {
   mitreCapec?: ThreatEventsCategoriesGetResponseMitreCapecList | null;
   shortname?: string | null;
 }
-export const GetThreatEventCategoryResponse =
+const GetThreatEventCategoryResponse =
   CreateThreatEventCategoryResponse as any as S.Schema<GetThreatEventCategoryResponse>;
 
 export interface GetThreatEventDatasetRequest {
@@ -4723,7 +4522,7 @@ export interface GetThreatEventDatasetRequest {
   /** Dataset ID. */
   datasetId: string;
 }
-export const GetThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -4747,7 +4546,7 @@ export interface GetThreatEventDatasetResponse {
   name: string;
   uuid: string;
 }
-export const GetThreatEventDatasetResponse =
+const GetThreatEventDatasetResponse =
   CreateThreatEventDatasetResponse as any as S.Schema<GetThreatEventDatasetResponse>;
 
 export interface GetThreatEventRawRequest {
@@ -4758,7 +4557,7 @@ export interface GetThreatEventRawRequest {
   /** Raw Event UUID. */
   rawId: string;
 }
-export const GetThreatEventRawRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
@@ -4783,7 +4582,7 @@ export interface GetThreatEventRawResponse {
   source: string;
   tlp: string;
 }
-export const GetThreatEventRawResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventRawResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.Number,
@@ -4804,7 +4603,7 @@ export interface GetThreatEventsDatasetsEventRequest {
   /** Event UUID. */
   eventId: string;
 }
-export const GetThreatEventsDatasetsEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventsDatasetsEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -4823,33 +4622,12 @@ export const GetThreatEventsDatasetsEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetThreatEventsDatasetsEventRequest>;
 
 export type GetThreatEventsDatasetsEventResponseMitreAttackList = Array<string>;
-export const GetThreatEventsDatasetsEventResponseMitreAttackList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<GetThreatEventsDatasetsEventResponseMitreAttackList>;
-
 export type GetThreatEventsDatasetsEventResponseMitreCapecList = Array<string>;
-export const GetThreatEventsDatasetsEventResponseMitreCapecList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<GetThreatEventsDatasetsEventResponseMitreCapecList>;
-
 export type GetThreatEventsDatasetsEventResponseReferencedList = Array<string>;
-export const GetThreatEventsDatasetsEventResponseReferencedList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<GetThreatEventsDatasetsEventResponseReferencedList>;
-
 export type GetThreatEventsDatasetsEventResponseReferencedIdsList = Array<number>;
-export const GetThreatEventsDatasetsEventResponseReferencedIdsList =
-  ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<GetThreatEventsDatasetsEventResponseReferencedIdsList>;
-
 export type GetThreatEventsDatasetsEventResponseReferencesList = Array<string>;
-export const GetThreatEventsDatasetsEventResponseReferencesList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<GetThreatEventsDatasetsEventResponseReferencesList>;
-
 export type GetThreatEventsDatasetsEventResponseReferencesIdsList = Array<number>;
-export const GetThreatEventsDatasetsEventResponseReferencesIdsList =
-  ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<GetThreatEventsDatasetsEventResponseReferencesIdsList>;
-
 export type GetThreatEventsDatasetsEventResponseTagsList = Array<string>;
-export const GetThreatEventsDatasetsEventResponseTagsList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<GetThreatEventsDatasetsEventResponseTagsList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetThreatEventsDatasetsEventResponse {
   attacker: string;
@@ -4882,7 +4660,7 @@ export interface GetThreatEventsDatasetsEventResponse {
   insight?: string | null;
   releasabilityId?: string | null;
 }
-export const GetThreatEventsDatasetsEventResponse =
+const GetThreatEventsDatasetsEventResponse =
   CreateThreatEventResponse as any as S.Schema<GetThreatEventsDatasetsEventResponse>;
 
 export interface GetThreatEventsIndicatorsByDatasetRequest {
@@ -4893,7 +4671,7 @@ export interface GetThreatEventsIndicatorsByDatasetRequest {
   /** Indicator UUID. */
   indicatorId: string;
 }
-export const GetThreatEventsIndicatorsByDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventsIndicatorsByDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -4917,20 +4695,19 @@ export interface GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem {
   /** ISO 8601 date of the related event. Null for legacy relationships created before event-date tracking was added. */
   eventDate?: string | null;
 }
-export const GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      datasetId: S.String,
-      eventId: S.String,
-      eventDate: S.optional(S.NullOr(S.String)),
-    }),
+const GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String,
+    eventId: S.String,
+    eventDate: S.optional(S.NullOr(S.String)),
+  }),
 ).annotate({
   identifier: "GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem",
 }) as any as S.Schema<GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem>;
 
 export type GetThreatEventsIndicatorsByDatasetResponseRelatedEventsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem>;
-export const GetThreatEventsIndicatorsByDatasetResponseRelatedEventsList = /*@__PURE__*/ S.Array(
+const GetThreatEventsIndicatorsByDatasetResponseRelatedEventsList = /*@__PURE__*/ S.Array(
   GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem,
 ) as any as S.Schema<GetThreatEventsIndicatorsByDatasetResponseRelatedEventsList>;
 
@@ -4941,7 +4718,7 @@ export interface GetThreatEventsIndicatorsByDatasetResponseTagsItem {
   uuid?: string | null;
   value?: string | null;
 }
-export const GetThreatEventsIndicatorsByDatasetResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventsIndicatorsByDatasetResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.optional(S.NullOr(S.String)),
     categoryName: S.optional(S.NullOr(S.String)),
@@ -4954,7 +4731,7 @@ export const GetThreatEventsIndicatorsByDatasetResponseTagsItem = /*@__PURE__*/ 
 
 export type GetThreatEventsIndicatorsByDatasetResponseTagsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseTagsItem>;
-export const GetThreatEventsIndicatorsByDatasetResponseTagsList = /*@__PURE__*/ S.Array(
+const GetThreatEventsIndicatorsByDatasetResponseTagsList = /*@__PURE__*/ S.Array(
   GetThreatEventsIndicatorsByDatasetResponseTagsItem,
 ) as any as S.Schema<GetThreatEventsIndicatorsByDatasetResponseTagsList>;
 
@@ -4975,7 +4752,7 @@ export interface GetThreatEventsIndicatorsByDatasetResponse {
   /** Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set. */
   tlp?: string | null;
 }
-export const GetThreatEventsIndicatorsByDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventsIndicatorsByDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     indicatorType: S.String,
@@ -5000,7 +4777,7 @@ export interface GetThreatEventsQueryRequest {
   /** Event query ID */
   queryId: number;
 }
-export const GetThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatEventsQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queryId: S.Number.pipe(T.Label("query_id")),
@@ -5046,14 +4823,14 @@ export interface GetThreatEventsQueryResponse {
   /** Scope for the rule */
   ruleScope?: string | null;
 }
-export const GetThreatEventsQueryResponse =
+const GetThreatEventsQueryResponse =
   CreateThreatEventsQueryResponse as any as S.Schema<GetThreatEventsQueryResponse>;
 
 export interface GetThreatSignalsArticleRequest {
   accountId: string;
   articleId: string;
 }
-export const GetThreatSignalsArticleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsArticleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.String.pipe(T.Label("article_id")),
@@ -5072,35 +4849,27 @@ export const GetThreatSignalsArticleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetThreatSignalsArticleResponseBulletPoints =
   EditThreatSignalsArticleResponseBulletPoints;
-export const GetThreatSignalsArticleResponseBulletPoints =
-  EditThreatSignalsArticleResponseBulletPoints;
-
 export type GetThreatSignalsArticleResponseIndicatorExtractionStatus =
   | "in_progress"
   | "complete"
   | "failed"
   | "unknown";
-export const GetThreatSignalsArticleResponseIndicatorExtractionStatus = S.String;
+const GetThreatSignalsArticleResponseIndicatorExtractionStatus = S.String;
 
 export type GetThreatSignalsArticleResponseMetadataMap = { [key: string]: unknown | undefined };
-export const GetThreatSignalsArticleResponseMetadataMap =
+const GetThreatSignalsArticleResponseMetadataMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<GetThreatSignalsArticleResponseMetadataMap>;
 
 export type GetThreatSignalsArticleResponseTagsItemAppliedBy = "ai" | "analyst" | "system";
-export const GetThreatSignalsArticleResponseTagsItemAppliedBy = S.String;
-
 export interface GetThreatSignalsArticleResponseTagsItem {
   appliedBy: GetThreatSignalsArticleResponseTagsItemAppliedBy;
   categoryId: string;
   uuid: string;
   value: string;
 }
-export const GetThreatSignalsArticleResponseTagsItem =
-  EditThreatSignalsArticleResponseTagsItem as any as S.Schema<GetThreatSignalsArticleResponseTagsItem>;
-
 export type GetThreatSignalsArticleResponseTagsList =
   Array<GetThreatSignalsArticleResponseTagsItem>;
-export const GetThreatSignalsArticleResponseTagsList =
+const GetThreatSignalsArticleResponseTagsList =
   EditThreatSignalsArticleResponseTagsList as any as S.Schema<GetThreatSignalsArticleResponseTagsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5127,7 +4896,7 @@ export interface GetThreatSignalsArticleResponse {
   skillVersion?: string | null;
   tagSkillVersion?: string | null;
 }
-export const GetThreatSignalsArticleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsArticleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     bulletPoints: EditThreatSignalsArticleResponseBulletPoints.pipe(T.Body("bullet_points")),
@@ -5156,14 +4925,14 @@ export const GetThreatSignalsArticleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetThreatSignalsArticleResponse>;
 
 export type GetThreatSignalsArticlesContentRequestFormat = "text" | "html";
-export const GetThreatSignalsArticlesContentRequestFormat = S.String;
+const GetThreatSignalsArticlesContentRequestFormat = S.String;
 
 export interface GetThreatSignalsArticlesContentRequest {
   accountId: string;
   articleId: string;
   format?: GetThreatSignalsArticlesContentRequestFormat | (string & {});
 }
-export const GetThreatSignalsArticlesContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsArticlesContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.String.pipe(T.Label("article_id")),
@@ -5182,7 +4951,7 @@ export const GetThreatSignalsArticlesContentRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetThreatSignalsArticlesContentRequest>;
 
 export interface GetThreatSignalsArticlesContentResponse {}
-export const GetThreatSignalsArticlesContentResponse =
+const GetThreatSignalsArticlesContentResponse =
   DeleteRequestAssetResponse as any as S.Schema<GetThreatSignalsArticlesContentResponse>;
 
 export interface GetThreatSignalsArticlesSkillOutputRequest {
@@ -5190,7 +4959,7 @@ export interface GetThreatSignalsArticlesSkillOutputRequest {
   articleId: string;
   skillId: string;
 }
-export const GetThreatSignalsArticlesSkillOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsArticlesSkillOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.String.pipe(T.Label("article_id")),
@@ -5218,7 +4987,7 @@ export interface GetThreatSignalsArticlesSkillOutputResponse {
   /** Skill output. Parsed JSON when the stored output is valid JSON, otherwise the raw string. */
   customOutput?: unknown | null;
 }
-export const GetThreatSignalsArticlesSkillOutputResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsArticlesSkillOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     articleId: S.String.pipe(T.Body("article_id")),
     customSkillVersion: S.String.pipe(T.Body("custom_skill_version")),
@@ -5231,14 +5000,14 @@ export const GetThreatSignalsArticlesSkillOutputResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetThreatSignalsArticlesSkillOutputResponse>;
 
 export type GetThreatSignalsFeedsRawRequestFormat = "xml";
-export const GetThreatSignalsFeedsRawRequestFormat = S.String;
+const GetThreatSignalsFeedsRawRequestFormat = S.String;
 
 export interface GetThreatSignalsFeedsRawRequest {
   accountId: string;
   feedId: string;
   format?: GetThreatSignalsFeedsRawRequestFormat | (string & {});
 }
-export const GetThreatSignalsFeedsRawRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsFeedsRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.String.pipe(T.Label("feed_id")),
@@ -5257,14 +5026,14 @@ export const GetThreatSignalsFeedsRawRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetThreatSignalsFeedsRawRequest>;
 
 export interface GetThreatSignalsFeedsRawResponse {}
-export const GetThreatSignalsFeedsRawResponse =
+const GetThreatSignalsFeedsRawResponse =
   DeleteRequestAssetResponse as any as S.Schema<GetThreatSignalsFeedsRawResponse>;
 
 export interface GetThreatSignalsFeedsSkillRequest {
   accountId: string;
   feedId: string;
 }
-export const GetThreatSignalsFeedsSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsFeedsSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.String.pipe(T.Label("feed_id")),
@@ -5282,7 +5051,7 @@ export const GetThreatSignalsFeedsSkillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetThreatSignalsFeedsSkillRequest>;
 
 export type GetThreatSignalsFeedsSkillResponseSkillsItemSource = "default" | "custom";
-export const GetThreatSignalsFeedsSkillResponseSkillsItemSource = S.String;
+const GetThreatSignalsFeedsSkillResponseSkillsItemSource = S.String;
 
 export interface GetThreatSignalsFeedsSkillResponseSkillsItem {
   id: string;
@@ -5300,7 +5069,7 @@ export interface GetThreatSignalsFeedsSkillResponseSkillsItem {
   type: string;
   updatedAt: string;
 }
-export const GetThreatSignalsFeedsSkillResponseSkillsItem = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsFeedsSkillResponseSkillsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     config: S.String,
@@ -5319,7 +5088,7 @@ export const GetThreatSignalsFeedsSkillResponseSkillsItem = /*@__PURE__*/ S.susp
 
 export type GetThreatSignalsFeedsSkillResponseSkillsList =
   Array<GetThreatSignalsFeedsSkillResponseSkillsItem>;
-export const GetThreatSignalsFeedsSkillResponseSkillsList = /*@__PURE__*/ S.Array(
+const GetThreatSignalsFeedsSkillResponseSkillsList = /*@__PURE__*/ S.Array(
   GetThreatSignalsFeedsSkillResponseSkillsItem,
 ) as any as S.Schema<GetThreatSignalsFeedsSkillResponseSkillsList>;
 
@@ -5328,7 +5097,7 @@ export interface GetThreatSignalsFeedsSkillResponse {
   feedId: string;
   skills: GetThreatSignalsFeedsSkillResponseSkillsList;
 }
-export const GetThreatSignalsFeedsSkillResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsFeedsSkillResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedId: S.String.pipe(T.Body("feed_id")),
     skills: GetThreatSignalsFeedsSkillResponseSkillsList,
@@ -5341,7 +5110,7 @@ export interface GetThreatSignalsSkillRequest {
   accountId: string;
   skillId: string;
 }
-export const GetThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     skillId: S.String.pipe(T.Label("skill_id")),
@@ -5359,8 +5128,6 @@ export const GetThreatSignalsSkillRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetThreatSignalsSkillRequest>;
 
 export type GetThreatSignalsSkillResponseSource = "default" | "custom";
-export const GetThreatSignalsSkillResponseSource = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetThreatSignalsSkillResponse {
   id: string;
@@ -5378,17 +5145,17 @@ export interface GetThreatSignalsSkillResponse {
   type: string;
   updatedAt: string;
 }
-export const GetThreatSignalsSkillResponse =
+const GetThreatSignalsSkillResponse =
   CreateThreatSignalsSkillResponse as any as S.Schema<GetThreatSignalsSkillResponse>;
 
 export type GetThreatSignalsSkillsTagCategoryRequestSkillId = "default-tagging-skill";
-export const GetThreatSignalsSkillsTagCategoryRequestSkillId = S.String;
+const GetThreatSignalsSkillsTagCategoryRequestSkillId = S.String;
 
 export interface GetThreatSignalsSkillsTagCategoryRequest {
   accountId: string;
   skillId: GetThreatSignalsSkillsTagCategoryRequestSkillId | (string & {});
 }
-export const GetThreatSignalsSkillsTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsSkillsTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     skillId: GetThreatSignalsSkillsTagCategoryRequestSkillId.pipe(T.Label("skill_id")),
@@ -5406,18 +5173,18 @@ export const GetThreatSignalsSkillsTagCategoryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetThreatSignalsSkillsTagCategoryRequest>;
 
 export type GetThreatSignalsSkillsTagCategoryResponseCategoryUuidsList = Array<string>;
-export const GetThreatSignalsSkillsTagCategoryResponseCategoryUuidsList =
+const GetThreatSignalsSkillsTagCategoryResponseCategoryUuidsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<GetThreatSignalsSkillsTagCategoryResponseCategoryUuidsList>;
 
 export type GetThreatSignalsSkillsTagCategoryResponseSkillId = "default-tagging-skill";
-export const GetThreatSignalsSkillsTagCategoryResponseSkillId = S.String;
+const GetThreatSignalsSkillsTagCategoryResponseSkillId = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetThreatSignalsSkillsTagCategoryResponse {
   categoryUuids: GetThreatSignalsSkillsTagCategoryResponseCategoryUuidsList;
   skillId: GetThreatSignalsSkillsTagCategoryResponseSkillId;
 }
-export const GetThreatSignalsSkillsTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThreatSignalsSkillsTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryUuids: GetThreatSignalsSkillsTagCategoryResponseCategoryUuidsList.pipe(
       T.Body("category_uuids"),
@@ -5429,7 +5196,7 @@ export const GetThreatSignalsSkillsTagCategoryResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetThreatSignalsSkillsTagCategoryResponse>;
 
 export type ListRequestsRequestSortOrder = "asc" | "desc";
-export const ListRequestsRequestSortOrder = S.String;
+const ListRequestsRequestSortOrder = S.String;
 
 export type ListRequestsRequestStatus =
   | "open"
@@ -5438,7 +5205,7 @@ export type ListRequestsRequestStatus =
   | "approved"
   | "completed"
   | "declined";
-export const ListRequestsRequestStatus = S.String;
+const ListRequestsRequestStatus = S.String;
 
 export interface ListRequestsRequest {
   /** Identifier. */
@@ -5464,7 +5231,7 @@ export interface ListRequestsRequest {
   /** Request Status. */
   status?: ListRequestsRequestStatus | (string & {});
 }
-export const ListRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.Number,
@@ -5485,10 +5252,10 @@ export const ListRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequestsRequest" }) as any as S.Schema<ListRequestsRequest>;
 
 export type ListRequestsResultItemPriority = "routine" | "high" | "urgent";
-export const ListRequestsResultItemPriority = S.String;
+const ListRequestsResultItemPriority = S.String;
 
 export type ListRequestsResultItemTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const ListRequestsResultItemTlp = S.String;
+const ListRequestsResultItemTlp = S.String;
 
 export type ListRequestsResultItemStatus =
   | "open"
@@ -5497,7 +5264,7 @@ export type ListRequestsResultItemStatus =
   | "approved"
   | "completed"
   | "declined";
-export const ListRequestsResultItemStatus = S.String;
+const ListRequestsResultItemStatus = S.String;
 
 export interface ListRequestsResultItem {
   /** UUID. */
@@ -5524,7 +5291,7 @@ export interface ListRequestsResultItem {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const ListRequestsResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListRequestsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -5542,12 +5309,12 @@ export const ListRequestsResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequestsResultItem" }) as any as S.Schema<ListRequestsResultItem>;
 
 export type ListRequestsResultList = Array<ListRequestsResultItem>;
-export const ListRequestsResultList = /*@__PURE__*/ S.Array(
+const ListRequestsResultList = /*@__PURE__*/ S.Array(
   ListRequestsResultItem,
 ) as any as S.Schema<ListRequestsResultList>;
 
 export type ListRequestsResponse = ListRequestsResultList;
-export const ListRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   ListRequestsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListRequestsResponse" }) as any as S.Schema<ListRequestsResponse>;
 
@@ -5555,7 +5322,7 @@ export interface ListScanConfigsRequest {
   /** Defines the Account ID. */
   accountId: string;
 }
-export const ListScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -5570,11 +5337,11 @@ export const ListScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListScanConfigsRequest" }) as any as S.Schema<ListScanConfigsRequest>;
 
 export type ScansConfigListResultItemIpsList = Array<string>;
-export const ScansConfigListResultItemIpsList =
+const ScansConfigListResultItemIpsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigListResultItemIpsList>;
 
 export type ScansConfigListResultItemPortsList = Array<string>;
-export const ScansConfigListResultItemPortsList =
+const ScansConfigListResultItemPortsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigListResultItemPortsList>;
 
 export interface ScansConfigListResultItem {
@@ -5588,7 +5355,7 @@ export interface ScansConfigListResultItem {
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
   ports: ScansConfigListResultItemPortsList;
 }
-export const ScansConfigListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ScansConfigListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountId: S.String.pipe(T.Body("account_id")),
@@ -5601,7 +5368,7 @@ export const ScansConfigListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansConfigListResultItem>;
 
 export type ScansConfigListResultList = Array<ScansConfigListResultItem>;
-export const ScansConfigListResultList = /*@__PURE__*/ S.Array(
+const ScansConfigListResultList = /*@__PURE__*/ S.Array(
   ScansConfigListResultItem,
 ) as any as S.Schema<ScansConfigListResultList>;
 
@@ -5611,7 +5378,7 @@ export interface ListScanConfigsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ScansConfigListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -5619,7 +5386,7 @@ export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListScanConfigsResponse" }) as any as S.Schema<ListScanConfigsResponse>;
 
 export type ThreatEventsAttackersListRequestDatasetIdsList = Array<string>;
-export const ThreatEventsAttackersListRequestDatasetIdsList =
+const ThreatEventsAttackersListRequestDatasetIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsAttackersListRequestDatasetIdsList>;
 
 export interface ListThreatEventAttackersRequest {
@@ -5628,7 +5395,7 @@ export interface ListThreatEventAttackersRequest {
   /** Array of dataset IDs to query attackers from. If not provided, uses the default dataset. */
   datasetIds?: ThreatEventsAttackersListRequestDatasetIdsList;
 }
-export const ListThreatEventAttackersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventAttackersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetIds: S.optional(ThreatEventsAttackersListRequestDatasetIdsList.pipe(T.Query())),
@@ -5648,7 +5415,7 @@ export const ListThreatEventAttackersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ThreatEventsAttackersListResponseItems {
   type: string;
 }
-export const ThreatEventsAttackersListResponseItems = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsAttackersListResponseItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
   }),
@@ -5661,7 +5428,7 @@ export interface ListThreatEventAttackersResponse {
   items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
-export const ListThreatEventAttackersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventAttackersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ThreatEventsAttackersListResponseItems,
     type: S.String,
@@ -5671,7 +5438,7 @@ export const ListThreatEventAttackersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatEventAttackersResponse>;
 
 export type ThreatEventsCategoriesListRequestDatasetIdsList = Array<string>;
-export const ThreatEventsCategoriesListRequestDatasetIdsList =
+const ThreatEventsCategoriesListRequestDatasetIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesListRequestDatasetIdsList>;
 
 export interface ListThreatEventCategoriesRequest {
@@ -5680,7 +5447,7 @@ export interface ListThreatEventCategoriesRequest {
   /** Array of dataset IDs to query categories from. If not provided, uses the default dataset. */
   datasetIds?: ThreatEventsCategoriesListRequestDatasetIdsList;
 }
-export const ListThreatEventCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetIds: S.optional(ThreatEventsCategoriesListRequestDatasetIdsList.pipe(T.Query())),
@@ -5698,13 +5465,7 @@ export const ListThreatEventCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatEventCategoriesRequest>;
 
 export type ThreatEventsCategoriesListResponseMitreAttackList = Array<string>;
-export const ThreatEventsCategoriesListResponseMitreAttackList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesListResponseMitreAttackList>;
-
 export type ThreatEventsCategoriesListResponseMitreCapecList = Array<string>;
-export const ThreatEventsCategoriesListResponseMitreCapecList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesListResponseMitreCapecList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventCategoriesResponse {
   killChain: number;
@@ -5714,14 +5475,14 @@ export interface ListThreatEventCategoriesResponse {
   mitreCapec?: ThreatEventsCategoriesListResponseMitreCapecList | null;
   shortname?: string | null;
 }
-export const ListThreatEventCategoriesResponse =
+const ListThreatEventCategoriesResponse =
   CreateThreatEventCategoryResponse as any as S.Schema<ListThreatEventCategoriesResponse>;
 
 export interface ListThreatEventCountriesRequest {
   /** Account ID. */
   accountId: string;
 }
-export const ListThreatEventCountriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventCountriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -5742,7 +5503,7 @@ export interface ThreatEventsCountriesListResultItem {
   alpha3: string;
   name: string;
 }
-export const ThreatEventsCountriesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsCountriesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alpha2: S.String,
     alpha3: S.String,
@@ -5753,12 +5514,12 @@ export const ThreatEventsCountriesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThreatEventsCountriesListResultItem>;
 
 export type ThreatEventsCountriesListResultList = Array<ThreatEventsCountriesListResultItem>;
-export const ThreatEventsCountriesListResultList = /*@__PURE__*/ S.Array(
+const ThreatEventsCountriesListResultList = /*@__PURE__*/ S.Array(
   ThreatEventsCountriesListResultItem,
 ) as any as S.Schema<ThreatEventsCountriesListResultList>;
 
 export type ListThreatEventCountriesResponse = ThreatEventsCountriesListResultList;
-export const ListThreatEventCountriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventCountriesResponse = /*@__PURE__*/ S.suspend(() =>
   ThreatEventsCountriesListResultList.pipe(
     T.EnvelopePayloadRoot(),
     T.KeyDictionary(KEY_DICTIONARY),
@@ -5773,7 +5534,7 @@ export interface ListThreatEventDatasetsRequest {
   /** When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false. */
   includeDeleted?: boolean;
 }
-export const ListThreatEventDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -5794,7 +5555,7 @@ export type ThreatEventsDatasetsListResponseIndicatorWriteMode =
   | "read_only"
   | "create_only"
   | "full";
-export const ThreatEventsDatasetsListResponseIndicatorWriteMode = S.String;
+const ThreatEventsDatasetsListResponseIndicatorWriteMode = S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventDatasetsResponse {
@@ -5806,7 +5567,7 @@ export interface ListThreatEventDatasetsResponse {
   uuid: string;
   deletedAt?: string | null;
 }
-export const ListThreatEventDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indicatorWriteMode: ThreatEventsDatasetsListResponseIndicatorWriteMode,
     isAnalytics: S.Boolean,
@@ -5823,7 +5584,7 @@ export interface ListThreatEventIndicatorTypesRequest {
   /** Account ID. */
   accountId: string;
 }
-export const ListThreatEventIndicatorTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventIndicatorTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -5840,35 +5601,33 @@ export const ListThreatEventIndicatorTypesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListThreatEventIndicatorTypesRequest>;
 
 export type ThreatEventsIndicatorTypesListResponseItems = ThreatEventsAttackersListResponseItems;
-export const ThreatEventsIndicatorTypesListResponseItems = ThreatEventsAttackersListResponseItems;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventIndicatorTypesResponse {
   items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
-export const ListThreatEventIndicatorTypesResponse =
+const ListThreatEventIndicatorTypesResponse =
   ListThreatEventAttackersResponse as any as S.Schema<ListThreatEventIndicatorTypesResponse>;
 
 export type ThreatEventsListRequestCache = "from-graph";
-export const ThreatEventsListRequestCache = S.String;
+const ThreatEventsListRequestCache = S.String;
 
 export type ThreatEventsListRequestDatasetIdList = Array<string>;
-export const ThreatEventsListRequestDatasetIdList =
+const ThreatEventsListRequestDatasetIdList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsListRequestDatasetIdList>;
 
 export type ThreatEventsListRequestFormat = "json" | "stix2" | "taxii";
-export const ThreatEventsListRequestFormat = S.String;
+const ThreatEventsListRequestFormat = S.String;
 
 export type ThreatEventsListRequestOrder = "asc" | "desc";
-export const ThreatEventsListRequestOrder = S.String;
+const ThreatEventsListRequestOrder = S.String;
 
 export type ThreatEventsListRequestSearchList = Array<string>;
-export const ThreatEventsListRequestSearchList =
+const ThreatEventsListRequestSearchList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsListRequestSearchList>;
 
 export type ThreatEventsListRequestSearchBranchesList = Array<string>;
-export const ThreatEventsListRequestSearchBranchesList =
+const ThreatEventsListRequestSearchBranchesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsListRequestSearchBranchesList>;
 
 export interface ListThreatEventsRequest {
@@ -5892,7 +5651,7 @@ export interface ListThreatEventsRequest {
   /** JSON-encoded. OR branches of structured search filters. Filters within a branch are AND'd, branches are OR'd, and the result is AND'd with `search`: `AND(search) AND OR(AND(branch 1), ...)`. Max 8 branches of 1-10 conditions each. Not supported for analytics datasets, and `indicator` filters are not yet supported inside branches. Cursor pages carry the original branches, so do not resend them with `cursor`. */
   searchBranches?: ThreatEventsListRequestSearchBranchesList;
 }
-export const ListThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cache: S.optional(ThreatEventsListRequestCache.pipe(T.Query())),
@@ -5912,33 +5671,12 @@ export const ListThreatEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListThreatEventsRequest" }) as any as S.Schema<ListThreatEventsRequest>;
 
 export type ThreatEventsListResponseMitreAttackList = Array<string>;
-export const ThreatEventsListResponseMitreAttackList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsListResponseMitreAttackList>;
-
 export type ThreatEventsListResponseMitreCapecList = Array<string>;
-export const ThreatEventsListResponseMitreCapecList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsListResponseMitreCapecList>;
-
 export type ThreatEventsListResponseReferencedList = Array<string>;
-export const ThreatEventsListResponseReferencedList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsListResponseReferencedList>;
-
 export type ThreatEventsListResponseReferencedIdsList = Array<number>;
-export const ThreatEventsListResponseReferencedIdsList =
-  ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ThreatEventsListResponseReferencedIdsList>;
-
 export type ThreatEventsListResponseReferencesList = Array<string>;
-export const ThreatEventsListResponseReferencesList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsListResponseReferencesList>;
-
 export type ThreatEventsListResponseReferencesIdsList = Array<number>;
-export const ThreatEventsListResponseReferencesIdsList =
-  ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ThreatEventsListResponseReferencesIdsList>;
-
 export type ThreatEventsListResponseTagsList = Array<string>;
-export const ThreatEventsListResponseTagsList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsListResponseTagsList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventsResponse {
   attacker: string;
@@ -5971,11 +5709,11 @@ export interface ListThreatEventsResponse {
   insight?: string | null;
   releasabilityId?: string | null;
 }
-export const ListThreatEventsResponse =
+const ListThreatEventsResponse =
   GetThreatEventResponse as any as S.Schema<ListThreatEventsResponse>;
 
 export type ListThreatEventsAggregateRequestDatasetIdList = Array<string>;
-export const ListThreatEventsAggregateRequestDatasetIdList =
+const ListThreatEventsAggregateRequestDatasetIdList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsAggregateRequestDatasetIdList>;
 
 export interface ListThreatEventsAggregateRequest {
@@ -5994,7 +5732,7 @@ export interface ListThreatEventsAggregateRequest {
   /** Start date for filtering (ISO 8601 format, e.g., '2024-01-01') */
   startDate?: string;
 }
-export const ListThreatEventsAggregateRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsAggregateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     aggregateBy: S.String.pipe(T.Query()),
@@ -6022,7 +5760,7 @@ export interface ListThreatEventsAggregateResponseAggregationsItem {
   /** Date (if groupByDate is true) */
   date?: string | null;
 }
-export const ListThreatEventsAggregateResponseAggregationsItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsAggregateResponseAggregationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     date: S.optional(S.NullOr(S.String)),
@@ -6033,7 +5771,7 @@ export const ListThreatEventsAggregateResponseAggregationsItem = /*@__PURE__*/ S
 
 export type ListThreatEventsAggregateResponseAggregationsList =
   Array<ListThreatEventsAggregateResponseAggregationsItem>;
-export const ListThreatEventsAggregateResponseAggregationsList = /*@__PURE__*/ S.Array(
+const ListThreatEventsAggregateResponseAggregationsList = /*@__PURE__*/ S.Array(
   ListThreatEventsAggregateResponseAggregationsItem,
 ) as any as S.Schema<ListThreatEventsAggregateResponseAggregationsList>;
 
@@ -6041,7 +5779,7 @@ export interface ListThreatEventsAggregateResponseDateRange {
   endDate?: string | null;
   startDate?: string | null;
 }
-export const ListThreatEventsAggregateResponseDateRange = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsAggregateResponseDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(S.NullOr(S.String)),
     startDate: S.optional(S.NullOr(S.String)),
@@ -6061,7 +5799,7 @@ export interface ListThreatEventsAggregateResponse {
   /** Date range used for filtering */
   dateRange?: ListThreatEventsAggregateResponseDateRange | null;
 }
-export const ListThreatEventsAggregateResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsAggregateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregateBy: S.String,
     aggregations: ListThreatEventsAggregateResponseAggregationsList,
@@ -6076,7 +5814,7 @@ export interface ListThreatEventsCategoriesCatalogRequest {
   /** Account ID. */
   accountId: string;
 }
-export const ListThreatEventsCategoriesCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsCategoriesCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -6093,13 +5831,7 @@ export const ListThreatEventsCategoriesCatalogRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListThreatEventsCategoriesCatalogRequest>;
 
 export type ListThreatEventsCategoriesCatalogResponseMitreAttackList = Array<string>;
-export const ListThreatEventsCategoriesCatalogResponseMitreAttackList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsCategoriesCatalogResponseMitreAttackList>;
-
 export type ListThreatEventsCategoriesCatalogResponseMitreCapecList = Array<string>;
-export const ListThreatEventsCategoriesCatalogResponseMitreCapecList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsCategoriesCatalogResponseMitreCapecList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventsCategoriesCatalogResponse {
   killChain: number;
@@ -6109,23 +5841,23 @@ export interface ListThreatEventsCategoriesCatalogResponse {
   mitreCapec?: ListThreatEventsCategoriesCatalogResponseMitreCapecList | null;
   shortname?: string | null;
 }
-export const ListThreatEventsCategoriesCatalogResponse =
+const ListThreatEventsCategoriesCatalogResponse =
   CreateThreatEventCategoryResponse as any as S.Schema<ListThreatEventsCategoriesCatalogResponse>;
 
 export type ListThreatEventsGraphRequestDatasetIdsList = Array<string>;
-export const ListThreatEventsGraphRequestDatasetIdsList =
+const ListThreatEventsGraphRequestDatasetIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsGraphRequestDatasetIdsList>;
 
 export type ListThreatEventsGraphRequestExpandList = Array<string>;
-export const ListThreatEventsGraphRequestExpandList =
+const ListThreatEventsGraphRequestExpandList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsGraphRequestExpandList>;
 
 export type ListThreatEventsGraphRequestRelationshipTypesList = Array<string>;
-export const ListThreatEventsGraphRequestRelationshipTypesList =
+const ListThreatEventsGraphRequestRelationshipTypesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsGraphRequestRelationshipTypesList>;
 
 export type ListThreatEventsGraphRequestSeedsList = Array<string>;
-export const ListThreatEventsGraphRequestSeedsList =
+const ListThreatEventsGraphRequestSeedsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsGraphRequestSeedsList>;
 
 export interface ListThreatEventsGraphRequest {
@@ -6150,7 +5882,7 @@ export interface ListThreatEventsGraphRequest {
   /** Comma-separated compact seed ids (type:uuid). Example: seeds=event:550e8400-...,indicator:661fa920-... Provide 1-50 entries; omitting seeds returns 400. */
   seeds?: ListThreatEventsGraphRequestSeedsList;
 }
-export const ListThreatEventsGraphRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -6190,7 +5922,7 @@ export interface ListThreatEventsGraphResponseEdgesItem {
   targetId: string;
   targetType: string;
 }
-export const ListThreatEventsGraphResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsGraphResponseEdgesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     relationshipType: S.String,
@@ -6206,21 +5938,21 @@ export const ListThreatEventsGraphResponseEdgesItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListThreatEventsGraphResponseEdgesItem>;
 
 export type ListThreatEventsGraphResponseEdgesList = Array<ListThreatEventsGraphResponseEdgesItem>;
-export const ListThreatEventsGraphResponseEdgesList = /*@__PURE__*/ S.Array(
+const ListThreatEventsGraphResponseEdgesList = /*@__PURE__*/ S.Array(
   ListThreatEventsGraphResponseEdgesItem,
 ) as any as S.Schema<ListThreatEventsGraphResponseEdgesList>;
 
 export type ListThreatEventsGraphResponseNodeMap = { [key: string]: unknown | undefined };
-export const ListThreatEventsGraphResponseNodeMap =
+const ListThreatEventsGraphResponseNodeMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<ListThreatEventsGraphResponseNodeMap>;
 
 export type ListThreatEventsGraphResponseNodesItemMap = { [key: string]: unknown | undefined };
-export const ListThreatEventsGraphResponseNodesItemMap =
+const ListThreatEventsGraphResponseNodesItemMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<ListThreatEventsGraphResponseNodesItemMap>;
 
 export type ListThreatEventsGraphResponseNodesList =
   Array<ListThreatEventsGraphResponseNodesItemMap>;
-export const ListThreatEventsGraphResponseNodesList = /*@__PURE__*/ S.Array(
+const ListThreatEventsGraphResponseNodesList = /*@__PURE__*/ S.Array(
   ListThreatEventsGraphResponseNodesItemMap,
 ) as any as S.Schema<ListThreatEventsGraphResponseNodesList>;
 
@@ -6231,7 +5963,7 @@ export interface ListThreatEventsGraphResponse {
   node: ListThreatEventsGraphResponseNodeMap;
   nodes: ListThreatEventsGraphResponseNodesList;
 }
-export const ListThreatEventsGraphResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsGraphResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edges: ListThreatEventsGraphResponseEdgesList,
     node: ListThreatEventsGraphResponseNodeMap,
@@ -6242,29 +5974,29 @@ export const ListThreatEventsGraphResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatEventsGraphResponse>;
 
 export type ListThreatEventsIndicatorsRequestCache = "from-graph";
-export const ListThreatEventsIndicatorsRequestCache = S.String;
+const ListThreatEventsIndicatorsRequestCache = S.String;
 
 export type ListThreatEventsIndicatorsRequestDatasetIdsList = Array<string>;
-export const ListThreatEventsIndicatorsRequestDatasetIdsList =
+const ListThreatEventsIndicatorsRequestDatasetIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsIndicatorsRequestDatasetIdsList>;
 
 export type ListThreatEventsIndicatorsRequestFormat = "json" | "stix2" | "taxii";
-export const ListThreatEventsIndicatorsRequestFormat = S.String;
+const ListThreatEventsIndicatorsRequestFormat = S.String;
 
 export type ListThreatEventsIndicatorsRequestRelatedEventsList = Array<string>;
-export const ListThreatEventsIndicatorsRequestRelatedEventsList =
+const ListThreatEventsIndicatorsRequestRelatedEventsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsIndicatorsRequestRelatedEventsList>;
 
 export type ListThreatEventsIndicatorsRequestSearchList = Array<string>;
-export const ListThreatEventsIndicatorsRequestSearchList =
+const ListThreatEventsIndicatorsRequestSearchList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsIndicatorsRequestSearchList>;
 
 export type ListThreatEventsIndicatorsRequestTagsList = Array<string>;
-export const ListThreatEventsIndicatorsRequestTagsList =
+const ListThreatEventsIndicatorsRequestTagsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsIndicatorsRequestTagsList>;
 
 export type ListThreatEventsIndicatorsRequestTagSearchList = Array<string>;
-export const ListThreatEventsIndicatorsRequestTagSearchList =
+const ListThreatEventsIndicatorsRequestTagSearchList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsIndicatorsRequestTagSearchList>;
 
 export interface ListThreatEventsIndicatorsRequest {
@@ -6302,7 +6034,7 @@ export interface ListThreatEventsIndicatorsRequest {
   /** Structured tag-metadata filter as a JSON array of {field, op, value} objects. Operates against the per-dataset IndicatorTag mirror so you can find indicators by tag attributes (origin country, motive, sophistication, priority, etc.) without a separate Tags lookup. Common dashboard usage: drill from a country into indicators, e.g. tagSearch=[{"field":"originCountryISO","op":"in","value":["IR","CN"]}]. Country values may be passed as alpha-2, alpha-3, name, or alias (e.g. "iran"). Operators: equals, not, gt/gte/lt/lte (numeric only), contains/like/find/startsWith/endsWith (string only), in. AND-joined across entries; combined with `tags`, a matching tag must satisfy both. Max 10 entries per request, max 100 values per 'in'. Performance notes: `originCountryISO` uses its B-tree index for equals/not/in. `priority` uses its B-tree index for numeric comparisons. Other string columns (`actorCategory`, `motive`, etc.) are case-insensitive and unindexed; current catalog size makes this a non-issue. `endsWith` and `aliasGroupNames` contains/like are leading-wildcard scans and slow on large result sets. `aliasGroupNames` matches on the JSON-encoded text, so substrings can cross alias boundaries ("apt28" also matches "apt280" when both appear in the same tag's alias list). */
   tagSearch?: ListThreatEventsIndicatorsRequestTagSearchList;
 }
-export const ListThreatEventsIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cache: S.optional(ListThreatEventsIndicatorsRequestCache.pipe(T.Query())),
@@ -6337,19 +6069,13 @@ export const ListThreatEventsIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesComplete =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesComplete =
-  ThreatEventsAttackersListResponseItems;
-
 export type ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasetsItems =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasetsItems =
-  ThreatEventsAttackersListResponseItems;
-
 export interface ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasets {
   items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasets =
+const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasets =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       items: ThreatEventsAttackersListResponseItems,
@@ -6361,19 +6087,13 @@ export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesF
 
 export type ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItemsPropertiesDatasetId =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItemsPropertiesDatasetId =
-  ThreatEventsAttackersListResponseItems;
-
 export type ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItemsPropertiesShardId =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItemsPropertiesShardId =
-  ThreatEventsAttackersListResponseItems;
-
 export interface ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItemsProperties {
   datasetId: ThreatEventsAttackersListResponseItems;
   shardId: ThreatEventsAttackersListResponseItems;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItemsProperties =
+const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItemsProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       datasetId: ThreatEventsAttackersListResponseItems,
@@ -6388,7 +6108,7 @@ export interface ListThreatEventsIndicatorsResponsePropertiesCompletenessPropert
   properties: ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItemsProperties;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItems =
+const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItems =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       properties:
@@ -6404,7 +6124,7 @@ export interface ListThreatEventsIndicatorsResponsePropertiesCompletenessPropert
   items: ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItems;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShards =
+const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShards =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       items: ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShardsItems,
@@ -6416,22 +6136,16 @@ export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesF
 
 export type ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesWarningsItems =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesWarningsItems =
-  ThreatEventsAttackersListResponseItems;
-
 export type ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesWarnings =
   ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasets;
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesWarnings =
-  ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasets;
-
 export interface ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties {
   complete: ThreatEventsAttackersListResponseItems;
   failedDatasets: ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasets;
   failedShards: ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShards;
   warnings: ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasets;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties =
-  /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       complete: ThreatEventsAttackersListResponseItems,
       failedDatasets:
@@ -6439,33 +6153,30 @@ export const ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties 
       failedShards: ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedShards,
       warnings: ListThreatEventsIndicatorsResponsePropertiesCompletenessPropertiesFailedDatasets,
     }),
-  ).annotate({
-    identifier: "ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties",
-  }) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties>;
+).annotate({
+  identifier: "ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties",
+}) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties>;
 
 export interface ListThreatEventsIndicatorsResponsePropertiesCompleteness {
   properties: ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesCompleteness = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      properties: ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties,
-      type: S.String,
-    }),
+const ListThreatEventsIndicatorsResponsePropertiesCompleteness = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties,
+    type: S.String,
+  }),
 ).annotate({
   identifier: "ListThreatEventsIndicatorsResponsePropertiesCompleteness",
 }) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesCompleteness>;
 
 export type ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItemResourceType =
   "article";
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItemResourceType =
-  S.String;
+const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItemResourceType = S.String;
 
 export type ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItemSystem =
   "threat-signals";
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItemSystem =
-  S.String;
+const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItemSystem = S.String;
 
 export interface ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItem {
   resourceId: string;
@@ -6474,7 +6185,7 @@ export interface ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSour
   /** Threat Signals article title; null for historical provenance without a stored title. */
   title: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItem =
+const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceId: S.String,
@@ -6489,34 +6200,27 @@ export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesI
 
 export type ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesList =
   Array<ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItem>;
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesList =
+const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesList =
   /*@__PURE__*/ S.Array(
     ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItem,
   ) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesList>;
 
 export type ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsItem =
   GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsItem =
-  GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
-
 export type ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem>;
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList =
+const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList =
   /*@__PURE__*/ S.Array(
     GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem,
   ) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList>;
 
 export type ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsItem =
   GetThreatEventsIndicatorsByDatasetResponseTagsItem;
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsItem =
-  GetThreatEventsIndicatorsByDatasetResponseTagsItem;
-
 export type ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseTagsItem>;
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList =
-  /*@__PURE__*/ S.Array(
-    GetThreatEventsIndicatorsByDatasetResponseTagsItem,
-  ) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList>;
+const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList = /*@__PURE__*/ S.Array(
+  GetThreatEventsIndicatorsByDatasetResponseTagsItem,
+) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList>;
 
 export interface ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems {
   createdAt: string;
@@ -6536,25 +6240,22 @@ export interface ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems {
   /** Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set. */
   tlp?: string | null;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdAt: S.String,
-      indicatorType: S.String,
-      sources: ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesList,
-      updatedAt: S.String,
-      uuid: S.String,
-      value: S.String,
-      datasetId: S.optional(S.NullOr(S.String)),
-      relatedEvents: S.optional(
-        S.NullOr(ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList),
-      ),
-      relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
-      tags: S.optional(
-        S.NullOr(ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList),
-      ),
-      tlp: S.optional(S.NullOr(S.String)),
-    }),
+const ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    indicatorType: S.String,
+    sources: ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesList,
+    updatedAt: S.String,
+    uuid: S.String,
+    value: S.String,
+    datasetId: S.optional(S.NullOr(S.String)),
+    relatedEvents: S.optional(
+      S.NullOr(ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList),
+    ),
+    relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
+    tags: S.optional(S.NullOr(ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList)),
+    tlp: S.optional(S.NullOr(S.String)),
+  }),
 ).annotate({
   identifier: "ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems",
 }) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems>;
@@ -6563,7 +6264,7 @@ export interface ListThreatEventsIndicatorsResponsePropertiesIndicators {
   items: ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesIndicators = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsResponsePropertiesIndicators = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems,
     type: S.String,
@@ -6574,15 +6275,12 @@ export const ListThreatEventsIndicatorsResponsePropertiesIndicators = /*@__PURE_
 
 export type ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCount =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCount =
-  ThreatEventsAttackersListResponseItems;
-
 export interface ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor {
   description: string;
   nullable: boolean;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor =
+const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       description: S.String,
@@ -6597,7 +6295,7 @@ export interface ListThreatEventsIndicatorsResponsePropertiesPaginationPropertie
   description: string;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesHasMore =
+const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesHasMore =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       description: S.String,
@@ -6609,24 +6307,12 @@ export const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesHas
 
 export type ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesPage =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesPage =
-  ThreatEventsAttackersListResponseItems;
-
 export type ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesPerPage =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesPerPage =
-  ThreatEventsAttackersListResponseItems;
-
 export type ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesTotalCount =
   ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor;
-export const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesTotalCount =
-  ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor;
-
 export type ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesTotalCountIsExact =
   ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesHasMore;
-export const ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesTotalCountIsExact =
-  ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesHasMore;
-
 export interface ListThreatEventsIndicatorsResponsePropertiesPaginationProperties {
   count: ThreatEventsAttackersListResponseItems;
   cursor: ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor;
@@ -6636,8 +6322,8 @@ export interface ListThreatEventsIndicatorsResponsePropertiesPaginationPropertie
   totalCount: ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor;
   totalCountIsExact: ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesHasMore;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesPaginationProperties =
-  /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsResponsePropertiesPaginationProperties = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       count: ThreatEventsAttackersListResponseItems,
       cursor: ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor,
@@ -6654,15 +6340,15 @@ export const ListThreatEventsIndicatorsResponsePropertiesPaginationProperties =
           T.Body("total_count_is_exact"),
         ),
     }),
-  ).annotate({
-    identifier: "ListThreatEventsIndicatorsResponsePropertiesPaginationProperties",
-  }) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesPaginationProperties>;
+).annotate({
+  identifier: "ListThreatEventsIndicatorsResponsePropertiesPaginationProperties",
+}) as any as S.Schema<ListThreatEventsIndicatorsResponsePropertiesPaginationProperties>;
 
 export interface ListThreatEventsIndicatorsResponsePropertiesPagination {
   properties: ListThreatEventsIndicatorsResponsePropertiesPaginationProperties;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponsePropertiesPagination = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsResponsePropertiesPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: ListThreatEventsIndicatorsResponsePropertiesPaginationProperties,
     type: S.String,
@@ -6676,7 +6362,7 @@ export interface ListThreatEventsIndicatorsResponseProperties {
   indicators: ListThreatEventsIndicatorsResponsePropertiesIndicators;
   pagination: ListThreatEventsIndicatorsResponsePropertiesPagination;
 }
-export const ListThreatEventsIndicatorsResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completeness: ListThreatEventsIndicatorsResponsePropertiesCompleteness,
     indicators: ListThreatEventsIndicatorsResponsePropertiesIndicators,
@@ -6691,7 +6377,7 @@ export interface ListThreatEventsIndicatorsResponse {
   properties: ListThreatEventsIndicatorsResponseProperties;
   type: string;
 }
-export const ListThreatEventsIndicatorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: ListThreatEventsIndicatorsResponseProperties,
     type: S.String,
@@ -6701,11 +6387,11 @@ export const ListThreatEventsIndicatorsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatEventsIndicatorsResponse>;
 
 export type ListThreatEventsIndicatorsAggregateRequestDatasetIdsList = Array<string>;
-export const ListThreatEventsIndicatorsAggregateRequestDatasetIdsList =
+const ListThreatEventsIndicatorsAggregateRequestDatasetIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsIndicatorsAggregateRequestDatasetIdsList>;
 
 export type ListThreatEventsIndicatorsAggregateRequestMeasure = "indicators" | "relationships";
-export const ListThreatEventsIndicatorsAggregateRequestMeasure = S.String;
+const ListThreatEventsIndicatorsAggregateRequestMeasure = S.String;
 
 export interface ListThreatEventsIndicatorsAggregateRequest {
   /** Account ID. */
@@ -6729,7 +6415,7 @@ export interface ListThreatEventsIndicatorsAggregateRequest {
   /** Scope to indicators associated with this tag/actor UUID. Combine with measure=relationships for 'top indicator for an actor'. */
   tagUuid?: string;
 }
-export const ListThreatEventsIndicatorsAggregateRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsAggregateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     aggregateBy: S.String.pipe(T.Query()),
@@ -6760,18 +6446,17 @@ export interface ListThreatEventsIndicatorsAggregateResponseAggregationsItem {
   /** Number of indicators for this aggregation */
   count: number;
 }
-export const ListThreatEventsIndicatorsAggregateResponseAggregationsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.Number,
-    }),
+const ListThreatEventsIndicatorsAggregateResponseAggregationsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+  }),
 ).annotate({
   identifier: "ListThreatEventsIndicatorsAggregateResponseAggregationsItem",
 }) as any as S.Schema<ListThreatEventsIndicatorsAggregateResponseAggregationsItem>;
 
 export type ListThreatEventsIndicatorsAggregateResponseAggregationsList =
   Array<ListThreatEventsIndicatorsAggregateResponseAggregationsItem>;
-export const ListThreatEventsIndicatorsAggregateResponseAggregationsList = /*@__PURE__*/ S.Array(
+const ListThreatEventsIndicatorsAggregateResponseAggregationsList = /*@__PURE__*/ S.Array(
   ListThreatEventsIndicatorsAggregateResponseAggregationsItem,
 ) as any as S.Schema<ListThreatEventsIndicatorsAggregateResponseAggregationsList>;
 
@@ -6786,7 +6471,7 @@ export interface ListThreatEventsIndicatorsAggregateResponse {
   /** Total count in the aggregation: indicator rows when measure=indicators, or linked-event rows when measure=relationships */
   total: number;
 }
-export const ListThreatEventsIndicatorsAggregateResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsAggregateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregateBy: S.String,
     aggregations: ListThreatEventsIndicatorsAggregateResponseAggregationsList,
@@ -6798,7 +6483,7 @@ export const ListThreatEventsIndicatorsAggregateResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListThreatEventsIndicatorsAggregateResponse>;
 
 export type ListThreatEventsIndicatorsByDatasetRequestRelatedEventList = Array<string>;
-export const ListThreatEventsIndicatorsByDatasetRequestRelatedEventList =
+const ListThreatEventsIndicatorsByDatasetRequestRelatedEventList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsIndicatorsByDatasetRequestRelatedEventList>;
 
 export interface ListThreatEventsIndicatorsByDatasetRequest {
@@ -6814,7 +6499,7 @@ export interface ListThreatEventsIndicatorsByDatasetRequest {
   /** Filter indicators by related event UUID(s). Multiple UUIDs can be provided by repeating the parameter. */
   relatedEvent?: ListThreatEventsIndicatorsByDatasetRequestRelatedEventList;
 }
-export const ListThreatEventsIndicatorsByDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsByDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -6840,13 +6525,8 @@ export const ListThreatEventsIndicatorsByDatasetRequest = /*@__PURE__*/ S.suspen
 
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItemResourceType =
   "article";
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItemResourceType =
-  S.String;
-
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItemSystem =
   "threat-signals";
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItemSystem = S.String;
-
 export interface ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem {
   resourceId: string;
   resourceType: ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItemResourceType;
@@ -6854,32 +6534,23 @@ export interface ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSource
   /** Threat Signals article title; null for historical provenance without a stored title. */
   title: string;
 }
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem =
-  ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItem as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem>;
-
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList =
   Array<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesItem>;
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList =
+const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList =
   ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesList as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList>;
 
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsItem =
   GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsItem =
-  GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
-
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem>;
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList =
+const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList =
   ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList>;
 
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemTagsItem =
   GetThreatEventsIndicatorsByDatasetResponseTagsItem;
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemTagsItem =
-  GetThreatEventsIndicatorsByDatasetResponseTagsItem;
-
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemTagsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseTagsItem>;
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemTagsList =
+const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemTagsList =
   ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemTagsList>;
 
 export interface ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem {
@@ -6900,30 +6571,29 @@ export interface ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem {
   /** Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set. */
   tlp?: string | null;
 }
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdAt: S.String,
-      indicatorType: S.String,
-      sources: ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList,
-      updatedAt: S.String,
-      uuid: S.String,
-      value: S.String,
-      datasetId: S.optional(S.NullOr(S.String)),
-      relatedEvents: S.optional(
-        S.NullOr(ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList),
-      ),
-      relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
-      tags: S.optional(S.NullOr(ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemTagsList)),
-      tlp: S.optional(S.NullOr(S.String)),
-    }),
+const ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    indicatorType: S.String,
+    sources: ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemSourcesList,
+    updatedAt: S.String,
+    uuid: S.String,
+    value: S.String,
+    datasetId: S.optional(S.NullOr(S.String)),
+    relatedEvents: S.optional(
+      S.NullOr(ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList),
+    ),
+    relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
+    tags: S.optional(S.NullOr(ListThreatEventsIndicatorsByDatasetResponseIndicatorsItemTagsList)),
+    tlp: S.optional(S.NullOr(S.String)),
+  }),
 ).annotate({
   identifier: "ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem",
 }) as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem>;
 
 export type ListThreatEventsIndicatorsByDatasetResponseIndicatorsList =
   Array<ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem>;
-export const ListThreatEventsIndicatorsByDatasetResponseIndicatorsList = /*@__PURE__*/ S.Array(
+const ListThreatEventsIndicatorsByDatasetResponseIndicatorsList = /*@__PURE__*/ S.Array(
   ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem,
 ) as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponseIndicatorsList>;
 
@@ -6933,7 +6603,7 @@ export interface ListThreatEventsIndicatorsByDatasetResponsePagination {
   totalCount: number;
   totalPages: number;
 }
-export const ListThreatEventsIndicatorsByDatasetResponsePagination = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsByDatasetResponsePagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     pageSize: S.Number,
@@ -6949,7 +6619,7 @@ export interface ListThreatEventsIndicatorsByDatasetResponse {
   indicators: ListThreatEventsIndicatorsByDatasetResponseIndicatorsList;
   pagination: ListThreatEventsIndicatorsByDatasetResponsePagination;
 }
-export const ListThreatEventsIndicatorsByDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsByDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indicators: ListThreatEventsIndicatorsByDatasetResponseIndicatorsList,
     pagination: ListThreatEventsIndicatorsByDatasetResponsePagination,
@@ -6964,7 +6634,7 @@ export interface ListThreatEventsIndicatorsByDatasetTagsRequest {
   /** Dataset ID. */
   datasetId: string;
 }
-export const ListThreatEventsIndicatorsByDatasetTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsByDatasetTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -6982,11 +6652,11 @@ export const ListThreatEventsIndicatorsByDatasetTagsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListThreatEventsIndicatorsByDatasetTagsRequest>;
 
 export interface ListThreatEventsIndicatorsByDatasetTagsResponse {}
-export const ListThreatEventsIndicatorsByDatasetTagsResponse =
+const ListThreatEventsIndicatorsByDatasetTagsResponse =
   DeleteRequestAssetResponse as any as S.Schema<ListThreatEventsIndicatorsByDatasetTagsResponse>;
 
 export type ListThreatEventsIndicatorsTypesRequestDatasetIdsList = Array<string>;
-export const ListThreatEventsIndicatorsTypesRequestDatasetIdsList =
+const ListThreatEventsIndicatorsTypesRequestDatasetIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsIndicatorsTypesRequestDatasetIdsList>;
 
 export interface ListThreatEventsIndicatorsTypesRequest {
@@ -6995,7 +6665,7 @@ export interface ListThreatEventsIndicatorsTypesRequest {
   /** Dataset UUIDs to query, or one standalone scope value: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, queries all accessible datasets. */
   datasetIds?: ListThreatEventsIndicatorsTypesRequestDatasetIdsList;
 }
-export const ListThreatEventsIndicatorsTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsIndicatorsTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetIds: S.optional(ListThreatEventsIndicatorsTypesRequestDatasetIdsList.pipe(T.Query())),
@@ -7013,21 +6683,19 @@ export const ListThreatEventsIndicatorsTypesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListThreatEventsIndicatorsTypesRequest>;
 
 export type ListThreatEventsIndicatorsTypesResponseItems = ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsIndicatorsTypesResponseItems = ThreatEventsAttackersListResponseItems;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventsIndicatorsTypesResponse {
   items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
-export const ListThreatEventsIndicatorsTypesResponse =
+const ListThreatEventsIndicatorsTypesResponse =
   ListThreatEventAttackersResponse as any as S.Schema<ListThreatEventsIndicatorsTypesResponse>;
 
 export interface ListThreatEventsQueriesRequest {
   /** Account ID. */
   accountId: string;
 }
-export const ListThreatEventsQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -7072,14 +6740,14 @@ export interface ListThreatEventsQueriesResponse {
   /** Scope for the rule */
   ruleScope?: string | null;
 }
-export const ListThreatEventsQueriesResponse =
+const ListThreatEventsQueriesResponse =
   CreateThreatEventsQueryResponse as any as S.Schema<ListThreatEventsQueriesResponse>;
 
 export type ListThreatEventsRelationshipsRequestDirection = "ancestors" | "descendants" | "both";
-export const ListThreatEventsRelationshipsRequestDirection = S.String;
+const ListThreatEventsRelationshipsRequestDirection = S.String;
 
 export type ListThreatEventsRelationshipsRequestIndicatorTypeIdsList = Array<string>;
-export const ListThreatEventsRelationshipsRequestIndicatorTypeIdsList =
+const ListThreatEventsRelationshipsRequestIndicatorTypeIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsRelationshipsRequestIndicatorTypeIdsList>;
 
 export interface ListThreatEventsRelationshipsRequest {
@@ -7102,7 +6770,7 @@ export interface ListThreatEventsRelationshipsRequest {
   /** An optional array of relationship types to filter by. */
   relationshipTypes?: string;
 }
-export const ListThreatEventsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
@@ -7130,33 +6798,12 @@ export const ListThreatEventsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListThreatEventsRelationshipsRequest>;
 
 export type ListThreatEventsRelationshipsResponseMitreAttackList = Array<string>;
-export const ListThreatEventsRelationshipsResponseMitreAttackList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsRelationshipsResponseMitreAttackList>;
-
 export type ListThreatEventsRelationshipsResponseMitreCapecList = Array<string>;
-export const ListThreatEventsRelationshipsResponseMitreCapecList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsRelationshipsResponseMitreCapecList>;
-
 export type ListThreatEventsRelationshipsResponseReferencedList = Array<string>;
-export const ListThreatEventsRelationshipsResponseReferencedList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsRelationshipsResponseReferencedList>;
-
 export type ListThreatEventsRelationshipsResponseReferencedIdsList = Array<number>;
-export const ListThreatEventsRelationshipsResponseReferencedIdsList =
-  ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ListThreatEventsRelationshipsResponseReferencedIdsList>;
-
 export type ListThreatEventsRelationshipsResponseReferencesList = Array<string>;
-export const ListThreatEventsRelationshipsResponseReferencesList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsRelationshipsResponseReferencesList>;
-
 export type ListThreatEventsRelationshipsResponseReferencesIdsList = Array<number>;
-export const ListThreatEventsRelationshipsResponseReferencesIdsList =
-  ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ListThreatEventsRelationshipsResponseReferencesIdsList>;
-
 export type ListThreatEventsRelationshipsResponseTagsList = Array<string>;
-export const ListThreatEventsRelationshipsResponseTagsList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsRelationshipsResponseTagsList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventsRelationshipsResponse {
   attacker: string;
@@ -7189,14 +6836,14 @@ export interface ListThreatEventsRelationshipsResponse {
   insight?: string | null;
   releasabilityId?: string | null;
 }
-export const ListThreatEventsRelationshipsResponse =
+const ListThreatEventsRelationshipsResponse =
   CreateThreatEventResponse as any as S.Schema<ListThreatEventsRelationshipsResponse>;
 
 export type ListThreatEventsTagsRequestCache = "from-graph";
-export const ListThreatEventsTagsRequestCache = S.String;
+const ListThreatEventsTagsRequestCache = S.String;
 
 export type ListThreatEventsTagsRequestFiltersList = Array<string>;
-export const ListThreatEventsTagsRequestFiltersList =
+const ListThreatEventsTagsRequestFiltersList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsTagsRequestFiltersList>;
 
 export interface ListThreatEventsTagsRequest {
@@ -7212,7 +6859,7 @@ export interface ListThreatEventsTagsRequest {
   /** Free-text substring match on tag value AND custom-field properties. Searches case-insensitively inside both `Tag.value` and the serialized `Tag.properties` JSON blob (keys, values, and annotation metadata like confidence/tlp are all searchable). Same serialized-text tradeoff as `aliasGroupNames` -- substrings can cross JSON boundaries. */
   search?: string;
 }
-export const ListThreatEventsTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cache: S.optional(ListThreatEventsTagsRequestCache.pipe(T.Query())),
@@ -7236,9 +6883,6 @@ export const ListThreatEventsTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListThreatEventsTagsResponsePagination =
   ListThreatEventsIndicatorsByDatasetResponsePagination;
-export const ListThreatEventsTagsResponsePagination =
-  ListThreatEventsIndicatorsByDatasetResponsePagination;
-
 export type ListThreatEventsTagsResponseTagsItemActiveDurationAnnotatedTlp =
   | "red"
   | "amber"
@@ -7247,13 +6891,11 @@ export type ListThreatEventsTagsResponseTagsItemActiveDurationAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemActiveDurationAnnotatedTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated {
   value: string;
   tlp?: ListThreatEventsTagsResponseTagsItemActiveDurationAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated =
+const ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated =
   EditThreatEventsTagResponseExternalReferencesAnnotatedItem as any as S.Schema<ListThreatEventsTagsResponseTagsItemActiveDurationAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemActorCategoryAnnotatedTlp =
@@ -7264,14 +6906,12 @@ export type ListThreatEventsTagsResponseTagsItemActorCategoryAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemActorCategoryAnnotatedTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemActorCategoryAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated =
+const ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated =
   ThreatEventsTagsCreateResponseSophisticationLevelAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemActorCategoryAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemAliasesItemTlp =
@@ -7282,27 +6922,22 @@ export type ListThreatEventsTagsResponseTagsItemAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemAliasesItemTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemAliasesItem {
   value: string;
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemAliasesItemTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemAliasesItem =
-  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemAliasesItem>;
-
 export type ListThreatEventsTagsResponseTagsItemAliasesList =
   Array<ListThreatEventsTagsResponseTagsItemAliasesItem>;
-export const ListThreatEventsTagsResponseTagsItemAliasesList =
+const ListThreatEventsTagsResponseTagsItemAliasesList =
   ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<ListThreatEventsTagsResponseTagsItemAliasesList>;
 
 export type ListThreatEventsTagsResponseTagsItemAliasGroupNamesList = Array<string>;
-export const ListThreatEventsTagsResponseTagsItemAliasGroupNamesList =
+const ListThreatEventsTagsResponseTagsItemAliasGroupNamesList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsTagsResponseTagsItemAliasGroupNamesList>;
 
 export type ListThreatEventsTagsResponseTagsItemAliasGroupNamesInternalList = Array<string>;
-export const ListThreatEventsTagsResponseTagsItemAliasGroupNamesInternalList =
+const ListThreatEventsTagsResponseTagsItemAliasGroupNamesInternalList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<ListThreatEventsTagsResponseTagsItemAliasGroupNamesInternalList>;
 
 export type ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotatedTlp =
@@ -7313,14 +6948,14 @@ export type ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotated
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotatedTlp = S.String;
+const ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotatedTlp = S.String;
 
 export interface ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotated =
+const ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotated =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.String,
@@ -7334,17 +6969,14 @@ export const ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotate
   }) as any as S.Schema<ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemExternalReferenceLinksList = Array<string>;
-export const ListThreatEventsTagsResponseTagsItemExternalReferenceLinksList =
+const ListThreatEventsTagsResponseTagsItemExternalReferenceLinksList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsTagsResponseTagsItemExternalReferenceLinksList>;
 
 export type ListThreatEventsTagsResponseTagsItemExternalReferencesItem =
   ThreatEventsTagsCreateResponseExternalReferencesItem;
-export const ListThreatEventsTagsResponseTagsItemExternalReferencesItem =
-  ThreatEventsTagsCreateResponseExternalReferencesItem;
-
 export type ListThreatEventsTagsResponseTagsItemExternalReferencesList =
   Array<ThreatEventsTagsCreateResponseExternalReferencesItem>;
-export const ListThreatEventsTagsResponseTagsItemExternalReferencesList =
+const ListThreatEventsTagsResponseTagsItemExternalReferencesList =
   ThreatEventsTagsCreateResponseExternalReferencesList as any as S.Schema<ListThreatEventsTagsResponseTagsItemExternalReferencesList>;
 
 export type ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItemTlp =
@@ -7355,30 +6987,29 @@ export type ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItemT
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItemTlp = S.String;
+const ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItemTlp = S.String;
 
 export interface ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem {
   value: string;
   tlp?: ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItemTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem =
-  /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       value: S.String,
       tlp: S.optional(
         S.NullOr(ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItemTlp),
       ),
     }),
-  ).annotate({
-    identifier: "ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem",
-  }) as any as S.Schema<ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem>;
+).annotate({
+  identifier: "ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem",
+}) as any as S.Schema<ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem>;
 
 export type ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedList =
   Array<ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem>;
-export const ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedList =
-  /*@__PURE__*/ S.Array(
-    ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem,
-  ) as any as S.Schema<ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedList>;
+const ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedList = /*@__PURE__*/ S.Array(
+  ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem,
+) as any as S.Schema<ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedList>;
 
 export type ListThreatEventsTagsResponseTagsItemInternalAliasesItemTlp =
   | "red"
@@ -7388,19 +7019,14 @@ export type ListThreatEventsTagsResponseTagsItemInternalAliasesItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemInternalAliasesItemTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemInternalAliasesItem {
   value: string;
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemInternalAliasesItemTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemInternalAliasesItem =
-  ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemInternalAliasesItem>;
-
 export type ListThreatEventsTagsResponseTagsItemInternalAliasesList =
   Array<ListThreatEventsTagsResponseTagsItemInternalAliasesItem>;
-export const ListThreatEventsTagsResponseTagsItemInternalAliasesList =
+const ListThreatEventsTagsResponseTagsItemInternalAliasesList =
   ThreatEventsTagsCreateResponseAliasesList as any as S.Schema<ListThreatEventsTagsResponseTagsItemInternalAliasesList>;
 
 export type ListThreatEventsTagsResponseTagsItemMotiveAnnotatedTlp =
@@ -7411,14 +7037,12 @@ export type ListThreatEventsTagsResponseTagsItemMotiveAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemMotiveAnnotatedTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemMotiveAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemMotiveAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemMotiveAnnotated =
+const ListThreatEventsTagsResponseTagsItemMotiveAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemMotiveAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotatedTlp =
@@ -7429,14 +7053,12 @@ export type ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotatedTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated =
+const ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated =
   ThreatEventsTagsCreateResponseActorCategoryAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemOpsecLevelAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotatedTlp =
@@ -7447,14 +7069,12 @@ export type ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotatedTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated =
+const ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated =
   ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemOriginCountryISOAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemPriorityAnnotatedTlp =
@@ -7465,19 +7085,17 @@ export type ListThreatEventsTagsResponseTagsItemPriorityAnnotatedTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemPriorityAnnotatedTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemPriorityAnnotated {
   value: number;
   tlp?: ListThreatEventsTagsResponseTagsItemPriorityAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemPriorityAnnotated =
+const ListThreatEventsTagsResponseTagsItemPriorityAnnotated =
   ThreatEventsTagsCreateResponsePriorityAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemPriorityAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const ListThreatEventsTagsResponseTagsItemPropertiesMap =
+const ListThreatEventsTagsResponseTagsItemPropertiesMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<ListThreatEventsTagsResponseTagsItemPropertiesMap>;
 
 export type ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotatedTlp =
@@ -7488,14 +7106,12 @@ export type ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotatedTlp 
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotatedTlp = S.String;
-
 export interface ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotated {
   value: string;
   confidence?: number | null;
   tlp?: ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotatedTlp | null;
 }
-export const ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotated =
+const ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotated =
   ListThreatEventsTagsResponseTagsItemAttributionOrganizationAnnotated as any as S.Schema<ListThreatEventsTagsResponseTagsItemSophisticationLevelAnnotated>;
 
 export type ListThreatEventsTagsResponseTagsItemTlp =
@@ -7506,7 +7122,7 @@ export type ListThreatEventsTagsResponseTagsItemTlp =
   | "clear"
   | "purple"
   | "amber+strict";
-export const ListThreatEventsTagsResponseTagsItemTlp = S.String;
+const ListThreatEventsTagsResponseTagsItemTlp = S.String;
 
 export interface ListThreatEventsTagsResponseTagsItem {
   uuid: string;
@@ -7554,7 +7170,7 @@ export interface ListThreatEventsTagsResponseTagsItem {
   updatedAt?: string | null;
   version?: number | null;
 }
-export const ListThreatEventsTagsResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
     value: S.String,
@@ -7641,7 +7257,7 @@ export const ListThreatEventsTagsResponseTagsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListThreatEventsTagsResponseTagsItem>;
 
 export type ListThreatEventsTagsResponseTagsList = Array<ListThreatEventsTagsResponseTagsItem>;
-export const ListThreatEventsTagsResponseTagsList = /*@__PURE__*/ S.Array(
+const ListThreatEventsTagsResponseTagsList = /*@__PURE__*/ S.Array(
   ListThreatEventsTagsResponseTagsItem,
 ) as any as S.Schema<ListThreatEventsTagsResponseTagsList>;
 
@@ -7650,7 +7266,7 @@ export interface ListThreatEventsTagsResponse {
   pagination: ListThreatEventsIndicatorsByDatasetResponsePagination;
   tags: ListThreatEventsTagsResponseTagsList;
 }
-export const ListThreatEventsTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListThreatEventsIndicatorsByDatasetResponsePagination,
     tags: ListThreatEventsTagsResponseTagsList,
@@ -7664,7 +7280,7 @@ export interface ListThreatEventsTagsCategoriesRequest {
   accountId: string;
   search?: string;
 }
-export const ListThreatEventsTagsCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     search: S.optional(S.String.pipe(T.Query())),
@@ -7688,45 +7304,39 @@ export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemKind =
   | "date"
   | "array"
   | "object";
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemKind = S.String;
+const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemKind = S.String;
 
 export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemAllowedValuesList =
   Array<string>;
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemAllowedValuesList =
+const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemAllowedValuesList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemAllowedValuesList>;
 
 export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemAnnotations =
   CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations;
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemAnnotations =
-  CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations;
-
 export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemDeprecatedValuesList =
   Array<string>;
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemDeprecatedValuesList =
+const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemDeprecatedValuesList =
   CreateThreatEventsTagsCategoryRequestSchemaItemAllowedValuesList as any as S.Schema<ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemDeprecatedValuesList>;
 
 export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemEnforcement =
   | "error"
   | "warn"
   | "off";
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemEnforcement = S.String;
+const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemEnforcement = S.String;
 
 export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemFormat =
   | "date"
   | "url"
   | "duration"
   | "country";
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemFormat = S.String;
+const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemFormat = S.String;
 
 export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemNumberConstraint =
   CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint;
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemNumberConstraint =
-  CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint;
-
 export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemPropertiesMap =
+const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemPropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -7752,47 +7362,42 @@ export interface ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem 
   properties?: ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemPropertiesMap | null;
   required?: boolean | null;
 }
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      kind: ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemKind,
-      allowedValues: S.optional(
-        S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemAllowedValuesList),
-      ),
-      annotations: S.optional(
-        S.NullOr(CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations),
-      ),
-      deprecated: S.optional(S.NullOr(S.Boolean)),
-      deprecatedValues: S.optional(
-        S.NullOr(
-          ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemDeprecatedValuesList,
-        ),
-      ),
-      element: S.optional(S.NullOr(S.Unknown)),
-      enforcement: S.optional(
-        S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemEnforcement),
-      ),
-      format: S.optional(
-        S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemFormat),
-      ),
-      label: S.optional(S.NullOr(S.String)),
-      maxLength: S.optional(S.NullOr(S.Number)),
-      numberConstraint: S.optional(
-        S.NullOr(CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint),
-      ),
-      properties: S.optional(
-        S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemPropertiesMap),
-      ),
-      required: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem",
-  }) as any as S.Schema<ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem>;
+const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+    kind: ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemKind,
+    allowedValues: S.optional(
+      S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemAllowedValuesList),
+    ),
+    annotations: S.optional(S.NullOr(CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations)),
+    deprecated: S.optional(S.NullOr(S.Boolean)),
+    deprecatedValues: S.optional(
+      S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemDeprecatedValuesList),
+    ),
+    element: S.optional(S.NullOr(S.Unknown)),
+    enforcement: S.optional(
+      S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemEnforcement),
+    ),
+    format: S.optional(
+      S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemFormat),
+    ),
+    label: S.optional(S.NullOr(S.String)),
+    maxLength: S.optional(S.NullOr(S.Number)),
+    numberConstraint: S.optional(
+      S.NullOr(CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint),
+    ),
+    properties: S.optional(
+      S.NullOr(ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItemPropertiesMap),
+    ),
+    required: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem",
+}) as any as S.Schema<ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem>;
 
 export type ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaList =
   Array<ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem>;
-export const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaList = /*@__PURE__*/ S.Array(
+const ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaList = /*@__PURE__*/ S.Array(
   ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem,
 ) as any as S.Schema<ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaList>;
 
@@ -7805,7 +7410,7 @@ export interface ListThreatEventsTagsCategoriesResponseCategoriesItem {
   schema?: ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaList | null;
   updatedAt?: string | null;
 }
-export const ListThreatEventsTagsCategoriesResponseCategoriesItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsCategoriesResponseCategoriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uuid: S.String,
@@ -7820,7 +7425,7 @@ export const ListThreatEventsTagsCategoriesResponseCategoriesItem = /*@__PURE__*
 
 export type ListThreatEventsTagsCategoriesResponseCategoriesList =
   Array<ListThreatEventsTagsCategoriesResponseCategoriesItem>;
-export const ListThreatEventsTagsCategoriesResponseCategoriesList = /*@__PURE__*/ S.Array(
+const ListThreatEventsTagsCategoriesResponseCategoriesList = /*@__PURE__*/ S.Array(
   ListThreatEventsTagsCategoriesResponseCategoriesItem,
 ) as any as S.Schema<ListThreatEventsTagsCategoriesResponseCategoriesList>;
 
@@ -7828,7 +7433,7 @@ export const ListThreatEventsTagsCategoriesResponseCategoriesList = /*@__PURE__*
 export interface ListThreatEventsTagsCategoriesResponse {
   categories: ListThreatEventsTagsCategoriesResponseCategoriesList;
 }
-export const ListThreatEventsTagsCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: ListThreatEventsTagsCategoriesResponseCategoriesList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7837,15 +7442,15 @@ export const ListThreatEventsTagsCategoriesResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListThreatEventsTagsCategoriesResponse>;
 
 export type ListThreatEventsTagsIndicatorsRequestDatasetIdsList = Array<string>;
-export const ListThreatEventsTagsIndicatorsRequestDatasetIdsList =
+const ListThreatEventsTagsIndicatorsRequestDatasetIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsTagsIndicatorsRequestDatasetIdsList>;
 
 export type ListThreatEventsTagsIndicatorsRequestRelatedEventList = Array<string>;
-export const ListThreatEventsTagsIndicatorsRequestRelatedEventList =
+const ListThreatEventsTagsIndicatorsRequestRelatedEventList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsTagsIndicatorsRequestRelatedEventList>;
 
 export type ListThreatEventsTagsIndicatorsRequestSearchList = Array<string>;
-export const ListThreatEventsTagsIndicatorsRequestSearchList =
+const ListThreatEventsTagsIndicatorsRequestSearchList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsTagsIndicatorsRequestSearchList>;
 
 export interface ListThreatEventsTagsIndicatorsRequest {
@@ -7863,7 +7468,7 @@ export interface ListThreatEventsTagsIndicatorsRequest {
   /** Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request. */
   search?: ListThreatEventsTagsIndicatorsRequestSearchList;
 }
-export const ListThreatEventsTagsIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tagUuid: S.String.pipe(T.Label("tag_uuid")),
@@ -7888,22 +7493,16 @@ export const ListThreatEventsTagsIndicatorsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type ListThreatEventsTagsIndicatorsResponseIndicatorsItemRelatedEventsItem =
   GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
-export const ListThreatEventsTagsIndicatorsResponseIndicatorsItemRelatedEventsItem =
-  GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
-
 export type ListThreatEventsTagsIndicatorsResponseIndicatorsItemRelatedEventsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem>;
-export const ListThreatEventsTagsIndicatorsResponseIndicatorsItemRelatedEventsList =
+const ListThreatEventsTagsIndicatorsResponseIndicatorsItemRelatedEventsList =
   ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList as any as S.Schema<ListThreatEventsTagsIndicatorsResponseIndicatorsItemRelatedEventsList>;
 
 export type ListThreatEventsTagsIndicatorsResponseIndicatorsItemTagsItem =
   GetThreatEventsIndicatorsByDatasetResponseTagsItem;
-export const ListThreatEventsTagsIndicatorsResponseIndicatorsItemTagsItem =
-  GetThreatEventsIndicatorsByDatasetResponseTagsItem;
-
 export type ListThreatEventsTagsIndicatorsResponseIndicatorsItemTagsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseTagsItem>;
-export const ListThreatEventsTagsIndicatorsResponseIndicatorsItemTagsList =
+const ListThreatEventsTagsIndicatorsResponseIndicatorsItemTagsList =
   GetThreatEventsIndicatorsByDatasetResponseTagsList as any as S.Schema<ListThreatEventsTagsIndicatorsResponseIndicatorsItemTagsList>;
 
 export interface ListThreatEventsTagsIndicatorsResponseIndicatorsItem {
@@ -7922,7 +7521,7 @@ export interface ListThreatEventsTagsIndicatorsResponseIndicatorsItem {
   /** Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set. */
   tlp?: string | null;
 }
-export const ListThreatEventsTagsIndicatorsResponseIndicatorsItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsIndicatorsResponseIndicatorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     indicatorType: S.String,
@@ -7943,21 +7542,18 @@ export const ListThreatEventsTagsIndicatorsResponseIndicatorsItem = /*@__PURE__*
 
 export type ListThreatEventsTagsIndicatorsResponseIndicatorsList =
   Array<ListThreatEventsTagsIndicatorsResponseIndicatorsItem>;
-export const ListThreatEventsTagsIndicatorsResponseIndicatorsList = /*@__PURE__*/ S.Array(
+const ListThreatEventsTagsIndicatorsResponseIndicatorsList = /*@__PURE__*/ S.Array(
   ListThreatEventsTagsIndicatorsResponseIndicatorsItem,
 ) as any as S.Schema<ListThreatEventsTagsIndicatorsResponseIndicatorsList>;
 
 export type ListThreatEventsTagsIndicatorsResponsePagination =
   ListThreatEventsIndicatorsByDatasetResponsePagination;
-export const ListThreatEventsTagsIndicatorsResponsePagination =
-  ListThreatEventsIndicatorsByDatasetResponsePagination;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventsTagsIndicatorsResponse {
   indicators: ListThreatEventsTagsIndicatorsResponseIndicatorsList;
   pagination: ListThreatEventsIndicatorsByDatasetResponsePagination;
 }
-export const ListThreatEventsTagsIndicatorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsIndicatorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indicators: ListThreatEventsTagsIndicatorsResponseIndicatorsList,
     pagination: ListThreatEventsIndicatorsByDatasetResponsePagination,
@@ -7967,11 +7563,11 @@ export const ListThreatEventsTagsIndicatorsResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListThreatEventsTagsIndicatorsResponse>;
 
 export type ListThreatEventsTagsIndicatorsByDatasetRequestRelatedEventList = Array<string>;
-export const ListThreatEventsTagsIndicatorsByDatasetRequestRelatedEventList =
+const ListThreatEventsTagsIndicatorsByDatasetRequestRelatedEventList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetRequestRelatedEventList>;
 
 export type ListThreatEventsTagsIndicatorsByDatasetRequestSearchList = Array<string>;
-export const ListThreatEventsTagsIndicatorsByDatasetRequestSearchList =
+const ListThreatEventsTagsIndicatorsByDatasetRequestSearchList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetRequestSearchList>;
 
 export interface ListThreatEventsTagsIndicatorsByDatasetRequest {
@@ -7989,7 +7585,7 @@ export interface ListThreatEventsTagsIndicatorsByDatasetRequest {
   /** Structured search as a JSON array of {field, op, value} objects. Searchable fields: value, indicatorType. Multiple conditions are AND'd together. Max 10 conditions per request. */
   search?: ListThreatEventsTagsIndicatorsByDatasetRequestSearchList;
 }
-export const ListThreatEventsTagsIndicatorsByDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsIndicatorsByDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -8016,22 +7612,16 @@ export const ListThreatEventsTagsIndicatorsByDatasetRequest = /*@__PURE__*/ S.su
 
 export type ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsItem =
   GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
-export const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsItem =
-  GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem;
-
 export type ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem>;
-export const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList =
+const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList =
   ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsRelatedEventsList as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList>;
 
 export type ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemTagsItem =
   GetThreatEventsIndicatorsByDatasetResponseTagsItem;
-export const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemTagsItem =
-  GetThreatEventsIndicatorsByDatasetResponseTagsItem;
-
 export type ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemTagsList =
   Array<GetThreatEventsIndicatorsByDatasetResponseTagsItem>;
-export const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemTagsList =
+const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemTagsList =
   ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsTagsList as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemTagsList>;
 
 export interface ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem {
@@ -8050,45 +7640,41 @@ export interface ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem {
   /** Traffic Light Protocol designation. UPPERCASE. Possible values: CLEAR, GREEN, AMBER, AMBER-STRICT, RED, PURPLE. Null when not set. */
   tlp?: string | null;
 }
-export const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.String,
-      indicatorType: S.String,
-      updatedAt: S.String,
-      uuid: S.String,
-      value: S.String,
-      datasetId: S.optional(S.NullOr(S.String)),
-      relatedEvents: S.optional(
-        S.NullOr(ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList),
-      ),
-      relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
-      tags: S.optional(
-        S.NullOr(ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemTagsList),
-      ),
-      tlp: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem",
-  }) as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem>;
+const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    indicatorType: S.String,
+    updatedAt: S.String,
+    uuid: S.String,
+    value: S.String,
+    datasetId: S.optional(S.NullOr(S.String)),
+    relatedEvents: S.optional(
+      S.NullOr(ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemRelatedEventsList),
+    ),
+    relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
+    tags: S.optional(
+      S.NullOr(ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItemTagsList),
+    ),
+    tlp: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem",
+}) as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem>;
 
 export type ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsList =
   Array<ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem>;
-export const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsList = /*@__PURE__*/ S.Array(
+const ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsList = /*@__PURE__*/ S.Array(
   ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem,
 ) as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsList>;
 
 export type ListThreatEventsTagsIndicatorsByDatasetResponsePagination =
   ListThreatEventsIndicatorsByDatasetResponsePagination;
-export const ListThreatEventsTagsIndicatorsByDatasetResponsePagination =
-  ListThreatEventsIndicatorsByDatasetResponsePagination;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventsTagsIndicatorsByDatasetResponse {
   indicators: ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsList;
   pagination: ListThreatEventsIndicatorsByDatasetResponsePagination;
 }
-export const ListThreatEventsTagsIndicatorsByDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTagsIndicatorsByDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indicators: ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsList,
     pagination: ListThreatEventsIndicatorsByDatasetResponsePagination,
@@ -8103,7 +7689,7 @@ export interface ListThreatEventsTargetIndustriesByDatasetRequest {
   /** Dataset UUID. */
   datasetId: string;
 }
-export const ListThreatEventsTargetIndustriesByDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTargetIndustriesByDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -8122,22 +7708,19 @@ export const ListThreatEventsTargetIndustriesByDatasetRequest = /*@__PURE__*/ S.
 
 export type ListThreatEventsTargetIndustriesByDatasetResponseItems =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsTargetIndustriesByDatasetResponseItems =
-  ThreatEventsAttackersListResponseItems;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventsTargetIndustriesByDatasetResponse {
   items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
-export const ListThreatEventsTargetIndustriesByDatasetResponse =
+const ListThreatEventsTargetIndustriesByDatasetResponse =
   ListThreatEventAttackersResponse as any as S.Schema<ListThreatEventsTargetIndustriesByDatasetResponse>;
 
 export interface ListThreatEventsTargetIndustriesCatalogRequest {
   /** Account ID. */
   accountId: string;
 }
-export const ListThreatEventsTargetIndustriesCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventsTargetIndustriesCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -8155,19 +7738,16 @@ export const ListThreatEventsTargetIndustriesCatalogRequest = /*@__PURE__*/ S.su
 
 export type ListThreatEventsTargetIndustriesCatalogResponseItems =
   ThreatEventsAttackersListResponseItems;
-export const ListThreatEventsTargetIndustriesCatalogResponseItems =
-  ThreatEventsAttackersListResponseItems;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventsTargetIndustriesCatalogResponse {
   items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
-export const ListThreatEventsTargetIndustriesCatalogResponse =
+const ListThreatEventsTargetIndustriesCatalogResponse =
   ListThreatEventAttackersResponse as any as S.Schema<ListThreatEventsTargetIndustriesCatalogResponse>;
 
 export type ThreatEventsTargetIndustriesListRequestDatasetIdsList = Array<string>;
-export const ThreatEventsTargetIndustriesListRequestDatasetIdsList =
+const ThreatEventsTargetIndustriesListRequestDatasetIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsTargetIndustriesListRequestDatasetIdsList>;
 
 export interface ListThreatEventTargetIndustriesRequest {
@@ -8176,7 +7756,7 @@ export interface ListThreatEventTargetIndustriesRequest {
   /** Array of dataset IDs to query target industries from. If not provided, uses the default dataset. */
   datasetIds?: ThreatEventsTargetIndustriesListRequestDatasetIdsList;
 }
-export const ListThreatEventTargetIndustriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatEventTargetIndustriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetIds: S.optional(ThreatEventsTargetIndustriesListRequestDatasetIdsList.pipe(T.Query())),
@@ -8194,32 +7774,30 @@ export const ListThreatEventTargetIndustriesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListThreatEventTargetIndustriesRequest>;
 
 export type ThreatEventsTargetIndustriesListResponseItems = ThreatEventsAttackersListResponseItems;
-export const ThreatEventsTargetIndustriesListResponseItems = ThreatEventsAttackersListResponseItems;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListThreatEventTargetIndustriesResponse {
   items: ThreatEventsAttackersListResponseItems;
   type: string;
 }
-export const ListThreatEventTargetIndustriesResponse =
+const ListThreatEventTargetIndustriesResponse =
   ListThreatEventAttackersResponse as any as S.Schema<ListThreatEventTargetIndustriesResponse>;
 
 export type ListThreatSignalsArticlesRequestArticleIdList = Array<string>;
-export const ListThreatSignalsArticlesRequestArticleIdList =
+const ListThreatSignalsArticlesRequestArticleIdList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatSignalsArticlesRequestArticleIdList>;
 
 export type ListThreatSignalsArticlesRequestSourceType = "curated" | "custom";
-export const ListThreatSignalsArticlesRequestSourceType = S.String;
+const ListThreatSignalsArticlesRequestSourceType = S.String;
 
 export type ListThreatSignalsArticlesRequestTagAppliedBy = "ai" | "analyst" | "system";
-export const ListThreatSignalsArticlesRequestTagAppliedBy = S.String;
+const ListThreatSignalsArticlesRequestTagAppliedBy = S.String;
 
 export type ListThreatSignalsArticlesRequestTagCategoryIdList = Array<string>;
-export const ListThreatSignalsArticlesRequestTagCategoryIdList =
+const ListThreatSignalsArticlesRequestTagCategoryIdList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatSignalsArticlesRequestTagCategoryIdList>;
 
 export type ListThreatSignalsArticlesRequestTagIdList = Array<string>;
-export const ListThreatSignalsArticlesRequestTagIdList =
+const ListThreatSignalsArticlesRequestTagIdList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ListThreatSignalsArticlesRequestTagIdList>;
 
 export interface ListThreatSignalsArticlesRequest {
@@ -8251,7 +7829,7 @@ export interface ListThreatSignalsArticlesRequest {
   /** Repeatable tag UUID filter. An article matches any selected tag. */
   tagId?: ListThreatSignalsArticlesRequestTagIdList;
 }
-export const ListThreatSignalsArticlesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsArticlesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.optional(
@@ -8296,7 +7874,7 @@ export type ListThreatSignalsArticlesResponseArticlesItemTagsItemAppliedBy =
   | "ai"
   | "analyst"
   | "system";
-export const ListThreatSignalsArticlesResponseArticlesItemTagsItemAppliedBy = S.String;
+const ListThreatSignalsArticlesResponseArticlesItemTagsItemAppliedBy = S.String;
 
 export interface ListThreatSignalsArticlesResponseArticlesItemTagsItem {
   appliedBy: ListThreatSignalsArticlesResponseArticlesItemTagsItemAppliedBy;
@@ -8304,7 +7882,7 @@ export interface ListThreatSignalsArticlesResponseArticlesItemTagsItem {
   uuid: string;
   value: string;
 }
-export const ListThreatSignalsArticlesResponseArticlesItemTagsItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsArticlesResponseArticlesItemTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedBy: ListThreatSignalsArticlesResponseArticlesItemTagsItemAppliedBy.pipe(
       T.Body("applied_by"),
@@ -8319,7 +7897,7 @@ export const ListThreatSignalsArticlesResponseArticlesItemTagsItem = /*@__PURE__
 
 export type ListThreatSignalsArticlesResponseArticlesItemTagsList =
   Array<ListThreatSignalsArticlesResponseArticlesItemTagsItem>;
-export const ListThreatSignalsArticlesResponseArticlesItemTagsList = /*@__PURE__*/ S.Array(
+const ListThreatSignalsArticlesResponseArticlesItemTagsList = /*@__PURE__*/ S.Array(
   ListThreatSignalsArticlesResponseArticlesItemTagsItem,
 ) as any as S.Schema<ListThreatSignalsArticlesResponseArticlesItemTagsList>;
 
@@ -8341,7 +7919,7 @@ export interface ListThreatSignalsArticlesResponseArticlesItem {
   tags: ListThreatSignalsArticlesResponseArticlesItemTagsList;
   title: string;
 }
-export const ListThreatSignalsArticlesResponseArticlesItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsArticlesResponseArticlesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     datasetId: S.String.pipe(T.Body("dataset_id")),
@@ -8363,7 +7941,7 @@ export const ListThreatSignalsArticlesResponseArticlesItem = /*@__PURE__*/ S.sus
 
 export type ListThreatSignalsArticlesResponseArticlesList =
   Array<ListThreatSignalsArticlesResponseArticlesItem>;
-export const ListThreatSignalsArticlesResponseArticlesList = /*@__PURE__*/ S.Array(
+const ListThreatSignalsArticlesResponseArticlesList = /*@__PURE__*/ S.Array(
   ListThreatSignalsArticlesResponseArticlesItem,
 ) as any as S.Schema<ListThreatSignalsArticlesResponseArticlesList>;
 
@@ -8375,7 +7953,7 @@ export interface ListThreatSignalsArticlesResponse {
   totalCount: number;
   totalCountIsExact: boolean;
 }
-export const ListThreatSignalsArticlesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsArticlesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     articles: ListThreatSignalsArticlesResponseArticlesList,
     hasMore: S.Boolean.pipe(T.Body("has_more")),
@@ -8390,7 +7968,7 @@ export const ListThreatSignalsArticlesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListThreatSignalsCategoriesRequest {
   accountId: string;
 }
-export const ListThreatSignalsCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -8414,7 +7992,7 @@ export interface ListThreatSignalsCategoriesResponseCategoriesItem {
   /** Human-readable display label. */
   name: string;
 }
-export const ListThreatSignalsCategoriesResponseCategoriesItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsCategoriesResponseCategoriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
@@ -8426,7 +8004,7 @@ export const ListThreatSignalsCategoriesResponseCategoriesItem = /*@__PURE__*/ S
 
 export type ListThreatSignalsCategoriesResponseCategoriesList =
   Array<ListThreatSignalsCategoriesResponseCategoriesItem>;
-export const ListThreatSignalsCategoriesResponseCategoriesList = /*@__PURE__*/ S.Array(
+const ListThreatSignalsCategoriesResponseCategoriesList = /*@__PURE__*/ S.Array(
   ListThreatSignalsCategoriesResponseCategoriesItem,
 ) as any as S.Schema<ListThreatSignalsCategoriesResponseCategoriesList>;
 
@@ -8434,7 +8012,7 @@ export const ListThreatSignalsCategoriesResponseCategoriesList = /*@__PURE__*/ S
 export interface ListThreatSignalsCategoriesResponse {
   categories: ListThreatSignalsCategoriesResponseCategoriesList;
 }
-export const ListThreatSignalsCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: ListThreatSignalsCategoriesResponseCategoriesList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8443,7 +8021,7 @@ export const ListThreatSignalsCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatSignalsCategoriesResponse>;
 
 export type ListThreatSignalsFeedsRequestSourceType = "curated" | "custom";
-export const ListThreatSignalsFeedsRequestSourceType = S.String;
+const ListThreatSignalsFeedsRequestSourceType = S.String;
 
 export interface ListThreatSignalsFeedsRequest {
   accountId: string;
@@ -8456,7 +8034,7 @@ export interface ListThreatSignalsFeedsRequest {
   sourceType?: ListThreatSignalsFeedsRequestSourceType | (string & {});
   status?: string;
 }
-export const ListThreatSignalsFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     category: S.optional(S.String.pipe(T.Query())),
@@ -8502,7 +8080,7 @@ export interface ListThreatSignalsFeedsResponseFeedsItem {
   updatedAt: string;
   url: string;
 }
-export const ListThreatSignalsFeedsResponseFeedsItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsFeedsResponseFeedsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     categoryId: S.String.pipe(T.Body("category_id")),
@@ -8526,7 +8104,7 @@ export const ListThreatSignalsFeedsResponseFeedsItem = /*@__PURE__*/ S.suspend((
 
 export type ListThreatSignalsFeedsResponseFeedsList =
   Array<ListThreatSignalsFeedsResponseFeedsItem>;
-export const ListThreatSignalsFeedsResponseFeedsList = /*@__PURE__*/ S.Array(
+const ListThreatSignalsFeedsResponseFeedsList = /*@__PURE__*/ S.Array(
   ListThreatSignalsFeedsResponseFeedsItem,
 ) as any as S.Schema<ListThreatSignalsFeedsResponseFeedsList>;
 
@@ -8539,7 +8117,7 @@ export interface ListThreatSignalsFeedsResponse {
   perPage: number;
   totalCount: number;
 }
-export const ListThreatSignalsFeedsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsFeedsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     feeds: ListThreatSignalsFeedsResponseFeedsList,
@@ -8562,7 +8140,7 @@ export interface ListThreatSignalsIndicatorsRequest {
   search?: string;
   sort?: string;
 }
-export const ListThreatSignalsIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleId: S.optional(S.String.pipe(T.Query("article_id"))),
@@ -8596,7 +8174,7 @@ export interface ListThreatSignalsIndicatorsResponseIndicatorsItem {
   type: string;
   value: string;
 }
-export const ListThreatSignalsIndicatorsResponseIndicatorsItem = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsIndicatorsResponseIndicatorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     articleId: S.String.pipe(T.Body("article_id")),
@@ -8613,7 +8191,7 @@ export const ListThreatSignalsIndicatorsResponseIndicatorsItem = /*@__PURE__*/ S
 
 export type ListThreatSignalsIndicatorsResponseIndicatorsList =
   Array<ListThreatSignalsIndicatorsResponseIndicatorsItem>;
-export const ListThreatSignalsIndicatorsResponseIndicatorsList = /*@__PURE__*/ S.Array(
+const ListThreatSignalsIndicatorsResponseIndicatorsList = /*@__PURE__*/ S.Array(
   ListThreatSignalsIndicatorsResponseIndicatorsItem,
 ) as any as S.Schema<ListThreatSignalsIndicatorsResponseIndicatorsList>;
 
@@ -8627,7 +8205,7 @@ export interface ListThreatSignalsIndicatorsResponsePagination {
   totalCount: number;
   totalCountIsExact: boolean;
 }
-export const ListThreatSignalsIndicatorsResponsePagination = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsIndicatorsResponsePagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     cursor: S.String,
@@ -8646,7 +8224,7 @@ export interface ListThreatSignalsIndicatorsResponse {
   indicators: ListThreatSignalsIndicatorsResponseIndicatorsList;
   pagination: ListThreatSignalsIndicatorsResponsePagination;
 }
-export const ListThreatSignalsIndicatorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsIndicatorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indicators: ListThreatSignalsIndicatorsResponseIndicatorsList,
     pagination: ListThreatSignalsIndicatorsResponsePagination,
@@ -8660,7 +8238,7 @@ export interface ListThreatSignalsSkillsRequest {
   page?: number;
   perPage?: number;
 }
-export const ListThreatSignalsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -8679,8 +8257,6 @@ export const ListThreatSignalsSkillsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatSignalsSkillsRequest>;
 
 export type ListThreatSignalsSkillsResponseSkillsItemSource = "default" | "custom";
-export const ListThreatSignalsSkillsResponseSkillsItemSource = S.String;
-
 export interface ListThreatSignalsSkillsResponseSkillsItem {
   id: string;
   /** JSON-encoded skill configuration. Always null for default skills. */
@@ -8697,12 +8273,9 @@ export interface ListThreatSignalsSkillsResponseSkillsItem {
   type: string;
   updatedAt: string;
 }
-export const ListThreatSignalsSkillsResponseSkillsItem =
-  GetThreatSignalsFeedsSkillResponseSkillsItem as any as S.Schema<ListThreatSignalsSkillsResponseSkillsItem>;
-
 export type ListThreatSignalsSkillsResponseSkillsList =
   Array<ListThreatSignalsSkillsResponseSkillsItem>;
-export const ListThreatSignalsSkillsResponseSkillsList =
+const ListThreatSignalsSkillsResponseSkillsList =
   GetThreatSignalsFeedsSkillResponseSkillsList as any as S.Schema<ListThreatSignalsSkillsResponseSkillsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -8716,7 +8289,7 @@ export interface ListThreatSignalsSkillsResponse {
   skills: ListThreatSignalsSkillsResponseSkillsList;
   totalCount: number;
 }
-export const ListThreatSignalsSkillsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreatSignalsSkillsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     customSkillsAvailable: S.Boolean.pipe(T.Body("custom_skills_available")),
@@ -8730,11 +8303,11 @@ export const ListThreatSignalsSkillsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListThreatSignalsSkillsResponse>;
 
 export type ScansConfigEditRequestIpsList = Array<string>;
-export const ScansConfigEditRequestIpsList =
+const ScansConfigEditRequestIpsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigEditRequestIpsList>;
 
 export type ScansConfigEditRequestPortsList = Array<string>;
-export const ScansConfigEditRequestPortsList =
+const ScansConfigEditRequestPortsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigEditRequestPortsList>;
 
 export interface PatchScanConfigRequest {
@@ -8749,7 +8322,7 @@ export interface PatchScanConfigRequest {
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
   ports?: ScansConfigEditRequestPortsList;
 }
-export const PatchScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     configId: S.String.pipe(T.Label("config_id")),
@@ -8768,13 +8341,7 @@ export const PatchScanConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchScanConfigRequest" }) as any as S.Schema<PatchScanConfigRequest>;
 
 export type ScansConfigEditResponseIpsList = Array<string>;
-export const ScansConfigEditResponseIpsList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigEditResponseIpsList>;
-
 export type ScansConfigEditResponsePortsList = Array<string>;
-export const ScansConfigEditResponsePortsList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ScansConfigEditResponsePortsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchScanConfigResponse {
   /** Defines the Config ID. */
@@ -8787,11 +8354,11 @@ export interface PatchScanConfigResponse {
   /** Defines a list of ports to scan. Valid values are:"default", "all", or a comma-separated list of ports or range of ports (e.g. ["1-80", "443"]). "default" scans the 100 most commonly open ports. */
   ports: ScansConfigEditResponsePortsList;
 }
-export const PatchScanConfigResponse =
+const PatchScanConfigResponse =
   CreateScanConfigResponse as any as S.Schema<PatchScanConfigResponse>;
 
 export type ThreatEventsEditRequestRawDataMap = { [key: string]: unknown | undefined };
-export const ThreatEventsEditRequestRawDataMap =
+const ThreatEventsEditRequestRawDataMap =
   ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<ThreatEventsEditRequestRawDataMap>;
 
 export interface ThreatEventsEditRequestRaw {
@@ -8799,7 +8366,7 @@ export interface ThreatEventsEditRequestRaw {
   source?: string;
   tlp?: string;
 }
-export const ThreatEventsEditRequestRaw = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsEditRequestRaw = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ThreatEventsEditRequestRawDataMap),
     source: S.optional(S.String),
@@ -8830,7 +8397,7 @@ export interface PatchThreatEventRequest {
   targetIndustry?: string;
   tlp?: string;
 }
-export const PatchThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
@@ -8860,33 +8427,12 @@ export const PatchThreatEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchThreatEventRequest" }) as any as S.Schema<PatchThreatEventRequest>;
 
 export type ThreatEventsEditResponseMitreAttackList = Array<string>;
-export const ThreatEventsEditResponseMitreAttackList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsEditResponseMitreAttackList>;
-
 export type ThreatEventsEditResponseMitreCapecList = Array<string>;
-export const ThreatEventsEditResponseMitreCapecList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsEditResponseMitreCapecList>;
-
 export type ThreatEventsEditResponseReferencedList = Array<string>;
-export const ThreatEventsEditResponseReferencedList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsEditResponseReferencedList>;
-
 export type ThreatEventsEditResponseReferencedIdsList = Array<number>;
-export const ThreatEventsEditResponseReferencedIdsList =
-  ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ThreatEventsEditResponseReferencedIdsList>;
-
 export type ThreatEventsEditResponseReferencesList = Array<string>;
-export const ThreatEventsEditResponseReferencesList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsEditResponseReferencesList>;
-
 export type ThreatEventsEditResponseReferencesIdsList = Array<number>;
-export const ThreatEventsEditResponseReferencesIdsList =
-  ThreatEventsCreateResponseReferencedIdsList as any as S.Schema<ThreatEventsEditResponseReferencesIdsList>;
-
 export type ThreatEventsEditResponseTagsList = Array<string>;
-export const ThreatEventsEditResponseTagsList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsEditResponseTagsList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PatchThreatEventResponse {
   attacker: string;
@@ -8919,15 +8465,15 @@ export interface PatchThreatEventResponse {
   insight?: string | null;
   releasabilityId?: string | null;
 }
-export const PatchThreatEventResponse =
+const PatchThreatEventResponse =
   GetThreatEventResponse as any as S.Schema<PatchThreatEventResponse>;
 
 export type ThreatEventsCategoriesEditRequestMitreAttackList = Array<string>;
-export const ThreatEventsCategoriesEditRequestMitreAttackList =
+const ThreatEventsCategoriesEditRequestMitreAttackList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesEditRequestMitreAttackList>;
 
 export type ThreatEventsCategoriesEditRequestMitreCapecList = Array<string>;
-export const ThreatEventsCategoriesEditRequestMitreCapecList =
+const ThreatEventsCategoriesEditRequestMitreCapecList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesEditRequestMitreCapecList>;
 
 export interface PatchThreatEventCategoryRequest {
@@ -8941,7 +8487,7 @@ export interface PatchThreatEventCategoryRequest {
   name?: string;
   shortname?: string;
 }
-export const PatchThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     categoryId: S.String.pipe(T.Label("category_id")),
@@ -8964,13 +8510,7 @@ export const PatchThreatEventCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchThreatEventCategoryRequest>;
 
 export type ThreatEventsCategoriesEditResponseMitreAttackList = Array<string>;
-export const ThreatEventsCategoriesEditResponseMitreAttackList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesEditResponseMitreAttackList>;
-
 export type ThreatEventsCategoriesEditResponseMitreCapecList = Array<string>;
-export const ThreatEventsCategoriesEditResponseMitreCapecList =
-  ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsCategoriesEditResponseMitreCapecList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PatchThreatEventCategoryResponse {
   killChain: number;
@@ -8980,7 +8520,7 @@ export interface PatchThreatEventCategoryResponse {
   mitreCapec?: ThreatEventsCategoriesEditResponseMitreCapecList | null;
   shortname?: string | null;
 }
-export const PatchThreatEventCategoryResponse =
+const PatchThreatEventCategoryResponse =
   CreateThreatEventCategoryResponse as any as S.Schema<PatchThreatEventCategoryResponse>;
 
 export interface PatchThreatEventDatasetRequest {
@@ -8993,7 +8533,7 @@ export interface PatchThreatEventDatasetRequest {
   /** Used to describe the dataset within the account context. */
   name: string;
 }
-export const PatchThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -9019,7 +8559,7 @@ export interface PatchThreatEventDatasetResponse {
   name: string;
   uuid: string;
 }
-export const PatchThreatEventDatasetResponse =
+const PatchThreatEventDatasetResponse =
   CreateThreatEventDatasetResponse as any as S.Schema<PatchThreatEventDatasetResponse>;
 
 export interface PatchThreatEventRawRequest {
@@ -9033,7 +8573,7 @@ export interface PatchThreatEventRawRequest {
   source?: string;
   tlp?: string;
 }
-export const PatchThreatEventRawRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchThreatEventRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     eventId: S.String.pipe(T.Label("event_id")),
@@ -9059,7 +8599,7 @@ export interface PatchThreatEventRawResponse {
   id: string;
   data: unknown;
 }
-export const PatchThreatEventRawResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchThreatEventRawResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     data: S.Unknown,
@@ -9072,7 +8612,7 @@ export interface PollThreatSignalsFeedRequest {
   accountId: string;
   feedId?: string;
 }
-export const PollThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const PollThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.optional(S.String.pipe(T.Query("feed_id"))),
@@ -9090,7 +8630,7 @@ export const PollThreatSignalsFeedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PollThreatSignalsFeedRequest>;
 
 export type PollThreatSignalsFeedResponseFeedsItemStatus = "workflow_created" | "error";
-export const PollThreatSignalsFeedResponseFeedsItemStatus = S.String;
+const PollThreatSignalsFeedResponseFeedsItemStatus = S.String;
 
 export interface PollThreatSignalsFeedResponseFeedsItem {
   feedId: string;
@@ -9098,7 +8638,7 @@ export interface PollThreatSignalsFeedResponseFeedsItem {
   workflowId: string;
   feedEnabled?: boolean | null;
 }
-export const PollThreatSignalsFeedResponseFeedsItem = /*@__PURE__*/ S.suspend(() =>
+const PollThreatSignalsFeedResponseFeedsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedId: S.String.pipe(T.Body("feed_id")),
     status: PollThreatSignalsFeedResponseFeedsItemStatus,
@@ -9110,7 +8650,7 @@ export const PollThreatSignalsFeedResponseFeedsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PollThreatSignalsFeedResponseFeedsItem>;
 
 export type PollThreatSignalsFeedResponseFeedsList = Array<PollThreatSignalsFeedResponseFeedsItem>;
-export const PollThreatSignalsFeedResponseFeedsList = /*@__PURE__*/ S.Array(
+const PollThreatSignalsFeedResponseFeedsList = /*@__PURE__*/ S.Array(
   PollThreatSignalsFeedResponseFeedsItem,
 ) as any as S.Schema<PollThreatSignalsFeedResponseFeedsList>;
 
@@ -9120,7 +8660,7 @@ export interface PollThreatSignalsFeedResponse {
   feeds: PollThreatSignalsFeedResponseFeedsList;
   triggered: number;
 }
-export const PollThreatSignalsFeedResponse = /*@__PURE__*/ S.suspend(() =>
+const PollThreatSignalsFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.Number,
     feeds: PollThreatSignalsFeedResponseFeedsList,
@@ -9134,7 +8674,7 @@ export interface QuotaRequestPriorityRequest {
   /** Identifier. */
   accountId: string;
 }
-export const QuotaRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
+const QuotaRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -9161,7 +8701,7 @@ export interface QuotaRequestPriorityResponse {
   /** Tokens remaining for the quarter. */
   remaining?: number | null;
 }
-export const QuotaRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
+const QuotaRequestPriorityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anniversaryDate: S.optional(S.NullOr(S.String).pipe(T.Body("anniversary_date"))),
     quarterAnniversaryDate: S.optional(S.NullOr(S.String).pipe(T.Body("quarter_anniversary_date"))),
@@ -9180,7 +8720,7 @@ export interface RawThreatEventDatasetRequest {
   /** Event ID. */
   eventId: string;
 }
-export const RawThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const RawThreatEventDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -9207,7 +8747,7 @@ export interface RawThreatEventDatasetResponse {
   source: string;
   tlp: string;
 }
-export const RawThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const RawThreatEventDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     accountId: S.Number,
@@ -9224,7 +8764,7 @@ export interface RequestsConstantsRequest {
   /** Identifier. */
   accountId: string;
 }
-export const RequestsConstantsRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestsConstantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -9239,10 +8779,10 @@ export const RequestsConstantsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestsConstantsRequest" }) as any as S.Schema<RequestsConstantsRequest>;
 
 export type RequestsConstantsResponsePriorityItem = "routine" | "high" | "urgent";
-export const RequestsConstantsResponsePriorityItem = S.String;
+const RequestsConstantsResponsePriorityItem = S.String;
 
 export type RequestsConstantsResponsePriorityList = Array<RequestsConstantsResponsePriorityItem>;
-export const RequestsConstantsResponsePriorityList = /*@__PURE__*/ S.Array(
+const RequestsConstantsResponsePriorityList = /*@__PURE__*/ S.Array(
   RequestsConstantsResponsePriorityItem,
 ) as any as S.Schema<RequestsConstantsResponsePriorityList>;
 
@@ -9253,17 +8793,13 @@ export type RequestsConstantsResponseStatusItem =
   | "approved"
   | "completed"
   | "declined";
-export const RequestsConstantsResponseStatusItem = S.String;
-
 export type RequestsConstantsResponseStatusList = Array<RequestsConstantsResponseStatusItem>;
-export const RequestsConstantsResponseStatusList =
+const RequestsConstantsResponseStatusList =
   RequestsConstantsResponsePriorityList as any as S.Schema<RequestsConstantsResponseStatusList>;
 
 export type RequestsConstantsResponseTlpItem = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const RequestsConstantsResponseTlpItem = S.String;
-
 export type RequestsConstantsResponseTlpList = Array<RequestsConstantsResponseTlpItem>;
-export const RequestsConstantsResponseTlpList =
+const RequestsConstantsResponseTlpList =
   RequestsConstantsResponsePriorityList as any as S.Schema<RequestsConstantsResponseTlpList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -9272,7 +8808,7 @@ export interface RequestsConstantsResponse {
   status?: RequestsConstantsResponseStatusList | null;
   tlp?: RequestsConstantsResponseTlpList | null;
 }
-export const RequestsConstantsResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestsConstantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priority: S.optional(S.NullOr(RequestsConstantsResponsePriorityList)),
     status: S.optional(S.NullOr(RequestsConstantsResponseStatusList)),
@@ -9286,7 +8822,7 @@ export interface RequestsQuotaRequest {
   /** Identifier. */
   accountId: string;
 }
-export const RequestsQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestsQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -9311,7 +8847,7 @@ export interface RequestsQuotaResponse {
   /** Tokens remaining for the quarter. */
   remaining?: number | null;
 }
-export const RequestsQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestsQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anniversaryDate: S.optional(S.NullOr(S.String).pipe(T.Body("anniversary_date"))),
     quarterAnniversaryDate: S.optional(S.NullOr(S.String).pipe(T.Body("quarter_anniversary_date"))),
@@ -9324,7 +8860,7 @@ export interface RequestsTypesRequest {
   /** Identifier. */
   accountId: string;
 }
-export const RequestsTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestsTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -9339,11 +8875,11 @@ export const RequestsTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestsTypesRequest" }) as any as S.Schema<RequestsTypesRequest>;
 
 export type RequestsTypesResultList = Array<string>;
-export const RequestsTypesResultList =
+const RequestsTypesResultList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<RequestsTypesResultList>;
 
 export type RequestsTypesResponse = RequestsTypesResultList;
-export const RequestsTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestsTypesResponse = /*@__PURE__*/ S.suspend(() =>
   RequestsTypesResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "RequestsTypesResponse" }) as any as S.Schema<RequestsTypesResponse>;
 
@@ -9353,7 +8889,7 @@ export interface SearchThreatSignalRequest {
   feedId?: string;
   maxResults?: string;
 }
-export const SearchThreatSignalRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchThreatSignalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     query: S.String.pipe(T.Query()),
@@ -9380,7 +8916,7 @@ export interface SearchThreatSignalResponseResultsItem {
   score: number;
   text: string;
 }
-export const SearchThreatSignalResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
+const SearchThreatSignalResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     articleId: S.String.pipe(T.Body("article_id")),
     datasetId: S.String.pipe(T.Body("dataset_id")),
@@ -9394,7 +8930,7 @@ export const SearchThreatSignalResponseResultsItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SearchThreatSignalResponseResultsItem>;
 
 export type SearchThreatSignalResponseResultsList = Array<SearchThreatSignalResponseResultsItem>;
-export const SearchThreatSignalResponseResultsList = /*@__PURE__*/ S.Array(
+const SearchThreatSignalResponseResultsList = /*@__PURE__*/ S.Array(
   SearchThreatSignalResponseResultsItem,
 ) as any as S.Schema<SearchThreatSignalResponseResultsList>;
 
@@ -9404,7 +8940,7 @@ export interface SearchThreatSignalResponse {
   count: number;
   results: SearchThreatSignalResponseResultsList;
 }
-export const SearchThreatSignalResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchThreatSignalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     results: SearchThreatSignalResponseResultsList,
@@ -9416,31 +8952,24 @@ export const SearchThreatSignalResponse = /*@__PURE__*/ S.suspend(() =>
 export type ThreatEventsBulkCreateRelationshipsRequestDataItemRawDataMap = {
   [key: string]: unknown | undefined;
 };
-export const ThreatEventsBulkCreateRelationshipsRequestDataItemRawDataMap =
-  ThreatEventsBulkCreateRequestDataItemRawDataMap as any as S.Schema<ThreatEventsBulkCreateRelationshipsRequestDataItemRawDataMap>;
-
 export interface ThreatEventsBulkCreateRelationshipsRequestDataItemRaw {
   data: ThreatEventsBulkCreateRelationshipsRequestDataItemRawDataMap;
   source?: string;
   tlp?: string;
 }
-export const ThreatEventsBulkCreateRelationshipsRequestDataItemRaw =
+const ThreatEventsBulkCreateRelationshipsRequestDataItemRaw =
   ThreatEventsBulkCreateRequestDataItemRaw as any as S.Schema<ThreatEventsBulkCreateRelationshipsRequestDataItemRaw>;
 
 export type ThreatEventsBulkCreateRelationshipsRequestDataItemIndicatorsItem =
   ThreatEventsBulkCreateRequestDataItemIndicatorsItem;
-export const ThreatEventsBulkCreateRelationshipsRequestDataItemIndicatorsItem =
-  ThreatEventsBulkCreateRequestDataItemIndicatorsItem;
-
 export type ThreatEventsBulkCreateRelationshipsRequestDataItemIndicatorsList =
   Array<ThreatEventsBulkCreateRequestDataItemIndicatorsItem>;
-export const ThreatEventsBulkCreateRelationshipsRequestDataItemIndicatorsList =
-  /*@__PURE__*/ S.Array(
-    ThreatEventsBulkCreateRequestDataItemIndicatorsItem,
-  ) as any as S.Schema<ThreatEventsBulkCreateRelationshipsRequestDataItemIndicatorsList>;
+const ThreatEventsBulkCreateRelationshipsRequestDataItemIndicatorsList = /*@__PURE__*/ S.Array(
+  ThreatEventsBulkCreateRequestDataItemIndicatorsItem,
+) as any as S.Schema<ThreatEventsBulkCreateRelationshipsRequestDataItemIndicatorsList>;
 
 export type ThreatEventsBulkCreateRelationshipsRequestDataItemTagsList = Array<string>;
-export const ThreatEventsBulkCreateRelationshipsRequestDataItemTagsList =
+const ThreatEventsBulkCreateRelationshipsRequestDataItemTagsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatEventsBulkCreateRelationshipsRequestDataItemTagsList>;
 
 export interface ThreatEventsBulkCreateRelationshipsRequestDataItem {
@@ -9462,7 +8991,7 @@ export interface ThreatEventsBulkCreateRelationshipsRequestDataItem {
   targetCountry?: string;
   targetIndustry?: string;
 }
-export const ThreatEventsBulkCreateRelationshipsRequestDataItem = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsBulkCreateRelationshipsRequestDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.String,
     date: S.String,
@@ -9487,7 +9016,7 @@ export const ThreatEventsBulkCreateRelationshipsRequestDataItem = /*@__PURE__*/ 
 
 export type ThreatEventsBulkCreateRelationshipsRequestDataList =
   Array<ThreatEventsBulkCreateRelationshipsRequestDataItem>;
-export const ThreatEventsBulkCreateRelationshipsRequestDataList = /*@__PURE__*/ S.Array(
+const ThreatEventsBulkCreateRelationshipsRequestDataList = /*@__PURE__*/ S.Array(
   ThreatEventsBulkCreateRelationshipsRequestDataItem,
 ) as any as S.Schema<ThreatEventsBulkCreateRelationshipsRequestDataList>;
 
@@ -9497,7 +9026,7 @@ export interface ThreatEventsBulkCreateRelationshipsRequest {
   data: ThreatEventsBulkCreateRelationshipsRequestDataList;
   datasetId: string;
 }
-export const ThreatEventsBulkCreateRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsBulkCreateRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     data: ThreatEventsBulkCreateRelationshipsRequestDataList,
@@ -9526,7 +9055,7 @@ export interface ThreatEventsBulkCreateRelationshipsResponse {
   /** Number of errors encountered */
   errorCount: number;
 }
-export const ThreatEventsBulkCreateRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ThreatEventsBulkCreateRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdEventsCount: S.Number,
     createdIndicatorsCount: S.Number,
@@ -9538,7 +9067,7 @@ export const ThreatEventsBulkCreateRelationshipsResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ThreatEventsBulkCreateRelationshipsResponse>;
 
 export type ThreatSignalsArticlesBulkEditRequestArticleIdsList = Array<string>;
-export const ThreatSignalsArticlesBulkEditRequestArticleIdsList =
+const ThreatSignalsArticlesBulkEditRequestArticleIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<ThreatSignalsArticlesBulkEditRequestArticleIdsList>;
 
 export interface ThreatSignalsArticlesBulkEditRequest {
@@ -9546,7 +9075,7 @@ export interface ThreatSignalsArticlesBulkEditRequest {
   articleIds: ThreatSignalsArticlesBulkEditRequestArticleIdsList;
   read: boolean;
 }
-export const ThreatSignalsArticlesBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
+const ThreatSignalsArticlesBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     articleIds: ThreatSignalsArticlesBulkEditRequestArticleIdsList.pipe(T.Body("article_ids")),
@@ -9568,7 +9097,7 @@ export const ThreatSignalsArticlesBulkEditRequest = /*@__PURE__*/ S.suspend(() =
 export interface ThreatSignalsArticlesBulkEditResponse {
   updatedCount: number;
 }
-export const ThreatSignalsArticlesBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
+const ThreatSignalsArticlesBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updatedCount: S.Number.pipe(T.Body("updated_count")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -9579,7 +9108,7 @@ export const ThreatSignalsArticlesBulkEditResponse = /*@__PURE__*/ S.suspend(() 
 export interface ThreatSignalsHealthRequest {
   accountId: string;
 }
-export const ThreatSignalsHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const ThreatSignalsHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -9596,13 +9125,13 @@ export const ThreatSignalsHealthRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThreatSignalsHealthRequest>;
 
 export type ThreatSignalsHealthResponseStatus = "ok";
-export const ThreatSignalsHealthResponseStatus = S.String;
+const ThreatSignalsHealthResponseStatus = S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ThreatSignalsHealthResponse {
   status: ThreatSignalsHealthResponseStatus;
 }
-export const ThreatSignalsHealthResponse = /*@__PURE__*/ S.suspend(() =>
+const ThreatSignalsHealthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ThreatSignalsHealthResponseStatus,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -9616,7 +9145,7 @@ export interface ThreatSignalsSearchSearchRequest {
   feedId?: string;
   maxResults?: string;
 }
-export const ThreatSignalsSearchSearchRequest = /*@__PURE__*/ S.suspend(() =>
+const ThreatSignalsSearchSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     query: S.String.pipe(T.Query()),
@@ -9636,24 +9165,19 @@ export const ThreatSignalsSearchSearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThreatSignalsSearchSearchRequest>;
 
 export type ThreatSignalsSearchSearchResponseResultsItem = SearchThreatSignalResponseResultsItem;
-export const ThreatSignalsSearchSearchResponseResultsItem = SearchThreatSignalResponseResultsItem;
-
 export type ThreatSignalsSearchSearchResponseResultsList =
   Array<SearchThreatSignalResponseResultsItem>;
-export const ThreatSignalsSearchSearchResponseResultsList =
-  SearchThreatSignalResponseResultsList as any as S.Schema<ThreatSignalsSearchSearchResponseResultsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ThreatSignalsSearchSearchResponse {
   /** Number of unique article candidates returned in this response. Equal to results.length. */
   count: number;
   results: ThreatSignalsSearchSearchResponseResultsList;
 }
-export const ThreatSignalsSearchSearchResponse =
+const ThreatSignalsSearchSearchResponse =
   SearchThreatSignalResponse as any as S.Schema<ThreatSignalsSearchSearchResponse>;
 
 export type UpdateRequestRequestTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const UpdateRequestRequestTlp = S.String;
+const UpdateRequestRequestTlp = S.String;
 
 export interface UpdateRequestRequest {
   /** Identifier. */
@@ -9671,7 +9195,7 @@ export interface UpdateRequestRequest {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp?: UpdateRequestRequestTlp | (string & {});
 }
-export const UpdateRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -9692,8 +9216,6 @@ export const UpdateRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRequestRequest" }) as any as S.Schema<UpdateRequestRequest>;
 
 export type UpdateRequestResponseTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const UpdateRequestResponseTlp = S.String;
-
 export type UpdateRequestResponseStatus =
   | "open"
   | "accepted"
@@ -9701,8 +9223,6 @@ export type UpdateRequestResponseStatus =
   | "approved"
   | "completed"
   | "declined";
-export const UpdateRequestResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRequestResponse {
   /** UUID. */
@@ -9728,8 +9248,7 @@ export interface UpdateRequestResponse {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const UpdateRequestResponse =
-  CreateRequestResponse as any as S.Schema<UpdateRequestResponse>;
+const UpdateRequestResponse = CreateRequestResponse as any as S.Schema<UpdateRequestResponse>;
 
 export interface UpdateRequestAssetRequest {
   /** Identifier. */
@@ -9741,7 +9260,7 @@ export interface UpdateRequestAssetRequest {
   /** Asset file to upload. */
   source?: string;
 }
-export const UpdateRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -9773,7 +9292,7 @@ export interface UpdateRequestAssetResponse {
   /** Asset file type. */
   fileType?: string | null;
 }
-export const UpdateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -9794,7 +9313,7 @@ export interface UpdateRequestMessageRequest {
   /** Content of message. */
   content?: string;
 }
-export const UpdateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     requestId: S.String.pipe(T.Label("request_id")),
@@ -9828,15 +9347,15 @@ export interface UpdateRequestMessageResponse {
   /** Defines the message creation time. */
   created?: string | null;
 }
-export const UpdateRequestMessageResponse =
+const UpdateRequestMessageResponse =
   CreateRequestMessageResponse as any as S.Schema<UpdateRequestMessageResponse>;
 
 export type RequestsPriorityUpdateRequestLabelsList = Array<string>;
-export const RequestsPriorityUpdateRequestLabelsList =
+const RequestsPriorityUpdateRequestLabelsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<RequestsPriorityUpdateRequestLabelsList>;
 
 export type RequestsPriorityUpdateRequestTlp = "clear" | "amber" | "amber-strict" | "green" | "red";
-export const RequestsPriorityUpdateRequestTlp = S.String;
+const RequestsPriorityUpdateRequestTlp = S.String;
 
 export interface UpdateRequestPriorityRequest {
   /** Identifier. */
@@ -9852,7 +9371,7 @@ export interface UpdateRequestPriorityRequest {
   /** The CISA defined Traffic Light Protocol (TLP). */
   tlp: RequestsPriorityUpdateRequestTlp | (string & {});
 }
-export const UpdateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestPriorityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     priorityId: S.String.pipe(T.Label("priority_id")),
@@ -9879,8 +9398,6 @@ export type RequestsPriorityUpdateResponseTlp =
   | "amber-strict"
   | "green"
   | "red";
-export const RequestsPriorityUpdateResponseTlp = S.String;
-
 export type RequestsPriorityUpdateResponseStatus =
   | "open"
   | "accepted"
@@ -9888,8 +9405,6 @@ export type RequestsPriorityUpdateResponseStatus =
   | "approved"
   | "completed"
   | "declined";
-export const RequestsPriorityUpdateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRequestPriorityResponse {
   /** UUID. */
@@ -9915,11 +9430,11 @@ export interface UpdateRequestPriorityResponse {
   /** Tokens for the request. */
   tokens?: number | null;
 }
-export const UpdateRequestPriorityResponse =
+const UpdateRequestPriorityResponse =
   GetRequestPriorityResponse as any as S.Schema<UpdateRequestPriorityResponse>;
 
 export type UpdateThreatSignalsFeedsSkillRequestSkillIdsList = Array<string>;
-export const UpdateThreatSignalsFeedsSkillRequestSkillIdsList =
+const UpdateThreatSignalsFeedsSkillRequestSkillIdsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<UpdateThreatSignalsFeedsSkillRequestSkillIdsList>;
 
 export interface UpdateThreatSignalsFeedsSkillRequest {
@@ -9927,7 +9442,7 @@ export interface UpdateThreatSignalsFeedsSkillRequest {
   feedId: string;
   skillIds: UpdateThreatSignalsFeedsSkillRequestSkillIdsList;
 }
-export const UpdateThreatSignalsFeedsSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateThreatSignalsFeedsSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.String.pipe(T.Label("feed_id")),
@@ -9950,7 +9465,7 @@ export interface UpdateThreatSignalsFeedsSkillResponseSkillsItem {
   position: number;
   skillId: string;
 }
-export const UpdateThreatSignalsFeedsSkillResponseSkillsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateThreatSignalsFeedsSkillResponseSkillsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     position: S.Number,
     skillId: S.String.pipe(T.Body("skill_id")),
@@ -9961,7 +9476,7 @@ export const UpdateThreatSignalsFeedsSkillResponseSkillsItem = /*@__PURE__*/ S.s
 
 export type UpdateThreatSignalsFeedsSkillResponseSkillsList =
   Array<UpdateThreatSignalsFeedsSkillResponseSkillsItem>;
-export const UpdateThreatSignalsFeedsSkillResponseSkillsList = /*@__PURE__*/ S.Array(
+const UpdateThreatSignalsFeedsSkillResponseSkillsList = /*@__PURE__*/ S.Array(
   UpdateThreatSignalsFeedsSkillResponseSkillsItem,
 ) as any as S.Schema<UpdateThreatSignalsFeedsSkillResponseSkillsList>;
 
@@ -9970,7 +9485,7 @@ export interface UpdateThreatSignalsFeedsSkillResponse {
   feedId: string;
   skills: UpdateThreatSignalsFeedsSkillResponseSkillsList;
 }
-export const UpdateThreatSignalsFeedsSkillResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateThreatSignalsFeedsSkillResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedId: S.String.pipe(T.Body("feed_id")),
     skills: UpdateThreatSignalsFeedsSkillResponseSkillsList,
@@ -9980,10 +9495,10 @@ export const UpdateThreatSignalsFeedsSkillResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UpdateThreatSignalsFeedsSkillResponse>;
 
 export type UpdateThreatSignalsSkillsTagCategoryRequestSkillId = "default-tagging-skill";
-export const UpdateThreatSignalsSkillsTagCategoryRequestSkillId = S.String;
+const UpdateThreatSignalsSkillsTagCategoryRequestSkillId = S.String;
 
 export type UpdateThreatSignalsSkillsTagCategoryRequestCategoryUuidsList = Array<string>;
-export const UpdateThreatSignalsSkillsTagCategoryRequestCategoryUuidsList =
+const UpdateThreatSignalsSkillsTagCategoryRequestCategoryUuidsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<UpdateThreatSignalsSkillsTagCategoryRequestCategoryUuidsList>;
 
 export interface UpdateThreatSignalsSkillsTagCategoryRequest {
@@ -9991,7 +9506,7 @@ export interface UpdateThreatSignalsSkillsTagCategoryRequest {
   skillId: UpdateThreatSignalsSkillsTagCategoryRequestSkillId | (string & {});
   categoryUuids: UpdateThreatSignalsSkillsTagCategoryRequestCategoryUuidsList;
 }
-export const UpdateThreatSignalsSkillsTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateThreatSignalsSkillsTagCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     skillId: UpdateThreatSignalsSkillsTagCategoryRequestSkillId.pipe(T.Label("skill_id")),
@@ -10012,18 +9527,18 @@ export const UpdateThreatSignalsSkillsTagCategoryRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateThreatSignalsSkillsTagCategoryRequest>;
 
 export type UpdateThreatSignalsSkillsTagCategoryResponseCategoryUuidsList = Array<string>;
-export const UpdateThreatSignalsSkillsTagCategoryResponseCategoryUuidsList =
+const UpdateThreatSignalsSkillsTagCategoryResponseCategoryUuidsList =
   ThreatEventsBulkCreateRequestDataItemTagsList as any as S.Schema<UpdateThreatSignalsSkillsTagCategoryResponseCategoryUuidsList>;
 
 export type UpdateThreatSignalsSkillsTagCategoryResponseSkillId = "default-tagging-skill";
-export const UpdateThreatSignalsSkillsTagCategoryResponseSkillId = S.String;
+const UpdateThreatSignalsSkillsTagCategoryResponseSkillId = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateThreatSignalsSkillsTagCategoryResponse {
   categoryUuids: UpdateThreatSignalsSkillsTagCategoryResponseCategoryUuidsList;
   skillId: UpdateThreatSignalsSkillsTagCategoryResponseSkillId;
 }
-export const UpdateThreatSignalsSkillsTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateThreatSignalsSkillsTagCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryUuids: UpdateThreatSignalsSkillsTagCategoryResponseCategoryUuidsList.pipe(
       T.Body("category_uuids"),

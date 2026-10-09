@@ -53,7 +53,7 @@ export interface CreatePaymentMethodDomainRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreatePaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     hostname: S.String,
@@ -65,11 +65,11 @@ export const CreatePaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Wallet provider the domain is registered with. */
 export type PaymentMethodDomainProvider = "apple";
-export const PaymentMethodDomainProvider = S.String;
+const PaymentMethodDomainProvider = S.String;
 
 /** Verification status. `pending` means the provider could not fetch the domain-association file yet; only `verified` domains show wallet payment methods at checkout. */
 export type PaymentMethodDomainStatus = "pending" | "verified";
-export const PaymentMethodDomainStatus = S.String;
+const PaymentMethodDomainStatus = S.String;
 
 export interface PaymentMethodDomain {
   /** ID of the account the domain is registered for, prefixed `biz_`. */
@@ -87,7 +87,7 @@ export interface PaymentMethodDomain {
   /** When the domain was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const PaymentMethodDomain = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     created_at: S.String,
@@ -103,7 +103,7 @@ export interface DeletePaymentMethodDomainRequest {
   /** The unique identifier of the payment method domain, prefixed `pmd_`. */
   id: string;
 }
-export const DeletePaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/payment_method_domains/{id}", code: 200 })),
@@ -115,7 +115,7 @@ export interface DeletePaymentMethodDomainResponse {
   deleted: boolean;
   id: string;
 }
-export const DeletePaymentMethodDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePaymentMethodDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -128,7 +128,7 @@ export interface GetPaymentMethodDomainRequest {
   /** The unique identifier of the payment method domain, prefixed `pmd_`. */
   id: string;
 }
-export const GetPaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/payment_method_domains/{id}", code: 200 })),
@@ -137,16 +137,16 @@ export const GetPaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPaymentMethodDomainRequest>;
 
 export type ListPaymentMethodDomainsRequestStatus = "pending" | "verified";
-export const ListPaymentMethodDomainsRequestStatus = S.String;
+const ListPaymentMethodDomainsRequestStatus = S.String;
 
 export type ListPaymentMethodDomainsRequestProvider = "apple";
-export const ListPaymentMethodDomainsRequestProvider = S.String;
+const ListPaymentMethodDomainsRequestProvider = S.String;
 
 export type ListPaymentMethodDomainsRequestOrder = "created_at";
-export const ListPaymentMethodDomainsRequestOrder = S.String;
+const ListPaymentMethodDomainsRequestOrder = S.String;
 
 export type ListPaymentMethodDomainsRequestDirection = "asc" | "desc";
-export const ListPaymentMethodDomainsRequestDirection = S.String;
+const ListPaymentMethodDomainsRequestDirection = S.String;
 
 export interface ListPaymentMethodDomainsRequest {
   /** Only domains registered for this account (`biz_` tag). Defaults to the caller's account plus its connected accounts. */
@@ -174,7 +174,7 @@ export interface ListPaymentMethodDomainsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListPaymentMethodDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentMethodDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     hostname: S.optional(S.String.pipe(T.Query())),
@@ -194,7 +194,7 @@ export const ListPaymentMethodDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPaymentMethodDomainsRequest>;
 
 export type ListPaymentMethodDomainsResponseDataList = Array<PaymentMethodDomain>;
-export const ListPaymentMethodDomainsResponseDataList = /*@__PURE__*/ S.Array(
+const ListPaymentMethodDomainsResponseDataList = /*@__PURE__*/ S.Array(
   PaymentMethodDomain,
 ) as any as S.Schema<ListPaymentMethodDomainsResponseDataList>;
 
@@ -204,7 +204,7 @@ export interface ListPaymentMethodDomainsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListPaymentMethodDomainsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentMethodDomainsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -219,7 +219,7 @@ export interface ListPaymentMethodDomainsResponse {
   data: ListPaymentMethodDomainsResponseDataList;
   page_info: ListPaymentMethodDomainsResponsePageInfo;
 }
-export const ListPaymentMethodDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentMethodDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPaymentMethodDomainsResponseDataList,
     page_info: ListPaymentMethodDomainsResponsePageInfo,
@@ -234,7 +234,7 @@ export interface VerifyPaymentMethodDomainRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const VerifyPaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyPaymentMethodDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),

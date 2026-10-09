@@ -38,7 +38,7 @@ export class NotFound
 export interface GetUserHomeSettingsRequest {
   uuid: string;
 }
-export const GetUserHomeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserHomeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/user_home_settings/{uuid}/", code: 200 })),
@@ -70,7 +70,7 @@ export interface PinnedSceneTab {
   /** Whether this entry is pinned. Always coerced to true on save -- pass true or omit. */
   pinned?: boolean;
 }
-export const PinnedSceneTab = /*@__PURE__*/ S.suspend(() =>
+const PinnedSceneTab = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     pathname: S.optional(S.String),
@@ -88,7 +88,7 @@ export const PinnedSceneTab = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
 export type PinnedSceneTabsTabsList = Array<PinnedSceneTab>;
-export const PinnedSceneTabsTabsList = /*@__PURE__*/ S.Array(
+const PinnedSceneTabsTabsList = /*@__PURE__*/ S.Array(
   PinnedSceneTab,
 ) as any as S.Schema<PinnedSceneTabsTabsList>;
 
@@ -98,7 +98,7 @@ export interface PinnedSceneTabs {
   /** Tab descriptor for the user's chosen home page -- the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
   homepage?: PinnedSceneTab | null;
 }
-export const PinnedSceneTabs = /*@__PURE__*/ S.suspend(() =>
+const PinnedSceneTabs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tabs: S.optional(PinnedSceneTabsTabsList),
     homepage: S.optional(S.NullOr(PinnedSceneTab)),
@@ -107,7 +107,7 @@ export const PinnedSceneTabs = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
 export type UpdateUserHomeSettingsPartialRequestTabsList = Array<PinnedSceneTab>;
-export const UpdateUserHomeSettingsPartialRequestTabsList =
+const UpdateUserHomeSettingsPartialRequestTabsList =
   PinnedSceneTabsTabsList as any as S.Schema<UpdateUserHomeSettingsPartialRequestTabsList>;
 
 export interface UpdateUserHomeSettingsPartialRequest {
@@ -117,7 +117,7 @@ export interface UpdateUserHomeSettingsPartialRequest {
   /** Tab descriptor for the user's chosen home page -- the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
   homepage?: PinnedSceneTab | null;
 }
-export const UpdateUserHomeSettingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserHomeSettingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     tabs: S.optional(UpdateUserHomeSettingsPartialRequestTabsList),

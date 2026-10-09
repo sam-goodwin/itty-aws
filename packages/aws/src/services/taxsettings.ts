@@ -151,11 +151,11 @@ export class ValidationException
   ).pipe(C.withBadRequestError) {}
 export type AccountId = string;
 export type AccountIds = string[];
-export const AccountIds = /*@__PURE__*/ S.Array(S.String);
+const AccountIds = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteTaxRegistrationRequest {
   accountIds: string[];
 }
-export const BatchDeleteTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountIds: AccountIds }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/BatchDeleteTaxRegistration" }),
@@ -176,19 +176,17 @@ export interface BatchDeleteTaxRegistrationError_ {
   message: string | redacted.Redacted<string>;
   code?: string;
 }
-export const BatchDeleteTaxRegistrationError_ = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteTaxRegistrationError_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.String, message: SensitiveString, code: S.optional(S.String) }),
 ).annotate({
   identifier: "BatchDeleteTaxRegistrationError",
 }) as any as S.Schema<BatchDeleteTaxRegistrationError_>;
 export type BatchDeleteTaxRegistrationErrors = BatchDeleteTaxRegistrationError_[];
-export const BatchDeleteTaxRegistrationErrors = /*@__PURE__*/ S.Array(
-  BatchDeleteTaxRegistrationError_,
-);
+const BatchDeleteTaxRegistrationErrors = /*@__PURE__*/ S.Array(BatchDeleteTaxRegistrationError_);
 export interface BatchDeleteTaxRegistrationResponse {
   errors: BatchDeleteTaxRegistrationError_[];
 }
-export const BatchDeleteTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ errors: BatchDeleteTaxRegistrationErrors }),
 ).annotate({
   identifier: "BatchDeleteTaxRegistrationResponse",
@@ -196,7 +194,7 @@ export const BatchDeleteTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BatchGetTaxExemptionsRequest {
   accountIds: string[];
 }
-export const BatchGetTaxExemptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetTaxExemptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountIds: AccountIds }).pipe(
     T.all(T.Http({ method: "POST", uri: "/BatchGetTaxExemptions" }), svc, auth, proto, ver, rules),
   ),
@@ -209,18 +207,18 @@ export interface Authority {
   country: string;
   state?: string;
 }
-export const Authority = /*@__PURE__*/ S.suspend(() =>
+const Authority = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ country: S.String, state: S.optional(S.String) }),
 ).annotate({ identifier: "Authority" }) as any as S.Schema<Authority>;
 export type DisplayName = string;
 export type Authorities = Authority[];
-export const Authorities = /*@__PURE__*/ S.Array(Authority);
+const Authorities = /*@__PURE__*/ S.Array(Authority);
 export interface TaxExemptionType {
   displayName?: string;
   description?: string;
   applicableJurisdictions?: Authority[];
 }
-export const TaxExemptionType = /*@__PURE__*/ S.suspend(() =>
+const TaxExemptionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     description: S.optional(S.String),
@@ -228,7 +226,7 @@ export const TaxExemptionType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaxExemptionType" }) as any as S.Schema<TaxExemptionType>;
 export type EntityExemptionAccountStatus = "None" | "Valid" | "Expired" | "Pending" | (string & {});
-export const EntityExemptionAccountStatus = S.String;
+const EntityExemptionAccountStatus = S.String;
 
 export interface TaxExemption {
   authority: Authority;
@@ -238,7 +236,7 @@ export interface TaxExemption {
   systemEffectiveDate?: Date;
   status?: EntityExemptionAccountStatus;
 }
-export const TaxExemption = /*@__PURE__*/ S.suspend(() =>
+const TaxExemption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authority: Authority,
     taxExemptionType: TaxExemptionType,
@@ -249,14 +247,14 @@ export const TaxExemption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaxExemption" }) as any as S.Schema<TaxExemption>;
 export type TaxExemptions = TaxExemption[];
-export const TaxExemptions = /*@__PURE__*/ S.Array(TaxExemption);
+const TaxExemptions = /*@__PURE__*/ S.Array(TaxExemption);
 export interface TaxExemptionDetails {
   taxExemptions?: TaxExemption[];
   heritageObtainedDetails?: boolean;
   heritageObtainedParentEntity?: string;
   heritageObtainedReason?: string;
 }
-export const TaxExemptionDetails = /*@__PURE__*/ S.suspend(() =>
+const TaxExemptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxExemptions: S.optional(TaxExemptions),
     heritageObtainedDetails: S.optional(S.Boolean),
@@ -265,7 +263,7 @@ export const TaxExemptionDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaxExemptionDetails" }) as any as S.Schema<TaxExemptionDetails>;
 export type TaxExemptionDetailsMap = { [key: string]: TaxExemptionDetails | undefined };
-export const TaxExemptionDetailsMap = /*@__PURE__*/ S.Record(
+const TaxExemptionDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ TaxExemptionDetails.pipe(S.optional),
 );
@@ -273,7 +271,7 @@ export interface BatchGetTaxExemptionsResponse {
   taxExemptionDetailsMap?: { [key: string]: TaxExemptionDetails | undefined };
   failedAccounts?: string[];
 }
-export const BatchGetTaxExemptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetTaxExemptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxExemptionDetailsMap: S.optional(TaxExemptionDetailsMap),
     failedAccounts: S.optional(AccountIds),
@@ -293,7 +291,7 @@ export type TaxRegistrationType =
   | "PAN"
   | "NIP"
   | (string & {});
-export const TaxRegistrationType = S.String;
+const TaxRegistrationType = S.String;
 
 export type LegalName = string;
 export type AddressLine1 = string;
@@ -312,7 +310,7 @@ export interface Address {
   postalCode: string;
   countryCode: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressLine1: S.optional(S.String),
     addressLine2: S.optional(S.String),
@@ -325,7 +323,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 export type Sector = "Business" | "Individual" | "Government" | (string & {});
-export const Sector = S.String;
+const Sector = S.String;
 
 export type MalaysiaServiceTaxCode =
   | "Consultancy"
@@ -333,10 +331,10 @@ export type MalaysiaServiceTaxCode =
   | "IT Services"
   | "Training Or Coaching"
   | (string & {});
-export const MalaysiaServiceTaxCode = S.String;
+const MalaysiaServiceTaxCode = S.String;
 
 export type MalaysiaServiceTaxCodesList = MalaysiaServiceTaxCode[];
-export const MalaysiaServiceTaxCodesList = /*@__PURE__*/ S.Array(MalaysiaServiceTaxCode);
+const MalaysiaServiceTaxCodesList = /*@__PURE__*/ S.Array(MalaysiaServiceTaxCode);
 export type TaxInformationNumber = string;
 export type BusinessRegistrationNumber = string;
 export interface MalaysiaAdditionalInfo {
@@ -344,7 +342,7 @@ export interface MalaysiaAdditionalInfo {
   taxInformationNumber?: string;
   businessRegistrationNumber?: string;
 }
-export const MalaysiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const MalaysiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceTaxCodes: S.optional(MalaysiaServiceTaxCodesList),
     taxInformationNumber: S.optional(S.String),
@@ -352,23 +350,23 @@ export const MalaysiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MalaysiaAdditionalInfo" }) as any as S.Schema<MalaysiaAdditionalInfo>;
 export type IsraelDealerType = "Authorized" | "Non-authorized" | (string & {});
-export const IsraelDealerType = S.String;
+const IsraelDealerType = S.String;
 
 export type IsraelCustomerType = "Business" | "Individual" | (string & {});
-export const IsraelCustomerType = S.String;
+const IsraelCustomerType = S.String;
 
 export interface IsraelAdditionalInfo {
   dealerType: IsraelDealerType;
   customerType: IsraelCustomerType;
 }
-export const IsraelAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const IsraelAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dealerType: IsraelDealerType, customerType: IsraelCustomerType }),
 ).annotate({ identifier: "IsraelAdditionalInfo" }) as any as S.Schema<IsraelAdditionalInfo>;
 export type RegistryCommercialCode = string;
 export interface EstoniaAdditionalInfo {
   registryCommercialCode: string;
 }
-export const EstoniaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const EstoniaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ registryCommercialCode: S.String }),
 ).annotate({ identifier: "EstoniaAdditionalInfo" }) as any as S.Schema<EstoniaAdditionalInfo>;
 export type CanadaProvincialSalesTaxIdString = string;
@@ -380,7 +378,7 @@ export interface CanadaAdditionalInfo {
   canadaRetailSalesTaxNumber?: string;
   isResellerAccount?: boolean;
 }
-export const CanadaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const CanadaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provincialSalesTaxId: S.optional(S.String),
     canadaQuebecSalesTaxNumber: S.optional(S.String),
@@ -389,21 +387,21 @@ export const CanadaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CanadaAdditionalInfo" }) as any as S.Schema<CanadaAdditionalInfo>;
 export type RegistrationType = "Intra-EU" | "Local" | (string & {});
-export const RegistrationType = S.String;
+const RegistrationType = S.String;
 
 export interface SpainAdditionalInfo {
   registrationType: RegistrationType;
 }
-export const SpainAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const SpainAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ registrationType: RegistrationType }),
 ).annotate({ identifier: "SpainAdditionalInfo" }) as any as S.Schema<SpainAdditionalInfo>;
 export type PersonType = "Legal Person" | "Physical Person" | "Business" | (string & {});
-export const PersonType = S.String;
+const PersonType = S.String;
 
 export interface KenyaAdditionalInfo {
   personType: PersonType;
 }
-export const KenyaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const KenyaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ personType: PersonType }),
 ).annotate({ identifier: "KenyaAdditionalInfo" }) as any as S.Schema<KenyaAdditionalInfo>;
 export type BusinessRepresentativeName = string;
@@ -414,7 +412,7 @@ export interface SouthKoreaAdditionalInfo {
   lineOfBusiness: string;
   itemOfBusiness: string;
 }
-export const SouthKoreaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const SouthKoreaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     businessRepresentativeName: S.String,
     lineOfBusiness: S.String,
@@ -432,7 +430,7 @@ export type Industries =
   | "PensionAndBenefitFunds"
   | "DevelopmentAgencies"
   | (string & {});
-export const Industries = S.String;
+const Industries = S.String;
 
 export interface TurkeyAdditionalInfo {
   taxOffice?: string;
@@ -440,7 +438,7 @@ export interface TurkeyAdditionalInfo {
   secondaryTaxId?: string;
   industries?: Industries;
 }
-export const TurkeyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const TurkeyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxOffice: S.optional(S.String),
     kepEmailId: S.optional(S.String),
@@ -451,13 +449,13 @@ export const TurkeyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 export interface GeorgiaAdditionalInfo {
   personType: PersonType;
 }
-export const GeorgiaAdditionalInfo = KenyaAdditionalInfo as any as S.Schema<GeorgiaAdditionalInfo>;
+const GeorgiaAdditionalInfo = KenyaAdditionalInfo as any as S.Schema<GeorgiaAdditionalInfo>;
 export type SdiAccountId = string;
 export type CigNumber = string;
 export type CupNumber = string;
 export type TaxCode = string;
 export type CustomerType = "Business" | "Individual" | (string & {});
-export const CustomerType = S.String;
+const CustomerType = S.String;
 
 export interface ItalyAdditionalInfo {
   sdiAccountId?: string;
@@ -466,7 +464,7 @@ export interface ItalyAdditionalInfo {
   taxCode?: string;
   customerType?: CustomerType;
 }
-export const ItalyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ItalyAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdiAccountId: S.optional(S.String),
     cigNumber: S.optional(S.String),
@@ -479,21 +477,21 @@ export type TaxRegistrationNumberType =
   | "TaxRegistrationNumber"
   | "LocalRegistrationNumber"
   | (string & {});
-export const TaxRegistrationNumberType = S.String;
+const TaxRegistrationNumberType = S.String;
 
 export interface RomaniaAdditionalInfo {
   taxRegistrationNumberType: TaxRegistrationNumberType;
 }
-export const RomaniaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const RomaniaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxRegistrationNumberType: TaxRegistrationNumberType }),
 ).annotate({ identifier: "RomaniaAdditionalInfo" }) as any as S.Schema<RomaniaAdditionalInfo>;
 export type UkraineTrnType = "Business" | "Individual" | (string & {});
-export const UkraineTrnType = S.String;
+const UkraineTrnType = S.String;
 
 export interface UkraineAdditionalInfo {
   ukraineTrnType: UkraineTrnType;
 }
-export const UkraineAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const UkraineAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ukraineTrnType: UkraineTrnType }),
 ).annotate({ identifier: "UkraineAdditionalInfo" }) as any as S.Schema<UkraineAdditionalInfo>;
 export type IndividualRegistrationNumber = string;
@@ -502,14 +500,14 @@ export type PolandTaxRegistrationNumberType =
   | "LocalTaxRegistrationNumber"
   | "LocalRegistrationNumber"
   | (string & {});
-export const PolandTaxRegistrationNumberType = S.String;
+const PolandTaxRegistrationNumberType = S.String;
 
 export interface PolandAdditionalInfo {
   individualRegistrationNumber?: string;
   isGroupVatEnabled?: boolean;
   taxRegistrationNumberType?: PolandTaxRegistrationNumberType;
 }
-export const PolandAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const PolandAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     individualRegistrationNumber: S.optional(S.String),
     isGroupVatEnabled: S.optional(S.Boolean),
@@ -521,12 +519,12 @@ export type SaudiArabiaTaxRegistrationNumberType =
   | "TaxIdentificationNumber"
   | "CommercialRegistrationNumber"
   | (string & {});
-export const SaudiArabiaTaxRegistrationNumberType = S.String;
+const SaudiArabiaTaxRegistrationNumberType = S.String;
 
 export interface SaudiArabiaAdditionalInfo {
   taxRegistrationNumberType?: SaudiArabiaTaxRegistrationNumberType;
 }
-export const SaudiArabiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const SaudiArabiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxRegistrationNumberType: S.optional(SaudiArabiaTaxRegistrationNumberType) }),
 ).annotate({
   identifier: "SaudiArabiaAdditionalInfo",
@@ -537,7 +535,7 @@ export type IndonesiaTaxRegistrationNumberType =
   | "NPWP"
   | "NITKU"
   | (string & {});
-export const IndonesiaTaxRegistrationNumberType = S.String;
+const IndonesiaTaxRegistrationNumberType = S.String;
 
 export type PpnExceptionDesignationCode = string;
 export type DecisionNumber = string;
@@ -546,7 +544,7 @@ export interface IndonesiaAdditionalInfo {
   ppnExceptionDesignationCode?: string;
   decisionNumber?: string;
 }
-export const IndonesiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const IndonesiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxRegistrationNumberType: S.optional(IndonesiaTaxRegistrationNumberType),
     ppnExceptionDesignationCode: S.optional(S.String),
@@ -563,7 +561,7 @@ export interface VietnamAdditionalInfo {
   paymentVoucherNumber?: string;
   paymentVoucherNumberDate?: string;
 }
-export const VietnamAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const VietnamAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterpriseIdentificationNumber: S.optional(S.String),
     electronicTransactionCodeNumber: S.optional(S.String),
@@ -576,7 +574,7 @@ export interface EgyptAdditionalInfo {
   uniqueIdentificationNumber?: string;
   uniqueIdentificationNumberExpirationDate?: string;
 }
-export const EgyptAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const EgyptAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueIdentificationNumber: S.optional(S.String),
     uniqueIdentificationNumberExpirationDate: S.optional(S.String),
@@ -586,18 +584,18 @@ export type ContractingAuthorityCode = string;
 export interface GreeceAdditionalInfo {
   contractingAuthorityCode?: string;
 }
-export const GreeceAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const GreeceAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contractingAuthorityCode: S.optional(S.String) }),
 ).annotate({ identifier: "GreeceAdditionalInfo" }) as any as S.Schema<GreeceAdditionalInfo>;
 export type UzbekistanTaxRegistrationNumberType = "Business" | "Individual" | (string & {});
-export const UzbekistanTaxRegistrationNumberType = S.String;
+const UzbekistanTaxRegistrationNumberType = S.String;
 
 export type VatRegistrationNumber = string;
 export interface UzbekistanAdditionalInfo {
   taxRegistrationNumberType?: UzbekistanTaxRegistrationNumberType;
   vatRegistrationNumber?: string;
 }
-export const UzbekistanAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const UzbekistanAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxRegistrationNumberType: S.optional(UzbekistanTaxRegistrationNumberType),
     vatRegistrationNumber: S.optional(S.String),
@@ -606,7 +604,7 @@ export const UzbekistanAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 export interface PhilippinesAdditionalInfo {
   isVatRegistered?: boolean;
 }
-export const PhilippinesAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const PhilippinesAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ isVatRegistered: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "PhilippinesAdditionalInfo",
@@ -616,17 +614,17 @@ export interface BelgiumAdditionalInfo {
   peppolId?: string;
   isMercuriusBoxEnabled?: boolean;
 }
-export const BelgiumAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const BelgiumAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ peppolId: S.optional(S.String), isMercuriusBoxEnabled: S.optional(S.Boolean) }),
 ).annotate({ identifier: "BelgiumAdditionalInfo" }) as any as S.Schema<BelgiumAdditionalInfo>;
 export type ChileDocumentType = "Invoice" | "Receipt" | (string & {});
-export const ChileDocumentType = S.String;
+const ChileDocumentType = S.String;
 
 export interface ChileAdditionalInfo {
   documentType?: ChileDocumentType;
   businessActivity?: string;
 }
-export const ChileAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ChileAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ documentType: S.optional(ChileDocumentType), businessActivity: S.optional(S.String) }),
 ).annotate({ identifier: "ChileAdditionalInfo" }) as any as S.Schema<ChileAdditionalInfo>;
 export type SirenNumber = string;
@@ -634,14 +632,14 @@ export interface FranceAdditionalInfo {
   sirenNumber: string;
   eInvoiceRoutingCode?: string;
 }
-export const FranceAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const FranceAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sirenNumber: S.String, eInvoiceRoutingCode: S.optional(S.String) }),
 ).annotate({ identifier: "FranceAdditionalInfo" }) as any as S.Schema<FranceAdditionalInfo>;
 export type BusinessNumber = string;
 export interface MonacoAdditionalInfo {
   businessNumber: string;
 }
-export const MonacoAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const MonacoAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ businessNumber: S.String }),
 ).annotate({ identifier: "MonacoAdditionalInfo" }) as any as S.Schema<MonacoAdditionalInfo>;
 export interface AdditionalInfoRequest {
@@ -670,7 +668,7 @@ export interface AdditionalInfoRequest {
   franceAdditionalInfo?: FranceAdditionalInfo;
   monacoAdditionalInfo?: MonacoAdditionalInfo;
 }
-export const AdditionalInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const AdditionalInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     malaysiaAdditionalInfo: S.optional(MalaysiaAdditionalInfo),
     israelAdditionalInfo: S.optional(IsraelAdditionalInfo),
@@ -705,7 +703,7 @@ export interface SourceS3Location {
   bucket: string;
   key: string;
 }
-export const SourceS3Location = /*@__PURE__*/ S.suspend(() =>
+const SourceS3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.String, key: S.String }),
 ).annotate({ identifier: "SourceS3Location" }) as any as S.Schema<SourceS3Location>;
 export type TaxDocumentName = string;
@@ -714,23 +712,23 @@ export interface TaxRegistrationDocFile {
   fileName: string;
   fileContent: Uint8Array;
 }
-export const TaxRegistrationDocFile = /*@__PURE__*/ S.suspend(() =>
+const TaxRegistrationDocFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileName: S.String, fileContent: T.Blob }),
 ).annotate({ identifier: "TaxRegistrationDocFile" }) as any as S.Schema<TaxRegistrationDocFile>;
 export interface TaxRegistrationDocument {
   s3Location?: SourceS3Location;
   file?: TaxRegistrationDocFile;
 }
-export const TaxRegistrationDocument = /*@__PURE__*/ S.suspend(() =>
+const TaxRegistrationDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Location: S.optional(SourceS3Location), file: S.optional(TaxRegistrationDocFile) }),
 ).annotate({ identifier: "TaxRegistrationDocument" }) as any as S.Schema<TaxRegistrationDocument>;
 export type TaxRegistrationDocuments = TaxRegistrationDocument[];
-export const TaxRegistrationDocuments = /*@__PURE__*/ S.Array(TaxRegistrationDocument);
+const TaxRegistrationDocuments = /*@__PURE__*/ S.Array(TaxRegistrationDocument);
 export interface VerificationDetails {
   dateOfBirth?: string;
   taxRegistrationDocuments?: TaxRegistrationDocument[];
 }
-export const VerificationDetails = /*@__PURE__*/ S.suspend(() =>
+const VerificationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateOfBirth: S.optional(S.String),
     taxRegistrationDocuments: S.optional(TaxRegistrationDocuments),
@@ -747,7 +745,7 @@ export interface TaxRegistrationEntry {
   verificationDetails?: VerificationDetails;
   certifiedEmailId?: string;
 }
-export const TaxRegistrationEntry = /*@__PURE__*/ S.suspend(() =>
+const TaxRegistrationEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationId: S.String,
     registrationType: TaxRegistrationType,
@@ -763,7 +761,7 @@ export interface BatchPutTaxRegistrationRequest {
   accountIds: string[];
   taxRegistrationEntry: TaxRegistrationEntry;
 }
-export const BatchPutTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchPutTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountIds: AccountIds, taxRegistrationEntry: TaxRegistrationEntry }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/BatchPutTaxRegistration" }),
@@ -778,25 +776,25 @@ export const BatchPutTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchPutTaxRegistrationRequest",
 }) as any as S.Schema<BatchPutTaxRegistrationRequest>;
 export type TaxRegistrationStatus = "Verified" | "Pending" | "Deleted" | "Rejected" | (string & {});
-export const TaxRegistrationStatus = S.String;
+const TaxRegistrationStatus = S.String;
 
 export interface BatchPutTaxRegistrationError_ {
   accountId: string;
   message: string | redacted.Redacted<string>;
   code?: string;
 }
-export const BatchPutTaxRegistrationError_ = /*@__PURE__*/ S.suspend(() =>
+const BatchPutTaxRegistrationError_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.String, message: SensitiveString, code: S.optional(S.String) }),
 ).annotate({
   identifier: "BatchPutTaxRegistrationError",
 }) as any as S.Schema<BatchPutTaxRegistrationError_>;
 export type BatchPutTaxRegistrationErrors = BatchPutTaxRegistrationError_[];
-export const BatchPutTaxRegistrationErrors = /*@__PURE__*/ S.Array(BatchPutTaxRegistrationError_);
+const BatchPutTaxRegistrationErrors = /*@__PURE__*/ S.Array(BatchPutTaxRegistrationError_);
 export interface BatchPutTaxRegistrationResponse {
   status?: TaxRegistrationStatus;
   errors: BatchPutTaxRegistrationError_[];
 }
-export const BatchPutTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchPutTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(TaxRegistrationStatus), errors: BatchPutTaxRegistrationErrors }),
 ).annotate({
   identifier: "BatchPutTaxRegistrationResponse",
@@ -804,7 +802,7 @@ export const BatchPutTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSupplementalTaxRegistrationRequest {
   authorityId: string;
 }
-export const DeleteSupplementalTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSupplementalTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ authorityId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteSupplementalTaxRegistration" }),
@@ -819,7 +817,7 @@ export const DeleteSupplementalTaxRegistrationRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteSupplementalTaxRegistrationRequest",
 }) as any as S.Schema<DeleteSupplementalTaxRegistrationRequest>;
 export interface DeleteSupplementalTaxRegistrationResponse {}
-export const DeleteSupplementalTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSupplementalTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSupplementalTaxRegistrationResponse",
@@ -827,7 +825,7 @@ export const DeleteSupplementalTaxRegistrationResponse = /*@__PURE__*/ S.suspend
 export interface DeleteTaxRegistrationRequest {
   accountId?: string;
 }
-export const DeleteTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/DeleteTaxRegistration" }), svc, auth, proto, ver, rules),
   ),
@@ -835,11 +833,11 @@ export const DeleteTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteTaxRegistrationRequest",
 }) as any as S.Schema<DeleteTaxRegistrationRequest>;
 export interface DeleteTaxRegistrationResponse {}
-export const DeleteTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteTaxRegistrationResponse",
 }) as any as S.Schema<DeleteTaxRegistrationResponse>;
 export interface GetTaxExemptionTypesRequest {}
-export const GetTaxExemptionTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaxExemptionTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(T.Http({ method: "POST", uri: "/GetTaxExemptionTypes" }), svc, auth, proto, ver, rules),
   ),
@@ -847,28 +845,28 @@ export const GetTaxExemptionTypesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTaxExemptionTypesRequest",
 }) as any as S.Schema<GetTaxExemptionTypesRequest>;
 export type TaxExemptionTypes = TaxExemptionType[];
-export const TaxExemptionTypes = /*@__PURE__*/ S.Array(TaxExemptionType);
+const TaxExemptionTypes = /*@__PURE__*/ S.Array(TaxExemptionType);
 export interface GetTaxExemptionTypesResponse {
   taxExemptionTypes?: TaxExemptionType[];
 }
-export const GetTaxExemptionTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaxExemptionTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxExemptionTypes: S.optional(TaxExemptionTypes) }),
 ).annotate({
   identifier: "GetTaxExemptionTypesResponse",
 }) as any as S.Schema<GetTaxExemptionTypesResponse>;
 export interface GetTaxInheritanceRequest {}
-export const GetTaxInheritanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaxInheritanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(T.Http({ method: "POST", uri: "/GetTaxInheritance" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetTaxInheritanceRequest" }) as any as S.Schema<GetTaxInheritanceRequest>;
 export type HeritageStatus = "OptIn" | "OptOut" | (string & {});
-export const HeritageStatus = S.String;
+const HeritageStatus = S.String;
 
 export interface GetTaxInheritanceResponse {
   heritageStatus?: HeritageStatus;
 }
-export const GetTaxInheritanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaxInheritanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ heritageStatus: S.optional(HeritageStatus) }),
 ).annotate({
   identifier: "GetTaxInheritanceResponse",
@@ -876,7 +874,7 @@ export const GetTaxInheritanceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetTaxRegistrationRequest {
   accountId?: string;
 }
-export const GetTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/GetTaxRegistration" }), svc, auth, proto, ver, rules),
   ),
@@ -888,25 +886,25 @@ export interface TaxDocumentMetadata {
   taxDocumentAccessToken: string;
   taxDocumentName: string;
 }
-export const TaxDocumentMetadata = /*@__PURE__*/ S.suspend(() =>
+const TaxDocumentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxDocumentAccessToken: S.String, taxDocumentName: S.String }),
 ).annotate({ identifier: "TaxDocumentMetadata" }) as any as S.Schema<TaxDocumentMetadata>;
 export type TaxDocumentMetadatas = TaxDocumentMetadata[];
-export const TaxDocumentMetadatas = /*@__PURE__*/ S.Array(TaxDocumentMetadata);
+const TaxDocumentMetadatas = /*@__PURE__*/ S.Array(TaxDocumentMetadata);
 export type CcmCode = string;
 export type LegalNatureCode = string;
 export interface BrazilAdditionalInfo {
   ccmCode?: string;
   legalNatureCode?: string;
 }
-export const BrazilAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const BrazilAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ccmCode: S.optional(S.String), legalNatureCode: S.optional(S.String) }),
 ).annotate({ identifier: "BrazilAdditionalInfo" }) as any as S.Schema<BrazilAdditionalInfo>;
 export type Pan = string;
 export interface IndiaAdditionalInfo {
   pan?: string;
 }
-export const IndiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const IndiaAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pan: S.optional(S.String) }),
 ).annotate({ identifier: "IndiaAdditionalInfo" }) as any as S.Schema<IndiaAdditionalInfo>;
 export interface AdditionalInfoResponse {
@@ -937,7 +935,7 @@ export interface AdditionalInfoResponse {
   franceAdditionalInfo?: FranceAdditionalInfo;
   monacoAdditionalInfo?: MonacoAdditionalInfo;
 }
-export const AdditionalInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const AdditionalInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     malaysiaAdditionalInfo: S.optional(MalaysiaAdditionalInfo),
     israelAdditionalInfo: S.optional(IsraelAdditionalInfo),
@@ -978,7 +976,7 @@ export interface TaxRegistration {
   additionalTaxInformation?: AdditionalInfoResponse;
   legalAddress: Address;
 }
-export const TaxRegistration = /*@__PURE__*/ S.suspend(() =>
+const TaxRegistration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationId: S.String,
     registrationType: TaxRegistrationType,
@@ -994,7 +992,7 @@ export const TaxRegistration = /*@__PURE__*/ S.suspend(() =>
 export interface GetTaxRegistrationResponse {
   taxRegistration?: TaxRegistration;
 }
-export const GetTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxRegistration: S.optional(TaxRegistration) }),
 ).annotate({
   identifier: "GetTaxRegistrationResponse",
@@ -1004,14 +1002,14 @@ export interface DestinationS3Location {
   bucket: string;
   prefix?: string;
 }
-export const DestinationS3Location = /*@__PURE__*/ S.suspend(() =>
+const DestinationS3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.String, prefix: S.optional(S.String) }),
 ).annotate({ identifier: "DestinationS3Location" }) as any as S.Schema<DestinationS3Location>;
 export interface GetTaxRegistrationDocumentRequest {
   destinationS3Location?: DestinationS3Location;
   taxDocumentMetadata: TaxDocumentMetadata;
 }
-export const GetTaxRegistrationDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaxRegistrationDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationS3Location: S.optional(DestinationS3Location),
     taxDocumentMetadata: TaxDocumentMetadata,
@@ -1034,7 +1032,7 @@ export interface GetTaxRegistrationDocumentResponse {
   destinationFilePath?: string;
   presignedS3Url?: string;
 }
-export const GetTaxRegistrationDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaxRegistrationDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ destinationFilePath: S.optional(S.String), presignedS3Url: S.optional(S.String) }),
 ).annotate({
   identifier: "GetTaxRegistrationDocumentResponse",
@@ -1045,7 +1043,7 @@ export interface ListSupplementalTaxRegistrationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSupplementalTaxRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSupplementalTaxRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/ListSupplementalTaxRegistrations" }),
@@ -1060,7 +1058,7 @@ export const ListSupplementalTaxRegistrationsRequest = /*@__PURE__*/ S.suspend((
   identifier: "ListSupplementalTaxRegistrationsRequest",
 }) as any as S.Schema<ListSupplementalTaxRegistrationsRequest>;
 export type SupplementalTaxRegistrationType = "VAT" | (string & {});
-export const SupplementalTaxRegistrationType = S.String;
+const SupplementalTaxRegistrationType = S.String;
 
 export interface SupplementalTaxRegistration {
   registrationId: string;
@@ -1070,7 +1068,7 @@ export interface SupplementalTaxRegistration {
   authorityId: string;
   status: TaxRegistrationStatus;
 }
-export const SupplementalTaxRegistration = /*@__PURE__*/ S.suspend(() =>
+const SupplementalTaxRegistration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationId: S.String,
     registrationType: SupplementalTaxRegistrationType,
@@ -1083,12 +1081,12 @@ export const SupplementalTaxRegistration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupplementalTaxRegistration",
 }) as any as S.Schema<SupplementalTaxRegistration>;
 export type SupplementalTaxRegistrationList = SupplementalTaxRegistration[];
-export const SupplementalTaxRegistrationList = /*@__PURE__*/ S.Array(SupplementalTaxRegistration);
+const SupplementalTaxRegistrationList = /*@__PURE__*/ S.Array(SupplementalTaxRegistration);
 export interface ListSupplementalTaxRegistrationsResponse {
   taxRegistrations: SupplementalTaxRegistration[];
   nextToken?: string;
 }
-export const ListSupplementalTaxRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSupplementalTaxRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxRegistrations: SupplementalTaxRegistrationList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListSupplementalTaxRegistrationsResponse",
@@ -1097,7 +1095,7 @@ export interface ListTaxExemptionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTaxExemptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaxExemptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/ListTaxExemptions" }), svc, auth, proto, ver, rules),
   ),
@@ -1106,7 +1104,7 @@ export interface ListTaxExemptionsResponse {
   nextToken?: string;
   taxExemptionDetailsMap?: { [key: string]: TaxExemptionDetails | undefined };
 }
-export const ListTaxExemptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTaxExemptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     taxExemptionDetailsMap: S.optional(TaxExemptionDetailsMap),
@@ -1118,7 +1116,7 @@ export interface ListTaxRegistrationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTaxRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaxRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/ListTaxRegistrations" }), svc, auth, proto, ver, rules),
   ),
@@ -1129,7 +1127,7 @@ export interface Jurisdiction {
   stateOrRegion?: string;
   countryCode: string;
 }
-export const Jurisdiction = /*@__PURE__*/ S.suspend(() =>
+const Jurisdiction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ stateOrRegion: S.optional(S.String), countryCode: S.String }),
 ).annotate({ identifier: "Jurisdiction" }) as any as S.Schema<Jurisdiction>;
 export interface TaxRegistrationWithJurisdiction {
@@ -1143,7 +1141,7 @@ export interface TaxRegistrationWithJurisdiction {
   additionalTaxInformation?: AdditionalInfoResponse;
   jurisdiction: Jurisdiction;
 }
-export const TaxRegistrationWithJurisdiction = /*@__PURE__*/ S.suspend(() =>
+const TaxRegistrationWithJurisdiction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationId: S.String,
     registrationType: TaxRegistrationType,
@@ -1163,7 +1161,7 @@ export interface TaxInheritanceDetails {
   parentEntityId?: string;
   inheritanceObtainedReason?: string;
 }
-export const TaxInheritanceDetails = /*@__PURE__*/ S.suspend(() =>
+const TaxInheritanceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentEntityId: S.optional(S.String),
     inheritanceObtainedReason: S.optional(S.String),
@@ -1172,10 +1170,10 @@ export const TaxInheritanceDetails = /*@__PURE__*/ S.suspend(() =>
 export type AccountName = string;
 export type Seller = string;
 export type AddressRoleType = "TaxAddress" | "BillingAddress" | "ContactAddress" | (string & {});
-export const AddressRoleType = S.String;
+const AddressRoleType = S.String;
 
 export type AddressRoleMap = { [key in AddressRoleType]?: Jurisdiction };
-export const AddressRoleMap = /*@__PURE__*/ S.Record(
+const AddressRoleMap = /*@__PURE__*/ S.Record(
   AddressRoleType,
   /*@__PURE__*/ Jurisdiction.pipe(S.optional),
 );
@@ -1186,7 +1184,7 @@ export interface AccountMetaData {
   addressType?: AddressRoleType;
   addressRoleMap?: { [key: string]: Jurisdiction | undefined };
 }
-export const AccountMetaData = /*@__PURE__*/ S.suspend(() =>
+const AccountMetaData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountName: S.optional(S.String),
     seller: S.optional(S.String),
@@ -1201,7 +1199,7 @@ export interface AccountDetails {
   taxInheritanceDetails?: TaxInheritanceDetails;
   accountMetaData?: AccountMetaData;
 }
-export const AccountDetails = /*@__PURE__*/ S.suspend(() =>
+const AccountDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     taxRegistration: S.optional(TaxRegistrationWithJurisdiction),
@@ -1210,12 +1208,12 @@ export const AccountDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountDetails" }) as any as S.Schema<AccountDetails>;
 export type AccountDetailsList = AccountDetails[];
-export const AccountDetailsList = /*@__PURE__*/ S.Array(AccountDetails);
+const AccountDetailsList = /*@__PURE__*/ S.Array(AccountDetails);
 export interface ListTaxRegistrationsResponse {
   accountDetails: AccountDetails[];
   nextToken?: string;
 }
-export const ListTaxRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTaxRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountDetails: AccountDetailsList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTaxRegistrationsResponse",
@@ -1226,7 +1224,7 @@ export interface SupplementalTaxRegistrationEntry {
   legalName: string;
   address: Address;
 }
-export const SupplementalTaxRegistrationEntry = /*@__PURE__*/ S.suspend(() =>
+const SupplementalTaxRegistrationEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationId: S.String,
     registrationType: SupplementalTaxRegistrationType,
@@ -1239,7 +1237,7 @@ export const SupplementalTaxRegistrationEntry = /*@__PURE__*/ S.suspend(() =>
 export interface PutSupplementalTaxRegistrationRequest {
   taxRegistrationEntry: SupplementalTaxRegistrationEntry;
 }
-export const PutSupplementalTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSupplementalTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taxRegistrationEntry: SupplementalTaxRegistrationEntry }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/PutSupplementalTaxRegistration" }),
@@ -1257,7 +1255,7 @@ export interface PutSupplementalTaxRegistrationResponse {
   authorityId: string;
   status: TaxRegistrationStatus;
 }
-export const PutSupplementalTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSupplementalTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ authorityId: S.String, status: TaxRegistrationStatus }),
 ).annotate({
   identifier: "PutSupplementalTaxRegistrationResponse",
@@ -1268,7 +1266,7 @@ export interface ExemptionCertificate {
   documentName: string;
   documentFile: Uint8Array;
 }
-export const ExemptionCertificate = /*@__PURE__*/ S.suspend(() =>
+const ExemptionCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ documentName: S.String, documentFile: T.Blob }),
 ).annotate({ identifier: "ExemptionCertificate" }) as any as S.Schema<ExemptionCertificate>;
 export interface PutTaxExemptionRequest {
@@ -1277,7 +1275,7 @@ export interface PutTaxExemptionRequest {
   exemptionType: string;
   exemptionCertificate: ExemptionCertificate;
 }
-export const PutTaxExemptionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTaxExemptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountIds: AccountIds,
     authority: Authority,
@@ -1288,25 +1286,25 @@ export const PutTaxExemptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutTaxExemptionResponse {
   caseId?: string;
 }
-export const PutTaxExemptionResponse = /*@__PURE__*/ S.suspend(() =>
+const PutTaxExemptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ caseId: S.optional(S.String) }),
 ).annotate({ identifier: "PutTaxExemptionResponse" }) as any as S.Schema<PutTaxExemptionResponse>;
 export interface PutTaxInheritanceRequest {
   heritageStatus?: HeritageStatus;
 }
-export const PutTaxInheritanceRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTaxInheritanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ heritageStatus: S.optional(HeritageStatus) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/PutTaxInheritance" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "PutTaxInheritanceRequest" }) as any as S.Schema<PutTaxInheritanceRequest>;
 export interface PutTaxInheritanceResponse {}
-export const PutTaxInheritanceResponse =
+const PutTaxInheritanceResponse =
   DeleteTaxRegistrationResponse as any as S.Schema<PutTaxInheritanceResponse>;
 export interface PutTaxRegistrationRequest {
   accountId?: string;
   taxRegistrationEntry: TaxRegistrationEntry;
 }
-export const PutTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.optional(S.String), taxRegistrationEntry: TaxRegistrationEntry }).pipe(
     T.all(T.Http({ method: "POST", uri: "/PutTaxRegistration" }), svc, auth, proto, ver, rules),
   ),
@@ -1316,7 +1314,7 @@ export const PutTaxRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutTaxRegistrationResponse {
   status?: TaxRegistrationStatus;
 }
-export const PutTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const PutTaxRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(TaxRegistrationStatus) }),
 ).annotate({
   identifier: "PutTaxRegistrationResponse",
@@ -1330,17 +1328,17 @@ export type ValidationExceptionErrorCode =
   | "NonIndiaCustomerCanNotSetPAN"
   | "GSTExistenceBlockSetPAN"
   | (string & {});
-export const ValidationExceptionErrorCode = S.String;
+const ValidationExceptionErrorCode = S.String;
 
 export type FieldName = string;
 export interface ValidationExceptionField {
   name: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type BatchDeleteTaxRegistrationError =
   | ConflictException
   | InternalServerException

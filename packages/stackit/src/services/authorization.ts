@@ -31,7 +31,7 @@ export interface Member {
   role: string;
   subject: string;
 }
-export const Member = /*@__PURE__*/ S.suspend(() =>
+const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String,
     subject: S.String,
@@ -39,7 +39,7 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
 
 export type AddMembersRequestMembersList = Array<Member>;
-export const AddMembersRequestMembersList = /*@__PURE__*/ S.Array(
+const AddMembersRequestMembersList = /*@__PURE__*/ S.Array(
   Member,
 ) as any as S.Schema<AddMembersRequestMembersList>;
 
@@ -48,7 +48,7 @@ export interface AddMembersRequest {
   members: AddMembersRequestMembersList;
   resourceType: string;
 }
-export const AddMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const AddMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     members: AddMembersRequestMembersList,
@@ -64,13 +64,13 @@ export const AddMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddMembersRequest" }) as any as S.Schema<AddMembersRequest>;
 
 export type MembersResponseMembersList = Array<Member>;
-export const MembersResponseMembersList =
+const MembersResponseMembersList =
   AddMembersRequestMembersList as any as S.Schema<MembersResponseMembersList>;
 
 export interface Zookie {
   zookie?: string;
 }
-export const Zookie = /*@__PURE__*/ S.suspend(() =>
+const Zookie = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zookie: S.optional(S.String),
   }),
@@ -82,7 +82,7 @@ export interface MembersResponse {
   resourceType: string;
   writtenAt?: Zookie;
 }
-export const MembersResponse = /*@__PURE__*/ S.suspend(() =>
+const MembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: MembersResponseMembersList,
     resourceId: S.String,
@@ -94,14 +94,14 @@ export const MembersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PermissionRequest {
   name: string;
 }
-export const PermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const PermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
 ).annotate({ identifier: "PermissionRequest" }) as any as S.Schema<PermissionRequest>;
 
 export type AddRoleRequestPermissionsList = Array<PermissionRequest>;
-export const AddRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
+const AddRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
   PermissionRequest,
 ) as any as S.Schema<AddRoleRequestPermissionsList>;
 
@@ -112,7 +112,7 @@ export interface AddRoleRequest {
   name: string;
   permissions: AddRoleRequestPermissionsList;
 }
-export const AddRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const AddRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -133,7 +133,7 @@ export interface Permission {
   description: string;
   name: string;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     name: S.String,
@@ -141,7 +141,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 export type RolePermissionsList = Array<Permission>;
-export const RolePermissionsList = /*@__PURE__*/ S.Array(
+const RolePermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<RolePermissionsList>;
 
@@ -152,7 +152,7 @@ export interface Role {
   name: string;
   permissions: RolePermissionsList;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
+const Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     etag: S.optional(S.String),
@@ -167,7 +167,7 @@ export interface AddCustomRoleResponse {
   resourceType: string;
   role: Role;
 }
-export const AddCustomRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const AddCustomRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String,
     resourceType: S.String,
@@ -181,7 +181,7 @@ export interface DeleteRoleRequest {
   roleId: string;
   etag?: string;
 }
-export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -200,7 +200,7 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRoleResponse {
   writtenAt: Zookie;
 }
-export const DeleteRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writtenAt: Zookie,
   }),
@@ -211,7 +211,7 @@ export interface GetRoleRequest {
   resourceId: string;
   roleId: string;
 }
-export const GetRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -231,14 +231,14 @@ export interface GetRoleResponse {
   resourceType: string;
   role: Role;
 }
-export const GetRoleResponse = AddCustomRoleResponse as any as S.Schema<GetRoleResponse>;
+const GetRoleResponse = AddCustomRoleResponse as any as S.Schema<GetRoleResponse>;
 
 export interface ListMembersRequest {
   resourceType: string;
   resourceId: string;
   subject?: string;
 }
-export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -254,7 +254,7 @@ export const ListMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembersRequest" }) as any as S.Schema<ListMembersRequest>;
 
 export type ListMembersResponseMembersList = Array<Member>;
-export const ListMembersResponseMembersList =
+const ListMembersResponseMembersList =
   AddMembersRequestMembersList as any as S.Schema<ListMembersResponseMembersList>;
 
 export interface ListMembersResponse {
@@ -262,7 +262,7 @@ export interface ListMembersResponse {
   resourceId: string;
   resourceType: string;
 }
-export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: ListMembersResponseMembersList,
     resourceId: S.String,
@@ -273,7 +273,7 @@ export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPermissionsRequest {
   resourceType?: string;
 }
-export const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -287,13 +287,13 @@ export const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPermissionsRequest" }) as any as S.Schema<ListPermissionsRequest>;
 
 export type ListPermissionsResponsePermissionsList = Array<Permission>;
-export const ListPermissionsResponsePermissionsList =
+const ListPermissionsResponsePermissionsList =
   RolePermissionsList as any as S.Schema<ListPermissionsResponsePermissionsList>;
 
 export interface ListPermissionsResponse {
   permissions: ListPermissionsResponsePermissionsList;
 }
-export const ListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: ListPermissionsResponsePermissionsList,
   }),
@@ -303,7 +303,7 @@ export interface ListRolesRequest {
   resourceType: string;
   resourceId: string;
 }
-export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -318,7 +318,7 @@ export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRolesRequest" }) as any as S.Schema<ListRolesRequest>;
 
 export type RolesResponseRolesList = Array<Role>;
-export const RolesResponseRolesList = /*@__PURE__*/ S.Array(
+const RolesResponseRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RolesResponseRolesList>;
 
@@ -327,7 +327,7 @@ export interface RolesResponse {
   resourceType: string;
   roles: RolesResponseRolesList;
 }
-export const RolesResponse = /*@__PURE__*/ S.suspend(() =>
+const RolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String,
     resourceType: S.String,
@@ -341,7 +341,7 @@ export interface ListUserMembershipsRequest {
   resourceId?: string;
   parentResourceId?: string;
 }
-export const ListUserMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     resourceType: S.optional(S.String.pipe(T.Query())),
@@ -365,7 +365,7 @@ export interface UserMembership {
   role: string;
   subject: string;
 }
-export const UserMembership = /*@__PURE__*/ S.suspend(() =>
+const UserMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String,
     resourceType: S.String,
@@ -375,14 +375,14 @@ export const UserMembership = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserMembership" }) as any as S.Schema<UserMembership>;
 
 export type ListUserMembershipsResponseItemsList = Array<UserMembership>;
-export const ListUserMembershipsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListUserMembershipsResponseItemsList = /*@__PURE__*/ S.Array(
   UserMembership,
 ) as any as S.Schema<ListUserMembershipsResponseItemsList>;
 
 export interface ListUserMembershipsResponse {
   items: ListUserMembershipsResponseItemsList;
 }
-export const ListUserMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListUserMembershipsResponseItemsList,
   }),
@@ -391,7 +391,7 @@ export const ListUserMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserMembershipsResponse>;
 
 export type ListUserPermissionsRequestPermissionsList = Array<string>;
-export const ListUserPermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
+const ListUserPermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListUserPermissionsRequestPermissionsList>;
 
@@ -401,7 +401,7 @@ export interface ListUserPermissionsRequest {
   resourceType?: string;
   permissions?: ListUserPermissionsRequestPermissionsList;
 }
-export const ListUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     resource: S.optional(S.String.pipe(T.Query())),
@@ -420,10 +420,8 @@ export const ListUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserPermissionsRequest>;
 
 export type ExistingPermission = Permission;
-export const ExistingPermission = Permission;
-
 export type UserPermissionPermissionsList = Array<Permission>;
-export const UserPermissionPermissionsList =
+const UserPermissionPermissionsList =
   RolePermissionsList as any as S.Schema<UserPermissionPermissionsList>;
 
 export interface UserPermission {
@@ -431,7 +429,7 @@ export interface UserPermission {
   resourceId: string;
   resourceType: string;
 }
-export const UserPermission = /*@__PURE__*/ S.suspend(() =>
+const UserPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: UserPermissionPermissionsList,
     resourceId: S.String,
@@ -440,14 +438,14 @@ export const UserPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserPermission" }) as any as S.Schema<UserPermission>;
 
 export type ListUserPermissionsResponseItemsList = Array<UserPermission>;
-export const ListUserPermissionsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListUserPermissionsResponseItemsList = /*@__PURE__*/ S.Array(
   UserPermission,
 ) as any as S.Schema<ListUserPermissionsResponseItemsList>;
 
 export interface ListUserPermissionsResponse {
   items: ListUserPermissionsResponseItemsList;
 }
-export const ListUserPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListUserPermissionsResponseItemsList,
   }),
@@ -456,7 +454,7 @@ export const ListUserPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserPermissionsResponse>;
 
 export type RemoveMembersRequestMembersList = Array<Member>;
-export const RemoveMembersRequestMembersList =
+const RemoveMembersRequestMembersList =
   AddMembersRequestMembersList as any as S.Schema<RemoveMembersRequestMembersList>;
 
 export interface RemoveMembersRequest {
@@ -465,7 +463,7 @@ export interface RemoveMembersRequest {
   members: RemoveMembersRequestMembersList;
   resourceType: string;
 }
-export const RemoveMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     forceRemove: S.optional(S.Boolean),
@@ -482,7 +480,7 @@ export const RemoveMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveMembersRequest" }) as any as S.Schema<RemoveMembersRequest>;
 
 export type UpdateRoleRequestPermissionsList = Array<PermissionRequest>;
-export const UpdateRoleRequestPermissionsList =
+const UpdateRoleRequestPermissionsList =
   AddRoleRequestPermissionsList as any as S.Schema<UpdateRoleRequestPermissionsList>;
 
 export interface UpdateRoleRequest {
@@ -494,7 +492,7 @@ export interface UpdateRoleRequest {
   name: string;
   permissions: UpdateRoleRequestPermissionsList;
 }
-export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -518,7 +516,7 @@ export interface UpdateRoleResponse {
   resourceType: string;
   role: Role;
 }
-export const UpdateRoleResponse = AddCustomRoleResponse as any as S.Schema<UpdateRoleResponse>;
+const UpdateRoleResponse = AddCustomRoleResponse as any as S.Schema<UpdateRoleResponse>;
 
 export type AddMembersError = BadRequest | Forbidden | StackitOpError;
 /** Add members to a resource Add members to the given resource with specified roles. */

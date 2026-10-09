@@ -69,7 +69,7 @@ export interface GetGroupsRequest {
   /** The group's email address. */
   groupUniqueId: string;
 }
-export const GetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupUniqueId: S.String.pipe(T.Label()),
   }).pipe(
@@ -210,7 +210,7 @@ export interface Groups {
   /** Deprecated. This functionality is no longer supported in the Google Groups UI. The value is always "NONE". */
   whoCanAddReferences?: string;
 }
-export const Groups = /*@__PURE__*/ S.suspend(() =>
+const Groups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     whoCanEnterFreeFormTags: S.optional(S.String),
     isArchived: S.optional(S.String),
@@ -284,7 +284,7 @@ export interface PatchGroupsRequest {
   /** Request body */
   body?: Groups;
 }
-export const PatchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupUniqueId: S.String.pipe(T.Label()),
     body: S.optional(Groups.pipe(T.HttpBody())),
@@ -303,7 +303,7 @@ export interface UpdateGroupsRequest {
   /** Request body */
   body?: Groups;
 }
-export const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupUniqueId: S.String.pipe(T.Label()),
     body: S.optional(Groups.pipe(T.HttpBody())),

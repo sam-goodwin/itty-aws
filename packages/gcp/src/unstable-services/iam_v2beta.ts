@@ -72,7 +72,7 @@ export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     expression: S.optional(S.String),
@@ -82,7 +82,7 @@ export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleTypeExpr" }) as any as S.Schema<GoogleTypeExpr>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A deny rule in an IAM deny policy. */
 export interface GoogleIamV2betaDenyRule {
@@ -97,7 +97,7 @@ export interface GoogleIamV2betaDenyRule {
   /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
   exceptionPrincipals?: StringList;
 }
-export const GoogleIamV2betaDenyRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV2betaDenyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denialCondition: S.optional(GoogleTypeExpr),
     deniedPrincipals: S.optional(StringList),
@@ -114,7 +114,7 @@ export interface GoogleIamV2betaPolicyRule {
   /** A user-specified description of the rule. This value can be up to 256 characters. */
   description?: string;
 }
-export const GoogleIamV2betaPolicyRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV2betaPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denyRule: S.optional(GoogleIamV2betaDenyRule),
     description: S.optional(S.String),
@@ -124,12 +124,12 @@ export const GoogleIamV2betaPolicyRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleIamV2betaPolicyRule>;
 
 export type GoogleIamV2betaPolicyRuleList = Array<GoogleIamV2betaPolicyRule>;
-export const GoogleIamV2betaPolicyRuleList = /*@__PURE__*/ S.Array(
+const GoogleIamV2betaPolicyRuleList = /*@__PURE__*/ S.Array(
   GoogleIamV2betaPolicyRule,
 ) as any as S.Schema<GoogleIamV2betaPolicyRuleList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Data for an IAM policy. */
 export interface GoogleIamV2betaPolicy {
@@ -154,7 +154,7 @@ export interface GoogleIamV2betaPolicy {
   /** Output only. The kind of the `Policy`. Always contains the value `DenyPolicy`. */
   kind?: string;
 }
-export const GoogleIamV2betaPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV2betaPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     uid: S.optional(S.String),
@@ -177,7 +177,7 @@ export interface CreatePolicyPoliciesRequest {
   /** Request body */
   body?: GoogleIamV2betaPolicy;
 }
-export const CreatePolicyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePolicyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -190,15 +190,10 @@ export const CreatePolicyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePolicyPoliciesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -209,7 +204,7 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -230,7 +225,7 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(GoogleRpcStatus),
@@ -248,7 +243,7 @@ export interface DeletePoliciesRequest {
   /** Optional. The expected `etag` of the policy to delete. If the value does not match the value that is stored in IAM, the request fails with a `409` error code and `ABORTED` status. If you omit this field, the policy is deleted regardless of its current `etag`. */
   etag?: string;
 }
-export const DeletePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -261,7 +256,7 @@ export interface GetPoliciesRequest {
   /** Required. The resource name of the policy to retrieve. Format: `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   name: string;
 }
-export const GetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2beta/{+name}", baseUrl: "https://iam.googleapis.com/" })),
@@ -271,7 +266,7 @@ export interface GetPoliciesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetPoliciesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPoliciesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2beta/{+name}", baseUrl: "https://iam.googleapis.com/" })),
@@ -287,7 +282,7 @@ export interface ListPoliciesPoliciesRequest {
   /** Required. The resource that the policy is attached to, along with the kind of policy to list. Format: `policies/{attachment_point}/denypolicies` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. */
   parent: string;
 }
-export const ListPoliciesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -300,7 +295,7 @@ export const ListPoliciesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPoliciesPoliciesRequest>;
 
 export type GoogleIamV2betaPolicyList = Array<GoogleIamV2betaPolicy>;
-export const GoogleIamV2betaPolicyList = /*@__PURE__*/ S.Array(
+const GoogleIamV2betaPolicyList = /*@__PURE__*/ S.Array(
   GoogleIamV2betaPolicy,
 ) as any as S.Schema<GoogleIamV2betaPolicyList>;
 
@@ -311,7 +306,7 @@ export interface GoogleIamV2betaListPoliciesResponse {
   /** A page token that you can use in a ListPoliciesRequest to retrieve the next page. If this field is omitted, there are no additional pages. */
   nextPageToken?: string;
 }
-export const GoogleIamV2betaListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV2betaListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policies: S.optional(GoogleIamV2betaPolicyList),
     nextPageToken: S.optional(S.String),
@@ -326,7 +321,7 @@ export interface UpdatePoliciesRequest {
   /** Request body */
   body?: GoogleIamV2betaPolicy;
 }
-export const UpdatePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV2betaPolicy.pipe(T.HttpBody())),

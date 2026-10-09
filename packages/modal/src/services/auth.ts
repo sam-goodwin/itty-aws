@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export interface GetAuthTokenRequest {}
-export const GetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/AuthTokenGet", code: 200 }),
   ),
@@ -18,7 +18,7 @@ export const GetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAuthTokenResponse {
   token?: string;
 }
-export const GetAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),

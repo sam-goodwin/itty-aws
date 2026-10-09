@@ -60,7 +60,7 @@ export interface CloneZoneRequest {
   /** New Name for the cloned zone. Leave empty to use the same name as the original zone */
   name?: string;
 }
-export const CloneZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -79,13 +79,13 @@ export const CloneZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloneZoneRequest" }) as any as S.Schema<CloneZoneRequest>;
 
 export type DomainObservabilityExtensionState = "CREATING" | "CREATE_SUCCEEDED" | "ERROR";
-export const DomainObservabilityExtensionState = S.String;
+const DomainObservabilityExtensionState = S.String;
 
 export interface DomainObservabilityExtension {
   observabilityInstanceId: string;
   state?: DomainObservabilityExtensionState;
 }
-export const DomainObservabilityExtension = /*@__PURE__*/ S.suspend(() =>
+const DomainObservabilityExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observabilityInstanceId: S.String,
     state: S.optional(DomainObservabilityExtensionState),
@@ -97,7 +97,7 @@ export const DomainObservabilityExtension = /*@__PURE__*/ S.suspend(() =>
 export interface DomainExtensions {
   observabilityExtension?: DomainObservabilityExtension;
 }
-export const DomainExtensions = /*@__PURE__*/ S.suspend(() =>
+const DomainExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observabilityExtension: S.optional(DomainObservabilityExtension),
   }),
@@ -107,7 +107,7 @@ export interface Label {
   key: string;
   value?: string;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.optional(S.String),
@@ -115,20 +115,18 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type ZoneLabelsList = Array<Label>;
-export const ZoneLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<ZoneLabelsList>;
+const ZoneLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<ZoneLabelsList>;
 
 /** labels for the zone */
 export type ZoneLabelsMapMap = { [key: string]: string | undefined };
-export const ZoneLabelsMapMap = /*@__PURE__*/ S.Record(
+const ZoneLabelsMapMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ZoneLabelsMapMap>;
 
 /** primary name server for secondary zone */
 export type ZonePrimariesList = Array<string>;
-export const ZonePrimariesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZonePrimariesList>;
+const ZonePrimariesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ZonePrimariesList>;
 
 /** zone state */
 export type ZoneState =
@@ -141,15 +139,15 @@ export type ZoneState =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-export const ZoneState = S.String;
+const ZoneState = S.String;
 
 /** zone type */
 export type ZoneType = "primary" | "secondary";
-export const ZoneType = S.String;
+const ZoneType = S.String;
 
 /** visibility of the zone */
 export type ZoneVisibility = "public";
-export const ZoneVisibility = S.String;
+const ZoneVisibility = S.String;
 
 /** Zone. */
 export interface Zone {
@@ -207,7 +205,7 @@ export interface Zone {
   /** visibility of the zone */
   visibility: ZoneVisibility;
 }
-export const Zone = /*@__PURE__*/ S.suspend(() =>
+const Zone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.String,
     active: S.optional(S.Boolean),
@@ -245,7 +243,7 @@ export interface ZoneResponse {
   message?: string;
   zone: Zone;
 }
-export const ZoneResponse = /*@__PURE__*/ S.suspend(() =>
+const ZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     zone: Zone,
@@ -260,7 +258,7 @@ export interface CreateMoveCodeRequest {
   /** TTL is the duration for which the move code is valid, represented as seconds. Min: 1, Max: 2592000 (30 days). */
   ttl?: number;
 }
-export const CreateMoveCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMoveCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -283,7 +281,7 @@ export interface MoveCodeResponse {
   /** human readable message */
   message?: string;
 }
-export const MoveCodeResponse = /*@__PURE__*/ S.suspend(() =>
+const MoveCodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     expiresAt: S.String,
@@ -296,7 +294,7 @@ export interface RecordPayload {
   /** content of the record */
   content: string;
 }
-export const RecordPayload = /*@__PURE__*/ S.suspend(() =>
+const RecordPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
   }),
@@ -304,7 +302,7 @@ export const RecordPayload = /*@__PURE__*/ S.suspend(() =>
 
 /** records */
 export type CreateRecordSetRequestRecordsList = Array<RecordPayload>;
-export const CreateRecordSetRequestRecordsList = /*@__PURE__*/ S.Array(
+const CreateRecordSetRequestRecordsList = /*@__PURE__*/ S.Array(
   RecordPayload,
 ) as any as S.Schema<CreateRecordSetRequestRecordsList>;
 
@@ -335,7 +333,7 @@ export type CreateRecordSetRequestType =
   | "CSYNC"
   | "HINFO"
   | "HTTPS";
-export const CreateRecordSetRequestType = S.String;
+const CreateRecordSetRequestType = S.String;
 
 export interface CreateRecordSetRequest {
   /** project id */
@@ -353,7 +351,7 @@ export interface CreateRecordSetRequest {
   /** record set type */
   type: CreateRecordSetRequestType | (string & {});
 }
-export const CreateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -379,7 +377,7 @@ export interface Record {
   /** rr set id */
   id: string;
 }
-export const Record = /*@__PURE__*/ S.suspend(() =>
+const Record = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     id: S.String,
@@ -388,9 +386,7 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
 
 /** records */
 export type RecordSetRecordsList = Array<Record>;
-export const RecordSetRecordsList = /*@__PURE__*/ S.Array(
-  Record,
-) as any as S.Schema<RecordSetRecordsList>;
+const RecordSetRecordsList = /*@__PURE__*/ S.Array(Record) as any as S.Schema<RecordSetRecordsList>;
 
 /** record set state */
 export type RecordSetState =
@@ -403,7 +399,7 @@ export type RecordSetState =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-export const RecordSetState = S.String;
+const RecordSetState = S.String;
 
 /** record set type */
 export type RecordSetType =
@@ -432,7 +428,7 @@ export type RecordSetType =
   | "CSYNC"
   | "HINFO"
   | "HTTPS";
-export const RecordSetType = S.String;
+const RecordSetType = S.String;
 
 /** RRSet. */
 export interface RecordSet {
@@ -463,7 +459,7 @@ export interface RecordSet {
   /** when record set update/deletion started */
   updateStarted: string;
 }
-export const RecordSet = /*@__PURE__*/ S.suspend(() =>
+const RecordSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     comment: S.optional(S.String),
@@ -486,7 +482,7 @@ export interface RecordSetResponse {
   message?: string;
   rrset: RecordSet;
 }
-export const RecordSetResponse = /*@__PURE__*/ S.suspend(() =>
+const RecordSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     rrset: RecordSet,
@@ -496,7 +492,7 @@ export const RecordSetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ZoneObservabilityExtension {
   observabilityInstanceId: string;
 }
-export const ZoneObservabilityExtension = /*@__PURE__*/ S.suspend(() =>
+const ZoneObservabilityExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observabilityInstanceId: S.String,
   }),
@@ -507,7 +503,7 @@ export const ZoneObservabilityExtension = /*@__PURE__*/ S.suspend(() =>
 export interface ZoneExtensions {
   observabilityExtension?: ZoneObservabilityExtension;
 }
-export const ZoneExtensions = /*@__PURE__*/ S.suspend(() =>
+const ZoneExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observabilityExtension: S.optional(ZoneObservabilityExtension),
   }),
@@ -515,17 +511,17 @@ export const ZoneExtensions = /*@__PURE__*/ S.suspend(() =>
 
 /** labels for the zone - max 64 items. Keys: 1-314 chars (up to 250 prefix, 1 for slash, 1-63 the actual key). Values: 0-63 chars. */
 export type CreateZoneRequestLabelsMapMap = { [key: string]: string | undefined };
-export const CreateZoneRequestLabelsMapMap =
+const CreateZoneRequestLabelsMapMap =
   ZoneLabelsMapMap as any as S.Schema<CreateZoneRequestLabelsMapMap>;
 
 /** primary name server for secondary zone */
 export type CreateZoneRequestPrimariesList = Array<string>;
-export const CreateZoneRequestPrimariesList =
+const CreateZoneRequestPrimariesList =
   ZonePrimariesList as any as S.Schema<CreateZoneRequestPrimariesList>;
 
 /** zone type */
 export type CreateZoneRequestType = "primary" | "secondary";
-export const CreateZoneRequestType = S.String;
+const CreateZoneRequestType = S.String;
 
 export interface CreateZoneRequest {
   /** project id */
@@ -561,7 +557,7 @@ export interface CreateZoneRequest {
   /** zone type */
   type?: CreateZoneRequestType | (string & {});
 }
-export const CreateZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     acl: S.optional(S.String),
@@ -595,7 +591,7 @@ export interface DeleteMoveCodeRequest {
   /** zone id */
   zoneId: string;
 }
-export const DeleteMoveCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMoveCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -612,7 +608,7 @@ export const DeleteMoveCodeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Message {
   message?: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -626,7 +622,7 @@ export interface DeleteRecordSetRequest {
   /** record set id */
   rrSetId: string;
 }
-export const DeleteRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -647,7 +643,7 @@ export interface DeleteZoneRequest {
   /** zone id */
   zoneId: string;
 }
-export const DeleteZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -662,7 +658,7 @@ export const DeleteZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteZoneRequest" }) as any as S.Schema<DeleteZoneRequest>;
 
 export type ExportRecordSetsRequestFormat = "csv" | "json" | "bind";
-export const ExportRecordSetsRequestFormat = S.String;
+const ExportRecordSetsRequestFormat = S.String;
 
 export interface ExportRecordSetsRequest {
   /** project id */
@@ -672,7 +668,7 @@ export interface ExportRecordSetsRequest {
   exportAsFQDN?: boolean;
   format?: ExportRecordSetsRequestFormat | (string & {});
 }
-export const ExportRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -689,7 +685,7 @@ export const ExportRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportRecordSetsRequest" }) as any as S.Schema<ExportRecordSetsRequest>;
 
 export type RecordDataExchangeContentList = Array<string>;
-export const RecordDataExchangeContentList =
+const RecordDataExchangeContentList =
   ZonePrimariesList as any as S.Schema<RecordDataExchangeContentList>;
 
 export interface RecordDataExchange {
@@ -699,7 +695,7 @@ export interface RecordDataExchange {
   ttl?: number;
   type?: string;
 }
-export const RecordDataExchange = /*@__PURE__*/ S.suspend(() =>
+const RecordDataExchange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     content: S.optional(RecordDataExchangeContentList),
@@ -710,14 +706,14 @@ export const RecordDataExchange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordDataExchange" }) as any as S.Schema<RecordDataExchange>;
 
 export type ZoneDataExchangeRrSetsList = Array<RecordDataExchange>;
-export const ZoneDataExchangeRrSetsList = /*@__PURE__*/ S.Array(
+const ZoneDataExchangeRrSetsList = /*@__PURE__*/ S.Array(
   RecordDataExchange,
 ) as any as S.Schema<ZoneDataExchangeRrSetsList>;
 
 export interface ZoneDataExchange {
   rrSets?: ZoneDataExchangeRrSetsList;
 }
-export const ZoneDataExchange = /*@__PURE__*/ S.suspend(() =>
+const ZoneDataExchange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rrSets: S.optional(ZoneDataExchangeRrSetsList),
   }),
@@ -731,7 +727,7 @@ export interface GetRecordSetRequest {
   /** record set id */
   rrSetId: string;
 }
-export const GetRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -752,7 +748,7 @@ export interface GetZoneRequest {
   /** zone id */
   zoneId: string;
 }
-export const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -772,7 +768,7 @@ export interface GetZoneRequest2 {
   /** zone id */
   zoneId: string;
 }
-export const GetZoneRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetZoneRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -787,13 +783,13 @@ export const GetZoneRequest2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetZoneRequest2" }) as any as S.Schema<GetZoneRequest2>;
 
 export type ImportRecordSetsRequestFormat = "json" | "csv" | "bind";
-export const ImportRecordSetsRequestFormat = S.String;
+const ImportRecordSetsRequestFormat = S.String;
 
 export type ImportRecordSetsRequestImportType = "restore" | "delete" | "update" | "upsert";
-export const ImportRecordSetsRequestImportType = S.String;
+const ImportRecordSetsRequestImportType = S.String;
 
 export type ZoneModelsImportRecordModelContentList = Array<string>;
-export const ZoneModelsImportRecordModelContentList =
+const ZoneModelsImportRecordModelContentList =
   ZonePrimariesList as any as S.Schema<ZoneModelsImportRecordModelContentList>;
 
 export interface ZoneModelsImportRecordModel {
@@ -803,7 +799,7 @@ export interface ZoneModelsImportRecordModel {
   ttl?: number;
   type?: string;
 }
-export const ZoneModelsImportRecordModel = /*@__PURE__*/ S.suspend(() =>
+const ZoneModelsImportRecordModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     content: S.optional(ZoneModelsImportRecordModelContentList),
@@ -816,7 +812,7 @@ export const ZoneModelsImportRecordModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ZoneModelsImportRecordModel>;
 
 export type ImportRecordSetsRequestRrSetsList = Array<ZoneModelsImportRecordModel>;
-export const ImportRecordSetsRequestRrSetsList = /*@__PURE__*/ S.Array(
+const ImportRecordSetsRequestRrSetsList = /*@__PURE__*/ S.Array(
   ZoneModelsImportRecordModel,
 ) as any as S.Schema<ImportRecordSetsRequestRrSetsList>;
 
@@ -831,7 +827,7 @@ export interface ImportRecordSetsRequest {
   importType?: ImportRecordSetsRequestImportType | (string & {});
   rrSets?: ImportRecordSetsRequestRrSetsList;
 }
-export const ImportRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -857,7 +853,7 @@ export interface ImportSummary {
   updatedRRSets?: number;
   updatedRecords?: number;
 }
-export const ImportSummary = /*@__PURE__*/ S.suspend(() =>
+const ImportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdRRSets: S.optional(S.Number),
     createdRecords: S.optional(S.Number),
@@ -873,7 +869,7 @@ export interface ImportRecordSetsResponse {
   message?: string;
   summary: ImportSummary;
 }
-export const ImportRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     summary: ImportSummary,
@@ -906,7 +902,7 @@ export type ListRecordSetsRequestTypeEq =
   | "CSYNC"
   | "HINFO"
   | "HTTPS";
-export const ListRecordSetsRequestTypeEq = S.String;
+const ListRecordSetsRequestTypeEq = S.String;
 
 export type ListRecordSetsRequestStateEq =
   | "CREATING"
@@ -918,7 +914,7 @@ export type ListRecordSetsRequestStateEq =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-export const ListRecordSetsRequestStateEq = S.String;
+const ListRecordSetsRequestStateEq = S.String;
 
 export type ListRecordSetsRequestStateNeq =
   | "CREATING"
@@ -930,31 +926,31 @@ export type ListRecordSetsRequestStateNeq =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-export const ListRecordSetsRequestStateNeq = S.String;
+const ListRecordSetsRequestStateNeq = S.String;
 
 export type ListRecordSetsRequestOrderByName = "ASC" | "DESC";
-export const ListRecordSetsRequestOrderByName = S.String;
+const ListRecordSetsRequestOrderByName = S.String;
 
 export type ListRecordSetsRequestOrderByCreationStarted = "ASC" | "DESC";
-export const ListRecordSetsRequestOrderByCreationStarted = S.String;
+const ListRecordSetsRequestOrderByCreationStarted = S.String;
 
 export type ListRecordSetsRequestOrderByCreationFinished = "ASC" | "DESC";
-export const ListRecordSetsRequestOrderByCreationFinished = S.String;
+const ListRecordSetsRequestOrderByCreationFinished = S.String;
 
 export type ListRecordSetsRequestOrderByUpdateStarted = "ASC" | "DESC";
-export const ListRecordSetsRequestOrderByUpdateStarted = S.String;
+const ListRecordSetsRequestOrderByUpdateStarted = S.String;
 
 export type ListRecordSetsRequestOrderByUpdateFinished = "ASC" | "DESC";
-export const ListRecordSetsRequestOrderByUpdateFinished = S.String;
+const ListRecordSetsRequestOrderByUpdateFinished = S.String;
 
 export type ListRecordSetsRequestOrderByType = "ASC" | "DESC";
-export const ListRecordSetsRequestOrderByType = S.String;
+const ListRecordSetsRequestOrderByType = S.String;
 
 export type ListRecordSetsRequestOrderByState = "ASC" | "DESC";
-export const ListRecordSetsRequestOrderByState = S.String;
+const ListRecordSetsRequestOrderByState = S.String;
 
 export type ListRecordSetsRequestOrderByRecordCount = "ASC" | "DESC";
-export const ListRecordSetsRequestOrderByRecordCount = S.String;
+const ListRecordSetsRequestOrderByRecordCount = S.String;
 
 export interface ListRecordSetsRequest {
   /** project id */
@@ -1026,7 +1022,7 @@ export interface ListRecordSetsRequest {
   /** order by record count */
   orderBy_recordCount_?: ListRecordSetsRequestOrderByRecordCount | (string & {});
 }
-export const ListRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -1083,7 +1079,7 @@ export const ListRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRecordSetsRequest" }) as any as S.Schema<ListRecordSetsRequest>;
 
 export type ListRecordSetsResponseRrSetsList = Array<RecordSet>;
-export const ListRecordSetsResponseRrSetsList = /*@__PURE__*/ S.Array(
+const ListRecordSetsResponseRrSetsList = /*@__PURE__*/ S.Array(
   RecordSet,
 ) as any as S.Schema<ListRecordSetsResponseRrSetsList>;
 
@@ -1095,7 +1091,7 @@ export interface ListRecordSetsResponse {
   totalItems: number;
   totalPages: number;
 }
-export const ListRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemsPerPage: S.Number,
     message: S.optional(S.String),
@@ -1106,7 +1102,7 @@ export const ListRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRecordSetsResponse" }) as any as S.Schema<ListRecordSetsResponse>;
 
 export type ListZonesRequestTypeEq = "primary" | "secondary";
-export const ListZonesRequestTypeEq = S.String;
+const ListZonesRequestTypeEq = S.String;
 
 export type ListZonesRequestStateEq =
   | "CREATING"
@@ -1118,7 +1114,7 @@ export type ListZonesRequestStateEq =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-export const ListZonesRequestStateEq = S.String;
+const ListZonesRequestStateEq = S.String;
 
 export type ListZonesRequestStateNeq =
   | "CREATING"
@@ -1130,42 +1126,42 @@ export type ListZonesRequestStateNeq =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
-export const ListZonesRequestStateNeq = S.String;
+const ListZonesRequestStateNeq = S.String;
 
 export type ListZonesRequestLabelKeyEqList = Array<string>;
-export const ListZonesRequestLabelKeyEqList =
+const ListZonesRequestLabelKeyEqList =
   ZonePrimariesList as any as S.Schema<ListZonesRequestLabelKeyEqList>;
 
 export type ListZonesRequestLabelValueEqList = Array<string>;
-export const ListZonesRequestLabelValueEqList =
+const ListZonesRequestLabelValueEqList =
   ZonePrimariesList as any as S.Schema<ListZonesRequestLabelValueEqList>;
 
 export type ListZonesRequestOrderByDnsName = "ASC" | "DESC";
-export const ListZonesRequestOrderByDnsName = S.String;
+const ListZonesRequestOrderByDnsName = S.String;
 
 export type ListZonesRequestOrderByName = "ASC" | "DESC";
-export const ListZonesRequestOrderByName = S.String;
+const ListZonesRequestOrderByName = S.String;
 
 export type ListZonesRequestOrderByRecordCount = "ASC" | "DESC";
-export const ListZonesRequestOrderByRecordCount = S.String;
+const ListZonesRequestOrderByRecordCount = S.String;
 
 export type ListZonesRequestOrderByType = "ASC" | "DESC";
-export const ListZonesRequestOrderByType = S.String;
+const ListZonesRequestOrderByType = S.String;
 
 export type ListZonesRequestOrderByDescription = "ASC" | "DESC";
-export const ListZonesRequestOrderByDescription = S.String;
+const ListZonesRequestOrderByDescription = S.String;
 
 export type ListZonesRequestOrderByCreationStarted = "ASC" | "DESC";
-export const ListZonesRequestOrderByCreationStarted = S.String;
+const ListZonesRequestOrderByCreationStarted = S.String;
 
 export type ListZonesRequestOrderByCreationFinished = "ASC" | "DESC";
-export const ListZonesRequestOrderByCreationFinished = S.String;
+const ListZonesRequestOrderByCreationFinished = S.String;
 
 export type ListZonesRequestOrderByUpdateStarted = "ASC" | "DESC";
-export const ListZonesRequestOrderByUpdateStarted = S.String;
+const ListZonesRequestOrderByUpdateStarted = S.String;
 
 export type ListZonesRequestOrderByUpdateFinished = "ASC" | "DESC";
-export const ListZonesRequestOrderByUpdateFinished = S.String;
+const ListZonesRequestOrderByUpdateFinished = S.String;
 
 export interface ListZonesRequest {
   /** project id */
@@ -1259,7 +1255,7 @@ export interface ListZonesRequest {
   /** order by updateFinished */
   orderBy_updateFinished_?: ListZonesRequestOrderByUpdateFinished | (string & {});
 }
-export const ListZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1329,7 +1325,7 @@ export const ListZonesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListZonesRequest" }) as any as S.Schema<ListZonesRequest>;
 
 export type ListZonesResponseZonesList = Array<Zone>;
-export const ListZonesResponseZonesList = /*@__PURE__*/ S.Array(
+const ListZonesResponseZonesList = /*@__PURE__*/ S.Array(
   Zone,
 ) as any as S.Schema<ListZonesResponseZonesList>;
 
@@ -1341,7 +1337,7 @@ export interface ListZonesResponse {
   totalPages: number;
   zones: ListZonesResponseZonesList;
 }
-export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemsPerPage: S.Number,
     message: S.optional(S.String),
@@ -1359,7 +1355,7 @@ export interface MoveZoneRequest {
   /** ZoneDnsName is the dns name of the zone to move */
   zoneDnsName: string;
 }
-export const MoveZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     code: S.String,
@@ -1375,11 +1371,11 @@ export const MoveZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoveZoneRequest" }) as any as S.Schema<MoveZoneRequest>;
 
 export type PartialUpdateRecordRequestAction = "add" | "delete";
-export const PartialUpdateRecordRequestAction = S.String;
+const PartialUpdateRecordRequestAction = S.String;
 
 /** records */
 export type PartialUpdateRecordRequestRecordsList = Array<RecordPayload>;
-export const PartialUpdateRecordRequestRecordsList =
+const PartialUpdateRecordRequestRecordsList =
   CreateRecordSetRequestRecordsList as any as S.Schema<PartialUpdateRecordRequestRecordsList>;
 
 export interface PartialUpdateRecordRequest {
@@ -1393,7 +1389,7 @@ export interface PartialUpdateRecordRequest {
   /** records */
   records: PartialUpdateRecordRequestRecordsList;
 }
-export const PartialUpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -1414,7 +1410,7 @@ export const PartialUpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** records */
 export type PartialUpdateRecordSetRequestRecordsList = Array<RecordPayload>;
-export const PartialUpdateRecordSetRequestRecordsList =
+const PartialUpdateRecordSetRequestRecordsList =
   CreateRecordSetRequestRecordsList as any as S.Schema<PartialUpdateRecordSetRequestRecordsList>;
 
 export interface PartialUpdateRecordSetRequest {
@@ -1433,7 +1429,7 @@ export interface PartialUpdateRecordSetRequest {
   /** time to live */
   ttl?: number;
 }
-export const PartialUpdateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -1456,12 +1452,12 @@ export const PartialUpdateRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** labels for the zone - max 64 items. Keys: 1-314 chars (up to 250 prefix, 1 for slash, 1-63 the actual key). Values: 0-63 chars. */
 export type PartialUpdateZoneRequestLabelsMapMap = { [key: string]: string | undefined };
-export const PartialUpdateZoneRequestLabelsMapMap =
+const PartialUpdateZoneRequestLabelsMapMap =
   ZoneLabelsMapMap as any as S.Schema<PartialUpdateZoneRequestLabelsMapMap>;
 
 /** primary name server for secondary zone */
 export type PartialUpdateZoneRequestPrimariesList = Array<string>;
-export const PartialUpdateZoneRequestPrimariesList =
+const PartialUpdateZoneRequestPrimariesList =
   ZonePrimariesList as any as S.Schema<PartialUpdateZoneRequestPrimariesList>;
 
 export interface PartialUpdateZoneRequest {
@@ -1494,7 +1490,7 @@ export interface PartialUpdateZoneRequest {
   /** retry time */
   retryTime?: number;
 }
-export const PartialUpdateZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -1528,7 +1524,7 @@ export interface RestoreRecordSetRequest {
   /** record set id */
   rrSetId: string;
 }
-export const RestoreRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreRecordSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -1549,7 +1545,7 @@ export interface RestoreZoneRequest {
   /** zone id */
   zoneId: string;
 }
-export const RestoreZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),
@@ -1571,7 +1567,7 @@ export interface ValidateMoveCodeRequest {
   /** code that should be validated. It validates if it is valid, not expired and belongs to the zone. */
   code: string;
 }
-export const ValidateMoveCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateMoveCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     zoneId: S.String.pipe(T.Label()),

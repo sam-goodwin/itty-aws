@@ -53,7 +53,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 export interface GetEntitlementRequest {
   tenantId: string;
 }
-export const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
   })
@@ -62,13 +62,13 @@ export const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEntitlementRequest" }) as any as S.Schema<GetEntitlementRequest>;
 
 export type EntitlementsGetResponseAllowAddSubdomainType = "bool";
-export const EntitlementsGetResponseAllowAddSubdomainType = S.String;
+const EntitlementsGetResponseAllowAddSubdomainType = S.String;
 
 export interface EntitlementsGetResponseAllowAddSubdomain {
   type: EntitlementsGetResponseAllowAddSubdomainType;
   value: boolean;
 }
-export const EntitlementsGetResponseAllowAddSubdomain = /*@__PURE__*/ S.suspend(() =>
+const EntitlementsGetResponseAllowAddSubdomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EntitlementsGetResponseAllowAddSubdomainType,
     value: S.Boolean,
@@ -78,90 +78,44 @@ export const EntitlementsGetResponseAllowAddSubdomain = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EntitlementsGetResponseAllowAddSubdomain>;
 
 export type EntitlementsGetResponseAllowAutoAcceptInvitesType = "bool";
-export const EntitlementsGetResponseAllowAutoAcceptInvitesType = S.String;
-
 export interface EntitlementsGetResponseAllowAutoAcceptInvites {
   type: EntitlementsGetResponseAllowAutoAcceptInvitesType;
   value: boolean;
 }
-export const EntitlementsGetResponseAllowAutoAcceptInvites =
+const EntitlementsGetResponseAllowAutoAcceptInvites =
   EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponseAllowAutoAcceptInvites>;
 
 export type EntitlementsGetResponseCnameSetupAllowedType = "bool";
-export const EntitlementsGetResponseCnameSetupAllowedType = S.String;
-
 export interface EntitlementsGetResponseCnameSetupAllowed {
   type: EntitlementsGetResponseCnameSetupAllowedType;
   value: boolean;
 }
-export const EntitlementsGetResponseCnameSetupAllowed =
+const EntitlementsGetResponseCnameSetupAllowed =
   EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
 
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
   "max_count";
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
-  S.String;
-
 export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation {
   type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType;
   value: number;
 }
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType,
-      value: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation",
-  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation>;
-
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
   "bool";
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
-  S.String;
-
 export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation {
   type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType;
   value: boolean;
 }
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType,
-      value: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation",
-  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation>;
-
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
   "";
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
-  S.String;
-
 export interface EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation {
   type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType;
   value?: unknown | null;
 }
-export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType,
-      value: S.optional(S.NullOr(S.Unknown)),
-    }),
-  ).annotate({
-    identifier:
-      "EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation",
-  }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation>;
-
 export type EntitlementsGetResponseCustomEntitlementsItemAllocation =
   | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation
   | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation
   | EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocation;
-export const EntitlementsGetResponseCustomEntitlementsItemAllocation = /*@__PURE__*/ S.Unknown.pipe(
+const EntitlementsGetResponseCustomEntitlementsItemAllocation = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["type", "value"],
@@ -175,7 +129,7 @@ export const EntitlementsGetResponseCustomEntitlementsItemAllocation = /*@__PURE
 export interface EntitlementsGetResponseCustomEntitlementsItemFeature {
   key: string;
 }
-export const EntitlementsGetResponseCustomEntitlementsItemFeature = /*@__PURE__*/ S.suspend(() =>
+const EntitlementsGetResponseCustomEntitlementsItemFeature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
   }),
@@ -187,7 +141,7 @@ export interface EntitlementsGetResponseCustomEntitlementsItem {
   allocation: EntitlementsGetResponseCustomEntitlementsItemAllocation;
   feature: EntitlementsGetResponseCustomEntitlementsItemFeature;
 }
-export const EntitlementsGetResponseCustomEntitlementsItem = /*@__PURE__*/ S.suspend(() =>
+const EntitlementsGetResponseCustomEntitlementsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocation: EntitlementsGetResponseCustomEntitlementsItemAllocation,
     feature: EntitlementsGetResponseCustomEntitlementsItemFeature,
@@ -198,18 +152,18 @@ export const EntitlementsGetResponseCustomEntitlementsItem = /*@__PURE__*/ S.sus
 
 export type EntitlementsGetResponseCustomEntitlementsList =
   Array<EntitlementsGetResponseCustomEntitlementsItem>;
-export const EntitlementsGetResponseCustomEntitlementsList = /*@__PURE__*/ S.Array(
+const EntitlementsGetResponseCustomEntitlementsList = /*@__PURE__*/ S.Array(
   EntitlementsGetResponseCustomEntitlementsItem,
 ) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsList>;
 
 export type EntitlementsGetResponseMhsCertificateCountType = "max_count";
-export const EntitlementsGetResponseMhsCertificateCountType = S.String;
+const EntitlementsGetResponseMhsCertificateCountType = S.String;
 
 export interface EntitlementsGetResponseMhsCertificateCount {
   type: EntitlementsGetResponseMhsCertificateCountType;
   value: number;
 }
-export const EntitlementsGetResponseMhsCertificateCount = /*@__PURE__*/ S.suspend(() =>
+const EntitlementsGetResponseMhsCertificateCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EntitlementsGetResponseMhsCertificateCountType,
     value: S.Number,
@@ -219,13 +173,11 @@ export const EntitlementsGetResponseMhsCertificateCount = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<EntitlementsGetResponseMhsCertificateCount>;
 
 export type EntitlementsGetResponsePartialSetupAllowedType = "bool";
-export const EntitlementsGetResponsePartialSetupAllowedType = S.String;
-
 export interface EntitlementsGetResponsePartialSetupAllowed {
   type: EntitlementsGetResponsePartialSetupAllowedType;
   value: boolean;
 }
-export const EntitlementsGetResponsePartialSetupAllowed =
+const EntitlementsGetResponsePartialSetupAllowed =
   EntitlementsGetResponseAllowAddSubdomain as any as S.Schema<EntitlementsGetResponsePartialSetupAllowed>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -237,7 +189,7 @@ export interface GetEntitlementResponse {
   mhsCertificateCount: EntitlementsGetResponseMhsCertificateCount;
   partialSetupAllowed: EntitlementsGetResponsePartialSetupAllowed;
 }
-export const GetEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowAddSubdomain: EntitlementsGetResponseAllowAddSubdomain.pipe(T.Body("allow_add_subdomain")),
     allowAutoAcceptInvites: EntitlementsGetResponseAllowAutoAcceptInvites.pipe(
@@ -259,7 +211,7 @@ export const GetEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetTenantRequest {
   tenantId: string;
 }
-export const GetTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
   })
@@ -271,7 +223,7 @@ export interface GetResponseTenantContacts {
   email?: string | null;
   website?: string | null;
 }
-export const GetResponseTenantContacts = /*@__PURE__*/ S.suspend(() =>
+const GetResponseTenantContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.NullOr(S.String)),
     website: S.optional(S.NullOr(S.String)),
@@ -281,7 +233,7 @@ export const GetResponseTenantContacts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseTenantContacts>;
 
 export type GetResponseTenantLabelsList = Array<string>;
-export const GetResponseTenantLabelsList = /*@__PURE__*/ S.Array(
+const GetResponseTenantLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseTenantLabelsList>;
 
@@ -289,7 +241,7 @@ export interface GetResponseTenantMetadataDnsNsPool {
   primary?: string | null;
   secondary?: string | null;
 }
-export const GetResponseTenantMetadataDnsNsPool = /*@__PURE__*/ S.suspend(() =>
+const GetResponseTenantMetadataDnsNsPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(S.NullOr(S.String)),
     secondary: S.optional(S.NullOr(S.String)),
@@ -301,7 +253,7 @@ export const GetResponseTenantMetadataDnsNsPool = /*@__PURE__*/ S.suspend(() =>
 export interface GetResponseTenantMetadataDns {
   nsPool: GetResponseTenantMetadataDnsNsPool;
 }
-export const GetResponseTenantMetadataDns = /*@__PURE__*/ S.suspend(() =>
+const GetResponseTenantMetadataDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nsPool: GetResponseTenantMetadataDnsNsPool.pipe(T.Body("ns_pool")),
   }),
@@ -312,7 +264,7 @@ export const GetResponseTenantMetadataDns = /*@__PURE__*/ S.suspend(() =>
 export interface GetResponseTenantMetadata {
   dns?: GetResponseTenantMetadataDns | null;
 }
-export const GetResponseTenantMetadata = /*@__PURE__*/ S.suspend(() =>
+const GetResponseTenantMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dns: S.optional(S.NullOr(GetResponseTenantMetadataDns)),
   }),
@@ -321,7 +273,7 @@ export const GetResponseTenantMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseTenantMetadata>;
 
 export type GetResponseTenantUnitsItemUnitMembershipsList = Array<unknown>;
-export const GetResponseTenantUnitsItemUnitMembershipsList = /*@__PURE__*/ S.Array(
+const GetResponseTenantUnitsItemUnitMembershipsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GetResponseTenantUnitsItemUnitMembershipsList>;
 
@@ -332,7 +284,7 @@ export interface GetResponseTenantUnitsItem {
   unitStatus: string;
   unitTag: string;
 }
-export const GetResponseTenantUnitsItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponseTenantUnitsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unitMemberships: GetResponseTenantUnitsItemUnitMembershipsList.pipe(T.Body("unit_memberships")),
     unitMetadata: S.Unknown.pipe(T.Body("unit_metadata")),
@@ -345,7 +297,7 @@ export const GetResponseTenantUnitsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseTenantUnitsItem>;
 
 export type GetResponseTenantUnitsList = Array<GetResponseTenantUnitsItem>;
-export const GetResponseTenantUnitsList = /*@__PURE__*/ S.Array(
+const GetResponseTenantUnitsList = /*@__PURE__*/ S.Array(
   GetResponseTenantUnitsItem,
 ) as any as S.Schema<GetResponseTenantUnitsList>;
 
@@ -364,7 +316,7 @@ export interface GetTenantResponse {
   tenantUnits: GetResponseTenantUnitsList;
   customerId?: string | null;
 }
-export const GetTenantResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTenantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cdate: S.String,
     edate: S.String,
@@ -384,7 +336,7 @@ export const GetTenantResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListAccountsRequest {
   tenantId: string;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
   })
@@ -402,7 +354,7 @@ export interface AccountsListResultItemSettings {
   /** Use [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-list-dns-settings) instead. Deprecated. */
   useAccountCustomNsByDefault: boolean;
 }
-export const AccountsListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
+const AccountsListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abuseContactEmail: S.String.pipe(T.Body("abuse_contact_email")),
     accessApprovalExpiry: S.String.pipe(T.Body("access_approval_expiry")),
@@ -416,10 +368,10 @@ export const AccountsListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsListResultItemSettings>;
 
 export type AccountsListResultItemType = "standard" | "enterprise";
-export const AccountsListResultItemType = S.String;
+const AccountsListResultItemType = S.String;
 
 export type AccountsListResultItemTagsMap = { [key: string]: string | undefined };
-export const AccountsListResultItemTagsMap = /*@__PURE__*/ S.Record(
+const AccountsListResultItemTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AccountsListResultItemTagsMap>;
@@ -433,7 +385,7 @@ export interface AccountsListResultItem {
   /** Account tags, present only when `include_tags=true` is requested. */
   tags?: AccountsListResultItemTagsMap | null;
 }
-export const AccountsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const AccountsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -445,7 +397,7 @@ export const AccountsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountsListResultItem" }) as any as S.Schema<AccountsListResultItem>;
 
 export type AccountsListResultList = Array<AccountsListResultItem>;
-export const AccountsListResultList = /*@__PURE__*/ S.Array(
+const AccountsListResultList = /*@__PURE__*/ S.Array(
   AccountsListResultItem,
 ) as any as S.Schema<AccountsListResultList>;
 
@@ -455,7 +407,7 @@ export interface ListAccountsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccountsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -465,7 +417,7 @@ export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListAccountTypesRequest {
   tenantId: string;
 }
-export const ListAccountTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
   })
@@ -474,7 +426,7 @@ export const ListAccountTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountTypesRequest" }) as any as S.Schema<ListAccountTypesRequest>;
 
 export type AccountTypesListResultList = Array<string>;
-export const AccountTypesListResultList =
+const AccountTypesListResultList =
   GetResponseTenantLabelsList as any as S.Schema<AccountTypesListResultList>;
 
 export interface ListAccountTypesResponse {
@@ -483,7 +435,7 @@ export interface ListAccountTypesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAccountTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AccountTypesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -493,7 +445,7 @@ export const ListAccountTypesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListMembershipsRequest {
   tenantId: string;
 }
-export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.String.pipe(T.Label("tenant_id")),
   })
@@ -506,7 +458,7 @@ export interface MembershipsListResultItem {
   userName: string;
   userTag: string;
 }
-export const MembershipsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const MembershipsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userEmail: S.String.pipe(T.Body("user_email")),
     userName: S.String.pipe(T.Body("user_name")),
@@ -517,7 +469,7 @@ export const MembershipsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MembershipsListResultItem>;
 
 export type MembershipsListResultList = Array<MembershipsListResultItem>;
-export const MembershipsListResultList = /*@__PURE__*/ S.Array(
+const MembershipsListResultList = /*@__PURE__*/ S.Array(
   MembershipsListResultItem,
 ) as any as S.Schema<MembershipsListResultList>;
 
@@ -527,7 +479,7 @@ export interface ListMembershipsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: MembershipsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

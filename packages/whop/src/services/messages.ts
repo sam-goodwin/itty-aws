@@ -50,7 +50,7 @@ export interface CreateMessageRequestAttachmentsItem {
   /** The ID of an existing file object. */
   id: string;
 }
-export const CreateMessageRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateMessageRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -60,7 +60,7 @@ export const CreateMessageRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of file attachments to include with the message, such as images or videos. */
 export type CreateMessageRequestAttachmentsList = Array<CreateMessageRequestAttachmentsItem>;
-export const CreateMessageRequestAttachmentsList = /*@__PURE__*/ S.Array(
+const CreateMessageRequestAttachmentsList = /*@__PURE__*/ S.Array(
   CreateMessageRequestAttachmentsItem,
 ) as any as S.Schema<CreateMessageRequestAttachmentsList>;
 
@@ -71,7 +71,7 @@ export interface CreateMessageRequestPollOptionsItem {
   /** The text of the poll option */
   text: string;
 }
-export const CreateMessageRequestPollOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateMessageRequestPollOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     text: S.String,
@@ -82,7 +82,7 @@ export const CreateMessageRequestPollOptionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The options for the poll. Must have sequential IDs starting from 1 */
 export type CreateMessageRequestPollOptionsList = Array<CreateMessageRequestPollOptionsItem>;
-export const CreateMessageRequestPollOptionsList = /*@__PURE__*/ S.Array(
+const CreateMessageRequestPollOptionsList = /*@__PURE__*/ S.Array(
   CreateMessageRequestPollOptionsItem,
 ) as any as S.Schema<CreateMessageRequestPollOptionsList>;
 
@@ -91,7 +91,7 @@ export interface CreateMessageRequestPoll {
   /** The options for the poll. Must have sequential IDs starting from 1 */
   options: CreateMessageRequestPollOptionsList;
 }
-export const CreateMessageRequestPoll = /*@__PURE__*/ S.suspend(() =>
+const CreateMessageRequestPoll = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: CreateMessageRequestPollOptionsList,
   }),
@@ -111,7 +111,7 @@ export interface CreateMessageRequest {
   /** The unique identifier of the message this is replying to, creating a threaded reply. */
   replying_to_message_id?: string | null;
 }
-export const CreateMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: S.optional(S.NullOr(CreateMessageRequestAttachmentsList)),
     auto_detect_links: S.optional(S.NullOr(S.Boolean)),
@@ -124,13 +124,11 @@ export const CreateMessageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of user IDs that are explicitly mentioned in this message. */
 export type MessageMentionsList = Array<string>;
-export const MessageMentionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MessageMentionsList>;
+const MessageMentionsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<MessageMentionsList>;
 
 /** The types of post */
 export type DmsPostTypes = "regular" | "system" | "automated";
-export const DmsPostTypes = S.String;
+const DmsPostTypes = S.String;
 
 /** Represents a single poll option */
 export interface MessagePollOptionsItem {
@@ -139,7 +137,7 @@ export interface MessagePollOptionsItem {
   /** The text of the poll option */
   text: string;
 }
-export const MessagePollOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const MessagePollOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     text: S.String,
@@ -148,7 +146,7 @@ export const MessagePollOptionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The options for the poll */
 export type MessagePollOptionsList = Array<MessagePollOptionsItem>;
-export const MessagePollOptionsList = /*@__PURE__*/ S.Array(
+const MessagePollOptionsList = /*@__PURE__*/ S.Array(
   MessagePollOptionsItem,
 ) as any as S.Schema<MessagePollOptionsList>;
 
@@ -157,7 +155,7 @@ export interface MessagePoll {
   /** The options for the poll */
   options: MessagePollOptionsList | null;
 }
-export const MessagePoll = /*@__PURE__*/ S.suspend(() =>
+const MessagePoll = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.NullOr(MessagePollOptionsList),
   }),
@@ -170,7 +168,7 @@ export interface MessagePollVotesItem {
   /** The reaction that was used */
   option_id: string | null;
 }
-export const MessagePollVotesItem = /*@__PURE__*/ S.suspend(() =>
+const MessagePollVotesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     option_id: S.NullOr(S.String),
@@ -179,7 +177,7 @@ export const MessagePollVotesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Aggregated reaction counts on this message, filtered to a specific reaction type. */
 export type MessagePollVotesList = Array<MessagePollVotesItem>;
-export const MessagePollVotesList = /*@__PURE__*/ S.Array(
+const MessagePollVotesList = /*@__PURE__*/ S.Array(
   MessagePollVotesItem,
 ) as any as S.Schema<MessagePollVotesList>;
 
@@ -190,7 +188,7 @@ export interface MessageReactionCountsItem {
   /** The emoji that was used in shortcode format (:heart:) */
   emoji: string | null;
 }
-export const MessageReactionCountsItem = /*@__PURE__*/ S.suspend(() =>
+const MessageReactionCountsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     emoji: S.NullOr(S.String),
@@ -201,7 +199,7 @@ export const MessageReactionCountsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Aggregated reaction counts on this message, filtered to a specific reaction type. */
 export type MessageReactionCountsList = Array<MessageReactionCountsItem>;
-export const MessageReactionCountsList = /*@__PURE__*/ S.Array(
+const MessageReactionCountsList = /*@__PURE__*/ S.Array(
   MessageReactionCountsItem,
 ) as any as S.Schema<MessageReactionCountsList>;
 
@@ -214,7 +212,7 @@ export interface MessageUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const MessageUser = /*@__PURE__*/ S.suspend(() =>
+const MessageUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -255,7 +253,7 @@ export interface Message {
   /** The number of unique views this message has received. Null if view tracking is not enabled for this channel. */
   view_count: number | null;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.NullOr(S.String),
     created_at: S.String,
@@ -279,14 +277,14 @@ export interface DeleteMessageRequest {
   /** The unique identifier of the message to delete. */
   id: string;
 }
-export const DeleteMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/messages/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteMessageRequest" }) as any as S.Schema<DeleteMessageRequest>;
 
 export type DeleteMessageResponse = boolean;
-export const DeleteMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteMessageResponse" }) as any as S.Schema<DeleteMessageResponse>;
 
@@ -294,7 +292,7 @@ export interface GetMessageRequest {
   /** The unique identifier of the message to retrieve. */
   id: string;
 }
-export const GetMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/messages/{id}", code: 200 })),
@@ -302,7 +300,7 @@ export const GetMessageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
-export const Direction = S.String;
+const Direction = S.String;
 
 export interface ListMessageRequest {
   after?: string;
@@ -312,7 +310,7 @@ export interface ListMessageRequest {
   channel_id: string;
   direction?: Direction | (string & {});
 }
-export const ListMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -325,47 +323,25 @@ export const ListMessageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of user IDs that are explicitly mentioned in this message. */
 export type MessageListItemMentionsList = Array<string>;
-export const MessageListItemMentionsList =
-  MessageMentionsList as any as S.Schema<MessageListItemMentionsList>;
-
 /** Represents a single poll option */
 export type MessageListItemPollOptionsItem = MessagePollOptionsItem;
-export const MessageListItemPollOptionsItem = MessagePollOptionsItem;
-
 /** The options for the poll */
 export type MessageListItemPollOptionsList = Array<MessagePollOptionsItem>;
-export const MessageListItemPollOptionsList =
-  MessagePollOptionsList as any as S.Schema<MessageListItemPollOptionsList>;
-
 /** A poll attached to this message. Null if the message does not contain a poll. */
 export interface MessageListItemPoll {
   /** The options for the poll */
   options: MessageListItemPollOptionsList | null;
 }
-export const MessageListItemPoll = MessagePoll as any as S.Schema<MessageListItemPoll>;
-
 /** Represents a reaction count for a feed post */
 export type MessageListItemPollVotesItem = MessagePollVotesItem;
-export const MessageListItemPollVotesItem = MessagePollVotesItem;
-
 /** Aggregated reaction counts on this message, filtered to a specific reaction type. */
 export type MessageListItemPollVotesList = Array<MessagePollVotesItem>;
-export const MessageListItemPollVotesList =
-  MessagePollVotesList as any as S.Schema<MessageListItemPollVotesList>;
-
 /** Represents a reaction count for a feed post */
 export type MessageListItemReactionCountsItem = MessageReactionCountsItem;
-export const MessageListItemReactionCountsItem = MessageReactionCountsItem;
-
 /** Aggregated reaction counts on this message, filtered to a specific reaction type. */
 export type MessageListItemReactionCountsList = Array<MessageReactionCountsItem>;
-export const MessageListItemReactionCountsList =
-  MessageReactionCountsList as any as S.Schema<MessageListItemReactionCountsList>;
-
 /** The user who authored this message. */
 export type MessageListItemUser = MessageUser;
-export const MessageListItemUser = MessageUser;
-
 /** A message sent within an experience chat, direct message, or group chat. */
 export interface MessageListItem {
   /** The message content formatted as Markdown. Null if the message has no text content. */
@@ -399,11 +375,11 @@ export interface MessageListItem {
   /** The number of unique views this message has received. Null if view tracking is not enabled for this channel. */
   view_count: number | null;
 }
-export const MessageListItem = Message as any as S.Schema<MessageListItem>;
+const MessageListItem = Message as any as S.Schema<MessageListItem>;
 
 /** A list of nodes. */
 export type ListMessageResponseDataList = Array<MessageListItem>;
-export const ListMessageResponseDataList = /*@__PURE__*/ S.Array(
+const ListMessageResponseDataList = /*@__PURE__*/ S.Array(
   MessageListItem,
 ) as any as S.Schema<ListMessageResponseDataList>;
 
@@ -418,7 +394,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -433,7 +409,7 @@ export interface ListMessageResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListMessageResponseDataList,
     page_info: PageInfo,
@@ -442,11 +418,9 @@ export const ListMessageResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Input for an attachment */
 export type UpdateMessageRequestAttachmentsItem = CreateMessageRequestAttachmentsItem;
-export const UpdateMessageRequestAttachmentsItem = CreateMessageRequestAttachmentsItem;
-
 /** A replacement list of file attachments for this message, such as images or videos. */
 export type UpdateMessageRequestAttachmentsList = Array<CreateMessageRequestAttachmentsItem>;
-export const UpdateMessageRequestAttachmentsList =
+const UpdateMessageRequestAttachmentsList =
   CreateMessageRequestAttachmentsList as any as S.Schema<UpdateMessageRequestAttachmentsList>;
 
 export interface UpdateMessageRequest {
@@ -459,7 +433,7 @@ export interface UpdateMessageRequest {
   /** Whether this message should be pinned to the top of the channel. */
   is_pinned?: boolean | null;
 }
-export const UpdateMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     attachments: S.optional(S.NullOr(UpdateMessageRequestAttachmentsList)),

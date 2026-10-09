@@ -23,7 +23,7 @@ export interface AddRemoteRequest {
   /** Title of the file being shared. */
   title: string;
 }
-export const AddRemoteRequest = /*@__PURE__*/ S.suspend(() =>
+const AddRemoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.String,
     external_url: S.String,
@@ -37,22 +37,22 @@ export const AddRemoteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddRemoteRequest" }) as any as S.Schema<AddRemoteRequest>;
 
 export type AddRemoteResponseFileSharesMap = { [key: string]: unknown | undefined };
-export const AddRemoteResponseFileSharesMap = /*@__PURE__*/ S.Record(
+const AddRemoteResponseFileSharesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<AddRemoteResponseFileSharesMap>;
 
 export type AddRemoteResponseFileChannelsList = Array<string>;
-export const AddRemoteResponseFileChannelsList = /*@__PURE__*/ S.Array(
+const AddRemoteResponseFileChannelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddRemoteResponseFileChannelsList>;
 
 export type AddRemoteResponseFileGroupsList = Array<string>;
-export const AddRemoteResponseFileGroupsList =
+const AddRemoteResponseFileGroupsList =
   AddRemoteResponseFileChannelsList as any as S.Schema<AddRemoteResponseFileGroupsList>;
 
 export type AddRemoteResponseFileImsList = Array<string>;
-export const AddRemoteResponseFileImsList =
+const AddRemoteResponseFileImsList =
   AddRemoteResponseFileChannelsList as any as S.Schema<AddRemoteResponseFileImsList>;
 
 export interface AddRemoteResponseFile {
@@ -86,7 +86,7 @@ export interface AddRemoteResponseFile {
   external_url?: string;
   has_rich_preview?: boolean;
 }
-export const AddRemoteResponseFile = /*@__PURE__*/ S.suspend(() =>
+const AddRemoteResponseFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created: S.optional(S.Number),
@@ -125,7 +125,7 @@ export interface AddRemoteResponse {
   ok: boolean;
   file: AddRemoteResponseFile;
 }
-export const AddRemoteResponse = /*@__PURE__*/ S.suspend(() =>
+const AddRemoteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     file: AddRemoteResponseFile,
@@ -140,7 +140,7 @@ export interface CompleteUploadExternalRequestFilesItem {
   /** Optional highlight type hint for the file. The upload processing job may overwrite this value. */
   highlight_type?: string;
 }
-export const CompleteUploadExternalRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
+const CompleteUploadExternalRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.optional(S.String),
@@ -152,19 +152,19 @@ export const CompleteUploadExternalRequestFilesItem = /*@__PURE__*/ S.suspend(()
 
 /** Array of file ids and their corresponding (optional) titles. */
 export type CompleteUploadExternalRequestFilesList = Array<CompleteUploadExternalRequestFilesItem>;
-export const CompleteUploadExternalRequestFilesList = /*@__PURE__*/ S.Array(
+const CompleteUploadExternalRequestFilesList = /*@__PURE__*/ S.Array(
   CompleteUploadExternalRequestFilesItem,
 ) as any as S.Schema<CompleteUploadExternalRequestFilesList>;
 
 export type CompleteUploadExternalRequestBlocksCase1ItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CompleteUploadExternalRequestBlocksCase1ItemMap =
+const CompleteUploadExternalRequestBlocksCase1ItemMap =
   AddRemoteResponseFileSharesMap as any as S.Schema<CompleteUploadExternalRequestBlocksCase1ItemMap>;
 
 export type CompleteUploadExternalRequestBlocksCase1List =
   Array<CompleteUploadExternalRequestBlocksCase1ItemMap>;
-export const CompleteUploadExternalRequestBlocksCase1List = /*@__PURE__*/ S.Array(
+const CompleteUploadExternalRequestBlocksCase1List = /*@__PURE__*/ S.Array(
   CompleteUploadExternalRequestBlocksCase1ItemMap,
 ) as any as S.Schema<CompleteUploadExternalRequestBlocksCase1List>;
 
@@ -172,7 +172,7 @@ export const CompleteUploadExternalRequestBlocksCase1List = /*@__PURE__*/ S.Arra
 export type CompleteUploadExternalRequestBlocks =
   | string
   | CompleteUploadExternalRequestBlocksCase1List;
-export const CompleteUploadExternalRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+const CompleteUploadExternalRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -196,7 +196,7 @@ export interface CompleteUploadExternalRequest {
   /** Emoji to use as the icon for the file share message. Overrides `icon_url`. Requires the [`chat:write.customize`](/reference/scopes/chat.write.customize) scope. */
   icon_emoji?: string | null;
 }
-export const CompleteUploadExternalRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteUploadExternalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: CompleteUploadExternalRequestFilesList,
     channel_id: S.optional(S.String),
@@ -222,7 +222,7 @@ export interface CompleteUploadExternalResponseFilesItem {
   /** file owner */
   user?: string;
 }
-export const CompleteUploadExternalResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
+const CompleteUploadExternalResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.optional(S.Unknown),
@@ -236,7 +236,7 @@ export const CompleteUploadExternalResponseFilesItem = /*@__PURE__*/ S.suspend((
 /** Array of files uploaded. */
 export type CompleteUploadExternalResponseFilesList =
   Array<CompleteUploadExternalResponseFilesItem>;
-export const CompleteUploadExternalResponseFilesList = /*@__PURE__*/ S.Array(
+const CompleteUploadExternalResponseFilesList = /*@__PURE__*/ S.Array(
   CompleteUploadExternalResponseFilesItem,
 ) as any as S.Schema<CompleteUploadExternalResponseFilesList>;
 
@@ -246,7 +246,7 @@ export interface CompleteUploadExternalResponse {
   /** Array of files uploaded. */
   files: CompleteUploadExternalResponseFilesList;
 }
-export const CompleteUploadExternalResponse = /*@__PURE__*/ S.suspend(() =>
+const CompleteUploadExternalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     files: CompleteUploadExternalResponseFilesList,
@@ -261,7 +261,7 @@ export interface DeleteCommentRequest {
   /** The comment to delete. */
   id: string;
 }
-export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
     id: S.String,
@@ -272,7 +272,7 @@ export interface DeleteCommentResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeleteCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -282,7 +282,7 @@ export interface DeleteFileRequest {
   /** ID of file to delete. */
   file: string;
 }
-export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/files.delete", code: 200 })),
@@ -292,7 +292,7 @@ export interface DeleteFileResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeleteFileResponse = DeleteCommentResponse as any as S.Schema<DeleteFileResponse>;
+const DeleteFileResponse = DeleteCommentResponse as any as S.Schema<DeleteFileResponse>;
 
 export interface FilesInfoRequest {
   count?: number;
@@ -304,7 +304,7 @@ export interface FilesInfoRequest {
   limit?: number;
   page?: number;
 }
-export const FilesInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const FilesInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -317,7 +317,7 @@ export const FilesInfoRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FilesInfoResponseFile {
   id: string;
 }
-export const FilesInfoResponseFile = /*@__PURE__*/ S.suspend(() =>
+const FilesInfoResponseFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -331,7 +331,7 @@ export interface FilesInfoResponseCommentsItem {
   timestamp: number;
   user: string;
 }
-export const FilesInfoResponseCommentsItem = /*@__PURE__*/ S.suspend(() =>
+const FilesInfoResponseCommentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.String,
     created: S.Number,
@@ -345,7 +345,7 @@ export const FilesInfoResponseCommentsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FilesInfoResponseCommentsItem>;
 
 export type FilesInfoResponseCommentsList = Array<FilesInfoResponseCommentsItem>;
-export const FilesInfoResponseCommentsList = /*@__PURE__*/ S.Array(
+const FilesInfoResponseCommentsList = /*@__PURE__*/ S.Array(
   FilesInfoResponseCommentsItem,
 ) as any as S.Schema<FilesInfoResponseCommentsList>;
 
@@ -354,7 +354,7 @@ export interface FilesInfoResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const FilesInfoResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const FilesInfoResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -373,7 +373,7 @@ export interface FilesInfoResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: FilesInfoResponseResponseMetadata;
 }
-export const FilesInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const FilesInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     file: FilesInfoResponseFile,
@@ -395,7 +395,7 @@ export interface GetUploadURLExternalRequest {
   /** Description of image for screen-reader. */
   alt_txt?: string;
 }
-export const GetUploadURLExternalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUploadURLExternalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     length: S.Number,
     filename: S.String,
@@ -419,7 +419,7 @@ export interface GetUploadURLExternalResponse {
   file_id: string;
   upload_url: string;
 }
-export const GetUploadURLExternalResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUploadURLExternalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     file_id: S.String,
@@ -430,14 +430,10 @@ export const GetUploadURLExternalResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUploadURLExternalResponse>;
 
 export type ListFilesRequestCount = number | string;
-export const ListFilesRequestCount = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
+const ListFilesRequestCount = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type ListFilesRequestPage = number | string;
-export const ListFilesRequestPage = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
+const ListFilesRequestPage = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface ListFilesRequest {
   /** Filter files appearing in a specific channel, indicated by its ID. */
@@ -457,7 +453,7 @@ export interface ListFilesRequest {
   /** Filter files created by a single user. */
   user?: string;
 }
-export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.String.pipe(T.Query())),
     count: S.optional(ListFilesRequestCount.pipe(T.Query())),
@@ -476,7 +472,7 @@ export interface ListFilesResponseFilesItem {
   created?: number;
   user?: string;
 }
-export const ListFilesResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.optional(S.Number),
@@ -487,7 +483,7 @@ export const ListFilesResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFilesResponseFilesItem>;
 
 export type ListFilesResponseFilesList = Array<ListFilesResponseFilesItem>;
-export const ListFilesResponseFilesList = /*@__PURE__*/ S.Array(
+const ListFilesResponseFilesList = /*@__PURE__*/ S.Array(
   ListFilesResponseFilesItem,
 ) as any as S.Schema<ListFilesResponseFilesList>;
 
@@ -497,7 +493,7 @@ export interface ListFilesResponsePaging {
   page: number;
   pages: number;
 }
-export const ListFilesResponsePaging = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponsePaging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     total: S.Number,
@@ -512,7 +508,7 @@ export interface ListFilesResponse {
   files: ListFilesResponseFilesList;
   paging?: ListFilesResponsePaging;
 }
-export const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     files: ListFilesResponseFilesList,
@@ -532,7 +528,7 @@ export interface ListRemoteRequest {
   /** Filter files created before this timestamp (inclusive). */
   ts_to?: string;
 }
-export const ListRemoteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRemoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.String.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -545,7 +541,7 @@ export const ListRemoteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListRemoteResponseFilesItem {
   id?: string;
 }
-export const ListRemoteResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
+const ListRemoteResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -554,14 +550,12 @@ export const ListRemoteResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRemoteResponseFilesItem>;
 
 export type ListRemoteResponseFilesList = Array<ListRemoteResponseFilesItem>;
-export const ListRemoteResponseFilesList = /*@__PURE__*/ S.Array(
+const ListRemoteResponseFilesList = /*@__PURE__*/ S.Array(
   ListRemoteResponseFilesItem,
 ) as any as S.Schema<ListRemoteResponseFilesList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListRemoteResponseResponseMetadata = FilesInfoResponseResponseMetadata;
-export const ListRemoteResponseResponseMetadata = FilesInfoResponseResponseMetadata;
-
 export interface ListRemoteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -569,7 +563,7 @@ export interface ListRemoteResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: FilesInfoResponseResponseMetadata;
 }
-export const ListRemoteResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRemoteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     files: ListRemoteResponseFilesList,
@@ -583,7 +577,7 @@ export interface RemoteInfoRequest {
   /** Specify a file by providing its ID. */
   file?: string;
 }
-export const RemoteInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.optional(S.String.pipe(T.Query())),
     file: S.optional(S.String.pipe(T.Query())),
@@ -591,14 +585,12 @@ export const RemoteInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoteInfoRequest" }) as any as S.Schema<RemoteInfoRequest>;
 
 export type RemoteInfoResponseFile = ListFilesResponseFilesItem;
-export const RemoteInfoResponseFile = ListFilesResponseFilesItem;
-
 export interface RemoteInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   file: ListFilesResponseFilesItem;
 }
-export const RemoteInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     file: ListFilesResponseFilesItem,
@@ -611,7 +603,7 @@ export interface RemoveRemoteRequest {
   /** Specify a file by providing its ID. */
   file?: string;
 }
-export const RemoveRemoteRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveRemoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.optional(S.String),
     file: S.optional(S.String),
@@ -629,13 +621,13 @@ export interface RemoveRemoteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const RemoveRemoteResponse = DeleteCommentResponse as any as S.Schema<RemoveRemoteResponse>;
+const RemoveRemoteResponse = DeleteCommentResponse as any as S.Schema<RemoveRemoteResponse>;
 
 export interface RevokePublicURLRequest {
   /** File to revoke */
   file: string;
 }
-export const RevokePublicURLRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokePublicURLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/files.revokePublicURL", code: 200 })),
@@ -646,7 +638,7 @@ export interface RevokePublicURLResponseFile {
   created?: number;
   user?: string;
 }
-export const RevokePublicURLResponseFile = /*@__PURE__*/ S.suspend(() =>
+const RevokePublicURLResponseFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created: S.optional(S.Number),
@@ -661,7 +653,7 @@ export interface RevokePublicURLResponse {
   ok: boolean;
   file: RevokePublicURLResponseFile;
 }
-export const RevokePublicURLResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokePublicURLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     file: RevokePublicURLResponseFile,
@@ -672,25 +664,20 @@ export interface SharedPublicURLRequest {
   /** File to share */
   file: string;
 }
-export const SharedPublicURLRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedPublicURLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/files.sharedPublicURL", code: 200 })),
 ).annotate({ identifier: "SharedPublicURLRequest" }) as any as S.Schema<SharedPublicURLRequest>;
 
 export type SharedPublicURLResponseFile = RevokePublicURLResponseFile;
-export const SharedPublicURLResponseFile = RevokePublicURLResponseFile;
-
 export type SharedPublicURLResponseCommentItemMap = { [key: string]: unknown | undefined };
-export const SharedPublicURLResponseCommentItemMap =
-  AddRemoteResponseFileSharesMap as any as S.Schema<SharedPublicURLResponseCommentItemMap>;
-
 export type SharedPublicURLResponseCommentList = Array<SharedPublicURLResponseCommentItemMap>;
-export const SharedPublicURLResponseCommentList =
+const SharedPublicURLResponseCommentList =
   CompleteUploadExternalRequestBlocksCase1List as any as S.Schema<SharedPublicURLResponseCommentList>;
 
 export type SharedPublicURLResponsePagingMap = { [key: string]: unknown | undefined };
-export const SharedPublicURLResponsePagingMap =
+const SharedPublicURLResponsePagingMap =
   AddRemoteResponseFileSharesMap as any as S.Schema<SharedPublicURLResponsePagingMap>;
 
 export interface SharedPublicURLResponse {
@@ -700,7 +687,7 @@ export interface SharedPublicURLResponse {
   comment?: SharedPublicURLResponseCommentList;
   paging?: SharedPublicURLResponsePagingMap;
 }
-export const SharedPublicURLResponse = /*@__PURE__*/ S.suspend(() =>
+const SharedPublicURLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     file: RevokePublicURLResponseFile,
@@ -717,7 +704,7 @@ export interface ShareRemoteRequest {
   /** Specify a file registered with Slack by providing its ID. Either this field or `external_id` or both are required. */
   file?: string;
 }
-export const ShareRemoteRequest = /*@__PURE__*/ S.suspend(() =>
+const ShareRemoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.String.pipe(T.Query()),
     external_id: S.optional(S.String.pipe(T.Query())),
@@ -726,14 +713,12 @@ export const ShareRemoteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ShareRemoteRequest" }) as any as S.Schema<ShareRemoteRequest>;
 
 export type ShareRemoteResponseFile = ListRemoteResponseFilesItem;
-export const ShareRemoteResponseFile = ListRemoteResponseFilesItem;
-
 export interface ShareRemoteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   file?: ListRemoteResponseFilesItem;
 }
-export const ShareRemoteResponse = /*@__PURE__*/ S.suspend(() =>
+const ShareRemoteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     file: S.optional(ListRemoteResponseFilesItem),
@@ -756,7 +741,7 @@ export interface UpdateRemoteRequest {
   /** Title of the file being shared. */
   title?: string;
 }
-export const UpdateRemoteRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRemoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.optional(S.String),
     external_url: S.optional(S.String),
@@ -776,14 +761,12 @@ export const UpdateRemoteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRemoteRequest" }) as any as S.Schema<UpdateRemoteRequest>;
 
 export type UpdateRemoteResponseFile = ListRemoteResponseFilesItem;
-export const UpdateRemoteResponseFile = ListRemoteResponseFilesItem;
-
 export interface UpdateRemoteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   file?: ListRemoteResponseFilesItem;
 }
-export const UpdateRemoteResponse = ShareRemoteResponse as any as S.Schema<UpdateRemoteResponse>;
+const UpdateRemoteResponse = ShareRemoteResponse as any as S.Schema<UpdateRemoteResponse>;
 
 export interface UploadFileRequest {
   /** Comma-separated list of channel names or IDs where the file will be shared. */
@@ -803,7 +786,7 @@ export interface UploadFileRequest {
   /** Title of file. */
   title?: string;
 }
-export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.optional(S.String),
     content: S.optional(S.String),
@@ -819,14 +802,12 @@ export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadFileRequest" }) as any as S.Schema<UploadFileRequest>;
 
 export type UploadFileResponseFile = RevokePublicURLResponseFile;
-export const UploadFileResponseFile = RevokePublicURLResponseFile;
-
 export interface UploadFileResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   file: RevokePublicURLResponseFile;
 }
-export const UploadFileResponse = RevokePublicURLResponse as any as S.Schema<UploadFileResponse>;
+const UploadFileResponse = RevokePublicURLResponse as any as S.Schema<UploadFileResponse>;
 
 export type AddRemoteError = SlackOpError;
 /** Adds a file from a remote service Required scopes -- bot: `remote_files:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_image` -- The uploaded image could not be processed - try passing a JPG or PNG - `bad_title` -- The title provided is too long. - `bot_user_required` -- bot user token is required - `invalid_external_id` -- The external_id provided is too long. - `too_large` -- The uploaded image had excessive dimensions See https://docs.slack.dev/reference/methods/files.remote.add */

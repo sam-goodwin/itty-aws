@@ -74,7 +74,7 @@ export interface Tag {
   /** A time value of the tag. */
   timeValue?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringValue: S.optional(S.String),
     int64Value: S.optional(S.String),
@@ -85,14 +85,14 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = Array<Tag>;
-export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
+const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** Request message for CreateOrUpdateTags. VerifyToken. */
 export interface CreateOrUpdateTagsRequest {
   /** Tags to be inserted or updated. */
   tags?: TagList;
 }
-export const CreateOrUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(TagList),
   }),
@@ -108,7 +108,7 @@ export interface CreateOrUpdateAppsTokensTagsRequest {
   /** Request body */
   body?: CreateOrUpdateTagsRequest;
 }
-export const CreateOrUpdateAppsTokensTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateAppsTokensTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appPackage: S.String.pipe(T.Label()),
     token: S.String.pipe(T.Label()),
@@ -129,7 +129,7 @@ export interface CreateOrUpdateTagsResponse {
   /** All requested tags are returned, including pre-existing ones. */
   tags?: TagList;
 }
-export const CreateOrUpdateTagsResponse =
+const CreateOrUpdateTagsResponse =
   CreateOrUpdateTagsRequest as any as S.Schema<CreateOrUpdateTagsResponse>;
 
 /** Request message for VerifyToken. */
@@ -137,7 +137,7 @@ export interface VerifyTokenRequest {
   /** Required. Persona represented by the token. Format: personas/{persona} */
   persona?: string;
 }
-export const VerifyTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     persona: S.optional(S.String),
   }),
@@ -151,7 +151,7 @@ export interface VerifyAppsTokensRequest {
   /** Request body */
   body?: VerifyTokenRequest;
 }
-export const VerifyAppsTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyAppsTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     appPackage: S.String.pipe(T.Label()),
@@ -167,7 +167,7 @@ export const VerifyAppsTokensRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for VerifyToken. */
 export interface VerifyTokenResponse {}
-export const VerifyTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const VerifyTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "VerifyTokenResponse",
 }) as any as S.Schema<VerifyTokenResponse>;
 

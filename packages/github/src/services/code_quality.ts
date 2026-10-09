@@ -52,7 +52,7 @@ export interface GetFindingRequest {
   /** The number that identifies a finding. */
   finding_number: number;
 }
-export const GetFindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -68,15 +68,15 @@ export const GetFindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** State of the code quality finding. */
 export type CodeQualityFindingState = "open" | "dismissed";
-export const CodeQualityFindingState = S.String;
+const CodeQualityFindingState = S.String;
 
 /** The severity of the rule used to detect the finding. */
 export type CodeQualityFindingRuleSeverity = "error" | "warning" | "note" | "none";
-export const CodeQualityFindingRuleSeverity = S.String;
+const CodeQualityFindingRuleSeverity = S.String;
 
 /** The category of the rule used to detect the finding. */
 export type CodeQualityFindingRuleCategory = "none" | "maintainability" | "reliability";
-export const CodeQualityFindingRuleCategory = S.String;
+const CodeQualityFindingRuleCategory = S.String;
 
 /** Code quality rule */
 export interface CodeQualityFindingRule {
@@ -93,7 +93,7 @@ export interface CodeQualityFindingRule {
   /** The category of the rule used to detect the finding. */
   category: CodeQualityFindingRuleCategory;
 }
-export const CodeQualityFindingRule = /*@__PURE__*/ S.suspend(() =>
+const CodeQualityFindingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -117,7 +117,7 @@ export interface CodeQualityFindingLocation {
   /** The column number where the finding ends. */
   end_column?: number;
 }
-export const CodeQualityFindingLocation = /*@__PURE__*/ S.suspend(() =>
+const CodeQualityFindingLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     start_line: S.optional(S.Number),
@@ -136,7 +136,7 @@ export interface CodeQualityFindingMessage {
   /** The message text of the code quality finding in markdown format. */
   markdown: string;
 }
-export const CodeQualityFindingMessage = /*@__PURE__*/ S.suspend(() =>
+const CodeQualityFindingMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.String,
     markdown: S.String,
@@ -159,7 +159,7 @@ export interface CodeQualityFinding {
   /** The time the code quality finding was created. */
   created_at?: string;
 }
-export const CodeQualityFinding = /*@__PURE__*/ S.suspend(() =>
+const CodeQualityFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     state: CodeQualityFindingState,
@@ -177,7 +177,7 @@ export interface GetSetupRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -186,7 +186,7 @@ export const GetSetupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Code quality setup has been configured or not. */
 export type CodeQualitySetupState = "configured" | "not-configured";
-export const CodeQualitySetupState = S.String;
+const CodeQualitySetupState = S.String;
 
 export type CodeQualitySetupLanguagesItem =
   | "csharp"
@@ -196,25 +196,25 @@ export type CodeQualitySetupLanguagesItem =
   | "python"
   | "ruby"
   | "rust";
-export const CodeQualitySetupLanguagesItem = S.String;
+const CodeQualitySetupLanguagesItem = S.String;
 
 /** Languages to be analyzed. */
 export type CodeQualitySetupLanguagesList = Array<CodeQualitySetupLanguagesItem>;
-export const CodeQualitySetupLanguagesList = /*@__PURE__*/ S.Array(
+const CodeQualitySetupLanguagesList = /*@__PURE__*/ S.Array(
   CodeQualitySetupLanguagesItem,
 ) as any as S.Schema<CodeQualitySetupLanguagesList>;
 
 /** Runner type to be used. */
 export type CodeQualitySetupRunnerType = "standard" | "labeled";
-export const CodeQualitySetupRunnerType = S.String;
+const CodeQualitySetupRunnerType = S.String;
 
 /** The frequency of the periodic analysis. */
 export type CodeQualitySetupSchedule = "weekly";
-export const CodeQualitySetupSchedule = S.String;
+const CodeQualitySetupSchedule = S.String;
 
 /** The AI findings configuration for the repository. */
 export type CodeQualitySetupAiFindingsOption = "disabled" | "on_push";
-export const CodeQualitySetupAiFindingsOption = S.String;
+const CodeQualitySetupAiFindingsOption = S.String;
 
 /** Configuration for code quality setup. */
 export interface CodeQualitySetup {
@@ -233,7 +233,7 @@ export interface CodeQualitySetup {
   /** The AI findings configuration for the repository. */
   ai_findings_option?: CodeQualitySetupAiFindingsOption | null;
 }
-export const CodeQualitySetup = /*@__PURE__*/ S.suspend(() =>
+const CodeQualitySetup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(CodeQualitySetupState),
     languages: S.optional(CodeQualitySetupLanguagesList),
@@ -246,10 +246,10 @@ export const CodeQualitySetup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeQualitySetup" }) as any as S.Schema<CodeQualitySetup>;
 
 export type ListFindingsForRepoRequestDirection = "asc" | "desc";
-export const ListFindingsForRepoRequestDirection = S.String;
+const ListFindingsForRepoRequestDirection = S.String;
 
 export type ListFindingsForRepoRequestState = "open" | "dismissed";
-export const ListFindingsForRepoRequestState = S.String;
+const ListFindingsForRepoRequestState = S.String;
 
 export interface ListFindingsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -267,7 +267,7 @@ export interface ListFindingsForRepoRequest {
   /** If specified, only code quality findings with this state will be returned. */
   state?: ListFindingsForRepoRequestState | (string & {});
 }
-export const ListFindingsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -282,12 +282,12 @@ export const ListFindingsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFindingsForRepoRequest>;
 
 export type ListFindingsForRepoResponseBodyList = Array<CodeQualityFinding>;
-export const ListFindingsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFindingsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
   CodeQualityFinding,
 ) as any as S.Schema<ListFindingsForRepoResponseBodyList>;
 
 export type ListFindingsForRepoResponse = ListFindingsForRepoResponseBodyList;
-export const ListFindingsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   ListFindingsForRepoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFindingsForRepoResponse",
@@ -295,11 +295,11 @@ export const ListFindingsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The desired state of code quality setup. */
 export type UpdateSetupRequestState = "configured" | "not-configured";
-export const UpdateSetupRequestState = S.String;
+const UpdateSetupRequestState = S.String;
 
 /** Runner type to be used. */
 export type UpdateSetupRequestRunnerType = "standard" | "labeled";
-export const UpdateSetupRequestRunnerType = S.String;
+const UpdateSetupRequestRunnerType = S.String;
 
 export type UpdateSetupRequestLanguagesItem =
   | "csharp"
@@ -308,18 +308,16 @@ export type UpdateSetupRequestLanguagesItem =
   | "javascript-typescript"
   | "python"
   | "ruby";
-export const UpdateSetupRequestLanguagesItem = S.String;
-
 /** Languages to be analyzed. */
 export type UpdateSetupRequestLanguagesList = Array<
   UpdateSetupRequestLanguagesItem | (string & {})
 >;
-export const UpdateSetupRequestLanguagesList =
+const UpdateSetupRequestLanguagesList =
   CodeQualitySetupLanguagesList as any as S.Schema<UpdateSetupRequestLanguagesList>;
 
 /** Whether AI findings run for Code Quality on this repository. */
 export type UpdateSetupRequestAiFindingsOption = "disabled" | "on_push";
-export const UpdateSetupRequestAiFindingsOption = S.String;
+const UpdateSetupRequestAiFindingsOption = S.String;
 
 export interface UpdateSetupRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -337,7 +335,7 @@ export interface UpdateSetupRequest {
   /** Whether AI findings run for Code Quality on this repository. */
   ai_findings_option?: UpdateSetupRequestAiFindingsOption | (string & {});
 }
-export const UpdateSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -350,7 +348,7 @@ export const UpdateSetupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSetupRequest" }) as any as S.Schema<UpdateSetupRequest>;
 
 export type UpdateSetupResponse = unknown;
-export const UpdateSetupResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateSetupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UpdateSetupResponse" }) as any as S.Schema<UpdateSetupResponse>;
 

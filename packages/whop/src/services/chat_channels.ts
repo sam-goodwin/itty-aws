@@ -49,7 +49,7 @@ export interface GetChatChannelRequest {
   /** The unique identifier of the chat channel or experience to retrieve. */
   id: string;
 }
-export const GetChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/chat_channels/{id}", code: 200 })),
@@ -57,7 +57,7 @@ export const GetChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of words that are automatically filtered from messages in this chat. Empty unless the caller has permission to moderate this chat. */
 export type ChatChannelBannedWordsList = Array<string>;
-export const ChatChannelBannedWordsList = /*@__PURE__*/ S.Array(
+const ChatChannelBannedWordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChatChannelBannedWordsList>;
 
@@ -68,7 +68,7 @@ export interface ChatChannelExperience {
   /** The display name of this experience shown to users in the product navigation. Maximum 255 characters. */
   name: string;
 }
-export const ChatChannelExperience = /*@__PURE__*/ S.suspend(() =>
+const ChatChannelExperience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -77,11 +77,11 @@ export const ChatChannelExperience = /*@__PURE__*/ S.suspend(() =>
 
 /** Who can post on a chat feed */
 export type WhoCanPostTypes = "everyone" | "admins";
-export const WhoCanPostTypes = S.String;
+const WhoCanPostTypes = S.String;
 
 /** Who can react on a chat feed */
 export type WhoCanReactTypes = "everyone" | "no_one";
-export const WhoCanReactTypes = S.String;
+const WhoCanReactTypes = S.String;
 
 /** A real-time chat feed attached to an experience, with configurable moderation and posting permissions. */
 export interface ChatChannel {
@@ -102,7 +102,7 @@ export interface ChatChannel {
   /** The permission level controlling which users can add reactions in this chat. */
   who_can_react: WhoCanReactTypes;
 }
-export const ChatChannel = /*@__PURE__*/ S.suspend(() =>
+const ChatChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ban_media: S.Boolean,
     ban_urls: S.Boolean,
@@ -123,7 +123,7 @@ export interface ListChatChannelRequest {
   product_id?: string;
   account_id: string;
 }
-export const ListChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -136,13 +136,8 @@ export const ListChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of words that are automatically filtered from messages in this chat. Empty unless the caller has permission to moderate this chat. */
 export type ChatChannelListItemBannedWordsList = Array<string>;
-export const ChatChannelListItemBannedWordsList =
-  ChatChannelBannedWordsList as any as S.Schema<ChatChannelListItemBannedWordsList>;
-
 /** The experience this chat feed is attached to. */
 export type ChatChannelListItemExperience = ChatChannelExperience;
-export const ChatChannelListItemExperience = ChatChannelExperience;
-
 /** A real-time chat feed attached to an experience, with configurable moderation and posting permissions. */
 export interface ChatChannelListItem {
   /** Whether media uploads such as images and videos are blocked in this chat. */
@@ -162,11 +157,11 @@ export interface ChatChannelListItem {
   /** The permission level controlling which users can add reactions in this chat. */
   who_can_react: WhoCanReactTypes;
 }
-export const ChatChannelListItem = ChatChannel as any as S.Schema<ChatChannelListItem>;
+const ChatChannelListItem = ChatChannel as any as S.Schema<ChatChannelListItem>;
 
 /** A list of nodes. */
 export type ListChatChannelResponseDataList = Array<ChatChannelListItem>;
-export const ListChatChannelResponseDataList = /*@__PURE__*/ S.Array(
+const ListChatChannelResponseDataList = /*@__PURE__*/ S.Array(
   ChatChannelListItem,
 ) as any as S.Schema<ListChatChannelResponseDataList>;
 
@@ -181,7 +176,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -196,7 +191,7 @@ export interface ListChatChannelResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListChatChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChatChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListChatChannelResponseDataList,
     page_info: PageInfo,
@@ -205,7 +200,7 @@ export const ListChatChannelResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of words that are automatically blocked from messages in this chat channel. For example, ['spam', 'scam']. */
 export type UpdateChatChannelRequestBannedWordsList = Array<string>;
-export const UpdateChatChannelRequestBannedWordsList =
+const UpdateChatChannelRequestBannedWordsList =
   ChatChannelBannedWordsList as any as S.Schema<UpdateChatChannelRequestBannedWordsList>;
 
 export interface UpdateChatChannelRequest {
@@ -224,7 +219,7 @@ export interface UpdateChatChannelRequest {
   /** Controls which roles are allowed to add reactions to messages in this chat channel. */
   who_can_react?: WhoCanReactTypes | (string & {}) | null;
 }
-export const UpdateChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChatChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     ban_media: S.optional(S.NullOr(S.Boolean)),

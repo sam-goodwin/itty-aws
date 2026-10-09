@@ -46,28 +46,28 @@ export class WidgetNotFound
   ) {}
 
 export type WidgetsCreateRequestDirection = "asc" | "desc";
-export const WidgetsCreateRequestDirection = S.String;
+const WidgetsCreateRequestDirection = S.String;
 
 export type WidgetsCreateRequestOrder = "id" | "sitekey" | "name" | "created_on" | "modified_on";
-export const WidgetsCreateRequestOrder = S.String;
+const WidgetsCreateRequestOrder = S.String;
 
 export type WidgetsCreateRequestDomainsList = Array<string>;
-export const WidgetsCreateRequestDomainsList = /*@__PURE__*/ S.Array(
+const WidgetsCreateRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetsCreateRequestDomainsList>;
 
 export type WidgetsCreateRequestMode = "non-interactive" | "invisible" | "managed";
-export const WidgetsCreateRequestMode = S.String;
+const WidgetsCreateRequestMode = S.String;
 
 export type WidgetsCreateRequestClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-export const WidgetsCreateRequestClearanceLevel = S.String;
+const WidgetsCreateRequestClearanceLevel = S.String;
 
 export type WidgetsCreateRequestRegion = "world" | "china";
-export const WidgetsCreateRequestRegion = S.String;
+const WidgetsCreateRequestRegion = S.String;
 
 export interface CreateWidgetRequest {
   /** Identifier */
@@ -98,7 +98,7 @@ export interface CreateWidgetRequest {
   /** Region where this widget can be used. This cannot be changed after creation. */
   region?: WidgetsCreateRequestRegion | (string & {});
 }
-export const CreateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(WidgetsCreateRequestDirection.pipe(T.Query())),
@@ -124,17 +124,17 @@ export type WidgetsCreateResponseClearanceLevel =
   | "jschallenge"
   | "managed"
   | "interactive";
-export const WidgetsCreateResponseClearanceLevel = S.String;
+const WidgetsCreateResponseClearanceLevel = S.String;
 
 export type WidgetsCreateResponseDomainsList = Array<string>;
-export const WidgetsCreateResponseDomainsList =
+const WidgetsCreateResponseDomainsList =
   WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsCreateResponseDomainsList>;
 
 export type WidgetsCreateResponseMode = "non-interactive" | "invisible" | "managed";
-export const WidgetsCreateResponseMode = S.String;
+const WidgetsCreateResponseMode = S.String;
 
 export type WidgetsCreateResponseRegion = "world" | "china";
-export const WidgetsCreateResponseRegion = S.String;
+const WidgetsCreateResponseRegion = S.String;
 
 export type WidgetsCreateResponseDeployedVia =
   | "wrangler"
@@ -142,7 +142,7 @@ export type WidgetsCreateResponseDeployedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsCreateResponseDeployedVia = S.String;
+const WidgetsCreateResponseDeployedVia = S.String;
 
 export type WidgetsCreateResponseLastModifiedVia =
   | "wrangler"
@@ -150,7 +150,7 @@ export type WidgetsCreateResponseLastModifiedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsCreateResponseLastModifiedVia = S.String;
+const WidgetsCreateResponseLastModifiedVia = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateWidgetResponse {
@@ -182,7 +182,7 @@ export interface CreateWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsCreateResponseLastModifiedVia | null;
 }
-export const CreateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsCreateResponseClearanceLevel.pipe(T.Body("clearance_level")),
@@ -211,7 +211,7 @@ export interface DeleteWidgetRequest {
   /** Unique identifier for a Turnstile widget. */
   sitekey: string;
 }
-export const DeleteWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
@@ -231,17 +231,17 @@ export type WidgetsDeleteResponseClearanceLevel =
   | "jschallenge"
   | "managed"
   | "interactive";
-export const WidgetsDeleteResponseClearanceLevel = S.String;
+const WidgetsDeleteResponseClearanceLevel = S.String;
 
 export type WidgetsDeleteResponseDomainsList = Array<string>;
-export const WidgetsDeleteResponseDomainsList =
+const WidgetsDeleteResponseDomainsList =
   WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsDeleteResponseDomainsList>;
 
 export type WidgetsDeleteResponseMode = "non-interactive" | "invisible" | "managed";
-export const WidgetsDeleteResponseMode = S.String;
+const WidgetsDeleteResponseMode = S.String;
 
 export type WidgetsDeleteResponseRegion = "world" | "china";
-export const WidgetsDeleteResponseRegion = S.String;
+const WidgetsDeleteResponseRegion = S.String;
 
 export type WidgetsDeleteResponseDeployedVia =
   | "wrangler"
@@ -249,7 +249,7 @@ export type WidgetsDeleteResponseDeployedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsDeleteResponseDeployedVia = S.String;
+const WidgetsDeleteResponseDeployedVia = S.String;
 
 export type WidgetsDeleteResponseLastModifiedVia =
   | "wrangler"
@@ -257,7 +257,7 @@ export type WidgetsDeleteResponseLastModifiedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsDeleteResponseLastModifiedVia = S.String;
+const WidgetsDeleteResponseLastModifiedVia = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteWidgetResponse {
@@ -289,7 +289,7 @@ export interface DeleteWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsDeleteResponseLastModifiedVia | null;
 }
-export const DeleteWidgetResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsDeleteResponseClearanceLevel.pipe(T.Body("clearance_level")),
@@ -318,7 +318,7 @@ export interface GetWidgetRequest {
   /** Unique identifier for a Turnstile widget. */
   sitekey: string;
 }
-export const GetWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
@@ -338,20 +338,20 @@ export type WidgetsGetResponseClearanceLevel =
   | "jschallenge"
   | "managed"
   | "interactive";
-export const WidgetsGetResponseClearanceLevel = S.String;
+const WidgetsGetResponseClearanceLevel = S.String;
 
 export type WidgetsGetResponseDomainsList = Array<string>;
-export const WidgetsGetResponseDomainsList =
+const WidgetsGetResponseDomainsList =
   WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsGetResponseDomainsList>;
 
 export type WidgetsGetResponseMode = "non-interactive" | "invisible" | "managed";
-export const WidgetsGetResponseMode = S.String;
+const WidgetsGetResponseMode = S.String;
 
 export type WidgetsGetResponseRegion = "world" | "china";
-export const WidgetsGetResponseRegion = S.String;
+const WidgetsGetResponseRegion = S.String;
 
 export type WidgetsGetResponseDeployedVia = "wrangler" | "dashboard" | "spin" | "api" | "unknown";
-export const WidgetsGetResponseDeployedVia = S.String;
+const WidgetsGetResponseDeployedVia = S.String;
 
 export type WidgetsGetResponseLastModifiedVia =
   | "wrangler"
@@ -359,7 +359,7 @@ export type WidgetsGetResponseLastModifiedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsGetResponseLastModifiedVia = S.String;
+const WidgetsGetResponseLastModifiedVia = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWidgetResponse {
@@ -391,7 +391,7 @@ export interface GetWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsGetResponseLastModifiedVia | null;
 }
-export const GetWidgetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsGetResponseClearanceLevel.pipe(T.Body("clearance_level")),
@@ -413,10 +413,10 @@ export const GetWidgetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWidgetResponse" }) as any as S.Schema<GetWidgetResponse>;
 
 export type WidgetsListRequestDirection = "asc" | "desc";
-export const WidgetsListRequestDirection = S.String;
+const WidgetsListRequestDirection = S.String;
 
 export type WidgetsListRequestOrder = "id" | "sitekey" | "name" | "created_on" | "modified_on";
-export const WidgetsListRequestOrder = S.String;
+const WidgetsListRequestOrder = S.String;
 
 export interface ListWidgetsRequest {
   /** Identifier */
@@ -432,7 +432,7 @@ export interface ListWidgetsRequest {
   /** Number of items per page. */
   perPage?: number;
 }
-export const ListWidgetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWidgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(WidgetsListRequestDirection.pipe(T.Query())),
@@ -450,17 +450,17 @@ export type WidgetsListResultItemClearanceLevel =
   | "jschallenge"
   | "managed"
   | "interactive";
-export const WidgetsListResultItemClearanceLevel = S.String;
+const WidgetsListResultItemClearanceLevel = S.String;
 
 export type WidgetsListResultItemDomainsList = Array<string>;
-export const WidgetsListResultItemDomainsList =
+const WidgetsListResultItemDomainsList =
   WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsListResultItemDomainsList>;
 
 export type WidgetsListResultItemMode = "non-interactive" | "invisible" | "managed";
-export const WidgetsListResultItemMode = S.String;
+const WidgetsListResultItemMode = S.String;
 
 export type WidgetsListResultItemRegion = "world" | "china";
-export const WidgetsListResultItemRegion = S.String;
+const WidgetsListResultItemRegion = S.String;
 
 export type WidgetsListResultItemDeployedVia =
   | "wrangler"
@@ -468,7 +468,7 @@ export type WidgetsListResultItemDeployedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsListResultItemDeployedVia = S.String;
+const WidgetsListResultItemDeployedVia = S.String;
 
 export type WidgetsListResultItemLastModifiedVia =
   | "wrangler"
@@ -476,7 +476,7 @@ export type WidgetsListResultItemLastModifiedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsListResultItemLastModifiedVia = S.String;
+const WidgetsListResultItemLastModifiedVia = S.String;
 
 export interface WidgetsListResultItem {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -505,7 +505,7 @@ export interface WidgetsListResultItem {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsListResultItemLastModifiedVia | null;
 }
-export const WidgetsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const WidgetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsListResultItemClearanceLevel.pipe(T.Body("clearance_level")),
@@ -528,7 +528,7 @@ export const WidgetsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WidgetsListResultItem" }) as any as S.Schema<WidgetsListResultItem>;
 
 export type WidgetsListResultList = Array<WidgetsListResultItem>;
-export const WidgetsListResultList = /*@__PURE__*/ S.Array(
+const WidgetsListResultList = /*@__PURE__*/ S.Array(
   WidgetsListResultItem,
 ) as any as S.Schema<WidgetsListResultList>;
 
@@ -538,7 +538,7 @@ export interface ListWidgetsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListWidgetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWidgetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: WidgetsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -553,7 +553,7 @@ export interface RotateSecretWidgetRequest {
   /** If `invalidate_immediately` is set to `false`, the previous secret will remain valid for two hours. Otherwise, the secret is immediately invalidated, and requests using it will be rejected. */
   invalidateImmediately?: boolean;
 }
-export const RotateSecretWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateSecretWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
@@ -576,17 +576,17 @@ export type WidgetsRotateSecretResponseClearanceLevel =
   | "jschallenge"
   | "managed"
   | "interactive";
-export const WidgetsRotateSecretResponseClearanceLevel = S.String;
+const WidgetsRotateSecretResponseClearanceLevel = S.String;
 
 export type WidgetsRotateSecretResponseDomainsList = Array<string>;
-export const WidgetsRotateSecretResponseDomainsList =
+const WidgetsRotateSecretResponseDomainsList =
   WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsRotateSecretResponseDomainsList>;
 
 export type WidgetsRotateSecretResponseMode = "non-interactive" | "invisible" | "managed";
-export const WidgetsRotateSecretResponseMode = S.String;
+const WidgetsRotateSecretResponseMode = S.String;
 
 export type WidgetsRotateSecretResponseRegion = "world" | "china";
-export const WidgetsRotateSecretResponseRegion = S.String;
+const WidgetsRotateSecretResponseRegion = S.String;
 
 export type WidgetsRotateSecretResponseDeployedVia =
   | "wrangler"
@@ -594,7 +594,7 @@ export type WidgetsRotateSecretResponseDeployedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsRotateSecretResponseDeployedVia = S.String;
+const WidgetsRotateSecretResponseDeployedVia = S.String;
 
 export type WidgetsRotateSecretResponseLastModifiedVia =
   | "wrangler"
@@ -602,7 +602,7 @@ export type WidgetsRotateSecretResponseLastModifiedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsRotateSecretResponseLastModifiedVia = S.String;
+const WidgetsRotateSecretResponseLastModifiedVia = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RotateSecretWidgetResponse {
@@ -634,7 +634,7 @@ export interface RotateSecretWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsRotateSecretResponseLastModifiedVia | null;
 }
-export const RotateSecretWidgetResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateSecretWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsRotateSecretResponseClearanceLevel.pipe(T.Body("clearance_level")),
@@ -660,21 +660,21 @@ export const RotateSecretWidgetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RotateSecretWidgetResponse>;
 
 export type WidgetsUpdateRequestDomainsList = Array<string>;
-export const WidgetsUpdateRequestDomainsList =
+const WidgetsUpdateRequestDomainsList =
   WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsUpdateRequestDomainsList>;
 
 export type WidgetsUpdateRequestMode = "non-interactive" | "invisible" | "managed";
-export const WidgetsUpdateRequestMode = S.String;
+const WidgetsUpdateRequestMode = S.String;
 
 export type WidgetsUpdateRequestClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-export const WidgetsUpdateRequestClearanceLevel = S.String;
+const WidgetsUpdateRequestClearanceLevel = S.String;
 
 export type WidgetsUpdateRequestRegion = "world" | "china";
-export const WidgetsUpdateRequestRegion = S.String;
+const WidgetsUpdateRequestRegion = S.String;
 
 export interface UpdateWidgetRequest {
   /** Identifier */
@@ -697,7 +697,7 @@ export interface UpdateWidgetRequest {
   /** Region where this widget can be used. This cannot be changed after creation. */
   region?: WidgetsUpdateRequestRegion | (string & {});
 }
-export const UpdateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
@@ -725,17 +725,17 @@ export type WidgetsUpdateResponseClearanceLevel =
   | "jschallenge"
   | "managed"
   | "interactive";
-export const WidgetsUpdateResponseClearanceLevel = S.String;
+const WidgetsUpdateResponseClearanceLevel = S.String;
 
 export type WidgetsUpdateResponseDomainsList = Array<string>;
-export const WidgetsUpdateResponseDomainsList =
+const WidgetsUpdateResponseDomainsList =
   WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsUpdateResponseDomainsList>;
 
 export type WidgetsUpdateResponseMode = "non-interactive" | "invisible" | "managed";
-export const WidgetsUpdateResponseMode = S.String;
+const WidgetsUpdateResponseMode = S.String;
 
 export type WidgetsUpdateResponseRegion = "world" | "china";
-export const WidgetsUpdateResponseRegion = S.String;
+const WidgetsUpdateResponseRegion = S.String;
 
 export type WidgetsUpdateResponseDeployedVia =
   | "wrangler"
@@ -743,7 +743,7 @@ export type WidgetsUpdateResponseDeployedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsUpdateResponseDeployedVia = S.String;
+const WidgetsUpdateResponseDeployedVia = S.String;
 
 export type WidgetsUpdateResponseLastModifiedVia =
   | "wrangler"
@@ -751,7 +751,7 @@ export type WidgetsUpdateResponseLastModifiedVia =
   | "spin"
   | "api"
   | "unknown";
-export const WidgetsUpdateResponseLastModifiedVia = S.String;
+const WidgetsUpdateResponseLastModifiedVia = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateWidgetResponse {
@@ -783,7 +783,7 @@ export interface UpdateWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsUpdateResponseLastModifiedVia | null;
 }
-export const UpdateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsUpdateResponseClearanceLevel.pipe(T.Body("clearance_level")),

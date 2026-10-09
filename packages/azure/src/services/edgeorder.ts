@@ -18,7 +18,7 @@ export interface CancelOrderItemRequest {
   /** Reason for cancellation. */
   reason: string;
 }
-export const CancelOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -35,24 +35,24 @@ export const CancelOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelOrderItemRequest" }) as any as S.Schema<CancelOrderItemRequest>;
 
 export interface CancelOrderItemResponse {}
-export const CancelOrderItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOrderItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOrderItemResponse",
 }) as any as S.Schema<CancelOrderItemResponse>;
 
 /** Resource tags. */
 export type CreateAddressRequestTagsMap = { [key: string]: string | undefined };
-export const CreateAddressRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateAddressRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateAddressRequestTagsMap>;
 
 /** Type of address based on its usage context. */
 export type AddressClassification = "Shipping" | "Site";
-export const AddressClassification = S.String;
+const AddressClassification = S.String;
 
 /** Type of address. */
 export type AddressType = "None" | "Residential" | "Commercial";
-export const AddressType = S.String;
+const AddressType = S.String;
 
 /** Shipping address where customer wishes to receive the device. */
 export interface ShippingAddress {
@@ -77,7 +77,7 @@ export interface ShippingAddress {
   /** Type of address. */
   addressType?: AddressType | (string & {});
 }
-export const ShippingAddress = /*@__PURE__*/ S.suspend(() =>
+const ShippingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streetAddress1: S.optional(S.String),
     streetAddress2: S.optional(S.String),
@@ -94,7 +94,7 @@ export const ShippingAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Email-ids to be notified about job progress. */
 export type ContactDetailsEmailListList = Array<string>;
-export const ContactDetailsEmailListList = /*@__PURE__*/ S.Array(
+const ContactDetailsEmailListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactDetailsEmailListList>;
 
@@ -111,7 +111,7 @@ export interface ContactDetails {
   /** List of Email-ids to be notified about job progress. */
   emailList?: ContactDetailsEmailListList;
 }
-export const ContactDetails = /*@__PURE__*/ S.suspend(() =>
+const ContactDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactName: S.optional(S.String),
     phone: S.optional(S.String),
@@ -130,7 +130,7 @@ export interface AddressPropertiesInput {
   /** Contact details for the address. */
   contactDetails?: ContactDetails;
 }
-export const AddressPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AddressPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressClassification: S.optional(AddressClassification),
     shippingAddress: S.optional(ShippingAddress),
@@ -152,7 +152,7 @@ export interface CreateAddressRequest {
   /** Properties of an address. */
   properties: AddressPropertiesInput;
 }
-export const CreateAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -172,11 +172,11 @@ export const CreateAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -193,7 +193,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -206,16 +206,16 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAddressResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAddressResponseTagsMap =
+const CreateAddressResponseTagsMap =
   CreateAddressRequestTagsMap as any as S.Schema<CreateAddressResponseTagsMap>;
 
 /** Status of address validation. */
 export type AddressValidationStatus = "Valid" | "Invalid" | "Ambiguous";
-export const AddressValidationStatus = S.String;
+const AddressValidationStatus = S.String;
 
 /** Provisioning state */
 export type ProvisioningState = "Creating" | "Succeeded" | "Failed" | "Canceled";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Address Properties. */
 export interface AddressProperties {
@@ -230,7 +230,7 @@ export interface AddressProperties {
   /** Provisioning state */
   provisioningState?: ProvisioningState;
 }
-export const AddressProperties = /*@__PURE__*/ S.suspend(() =>
+const AddressProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressClassification: S.optional(AddressClassification),
     shippingAddress: S.optional(ShippingAddress),
@@ -256,7 +256,7 @@ export interface CreateAddressResponse {
   /** Properties of an address. */
   properties: AddressProperties;
 }
-export const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -270,12 +270,12 @@ export const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateOrderItemRequestTagsMap = { [key: string]: string | undefined };
-export const CreateOrderItemRequestTagsMap =
+const CreateOrderItemRequestTagsMap =
   CreateAddressRequestTagsMap as any as S.Schema<CreateOrderItemRequestTagsMap>;
 
 /** Describes product display information. */
 export interface DisplayInfoInput {}
-export const DisplayInfoInput = CancelOrderItemResponse as any as S.Schema<DisplayInfoInput>;
+const DisplayInfoInput = CancelOrderItemResponse as any as S.Schema<DisplayInfoInput>;
 
 /** Holds details about product hierarchy information. */
 export interface HierarchyInformation {
@@ -290,7 +290,7 @@ export interface HierarchyInformation {
   /** Represents Model Display Name. */
   configurationIdDisplayName?: string;
 }
-export const HierarchyInformation = /*@__PURE__*/ S.suspend(() =>
+const HierarchyInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productFamilyName: S.optional(S.String),
     productLineName: S.optional(S.String),
@@ -302,12 +302,10 @@ export const HierarchyInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Auto Provisioning Details. */
 export type AutoProvisioningStatus = "Enabled" | "Disabled";
-export const AutoProvisioningStatus = S.String;
+const AutoProvisioningStatus = S.String;
 
 /** Proof of possession details. */
 export type DevicePresenceVerificationDetailsInput = DisplayInfoInput;
-export const DevicePresenceVerificationDetailsInput = DisplayInfoInput;
-
 /** Details Related To Provision Resource. */
 export interface ProvisioningDetailsInput {
   /** Quantity of the devices. */
@@ -329,7 +327,7 @@ export interface ProvisioningDetailsInput {
   /** Proof of possession details. */
   devicePresenceVerification?: DisplayInfoInput;
 }
-export const ProvisioningDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.Number),
     provisioningArmId: S.optional(S.String),
@@ -345,7 +343,7 @@ export const ProvisioningDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List Provisioning Details for Devices in Additional Config. */
 export type AdditionalConfigurationInputProvisioningDetailsList = Array<ProvisioningDetailsInput>;
-export const AdditionalConfigurationInputProvisioningDetailsList = /*@__PURE__*/ S.Array(
+const AdditionalConfigurationInputProvisioningDetailsList = /*@__PURE__*/ S.Array(
   ProvisioningDetailsInput,
 ) as any as S.Schema<AdditionalConfigurationInputProvisioningDetailsList>;
 
@@ -358,7 +356,7 @@ export interface AdditionalConfigurationInput {
   /** List Provisioning Details for Devices in Additional Config. */
   provisioningDetails?: AdditionalConfigurationInputProvisioningDetailsList;
 }
-export const AdditionalConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const AdditionalConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hierarchyInformation: HierarchyInformation,
     quantity: S.Number,
@@ -371,7 +369,7 @@ export const AdditionalConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 /** List of additional configurations customer wants in the order item apart from the ones included in the base configuration. */
 export type ProductDetailsInputOptInAdditionalConfigurationsList =
   Array<AdditionalConfigurationInput>;
-export const ProductDetailsInputOptInAdditionalConfigurationsList = /*@__PURE__*/ S.Array(
+const ProductDetailsInputOptInAdditionalConfigurationsList = /*@__PURE__*/ S.Array(
   AdditionalConfigurationInput,
 ) as any as S.Schema<ProductDetailsInputOptInAdditionalConfigurationsList>;
 
@@ -386,7 +384,7 @@ export interface ProductDetailsInput {
   /** List of additional configurations customer wants in the order item apart from the ones included in the base configuration. */
   optInAdditionalConfigurations?: ProductDetailsInputOptInAdditionalConfigurationsList;
 }
-export const ProductDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const ProductDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayInfo: S.optional(DisplayInfoInput),
     hierarchyInformation: HierarchyInformation,
@@ -397,18 +395,18 @@ export const ProductDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Order item type. */
 export type OrderItemType = "Purchase" | "Rental" | "External";
-export const OrderItemType = S.String;
+const OrderItemType = S.String;
 
 /** Defines the mode of the Order item. */
 export type OrderMode = "Default" | "DoNotFulfill";
-export const OrderMode = S.String;
+const OrderMode = S.String;
 
 /** Represents Site Related Details. */
 export interface SiteDetails {
   /** Unique Id, Identifying A Site. */
   siteId: string;
 }
-export const SiteDetails = /*@__PURE__*/ S.suspend(() =>
+const SiteDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteId: S.String,
   }),
@@ -416,7 +414,7 @@ export const SiteDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Name of the stage. */
 export type NotificationStageName = "Shipped" | "Delivered";
-export const NotificationStageName = S.String;
+const NotificationStageName = S.String;
 
 /** Notification preference for a job stage. */
 export interface NotificationPreference {
@@ -425,7 +423,7 @@ export interface NotificationPreference {
   /** Notification is required or not. */
   sendNotification: boolean;
 }
-export const NotificationPreference = /*@__PURE__*/ S.suspend(() =>
+const NotificationPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stageName: NotificationStageName,
     sendNotification: S.Boolean,
@@ -434,20 +432,20 @@ export const NotificationPreference = /*@__PURE__*/ S.suspend(() =>
 
 /** Notification preferences. */
 export type PreferencesNotificationPreferencesList = Array<NotificationPreference>;
-export const PreferencesNotificationPreferencesList = /*@__PURE__*/ S.Array(
+const PreferencesNotificationPreferencesList = /*@__PURE__*/ S.Array(
   NotificationPreference,
 ) as any as S.Schema<PreferencesNotificationPreferencesList>;
 
 /** Indicates Shipment Logistics type that the customer preferred. */
 export type TransportShipmentTypes = "CustomerManaged" | "MicrosoftManaged";
-export const TransportShipmentTypes = S.String;
+const TransportShipmentTypes = S.String;
 
 /** Preferences related to the shipment logistics of the sku. */
 export interface TransportPreferences {
   /** Indicates Shipment Logistics type that the customer preferred. */
   preferredShipmentType: TransportShipmentTypes | (string & {});
 }
-export const TransportPreferences = /*@__PURE__*/ S.suspend(() =>
+const TransportPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferredShipmentType: TransportShipmentTypes,
   }),
@@ -455,14 +453,14 @@ export const TransportPreferences = /*@__PURE__*/ S.suspend(() =>
 
 /** Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured. */
 export type DoubleEncryptionStatus = "Disabled" | "Enabled";
-export const DoubleEncryptionStatus = S.String;
+const DoubleEncryptionStatus = S.String;
 
 /** Preferences related to the double encryption. */
 export interface EncryptionPreferences {
   /** Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured. */
   doubleEncryptionStatus?: DoubleEncryptionStatus | (string & {});
 }
-export const EncryptionPreferences = /*@__PURE__*/ S.suspend(() =>
+const EncryptionPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleEncryptionStatus: S.optional(DoubleEncryptionStatus),
   }),
@@ -473,7 +471,7 @@ export interface ManagementResourcePreferences {
   /** Customer preferred Management resource ARM ID. */
   preferredManagementResourceId?: string;
 }
-export const ManagementResourcePreferences = /*@__PURE__*/ S.suspend(() =>
+const ManagementResourcePreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferredManagementResourceId: S.optional(S.String),
   }),
@@ -483,7 +481,7 @@ export const ManagementResourcePreferences = /*@__PURE__*/ S.suspend(() =>
 
 /** Term Commitment Type */
 export type TermCommitmentType = "None" | "Trial" | "Timed";
-export const TermCommitmentType = S.String;
+const TermCommitmentType = S.String;
 
 /** Term Commitment preference received from customer. */
 export interface TermCommitmentPreferences {
@@ -492,7 +490,7 @@ export interface TermCommitmentPreferences {
   /** Customer preferred Term Duration. */
   preferredTermCommitmentDuration?: string;
 }
-export const TermCommitmentPreferences = /*@__PURE__*/ S.suspend(() =>
+const TermCommitmentPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferredTermCommitmentType: TermCommitmentType,
     preferredTermCommitmentDuration: S.optional(S.String),
@@ -514,7 +512,7 @@ export interface Preferences {
   /** Preferences related to the Term commitment. */
   termCommitmentPreferences?: TermCommitmentPreferences;
 }
-export const Preferences = /*@__PURE__*/ S.suspend(() =>
+const Preferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationPreferences: S.optional(PreferencesNotificationPreferencesList),
     transportPreferences: S.optional(TransportPreferences),
@@ -526,13 +524,11 @@ export const Preferences = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional notification email list. */
 export type OrderItemDetailsInputNotificationEmailListList = Array<string>;
-export const OrderItemDetailsInputNotificationEmailListList =
+const OrderItemDetailsInputNotificationEmailListList =
   ContactDetailsEmailListList as any as S.Schema<OrderItemDetailsInputNotificationEmailListList>;
 
 /** The error detail. */
 export type OrderItemDetailsInputError = DisplayInfoInput;
-export const OrderItemDetailsInputError = DisplayInfoInput;
-
 /** Order item details. */
 export interface OrderItemDetailsInput {
   /** Represents product details. */
@@ -550,7 +546,7 @@ export interface OrderItemDetailsInput {
   /** The error detail. */
   error?: DisplayInfoInput;
 }
-export const OrderItemDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const OrderItemDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productDetails: ProductDetailsInput,
     orderItemType: OrderItemType,
@@ -567,7 +563,7 @@ export interface AddressDetailsInput {
   /** Customer address and contact details. */
   forwardAddress: AddressPropertiesInput;
 }
-export const AddressDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const AddressDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardAddress: AddressPropertiesInput,
   }),
@@ -582,7 +578,7 @@ export interface OrderItemPropertiesInput {
   /** Id of the order to which order item belongs to. */
   orderId: string;
 }
-export const OrderItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const OrderItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderItemDetails: OrderItemDetailsInput,
     addressDetails: S.optional(AddressDetailsInput),
@@ -592,13 +588,11 @@ export const OrderItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export type ResourceIdentityInputUserAssignedIdentitiesValue = DisplayInfoInput;
-export const ResourceIdentityInputUserAssignedIdentitiesValue = DisplayInfoInput;
-
 /** User Assigned Identities */
 export type ResourceIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: DisplayInfoInput | undefined;
 };
-export const ResourceIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ResourceIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   DisplayInfoInput,
 ) as any as S.Schema<ResourceIdentityInputUserAssignedIdentitiesMap>;
@@ -610,7 +604,7 @@ export interface ResourceIdentityInput {
   /** User Assigned Identities */
   userAssignedIdentities?: ResourceIdentityInputUserAssignedIdentitiesMap;
 }
-export const ResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     userAssignedIdentities: S.optional(ResourceIdentityInputUserAssignedIdentitiesMap),
@@ -633,7 +627,7 @@ export interface CreateOrderItemRequest {
   /** Msi identity of the resource */
   identity?: ResourceIdentityInput;
 }
-export const CreateOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -654,7 +648,7 @@ export const CreateOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateOrderItemResponseTagsMap = { [key: string]: string | undefined };
-export const CreateOrderItemResponseTagsMap =
+const CreateOrderItemResponseTagsMap =
   CreateAddressRequestTagsMap as any as S.Schema<CreateOrderItemResponseTagsMap>;
 
 /** Describes product display information. */
@@ -664,7 +658,7 @@ export interface DisplayInfo {
   /** Configuration display name. */
   configurationDisplayName?: string;
 }
-export const DisplayInfo = /*@__PURE__*/ S.suspend(() =>
+const DisplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productFamilyDisplayName: S.optional(S.String),
     configurationDisplayName: S.optional(S.String),
@@ -673,15 +667,15 @@ export const DisplayInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Identification type of the configuration. */
 export type IdentificationType = "NotSupported" | "SerialNumber";
-export const IdentificationType = S.String;
+const IdentificationType = S.String;
 
 /** Determining nature of provisioning that the configuration supports. */
 export type ProvisioningSupport = "CloudBased" | "Manual";
-export const ProvisioningSupport = S.String;
+const ProvisioningSupport = S.String;
 
 /** Proof of possession status. */
 export type DevicePresenceVerificationStatus = "NotInitiated" | "Completed";
-export const DevicePresenceVerificationStatus = S.String;
+const DevicePresenceVerificationStatus = S.String;
 
 /** Proof of possession details. */
 export interface DevicePresenceVerificationDetails {
@@ -690,7 +684,7 @@ export interface DevicePresenceVerificationDetails {
   /** Insights on current status. */
   message?: string;
 }
-export const DevicePresenceVerificationDetails = /*@__PURE__*/ S.suspend(() =>
+const DevicePresenceVerificationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(DevicePresenceVerificationStatus),
     message: S.optional(S.String),
@@ -722,7 +716,7 @@ export interface ProvisioningDetails {
   /** Proof of possession details. */
   devicePresenceVerification?: DevicePresenceVerificationDetails;
 }
-export const ProvisioningDetails = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.Number),
     provisioningArmId: S.optional(S.String),
@@ -752,7 +746,7 @@ export interface DeviceDetails {
   /** Provisioning Details for the device. */
   provisioningDetails?: ProvisioningDetails;
 }
-export const DeviceDetails = /*@__PURE__*/ S.suspend(() =>
+const DeviceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serialNumber: S.optional(S.String),
     displaySerialNumber: S.optional(S.String),
@@ -765,7 +759,7 @@ export const DeviceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List Provisioning Details for Devices in Additional Config. */
 export type AdditionalConfigurationProvisioningDetailsList = Array<ProvisioningDetails>;
-export const AdditionalConfigurationProvisioningDetailsList = /*@__PURE__*/ S.Array(
+const AdditionalConfigurationProvisioningDetailsList = /*@__PURE__*/ S.Array(
   ProvisioningDetails,
 ) as any as S.Schema<AdditionalConfigurationProvisioningDetailsList>;
 
@@ -778,7 +772,7 @@ export interface AdditionalConfiguration {
   /** List Provisioning Details for Devices in Additional Config. */
   provisioningDetails?: AdditionalConfigurationProvisioningDetailsList;
 }
-export const AdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hierarchyInformation: HierarchyInformation,
     quantity: S.Number,
@@ -788,13 +782,13 @@ export const AdditionalConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional configurations customer wants in the order item apart from the ones included in the base configuration. */
 export type ProductDetailsOptInAdditionalConfigurationsList = Array<AdditionalConfiguration>;
-export const ProductDetailsOptInAdditionalConfigurationsList = /*@__PURE__*/ S.Array(
+const ProductDetailsOptInAdditionalConfigurationsList = /*@__PURE__*/ S.Array(
   AdditionalConfiguration,
 ) as any as S.Schema<ProductDetailsOptInAdditionalConfigurationsList>;
 
 /** List of device details. */
 export type ConfigurationDeviceDetailsDeviceDetailsList = Array<DeviceDetails>;
-export const ConfigurationDeviceDetailsDeviceDetailsList = /*@__PURE__*/ S.Array(
+const ConfigurationDeviceDetailsDeviceDetailsList = /*@__PURE__*/ S.Array(
   DeviceDetails,
 ) as any as S.Schema<ConfigurationDeviceDetailsDeviceDetailsList>;
 
@@ -807,7 +801,7 @@ export interface TermCommitmentInformation {
   /** Number of Days Pending for Term Commitment */
   pendingDaysForTerm?: number;
 }
-export const TermCommitmentInformation = /*@__PURE__*/ S.suspend(() =>
+const TermCommitmentInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     termCommitmentType: TermCommitmentType,
     termCommitmentTypeDuration: S.optional(S.String),
@@ -832,7 +826,7 @@ export interface ConfigurationDeviceDetails {
   /** Term Commitment Information of the Device. */
   termCommitmentInformation?: TermCommitmentInformation;
 }
-export const ConfigurationDeviceDetails = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationDeviceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayInfo: S.optional(DisplayInfo),
     hierarchyInformation: S.optional(HierarchyInformation),
@@ -847,7 +841,7 @@ export const ConfigurationDeviceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of all child configurations that are part of the order item. */
 export type ProductDetailsChildConfigurationDeviceDetailsList = Array<ConfigurationDeviceDetails>;
-export const ProductDetailsChildConfigurationDeviceDetailsList = /*@__PURE__*/ S.Array(
+const ProductDetailsChildConfigurationDeviceDetailsList = /*@__PURE__*/ S.Array(
   ConfigurationDeviceDetails,
 ) as any as S.Schema<ProductDetailsChildConfigurationDeviceDetailsList>;
 
@@ -872,7 +866,7 @@ export interface ProductDetails {
   /** Term Commitment Information of the Device. */
   termCommitmentInformation?: TermCommitmentInformation;
 }
-export const ProductDetails = /*@__PURE__*/ S.suspend(() =>
+const ProductDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayInfo: S.optional(DisplayInfo),
     hierarchyInformation: HierarchyInformation,
@@ -894,7 +888,7 @@ export type StageStatus =
   | "Failed"
   | "Cancelled"
   | "Cancelling";
-export const StageStatus = S.String;
+const StageStatus = S.String;
 
 /** Stage name. */
 export type StageName =
@@ -911,7 +905,7 @@ export type StageName =
   | "ReturnedToMicrosoft"
   | "ReturnCompleted"
   | "Cancelled";
-export const StageName = S.String;
+const StageName = S.String;
 
 /** Resource stage details. */
 export interface StageDetails {
@@ -924,7 +918,7 @@ export interface StageDetails {
   /** Stage start time. */
   startTime?: string;
 }
-export const StageDetails = /*@__PURE__*/ S.suspend(() =>
+const StageDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stageStatus: S.optional(StageStatus),
     stageName: S.optional(StageName),
@@ -935,7 +929,7 @@ export const StageDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Order item status history. */
 export type OrderItemDetailsOrderItemStageHistoryList = Array<StageDetails>;
-export const OrderItemDetailsOrderItemStageHistoryList = /*@__PURE__*/ S.Array(
+const OrderItemDetailsOrderItemStageHistoryList = /*@__PURE__*/ S.Array(
   StageDetails,
 ) as any as S.Schema<OrderItemDetailsOrderItemStageHistoryList>;
 
@@ -950,7 +944,7 @@ export interface ForwardShippingDetails {
   /** TrackingUrl of the package. */
   trackingUrl?: string;
 }
-export const ForwardShippingDetails = /*@__PURE__*/ S.suspend(() =>
+const ForwardShippingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierName: S.optional(S.String),
     carrierDisplayName: S.optional(S.String),
@@ -972,7 +966,7 @@ export interface ReverseShippingDetails {
   /** TrackingUrl of the package. */
   trackingUrl?: string;
 }
-export const ReverseShippingDetails = /*@__PURE__*/ S.suspend(() =>
+const ReverseShippingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sasKeyForLabel: S.optional(S.String),
     carrierName: S.optional(S.String),
@@ -984,27 +978,27 @@ export const ReverseShippingDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional notification email list. */
 export type OrderItemDetailsNotificationEmailListList = Array<string>;
-export const OrderItemDetailsNotificationEmailListList =
+const OrderItemDetailsNotificationEmailListList =
   ContactDetailsEmailListList as any as S.Schema<OrderItemDetailsNotificationEmailListList>;
 
 /** Describes whether the order item is cancellable or not. */
 export type OrderItemCancellationEnum = "Cancellable" | "CancellableWithFee" | "NotCancellable";
-export const OrderItemCancellationEnum = S.String;
+const OrderItemCancellationEnum = S.String;
 
 /** Describes whether the order item is deletable or not. */
 export type ActionStatusEnum = "Allowed" | "NotAllowed";
-export const ActionStatusEnum = S.String;
+const ActionStatusEnum = S.String;
 
 /** Describes whether the order item is returnable or not. */
 export type OrderItemReturnEnum = "Returnable" | "ReturnableWithFee" | "NotReturnable";
-export const OrderItemReturnEnum = S.String;
+const OrderItemReturnEnum = S.String;
 
 /** Management RP details. */
 export interface ResourceProviderDetails {
   /** Resource provider namespace. */
   resourceProviderNamespace?: string;
 }
-export const ResourceProviderDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceProviderDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceProviderNamespace: S.optional(S.String),
   }),
@@ -1012,13 +1006,13 @@ export const ResourceProviderDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** List of parent RP details supported for configuration. */
 export type OrderItemDetailsManagementRpDetailsListList = Array<ResourceProviderDetails>;
-export const OrderItemDetailsManagementRpDetailsListList = /*@__PURE__*/ S.Array(
+const OrderItemDetailsManagementRpDetailsListList = /*@__PURE__*/ S.Array(
   ResourceProviderDetails,
 ) as any as S.Schema<OrderItemDetailsManagementRpDetailsListList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -1029,7 +1023,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -1038,7 +1032,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -1055,7 +1049,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1067,13 +1061,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type OrderItemDetailsErrorDetailsList = Array<ErrorDetail>;
-export const OrderItemDetailsErrorDetailsList = /*@__PURE__*/ S.Array(
+const OrderItemDetailsErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<OrderItemDetailsErrorDetailsList>;
 
 /** The error additional info. */
 export type OrderItemDetailsErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const OrderItemDetailsErrorAdditionalInfoList =
+const OrderItemDetailsErrorAdditionalInfoList =
   ErrorDetailAdditionalInfoList as any as S.Schema<OrderItemDetailsErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -1089,7 +1083,7 @@ export interface OrderItemDetailsError {
   /** The error additional info. */
   additionalInfo?: OrderItemDetailsErrorAdditionalInfoList;
 }
-export const OrderItemDetailsError = /*@__PURE__*/ S.suspend(() =>
+const OrderItemDetailsError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1136,7 +1130,7 @@ export interface OrderItemDetails {
   /** The error detail. */
   error?: OrderItemDetailsError;
 }
-export const OrderItemDetails = /*@__PURE__*/ S.suspend(() =>
+const OrderItemDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productDetails: ProductDetails,
     orderItemType: OrderItemType,
@@ -1165,7 +1159,7 @@ export interface AddressDetails {
   /** Return shipping address. */
   returnAddress?: AddressProperties;
 }
-export const AddressDetails = /*@__PURE__*/ S.suspend(() =>
+const AddressDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardAddress: AddressProperties,
     returnAddress: S.optional(AddressProperties),
@@ -1185,7 +1179,7 @@ export interface OrderItemProperties {
   /** Provisioning state */
   provisioningState?: ProvisioningState;
 }
-export const OrderItemProperties = /*@__PURE__*/ S.suspend(() =>
+const OrderItemProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderItemDetails: OrderItemDetails,
     addressDetails: S.optional(AddressDetails),
@@ -1202,7 +1196,7 @@ export interface ResourceIdentityUserAssignedIdentitiesValue {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const ResourceIdentityUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
+const ResourceIdentityUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1215,7 +1209,7 @@ export const ResourceIdentityUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspe
 export type ResourceIdentityUserAssignedIdentitiesMap = {
   [key: string]: ResourceIdentityUserAssignedIdentitiesValue | undefined;
 };
-export const ResourceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ResourceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   ResourceIdentityUserAssignedIdentitiesValue,
 ) as any as S.Schema<ResourceIdentityUserAssignedIdentitiesMap>;
@@ -1231,7 +1225,7 @@ export interface ResourceIdentity {
   /** User Assigned Identities */
   userAssignedIdentities?: ResourceIdentityUserAssignedIdentitiesMap;
 }
-export const ResourceIdentity = /*@__PURE__*/ S.suspend(() =>
+const ResourceIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     principalId: S.optional(S.String),
@@ -1258,7 +1252,7 @@ export interface CreateOrderItemResponse {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const CreateOrderItemResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrderItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1279,7 +1273,7 @@ export interface DeleteAddressRequest {
   /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
   addressName: string;
 }
-export const DeleteAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1295,8 +1289,7 @@ export const DeleteAddressRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAddressRequest" }) as any as S.Schema<DeleteAddressRequest>;
 
 export interface DeleteAddressResponse {}
-export const DeleteAddressResponse =
-  CancelOrderItemResponse as any as S.Schema<DeleteAddressResponse>;
+const DeleteAddressResponse = CancelOrderItemResponse as any as S.Schema<DeleteAddressResponse>;
 
 export interface DeleteOrderItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1306,7 +1299,7 @@ export interface DeleteOrderItemRequest {
   /** The name of the order item. */
   orderItemName: string;
 }
-export const DeleteOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1322,8 +1315,7 @@ export const DeleteOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrderItemRequest" }) as any as S.Schema<DeleteOrderItemRequest>;
 
 export interface DeleteOrderItemResponse {}
-export const DeleteOrderItemResponse =
-  CancelOrderItemResponse as any as S.Schema<DeleteOrderItemResponse>;
+const DeleteOrderItemResponse = CancelOrderItemResponse as any as S.Schema<DeleteOrderItemResponse>;
 
 export interface GetAddressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1333,7 +1325,7 @@ export interface GetAddressRequest {
   /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
   addressName: string;
 }
-export const GetAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1350,9 +1342,6 @@ export const GetAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAddressResponseTagsMap = { [key: string]: string | undefined };
-export const GetAddressResponseTagsMap =
-  CreateAddressRequestTagsMap as any as S.Schema<GetAddressResponseTagsMap>;
-
 export interface GetAddressResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1369,7 +1358,7 @@ export interface GetAddressResponse {
   /** Properties of an address. */
   properties: AddressProperties;
 }
-export const GetAddressResponse = CreateAddressResponse as any as S.Schema<GetAddressResponse>;
+const GetAddressResponse = CreateAddressResponse as any as S.Schema<GetAddressResponse>;
 
 export interface GetOrderRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1381,7 +1370,7 @@ export interface GetOrderRequest {
   /** The name of the order. */
   orderName: string;
 }
-export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1399,12 +1388,12 @@ export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of order item ARM Ids which are part of an order. */
 export type OrderPropertiesOrderItemIdsList = Array<string>;
-export const OrderPropertiesOrderItemIdsList =
+const OrderPropertiesOrderItemIdsList =
   ContactDetailsEmailListList as any as S.Schema<OrderPropertiesOrderItemIdsList>;
 
 /** Order status history. */
 export type OrderPropertiesOrderStageHistoryList = Array<StageDetails>;
-export const OrderPropertiesOrderStageHistoryList =
+const OrderPropertiesOrderStageHistoryList =
   OrderItemDetailsOrderItemStageHistoryList as any as S.Schema<OrderPropertiesOrderStageHistoryList>;
 
 /** Represents order details. */
@@ -1418,7 +1407,7 @@ export interface OrderProperties {
   /** Order mode. */
   orderMode?: OrderMode;
 }
-export const OrderProperties = /*@__PURE__*/ S.suspend(() =>
+const OrderProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderItemIds: S.optional(OrderPropertiesOrderItemIdsList),
     currentStage: S.optional(StageDetails),
@@ -1439,7 +1428,7 @@ export interface GetOrderResponse {
   /** Order properties. */
   properties: OrderProperties;
 }
-export const GetOrderResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1459,7 +1448,7 @@ export interface GetOrderItemRequest {
   /** $expand is supported on parent device details, device details, forward shipping details and reverse shipping details parameters. Each of these can be provided as a comma separated list. Parent Device Details for order item provides details on the devices of the product, Device Details for order item provides details on the devices of the child configurations of the product, Forward and Reverse Shipping details provide forward and reverse shipping details respectively. */
   _expand?: string;
 }
-export const GetOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1477,9 +1466,6 @@ export const GetOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetOrderItemResponseTagsMap = { [key: string]: string | undefined };
-export const GetOrderItemResponseTagsMap =
-  CreateAddressRequestTagsMap as any as S.Schema<GetOrderItemResponseTagsMap>;
-
 export interface GetOrderItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1498,8 +1484,7 @@ export interface GetOrderItemResponse {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const GetOrderItemResponse =
-  CreateOrderItemResponse as any as S.Schema<GetOrderItemResponse>;
+const GetOrderItemResponse = CreateOrderItemResponse as any as S.Schema<GetOrderItemResponse>;
 
 export interface ListAddressByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1513,7 +1498,7 @@ export interface ListAddressByResourceGroupRequest {
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
 }
-export const ListAddressByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddressByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1534,9 +1519,6 @@ export const ListAddressByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AddressResourceTagsMap = { [key: string]: string | undefined };
-export const AddressResourceTagsMap =
-  CreateAddressRequestTagsMap as any as S.Schema<AddressResourceTagsMap>;
-
 /** Address Resource. */
 export interface AddressResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1554,11 +1536,11 @@ export interface AddressResource {
   /** Properties of an address. */
   properties: AddressProperties;
 }
-export const AddressResource = CreateAddressResponse as any as S.Schema<AddressResource>;
+const AddressResource = CreateAddressResponse as any as S.Schema<AddressResource>;
 
 /** The AddressResource items on this page */
 export type AddressResourceListValueList = Array<AddressResource>;
-export const AddressResourceListValueList = /*@__PURE__*/ S.Array(
+const AddressResourceListValueList = /*@__PURE__*/ S.Array(
   AddressResource,
 ) as any as S.Schema<AddressResourceListValueList>;
 
@@ -1569,7 +1551,7 @@ export interface AddressResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AddressResourceList = /*@__PURE__*/ S.suspend(() =>
+const AddressResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AddressResourceListValueList,
     nextLink: S.optional(S.String),
@@ -1586,7 +1568,7 @@ export interface ListAddressBySubscriptionRequest {
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
 }
-export const ListAddressBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddressBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1605,7 +1587,7 @@ export const ListAddressBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAddressBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1627,7 +1609,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1638,11 +1620,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -1657,7 +1639,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1669,7 +1651,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -1679,7 +1661,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -1696,7 +1678,7 @@ export interface ListOrderByResourceGroupRequest {
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
 }
-export const ListOrderByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrderByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1727,11 +1709,11 @@ export interface OrderResource {
   /** Order properties. */
   properties: OrderProperties;
 }
-export const OrderResource = GetOrderResponse as any as S.Schema<OrderResource>;
+const OrderResource = GetOrderResponse as any as S.Schema<OrderResource>;
 
 /** The OrderResource items on this page */
 export type OrderResourceListValueList = Array<OrderResource>;
-export const OrderResourceListValueList = /*@__PURE__*/ S.Array(
+const OrderResourceListValueList = /*@__PURE__*/ S.Array(
   OrderResource,
 ) as any as S.Schema<OrderResourceListValueList>;
 
@@ -1742,7 +1724,7 @@ export interface OrderResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OrderResourceList = /*@__PURE__*/ S.suspend(() =>
+const OrderResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OrderResourceListValueList,
     nextLink: S.optional(S.String),
@@ -1757,7 +1739,7 @@ export interface ListOrderBySubscriptionRequest {
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
 }
-export const ListOrderBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrderBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
@@ -1788,7 +1770,7 @@ export interface ListOrderItemByResourceGroupRequest {
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
 }
-export const ListOrderItemByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrderItemByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1810,9 +1792,6 @@ export const ListOrderItemByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type OrderItemResourceTagsMap = { [key: string]: string | undefined };
-export const OrderItemResourceTagsMap =
-  CreateAddressRequestTagsMap as any as S.Schema<OrderItemResourceTagsMap>;
-
 /** Represents order item resource. */
 export interface OrderItemResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1832,11 +1811,11 @@ export interface OrderItemResource {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const OrderItemResource = CreateOrderItemResponse as any as S.Schema<OrderItemResource>;
+const OrderItemResource = CreateOrderItemResponse as any as S.Schema<OrderItemResource>;
 
 /** The OrderItemResource items on this page */
 export type OrderItemResourceListValueList = Array<OrderItemResource>;
-export const OrderItemResourceListValueList = /*@__PURE__*/ S.Array(
+const OrderItemResourceListValueList = /*@__PURE__*/ S.Array(
   OrderItemResource,
 ) as any as S.Schema<OrderItemResourceListValueList>;
 
@@ -1847,7 +1826,7 @@ export interface OrderItemResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OrderItemResourceList = /*@__PURE__*/ S.suspend(() =>
+const OrderItemResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OrderItemResourceListValueList,
     nextLink: S.optional(S.String),
@@ -1866,7 +1845,7 @@ export interface ListOrderItemBySubscriptionRequest {
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
 }
-export const ListOrderItemBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrderItemBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1887,11 +1866,11 @@ export const ListOrderItemBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of product filter. */
 export type SupportedFilterTypes = "ShipToCountries" | "DoubleEncryptionStatus";
-export const SupportedFilterTypes = S.String;
+const SupportedFilterTypes = S.String;
 
 /** Values to be filtered. */
 export type FilterablePropertySupportedValuesList = Array<string>;
-export const FilterablePropertySupportedValuesList =
+const FilterablePropertySupportedValuesList =
   ContactDetailsEmailListList as any as S.Schema<FilterablePropertySupportedValuesList>;
 
 /** Different types of filters supported and its values. */
@@ -1901,7 +1880,7 @@ export interface FilterableProperty {
   /** Values to be filtered. */
   supportedValues: FilterablePropertySupportedValuesList;
 }
-export const FilterableProperty = /*@__PURE__*/ S.suspend(() =>
+const FilterableProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SupportedFilterTypes,
     supportedValues: FilterablePropertySupportedValuesList,
@@ -1910,24 +1889,24 @@ export const FilterableProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Filters specific to product. */
 export type ConfigurationFilterFilterablePropertyList = Array<FilterableProperty>;
-export const ConfigurationFilterFilterablePropertyList = /*@__PURE__*/ S.Array(
+const ConfigurationFilterFilterablePropertyList = /*@__PURE__*/ S.Array(
   FilterableProperty,
 ) as any as S.Schema<ConfigurationFilterFilterablePropertyList>;
 
 /** The list of child configuration hierarchy customer wants to filter for the given configuration. */
 export type ChildConfigurationFilterHierarchyInformationsList = Array<HierarchyInformation>;
-export const ChildConfigurationFilterHierarchyInformationsList = /*@__PURE__*/ S.Array(
+const ChildConfigurationFilterHierarchyInformationsList = /*@__PURE__*/ S.Array(
   HierarchyInformation,
 ) as any as S.Schema<ChildConfigurationFilterHierarchyInformationsList>;
 
 export type ChildConfigurationType = "DeviceConfiguration" | "AdditionalConfiguration";
-export const ChildConfigurationType = S.String;
+const ChildConfigurationType = S.String;
 
 /** Filter to fetch all child configurations belonging to the given list of configuration types. */
 export type ChildConfigurationFilterChildConfigurationTypesList = Array<
   ChildConfigurationType | (string & {})
 >;
-export const ChildConfigurationFilterChildConfigurationTypesList = /*@__PURE__*/ S.Array(
+const ChildConfigurationFilterChildConfigurationTypesList = /*@__PURE__*/ S.Array(
   ChildConfigurationType,
 ) as any as S.Schema<ChildConfigurationFilterChildConfigurationTypesList>;
 
@@ -1938,7 +1917,7 @@ export interface ChildConfigurationFilter {
   /** Filter to fetch all child configurations belonging to the given list of configuration types. */
   childConfigurationTypes?: ChildConfigurationFilterChildConfigurationTypesList;
 }
-export const ChildConfigurationFilter = /*@__PURE__*/ S.suspend(() =>
+const ChildConfigurationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hierarchyInformations: S.optional(ChildConfigurationFilterHierarchyInformationsList),
     childConfigurationTypes: S.optional(ChildConfigurationFilterChildConfigurationTypesList),
@@ -1954,7 +1933,7 @@ export interface ConfigurationFilter {
   /** Filter to fetch specific child configurations that exist in the configuration. This must be passed to either fetch a list of specific child configurations, or all child configurations of specific types of child configurations. */
   childConfigurationFilter?: ChildConfigurationFilter;
 }
-export const ConfigurationFilter = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hierarchyInformation: HierarchyInformation,
     filterableProperty: S.optional(ConfigurationFilterFilterablePropertyList),
@@ -1969,7 +1948,7 @@ export interface CustomerSubscriptionRegisteredFeatures {
   /** State of subscription registered feature. */
   state?: string;
 }
-export const CustomerSubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(() =>
+const CustomerSubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(S.String),
@@ -1981,7 +1960,7 @@ export const CustomerSubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(()
 /** List of registered feature flags for subscription. */
 export type CustomerSubscriptionDetailsRegisteredFeaturesList =
   Array<CustomerSubscriptionRegisteredFeatures>;
-export const CustomerSubscriptionDetailsRegisteredFeaturesList = /*@__PURE__*/ S.Array(
+const CustomerSubscriptionDetailsRegisteredFeaturesList = /*@__PURE__*/ S.Array(
   CustomerSubscriptionRegisteredFeatures,
 ) as any as S.Schema<CustomerSubscriptionDetailsRegisteredFeaturesList>;
 
@@ -1994,7 +1973,7 @@ export interface CustomerSubscriptionDetails {
   /** Quota ID of a subscription. */
   quotaId: string;
 }
-export const CustomerSubscriptionDetails = /*@__PURE__*/ S.suspend(() =>
+const CustomerSubscriptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registeredFeatures: S.optional(CustomerSubscriptionDetailsRegisteredFeaturesList),
     locationPlacementId: S.optional(S.String),
@@ -2014,7 +1993,7 @@ export interface ListProductsAndConfigurationConfigurationsRequest {
   /** Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details. */
   customerSubscriptionDetails?: CustomerSubscriptionDetails;
 }
-export const ListProductsAndConfigurationConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductsAndConfigurationConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
@@ -2034,16 +2013,16 @@ export const ListProductsAndConfigurationConfigurationsRequest = /*@__PURE__*/ S
 
 /** Type of description. */
 export type DescriptionType = "Base";
-export const DescriptionType = S.String;
+const DescriptionType = S.String;
 
 /** Keywords for the product system. */
 export type DescriptionKeywordsList = Array<string>;
-export const DescriptionKeywordsList =
+const DescriptionKeywordsList =
   ContactDetailsEmailListList as any as S.Schema<DescriptionKeywordsList>;
 
 /** Attributes for the product system. */
 export type DescriptionAttributesList = Array<string>;
-export const DescriptionAttributesList =
+const DescriptionAttributesList =
   ContactDetailsEmailListList as any as S.Schema<DescriptionAttributesList>;
 
 /** Type of link. */
@@ -2055,7 +2034,7 @@ export type LinkType =
   | "KnowMore"
   | "SignUp"
   | "Discoverable";
-export const LinkType = S.String;
+const LinkType = S.String;
 
 /** Returns link related to the product. */
 export interface Link {
@@ -2064,7 +2043,7 @@ export interface Link {
   /** Url of the link. */
   linkUrl?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkType: S.optional(LinkType),
     linkUrl: S.optional(S.String),
@@ -2073,9 +2052,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 
 /** Links for the product system. */
 export type DescriptionLinksList = Array<Link>;
-export const DescriptionLinksList = /*@__PURE__*/ S.Array(
-  Link,
-) as any as S.Schema<DescriptionLinksList>;
+const DescriptionLinksList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<DescriptionLinksList>;
 
 /** Description related properties of a product system. */
 export interface Description {
@@ -2092,7 +2069,7 @@ export interface Description {
   /** Links for the product system. */
   links?: DescriptionLinksList;
 }
-export const Description = /*@__PURE__*/ S.suspend(() =>
+const Description = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descriptionType: S.optional(DescriptionType),
     shortDescription: S.optional(S.String),
@@ -2105,7 +2082,7 @@ export const Description = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the image. */
 export type ImageType = "MainImage" | "BulletImage" | "GenericImage";
-export const ImageType = S.String;
+const ImageType = S.String;
 
 /** Image for the product. */
 export interface ImageInformation {
@@ -2114,7 +2091,7 @@ export interface ImageInformation {
   /** Url of the image. */
   imageUrl?: string;
 }
-export const ImageInformation = /*@__PURE__*/ S.suspend(() =>
+const ImageInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageType: S.optional(ImageType),
     imageUrl: S.optional(S.String),
@@ -2123,17 +2100,17 @@ export const ImageInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Image information for the product system. */
 export type ConfigurationPropertiesImageInformationList = Array<ImageInformation>;
-export const ConfigurationPropertiesImageInformationList = /*@__PURE__*/ S.Array(
+const ConfigurationPropertiesImageInformationList = /*@__PURE__*/ S.Array(
   ImageInformation,
 ) as any as S.Schema<ConfigurationPropertiesImageInformationList>;
 
 /** Represents billing type. */
 export type BillingType = "Pav2" | "Purchase";
-export const BillingType = S.String;
+const BillingType = S.String;
 
 /** Charging type. */
 export type ChargingType = "PerOrder" | "PerDevice";
-export const ChargingType = S.String;
+const ChargingType = S.String;
 
 /** Holds details about billing type and its meter guids. */
 export interface MeterDetails {
@@ -2144,7 +2121,7 @@ export interface MeterDetails {
   /** Charging type. */
   chargingType?: ChargingType;
 }
-export const MeterDetails = /*@__PURE__*/ S.suspend(() =>
+const MeterDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingType: BillingType,
     multiplier: S.optional(S.Number),
@@ -2154,7 +2131,7 @@ export const MeterDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents Metering type (eg one-time or recurrent). */
 export type MeteringType = "OneTime" | "Recurring" | "Adhoc";
-export const MeteringType = S.String;
+const MeteringType = S.String;
 
 /** Holds details about term type and duration. */
 export interface TermTypeDetails {
@@ -2163,7 +2140,7 @@ export interface TermTypeDetails {
   /** Duration for the term type. */
   termTypeDuration: string;
 }
-export const TermTypeDetails = /*@__PURE__*/ S.suspend(() =>
+const TermTypeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     termType: TermCommitmentType,
     termTypeDuration: S.String,
@@ -2183,7 +2160,7 @@ export interface BillingMeterDetails {
   /** Represent Term Type details. */
   termTypeDetails?: TermTypeDetails;
 }
-export const BillingMeterDetails = /*@__PURE__*/ S.suspend(() =>
+const BillingMeterDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     meterDetails: S.optional(MeterDetails),
@@ -2195,7 +2172,7 @@ export const BillingMeterDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the various billing aspects for the product system. */
 export type CostInformationBillingMeterDetailsList = Array<BillingMeterDetails>;
-export const CostInformationBillingMeterDetailsList = /*@__PURE__*/ S.Array(
+const CostInformationBillingMeterDetailsList = /*@__PURE__*/ S.Array(
   BillingMeterDetails,
 ) as any as S.Schema<CostInformationBillingMeterDetailsList>;
 
@@ -2206,7 +2183,7 @@ export interface CostInformation {
   /** Default url to display billing information. */
   billingInfoUrl?: string;
 }
-export const CostInformation = /*@__PURE__*/ S.suspend(() =>
+const CostInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingMeterDetails: S.optional(CostInformationBillingMeterDetailsList),
     billingInfoUrl: S.optional(S.String),
@@ -2222,7 +2199,7 @@ export type AvailabilityStage =
   | "ComingSoon"
   | "Unavailable"
   | "Deprecated";
-export const AvailabilityStage = S.String;
+const AvailabilityStage = S.String;
 
 /** Reason why the product is disabled. */
 export type DisabledReason =
@@ -2234,7 +2211,7 @@ export type DisabledReason =
   | "NoSubscriptionInfo"
   | "NotAvailable"
   | "OutOfStock";
-export const DisabledReason = S.String;
+const DisabledReason = S.String;
 
 /** Availability information of a product system. */
 export interface AvailabilityInformation {
@@ -2245,7 +2222,7 @@ export interface AvailabilityInformation {
   /** Message for why the product is disabled. */
   disabledReasonMessage?: string;
 }
-export const AvailabilityInformation = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityStage: S.optional(AvailabilityStage),
     disabledReason: S.optional(DisabledReason),
@@ -2255,11 +2232,11 @@ export const AvailabilityInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The entity responsible for fulfillment of the item at the given hierarchy level. */
 export type FulfillmentType = "Microsoft" | "External";
-export const FulfillmentType = S.String;
+const FulfillmentType = S.String;
 
 /** List of filters supported for a product. */
 export type ConfigurationPropertiesFilterablePropertiesList = Array<FilterableProperty>;
-export const ConfigurationPropertiesFilterablePropertiesList =
+const ConfigurationPropertiesFilterablePropertiesList =
   ConfigurationFilterFilterablePropertyList as any as S.Schema<ConfigurationPropertiesFilterablePropertiesList>;
 
 /** Specification of the configurations. */
@@ -2269,7 +2246,7 @@ export interface Specification {
   /** Value of the specification. */
   value?: string;
 }
-export const Specification = /*@__PURE__*/ S.suspend(() =>
+const Specification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -2278,17 +2255,17 @@ export const Specification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the configuration. */
 export type ConfigurationPropertiesSpecificationsList = Array<Specification>;
-export const ConfigurationPropertiesSpecificationsList = /*@__PURE__*/ S.Array(
+const ConfigurationPropertiesSpecificationsList = /*@__PURE__*/ S.Array(
   Specification,
 ) as any as S.Schema<ConfigurationPropertiesSpecificationsList>;
 
 /** Unit for the dimensions of length, height and width. */
 export type LengthHeightUnit = "IN" | "CM";
-export const LengthHeightUnit = S.String;
+const LengthHeightUnit = S.String;
 
 /** Unit for the dimensions of weight. */
 export type WeightMeasurementUnit = "LBS" | "KGS";
-export const WeightMeasurementUnit = S.String;
+const WeightMeasurementUnit = S.String;
 
 /** Dimensions of a configuration. */
 export interface Dimensions {
@@ -2307,7 +2284,7 @@ export interface Dimensions {
   /** Unit for the dimensions of weight. */
   weightUnit?: WeightMeasurementUnit;
 }
-export const Dimensions = /*@__PURE__*/ S.suspend(() =>
+const Dimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     length: S.optional(S.Number),
     height: S.optional(S.Number),
@@ -2321,12 +2298,12 @@ export const Dimensions = /*@__PURE__*/ S.suspend(() =>
 
 /** Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter. */
 export type ConfigurationPropertiesChildConfigurationTypesList = Array<ChildConfigurationType>;
-export const ConfigurationPropertiesChildConfigurationTypesList =
+const ConfigurationPropertiesChildConfigurationTypesList =
   ChildConfigurationFilterChildConfigurationTypesList as any as S.Schema<ConfigurationPropertiesChildConfigurationTypesList>;
 
 /** Links for the category. */
 export type CategoryInformationLinksList = Array<Link>;
-export const CategoryInformationLinksList =
+const CategoryInformationLinksList =
   DescriptionLinksList as any as S.Schema<CategoryInformationLinksList>;
 
 /** Category related properties of a child configuration. */
@@ -2340,7 +2317,7 @@ export interface CategoryInformation {
   /** Links for the category. */
   links?: CategoryInformationLinksList;
 }
-export const CategoryInformation = /*@__PURE__*/ S.suspend(() =>
+const CategoryInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryName: S.optional(S.String),
     categoryDisplayName: S.optional(S.String),
@@ -2351,36 +2328,35 @@ export const CategoryInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the configuration. */
 export type ChildConfigurationPropertiesSpecificationsList = Array<Specification>;
-export const ChildConfigurationPropertiesSpecificationsList =
+const ChildConfigurationPropertiesSpecificationsList =
   ConfigurationPropertiesSpecificationsList as any as S.Schema<ChildConfigurationPropertiesSpecificationsList>;
 
 /** Different types of child configurations which exist for this configuration, these can be used to populate the child configuration filter. */
 export type ChildConfigurationPropertiesChildConfigurationTypesList = Array<ChildConfigurationType>;
-export const ChildConfigurationPropertiesChildConfigurationTypesList =
+const ChildConfigurationPropertiesChildConfigurationTypesList =
   ChildConfigurationFilterChildConfigurationTypesList as any as S.Schema<ChildConfigurationPropertiesChildConfigurationTypesList>;
 
 /** Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration. */
 export type ChildConfigurationPropertiesGroupedChildConfigurationsList =
   Array<GroupedChildConfigurations>;
-export const ChildConfigurationPropertiesGroupedChildConfigurationsList = /*@__PURE__*/ S.Array(
+const ChildConfigurationPropertiesGroupedChildConfigurationsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => GroupedChildConfigurations),
 ) as any as S.Schema<ChildConfigurationPropertiesGroupedChildConfigurationsList>;
 
 /** The Term Commitment Durations that are supported for a configuration. */
 export type ChildConfigurationPropertiesSupportedTermCommitmentDurationsList = Array<string>;
-export const ChildConfigurationPropertiesSupportedTermCommitmentDurationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ChildConfigurationPropertiesSupportedTermCommitmentDurationsList>;
+const ChildConfigurationPropertiesSupportedTermCommitmentDurationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ChildConfigurationPropertiesSupportedTermCommitmentDurationsList>;
 
 /** List of filters supported for a product. */
 export type ChildConfigurationPropertiesFilterablePropertiesList = Array<FilterableProperty>;
-export const ChildConfigurationPropertiesFilterablePropertiesList =
+const ChildConfigurationPropertiesFilterablePropertiesList =
   ConfigurationFilterFilterablePropertyList as any as S.Schema<ChildConfigurationPropertiesFilterablePropertiesList>;
 
 /** Image information for the product system. */
 export type ChildConfigurationPropertiesImageInformationList = Array<ImageInformation>;
-export const ChildConfigurationPropertiesImageInformationList =
+const ChildConfigurationPropertiesImageInformationList =
   ConfigurationPropertiesImageInformationList as any as S.Schema<ChildConfigurationPropertiesImageInformationList>;
 
 /** Properties of child configuration. */
@@ -2422,7 +2398,7 @@ export interface ChildConfigurationProperties {
   /** The entity responsible for fulfillment of the item at the given hierarchy level. */
   fulfilledBy?: FulfillmentType;
 }
-export const ChildConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const ChildConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     childConfigurationType: S.optional(ChildConfigurationType),
     isPartOfBaseConfiguration: S.optional(S.Boolean),
@@ -2456,7 +2432,7 @@ export interface ChildConfiguration {
   /** Properties of child configuration. */
   properties?: ChildConfigurationProperties;
 }
-export const ChildConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ChildConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ChildConfigurationProperties),
   }),
@@ -2464,7 +2440,7 @@ export const ChildConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of child configurations. */
 export type GroupedChildConfigurationsChildConfigurationsList = Array<ChildConfiguration>;
-export const GroupedChildConfigurationsChildConfigurationsList = /*@__PURE__*/ S.Array(
+const GroupedChildConfigurationsChildConfigurationsList = /*@__PURE__*/ S.Array(
   ChildConfiguration,
 ) as any as S.Schema<GroupedChildConfigurationsChildConfigurationsList>;
 
@@ -2475,7 +2451,7 @@ export interface GroupedChildConfigurations {
   /** List of child configurations. */
   childConfigurations?: GroupedChildConfigurationsChildConfigurationsList;
 }
-export const GroupedChildConfigurations = /*@__PURE__*/ S.suspend(() =>
+const GroupedChildConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryInformation: S.optional(CategoryInformation),
     childConfigurations: S.optional(GroupedChildConfigurationsChildConfigurationsList),
@@ -2487,13 +2463,13 @@ export const GroupedChildConfigurations = /*@__PURE__*/ S.suspend(() =>
 /** Child configurations present for the configuration after applying child configuration filter, grouped by the category name of the child configuration. */
 export type ConfigurationPropertiesGroupedChildConfigurationsList =
   Array<GroupedChildConfigurations>;
-export const ConfigurationPropertiesGroupedChildConfigurationsList = /*@__PURE__*/ S.Array(
+const ConfigurationPropertiesGroupedChildConfigurationsList = /*@__PURE__*/ S.Array(
   GroupedChildConfigurations,
 ) as any as S.Schema<ConfigurationPropertiesGroupedChildConfigurationsList>;
 
 /** The Term Commitment Durations that are supported for a configuration. */
 export type ConfigurationPropertiesSupportedTermCommitmentDurationsList = Array<string>;
-export const ConfigurationPropertiesSupportedTermCommitmentDurationsList =
+const ConfigurationPropertiesSupportedTermCommitmentDurationsList =
   ContactDetailsEmailListList as any as S.Schema<ConfigurationPropertiesSupportedTermCommitmentDurationsList>;
 
 /** Properties of configuration. */
@@ -2527,7 +2503,7 @@ export interface ConfigurationProperties {
   /** The Term Commitment Durations that are supported for a configuration. */
   supportedTermCommitmentDurations?: ConfigurationPropertiesSupportedTermCommitmentDurationsList;
 }
-export const ConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     description: S.optional(Description),
@@ -2553,7 +2529,7 @@ export interface Configuration {
   /** Properties of configuration. */
   properties?: ConfigurationProperties;
 }
-export const Configuration = /*@__PURE__*/ S.suspend(() =>
+const Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ConfigurationProperties),
   }),
@@ -2561,7 +2537,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 
 /** The Configuration items on this page */
 export type ConfigurationsValueList = Array<Configuration>;
-export const ConfigurationsValueList = /*@__PURE__*/ S.Array(
+const ConfigurationsValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationsValueList>;
 
@@ -2572,7 +2548,7 @@ export interface Configurations {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const Configurations = /*@__PURE__*/ S.suspend(() =>
+const Configurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConfigurationsValueList,
     nextLink: S.optional(S.String),
@@ -2581,7 +2557,7 @@ export const Configurations = /*@__PURE__*/ S.suspend(() =>
 
 export type ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesValueList =
   Array<FilterableProperty>;
-export const ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesValueList =
+const ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesValueList =
   /*@__PURE__*/ S.Array(
     FilterableProperty,
   ) as any as S.Schema<ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesValueList>;
@@ -2592,7 +2568,7 @@ export type ListProductsAndConfigurationProductFamiliesRequestFilterableProperti
     | ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesValueList
     | undefined;
 };
-export const ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesMap =
+const ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     ListProductsAndConfigurationProductFamiliesRequestFilterablePropertiesValueList,
@@ -2610,7 +2586,7 @@ export interface ListProductsAndConfigurationProductFamiliesRequest {
   /** Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details. */
   customerSubscriptionDetails?: CustomerSubscriptionDetails;
 }
-export const ListProductsAndConfigurationProductFamiliesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductsAndConfigurationProductFamiliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -2631,37 +2607,37 @@ export const ListProductsAndConfigurationProductFamiliesRequest = /*@__PURE__*/ 
 
 /** Image information for the product system. */
 export type ProductFamilyPropertiesImageInformationList = Array<ImageInformation>;
-export const ProductFamilyPropertiesImageInformationList =
+const ProductFamilyPropertiesImageInformationList =
   ConfigurationPropertiesImageInformationList as any as S.Schema<ProductFamilyPropertiesImageInformationList>;
 
 /** List of filters supported for a product. */
 export type ProductFamilyPropertiesFilterablePropertiesList = Array<FilterableProperty>;
-export const ProductFamilyPropertiesFilterablePropertiesList =
+const ProductFamilyPropertiesFilterablePropertiesList =
   ConfigurationFilterFilterablePropertyList as any as S.Schema<ProductFamilyPropertiesFilterablePropertiesList>;
 
 /** Image information for the product system. */
 export type ProductLinePropertiesImageInformationList = Array<ImageInformation>;
-export const ProductLinePropertiesImageInformationList =
+const ProductLinePropertiesImageInformationList =
   ConfigurationPropertiesImageInformationList as any as S.Schema<ProductLinePropertiesImageInformationList>;
 
 /** List of filters supported for a product. */
 export type ProductLinePropertiesFilterablePropertiesList = Array<FilterableProperty>;
-export const ProductLinePropertiesFilterablePropertiesList =
+const ProductLinePropertiesFilterablePropertiesList =
   ConfigurationFilterFilterablePropertyList as any as S.Schema<ProductLinePropertiesFilterablePropertiesList>;
 
 /** Image information for the product system. */
 export type ProductPropertiesImageInformationList = Array<ImageInformation>;
-export const ProductPropertiesImageInformationList =
+const ProductPropertiesImageInformationList =
   ConfigurationPropertiesImageInformationList as any as S.Schema<ProductPropertiesImageInformationList>;
 
 /** List of filters supported for a product. */
 export type ProductPropertiesFilterablePropertiesList = Array<FilterableProperty>;
-export const ProductPropertiesFilterablePropertiesList =
+const ProductPropertiesFilterablePropertiesList =
   ConfigurationFilterFilterablePropertyList as any as S.Schema<ProductPropertiesFilterablePropertiesList>;
 
 /** List of configurations for the product. */
 export type ProductPropertiesConfigurationsList = Array<Configuration>;
-export const ProductPropertiesConfigurationsList =
+const ProductPropertiesConfigurationsList =
   ConfigurationsValueList as any as S.Schema<ProductPropertiesConfigurationsList>;
 
 /** Properties of product. */
@@ -2685,7 +2661,7 @@ export interface ProductProperties {
   /** List of configurations for the product. */
   configurations?: ProductPropertiesConfigurationsList;
 }
-export const ProductProperties = /*@__PURE__*/ S.suspend(() =>
+const ProductProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     description: S.optional(Description),
@@ -2704,7 +2680,7 @@ export interface Product {
   /** Properties of product. */
   properties?: ProductProperties;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ProductProperties),
   }),
@@ -2712,7 +2688,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 
 /** List of products in the product line. */
 export type ProductLinePropertiesProductsList = Array<Product>;
-export const ProductLinePropertiesProductsList = /*@__PURE__*/ S.Array(
+const ProductLinePropertiesProductsList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductLinePropertiesProductsList>;
 
@@ -2737,7 +2713,7 @@ export interface ProductLineProperties {
   /** List of products in the product line. */
   products?: ProductLinePropertiesProductsList;
 }
-export const ProductLineProperties = /*@__PURE__*/ S.suspend(() =>
+const ProductLineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     description: S.optional(Description),
@@ -2756,7 +2732,7 @@ export interface ProductLine {
   /** Properties of product line. */
   properties?: ProductLineProperties;
 }
-export const ProductLine = /*@__PURE__*/ S.suspend(() =>
+const ProductLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ProductLineProperties),
   }),
@@ -2764,13 +2740,13 @@ export const ProductLine = /*@__PURE__*/ S.suspend(() =>
 
 /** List of product lines supported in the product family. */
 export type ProductFamilyPropertiesProductLinesList = Array<ProductLine>;
-export const ProductFamilyPropertiesProductLinesList = /*@__PURE__*/ S.Array(
+const ProductFamilyPropertiesProductLinesList = /*@__PURE__*/ S.Array(
   ProductLine,
 ) as any as S.Schema<ProductFamilyPropertiesProductLinesList>;
 
 /** Contains details related to resource provider. */
 export type ProductFamilyPropertiesResourceProviderDetailsList = Array<ResourceProviderDetails>;
-export const ProductFamilyPropertiesResourceProviderDetailsList =
+const ProductFamilyPropertiesResourceProviderDetailsList =
   OrderItemDetailsManagementRpDetailsListList as any as S.Schema<ProductFamilyPropertiesResourceProviderDetailsList>;
 
 /** Properties of product family. */
@@ -2796,7 +2772,7 @@ export interface ProductFamilyProperties {
   /** Contains details related to resource provider. */
   resourceProviderDetails?: ProductFamilyPropertiesResourceProviderDetailsList;
 }
-export const ProductFamilyProperties = /*@__PURE__*/ S.suspend(() =>
+const ProductFamilyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     description: S.optional(Description),
@@ -2816,7 +2792,7 @@ export interface ProductFamily {
   /** Properties of product family. */
   properties?: ProductFamilyProperties;
 }
-export const ProductFamily = /*@__PURE__*/ S.suspend(() =>
+const ProductFamily = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ProductFamilyProperties),
   }),
@@ -2824,7 +2800,7 @@ export const ProductFamily = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProductFamily items on this page */
 export type ProductFamiliesValueList = Array<ProductFamily>;
-export const ProductFamiliesValueList = /*@__PURE__*/ S.Array(
+const ProductFamiliesValueList = /*@__PURE__*/ S.Array(
   ProductFamily,
 ) as any as S.Schema<ProductFamiliesValueList>;
 
@@ -2835,7 +2811,7 @@ export interface ProductFamilies {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ProductFamilies = /*@__PURE__*/ S.suspend(() =>
+const ProductFamilies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ProductFamiliesValueList,
     nextLink: S.optional(S.String),
@@ -2848,19 +2824,18 @@ export interface ListProductsAndConfigurationProductFamiliesMetadataRequest {
   /** $skipToken is supported on list of product families metadata, which provides the next page in the list of product families metadata. */
   _skipToken?: string;
 }
-export const ListProductsAndConfigurationProductFamiliesMetadataRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/productFamiliesMetadata",
-        code: 200,
-        apiVersion: "2024-02-01",
-      }),
-    ),
+const ListProductsAndConfigurationProductFamiliesMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/productFamiliesMetadata",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListProductsAndConfigurationProductFamiliesMetadataRequest",
 }) as any as S.Schema<ListProductsAndConfigurationProductFamiliesMetadataRequest>;
@@ -2870,7 +2845,7 @@ export interface ProductFamiliesMetadataDetails {
   /** Product family properties. */
   properties?: ProductFamilyProperties;
 }
-export const ProductFamiliesMetadataDetails = /*@__PURE__*/ S.suspend(() =>
+const ProductFamiliesMetadataDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ProductFamilyProperties),
   }),
@@ -2880,7 +2855,7 @@ export const ProductFamiliesMetadataDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProductFamiliesMetadataDetails items on this page */
 export type ProductFamiliesMetadataValueList = Array<ProductFamiliesMetadataDetails>;
-export const ProductFamiliesMetadataValueList = /*@__PURE__*/ S.Array(
+const ProductFamiliesMetadataValueList = /*@__PURE__*/ S.Array(
   ProductFamiliesMetadataDetails,
 ) as any as S.Schema<ProductFamiliesMetadataValueList>;
 
@@ -2891,7 +2866,7 @@ export interface ProductFamiliesMetadata {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ProductFamiliesMetadata = /*@__PURE__*/ S.suspend(() =>
+const ProductFamiliesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ProductFamiliesMetadataValueList,
     nextLink: S.optional(S.String),
@@ -2914,7 +2889,7 @@ export interface OrderItemsReturnRequest {
   /** Shipping Box required. */
   shippingBoxRequired?: boolean;
 }
-export const OrderItemsReturnRequest = /*@__PURE__*/ S.suspend(() =>
+const OrderItemsReturnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2934,7 +2909,7 @@ export const OrderItemsReturnRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrderItemsReturnRequest" }) as any as S.Schema<OrderItemsReturnRequest>;
 
 export interface OrderItemsReturnResponse {}
-export const OrderItemsReturnResponse =
+const OrderItemsReturnResponse =
   CancelOrderItemResponse as any as S.Schema<OrderItemsReturnResponse>;
 
 /** Address Update Properties. */
@@ -2944,7 +2919,7 @@ export interface AddressUpdateProperties {
   /** Contact details for the address. */
   contactDetails?: ContactDetails;
 }
-export const AddressUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const AddressUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shippingAddress: S.optional(ShippingAddress),
     contactDetails: S.optional(ContactDetails),
@@ -2953,7 +2928,7 @@ export const AddressUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
 export type UpdateAddressRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAddressRequestTagsMap =
+const UpdateAddressRequestTagsMap =
   CreateAddressRequestTagsMap as any as S.Schema<UpdateAddressRequestTagsMap>;
 
 export interface UpdateAddressRequest {
@@ -2968,7 +2943,7 @@ export interface UpdateAddressRequest {
   /** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
   tags?: UpdateAddressRequestTagsMap;
 }
-export const UpdateAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2987,9 +2962,6 @@ export const UpdateAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAddressResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAddressResponseTagsMap =
-  CreateAddressRequestTagsMap as any as S.Schema<UpdateAddressResponseTagsMap>;
-
 export interface UpdateAddressResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3006,12 +2978,11 @@ export interface UpdateAddressResponse {
   /** Properties of an address. */
   properties: AddressProperties;
 }
-export const UpdateAddressResponse =
-  CreateAddressResponse as any as S.Schema<UpdateAddressResponse>;
+const UpdateAddressResponse = CreateAddressResponse as any as S.Schema<UpdateAddressResponse>;
 
 /** Additional notification email list. */
 export type OrderItemUpdatePropertiesInputNotificationEmailListList = Array<string>;
-export const OrderItemUpdatePropertiesInputNotificationEmailListList =
+const OrderItemUpdatePropertiesInputNotificationEmailListList =
   ContactDetailsEmailListList as any as S.Schema<OrderItemUpdatePropertiesInputNotificationEmailListList>;
 
 /** Represents product details patchable properties. */
@@ -3019,7 +2990,7 @@ export interface ProductDetailsUpdateParameterInput {
   /** Device Provisioning Details for Parent. */
   parentProvisioningDetails?: ProvisioningDetailsInput;
 }
-export const ProductDetailsUpdateParameterInput = /*@__PURE__*/ S.suspend(() =>
+const ProductDetailsUpdateParameterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentProvisioningDetails: S.optional(ProvisioningDetailsInput),
   }),
@@ -3034,7 +3005,7 @@ export interface OrderItemDetailsUpdateParameterInput {
   /** Site Related Details. */
   siteDetails?: SiteDetails;
 }
-export const OrderItemDetailsUpdateParameterInput = /*@__PURE__*/ S.suspend(() =>
+const OrderItemDetailsUpdateParameterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productDetails: S.optional(ProductDetailsUpdateParameterInput),
     siteDetails: S.optional(SiteDetails),
@@ -3054,7 +3025,7 @@ export interface OrderItemUpdatePropertiesInput {
   /** Represents order item details. */
   orderItemDetails?: OrderItemDetailsUpdateParameterInput;
 }
-export const OrderItemUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const OrderItemUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardAddress: S.optional(AddressPropertiesInput),
     preferences: S.optional(Preferences),
@@ -3067,7 +3038,7 @@ export const OrderItemUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
 export type UpdateOrderItemRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateOrderItemRequestTagsMap =
+const UpdateOrderItemRequestTagsMap =
   CreateAddressRequestTagsMap as any as S.Schema<UpdateOrderItemRequestTagsMap>;
 
 export interface UpdateOrderItemRequest {
@@ -3084,7 +3055,7 @@ export interface UpdateOrderItemRequest {
   /** Msi identity of the resource */
   identity?: ResourceIdentityInput;
 }
-export const UpdateOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3104,9 +3075,6 @@ export const UpdateOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateOrderItemResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateOrderItemResponseTagsMap =
-  CreateAddressRequestTagsMap as any as S.Schema<UpdateOrderItemResponseTagsMap>;
-
 export interface UpdateOrderItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3125,8 +3093,7 @@ export interface UpdateOrderItemResponse {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const UpdateOrderItemResponse =
-  CreateOrderItemResponse as any as S.Schema<UpdateOrderItemResponse>;
+const UpdateOrderItemResponse = CreateOrderItemResponse as any as S.Schema<UpdateOrderItemResponse>;
 
 export type CancelOrderItemError = AzureOpError;
 /** Cancel order item. */

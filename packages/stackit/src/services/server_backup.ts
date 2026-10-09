@@ -37,7 +37,7 @@ export class NotFound
   ) {}
 
 export type CreateBackupRequestVolumeIdsList = Array<string>;
-export const CreateBackupRequestVolumeIdsList = /*@__PURE__*/ S.Array(
+const CreateBackupRequestVolumeIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateBackupRequestVolumeIdsList>;
 
@@ -54,7 +54,7 @@ export interface CreateBackupRequest {
   retentionPeriod: number;
   volumeIds?: CreateBackupRequestVolumeIdsList;
 }
-export const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -75,14 +75,14 @@ export const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BackupJob {
   id: string;
 }
-export const BackupJob = /*@__PURE__*/ S.suspend(() =>
+const BackupJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
 ).annotate({ identifier: "BackupJob" }) as any as S.Schema<BackupJob>;
 
 export type BackupPropertiesVolumeIdsList = Array<string>;
-export const BackupPropertiesVolumeIdsList =
+const BackupPropertiesVolumeIdsList =
   CreateBackupRequestVolumeIdsList as any as S.Schema<BackupPropertiesVolumeIdsList>;
 
 export interface BackupProperties {
@@ -92,7 +92,7 @@ export interface BackupProperties {
   retentionPeriod: number;
   volumeIds?: BackupPropertiesVolumeIdsList;
 }
-export const BackupProperties = /*@__PURE__*/ S.suspend(() =>
+const BackupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     retentionPeriod: S.Number,
@@ -114,7 +114,7 @@ export interface CreateBackupScheduleRequest {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
-export const CreateBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -143,7 +143,7 @@ export interface BackupSchedule {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
-export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
+const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupProperties: S.optional(BackupProperties),
     enabled: S.Boolean,
@@ -165,7 +165,7 @@ export interface DeleteBackupRequest {
   /** force delete the backup */
   force?: boolean;
 }
-export const DeleteBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -183,7 +183,7 @@ export const DeleteBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBackupRequest" }) as any as S.Schema<DeleteBackupRequest>;
 
 export interface DeleteBackupResponse {}
-export const DeleteBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteBackupResponse",
 }) as any as S.Schema<DeleteBackupResponse>;
 
@@ -197,7 +197,7 @@ export interface DeleteBackupScheduleRequest {
   /** backup schedule id */
   backupScheduleId: string;
 }
-export const DeleteBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -216,7 +216,7 @@ export const DeleteBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBackupScheduleRequest>;
 
 export interface DeleteBackupScheduleResponse {}
-export const DeleteBackupScheduleResponse =
+const DeleteBackupScheduleResponse =
   DeleteBackupResponse as any as S.Schema<DeleteBackupScheduleResponse>;
 
 export interface DeleteVolumeBackupRequest {
@@ -233,7 +233,7 @@ export interface DeleteVolumeBackupRequest {
   /** Force delete the volume backup */
   force?: boolean;
 }
-export const DeleteVolumeBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVolumeBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -254,7 +254,7 @@ export const DeleteVolumeBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVolumeBackupRequest>;
 
 export interface DeleteVolumeBackupResponse {}
-export const DeleteVolumeBackupResponse =
+const DeleteVolumeBackupResponse =
   DeleteBackupResponse as any as S.Schema<DeleteVolumeBackupResponse>;
 
 export interface DisableServiceResourceRequest {
@@ -265,7 +265,7 @@ export interface DisableServiceResourceRequest {
   /** server id */
   serverId: string;
 }
-export const DisableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -283,7 +283,7 @@ export const DisableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableServiceResourceRequest>;
 
 export interface DisableServiceResourceResponse {}
-export const DisableServiceResourceResponse =
+const DisableServiceResourceResponse =
   DeleteBackupResponse as any as S.Schema<DisableServiceResourceResponse>;
 
 export interface EnableServiceResourceRequest {
@@ -295,7 +295,7 @@ export interface EnableServiceResourceRequest {
   serverId: string;
   backupPolicyId?: string;
 }
-export const EnableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -314,7 +314,7 @@ export const EnableServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableServiceResourceRequest>;
 
 export interface EnableServiceResourceResponse {}
-export const EnableServiceResourceResponse =
+const EnableServiceResourceResponse =
   DeleteBackupResponse as any as S.Schema<EnableServiceResourceResponse>;
 
 export interface GetBackupRequest {
@@ -327,7 +327,7 @@ export interface GetBackupRequest {
   /** id of the backup */
   backupId: string;
 }
-export const GetBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -352,7 +352,7 @@ export type BackupStatus =
   | "error-creating"
   | "error-deleting"
   | "unrecognized";
-export const BackupStatus = S.String;
+const BackupStatus = S.String;
 
 export type BackupVolumeBackupsItemStatus =
   | "available"
@@ -364,7 +364,7 @@ export type BackupVolumeBackupsItemStatus =
   | "restoring"
   | "error-creating"
   | "unrecognized";
-export const BackupVolumeBackupsItemStatus = S.String;
+const BackupVolumeBackupsItemStatus = S.String;
 
 export interface BackupVolumeBackupsItem {
   id?: string;
@@ -374,7 +374,7 @@ export interface BackupVolumeBackupsItem {
   status?: BackupVolumeBackupsItemStatus;
   volumeId?: string;
 }
-export const BackupVolumeBackupsItem = /*@__PURE__*/ S.suspend(() =>
+const BackupVolumeBackupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     lastRestoredAt: S.optional(S.String),
@@ -386,7 +386,7 @@ export const BackupVolumeBackupsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupVolumeBackupsItem" }) as any as S.Schema<BackupVolumeBackupsItem>;
 
 export type BackupVolumeBackupsList = Array<BackupVolumeBackupsItem>;
-export const BackupVolumeBackupsList = /*@__PURE__*/ S.Array(
+const BackupVolumeBackupsList = /*@__PURE__*/ S.Array(
   BackupVolumeBackupsItem,
 ) as any as S.Schema<BackupVolumeBackupsList>;
 
@@ -400,7 +400,7 @@ export interface Backup {
   status: BackupStatus;
   volumeBackups?: BackupVolumeBackupsList;
 }
-export const Backup = /*@__PURE__*/ S.suspend(() =>
+const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     expireAt: S.String,
@@ -423,7 +423,7 @@ export interface GetBackupScheduleRequest {
   /** backup schedule id */
   backupScheduleId: string;
 }
-export const GetBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -447,7 +447,7 @@ export interface GetServiceResourceRequest {
   /** server id */
   serverId: string;
 }
-export const GetServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -467,7 +467,7 @@ export const GetServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetBackupServiceResponse {
   enabled?: boolean;
 }
-export const GetBackupServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -477,7 +477,7 @@ export interface ListBackupPoliciesRequest {
   /** project id */
   projectId: string;
 }
-export const ListBackupPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -496,7 +496,7 @@ export interface BackupPolicyBackupProperties {
   name?: string;
   retentionPeriod?: number;
 }
-export const BackupPolicyBackupProperties = /*@__PURE__*/ S.suspend(() =>
+const BackupPolicyBackupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     retentionPeriod: S.optional(S.Number),
@@ -515,7 +515,7 @@ export interface BackupPolicy {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule?: string;
 }
-export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
+const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupProperties: S.optional(BackupPolicyBackupProperties),
     default: S.optional(S.Boolean),
@@ -528,14 +528,14 @@ export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
 
 export type GetBackupPoliciesResponseItemsList = Array<BackupPolicy>;
-export const GetBackupPoliciesResponseItemsList = /*@__PURE__*/ S.Array(
+const GetBackupPoliciesResponseItemsList = /*@__PURE__*/ S.Array(
   BackupPolicy,
 ) as any as S.Schema<GetBackupPoliciesResponseItemsList>;
 
 export interface GetBackupPoliciesResponse {
   items?: GetBackupPoliciesResponseItemsList;
 }
-export const GetBackupPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(GetBackupPoliciesResponseItemsList),
   }),
@@ -551,7 +551,7 @@ export interface ListBackupsRequest {
   /** server id */
   serverId: string;
 }
-export const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -567,14 +567,14 @@ export const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBackupsRequest" }) as any as S.Schema<ListBackupsRequest>;
 
 export type GetBackupsListResponseItemsList = Array<Backup>;
-export const GetBackupsListResponseItemsList = /*@__PURE__*/ S.Array(
+const GetBackupsListResponseItemsList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<GetBackupsListResponseItemsList>;
 
 export interface GetBackupsListResponse {
   items?: GetBackupsListResponseItemsList;
 }
-export const GetBackupsListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(GetBackupsListResponseItemsList),
   }),
@@ -588,7 +588,7 @@ export interface ListBackupSchedulesRequest {
   /** server id */
   serverId: string;
 }
-export const ListBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -606,14 +606,14 @@ export const ListBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBackupSchedulesRequest>;
 
 export type GetBackupSchedulesResponseItemsList = Array<BackupSchedule>;
-export const GetBackupSchedulesResponseItemsList = /*@__PURE__*/ S.Array(
+const GetBackupSchedulesResponseItemsList = /*@__PURE__*/ S.Array(
   BackupSchedule,
 ) as any as S.Schema<GetBackupSchedulesResponseItemsList>;
 
 export interface GetBackupSchedulesResponse {
   items?: GetBackupSchedulesResponseItemsList;
 }
-export const GetBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(GetBackupSchedulesResponseItemsList),
   }),
@@ -622,7 +622,7 @@ export const GetBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBackupSchedulesResponse>;
 
 export type RestoreBackupRequestVolumeIdsList = Array<string>;
-export const RestoreBackupRequestVolumeIdsList =
+const RestoreBackupRequestVolumeIdsList =
   CreateBackupRequestVolumeIdsList as any as S.Schema<RestoreBackupRequestVolumeIdsList>;
 
 export interface RestoreBackupRequest {
@@ -637,7 +637,7 @@ export interface RestoreBackupRequest {
   startServerAfterRestore: boolean;
   volumeIds?: RestoreBackupRequestVolumeIdsList;
 }
-export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -656,7 +656,7 @@ export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreBackupRequest" }) as any as S.Schema<RestoreBackupRequest>;
 
 export interface RestoreBackupResponse {}
-export const RestoreBackupResponse = DeleteBackupResponse as any as S.Schema<RestoreBackupResponse>;
+const RestoreBackupResponse = DeleteBackupResponse as any as S.Schema<RestoreBackupResponse>;
 
 export interface RestoreVolumeBackupRequest {
   /** project id */
@@ -671,7 +671,7 @@ export interface RestoreVolumeBackupRequest {
   volumeBackupId: string;
   restoreVolumeId: string;
 }
-export const RestoreVolumeBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreVolumeBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -692,7 +692,7 @@ export const RestoreVolumeBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreVolumeBackupRequest>;
 
 export interface RestoreVolumeBackupResponse {}
-export const RestoreVolumeBackupResponse =
+const RestoreVolumeBackupResponse =
   DeleteBackupResponse as any as S.Schema<RestoreVolumeBackupResponse>;
 
 export interface UpdateBackupScheduleRequest {
@@ -711,7 +711,7 @@ export interface UpdateBackupScheduleRequest {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
-export const UpdateBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBackupScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),

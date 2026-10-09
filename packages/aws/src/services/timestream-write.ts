@@ -161,18 +161,18 @@ export class ValidationException
 export type ClientRequestToken = string | redacted.Redacted<string>;
 export type StringValue256 = string;
 export type TimeUnit = "MILLISECONDS" | "SECONDS" | "MICROSECONDS" | "NANOSECONDS" | (string & {});
-export const TimeUnit = S.String;
+const TimeUnit = S.String;
 
 export type SchemaName = string;
 export interface DimensionMapping {
   SourceColumn?: string;
   DestinationColumn?: string;
 }
-export const DimensionMapping = /*@__PURE__*/ S.suspend(() =>
+const DimensionMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SourceColumn: S.optional(S.String), DestinationColumn: S.optional(S.String) }),
 ).annotate({ identifier: "DimensionMapping" }) as any as S.Schema<DimensionMapping>;
 export type DimensionMappings = DimensionMapping[];
-export const DimensionMappings = /*@__PURE__*/ S.Array(DimensionMapping);
+const DimensionMappings = /*@__PURE__*/ S.Array(DimensionMapping);
 export type ScalarMeasureValueType =
   | "DOUBLE"
   | "BIGINT"
@@ -180,14 +180,14 @@ export type ScalarMeasureValueType =
   | "VARCHAR"
   | "TIMESTAMP"
   | (string & {});
-export const ScalarMeasureValueType = S.String;
+const ScalarMeasureValueType = S.String;
 
 export interface MultiMeasureAttributeMapping {
   SourceColumn: string;
   TargetMultiMeasureAttributeName?: string;
   MeasureValueType?: ScalarMeasureValueType;
 }
-export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
+const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceColumn: S.String,
     TargetMultiMeasureAttributeName: S.optional(S.String),
@@ -197,12 +197,12 @@ export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiMeasureAttributeMapping",
 }) as any as S.Schema<MultiMeasureAttributeMapping>;
 export type MultiMeasureAttributeMappingList = MultiMeasureAttributeMapping[];
-export const MultiMeasureAttributeMappingList = /*@__PURE__*/ S.Array(MultiMeasureAttributeMapping);
+const MultiMeasureAttributeMappingList = /*@__PURE__*/ S.Array(MultiMeasureAttributeMapping);
 export interface MultiMeasureMappings {
   TargetMultiMeasureName?: string;
   MultiMeasureAttributeMappings: MultiMeasureAttributeMapping[];
 }
-export const MultiMeasureMappings = /*@__PURE__*/ S.suspend(() =>
+const MultiMeasureMappings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TargetMultiMeasureName: S.optional(S.String),
     MultiMeasureAttributeMappings: MultiMeasureAttributeMappingList,
@@ -216,7 +216,7 @@ export type MeasureValueType =
   | "TIMESTAMP"
   | "MULTI"
   | (string & {});
-export const MeasureValueType = S.String;
+const MeasureValueType = S.String;
 
 export interface MixedMeasureMapping {
   MeasureName?: string;
@@ -225,7 +225,7 @@ export interface MixedMeasureMapping {
   MeasureValueType: MeasureValueType;
   MultiMeasureAttributeMappings?: MultiMeasureAttributeMapping[];
 }
-export const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
+const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MeasureName: S.optional(S.String),
     SourceColumn: S.optional(S.String),
@@ -235,7 +235,7 @@ export const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MixedMeasureMapping" }) as any as S.Schema<MixedMeasureMapping>;
 export type MixedMeasureMappingList = MixedMeasureMapping[];
-export const MixedMeasureMappingList = /*@__PURE__*/ S.Array(MixedMeasureMapping);
+const MixedMeasureMappingList = /*@__PURE__*/ S.Array(MixedMeasureMapping);
 export interface DataModel {
   TimeColumn?: string;
   TimeUnit?: TimeUnit;
@@ -244,7 +244,7 @@ export interface DataModel {
   MixedMeasureMappings?: MixedMeasureMapping[];
   MeasureNameColumn?: string;
 }
-export const DataModel = /*@__PURE__*/ S.suspend(() =>
+const DataModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TimeColumn: S.optional(S.String),
     TimeUnit: S.optional(TimeUnit),
@@ -260,14 +260,14 @@ export interface DataModelS3Configuration {
   BucketName?: string;
   ObjectKey?: string;
 }
-export const DataModelS3Configuration = /*@__PURE__*/ S.suspend(() =>
+const DataModelS3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BucketName: S.optional(S.String), ObjectKey: S.optional(S.String) }),
 ).annotate({ identifier: "DataModelS3Configuration" }) as any as S.Schema<DataModelS3Configuration>;
 export interface DataModelConfiguration {
   DataModel?: DataModel;
   DataModelS3Configuration?: DataModelS3Configuration;
 }
-export const DataModelConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DataModelConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataModel: S.optional(DataModel),
     DataModelS3Configuration: S.optional(DataModelS3Configuration),
@@ -277,7 +277,7 @@ export interface DataSourceS3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
 }
-export const DataSourceS3Configuration = /*@__PURE__*/ S.suspend(() =>
+const DataSourceS3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BucketName: S.String, ObjectKeyPrefix: S.optional(S.String) }),
 ).annotate({
   identifier: "DataSourceS3Configuration",
@@ -290,7 +290,7 @@ export interface CsvConfiguration {
   NullValue?: string;
   TrimWhiteSpace?: boolean;
 }
-export const CsvConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CsvConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ColumnSeparator: S.optional(S.String),
     EscapeChar: S.optional(S.String),
@@ -300,14 +300,14 @@ export const CsvConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CsvConfiguration" }) as any as S.Schema<CsvConfiguration>;
 export type BatchLoadDataFormat = "CSV" | (string & {});
-export const BatchLoadDataFormat = S.String;
+const BatchLoadDataFormat = S.String;
 
 export interface DataSourceConfiguration {
   DataSourceS3Configuration: DataSourceS3Configuration;
   CsvConfiguration?: CsvConfiguration;
   DataFormat: BatchLoadDataFormat;
 }
-export const DataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataSourceS3Configuration: DataSourceS3Configuration,
     CsvConfiguration: S.optional(CsvConfiguration),
@@ -316,7 +316,7 @@ export const DataSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSourceConfiguration" }) as any as S.Schema<DataSourceConfiguration>;
 export type S3ObjectKeyPrefix = string;
 export type S3EncryptionOption = "SSE_S3" | "SSE_KMS" | (string & {});
-export const S3EncryptionOption = S.String;
+const S3EncryptionOption = S.String;
 
 export type StringValue2048 = string;
 export interface ReportS3Configuration {
@@ -325,7 +325,7 @@ export interface ReportS3Configuration {
   EncryptionOption?: S3EncryptionOption;
   KmsKeyId?: string;
 }
-export const ReportS3Configuration = /*@__PURE__*/ S.suspend(() =>
+const ReportS3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BucketName: S.String,
     ObjectKeyPrefix: S.optional(S.String),
@@ -336,7 +336,7 @@ export const ReportS3Configuration = /*@__PURE__*/ S.suspend(() =>
 export interface ReportConfiguration {
   ReportS3Configuration?: ReportS3Configuration;
 }
-export const ReportConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ReportConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReportS3Configuration: S.optional(ReportS3Configuration) }),
 ).annotate({ identifier: "ReportConfiguration" }) as any as S.Schema<ReportConfiguration>;
 export type ResourceCreateAPIName = string;
@@ -350,7 +350,7 @@ export interface CreateBatchLoadTaskRequest {
   TargetTableName: string;
   RecordVersion?: number;
 }
-export const CreateBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
     DataModelConfiguration: S.optional(DataModelConfiguration),
@@ -367,7 +367,7 @@ export type BatchLoadTaskId = string;
 export interface CreateBatchLoadTaskResponse {
   TaskId: string;
 }
-export const CreateBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TaskId: S.String }),
 ).annotate({
   identifier: "CreateBatchLoadTaskResponse",
@@ -378,17 +378,17 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+  identifier: "Tag",
+}) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateDatabaseRequest {
   DatabaseName: string;
   KmsKeyId?: string;
   Tags?: Tag[];
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DatabaseName: S.String,
     KmsKeyId: S.optional(S.String),
@@ -404,7 +404,7 @@ export interface Database {
   CreationTime?: Date;
   LastUpdatedTime?: Date;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     DatabaseName: S.optional(S.String),
@@ -417,7 +417,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDatabaseResponse {
   Database?: Database;
 }
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Database: S.optional(Database) }),
 ).annotate({ identifier: "CreateDatabaseResponse" }) as any as S.Schema<CreateDatabaseResponse>;
 export type MemoryStoreRetentionPeriodInHours = number;
@@ -426,7 +426,7 @@ export interface RetentionProperties {
   MemoryStoreRetentionPeriodInHours: number;
   MagneticStoreRetentionPeriodInDays: number;
 }
-export const RetentionProperties = /*@__PURE__*/ S.suspend(() =>
+const RetentionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MemoryStoreRetentionPeriodInHours: S.Number,
     MagneticStoreRetentionPeriodInDays: S.Number,
@@ -438,7 +438,7 @@ export interface S3Configuration {
   EncryptionOption?: S3EncryptionOption;
   KmsKeyId?: string;
 }
-export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
+const S3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BucketName: S.optional(S.String),
     ObjectKeyPrefix: S.optional(S.String),
@@ -449,7 +449,7 @@ export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
 export interface MagneticStoreRejectedDataLocation {
   S3Configuration?: S3Configuration;
 }
-export const MagneticStoreRejectedDataLocation = /*@__PURE__*/ S.suspend(() =>
+const MagneticStoreRejectedDataLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Configuration: S.optional(S3Configuration) }),
 ).annotate({
   identifier: "MagneticStoreRejectedDataLocation",
@@ -458,7 +458,7 @@ export interface MagneticStoreWriteProperties {
   EnableMagneticStoreWrites: boolean;
   MagneticStoreRejectedDataLocation?: MagneticStoreRejectedDataLocation;
 }
-export const MagneticStoreWriteProperties = /*@__PURE__*/ S.suspend(() =>
+const MagneticStoreWriteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnableMagneticStoreWrites: S.Boolean,
     MagneticStoreRejectedDataLocation: S.optional(MagneticStoreRejectedDataLocation),
@@ -467,17 +467,17 @@ export const MagneticStoreWriteProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "MagneticStoreWriteProperties",
 }) as any as S.Schema<MagneticStoreWriteProperties>;
 export type PartitionKeyType = "DIMENSION" | "MEASURE" | (string & {});
-export const PartitionKeyType = S.String;
+const PartitionKeyType = S.String;
 
 export type PartitionKeyEnforcementLevel = "REQUIRED" | "OPTIONAL" | (string & {});
-export const PartitionKeyEnforcementLevel = S.String;
+const PartitionKeyEnforcementLevel = S.String;
 
 export interface PartitionKey {
   Type: PartitionKeyType;
   Name?: string;
   EnforcementInRecord?: PartitionKeyEnforcementLevel;
 }
-export const PartitionKey = /*@__PURE__*/ S.suspend(() =>
+const PartitionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: PartitionKeyType,
     Name: S.optional(S.String),
@@ -485,11 +485,11 @@ export const PartitionKey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PartitionKey" }) as any as S.Schema<PartitionKey>;
 export type PartitionKeyList = PartitionKey[];
-export const PartitionKeyList = /*@__PURE__*/ S.Array(PartitionKey);
+const PartitionKeyList = /*@__PURE__*/ S.Array(PartitionKey);
 export interface Schema {
   CompositePartitionKey?: PartitionKey[];
 }
-export const Schema = /*@__PURE__*/ S.suspend(() =>
+const Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CompositePartitionKey: S.optional(PartitionKeyList) }),
 ).annotate({ identifier: "Schema" }) as any as S.Schema<Schema>;
 export interface CreateTableRequest {
@@ -500,7 +500,7 @@ export interface CreateTableRequest {
   MagneticStoreWriteProperties?: MagneticStoreWriteProperties;
   Schema?: Schema;
 }
-export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DatabaseName: S.String,
     TableName: S.String,
@@ -511,7 +511,7 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateTableRequest" }) as any as S.Schema<CreateTableRequest>;
 export type TableStatus = "ACTIVE" | "DELETING" | "RESTORING" | (string & {});
-export const TableStatus = S.String;
+const TableStatus = S.String;
 
 export interface Table {
   Arn?: string;
@@ -524,7 +524,7 @@ export interface Table {
   MagneticStoreWriteProperties?: MagneticStoreWriteProperties;
   Schema?: Schema;
 }
-export const Table = /*@__PURE__*/ S.suspend(() =>
+const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     TableName: S.optional(S.String),
@@ -540,36 +540,36 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTableResponse {
   Table?: Table;
 }
-export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Table: S.optional(Table) }),
 ).annotate({ identifier: "CreateTableResponse" }) as any as S.Schema<CreateTableResponse>;
 export interface DeleteDatabaseRequest {
   DatabaseName: string;
 }
-export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatabaseName: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDatabaseResponse",
 }) as any as S.Schema<DeleteDatabaseResponse>;
 export interface DeleteTableRequest {
   DatabaseName: string;
   TableName: string;
 }
-export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatabaseName: S.String, TableName: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteTableRequest" }) as any as S.Schema<DeleteTableRequest>;
 export interface DeleteTableResponse {}
-export const DeleteTableResponse = DeleteDatabaseResponse as any as S.Schema<DeleteTableResponse>;
+const DeleteTableResponse = DeleteDatabaseResponse as any as S.Schema<DeleteTableResponse>;
 export interface DescribeBatchLoadTaskRequest {
   TaskId: string;
 }
-export const DescribeBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TaskId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -584,7 +584,7 @@ export interface BatchLoadProgressReport {
   FileFailures?: number;
   BytesMetered?: number;
 }
-export const BatchLoadProgressReport = /*@__PURE__*/ S.suspend(() =>
+const BatchLoadProgressReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecordsProcessed: S.optional(S.Number),
     RecordsIngested: S.optional(S.Number),
@@ -602,7 +602,7 @@ export type BatchLoadStatus =
   | "PROGRESS_STOPPED"
   | "PENDING_RESUME"
   | (string & {});
-export const BatchLoadStatus = S.String;
+const BatchLoadStatus = S.String;
 
 export interface BatchLoadTaskDescription {
   TaskId?: string;
@@ -619,7 +619,7 @@ export interface BatchLoadTaskDescription {
   LastUpdatedTime?: Date;
   ResumableUntil?: Date;
 }
-export const BatchLoadTaskDescription = /*@__PURE__*/ S.suspend(() =>
+const BatchLoadTaskDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TaskId: S.optional(S.String),
     ErrorMessage: S.optional(S.String),
@@ -639,7 +639,7 @@ export const BatchLoadTaskDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeBatchLoadTaskResponse {
   BatchLoadTaskDescription: BatchLoadTaskDescription;
 }
-export const DescribeBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BatchLoadTaskDescription: BatchLoadTaskDescription }),
 ).annotate({
   identifier: "DescribeBatchLoadTaskResponse",
@@ -647,7 +647,7 @@ export const DescribeBatchLoadTaskResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDatabaseRequest {
   DatabaseName: string;
 }
-export const DescribeDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatabaseName: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -655,25 +655,25 @@ export const DescribeDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDatabaseResponse {
   Database?: Database;
 }
-export const DescribeDatabaseResponse =
+const DescribeDatabaseResponse =
   CreateDatabaseResponse as any as S.Schema<DescribeDatabaseResponse>;
 export interface DescribeEndpointsRequest {}
-export const DescribeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DescribeEndpointsRequest" }) as any as S.Schema<DescribeEndpointsRequest>;
 export interface Endpoint {
   Address: string;
   CachePeriodInMinutes: number;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Address: S.String, CachePeriodInMinutes: S.Number }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 export type Endpoints = Endpoint[];
-export const Endpoints = /*@__PURE__*/ S.Array(Endpoint);
+const Endpoints = /*@__PURE__*/ S.Array(Endpoint);
 export interface DescribeEndpointsResponse {
   Endpoints: Endpoint[];
 }
-export const DescribeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoints: Endpoints }),
 ).annotate({
   identifier: "DescribeEndpointsResponse",
@@ -682,7 +682,7 @@ export interface DescribeTableRequest {
   DatabaseName: string;
   TableName: string;
 }
-export const DescribeTableRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatabaseName: S.String, TableName: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -690,14 +690,14 @@ export const DescribeTableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeTableResponse {
   Table?: Table;
 }
-export const DescribeTableResponse = CreateTableResponse as any as S.Schema<DescribeTableResponse>;
+const DescribeTableResponse = CreateTableResponse as any as S.Schema<DescribeTableResponse>;
 export type PageLimit = number;
 export interface ListBatchLoadTasksRequest {
   NextToken?: string;
   MaxResults?: number;
   TaskStatus?: BatchLoadStatus;
 }
-export const ListBatchLoadTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBatchLoadTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -715,7 +715,7 @@ export interface BatchLoadTask {
   LastUpdatedTime?: Date;
   ResumableUntil?: Date;
 }
-export const BatchLoadTask = /*@__PURE__*/ S.suspend(() =>
+const BatchLoadTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TaskId: S.optional(S.String),
     TaskStatus: S.optional(BatchLoadStatus),
@@ -727,12 +727,12 @@ export const BatchLoadTask = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchLoadTask" }) as any as S.Schema<BatchLoadTask>;
 export type BatchLoadTaskList = BatchLoadTask[];
-export const BatchLoadTaskList = /*@__PURE__*/ S.Array(BatchLoadTask);
+const BatchLoadTaskList = /*@__PURE__*/ S.Array(BatchLoadTask);
 export interface ListBatchLoadTasksResponse {
   NextToken?: string;
   BatchLoadTasks?: BatchLoadTask[];
 }
-export const ListBatchLoadTasksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBatchLoadTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), BatchLoadTasks: S.optional(BatchLoadTaskList) }),
 ).annotate({
   identifier: "ListBatchLoadTasksResponse",
@@ -742,18 +742,18 @@ export interface ListDatabasesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "ListDatabasesRequest" }) as any as S.Schema<ListDatabasesRequest>;
 export type DatabaseList = Database[];
-export const DatabaseList = /*@__PURE__*/ S.Array(Database);
+const DatabaseList = /*@__PURE__*/ S.Array(Database);
 export interface ListDatabasesResponse {
   Databases?: Database[];
   NextToken?: string;
 }
-export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Databases: S.optional(DatabaseList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListDatabasesResponse" }) as any as S.Schema<ListDatabasesResponse>;
 export interface ListTablesRequest {
@@ -761,7 +761,7 @@ export interface ListTablesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DatabaseName: S.optional(S.String),
     NextToken: S.optional(S.String),
@@ -769,19 +769,19 @@ export const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListTablesRequest" }) as any as S.Schema<ListTablesRequest>;
 export type TableList = Table[];
-export const TableList = /*@__PURE__*/ S.Array(Table);
+const TableList = /*@__PURE__*/ S.Array(Table);
 export interface ListTablesResponse {
   Tables?: Table[];
   NextToken?: string;
 }
-export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tables: S.optional(TableList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListTablesResponse" }) as any as S.Schema<ListTablesResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -791,7 +791,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagList) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -799,7 +799,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ResumeBatchLoadTaskRequest {
   TaskId: string;
 }
-export const ResumeBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TaskId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -807,38 +807,37 @@ export const ResumeBatchLoadTaskRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResumeBatchLoadTaskRequest",
 }) as any as S.Schema<ResumeBatchLoadTaskRequest>;
 export interface ResumeBatchLoadTaskResponse {}
-export const ResumeBatchLoadTaskResponse =
+const ResumeBatchLoadTaskResponse =
   DeleteDatabaseResponse as any as S.Schema<ResumeBatchLoadTaskResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = DeleteDatabaseResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteDatabaseResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
-  DeleteDatabaseResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteDatabaseResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDatabaseRequest {
   DatabaseName: string;
   KmsKeyId: string;
 }
-export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatabaseName: S.String, KmsKeyId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -846,8 +845,7 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDatabaseResponse {
   Database?: Database;
 }
-export const UpdateDatabaseResponse =
-  CreateDatabaseResponse as any as S.Schema<UpdateDatabaseResponse>;
+const UpdateDatabaseResponse = CreateDatabaseResponse as any as S.Schema<UpdateDatabaseResponse>;
 export interface UpdateTableRequest {
   DatabaseName: string;
   TableName: string;
@@ -855,7 +853,7 @@ export interface UpdateTableRequest {
   MagneticStoreWriteProperties?: MagneticStoreWriteProperties;
   Schema?: Schema;
 }
-export const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DatabaseName: S.String,
     TableName: S.String,
@@ -867,31 +865,31 @@ export const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTableResponse {
   Table?: Table;
 }
-export const UpdateTableResponse = CreateTableResponse as any as S.Schema<UpdateTableResponse>;
+const UpdateTableResponse = CreateTableResponse as any as S.Schema<UpdateTableResponse>;
 export type SchemaValue = string;
 export type DimensionValueType = "VARCHAR" | (string & {});
-export const DimensionValueType = S.String;
+const DimensionValueType = S.String;
 
 export interface Dimension {
   Name: string;
   Value: string;
   DimensionValueType?: DimensionValueType;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Value: S.String, DimensionValueType: S.optional(DimensionValueType) }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 export type Dimensions = Dimension[];
-export const Dimensions = /*@__PURE__*/ S.Array(Dimension);
+const Dimensions = /*@__PURE__*/ S.Array(Dimension);
 export interface MeasureValue {
   Name: string;
   Value: string;
   Type: MeasureValueType;
 }
-export const MeasureValue = /*@__PURE__*/ S.suspend(() =>
+const MeasureValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Value: S.String, Type: MeasureValueType }),
 ).annotate({ identifier: "MeasureValue" }) as any as S.Schema<MeasureValue>;
 export type MeasureValues = MeasureValue[];
-export const MeasureValues = /*@__PURE__*/ S.Array(MeasureValue);
+const MeasureValues = /*@__PURE__*/ S.Array(MeasureValue);
 export interface Record {
   Dimensions?: Dimension[];
   MeasureName?: string;
@@ -902,7 +900,7 @@ export interface Record {
   Version?: number;
   MeasureValues?: MeasureValue[];
 }
-export const Record = /*@__PURE__*/ S.suspend(() =>
+const Record = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Dimensions: S.optional(Dimensions),
     MeasureName: S.optional(S.String),
@@ -915,14 +913,14 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type Records = Record[];
-export const Records = /*@__PURE__*/ S.Array(Record);
+const Records = /*@__PURE__*/ S.Array(Record);
 export interface WriteRecordsRequest {
   DatabaseName: string;
   TableName: string;
   CommonAttributes?: Record;
   Records: Record[];
 }
-export const WriteRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DatabaseName: S.String,
     TableName: S.String,
@@ -935,7 +933,7 @@ export interface RecordsIngested {
   MemoryStore?: number;
   MagneticStore?: number;
 }
-export const RecordsIngested = /*@__PURE__*/ S.suspend(() =>
+const RecordsIngested = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Total: S.optional(S.Number),
     MemoryStore: S.optional(S.Number),
@@ -945,7 +943,7 @@ export const RecordsIngested = /*@__PURE__*/ S.suspend(() =>
 export interface WriteRecordsResponse {
   RecordsIngested?: RecordsIngested;
 }
-export const WriteRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const WriteRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecordsIngested: S.optional(RecordsIngested) }),
 ).annotate({ identifier: "WriteRecordsResponse" }) as any as S.Schema<WriteRecordsResponse>;
 export type ErrorMessage = string;
@@ -955,7 +953,7 @@ export interface RejectedRecord {
   Reason?: string;
   ExistingVersion?: number;
 }
-export const RejectedRecord = /*@__PURE__*/ S.suspend(() =>
+const RejectedRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecordIndex: S.optional(S.Number),
     Reason: S.optional(S.String),
@@ -963,7 +961,7 @@ export const RejectedRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RejectedRecord" }) as any as S.Schema<RejectedRecord>;
 export type RejectedRecords = RejectedRecord[];
-export const RejectedRecords = /*@__PURE__*/ S.Array(RejectedRecord);
+const RejectedRecords = /*@__PURE__*/ S.Array(RejectedRecord);
 export type CreateBatchLoadTaskError =
   | AccessDeniedException
   | ConflictException

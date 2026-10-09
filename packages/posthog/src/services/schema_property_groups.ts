@@ -37,7 +37,7 @@ export class NotFound
 
 /** * `DateTime` - DateTime * `String` - String * `Numeric` - Numeric * `Boolean` - Boolean * `Object` - Object */
 export type SchemaPropertyTypeEnum = "DateTime" | "String" | "Numeric" | "Boolean" | "Object";
-export const SchemaPropertyTypeEnum = S.String;
+const SchemaPropertyTypeEnum = S.String;
 
 export interface SchemaPropertyGroupPropertyInput {
   name?: string;
@@ -46,7 +46,7 @@ export interface SchemaPropertyGroupPropertyInput {
   is_optional_in_types?: boolean;
   description?: string;
 }
-export const SchemaPropertyGroupPropertyInput = /*@__PURE__*/ S.suspend(() =>
+const SchemaPropertyGroupPropertyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     property_type: S.optional(SchemaPropertyTypeEnum),
@@ -60,7 +60,7 @@ export const SchemaPropertyGroupPropertyInput = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateSchemaPropertyGroupRequestPropertiesList =
   Array<SchemaPropertyGroupPropertyInput>;
-export const CreateSchemaPropertyGroupRequestPropertiesList = /*@__PURE__*/ S.Array(
+const CreateSchemaPropertyGroupRequestPropertiesList = /*@__PURE__*/ S.Array(
   SchemaPropertyGroupPropertyInput,
 ) as any as S.Schema<CreateSchemaPropertyGroupRequestPropertiesList>;
 
@@ -71,7 +71,7 @@ export interface CreateSchemaPropertyGroupRequest {
   description?: string;
   properties?: CreateSchemaPropertyGroupRequestPropertiesList;
 }
-export const CreateSchemaPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSchemaPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -98,7 +98,7 @@ export interface SchemaPropertyGroupProperty {
   created_at?: string;
   updated_at?: string;
 }
-export const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
+const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -114,7 +114,7 @@ export const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupProperty>;
 
 export type SchemaPropertyGroupPropertiesList = Array<SchemaPropertyGroupProperty>;
-export const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ S.Array(
+const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ S.Array(
   SchemaPropertyGroupProperty,
 ) as any as S.Schema<SchemaPropertyGroupPropertiesList>;
 
@@ -122,7 +122,7 @@ export interface EventDefinitionBasic {
   id?: string;
   name?: string;
 }
-export const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
+const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -130,12 +130,12 @@ export const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventDefinitionBasic" }) as any as S.Schema<EventDefinitionBasic>;
 
 export type SchemaPropertyGroupEventsList = Array<EventDefinitionBasic>;
-export const SchemaPropertyGroupEventsList = /*@__PURE__*/ S.Array(
+const SchemaPropertyGroupEventsList = /*@__PURE__*/ S.Array(
   EventDefinitionBasic,
 ) as any as S.Schema<SchemaPropertyGroupEventsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -151,14 +151,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -171,7 +166,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -195,7 +190,7 @@ export interface SchemaPropertyGroup {
   updated_at?: string;
   created_by?: UserBasic | null;
 }
-export const SchemaPropertyGroup = /*@__PURE__*/ S.suspend(() =>
+const SchemaPropertyGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -214,7 +209,7 @@ export interface GetSchemaPropertyGroupRequest {
   /** A UUID string identifying this schema property group. */
   id: string;
 }
-export const GetSchemaPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchemaPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -237,7 +232,7 @@ export interface ListSchemaPropertyGroupsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListSchemaPropertyGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchemaPropertyGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -250,7 +245,7 @@ export const ListSchemaPropertyGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSchemaPropertyGroupsRequest>;
 
 export type PaginatedSchemaPropertyGroupListResultsList = Array<SchemaPropertyGroup>;
-export const PaginatedSchemaPropertyGroupListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSchemaPropertyGroupListResultsList = /*@__PURE__*/ S.Array(
   SchemaPropertyGroup,
 ) as any as S.Schema<PaginatedSchemaPropertyGroupListResultsList>;
 
@@ -260,7 +255,7 @@ export interface PaginatedSchemaPropertyGroupList {
   previous?: string | null;
   results?: PaginatedSchemaPropertyGroupListResultsList;
 }
-export const PaginatedSchemaPropertyGroupList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSchemaPropertyGroupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -277,7 +272,7 @@ export interface SchemaPropertyGroupsDestroyRequest {
   /** A UUID string identifying this schema property group. */
   id: string;
 }
-export const SchemaPropertyGroupsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SchemaPropertyGroupsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -293,15 +288,13 @@ export const SchemaPropertyGroupsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupsDestroyRequest>;
 
 export interface SchemaPropertyGroupsDestroyResponse {}
-export const SchemaPropertyGroupsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const SchemaPropertyGroupsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SchemaPropertyGroupsDestroyResponse",
 }) as any as S.Schema<SchemaPropertyGroupsDestroyResponse>;
 
 export type UpdateSchemaPropertyGroupRequestPropertiesList =
   Array<SchemaPropertyGroupPropertyInput>;
-export const UpdateSchemaPropertyGroupRequestPropertiesList =
+const UpdateSchemaPropertyGroupRequestPropertiesList =
   CreateSchemaPropertyGroupRequestPropertiesList as any as S.Schema<UpdateSchemaPropertyGroupRequestPropertiesList>;
 
 export interface UpdateSchemaPropertyGroupRequest {
@@ -313,7 +306,7 @@ export interface UpdateSchemaPropertyGroupRequest {
   description?: string;
   properties?: UpdateSchemaPropertyGroupRequestPropertiesList;
 }
-export const UpdateSchemaPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSchemaPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -333,7 +326,7 @@ export const UpdateSchemaPropertyGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateSchemaPropertyGroupsPartialRequestPropertiesList =
   Array<SchemaPropertyGroupPropertyInput>;
-export const UpdateSchemaPropertyGroupsPartialRequestPropertiesList =
+const UpdateSchemaPropertyGroupsPartialRequestPropertiesList =
   CreateSchemaPropertyGroupRequestPropertiesList as any as S.Schema<UpdateSchemaPropertyGroupsPartialRequestPropertiesList>;
 
 export interface UpdateSchemaPropertyGroupsPartialRequest {
@@ -345,7 +338,7 @@ export interface UpdateSchemaPropertyGroupsPartialRequest {
   description?: string;
   properties?: UpdateSchemaPropertyGroupsPartialRequestPropertiesList;
 }
-export const UpdateSchemaPropertyGroupsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSchemaPropertyGroupsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

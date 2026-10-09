@@ -117,7 +117,7 @@ export interface CloseTunnelRequest {
   tunnelId: string;
   delete?: boolean;
 }
-export const CloseTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+const CloseTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tunnelId: S.String.pipe(T.HttpLabel("tunnelId")),
     delete: S.optional(S.Boolean).pipe(T.HttpQuery("delete")),
@@ -126,29 +126,29 @@ export const CloseTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CloseTunnelRequest" }) as any as S.Schema<CloseTunnelRequest>;
 export interface CloseTunnelResponse {}
-export const CloseTunnelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CloseTunnelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CloseTunnelResponse",
 }) as any as S.Schema<CloseTunnelResponse>;
 export interface DescribeTunnelRequest {
   tunnelId: string;
 }
-export const DescribeTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tunnelId: S.String.pipe(T.HttpLabel("tunnelId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tunnels/{tunnelId}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DescribeTunnelRequest" }) as any as S.Schema<DescribeTunnelRequest>;
 export type TunnelArn = string;
 export type TunnelStatus = "OPEN" | "CLOSED" | (string & {});
-export const TunnelStatus = S.String;
+const TunnelStatus = S.String;
 
 export type ConnectionStatus = "CONNECTED" | "DISCONNECTED" | (string & {});
-export const ConnectionStatus = S.String;
+const ConnectionStatus = S.String;
 
 export interface ConnectionState {
   status?: ConnectionStatus;
   lastUpdatedAt?: Date;
 }
-export const ConnectionState = /*@__PURE__*/ S.suspend(() =>
+const ConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ConnectionStatus),
     lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -158,19 +158,19 @@ export type Description = string;
 export type ThingName = string;
 export type Service = string;
 export type ServiceList = string[];
-export const ServiceList = /*@__PURE__*/ S.Array(S.String);
+const ServiceList = /*@__PURE__*/ S.Array(S.String);
 export interface DestinationConfig {
   thingName?: string;
   services: string[];
 }
-export const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ thingName: S.optional(S.String), services: ServiceList }),
 ).annotate({ identifier: "DestinationConfig" }) as any as S.Schema<DestinationConfig>;
 export type TimeoutInMin = number;
 export interface TimeoutConfig {
   maxLifetimeTimeoutMinutes?: number;
 }
-export const TimeoutConfig = /*@__PURE__*/ S.suspend(() =>
+const TimeoutConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxLifetimeTimeoutMinutes: S.optional(S.Number) }),
 ).annotate({ identifier: "TimeoutConfig" }) as any as S.Schema<TimeoutConfig>;
 export type TagKey = string;
@@ -179,11 +179,11 @@ export interface Tag {
   key: string;
   value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+  identifier: "Tag",
+}) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface Tunnel {
   tunnelId?: string;
   tunnelArn?: string;
@@ -197,7 +197,7 @@ export interface Tunnel {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const Tunnel = /*@__PURE__*/ S.suspend(() =>
+const Tunnel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tunnelId: S.optional(S.String),
     tunnelArn: S.optional(S.String),
@@ -215,14 +215,14 @@ export const Tunnel = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeTunnelResponse {
   tunnel?: Tunnel;
 }
-export const DescribeTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tunnel: S.optional(Tunnel) }),
 ).annotate({ identifier: "DescribeTunnelResponse" }) as any as S.Schema<DescribeTunnelResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
   ),
@@ -232,7 +232,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagList) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -244,7 +244,7 @@ export interface ListTunnelsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thingName: S.optional(S.String).pipe(T.HttpQuery("thingName")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -259,7 +259,7 @@ export interface TunnelSummary {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const TunnelSummary = /*@__PURE__*/ S.suspend(() =>
+const TunnelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tunnelId: S.optional(S.String),
     tunnelArn: S.optional(S.String),
@@ -270,12 +270,12 @@ export const TunnelSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TunnelSummary" }) as any as S.Schema<TunnelSummary>;
 export type TunnelSummaryList = TunnelSummary[];
-export const TunnelSummaryList = /*@__PURE__*/ S.Array(TunnelSummary);
+const TunnelSummaryList = /*@__PURE__*/ S.Array(TunnelSummary);
 export interface ListTunnelsResponse {
   tunnelSummaries?: TunnelSummary[];
   nextToken?: string;
 }
-export const ListTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tunnelSummaries: S.optional(TunnelSummaryList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListTunnelsResponse" }) as any as S.Schema<ListTunnelsResponse>;
 export interface OpenTunnelRequest {
@@ -284,7 +284,7 @@ export interface OpenTunnelRequest {
   destinationConfig?: DestinationConfig;
   timeoutConfig?: TimeoutConfig;
 }
-export const OpenTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+const OpenTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     tags: S.optional(TagList),
@@ -299,7 +299,7 @@ export interface OpenTunnelResponse {
   sourceAccessToken?: string | redacted.Redacted<string>;
   destinationAccessToken?: string | redacted.Redacted<string>;
 }
-export const OpenTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+const OpenTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tunnelId: S.optional(S.String),
     tunnelArn: S.optional(S.String),
@@ -308,14 +308,14 @@ export const OpenTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OpenTunnelResponse" }) as any as S.Schema<OpenTunnelResponse>;
 export type ClientMode = "SOURCE" | "DESTINATION" | "ALL" | (string & {});
-export const ClientMode = S.String;
+const ClientMode = S.String;
 
 export interface RotateTunnelAccessTokenRequest {
   tunnelId: string;
   clientMode: ClientMode;
   destinationConfig?: DestinationConfig;
 }
-export const RotateTunnelAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateTunnelAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tunnelId: S.String.pipe(T.HttpLabel("tunnelId")),
     clientMode: ClientMode,
@@ -338,7 +338,7 @@ export interface RotateTunnelAccessTokenResponse {
   sourceAccessToken?: string | redacted.Redacted<string>;
   destinationAccessToken?: string | redacted.Redacted<string>;
 }
-export const RotateTunnelAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateTunnelAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tunnelArn: S.optional(S.String),
     sourceAccessToken: S.optional(SensitiveString),
@@ -351,26 +351,26 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = CloseTunnelResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = CloseTunnelResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = ServiceList as any as S.Schema<TagKeyList>;
+const TagKeyList = ServiceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/untag" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = CloseTunnelResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = CloseTunnelResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type CloseTunnelError = ResourceNotFoundException | CommonErrors;
 /**

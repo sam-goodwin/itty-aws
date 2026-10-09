@@ -49,7 +49,7 @@ export class HostnameTlsSettingNotFound
   ) {}
 
 export type SettingsTlsDeleteRequestSettingId = "ciphers" | "min_tls_version" | "http2";
-export const SettingsTlsDeleteRequestSettingId = S.String;
+const SettingsTlsDeleteRequestSettingId = S.String;
 
 export interface DeleteSettingTlsRequest {
   /** Identifier. */
@@ -59,7 +59,7 @@ export interface DeleteSettingTlsRequest {
   /** The hostname for which the tls settings are set. */
   hostname: string;
 }
-export const DeleteSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: SettingsTlsDeleteRequestSettingId.pipe(T.Label("setting_id")),
@@ -76,17 +76,11 @@ export const DeleteSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSettingTlsRequest" }) as any as S.Schema<DeleteSettingTlsRequest>;
 
 export type SettingsTlsDeleteResponseValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
-export const SettingsTlsDeleteResponseValueCase0 = S.String;
-
 export type SettingsTlsDeleteResponseValueCase1List = Array<string>;
-export const SettingsTlsDeleteResponseValueCase1List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsTlsDeleteResponseValueCase1List>;
-
 export type SettingsTlsDeleteResponseValue =
   | SettingsTlsDeleteResponseValueCase0
   | SettingsTlsDeleteResponseValueCase1List;
-export const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -103,7 +97,7 @@ export interface DeleteSettingTlsResponse {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value?: SettingsTlsDeleteResponseValue | null;
 }
-export const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     hostname: S.optional(S.NullOr(S.String)),
@@ -114,7 +108,7 @@ export const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSettingTlsResponse" }) as any as S.Schema<DeleteSettingTlsResponse>;
 
 export type SettingsTlsGetRequestSettingId = "ciphers" | "min_tls_version" | "http2";
-export const SettingsTlsGetRequestSettingId = S.String;
+const SettingsTlsGetRequestSettingId = S.String;
 
 export interface GetSettingTlsRequest {
   /** Identifier. */
@@ -124,7 +118,7 @@ export interface GetSettingTlsRequest {
   /** The hostname for which the tls settings are set. */
   hostname: string;
 }
-export const GetSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: SettingsTlsGetRequestSettingId.pipe(T.Label("setting_id")),
@@ -141,16 +135,11 @@ export const GetSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSettingTlsRequest" }) as any as S.Schema<GetSettingTlsRequest>;
 
 export type SettingsTlsGetResponseValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
-export const SettingsTlsGetResponseValueCase0 = S.String;
-
 export type SettingsTlsGetResponseValueCase1List = Array<string>;
-export const SettingsTlsGetResponseValueCase1List =
-  SettingsTlsDeleteResponseValueCase1List as any as S.Schema<SettingsTlsGetResponseValueCase1List>;
-
 export type SettingsTlsGetResponseValue =
   | SettingsTlsGetResponseValueCase0
   | SettingsTlsGetResponseValueCase1List;
-export const SettingsTlsGetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+const SettingsTlsGetResponseValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -167,7 +156,7 @@ export interface GetSettingTlsResponse {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value?: SettingsTlsGetResponseValue | null;
 }
-export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     hostname: S.optional(S.NullOr(S.String)),
@@ -178,7 +167,7 @@ export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSettingTlsResponse" }) as any as S.Schema<GetSettingTlsResponse>;
 
 export type ListSettingsTlsRequestSettingId = "ciphers" | "min_tls_version" | "http2";
-export const ListSettingsTlsRequestSettingId = S.String;
+const ListSettingsTlsRequestSettingId = S.String;
 
 export interface ListSettingsTlsRequest {
   /** Identifier. */
@@ -186,7 +175,7 @@ export interface ListSettingsTlsRequest {
   /** The TLS Setting name. The value type depends on the setting: */
   settingId: ListSettingsTlsRequestSettingId | (string & {});
 }
-export const ListSettingsTlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSettingsTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: ListSettingsTlsRequestSettingId.pipe(T.Label("setting_id")),
@@ -198,16 +187,11 @@ export const ListSettingsTlsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSettingsTlsRequest" }) as any as S.Schema<ListSettingsTlsRequest>;
 
 export type ListSettingsTlsResultItemValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
-export const ListSettingsTlsResultItemValueCase0 = S.String;
-
 export type ListSettingsTlsResultItemValueCase1List = Array<string>;
-export const ListSettingsTlsResultItemValueCase1List =
-  SettingsTlsDeleteResponseValueCase1List as any as S.Schema<ListSettingsTlsResultItemValueCase1List>;
-
 export type ListSettingsTlsResultItemValue =
   | ListSettingsTlsResultItemValueCase0
   | ListSettingsTlsResultItemValueCase1List;
-export const ListSettingsTlsResultItemValue = /*@__PURE__*/ S.Unknown.pipe(
+const ListSettingsTlsResultItemValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -223,7 +207,7 @@ export interface ListSettingsTlsResultItem {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value?: ListSettingsTlsResultItemValue | null;
 }
-export const ListSettingsTlsResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListSettingsTlsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     hostname: S.optional(S.NullOr(S.String)),
@@ -236,30 +220,25 @@ export const ListSettingsTlsResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSettingsTlsResultItem>;
 
 export type ListSettingsTlsResultList = Array<ListSettingsTlsResultItem>;
-export const ListSettingsTlsResultList = /*@__PURE__*/ S.Array(
+const ListSettingsTlsResultList = /*@__PURE__*/ S.Array(
   ListSettingsTlsResultItem,
 ) as any as S.Schema<ListSettingsTlsResultList>;
 
 export type ListSettingsTlsResponse = ListSettingsTlsResultList;
-export const ListSettingsTlsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSettingsTlsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSettingsTlsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListSettingsTlsResponse" }) as any as S.Schema<ListSettingsTlsResponse>;
 
 export type SettingsTlsUpdateRequestSettingId = "ciphers" | "min_tls_version" | "http2";
-export const SettingsTlsUpdateRequestSettingId = S.String;
+const SettingsTlsUpdateRequestSettingId = S.String;
 
 export type SettingsTlsUpdateRequestValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
-export const SettingsTlsUpdateRequestValueCase0 = S.String;
-
 export type SettingsTlsUpdateRequestValueCase1List = Array<string>;
-export const SettingsTlsUpdateRequestValueCase1List =
-  SettingsTlsDeleteResponseValueCase1List as any as S.Schema<SettingsTlsUpdateRequestValueCase1List>;
-
 export type SettingsTlsUpdateRequestValue =
   | SettingsTlsUpdateRequestValueCase0
   | (string & {})
   | SettingsTlsUpdateRequestValueCase1List;
-export const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.Unknown.pipe(
+const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -273,7 +252,7 @@ export interface PutSettingTlsRequest {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value: SettingsTlsUpdateRequestValue;
 }
-export const PutSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: SettingsTlsUpdateRequestSettingId.pipe(T.Label("setting_id")),
@@ -291,16 +270,11 @@ export const PutSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSettingTlsRequest" }) as any as S.Schema<PutSettingTlsRequest>;
 
 export type SettingsTlsUpdateResponseValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
-export const SettingsTlsUpdateResponseValueCase0 = S.String;
-
 export type SettingsTlsUpdateResponseValueCase1List = Array<string>;
-export const SettingsTlsUpdateResponseValueCase1List =
-  SettingsTlsDeleteResponseValueCase1List as any as S.Schema<SettingsTlsUpdateResponseValueCase1List>;
-
 export type SettingsTlsUpdateResponseValue =
   | SettingsTlsUpdateResponseValueCase0
   | SettingsTlsUpdateResponseValueCase1List;
-export const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -317,7 +291,7 @@ export interface PutSettingTlsResponse {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value?: SettingsTlsUpdateResponseValue | null;
 }
-export const PutSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     hostname: S.optional(S.NullOr(S.String)),

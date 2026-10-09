@@ -10,13 +10,13 @@ export type { SlackOpError, SlackOpContext };
 
 /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
 export type CreateUsergroupRequestChannelsList = Array<string>;
-export const CreateUsergroupRequestChannelsList = /*@__PURE__*/ S.Array(
+const CreateUsergroupRequestChannelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateUsergroupRequestChannelsList>;
 
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type CreateUsergroupRequestAdditionalChannelsList = Array<string>;
-export const CreateUsergroupRequestAdditionalChannelsList =
+const CreateUsergroupRequestAdditionalChannelsList =
   CreateUsergroupRequestChannelsList as any as S.Schema<CreateUsergroupRequestAdditionalChannelsList>;
 
 export interface CreateUsergroupRequest {
@@ -37,7 +37,7 @@ export interface CreateUsergroupRequest {
   /** Configure this user group to show as a sidebar section for all group members. Note: Only relevant if group has 1 or more default channels added. */
   enable_section?: boolean;
 }
-export const CreateUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.optional(CreateUsergroupRequestChannelsList),
     additional_channels: S.optional(CreateUsergroupRequestAdditionalChannelsList),
@@ -55,7 +55,7 @@ export interface CreateUsergroupResponse {
   ok: boolean;
   usergroup: unknown;
 }
-export const CreateUsergroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateUsergroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     usergroup: S.Unknown,
@@ -70,7 +70,7 @@ export interface DisableUsergroupRequest {
   /** The encoded ID of the User Group to disable. */
   usergroup: string;
 }
-export const DisableUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_count: S.optional(S.Boolean),
     team_id: S.optional(S.String),
@@ -83,7 +83,7 @@ export interface DisableUsergroupResponse {
   ok: boolean;
   usergroup: unknown;
 }
-export const DisableUsergroupResponse =
+const DisableUsergroupResponse =
   CreateUsergroupResponse as any as S.Schema<DisableUsergroupResponse>;
 
 export interface EnableUsergroupRequest {
@@ -94,7 +94,7 @@ export interface EnableUsergroupRequest {
   /** The encoded ID of the User Group to enable. */
   usergroup: string;
 }
-export const EnableUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_count: S.optional(S.Boolean),
     team_id: S.optional(S.String),
@@ -107,8 +107,7 @@ export interface EnableUsergroupResponse {
   ok: boolean;
   usergroup: unknown;
 }
-export const EnableUsergroupResponse =
-  CreateUsergroupResponse as any as S.Schema<EnableUsergroupResponse>;
+const EnableUsergroupResponse = CreateUsergroupResponse as any as S.Schema<EnableUsergroupResponse>;
 
 export interface ListUsergroupsRequest {
   /** Include the number of users in each User Group. */
@@ -120,7 +119,7 @@ export interface ListUsergroupsRequest {
   /** The user group's encoded team ID. Required if org token is used. */
   team_id?: string;
 }
-export const ListUsergroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsergroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_count: S.optional(S.Boolean.pipe(T.Query())),
     include_disabled: S.optional(S.Boolean.pipe(T.Query())),
@@ -130,7 +129,7 @@ export const ListUsergroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsergroupsRequest" }) as any as S.Schema<ListUsergroupsRequest>;
 
 export type ListUsergroupsResponseUsergroupsList = Array<unknown>;
-export const ListUsergroupsResponseUsergroupsList = /*@__PURE__*/ S.Array(
+const ListUsergroupsResponseUsergroupsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ListUsergroupsResponseUsergroupsList>;
 
@@ -139,7 +138,7 @@ export interface ListUsergroupsResponse {
   ok: boolean;
   usergroups: ListUsergroupsResponseUsergroupsList;
 }
-export const ListUsergroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsergroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     usergroups: ListUsergroupsResponseUsergroupsList,
@@ -154,7 +153,7 @@ export interface ListUsersRequest {
   /** The user group's encoded team ID. Required if org token is used. */
   team_id?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_disabled: S.optional(S.Boolean.pipe(T.Query())),
     usergroup: S.String.pipe(T.Query()),
@@ -163,7 +162,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type ListUsersResponseUsersList = Array<unknown>;
-export const ListUsersResponseUsersList =
+const ListUsersResponseUsersList =
   ListUsergroupsResponseUsergroupsList as any as S.Schema<ListUsersResponseUsersList>;
 
 export interface ListUsersResponse {
@@ -171,7 +170,7 @@ export interface ListUsersResponse {
   ok: boolean;
   users: ListUsersResponseUsersList;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     users: ListUsersResponseUsersList,
@@ -180,12 +179,12 @@ export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A comma separated string of encoded user IDs that represent the entire list of users for the user group. */
 export type UpdateUserRequestUsersList = Array<string>;
-export const UpdateUserRequestUsersList =
+const UpdateUserRequestUsersList =
   CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUserRequestUsersList>;
 
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type UpdateUserRequestAdditionalChannelsList = Array<string>;
-export const UpdateUserRequestAdditionalChannelsList =
+const UpdateUserRequestAdditionalChannelsList =
   CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUserRequestAdditionalChannelsList>;
 
 export interface UpdateUserRequest {
@@ -202,7 +201,7 @@ export interface UpdateUserRequest {
   /** Boolean to identify if the API is getting called when a shared section is getting shared */
   is_shared?: boolean;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_count: S.optional(S.Boolean),
     team_id: S.optional(S.String),
@@ -218,16 +217,16 @@ export interface UpdateUserResponse {
   ok: boolean;
   usergroup: unknown;
 }
-export const UpdateUserResponse = CreateUsergroupResponse as any as S.Schema<UpdateUserResponse>;
+const UpdateUserResponse = CreateUsergroupResponse as any as S.Schema<UpdateUserResponse>;
 
 /** A comma separated string of encoded channel IDs for which the User Group uses as a default. */
 export type UpdateUsergroupRequestChannelsList = Array<string>;
-export const UpdateUsergroupRequestChannelsList =
+const UpdateUsergroupRequestChannelsList =
   CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupRequestChannelsList>;
 
 /** A comma separated string of encoded channel IDs for which the User Group can custom add usergroup members too. */
 export type UpdateUsergroupRequestAdditionalChannelsList = Array<string>;
-export const UpdateUsergroupRequestAdditionalChannelsList =
+const UpdateUsergroupRequestAdditionalChannelsList =
   CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupRequestAdditionalChannelsList>;
 
 export interface UpdateUsergroupRequest {
@@ -250,7 +249,7 @@ export interface UpdateUsergroupRequest {
   /** Configure this user group to show as a sidebar section for all group members. Note: Only relevant if group has 1 or more default channels added. */
   enable_section?: boolean;
 }
-export const UpdateUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.optional(UpdateUsergroupRequestChannelsList),
     additional_channels: S.optional(UpdateUsergroupRequestAdditionalChannelsList),
@@ -266,7 +265,7 @@ export const UpdateUsergroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of user IDs who would exceed their channel limit */
 export type UpdateUsergroupResponseChannelLimitUserIdsList = Array<string>;
-export const UpdateUsergroupResponseChannelLimitUserIdsList =
+const UpdateUsergroupResponseChannelLimitUserIdsList =
   CreateUsergroupRequestChannelsList as any as S.Schema<UpdateUsergroupResponseChannelLimitUserIdsList>;
 
 export interface UpdateUsergroupResponse {
@@ -276,7 +275,7 @@ export interface UpdateUsergroupResponse {
   /** List of user IDs who would exceed their channel limit */
   channel_limit_user_ids?: UpdateUsergroupResponseChannelLimitUserIdsList;
 }
-export const UpdateUsergroupResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsergroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     usergroup: S.Unknown,

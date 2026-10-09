@@ -40,7 +40,7 @@ export type CreateAccessGroupRequestProjectsItemRole =
   | "ADMIN"
   | "PROJECT_VIEWER"
   | "PROJECT_DEVELOPER";
-export const CreateAccessGroupRequestProjectsItemRole = S.String;
+const CreateAccessGroupRequestProjectsItemRole = S.String;
 
 export interface CreateAccessGroupRequestProjectsItem {
   /** The ID of the project. */
@@ -48,7 +48,7 @@ export interface CreateAccessGroupRequestProjectsItem {
   /** The project role that will be added to this Access Group. "null" will remove this project level role. */
   role: CreateAccessGroupRequestProjectsItemRole | (string & {}) | null;
 }
-export const CreateAccessGroupRequestProjectsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessGroupRequestProjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String,
     role: S.NullOr(CreateAccessGroupRequestProjectsItemRole),
@@ -58,13 +58,13 @@ export const CreateAccessGroupRequestProjectsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateAccessGroupRequestProjectsItem>;
 
 export type CreateAccessGroupRequestProjectsList = Array<CreateAccessGroupRequestProjectsItem>;
-export const CreateAccessGroupRequestProjectsList = /*@__PURE__*/ S.Array(
+const CreateAccessGroupRequestProjectsList = /*@__PURE__*/ S.Array(
   CreateAccessGroupRequestProjectsItem,
 ) as any as S.Schema<CreateAccessGroupRequestProjectsList>;
 
 /** List of members to add to the access group. */
 export type CreateAccessGroupRequestMembersToAddList = Array<string>;
-export const CreateAccessGroupRequestMembersToAddList = /*@__PURE__*/ S.Array(
+const CreateAccessGroupRequestMembersToAddList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAccessGroupRequestMembersToAddList>;
 
@@ -79,7 +79,7 @@ export interface CreateAccessGroupRequest {
   /** List of members to add to the access group. */
   membersToAdd?: CreateAccessGroupRequestMembersToAddList;
 }
-export const CreateAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -90,22 +90,22 @@ export const CreateAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAccessGroupRequest" }) as any as S.Schema<CreateAccessGroupRequest>;
 
 export type CreateAccessGroupResponseEntitlementsItem = "v0";
-export const CreateAccessGroupResponseEntitlementsItem = S.String;
+const CreateAccessGroupResponseEntitlementsItem = S.String;
 
 export type CreateAccessGroupResponseEntitlementsList =
   Array<CreateAccessGroupResponseEntitlementsItem>;
-export const CreateAccessGroupResponseEntitlementsList = /*@__PURE__*/ S.Array(
+const CreateAccessGroupResponseEntitlementsList = /*@__PURE__*/ S.Array(
   CreateAccessGroupResponseEntitlementsItem,
 ) as any as S.Schema<CreateAccessGroupResponseEntitlementsList>;
 
 /** Permissions that the team has in the access group. */
 export type CreateAccessGroupResponseTeamPermissionsList = Array<string>;
-export const CreateAccessGroupResponseTeamPermissionsList =
+const CreateAccessGroupResponseTeamPermissionsList =
   CreateAccessGroupRequestMembersToAddList as any as S.Schema<CreateAccessGroupResponseTeamPermissionsList>;
 
 /** Roles that the team has in the access group. */
 export type CreateAccessGroupResponseTeamRolesList = Array<string>;
-export const CreateAccessGroupResponseTeamRolesList =
+const CreateAccessGroupResponseTeamRolesList =
   CreateAccessGroupRequestMembersToAddList as any as S.Schema<CreateAccessGroupResponseTeamRolesList>;
 
 export interface CreateAccessGroupResponse {
@@ -127,7 +127,7 @@ export interface CreateAccessGroupResponse {
   /** Timestamp in milliseconds when the access group was last updated. */
   updatedAt: string;
 }
-export const CreateAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupId: S.String,
     createdAt: S.String,
@@ -146,7 +146,7 @@ export const CreateAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The project role that will be added to this Access Group. */
 export type CreateAccessGroupProjectRequestRole = "ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER";
-export const CreateAccessGroupProjectRequestRole = S.String;
+const CreateAccessGroupProjectRequestRole = S.String;
 
 export interface CreateAccessGroupProjectRequest {
   accessGroupIdOrName: string;
@@ -159,7 +159,7 @@ export interface CreateAccessGroupProjectRequest {
   /** The project role that will be added to this Access Group. */
   role: CreateAccessGroupProjectRequestRole | (string & {});
 }
-export const CreateAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupIdOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -178,7 +178,7 @@ export type CreateAccessGroupProjectResponseRole =
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST"
   | "PROJECT_VIEWER";
-export const CreateAccessGroupProjectResponseRole = S.String;
+const CreateAccessGroupProjectResponseRole = S.String;
 
 export interface CreateAccessGroupProjectResponse {
   accessGroupId: string;
@@ -188,7 +188,7 @@ export interface CreateAccessGroupProjectResponse {
   teamId: string;
   updatedAt: string;
 }
-export const CreateAccessGroupProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessGroupProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupId: S.String,
     createdAt: S.String,
@@ -208,7 +208,7 @@ export interface DeleteAccessGroupRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -217,7 +217,7 @@ export const DeleteAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccessGroupRequest" }) as any as S.Schema<DeleteAccessGroupRequest>;
 
 export interface DeleteAccessGroupResponse {}
-export const DeleteAccessGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAccessGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccessGroupResponse",
 }) as any as S.Schema<DeleteAccessGroupResponse>;
 
@@ -229,7 +229,7 @@ export interface DeleteAccessGroupProjectRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupIdOrName: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -247,9 +247,7 @@ export const DeleteAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessGroupProjectRequest>;
 
 export interface DeleteAccessGroupProjectResponse {}
-export const DeleteAccessGroupProjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteAccessGroupProjectResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccessGroupProjectResponse",
 }) as any as S.Schema<DeleteAccessGroupProjectResponse>;
 
@@ -267,7 +265,7 @@ export interface ListAccessGroupMembersRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListAccessGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -289,7 +287,7 @@ export type ListAccessGroupMembersResponseMembersItemTeamRole =
   | "SECURITY"
   | "VIEWER"
   | "VIEWER_FOR_PLUS";
-export const ListAccessGroupMembersResponseMembersItemTeamRole = S.String;
+const ListAccessGroupMembersResponseMembersItemTeamRole = S.String;
 
 export interface ListAccessGroupMembersResponseMembersItem {
   avatar?: string;
@@ -300,7 +298,7 @@ export interface ListAccessGroupMembersResponseMembersItem {
   uid: string;
   username: string;
 }
-export const ListAccessGroupMembersResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupMembersResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar: S.optional(S.String),
     createdAt: S.optional(S.String),
@@ -316,7 +314,7 @@ export const ListAccessGroupMembersResponseMembersItem = /*@__PURE__*/ S.suspend
 
 export type ListAccessGroupMembersResponseMembersList =
   Array<ListAccessGroupMembersResponseMembersItem>;
-export const ListAccessGroupMembersResponseMembersList = /*@__PURE__*/ S.Array(
+const ListAccessGroupMembersResponseMembersList = /*@__PURE__*/ S.Array(
   ListAccessGroupMembersResponseMembersItem,
 ) as any as S.Schema<ListAccessGroupMembersResponseMembersList>;
 
@@ -324,7 +322,7 @@ export interface ListAccessGroupMembersResponsePagination {
   count: number;
   next: string | null;
 }
-export const ListAccessGroupMembersResponsePagination = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupMembersResponsePagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.NullOr(S.String),
@@ -337,7 +335,7 @@ export interface ListAccessGroupMembersResponse {
   members: ListAccessGroupMembersResponseMembersList;
   pagination: ListAccessGroupMembersResponsePagination;
 }
-export const ListAccessGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: ListAccessGroupMembersResponseMembersList,
     pagination: ListAccessGroupMembersResponsePagination,
@@ -358,7 +356,7 @@ export interface ListAccessGroupProjectsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListAccessGroupProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -371,14 +369,12 @@ export const ListAccessGroupProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccessGroupProjectsRequest>;
 
 export type ListAccessGroupProjectsResponsePagination = ListAccessGroupMembersResponsePagination;
-export const ListAccessGroupProjectsResponsePagination = ListAccessGroupMembersResponsePagination;
-
 export interface ListAccessGroupProjectsResponseProjectsItemProject {
   framework?: string | null;
   latestDeploymentId?: string;
   name?: string;
 }
-export const ListAccessGroupProjectsResponseProjectsItemProject = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupProjectsResponseProjectsItemProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     framework: S.optional(S.NullOr(S.String)),
     latestDeploymentId: S.optional(S.String),
@@ -393,7 +389,7 @@ export type ListAccessGroupProjectsResponseProjectsItemRole =
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST"
   | "PROJECT_VIEWER";
-export const ListAccessGroupProjectsResponseProjectsItemRole = S.String;
+const ListAccessGroupProjectsResponseProjectsItemRole = S.String;
 
 export interface ListAccessGroupProjectsResponseProjectsItem {
   createdAt: string;
@@ -402,7 +398,7 @@ export interface ListAccessGroupProjectsResponseProjectsItem {
   role: ListAccessGroupProjectsResponseProjectsItemRole;
   updatedAt: string;
 }
-export const ListAccessGroupProjectsResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupProjectsResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     project: ListAccessGroupProjectsResponseProjectsItemProject,
@@ -416,7 +412,7 @@ export const ListAccessGroupProjectsResponseProjectsItem = /*@__PURE__*/ S.suspe
 
 export type ListAccessGroupProjectsResponseProjectsList =
   Array<ListAccessGroupProjectsResponseProjectsItem>;
-export const ListAccessGroupProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
+const ListAccessGroupProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   ListAccessGroupProjectsResponseProjectsItem,
 ) as any as S.Schema<ListAccessGroupProjectsResponseProjectsList>;
 
@@ -424,7 +420,7 @@ export interface ListAccessGroupProjectsResponse {
   pagination: ListAccessGroupMembersResponsePagination;
   projects: ListAccessGroupProjectsResponseProjectsList;
 }
-export const ListAccessGroupProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListAccessGroupMembersResponsePagination,
     projects: ListAccessGroupProjectsResponseProjectsList,
@@ -451,7 +447,7 @@ export interface ListAccessGroupsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListAccessGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
@@ -465,28 +461,11 @@ export const ListAccessGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccessGroupsRequest" }) as any as S.Schema<ListAccessGroupsRequest>;
 
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList = Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList>;
-
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList = Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList>;
-
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList = Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList>;
-
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList = Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList =
-  ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList>;
-
 /** Roles that the team has in the access group. */
 export type ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList = Array<string>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList =
-  CreateAccessGroupRequestMembersToAddList as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList>;
-
 export interface ListAccessGroupsResponseBodyCase1AccessGroupsItem {
   /** ID of the access group. */
   accessGroupId: string;
@@ -510,56 +489,18 @@ export interface ListAccessGroupsResponseBodyCase1AccessGroupsItem {
   /** Timestamp in milliseconds when the access group was last updated. */
   updatedAt: string;
 }
-export const ListAccessGroupsResponseBodyCase1AccessGroupsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessGroupId: S.String,
-    createdAt: S.String,
-    entitlements: S.optional(ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList),
-    isDsyncManaged: S.Boolean,
-    members: S.optional(ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList),
-    membersCount: S.Number,
-    name: S.String,
-    projects: S.optional(ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList),
-    projectsCount: S.Number,
-    teamId: S.String,
-    teamPermissions: S.optional(
-      ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList,
-    ),
-    teamRoles: S.optional(ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "ListAccessGroupsResponseBodyCase1AccessGroupsItem",
-}) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsItem>;
-
 export type ListAccessGroupsResponseBodyCase1AccessGroupsList =
   Array<ListAccessGroupsResponseBodyCase1AccessGroupsItem>;
-export const ListAccessGroupsResponseBodyCase1AccessGroupsList = /*@__PURE__*/ S.Array(
-  ListAccessGroupsResponseBodyCase1AccessGroupsItem,
-) as any as S.Schema<ListAccessGroupsResponseBodyCase1AccessGroupsList>;
-
 export type ListAccessGroupsResponseBodyCase1Pagination = ListAccessGroupMembersResponsePagination;
-export const ListAccessGroupsResponseBodyCase1Pagination = ListAccessGroupMembersResponsePagination;
-
 export interface ListAccessGroupsResponseBodyCase1 {
   accessGroups: ListAccessGroupsResponseBodyCase1AccessGroupsList;
   pagination: ListAccessGroupMembersResponsePagination;
 }
-export const ListAccessGroupsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessGroups: ListAccessGroupsResponseBodyCase1AccessGroupsList,
-    pagination: ListAccessGroupMembersResponsePagination,
-  }),
-).annotate({
-  identifier: "ListAccessGroupsResponseBodyCase1",
-}) as any as S.Schema<ListAccessGroupsResponseBodyCase1>;
-
 export type ListAccessGroupsResponseBody = unknown | ListAccessGroupsResponseBodyCase1;
-export const ListAccessGroupsResponseBody =
-  S.Unknown as any as S.Schema<ListAccessGroupsResponseBody>;
+const ListAccessGroupsResponseBody = S.Unknown as any as S.Schema<ListAccessGroupsResponseBody>;
 
 export type ListAccessGroupsResponse = ListAccessGroupsResponseBody;
-export const ListAccessGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   ListAccessGroupsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListAccessGroupsResponse" }) as any as S.Schema<ListAccessGroupsResponse>;
 
@@ -570,7 +511,7 @@ export interface ReadAccessGroupRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ReadAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -579,11 +520,9 @@ export const ReadAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadAccessGroupRequest" }) as any as S.Schema<ReadAccessGroupRequest>;
 
 export type ReadAccessGroupResponseEntitlementsItem = "v0";
-export const ReadAccessGroupResponseEntitlementsItem = S.String;
-
 export type ReadAccessGroupResponseEntitlementsList =
   Array<ReadAccessGroupResponseEntitlementsItem>;
-export const ReadAccessGroupResponseEntitlementsList =
+const ReadAccessGroupResponseEntitlementsList =
   CreateAccessGroupResponseEntitlementsList as any as S.Schema<ReadAccessGroupResponseEntitlementsList>;
 
 export type ReadAccessGroupResponseTeamPermissionsItem =
@@ -606,16 +545,14 @@ export type ReadAccessGroupResponseTeamPermissionsItem =
   | "V0Chatter"
   | "V0Viewer"
   | "WorkflowDecryptor";
-export const ReadAccessGroupResponseTeamPermissionsItem = S.String;
-
 export type ReadAccessGroupResponseTeamPermissionsList =
   Array<ReadAccessGroupResponseTeamPermissionsItem>;
-export const ReadAccessGroupResponseTeamPermissionsList =
+const ReadAccessGroupResponseTeamPermissionsList =
   CreateAccessGroupResponseEntitlementsList as any as S.Schema<ReadAccessGroupResponseTeamPermissionsList>;
 
 /** Roles that the team has in the access group. */
 export type ReadAccessGroupResponseTeamRolesList = Array<string>;
-export const ReadAccessGroupResponseTeamRolesList =
+const ReadAccessGroupResponseTeamRolesList =
   CreateAccessGroupRequestMembersToAddList as any as S.Schema<ReadAccessGroupResponseTeamRolesList>;
 
 export interface ReadAccessGroupResponse {
@@ -639,7 +576,7 @@ export interface ReadAccessGroupResponse {
   /** Timestamp in milliseconds when the access group was last updated. */
   updatedAt: string;
 }
-export const ReadAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const ReadAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupId: S.String,
     createdAt: S.String,
@@ -663,7 +600,7 @@ export interface ReadAccessGroupProjectRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ReadAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupIdOrName: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -685,8 +622,6 @@ export type ReadAccessGroupProjectResponseRole =
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST"
   | "PROJECT_VIEWER";
-export const ReadAccessGroupProjectResponseRole = S.String;
-
 export interface ReadAccessGroupProjectResponse {
   accessGroupId: string;
   createdAt: string;
@@ -695,7 +630,7 @@ export interface ReadAccessGroupProjectResponse {
   teamId: string;
   updatedAt: string;
 }
-export const ReadAccessGroupProjectResponse =
+const ReadAccessGroupProjectResponse =
   CreateAccessGroupProjectResponse as any as S.Schema<ReadAccessGroupProjectResponse>;
 
 /** The project role that will be added to this Access Group. "null" will remove this project level role. */
@@ -703,29 +638,24 @@ export type UpdateAccessGroupRequestProjectsItemRole =
   | "ADMIN"
   | "PROJECT_VIEWER"
   | "PROJECT_DEVELOPER";
-export const UpdateAccessGroupRequestProjectsItemRole = S.String;
-
 export interface UpdateAccessGroupRequestProjectsItem {
   /** The ID of the project. */
   projectId: string;
   /** The project role that will be added to this Access Group. "null" will remove this project level role. */
   role: UpdateAccessGroupRequestProjectsItemRole | (string & {}) | null;
 }
-export const UpdateAccessGroupRequestProjectsItem =
-  CreateAccessGroupRequestProjectsItem as any as S.Schema<UpdateAccessGroupRequestProjectsItem>;
-
 export type UpdateAccessGroupRequestProjectsList = Array<UpdateAccessGroupRequestProjectsItem>;
-export const UpdateAccessGroupRequestProjectsList =
+const UpdateAccessGroupRequestProjectsList =
   CreateAccessGroupRequestProjectsList as any as S.Schema<UpdateAccessGroupRequestProjectsList>;
 
 /** List of members to add to the access group. */
 export type UpdateAccessGroupRequestMembersToAddList = Array<string>;
-export const UpdateAccessGroupRequestMembersToAddList =
+const UpdateAccessGroupRequestMembersToAddList =
   CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupRequestMembersToAddList>;
 
 /** List of members to remove from the access group. */
 export type UpdateAccessGroupRequestMembersToRemoveList = Array<string>;
-export const UpdateAccessGroupRequestMembersToRemoveList =
+const UpdateAccessGroupRequestMembersToRemoveList =
   CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupRequestMembersToRemoveList>;
 
 export interface UpdateAccessGroupRequest {
@@ -742,7 +672,7 @@ export interface UpdateAccessGroupRequest {
   /** List of members to remove from the access group. */
   membersToRemove?: UpdateAccessGroupRequestMembersToRemoveList;
 }
-export const UpdateAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -755,21 +685,19 @@ export const UpdateAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAccessGroupRequest" }) as any as S.Schema<UpdateAccessGroupRequest>;
 
 export type UpdateAccessGroupResponseEntitlementsItem = "v0";
-export const UpdateAccessGroupResponseEntitlementsItem = S.String;
-
 export type UpdateAccessGroupResponseEntitlementsList =
   Array<UpdateAccessGroupResponseEntitlementsItem>;
-export const UpdateAccessGroupResponseEntitlementsList =
+const UpdateAccessGroupResponseEntitlementsList =
   CreateAccessGroupResponseEntitlementsList as any as S.Schema<UpdateAccessGroupResponseEntitlementsList>;
 
 /** Permissions that the team has in the access group. */
 export type UpdateAccessGroupResponseTeamPermissionsList = Array<string>;
-export const UpdateAccessGroupResponseTeamPermissionsList =
+const UpdateAccessGroupResponseTeamPermissionsList =
   CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupResponseTeamPermissionsList>;
 
 /** Roles that the team has in the access group. */
 export type UpdateAccessGroupResponseTeamRolesList = Array<string>;
-export const UpdateAccessGroupResponseTeamRolesList =
+const UpdateAccessGroupResponseTeamRolesList =
   CreateAccessGroupRequestMembersToAddList as any as S.Schema<UpdateAccessGroupResponseTeamRolesList>;
 
 export interface UpdateAccessGroupResponse {
@@ -793,7 +721,7 @@ export interface UpdateAccessGroupResponse {
   /** Timestamp in milliseconds when the access group was last updated. */
   updatedAt: string;
 }
-export const UpdateAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupId: S.String,
     createdAt: S.String,
@@ -812,7 +740,7 @@ export const UpdateAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The project role that will be added to this Access Group. */
 export type UpdateAccessGroupProjectRequestRole = "ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER";
-export const UpdateAccessGroupProjectRequestRole = S.String;
+const UpdateAccessGroupProjectRequestRole = S.String;
 
 export interface UpdateAccessGroupProjectRequest {
   accessGroupIdOrName: string;
@@ -824,7 +752,7 @@ export interface UpdateAccessGroupProjectRequest {
   /** The project role that will be added to this Access Group. */
   role: UpdateAccessGroupProjectRequestRole | (string & {});
 }
-export const UpdateAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessGroupProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessGroupIdOrName: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -847,8 +775,6 @@ export type UpdateAccessGroupProjectResponseRole =
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST"
   | "PROJECT_VIEWER";
-export const UpdateAccessGroupProjectResponseRole = S.String;
-
 export interface UpdateAccessGroupProjectResponse {
   accessGroupId: string;
   createdAt: string;
@@ -857,7 +783,7 @@ export interface UpdateAccessGroupProjectResponse {
   teamId: string;
   updatedAt: string;
 }
-export const UpdateAccessGroupProjectResponse =
+const UpdateAccessGroupProjectResponse =
   CreateAccessGroupProjectResponse as any as S.Schema<UpdateAccessGroupProjectResponse>;
 
 export type CreateAccessGroupError = BadRequest | Forbidden | NotFound | VercelOpError;

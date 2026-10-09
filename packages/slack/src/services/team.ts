@@ -10,12 +10,8 @@ import * as T from "../traits.ts";
 export type { SlackOpError, SlackOpContext };
 
 export type AccessLogsRequestBeforeCase0 = "now";
-export const AccessLogsRequestBeforeCase0 = S.String;
-
 export type AccessLogsRequestBefore = AccessLogsRequestBeforeCase0 | (string & {}) | string;
-export const AccessLogsRequestBefore = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
+const AccessLogsRequestBefore = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface AccessLogsRequest {
   /** End of time range of logs to include in results (inclusive). */
@@ -29,7 +25,7 @@ export interface AccessLogsRequest {
   /** encoded team id to get logs from, required if org token is used */
   team_id?: string;
 }
-export const AccessLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const AccessLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(AccessLogsRequestBefore.pipe(T.Query())),
     count: S.optional(S.String.pipe(T.Query())),
@@ -52,7 +48,7 @@ export interface AccessLogsResponseLoginsItem {
   date_first: number;
   date_last: number;
 }
-export const AccessLogsResponseLoginsItem = /*@__PURE__*/ S.suspend(() =>
+const AccessLogsResponseLoginsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     count: S.Number,
@@ -70,7 +66,7 @@ export const AccessLogsResponseLoginsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessLogsResponseLoginsItem>;
 
 export type AccessLogsResponseLoginsList = Array<AccessLogsResponseLoginsItem>;
-export const AccessLogsResponseLoginsList = /*@__PURE__*/ S.Array(
+const AccessLogsResponseLoginsList = /*@__PURE__*/ S.Array(
   AccessLogsResponseLoginsItem,
 ) as any as S.Schema<AccessLogsResponseLoginsList>;
 
@@ -80,7 +76,7 @@ export interface AccessLogsResponsePaging {
   page: number;
   pages: number;
 }
-export const AccessLogsResponsePaging = /*@__PURE__*/ S.suspend(() =>
+const AccessLogsResponsePaging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     total: S.Number,
@@ -94,7 +90,7 @@ export interface AccessLogsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const AccessLogsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const AccessLogsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -110,7 +106,7 @@ export interface AccessLogsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AccessLogsResponseResponseMetadata;
 }
-export const AccessLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     logins: AccessLogsResponseLoginsList,
@@ -129,7 +125,7 @@ export interface BillableInfoRequest {
   /** encoded team id to get the billable information from, required if org token is used */
   team_id?: string;
 }
-export const BillableInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const BillableInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -140,10 +136,8 @@ export const BillableInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type BillableInfoResponseResponseMetadata = AccessLogsResponseResponseMetadata;
-export const BillableInfoResponseResponseMetadata = AccessLogsResponseResponseMetadata;
-
 export type BillableInfoResponseBillableInfoMap = { [key: string]: unknown | undefined };
-export const BillableInfoResponseBillableInfoMap = /*@__PURE__*/ S.Record(
+const BillableInfoResponseBillableInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<BillableInfoResponseBillableInfoMap>;
@@ -155,7 +149,7 @@ export interface BillableInfoResponse {
   response_metadata?: AccessLogsResponseResponseMetadata;
   billable_info: BillableInfoResponseBillableInfoMap;
 }
-export const BillableInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const BillableInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     response_metadata: S.optional(AccessLogsResponseResponseMetadata),
@@ -164,7 +158,7 @@ export const BillableInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillableInfoResponse" }) as any as S.Schema<BillableInfoResponse>;
 
 export interface BillingInfoRequest {}
-export const BillingInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const BillingInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/team.billing.info", code: 200 })),
 ).annotate({ identifier: "BillingInfoRequest" }) as any as S.Schema<BillingInfoRequest>;
 
@@ -173,7 +167,7 @@ export interface BillingInfoResponse {
   ok: boolean;
   plan: string;
 }
-export const BillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     plan: S.String,
@@ -184,7 +178,7 @@ export interface DisconnectExternalTeamRequest {
   /** The team ID of the target team. */
   target_team: string;
 }
-export const DisconnectExternalTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const DisconnectExternalTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target_team: S.String,
   }).pipe(
@@ -204,7 +198,7 @@ export interface DisconnectExternalTeamResponse {
   ok: boolean;
   job_enqueued: boolean;
 }
-export const DisconnectExternalTeamResponse = /*@__PURE__*/ S.suspend(() =>
+const DisconnectExternalTeamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     job_enqueued: S.Boolean,
@@ -214,32 +208,32 @@ export const DisconnectExternalTeamResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisconnectExternalTeamResponse>;
 
 export type GetProfileRequestVisibility = "all" | "visible" | "hidden";
-export const GetProfileRequestVisibility = S.String;
+const GetProfileRequestVisibility = S.String;
 
 export interface GetProfileRequest {
   /** Filter by visibility. */
   visibility?: GetProfileRequestVisibility | (string & {});
 }
-export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     visibility: S.optional(GetProfileRequestVisibility.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/team.profile.get", code: 200 })),
 ).annotate({ identifier: "GetProfileRequest" }) as any as S.Schema<GetProfileRequest>;
 
 export type GetProfileResponseProfileFieldsList = Array<unknown>;
-export const GetProfileResponseProfileFieldsList = /*@__PURE__*/ S.Array(
+const GetProfileResponseProfileFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GetProfileResponseProfileFieldsList>;
 
 export type GetProfileResponseProfileSectionsList = Array<unknown>;
-export const GetProfileResponseProfileSectionsList =
+const GetProfileResponseProfileSectionsList =
   GetProfileResponseProfileFieldsList as any as S.Schema<GetProfileResponseProfileSectionsList>;
 
 export interface GetProfileResponseProfile {
   fields?: GetProfileResponseProfileFieldsList;
   sections?: GetProfileResponseProfileSectionsList;
 }
-export const GetProfileResponseProfile = /*@__PURE__*/ S.suspend(() =>
+const GetProfileResponseProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(GetProfileResponseProfileFieldsList),
     sections: S.optional(GetProfileResponseProfileSectionsList),
@@ -253,7 +247,7 @@ export interface GetProfileResponse {
   ok: boolean;
   profile: GetProfileResponseProfile;
 }
-export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     profile: GetProfileResponseProfile,
@@ -266,7 +260,7 @@ export type IntegrationLogsRequestChangeType =
   | "enabled"
   | "disabled"
   | "updated";
-export const IntegrationLogsRequestChangeType = S.String;
+const IntegrationLogsRequestChangeType = S.String;
 
 export interface IntegrationLogsRequest {
   /** Filter logs to this Slack app. Defaults to all logs. */
@@ -282,7 +276,7 @@ export interface IntegrationLogsRequest {
   /** Filter logs generated by this user's actions. Defaults to all logs. */
   user?: string;
 }
-export const IntegrationLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const IntegrationLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_id: S.optional(S.String.pipe(T.Query())),
     change_type: S.optional(IntegrationLogsRequestChangeType.pipe(T.Query())),
@@ -295,11 +289,11 @@ export const IntegrationLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IntegrationLogsRequest" }) as any as S.Schema<IntegrationLogsRequest>;
 
 export type IntegrationLogsResponseLogsItemMap = { [key: string]: unknown | undefined };
-export const IntegrationLogsResponseLogsItemMap =
+const IntegrationLogsResponseLogsItemMap =
   BillableInfoResponseBillableInfoMap as any as S.Schema<IntegrationLogsResponseLogsItemMap>;
 
 export type IntegrationLogsResponseLogsList = Array<IntegrationLogsResponseLogsItemMap>;
-export const IntegrationLogsResponseLogsList = /*@__PURE__*/ S.Array(
+const IntegrationLogsResponseLogsList = /*@__PURE__*/ S.Array(
   IntegrationLogsResponseLogsItemMap,
 ) as any as S.Schema<IntegrationLogsResponseLogsList>;
 
@@ -309,7 +303,7 @@ export interface IntegrationLogsResponse {
   paging: unknown;
   logs: IntegrationLogsResponseLogsList;
 }
-export const IntegrationLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     paging: S.Unknown,
@@ -321,10 +315,10 @@ export type ListExternalTeamsRequestSortField =
   | "team_name"
   | "last_active_timestamp"
   | "connection_status";
-export const ListExternalTeamsRequestSortField = S.String;
+const ListExternalTeamsRequestSortField = S.String;
 
 export type ListExternalTeamsRequestSortDirection = "asc" | "desc";
-export const ListExternalTeamsRequestSortDirection = S.String;
+const ListExternalTeamsRequestSortDirection = S.String;
 
 export type ListExternalTeamsRequestSlackConnectPrefFilterItem =
   | "approved_orgs_only"
@@ -337,17 +331,17 @@ export type ListExternalTeamsRequestSlackConnectPrefFilterItem =
   | "external_awareness_context_bar"
   | "interact_with_externally_owned_workflows"
   | "external_teams_interact_with_locally_owned_workflows";
-export const ListExternalTeamsRequestSlackConnectPrefFilterItem = S.String;
+const ListExternalTeamsRequestSlackConnectPrefFilterItem = S.String;
 
 export type ListExternalTeamsRequestSlackConnectPrefFilterList = Array<
   ListExternalTeamsRequestSlackConnectPrefFilterItem | (string & {})
 >;
-export const ListExternalTeamsRequestSlackConnectPrefFilterList = /*@__PURE__*/ S.Array(
+const ListExternalTeamsRequestSlackConnectPrefFilterList = /*@__PURE__*/ S.Array(
   ListExternalTeamsRequestSlackConnectPrefFilterItem,
 ) as any as S.Schema<ListExternalTeamsRequestSlackConnectPrefFilterList>;
 
 export type ListExternalTeamsRequestWorkspaceFilterList = Array<string>;
-export const ListExternalTeamsRequestWorkspaceFilterList = /*@__PURE__*/ S.Array(
+const ListExternalTeamsRequestWorkspaceFilterList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListExternalTeamsRequestWorkspaceFilterList>;
 
@@ -356,7 +350,7 @@ export type ListExternalTeamsRequestConnectionStatusFilter =
   | "DISCONNECTED"
   | "BLOCKED"
   | "IN_REVIEW";
-export const ListExternalTeamsRequestConnectionStatusFilter = S.String;
+const ListExternalTeamsRequestConnectionStatusFilter = S.String;
 
 export interface ListExternalTeamsRequest {
   /** The maximum number of items to return per page */
@@ -374,7 +368,7 @@ export interface ListExternalTeamsRequest {
   /** Status of the connected team. */
   connection_status_filter?: ListExternalTeamsRequestConnectionStatusFilter | (string & {});
 }
-export const ListExternalTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExternalTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -395,22 +389,21 @@ export interface ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesIt
   /** Name of the workspace. */
   workspace_name: string;
 }
-export const ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem =
-  /*@__PURE__*/ S.suspend(() =>
+const ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       workspace_id: S.String,
       workspace_name: S.String,
     }),
-  ).annotate({
-    identifier: "ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem",
-  }) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem>;
+).annotate({
+  identifier: "ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem",
+}) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem>;
 
 export type ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList =
   Array<ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem>;
-export const ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList =
-  /*@__PURE__*/ S.Array(
-    ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem,
-  ) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList>;
+const ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList = /*@__PURE__*/ S.Array(
+  ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem,
+) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesList>;
 
 /** Status of the connected team. (CONNECTED / DISCONNECTED / BLOCKED / IN_REVIEW / DISCONNECTiNG) */
 export type ListExternalTeamsResponseOrganizationsItemConnectionStatus =
@@ -419,13 +412,13 @@ export type ListExternalTeamsResponseOrganizationsItemConnectionStatus =
   | "BLOCKED"
   | "IN_REVIEW"
   | "DISCONNECTING";
-export const ListExternalTeamsResponseOrganizationsItemConnectionStatus = S.String;
+const ListExternalTeamsResponseOrganizationsItemConnectionStatus = S.String;
 
 export interface ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem {
   team_id: string;
   count: number;
 }
-export const ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem =
+const ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       team_id: S.String,
@@ -437,16 +430,15 @@ export const ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsIte
 
 export type ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList =
   Array<ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem>;
-export const ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList =
-  /*@__PURE__*/ S.Array(
-    ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem,
-  ) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList>;
+const ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList = /*@__PURE__*/ S.Array(
+  ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem,
+) as any as S.Schema<ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList>;
 
 export interface ListExternalTeamsResponseOrganizationsItemCanvas {
   total_count: number;
   ownership_details: ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList;
 }
-export const ListExternalTeamsResponseOrganizationsItemCanvas = /*@__PURE__*/ S.suspend(() =>
+const ListExternalTeamsResponseOrganizationsItemCanvas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     ownership_details: ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList,
@@ -457,19 +449,13 @@ export const ListExternalTeamsResponseOrganizationsItemCanvas = /*@__PURE__*/ S.
 
 export type ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsItem =
   ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem;
-export const ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsItem =
-  ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem;
-
 export type ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList =
   Array<ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem>;
-export const ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList =
-  ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsList as any as S.Schema<ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList>;
-
 export interface ListExternalTeamsResponseOrganizationsItemLists {
   total_count: number;
   ownership_details: ListExternalTeamsResponseOrganizationsItemListsOwnershipDetailsList;
 }
-export const ListExternalTeamsResponseOrganizationsItemLists =
+const ListExternalTeamsResponseOrganizationsItemLists =
   ListExternalTeamsResponseOrganizationsItemCanvas as any as S.Schema<ListExternalTeamsResponseOrganizationsItemLists>;
 
 export interface ListExternalTeamsResponseOrganizationsItem {
@@ -497,7 +483,7 @@ export interface ListExternalTeamsResponseOrganizationsItem {
   canvas?: ListExternalTeamsResponseOrganizationsItemCanvas;
   lists?: ListExternalTeamsResponseOrganizationsItemLists;
 }
-export const ListExternalTeamsResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
+const ListExternalTeamsResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String,
     team_name: S.String,
@@ -520,14 +506,12 @@ export const ListExternalTeamsResponseOrganizationsItem = /*@__PURE__*/ S.suspen
 
 export type ListExternalTeamsResponseOrganizationsList =
   Array<ListExternalTeamsResponseOrganizationsItem>;
-export const ListExternalTeamsResponseOrganizationsList = /*@__PURE__*/ S.Array(
+const ListExternalTeamsResponseOrganizationsList = /*@__PURE__*/ S.Array(
   ListExternalTeamsResponseOrganizationsItem,
 ) as any as S.Schema<ListExternalTeamsResponseOrganizationsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListExternalTeamsResponseResponseMetadata = AccessLogsResponseResponseMetadata;
-export const ListExternalTeamsResponseResponseMetadata = AccessLogsResponseResponseMetadata;
-
 export interface ListExternalTeamsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -536,7 +520,7 @@ export interface ListExternalTeamsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: AccessLogsResponseResponseMetadata;
 }
-export const ListExternalTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExternalTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     organizations: ListExternalTeamsResponseOrganizationsList,
@@ -548,7 +532,7 @@ export const ListExternalTeamsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExternalTeamsResponse>;
 
 export interface ListPreferencesRequest {}
-export const ListPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/team.preferences.list", code: 200 })),
 ).annotate({ identifier: "ListPreferencesRequest" }) as any as S.Schema<ListPreferencesRequest>;
 
@@ -560,7 +544,7 @@ export interface ListPreferencesResponse {
   msg_edit_window_mins: number;
   who_can_post_general: string;
 }
-export const ListPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     display_real_names: S.Boolean,
@@ -576,7 +560,7 @@ export interface TeamInfoRequest {
   /** Team to get info about; if omitted, will return information about the current team. */
   team?: string;
 }
-export const TeamInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const TeamInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String.pipe(T.Query())),
     team: S.optional(S.String.pipe(T.Query())),
@@ -587,7 +571,7 @@ export interface TeamInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const TeamInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const TeamInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),

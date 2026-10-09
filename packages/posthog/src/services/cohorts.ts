@@ -37,10 +37,9 @@ export class NotFound
 
 /** List of person UUIDs to add to the cohort */
 export type CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList = Array<string>;
-export const CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList>;
+const CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList>;
 
 export interface CohortsAddPersonsToStaticCohortPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -50,7 +49,7 @@ export interface CohortsAddPersonsToStaticCohortPartialUpdateRequest {
   /** List of person UUIDs to add to the cohort */
   person_ids?: CohortsAddPersonsToStaticCohortPartialUpdateRequestPersonIdsList;
 }
-export const CohortsAddPersonsToStaticCohortPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CohortsAddPersonsToStaticCohortPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -67,7 +66,7 @@ export const CohortsAddPersonsToStaticCohortPartialUpdateRequest = /*@__PURE__*/
 }) as any as S.Schema<CohortsAddPersonsToStaticCohortPartialUpdateRequest>;
 
 export interface CohortsAddPersonsToStaticCohortPartialUpdateResponse {}
-export const CohortsAddPersonsToStaticCohortPartialUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CohortsAddPersonsToStaticCohortPartialUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CohortsAddPersonsToStaticCohortPartialUpdateResponse",
@@ -79,7 +78,7 @@ export interface CohortsDestroyRequest {
   /** A unique integer value identifying this cohort. */
   id: number;
 }
-export const CohortsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const CohortsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -87,7 +86,7 @@ export const CohortsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CohortsDestroyRequest" }) as any as S.Schema<CohortsDestroyRequest>;
 
 export interface CohortsDestroyResponse {}
-export const CohortsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CohortsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CohortsDestroyResponse",
 }) as any as S.Schema<CohortsDestroyResponse>;
 
@@ -99,7 +98,7 @@ export interface CohortsRemovePersonFromStaticCohortPartialUpdateRequest {
   /** Person UUID to remove from the cohort */
   person_id?: string;
 }
-export const CohortsRemovePersonFromStaticCohortPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CohortsRemovePersonFromStaticCohortPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -116,66 +115,32 @@ export const CohortsRemovePersonFromStaticCohortPartialUpdateRequest = /*@__PURE
 }) as any as S.Schema<CohortsRemovePersonFromStaticCohortPartialUpdateRequest>;
 
 export interface CohortsRemovePersonFromStaticCohortPartialUpdateResponse {}
-export const CohortsRemovePersonFromStaticCohortPartialUpdateResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const CohortsRemovePersonFromStaticCohortPartialUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CohortsRemovePersonFromStaticCohortPartialUpdateResponse",
 }) as any as S.Schema<CohortsRemovePersonFromStaticCohortPartialUpdateResponse>;
 
 export type PropertyGroupOperatorEnum = "AND" | "OR";
-export const PropertyGroupOperatorEnum = S.String;
+const PropertyGroupOperatorEnum = S.String;
 
 export type BehavioralFilterBytecodeList = Array<unknown>;
-export const BehavioralFilterBytecodeList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<BehavioralFilterBytecodeList>;
-
 export type BehavioralFilterKey = string | number;
-export const BehavioralFilterKey = S.Unknown as any as S.Schema<BehavioralFilterKey>;
-
 export type BehavioralFilterSeqEvent = string | number;
-export const BehavioralFilterSeqEvent = S.Unknown as any as S.Schema<BehavioralFilterSeqEvent>;
-
 export type EventPropFilterTypeEnum = "event" | "element";
-export const EventPropFilterTypeEnum = S.String;
-
 export interface EventPropFilter {
   type?: EventPropFilterTypeEnum | (string & {});
   key?: string;
   value?: unknown;
   operator?: string | null;
 }
-export const EventPropFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(EventPropFilterTypeEnum),
-    key: S.optional(S.String),
-    value: S.optional(S.Unknown),
-    operator: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "EventPropFilter" }) as any as S.Schema<EventPropFilter>;
-
 export interface HogQLFilter {
   type?: string;
   key?: string;
   value?: unknown;
 }
-export const HogQLFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    key: S.optional(S.String),
-    value: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "HogQLFilter" }) as any as S.Schema<HogQLFilter>;
-
 export type BehavioralFilterEventFiltersItem = EventPropFilter | HogQLFilter;
-export const BehavioralFilterEventFiltersItem =
-  S.Unknown as any as S.Schema<BehavioralFilterEventFiltersItem>;
-
 export type BehavioralFilterEventFiltersList = Array<BehavioralFilterEventFiltersItem>;
-export const BehavioralFilterEventFiltersList = /*@__PURE__*/ S.Array(
-  BehavioralFilterEventFiltersItem,
-) as any as S.Schema<BehavioralFilterEventFiltersList>;
-
 export interface BehavioralFilter {
   bytecode?: BehavioralFilterBytecodeList | null;
   bytecode_error?: string | null;
@@ -199,36 +164,7 @@ export interface BehavioralFilter {
   explicit_datetime?: string | null;
   explicit_datetime_to?: string | null;
 }
-export const BehavioralFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytecode: S.optional(S.NullOr(BehavioralFilterBytecodeList)),
-    bytecode_error: S.optional(S.NullOr(S.String)),
-    conditionHash: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.String),
-    key: S.optional(BehavioralFilterKey),
-    value: S.optional(S.String),
-    event_type: S.optional(S.String),
-    time_value: S.optional(S.NullOr(S.Number)),
-    time_interval: S.optional(S.NullOr(S.String)),
-    negation: S.optional(S.Boolean),
-    operator: S.optional(S.NullOr(S.String)),
-    operator_value: S.optional(S.NullOr(S.Number)),
-    seq_time_interval: S.optional(S.NullOr(S.String)),
-    seq_time_value: S.optional(S.NullOr(S.Number)),
-    seq_event: S.optional(S.NullOr(BehavioralFilterSeqEvent)),
-    seq_event_type: S.optional(S.NullOr(S.String)),
-    total_periods: S.optional(S.NullOr(S.Number)),
-    min_periods: S.optional(S.NullOr(S.Number)),
-    event_filters: S.optional(S.NullOr(BehavioralFilterEventFiltersList)),
-    explicit_datetime: S.optional(S.NullOr(S.String)),
-    explicit_datetime_to: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "BehavioralFilter" }) as any as S.Schema<BehavioralFilter>;
-
 export type CohortFilterBytecodeList = Array<unknown>;
-export const CohortFilterBytecodeList =
-  BehavioralFilterBytecodeList as any as S.Schema<CohortFilterBytecodeList>;
-
 export interface CohortFilter {
   bytecode?: CohortFilterBytecodeList | null;
   bytecode_error?: string | null;
@@ -238,22 +174,7 @@ export interface CohortFilter {
   value?: number;
   negation?: boolean;
 }
-export const CohortFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bytecode: S.optional(S.NullOr(CohortFilterBytecodeList)),
-    bytecode_error: S.optional(S.NullOr(S.String)),
-    conditionHash: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.String),
-    key: S.optional(S.String),
-    value: S.optional(S.Number),
-    negation: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "CohortFilter" }) as any as S.Schema<CohortFilter>;
-
 export type PersonFilterBytecodeList = Array<unknown>;
-export const PersonFilterBytecodeList =
-  BehavioralFilterBytecodeList as any as S.Schema<PersonFilterBytecodeList>;
-
 export interface PersonFilter {
   operator?: string | null;
   value?: unknown;
@@ -264,23 +185,7 @@ export interface PersonFilter {
   key?: string;
   negation?: boolean;
 }
-export const PersonFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.Unknown),
-    bytecode: S.optional(S.NullOr(PersonFilterBytecodeList)),
-    bytecode_error: S.optional(S.NullOr(S.String)),
-    conditionHash: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.String),
-    key: S.optional(S.String),
-    negation: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PersonFilter" }) as any as S.Schema<PersonFilter>;
-
 export type PersonMetadataFilterBytecodeList = Array<unknown>;
-export const PersonMetadataFilterBytecodeList =
-  BehavioralFilterBytecodeList as any as S.Schema<PersonMetadataFilterBytecodeList>;
-
 /** Filter on a top-level persons-table column (e.g. created_at) rather than the properties JSON. The matching key must be one of PERSON_METADATA_FIELDS. */
 export interface PersonMetadataFilter {
   operator?: string | null;
@@ -292,30 +197,16 @@ export interface PersonMetadataFilter {
   key: string;
   negation?: boolean;
 }
-export const PersonMetadataFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.Unknown),
-    bytecode: S.optional(S.NullOr(PersonMetadataFilterBytecodeList)),
-    bytecode_error: S.optional(S.NullOr(S.String)),
-    conditionHash: S.optional(S.NullOr(S.String)),
-    type: S.String,
-    key: S.String,
-    negation: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "PersonMetadataFilter" }) as any as S.Schema<PersonMetadataFilter>;
-
 export type CohortFilterGroupValuesItem =
   | BehavioralFilter
   | CohortFilter
   | PersonFilter
   | PersonMetadataFilter
   | CohortFilterGroup;
-export const CohortFilterGroupValuesItem =
-  S.Unknown as any as S.Schema<CohortFilterGroupValuesItem>;
+const CohortFilterGroupValuesItem = S.Unknown as any as S.Schema<CohortFilterGroupValuesItem>;
 
 export type CohortFilterGroupValuesList = Array<CohortFilterGroupValuesItem>;
-export const CohortFilterGroupValuesList = /*@__PURE__*/ S.Array(
+const CohortFilterGroupValuesList = /*@__PURE__*/ S.Array(
   CohortFilterGroupValuesItem,
 ) as any as S.Schema<CohortFilterGroupValuesList>;
 
@@ -324,7 +215,7 @@ export interface CohortFilterGroup {
   type?: PropertyGroupOperatorEnum | (string & {});
   values?: CohortFilterGroupValuesList;
 }
-export const CohortFilterGroup = /*@__PURE__*/ S.suspend(() =>
+const CohortFilterGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PropertyGroupOperatorEnum),
     values: S.optional(CohortFilterGroupValuesList),
@@ -335,7 +226,7 @@ export interface CohortFilters {
   properties?: CohortFilterGroup;
   filterTestAccounts?: boolean | null;
 }
-export const CohortFilters = /*@__PURE__*/ S.suspend(() =>
+const CohortFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(CohortFilterGroup),
     filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
@@ -349,18 +240,13 @@ export type CohortTypeEnum =
   | "behavioral"
   | "realtime"
   | "analytical";
-export const CohortTypeEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type CreateCohortRequestCohortType = CohortTypeEnum | BlankEnum;
-export const CreateCohortRequestCohortType =
-  S.Unknown as any as S.Schema<CreateCohortRequestCohortType>;
+const CreateCohortRequestCohortType = S.Unknown as any as S.Schema<CreateCohortRequestCohortType>;
 
 export type CreateCohortRequestCreateStaticPersonIdsList = Array<string>;
-export const CreateCohortRequestCreateStaticPersonIdsList = /*@__PURE__*/ S.Array(
+const CreateCohortRequestCreateStaticPersonIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCohortRequestCreateStaticPersonIdsList>;
 
@@ -379,7 +265,7 @@ export interface CreateCohortRequest {
   _create_in_folder?: string;
   _create_static_person_ids?: CreateCohortRequestCreateStaticPersonIdsList;
 }
-export const CreateCohortRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCohortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -396,7 +282,7 @@ export const CreateCohortRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCohortRequest" }) as any as S.Schema<CreateCohortRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -412,11 +298,8 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -429,7 +312,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -445,7 +328,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type CohortOutputCohortType = CohortTypeEnum | BlankEnum;
-export const CohortOutputCohortType = S.Unknown as any as S.Schema<CohortOutputCohortType>;
+const CohortOutputCohortType = S.Unknown as any as S.Schema<CohortOutputCohortType>;
 
 export interface CohortConditionTypeFlags {
   /** The filters include a person property or person_metadata condition. */
@@ -457,7 +340,7 @@ export interface CohortConditionTypeFlags {
   /** The filters include a nested reference to another cohort. */
   cohorts: boolean;
 }
-export const CohortConditionTypeFlags = /*@__PURE__*/ S.suspend(() =>
+const CohortConditionTypeFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     person_properties: S.Boolean,
     behavioral: S.Boolean,
@@ -475,11 +358,11 @@ export type CohortRealtimeStateEnum =
   | "rebuilding"
   | "ready"
   | "needs_attention";
-export const CohortRealtimeStateEnum = S.String;
+const CohortRealtimeStateEnum = S.String;
 
 /** * `waiting` - Waiting * `scanning` - Scanning * `checking` - Checking */
 export type CohortHistoryBuildPhaseEnum = "waiting" | "scanning" | "checking";
-export const CohortHistoryBuildPhaseEnum = S.String;
+const CohortHistoryBuildPhaseEnum = S.String;
 
 export interface CohortHistoryBuild {
   /** What the build is doing now: `waiting` to start, `scanning` past events, or `checking` the membership it produced. A build that is queued but has not started reports `waiting` too. * `waiting` - Waiting * `scanning` - Scanning * `checking` - Checking */
@@ -489,7 +372,7 @@ export interface CohortHistoryBuild {
   /** When this build last made progress. Null while it is still queued. */
   updated_at: string | null;
 }
-export const CohortHistoryBuild = /*@__PURE__*/ S.suspend(() =>
+const CohortHistoryBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phase: CohortHistoryBuildPhaseEnum,
     percent_complete: S.NullOr(S.Number),
@@ -505,7 +388,7 @@ export interface CohortRealtimeReadiness {
   /** The build preparing the cohort. Null unless the state is `building` or `rebuilding`. */
   build: CohortHistoryBuild | null;
 }
-export const CohortRealtimeReadiness = /*@__PURE__*/ S.suspend(() =>
+const CohortRealtimeReadiness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: CohortRealtimeStateEnum,
     ready_at: S.NullOr(S.String),
@@ -514,12 +397,12 @@ export const CohortRealtimeReadiness = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CohortRealtimeReadiness" }) as any as S.Schema<CohortRealtimeReadiness>;
 
 export type CohortOutputExperimentSetList = Array<number>;
-export const CohortOutputExperimentSetList = /*@__PURE__*/ S.Array(
+const CohortOutputExperimentSetList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CohortOutputExperimentSetList>;
 
 export type SearchMatchTypeEnum = "exact" | "similar";
-export const SearchMatchTypeEnum = S.String;
+const SearchMatchTypeEnum = S.String;
 
 export interface CohortOutput {
   id?: number;
@@ -554,7 +437,7 @@ export interface CohortOutput {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-export const CohortOutput = /*@__PURE__*/ S.suspend(() =>
+const CohortOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.NullOr(S.String)),
@@ -590,7 +473,7 @@ export interface GetCohortRequest {
   /** A unique integer value identifying this cohort. */
   id: number;
 }
-export const GetCohortRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCohortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -603,7 +486,7 @@ export interface GetCohortsActivityRequest {
   /** A unique integer value identifying this cohort. */
   id: number;
 }
-export const GetCohortsActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCohortsActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -615,14 +498,14 @@ export const GetCohortsActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCohortsActivityRequest>;
 
 export interface GetCohortsActivityResponse {}
-export const GetCohortsActivityResponse =
+const GetCohortsActivityResponse =
   CohortsDestroyResponse as any as S.Schema<GetCohortsActivityResponse>;
 
 export interface GetCohortsAllActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetCohortsAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCohortsAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -633,7 +516,7 @@ export const GetCohortsAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCohortsAllActivityRequest>;
 
 export interface GetCohortsAllActivityResponse {}
-export const GetCohortsAllActivityResponse =
+const GetCohortsAllActivityResponse =
   CohortsDestroyResponse as any as S.Schema<GetCohortsAllActivityResponse>;
 
 export interface GetCohortsCalculationHistoryRequest {
@@ -642,7 +525,7 @@ export interface GetCohortsCalculationHistoryRequest {
   /** A unique integer value identifying this cohort. */
   id: number;
 }
-export const GetCohortsCalculationHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCohortsCalculationHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -658,11 +541,11 @@ export const GetCohortsCalculationHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCohortsCalculationHistoryRequest>;
 
 export interface GetCohortsCalculationHistoryResponse {}
-export const GetCohortsCalculationHistoryResponse =
+const GetCohortsCalculationHistoryResponse =
   CohortsAddPersonsToStaticCohortPartialUpdateResponse as any as S.Schema<GetCohortsCalculationHistoryResponse>;
 
 export type GetCohortsPersonRequestFormat = "csv" | "json";
-export const GetCohortsPersonRequestFormat = S.String;
+const GetCohortsPersonRequestFormat = S.String;
 
 export interface GetCohortsPersonRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -675,7 +558,7 @@ export interface GetCohortsPersonRequest {
   /** Number of persons to skip before starting to return results. */
   offset?: number;
 }
-export const GetCohortsPersonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCohortsPersonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -689,23 +572,23 @@ export const GetCohortsPersonRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The actor's properties. */
 export type SerializedPersonActorPropertiesMap = { [key: string]: unknown | undefined };
-export const SerializedPersonActorPropertiesMap =
+const SerializedPersonActorPropertiesMap =
   UserBasicHedgehogConfigMap as any as S.Schema<SerializedPersonActorPropertiesMap>;
 
 export type SerializedPersonActorMatchedRecordingsItemMap = { [key: string]: unknown | undefined };
-export const SerializedPersonActorMatchedRecordingsItemMap =
+const SerializedPersonActorMatchedRecordingsItemMap =
   UserBasicHedgehogConfigMap as any as S.Schema<SerializedPersonActorMatchedRecordingsItemMap>;
 
 /** Recordings that matched the query. Empty unless the endpoint asks for them. */
 export type SerializedPersonActorMatchedRecordingsList =
   Array<SerializedPersonActorMatchedRecordingsItemMap>;
-export const SerializedPersonActorMatchedRecordingsList = /*@__PURE__*/ S.Array(
+const SerializedPersonActorMatchedRecordingsList = /*@__PURE__*/ S.Array(
   SerializedPersonActorMatchedRecordingsItemMap,
 ) as any as S.Schema<SerializedPersonActorMatchedRecordingsList>;
 
 /** The person's distinct IDs, newest first. */
 export type SerializedPersonActorDistinctIdsList = Array<string>;
-export const SerializedPersonActorDistinctIdsList =
+const SerializedPersonActorDistinctIdsList =
   CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<SerializedPersonActorDistinctIdsList>;
 
 export interface SerializedPersonActor {
@@ -732,7 +615,7 @@ export interface SerializedPersonActor {
   /** Whether the person has been identified. */
   is_identified: boolean | null;
 }
-export const SerializedPersonActor = /*@__PURE__*/ S.suspend(() =>
+const SerializedPersonActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     properties: SerializedPersonActorPropertiesMap,
@@ -749,7 +632,7 @@ export const SerializedPersonActor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SerializedPersonActor" }) as any as S.Schema<SerializedPersonActor>;
 
 export type CohortPersonsResponseResultsList = Array<SerializedPersonActor>;
-export const CohortPersonsResponseResultsList = /*@__PURE__*/ S.Array(
+const CohortPersonsResponseResultsList = /*@__PURE__*/ S.Array(
   SerializedPersonActor,
 ) as any as S.Schema<CohortPersonsResponseResultsList>;
 
@@ -758,7 +641,7 @@ export interface CohortPersonsResponse {
   next: string | null;
   previous: string | null;
 }
-export const CohortPersonsResponse = /*@__PURE__*/ S.suspend(() =>
+const CohortPersonsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: CohortPersonsResponseResultsList,
     next: S.NullOr(S.String),
@@ -772,7 +655,7 @@ export interface GetCohortsUsedInRequest {
   /** A unique integer value identifying this cohort. */
   id: number;
 }
-export const GetCohortsUsedInRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCohortsUsedInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -789,7 +672,7 @@ export interface CohortUsedInFlag {
   /** Feature flag display name */
   name: string | null;
 }
-export const CohortUsedInFlag = /*@__PURE__*/ S.suspend(() =>
+const CohortUsedInFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     key: S.String,
@@ -799,7 +682,7 @@ export const CohortUsedInFlag = /*@__PURE__*/ S.suspend(() =>
 
 /** Feature flags referencing this cohort, capped at 100 results */
 export type CohortUsedInFlagsBlockResultsList = Array<CohortUsedInFlag>;
-export const CohortUsedInFlagsBlockResultsList = /*@__PURE__*/ S.Array(
+const CohortUsedInFlagsBlockResultsList = /*@__PURE__*/ S.Array(
   CohortUsedInFlag,
 ) as any as S.Schema<CohortUsedInFlagsBlockResultsList>;
 
@@ -811,7 +694,7 @@ export interface CohortUsedInFlagsBlock {
   /** True when more feature flags exist beyond the truncation cap */
   has_more: boolean;
 }
-export const CohortUsedInFlagsBlock = /*@__PURE__*/ S.suspend(() =>
+const CohortUsedInFlagsBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: CohortUsedInFlagsBlockResultsList,
     total: S.Number,
@@ -827,7 +710,7 @@ export interface CohortUsedInInsight {
   /** Insight display name; falls back to derived name, then to 'Unnamed' when both are empty */
   name: string;
 }
-export const CohortUsedInInsight = /*@__PURE__*/ S.suspend(() =>
+const CohortUsedInInsight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     short_id: S.String,
@@ -837,7 +720,7 @@ export const CohortUsedInInsight = /*@__PURE__*/ S.suspend(() =>
 
 /** Insights referencing this cohort, capped at 100 results */
 export type CohortUsedInInsightsBlockResultsList = Array<CohortUsedInInsight>;
-export const CohortUsedInInsightsBlockResultsList = /*@__PURE__*/ S.Array(
+const CohortUsedInInsightsBlockResultsList = /*@__PURE__*/ S.Array(
   CohortUsedInInsight,
 ) as any as S.Schema<CohortUsedInInsightsBlockResultsList>;
 
@@ -849,7 +732,7 @@ export interface CohortUsedInInsightsBlock {
   /** True when more insights exist beyond the truncation cap */
   has_more: boolean;
 }
-export const CohortUsedInInsightsBlock = /*@__PURE__*/ S.suspend(() =>
+const CohortUsedInInsightsBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: CohortUsedInInsightsBlockResultsList,
     total: S.Number,
@@ -865,7 +748,7 @@ export interface CohortUsedInCohort {
   /** Cohort display name; falls back to 'Unnamed' when empty */
   name: string;
 }
-export const CohortUsedInCohort = /*@__PURE__*/ S.suspend(() =>
+const CohortUsedInCohort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -874,7 +757,7 @@ export const CohortUsedInCohort = /*@__PURE__*/ S.suspend(() =>
 
 /** Cohorts that include this cohort as a criterion, capped at 100 results */
 export type CohortUsedInCohortsBlockResultsList = Array<CohortUsedInCohort>;
-export const CohortUsedInCohortsBlockResultsList = /*@__PURE__*/ S.Array(
+const CohortUsedInCohortsBlockResultsList = /*@__PURE__*/ S.Array(
   CohortUsedInCohort,
 ) as any as S.Schema<CohortUsedInCohortsBlockResultsList>;
 
@@ -886,7 +769,7 @@ export interface CohortUsedInCohortsBlock {
   /** True when more cohorts exist beyond the truncation cap */
   has_more: boolean;
 }
-export const CohortUsedInCohortsBlock = /*@__PURE__*/ S.suspend(() =>
+const CohortUsedInCohortsBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: CohortUsedInCohortsBlockResultsList,
     total: S.Number,
@@ -902,7 +785,7 @@ export interface CohortUsedInResponse {
   /** Other cohorts that include this cohort as a criterion, with truncation metadata */
   cohorts: CohortUsedInCohortsBlock;
 }
-export const CohortUsedInResponse = /*@__PURE__*/ S.suspend(() =>
+const CohortUsedInResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feature_flags: CohortUsedInFlagsBlock,
     insights: CohortUsedInInsightsBlock,
@@ -924,7 +807,7 @@ export interface ListCohortsRequest {
   /** Optional. Match against cohort `name`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, transpositions, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Results are ordered by relevance. When omitted, cohorts are ordered newest-first. Capped at 200 characters; longer queries return a 400 error. */
   search?: string;
 }
-export const ListCohortsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCohortsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     basic: S.optional(S.Boolean.pipe(T.Query())),
@@ -936,7 +819,7 @@ export const ListCohortsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCohortsRequest" }) as any as S.Schema<ListCohortsRequest>;
 
 export type PaginatedCohortListOutputResultsList = Array<CohortOutput>;
-export const PaginatedCohortListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedCohortListOutputResultsList = /*@__PURE__*/ S.Array(
   CohortOutput,
 ) as any as S.Schema<PaginatedCohortListOutputResultsList>;
 
@@ -946,7 +829,7 @@ export interface PaginatedCohortListOutput {
   previous?: string | null;
   results?: PaginatedCohortListOutputResultsList;
 }
-export const PaginatedCohortListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCohortListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -959,11 +842,10 @@ export const PaginatedCohortListOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type UpdateCohortRequestCohortType = CohortTypeEnum | BlankEnum;
-export const UpdateCohortRequestCohortType =
-  S.Unknown as any as S.Schema<UpdateCohortRequestCohortType>;
+const UpdateCohortRequestCohortType = S.Unknown as any as S.Schema<UpdateCohortRequestCohortType>;
 
 export type UpdateCohortRequestCreateStaticPersonIdsList = Array<string>;
-export const UpdateCohortRequestCreateStaticPersonIdsList =
+const UpdateCohortRequestCreateStaticPersonIdsList =
   CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<UpdateCohortRequestCreateStaticPersonIdsList>;
 
 export interface UpdateCohortRequest {
@@ -983,7 +865,7 @@ export interface UpdateCohortRequest {
   _create_in_folder?: string;
   _create_static_person_ids?: UpdateCohortRequestCreateStaticPersonIdsList;
 }
-export const UpdateCohortRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCohortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1002,11 +884,11 @@ export const UpdateCohortRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of cohort based on filter complexity * `static` - static * `person_property` - person_property * `behavioral` - behavioral * `realtime` - realtime * `analytical` - analytical */
 export type UpdateCohortsPartialRequestCohortType = CohortTypeEnum | BlankEnum;
-export const UpdateCohortsPartialRequestCohortType =
+const UpdateCohortsPartialRequestCohortType =
   S.Unknown as any as S.Schema<UpdateCohortsPartialRequestCohortType>;
 
 export type UpdateCohortsPartialRequestCreateStaticPersonIdsList = Array<string>;
-export const UpdateCohortsPartialRequestCreateStaticPersonIdsList =
+const UpdateCohortsPartialRequestCreateStaticPersonIdsList =
   CreateCohortRequestCreateStaticPersonIdsList as any as S.Schema<UpdateCohortsPartialRequestCreateStaticPersonIdsList>;
 
 export interface UpdateCohortsPartialRequest {
@@ -1026,7 +908,7 @@ export interface UpdateCohortsPartialRequest {
   _create_in_folder?: string;
   _create_static_person_ids?: UpdateCohortsPartialRequestCreateStaticPersonIdsList;
 }
-export const UpdateCohortsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCohortsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

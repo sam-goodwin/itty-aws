@@ -48,13 +48,13 @@ export class UnprocessableEntity
 
 /** Actions covered by this statement */
 export type CreateApiKeyCompanyRequestPermissionsItemActionsList = Array<string>;
-export const CreateApiKeyCompanyRequestPermissionsItemActionsList = /*@__PURE__*/ S.Array(
+const CreateApiKeyCompanyRequestPermissionsItemActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateApiKeyCompanyRequestPermissionsItemActionsList>;
 
 /** Resource identifiers. Can look like 'biz_xxxx' or 'biz_xxx|pass_*|exp_xxx' or 'biz_xxx|app_xxx' or 'biz_xxx|pass_xxx|exp_xxx' or 'biz_xxx|pass_xxx' or 'biz_xxx|pass_*' */
 export type CreateApiKeyCompanyRequestPermissionsItemResourcesList = Array<string>;
-export const CreateApiKeyCompanyRequestPermissionsItemResourcesList =
+const CreateApiKeyCompanyRequestPermissionsItemResourcesList =
   CreateApiKeyCompanyRequestPermissionsItemActionsList as any as S.Schema<CreateApiKeyCompanyRequestPermissionsItemResourcesList>;
 
 /** Input for a single permissions statement */
@@ -66,7 +66,7 @@ export interface CreateApiKeyCompanyRequestPermissionsItem {
   /** Resource identifiers. Can look like 'biz_xxxx' or 'biz_xxx|pass_*|exp_xxx' or 'biz_xxx|app_xxx' or 'biz_xxx|pass_xxx|exp_xxx' or 'biz_xxx|pass_xxx' or 'biz_xxx|pass_*' */
   resources: CreateApiKeyCompanyRequestPermissionsItemResourcesList;
 }
-export const CreateApiKeyCompanyRequestPermissionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyCompanyRequestPermissionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: CreateApiKeyCompanyRequestPermissionsItemActionsList,
     grant: S.Boolean,
@@ -79,7 +79,7 @@ export const CreateApiKeyCompanyRequestPermissionsItem = /*@__PURE__*/ S.suspend
 /** Granular permission statements defining which actions this API key can perform. Either permissions or role must be provided. */
 export type CreateApiKeyCompanyRequestPermissionsList =
   Array<CreateApiKeyCompanyRequestPermissionsItem>;
-export const CreateApiKeyCompanyRequestPermissionsList = /*@__PURE__*/ S.Array(
+const CreateApiKeyCompanyRequestPermissionsList = /*@__PURE__*/ S.Array(
   CreateApiKeyCompanyRequestPermissionsItem,
 ) as any as S.Schema<CreateApiKeyCompanyRequestPermissionsList>;
 
@@ -90,7 +90,7 @@ export type PermissionSystemRoles =
   | "moderator"
   | "sales_manager"
   | "advertiser";
-export const PermissionSystemRoles = S.String;
+const PermissionSystemRoles = S.String;
 
 export interface CreateApiKeyCompanyRequest {
   /** The unique identifier of the parent platform company (e.g. 'biz_xxx'). */
@@ -104,7 +104,7 @@ export interface CreateApiKeyCompanyRequest {
   /** A system role to inherit permissions from (e.g. owner, admin, moderator). Either role or permissions must be provided. */
   role?: PermissionSystemRoles | (string & {}) | null;
 }
-export const CreateApiKeyCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent_company_id: S.String.pipe(T.Label()),
     child_company_id: S.String,
@@ -124,7 +124,7 @@ export interface CreateApiKeyCompanyResponse {
   /** The secret key used to authenticate requests. Only returned at creation time. */
   secret_key: string | Redacted.Redacted<string>;
 }
-export const CreateApiKeyCompanyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyCompanyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -378,14 +378,14 @@ export type Countries =
   | "zm"
   | "zw"
   | "sy";
-export const Countries = S.String;
+const Countries = S.String;
 
 /** The company's logo image. Accepts PNG, JPEG, or GIF format. */
 export interface CreateCompanyRequestLogo {
   /** The ID of an existing file object. */
   id: string;
 }
-export const CreateCompanyRequestLogo = /*@__PURE__*/ S.suspend(() =>
+const CreateCompanyRequestLogo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -393,7 +393,7 @@ export const CreateCompanyRequestLogo = /*@__PURE__*/ S.suspend(() =>
 
 /** A key-value JSON object of custom metadata to store on the company. */
 export type CreateCompanyRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateCompanyRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateCompanyRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateCompanyRequestMetadataMap>;
@@ -416,7 +416,7 @@ export interface CreateCompanyRequest {
   /** The display name of the company shown to customers. */
   title: string;
 }
-export const CreateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.NullOr(Countries)),
     description: S.optional(S.NullOr(S.String)),
@@ -436,7 +436,7 @@ export interface CompanyFeaturedAffiliateProduct {
   /** The display name of the product shown to customers. Maximum 50 characters. */
   name: string;
 }
-export const CompanyFeaturedAffiliateProduct = /*@__PURE__*/ S.suspend(() =>
+const CompanyFeaturedAffiliateProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -450,7 +450,7 @@ export interface CompanyLogo {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-export const CompanyLogo = /*@__PURE__*/ S.suspend(() =>
+const CompanyLogo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.NullOr(S.String),
   }),
@@ -458,8 +458,7 @@ export const CompanyLogo = /*@__PURE__*/ S.suspend(() =>
 
 /** A key-value JSON object of custom metadata for this company, managed by the platform that created the account. */
 export type CompanyMetadataMap = { [key: string]: unknown | undefined };
-export const CompanyMetadataMap =
-  CreateCompanyRequestMetadataMap as any as S.Schema<CompanyMetadataMap>;
+const CompanyMetadataMap = CreateCompanyRequestMetadataMap as any as S.Schema<CompanyMetadataMap>;
 
 /** The user who owns and has full administrative control over this company. */
 export interface CompanyOwnerUser {
@@ -470,7 +469,7 @@ export interface CompanyOwnerUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const CompanyOwnerUser = /*@__PURE__*/ S.suspend(() =>
+const CompanyOwnerUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -489,7 +488,7 @@ export type SocialLinkWebsites =
   | "twitch"
   | "website"
   | "custom";
-export const SocialLinkWebsites = S.String;
+const SocialLinkWebsites = S.String;
 
 /** A social link attached to a resource on the site. */
 export interface CompanySocialLinksItem {
@@ -500,7 +499,7 @@ export interface CompanySocialLinksItem {
   /** The website */
   website: SocialLinkWebsites;
 }
-export const CompanySocialLinksItem = /*@__PURE__*/ S.suspend(() =>
+const CompanySocialLinksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     url: S.String,
@@ -510,7 +509,7 @@ export const CompanySocialLinksItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of social media accounts and external links associated with this company. */
 export type CompanySocialLinksList = Array<CompanySocialLinksItem>;
-export const CompanySocialLinksList = /*@__PURE__*/ S.Array(
+const CompanySocialLinksList = /*@__PURE__*/ S.Array(
   CompanySocialLinksItem,
 ) as any as S.Schema<CompanySocialLinksList>;
 
@@ -551,7 +550,7 @@ export interface Company {
   /** Whether this company has been verified by Whop's trust and safety team. */
   verified: boolean;
 }
-export const Company = /*@__PURE__*/ S.suspend(() =>
+const Company = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affiliate_instructions: S.NullOr(S.String),
     created_at: S.String,
@@ -577,7 +576,7 @@ export interface GetCompanyRequest {
   /** The unique identifier or route slug of the company. */
   id: string;
 }
-export const GetCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/companies/{id}", code: 200 })),
@@ -585,7 +584,7 @@ export const GetCompanyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
-export const Direction = S.String;
+const Direction = S.String;
 
 export interface ListCompanyRequest {
   after?: string;
@@ -597,7 +596,7 @@ export interface ListCompanyRequest {
   created_before?: string;
   created_after?: string;
 }
-export const ListCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -612,17 +611,13 @@ export const ListCompanyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The company's logo. */
 export type CompanyListItemLogo = CompanyLogo;
-export const CompanyListItemLogo = CompanyLogo;
-
 /** A key-value JSON object of custom metadata for this company, managed by the platform that created the account. */
 export type CompanyListItemMetadataMap = { [key: string]: unknown | undefined };
-export const CompanyListItemMetadataMap =
+const CompanyListItemMetadataMap =
   CreateCompanyRequestMetadataMap as any as S.Schema<CompanyListItemMetadataMap>;
 
 /** The user who owns and has full administrative control over this company. */
 export type CompanyListItemOwnerUser = CompanyOwnerUser;
-export const CompanyListItemOwnerUser = CompanyOwnerUser;
-
 /** A company is a seller on Whop. Companies own products, manage members, and receive payouts. */
 export interface CompanyListItem {
   /** The datetime the company was created. */
@@ -654,7 +649,7 @@ export interface CompanyListItem {
   /** Whether this company has been verified by Whop's trust and safety team. */
   verified: boolean;
 }
-export const CompanyListItem = /*@__PURE__*/ S.suspend(() =>
+const CompanyListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     description: S.NullOr(S.String),
@@ -675,7 +670,7 @@ export const CompanyListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListCompanyResponseDataList = Array<CompanyListItem>;
-export const ListCompanyResponseDataList = /*@__PURE__*/ S.Array(
+const ListCompanyResponseDataList = /*@__PURE__*/ S.Array(
   CompanyListItem,
 ) as any as S.Schema<ListCompanyResponseDataList>;
 
@@ -690,7 +685,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -705,7 +700,7 @@ export interface ListCompanyResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListCompanyResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCompanyResponseDataList,
     page_info: PageInfo,
@@ -714,16 +709,10 @@ export const ListCompanyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The company's banner image. Accepts PNG or JPEG format. */
 export type UpdateCompanyRequestBannerImage = CreateCompanyRequestLogo;
-export const UpdateCompanyRequestBannerImage = CreateCompanyRequestLogo;
-
 /** The company's logo image. Accepts PNG, JPEG, or GIF format. */
 export type UpdateCompanyRequestLogo = CreateCompanyRequestLogo;
-export const UpdateCompanyRequestLogo = CreateCompanyRequestLogo;
-
 /** The custom image for the social link */
 export type UpdateCompanyRequestSocialLinksItemImage = CreateCompanyRequestLogo;
-export const UpdateCompanyRequestSocialLinksItemImage = CreateCompanyRequestLogo;
-
 /** Input for creating a social link for a company */
 export interface UpdateCompanyRequestSocialLinksItem {
   /** The custom image for the social link */
@@ -739,7 +728,7 @@ export interface UpdateCompanyRequestSocialLinksItem {
   /** The order of the website social link */
   website_order?: string | null;
 }
-export const UpdateCompanyRequestSocialLinksItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateCompanyRequestSocialLinksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.NullOr(CreateCompanyRequestLogo)),
     order: S.optional(S.NullOr(S.String)),
@@ -754,7 +743,7 @@ export const UpdateCompanyRequestSocialLinksItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The social media links to display on the company's store page. Pass the full list of desired social links -- any existing links not included will be removed. */
 export type UpdateCompanyRequestSocialLinksList = Array<UpdateCompanyRequestSocialLinksItem>;
-export const UpdateCompanyRequestSocialLinksList = /*@__PURE__*/ S.Array(
+const UpdateCompanyRequestSocialLinksList = /*@__PURE__*/ S.Array(
   UpdateCompanyRequestSocialLinksItem,
 ) as any as S.Schema<UpdateCompanyRequestSocialLinksList>;
 
@@ -784,7 +773,7 @@ export interface UpdateCompanyRequest {
   /** The display name of the company shown to customers. */
   title?: string | null;
 }
-export const UpdateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     affiliate_application_required: S.optional(S.NullOr(S.Boolean)),

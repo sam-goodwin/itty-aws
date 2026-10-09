@@ -46,7 +46,7 @@ export class NotFound
 
 /** * `local` - local * `cloud` - cloud */
 export type RunEnvironmentEnum = "local" | "cloud";
-export const RunEnvironmentEnum = S.String;
+const RunEnvironmentEnum = S.String;
 
 export interface LocalFolderWorkspace {
   /** Selects a folder on the user's machine as the workspace. */
@@ -54,28 +54,14 @@ export interface LocalFolderWorkspace {
   /** Name of the project in the local folder. */
   project_name: string;
 }
-export const LocalFolderWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    project_name: S.String,
-  }),
-).annotate({ identifier: "LocalFolderWorkspace" }) as any as S.Schema<LocalFolderWorkspace>;
-
 export interface GitRepositoryWorkspace {
   /** Selects a GitHub repository as the workspace. */
   type: string;
   /** GitHub repository in owner/name format. */
   repository: string;
 }
-export const GitRepositoryWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    repository: S.String,
-  }),
-).annotate({ identifier: "GitRepositoryWorkspace" }) as any as S.Schema<GitRepositoryWorkspace>;
-
 export type WizardWorkspace = LocalFolderWorkspace | GitRepositoryWorkspace;
-export const WizardWorkspace = S.Unknown as any as S.Schema<WizardWorkspace>;
+const WizardWorkspace = S.Unknown as any as S.Schema<WizardWorkspace>;
 
 export interface CreateWizardRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -91,7 +77,7 @@ export interface CreateWizardRunRequest {
   /** Wizard package version to run. Defaults to the backend pin and accepts latest explicitly. */
   wizard_version?: string;
 }
-export const CreateWizardRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWizardRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     program_id: S.String,
@@ -112,7 +98,7 @@ export interface WizardRunCreator {
   /** Email address of the user who created the Wizard run. */
   email: string;
 }
-export const WizardRunCreator = /*@__PURE__*/ S.suspend(() =>
+const WizardRunCreator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     first_name: S.String,
@@ -123,23 +109,22 @@ export const WizardRunCreator = /*@__PURE__*/ S.suspend(() =>
 
 /** Wizard CLI arguments used to start the program. */
 export type WizardProgramCommandList = Array<string>;
-export const WizardProgramCommandList = /*@__PURE__*/ S.Array(
+const WizardProgramCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WizardProgramCommandList>;
 
 /** Labels that categorize the program. */
 export type WizardProgramTagsList = Array<string>;
-export const WizardProgramTagsList =
-  WizardProgramCommandList as any as S.Schema<WizardProgramTagsList>;
+const WizardProgramTagsList = WizardProgramCommandList as any as S.Schema<WizardProgramTagsList>;
 
 /** Programs that should run before this program. */
 export type WizardProgramRequiredProgramsList = Array<string>;
-export const WizardProgramRequiredProgramsList =
+const WizardProgramRequiredProgramsList =
   WizardProgramCommandList as any as S.Schema<WizardProgramRequiredProgramsList>;
 
 /** Environments where the program can run. */
 export type WizardProgramSupportedEnvironmentsList = Array<RunEnvironmentEnum>;
-export const WizardProgramSupportedEnvironmentsList = /*@__PURE__*/ S.Array(
+const WizardProgramSupportedEnvironmentsList = /*@__PURE__*/ S.Array(
   RunEnvironmentEnum,
 ) as any as S.Schema<WizardProgramSupportedEnvironmentsList>;
 
@@ -161,7 +146,7 @@ export interface WizardProgram {
   /** Environments where the program can run. */
   supported_environments: WizardProgramSupportedEnvironmentsList;
 }
-export const WizardProgram = /*@__PURE__*/ S.suspend(() =>
+const WizardProgram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -176,7 +161,7 @@ export const WizardProgram = /*@__PURE__*/ S.suspend(() =>
 
 /** * `created` - created * `running` - running * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
 export type WizardRunStatusEnum = "created" | "running" | "completed" | "failed" | "cancelled";
-export const WizardRunStatusEnum = S.String;
+const WizardRunStatusEnum = S.String;
 
 /** * `dispatching` - dispatching * `provisioning` - provisioning * `preparing_workspace` - preparing_workspace * `executing_wizard` - executing_wizard * `creating_artifacts` - creating_artifacts */
 export type WizardRunStageEnum =
@@ -185,7 +170,7 @@ export type WizardRunStageEnum =
   | "preparing_workspace"
   | "executing_wizard"
   | "creating_artifacts";
-export const WizardRunStageEnum = S.String;
+const WizardRunStageEnum = S.String;
 
 export interface WizardRun {
   /** Unique ID of the Wizard run. */
@@ -221,7 +206,7 @@ export interface WizardRun {
   /** Cloud execution deadline, or null for local runs. */
   deadline_at: string | null;
 }
-export const WizardRun = /*@__PURE__*/ S.suspend(() =>
+const WizardRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     team_id: S.Number,
@@ -244,7 +229,7 @@ export const WizardRun = /*@__PURE__*/ S.suspend(() =>
 
 /** The question text shown to the user. Always empty for sensitive questions. */
 export type PendingInputPromptsList = Array<string>;
-export const PendingInputPromptsList =
+const PendingInputPromptsList =
   WizardProgramCommandList as any as S.Schema<PendingInputPromptsList>;
 
 /** The in-flight `wizard_ask` question. Typed rather than a free-form dict so the shape the widget renders is enforced at the edge instead of trusted from the producer. */
@@ -260,7 +245,7 @@ export interface PendingInput {
   /** The question text shown to the user. Always empty for sensitive questions. */
   prompts?: PendingInputPromptsList;
 }
-export const PendingInput = /*@__PURE__*/ S.suspend(() =>
+const PendingInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     asked_at: S.optional(S.String),
@@ -272,7 +257,7 @@ export const PendingInput = /*@__PURE__*/ S.suspend(() =>
 
 /** * `idle` - IDLE * `running` - RUNNING * `completed` - COMPLETED * `error` - ERROR */
 export type RunPhaseEnum = "idle" | "running" | "completed" | "error";
-export const RunPhaseEnum = S.String;
+const RunPhaseEnum = S.String;
 
 /** * `pending` - PENDING * `in_progress` - IN_PROGRESS * `completed` - COMPLETED * `failed` - FAILED * `canceled` - CANCELED */
 export type WizardTaskDTOStatusEnum =
@@ -281,14 +266,14 @@ export type WizardTaskDTOStatusEnum =
   | "completed"
   | "failed"
   | "canceled";
-export const WizardTaskDTOStatusEnum = S.String;
+const WizardTaskDTOStatusEnum = S.String;
 
 export interface WizardTaskDTO {
   id: string;
   title: string;
   status: WizardTaskDTOStatusEnum | (string & {});
 }
-export const WizardTaskDTO = /*@__PURE__*/ S.suspend(() =>
+const WizardTaskDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -297,20 +282,20 @@ export const WizardTaskDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WizardTaskDTO" }) as any as S.Schema<WizardTaskDTO>;
 
 export type CreateWizardSessionRequestTasksList = Array<WizardTaskDTO>;
-export const CreateWizardSessionRequestTasksList = /*@__PURE__*/ S.Array(
+const CreateWizardSessionRequestTasksList = /*@__PURE__*/ S.Array(
   WizardTaskDTO,
 ) as any as S.Schema<CreateWizardSessionRequestTasksList>;
 
 /** Optional structured plan of events the wizard intends to instrument. Schema is workflow-specific. */
 export type CreateWizardSessionRequestEventPlanMap = { [key: string]: unknown | undefined };
-export const CreateWizardSessionRequestEventPlanMap = /*@__PURE__*/ S.Record(
+const CreateWizardSessionRequestEventPlanMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateWizardSessionRequestEventPlanMap>;
 
 /** Populated when run_phase='error'. Shape: { type: string, message: string }. */
 export type CreateWizardSessionRequestErrorMap = { [key: string]: unknown | undefined };
-export const CreateWizardSessionRequestErrorMap =
+const CreateWizardSessionRequestErrorMap =
   CreateWizardSessionRequestEventPlanMap as any as S.Schema<CreateWizardSessionRequestErrorMap>;
 
 export interface CreateWizardSessionRequest {
@@ -336,7 +321,7 @@ export interface CreateWizardSessionRequest {
   /** Populated when run_phase='error'. Shape: { type: string, message: string }. */
   error?: CreateWizardSessionRequestErrorMap | null;
 }
-export const CreateWizardSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWizardSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pending_input: S.optional(S.NullOr(PendingInput)),
@@ -357,15 +342,15 @@ export const CreateWizardSessionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWizardSessionRequest>;
 
 export type WizardSessionDTOTasksList = Array<WizardTaskDTO>;
-export const WizardSessionDTOTasksList =
+const WizardSessionDTOTasksList =
   CreateWizardSessionRequestTasksList as any as S.Schema<WizardSessionDTOTasksList>;
 
 export type WizardSessionDTOEventPlanMap = { [key: string]: unknown | undefined };
-export const WizardSessionDTOEventPlanMap =
+const WizardSessionDTOEventPlanMap =
   CreateWizardSessionRequestEventPlanMap as any as S.Schema<WizardSessionDTOEventPlanMap>;
 
 export type WizardSessionDTOErrorMap = { [key: string]: unknown | undefined };
-export const WizardSessionDTOErrorMap =
+const WizardSessionDTOErrorMap =
   CreateWizardSessionRequestEventPlanMap as any as S.Schema<WizardSessionDTOErrorMap>;
 
 export interface WizardSessionUserDTO {
@@ -373,7 +358,7 @@ export interface WizardSessionUserDTO {
   first_name: string;
   email: string;
 }
-export const WizardSessionUserDTO = /*@__PURE__*/ S.suspend(() =>
+const WizardSessionUserDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     first_name: S.String,
@@ -402,7 +387,7 @@ export interface WizardSessionDTO {
   updated_at: string;
   is_stale: boolean;
 }
-export const WizardSessionDTO = /*@__PURE__*/ S.suspend(() =>
+const WizardSessionDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pending_input: S.NullOr(PendingInput),
     session_id: S.String,
@@ -427,7 +412,7 @@ export interface GetWizardRunRequest {
   project_id: string;
   run_id: string;
 }
-export const GetWizardRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWizardRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -442,7 +427,7 @@ export interface GetWizardRunsArtifactsContentRequest {
   run_id: string;
   id: string;
 }
-export const GetWizardRunsArtifactsContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWizardRunsArtifactsContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -459,9 +444,7 @@ export const GetWizardRunsArtifactsContentRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetWizardRunsArtifactsContentRequest>;
 
 export interface GetWizardRunsArtifactsContentResponse {}
-export const GetWizardRunsArtifactsContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GetWizardRunsArtifactsContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetWizardRunsArtifactsContentResponse",
 }) as any as S.Schema<GetWizardRunsArtifactsContentResponse>;
 
@@ -470,7 +453,7 @@ export interface GetWizardRunsStreamRequest {
   project_id: string;
   run_id: string;
 }
-export const GetWizardRunsStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWizardRunsStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -486,7 +469,7 @@ export const GetWizardRunsStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWizardRunsStreamRequest>;
 
 export interface GetWizardRunsStreamResponse {}
-export const GetWizardRunsStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetWizardRunsStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetWizardRunsStreamResponse",
 }) as any as S.Schema<GetWizardRunsStreamResponse>;
 
@@ -495,7 +478,7 @@ export interface GetWizardRunsTaskRequest {
   project_id: string;
   run_id: string;
 }
-export const GetWizardRunsTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWizardRunsTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -510,7 +493,7 @@ export const GetWizardRunsTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `created` - created * `running` - running * `completed` - completed * `failed` - failed */
 export type WizardTaskStatusEnum = "created" | "running" | "completed" | "failed";
-export const WizardTaskStatusEnum = S.String;
+const WizardTaskStatusEnum = S.String;
 
 export interface WizardRunTask {
   /** Task name, unique within this run. */
@@ -528,7 +511,7 @@ export interface WizardRunTask {
   /** Task failure explanation, or null when none is available. */
   error_message: string | null;
 }
-export const WizardRunTask = /*@__PURE__*/ S.suspend(() =>
+const WizardRunTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     status: WizardTaskStatusEnum,
@@ -542,7 +525,7 @@ export const WizardRunTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete task list in snapshot order. */
 export type WizardRunTaskListTasksList = Array<WizardRunTask>;
-export const WizardRunTaskListTasksList = /*@__PURE__*/ S.Array(
+const WizardRunTaskListTasksList = /*@__PURE__*/ S.Array(
   WizardRunTask,
 ) as any as S.Schema<WizardRunTaskListTasksList>;
 
@@ -550,7 +533,7 @@ export interface WizardRunTaskList {
   /** Complete task list in snapshot order. */
   tasks: WizardRunTaskListTasksList;
 }
-export const WizardRunTaskList = /*@__PURE__*/ S.suspend(() =>
+const WizardRunTaskList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasks: WizardRunTaskListTasksList,
   }),
@@ -561,7 +544,7 @@ export interface GetWizardSessionRequest {
   project_id: string;
   session_id: string;
 }
-export const GetWizardSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWizardSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     session_id: S.String.pipe(T.Label()),
@@ -582,7 +565,7 @@ export interface GetWizardSessionsLatestRequest {
   /** Workflow to inspect. */
   workflow_id: string;
 }
-export const GetWizardSessionsLatestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWizardSessionsLatestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     skill_id: S.optional(S.String.pipe(T.Query())),
@@ -602,7 +585,7 @@ export interface GetWizardSessionsStreamRequest {
   /** Workflow to inspect. */
   workflow_id: string;
 }
-export const GetWizardSessionsStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWizardSessionsStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     skill_id: S.optional(S.String.pipe(T.Query())),
@@ -615,9 +598,9 @@ export const GetWizardSessionsStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWizardSessionsStreamRequest>;
 
 export interface GetWizardSessionsStreamResponse {}
-export const GetWizardSessionsStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GetWizardSessionsStreamResponse" },
-) as any as S.Schema<GetWizardSessionsStreamResponse>;
+const GetWizardSessionsStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "GetWizardSessionsStreamResponse",
+}) as any as S.Schema<GetWizardSessionsStreamResponse>;
 
 export interface ListWizardRegistryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -627,7 +610,7 @@ export interface ListWizardRegistryRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListWizardRegistryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWizardRegistryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -638,7 +621,7 @@ export const ListWizardRegistryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWizardRegistryRequest>;
 
 export type PaginatedWizardProgramListResultsList = Array<WizardProgram>;
-export const PaginatedWizardProgramListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedWizardProgramListResultsList = /*@__PURE__*/ S.Array(
   WizardProgram,
 ) as any as S.Schema<PaginatedWizardProgramListResultsList>;
 
@@ -648,7 +631,7 @@ export interface PaginatedWizardProgramList {
   previous?: string | null;
   results: PaginatedWizardProgramListResultsList;
 }
-export const PaginatedWizardProgramList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedWizardProgramList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -665,12 +648,10 @@ export type ListWizardRunsRequestStatusItem =
   | "created"
   | "failed"
   | "running";
-export const ListWizardRunsRequestStatusItem = S.String;
-
 export type ListWizardRunsRequestStatusList = Array<
   ListWizardRunsRequestStatusItem | (string & {})
 >;
-export const ListWizardRunsRequestStatusList =
+const ListWizardRunsRequestStatusList =
   WizardProgramSupportedEnvironmentsList as any as S.Schema<ListWizardRunsRequestStatusList>;
 
 export interface ListWizardRunsRequest {
@@ -685,7 +666,7 @@ export interface ListWizardRunsRequest {
   /** Filter by one or more comma-separated run statuses. */
   status?: ListWizardRunsRequestStatusList;
 }
-export const ListWizardRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWizardRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_after: S.optional(S.String.pipe(T.Query())),
@@ -696,7 +677,7 @@ export const ListWizardRunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWizardRunsRequest" }) as any as S.Schema<ListWizardRunsRequest>;
 
 export type PaginatedWizardRunListResultsList = Array<WizardRun>;
-export const PaginatedWizardRunListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedWizardRunListResultsList = /*@__PURE__*/ S.Array(
   WizardRun,
 ) as any as S.Schema<PaginatedWizardRunListResultsList>;
 
@@ -706,7 +687,7 @@ export interface PaginatedWizardRunList {
   previous?: string | null;
   results: PaginatedWizardRunListResultsList;
 }
-export const PaginatedWizardRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedWizardRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -724,7 +705,7 @@ export interface ListWizardRunsArtifactsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListWizardRunsArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWizardRunsArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -743,8 +724,6 @@ export const ListWizardRunsArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `git_diff` - git_diff */
 export type WizardRunGitDiffArtifactArtifactTypeEnum = "git_diff";
-export const WizardRunGitDiffArtifactArtifactTypeEnum = S.String;
-
 export interface WizardRunGitDiffArtifact {
   /** Unique ID of the run artifact. */
   id: string;
@@ -765,24 +744,8 @@ export interface WizardRunGitDiffArtifact {
   /** Time when the artifact was stored. */
   created_at: string;
 }
-export const WizardRunGitDiffArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    team_id: S.Number,
-    run_id: S.String,
-    artifact_type: WizardRunGitDiffArtifactArtifactTypeEnum,
-    size_bytes: S.Number,
-    content_hash: S.String,
-    additions: S.NullOr(S.Number),
-    removals: S.NullOr(S.Number),
-    created_at: S.String,
-  }),
-).annotate({ identifier: "WizardRunGitDiffArtifact" }) as any as S.Schema<WizardRunGitDiffArtifact>;
-
 /** * `pull_request` - pull_request */
 export type WizardRunPullRequestArtifactArtifactTypeEnum = "pull_request";
-export const WizardRunPullRequestArtifactArtifactTypeEnum = S.String;
-
 export interface WizardRunPullRequestArtifact {
   /** Unique ID of the run artifact. */
   id: string;
@@ -805,28 +768,11 @@ export interface WizardRunPullRequestArtifact {
   /** Time when the artifact was stored. */
   created_at: string;
 }
-export const WizardRunPullRequestArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    team_id: S.Number,
-    run_id: S.String,
-    artifact_type: WizardRunPullRequestArtifactArtifactTypeEnum,
-    url: S.String,
-    number: S.Number,
-    repository: S.String,
-    head_branch: S.String,
-    base_branch: S.String,
-    created_at: S.String,
-  }),
-).annotate({
-  identifier: "WizardRunPullRequestArtifact",
-}) as any as S.Schema<WizardRunPullRequestArtifact>;
-
 export type WizardRunArtifact = WizardRunGitDiffArtifact | WizardRunPullRequestArtifact;
-export const WizardRunArtifact = S.Unknown as any as S.Schema<WizardRunArtifact>;
+const WizardRunArtifact = S.Unknown as any as S.Schema<WizardRunArtifact>;
 
 export type PaginatedWizardRunArtifactListResultsList = Array<WizardRunArtifact>;
-export const PaginatedWizardRunArtifactListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedWizardRunArtifactListResultsList = /*@__PURE__*/ S.Array(
   WizardRunArtifact,
 ) as any as S.Schema<PaginatedWizardRunArtifactListResultsList>;
 
@@ -836,7 +782,7 @@ export interface PaginatedWizardRunArtifactList {
   previous?: string | null;
   results: PaginatedWizardRunArtifactListResultsList;
 }
-export const PaginatedWizardRunArtifactList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedWizardRunArtifactList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -859,7 +805,7 @@ export interface ListWizardSessionsRequest {
   /** Return sessions for this workflow only. */
   workflow_id?: string;
 }
-export const ListWizardSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWizardSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -872,7 +818,7 @@ export const ListWizardSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWizardSessionsRequest>;
 
 export type PaginatedWizardSessionDTOListResultsList = Array<WizardSessionDTO>;
-export const PaginatedWizardSessionDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedWizardSessionDTOListResultsList = /*@__PURE__*/ S.Array(
   WizardSessionDTO,
 ) as any as S.Schema<PaginatedWizardSessionDTOListResultsList>;
 
@@ -882,7 +828,7 @@ export interface PaginatedWizardSessionDTOList {
   previous?: string | null;
   results: PaginatedWizardSessionDTOListResultsList;
 }
-export const PaginatedWizardSessionDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedWizardSessionDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -895,7 +841,7 @@ export const PaginatedWizardSessionDTOList = /*@__PURE__*/ S.suspend(() =>
 
 /** * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
 export type WizardRunStatusUpdateRequestStatusEnum = "completed" | "failed" | "cancelled";
-export const WizardRunStatusUpdateRequestStatusEnum = S.String;
+const WizardRunStatusUpdateRequestStatusEnum = S.String;
 
 export interface UpdateWizardRunsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -906,7 +852,7 @@ export interface UpdateWizardRunsPartialRequest {
   /** Machine-readable reason the Wizard run failed. */
   error_code?: string | null;
 }
-export const UpdateWizardRunsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWizardRunsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -925,7 +871,7 @@ export interface UpdateWizardRunTask {
   /** Current task status reported by the setup agent. * `created` - created * `running` - running * `completed` - completed * `failed` - failed */
   status: WizardTaskStatusEnum | (string & {});
 }
-export const UpdateWizardRunTask = /*@__PURE__*/ S.suspend(() =>
+const UpdateWizardRunTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     status: WizardTaskStatusEnum,
@@ -934,7 +880,7 @@ export const UpdateWizardRunTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete task snapshot. An empty list clears the run's tasks. */
 export type UpdateWizardRunsTaskRequestTasksList = Array<UpdateWizardRunTask>;
-export const UpdateWizardRunsTaskRequestTasksList = /*@__PURE__*/ S.Array(
+const UpdateWizardRunsTaskRequestTasksList = /*@__PURE__*/ S.Array(
   UpdateWizardRunTask,
 ) as any as S.Schema<UpdateWizardRunsTaskRequestTasksList>;
 
@@ -945,7 +891,7 @@ export interface UpdateWizardRunsTaskRequest {
   /** Complete task snapshot. An empty list clears the run's tasks. */
   tasks: UpdateWizardRunsTaskRequestTasksList;
 }
-export const UpdateWizardRunsTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWizardRunsTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     run_id: S.String.pipe(T.Label()),
@@ -962,7 +908,7 @@ export const UpdateWizardRunsTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWizardRunsTaskRequest>;
 
 export interface UpdateWizardRunsTaskResponse {}
-export const UpdateWizardRunsTaskResponse =
+const UpdateWizardRunsTaskResponse =
   GetWizardRunsStreamResponse as any as S.Schema<UpdateWizardRunsTaskResponse>;
 
 export type CreateWizardRunError = BadRequest | Forbidden | NotFound | PosthogOpError;

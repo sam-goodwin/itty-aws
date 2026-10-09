@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,7 +90,7 @@ export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -98,7 +98,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -116,7 +116,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type AuditScheduleReportFormatEnum =
   | "AUDIT_REPORT_FORMAT_UNSPECIFIED"
   | "AUDIT_REPORT_FORMAT_ODF";
-export const AuditScheduleReportFormatEnum = S.String;
+const AuditScheduleReportFormatEnum = S.String;
 
 export type ScheduleConfigFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
@@ -125,7 +125,7 @@ export type ScheduleConfigFrequencyEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "ANNUALLY";
-export const ScheduleConfigFrequencyEnum = S.String;
+const ScheduleConfigFrequencyEnum = S.String;
 
 /** Timing and frequency parameters for recurring audit runs. */
 export interface ScheduleConfig {
@@ -138,7 +138,7 @@ export interface ScheduleConfig {
   /** Optional. Date that the schedule stops. If not specified, the schedule runs indefinitely. */
   endTime?: string;
 }
-export const ScheduleConfig = /*@__PURE__*/ S.suspend(() =>
+const ScheduleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -155,7 +155,7 @@ export type AuditScheduleStateEnum =
   | "SCHEDULE_STATE_FAILED_SETUP"
   | "SCHEDULE_STATE_ERROR"
   | "SCHEDULE_STATE_DELETED";
-export const AuditScheduleStateEnum = S.String;
+const AuditScheduleStateEnum = S.String;
 
 /** An audit schedule, in one of the following formats: * `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` * `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` */
 export interface AuditSchedule {
@@ -184,7 +184,7 @@ export interface AuditSchedule {
   /** Output only. Timestamp when the schedule was last updated. */
   updateTime?: string;
 }
-export const AuditSchedule = /*@__PURE__*/ S.suspend(() =>
+const AuditSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportFormat: S.optional(AuditScheduleReportFormatEnum),
     scheduleConfig: S.optional(ScheduleConfig),
@@ -211,7 +211,7 @@ export interface CreateFoldersLocationsAuditSchedulesRequest {
   /** Request body */
   body?: AuditSchedule;
 }
-export const CreateFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditScheduleId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -238,7 +238,7 @@ export interface CreateOrganizationsLocationsAuditSchedulesRequest {
   /** Request body */
   body?: AuditSchedule;
 }
-export const CreateOrganizationsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     auditScheduleId: S.optional(S.String.pipe(T.Query())),
@@ -265,7 +265,7 @@ export interface CreateProjectsLocationsAuditSchedulesRequest {
   /** Request body */
   body?: AuditSchedule;
 }
-export const CreateProjectsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -286,7 +286,7 @@ export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -304,7 +304,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -323,14 +323,14 @@ export interface EligibleDestination {
   /** The location of the Cloud Storage bucket where you want to upload the audit report and evidence during the GenerateAuditReport API call. */
   eligibleGcsBucket?: string;
 }
-export const EligibleDestination = /*@__PURE__*/ S.suspend(() =>
+const EligibleDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eligibleGcsBucket: S.optional(S.String),
   }),
 ).annotate({ identifier: "EligibleDestination" }) as any as S.Schema<EligibleDestination>;
 
 export type EligibleDestinationList = Array<EligibleDestination>;
-export const EligibleDestinationList = /*@__PURE__*/ S.Array(
+const EligibleDestinationList = /*@__PURE__*/ S.Array(
   EligibleDestination,
 ) as any as S.Schema<EligibleDestinationList>;
 
@@ -341,7 +341,7 @@ export interface EnrollResourceRequest {
   /** Required. Cloud Storage buckets that you can upload your audit reports to during the audit process. When you enroll an organization or folder, you can choose a Cloud Storage bucket from any project in the organization or folder. If you run an audit at the project level using the service agent at the organization or folder level, all the buckets that are associated with the service agent are available. */
   destinations?: EligibleDestinationList;
 }
-export const EnrollResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     destinations: S.optional(EligibleDestinationList),
@@ -354,7 +354,7 @@ export interface EnrollResourceFoldersLocationsRequest {
   /** Request body */
   body?: EnrollResourceRequest;
 }
-export const EnrollResourceFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollResourceFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(EnrollResourceRequest.pipe(T.HttpBody())),
@@ -374,14 +374,14 @@ export interface DestinationDetails {
   /** URI for the Cloud Storage bucket, in the format `gs://{bucket_name}`. */
   gcsBucketUri?: string;
 }
-export const DestinationDetails = /*@__PURE__*/ S.suspend(() =>
+const DestinationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsBucketUri: S.optional(S.String),
   }),
 ).annotate({ identifier: "DestinationDetails" }) as any as S.Schema<DestinationDetails>;
 
 export type DestinationDetailsList = Array<DestinationDetails>;
-export const DestinationDetailsList = /*@__PURE__*/ S.Array(
+const DestinationDetailsList = /*@__PURE__*/ S.Array(
   DestinationDetails,
 ) as any as S.Schema<DestinationDetailsList>;
 
@@ -392,7 +392,7 @@ export interface Enrollment {
   /** Output only. Cloud Storage buckets where you want to upload the audit reports. */
   destinationDetails?: DestinationDetailsList;
 }
-export const Enrollment = /*@__PURE__*/ S.suspend(() =>
+const Enrollment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     destinationDetails: S.optional(DestinationDetailsList),
@@ -405,7 +405,7 @@ export interface EnrollResourceOrganizationsLocationsRequest {
   /** Request body */
   body?: EnrollResourceRequest;
 }
-export const EnrollResourceOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollResourceOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(EnrollResourceRequest.pipe(T.HttpBody())),
@@ -426,7 +426,7 @@ export interface EnrollResourceProjectsLocationsRequest {
   /** Request body */
   body?: EnrollResourceRequest;
 }
-export const EnrollResourceProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollResourceProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(EnrollResourceRequest.pipe(T.HttpBody())),
@@ -444,7 +444,7 @@ export const EnrollResourceProjectsLocationsRequest = /*@__PURE__*/ S.suspend(()
 export type GenerateAuditReportRequestReportFormatEnum =
   | "AUDIT_REPORT_FORMAT_UNSPECIFIED"
   | "AUDIT_REPORT_FORMAT_ODF";
-export const GenerateAuditReportRequestReportFormatEnum = S.String;
+const GenerateAuditReportRequestReportFormatEnum = S.String;
 
 /** Request message for GenerateAuditReport. */
 export interface GenerateAuditReportRequest {
@@ -459,7 +459,7 @@ export interface GenerateAuditReportRequest {
   /** Required. The framework that's used for the audit report. For example, `NIST_800_53`. */
   complianceFramework?: string;
 }
-export const GenerateAuditReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAuditReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportFormat: S.optional(GenerateAuditReportRequestReportFormatEnum),
     complianceStandard: S.optional(S.String),
@@ -477,7 +477,7 @@ export interface GenerateFoldersLocationsAuditReportsRequest {
   /** Request body */
   body?: GenerateAuditReportRequest;
 }
-export const GenerateFoldersLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateFoldersLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(GenerateAuditReportRequest.pipe(T.HttpBody())),
@@ -493,15 +493,10 @@ export const GenerateFoldersLocationsAuditReportsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GenerateFoldersLocationsAuditReportsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -512,7 +507,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -533,7 +528,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -546,7 +541,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type GenerateAuditScopeReportRequestReportFormatEnum =
   | "AUDIT_SCOPE_REPORT_FORMAT_UNSPECIFIED"
   | "AUDIT_SCOPE_REPORT_FORMAT_ODF";
-export const GenerateAuditScopeReportRequestReportFormatEnum = S.String;
+const GenerateAuditScopeReportRequestReportFormatEnum = S.String;
 
 /** Request message for GenerateAuditScopeReport. */
 export interface GenerateAuditScopeReportRequest {
@@ -559,7 +554,7 @@ export interface GenerateAuditScopeReportRequest {
   /** Optional. If `true`, only validates the request and does not generate the audit scope report. This executes standard request validation (such as schema, framework existence, scope, and IAM checks) and skips the apply phase. Use this field for the following purposes: * **Infrastructure as Code (IaC)**: Allow tools like Terraform to run dry-run mutations (e.g., `terraform plan`) without creating real resources or incurring costs. * **User Interface Validation**: Enable real-time form and permission validation in custom UIs before submitting requests. * **CI/CD & Automation**: Test your scripts, permissions, and parameters safely without consuming resource quotas. */
   validateOnly?: boolean;
 }
-export const GenerateAuditScopeReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAuditScopeReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportFormat: S.optional(GenerateAuditScopeReportRequestReportFormatEnum),
     complianceStandard: S.optional(S.String),
@@ -576,7 +571,7 @@ export interface GenerateFoldersLocationsAuditScopeReportsRequest {
   /** Request body */
   body?: GenerateAuditScopeReportRequest;
 }
-export const GenerateFoldersLocationsAuditScopeReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateFoldersLocationsAuditScopeReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(GenerateAuditScopeReportRequest.pipe(T.HttpBody())),
@@ -598,7 +593,7 @@ export interface AuditScopeReport {
   /** Identifier. Name for the audit scope report, in one of the following formats: * `projects/{project}/locations/{location}/auditScopeReports/{audit_scope_report}` * `folders/{folder}/locations/{location}/auditScopeReports/{audit_scope_report}` * `organizations/{organization}/locations/{location}/auditScopeReports/{audit_scope_report}` */
   name?: string;
 }
-export const AuditScopeReport = /*@__PURE__*/ S.suspend(() =>
+const AuditScopeReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeReportContents: S.optional(S.String),
     name: S.optional(S.String),
@@ -611,7 +606,7 @@ export interface GenerateOrganizationsLocationsAuditReportsRequest {
   /** Request body */
   body?: GenerateAuditReportRequest;
 }
-export const GenerateOrganizationsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateOrganizationsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(GenerateAuditReportRequest.pipe(T.HttpBody())),
@@ -632,7 +627,7 @@ export interface GenerateOrganizationsLocationsAuditScopeReportsRequest {
   /** Request body */
   body?: GenerateAuditScopeReportRequest;
 }
-export const GenerateOrganizationsLocationsAuditScopeReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateOrganizationsLocationsAuditScopeReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(GenerateAuditScopeReportRequest.pipe(T.HttpBody())),
@@ -653,7 +648,7 @@ export interface GenerateProjectsLocationsAuditReportsRequest {
   /** Request body */
   body?: GenerateAuditReportRequest;
 }
-export const GenerateProjectsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateProjectsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(GenerateAuditReportRequest.pipe(T.HttpBody())),
@@ -674,7 +669,7 @@ export interface GenerateProjectsLocationsAuditScopeReportsRequest {
   /** Request body */
   body?: GenerateAuditScopeReportRequest;
 }
-export const GenerateProjectsLocationsAuditScopeReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateProjectsLocationsAuditScopeReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(GenerateAuditScopeReportRequest.pipe(T.HttpBody())),
@@ -693,7 +688,7 @@ export interface GetFoldersLocationsAuditReportsRequest {
   /** Required. Name of the audit report, in one of the following formats: * `projects/{project}/locations/{location}/auditReports/{audit_report}` * `folders/{folder}/locations/{location}/auditReports/{audit_report}` * `organizations/{organization}/locations/{location}/auditReports/{audit_report}` */
   name: string;
 }
-export const GetFoldersLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -716,7 +711,7 @@ export interface ReportSummary {
   /** Number of checks with violations. */
   violationCount?: number;
 }
-export const ReportSummary = /*@__PURE__*/ S.suspend(() =>
+const ReportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manualReviewNeededCount: S.optional(S.Number),
     totalCount: S.optional(S.Number),
@@ -733,7 +728,7 @@ export type ControlDetailsComplianceStateEnum =
   | "MANUAL_REVIEW_NEEDED"
   | "ERROR"
   | "AUDIT_NOT_SUPPORTED";
-export const ControlDetailsComplianceStateEnum = S.String;
+const ControlDetailsComplianceStateEnum = S.String;
 
 export type ControlFamilyEnum =
   | "FAMILY_UNSPECIFIED"
@@ -755,7 +750,7 @@ export type ControlFamilyEnum =
   | "SC"
   | "SI"
   | "SR";
-export const ControlFamilyEnum = S.String;
+const ControlFamilyEnum = S.String;
 
 /** Regulatory family of the control. */
 export interface ControlFamily {
@@ -764,7 +759,7 @@ export interface ControlFamily {
   /** ID of the regulatory control family. To find the list of supported control families, use the ListControls method and review the `control_family` field in the response. */
   familyId?: string;
 }
-export const ControlFamily = /*@__PURE__*/ S.suspend(() =>
+const ControlFamily = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     familyId: S.optional(S.String),
@@ -794,7 +789,7 @@ export interface Control {
   /** Output only. A description of how you can implement your responsibility for this control. */
   customerResponsibilityImplementation?: string;
 }
-export const Control = /*@__PURE__*/ S.suspend(() =>
+const Control = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleResponsibilityDescription: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -818,7 +813,7 @@ export interface ControlDetails {
   /** Control that the findings are being reported for. */
   control?: Control;
 }
-export const ControlDetails = /*@__PURE__*/ S.suspend(() =>
+const ControlDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlReportSummary: S.optional(ReportSummary),
     complianceState: S.optional(ControlDetailsComplianceStateEnum),
@@ -827,7 +822,7 @@ export const ControlDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ControlDetails" }) as any as S.Schema<ControlDetails>;
 
 export type ControlDetailsList = Array<ControlDetails>;
-export const ControlDetailsList = /*@__PURE__*/ S.Array(
+const ControlDetailsList = /*@__PURE__*/ S.Array(
   ControlDetails,
 ) as any as S.Schema<ControlDetailsList>;
 
@@ -837,7 +832,7 @@ export type AuditReportReportGenerationStateEnum =
   | "COMPLETED"
   | "FAILED"
   | "SUMMARY_UNKNOWN";
-export const AuditReportReportGenerationStateEnum = S.String;
+const AuditReportReportGenerationStateEnum = S.String;
 
 /** An audit report. */
 export interface AuditReport {
@@ -864,7 +859,7 @@ export interface AuditReport {
   /** Output only. Project number, folder ID, or organization ID that the audit report was generated for. */
   scopeId?: string;
 }
-export const AuditReport = /*@__PURE__*/ S.suspend(() =>
+const AuditReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(S.String),
     complianceStandard: S.optional(S.String),
@@ -884,7 +879,7 @@ export interface GetFoldersLocationsAuditSchedulesRequest {
   /** Required. Name of the audit schedule to retrieve, in one of the following formats: * `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` * `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` * `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}` */
   name: string;
 }
-export const GetFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -898,7 +893,7 @@ export interface GetFoldersLocationsOperationDetailsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsOperationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsOperationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -912,7 +907,7 @@ export interface GetFoldersLocationsOperationIdsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsOperationIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsOperationIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -926,7 +921,7 @@ export interface GetFoldersLocationsResourceEnrollmentStatusesRequest {
   /** Required. Name of the resource enrollment status, in one of the following formats: * `folders/{folder}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` * `projects/{project}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` * `organizations/{organization}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` */
   name: string;
 }
-export const GetFoldersLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -941,7 +936,7 @@ export type ResourceEnrollmentStatusEnrollmentStateEnum =
   | "NOT_ENROLLED"
   | "INHERITED"
   | "ENROLLED";
-export const ResourceEnrollmentStatusEnrollmentStateEnum = S.String;
+const ResourceEnrollmentStatusEnrollmentStateEnum = S.String;
 
 /** An organization, folder, or project with its enrollment status. */
 export interface ResourceEnrollmentStatus {
@@ -956,7 +951,7 @@ export interface ResourceEnrollmentStatus {
   /** Output only. Display name for the organization, folder, or project. */
   displayName?: string;
 }
-export const ResourceEnrollmentStatus = /*@__PURE__*/ S.suspend(() =>
+const ResourceEnrollmentStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     enrollmentState: S.optional(ResourceEnrollmentStatusEnrollmentStateEnum),
@@ -970,7 +965,7 @@ export interface GetOrganizationsLocationsAuditReportsRequest {
   /** Required. Name of the audit report, in one of the following formats: * `projects/{project}/locations/{location}/auditReports/{audit_report}` * `folders/{folder}/locations/{location}/auditReports/{audit_report}` * `organizations/{organization}/locations/{location}/auditReports/{audit_report}` */
   name: string;
 }
-export const GetOrganizationsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -984,7 +979,7 @@ export interface GetOrganizationsLocationsAuditSchedulesRequest {
   /** Required. Name of the audit schedule to retrieve, in one of the following formats: * `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` * `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` * `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}` */
   name: string;
 }
-export const GetOrganizationsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -998,7 +993,7 @@ export interface GetOrganizationsLocationsOperationDetailsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1012,7 +1007,7 @@ export interface GetOrganizationsLocationsOperationIdsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1026,7 +1021,7 @@ export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1040,13 +1035,12 @@ export interface GetOrganizationsLocationsResourceEnrollmentStatusesRequest {
   /** Required. Name of the resource enrollment status, in one of the following formats: * `folders/{folder}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` * `projects/{project}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` * `organizations/{organization}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` */
   name: string;
 }
-export const GetOrganizationsLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://auditmanager.googleapis.com/" }),
-    ),
+const GetOrganizationsLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://auditmanager.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetOrganizationsLocationsResourceEnrollmentStatusesRequest",
 }) as any as S.Schema<GetOrganizationsLocationsResourceEnrollmentStatusesRequest>;
@@ -1055,7 +1049,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1066,7 +1060,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1081,7 +1075,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -1095,7 +1089,7 @@ export interface GetProjectsLocationsAuditReportsRequest {
   /** Required. Name of the audit report, in one of the following formats: * `projects/{project}/locations/{location}/auditReports/{audit_report}` * `folders/{folder}/locations/{location}/auditReports/{audit_report}` * `organizations/{organization}/locations/{location}/auditReports/{audit_report}` */
   name: string;
 }
-export const GetProjectsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1109,7 +1103,7 @@ export interface GetProjectsLocationsAuditSchedulesRequest {
   /** Required. Name of the audit schedule to retrieve, in one of the following formats: * `projects/{project}/locations/{location}/auditSchedules/{audit_schedule}` * `folders/{folder}/locations/{location}/auditSchedules/{audit_schedule}` * `organizations/{organization}/locations/{location}/auditSchedules/{audit_schedule}` */
   name: string;
 }
-export const GetProjectsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1123,7 +1117,7 @@ export interface GetProjectsLocationsOperationDetailsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1137,7 +1131,7 @@ export interface GetProjectsLocationsOperationIdsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1151,7 +1145,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1165,7 +1159,7 @@ export interface GetProjectsLocationsResourceEnrollmentStatusesRequest {
   /** Required. Name of the resource enrollment status, in one of the following formats: * `folders/{folder}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` * `projects/{project}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` * `organizations/{organization}/locations/{location}/resourceEnrollmentStatuses/{resource_enrollment_status}` */
   name: string;
 }
-export const GetProjectsLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1183,7 +1177,7 @@ export interface ListFoldersLocationsAuditReportsRequest {
   /** Optional. Maximum number of items to return in a single page. The service might return fewer items than this value. If unspecified, the service picks an appropriate default. The maximum value is 100; values above 100 are reduced to 100. */
   pageSize?: number;
 }
-export const ListFoldersLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1200,9 +1194,7 @@ export const ListFoldersLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListFoldersLocationsAuditReportsRequest>;
 
 export type AuditReportList = Array<AuditReport>;
-export const AuditReportList = /*@__PURE__*/ S.Array(
-  AuditReport,
-) as any as S.Schema<AuditReportList>;
+const AuditReportList = /*@__PURE__*/ S.Array(AuditReport) as any as S.Schema<AuditReportList>;
 
 /** Response message for ListAuditReports. */
 export interface ListAuditReportsResponse {
@@ -1211,7 +1203,7 @@ export interface ListAuditReportsResponse {
   /** Output only. A token that you can send as the `page_token` in a subsequent request to retrieve the next page of results. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAuditReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuditReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditReports: S.optional(AuditReportList),
     nextPageToken: S.optional(S.String),
@@ -1226,7 +1218,7 @@ export interface ListFoldersLocationsAuditSchedulesRequest {
   /** Required. Parent for the audit schedule, in one of the following formats: * `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}` * `organizations/{organization}/locations/{location}` */
   parent: string;
 }
-export const ListFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1243,12 +1235,12 @@ export const ListFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListFoldersLocationsAuditSchedulesRequest>;
 
 export type AuditScheduleList = Array<AuditSchedule>;
-export const AuditScheduleList = /*@__PURE__*/ S.Array(
+const AuditScheduleList = /*@__PURE__*/ S.Array(
   AuditSchedule,
 ) as any as S.Schema<AuditScheduleList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Response message for ListAuditSchedules. */
 export interface ListAuditSchedulesResponse {
@@ -1259,7 +1251,7 @@ export interface ListAuditSchedulesResponse {
   /** A token that you can send as the `page_token` in a subsequent request to retrieve the next page of results. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAuditSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuditSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditSchedules: S.optional(AuditScheduleList),
     unreachable: S.optional(StringList),
@@ -1277,7 +1269,7 @@ export interface ListFoldersLocationsResourceEnrollmentStatusesRequest {
   /** Optional. A page token, received from a previous call, to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListFoldersLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1294,7 +1286,7 @@ export const ListFoldersLocationsResourceEnrollmentStatusesRequest = /*@__PURE__
 }) as any as S.Schema<ListFoldersLocationsResourceEnrollmentStatusesRequest>;
 
 export type ResourceEnrollmentStatusList = Array<ResourceEnrollmentStatus>;
-export const ResourceEnrollmentStatusList = /*@__PURE__*/ S.Array(
+const ResourceEnrollmentStatusList = /*@__PURE__*/ S.Array(
   ResourceEnrollmentStatus,
 ) as any as S.Schema<ResourceEnrollmentStatusList>;
 
@@ -1305,7 +1297,7 @@ export interface ListResourceEnrollmentStatusesResponse {
   /** Output only. A token that you can send as the `page_token` in a subsequent request to retrieve the next page of results. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListResourceEnrollmentStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourceEnrollmentStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceEnrollmentStatuses: S.optional(ResourceEnrollmentStatusList),
     nextPageToken: S.optional(S.String),
@@ -1322,7 +1314,7 @@ export interface ListFoldersLocationsStandardsControlsRequest {
   /** Optional. Maximum number of items to return in a single page. The service might return fewer items than this value. If unspecified, the service picks an appropriate default. The maximum value is 100; values above 100 are reduced to 100. */
   pageSize?: number;
 }
-export const ListFoldersLocationsStandardsControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsStandardsControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1339,7 +1331,7 @@ export const ListFoldersLocationsStandardsControlsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListFoldersLocationsStandardsControlsRequest>;
 
 export type ControlList = Array<Control>;
-export const ControlList = /*@__PURE__*/ S.Array(Control) as any as S.Schema<ControlList>;
+const ControlList = /*@__PURE__*/ S.Array(Control) as any as S.Schema<ControlList>;
 
 /** Response message for ListControls. */
 export interface ListControlsResponse {
@@ -1348,7 +1340,7 @@ export interface ListControlsResponse {
   /** Output only. Controls for a given regulatory standard. */
   controls?: ControlList;
 }
-export const ListControlsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListControlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     controls: S.optional(ControlList),
@@ -1363,7 +1355,7 @@ export interface ListOrganizationsLocationsAuditReportsRequest {
   /** Optional. Maximum number of items to return in a single page. The service might return fewer items than this value. If unspecified, the service picks an appropriate default. The maximum value is 100; values above 100 are reduced to 100. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1387,7 +1379,7 @@ export interface ListOrganizationsLocationsAuditSchedulesRequest {
   /** Optional. A page token, received from a previous call, to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1415,7 +1407,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1434,7 +1426,7 @@ export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1445,7 +1437,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -1461,19 +1453,18 @@ export interface ListOrganizationsLocationsResourceEnrollmentStatusesRequest {
   /** Optional. Maximum number of items to return in a single page. The service might return fewer items than this value. If unspecified, the service picks an appropriate default. The maximum value is 100; values above 100 are reduced to 100. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/resourceEnrollmentStatuses",
-        baseUrl: "https://auditmanager.googleapis.com/",
-      }),
-    ),
+const ListOrganizationsLocationsResourceEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/resourceEnrollmentStatuses",
+      baseUrl: "https://auditmanager.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListOrganizationsLocationsResourceEnrollmentStatusesRequest",
 }) as any as S.Schema<ListOrganizationsLocationsResourceEnrollmentStatusesRequest>;
@@ -1486,7 +1477,7 @@ export interface ListOrganizationsLocationsStandardsControlsRequest {
   /** Optional. A page token, received from a previous call, to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsStandardsControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsStandardsControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1514,7 +1505,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1533,7 +1524,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1542,7 +1533,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1557,7 +1548,7 @@ export interface ListProjectsLocationsAuditReportsRequest {
   /** Required. Parent organization, folder, or project to list reports for, in one of the following formats: * `projects/{project}/locations/{location}` * `folders/{folder}/locations/{location}` * `organizations/{organization}/locations/{location}` */
   parent: string;
 }
-export const ListProjectsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAuditReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1581,7 +1572,7 @@ export interface ListProjectsLocationsAuditSchedulesRequest {
   /** Optional. A page token, received from a previous call, to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1609,7 +1600,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1635,7 +1626,7 @@ export interface ListProjectsLocationsStandardsControlsRequest {
   /** Optional. A page token, received from a previous call, to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsStandardsControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsStandardsControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1661,7 +1652,7 @@ export interface PatchFoldersLocationsAuditSchedulesRequest {
   /** Request body */
   body?: AuditSchedule;
 }
-export const PatchFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1684,7 +1675,7 @@ export interface PatchOrganizationsLocationsAuditSchedulesRequest {
   /** Request body */
   body?: AuditSchedule;
 }
-export const PatchOrganizationsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1707,7 +1698,7 @@ export interface PatchProjectsLocationsAuditSchedulesRequest {
   /** Request body */
   body?: AuditSchedule;
 }
-export const PatchProjectsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAuditSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

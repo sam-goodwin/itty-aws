@@ -18,26 +18,13 @@ export interface EncryptionCase0 {
   /** The identifier of the CMEK key to use for encryption. For GCP, the fully-qualified resource name of the key. For AWS, the ARN of the key. */
   key_name: string;
 }
-export const EncryptionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.Unknown,
-    key_name: S.String,
-  }),
-).annotate({ identifier: "EncryptionCase0" }) as any as S.Schema<EncryptionCase0>;
-
 /** Use the default server-side encryption (SSE). */
 export interface EncryptionCase1 {
   mode: unknown;
 }
-export const EncryptionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.Unknown,
-  }),
-).annotate({ identifier: "EncryptionCase1" }) as any as S.Schema<EncryptionCase1>;
-
 /** The encryption configuration for a namespace. */
 export type Encryption = EncryptionCase0 | EncryptionCase1;
-export const Encryption = S.Unknown as any as S.Schema<Encryption>;
+const Encryption = S.Unknown as any as S.Schema<Encryption>;
 
 export interface CreateNamespaceAsyncRequest {
   /** The name of the namespace. */
@@ -51,7 +38,7 @@ export interface CreateNamespaceAsyncRequest {
   /** (Optional) The encryption configuration for the destination namespace. */
   dest_encryption?: Encryption;
 }
-export const CreateNamespaceAsyncRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceAsyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     source_namespace: S.String,
@@ -67,7 +54,7 @@ export interface CreateNamespaceAsyncResponse {
   /** The token identifying the copy operation. */
   token: string;
 }
-export const CreateNamespaceAsyncResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceAsyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }),
@@ -89,7 +76,7 @@ export interface CreateNamespaceDebugRecallRequest {
   /** The ranking function to evaluate recall for. If provided, `num` must be either null or 1. */
   rank_by?: unknown;
 }
-export const CreateNamespaceDebugRecallRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceDebugRecallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     num: S.optional(S.Number),
@@ -104,29 +91,26 @@ export const CreateNamespaceDebugRecallRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The query vector used for this search. */
 export type CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList = Array<number>;
-export const CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList>;
+const CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList>;
 
 /** An identifier for a document. */
 export type Id = string | number;
-export const Id = S.Unknown as any as S.Schema<Id>;
+const Id = S.Unknown as any as S.Schema<Id>;
 
 /** A dense vector encoded as an array of floats. */
 export type VectorCase0List = Array<number>;
-export const VectorCase0List = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<VectorCase0List>;
-
 /** A vector embedding associated with a document. */
 export type Vector = VectorCase0List | string;
-export const Vector = S.Unknown as any as S.Schema<Vector>;
+const Vector = S.Unknown as any as S.Schema<Vector>;
 
 /** A single document, in a row-based format. */
 export interface Row {
   id: Id;
   vector?: Vector;
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: Id,
     vector: S.optional(Vector),
@@ -135,10 +119,9 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
 
 /** The true nearest neighbors with their distances and vectors. */
 export type CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList = Array<Row>;
-export const CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList =
-  /*@__PURE__*/ S.Array(
-    Row,
-  ) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList>;
+const CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList = /*@__PURE__*/ S.Array(
+  Row,
+) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList>;
 
 export interface CreateNamespaceDebugRecallResponseGroundTruthItem {
   /** The query vector used for this search. */
@@ -146,7 +129,7 @@ export interface CreateNamespaceDebugRecallResponseGroundTruthItem {
   /** The true nearest neighbors with their distances and vectors. */
   nearest_neighbors: CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList;
 }
-export const CreateNamespaceDebugRecallResponseGroundTruthItem = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceDebugRecallResponseGroundTruthItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query_vector: CreateNamespaceDebugRecallResponseGroundTruthItemQueryVectorList,
     nearest_neighbors: CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList,
@@ -158,7 +141,7 @@ export const CreateNamespaceDebugRecallResponseGroundTruthItem = /*@__PURE__*/ S
 /** Ground truth data including query vectors and true nearest neighbors. Only included when include_ground_truth is true. */
 export type CreateNamespaceDebugRecallResponseGroundTruthList =
   Array<CreateNamespaceDebugRecallResponseGroundTruthItem>;
-export const CreateNamespaceDebugRecallResponseGroundTruthList = /*@__PURE__*/ S.Array(
+const CreateNamespaceDebugRecallResponseGroundTruthList = /*@__PURE__*/ S.Array(
   CreateNamespaceDebugRecallResponseGroundTruthItem,
 ) as any as S.Schema<CreateNamespaceDebugRecallResponseGroundTruthList>;
 
@@ -172,7 +155,7 @@ export interface CreateNamespaceDebugRecallResponse {
   /** Ground truth data including query vectors and true nearest neighbors. Only included when include_ground_truth is true. */
   ground_truth?: CreateNamespaceDebugRecallResponseGroundTruthList;
 }
-export const CreateNamespaceDebugRecallResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceDebugRecallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avg_recall: S.Number,
     avg_exhaustive_count: S.Number,
@@ -188,7 +171,7 @@ export interface CreateNamespaceExplainQueryRequestConsistency {
   /** The query's consistency level. */
   level?: unknown;
 }
-export const CreateNamespaceExplainQueryRequestConsistency = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceExplainQueryRequestConsistency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.optional(S.Unknown),
   }),
@@ -198,31 +181,31 @@ export const CreateNamespaceExplainQueryRequestConsistency = /*@__PURE__*/ S.sus
 
 /** Include exactly the specified attributes in the response. */
 export type IncludeAttributesCase1List = Array<string>;
-export const IncludeAttributesCase1List = /*@__PURE__*/ S.Array(
+const IncludeAttributesCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IncludeAttributesCase1List>;
 
 /** Whether to include attributes in the response. */
 export type IncludeAttributes = boolean | IncludeAttributesCase1List;
-export const IncludeAttributes = S.Unknown as any as S.Schema<IncludeAttributes>;
+const IncludeAttributes = S.Unknown as any as S.Schema<IncludeAttributes>;
 
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type CreateNamespaceExplainQueryRequestExcludeAttributesList = Array<string>;
-export const CreateNamespaceExplainQueryRequestExcludeAttributesList =
+const CreateNamespaceExplainQueryRequestExcludeAttributesList =
   IncludeAttributesCase1List as any as S.Schema<CreateNamespaceExplainQueryRequestExcludeAttributesList>;
 
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type CreateNamespaceExplainQueryRequestAggregateByMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateNamespaceExplainQueryRequestAggregateByMap = /*@__PURE__*/ S.Record(
+const CreateNamespaceExplainQueryRequestAggregateByMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateNamespaceExplainQueryRequestAggregateByMap>;
 
 /** Groups documents by the specified attributes (the "group key") before computing aggregates. Aggregates are computed separately for each group. */
 export type CreateNamespaceExplainQueryRequestGroupByList = Array<unknown>;
-export const CreateNamespaceExplainQueryRequestGroupByList = /*@__PURE__*/ S.Array(
+const CreateNamespaceExplainQueryRequestGroupByList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateNamespaceExplainQueryRequestGroupByList>;
 
@@ -230,14 +213,11 @@ export const CreateNamespaceExplainQueryRequestGroupByList = /*@__PURE__*/ S.Arr
 export type CreateNamespaceExplainQueryRequestComputeAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateNamespaceExplainQueryRequestComputeAttributesMap =
+const CreateNamespaceExplainQueryRequestComputeAttributesMap =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceExplainQueryRequestComputeAttributesMap>;
 
 /** The attributes to include in the limit key. */
 export type LimitPerAttributesList = Array<string>;
-export const LimitPerAttributesList =
-  IncludeAttributesCase1List as any as S.Schema<LimitPerAttributesList>;
-
 /** Limits the number of documents with the same value for a set of attributes (the "limit key") that can appear in the results. */
 export interface LimitPer {
   /** The attributes to include in the limit key. */
@@ -245,13 +225,6 @@ export interface LimitPer {
   /** The maximum number of documents to return for each value of the limit key. */
   limit: number;
 }
-export const LimitPer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: LimitPerAttributesList,
-    limit: S.Number,
-  }),
-).annotate({ identifier: "LimitPer" }) as any as S.Schema<LimitPer>;
-
 /** Limits the documents returned by a query. */
 export interface Limit {
   /** Limits the total number of documents returned. */
@@ -259,15 +232,8 @@ export interface Limit {
   /** Limits the number of documents with the same value for a set of attributes (the "limit key") that can appear in the results. */
   per?: LimitPer;
 }
-export const Limit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total: S.Number,
-    per: S.optional(LimitPer),
-  }),
-).annotate({ identifier: "Limit" }) as any as S.Schema<Limit>;
-
 export type CreateNamespaceExplainQueryRequestLimit = number | Limit;
-export const CreateNamespaceExplainQueryRequestLimit =
+const CreateNamespaceExplainQueryRequestLimit =
   S.Unknown as any as S.Schema<CreateNamespaceExplainQueryRequestLimit>;
 
 export interface CreateNamespaceExplainQueryRequest {
@@ -296,7 +262,7 @@ export interface CreateNamespaceExplainQueryRequest {
   distance_metric?: unknown;
   limit?: CreateNamespaceExplainQueryRequestLimit;
 }
-export const CreateNamespaceExplainQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceExplainQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     vector_encoding: S.optional(S.Unknown),
@@ -321,7 +287,7 @@ export interface CreateNamespaceExplainQueryResponse {
   /** The textual representation of the query plan. */
   plan_text?: string;
 }
-export const CreateNamespaceExplainQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceExplainQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan_text: S.optional(S.String),
   }),
@@ -331,32 +297,30 @@ export const CreateNamespaceExplainQueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The consistency level for a query. */
 export type CreateNamespaceQueryRequestConsistency = CreateNamespaceExplainQueryRequestConsistency;
-export const CreateNamespaceQueryRequestConsistency = CreateNamespaceExplainQueryRequestConsistency;
-
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type CreateNamespaceQueryRequestExcludeAttributesList = Array<string>;
-export const CreateNamespaceQueryRequestExcludeAttributesList =
+const CreateNamespaceQueryRequestExcludeAttributesList =
   IncludeAttributesCase1List as any as S.Schema<CreateNamespaceQueryRequestExcludeAttributesList>;
 
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type CreateNamespaceQueryRequestAggregateByMap = { [key: string]: unknown | undefined };
-export const CreateNamespaceQueryRequestAggregateByMap =
+const CreateNamespaceQueryRequestAggregateByMap =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryRequestAggregateByMap>;
 
 /** Groups documents by the specified attributes (the "group key") before computing aggregates. Aggregates are computed separately for each group. */
 export type CreateNamespaceQueryRequestGroupByList = Array<unknown>;
-export const CreateNamespaceQueryRequestGroupByList =
+const CreateNamespaceQueryRequestGroupByList =
   CreateNamespaceExplainQueryRequestGroupByList as any as S.Schema<CreateNamespaceQueryRequestGroupByList>;
 
 /** Computes additional values on documents returned by a query. Each key is the name of the computed attribute; each value is an expression describing how to compute it. */
 export type CreateNamespaceQueryRequestComputeAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateNamespaceQueryRequestComputeAttributesMap =
+const CreateNamespaceQueryRequestComputeAttributesMap =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryRequestComputeAttributesMap>;
 
 export type CreateNamespaceQueryRequestLimit = number | Limit;
-export const CreateNamespaceQueryRequestLimit =
+const CreateNamespaceQueryRequestLimit =
   S.Unknown as any as S.Schema<CreateNamespaceQueryRequestLimit>;
 
 export interface CreateNamespaceQueryRequest {
@@ -385,7 +349,7 @@ export interface CreateNamespaceQueryRequest {
   distance_metric?: unknown;
   limit?: CreateNamespaceQueryRequestLimit;
 }
-export const CreateNamespaceQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     vector_encoding: S.optional(S.Unknown),
@@ -407,21 +371,21 @@ export const CreateNamespaceQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNamespaceQueryRequest>;
 
 export type CreateNamespaceQueryResponseAggregationsMap = { [key: string]: unknown | undefined };
-export const CreateNamespaceQueryResponseAggregationsMap =
+const CreateNamespaceQueryResponseAggregationsMap =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<CreateNamespaceQueryResponseAggregationsMap>;
 
 /** A single aggregation group. */
 export type AggregationGroup = { [key: string]: unknown | undefined };
-export const AggregationGroup =
+const AggregationGroup =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<AggregationGroup>;
 
 export type CreateNamespaceQueryResponseAggregationGroupsList = Array<AggregationGroup>;
-export const CreateNamespaceQueryResponseAggregationGroupsList = /*@__PURE__*/ S.Array(
+const CreateNamespaceQueryResponseAggregationGroupsList = /*@__PURE__*/ S.Array(
   AggregationGroup,
 ) as any as S.Schema<CreateNamespaceQueryResponseAggregationGroupsList>;
 
 export type CreateNamespaceQueryResponseRowsList = Array<Row>;
-export const CreateNamespaceQueryResponseRowsList = /*@__PURE__*/ S.Array(
+const CreateNamespaceQueryResponseRowsList = /*@__PURE__*/ S.Array(
   Row,
 ) as any as S.Schema<CreateNamespaceQueryResponseRowsList>;
 
@@ -440,7 +404,7 @@ export interface QueryPerformance {
   /** the approximate number of documents in the namespace. */
   approx_namespace_size: number;
 }
-export const QueryPerformance = /*@__PURE__*/ S.suspend(() =>
+const QueryPerformance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cache_hit_ratio: S.Number,
     cache_temperature: S.String,
@@ -458,7 +422,7 @@ export interface QueryBilling {
   /** The number of billable logical bytes returned from the query. */
   billable_logical_bytes_returned: number;
 }
-export const QueryBilling = /*@__PURE__*/ S.suspend(() =>
+const QueryBilling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billable_logical_bytes_queried: S.Number,
     billable_logical_bytes_returned: S.Number,
@@ -472,7 +436,7 @@ export interface CreateNamespaceQueryResponse {
   performance: QueryPerformance;
   billing: QueryBilling;
 }
-export const CreateNamespaceQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregations: S.optional(CreateNamespaceQueryResponseAggregationsMap),
     aggregation_groups: S.optional(CreateNamespaceQueryResponseAggregationGroupsList),
@@ -486,31 +450,28 @@ export const CreateNamespaceQueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The consistency level for a query. */
 export type CreateNamespaceQueryRequestConsistency2 = CreateNamespaceExplainQueryRequestConsistency;
-export const CreateNamespaceQueryRequestConsistency2 =
-  CreateNamespaceExplainQueryRequestConsistency;
-
 /** List of attribute names to exclude from the response. All other attributes will be included in the response. */
 export type QueryExcludeAttributesList = Array<string>;
-export const QueryExcludeAttributesList =
+const QueryExcludeAttributesList =
   IncludeAttributesCase1List as any as S.Schema<QueryExcludeAttributesList>;
 
 /** Aggregations to compute over all documents in the namespace that match the filters. */
 export type QueryAggregateByMap = { [key: string]: unknown | undefined };
-export const QueryAggregateByMap =
+const QueryAggregateByMap =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<QueryAggregateByMap>;
 
 /** Groups documents by the specified attributes (the "group key") before computing aggregates. Aggregates are computed separately for each group. */
 export type QueryGroupByList = Array<unknown>;
-export const QueryGroupByList =
+const QueryGroupByList =
   CreateNamespaceExplainQueryRequestGroupByList as any as S.Schema<QueryGroupByList>;
 
 /** Computes additional values on documents returned by a query. Each key is the name of the computed attribute; each value is an expression describing how to compute it. */
 export type QueryComputeAttributesMap = { [key: string]: unknown | undefined };
-export const QueryComputeAttributesMap =
+const QueryComputeAttributesMap =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<QueryComputeAttributesMap>;
 
 export type QueryLimit = number | Limit;
-export const QueryLimit = S.Unknown as any as S.Schema<QueryLimit>;
+const QueryLimit = S.Unknown as any as S.Schema<QueryLimit>;
 
 /** Query, filter, full-text search and vector search documents. */
 export interface Query {
@@ -534,7 +495,7 @@ export interface Query {
   distance_metric?: unknown;
   limit?: QueryLimit;
 }
-export const Query = /*@__PURE__*/ S.suspend(() =>
+const Query = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rank_by: S.optional(S.Unknown),
     top_k: S.optional(S.Number),
@@ -551,7 +512,7 @@ export const Query = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Query" }) as any as S.Schema<Query>;
 
 export type CreateNamespaceQueryRequestQueriesList = Array<Query>;
-export const CreateNamespaceQueryRequestQueriesList = /*@__PURE__*/ S.Array(
+const CreateNamespaceQueryRequestQueriesList = /*@__PURE__*/ S.Array(
   Query,
 ) as any as S.Schema<CreateNamespaceQueryRequestQueriesList>;
 
@@ -560,15 +521,9 @@ export interface RerankLimit {
   /** Limits the total number of documents returned after reranking. */
   total: number;
 }
-export const RerankLimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total: S.Number,
-  }),
-).annotate({ identifier: "RerankLimit" }) as any as S.Schema<RerankLimit>;
-
 /** Limits the total number of reranked documents returned. */
 export type CreateNamespaceQueryRequestLimit2 = number | RerankLimit;
-export const CreateNamespaceQueryRequestLimit2 =
+const CreateNamespaceQueryRequestLimit2 =
   S.Unknown as any as S.Schema<CreateNamespaceQueryRequestLimit2>;
 
 export interface CreateNamespaceQueryRequest2 {
@@ -585,7 +540,7 @@ export interface CreateNamespaceQueryRequest2 {
   /** Number of reranked documents to skip before returning results. Requires `rerank_by` and `limit`. */
   offset?: number;
 }
-export const CreateNamespaceQueryRequest2 = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceQueryRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     vector_encoding: S.optional(S.Unknown),
@@ -600,15 +555,15 @@ export const CreateNamespaceQueryRequest2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNamespaceQueryRequest2>;
 
 export type SingleQueryResultAggregationsMap = { [key: string]: unknown | undefined };
-export const SingleQueryResultAggregationsMap =
+const SingleQueryResultAggregationsMap =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<SingleQueryResultAggregationsMap>;
 
 export type SingleQueryResultAggregationGroupsList = Array<AggregationGroup>;
-export const SingleQueryResultAggregationGroupsList =
+const SingleQueryResultAggregationGroupsList =
   CreateNamespaceQueryResponseAggregationGroupsList as any as S.Schema<SingleQueryResultAggregationGroupsList>;
 
 export type SingleQueryResultRowsList = Array<Row>;
-export const SingleQueryResultRowsList =
+const SingleQueryResultRowsList =
   CreateNamespaceQueryResponseRowsList as any as S.Schema<SingleQueryResultRowsList>;
 
 export interface SingleQueryResult {
@@ -616,7 +571,7 @@ export interface SingleQueryResult {
   aggregation_groups?: SingleQueryResultAggregationGroupsList;
   rows?: SingleQueryResultRowsList;
 }
-export const SingleQueryResult = /*@__PURE__*/ S.suspend(() =>
+const SingleQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregations: S.optional(SingleQueryResultAggregationsMap),
     aggregation_groups: S.optional(SingleQueryResultAggregationGroupsList),
@@ -625,7 +580,7 @@ export const SingleQueryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SingleQueryResult" }) as any as S.Schema<SingleQueryResult>;
 
 export type MultiQueryResultResultsList = Array<SingleQueryResult>;
-export const MultiQueryResultResultsList = /*@__PURE__*/ S.Array(
+const MultiQueryResultResultsList = /*@__PURE__*/ S.Array(
   SingleQueryResult,
 ) as any as S.Schema<MultiQueryResultResultsList>;
 
@@ -635,7 +590,7 @@ export interface MultiQueryResult {
   performance: QueryPerformance;
   billing: QueryBilling;
 }
-export const MultiQueryResult = /*@__PURE__*/ S.suspend(() =>
+const MultiQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: MultiQueryResultResultsList,
     performance: QueryPerformance,
@@ -662,23 +617,9 @@ export interface FullTextSearchConfig {
   max_token_length?: number;
   tokenizer?: unknown;
 }
-export const FullTextSearchConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    k1: S.optional(S.Number),
-    b: S.optional(S.Number),
-    language: S.optional(S.Unknown),
-    stemming: S.optional(S.Boolean),
-    remove_stopwords: S.optional(S.Boolean),
-    ascii_folding: S.optional(S.Boolean),
-    case_sensitive: S.optional(S.Boolean),
-    max_token_length: S.optional(S.Number),
-    tokenizer: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "FullTextSearchConfig" }) as any as S.Schema<FullTextSearchConfig>;
-
 /** Whether this attribute can be used as part of a BM25 full-text search. Requires the `string` or `[]string` type, and by default, BM25-enabled attributes are not filterable. You can override this by setting `filterable: true`. */
 export type FullTextSearch = boolean | FullTextSearchConfig;
-export const FullTextSearch = S.Unknown as any as S.Schema<FullTextSearch>;
+const FullTextSearch = S.Unknown as any as S.Schema<FullTextSearch>;
 
 /** Configuration options for ANN (Approximate Nearest Neighbor) indexing. */
 export interface AnnConfig {
@@ -686,22 +627,15 @@ export interface AnnConfig {
   /** Opt in to late-interaction (MUVERA) indexing. Only valid on fixed-dim `[][N]f32` vector array attributes, and is required to enable an ANN index on such attributes. Defaults to `false`. */
   late_interaction?: boolean;
 }
-export const AnnConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    distance_metric: S.optional(S.Unknown),
-    late_interaction: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AnnConfig" }) as any as S.Schema<AnnConfig>;
-
 /** Whether to create an approximate nearest neighbor index for the attribute. Can be a boolean or a detailed configuration object. */
 export type Ann = boolean | AnnConfig;
-export const Ann = S.Unknown as any as S.Schema<Ann>;
+const Ann = S.Unknown as any as S.Schema<Ann>;
 
 /** Whether to create a sparse kNN index for the attribute. Requires the `{}f16` type. */
 export interface SparseKnn {
   distance_metric: unknown;
 }
-export const SparseKnn = /*@__PURE__*/ S.suspend(() =>
+const SparseKnn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distance_metric: S.Unknown,
   }),
@@ -716,17 +650,9 @@ export interface AttributeEmbedConfig {
   /** The dimensionality to embed at. If not set, will pick the default for this model. If you're storing embeddings in an existing attribute, this can be omitted, and may not be set to a value other than the dimensions of that attribute. */
   dims?: number;
 }
-export const AttributeEmbedConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attribute: S.optional(S.String),
-    model: S.String,
-    dims: S.optional(S.Number),
-  }),
-).annotate({ identifier: "AttributeEmbedConfig" }) as any as S.Schema<AttributeEmbedConfig>;
-
 /** Whether to automatically embed this string attribute into a vector attribute. Can be a model name, a detailed configuration object, or `null` to remove an existing embedding configuration. */
 export type AttributeEmbed = string | AttributeEmbedConfig;
-export const AttributeEmbed = S.Unknown as any as S.Schema<AttributeEmbed>;
+const AttributeEmbed = S.Unknown as any as S.Schema<AttributeEmbed>;
 
 /** Detailed configuration for an attribute attached to a document. */
 export interface AttributeSchemaConfig {
@@ -744,7 +670,7 @@ export interface AttributeSchemaConfig {
   sparse_knn?: SparseKnn;
   embed?: AttributeEmbed | null;
 }
-export const AttributeSchemaConfig = /*@__PURE__*/ S.suspend(() =>
+const AttributeSchemaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     filterable: S.optional(S.Boolean),
@@ -760,11 +686,11 @@ export const AttributeSchemaConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The schema for an attribute attached to a document. */
 export type AttributeSchema = string | AttributeSchemaConfig;
-export const AttributeSchema = S.Unknown as any as S.Schema<AttributeSchema>;
+const AttributeSchema = S.Unknown as any as S.Schema<AttributeSchema>;
 
 /** The desired schema for the namespace. */
 export type CreateNamespaceSchemaRequestBodyMap = { [key: string]: AttributeSchema | undefined };
-export const CreateNamespaceSchemaRequestBodyMap = /*@__PURE__*/ S.Record(
+const CreateNamespaceSchemaRequestBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   AttributeSchema,
 ) as any as S.Schema<CreateNamespaceSchemaRequestBodyMap>;
@@ -774,7 +700,7 @@ export interface CreateNamespaceSchemaRequest {
   namespace: string;
   body?: CreateNamespaceSchemaRequestBodyMap;
 }
-export const CreateNamespaceSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     body: S.optional(CreateNamespaceSchemaRequestBodyMap.pipe(T.HttpBody())),
@@ -787,13 +713,13 @@ export const CreateNamespaceSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateNamespaceSchemaResponseBodyMap = {
   [key: string]: AttributeSchemaConfig | undefined;
 };
-export const CreateNamespaceSchemaResponseBodyMap = /*@__PURE__*/ S.Record(
+const CreateNamespaceSchemaResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   AttributeSchemaConfig,
 ) as any as S.Schema<CreateNamespaceSchemaResponseBodyMap>;
 
 export type CreateNamespaceSchemaResponse = CreateNamespaceSchemaResponseBodyMap;
-export const CreateNamespaceSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   CreateNamespaceSchemaResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateNamespaceSchemaResponse",
@@ -803,7 +729,7 @@ export interface DeleteNamespaceRequest {
   /** The name of the namespace. */
   namespace: string;
 }
-export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/namespaces/{namespace}", code: 200 })),
@@ -813,7 +739,7 @@ export interface DeleteNamespaceResponse {
   /** The status of the request. */
   status: unknown;
 }
-export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.Unknown,
   }),
@@ -823,7 +749,7 @@ export interface GetNamespaceHintCacheWarmRequest {
   /** The name of the namespace. */
   namespace: string;
 }
-export const GetNamespaceHintCacheWarmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceHintCacheWarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/namespaces/{namespace}/hint_cache_warm", code: 200 })),
@@ -836,7 +762,7 @@ export interface GetNamespaceHintCacheWarmResponse {
   status: unknown;
   message?: string;
 }
-export const GetNamespaceHintCacheWarmResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceHintCacheWarmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.Unknown,
     message: S.optional(S.String),
@@ -849,7 +775,7 @@ export interface GetNamespaceMetadataRequest {
   /** The name of the namespace. */
   namespace: string;
 }
-export const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/namespaces/{namespace}/metadata", code: 200 })),
@@ -859,36 +785,19 @@ export const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The schema of the namespace. */
 export type NamespaceMetadataSchemaMap = { [key: string]: AttributeSchemaConfig | undefined };
-export const NamespaceMetadataSchemaMap =
+const NamespaceMetadataSchemaMap =
   CreateNamespaceSchemaResponseBodyMap as any as S.Schema<NamespaceMetadataSchemaMap>;
 
 export interface NamespaceMetadataIndexCase0 {
   status: unknown;
 }
-export const NamespaceMetadataIndexCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Unknown,
-  }),
-).annotate({
-  identifier: "NamespaceMetadataIndexCase0",
-}) as any as S.Schema<NamespaceMetadataIndexCase0>;
-
 export interface NamespaceMetadataIndexCase1 {
   status: unknown;
   /** The number of bytes in the namespace that are in the write-ahead log but have not yet been indexed. */
   unindexed_bytes: number;
 }
-export const NamespaceMetadataIndexCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Unknown,
-    unindexed_bytes: S.Number,
-  }),
-).annotate({
-  identifier: "NamespaceMetadataIndexCase1",
-}) as any as S.Schema<NamespaceMetadataIndexCase1>;
-
 export type NamespaceMetadataIndex = NamespaceMetadataIndexCase0 | NamespaceMetadataIndexCase1;
-export const NamespaceMetadataIndex = S.Unknown as any as S.Schema<NamespaceMetadataIndex>;
+const NamespaceMetadataIndex = S.Unknown as any as S.Schema<NamespaceMetadataIndex>;
 
 /** Operational status for a pinned namespace. */
 export interface PinningStatus {
@@ -901,7 +810,7 @@ export interface PinningStatus {
   /** Aggregate utilization for the pinned namespace, reported as a value between 0.0 and 1.0. */
   utilization: number;
 }
-export const PinningStatus = /*@__PURE__*/ S.suspend(() =>
+const PinningStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated_at: S.String,
     ready_replicas: S.Number,
@@ -916,7 +825,7 @@ export interface PinningConfigResponse {
   replicas?: number;
   status?: PinningStatus;
 }
-export const PinningConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const PinningConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicas: S.optional(S.Number),
     status: S.optional(PinningStatus),
@@ -928,7 +837,7 @@ export interface ShardingConfig {
   /** The number of shards to partition the namespace into. */
   num_shards: number;
 }
-export const ShardingConfig = /*@__PURE__*/ S.suspend(() =>
+const ShardingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     num_shards: S.Number,
   }),
@@ -953,7 +862,7 @@ export interface NamespaceMetadata {
   /** Whether document and schema writes are rejected. Omitted when `false`. */
   read_only?: boolean;
 }
-export const NamespaceMetadata = /*@__PURE__*/ S.suspend(() =>
+const NamespaceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: NamespaceMetadataSchemaMap,
     approx_row_count: S.Number,
@@ -974,7 +883,7 @@ export interface GetNamespaceOperationRequest {
   /** The operation token obtained when starting the copy. */
   token: string;
 }
-export const GetNamespaceOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     token: S.String.pipe(T.Label()),
@@ -992,30 +901,20 @@ export interface CopyFromNamespaceOperationCase0 {
   /** A freeform description of the operation's progress. May be absent, and its format may change. */
   progress?: string;
 }
-export const CopyFromNamespaceOperationCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Unknown,
-    start_time: S.String,
-    progress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CopyFromNamespaceOperationCase0",
-}) as any as S.Schema<CopyFromNamespaceOperationCase0>;
-
 /** The IDs of documents that were upserted. Only included when `return_affected_ids` is true and at least one document was upserted. */
 export type WriteResultUpsertedIdsList = Array<Id>;
-export const WriteResultUpsertedIdsList = /*@__PURE__*/ S.Array(
+const WriteResultUpsertedIdsList = /*@__PURE__*/ S.Array(
   Id,
 ) as any as S.Schema<WriteResultUpsertedIdsList>;
 
 /** The IDs of documents that were patched. Only included when `return_affected_ids` is true and at least one document was patched. */
 export type WriteResultPatchedIdsList = Array<Id>;
-export const WriteResultPatchedIdsList =
+const WriteResultPatchedIdsList =
   WriteResultUpsertedIdsList as any as S.Schema<WriteResultPatchedIdsList>;
 
 /** The IDs of documents that were deleted. Only included when `return_affected_ids` is true and at least one document was deleted. */
 export type WriteResultDeletedIdsList = Array<Id>;
-export const WriteResultDeletedIdsList =
+const WriteResultDeletedIdsList =
   WriteResultUpsertedIdsList as any as S.Schema<WriteResultDeletedIdsList>;
 
 /** The billing information for a write request. */
@@ -1024,7 +923,7 @@ export interface WriteBilling {
   billable_logical_bytes_written: number;
   query?: QueryBilling;
 }
-export const WriteBilling = /*@__PURE__*/ S.suspend(() =>
+const WriteBilling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billable_logical_bytes_written: S.Number,
     query: S.optional(QueryBilling),
@@ -1036,7 +935,7 @@ export interface WritePerformance {
   /** Request time measured on the server, in milliseconds. */
   server_total_ms: number;
 }
-export const WritePerformance = /*@__PURE__*/ S.suspend(() =>
+const WritePerformance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     server_total_ms: S.Number,
   }),
@@ -1067,7 +966,7 @@ export interface WriteResult {
   billing: WriteBilling;
   performance?: WritePerformance;
 }
-export const WriteResult = /*@__PURE__*/ S.suspend(() =>
+const WriteResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.Unknown,
     message: S.String,
@@ -1087,14 +986,6 @@ export const WriteResult = /*@__PURE__*/ S.suspend(() =>
 export interface CopyFromNamespaceOperationResultCase0 {
   success: WriteResult;
 }
-export const CopyFromNamespaceOperationResultCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: WriteResult,
-  }),
-).annotate({
-  identifier: "CopyFromNamespaceOperationResultCase0",
-}) as any as S.Schema<CopyFromNamespaceOperationResultCase0>;
-
 /** The response to an unsuccessful request. */
 export interface ErrorResponse {
   /** The status of the request. */
@@ -1102,42 +993,17 @@ export interface ErrorResponse {
   /** The error message. */
   error: string;
 }
-export const ErrorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Unknown,
-    error: S.String,
-  }),
-).annotate({ identifier: "ErrorResponse" }) as any as S.Schema<ErrorResponse>;
-
 export interface OperationError {
   /** The HTTP status code of the operation's error. */
   status_code: number;
   detail: ErrorResponse;
 }
-export const OperationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status_code: S.Number,
-    detail: ErrorResponse,
-  }),
-).annotate({ identifier: "OperationError" }) as any as S.Schema<OperationError>;
-
 export interface CopyFromNamespaceOperationResultCase1 {
   error: OperationError;
 }
-export const CopyFromNamespaceOperationResultCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: OperationError,
-  }),
-).annotate({
-  identifier: "CopyFromNamespaceOperationResultCase1",
-}) as any as S.Schema<CopyFromNamespaceOperationResultCase1>;
-
 export type CopyFromNamespaceOperationResult =
   | CopyFromNamespaceOperationResultCase0
   | CopyFromNamespaceOperationResultCase1;
-export const CopyFromNamespaceOperationResult =
-  S.Unknown as any as S.Schema<CopyFromNamespaceOperationResult>;
-
 export interface CopyFromNamespaceOperationCase1 {
   status: unknown;
   /** The time at which the operation started. */
@@ -1146,25 +1012,14 @@ export interface CopyFromNamespaceOperationCase1 {
   finish_time: string;
   result: CopyFromNamespaceOperationResult;
 }
-export const CopyFromNamespaceOperationCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.Unknown,
-    start_time: S.String,
-    finish_time: S.String,
-    result: CopyFromNamespaceOperationResult,
-  }),
-).annotate({
-  identifier: "CopyFromNamespaceOperationCase1",
-}) as any as S.Schema<CopyFromNamespaceOperationCase1>;
-
 /** The current status of a copy operation. */
 export type CopyFromNamespaceOperation =
   | CopyFromNamespaceOperationCase0
   | CopyFromNamespaceOperationCase1;
-export const CopyFromNamespaceOperation = S.Unknown as any as S.Schema<CopyFromNamespaceOperation>;
+const CopyFromNamespaceOperation = S.Unknown as any as S.Schema<CopyFromNamespaceOperation>;
 
 export type GetNamespaceOperationResponse = CopyFromNamespaceOperation;
-export const GetNamespaceOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceOperationResponse = /*@__PURE__*/ S.suspend(() =>
   CopyFromNamespaceOperation.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetNamespaceOperationResponse",
@@ -1174,7 +1029,7 @@ export interface GetNamespaceSchemaRequest {
   /** The name of the namespace. */
   namespace: string;
 }
-export const GetNamespaceSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/namespaces/{namespace}/schema", code: 200 })),
@@ -1186,11 +1041,8 @@ export const GetNamespaceSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetNamespaceSchemaResponseBodyMap = {
   [key: string]: AttributeSchemaConfig | undefined;
 };
-export const GetNamespaceSchemaResponseBodyMap =
-  CreateNamespaceSchemaResponseBodyMap as any as S.Schema<GetNamespaceSchemaResponseBodyMap>;
-
 export type GetNamespaceSchemaResponse = GetNamespaceSchemaResponseBodyMap;
-export const GetNamespaceSchemaResponse =
+const GetNamespaceSchemaResponse =
   CreateNamespaceSchemaResponse as any as S.Schema<GetNamespaceSchemaResponse>;
 
 export interface ListNamespacesRequest {
@@ -1201,7 +1053,7 @@ export interface ListNamespacesRequest {
   /** Limit the number of results per page. */
   page_size?: number;
 }
-export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     prefix: S.optional(S.String.pipe(T.Query())),
@@ -1214,7 +1066,7 @@ export interface NamespaceSummary {
   /** The namespace ID. */
   id: string;
 }
-export const NamespaceSummary = /*@__PURE__*/ S.suspend(() =>
+const NamespaceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -1222,7 +1074,7 @@ export const NamespaceSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of namespaces. */
 export type ListNamespacesResponseNamespacesList = Array<NamespaceSummary>;
-export const ListNamespacesResponseNamespacesList = /*@__PURE__*/ S.Array(
+const ListNamespacesResponseNamespacesList = /*@__PURE__*/ S.Array(
   NamespaceSummary,
 ) as any as S.Schema<ListNamespacesResponseNamespacesList>;
 
@@ -1232,7 +1084,7 @@ export interface ListNamespacesResponse {
   /** The cursor to use to retrieve the next page of results. */
   next_cursor?: string;
 }
-export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespaces: S.optional(ListNamespacesResponseNamespacesList),
     next_cursor: S.optional(S.String),
@@ -1241,16 +1093,12 @@ export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The IDs of the documents. */
 export type ColumnsIdList = Array<Id>;
-export const ColumnsIdList = /*@__PURE__*/ S.Array(Id) as any as S.Schema<ColumnsIdList>;
+const ColumnsIdList = /*@__PURE__*/ S.Array(Id) as any as S.Schema<ColumnsIdList>;
 
 /** The vector embeddings of the documents. */
 export type ColumnsVectorCase0List = Array<Vector>;
-export const ColumnsVectorCase0List = /*@__PURE__*/ S.Array(
-  Vector,
-) as any as S.Schema<ColumnsVectorCase0List>;
-
 export type ColumnsVector = ColumnsVectorCase0List | Vector;
-export const ColumnsVector = S.Unknown as any as S.Schema<ColumnsVector>;
+const ColumnsVector = S.Unknown as any as S.Schema<ColumnsVector>;
 
 /** A list of documents in columnar format. Each key is a column name, mapped to an array of values for that column. */
 export interface Columns {
@@ -1258,7 +1106,7 @@ export interface Columns {
   id: ColumnsIdList;
   vector?: ColumnsVector;
 }
-export const Columns = /*@__PURE__*/ S.suspend(() =>
+const Columns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: ColumnsIdList,
     vector: S.optional(ColumnsVector),
@@ -1266,36 +1114,28 @@ export const Columns = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Columns" }) as any as S.Schema<Columns>;
 
 export type UpdateNamespaceRequestUpsertRowsList = Array<Row>;
-export const UpdateNamespaceRequestUpsertRowsList =
+const UpdateNamespaceRequestUpsertRowsList =
   CreateNamespaceQueryResponseRowsList as any as S.Schema<UpdateNamespaceRequestUpsertRowsList>;
 
 export type UpdateNamespaceRequestPatchRowsList = Array<Row>;
-export const UpdateNamespaceRequestPatchRowsList =
+const UpdateNamespaceRequestPatchRowsList =
   CreateNamespaceQueryResponseRowsList as any as S.Schema<UpdateNamespaceRequestPatchRowsList>;
 
 export type UpdateNamespaceRequestDeletesList = Array<Id>;
-export const UpdateNamespaceRequestDeletesList =
+const UpdateNamespaceRequestDeletesList =
   WriteResultUpsertedIdsList as any as S.Schema<UpdateNamespaceRequestDeletesList>;
 
 /** The schema of the attributes attached to the documents. */
 export type UpdateNamespaceRequestSchemaMap = { [key: string]: AttributeSchema | undefined };
-export const UpdateNamespaceRequestSchemaMap =
+const UpdateNamespaceRequestSchemaMap =
   CreateNamespaceSchemaRequestBodyMap as any as S.Schema<UpdateNamespaceRequestSchemaMap>;
 
 export interface BranchFromNamespaceConfig {
   /** The namespace to create an instant, copy-on-write clone of. */
   source_namespace: string;
 }
-export const BranchFromNamespaceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source_namespace: S.String,
-  }),
-).annotate({
-  identifier: "BranchFromNamespaceConfig",
-}) as any as S.Schema<BranchFromNamespaceConfig>;
-
 export type BranchFromNamespaceParams = string | BranchFromNamespaceConfig;
-export const BranchFromNamespaceParams = S.Unknown as any as S.Schema<BranchFromNamespaceParams>;
+const BranchFromNamespaceParams = S.Unknown as any as S.Schema<BranchFromNamespaceParams>;
 
 export interface CopyFromNamespaceConfig {
   /** The namespace to copy documents from. */
@@ -1305,19 +1145,11 @@ export interface CopyFromNamespaceConfig {
   /** (Optional) The region of the source namespace. */
   source_region?: string;
 }
-export const CopyFromNamespaceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source_namespace: S.String,
-    source_api_key: S.optional(S.String),
-    source_region: S.optional(S.String),
-  }),
-).annotate({ identifier: "CopyFromNamespaceConfig" }) as any as S.Schema<CopyFromNamespaceConfig>;
-
 export type CopyFromNamespaceParams = string | CopyFromNamespaceConfig;
-export const CopyFromNamespaceParams = S.Unknown as any as S.Schema<CopyFromNamespaceParams>;
+const CopyFromNamespaceParams = S.Unknown as any as S.Schema<CopyFromNamespaceParams>;
 
 export type PatchByFilterPatchMap = { [key: string]: unknown | undefined };
-export const PatchByFilterPatchMap =
+const PatchByFilterPatchMap =
   CreateNamespaceExplainQueryRequestAggregateByMap as any as S.Schema<PatchByFilterPatchMap>;
 
 /** The patch and filter specifying which documents to patch. */
@@ -1326,7 +1158,7 @@ export interface PatchByFilter {
   /** Filter by attributes. Same syntax as the query endpoint. */
   filters: unknown;
 }
-export const PatchByFilter = /*@__PURE__*/ S.suspend(() =>
+const PatchByFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     patch: PatchByFilterPatchMap,
     filters: S.Unknown,
@@ -1366,7 +1198,7 @@ export interface UpdateNamespaceRequest {
   /** Disables write throttling (HTTP 429 responses) during high-volume ingestion. */
   disable_backpressure?: boolean;
 }
-export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     upsert_columns: S.optional(Columns),
@@ -1398,7 +1230,7 @@ export interface UpdateNamespaceByNamespaceRequest {
   /** The namespace to create an instant, copy-on-write clone of. */
   source_namespace: string;
 }
-export const UpdateNamespaceByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceByNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     source_namespace: S.String,
@@ -1419,7 +1251,7 @@ export interface UpdateNamespaceByNamespaceRequest2 {
   /** (Optional) The encryption configuration for the destination namespace. */
   dest_encryption?: Encryption;
 }
-export const UpdateNamespaceByNamespaceRequest2 = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceByNamespaceRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     source_namespace: S.String,
@@ -1436,15 +1268,9 @@ export interface PinningConfig {
   /** The number of read replicas to provision. Defaults to 1 if not specified. */
   replicas?: number;
 }
-export const PinningConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replicas: S.optional(S.Number),
-  }),
-).annotate({ identifier: "PinningConfig" }) as any as S.Schema<PinningConfig>;
-
 /** Configuration for namespace pinning. - Missing field: no change to pinning configuration - `null` or `false`: explicitly remove pinning - `true`: enable pinning with default configuration - Object: set pinning configuration */
 export type UpdateNamespaceMetadataRequestPinning = boolean | PinningConfig;
-export const UpdateNamespaceMetadataRequestPinning =
+const UpdateNamespaceMetadataRequestPinning =
   S.Unknown as any as S.Schema<UpdateNamespaceMetadataRequestPinning>;
 
 export interface UpdateNamespaceMetadataRequest {
@@ -1455,7 +1281,7 @@ export interface UpdateNamespaceMetadataRequest {
   /** Set to `true` to reject document and schema writes, or `false` to allow them. Writes already in progress may still commit. Metadata updates remain available. */
   read_only?: boolean;
 }
-export const UpdateNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pinning: S.optional(S.NullOr(UpdateNamespaceMetadataRequestPinning)),

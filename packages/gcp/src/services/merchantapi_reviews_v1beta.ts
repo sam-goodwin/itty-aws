@@ -79,7 +79,7 @@ export interface DeleteAccountsMerchantReviewsRequest {
   /** Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview} */
   name: string;
 }
-export const DeleteAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -95,7 +95,7 @@ export const DeleteAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -103,7 +103,7 @@ export interface DeleteAccountsProductReviewsRequest {
   /** Required. The ID of the Product review. Format: accounts/{account}/productReviews/{productReview} */
   name: string;
 }
-export const DeleteAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -121,7 +121,7 @@ export interface GetAccountsMerchantReviewsRequest {
   /** Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview} */
   name: string;
 }
-export const GetAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -140,7 +140,7 @@ export type MerchantReviewAttributesCollectionMethodEnum =
   | "MERCHANT_UNSOLICITED"
   | "POINT_OF_SALE"
   | "AFTER_FULFILLMENT";
-export const MerchantReviewAttributesCollectionMethodEnum = S.String;
+const MerchantReviewAttributesCollectionMethodEnum = S.String;
 
 /** Attributes. */
 export interface MerchantReviewAttributes {
@@ -177,7 +177,7 @@ export interface MerchantReviewAttributes {
   /** Optional. URL to the landing page that hosts the reviews for this merchant. Do not use a redirect URL. */
   merchantRatingLink?: string;
 }
-export const MerchantReviewAttributes = /*@__PURE__*/ S.suspend(() =>
+const MerchantReviewAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewLanguage: S.optional(S.String),
     merchantDisplayName: S.optional(S.String),
@@ -207,7 +207,7 @@ export interface CustomAttribute {
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
   value?: string;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     groupValues: S.optional(S.suspend(() => CustomAttributeList)),
@@ -216,7 +216,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = Array<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
+const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
 
@@ -224,7 +224,7 @@ export type MerchantReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DISAPPROVED";
-export const MerchantReviewItemLevelIssueSeverityEnum = S.String;
+const MerchantReviewItemLevelIssueSeverityEnum = S.String;
 
 export type MerchantReviewItemLevelIssueReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
@@ -248,7 +248,7 @@ export type MerchantReviewItemLevelIssueReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const MerchantReviewItemLevelIssueReportingContextEnum = S.String;
+const MerchantReviewItemLevelIssueReportingContextEnum = S.String;
 
 /** The ItemLevelIssue of the merchant review status. */
 export interface MerchantReviewItemLevelIssue {
@@ -269,7 +269,7 @@ export interface MerchantReviewItemLevelIssue {
   /** Output only. A short issue description in English. */
   description?: string;
 }
-export const MerchantReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const MerchantReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribute: S.optional(S.String),
     resolution: S.optional(S.String),
@@ -285,7 +285,7 @@ export const MerchantReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MerchantReviewItemLevelIssue>;
 
 export type MerchantReviewItemLevelIssueList = Array<MerchantReviewItemLevelIssue>;
-export const MerchantReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
+const MerchantReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
   MerchantReviewItemLevelIssue,
 ) as any as S.Schema<MerchantReviewItemLevelIssueList>;
 
@@ -311,14 +311,14 @@ export type MerchantReviewDestinationStatusReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const MerchantReviewDestinationStatusReportingContextEnum = S.String;
+const MerchantReviewDestinationStatusReportingContextEnum = S.String;
 
 /** The destination status of the merchant review status. */
 export interface MerchantReviewDestinationStatus {
   /** Output only. The name of the reporting context. */
   reportingContext?: MerchantReviewDestinationStatusReportingContextEnum | (string & {});
 }
-export const MerchantReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
+const MerchantReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportingContext: S.optional(MerchantReviewDestinationStatusReportingContextEnum),
   }),
@@ -327,7 +327,7 @@ export const MerchantReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MerchantReviewDestinationStatus>;
 
 export type MerchantReviewDestinationStatusList = Array<MerchantReviewDestinationStatus>;
-export const MerchantReviewDestinationStatusList = /*@__PURE__*/ S.Array(
+const MerchantReviewDestinationStatusList = /*@__PURE__*/ S.Array(
   MerchantReviewDestinationStatus,
 ) as any as S.Schema<MerchantReviewDestinationStatusList>;
 
@@ -342,7 +342,7 @@ export interface MerchantReviewStatus {
   /** Output only. The intended destinations for the merchant review. */
   destinationStatuses?: MerchantReviewDestinationStatusList;
 }
-export const MerchantReviewStatus = /*@__PURE__*/ S.suspend(() =>
+const MerchantReviewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdateTime: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -366,7 +366,7 @@ export interface MerchantReview {
   /** Required. The user provided merchant review ID to uniquely identify the merchant review. */
   merchantReviewId?: string;
 }
-export const MerchantReview = /*@__PURE__*/ S.suspend(() =>
+const MerchantReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantReviewAttributes: S.optional(MerchantReviewAttributes),
     dataSource: S.optional(S.String),
@@ -381,7 +381,7 @@ export interface GetAccountsProductReviewsRequest {
   /** Required. The ID of the merchant review. Format: accounts/{account}/productReviews/{productReview} */
   name: string;
 }
-export const GetAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -396,16 +396,16 @@ export const GetAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccountsProductReviewsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type ProductReviewAttributesCollectionMethodEnum =
   | "COLLECTION_METHOD_UNSPECIFIED"
   | "UNSOLICITED"
   | "POST_FULFILLMENT";
-export const ProductReviewAttributesCollectionMethodEnum = S.String;
+const ProductReviewAttributesCollectionMethodEnum = S.String;
 
 export type ReviewLinkTypeEnum = "TYPE_UNSPECIFIED" | "SINGLETON" | "GROUP";
-export const ReviewLinkTypeEnum = S.String;
+const ReviewLinkTypeEnum = S.String;
 
 /** The URI of the review landing page. */
 export interface ReviewLink {
@@ -414,7 +414,7 @@ export interface ReviewLink {
   /** Optional. Type of the review URI. */
   type?: ReviewLinkTypeEnum | (string & {});
 }
-export const ReviewLink = /*@__PURE__*/ S.suspend(() =>
+const ReviewLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(S.String),
     type: S.optional(ReviewLinkTypeEnum),
@@ -486,7 +486,7 @@ export interface ProductReviewAttributes {
   /** Optional. Contains MPNs (manufacturer part numbers) associated with a product. */
   mpns?: StringList;
 }
-export const ProductReviewAttributes = /*@__PURE__*/ S.suspend(() =>
+const ProductReviewAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asins: S.optional(StringList),
     reviewCountry: S.optional(S.String),
@@ -544,25 +544,20 @@ export type ProductReviewDestinationStatusReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const ProductReviewDestinationStatusReportingContextEnum = S.String;
-
 /** The destination status of the product review status. */
 export interface ProductReviewDestinationStatus {
   /** Output only. The name of the reporting context. */
   reportingContext?: ProductReviewDestinationStatusReportingContextEnum | (string & {});
 }
-export const ProductReviewDestinationStatus =
-  MerchantReviewDestinationStatus as any as S.Schema<ProductReviewDestinationStatus>;
-
 export type ProductReviewDestinationStatusList = Array<ProductReviewDestinationStatus>;
-export const ProductReviewDestinationStatusList =
+const ProductReviewDestinationStatusList =
   MerchantReviewDestinationStatusList as any as S.Schema<ProductReviewDestinationStatusList>;
 
 export type ProductReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DISAPPROVED";
-export const ProductReviewItemLevelIssueSeverityEnum = S.String;
+const ProductReviewItemLevelIssueSeverityEnum = S.String;
 
 export type ProductReviewItemLevelIssueReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
@@ -586,7 +581,7 @@ export type ProductReviewItemLevelIssueReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const ProductReviewItemLevelIssueReportingContextEnum = S.String;
+const ProductReviewItemLevelIssueReportingContextEnum = S.String;
 
 /** The ItemLevelIssue of the product review status. */
 export interface ProductReviewItemLevelIssue {
@@ -607,7 +602,7 @@ export interface ProductReviewItemLevelIssue {
   /** Output only. The attribute's name, if the issue is caused by a single attribute. */
   attribute?: string;
 }
-export const ProductReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const ProductReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentation: S.optional(S.String),
     detail: S.optional(S.String),
@@ -623,7 +618,7 @@ export const ProductReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductReviewItemLevelIssue>;
 
 export type ProductReviewItemLevelIssueList = Array<ProductReviewItemLevelIssue>;
-export const ProductReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
+const ProductReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
   ProductReviewItemLevelIssue,
 ) as any as S.Schema<ProductReviewItemLevelIssueList>;
 
@@ -638,7 +633,7 @@ export interface ProductReviewStatus {
   /** Output only. Date on which the item has been last updated, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   lastUpdateTime?: string;
 }
-export const ProductReviewStatus = /*@__PURE__*/ S.suspend(() =>
+const ProductReviewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationStatuses: S.optional(ProductReviewDestinationStatusList),
     itemLevelIssues: S.optional(ProductReviewItemLevelIssueList),
@@ -662,7 +657,7 @@ export interface ProductReview {
   /** Optional. A list of custom (merchant-provided) attributes. */
   customAttributes?: CustomAttributeList;
 }
-export const ProductReview = /*@__PURE__*/ S.suspend(() =>
+const ProductReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     dataSource: S.optional(S.String),
@@ -681,7 +676,7 @@ export interface InsertAccountsMerchantReviewsRequest {
   /** Request body */
   body?: MerchantReview;
 }
-export const InsertAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSource: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -705,7 +700,7 @@ export interface InsertAccountsProductReviewsRequest {
   /** Request body */
   body?: ProductReview;
 }
-export const InsertAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSource: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -729,7 +724,7 @@ export interface ListAccountsMerchantReviewsRequest {
   /** Optional. The maximum number of merchant reviews to return. The service can return fewer than this value. The maximum value is 1000; values above 1000 are coerced to 1000. If unspecified, the maximum number of reviews is returned. */
   pageSize?: number;
 }
-export const ListAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -746,7 +741,7 @@ export const ListAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsMerchantReviewsRequest>;
 
 export type MerchantReviewList = Array<MerchantReview>;
-export const MerchantReviewList = /*@__PURE__*/ S.Array(
+const MerchantReviewList = /*@__PURE__*/ S.Array(
   MerchantReview,
 ) as any as S.Schema<MerchantReviewList>;
 
@@ -757,7 +752,7 @@ export interface ListMerchantReviewsResponse {
   /** The token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListMerchantReviewsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMerchantReviewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantReviews: S.optional(MerchantReviewList),
     nextPageToken: S.optional(S.String),
@@ -774,7 +769,7 @@ export interface ListAccountsProductReviewsRequest {
   /** Required. The account to list product reviews for. Format: accounts/{account} */
   parent: string;
 }
-export const ListAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -791,7 +786,7 @@ export const ListAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsProductReviewsRequest>;
 
 export type ProductReviewList = Array<ProductReview>;
-export const ProductReviewList = /*@__PURE__*/ S.Array(
+const ProductReviewList = /*@__PURE__*/ S.Array(
   ProductReview,
 ) as any as S.Schema<ProductReviewList>;
 
@@ -802,7 +797,7 @@ export interface ListProductReviewsResponse {
   /** The product review. */
   productReviews?: ProductReviewList;
 }
-export const ListProductReviewsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductReviewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     productReviews: S.optional(ProductReviewList),

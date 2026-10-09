@@ -128,7 +128,7 @@ export class UnknownError
   ) {}
 
 export type DatabaseCreateRequestJurisdiction = "eu" | "fedramp" | "us";
-export const DatabaseCreateRequestJurisdiction = S.String;
+const DatabaseCreateRequestJurisdiction = S.String;
 
 export type DatabaseCreateRequestPrimaryLocationHint =
   | "wnam"
@@ -137,16 +137,16 @@ export type DatabaseCreateRequestPrimaryLocationHint =
   | "eeur"
   | "apac"
   | "oc";
-export const DatabaseCreateRequestPrimaryLocationHint = S.String;
+const DatabaseCreateRequestPrimaryLocationHint = S.String;
 
 export type DatabaseCreateRequestReadReplicationMode = "auto" | "disabled";
-export const DatabaseCreateRequestReadReplicationMode = S.String;
+const DatabaseCreateRequestReadReplicationMode = S.String;
 
 export interface DatabaseCreateRequestReadReplication {
   /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
   mode: DatabaseCreateRequestReadReplicationMode | (string & {});
 }
-export const DatabaseCreateRequestReadReplication = /*@__PURE__*/ S.suspend(() =>
+const DatabaseCreateRequestReadReplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: DatabaseCreateRequestReadReplicationMode,
   }),
@@ -166,7 +166,7 @@ export interface CreateDatabaseRequest {
   /** Configuration for D1 read replication. */
   readReplication?: DatabaseCreateRequestReadReplication;
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -183,16 +183,14 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatabaseRequest" }) as any as S.Schema<CreateDatabaseRequest>;
 
 export type DatabaseCreateResponseJurisdiction = "eu" | "fedramp" | "us";
-export const DatabaseCreateResponseJurisdiction = S.String;
+const DatabaseCreateResponseJurisdiction = S.String;
 
 export type DatabaseCreateResponseReadReplicationMode = "auto" | "disabled";
-export const DatabaseCreateResponseReadReplicationMode = S.String;
-
 export interface DatabaseCreateResponseReadReplication {
   /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
   mode: DatabaseCreateResponseReadReplicationMode;
 }
-export const DatabaseCreateResponseReadReplication =
+const DatabaseCreateResponseReadReplication =
   DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseCreateResponseReadReplication>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -213,7 +211,7 @@ export interface CreateDatabaseResponse {
   uuid?: string | null;
   version?: string | null;
 }
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
@@ -234,7 +232,7 @@ export interface DeleteDatabaseRequest {
   /** D1 database identifier (UUID). */
   databaseId: string;
 }
-export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -250,15 +248,15 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export type DeleteDatabaseResponse = unknown;
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteDatabaseResponse" }) as any as S.Schema<DeleteDatabaseResponse>;
 
 export type DatabaseExportRequestOutputFormat = "polling";
-export const DatabaseExportRequestOutputFormat = S.String;
+const DatabaseExportRequestOutputFormat = S.String;
 
 export type DatabaseExportRequestDumpOptionsTablesList = Array<string>;
-export const DatabaseExportRequestDumpOptionsTablesList = /*@__PURE__*/ S.Array(
+const DatabaseExportRequestDumpOptionsTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseExportRequestDumpOptionsTablesList>;
 
@@ -270,7 +268,7 @@ export interface DatabaseExportRequestDumpOptions {
   /** Filter the export to just one or more tables. Passing an empty array is the same as not passing anything and means: export all tables. */
   tables?: DatabaseExportRequestDumpOptionsTablesList;
 }
-export const DatabaseExportRequestDumpOptions = /*@__PURE__*/ S.suspend(() =>
+const DatabaseExportRequestDumpOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     noData: S.optional(S.Boolean.pipe(T.Body("no_data"))),
     noSchema: S.optional(S.Boolean.pipe(T.Body("no_schema"))),
@@ -291,7 +289,7 @@ export interface ExportDatabaseRequest {
   currentBookmark?: string;
   dumpOptions?: DatabaseExportRequestDumpOptions;
 }
-export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -310,7 +308,7 @@ export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportDatabaseRequest" }) as any as S.Schema<ExportDatabaseRequest>;
 
 export type DatabaseExportResponseMessagesList = Array<string>;
-export const DatabaseExportResponseMessagesList =
+const DatabaseExportResponseMessagesList =
   DatabaseExportRequestDumpOptionsTablesList as any as S.Schema<DatabaseExportResponseMessagesList>;
 
 export interface DatabaseExportResponseResult {
@@ -319,7 +317,7 @@ export interface DatabaseExportResponseResult {
   /** The URL to download the exported SQL. Available for one hour. */
   signedUrl?: string | null;
 }
-export const DatabaseExportResponseResult = /*@__PURE__*/ S.suspend(() =>
+const DatabaseExportResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.NullOr(S.String)),
     signedUrl: S.optional(S.NullOr(S.String).pipe(T.Body("signed_url"))),
@@ -329,10 +327,10 @@ export const DatabaseExportResponseResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseExportResponseResult>;
 
 export type DatabaseExportResponseStatus = "complete" | "error";
-export const DatabaseExportResponseStatus = S.String;
+const DatabaseExportResponseStatus = S.String;
 
 export type DatabaseExportResponseType = "export";
-export const DatabaseExportResponseType = S.String;
+const DatabaseExportResponseType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ExportDatabaseResponse {
@@ -348,7 +346,7 @@ export interface ExportDatabaseResponse {
   success?: boolean | null;
   type?: DatabaseExportResponseType | null;
 }
-export const ExportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const ExportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
     error: S.optional(S.NullOr(S.String)),
@@ -368,7 +366,7 @@ export interface GetBookmarkDatabaseTimeTravelRequest {
   /** An optional ISO 8601 timestamp. If provided, returns the nearest available bookmark at or before this timestamp. If omitted, returns the current bookmark. */
   timestamp?: string;
 }
-export const GetBookmarkDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBookmarkDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -391,7 +389,7 @@ export interface GetBookmarkDatabaseTimeTravelResponse {
   /** A bookmark representing a specific state of the database at a specific point in time. */
   bookmark?: string | null;
 }
-export const GetBookmarkDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBookmarkDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookmark: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -409,10 +407,10 @@ export type DatabaseGetRequestFields =
   | "file_size"
   | "running_in_region"
   | "read_replication";
-export const DatabaseGetRequestFields = S.String;
+const DatabaseGetRequestFields = S.String;
 
 export type DatabaseGetRequestFieldsList = Array<DatabaseGetRequestFields | (string & {})>;
-export const DatabaseGetRequestFieldsList = /*@__PURE__*/ S.Array(
+const DatabaseGetRequestFieldsList = /*@__PURE__*/ S.Array(
   DatabaseGetRequestFields,
 ) as any as S.Schema<DatabaseGetRequestFieldsList>;
 
@@ -424,7 +422,7 @@ export interface GetDatabaseRequest {
   /** Comma-separated list of fields to include in the response. When omitted, all fields are returned. */
   fields?: DatabaseGetRequestFieldsList;
 }
-export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -437,18 +435,11 @@ export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatabaseRequest" }) as any as S.Schema<GetDatabaseRequest>;
 
 export type DatabaseGetResponseJurisdiction = "eu" | "fedramp" | "us";
-export const DatabaseGetResponseJurisdiction = S.String;
-
 export type DatabaseGetResponseReadReplicationMode = "auto" | "disabled";
-export const DatabaseGetResponseReadReplicationMode = S.String;
-
 export interface DatabaseGetResponseReadReplication {
   /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
   mode: DatabaseGetResponseReadReplicationMode;
 }
-export const DatabaseGetResponseReadReplication =
-  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseGetResponseReadReplication>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
@@ -467,10 +458,10 @@ export interface GetDatabaseResponse {
   uuid?: string | null;
   version?: string | null;
 }
-export const GetDatabaseResponse = CreateDatabaseResponse as any as S.Schema<GetDatabaseResponse>;
+const GetDatabaseResponse = CreateDatabaseResponse as any as S.Schema<GetDatabaseResponse>;
 
 export type DatabaseImportRequestAction = "init" | "ingest" | "poll";
-export const DatabaseImportRequestAction = S.String;
+const DatabaseImportRequestAction = S.String;
 
 export interface ImportDatabaseRequest {
   /** Account identifier tag. */
@@ -486,7 +477,7 @@ export interface ImportDatabaseRequest {
   /** This identifies the currently-running import, checking its status. */
   currentBookmark?: string;
 }
-export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -506,7 +497,7 @@ export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDatabaseRequest" }) as any as S.Schema<ImportDatabaseRequest>;
 
 export type DatabaseImportResponseMessagesList = Array<string>;
-export const DatabaseImportResponseMessagesList =
+const DatabaseImportResponseMessagesList =
   DatabaseExportRequestDumpOptionsTablesList as any as S.Schema<DatabaseImportResponseMessagesList>;
 
 export type DatabaseImportResponseResultMetaServedByRegion =
@@ -516,13 +507,13 @@ export type DatabaseImportResponseResultMetaServedByRegion =
   | "EEUR"
   | "APAC"
   | "OC";
-export const DatabaseImportResponseResultMetaServedByRegion = S.String;
+const DatabaseImportResponseResultMetaServedByRegion = S.String;
 
 export interface DatabaseImportResponseResultMetaTimings {
   /** The duration of the SQL query execution inside the database. Does not include any network communication. */
   sqlDurationMs?: number | null;
 }
-export const DatabaseImportResponseResultMetaTimings = /*@__PURE__*/ S.suspend(() =>
+const DatabaseImportResponseResultMetaTimings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlDurationMs: S.optional(S.NullOr(S.Number).pipe(T.Body("sql_duration_ms"))),
   }),
@@ -554,7 +545,7 @@ export interface DatabaseImportResponseResultMeta {
   /** Various durations for the query. */
   timings?: DatabaseImportResponseResultMetaTimings | null;
 }
-export const DatabaseImportResponseResultMeta = /*@__PURE__*/ S.suspend(() =>
+const DatabaseImportResponseResultMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changedDb: S.optional(S.NullOr(S.Boolean).pipe(T.Body("changed_db"))),
     changes: S.optional(S.NullOr(S.Number)),
@@ -581,7 +572,7 @@ export interface DatabaseImportResponseResult {
   /** The total number of queries that were executed during the import. */
   numQueries?: number | null;
 }
-export const DatabaseImportResponseResult = /*@__PURE__*/ S.suspend(() =>
+const DatabaseImportResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finalBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("final_bookmark"))),
     meta: S.optional(S.NullOr(DatabaseImportResponseResultMeta)),
@@ -592,10 +583,10 @@ export const DatabaseImportResponseResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseImportResponseResult>;
 
 export type DatabaseImportResponseStatus = "complete" | "error";
-export const DatabaseImportResponseStatus = S.String;
+const DatabaseImportResponseStatus = S.String;
 
 export type DatabaseImportResponseType = "import";
-export const DatabaseImportResponseType = S.String;
+const DatabaseImportResponseType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ImportDatabaseResponse {
@@ -615,7 +606,7 @@ export interface ImportDatabaseResponse {
   /** The R2 presigned URL to use for uploading. Only returned when for the 'init' action. */
   uploadUrl?: string | null;
 }
-export const ImportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
     error: S.optional(S.NullOr(S.String)),
@@ -639,7 +630,7 @@ export interface ListDatabasesRequest {
   /** Number of items per page. */
   perPage?: number;
 }
-export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String.pipe(T.Query())),
@@ -651,7 +642,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDatabasesRequest" }) as any as S.Schema<ListDatabasesRequest>;
 
 export type DatabaseListResultItemJurisdiction = "eu" | "fedramp" | "us";
-export const DatabaseListResultItemJurisdiction = S.String;
+const DatabaseListResultItemJurisdiction = S.String;
 
 export interface DatabaseListResultItem {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
@@ -664,7 +655,7 @@ export interface DatabaseListResultItem {
   uuid?: string | null;
   version?: string | null;
 }
-export const DatabaseListResultItem = /*@__PURE__*/ S.suspend(() =>
+const DatabaseListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     jurisdiction: S.optional(S.NullOr(DatabaseListResultItemJurisdiction)),
@@ -675,7 +666,7 @@ export const DatabaseListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseListResultItem" }) as any as S.Schema<DatabaseListResultItem>;
 
 export type DatabaseListResultList = Array<DatabaseListResultItem>;
-export const DatabaseListResultList = /*@__PURE__*/ S.Array(
+const DatabaseListResultList = /*@__PURE__*/ S.Array(
   DatabaseListResultItem,
 ) as any as S.Schema<DatabaseListResultList>;
 
@@ -685,7 +676,7 @@ export interface ListDatabasesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatabaseListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -693,13 +684,11 @@ export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDatabasesResponse" }) as any as S.Schema<ListDatabasesResponse>;
 
 export type DatabaseEditRequestReadReplicationMode = "auto" | "disabled";
-export const DatabaseEditRequestReadReplicationMode = S.String;
-
 export interface DatabaseEditRequestReadReplication {
   /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
   mode: DatabaseEditRequestReadReplicationMode | (string & {});
 }
-export const DatabaseEditRequestReadReplication =
+const DatabaseEditRequestReadReplication =
   DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseEditRequestReadReplication>;
 
 export interface PatchDatabaseRequest {
@@ -710,7 +699,7 @@ export interface PatchDatabaseRequest {
   /** Configuration for D1 read replication. */
   readReplication?: DatabaseEditRequestReadReplication;
 }
-export const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -729,18 +718,11 @@ export const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchDatabaseRequest" }) as any as S.Schema<PatchDatabaseRequest>;
 
 export type DatabaseEditResponseJurisdiction = "eu" | "fedramp" | "us";
-export const DatabaseEditResponseJurisdiction = S.String;
-
 export type DatabaseEditResponseReadReplicationMode = "auto" | "disabled";
-export const DatabaseEditResponseReadReplicationMode = S.String;
-
 export interface DatabaseEditResponseReadReplication {
   /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
   mode: DatabaseEditResponseReadReplicationMode;
 }
-export const DatabaseEditResponseReadReplication =
-  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseEditResponseReadReplication>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
@@ -759,16 +741,15 @@ export interface PatchDatabaseResponse {
   uuid?: string | null;
   version?: string | null;
 }
-export const PatchDatabaseResponse =
-  CreateDatabaseResponse as any as S.Schema<PatchDatabaseResponse>;
+const PatchDatabaseResponse = CreateDatabaseResponse as any as S.Schema<PatchDatabaseResponse>;
 
 export type DatabaseQueryRequestParamsList = Array<unknown>;
-export const DatabaseQueryRequestParamsList = /*@__PURE__*/ S.Array(
+const DatabaseQueryRequestParamsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DatabaseQueryRequestParamsList>;
 
 export type DatabaseQueryRequestBatchItemParamsList = Array<unknown>;
-export const DatabaseQueryRequestBatchItemParamsList =
+const DatabaseQueryRequestBatchItemParamsList =
   DatabaseQueryRequestParamsList as any as S.Schema<DatabaseQueryRequestBatchItemParamsList>;
 
 export interface DatabaseQueryRequestBatchItem {
@@ -776,7 +757,7 @@ export interface DatabaseQueryRequestBatchItem {
   sql: string;
   params?: DatabaseQueryRequestBatchItemParamsList;
 }
-export const DatabaseQueryRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
+const DatabaseQueryRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.String,
     params: S.optional(DatabaseQueryRequestBatchItemParamsList),
@@ -786,7 +767,7 @@ export const DatabaseQueryRequestBatchItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseQueryRequestBatchItem>;
 
 export type DatabaseQueryRequestBatchList = Array<DatabaseQueryRequestBatchItem>;
-export const DatabaseQueryRequestBatchList = /*@__PURE__*/ S.Array(
+const DatabaseQueryRequestBatchList = /*@__PURE__*/ S.Array(
   DatabaseQueryRequestBatchItem,
 ) as any as S.Schema<DatabaseQueryRequestBatchList>;
 
@@ -800,7 +781,7 @@ export interface QueryDatabaseRequest {
   params?: DatabaseQueryRequestParamsList;
   batch?: DatabaseQueryRequestBatchList;
 }
-export const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -825,11 +806,7 @@ export type DatabaseQueryResultItemMetaServedByRegion =
   | "EEUR"
   | "APAC"
   | "OC";
-export const DatabaseQueryResultItemMetaServedByRegion = S.String;
-
 export type DatabaseQueryResultItemMetaTimings = DatabaseImportResponseResultMetaTimings;
-export const DatabaseQueryResultItemMetaTimings = DatabaseImportResponseResultMetaTimings;
-
 export interface DatabaseQueryResultItemMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
   changedDb?: boolean | null;
@@ -854,11 +831,11 @@ export interface DatabaseQueryResultItemMeta {
   /** Various durations for the query. */
   timings?: DatabaseImportResponseResultMetaTimings | null;
 }
-export const DatabaseQueryResultItemMeta =
+const DatabaseQueryResultItemMeta =
   DatabaseImportResponseResultMeta as any as S.Schema<DatabaseQueryResultItemMeta>;
 
 export type DatabaseQueryResultItemResultsList = Array<unknown>;
-export const DatabaseQueryResultItemResultsList =
+const DatabaseQueryResultItemResultsList =
   DatabaseQueryRequestParamsList as any as S.Schema<DatabaseQueryResultItemResultsList>;
 
 export interface DatabaseQueryResultItem {
@@ -866,7 +843,7 @@ export interface DatabaseQueryResultItem {
   results?: DatabaseQueryResultItemResultsList | null;
   success?: boolean | null;
 }
-export const DatabaseQueryResultItem = /*@__PURE__*/ S.suspend(() =>
+const DatabaseQueryResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: S.optional(S.NullOr(DatabaseQueryResultItemMeta)),
     results: S.optional(S.NullOr(DatabaseQueryResultItemResultsList)),
@@ -875,7 +852,7 @@ export const DatabaseQueryResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseQueryResultItem" }) as any as S.Schema<DatabaseQueryResultItem>;
 
 export type DatabaseQueryResultList = Array<DatabaseQueryResultItem>;
-export const DatabaseQueryResultList = /*@__PURE__*/ S.Array(
+const DatabaseQueryResultList = /*@__PURE__*/ S.Array(
   DatabaseQueryResultItem,
 ) as any as S.Schema<DatabaseQueryResultList>;
 
@@ -885,7 +862,7 @@ export interface QueryDatabaseResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatabaseQueryResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -893,23 +870,17 @@ export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryDatabaseResponse" }) as any as S.Schema<QueryDatabaseResponse>;
 
 export type DatabaseRawRequestParamsList = Array<unknown>;
-export const DatabaseRawRequestParamsList =
+const DatabaseRawRequestParamsList =
   DatabaseQueryRequestParamsList as any as S.Schema<DatabaseRawRequestParamsList>;
 
 export type DatabaseRawRequestBatchItemParamsList = Array<unknown>;
-export const DatabaseRawRequestBatchItemParamsList =
-  DatabaseQueryRequestParamsList as any as S.Schema<DatabaseRawRequestBatchItemParamsList>;
-
 export interface DatabaseRawRequestBatchItem {
   /** Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
   sql: string;
   params?: DatabaseRawRequestBatchItemParamsList;
 }
-export const DatabaseRawRequestBatchItem =
-  DatabaseQueryRequestBatchItem as any as S.Schema<DatabaseRawRequestBatchItem>;
-
 export type DatabaseRawRequestBatchList = Array<DatabaseRawRequestBatchItem>;
-export const DatabaseRawRequestBatchList =
+const DatabaseRawRequestBatchList =
   DatabaseQueryRequestBatchList as any as S.Schema<DatabaseRawRequestBatchList>;
 
 export interface RawDatabaseRequest {
@@ -922,7 +893,7 @@ export interface RawDatabaseRequest {
   params?: DatabaseRawRequestParamsList;
   batch?: DatabaseRawRequestBatchList;
 }
-export const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -947,11 +918,7 @@ export type DatabaseRawResultItemMetaServedByRegion =
   | "EEUR"
   | "APAC"
   | "OC";
-export const DatabaseRawResultItemMetaServedByRegion = S.String;
-
 export type DatabaseRawResultItemMetaTimings = DatabaseImportResponseResultMetaTimings;
-export const DatabaseRawResultItemMetaTimings = DatabaseImportResponseResultMetaTimings;
-
 export interface DatabaseRawResultItemMeta {
   /** Denotes if the database has been altered in some way, like deleting rows. */
   changedDb?: boolean | null;
@@ -976,22 +943,22 @@ export interface DatabaseRawResultItemMeta {
   /** Various durations for the query. */
   timings?: DatabaseImportResponseResultMetaTimings | null;
 }
-export const DatabaseRawResultItemMeta =
+const DatabaseRawResultItemMeta =
   DatabaseImportResponseResultMeta as any as S.Schema<DatabaseRawResultItemMeta>;
 
 export type DatabaseRawResultItemResultsColumnsList = Array<string>;
-export const DatabaseRawResultItemResultsColumnsList =
+const DatabaseRawResultItemResultsColumnsList =
   DatabaseExportRequestDumpOptionsTablesList as any as S.Schema<DatabaseRawResultItemResultsColumnsList>;
 
 export type DatabaseRawResultItemResultsRowsList = Array<unknown>;
-export const DatabaseRawResultItemResultsRowsList =
+const DatabaseRawResultItemResultsRowsList =
   DatabaseQueryRequestParamsList as any as S.Schema<DatabaseRawResultItemResultsRowsList>;
 
 export interface DatabaseRawResultItemResults {
   columns?: DatabaseRawResultItemResultsColumnsList | null;
   rows?: DatabaseRawResultItemResultsRowsList | null;
 }
-export const DatabaseRawResultItemResults = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRawResultItemResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(S.NullOr(DatabaseRawResultItemResultsColumnsList)),
     rows: S.optional(S.NullOr(DatabaseRawResultItemResultsRowsList)),
@@ -1005,7 +972,7 @@ export interface DatabaseRawResultItem {
   results?: DatabaseRawResultItemResults | null;
   success?: boolean | null;
 }
-export const DatabaseRawResultItem = /*@__PURE__*/ S.suspend(() =>
+const DatabaseRawResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: S.optional(S.NullOr(DatabaseRawResultItemMeta)),
     results: S.optional(S.NullOr(DatabaseRawResultItemResults)),
@@ -1014,7 +981,7 @@ export const DatabaseRawResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseRawResultItem" }) as any as S.Schema<DatabaseRawResultItem>;
 
 export type DatabaseRawResultList = Array<DatabaseRawResultItem>;
-export const DatabaseRawResultList = /*@__PURE__*/ S.Array(
+const DatabaseRawResultList = /*@__PURE__*/ S.Array(
   DatabaseRawResultItem,
 ) as any as S.Schema<DatabaseRawResultList>;
 
@@ -1024,7 +991,7 @@ export interface RawDatabaseResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const RawDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const RawDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatabaseRawResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1041,7 +1008,7 @@ export interface RestoreDatabaseTimeTravelRequest {
   /** An ISO 8601 timestamp to restore the database to. Required if `bookmark` is not provided. */
   timestamp?: string;
 }
-export const RestoreDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -1069,7 +1036,7 @@ export interface RestoreDatabaseTimeTravelResponse {
   /** The bookmark representing the state of the database before the restore operation. Can be used to undo the restore if needed. */
   previousBookmark?: string | null;
 }
-export const RestoreDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookmark: S.optional(S.NullOr(S.String)),
     message: S.optional(S.NullOr(S.String)),
@@ -1080,13 +1047,11 @@ export const RestoreDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreDatabaseTimeTravelResponse>;
 
 export type DatabaseUpdateRequestReadReplicationMode = "auto" | "disabled";
-export const DatabaseUpdateRequestReadReplicationMode = S.String;
-
 export interface DatabaseUpdateRequestReadReplication {
   /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
   mode: DatabaseUpdateRequestReadReplicationMode | (string & {});
 }
-export const DatabaseUpdateRequestReadReplication =
+const DatabaseUpdateRequestReadReplication =
   DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseUpdateRequestReadReplication>;
 
 export interface UpdateDatabaseRequest {
@@ -1097,7 +1062,7 @@ export interface UpdateDatabaseRequest {
   /** Configuration for D1 read replication. */
   readReplication: DatabaseUpdateRequestReadReplication;
 }
-export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -1110,18 +1075,11 @@ export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDatabaseRequest" }) as any as S.Schema<UpdateDatabaseRequest>;
 
 export type DatabaseUpdateResponseJurisdiction = "eu" | "fedramp" | "us";
-export const DatabaseUpdateResponseJurisdiction = S.String;
-
 export type DatabaseUpdateResponseReadReplicationMode = "auto" | "disabled";
-export const DatabaseUpdateResponseReadReplicationMode = S.String;
-
 export interface DatabaseUpdateResponseReadReplication {
   /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
   mode: DatabaseUpdateResponseReadReplicationMode;
 }
-export const DatabaseUpdateResponseReadReplication =
-  DatabaseCreateRequestReadReplication as any as S.Schema<DatabaseUpdateResponseReadReplication>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
@@ -1140,8 +1098,7 @@ export interface UpdateDatabaseResponse {
   uuid?: string | null;
   version?: string | null;
 }
-export const UpdateDatabaseResponse =
-  CreateDatabaseResponse as any as S.Schema<UpdateDatabaseResponse>;
+const UpdateDatabaseResponse = CreateDatabaseResponse as any as S.Schema<UpdateDatabaseResponse>;
 
 export type CreateDatabaseError =
   | InvalidObjectIdentifier

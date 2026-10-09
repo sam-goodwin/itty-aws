@@ -16,7 +16,7 @@ export interface AddServerToPlacementGroupRequest {
   /** ID of Placement Group the Server should be added to. */
   placement_group: number;
 }
-export const AddServerToPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const AddServerToPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     placement_group: S.Number,
@@ -29,7 +29,7 @@ export const AddServerToPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type AddServerToPlacementGroupResponseActionStatus = "running" | "success" | "error";
-export const AddServerToPlacementGroupResponseActionStatus = S.String;
+const AddServerToPlacementGroupResponseActionStatus = S.String;
 
 export interface AddServerToPlacementGroupResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -37,7 +37,7 @@ export interface AddServerToPlacementGroupResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const AddServerToPlacementGroupResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const AddServerToPlacementGroupResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -49,7 +49,7 @@ export const AddServerToPlacementGroupResponseActionResourcesItem = /*@__PURE__*
 /** Resources the Action relates to. */
 export type AddServerToPlacementGroupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const AddServerToPlacementGroupResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const AddServerToPlacementGroupResponseActionResourcesList = /*@__PURE__*/ S.Array(
   AddServerToPlacementGroupResponseActionResourcesItem,
 ) as any as S.Schema<AddServerToPlacementGroupResponseActionResourcesList>;
 
@@ -60,7 +60,7 @@ export interface AddServerToPlacementGroupResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const AddServerToPlacementGroupResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const AddServerToPlacementGroupResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -87,7 +87,7 @@ export interface AddServerToPlacementGroupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const AddServerToPlacementGroupResponseAction = /*@__PURE__*/ S.suspend(() =>
+const AddServerToPlacementGroupResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -105,7 +105,7 @@ export const AddServerToPlacementGroupResponseAction = /*@__PURE__*/ S.suspend((
 export interface AddServerToPlacementGroupResponse {
   action: AddServerToPlacementGroupResponseAction;
 }
-export const AddServerToPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const AddServerToPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AddServerToPlacementGroupResponseAction,
   }),
@@ -119,7 +119,7 @@ export interface AttachServerIsoRequest {
   /** ID or name of ISO to attach to the Server as listed in GET `/isos`. */
   iso: string;
 }
-export const AttachServerIsoRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachServerIsoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     iso: S.String,
@@ -128,23 +128,18 @@ export const AttachServerIsoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type AttachServerIsoResponseActionStatus = "running" | "success" | "error";
-export const AttachServerIsoResponseActionStatus = S.String;
+const AttachServerIsoResponseActionStatus = S.String;
 
 export type AttachServerIsoResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const AttachServerIsoResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type AttachServerIsoResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const AttachServerIsoResponseActionResourcesList =
+const AttachServerIsoResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<AttachServerIsoResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AttachServerIsoResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const AttachServerIsoResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface AttachServerIsoResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -163,7 +158,7 @@ export interface AttachServerIsoResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const AttachServerIsoResponseAction = /*@__PURE__*/ S.suspend(() =>
+const AttachServerIsoResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -181,7 +176,7 @@ export const AttachServerIsoResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface AttachServerIsoResponse {
   action: AttachServerIsoResponseAction;
 }
-export const AttachServerIsoResponse = /*@__PURE__*/ S.suspend(() =>
+const AttachServerIsoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AttachServerIsoResponseAction,
   }),
@@ -189,7 +184,7 @@ export const AttachServerIsoResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional IPs to be assigned to this Server. */
 export type AttachServerToNetworkRequestAliasIpsList = Array<string>;
-export const AttachServerToNetworkRequestAliasIpsList = /*@__PURE__*/ S.Array(
+const AttachServerToNetworkRequestAliasIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AttachServerToNetworkRequestAliasIpsList>;
 
@@ -205,7 +200,7 @@ export interface AttachServerToNetworkRequest {
   /** IP range in CIDR block notation of the subnet to attach to. This allows for auto assigning an IP address for a specific subnet. Providing `ip` that is not part of `ip_range` will result in an error. */
   ip_range?: string;
 }
-export const AttachServerToNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachServerToNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     network: S.Number,
@@ -219,24 +214,18 @@ export const AttachServerToNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type AttachServerToNetworkResponseActionStatus = "running" | "success" | "error";
-export const AttachServerToNetworkResponseActionStatus = S.String;
+const AttachServerToNetworkResponseActionStatus = S.String;
 
 export type AttachServerToNetworkResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const AttachServerToNetworkResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type AttachServerToNetworkResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const AttachServerToNetworkResponseActionResourcesList =
+const AttachServerToNetworkResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<AttachServerToNetworkResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AttachServerToNetworkResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const AttachServerToNetworkResponseActionError =
-  AddServerToPlacementGroupResponseActionError;
-
 export interface AttachServerToNetworkResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -255,7 +244,7 @@ export interface AttachServerToNetworkResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const AttachServerToNetworkResponseAction = /*@__PURE__*/ S.suspend(() =>
+const AttachServerToNetworkResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -273,7 +262,7 @@ export const AttachServerToNetworkResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface AttachServerToNetworkResponse {
   action: AttachServerToNetworkResponseAction;
 }
-export const AttachServerToNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const AttachServerToNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AttachServerToNetworkResponseAction,
   }),
@@ -283,7 +272,7 @@ export const AttachServerToNetworkResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** New alias IPs to set for this Server. */
 export type ChangeServerAliasIpsRequestAliasIpsList = Array<string>;
-export const ChangeServerAliasIpsRequestAliasIpsList =
+const ChangeServerAliasIpsRequestAliasIpsList =
   AttachServerToNetworkRequestAliasIpsList as any as S.Schema<ChangeServerAliasIpsRequestAliasIpsList>;
 
 export interface ChangeServerAliasIpsRequest {
@@ -294,7 +283,7 @@ export interface ChangeServerAliasIpsRequest {
   /** New alias IPs to set for this Server. */
   alias_ips: ChangeServerAliasIpsRequestAliasIpsList;
 }
-export const ChangeServerAliasIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerAliasIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     network: S.Number,
@@ -306,23 +295,18 @@ export const ChangeServerAliasIpsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeServerAliasIpsResponseActionStatus = "running" | "success" | "error";
-export const ChangeServerAliasIpsResponseActionStatus = S.String;
+const ChangeServerAliasIpsResponseActionStatus = S.String;
 
 export type ChangeServerAliasIpsResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ChangeServerAliasIpsResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ChangeServerAliasIpsResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ChangeServerAliasIpsResponseActionResourcesList =
+const ChangeServerAliasIpsResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerAliasIpsResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerAliasIpsResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const ChangeServerAliasIpsResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface ChangeServerAliasIpsResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -341,7 +325,7 @@ export interface ChangeServerAliasIpsResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ChangeServerAliasIpsResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerAliasIpsResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -359,7 +343,7 @@ export const ChangeServerAliasIpsResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface ChangeServerAliasIpsResponse {
   action: ChangeServerAliasIpsResponseAction;
 }
-export const ChangeServerAliasIpsResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerAliasIpsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeServerAliasIpsResponseAction,
   }),
@@ -375,7 +359,7 @@ export interface ChangeServerDnsPtrRequest {
   /** Domain Name to point to. PTR record content used for reverse DNS. Set to null to reset (IPv4) to the default value or remove (IPv6) the record. */
   dns_ptr: string | null;
 }
-export const ChangeServerDnsPtrRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerDnsPtrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     ip: S.String,
@@ -387,23 +371,18 @@ export const ChangeServerDnsPtrRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeServerDnsPtrResponseActionStatus = "running" | "success" | "error";
-export const ChangeServerDnsPtrResponseActionStatus = S.String;
+const ChangeServerDnsPtrResponseActionStatus = S.String;
 
 export type ChangeServerDnsPtrResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ChangeServerDnsPtrResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ChangeServerDnsPtrResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ChangeServerDnsPtrResponseActionResourcesList =
+const ChangeServerDnsPtrResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerDnsPtrResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerDnsPtrResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const ChangeServerDnsPtrResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface ChangeServerDnsPtrResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -422,7 +401,7 @@ export interface ChangeServerDnsPtrResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ChangeServerDnsPtrResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerDnsPtrResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -440,7 +419,7 @@ export const ChangeServerDnsPtrResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface ChangeServerDnsPtrResponse {
   action: ChangeServerDnsPtrResponseAction;
 }
-export const ChangeServerDnsPtrResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerDnsPtrResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeServerDnsPtrResponseAction,
   }),
@@ -456,7 +435,7 @@ export interface ChangeServerProtectionRequest {
   /** If true, prevents the Server from being rebuilt (currently delete and rebuild attribute needs to have the same value). */
   rebuild?: boolean;
 }
-export const ChangeServerProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     delete: S.optional(S.Boolean),
@@ -468,25 +447,19 @@ export const ChangeServerProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeServerProtectionResponseActionStatus = "running" | "success" | "error";
-export const ChangeServerProtectionResponseActionStatus = S.String;
+const ChangeServerProtectionResponseActionStatus = S.String;
 
 export type ChangeServerProtectionResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ChangeServerProtectionResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ChangeServerProtectionResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ChangeServerProtectionResponseActionResourcesList =
+const ChangeServerProtectionResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerProtectionResponseActionError =
   AddServerToPlacementGroupResponseActionError;
-export const ChangeServerProtectionResponseActionError =
-  AddServerToPlacementGroupResponseActionError;
-
 export interface ChangeServerProtectionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -505,7 +478,7 @@ export interface ChangeServerProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ChangeServerProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -523,7 +496,7 @@ export const ChangeServerProtectionResponseAction = /*@__PURE__*/ S.suspend(() =
 export interface ChangeServerProtectionResponse {
   action: ChangeServerProtectionResponseAction;
 }
-export const ChangeServerProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeServerProtectionResponseAction,
   }),
@@ -539,7 +512,7 @@ export interface ChangeServerTypeRequest {
   /** ID or name of Server type the Server should migrate to. */
   server_type: string;
 }
-export const ChangeServerTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     upgrade_disk: S.Boolean,
@@ -549,23 +522,18 @@ export const ChangeServerTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeServerTypeResponseActionStatus = "running" | "success" | "error";
-export const ChangeServerTypeResponseActionStatus = S.String;
+const ChangeServerTypeResponseActionStatus = S.String;
 
 export type ChangeServerTypeResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ChangeServerTypeResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ChangeServerTypeResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ChangeServerTypeResponseActionResourcesList =
+const ChangeServerTypeResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ChangeServerTypeResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeServerTypeResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const ChangeServerTypeResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface ChangeServerTypeResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -584,7 +552,7 @@ export interface ChangeServerTypeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ChangeServerTypeResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerTypeResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -602,7 +570,7 @@ export const ChangeServerTypeResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface ChangeServerTypeResponse {
   action: ChangeServerTypeResponseAction;
 }
-export const ChangeServerTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeServerTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeServerTypeResponseAction,
   }),
@@ -610,11 +578,11 @@ export const ChangeServerTypeResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of Image to create. */
 export type CreateServerImageRequestType = "snapshot" | "backup";
-export const CreateServerImageRequestType = S.String;
+const CreateServerImageRequestType = S.String;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerImageRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateServerImageRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreateServerImageRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateServerImageRequestLabelsMap>;
@@ -629,7 +597,7 @@ export interface CreateServerImageRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
   labels?: CreateServerImageRequestLabelsMap;
 }
-export const CreateServerImageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServerImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     description: S.optional(S.String),
@@ -640,11 +608,11 @@ export const CreateServerImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the Image. */
 export type CreateServerImageResponseImageType = "system" | "app" | "snapshot" | "backup";
-export const CreateServerImageResponseImageType = S.String;
+const CreateServerImageResponseImageType = S.String;
 
 /** Status of the Image. */
 export type CreateServerImageResponseImageStatus = "available" | "creating" | "unavailable";
-export const CreateServerImageResponseImageStatus = S.String;
+const CreateServerImageResponseImageStatus = S.String;
 
 /** Information about the Server the Image was created from. */
 export interface CreateServerImageResponseImageCreatedFrom {
@@ -653,7 +621,7 @@ export interface CreateServerImageResponseImageCreatedFrom {
   /** Server name at the time the Image was created. */
   name: string;
 }
-export const CreateServerImageResponseImageCreatedFrom = /*@__PURE__*/ S.suspend(() =>
+const CreateServerImageResponseImageCreatedFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -672,14 +640,14 @@ export type CreateServerImageResponseImageOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
-export const CreateServerImageResponseImageOsFlavor = S.String;
+const CreateServerImageResponseImageOsFlavor = S.String;
 
 /** Protection configuration for the Resource. */
 export interface CreateServerImageResponseImageProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-export const CreateServerImageResponseImageProtection = /*@__PURE__*/ S.suspend(() =>
+const CreateServerImageResponseImageProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete: S.Boolean,
   }),
@@ -694,7 +662,7 @@ export interface CreateServerImageResponseImageDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
-export const CreateServerImageResponseImageDeprecation = /*@__PURE__*/ S.suspend(() =>
+const CreateServerImageResponseImageDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unavailable_after: S.String,
     announced: S.String,
@@ -705,12 +673,12 @@ export const CreateServerImageResponseImageDeprecation = /*@__PURE__*/ S.suspend
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerImageResponseImageLabelsMap = { [key: string]: string | undefined };
-export const CreateServerImageResponseImageLabelsMap =
+const CreateServerImageResponseImageLabelsMap =
   CreateServerImageRequestLabelsMap as any as S.Schema<CreateServerImageResponseImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type CreateServerImageResponseImageArchitecture = "x86" | "arm";
-export const CreateServerImageResponseImageArchitecture = S.String;
+const CreateServerImageResponseImageArchitecture = S.String;
 
 export interface CreateServerImageResponseImage {
   /** ID of the [Image](#tag/images). */
@@ -752,7 +720,7 @@ export interface CreateServerImageResponseImage {
   /** CPU architecture compatible with the Image. */
   architecture: CreateServerImageResponseImageArchitecture;
 }
-export const CreateServerImageResponseImage = /*@__PURE__*/ S.suspend(() =>
+const CreateServerImageResponseImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: CreateServerImageResponseImageType,
@@ -780,23 +748,18 @@ export const CreateServerImageResponseImage = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type CreateServerImageResponseActionStatus = "running" | "success" | "error";
-export const CreateServerImageResponseActionStatus = S.String;
+const CreateServerImageResponseActionStatus = S.String;
 
 export type CreateServerImageResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const CreateServerImageResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type CreateServerImageResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const CreateServerImageResponseActionResourcesList =
+const CreateServerImageResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<CreateServerImageResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type CreateServerImageResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const CreateServerImageResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface CreateServerImageResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -815,7 +778,7 @@ export interface CreateServerImageResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const CreateServerImageResponseAction = /*@__PURE__*/ S.suspend(() =>
+const CreateServerImageResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -834,7 +797,7 @@ export interface CreateServerImageResponse {
   image?: CreateServerImageResponseImage;
   action?: CreateServerImageResponseAction;
 }
-export const CreateServerImageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServerImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(CreateServerImageResponseImage),
     action: S.optional(CreateServerImageResponseAction),
@@ -849,7 +812,7 @@ export interface DetachServerFromNetworkRequest {
   /** ID of an existing network to detach the Server from. */
   network: number;
 }
-export const DetachServerFromNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachServerFromNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     network: S.Number,
@@ -860,25 +823,19 @@ export const DetachServerFromNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type DetachServerFromNetworkResponseActionStatus = "running" | "success" | "error";
-export const DetachServerFromNetworkResponseActionStatus = S.String;
+const DetachServerFromNetworkResponseActionStatus = S.String;
 
 export type DetachServerFromNetworkResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const DetachServerFromNetworkResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type DetachServerFromNetworkResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const DetachServerFromNetworkResponseActionResourcesList =
+const DetachServerFromNetworkResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DetachServerFromNetworkResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachServerFromNetworkResponseActionError =
   AddServerToPlacementGroupResponseActionError;
-export const DetachServerFromNetworkResponseActionError =
-  AddServerToPlacementGroupResponseActionError;
-
 export interface DetachServerFromNetworkResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -897,7 +854,7 @@ export interface DetachServerFromNetworkResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const DetachServerFromNetworkResponseAction = /*@__PURE__*/ S.suspend(() =>
+const DetachServerFromNetworkResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -915,7 +872,7 @@ export const DetachServerFromNetworkResponseAction = /*@__PURE__*/ S.suspend(() 
 export interface DetachServerFromNetworkResponse {
   action: DetachServerFromNetworkResponseAction;
 }
-export const DetachServerFromNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const DetachServerFromNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DetachServerFromNetworkResponseAction,
   }),
@@ -927,7 +884,7 @@ export interface DetachServerIsoRequest {
   /** ID of the Server. */
   id: number;
 }
-export const DetachServerIsoRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachServerIsoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/detach_iso", code: 200 })),
@@ -935,23 +892,18 @@ export const DetachServerIsoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type DetachServerIsoResponseActionStatus = "running" | "success" | "error";
-export const DetachServerIsoResponseActionStatus = S.String;
+const DetachServerIsoResponseActionStatus = S.String;
 
 export type DetachServerIsoResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const DetachServerIsoResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type DetachServerIsoResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const DetachServerIsoResponseActionResourcesList =
+const DetachServerIsoResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DetachServerIsoResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachServerIsoResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const DetachServerIsoResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface DetachServerIsoResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -970,7 +922,7 @@ export interface DetachServerIsoResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const DetachServerIsoResponseAction = /*@__PURE__*/ S.suspend(() =>
+const DetachServerIsoResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -988,7 +940,7 @@ export const DetachServerIsoResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface DetachServerIsoResponse {
   action: DetachServerIsoResponseAction;
 }
-export const DetachServerIsoResponse = /*@__PURE__*/ S.suspend(() =>
+const DetachServerIsoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DetachServerIsoResponseAction,
   }),
@@ -998,7 +950,7 @@ export interface DisableServerBackupRequest {
   /** ID of the Server. */
   id: number;
 }
-export const DisableServerBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableServerBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/disable_backup", code: 200 })),
@@ -1008,23 +960,18 @@ export const DisableServerBackupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type DisableServerBackupResponseActionStatus = "running" | "success" | "error";
-export const DisableServerBackupResponseActionStatus = S.String;
+const DisableServerBackupResponseActionStatus = S.String;
 
 export type DisableServerBackupResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const DisableServerBackupResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type DisableServerBackupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const DisableServerBackupResponseActionResourcesList =
+const DisableServerBackupResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DisableServerBackupResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DisableServerBackupResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const DisableServerBackupResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface DisableServerBackupResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1043,7 +990,7 @@ export interface DisableServerBackupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const DisableServerBackupResponseAction = /*@__PURE__*/ S.suspend(() =>
+const DisableServerBackupResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1061,7 +1008,7 @@ export const DisableServerBackupResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface DisableServerBackupResponse {
   action: DisableServerBackupResponseAction;
 }
-export const DisableServerBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableServerBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DisableServerBackupResponseAction,
   }),
@@ -1073,7 +1020,7 @@ export interface DisableServerRescueRequest {
   /** ID of the Server. */
   id: number;
 }
-export const DisableServerRescueRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableServerRescueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/disable_rescue", code: 200 })),
@@ -1083,23 +1030,18 @@ export const DisableServerRescueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type DisableServerRescueResponseActionStatus = "running" | "success" | "error";
-export const DisableServerRescueResponseActionStatus = S.String;
+const DisableServerRescueResponseActionStatus = S.String;
 
 export type DisableServerRescueResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const DisableServerRescueResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type DisableServerRescueResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const DisableServerRescueResponseActionResourcesList =
+const DisableServerRescueResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<DisableServerRescueResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DisableServerRescueResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const DisableServerRescueResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface DisableServerRescueResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1118,7 +1060,7 @@ export interface DisableServerRescueResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const DisableServerRescueResponseAction = /*@__PURE__*/ S.suspend(() =>
+const DisableServerRescueResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1136,7 +1078,7 @@ export const DisableServerRescueResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface DisableServerRescueResponse {
   action: DisableServerRescueResponseAction;
 }
-export const DisableServerRescueResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableServerRescueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DisableServerRescueResponseAction,
   }),
@@ -1148,7 +1090,7 @@ export interface EnableServerBackupRequest {
   /** ID of the Server. */
   id: number;
 }
-export const EnableServerBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableServerBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/enable_backup", code: 200 })),
@@ -1158,23 +1100,18 @@ export const EnableServerBackupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type EnableServerBackupResponseActionStatus = "running" | "success" | "error";
-export const EnableServerBackupResponseActionStatus = S.String;
+const EnableServerBackupResponseActionStatus = S.String;
 
 export type EnableServerBackupResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const EnableServerBackupResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type EnableServerBackupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const EnableServerBackupResponseActionResourcesList =
+const EnableServerBackupResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<EnableServerBackupResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type EnableServerBackupResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const EnableServerBackupResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface EnableServerBackupResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1193,7 +1130,7 @@ export interface EnableServerBackupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const EnableServerBackupResponseAction = /*@__PURE__*/ S.suspend(() =>
+const EnableServerBackupResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1211,7 +1148,7 @@ export const EnableServerBackupResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface EnableServerBackupResponse {
   action: EnableServerBackupResponseAction;
 }
-export const EnableServerBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const EnableServerBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: EnableServerBackupResponseAction,
   }),
@@ -1221,11 +1158,11 @@ export const EnableServerBackupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of rescue system to boot. */
 export type EnableServerRescueRequestType = "linux64";
-export const EnableServerRescueRequestType = S.String;
+const EnableServerRescueRequestType = S.String;
 
 /** Array of SSH key IDs which should be injected into the rescue system. */
 export type EnableServerRescueRequestSshKeysList = Array<number>;
-export const EnableServerRescueRequestSshKeysList = /*@__PURE__*/ S.Array(
+const EnableServerRescueRequestSshKeysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<EnableServerRescueRequestSshKeysList>;
 
@@ -1237,7 +1174,7 @@ export interface EnableServerRescueRequest {
   /** Array of SSH key IDs which should be injected into the rescue system. */
   ssh_keys?: EnableServerRescueRequestSshKeysList;
 }
-export const EnableServerRescueRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableServerRescueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     type: S.optional(EnableServerRescueRequestType),
@@ -1249,23 +1186,18 @@ export const EnableServerRescueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type EnableServerRescueResponseActionStatus = "running" | "success" | "error";
-export const EnableServerRescueResponseActionStatus = S.String;
+const EnableServerRescueResponseActionStatus = S.String;
 
 export type EnableServerRescueResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const EnableServerRescueResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type EnableServerRescueResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const EnableServerRescueResponseActionResourcesList =
+const EnableServerRescueResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<EnableServerRescueResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type EnableServerRescueResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const EnableServerRescueResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface EnableServerRescueResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1284,7 +1216,7 @@ export interface EnableServerRescueResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const EnableServerRescueResponseAction = /*@__PURE__*/ S.suspend(() =>
+const EnableServerRescueResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1304,7 +1236,7 @@ export interface EnableServerRescueResponse {
   root_password?: string | Redacted.Redacted<string>;
   action?: EnableServerRescueResponseAction;
 }
-export const EnableServerRescueResponse = /*@__PURE__*/ S.suspend(() =>
+const EnableServerRescueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     root_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     action: S.optional(EnableServerRescueResponseAction),
@@ -1317,7 +1249,7 @@ export interface GetServersActionRequest {
   /** ID of the Action. */
   id: number;
 }
-export const GetServersActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServersActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/servers/actions/{id}", code: 200 })),
@@ -1325,23 +1257,18 @@ export const GetServersActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type GetServersActionResponseActionStatus = "running" | "success" | "error";
-export const GetServersActionResponseActionStatus = S.String;
+const GetServersActionResponseActionStatus = S.String;
 
 export type GetServersActionResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const GetServersActionResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type GetServersActionResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const GetServersActionResponseActionResourcesList =
+const GetServersActionResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<GetServersActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetServersActionResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const GetServersActionResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface GetServersActionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1360,7 +1287,7 @@ export interface GetServersActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const GetServersActionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const GetServersActionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1378,7 +1305,7 @@ export const GetServersActionResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface GetServersActionResponse {
   action: GetServersActionResponseAction;
 }
-export const GetServersActionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServersActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: GetServersActionResponseAction,
   }),
@@ -1400,23 +1327,21 @@ export type ListServerActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListServerActionsRequestSortItem = S.String;
+const ListServerActionsRequestSortItem = S.String;
 
 export type ListServerActionsRequestSortList = Array<
   ListServerActionsRequestSortItem | (string & {})
 >;
-export const ListServerActionsRequestSortList = /*@__PURE__*/ S.Array(
+const ListServerActionsRequestSortList = /*@__PURE__*/ S.Array(
   ListServerActionsRequestSortItem,
 ) as any as S.Schema<ListServerActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListServerActionsRequestStatusItem = "running" | "success" | "error";
-export const ListServerActionsRequestStatusItem = S.String;
-
 export type ListServerActionsRequestStatusList = Array<
   ListServerActionsRequestStatusItem | (string & {})
 >;
-export const ListServerActionsRequestStatusList =
+const ListServerActionsRequestStatusList =
   ListServerActionsRequestSortList as any as S.Schema<ListServerActionsRequestStatusList>;
 
 export interface ListServerActionsRequest {
@@ -1431,7 +1356,7 @@ export interface ListServerActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListServerActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     sort: S.optional(ListServerActionsRequestSortList.pipe(T.Query())),
@@ -1443,25 +1368,19 @@ export const ListServerActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListServerActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListServerActionsResponseActionsItemStatus = S.String;
+const ListServerActionsResponseActionsItemStatus = S.String;
 
 export type ListServerActionsResponseActionsItemResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ListServerActionsResponseActionsItemResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListServerActionsResponseActionsItemResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ListServerActionsResponseActionsItemResourcesList =
+const ListServerActionsResponseActionsItemResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ListServerActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListServerActionsResponseActionsItemError =
   AddServerToPlacementGroupResponseActionError;
-export const ListServerActionsResponseActionsItemError =
-  AddServerToPlacementGroupResponseActionError;
-
 export interface ListServerActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1480,7 +1399,7 @@ export interface ListServerActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ListServerActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListServerActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1496,7 +1415,7 @@ export const ListServerActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListServerActionsResponseActionsItem>;
 
 export type ListServerActionsResponseActionsList = Array<ListServerActionsResponseActionsItem>;
-export const ListServerActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListServerActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListServerActionsResponseActionsItem,
 ) as any as S.Schema<ListServerActionsResponseActionsList>;
 
@@ -1515,7 +1434,7 @@ export interface ListServerActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListServerActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListServerActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -1532,7 +1451,7 @@ export interface ListServerActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListServerActionsResponseMetaPagination;
 }
-export const ListServerActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListServerActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListServerActionsResponseMetaPagination,
   }),
@@ -1544,7 +1463,7 @@ export interface ListServerActionsResponse {
   actions: ListServerActionsResponseActionsList;
   meta: ListServerActionsResponseMeta;
 }
-export const ListServerActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServerActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListServerActionsResponseActionsList,
     meta: ListServerActionsResponseMeta,
@@ -1554,7 +1473,7 @@ export const ListServerActionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServerActionsResponse>;
 
 export type ListServersActionsRequestIdList = Array<number>;
-export const ListServersActionsRequestIdList =
+const ListServersActionsRequestIdList =
   EnableServerRescueRequestSshKeysList as any as S.Schema<ListServersActionsRequestIdList>;
 
 export type ListServersActionsRequestSortItem =
@@ -1573,22 +1492,18 @@ export type ListServersActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListServersActionsRequestSortItem = S.String;
-
 export type ListServersActionsRequestSortList = Array<
   ListServersActionsRequestSortItem | (string & {})
 >;
-export const ListServersActionsRequestSortList =
+const ListServersActionsRequestSortList =
   ListServerActionsRequestSortList as any as S.Schema<ListServersActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListServersActionsRequestStatusItem = "running" | "success" | "error";
-export const ListServersActionsRequestStatusItem = S.String;
-
 export type ListServersActionsRequestStatusList = Array<
   ListServersActionsRequestStatusItem | (string & {})
 >;
-export const ListServersActionsRequestStatusList =
+const ListServersActionsRequestStatusList =
   ListServerActionsRequestSortList as any as S.Schema<ListServersActionsRequestStatusList>;
 
 export interface ListServersActionsRequest {
@@ -1603,7 +1518,7 @@ export interface ListServersActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListServersActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServersActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ListServersActionsRequestIdList.pipe(T.Query())),
     sort: S.optional(ListServersActionsRequestSortList.pipe(T.Query())),
@@ -1617,25 +1532,19 @@ export const ListServersActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListServersActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListServersActionsResponseActionsItemStatus = S.String;
+const ListServersActionsResponseActionsItemStatus = S.String;
 
 export type ListServersActionsResponseActionsItemResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ListServersActionsResponseActionsItemResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListServersActionsResponseActionsItemResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ListServersActionsResponseActionsItemResourcesList =
+const ListServersActionsResponseActionsItemResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ListServersActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListServersActionsResponseActionsItemError =
   AddServerToPlacementGroupResponseActionError;
-export const ListServersActionsResponseActionsItemError =
-  AddServerToPlacementGroupResponseActionError;
-
 export interface ListServersActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1654,7 +1563,7 @@ export interface ListServersActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ListServersActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListServersActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1670,22 +1579,18 @@ export const ListServersActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListServersActionsResponseActionsItem>;
 
 export type ListServersActionsResponseActionsList = Array<ListServersActionsResponseActionsItem>;
-export const ListServersActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListServersActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListServersActionsResponseActionsItem,
 ) as any as S.Schema<ListServersActionsResponseActionsList>;
 
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListServersActionsResponseMetaPagination = ListServerActionsResponseMetaPagination;
-export const ListServersActionsResponseMetaPagination = ListServerActionsResponseMetaPagination;
-
 export type ListServersActionsResponseMeta = ListServerActionsResponseMeta;
-export const ListServersActionsResponseMeta = ListServerActionsResponseMeta;
-
 export interface ListServersActionsResponse {
   actions: ListServersActionsResponseActionsList;
   meta: ListServerActionsResponseMeta;
 }
-export const ListServersActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServersActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListServersActionsResponseActionsList,
     meta: ListServerActionsResponseMeta,
@@ -1698,7 +1603,7 @@ export interface PoweroffServerRequest {
   /** ID of the Server. */
   id: number;
 }
-export const PoweroffServerRequest = /*@__PURE__*/ S.suspend(() =>
+const PoweroffServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/poweroff", code: 200 })),
@@ -1706,23 +1611,18 @@ export const PoweroffServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type PoweroffServerResponseActionStatus = "running" | "success" | "error";
-export const PoweroffServerResponseActionStatus = S.String;
+const PoweroffServerResponseActionStatus = S.String;
 
 export type PoweroffServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const PoweroffServerResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type PoweroffServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const PoweroffServerResponseActionResourcesList =
+const PoweroffServerResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<PoweroffServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type PoweroffServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const PoweroffServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface PoweroffServerResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1741,7 +1641,7 @@ export interface PoweroffServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const PoweroffServerResponseAction = /*@__PURE__*/ S.suspend(() =>
+const PoweroffServerResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1759,7 +1659,7 @@ export const PoweroffServerResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface PoweroffServerResponse {
   action: PoweroffServerResponseAction;
 }
-export const PoweroffServerResponse = /*@__PURE__*/ S.suspend(() =>
+const PoweroffServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: PoweroffServerResponseAction,
   }),
@@ -1769,7 +1669,7 @@ export interface PoweronServerRequest {
   /** ID of the Server. */
   id: number;
 }
-export const PoweronServerRequest = /*@__PURE__*/ S.suspend(() =>
+const PoweronServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/poweron", code: 200 })),
@@ -1777,23 +1677,18 @@ export const PoweronServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type PoweronServerResponseActionStatus = "running" | "success" | "error";
-export const PoweronServerResponseActionStatus = S.String;
+const PoweronServerResponseActionStatus = S.String;
 
 export type PoweronServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const PoweronServerResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type PoweronServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const PoweronServerResponseActionResourcesList =
+const PoweronServerResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<PoweronServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type PoweronServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const PoweronServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface PoweronServerResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1812,7 +1707,7 @@ export interface PoweronServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const PoweronServerResponseAction = /*@__PURE__*/ S.suspend(() =>
+const PoweronServerResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1830,7 +1725,7 @@ export const PoweronServerResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface PoweronServerResponse {
   action: PoweronServerResponseAction;
 }
-export const PoweronServerResponse = /*@__PURE__*/ S.suspend(() =>
+const PoweronServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: PoweronServerResponseAction,
   }),
@@ -1840,7 +1735,7 @@ export interface RebootServerRequest {
   /** ID of the Server. */
   id: number;
 }
-export const RebootServerRequest = /*@__PURE__*/ S.suspend(() =>
+const RebootServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reboot", code: 200 })),
@@ -1848,23 +1743,18 @@ export const RebootServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type RebootServerResponseActionStatus = "running" | "success" | "error";
-export const RebootServerResponseActionStatus = S.String;
+const RebootServerResponseActionStatus = S.String;
 
 export type RebootServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const RebootServerResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type RebootServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const RebootServerResponseActionResourcesList =
+const RebootServerResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RebootServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RebootServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const RebootServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface RebootServerResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1883,7 +1773,7 @@ export interface RebootServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const RebootServerResponseAction = /*@__PURE__*/ S.suspend(() =>
+const RebootServerResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1901,7 +1791,7 @@ export const RebootServerResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface RebootServerResponse {
   action: RebootServerResponseAction;
 }
-export const RebootServerResponse = /*@__PURE__*/ S.suspend(() =>
+const RebootServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RebootServerResponseAction,
   }),
@@ -1915,7 +1805,7 @@ export interface RebuildServerRequest {
   /** Cloud-Init user data to use during Server rebuild. This field is limited to 32KiB. If not specified, the Server's previous user_data value will be re-used (if any was set). */
   user_data?: string;
 }
-export const RebuildServerRequest = /*@__PURE__*/ S.suspend(() =>
+const RebuildServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     image: S.String,
@@ -1925,23 +1815,18 @@ export const RebuildServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type RebuildServerResponseActionStatus = "running" | "success" | "error";
-export const RebuildServerResponseActionStatus = S.String;
+const RebuildServerResponseActionStatus = S.String;
 
 export type RebuildServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const RebuildServerResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type RebuildServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const RebuildServerResponseActionResourcesList =
+const RebuildServerResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RebuildServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RebuildServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const RebuildServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface RebuildServerResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -1960,7 +1845,7 @@ export interface RebuildServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const RebuildServerResponseAction = /*@__PURE__*/ S.suspend(() =>
+const RebuildServerResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1980,7 +1865,7 @@ export interface RebuildServerResponse {
   root_password?: string | Redacted.Redacted<string> | null;
   action?: RebuildServerResponseAction;
 }
-export const RebuildServerResponse = /*@__PURE__*/ S.suspend(() =>
+const RebuildServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     root_password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
     action: S.optional(RebuildServerResponseAction),
@@ -1991,7 +1876,7 @@ export interface RemoveServerFromPlacementGroupRequest {
   /** ID of the Server. */
   id: number;
 }
-export const RemoveServerFromPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveServerFromPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -2003,25 +1888,19 @@ export const RemoveServerFromPlacementGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Status of the Action. */
 export type RemoveServerFromPlacementGroupResponseActionStatus = "running" | "success" | "error";
-export const RemoveServerFromPlacementGroupResponseActionStatus = S.String;
+const RemoveServerFromPlacementGroupResponseActionStatus = S.String;
 
 export type RemoveServerFromPlacementGroupResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const RemoveServerFromPlacementGroupResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type RemoveServerFromPlacementGroupResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const RemoveServerFromPlacementGroupResponseActionResourcesList =
+const RemoveServerFromPlacementGroupResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RemoveServerFromPlacementGroupResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveServerFromPlacementGroupResponseActionError =
   AddServerToPlacementGroupResponseActionError;
-export const RemoveServerFromPlacementGroupResponseActionError =
-  AddServerToPlacementGroupResponseActionError;
-
 export interface RemoveServerFromPlacementGroupResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -2040,7 +1919,7 @@ export interface RemoveServerFromPlacementGroupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const RemoveServerFromPlacementGroupResponseAction = /*@__PURE__*/ S.suspend(() =>
+const RemoveServerFromPlacementGroupResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -2058,7 +1937,7 @@ export const RemoveServerFromPlacementGroupResponseAction = /*@__PURE__*/ S.susp
 export interface RemoveServerFromPlacementGroupResponse {
   action: RemoveServerFromPlacementGroupResponseAction;
 }
-export const RemoveServerFromPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveServerFromPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RemoveServerFromPlacementGroupResponseAction,
   }),
@@ -2070,7 +1949,7 @@ export interface RequestServerConsoleRequest {
   /** ID of the Server. */
   id: number;
 }
-export const RequestServerConsoleRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestServerConsoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/request_console", code: 200 })),
@@ -2080,23 +1959,18 @@ export const RequestServerConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type RequestServerConsoleResponseActionStatus = "running" | "success" | "error";
-export const RequestServerConsoleResponseActionStatus = S.String;
+const RequestServerConsoleResponseActionStatus = S.String;
 
 export type RequestServerConsoleResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const RequestServerConsoleResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type RequestServerConsoleResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const RequestServerConsoleResponseActionResourcesList =
+const RequestServerConsoleResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<RequestServerConsoleResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RequestServerConsoleResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const RequestServerConsoleResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface RequestServerConsoleResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -2115,7 +1989,7 @@ export interface RequestServerConsoleResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const RequestServerConsoleResponseAction = /*@__PURE__*/ S.suspend(() =>
+const RequestServerConsoleResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -2137,7 +2011,7 @@ export interface RequestServerConsoleResponse {
   password: string | Redacted.Redacted<string>;
   action: RequestServerConsoleResponseAction;
 }
-export const RequestServerConsoleResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestServerConsoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wss_url: S.String,
     password: S.String.pipe(T.SensitiveValue({})),
@@ -2151,7 +2025,7 @@ export interface ResetServerRequest {
   /** ID of the Server. */
   id: number;
 }
-export const ResetServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reset", code: 200 })),
@@ -2159,23 +2033,18 @@ export const ResetServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ResetServerResponseActionStatus = "running" | "success" | "error";
-export const ResetServerResponseActionStatus = S.String;
+const ResetServerResponseActionStatus = S.String;
 
 export type ResetServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ResetServerResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ResetServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ResetServerResponseActionResourcesList =
+const ResetServerResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ResetServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ResetServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const ResetServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface ResetServerResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -2194,7 +2063,7 @@ export interface ResetServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ResetServerResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ResetServerResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -2212,7 +2081,7 @@ export const ResetServerResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface ResetServerResponse {
   action: ResetServerResponseAction;
 }
-export const ResetServerResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ResetServerResponseAction,
   }),
@@ -2222,7 +2091,7 @@ export interface ResetServerPasswordRequest {
   /** ID of the Server. */
   id: number;
 }
-export const ResetServerPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetServerPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/reset_password", code: 200 })),
@@ -2232,23 +2101,18 @@ export const ResetServerPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ResetServerPasswordResponseActionStatus = "running" | "success" | "error";
-export const ResetServerPasswordResponseActionStatus = S.String;
+const ResetServerPasswordResponseActionStatus = S.String;
 
 export type ResetServerPasswordResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ResetServerPasswordResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ResetServerPasswordResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ResetServerPasswordResponseActionResourcesList =
+const ResetServerPasswordResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ResetServerPasswordResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ResetServerPasswordResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const ResetServerPasswordResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface ResetServerPasswordResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -2267,7 +2131,7 @@ export interface ResetServerPasswordResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ResetServerPasswordResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ResetServerPasswordResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -2287,7 +2151,7 @@ export interface ResetServerPasswordResponse {
   root_password?: string | Redacted.Redacted<string>;
   action?: ResetServerPasswordResponseAction;
 }
-export const ResetServerPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetServerPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     root_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     action: S.optional(ResetServerPasswordResponseAction),
@@ -2300,7 +2164,7 @@ export interface ShutdownServerRequest {
   /** ID of the Server. */
   id: number;
 }
-export const ShutdownServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ShutdownServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/servers/{id}/actions/shutdown", code: 200 })),
@@ -2308,23 +2172,18 @@ export const ShutdownServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ShutdownServerResponseActionStatus = "running" | "success" | "error";
-export const ShutdownServerResponseActionStatus = S.String;
+const ShutdownServerResponseActionStatus = S.String;
 
 export type ShutdownServerResponseActionResourcesItem =
   AddServerToPlacementGroupResponseActionResourcesItem;
-export const ShutdownServerResponseActionResourcesItem =
-  AddServerToPlacementGroupResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ShutdownServerResponseActionResourcesList =
   Array<AddServerToPlacementGroupResponseActionResourcesItem>;
-export const ShutdownServerResponseActionResourcesList =
+const ShutdownServerResponseActionResourcesList =
   AddServerToPlacementGroupResponseActionResourcesList as any as S.Schema<ShutdownServerResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ShutdownServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-export const ShutdownServerResponseActionError = AddServerToPlacementGroupResponseActionError;
-
 export interface ShutdownServerResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -2343,7 +2202,7 @@ export interface ShutdownServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddServerToPlacementGroupResponseActionError | null;
 }
-export const ShutdownServerResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ShutdownServerResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -2361,7 +2220,7 @@ export const ShutdownServerResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface ShutdownServerResponse {
   action: ShutdownServerResponseAction;
 }
-export const ShutdownServerResponse = /*@__PURE__*/ S.suspend(() =>
+const ShutdownServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ShutdownServerResponseAction,
   }),

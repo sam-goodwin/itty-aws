@@ -47,8 +47,6 @@ export class NotFound
   ) {}
 
 export type TokenUserType = "token";
-export const TokenUserType = S.String;
-
 export interface TokenUser {
   type: TokenUserType;
   /** Deprecated. Client-provided token. If omitted, the server generates a cryptographically secure token and returns it in the response. */
@@ -57,39 +55,21 @@ export interface TokenUser {
   /** Deprecated. Last 4 characters of the token. Required when principal is provided; ignored when the server generates the token. */
   tokenSuffix?: string;
 }
-export const TokenUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TokenUserType,
-    principal: S.optional(S.String),
-    nickname: S.String,
-    tokenSuffix: S.optional(S.String),
-  }),
-).annotate({ identifier: "TokenUser" }) as any as S.Schema<TokenUser>;
-
 export type AwsStsUserType = "awssts";
-export const AwsStsUserType = S.String;
-
 export interface AwsStsUser {
   type: AwsStsUserType;
   /** IAM principal ARN */
   principal: string;
 }
-export const AwsStsUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AwsStsUserType,
-    principal: S.String,
-  }),
-).annotate({ identifier: "AwsStsUser" }) as any as S.Schema<AwsStsUser>;
-
 export type DiskUser = TokenUser | AwsStsUser;
-export const DiskUser = S.Unknown as any as S.Schema<DiskUser>;
+const DiskUser = S.Unknown as any as S.Schema<DiskUser>;
 
 export interface AddDiskUserRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
   body: DiskUser;
 }
-export const AddDiskUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDiskUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: DiskUser.pipe(T.HttpBody()),
@@ -97,7 +77,7 @@ export const AddDiskUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddDiskUserRequest" }) as any as S.Schema<AddDiskUserRequest>;
 
 export type AuthorizedUserType = "token" | "awssts";
-export const AuthorizedUserType = S.String;
+const AuthorizedUserType = S.String;
 
 export interface AuthorizedUser {
   type?: AuthorizedUserType;
@@ -111,7 +91,7 @@ export interface AuthorizedUser {
   identifier?: string;
   createdAt?: string;
 }
-export const AuthorizedUser = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(AuthorizedUserType),
     principal: S.optional(S.String),
@@ -127,7 +107,7 @@ export interface ApiResponseAuthorizedUser {
   success: boolean;
   data: AuthorizedUser;
 }
-export const ApiResponseAuthorizedUser = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseAuthorizedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: AuthorizedUser,
@@ -142,7 +122,7 @@ export interface CreateApiTokenRequest {
   /** Token description */
   description?: string;
 }
-export const CreateApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -161,7 +141,7 @@ export interface ApiResponseTokenCreatedData {
   /** Full token value (only shown at creation) */
   token?: string;
 }
-export const ApiResponseTokenCreatedData = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseTokenCreatedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -179,7 +159,7 @@ export interface ApiResponseTokenCreated {
   success: boolean;
   data: ApiResponseTokenCreatedData;
 }
-export const ApiResponseTokenCreated = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseTokenCreated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: ApiResponseTokenCreatedData,
@@ -188,8 +168,6 @@ export const ApiResponseTokenCreated = /*@__PURE__*/ S.suspend(() =>
 
 /** Mount type identifier */
 export type S3MountType = "s3";
-export const S3MountType = S.String;
-
 /** Mount configuration for Amazon S3 buckets */
 export interface S3Mount {
   /** Mount type identifier */
@@ -205,21 +183,8 @@ export interface S3Mount {
   /** Prefix within the bucket */
   bucketPrefix?: string;
 }
-export const S3Mount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S3MountType,
-    bucketName: S.String,
-    accessKeyId: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    secretAccessKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    sessionToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    bucketPrefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "S3Mount" }) as any as S.Schema<S3Mount>;
-
 /** Mount type identifier */
 export type GCSMountType = "gcs";
-export const GCSMountType = S.String;
-
 /** Mount configuration for Google Cloud Storage buckets */
 export interface GCSMount {
   /** Mount type identifier */
@@ -233,20 +198,8 @@ export interface GCSMount {
   /** Prefix within the bucket (optional) */
   bucketPrefix?: string;
 }
-export const GCSMount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GCSMountType,
-    bucketName: S.String,
-    accessKeyId: S.String.pipe(T.SensitiveValue({})),
-    secretAccessKey: S.String.pipe(T.SensitiveValue({})),
-    bucketPrefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "GCSMount" }) as any as S.Schema<GCSMount>;
-
 /** Mount type identifier */
 export type R2MountType = "r2";
-export const R2MountType = S.String;
-
 /** Mount configuration for Cloudflare R2 buckets */
 export interface R2Mount {
   /** Mount type identifier */
@@ -262,21 +215,8 @@ export interface R2Mount {
   /** Prefix within the bucket (optional) */
   bucketPrefix?: string;
 }
-export const R2Mount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: R2MountType,
-    bucketName: S.String,
-    bucketEndpoint: S.String,
-    accessKeyId: S.String.pipe(T.SensitiveValue({})),
-    secretAccessKey: S.String.pipe(T.SensitiveValue({})),
-    bucketPrefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "R2Mount" }) as any as S.Schema<R2Mount>;
-
 /** Mount type identifier */
 export type S3CompatibleMountType = "s3-compatible";
-export const S3CompatibleMountType = S.String;
-
 /** Mount configuration for S3-compatible storage (MinIO, Backblaze B2, etc.) */
 export interface S3CompatibleMount {
   /** Mount type identifier */
@@ -292,12 +232,8 @@ export interface S3CompatibleMount {
   /** Prefix within the bucket (optional) */
   bucketPrefix?: string;
 }
-export const S3CompatibleMount = R2Mount as any as S.Schema<S3CompatibleMount>;
-
 /** Mount type identifier */
 export type AzureBlobMountType = "azure-blob";
-export const AzureBlobMountType = S.String;
-
 /** Mount configuration for Azure Blob Storage containers */
 export interface AzureBlobMount {
   /** Mount type identifier */
@@ -317,31 +253,18 @@ export interface AzureBlobMount {
   /** Prefix within the container */
   bucketPrefix?: string;
 }
-export const AzureBlobMount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AzureBlobMountType,
-    containerName: S.String,
-    endpoint: S.optional(S.String),
-    storageAccountName: S.optional(S.String),
-    tenantId: S.String,
-    clientId: S.String,
-    clientSecret: S.String.pipe(T.SensitiveValue({})),
-    bucketPrefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "AzureBlobMount" }) as any as S.Schema<AzureBlobMount>;
-
 export type MountConfig = S3Mount | GCSMount | R2Mount | S3CompatibleMount | AzureBlobMount;
-export const MountConfig = S.Unknown as any as S.Schema<MountConfig>;
+const MountConfig = S.Unknown as any as S.Schema<MountConfig>;
 
 /** Storage mount to attach. Omit for archil-managed storage. */
 export type CreateDiskRequestMountsList = Array<MountConfig>;
-export const CreateDiskRequestMountsList = /*@__PURE__*/ S.Array(
+const CreateDiskRequestMountsList = /*@__PURE__*/ S.Array(
   MountConfig,
 ) as any as S.Schema<CreateDiskRequestMountsList>;
 
 /** Deprecated. Use AddDiskUser after creation instead. When provided, suppresses the default auto-generated token user. */
 export type CreateDiskRequestAuthMethodsList = Array<DiskUser>;
-export const CreateDiskRequestAuthMethodsList = /*@__PURE__*/ S.Array(
+const CreateDiskRequestAuthMethodsList = /*@__PURE__*/ S.Array(
   DiskUser,
 ) as any as S.Schema<CreateDiskRequestAuthMethodsList>;
 
@@ -353,7 +276,7 @@ export interface CreateDiskRequest {
   /** Deprecated. Use AddDiskUser after creation instead. When provided, suppresses the default auto-generated token user. */
   authMethods?: CreateDiskRequestAuthMethodsList;
 }
-export const CreateDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     mounts: S.optional(CreateDiskRequestMountsList),
@@ -362,7 +285,7 @@ export const CreateDiskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDiskRequest" }) as any as S.Schema<CreateDiskRequest>;
 
 export type ApiResponseCreateDiskDataAuthorizedUsersList = Array<AuthorizedUser>;
-export const ApiResponseCreateDiskDataAuthorizedUsersList = /*@__PURE__*/ S.Array(
+const ApiResponseCreateDiskDataAuthorizedUsersList = /*@__PURE__*/ S.Array(
   AuthorizedUser,
 ) as any as S.Schema<ApiResponseCreateDiskDataAuthorizedUsersList>;
 
@@ -370,7 +293,7 @@ export interface ApiResponseCreateDiskData {
   diskId?: string;
   authorizedUsers?: ApiResponseCreateDiskDataAuthorizedUsersList;
 }
-export const ApiResponseCreateDiskData = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseCreateDiskData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskId: S.optional(S.String),
     authorizedUsers: S.optional(ApiResponseCreateDiskDataAuthorizedUsersList),
@@ -383,7 +306,7 @@ export interface ApiResponseCreateDisk {
   success: boolean;
   data: ApiResponseCreateDiskData;
 }
-export const ApiResponseCreateDisk = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseCreateDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: ApiResponseCreateDiskData,
@@ -392,36 +315,27 @@ export const ApiResponseCreateDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** TCP ports to expose publicly when the sandbox is created. */
 export type CreateSandboxRequestPortsList = Array<number>;
-export const CreateSandboxRequestPortsList = /*@__PURE__*/ S.Array(
+const CreateSandboxRequestPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateSandboxRequestPortsList>;
 
 /** Environment variables applied to every process */
 export type CreateSandboxRequestEnvMap = { [key: string]: string | undefined };
-export const CreateSandboxRequestEnvMap = /*@__PURE__*/ S.Record(
+const CreateSandboxRequestEnvMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateSandboxRequestEnvMap>;
 
 export type SandboxNetworkAction = "allow" | "deny";
-export const SandboxNetworkAction = S.String;
+const SandboxNetworkAction = S.String;
 
 /** Outbound HTTPS request headers to set, overwriting values supplied by the sandbox. */
 export type SandboxEgressTransformHeadersMap = { [key: string]: string | undefined };
-export const SandboxEgressTransformHeadersMap =
-  CreateSandboxRequestEnvMap as any as S.Schema<SandboxEgressTransformHeadersMap>;
-
 /** Optional outbound HTTPS request transformations. An omitted or empty transform leaves the rule as an ordinary allow without request mutations. */
 export interface SandboxEgressTransform {
   /** Outbound HTTPS request headers to set, overwriting values supplied by the sandbox. */
   headers?: SandboxEgressTransformHeadersMap;
 }
-export const SandboxEgressTransform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    headers: S.optional(SandboxEgressTransformHeadersMap),
-  }),
-).annotate({ identifier: "SandboxEgressTransform" }) as any as S.Schema<SandboxEgressTransform>;
-
 export interface SandboxEgressRule {
   /** Target allowed by this rule. Effective transformations and forwarding require an exact or wildcard lowercase domain. */
   target: string;
@@ -429,33 +343,24 @@ export interface SandboxEgressRule {
   /** Absolute public HTTPS URL that receives this rule's permitted HTTP and HTTPS requests instead of their original upstream. The original path is appended to this URL, and Archil overwrites the archil-forwarded-host, archil-forwarded-scheme, archil-forwarded-port, archil-forwarded-path, and archil-sandbox-id headers with request metadata. A transform on the same rule is applied before forwarding, so the forwarded request carries the transformed headers. URLs containing credentials, a query, or a fragment are rejected. */
   forward_url?: string;
 }
-export const SandboxEgressRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.String,
-    transform: S.optional(SandboxEgressTransform),
-    forward_url: S.optional(S.String),
-  }),
-).annotate({ identifier: "SandboxEgressRule" }) as any as S.Schema<SandboxEgressRule>;
-
 export type SandboxEgressPolicyAllowItem = string | SandboxEgressRule;
-export const SandboxEgressPolicyAllowItem =
-  S.Unknown as any as S.Schema<SandboxEgressPolicyAllowItem>;
+const SandboxEgressPolicyAllowItem = S.Unknown as any as S.Schema<SandboxEgressPolicyAllowItem>;
 
 /** Allowed IPv4 addresses, CIDR ranges, exact domains, wildcard domains beginning with `*.`, or target objects with optional outbound HTTPS request transformations. A wildcard matches subdomains but not the apex domain, including when applying transformations. */
 export type SandboxEgressPolicyAllowList = Array<SandboxEgressPolicyAllowItem>;
-export const SandboxEgressPolicyAllowList = /*@__PURE__*/ S.Array(
+const SandboxEgressPolicyAllowList = /*@__PURE__*/ S.Array(
   SandboxEgressPolicyAllowItem,
 ) as any as S.Schema<SandboxEgressPolicyAllowList>;
 
 /** Denied IPv4 addresses, CIDR ranges, exact domains, or wildcard domains beginning with `*.`. A wildcard matches subdomains but not the apex domain. */
 export type SandboxEgressPolicyDenyList = Array<string>;
-export const SandboxEgressPolicyDenyList = /*@__PURE__*/ S.Array(
+const SandboxEgressPolicyDenyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SandboxEgressPolicyDenyList>;
 
 /** Optional hosts whose HTTP(S) requests should finish before pausing, regardless of URL path. Pausing gates new matching requests and waits up to ten minutes by default for active responses, including streams, before taking a snapshot. Errors stop counting, and expiry proceeds with the snapshot. This does not limit requests during normal operation. Selectors do not grant network access. Matching uses the original request host before transformations or forwarding. Only TCP ports 80 and 443 are supported. Connections may need to be retried after resume. */
 export type SandboxEgressPolicyDrainOnPauseList = Array<string>;
-export const SandboxEgressPolicyDrainOnPauseList =
+const SandboxEgressPolicyDrainOnPauseList =
   SandboxEgressPolicyDenyList as any as S.Schema<SandboxEgressPolicyDrainOnPauseList>;
 
 /** Deny targets take precedence when an address or domain matches both lists. When domain rules or drain selectors are present, TCP ports 80 and 443 are restricted to HTTP/1.1 or HTTP/2. Plaintext HTTP authority is enforced on port 80, but requests matching a transformation rule are rejected unless the rule also forwards. Port 443 is TLS-terminated; both TLS SNI and HTTP authority are evaluated, and the HTTP authority selects the upstream, any request transformations, and any request forwarding. DNS to the sandbox's configured resolvers is allowed and UDP port 443 is denied. */
@@ -468,7 +373,7 @@ export interface SandboxEgressPolicy {
   /** Optional hosts whose HTTP(S) requests should finish before pausing, regardless of URL path. Pausing gates new matching requests and waits up to ten minutes by default for active responses, including streams, before taking a snapshot. Errors stop counting, and expiry proceeds with the snapshot. This does not limit requests during normal operation. Selectors do not grant network access. Matching uses the original request host before transformations or forwarding. Only TCP ports 80 and 443 are supported. Connections may need to be retried after resume. */
   drain_on_pause?: SandboxEgressPolicyDrainOnPauseList;
 }
-export const SandboxEgressPolicy = /*@__PURE__*/ S.suspend(() =>
+const SandboxEgressPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: SandboxNetworkAction,
     allow: S.optional(SandboxEgressPolicyAllowList),
@@ -481,7 +386,7 @@ export const SandboxEgressPolicy = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxNetwork {
   egress?: SandboxEgressPolicy;
 }
-export const SandboxNetwork = /*@__PURE__*/ S.suspend(() =>
+const SandboxNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     egress: S.optional(SandboxEgressPolicy),
   }),
@@ -510,7 +415,7 @@ export interface CreateSandboxRequest {
   /** Maximum number of concurrently attached process sessions. Detached processes and one-shot process controls do not count. */
   max_concurrent_execs?: number;
 }
-export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wait: S.optional(S.Boolean.pipe(T.Query())),
     name: S.optional(S.String),
@@ -528,7 +433,7 @@ export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSandboxRequest" }) as any as S.Schema<CreateSandboxRequest>;
 
 export interface CreateSandboxResponse {}
-export const CreateSandboxResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateSandboxResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateSandboxResponse",
 }) as any as S.Schema<CreateSandboxResponse>;
 
@@ -536,7 +441,7 @@ export interface CreateSandboxConnectionRequest {
   /** Sandbox UUID */
   sid: string;
 }
-export const CreateSandboxConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/sandboxes/{sid}/connections", code: 200 })),
@@ -548,7 +453,7 @@ export interface SandboxConnection {
   url: string;
   expires_at: string;
 }
-export const SandboxConnection = /*@__PURE__*/ S.suspend(() =>
+const SandboxConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     expires_at: S.String,
@@ -559,7 +464,7 @@ export interface ApiResponseSandboxConnection {
   success: boolean;
   data: SandboxConnection;
 }
-export const ApiResponseSandboxConnection = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandboxConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: SandboxConnection,
@@ -575,7 +480,7 @@ export interface CreateSandboxPortTokenRequest {
   /** Token lifetime as a Go duration string (for example, "4m", "1h", or "24h"). Maximum 365 days ("8760h"). Omit for no expiration. */
   ttl?: string;
 }
-export const CreateSandboxPortTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxPortTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     port: S.Number,
@@ -597,7 +502,7 @@ export interface CreatedSandboxPortToken {
   /** Raw token returned only when the token is created. */
   token: string;
 }
-export const CreatedSandboxPortToken = /*@__PURE__*/ S.suspend(() =>
+const CreatedSandboxPortToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     port: S.Number,
@@ -612,7 +517,7 @@ export interface ApiResponseCreatedSandboxPortToken {
   success: boolean;
   data: CreatedSandboxPortToken;
 }
-export const ApiResponseCreatedSandboxPortToken = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseCreatedSandboxPortToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: CreatedSandboxPortToken,
@@ -629,7 +534,7 @@ export interface CreateShareUrlRequest {
   /** URL lifetime in seconds. Any integer from 1 to 604800 (7 days). Defaults to 86400 (24 hours). */
   expiresIn?: number;
 }
-export const CreateShareUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateShareUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     key: S.String,
@@ -643,7 +548,7 @@ export interface ApiResponseShareUrlData {
   /** URL lifetime in seconds. */
   expiresIn: number;
 }
-export const ApiResponseShareUrlData = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseShareUrlData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     expiresIn: S.Number,
@@ -654,7 +559,7 @@ export interface ApiResponseShareUrl {
   success: boolean;
   data: ApiResponseShareUrlData;
 }
-export const ApiResponseShareUrl = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseShareUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: ApiResponseShareUrlData,
@@ -665,7 +570,7 @@ export interface DeleteDiskRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
 }
-export const DeleteDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/disks/{id}", code: 200 })),
@@ -674,7 +579,7 @@ export const DeleteDiskRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiResponseEmpty {
   success: boolean;
 }
-export const ApiResponseEmpty = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseEmpty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),
@@ -684,22 +589,21 @@ export interface DeleteSandboxRequest {
   /** Sandbox UUID */
   sid: string;
 }
-export const DeleteSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/sandboxes/{sid}", code: 200 })),
 ).annotate({ identifier: "DeleteSandboxRequest" }) as any as S.Schema<DeleteSandboxRequest>;
 
 export interface DeleteSandboxResponse {}
-export const DeleteSandboxResponse =
-  CreateSandboxResponse as any as S.Schema<DeleteSandboxResponse>;
+const DeleteSandboxResponse = CreateSandboxResponse as any as S.Schema<DeleteSandboxResponse>;
 
 export interface DeleteSandboxPortRequest {
   /** Sandbox UUID */
   sid: string;
   port: number;
 }
-export const DeleteSandboxPortRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSandboxPortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     port: S.Number.pipe(T.Label()),
@@ -707,7 +611,7 @@ export const DeleteSandboxPortRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSandboxPortRequest" }) as any as S.Schema<DeleteSandboxPortRequest>;
 
 export interface DeleteSandboxPortResponse {}
-export const DeleteSandboxPortResponse =
+const DeleteSandboxPortResponse =
   CreateSandboxResponse as any as S.Schema<DeleteSandboxPortResponse>;
 
 export interface DeleteSandboxPortTokenRequest {
@@ -715,7 +619,7 @@ export interface DeleteSandboxPortTokenRequest {
   sid: string;
   token_id: string;
 }
-export const DeleteSandboxPortTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSandboxPortTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     token_id: S.String.pipe(T.Label()),
@@ -727,14 +631,14 @@ export const DeleteSandboxPortTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSandboxPortTokenRequest>;
 
 export interface DeleteSandboxPortTokenResponse {}
-export const DeleteSandboxPortTokenResponse =
+const DeleteSandboxPortTokenResponse =
   CreateSandboxResponse as any as S.Schema<DeleteSandboxPortTokenResponse>;
 
 export interface DeleteTokenRequest {
   /** The token ID (hash) */
   id: string;
 }
-export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/tokens/{id}", code: 200 })),
@@ -743,7 +647,7 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApiResponseMessageData {
   message?: string;
 }
-export const ApiResponseMessageData = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -753,7 +657,7 @@ export interface ApiResponseMessage {
   success: boolean;
   data: ApiResponseMessageData;
 }
-export const ApiResponseMessage = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: ApiResponseMessageData,
@@ -768,20 +672,12 @@ export interface ExecMount {
   /** When true, the disk is mounted read-only inside the container. Writes against the mount fail with EROFS. */
   readOnly?: boolean;
 }
-export const ExecMount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disk: S.String,
-    subdirectory: S.optional(S.String),
-    readOnly: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ExecMount" }) as any as S.Schema<ExecMount>;
-
 export type ExecRequestDisksValue = string | ExecMount;
-export const ExecRequestDisksValue = S.Unknown as any as S.Schema<ExecRequestDisksValue>;
+const ExecRequestDisksValue = S.Unknown as any as S.Schema<ExecRequestDisksValue>;
 
 /** Map of relative path under `/mnt/archil` to the disk to mount there. At least one entry is required. Relative paths must be non-empty, non-absolute, and contain no `.` or `..` segments. Each value is either a plain disk ID string (mounts the disk's root, read-write) or an object that additionally selects a subdirectory of the disk and/or marks the mount as read-only. */
 export type ExecRequestDisksMap = { [key: string]: ExecRequestDisksValue | undefined };
-export const ExecRequestDisksMap = /*@__PURE__*/ S.Record(
+const ExecRequestDisksMap = /*@__PURE__*/ S.Record(
   S.String,
   ExecRequestDisksValue,
 ) as any as S.Schema<ExecRequestDisksMap>;
@@ -792,7 +688,7 @@ export interface ExecRequest {
   /** Shell command to execute inside the container */
   command: string;
 }
-export const ExecRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disks: ExecRequestDisksMap,
     command: S.String,
@@ -808,7 +704,7 @@ export interface ExecTiming {
   /** Time the user's command itself ran, measured by the runtime. */
   executeMs: number;
 }
-export const ExecTiming = /*@__PURE__*/ S.suspend(() =>
+const ExecTiming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalMs: S.Number,
     queueMs: S.Number,
@@ -825,7 +721,7 @@ export interface ExecDiskResult {
   stderr: string;
   timing: ExecTiming;
 }
-export const ExecDiskResult = /*@__PURE__*/ S.suspend(() =>
+const ExecDiskResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exitCode: S.Number,
     stdout: S.String,
@@ -838,7 +734,7 @@ export interface ApiResponseExec {
   success: boolean;
   data: ExecDiskResult;
 }
-export const ApiResponseExec = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseExec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: ExecDiskResult,
@@ -851,7 +747,7 @@ export interface ExecDiskRequest {
   /** Shell command to execute inside the container */
   command: string;
 }
-export const ExecDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     command: S.String,
@@ -862,14 +758,14 @@ export interface ApiResponseExecDisk {
   success: boolean;
   data: ExecDiskResult;
 }
-export const ApiResponseExecDisk = ApiResponseExec as any as S.Schema<ApiResponseExecDisk>;
+const ApiResponseExecDisk = ApiResponseExec as any as S.Schema<ApiResponseExecDisk>;
 
 export interface ExposeSandboxPortRequest {
   /** Sandbox UUID */
   sid: string;
   port: number;
 }
-export const ExposeSandboxPortRequest = /*@__PURE__*/ S.suspend(() =>
+const ExposeSandboxPortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     port: S.Number.pipe(T.Label()),
@@ -880,7 +776,7 @@ export interface SandboxPort {
   port: number;
   hostname: string;
 }
-export const SandboxPort = /*@__PURE__*/ S.suspend(() =>
+const SandboxPort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.Number,
     hostname: S.String,
@@ -891,7 +787,7 @@ export interface ApiResponseSandboxPort {
   success: boolean;
   data: SandboxPort;
 }
-export const ApiResponseSandboxPort = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandboxPort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: SandboxPort,
@@ -908,7 +804,7 @@ export interface ForkSandboxRequest {
   /** Fork this checkpoint of the source, as returned by pause, stop, or describe, instead of the source's live state. The source is neither paused nor resumed. Only the current session's checkpoint and the one before it are accepted; an uncommitted or superseded checkpoint is rejected with 409. */
   checkpoint?: string;
 }
-export const ForkSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ForkSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     wait: S.optional(S.Boolean.pipe(T.Query())),
@@ -918,13 +814,13 @@ export const ForkSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForkSandboxRequest" }) as any as S.Schema<ForkSandboxRequest>;
 
 export interface ForkSandboxResponse {}
-export const ForkSandboxResponse = CreateSandboxResponse as any as S.Schema<ForkSandboxResponse>;
+const ForkSandboxResponse = CreateSandboxResponse as any as S.Schema<ForkSandboxResponse>;
 
 export interface GetDiskRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
   id: string;
 }
-export const GetDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/disks/{id}", code: 200 })),
@@ -932,15 +828,15 @@ export const GetDiskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Disk status */
 export type DiskResponseStatus = "available" | "creating" | "deleting" | "deleted" | "failed";
-export const DiskResponseStatus = S.String;
+const DiskResponseStatus = S.String;
 
 /** Storage backend type */
 export type MountResponseType = "s3" | "gcs" | "r2" | "s3-compatible" | "azure-blob";
-export const MountResponseType = S.String;
+const MountResponseType = S.String;
 
 /** Access mode */
 export type MountResponseAccessMode = "rw" | "ro";
-export const MountResponseAccessMode = S.String;
+const MountResponseAccessMode = S.String;
 
 /** Mount configuration details (secrets omitted) */
 export interface MountConfigResponse {
@@ -953,7 +849,7 @@ export interface MountConfigResponse {
   /** Session identifier for IAM-authorized mounts */
   sessionId?: string;
 }
-export const MountConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const MountConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
     bucketEndpoint: S.optional(S.String),
@@ -964,11 +860,11 @@ export const MountConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Current connection status */
 export type MountResponseConnectionStatus = "connected" | "disconnected";
-export const MountResponseConnectionStatus = S.String;
+const MountResponseConnectionStatus = S.String;
 
 /** How the mount authenticates to the storage backend */
 export type MountResponseAuthorizationType = "iam" | "accessKeys" | "oauth";
-export const MountResponseAuthorizationType = S.String;
+const MountResponseAuthorizationType = S.String;
 
 export interface MountResponse {
   /** Mount identifier */
@@ -989,7 +885,7 @@ export interface MountResponse {
   /** How the mount authenticates to the storage backend */
   authorizationType?: MountResponseAuthorizationType;
 }
-export const MountResponse = /*@__PURE__*/ S.suspend(() =>
+const MountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(MountResponseType),
@@ -1004,7 +900,7 @@ export const MountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MountResponse" }) as any as S.Schema<MountResponse>;
 
 export type DiskResponseMountsList = Array<MountResponse>;
-export const DiskResponseMountsList = /*@__PURE__*/ S.Array(
+const DiskResponseMountsList = /*@__PURE__*/ S.Array(
   MountResponse,
 ) as any as S.Schema<DiskResponseMountsList>;
 
@@ -1016,7 +912,7 @@ export interface DiskMetrics {
   /** Average response time with unit (e.g., "45ms") */
   avgResponseTime?: string;
 }
-export const DiskMetrics = /*@__PURE__*/ S.suspend(() =>
+const DiskMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataTransfer: S.optional(S.String),
     requests: S.optional(S.String),
@@ -1029,7 +925,7 @@ export interface ConnectedClient {
   ipAddress?: string;
   connectedAt?: string;
 }
-export const ConnectedClient = /*@__PURE__*/ S.suspend(() =>
+const ConnectedClient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     ipAddress: S.optional(S.String),
@@ -1038,12 +934,12 @@ export const ConnectedClient = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectedClient" }) as any as S.Schema<ConnectedClient>;
 
 export type DiskResponseConnectedClientsList = Array<ConnectedClient>;
-export const DiskResponseConnectedClientsList = /*@__PURE__*/ S.Array(
+const DiskResponseConnectedClientsList = /*@__PURE__*/ S.Array(
   ConnectedClient,
 ) as any as S.Schema<DiskResponseConnectedClientsList>;
 
 export type DiskResponseAuthorizedUsersList = Array<AuthorizedUser>;
-export const DiskResponseAuthorizedUsersList =
+const DiskResponseAuthorizedUsersList =
   ApiResponseCreateDiskDataAuthorizedUsersList as any as S.Schema<DiskResponseAuthorizedUsersList>;
 
 export interface DiskResponse {
@@ -1074,7 +970,7 @@ export interface DiskResponse {
   connectedClients?: DiskResponseConnectedClientsList;
   authorizedUsers?: DiskResponseAuthorizedUsersList;
 }
-export const DiskResponse = /*@__PURE__*/ S.suspend(() =>
+const DiskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1098,7 +994,7 @@ export interface ApiResponseDisk {
   success: boolean;
   data: DiskResponse;
 }
-export const ApiResponseDisk = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: DiskResponse,
@@ -1109,7 +1005,7 @@ export interface GetSandboxRequest {
   /** Sandbox UUID */
   sid: string;
 }
-export const GetSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/sandboxes/{sid}", code: 200 })),
@@ -1126,18 +1022,16 @@ export type SandboxState =
   | "failed"
   | "deleting"
   | "deleted";
-export const SandboxState = S.String;
+const SandboxState = S.String;
 
 /** Sandbox CPU architecture. */
 export type SandboxPlatform = "arm64" | "amd64";
-export const SandboxPlatform = S.String;
+const SandboxPlatform = S.String;
 
 export type SandboxEndpoint = SandboxPort;
-export const SandboxEndpoint = SandboxPort;
-
 /** Public hostnames published by enabled sandbox services. */
 export type SandboxEndpointsList = Array<SandboxPort>;
-export const SandboxEndpointsList = /*@__PURE__*/ S.Array(
+const SandboxEndpointsList = /*@__PURE__*/ S.Array(
   SandboxPort,
 ) as any as S.Schema<SandboxEndpointsList>;
 
@@ -1170,7 +1064,7 @@ export interface Sandbox {
   /** Disk checkpoint the current session leaves behind. Present while pausing, paused, stopping, or stopped, and committed once the sandbox is paused or stopped. Pass it to the fork endpoint to fork exactly this state. */
   checkpoint?: string;
 }
-export const Sandbox = /*@__PURE__*/ S.suspend(() =>
+const Sandbox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandbox_id: S.String,
     name: S.String,
@@ -1197,7 +1091,7 @@ export interface ApiResponseSandbox {
   success: boolean;
   data: Sandbox;
 }
-export const ApiResponseSandbox = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandbox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: Sandbox,
@@ -1208,7 +1102,7 @@ export interface GetSandboxNetworkRequest {
   /** Sandbox UUID */
   sid: string;
 }
-export const GetSandboxNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/sandboxes/{sid}/network", code: 200 })),
@@ -1218,7 +1112,7 @@ export interface ApiResponseSandboxNetwork {
   success: boolean;
   data: SandboxNetwork;
 }
-export const ApiResponseSandboxNetwork = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandboxNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: SandboxNetwork,
@@ -1232,7 +1126,7 @@ export interface GetSandboxPortTokenRequest {
   sid: string;
   token_id: string;
 }
-export const GetSandboxPortTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxPortTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     token_id: S.String.pipe(T.Label()),
@@ -1249,7 +1143,7 @@ export interface SandboxPortToken {
   /** When the token expires. Absent for a non-expiring token. */
   expires_at?: string;
 }
-export const SandboxPortToken = /*@__PURE__*/ S.suspend(() =>
+const SandboxPortToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     port: S.Number,
@@ -1262,7 +1156,7 @@ export interface ApiResponseSandboxPortToken {
   success: boolean;
   data: SandboxPortToken;
 }
-export const ApiResponseSandboxPortToken = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandboxPortToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: SandboxPortToken,
@@ -1287,7 +1181,7 @@ export interface GrepDiskRequest {
   /** Stop scanning once the aggregator has this many matches. Returned matches are a sample of whichever workers reported first, not the lexicographically first N. */
   maxResults?: number;
 }
-export const GrepDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const GrepDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     directory: S.String,
@@ -1307,7 +1201,7 @@ export interface GrepMatch {
   /** The matching line. */
   text: string;
 }
-export const GrepMatch = /*@__PURE__*/ S.suspend(() =>
+const GrepMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
     line: S.Number,
@@ -1316,7 +1210,7 @@ export const GrepMatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GrepMatch" }) as any as S.Schema<GrepMatch>;
 
 export type GrepDiskResultMatchesList = Array<GrepMatch>;
-export const GrepDiskResultMatchesList = /*@__PURE__*/ S.Array(
+const GrepDiskResultMatchesList = /*@__PURE__*/ S.Array(
   GrepMatch,
 ) as any as S.Schema<GrepDiskResultMatchesList>;
 
@@ -1327,7 +1221,7 @@ export type GrepStoppedReason =
   | "max_results"
   | "deadline"
   | "list_failed";
-export const GrepStoppedReason = S.String;
+const GrepStoppedReason = S.String;
 
 export interface GrepDiskResult {
   matches: GrepDiskResultMatchesList;
@@ -1345,7 +1239,7 @@ export interface GrepDiskResult {
   /** Wall-clock time spent matching, from the first grep container being dispatched to the last container reporting results. 0 if no batches ran. */
   grepMs: number;
 }
-export const GrepDiskResult = /*@__PURE__*/ S.suspend(() =>
+const GrepDiskResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: GrepDiskResultMatchesList,
     stoppedReason: GrepStoppedReason,
@@ -1362,7 +1256,7 @@ export interface ApiResponseGrepDisk {
   success: boolean;
   data: GrepDiskResult;
 }
-export const ApiResponseGrepDisk = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseGrepDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: GrepDiskResult,
@@ -1375,7 +1269,7 @@ export interface ListApiTokensRequest {
   /** Pagination cursor from a previous response */
   cursor?: string;
 }
-export const ListApiTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1392,7 +1286,7 @@ export interface ApiTokenResponse {
   createdAt?: string;
   lastUsedAt?: string;
 }
-export const ApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1404,14 +1298,14 @@ export const ApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiTokenResponse" }) as any as S.Schema<ApiTokenResponse>;
 
 export type ApiResponseTokenListDataTokensList = Array<ApiTokenResponse>;
-export const ApiResponseTokenListDataTokensList = /*@__PURE__*/ S.Array(
+const ApiResponseTokenListDataTokensList = /*@__PURE__*/ S.Array(
   ApiTokenResponse,
 ) as any as S.Schema<ApiResponseTokenListDataTokensList>;
 
 export interface ApiResponseTokenListData {
   tokens?: ApiResponseTokenListDataTokensList;
 }
-export const ApiResponseTokenListData = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseTokenListData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokens: S.optional(ApiResponseTokenListDataTokensList),
   }),
@@ -1421,7 +1315,7 @@ export interface ApiResponseTokenList {
   success: boolean;
   data: ApiResponseTokenListData;
 }
-export const ApiResponseTokenList = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseTokenList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: ApiResponseTokenListData,
@@ -1436,7 +1330,7 @@ export interface ListDisksRequest {
   /** Filter disks by exact name match. */
   name?: string;
 }
-export const ListDisksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDisksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1445,7 +1339,7 @@ export const ListDisksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDisksRequest" }) as any as S.Schema<ListDisksRequest>;
 
 export type ApiResponseDiskListDataList = Array<DiskResponse>;
-export const ApiResponseDiskListDataList = /*@__PURE__*/ S.Array(
+const ApiResponseDiskListDataList = /*@__PURE__*/ S.Array(
   DiskResponse,
 ) as any as S.Schema<ApiResponseDiskListDataList>;
 
@@ -1454,7 +1348,7 @@ export interface ApiResponseDiskList {
   success: boolean;
   data: ApiResponseDiskListDataList;
 }
-export const ApiResponseDiskList = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseDiskList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: ApiResponseDiskListDataList,
@@ -1465,21 +1359,21 @@ export interface ListSandboxesRequest {
   /** Only sandboxes that mount this disk */
   filesystem?: string;
 }
-export const ListSandboxesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filesystem: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/sandboxes", code: 200 })),
 ).annotate({ identifier: "ListSandboxesRequest" }) as any as S.Schema<ListSandboxesRequest>;
 
 export type ApiResponseSandboxListDataSandboxesList = Array<Sandbox>;
-export const ApiResponseSandboxListDataSandboxesList = /*@__PURE__*/ S.Array(
+const ApiResponseSandboxListDataSandboxesList = /*@__PURE__*/ S.Array(
   Sandbox,
 ) as any as S.Schema<ApiResponseSandboxListDataSandboxesList>;
 
 export interface ApiResponseSandboxListData {
   sandboxes?: ApiResponseSandboxListDataSandboxesList;
 }
-export const ApiResponseSandboxListData = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandboxListData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxes: S.optional(ApiResponseSandboxListDataSandboxesList),
   }),
@@ -1491,7 +1385,7 @@ export interface ApiResponseSandboxList {
   success: boolean;
   data: ApiResponseSandboxListData;
 }
-export const ApiResponseSandboxList = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandboxList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: ApiResponseSandboxListData,
@@ -1502,20 +1396,19 @@ export interface ListSandboxPortsRequest {
   /** Sandbox UUID */
   sid: string;
 }
-export const ListSandboxPortsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxPortsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/sandboxes/{sid}/ports", code: 200 })),
 ).annotate({ identifier: "ListSandboxPortsRequest" }) as any as S.Schema<ListSandboxPortsRequest>;
 
 export type SandboxPortListPortsList = Array<SandboxPort>;
-export const SandboxPortListPortsList =
-  SandboxEndpointsList as any as S.Schema<SandboxPortListPortsList>;
+const SandboxPortListPortsList = SandboxEndpointsList as any as S.Schema<SandboxPortListPortsList>;
 
 export interface SandboxPortList {
   ports: SandboxPortListPortsList;
 }
-export const SandboxPortList = /*@__PURE__*/ S.suspend(() =>
+const SandboxPortList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: SandboxPortListPortsList,
   }),
@@ -1525,7 +1418,7 @@ export interface ApiResponseSandboxPortList {
   success: boolean;
   data: SandboxPortList;
 }
-export const ApiResponseSandboxPortList = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandboxPortList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: SandboxPortList,
@@ -1542,7 +1435,7 @@ export interface ListSandboxPortTokensRequest {
   /** Pagination cursor from a previous response */
   cursor?: string;
 }
-export const ListSandboxPortTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxPortTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1553,14 +1446,14 @@ export const ListSandboxPortTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSandboxPortTokensRequest>;
 
 export type SandboxPortTokenListTokensList = Array<SandboxPortToken>;
-export const SandboxPortTokenListTokensList = /*@__PURE__*/ S.Array(
+const SandboxPortTokenListTokensList = /*@__PURE__*/ S.Array(
   SandboxPortToken,
 ) as any as S.Schema<SandboxPortTokenListTokensList>;
 
 export interface SandboxPortTokenList {
   tokens: SandboxPortTokenListTokensList;
 }
-export const SandboxPortTokenList = /*@__PURE__*/ S.suspend(() =>
+const SandboxPortTokenList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokens: SandboxPortTokenListTokensList,
   }),
@@ -1572,7 +1465,7 @@ export interface ApiResponseSandboxPortTokenList {
   /** Set when more port tokens remain. */
   nextCursor?: string;
 }
-export const ApiResponseSandboxPortTokenList = /*@__PURE__*/ S.suspend(() =>
+const ApiResponseSandboxPortTokenList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     data: SandboxPortTokenList,
@@ -1586,14 +1479,14 @@ export interface PauseSandboxRequest {
   /** Sandbox UUID */
   sid: string;
 }
-export const PauseSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/sandboxes/{sid}/pause", code: 200 })),
 ).annotate({ identifier: "PauseSandboxRequest" }) as any as S.Schema<PauseSandboxRequest>;
 
 export type RemoveDiskUserRequestUserType = "token" | "awssts";
-export const RemoveDiskUserRequestUserType = S.String;
+const RemoveDiskUserRequestUserType = S.String;
 
 export interface RemoveDiskUserRequest {
   /** Disk ID (format `dsk-{16 hex chars}`) */
@@ -1605,7 +1498,7 @@ export interface RemoveDiskUserRequest {
   /** Use identifier instead. */
   principal?: string;
 }
-export const RemoveDiskUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveDiskUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     userType: RemoveDiskUserRequestUserType.pipe(T.Label()),
@@ -1620,7 +1513,7 @@ export interface ResumeSandboxRequest {
   /** Hold the request for a completed sandbox lifecycle transition */
   wait?: boolean;
 }
-export const ResumeSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     wait: S.optional(S.Boolean.pipe(T.Query())),
@@ -1635,7 +1528,7 @@ export interface SetSandboxTimeoutRequest {
   /** Seconds without a direct process connection before the sandbox pauses. Zero disables idle expiry. */
   idle_ttl_seconds?: number;
 }
-export const SetSandboxTimeoutRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSandboxTimeoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     timeout: S.optional(S.Number),
@@ -1649,7 +1542,7 @@ export interface StartSandboxRequest {
   /** Hold the request for a completed sandbox lifecycle transition */
   wait?: boolean;
 }
-export const StartSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const StartSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     wait: S.optional(S.Boolean.pipe(T.Query())),
@@ -1660,7 +1553,7 @@ export interface StopSandboxRequest {
   /** Sandbox UUID */
   sid: string;
 }
-export const StopSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const StopSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/sandboxes/{sid}/stop", code: 200 })),
@@ -1671,7 +1564,7 @@ export interface UpdateSandboxNetworkRequest {
   sid: string;
   egress?: SandboxEgressPolicy;
 }
-export const UpdateSandboxNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSandboxNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sid: S.String.pipe(T.Label()),
     egress: S.optional(SandboxEgressPolicy),

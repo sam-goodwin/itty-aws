@@ -67,7 +67,7 @@ export interface DeleteGroupItemsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const DeleteGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String.pipe(T.Query())),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -89,13 +89,13 @@ export type ErrorsCodeEnum =
   | "PRECONDITION_FAILED"
   | "INTERNAL_ERROR"
   | "SERVICE_UNAVAILABLE";
-export const ErrorsCodeEnum = S.String;
+const ErrorsCodeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type ErrorProtoLocationTypeEnum = "PATH" | "OTHER" | "PARAMETER";
-export const ErrorProtoLocationTypeEnum = S.String;
+const ErrorProtoLocationTypeEnum = S.String;
 
 /** Describes one specific error. */
 export interface ErrorProto {
@@ -113,7 +113,7 @@ export interface ErrorProto {
   domain?: string;
   locationType?: ErrorProtoLocationTypeEnum | (string & {});
 }
-export const ErrorProto = /*@__PURE__*/ S.suspend(() =>
+const ErrorProto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     argument: S.optional(StringList),
     code: S.optional(S.String),
@@ -126,7 +126,7 @@ export const ErrorProto = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorProto" }) as any as S.Schema<ErrorProto>;
 
 export type ErrorProtoList = Array<ErrorProto>;
-export const ErrorProtoList = /*@__PURE__*/ S.Array(ErrorProto) as any as S.Schema<ErrorProtoList>;
+const ErrorProtoList = /*@__PURE__*/ S.Array(ErrorProto) as any as S.Schema<ErrorProtoList>;
 
 /** Request Error information. The presence of an error field signals that the operation has failed. */
 export interface Errors {
@@ -137,7 +137,7 @@ export interface Errors {
   /** Specific error description and codes */
   error?: ErrorProtoList;
 }
-export const Errors = /*@__PURE__*/ S.suspend(() =>
+const Errors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(ErrorsCodeEnum),
     requestId: S.optional(S.String),
@@ -150,7 +150,7 @@ export interface EmptyResponse {
   /** Apiary error details */
   errors?: Errors;
 }
-export const EmptyResponse = /*@__PURE__*/ S.suspend(() =>
+const EmptyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(Errors),
   }),
@@ -162,7 +162,7 @@ export interface DeleteGroupsRequest {
   /** The `id` parameter specifies the YouTube group ID of the group that is being deleted. */
   id?: string;
 }
-export const DeleteGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     id: S.optional(S.String.pipe(T.Query())),
@@ -181,7 +181,7 @@ export interface GroupItemResource {
   /** Identifies the type of resource being added to the group. Valid values for this property are: * `youtube#channel` * `youtube#playlist` * `youtube#video` * `youtubePartner#asset` */
   kind?: string;
 }
-export const GroupItemResource = /*@__PURE__*/ S.suspend(() =>
+const GroupItemResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     kind: S.optional(S.String),
@@ -203,7 +203,7 @@ export interface GroupItem {
   /** The ID that YouTube uses to uniquely identify the `channel`, `video`, `playlist`, or `asset` resource that is included in the group. Note that this ID refers specifically to the inclusion of that resource in a particular group and is different than the channel ID, video ID, playlist ID, or asset ID that uniquely identifies the resource itself. The `resource.id` property's value specifies the unique channel, video, playlist, or asset ID. */
   id?: string;
 }
-export const GroupItem = /*@__PURE__*/ S.suspend(() =>
+const GroupItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     errors: S.optional(Errors),
@@ -220,7 +220,7 @@ export interface InsertGroupItemsRequest {
   /** Request body */
   body?: GroupItem;
 }
-export const InsertGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     body: S.optional(GroupItem.pipe(T.HttpBody())),
@@ -240,7 +240,7 @@ export interface GroupSnippet {
   /** The date and time that the group was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. */
   publishedAt?: string;
 }
-export const GroupSnippet = /*@__PURE__*/ S.suspend(() =>
+const GroupSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     publishedAt: S.optional(S.String),
@@ -254,7 +254,7 @@ export interface GroupContentDetails {
   /** The number of items in the group. */
   itemCount?: string;
 }
-export const GroupContentDetails = /*@__PURE__*/ S.suspend(() =>
+const GroupContentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemType: S.optional(S.String),
     itemCount: S.optional(S.String),
@@ -276,7 +276,7 @@ export interface Group {
   /** Apiary error details */
   errors?: Errors;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snippet: S.optional(GroupSnippet),
     kind: S.optional(S.String),
@@ -293,7 +293,7 @@ export interface InsertGroupsRequest {
   /** Request body */
   body?: Group;
 }
-export const InsertGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Group.pipe(T.HttpBody())),
@@ -312,7 +312,7 @@ export interface ListGroupItemsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
-export const ListGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String.pipe(T.Query())),
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
@@ -326,7 +326,7 @@ export const ListGroupItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListGroupItemsRequest" }) as any as S.Schema<ListGroupItemsRequest>;
 
 export type GroupItemList = Array<GroupItem>;
-export const GroupItemList = /*@__PURE__*/ S.Array(GroupItem) as any as S.Schema<GroupItemList>;
+const GroupItemList = /*@__PURE__*/ S.Array(GroupItem) as any as S.Schema<GroupItemList>;
 
 /** Response message for GroupsService.ListGroupItems. */
 export interface ListGroupItemsResponse {
@@ -339,7 +339,7 @@ export interface ListGroupItemsResponse {
   /** Apiary error details */
   errors?: Errors;
 }
-export const ListGroupItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(GroupItemList),
     kind: S.optional(S.String),
@@ -358,7 +358,7 @@ export interface ListGroupsRequest {
   /** The `id` parameter specifies a comma-separated list of the YouTube group ID(s) for the resource(s) that are being retrieved. Each group must be owned by the authenticated user. In a `group` resource, the `id` property specifies the group's YouTube group ID. Note that if you do not specify a value for the `id` parameter, then you must set the `mine` parameter to `true`. */
   id?: string;
 }
-export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -374,7 +374,7 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListGroupsRequest" }) as any as S.Schema<ListGroupsRequest>;
 
 export type GroupList = Array<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
+const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
 
 /** Response message for GroupsService.ListGroups. */
 export interface ListGroupsResponse {
@@ -389,7 +389,7 @@ export interface ListGroupsResponse {
   /** Identifies the API resource's type. The value will be `youtube#groupListResponse`. */
   kind?: string;
 }
-export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: GroupList,
     etag: S.optional(S.String),
@@ -423,7 +423,7 @@ export interface QueryReportsRequest {
   /** A comma-separated list of YouTube Analytics metrics, such as `views` or `likes,dislikes`. See the [Available Reports](/youtube/analytics/v2/available_reports) document for a list of the reports that you can retrieve and the metrics available in each report, and see the [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of those metrics. required: true, pattern: [0-9a-zA-Z,]+ */
   metrics?: string;
 }
-export const QueryReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.String.pipe(T.Query())),
     sort: S.optional(S.String.pipe(T.Query())),
@@ -454,7 +454,7 @@ export interface ResultTableColumnHeader {
   /** The type of the data in the column (`STRING`, `INTEGER`, `FLOAT`, etc.). */
   dataType?: string;
 }
-export const ResultTableColumnHeader = /*@__PURE__*/ S.suspend(() =>
+const ResultTableColumnHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     columnType: S.optional(S.String),
@@ -463,17 +463,15 @@ export const ResultTableColumnHeader = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResultTableColumnHeader" }) as any as S.Schema<ResultTableColumnHeader>;
 
 export type ResultTableColumnHeaderList = Array<ResultTableColumnHeader>;
-export const ResultTableColumnHeaderList = /*@__PURE__*/ S.Array(
+const ResultTableColumnHeaderList = /*@__PURE__*/ S.Array(
   ResultTableColumnHeader,
 ) as any as S.Schema<ResultTableColumnHeaderList>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 export type DocumentListList = Array<DocumentList>;
-export const DocumentListList = /*@__PURE__*/ S.Array(
-  DocumentList,
-) as any as S.Schema<DocumentListList>;
+const DocumentListList = /*@__PURE__*/ S.Array(DocumentList) as any as S.Schema<DocumentListList>;
 
 /** Response message for TargetedQueriesService.Query. */
 export interface QueryResponse {
@@ -486,7 +484,7 @@ export interface QueryResponse {
   /** This value specifies the type of data included in the API response. For the query method, the kind property value will be `youtubeAnalytics#resultTable`. */
   kind?: string;
 }
-export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnHeaders: S.optional(ResultTableColumnHeaderList),
     rows: S.optional(DocumentListList),
@@ -501,7 +499,7 @@ export interface UpdateGroupsRequest {
   /** Request body */
   body?: Group;
 }
-export const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Group.pipe(T.HttpBody())),

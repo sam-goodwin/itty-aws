@@ -63,7 +63,7 @@ export class NotFound
 
 /** Request message for ActivateCuratedPackage. */
 export interface ActivateCuratedPackageRequest {}
-export const ActivateCuratedPackageRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ActivateCuratedPackageRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ActivateCuratedPackageRequest",
 }) as any as S.Schema<ActivateCuratedPackageRequest>;
 
@@ -73,7 +73,7 @@ export interface ActivateCuratorsCuratedPackagesRequest {
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-export const ActivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
@@ -89,7 +89,7 @@ export const ActivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>;
 
 export type CuratedPackageStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
-export const CuratedPackageStateEnum = S.String;
+const CuratedPackageStateEnum = S.String;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -100,7 +100,7 @@ export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     units: S.optional(S.String),
     nanos: S.optional(S.Number),
@@ -111,17 +111,17 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   | "OPEN_MEASUREMENT_TYPE_UNSPECIFIED"
   | "OPEN_MEASUREMENT_TYPE_OMID_V1";
-export const PackageTargetingIncludedOpenMeasurementTypesItemEnum = S.String;
+const PackageTargetingIncludedOpenMeasurementTypesItemEnum = S.String;
 
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnumList = Array<
   PackageTargetingIncludedOpenMeasurementTypesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedOpenMeasurementTypesItemEnumList = /*@__PURE__*/ S.Array(
+const PackageTargetingIncludedOpenMeasurementTypesItemEnumList = /*@__PURE__*/ S.Array(
   PackageTargetingIncludedOpenMeasurementTypesItemEnum,
 ) as any as S.Schema<PackageTargetingIncludedOpenMeasurementTypesItemEnumList>;
 
 export type StringList_ = Array<string>;
-export const StringList_ = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList_>;
+const StringList_ = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList_>;
 
 /** Represents the size of the video player that can be targeted. Both width and height are required to be set to non-zero values. */
 export interface VideoPlayerSizeTargeting {
@@ -130,7 +130,7 @@ export interface VideoPlayerSizeTargeting {
   /** Required. The minimum height of the video player in pixels. */
   minimumHeight?: string;
 }
-export const VideoPlayerSizeTargeting = /*@__PURE__*/ S.suspend(() =>
+const VideoPlayerSizeTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumWidth: S.optional(S.String),
     minimumHeight: S.optional(S.String),
@@ -145,32 +145,30 @@ export type PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   | "MAXIMUM_VIDEO_AD_DURATION_SIXTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_NINETY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS";
-export const PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum = S.String;
+const PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum = S.String;
 
 export type PackageVideoTargetingIncludedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "POSITION_TYPE_MIDROLL"
   | "POSITION_TYPE_POSTROLL"
   | "POSITION_TYPE_PREROLL";
-export const PackageVideoTargetingIncludedPositionTypesItemEnum = S.String;
-
 export type PackageVideoTargetingIncludedPositionTypesItemEnumList = Array<
   PackageVideoTargetingIncludedPositionTypesItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedPositionTypesItemEnumList =
+const PackageVideoTargetingIncludedPositionTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedPositionTypesItemEnumList>;
 
 export type PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   | "CONTENT_DELIVERY_METHOD_UNSPECIFIED"
   | "CONTENT_DELIVERY_METHOD_STREAMING"
   | "CONTENT_DELIVERY_METHOD_PROGRESSIVE";
-export const PackageVideoTargetingIncludedContentDeliveryMethodEnum = S.String;
+const PackageVideoTargetingIncludedContentDeliveryMethodEnum = S.String;
 
 export type VideoPlcmtTargetingSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
   | "SELECTION_TYPE_EXCLUDE";
-export const VideoPlcmtTargetingSelectionTypeEnum = S.String;
+const VideoPlcmtTargetingSelectionTypeEnum = S.String;
 
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   | "VIDEO_PLCMT_TYPE_UNSPECIFIED"
@@ -178,12 +176,10 @@ export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   | "ACCOMPANYING_CONTENT"
   | "INTERSTITIAL"
   | "NO_CONTENT";
-export const VideoPlcmtTargetingVideoPlcmtTypesItemEnum = S.String;
-
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnumList = Array<
   VideoPlcmtTargetingVideoPlcmtTypesItemEnum | (string & {})
 >;
-export const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
+const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<VideoPlcmtTargetingVideoPlcmtTypesItemEnumList>;
 
 /** Defines targeting criteria based on the video placement type, often corresponding to the IAB OpenRTB 'plcmt' field. */
@@ -193,7 +189,7 @@ export interface VideoPlcmtTargeting {
   /** Required. The list of targeted video plcmts types. If empty, inventory will be targeted regardless of video plcmt type. */
   videoPlcmtTypes?: VideoPlcmtTargetingVideoPlcmtTypesItemEnumList;
 }
-export const VideoPlcmtTargeting = /*@__PURE__*/ S.suspend(() =>
+const VideoPlcmtTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectionType: S.optional(VideoPlcmtTargetingSelectionTypeEnum),
     videoPlcmtTypes: S.optional(VideoPlcmtTargetingVideoPlcmtTypesItemEnumList),
@@ -208,12 +204,10 @@ export type PackageVideoTargetingIncludedMimeTypesItemEnum =
   | "VIDEO_MIME_TYPE_APPLICATION_MPEGDASH"
   | "VIDEO_MIME_TYPE_APPLICATION_JAVASCRIPT"
   | "VIDEO_MIME_TYPE_WEBM";
-export const PackageVideoTargetingIncludedMimeTypesItemEnum = S.String;
-
 export type PackageVideoTargetingIncludedMimeTypesItemEnumList = Array<
   PackageVideoTargetingIncludedMimeTypesItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedMimeTypesItemEnumList =
+const PackageVideoTargetingIncludedMimeTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedMimeTypesItemEnumList>;
 
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
@@ -221,12 +215,10 @@ export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_ON"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_OFF"
   | "PLAYBACK_METHOD_CLICK_TO_PLAY";
-export const PackageVideoTargetingIncludedPlaybackMethodsItemEnum = S.String;
-
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnumList = Array<
   PackageVideoTargetingIncludedPlaybackMethodsItemEnum | (string & {})
 >;
-export const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
+const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageVideoTargetingIncludedPlaybackMethodsItemEnumList>;
 
 /** Video specific targeting criteria. */
@@ -252,7 +244,7 @@ export interface PackageVideoTargeting {
   /** Optional. The list of targeted video playback methods. If empty, inventory will be targeted regardless of video playback method. */
   includedPlaybackMethods?: PackageVideoTargetingIncludedPlaybackMethodsItemEnumList;
 }
-export const PackageVideoTargeting = /*@__PURE__*/ S.suspend(() =>
+const PackageVideoTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedPlayerSizeTargeting: S.optional(VideoPlayerSizeTargeting),
     minimumPredictedCompletionRatePercentage: S.optional(S.String),
@@ -276,7 +268,7 @@ export interface TaxonomyTargeting {
   /** Optional. The list of targeted content taxonomy IDs. */
   targetedTaxonomyIds?: StringList_;
 }
-export const TaxonomyTargeting = /*@__PURE__*/ S.suspend(() =>
+const TaxonomyTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedTaxonomyIds: S.optional(StringList_),
     targetedTaxonomyIds: S.optional(StringList_),
@@ -287,7 +279,7 @@ export type StringTargetingDimensionSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
   | "SELECTION_TYPE_EXCLUDE";
-export const StringTargetingDimensionSelectionTypeEnum = S.String;
+const StringTargetingDimensionSelectionTypeEnum = S.String;
 
 /** Generic targeting with string values. */
 export interface StringTargetingDimension {
@@ -296,7 +288,7 @@ export interface StringTargetingDimension {
   /** Required. The values specified. */
   values?: StringList_;
 }
-export const StringTargetingDimension = /*@__PURE__*/ S.suspend(() =>
+const StringTargetingDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectionType: S.optional(StringTargetingDimensionSelectionTypeEnum),
     values: S.optional(StringList_),
@@ -312,7 +304,7 @@ export interface PackagePublisherProvidedSignalsTargeting {
   /** Optional. The list of targeted and excluded video and audio signals IDs. These are additional signals supported by publisher provided signals. */
   videoAndAudioSignalsTargeting?: StringTargetingDimension;
 }
-export const PackagePublisherProvidedSignalsTargeting = /*@__PURE__*/ S.suspend(() =>
+const PackagePublisherProvidedSignalsTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audienceTargeting: S.optional(TaxonomyTargeting),
     contentTargeting: S.optional(TaxonomyTargeting),
@@ -329,7 +321,7 @@ export interface CriteriaTargeting {
   /** A list of numeric IDs to be excluded. */
   excludedCriteriaIds?: StringList_;
 }
-export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
+const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedCriteriaIds: S.optional(StringList_),
     excludedCriteriaIds: S.optional(StringList_),
@@ -340,12 +332,10 @@ export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_DIRECT"
   | "AUTHORIZED_SELLER_STATUS_RESELLER";
-export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnum = S.String;
-
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList = Array<
   PackageTargetingIncludedAuthorizedSellerStatusesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
+const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList>;
 
 export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
@@ -353,44 +343,40 @@ export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   | "ACCELERATED_MOBILE_PAGE_TYPE_NON_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY";
-export const PackageTargetingIncludedAcceleratedMobilePageTypeEnum = S.String;
+const PackageTargetingIncludedAcceleratedMobilePageTypeEnum = S.String;
 
 export type PackageTargetingIncludedRestrictedCategoriesItemEnum =
   | "RESTRICTED_CATEGORY_UNSPECIFIED"
   | "RESTRICTED_CATEGORY_ALCOHOL"
   | "RESTRICTED_CATEGORY_GAMBLING";
-export const PackageTargetingIncludedRestrictedCategoriesItemEnum = S.String;
-
 export type PackageTargetingIncludedRestrictedCategoriesItemEnumList = Array<
   PackageTargetingIncludedRestrictedCategoriesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
+const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedRestrictedCategoriesItemEnumList>;
 
 export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
   | "NATIVE_INVENTORY_TYPE_UNSPECIFIED"
   | "NATIVE_INVENTORY_TYPE_NATIVE_ONLY"
   | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER";
-export const PackageTargetingIncludedNativeInventoryTypesItemEnum = S.String;
-
 export type PackageTargetingIncludedNativeInventoryTypesItemEnumList = Array<
   PackageTargetingIncludedNativeInventoryTypesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedNativeInventoryTypesItemEnumList =
+const PackageTargetingIncludedNativeInventoryTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedNativeInventoryTypesItemEnumList>;
 
 export type PackageTargetingIncludedRewardedTypeEnum =
   | "REWARDED_TYPE_UNSPECIFIED"
   | "REWARDED_TYPE_NON_REWARDED"
   | "REWARDED_TYPE_REWARDED";
-export const PackageTargetingIncludedRewardedTypeEnum = S.String;
+const PackageTargetingIncludedRewardedTypeEnum = S.String;
 
 export type PackageTargetingIncludedCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "CREATIVE_FORMAT_DISPLAY"
   | "CREATIVE_FORMAT_VIDEO"
   | "CREATIVE_FORMAT_AUDIO";
-export const PackageTargetingIncludedCreativeFormatEnum = S.String;
+const PackageTargetingIncludedCreativeFormatEnum = S.String;
 
 export type PackageTargetingIncludedDeviceTypesItemEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
@@ -398,12 +384,10 @@ export type PackageTargetingIncludedDeviceTypesItemEnum =
   | "DEVICE_TYPE_CONNECTED_TV"
   | "DEVICE_TYPE_PHONE"
   | "DEVICE_TYPE_TABLET";
-export const PackageTargetingIncludedDeviceTypesItemEnum = S.String;
-
 export type PackageTargetingIncludedDeviceTypesItemEnumList = Array<
   PackageTargetingIncludedDeviceTypesItemEnum | (string & {})
 >;
-export const PackageTargetingIncludedDeviceTypesItemEnumList =
+const PackageTargetingIncludedDeviceTypesItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<PackageTargetingIncludedDeviceTypesItemEnumList>;
 
 /** Represents targeting about where the ads can appear, for example, certain sites or mobile applications. Different placement targeting types will be logically OR'ed. */
@@ -415,7 +399,7 @@ export interface PackagePlacementTargeting {
   /** Optional. The list of targeted mobile app categories. */
   includedMobileAppCategoryTargeting?: StringList_;
 }
-export const PackagePlacementTargeting = /*@__PURE__*/ S.suspend(() =>
+const PackagePlacementTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriTargeting: S.optional(StringTargetingDimension),
     mobileAppTargeting: S.optional(StringTargetingDimension),
@@ -426,7 +410,7 @@ export const PackagePlacementTargeting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PackagePlacementTargeting>;
 
 export type AdSizeTypeEnum = "TYPE_UNSPECIFIED" | "PIXEL" | "INTERSTITIAL" | "NATIVE" | "FLUID";
-export const AdSizeTypeEnum = S.String;
+const AdSizeTypeEnum = S.String;
 
 /** Represents size of a single ad slot, or a creative. */
 export interface AdSize {
@@ -437,7 +421,7 @@ export interface AdSize {
   /** The type of the ad slot size. */
   type?: AdSizeTypeEnum | (string & {});
 }
-export const AdSize = /*@__PURE__*/ S.suspend(() =>
+const AdSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(S.String),
     height: S.optional(S.String),
@@ -446,13 +430,13 @@ export const AdSize = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdSize" }) as any as S.Schema<AdSize>;
 
 export type AdSizeList = Array<AdSize>;
-export const AdSizeList = /*@__PURE__*/ S.Array(AdSize) as any as S.Schema<AdSizeList>;
+const AdSizeList = /*@__PURE__*/ S.Array(AdSize) as any as S.Schema<AdSizeList>;
 
 export type PackageTargetingIncludedEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_SITE"
   | "ENVIRONMENT_APP";
-export const PackageTargetingIncludedEnvironmentEnum = S.String;
+const PackageTargetingIncludedEnvironmentEnum = S.String;
 
 /** Targeting criteria for curated and auction packages. */
 export interface PackageTargeting {
@@ -499,7 +483,7 @@ export interface PackageTargeting {
   /** Optional. The environment to target. If unspecified, all environments are targeted. */
   includedEnvironment?: PackageTargetingIncludedEnvironmentEnum | (string & {});
 }
-export const PackageTargeting = /*@__PURE__*/ S.suspend(() =>
+const PackageTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedOpenMeasurementTypes: S.optional(
       PackageTargetingIncludedOpenMeasurementTypesItemEnumList,
@@ -538,14 +522,14 @@ export type CuratedPackageCurationFeeVisibilityEnum =
   | "CURATION_FEE_VISIBILITY_UNSPECIFIED"
   | "DISCLOSED"
   | "NON_DISCLOSED";
-export const CuratedPackageCurationFeeVisibilityEnum = S.String;
+const CuratedPackageCurationFeeVisibilityEnum = S.String;
 
 /** Settings for controlling access to a curated package. */
 export interface AccessControlSettings {
   /** Required. Immutable. The list of media planners that are explicitly granted access to the curated package. Eligible media planners can be found in the mediaPlanners.list method. Only a single media planner may be allowlisted at this time. Format: `mediaPlanners/{mediaPlannerAccountId}` */
   allowlistedMediaPlanners?: StringList_;
 }
-export const AccessControlSettings = /*@__PURE__*/ S.suspend(() =>
+const AccessControlSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowlistedMediaPlanners: S.optional(StringList_),
   }),
@@ -578,7 +562,7 @@ export interface CuratedPackage {
   /** Required. Settings for controlling access to the curated package. Access to this curated package is limited to the allowlisted media planners and the creator. Buyers and bidders can not be allowlisted for or have direct access to this resource. */
   accessSettings?: AccessControlSettings;
 }
-export const CuratedPackage = /*@__PURE__*/ S.suspend(() =>
+const CuratedPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -597,15 +581,13 @@ export const CuratedPackage = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for activating a data segment */
 export type ActivateDataSegmentRequest = ActivateCuratedPackageRequest;
-export const ActivateDataSegmentRequest = ActivateCuratedPackageRequest;
-
 export interface ActivateCuratorsDataSegmentsRequest {
   /** Required. Name of data segment to activate. Format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` */
   name: string;
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-export const ActivateCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
@@ -621,7 +603,7 @@ export const ActivateCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateCuratorsDataSegmentsRequest>;
 
 export type DataSegmentStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "SUSPENDED";
-export const DataSegmentStateEnum = S.String;
+const DataSegmentStateEnum = S.String;
 
 /** Defines an identifier for a segment of inventory that can be targeted by curators or media planners in the deals or auction packages UI. Curation of inventory is done by curators on external platforms. -- Next ID: 9 -- */
 export interface DataSegment {
@@ -640,7 +622,7 @@ export interface DataSegment {
   /** Optional. A fixed fee charged per thousand impressions. Once set, the currency code cannot be changed. */
   cpmFee?: Money;
 }
-export const DataSegment = /*@__PURE__*/ S.suspend(() =>
+const DataSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(DataSegmentStateEnum),
@@ -658,7 +640,7 @@ export interface CreateCuratorsCuratedPackagesRequest {
   /** Request body */
   body?: CuratedPackage;
 }
-export const CreateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CuratedPackage.pipe(T.HttpBody())),
@@ -679,7 +661,7 @@ export interface CreateCuratorsDataSegmentsRequest {
   /** Request body */
   body?: DataSegment;
 }
-export const CreateCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(DataSegment.pipe(T.HttpBody())),
@@ -709,7 +691,7 @@ export type FieldMetricEnum =
   | "DATA_SEGMENT_REQUESTS"
   | "IMPRESSIONS"
   | "SPEND";
-export const FieldMetricEnum = S.String;
+const FieldMetricEnum = S.String;
 
 export type FieldDimensionEnum =
   | "DIMENSION_UNSPECIFIED"
@@ -739,7 +721,7 @@ export type FieldDimensionEnum =
   | "PUBLISHER_ID"
   | "PUBLISHER_NAME"
   | "WEEK";
-export const FieldDimensionEnum = S.String;
+const FieldDimensionEnum = S.String;
 
 /** A dimension or a metric in a report. */
 export interface Field {
@@ -748,7 +730,7 @@ export interface Field {
   /** The dimension this field represents. */
   dimension?: FieldDimensionEnum | (string & {});
 }
-export const Field = /*@__PURE__*/ S.suspend(() =>
+const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric: S.optional(FieldMetricEnum),
     dimension: S.optional(FieldDimensionEnum),
@@ -762,7 +744,7 @@ export interface Sort {
   /** Required. A field (dimension or metric) to sort by. */
   field?: Field;
 }
-export const Sort = /*@__PURE__*/ S.suspend(() =>
+const Sort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descending: S.optional(S.Boolean),
     field: S.optional(Field),
@@ -770,7 +752,7 @@ export const Sort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sort" }) as any as S.Schema<Sort>;
 
 export type SortList = Array<Sort>;
-export const SortList = /*@__PURE__*/ S.Array(Sort) as any as S.Schema<SortList>;
+const SortList = /*@__PURE__*/ S.Array(Sort) as any as S.Schema<SortList>;
 
 export type ReportDefinitionDimensionsItemEnum =
   | "DIMENSION_UNSPECIFIED"
@@ -800,12 +782,10 @@ export type ReportDefinitionDimensionsItemEnum =
   | "PUBLISHER_ID"
   | "PUBLISHER_NAME"
   | "WEEK";
-export const ReportDefinitionDimensionsItemEnum = S.String;
-
 export type ReportDefinitionDimensionsItemEnumList = Array<
   ReportDefinitionDimensionsItemEnum | (string & {})
 >;
-export const ReportDefinitionDimensionsItemEnumList =
+const ReportDefinitionDimensionsItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<ReportDefinitionDimensionsItemEnumList>;
 
 export type ReportDefinitionMetricsItemEnum =
@@ -823,12 +803,10 @@ export type ReportDefinitionMetricsItemEnum =
   | "DATA_SEGMENT_REQUESTS"
   | "IMPRESSIONS"
   | "SPEND";
-export const ReportDefinitionMetricsItemEnum = S.String;
-
 export type ReportDefinitionMetricsItemEnumList = Array<
   ReportDefinitionMetricsItemEnum | (string & {})
 >;
-export const ReportDefinitionMetricsItemEnumList =
+const ReportDefinitionMetricsItemEnumList =
   PackageTargetingIncludedOpenMeasurementTypesItemEnumList as any as S.Schema<ReportDefinitionMetricsItemEnumList>;
 
 export type DateRangeRelativeEnum =
@@ -860,7 +838,7 @@ export type DateRangeRelativeEnum =
   | "LAST_6_MONTHS"
   | "LAST_12_MONTHS"
   | "ALL_AVAILABLE";
-export const DateRangeRelativeEnum = S.String;
+const DateRangeRelativeEnum = S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Curationpartners_Date {
@@ -871,7 +849,7 @@ export interface Curationpartners_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-export const Curationpartners_Date = /*@__PURE__*/ S.suspend(() =>
+const Curationpartners_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -886,7 +864,7 @@ export interface FixedDateRange {
   /** Required. The end date (inclusive) of this date range. */
   endDate?: Curationpartners_Date;
 }
-export const FixedDateRange = /*@__PURE__*/ S.suspend(() =>
+const FixedDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(Curationpartners_Date),
     endDate: S.optional(Curationpartners_Date),
@@ -900,7 +878,7 @@ export interface DateRange {
   /** A fixed date range. */
   fixed?: FixedDateRange;
 }
-export const DateRange = /*@__PURE__*/ S.suspend(() =>
+const DateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relative: S.optional(DateRangeRelativeEnum),
     fixed: S.optional(FixedDateRange),
@@ -912,7 +890,7 @@ export interface FilterList {
   /** Required. A list of filters. */
   filters?: FilterList_;
 }
-export const FilterList = /*@__PURE__*/ S.suspend(() =>
+const FilterList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(S.suspend(() => FilterList_)),
   }),
@@ -930,17 +908,17 @@ export type FieldFilterOperationEnum =
   | "BETWEEN"
   | "MATCHES"
   | "NOT_MATCHES";
-export const FieldFilterOperationEnum = S.String;
+const FieldFilterOperationEnum = S.String;
 
 export type DoubleList_ = Array<number>;
-export const DoubleList_ = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList_>;
+const DoubleList_ = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList_>;
 
 /** A list of double values. */
 export interface DoubleList {
   /** The values */
   values?: DoubleList_;
 }
-export const DoubleList = /*@__PURE__*/ S.suspend(() =>
+const DoubleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(DoubleList_),
   }),
@@ -951,7 +929,7 @@ export interface IntList {
   /** The values */
   values?: StringList_;
 }
-export const IntList = /*@__PURE__*/ S.suspend(() =>
+const IntList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList_),
   }),
@@ -959,8 +937,6 @@ export const IntList = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of string values. */
 export type StringList = IntList;
-export const StringList = IntList;
-
 /** Represents a single value in a report. */
 export interface ReportValue {
   /** For bytes values. */
@@ -980,7 +956,7 @@ export interface ReportValue {
   /** For integer values. */
   intValue?: string;
 }
-export const ReportValue = /*@__PURE__*/ S.suspend(() =>
+const ReportValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bytesValue: S.optional(S.String),
     boolValue: S.optional(S.Boolean),
@@ -994,9 +970,7 @@ export const ReportValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportValue" }) as any as S.Schema<ReportValue>;
 
 export type ReportValueList = Array<ReportValue>;
-export const ReportValueList = /*@__PURE__*/ S.Array(
-  ReportValue,
-) as any as S.Schema<ReportValueList>;
+const ReportValueList = /*@__PURE__*/ S.Array(ReportValue) as any as S.Schema<ReportValueList>;
 
 /** A filter on a specific field. */
 export interface FieldFilter {
@@ -1007,7 +981,7 @@ export interface FieldFilter {
   /** Required. The field to filter on. */
   field?: Field;
 }
-export const FieldFilter = /*@__PURE__*/ S.suspend(() =>
+const FieldFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.optional(FieldFilterOperationEnum),
     values: S.optional(ReportValueList),
@@ -1026,7 +1000,7 @@ export interface Filter {
   /** A filter on a single field. */
   fieldFilter?: FieldFilter;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notFilter: S.optional(Filter),
     orFilter: S.optional(FilterList),
@@ -1036,14 +1010,14 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 export type FilterList_ = Array<Filter>;
-export const FilterList_ = /*@__PURE__*/ S.Array(Filter) as any as S.Schema<FilterList_>;
+const FilterList_ = /*@__PURE__*/ S.Array(Filter) as any as S.Schema<FilterList_>;
 
 export type ReportDefinitionTimeZoneSourceEnum =
   | "TIME_ZONE_SOURCE_UNSPECIFIED"
   | "AD_EXCHANGE"
   | "UTC"
   | "PROVIDED";
-export const ReportDefinitionTimeZoneSourceEnum = S.String;
+const ReportDefinitionTimeZoneSourceEnum = S.String;
 
 /** The definition of how a report should be run. */
 export interface ReportDefinition {
@@ -1064,7 +1038,7 @@ export interface ReportDefinition {
   /** Optional. The ISO 4217 currency code for this report. Defaults to account currency code if not specified. */
   currencyCode?: string;
 }
-export const ReportDefinition = /*@__PURE__*/ S.suspend(() =>
+const ReportDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sorts: S.optional(SortList),
     dimensions: S.optional(ReportDefinitionDimensionsItemEnumList),
@@ -1094,7 +1068,7 @@ export interface Report {
   /** Output only. Report ID. */
   reportId?: string;
 }
-export const Report = /*@__PURE__*/ S.suspend(() =>
+const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     locale: S.optional(S.String),
@@ -1112,7 +1086,7 @@ export interface CreateCuratorsReportsRequest {
   /** Request body */
   body?: Report;
 }
-export const CreateCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Report.pipe(T.HttpBody())),
@@ -1129,15 +1103,13 @@ export const CreateCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for DeactivateCuratedPackage. */
 export type DeactivateCuratedPackageRequest = ActivateCuratedPackageRequest;
-export const DeactivateCuratedPackageRequest = ActivateCuratedPackageRequest;
-
 export interface DeactivateCuratorsCuratedPackagesRequest {
   /** Required. The name of the curated package to deactivate. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}` */
   name: string;
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-export const DeactivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
@@ -1154,15 +1126,13 @@ export const DeactivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(
 
 /** Request message for deactivating a data segment */
 export type DeactivateDataSegmentRequest = ActivateCuratedPackageRequest;
-export const DeactivateDataSegmentRequest = ActivateCuratedPackageRequest;
-
 export interface DeactivateCuratorsDataSegmentsRequest {
   /** Required. Name of data segment to deactivate. Format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` */
   name: string;
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-export const DeactivateCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),
@@ -1181,7 +1151,7 @@ export interface DeleteCuratorsReportsRequest {
   /** Required. Resource name of the report to delete. Format: `curators/{account_id}/reports/{report_id}` */
   name: string;
 }
-export const DeleteCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1197,7 +1167,7 @@ export const DeleteCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = ActivateCuratedPackageRequest as any as S.Schema<Empty>;
+const Empty = ActivateCuratedPackageRequest as any as S.Schema<Empty>;
 
 export interface FetchRowsCuratorsReportsResultsRequest {
   /** Optional. A page token, received from a previous `FetchReportResultRows` call. Provide this to retrieve the second and subsequent batches of rows. */
@@ -1207,7 +1177,7 @@ export interface FetchRowsCuratorsReportsResultsRequest {
   /** The report result being fetched. Format: `curators/{account_id}/reports/{report_id}/results/{report_result_id}` */
   name: string;
 }
-export const FetchRowsCuratorsReportsResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchRowsCuratorsReportsResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1228,14 +1198,14 @@ export interface MetricValueGroup {
   /** Data for the PRIMARY MetricValueType. */
   primaryValues?: ReportValueList;
 }
-export const MetricValueGroup = /*@__PURE__*/ S.suspend(() =>
+const MetricValueGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryValues: S.optional(ReportValueList),
   }),
 ).annotate({ identifier: "MetricValueGroup" }) as any as S.Schema<MetricValueGroup>;
 
 export type MetricValueGroupList = Array<MetricValueGroup>;
-export const MetricValueGroupList = /*@__PURE__*/ S.Array(
+const MetricValueGroupList = /*@__PURE__*/ S.Array(
   MetricValueGroup,
 ) as any as S.Schema<MetricValueGroupList>;
 
@@ -1246,7 +1216,7 @@ export interface Row {
   /** The order of the dimension values is the same as the order of the dimensions specified in the request. */
   dimensionValues?: ReportValueList;
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricValueGroups: S.optional(MetricValueGroupList),
     dimensionValues: S.optional(ReportValueList),
@@ -1254,10 +1224,10 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = Array<Row>;
-export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
+const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 export type FixedDateRangeList = Array<FixedDateRange>;
-export const FixedDateRangeList = /*@__PURE__*/ S.Array(
+const FixedDateRangeList = /*@__PURE__*/ S.Array(
   FixedDateRange,
 ) as any as S.Schema<FixedDateRangeList>;
 
@@ -1274,7 +1244,7 @@ export interface FetchReportResultRowsResponse {
   /** The computed fixed date ranges this report includes. Only returned with the first page of results (when page_token is not included in the request). */
   dateRanges?: FixedDateRangeList;
 }
-export const FetchReportResultRowsResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchReportResultRowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalRowCount: S.optional(S.Number),
     rows: S.optional(RowList),
@@ -1290,7 +1260,7 @@ export interface GetCuratorsCuratedPackagesRequest {
   /** Required. The name of the curated package to retrieve. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}` */
   name: string;
 }
-export const GetCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1308,7 +1278,7 @@ export interface GetCuratorsDataSegmentsRequest {
   /** Required. Name of data segment to get. Format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` */
   name: string;
 }
-export const GetCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1326,7 +1296,7 @@ export interface GetCuratorsReportsRequest {
   /** Required. The resource name of the report. Format: `curators/{account_id}/reports/{report_id}` */
   name: string;
 }
-export const GetCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1344,7 +1314,7 @@ export interface GetCuratorsReportsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetCuratorsReportsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCuratorsReportsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1359,15 +1329,10 @@ export const GetCuratorsReportsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCuratorsReportsOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1378,7 +1343,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -1399,7 +1364,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     error: S.optional(Status),
@@ -1419,7 +1384,7 @@ export interface ListCuratorsCuratedPackagesRequest {
   /** Optional. Requested page size. The server may return fewer results than requested. Max allowed page size is 500. If unspecified, the server will default to 500. */
   pageSize?: number;
 }
-export const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1437,7 +1402,7 @@ export const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCuratorsCuratedPackagesRequest>;
 
 export type CuratedPackageList = Array<CuratedPackage>;
-export const CuratedPackageList = /*@__PURE__*/ S.Array(
+const CuratedPackageList = /*@__PURE__*/ S.Array(
   CuratedPackage,
 ) as any as S.Schema<CuratedPackageList>;
 
@@ -1448,7 +1413,7 @@ export interface ListCuratedPackagesResponse {
   /** The list of curated packages. */
   curatedPackages?: CuratedPackageList;
 }
-export const ListCuratedPackagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCuratedPackagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     curatedPackages: S.optional(CuratedPackageList),
@@ -1465,7 +1430,7 @@ export interface ListCuratorsDataSegmentsRequest {
   /** Optional. Requested page size. The server may return fewer results than requested. Max allowed page size is 500. If unspecified, the server will default to 500. */
   pageSize?: number;
 }
-export const ListCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1482,9 +1447,7 @@ export const ListCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCuratorsDataSegmentsRequest>;
 
 export type DataSegmentList = Array<DataSegment>;
-export const DataSegmentList = /*@__PURE__*/ S.Array(
-  DataSegment,
-) as any as S.Schema<DataSegmentList>;
+const DataSegmentList = /*@__PURE__*/ S.Array(DataSegment) as any as S.Schema<DataSegmentList>;
 
 /** Response message for listing data segments. */
 export interface ListDataSegmentsResponse {
@@ -1493,7 +1456,7 @@ export interface ListDataSegmentsResponse {
   /** The list of data segments. */
   dataSegments?: DataSegmentList;
 }
-export const ListDataSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     dataSegments: S.optional(DataSegmentList),
@@ -1514,7 +1477,7 @@ export interface ListCuratorsReportsRequest {
   /** Optional. Expression to filter the response. See syntax details at https://developers.google.com/ad-manager/api/beta/filters */
   filter?: string;
 }
-export const ListCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1534,7 +1497,7 @@ export const ListCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCuratorsReportsRequest>;
 
 export type ReportList = Array<Report>;
-export const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
+const ReportList = /*@__PURE__*/ S.Array(Report) as any as S.Schema<ReportList>;
 
 /** Response object for `ListReportsResponse` containing matching `Report` objects. */
 export interface ListReportsResponse {
@@ -1545,7 +1508,7 @@ export interface ListReportsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.Number),
     reports: S.optional(ReportList),
@@ -1561,7 +1524,7 @@ export interface ListMediaPlannersRequest {
   /** Optional query string using the [Cloud API list filtering syntax](/authorized-buyers/apis/guides/list-filters). Supported columns for filtering are: * `name` * `displayName` * `ancestorNames` */
   filter?: string;
 }
-export const ListMediaPlannersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMediaPlannersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1586,7 +1549,7 @@ export interface MediaPlanner {
   /** Output only. The ancestor names of the media planner. Format: `mediaPlanners/{mediaPlannerAccountId}`. Can be used to filter the response of the mediaPlanners.list method. */
   ancestorNames?: StringList_;
 }
-export const MediaPlanner = /*@__PURE__*/ S.suspend(() =>
+const MediaPlanner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     accountId: S.optional(S.String),
@@ -1596,9 +1559,7 @@ export const MediaPlanner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MediaPlanner" }) as any as S.Schema<MediaPlanner>;
 
 export type MediaPlannerList = Array<MediaPlanner>;
-export const MediaPlannerList = /*@__PURE__*/ S.Array(
-  MediaPlanner,
-) as any as S.Schema<MediaPlannerList>;
+const MediaPlannerList = /*@__PURE__*/ S.Array(MediaPlanner) as any as S.Schema<MediaPlannerList>;
 
 /** A response containing media planner account information. */
 export interface ListMediaPlannersResponse {
@@ -1607,7 +1568,7 @@ export interface ListMediaPlannersResponse {
   /** List of media planners. */
   mediaPlanners?: MediaPlannerList;
 }
-export const ListMediaPlannersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMediaPlannersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     mediaPlanners: S.optional(MediaPlannerList),
@@ -1624,7 +1585,7 @@ export interface PatchCuratorsCuratedPackagesRequest {
   /** Request body */
   body?: CuratedPackage;
 }
-export const PatchCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1648,7 +1609,7 @@ export interface PatchCuratorsDataSegmentsRequest {
   /** Request body */
   body?: DataSegment;
 }
-export const PatchCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1672,7 +1633,7 @@ export interface PatchCuratorsReportsRequest {
   /** Request body */
   body?: Report;
 }
-export const PatchCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1690,15 +1651,13 @@ export const PatchCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for a running a report. */
 export type RunReportRequest = ActivateCuratedPackageRequest;
-export const RunReportRequest = ActivateCuratedPackageRequest;
-
 export interface RunCuratorsReportsRequest {
   /** Required. The report to run. Format: `curators/{account_id}/reports/{report_id}` */
   name: string;
   /** Request body */
   body?: ActivateCuratedPackageRequest;
 }
-export const RunCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunCuratorsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ActivateCuratedPackageRequest.pipe(T.HttpBody())),

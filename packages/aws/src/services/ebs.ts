@@ -157,10 +157,10 @@ export type SnapshotId = string;
 export type ChangedBlocksCount = number;
 export type Checksum = string;
 export type ChecksumAlgorithm = "SHA256" | (string & {});
-export const ChecksumAlgorithm = S.String;
+const ChecksumAlgorithm = S.String;
 
 export type ChecksumAggregationMethod = "LINEAR" | (string & {});
-export const ChecksumAggregationMethod = S.String;
+const ChecksumAggregationMethod = S.String;
 
 export interface CompleteSnapshotRequest {
   SnapshotId: string;
@@ -169,7 +169,7 @@ export interface CompleteSnapshotRequest {
   ChecksumAlgorithm?: ChecksumAlgorithm;
   ChecksumAggregationMethod?: ChecksumAggregationMethod;
 }
-export const CompleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SnapshotId: S.String.pipe(T.HttpLabel("SnapshotId")),
     ChangedBlocksCount: S.Number.pipe(T.HttpHeader("x-amz-ChangedBlocksCount")),
@@ -190,12 +190,12 @@ export const CompleteSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CompleteSnapshotRequest" }) as any as S.Schema<CompleteSnapshotRequest>;
 export type Status = "completed" | "pending" | "error" | (string & {});
-export const Status = S.String;
+const Status = S.String;
 
 export interface CompleteSnapshotResponse {
   Status?: Status;
 }
-export const CompleteSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const CompleteSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: S.optional(Status) }),
 ).annotate({ identifier: "CompleteSnapshotResponse" }) as any as S.Schema<CompleteSnapshotResponse>;
 export type BlockIndex = number;
@@ -205,7 +205,7 @@ export interface GetSnapshotBlockRequest {
   BlockIndex: number;
   BlockToken: string;
 }
-export const GetSnapshotBlockRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotBlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SnapshotId: S.String.pipe(T.HttpLabel("SnapshotId")),
     BlockIndex: S.Number.pipe(T.HttpLabel("BlockIndex")),
@@ -228,7 +228,7 @@ export interface GetSnapshotBlockResponse {
   Checksum?: string;
   ChecksumAlgorithm?: ChecksumAlgorithm;
 }
-export const GetSnapshotBlockResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotBlockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataLength: S.optional(S.Number).pipe(T.HttpHeader("x-amz-Data-Length")),
     BlockData: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -245,7 +245,7 @@ export interface ListChangedBlocksRequest {
   MaxResults?: number;
   StartingBlockIndex?: number;
 }
-export const ListChangedBlocksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChangedBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FirstSnapshotId: S.optional(S.String).pipe(T.HttpQuery("firstSnapshotId")),
     SecondSnapshotId: S.String.pipe(T.HttpLabel("SecondSnapshotId")),
@@ -268,7 +268,7 @@ export interface ChangedBlock {
   FirstBlockToken?: string;
   SecondBlockToken?: string;
 }
-export const ChangedBlock = /*@__PURE__*/ S.suspend(() =>
+const ChangedBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BlockIndex: S.optional(S.Number),
     FirstBlockToken: S.optional(S.String),
@@ -276,7 +276,7 @@ export const ChangedBlock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChangedBlock" }) as any as S.Schema<ChangedBlock>;
 export type ChangedBlocks = ChangedBlock[];
-export const ChangedBlocks = /*@__PURE__*/ S.Array(ChangedBlock);
+const ChangedBlocks = /*@__PURE__*/ S.Array(ChangedBlock);
 export type VolumeSize = number;
 export type BlockSize = number;
 export interface ListChangedBlocksResponse {
@@ -286,7 +286,7 @@ export interface ListChangedBlocksResponse {
   BlockSize?: number;
   NextToken?: string;
 }
-export const ListChangedBlocksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChangedBlocksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChangedBlocks: S.optional(ChangedBlocks),
     ExpiryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -303,7 +303,7 @@ export interface ListSnapshotBlocksRequest {
   MaxResults?: number;
   StartingBlockIndex?: number;
 }
-export const ListSnapshotBlocksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SnapshotId: S.String.pipe(T.HttpLabel("SnapshotId")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("pageToken")),
@@ -326,11 +326,11 @@ export interface Block {
   BlockIndex?: number;
   BlockToken?: string;
 }
-export const Block = /*@__PURE__*/ S.suspend(() =>
+const Block = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BlockIndex: S.optional(S.Number), BlockToken: S.optional(S.String) }),
 ).annotate({ identifier: "Block" }) as any as S.Schema<Block>;
 export type Blocks = Block[];
-export const Blocks = /*@__PURE__*/ S.Array(Block);
+const Blocks = /*@__PURE__*/ S.Array(Block);
 export interface ListSnapshotBlocksResponse {
   Blocks?: Block[];
   ExpiryTime?: Date;
@@ -338,7 +338,7 @@ export interface ListSnapshotBlocksResponse {
   BlockSize?: number;
   NextToken?: string;
 }
-export const ListSnapshotBlocksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotBlocksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Blocks: S.optional(Blocks),
     ExpiryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -359,7 +359,7 @@ export interface PutSnapshotBlockRequest {
   Checksum: string;
   ChecksumAlgorithm: ChecksumAlgorithm;
 }
-export const PutSnapshotBlockRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSnapshotBlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SnapshotId: S.String.pipe(T.HttpLabel("SnapshotId")),
     BlockIndex: S.Number.pipe(T.HttpLabel("BlockIndex")),
@@ -383,7 +383,7 @@ export interface PutSnapshotBlockResponse {
   Checksum?: string;
   ChecksumAlgorithm?: ChecksumAlgorithm;
 }
-export const PutSnapshotBlockResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSnapshotBlockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-Checksum")),
     ChecksumAlgorithm: S.optional(ChecksumAlgorithm).pipe(T.HttpHeader("x-amz-Checksum-Algorithm")),
@@ -395,11 +395,11 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-export const Tags = /*@__PURE__*/ S.Array(Tag);
+const Tags = /*@__PURE__*/ S.Array(Tag);
 export type Description = string;
 export type IdempotencyToken = string;
 export type KmsKeyArn = string | redacted.Redacted<string>;
@@ -414,7 +414,7 @@ export interface StartSnapshotRequest {
   KmsKeyArn?: string | redacted.Redacted<string>;
   Timeout?: number;
 }
-export const StartSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const StartSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VolumeSize: S.Number,
     ParentSnapshotId: S.optional(S.String),
@@ -428,7 +428,7 @@ export const StartSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartSnapshotRequest" }) as any as S.Schema<StartSnapshotRequest>;
 export type OwnerId = string;
 export type SSEType = "sse-ebs" | "sse-kms" | "none" | (string & {});
-export const SSEType = S.String;
+const SSEType = S.String;
 
 export interface StartSnapshotResponse {
   Description?: string;
@@ -443,7 +443,7 @@ export interface StartSnapshotResponse {
   KmsKeyArn?: string | redacted.Redacted<string>;
   SseType?: SSEType;
 }
-export const StartSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const StartSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Description: S.optional(S.String),
     SnapshotId: S.optional(S.String),
@@ -463,14 +463,14 @@ export type AccessDeniedExceptionReason =
   | "UNAUTHORIZED_ACCOUNT"
   | "DEPENDENCY_ACCESS_DENIED"
   | (string & {});
-export const AccessDeniedExceptionReason = S.String;
+const AccessDeniedExceptionReason = S.String;
 
 export type RequestThrottledExceptionReason =
   | "ACCOUNT_THROTTLED"
   | "DEPENDENCY_REQUEST_THROTTLED"
   | "RESOURCE_LEVEL_THROTTLE"
   | (string & {});
-export const RequestThrottledExceptionReason = S.String;
+const RequestThrottledExceptionReason = S.String;
 
 export type ResourceNotFoundExceptionReason =
   | "SNAPSHOT_NOT_FOUND"
@@ -478,12 +478,12 @@ export type ResourceNotFoundExceptionReason =
   | "DEPENDENCY_RESOURCE_NOT_FOUND"
   | "IMAGE_NOT_FOUND"
   | (string & {});
-export const ResourceNotFoundExceptionReason = S.String;
+const ResourceNotFoundExceptionReason = S.String;
 
 export type ServiceQuotaExceededExceptionReason =
   | "DEPENDENCY_SERVICE_QUOTA_EXCEEDED"
   | (string & {});
-export const ServiceQuotaExceededExceptionReason = S.String;
+const ServiceQuotaExceededExceptionReason = S.String;
 
 export type ValidationExceptionReason =
   | "INVALID_CUSTOMER_KEY"
@@ -502,7 +502,7 @@ export type ValidationExceptionReason =
   | "INVALID_IMAGE_ID"
   | "WRITE_REQUEST_TIMEOUT"
   | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export type CompleteSnapshotError =
   | AccessDeniedException

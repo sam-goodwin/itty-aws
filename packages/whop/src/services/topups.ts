@@ -136,7 +136,7 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-export const LegacyCurrencies = S.String;
+const LegacyCurrencies = S.String;
 
 export interface CreateTopupRequest {
   /** The unique identifier of the company to add funds to, starting with 'biz_'. */
@@ -148,7 +148,7 @@ export interface CreateTopupRequest {
   /** The unique identifier of the stored payment method to charge for the top-up. */
   payment_method_id: string;
 }
-export const CreateTopupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTopupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     amount: S.Number,
@@ -167,7 +167,7 @@ export type LegacyReceiptStatus =
   | "uncollectible"
   | "unresolved"
   | "void";
-export const LegacyReceiptStatus = S.String;
+const LegacyReceiptStatus = S.String;
 
 /** A payment represents a completed or attempted charge. Payments track the amount, status, currency, and payment method used. */
 export interface Topup {
@@ -186,7 +186,7 @@ export interface Topup {
   /** The total to show to the creator (excluding buyer fees). */
   total: number | null;
 }
-export const Topup = /*@__PURE__*/ S.suspend(() =>
+const Topup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     currency: S.NullOr(LegacyCurrencies),

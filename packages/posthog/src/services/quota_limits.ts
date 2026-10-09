@@ -11,7 +11,7 @@ export interface ListQuotaLimitsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListQuotaLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuotaLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/quota_limits/", code: 200 })),
@@ -25,7 +25,7 @@ export interface QuotaResourceLimit {
   /** The organization's limit for this resource in the same unit. Null when unlimited or unknown. */
   limit: number | null;
 }
-export const QuotaResourceLimit = /*@__PURE__*/ S.suspend(() =>
+const QuotaResourceLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limited: S.Boolean,
     usage: S.NullOr(S.Number),
@@ -35,7 +35,7 @@ export const QuotaResourceLimit = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false -- they are never quota-enforced; only the combined `posthog_code_credits` is. */
 export type QuotaLimitsResponseLimitedMap = { [key: string]: QuotaResourceLimit | undefined };
-export const QuotaLimitsResponseLimitedMap = /*@__PURE__*/ S.Record(
+const QuotaLimitsResponseLimitedMap = /*@__PURE__*/ S.Record(
   S.String,
   QuotaResourceLimit,
 ) as any as S.Schema<QuotaLimitsResponseLimitedMap>;
@@ -46,7 +46,7 @@ export interface QuotaLimitsResponse {
   /** Whether the team's organization pays for PostHog Desktop usage: billing grants the `posthog_code_usage` product feature only on the Desktop usage product's paid plan, synced into the organization's available features. Consumers gate paid-tier Desktop behavior on this; an org unknown to billing reads as not paying. Always false for deactivated organizations. */
   code_usage_billing_active: boolean;
 }
-export const QuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+const QuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limited: QuotaLimitsResponseLimitedMap,
     code_usage_billing_active: S.Boolean,
@@ -54,12 +54,12 @@ export const QuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaLimitsResponse" }) as any as S.Schema<QuotaLimitsResponse>;
 
 export type ListQuotaLimitsResponseBodyList = Array<QuotaLimitsResponse>;
-export const ListQuotaLimitsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListQuotaLimitsResponseBodyList = /*@__PURE__*/ S.Array(
   QuotaLimitsResponse,
 ) as any as S.Schema<ListQuotaLimitsResponseBodyList>;
 
 export type ListQuotaLimitsResponse = ListQuotaLimitsResponseBodyList;
-export const ListQuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   ListQuotaLimitsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListQuotaLimitsResponse" }) as any as S.Schema<ListQuotaLimitsResponse>;
 

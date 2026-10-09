@@ -12,7 +12,7 @@ export interface ApplyWebAnalyticsPathCleaningSuggestionRequest {
   project_id: string;
   id: string;
 }
-export const ApplyWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -31,7 +31,7 @@ export interface ApplyPathCleaningSuggestionResponse {
   /** Number of rules merged into the team's path_cleaning_filters. */
   applied: number;
 }
-export const ApplyPathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplyPathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applied: S.Number,
   }),
@@ -43,7 +43,7 @@ export interface GenerateWebAnalyticsPathCleaningSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GenerateWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -67,7 +67,7 @@ export interface SuggestedRule {
   /** How many of the sampled paths this rule rewrites -- evidence the rule was validated on real traffic. */
   match_count: number;
 }
-export const SuggestedRule = /*@__PURE__*/ S.suspend(() =>
+const SuggestedRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regex: S.String,
     alias: S.String,
@@ -78,7 +78,7 @@ export const SuggestedRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Validated path-cleaning rules proposed for this team, most specific first. */
 export type PathCleaningSuggestionIssueRulesList = Array<SuggestedRule>;
-export const PathCleaningSuggestionIssueRulesList = /*@__PURE__*/ S.Array(
+const PathCleaningSuggestionIssueRulesList = /*@__PURE__*/ S.Array(
   SuggestedRule,
 ) as any as S.Schema<PathCleaningSuggestionIssueRulesList>;
 
@@ -97,7 +97,7 @@ export interface PathCleaningSuggestionIssue {
   /** Distinct pathnames seen in the sampling window. */
   distinct_path_count: number;
 }
-export const PathCleaningSuggestionIssue = /*@__PURE__*/ S.suspend(() =>
+const PathCleaningSuggestionIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created_at: S.String,
@@ -116,7 +116,7 @@ export interface GeneratePathCleaningSuggestionResponse {
   /** The stored suggestion when status is generated, else null. */
   suggestion?: PathCleaningSuggestionIssue | null;
 }
-export const GeneratePathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
+const GeneratePathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     suggestion: S.optional(S.NullOr(PathCleaningSuggestionIssue)),
@@ -130,7 +130,7 @@ export interface PreviewWebAnalyticsPathCleaningSuggestionRequest {
   project_id: string;
   id: string;
 }
-export const PreviewWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const PreviewWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -153,7 +153,7 @@ export interface PathCleaningPreviewExample {
   /** Pageviews this path received in the sampling window. */
   views: number;
 }
-export const PathCleaningPreviewExample = /*@__PURE__*/ S.suspend(() =>
+const PathCleaningPreviewExample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.String,
     after: S.String,
@@ -165,7 +165,7 @@ export const PathCleaningPreviewExample = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 20 before/after pairs for sampled paths the suggested rules would rewrite. */
 export type PreviewPathCleaningSuggestionResponseExamplesList = Array<PathCleaningPreviewExample>;
-export const PreviewPathCleaningSuggestionResponseExamplesList = /*@__PURE__*/ S.Array(
+const PreviewPathCleaningSuggestionResponseExamplesList = /*@__PURE__*/ S.Array(
   PathCleaningPreviewExample,
 ) as any as S.Schema<PreviewPathCleaningSuggestionResponseExamplesList>;
 
@@ -177,7 +177,7 @@ export interface PreviewPathCleaningSuggestionResponse {
   /** How many top paths were sampled for this preview. */
   sampled_path_count: number;
 }
-export const PreviewPathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
+const PreviewPathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     examples: PreviewPathCleaningSuggestionResponseExamplesList,
     changed_path_count: S.Number,

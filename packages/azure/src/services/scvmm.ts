@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AvailabilitySetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AvailabilitySetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const AvailabilitySetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AvailabilitySetsCreateOrUpdateRequestTagsMap>;
@@ -23,7 +23,7 @@ export interface AvailabilitySetPropertiesInput {
   /** ARM Id of the vmmServer resource in which this resource resides. */
   vmmServerId?: string;
 }
-export const AvailabilitySetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AvailabilitySetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilitySetName: S.optional(S.String),
     vmmServerId: S.optional(S.String),
@@ -39,7 +39,7 @@ export interface ExtendedLocation {
   /** The extended location name. */
   name?: string;
 }
-export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     name: S.optional(S.String),
@@ -62,7 +62,7 @@ export interface AvailabilitySetsCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const AvailabilitySetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AvailabilitySetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -85,11 +85,11 @@ export const AvailabilitySetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -106,7 +106,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -119,7 +119,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AvailabilitySetsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AvailabilitySetsCreateOrUpdateResponseTagsMap =
+const AvailabilitySetsCreateOrUpdateResponseTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<AvailabilitySetsCreateOrUpdateResponseTagsMap>;
 
 /** The provisioning state of the resource. */
@@ -132,7 +132,7 @@ export type ProvisioningState =
   | "Deleting"
   | "Accepted"
   | "Created";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Defines the resource properties. */
 export interface AvailabilitySetProperties {
@@ -143,7 +143,7 @@ export interface AvailabilitySetProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const AvailabilitySetProperties = /*@__PURE__*/ S.suspend(() =>
+const AvailabilitySetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilitySetName: S.optional(S.String),
     vmmServerId: S.optional(S.String),
@@ -171,7 +171,7 @@ export interface AvailabilitySetsCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const AvailabilitySetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AvailabilitySetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -188,7 +188,7 @@ export const AvailabilitySetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type CloudsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CloudsCreateOrUpdateRequestTagsMap =
+const CloudsCreateOrUpdateRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<CloudsCreateOrUpdateRequestTagsMap>;
 
 /** Defines the resource properties. */
@@ -200,7 +200,7 @@ export interface CloudPropertiesInput {
   /** ARM Id of the vmmServer resource in which this resource resides. */
   vmmServerId?: string;
 }
-export const CloudPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CloudPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryItemId: S.optional(S.String),
     uuid: S.optional(S.String),
@@ -224,7 +224,7 @@ export interface CloudsCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const CloudsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -247,7 +247,7 @@ export const CloudsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CloudsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CloudsCreateOrUpdateResponseTagsMap =
+const CloudsCreateOrUpdateResponseTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<CloudsCreateOrUpdateResponseTagsMap>;
 
 /** Cloud Capacity model */
@@ -261,7 +261,7 @@ export interface CloudCapacity {
   /** StorageGB gives the storage in GB present in the cloud. */
   storageGB?: number;
 }
-export const CloudCapacity = /*@__PURE__*/ S.suspend(() =>
+const CloudCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuCount: S.optional(S.Number),
     memoryMB: S.optional(S.Number),
@@ -285,7 +285,7 @@ export interface StorageQosPolicy {
   /** The underlying policy. */
   policyId?: string;
 }
-export const StorageQosPolicy = /*@__PURE__*/ S.suspend(() =>
+const StorageQosPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -298,7 +298,7 @@ export const StorageQosPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of QoS policies available for the cloud. */
 export type CloudPropertiesStorageQoSPoliciesList = Array<StorageQosPolicy>;
-export const CloudPropertiesStorageQoSPoliciesList = /*@__PURE__*/ S.Array(
+const CloudPropertiesStorageQoSPoliciesList = /*@__PURE__*/ S.Array(
   StorageQosPolicy,
 ) as any as S.Schema<CloudPropertiesStorageQoSPoliciesList>;
 
@@ -319,7 +319,7 @@ export interface CloudProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const CloudProperties = /*@__PURE__*/ S.suspend(() =>
+const CloudProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryItemId: S.optional(S.String),
     uuid: S.optional(S.String),
@@ -349,7 +349,7 @@ export interface CloudsCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const CloudsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CloudsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -371,7 +371,7 @@ export interface GuestCredential {
   /** Gets or sets the password to connect with the guest. */
   password: string | Redacted.Redacted<string>;
 }
-export const GuestCredential = /*@__PURE__*/ S.suspend(() =>
+const GuestCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     password: S.String.pipe(T.SensitiveValue({})),
@@ -383,7 +383,7 @@ export interface HttpProxyConfiguration {
   /** Gets or sets httpsProxy url. */
   httpsProxy?: string;
 }
-export const HttpProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
+const HttpProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpsProxy: S.optional(S.String),
   }),
@@ -391,7 +391,7 @@ export const HttpProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Guest agent provisioning action. */
 export type ProvisioningAction = "install" | "uninstall" | "repair";
-export const ProvisioningAction = S.String;
+const ProvisioningAction = S.String;
 
 /** Defines the resource properties. */
 export interface GuestAgentPropertiesInput {
@@ -404,7 +404,7 @@ export interface GuestAgentPropertiesInput {
   /** The resource id of the private link scope this machine is assigned to, if any. */
   privateLinkScopeResourceId?: string;
 }
-export const GuestAgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GuestAgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(GuestCredential),
     httpProxyConfig: S.optional(HttpProxyConfiguration),
@@ -421,7 +421,7 @@ export interface CreateGuestAgentRequest {
   /** The resource-specific properties for this resource. */
   properties?: GuestAgentPropertiesInput;
 }
-export const CreateGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     properties: S.optional(GuestAgentPropertiesInput),
@@ -454,7 +454,7 @@ export interface GuestAgentProperties {
   /** The resource id of the private link scope this machine is assigned to, if any. */
   privateLinkScopeResourceId?: string;
 }
-export const GuestAgentProperties = /*@__PURE__*/ S.suspend(() =>
+const GuestAgentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     credentials: S.optional(GuestCredential),
@@ -479,7 +479,7 @@ export interface CreateGuestAgentResponse {
   /** The resource-specific properties for this resource. */
   properties?: GuestAgentProperties;
 }
-export const CreateGuestAgentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGuestAgentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -495,14 +495,14 @@ export type InventoryType =
   | "VirtualNetwork"
   | "VirtualMachine"
   | "VirtualMachineTemplate";
-export const InventoryType = S.String;
+const InventoryType = S.String;
 
 /** Defines the resource properties. */
 export interface InventoryItemPropertiesInput {
   /** They inventory type. */
   inventoryType: InventoryType | (string & {});
 }
-export const InventoryItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const InventoryItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryType: InventoryType,
   }),
@@ -524,7 +524,7 @@ export interface CreateInventoryItemRequest {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
 }
-export const CreateInventoryItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInventoryItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -557,7 +557,7 @@ export interface InventoryItemProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const InventoryItemProperties = /*@__PURE__*/ S.suspend(() =>
+const InventoryItemProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryType: InventoryType,
     managedResourceId: S.optional(S.String),
@@ -581,7 +581,7 @@ export interface CreateInventoryItemResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
 }
-export const CreateInventoryItemResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInventoryItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -602,7 +602,7 @@ export interface CreateVirtualMachineInstanceCheckpointRequest {
   /** Description of the checkpoint. */
   description?: string;
 }
-export const CreateVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -620,7 +620,7 @@ export const CreateVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateVirtualMachineInstanceCheckpointRequest>;
 
 export interface CreateVirtualMachineInstanceCheckpointResponse {}
-export const CreateVirtualMachineInstanceCheckpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVirtualMachineInstanceCheckpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateVirtualMachineInstanceCheckpointResponse",
@@ -636,7 +636,7 @@ export interface DeleteAvailabilitySetRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
-export const DeleteAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -655,7 +655,7 @@ export const DeleteAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAvailabilitySetRequest>;
 
 export interface DeleteAvailabilitySetResponse {}
-export const DeleteAvailabilitySetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAvailabilitySetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAvailabilitySetResponse",
 }) as any as S.Schema<DeleteAvailabilitySetResponse>;
 
@@ -669,7 +669,7 @@ export interface DeleteCloudRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
-export const DeleteCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -686,14 +686,13 @@ export const DeleteCloudRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCloudRequest" }) as any as S.Schema<DeleteCloudRequest>;
 
 export interface DeleteCloudResponse {}
-export const DeleteCloudResponse =
-  DeleteAvailabilitySetResponse as any as S.Schema<DeleteCloudResponse>;
+const DeleteCloudResponse = DeleteAvailabilitySetResponse as any as S.Schema<DeleteCloudResponse>;
 
 export interface DeleteGuestAgentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const DeleteGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -707,7 +706,7 @@ export const DeleteGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGuestAgentRequest" }) as any as S.Schema<DeleteGuestAgentRequest>;
 
 export interface DeleteGuestAgentResponse {}
-export const DeleteGuestAgentResponse =
+const DeleteGuestAgentResponse =
   DeleteAvailabilitySetResponse as any as S.Schema<DeleteGuestAgentResponse>;
 
 export interface DeleteInventoryItemRequest {
@@ -720,7 +719,7 @@ export interface DeleteInventoryItemRequest {
   /** Name of the inventoryItem. */
   inventoryItemResourceName: string;
 }
-export const DeleteInventoryItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInventoryItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -739,7 +738,7 @@ export const DeleteInventoryItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInventoryItemRequest>;
 
 export interface DeleteInventoryItemResponse {}
-export const DeleteInventoryItemResponse =
+const DeleteInventoryItemResponse =
   DeleteAvailabilitySetResponse as any as S.Schema<DeleteInventoryItemResponse>;
 
 export interface DeleteVirtualMachineInstanceRequest {
@@ -750,7 +749,7 @@ export interface DeleteVirtualMachineInstanceRequest {
   /** Whether to disable the VM from azure and also delete it from Vmm. */
   deleteFromHost?: boolean;
 }
-export const DeleteVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query(), T.StringEncoded())),
@@ -768,7 +767,7 @@ export const DeleteVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualMachineInstanceRequest>;
 
 export interface DeleteVirtualMachineInstanceResponse {}
-export const DeleteVirtualMachineInstanceResponse =
+const DeleteVirtualMachineInstanceResponse =
   CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<DeleteVirtualMachineInstanceResponse>;
 
 export interface DeleteVirtualMachineInstanceCheckpointRequest {
@@ -777,7 +776,7 @@ export interface DeleteVirtualMachineInstanceCheckpointRequest {
   /** ID of the checkpoint to be deleted. */
   id?: string;
 }
-export const DeleteVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -794,7 +793,7 @@ export const DeleteVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteVirtualMachineInstanceCheckpointRequest>;
 
 export interface DeleteVirtualMachineInstanceCheckpointResponse {}
-export const DeleteVirtualMachineInstanceCheckpointResponse =
+const DeleteVirtualMachineInstanceCheckpointResponse =
   CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<DeleteVirtualMachineInstanceCheckpointResponse>;
 
 export interface DeleteVirtualMachineTemplateRequest {
@@ -807,7 +806,7 @@ export interface DeleteVirtualMachineTemplateRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
-export const DeleteVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -826,7 +825,7 @@ export const DeleteVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualMachineTemplateRequest>;
 
 export interface DeleteVirtualMachineTemplateResponse {}
-export const DeleteVirtualMachineTemplateResponse =
+const DeleteVirtualMachineTemplateResponse =
   CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<DeleteVirtualMachineTemplateResponse>;
 
 export interface DeleteVirtualNetworkRequest {
@@ -839,7 +838,7 @@ export interface DeleteVirtualNetworkRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
-export const DeleteVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -858,7 +857,7 @@ export const DeleteVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualNetworkRequest>;
 
 export interface DeleteVirtualNetworkResponse {}
-export const DeleteVirtualNetworkResponse =
+const DeleteVirtualNetworkResponse =
   DeleteAvailabilitySetResponse as any as S.Schema<DeleteVirtualNetworkResponse>;
 
 export interface DeleteVmmServerRequest {
@@ -871,7 +870,7 @@ export interface DeleteVmmServerRequest {
   /** Forces the resource to be deleted. */
   force?: boolean;
 }
-export const DeleteVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -888,7 +887,7 @@ export const DeleteVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVmmServerRequest" }) as any as S.Schema<DeleteVmmServerRequest>;
 
 export interface DeleteVmmServerResponse {}
-export const DeleteVmmServerResponse =
+const DeleteVmmServerResponse =
   DeleteAvailabilitySetResponse as any as S.Schema<DeleteVmmServerResponse>;
 
 export interface GetAvailabilitySetRequest {
@@ -899,7 +898,7 @@ export interface GetAvailabilitySetRequest {
   /** Name of the AvailabilitySet. */
   availabilitySetResourceName: string;
 }
-export const GetAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -918,9 +917,6 @@ export const GetAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAvailabilitySetResponseTagsMap = { [key: string]: string | undefined };
-export const GetAvailabilitySetResponseTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAvailabilitySetResponseTagsMap>;
-
 export interface GetAvailabilitySetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -939,7 +935,7 @@ export interface GetAvailabilitySetResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const GetAvailabilitySetResponse =
+const GetAvailabilitySetResponse =
   AvailabilitySetsCreateOrUpdateResponse as any as S.Schema<GetAvailabilitySetResponse>;
 
 export interface GetCloudRequest {
@@ -950,7 +946,7 @@ export interface GetCloudRequest {
   /** Name of the Cloud. */
   cloudResourceName: string;
 }
-export const GetCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -967,7 +963,7 @@ export const GetCloudRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCloudResponseTagsMap = { [key: string]: string | undefined };
-export const GetCloudResponseTagsMap =
+const GetCloudResponseTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCloudResponseTagsMap>;
 
 export interface GetCloudResponse {
@@ -988,7 +984,7 @@ export interface GetCloudResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const GetCloudResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCloudResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1005,7 +1001,7 @@ export interface GetGuestAgentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const GetGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGuestAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1030,8 +1026,7 @@ export interface GetGuestAgentResponse {
   /** The resource-specific properties for this resource. */
   properties?: GuestAgentProperties;
 }
-export const GetGuestAgentResponse =
-  CreateGuestAgentResponse as any as S.Schema<GetGuestAgentResponse>;
+const GetGuestAgentResponse = CreateGuestAgentResponse as any as S.Schema<GetGuestAgentResponse>;
 
 export interface GetInventoryItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1043,7 +1038,7 @@ export interface GetInventoryItemRequest {
   /** Name of the inventoryItem. */
   inventoryItemResourceName: string;
 }
-export const GetInventoryItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInventoryItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1073,7 +1068,7 @@ export interface GetInventoryItemResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
 }
-export const GetInventoryItemResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInventoryItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1088,7 +1083,7 @@ export interface GetVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const GetVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1110,7 +1105,7 @@ export interface AvailabilitySetListItem {
   /** Gets or sets the name of the availability set. */
   name?: string;
 }
-export const AvailabilitySetListItem = /*@__PURE__*/ S.suspend(() =>
+const AvailabilitySetListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1119,13 +1114,13 @@ export const AvailabilitySetListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability Sets in vm. */
 export type VirtualMachineInstancePropertiesAvailabilitySetsList = Array<AvailabilitySetListItem>;
-export const VirtualMachineInstancePropertiesAvailabilitySetsList = /*@__PURE__*/ S.Array(
+const VirtualMachineInstancePropertiesAvailabilitySetsList = /*@__PURE__*/ S.Array(
   AvailabilitySetListItem,
 ) as any as S.Schema<VirtualMachineInstancePropertiesAvailabilitySetsList>;
 
 /** Virtual machine operating system type. */
 export type OsType = "Windows" | "Linux" | "Other";
-export const OsType = S.String;
+const OsType = S.String;
 
 /** Defines the resource properties. */
 export interface OsProfileForVmInstance {
@@ -1156,7 +1151,7 @@ export interface OsProfileForVmInstance {
   /** Get or sets the commands to be run once at the time of creation separated by semicolons. */
   runOnceCommands?: string;
 }
-export const OsProfileForVmInstance = /*@__PURE__*/ S.suspend(() =>
+const OsProfileForVmInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminUsername: S.optional(S.String),
     adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1176,15 +1171,15 @@ export const OsProfileForVmInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Limit CPU for migration. */
 export type LimitCpuForMigration = "true" | "false";
-export const LimitCpuForMigration = S.String;
+const LimitCpuForMigration = S.String;
 
 /** Dynamic memory enabled. */
 export type DynamicMemoryEnabled = "true" | "false";
-export const DynamicMemoryEnabled = S.String;
+const DynamicMemoryEnabled = S.String;
 
 /** Highly available. */
 export type IsHighlyAvailable = "true" | "false";
-export const IsHighlyAvailable = S.String;
+const IsHighlyAvailable = S.String;
 
 /** Defines the resource properties. */
 export interface HardwareProfile {
@@ -1203,7 +1198,7 @@ export interface HardwareProfile {
   /** Gets highly available property. */
   isHighlyAvailable?: IsHighlyAvailable | (string & {});
 }
-export const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
+const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryMB: S.optional(S.Number),
     cpuCount: S.optional(S.Number),
@@ -1217,18 +1212,18 @@ export const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the nic ipv4 addresses. */
 export type NetworkInterfaceIpv4AddressesList = Array<string>;
-export const NetworkInterfaceIpv4AddressesList = /*@__PURE__*/ S.Array(
+const NetworkInterfaceIpv4AddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkInterfaceIpv4AddressesList>;
 
 /** Gets the nic ipv6 addresses. */
 export type NetworkInterfaceIpv6AddressesList = Array<string>;
-export const NetworkInterfaceIpv6AddressesList =
+const NetworkInterfaceIpv6AddressesList =
   NetworkInterfaceIpv4AddressesList as any as S.Schema<NetworkInterfaceIpv6AddressesList>;
 
 /** Network address allocation method. */
 export type AllocationMethod = "Dynamic" | "Static";
-export const AllocationMethod = S.String;
+const AllocationMethod = S.String;
 
 /** Network Interface model */
 export interface NetworkInterface {
@@ -1255,7 +1250,7 @@ export interface NetworkInterface {
   /** Gets or sets the nic id. */
   nicId?: string;
 }
-export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1273,7 +1268,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
 export type NetworkProfileNetworkInterfacesList = Array<NetworkInterface>;
-export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
+const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
 
@@ -1282,7 +1277,7 @@ export interface NetworkProfile {
   /** Gets or sets the list of network interfaces associated with the virtual machine. */
   networkInterfaces?: NetworkProfileNetworkInterfacesList;
 }
-export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkInterfaces: S.optional(NetworkProfileNetworkInterfacesList),
   }),
@@ -1295,7 +1290,7 @@ export interface StorageQosPolicyDetails {
   /** The ID of the QoS policy. */
   id?: string;
 }
-export const StorageQosPolicyDetails = /*@__PURE__*/ S.suspend(() =>
+const StorageQosPolicyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -1304,7 +1299,7 @@ export const StorageQosPolicyDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Create diff disk. */
 export type CreateDiffDisk = "true" | "false";
-export const CreateDiffDisk = S.String;
+const CreateDiffDisk = S.String;
 
 /** Virtual disk model */
 export interface VirtualDisk {
@@ -1337,7 +1332,7 @@ export interface VirtualDisk {
   /** Gets or sets a value indicating diff disk. */
   createDiffDisk?: CreateDiffDisk;
 }
-export const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
+const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1358,7 +1353,7 @@ export const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
 export type StorageProfileDisksList = Array<VirtualDisk>;
-export const StorageProfileDisksList = /*@__PURE__*/ S.Array(
+const StorageProfileDisksList = /*@__PURE__*/ S.Array(
   VirtualDisk,
 ) as any as S.Schema<StorageProfileDisksList>;
 
@@ -1367,7 +1362,7 @@ export interface StorageProfile {
   /** Gets or sets the list of virtual disks associated with the virtual machine. */
   disks?: StorageProfileDisksList;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
+const StorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disks: S.optional(StorageProfileDisksList),
   }),
@@ -1384,7 +1379,7 @@ export interface Checkpoint {
   /** Gets description of the checkpoint. */
   description?: string;
 }
-export const Checkpoint = /*@__PURE__*/ S.suspend(() =>
+const Checkpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentCheckpointID: S.optional(S.String),
     checkpointID: S.optional(S.String),
@@ -1395,7 +1390,7 @@ export const Checkpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Checkpoints in the vm. */
 export type InfrastructureProfileCheckpointsList = Array<Checkpoint>;
-export const InfrastructureProfileCheckpointsList = /*@__PURE__*/ S.Array(
+const InfrastructureProfileCheckpointsList = /*@__PURE__*/ S.Array(
   Checkpoint,
 ) as any as S.Schema<InfrastructureProfileCheckpointsList>;
 
@@ -1424,7 +1419,7 @@ export interface InfrastructureProfile {
   /** Gets or sets the bios guid for the vm. */
   biosGuid?: string;
 }
-export const InfrastructureProfile = /*@__PURE__*/ S.suspend(() =>
+const InfrastructureProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryItemId: S.optional(S.String),
     vmmServerId: S.optional(S.String),
@@ -1459,7 +1454,7 @@ export interface VirtualMachineInstanceProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const VirtualMachineInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilitySets: S.optional(VirtualMachineInstancePropertiesAvailabilitySetsList),
     osProfile: S.optional(OsProfileForVmInstance),
@@ -1488,7 +1483,7 @@ export interface GetVirtualMachineInstanceResponse {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const GetVirtualMachineInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1509,7 +1504,7 @@ export interface GetVirtualMachineTemplateRequest {
   /** Name of the VirtualMachineTemplate. */
   virtualMachineTemplateName: string;
 }
-export const GetVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1528,21 +1523,21 @@ export const GetVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualMachineTemplateResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualMachineTemplateResponseTagsMap =
+const GetVirtualMachineTemplateResponseTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualMachineTemplateResponseTagsMap>;
 
 /** Customizable. */
 export type IsCustomizable = "true" | "false";
-export const IsCustomizable = S.String;
+const IsCustomizable = S.String;
 
 /** Gets the network interfaces of the template. */
 export type VirtualMachineTemplatePropertiesNetworkInterfacesList = Array<NetworkInterface>;
-export const VirtualMachineTemplatePropertiesNetworkInterfacesList =
+const VirtualMachineTemplatePropertiesNetworkInterfacesList =
   NetworkProfileNetworkInterfacesList as any as S.Schema<VirtualMachineTemplatePropertiesNetworkInterfacesList>;
 
 /** Gets the disks of the template. */
 export type VirtualMachineTemplatePropertiesDisksList = Array<VirtualDisk>;
-export const VirtualMachineTemplatePropertiesDisksList =
+const VirtualMachineTemplatePropertiesDisksList =
   StorageProfileDisksList as any as S.Schema<VirtualMachineTemplatePropertiesDisksList>;
 
 /** Defines the resource properties. */
@@ -1584,7 +1579,7 @@ export interface VirtualMachineTemplateProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const VirtualMachineTemplateProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineTemplateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryItemId: S.optional(S.String),
     uuid: S.optional(S.String),
@@ -1627,7 +1622,7 @@ export interface GetVirtualMachineTemplateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const GetVirtualMachineTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1650,7 +1645,7 @@ export interface GetVirtualNetworkRequest {
   /** Name of the VirtualNetwork. */
   virtualNetworkName: string;
 }
-export const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1667,7 +1662,7 @@ export const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const GetVirtualNetworkResponseTagsMap =
+const GetVirtualNetworkResponseTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
 
 /** Defines the resource properties. */
@@ -1683,7 +1678,7 @@ export interface VirtualNetworkProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryItemId: S.optional(S.String),
     uuid: S.optional(S.String),
@@ -1711,7 +1706,7 @@ export interface GetVirtualNetworkResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const GetVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1730,7 +1725,7 @@ export interface GetVmInstanceHybridIdentityMetadatasRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const GetVmInstanceHybridIdentityMetadatasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmInstanceHybridIdentityMetadatasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1754,7 +1749,7 @@ export interface VmInstanceHybridIdentityMetadataProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const VmInstanceHybridIdentityMetadataProperties = /*@__PURE__*/ S.suspend(() =>
+const VmInstanceHybridIdentityMetadataProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUid: S.optional(S.String),
     publicKey: S.optional(S.String),
@@ -1776,7 +1771,7 @@ export interface GetVmInstanceHybridIdentityMetadatasResponse {
   /** The resource-specific properties for this resource. */
   properties?: VmInstanceHybridIdentityMetadataProperties;
 }
-export const GetVmInstanceHybridIdentityMetadatasResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVmInstanceHybridIdentityMetadatasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1796,7 +1791,7 @@ export interface GetVmmServerRequest {
   /** Name of the VmmServer. */
   vmmServerName: string;
 }
-export const GetVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1813,7 +1808,7 @@ export const GetVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetVmmServerResponseTagsMap = { [key: string]: string | undefined };
-export const GetVmmServerResponseTagsMap =
+const GetVmmServerResponseTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<GetVmmServerResponseTagsMap>;
 
 /** Credentials to connect to VmmServer. */
@@ -1823,7 +1818,7 @@ export interface VmmCredential {
   /** Password to use to connect to VmmServer. */
   password?: string | Redacted.Redacted<string>;
 }
-export const VmmCredential = /*@__PURE__*/ S.suspend(() =>
+const VmmCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1849,7 +1844,7 @@ export interface VmmServerProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const VmmServerProperties = /*@__PURE__*/ S.suspend(() =>
+const VmmServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(VmmCredential),
     fqdn: S.String,
@@ -1880,7 +1875,7 @@ export interface GetVmmServerResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const GetVmmServerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVmmServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1899,7 +1894,7 @@ export interface ListAvailabilitySetByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAvailabilitySetByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailabilitySetByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1917,7 +1912,7 @@ export const ListAvailabilitySetByResourceGroupRequest = /*@__PURE__*/ S.suspend
 
 /** Resource tags. */
 export type AvailabilitySetTagsMap = { [key: string]: string | undefined };
-export const AvailabilitySetTagsMap =
+const AvailabilitySetTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<AvailabilitySetTagsMap>;
 
 /** The AvailabilitySets resource definition. */
@@ -1939,7 +1934,7 @@ export interface AvailabilitySet {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const AvailabilitySet = /*@__PURE__*/ S.suspend(() =>
+const AvailabilitySet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1954,7 +1949,7 @@ export const AvailabilitySet = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvailabilitySet items on this page */
 export type AvailabilitySetListResultValueList = Array<AvailabilitySet>;
-export const AvailabilitySetListResultValueList = /*@__PURE__*/ S.Array(
+const AvailabilitySetListResultValueList = /*@__PURE__*/ S.Array(
   AvailabilitySet,
 ) as any as S.Schema<AvailabilitySetListResultValueList>;
 
@@ -1965,7 +1960,7 @@ export interface AvailabilitySetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AvailabilitySetListResult = /*@__PURE__*/ S.suspend(() =>
+const AvailabilitySetListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AvailabilitySetListResultValueList,
     nextLink: S.optional(S.String),
@@ -1978,7 +1973,7 @@ export interface ListAvailabilitySetBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListAvailabilitySetBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailabilitySetBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1999,7 +1994,7 @@ export interface ListCloudByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListCloudByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCloudByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2017,9 +2012,6 @@ export const ListCloudByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CloudTagsMap = { [key: string]: string | undefined };
-export const CloudTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<CloudTagsMap>;
-
 /** The Clouds resource definition. */
 export interface Cloud {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2039,11 +2031,11 @@ export interface Cloud {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const Cloud = GetCloudResponse as any as S.Schema<Cloud>;
+const Cloud = GetCloudResponse as any as S.Schema<Cloud>;
 
 /** The Cloud items on this page */
 export type CloudListResultValueList = Array<Cloud>;
-export const CloudListResultValueList = /*@__PURE__*/ S.Array(
+const CloudListResultValueList = /*@__PURE__*/ S.Array(
   Cloud,
 ) as any as S.Schema<CloudListResultValueList>;
 
@@ -2054,7 +2046,7 @@ export interface CloudListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CloudListResult = /*@__PURE__*/ S.suspend(() =>
+const CloudListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CloudListResultValueList,
     nextLink: S.optional(S.String),
@@ -2065,7 +2057,7 @@ export interface ListCloudBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListCloudBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCloudBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2084,7 +2076,7 @@ export interface ListGuestAgentByVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListGuestAgentByVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGuestAgentByVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -2112,11 +2104,11 @@ export interface GuestAgent {
   /** The resource-specific properties for this resource. */
   properties?: GuestAgentProperties;
 }
-export const GuestAgent = CreateGuestAgentResponse as any as S.Schema<GuestAgent>;
+const GuestAgent = CreateGuestAgentResponse as any as S.Schema<GuestAgent>;
 
 /** The GuestAgent items on this page */
 export type GuestAgentListResultValueList = Array<GuestAgent>;
-export const GuestAgentListResultValueList = /*@__PURE__*/ S.Array(
+const GuestAgentListResultValueList = /*@__PURE__*/ S.Array(
   GuestAgent,
 ) as any as S.Schema<GuestAgentListResultValueList>;
 
@@ -2127,7 +2119,7 @@ export interface GuestAgentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GuestAgentListResult = /*@__PURE__*/ S.suspend(() =>
+const GuestAgentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GuestAgentListResultValueList,
     nextLink: S.optional(S.String),
@@ -2142,7 +2134,7 @@ export interface ListInventoryItemByVmmServerRequest {
   /** Name of the VmmServer. */
   vmmServerName: string;
 }
-export const ListInventoryItemByVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInventoryItemByVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2174,11 +2166,11 @@ export interface InventoryItem {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
 }
-export const InventoryItem = GetInventoryItemResponse as any as S.Schema<InventoryItem>;
+const InventoryItem = GetInventoryItemResponse as any as S.Schema<InventoryItem>;
 
 /** The InventoryItem items on this page */
 export type InventoryItemListResultValueList = Array<InventoryItem>;
-export const InventoryItemListResultValueList = /*@__PURE__*/ S.Array(
+const InventoryItemListResultValueList = /*@__PURE__*/ S.Array(
   InventoryItem,
 ) as any as S.Schema<InventoryItemListResultValueList>;
 
@@ -2189,7 +2181,7 @@ export interface InventoryItemListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const InventoryItemListResult = /*@__PURE__*/ S.suspend(() =>
+const InventoryItemListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: InventoryItemListResultValueList,
     nextLink: S.optional(S.String),
@@ -2197,7 +2189,7 @@ export const InventoryItemListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InventoryItemListResult" }) as any as S.Schema<InventoryItemListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2219,7 +2211,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2230,11 +2222,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -2249,7 +2241,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -2261,7 +2253,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -2271,7 +2263,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -2282,7 +2274,7 @@ export interface ListVirtualMachineInstancesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListVirtualMachineInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -2312,7 +2304,7 @@ export interface VirtualMachineInstance {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2325,7 +2317,7 @@ export const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualMachineInstance items on this page */
 export type VirtualMachineInstanceListResultValueList = Array<VirtualMachineInstance>;
-export const VirtualMachineInstanceListResultValueList = /*@__PURE__*/ S.Array(
+const VirtualMachineInstanceListResultValueList = /*@__PURE__*/ S.Array(
   VirtualMachineInstance,
 ) as any as S.Schema<VirtualMachineInstanceListResultValueList>;
 
@@ -2336,7 +2328,7 @@ export interface VirtualMachineInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VirtualMachineInstanceListResult = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstanceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VirtualMachineInstanceListResultValueList,
     nextLink: S.optional(S.String),
@@ -2351,7 +2343,7 @@ export interface ListVirtualMachineTemplateByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListVirtualMachineTemplateByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineTemplateByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2369,7 +2361,7 @@ export const ListVirtualMachineTemplateByResourceGroupRequest = /*@__PURE__*/ S.
 
 /** Resource tags. */
 export type VirtualMachineTemplateTagsMap = { [key: string]: string | undefined };
-export const VirtualMachineTemplateTagsMap =
+const VirtualMachineTemplateTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineTemplateTagsMap>;
 
 /** The VirtualMachineTemplates resource definition. */
@@ -2391,7 +2383,7 @@ export interface VirtualMachineTemplate {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2406,7 +2398,7 @@ export const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualMachineTemplate items on this page */
 export type VirtualMachineTemplateListResultValueList = Array<VirtualMachineTemplate>;
-export const VirtualMachineTemplateListResultValueList = /*@__PURE__*/ S.Array(
+const VirtualMachineTemplateListResultValueList = /*@__PURE__*/ S.Array(
   VirtualMachineTemplate,
 ) as any as S.Schema<VirtualMachineTemplateListResultValueList>;
 
@@ -2417,7 +2409,7 @@ export interface VirtualMachineTemplateListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VirtualMachineTemplateListResult = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineTemplateListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VirtualMachineTemplateListResultValueList,
     nextLink: S.optional(S.String),
@@ -2430,7 +2422,7 @@ export interface ListVirtualMachineTemplateBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListVirtualMachineTemplateBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineTemplateBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2451,7 +2443,7 @@ export interface ListVirtualNetworkByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2469,7 +2461,7 @@ export const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworkTagsMap =
+const VirtualNetworkTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworkTagsMap>;
 
 /** The VirtualNetworks resource definition. */
@@ -2491,7 +2483,7 @@ export interface VirtualNetwork {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2506,7 +2498,7 @@ export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualNetwork items on this page */
 export type VirtualNetworkListResultValueList = Array<VirtualNetwork>;
-export const VirtualNetworkListResultValueList = /*@__PURE__*/ S.Array(
+const VirtualNetworkListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<VirtualNetworkListResultValueList>;
 
@@ -2517,7 +2509,7 @@ export interface VirtualNetworkListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VirtualNetworkListResult = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VirtualNetworkListResultValueList,
     nextLink: S.optional(S.String),
@@ -2528,7 +2520,7 @@ export interface ListVirtualNetworkBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListVirtualNetworkBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualNetworkBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2547,7 +2539,7 @@ export interface ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRe
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest =
+const ListVmInstanceHybridIdentityMetadatasByVirtualMachineInstanceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceUri: S.String.pipe(T.Label()),
@@ -2576,13 +2568,13 @@ export interface VmInstanceHybridIdentityMetadata {
   /** The resource-specific properties for this resource. */
   properties?: VmInstanceHybridIdentityMetadataProperties;
 }
-export const VmInstanceHybridIdentityMetadata =
+const VmInstanceHybridIdentityMetadata =
   GetVmInstanceHybridIdentityMetadatasResponse as any as S.Schema<VmInstanceHybridIdentityMetadata>;
 
 /** The VmInstanceHybridIdentityMetadata items on this page */
 export type VmInstanceHybridIdentityMetadataListResultValueList =
   Array<VmInstanceHybridIdentityMetadata>;
-export const VmInstanceHybridIdentityMetadataListResultValueList = /*@__PURE__*/ S.Array(
+const VmInstanceHybridIdentityMetadataListResultValueList = /*@__PURE__*/ S.Array(
   VmInstanceHybridIdentityMetadata,
 ) as any as S.Schema<VmInstanceHybridIdentityMetadataListResultValueList>;
 
@@ -2593,7 +2585,7 @@ export interface VmInstanceHybridIdentityMetadataListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmInstanceHybridIdentityMetadataListResult = /*@__PURE__*/ S.suspend(() =>
+const VmInstanceHybridIdentityMetadataListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VmInstanceHybridIdentityMetadataListResultValueList,
     nextLink: S.optional(S.String),
@@ -2608,7 +2600,7 @@ export interface ListVmmServerByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListVmmServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmmServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2626,9 +2618,6 @@ export const ListVmmServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VmmServerTagsMap = { [key: string]: string | undefined };
-export const VmmServerTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VmmServerTagsMap>;
-
 /** The VmmServers resource definition. */
 export interface VmmServer {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2648,11 +2637,11 @@ export interface VmmServer {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VmmServer = GetVmmServerResponse as any as S.Schema<VmmServer>;
+const VmmServer = GetVmmServerResponse as any as S.Schema<VmmServer>;
 
 /** The VmmServer items on this page */
 export type VmmServerListResultValueList = Array<VmmServer>;
-export const VmmServerListResultValueList = /*@__PURE__*/ S.Array(
+const VmmServerListResultValueList = /*@__PURE__*/ S.Array(
   VmmServer,
 ) as any as S.Schema<VmmServerListResultValueList>;
 
@@ -2663,7 +2652,7 @@ export interface VmmServerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmmServerListResult = /*@__PURE__*/ S.suspend(() =>
+const VmmServerListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VmmServerListResultValueList,
     nextLink: S.optional(S.String),
@@ -2674,7 +2663,7 @@ export interface ListVmmServerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListVmmServerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmmServerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2693,7 +2682,7 @@ export interface RestartVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const RestartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -2709,7 +2698,7 @@ export const RestartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RestartVirtualMachineInstanceRequest>;
 
 export interface RestartVirtualMachineInstanceResponse {}
-export const RestartVirtualMachineInstanceResponse =
+const RestartVirtualMachineInstanceResponse =
   CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<RestartVirtualMachineInstanceResponse>;
 
 export interface RestoreVirtualMachineInstanceCheckpointRequest {
@@ -2718,7 +2707,7 @@ export interface RestoreVirtualMachineInstanceCheckpointRequest {
   /** ID of the checkpoint to be restored to. */
   id?: string;
 }
-export const RestoreVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -2735,14 +2724,14 @@ export const RestoreVirtualMachineInstanceCheckpointRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<RestoreVirtualMachineInstanceCheckpointRequest>;
 
 export interface RestoreVirtualMachineInstanceCheckpointResponse {}
-export const RestoreVirtualMachineInstanceCheckpointResponse =
+const RestoreVirtualMachineInstanceCheckpointResponse =
   CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<RestoreVirtualMachineInstanceCheckpointResponse>;
 
 export interface StartVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export const StartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const StartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -2758,7 +2747,7 @@ export const StartVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartVirtualMachineInstanceRequest>;
 
 export interface StartVirtualMachineInstanceResponse {}
-export const StartVirtualMachineInstanceResponse =
+const StartVirtualMachineInstanceResponse =
   CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<StartVirtualMachineInstanceResponse>;
 
 export interface StopVirtualMachineInstanceRequest {
@@ -2767,7 +2756,7 @@ export interface StopVirtualMachineInstanceRequest {
   /** Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false. */
   skipShutdown?: boolean;
 }
-export const StopVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const StopVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     skipShutdown: S.optional(S.Boolean.pipe(T.StringEncoded())),
@@ -2784,12 +2773,12 @@ export const StopVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopVirtualMachineInstanceRequest>;
 
 export interface StopVirtualMachineInstanceResponse {}
-export const StopVirtualMachineInstanceResponse =
+const StopVirtualMachineInstanceResponse =
   CreateVirtualMachineInstanceCheckpointResponse as any as S.Schema<StopVirtualMachineInstanceResponse>;
 
 /** Resource tags. */
 export type UpdateAvailabilitySetRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAvailabilitySetRequestTagsMap =
+const UpdateAvailabilitySetRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAvailabilitySetRequestTagsMap>;
 
 export interface UpdateAvailabilitySetRequest {
@@ -2802,7 +2791,7 @@ export interface UpdateAvailabilitySetRequest {
   /** Resource tags. */
   tags?: UpdateAvailabilitySetRequestTagsMap;
 }
-export const UpdateAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2822,9 +2811,6 @@ export const UpdateAvailabilitySetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAvailabilitySetResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAvailabilitySetResponseTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAvailabilitySetResponseTagsMap>;
-
 export interface UpdateAvailabilitySetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2843,12 +2829,12 @@ export interface UpdateAvailabilitySetResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateAvailabilitySetResponse =
+const UpdateAvailabilitySetResponse =
   AvailabilitySetsCreateOrUpdateResponse as any as S.Schema<UpdateAvailabilitySetResponse>;
 
 /** Resource tags. */
 export type UpdateCloudRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCloudRequestTagsMap =
+const UpdateCloudRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCloudRequestTagsMap>;
 
 export interface UpdateCloudRequest {
@@ -2861,7 +2847,7 @@ export interface UpdateCloudRequest {
   /** Resource tags. */
   tags?: UpdateCloudRequestTagsMap;
 }
-export const UpdateCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2879,9 +2865,6 @@ export const UpdateCloudRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCloudResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCloudResponseTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCloudResponseTagsMap>;
-
 export interface UpdateCloudResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2900,12 +2883,12 @@ export interface UpdateCloudResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateCloudResponse = GetCloudResponse as any as S.Schema<UpdateCloudResponse>;
+const UpdateCloudResponse = GetCloudResponse as any as S.Schema<UpdateCloudResponse>;
 
 /** Availability Sets in vm. */
 export type VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList =
   Array<AvailabilitySetListItem>;
-export const VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList =
+const VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList =
   VirtualMachineInstancePropertiesAvailabilitySetsList as any as S.Schema<VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList>;
 
 /** Defines the resource update properties. */
@@ -2923,7 +2906,7 @@ export interface HardwareProfileUpdate {
   /** Gets or sets the min dynamic memory for the vm. */
   dynamicMemoryMinMB?: number;
 }
-export const HardwareProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+const HardwareProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryMB: S.optional(S.Number),
     cpuCount: S.optional(S.Number),
@@ -2951,7 +2934,7 @@ export interface NetworkInterfaceUpdate {
   /** Gets or sets the nic id. */
   nicId?: string;
 }
-export const NetworkInterfaceUpdate = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterfaceUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     macAddress: S.optional(S.String),
@@ -2965,7 +2948,7 @@ export const NetworkInterfaceUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
 export type NetworkProfileUpdateNetworkInterfacesList = Array<NetworkInterfaceUpdate>;
-export const NetworkProfileUpdateNetworkInterfacesList = /*@__PURE__*/ S.Array(
+const NetworkProfileUpdateNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterfaceUpdate,
 ) as any as S.Schema<NetworkProfileUpdateNetworkInterfacesList>;
 
@@ -2974,7 +2957,7 @@ export interface NetworkProfileUpdate {
   /** Gets or sets the list of network interfaces associated with the virtual machine. */
   networkInterfaces?: NetworkProfileUpdateNetworkInterfacesList;
 }
-export const NetworkProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+const NetworkProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkInterfaces: S.optional(NetworkProfileUpdateNetworkInterfacesList),
   }),
@@ -2999,7 +2982,7 @@ export interface VirtualDiskUpdate {
   /** The QoS policy for the disk. */
   storageQoSPolicy?: StorageQosPolicyDetails;
 }
-export const VirtualDiskUpdate = /*@__PURE__*/ S.suspend(() =>
+const VirtualDiskUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     diskId: S.optional(S.String),
@@ -3014,7 +2997,7 @@ export const VirtualDiskUpdate = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
 export type StorageProfileUpdateDisksList = Array<VirtualDiskUpdate>;
-export const StorageProfileUpdateDisksList = /*@__PURE__*/ S.Array(
+const StorageProfileUpdateDisksList = /*@__PURE__*/ S.Array(
   VirtualDiskUpdate,
 ) as any as S.Schema<StorageProfileUpdateDisksList>;
 
@@ -3023,7 +3006,7 @@ export interface StorageProfileUpdate {
   /** Gets or sets the list of virtual disks associated with the virtual machine. */
   disks?: StorageProfileUpdateDisksList;
 }
-export const StorageProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+const StorageProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disks: S.optional(StorageProfileUpdateDisksList),
   }),
@@ -3034,7 +3017,7 @@ export interface InfrastructureProfileUpdate {
   /** Type of checkpoint supported for the vm. */
   checkpointType?: string;
 }
-export const InfrastructureProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+const InfrastructureProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkpointType: S.optional(S.String),
   }),
@@ -3055,7 +3038,7 @@ export interface VirtualMachineInstanceUpdateProperties {
   /** Gets the infrastructure profile. */
   infrastructureProfile?: InfrastructureProfileUpdate;
 }
-export const VirtualMachineInstanceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstanceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilitySets: S.optional(VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList),
     hardwareProfile: S.optional(HardwareProfileUpdate),
@@ -3073,7 +3056,7 @@ export interface UpdateVirtualMachineInstanceRequest {
   /** The update properties of the VirtualMachineInstance. */
   properties?: VirtualMachineInstanceUpdateProperties;
 }
-export const UpdateVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualMachineInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     properties: S.optional(VirtualMachineInstanceUpdateProperties),
@@ -3103,12 +3086,12 @@ export interface UpdateVirtualMachineInstanceResponse {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateVirtualMachineInstanceResponse =
+const UpdateVirtualMachineInstanceResponse =
   GetVirtualMachineInstanceResponse as any as S.Schema<UpdateVirtualMachineInstanceResponse>;
 
 /** Resource tags. */
 export type UpdateVirtualMachineTemplateRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineTemplateRequestTagsMap =
+const UpdateVirtualMachineTemplateRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineTemplateRequestTagsMap>;
 
 export interface UpdateVirtualMachineTemplateRequest {
@@ -3121,7 +3104,7 @@ export interface UpdateVirtualMachineTemplateRequest {
   /** Resource tags. */
   tags?: UpdateVirtualMachineTemplateRequestTagsMap;
 }
-export const UpdateVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3141,9 +3124,6 @@ export const UpdateVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualMachineTemplateResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualMachineTemplateResponseTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineTemplateResponseTagsMap>;
-
 export interface UpdateVirtualMachineTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3162,12 +3142,12 @@ export interface UpdateVirtualMachineTemplateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateVirtualMachineTemplateResponse =
+const UpdateVirtualMachineTemplateResponse =
   GetVirtualMachineTemplateResponse as any as S.Schema<UpdateVirtualMachineTemplateResponse>;
 
 /** Resource tags. */
 export type UpdateVirtualNetworkRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkRequestTagsMap =
+const UpdateVirtualNetworkRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
 
 export interface UpdateVirtualNetworkRequest {
@@ -3180,7 +3160,7 @@ export interface UpdateVirtualNetworkRequest {
   /** Resource tags. */
   tags?: UpdateVirtualNetworkRequestTagsMap;
 }
-export const UpdateVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3200,9 +3180,6 @@ export const UpdateVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVirtualNetworkResponseTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualNetworkResponseTagsMap>;
-
 export interface UpdateVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3221,12 +3198,12 @@ export interface UpdateVirtualNetworkResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateVirtualNetworkResponse =
+const UpdateVirtualNetworkResponse =
   GetVirtualNetworkResponse as any as S.Schema<UpdateVirtualNetworkResponse>;
 
 /** Resource tags. */
 export type UpdateVmmServerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateVmmServerRequestTagsMap =
+const UpdateVmmServerRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVmmServerRequestTagsMap>;
 
 export interface UpdateVmmServerRequest {
@@ -3239,7 +3216,7 @@ export interface UpdateVmmServerRequest {
   /** Resource tags. */
   tags?: UpdateVmmServerRequestTagsMap;
 }
-export const UpdateVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3257,9 +3234,6 @@ export const UpdateVmmServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateVmmServerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateVmmServerResponseTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVmmServerResponseTagsMap>;
-
 export interface UpdateVmmServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3278,13 +3252,12 @@ export interface UpdateVmmServerResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const UpdateVmmServerResponse =
-  GetVmmServerResponse as any as S.Schema<UpdateVmmServerResponse>;
+const UpdateVmmServerResponse = GetVmmServerResponse as any as S.Schema<UpdateVmmServerResponse>;
 
 /** Availability Sets in vm. */
 export type VirtualMachineInstancePropertiesInputAvailabilitySetsList =
   Array<AvailabilitySetListItem>;
-export const VirtualMachineInstancePropertiesInputAvailabilitySetsList =
+const VirtualMachineInstancePropertiesInputAvailabilitySetsList =
   VirtualMachineInstancePropertiesAvailabilitySetsList as any as S.Schema<VirtualMachineInstancePropertiesInputAvailabilitySetsList>;
 
 /** Defines the resource properties. */
@@ -3310,7 +3283,7 @@ export interface OsProfileForVmInstanceInput {
   /** Get or sets the commands to be run once at the time of creation separated by semicolons. */
   runOnceCommands?: string;
 }
-export const OsProfileForVmInstanceInput = /*@__PURE__*/ S.suspend(() =>
+const OsProfileForVmInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminUsername: S.optional(S.String),
     adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -3329,19 +3302,14 @@ export const OsProfileForVmInstanceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Network Interface model */
 export type NetworkInterfaceInput = NetworkInterfaceUpdate;
-export const NetworkInterfaceInput = NetworkInterfaceUpdate;
-
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
 export type NetworkProfileInputNetworkInterfacesList = Array<NetworkInterfaceUpdate>;
-export const NetworkProfileInputNetworkInterfacesList =
-  NetworkProfileUpdateNetworkInterfacesList as any as S.Schema<NetworkProfileInputNetworkInterfacesList>;
-
 /** Defines the resource properties. */
 export interface NetworkProfileInput {
   /** Gets or sets the list of network interfaces associated with the virtual machine. */
   networkInterfaces?: NetworkProfileInputNetworkInterfacesList;
 }
-export const NetworkProfileInput = NetworkProfileUpdate as any as S.Schema<NetworkProfileInput>;
+const NetworkProfileInput = NetworkProfileUpdate as any as S.Schema<NetworkProfileInput>;
 
 /** Virtual disk model */
 export interface VirtualDiskInput {
@@ -3366,7 +3334,7 @@ export interface VirtualDiskInput {
   /** Gets or sets a value indicating diff disk. */
   createDiffDisk?: boolean;
 }
-export const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     diskId: S.optional(S.String),
@@ -3383,7 +3351,7 @@ export const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
 export type StorageProfileInputDisksList = Array<VirtualDiskInput>;
-export const StorageProfileInputDisksList = /*@__PURE__*/ S.Array(
+const StorageProfileInputDisksList = /*@__PURE__*/ S.Array(
   VirtualDiskInput,
 ) as any as S.Schema<StorageProfileInputDisksList>;
 
@@ -3392,7 +3360,7 @@ export interface StorageProfileInput {
   /** Gets or sets the list of virtual disks associated with the virtual machine. */
   disks?: StorageProfileInputDisksList;
 }
-export const StorageProfileInput = /*@__PURE__*/ S.suspend(() =>
+const StorageProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disks: S.optional(StorageProfileInputDisksList),
   }),
@@ -3419,7 +3387,7 @@ export interface InfrastructureProfileInput {
   /** Gets or sets the bios guid for the vm. */
   biosGuid?: string;
 }
-export const InfrastructureProfileInput = /*@__PURE__*/ S.suspend(() =>
+const InfrastructureProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryItemId: S.optional(S.String),
     vmmServerId: S.optional(S.String),
@@ -3450,7 +3418,7 @@ export interface VirtualMachineInstancePropertiesInput {
   /** Gets the infrastructure profile. */
   infrastructureProfile?: InfrastructureProfileInput;
 }
-export const VirtualMachineInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilitySets: S.optional(VirtualMachineInstancePropertiesInputAvailabilitySetsList),
     osProfile: S.optional(OsProfileForVmInstanceInput),
@@ -3471,7 +3439,7 @@ export interface VirtualMachineInstancesCreateOrUpdateRequest {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualMachineInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     properties: S.optional(VirtualMachineInstancePropertiesInput),
@@ -3502,14 +3470,14 @@ export interface VirtualMachineInstancesCreateOrUpdateResponse {
   /** Gets or sets the extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualMachineInstancesCreateOrUpdateResponse =
+const VirtualMachineInstancesCreateOrUpdateResponse =
   GetVirtualMachineInstanceResponse as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type VirtualMachineTemplatesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const VirtualMachineTemplatesCreateOrUpdateRequestTagsMap =
+const VirtualMachineTemplatesCreateOrUpdateRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateRequestTagsMap>;
 
 /** Defines the resource properties. */
@@ -3521,7 +3489,7 @@ export interface VirtualMachineTemplatePropertiesInput {
   /** ARM Id of the vmmServer resource in which this resource resides. */
   vmmServerId?: string;
 }
-export const VirtualMachineTemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineTemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryItemId: S.optional(S.String),
     uuid: S.optional(S.String),
@@ -3547,7 +3515,7 @@ export interface VirtualMachineTemplatesCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualMachineTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3572,9 +3540,6 @@ export const VirtualMachineTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 export type VirtualMachineTemplatesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const VirtualMachineTemplatesCreateOrUpdateResponseTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateResponseTagsMap>;
-
 export interface VirtualMachineTemplatesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3593,12 +3558,12 @@ export interface VirtualMachineTemplatesCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualMachineTemplatesCreateOrUpdateResponse =
+const VirtualMachineTemplatesCreateOrUpdateResponse =
   GetVirtualMachineTemplateResponse as any as S.Schema<VirtualMachineTemplatesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworksCreateOrUpdateRequestTagsMap =
+const VirtualNetworksCreateOrUpdateRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
 
 /** Defines the resource properties. */
@@ -3610,7 +3575,7 @@ export interface VirtualNetworkPropertiesInput {
   /** ARM Id of the vmmServer resource in which this resource resides. */
   vmmServerId?: string;
 }
-export const VirtualNetworkPropertiesInput =
+const VirtualNetworkPropertiesInput =
   VirtualMachineTemplatePropertiesInput as any as S.Schema<VirtualNetworkPropertiesInput>;
 
 export interface VirtualNetworksCreateOrUpdateRequest {
@@ -3629,7 +3594,7 @@ export interface VirtualNetworksCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3652,9 +3617,6 @@ export const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VirtualNetworksCreateOrUpdateResponseTagsMap =
-  AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworksCreateOrUpdateResponseTagsMap>;
-
 export interface VirtualNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3673,12 +3635,12 @@ export interface VirtualNetworksCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VirtualNetworksCreateOrUpdateResponse =
+const VirtualNetworksCreateOrUpdateResponse =
   GetVirtualNetworkResponse as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type VmmServersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const VmmServersCreateOrUpdateRequestTagsMap =
+const VmmServersCreateOrUpdateRequestTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VmmServersCreateOrUpdateRequestTagsMap>;
 
 /** Defines the resource properties. */
@@ -3690,7 +3652,7 @@ export interface VmmServerPropertiesInput {
   /** Port is the port on which the vmmServer is listening. */
   port?: number;
 }
-export const VmmServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VmmServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(VmmCredential),
     fqdn: S.String,
@@ -3714,7 +3676,7 @@ export interface VmmServersCreateOrUpdateRequest {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VmmServersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VmmServersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3737,7 +3699,7 @@ export const VmmServersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type VmmServersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const VmmServersCreateOrUpdateResponseTagsMap =
+const VmmServersCreateOrUpdateResponseTagsMap =
   AvailabilitySetsCreateOrUpdateRequestTagsMap as any as S.Schema<VmmServersCreateOrUpdateResponseTagsMap>;
 
 export interface VmmServersCreateOrUpdateResponse {
@@ -3758,7 +3720,7 @@ export interface VmmServersCreateOrUpdateResponse {
   /** The extended location. */
   extendedLocation: ExtendedLocation;
 }
-export const VmmServersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const VmmServersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

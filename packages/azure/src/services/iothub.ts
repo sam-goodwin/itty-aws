@@ -16,7 +16,7 @@ export interface CertificatePropertiesInput {
   /** The certificate content */
   certificate?: string;
 }
-export const CertificatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CertificatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isVerified: S.optional(S.Boolean),
     certificate: S.optional(S.String),
@@ -38,7 +38,7 @@ export interface CertificatesCreateOrUpdateRequest {
   /** ETag of the certificate. Do not specify for creating a brand new certificate. Required to update an existing certificate. */
   ifMatch?: string;
 }
-export const CertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -75,7 +75,7 @@ export interface CertificateProperties {
   /** The certificate content */
   certificate?: string;
 }
-export const CertificateProperties = /*@__PURE__*/ S.suspend(() =>
+const CertificateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.optional(S.String),
     expiry: S.optional(S.String),
@@ -99,7 +99,7 @@ export interface CertificateDescription {
   /** The resource type. */
   type?: string;
 }
-export const CertificateDescription = /*@__PURE__*/ S.suspend(() =>
+const CertificateDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(CertificateProperties),
     id: S.optional(S.String),
@@ -115,7 +115,7 @@ export interface CheckIotHubResourceNameAvailabilityRequest {
   /** The name of the IoT hub to check. */
   name: string;
 }
-export const CheckIotHubResourceNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckIotHubResourceNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -133,7 +133,7 @@ export const CheckIotHubResourceNameAvailabilityRequest = /*@__PURE__*/ S.suspen
 
 /** The reason for unavailability. */
 export type IotHubNameAvailabilityInfoReason = "Invalid" | "AlreadyExists";
-export const IotHubNameAvailabilityInfoReason = S.String;
+const IotHubNameAvailabilityInfoReason = S.String;
 
 /** The properties indicating whether a given IoT hub name is available. */
 export interface IotHubNameAvailabilityInfo {
@@ -144,7 +144,7 @@ export interface IotHubNameAvailabilityInfo {
   /** The detailed reason message. */
   message?: string;
 }
-export const IotHubNameAvailabilityInfo = /*@__PURE__*/ S.suspend(() =>
+const IotHubNameAvailabilityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(IotHubNameAvailabilityInfoReason),
@@ -159,7 +159,7 @@ export interface EventHubConsumerGroupName {
   /** EventHub consumer group name */
   name: string;
 }
-export const EventHubConsumerGroupName = /*@__PURE__*/ S.suspend(() =>
+const EventHubConsumerGroupName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -180,7 +180,7 @@ export interface CreateIotHubResourceEventHubConsumerGroupRequest {
   name: string;
   properties: EventHubConsumerGroupName;
 }
-export const CreateIotHubResourceEventHubConsumerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIotHubResourceEventHubConsumerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -202,7 +202,7 @@ export const CreateIotHubResourceEventHubConsumerGroupRequest = /*@__PURE__*/ S.
 
 /** The tags. */
 export type EventHubConsumerGroupInfoPropertiesMap = { [key: string]: unknown | undefined };
-export const EventHubConsumerGroupInfoPropertiesMap = /*@__PURE__*/ S.Record(
+const EventHubConsumerGroupInfoPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<EventHubConsumerGroupInfoPropertiesMap>;
@@ -220,7 +220,7 @@ export interface EventHubConsumerGroupInfo {
   /** The etag. */
   etag?: string;
 }
-export const EventHubConsumerGroupInfo = /*@__PURE__*/ S.suspend(() =>
+const EventHubConsumerGroupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(EventHubConsumerGroupInfoPropertiesMap),
     id: S.optional(S.String),
@@ -244,7 +244,7 @@ export interface DeleteCertificateRequest {
   /** ETag of the certificate. A value of "*" applies to any version. */
   ifMatch: string;
 }
-export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -262,7 +262,7 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 
 export interface DeleteCertificateResponse {}
-export const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCertificateResponse",
 }) as any as S.Schema<DeleteCertificateResponse>;
 
@@ -274,7 +274,7 @@ export interface DeleteIotHubResourceRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const DeleteIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -293,7 +293,7 @@ export const DeleteIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type DeleteIotHubResourceResponseTagsMap = { [key: string]: string | undefined };
-export const DeleteIotHubResourceResponseTagsMap = /*@__PURE__*/ S.Record(
+const DeleteIotHubResourceResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DeleteIotHubResourceResponseTagsMap>;
@@ -315,7 +315,7 @@ export type SharedAccessSignatureAuthorizationRuleRights =
   | "RegistryRead, ServiceConnect, DeviceConnect"
   | "RegistryWrite, ServiceConnect, DeviceConnect"
   | "RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect";
-export const SharedAccessSignatureAuthorizationRuleRights = S.String;
+const SharedAccessSignatureAuthorizationRuleRights = S.String;
 
 /** The properties of an IoT hub shared access policy. */
 export interface SharedAccessSignatureAuthorizationRule {
@@ -328,7 +328,7 @@ export interface SharedAccessSignatureAuthorizationRule {
   /** The permissions assigned to the shared access policy. */
   rights: SharedAccessSignatureAuthorizationRuleRights | (string & {});
 }
-export const SharedAccessSignatureAuthorizationRule = /*@__PURE__*/ S.suspend(() =>
+const SharedAccessSignatureAuthorizationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.String,
     primaryKey: S.optional(S.String),
@@ -342,23 +342,23 @@ export const SharedAccessSignatureAuthorizationRule = /*@__PURE__*/ S.suspend(()
 /** The shared access policies you can use to secure a connection to the IoT hub. */
 export type IotHubPropertiesAuthorizationPoliciesList =
   Array<SharedAccessSignatureAuthorizationRule>;
-export const IotHubPropertiesAuthorizationPoliciesList = /*@__PURE__*/ S.Array(
+const IotHubPropertiesAuthorizationPoliciesList = /*@__PURE__*/ S.Array(
   SharedAccessSignatureAuthorizationRule,
 ) as any as S.Schema<IotHubPropertiesAuthorizationPoliciesList>;
 
 /** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Iot Hub. */
 export type IotHubPropertiesAllowedFqdnListList = Array<string>;
-export const IotHubPropertiesAllowedFqdnListList = /*@__PURE__*/ S.Array(
+const IotHubPropertiesAllowedFqdnListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IotHubPropertiesAllowedFqdnListList>;
 
 /** Whether requests from Public Network are allowed */
 export type IotHubPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-export const IotHubPropertiesPublicNetworkAccess = S.String;
+const IotHubPropertiesPublicNetworkAccess = S.String;
 
 /** The desired action for requests captured by this rule. */
 export type IpFilterRuleAction = "Accept" | "Reject";
-export const IpFilterRuleAction = S.String;
+const IpFilterRuleAction = S.String;
 
 /** The IP filter rules for the IoT hub. */
 export interface IpFilterRule {
@@ -369,7 +369,7 @@ export interface IpFilterRule {
   /** A string that contains the IP address range in CIDR notation for the rule. */
   ipMask: string;
 }
-export const IpFilterRule = /*@__PURE__*/ S.suspend(() =>
+const IpFilterRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterName: S.String,
     action: IpFilterRuleAction,
@@ -379,17 +379,17 @@ export const IpFilterRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP filter rules. */
 export type IotHubPropertiesIpFilterRulesList = Array<IpFilterRule>;
-export const IotHubPropertiesIpFilterRulesList = /*@__PURE__*/ S.Array(
+const IotHubPropertiesIpFilterRulesList = /*@__PURE__*/ S.Array(
   IpFilterRule,
 ) as any as S.Schema<IotHubPropertiesIpFilterRulesList>;
 
 /** Default Action for Network Rule Set */
 export type NetworkRuleSetPropertiesDefaultAction = "Deny" | "Allow";
-export const NetworkRuleSetPropertiesDefaultAction = S.String;
+const NetworkRuleSetPropertiesDefaultAction = S.String;
 
 /** IP Filter Action */
 export type NetworkRuleSetIpRuleAction = "Allow";
-export const NetworkRuleSetIpRuleAction = S.String;
+const NetworkRuleSetIpRuleAction = S.String;
 
 /** IP Rule to be applied as part of Network Rule Set */
 export interface NetworkRuleSetIpRule {
@@ -400,7 +400,7 @@ export interface NetworkRuleSetIpRule {
   /** A string that contains the IP address range in CIDR notation for the rule. */
   ipMask: string;
 }
-export const NetworkRuleSetIpRule = /*@__PURE__*/ S.suspend(() =>
+const NetworkRuleSetIpRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterName: S.String,
     action: S.optional(NetworkRuleSetIpRuleAction),
@@ -410,7 +410,7 @@ export const NetworkRuleSetIpRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP Rules */
 export type NetworkRuleSetPropertiesIpRulesList = Array<NetworkRuleSetIpRule>;
-export const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
+const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
   NetworkRuleSetIpRule,
 ) as any as S.Schema<NetworkRuleSetPropertiesIpRulesList>;
 
@@ -423,7 +423,7 @@ export interface NetworkRuleSetProperties {
   /** List of IP Rules */
   ipRules: NetworkRuleSetPropertiesIpRulesList;
 }
-export const NetworkRuleSetProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkRuleSetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultAction: S.optional(NetworkRuleSetPropertiesDefaultAction),
     applyToBuiltInEventHubEndpoint: S.Boolean,
@@ -436,7 +436,7 @@ export interface PrivateEndpoint {
   /** The resource identifier. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -448,7 +448,7 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Approved"
   | "Rejected"
   | "Disconnected";
-export const PrivateLinkServiceConnectionStateStatus = S.String;
+const PrivateLinkServiceConnectionStateStatus = S.String;
 
 /** The current state of a private endpoint connection */
 export interface PrivateLinkServiceConnectionState {
@@ -459,7 +459,7 @@ export interface PrivateLinkServiceConnectionState {
   /** Actions required for a private endpoint connection */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: PrivateLinkServiceConnectionStateStatus,
     description: S.String,
@@ -474,7 +474,7 @@ export interface PrivateEndpointConnectionProperties {
   privateEndpoint?: PrivateEndpoint;
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpoint),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -493,7 +493,7 @@ export interface PrivateEndpointConnection {
   type?: string;
   properties: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -506,13 +506,13 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections created on this IotHub */
 export type IotHubPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const IotHubPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const IotHubPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<IotHubPropertiesPrivateEndpointConnectionsList>;
 
 /** The partition ids in the Event Hub-compatible endpoint. */
 export type EventHubPropertiesPartitionIdsList = Array<string>;
-export const EventHubPropertiesPartitionIdsList =
+const EventHubPropertiesPartitionIdsList =
   IotHubPropertiesAllowedFqdnListList as any as S.Schema<EventHubPropertiesPartitionIdsList>;
 
 /** The properties of the provisioned Event Hub-compatible endpoint used by the IoT hub. */
@@ -528,7 +528,7 @@ export interface EventHubProperties {
   /** The Event Hub-compatible endpoint. */
   endpoint?: string;
 }
-export const EventHubProperties = /*@__PURE__*/ S.suspend(() =>
+const EventHubProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionTimeInDays: S.optional(S.Number),
     partitionCount: S.optional(S.Number),
@@ -542,7 +542,7 @@ export const EventHubProperties = /*@__PURE__*/ S.suspend(() =>
 export type IotHubPropertiesEventHubEndpointsMap = {
   [key: string]: EventHubProperties | undefined;
 };
-export const IotHubPropertiesEventHubEndpointsMap = /*@__PURE__*/ S.Record(
+const IotHubPropertiesEventHubEndpointsMap = /*@__PURE__*/ S.Record(
   S.String,
   EventHubProperties,
 ) as any as S.Schema<IotHubPropertiesEventHubEndpointsMap>;
@@ -551,14 +551,14 @@ export const IotHubPropertiesEventHubEndpointsMap = /*@__PURE__*/ S.Record(
 export type RoutingServiceBusQueueEndpointPropertiesAuthenticationType =
   | "keyBased"
   | "identityBased";
-export const RoutingServiceBusQueueEndpointPropertiesAuthenticationType = S.String;
+const RoutingServiceBusQueueEndpointPropertiesAuthenticationType = S.String;
 
 /** The properties of the Managed identity. */
 export interface ManagedIdentity {
   /** The user assigned identity. */
   userAssignedIdentity?: string;
 }
-export const ManagedIdentity = /*@__PURE__*/ S.suspend(() =>
+const ManagedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAssignedIdentity: S.optional(S.String),
   }),
@@ -585,7 +585,7 @@ export interface RoutingServiceBusQueueEndpointProperties {
   /** The name of the resource group of the service bus queue endpoint. */
   resourceGroup?: string;
 }
-export const RoutingServiceBusQueueEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const RoutingServiceBusQueueEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -603,7 +603,7 @@ export const RoutingServiceBusQueueEndpointProperties = /*@__PURE__*/ S.suspend(
 
 /** The list of Service Bus queue endpoints that IoT hub routes the messages to, based on the routing rules. */
 export type RoutingEndpointsServiceBusQueuesList = Array<RoutingServiceBusQueueEndpointProperties>;
-export const RoutingEndpointsServiceBusQueuesList = /*@__PURE__*/ S.Array(
+const RoutingEndpointsServiceBusQueuesList = /*@__PURE__*/ S.Array(
   RoutingServiceBusQueueEndpointProperties,
 ) as any as S.Schema<RoutingEndpointsServiceBusQueuesList>;
 
@@ -611,8 +611,6 @@ export const RoutingEndpointsServiceBusQueuesList = /*@__PURE__*/ S.Array(
 export type RoutingServiceBusTopicEndpointPropertiesAuthenticationType =
   | "keyBased"
   | "identityBased";
-export const RoutingServiceBusTopicEndpointPropertiesAuthenticationType = S.String;
-
 /** The properties related to service bus topic endpoint types. */
 export interface RoutingServiceBusTopicEndpointProperties {
   /** Id of the service bus topic endpoint */
@@ -634,18 +632,13 @@ export interface RoutingServiceBusTopicEndpointProperties {
   /** The name of the resource group of the service bus topic endpoint. */
   resourceGroup?: string;
 }
-export const RoutingServiceBusTopicEndpointProperties =
-  RoutingServiceBusQueueEndpointProperties as any as S.Schema<RoutingServiceBusTopicEndpointProperties>;
-
 /** The list of Service Bus topic endpoints that the IoT hub routes the messages to, based on the routing rules. */
 export type RoutingEndpointsServiceBusTopicsList = Array<RoutingServiceBusTopicEndpointProperties>;
-export const RoutingEndpointsServiceBusTopicsList =
+const RoutingEndpointsServiceBusTopicsList =
   RoutingEndpointsServiceBusQueuesList as any as S.Schema<RoutingEndpointsServiceBusTopicsList>;
 
 /** Method used to authenticate against the event hub endpoint */
 export type RoutingEventHubPropertiesAuthenticationType = "keyBased" | "identityBased";
-export const RoutingEventHubPropertiesAuthenticationType = S.String;
-
 /** The properties related to an event hub endpoint. */
 export interface RoutingEventHubProperties {
   /** Id of the event hub endpoint */
@@ -667,21 +660,18 @@ export interface RoutingEventHubProperties {
   /** The name of the resource group of the event hub endpoint. */
   resourceGroup?: string;
 }
-export const RoutingEventHubProperties =
-  RoutingServiceBusQueueEndpointProperties as any as S.Schema<RoutingEventHubProperties>;
-
 /** The list of Event Hubs endpoints that IoT hub routes messages to, based on the routing rules. This list does not include the built-in Event Hubs endpoint. */
 export type RoutingEndpointsEventHubsList = Array<RoutingEventHubProperties>;
-export const RoutingEndpointsEventHubsList =
+const RoutingEndpointsEventHubsList =
   RoutingEndpointsServiceBusQueuesList as any as S.Schema<RoutingEndpointsEventHubsList>;
 
 /** Method used to authenticate against the storage endpoint */
 export type RoutingStorageContainerPropertiesAuthenticationType = "keyBased" | "identityBased";
-export const RoutingStorageContainerPropertiesAuthenticationType = S.String;
+const RoutingStorageContainerPropertiesAuthenticationType = S.String;
 
 /** Encoding that is used to serialize messages to blobs. Supported values are 'avro', 'avrodeflate', and 'JSON'. Default value is 'avro'. */
 export type RoutingStorageContainerPropertiesEncoding = "Avro" | "AvroDeflate" | "JSON";
-export const RoutingStorageContainerPropertiesEncoding = S.String;
+const RoutingStorageContainerPropertiesEncoding = S.String;
 
 /** The properties related to a storage container endpoint. */
 export interface RoutingStorageContainerProperties {
@@ -712,7 +702,7 @@ export interface RoutingStorageContainerProperties {
   /** Encoding that is used to serialize messages to blobs. Supported values are 'avro', 'avrodeflate', and 'JSON'. Default value is 'avro'. */
   encoding?: RoutingStorageContainerPropertiesEncoding | (string & {});
 }
-export const RoutingStorageContainerProperties = /*@__PURE__*/ S.suspend(() =>
+const RoutingStorageContainerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -734,13 +724,13 @@ export const RoutingStorageContainerProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of storage container endpoints that IoT hub routes messages to, based on the routing rules. */
 export type RoutingEndpointsStorageContainersList = Array<RoutingStorageContainerProperties>;
-export const RoutingEndpointsStorageContainersList = /*@__PURE__*/ S.Array(
+const RoutingEndpointsStorageContainersList = /*@__PURE__*/ S.Array(
   RoutingStorageContainerProperties,
 ) as any as S.Schema<RoutingEndpointsStorageContainersList>;
 
 /** Method used to authenticate against the cosmos DB sql container endpoint */
 export type RoutingCosmosDBSqlApiPropertiesAuthenticationType = "keyBased" | "identityBased";
-export const RoutingCosmosDBSqlApiPropertiesAuthenticationType = S.String;
+const RoutingCosmosDBSqlApiPropertiesAuthenticationType = S.String;
 
 /** The properties related to a cosmos DB sql container endpoint. */
 export interface RoutingCosmosDBSqlApiProperties {
@@ -771,7 +761,7 @@ export interface RoutingCosmosDBSqlApiProperties {
   /** The template for generating a synthetic partition key value for use with this cosmos DB sql container. The template must include at least one of the following placeholders: {iothub}, {deviceid}, {DD}, {MM}, and {YYYY}. Any one placeholder may be specified at most once, but order and non-placeholder components are arbitrary. This parameter is only required if PartitionKeyName is specified. */
   partitionKeyTemplate?: string;
 }
-export const RoutingCosmosDBSqlApiProperties = /*@__PURE__*/ S.suspend(() =>
+const RoutingCosmosDBSqlApiProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     id: S.optional(S.String),
@@ -793,7 +783,7 @@ export const RoutingCosmosDBSqlApiProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Cosmos DB container endpoints that IoT hub routes messages to, based on the routing rules. */
 export type RoutingEndpointsCosmosDBSqlContainersList = Array<RoutingCosmosDBSqlApiProperties>;
-export const RoutingEndpointsCosmosDBSqlContainersList = /*@__PURE__*/ S.Array(
+const RoutingEndpointsCosmosDBSqlContainersList = /*@__PURE__*/ S.Array(
   RoutingCosmosDBSqlApiProperties,
 ) as any as S.Schema<RoutingEndpointsCosmosDBSqlContainersList>;
 
@@ -810,7 +800,7 @@ export interface RoutingEndpoints {
   /** The list of Cosmos DB container endpoints that IoT hub routes messages to, based on the routing rules. */
   cosmosDBSqlContainers?: RoutingEndpointsCosmosDBSqlContainersList;
 }
-export const RoutingEndpoints = /*@__PURE__*/ S.suspend(() =>
+const RoutingEndpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceBusQueues: S.optional(RoutingEndpointsServiceBusQueuesList),
     serviceBusTopics: S.optional(RoutingEndpointsServiceBusTopicsList),
@@ -828,11 +818,11 @@ export type RoutePropertiesSource =
   | "DeviceLifecycleEvents"
   | "DeviceJobLifecycleEvents"
   | "DeviceConnectionStateEvents";
-export const RoutePropertiesSource = S.String;
+const RoutePropertiesSource = S.String;
 
 /** The list of endpoints to which messages that satisfy the condition are routed. Currently only one endpoint is allowed. */
 export type RoutePropertiesEndpointNamesList = Array<string>;
-export const RoutePropertiesEndpointNamesList =
+const RoutePropertiesEndpointNamesList =
   IotHubPropertiesAllowedFqdnListList as any as S.Schema<RoutePropertiesEndpointNamesList>;
 
 /** The properties of a routing rule that your IoT hub uses to route messages to endpoints. */
@@ -848,7 +838,7 @@ export interface RouteProperties {
   /** Used to specify whether a route is enabled. */
   isEnabled: boolean;
 }
-export const RouteProperties = /*@__PURE__*/ S.suspend(() =>
+const RouteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     source: RoutePropertiesSource,
@@ -860,17 +850,17 @@ export const RouteProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of user-provided routing rules that the IoT hub uses to route messages to built-in and custom endpoints. A maximum of 100 routing rules are allowed for paid hubs and a maximum of 5 routing rules are allowed for free hubs. */
 export type RoutingPropertiesRoutesList = Array<RouteProperties>;
-export const RoutingPropertiesRoutesList = /*@__PURE__*/ S.Array(
+const RoutingPropertiesRoutesList = /*@__PURE__*/ S.Array(
   RouteProperties,
 ) as any as S.Schema<RoutingPropertiesRoutesList>;
 
 /** The source to which the routing rule is to be applied to. For example, DeviceMessages */
 export type FallbackRoutePropertiesSource = "DeviceMessages";
-export const FallbackRoutePropertiesSource = S.String;
+const FallbackRoutePropertiesSource = S.String;
 
 /** The list of endpoints to which the messages that satisfy the condition are routed to. Currently only 1 endpoint is allowed. */
 export type FallbackRoutePropertiesEndpointNamesList = Array<string>;
-export const FallbackRoutePropertiesEndpointNamesList =
+const FallbackRoutePropertiesEndpointNamesList =
   IotHubPropertiesAllowedFqdnListList as any as S.Schema<FallbackRoutePropertiesEndpointNamesList>;
 
 /** The properties of the fallback route. IoT Hub uses these properties when it routes messages to the fallback endpoint. */
@@ -886,7 +876,7 @@ export interface FallbackRouteProperties {
   /** Used to specify whether the fallback route is enabled. */
   isEnabled: boolean;
 }
-export const FallbackRouteProperties = /*@__PURE__*/ S.suspend(() =>
+const FallbackRouteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     source: FallbackRoutePropertiesSource,
@@ -898,7 +888,7 @@ export const FallbackRouteProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of endpoints for which the enrichment is applied to the message. */
 export type EnrichmentPropertiesEndpointNamesList = Array<string>;
-export const EnrichmentPropertiesEndpointNamesList =
+const EnrichmentPropertiesEndpointNamesList =
   IotHubPropertiesAllowedFqdnListList as any as S.Schema<EnrichmentPropertiesEndpointNamesList>;
 
 /** The properties of an enrichment that your IoT hub applies to messages delivered to endpoints. */
@@ -910,7 +900,7 @@ export interface EnrichmentProperties {
   /** The list of endpoints for which the enrichment is applied to the message. */
   endpointNames: EnrichmentPropertiesEndpointNamesList;
 }
-export const EnrichmentProperties = /*@__PURE__*/ S.suspend(() =>
+const EnrichmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -920,7 +910,7 @@ export const EnrichmentProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of user-provided enrichments that the IoT hub applies to messages to be delivered to built-in and custom endpoints. See: https://aka.ms/telemetryoneventgrid */
 export type RoutingPropertiesEnrichmentsList = Array<EnrichmentProperties>;
-export const RoutingPropertiesEnrichmentsList = /*@__PURE__*/ S.Array(
+const RoutingPropertiesEnrichmentsList = /*@__PURE__*/ S.Array(
   EnrichmentProperties,
 ) as any as S.Schema<RoutingPropertiesEnrichmentsList>;
 
@@ -934,7 +924,7 @@ export interface RoutingProperties {
   /** The list of user-provided enrichments that the IoT hub applies to messages to be delivered to built-in and custom endpoints. See: https://aka.ms/telemetryoneventgrid */
   enrichments?: RoutingPropertiesEnrichmentsList;
 }
-export const RoutingProperties = /*@__PURE__*/ S.suspend(() =>
+const RoutingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(RoutingEndpoints),
     routes: S.optional(RoutingPropertiesRoutesList),
@@ -945,7 +935,7 @@ export const RoutingProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies authentication type being used for connecting to the storage account. */
 export type StorageEndpointPropertiesAuthenticationType = "keyBased" | "identityBased";
-export const StorageEndpointPropertiesAuthenticationType = S.String;
+const StorageEndpointPropertiesAuthenticationType = S.String;
 
 /** The properties of the Azure Storage endpoint for file upload. */
 export interface StorageEndpointProperties {
@@ -960,7 +950,7 @@ export interface StorageEndpointProperties {
   /** Managed identity properties of storage endpoint for file upload. */
   identity?: ManagedIdentity;
 }
-export const StorageEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sasTtlAsIso8601: S.optional(S.String),
     connectionString: S.String.pipe(T.SensitiveValue({})),
@@ -976,7 +966,7 @@ export const StorageEndpointProperties = /*@__PURE__*/ S.suspend(() =>
 export type IotHubPropertiesStorageEndpointsMap = {
   [key: string]: StorageEndpointProperties | undefined;
 };
-export const IotHubPropertiesStorageEndpointsMap = /*@__PURE__*/ S.Record(
+const IotHubPropertiesStorageEndpointsMap = /*@__PURE__*/ S.Record(
   S.String,
   StorageEndpointProperties,
 ) as any as S.Schema<IotHubPropertiesStorageEndpointsMap>;
@@ -990,7 +980,7 @@ export interface MessagingEndpointProperties {
   /** The number of times the IoT hub attempts to deliver a message. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload. */
   maxDeliveryCount?: number;
 }
-export const MessagingEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const MessagingEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lockDurationAsIso8601: S.optional(S.String),
     ttlAsIso8601: S.optional(S.String),
@@ -1004,7 +994,7 @@ export const MessagingEndpointProperties = /*@__PURE__*/ S.suspend(() =>
 export type IotHubPropertiesMessagingEndpointsMap = {
   [key: string]: MessagingEndpointProperties | undefined;
 };
-export const IotHubPropertiesMessagingEndpointsMap = /*@__PURE__*/ S.Record(
+const IotHubPropertiesMessagingEndpointsMap = /*@__PURE__*/ S.Record(
   S.String,
   MessagingEndpointProperties,
 ) as any as S.Schema<IotHubPropertiesMessagingEndpointsMap>;
@@ -1018,7 +1008,7 @@ export interface FeedbackProperties {
   /** The number of times the IoT hub attempts to deliver a message on the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages. */
   maxDeliveryCount?: number;
 }
-export const FeedbackProperties = /*@__PURE__*/ S.suspend(() =>
+const FeedbackProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lockDurationAsIso8601: S.optional(S.String),
     ttlAsIso8601: S.optional(S.String),
@@ -1034,7 +1024,7 @@ export interface CloudToDeviceProperties {
   defaultTtlAsIso8601?: string;
   feedback?: FeedbackProperties;
 }
-export const CloudToDeviceProperties = /*@__PURE__*/ S.suspend(() =>
+const CloudToDeviceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxDeliveryCount: S.optional(S.Number),
     defaultTtlAsIso8601: S.optional(S.String),
@@ -1044,11 +1034,11 @@ export const CloudToDeviceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The capabilities and features enabled for the IoT hub. */
 export type IotHubPropertiesFeatures = "None" | "DeviceManagement";
-export const IotHubPropertiesFeatures = S.String;
+const IotHubPropertiesFeatures = S.String;
 
 /** The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to. */
 export type IotHubLocationDescriptionRole = "primary" | "secondary";
-export const IotHubLocationDescriptionRole = S.String;
+const IotHubLocationDescriptionRole = S.String;
 
 /** Public representation of one of the locations where a resource is provisioned. */
 export interface IotHubLocationDescription {
@@ -1057,7 +1047,7 @@ export interface IotHubLocationDescription {
   /** The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to. */
   role?: IotHubLocationDescriptionRole;
 }
-export const IotHubLocationDescription = /*@__PURE__*/ S.suspend(() =>
+const IotHubLocationDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     role: S.optional(IotHubLocationDescriptionRole),
@@ -1068,7 +1058,7 @@ export const IotHubLocationDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** Primary and secondary location for iot hub */
 export type IotHubPropertiesLocationsList = Array<IotHubLocationDescription>;
-export const IotHubPropertiesLocationsList = /*@__PURE__*/ S.Array(
+const IotHubPropertiesLocationsList = /*@__PURE__*/ S.Array(
   IotHubLocationDescription,
 ) as any as S.Schema<IotHubPropertiesLocationsList>;
 
@@ -1120,7 +1110,7 @@ export interface IotHubProperties {
   /** This property when set to true, will enable data residency, thus, disabling disaster recovery. */
   enableDataResidency?: boolean;
 }
-export const IotHubProperties = /*@__PURE__*/ S.suspend(() =>
+const IotHubProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationPolicies: S.optional(IotHubPropertiesAuthorizationPoliciesList),
     disableLocalAuth: S.optional(S.Boolean),
@@ -1151,11 +1141,11 @@ export const IotHubProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the SKU. */
 export type IotHubSkuInfoName = "F1" | "S1" | "S2" | "S3" | "B1" | "B2" | "B3";
-export const IotHubSkuInfoName = S.String;
+const IotHubSkuInfoName = S.String;
 
 /** The billing tier for the IoT hub. */
 export type IotHubSkuInfoTier = "Free" | "Standard" | "Basic";
-export const IotHubSkuInfoTier = S.String;
+const IotHubSkuInfoTier = S.String;
 
 /** Information about the SKU of the IoT hub. */
 export interface IotHubSkuInfo {
@@ -1166,7 +1156,7 @@ export interface IotHubSkuInfo {
   /** The number of provisioned IoT Hub units. See: https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits. */
   capacity?: number;
 }
-export const IotHubSkuInfo = /*@__PURE__*/ S.suspend(() =>
+const IotHubSkuInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: IotHubSkuInfoName,
     tier: S.optional(IotHubSkuInfoTier),
@@ -1180,13 +1170,13 @@ export type ArmIdentityType =
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-export const ArmIdentityType = S.String;
+const ArmIdentityType = S.String;
 
 export interface ArmUserIdentity {
   principalId?: string;
   clientId?: string;
 }
-export const ArmUserIdentity = /*@__PURE__*/ S.suspend(() =>
+const ArmUserIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1194,7 +1184,7 @@ export const ArmUserIdentity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArmUserIdentity" }) as any as S.Schema<ArmUserIdentity>;
 
 export type ArmIdentityUserAssignedIdentitiesMap = { [key: string]: ArmUserIdentity | undefined };
-export const ArmIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ArmIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   ArmUserIdentity,
 ) as any as S.Schema<ArmIdentityUserAssignedIdentitiesMap>;
@@ -1208,7 +1198,7 @@ export interface ArmIdentity {
   type?: ArmIdentityType;
   userAssignedIdentities?: ArmIdentityUserAssignedIdentitiesMap;
 }
-export const ArmIdentity = /*@__PURE__*/ S.suspend(() =>
+const ArmIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1219,11 +1209,11 @@ export const ArmIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -1240,7 +1230,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -1273,7 +1263,7 @@ export interface DeleteIotHubResourceResponse {
   /** The system meta data relating to this resource. */
   systemData?: SystemData;
 }
-export const DeleteIotHubResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteIotHubResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1302,7 +1292,7 @@ export interface DeleteIotHubResourceEventHubConsumerGroupRequest {
   /** The name of the consumer group to delete. */
   name: string;
 }
-export const DeleteIotHubResourceEventHubConsumerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIotHubResourceEventHubConsumerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1322,7 +1312,7 @@ export const DeleteIotHubResourceEventHubConsumerGroupRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteIotHubResourceEventHubConsumerGroupRequest>;
 
 export interface DeleteIotHubResourceEventHubConsumerGroupResponse {}
-export const DeleteIotHubResourceEventHubConsumerGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteIotHubResourceEventHubConsumerGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteIotHubResourceEventHubConsumerGroupResponse",
@@ -1338,7 +1328,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1358,7 +1348,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 
 /** Specifies authentication type being used for connecting to the storage account. */
 export type ExportIotHubResourceDevicesRequestAuthenticationType = "keyBased" | "identityBased";
-export const ExportIotHubResourceDevicesRequestAuthenticationType = S.String;
+const ExportIotHubResourceDevicesRequestAuthenticationType = S.String;
 
 export interface ExportIotHubResourceDevicesRequest {
   /** The subscription identifier. */
@@ -1382,7 +1372,7 @@ export interface ExportIotHubResourceDevicesRequest {
   /** The name of the blob that will be created in the provided output blob container. This blob will contain the exported configurations for the Iot Hub. */
   configurationsBlobName?: string;
 }
-export const ExportIotHubResourceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportIotHubResourceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1418,7 +1408,7 @@ export type JobResponseType =
   | "rebootDevice"
   | "factoryResetDevice"
   | "firmwareUpdate";
-export const JobResponseType = S.String;
+const JobResponseType = S.String;
 
 /** The status of the job. */
 export type JobResponseStatus =
@@ -1428,7 +1418,7 @@ export type JobResponseStatus =
   | "completed"
   | "failed"
   | "cancelled";
-export const JobResponseStatus = S.String;
+const JobResponseStatus = S.String;
 
 /** The properties of the Job Response object. */
 export interface JobResponse {
@@ -1449,7 +1439,7 @@ export interface JobResponse {
   /** The job identifier of the parent job, if any. */
   parentJobId?: string;
 }
-export const JobResponse = /*@__PURE__*/ S.suspend(() =>
+const JobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
     startTimeUtc: S.optional(S.String),
@@ -1472,7 +1462,7 @@ export interface GenerateCertificateVerificationCodeRequest {
   /** The name of the certificate */
   certificateName: string;
 }
-export const GenerateCertificateVerificationCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateCertificateVerificationCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1509,7 +1499,7 @@ export interface CertificatePropertiesWithNonce {
   /** The certificate content */
   certificate?: string;
 }
-export const CertificatePropertiesWithNonce = /*@__PURE__*/ S.suspend(() =>
+const CertificatePropertiesWithNonce = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.optional(S.String),
     expiry: S.optional(S.String),
@@ -1536,7 +1526,7 @@ export interface CertificateWithNonceDescription {
   /** The resource type. */
   type?: string;
 }
-export const CertificateWithNonceDescription = /*@__PURE__*/ S.suspend(() =>
+const CertificateWithNonceDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(CertificatePropertiesWithNonce),
     id: S.optional(S.String),
@@ -1558,7 +1548,7 @@ export interface GetCertificateRequest {
   /** The name of the certificate */
   certificateName: string;
 }
-export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1582,7 +1572,7 @@ export interface GetIotHubResourceRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const GetIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1599,9 +1589,6 @@ export const GetIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetIotHubResourceResponseTagsMap = { [key: string]: string | undefined };
-export const GetIotHubResourceResponseTagsMap =
-  DeleteIotHubResourceResponseTagsMap as any as S.Schema<GetIotHubResourceResponseTagsMap>;
-
 export interface GetIotHubResourceResponse {
   /** The resource identifier. */
   id?: string;
@@ -1624,7 +1611,7 @@ export interface GetIotHubResourceResponse {
   /** The system meta data relating to this resource. */
   systemData?: SystemData;
 }
-export const GetIotHubResourceResponse =
+const GetIotHubResourceResponse =
   DeleteIotHubResourceResponse as any as S.Schema<GetIotHubResourceResponse>;
 
 export interface GetIotHubResourceEndpointHealthRequest {
@@ -1633,7 +1620,7 @@ export interface GetIotHubResourceEndpointHealthRequest {
   resourceGroupName: string;
   iotHubName: string;
 }
-export const GetIotHubResourceEndpointHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIotHubResourceEndpointHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1657,7 +1644,7 @@ export type EndpointHealthDataHealthStatus =
   | "degraded"
   | "unhealthy"
   | "dead";
-export const EndpointHealthDataHealthStatus = S.String;
+const EndpointHealthDataHealthStatus = S.String;
 
 /** The health data for an endpoint */
 export interface EndpointHealthData {
@@ -1674,7 +1661,7 @@ export interface EndpointHealthData {
   /** Last time iot hub tried to send a message to the endpoint */
   lastSendAttemptTime?: string;
 }
-export const EndpointHealthData = /*@__PURE__*/ S.suspend(() =>
+const EndpointHealthData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
     healthStatus: S.optional(EndpointHealthDataHealthStatus),
@@ -1687,7 +1674,7 @@ export const EndpointHealthData = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON-serialized array of Endpoint health data */
 export type EndpointHealthDataListResultValueList = Array<EndpointHealthData>;
-export const EndpointHealthDataListResultValueList = /*@__PURE__*/ S.Array(
+const EndpointHealthDataListResultValueList = /*@__PURE__*/ S.Array(
   EndpointHealthData,
 ) as any as S.Schema<EndpointHealthDataListResultValueList>;
 
@@ -1698,7 +1685,7 @@ export interface EndpointHealthDataListResult {
   /** Link to more results */
   nextLink?: string;
 }
-export const EndpointHealthDataListResult = /*@__PURE__*/ S.suspend(() =>
+const EndpointHealthDataListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EndpointHealthDataListResultValueList),
     nextLink: S.optional(S.String),
@@ -1719,7 +1706,7 @@ export interface GetIotHubResourceEventHubConsumerGroupRequest {
   /** The name of the consumer group to retrieve. */
   name: string;
 }
-export const GetIotHubResourceEventHubConsumerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIotHubResourceEventHubConsumerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1748,7 +1735,7 @@ export interface GetIotHubResourceJobRequest {
   /** The job identifier. */
   jobId: string;
 }
-export const GetIotHubResourceJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIotHubResourceJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1776,7 +1763,7 @@ export interface GetIotHubResourceKeysForKeyNameRequest {
   /** The name of the shared access policy. */
   keyName: string;
 }
-export const GetIotHubResourceKeysForKeyNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIotHubResourceKeysForKeyNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1802,7 +1789,7 @@ export interface GetIotHubResourceQuotaMetricsRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const GetIotHubResourceQuotaMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIotHubResourceQuotaMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1828,7 +1815,7 @@ export interface IotHubQuotaMetricInfo {
   /** The maximum value of the quota metric. */
   maxValue?: number;
 }
-export const IotHubQuotaMetricInfo = /*@__PURE__*/ S.suspend(() =>
+const IotHubQuotaMetricInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     currentValue: S.optional(S.Number),
@@ -1838,7 +1825,7 @@ export const IotHubQuotaMetricInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of quota metrics objects. */
 export type IotHubQuotaMetricInfoListResultValueList = Array<IotHubQuotaMetricInfo>;
-export const IotHubQuotaMetricInfoListResultValueList = /*@__PURE__*/ S.Array(
+const IotHubQuotaMetricInfoListResultValueList = /*@__PURE__*/ S.Array(
   IotHubQuotaMetricInfo,
 ) as any as S.Schema<IotHubQuotaMetricInfoListResultValueList>;
 
@@ -1849,7 +1836,7 @@ export interface IotHubQuotaMetricInfoListResult {
   /** The next link. */
   nextLink?: string;
 }
-export const IotHubQuotaMetricInfoListResult = /*@__PURE__*/ S.suspend(() =>
+const IotHubQuotaMetricInfoListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(IotHubQuotaMetricInfoListResultValueList),
     nextLink: S.optional(S.String),
@@ -1866,7 +1853,7 @@ export interface GetIotHubResourceStatsRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const GetIotHubResourceStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIotHubResourceStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1892,7 +1879,7 @@ export interface RegistryStatistics {
   /** The count of disabled devices in the identity registry. */
   disabledDeviceCount?: number;
 }
-export const RegistryStatistics = /*@__PURE__*/ S.suspend(() =>
+const RegistryStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalDeviceCount: S.optional(S.Number),
     enabledDeviceCount: S.optional(S.Number),
@@ -1908,7 +1895,7 @@ export interface GetIotHubResourceValidSkusRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const GetIotHubResourceValidSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIotHubResourceValidSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1927,7 +1914,7 @@ export const GetIotHubResourceValidSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the scaling enabled. */
 export type IotHubCapacityScaleType = "Automatic" | "Manual" | "None";
-export const IotHubCapacityScaleType = S.String;
+const IotHubCapacityScaleType = S.String;
 
 /** IoT Hub capacity information. */
 export interface IotHubCapacity {
@@ -1940,7 +1927,7 @@ export interface IotHubCapacity {
   /** The type of the scaling enabled. */
   scaleType?: IotHubCapacityScaleType;
 }
-export const IotHubCapacity = /*@__PURE__*/ S.suspend(() =>
+const IotHubCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimum: S.optional(S.Number),
     maximum: S.optional(S.Number),
@@ -1958,7 +1945,7 @@ export interface IotHubSkuDescription {
   /** IotHub capacity */
   capacity: IotHubCapacity;
 }
-export const IotHubSkuDescription = /*@__PURE__*/ S.suspend(() =>
+const IotHubSkuDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     sku: IotHubSkuInfo,
@@ -1968,7 +1955,7 @@ export const IotHubSkuDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of IotHubSkuDescription. */
 export type IotHubSkuDescriptionListResultValueList = Array<IotHubSkuDescription>;
-export const IotHubSkuDescriptionListResultValueList = /*@__PURE__*/ S.Array(
+const IotHubSkuDescriptionListResultValueList = /*@__PURE__*/ S.Array(
   IotHubSkuDescription,
 ) as any as S.Schema<IotHubSkuDescriptionListResultValueList>;
 
@@ -1979,7 +1966,7 @@ export interface IotHubSkuDescriptionListResult {
   /** The next link. */
   nextLink?: string;
 }
-export const IotHubSkuDescriptionListResult = /*@__PURE__*/ S.suspend(() =>
+const IotHubSkuDescriptionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(IotHubSkuDescriptionListResultValueList),
     nextLink: S.optional(S.String),
@@ -1998,7 +1985,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2026,7 +2013,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource */
   groupId: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2046,12 +2033,12 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The required members for a specific group id */
 export type GroupIdInformationPropertiesRequiredMembersList = Array<string>;
-export const GroupIdInformationPropertiesRequiredMembersList =
+const GroupIdInformationPropertiesRequiredMembersList =
   IotHubPropertiesAllowedFqdnListList as any as S.Schema<GroupIdInformationPropertiesRequiredMembersList>;
 
 /** The required DNS zones for a specific group id */
 export type GroupIdInformationPropertiesRequiredZoneNamesList = Array<string>;
-export const GroupIdInformationPropertiesRequiredZoneNamesList =
+const GroupIdInformationPropertiesRequiredZoneNamesList =
   IotHubPropertiesAllowedFqdnListList as any as S.Schema<GroupIdInformationPropertiesRequiredZoneNamesList>;
 
 /** The properties for a group information object */
@@ -2063,7 +2050,7 @@ export interface GroupIdInformationProperties {
   /** The required DNS zones for a specific group id */
   requiredZoneNames?: GroupIdInformationPropertiesRequiredZoneNamesList;
 }
-export const GroupIdInformationProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupIdInformationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(GroupIdInformationPropertiesRequiredMembersList),
@@ -2083,7 +2070,7 @@ export interface GroupIdInformation {
   type?: string;
   properties: GroupIdInformationProperties;
 }
-export const GroupIdInformation = /*@__PURE__*/ S.suspend(() =>
+const GroupIdInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2096,7 +2083,7 @@ export interface GetResourceProviderCommonSubscriptionQuotaRequest {
   /** The subscription identifier. */
   subscriptionId: string;
 }
-export const GetResourceProviderCommonSubscriptionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceProviderCommonSubscriptionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2118,7 +2105,7 @@ export interface Name {
   /** Localized value of name */
   localizedValue?: string;
 }
-export const Name = /*@__PURE__*/ S.suspend(() =>
+const Name = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -2140,7 +2127,7 @@ export interface UserSubscriptionQuota {
   /** IotHub type */
   name?: Name;
 }
-export const UserSubscriptionQuota = /*@__PURE__*/ S.suspend(() =>
+const UserSubscriptionQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -2152,7 +2139,7 @@ export const UserSubscriptionQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSubscriptionQuota" }) as any as S.Schema<UserSubscriptionQuota>;
 
 export type UserSubscriptionQuotaListResultValueList = Array<UserSubscriptionQuota>;
-export const UserSubscriptionQuotaListResultValueList = /*@__PURE__*/ S.Array(
+const UserSubscriptionQuotaListResultValueList = /*@__PURE__*/ S.Array(
   UserSubscriptionQuota,
 ) as any as S.Schema<UserSubscriptionQuotaListResultValueList>;
 
@@ -2161,7 +2148,7 @@ export interface UserSubscriptionQuotaListResult {
   value?: UserSubscriptionQuotaListResultValueList;
   nextLink?: string;
 }
-export const UserSubscriptionQuotaListResult = /*@__PURE__*/ S.suspend(() =>
+const UserSubscriptionQuotaListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(UserSubscriptionQuotaListResultValueList),
     nextLink: S.optional(S.String),
@@ -2172,7 +2159,7 @@ export const UserSubscriptionQuotaListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies authentication type being used for connecting to the storage account. */
 export type ImportIotHubResourceDevicesRequestAuthenticationType = "keyBased" | "identityBased";
-export const ImportIotHubResourceDevicesRequestAuthenticationType = S.String;
+const ImportIotHubResourceDevicesRequestAuthenticationType = S.String;
 
 export interface ImportIotHubResourceDevicesRequest {
   /** The subscription identifier. */
@@ -2198,7 +2185,7 @@ export interface ImportIotHubResourceDevicesRequest {
   /** The blob name to be used when importing configurations from the provided input blob container. */
   configurationsBlobName?: string;
 }
-export const ImportIotHubResourceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportIotHubResourceDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2233,7 +2220,7 @@ export interface IotHubManualFailoverRequest {
   /** Region the hub will be failed over to */
   failoverRegion: string;
 }
-export const IotHubManualFailoverRequest = /*@__PURE__*/ S.suspend(() =>
+const IotHubManualFailoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2252,45 +2239,44 @@ export const IotHubManualFailoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IotHubManualFailoverRequest>;
 
 export interface IotHubManualFailoverResponse {}
-export const IotHubManualFailoverResponse =
+const IotHubManualFailoverResponse =
   DeleteCertificateResponse as any as S.Schema<IotHubManualFailoverResponse>;
 
 /** The resource tags. */
 export type IotHubResourceCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const IotHubResourceCreateOrUpdateRequestTagsMap =
+const IotHubResourceCreateOrUpdateRequestTagsMap =
   DeleteIotHubResourceResponseTagsMap as any as S.Schema<IotHubResourceCreateOrUpdateRequestTagsMap>;
 
 /** The shared access policies you can use to secure a connection to the IoT hub. */
 export type IotHubPropertiesInputAuthorizationPoliciesList =
   Array<SharedAccessSignatureAuthorizationRule>;
-export const IotHubPropertiesInputAuthorizationPoliciesList =
+const IotHubPropertiesInputAuthorizationPoliciesList =
   IotHubPropertiesAuthorizationPoliciesList as any as S.Schema<IotHubPropertiesInputAuthorizationPoliciesList>;
 
 /** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Iot Hub. */
 export type IotHubPropertiesInputAllowedFqdnListList = Array<string>;
-export const IotHubPropertiesInputAllowedFqdnListList =
+const IotHubPropertiesInputAllowedFqdnListList =
   IotHubPropertiesAllowedFqdnListList as any as S.Schema<IotHubPropertiesInputAllowedFqdnListList>;
 
 /** Whether requests from Public Network are allowed */
 export type IotHubPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const IotHubPropertiesInputPublicNetworkAccess = S.String;
+const IotHubPropertiesInputPublicNetworkAccess = S.String;
 
 /** The IP filter rules. */
 export type IotHubPropertiesInputIpFilterRulesList = Array<IpFilterRule>;
-export const IotHubPropertiesInputIpFilterRulesList =
+const IotHubPropertiesInputIpFilterRulesList =
   IotHubPropertiesIpFilterRulesList as any as S.Schema<IotHubPropertiesInputIpFilterRulesList>;
 
 /** The private endpoint property of a private endpoint connection */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput =
-  DeleteCertificateResponse as any as S.Schema<PrivateEndpointInput>;
+const PrivateEndpointInput = DeleteCertificateResponse as any as S.Schema<PrivateEndpointInput>;
 
 /** The properties of a private endpoint connection */
 export interface PrivateEndpointConnectionPropertiesInput {
   privateEndpoint?: PrivateEndpointInput;
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -2303,7 +2289,7 @@ export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
 export interface PrivateEndpointConnectionInput {
   properties: PrivateEndpointConnectionPropertiesInput;
 }
-export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: PrivateEndpointConnectionPropertiesInput,
   }),
@@ -2314,7 +2300,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 /** Private endpoint connections created on this IotHub */
 export type IotHubPropertiesInputPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
-export const IotHubPropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const IotHubPropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionInput,
 ) as any as S.Schema<IotHubPropertiesInputPrivateEndpointConnectionsList>;
 
@@ -2325,7 +2311,7 @@ export interface EventHubPropertiesInput {
   /** The number of partitions for receiving device-to-cloud messages in the Event Hub-compatible endpoint. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages. */
   partitionCount?: number;
 }
-export const EventHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EventHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionTimeInDays: S.optional(S.Number),
     partitionCount: S.optional(S.Number),
@@ -2336,7 +2322,7 @@ export const EventHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type IotHubPropertiesInputEventHubEndpointsMap = {
   [key: string]: EventHubPropertiesInput | undefined;
 };
-export const IotHubPropertiesInputEventHubEndpointsMap = /*@__PURE__*/ S.Record(
+const IotHubPropertiesInputEventHubEndpointsMap = /*@__PURE__*/ S.Record(
   S.String,
   EventHubPropertiesInput,
 ) as any as S.Schema<IotHubPropertiesInputEventHubEndpointsMap>;
@@ -2344,28 +2330,28 @@ export const IotHubPropertiesInputEventHubEndpointsMap = /*@__PURE__*/ S.Record(
 /** The list of Service Bus queue endpoints that IoT hub routes the messages to, based on the routing rules. */
 export type RoutingEndpointsInputServiceBusQueuesList =
   Array<RoutingServiceBusQueueEndpointProperties>;
-export const RoutingEndpointsInputServiceBusQueuesList =
+const RoutingEndpointsInputServiceBusQueuesList =
   RoutingEndpointsServiceBusQueuesList as any as S.Schema<RoutingEndpointsInputServiceBusQueuesList>;
 
 /** The list of Service Bus topic endpoints that the IoT hub routes the messages to, based on the routing rules. */
 export type RoutingEndpointsInputServiceBusTopicsList =
   Array<RoutingServiceBusTopicEndpointProperties>;
-export const RoutingEndpointsInputServiceBusTopicsList =
+const RoutingEndpointsInputServiceBusTopicsList =
   RoutingEndpointsServiceBusTopicsList as any as S.Schema<RoutingEndpointsInputServiceBusTopicsList>;
 
 /** The list of Event Hubs endpoints that IoT hub routes messages to, based on the routing rules. This list does not include the built-in Event Hubs endpoint. */
 export type RoutingEndpointsInputEventHubsList = Array<RoutingEventHubProperties>;
-export const RoutingEndpointsInputEventHubsList =
+const RoutingEndpointsInputEventHubsList =
   RoutingEndpointsEventHubsList as any as S.Schema<RoutingEndpointsInputEventHubsList>;
 
 /** The list of storage container endpoints that IoT hub routes messages to, based on the routing rules. */
 export type RoutingEndpointsInputStorageContainersList = Array<RoutingStorageContainerProperties>;
-export const RoutingEndpointsInputStorageContainersList =
+const RoutingEndpointsInputStorageContainersList =
   RoutingEndpointsStorageContainersList as any as S.Schema<RoutingEndpointsInputStorageContainersList>;
 
 /** Method used to authenticate against the cosmos DB sql container endpoint */
 export type RoutingCosmosDBSqlApiPropertiesInputAuthenticationType = "keyBased" | "identityBased";
-export const RoutingCosmosDBSqlApiPropertiesInputAuthenticationType = S.String;
+const RoutingCosmosDBSqlApiPropertiesInputAuthenticationType = S.String;
 
 /** The properties related to a cosmos DB sql container endpoint. */
 export interface RoutingCosmosDBSqlApiPropertiesInput {
@@ -2394,7 +2380,7 @@ export interface RoutingCosmosDBSqlApiPropertiesInput {
   /** The template for generating a synthetic partition key value for use with this cosmos DB sql container. The template must include at least one of the following placeholders: {iothub}, {deviceid}, {DD}, {MM}, and {YYYY}. Any one placeholder may be specified at most once, but order and non-placeholder components are arbitrary. This parameter is only required if PartitionKeyName is specified. */
   partitionKeyTemplate?: string;
 }
-export const RoutingCosmosDBSqlApiPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RoutingCosmosDBSqlApiPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     subscriptionId: S.optional(S.String),
@@ -2416,7 +2402,7 @@ export const RoutingCosmosDBSqlApiPropertiesInput = /*@__PURE__*/ S.suspend(() =
 /** The list of Cosmos DB container endpoints that IoT hub routes messages to, based on the routing rules. */
 export type RoutingEndpointsInputCosmosDBSqlContainersList =
   Array<RoutingCosmosDBSqlApiPropertiesInput>;
-export const RoutingEndpointsInputCosmosDBSqlContainersList = /*@__PURE__*/ S.Array(
+const RoutingEndpointsInputCosmosDBSqlContainersList = /*@__PURE__*/ S.Array(
   RoutingCosmosDBSqlApiPropertiesInput,
 ) as any as S.Schema<RoutingEndpointsInputCosmosDBSqlContainersList>;
 
@@ -2433,7 +2419,7 @@ export interface RoutingEndpointsInput {
   /** The list of Cosmos DB container endpoints that IoT hub routes messages to, based on the routing rules. */
   cosmosDBSqlContainers?: RoutingEndpointsInputCosmosDBSqlContainersList;
 }
-export const RoutingEndpointsInput = /*@__PURE__*/ S.suspend(() =>
+const RoutingEndpointsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceBusQueues: S.optional(RoutingEndpointsInputServiceBusQueuesList),
     serviceBusTopics: S.optional(RoutingEndpointsInputServiceBusTopicsList),
@@ -2445,12 +2431,12 @@ export const RoutingEndpointsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of user-provided routing rules that the IoT hub uses to route messages to built-in and custom endpoints. A maximum of 100 routing rules are allowed for paid hubs and a maximum of 5 routing rules are allowed for free hubs. */
 export type RoutingPropertiesInputRoutesList = Array<RouteProperties>;
-export const RoutingPropertiesInputRoutesList =
+const RoutingPropertiesInputRoutesList =
   RoutingPropertiesRoutesList as any as S.Schema<RoutingPropertiesInputRoutesList>;
 
 /** The list of user-provided enrichments that the IoT hub applies to messages to be delivered to built-in and custom endpoints. See: https://aka.ms/telemetryoneventgrid */
 export type RoutingPropertiesInputEnrichmentsList = Array<EnrichmentProperties>;
-export const RoutingPropertiesInputEnrichmentsList =
+const RoutingPropertiesInputEnrichmentsList =
   RoutingPropertiesEnrichmentsList as any as S.Schema<RoutingPropertiesInputEnrichmentsList>;
 
 /** The routing related properties of the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging */
@@ -2463,7 +2449,7 @@ export interface RoutingPropertiesInput {
   /** The list of user-provided enrichments that the IoT hub applies to messages to be delivered to built-in and custom endpoints. See: https://aka.ms/telemetryoneventgrid */
   enrichments?: RoutingPropertiesInputEnrichmentsList;
 }
-export const RoutingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RoutingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(RoutingEndpointsInput),
     routes: S.optional(RoutingPropertiesInputRoutesList),
@@ -2476,19 +2462,19 @@ export const RoutingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type IotHubPropertiesInputStorageEndpointsMap = {
   [key: string]: StorageEndpointProperties | undefined;
 };
-export const IotHubPropertiesInputStorageEndpointsMap =
+const IotHubPropertiesInputStorageEndpointsMap =
   IotHubPropertiesStorageEndpointsMap as any as S.Schema<IotHubPropertiesInputStorageEndpointsMap>;
 
 /** The messaging endpoint properties for the file upload notification queue. */
 export type IotHubPropertiesInputMessagingEndpointsMap = {
   [key: string]: MessagingEndpointProperties | undefined;
 };
-export const IotHubPropertiesInputMessagingEndpointsMap =
+const IotHubPropertiesInputMessagingEndpointsMap =
   IotHubPropertiesMessagingEndpointsMap as any as S.Schema<IotHubPropertiesInputMessagingEndpointsMap>;
 
 /** The capabilities and features enabled for the IoT hub. */
 export type IotHubPropertiesInputFeatures = "None" | "DeviceManagement";
-export const IotHubPropertiesInputFeatures = S.String;
+const IotHubPropertiesInputFeatures = S.String;
 
 /** The properties of an IoT hub. */
 export interface IotHubPropertiesInput {
@@ -2530,7 +2516,7 @@ export interface IotHubPropertiesInput {
   /** This property when set to true, will enable data residency, thus, disabling disaster recovery. */
   enableDataResidency?: boolean;
 }
-export const IotHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IotHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationPolicies: S.optional(IotHubPropertiesInputAuthorizationPoliciesList),
     disableLocalAuth: S.optional(S.Boolean),
@@ -2557,7 +2543,7 @@ export const IotHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the SKU. */
 export type IotHubSkuInfoInputName = "F1" | "S1" | "S2" | "S3" | "B1" | "B2" | "B3";
-export const IotHubSkuInfoInputName = S.String;
+const IotHubSkuInfoInputName = S.String;
 
 /** Information about the SKU of the IoT hub. */
 export interface IotHubSkuInfoInput {
@@ -2566,7 +2552,7 @@ export interface IotHubSkuInfoInput {
   /** The number of provisioned IoT Hub units. See: https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits. */
   capacity?: number;
 }
-export const IotHubSkuInfoInput = /*@__PURE__*/ S.suspend(() =>
+const IotHubSkuInfoInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: IotHubSkuInfoInputName,
     capacity: S.optional(S.Number),
@@ -2579,15 +2565,13 @@ export type ArmIdentityInputType =
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-export const ArmIdentityInputType = S.String;
+const ArmIdentityInputType = S.String;
 
 export type ArmUserIdentityInput = PrivateEndpointInput;
-export const ArmUserIdentityInput = PrivateEndpointInput;
-
 export type ArmIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: PrivateEndpointInput | undefined;
 };
-export const ArmIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ArmIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   PrivateEndpointInput,
 ) as any as S.Schema<ArmIdentityInputUserAssignedIdentitiesMap>;
@@ -2597,7 +2581,7 @@ export interface ArmIdentityInput {
   type?: ArmIdentityInputType | (string & {});
   userAssignedIdentities?: ArmIdentityInputUserAssignedIdentitiesMap;
 }
-export const ArmIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ArmIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ArmIdentityInputType),
     userAssignedIdentities: S.optional(ArmIdentityInputUserAssignedIdentitiesMap),
@@ -2626,7 +2610,7 @@ export interface IotHubResourceCreateOrUpdateRequest {
   /** ETag of the IoT hub. Do not specify for creating a brand new IoT hub. Required to update an existing IoT hub. */
   ifMatch?: string;
 }
-export const IotHubResourceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const IotHubResourceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2652,9 +2636,6 @@ export const IotHubResourceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type IotHubResourceCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const IotHubResourceCreateOrUpdateResponseTagsMap =
-  DeleteIotHubResourceResponseTagsMap as any as S.Schema<IotHubResourceCreateOrUpdateResponseTagsMap>;
-
 export interface IotHubResourceCreateOrUpdateResponse {
   /** The resource identifier. */
   id?: string;
@@ -2677,7 +2658,7 @@ export interface IotHubResourceCreateOrUpdateResponse {
   /** The system meta data relating to this resource. */
   systemData?: SystemData;
 }
-export const IotHubResourceCreateOrUpdateResponse =
+const IotHubResourceCreateOrUpdateResponse =
   DeleteIotHubResourceResponse as any as S.Schema<IotHubResourceCreateOrUpdateResponse>;
 
 export interface ListCertificateByIotHubRequest {
@@ -2688,7 +2669,7 @@ export interface ListCertificateByIotHubRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const ListCertificateByIotHubRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateByIotHubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2707,7 +2688,7 @@ export const ListCertificateByIotHubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of Certificate objects. */
 export type CertificateListDescriptionValueList = Array<CertificateDescription>;
-export const CertificateListDescriptionValueList = /*@__PURE__*/ S.Array(
+const CertificateListDescriptionValueList = /*@__PURE__*/ S.Array(
   CertificateDescription,
 ) as any as S.Schema<CertificateListDescriptionValueList>;
 
@@ -2716,7 +2697,7 @@ export interface CertificateListDescription {
   /** The array of Certificate objects. */
   value?: CertificateListDescriptionValueList;
 }
-export const CertificateListDescription = /*@__PURE__*/ S.suspend(() =>
+const CertificateListDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CertificateListDescriptionValueList),
   }),
@@ -2730,7 +2711,7 @@ export interface ListIotHubResourceByResourceGroupRequest {
   /** The name of the resource group that contains the IoT hub. */
   resourceGroupName: string;
 }
-export const ListIotHubResourceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIotHubResourceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2748,7 +2729,7 @@ export const ListIotHubResourceByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** The resource tags. */
 export type IotHubDescriptionTagsMap = { [key: string]: string | undefined };
-export const IotHubDescriptionTagsMap =
+const IotHubDescriptionTagsMap =
   DeleteIotHubResourceResponseTagsMap as any as S.Schema<IotHubDescriptionTagsMap>;
 
 /** The description of the IoT hub. */
@@ -2774,7 +2755,7 @@ export interface IotHubDescription {
   /** The system meta data relating to this resource. */
   systemData?: SystemData;
 }
-export const IotHubDescription = /*@__PURE__*/ S.suspend(() =>
+const IotHubDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2791,7 +2772,7 @@ export const IotHubDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of IotHubDescription objects. */
 export type IotHubDescriptionListResultValueList = Array<IotHubDescription>;
-export const IotHubDescriptionListResultValueList = /*@__PURE__*/ S.Array(
+const IotHubDescriptionListResultValueList = /*@__PURE__*/ S.Array(
   IotHubDescription,
 ) as any as S.Schema<IotHubDescriptionListResultValueList>;
 
@@ -2802,7 +2783,7 @@ export interface IotHubDescriptionListResult {
   /** The next link. */
   nextLink?: string;
 }
-export const IotHubDescriptionListResult = /*@__PURE__*/ S.suspend(() =>
+const IotHubDescriptionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(IotHubDescriptionListResultValueList),
     nextLink: S.optional(S.String),
@@ -2815,7 +2796,7 @@ export interface ListIotHubResourceBySubscriptionRequest {
   /** The subscription identifier. */
   subscriptionId: string;
 }
-export const ListIotHubResourceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIotHubResourceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2840,7 +2821,7 @@ export interface ListIotHubResourceEventHubConsumerGroupsRequest {
   /** The name of the Event Hub-compatible endpoint. */
   eventHubEndpointName: string;
 }
-export const ListIotHubResourceEventHubConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIotHubResourceEventHubConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2860,7 +2841,7 @@ export const ListIotHubResourceEventHubConsumerGroupsRequest = /*@__PURE__*/ S.s
 
 /** List of consumer groups objects */
 export type EventHubConsumerGroupsListResultValueList = Array<EventHubConsumerGroupInfo>;
-export const EventHubConsumerGroupsListResultValueList = /*@__PURE__*/ S.Array(
+const EventHubConsumerGroupsListResultValueList = /*@__PURE__*/ S.Array(
   EventHubConsumerGroupInfo,
 ) as any as S.Schema<EventHubConsumerGroupsListResultValueList>;
 
@@ -2871,7 +2852,7 @@ export interface EventHubConsumerGroupsListResult {
   /** The next link. */
   nextLink?: string;
 }
-export const EventHubConsumerGroupsListResult = /*@__PURE__*/ S.suspend(() =>
+const EventHubConsumerGroupsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EventHubConsumerGroupsListResultValueList),
     nextLink: S.optional(S.String),
@@ -2888,7 +2869,7 @@ export interface ListIotHubResourceJobsRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const ListIotHubResourceJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIotHubResourceJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2907,7 +2888,7 @@ export const ListIotHubResourceJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of JobResponse objects. */
 export type JobResponseListResultValueList = Array<JobResponse>;
-export const JobResponseListResultValueList = /*@__PURE__*/ S.Array(
+const JobResponseListResultValueList = /*@__PURE__*/ S.Array(
   JobResponse,
 ) as any as S.Schema<JobResponseListResultValueList>;
 
@@ -2918,7 +2899,7 @@ export interface JobResponseListResult {
   /** The next link. */
   nextLink?: string;
 }
-export const JobResponseListResult = /*@__PURE__*/ S.suspend(() =>
+const JobResponseListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(JobResponseListResultValueList),
     nextLink: S.optional(S.String),
@@ -2933,7 +2914,7 @@ export interface ListIotHubResourceKeysRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const ListIotHubResourceKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIotHubResourceKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2953,7 +2934,7 @@ export const ListIotHubResourceKeysRequest = /*@__PURE__*/ S.suspend(() =>
 /** The list of shared access policies. */
 export type SharedAccessSignatureAuthorizationRuleListResultValueList =
   Array<SharedAccessSignatureAuthorizationRule>;
-export const SharedAccessSignatureAuthorizationRuleListResultValueList =
+const SharedAccessSignatureAuthorizationRuleListResultValueList =
   IotHubPropertiesAuthorizationPoliciesList as any as S.Schema<SharedAccessSignatureAuthorizationRuleListResultValueList>;
 
 /** The list of shared access policies with a next link. */
@@ -2963,7 +2944,7 @@ export interface SharedAccessSignatureAuthorizationRuleListResult {
   /** The next link. */
   nextLink?: string;
 }
-export const SharedAccessSignatureAuthorizationRuleListResult = /*@__PURE__*/ S.suspend(() =>
+const SharedAccessSignatureAuthorizationRuleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SharedAccessSignatureAuthorizationRuleListResultValueList),
     nextLink: S.optional(S.String),
@@ -2973,7 +2954,7 @@ export const SharedAccessSignatureAuthorizationRuleListResult = /*@__PURE__*/ S.
 }) as any as S.Schema<SharedAccessSignatureAuthorizationRuleListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2995,7 +2976,7 @@ export interface OperationDisplay {
   /** Description of the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -3011,7 +2992,7 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -3020,7 +3001,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IoT Hub operations supported by the Microsoft.Devices resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -3031,7 +3012,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -3046,7 +3027,7 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3065,11 +3046,11 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The list of private endpoint connections for an IotHub */
 export type PrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionsList =
+const PrivateEndpointConnectionsList =
   IotHubPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionsList>;
 
 export type ListPrivateEndpointConnectionsResponse = PrivateEndpointConnectionsList;
-export const ListPrivateEndpointConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   PrivateEndpointConnectionsList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPrivateEndpointConnectionsResponse",
@@ -3083,7 +3064,7 @@ export interface ListPrivateLinkResourcesRequest {
   /** The name of the IoT hub. */
   resourceName: string;
 }
-export const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3102,7 +3083,7 @@ export const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of available private link resources for an IotHub */
 export type PrivateLinkResourcesValueList = Array<GroupIdInformation>;
-export const PrivateLinkResourcesValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourcesValueList = /*@__PURE__*/ S.Array(
   GroupIdInformation,
 ) as any as S.Schema<PrivateLinkResourcesValueList>;
 
@@ -3111,7 +3092,7 @@ export interface PrivateLinkResources {
   /** The list of available private link resources for an IotHub */
   value?: PrivateLinkResourcesValueList;
 }
-export const PrivateLinkResources = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourcesValueList),
   }),
@@ -3125,16 +3106,16 @@ export type TestIotHubResourceAllRoutesRequestRoutingSource =
   | "DeviceLifecycleEvents"
   | "DeviceJobLifecycleEvents"
   | "DeviceConnectionStateEvents";
-export const TestIotHubResourceAllRoutesRequestRoutingSource = S.String;
+const TestIotHubResourceAllRoutesRequestRoutingSource = S.String;
 
 /** App properties */
 export type RoutingMessageAppPropertiesMap = { [key: string]: string | undefined };
-export const RoutingMessageAppPropertiesMap =
+const RoutingMessageAppPropertiesMap =
   DeleteIotHubResourceResponseTagsMap as any as S.Schema<RoutingMessageAppPropertiesMap>;
 
 /** System properties */
 export type RoutingMessageSystemPropertiesMap = { [key: string]: string | undefined };
-export const RoutingMessageSystemPropertiesMap =
+const RoutingMessageSystemPropertiesMap =
   DeleteIotHubResourceResponseTagsMap as any as S.Schema<RoutingMessageSystemPropertiesMap>;
 
 /** Routing message */
@@ -3146,7 +3127,7 @@ export interface RoutingMessage {
   /** System properties */
   systemProperties?: RoutingMessageSystemPropertiesMap;
 }
-export const RoutingMessage = /*@__PURE__*/ S.suspend(() =>
+const RoutingMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     appProperties: S.optional(RoutingMessageAppPropertiesMap),
@@ -3160,7 +3141,7 @@ export interface RoutingTwinProperties {
   /** Twin desired properties */
   reported?: unknown;
 }
-export const RoutingTwinProperties = /*@__PURE__*/ S.suspend(() =>
+const RoutingTwinProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     desired: S.optional(S.Unknown),
     reported: S.optional(S.Unknown),
@@ -3173,7 +3154,7 @@ export interface RoutingTwin {
   tags?: unknown;
   properties?: RoutingTwinProperties;
 }
-export const RoutingTwin = /*@__PURE__*/ S.suspend(() =>
+const RoutingTwin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(S.Unknown),
     properties: S.optional(RoutingTwinProperties),
@@ -3194,7 +3175,7 @@ export interface TestIotHubResourceAllRoutesRequest {
   /** Routing Twin Reference */
   twin?: RoutingTwin;
 }
-export const TestIotHubResourceAllRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIotHubResourceAllRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3219,7 +3200,7 @@ export interface MatchedRoute {
   /** Properties of routes that matched */
   properties?: RouteProperties;
 }
-export const MatchedRoute = /*@__PURE__*/ S.suspend(() =>
+const MatchedRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(RouteProperties),
   }),
@@ -3227,7 +3208,7 @@ export const MatchedRoute = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON-serialized array of matched routes */
 export type TestAllRoutesResultRoutesList = Array<MatchedRoute>;
-export const TestAllRoutesResultRoutesList = /*@__PURE__*/ S.Array(
+const TestAllRoutesResultRoutesList = /*@__PURE__*/ S.Array(
   MatchedRoute,
 ) as any as S.Schema<TestAllRoutesResultRoutesList>;
 
@@ -3236,7 +3217,7 @@ export interface TestAllRoutesResult {
   /** JSON-serialized array of matched routes */
   routes?: TestAllRoutesResultRoutesList;
 }
-export const TestAllRoutesResult = /*@__PURE__*/ S.suspend(() =>
+const TestAllRoutesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routes: S.optional(TestAllRoutesResultRoutesList),
   }),
@@ -3256,7 +3237,7 @@ export interface TestIotHubResourceRouteRequest {
   /** Routing Twin Reference */
   twin?: RoutingTwin;
 }
-export const TestIotHubResourceRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIotHubResourceRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3278,11 +3259,11 @@ export const TestIotHubResourceRouteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of testing route */
 export type TestRouteResultResult = "undefined" | "false" | "true";
-export const TestRouteResultResult = S.String;
+const TestRouteResultResult = S.String;
 
 /** Severity of the route error */
 export type RouteCompilationErrorSeverity = "error" | "warning";
-export const RouteCompilationErrorSeverity = S.String;
+const RouteCompilationErrorSeverity = S.String;
 
 /** Position where the route error happened */
 export interface RouteErrorPosition {
@@ -3291,7 +3272,7 @@ export interface RouteErrorPosition {
   /** Column where the route error happened */
   column?: number;
 }
-export const RouteErrorPosition = /*@__PURE__*/ S.suspend(() =>
+const RouteErrorPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line: S.optional(S.Number),
     column: S.optional(S.Number),
@@ -3305,7 +3286,7 @@ export interface RouteErrorRange {
   /** End where the route error happened */
   end?: RouteErrorPosition;
 }
-export const RouteErrorRange = /*@__PURE__*/ S.suspend(() =>
+const RouteErrorRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(RouteErrorPosition),
     end: S.optional(RouteErrorPosition),
@@ -3321,7 +3302,7 @@ export interface RouteCompilationError {
   /** Location where the route error happened */
   location?: RouteErrorRange;
 }
-export const RouteCompilationError = /*@__PURE__*/ S.suspend(() =>
+const RouteCompilationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     severity: S.optional(RouteCompilationErrorSeverity),
@@ -3331,7 +3312,7 @@ export const RouteCompilationError = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON-serialized list of route compilation errors */
 export type TestRouteResultDetailsCompilationErrorsList = Array<RouteCompilationError>;
-export const TestRouteResultDetailsCompilationErrorsList = /*@__PURE__*/ S.Array(
+const TestRouteResultDetailsCompilationErrorsList = /*@__PURE__*/ S.Array(
   RouteCompilationError,
 ) as any as S.Schema<TestRouteResultDetailsCompilationErrorsList>;
 
@@ -3340,7 +3321,7 @@ export interface TestRouteResultDetails {
   /** JSON-serialized list of route compilation errors */
   compilationErrors?: TestRouteResultDetailsCompilationErrorsList;
 }
-export const TestRouteResultDetails = /*@__PURE__*/ S.suspend(() =>
+const TestRouteResultDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compilationErrors: S.optional(TestRouteResultDetailsCompilationErrorsList),
   }),
@@ -3353,7 +3334,7 @@ export interface TestRouteResult {
   /** Detailed result of testing route */
   details?: TestRouteResultDetails;
 }
-export const TestRouteResult = /*@__PURE__*/ S.suspend(() =>
+const TestRouteResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TestRouteResultResult),
     details: S.optional(TestRouteResultDetails),
@@ -3362,7 +3343,7 @@ export const TestRouteResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateIotHubResourceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateIotHubResourceRequestTagsMap =
+const UpdateIotHubResourceRequestTagsMap =
   DeleteIotHubResourceResponseTagsMap as any as S.Schema<UpdateIotHubResourceRequestTagsMap>;
 
 export interface UpdateIotHubResourceRequest {
@@ -3375,7 +3356,7 @@ export interface UpdateIotHubResourceRequest {
   /** Resource tags */
   tags?: UpdateIotHubResourceRequestTagsMap;
 }
-export const UpdateIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3395,9 +3376,6 @@ export const UpdateIotHubResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateIotHubResourceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateIotHubResourceResponseTagsMap =
-  DeleteIotHubResourceResponseTagsMap as any as S.Schema<UpdateIotHubResourceResponseTagsMap>;
-
 export interface UpdateIotHubResourceResponse {
   /** The resource identifier. */
   id?: string;
@@ -3420,7 +3398,7 @@ export interface UpdateIotHubResourceResponse {
   /** The system meta data relating to this resource. */
   systemData?: SystemData;
 }
-export const UpdateIotHubResourceResponse =
+const UpdateIotHubResourceResponse =
   DeleteIotHubResourceResponse as any as S.Schema<UpdateIotHubResourceResponse>;
 
 export interface UpdatePrivateEndpointConnectionRequest {
@@ -3434,7 +3412,7 @@ export interface UpdatePrivateEndpointConnectionRequest {
   privateEndpointConnectionName: string;
   properties: PrivateEndpointConnectionPropertiesInput;
 }
-export const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3465,7 +3443,7 @@ export interface VerifyCertificateRequest {
   /** base-64 representation of X509 certificate .cer file or just .pem file content. */
   certificate?: string;
 }
-export const VerifyCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),

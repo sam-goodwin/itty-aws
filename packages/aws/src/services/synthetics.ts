@@ -142,7 +142,7 @@ export interface AssociateResourceRequest {
   GroupIdentifier: string;
   ResourceArn: string;
 }
-export const AssociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GroupIdentifier: S.String.pipe(T.HttpLabel("GroupIdentifier")),
     ResourceArn: S.String,
@@ -158,26 +158,26 @@ export const AssociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AssociateResourceRequest" }) as any as S.Schema<AssociateResourceRequest>;
 export interface AssociateResourceResponse {}
-export const AssociateResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AssociateResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AssociateResourceResponse",
 }) as any as S.Schema<AssociateResourceResponse>;
 export type CanaryName = string;
 export type CodeHandler = string;
 export type BlueprintType = string;
 export type BlueprintTypes = string[];
-export const BlueprintTypes = /*@__PURE__*/ S.Array(S.String);
+const BlueprintTypes = /*@__PURE__*/ S.Array(S.String);
 export type DependencyType = "LambdaLayer" | (string & {});
-export const DependencyType = S.String;
+const DependencyType = S.String;
 
 export interface Dependency {
   Type?: DependencyType;
   Reference: string;
 }
-export const Dependency = /*@__PURE__*/ S.suspend(() =>
+const Dependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(DependencyType), Reference: S.String }),
 ).annotate({ identifier: "Dependency" }) as any as S.Schema<Dependency>;
 export type Dependencies = Dependency[];
-export const Dependencies = /*@__PURE__*/ S.Array(Dependency);
+const Dependencies = /*@__PURE__*/ S.Array(Dependency);
 export interface CanaryCodeInput {
   S3Bucket?: string;
   S3Key?: string;
@@ -187,7 +187,7 @@ export interface CanaryCodeInput {
   BlueprintTypes?: string[];
   Dependencies?: Dependency[];
 }
-export const CanaryCodeInput = /*@__PURE__*/ S.suspend(() =>
+const CanaryCodeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     S3Bucket: S.optional(S.String),
     S3Key: S.optional(S.String),
@@ -204,15 +204,15 @@ export type MaxRetries = number;
 export interface RetryConfigInput {
   MaxRetries: number;
 }
-export const RetryConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MaxRetries: S.Number }),
-).annotate({ identifier: "RetryConfigInput" }) as any as S.Schema<RetryConfigInput>;
+const RetryConfigInput = /*@__PURE__*/ S.suspend(() => S.Struct({ MaxRetries: S.Number })).annotate(
+  { identifier: "RetryConfigInput" },
+) as any as S.Schema<RetryConfigInput>;
 export interface CanaryScheduleInput {
   Expression: string;
   DurationInSeconds?: number;
   RetryConfig?: RetryConfigInput;
 }
-export const CanaryScheduleInput = /*@__PURE__*/ S.suspend(() =>
+const CanaryScheduleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Expression: S.String,
     DurationInSeconds: S.optional(S.Number),
@@ -224,7 +224,7 @@ export type MaxSize3008 = number;
 export type EnvironmentVariableName = string;
 export type EnvironmentVariableValue = string;
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
-export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(
+const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -236,7 +236,7 @@ export interface CanaryRunConfigInput {
   EnvironmentVariables?: { [key: string]: string | undefined };
   EphemeralStorage?: number;
 }
-export const CanaryRunConfigInput = /*@__PURE__*/ S.suspend(() =>
+const CanaryRunConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TimeoutInSeconds: S.optional(S.Number),
     MemoryInMB: S.optional(S.Number),
@@ -248,16 +248,16 @@ export const CanaryRunConfigInput = /*@__PURE__*/ S.suspend(() =>
 export type MaxSize1024 = number;
 export type SubnetId = string;
 export type SubnetIds = string[];
-export const SubnetIds = BlueprintTypes as any as S.Schema<SubnetIds>;
+const SubnetIds = BlueprintTypes as any as S.Schema<SubnetIds>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-export const SecurityGroupIds = BlueprintTypes as any as S.Schema<SecurityGroupIds>;
+const SecurityGroupIds = BlueprintTypes as any as S.Schema<SecurityGroupIds>;
 export interface VpcConfigInput {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
   Ipv6AllowedForDualStack?: boolean;
 }
-export const VpcConfigInput = /*@__PURE__*/ S.suspend(() =>
+const VpcConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubnetIds: S.optional(SubnetIds),
     SecurityGroupIds: S.optional(SecurityGroupIds),
@@ -265,24 +265,24 @@ export const VpcConfigInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpcConfigInput" }) as any as S.Schema<VpcConfigInput>;
 export type ResourceToTag = "lambda-function" | (string & {});
-export const ResourceToTag = S.String;
+const ResourceToTag = S.String;
 
 export type ResourceList = ResourceToTag[];
-export const ResourceList = /*@__PURE__*/ S.Array(ResourceToTag);
+const ResourceList = /*@__PURE__*/ S.Array(ResourceToTag);
 export type ProvisionedResourceCleanupSetting = "AUTOMATIC" | "OFF" | (string & {});
-export const ProvisionedResourceCleanupSetting = S.String;
+const ProvisionedResourceCleanupSetting = S.String;
 
 export type BrowserType = "CHROME" | "FIREFOX" | (string & {});
-export const BrowserType = S.String;
+const BrowserType = S.String;
 
 export interface BrowserConfig {
   BrowserType?: BrowserType;
 }
-export const BrowserConfig = /*@__PURE__*/ S.suspend(() =>
+const BrowserConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BrowserType: S.optional(BrowserType) }),
 ).annotate({ identifier: "BrowserConfig" }) as any as S.Schema<BrowserConfig>;
 export type BrowserConfigs = BrowserConfig[];
-export const BrowserConfigs = /*@__PURE__*/ S.Array(BrowserConfig);
+const BrowserConfigs = /*@__PURE__*/ S.Array(BrowserConfig);
 export type Location = string;
 export type KmsKeyArn = string;
 export interface AddReplicaLocationInput {
@@ -290,7 +290,7 @@ export interface AddReplicaLocationInput {
   VpcConfig?: VpcConfigInput;
   KmsKeyArn?: string;
 }
-export const AddReplicaLocationInput = /*@__PURE__*/ S.suspend(() =>
+const AddReplicaLocationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Location: S.String,
     VpcConfig: S.optional(VpcConfigInput),
@@ -298,25 +298,25 @@ export const AddReplicaLocationInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AddReplicaLocationInput" }) as any as S.Schema<AddReplicaLocationInput>;
 export type AddReplicaLocations = AddReplicaLocationInput[];
-export const AddReplicaLocations = /*@__PURE__*/ S.Array(AddReplicaLocationInput);
+const AddReplicaLocations = /*@__PURE__*/ S.Array(AddReplicaLocationInput);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type EncryptionMode = "SSE_S3" | "SSE_KMS" | (string & {});
-export const EncryptionMode = S.String;
+const EncryptionMode = S.String;
 
 export interface S3EncryptionConfig {
   EncryptionMode?: EncryptionMode;
   KmsKeyArn?: string;
 }
-export const S3EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const S3EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EncryptionMode: S.optional(EncryptionMode), KmsKeyArn: S.optional(S.String) }),
 ).annotate({ identifier: "S3EncryptionConfig" }) as any as S.Schema<S3EncryptionConfig>;
 export interface ArtifactConfigInput {
   S3Encryption?: S3EncryptionConfig;
 }
-export const ArtifactConfigInput = /*@__PURE__*/ S.suspend(() =>
+const ArtifactConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Encryption: S.optional(S3EncryptionConfig) }),
 ).annotate({ identifier: "ArtifactConfigInput" }) as any as S.Schema<ArtifactConfigInput>;
 export interface CreateCanaryRequest {
@@ -338,7 +338,7 @@ export interface CreateCanaryRequest {
   ArtifactConfig?: ArtifactConfigInput;
   KmsKeyArn?: string;
 }
-export const CreateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     Code: CanaryCodeInput,
@@ -366,7 +366,7 @@ export interface CanaryCodeOutput {
   BlueprintTypes?: string[];
   Dependencies?: Dependency[];
 }
-export const CanaryCodeOutput = /*@__PURE__*/ S.suspend(() =>
+const CanaryCodeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceLocationArn: S.optional(S.String),
     Handler: S.optional(S.String),
@@ -377,7 +377,7 @@ export const CanaryCodeOutput = /*@__PURE__*/ S.suspend(() =>
 export interface RetryConfigOutput {
   MaxRetries?: number;
 }
-export const RetryConfigOutput = /*@__PURE__*/ S.suspend(() =>
+const RetryConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaxRetries: S.optional(S.Number) }),
 ).annotate({ identifier: "RetryConfigOutput" }) as any as S.Schema<RetryConfigOutput>;
 export interface CanaryScheduleOutput {
@@ -385,7 +385,7 @@ export interface CanaryScheduleOutput {
   DurationInSeconds?: number;
   RetryConfig?: RetryConfigOutput;
 }
-export const CanaryScheduleOutput = /*@__PURE__*/ S.suspend(() =>
+const CanaryScheduleOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Expression: S.optional(S.String),
     DurationInSeconds: S.optional(S.Number),
@@ -398,7 +398,7 @@ export interface CanaryRunConfigOutput {
   ActiveTracing?: boolean;
   EphemeralStorage?: number;
 }
-export const CanaryRunConfigOutput = /*@__PURE__*/ S.suspend(() =>
+const CanaryRunConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TimeoutInSeconds: S.optional(S.Number),
     MemoryInMB: S.optional(S.Number),
@@ -417,7 +417,7 @@ export type CanaryState =
   | "ERROR"
   | "DELETING"
   | (string & {});
-export const CanaryState = S.String;
+const CanaryState = S.String;
 
 export type CanaryStateReasonCode =
   | "INVALID_PERMISSIONS"
@@ -433,14 +433,14 @@ export type CanaryStateReasonCode =
   | "DELETE_FAILED"
   | "SYNC_DELETE_IN_PROGRESS"
   | (string & {});
-export const CanaryStateReasonCode = S.String;
+const CanaryStateReasonCode = S.String;
 
 export interface CanaryStatus {
   State?: CanaryState;
   StateReason?: string;
   StateReasonCode?: CanaryStateReasonCode;
 }
-export const CanaryStatus = /*@__PURE__*/ S.suspend(() =>
+const CanaryStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     State: S.optional(CanaryState),
     StateReason: S.optional(S.String),
@@ -453,7 +453,7 @@ export interface CanaryTimeline {
   LastStarted?: Date;
   LastStopped?: Date;
 }
-export const CanaryTimeline = /*@__PURE__*/ S.suspend(() =>
+const CanaryTimeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -469,7 +469,7 @@ export interface VpcConfigOutput {
   SecurityGroupIds?: string[];
   Ipv6AllowedForDualStack?: boolean;
 }
-export const VpcConfigOutput = /*@__PURE__*/ S.suspend(() =>
+const VpcConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VpcId: S.optional(S.String),
     SubnetIds: S.optional(SubnetIds),
@@ -479,26 +479,26 @@ export const VpcConfigOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcConfigOutput" }) as any as S.Schema<VpcConfigOutput>;
 export type BaseScreenshotConfigIgnoreCoordinate = string;
 export type BaseScreenshotIgnoreCoordinates = string[];
-export const BaseScreenshotIgnoreCoordinates =
+const BaseScreenshotIgnoreCoordinates =
   BlueprintTypes as any as S.Schema<BaseScreenshotIgnoreCoordinates>;
 export interface BaseScreenshot {
   ScreenshotName: string;
   IgnoreCoordinates?: string[];
 }
-export const BaseScreenshot = /*@__PURE__*/ S.suspend(() =>
+const BaseScreenshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ScreenshotName: S.String,
     IgnoreCoordinates: S.optional(BaseScreenshotIgnoreCoordinates),
   }),
 ).annotate({ identifier: "BaseScreenshot" }) as any as S.Schema<BaseScreenshot>;
 export type BaseScreenshots = BaseScreenshot[];
-export const BaseScreenshots = /*@__PURE__*/ S.Array(BaseScreenshot);
+const BaseScreenshots = /*@__PURE__*/ S.Array(BaseScreenshot);
 export interface VisualReferenceOutput {
   BaseScreenshots?: BaseScreenshot[];
   BaseCanaryRunId?: string;
   BrowserType?: BrowserType;
 }
-export const VisualReferenceOutput = /*@__PURE__*/ S.suspend(() =>
+const VisualReferenceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BaseScreenshots: S.optional(BaseScreenshots),
     BaseCanaryRunId: S.optional(S.String),
@@ -509,25 +509,25 @@ export interface EngineConfig {
   EngineArn?: string;
   BrowserType?: BrowserType;
 }
-export const EngineConfig = /*@__PURE__*/ S.suspend(() =>
+const EngineConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EngineArn: S.optional(S.String), BrowserType: S.optional(BrowserType) }),
 ).annotate({ identifier: "EngineConfig" }) as any as S.Schema<EngineConfig>;
 export type EngineConfigs = EngineConfig[];
-export const EngineConfigs = /*@__PURE__*/ S.Array(EngineConfig);
+const EngineConfigs = /*@__PURE__*/ S.Array(EngineConfig);
 export type VisualReferencesOutput = VisualReferenceOutput[];
-export const VisualReferencesOutput = /*@__PURE__*/ S.Array(VisualReferenceOutput);
+const VisualReferencesOutput = /*@__PURE__*/ S.Array(VisualReferenceOutput);
 export type LocationType = "Primary" | "Replica" | (string & {});
-export const LocationType = S.String;
+const LocationType = S.String;
 
 export type ReplicationState = "InProgress" | "InSync" | "Inconsistent" | (string & {});
-export const ReplicationState = S.String;
+const ReplicationState = S.String;
 
 export interface ReplicationStatus {
   State?: ReplicationState;
   StateReason?: string;
   StateReasonCode?: string;
 }
-export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
+const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     State: S.optional(ReplicationState),
     StateReason: S.optional(S.String),
@@ -541,7 +541,7 @@ export interface Replica {
   LastModified?: Date;
   VpcConfig?: VpcConfigOutput;
 }
-export const Replica = /*@__PURE__*/ S.suspend(() =>
+const Replica = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Location: S.optional(S.String),
     ReplicationStatus: S.optional(ReplicationStatus),
@@ -551,14 +551,14 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 export type Replicas = Replica[];
-export const Replicas = /*@__PURE__*/ S.Array(Replica);
+const Replicas = /*@__PURE__*/ S.Array(Replica);
 export interface MultiLocationConfig {
   LocationType?: LocationType;
   PrimaryLocation?: string;
   Replicas?: Replica[];
   ReplicationState?: ReplicationState;
 }
-export const MultiLocationConfig = /*@__PURE__*/ S.suspend(() =>
+const MultiLocationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LocationType: S.optional(LocationType),
     PrimaryLocation: S.optional(S.String),
@@ -569,12 +569,12 @@ export const MultiLocationConfig = /*@__PURE__*/ S.suspend(() =>
 export interface ArtifactConfigOutput {
   S3Encryption?: S3EncryptionConfig;
 }
-export const ArtifactConfigOutput = ArtifactConfigInput as any as S.Schema<ArtifactConfigOutput>;
+const ArtifactConfigOutput = ArtifactConfigInput as any as S.Schema<ArtifactConfigOutput>;
 export interface DryRunConfigOutput {
   DryRunId?: string;
   LastDryRunExecutionStatus?: string;
 }
-export const DryRunConfigOutput = /*@__PURE__*/ S.suspend(() =>
+const DryRunConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DryRunId: S.optional(S.String), LastDryRunExecutionStatus: S.optional(S.String) }),
 ).annotate({ identifier: "DryRunConfigOutput" }) as any as S.Schema<DryRunConfigOutput>;
 export interface Canary {
@@ -603,7 +603,7 @@ export interface Canary {
   KmsKeyArn?: string;
   DryRunConfig?: DryRunConfigOutput;
 }
-export const Canary = /*@__PURE__*/ S.suspend(() =>
+const Canary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.optional(S.String),
@@ -634,7 +634,7 @@ export const Canary = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCanaryResponse {
   Canary?: Canary;
 }
-export const CreateCanaryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCanaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Canary: S.optional(Canary) }),
 ).annotate({ identifier: "CreateCanaryResponse" }) as any as S.Schema<CreateCanaryResponse>;
 export type GroupName = string;
@@ -642,7 +642,7 @@ export interface CreateGroupRequest {
   Name: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Tags: S.optional(TagMap) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/group" }), svc, auth, proto, ver, rules),
   ),
@@ -656,7 +656,7 @@ export interface Group {
   CreatedTime?: Date;
   LastModifiedTime?: Date;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.optional(S.String),
@@ -669,26 +669,25 @@ export const Group = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGroupResponse {
   Group?: Group;
 }
-export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Group: S.optional(Group) }),
 ).annotate({ identifier: "CreateGroupResponse" }) as any as S.Schema<CreateGroupResponse>;
 export interface DeleteCanaryRequest {
   Name: string;
   DeleteLambda?: boolean;
 }
-export const DeleteCanaryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String.pipe(T.HttpLabel("Name")),
     DeleteLambda: S.optional(S.Boolean).pipe(T.HttpQuery("deleteLambda")),
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/canary/{Name}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteCanaryRequest" }) as any as S.Schema<DeleteCanaryRequest>;
 export interface DeleteCanaryResponse {}
-export const DeleteCanaryResponse =
-  AssociateResourceResponse as any as S.Schema<DeleteCanaryResponse>;
+const DeleteCanaryResponse = AssociateResourceResponse as any as S.Schema<DeleteCanaryResponse>;
 export interface DeleteGroupRequest {
   GroupIdentifier: string;
 }
-export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroupIdentifier: S.String.pipe(T.HttpLabel("GroupIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/group/{GroupIdentifier}" }),
@@ -701,19 +700,17 @@ export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse =
-  AssociateResourceResponse as any as S.Schema<DeleteGroupResponse>;
+const DeleteGroupResponse = AssociateResourceResponse as any as S.Schema<DeleteGroupResponse>;
 export type Token = string;
 export type MaxCanaryResults = number;
 export type DescribeCanariesNameFilter = string[];
-export const DescribeCanariesNameFilter =
-  BlueprintTypes as any as S.Schema<DescribeCanariesNameFilter>;
+const DescribeCanariesNameFilter = BlueprintTypes as any as S.Schema<DescribeCanariesNameFilter>;
 export interface DescribeCanariesRequest {
   NextToken?: string;
   MaxResults?: number;
   Names?: string[];
 }
-export const DescribeCanariesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeCanariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -721,17 +718,17 @@ export const DescribeCanariesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/canaries" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DescribeCanariesRequest" }) as any as S.Schema<DescribeCanariesRequest>;
 export type Canaries = Canary[];
-export const Canaries = /*@__PURE__*/ S.Array(Canary);
+const Canaries = /*@__PURE__*/ S.Array(Canary);
 export interface DescribeCanariesResponse {
   Canaries?: Canary[];
   NextToken?: string;
 }
-export const DescribeCanariesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeCanariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Canaries: S.optional(Canaries), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "DescribeCanariesResponse" }) as any as S.Schema<DescribeCanariesResponse>;
 export type MaxSize100 = number;
 export type DescribeCanariesLastRunNameFilter = string[];
-export const DescribeCanariesLastRunNameFilter =
+const DescribeCanariesLastRunNameFilter =
   BlueprintTypes as any as S.Schema<DescribeCanariesLastRunNameFilter>;
 export interface DescribeCanariesLastRunRequest {
   NextToken?: string;
@@ -739,7 +736,7 @@ export interface DescribeCanariesLastRunRequest {
   Names?: string[];
   BrowserType?: BrowserType;
 }
-export const DescribeCanariesLastRunRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeCanariesLastRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -753,13 +750,13 @@ export const DescribeCanariesLastRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCanariesLastRunRequest>;
 export type RetryAttempt = number;
 export type CanaryRunState = "RUNNING" | "PASSED" | "FAILED" | (string & {});
-export const CanaryRunState = S.String;
+const CanaryRunState = S.String;
 
 export type CanaryRunStateReasonCode = "CANARY_FAILURE" | "EXECUTION_FAILURE" | (string & {});
-export const CanaryRunStateReasonCode = S.String;
+const CanaryRunStateReasonCode = S.String;
 
 export type CanaryRunTestResult = "PASSED" | "FAILED" | "UNKNOWN" | (string & {});
-export const CanaryRunTestResult = S.String;
+const CanaryRunTestResult = S.String;
 
 export interface CanaryRunStatus {
   State?: CanaryRunState;
@@ -767,7 +764,7 @@ export interface CanaryRunStatus {
   StateReasonCode?: CanaryRunStateReasonCode;
   TestResult?: CanaryRunTestResult;
 }
-export const CanaryRunStatus = /*@__PURE__*/ S.suspend(() =>
+const CanaryRunStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     State: S.optional(CanaryRunState),
     StateReason: S.optional(S.String),
@@ -780,7 +777,7 @@ export interface CanaryRunTimeline {
   Completed?: Date;
   MetricTimestampForRunAndRetries?: Date;
 }
-export const CanaryRunTimeline = /*@__PURE__*/ S.suspend(() =>
+const CanaryRunTimeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Started: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Completed: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -790,7 +787,7 @@ export const CanaryRunTimeline = /*@__PURE__*/ S.suspend(() =>
 export interface CanaryDryRunConfigOutput {
   DryRunId?: string;
 }
-export const CanaryDryRunConfigOutput = /*@__PURE__*/ S.suspend(() =>
+const CanaryDryRunConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DryRunId: S.optional(S.String) }),
 ).annotate({ identifier: "CanaryDryRunConfigOutput" }) as any as S.Schema<CanaryDryRunConfigOutput>;
 export interface CanaryRun {
@@ -805,7 +802,7 @@ export interface CanaryRun {
   BrowserType?: BrowserType;
   Location?: string;
 }
-export const CanaryRun = /*@__PURE__*/ S.suspend(() =>
+const CanaryRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     ScheduledRunId: S.optional(S.String),
@@ -823,16 +820,16 @@ export interface CanaryLastRun {
   CanaryName?: string;
   LastRun?: CanaryRun;
 }
-export const CanaryLastRun = /*@__PURE__*/ S.suspend(() =>
+const CanaryLastRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CanaryName: S.optional(S.String), LastRun: S.optional(CanaryRun) }),
 ).annotate({ identifier: "CanaryLastRun" }) as any as S.Schema<CanaryLastRun>;
 export type CanariesLastRun = CanaryLastRun[];
-export const CanariesLastRun = /*@__PURE__*/ S.Array(CanaryLastRun);
+const CanariesLastRun = /*@__PURE__*/ S.Array(CanaryLastRun);
 export interface DescribeCanariesLastRunResponse {
   CanariesLastRun?: CanaryLastRun[];
   NextToken?: string;
 }
-export const DescribeCanariesLastRunResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeCanariesLastRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CanariesLastRun: S.optional(CanariesLastRun), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DescribeCanariesLastRunResponse",
@@ -841,7 +838,7 @@ export interface DescribeRuntimeVersionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const DescribeRuntimeVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeRuntimeVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/runtime-versions" }), svc, auth, proto, ver, rules),
   ),
@@ -854,7 +851,7 @@ export interface RuntimeVersion {
   ReleaseDate?: Date;
   DeprecationDate?: Date;
 }
-export const RuntimeVersion = /*@__PURE__*/ S.suspend(() =>
+const RuntimeVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VersionName: S.optional(S.String),
     Description: S.optional(S.String),
@@ -863,12 +860,12 @@ export const RuntimeVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuntimeVersion" }) as any as S.Schema<RuntimeVersion>;
 export type RuntimeVersionList = RuntimeVersion[];
-export const RuntimeVersionList = /*@__PURE__*/ S.Array(RuntimeVersion);
+const RuntimeVersionList = /*@__PURE__*/ S.Array(RuntimeVersion);
 export interface DescribeRuntimeVersionsResponse {
   RuntimeVersions?: RuntimeVersion[];
   NextToken?: string;
 }
-export const DescribeRuntimeVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeRuntimeVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RuntimeVersions: S.optional(RuntimeVersionList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DescribeRuntimeVersionsResponse",
@@ -877,7 +874,7 @@ export interface DisassociateResourceRequest {
   GroupIdentifier: string;
   ResourceArn: string;
 }
-export const DisassociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     GroupIdentifier: S.String.pipe(T.HttpLabel("GroupIdentifier")),
     ResourceArn: S.String,
@@ -895,13 +892,13 @@ export const DisassociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisassociateResourceRequest",
 }) as any as S.Schema<DisassociateResourceRequest>;
 export interface DisassociateResourceResponse {}
-export const DisassociateResourceResponse =
+const DisassociateResourceResponse =
   AssociateResourceResponse as any as S.Schema<DisassociateResourceResponse>;
 export interface GetCanaryRequest {
   Name: string;
   DryRunId?: string;
 }
-export const GetCanaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String.pipe(T.HttpLabel("Name")),
     DryRunId: S.optional(S.String).pipe(T.HttpQuery("dryRunId")),
@@ -910,9 +907,9 @@ export const GetCanaryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCanaryResponse {
   Canary?: Canary;
 }
-export const GetCanaryResponse = CreateCanaryResponse as any as S.Schema<GetCanaryResponse>;
+const GetCanaryResponse = CreateCanaryResponse as any as S.Schema<GetCanaryResponse>;
 export type RunType = "CANARY_RUN" | "DRY_RUN" | (string & {});
-export const RunType = S.String;
+const RunType = S.String;
 
 export interface GetCanaryRunsRequest {
   Name: string;
@@ -921,7 +918,7 @@ export interface GetCanaryRunsRequest {
   DryRunId?: string;
   RunType?: RunType;
 }
-export const GetCanaryRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCanaryRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String.pipe(T.HttpLabel("Name")),
     NextToken: S.optional(S.String),
@@ -933,18 +930,18 @@ export const GetCanaryRunsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetCanaryRunsRequest" }) as any as S.Schema<GetCanaryRunsRequest>;
 export type CanaryRuns = CanaryRun[];
-export const CanaryRuns = /*@__PURE__*/ S.Array(CanaryRun);
+const CanaryRuns = /*@__PURE__*/ S.Array(CanaryRun);
 export interface GetCanaryRunsResponse {
   CanaryRuns?: CanaryRun[];
   NextToken?: string;
 }
-export const GetCanaryRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCanaryRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CanaryRuns: S.optional(CanaryRuns), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetCanaryRunsResponse" }) as any as S.Schema<GetCanaryRunsResponse>;
 export interface GetGroupRequest {
   GroupIdentifier: string;
 }
-export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroupIdentifier: S.String.pipe(T.HttpLabel("GroupIdentifier")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/group/{GroupIdentifier}" }), svc, auth, proto, ver, rules),
   ),
@@ -952,7 +949,7 @@ export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupResponse {
   Group?: Group;
 }
-export const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
+const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
 export type PaginationToken = string;
 export type MaxGroupResults = number;
 export interface ListAssociatedGroupsRequest {
@@ -960,7 +957,7 @@ export interface ListAssociatedGroupsRequest {
   MaxResults?: number;
   ResourceArn: string;
 }
-export const ListAssociatedGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssociatedGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -983,16 +980,16 @@ export interface GroupSummary {
   Name?: string;
   Arn?: string;
 }
-export const GroupSummary = /*@__PURE__*/ S.suspend(() =>
+const GroupSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String), Arn: S.optional(S.String) }),
 ).annotate({ identifier: "GroupSummary" }) as any as S.Schema<GroupSummary>;
 export type GroupSummaryList = GroupSummary[];
-export const GroupSummaryList = /*@__PURE__*/ S.Array(GroupSummary);
+const GroupSummaryList = /*@__PURE__*/ S.Array(GroupSummary);
 export interface ListAssociatedGroupsResponse {
   Groups?: GroupSummary[];
   NextToken?: string;
 }
-export const ListAssociatedGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssociatedGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Groups: S.optional(GroupSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListAssociatedGroupsResponse",
@@ -1002,7 +999,7 @@ export interface ListGroupResourcesRequest {
   MaxResults?: number;
   GroupIdentifier: string;
 }
-export const ListGroupResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -1021,12 +1018,12 @@ export const ListGroupResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupResourcesRequest",
 }) as any as S.Schema<ListGroupResourcesRequest>;
 export type StringList = string[];
-export const StringList = BlueprintTypes as any as S.Schema<StringList>;
+const StringList = BlueprintTypes as any as S.Schema<StringList>;
 export interface ListGroupResourcesResponse {
   Resources?: string[];
   NextToken?: string;
 }
-export const ListGroupResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Resources: S.optional(StringList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListGroupResourcesResponse",
@@ -1035,7 +1032,7 @@ export interface ListGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/groups" }), svc, auth, proto, ver, rules),
   ),
@@ -1044,14 +1041,14 @@ export interface ListGroupsResponse {
   Groups?: GroupSummary[];
   NextToken?: string;
 }
-export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Groups: S.optional(GroupSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListGroupsResponse" }) as any as S.Schema<ListGroupsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1061,7 +1058,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -1069,20 +1066,19 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StartCanaryRequest {
   Name: string;
 }
-export const StartCanaryRequest = /*@__PURE__*/ S.suspend(() =>
+const StartCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/canary/{Name}/start" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "StartCanaryRequest" }) as any as S.Schema<StartCanaryRequest>;
 export interface StartCanaryResponse {}
-export const StartCanaryResponse =
-  AssociateResourceResponse as any as S.Schema<StartCanaryResponse>;
+const StartCanaryResponse = AssociateResourceResponse as any as S.Schema<StartCanaryResponse>;
 export interface VisualReferenceInput {
   BaseScreenshots?: BaseScreenshot[];
   BaseCanaryRunId: string;
   BrowserType?: BrowserType;
 }
-export const VisualReferenceInput = /*@__PURE__*/ S.suspend(() =>
+const VisualReferenceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BaseScreenshots: S.optional(BaseScreenshots),
     BaseCanaryRunId: S.String,
@@ -1090,7 +1086,7 @@ export const VisualReferenceInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VisualReferenceInput" }) as any as S.Schema<VisualReferenceInput>;
 export type VisualReferences = VisualReferenceInput[];
-export const VisualReferences = /*@__PURE__*/ S.Array(VisualReferenceInput);
+const VisualReferences = /*@__PURE__*/ S.Array(VisualReferenceInput);
 export interface StartCanaryDryRunRequest {
   Name: string;
   Code?: CanaryCodeInput;
@@ -1107,7 +1103,7 @@ export interface StartCanaryDryRunRequest {
   BrowserConfigs?: BrowserConfig[];
   VisualReferences?: VisualReferenceInput[];
 }
-export const StartCanaryDryRunRequest = /*@__PURE__*/ S.suspend(() =>
+const StartCanaryDryRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String.pipe(T.HttpLabel("Name")),
     Code: S.optional(CanaryCodeInput),
@@ -1137,7 +1133,7 @@ export const StartCanaryDryRunRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartCanaryDryRunResponse {
   DryRunConfig?: DryRunConfigOutput;
 }
-export const StartCanaryDryRunResponse = /*@__PURE__*/ S.suspend(() =>
+const StartCanaryDryRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DryRunConfig: S.optional(DryRunConfigOutput) }),
 ).annotate({
   identifier: "StartCanaryDryRunResponse",
@@ -1145,32 +1141,31 @@ export const StartCanaryDryRunResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StopCanaryRequest {
   Name: string;
 }
-export const StopCanaryRequest = /*@__PURE__*/ S.suspend(() =>
+const StopCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/canary/{Name}/stop" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "StopCanaryRequest" }) as any as S.Schema<StopCanaryRequest>;
 export interface StopCanaryResponse {}
-export const StopCanaryResponse = AssociateResourceResponse as any as S.Schema<StopCanaryResponse>;
+const StopCanaryResponse = AssociateResourceResponse as any as S.Schema<StopCanaryResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  AssociateResourceResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = AssociateResourceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = BlueprintTypes as any as S.Schema<TagKeyList>;
+const TagKeyList = BlueprintTypes as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1179,10 +1174,9 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
-  AssociateResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = AssociateResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type RemoveReplicaLocations = string[];
-export const RemoveReplicaLocations = BlueprintTypes as any as S.Schema<RemoveReplicaLocations>;
+const RemoveReplicaLocations = BlueprintTypes as any as S.Schema<RemoveReplicaLocations>;
 export interface UpdateCanaryRequest {
   Name: string;
   Code?: CanaryCodeInput;
@@ -1204,7 +1198,7 @@ export interface UpdateCanaryRequest {
   RemoveReplicaLocations?: string[];
   KmsKeyArn?: string;
 }
-export const UpdateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String.pipe(T.HttpLabel("Name")),
     Code: S.optional(CanaryCodeInput),
@@ -1228,8 +1222,7 @@ export const UpdateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "PATCH", uri: "/canary/{Name}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateCanaryRequest" }) as any as S.Schema<UpdateCanaryRequest>;
 export interface UpdateCanaryResponse {}
-export const UpdateCanaryResponse =
-  AssociateResourceResponse as any as S.Schema<UpdateCanaryResponse>;
+const UpdateCanaryResponse = AssociateResourceResponse as any as S.Schema<UpdateCanaryResponse>;
 export type ErrorMessage = string;
 export type AssociateResourceError =
   | ConflictException

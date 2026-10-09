@@ -46,13 +46,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicInputRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicInputRoleAtOrganization =
+const UserBasicInputRoleAtOrganization =
   S.Unknown as any as S.Schema<UserBasicInputRoleAtOrganization>;
 
 export interface UserBasicInput {
@@ -63,7 +59,7 @@ export interface UserBasicInput {
   is_email_verified?: boolean | null;
   role_at_organization?: UserBasicInputRoleAtOrganization | null;
 }
-export const UserBasicInput = /*@__PURE__*/ S.suspend(() =>
+const UserBasicInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distinct_id: S.optional(S.NullOr(S.String)),
     first_name: S.optional(S.String),
@@ -90,7 +86,7 @@ export interface AdvancedActivityLogsExportCreateRequest {
   detail?: unknown;
   created_at?: string;
 }
-export const AdvancedActivityLogsExportCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AdvancedActivityLogsExportCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     user: S.optional(S.NullOr(UserBasicInput)),
@@ -117,14 +113,13 @@ export const AdvancedActivityLogsExportCreateRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<AdvancedActivityLogsExportCreateRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -137,7 +132,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -168,7 +163,7 @@ export interface ActivityLog {
   detail?: unknown;
   created_at?: string;
 }
-export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
+const ActivityLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     user: S.optional(S.NullOr(UserBasic)),
@@ -191,7 +186,7 @@ export interface GetAdvancedActivityLogsAvailableFilterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetAdvancedActivityLogsAvailableFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvancedActivityLogsAvailableFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -206,40 +201,30 @@ export const GetAdvancedActivityLogsAvailableFilterRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetAdvancedActivityLogsAvailableFilterRequest>;
 
 export type StaticFiltersUsersItemMap = { [key: string]: unknown | undefined };
-export const StaticFiltersUsersItemMap =
+const StaticFiltersUsersItemMap =
   UserBasicHedgehogConfigMap as any as S.Schema<StaticFiltersUsersItemMap>;
 
 /** Users who have logged activity. */
 export type StaticFiltersUsersList = Array<StaticFiltersUsersItemMap>;
-export const StaticFiltersUsersList = /*@__PURE__*/ S.Array(
+const StaticFiltersUsersList = /*@__PURE__*/ S.Array(
   StaticFiltersUsersItemMap,
 ) as any as S.Schema<StaticFiltersUsersList>;
 
 export type StaticFiltersScopesItemMap = { [key: string]: unknown | undefined };
-export const StaticFiltersScopesItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<StaticFiltersScopesItemMap>;
-
 /** Available activity scopes. */
 export type StaticFiltersScopesList = Array<StaticFiltersScopesItemMap>;
-export const StaticFiltersScopesList =
-  StaticFiltersUsersList as any as S.Schema<StaticFiltersScopesList>;
+const StaticFiltersScopesList = StaticFiltersUsersList as any as S.Schema<StaticFiltersScopesList>;
 
 export type StaticFiltersActivitiesItemMap = { [key: string]: unknown | undefined };
-export const StaticFiltersActivitiesItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<StaticFiltersActivitiesItemMap>;
-
 /** Available activity types. */
 export type StaticFiltersActivitiesList = Array<StaticFiltersActivitiesItemMap>;
-export const StaticFiltersActivitiesList =
+const StaticFiltersActivitiesList =
   StaticFiltersUsersList as any as S.Schema<StaticFiltersActivitiesList>;
 
 export type StaticFiltersClientsItemMap = { [key: string]: unknown | undefined };
-export const StaticFiltersClientsItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<StaticFiltersClientsItemMap>;
-
 /** API clients that have generated activity (the x-posthog-client header, or 'scout:<skill_name>' for a scout run). */
 export type StaticFiltersClientsList = Array<StaticFiltersClientsItemMap>;
-export const StaticFiltersClientsList =
+const StaticFiltersClientsList =
   StaticFiltersUsersList as any as S.Schema<StaticFiltersClientsList>;
 
 export interface StaticFilters {
@@ -252,7 +237,7 @@ export interface StaticFilters {
   /** API clients that have generated activity (the x-posthog-client header, or 'scout:<skill_name>' for a scout run). */
   clients?: StaticFiltersClientsList;
 }
-export const StaticFilters = /*@__PURE__*/ S.suspend(() =>
+const StaticFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(StaticFiltersUsersList),
     scopes: S.optional(StaticFiltersScopesList),
@@ -263,7 +248,7 @@ export const StaticFilters = /*@__PURE__*/ S.suspend(() =>
 
 /** Discovered detail fields and their value distributions. */
 export type AvailableFiltersResponseDetailFieldsMap = { [key: string]: unknown | undefined };
-export const AvailableFiltersResponseDetailFieldsMap =
+const AvailableFiltersResponseDetailFieldsMap =
   UserBasicHedgehogConfigMap as any as S.Schema<AvailableFiltersResponseDetailFieldsMap>;
 
 export interface AvailableFiltersResponse {
@@ -272,7 +257,7 @@ export interface AvailableFiltersResponse {
   /** Discovered detail fields and their value distributions. */
   detail_fields?: AvailableFiltersResponseDetailFieldsMap;
 }
-export const AvailableFiltersResponse = /*@__PURE__*/ S.suspend(() =>
+const AvailableFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     static_filters: S.optional(StaticFilters),
     detail_fields: S.optional(AvailableFiltersResponseDetailFieldsMap),
@@ -280,39 +265,39 @@ export const AvailableFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvailableFiltersResponse" }) as any as S.Schema<AvailableFiltersResponse>;
 
 export type ListAdvancedActivityLogsRequestActivitiesList = Array<string>;
-export const ListAdvancedActivityLogsRequestActivitiesList = /*@__PURE__*/ S.Array(
+const ListAdvancedActivityLogsRequestActivitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListAdvancedActivityLogsRequestActivitiesList>;
 
 export type ListAdvancedActivityLogsRequestClientsList = Array<string>;
-export const ListAdvancedActivityLogsRequestClientsList =
+const ListAdvancedActivityLogsRequestClientsList =
   ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestClientsList>;
 
 export type ListAdvancedActivityLogsRequestIpAddressesList = Array<string>;
-export const ListAdvancedActivityLogsRequestIpAddressesList =
+const ListAdvancedActivityLogsRequestIpAddressesList =
   ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestIpAddressesList>;
 
 export type ListAdvancedActivityLogsRequestItemIdsList = Array<string>;
-export const ListAdvancedActivityLogsRequestItemIdsList =
+const ListAdvancedActivityLogsRequestItemIdsList =
   ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestItemIdsList>;
 
 export type ListAdvancedActivityLogsRequestOrdering = "-created_at" | "created_at";
-export const ListAdvancedActivityLogsRequestOrdering = S.String;
+const ListAdvancedActivityLogsRequestOrdering = S.String;
 
 export type ListAdvancedActivityLogsRequestSchema = "ocsf";
-export const ListAdvancedActivityLogsRequestSchema = S.String;
+const ListAdvancedActivityLogsRequestSchema = S.String;
 
 export type ListAdvancedActivityLogsRequestScopesList = Array<string>;
-export const ListAdvancedActivityLogsRequestScopesList =
+const ListAdvancedActivityLogsRequestScopesList =
   ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestScopesList>;
 
 export type ListAdvancedActivityLogsRequestTeamIdsList = Array<number>;
-export const ListAdvancedActivityLogsRequestTeamIdsList = /*@__PURE__*/ S.Array(
+const ListAdvancedActivityLogsRequestTeamIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListAdvancedActivityLogsRequestTeamIdsList>;
 
 export type ListAdvancedActivityLogsRequestUsersList = Array<string>;
-export const ListAdvancedActivityLogsRequestUsersList =
+const ListAdvancedActivityLogsRequestUsersList =
   ListAdvancedActivityLogsRequestActivitiesList as any as S.Schema<ListAdvancedActivityLogsRequestUsersList>;
 
 export interface ListAdvancedActivityLogsRequest {
@@ -359,7 +344,7 @@ export interface ListAdvancedActivityLogsRequest {
   /** When set, filters rows where the actor was impersonating another user. */
   was_impersonated?: boolean;
 }
-export const ListAdvancedActivityLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvancedActivityLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     activities: S.optional(ListAdvancedActivityLogsRequestActivitiesList.pipe(T.Query())),
@@ -390,7 +375,7 @@ export const ListAdvancedActivityLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdvancedActivityLogsRequest>;
 
 export type PaginatedActivityLogListResultsList = Array<ActivityLog>;
-export const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
   ActivityLog,
 ) as any as S.Schema<PaginatedActivityLogListResultsList>;
 
@@ -400,7 +385,7 @@ export interface PaginatedActivityLogList {
   results?: PaginatedActivityLogListResultsList;
   count?: number;
 }
-export const PaginatedActivityLogList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedActivityLogList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),

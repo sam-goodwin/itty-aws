@@ -110,7 +110,7 @@ export class TitleRequired
   ) {}
 
 export type NamespacesBulkDeleteRequestBodyList = Array<string>;
-export const NamespacesBulkDeleteRequestBodyList = /*@__PURE__*/ S.Array(
+const NamespacesBulkDeleteRequestBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesBulkDeleteRequestBodyList>;
 
@@ -121,7 +121,7 @@ export interface BulkDeleteNamespacesRequest {
   namespaceId: string;
   body: NamespacesBulkDeleteRequestBodyList;
 }
-export const BulkDeleteNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -140,7 +140,7 @@ export const BulkDeleteNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteNamespacesRequest>;
 
 export type NamespacesBulkDeleteResponseUnsuccessfulKeysList = Array<string>;
-export const NamespacesBulkDeleteResponseUnsuccessfulKeysList =
+const NamespacesBulkDeleteResponseUnsuccessfulKeysList =
   NamespacesBulkDeleteRequestBodyList as any as S.Schema<NamespacesBulkDeleteResponseUnsuccessfulKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -150,7 +150,7 @@ export interface BulkDeleteNamespacesResponse {
   /** Names of keys that failed to be written or deleted. Retry the operation for these keys. */
   unsuccessfulKeys?: NamespacesBulkDeleteResponseUnsuccessfulKeysList | null;
 }
-export const BulkDeleteNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successfulKeyCount: S.optional(S.NullOr(S.Number).pipe(T.Body("successful_key_count"))),
     unsuccessfulKeys: S.optional(
@@ -162,11 +162,11 @@ export const BulkDeleteNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteNamespacesResponse>;
 
 export type NamespacesBulkGetRequestKeysList = Array<string>;
-export const NamespacesBulkGetRequestKeysList =
+const NamespacesBulkGetRequestKeysList =
   NamespacesBulkDeleteRequestBodyList as any as S.Schema<NamespacesBulkGetRequestKeysList>;
 
 export type NamespacesBulkGetRequestType = "text" | "json";
-export const NamespacesBulkGetRequestType = S.String;
+const NamespacesBulkGetRequestType = S.String;
 
 export interface BulkGetNamespacesRequest {
   /** ID of the Cloudflare account that owns the Workers KV namespaces. */
@@ -180,7 +180,7 @@ export interface BulkGetNamespacesRequest {
   /** Whether to include metadata in the response. */
   withMetadata?: boolean;
 }
-export const BulkGetNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkGetNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -201,32 +201,15 @@ export const BulkGetNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 export type NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map>;
-
 export type NamespacesBulkGetResultWorkersKVBulkGetResultValues =
   | string
   | number
   | boolean
   | NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map;
-export const NamespacesBulkGetResultWorkersKVBulkGetResultValues = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], [], [], []]),
-);
-
 export interface NamespacesBulkGetResultWorkersKVBulkGetResult {
   /** Requested keys are paired with their values in an object. */
   values?: NamespacesBulkGetResultWorkersKVBulkGetResultValues | null;
 }
-export const NamespacesBulkGetResultWorkersKVBulkGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(S.NullOr(NamespacesBulkGetResultWorkersKVBulkGetResultValues)),
-  }),
-).annotate({
-  identifier: "NamespacesBulkGetResultWorkersKVBulkGetResult",
-}) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResult>;
-
 export interface NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue {
   /** The metadata associated with the key. */
   metadata: unknown;
@@ -235,50 +218,22 @@ export interface NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValues
   /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
   expiration?: number | null;
 }
-export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadata: S.Unknown,
-      value: S.Unknown,
-      expiration: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue",
-  }) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue>;
-
 export type NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap = {
   [key: string]: NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue | undefined;
 };
-export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue,
-  ) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap>;
-
 export interface NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata {
   /** Requested keys are paired with their values and metadata in an object. */
   values?: NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap | null;
 }
-export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      values: S.optional(
-        S.NullOr(NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap),
-      ),
-    }),
-).annotate({
-  identifier: "NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata",
-}) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata>;
-
 export type NamespacesBulkGetResult =
   | NamespacesBulkGetResultWorkersKVBulkGetResult
   | NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata;
-export const NamespacesBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const NamespacesBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["values"], ["values"]]),
 );
 
 export type BulkGetNamespacesResponse = NamespacesBulkGetResult;
-export const BulkGetNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkGetNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   NamespacesBulkGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkGetNamespacesResponse",
@@ -298,7 +253,7 @@ export interface NamespacesBulkUpdateRequestBodyItem {
   /** Arbitrary JSON that is associated with a key. */
   metadata?: unknown;
 }
-export const NamespacesBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const NamespacesBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -312,7 +267,7 @@ export const NamespacesBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesBulkUpdateRequestBodyItem>;
 
 export type NamespacesBulkUpdateRequestBodyList = Array<NamespacesBulkUpdateRequestBodyItem>;
-export const NamespacesBulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
+const NamespacesBulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   NamespacesBulkUpdateRequestBodyItem,
 ) as any as S.Schema<NamespacesBulkUpdateRequestBodyList>;
 
@@ -323,7 +278,7 @@ export interface BulkPutNamespacesRequest {
   namespaceId: string;
   body: NamespacesBulkUpdateRequestBodyList;
 }
-export const BulkPutNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkPutNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -340,9 +295,6 @@ export const BulkPutNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkPutNamespacesRequest" }) as any as S.Schema<BulkPutNamespacesRequest>;
 
 export type NamespacesBulkUpdateResponseUnsuccessfulKeysList = Array<string>;
-export const NamespacesBulkUpdateResponseUnsuccessfulKeysList =
-  NamespacesBulkDeleteRequestBodyList as any as S.Schema<NamespacesBulkUpdateResponseUnsuccessfulKeysList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkPutNamespacesResponse {
   /** Number of keys successfully written or deleted by the bulk operation. */
@@ -350,14 +302,14 @@ export interface BulkPutNamespacesResponse {
   /** Names of keys that failed to be written or deleted. Retry the operation for these keys. */
   unsuccessfulKeys?: NamespacesBulkUpdateResponseUnsuccessfulKeysList | null;
 }
-export const BulkPutNamespacesResponse =
+const BulkPutNamespacesResponse =
   BulkDeleteNamespacesResponse as any as S.Schema<BulkPutNamespacesResponse>;
 
 export type NamespacesCreateRequestJurisdiction = "eu" | "fedramp" | "us";
-export const NamespacesCreateRequestJurisdiction = S.String;
+const NamespacesCreateRequestJurisdiction = S.String;
 
 export type NamespacesCreateRequestMode = "instant";
-export const NamespacesCreateRequestMode = S.String;
+const NamespacesCreateRequestMode = S.String;
 
 export interface CreateNamespaceRequest {
   /** ID of the Cloudflare account that owns the Workers KV namespaces. */
@@ -369,7 +321,7 @@ export interface CreateNamespaceRequest {
   /** The mode of the Workers KV namespace. Specify `instant` when creating a namespace to create a KV Instant namespace. Omit this field when creating a namespace to create a classic namespace. Currently, `instant` is the only supported explicit value. */
   mode?: NamespacesCreateRequestMode | (string & {});
 }
-export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     title: S.String,
@@ -383,10 +335,10 @@ export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateNamespaceRequest" }) as any as S.Schema<CreateNamespaceRequest>;
 
 export type NamespacesCreateResponseJurisdiction = "eu" | "fedramp" | "us";
-export const NamespacesCreateResponseJurisdiction = S.String;
+const NamespacesCreateResponseJurisdiction = S.String;
 
 export type NamespacesCreateResponseMode = "instant";
-export const NamespacesCreateResponseMode = S.String;
+const NamespacesCreateResponseMode = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateNamespaceResponse {
@@ -401,7 +353,7 @@ export interface CreateNamespaceResponse {
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
   supportsUrlEncoding?: boolean | null;
 }
-export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -417,7 +369,7 @@ export interface DeleteNamespaceRequest {
   /** ID of the Workers KV namespace. */
   namespaceId: string;
 }
-export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -433,7 +385,7 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNamespaceRequest" }) as any as S.Schema<DeleteNamespaceRequest>;
 
 export interface DeleteNamespaceResponse {}
-export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteNamespaceResponse" }) as any as S.Schema<DeleteNamespaceResponse>;
 
@@ -445,7 +397,7 @@ export interface DeleteNamespaceValueRequest {
   /** A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL. */
   keyName: string;
 }
-export const DeleteNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -464,7 +416,7 @@ export const DeleteNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNamespaceValueRequest>;
 
 export interface DeleteNamespaceValueResponse {}
-export const DeleteNamespaceValueResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteNamespaceValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteNamespaceValueResponse",
@@ -476,7 +428,7 @@ export interface GetNamespaceRequest {
   /** ID of the Workers KV namespace. */
   namespaceId: string;
 }
-export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -492,11 +444,7 @@ export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetNamespaceRequest" }) as any as S.Schema<GetNamespaceRequest>;
 
 export type NamespacesGetResponseJurisdiction = "eu" | "fedramp" | "us";
-export const NamespacesGetResponseJurisdiction = S.String;
-
 export type NamespacesGetResponseMode = "instant";
-export const NamespacesGetResponseMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetNamespaceResponse {
   /** ID of the Workers KV namespace. */
@@ -510,8 +458,7 @@ export interface GetNamespaceResponse {
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
   supportsUrlEncoding?: boolean | null;
 }
-export const GetNamespaceResponse =
-  CreateNamespaceResponse as any as S.Schema<GetNamespaceResponse>;
+const GetNamespaceResponse = CreateNamespaceResponse as any as S.Schema<GetNamespaceResponse>;
 
 export interface GetNamespaceMetadataRequest {
   /** ID of the Cloudflare account that owns the Workers KV namespaces. */
@@ -521,7 +468,7 @@ export interface GetNamespaceMetadataRequest {
   /** A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL. */
   keyName: string;
 }
-export const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -540,7 +487,7 @@ export const GetNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNamespaceMetadataRequest>;
 
 export type GetNamespaceMetadataResponse = unknown;
-export const GetNamespaceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetNamespaceMetadataResponse",
@@ -554,7 +501,7 @@ export interface GetNamespaceValueRequest {
   /** A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL. */
   keyName: string;
 }
-export const GetNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -578,7 +525,7 @@ export interface GetNamespaceValueResponse {
   /** MIME type the value was stored with. */
   contentType?: string;
 }
-export const GetNamespaceValueResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.Unknown.pipe(T.BinaryResponseBody()),
     expiration: S.optional(S.Number.pipe(T.Header())),
@@ -600,7 +547,7 @@ export interface ListNamespaceKeysRequest {
   /** Filters returned keys by a name prefix. Exact matches and any key names that begin with the prefix will be returned. */
   prefix?: string;
 }
-export const ListNamespaceKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -626,7 +573,7 @@ export interface NamespacesKeysListResultItem {
   /** Arbitrary JSON that is associated with a key. */
   metadata?: unknown | null;
 }
-export const NamespacesKeysListResultItem = /*@__PURE__*/ S.suspend(() =>
+const NamespacesKeysListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     expiration: S.optional(S.NullOr(S.Number)),
@@ -637,7 +584,7 @@ export const NamespacesKeysListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesKeysListResultItem>;
 
 export type NamespacesKeysListResultList = Array<NamespacesKeysListResultItem>;
-export const NamespacesKeysListResultList = /*@__PURE__*/ S.Array(
+const NamespacesKeysListResultList = /*@__PURE__*/ S.Array(
   NamespacesKeysListResultItem,
 ) as any as S.Schema<NamespacesKeysListResultList>;
 
@@ -647,7 +594,7 @@ export interface ListNamespaceKeysResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesKeysListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -657,10 +604,10 @@ export const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamespaceKeysResponse>;
 
 export type NamespacesListRequestDirection = "asc" | "desc";
-export const NamespacesListRequestDirection = S.String;
+const NamespacesListRequestDirection = S.String;
 
 export type NamespacesListRequestOrder = "id" | "title";
-export const NamespacesListRequestOrder = S.String;
+const NamespacesListRequestOrder = S.String;
 
 export interface ListNamespacesRequest {
   /** ID of the Cloudflare account that owns the Workers KV namespaces. */
@@ -674,7 +621,7 @@ export interface ListNamespacesRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(NamespacesListRequestDirection.pipe(T.Query())),
@@ -687,10 +634,10 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNamespacesRequest" }) as any as S.Schema<ListNamespacesRequest>;
 
 export type NamespacesListResultItemJurisdiction = "eu" | "fedramp" | "us";
-export const NamespacesListResultItemJurisdiction = S.String;
+const NamespacesListResultItemJurisdiction = S.String;
 
 export type NamespacesListResultItemMode = "instant";
-export const NamespacesListResultItemMode = S.String;
+const NamespacesListResultItemMode = S.String;
 
 export interface NamespacesListResultItem {
   /** ID of the Workers KV namespace. */
@@ -704,7 +651,7 @@ export interface NamespacesListResultItem {
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
   supportsUrlEncoding?: boolean | null;
 }
-export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -715,7 +662,7 @@ export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespacesListResultItem" }) as any as S.Schema<NamespacesListResultItem>;
 
 export type NamespacesListResultList = Array<NamespacesListResultItem>;
-export const NamespacesListResultList = /*@__PURE__*/ S.Array(
+const NamespacesListResultList = /*@__PURE__*/ S.Array(
   NamespacesListResultItem,
 ) as any as S.Schema<NamespacesListResultList>;
 
@@ -725,7 +672,7 @@ export interface ListNamespacesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: NamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -733,7 +680,7 @@ export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNamespacesResponse" }) as any as S.Schema<ListNamespacesResponse>;
 
 export type NamespacesKeysBulkDeleteRequestBodyList = Array<string>;
-export const NamespacesKeysBulkDeleteRequestBodyList =
+const NamespacesKeysBulkDeleteRequestBodyList =
   NamespacesBulkDeleteRequestBodyList as any as S.Schema<NamespacesKeysBulkDeleteRequestBodyList>;
 
 export interface NamespacesKeysBulkDeleteRequest {
@@ -743,7 +690,7 @@ export interface NamespacesKeysBulkDeleteRequest {
   namespaceId: string;
   body: NamespacesKeysBulkDeleteRequestBodyList;
 }
-export const NamespacesKeysBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const NamespacesKeysBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -762,7 +709,7 @@ export const NamespacesKeysBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesKeysBulkDeleteRequest>;
 
 export type NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList = Array<string>;
-export const NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList =
+const NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList =
   NamespacesBulkDeleteRequestBodyList as any as S.Schema<NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -772,7 +719,7 @@ export interface NamespacesKeysBulkDeleteResponse {
   /** Names of keys that failed to be written or deleted. Retry the operation for these keys. */
   unsuccessfulKeys?: NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList | null;
 }
-export const NamespacesKeysBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const NamespacesKeysBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successfulKeyCount: S.optional(S.NullOr(S.Number).pipe(T.Body("successful_key_count"))),
     unsuccessfulKeys: S.optional(
@@ -786,11 +733,11 @@ export const NamespacesKeysBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesKeysBulkDeleteResponse>;
 
 export type NamespacesKeysBulkGetRequestKeysList = Array<string>;
-export const NamespacesKeysBulkGetRequestKeysList =
+const NamespacesKeysBulkGetRequestKeysList =
   NamespacesBulkDeleteRequestBodyList as any as S.Schema<NamespacesKeysBulkGetRequestKeysList>;
 
 export type NamespacesKeysBulkGetRequestType = "text" | "json";
-export const NamespacesKeysBulkGetRequestType = S.String;
+const NamespacesKeysBulkGetRequestType = S.String;
 
 export interface NamespacesKeysBulkGetRequest {
   /** ID of the Cloudflare account that owns the Workers KV namespaces. */
@@ -804,7 +751,7 @@ export interface NamespacesKeysBulkGetRequest {
   /** Whether to include metadata in the response. */
   withMetadata?: boolean;
 }
-export const NamespacesKeysBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
+const NamespacesKeysBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -827,78 +774,41 @@ export const NamespacesKeysBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map = {
   [key: string]: unknown | undefined;
 };
-export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map>;
-
 export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues =
   | string
   | number
   | boolean
   | NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map;
-export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], [], [], []]),
-);
-
 export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResult {
   /** Requested keys are paired with their values in an object. */
   values?: NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues | null;
 }
-export const NamespacesKeysBulkGetResultWorkersKVBulkGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(S.NullOr(NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues)),
-  }),
-).annotate({
-  identifier: "NamespacesKeysBulkGetResultWorkersKVBulkGetResult",
-}) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResult>;
-
 export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
   NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue;
-export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
-  NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue;
-
 export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap = {
   [key: string]: NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue | undefined;
 };
-export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap =
-  NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap>;
-
 export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata {
   /** Requested keys are paired with their values and metadata in an object. */
   values?: NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap | null;
 }
-export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      values: S.optional(
-        S.NullOr(NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata",
-  }) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata>;
-
 export type NamespacesKeysBulkGetResult =
   | NamespacesKeysBulkGetResultWorkersKVBulkGetResult
   | NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata;
-export const NamespacesKeysBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const NamespacesKeysBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["values"], ["values"]]),
 );
 
 export type NamespacesKeysBulkGetResponse = NamespacesKeysBulkGetResult;
-export const NamespacesKeysBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
+const NamespacesKeysBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
   NamespacesKeysBulkGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "NamespacesKeysBulkGetResponse",
 }) as any as S.Schema<NamespacesKeysBulkGetResponse>;
 
 export type NamespacesKeysBulkUpdateRequestBodyItem = NamespacesBulkUpdateRequestBodyItem;
-export const NamespacesKeysBulkUpdateRequestBodyItem = NamespacesBulkUpdateRequestBodyItem;
-
 export type NamespacesKeysBulkUpdateRequestBodyList = Array<NamespacesBulkUpdateRequestBodyItem>;
-export const NamespacesKeysBulkUpdateRequestBodyList =
+const NamespacesKeysBulkUpdateRequestBodyList =
   NamespacesBulkUpdateRequestBodyList as any as S.Schema<NamespacesKeysBulkUpdateRequestBodyList>;
 
 export interface NamespacesKeysBulkUpdateRequest {
@@ -908,7 +818,7 @@ export interface NamespacesKeysBulkUpdateRequest {
   namespaceId: string;
   body: NamespacesKeysBulkUpdateRequestBodyList;
 }
-export const NamespacesKeysBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NamespacesKeysBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -927,9 +837,6 @@ export const NamespacesKeysBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesKeysBulkUpdateRequest>;
 
 export type NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList = Array<string>;
-export const NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList =
-  NamespacesBulkDeleteRequestBodyList as any as S.Schema<NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface NamespacesKeysBulkUpdateResponse {
   /** Number of keys successfully written or deleted by the bulk operation. */
@@ -937,7 +844,7 @@ export interface NamespacesKeysBulkUpdateResponse {
   /** Names of keys that failed to be written or deleted. Retry the operation for these keys. */
   unsuccessfulKeys?: NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList | null;
 }
-export const NamespacesKeysBulkUpdateResponse =
+const NamespacesKeysBulkUpdateResponse =
   NamespacesKeysBulkDeleteResponse as any as S.Schema<NamespacesKeysBulkUpdateResponse>;
 
 export interface PutNamespaceValueRequest {
@@ -956,7 +863,7 @@ export interface PutNamespaceValueRequest {
   /** Associates arbitrary JSON data with a key/value pair. */
   metadata?: unknown;
 }
-export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
+const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -978,7 +885,7 @@ export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutNamespaceValueRequest" }) as any as S.Schema<PutNamespaceValueRequest>;
 
 export interface PutNamespaceValueResponse {}
-export const PutNamespaceValueResponse =
+const PutNamespaceValueResponse =
   DeleteNamespaceValueResponse as any as S.Schema<PutNamespaceValueResponse>;
 
 export interface UpdateNamespaceRequest {
@@ -989,7 +896,7 @@ export interface UpdateNamespaceRequest {
   /** Human-readable string name for a Workers KV namespace. */
   title: string;
 }
-export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     namespaceId: S.String.pipe(T.Label("namespace_id")),
@@ -1006,11 +913,7 @@ export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateNamespaceRequest" }) as any as S.Schema<UpdateNamespaceRequest>;
 
 export type NamespacesUpdateResponseJurisdiction = "eu" | "fedramp" | "us";
-export const NamespacesUpdateResponseJurisdiction = S.String;
-
 export type NamespacesUpdateResponseMode = "instant";
-export const NamespacesUpdateResponseMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateNamespaceResponse {
   /** ID of the Workers KV namespace. */
@@ -1024,8 +927,7 @@ export interface UpdateNamespaceResponse {
   /** True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?". */
   supportsUrlEncoding?: boolean | null;
 }
-export const UpdateNamespaceResponse =
-  CreateNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
+const UpdateNamespaceResponse = CreateNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
 
 export type BulkDeleteNamespacesError =
   | NamespaceNotFound
@@ -1419,19 +1321,16 @@ export const updateNamespace: API.OperationMethod<
 }));
 
 // Alias of bulkDeleteNamespaces (same route, alternate export name upstream).
-export const bulkDeleteNamespaceKeys = bulkDeleteNamespaces;
 export type BulkDeleteNamespaceKeysRequest = BulkDeleteNamespacesRequest;
 export type BulkDeleteNamespaceKeysResponse = BulkDeleteNamespacesResponse;
 export type BulkDeleteNamespaceKeysError = BulkDeleteNamespacesError;
 
 // Alias of bulkGetNamespaces (same route, alternate export name upstream).
-export const bulkGetNamespaceKeys = bulkGetNamespaces;
 export type BulkGetNamespaceKeysRequest = BulkGetNamespacesRequest;
 export type BulkGetNamespaceKeysResponse = BulkGetNamespacesResponse;
 export type BulkGetNamespaceKeysError = BulkGetNamespacesError;
 
 // Alias of bulkPutNamespaces (same route, alternate export name upstream).
-export const bulkPutNamespaceKeys = bulkPutNamespaces;
 export type BulkPutNamespaceKeysRequest = BulkPutNamespacesRequest;
 export type BulkPutNamespaceKeysResponse = BulkPutNamespacesResponse;
 export type BulkPutNamespaceKeysError = BulkPutNamespacesError;

@@ -69,7 +69,7 @@ export interface CheckFreeAccessPublicationsRequest {
   /** Required. The HTTP referrer. */
   httpReferrer?: string;
 }
-export const CheckFreeAccessPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckFreeAccessPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     uri: S.optional(S.String.pipe(T.Query())),
@@ -90,7 +90,7 @@ export interface CheckFreeAccessResponse {
   /** Output only. True if free access should be allowed, false otherwise. */
   isAllowed?: boolean;
 }
-export const CheckFreeAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckFreeAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAllowed: S.optional(S.Boolean),
   }),
@@ -101,7 +101,7 @@ export type PublicationOnboardingStateEnum =
   | "ACTION_REQUIRED"
   | "PENDING_VERIFICATION"
   | "COMPLETE";
-export const PublicationOnboardingStateEnum = S.String;
+const PublicationOnboardingStateEnum = S.String;
 
 /** Subscription Linking (SL) product settings and status. */
 export interface SlProduct {
@@ -110,7 +110,7 @@ export interface SlProduct {
   /** Optional. Whether the Subscription Linking product is enabled. */
   enabled?: boolean;
 }
-export const SlProduct = /*@__PURE__*/ S.suspend(() =>
+const SlProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpProjectNumber: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -124,7 +124,7 @@ export interface TosAcceptance {
   /** Required. Whether the user has accepted the Terms of Service. */
   userAccepted?: boolean;
 }
-export const TosAcceptance = /*@__PURE__*/ S.suspend(() =>
+const TosAcceptance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailOptIn: S.optional(S.Boolean),
     userAccepted: S.optional(S.Boolean),
@@ -140,7 +140,7 @@ export interface RrmProduct {
   /** Output only. The URL to the product-specific Terms of Service. */
   productTosUrl?: string;
 }
-export const RrmProduct = /*@__PURE__*/ S.suspend(() =>
+const RrmProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tosAcceptance: S.optional(TosAcceptance),
     enabled: S.optional(S.Boolean),
@@ -155,7 +155,7 @@ export interface DomainProperty {
   /** Output only. Whether the domain ownership has been verified (e.g., via Google Search Console). */
   ownershipVerified?: boolean;
 }
-export const DomainProperty = /*@__PURE__*/ S.suspend(() =>
+const DomainProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     ownershipVerified: S.optional(S.Boolean),
@@ -163,7 +163,7 @@ export const DomainProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainProperty" }) as any as S.Schema<DomainProperty>;
 
 export type DomainPropertyList = Array<DomainProperty>;
-export const DomainPropertyList = /*@__PURE__*/ S.Array(
+const DomainPropertyList = /*@__PURE__*/ S.Array(
   DomainProperty,
 ) as any as S.Schema<DomainPropertyList>;
 
@@ -175,7 +175,7 @@ export type ContentPolicyStatusStateEnum =
   | "ORGANIZATION_VIOLATION_GRACE_PERIOD"
   | "ORGANIZATION_VIOLATION_ACTIVE"
   | "ORGANIZATION_VIOLATION_ACTIVE_IMMEDIATE";
-export const ContentPolicyStatusStateEnum = S.String;
+const ContentPolicyStatusStateEnum = S.String;
 
 /** The content policy status of the publication, indicating any violations. */
 export interface ContentPolicyStatus {
@@ -184,7 +184,7 @@ export interface ContentPolicyStatus {
   /** Output only. The current policy state. */
   state?: ContentPolicyStatusStateEnum | (string & {});
 }
-export const ContentPolicyStatus = /*@__PURE__*/ S.suspend(() =>
+const ContentPolicyStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyInfoUrl: S.optional(S.String),
     state: S.optional(ContentPolicyStatusStateEnum),
@@ -196,16 +196,16 @@ export type PublicationPaymentOptionEnum =
   | "NONE"
   | "SUBSCRIPTIONS"
   | "CONTRIBUTIONS";
-export const PublicationPaymentOptionEnum = S.String;
+const PublicationPaymentOptionEnum = S.String;
 
 export type PublicationPublicationTypeEnum =
   | "PUBLICATION_TYPE_UNSPECIFIED"
   | "FOR_PROFIT"
   | "NON_PROFIT";
-export const PublicationPublicationTypeEnum = S.String;
+const PublicationPublicationTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a publisher's publication in Reader Revenue Manager. */
 export interface Publication {
@@ -244,7 +244,7 @@ export interface Publication {
   /** Optional. The URL to the publisher's own Terms of Service. */
   publicationTosUrl?: string;
 }
-export const Publication = /*@__PURE__*/ S.suspend(() =>
+const Publication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onboardingState: S.optional(PublicationOnboardingStateEnum),
     publicationId: S.optional(S.String),
@@ -274,7 +274,7 @@ export interface CreateOrganizationsPublicationsRequest {
   /** Request body */
   body?: Publication;
 }
-export const CreateOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     publicationId: S.optional(S.String.pipe(T.Query())),
@@ -291,10 +291,10 @@ export const CreateOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateOrganizationsPublicationsRequest>;
 
 export type CtaTypeEnum = "TYPE_UNSPECIFIED" | "NEWSLETTER_SIGNUP";
-export const CtaTypeEnum = S.String;
+const CtaTypeEnum = S.String;
 
 export type CtaStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE";
-export const CtaStateEnum = S.String;
+const CtaStateEnum = S.String;
 
 /** Configuration for newsletter signup calls-to-action (CTAs). */
 export interface NewsletterConfig {
@@ -309,7 +309,7 @@ export interface NewsletterConfig {
   /** Optional. Custom consent or disclosure text shown to the user. */
   customConsentText?: string;
 }
-export const NewsletterConfig = /*@__PURE__*/ S.suspend(() =>
+const NewsletterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     optInRequired: S.optional(S.Boolean),
@@ -332,7 +332,7 @@ export interface Cta {
   /** Identifier. The resource name of the Cta. Format: organizations/{organization}/publications/{publication}/ctas/{cta} */
   name?: string;
 }
-export const Cta = /*@__PURE__*/ S.suspend(() =>
+const Cta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     type: S.optional(CtaTypeEnum),
@@ -350,7 +350,7 @@ export interface CreateOrganizationsPublicationsCtasRequest {
   /** Request body */
   body?: Cta;
 }
-export const CreateOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     ctaId: S.optional(S.String.pipe(T.Query())),
@@ -368,9 +368,7 @@ export const CreateOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspen
 
 /** Request message for `GeneratePlatformSiteTokens`. */
 export interface GeneratePlatformSiteTokensRequest {}
-export const GeneratePlatformSiteTokensRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GeneratePlatformSiteTokensRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GeneratePlatformSiteTokensRequest",
 }) as any as S.Schema<GeneratePlatformSiteTokensRequest>;
 
@@ -380,7 +378,7 @@ export interface GeneratePlatformSiteTokensUsersRequest {
   /** Request body */
   body?: GeneratePlatformSiteTokensRequest;
 }
-export const GeneratePlatformSiteTokensUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GeneratePlatformSiteTokensUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GeneratePlatformSiteTokensRequest.pipe(T.HttpBody())),
@@ -402,7 +400,7 @@ export interface SiteToken {
   /** The domain scope this token is valid for. */
   domain?: string;
 }
-export const SiteToken = /*@__PURE__*/ S.suspend(() =>
+const SiteToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     domain: S.optional(S.String),
@@ -410,14 +408,14 @@ export const SiteToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteToken" }) as any as S.Schema<SiteToken>;
 
 export type SiteTokenList = Array<SiteToken>;
-export const SiteTokenList = /*@__PURE__*/ S.Array(SiteToken) as any as S.Schema<SiteTokenList>;
+const SiteTokenList = /*@__PURE__*/ S.Array(SiteToken) as any as S.Schema<SiteTokenList>;
 
 /** Response message for `GeneratePlatformSiteTokens`. */
 export interface GeneratePlatformSiteTokensResponse {
   /** List of domain-scoped secure token mappings. */
   siteTokens?: SiteTokenList;
 }
-export const GeneratePlatformSiteTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const GeneratePlatformSiteTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteTokens: S.optional(SiteTokenList),
   }),
@@ -429,7 +427,7 @@ export interface GetOrganizationsPublicationsRequest {
   /** Required. The resource name of the publication to retrieve. Format: `organizations/{organization}/publications/{publication}`. */
   name: string;
 }
-export const GetOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -447,7 +445,7 @@ export interface GetOrganizationsPublicationsCtasRequest {
   /** Required. The resource name of the CTA to retrieve. Format: `organizations/{organization}/publications/{publication}/ctas/{cta}`. */
   name: string;
 }
-export const GetOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -471,7 +469,7 @@ export interface ListOrganizationsPublicationsRequest {
   /** Optional. The maximum number of publications to return. The service may return fewer than this value. If unspecified, at most 50 publications will be returned. */
   pageSize?: number;
 }
-export const ListOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -489,9 +487,7 @@ export const ListOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListOrganizationsPublicationsRequest>;
 
 export type PublicationList = Array<Publication>;
-export const PublicationList = /*@__PURE__*/ S.Array(
-  Publication,
-) as any as S.Schema<PublicationList>;
+const PublicationList = /*@__PURE__*/ S.Array(Publication) as any as S.Schema<PublicationList>;
 
 /** Response message for `ListPublications`. */
 export interface ListPublicationsResponse {
@@ -500,7 +496,7 @@ export interface ListPublicationsResponse {
   /** Output only. The list of publications. */
   publications?: PublicationList;
 }
-export const ListPublicationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublicationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     publications: S.optional(PublicationList),
@@ -515,7 +511,7 @@ export interface ListOrganizationsPublicationsCtasRequest {
   /** Required. The parent publication resource whose CTAs to list. Format: `organizations/{organization}/publications/{publication}`. */
   parent: string;
 }
-export const ListOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -532,7 +528,7 @@ export const ListOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsPublicationsCtasRequest>;
 
 export type CtaList = Array<Cta>;
-export const CtaList = /*@__PURE__*/ S.Array(Cta) as any as S.Schema<CtaList>;
+const CtaList = /*@__PURE__*/ S.Array(Cta) as any as S.Schema<CtaList>;
 
 /** Response message for `ListCtas`. */
 export interface ListCtasResponse {
@@ -541,7 +537,7 @@ export interface ListCtasResponse {
   /** Output only. A token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
 }
-export const ListCtasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCtasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ctas: S.optional(CtaList),
     nextPageToken: S.optional(S.String),
@@ -556,7 +552,7 @@ export interface PatchOrganizationsPublicationsRequest {
   /** Request body */
   body?: Publication;
 }
-export const PatchOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsPublicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -580,7 +576,7 @@ export interface PatchOrganizationsPublicationsCtasRequest {
   /** Request body */
   body?: Cta;
 }
-export const PatchOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsPublicationsCtasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

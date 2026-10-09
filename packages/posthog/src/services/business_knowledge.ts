@@ -54,7 +54,7 @@ export interface BusinessKnowledgeDocumentsSearchListRequest {
   /** When true, rerank search results with a listwise LLM pass for better relevance. Defaults to false (RRF order only). Falls back to RRF order on rerank failure. */
   rerank?: boolean;
 }
-export const BusinessKnowledgeDocumentsSearchListRequest = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeDocumentsSearchListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -96,7 +96,7 @@ export interface KnowledgeSearchResult {
   /** Fetched page URL. Empty for text and file sources. */
   url: string;
 }
-export const KnowledgeSearchResult = /*@__PURE__*/ S.suspend(() =>
+const KnowledgeSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunk_id: S.String,
     document_id: S.String,
@@ -113,13 +113,13 @@ export const KnowledgeSearchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KnowledgeSearchResult" }) as any as S.Schema<KnowledgeSearchResult>;
 
 export type BusinessKnowledgeDocumentsSearchListResponseBodyList = Array<KnowledgeSearchResult>;
-export const BusinessKnowledgeDocumentsSearchListResponseBodyList = /*@__PURE__*/ S.Array(
+const BusinessKnowledgeDocumentsSearchListResponseBodyList = /*@__PURE__*/ S.Array(
   KnowledgeSearchResult,
 ) as any as S.Schema<BusinessKnowledgeDocumentsSearchListResponseBodyList>;
 
 export type BusinessKnowledgeDocumentsSearchListResponse =
   BusinessKnowledgeDocumentsSearchListResponseBodyList;
-export const BusinessKnowledgeDocumentsSearchListResponse = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeDocumentsSearchListResponse = /*@__PURE__*/ S.suspend(() =>
   BusinessKnowledgeDocumentsSearchListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "BusinessKnowledgeDocumentsSearchListResponse",
@@ -133,7 +133,7 @@ export interface BusinessKnowledgeGapSuggestionsAcceptCreateRequest {
   /** Optional knowledge source to link when accepting. */
   resolved_source_id?: string | null;
 }
-export const BusinessKnowledgeGapSuggestionsAcceptCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeGapSuggestionsAcceptCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -169,7 +169,7 @@ export interface KnowledgeGapSuggestion {
   /** When this gap was first recorded. */
   created_at: string;
 }
-export const KnowledgeGapSuggestion = /*@__PURE__*/ S.suspend(() =>
+const KnowledgeGapSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ticket_id: S.String,
@@ -191,7 +191,7 @@ export interface BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest {
   /** Optional knowledge source to link when accepting. */
   resolved_source_id?: string | null;
 }
-export const BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     normalized_topic: S.String,
@@ -213,7 +213,7 @@ export interface GapTopicActionResult {
   /** Number of gap rows whose status changed. */
   updated: number;
 }
-export const GapTopicActionResult = /*@__PURE__*/ S.suspend(() =>
+const GapTopicActionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     normalized_topic: S.String,
     updated: S.Number,
@@ -226,7 +226,7 @@ export interface BusinessKnowledgePlaygroundChatsDestroyRequest {
   /** A UUID string identifying this playground chat. */
   id: string;
 }
-export const BusinessKnowledgePlaygroundChatsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgePlaygroundChatsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -242,7 +242,7 @@ export const BusinessKnowledgePlaygroundChatsDestroyRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<BusinessKnowledgePlaygroundChatsDestroyRequest>;
 
 export interface BusinessKnowledgePlaygroundChatsDestroyResponse {}
-export const BusinessKnowledgePlaygroundChatsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgePlaygroundChatsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "BusinessKnowledgePlaygroundChatsDestroyResponse",
@@ -254,7 +254,7 @@ export interface BusinessKnowledgeRepositoriesConnectCreateRequest {
   /** Id of a GitHub integration on this environment. */
   integration_id: number;
 }
-export const BusinessKnowledgeRepositoriesConnectCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeRepositoriesConnectCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     integration_id: S.Number,
@@ -271,7 +271,7 @@ export const BusinessKnowledgeRepositoriesConnectCreateRequest = /*@__PURE__*/ S
 
 /** Lowercased owner/repo names business knowledge is allowed to read. */
 export type RepositoryConnectionReposList = Array<string>;
-export const RepositoryConnectionReposList = /*@__PURE__*/ S.Array(
+const RepositoryConnectionReposList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RepositoryConnectionReposList>;
 
@@ -285,7 +285,7 @@ export interface RepositoryConnection {
   /** Lowercased owner/repo names business knowledge is allowed to read. */
   repos: RepositoryConnectionReposList;
 }
-export const RepositoryConnection = /*@__PURE__*/ S.suspend(() =>
+const RepositoryConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connected: S.Boolean,
     integration_id: S.NullOr(S.Number),
@@ -298,7 +298,7 @@ export interface BusinessKnowledgeRepositoriesDisconnectCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const BusinessKnowledgeRepositoriesDisconnectCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeRepositoriesDisconnectCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -318,7 +318,7 @@ export interface BusinessKnowledgeSourcesDestroyRequest {
   /** A UUID string identifying this knowledge source. */
   id: string;
 }
-export const BusinessKnowledgeSourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeSourcesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -334,7 +334,7 @@ export const BusinessKnowledgeSourcesDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<BusinessKnowledgeSourcesDestroyRequest>;
 
 export interface BusinessKnowledgeSourcesDestroyResponse {}
-export const BusinessKnowledgeSourcesDestroyResponse =
+const BusinessKnowledgeSourcesDestroyResponse =
   BusinessKnowledgePlaygroundChatsDestroyResponse as any as S.Schema<BusinessKnowledgeSourcesDestroyResponse>;
 
 export interface BusinessKnowledgeSourcesRefreshCreateRequest {
@@ -343,7 +343,7 @@ export interface BusinessKnowledgeSourcesRefreshCreateRequest {
   /** A UUID string identifying this knowledge source. */
   id: string;
 }
-export const BusinessKnowledgeSourcesRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeSourcesRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -360,26 +360,26 @@ export const BusinessKnowledgeSourcesRefreshCreateRequest = /*@__PURE__*/ S.susp
 
 /** * `text` - Text * `url` - URL * `file` - File */
 export type SourceTypeEnum = "text" | "url" | "file";
-export const SourceTypeEnum = S.String;
+const SourceTypeEnum = S.String;
 
 /** * `pending` - Pending * `processing` - Processing * `ready` - Ready * `error` - Error */
 export type SourceStatusEnum = "pending" | "processing" | "ready" | "error";
-export const SourceStatusEnum = S.String;
+const SourceStatusEnum = S.String;
 
 /** * `success` - Success * `not_modified` - Not modified * `error` - Error */
 export type RefreshStatusEnum = "success" | "not_modified" | "error";
-export const RefreshStatusEnum = S.String;
+const RefreshStatusEnum = S.String;
 
 /** * `manual` - Manual only * `1h` - Every hour * `6h` - Every 6 hours * `24h` - Every day * `7d` - Every week */
 export type RefreshIntervalEnum = "manual" | "1h" | "6h" | "24h" | "7d";
-export const RefreshIntervalEnum = S.String;
+const RefreshIntervalEnum = S.String;
 
 export type EmbeddingStatusEnum = "pending" | "completed" | "disabled";
-export const EmbeddingStatusEnum = S.String;
+const EmbeddingStatusEnum = S.String;
 
 /** * `single` - Single page * `sitemap` - Sitemap * `same_origin` - Same origin crawl * `github_repo` - GitHub repository */
 export type CrawlModeEnum = "single" | "sitemap" | "same_origin" | "github_repo";
-export const CrawlModeEnum = S.String;
+const CrawlModeEnum = S.String;
 
 export interface KnowledgeSource {
   id: string;
@@ -418,7 +418,7 @@ export interface KnowledgeSource {
   file_size_bytes: number | null;
   always_include: boolean;
 }
-export const KnowledgeSource = /*@__PURE__*/ S.suspend(() =>
+const KnowledgeSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     team_id: S.Number,
@@ -456,7 +456,7 @@ export interface CreateBusinessKnowledgeGapSuggestionsDismissRequest {
   /** A UUID string identifying this knowledge gap suggestion. */
   id: string;
 }
-export const CreateBusinessKnowledgeGapSuggestionsDismissRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBusinessKnowledgeGapSuggestionsDismissRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -479,19 +479,18 @@ export interface CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest {
   /** Optional knowledge source to link when accepting. */
   resolved_source_id?: string | null;
 }
-export const CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      normalized_topic: S.String,
-      resolved_source_id: S.optional(S.NullOr(S.String)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/business_knowledge/gap_suggestions/dismiss_topic/",
-        code: 200,
-      }),
-    ),
+const CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    normalized_topic: S.String,
+    resolved_source_id: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/business_knowledge/gap_suggestions/dismiss_topic/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest",
 }) as any as S.Schema<CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest>;
@@ -500,7 +499,7 @@ export interface CreateBusinessKnowledgePlaygroundChatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateBusinessKnowledgePlaygroundChatRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBusinessKnowledgePlaygroundChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -516,7 +515,7 @@ export const CreateBusinessKnowledgePlaygroundChatRequest = /*@__PURE__*/ S.susp
 
 /** * `running` - Running * `completed` - Completed * `failed` - Failed * `cancelled` - Cancelled */
 export type SandboxPollStatusEnum = "running" | "completed" | "failed" | "cancelled";
-export const SandboxPollStatusEnum = S.String;
+const SandboxPollStatusEnum = S.String;
 
 export interface SandboxSource {
   /** Source reference the reply relies on. */
@@ -524,7 +523,7 @@ export interface SandboxSource {
   /** Short excerpt that supports the reply. */
   excerpt: string;
 }
-export const SandboxSource = /*@__PURE__*/ S.suspend(() =>
+const SandboxSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String,
     excerpt: S.String,
@@ -533,7 +532,7 @@ export const SandboxSource = /*@__PURE__*/ S.suspend(() =>
 
 /** Sources cited in a completed answer. Empty when the run has not completed. */
 export type SandboxRunSourcesList = Array<SandboxSource>;
-export const SandboxRunSourcesList = /*@__PURE__*/ S.Array(
+const SandboxRunSourcesList = /*@__PURE__*/ S.Array(
   SandboxSource,
 ) as any as S.Schema<SandboxRunSourcesList>;
 
@@ -543,7 +542,7 @@ export type SandboxToolNameEnum =
   | "business-knowledge-document-window-retrieve"
   | "business-knowledge-repositories-search"
   | "business-knowledge-repositories-file-retrieve";
-export const SandboxToolNameEnum = S.String;
+const SandboxToolNameEnum = S.String;
 
 export interface SandboxSearch {
   /** Business knowledge tool the agent called. * `business-knowledge-documents-search` - Search * `business-knowledge-document-window-retrieve` - Window * `business-knowledge-repositories-search` - Repository search * `business-knowledge-repositories-file-retrieve` - Repository file */
@@ -551,7 +550,7 @@ export interface SandboxSearch {
   /** Tool input the agent sent. */
   input: string;
 }
-export const SandboxSearch = /*@__PURE__*/ S.suspend(() =>
+const SandboxSearch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: SandboxToolNameEnum,
     input: S.String,
@@ -560,7 +559,7 @@ export const SandboxSearch = /*@__PURE__*/ S.suspend(() =>
 
 /** Business knowledge search and window calls observed in the run log. */
 export type SandboxRunSearchesList = Array<SandboxSearch>;
-export const SandboxRunSearchesList = /*@__PURE__*/ S.Array(
+const SandboxRunSearchesList = /*@__PURE__*/ S.Array(
   SandboxSearch,
 ) as any as S.Schema<SandboxRunSearchesList>;
 
@@ -582,7 +581,7 @@ export interface SandboxRun {
   /** True when the run log contains an exact docs-search call. That tool is not granted to this sandbox. */
   docs_search_called: boolean;
 }
-export const SandboxRun = /*@__PURE__*/ S.suspend(() =>
+const SandboxRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     run_id: S.String,
@@ -609,7 +608,7 @@ export interface PlaygroundTurn {
   /** Why this turn could not be loaded. Null when run is present. */
   error: string | null;
 }
-export const PlaygroundTurn = /*@__PURE__*/ S.suspend(() =>
+const PlaygroundTurn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     question: S.String,
@@ -622,7 +621,7 @@ export const PlaygroundTurn = /*@__PURE__*/ S.suspend(() =>
 
 /** Questions in this chat, oldest first. Each turn's answer comes from its sandbox run. */
 export type PlaygroundChatTurnsList = Array<PlaygroundTurn>;
-export const PlaygroundChatTurnsList = /*@__PURE__*/ S.Array(
+const PlaygroundChatTurnsList = /*@__PURE__*/ S.Array(
   PlaygroundTurn,
 ) as any as S.Schema<PlaygroundChatTurnsList>;
 
@@ -640,7 +639,7 @@ export interface PlaygroundChat {
   /** Questions in this chat, oldest first. Each turn's answer comes from its sandbox run. */
   turns: PlaygroundChatTurnsList;
 }
-export const PlaygroundChat = /*@__PURE__*/ S.suspend(() =>
+const PlaygroundChat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -659,7 +658,7 @@ export interface CreateBusinessKnowledgePlaygroundChatsAskRequest {
   /** Question to answer from this project's business knowledge. Blank questions are rejected. Maximum 4000 characters. */
   question: string;
 }
-export const CreateBusinessKnowledgePlaygroundChatsAskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBusinessKnowledgePlaygroundChatsAskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -677,7 +676,7 @@ export const CreateBusinessKnowledgePlaygroundChatsAskRequest = /*@__PURE__*/ S.
 
 /** owner/repo names to allow. At most 100. Replaces the current list. */
 export type CreateBusinessKnowledgeRepositoriesSelectionRequestReposList = Array<string>;
-export const CreateBusinessKnowledgeRepositoriesSelectionRequestReposList =
+const CreateBusinessKnowledgeRepositoriesSelectionRequestReposList =
   RepositoryConnectionReposList as any as S.Schema<CreateBusinessKnowledgeRepositoriesSelectionRequestReposList>;
 
 export interface CreateBusinessKnowledgeRepositoriesSelectionRequest {
@@ -686,7 +685,7 @@ export interface CreateBusinessKnowledgeRepositoriesSelectionRequest {
   /** owner/repo names to allow. At most 100. Replaces the current list. */
   repos: CreateBusinessKnowledgeRepositoriesSelectionRequestReposList;
 }
-export const CreateBusinessKnowledgeRepositoriesSelectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBusinessKnowledgeRepositoriesSelectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repos: CreateBusinessKnowledgeRepositoriesSelectionRequestReposList,
@@ -707,7 +706,7 @@ export interface CreateBusinessKnowledgeSandboxRequest {
   /** Question to answer from this project's business knowledge. Blank questions are rejected. Maximum 4000 characters. */
   question: string;
 }
-export const CreateBusinessKnowledgeSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBusinessKnowledgeSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     question: S.String,
@@ -728,7 +727,7 @@ export interface SandboxRunStarted {
   /** Run id for this question. */
   run_id: string;
 }
-export const SandboxRunStarted = /*@__PURE__*/ S.suspend(() =>
+const SandboxRunStarted = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     run_id: S.String,
@@ -745,7 +744,7 @@ export interface CreateBusinessKnowledgeSourceRequest {
   /** When true, this source's content is injected into every support reply prompt as general context (tone, policies, direction). */
   always_include?: boolean;
 }
-export const CreateBusinessKnowledgeSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBusinessKnowledgeSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -768,7 +767,7 @@ export interface GetBusinessKnowledgePlaygroundChatRequest {
   /** A UUID string identifying this playground chat. */
   id: string;
 }
-export const GetBusinessKnowledgePlaygroundChatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessKnowledgePlaygroundChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -791,7 +790,7 @@ export interface GetBusinessKnowledgeRepositoriesFileRequest {
   /** owner/repo to read. It must already be selected. */
   repo: string;
 }
-export const GetBusinessKnowledgeRepositoriesFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessKnowledgeRepositoriesFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     path: S.String.pipe(T.Query()),
@@ -819,7 +818,7 @@ export interface RepositoryFile {
   /** True when content was cut off at 32,000 characters. */
   truncated: boolean;
 }
-export const RepositoryFile = /*@__PURE__*/ S.suspend(() =>
+const RepositoryFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String,
     path: S.String,
@@ -833,7 +832,7 @@ export interface GetBusinessKnowledgeRepositoriesStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetBusinessKnowledgeRepositoriesStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessKnowledgeRepositoriesStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -852,7 +851,7 @@ export interface GetBusinessKnowledgeSandboxRequest {
   project_id: string;
   id: string;
 }
-export const GetBusinessKnowledgeSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessKnowledgeSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -871,7 +870,7 @@ export interface GetBusinessKnowledgeSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetBusinessKnowledgeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessKnowledgeSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -891,7 +890,7 @@ export interface BusinessKnowledgeSettings {
   /** Whether Support is enabled for this environment. Learning cannot be turned on while this is false. */
   support_enabled: boolean;
 }
-export const BusinessKnowledgeSettings = /*@__PURE__*/ S.suspend(() =>
+const BusinessKnowledgeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     learn_from_support_enabled: S.Boolean,
     support_enabled: S.Boolean,
@@ -906,7 +905,7 @@ export interface GetBusinessKnowledgeSourceRequest {
   /** A UUID string identifying this knowledge source. */
   id: string;
 }
-export const GetBusinessKnowledgeSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessKnowledgeSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -927,7 +926,7 @@ export interface GetBusinessKnowledgeSourcesTextRequest {
   /** A UUID string identifying this knowledge source. */
   id: string;
 }
-export const GetBusinessKnowledgeSourcesTextRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessKnowledgeSourcesTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -945,7 +944,7 @@ export const GetBusinessKnowledgeSourcesTextRequest = /*@__PURE__*/ S.suspend(()
 export interface GetBusinessKnowledgeSourcesTextResponse {
   text?: string;
 }
-export const GetBusinessKnowledgeSourcesTextResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessKnowledgeSourcesTextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
   }),
@@ -963,7 +962,7 @@ export interface ListBusinessKnowledgeDocumentsWindowRequest {
   /** Number of chunks before and after the center to include. Defaults to 5, clamped to [0, 15]. */
   radius?: number;
 }
-export const ListBusinessKnowledgeDocumentsWindowRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBusinessKnowledgeDocumentsWindowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -997,7 +996,7 @@ export interface KnowledgeDocumentWindow {
   /** Fetched page URL. Empty for text and file sources. */
   url: string;
 }
-export const KnowledgeDocumentWindow = /*@__PURE__*/ S.suspend(() =>
+const KnowledgeDocumentWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunk_id: S.String,
     ordinal: S.Number,
@@ -1010,13 +1009,13 @@ export const KnowledgeDocumentWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KnowledgeDocumentWindow" }) as any as S.Schema<KnowledgeDocumentWindow>;
 
 export type ListBusinessKnowledgeDocumentsWindowResponseBodyList = Array<KnowledgeDocumentWindow>;
-export const ListBusinessKnowledgeDocumentsWindowResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBusinessKnowledgeDocumentsWindowResponseBodyList = /*@__PURE__*/ S.Array(
   KnowledgeDocumentWindow,
 ) as any as S.Schema<ListBusinessKnowledgeDocumentsWindowResponseBodyList>;
 
 export type ListBusinessKnowledgeDocumentsWindowResponse =
   ListBusinessKnowledgeDocumentsWindowResponseBodyList;
-export const ListBusinessKnowledgeDocumentsWindowResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBusinessKnowledgeDocumentsWindowResponse = /*@__PURE__*/ S.suspend(() =>
   ListBusinessKnowledgeDocumentsWindowResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListBusinessKnowledgeDocumentsWindowResponse",
@@ -1032,7 +1031,7 @@ export interface ListBusinessKnowledgeGapSuggestionsRequest {
   /** When provided, returns per-ticket gap rows instead of aggregated view. Requires `ticket:read` scope in addition to `business_knowledge:read`. */
   ticket_id?: string;
 }
-export const ListBusinessKnowledgeGapSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBusinessKnowledgeGapSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1050,7 +1049,7 @@ export const ListBusinessKnowledgeGapSuggestionsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListBusinessKnowledgeGapSuggestionsRequest>;
 
 export type PaginatedKnowledgeGapSuggestionListResultsList = Array<KnowledgeGapSuggestion>;
-export const PaginatedKnowledgeGapSuggestionListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedKnowledgeGapSuggestionListResultsList = /*@__PURE__*/ S.Array(
   KnowledgeGapSuggestion,
 ) as any as S.Schema<PaginatedKnowledgeGapSuggestionListResultsList>;
 
@@ -1060,7 +1059,7 @@ export interface PaginatedKnowledgeGapSuggestionList {
   previous?: string | null;
   results: PaginatedKnowledgeGapSuggestionListResultsList;
 }
-export const PaginatedKnowledgeGapSuggestionList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedKnowledgeGapSuggestionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1075,7 +1074,7 @@ export interface ListBusinessKnowledgePlaygroundChatsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListBusinessKnowledgePlaygroundChatsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBusinessKnowledgePlaygroundChatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1101,7 +1100,7 @@ export interface PlaygroundChatList {
   /** True while an answer in this chat is still running. Another question in this chat returns 409 until it finishes. */
   has_open_turn: boolean;
 }
-export const PlaygroundChatList = /*@__PURE__*/ S.suspend(() =>
+const PlaygroundChatList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -1112,23 +1111,23 @@ export const PlaygroundChatList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlaygroundChatList" }) as any as S.Schema<PlaygroundChatList>;
 
 export type ListBusinessKnowledgePlaygroundChatsResponseBodyList = Array<PlaygroundChatList>;
-export const ListBusinessKnowledgePlaygroundChatsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBusinessKnowledgePlaygroundChatsResponseBodyList = /*@__PURE__*/ S.Array(
   PlaygroundChatList,
 ) as any as S.Schema<ListBusinessKnowledgePlaygroundChatsResponseBodyList>;
 
 export type ListBusinessKnowledgePlaygroundChatsResponse =
   ListBusinessKnowledgePlaygroundChatsResponseBodyList;
-export const ListBusinessKnowledgePlaygroundChatsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBusinessKnowledgePlaygroundChatsResponse = /*@__PURE__*/ S.suspend(() =>
   ListBusinessKnowledgePlaygroundChatsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListBusinessKnowledgePlaygroundChatsResponse",
 }) as any as S.Schema<ListBusinessKnowledgePlaygroundChatsResponse>;
 
 export type ListBusinessKnowledgeSourcesRequestAddedBy = "human" | "learned";
-export const ListBusinessKnowledgeSourcesRequestAddedBy = S.String;
+const ListBusinessKnowledgeSourcesRequestAddedBy = S.String;
 
 export type ListBusinessKnowledgeSourcesRequestSourceType = "file" | "text" | "url";
-export const ListBusinessKnowledgeSourcesRequestSourceType = S.String;
+const ListBusinessKnowledgeSourcesRequestSourceType = S.String;
 
 export interface ListBusinessKnowledgeSourcesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1144,7 +1143,7 @@ export interface ListBusinessKnowledgeSourcesRequest {
   /** Filter to a single source type (text, url, or file). */
   source_type?: ListBusinessKnowledgeSourcesRequestSourceType | (string & {});
 }
-export const ListBusinessKnowledgeSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBusinessKnowledgeSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     added_by: S.optional(ListBusinessKnowledgeSourcesRequestAddedBy.pipe(T.Query())),
@@ -1164,7 +1163,7 @@ export const ListBusinessKnowledgeSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBusinessKnowledgeSourcesRequest>;
 
 export type PaginatedKnowledgeSourceListResultsList = Array<KnowledgeSource>;
-export const PaginatedKnowledgeSourceListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedKnowledgeSourceListResultsList = /*@__PURE__*/ S.Array(
   KnowledgeSource,
 ) as any as S.Schema<PaginatedKnowledgeSourceListResultsList>;
 
@@ -1174,7 +1173,7 @@ export interface PaginatedKnowledgeSourceList {
   previous?: string | null;
   results: PaginatedKnowledgeSourceListResultsList;
 }
-export const PaginatedKnowledgeSourceList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedKnowledgeSourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1195,7 +1194,7 @@ export interface ListBusinessKnowledgeSourcesDocumentsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListBusinessKnowledgeSourcesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBusinessKnowledgeSourcesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1214,7 +1213,7 @@ export const ListBusinessKnowledgeSourcesDocumentsRequest = /*@__PURE__*/ S.susp
 
 /** * `unknown` - Unknown * `safe` - Safe * `unsafe` - Unsafe */
 export type SafetyVerdictEnum = "unknown" | "safe" | "unsafe";
-export const SafetyVerdictEnum = S.String;
+const SafetyVerdictEnum = S.String;
 
 export interface KnowledgeSourceDocument {
   /** Document id. */
@@ -1226,7 +1225,7 @@ export interface KnowledgeSourceDocument {
   /** Content-safety verdict. Only `safe` documents are included in search. `unknown` is still waiting on classification. * `unknown` - Unknown * `safe` - Safe * `unsafe` - Unsafe */
   safety_verdict: SafetyVerdictEnum;
 }
-export const KnowledgeSourceDocument = /*@__PURE__*/ S.suspend(() =>
+const KnowledgeSourceDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     url: S.String,
@@ -1236,7 +1235,7 @@ export const KnowledgeSourceDocument = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KnowledgeSourceDocument" }) as any as S.Schema<KnowledgeSourceDocument>;
 
 export type PaginatedKnowledgeSourceDocumentListResultsList = Array<KnowledgeSourceDocument>;
-export const PaginatedKnowledgeSourceDocumentListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedKnowledgeSourceDocumentListResultsList = /*@__PURE__*/ S.Array(
   KnowledgeSourceDocument,
 ) as any as S.Schema<PaginatedKnowledgeSourceDocumentListResultsList>;
 
@@ -1246,7 +1245,7 @@ export interface PaginatedKnowledgeSourceDocumentList {
   previous?: string | null;
   results: PaginatedKnowledgeSourceDocumentListResultsList;
 }
-export const PaginatedKnowledgeSourceDocumentList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedKnowledgeSourceDocumentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1265,7 +1264,7 @@ export interface SearchBusinessKnowledgeRepositoryRequest {
   /** Limit the search to this owner/repo. It must already be selected. Omit to search every selected repository. */
   repo?: string;
 }
-export const SearchBusinessKnowledgeRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchBusinessKnowledgeRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.String.pipe(T.Query()),
@@ -1283,7 +1282,7 @@ export const SearchBusinessKnowledgeRepositoryRequest = /*@__PURE__*/ S.suspend(
 
 /** * `path` - Path * `readme` - Readme */
 export type RepositoryHitKindEnum = "path" | "readme";
-export const RepositoryHitKindEnum = S.String;
+const RepositoryHitKindEnum = S.String;
 
 export interface RepositorySearchHit {
   /** Lowercased owner/repo the hit came from. */
@@ -1297,7 +1296,7 @@ export interface RepositorySearchHit {
   /** Short README excerpt. Empty for a path hit. */
   excerpt: string;
 }
-export const RepositorySearchHit = /*@__PURE__*/ S.suspend(() =>
+const RepositorySearchHit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String,
     path: S.String,
@@ -1309,13 +1308,13 @@ export const RepositorySearchHit = /*@__PURE__*/ S.suspend(() =>
 
 /** Path matches, then README excerpts. */
 export type RepositorySearchResponseResultsList = Array<RepositorySearchHit>;
-export const RepositorySearchResponseResultsList = /*@__PURE__*/ S.Array(
+const RepositorySearchResponseResultsList = /*@__PURE__*/ S.Array(
   RepositorySearchHit,
 ) as any as S.Schema<RepositorySearchResponseResultsList>;
 
 /** * `ready` - Ready * `warming` - Warming */
 export type RepositoryCacheStatusEnum = "ready" | "warming";
-export const RepositoryCacheStatusEnum = S.String;
+const RepositoryCacheStatusEnum = S.String;
 
 export interface RepositoryCacheState {
   /** Lowercased owner/repo. */
@@ -1325,7 +1324,7 @@ export interface RepositoryCacheState {
   /** ready means the file list was cached recently. warming means a refresh was just queued. * `ready` - Ready * `warming` - Warming */
   cache_status: RepositoryCacheStatusEnum;
 }
-export const RepositoryCacheState = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCacheState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String,
     tree_truncated: S.Boolean,
@@ -1335,7 +1334,7 @@ export const RepositoryCacheState = /*@__PURE__*/ S.suspend(() =>
 
 /** Cache state for each repository that was searched. */
 export type RepositorySearchResponseRepositoriesList = Array<RepositoryCacheState>;
-export const RepositorySearchResponseRepositoriesList = /*@__PURE__*/ S.Array(
+const RepositorySearchResponseRepositoriesList = /*@__PURE__*/ S.Array(
   RepositoryCacheState,
 ) as any as S.Schema<RepositorySearchResponseRepositoriesList>;
 
@@ -1345,7 +1344,7 @@ export interface RepositorySearchResponse {
   /** Cache state for each repository that was searched. */
   repositories: RepositorySearchResponseRepositoriesList;
 }
-export const RepositorySearchResponse = /*@__PURE__*/ S.suspend(() =>
+const RepositorySearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: RepositorySearchResponseResultsList,
     repositories: RepositorySearchResponseRepositoriesList,
@@ -1358,7 +1357,7 @@ export interface UpdateBusinessKnowledgeSettingsPartialRequest {
   /** When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Rejected when Support is off for this environment. */
   learn_from_support_enabled?: boolean;
 }
-export const UpdateBusinessKnowledgeSettingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBusinessKnowledgeSettingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     learn_from_support_enabled: S.optional(S.Boolean),
@@ -1385,7 +1384,7 @@ export interface UpdateBusinessKnowledgeSourcesPartialRequest {
   /** When true, this source's content is injected into every support reply prompt as general context. */
   always_include?: boolean;
 }
-export const UpdateBusinessKnowledgeSourcesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBusinessKnowledgeSourcesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

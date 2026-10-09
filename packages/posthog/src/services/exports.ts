@@ -45,7 +45,7 @@ export type ExportedAssetCreateExportFormatEnum =
   | "video/mp4"
   | "image/gif"
   | "application/json";
-export const ExportedAssetCreateExportFormatEnum = S.String;
+const ExportedAssetCreateExportFormatEnum = S.String;
 
 export interface CreateExportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -56,7 +56,7 @@ export interface CreateExportRequest {
   export_format: ExportedAssetCreateExportFormatEnum | (string & {});
   export_context?: unknown;
 }
-export const CreateExportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     dashboard: S.optional(S.NullOr(S.Number)),
@@ -83,7 +83,7 @@ export interface ExportedAssetCreate {
   /** The effective access level the user has for this object */
   user_access_level: string | null;
 }
-export const ExportedAssetCreate = /*@__PURE__*/ S.suspend(() =>
+const ExportedAssetCreate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     dashboard: S.optional(S.NullOr(S.Number)),
@@ -105,7 +105,7 @@ export interface GetExportRequest {
   /** A unique integer value identifying this exported asset. */
   id: number;
 }
-export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -123,7 +123,7 @@ export type ExportedAssetExportFormatEnum =
   | "image/gif"
   | "application/json"
   | "application/x-ndjson";
-export const ExportedAssetExportFormatEnum = S.String;
+const ExportedAssetExportFormatEnum = S.String;
 
 /** Standard ExportedAsset serializer that doesn't return content. */
 export interface ExportedAsset {
@@ -142,7 +142,7 @@ export interface ExportedAsset {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const ExportedAsset = /*@__PURE__*/ S.suspend(() =>
+const ExportedAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     dashboard: S.optional(S.NullOr(S.Number)),
@@ -164,7 +164,7 @@ export interface GetExportsContentRequest {
   /** A unique integer value identifying this exported asset. */
   id: number;
 }
-export const GetExportsContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExportsContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -174,7 +174,7 @@ export const GetExportsContentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetExportsContentRequest" }) as any as S.Schema<GetExportsContentRequest>;
 
 export interface GetExportsContentResponse {}
-export const GetExportsContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetExportsContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetExportsContentResponse",
 }) as any as S.Schema<GetExportsContentResponse>;
 
@@ -186,7 +186,7 @@ export interface ListExportsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -195,7 +195,7 @@ export const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExportsRequest" }) as any as S.Schema<ListExportsRequest>;
 
 export type PaginatedExportedAssetListResultsList = Array<ExportedAsset>;
-export const PaginatedExportedAssetListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedExportedAssetListResultsList = /*@__PURE__*/ S.Array(
   ExportedAsset,
 ) as any as S.Schema<PaginatedExportedAssetListResultsList>;
 
@@ -205,7 +205,7 @@ export interface PaginatedExportedAssetList {
   previous?: string | null;
   results?: PaginatedExportedAssetListResultsList;
 }
-export const PaginatedExportedAssetList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedExportedAssetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),

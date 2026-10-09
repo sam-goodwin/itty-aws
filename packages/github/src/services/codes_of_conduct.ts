@@ -18,7 +18,7 @@ export class NotFound
   ) {}
 
 export interface GetAllCodesOfConductRequest {}
-export const GetAllCodesOfConductRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllCodesOfConductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/codes_of_conduct", code: 200 })),
 ).annotate({
   identifier: "GetAllCodesOfConductRequest",
@@ -32,7 +32,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -43,12 +43,12 @@ export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeOfConduct" }) as any as S.Schema<CodeOfConduct>;
 
 export type GetAllCodesOfConductResponseBodyList = Array<CodeOfConduct>;
-export const GetAllCodesOfConductResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAllCodesOfConductResponseBodyList = /*@__PURE__*/ S.Array(
   CodeOfConduct,
 ) as any as S.Schema<GetAllCodesOfConductResponseBodyList>;
 
 export type GetAllCodesOfConductResponse = GetAllCodesOfConductResponseBodyList;
-export const GetAllCodesOfConductResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAllCodesOfConductResponse = /*@__PURE__*/ S.suspend(() =>
   GetAllCodesOfConductResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetAllCodesOfConductResponse",
@@ -57,7 +57,7 @@ export const GetAllCodesOfConductResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetConductCodeRequest {
   key: string;
 }
-export const GetConductCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConductCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/codes_of_conduct/{key}", code: 200 })),

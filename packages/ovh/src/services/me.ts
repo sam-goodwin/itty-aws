@@ -13,14 +13,14 @@ export interface AcceptMeAgreementRequest {
   /** Id of the contract */
   id: number;
 }
-export const AcceptMeAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptMeAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/agreements/{id}/accept", code: 200 })),
 ).annotate({ identifier: "AcceptMeAgreementRequest" }) as any as S.Schema<AcceptMeAgreementRequest>;
 
 export type AcceptMeAgreementResponse = string;
-export const AcceptMeAgreementResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptMeAgreementResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AcceptMeAgreementResponse",
@@ -32,7 +32,7 @@ export interface AcceptMeMigrationContractRequest {
   /** Contract ID */
   contractId: number;
 }
-export const AcceptMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migrationId: S.Number.pipe(T.Label()),
     contractId: S.Number.pipe(T.Label()),
@@ -49,7 +49,7 @@ export const AcceptMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** State of the agreement */
 export type MeAgreementsAgreementStatusEnum = "ko" | "obsolete" | "ok" | "todo";
-export const MeAgreementsAgreementStatusEnum = S.String;
+const MeAgreementsAgreementStatusEnum = S.String;
 
 /** Contract Agreement */
 export interface MeAgreementsContractAgreement {
@@ -62,7 +62,7 @@ export interface MeAgreementsContractAgreement {
   /** Contract Agreement ID */
   id?: number;
 }
-export const MeAgreementsContractAgreement = /*@__PURE__*/ S.suspend(() =>
+const MeAgreementsContractAgreement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agreed: S.optional(MeAgreementsAgreementStatusEnum),
     contractId: S.optional(S.Number),
@@ -78,7 +78,7 @@ export interface AcceptMeTaskContactChangeRequest {
   /** The token you received by email for this request */
   token: string;
 }
-export const AcceptMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     token: S.String,
@@ -88,9 +88,7 @@ export const AcceptMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptMeTaskContactChangeRequest>;
 
 export interface AcceptMeTaskContactChangeResponse {}
-export const AcceptMeTaskContactChangeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AcceptMeTaskContactChangeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AcceptMeTaskContactChangeResponse",
 }) as any as S.Schema<AcceptMeTaskContactChangeResponse>;
 
@@ -99,7 +97,7 @@ export interface AcceptMeTaskEmailChangeRequest {
   /** The token you received by email for this request */
   token: string;
 }
-export const AcceptMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     token: S.String,
@@ -109,22 +107,22 @@ export const AcceptMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptMeTaskEmailChangeRequest>;
 
 export interface AcceptMeTaskEmailChangeResponse {}
-export const AcceptMeTaskEmailChangeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "AcceptMeTaskEmailChangeResponse" },
-) as any as S.Schema<AcceptMeTaskEmailChangeResponse>;
+const AcceptMeTaskEmailChangeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "AcceptMeTaskEmailChangeResponse",
+}) as any as S.Schema<AcceptMeTaskEmailChangeResponse>;
 
 export interface ApplyMeSlaRequest {
   /** Id of the object */
   id: number;
 }
-export const ApplyMeSlaRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyMeSlaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/sla/{id}/apply", code: 200 })),
 ).annotate({ identifier: "ApplyMeSlaRequest" }) as any as S.Schema<ApplyMeSlaRequest>;
 
 export interface ApplyMeSlaResponse {}
-export const ApplyMeSlaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ApplyMeSlaResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ApplyMeSlaResponse",
 }) as any as S.Schema<ApplyMeSlaResponse>;
 
@@ -132,21 +130,20 @@ export interface CancelMeTaskDnsRequest {
   /** Id */
   id: number;
 }
-export const CancelMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/task/dns/{id}/cancel", code: 200 })),
 ).annotate({ identifier: "CancelMeTaskDnsRequest" }) as any as S.Schema<CancelMeTaskDnsRequest>;
 
 export interface CancelMeTaskDnsResponse {}
-export const CancelMeTaskDnsResponse =
-  ApplyMeSlaResponse as any as S.Schema<CancelMeTaskDnsResponse>;
+const CancelMeTaskDnsResponse = ApplyMeSlaResponse as any as S.Schema<CancelMeTaskDnsResponse>;
 
 export interface CancelMeTaskDomainRequest {
   /** Id */
   id: number;
 }
-export const CancelMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/task/domain/{id}/cancel", code: 200 })),
@@ -155,14 +152,14 @@ export const CancelMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelMeTaskDomainRequest>;
 
 export interface CancelMeTaskDomainResponse {}
-export const CancelMeTaskDomainResponse =
+const CancelMeTaskDomainResponse =
   ApplyMeSlaResponse as any as S.Schema<CancelMeTaskDomainResponse>;
 
 export interface CheckMeVoucherValidityRequest {
   /** Voucher value */
   voucher: string;
 }
-export const CheckMeVoucherValidityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckMeVoucherValidityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voucher: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/voucher/checkValidity", code: 200 })),
@@ -175,21 +172,21 @@ export interface NichandleVoucherStatus {
   /** Is voucher valid */
   validity?: boolean;
 }
-export const NichandleVoucherStatus = /*@__PURE__*/ S.suspend(() =>
+const NichandleVoucherStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validity: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "NichandleVoucherStatus" }) as any as S.Schema<NichandleVoucherStatus>;
 
 export interface CreateMeAccessRestrictionBackupCodeRequest {}
-export const CreateMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/backupCode", code: 200 })),
 ).annotate({
   identifier: "CreateMeAccessRestrictionBackupCodeRequest",
 }) as any as S.Schema<CreateMeAccessRestrictionBackupCodeRequest>;
 
 export type NichandleAccessRestrictionSOTPSecretCodesList = Array<string>;
-export const NichandleAccessRestrictionSOTPSecretCodesList = /*@__PURE__*/ S.Array(
+const NichandleAccessRestrictionSOTPSecretCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NichandleAccessRestrictionSOTPSecretCodesList>;
 
@@ -197,7 +194,7 @@ export const NichandleAccessRestrictionSOTPSecretCodesList = /*@__PURE__*/ S.Arr
 export interface NichandleAccessRestrictionSOTPSecret {
   codes?: NichandleAccessRestrictionSOTPSecretCodesList;
 }
-export const NichandleAccessRestrictionSOTPSecret = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionSOTPSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codes: S.optional(NichandleAccessRestrictionSOTPSecretCodesList),
   }),
@@ -207,7 +204,7 @@ export const NichandleAccessRestrictionSOTPSecret = /*@__PURE__*/ S.suspend(() =
 
 /** Accept or deny IP access */
 export type NichandleAccessRestrictionIpRestrictionRuleEnum = "accept" | "deny";
-export const NichandleAccessRestrictionIpRestrictionRuleEnum = S.String;
+const NichandleAccessRestrictionIpRestrictionRuleEnum = S.String;
 
 export interface CreateMeAccessRestrictionIpRequest {
   /** An IP range where we will apply the rule */
@@ -217,7 +214,7 @@ export interface CreateMeAccessRestrictionIpRequest {
   /** Send an email if someone try to access with this IP address */
   warning: boolean;
 }
-export const CreateMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ip: S.String,
     rule: NichandleAccessRestrictionIpRestrictionRuleEnum,
@@ -228,14 +225,14 @@ export const CreateMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeAccessRestrictionIpRequest>;
 
 export interface CreateMeAccessRestrictionIpResponse {}
-export const CreateMeAccessRestrictionIpResponse =
+const CreateMeAccessRestrictionIpResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeAccessRestrictionIpResponse>;
 
 export interface CreateMeAccessRestrictionSmsRequest {
   /** Cell phone number to register */
   phone: string;
 }
-export const CreateMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/sms", code: 200 })),
@@ -248,7 +245,7 @@ export interface NichandleAccessRestrictionSmsSecret {
   id?: number;
   remainingTry?: number;
 }
-export const NichandleAccessRestrictionSmsSecret = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionSmsSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     remainingTry: S.optional(S.Number),
@@ -258,7 +255,7 @@ export const NichandleAccessRestrictionSmsSecret = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NichandleAccessRestrictionSmsSecret>;
 
 export interface CreateMeAccessRestrictionTotpRequest {}
-export const CreateMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/totp", code: 200 })),
 ).annotate({
   identifier: "CreateMeAccessRestrictionTotpRequest",
@@ -270,7 +267,7 @@ export interface NichandleAccessRestrictionTOTPSecret {
   qrcodeHelper?: string;
   secret?: string | Redacted.Redacted<string>;
 }
-export const NichandleAccessRestrictionTOTPSecret = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionTOTPSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     qrcodeHelper: S.optional(S.String),
@@ -281,7 +278,7 @@ export const NichandleAccessRestrictionTOTPSecret = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<NichandleAccessRestrictionTOTPSecret>;
 
 export interface CreateMeAccessRestrictionU2fRequest {}
-export const CreateMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/u2f", code: 200 })),
 ).annotate({
   identifier: "CreateMeAccessRestrictionU2fRequest",
@@ -297,7 +294,7 @@ export interface NichandleAccessRestrictionU2FRegisterChallenge {
   userId?: string;
   userName?: string;
 }
-export const NichandleAccessRestrictionU2FRegisterChallenge = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionU2FRegisterChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challenge: S.optional(S.String),
     id: S.optional(S.Number),
@@ -567,7 +564,7 @@ export type NichandleCountryEnum =
   | "ZA"
   | "ZM"
   | "ZW";
-export const NichandleCountryEnum = S.String;
+const NichandleCountryEnum = S.String;
 
 /** Languages a nichandle can choose */
 export type NichandleLanguageEnum =
@@ -590,7 +587,7 @@ export type NichandleLanguageEnum =
   | "nl_NL"
   | "pl_PL"
   | "pt_PT";
-export const NichandleLanguageEnum = S.String;
+const NichandleLanguageEnum = S.String;
 
 /** Legal forms a nichandle can be registered as */
 export type NichandleLegalFormEnum =
@@ -600,15 +597,15 @@ export type NichandleLegalFormEnum =
   | "individual"
   | "other"
   | "personalcorporation";
-export const NichandleLegalFormEnum = S.String;
+const NichandleLegalFormEnum = S.String;
 
 /** All phone type a person can choose */
 export type NichandlePhoneTypeEnum = "landline" | "mobile";
-export const NichandlePhoneTypeEnum = S.String;
+const NichandlePhoneTypeEnum = S.String;
 
 /** All genders a person can choose */
 export type NichandleGenderEnum = "female" | "male";
-export const NichandleGenderEnum = S.String;
+const NichandleGenderEnum = S.String;
 
 export interface CreateMeAccountRequest {
   /** Address of nichandle */
@@ -665,7 +662,7 @@ export interface CreateMeAccountRequest {
   /** Zipcode */
   zip?: string | null;
 }
-export const CreateMeAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     area: S.optional(S.NullOr(S.String)),
@@ -704,7 +701,7 @@ export interface NichandleCurrency {
   /** Currency symbol */
   symbol?: string;
 }
-export const NichandleCurrency = /*@__PURE__*/ S.suspend(() =>
+const NichandleCurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     symbol: S.optional(S.String),
@@ -713,7 +710,7 @@ export const NichandleCurrency = /*@__PURE__*/ S.suspend(() =>
 
 /** OVH companies */
 export type NichandleOvhCompanyEnum = "kimsufi" | "ovh" | "soyoustart";
-export const NichandleOvhCompanyEnum = S.String;
+const NichandleOvhCompanyEnum = S.String;
 
 /** OVH subsidiaries */
 export type NichandleOvhSubsidiaryEnum =
@@ -733,11 +730,11 @@ export type NichandleOvhSubsidiaryEnum =
   | "PT"
   | "SN"
   | "TN";
-export const NichandleOvhSubsidiaryEnum = S.String;
+const NichandleOvhSubsidiaryEnum = S.String;
 
 /** States a nichandle can be in */
 export type NichandleStateEnum = "complete" | "incomplete";
-export const NichandleStateEnum = S.String;
+const NichandleStateEnum = S.String;
 
 /** Details about your OVH identifier */
 export interface NichandleNichandle {
@@ -809,7 +806,7 @@ export interface NichandleNichandle {
   /** Zipcode */
   zip?: string | null;
 }
-export const NichandleNichandle = /*@__PURE__*/ S.suspend(() =>
+const NichandleNichandle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     area: S.optional(S.NullOr(S.String)),
@@ -852,20 +849,19 @@ export interface CreateMeAutorenewRequest {
   /** Day of autorenew */
   renewDay: number;
 }
-export const CreateMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renewDay: S.Number,
   }).pipe(T.Http({ method: "POST", uri: "/me/autorenew", code: 200 })),
 ).annotate({ identifier: "CreateMeAutorenewRequest" }) as any as S.Schema<CreateMeAutorenewRequest>;
 
 export interface CreateMeAutorenewResponse {}
-export const CreateMeAutorenewResponse =
-  ApplyMeSlaResponse as any as S.Schema<CreateMeAutorenewResponse>;
+const CreateMeAutorenewResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeAutorenewResponse>;
 
 export interface CreateMeBillDebtPayRequest {
   billId: string;
 }
-export const CreateMeBillDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeBillDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/bill/{billId}/debt/pay", code: 200 })),
@@ -874,7 +870,7 @@ export const CreateMeBillDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeBillDebtPayRequest>;
 
 export type BillingOrderMetadatasList = Array<string>;
-export const BillingOrderMetadatasList =
+const BillingOrderMetadatasList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<BillingOrderMetadatasList>;
 
 /** Currency code */
@@ -894,7 +890,7 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-export const OrderCurrencyCodeEnum = S.String;
+const OrderCurrencyCodeEnum = S.String;
 
 /** Price with its currency and textual representation */
 export interface OrderPrice {
@@ -907,7 +903,7 @@ export interface OrderPrice {
   /** The effective price */
   value?: number;
 }
-export const OrderPrice = /*@__PURE__*/ S.suspend(() =>
+const OrderPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     priceInUcents: S.optional(S.NullOr(S.Number)),
@@ -930,7 +926,7 @@ export interface BillingOrder {
   tax?: OrderPrice;
   url?: string;
 }
-export const BillingOrder = /*@__PURE__*/ S.suspend(() =>
+const BillingOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.NullOr(S.String)),
     expirationDate: S.optional(S.NullOr(S.String)),
@@ -954,7 +950,7 @@ export interface CreateMeBillingGroupRequest {
   /** Payment method ID associated to the billing group */
   paymentMethodId?: number | null;
 }
-export const CreateMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.NullOr(S.Number)),
     name: S.optional(S.String),
@@ -979,7 +975,7 @@ export interface MeBillingGroupBillingGroup {
   /** Payment method ID associated to the billing group */
   paymentMethodId?: number | null;
 }
-export const MeBillingGroupBillingGroup = /*@__PURE__*/ S.suspend(() =>
+const MeBillingGroupBillingGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.NullOr(S.Number)),
     creationDate: S.optional(S.String),
@@ -998,7 +994,7 @@ export interface CreateMeBillingGroupServiceRequest {
   /** A service ID to associate */
   serviceId: number;
 }
-export const CreateMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.Number.pipe(T.Label()),
     serviceId: S.Number,
@@ -1014,7 +1010,7 @@ export interface MeBillingGroupService {
   /** Service ID */
   serviceId?: number;
 }
-export const MeBillingGroupService = /*@__PURE__*/ S.suspend(() =>
+const MeBillingGroupService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.Number),
     serviceId: S.optional(S.Number),
@@ -1025,7 +1021,7 @@ export interface CreateMeBillingInvoicesByPostalMailRequest {
   /** Send invoices through postal mail */
   enable: boolean;
 }
-export const CreateMeBillingInvoicesByPostalMailRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeBillingInvoicesByPostalMailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enable: S.Boolean,
   }).pipe(T.Http({ method: "POST", uri: "/me/billing/invoicesByPostalMail", code: 200 })),
@@ -1034,12 +1030,12 @@ export const CreateMeBillingInvoicesByPostalMailRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateMeBillingInvoicesByPostalMailRequest>;
 
 export interface CreateMeBillingInvoicesByPostalMailResponse {}
-export const CreateMeBillingInvoicesByPostalMailResponse =
+const CreateMeBillingInvoicesByPostalMailResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeBillingInvoicesByPostalMailResponse>;
 
 /** Type of a purchase order */
 export type MeBillingPurchaseOrderPurchaseOrderTypeEnum = "PURCHASE_ORDER" | "REFERENCE_ORDER";
-export const MeBillingPurchaseOrderPurchaseOrderTypeEnum = S.String;
+const MeBillingPurchaseOrderPurchaseOrderTypeEnum = S.String;
 
 export interface CreateMeBillingPurchaseOrderRequest {
   /** Active */
@@ -1057,7 +1053,7 @@ export interface CreateMeBillingPurchaseOrderRequest {
   /** Type of a purchase order */
   type: MeBillingPurchaseOrderPurchaseOrderTypeEnum | (string & {});
 }
-export const CreateMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.NullOr(S.Boolean)),
     billingGroupId: S.optional(S.NullOr(S.Number)),
@@ -1073,7 +1069,7 @@ export const CreateMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Purchase Order */
 export type MeBillingPurchaseOrderStatusEnum = "CREATED" | "DELETED";
-export const MeBillingPurchaseOrderStatusEnum = S.String;
+const MeBillingPurchaseOrderStatusEnum = S.String;
 
 /** Purchase Order */
 export interface MeBillingPurchaseOrderPurchaseOrder {
@@ -1100,7 +1096,7 @@ export interface MeBillingPurchaseOrderPurchaseOrder {
   /** Type of a purchase order */
   type?: MeBillingPurchaseOrderPurchaseOrderTypeEnum;
 }
-export const MeBillingPurchaseOrderPurchaseOrder = /*@__PURE__*/ S.suspend(() =>
+const MeBillingPurchaseOrderPurchaseOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.NullOr(S.Boolean)),
     billingGroupId: S.optional(S.NullOr(S.Number)),
@@ -1124,7 +1120,7 @@ export interface CreateMeBillingReportConsumptionRequest {
   /** Start date of the report period */
   periodStart: string;
 }
-export const CreateMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     periodEnd: S.String,
     periodStart: S.String,
@@ -1138,7 +1134,7 @@ export interface MeBillingReportConsumptionCreationResponse {
   /** Task id of the report */
   taskId?: string;
 }
-export const MeBillingReportConsumptionCreationResponse = /*@__PURE__*/ S.suspend(() =>
+const MeBillingReportConsumptionCreationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
   }),
@@ -1150,7 +1146,7 @@ export interface CreateMeCarbonCalculatorTaskRequest {
   /** Month of the requested document (day is ignored) */
   date: string;
 }
-export const CreateMeCarbonCalculatorTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeCarbonCalculatorTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/carbonCalculator/task", code: 200 })),
@@ -1163,7 +1159,7 @@ export interface CarbonCalculatorCalculationResponse {
   /** ID of the calculation task */
   taskID?: string;
 }
-export const CarbonCalculatorCalculationResponse = /*@__PURE__*/ S.suspend(() =>
+const CarbonCalculatorCalculationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskID: S.optional(S.String),
   }),
@@ -1175,7 +1171,7 @@ export interface CreateMeChangeEmailRequest {
   /** New email to associate to your account */
   newEmail: string;
 }
-export const CreateMeChangeEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeChangeEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newEmail: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/changeEmail", code: 200 })),
@@ -1185,7 +1181,7 @@ export const CreateMeChangeEmailRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** State of email change task */
 export type NichandleChangeEmailTaskStateEnum = "aborted" | "done" | "refused" | "todo";
-export const NichandleChangeEmailTaskStateEnum = S.String;
+const NichandleChangeEmailTaskStateEnum = S.String;
 
 /** Task running an email change on an account */
 export interface NichandleEmailChangeTask {
@@ -1199,7 +1195,7 @@ export interface NichandleEmailChangeTask {
   /** Current state of the request */
   state?: NichandleChangeEmailTaskStateEnum;
 }
-export const NichandleEmailChangeTask = /*@__PURE__*/ S.suspend(() =>
+const NichandleEmailChangeTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateDone: S.optional(S.NullOr(S.String)),
     dateRequest: S.optional(S.String),
@@ -1210,14 +1206,14 @@ export const NichandleEmailChangeTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NichandleEmailChangeTask" }) as any as S.Schema<NichandleEmailChangeTask>;
 
 export interface CreateMeChangePasswordRequest {}
-export const CreateMeChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/me/changePassword", code: 200 })),
 ).annotate({
   identifier: "CreateMeChangePasswordRequest",
 }) as any as S.Schema<CreateMeChangePasswordRequest>;
 
 export interface CreateMeChangePasswordResponse {}
-export const CreateMeChangePasswordResponse =
+const CreateMeChangePasswordResponse =
   ApplyMeSlaResponse as any as S.Schema<CreateMeChangePasswordResponse>;
 
 /** Representation of a Contact */
@@ -1239,7 +1235,7 @@ export interface MeContactAddress {
   /** Zipcode */
   zip?: string | null;
 }
-export const MeContactAddress = /*@__PURE__*/ S.suspend(() =>
+const MeContactAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     country: S.optional(NichandleCountryEnum),
@@ -1296,7 +1292,7 @@ export interface CreateMeContactRequest {
   /** VAT number */
   vat?: string | null;
 }
-export const CreateMeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(MeContactAddress),
     birthCity: S.optional(S.NullOr(S.String)),
@@ -1369,7 +1365,7 @@ export interface MeContactContact {
   /** VAT number */
   vat?: string | null;
 }
-export const MeContactContact = /*@__PURE__*/ S.suspend(() =>
+const MeContactContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(MeContactAddress),
     birthCity: S.optional(S.NullOr(S.String)),
@@ -1399,7 +1395,7 @@ export const MeContactContact = /*@__PURE__*/ S.suspend(() =>
 export interface CreateMeCorrectiveInvoiceDebtPayRequest {
   correctiveInvoiceId: string;
 }
-export const CreateMeCorrectiveInvoiceDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeCorrectiveInvoiceDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1419,7 +1415,7 @@ export interface CreateMeCreditCodeRequest {
   /** Restrict credit to a specific service */
   serviceId?: number;
 }
-export const CreateMeCreditCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeCreditCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputCode: S.String,
     serviceId: S.optional(S.Number),
@@ -1435,7 +1431,7 @@ export interface MeCreditBalanceMovementSubObject {
   /** Sub object name */
   name?: string;
 }
-export const MeCreditBalanceMovementSubObject = /*@__PURE__*/ S.suspend(() =>
+const MeCreditBalanceMovementSubObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1457,7 +1453,7 @@ export type MeCreditBalanceMovementTypeEnum =
   | "UNPAID"
   | "USE"
   | "VOUCHER";
-export const MeCreditBalanceMovementTypeEnum = S.String;
+const MeCreditBalanceMovementTypeEnum = S.String;
 
 /** Missing description */
 export interface MeCreditBalanceMovement {
@@ -1482,7 +1478,7 @@ export interface MeCreditBalanceMovement {
   /** Movement type */
   type?: MeCreditBalanceMovementTypeEnum;
 }
-export const MeCreditBalanceMovement = /*@__PURE__*/ S.suspend(() =>
+const MeCreditBalanceMovement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     balanceName: S.optional(S.String),
@@ -1500,7 +1496,7 @@ export const MeCreditBalanceMovement = /*@__PURE__*/ S.suspend(() =>
 export interface CreateMeDebtAccountDebtPayRequest {
   debtId: number;
 }
-export const CreateMeDebtAccountDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeDebtAccountDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debtId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/debtAccount/debt/{debtId}/pay", code: 200 })),
@@ -1509,7 +1505,7 @@ export const CreateMeDebtAccountDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeDebtAccountDebtPayRequest>;
 
 export interface CreateMeDebtAccountPayRequest {}
-export const CreateMeDebtAccountPayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeDebtAccountPayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/me/debtAccount/pay", code: 200 })),
 ).annotate({
   identifier: "CreateMeDebtAccountPayRequest",
@@ -1519,7 +1515,7 @@ export interface CreateMeDepositPaidBillDebtPayRequest {
   depositId: string;
   billId: string;
 }
-export const CreateMeDepositPaidBillDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeDepositPaidBillDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     billId: S.String.pipe(T.Label()),
@@ -1538,7 +1534,7 @@ export const CreateMeDepositPaidBillDebtPayRequest = /*@__PURE__*/ S.suspend(() 
 export interface ComplexTypeSafeKeyValueStringInput {
   value?: string;
 }
-export const ComplexTypeSafeKeyValueStringInput = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeSafeKeyValueStringInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -1548,7 +1544,7 @@ export const ComplexTypeSafeKeyValueStringInput = /*@__PURE__*/ S.suspend(() =>
 
 /** File tags */
 export type CreateMeDocumentRequestTagsList = Array<ComplexTypeSafeKeyValueStringInput>;
-export const CreateMeDocumentRequestTagsList = /*@__PURE__*/ S.Array(
+const CreateMeDocumentRequestTagsList = /*@__PURE__*/ S.Array(
   ComplexTypeSafeKeyValueStringInput,
 ) as any as S.Schema<CreateMeDocumentRequestTagsList>;
 
@@ -1558,7 +1554,7 @@ export interface CreateMeDocumentRequest {
   /** File tags */
   tags?: CreateMeDocumentRequestTagsList;
 }
-export const CreateMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tags: S.optional(CreateMeDocumentRequestTagsList),
@@ -1570,7 +1566,7 @@ export interface ComplexTypeSafeKeyValueString {
   key?: string;
   value?: string;
 }
-export const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -1581,7 +1577,7 @@ export const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
 
 /** Document tags */
 export type NichandleDocumentDocumentTagsList = Array<ComplexTypeSafeKeyValueString>;
-export const NichandleDocumentDocumentTagsList = /*@__PURE__*/ S.Array(
+const NichandleDocumentDocumentTagsList = /*@__PURE__*/ S.Array(
   ComplexTypeSafeKeyValueString,
 ) as any as S.Schema<NichandleDocumentDocumentTagsList>;
 
@@ -1606,7 +1602,7 @@ export interface NichandleDocumentDocument {
   /** Document validation */
   validationDate?: string | null;
 }
-export const NichandleDocumentDocument = /*@__PURE__*/ S.suspend(() =>
+const NichandleDocumentDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     expirationDate: S.optional(S.NullOr(S.String)),
@@ -1626,7 +1622,7 @@ export interface CreateMeDocumentCorsRequest {
   /** Allow this origin */
   origin: string;
 }
-export const CreateMeDocumentCorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeDocumentCorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/document/cors", code: 200 })),
@@ -1635,13 +1631,13 @@ export const CreateMeDocumentCorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeDocumentCorsRequest>;
 
 export interface CreateMeDocumentCorsResponse {}
-export const CreateMeDocumentCorsResponse =
+const CreateMeDocumentCorsResponse =
   ApplyMeSlaResponse as any as S.Schema<CreateMeDocumentCorsResponse>;
 
 export interface CreateMeDownPaymentInvoiceDebtPayRequest {
   downPaymentInvoiceId: string;
 }
-export const CreateMeDownPaymentInvoiceDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeDownPaymentInvoiceDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downPaymentInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1659,7 +1655,7 @@ export interface CreateMeFaxCustomDomainRequest {
   /** The custom domain of your fax services */
   domain: string;
 }
-export const CreateMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/fax/customDomains", code: 200 })),
@@ -1673,7 +1669,7 @@ export interface TelephonyMailDomain2Service {
   domain?: string;
   id?: number;
 }
-export const TelephonyMailDomain2Service = /*@__PURE__*/ S.suspend(() =>
+const TelephonyMailDomain2Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1688,7 +1684,7 @@ export interface CreateMeFeedbackRequest {
   /** Subject of your request */
   subject: string;
 }
-export const CreateMeFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.String,
     subject: S.String,
@@ -1696,14 +1692,13 @@ export const CreateMeFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeFeedbackRequest" }) as any as S.Schema<CreateMeFeedbackRequest>;
 
 export interface CreateMeFeedbackResponse {}
-export const CreateMeFeedbackResponse =
-  ApplyMeSlaResponse as any as S.Schema<CreateMeFeedbackResponse>;
+const CreateMeFeedbackResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeFeedbackResponse>;
 
 export interface CreateMeFidelityAccountCreditOrderRequest {
   /** The amount of points you want to credit your fidelity account of */
   amount: number;
 }
-export const CreateMeFidelityAccountCreditOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeFidelityAccountCreditOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
   }).pipe(T.Http({ method: "POST", uri: "/me/fidelityAccount/creditOrder", code: 200 })),
@@ -1712,7 +1707,7 @@ export const CreateMeFidelityAccountCreditOrderRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateMeFidelityAccountCreditOrderRequest>;
 
 export interface CreateMeGeolocationRequest {}
-export const CreateMeGeolocationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeGeolocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/me/geolocation", code: 200 })),
 ).annotate({
   identifier: "CreateMeGeolocationRequest",
@@ -1727,7 +1722,7 @@ export type MeGeolocationContinentEnum =
   | "north-america"
   | "oceania"
   | "south-america";
-export const MeGeolocationContinentEnum = S.String;
+const MeGeolocationContinentEnum = S.String;
 
 /** Country iso code */
 export type MeGeolocationCountryEnum =
@@ -1991,7 +1986,7 @@ export type MeGeolocationCountryEnum =
   | "za"
   | "zm"
   | "zw";
-export const MeGeolocationCountryEnum = S.String;
+const MeGeolocationCountryEnum = S.String;
 
 /** Representation of country and continent from visitor IP */
 export interface MeGeolocationContinentCountryLocation {
@@ -2002,7 +1997,7 @@ export interface MeGeolocationContinentCountryLocation {
   /** The IP address processed, the user's origin one */
   ip?: string;
 }
-export const MeGeolocationContinentCountryLocation = /*@__PURE__*/ S.suspend(() =>
+const MeGeolocationContinentCountryLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continent: S.optional(S.NullOr(MeGeolocationContinentEnum)),
     countryCode: S.optional(S.NullOr(MeGeolocationCountryEnum)),
@@ -2014,7 +2009,7 @@ export const MeGeolocationContinentCountryLocation = /*@__PURE__*/ S.suspend(() 
 
 /** Permission given on the account */
 export type AuthRoleEnum = "ADMIN" | "NONE" | "REGULAR" | "UNPRIVILEGED";
-export const AuthRoleEnum = S.String;
+const AuthRoleEnum = S.String;
 
 export interface CreateMeIdentityGroupRequest {
   /** Group's description */
@@ -2024,7 +2019,7 @@ export interface CreateMeIdentityGroupRequest {
   /** Group's role */
   role?: AuthRoleEnum | (string & {});
 }
-export const CreateMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     name: S.String,
@@ -2051,7 +2046,7 @@ export interface AuthGroup {
   /** IAM identity URN of the group */
   urn?: string;
 }
-export const AuthGroup = /*@__PURE__*/ S.suspend(() =>
+const AuthGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creation: S.optional(S.String),
     defaultGroup: S.optional(S.Boolean),
@@ -2069,7 +2064,7 @@ export interface CreateMeIdentityGroupUserRequest {
   /** Username to add to the group */
   user?: string;
 }
-export const CreateMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
     user: S.optional(S.String),
@@ -2079,12 +2074,12 @@ export const CreateMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeIdentityGroupUserRequest>;
 
 export interface CreateMeIdentityGroupUserResponse {}
-export const CreateMeIdentityGroupUserResponse =
+const CreateMeIdentityGroupUserResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeIdentityGroupUserResponse>;
 
 /** List of AttributeValues allowed for this RequestedAttribute */
 export type AuthProviderRequestedAttributesValuesList = Array<string>;
-export const AuthProviderRequestedAttributesValuesList =
+const AuthProviderRequestedAttributesValuesList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthProviderRequestedAttributesValuesList>;
 
 /** A SAML 2.0 requested attribute that should be added to SAML requests when using this provider */
@@ -2098,7 +2093,7 @@ export interface AuthProviderRequestedAttributes {
   /** List of AttributeValues allowed for this RequestedAttribute */
   values?: AuthProviderRequestedAttributesValuesList | null;
 }
-export const AuthProviderRequestedAttributes = /*@__PURE__*/ S.suspend(() =>
+const AuthProviderRequestedAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isRequired: S.Boolean,
     name: S.String,
@@ -2111,7 +2106,7 @@ export const AuthProviderRequestedAttributes = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SAML RequestedAttribute to add to SAML requests */
 export type AuthProviderExtensionsRequestedAttributesList = Array<AuthProviderRequestedAttributes>;
-export const AuthProviderExtensionsRequestedAttributesList = /*@__PURE__*/ S.Array(
+const AuthProviderExtensionsRequestedAttributesList = /*@__PURE__*/ S.Array(
   AuthProviderRequestedAttributes,
 ) as any as S.Schema<AuthProviderExtensionsRequestedAttributesList>;
 
@@ -2120,7 +2115,7 @@ export interface AuthProviderExtensions {
   /** List of SAML RequestedAttribute to add to SAML requests */
   requestedAttributes?: AuthProviderExtensionsRequestedAttributesList | null;
 }
-export const AuthProviderExtensions = /*@__PURE__*/ S.suspend(() =>
+const AuthProviderExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedAttributes: S.optional(S.NullOr(AuthProviderExtensionsRequestedAttributesList)),
   }),
@@ -2140,7 +2135,7 @@ export interface CreateMeIdentityProviderRequest {
   /** SAML User attribute name */
   userAttributeName?: string | null;
 }
-export const CreateMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableUsers: S.optional(S.NullOr(S.Boolean)),
     extensions: S.optional(AuthProviderExtensions),
@@ -2160,7 +2155,7 @@ export interface AuthCertificate {
   /** Certificate's subject */
   subject?: string;
 }
-export const AuthCertificate = /*@__PURE__*/ S.suspend(() =>
+const AuthCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiration: S.optional(S.String),
     subject: S.optional(S.String),
@@ -2169,7 +2164,7 @@ export const AuthCertificate = /*@__PURE__*/ S.suspend(() =>
 
 /** IdP's signing certificate */
 export type AuthProviderIdpSigningCertificatesList = Array<AuthCertificate>;
-export const AuthProviderIdpSigningCertificatesList = /*@__PURE__*/ S.Array(
+const AuthProviderIdpSigningCertificatesList = /*@__PURE__*/ S.Array(
   AuthCertificate,
 ) as any as S.Schema<AuthProviderIdpSigningCertificatesList>;
 
@@ -2194,7 +2189,7 @@ export interface AuthProvider {
   /** SAML User attribute name */
   userAttributeName?: string;
 }
-export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
+const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creation: S.optional(S.String),
     disableUsers: S.optional(S.NullOr(S.Boolean)),
@@ -2210,7 +2205,7 @@ export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of user */
 export type AuthUserTypeEnum = "ROOT" | "SERVICE" | "USER";
-export const AuthUserTypeEnum = S.String;
+const AuthUserTypeEnum = S.String;
 
 export interface CreateMeIdentityUserRequest {
   /** User's description */
@@ -2226,7 +2221,7 @@ export interface CreateMeIdentityUserRequest {
   /** Type of user to create */
   type?: AuthUserTypeEnum | (string & {});
 }
-export const CreateMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     email: S.optional(S.String),
@@ -2240,7 +2235,7 @@ export const CreateMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeIdentityUserRequest>;
 
 export interface CreateMeIdentityUserResponse {}
-export const CreateMeIdentityUserResponse =
+const CreateMeIdentityUserResponse =
   ApplyMeSlaResponse as any as S.Schema<CreateMeIdentityUserResponse>;
 
 export interface CreateMeIdentityUserTokenRequest {
@@ -2255,7 +2250,7 @@ export interface CreateMeIdentityUserTokenRequest {
   /** Personal access token's name */
   name: string;
 }
-export const CreateMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
     description: S.String,
@@ -2282,7 +2277,7 @@ export interface AuthPersonalAccessTokenResponse {
   /** Personal access token */
   token?: string;
 }
-export const AuthPersonalAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthPersonalAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creation: S.optional(S.String),
     description: S.optional(S.String),
@@ -2297,7 +2292,7 @@ export const AuthPersonalAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Ip registries */
 export type NichandleIpRegistryEnum = "ARIN" | "RIPE";
-export const NichandleIpRegistryEnum = S.String;
+const NichandleIpRegistryEnum = S.String;
 
 export interface CreateMeIpOrganisationRequest {
   abuse_mailbox: string;
@@ -2311,7 +2306,7 @@ export interface CreateMeIpOrganisationRequest {
   state?: string;
   zip?: string;
 }
-export const CreateMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abuse_mailbox: S.String,
     address: S.String,
@@ -2329,7 +2324,7 @@ export const CreateMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeIpOrganisationRequest>;
 
 export interface CreateMeIpOrganisationResponse {}
-export const CreateMeIpOrganisationResponse =
+const CreateMeIpOrganisationResponse =
   ApplyMeSlaResponse as any as S.Schema<CreateMeIpOrganisationResponse>;
 
 export interface CreateMeLogAuditLogSubscriptionRequest {
@@ -2338,7 +2333,7 @@ export interface CreateMeLogAuditLogSubscriptionRequest {
   /** Customer log stream ID */
   streamId: string;
 }
-export const CreateMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     streamId: S.String,
@@ -2354,7 +2349,7 @@ export interface DbaasLogsLogSubscriptionResponse {
   /** Operation owner's service name */
   serviceName?: string;
 }
-export const DbaasLogsLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -2367,7 +2362,7 @@ export interface CreateMeLogAuditLogUrlRequest {
   /** Log kind name */
   kind: string;
 }
-export const CreateMeLogAuditLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeLogAuditLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/logs/audit/log/url", code: 200 })),
@@ -2382,7 +2377,7 @@ export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
-export const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     url: S.optional(S.String),
@@ -2397,7 +2392,7 @@ export interface CreateMeLogSubscriptionRequest {
   /** Customer log stream ID */
   streamId: string;
 }
-export const CreateMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     streamId: S.String,
@@ -2410,31 +2405,31 @@ export interface CreateMeLogUrlRequest {
   /** Log kind name */
   kind: string;
 }
-export const CreateMeLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/api/log/url", code: 200 })),
 ).annotate({ identifier: "CreateMeLogUrlRequest" }) as any as S.Schema<CreateMeLogUrlRequest>;
 
 export interface CreateMeManualDomainPaymentRequest {}
-export const CreateMeManualDomainPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeManualDomainPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/me/manualDomainPayment", code: 200 })),
 ).annotate({
   identifier: "CreateMeManualDomainPaymentRequest",
 }) as any as S.Schema<CreateMeManualDomainPaymentRequest>;
 
 export interface CreateMeManualDomainPaymentResponse {}
-export const CreateMeManualDomainPaymentResponse =
+const CreateMeManualDomainPaymentResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeManualDomainPaymentResponse>;
 
 /** allowed callback urls */
 export type CreateMeOauth2ClientRequestCallbackUrlsList = Array<string>;
-export const CreateMeOauth2ClientRequestCallbackUrlsList =
+const CreateMeOauth2ClientRequestCallbackUrlsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<CreateMeOauth2ClientRequestCallbackUrlsList>;
 
 /** oAuth2 Flow */
 export type Oauth2ClientFlowEnum = "AUTHORIZATION_CODE" | "CLIENT_CREDENTIALS";
-export const Oauth2ClientFlowEnum = S.String;
+const Oauth2ClientFlowEnum = S.String;
 
 export interface CreateMeOauth2ClientRequest {
   /** allowed callback urls */
@@ -2446,7 +2441,7 @@ export interface CreateMeOauth2ClientRequest {
   /** client's name */
   name: string;
 }
-export const CreateMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callbackUrls: S.optional(CreateMeOauth2ClientRequestCallbackUrlsList),
     description: S.String,
@@ -2464,7 +2459,7 @@ export interface Oauth2ClientSecret {
   /** client's client_secret */
   clientSecret?: string | Redacted.Redacted<string>;
 }
-export const Oauth2ClientSecret = /*@__PURE__*/ S.suspend(() =>
+const Oauth2ClientSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -2476,7 +2471,7 @@ export interface CreateMeOrderBalanceRequest {
   /** Balance name to use on this Order */
   balanceName: string;
 }
-export const CreateMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     balanceName: S.String,
@@ -2492,7 +2487,7 @@ export interface BillingCreditBalance {
   /** Credit balance name */
   balanceName?: string;
 }
-export const BillingCreditBalance = /*@__PURE__*/ S.suspend(() =>
+const BillingCreditBalance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     balanceName: S.optional(S.String),
@@ -2502,7 +2497,7 @@ export const BillingCreditBalance = /*@__PURE__*/ S.suspend(() =>
 export interface CreateMeOrderDebtPayRequest {
   orderId: number;
 }
-export const CreateMeOrderDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOrderDebtPayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/order/{orderId}/debt/pay", code: 200 })),
@@ -2515,7 +2510,7 @@ export interface BillingOrderPayWithPaymentMethod {
   /** ID of payment method for pay this order */
   id?: number;
 }
-export const BillingOrderPayWithPaymentMethod = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderPayWithPaymentMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
   }),
@@ -2528,7 +2523,7 @@ export interface CreateMeOrderPayRequest {
   /** Payment method informations for pay */
   paymentMethod: BillingOrderPayWithPaymentMethod;
 }
-export const CreateMeOrderPayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOrderPayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     paymentMethod: BillingOrderPayWithPaymentMethod,
@@ -2536,8 +2531,7 @@ export const CreateMeOrderPayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeOrderPayRequest" }) as any as S.Schema<CreateMeOrderPayRequest>;
 
 export interface CreateMeOrderPayResponse {}
-export const CreateMeOrderPayResponse =
-  ApplyMeSlaResponse as any as S.Schema<CreateMeOrderPayResponse>;
+const CreateMeOrderPayResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeOrderPayResponse>;
 
 /** Reusable payment mean type */
 export type BillingReusablePaymentMeanEnum =
@@ -2556,7 +2550,7 @@ export type BillingReusablePaymentMeanEnum =
   | "fidelityAccount"
   | "ovhAccount"
   | "paypal";
-export const BillingReusablePaymentMeanEnum = S.String;
+const BillingReusablePaymentMeanEnum = S.String;
 
 export interface CreateMeOrderPayWithRegisteredPaymentMeanRequest {
   orderId: number;
@@ -2565,7 +2559,7 @@ export interface CreateMeOrderPayWithRegisteredPaymentMeanRequest {
   /** Id of registered payment mean, mandatory for bankAccount, creditCard and paypal */
   paymentMeanId?: number;
 }
-export const CreateMeOrderPayWithRegisteredPaymentMeanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOrderPayWithRegisteredPaymentMeanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     paymentMean: BillingReusablePaymentMeanEnum,
@@ -2578,7 +2572,7 @@ export const CreateMeOrderPayWithRegisteredPaymentMeanRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanRequest>;
 
 export interface CreateMeOrderPayWithRegisteredPaymentMeanResponse {}
-export const CreateMeOrderPayWithRegisteredPaymentMeanResponse =
+const CreateMeOrderPayWithRegisteredPaymentMeanResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOrderPayWithRegisteredPaymentMeanResponse>;
 
 /** Retraction reason type */
@@ -2590,7 +2584,7 @@ export type BillingOrderRetractionReasonEnum =
   | "performance"
   | "reliability"
   | "unused";
-export const BillingOrderRetractionReasonEnum = S.String;
+const BillingOrderRetractionReasonEnum = S.String;
 
 export interface CreateMeOrderRetractionRequest {
   orderId: number;
@@ -2599,7 +2593,7 @@ export interface CreateMeOrderRetractionRequest {
   /** The reason why you want to retract */
   reason: BillingOrderRetractionReasonEnum | (string & {});
 }
-export const CreateMeOrderRetractionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOrderRetractionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     comment: S.optional(S.String),
@@ -2610,13 +2604,13 @@ export const CreateMeOrderRetractionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeOrderRetractionRequest>;
 
 export interface CreateMeOrderRetractionResponse {}
-export const CreateMeOrderRetractionResponse =
+const CreateMeOrderRetractionResponse =
   AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMeOrderRetractionResponse>;
 
 export interface CreateMeOrderWaiveRetractionRequest {
   orderId: number;
 }
-export const CreateMeOrderWaiveRetractionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOrderWaiveRetractionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/order/{orderId}/waiveRetraction", code: 200 })),
@@ -2625,7 +2619,7 @@ export const CreateMeOrderWaiveRetractionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeOrderWaiveRetractionRequest>;
 
 export interface CreateMeOrderWaiveRetractionResponse {}
-export const CreateMeOrderWaiveRetractionResponse =
+const CreateMeOrderWaiveRetractionResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOrderWaiveRetractionResponse>;
 
 export interface CreateMeOvhAccountCreditOrderRequest {
@@ -2633,7 +2627,7 @@ export interface CreateMeOvhAccountCreditOrderRequest {
   /** The amount in cents you want to credit your account of */
   amount: number;
 }
-export const CreateMeOvhAccountCreditOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOvhAccountCreditOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhAccountId: S.String.pipe(T.Label()),
     amount: S.Number,
@@ -2648,7 +2642,7 @@ export interface CreateMeOvhAccountMovementRequestRefundRequest {
   /** The amount in cents you want to retrieve */
   amount: number;
 }
-export const CreateMeOvhAccountMovementRequestRefundRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeOvhAccountMovementRequestRefundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhAccountId: S.String.pipe(T.Label()),
     movementId: S.Number.pipe(T.Label()),
@@ -2665,7 +2659,7 @@ export const CreateMeOvhAccountMovementRequestRefundRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateMeOvhAccountMovementRequestRefundRequest>;
 
 export interface CreateMeOvhAccountMovementRequestRefundResponse {}
-export const CreateMeOvhAccountMovementRequestRefundResponse =
+const CreateMeOvhAccountMovementRequestRefundResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeOvhAccountMovementRequestRefundResponse>;
 
 export interface CreateMePasswordRecoverRequest {
@@ -2674,7 +2668,7 @@ export interface CreateMePasswordRecoverRequest {
   /** Your OVH Account Id */
   ovhId: string;
 }
-export const CreateMePasswordRecoverRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMePasswordRecoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhCompany: NichandleOvhCompanyEnum,
     ovhId: S.String,
@@ -2684,14 +2678,14 @@ export const CreateMePasswordRecoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMePasswordRecoverRequest>;
 
 export interface CreateMePasswordRecoverResponse {}
-export const CreateMePasswordRecoverResponse =
+const CreateMePasswordRecoverResponse =
   AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMePasswordRecoverResponse>;
 
 export interface CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest {
   /** Id */
   id: number;
 }
-export const CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest =
+const CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.Number.pipe(T.Label()),
@@ -2707,7 +2701,7 @@ export const CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMean
   }) as any as S.Schema<CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanRequest>;
 
 export interface CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse {}
-export const CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse =
+const CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse",
   }) as any as S.Schema<CreateMePaymentMeanDeferredPaymentAccountChooseAsDefaultPaymentMeanResponse>;
@@ -2725,7 +2719,7 @@ export interface MePaymentMethodCallbackUrl {
   /** URL when payment method registration success */
   success: string;
 }
-export const MePaymentMethodCallbackUrl = /*@__PURE__*/ S.suspend(() =>
+const MePaymentMethodCallbackUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancel: S.String,
     error: S.String,
@@ -2739,7 +2733,7 @@ export const MePaymentMethodCallbackUrl = /*@__PURE__*/ S.suspend(() =>
 
 /** Payment method creation sub-type enum */
 export type MePaymentCreationSubTypeEnum = "CHORUS" | "NONE";
-export const MePaymentCreationSubTypeEnum = S.String;
+const MePaymentCreationSubTypeEnum = S.String;
 
 export interface CreateMePaymentMethodRequest {
   /** Associated billing contact ID */
@@ -2761,7 +2755,7 @@ export interface CreateMePaymentMethodRequest {
   /** Register this payment method if it's possible (default value is false and will proceed a oneshot transaction) */
   register?: boolean;
 }
-export const CreateMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingContactId: S.optional(S.NullOr(S.Number)),
     callbackUrl: MePaymentMethodCallbackUrl,
@@ -2786,7 +2780,7 @@ export type MePaymentIntegrationEnum =
   | "NONE"
   | "POST_FORM"
   | "REDIRECT";
-export const MePaymentIntegrationEnum = S.String;
+const MePaymentIntegrationEnum = S.String;
 
 /** Registration response to validate */
 export interface MePaymentMethodValidation {
@@ -2805,7 +2799,7 @@ export interface MePaymentMethodValidation {
   /** Registration validation type */
   validationType?: MePaymentIntegrationEnum;
 }
-export const MePaymentMethodValidation = /*@__PURE__*/ S.suspend(() =>
+const MePaymentMethodValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formSessionId: S.optional(S.NullOr(S.String)),
     merchantId: S.optional(S.NullOr(S.String)),
@@ -2825,7 +2819,7 @@ export interface CreateMePaymentMethodChallengeRequest {
   /** Challenge */
   challenge: string;
 }
-export const CreateMePaymentMethodChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMePaymentMethodChallengeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.Number.pipe(T.Label()),
     challenge: S.String,
@@ -2837,7 +2831,7 @@ export const CreateMePaymentMethodChallengeRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateMePaymentMethodChallengeRequest>;
 
 export interface CreateMePaymentMethodChallengeResponse {}
-export const CreateMePaymentMethodChallengeResponse =
+const CreateMePaymentMethodChallengeResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMePaymentMethodChallengeResponse>;
 
 export interface CreateMePaymentMethodDetailRequest {
@@ -2848,7 +2842,7 @@ export interface CreateMePaymentMethodDetailRequest {
   /** Transaction ID */
   transactionId?: number;
 }
-export const CreateMePaymentMethodDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMePaymentMethodDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.Number.pipe(T.Label()),
     details: S.optional(S.String),
@@ -2866,7 +2860,7 @@ export interface CreateMePreferenceManagerRequest {
   /** This preference value */
   value: string;
 }
-export const CreateMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -2876,7 +2870,7 @@ export const CreateMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMePreferenceManagerRequest>;
 
 export interface CreateMePreferenceManagerResponse {}
-export const CreateMePreferenceManagerResponse =
+const CreateMePreferenceManagerResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMePreferenceManagerResponse>;
 
 export interface CreateMeSshKeyRequest {
@@ -2885,7 +2879,7 @@ export interface CreateMeSshKeyRequest {
   /** name of the new public SSH key */
   keyName: string;
 }
-export const CreateMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     keyName: S.String,
@@ -2893,13 +2887,13 @@ export const CreateMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMeSshKeyRequest" }) as any as S.Schema<CreateMeSshKeyRequest>;
 
 export interface CreateMeSshKeyResponse {}
-export const CreateMeSshKeyResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeSshKeyResponse>;
+const CreateMeSshKeyResponse = ApplyMeSlaResponse as any as S.Schema<CreateMeSshKeyResponse>;
 
 export interface CreateMeSubAccountRequest {
   /** Description of the new sub-account */
   description?: string;
 }
-export const CreateMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/me/subAccount", code: 200 })),
@@ -2908,7 +2902,7 @@ export const CreateMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeSubAccountRequest>;
 
 export type CreateMeSubAccountResponse = number;
-export const CreateMeSubAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMeSubAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Number.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateMeSubAccountResponse",
@@ -2918,7 +2912,7 @@ export interface CreateMeSubAccountConsumerKeyRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateMeSubAccountConsumerKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeSubAccountConsumerKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/subAccount/{id}/createConsumerKey", code: 200 })),
@@ -2931,7 +2925,7 @@ export interface NichandleSubAccountConsumerKey {
   /** The consumer key */
   consumerKey?: string;
 }
-export const NichandleSubAccountConsumerKey = /*@__PURE__*/ S.suspend(() =>
+const NichandleSubAccountConsumerKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumerKey: S.optional(S.String),
   }),
@@ -2945,7 +2939,7 @@ export interface CreateMeTagRequest {
   /** Tag name */
   tagName: string;
 }
-export const CreateMeTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.NullOr(S.String)),
     tagName: S.String,
@@ -2957,7 +2951,7 @@ export interface MeTagTagExtra {
   /** Tax exemption */
   exemption?: string | null;
 }
-export const MeTagTagExtra = /*@__PURE__*/ S.suspend(() =>
+const MeTagTagExtra = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemption: S.optional(S.NullOr(S.String)),
   }),
@@ -2976,7 +2970,7 @@ export type MeTagStatusEnum =
   | "REVOCATING"
   | "WAIT_MODERATION"
   | "WAIT_REVOCATION";
-export const MeTagStatusEnum = S.String;
+const MeTagStatusEnum = S.String;
 
 /** Tag */
 export interface MeTagTag {
@@ -2995,7 +2989,7 @@ export interface MeTagTag {
   /** Tag name */
   tag?: string;
 }
-export const MeTagTag = /*@__PURE__*/ S.suspend(() =>
+const MeTagTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     customerCode: S.optional(S.String),
@@ -3012,7 +3006,7 @@ export interface CreateMeTaskContactChangeRefuseRequest {
   /** The token you received by email for this request */
   token: string;
 }
-export const CreateMeTaskContactChangeRefuseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTaskContactChangeRefuseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     token: S.String,
@@ -3022,14 +3016,14 @@ export const CreateMeTaskContactChangeRefuseRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateMeTaskContactChangeRefuseRequest>;
 
 export interface CreateMeTaskContactChangeRefuseResponse {}
-export const CreateMeTaskContactChangeRefuseResponse =
+const CreateMeTaskContactChangeRefuseResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskContactChangeRefuseResponse>;
 
 export interface CreateMeTaskDnsAccelerateRequest {
   /** Id */
   id: number;
 }
-export const CreateMeTaskDnsAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTaskDnsAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/task/dns/{id}/accelerate", code: 200 })),
@@ -3038,14 +3032,14 @@ export const CreateMeTaskDnsAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTaskDnsAccelerateRequest>;
 
 export interface CreateMeTaskDnsAccelerateResponse {}
-export const CreateMeTaskDnsAccelerateResponse =
+const CreateMeTaskDnsAccelerateResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDnsAccelerateResponse>;
 
 export interface CreateMeTaskDnsRelaunchRequest {
   /** Id */
   id: number;
 }
-export const CreateMeTaskDnsRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTaskDnsRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/task/dns/{id}/relaunch", code: 200 })),
@@ -3054,14 +3048,14 @@ export const CreateMeTaskDnsRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTaskDnsRelaunchRequest>;
 
 export interface CreateMeTaskDnsRelaunchResponse {}
-export const CreateMeTaskDnsRelaunchResponse =
+const CreateMeTaskDnsRelaunchResponse =
   AcceptMeTaskEmailChangeResponse as any as S.Schema<CreateMeTaskDnsRelaunchResponse>;
 
 export interface CreateMeTaskDomainAccelerateRequest {
   /** Id */
   id: number;
 }
-export const CreateMeTaskDomainAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTaskDomainAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/task/domain/{id}/accelerate", code: 200 })),
@@ -3070,14 +3064,14 @@ export const CreateMeTaskDomainAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTaskDomainAccelerateRequest>;
 
 export interface CreateMeTaskDomainAccelerateResponse {}
-export const CreateMeTaskDomainAccelerateResponse =
+const CreateMeTaskDomainAccelerateResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDomainAccelerateResponse>;
 
 export interface CreateMeTaskDomainRelaunchRequest {
   /** Id */
   id: number;
 }
-export const CreateMeTaskDomainRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTaskDomainRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/task/domain/{id}/relaunch", code: 200 })),
@@ -3086,7 +3080,7 @@ export const CreateMeTaskDomainRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTaskDomainRelaunchRequest>;
 
 export interface CreateMeTaskDomainRelaunchResponse {}
-export const CreateMeTaskDomainRelaunchResponse =
+const CreateMeTaskDomainRelaunchResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskDomainRelaunchResponse>;
 
 export interface CreateMeTaskEmailChangeRefuseRequest {
@@ -3094,7 +3088,7 @@ export interface CreateMeTaskEmailChangeRefuseRequest {
   /** The token you received by email for this request */
   token: string;
 }
-export const CreateMeTaskEmailChangeRefuseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTaskEmailChangeRefuseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     token: S.String,
@@ -3104,12 +3098,12 @@ export const CreateMeTaskEmailChangeRefuseRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateMeTaskEmailChangeRefuseRequest>;
 
 export interface CreateMeTaskEmailChangeRefuseResponse {}
-export const CreateMeTaskEmailChangeRefuseResponse =
+const CreateMeTaskEmailChangeRefuseResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTaskEmailChangeRefuseResponse>;
 
 /** Phone protocol */
 export type TelephonyProtocolEnum = "mgcp" | "sip";
-export const TelephonyProtocolEnum = S.String;
+const TelephonyProtocolEnum = S.String;
 
 export interface CreateMeTelephonyDefaultIpRestrictionRequest {
   /** The IPv4 subnet you want to allow */
@@ -3117,7 +3111,7 @@ export interface CreateMeTelephonyDefaultIpRestrictionRequest {
   /** The protocol you want to restrict (sip/mgcp) */
   type: TelephonyProtocolEnum | (string & {});
 }
-export const CreateMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnet: S.String,
     type: TelephonyProtocolEnum,
@@ -3134,7 +3128,7 @@ export interface TelephonyDefaultIpRestriction {
   /** The protocol you want to restrict (sip/mgcp) */
   type?: TelephonyProtocolEnum;
 }
-export const TelephonyDefaultIpRestriction = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDefaultIpRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     subnet: S.optional(S.String),
@@ -3149,7 +3143,7 @@ export interface TelephonyBillingSettings {
   /** Renew is done by billing contact instead of billing account */
   renewByBillingContact?: boolean;
 }
-export const TelephonyBillingSettings = /*@__PURE__*/ S.suspend(() =>
+const TelephonyBillingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renewByBillingContact: S.optional(S.Boolean),
   }),
@@ -3162,7 +3156,7 @@ export interface TelephonyLineDescriptionSettings {
   /** Line's description is displayed on incoming calls */
   displayOnIncomingCall?: boolean;
 }
-export const TelephonyLineDescriptionSettings = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLineDescriptionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayOnBill: S.optional(S.Boolean),
     displayOnIncomingCall: S.optional(S.Boolean),
@@ -3178,7 +3172,7 @@ export interface TelephonySettings {
   /** Line description policies settings */
   lineDescriptionPolicies?: TelephonyLineDescriptionSettings;
 }
-export const TelephonySettings = /*@__PURE__*/ S.suspend(() =>
+const TelephonySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPolicies: S.optional(TelephonyBillingSettings),
     lineDescriptionPolicies: S.optional(TelephonyLineDescriptionSettings),
@@ -3189,7 +3183,7 @@ export interface CreateMeTelephonySettingsRequest {
   /** Settings to be changed */
   settings: TelephonySettings;
 }
-export const CreateMeTelephonySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeTelephonySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: TelephonySettings,
   }).pipe(T.Http({ method: "POST", uri: "/me/telephony/settings", code: 200 })),
@@ -3198,7 +3192,7 @@ export const CreateMeTelephonySettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeTelephonySettingsRequest>;
 
 export interface CreateMeTelephonySettingsResponse {}
-export const CreateMeTelephonySettingsResponse =
+const CreateMeTelephonySettingsResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<CreateMeTelephonySettingsResponse>;
 
 export interface CreateMeXdslSettingRequest {
@@ -3207,7 +3201,7 @@ export interface CreateMeXdslSettingRequest {
   /** Let the modem with vendor configuration. It prevent to apply the config managed by ovh manager */
   resellerModemBasicConfig?: boolean;
 }
-export const CreateMeXdslSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMeXdslSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resellerFastModemShipping: S.optional(S.Boolean),
     resellerModemBasicConfig: S.optional(S.Boolean),
@@ -3217,11 +3211,11 @@ export const CreateMeXdslSettingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMeXdslSettingRequest>;
 
 export interface CreateMeXdslSettingResponse {}
-export const CreateMeXdslSettingResponse =
+const CreateMeXdslSettingResponse =
   ApplyMeSlaResponse as any as S.Schema<CreateMeXdslSettingResponse>;
 
 export interface DeleteMeAccessRestrictionBackupCodeRequest {}
-export const DeleteMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "DELETE", uri: "/me/accessRestriction/backupCode", code: 200 }),
   ),
@@ -3230,14 +3224,14 @@ export const DeleteMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteMeAccessRestrictionBackupCodeRequest>;
 
 export interface DeleteMeAccessRestrictionBackupCodeResponse {}
-export const DeleteMeAccessRestrictionBackupCodeResponse =
+const DeleteMeAccessRestrictionBackupCodeResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionBackupCodeResponse>;
 
 export interface DeleteMeAccessRestrictionIpRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const DeleteMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/accessRestriction/ip/{id}", code: 200 })),
@@ -3246,14 +3240,14 @@ export const DeleteMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeAccessRestrictionIpRequest>;
 
 export interface DeleteMeAccessRestrictionIpResponse {}
-export const DeleteMeAccessRestrictionIpResponse =
+const DeleteMeAccessRestrictionIpResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionIpResponse>;
 
 export interface DeleteMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const DeleteMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/accessRestriction/sms/{id}", code: 200 })),
@@ -3262,14 +3256,14 @@ export const DeleteMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeAccessRestrictionSmsRequest>;
 
 export interface DeleteMeAccessRestrictionSmsResponse {}
-export const DeleteMeAccessRestrictionSmsResponse =
+const DeleteMeAccessRestrictionSmsResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionSmsResponse>;
 
 export interface DeleteMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const DeleteMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/accessRestriction/totp/{id}", code: 200 })),
@@ -3278,14 +3272,14 @@ export const DeleteMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteMeAccessRestrictionTotpRequest>;
 
 export interface DeleteMeAccessRestrictionTotpResponse {}
-export const DeleteMeAccessRestrictionTotpResponse =
+const DeleteMeAccessRestrictionTotpResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionTotpResponse>;
 
 export interface DeleteMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const DeleteMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/accessRestriction/u2f/{id}", code: 200 })),
@@ -3294,14 +3288,14 @@ export const DeleteMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeAccessRestrictionU2fRequest>;
 
 export interface DeleteMeAccessRestrictionU2fResponse {}
-export const DeleteMeAccessRestrictionU2fResponse =
+const DeleteMeAccessRestrictionU2fResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeAccessRestrictionU2fResponse>;
 
 export interface DeleteMeApplicationRequest {
   /** Application ID */
   applicationId: number;
 }
-export const DeleteMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/api/application/{applicationId}", code: 200 })),
@@ -3310,14 +3304,14 @@ export const DeleteMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeApplicationRequest>;
 
 export interface DeleteMeApplicationResponse {}
-export const DeleteMeApplicationResponse =
+const DeleteMeApplicationResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeApplicationResponse>;
 
 export interface DeleteMeBillingGroupRequest {
   /** Group ID */
   groupId: number;
 }
-export const DeleteMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/billing/group/{groupId}", code: 200 })),
@@ -3326,7 +3320,7 @@ export const DeleteMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeBillingGroupRequest>;
 
 export interface DeleteMeBillingGroupResponse {}
-export const DeleteMeBillingGroupResponse =
+const DeleteMeBillingGroupResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeBillingGroupResponse>;
 
 export interface DeleteMeBillingGroupServiceRequest {
@@ -3335,7 +3329,7 @@ export interface DeleteMeBillingGroupServiceRequest {
   /** Service ID */
   serviceId: number;
 }
-export const DeleteMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.Number.pipe(T.Label()),
     serviceId: S.Number.pipe(T.Label()),
@@ -3347,14 +3341,14 @@ export const DeleteMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeBillingGroupServiceRequest>;
 
 export interface DeleteMeBillingGroupServiceResponse {}
-export const DeleteMeBillingGroupServiceResponse =
+const DeleteMeBillingGroupServiceResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeBillingGroupServiceResponse>;
 
 export interface DeleteMeBillingPurchaseOrderRequest {
   /** Id */
   id: number;
 }
-export const DeleteMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/billing/purchaseOrder/{id}", code: 200 })),
@@ -3363,14 +3357,14 @@ export const DeleteMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeBillingPurchaseOrderRequest>;
 
 export interface DeleteMeBillingPurchaseOrderResponse {}
-export const DeleteMeBillingPurchaseOrderResponse =
+const DeleteMeBillingPurchaseOrderResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeBillingPurchaseOrderResponse>;
 
 export interface DeleteMeCredentialRequest {
   /** Credential ID */
   credentialId: number;
 }
-export const DeleteMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/api/credential/{credentialId}", code: 200 })),
@@ -3379,27 +3373,26 @@ export const DeleteMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeCredentialRequest>;
 
 export interface DeleteMeCredentialResponse {}
-export const DeleteMeCredentialResponse =
+const DeleteMeCredentialResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeCredentialResponse>;
 
 export interface DeleteMeDocumentRequest {
   /** Document id */
   id: string;
 }
-export const DeleteMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/document/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteMeDocumentRequest" }) as any as S.Schema<DeleteMeDocumentRequest>;
 
 export interface DeleteMeDocumentResponse {}
-export const DeleteMeDocumentResponse =
-  ApplyMeSlaResponse as any as S.Schema<DeleteMeDocumentResponse>;
+const DeleteMeDocumentResponse = ApplyMeSlaResponse as any as S.Schema<DeleteMeDocumentResponse>;
 
 export interface DeleteMeFaxCustomDomainRequest {
   id: number;
 }
-export const DeleteMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/fax/customDomains/{id}", code: 200 })),
@@ -3408,14 +3401,14 @@ export const DeleteMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeFaxCustomDomainRequest>;
 
 export interface DeleteMeFaxCustomDomainResponse {}
-export const DeleteMeFaxCustomDomainResponse =
+const DeleteMeFaxCustomDomainResponse =
   AcceptMeTaskEmailChangeResponse as any as S.Schema<DeleteMeFaxCustomDomainResponse>;
 
 export interface DeleteMeIdentityGroupRequest {
   /** Group */
   group: string;
 }
-export const DeleteMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/identity/group/{group}", code: 200 })),
@@ -3424,7 +3417,7 @@ export const DeleteMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityGroupRequest>;
 
 export interface DeleteMeIdentityGroupResponse {}
-export const DeleteMeIdentityGroupResponse =
+const DeleteMeIdentityGroupResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeIdentityGroupResponse>;
 
 export interface DeleteMeIdentityGroupUserRequest {
@@ -3433,7 +3426,7 @@ export interface DeleteMeIdentityGroupUserRequest {
   /** User */
   user: string;
 }
-export const DeleteMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
     user: S.String.pipe(T.Label()),
@@ -3443,25 +3436,25 @@ export const DeleteMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityGroupUserRequest>;
 
 export interface DeleteMeIdentityGroupUserResponse {}
-export const DeleteMeIdentityGroupUserResponse =
+const DeleteMeIdentityGroupUserResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityGroupUserResponse>;
 
 export interface DeleteMeIdentityProviderRequest {}
-export const DeleteMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/me/identity/provider", code: 200 })),
 ).annotate({
   identifier: "DeleteMeIdentityProviderRequest",
 }) as any as S.Schema<DeleteMeIdentityProviderRequest>;
 
 export interface DeleteMeIdentityProviderResponse {}
-export const DeleteMeIdentityProviderResponse =
+const DeleteMeIdentityProviderResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityProviderResponse>;
 
 export interface DeleteMeIdentityUserRequest {
   /** User */
   user: string;
 }
-export const DeleteMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/identity/user/{user}", code: 200 })),
@@ -3470,7 +3463,7 @@ export const DeleteMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityUserRequest>;
 
 export interface DeleteMeIdentityUserResponse {}
-export const DeleteMeIdentityUserResponse =
+const DeleteMeIdentityUserResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeIdentityUserResponse>;
 
 export interface DeleteMeIdentityUserTokenRequest {
@@ -3479,7 +3472,7 @@ export interface DeleteMeIdentityUserTokenRequest {
   /** Name */
   name: string;
 }
-export const DeleteMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3489,13 +3482,13 @@ export const DeleteMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIdentityUserTokenRequest>;
 
 export interface DeleteMeIdentityUserTokenResponse {}
-export const DeleteMeIdentityUserTokenResponse =
+const DeleteMeIdentityUserTokenResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeIdentityUserTokenResponse>;
 
 export interface DeleteMeIpOrganisationRequest {
   organisationId: string;
 }
-export const DeleteMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organisationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/ipOrganisation/{organisationId}", code: 200 })),
@@ -3504,14 +3497,14 @@ export const DeleteMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeIpOrganisationRequest>;
 
 export interface DeleteMeIpOrganisationResponse {}
-export const DeleteMeIpOrganisationResponse =
+const DeleteMeIpOrganisationResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeIpOrganisationResponse>;
 
 export interface DeleteMeLogAuditLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const DeleteMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3529,7 +3522,7 @@ export interface DeleteMeLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const DeleteMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3543,7 +3536,7 @@ export interface DeleteMeOauth2ClientRequest {
   /** Client ID */
   clientId: string;
 }
-export const DeleteMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/api/oauth2/client/{clientId}", code: 200 })),
@@ -3552,14 +3545,14 @@ export const DeleteMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeOauth2ClientRequest>;
 
 export interface DeleteMeOauth2ClientResponse {}
-export const DeleteMeOauth2ClientResponse =
+const DeleteMeOauth2ClientResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeOauth2ClientResponse>;
 
 export interface DeleteMeOauth2TokenRequest {
   /** Id */
   id: string;
 }
-export const DeleteMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/api/oauth2/token/{id}", code: 200 })),
@@ -3568,7 +3561,7 @@ export const DeleteMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeOauth2TokenRequest>;
 
 export interface DeleteMeOauth2TokenResponse {}
-export const DeleteMeOauth2TokenResponse =
+const DeleteMeOauth2TokenResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeOauth2TokenResponse>;
 
 export interface DeleteMeOrderBalanceRequest {
@@ -3576,7 +3569,7 @@ export interface DeleteMeOrderBalanceRequest {
   /** Credit balance name */
   balanceName: string;
 }
-export const DeleteMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     balanceName: S.String.pipe(T.Label()),
@@ -3588,14 +3581,14 @@ export const DeleteMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMeOrderBalanceRequest>;
 
 export interface DeleteMeOrderBalanceResponse {}
-export const DeleteMeOrderBalanceResponse =
+const DeleteMeOrderBalanceResponse =
   ApplyMeSlaResponse as any as S.Schema<DeleteMeOrderBalanceResponse>;
 
 export interface DeleteMePaymentMethodRequest {
   /** Payment method ID */
   paymentMethodId: number;
 }
-export const DeleteMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/payment/method/{paymentMethodId}", code: 200 })),
@@ -3612,7 +3605,7 @@ export interface MePaymentIcon {
   /** Icon URL */
   url?: string | null;
 }
-export const MePaymentIcon = /*@__PURE__*/ S.suspend(() =>
+const MePaymentIcon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -3638,7 +3631,7 @@ export type MePaymentAvailableSubTypeEnum =
   | "NONE"
   | "RUPAY"
   | "VISA";
-export const MePaymentAvailableSubTypeEnum = S.String;
+const MePaymentAvailableSubTypeEnum = S.String;
 
 /** Payment method status */
 export type MePaymentMethodStatusEnum =
@@ -3655,7 +3648,7 @@ export type MePaymentMethodStatusEnum =
   | "REPLACED"
   | "VALID"
   | "VALIDATING";
-export const MePaymentMethodStatusEnum = S.String;
+const MePaymentMethodStatusEnum = S.String;
 
 /** Payment method object */
 export interface MePaymentPaymentMethod {
@@ -3694,7 +3687,7 @@ export interface MePaymentPaymentMethod {
   /** Payment method status */
   status?: MePaymentMethodStatusEnum;
 }
-export const MePaymentPaymentMethod = /*@__PURE__*/ S.suspend(() =>
+const MePaymentPaymentMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingContactId: S.optional(S.NullOr(S.Number)),
     creationDate: S.optional(S.String),
@@ -3720,7 +3713,7 @@ export interface DeleteMePreferenceManagerRequest {
   /** This preference key */
   key: string;
 }
-export const DeleteMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/preferences/manager/{key}", code: 200 })),
@@ -3729,27 +3722,27 @@ export const DeleteMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMePreferenceManagerRequest>;
 
 export interface DeleteMePreferenceManagerResponse {}
-export const DeleteMePreferenceManagerResponse =
+const DeleteMePreferenceManagerResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMePreferenceManagerResponse>;
 
 export interface DeleteMeSshKeyRequest {
   /** Name of this public SSH key */
   keyName: string;
 }
-export const DeleteMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/sshKey/{keyName}", code: 200 })),
 ).annotate({ identifier: "DeleteMeSshKeyRequest" }) as any as S.Schema<DeleteMeSshKeyRequest>;
 
 export interface DeleteMeSshKeyResponse {}
-export const DeleteMeSshKeyResponse = ApplyMeSlaResponse as any as S.Schema<DeleteMeSshKeyResponse>;
+const DeleteMeSshKeyResponse = ApplyMeSlaResponse as any as S.Schema<DeleteMeSshKeyResponse>;
 
 export interface DeleteMeTagRequest {
   /** Tag */
   tag: string;
 }
-export const DeleteMeTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/tag/{tag}", code: 200 })),
@@ -3758,7 +3751,7 @@ export const DeleteMeTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMeTelephonyDefaultIpRestrictionRequest {
   id: number;
 }
-export const DeleteMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/me/telephony/defaultIpRestriction/{id}", code: 200 })),
@@ -3767,14 +3760,14 @@ export const DeleteMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionRequest>;
 
 export interface DeleteMeTelephonyDefaultIpRestrictionResponse {}
-export const DeleteMeTelephonyDefaultIpRestrictionResponse =
+const DeleteMeTelephonyDefaultIpRestrictionResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DeleteMeTelephonyDefaultIpRestrictionResponse>;
 
 export interface DisableMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
   code: string;
 }
-export const DisableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/backupCode/disable", code: 200 })),
@@ -3783,7 +3776,7 @@ export const DisableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DisableMeAccessRestrictionBackupCodeRequest>;
 
 export interface DisableMeAccessRestrictionBackupCodeResponse {}
-export const DisableMeAccessRestrictionBackupCodeResponse =
+const DisableMeAccessRestrictionBackupCodeResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionBackupCodeResponse>;
 
 export interface DisableMeAccessRestrictionSmsRequest {
@@ -3792,7 +3785,7 @@ export interface DisableMeAccessRestrictionSmsRequest {
   /** SMS code send by a cellphone */
   code: string;
 }
-export const DisableMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     code: S.String,
@@ -3802,7 +3795,7 @@ export const DisableMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DisableMeAccessRestrictionSmsRequest>;
 
 export interface DisableMeAccessRestrictionSmsResponse {}
-export const DisableMeAccessRestrictionSmsResponse =
+const DisableMeAccessRestrictionSmsResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionSmsResponse>;
 
 export interface DisableMeAccessRestrictionTotpRequest {
@@ -3811,7 +3804,7 @@ export interface DisableMeAccessRestrictionTotpRequest {
   /** OTP code given by the application */
   code: string;
 }
-export const DisableMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     code: S.String,
@@ -3821,14 +3814,14 @@ export const DisableMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DisableMeAccessRestrictionTotpRequest>;
 
 export interface DisableMeAccessRestrictionTotpResponse {}
-export const DisableMeAccessRestrictionTotpResponse =
+const DisableMeAccessRestrictionTotpResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionTotpResponse>;
 
 export interface DisableMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const DisableMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/u2f/{id}/disable", code: 200 })),
@@ -3837,14 +3830,14 @@ export const DisableMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DisableMeAccessRestrictionU2fRequest>;
 
 export interface DisableMeAccessRestrictionU2fResponse {}
-export const DisableMeAccessRestrictionU2fResponse =
+const DisableMeAccessRestrictionU2fResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<DisableMeAccessRestrictionU2fResponse>;
 
 export interface DisableMeIdentityUserRequest {
   /** User */
   user: string;
 }
-export const DisableMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/identity/user/{user}/disable", code: 200 })),
@@ -3853,7 +3846,7 @@ export const DisableMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableMeIdentityUserRequest>;
 
 export interface DisableMeIdentityUserResponse {}
-export const DisableMeIdentityUserResponse =
+const DisableMeIdentityUserResponse =
   ApplyMeSlaResponse as any as S.Schema<DisableMeIdentityUserResponse>;
 
 export interface EditAccountDetailsRequest {
@@ -3909,7 +3902,7 @@ export interface EditAccountDetailsRequest {
   /** Zipcode */
   zip?: string | null;
 }
-export const EditAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const EditAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     area: S.optional(S.NullOr(S.String)),
@@ -3943,14 +3936,14 @@ export const EditAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditAccountDetailsRequest>;
 
 export interface EditAccountDetailsResponse {}
-export const EditAccountDetailsResponse =
+const EditAccountDetailsResponse =
   ApplyMeSlaResponse as any as S.Schema<EditAccountDetailsResponse>;
 
 export interface EnableMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
   code: string;
 }
-export const EnableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/backupCode/enable", code: 200 })),
@@ -3959,7 +3952,7 @@ export const EnableMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<EnableMeAccessRestrictionBackupCodeRequest>;
 
 export interface EnableMeAccessRestrictionBackupCodeResponse {}
-export const EnableMeAccessRestrictionBackupCodeResponse =
+const EnableMeAccessRestrictionBackupCodeResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionBackupCodeResponse>;
 
 export interface EnableMeAccessRestrictionSmsRequest {
@@ -3968,7 +3961,7 @@ export interface EnableMeAccessRestrictionSmsRequest {
   /** SMS code send by a cellphone */
   code: string;
 }
-export const EnableMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     code: S.String,
@@ -3978,7 +3971,7 @@ export const EnableMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableMeAccessRestrictionSmsRequest>;
 
 export interface EnableMeAccessRestrictionSmsResponse {}
-export const EnableMeAccessRestrictionSmsResponse =
+const EnableMeAccessRestrictionSmsResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionSmsResponse>;
 
 export interface EnableMeAccessRestrictionTotpRequest {
@@ -3987,7 +3980,7 @@ export interface EnableMeAccessRestrictionTotpRequest {
   /** OTP code given by the application */
   code: string;
 }
-export const EnableMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     code: S.String,
@@ -3997,14 +3990,14 @@ export const EnableMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<EnableMeAccessRestrictionTotpRequest>;
 
 export interface EnableMeAccessRestrictionTotpResponse {}
-export const EnableMeAccessRestrictionTotpResponse =
+const EnableMeAccessRestrictionTotpResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionTotpResponse>;
 
 export interface EnableMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const EnableMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/u2f/{id}/enable", code: 200 })),
@@ -4013,14 +4006,14 @@ export const EnableMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableMeAccessRestrictionU2fRequest>;
 
 export interface EnableMeAccessRestrictionU2fResponse {}
-export const EnableMeAccessRestrictionU2fResponse =
+const EnableMeAccessRestrictionU2fResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<EnableMeAccessRestrictionU2fResponse>;
 
 export interface EnableMeIdentityUserRequest {
   /** User */
   user: string;
 }
-export const EnableMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/identity/user/{user}/enable", code: 200 })),
@@ -4029,16 +4022,16 @@ export const EnableMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableMeIdentityUserRequest>;
 
 export interface EnableMeIdentityUserResponse {}
-export const EnableMeIdentityUserResponse =
+const EnableMeIdentityUserResponse =
   ApplyMeSlaResponse as any as S.Schema<EnableMeIdentityUserResponse>;
 
 /** List of available archive types */
 export type BillingArchiveTypeEnum = "csv" | "zip";
-export const BillingArchiveTypeEnum = S.String;
+const BillingArchiveTypeEnum = S.String;
 
 /** A list of ids to export */
 export type ExportMeBillRequestIdsList = Array<string>;
-export const ExportMeBillRequestIdsList =
+const ExportMeBillRequestIdsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ExportMeBillRequestIdsList>;
 
 export interface ExportMeBillRequest {
@@ -4051,7 +4044,7 @@ export interface ExportMeBillRequest {
   /** Start interval of the export */
   startDate?: string;
 }
-export const ExportMeBillRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportMeBillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archiveType: BillingArchiveTypeEnum,
     endDate: S.optional(S.String),
@@ -4061,11 +4054,11 @@ export const ExportMeBillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportMeBillRequest" }) as any as S.Schema<ExportMeBillRequest>;
 
 export interface ExportMeBillResponse {}
-export const ExportMeBillResponse = ApplyMeSlaResponse as any as S.Schema<ExportMeBillResponse>;
+const ExportMeBillResponse = ApplyMeSlaResponse as any as S.Schema<ExportMeBillResponse>;
 
 /** A list of ids to export */
 export type ExportMeRefundRequestIdsList = Array<string>;
-export const ExportMeRefundRequestIdsList =
+const ExportMeRefundRequestIdsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ExportMeRefundRequestIdsList>;
 
 export interface ExportMeRefundRequest {
@@ -4078,7 +4071,7 @@ export interface ExportMeRefundRequest {
   /** Start interval of the export */
   startDate?: string;
 }
-export const ExportMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archiveType: BillingArchiveTypeEnum,
     endDate: S.optional(S.String),
@@ -4088,7 +4081,7 @@ export const ExportMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportMeRefundRequest" }) as any as S.Schema<ExportMeRefundRequest>;
 
 export interface ExportMeRefundResponse {}
-export const ExportMeRefundResponse = ApplyMeSlaResponse as any as S.Schema<ExportMeRefundResponse>;
+const ExportMeRefundResponse = ApplyMeSlaResponse as any as S.Schema<ExportMeRefundResponse>;
 
 export interface FinalizeMePaymentMethodRequest {
   /** Payment method ID */
@@ -4102,7 +4095,7 @@ export interface FinalizeMePaymentMethodRequest {
   /** Registration ID */
   registrationId?: string | null;
 }
-export const FinalizeMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const FinalizeMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.Number.pipe(T.Label()),
     expirationMonth: S.optional(S.NullOr(S.Number)),
@@ -4117,7 +4110,7 @@ export const FinalizeMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinalizeMePaymentMethodRequest>;
 
 export interface GetAccountDetailsRequest {}
-export const GetAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me", code: 200 })),
 ).annotate({ identifier: "GetAccountDetailsRequest" }) as any as S.Schema<GetAccountDetailsRequest>;
 
@@ -4125,18 +4118,18 @@ export interface GetCertificatesRequest {
   /** Certificate definition name */
   name?: string;
 }
-export const GetCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/me/certificates", code: 200 })),
 ).annotate({ identifier: "GetCertificatesRequest" }) as any as S.Schema<GetCertificatesRequest>;
 
 export type GetCertificatesResponseBodyList = Array<string>;
-export const GetCertificatesResponseBodyList =
+const GetCertificatesResponseBodyList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<GetCertificatesResponseBodyList>;
 
 export type GetCertificatesResponse = GetCertificatesResponseBodyList;
-export const GetCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   GetCertificatesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetCertificatesResponse" }) as any as S.Schema<GetCertificatesResponse>;
 
@@ -4144,7 +4137,7 @@ export interface GetMeAbuseRequest {
   /** Id */
   id: string;
 }
-export const GetMeAbuseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAbuseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/abuse/{id}", code: 200 })),
@@ -4161,7 +4154,7 @@ export type MeAbuseAbuseCategoryEnum =
   | "Other"
   | "Phishing"
   | "Spam";
-export const MeAbuseAbuseCategoryEnum = S.String;
+const MeAbuseAbuseCategoryEnum = S.String;
 
 /** The abuse status */
 export type MeAbuseAbuseStatusEnum =
@@ -4174,7 +4167,7 @@ export type MeAbuseAbuseStatusEnum =
   | "Reopened"
   | "Updated"
   | "WaitingAnswer";
-export const MeAbuseAbuseStatusEnum = S.String;
+const MeAbuseAbuseStatusEnum = S.String;
 
 /** Get report API response */
 export interface MeAbuseAbuse {
@@ -4189,7 +4182,7 @@ export interface MeAbuseAbuse {
   /** Abuse case status */
   status?: MeAbuseAbuseStatusEnum;
 }
-export const MeAbuseAbuse = /*@__PURE__*/ S.suspend(() =>
+const MeAbuseAbuse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(MeAbuseAbuseCategoryEnum),
     creationDate: S.optional(S.String),
@@ -4200,7 +4193,7 @@ export const MeAbuseAbuse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MeAbuseAbuse" }) as any as S.Schema<MeAbuseAbuse>;
 
 export interface GetMeAccessRestrictionBackupCodeRequest {}
-export const GetMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/backupCode", code: 200 })),
 ).annotate({
   identifier: "GetMeAccessRestrictionBackupCodeRequest",
@@ -4212,7 +4205,7 @@ export type NichandleAccessRestrictionSOTPStatusEnum =
   | "enabled"
   | "needCodeValidation"
   | "needEmailValidation";
-export const NichandleAccessRestrictionSOTPStatusEnum = S.String;
+const NichandleAccessRestrictionSOTPStatusEnum = S.String;
 
 /** SOTP Two-Factor Authentication */
 export interface NichandleAccessRestrictionSOTPAccount {
@@ -4225,7 +4218,7 @@ export interface NichandleAccessRestrictionSOTPAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionSOTPStatusEnum;
 }
-export const NichandleAccessRestrictionSOTPAccount = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionSOTPAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     lastUsedDate: S.optional(S.NullOr(S.String)),
@@ -4237,7 +4230,7 @@ export const NichandleAccessRestrictionSOTPAccount = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<NichandleAccessRestrictionSOTPAccount>;
 
 export interface GetMeAccessRestrictionDeveloperModeRequest {}
-export const GetMeAccessRestrictionDeveloperModeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAccessRestrictionDeveloperModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/me/accessRestriction/developerMode", code: 200 }),
   ),
@@ -4250,7 +4243,7 @@ export interface NichandleDeveloperModeRestriction {
   /** Allow login on your account on a development version of the Manager */
   enabled?: boolean;
 }
-export const NichandleDeveloperModeRestriction = /*@__PURE__*/ S.suspend(() =>
+const NichandleDeveloperModeRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -4262,7 +4255,7 @@ export interface GetMeAccessRestrictionIpRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const GetMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/ip/{id}", code: 200 })),
@@ -4281,7 +4274,7 @@ export interface NichandleIpRestriction {
   /** Send an email if someone try to access with this IP address */
   warning?: boolean;
 }
-export const NichandleIpRestriction = /*@__PURE__*/ S.suspend(() =>
+const NichandleIpRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     ip: S.optional(S.String),
@@ -4291,7 +4284,7 @@ export const NichandleIpRestriction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NichandleIpRestriction" }) as any as S.Schema<NichandleIpRestriction>;
 
 export interface GetMeAccessRestrictionIpDefaultRuleRequest {}
-export const GetMeAccessRestrictionIpDefaultRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAccessRestrictionIpDefaultRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/me/accessRestriction/ipDefaultRule", code: 200 }),
   ),
@@ -4306,7 +4299,7 @@ export interface NichandleIpRestrictionDefaultRule {
   /** Send an email if someone try to access */
   warning?: boolean;
 }
-export const NichandleIpRestrictionDefaultRule = /*@__PURE__*/ S.suspend(() =>
+const NichandleIpRestrictionDefaultRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(NichandleAccessRestrictionIpRestrictionRuleEnum),
     warning: S.optional(S.Boolean),
@@ -4319,7 +4312,7 @@ export interface GetMeAccessRestrictionSmsRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const GetMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/sms/{id}", code: 200 })),
@@ -4333,7 +4326,7 @@ export type NichandleAccessRestrictionSmsStatusEnum =
   | "enabled"
   | "needCodeValidation"
   | "needEmailValidation";
-export const NichandleAccessRestrictionSmsStatusEnum = S.String;
+const NichandleAccessRestrictionSmsStatusEnum = S.String;
 
 /** Sms Two-Factor Authentication */
 export interface NichandleAccessRestrictionSmsAccount {
@@ -4350,7 +4343,7 @@ export interface NichandleAccessRestrictionSmsAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionSmsStatusEnum;
 }
-export const NichandleAccessRestrictionSmsAccount = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionSmsAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     description: S.optional(S.String),
@@ -4367,7 +4360,7 @@ export interface GetMeAccessRestrictionTotpRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const GetMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/totp/{id}", code: 200 })),
@@ -4381,7 +4374,7 @@ export type NichandleAccessRestrictionTOTPStatusEnum =
   | "enabled"
   | "needCodeValidation"
   | "needEmailValidation";
-export const NichandleAccessRestrictionTOTPStatusEnum = S.String;
+const NichandleAccessRestrictionTOTPStatusEnum = S.String;
 
 /** TOTP Two-Factor Authentication */
 export interface NichandleAccessRestrictionTOTPAccount {
@@ -4396,7 +4389,7 @@ export interface NichandleAccessRestrictionTOTPAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionTOTPStatusEnum;
 }
-export const NichandleAccessRestrictionTOTPAccount = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionTOTPAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     description: S.optional(S.String),
@@ -4412,7 +4405,7 @@ export interface GetMeAccessRestrictionU2fRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const GetMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/u2f/{id}", code: 200 })),
@@ -4422,8 +4415,6 @@ export const GetMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of U2F account */
 export type NichandleAccessRestrictionU2FStatusEnum = "disabled" | "enabled" | "needCodeValidation";
-export const NichandleAccessRestrictionU2FStatusEnum = S.String;
-
 /** U2F Two-Factor Authentication */
 export interface NichandleAccessRestrictionU2FAccount {
   /** Creation date */
@@ -4437,14 +4428,14 @@ export interface NichandleAccessRestrictionU2FAccount {
   /** Status of this account */
   status?: NichandleAccessRestrictionU2FStatusEnum;
 }
-export const NichandleAccessRestrictionU2FAccount =
+const NichandleAccessRestrictionU2FAccount =
   NichandleAccessRestrictionTOTPAccount as any as S.Schema<NichandleAccessRestrictionU2FAccount>;
 
 export interface GetMeAgreementRequest {
   /** Id of the contract */
   id: number;
 }
-export const GetMeAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/agreements/{id}", code: 200 })),
@@ -4452,7 +4443,7 @@ export const GetMeAgreementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of a contract agreement */
 export type AgreementsAgreementStateEnum = "ko" | "obsolete" | "ok" | "todo";
-export const AgreementsAgreementStateEnum = S.String;
+const AgreementsAgreementStateEnum = S.String;
 
 /** Contract agreement */
 export interface AgreementsContractAgreement {
@@ -4465,14 +4456,14 @@ export interface AgreementsContractAgreement {
   /** Id of the contract */
   id?: number;
 }
-export const AgreementsContractAgreement =
+const AgreementsContractAgreement =
   MeAgreementsContractAgreement as any as S.Schema<AgreementsContractAgreement>;
 
 export interface GetMeAgreementContractRequest {
   /** Id of the contract */
   id: number;
 }
-export const GetMeAgreementContractRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAgreementContractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/agreements/{id}/contract", code: 200 })),
@@ -4493,7 +4484,7 @@ export interface AgreementsContract {
   /** Full text of the contract */
   text?: string;
 }
-export const AgreementsContract = /*@__PURE__*/ S.suspend(() =>
+const AgreementsContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     date: S.optional(S.String),
@@ -4507,7 +4498,7 @@ export interface GetMeApplicationRequest {
   /** Application ID */
   applicationId: number;
 }
-export const GetMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/application/{applicationId}", code: 200 })),
@@ -4515,7 +4506,7 @@ export const GetMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All states an API Application can be in */
 export type AuthApplicationStatusEnum = "active" | "blocked" | "inactive" | "trusted";
-export const AuthApplicationStatusEnum = S.String;
+const AuthApplicationStatusEnum = S.String;
 
 /** API Application */
 export interface AuthApiApplication {
@@ -4530,7 +4521,7 @@ export interface AuthApiApplication {
   /** Status of this application */
   status?: AuthApplicationStatusEnum;
 }
-export const AuthApiApplication = /*@__PURE__*/ S.suspend(() =>
+const AuthApiApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.optional(S.Number),
     applicationKey: S.optional(S.String),
@@ -4541,7 +4532,7 @@ export const AuthApiApplication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthApiApplication" }) as any as S.Schema<AuthApiApplication>;
 
 export interface GetMeAutorenewRequest {}
-export const GetMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/autorenew", code: 200 })),
 ).annotate({ identifier: "GetMeAutorenewRequest" }) as any as S.Schema<GetMeAutorenewRequest>;
 
@@ -4554,7 +4545,7 @@ export interface NichandleNicAutorenewInfos {
   /** give the renewal day */
   renewDay?: number;
 }
-export const NichandleNicAutorenewInfos = /*@__PURE__*/ S.suspend(() =>
+const NichandleNicAutorenewInfos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     lastRenew: S.optional(S.NullOr(S.String)),
@@ -4565,7 +4556,7 @@ export const NichandleNicAutorenewInfos = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NichandleNicAutorenewInfos>;
 
 export interface GetMeAvailableAutomaticPaymentMeansRequest {}
-export const GetMeAvailableAutomaticPaymentMeansRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeAvailableAutomaticPaymentMeansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/me/availableAutomaticPaymentMeans", code: 200 }),
   ),
@@ -4584,7 +4575,7 @@ export interface BillingAutomaticPaymentMean {
   /** Paypal account */
   paypal?: boolean;
 }
-export const BillingAutomaticPaymentMean = /*@__PURE__*/ S.suspend(() =>
+const BillingAutomaticPaymentMean = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bankAccount: S.optional(S.Boolean),
     creditCard: S.optional(S.Boolean),
@@ -4598,7 +4589,7 @@ export const BillingAutomaticPaymentMean = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeBillRequest {
   billId: string;
 }
-export const GetMeBillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/bill/{billId}", code: 200 })),
@@ -4613,7 +4604,7 @@ export type BillingCategoryEnum =
   | "purchase-servers"
   | "purchase-telecom"
   | "purchase-web";
-export const BillingCategoryEnum = S.String;
+const BillingCategoryEnum = S.String;
 
 /** List of available eInvoicing Status types */
 export type BillingEInvoicingStatusEnum =
@@ -4627,7 +4618,7 @@ export type BillingEInvoicingStatusEnum =
   | "readyToSubmit"
   | "rejected"
   | "submitted";
-export const BillingEInvoicingStatusEnum = S.String;
+const BillingEInvoicingStatusEnum = S.String;
 
 /** Details about a Bill */
 export interface BillingBill {
@@ -4644,7 +4635,7 @@ export interface BillingBill {
   tax?: OrderPrice;
   url?: string;
 }
-export const BillingBill = /*@__PURE__*/ S.suspend(() =>
+const BillingBill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.optional(S.String),
     category: S.optional(BillingCategoryEnum),
@@ -4664,7 +4655,7 @@ export const BillingBill = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeBillDebtRequest {
   billId: string;
 }
-export const GetMeBillDebtRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillDebtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/bill/{billId}/debt", code: 200 })),
@@ -4678,7 +4669,7 @@ export type DebtEntryStatusDebtOrderEnum =
   | "UNMATURED"
   | "UNPAID"
   | "WRITE_OFF";
-export const DebtEntryStatusDebtOrderEnum = S.String;
+const DebtEntryStatusDebtOrderEnum = S.String;
 
 /** State of a debt */
 export interface DebtDebt {
@@ -4702,7 +4693,7 @@ export interface DebtDebt {
   /** Unmatured amount for deferred payment term */
   unmaturedAmount?: OrderPrice;
 }
-export const DebtDebt = /*@__PURE__*/ S.suspend(() =>
+const DebtDebt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     date: S.optional(S.String),
@@ -4721,7 +4712,7 @@ export interface GetMeBillDebtOperationRequest {
   billId: string;
   operationId: number;
 }
-export const GetMeBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
     operationId: S.Number.pipe(T.Label()),
@@ -4734,7 +4725,7 @@ export const GetMeBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All status a debt entry can be in */
 export type DebtEntryStatusEnum = "CANCELLED" | "DONE" | "FAILED" | "PAID" | "PENDING" | "TODO";
-export const DebtEntryStatusEnum = S.String;
+const DebtEntryStatusEnum = S.String;
 
 /** All operations a debt entry can represent */
 export type DebtEntryOperationEnum =
@@ -4810,7 +4801,7 @@ export type DebtEntryOperationEnum =
   | "UNPAID_WITHDRAW"
   | "WARRANT_MANUAL"
   | "WITHDRAW_AUTOMATIC";
-export const DebtEntryOperationEnum = S.String;
+const DebtEntryOperationEnum = S.String;
 
 /** Operation that happend on a debt */
 export interface DebtOperation {
@@ -4826,7 +4817,7 @@ export interface DebtOperation {
   /** Type of movement this operation represents */
   type?: DebtEntryOperationEnum | null;
 }
-export const DebtOperation = /*@__PURE__*/ S.suspend(() =>
+const DebtOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     date: S.optional(S.String),
@@ -4841,7 +4832,7 @@ export interface GetMeBillDebtOperationAssociatedObjectRequest {
   billId: string;
   operationId: number;
 }
-export const GetMeBillDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
     operationId: S.Number.pipe(T.Label()),
@@ -4884,7 +4875,7 @@ export type BillingPaymentMeanEnum =
   | "rupay"
   | "transfer"
   | "withdrawal";
-export const BillingPaymentMeanEnum = S.String;
+const BillingPaymentMeanEnum = S.String;
 
 /** The payment infos linked to this debt entry */
 export interface DebtAssociatedObjectPaymentInfo {
@@ -4895,7 +4886,7 @@ export interface DebtAssociatedObjectPaymentInfo {
   /** Public payment mean label */
   publicLabel?: string | null;
 }
-export const DebtAssociatedObjectPaymentInfo = /*@__PURE__*/ S.suspend(() =>
+const DebtAssociatedObjectPaymentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     paymentType: S.optional(BillingPaymentMeanEnum),
@@ -4914,7 +4905,7 @@ export type DebtAssociatedObjectTypeEnum =
   | "OvhAccountMovement"
   | "Refund"
   | "Withdrawal";
-export const DebtAssociatedObjectTypeEnum = S.String;
+const DebtAssociatedObjectTypeEnum = S.String;
 
 /** The object linked to this debt entry */
 export interface DebtEntryAssociatedObject {
@@ -4923,7 +4914,7 @@ export interface DebtEntryAssociatedObject {
   subId?: string | null;
   type?: DebtAssociatedObjectTypeEnum | null;
 }
-export const DebtEntryAssociatedObject = /*@__PURE__*/ S.suspend(() =>
+const DebtEntryAssociatedObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     paymentInfo: S.optional(S.NullOr(DebtAssociatedObjectPaymentInfo)),
@@ -4938,7 +4929,7 @@ export interface GetMeBillDetailRequest {
   billId: string;
   billDetailId: string;
 }
-export const GetMeBillDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
     billDetailId: S.String.pipe(T.Label()),
@@ -4951,7 +4942,7 @@ export interface OrderLongPrice {
   text?: string;
   value?: number;
 }
-export const OrderLongPrice = /*@__PURE__*/ S.suspend(() =>
+const OrderLongPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     text: S.optional(S.String),
@@ -4970,7 +4961,7 @@ export interface BillingBillDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderLongPrice;
 }
-export const BillingBillDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingBillDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billDetailId: S.optional(S.String),
     description: S.optional(S.String),
@@ -4984,7 +4975,7 @@ export const BillingBillDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingBillDetail" }) as any as S.Schema<BillingBillDetail>;
 
 export interface GetMeBillingCapacitiesRequest {}
-export const GetMeBillingCapacitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillingCapacitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/billing/capacities", code: 200 })),
 ).annotate({
   identifier: "GetMeBillingCapacitiesRequest",
@@ -4995,7 +4986,7 @@ export type NichandleRequiredPaymentMethodEnum =
   | "mandatoryForAutorenew"
   | "mandatoryForPostpaid"
   | "notMandatory";
-export const NichandleRequiredPaymentMethodEnum = S.String;
+const NichandleRequiredPaymentMethodEnum = S.String;
 
 /** Internal customer billing capacities for customer control panel */
 export interface NichandleBillingCapacities {
@@ -5006,7 +4997,7 @@ export interface NichandleBillingCapacities {
   /** Indicates the mandatory nature of having a valid payment method */
   requiredPaymentMethod?: NichandleRequiredPaymentMethodEnum;
 }
-export const NichandleBillingCapacities = /*@__PURE__*/ S.suspend(() =>
+const NichandleBillingCapacities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canUseDebtSystem: S.optional(S.Boolean),
     canUsePostalMailForInvoices: S.optional(S.Boolean),
@@ -5020,7 +5011,7 @@ export interface GetMeBillingGroupRequest {
   /** Group ID */
   groupId: number;
 }
-export const GetMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/billing/group/{groupId}", code: 200 })),
@@ -5032,7 +5023,7 @@ export interface GetMeBillingGroupServiceRequest {
   /** Service ID */
   serviceId: number;
 }
-export const GetMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.Number.pipe(T.Label()),
     serviceId: S.Number.pipe(T.Label()),
@@ -5044,14 +5035,14 @@ export const GetMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeBillingGroupServiceRequest>;
 
 export interface GetMeBillingInvoicesByPostalMailRequest {}
-export const GetMeBillingInvoicesByPostalMailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillingInvoicesByPostalMailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/billing/invoicesByPostalMail", code: 200 })),
 ).annotate({
   identifier: "GetMeBillingInvoicesByPostalMailRequest",
 }) as any as S.Schema<GetMeBillingInvoicesByPostalMailRequest>;
 
 export type GetMeBillingInvoicesByPostalMailResponse = boolean;
-export const GetMeBillingInvoicesByPostalMailResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillingInvoicesByPostalMailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetMeBillingInvoicesByPostalMailResponse",
@@ -5061,7 +5052,7 @@ export interface GetMeBillingPurchaseOrderRequest {
   /** Id */
   id: number;
 }
-export const GetMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/billing/purchaseOrder/{id}", code: 200 })),
@@ -5073,7 +5064,7 @@ export interface GetMeBillingReportConsumptionRequest {
   /** Task ID */
   taskId: string;
 }
-export const GetMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/billing/report/consumption/{taskId}", code: 200 })),
@@ -5083,7 +5074,7 @@ export const GetMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Status of consumption billing report */
 export type MeBillingReportConsumptionStatusEnum = "CREATING" | "ERROR" | "READY";
-export const MeBillingReportConsumptionStatusEnum = S.String;
+const MeBillingReportConsumptionStatusEnum = S.String;
 
 /** Consumption billing report */
 export interface MeBillingReportConsumption {
@@ -5098,7 +5089,7 @@ export interface MeBillingReportConsumption {
   /** Task id of the report */
   taskId?: string;
 }
-export const MeBillingReportConsumption = /*@__PURE__*/ S.suspend(() =>
+const MeBillingReportConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     periodEnd: S.optional(S.String),
     periodStart: S.optional(S.String),
@@ -5114,7 +5105,7 @@ export interface GetMeBillingTaskRequest {
   /** Id */
   id: number;
 }
-export const GetMeBillingTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillingTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/billing/task/{id}", code: 200 })),
@@ -5127,17 +5118,14 @@ export interface MeBillingTasksTaskMetadatum {
   /** Metadatum value */
   value?: string;
 }
-export const MeBillingTasksTaskMetadatum =
-  ComplexTypeSafeKeyValueString as any as S.Schema<MeBillingTasksTaskMetadatum>;
-
 /** Metadata linked to the Task. Will help you determine which object it relates to */
 export type MeBillingTasksTaskMetadataList = Array<MeBillingTasksTaskMetadatum>;
-export const MeBillingTasksTaskMetadataList =
+const MeBillingTasksTaskMetadataList =
   NichandleDocumentDocumentTagsList as any as S.Schema<MeBillingTasksTaskMetadataList>;
 
 /** Billing tasks names */
 export type MeBillingTasksTaskNameEnum = "contact/change";
-export const MeBillingTasksTaskNameEnum = S.String;
+const MeBillingTasksTaskNameEnum = S.String;
 
 /** Billing tasks statuses */
 export type MeBillingTasksTaskStatusEnum =
@@ -5148,7 +5136,7 @@ export type MeBillingTasksTaskStatusEnum =
   | "INIT"
   | "PROBLEM"
   | "TODO";
-export const MeBillingTasksTaskStatusEnum = S.String;
+const MeBillingTasksTaskStatusEnum = S.String;
 
 /** Asynchronous task related to Billing */
 export interface MeBillingTasksTask {
@@ -5163,7 +5151,7 @@ export interface MeBillingTasksTask {
   /** Current step of the Task. The step depends on the Task name. */
   step?: string;
 }
-export const MeBillingTasksTask = /*@__PURE__*/ S.suspend(() =>
+const MeBillingTasksTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     metadata: S.optional(MeBillingTasksTaskMetadataList),
@@ -5176,7 +5164,7 @@ export const MeBillingTasksTask = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeBillPaymentRequest {
   billId: string;
 }
-export const GetMeBillPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBillPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/bill/{billId}/payment", code: 200 })),
@@ -5188,7 +5176,7 @@ export interface BillingPayment {
   paymentIdentifier?: string | null;
   paymentType?: BillingPaymentMeanEnum;
 }
-export const BillingPayment = /*@__PURE__*/ S.suspend(() =>
+const BillingPayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentDate: S.optional(S.String),
     paymentIdentifier: S.optional(S.NullOr(S.String)),
@@ -5213,13 +5201,13 @@ export type IpCampusEnum =
   | "WAW"
   | "YNM"
   | "YYZ";
-export const IpCampusEnum = S.String;
+const IpCampusEnum = S.String;
 
 export interface GetMeBringYourOwnIpTokenRequest {
   /** Campus where you plan to bring your own IP range in. See /ip/campus to get more details. */
   campus: IpCampusEnum | (string & {});
 }
-export const GetMeBringYourOwnIpTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeBringYourOwnIpTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campus: IpCampusEnum.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/me/bringYourOwnIp/token", code: 200 })),
@@ -5228,14 +5216,14 @@ export const GetMeBringYourOwnIpTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeBringYourOwnIpTokenRequest>;
 
 export type GetMeBringYourOwnIpTokenResponse = string;
-export const GetMeBringYourOwnIpTokenResponse =
+const GetMeBringYourOwnIpTokenResponse =
   AcceptMeAgreementResponse as any as S.Schema<GetMeBringYourOwnIpTokenResponse>;
 
 export interface GetMeCarbonCalculatorHasInvoiceRequest {
   /** Month of the requested invoice (day is ignored) */
   date?: string;
 }
-export const GetMeCarbonCalculatorHasInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCarbonCalculatorHasInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/me/carbonCalculator/hasInvoice", code: 200 })),
@@ -5248,7 +5236,7 @@ export interface CarbonCalculatorHasInvoiceResponse {
   /** Whether the account has data to generate invoice */
   hasInvoice?: boolean;
 }
-export const CarbonCalculatorHasInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const CarbonCalculatorHasInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasInvoice: S.optional(S.Boolean),
   }),
@@ -5260,7 +5248,7 @@ export interface GetMeCarbonCalculatorTaskRequest {
   /** TaskID */
   taskID: string;
 }
-export const GetMeCarbonCalculatorTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCarbonCalculatorTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/carbonCalculator/task/{taskID}", code: 200 })),
@@ -5270,7 +5258,7 @@ export const GetMeCarbonCalculatorTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of a calculation task */
 export type CarbonCalculatorTaskTaskStatusEnum = "ERROR" | "IN_PROGRESS" | "SUCCESS";
-export const CarbonCalculatorTaskTaskStatusEnum = S.String;
+const CarbonCalculatorTaskTaskStatusEnum = S.String;
 
 /** Task to generate a carbon impact document */
 export interface CarbonCalculatorTask {
@@ -5281,7 +5269,7 @@ export interface CarbonCalculatorTask {
   /** ID of the task */
   taskID?: string;
 }
-export const CarbonCalculatorTask = /*@__PURE__*/ S.suspend(() =>
+const CarbonCalculatorTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(S.NullOr(S.String)),
     status: S.optional(CarbonCalculatorTaskTaskStatusEnum),
@@ -5293,7 +5281,7 @@ export interface GetMeConsentRequest {
   /** Campaign name */
   campaignName: string;
 }
-export const GetMeConsentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeConsentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaignName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/consent/{campaignName}", code: 200 })),
@@ -5301,7 +5289,7 @@ export const GetMeConsentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Campaign type */
 export type MeConsentCampaignTypeEnum = "OPTIN" | "OPTOUT";
-export const MeConsentCampaignTypeEnum = S.String;
+const MeConsentCampaignTypeEnum = S.String;
 
 /** Consent campaign */
 export interface MeConsentCampaign {
@@ -5312,7 +5300,7 @@ export interface MeConsentCampaign {
   /** Campaign type */
   type?: MeConsentCampaignTypeEnum;
 }
-export const MeConsentCampaign = /*@__PURE__*/ S.suspend(() =>
+const MeConsentCampaign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -5324,7 +5312,7 @@ export interface GetMeContactRequest {
   /** Contact ID */
   contactId: number;
 }
-export const GetMeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/contact/{contactId}", code: 200 })),
@@ -5333,7 +5321,7 @@ export const GetMeContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeCorrectiveInvoiceRequest {
   correctiveInvoiceId: string;
 }
-export const GetMeCorrectiveInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCorrectiveInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/correctiveInvoice/{correctiveInvoiceId}", code: 200 })),
@@ -5357,7 +5345,7 @@ export interface BillingCorrectiveInvoice {
   tax?: OrderPrice;
   url?: string;
 }
-export const BillingCorrectiveInvoice = /*@__PURE__*/ S.suspend(() =>
+const BillingCorrectiveInvoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(BillingCategoryEnum),
     correctedInvoiceId: S.optional(S.String),
@@ -5378,7 +5366,7 @@ export const BillingCorrectiveInvoice = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeCorrectiveInvoiceDebtRequest {
   correctiveInvoiceId: string;
 }
-export const GetMeCorrectiveInvoiceDebtRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCorrectiveInvoiceDebtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5392,7 +5380,7 @@ export interface GetMeCorrectiveInvoiceDebtOperationRequest {
   correctiveInvoiceId: string;
   operationId: number;
 }
-export const GetMeCorrectiveInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCorrectiveInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceId: S.String.pipe(T.Label()),
     operationId: S.Number.pipe(T.Label()),
@@ -5411,18 +5399,17 @@ export interface GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest {
   correctiveInvoiceId: string;
   operationId: number;
 }
-export const GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      correctiveInvoiceId: S.String.pipe(T.Label()),
-      operationId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/me/correctiveInvoice/{correctiveInvoiceId}/debt/operation/{operationId}/associatedObject",
-        code: 200,
-      }),
-    ),
+const GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    correctiveInvoiceId: S.String.pipe(T.Label()),
+    operationId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/me/correctiveInvoice/{correctiveInvoiceId}/debt/operation/{operationId}/associatedObject",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest",
 }) as any as S.Schema<GetMeCorrectiveInvoiceDebtOperationAssociatedObjectRequest>;
@@ -5431,7 +5418,7 @@ export interface GetMeCorrectiveInvoiceDetailRequest {
   correctiveInvoiceId: string;
   correctiveInvoiceDetailId: string;
 }
-export const GetMeCorrectiveInvoiceDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCorrectiveInvoiceDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceId: S.String.pipe(T.Label()),
     correctiveInvoiceDetailId: S.String.pipe(T.Label()),
@@ -5457,7 +5444,7 @@ export interface BillingCorrectiveInvoiceDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderLongPrice;
 }
-export const BillingCorrectiveInvoiceDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingCorrectiveInvoiceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceDetailId: S.optional(S.String),
     description: S.optional(S.String),
@@ -5475,7 +5462,7 @@ export const BillingCorrectiveInvoiceDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeCorrectiveInvoicePaymentRequest {
   correctiveInvoiceId: string;
 }
-export const GetMeCorrectiveInvoicePaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCorrectiveInvoicePaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5493,7 +5480,7 @@ export interface GetMeCredentialRequest {
   /** Credential ID */
   credentialId: number;
 }
-export const GetMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/credential/{credentialId}", code: 200 })),
@@ -5501,12 +5488,12 @@ export const GetMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If defined, list of ip blocks which are allowed to call API with this credential */
 export type AuthApiCredentialAllowedIPsList = Array<string>;
-export const AuthApiCredentialAllowedIPsList =
+const AuthApiCredentialAllowedIPsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthApiCredentialAllowedIPsList>;
 
 /** All HTTP methods available */
 export type AuthHTTPMethodEnum = "DELETE" | "GET" | "PATCH" | "POST" | "PUT";
-export const AuthHTTPMethodEnum = S.String;
+const AuthHTTPMethodEnum = S.String;
 
 /** Access rule allowed to an application */
 export interface AuthAccessRule {
@@ -5515,7 +5502,7 @@ export interface AuthAccessRule {
   /** Allowed path */
   path?: string;
 }
-export const AuthAccessRule = /*@__PURE__*/ S.suspend(() =>
+const AuthAccessRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(AuthHTTPMethodEnum),
     path: S.optional(S.String),
@@ -5524,13 +5511,13 @@ export const AuthAccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** API routes allowed to this credential */
 export type AuthApiCredentialRulesList = Array<AuthAccessRule>;
-export const AuthApiCredentialRulesList = /*@__PURE__*/ S.Array(
+const AuthApiCredentialRulesList = /*@__PURE__*/ S.Array(
   AuthAccessRule,
 ) as any as S.Schema<AuthApiCredentialRulesList>;
 
 /** All states a Credential can be in */
 export type AuthCredentialStateEnum = "expired" | "pendingValidation" | "refused" | "validated";
-export const AuthCredentialStateEnum = S.String;
+const AuthCredentialStateEnum = S.String;
 
 /** API Credential */
 export interface AuthApiCredential {
@@ -5553,7 +5540,7 @@ export interface AuthApiCredential {
   /** State of to this credential */
   status?: AuthCredentialStateEnum;
 }
-export const AuthApiCredential = /*@__PURE__*/ S.suspend(() =>
+const AuthApiCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedIPs: S.optional(S.NullOr(AuthApiCredentialAllowedIPsList)),
     applicationId: S.optional(S.Number),
@@ -5571,7 +5558,7 @@ export interface GetMeCredentialApplicationRequest {
   /** Credential ID */
   credentialId: number;
 }
-export const GetMeCredentialApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCredentialApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -5585,7 +5572,7 @@ export interface GetMeCreditBalanceRequest {
   /** Balance name */
   balanceName: string;
 }
-export const GetMeCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balanceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/credit/balance/{balanceName}", code: 200 })),
@@ -5606,7 +5593,7 @@ export interface MeCreditBalanceExpiringMovement {
   /** Object source of this credit movement */
   sourceObject?: MeCreditBalanceMovementSubObject;
 }
-export const MeCreditBalanceExpiringMovement = /*@__PURE__*/ S.suspend(() =>
+const MeCreditBalanceExpiringMovement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     creationDate: S.optional(S.String),
@@ -5620,7 +5607,7 @@ export const MeCreditBalanceExpiringMovement = /*@__PURE__*/ S.suspend(() =>
 
 /** Expiring parts of this balance */
 export type MeCreditBalanceBalanceDetailsExpiringList = Array<MeCreditBalanceExpiringMovement>;
-export const MeCreditBalanceBalanceDetailsExpiringList = /*@__PURE__*/ S.Array(
+const MeCreditBalanceBalanceDetailsExpiringList = /*@__PURE__*/ S.Array(
   MeCreditBalanceExpiringMovement,
 ) as any as S.Schema<MeCreditBalanceBalanceDetailsExpiringList>;
 
@@ -5635,7 +5622,7 @@ export interface MeCreditBalanceBalanceDetails {
   /** Service ID of this balance part */
   serviceId?: number | null;
 }
-export const MeCreditBalanceBalanceDetails = /*@__PURE__*/ S.suspend(() =>
+const MeCreditBalanceBalanceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     balanceSubName: S.optional(S.NullOr(S.String)),
@@ -5648,7 +5635,7 @@ export const MeCreditBalanceBalanceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Balance details, amounts by serviceID */
 export type MeCreditBalanceBalanceDetailsList = Array<MeCreditBalanceBalanceDetails>;
-export const MeCreditBalanceBalanceDetailsList = /*@__PURE__*/ S.Array(
+const MeCreditBalanceBalanceDetailsList = /*@__PURE__*/ S.Array(
   MeCreditBalanceBalanceDetails,
 ) as any as S.Schema<MeCreditBalanceBalanceDetailsList>;
 
@@ -5661,7 +5648,7 @@ export interface MeCreditBalanceBookedMovement {
   /** Order ID */
   orderId?: number;
 }
-export const MeCreditBalanceBookedMovement = /*@__PURE__*/ S.suspend(() =>
+const MeCreditBalanceBookedMovement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     balanceSubName: S.optional(S.NullOr(S.String)),
@@ -5673,18 +5660,18 @@ export const MeCreditBalanceBookedMovement = /*@__PURE__*/ S.suspend(() =>
 
 /** Movement already booked on orders */
 export type MeCreditBalanceBookedList = Array<MeCreditBalanceBookedMovement>;
-export const MeCreditBalanceBookedList = /*@__PURE__*/ S.Array(
+const MeCreditBalanceBookedList = /*@__PURE__*/ S.Array(
   MeCreditBalanceBookedMovement,
 ) as any as S.Schema<MeCreditBalanceBookedList>;
 
 /** Movement expiring soon */
 export type MeCreditBalanceExpiringList = Array<MeCreditBalanceExpiringMovement>;
-export const MeCreditBalanceExpiringList =
+const MeCreditBalanceExpiringList =
   MeCreditBalanceBalanceDetailsExpiringList as any as S.Schema<MeCreditBalanceExpiringList>;
 
 /** Balance type */
 export type MeCreditBalanceTypeEnum = "BONUS" | "DEPOSIT" | "PREPAID_ACCOUNT" | "VOUCHER";
-export const MeCreditBalanceTypeEnum = S.String;
+const MeCreditBalanceTypeEnum = S.String;
 
 /** Missing description */
 export interface MeCreditBalance {
@@ -5705,7 +5692,7 @@ export interface MeCreditBalance {
   /** Balance type */
   type?: MeCreditBalanceTypeEnum;
 }
-export const MeCreditBalance = /*@__PURE__*/ S.suspend(() =>
+const MeCreditBalance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     balanceDetails: S.optional(MeCreditBalanceBalanceDetailsList),
@@ -5724,7 +5711,7 @@ export interface GetMeCreditBalanceMovementRequest {
   /** Movement ID */
   movementId: number;
 }
-export const GetMeCreditBalanceMovementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeCreditBalanceMovementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balanceName: S.String.pipe(T.Label()),
     movementId: S.Number.pipe(T.Label()),
@@ -5740,7 +5727,7 @@ export const GetMeCreditBalanceMovementRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeCreditBalanceMovementRequest>;
 
 export interface GetMeDebtAccountRequest {}
-export const GetMeDebtAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDebtAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/debtAccount", code: 200 })),
 ).annotate({ identifier: "GetMeDebtAccountRequest" }) as any as S.Schema<GetMeDebtAccountRequest>;
 
@@ -5756,7 +5743,7 @@ export interface DebtBalance {
   /** Unmatured amount for deferred payment term */
   unmaturedAmount?: OrderPrice;
 }
-export const DebtBalance = /*@__PURE__*/ S.suspend(() =>
+const DebtBalance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     dueAmount: S.optional(OrderPrice),
@@ -5769,7 +5756,7 @@ export const DebtBalance = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeDebtAccountDebtRequest {
   debtId: number;
 }
-export const GetMeDebtAccountDebtRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDebtAccountDebtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debtId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/debtAccount/debt/{debtId}", code: 200 })),
@@ -5781,7 +5768,7 @@ export interface GetMeDebtAccountDebtOperationRequest {
   debtId: number;
   operationId: number;
 }
-export const GetMeDebtAccountDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDebtAccountDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debtId: S.Number.pipe(T.Label()),
     operationId: S.Number.pipe(T.Label()),
@@ -5800,7 +5787,7 @@ export interface GetMeDebtAccountDebtOperationAssociatedObjectRequest {
   debtId: number;
   operationId: number;
 }
-export const GetMeDebtAccountDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDebtAccountDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debtId: S.Number.pipe(T.Label()),
     operationId: S.Number.pipe(T.Label()),
@@ -5818,7 +5805,7 @@ export const GetMeDebtAccountDebtOperationAssociatedObjectRequest = /*@__PURE__*
 export interface GetMeDepositRequest {
   depositId: string;
 }
-export const GetMeDepositRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDepositRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/deposit/{depositId}", code: 200 })),
@@ -5835,7 +5822,7 @@ export interface BillingDeposit {
   pdfUrl?: string;
   url?: string;
 }
-export const BillingDeposit = /*@__PURE__*/ S.suspend(() =>
+const BillingDeposit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     date: S.optional(S.String),
@@ -5852,7 +5839,7 @@ export interface GetMeDepositDetailRequest {
   depositId: string;
   depositDetailId: string;
 }
-export const GetMeDepositDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDepositDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     depositDetailId: S.String.pipe(T.Label()),
@@ -5872,7 +5859,7 @@ export interface BillingDepositDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderPrice;
 }
-export const BillingDepositDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingDepositDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositDetailId: S.optional(S.String),
     description: S.optional(S.String),
@@ -5887,7 +5874,7 @@ export interface GetMeDepositPaidBillRequest {
   depositId: string;
   billId: string;
 }
-export const GetMeDepositPaidBillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDepositPaidBillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     billId: S.String.pipe(T.Label()),
@@ -5900,7 +5887,7 @@ export interface GetMeDepositPaidBillDebtRequest {
   depositId: string;
   billId: string;
 }
-export const GetMeDepositPaidBillDebtRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDepositPaidBillDebtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     billId: S.String.pipe(T.Label()),
@@ -5916,7 +5903,7 @@ export interface GetMeDepositPaidBillDebtOperationRequest {
   billId: string;
   operationId: number;
 }
-export const GetMeDepositPaidBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDepositPaidBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     billId: S.String.pipe(T.Label()),
@@ -5937,19 +5924,18 @@ export interface GetMeDepositPaidBillDebtOperationAssociatedObjectRequest {
   billId: string;
   operationId: number;
 }
-export const GetMeDepositPaidBillDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      depositId: S.String.pipe(T.Label()),
-      billId: S.String.pipe(T.Label()),
-      operationId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject",
-        code: 200,
-      }),
-    ),
+const GetMeDepositPaidBillDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    depositId: S.String.pipe(T.Label()),
+    billId: S.String.pipe(T.Label()),
+    operationId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/me/deposit/{depositId}/paidBills/{billId}/debt/operation/{operationId}/associatedObject",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetMeDepositPaidBillDebtOperationAssociatedObjectRequest",
 }) as any as S.Schema<GetMeDepositPaidBillDebtOperationAssociatedObjectRequest>;
@@ -5959,7 +5945,7 @@ export interface GetMeDepositPaidBillDetailRequest {
   billId: string;
   billDetailId: string;
 }
-export const GetMeDepositPaidBillDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDepositPaidBillDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     billId: S.String.pipe(T.Label()),
@@ -5979,7 +5965,7 @@ export interface GetMeDepositPaidBillPaymentRequest {
   depositId: string;
   billId: string;
 }
-export const GetMeDepositPaidBillPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDepositPaidBillPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     billId: S.String.pipe(T.Label()),
@@ -5993,7 +5979,7 @@ export const GetMeDepositPaidBillPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeDepositPaymentRequest {
   depositId: string;
 }
-export const GetMeDepositPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDepositPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/deposit/{depositId}/payment", code: 200 })),
@@ -6005,7 +5991,7 @@ export interface GetMeDocumentRequest {
   /** Document id */
   id: string;
 }
-export const GetMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/document/{id}", code: 200 })),
@@ -6014,7 +6000,7 @@ export const GetMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeDownPaymentInvoiceRequest {
   downPaymentInvoiceId: string;
 }
-export const GetMeDownPaymentInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDownPaymentInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downPaymentInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6039,7 +6025,7 @@ export interface BillingDownPaymentInvoice {
   tax?: OrderPrice;
   url?: string;
 }
-export const BillingDownPaymentInvoice = /*@__PURE__*/ S.suspend(() =>
+const BillingDownPaymentInvoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(BillingCategoryEnum),
     date: S.optional(S.String),
@@ -6061,7 +6047,7 @@ export const BillingDownPaymentInvoice = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeDownPaymentInvoiceDebtRequest {
   downPaymentInvoiceId: string;
 }
-export const GetMeDownPaymentInvoiceDebtRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDownPaymentInvoiceDebtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downPaymentInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6075,7 +6061,7 @@ export interface GetMeDownPaymentInvoiceDebtOperationRequest {
   downPaymentInvoiceId: string;
   operationId: number;
 }
-export const GetMeDownPaymentInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDownPaymentInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downPaymentInvoiceId: S.String.pipe(T.Label()),
     operationId: S.Number.pipe(T.Label()),
@@ -6094,18 +6080,17 @@ export interface GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest {
   downPaymentInvoiceId: string;
   operationId: number;
 }
-export const GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      downPaymentInvoiceId: S.String.pipe(T.Label()),
-      operationId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/me/downPaymentInvoice/{downPaymentInvoiceId}/debt/operation/{operationId}/associatedObject",
-        code: 200,
-      }),
-    ),
+const GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    downPaymentInvoiceId: S.String.pipe(T.Label()),
+    operationId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/me/downPaymentInvoice/{downPaymentInvoiceId}/debt/operation/{operationId}/associatedObject",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest",
 }) as any as S.Schema<GetMeDownPaymentInvoiceDebtOperationAssociatedObjectRequest>;
@@ -6114,7 +6099,7 @@ export interface GetMeDownPaymentInvoiceDetailRequest {
   downPaymentInvoiceId: string;
   downPaymentInvoiceDetailId: string;
 }
-export const GetMeDownPaymentInvoiceDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDownPaymentInvoiceDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downPaymentInvoiceId: S.String.pipe(T.Label()),
     downPaymentInvoiceDetailId: S.String.pipe(T.Label()),
@@ -6140,7 +6125,7 @@ export interface BillingDownPaymentInvoiceDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderLongPrice;
 }
-export const BillingDownPaymentInvoiceDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingDownPaymentInvoiceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     domain: S.optional(S.String),
@@ -6158,7 +6143,7 @@ export const BillingDownPaymentInvoiceDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeDownPaymentInvoicePaymentRequest {
   downPaymentInvoiceId: string;
 }
-export const GetMeDownPaymentInvoicePaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeDownPaymentInvoicePaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downPaymentInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6175,7 +6160,7 @@ export const GetMeDownPaymentInvoicePaymentRequest = /*@__PURE__*/ S.suspend(() 
 export interface GetMeFaxCustomDomainRequest {
   id: number;
 }
-export const GetMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/fax/customDomains/{id}", code: 200 })),
@@ -6184,7 +6169,7 @@ export const GetMeFaxCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeFaxCustomDomainRequest>;
 
 export interface GetMeFidelityAccountRequest {}
-export const GetMeFidelityAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeFidelityAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/fidelityAccount", code: 200 })),
 ).annotate({
   identifier: "GetMeFidelityAccountRequest",
@@ -6198,7 +6183,7 @@ export interface BillingFidelityAccount {
   lastUpdate?: string;
   openDate?: string;
 }
-export const BillingFidelityAccount = /*@__PURE__*/ S.suspend(() =>
+const BillingFidelityAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertThreshold: S.optional(S.NullOr(S.Number)),
     balance: S.optional(S.Number),
@@ -6211,7 +6196,7 @@ export const BillingFidelityAccount = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeFidelityAccountMovementRequest {
   movementId: number;
 }
-export const GetMeFidelityAccountMovementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeFidelityAccountMovementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     movementId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/fidelityAccount/movements/{movementId}", code: 200 })),
@@ -6230,7 +6215,7 @@ export type BillingFidelityAccountOperationEnum =
   | "debit"
   | "pre-credit"
   | "pre-debit";
-export const BillingFidelityAccountOperationEnum = S.String;
+const BillingFidelityAccountOperationEnum = S.String;
 
 /** Details about a fidelity account */
 export interface BillingFidelityMovement {
@@ -6243,7 +6228,7 @@ export interface BillingFidelityMovement {
   order?: number;
   previousBalance?: number;
 }
-export const BillingFidelityMovement = /*@__PURE__*/ S.suspend(() =>
+const BillingFidelityMovement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     balance: S.optional(S.Number),
@@ -6260,7 +6245,7 @@ export interface GetMeIdentityGroupRequest {
   /** Group */
   group: string;
 }
-export const GetMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/identity/group/{group}", code: 200 })),
@@ -6269,14 +6254,14 @@ export const GetMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeIdentityGroupRequest>;
 
 export interface GetMeIdentityProviderRequest {}
-export const GetMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/identity/provider", code: 200 })),
 ).annotate({
   identifier: "GetMeIdentityProviderRequest",
 }) as any as S.Schema<GetMeIdentityProviderRequest>;
 
 export interface GetMeIdentityProviderSamlServiceProviderInfoRequest {}
-export const GetMeIdentityProviderSamlServiceProviderInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeIdentityProviderSamlServiceProviderInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/me/identity/provider/samlServiceProviderInfo", code: 200 }),
   ),
@@ -6295,7 +6280,7 @@ export interface AuthServiceProviderInfo {
   /** URL of the SAMLv2 metadata for OVHcloud */
   metadataUrl?: string;
 }
-export const AuthServiceProviderInfo = /*@__PURE__*/ S.suspend(() =>
+const AuthServiceProviderInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assertionConsumerServiceUrl: S.optional(S.String),
     entityId: S.optional(S.String),
@@ -6308,7 +6293,7 @@ export interface GetMeIdentityUserRequest {
   /** User */
   user: string;
 }
-export const GetMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/identity/user/{user}", code: 200 })),
@@ -6316,12 +6301,12 @@ export const GetMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User's groups */
 export type AuthUserGroupsList = Array<string>;
-export const AuthUserGroupsList =
+const AuthUserGroupsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuthUserGroupsList>;
 
 /** Status of a User */
 export type AuthUserStatusEnum = "DISABLED" | "OK" | "PASSWORD_CHANGE_REQUIRED";
-export const AuthUserStatusEnum = S.String;
+const AuthUserStatusEnum = S.String;
 
 /** An IAM User */
 export interface AuthUser {
@@ -6348,7 +6333,7 @@ export interface AuthUser {
   /** IAM identity URN of the user */
   urn?: string;
 }
-export const AuthUser = /*@__PURE__*/ S.suspend(() =>
+const AuthUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creation: S.optional(S.String),
     description: S.optional(S.String),
@@ -6370,7 +6355,7 @@ export interface GetMeIdentityUserTokenRequest {
   /** Name */
   name: string;
 }
-export const GetMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -6392,7 +6377,7 @@ export interface AuthPersonalAccessToken {
   /** Name of this token */
   name?: string;
 }
-export const AuthPersonalAccessToken = /*@__PURE__*/ S.suspend(() =>
+const AuthPersonalAccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creation: S.optional(S.String),
     description: S.optional(S.String),
@@ -6403,7 +6388,7 @@ export const AuthPersonalAccessToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthPersonalAccessToken" }) as any as S.Schema<AuthPersonalAccessToken>;
 
 export interface GetMeInsightRequest {}
-export const GetMeInsightRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeInsightRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/insight", code: 200 })),
 ).annotate({ identifier: "GetMeInsightRequest" }) as any as S.Schema<GetMeInsightRequest>;
 
@@ -6416,7 +6401,7 @@ export interface MeInsightAccess {
   /** Token expiration date */
   expireAt?: string;
 }
-export const MeInsightAccess = /*@__PURE__*/ S.suspend(() =>
+const MeInsightAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(S.String),
     createdAt: S.optional(S.String),
@@ -6427,7 +6412,7 @@ export const MeInsightAccess = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeIpOrganisationRequest {
   organisationId: string;
 }
-export const GetMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organisationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/ipOrganisation/{organisationId}", code: 200 })),
@@ -6449,7 +6434,7 @@ export interface NichandleIpv4Org {
   state?: string | null;
   zip?: string | null;
 }
-export const NichandleIpv4Org = /*@__PURE__*/ S.suspend(() =>
+const NichandleIpv4Org = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abuse_mailbox: S.optional(S.String),
     address: S.optional(S.String),
@@ -6469,7 +6454,7 @@ export interface GetMeLogAuditLogKindRequest {
   /** Name */
   name: string;
 }
-export const GetMeLogAuditLogKindRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeLogAuditLogKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/logs/audit/log/kind/{name}", code: 200 })),
@@ -6479,7 +6464,7 @@ export const GetMeLogAuditLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-export const DbaasLogsLogKindAdditionalReturnedFieldsList =
+const DbaasLogsLogKindAdditionalReturnedFieldsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
 
 /** Log kind */
@@ -6497,7 +6482,7 @@ export interface DbaasLogsLogKind {
   /** Last update date of the log kind */
   updatedAt?: string;
 }
-export const DbaasLogsLogKind = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogKind = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalReturnedFields: S.optional(DbaasLogsLogKindAdditionalReturnedFieldsList),
     createdAt: S.optional(S.String),
@@ -6512,7 +6497,7 @@ export interface GetMeLogAuditLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const GetMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6529,7 +6514,7 @@ export interface DbaasLogsSubscriptionResource {
   /** Type of subscribed resource */
   type?: string;
 }
-export const DbaasLogsSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -6555,7 +6540,7 @@ export interface DbaasLogsLogSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
-export const DbaasLogsLogSubscription = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6571,7 +6556,7 @@ export interface GetMeLogKindRequest {
   /** Name */
   name: string;
 }
-export const GetMeLogKindRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeLogKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/log/kind/{name}", code: 200 })),
@@ -6580,7 +6565,7 @@ export const GetMeLogKindRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeLogSelfRequest {
   logId: number;
 }
-export const GetMeLogSelfRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeLogSelfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/logs/self/{logId}", code: 200 })),
@@ -6588,7 +6573,7 @@ export const GetMeLogSelfRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All HTTP methods available */
 export type HttpMethodEnum = "DELETE" | "GET" | "POST" | "PUT";
-export const HttpMethodEnum = S.String;
+const HttpMethodEnum = S.String;
 
 /** API Log */
 export interface ApiLog {
@@ -6606,7 +6591,7 @@ export interface ApiLog {
   /** API Route called */
   route?: string;
 }
-export const ApiLog = /*@__PURE__*/ S.suspend(() =>
+const ApiLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     date: S.optional(S.String),
@@ -6621,7 +6606,7 @@ export const ApiLog = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeLogServiceRequest {
   logId: number;
 }
-export const GetMeLogServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeLogServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/logs/services/{logId}", code: 200 })),
@@ -6631,7 +6616,7 @@ export interface GetMeLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const GetMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/log/subscription/{subscriptionId}", code: 200 })),
@@ -6640,7 +6625,7 @@ export const GetMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeLogSubscriptionRequest>;
 
 export interface GetMeManualDomainPaymentRequest {}
-export const GetMeManualDomainPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeManualDomainPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/manualDomainPayment", code: 200 })),
 ).annotate({
   identifier: "GetMeManualDomainPaymentRequest",
@@ -6655,7 +6640,7 @@ export type BillingBillingTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-export const BillingBillingTaskStatusEnum = S.String;
+const BillingBillingTaskStatusEnum = S.String;
 
 /** Status of your manual domain payment migration */
 export interface BillingManualDomainPaymentStatus {
@@ -6665,7 +6650,7 @@ export interface BillingManualDomainPaymentStatus {
   migratedDomains?: number | null;
   status?: BillingBillingTaskStatusEnum;
 }
-export const BillingManualDomainPaymentStatus = /*@__PURE__*/ S.suspend(() =>
+const BillingManualDomainPaymentStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainsToMigrate: S.optional(S.NullOr(S.Number)),
     migratedDomains: S.optional(S.NullOr(S.Number)),
@@ -6676,7 +6661,7 @@ export const BillingManualDomainPaymentStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingManualDomainPaymentStatus>;
 
 export interface GetMeMarketingRequest {}
-export const GetMeMarketingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeMarketingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/marketing", code: 200 })),
 ).annotate({ identifier: "GetMeMarketingRequest" }) as any as S.Schema<GetMeMarketingRequest>;
 
@@ -6691,7 +6676,7 @@ export interface MeMarketingConsentDetails {
   /** Enable marketing communication for offer and discount */
   offerAndDiscount?: boolean;
 }
-export const MeMarketingConsentDetails = /*@__PURE__*/ S.suspend(() =>
+const MeMarketingConsentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(S.Boolean),
     newProductRecommendation: S.optional(S.Boolean),
@@ -6715,7 +6700,7 @@ export interface MeMarketingConsent {
   /** Details for sms marketing communication */
   sms?: MeMarketingConsentDetails;
 }
-export const MeMarketingConsent = /*@__PURE__*/ S.suspend(() =>
+const MeMarketingConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     call: S.optional(MeMarketingConsentDetails),
     denyAll: S.optional(S.Boolean),
@@ -6729,7 +6714,7 @@ export interface GetMeMigrationRequest {
   /** Migration ID */
   migrationId: number;
 }
-export const GetMeMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migrationId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/migration/{migrationId}", code: 200 })),
@@ -6743,11 +6728,11 @@ export type MeMigrationStatusEnum =
   | "MIGRATED"
   | "TODO"
   | "TO_CHECK";
-export const MeMigrationStatusEnum = S.String;
+const MeMigrationStatusEnum = S.String;
 
 /** Array of contract agreements to accept */
 export type MeMigrationStepContractsAgreementsList = Array<MeAgreementsContractAgreement>;
-export const MeMigrationStepContractsAgreementsList = /*@__PURE__*/ S.Array(
+const MeMigrationStepContractsAgreementsList = /*@__PURE__*/ S.Array(
   MeAgreementsContractAgreement,
 ) as any as S.Schema<MeMigrationStepContractsAgreementsList>;
 
@@ -6756,7 +6741,7 @@ export interface MeMigrationStepContracts {
   /** Array of contract agreements to accept */
   agreements?: MeMigrationStepContractsAgreementsList;
 }
-export const MeMigrationStepContracts = /*@__PURE__*/ S.suspend(() =>
+const MeMigrationStepContracts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agreements: S.optional(MeMigrationStepContractsAgreementsList),
   }),
@@ -6769,7 +6754,7 @@ export interface MeMigrationStepDebt {
   /** OVH Account amount */
   ovhAccountAmount?: OrderPrice | null;
 }
-export const MeMigrationStepDebt = /*@__PURE__*/ S.suspend(() =>
+const MeMigrationStepDebt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balanceAmount: S.optional(S.NullOr(OrderPrice)),
     ovhAccountAmount: S.optional(S.NullOr(OrderPrice)),
@@ -6778,7 +6763,7 @@ export const MeMigrationStepDebt = /*@__PURE__*/ S.suspend(() =>
 
 /** Name of the migration step */
 export type MeMigrationStepNameEnum = "CONTRACTS" | "DEBT" | "NIC" | "ORDERS";
-export const MeMigrationStepNameEnum = S.String;
+const MeMigrationStepNameEnum = S.String;
 
 /** Country Migration step orders data */
 export interface MeMigrationStepOrders {
@@ -6789,7 +6774,7 @@ export interface MeMigrationStepOrders {
   /** Whether there is pending subscriptions */
   pendingSubscriptions?: boolean;
 }
-export const MeMigrationStepOrders = /*@__PURE__*/ S.suspend(() =>
+const MeMigrationStepOrders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pendingOperations: S.optional(S.Boolean),
     pendingPromotions: S.optional(S.Boolean),
@@ -6799,7 +6784,7 @@ export const MeMigrationStepOrders = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the migration step */
 export type MeMigrationStepStatusEnum = "OK" | "PENDING";
-export const MeMigrationStepStatusEnum = S.String;
+const MeMigrationStepStatusEnum = S.String;
 
 /** Country Migration Step */
 export interface MeMigrationStep {
@@ -6814,7 +6799,7 @@ export interface MeMigrationStep {
   /** Billing step status */
   status?: MeMigrationStepStatusEnum;
 }
-export const MeMigrationStep = /*@__PURE__*/ S.suspend(() =>
+const MeMigrationStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contracts: S.optional(S.NullOr(MeMigrationStepContracts)),
     debt: S.optional(S.NullOr(MeMigrationStepDebt)),
@@ -6826,7 +6811,7 @@ export const MeMigrationStep = /*@__PURE__*/ S.suspend(() =>
 
 /** Migration steps */
 export type MeMigrationStepsList = Array<MeMigrationStep>;
-export const MeMigrationStepsList = /*@__PURE__*/ S.Array(
+const MeMigrationStepsList = /*@__PURE__*/ S.Array(
   MeMigrationStep,
 ) as any as S.Schema<MeMigrationStepsList>;
 
@@ -6843,7 +6828,7 @@ export interface MeMigration {
   /** Billing country to migrate to */
   to?: NichandleOvhSubsidiaryEnum;
 }
-export const MeMigration = /*@__PURE__*/ S.suspend(() =>
+const MeMigration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(NichandleOvhSubsidiaryEnum),
     id: S.optional(S.Number),
@@ -6859,7 +6844,7 @@ export interface GetMeMigrationContractRequest {
   /** Contract ID */
   contractId: number;
 }
-export const GetMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migrationId: S.Number.pipe(T.Label()),
     contractId: S.Number.pipe(T.Label()),
@@ -6885,7 +6870,7 @@ export interface MeMigrationContract {
   /** Text of the contract */
   text?: string;
 }
-export const MeMigrationContract = /*@__PURE__*/ S.suspend(() =>
+const MeMigrationContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     date: S.optional(S.String),
@@ -6902,7 +6887,7 @@ export interface GetMeMigrationContractAgreementRequest {
   /** Contract ID */
   contractId: number;
 }
-export const GetMeMigrationContractAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeMigrationContractAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migrationId: S.Number.pipe(T.Label()),
     contractId: S.Number.pipe(T.Label()),
@@ -6921,7 +6906,7 @@ export interface GetMeNotificationEmailHistoryRequest {
   /** Id */
   id: number;
 }
-export const GetMeNotificationEmailHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeNotificationEmailHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/notification/email/history/{id}", code: 200 })),
@@ -6940,7 +6925,7 @@ export interface NichandleEmailNotification {
   /** Subject of the email */
   subject?: string;
 }
-export const NichandleEmailNotification = /*@__PURE__*/ S.suspend(() =>
+const NichandleEmailNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     date: S.optional(S.String),
@@ -6955,7 +6940,7 @@ export interface GetMeOauth2ClientRequest {
   /** Client ID */
   clientId: string;
 }
-export const GetMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/oauth2/client/{clientId}", code: 200 })),
@@ -6963,7 +6948,7 @@ export const GetMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** allowed callback urls */
 export type Oauth2ClientCallbackUrlsList = Array<string>;
-export const Oauth2ClientCallbackUrlsList =
+const Oauth2ClientCallbackUrlsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2ClientCallbackUrlsList>;
 
 /** An oAuth2 Client */
@@ -6983,7 +6968,7 @@ export interface Oauth2Client {
   /** client's name */
   name?: string;
 }
-export const Oauth2Client = /*@__PURE__*/ S.suspend(() =>
+const Oauth2Client = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callbackUrls: S.optional(S.NullOr(Oauth2ClientCallbackUrlsList)),
     clientId: S.optional(S.String),
@@ -6999,7 +6984,7 @@ export interface GetMeOauth2TokenRequest {
   /** Id */
   id: string;
 }
-export const GetMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/oauth2/token/{id}", code: 200 })),
@@ -7007,7 +6992,7 @@ export const GetMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** list of scopes the token has */
 export type Oauth2AccessTokenScopesList = Array<string>;
-export const Oauth2AccessTokenScopesList =
+const Oauth2AccessTokenScopesList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2AccessTokenScopesList>;
 
 /** An oAuth2 accesss token details */
@@ -7021,7 +7006,7 @@ export interface Oauth2AccessToken {
   /** list of scopes the token has */
   scopes?: Oauth2AccessTokenScopesList;
 }
-export const Oauth2AccessToken = /*@__PURE__*/ S.suspend(() =>
+const Oauth2AccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     expiresAt: S.optional(S.NullOr(S.String)),
@@ -7032,18 +7017,18 @@ export const Oauth2AccessToken = /*@__PURE__*/ S.suspend(() =>
 
 /** list of access tokens derived from the refresh token */
 export type Oauth2TokenAccessTokensList = Array<Oauth2AccessToken>;
-export const Oauth2TokenAccessTokensList = /*@__PURE__*/ S.Array(
+const Oauth2TokenAccessTokensList = /*@__PURE__*/ S.Array(
   Oauth2AccessToken,
 ) as any as S.Schema<Oauth2TokenAccessTokensList>;
 
 /** list of identities that the token is associated with */
 export type Oauth2TokenIdentitiesList = Array<string>;
-export const Oauth2TokenIdentitiesList =
+const Oauth2TokenIdentitiesList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2TokenIdentitiesList>;
 
 /** list of scopes the token has */
 export type Oauth2TokenScopesList = Array<string>;
-export const Oauth2TokenScopesList =
+const Oauth2TokenScopesList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<Oauth2TokenScopesList>;
 
 /** An oAuth2 refresh token details */
@@ -7069,7 +7054,7 @@ export interface Oauth2Token {
   /** list of scopes the token has */
   scopes?: Oauth2TokenScopesList;
 }
-export const Oauth2Token = /*@__PURE__*/ S.suspend(() =>
+const Oauth2Token = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessTokens: S.optional(Oauth2TokenAccessTokensList),
     clientDescription: S.optional(S.String),
@@ -7087,7 +7072,7 @@ export const Oauth2Token = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeOrderRequest {
   orderId: number;
 }
-export const GetMeOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}", code: 200 })),
@@ -7096,7 +7081,7 @@ export const GetMeOrderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeOrderAssociatedObjectRequest {
   orderId: number;
 }
-export const GetMeOrderAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/associatedObject", code: 200 })),
@@ -7111,14 +7096,14 @@ export type BillingOrderAssociatedObjectTypeEnum =
   | "Refund"
   | "ReverseBill"
   | "Withdrawal";
-export const BillingOrderAssociatedObjectTypeEnum = S.String;
+const BillingOrderAssociatedObjectTypeEnum = S.String;
 
 /** The object the processing of the order leaded to */
 export interface BillingOrderAssociatedObject {
   id?: string | null;
   type?: BillingOrderAssociatedObjectTypeEnum | null;
 }
-export const BillingOrderAssociatedObject = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderAssociatedObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(BillingOrderAssociatedObjectTypeEnum)),
@@ -7132,7 +7117,7 @@ export interface GetMeOrderBalanceRequest {
   /** Credit balance name */
   balanceName: string;
 }
-export const GetMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     balanceName: S.String.pipe(T.Label()),
@@ -7141,14 +7126,14 @@ export const GetMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Export file format */
 export type ConsumptionConsumptionExportFormatsEnum = "csv";
-export const ConsumptionConsumptionExportFormatsEnum = S.String;
+const ConsumptionConsumptionExportFormatsEnum = S.String;
 
 export interface GetMeOrderConsumptionDetailsRequest {
   orderId: number;
   /** Format of the file */
   fileFormat: ConsumptionConsumptionExportFormatsEnum | (string & {});
 }
-export const GetMeOrderConsumptionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderConsumptionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     fileFormat: ConsumptionConsumptionExportFormatsEnum.pipe(T.Query()),
@@ -7159,7 +7144,7 @@ export const GetMeOrderConsumptionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Export task status */
 export type ConsumptionConsumptionExportTaskStatusEnum = "DOING" | "DONE" | "ERROR" | "TODO";
-export const ConsumptionConsumptionExportTaskStatusEnum = S.String;
+const ConsumptionConsumptionExportTaskStatusEnum = S.String;
 
 /** Detailed consumption's retrieval information */
 export interface BillingOrderConsumptionDetails {
@@ -7174,7 +7159,7 @@ export interface BillingOrderConsumptionDetails {
   /** Consumption details export task's status */
   taskStatus?: ConsumptionConsumptionExportTaskStatusEnum;
 }
-export const BillingOrderConsumptionDetails = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderConsumptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileFormat: S.optional(S.NullOr(ConsumptionConsumptionExportFormatsEnum)),
     fileURL: S.optional(S.NullOr(S.String)),
@@ -7189,7 +7174,7 @@ export const BillingOrderConsumptionDetails = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeOrderDebtRequest {
   orderId: number;
 }
-export const GetMeOrderDebtRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderDebtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/debt", code: 200 })),
@@ -7199,7 +7184,7 @@ export interface GetMeOrderDebtOperationRequest {
   orderId: number;
   operationId: number;
 }
-export const GetMeOrderDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     operationId: S.Number.pipe(T.Label()),
@@ -7214,7 +7199,7 @@ export interface GetMeOrderDebtOperationAssociatedObjectRequest {
   orderId: number;
   operationId: number;
 }
-export const GetMeOrderDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderDebtOperationAssociatedObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     operationId: S.Number.pipe(T.Label()),
@@ -7233,7 +7218,7 @@ export interface GetMeOrderDetailRequest {
   orderId: number;
   orderDetailId: number;
 }
-export const GetMeOrderDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     orderDetailId: S.Number.pipe(T.Label()),
@@ -7262,7 +7247,7 @@ export type OrderOrderDetailTypeEnum =
   | "SWITCH"
   | "TRANSFER"
   | "VOUCHER";
-export const OrderOrderDetailTypeEnum = S.String;
+const OrderOrderDetailTypeEnum = S.String;
 
 /** Information about a Bill entry */
 export interface BillingOrderDetail {
@@ -7275,7 +7260,7 @@ export interface BillingOrderDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderPrice;
 }
-export const BillingOrderDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelled: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -7292,7 +7277,7 @@ export interface GetMeOrderDetailExtensionRequest {
   orderId: number;
   orderDetailId: number;
 }
-export const GetMeOrderDetailExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderDetailExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     orderDetailId: S.Number.pipe(T.Label()),
@@ -7315,7 +7300,7 @@ export type BillingItemDetailOrderActionEnum =
   | "renew"
   | "revert"
   | "upgrade";
-export const BillingItemDetailOrderActionEnum = S.String;
+const BillingItemDetailOrderActionEnum = S.String;
 
 /** Configuration of order */
 export interface BillingItemDetailOrderConfiguration {
@@ -7324,7 +7309,7 @@ export interface BillingItemDetailOrderConfiguration {
   /** Value of the configuration */
   value?: string;
 }
-export const BillingItemDetailOrderConfiguration = /*@__PURE__*/ S.suspend(() =>
+const BillingItemDetailOrderConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     value: S.optional(S.String),
@@ -7335,7 +7320,7 @@ export const BillingItemDetailOrderConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** Configurations chosen during the order */
 export type BillingItemDetailOrderConfigurationsList = Array<BillingItemDetailOrderConfiguration>;
-export const BillingItemDetailOrderConfigurationsList = /*@__PURE__*/ S.Array(
+const BillingItemDetailOrderConfigurationsList = /*@__PURE__*/ S.Array(
   BillingItemDetailOrderConfiguration,
 ) as any as S.Schema<BillingItemDetailOrderConfigurationsList>;
 
@@ -7344,7 +7329,7 @@ export interface BillingItemDetailOrderPlanProduct {
   /** Name of the product used when ordering through /order/cart */
   name?: string | null;
 }
-export const BillingItemDetailOrderPlanProduct = /*@__PURE__*/ S.suspend(() =>
+const BillingItemDetailOrderPlanProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
   }),
@@ -7365,7 +7350,7 @@ export interface BillingItemDetailOrderPlan {
   /** Quantity ordered */
   quantity?: number | null;
 }
-export const BillingItemDetailOrderPlan = /*@__PURE__*/ S.suspend(() =>
+const BillingItemDetailOrderPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.NullOr(S.String)),
     duration: S.optional(S.NullOr(S.String)),
@@ -7379,7 +7364,7 @@ export const BillingItemDetailOrderPlan = /*@__PURE__*/ S.suspend(() =>
 
 /** List of order detail types */
 export type BillingItemDetailOrderDetailTypeEnum = "plan" | "product";
-export const BillingItemDetailOrderDetailTypeEnum = S.String;
+const BillingItemDetailOrderDetailTypeEnum = S.String;
 
 /** Order data for this Detail */
 export interface BillingItemDetailOrder {
@@ -7392,7 +7377,7 @@ export interface BillingItemDetailOrder {
   /** Type of the detail to match with values inside the catalog */
   type?: BillingItemDetailOrderDetailTypeEnum | null;
 }
-export const BillingItemDetailOrder = /*@__PURE__*/ S.suspend(() =>
+const BillingItemDetailOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.NullOr(BillingItemDetailOrderActionEnum)),
     configurations: S.optional(BillingItemDetailOrderConfigurationsList),
@@ -7405,7 +7390,7 @@ export const BillingItemDetailOrder = /*@__PURE__*/ S.suspend(() =>
 export interface BillingItemDetail {
   order?: BillingItemDetailOrder;
 }
-export const BillingItemDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingItemDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order: S.optional(BillingItemDetailOrder),
   }),
@@ -7414,7 +7399,7 @@ export const BillingItemDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeOrderPaymentRequest {
   orderId: number;
 }
-export const GetMeOrderPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/payment", code: 200 })),
@@ -7423,7 +7408,7 @@ export const GetMeOrderPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeOrderStatusRequest {
   orderId: number;
 }
-export const GetMeOrderStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/status", code: 200 })),
@@ -7439,17 +7424,17 @@ export type BillingOrderOrderStatusEnum =
   | "documentsRequested"
   | "notPaid"
   | "unknown";
-export const BillingOrderOrderStatusEnum = S.String;
+const BillingOrderOrderStatusEnum = S.String;
 
 export type GetMeOrderStatusResponse = BillingOrderOrderStatusEnum;
-export const GetMeOrderStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMeOrderStatusResponse = /*@__PURE__*/ S.suspend(() =>
   BillingOrderOrderStatusEnum.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetMeOrderStatusResponse" }) as any as S.Schema<GetMeOrderStatusResponse>;
 
 export interface GetMeOvhAccountRequest {
   ovhAccountId: string;
 }
-export const GetMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhAccountId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/ovhAccount/{ovhAccountId}", code: 200 })),
@@ -7467,7 +7452,7 @@ export interface BillingOvhAccount {
   ovhAccountId?: string;
   retrievableAmount?: OrderPrice;
 }
-export const BillingOvhAccount = /*@__PURE__*/ S.suspend(() =>
+const BillingOvhAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertThreshold: S.optional(S.NullOr(S.Number)),
     availableAfterCredit: S.optional(OrderPrice),
@@ -7488,7 +7473,7 @@ export interface GetMeOvhAccountMoneyRequest {
   /** A valid bank account */
   bankAccountId: number;
 }
-export const GetMeOvhAccountMoneyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOvhAccountMoneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhAccountId: S.String.pipe(T.Label()),
     amount: S.Number,
@@ -7504,7 +7489,7 @@ export interface GetMeOvhAccountMovementRequest {
   ovhAccountId: string;
   movementId: number;
 }
-export const GetMeOvhAccountMovementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeOvhAccountMovementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhAccountId: S.String.pipe(T.Label()),
     movementId: S.Number.pipe(T.Label()),
@@ -7528,7 +7513,7 @@ export type BillingOvhAccountOperationEnum =
   | "debit"
   | "pre-credit"
   | "pre-debit";
-export const BillingOvhAccountOperationEnum = S.String;
+const BillingOvhAccountOperationEnum = S.String;
 
 /** Details about an OVH account */
 export interface BillingMovement {
@@ -7542,7 +7527,7 @@ export interface BillingMovement {
   previousBalance?: OrderPrice;
   retrievableAmount?: OrderPrice;
 }
-export const BillingMovement = /*@__PURE__*/ S.suspend(() =>
+const BillingMovement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     balance: S.optional(OrderPrice),
@@ -7557,17 +7542,17 @@ export const BillingMovement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingMovement" }) as any as S.Schema<BillingMovement>;
 
 export interface GetMePartnerLevelRequest {}
-export const GetMePartnerLevelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMePartnerLevelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/partnerLevel", code: 200 })),
 ).annotate({ identifier: "GetMePartnerLevelRequest" }) as any as S.Schema<GetMePartnerLevelRequest>;
 
 /** Type of level */
 export type MePartnerLevelLevelTypeEnum = "advanced" | "none" | "standard" | "strategic";
-export const MePartnerLevelLevelTypeEnum = S.String;
+const MePartnerLevelLevelTypeEnum = S.String;
 
 /** Level of Support required */
 export type MePartnerLevelRequirementLoSEnum = "none" | "premium" | "premium-accredited";
-export const MePartnerLevelRequirementLoSEnum = S.String;
+const MePartnerLevelRequirementLoSEnum = S.String;
 
 /** Partner level of an account */
 export interface MePartnerLevelLevel {
@@ -7578,7 +7563,7 @@ export interface MePartnerLevelLevel {
   /** Level of Support required */
   requirement?: MePartnerLevelRequirementLoSEnum;
 }
-export const MePartnerLevelLevel = /*@__PURE__*/ S.suspend(() =>
+const MePartnerLevelLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.optional(MePartnerLevelLevelTypeEnum),
     msa: S.optional(S.Boolean),
@@ -7590,7 +7575,7 @@ export interface GetMePaymentMeanDeferredPaymentAccountRequest {
   /** Id */
   id: number;
 }
-export const GetMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/paymentMean/deferredPaymentAccount/{id}", code: 200 })),
@@ -7607,7 +7592,7 @@ export interface MePaymentMeanIconData {
   /** Icon URL */
   url?: string | null;
 }
-export const MePaymentMeanIconData = /*@__PURE__*/ S.suspend(() =>
+const MePaymentMeanIconData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -7617,7 +7602,7 @@ export const MePaymentMeanIconData = /*@__PURE__*/ S.suspend(() =>
 
 /** State of you deferred account */
 export type MePaymentMeanDeferredStateEnum = "failed" | "valid";
-export const MePaymentMeanDeferredStateEnum = S.String;
+const MePaymentMeanDeferredStateEnum = S.String;
 
 /** Deferred account information */
 export interface MePaymentMeanDeferred {
@@ -7635,7 +7620,7 @@ export interface MePaymentMeanDeferred {
   /** Deferred account state */
   state?: MePaymentMeanDeferredStateEnum;
 }
-export const MePaymentMeanDeferred = /*@__PURE__*/ S.suspend(() =>
+const MePaymentMeanDeferred = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     defaultPaymentMean: S.optional(S.Boolean),
@@ -7651,7 +7636,7 @@ export interface GetMePaymentMethodRequest {
   /** Payment method ID */
   paymentMethodId: number;
 }
-export const GetMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/payment/method/{paymentMethodId}", code: 200 })),
@@ -7663,7 +7648,7 @@ export interface GetMePaymentTransactionRequest {
   /** Transaction ID */
   transactionId: number;
 }
-export const GetMePaymentTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMePaymentTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/payment/transaction/{transactionId}", code: 200 })),
@@ -7681,11 +7666,11 @@ export type MePaymentTransactionStatusEnum =
   | "FAILED"
   | "READY"
   | "SUCCESS";
-export const MePaymentTransactionStatusEnum = S.String;
+const MePaymentTransactionStatusEnum = S.String;
 
 /** Transaction type */
 export type MePaymentTransactionTypeEnum = "CREDIT" | "DEBIT";
-export const MePaymentTransactionTypeEnum = S.String;
+const MePaymentTransactionTypeEnum = S.String;
 
 /** Transaction object */
 export interface MePaymentTransaction {
@@ -7704,7 +7689,7 @@ export interface MePaymentTransaction {
   /** Transaction type */
   type?: MePaymentTransactionTypeEnum;
 }
-export const MePaymentTransaction = /*@__PURE__*/ S.suspend(() =>
+const MePaymentTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     creationDate: S.optional(S.String),
@@ -7720,7 +7705,7 @@ export interface GetMePreferenceManagerRequest {
   /** This preference key */
   key: string;
 }
-export const GetMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/preferences/manager/{key}", code: 200 })),
@@ -7735,13 +7720,13 @@ export interface NichandleManagerPreference {
   /** This preference value */
   value?: string;
 }
-export const NichandleManagerPreference =
+const NichandleManagerPreference =
   ComplexTypeSafeKeyValueString as any as S.Schema<NichandleManagerPreference>;
 
 export interface GetMeRefundRequest {
   refundId: string;
 }
-export const GetMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refundId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/refund/{refundId}", code: 200 })),
@@ -7760,7 +7745,7 @@ export interface BillingRefund {
   tax?: OrderPrice;
   url?: string;
 }
-export const BillingRefund = /*@__PURE__*/ S.suspend(() =>
+const BillingRefund = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     orderId: S.optional(S.Number),
@@ -7779,7 +7764,7 @@ export interface GetMeRefundDetailRequest {
   refundId: string;
   refundDetailId: string;
 }
-export const GetMeRefundDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeRefundDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refundId: S.String.pipe(T.Label()),
     refundDetailId: S.String.pipe(T.Label()),
@@ -7799,7 +7784,7 @@ export interface BillingRefundDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderPrice;
 }
-export const BillingRefundDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingRefundDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     domain: S.optional(S.String),
@@ -7815,7 +7800,7 @@ export const BillingRefundDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeRefundPaymentRequest {
   refundId: string;
 }
-export const GetMeRefundPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeRefundPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refundId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/refund/{refundId}/payment", code: 200 })),
@@ -7826,7 +7811,7 @@ export const GetMeRefundPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeReverseBillRequest {
   reverseBillId: string;
 }
-export const GetMeReverseBillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeReverseBillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reverseBillId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/reverseBill/{reverseBillId}", code: 200 })),
@@ -7844,7 +7829,7 @@ export interface BillingReverseBill {
   tax?: OrderPrice;
   url?: string;
 }
-export const BillingReverseBill = /*@__PURE__*/ S.suspend(() =>
+const BillingReverseBill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     orderId: S.optional(S.Number),
@@ -7862,7 +7847,7 @@ export interface GetMeReverseBillDetailRequest {
   reverseBillId: string;
   reverseBillDetailId: string;
 }
-export const GetMeReverseBillDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeReverseBillDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reverseBillId: S.String.pipe(T.Label()),
     reverseBillDetailId: S.String.pipe(T.Label()),
@@ -7888,7 +7873,7 @@ export interface BillingReversableBillDetail {
   totalPrice?: OrderPrice;
   unitPrice?: OrderPrice;
 }
-export const BillingReversableBillDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingReversableBillDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     domain: S.optional(S.String),
@@ -7906,7 +7891,7 @@ export const BillingReversableBillDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeReverseBillPaymentRequest {
   reverseBillId: string;
 }
-export const GetMeReverseBillPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeReverseBillPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reverseBillId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/reverseBill/{reverseBillId}/payment", code: 200 })),
@@ -7918,7 +7903,7 @@ export interface GetMeSlaRequest {
   /** Id of the object */
   id: number;
 }
-export const GetMeSlaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeSlaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/sla/{id}", code: 200 })),
@@ -7939,7 +7924,7 @@ export interface BillingSlaOperation {
   /** Date of the start of the SLA */
   startDate?: string;
 }
-export const BillingSlaOperation = /*@__PURE__*/ S.suspend(() =>
+const BillingSlaOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     description: S.optional(S.String),
@@ -7954,7 +7939,7 @@ export interface GetMeSlaCanBeAppliedRequest {
   /** Id of the object */
   id: number;
 }
-export const GetMeSlaCanBeAppliedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeSlaCanBeAppliedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/sla/{id}/canBeApplied", code: 200 })),
@@ -7963,21 +7948,21 @@ export const GetMeSlaCanBeAppliedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeSlaCanBeAppliedRequest>;
 
 export type GetMeSlaCanBeAppliedResponse = boolean;
-export const GetMeSlaCanBeAppliedResponse =
+const GetMeSlaCanBeAppliedResponse =
   GetMeBillingInvoicesByPostalMailResponse as any as S.Schema<GetMeSlaCanBeAppliedResponse>;
 
 export interface GetMeSlaStatusRequest {
   /** Id of the object */
   id: number;
 }
-export const GetMeSlaStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeSlaStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/sla/{id}/status", code: 200 })),
 ).annotate({ identifier: "GetMeSlaStatusRequest" }) as any as S.Schema<GetMeSlaStatusRequest>;
 
 export type GetMeSlaStatusResponse = string;
-export const GetMeSlaStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMeSlaStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetMeSlaStatusResponse" }) as any as S.Schema<GetMeSlaStatusResponse>;
 
@@ -7985,7 +7970,7 @@ export interface GetMeSshKeyRequest {
   /** Name of this public SSH key */
   keyName: string;
 }
-export const GetMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/sshKey/{keyName}", code: 200 })),
@@ -7998,7 +7983,7 @@ export interface NichandleSshKey {
   /** Name of this public SSH key */
   keyName?: string;
 }
-export const NichandleSshKey = /*@__PURE__*/ S.suspend(() =>
+const NichandleSshKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     keyName: S.optional(S.String),
@@ -8009,7 +7994,7 @@ export interface GetMeSubAccountRequest {
   /** Id of the object */
   id: number;
 }
-export const GetMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/subAccount/{id}", code: 200 })),
@@ -8024,7 +8009,7 @@ export interface NichandleSubAccount {
   /** This sub-account id */
   id?: number;
 }
-export const NichandleSubAccount = /*@__PURE__*/ S.suspend(() =>
+const NichandleSubAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
@@ -8033,7 +8018,7 @@ export const NichandleSubAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NichandleSubAccount" }) as any as S.Schema<NichandleSubAccount>;
 
 export interface GetMeSupportLevelRequest {}
-export const GetMeSupportLevelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeSupportLevelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/supportLevel", code: 200 })),
 ).annotate({ identifier: "GetMeSupportLevelRequest" }) as any as S.Schema<GetMeSupportLevelRequest>;
 
@@ -8044,14 +8029,14 @@ export type MeSupportLevelLevelTypeEnum =
   | "premium"
   | "premium-accredited"
   | "standard";
-export const MeSupportLevelLevelTypeEnum = S.String;
+const MeSupportLevelLevelTypeEnum = S.String;
 
 /** Support level of an account */
 export interface MeSupportLevelLevel {
   /** Level of support */
   level?: MeSupportLevelLevelTypeEnum;
 }
-export const MeSupportLevelLevel = /*@__PURE__*/ S.suspend(() =>
+const MeSupportLevelLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.optional(MeSupportLevelLevelTypeEnum),
   }),
@@ -8061,7 +8046,7 @@ export interface GetMeTagRequest {
   /** Tag */
   tag: string;
 }
-export const GetMeTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/tag/{tag}", code: 200 })),
@@ -8070,7 +8055,7 @@ export const GetMeTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeTaskContactChangeRequest {
   id: number;
 }
-export const GetMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/task/contactChange/{id}", code: 200 })),
@@ -8083,12 +8068,12 @@ export type NichandleChangeContactContactTypeEnum =
   | "contactAdmin"
   | "contactBilling"
   | "contactTech";
-export const NichandleChangeContactContactTypeEnum = S.String;
+const NichandleChangeContactContactTypeEnum = S.String;
 
 /** Contacts to be changed */
 export type NichandleContactChangeTaskContactTypesList =
   Array<NichandleChangeContactContactTypeEnum>;
-export const NichandleContactChangeTaskContactTypesList = /*@__PURE__*/ S.Array(
+const NichandleContactChangeTaskContactTypesList = /*@__PURE__*/ S.Array(
   NichandleChangeContactContactTypeEnum,
 ) as any as S.Schema<NichandleContactChangeTaskContactTypesList>;
 
@@ -8103,7 +8088,7 @@ export type NichandleChangeContactTaskStateEnum =
   | "refused"
   | "todo"
   | "validatingByCustomers";
-export const NichandleChangeContactTaskStateEnum = S.String;
+const NichandleChangeContactTaskStateEnum = S.String;
 
 /** Task running a contact change on a service */
 export interface NichandleContactChangeTask {
@@ -8125,7 +8110,7 @@ export interface NichandleContactChangeTask {
   /** Account to change contact to */
   toAccount?: string;
 }
-export const NichandleContactChangeTask = /*@__PURE__*/ S.suspend(() =>
+const NichandleContactChangeTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     askingAccount: S.optional(S.NullOr(S.String)),
     contactTypes: S.optional(NichandleContactChangeTaskContactTypesList),
@@ -8145,7 +8130,7 @@ export interface GetMeTaskDnsRequest {
   /** Id */
   id: number;
 }
-export const GetMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/task/dns/{id}", code: 200 })),
@@ -8167,11 +8152,11 @@ export type DomainTaskFunctionEnum =
   | "ZoneImport"
   | "ZoneRefresh"
   | "ZoneRestore";
-export const DomainTaskFunctionEnum = S.String;
+const DomainTaskFunctionEnum = S.String;
 
 /** All statuses from a dns task */
 export type DomainTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo";
-export const DomainTaskStatusEnum = S.String;
+const DomainTaskStatusEnum = S.String;
 
 /** DNS task */
 export interface MeDnsTask {
@@ -8200,7 +8185,7 @@ export interface MeDnsTask {
   /** Zone related to the task */
   zone?: string;
 }
-export const MeDnsTask = /*@__PURE__*/ S.suspend(() =>
+const MeDnsTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canAccelerate: S.optional(S.Boolean),
     canCancel: S.optional(S.Boolean),
@@ -8221,7 +8206,7 @@ export interface GetMeTaskDomainRequest {
   /** Id */
   id: number;
 }
-export const GetMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/task/domain/{id}", code: 200 })),
@@ -8235,11 +8220,11 @@ export type DomainOperationStatusEnum =
   | "error"
   | "problem"
   | "todo";
-export const DomainOperationStatusEnum = S.String;
+const DomainOperationStatusEnum = S.String;
 
 /** Operation type */
 export type DomainOperationTypeEnum = "alldom" | "domain";
-export const DomainOperationTypeEnum = S.String;
+const DomainOperationTypeEnum = S.String;
 
 /** Tasks associated to domain */
 export interface DomainTask {
@@ -8270,7 +8255,7 @@ export interface DomainTask {
   /** type of the task */
   type?: DomainOperationTypeEnum;
 }
-export const DomainTask = /*@__PURE__*/ S.suspend(() =>
+const DomainTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canAccelerate: S.optional(S.Boolean),
     canCancel: S.optional(S.Boolean),
@@ -8294,7 +8279,7 @@ export interface GetMeTaskDomainArgumentRequest {
   /** Key */
   key: string;
 }
-export const GetMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -8305,16 +8290,14 @@ export const GetMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Document file format */
 export type DomainDocumentFormatsEnum = "gif" | "jpeg" | "jpg" | "pdf" | "png";
-export const DomainDocumentFormatsEnum = S.String;
-
 /** List of accepted formats */
 export type NichandleDomainTaskArgumentAcceptedFormatsList = Array<DomainDocumentFormatsEnum>;
-export const NichandleDomainTaskArgumentAcceptedFormatsList =
+const NichandleDomainTaskArgumentAcceptedFormatsList =
   NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskArgumentAcceptedFormatsList>;
 
 /** List of accepted values */
 export type NichandleDomainTaskArgumentAcceptedValuesList = Array<string>;
-export const NichandleDomainTaskArgumentAcceptedValuesList =
+const NichandleDomainTaskArgumentAcceptedValuesList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<NichandleDomainTaskArgumentAcceptedValuesList>;
 
 /** Available contact fields */
@@ -8347,11 +8330,9 @@ export type XanderContactFieldEnum =
   | "phone"
   | "spareEmail"
   | "vat";
-export const XanderContactFieldEnum = S.String;
-
 /** List of impacted field names */
 export type NichandleDomainTaskArgumentFieldsList = Array<XanderContactFieldEnum>;
-export const NichandleDomainTaskArgumentFieldsList =
+const NichandleDomainTaskArgumentFieldsList =
   NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskArgumentFieldsList>;
 
 /** Domain operation argument */
@@ -8379,7 +8360,7 @@ export interface NichandleDomainTaskArgument {
   /** Value of the argument */
   value?: string | null;
 }
-export const NichandleDomainTaskArgument = /*@__PURE__*/ S.suspend(() =>
+const NichandleDomainTaskArgument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptedFormats: S.optional(S.NullOr(NichandleDomainTaskArgumentAcceptedFormatsList)),
     acceptedValues: S.optional(S.NullOr(NichandleDomainTaskArgumentAcceptedValuesList)),
@@ -8401,7 +8382,7 @@ export interface GetMeTaskDomainProgressbarRequest {
   /** Id */
   id: number;
 }
-export const GetMeTaskDomainProgressbarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTaskDomainProgressbarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/task/domain/{id}/progressbar", code: 200 })),
@@ -8418,7 +8399,7 @@ export interface DomainOperationStep {
   /** Name of the step */
   step?: string;
 }
-export const DomainOperationStep = /*@__PURE__*/ S.suspend(() =>
+const DomainOperationStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     executionDuration: S.optional(S.Number),
@@ -8428,17 +8409,15 @@ export const DomainOperationStep = /*@__PURE__*/ S.suspend(() =>
 
 /** All the steps of the operation */
 export type NichandleDomainTaskProgressBarFollowUpStepsList = Array<DomainOperationStep>;
-export const NichandleDomainTaskProgressBarFollowUpStepsList = /*@__PURE__*/ S.Array(
+const NichandleDomainTaskProgressBarFollowUpStepsList = /*@__PURE__*/ S.Array(
   DomainOperationStep,
 ) as any as S.Schema<NichandleDomainTaskProgressBarFollowUpStepsList>;
 
 /** Operation actions */
 export type DomainOperationActionEnum = "canCancel" | "canCorrect" | "canRelaunch" | "canReset";
-export const DomainOperationActionEnum = S.String;
-
 /** Action possible on task */
 export type NichandleDomainTaskProgressBarTaskActionsList = Array<DomainOperationActionEnum>;
-export const NichandleDomainTaskProgressBarTaskActionsList =
+const NichandleDomainTaskProgressBarTaskActionsList =
   NichandleContactChangeTaskContactTypesList as any as S.Schema<NichandleDomainTaskProgressBarTaskActionsList>;
 
 /** Domain operation progress */
@@ -8458,7 +8437,7 @@ export interface NichandleDomainTaskProgressBar {
   /** The status of the task */
   taskStatus?: DomainOperationStatusEnum;
 }
-export const NichandleDomainTaskProgressBar = /*@__PURE__*/ S.suspend(() =>
+const NichandleDomainTaskProgressBar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentStep: S.optional(DomainOperationStep),
     expectedDoneDate: S.optional(S.NullOr(S.String)),
@@ -8475,7 +8454,7 @@ export const NichandleDomainTaskProgressBar = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeTaskEmailChangeRequest {
   id: number;
 }
-export const GetMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/task/emailChange/{id}", code: 200 })),
@@ -8486,7 +8465,7 @@ export const GetMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeTelephonyDefaultIpRestrictionRequest {
   id: number;
 }
-export const GetMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/telephony/defaultIpRestriction/{id}", code: 200 })),
@@ -8495,14 +8474,14 @@ export const GetMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetMeTelephonyDefaultIpRestrictionRequest>;
 
 export interface GetMeTelephonySettingsRequest {}
-export const GetMeTelephonySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeTelephonySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/telephony/settings", code: 200 })),
 ).annotate({
   identifier: "GetMeTelephonySettingsRequest",
 }) as any as S.Schema<GetMeTelephonySettingsRequest>;
 
 export interface GetMeVipStatusRequest {}
-export const GetMeVipStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeVipStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/vipStatus", code: 200 })),
 ).annotate({ identifier: "GetMeVipStatusRequest" }) as any as S.Schema<GetMeVipStatusRequest>;
 
@@ -8517,7 +8496,7 @@ export interface NichandleVipStatus {
   /** Is account VIP for Web Universe */
   web?: boolean;
 }
-export const NichandleVipStatus = /*@__PURE__*/ S.suspend(() =>
+const NichandleVipStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloud: S.optional(S.Boolean),
     dedicated: S.optional(S.Boolean),
@@ -8529,7 +8508,7 @@ export const NichandleVipStatus = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeVoucherAccountRequest {
   voucherAccountId: string;
 }
-export const GetMeVoucherAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeVoucherAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voucherAccountId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/voucherAccount/{voucherAccountId}", code: 200 })),
@@ -8544,7 +8523,7 @@ export interface BillingVoucherAccount {
   openDate?: string;
   voucherAccountId?: string;
 }
-export const BillingVoucherAccount = /*@__PURE__*/ S.suspend(() =>
+const BillingVoucherAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.optional(OrderPrice),
     lastUpdate: S.optional(S.String),
@@ -8557,7 +8536,7 @@ export interface GetMeVoucherAccountMovementRequest {
   voucherAccountId: string;
   movementId: number;
 }
-export const GetMeVoucherAccountMovementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeVoucherAccountMovementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voucherAccountId: S.String.pipe(T.Label()),
     movementId: S.Number.pipe(T.Label()),
@@ -8581,7 +8560,7 @@ export type BillingVoucherAccountOperationEnum =
   | "debit"
   | "pre-credit"
   | "pre-debit";
-export const BillingVoucherAccountOperationEnum = S.String;
+const BillingVoucherAccountOperationEnum = S.String;
 
 /** Details about a voucher account */
 export interface BillingVoucherMovement {
@@ -8594,7 +8573,7 @@ export interface BillingVoucherMovement {
   order?: number;
   previousBalance?: OrderPrice;
 }
-export const BillingVoucherMovement = /*@__PURE__*/ S.suspend(() =>
+const BillingVoucherMovement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     balance: S.optional(OrderPrice),
@@ -8610,7 +8589,7 @@ export const BillingVoucherMovement = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeWithdrawalRequest {
   withdrawalId: string;
 }
-export const GetMeWithdrawalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeWithdrawalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     withdrawalId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/withdrawal/{withdrawalId}", code: 200 })),
@@ -8627,7 +8606,7 @@ export interface BillingWithdrawal {
   url?: string;
   withdrawalId?: string;
 }
-export const BillingWithdrawal = /*@__PURE__*/ S.suspend(() =>
+const BillingWithdrawal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(OrderPrice),
     country: S.optional(S.String),
@@ -8644,7 +8623,7 @@ export interface GetMeWithdrawalDetailRequest {
   withdrawalId: string;
   withdrawalDetailId: string;
 }
-export const GetMeWithdrawalDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeWithdrawalDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     withdrawalId: S.String.pipe(T.Label()),
     withdrawalDetailId: S.String.pipe(T.Label()),
@@ -8668,7 +8647,7 @@ export interface BillingWithdrawalDetail {
   unitPrice?: OrderPrice;
   withdrawalDetailId?: string;
 }
-export const BillingWithdrawalDetail = /*@__PURE__*/ S.suspend(() =>
+const BillingWithdrawalDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     domain: S.optional(S.String),
@@ -8682,7 +8661,7 @@ export const BillingWithdrawalDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetMeWithdrawalPaymentRequest {
   withdrawalId: string;
 }
-export const GetMeWithdrawalPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeWithdrawalPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     withdrawalId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/withdrawal/{withdrawalId}/payment", code: 200 })),
@@ -8691,7 +8670,7 @@ export const GetMeWithdrawalPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeWithdrawalPaymentRequest>;
 
 export interface GetMeXdslSettingRequest {}
-export const GetMeXdslSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMeXdslSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/xdsl/setting", code: 200 })),
 ).annotate({ identifier: "GetMeXdslSettingRequest" }) as any as S.Schema<GetMeXdslSettingRequest>;
 
@@ -8704,7 +8683,7 @@ export interface XdslSetting {
   /** Let the modem with vendor configuration. It prevent to apply the config managed by ovh manager */
   resellerModemBasicConfig?: boolean;
 }
-export const XdslSetting = /*@__PURE__*/ S.suspend(() =>
+const XdslSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ispPartnerOrderCollectChoice: S.optional(S.Boolean),
     resellerFastModemShipping: S.optional(S.Boolean),
@@ -8713,79 +8692,67 @@ export const XdslSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "XdslSetting" }) as any as S.Schema<XdslSetting>;
 
 export interface ListMeAbuseRequest {}
-export const ListMeAbuseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeAbuseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/abuse", code: 200 })),
 ).annotate({ identifier: "ListMeAbuseRequest" }) as any as S.Schema<ListMeAbuseRequest>;
 
 export type ListMeAbuseResponseBodyList = Array<string>;
-export const ListMeAbuseResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeAbuseResponseBodyList>;
-
 export type ListMeAbuseResponse = ListMeAbuseResponseBodyList;
-export const ListMeAbuseResponse = GetCertificatesResponse as any as S.Schema<ListMeAbuseResponse>;
+const ListMeAbuseResponse = GetCertificatesResponse as any as S.Schema<ListMeAbuseResponse>;
 
 export interface ListMeAccessRestrictionIpRequest {}
-export const ListMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/ip", code: 200 })),
 ).annotate({
   identifier: "ListMeAccessRestrictionIpRequest",
 }) as any as S.Schema<ListMeAccessRestrictionIpRequest>;
 
 export type ListMeAccessRestrictionIpResponseBodyList = Array<number>;
-export const ListMeAccessRestrictionIpResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeAccessRestrictionIpResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListMeAccessRestrictionIpResponseBodyList>;
 
 export type ListMeAccessRestrictionIpResponse = ListMeAccessRestrictionIpResponseBodyList;
-export const ListMeAccessRestrictionIpResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeAccessRestrictionIpResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeAccessRestrictionIpResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeAccessRestrictionIpResponse",
 }) as any as S.Schema<ListMeAccessRestrictionIpResponse>;
 
 export interface ListMeAccessRestrictionSmsRequest {}
-export const ListMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/sms", code: 200 })),
 ).annotate({
   identifier: "ListMeAccessRestrictionSmsRequest",
 }) as any as S.Schema<ListMeAccessRestrictionSmsRequest>;
 
 export type ListMeAccessRestrictionSmsResponseBodyList = Array<number>;
-export const ListMeAccessRestrictionSmsResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAccessRestrictionSmsResponseBodyList>;
-
 export type ListMeAccessRestrictionSmsResponse = ListMeAccessRestrictionSmsResponseBodyList;
-export const ListMeAccessRestrictionSmsResponse =
+const ListMeAccessRestrictionSmsResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionSmsResponse>;
 
 export interface ListMeAccessRestrictionTotpRequest {}
-export const ListMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/totp", code: 200 })),
 ).annotate({
   identifier: "ListMeAccessRestrictionTotpRequest",
 }) as any as S.Schema<ListMeAccessRestrictionTotpRequest>;
 
 export type ListMeAccessRestrictionTotpResponseBodyList = Array<number>;
-export const ListMeAccessRestrictionTotpResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAccessRestrictionTotpResponseBodyList>;
-
 export type ListMeAccessRestrictionTotpResponse = ListMeAccessRestrictionTotpResponseBodyList;
-export const ListMeAccessRestrictionTotpResponse =
+const ListMeAccessRestrictionTotpResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionTotpResponse>;
 
 export interface ListMeAccessRestrictionU2fRequest {}
-export const ListMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/accessRestriction/u2f", code: 200 })),
 ).annotate({
   identifier: "ListMeAccessRestrictionU2fRequest",
 }) as any as S.Schema<ListMeAccessRestrictionU2fRequest>;
 
 export type ListMeAccessRestrictionU2fResponseBodyList = Array<number>;
-export const ListMeAccessRestrictionU2fResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAccessRestrictionU2fResponseBodyList>;
-
 export type ListMeAccessRestrictionU2fResponse = ListMeAccessRestrictionU2fResponseBodyList;
-export const ListMeAccessRestrictionU2fResponse =
+const ListMeAccessRestrictionU2fResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeAccessRestrictionU2fResponse>;
 
 export interface ListMeAgreementsRequest {
@@ -8794,7 +8761,7 @@ export interface ListMeAgreementsRequest {
   /** Filter the value of contractId property (like) */
   contractId?: number;
 }
-export const ListMeAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agreed: S.optional(AgreementsAgreementStateEnum.pipe(T.Query())),
     contractId: S.optional(S.Number.pipe(T.Query())),
@@ -8802,25 +8769,22 @@ export const ListMeAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeAgreementsRequest" }) as any as S.Schema<ListMeAgreementsRequest>;
 
 export type ListMeAgreementsResponseBodyList = Array<number>;
-export const ListMeAgreementsResponseBodyList =
+const ListMeAgreementsResponseBodyList =
   ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeAgreementsResponseBodyList>;
 
 export type ListMeAgreementsResponse = ListMeAgreementsResponseBodyList;
-export const ListMeAgreementsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeAgreementsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeAgreementsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMeAgreementsResponse" }) as any as S.Schema<ListMeAgreementsResponse>;
 
 export interface ListMeApplicationRequest {}
-export const ListMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/api/application", code: 200 })),
 ).annotate({ identifier: "ListMeApplicationRequest" }) as any as S.Schema<ListMeApplicationRequest>;
 
 export type ListMeApplicationResponseBodyList = Array<number>;
-export const ListMeApplicationResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeApplicationResponseBodyList>;
-
 export type ListMeApplicationResponse = ListMeApplicationResponseBodyList;
-export const ListMeApplicationResponse =
+const ListMeApplicationResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeApplicationResponse>;
 
 export interface ListMeBillRequest {
@@ -8833,7 +8797,7 @@ export interface ListMeBillRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
-export const ListMeBillRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(BillingCategoryEnum.pipe(T.Query())),
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
@@ -8843,18 +8807,15 @@ export const ListMeBillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeBillRequest" }) as any as S.Schema<ListMeBillRequest>;
 
 export type ListMeBillResponseBodyList = Array<string>;
-export const ListMeBillResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeBillResponseBodyList>;
-
 export type ListMeBillResponse = ListMeBillResponseBodyList;
-export const ListMeBillResponse = GetCertificatesResponse as any as S.Schema<ListMeBillResponse>;
+const ListMeBillResponse = GetCertificatesResponse as any as S.Schema<ListMeBillResponse>;
 
 export interface ListMeBillDebtOperationRequest {
   billId: string;
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
-export const ListMeBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
     depositOrderId: S.optional(S.Number.pipe(T.Query())),
@@ -8864,28 +8825,25 @@ export const ListMeBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeBillDebtOperationRequest>;
 
 export type ListMeBillDebtOperationResponseBodyList = Array<number>;
-export const ListMeBillDebtOperationResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillDebtOperationResponseBodyList>;
-
 export type ListMeBillDebtOperationResponse = ListMeBillDebtOperationResponseBodyList;
-export const ListMeBillDebtOperationResponse =
+const ListMeBillDebtOperationResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillDebtOperationResponse>;
 
 export interface ListMeBillDetailsRequest {
   billId: string;
 }
-export const ListMeBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/bill/{billId}/details", code: 200 })),
 ).annotate({ identifier: "ListMeBillDetailsRequest" }) as any as S.Schema<ListMeBillDetailsRequest>;
 
 export type ListMeBillDetailsResponseBodyList = Array<string>;
-export const ListMeBillDetailsResponseBodyList =
+const ListMeBillDetailsResponseBodyList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeBillDetailsResponseBodyList>;
 
 export type ListMeBillDetailsResponse = ListMeBillDetailsResponseBodyList;
-export const ListMeBillDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeBillDetailsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeBillDetailsResponse",
@@ -8897,7 +8855,7 @@ export interface ListMeBillingGroupRequest {
   /** Filter by Service ID */
   serviceId?: number;
 }
-export const ListMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     serviceId: S.optional(S.Number.pipe(T.Query())),
@@ -8907,18 +8865,15 @@ export const ListMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeBillingGroupRequest>;
 
 export type ListMeBillingGroupResponseBodyList = Array<number>;
-export const ListMeBillingGroupResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillingGroupResponseBodyList>;
-
 export type ListMeBillingGroupResponse = ListMeBillingGroupResponseBodyList;
-export const ListMeBillingGroupResponse =
+const ListMeBillingGroupResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingGroupResponse>;
 
 export interface ListMeBillingGroupServiceRequest {
   /** Group ID */
   groupId: number;
 }
-export const ListMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/billing/group/{groupId}/service", code: 200 })),
@@ -8927,18 +8882,15 @@ export const ListMeBillingGroupServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeBillingGroupServiceRequest>;
 
 export type ListMeBillingGroupServiceResponseBodyList = Array<number>;
-export const ListMeBillingGroupServiceResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillingGroupServiceResponseBodyList>;
-
 export type ListMeBillingGroupServiceResponse = ListMeBillingGroupServiceResponseBodyList;
-export const ListMeBillingGroupServiceResponse =
+const ListMeBillingGroupServiceResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingGroupServiceResponse>;
 
 export interface ListMeBillingPurchaseOrderRequest {
   /** Billing Group Identifier */
   billingGroupId?: number;
 }
-export const ListMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingGroupId: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/me/billing/purchaseOrder", code: 200 })),
@@ -8947,26 +8899,20 @@ export const ListMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeBillingPurchaseOrderRequest>;
 
 export type ListMeBillingPurchaseOrderResponseBodyList = Array<number>;
-export const ListMeBillingPurchaseOrderResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillingPurchaseOrderResponseBodyList>;
-
 export type ListMeBillingPurchaseOrderResponse = ListMeBillingPurchaseOrderResponseBodyList;
-export const ListMeBillingPurchaseOrderResponse =
+const ListMeBillingPurchaseOrderResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingPurchaseOrderResponse>;
 
 export interface ListMeBillingReportConsumptionRequest {}
-export const ListMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillingReportConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/billing/report/consumption", code: 200 })),
 ).annotate({
   identifier: "ListMeBillingReportConsumptionRequest",
 }) as any as S.Schema<ListMeBillingReportConsumptionRequest>;
 
 export type ListMeBillingReportConsumptionResponseBodyList = Array<string>;
-export const ListMeBillingReportConsumptionResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeBillingReportConsumptionResponseBodyList>;
-
 export type ListMeBillingReportConsumptionResponse = ListMeBillingReportConsumptionResponseBodyList;
-export const ListMeBillingReportConsumptionResponse =
+const ListMeBillingReportConsumptionResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeBillingReportConsumptionResponse>;
 
 export interface ListMeBillingTaskRequest {
@@ -8975,7 +8921,7 @@ export interface ListMeBillingTaskRequest {
   /** Filter tasks by status */
   status?: MeBillingTasksTaskStatusEnum | (string & {});
 }
-export const ListMeBillingTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeBillingTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(MeBillingTasksTaskNameEnum.pipe(T.Query())),
     status: S.optional(MeBillingTasksTaskStatusEnum.pipe(T.Query())),
@@ -8983,44 +8929,41 @@ export const ListMeBillingTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeBillingTaskRequest" }) as any as S.Schema<ListMeBillingTaskRequest>;
 
 export type ListMeBillingTaskResponseBodyList = Array<number>;
-export const ListMeBillingTaskResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeBillingTaskResponseBodyList>;
-
 export type ListMeBillingTaskResponse = ListMeBillingTaskResponseBodyList;
-export const ListMeBillingTaskResponse =
+const ListMeBillingTaskResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeBillingTaskResponse>;
 
 export interface ListMeCarbonCalculatorTaskRequest {}
-export const ListMeCarbonCalculatorTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeCarbonCalculatorTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/carbonCalculator/task", code: 200 })),
 ).annotate({
   identifier: "ListMeCarbonCalculatorTaskRequest",
 }) as any as S.Schema<ListMeCarbonCalculatorTaskRequest>;
 
 export type ListMeCarbonCalculatorTaskResponseBodyList = Array<CarbonCalculatorTask>;
-export const ListMeCarbonCalculatorTaskResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeCarbonCalculatorTaskResponseBodyList = /*@__PURE__*/ S.Array(
   CarbonCalculatorTask,
 ) as any as S.Schema<ListMeCarbonCalculatorTaskResponseBodyList>;
 
 export type ListMeCarbonCalculatorTaskResponse = ListMeCarbonCalculatorTaskResponseBodyList;
-export const ListMeCarbonCalculatorTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeCarbonCalculatorTaskResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeCarbonCalculatorTaskResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeCarbonCalculatorTaskResponse",
 }) as any as S.Schema<ListMeCarbonCalculatorTaskResponse>;
 
 export interface ListMeConsentRequest {}
-export const ListMeConsentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeConsentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/consent", code: 200 })),
 ).annotate({ identifier: "ListMeConsentRequest" }) as any as S.Schema<ListMeConsentRequest>;
 
 export type ListMeConsentResponseBodyList = Array<MeConsentCampaign>;
-export const ListMeConsentResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeConsentResponseBodyList = /*@__PURE__*/ S.Array(
   MeConsentCampaign,
 ) as any as S.Schema<ListMeConsentResponseBodyList>;
 
 export type ListMeConsentResponse = ListMeConsentResponseBodyList;
-export const ListMeConsentResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeConsentResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeConsentResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMeConsentResponse" }) as any as S.Schema<ListMeConsentResponse>;
 
@@ -9028,7 +8971,7 @@ export interface ListMeConsentDecisionRequest {
   /** Campaign name */
   campaignName: string;
 }
-export const ListMeConsentDecisionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeConsentDecisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaignName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/consent/{campaignName}/decision", code: 200 })),
@@ -9043,7 +8986,7 @@ export interface MeConsentDecision {
   /** Consent decision value */
   value: boolean;
 }
-export const MeConsentDecision = /*@__PURE__*/ S.suspend(() =>
+const MeConsentDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     value: S.Boolean,
@@ -9052,7 +8995,7 @@ export const MeConsentDecision = /*@__PURE__*/ S.suspend(() =>
 
 /** Consent decisions history for this campaign */
 export type MeConsentConsentHistoryList = Array<MeConsentDecision>;
-export const MeConsentConsentHistoryList = /*@__PURE__*/ S.Array(
+const MeConsentConsentHistoryList = /*@__PURE__*/ S.Array(
   MeConsentDecision,
 ) as any as S.Schema<MeConsentConsentHistoryList>;
 
@@ -9067,7 +9010,7 @@ export interface MeConsentConsent {
   /** Current consent value */
   value?: boolean;
 }
-export const MeConsentConsent = /*@__PURE__*/ S.suspend(() =>
+const MeConsentConsent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaign: S.optional(S.String),
     history: S.optional(MeConsentConsentHistoryList),
@@ -9077,7 +9020,7 @@ export const MeConsentConsent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MeConsentConsent" }) as any as S.Schema<MeConsentConsent>;
 
 export interface ListMeConsumptionUsageCurrentRequest {}
-export const ListMeConsumptionUsageCurrentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeConsumptionUsageCurrentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/consumption/usage/current", code: 200 })),
 ).annotate({
   identifier: "ListMeConsumptionUsageCurrentRequest",
@@ -9090,7 +9033,7 @@ export interface MeConsumptionPrice {
   value?: number;
   valueInUcents?: number;
 }
-export const MeConsumptionPrice = /*@__PURE__*/ S.suspend(() =>
+const MeConsumptionPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     text: S.optional(S.String),
@@ -9108,7 +9051,7 @@ export interface MeConsumptionTransactionElementDetail {
   /** Unique ID associated to one service element */
   unique_id?: string | null;
 }
-export const MeConsumptionTransactionElementDetail = /*@__PURE__*/ S.suspend(() =>
+const MeConsumptionTransactionElementDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     price: S.optional(MeConsumptionPrice),
     quantity: S.optional(S.Number),
@@ -9121,7 +9064,7 @@ export const MeConsumptionTransactionElementDetail = /*@__PURE__*/ S.suspend(() 
 /** List of consumption details for this planCode */
 export type MeConsumptionTransactionElementDetailsList =
   Array<MeConsumptionTransactionElementDetail>;
-export const MeConsumptionTransactionElementDetailsList = /*@__PURE__*/ S.Array(
+const MeConsumptionTransactionElementDetailsList = /*@__PURE__*/ S.Array(
   MeConsumptionTransactionElementDetail,
 ) as any as S.Schema<MeConsumptionTransactionElementDetailsList>;
 
@@ -9138,7 +9081,7 @@ export interface MeConsumptionTransactionElement {
   /** Consumption quantity */
   quantity?: number;
 }
-export const MeConsumptionTransactionElement = /*@__PURE__*/ S.suspend(() =>
+const MeConsumptionTransactionElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(MeConsumptionTransactionElementDetailsList),
     planCode: S.optional(S.String),
@@ -9152,7 +9095,7 @@ export const MeConsumptionTransactionElement = /*@__PURE__*/ S.suspend(() =>
 
 /** List of product plan code consumption */
 export type MeConsumptionTransactionElementsList = Array<MeConsumptionTransactionElement>;
-export const MeConsumptionTransactionElementsList = /*@__PURE__*/ S.Array(
+const MeConsumptionTransactionElementsList = /*@__PURE__*/ S.Array(
   MeConsumptionTransactionElement,
 ) as any as S.Schema<MeConsumptionTransactionElementsList>;
 
@@ -9175,7 +9118,7 @@ export interface MeConsumptionTransaction {
   /** Service ID */
   serviceId?: number;
 }
-export const MeConsumptionTransaction = /*@__PURE__*/ S.suspend(() =>
+const MeConsumptionTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beginDate: S.optional(S.String),
     creationDate: S.optional(S.NullOr(S.String)),
@@ -9189,30 +9132,27 @@ export const MeConsumptionTransaction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MeConsumptionTransaction" }) as any as S.Schema<MeConsumptionTransaction>;
 
 export type ListMeConsumptionUsageCurrentResponseBodyList = Array<MeConsumptionTransaction>;
-export const ListMeConsumptionUsageCurrentResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeConsumptionUsageCurrentResponseBodyList = /*@__PURE__*/ S.Array(
   MeConsumptionTransaction,
 ) as any as S.Schema<ListMeConsumptionUsageCurrentResponseBodyList>;
 
 export type ListMeConsumptionUsageCurrentResponse = ListMeConsumptionUsageCurrentResponseBodyList;
-export const ListMeConsumptionUsageCurrentResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeConsumptionUsageCurrentResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeConsumptionUsageCurrentResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeConsumptionUsageCurrentResponse",
 }) as any as S.Schema<ListMeConsumptionUsageCurrentResponse>;
 
 export interface ListMeConsumptionUsageForecastRequest {}
-export const ListMeConsumptionUsageForecastRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeConsumptionUsageForecastRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/consumption/usage/forecast", code: 200 })),
 ).annotate({
   identifier: "ListMeConsumptionUsageForecastRequest",
 }) as any as S.Schema<ListMeConsumptionUsageForecastRequest>;
 
 export type ListMeConsumptionUsageForecastResponseBodyList = Array<MeConsumptionTransaction>;
-export const ListMeConsumptionUsageForecastResponseBodyList =
-  ListMeConsumptionUsageCurrentResponseBodyList as any as S.Schema<ListMeConsumptionUsageForecastResponseBodyList>;
-
 export type ListMeConsumptionUsageForecastResponse = ListMeConsumptionUsageForecastResponseBodyList;
-export const ListMeConsumptionUsageForecastResponse =
+const ListMeConsumptionUsageForecastResponse =
   ListMeConsumptionUsageCurrentResponse as any as S.Schema<ListMeConsumptionUsageForecastResponse>;
 
 export interface ListMeConsumptionUsageHistoryRequest {
@@ -9221,7 +9161,7 @@ export interface ListMeConsumptionUsageHistoryRequest {
   /** End date */
   endDate: string;
 }
-export const ListMeConsumptionUsageHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeConsumptionUsageHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beginDate: S.String.pipe(T.Query()),
     endDate: S.String.pipe(T.Query()),
@@ -9231,31 +9171,24 @@ export const ListMeConsumptionUsageHistoryRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListMeConsumptionUsageHistoryRequest>;
 
 export type ListMeConsumptionUsageHistoryResponseBodyList = Array<MeConsumptionTransaction>;
-export const ListMeConsumptionUsageHistoryResponseBodyList =
-  ListMeConsumptionUsageCurrentResponseBodyList as any as S.Schema<ListMeConsumptionUsageHistoryResponseBodyList>;
-
 export type ListMeConsumptionUsageHistoryResponse = ListMeConsumptionUsageHistoryResponseBodyList;
-export const ListMeConsumptionUsageHistoryResponse =
+const ListMeConsumptionUsageHistoryResponse =
   ListMeConsumptionUsageCurrentResponse as any as S.Schema<ListMeConsumptionUsageHistoryResponse>;
 
 export interface ListMeContactRequest {}
-export const ListMeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/contact", code: 200 })),
 ).annotate({ identifier: "ListMeContactRequest" }) as any as S.Schema<ListMeContactRequest>;
 
 export type ListMeContactResponseBodyList = Array<number>;
-export const ListMeContactResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeContactResponseBodyList>;
-
 export type ListMeContactResponse = ListMeContactResponseBodyList;
-export const ListMeContactResponse =
-  ListMeAgreementsResponse as any as S.Schema<ListMeContactResponse>;
+const ListMeContactResponse = ListMeAgreementsResponse as any as S.Schema<ListMeContactResponse>;
 
 export interface ListMeContactFieldsRequest {
   /** Contact ID */
   contactId: number;
 }
-export const ListMeContactFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeContactFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/contact/{contactId}/fields", code: 200 })),
@@ -9272,7 +9205,7 @@ export interface MeContactFieldInformation {
   /** Indicates if the field can't be edited */
   readOnly?: boolean;
 }
-export const MeContactFieldInformation = /*@__PURE__*/ S.suspend(() =>
+const MeContactFieldInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldName: S.optional(S.String),
     mandatory: S.optional(S.Boolean),
@@ -9283,12 +9216,12 @@ export const MeContactFieldInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MeContactFieldInformation>;
 
 export type ListMeContactFieldsResponseBodyList = Array<MeContactFieldInformation>;
-export const ListMeContactFieldsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeContactFieldsResponseBodyList = /*@__PURE__*/ S.Array(
   MeContactFieldInformation,
 ) as any as S.Schema<ListMeContactFieldsResponseBodyList>;
 
 export type ListMeContactFieldsResponse = ListMeContactFieldsResponseBodyList;
-export const ListMeContactFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeContactFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeContactFieldsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeContactFieldsResponse",
@@ -9304,7 +9237,7 @@ export interface ListMeCorrectiveInvoiceRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
-export const ListMeCorrectiveInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeCorrectiveInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(BillingCategoryEnum.pipe(T.Query())),
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
@@ -9316,11 +9249,8 @@ export const ListMeCorrectiveInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeCorrectiveInvoiceRequest>;
 
 export type ListMeCorrectiveInvoiceResponseBodyList = Array<string>;
-export const ListMeCorrectiveInvoiceResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeCorrectiveInvoiceResponseBodyList>;
-
 export type ListMeCorrectiveInvoiceResponse = ListMeCorrectiveInvoiceResponseBodyList;
-export const ListMeCorrectiveInvoiceResponse =
+const ListMeCorrectiveInvoiceResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeCorrectiveInvoiceResponse>;
 
 export interface ListMeCorrectiveInvoiceDebtOperationRequest {
@@ -9328,7 +9258,7 @@ export interface ListMeCorrectiveInvoiceDebtOperationRequest {
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
-export const ListMeCorrectiveInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeCorrectiveInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceId: S.String.pipe(T.Label()),
     depositOrderId: S.optional(S.Number.pipe(T.Query())),
@@ -9344,18 +9274,15 @@ export const ListMeCorrectiveInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationRequest>;
 
 export type ListMeCorrectiveInvoiceDebtOperationResponseBodyList = Array<number>;
-export const ListMeCorrectiveInvoiceDebtOperationResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationResponseBodyList>;
-
 export type ListMeCorrectiveInvoiceDebtOperationResponse =
   ListMeCorrectiveInvoiceDebtOperationResponseBodyList;
-export const ListMeCorrectiveInvoiceDebtOperationResponse =
+const ListMeCorrectiveInvoiceDebtOperationResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeCorrectiveInvoiceDebtOperationResponse>;
 
 export interface ListMeCorrectiveInvoiceDetailsRequest {
   correctiveInvoiceId: string;
 }
-export const ListMeCorrectiveInvoiceDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeCorrectiveInvoiceDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctiveInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -9370,11 +9297,8 @@ export const ListMeCorrectiveInvoiceDetailsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeCorrectiveInvoiceDetailsRequest>;
 
 export type ListMeCorrectiveInvoiceDetailsResponseBodyList = Array<string>;
-export const ListMeCorrectiveInvoiceDetailsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeCorrectiveInvoiceDetailsResponseBodyList>;
-
 export type ListMeCorrectiveInvoiceDetailsResponse = ListMeCorrectiveInvoiceDetailsResponseBodyList;
-export const ListMeCorrectiveInvoiceDetailsResponse =
+const ListMeCorrectiveInvoiceDetailsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeCorrectiveInvoiceDetailsResponse>;
 
 export interface ListMeCredentialRequest {
@@ -9383,7 +9307,7 @@ export interface ListMeCredentialRequest {
   /** Filter by status */
   status?: AuthCredentialStateEnum | (string & {});
 }
-export const ListMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.optional(S.Number.pipe(T.Query())),
     status: S.optional(AuthCredentialStateEnum.pipe(T.Query())),
@@ -9391,18 +9315,15 @@ export const ListMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeCredentialRequest" }) as any as S.Schema<ListMeCredentialRequest>;
 
 export type ListMeCredentialResponseBodyList = Array<number>;
-export const ListMeCredentialResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeCredentialResponseBodyList>;
-
 export type ListMeCredentialResponse = ListMeCredentialResponseBodyList;
-export const ListMeCredentialResponse =
+const ListMeCredentialResponse =
   ListMeAgreementsResponse as any as S.Schema<ListMeCredentialResponse>;
 
 export interface ListMeCreditBalanceRequest {
   /** Filter by balance type */
   type?: MeCreditBalanceTypeEnum | (string & {});
 }
-export const ListMeCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(MeCreditBalanceTypeEnum.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/me/credit/balance", code: 200 })),
@@ -9411,18 +9332,15 @@ export const ListMeCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeCreditBalanceRequest>;
 
 export type ListMeCreditBalanceResponseBodyList = Array<string>;
-export const ListMeCreditBalanceResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeCreditBalanceResponseBodyList>;
-
 export type ListMeCreditBalanceResponse = ListMeCreditBalanceResponseBodyList;
-export const ListMeCreditBalanceResponse =
+const ListMeCreditBalanceResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeCreditBalanceResponse>;
 
 export interface ListMeCreditBalanceMovementRequest {
   /** Balance name */
   balanceName: string;
 }
-export const ListMeCreditBalanceMovementRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeCreditBalanceMovementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balanceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/credit/balance/{balanceName}/movement", code: 200 })),
@@ -9431,26 +9349,20 @@ export const ListMeCreditBalanceMovementRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeCreditBalanceMovementRequest>;
 
 export type ListMeCreditBalanceMovementResponseBodyList = Array<number>;
-export const ListMeCreditBalanceMovementResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeCreditBalanceMovementResponseBodyList>;
-
 export type ListMeCreditBalanceMovementResponse = ListMeCreditBalanceMovementResponseBodyList;
-export const ListMeCreditBalanceMovementResponse =
+const ListMeCreditBalanceMovementResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeCreditBalanceMovementResponse>;
 
 export interface ListMeDebtAccountDebtRequest {}
-export const ListMeDebtAccountDebtRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDebtAccountDebtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/debtAccount/debt", code: 200 })),
 ).annotate({
   identifier: "ListMeDebtAccountDebtRequest",
 }) as any as S.Schema<ListMeDebtAccountDebtRequest>;
 
 export type ListMeDebtAccountDebtResponseBodyList = Array<number>;
-export const ListMeDebtAccountDebtResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeDebtAccountDebtResponseBodyList>;
-
 export type ListMeDebtAccountDebtResponse = ListMeDebtAccountDebtResponseBodyList;
-export const ListMeDebtAccountDebtResponse =
+const ListMeDebtAccountDebtResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDebtAccountDebtResponse>;
 
 export interface ListMeDebtAccountDebtOperationRequest {
@@ -9458,7 +9370,7 @@ export interface ListMeDebtAccountDebtOperationRequest {
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
-export const ListMeDebtAccountDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDebtAccountDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debtId: S.Number.pipe(T.Label()),
     depositOrderId: S.optional(S.Number.pipe(T.Query())),
@@ -9468,11 +9380,8 @@ export const ListMeDebtAccountDebtOperationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeDebtAccountDebtOperationRequest>;
 
 export type ListMeDebtAccountDebtOperationResponseBodyList = Array<number>;
-export const ListMeDebtAccountDebtOperationResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeDebtAccountDebtOperationResponseBodyList>;
-
 export type ListMeDebtAccountDebtOperationResponse = ListMeDebtAccountDebtOperationResponseBodyList;
-export const ListMeDebtAccountDebtOperationResponse =
+const ListMeDebtAccountDebtOperationResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDebtAccountDebtOperationResponse>;
 
 export interface ListMeDepositRequest {
@@ -9483,7 +9392,7 @@ export interface ListMeDepositRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
-export const ListMeDepositRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDepositRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
     date_to: S.optional(S.String.pipe(T.Query("date.to"))),
@@ -9492,17 +9401,13 @@ export const ListMeDepositRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeDepositRequest" }) as any as S.Schema<ListMeDepositRequest>;
 
 export type ListMeDepositResponseBodyList = Array<string>;
-export const ListMeDepositResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDepositResponseBodyList>;
-
 export type ListMeDepositResponse = ListMeDepositResponseBodyList;
-export const ListMeDepositResponse =
-  GetCertificatesResponse as any as S.Schema<ListMeDepositResponse>;
+const ListMeDepositResponse = GetCertificatesResponse as any as S.Schema<ListMeDepositResponse>;
 
 export interface ListMeDepositDetailsRequest {
   depositId: string;
 }
-export const ListMeDepositDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDepositDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/deposit/{depositId}/details", code: 200 })),
@@ -9511,11 +9416,8 @@ export const ListMeDepositDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDepositDetailsRequest>;
 
 export type ListMeDepositDetailsResponseBodyList = Array<string>;
-export const ListMeDepositDetailsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDepositDetailsResponseBodyList>;
-
 export type ListMeDepositDetailsResponse = ListMeDepositDetailsResponseBodyList;
-export const ListMeDepositDetailsResponse =
+const ListMeDepositDetailsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeDepositDetailsResponse>;
 
 export interface ListMeDepositPaidBillDebtOperationRequest {
@@ -9524,7 +9426,7 @@ export interface ListMeDepositPaidBillDebtOperationRequest {
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
-export const ListMeDepositPaidBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDepositPaidBillDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     billId: S.String.pipe(T.Label()),
@@ -9541,19 +9443,16 @@ export const ListMeDepositPaidBillDebtOperationRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListMeDepositPaidBillDebtOperationRequest>;
 
 export type ListMeDepositPaidBillDebtOperationResponseBodyList = Array<number>;
-export const ListMeDepositPaidBillDebtOperationResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeDepositPaidBillDebtOperationResponseBodyList>;
-
 export type ListMeDepositPaidBillDebtOperationResponse =
   ListMeDepositPaidBillDebtOperationResponseBodyList;
-export const ListMeDepositPaidBillDebtOperationResponse =
+const ListMeDepositPaidBillDebtOperationResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDepositPaidBillDebtOperationResponse>;
 
 export interface ListMeDepositPaidBillDetailsRequest {
   depositId: string;
   billId: string;
 }
-export const ListMeDepositPaidBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDepositPaidBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
     billId: S.String.pipe(T.Label()),
@@ -9565,17 +9464,14 @@ export const ListMeDepositPaidBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDepositPaidBillDetailsRequest>;
 
 export type ListMeDepositPaidBillDetailsResponseBodyList = Array<string>;
-export const ListMeDepositPaidBillDetailsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDepositPaidBillDetailsResponseBodyList>;
-
 export type ListMeDepositPaidBillDetailsResponse = ListMeDepositPaidBillDetailsResponseBodyList;
-export const ListMeDepositPaidBillDetailsResponse =
+const ListMeDepositPaidBillDetailsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeDepositPaidBillDetailsResponse>;
 
 export interface ListMeDepositPaidBillsRequest {
   depositId: string;
 }
-export const ListMeDepositPaidBillsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDepositPaidBillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depositId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/deposit/{depositId}/paidBills", code: 200 })),
@@ -9584,25 +9480,18 @@ export const ListMeDepositPaidBillsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDepositPaidBillsRequest>;
 
 export type ListMeDepositPaidBillsResponseBodyList = Array<string>;
-export const ListMeDepositPaidBillsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDepositPaidBillsResponseBodyList>;
-
 export type ListMeDepositPaidBillsResponse = ListMeDepositPaidBillsResponseBodyList;
-export const ListMeDepositPaidBillsResponse =
+const ListMeDepositPaidBillsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeDepositPaidBillsResponse>;
 
 export interface ListMeDocumentRequest {}
-export const ListMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/document", code: 200 })),
 ).annotate({ identifier: "ListMeDocumentRequest" }) as any as S.Schema<ListMeDocumentRequest>;
 
 export type ListMeDocumentResponseBodyList = Array<string>;
-export const ListMeDocumentResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDocumentResponseBodyList>;
-
 export type ListMeDocumentResponse = ListMeDocumentResponseBodyList;
-export const ListMeDocumentResponse =
-  GetCertificatesResponse as any as S.Schema<ListMeDocumentResponse>;
+const ListMeDocumentResponse = GetCertificatesResponse as any as S.Schema<ListMeDocumentResponse>;
 
 export interface ListMeDownPaymentInvoiceRequest {
   /** Filter the value of category property (=) */
@@ -9614,7 +9503,7 @@ export interface ListMeDownPaymentInvoiceRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
-export const ListMeDownPaymentInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDownPaymentInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(BillingCategoryEnum.pipe(T.Query())),
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
@@ -9626,11 +9515,8 @@ export const ListMeDownPaymentInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeDownPaymentInvoiceRequest>;
 
 export type ListMeDownPaymentInvoiceResponseBodyList = Array<string>;
-export const ListMeDownPaymentInvoiceResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDownPaymentInvoiceResponseBodyList>;
-
 export type ListMeDownPaymentInvoiceResponse = ListMeDownPaymentInvoiceResponseBodyList;
-export const ListMeDownPaymentInvoiceResponse =
+const ListMeDownPaymentInvoiceResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeDownPaymentInvoiceResponse>;
 
 export interface ListMeDownPaymentInvoiceDebtOperationRequest {
@@ -9638,7 +9524,7 @@ export interface ListMeDownPaymentInvoiceDebtOperationRequest {
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
-export const ListMeDownPaymentInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDownPaymentInvoiceDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downPaymentInvoiceId: S.String.pipe(T.Label()),
     depositOrderId: S.optional(S.Number.pipe(T.Query())),
@@ -9654,18 +9540,15 @@ export const ListMeDownPaymentInvoiceDebtOperationRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationRequest>;
 
 export type ListMeDownPaymentInvoiceDebtOperationResponseBodyList = Array<number>;
-export const ListMeDownPaymentInvoiceDebtOperationResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationResponseBodyList>;
-
 export type ListMeDownPaymentInvoiceDebtOperationResponse =
   ListMeDownPaymentInvoiceDebtOperationResponseBodyList;
-export const ListMeDownPaymentInvoiceDebtOperationResponse =
+const ListMeDownPaymentInvoiceDebtOperationResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeDownPaymentInvoiceDebtOperationResponse>;
 
 export interface ListMeDownPaymentInvoiceDetailsRequest {
   downPaymentInvoiceId: string;
 }
-export const ListMeDownPaymentInvoiceDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeDownPaymentInvoiceDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downPaymentInvoiceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -9680,27 +9563,21 @@ export const ListMeDownPaymentInvoiceDetailsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListMeDownPaymentInvoiceDetailsRequest>;
 
 export type ListMeDownPaymentInvoiceDetailsResponseBodyList = Array<string>;
-export const ListMeDownPaymentInvoiceDetailsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeDownPaymentInvoiceDetailsResponseBodyList>;
-
 export type ListMeDownPaymentInvoiceDetailsResponse =
   ListMeDownPaymentInvoiceDetailsResponseBodyList;
-export const ListMeDownPaymentInvoiceDetailsResponse =
+const ListMeDownPaymentInvoiceDetailsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeDownPaymentInvoiceDetailsResponse>;
 
 export interface ListMeFaxCustomDomainsRequest {}
-export const ListMeFaxCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeFaxCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/fax/customDomains", code: 200 })),
 ).annotate({
   identifier: "ListMeFaxCustomDomainsRequest",
 }) as any as S.Schema<ListMeFaxCustomDomainsRequest>;
 
 export type ListMeFaxCustomDomainsResponseBodyList = Array<number>;
-export const ListMeFaxCustomDomainsResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeFaxCustomDomainsResponseBodyList>;
-
 export type ListMeFaxCustomDomainsResponse = ListMeFaxCustomDomainsResponseBodyList;
-export const ListMeFaxCustomDomainsResponse =
+const ListMeFaxCustomDomainsResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeFaxCustomDomainsResponse>;
 
 export interface ListMeFidelityAccountMovementsRequest {
@@ -9709,7 +9586,7 @@ export interface ListMeFidelityAccountMovementsRequest {
   /** Filter the value of date property (<=) */
   date_to?: string;
 }
-export const ListMeFidelityAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeFidelityAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
     date_to: S.optional(S.String.pipe(T.Query("date.to"))),
@@ -9719,33 +9596,27 @@ export const ListMeFidelityAccountMovementsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMeFidelityAccountMovementsRequest>;
 
 export type ListMeFidelityAccountMovementsResponseBodyList = Array<number>;
-export const ListMeFidelityAccountMovementsResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeFidelityAccountMovementsResponseBodyList>;
-
 export type ListMeFidelityAccountMovementsResponse = ListMeFidelityAccountMovementsResponseBodyList;
-export const ListMeFidelityAccountMovementsResponse =
+const ListMeFidelityAccountMovementsResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeFidelityAccountMovementsResponse>;
 
 export interface ListMeIdentityGroupRequest {}
-export const ListMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/identity/group", code: 200 })),
 ).annotate({
   identifier: "ListMeIdentityGroupRequest",
 }) as any as S.Schema<ListMeIdentityGroupRequest>;
 
 export type ListMeIdentityGroupResponseBodyList = Array<string>;
-export const ListMeIdentityGroupResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIdentityGroupResponseBodyList>;
-
 export type ListMeIdentityGroupResponse = ListMeIdentityGroupResponseBodyList;
-export const ListMeIdentityGroupResponse =
+const ListMeIdentityGroupResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityGroupResponse>;
 
 export interface ListMeIdentityGroupUserRequest {
   /** Group */
   group: string;
 }
-export const ListMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/identity/group/{group}/user", code: 200 })),
@@ -9754,33 +9625,27 @@ export const ListMeIdentityGroupUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeIdentityGroupUserRequest>;
 
 export type ListMeIdentityGroupUserResponseBodyList = Array<string>;
-export const ListMeIdentityGroupUserResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIdentityGroupUserResponseBodyList>;
-
 export type ListMeIdentityGroupUserResponse = ListMeIdentityGroupUserResponseBodyList;
-export const ListMeIdentityGroupUserResponse =
+const ListMeIdentityGroupUserResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityGroupUserResponse>;
 
 export interface ListMeIdentityUserRequest {}
-export const ListMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/identity/user", code: 200 })),
 ).annotate({
   identifier: "ListMeIdentityUserRequest",
 }) as any as S.Schema<ListMeIdentityUserRequest>;
 
 export type ListMeIdentityUserResponseBodyList = Array<string>;
-export const ListMeIdentityUserResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIdentityUserResponseBodyList>;
-
 export type ListMeIdentityUserResponse = ListMeIdentityUserResponseBodyList;
-export const ListMeIdentityUserResponse =
+const ListMeIdentityUserResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityUserResponse>;
 
 export interface ListMeIdentityUserTokenRequest {
   /** User */
   user: string;
 }
-export const ListMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/identity/user/{user}/token", code: 200 })),
@@ -9789,15 +9654,12 @@ export const ListMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeIdentityUserTokenRequest>;
 
 export type ListMeIdentityUserTokenResponseBodyList = Array<string>;
-export const ListMeIdentityUserTokenResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIdentityUserTokenResponseBodyList>;
-
 export type ListMeIdentityUserTokenResponse = ListMeIdentityUserTokenResponseBodyList;
-export const ListMeIdentityUserTokenResponse =
+const ListMeIdentityUserTokenResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeIdentityUserTokenResponse>;
 
 export interface ListMeIncidentSbgMigrateServicesRequest {}
-export const ListMeIncidentSbgMigrateServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeIncidentSbgMigrateServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/incident/sbg/migrateServices", code: 200 })),
 ).annotate({
   identifier: "ListMeIncidentSbgMigrateServicesRequest",
@@ -9805,7 +9667,7 @@ export const ListMeIncidentSbgMigrateServicesRequest = /*@__PURE__*/ S.suspend((
 
 /** Options to migrate linked to the original service */
 export type MeIncidentServiceMigrationAddonsList = Array<MeIncidentServiceMigration>;
-export const MeIncidentServiceMigrationAddonsList = /*@__PURE__*/ S.Array(
+const MeIncidentServiceMigrationAddonsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => MeIncidentServiceMigration),
 ) as any as S.Schema<MeIncidentServiceMigrationAddonsList>;
 
@@ -9816,7 +9678,7 @@ export interface MeIncidentProposedOfferConfiguration {
   /** value */
   value?: string;
 }
-export const MeIncidentProposedOfferConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MeIncidentProposedOfferConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -9827,7 +9689,7 @@ export const MeIncidentProposedOfferConfiguration = /*@__PURE__*/ S.suspend(() =
 
 /** List of configurations used for the migration */
 export type MeIncidentProposedOfferConfigurationsList = Array<MeIncidentProposedOfferConfiguration>;
-export const MeIncidentProposedOfferConfigurationsList = /*@__PURE__*/ S.Array(
+const MeIncidentProposedOfferConfigurationsList = /*@__PURE__*/ S.Array(
   MeIncidentProposedOfferConfiguration,
 ) as any as S.Schema<MeIncidentProposedOfferConfigurationsList>;
 
@@ -9840,17 +9702,15 @@ export type OrderCartGenericProductPricingCapacitiesEnum =
   | "installation"
   | "renew"
   | "upgrade";
-export const OrderCartGenericProductPricingCapacitiesEnum = S.String;
-
 /** Capacities of the pricing (type of pricing) */
 export type OrderCartGenericProductPricingCapacitiesList =
   Array<OrderCartGenericProductPricingCapacitiesEnum>;
-export const OrderCartGenericProductPricingCapacitiesList =
+const OrderCartGenericProductPricingCapacitiesList =
   NichandleContactChangeTaskContactTypesList as any as S.Schema<OrderCartGenericProductPricingCapacitiesList>;
 
 /** Type of a pricing */
 export type OrderCartGenericProductPricingTypeEnum = "consumption" | "purchase" | "rental";
-export const OrderCartGenericProductPricingTypeEnum = S.String;
+const OrderCartGenericProductPricingTypeEnum = S.String;
 
 /** Representation of a product pricing */
 export interface OrderCartGenericProductPricing {
@@ -9879,7 +9739,7 @@ export interface OrderCartGenericProductPricing {
   /** Pricing type */
   pricingType?: OrderCartGenericProductPricingTypeEnum;
 }
-export const OrderCartGenericProductPricing = /*@__PURE__*/ S.suspend(() =>
+const OrderCartGenericProductPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacities: S.optional(OrderCartGenericProductPricingCapacitiesList),
     description: S.optional(S.String),
@@ -9900,7 +9760,7 @@ export const OrderCartGenericProductPricing = /*@__PURE__*/ S.suspend(() =>
 
 /** Prices of the product offer */
 export type OrderCartGenericProductDefinitionPricesList = Array<OrderCartGenericProductPricing>;
-export const OrderCartGenericProductDefinitionPricesList = /*@__PURE__*/ S.Array(
+const OrderCartGenericProductDefinitionPricesList = /*@__PURE__*/ S.Array(
   OrderCartGenericProductPricing,
 ) as any as S.Schema<OrderCartGenericProductDefinitionPricesList>;
 
@@ -9914,7 +9774,7 @@ export type OrderCartGenericProductTypeEnum =
   | "saas_license"
   | "shipping"
   | "storage";
-export const OrderCartGenericProductTypeEnum = S.String;
+const OrderCartGenericProductTypeEnum = S.String;
 
 /** Representation of a generic product */
 export interface OrderCartGenericProductDefinition {
@@ -9927,7 +9787,7 @@ export interface OrderCartGenericProductDefinition {
   /** Product type */
   productType?: OrderCartGenericProductTypeEnum;
 }
-export const OrderCartGenericProductDefinition = /*@__PURE__*/ S.suspend(() =>
+const OrderCartGenericProductDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planCode: S.optional(S.String),
     prices: S.optional(OrderCartGenericProductDefinitionPricesList),
@@ -9945,7 +9805,7 @@ export interface MeIncidentPercentagePromotion {
   /** Percentage of the discount */
   value?: number;
 }
-export const MeIncidentPercentagePromotion = /*@__PURE__*/ S.suspend(() =>
+const MeIncidentPercentagePromotion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.String),
     value: S.optional(S.Number),
@@ -9965,7 +9825,7 @@ export interface MeIncidentProposedOffer {
   /** Promotion applied to the commercial offer */
   promotion?: MeIncidentPercentagePromotion;
 }
-export const MeIncidentProposedOffer = /*@__PURE__*/ S.suspend(() =>
+const MeIncidentProposedOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurations: S.optional(MeIncidentProposedOfferConfigurationsList),
     plan: S.optional(OrderCartGenericProductDefinition),
@@ -9976,7 +9836,7 @@ export const MeIncidentProposedOffer = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional information on the service */
 export type MeIncidentServiceToMigrateMetadataList = Array<ComplexTypeSafeKeyValueString>;
-export const MeIncidentServiceToMigrateMetadataList =
+const MeIncidentServiceToMigrateMetadataList =
   NichandleDocumentDocumentTagsList as any as S.Schema<MeIncidentServiceToMigrateMetadataList>;
 
 /** Original service that can be migrated */
@@ -9992,7 +9852,7 @@ export interface MeIncidentServiceToMigrate {
   /** Name of the migratable service */
   serviceName?: string;
 }
-export const MeIncidentServiceToMigrate = /*@__PURE__*/ S.suspend(() =>
+const MeIncidentServiceToMigrate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     metadata: S.optional(MeIncidentServiceToMigrateMetadataList),
@@ -10015,7 +9875,7 @@ export interface MeIncidentServiceMigration {
   /** Description of the service to migrate */
   serviceToMigrate?: MeIncidentServiceToMigrate | null;
 }
-export const MeIncidentServiceMigration = /*@__PURE__*/ S.suspend(() =>
+const MeIncidentServiceMigration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addons: S.optional(MeIncidentServiceMigrationAddonsList),
     orderId: S.optional(S.NullOr(S.Number)),
@@ -10027,41 +9887,38 @@ export const MeIncidentServiceMigration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MeIncidentServiceMigration>;
 
 export type ListMeIncidentSbgMigrateServicesResponseBodyList = Array<MeIncidentServiceMigration>;
-export const ListMeIncidentSbgMigrateServicesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeIncidentSbgMigrateServicesResponseBodyList = /*@__PURE__*/ S.Array(
   MeIncidentServiceMigration,
 ) as any as S.Schema<ListMeIncidentSbgMigrateServicesResponseBodyList>;
 
 export type ListMeIncidentSbgMigrateServicesResponse =
   ListMeIncidentSbgMigrateServicesResponseBodyList;
-export const ListMeIncidentSbgMigrateServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeIncidentSbgMigrateServicesResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeIncidentSbgMigrateServicesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeIncidentSbgMigrateServicesResponse",
 }) as any as S.Schema<ListMeIncidentSbgMigrateServicesResponse>;
 
 export interface ListMeIpOrganisationRequest {}
-export const ListMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/ipOrganisation", code: 200 })),
 ).annotate({
   identifier: "ListMeIpOrganisationRequest",
 }) as any as S.Schema<ListMeIpOrganisationRequest>;
 
 export type ListMeIpOrganisationResponseBodyList = Array<string>;
-export const ListMeIpOrganisationResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeIpOrganisationResponseBodyList>;
-
 export type ListMeIpOrganisationResponse = ListMeIpOrganisationResponseBodyList;
-export const ListMeIpOrganisationResponse =
+const ListMeIpOrganisationResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeIpOrganisationResponse>;
 
 export interface ListMeLogAuditRequest {}
-export const ListMeLogAuditRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeLogAuditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/logs/audit", code: 200 })),
 ).annotate({ identifier: "ListMeLogAuditRequest" }) as any as S.Schema<ListMeLogAuditRequest>;
 
 /** Authentication type */
 export type AuditLogAuthUserTypeEnum = "ACCOUNT" | "PROVIDER" | "USER";
-export const AuditLogAuthUserTypeEnum = S.String;
+const AuditLogAuthUserTypeEnum = S.String;
 
 /** Authenticated user details */
 export interface AuditLogAuthUserDetails {
@@ -10070,7 +9927,7 @@ export interface AuditLogAuthUserDetails {
   /** authenticated user name */
   user?: string | null;
 }
-export const AuditLogAuthUserDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogAuthUserDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(AuditLogAuthUserTypeEnum),
     user: S.optional(S.NullOr(S.String)),
@@ -10082,7 +9939,7 @@ export interface AuditLogAuthDetails {
   /** authenticated user details */
   userDetails?: AuditLogAuthUserDetails;
 }
-export const AuditLogAuthDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogAuthDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userDetails: S.optional(AuditLogAuthUserDetails),
   }),
@@ -10097,7 +9954,7 @@ export interface AuditLogGroupDetails {
   /** Role of the group */
   role?: string;
 }
-export const AuditLogGroupDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogGroupDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -10112,7 +9969,7 @@ export interface AuditLogGroupCreatedDetails {
   /** Group details after creation */
   new?: AuditLogGroupDetails | null;
 }
-export const AuditLogGroupCreatedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogGroupCreatedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     new: S.optional(S.NullOr(AuditLogGroupDetails)),
@@ -10128,7 +9985,7 @@ export interface AuditLogGroupDeletedDetails {
   /** Group details before deletion */
   old?: AuditLogGroupDetails | null;
 }
-export const AuditLogGroupDeletedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogGroupDeletedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     old: S.optional(S.NullOr(AuditLogGroupDetails)),
@@ -10146,7 +10003,7 @@ export interface AuditLogGroupModifiedDetails {
   /** Group details before update */
   old?: AuditLogGroupDetails | null;
 }
-export const AuditLogGroupModifiedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogGroupModifiedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     new: S.optional(S.NullOr(AuditLogGroupDetails)),
@@ -10165,7 +10022,7 @@ export type AuditLogAuthMFATypeEnum =
   | "TOTP"
   | "U2F"
   | "UNKNOWN";
-export const AuditLogAuthMFATypeEnum = S.String;
+const AuditLogAuthMFATypeEnum = S.String;
 
 /** specific fields for LOGIN_SUCCESS events */
 export interface AuditLogLoginSuccessDetails {
@@ -10174,7 +10031,7 @@ export interface AuditLogLoginSuccessDetails {
   /** Browser's user agent */
   userAgent?: string;
 }
-export const AuditLogLoginSuccessDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogLoginSuccessDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mfaType: S.optional(S.NullOr(AuditLogAuthMFATypeEnum)),
     userAgent: S.optional(S.String),
@@ -10185,12 +10042,12 @@ export const AuditLogLoginSuccessDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Identities changed on the policy */
 export type AuditLogPolicyChangesIdentitiesList = Array<string>;
-export const AuditLogPolicyChangesIdentitiesList =
+const AuditLogPolicyChangesIdentitiesList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogPolicyChangesIdentitiesList>;
 
 /** Resources changed on the policy */
 export type AuditLogPolicyChangesResourcesList = Array<string>;
-export const AuditLogPolicyChangesResourcesList =
+const AuditLogPolicyChangesResourcesList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogPolicyChangesResourcesList>;
 
 /** Changed fields for POLICY events */
@@ -10200,7 +10057,7 @@ export interface AuditLogPolicyChanges {
   /** Resources changed on the policy */
   resources?: AuditLogPolicyChangesResourcesList | null;
 }
-export const AuditLogPolicyChanges = /*@__PURE__*/ S.suspend(() =>
+const AuditLogPolicyChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identities: S.optional(S.NullOr(AuditLogPolicyChangesIdentitiesList)),
     resources: S.optional(S.NullOr(AuditLogPolicyChangesResourcesList)),
@@ -10214,7 +10071,7 @@ export interface AuditLogPolicyDetails {
   /** Name of the policy */
   name?: string;
 }
-export const AuditLogPolicyDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogPolicyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -10232,7 +10089,7 @@ export interface AuditLogPolicyCreatedDetails {
   /** Name of the policy */
   policyName?: string;
 }
-export const AuditLogPolicyCreatedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogPolicyCreatedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     added: S.optional(S.NullOr(AuditLogPolicyChanges)),
     new: S.optional(S.NullOr(AuditLogPolicyDetails)),
@@ -10254,7 +10111,7 @@ export interface AuditLogPolicyDeletedDetails {
   /** Policy changes */
   removed?: AuditLogPolicyChanges | null;
 }
-export const AuditLogPolicyDeletedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogPolicyDeletedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     old: S.optional(S.NullOr(AuditLogPolicyDetails)),
     policyId: S.optional(S.String),
@@ -10280,7 +10137,7 @@ export interface AuditLogPolicyModifiedDetails {
   /** Policy changes (removal) */
   removed?: AuditLogPolicyChanges | null;
 }
-export const AuditLogPolicyModifiedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogPolicyModifiedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     added: S.optional(S.NullOr(AuditLogPolicyChanges)),
     new: S.optional(S.NullOr(AuditLogPolicyDetails)),
@@ -10304,7 +10161,7 @@ export interface AuditLogProviderDetails {
   /** Provider use disabled account users */
   usersDisabled?: boolean;
 }
-export const AuditLogProviderDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogProviderDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupAttributeName: S.optional(S.String),
     requestSignatureEnabled: S.optional(S.Boolean),
@@ -10320,7 +10177,7 @@ export interface AuditLogProviderCreatedDetails {
   /** SSO URL of the provider */
   ssoServiceURL?: string;
 }
-export const AuditLogProviderCreatedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogProviderCreatedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     new: S.optional(S.NullOr(AuditLogProviderDetails)),
     ssoServiceURL: S.optional(S.String),
@@ -10336,7 +10193,7 @@ export interface AuditLogProviderDeletedDetails {
   /** SSO URL of the provider */
   ssoServiceURL?: string;
 }
-export const AuditLogProviderDeletedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogProviderDeletedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     old: S.optional(S.NullOr(AuditLogProviderDetails)),
     ssoServiceURL: S.optional(S.String),
@@ -10354,7 +10211,7 @@ export interface AuditLogProviderModifiedDetails {
   /** SSO URL of the provider */
   ssoServiceURL?: string;
 }
-export const AuditLogProviderModifiedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogProviderModifiedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     new: S.optional(S.NullOr(AuditLogProviderDetails)),
     old: S.optional(S.NullOr(AuditLogProviderDetails)),
@@ -10366,7 +10223,7 @@ export const AuditLogProviderModifiedDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Resources changed on the resource group */
 export type AuditLogResourceGroupChangesResourcesList = Array<string>;
-export const AuditLogResourceGroupChangesResourcesList =
+const AuditLogResourceGroupChangesResourcesList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<AuditLogResourceGroupChangesResourcesList>;
 
 /** Changed fields for RESOURCE_GROUP events */
@@ -10374,7 +10231,7 @@ export interface AuditLogResourceGroupChanges {
   /** Resources changed on the resource group */
   resources?: AuditLogResourceGroupChangesResourcesList | null;
 }
-export const AuditLogResourceGroupChanges = /*@__PURE__*/ S.suspend(() =>
+const AuditLogResourceGroupChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(S.NullOr(AuditLogResourceGroupChangesResourcesList)),
   }),
@@ -10387,7 +10244,7 @@ export interface AuditLogResourceGroupDetails {
   /** Name of the policy */
   name?: string;
 }
-export const AuditLogResourceGroupDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogResourceGroupDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -10406,7 +10263,7 @@ export interface AuditLogResourceGroupCreatedDetails {
   /** Name of the resource group */
   resourceGroupName?: string;
 }
-export const AuditLogResourceGroupCreatedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogResourceGroupCreatedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     added: S.optional(S.NullOr(AuditLogResourceGroupChanges)),
     new: S.optional(S.NullOr(AuditLogResourceGroupDetails)),
@@ -10428,7 +10285,7 @@ export interface AuditLogResourceGroupDeletedDetails {
   /** Name of the resource group */
   resourceGroupName?: string;
 }
-export const AuditLogResourceGroupDeletedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogResourceGroupDeletedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     old: S.optional(S.NullOr(AuditLogResourceGroupDetails)),
     removed: S.optional(S.NullOr(AuditLogResourceGroupChanges)),
@@ -10454,7 +10311,7 @@ export interface AuditLogResourceGroupModifiedDetails {
   /** Name of the resource group */
   resourceGroupName?: string;
 }
-export const AuditLogResourceGroupModifiedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogResourceGroupModifiedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     added: S.optional(S.NullOr(AuditLogResourceGroupChanges)),
     new: S.optional(S.NullOr(AuditLogResourceGroupDetails)),
@@ -10474,7 +10331,7 @@ export interface AuditLogTokenDetails {
   /** Token's expiration date */
   expiresAt?: string | null;
 }
-export const AuditLogTokenDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogTokenDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     expiresAt: S.optional(S.NullOr(S.String)),
@@ -10492,7 +10349,7 @@ export interface AuditLogTokenCreatedDetails {
   /** Login of the user */
   user?: string;
 }
-export const AuditLogTokenCreatedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogTokenCreatedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     new: S.optional(S.NullOr(AuditLogTokenDetails)),
     tokenCreatedAt: S.optional(S.NullOr(S.String)),
@@ -10514,7 +10371,7 @@ export interface AuditLogTokenDeletedDetails {
   /** Login of the user */
   user?: string;
 }
-export const AuditLogTokenDeletedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogTokenDeletedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     old: S.optional(S.NullOr(AuditLogTokenDetails)),
     tokenCreatedAt: S.optional(S.NullOr(S.String)),
@@ -10538,7 +10395,7 @@ export interface AuditLogTokenModifiedDetails {
   /** Login of the user */
   user?: string;
 }
-export const AuditLogTokenModifiedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogTokenModifiedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     new: S.optional(S.NullOr(AuditLogTokenDetails)),
     old: S.optional(S.NullOr(AuditLogTokenDetails)),
@@ -10573,7 +10430,7 @@ export type AuditLogTypeEnum =
   | "USER_DELETED"
   | "USER_MODIFIED"
   | "USER_PASSWORD_CHANGED";
-export const AuditLogTypeEnum = S.String;
+const AuditLogTypeEnum = S.String;
 
 /** specific fields for USER events */
 export interface AuditLogUserDetails {
@@ -10586,7 +10443,7 @@ export interface AuditLogUserDetails {
   /** Type of user created */
   userType?: AuthUserTypeEnum | null;
 }
-export const AuditLogUserDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogUserDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     group: S.optional(S.String),
@@ -10606,7 +10463,7 @@ export interface AuditLogUserCreatedDetails {
   /** Type of user created */
   userType?: AuthUserTypeEnum | null;
 }
-export const AuditLogUserCreatedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogUserCreatedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     new: S.optional(S.NullOr(AuditLogUserDetails)),
     user: S.optional(S.String),
@@ -10628,7 +10485,7 @@ export interface AuditLogUserDeletedDetails {
   /** Type of user created */
   userType?: AuthUserTypeEnum | null;
 }
-export const AuditLogUserDeletedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogUserDeletedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     old: S.optional(S.NullOr(AuditLogUserDetails)),
     user: S.optional(S.String),
@@ -10650,7 +10507,7 @@ export interface AuditLogUserModifiedDetails {
   /** User's creation date */
   userCreatedAt?: string | null;
 }
-export const AuditLogUserModifiedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogUserModifiedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     new: S.optional(S.NullOr(AuditLogUserDetails)),
     old: S.optional(S.NullOr(AuditLogUserDetails)),
@@ -10668,7 +10525,7 @@ export interface AuditLogUserPasswordChangedDetails {
   /** User's creation date */
   userCreatedAt?: string | null;
 }
-export const AuditLogUserPasswordChangedDetails = /*@__PURE__*/ S.suspend(() =>
+const AuditLogUserPasswordChangedDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.String),
     userCreatedAt: S.optional(S.NullOr(S.String)),
@@ -10728,7 +10585,7 @@ export interface AuditLog {
   /** specific fields for USER_PASSWORD_CHANGED events */
   userPasswordChangedDetails?: AuditLogUserPasswordChangedDetails | null;
 }
-export const AuditLog = /*@__PURE__*/ S.suspend(() =>
+const AuditLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authDetails: S.optional(S.NullOr(AuditLogAuthDetails)),
     createdAt: S.optional(S.String),
@@ -10758,35 +10615,32 @@ export const AuditLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLog" }) as any as S.Schema<AuditLog>;
 
 export type ListMeLogAuditResponseBodyList = Array<AuditLog>;
-export const ListMeLogAuditResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeLogAuditResponseBodyList = /*@__PURE__*/ S.Array(
   AuditLog,
 ) as any as S.Schema<ListMeLogAuditResponseBodyList>;
 
 export type ListMeLogAuditResponse = ListMeLogAuditResponseBodyList;
-export const ListMeLogAuditResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeLogAuditResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeLogAuditResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMeLogAuditResponse" }) as any as S.Schema<ListMeLogAuditResponse>;
 
 export interface ListMeLogAuditLogKindRequest {}
-export const ListMeLogAuditLogKindRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeLogAuditLogKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/logs/audit/log/kind", code: 200 })),
 ).annotate({
   identifier: "ListMeLogAuditLogKindRequest",
 }) as any as S.Schema<ListMeLogAuditLogKindRequest>;
 
 export type ListMeLogAuditLogKindResponseBodyList = Array<string>;
-export const ListMeLogAuditLogKindResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeLogAuditLogKindResponseBodyList>;
-
 export type ListMeLogAuditLogKindResponse = ListMeLogAuditLogKindResponseBodyList;
-export const ListMeLogAuditLogKindResponse =
+const ListMeLogAuditLogKindResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeLogAuditLogKindResponse>;
 
 export interface ListMeLogAuditLogSubscriptionRequest {
   /** Filter on a specific kind (e.g., audit) */
   kind?: string;
 }
-export const ListMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/me/logs/audit/log/subscription", code: 200 })),
@@ -10795,57 +10649,43 @@ export const ListMeLogAuditLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListMeLogAuditLogSubscriptionRequest>;
 
 export type ListMeLogAuditLogSubscriptionResponseBodyList = Array<string>;
-export const ListMeLogAuditLogSubscriptionResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeLogAuditLogSubscriptionResponseBodyList>;
-
 export type ListMeLogAuditLogSubscriptionResponse = ListMeLogAuditLogSubscriptionResponseBodyList;
-export const ListMeLogAuditLogSubscriptionResponse =
+const ListMeLogAuditLogSubscriptionResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeLogAuditLogSubscriptionResponse>;
 
 export interface ListMeLogKindRequest {}
-export const ListMeLogKindRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeLogKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/api/log/kind", code: 200 })),
 ).annotate({ identifier: "ListMeLogKindRequest" }) as any as S.Schema<ListMeLogKindRequest>;
 
 export type ListMeLogKindResponseBodyList = Array<string>;
-export const ListMeLogKindResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeLogKindResponseBodyList>;
-
 export type ListMeLogKindResponse = ListMeLogKindResponseBodyList;
-export const ListMeLogKindResponse =
-  GetCertificatesResponse as any as S.Schema<ListMeLogKindResponse>;
+const ListMeLogKindResponse = GetCertificatesResponse as any as S.Schema<ListMeLogKindResponse>;
 
 export interface ListMeLogSelfRequest {}
-export const ListMeLogSelfRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeLogSelfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/api/logs/self", code: 200 })),
 ).annotate({ identifier: "ListMeLogSelfRequest" }) as any as S.Schema<ListMeLogSelfRequest>;
 
 export type ListMeLogSelfResponseBodyList = Array<number>;
-export const ListMeLogSelfResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeLogSelfResponseBodyList>;
-
 export type ListMeLogSelfResponse = ListMeLogSelfResponseBodyList;
-export const ListMeLogSelfResponse =
-  ListMeAgreementsResponse as any as S.Schema<ListMeLogSelfResponse>;
+const ListMeLogSelfResponse = ListMeAgreementsResponse as any as S.Schema<ListMeLogSelfResponse>;
 
 export interface ListMeLogServicesRequest {}
-export const ListMeLogServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeLogServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/api/logs/services", code: 200 })),
 ).annotate({ identifier: "ListMeLogServicesRequest" }) as any as S.Schema<ListMeLogServicesRequest>;
 
 export type ListMeLogServicesResponseBodyList = Array<number>;
-export const ListMeLogServicesResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeLogServicesResponseBodyList>;
-
 export type ListMeLogServicesResponse = ListMeLogServicesResponseBodyList;
-export const ListMeLogServicesResponse =
+const ListMeLogServicesResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeLogServicesResponse>;
 
 export interface ListMeLogSubscriptionRequest {
   /** Filter on a specific kind (e.g., audit) */
   kind?: string;
 }
-export const ListMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/me/api/log/subscription", code: 200 })),
@@ -10854,47 +10694,38 @@ export const ListMeLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeLogSubscriptionRequest>;
 
 export type ListMeLogSubscriptionResponseBodyList = Array<string>;
-export const ListMeLogSubscriptionResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeLogSubscriptionResponseBodyList>;
-
 export type ListMeLogSubscriptionResponse = ListMeLogSubscriptionResponseBodyList;
-export const ListMeLogSubscriptionResponse =
+const ListMeLogSubscriptionResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeLogSubscriptionResponse>;
 
 export interface ListMeMailingListAvailableListsRequest {}
-export const ListMeMailingListAvailableListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeMailingListAvailableListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/mailingList/availableLists", code: 200 })),
 ).annotate({
   identifier: "ListMeMailingListAvailableListsRequest",
 }) as any as S.Schema<ListMeMailingListAvailableListsRequest>;
 
 export type ListMeMailingListAvailableListsResponseBodyList = Array<string>;
-export const ListMeMailingListAvailableListsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeMailingListAvailableListsResponseBodyList>;
-
 export type ListMeMailingListAvailableListsResponse =
   ListMeMailingListAvailableListsResponseBodyList;
-export const ListMeMailingListAvailableListsResponse =
+const ListMeMailingListAvailableListsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeMailingListAvailableListsResponse>;
 
 export interface ListMeMigrationRequest {}
-export const ListMeMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/migration", code: 200 })),
 ).annotate({ identifier: "ListMeMigrationRequest" }) as any as S.Schema<ListMeMigrationRequest>;
 
 export type ListMeMigrationResponseBodyList = Array<number>;
-export const ListMeMigrationResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeMigrationResponseBodyList>;
-
 export type ListMeMigrationResponse = ListMeMigrationResponseBodyList;
-export const ListMeMigrationResponse =
+const ListMeMigrationResponse =
   ListMeAgreementsResponse as any as S.Schema<ListMeMigrationResponse>;
 
 export interface ListMeMigrationContractRequest {
   /** Migration ID */
   migrationId: number;
 }
-export const ListMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migrationId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/migration/{migrationId}/contract", code: 200 })),
@@ -10903,54 +10734,42 @@ export const ListMeMigrationContractRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeMigrationContractRequest>;
 
 export type ListMeMigrationContractResponseBodyList = Array<number>;
-export const ListMeMigrationContractResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeMigrationContractResponseBodyList>;
-
 export type ListMeMigrationContractResponse = ListMeMigrationContractResponseBodyList;
-export const ListMeMigrationContractResponse =
+const ListMeMigrationContractResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeMigrationContractResponse>;
 
 export interface ListMeNotificationEmailHistoryRequest {}
-export const ListMeNotificationEmailHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeNotificationEmailHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/notification/email/history", code: 200 })),
 ).annotate({
   identifier: "ListMeNotificationEmailHistoryRequest",
 }) as any as S.Schema<ListMeNotificationEmailHistoryRequest>;
 
 export type ListMeNotificationEmailHistoryResponseBodyList = Array<number>;
-export const ListMeNotificationEmailHistoryResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeNotificationEmailHistoryResponseBodyList>;
-
 export type ListMeNotificationEmailHistoryResponse = ListMeNotificationEmailHistoryResponseBodyList;
-export const ListMeNotificationEmailHistoryResponse =
+const ListMeNotificationEmailHistoryResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeNotificationEmailHistoryResponse>;
 
 export interface ListMeOauth2ClientRequest {}
-export const ListMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/api/oauth2/client", code: 200 })),
 ).annotate({
   identifier: "ListMeOauth2ClientRequest",
 }) as any as S.Schema<ListMeOauth2ClientRequest>;
 
 export type ListMeOauth2ClientResponseBodyList = Array<string>;
-export const ListMeOauth2ClientResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeOauth2ClientResponseBodyList>;
-
 export type ListMeOauth2ClientResponse = ListMeOauth2ClientResponseBodyList;
-export const ListMeOauth2ClientResponse =
+const ListMeOauth2ClientResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeOauth2ClientResponse>;
 
 export interface ListMeOauth2TokenRequest {}
-export const ListMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/api/oauth2/token", code: 200 })),
 ).annotate({ identifier: "ListMeOauth2TokenRequest" }) as any as S.Schema<ListMeOauth2TokenRequest>;
 
 export type ListMeOauth2TokenResponseBodyList = Array<string>;
-export const ListMeOauth2TokenResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeOauth2TokenResponseBodyList>;
-
 export type ListMeOauth2TokenResponse = ListMeOauth2TokenResponseBodyList;
-export const ListMeOauth2TokenResponse =
+const ListMeOauth2TokenResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeOauth2TokenResponse>;
 
 export interface ListMeOrderRequest {
@@ -10959,7 +10778,7 @@ export interface ListMeOrderRequest {
   /** Filter the value of date property (<=) */
   date_to?: string;
 }
-export const ListMeOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
     date_to: S.optional(S.String.pipe(T.Query("date.to"))),
@@ -10967,16 +10786,13 @@ export const ListMeOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeOrderRequest" }) as any as S.Schema<ListMeOrderRequest>;
 
 export type ListMeOrderResponseBodyList = Array<number>;
-export const ListMeOrderResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeOrderResponseBodyList>;
-
 export type ListMeOrderResponse = ListMeOrderResponseBodyList;
-export const ListMeOrderResponse = ListMeAgreementsResponse as any as S.Schema<ListMeOrderResponse>;
+const ListMeOrderResponse = ListMeAgreementsResponse as any as S.Schema<ListMeOrderResponse>;
 
 export interface ListMeOrderAvailablePaymentMeanRequest {
   orderId: number;
 }
-export const ListMeOrderAvailablePaymentMeanRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderAvailablePaymentMeanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/availablePaymentMean", code: 200 })),
@@ -10985,12 +10801,12 @@ export const ListMeOrderAvailablePaymentMeanRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListMeOrderAvailablePaymentMeanRequest>;
 
 export type BillingOrderAvailablePaymentMeanFieldOptionsList = Array<string>;
-export const BillingOrderAvailablePaymentMeanFieldOptionsList =
+const BillingOrderAvailablePaymentMeanFieldOptionsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<BillingOrderAvailablePaymentMeanFieldOptionsList>;
 
 /** Field type of a payment mean */
 export type BillingOrderPaymentMeanFieldTypeEnum = "hidden" | "select" | "text";
-export const BillingOrderPaymentMeanFieldTypeEnum = S.String;
+const BillingOrderPaymentMeanFieldTypeEnum = S.String;
 
 /** All fields needed for a payment mean integration */
 export interface BillingOrderAvailablePaymentMeanField {
@@ -10999,7 +10815,7 @@ export interface BillingOrderAvailablePaymentMeanField {
   type?: BillingOrderPaymentMeanFieldTypeEnum;
   value?: string | null;
 }
-export const BillingOrderAvailablePaymentMeanField = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderAvailablePaymentMeanField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     options: S.optional(S.NullOr(BillingOrderAvailablePaymentMeanFieldOptionsList)),
@@ -11012,13 +10828,13 @@ export const BillingOrderAvailablePaymentMeanField = /*@__PURE__*/ S.suspend(() 
 
 export type BillingOrderAvailablePaymentMeanFieldsList =
   Array<BillingOrderAvailablePaymentMeanField>;
-export const BillingOrderAvailablePaymentMeanFieldsList = /*@__PURE__*/ S.Array(
+const BillingOrderAvailablePaymentMeanFieldsList = /*@__PURE__*/ S.Array(
   BillingOrderAvailablePaymentMeanField,
 ) as any as S.Schema<BillingOrderAvailablePaymentMeanFieldsList>;
 
 /** Integration payment mean type */
 export type BillingOrderPaymentMeanIntegrationEnum = "GET_FORM" | "POST_FORM" | "REDIRECT";
-export const BillingOrderPaymentMeanIntegrationEnum = S.String;
+const BillingOrderPaymentMeanIntegrationEnum = S.String;
 
 /** All data needed to use a payment mean */
 export interface BillingOrderAvailablePaymentMean {
@@ -11027,7 +10843,7 @@ export interface BillingOrderAvailablePaymentMean {
   name?: string;
   url?: string | null;
 }
-export const BillingOrderAvailablePaymentMean = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderAvailablePaymentMean = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.NullOr(BillingOrderAvailablePaymentMeanFieldsList)),
     integration: S.optional(BillingOrderPaymentMeanIntegrationEnum),
@@ -11040,13 +10856,13 @@ export const BillingOrderAvailablePaymentMean = /*@__PURE__*/ S.suspend(() =>
 
 export type ListMeOrderAvailablePaymentMeanResponseBodyList =
   Array<BillingOrderAvailablePaymentMean>;
-export const ListMeOrderAvailablePaymentMeanResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeOrderAvailablePaymentMeanResponseBodyList = /*@__PURE__*/ S.Array(
   BillingOrderAvailablePaymentMean,
 ) as any as S.Schema<ListMeOrderAvailablePaymentMeanResponseBodyList>;
 
 export type ListMeOrderAvailablePaymentMeanResponse =
   ListMeOrderAvailablePaymentMeanResponseBodyList;
-export const ListMeOrderAvailablePaymentMeanResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderAvailablePaymentMeanResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeOrderAvailablePaymentMeanResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeOrderAvailablePaymentMeanResponse",
@@ -11055,7 +10871,7 @@ export const ListMeOrderAvailablePaymentMeanResponse = /*@__PURE__*/ S.suspend((
 export interface ListMeOrderAvailableRegisteredPaymentMeanRequest {
   orderId: number;
 }
-export const ListMeOrderAvailableRegisteredPaymentMeanRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderAvailableRegisteredPaymentMeanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -11069,7 +10885,7 @@ export const ListMeOrderAvailableRegisteredPaymentMeanRequest = /*@__PURE__*/ S.
 export interface BillingOrderRegisteredPaymentMean {
   paymentMean?: BillingReusablePaymentMeanEnum;
 }
-export const BillingOrderRegisteredPaymentMean = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderRegisteredPaymentMean = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMean: S.optional(BillingReusablePaymentMeanEnum),
   }),
@@ -11079,13 +10895,13 @@ export const BillingOrderRegisteredPaymentMean = /*@__PURE__*/ S.suspend(() =>
 
 export type ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList =
   Array<BillingOrderRegisteredPaymentMean>;
-export const ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList = /*@__PURE__*/ S.Array(
   BillingOrderRegisteredPaymentMean,
 ) as any as S.Schema<ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList>;
 
 export type ListMeOrderAvailableRegisteredPaymentMeanResponse =
   ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList;
-export const ListMeOrderAvailableRegisteredPaymentMeanResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderAvailableRegisteredPaymentMeanResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeOrderAvailableRegisteredPaymentMeanResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeOrderAvailableRegisteredPaymentMeanResponse",
@@ -11094,7 +10910,7 @@ export const ListMeOrderAvailableRegisteredPaymentMeanResponse = /*@__PURE__*/ S
 export interface ListMeOrderBalanceRequest {
   orderId: number;
 }
-export const ListMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/balance", code: 200 })),
@@ -11103,11 +10919,8 @@ export const ListMeOrderBalanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOrderBalanceRequest>;
 
 export type ListMeOrderBalanceResponseBodyList = Array<string>;
-export const ListMeOrderBalanceResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeOrderBalanceResponseBodyList>;
-
 export type ListMeOrderBalanceResponse = ListMeOrderBalanceResponseBodyList;
-export const ListMeOrderBalanceResponse =
+const ListMeOrderBalanceResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeOrderBalanceResponse>;
 
 export interface ListMeOrderDebtOperationRequest {
@@ -11115,7 +10928,7 @@ export interface ListMeOrderDebtOperationRequest {
   /** Filter the value of depositOrderId property (=) */
   depositOrderId?: number;
 }
-export const ListMeOrderDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
     depositOrderId: S.optional(S.Number.pipe(T.Query())),
@@ -11125,17 +10938,14 @@ export const ListMeOrderDebtOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOrderDebtOperationRequest>;
 
 export type ListMeOrderDebtOperationResponseBodyList = Array<number>;
-export const ListMeOrderDebtOperationResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeOrderDebtOperationResponseBodyList>;
-
 export type ListMeOrderDebtOperationResponse = ListMeOrderDebtOperationResponseBodyList;
-export const ListMeOrderDebtOperationResponse =
+const ListMeOrderDebtOperationResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOrderDebtOperationResponse>;
 
 export interface ListMeOrderDetailsRequest {
   orderId: number;
 }
-export const ListMeOrderDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/details", code: 200 })),
@@ -11144,17 +10954,14 @@ export const ListMeOrderDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOrderDetailsRequest>;
 
 export type ListMeOrderDetailsResponseBodyList = Array<number>;
-export const ListMeOrderDetailsResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeOrderDetailsResponseBodyList>;
-
 export type ListMeOrderDetailsResponse = ListMeOrderDetailsResponseBodyList;
-export const ListMeOrderDetailsResponse =
+const ListMeOrderDetailsResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOrderDetailsResponse>;
 
 export interface ListMeOrderFollowUpRequest {
   orderId: number;
 }
-export const ListMeOrderFollowUpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderFollowUpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/followUp", code: 200 })),
@@ -11177,7 +10984,7 @@ export type BillingOrderFollowUpHistoryStatusEnum =
   | "PAYMENT_INITIATED"
   | "PAYMENT_RECEIVED"
   | "REGISTERED_PAYMENT_INITIATED";
-export const BillingOrderFollowUpHistoryStatusEnum = S.String;
+const BillingOrderFollowUpHistoryStatusEnum = S.String;
 
 /** Step history of order follow-up */
 export interface BillingOrderFollowUpHistory {
@@ -11188,7 +10995,7 @@ export interface BillingOrderFollowUpHistory {
   /** History label of order follow-up */
   label?: BillingOrderFollowUpHistoryStatusEnum;
 }
-export const BillingOrderFollowUpHistory = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderFollowUpHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     description: S.optional(S.String),
@@ -11200,17 +11007,17 @@ export const BillingOrderFollowUpHistory = /*@__PURE__*/ S.suspend(() =>
 
 /** Step history of order follow-up */
 export type BillingOrderFollowUpHistoryList = Array<BillingOrderFollowUpHistory>;
-export const BillingOrderFollowUpHistoryList = /*@__PURE__*/ S.Array(
+const BillingOrderFollowUpHistoryList = /*@__PURE__*/ S.Array(
   BillingOrderFollowUpHistory,
 ) as any as S.Schema<BillingOrderFollowUpHistoryList>;
 
 /** Step status of order follow-up */
 export type BillingOrderFollowUpStatusEnum = "DOING" | "DONE" | "ERROR" | "TODO";
-export const BillingOrderFollowUpStatusEnum = S.String;
+const BillingOrderFollowUpStatusEnum = S.String;
 
 /** Status of order follow-up */
 export type BillingOrderFollowUpStepEnum = "AVAILABLE" | "DELIVERING" | "VALIDATED" | "VALIDATING";
-export const BillingOrderFollowUpStepEnum = S.String;
+const BillingOrderFollowUpStepEnum = S.String;
 
 /** Follow up history of an order */
 export interface BillingOrderFollowUp {
@@ -11221,7 +11028,7 @@ export interface BillingOrderFollowUp {
   /** Step of order follow-up */
   step?: BillingOrderFollowUpStepEnum;
 }
-export const BillingOrderFollowUp = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderFollowUp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     history: S.optional(BillingOrderFollowUpHistoryList),
     status: S.optional(BillingOrderFollowUpStatusEnum),
@@ -11230,12 +11037,12 @@ export const BillingOrderFollowUp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingOrderFollowUp" }) as any as S.Schema<BillingOrderFollowUp>;
 
 export type ListMeOrderFollowUpResponseBodyList = Array<BillingOrderFollowUp>;
-export const ListMeOrderFollowUpResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeOrderFollowUpResponseBodyList = /*@__PURE__*/ S.Array(
   BillingOrderFollowUp,
 ) as any as S.Schema<ListMeOrderFollowUpResponseBodyList>;
 
 export type ListMeOrderFollowUpResponse = ListMeOrderFollowUpResponseBodyList;
-export const ListMeOrderFollowUpResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderFollowUpResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeOrderFollowUpResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeOrderFollowUpResponse",
@@ -11244,7 +11051,7 @@ export const ListMeOrderFollowUpResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListMeOrderPaymentMeansRequest {
   orderId: number;
 }
-export const ListMeOrderPaymentMeansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderPaymentMeansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/paymentMeans", code: 200 })),
@@ -11257,12 +11064,9 @@ export interface BillingOrderPaymentMeanHttpParameterChoice {
   name?: string;
   value?: string;
 }
-export const BillingOrderPaymentMeanHttpParameterChoice =
-  MeIncidentProposedOfferConfiguration as any as S.Schema<BillingOrderPaymentMeanHttpParameterChoice>;
-
 export type BillingOrderPaymentMeanHttpParameterChoiceList =
   Array<BillingOrderPaymentMeanHttpParameterChoice>;
-export const BillingOrderPaymentMeanHttpParameterChoiceList =
+const BillingOrderPaymentMeanHttpParameterChoiceList =
   MeIncidentProposedOfferConfigurationsList as any as S.Schema<BillingOrderPaymentMeanHttpParameterChoiceList>;
 
 /** Parameter to give to a payment page */
@@ -11271,7 +11075,7 @@ export interface BillingOrderPaymentMeanHttpParameter {
   name?: string;
   value?: string | null;
 }
-export const BillingOrderPaymentMeanHttpParameter = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderPaymentMeanHttpParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choice: S.optional(S.NullOr(BillingOrderPaymentMeanHttpParameterChoiceList)),
     name: S.optional(S.String),
@@ -11282,7 +11086,7 @@ export const BillingOrderPaymentMeanHttpParameter = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<BillingOrderPaymentMeanHttpParameter>;
 
 export type BillingOrderPaymentMeanParametersList = Array<BillingOrderPaymentMeanHttpParameter>;
-export const BillingOrderPaymentMeanParametersList = /*@__PURE__*/ S.Array(
+const BillingOrderPaymentMeanParametersList = /*@__PURE__*/ S.Array(
   BillingOrderPaymentMeanHttpParameter,
 ) as any as S.Schema<BillingOrderPaymentMeanParametersList>;
 
@@ -11296,7 +11100,7 @@ export interface BillingOrderPaymentMean {
   subType?: string | null;
   url?: string;
 }
-export const BillingOrderPaymentMean = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderPaymentMean = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fee: S.optional(S.Number),
     htmlForm: S.optional(S.NullOr(S.String)),
@@ -11309,36 +11113,36 @@ export const BillingOrderPaymentMean = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingOrderPaymentMean" }) as any as S.Schema<BillingOrderPaymentMean>;
 
 export type BillingOrderPaymentMeansCreditCardList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansCreditCardList = /*@__PURE__*/ S.Array(
+const BillingOrderPaymentMeansCreditCardList = /*@__PURE__*/ S.Array(
   BillingOrderPaymentMean,
 ) as any as S.Schema<BillingOrderPaymentMeansCreditCardList>;
 
 export type BillingOrderPaymentMeansEdinarList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansEdinarList =
+const BillingOrderPaymentMeansEdinarList =
   BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansEdinarList>;
 
 export type BillingOrderPaymentMeansFidelityPointsList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansFidelityPointsList =
+const BillingOrderPaymentMeansFidelityPointsList =
   BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansFidelityPointsList>;
 
 export type BillingOrderPaymentMeansIdealList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansIdealList =
+const BillingOrderPaymentMeansIdealList =
   BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansIdealList>;
 
 export type BillingOrderPaymentMeansMultibancoList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansMultibancoList =
+const BillingOrderPaymentMeansMultibancoList =
   BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansMultibancoList>;
 
 export type BillingOrderPaymentMeansOvhAccountList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansOvhAccountList =
+const BillingOrderPaymentMeansOvhAccountList =
   BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansOvhAccountList>;
 
 export type BillingOrderPaymentMeansPaypalList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansPaypalList =
+const BillingOrderPaymentMeansPaypalList =
   BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansPaypalList>;
 
 export type BillingOrderPaymentMeansPromotionList = Array<BillingOrderPaymentMean>;
-export const BillingOrderPaymentMeansPromotionList =
+const BillingOrderPaymentMeansPromotionList =
   BillingOrderPaymentMeansCreditCardList as any as S.Schema<BillingOrderPaymentMeansPromotionList>;
 
 /** TODO */
@@ -11352,7 +11156,7 @@ export interface BillingOrderPaymentMeans {
   paypal?: BillingOrderPaymentMeansPaypalList | null;
   promotion?: BillingOrderPaymentMeansPromotionList | null;
 }
-export const BillingOrderPaymentMeans = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderPaymentMeans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creditCard: S.optional(S.NullOr(BillingOrderPaymentMeansCreditCardList)),
     edinar: S.optional(S.NullOr(BillingOrderPaymentMeansEdinarList)),
@@ -11368,7 +11172,7 @@ export const BillingOrderPaymentMeans = /*@__PURE__*/ S.suspend(() =>
 export interface ListMeOrderPaymentMethodsRequest {
   orderId: number;
 }
-export const ListMeOrderPaymentMethodsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOrderPaymentMethodsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/order/{orderId}/paymentMethods", code: 200 })),
@@ -11385,7 +11189,7 @@ export interface PaymentMethodIcon {
   /** Icon URL */
   url?: string | null;
 }
-export const PaymentMethodIcon = MePaymentMeanIconData as any as S.Schema<PaymentMethodIcon>;
+const PaymentMethodIcon = MePaymentMeanIconData as any as S.Schema<PaymentMethodIcon>;
 
 /** Payment method integration type */
 export type PaymentMethodIntegrationType =
@@ -11397,7 +11201,7 @@ export type PaymentMethodIntegrationType =
   | "NONE"
   | "POST_FORM"
   | "REDIRECT";
-export const PaymentMethodIntegrationType = S.String;
+const PaymentMethodIntegrationType = S.String;
 
 /** Available payment methods */
 export interface PaymentMethodAvailablePaymentMethod {
@@ -11422,7 +11226,7 @@ export interface PaymentMethodAvailablePaymentMethod {
   /** Payment method type is registerable with the possibility to pay in same time an order ? */
   registerableWithTransaction?: boolean;
 }
-export const PaymentMethodAvailablePaymentMethod = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodAvailablePaymentMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formSessionId: S.optional(S.NullOr(S.String)),
     icon: S.optional(PaymentMethodIcon),
@@ -11441,7 +11245,7 @@ export const PaymentMethodAvailablePaymentMethod = /*@__PURE__*/ S.suspend(() =>
 
 /** Payment method available on this order */
 export type BillingOrderPaymentMethodsAvailableList = Array<PaymentMethodAvailablePaymentMethod>;
-export const BillingOrderPaymentMethodsAvailableList = /*@__PURE__*/ S.Array(
+const BillingOrderPaymentMethodsAvailableList = /*@__PURE__*/ S.Array(
   PaymentMethodAvailablePaymentMethod,
 ) as any as S.Schema<BillingOrderPaymentMethodsAvailableList>;
 
@@ -11463,7 +11267,7 @@ export type PaymentMethodSubTypeEnum =
   | "NONE"
   | "RUPAY"
   | "VISA";
-export const PaymentMethodSubTypeEnum = S.String;
+const PaymentMethodSubTypeEnum = S.String;
 
 /** Payment method status */
 export type PaymentMethodStatusEnum =
@@ -11480,7 +11284,7 @@ export type PaymentMethodStatusEnum =
   | "REPLACED"
   | "VALID"
   | "VALIDATING";
-export const PaymentMethodStatusEnum = S.String;
+const PaymentMethodStatusEnum = S.String;
 
 /** payment method */
 export interface PaymentMethodPaymentMethod {
@@ -11519,7 +11323,7 @@ export interface PaymentMethodPaymentMethod {
   /** Payment method status */
   status?: PaymentMethodStatusEnum;
 }
-export const PaymentMethodPaymentMethod = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodPaymentMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingContactId: S.optional(S.NullOr(S.Number)),
     creationDate: S.optional(S.String),
@@ -11545,13 +11349,13 @@ export const PaymentMethodPaymentMethod = /*@__PURE__*/ S.suspend(() =>
 
 /** List of registered Payment methods usable on this order */
 export type BillingOrderPaymentMethodsPaymentMethodsList = Array<PaymentMethodPaymentMethod>;
-export const BillingOrderPaymentMethodsPaymentMethodsList = /*@__PURE__*/ S.Array(
+const BillingOrderPaymentMethodsPaymentMethodsList = /*@__PURE__*/ S.Array(
   PaymentMethodPaymentMethod,
 ) as any as S.Schema<BillingOrderPaymentMethodsPaymentMethodsList>;
 
 /** IDs of registered payment method usable on this order */
 export type BillingOrderPaymentMethodsRegisteredList = Array<number>;
-export const BillingOrderPaymentMethodsRegisteredList =
+const BillingOrderPaymentMethodsRegisteredList =
   ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<BillingOrderPaymentMethodsRegisteredList>;
 
 /** Payment methods */
@@ -11563,7 +11367,7 @@ export interface BillingOrderPaymentMethods {
   /** IDs of registered payment method usable on this order */
   registered?: BillingOrderPaymentMethodsRegisteredList;
 }
-export const BillingOrderPaymentMethods = /*@__PURE__*/ S.suspend(() =>
+const BillingOrderPaymentMethods = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(BillingOrderPaymentMethodsAvailableList),
     paymentMethods: S.optional(BillingOrderPaymentMethodsPaymentMethodsList),
@@ -11574,16 +11378,13 @@ export const BillingOrderPaymentMethods = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingOrderPaymentMethods>;
 
 export interface ListMeOvhAccountRequest {}
-export const ListMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/ovhAccount", code: 200 })),
 ).annotate({ identifier: "ListMeOvhAccountRequest" }) as any as S.Schema<ListMeOvhAccountRequest>;
 
 export type ListMeOvhAccountResponseBodyList = Array<string>;
-export const ListMeOvhAccountResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeOvhAccountResponseBodyList>;
-
 export type ListMeOvhAccountResponse = ListMeOvhAccountResponseBodyList;
-export const ListMeOvhAccountResponse =
+const ListMeOvhAccountResponse =
   GetCertificatesResponse as any as S.Schema<ListMeOvhAccountResponse>;
 
 export interface ListMeOvhAccountMovementsRequest {
@@ -11593,7 +11394,7 @@ export interface ListMeOvhAccountMovementsRequest {
   /** Filter the value of date property (<=) */
   date_to?: string;
 }
-export const ListMeOvhAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeOvhAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhAccountId: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
@@ -11604,15 +11405,12 @@ export const ListMeOvhAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeOvhAccountMovementsRequest>;
 
 export type ListMeOvhAccountMovementsResponseBodyList = Array<number>;
-export const ListMeOvhAccountMovementsResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeOvhAccountMovementsResponseBodyList>;
-
 export type ListMeOvhAccountMovementsResponse = ListMeOvhAccountMovementsResponseBodyList;
-export const ListMeOvhAccountMovementsResponse =
+const ListMeOvhAccountMovementsResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeOvhAccountMovementsResponse>;
 
 export interface ListMePaymentAvailableMethodsRequest {}
-export const ListMePaymentAvailableMethodsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMePaymentAvailableMethodsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/payment/availableMethods", code: 200 })),
 ).annotate({
   identifier: "ListMePaymentAvailableMethodsRequest",
@@ -11641,7 +11439,7 @@ export interface MePaymentAvailablePaymentMethod {
   /** Indicates if payment method type allows payment and registration at the same time */
   registerableWithTransaction?: boolean;
 }
-export const MePaymentAvailablePaymentMethod = /*@__PURE__*/ S.suspend(() =>
+const MePaymentAvailablePaymentMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formSessionId: S.optional(S.NullOr(S.String)),
     icon: S.optional(MePaymentIcon),
@@ -11659,19 +11457,19 @@ export const MePaymentAvailablePaymentMethod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MePaymentAvailablePaymentMethod>;
 
 export type ListMePaymentAvailableMethodsResponseBodyList = Array<MePaymentAvailablePaymentMethod>;
-export const ListMePaymentAvailableMethodsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMePaymentAvailableMethodsResponseBodyList = /*@__PURE__*/ S.Array(
   MePaymentAvailablePaymentMethod,
 ) as any as S.Schema<ListMePaymentAvailableMethodsResponseBodyList>;
 
 export type ListMePaymentAvailableMethodsResponse = ListMePaymentAvailableMethodsResponseBodyList;
-export const ListMePaymentAvailableMethodsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMePaymentAvailableMethodsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMePaymentAvailableMethodsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMePaymentAvailableMethodsResponse",
 }) as any as S.Schema<ListMePaymentAvailableMethodsResponse>;
 
 export interface ListMePaymentMeanDeferredPaymentAccountRequest {}
-export const ListMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/me/paymentMean/deferredPaymentAccount", code: 200 }),
   ),
@@ -11680,12 +11478,9 @@ export const ListMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountRequest>;
 
 export type ListMePaymentMeanDeferredPaymentAccountResponseBodyList = Array<number>;
-export const ListMePaymentMeanDeferredPaymentAccountResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountResponseBodyList>;
-
 export type ListMePaymentMeanDeferredPaymentAccountResponse =
   ListMePaymentMeanDeferredPaymentAccountResponseBodyList;
-export const ListMePaymentMeanDeferredPaymentAccountResponse =
+const ListMePaymentMeanDeferredPaymentAccountResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentMeanDeferredPaymentAccountResponse>;
 
 export interface ListMePaymentMethodRequest {
@@ -11696,7 +11491,7 @@ export interface ListMePaymentMethodRequest {
   /** Filter on 'status' property */
   status?: MePaymentMethodStatusEnum | (string & {});
 }
-export const ListMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.Boolean.pipe(T.Query())),
     paymentType: S.optional(S.String.pipe(T.Query())),
@@ -11707,11 +11502,8 @@ export const ListMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMePaymentMethodRequest>;
 
 export type ListMePaymentMethodResponseBodyList = Array<number>;
-export const ListMePaymentMethodResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMePaymentMethodResponseBodyList>;
-
 export type ListMePaymentMethodResponse = ListMePaymentMethodResponseBodyList;
-export const ListMePaymentMethodResponse =
+const ListMePaymentMethodResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentMethodResponse>;
 
 export interface ListMePaymentTransactionRequest {
@@ -11720,7 +11512,7 @@ export interface ListMePaymentTransactionRequest {
   /** Status */
   status?: MePaymentTransactionStatusEnum | (string & {});
 }
-export const ListMePaymentTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMePaymentTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.optional(S.Number.pipe(T.Query())),
     status: S.optional(MePaymentTransactionStatusEnum.pipe(T.Query())),
@@ -11730,26 +11522,20 @@ export const ListMePaymentTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMePaymentTransactionRequest>;
 
 export type ListMePaymentTransactionResponseBodyList = Array<number>;
-export const ListMePaymentTransactionResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMePaymentTransactionResponseBodyList>;
-
 export type ListMePaymentTransactionResponse = ListMePaymentTransactionResponseBodyList;
-export const ListMePaymentTransactionResponse =
+const ListMePaymentTransactionResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMePaymentTransactionResponse>;
 
 export interface ListMePreferenceManagerRequest {}
-export const ListMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/preferences/manager", code: 200 })),
 ).annotate({
   identifier: "ListMePreferenceManagerRequest",
 }) as any as S.Schema<ListMePreferenceManagerRequest>;
 
 export type ListMePreferenceManagerResponseBodyList = Array<string>;
-export const ListMePreferenceManagerResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMePreferenceManagerResponseBodyList>;
-
 export type ListMePreferenceManagerResponse = ListMePreferenceManagerResponseBodyList;
-export const ListMePreferenceManagerResponse =
+const ListMePreferenceManagerResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMePreferenceManagerResponse>;
 
 /** Recommendations product ranges */
@@ -11760,7 +11546,7 @@ export type RecommendationsProductRangesEnum =
   | "saas"
   | "vps"
   | "web";
-export const RecommendationsProductRangesEnum = S.String;
+const RecommendationsProductRangesEnum = S.String;
 
 export interface ListMeRecommendationsRequest {
   /** Maximum number of recommendations to be returned */
@@ -11768,7 +11554,7 @@ export interface ListMeRecommendationsRequest {
   /** Filter recommendations by product range */
   range?: RecommendationsProductRangesEnum | (string & {});
 }
-export const ListMeRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max: S.optional(S.Number.pipe(T.Query())),
     range: S.optional(RecommendationsProductRangesEnum.pipe(T.Query())),
@@ -11786,7 +11572,7 @@ export interface RecommendationsRecommendationAdvice {
   /** Product page url */
   url?: string;
 }
-export const RecommendationsRecommendationAdvice = /*@__PURE__*/ S.suspend(() =>
+const RecommendationsRecommendationAdvice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     score: S.optional(S.Number),
@@ -11797,7 +11583,7 @@ export const RecommendationsRecommendationAdvice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationsRecommendationAdvice>;
 
 export type RecommendationsRecommendationAdvicesList = Array<RecommendationsRecommendationAdvice>;
-export const RecommendationsRecommendationAdvicesList = /*@__PURE__*/ S.Array(
+const RecommendationsRecommendationAdvicesList = /*@__PURE__*/ S.Array(
   RecommendationsRecommendationAdvice,
 ) as any as S.Schema<RecommendationsRecommendationAdvicesList>;
 
@@ -11805,7 +11591,7 @@ export const RecommendationsRecommendationAdvicesList = /*@__PURE__*/ S.Array(
 export type RecommendationsRecommendationLocalizedDescriptionMap = {
   [key: string]: string | undefined;
 };
-export const RecommendationsRecommendationLocalizedDescriptionMap = /*@__PURE__*/ S.Record(
+const RecommendationsRecommendationLocalizedDescriptionMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<RecommendationsRecommendationLocalizedDescriptionMap>;
@@ -11818,7 +11604,7 @@ export interface RecommendationsRecommendation {
   /** Recommendation rank */
   rank?: number;
 }
-export const RecommendationsRecommendation = /*@__PURE__*/ S.suspend(() =>
+const RecommendationsRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advices: S.optional(RecommendationsRecommendationAdvicesList),
     localizedDescription: S.optional(RecommendationsRecommendationLocalizedDescriptionMap),
@@ -11830,7 +11616,7 @@ export const RecommendationsRecommendation = /*@__PURE__*/ S.suspend(() =>
 
 export type RecommendationsRecommendationsRecommendationsList =
   Array<RecommendationsRecommendation>;
-export const RecommendationsRecommendationsRecommendationsList = /*@__PURE__*/ S.Array(
+const RecommendationsRecommendationsRecommendationsList = /*@__PURE__*/ S.Array(
   RecommendationsRecommendation,
 ) as any as S.Schema<RecommendationsRecommendationsRecommendationsList>;
 
@@ -11838,7 +11624,7 @@ export const RecommendationsRecommendationsRecommendationsList = /*@__PURE__*/ S
 export interface RecommendationsRecommendations {
   recommendations?: RecommendationsRecommendationsRecommendationsList;
 }
-export const RecommendationsRecommendations = /*@__PURE__*/ S.suspend(() =>
+const RecommendationsRecommendations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendations: S.optional(RecommendationsRecommendationsRecommendationsList),
   }),
@@ -11854,7 +11640,7 @@ export interface ListMeRefundRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
-export const ListMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
     date_to: S.optional(S.String.pipe(T.Query("date.to"))),
@@ -11863,17 +11649,13 @@ export const ListMeRefundRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeRefundRequest" }) as any as S.Schema<ListMeRefundRequest>;
 
 export type ListMeRefundResponseBodyList = Array<string>;
-export const ListMeRefundResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeRefundResponseBodyList>;
-
 export type ListMeRefundResponse = ListMeRefundResponseBodyList;
-export const ListMeRefundResponse =
-  GetCertificatesResponse as any as S.Schema<ListMeRefundResponse>;
+const ListMeRefundResponse = GetCertificatesResponse as any as S.Schema<ListMeRefundResponse>;
 
 export interface ListMeRefundDetailsRequest {
   refundId: string;
 }
-export const ListMeRefundDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeRefundDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refundId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/refund/{refundId}/details", code: 200 })),
@@ -11882,15 +11664,12 @@ export const ListMeRefundDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeRefundDetailsRequest>;
 
 export type ListMeRefundDetailsResponseBodyList = Array<string>;
-export const ListMeRefundDetailsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeRefundDetailsResponseBodyList>;
-
 export type ListMeRefundDetailsResponse = ListMeRefundDetailsResponseBodyList;
-export const ListMeRefundDetailsResponse =
+const ListMeRefundDetailsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeRefundDetailsResponse>;
 
 export interface ListMeRepricingFall22Request {}
-export const ListMeRepricingFall22Request = /*@__PURE__*/ S.suspend(() =>
+const ListMeRepricingFall22Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/repricing/fall22", code: 200 })),
 ).annotate({
   identifier: "ListMeRepricingFall22Request",
@@ -11898,13 +11677,13 @@ export const ListMeRepricingFall22Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Addons of the Service */
 export type MeRepricingServiceAddonsList = Array<MeRepricingService>;
-export const MeRepricingServiceAddonsList = /*@__PURE__*/ S.Array(
+const MeRepricingServiceAddonsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => MeRepricingService),
 ) as any as S.Schema<MeRepricingServiceAddonsList>;
 
 /** Variables to use in the path */
 export type ServicesExpandedRouteVarsList = Array<ComplexTypeSafeKeyValueString>;
-export const ServicesExpandedRouteVarsList =
+const ServicesExpandedRouteVarsList =
   NichandleDocumentDocumentTagsList as any as S.Schema<ServicesExpandedRouteVarsList>;
 
 /** Route of the service */
@@ -11916,7 +11695,7 @@ export interface ServicesExpandedRoute {
   /** Variables to use in the path */
   vars?: ServicesExpandedRouteVarsList;
 }
-export const ServicesExpandedRoute = /*@__PURE__*/ S.suspend(() =>
+const ServicesExpandedRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.NullOr(S.String)),
     url: S.optional(S.NullOr(S.String)),
@@ -11959,7 +11738,7 @@ export interface MeRepricingService {
   /** Total price (addons included) before repricing, tax excluded */
   totalPriceBeforeWithoutTax?: OrderPrice;
 }
-export const MeRepricingService = /*@__PURE__*/ S.suspend(() =>
+const MeRepricingService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addons: S.optional(MeRepricingServiceAddonsList),
     applicationDate: S.optional(S.String),
@@ -11981,12 +11760,12 @@ export const MeRepricingService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MeRepricingService" }) as any as S.Schema<MeRepricingService>;
 
 export type ListMeRepricingFall22ResponseBodyList = Array<MeRepricingService>;
-export const ListMeRepricingFall22ResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeRepricingFall22ResponseBodyList = /*@__PURE__*/ S.Array(
   MeRepricingService,
 ) as any as S.Schema<ListMeRepricingFall22ResponseBodyList>;
 
 export type ListMeRepricingFall22Response = ListMeRepricingFall22ResponseBodyList;
-export const ListMeRepricingFall22Response = /*@__PURE__*/ S.suspend(() =>
+const ListMeRepricingFall22Response = /*@__PURE__*/ S.suspend(() =>
   ListMeRepricingFall22ResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeRepricingFall22Response",
@@ -12000,7 +11779,7 @@ export interface ListMeReverseBillRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
-export const ListMeReverseBillRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeReverseBillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
     date_to: S.optional(S.String.pipe(T.Query("date.to"))),
@@ -12009,17 +11788,14 @@ export const ListMeReverseBillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeReverseBillRequest" }) as any as S.Schema<ListMeReverseBillRequest>;
 
 export type ListMeReverseBillResponseBodyList = Array<string>;
-export const ListMeReverseBillResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeReverseBillResponseBodyList>;
-
 export type ListMeReverseBillResponse = ListMeReverseBillResponseBodyList;
-export const ListMeReverseBillResponse =
+const ListMeReverseBillResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeReverseBillResponse>;
 
 export interface ListMeReverseBillDetailsRequest {
   reverseBillId: string;
 }
-export const ListMeReverseBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeReverseBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reverseBillId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/reverseBill/{reverseBillId}/details", code: 200 })),
@@ -12028,30 +11804,24 @@ export const ListMeReverseBillDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeReverseBillDetailsRequest>;
 
 export type ListMeReverseBillDetailsResponseBodyList = Array<string>;
-export const ListMeReverseBillDetailsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeReverseBillDetailsResponseBodyList>;
-
 export type ListMeReverseBillDetailsResponse = ListMeReverseBillDetailsResponseBodyList;
-export const ListMeReverseBillDetailsResponse =
+const ListMeReverseBillDetailsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeReverseBillDetailsResponse>;
 
 export interface ListMeSlaRequest {}
-export const ListMeSlaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeSlaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/sla", code: 200 })),
 ).annotate({ identifier: "ListMeSlaRequest" }) as any as S.Schema<ListMeSlaRequest>;
 
 export type ListMeSlaResponseBodyList = Array<number>;
-export const ListMeSlaResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeSlaResponseBodyList>;
-
 export type ListMeSlaResponse = ListMeSlaResponseBodyList;
-export const ListMeSlaResponse = ListMeAgreementsResponse as any as S.Schema<ListMeSlaResponse>;
+const ListMeSlaResponse = ListMeAgreementsResponse as any as S.Schema<ListMeSlaResponse>;
 
 export interface ListMeSlaServicesRequest {
   /** Id of the object */
   id: number;
 }
-export const ListMeSlaServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeSlaServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/sla/{id}/services", code: 200 })),
@@ -12068,7 +11838,7 @@ export interface BillingSlaOperationService {
   /** SLA plan description */
   slaPlan?: string;
 }
-export const BillingSlaOperationService = /*@__PURE__*/ S.suspend(() =>
+const BillingSlaOperationService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -12080,57 +11850,47 @@ export const BillingSlaOperationService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSlaOperationService>;
 
 export type ListMeSlaServicesResponseBodyList = Array<BillingSlaOperationService>;
-export const ListMeSlaServicesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeSlaServicesResponseBodyList = /*@__PURE__*/ S.Array(
   BillingSlaOperationService,
 ) as any as S.Schema<ListMeSlaServicesResponseBodyList>;
 
 export type ListMeSlaServicesResponse = ListMeSlaServicesResponseBodyList;
-export const ListMeSlaServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeSlaServicesResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeSlaServicesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeSlaServicesResponse",
 }) as any as S.Schema<ListMeSlaServicesResponse>;
 
 export interface ListMeSshKeyRequest {}
-export const ListMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeSshKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/sshKey", code: 200 })),
 ).annotate({ identifier: "ListMeSshKeyRequest" }) as any as S.Schema<ListMeSshKeyRequest>;
 
 export type ListMeSshKeyResponseBodyList = Array<string>;
-export const ListMeSshKeyResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeSshKeyResponseBodyList>;
-
 export type ListMeSshKeyResponse = ListMeSshKeyResponseBodyList;
-export const ListMeSshKeyResponse =
-  GetCertificatesResponse as any as S.Schema<ListMeSshKeyResponse>;
+const ListMeSshKeyResponse = GetCertificatesResponse as any as S.Schema<ListMeSshKeyResponse>;
 
 export interface ListMeSubAccountRequest {}
-export const ListMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/subAccount", code: 200 })),
 ).annotate({ identifier: "ListMeSubAccountRequest" }) as any as S.Schema<ListMeSubAccountRequest>;
 
 export type ListMeSubAccountResponseBodyList = Array<number>;
-export const ListMeSubAccountResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeSubAccountResponseBodyList>;
-
 export type ListMeSubAccountResponse = ListMeSubAccountResponseBodyList;
-export const ListMeSubAccountResponse =
+const ListMeSubAccountResponse =
   ListMeAgreementsResponse as any as S.Schema<ListMeSubAccountResponse>;
 
 export interface ListMeTagRequest {}
-export const ListMeTagRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/tag", code: 200 })),
 ).annotate({ identifier: "ListMeTagRequest" }) as any as S.Schema<ListMeTagRequest>;
 
 export type ListMeTagResponseBodyList = Array<string>;
-export const ListMeTagResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeTagResponseBodyList>;
-
 export type ListMeTagResponse = ListMeTagResponseBodyList;
-export const ListMeTagResponse = GetCertificatesResponse as any as S.Schema<ListMeTagResponse>;
+const ListMeTagResponse = GetCertificatesResponse as any as S.Schema<ListMeTagResponse>;
 
 export interface ListMeTagAvailableRequest {}
-export const ListMeTagAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeTagAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/tag/available", code: 200 })),
 ).annotate({
   identifier: "ListMeTagAvailableRequest",
@@ -12138,12 +11898,12 @@ export const ListMeTagAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Enum values */
 export type MeTagTagKeyEnumList = Array<string>;
-export const MeTagTagKeyEnumList =
+const MeTagTagKeyEnumList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<MeTagTagKeyEnumList>;
 
 /** Tag key type */
 export type MeTagTagKeyTypeEnum = "ARRAY" | "DATE" | "ENUM" | "INTEGER" | "TEXT" | "VARCHAR";
-export const MeTagTagKeyTypeEnum = S.String;
+const MeTagTagKeyTypeEnum = S.String;
 
 /** Tag configuration key */
 export interface MeTagTagKey {
@@ -12162,7 +11922,7 @@ export interface MeTagTagKey {
   /** Tag key type */
   type?: MeTagTagKeyTypeEnum;
 }
-export const MeTagTagKey = /*@__PURE__*/ S.suspend(() =>
+const MeTagTagKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enum: S.optional(S.NullOr(MeTagTagKeyEnumList)),
     key: S.optional(S.String),
@@ -12176,7 +11936,7 @@ export const MeTagTagKey = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag configuration keys */
 export type MeTagAvailableTagKeysList = Array<MeTagTagKey>;
-export const MeTagAvailableTagKeysList = /*@__PURE__*/ S.Array(
+const MeTagAvailableTagKeysList = /*@__PURE__*/ S.Array(
   MeTagTagKey,
 ) as any as S.Schema<MeTagAvailableTagKeysList>;
 
@@ -12187,7 +11947,7 @@ export interface MeTagAvailableTag {
   /** Tag name */
   name?: string;
 }
-export const MeTagAvailableTag = /*@__PURE__*/ S.suspend(() =>
+const MeTagAvailableTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(MeTagAvailableTagKeysList),
     name: S.optional(S.String),
@@ -12195,12 +11955,12 @@ export const MeTagAvailableTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MeTagAvailableTag" }) as any as S.Schema<MeTagAvailableTag>;
 
 export type ListMeTagAvailableResponseBodyList = Array<MeTagAvailableTag>;
-export const ListMeTagAvailableResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMeTagAvailableResponseBodyList = /*@__PURE__*/ S.Array(
   MeTagAvailableTag,
 ) as any as S.Schema<ListMeTagAvailableResponseBodyList>;
 
 export type ListMeTagAvailableResponse = ListMeTagAvailableResponseBodyList;
-export const ListMeTagAvailableResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMeTagAvailableResponse = /*@__PURE__*/ S.suspend(() =>
   ListMeTagAvailableResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMeTagAvailableResponse",
@@ -12214,7 +11974,7 @@ export interface ListMeTaskContactChangeRequest {
   /** Filter the value of toAccount property (like) */
   toAccount?: string;
 }
-export const ListMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     askingAccount: S.optional(S.String.pipe(T.Query())),
     state: S.optional(NichandleChangeContactTaskStateEnum.pipe(T.Query())),
@@ -12225,11 +11985,8 @@ export const ListMeTaskContactChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeTaskContactChangeRequest>;
 
 export type ListMeTaskContactChangeResponseBodyList = Array<number>;
-export const ListMeTaskContactChangeResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTaskContactChangeResponseBodyList>;
-
 export type ListMeTaskContactChangeResponse = ListMeTaskContactChangeResponseBodyList;
-export const ListMeTaskContactChangeResponse =
+const ListMeTaskContactChangeResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTaskContactChangeResponse>;
 
 export interface ListMeTaskDnsRequest {
@@ -12237,7 +11994,7 @@ export interface ListMeTaskDnsRequest {
   status?: DomainTaskStatusEnum | (string & {});
   zone?: string;
 }
-export const ListMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(DomainTaskFunctionEnum.pipe(T.Query())),
     status: S.optional(DomainTaskStatusEnum.pipe(T.Query())),
@@ -12246,12 +12003,8 @@ export const ListMeTaskDnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeTaskDnsRequest" }) as any as S.Schema<ListMeTaskDnsRequest>;
 
 export type ListMeTaskDnsResponseBodyList = Array<number>;
-export const ListMeTaskDnsResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTaskDnsResponseBodyList>;
-
 export type ListMeTaskDnsResponse = ListMeTaskDnsResponseBodyList;
-export const ListMeTaskDnsResponse =
-  ListMeAgreementsResponse as any as S.Schema<ListMeTaskDnsResponse>;
+const ListMeTaskDnsResponse = ListMeAgreementsResponse as any as S.Schema<ListMeTaskDnsResponse>;
 
 /** Operation functions */
 export type DomainOperationFunctionEnum =
@@ -12291,7 +12044,7 @@ export type DomainOperationFunctionEnum =
   | "DomainUnhold"
   | "DomainUnlock"
   | "ZoneImport";
-export const DomainOperationFunctionEnum = S.String;
+const DomainOperationFunctionEnum = S.String;
 
 export interface ListMeTaskDomainRequest {
   /** Filter the value of domain property (like) */
@@ -12303,7 +12056,7 @@ export interface ListMeTaskDomainRequest {
   /** Filter the value of type property (=) */
   type?: DomainOperationTypeEnum | (string & {});
 }
-export const ListMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String.pipe(T.Query())),
     function: S.optional(DomainOperationFunctionEnum.pipe(T.Query())),
@@ -12313,18 +12066,15 @@ export const ListMeTaskDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeTaskDomainRequest" }) as any as S.Schema<ListMeTaskDomainRequest>;
 
 export type ListMeTaskDomainResponseBodyList = Array<number>;
-export const ListMeTaskDomainResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTaskDomainResponseBodyList>;
-
 export type ListMeTaskDomainResponse = ListMeTaskDomainResponseBodyList;
-export const ListMeTaskDomainResponse =
+const ListMeTaskDomainResponse =
   ListMeAgreementsResponse as any as S.Schema<ListMeTaskDomainResponse>;
 
 export interface ListMeTaskDomainArgumentRequest {
   /** Id */
   id: number;
 }
-export const ListMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/task/domain/{id}/argument", code: 200 })),
@@ -12333,18 +12083,15 @@ export const ListMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeTaskDomainArgumentRequest>;
 
 export type ListMeTaskDomainArgumentResponseBodyList = Array<string>;
-export const ListMeTaskDomainArgumentResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeTaskDomainArgumentResponseBodyList>;
-
 export type ListMeTaskDomainArgumentResponse = ListMeTaskDomainArgumentResponseBodyList;
-export const ListMeTaskDomainArgumentResponse =
+const ListMeTaskDomainArgumentResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeTaskDomainArgumentResponse>;
 
 export interface ListMeTaskEmailChangeRequest {
   /** Filter the value of state property (like) */
   state?: NichandleChangeEmailTaskStateEnum | (string & {});
 }
-export const ListMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(NichandleChangeEmailTaskStateEnum.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/me/task/emailChange", code: 200 })),
@@ -12353,15 +12100,12 @@ export const ListMeTaskEmailChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeTaskEmailChangeRequest>;
 
 export type ListMeTaskEmailChangeResponseBodyList = Array<number>;
-export const ListMeTaskEmailChangeResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTaskEmailChangeResponseBodyList>;
-
 export type ListMeTaskEmailChangeResponse = ListMeTaskEmailChangeResponseBodyList;
-export const ListMeTaskEmailChangeResponse =
+const ListMeTaskEmailChangeResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTaskEmailChangeResponse>;
 
 export interface ListMeTelephonyDefaultIpRestrictionRequest {}
-export const ListMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/me/telephony/defaultIpRestriction", code: 200 }),
   ),
@@ -12370,27 +12114,21 @@ export const ListMeTelephonyDefaultIpRestrictionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListMeTelephonyDefaultIpRestrictionRequest>;
 
 export type ListMeTelephonyDefaultIpRestrictionResponseBodyList = Array<number>;
-export const ListMeTelephonyDefaultIpRestrictionResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeTelephonyDefaultIpRestrictionResponseBodyList>;
-
 export type ListMeTelephonyDefaultIpRestrictionResponse =
   ListMeTelephonyDefaultIpRestrictionResponseBodyList;
-export const ListMeTelephonyDefaultIpRestrictionResponse =
+const ListMeTelephonyDefaultIpRestrictionResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeTelephonyDefaultIpRestrictionResponse>;
 
 export interface ListMeVoucherAccountRequest {}
-export const ListMeVoucherAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeVoucherAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/me/voucherAccount", code: 200 })),
 ).annotate({
   identifier: "ListMeVoucherAccountRequest",
 }) as any as S.Schema<ListMeVoucherAccountRequest>;
 
 export type ListMeVoucherAccountResponseBodyList = Array<string>;
-export const ListMeVoucherAccountResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeVoucherAccountResponseBodyList>;
-
 export type ListMeVoucherAccountResponse = ListMeVoucherAccountResponseBodyList;
-export const ListMeVoucherAccountResponse =
+const ListMeVoucherAccountResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeVoucherAccountResponse>;
 
 export interface ListMeVoucherAccountMovementsRequest {
@@ -12400,7 +12138,7 @@ export interface ListMeVoucherAccountMovementsRequest {
   /** Filter the value of date property (<=) */
   date_to?: string;
 }
-export const ListMeVoucherAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeVoucherAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voucherAccountId: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
@@ -12413,11 +12151,8 @@ export const ListMeVoucherAccountMovementsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListMeVoucherAccountMovementsRequest>;
 
 export type ListMeVoucherAccountMovementsResponseBodyList = Array<number>;
-export const ListMeVoucherAccountMovementsResponseBodyList =
-  ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<ListMeVoucherAccountMovementsResponseBodyList>;
-
 export type ListMeVoucherAccountMovementsResponse = ListMeVoucherAccountMovementsResponseBodyList;
-export const ListMeVoucherAccountMovementsResponse =
+const ListMeVoucherAccountMovementsResponse =
   ListMeAccessRestrictionIpResponse as any as S.Schema<ListMeVoucherAccountMovementsResponse>;
 
 export interface ListMeWithdrawalRequest {
@@ -12428,7 +12163,7 @@ export interface ListMeWithdrawalRequest {
   /** Filter the value of orderId property (=) */
   orderId?: number;
 }
-export const ListMeWithdrawalRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeWithdrawalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.optional(S.String.pipe(T.Query("date.from"))),
     date_to: S.optional(S.String.pipe(T.Query("date.to"))),
@@ -12437,17 +12172,14 @@ export const ListMeWithdrawalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMeWithdrawalRequest" }) as any as S.Schema<ListMeWithdrawalRequest>;
 
 export type ListMeWithdrawalResponseBodyList = Array<string>;
-export const ListMeWithdrawalResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeWithdrawalResponseBodyList>;
-
 export type ListMeWithdrawalResponse = ListMeWithdrawalResponseBodyList;
-export const ListMeWithdrawalResponse =
+const ListMeWithdrawalResponse =
   GetCertificatesResponse as any as S.Schema<ListMeWithdrawalResponse>;
 
 export interface ListMeWithdrawalDetailsRequest {
   withdrawalId: string;
 }
-export const ListMeWithdrawalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMeWithdrawalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     withdrawalId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/me/withdrawal/{withdrawalId}/details", code: 200 })),
@@ -12456,16 +12188,13 @@ export const ListMeWithdrawalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMeWithdrawalDetailsRequest>;
 
 export type ListMeWithdrawalDetailsResponseBodyList = Array<string>;
-export const ListMeWithdrawalDetailsResponseBodyList =
-  NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<ListMeWithdrawalDetailsResponseBodyList>;
-
 export type ListMeWithdrawalDetailsResponse = ListMeWithdrawalDetailsResponseBodyList;
-export const ListMeWithdrawalDetailsResponse =
+const ListMeWithdrawalDetailsResponse =
   ListMeBillDetailsResponse as any as S.Schema<ListMeWithdrawalDetailsResponse>;
 
 /** IDs of the services to migrate */
 export type MigrateMeIncidentSbgServicesRequestServiceIdsList = Array<number>;
-export const MigrateMeIncidentSbgServicesRequestServiceIdsList =
+const MigrateMeIncidentSbgServicesRequestServiceIdsList =
   ListMeAccessRestrictionIpResponseBodyList as any as S.Schema<MigrateMeIncidentSbgServicesRequestServiceIdsList>;
 
 export interface MigrateMeIncidentSbgServicesRequest {
@@ -12474,7 +12203,7 @@ export interface MigrateMeIncidentSbgServicesRequest {
   /** IDs of the services to migrate */
   serviceIds?: MigrateMeIncidentSbgServicesRequestServiceIdsList;
 }
-export const MigrateMeIncidentSbgServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateMeIncidentSbgServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dryRun: S.optional(S.Boolean),
     serviceIds: S.optional(MigrateMeIncidentSbgServicesRequestServiceIdsList),
@@ -12492,7 +12221,7 @@ export interface OrderContract {
   /** URL to download the contract */
   url?: string;
 }
-export const OrderContract = /*@__PURE__*/ S.suspend(() =>
+const OrderContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     name: S.optional(S.String),
@@ -12502,17 +12231,17 @@ export const OrderContract = /*@__PURE__*/ S.suspend(() =>
 
 /** List of contracts related to the order */
 export type OrderOrderContractsList = Array<OrderContract>;
-export const OrderOrderContractsList = /*@__PURE__*/ S.Array(
+const OrderOrderContractsList = /*@__PURE__*/ S.Array(
   OrderContract,
 ) as any as S.Schema<OrderOrderContractsList>;
 
 /** Context of the reduction */
 export type OrderReductionContextEnum = "promotion" | "voucher";
-export const OrderReductionContextEnum = S.String;
+const OrderReductionContextEnum = S.String;
 
 /** Type of reduction */
 export type OrderReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage";
-export const OrderReductionTypeEnum = S.String;
+const OrderReductionTypeEnum = S.String;
 
 /** Order detail reduction */
 export interface OrderReduction {
@@ -12529,7 +12258,7 @@ export interface OrderReduction {
   /** The reduction value */
   value?: OrderPrice;
 }
-export const OrderReduction = /*@__PURE__*/ S.suspend(() =>
+const OrderReduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(OrderReductionContextEnum),
     description: S.optional(S.String),
@@ -12542,7 +12271,7 @@ export const OrderReduction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of reductions applied to the detail */
 export type OrderOrderDetailReductionsList = Array<OrderReduction>;
-export const OrderOrderDetailReductionsList = /*@__PURE__*/ S.Array(
+const OrderOrderDetailReductionsList = /*@__PURE__*/ S.Array(
   OrderReduction,
 ) as any as S.Schema<OrderOrderDetailReductionsList>;
 
@@ -12569,7 +12298,7 @@ export interface OrderOrderDetail {
   /** Unitary price of the service */
   unitPrice?: OrderPrice;
 }
-export const OrderOrderDetail = /*@__PURE__*/ S.suspend(() =>
+const OrderOrderDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cartItemID: S.optional(S.NullOr(S.Number)),
     description: S.optional(S.String),
@@ -12586,7 +12315,7 @@ export const OrderOrderDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the order */
 export type OrderOrderDetailsList = Array<OrderOrderDetail>;
-export const OrderOrderDetailsList = /*@__PURE__*/ S.Array(
+const OrderOrderDetailsList = /*@__PURE__*/ S.Array(
   OrderOrderDetail,
 ) as any as S.Schema<OrderOrderDetailsList>;
 
@@ -12603,7 +12332,7 @@ export interface OrderOrderPrices {
   /** Price without tax */
   withoutTax?: OrderPrice;
 }
-export const OrderOrderPrices = /*@__PURE__*/ S.suspend(() =>
+const OrderOrderPrices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalWithoutTax: S.optional(S.NullOr(OrderPrice)),
     reduction: S.optional(S.NullOr(OrderPrice)),
@@ -12626,7 +12355,7 @@ export interface OrderOrder {
   /** URL to download the order */
   url?: string | null;
 }
-export const OrderOrder = /*@__PURE__*/ S.suspend(() =>
+const OrderOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contracts: S.optional(OrderOrderContractsList),
     details: S.optional(OrderOrderDetailsList),
@@ -12641,7 +12370,7 @@ export interface MeIncidentOrder {
   /** Order created in order to migrate a service */
   order?: OrderOrder;
 }
-export const MeIncidentOrder = /*@__PURE__*/ S.suspend(() =>
+const MeIncidentOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order: S.optional(OrderOrder),
   }),
@@ -12651,7 +12380,7 @@ export interface PutMeAccessRestrictionDeveloperModeRequest {
   /** Allow login on your account on a development version of the Manager */
   enabled?: boolean;
 }
-export const PutMeAccessRestrictionDeveloperModeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeAccessRestrictionDeveloperModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }).pipe(T.Http({ method: "PUT", uri: "/me/accessRestriction/developerMode", code: 200 })),
@@ -12660,7 +12389,7 @@ export const PutMeAccessRestrictionDeveloperModeRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutMeAccessRestrictionDeveloperModeRequest>;
 
 export interface PutMeAccessRestrictionDeveloperModeResponse {}
-export const PutMeAccessRestrictionDeveloperModeResponse =
+const PutMeAccessRestrictionDeveloperModeResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionDeveloperModeResponse>;
 
 export interface PutMeAccessRestrictionIpRequest {
@@ -12671,7 +12400,7 @@ export interface PutMeAccessRestrictionIpRequest {
   /** Send an email if someone try to access with this IP address */
   warning?: boolean;
 }
-export const PutMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     rule: S.optional(NichandleAccessRestrictionIpRestrictionRuleEnum),
@@ -12682,7 +12411,7 @@ export const PutMeAccessRestrictionIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeAccessRestrictionIpRequest>;
 
 export interface PutMeAccessRestrictionIpResponse {}
-export const PutMeAccessRestrictionIpResponse =
+const PutMeAccessRestrictionIpResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionIpResponse>;
 
 export interface PutMeAccessRestrictionIpDefaultRuleRequest {
@@ -12691,7 +12420,7 @@ export interface PutMeAccessRestrictionIpDefaultRuleRequest {
   /** Send an email if someone try to access */
   warning?: boolean;
 }
-export const PutMeAccessRestrictionIpDefaultRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeAccessRestrictionIpDefaultRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(NichandleAccessRestrictionIpRestrictionRuleEnum),
     warning: S.optional(S.Boolean),
@@ -12701,7 +12430,7 @@ export const PutMeAccessRestrictionIpDefaultRuleRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleRequest>;
 
 export interface PutMeAccessRestrictionIpDefaultRuleResponse {}
-export const PutMeAccessRestrictionIpDefaultRuleResponse =
+const PutMeAccessRestrictionIpDefaultRuleResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionIpDefaultRuleResponse>;
 
 export interface PutMeAccessRestrictionSmsRequest {
@@ -12710,7 +12439,7 @@ export interface PutMeAccessRestrictionSmsRequest {
   /** Description of this phone */
   description?: string;
 }
-export const PutMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     description: S.optional(S.String),
@@ -12720,7 +12449,7 @@ export const PutMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeAccessRestrictionSmsRequest>;
 
 export interface PutMeAccessRestrictionSmsResponse {}
-export const PutMeAccessRestrictionSmsResponse =
+const PutMeAccessRestrictionSmsResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionSmsResponse>;
 
 export interface PutMeAccessRestrictionTotpRequest {
@@ -12729,7 +12458,7 @@ export interface PutMeAccessRestrictionTotpRequest {
   /** Description of this TOTP */
   description?: string;
 }
-export const PutMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     description: S.optional(S.String),
@@ -12739,7 +12468,7 @@ export const PutMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeAccessRestrictionTotpRequest>;
 
 export interface PutMeAccessRestrictionTotpResponse {}
-export const PutMeAccessRestrictionTotpResponse =
+const PutMeAccessRestrictionTotpResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionTotpResponse>;
 
 export interface PutMeAccessRestrictionU2fRequest {
@@ -12748,7 +12477,7 @@ export interface PutMeAccessRestrictionU2fRequest {
   /** Description of this U2F key */
   description?: string;
 }
-export const PutMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     description: S.optional(S.String),
@@ -12758,7 +12487,7 @@ export const PutMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeAccessRestrictionU2fRequest>;
 
 export interface PutMeAccessRestrictionU2fResponse {}
-export const PutMeAccessRestrictionU2fResponse =
+const PutMeAccessRestrictionU2fResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeAccessRestrictionU2fResponse>;
 
 export interface PutMeAutorenewRequest {
@@ -12767,7 +12496,7 @@ export interface PutMeAutorenewRequest {
   /** give the renewal day */
   renewDay?: number;
 }
-export const PutMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     renewDay: S.optional(S.Number),
@@ -12775,7 +12504,7 @@ export const PutMeAutorenewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeAutorenewRequest" }) as any as S.Schema<PutMeAutorenewRequest>;
 
 export interface PutMeAutorenewResponse {}
-export const PutMeAutorenewResponse = ApplyMeSlaResponse as any as S.Schema<PutMeAutorenewResponse>;
+const PutMeAutorenewResponse = ApplyMeSlaResponse as any as S.Schema<PutMeAutorenewResponse>;
 
 export interface PutMeBillingGroupRequest {
   /** Group ID */
@@ -12787,7 +12516,7 @@ export interface PutMeBillingGroupRequest {
   /** Payment method ID associated to the billing group */
   paymentMethodId?: number | null;
 }
-export const PutMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.Number.pipe(T.Label()),
     contactId: S.optional(S.NullOr(S.Number)),
@@ -12797,8 +12526,7 @@ export const PutMeBillingGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeBillingGroupRequest" }) as any as S.Schema<PutMeBillingGroupRequest>;
 
 export interface PutMeBillingGroupResponse {}
-export const PutMeBillingGroupResponse =
-  ApplyMeSlaResponse as any as S.Schema<PutMeBillingGroupResponse>;
+const PutMeBillingGroupResponse = ApplyMeSlaResponse as any as S.Schema<PutMeBillingGroupResponse>;
 
 export interface PutMeBillingPurchaseOrderRequest {
   /** Id */
@@ -12818,7 +12546,7 @@ export interface PutMeBillingPurchaseOrderRequest {
   /** Type of a purchase order */
   type?: MeBillingPurchaseOrderPurchaseOrderTypeEnum | (string & {}) | null;
 }
-export const PutMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     active: S.optional(S.NullOr(S.Boolean)),
@@ -12834,7 +12562,7 @@ export const PutMeBillingPurchaseOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeBillingPurchaseOrderRequest>;
 
 export interface PutMeBillingPurchaseOrderResponse {}
-export const PutMeBillingPurchaseOrderResponse =
+const PutMeBillingPurchaseOrderResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<PutMeBillingPurchaseOrderResponse>;
 
 export interface PutMeConsentDecisionRequest {
@@ -12843,7 +12571,7 @@ export interface PutMeConsentDecisionRequest {
   /** Consent decision value */
   value: boolean;
 }
-export const PutMeConsentDecisionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeConsentDecisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaignName: S.String.pipe(T.Label()),
     value: S.Boolean,
@@ -12853,7 +12581,7 @@ export const PutMeConsentDecisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeConsentDecisionRequest>;
 
 export interface PutMeConsentDecisionResponse {}
-export const PutMeConsentDecisionResponse =
+const PutMeConsentDecisionResponse =
   ApplyMeSlaResponse as any as S.Schema<PutMeConsentDecisionResponse>;
 
 export interface PutMeContactRequest {
@@ -12902,7 +12630,7 @@ export interface PutMeContactRequest {
   /** VAT number */
   vat?: string | null;
 }
-export const PutMeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.Number.pipe(T.Label()),
     address: S.optional(MeContactAddress),
@@ -12931,7 +12659,7 @@ export const PutMeContactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If defined, list of ip blocks which are allowed to call API with this credential */
 export type PutMeCredentialRequestAllowedIPsList = Array<string>;
-export const PutMeCredentialRequestAllowedIPsList =
+const PutMeCredentialRequestAllowedIPsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<PutMeCredentialRequestAllowedIPsList>;
 
 export interface PutMeCredentialRequest {
@@ -12940,7 +12668,7 @@ export interface PutMeCredentialRequest {
   /** If defined, list of ip blocks which are allowed to call API with this credential */
   allowedIPs?: PutMeCredentialRequestAllowedIPsList | null;
 }
-export const PutMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialId: S.Number.pipe(T.Label()),
     allowedIPs: S.optional(S.NullOr(PutMeCredentialRequestAllowedIPsList)),
@@ -12948,8 +12676,7 @@ export const PutMeCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeCredentialRequest" }) as any as S.Schema<PutMeCredentialRequest>;
 
 export interface PutMeCredentialResponse {}
-export const PutMeCredentialResponse =
-  ApplyMeSlaResponse as any as S.Schema<PutMeCredentialResponse>;
+const PutMeCredentialResponse = ApplyMeSlaResponse as any as S.Schema<PutMeCredentialResponse>;
 
 export interface PutMeDocumentRequest {
   /** Document id */
@@ -12957,7 +12684,7 @@ export interface PutMeDocumentRequest {
   /** Document expiration */
   expirationDate?: string | null;
 }
-export const PutMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     expirationDate: S.optional(S.NullOr(S.String)),
@@ -12965,12 +12692,12 @@ export const PutMeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeDocumentRequest" }) as any as S.Schema<PutMeDocumentRequest>;
 
 export interface PutMeDocumentResponse {}
-export const PutMeDocumentResponse = ApplyMeSlaResponse as any as S.Schema<PutMeDocumentResponse>;
+const PutMeDocumentResponse = ApplyMeSlaResponse as any as S.Schema<PutMeDocumentResponse>;
 
 export interface PutMeFidelityAccountRequest {
   alertThreshold?: number | null;
 }
-export const PutMeFidelityAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeFidelityAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertThreshold: S.optional(S.NullOr(S.Number)),
   }).pipe(T.Http({ method: "PUT", uri: "/me/fidelityAccount", code: 200 })),
@@ -12979,7 +12706,7 @@ export const PutMeFidelityAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeFidelityAccountRequest>;
 
 export interface PutMeFidelityAccountResponse {}
-export const PutMeFidelityAccountResponse =
+const PutMeFidelityAccountResponse =
   ApplyMeSlaResponse as any as S.Schema<PutMeFidelityAccountResponse>;
 
 export interface PutMeIdentityGroupRequest {
@@ -12990,7 +12717,7 @@ export interface PutMeIdentityGroupRequest {
   /** Group's role */
   role?: AuthRoleEnum | (string & {});
 }
-export const PutMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -13001,7 +12728,7 @@ export const PutMeIdentityGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeIdentityGroupRequest>;
 
 export interface PutMeIdentityGroupResponse {}
-export const PutMeIdentityGroupResponse =
+const PutMeIdentityGroupResponse =
   ApplyMeSlaResponse as any as S.Schema<PutMeIdentityGroupResponse>;
 
 export interface PutMeIdentityProviderRequest {
@@ -13016,7 +12743,7 @@ export interface PutMeIdentityProviderRequest {
   /** SAML User attribute name */
   userAttributeName?: string;
 }
-export const PutMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableUsers: S.optional(S.NullOr(S.Boolean)),
     extensions: S.optional(AuthProviderExtensions),
@@ -13029,7 +12756,7 @@ export const PutMeIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeIdentityProviderRequest>;
 
 export interface PutMeIdentityProviderResponse {}
-export const PutMeIdentityProviderResponse =
+const PutMeIdentityProviderResponse =
   ApplyMeSlaResponse as any as S.Schema<PutMeIdentityProviderResponse>;
 
 export interface PutMeIdentityUserRequest {
@@ -13042,7 +12769,7 @@ export interface PutMeIdentityUserRequest {
   /** User's main group */
   group?: string;
 }
-export const PutMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -13052,8 +12779,7 @@ export const PutMeIdentityUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeIdentityUserRequest" }) as any as S.Schema<PutMeIdentityUserRequest>;
 
 export interface PutMeIdentityUserResponse {}
-export const PutMeIdentityUserResponse =
-  ApplyMeSlaResponse as any as S.Schema<PutMeIdentityUserResponse>;
+const PutMeIdentityUserResponse = ApplyMeSlaResponse as any as S.Schema<PutMeIdentityUserResponse>;
 
 export interface PutMeIdentityUserTokenRequest {
   /** User */
@@ -13067,7 +12793,7 @@ export interface PutMeIdentityUserTokenRequest {
   /** Duration (in seconds) of the token's validity */
   expiresIn?: number | null;
 }
-export const PutMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeIdentityUserTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -13091,7 +12817,7 @@ export interface PutMeIpOrganisationRequest {
   state?: string | null;
   zip?: string | null;
 }
-export const PutMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organisationId: S.String.pipe(T.Label()),
     abuse_mailbox: S.optional(S.String),
@@ -13109,7 +12835,7 @@ export const PutMeIpOrganisationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeIpOrganisationRequest>;
 
 export interface PutMeIpOrganisationResponse {}
-export const PutMeIpOrganisationResponse =
+const PutMeIpOrganisationResponse =
   ApplyMeSlaResponse as any as S.Schema<PutMeIpOrganisationResponse>;
 
 export interface PutMeMarketingRequest {
@@ -13124,7 +12850,7 @@ export interface PutMeMarketingRequest {
   /** Details for sms marketing communication */
   sms?: MeMarketingConsentDetails;
 }
-export const PutMeMarketingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeMarketingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     call: S.optional(MeMarketingConsentDetails),
     denyAll: S.optional(S.Boolean),
@@ -13136,7 +12862,7 @@ export const PutMeMarketingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** allowed callback urls */
 export type PutMeOauth2ClientRequestCallbackUrlsList = Array<string>;
-export const PutMeOauth2ClientRequestCallbackUrlsList =
+const PutMeOauth2ClientRequestCallbackUrlsList =
   NichandleAccessRestrictionSOTPSecretCodesList as any as S.Schema<PutMeOauth2ClientRequestCallbackUrlsList>;
 
 export interface PutMeOauth2ClientRequest {
@@ -13149,7 +12875,7 @@ export interface PutMeOauth2ClientRequest {
   /** client's name */
   name?: string;
 }
-export const PutMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.Label()),
     callbackUrls: S.optional(S.NullOr(PutMeOauth2ClientRequestCallbackUrlsList)),
@@ -13159,14 +12885,13 @@ export const PutMeOauth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeOauth2ClientRequest" }) as any as S.Schema<PutMeOauth2ClientRequest>;
 
 export interface PutMeOauth2ClientResponse {}
-export const PutMeOauth2ClientResponse =
-  ApplyMeSlaResponse as any as S.Schema<PutMeOauth2ClientResponse>;
+const PutMeOauth2ClientResponse = ApplyMeSlaResponse as any as S.Schema<PutMeOauth2ClientResponse>;
 
 export interface PutMeOvhAccountRequest {
   ovhAccountId: string;
   alertThreshold?: number | null;
 }
-export const PutMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhAccountId: S.String.pipe(T.Label()),
     alertThreshold: S.optional(S.NullOr(S.Number)),
@@ -13174,8 +12899,7 @@ export const PutMeOvhAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeOvhAccountRequest" }) as any as S.Schema<PutMeOvhAccountRequest>;
 
 export interface PutMeOvhAccountResponse {}
-export const PutMeOvhAccountResponse =
-  ApplyMeSlaResponse as any as S.Schema<PutMeOvhAccountResponse>;
+const PutMeOvhAccountResponse = ApplyMeSlaResponse as any as S.Schema<PutMeOvhAccountResponse>;
 
 export interface PutMePaymentMeanDeferredPaymentAccountRequest {
   /** Id */
@@ -13183,7 +12907,7 @@ export interface PutMePaymentMeanDeferredPaymentAccountRequest {
   /** Custom description of this deferred account */
   description?: string | null;
 }
-export const PutMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -13193,7 +12917,7 @@ export const PutMePaymentMeanDeferredPaymentAccountRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountRequest>;
 
 export interface PutMePaymentMeanDeferredPaymentAccountResponse {}
-export const PutMePaymentMeanDeferredPaymentAccountResponse =
+const PutMePaymentMeanDeferredPaymentAccountResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<PutMePaymentMeanDeferredPaymentAccountResponse>;
 
 export interface PutMePaymentMethodRequest {
@@ -13204,7 +12928,7 @@ export interface PutMePaymentMethodRequest {
   /** Custom customer description */
   description?: string | null;
 }
-export const PutMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMePaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.Number.pipe(T.Label()),
     default: S.optional(S.Boolean),
@@ -13220,7 +12944,7 @@ export interface PutMePreferenceManagerRequest {
   /** This preference value */
   value?: string;
 }
-export const PutMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
     value: S.optional(S.String),
@@ -13230,7 +12954,7 @@ export const PutMePreferenceManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMePreferenceManagerRequest>;
 
 export interface PutMePreferenceManagerResponse {}
-export const PutMePreferenceManagerResponse =
+const PutMePreferenceManagerResponse =
   ApplyMeSlaResponse as any as S.Schema<PutMePreferenceManagerResponse>;
 
 export interface PutMeSubAccountRequest {
@@ -13239,7 +12963,7 @@ export interface PutMeSubAccountRequest {
   /** This sub-account description */
   description?: string | null;
 }
-export const PutMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -13247,8 +12971,7 @@ export const PutMeSubAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMeSubAccountRequest" }) as any as S.Schema<PutMeSubAccountRequest>;
 
 export interface PutMeSubAccountResponse {}
-export const PutMeSubAccountResponse =
-  ApplyMeSlaResponse as any as S.Schema<PutMeSubAccountResponse>;
+const PutMeSubAccountResponse = ApplyMeSlaResponse as any as S.Schema<PutMeSubAccountResponse>;
 
 export interface PutMeTaskDomainArgumentRequest {
   /** Id */
@@ -13258,7 +12981,7 @@ export interface PutMeTaskDomainArgumentRequest {
   /** Value of the argument */
   value?: string | null;
 }
-export const PutMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -13269,13 +12992,13 @@ export const PutMeTaskDomainArgumentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutMeTaskDomainArgumentRequest>;
 
 export interface PutMeTaskDomainArgumentResponse {}
-export const PutMeTaskDomainArgumentResponse =
+const PutMeTaskDomainArgumentResponse =
   AcceptMeTaskEmailChangeResponse as any as S.Schema<PutMeTaskDomainArgumentResponse>;
 
 export interface ResendMeTaskContactChangeEmailRequest {
   id: number;
 }
-export const ResendMeTaskContactChangeEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const ResendMeTaskContactChangeEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/task/contactChange/{id}/resendEmail", code: 200 })),
@@ -13284,14 +13007,14 @@ export const ResendMeTaskContactChangeEmailRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ResendMeTaskContactChangeEmailRequest>;
 
 export interface ResendMeTaskContactChangeEmailResponse {}
-export const ResendMeTaskContactChangeEmailResponse =
+const ResendMeTaskContactChangeEmailResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<ResendMeTaskContactChangeEmailResponse>;
 
 export interface SendMeAccessRestrictionSmsCodeRequest {
   /** The Id of the restriction */
   id: number;
 }
-export const SendMeAccessRestrictionSmsCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const SendMeAccessRestrictionSmsCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/sms/{id}/sendCode", code: 200 })),
@@ -13303,7 +13026,7 @@ export const SendMeAccessRestrictionSmsCodeRequest = /*@__PURE__*/ S.suspend(() 
 export interface NichandleAccessRestrictionSmsCode {
   challenge?: string;
 }
-export const NichandleAccessRestrictionSmsCode = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionSmsCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challenge: S.optional(S.String),
   }),
@@ -13317,7 +13040,7 @@ export interface SubscribeMeMailingListRequest {
   /** Mailing list */
   mailingList: string;
 }
-export const SubscribeMeMailingListRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeMeMailingListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     mailingList: S.String,
@@ -13327,14 +13050,14 @@ export const SubscribeMeMailingListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscribeMeMailingListRequest>;
 
 export interface SubscribeMeMailingListResponse {}
-export const SubscribeMeMailingListResponse =
+const SubscribeMeMailingListResponse =
   ApplyMeSlaResponse as any as S.Schema<SubscribeMeMailingListResponse>;
 
 export interface ValidateMeAccessRestrictionBackupCodeRequest {
   /** OTP code given by the application */
   code: string;
 }
-export const ValidateMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/me/accessRestriction/backupCode/validate", code: 200 })),
@@ -13346,7 +13069,7 @@ export const ValidateMeAccessRestrictionBackupCodeRequest = /*@__PURE__*/ S.susp
 export interface NichandleAccessRestrictionSOTPValidate {
   remainingCodes?: number;
 }
-export const NichandleAccessRestrictionSOTPValidate = /*@__PURE__*/ S.suspend(() =>
+const NichandleAccessRestrictionSOTPValidate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remainingCodes: S.optional(S.Number),
   }),
@@ -13360,7 +13083,7 @@ export interface ValidateMeAccessRestrictionSmsRequest {
   /** SMS code send to a cellphone */
   code: string;
 }
-export const ValidateMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     code: S.String,
@@ -13370,7 +13093,7 @@ export const ValidateMeAccessRestrictionSmsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ValidateMeAccessRestrictionSmsRequest>;
 
 export interface ValidateMeAccessRestrictionSmsResponse {}
-export const ValidateMeAccessRestrictionSmsResponse =
+const ValidateMeAccessRestrictionSmsResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionSmsResponse>;
 
 export interface ValidateMeAccessRestrictionTotpRequest {
@@ -13379,7 +13102,7 @@ export interface ValidateMeAccessRestrictionTotpRequest {
   /** OTP code given by the application */
   code: string;
 }
-export const ValidateMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     code: S.String,
@@ -13389,7 +13112,7 @@ export const ValidateMeAccessRestrictionTotpRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ValidateMeAccessRestrictionTotpRequest>;
 
 export interface ValidateMeAccessRestrictionTotpResponse {}
-export const ValidateMeAccessRestrictionTotpResponse =
+const ValidateMeAccessRestrictionTotpResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionTotpResponse>;
 
 export interface ValidateMeAccessRestrictionU2fRequest {
@@ -13399,7 +13122,7 @@ export interface ValidateMeAccessRestrictionU2fRequest {
   clientDataJSON: string;
   rawId: string;
 }
-export const ValidateMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     attestationObject: S.String,
@@ -13411,7 +13134,7 @@ export const ValidateMeAccessRestrictionU2fRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ValidateMeAccessRestrictionU2fRequest>;
 
 export interface ValidateMeAccessRestrictionU2fResponse {}
-export const ValidateMeAccessRestrictionU2fResponse =
+const ValidateMeAccessRestrictionU2fResponse =
   AcceptMeTaskContactChangeResponse as any as S.Schema<ValidateMeAccessRestrictionU2fResponse>;
 
 export type AcceptMeAgreementError = OvhOpError;

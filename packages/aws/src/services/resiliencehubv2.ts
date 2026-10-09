@@ -142,7 +142,7 @@ export interface CreateAssertionRequest {
   text: string;
   clientToken?: string;
 }
-export const CreateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     text: S.String,
@@ -153,7 +153,7 @@ export const CreateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAssertionRequest" }) as any as S.Schema<CreateAssertionRequest>;
 export type Uuid = string;
 export type AssertionSource = "AI_GENERATED" | "USER" | (string & {});
-export const AssertionSource = S.String;
+const AssertionSource = S.String;
 
 export interface Assertion {
   serviceArn: string;
@@ -163,7 +163,7 @@ export interface Assertion {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const Assertion = /*@__PURE__*/ S.suspend(() =>
+const Assertion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     assertionId: S.String,
@@ -176,49 +176,46 @@ export const Assertion = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAssertionResponse {
   assertion: Assertion;
 }
-export const CreateAssertionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAssertionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ assertion: Assertion }),
 ).annotate({ identifier: "CreateAssertionResponse" }) as any as S.Schema<CreateAssertionResponse>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagValueList = string[];
-export const TagValueList = /*@__PURE__*/ S.Array(S.String);
+const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ResourceTag {
   key: string;
   values: string[];
 }
-export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
+const ResourceTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, values: TagValueList }),
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
-export const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
+const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
 export type S3Url = string;
 export type EksNamespace = string;
 export type EksNamespaceList = string[];
-export const EksNamespaceList = TagValueList as any as S.Schema<EksNamespaceList>;
+const EksNamespaceList = TagValueList as any as S.Schema<EksNamespaceList>;
 export type EksLabelKey = string;
 export type EksLabelValue = string;
 export type EksLabelMap = { [key: string]: string | undefined };
-export const EksLabelMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const EksLabelMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type EksLabelSelectorOperator =
   | "IN"
   | "NOT_IN"
   | "EXISTS"
   | "DOES_NOT_EXIST"
   | (string & {});
-export const EksLabelSelectorOperator = S.String;
+const EksLabelSelectorOperator = S.String;
 
 export type EksLabelValueList = string[];
-export const EksLabelValueList = TagValueList as any as S.Schema<EksLabelValueList>;
+const EksLabelValueList = TagValueList as any as S.Schema<EksLabelValueList>;
 export interface EksLabelSelectorRequirement {
   key: string;
   operator: EksLabelSelectorOperator;
   values?: string[];
 }
-export const EksLabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
+const EksLabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     operator: EksLabelSelectorOperator,
@@ -228,12 +225,12 @@ export const EksLabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "EksLabelSelectorRequirement",
 }) as any as S.Schema<EksLabelSelectorRequirement>;
 export type EksLabelSelectorRequirementList = EksLabelSelectorRequirement[];
-export const EksLabelSelectorRequirementList = /*@__PURE__*/ S.Array(EksLabelSelectorRequirement);
+const EksLabelSelectorRequirementList = /*@__PURE__*/ S.Array(EksLabelSelectorRequirement);
 export interface EksLabelSelector {
   matchLabels?: { [key: string]: string | undefined };
   matchExpressions?: EksLabelSelectorRequirement[];
 }
-export const EksLabelSelector = /*@__PURE__*/ S.suspend(() =>
+const EksLabelSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchLabels: S.optional(EksLabelMap),
     matchExpressions: S.optional(EksLabelSelectorRequirementList),
@@ -244,7 +241,7 @@ export interface EksSource {
   namespaces: string[];
   labelSelector?: EksLabelSelector;
 }
-export const EksSource = /*@__PURE__*/ S.suspend(() =>
+const EksSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterArn: S.String,
     namespaces: EksNamespaceList,
@@ -287,7 +284,7 @@ export type ResourceConfiguration =
       eks?: never;
       designFileS3Url: string;
     };
-export const ResourceConfiguration = /*@__PURE__*/ S.Union([
+const ResourceConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ resourceTags: ResourceTagList }),
   /*@__PURE__*/ S.Struct({ cfnStackArn: S.String }),
   /*@__PURE__*/ S.Struct({ tfStateFileUrl: S.String }),
@@ -299,7 +296,7 @@ export interface CreateInputSourceRequest {
   resourceConfiguration: ResourceConfiguration;
   clientToken?: string;
 }
-export const CreateInputSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInputSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     resourceConfiguration: ResourceConfiguration,
@@ -313,7 +310,7 @@ export interface CreateInputSourceResponse {
   serviceArn: string;
   inputSourceId: string;
 }
-export const CreateInputSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInputSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String, inputSourceId: S.String }),
 ).annotate({
   identifier: "CreateInputSourceResponse",
@@ -323,7 +320,7 @@ export type LongDescription = string;
 export interface AvailabilitySlo {
   target?: number;
 }
-export const AvailabilitySlo = /*@__PURE__*/ S.suspend(() =>
+const AvailabilitySlo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ target: S.optional(S.Number) }),
 ).annotate({ identifier: "AvailabilitySlo" }) as any as S.Schema<AvailabilitySlo>;
 export type MultiAzDisasterRecoveryApproach =
@@ -333,14 +330,14 @@ export type MultiAzDisasterRecoveryApproach =
   | "PILOT_LIGHT"
   | "BACKUP_AND_RESTORE"
   | (string & {});
-export const MultiAzDisasterRecoveryApproach = S.String;
+const MultiAzDisasterRecoveryApproach = S.String;
 
 export interface MultiAzTargets {
   rtoInMinutes?: number;
   rpoInMinutes?: number;
   disasterRecoveryApproach?: MultiAzDisasterRecoveryApproach;
 }
-export const MultiAzTargets = /*@__PURE__*/ S.suspend(() =>
+const MultiAzTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rtoInMinutes: S.optional(S.Number),
     rpoInMinutes: S.optional(S.Number),
@@ -354,23 +351,23 @@ export type MultiRegionDisasterRecoveryApproach =
   | "PILOT_LIGHT"
   | "BACKUP_AND_RESTORE"
   | (string & {});
-export const MultiRegionDisasterRecoveryApproach = S.String;
+const MultiRegionDisasterRecoveryApproach = S.String;
 
 export interface MultiRegionTargets {
   rtoInMinutes?: number;
   rpoInMinutes?: number;
   disasterRecoveryApproach?: MultiRegionDisasterRecoveryApproach;
 }
-export const MultiRegionTargets = MultiAzTargets as any as S.Schema<MultiRegionTargets>;
+const MultiRegionTargets = MultiAzTargets as any as S.Schema<MultiRegionTargets>;
 export interface DataRecoveryTargets {
   timeBetweenBackupsInMinutes?: number;
 }
-export const DataRecoveryTargets = /*@__PURE__*/ S.suspend(() =>
+const DataRecoveryTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ timeBetweenBackupsInMinutes: S.optional(S.Number) }),
 ).annotate({ identifier: "DataRecoveryTargets" }) as any as S.Schema<DataRecoveryTargets>;
 export type KmsKeyId = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreatePolicyRequest {
   name: string;
   description?: string;
@@ -383,7 +380,7 @@ export interface CreatePolicyRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -416,7 +413,7 @@ export interface Policy {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyArn: S.String,
     name: S.String,
@@ -437,18 +434,18 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePolicyResponse {
   policy: Policy;
 }
-export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: Policy }),
-).annotate({ identifier: "CreatePolicyResponse" }) as any as S.Schema<CreatePolicyResponse>;
+const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({ policy: Policy })).annotate({
+  identifier: "CreatePolicyResponse",
+}) as any as S.Schema<CreatePolicyResponse>;
 export type ReportType = "FAILURE_MODE" | "TESTING" | (string & {});
-export const ReportType = S.String;
+const ReportType = S.String;
 
 export interface CreateReportRequest {
   serviceArn: string;
   reportType: ReportType;
   clientToken?: string;
 }
-export const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     reportType: ReportType,
@@ -458,34 +455,34 @@ export const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateReportRequest" }) as any as S.Schema<CreateReportRequest>;
 export type ReportGenerationStatus = "PENDING" | "SUCCEEDED" | "FAILED" | (string & {});
-export const ReportGenerationStatus = S.String;
+const ReportGenerationStatus = S.String;
 
 export type TestRunId = string;
 export type ServiceOwnedArn = string;
 export interface S3ReportOutput {
   s3ObjectKey: string;
 }
-export const S3ReportOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3ObjectKey: S.String }),
-).annotate({ identifier: "S3ReportOutput" }) as any as S.Schema<S3ReportOutput>;
+const S3ReportOutput = /*@__PURE__*/ S.suspend(() => S.Struct({ s3ObjectKey: S.String })).annotate({
+  identifier: "S3ReportOutput",
+}) as any as S.Schema<S3ReportOutput>;
 export type ReportGenerationErrorCode =
   | "INSUFFICIENT_PERMISSIONS"
   | "CONFIGURATION_ERROR"
   | "INTERNAL_ERROR"
   | (string & {});
-export const ReportGenerationErrorCode = S.String;
+const ReportGenerationErrorCode = S.String;
 
 export interface FailedReportOutput {
   errorCode: ReportGenerationErrorCode;
   errorMessage?: string;
 }
-export const FailedReportOutput = /*@__PURE__*/ S.suspend(() =>
+const FailedReportOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ errorCode: ReportGenerationErrorCode, errorMessage: S.optional(S.String) }),
 ).annotate({ identifier: "FailedReportOutput" }) as any as S.Schema<FailedReportOutput>;
 export type ReportOutput =
   | { s3ReportOutput: S3ReportOutput; failedReportOutput?: never }
   | { s3ReportOutput?: never; failedReportOutput: FailedReportOutput };
-export const ReportOutput = /*@__PURE__*/ S.Union([
+const ReportOutput = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ s3ReportOutput: S3ReportOutput }),
   /*@__PURE__*/ S.Struct({ failedReportOutput: FailedReportOutput }),
 ]);
@@ -499,7 +496,7 @@ export interface ReportGenerationResult {
   createdAt?: Date;
   reportOutput?: ReportOutput;
 }
-export const ReportGenerationResult = /*@__PURE__*/ S.suspend(() =>
+const ReportGenerationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportType: ReportType,
     status: ReportGenerationStatus,
@@ -514,18 +511,18 @@ export const ReportGenerationResult = /*@__PURE__*/ S.suspend(() =>
 export interface CreateReportResponse {
   reportGenerationResult: ReportGenerationResult;
 }
-export const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reportGenerationResult: ReportGenerationResult }),
 ).annotate({ identifier: "CreateReportResponse" }) as any as S.Schema<CreateReportResponse>;
 export type UserJourneyId = string;
 export type UserJourneyIdList = string[];
-export const UserJourneyIdList = TagValueList as any as S.Schema<UserJourneyIdList>;
+const UserJourneyIdList = TagValueList as any as S.Schema<UserJourneyIdList>;
 export interface AssociatedSystem {
   systemArn: string;
   systemName?: string;
   userJourneyIds?: string[];
 }
-export const AssociatedSystem = /*@__PURE__*/ S.suspend(() =>
+const AssociatedSystem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.String,
     systemName: S.optional(S.String),
@@ -533,30 +530,30 @@ export const AssociatedSystem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AssociatedSystem" }) as any as S.Schema<AssociatedSystem>;
 export type AssociatedSystemList = AssociatedSystem[];
-export const AssociatedSystemList = /*@__PURE__*/ S.Array(AssociatedSystem);
+const AssociatedSystemList = /*@__PURE__*/ S.Array(AssociatedSystem);
 export type AwsRegion = string;
 export type RegionList = string[];
-export const RegionList = TagValueList as any as S.Schema<RegionList>;
+const RegionList = TagValueList as any as S.Schema<RegionList>;
 export type IamRoleName = string;
 export type IamRoleArn = string;
 export interface CrossAccountRole {
   crossAccountRoleArn: string;
   externalId?: string;
 }
-export const CrossAccountRole = /*@__PURE__*/ S.suspend(() =>
+const CrossAccountRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ crossAccountRoleArn: S.String, externalId: S.optional(S.String) }),
 ).annotate({ identifier: "CrossAccountRole" }) as any as S.Schema<CrossAccountRole>;
 export type CrossAccountRoleList = CrossAccountRole[];
-export const CrossAccountRoleList = /*@__PURE__*/ S.Array(CrossAccountRole);
+const CrossAccountRoleList = /*@__PURE__*/ S.Array(CrossAccountRole);
 export interface PermissionModel {
   invokerRoleName: string;
   crossAccountRoles?: CrossAccountRole[];
 }
-export const PermissionModel = /*@__PURE__*/ S.suspend(() =>
+const PermissionModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ invokerRoleName: S.String, crossAccountRoles: S.optional(CrossAccountRoleList) }),
 ).annotate({ identifier: "PermissionModel" }) as any as S.Schema<PermissionModel>;
 export type DependencyDiscoveryInput = "ENABLED" | "DISABLED" | (string & {});
-export const DependencyDiscoveryInput = S.String;
+const DependencyDiscoveryInput = S.String;
 
 export type S3BucketPath = string;
 export type AwsAccountId = string;
@@ -564,21 +561,21 @@ export interface S3ReportOutputConfiguration {
   bucketPath: string;
   bucketOwner: string;
 }
-export const S3ReportOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
+const S3ReportOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketPath: S.String, bucketOwner: S.String }),
 ).annotate({
   identifier: "S3ReportOutputConfiguration",
 }) as any as S.Schema<S3ReportOutputConfiguration>;
 export type ReportOutputConfiguration = { s3: S3ReportOutputConfiguration };
-export const ReportOutputConfiguration = /*@__PURE__*/ S.Union([
+const ReportOutputConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ s3: S3ReportOutputConfiguration }),
 ]);
 export type ReportOutputConfigurationList = ReportOutputConfiguration[];
-export const ReportOutputConfigurationList = /*@__PURE__*/ S.Array(ReportOutputConfiguration);
+const ReportOutputConfigurationList = /*@__PURE__*/ S.Array(ReportOutputConfiguration);
 export interface ServiceReportConfiguration {
   reportOutputs: ReportOutputConfiguration[];
 }
-export const ServiceReportConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ServiceReportConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reportOutputs: ReportOutputConfigurationList }),
 ).annotate({
   identifier: "ServiceReportConfiguration",
@@ -596,7 +593,7 @@ export interface CreateServiceRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -614,7 +611,7 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateServiceRequest" }) as any as S.Schema<CreateServiceRequest>;
 export type DependencyDiscoveryStatus = "ENABLED" | "INITIALIZING" | "DISABLED" | (string & {});
-export const DependencyDiscoveryStatus = S.String;
+const DependencyDiscoveryStatus = S.String;
 
 export interface DependencyDiscoveryConfig {
   status: DependencyDiscoveryStatus;
@@ -622,7 +619,7 @@ export interface DependencyDiscoveryConfig {
   eligibleResourceCount?: number;
   message?: string;
 }
-export const DependencyDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
+const DependencyDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: DependencyDiscoveryStatus,
     updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -633,14 +630,14 @@ export const DependencyDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DependencyDiscoveryConfig",
 }) as any as S.Schema<DependencyDiscoveryConfig>;
 export type PolicyValueSource = "SELF" | "CROSS_ACCOUNT" | (string & {});
-export const PolicyValueSource = S.String;
+const PolicyValueSource = S.String;
 
 export interface SloSource {
   value?: number;
   policyName?: string;
   source?: PolicyValueSource;
 }
-export const SloSource = /*@__PURE__*/ S.suspend(() =>
+const SloSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Number),
     policyName: S.optional(S.String),
@@ -652,13 +649,13 @@ export interface TargetSource {
   policyName?: string;
   source?: PolicyValueSource;
 }
-export const TargetSource = SloSource as any as S.Schema<TargetSource>;
+const TargetSource = SloSource as any as S.Schema<TargetSource>;
 export interface DisasterRecoverySource {
   value?: string;
   policyName?: string;
   source?: PolicyValueSource;
 }
-export const DisasterRecoverySource = /*@__PURE__*/ S.suspend(() =>
+const DisasterRecoverySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     policyName: S.optional(S.String),
@@ -675,7 +672,7 @@ export interface EffectivePolicyValues {
   multiRegionDrApproach?: DisasterRecoverySource;
   dataRecoveryTimeBetweenBackups?: TargetSource;
 }
-export const EffectivePolicyValues = /*@__PURE__*/ S.suspend(() =>
+const EffectivePolicyValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilitySlo: S.optional(SloSource),
     multiAzRto: S.optional(TargetSource),
@@ -688,7 +685,7 @@ export const EffectivePolicyValues = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EffectivePolicyValues" }) as any as S.Schema<EffectivePolicyValues>;
 export type AchievabilityStatus = "ACHIEVABLE" | "NOT_ACHIEVABLE" | (string & {});
-export const AchievabilityStatus = S.String;
+const AchievabilityStatus = S.String;
 
 export interface Achievability {
   availabilitySlo?: AchievabilityStatus;
@@ -696,7 +693,7 @@ export interface Achievability {
   multiRegionRtoRpo?: AchievabilityStatus;
   dataRecoveryTimeBetweenBackups?: AchievabilityStatus;
 }
-export const Achievability = /*@__PURE__*/ S.suspend(() =>
+const Achievability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilitySlo: S.optional(AchievabilityStatus),
     multiAzRtoRpo: S.optional(AchievabilityStatus),
@@ -705,13 +702,13 @@ export const Achievability = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Achievability" }) as any as S.Schema<Achievability>;
 export type CostCurrency = "USD" | (string & {});
-export const CostCurrency = S.String;
+const CostCurrency = S.String;
 
 export interface AssessmentCost {
   amount?: number;
   currency?: CostCurrency;
 }
-export const AssessmentCost = /*@__PURE__*/ S.suspend(() =>
+const AssessmentCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ amount: S.optional(S.Number), currency: S.optional(CostCurrency) }),
 ).annotate({ identifier: "AssessmentCost" }) as any as S.Schema<AssessmentCost>;
 export type ResourceDiscoveryRunStatus =
@@ -721,7 +718,7 @@ export type ResourceDiscoveryRunStatus =
   | "COMPLETED_WITH_FAILURES"
   | "NOT_STARTED"
   | (string & {});
-export const ResourceDiscoveryRunStatus = S.String;
+const ResourceDiscoveryRunStatus = S.String;
 
 export type ResourceDiscoveryErrorCode =
   | "INVALID_PERMISSIONS"
@@ -732,7 +729,7 @@ export type ResourceDiscoveryErrorCode =
   | "UNSUPPORTED_CLUSTER"
   | "INTERNAL_ERROR"
   | (string & {});
-export const ResourceDiscoveryErrorCode = S.String;
+const ResourceDiscoveryErrorCode = S.String;
 
 export interface ResourceDiscoveryStatus {
   status?: ResourceDiscoveryRunStatus;
@@ -740,7 +737,7 @@ export interface ResourceDiscoveryStatus {
   errorCode?: ResourceDiscoveryErrorCode;
   errorMessage?: string;
 }
-export const ResourceDiscoveryStatus = /*@__PURE__*/ S.suspend(() =>
+const ResourceDiscoveryStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ResourceDiscoveryRunStatus),
     lastRunAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -755,7 +752,7 @@ export type AssessmentStatus =
   | "FAILED"
   | "SUCCESS"
   | (string & {});
-export const AssessmentStatus = S.String;
+const AssessmentStatus = S.String;
 
 export type OuId = string;
 export type AccountId = string;
@@ -785,7 +782,7 @@ export interface Service {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     name: S.String,
@@ -816,13 +813,13 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 export interface CreateServiceResponse {
   service: Service;
 }
-export const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ service: Service }),
 ).annotate({ identifier: "CreateServiceResponse" }) as any as S.Schema<CreateServiceResponse>;
 export type EntityLabel = string;
 export type EntityDescription = string;
 export type ServiceFunctionCriticality = "PRIMARY" | "SUPPLEMENTAL" | (string & {});
-export const ServiceFunctionCriticality = S.String;
+const ServiceFunctionCriticality = S.String;
 
 export interface CreateServiceFunctionRequest {
   name: string;
@@ -831,7 +828,7 @@ export interface CreateServiceFunctionRequest {
   criticality: ServiceFunctionCriticality;
   clientToken?: string;
 }
-export const CreateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     serviceArn: S.String,
@@ -853,7 +850,7 @@ export const CreateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServiceFunctionRequest>;
 export type EntityId = string;
 export type ServiceFunctionSource = "AI_GENERATED" | "USER" | (string & {});
-export const ServiceFunctionSource = S.String;
+const ServiceFunctionSource = S.String;
 
 export interface ServiceFunction {
   serviceArn: string;
@@ -866,7 +863,7 @@ export interface ServiceFunction {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const ServiceFunction = /*@__PURE__*/ S.suspend(() =>
+const ServiceFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     serviceFunctionId: S.String,
@@ -882,19 +879,19 @@ export const ServiceFunction = /*@__PURE__*/ S.suspend(() =>
 export interface CreateServiceFunctionResponse {
   serviceFunction: ServiceFunction;
 }
-export const CreateServiceFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceFunction: ServiceFunction }),
 ).annotate({
   identifier: "CreateServiceFunctionResponse",
 }) as any as S.Schema<CreateServiceFunctionResponse>;
 export type ResourceList = string[];
-export const ResourceList = TagValueList as any as S.Schema<ResourceList>;
+const ResourceList = TagValueList as any as S.Schema<ResourceList>;
 export interface CreateServiceFunctionResourcesRequest {
   serviceArn: string;
   serviceFunctionId: string;
   resources: string[];
 }
-export const CreateServiceFunctionResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceFunctionResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String, serviceFunctionId: S.String, resources: ResourceList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/create-service-function-resources" }),
@@ -913,7 +910,7 @@ export interface CreateServiceFunctionResourcesResponse {
   serviceFunctionId?: string;
   resources?: string[];
 }
-export const CreateServiceFunctionResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceFunctionResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.optional(S.String),
     serviceFunctionId: S.optional(S.String),
@@ -930,7 +927,7 @@ export interface CreateSystemRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const CreateSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -956,7 +953,7 @@ export interface System {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const System = /*@__PURE__*/ S.suspend(() =>
+const System = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.String,
     systemId: S.String,
@@ -974,15 +971,15 @@ export const System = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSystemResponse {
   system: System;
 }
-export const CreateSystemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ system: System }),
-).annotate({ identifier: "CreateSystemResponse" }) as any as S.Schema<CreateSystemResponse>;
+const CreateSystemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({ system: System })).annotate({
+  identifier: "CreateSystemResponse",
+}) as any as S.Schema<CreateSystemResponse>;
 export interface LoggingConfiguration {
   s3BucketName?: string;
   cloudWatchLogGroupArn?: string;
   logSchemaVersion?: string;
 }
-export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     s3BucketName: S.optional(S.String),
     cloudWatchLogGroupArn: S.optional(S.String),
@@ -990,26 +987,23 @@ export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoggingConfiguration" }) as any as S.Schema<LoggingConfiguration>;
 export type StopConditionSource = "aws:cloudwatch:alarm" | "none" | (string & {});
-export const StopConditionSource = S.String;
+const StopConditionSource = S.String;
 
 export interface StopCondition {
   source: StopConditionSource;
   value: string;
 }
-export const StopCondition = /*@__PURE__*/ S.suspend(() =>
+const StopCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ source: StopConditionSource, value: S.String }),
 ).annotate({ identifier: "StopCondition" }) as any as S.Schema<StopCondition>;
 export type StopConditionList = StopCondition[];
-export const StopConditionList = /*@__PURE__*/ S.Array(StopCondition);
+const StopConditionList = /*@__PURE__*/ S.Array(StopCondition);
 export type ParameterKey = string;
 export type ParameterValue = string;
 export type StringList = string[];
-export const StringList = TagValueList as any as S.Schema<StringList>;
+const StringList = TagValueList as any as S.Schema<StringList>;
 export type TestParameters = { [key: string]: string[] | undefined };
-export const TestParameters = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ StringList.pipe(S.optional),
-);
+const TestParameters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ StringList.pipe(S.optional));
 export interface CreateTestRequest {
   serviceArn: string;
   testTemplateArn: string;
@@ -1018,7 +1012,7 @@ export interface CreateTestRequest {
   roleName?: string;
   parameters?: { [key: string]: string[] | undefined };
 }
-export const CreateTestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     testTemplateArn: S.String,
@@ -1034,11 +1028,11 @@ export interface TestAction {
   description?: string;
   resourceType: string;
 }
-export const TestAction = /*@__PURE__*/ S.suspend(() =>
+const TestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ actionId: S.String, description: S.optional(S.String), resourceType: S.String }),
 ).annotate({ identifier: "TestAction" }) as any as S.Schema<TestAction>;
 export type TestActionList = TestAction[];
-export const TestActionList = /*@__PURE__*/ S.Array(TestAction);
+const TestActionList = /*@__PURE__*/ S.Array(TestAction);
 export interface Test {
   testId: string;
   testTemplateArn: string;
@@ -1053,7 +1047,7 @@ export interface Test {
   successfulTestRuns: number;
   creationTime: Date;
 }
-export const Test = /*@__PURE__*/ S.suspend(() =>
+const Test = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String,
     testTemplateArn: S.String,
@@ -1072,7 +1066,7 @@ export const Test = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTestResponse {
   test: Test;
 }
-export const CreateTestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({ test: Test })).annotate({
+const CreateTestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({ test: Test })).annotate({
   identifier: "CreateTestResponse",
 }) as any as S.Schema<CreateTestResponse>;
 export interface CreateUserJourneyRequest {
@@ -1082,7 +1076,7 @@ export interface CreateUserJourneyRequest {
   policyArn?: string;
   clientToken?: string;
 }
-export const CreateUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.String,
     name: S.String,
@@ -1101,7 +1095,7 @@ export interface UserJourney {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const UserJourney = /*@__PURE__*/ S.suspend(() =>
+const UserJourney = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userJourneyId: S.String,
     name: S.String,
@@ -1114,7 +1108,7 @@ export const UserJourney = /*@__PURE__*/ S.suspend(() =>
 export interface CreateUserJourneyResponse {
   userJourney: UserJourney;
 }
-export const CreateUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userJourney: UserJourney }),
 ).annotate({
   identifier: "CreateUserJourneyResponse",
@@ -1123,7 +1117,7 @@ export interface DeleteAssertionRequest {
   serviceArn: string;
   assertionId: string;
 }
-export const DeleteAssertionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAssertionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String, assertionId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-assertion" }), svc, auth, proto, ver, rules),
   ),
@@ -1131,14 +1125,14 @@ export const DeleteAssertionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAssertionResponse {
   assertionId?: string;
 }
-export const DeleteAssertionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAssertionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ assertionId: S.optional(S.String) }),
 ).annotate({ identifier: "DeleteAssertionResponse" }) as any as S.Schema<DeleteAssertionResponse>;
 export interface DeleteInputSourceRequest {
   serviceArn: string;
   inputSourceId: string;
 }
-export const DeleteInputSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInputSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String, inputSourceId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-input-source" }), svc, auth, proto, ver, rules),
   ),
@@ -1147,12 +1141,12 @@ export interface DeleteInputSourceResponse {
   serviceArn: string;
   inputSourceId: string;
 }
-export const DeleteInputSourceResponse =
+const DeleteInputSourceResponse =
   CreateInputSourceResponse as any as S.Schema<DeleteInputSourceResponse>;
 export interface DeletePolicyRequest {
   policyArn: string;
 }
-export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policyArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-policy" }), svc, auth, proto, ver, rules),
   ),
@@ -1160,13 +1154,13 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePolicyResponse {
   policyArn: string;
 }
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policyArn: S.String }),
 ).annotate({ identifier: "DeletePolicyResponse" }) as any as S.Schema<DeletePolicyResponse>;
 export interface DeleteServiceRequest {
   serviceArn: string;
 }
-export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-service" }), svc, auth, proto, ver, rules),
   ),
@@ -1174,14 +1168,14 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteServiceResponse {
   serviceArn: string;
 }
-export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String }),
 ).annotate({ identifier: "DeleteServiceResponse" }) as any as S.Schema<DeleteServiceResponse>;
 export interface DeleteServiceFunctionRequest {
   serviceArn: string;
   serviceFunctionId: string;
 }
-export const DeleteServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String, serviceFunctionId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-function" }), svc, auth, proto, ver, rules),
   ),
@@ -1191,7 +1185,7 @@ export const DeleteServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteServiceFunctionResponse {
   serviceFunctionId?: string;
 }
-export const DeleteServiceFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceFunctionId: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteServiceFunctionResponse",
@@ -1201,7 +1195,7 @@ export interface DeleteServiceFunctionResourcesRequest {
   serviceFunctionId: string;
   resources: string[];
 }
-export const DeleteServiceFunctionResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceFunctionResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String, serviceFunctionId: S.String, resources: ResourceList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/delete-service-function-resources" }),
@@ -1220,12 +1214,12 @@ export interface DeleteServiceFunctionResourcesResponse {
   serviceFunctionId?: string;
   resources?: string[];
 }
-export const DeleteServiceFunctionResourcesResponse =
+const DeleteServiceFunctionResourcesResponse =
   CreateServiceFunctionResourcesResponse as any as S.Schema<DeleteServiceFunctionResourcesResponse>;
 export interface DeleteSystemRequest {
   systemArn: string;
 }
-export const DeleteSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ systemArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-system" }), svc, auth, proto, ver, rules),
   ),
@@ -1233,14 +1227,14 @@ export const DeleteSystemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSystemResponse {
   systemArn: string;
 }
-export const DeleteSystemResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSystemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ systemArn: S.String }),
 ).annotate({ identifier: "DeleteSystemResponse" }) as any as S.Schema<DeleteSystemResponse>;
 export interface DeleteTestRequest {
   testId: string;
   serviceArn: string;
 }
-export const DeleteTestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testId: S.String, serviceArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-test" }), svc, auth, proto, ver, rules),
   ),
@@ -1248,14 +1242,14 @@ export const DeleteTestRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTestResponse {
   testId: string;
 }
-export const DeleteTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ testId: S.String }),
-).annotate({ identifier: "DeleteTestResponse" }) as any as S.Schema<DeleteTestResponse>;
+const DeleteTestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({ testId: S.String })).annotate({
+  identifier: "DeleteTestResponse",
+}) as any as S.Schema<DeleteTestResponse>;
 export type CloudWatchAlarmArn = string;
 export interface SuccessCriteriaAlarmInput {
   alarmArn: string;
 }
-export const SuccessCriteriaAlarmInput = /*@__PURE__*/ S.suspend(() =>
+const SuccessCriteriaAlarmInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ alarmArn: S.String }),
 ).annotate({
   identifier: "SuccessCriteriaAlarmInput",
@@ -1263,37 +1257,37 @@ export const SuccessCriteriaAlarmInput = /*@__PURE__*/ S.suspend(() =>
 export interface ObservabilityAlarmInput {
   alarmArn: string;
 }
-export const ObservabilityAlarmInput = /*@__PURE__*/ S.suspend(() =>
+const ObservabilityAlarmInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ alarmArn: S.String }),
 ).annotate({ identifier: "ObservabilityAlarmInput" }) as any as S.Schema<ObservabilityAlarmInput>;
 export type TestSourceInput =
   | { successCriteriaAlarm: SuccessCriteriaAlarmInput; observabilityAlarm?: never }
   | { successCriteriaAlarm?: never; observabilityAlarm: ObservabilityAlarmInput };
-export const TestSourceInput = /*@__PURE__*/ S.Union([
+const TestSourceInput = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ successCriteriaAlarm: SuccessCriteriaAlarmInput }),
   /*@__PURE__*/ S.Struct({ observabilityAlarm: ObservabilityAlarmInput }),
 ]);
 export type TestSourceInputList = TestSourceInput[];
-export const TestSourceInputList = /*@__PURE__*/ S.Array(TestSourceInput);
+const TestSourceInputList = /*@__PURE__*/ S.Array(TestSourceInput);
 export interface DeleteTestSourcesRequest {
   testId: string;
   serviceArn: string;
   testSources: TestSourceInput[];
 }
-export const DeleteTestSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTestSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testId: S.String, serviceArn: S.String, testSources: TestSourceInputList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-test-sources" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteTestSourcesRequest" }) as any as S.Schema<DeleteTestSourcesRequest>;
 export interface DeleteTestSourcesResponse {}
-export const DeleteTestSourcesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteTestSourcesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteTestSourcesResponse",
 }) as any as S.Schema<DeleteTestSourcesResponse>;
 export interface DeleteUserJourneyRequest {
   systemArn: string;
   userJourneyId: string;
 }
-export const DeleteUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ systemArn: S.String, userJourneyId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/delete-user-journey" }), svc, auth, proto, ver, rules),
   ),
@@ -1301,7 +1295,7 @@ export const DeleteUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteUserJourneyResponse {
   userJourneyId: string;
 }
-export const DeleteUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userJourneyId: S.String }),
 ).annotate({
   identifier: "DeleteUserJourneyResponse",
@@ -1309,7 +1303,7 @@ export const DeleteUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDependencyInsightsRequest {
   serviceArn: string;
 }
-export const GetDependencyInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDependencyInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String.pipe(T.HttpQuery("serviceArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/v2/get-dependency-insights" }),
@@ -1330,26 +1324,26 @@ export type InsightsCategory =
   | "UNEVEN_USAGE"
   | "AWS_SERVICE"
   | (string & {});
-export const InsightsCategory = S.String;
+const InsightsCategory = S.String;
 
 export interface DependencyInsight {
   category: InsightsCategory;
   description: string;
 }
-export const DependencyInsight = /*@__PURE__*/ S.suspend(() =>
+const DependencyInsight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ category: InsightsCategory, description: S.String }),
 ).annotate({ identifier: "DependencyInsight" }) as any as S.Schema<DependencyInsight>;
 export type DependencyInsightsList = DependencyInsight[];
-export const DependencyInsightsList = /*@__PURE__*/ S.Array(DependencyInsight);
+const DependencyInsightsList = /*@__PURE__*/ S.Array(DependencyInsight);
 export type DependencyInsightsStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | (string & {});
-export const DependencyInsightsStatus = S.String;
+const DependencyInsightsStatus = S.String;
 
 export type DependencyInsightsErrorCode =
   | "INSUFFICIENT_DATA"
   | "LLM_GENERATION_FAILED"
   | "INTERNAL_ERROR"
   | (string & {});
-export const DependencyInsightsErrorCode = S.String;
+const DependencyInsightsErrorCode = S.String;
 
 export interface GetDependencyInsightsResponse {
   overview?: string;
@@ -1359,7 +1353,7 @@ export interface GetDependencyInsightsResponse {
   errorCode?: DependencyInsightsErrorCode;
   errorMessage?: string;
 }
-export const GetDependencyInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDependencyInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overview: S.optional(S.String),
     insights: S.optional(DependencyInsightsList),
@@ -1375,7 +1369,7 @@ export interface GetFailureModeFindingRequest {
   findingId: string;
   serviceArn: string;
 }
-export const GetFailureModeFindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFailureModeFindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingId: S.String.pipe(T.HttpQuery("findingId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -1399,53 +1393,53 @@ export type FailureCategory =
   | "MISCONFIGURATION_AND_BUGS"
   | "SINGLE_POINT_OF_FAILURE"
   | (string & {});
-export const FailureCategory = S.String;
+const FailureCategory = S.String;
 
 export type FindingStatus = "OPEN" | "RESOLVED" | "IRRELEVANT" | (string & {});
-export const FindingStatus = S.String;
+const FindingStatus = S.String;
 
 export type FindingSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
-export const FindingSeverity = S.String;
+const FindingSeverity = S.String;
 
 export type FunctionsList = string[];
-export const FunctionsList = TagValueList as any as S.Schema<FunctionsList>;
+const FunctionsList = TagValueList as any as S.Schema<FunctionsList>;
 export type PolicyComponent =
   | "AVAILABILITY_SLO"
   | "MULTI_AZ_DISASTER_RECOVERY"
   | "MULTI_REGION_DISASTER_RECOVERY"
   | "DATA_RECOVERY"
   | (string & {});
-export const PolicyComponent = S.String;
+const PolicyComponent = S.String;
 
 export type SuggestedChangesList = string[];
-export const SuggestedChangesList = TagValueList as any as S.Schema<SuggestedChangesList>;
+const SuggestedChangesList = TagValueList as any as S.Schema<SuggestedChangesList>;
 export interface InfrastructureAndCodeRecommendation {
   suggestedChanges?: string[];
 }
-export const InfrastructureAndCodeRecommendation = /*@__PURE__*/ S.suspend(() =>
+const InfrastructureAndCodeRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ suggestedChanges: S.optional(SuggestedChangesList) }),
 ).annotate({
   identifier: "InfrastructureAndCodeRecommendation",
 }) as any as S.Schema<InfrastructureAndCodeRecommendation>;
 export type InfrastructureAndCodeRecommendationsList = InfrastructureAndCodeRecommendation[];
-export const InfrastructureAndCodeRecommendationsList = /*@__PURE__*/ S.Array(
+const InfrastructureAndCodeRecommendationsList = /*@__PURE__*/ S.Array(
   InfrastructureAndCodeRecommendation,
 );
 export interface ObservabilityRecommendation {
   suggestedChanges?: string[];
 }
-export const ObservabilityRecommendation =
+const ObservabilityRecommendation =
   InfrastructureAndCodeRecommendation as any as S.Schema<ObservabilityRecommendation>;
 export type ObservabilityRecommendationsList = ObservabilityRecommendation[];
-export const ObservabilityRecommendationsList = /*@__PURE__*/ S.Array(ObservabilityRecommendation);
+const ObservabilityRecommendationsList = /*@__PURE__*/ S.Array(ObservabilityRecommendation);
 export interface TestingRecommendation {
   suggestedChanges?: string[];
 }
-export const TestingRecommendation = /*@__PURE__*/ S.suspend(() =>
+const TestingRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ suggestedChanges: S.optional(SuggestedChangesList) }),
 ).annotate({ identifier: "TestingRecommendation" }) as any as S.Schema<TestingRecommendation>;
 export type TestingRecommendationsList = TestingRecommendation[];
-export const TestingRecommendationsList = /*@__PURE__*/ S.Array(TestingRecommendation);
+const TestingRecommendationsList = /*@__PURE__*/ S.Array(TestingRecommendation);
 export interface Finding {
   findingId?: string;
   name?: string;
@@ -1462,7 +1456,7 @@ export interface Finding {
   testingRecommendations?: TestingRecommendation[];
   updatedAt?: Date;
 }
-export const Finding = /*@__PURE__*/ S.suspend(() =>
+const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1483,7 +1477,7 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
 export interface GetFailureModeFindingResponse {
   finding?: Finding;
 }
-export const GetFailureModeFindingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFailureModeFindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ finding: S.optional(Finding) }),
 ).annotate({
   identifier: "GetFailureModeFindingResponse",
@@ -1491,7 +1485,7 @@ export const GetFailureModeFindingResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetPolicyRequest {
   policyArn: string;
 }
-export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policyArn: S.String.pipe(T.HttpQuery("policyArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/get-policy" }), svc, auth, proto, ver, rules),
   ),
@@ -1499,11 +1493,11 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPolicyResponse {
   policy: Policy;
 }
-export const GetPolicyResponse = CreatePolicyResponse as any as S.Schema<GetPolicyResponse>;
+const GetPolicyResponse = CreatePolicyResponse as any as S.Schema<GetPolicyResponse>;
 export interface GetServiceRequest {
   serviceArn: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String.pipe(T.HttpQuery("serviceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/get-service" }), svc, auth, proto, ver, rules),
   ),
@@ -1511,11 +1505,11 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetServiceResponse {
   service: Service;
 }
-export const GetServiceResponse = CreateServiceResponse as any as S.Schema<GetServiceResponse>;
+const GetServiceResponse = CreateServiceResponse as any as S.Schema<GetServiceResponse>;
 export interface GetSystemRequest {
   systemArn: string;
 }
-export const GetSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ systemArn: S.String.pipe(T.HttpQuery("systemArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/get-system" }), svc, auth, proto, ver, rules),
   ),
@@ -1523,12 +1517,12 @@ export const GetSystemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSystemResponse {
   system: System;
 }
-export const GetSystemResponse = CreateSystemResponse as any as S.Schema<GetSystemResponse>;
+const GetSystemResponse = CreateSystemResponse as any as S.Schema<GetSystemResponse>;
 export interface GetTestRequest {
   testId: string;
   serviceArn: string;
 }
-export const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String.pipe(T.HttpQuery("testId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -1537,12 +1531,12 @@ export const GetTestRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTestResponse {
   test: Test;
 }
-export const GetTestResponse = CreateTestResponse as any as S.Schema<GetTestResponse>;
+const GetTestResponse = CreateTestResponse as any as S.Schema<GetTestResponse>;
 export interface GetTestRunRequest {
   testRunId: string;
   serviceArn: string;
 }
-export const GetTestRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testRunId: S.String.pipe(T.HttpQuery("testRunId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -1557,21 +1551,21 @@ export type TestRunStatus =
   | "STOPPED"
   | "ERROR"
   | (string & {});
-export const TestRunStatus = S.String;
+const TestRunStatus = S.String;
 
 export interface ExperimentDetails {
   experimentArn: string;
   details?: string;
 }
-export const ExperimentDetails = /*@__PURE__*/ S.suspend(() =>
+const ExperimentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ experimentArn: S.String, details: S.optional(S.String) }),
 ).annotate({ identifier: "ExperimentDetails" }) as any as S.Schema<ExperimentDetails>;
 export type ExperimentDetailsList = ExperimentDetails[];
-export const ExperimentDetailsList = /*@__PURE__*/ S.Array(ExperimentDetails);
+const ExperimentDetailsList = /*@__PURE__*/ S.Array(ExperimentDetails);
 export interface TestRunReportConfiguration {
   reportOutput: ReportOutputConfiguration[];
 }
-export const TestRunReportConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TestRunReportConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reportOutput: ReportOutputConfigurationList }),
 ).annotate({
   identifier: "TestRunReportConfiguration",
@@ -1584,7 +1578,7 @@ export interface TestRunPolicySnapshot {
   multiRegion?: MultiRegionTargets;
   dataRecovery?: DataRecoveryTargets;
 }
-export const TestRunPolicySnapshot = /*@__PURE__*/ S.suspend(() =>
+const TestRunPolicySnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyArn: S.optional(S.String),
     name: S.optional(S.String),
@@ -1596,7 +1590,7 @@ export const TestRunPolicySnapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TestRunPolicySnapshot" }) as any as S.Schema<TestRunPolicySnapshot>;
 export type RegionSwitchExecutionId = string;
 export type AccountTargeting = "SINGLE_ACCOUNT" | "MULTI_ACCOUNT" | (string & {});
-export const AccountTargeting = S.String;
+const AccountTargeting = S.String;
 
 export interface TestRun {
   testRunId: string;
@@ -1622,7 +1616,7 @@ export interface TestRun {
   regions?: string[];
   accountTargeting?: AccountTargeting;
 }
-export const TestRun = /*@__PURE__*/ S.suspend(() =>
+const TestRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testRunId: S.String,
     testId: S.String,
@@ -1651,19 +1645,19 @@ export const TestRun = /*@__PURE__*/ S.suspend(() =>
 export interface GetTestRunResponse {
   testRun: TestRun;
 }
-export const GetTestRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ testRun: TestRun }),
-).annotate({ identifier: "GetTestRunResponse" }) as any as S.Schema<GetTestRunResponse>;
+const GetTestRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({ testRun: TestRun })).annotate({
+  identifier: "GetTestRunResponse",
+}) as any as S.Schema<GetTestRunResponse>;
 export interface GetTestTemplateRequest {
   testTemplateArn: string;
 }
-export const GetTestTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testTemplateArn: S.String.pipe(T.HttpQuery("testTemplateArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/get-test-template" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetTestTemplateRequest" }) as any as S.Schema<GetTestTemplateRequest>;
 export type ParameterType = "STRING" | "STRING_LIST" | "INTEGER" | (string & {});
-export const ParameterType = S.String;
+const ParameterType = S.String;
 
 export interface TestTemplateParameter {
   name: string;
@@ -1673,7 +1667,7 @@ export interface TestTemplateParameter {
   defaultValue?: string;
   maxValues?: number;
 }
-export const TestTemplateParameter = /*@__PURE__*/ S.suspend(() =>
+const TestTemplateParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -1684,7 +1678,7 @@ export const TestTemplateParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestTemplateParameter" }) as any as S.Schema<TestTemplateParameter>;
 export type TestTemplateParameterList = TestTemplateParameter[];
-export const TestTemplateParameterList = /*@__PURE__*/ S.Array(TestTemplateParameter);
+const TestTemplateParameterList = /*@__PURE__*/ S.Array(TestTemplateParameter);
 export interface TestTemplate {
   testTemplateArn: string;
   name: string;
@@ -1692,7 +1686,7 @@ export interface TestTemplate {
   parameters?: TestTemplateParameter[];
   actions?: TestAction[];
 }
-export const TestTemplate = /*@__PURE__*/ S.suspend(() =>
+const TestTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testTemplateArn: S.String,
     name: S.String,
@@ -1704,14 +1698,14 @@ export const TestTemplate = /*@__PURE__*/ S.suspend(() =>
 export interface GetTestTemplateResponse {
   testTemplate: TestTemplate;
 }
-export const GetTestTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTestTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testTemplate: TestTemplate }),
 ).annotate({ identifier: "GetTestTemplateResponse" }) as any as S.Schema<GetTestTemplateResponse>;
 export interface GetUserJourneyRequest {
   systemArn: string;
   userJourneyId: string;
 }
-export const GetUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.String.pipe(T.HttpQuery("systemArn")),
     userJourneyId: S.String.pipe(T.HttpQuery("userJourneyId")),
@@ -1722,7 +1716,7 @@ export const GetUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserJourneyResponse {
   userJourney: UserJourney;
 }
-export const GetUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userJourney: UserJourney }),
 ).annotate({ identifier: "GetUserJourneyResponse" }) as any as S.Schema<GetUserJourneyResponse>;
 export interface ImportAppRequest {
@@ -1734,7 +1728,7 @@ export interface ImportAppRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const ImportAppRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     v1AppArn: S.String,
     policyArn: S.optional(S.String),
@@ -1748,7 +1742,7 @@ export const ImportAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportAppResponse {
   service: Service;
 }
-export const ImportAppResponse = CreateServiceResponse as any as S.Schema<ImportAppResponse>;
+const ImportAppResponse = CreateServiceResponse as any as S.Schema<ImportAppResponse>;
 export interface ImportPolicyRequest {
   v1PolicyArn: string;
   kmsKeyId?: string;
@@ -1758,7 +1752,7 @@ export interface ImportPolicyRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const ImportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     v1PolicyArn: S.String,
     kmsKeyId: S.optional(S.String),
@@ -1774,7 +1768,7 @@ export const ImportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportPolicyResponse {
   policy: Policy;
 }
-export const ImportPolicyResponse = CreatePolicyResponse as any as S.Schema<ImportPolicyResponse>;
+const ImportPolicyResponse = CreatePolicyResponse as any as S.Schema<ImportPolicyResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListAssertionsRequest {
@@ -1783,7 +1777,7 @@ export interface ListAssertionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListAssertionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssertionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     source: S.optional(AssertionSource).pipe(T.HttpQuery("source")),
@@ -1794,16 +1788,16 @@ export const ListAssertionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListAssertionsRequest" }) as any as S.Schema<ListAssertionsRequest>;
 export type AssertionList = Assertion[];
-export const AssertionList = /*@__PURE__*/ S.Array(Assertion);
+const AssertionList = /*@__PURE__*/ S.Array(Assertion);
 export interface ListAssertionsResponse {
   assertions: Assertion[];
   nextToken?: string;
 }
-export const ListAssertionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssertionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ assertions: AssertionList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListAssertionsResponse" }) as any as S.Schema<ListAssertionsResponse>;
 export type QueryGranularity = "HOURLY" | "DAILY" | (string & {});
-export const QueryGranularity = S.String;
+const QueryGranularity = S.String;
 
 export interface ListDependenciesRequest {
   serviceArn?: string;
@@ -1813,7 +1807,7 @@ export interface ListDependenciesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.optional(S.String).pipe(T.HttpQuery("serviceArn")),
     queryRangeStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
@@ -1833,18 +1827,18 @@ export interface QueryDataPoint {
   timestamp: Date;
   queryCount: number;
 }
-export const QueryDataPoint = /*@__PURE__*/ S.suspend(() =>
+const QueryDataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")), queryCount: S.Number }),
 ).annotate({ identifier: "QueryDataPoint" }) as any as S.Schema<QueryDataPoint>;
 export type QueryDataPointList = QueryDataPoint[];
-export const QueryDataPointList = /*@__PURE__*/ S.Array(QueryDataPoint);
+const QueryDataPointList = /*@__PURE__*/ S.Array(QueryDataPoint);
 export interface QueryRange {
   startTime: Date;
   endTime: Date;
   granularity: QueryGranularity;
   dataPoints: QueryDataPoint[];
 }
-export const QueryRange = /*@__PURE__*/ S.suspend(() =>
+const QueryRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1853,7 +1847,7 @@ export const QueryRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryRange" }) as any as S.Schema<QueryRange>;
 export type DependencyCriticality = "HARD" | "SOFT" | "UNKNOWN" | (string & {});
-export const DependencyCriticality = S.String;
+const DependencyCriticality = S.String;
 
 export interface DependencySummary {
   dependencyId: string;
@@ -1868,7 +1862,7 @@ export interface DependencySummary {
   criticality: DependencyCriticality;
   comment?: string;
 }
-export const DependencySummary = /*@__PURE__*/ S.suspend(() =>
+const DependencySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependencyId: S.String,
     serviceArn: S.String,
@@ -1884,21 +1878,21 @@ export const DependencySummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DependencySummary" }) as any as S.Schema<DependencySummary>;
 export type DependencySummaryList = DependencySummary[];
-export const DependencySummaryList = /*@__PURE__*/ S.Array(DependencySummary);
+const DependencySummaryList = /*@__PURE__*/ S.Array(DependencySummary);
 export interface ListDependenciesResponse {
   dependencySummaries: DependencySummary[];
   nextToken?: string;
 }
-export const ListDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dependencySummaries: DependencySummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListDependenciesResponse" }) as any as S.Schema<ListDependenciesResponse>;
 export type AssessmentStatusList = AssessmentStatus[];
-export const AssessmentStatusList = /*@__PURE__*/ S.Array(AssessmentStatus);
+const AssessmentStatusList = /*@__PURE__*/ S.Array(AssessmentStatus);
 export type AssessmentSortField = "STARTED_AT" | (string & {});
-export const AssessmentSortField = S.String;
+const AssessmentSortField = S.String;
 
 export type SortOrder = "ASC" | "DESC" | (string & {});
-export const SortOrder = S.String;
+const SortOrder = S.String;
 
 export interface ListFailureModeAssessmentsRequest {
   serviceArn: string;
@@ -1910,7 +1904,7 @@ export interface ListFailureModeAssessmentsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListFailureModeAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFailureModeAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     assessmentStatuses: S.optional(AssessmentStatusList).pipe(T.HttpQuery("assessmentStatuses")),
@@ -1948,7 +1942,7 @@ export type AssessmentStep =
   | "FAILURE_MODE_FINDINGS_CONSOLIDATION"
   | "FAILURE_MODE_FINDINGS_ENRICHMENT"
   | (string & {});
-export const AssessmentStep = S.String;
+const AssessmentStep = S.String;
 
 export type AssessmentErrorCode =
   | "INVALID_PERMISSIONS"
@@ -1957,7 +1951,7 @@ export type AssessmentErrorCode =
   | "INTERNAL_ERROR"
   | "DESIGN_FILE_ACCESS_DENIED"
   | (string & {});
-export const AssessmentErrorCode = S.String;
+const AssessmentErrorCode = S.String;
 
 export interface AssessmentSummary {
   assessmentId: string;
@@ -1973,7 +1967,7 @@ export interface AssessmentSummary {
   billableAssessmentUnitCount?: number;
   achievability?: Achievability;
 }
-export const AssessmentSummary = /*@__PURE__*/ S.suspend(() =>
+const AssessmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentId: S.String,
     serviceArn: S.String,
@@ -1990,12 +1984,12 @@ export const AssessmentSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AssessmentSummary" }) as any as S.Schema<AssessmentSummary>;
 export type AssessmentSummaryList = AssessmentSummary[];
-export const AssessmentSummaryList = /*@__PURE__*/ S.Array(AssessmentSummary);
+const AssessmentSummaryList = /*@__PURE__*/ S.Array(AssessmentSummary);
 export interface ListFailureModeAssessmentsResponse {
   assessmentSummaries: AssessmentSummary[];
   nextToken?: string;
 }
-export const ListFailureModeAssessmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFailureModeAssessmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ assessmentSummaries: AssessmentSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListFailureModeAssessmentsResponse",
@@ -2008,7 +2002,7 @@ export interface ListFailureModeFindingsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListFailureModeFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFailureModeFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     severity: S.optional(FindingSeverity).pipe(T.HttpQuery("severity")),
@@ -2040,7 +2034,7 @@ export interface FindingSummary {
   policyComponent?: PolicyComponent;
   updatedAt?: Date;
 }
-export const FindingSummary = /*@__PURE__*/ S.suspend(() =>
+const FindingSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.optional(S.String),
     findingId: S.optional(S.String),
@@ -2054,12 +2048,12 @@ export const FindingSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FindingSummary" }) as any as S.Schema<FindingSummary>;
 export type FindingsList = FindingSummary[];
-export const FindingsList = /*@__PURE__*/ S.Array(FindingSummary);
+const FindingsList = /*@__PURE__*/ S.Array(FindingSummary);
 export interface ListFailureModeFindingsResponse {
   findingsSummary: FindingSummary[];
   nextToken?: string;
 }
-export const ListFailureModeFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFailureModeFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findingsSummary: FindingsList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListFailureModeFindingsResponse",
@@ -2072,7 +2066,7 @@ export type InputSourceType =
   | "DESIGN_FILE"
   | "MONITORING"
   | (string & {});
-export const InputSourceType = S.String;
+const InputSourceType = S.String;
 
 export interface ListInputSourcesRequest {
   serviceArn: string;
@@ -2080,7 +2074,7 @@ export interface ListInputSourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListInputSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInputSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     type: S.optional(InputSourceType).pipe(T.HttpQuery("type")),
@@ -2100,7 +2094,7 @@ export interface InputSourceSummary {
   designFileS3Url?: string;
   createdAt?: Date;
 }
-export const InputSourceSummary = /*@__PURE__*/ S.suspend(() =>
+const InputSourceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputSourceId: S.String,
     type: S.optional(InputSourceType),
@@ -2113,12 +2107,12 @@ export const InputSourceSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputSourceSummary" }) as any as S.Schema<InputSourceSummary>;
 export type InputSourceSummaryList = InputSourceSummary[];
-export const InputSourceSummaryList = /*@__PURE__*/ S.Array(InputSourceSummary);
+const InputSourceSummaryList = /*@__PURE__*/ S.Array(InputSourceSummary);
 export interface ListInputSourcesResponse {
   inputSourceSummaries: InputSourceSummary[];
   nextToken?: string;
 }
-export const ListInputSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInputSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ inputSourceSummaries: InputSourceSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListInputSourcesResponse" }) as any as S.Schema<ListInputSourcesResponse>;
 export interface ListPoliciesRequest {
@@ -2126,7 +2120,7 @@ export interface ListPoliciesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String).pipe(T.HttpQuery("accountId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2146,7 +2140,7 @@ export interface PolicySummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const PolicySummary = /*@__PURE__*/ S.suspend(() =>
+const PolicySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyArn: S.String,
     name: S.String,
@@ -2162,12 +2156,12 @@ export const PolicySummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicySummary" }) as any as S.Schema<PolicySummary>;
 export type PolicySummaryList = PolicySummary[];
-export const PolicySummaryList = /*@__PURE__*/ S.Array(PolicySummary);
+const PolicySummaryList = /*@__PURE__*/ S.Array(PolicySummary);
 export interface ListPoliciesResponse {
   policySummaries: PolicySummary[];
   nextToken?: string;
 }
-export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policySummaries: PolicySummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListPoliciesResponse" }) as any as S.Schema<ListPoliciesResponse>;
 export type PolicyEventType =
@@ -2176,10 +2170,10 @@ export type PolicyEventType =
   | "POLICY_SHARING_REVOKED"
   | "POLICY_DELETED"
   | (string & {});
-export const PolicyEventType = S.String;
+const PolicyEventType = S.String;
 
 export type PolicyEventTypeList = PolicyEventType[];
-export const PolicyEventTypeList = AssessmentStatusList as any as S.Schema<PolicyEventTypeList>;
+const PolicyEventTypeList = AssessmentStatusList as any as S.Schema<PolicyEventTypeList>;
 export interface ListPolicyEventsRequest {
   policyArn: string;
   eventTypes?: PolicyEventType[];
@@ -2188,7 +2182,7 @@ export interface ListPolicyEventsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListPolicyEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPolicyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyArn: S.String.pipe(T.HttpQuery("policyArn")),
     eventTypes: S.optional(PolicyEventTypeList).pipe(T.HttpQuery("eventTypes")),
@@ -2205,7 +2199,7 @@ export const ListPolicyEventsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListPolicyEventsRequest" }) as any as S.Schema<ListPolicyEventsRequest>;
 export type ActorType = "USER" | "SYSTEM" | (string & {});
-export const ActorType = S.String;
+const ActorType = S.String;
 
 export interface EventActor {
   type: ActorType;
@@ -2213,7 +2207,7 @@ export interface EventActor {
   accountId?: string;
   userName?: string;
 }
-export const EventActor = /*@__PURE__*/ S.suspend(() =>
+const EventActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ActorType,
     principalId: S.String,
@@ -2225,7 +2219,7 @@ export interface PolicyAttachedToServiceMetadata {
   serviceArn?: string;
   accountId?: string;
 }
-export const PolicyAttachedToServiceMetadata = /*@__PURE__*/ S.suspend(() =>
+const PolicyAttachedToServiceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.optional(S.String), accountId: S.optional(S.String) }),
 ).annotate({
   identifier: "PolicyAttachedToServiceMetadata",
@@ -2234,12 +2228,12 @@ export interface PolicyDetachedFromServiceMetadata {
   serviceArn?: string;
   accountId?: string;
 }
-export const PolicyDetachedFromServiceMetadata =
+const PolicyDetachedFromServiceMetadata =
   PolicyAttachedToServiceMetadata as any as S.Schema<PolicyDetachedFromServiceMetadata>;
 export interface PolicySharingRevokedMetadata {
   affectedServiceCount?: number;
 }
-export const PolicySharingRevokedMetadata = /*@__PURE__*/ S.suspend(() =>
+const PolicySharingRevokedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ affectedServiceCount: S.optional(S.Number) }),
 ).annotate({
   identifier: "PolicySharingRevokedMetadata",
@@ -2247,7 +2241,7 @@ export const PolicySharingRevokedMetadata = /*@__PURE__*/ S.suspend(() =>
 export interface PolicyDeletedMetadata {
   affectedServiceCount?: number;
 }
-export const PolicyDeletedMetadata = /*@__PURE__*/ S.suspend(() =>
+const PolicyDeletedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ affectedServiceCount: S.optional(S.Number) }),
 ).annotate({ identifier: "PolicyDeletedMetadata" }) as any as S.Schema<PolicyDeletedMetadata>;
 export type PolicyEventMetadata =
@@ -2275,7 +2269,7 @@ export type PolicyEventMetadata =
       policySharingRevoked?: never;
       policyDeleted: PolicyDeletedMetadata;
     };
-export const PolicyEventMetadata = /*@__PURE__*/ S.Union([
+const PolicyEventMetadata = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ policyAttachedToService: PolicyAttachedToServiceMetadata }),
   /*@__PURE__*/ S.Struct({ policyDetachedFromService: PolicyDetachedFromServiceMetadata }),
   /*@__PURE__*/ S.Struct({ policySharingRevoked: PolicySharingRevokedMetadata }),
@@ -2286,7 +2280,7 @@ export interface PolicyEventDetails {
   description: string;
   eventMetadata?: PolicyEventMetadata;
 }
-export const PolicyEventDetails = /*@__PURE__*/ S.suspend(() =>
+const PolicyEventDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.String,
@@ -2301,7 +2295,7 @@ export interface PolicyEvent {
   actor: EventActor;
   eventDetails: PolicyEventDetails;
 }
-export const PolicyEvent = /*@__PURE__*/ S.suspend(() =>
+const PolicyEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String,
     timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2312,12 +2306,12 @@ export const PolicyEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyEvent" }) as any as S.Schema<PolicyEvent>;
 export type PolicyEventList = PolicyEvent[];
-export const PolicyEventList = /*@__PURE__*/ S.Array(PolicyEvent);
+const PolicyEventList = /*@__PURE__*/ S.Array(PolicyEvent);
 export interface ListPolicyEventsResponse {
   events: PolicyEvent[];
   nextToken?: string;
 }
-export const ListPolicyEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPolicyEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ events: PolicyEventList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListPolicyEventsResponse" }) as any as S.Schema<ListPolicyEventsResponse>;
 export interface ListReportsRequest {
@@ -2327,7 +2321,7 @@ export interface ListReportsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.optional(S.String).pipe(T.HttpQuery("serviceArn")),
     reportType: S.optional(ReportType).pipe(T.HttpQuery("reportType")),
@@ -2337,12 +2331,12 @@ export const ListReportsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/v2/list-reports" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListReportsRequest" }) as any as S.Schema<ListReportsRequest>;
 export type ReportGenerationResultList = ReportGenerationResult[];
-export const ReportGenerationResultList = /*@__PURE__*/ S.Array(ReportGenerationResult);
+const ReportGenerationResultList = /*@__PURE__*/ S.Array(ReportGenerationResult);
 export interface ListReportsResponse {
   reportGenerationResults: ReportGenerationResult[];
   nextToken?: string;
 }
-export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportGenerationResults: ReportGenerationResultList,
     nextToken: S.optional(S.String),
@@ -2354,7 +2348,7 @@ export interface ListResolvedTestRunTargetResourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListResolvedTestRunTargetResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResolvedTestRunTargetResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testRunId: S.String.pipe(T.HttpLabel("testRunId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -2376,13 +2370,13 @@ export const ListResolvedTestRunTargetResourcesRequest = /*@__PURE__*/ S.suspend
 export type ResolvedTargetInformationKey = string;
 export type ResolvedTargetInformationValue = string;
 export type ResolvedTargetInformation = { [key: string]: string | undefined };
-export const ResolvedTargetInformation = EksLabelMap as any as S.Schema<ResolvedTargetInformation>;
+const ResolvedTargetInformation = EksLabelMap as any as S.Schema<ResolvedTargetInformation>;
 export interface ResolvedTargetResource {
   resourceType: string;
   targetName: string;
   targetInformation: { [key: string]: string | undefined };
 }
-export const ResolvedTargetResource = /*@__PURE__*/ S.suspend(() =>
+const ResolvedTargetResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.String,
     targetName: S.String,
@@ -2390,12 +2384,12 @@ export const ResolvedTargetResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResolvedTargetResource" }) as any as S.Schema<ResolvedTargetResource>;
 export type ResolvedTargetResourceList = ResolvedTargetResource[];
-export const ResolvedTargetResourceList = /*@__PURE__*/ S.Array(ResolvedTargetResource);
+const ResolvedTargetResourceList = /*@__PURE__*/ S.Array(ResolvedTargetResource);
 export interface ListResolvedTestRunTargetResourcesResponse {
   resolvedTargetResources: ResolvedTargetResource[];
   nextToken?: string;
 }
-export const ListResolvedTestRunTargetResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResolvedTestRunTargetResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resolvedTargetResources: ResolvedTargetResourceList,
     nextToken: S.optional(S.String),
@@ -2405,7 +2399,7 @@ export const ListResolvedTestRunTargetResourcesResponse = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListResolvedTestRunTargetResourcesResponse>;
 export type ResourceTypeFilter = string;
 export type ResourceTypeFilterList = string[];
-export const ResourceTypeFilterList = TagValueList as any as S.Schema<ResourceTypeFilterList>;
+const ResourceTypeFilterList = TagValueList as any as S.Schema<ResourceTypeFilterList>;
 export interface ListResourcesRequest {
   serviceArn: string;
   serviceFunctionId?: string;
@@ -2415,7 +2409,7 @@ export interface ListResourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     serviceFunctionId: S.optional(S.String).pipe(T.HttpQuery("serviceFunctionId")),
@@ -2432,7 +2426,7 @@ export interface InputSource {
   identifier: string;
   type: InputSourceType;
 }
-export const InputSource = /*@__PURE__*/ S.suspend(() =>
+const InputSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String, type: InputSourceType }),
 ).annotate({ identifier: "InputSource" }) as any as S.Schema<InputSource>;
 export interface Resource {
@@ -2441,7 +2435,7 @@ export interface Resource {
   awsAccountId?: string;
   resourceType?: string;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     awsRegion: S.optional(S.String),
@@ -2454,7 +2448,7 @@ export interface ServiceResource {
   inputSource?: InputSource;
   resource: Resource;
 }
-export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
+const ServiceResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIdentifier: S.String,
     inputSource: S.optional(InputSource),
@@ -2462,13 +2456,13 @@ export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceResource" }) as any as S.Schema<ServiceResource>;
 export type ServiceResourceList = ServiceResource[];
-export const ServiceResourceList = /*@__PURE__*/ S.Array(ServiceResource);
+const ServiceResourceList = /*@__PURE__*/ S.Array(ServiceResource);
 export interface ListResourcesResponse {
   serviceFunctionId?: string;
   serviceResources?: ServiceResource[];
   nextToken?: string;
 }
-export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceFunctionId: S.optional(S.String),
     serviceResources: S.optional(ServiceResourceList),
@@ -2496,10 +2490,10 @@ export type ServiceEventType =
   | "ASSERTION_UPDATED"
   | "ASSERTION_DELETED"
   | (string & {});
-export const ServiceEventType = S.String;
+const ServiceEventType = S.String;
 
 export type ServiceEventTypeList = ServiceEventType[];
-export const ServiceEventTypeList = AssessmentStatusList as any as S.Schema<ServiceEventTypeList>;
+const ServiceEventTypeList = AssessmentStatusList as any as S.Schema<ServiceEventTypeList>;
 export interface ListServiceEventsRequest {
   serviceArn: string;
   eventTypes?: ServiceEventType[];
@@ -2508,7 +2502,7 @@ export interface ListServiceEventsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServiceEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     eventTypes: S.optional(ServiceEventTypeList).pipe(T.HttpQuery("eventTypes")),
@@ -2525,16 +2519,14 @@ export const ListServiceEventsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListServiceEventsRequest" }) as any as S.Schema<ListServiceEventsRequest>;
 export interface ServiceCreatedMetadata {}
-export const ServiceCreatedMetadata =
-  DeleteTestSourcesResponse as any as S.Schema<ServiceCreatedMetadata>;
+const ServiceCreatedMetadata = DeleteTestSourcesResponse as any as S.Schema<ServiceCreatedMetadata>;
 export interface ServiceDeletedMetadata {}
-export const ServiceDeletedMetadata =
-  DeleteTestSourcesResponse as any as S.Schema<ServiceDeletedMetadata>;
+const ServiceDeletedMetadata = DeleteTestSourcesResponse as any as S.Schema<ServiceDeletedMetadata>;
 export interface ServiceSystemAssociatedMetadata {
   systemName?: string;
   systemArn?: string;
 }
-export const ServiceSystemAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServiceSystemAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ systemName: S.optional(S.String), systemArn: S.optional(S.String) }),
 ).annotate({
   identifier: "ServiceSystemAssociatedMetadata",
@@ -2544,7 +2536,7 @@ export interface ServiceSystemDisassociatedMetadata {
   systemName?: string;
   systemArn?: string;
 }
-export const ServiceSystemDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServiceSystemDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemId: S.optional(S.String),
     systemName: S.optional(S.String),
@@ -2554,12 +2546,12 @@ export const ServiceSystemDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceSystemDisassociatedMetadata",
 }) as any as S.Schema<ServiceSystemDisassociatedMetadata>;
 export type ResourceTypeList = string[];
-export const ResourceTypeList = TagValueList as any as S.Schema<ResourceTypeList>;
+const ResourceTypeList = TagValueList as any as S.Schema<ResourceTypeList>;
 export interface ServiceResourcesAssociatedMetadata {
   resourceCount?: number;
   resourceTypes?: string[];
 }
-export const ServiceResourcesAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServiceResourcesAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceCount: S.optional(S.Number), resourceTypes: S.optional(ResourceTypeList) }),
 ).annotate({
   identifier: "ServiceResourcesAssociatedMetadata",
@@ -2568,21 +2560,19 @@ export interface ServiceResourcesDisassociatedMetadata {
   resourceCount?: number;
   resourceTypes?: string[];
 }
-export const ServiceResourcesDisassociatedMetadata =
+const ServiceResourcesDisassociatedMetadata =
   ServiceResourcesAssociatedMetadata as any as S.Schema<ServiceResourcesDisassociatedMetadata>;
 export interface ServiceWorkflowUpdatedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
 }
-export const ServiceWorkflowUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServiceWorkflowUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceFunctionId: S.optional(S.String), serviceFunctionName: S.optional(S.String) }),
 ).annotate({
   identifier: "ServiceWorkflowUpdatedMetadata",
 }) as any as S.Schema<ServiceWorkflowUpdatedMetadata>;
 export interface ServiceInputSourcesUpdatedMetadata {}
-export const ServiceInputSourcesUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ServiceInputSourcesUpdatedMetadata = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ServiceInputSourcesUpdatedMetadata",
 }) as any as S.Schema<ServiceInputSourcesUpdatedMetadata>;
 export interface ServicePolicyAssociatedMetadata {
@@ -2591,7 +2581,7 @@ export interface ServicePolicyAssociatedMetadata {
   policyOwnerAccountId?: string;
   policySource?: PolicyValueSource;
 }
-export const ServicePolicyAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServicePolicyAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyName: S.optional(S.String),
     policyArn: S.optional(S.String),
@@ -2606,7 +2596,7 @@ export type PolicyDisassociationReason =
   | "SHARING_REVOKED"
   | "POLICY_DELETED"
   | (string & {});
-export const PolicyDisassociationReason = S.String;
+const PolicyDisassociationReason = S.String;
 
 export interface ServicePolicyDisassociatedMetadata {
   policyName?: string;
@@ -2615,7 +2605,7 @@ export interface ServicePolicyDisassociatedMetadata {
   policySource?: PolicyValueSource;
   reason?: PolicyDisassociationReason;
 }
-export const ServicePolicyDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServicePolicyDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyName: S.optional(S.String),
     policyArn: S.optional(S.String),
@@ -2630,17 +2620,17 @@ export interface ServiceFunctionCreatedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
 }
-export const ServiceFunctionCreatedMetadata =
+const ServiceFunctionCreatedMetadata =
   ServiceWorkflowUpdatedMetadata as any as S.Schema<ServiceFunctionCreatedMetadata>;
 export type ArnList = string[];
-export const ArnList = TagValueList as any as S.Schema<ArnList>;
+const ArnList = TagValueList as any as S.Schema<ArnList>;
 export interface ServiceFunctionUpdatedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
   resourcesAdded?: string[];
   resourcesRemoved?: string[];
 }
-export const ServiceFunctionUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServiceFunctionUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceFunctionId: S.optional(S.String),
     serviceFunctionName: S.optional(S.String),
@@ -2654,14 +2644,14 @@ export interface ServiceFunctionDeletedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
 }
-export const ServiceFunctionDeletedMetadata =
+const ServiceFunctionDeletedMetadata =
   ServiceWorkflowUpdatedMetadata as any as S.Schema<ServiceFunctionDeletedMetadata>;
 export interface ServiceFunctionResourcesAddedMetadata {
   serviceFunctionId?: string;
   serviceFunctionName?: string;
   resourcesAdded?: string[];
 }
-export const ServiceFunctionResourcesAddedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServiceFunctionResourcesAddedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceFunctionId: S.optional(S.String),
     serviceFunctionName: S.optional(S.String),
@@ -2675,7 +2665,7 @@ export interface ServiceFunctionResourcesRemovedMetadata {
   serviceFunctionName?: string;
   resourcesRemoved?: string[];
 }
-export const ServiceFunctionResourcesRemovedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServiceFunctionResourcesRemovedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceFunctionId: S.optional(S.String),
     serviceFunctionName: S.optional(S.String),
@@ -2690,7 +2680,7 @@ export interface ServiceAchievabilityUpdatedMetadata {
   multiAzRtoRpo?: string;
   multiRegionRtoRpo?: string;
 }
-export const ServiceAchievabilityUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const ServiceAchievabilityUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentId: S.optional(S.String),
     availabilitySlo: S.optional(S.String),
@@ -2704,20 +2694,20 @@ export interface AssertionCreatedMetadata {
   assertionId?: string;
   assertionName?: string;
 }
-export const AssertionCreatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const AssertionCreatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ assertionId: S.optional(S.String), assertionName: S.optional(S.String) }),
 ).annotate({ identifier: "AssertionCreatedMetadata" }) as any as S.Schema<AssertionCreatedMetadata>;
 export interface AssertionUpdatedMetadata {
   assertionId?: string;
   assertionName?: string;
 }
-export const AssertionUpdatedMetadata =
+const AssertionUpdatedMetadata =
   AssertionCreatedMetadata as any as S.Schema<AssertionUpdatedMetadata>;
 export interface AssertionDeletedMetadata {
   assertionId?: string;
   assertionName?: string;
 }
-export const AssertionDeletedMetadata =
+const AssertionDeletedMetadata =
   AssertionCreatedMetadata as any as S.Schema<AssertionDeletedMetadata>;
 export type ServiceEventMetadata =
   | {
@@ -3119,7 +3109,7 @@ export type ServiceEventMetadata =
       assertionUpdated?: never;
       assertionDeleted: AssertionDeletedMetadata;
     };
-export const ServiceEventMetadata = /*@__PURE__*/ S.Union([
+const ServiceEventMetadata = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ serviceCreated: ServiceCreatedMetadata }),
   /*@__PURE__*/ S.Struct({ serviceDeleted: ServiceDeletedMetadata }),
   /*@__PURE__*/ S.Struct({ serviceSystemAssociated: ServiceSystemAssociatedMetadata }),
@@ -3147,7 +3137,7 @@ export interface ServiceEventDetails {
   description: string;
   eventMetadata?: ServiceEventMetadata;
 }
-export const ServiceEventDetails = /*@__PURE__*/ S.suspend(() =>
+const ServiceEventDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.String,
@@ -3162,7 +3152,7 @@ export interface ServiceEvent {
   actor: EventActor;
   eventDetails: ServiceEventDetails;
 }
-export const ServiceEvent = /*@__PURE__*/ S.suspend(() =>
+const ServiceEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String,
     timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3173,12 +3163,12 @@ export const ServiceEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceEvent" }) as any as S.Schema<ServiceEvent>;
 export type ServiceEventList = ServiceEvent[];
-export const ServiceEventList = /*@__PURE__*/ S.Array(ServiceEvent);
+const ServiceEventList = /*@__PURE__*/ S.Array(ServiceEvent);
 export interface ListServiceEventsResponse {
   events: ServiceEvent[];
   nextToken?: string;
 }
-export const ListServiceEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ events: ServiceEventList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListServiceEventsResponse",
@@ -3188,7 +3178,7 @@ export interface ListServiceFunctionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServiceFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3200,12 +3190,12 @@ export const ListServiceFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServiceFunctionsRequest",
 }) as any as S.Schema<ListServiceFunctionsRequest>;
 export type ServiceFunctionList = ServiceFunction[];
-export const ServiceFunctionList = /*@__PURE__*/ S.Array(ServiceFunction);
+const ServiceFunctionList = /*@__PURE__*/ S.Array(ServiceFunction);
 export interface ListServiceFunctionsResponse {
   serviceFunctions: ServiceFunction[];
   nextToken?: string;
 }
-export const ListServiceFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceFunctions: ServiceFunctionList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListServiceFunctionsResponse",
@@ -3220,7 +3210,7 @@ export interface ListServicesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.optional(S.String).pipe(T.HttpQuery("systemArn")),
     userJourneyId: S.optional(S.String).pipe(T.HttpQuery("userJourneyId")),
@@ -3249,7 +3239,7 @@ export interface ServiceSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const ServiceSummary = /*@__PURE__*/ S.suspend(() =>
+const ServiceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     name: S.String,
@@ -3269,12 +3259,12 @@ export const ServiceSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceSummary" }) as any as S.Schema<ServiceSummary>;
 export type ServiceSummaryList = ServiceSummary[];
-export const ServiceSummaryList = /*@__PURE__*/ S.Array(ServiceSummary);
+const ServiceSummaryList = /*@__PURE__*/ S.Array(ServiceSummary);
 export interface ListServicesResponse {
   serviceSummaries: ServiceSummary[];
   nextToken?: string;
 }
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceSummaries: ServiceSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
 export interface ListServiceTopologyEdgesRequest {
@@ -3282,7 +3272,7 @@ export interface ListServiceTopologyEdgesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListServiceTopologyEdgesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceTopologyEdgesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3306,17 +3296,17 @@ export type TopologyType =
   | "OBSERVABILITY"
   | "PERMISSIONS"
   | (string & {});
-export const TopologyType = S.String;
+const TopologyType = S.String;
 
 export interface EdgePropertySummary {
   topologyType?: TopologyType;
   label?: string;
 }
-export const EdgePropertySummary = /*@__PURE__*/ S.suspend(() =>
+const EdgePropertySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ topologyType: S.optional(TopologyType), label: S.optional(S.String) }),
 ).annotate({ identifier: "EdgePropertySummary" }) as any as S.Schema<EdgePropertySummary>;
 export type EdgePropertyList = EdgePropertySummary[];
-export const EdgePropertyList = /*@__PURE__*/ S.Array(EdgePropertySummary);
+const EdgePropertyList = /*@__PURE__*/ S.Array(EdgePropertySummary);
 export interface ServiceTopologyEdgeSummary {
   sourceResourceIdentifier: string;
   destinationResourceIdentifier: string;
@@ -3326,7 +3316,7 @@ export interface ServiceTopologyEdgeSummary {
   destinationAccount?: string;
   properties?: EdgePropertySummary[];
 }
-export const ServiceTopologyEdgeSummary = /*@__PURE__*/ S.suspend(() =>
+const ServiceTopologyEdgeSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceResourceIdentifier: S.String,
     destinationResourceIdentifier: S.String,
@@ -3340,12 +3330,12 @@ export const ServiceTopologyEdgeSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceTopologyEdgeSummary",
 }) as any as S.Schema<ServiceTopologyEdgeSummary>;
 export type ServiceTopologyEdgeSummaryList = ServiceTopologyEdgeSummary[];
-export const ServiceTopologyEdgeSummaryList = /*@__PURE__*/ S.Array(ServiceTopologyEdgeSummary);
+const ServiceTopologyEdgeSummaryList = /*@__PURE__*/ S.Array(ServiceTopologyEdgeSummary);
 export interface ListServiceTopologyEdgesResponse {
   serviceTopologyEdgeSummaries?: ServiceTopologyEdgeSummary[];
   nextToken?: string;
 }
-export const ListServiceTopologyEdgesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceTopologyEdgesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceTopologyEdgeSummaries: S.optional(ServiceTopologyEdgeSummaryList),
     nextToken: S.optional(S.String),
@@ -3364,10 +3354,10 @@ export type SystemEventType =
   | "SYSTEM_POLICY_ASSOCIATED"
   | "SYSTEM_POLICY_DISASSOCIATED"
   | (string & {});
-export const SystemEventType = S.String;
+const SystemEventType = S.String;
 
 export type SystemEventTypeList = SystemEventType[];
-export const SystemEventTypeList = AssessmentStatusList as any as S.Schema<SystemEventTypeList>;
+const SystemEventTypeList = AssessmentStatusList as any as S.Schema<SystemEventTypeList>;
 export interface ListSystemEventsRequest {
   systemArn: string;
   eventTypes?: SystemEventType[];
@@ -3376,7 +3366,7 @@ export interface ListSystemEventsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSystemEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSystemEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.String.pipe(T.HttpQuery("systemArn")),
     eventTypes: S.optional(SystemEventTypeList).pipe(T.HttpQuery("eventTypes")),
@@ -3393,25 +3383,23 @@ export const ListSystemEventsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListSystemEventsRequest" }) as any as S.Schema<ListSystemEventsRequest>;
 export interface SystemCreatedMetadata {}
-export const SystemCreatedMetadata =
-  DeleteTestSourcesResponse as any as S.Schema<SystemCreatedMetadata>;
+const SystemCreatedMetadata = DeleteTestSourcesResponse as any as S.Schema<SystemCreatedMetadata>;
 export interface SystemDeletedMetadata {}
-export const SystemDeletedMetadata =
-  DeleteTestSourcesResponse as any as S.Schema<SystemDeletedMetadata>;
+const SystemDeletedMetadata = DeleteTestSourcesResponse as any as S.Schema<SystemDeletedMetadata>;
 export interface ServiceReference {
   serviceId?: string;
   serviceName?: string;
 }
-export const ServiceReference = /*@__PURE__*/ S.suspend(() =>
+const ServiceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceId: S.optional(S.String), serviceName: S.optional(S.String) }),
 ).annotate({ identifier: "ServiceReference" }) as any as S.Schema<ServiceReference>;
 export type ServiceReferenceList = ServiceReference[];
-export const ServiceReferenceList = /*@__PURE__*/ S.Array(ServiceReference);
+const ServiceReferenceList = /*@__PURE__*/ S.Array(ServiceReference);
 export interface SystemUserJourneyCreatedMetadata {
   userJourneyName?: string;
   associatedServices?: ServiceReference[];
 }
-export const SystemUserJourneyCreatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const SystemUserJourneyCreatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userJourneyName: S.optional(S.String),
     associatedServices: S.optional(ServiceReferenceList),
@@ -3423,21 +3411,21 @@ export interface StringChange {
   oldValue?: string;
   newValue?: string;
 }
-export const StringChange = /*@__PURE__*/ S.suspend(() =>
+const StringChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ oldValue: S.optional(S.String), newValue: S.optional(S.String) }),
 ).annotate({ identifier: "StringChange" }) as any as S.Schema<StringChange>;
 export interface ServiceReferenceChanges {
   added?: ServiceReference[];
   removed?: ServiceReference[];
 }
-export const ServiceReferenceChanges = /*@__PURE__*/ S.suspend(() =>
+const ServiceReferenceChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ added: S.optional(ServiceReferenceList), removed: S.optional(ServiceReferenceList) }),
 ).annotate({ identifier: "ServiceReferenceChanges" }) as any as S.Schema<ServiceReferenceChanges>;
 export interface UserJourneyChanges {
   journeyDescription?: StringChange;
   associatedServices?: ServiceReferenceChanges;
 }
-export const UserJourneyChanges = /*@__PURE__*/ S.suspend(() =>
+const UserJourneyChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     journeyDescription: S.optional(StringChange),
     associatedServices: S.optional(ServiceReferenceChanges),
@@ -3447,7 +3435,7 @@ export interface SystemUserJourneyUpdatedMetadata {
   userJourneyName?: string;
   changes?: UserJourneyChanges;
 }
-export const SystemUserJourneyUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const SystemUserJourneyUpdatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userJourneyName: S.optional(S.String), changes: S.optional(UserJourneyChanges) }),
 ).annotate({
   identifier: "SystemUserJourneyUpdatedMetadata",
@@ -3456,7 +3444,7 @@ export interface SystemUserJourneyDeletedMetadata {
   userJourneyName?: string;
   associatedServicesAtDeletion?: ServiceReference[];
 }
-export const SystemUserJourneyDeletedMetadata = /*@__PURE__*/ S.suspend(() =>
+const SystemUserJourneyDeletedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userJourneyName: S.optional(S.String),
     associatedServicesAtDeletion: S.optional(ServiceReferenceList),
@@ -3465,13 +3453,13 @@ export const SystemUserJourneyDeletedMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "SystemUserJourneyDeletedMetadata",
 }) as any as S.Schema<SystemUserJourneyDeletedMetadata>;
 export type UserJourneyNameList = string[];
-export const UserJourneyNameList = TagValueList as any as S.Schema<UserJourneyNameList>;
+const UserJourneyNameList = TagValueList as any as S.Schema<UserJourneyNameList>;
 export interface SystemServiceAssociatedMetadata {
   serviceName?: string;
   serviceArn?: string;
   userJourneys?: string[];
 }
-export const SystemServiceAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const SystemServiceAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
     serviceArn: S.optional(S.String),
@@ -3486,7 +3474,7 @@ export interface SystemServiceDisassociatedMetadata {
   userJourneysAffected?: string[];
   comment?: string;
 }
-export const SystemServiceDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const SystemServiceDisassociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
     serviceArn: S.optional(S.String),
@@ -3500,7 +3488,7 @@ export interface SystemPolicyAssociatedMetadata {
   policyName?: string;
   policyArn?: string;
 }
-export const SystemPolicyAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
+const SystemPolicyAssociatedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policyName: S.optional(S.String), policyArn: S.optional(S.String) }),
 ).annotate({
   identifier: "SystemPolicyAssociatedMetadata",
@@ -3509,7 +3497,7 @@ export interface SystemPolicyDisassociatedMetadata {
   policyName?: string;
   policyArn?: string;
 }
-export const SystemPolicyDisassociatedMetadata =
+const SystemPolicyDisassociatedMetadata =
   SystemPolicyAssociatedMetadata as any as S.Schema<SystemPolicyDisassociatedMetadata>;
 export type SystemEventMetadata =
   | {
@@ -3611,7 +3599,7 @@ export type SystemEventMetadata =
       systemPolicyAssociated?: never;
       systemPolicyDisassociated: SystemPolicyDisassociatedMetadata;
     };
-export const SystemEventMetadata = /*@__PURE__*/ S.Union([
+const SystemEventMetadata = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ systemCreated: SystemCreatedMetadata }),
   /*@__PURE__*/ S.Struct({ systemDeleted: SystemDeletedMetadata }),
   /*@__PURE__*/ S.Struct({ systemUserJourneyCreated: SystemUserJourneyCreatedMetadata }),
@@ -3627,7 +3615,7 @@ export interface SystemEventDetails {
   description: string;
   eventMetadata?: SystemEventMetadata;
 }
-export const SystemEventDetails = /*@__PURE__*/ S.suspend(() =>
+const SystemEventDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.String,
@@ -3642,7 +3630,7 @@ export interface SystemEvent {
   actor: EventActor;
   eventDetails: SystemEventDetails;
 }
-export const SystemEvent = /*@__PURE__*/ S.suspend(() =>
+const SystemEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String,
     timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3653,12 +3641,12 @@ export const SystemEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemEvent" }) as any as S.Schema<SystemEvent>;
 export type SystemEventList = SystemEvent[];
-export const SystemEventList = /*@__PURE__*/ S.Array(SystemEvent);
+const SystemEventList = /*@__PURE__*/ S.Array(SystemEvent);
 export interface ListSystemEventsResponse {
   events: SystemEvent[];
   nextToken?: string;
 }
-export const ListSystemEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSystemEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ events: SystemEventList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListSystemEventsResponse" }) as any as S.Schema<ListSystemEventsResponse>;
 export interface ListSystemsRequest {
@@ -3666,7 +3654,7 @@ export interface ListSystemsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSystemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSystemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ouId: S.optional(S.String).pipe(T.HttpQuery("ouId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3684,7 +3672,7 @@ export interface SystemSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const SystemSummary = /*@__PURE__*/ S.suspend(() =>
+const SystemSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemId: S.String,
     name: S.String,
@@ -3698,18 +3686,18 @@ export const SystemSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemSummary" }) as any as S.Schema<SystemSummary>;
 export type SystemSummaryList = SystemSummary[];
-export const SystemSummaryList = /*@__PURE__*/ S.Array(SystemSummary);
+const SystemSummaryList = /*@__PURE__*/ S.Array(SystemSummary);
 export interface ListSystemsResponse {
   systemSummaries: SystemSummary[];
   nextToken?: string;
 }
-export const ListSystemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSystemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ systemSummaries: SystemSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListSystemsResponse" }) as any as S.Schema<ListSystemsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -3719,7 +3707,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -3730,7 +3718,7 @@ export interface ListTestRunDependenciesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTestRunDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testRunId: S.String.pipe(T.HttpLabel("testRunId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -3750,7 +3738,7 @@ export const ListTestRunDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTestRunDependenciesRequest",
 }) as any as S.Schema<ListTestRunDependenciesRequest>;
 export type TestRunDependencySource = "DISCOVERED" | "MANUAL" | (string & {});
-export const TestRunDependencySource = S.String;
+const TestRunDependencySource = S.String;
 
 export interface TestRunDependencySummary {
   dependencyId?: string;
@@ -3762,7 +3750,7 @@ export interface TestRunDependencySummary {
   sourceRegions?: string[];
   provider?: string;
 }
-export const TestRunDependencySummary = /*@__PURE__*/ S.suspend(() =>
+const TestRunDependencySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependencyId: S.optional(S.String),
     dependencyName: S.String,
@@ -3775,12 +3763,12 @@ export const TestRunDependencySummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestRunDependencySummary" }) as any as S.Schema<TestRunDependencySummary>;
 export type TestRunDependencySummaryList = TestRunDependencySummary[];
-export const TestRunDependencySummaryList = /*@__PURE__*/ S.Array(TestRunDependencySummary);
+const TestRunDependencySummaryList = /*@__PURE__*/ S.Array(TestRunDependencySummary);
 export interface ListTestRunDependenciesResponse {
   dependencies: TestRunDependencySummary[];
   nextToken?: string;
 }
-export const ListTestRunDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dependencies: TestRunDependencySummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTestRunDependenciesResponse",
@@ -3793,7 +3781,7 @@ export interface ListTestRunEventsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTestRunEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testRunId: S.String.pipe(T.HttpLabel("testRunId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -3819,7 +3807,7 @@ export const ListTestRunEventsRequest = /*@__PURE__*/ S.suspend(() =>
 export type TestRunEventAttributeKey = string;
 export type TestRunEventAttributeValue = string;
 export type TestRunEventAttributes = { [key: string]: string | undefined };
-export const TestRunEventAttributes = EksLabelMap as any as S.Schema<TestRunEventAttributes>;
+const TestRunEventAttributes = EksLabelMap as any as S.Schema<TestRunEventAttributes>;
 export interface TestRunEvent {
   eventId: string;
   eventType: string;
@@ -3827,7 +3815,7 @@ export interface TestRunEvent {
   timestamp: Date;
   attributes?: { [key: string]: string | undefined };
 }
-export const TestRunEvent = /*@__PURE__*/ S.suspend(() =>
+const TestRunEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String,
     eventType: S.String,
@@ -3837,12 +3825,12 @@ export const TestRunEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestRunEvent" }) as any as S.Schema<TestRunEvent>;
 export type TestRunEventList = TestRunEvent[];
-export const TestRunEventList = /*@__PURE__*/ S.Array(TestRunEvent);
+const TestRunEventList = /*@__PURE__*/ S.Array(TestRunEvent);
 export interface ListTestRunEventsResponse {
   events: TestRunEvent[];
   nextToken?: string;
 }
-export const ListTestRunEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ events: TestRunEventList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTestRunEventsResponse",
@@ -3853,7 +3841,7 @@ export interface ListTestRunsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTestRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     testId: S.optional(S.String).pipe(T.HttpQuery("testId")),
@@ -3873,7 +3861,7 @@ export interface TestRunSummary {
   errorMessage?: string;
   accountTargeting?: AccountTargeting;
 }
-export const TestRunSummary = /*@__PURE__*/ S.suspend(() =>
+const TestRunSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testRunId: S.String,
     status: TestRunStatus,
@@ -3886,12 +3874,12 @@ export const TestRunSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestRunSummary" }) as any as S.Schema<TestRunSummary>;
 export type TestRunSummaryList = TestRunSummary[];
-export const TestRunSummaryList = /*@__PURE__*/ S.Array(TestRunSummary);
+const TestRunSummaryList = /*@__PURE__*/ S.Array(TestRunSummary);
 export interface ListTestRunsResponse {
   testRuns: TestRunSummary[];
   nextToken?: string;
 }
-export const ListTestRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testRuns: TestRunSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListTestRunsResponse" }) as any as S.Schema<ListTestRunsResponse>;
 export type TestRunSourceArn = string;
@@ -3902,7 +3890,7 @@ export interface ListTestRunSourceEventsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTestRunSourceEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunSourceEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testRunId: S.String.pipe(T.HttpLabel("testRunId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -3923,17 +3911,17 @@ export const ListTestRunSourceEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTestRunSourceEventsRequest",
 }) as any as S.Schema<ListTestRunSourceEventsRequest>;
 export type TestRunSourceEventType = "ALARM" | (string & {});
-export const TestRunSourceEventType = S.String;
+const TestRunSourceEventType = S.String;
 
 export type AlarmState = "OK" | "ALARM" | "INSUFFICIENT_DATA" | (string & {});
-export const AlarmState = S.String;
+const AlarmState = S.String;
 
 export interface AlarmStateChangeDetail {
   state: AlarmState;
   previousState?: AlarmState;
   reason?: string;
 }
-export const AlarmStateChangeDetail = /*@__PURE__*/ S.suspend(() =>
+const AlarmStateChangeDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: AlarmState,
     previousState: S.optional(AlarmState),
@@ -3941,19 +3929,19 @@ export const AlarmStateChangeDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AlarmStateChangeDetail" }) as any as S.Schema<AlarmStateChangeDetail>;
 export type TestRunSourceEventErrorCode = "ACCESS_DENIED" | "INTERNAL_ERROR" | (string & {});
-export const TestRunSourceEventErrorCode = S.String;
+const TestRunSourceEventErrorCode = S.String;
 
 export interface TestRunSourceEventError {
   errorCode: TestRunSourceEventErrorCode;
   errorMessage: string;
 }
-export const TestRunSourceEventError = /*@__PURE__*/ S.suspend(() =>
+const TestRunSourceEventError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ errorCode: TestRunSourceEventErrorCode, errorMessage: S.String }),
 ).annotate({ identifier: "TestRunSourceEventError" }) as any as S.Schema<TestRunSourceEventError>;
 export type TestRunSourceEventDetail =
   | { alarmStateChange: AlarmStateChangeDetail; error?: never }
   | { alarmStateChange?: never; error: TestRunSourceEventError };
-export const TestRunSourceEventDetail = /*@__PURE__*/ S.Union([
+const TestRunSourceEventDetail = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ alarmStateChange: AlarmStateChangeDetail }),
   /*@__PURE__*/ S.Struct({ error: TestRunSourceEventError }),
 ]);
@@ -3963,7 +3951,7 @@ export interface TestRunSourceEvent {
   eventType: TestRunSourceEventType;
   detail: TestRunSourceEventDetail;
 }
-export const TestRunSourceEvent = /*@__PURE__*/ S.suspend(() =>
+const TestRunSourceEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     sourceArn: S.String,
@@ -3972,18 +3960,18 @@ export const TestRunSourceEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestRunSourceEvent" }) as any as S.Schema<TestRunSourceEvent>;
 export type TestRunSourceEventList = TestRunSourceEvent[];
-export const TestRunSourceEventList = /*@__PURE__*/ S.Array(TestRunSourceEvent);
+const TestRunSourceEventList = /*@__PURE__*/ S.Array(TestRunSourceEvent);
 export interface ListTestRunSourceEventsResponse {
   testRunSourceEvents: TestRunSourceEvent[];
   nextToken?: string;
 }
-export const ListTestRunSourceEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunSourceEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testRunSourceEvents: TestRunSourceEventList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTestRunSourceEventsResponse",
 }) as any as S.Schema<ListTestRunSourceEventsResponse>;
 export type TestRunSourceType = "SUCCESS_CRITERIA" | "OBSERVABILITY" | (string & {});
-export const TestRunSourceType = S.String;
+const TestRunSourceType = S.String;
 
 export interface ListTestRunSourcesRequest {
   testRunId: string;
@@ -3992,7 +3980,7 @@ export interface ListTestRunSourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTestRunSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testRunId: S.String.pipe(T.HttpLabel("testRunId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -4013,7 +4001,7 @@ export const ListTestRunSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTestRunSourcesRequest",
 }) as any as S.Schema<ListTestRunSourcesRequest>;
 export type TestSourceOutcome = "PASSED" | "FAILED" | "ERROR" | (string & {});
-export const TestSourceOutcome = S.String;
+const TestSourceOutcome = S.String;
 
 export interface TestRunSuccessCriteriaAlarmSummary {
   alarmArn: string;
@@ -4023,7 +4011,7 @@ export interface TestRunSuccessCriteriaAlarmSummary {
   outcome?: TestSourceOutcome;
   outcomeReason?: string;
 }
-export const TestRunSuccessCriteriaAlarmSummary = /*@__PURE__*/ S.suspend(() =>
+const TestRunSuccessCriteriaAlarmSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alarmArn: S.String,
     alarmName: S.String,
@@ -4041,7 +4029,7 @@ export interface TestRunObservabilityAlarmSummary {
   region: string;
   accountId: string;
 }
-export const TestRunObservabilityAlarmSummary = /*@__PURE__*/ S.suspend(() =>
+const TestRunObservabilityAlarmSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ alarmArn: S.String, alarmName: S.String, region: S.String, accountId: S.String }),
 ).annotate({
   identifier: "TestRunObservabilityAlarmSummary",
@@ -4049,17 +4037,17 @@ export const TestRunObservabilityAlarmSummary = /*@__PURE__*/ S.suspend(() =>
 export type TestRunSourceSummary =
   | { successCriteriaAlarm: TestRunSuccessCriteriaAlarmSummary; observabilityAlarm?: never }
   | { successCriteriaAlarm?: never; observabilityAlarm: TestRunObservabilityAlarmSummary };
-export const TestRunSourceSummary = /*@__PURE__*/ S.Union([
+const TestRunSourceSummary = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ successCriteriaAlarm: TestRunSuccessCriteriaAlarmSummary }),
   /*@__PURE__*/ S.Struct({ observabilityAlarm: TestRunObservabilityAlarmSummary }),
 ]);
 export type TestRunSourceSummaryList = TestRunSourceSummary[];
-export const TestRunSourceSummaryList = /*@__PURE__*/ S.Array(TestRunSourceSummary);
+const TestRunSourceSummaryList = /*@__PURE__*/ S.Array(TestRunSourceSummary);
 export interface ListTestRunSourcesResponse {
   testRunSources: TestRunSourceSummary[];
   nextToken?: string;
 }
-export const ListTestRunSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTestRunSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testRunSources: TestRunSourceSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTestRunSourcesResponse",
@@ -4069,7 +4057,7 @@ export interface ListTestsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -4084,7 +4072,7 @@ export interface TestSummary {
   successfulTestRuns: number;
   creationTime: Date;
 }
-export const TestSummary = /*@__PURE__*/ S.suspend(() =>
+const TestSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String,
     testTemplateArn: S.String,
@@ -4095,16 +4083,16 @@ export const TestSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestSummary" }) as any as S.Schema<TestSummary>;
 export type TestSummaryList = TestSummary[];
-export const TestSummaryList = /*@__PURE__*/ S.Array(TestSummary);
+const TestSummaryList = /*@__PURE__*/ S.Array(TestSummary);
 export interface ListTestsResponse {
   tests: TestSummary[];
   nextToken?: string;
 }
-export const ListTestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tests: TestSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListTestsResponse" }) as any as S.Schema<ListTestsResponse>;
 export type TestSourceType = "SUCCESS_CRITERIA" | "OBSERVABILITY" | (string & {});
-export const TestSourceType = S.String;
+const TestSourceType = S.String;
 
 export interface ListTestSourcesRequest {
   testId: string;
@@ -4113,7 +4101,7 @@ export interface ListTestSourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTestSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String.pipe(T.HttpLabel("testId")),
     serviceArn: S.String.pipe(T.HttpQuery("serviceArn")),
@@ -4138,7 +4126,7 @@ export interface SuccessCriteriaAlarmSummary {
   accountId: string;
   createdAt?: Date;
 }
-export const SuccessCriteriaAlarmSummary = /*@__PURE__*/ S.suspend(() =>
+const SuccessCriteriaAlarmSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alarmArn: S.String,
     alarmName: S.String,
@@ -4156,26 +4144,26 @@ export interface ObservabilityAlarmSummary {
   accountId: string;
   createdAt?: Date;
 }
-export const ObservabilityAlarmSummary =
+const ObservabilityAlarmSummary =
   SuccessCriteriaAlarmSummary as any as S.Schema<ObservabilityAlarmSummary>;
 export type TestSourceSummary =
   | { successCriteriaAlarm: SuccessCriteriaAlarmSummary; observabilityAlarm?: never }
   | { successCriteriaAlarm?: never; observabilityAlarm: ObservabilityAlarmSummary };
-export const TestSourceSummary = /*@__PURE__*/ S.Union([
+const TestSourceSummary = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ successCriteriaAlarm: SuccessCriteriaAlarmSummary }),
   /*@__PURE__*/ S.Struct({ observabilityAlarm: ObservabilityAlarmSummary }),
 ]);
 export type TestSourceSummaryList = TestSourceSummary[];
-export const TestSourceSummaryList = /*@__PURE__*/ S.Array(TestSourceSummary);
+const TestSourceSummaryList = /*@__PURE__*/ S.Array(TestSourceSummary);
 export interface ListTestSourcesResponse {
   testSources: TestSourceSummary[];
   nextToken?: string;
 }
-export const ListTestSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTestSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testSources: TestSourceSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListTestSourcesResponse" }) as any as S.Schema<ListTestSourcesResponse>;
 export interface ListTestTemplatesRequest {}
-export const ListTestTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTestTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(T.Http({ method: "GET", uri: "/v2/list-test-templates" }), svc, auth, proto, ver, rules),
   ),
@@ -4185,15 +4173,15 @@ export interface TestTemplateSummary {
   name: string;
   description: string;
 }
-export const TestTemplateSummary = /*@__PURE__*/ S.suspend(() =>
+const TestTemplateSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testTemplateArn: S.String, name: S.String, description: S.String }),
 ).annotate({ identifier: "TestTemplateSummary" }) as any as S.Schema<TestTemplateSummary>;
 export type TestTemplateSummaryList = TestTemplateSummary[];
-export const TestTemplateSummaryList = /*@__PURE__*/ S.Array(TestTemplateSummary);
+const TestTemplateSummaryList = /*@__PURE__*/ S.Array(TestTemplateSummary);
 export interface ListTestTemplatesResponse {
   testTemplates: TestTemplateSummary[];
 }
-export const ListTestTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTestTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testTemplates: TestTemplateSummaryList }),
 ).annotate({
   identifier: "ListTestTemplatesResponse",
@@ -4203,7 +4191,7 @@ export interface ListUserJourneysRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListUserJourneysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserJourneysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.String.pipe(T.HttpQuery("systemArn")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -4218,7 +4206,7 @@ export interface UserJourneySummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const UserJourneySummary = /*@__PURE__*/ S.suspend(() =>
+const UserJourneySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userJourneyId: S.String,
     name: S.String,
@@ -4227,12 +4215,12 @@ export const UserJourneySummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserJourneySummary" }) as any as S.Schema<UserJourneySummary>;
 export type UserJourneySummaryList = UserJourneySummary[];
-export const UserJourneySummaryList = /*@__PURE__*/ S.Array(UserJourneySummary);
+const UserJourneySummaryList = /*@__PURE__*/ S.Array(UserJourneySummary);
 export interface ListUserJourneysResponse {
   userJourneySummaries: UserJourneySummary[];
   nextToken?: string;
 }
-export const ListUserJourneysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserJourneysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userJourneySummaries: UserJourneySummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListUserJourneysResponse" }) as any as S.Schema<ListUserJourneysResponse>;
 export interface PutTestSourcesRequest {
@@ -4240,19 +4228,18 @@ export interface PutTestSourcesRequest {
   serviceArn: string;
   testSources: TestSourceInput[];
 }
-export const PutTestSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTestSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testId: S.String, serviceArn: S.String, testSources: TestSourceInputList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/put-test-sources" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "PutTestSourcesRequest" }) as any as S.Schema<PutTestSourcesRequest>;
 export interface PutTestSourcesResponse {}
-export const PutTestSourcesResponse =
-  DeleteTestSourcesResponse as any as S.Schema<PutTestSourcesResponse>;
+const PutTestSourcesResponse = DeleteTestSourcesResponse as any as S.Schema<PutTestSourcesResponse>;
 export interface StartDependencyInsightsRequest {
   serviceArn: string;
   clientToken?: string;
 }
-export const StartDependencyInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartDependencyInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -4272,7 +4259,7 @@ export const StartDependencyInsightsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartDependencyInsightsResponse {
   status: DependencyInsightsStatus;
 }
-export const StartDependencyInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const StartDependencyInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: DependencyInsightsStatus }),
 ).annotate({
   identifier: "StartDependencyInsightsResponse",
@@ -4281,7 +4268,7 @@ export interface StartFailureModeAssessmentRequest {
   serviceArn: string;
   clientToken?: string;
 }
-export const StartFailureModeAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+const StartFailureModeAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -4304,7 +4291,7 @@ export interface StartFailureModeAssessmentResponse {
   assessmentStatus?: AssessmentStatus;
   startedAt?: Date;
 }
-export const StartFailureModeAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
+const StartFailureModeAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentId: S.optional(S.String),
     serviceArn: S.optional(S.String),
@@ -4318,26 +4305,26 @@ export interface StartTestRunRequest {
   testId: string;
   serviceArn: string;
 }
-export const StartTestRunRequest = /*@__PURE__*/ S.suspend(() =>
+const StartTestRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testId: S.String, serviceArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/start-test-run" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "StartTestRunRequest" }) as any as S.Schema<StartTestRunRequest>;
 export type ExperimentArnList = string[];
-export const ExperimentArnList = TagValueList as any as S.Schema<ExperimentArnList>;
+const ExperimentArnList = TagValueList as any as S.Schema<ExperimentArnList>;
 export interface StartTestRunResponse {
   testRunId: string;
   status: TestRunStatus;
   experimentArns: string[];
 }
-export const StartTestRunResponse = /*@__PURE__*/ S.suspend(() =>
+const StartTestRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testRunId: S.String, status: TestRunStatus, experimentArns: ExperimentArnList }),
 ).annotate({ identifier: "StartTestRunResponse" }) as any as S.Schema<StartTestRunResponse>;
 export interface StopTestRunRequest {
   testRunId: string;
   serviceArn: string;
 }
-export const StopTestRunRequest = /*@__PURE__*/ S.suspend(() =>
+const StopTestRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testRunId: S.String, serviceArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/stop-test-run" }), svc, auth, proto, ver, rules),
   ),
@@ -4346,28 +4333,27 @@ export interface StopTestRunResponse {
   testRunId: string;
   status: TestRunStatus;
 }
-export const StopTestRunResponse = /*@__PURE__*/ S.suspend(() =>
+const StopTestRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ testRunId: S.String, status: TestRunStatus }),
 ).annotate({ identifier: "StopTestRunResponse" }) as any as S.Schema<StopTestRunResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteTestSourcesResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteTestSourcesResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = TagValueList as any as S.Schema<TagKeyList>;
+const TagKeyList = TagValueList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -4383,14 +4369,13 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
-  DeleteTestSourcesResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteTestSourcesResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAssertionRequest {
   serviceArn: string;
   assertionId: string;
   text?: string;
 }
-export const UpdateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ serviceArn: S.String, assertionId: S.String, text: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/v2/update-assertion" }), svc, auth, proto, ver, rules),
   ),
@@ -4398,15 +4383,14 @@ export const UpdateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAssertionResponse {
   assertion: Assertion;
 }
-export const UpdateAssertionResponse =
-  CreateAssertionResponse as any as S.Schema<UpdateAssertionResponse>;
+const UpdateAssertionResponse = CreateAssertionResponse as any as S.Schema<UpdateAssertionResponse>;
 export interface UpdateDependencyRequest {
   serviceArn: string;
   dependencyId: string;
   criticality?: DependencyCriticality;
   comment?: string;
 }
-export const UpdateDependencyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDependencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     dependencyId: S.String,
@@ -4425,7 +4409,7 @@ export interface UpdateDependencyResponse {
   provider?: string;
   updatedAt: Date;
 }
-export const UpdateDependencyResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDependencyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependencyId: S.String,
     dependencyName: S.String,
@@ -4442,7 +4426,7 @@ export interface UpdateFailureModeFindingRequest {
   serviceArn: string;
   comment?: string;
 }
-export const UpdateFailureModeFindingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFailureModeFindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findingId: S.String,
     status: FindingStatus,
@@ -4464,7 +4448,7 @@ export const UpdateFailureModeFindingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFailureModeFindingResponse {
   finding?: Finding;
 }
-export const UpdateFailureModeFindingResponse =
+const UpdateFailureModeFindingResponse =
   GetFailureModeFindingResponse as any as S.Schema<UpdateFailureModeFindingResponse>;
 export interface UpdatePolicyRequest {
   policyArn: string;
@@ -4475,7 +4459,7 @@ export interface UpdatePolicyRequest {
   dataRecovery?: DataRecoveryTargets;
   sharingEnabled?: boolean;
 }
-export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyArn: S.String,
     description: S.optional(S.String),
@@ -4491,7 +4475,7 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePolicyResponse {
   policy: Policy;
 }
-export const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
+const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
 export interface UpdateServiceRequest {
   serviceArn: string;
   description?: string;
@@ -4502,7 +4486,7 @@ export interface UpdateServiceRequest {
   dependencyDiscovery?: DependencyDiscoveryInput;
   reportConfiguration?: ServiceReportConfiguration;
 }
-export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     description: S.optional(S.String),
@@ -4519,8 +4503,7 @@ export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateServiceResponse {
   service: Service;
 }
-export const UpdateServiceResponse =
-  CreateServiceResponse as any as S.Schema<UpdateServiceResponse>;
+const UpdateServiceResponse = CreateServiceResponse as any as S.Schema<UpdateServiceResponse>;
 export interface UpdateServiceFunctionRequest {
   serviceArn: string;
   serviceFunctionId: string;
@@ -4528,7 +4511,7 @@ export interface UpdateServiceFunctionRequest {
   description?: string;
   criticality?: ServiceFunctionCriticality;
 }
-export const UpdateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceArn: S.String,
     serviceFunctionId: S.String,
@@ -4544,14 +4527,14 @@ export const UpdateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateServiceFunctionResponse {
   serviceFunction: ServiceFunction;
 }
-export const UpdateServiceFunctionResponse =
+const UpdateServiceFunctionResponse =
   CreateServiceFunctionResponse as any as S.Schema<UpdateServiceFunctionResponse>;
 export interface UpdateSystemRequest {
   systemArn: string;
   description?: string;
   sharingEnabled?: boolean;
 }
-export const UpdateSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.String,
     description: S.optional(S.String),
@@ -4563,7 +4546,7 @@ export const UpdateSystemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSystemResponse {
   system: System;
 }
-export const UpdateSystemResponse = CreateSystemResponse as any as S.Schema<UpdateSystemResponse>;
+const UpdateSystemResponse = CreateSystemResponse as any as S.Schema<UpdateSystemResponse>;
 export interface UpdateTestRequest {
   testId: string;
   serviceArn: string;
@@ -4572,7 +4555,7 @@ export interface UpdateTestRequest {
   roleName?: string;
   parameters?: { [key: string]: string[] | undefined };
 }
-export const UpdateTestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String,
     serviceArn: S.String,
@@ -4585,7 +4568,7 @@ export const UpdateTestRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTestResponse {
   test: Test;
 }
-export const UpdateTestResponse = CreateTestResponse as any as S.Schema<UpdateTestResponse>;
+const UpdateTestResponse = CreateTestResponse as any as S.Schema<UpdateTestResponse>;
 export interface UpdateUserJourneyRequest {
   systemArn: string;
   userJourneyId: string;
@@ -4593,7 +4576,7 @@ export interface UpdateUserJourneyRequest {
   description?: string;
   policyArn?: string;
 }
-export const UpdateUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemArn: S.String,
     userJourneyId: S.String,
@@ -4607,7 +4590,7 @@ export const UpdateUserJourneyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateUserJourneyResponse {
   userJourney: UserJourney;
 }
-export const UpdateUserJourneyResponse =
+const UpdateUserJourneyResponse =
   CreateUserJourneyResponse as any as S.Schema<UpdateUserJourneyResponse>;
 export type ValidationExceptionReason =
   | "INVALID_FIELD_VALUE"
@@ -4615,17 +4598,17 @@ export type ValidationExceptionReason =
   | "MISSING_REQUIRED_FIELD"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type CreateAssertionError =
   | AccessDeniedException
   | ConflictException

@@ -63,7 +63,7 @@ export class NotFound
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -71,7 +71,7 @@ export interface CreateChallengeRequest {
   /** Request body */
   body?: Empty;
 }
-export const CreateChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChallengeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Empty.pipe(T.HttpBody())),
   }).pipe(
@@ -90,7 +90,7 @@ export interface SignedData {
   /** The data to be signed. */
   data?: string;
 }
-export const SignedData = /*@__PURE__*/ S.suspend(() =>
+const SignedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signature: S.optional(S.String),
     data: S.optional(S.String),
@@ -104,7 +104,7 @@ export interface Challenge {
   /** Generated challenge */
   challenge?: SignedData;
 }
-export const Challenge = /*@__PURE__*/ S.suspend(() =>
+const Challenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternativeChallenge: S.optional(SignedData),
     challenge: S.optional(SignedData),
@@ -118,7 +118,7 @@ export interface VerifyChallengeResponseRequest {
   /** Service can optionally provide identity information about the device or user associated with the key. For an EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If present, this value will be checked against contents of the response, and verification will fail if there is no match. */
   expectedIdentity?: string;
 }
-export const VerifyChallengeResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyChallengeResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challengeResponse: S.optional(SignedData),
     expectedIdentity: S.optional(S.String),
@@ -131,7 +131,7 @@ export interface VerifyChallengeRequest {
   /** Request body */
   body?: VerifyChallengeResponseRequest;
 }
-export const VerifyChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyChallengeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(VerifyChallengeResponseRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -156,7 +156,7 @@ export interface VerifyChallengeResponseResult {
   /** Device enrollment id is returned in this field (for the machine response only). */
   deviceEnrollmentId?: string;
 }
-export const VerifyChallengeResponseResult = /*@__PURE__*/ S.suspend(() =>
+const VerifyChallengeResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devicePermanentId: S.optional(S.String),
     signedPublicKeyAndChallenge: S.optional(S.String),

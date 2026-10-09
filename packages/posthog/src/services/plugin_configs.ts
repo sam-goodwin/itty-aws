@@ -44,7 +44,7 @@ export interface ListPluginConfigsLogsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListPluginConfigsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPluginConfigsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     plugin_config_id: S.Number.pipe(T.Label()),
@@ -63,11 +63,11 @@ export const ListPluginConfigsLogsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `SYSTEM` - SYSTEM * `PLUGIN` - PLUGIN * `CONSOLE` - CONSOLE */
 export type PluginLogEntrySourceEnum = "SYSTEM" | "PLUGIN" | "CONSOLE";
-export const PluginLogEntrySourceEnum = S.String;
+const PluginLogEntrySourceEnum = S.String;
 
 /** * `DEBUG` - DEBUG * `LOG` - LOG * `INFO` - INFO * `WARN` - WARN * `ERROR` - ERROR */
 export type PluginLogEntryTypeEnum = "DEBUG" | "LOG" | "INFO" | "WARN" | "ERROR";
-export const PluginLogEntryTypeEnum = S.String;
+const PluginLogEntryTypeEnum = S.String;
 
 export interface PluginLogEntry {
   id?: string;
@@ -80,7 +80,7 @@ export interface PluginLogEntry {
   message?: string;
   instance_id?: string;
 }
-export const PluginLogEntry = /*@__PURE__*/ S.suspend(() =>
+const PluginLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     team_id: S.optional(S.Number),
@@ -95,7 +95,7 @@ export const PluginLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PluginLogEntry" }) as any as S.Schema<PluginLogEntry>;
 
 export type PaginatedPluginLogEntryListResultsList = Array<PluginLogEntry>;
-export const PaginatedPluginLogEntryListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedPluginLogEntryListResultsList = /*@__PURE__*/ S.Array(
   PluginLogEntry,
 ) as any as S.Schema<PaginatedPluginLogEntryListResultsList>;
 
@@ -105,7 +105,7 @@ export interface PaginatedPluginLogEntryList {
   previous?: string | null;
   results?: PaginatedPluginLogEntryListResultsList;
 }
-export const PaginatedPluginLogEntryList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedPluginLogEntryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),

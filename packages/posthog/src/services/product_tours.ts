@@ -37,7 +37,7 @@ export class NotFound
 
 /** * `app` - app * `toolbar` - toolbar */
 export type ProductTourSerializerCreateUpdateOnlyCreationContextEnum = "app" | "toolbar";
-export const ProductTourSerializerCreateUpdateOnlyCreationContextEnum = S.String;
+const ProductTourSerializerCreateUpdateOnlyCreationContextEnum = S.String;
 
 export interface CreateProductTourRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -54,7 +54,7 @@ export interface CreateProductTourRequest {
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum | (string & {});
 }
-export const CreateProductTourRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductTourRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -71,34 +71,28 @@ export const CreateProductTourRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateProductTourRequest" }) as any as S.Schema<CreateProductTourRequest>;
 
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
+const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
-export const EvaluationRuntimeEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-export const MinimalFeatureFlagEvaluationRuntime =
+const MinimalFeatureFlagEvaluationRuntime =
   S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type BucketingIdentifierEnum = "distinct_id" | "device_id";
-export const BucketingIdentifierEnum = S.String;
-
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type MinimalFeatureFlagBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-export const MinimalFeatureFlagBucketingIdentifier =
+const MinimalFeatureFlagBucketingIdentifier =
   S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
+const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
 
@@ -118,7 +112,7 @@ export interface MinimalFeatureFlag {
   bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
   evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
 }
-export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
+const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     team_id: S.optional(S.Number),
@@ -136,7 +130,7 @@ export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalFeatureFlag" }) as any as S.Schema<MinimalFeatureFlag>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   MinimalFeatureFlagFiltersMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -150,11 +144,8 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -167,7 +158,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -197,7 +188,7 @@ export interface ProductTourSerializerCreateUpdateOnlyOutput {
   updated_at?: string;
   archived?: boolean;
 }
-export const ProductTourSerializerCreateUpdateOnlyOutput = /*@__PURE__*/ S.suspend(() =>
+const ProductTourSerializerCreateUpdateOnlyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -223,7 +214,7 @@ export interface GetProductTourRequest {
   /** A UUID string identifying this product tour. */
   id: string;
 }
-export const GetProductTourRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductTourRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -234,11 +225,11 @@ export const GetProductTourRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Return the targeting flag filters, excluding the base exclusion properties. */
 export type ProductTourTargetingFlagFiltersMap = { [key: string]: unknown | undefined };
-export const ProductTourTargetingFlagFiltersMap =
+const ProductTourTargetingFlagFiltersMap =
   MinimalFeatureFlagFiltersMap as any as S.Schema<ProductTourTargetingFlagFiltersMap>;
 
 export type SearchMatchTypeEnum = "exact" | "similar";
-export const SearchMatchTypeEnum = S.String;
+const SearchMatchTypeEnum = S.String;
 
 /** Read-only serializer for ProductTour. */
 export interface ProductTour {
@@ -262,7 +253,7 @@ export interface ProductTour {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-export const ProductTour = /*@__PURE__*/ S.suspend(() =>
+const ProductTour = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -290,7 +281,7 @@ export interface GetProductToursDraftStatusRequest {
   /** A UUID string identifying this product tour. */
   id: string;
 }
-export const GetProductToursDraftStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductToursDraftStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -309,7 +300,7 @@ export interface DraftStatusResponse {
   updated_at?: string;
   has_draft?: boolean;
 }
-export const DraftStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const DraftStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated_at: S.optional(S.String),
     has_draft: S.optional(S.Boolean),
@@ -326,7 +317,7 @@ export interface ListProductToursRequest {
   /** Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
   search?: string;
 }
-export const ListProductToursRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductToursRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -336,7 +327,7 @@ export const ListProductToursRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProductToursRequest" }) as any as S.Schema<ListProductToursRequest>;
 
 export type PaginatedProductTourListResultsList = Array<ProductTour>;
-export const PaginatedProductTourListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedProductTourListResultsList = /*@__PURE__*/ S.Array(
   ProductTour,
 ) as any as S.Schema<PaginatedProductTourListResultsList>;
 
@@ -346,7 +337,7 @@ export interface PaginatedProductTourList {
   previous?: string | null;
   results?: PaginatedProductTourListResultsList;
 }
-export const PaginatedProductTourList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedProductTourList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -361,7 +352,7 @@ export interface ProductToursDestroyRequest {
   /** A UUID string identifying this product tour. */
   id: string;
 }
-export const ProductToursDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ProductToursDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -373,7 +364,7 @@ export const ProductToursDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductToursDestroyRequest>;
 
 export interface ProductToursDestroyResponse {}
-export const ProductToursDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ProductToursDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ProductToursDestroyResponse",
 }) as any as S.Schema<ProductToursDestroyResponse>;
 
@@ -383,7 +374,7 @@ export interface ProductToursDiscardDraftDestroyRequest {
   /** A UUID string identifying this product tour. */
   id: string;
 }
-export const ProductToursDiscardDraftDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ProductToursDiscardDraftDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -399,12 +390,12 @@ export const ProductToursDiscardDraftDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ProductToursDiscardDraftDestroyRequest>;
 
 export type ProductToursGenerateCreateRequestStepsItemMap = { [key: string]: unknown | undefined };
-export const ProductToursGenerateCreateRequestStepsItemMap =
+const ProductToursGenerateCreateRequestStepsItemMap =
   MinimalFeatureFlagFiltersMap as any as S.Schema<ProductToursGenerateCreateRequestStepsItemMap>;
 
 export type ProductToursGenerateCreateRequestStepsList =
   Array<ProductToursGenerateCreateRequestStepsItemMap>;
-export const ProductToursGenerateCreateRequestStepsList = /*@__PURE__*/ S.Array(
+const ProductToursGenerateCreateRequestStepsList = /*@__PURE__*/ S.Array(
   ProductToursGenerateCreateRequestStepsItemMap,
 ) as any as S.Schema<ProductToursGenerateCreateRequestStepsList>;
 
@@ -417,7 +408,7 @@ export interface ProductToursGenerateCreateRequest {
   goal?: string;
   steps?: ProductToursGenerateCreateRequestStepsList;
 }
-export const ProductToursGenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProductToursGenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -440,7 +431,7 @@ export interface GenerateStepResponse {
   title?: string;
   description?: string;
 }
-export const GenerateStepResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateStepResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     step_id: S.optional(S.String),
     title: S.optional(S.String),
@@ -449,14 +440,14 @@ export const GenerateStepResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GenerateStepResponse" }) as any as S.Schema<GenerateStepResponse>;
 
 export type GenerateResponseStepsList = Array<GenerateStepResponse>;
-export const GenerateResponseStepsList = /*@__PURE__*/ S.Array(
+const GenerateResponseStepsList = /*@__PURE__*/ S.Array(
   GenerateStepResponse,
 ) as any as S.Schema<GenerateResponseStepsList>;
 
 export interface GenerateResponse {
   steps?: GenerateResponseStepsList;
 }
-export const GenerateResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: S.optional(GenerateResponseStepsList),
   }),
@@ -479,7 +470,7 @@ export interface ProductToursPublishDraftCreateRequest {
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum | (string & {});
 }
-export const ProductToursPublishDraftCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProductToursPublishDraftCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -517,7 +508,7 @@ export interface UpdateProductTourRequest {
   end_date?: string | null;
   archived?: boolean;
 }
-export const UpdateProductTourRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductTourRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -550,7 +541,7 @@ export interface UpdateProductToursDraftPartialRequest {
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum | (string & {});
 }
-export const UpdateProductToursDraftPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductToursDraftPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -592,7 +583,7 @@ export interface UpdateProductToursPartialRequest {
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum | (string & {});
 }
-export const UpdateProductToursPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductToursPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

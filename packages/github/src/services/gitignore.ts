@@ -8,24 +8,24 @@ import * as T from "../traits.ts";
 export type { GithubOpError, GithubOpContext };
 
 export interface GetAllTemplatesRequest {}
-export const GetAllTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/gitignore/templates", code: 200 })),
 ).annotate({ identifier: "GetAllTemplatesRequest" }) as any as S.Schema<GetAllTemplatesRequest>;
 
 export type GetAllTemplatesResponseBodyList = Array<string>;
-export const GetAllTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAllTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetAllTemplatesResponseBodyList>;
 
 export type GetAllTemplatesResponse = GetAllTemplatesResponseBodyList;
-export const GetAllTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAllTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   GetAllTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetAllTemplatesResponse" }) as any as S.Schema<GetAllTemplatesResponse>;
 
 export interface GetTemplateRequest {
   name: string;
 }
-export const GetTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/gitignore/templates/{name}", code: 200 })),
@@ -36,7 +36,7 @@ export interface GitignoreTemplate {
   name: string;
   source: string;
 }
-export const GitignoreTemplate = /*@__PURE__*/ S.suspend(() =>
+const GitignoreTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     source: S.String,

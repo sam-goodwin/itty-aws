@@ -19,7 +19,7 @@ export interface CreateStreamlitAppRequest {
   /** Memory in GB allocated to the sandbox. */
   memory_gb?: number;
 }
-export const CreateStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -32,7 +32,7 @@ export const CreateStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateStreamlitAppRequest>;
 
 export type StreamlitAppUserInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const StreamlitAppUserInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const StreamlitAppUserInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<StreamlitAppUserInfoHedgehogConfigMap>;
@@ -48,7 +48,7 @@ export interface StreamlitAppUserInfo {
   hedgehog_config: StreamlitAppUserInfoHedgehogConfigMap | null;
   role_at_organization: string | null;
 }
-export const StreamlitAppUserInfo = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -71,7 +71,7 @@ export interface AppVersionContract {
   snapshot_id: string | null;
   created_at: string;
 }
-export const AppVersionContract = /*@__PURE__*/ S.suspend(() =>
+const AppVersionContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_by: S.optional(S.NullOr(StreamlitAppUserInfo)),
     id: S.String,
@@ -90,7 +90,7 @@ export interface AppSandboxContract {
   last_activity_at: string | null;
   version_number: number | null;
 }
-export const AppSandboxContract = /*@__PURE__*/ S.suspend(() =>
+const AppSandboxContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     restart_count: S.Number,
@@ -118,7 +118,7 @@ export interface AppContract {
   created_at: string;
   updated_at: string;
 }
-export const AppContract = /*@__PURE__*/ S.suspend(() =>
+const AppContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_by: S.optional(S.NullOr(StreamlitAppUserInfo)),
     active_version: S.optional(S.NullOr(AppVersionContract)),
@@ -140,7 +140,7 @@ export interface GetStreamlitAppRequest {
   project_id: string;
   short_id: string;
 }
-export const GetStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -158,7 +158,7 @@ export interface GetStreamlitAppsStatusRequest {
   project_id: string;
   short_id: string;
 }
-export const GetStreamlitAppsStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamlitAppsStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -187,7 +187,7 @@ export interface StreamlitAppStatus {
   /** Version number the running sandbox was booted from. */
   version_number?: number | null;
 }
-export const StreamlitAppStatus = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     restart_count: S.Number,
@@ -203,7 +203,7 @@ export interface GetStreamlitAppsVersionRequest {
   project_id: string;
   short_id: string;
 }
-export const GetStreamlitAppsVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamlitAppsVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -220,7 +220,7 @@ export const GetStreamlitAppsVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Most recent versions of the app, newest first (capped at 50). */
 export type StreamlitAppVersionListResultsList = Array<AppVersionContract>;
-export const StreamlitAppVersionListResultsList = /*@__PURE__*/ S.Array(
+const StreamlitAppVersionListResultsList = /*@__PURE__*/ S.Array(
   AppVersionContract,
 ) as any as S.Schema<StreamlitAppVersionListResultsList>;
 
@@ -228,7 +228,7 @@ export interface StreamlitAppVersionList {
   /** Most recent versions of the app, newest first (capped at 50). */
   results: StreamlitAppVersionListResultsList;
 }
-export const StreamlitAppVersionList = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppVersionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: StreamlitAppVersionListResultsList,
   }),
@@ -242,7 +242,7 @@ export interface ListStreamlitAppsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListStreamlitAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStreamlitAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -263,7 +263,7 @@ export interface AppSummaryContract {
   created_at: string;
   updated_at: string;
 }
-export const AppSummaryContract = /*@__PURE__*/ S.suspend(() =>
+const AppSummaryContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_by: S.optional(S.NullOr(StreamlitAppUserInfo)),
     id: S.String,
@@ -279,7 +279,7 @@ export const AppSummaryContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppSummaryContract" }) as any as S.Schema<AppSummaryContract>;
 
 export type PaginatedAppSummaryContractListResultsList = Array<AppSummaryContract>;
-export const PaginatedAppSummaryContractListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAppSummaryContractListResultsList = /*@__PURE__*/ S.Array(
   AppSummaryContract,
 ) as any as S.Schema<PaginatedAppSummaryContractListResultsList>;
 
@@ -289,7 +289,7 @@ export interface PaginatedAppSummaryContractList {
   previous?: string | null;
   results: PaginatedAppSummaryContractListResultsList;
 }
-export const PaginatedAppSummaryContractList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAppSummaryContractList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -307,7 +307,7 @@ export interface StreamlitAppsActivateVersionCreateRequest {
   /** Version number to activate. Must reference an existing version of this app. */
   version_number: number;
 }
-export const StreamlitAppsActivateVersionCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppsActivateVersionCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -327,7 +327,7 @@ export interface ActivateVersionResponse {
   /** The version that is now active for the app. */
   active_version: AppVersionContract;
 }
-export const ActivateVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivateVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_version: AppVersionContract,
   }),
@@ -338,7 +338,7 @@ export interface StreamlitAppsConnectInfoRetrieveRequest {
   project_id: string;
   short_id: string;
 }
-export const StreamlitAppsConnectInfoRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppsConnectInfoRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -359,7 +359,7 @@ export interface StreamlitConnectInfo {
   /** Seconds until the embedded session credential expires. */
   expires_in: number;
 }
-export const StreamlitConnectInfo = /*@__PURE__*/ S.suspend(() =>
+const StreamlitConnectInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iframe_url: S.String,
     expires_in: S.Number,
@@ -370,7 +370,7 @@ export const StreamlitConnectInfo = /*@__PURE__*/ S.suspend(() =>
 export type StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap = {
   [key: string]: string | undefined;
 };
-export const StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap = /*@__PURE__*/ S.Record(
+const StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap>;
@@ -379,7 +379,7 @@ export const StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap = /*@__PU
 export type StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap = {
   [key: string]: string | undefined;
 };
-export const StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap =
+const StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap =
   StreamlitAppsCreateVersionFromSourceCreateRequestFilesMap as any as S.Schema<StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap>;
 
 export interface StreamlitAppsCreateVersionFromSourceCreateRequest {
@@ -393,7 +393,7 @@ export interface StreamlitAppsCreateVersionFromSourceCreateRequest {
   /** Extra binary files to ship next to app.py, keyed by project-relative path (for example 'data/events.parquet'), each as standard base64 text. */
   assets?: StreamlitAppsCreateVersionFromSourceCreateRequestAssetsMap;
 }
-export const StreamlitAppsCreateVersionFromSourceCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppsCreateVersionFromSourceCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -416,7 +416,7 @@ export interface StreamlitAppsDestroyRequest {
   project_id: string;
   short_id: string;
 }
-export const StreamlitAppsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -432,7 +432,7 @@ export const StreamlitAppsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamlitAppsDestroyRequest>;
 
 export interface StreamlitAppsDestroyResponse {}
-export const StreamlitAppsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const StreamlitAppsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "StreamlitAppsDestroyResponse",
 }) as any as S.Schema<StreamlitAppsDestroyResponse>;
 
@@ -441,7 +441,7 @@ export interface StreamlitAppsRestartCreateRequest {
   project_id: string;
   short_id: string;
 }
-export const StreamlitAppsRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppsRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -457,9 +457,7 @@ export const StreamlitAppsRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamlitAppsRestartCreateRequest>;
 
 export interface StreamlitAppsRestartCreateResponse {}
-export const StreamlitAppsRestartCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const StreamlitAppsRestartCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "StreamlitAppsRestartCreateResponse",
 }) as any as S.Schema<StreamlitAppsRestartCreateResponse>;
 
@@ -468,7 +466,7 @@ export interface StreamlitAppsStartCreateRequest {
   project_id: string;
   short_id: string;
 }
-export const StreamlitAppsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -488,7 +486,7 @@ export interface StreamlitAppsStopCreateRequest {
   project_id: string;
   short_id: string;
 }
-export const StreamlitAppsStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppsStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -510,7 +508,7 @@ export interface StreamlitAppsUploadVersionCreateRequest {
   /** Zip archive containing the Streamlit app sources (max 10 MB). */
   file: string;
 }
-export const StreamlitAppsUploadVersionCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamlitAppsUploadVersionCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -539,7 +537,7 @@ export interface UpdateStreamlitAppRequest {
   /** New memory (GB) allocation for the sandbox. */
   memory_gb?: number;
 }
-export const UpdateStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamlitAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -571,7 +569,7 @@ export interface UpdateStreamlitAppsPartialRequest {
   /** New memory (GB) allocation for the sandbox. */
   memory_gb?: number;
 }
-export const UpdateStreamlitAppsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamlitAppsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),

@@ -8,18 +8,18 @@ import * as T from "../traits.ts";
 export type { GithubOpError, GithubOpContext };
 
 export interface GetRequest {}
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/emojis", code: 200 })),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
 export type GetResponseBodyMap = { [key: string]: string | undefined };
-export const GetResponseBodyMap = /*@__PURE__*/ S.Record(
+const GetResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetResponseBodyMap>;
 
 export type GetResponse = GetResponseBodyMap;
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResponse = /*@__PURE__*/ S.suspend(() =>
   GetResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 

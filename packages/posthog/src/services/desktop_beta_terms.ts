@@ -11,7 +11,7 @@ export interface CreateDesktopBetaTermRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateDesktopBetaTermRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDesktopBetaTermRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -25,7 +25,7 @@ export interface DesktopBetaTermsAcceptanceDTO {
   /** Whether the organization has accepted the PostHog Desktop beta terms. */
   is_desktop_beta_terms_accepted: boolean;
 }
-export const DesktopBetaTermsAcceptanceDTO = /*@__PURE__*/ S.suspend(() =>
+const DesktopBetaTermsAcceptanceDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_desktop_beta_terms_accepted: S.Boolean,
   }),
@@ -37,7 +37,7 @@ export interface ListDesktopBetaTermsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListDesktopBetaTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDesktopBetaTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(

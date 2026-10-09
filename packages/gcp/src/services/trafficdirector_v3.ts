@@ -68,7 +68,7 @@ export interface DoubleRange {
   /** start of the range (inclusive) */
   start?: number;
 }
-export const DoubleRange = /*@__PURE__*/ S.suspend(() =>
+const DoubleRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.optional(S.Number),
     start: S.optional(S.Number),
@@ -82,7 +82,7 @@ export interface DoubleMatcher {
   /** If specified, the input double value must be equal to the value specified here. */
   exact?: number;
 }
-export const DoubleMatcher = /*@__PURE__*/ S.suspend(() =>
+const DoubleMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(DoubleRange),
     exact: S.optional(S.Number),
@@ -90,7 +90,7 @@ export const DoubleMatcher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DoubleMatcher" }) as any as S.Schema<DoubleMatcher>;
 
 export type ValueMatcherList = Array<ValueMatcher>;
-export const ValueMatcherList = /*@__PURE__*/ S.Array(
+const ValueMatcherList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ValueMatcher),
 ) as any as S.Schema<ValueMatcherList>;
 
@@ -98,7 +98,7 @@ export const ValueMatcherList = /*@__PURE__*/ S.Array(
 export interface OrMatcher {
   valueMatchers?: ValueMatcherList;
 }
-export const OrMatcher = /*@__PURE__*/ S.suspend(() =>
+const OrMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueMatchers: S.optional(ValueMatcherList),
   }),
@@ -109,7 +109,7 @@ export interface ListMatcher {
   /** If specified, at least one of the values in the list must match the value specified. */
   oneOf?: ValueMatcher;
 }
-export const ListMatcher = /*@__PURE__*/ S.suspend(() =>
+const ListMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oneOf: S.optional(S.suspend(() => ValueMatcher)),
   }),
@@ -117,15 +117,12 @@ export const ListMatcher = /*@__PURE__*/ S.suspend(() =>
 
 /** NullMatch is an empty message to specify a null value. */
 export interface NullMatch {}
-export const NullMatch = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const NullMatch = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "NullMatch",
 }) as any as S.Schema<NullMatch>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Message type for extension configuration. */
 export interface TypedExtensionConfig {
@@ -134,7 +131,7 @@ export interface TypedExtensionConfig {
   /** The typed config for the extension. The type URL will be used to identify the extension. In the case that the type URL is *xds.type.v3.TypedStruct* (or, for historical reasons, *udpa.type.v1.TypedStruct*), the inner type URL of *TypedStruct* will be utilized. See the :ref:`extension configuration overview ` for further details. */
   typedConfig?: DocumentMap;
 }
-export const TypedExtensionConfig = /*@__PURE__*/ S.suspend(() =>
+const TypedExtensionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     typedConfig: S.optional(DocumentMap),
@@ -146,7 +143,7 @@ export interface GoogleRE2 {
   /** This field controls the RE2 "program size" which is a rough estimate of how complex a compiled regex is to evaluate. A regex that has a program size greater than the configured value will fail to compile. In this case, the configured max program size can be increased or the regex can be simplified. If not specified, the default is 100. This field is deprecated; regexp validation should be performed on the management server instead of being done by each individual client. .. note:: Although this field is deprecated, the program size will still be checked against the global ``re2.max_program_size.error_level`` runtime value. */
   maxProgramSize?: number;
 }
-export const GoogleRE2 = /*@__PURE__*/ S.suspend(() =>
+const GoogleRE2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxProgramSize: S.optional(S.Number),
   }),
@@ -159,7 +156,7 @@ export interface RegexMatcher {
   /** The regex match string. The string must be supported by the configured engine. The regex is matched against the full string, not as a partial match. */
   regex?: string;
 }
-export const RegexMatcher = /*@__PURE__*/ S.suspend(() =>
+const RegexMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleRe2: S.optional(GoogleRE2),
     regex: S.optional(S.String),
@@ -183,7 +180,7 @@ export interface StringMatcher {
   /** The input string must match the regular expression specified here. */
   safeRegex?: RegexMatcher;
 }
-export const StringMatcher = /*@__PURE__*/ S.suspend(() =>
+const StringMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exact: S.optional(S.String),
     custom: S.optional(TypedExtensionConfig),
@@ -212,7 +209,7 @@ export interface ValueMatcher {
   /** If specified, a match occurs if and only if the target value is a string value and is matched to this field. */
   stringMatch?: StringMatcher;
 }
-export const ValueMatcher = /*@__PURE__*/ S.suspend(() =>
+const ValueMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleMatch: S.optional(DoubleMatcher),
     orMatch: S.optional(OrMatcher),
@@ -229,16 +226,14 @@ export interface PathSegment {
   /** If specified, use the key to retrieve the value in a Struct. */
   key?: string;
 }
-export const PathSegment = /*@__PURE__*/ S.suspend(() =>
+const PathSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
   }),
 ).annotate({ identifier: "PathSegment" }) as any as S.Schema<PathSegment>;
 
 export type PathSegmentList = Array<PathSegment>;
-export const PathSegmentList = /*@__PURE__*/ S.Array(
-  PathSegment,
-) as any as S.Schema<PathSegmentList>;
+const PathSegmentList = /*@__PURE__*/ S.Array(PathSegment) as any as S.Schema<PathSegmentList>;
 
 /** StructMatcher provides a general interface to check if a given value is matched in google.protobuf.Struct. It uses ``path`` to retrieve the value from the struct and then check if it's matched to the specified value. For example, for the following Struct: .. code-block:: yaml fields: a: struct_value: fields: b: struct_value: fields: c: string_value: pro t: list_value: values: - string_value: m - string_value: n The following MetadataMatcher is matched as the path [a, b, c] will retrieve a string value "pro" from the Metadata which is matched to the specified prefix match. .. code-block:: yaml path: - key: a - key: b - key: c value: string_match: prefix: pr The following StructMatcher is matched as the code will match one of the string values in the list at the path [a, t]. .. code-block:: yaml path: - key: a - key: t value: list_match: one_of: string_match: exact: m An example use of StructMatcher is to match metadata in envoy.v*.core.Node. */
 export interface StructMatcher {
@@ -247,7 +242,7 @@ export interface StructMatcher {
   /** The path to retrieve the Value from the Struct. */
   path?: PathSegmentList;
 }
-export const StructMatcher = /*@__PURE__*/ S.suspend(() =>
+const StructMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ValueMatcher),
     path: S.optional(PathSegmentList),
@@ -255,7 +250,7 @@ export const StructMatcher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StructMatcher" }) as any as S.Schema<StructMatcher>;
 
 export type StructMatcherList = Array<StructMatcher>;
-export const StructMatcherList = /*@__PURE__*/ S.Array(
+const StructMatcherList = /*@__PURE__*/ S.Array(
   StructMatcher,
 ) as any as S.Schema<StructMatcherList>;
 
@@ -266,7 +261,7 @@ export interface NodeMatcher {
   /** Specifies match criteria on the node id. */
   nodeId?: StringMatcher;
 }
-export const NodeMatcher = /*@__PURE__*/ S.suspend(() =>
+const NodeMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeMetadatas: S.optional(StructMatcherList),
     nodeId: S.optional(StringMatcher),
@@ -274,12 +269,10 @@ export const NodeMatcher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeMatcher" }) as any as S.Schema<NodeMatcher>;
 
 export type NodeMatcherList = Array<NodeMatcher>;
-export const NodeMatcherList = /*@__PURE__*/ S.Array(
-  NodeMatcher,
-) as any as S.Schema<NodeMatcherList>;
+const NodeMatcherList = /*@__PURE__*/ S.Array(NodeMatcher) as any as S.Schema<NodeMatcherList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Envoy uses SemVer (https://semver.org/). Major/minor versions indicate expected behaviors and APIs, the patch version field is used only for security fixes and can be generally ignored. */
 export interface SemanticVersion {
@@ -287,7 +280,7 @@ export interface SemanticVersion {
   majorNumber?: number;
   minorNumber?: number;
 }
-export const SemanticVersion = /*@__PURE__*/ S.suspend(() =>
+const SemanticVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     patch: S.optional(S.Number),
     majorNumber: S.optional(S.Number),
@@ -302,7 +295,7 @@ export interface BuildVersion {
   /** Free-form build information. Envoy defines several well known keys in the source/common/version/version.h file */
   metadata?: DocumentMap;
 }
-export const BuildVersion = /*@__PURE__*/ S.suspend(() =>
+const BuildVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(SemanticVersion),
     metadata: S.optional(DocumentMap),
@@ -324,7 +317,7 @@ export interface Extension {
   /** Category of the extension. Extension category names use reverse DNS notation. For instance "envoy.filters.listener" for Envoy's built-in listener filters or "com.acme.filters.http" for HTTP filters from acme.com vendor. [#comment: */
   category?: string;
 }
-export const Extension = /*@__PURE__*/ S.suspend(() =>
+const Extension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeUrls: S.optional(StringList),
     disabled: S.optional(S.Boolean),
@@ -336,7 +329,7 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Extension" }) as any as S.Schema<Extension>;
 
 export type ExtensionList = Array<Extension>;
-export const ExtensionList = /*@__PURE__*/ S.Array(Extension) as any as S.Schema<ExtensionList>;
+const ExtensionList = /*@__PURE__*/ S.Array(Extension) as any as S.Schema<ExtensionList>;
 
 /** Identifies location of where either Envoy runs or where upstream hosts run. */
 export interface Locality {
@@ -347,7 +340,7 @@ export interface Locality {
   /** Region this :ref:`zone ` belongs to. */
   region?: string;
 }
-export const Locality = /*@__PURE__*/ S.suspend(() =>
+const Locality = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zone: S.optional(S.String),
     subZone: S.optional(S.String),
@@ -356,20 +349,20 @@ export const Locality = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Locality" }) as any as S.Schema<Locality>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Additional parameters that can be used to select resource variants. These include any global context parameters, per-resource type client feature capabilities and per-resource type functional attributes. All per-resource type attributes will be `xds.resource.` prefixed and some of these are documented below: `xds.resource.listening_address`: The value is "IP:port" (e.g. "10.1.1.3:8080") which is the listening address of a Listener. Used in a Listener resource query. */
 export interface ContextParams {
   params?: StringMap;
 }
-export const ContextParams = /*@__PURE__*/ S.suspend(() =>
+const ContextParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     params: S.optional(StringMap),
   }),
 ).annotate({ identifier: "ContextParams" }) as any as S.Schema<ContextParams>;
 
 export type ContextParamsMap = { [key: string]: ContextParams | undefined };
-export const ContextParamsMap = /*@__PURE__*/ S.Record(
+const ContextParamsMap = /*@__PURE__*/ S.Record(
   S.String,
   ContextParams,
 ) as any as S.Schema<ContextParamsMap>;
@@ -380,7 +373,7 @@ export interface Pipe {
   /** The mode for the Pipe. Not applicable for abstract sockets. */
   mode?: number;
 }
-export const Pipe = /*@__PURE__*/ S.suspend(() =>
+const Pipe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     mode: S.optional(S.Number),
@@ -388,7 +381,7 @@ export const Pipe = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pipe" }) as any as S.Schema<Pipe>;
 
 export type SocketAddressProtocolEnum = "TCP" | "UDP";
-export const SocketAddressProtocolEnum = S.String;
+const SocketAddressProtocolEnum = S.String;
 
 /** [#next-free-field: 8] */
 export interface SocketAddress {
@@ -405,7 +398,7 @@ export interface SocketAddress {
   /** Filepath that specifies the Linux network namespace this socket will be created in (see ``man 7 network_namespaces``). If this field is set, Envoy will create the socket in the specified network namespace. .. note:: Setting this parameter requires Envoy to run with the ``CAP_SYS_ADMIN`` capability. .. attention:: Network namespaces are only configurable on Linux. Otherwise, this field has no effect. */
   networkNamespaceFilepath?: string;
 }
-export const SocketAddress = /*@__PURE__*/ S.suspend(() =>
+const SocketAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     portValue: S.optional(S.Number),
     protocol: S.optional(SocketAddressProtocolEnum),
@@ -424,7 +417,7 @@ export interface EnvoyInternalAddress {
   /** Specifies an endpoint identifier to distinguish between multiple endpoints for the same internal listener in a single upstream pool. Only used in the upstream addresses for tracking changes to individual endpoints. This, for example, may be set to the final destination IP for the target internal listener. */
   endpointId?: string;
 }
-export const EnvoyInternalAddress = /*@__PURE__*/ S.suspend(() =>
+const EnvoyInternalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverListenerName: S.optional(S.String),
     endpointId: S.optional(S.String),
@@ -438,7 +431,7 @@ export interface Address {
   /** Specifies a user-space address handled by :ref:`internal listeners `. */
   envoyInternalAddress?: EnvoyInternalAddress;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipe: S.optional(Pipe),
     socketAddress: S.optional(SocketAddress),
@@ -447,7 +440,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
 export type AddressList = Array<Address>;
-export const AddressList = /*@__PURE__*/ S.Array(Address) as any as S.Schema<AddressList>;
+const AddressList = /*@__PURE__*/ S.Array(Address) as any as S.Schema<AddressList>;
 
 /** Identifies a specific Envoy instance. The node identifier is presented to the management server, which may use this identifier to distinguish per Envoy configuration for serving. [#next-free-field: 13] */
 export interface Node {
@@ -474,7 +467,7 @@ export interface Node {
   /** Free-form string that identifies the version of the entity requesting config. E.g. "1.12.2" or "abcd1234", or "SpecialEnvoyBuild" */
   userAgentVersion?: string;
 }
-export const Node = /*@__PURE__*/ S.suspend(() =>
+const Node = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensions: S.optional(ExtensionList),
     metadata: S.optional(DocumentMap),
@@ -499,7 +492,7 @@ export interface ClientStatusRequest {
   /** If true, the server will not include the resource contents in the response (i.e., the generic_xds_configs.xds_config field will not be populated). [#not-implemented-hide:] */
   excludeResourceContents?: boolean;
 }
-export const ClientStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ClientStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeMatchers: S.optional(NodeMatcherList),
     node: S.optional(Node),
@@ -511,7 +504,7 @@ export interface Client_statusDiscoveryRequest {
   /** Request body */
   body?: ClientStatusRequest;
 }
-export const Client_statusDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
+const Client_statusDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ClientStatusRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -533,7 +526,7 @@ export type GenericXdsConfigClientStatusEnum =
   | "NACKED"
   | "RECEIVED_ERROR"
   | "TIMEOUT";
-export const GenericXdsConfigClientStatusEnum = S.String;
+const GenericXdsConfigClientStatusEnum = S.String;
 
 export type GenericXdsConfigConfigStatusEnum =
   | "UNKNOWN"
@@ -541,7 +534,7 @@ export type GenericXdsConfigConfigStatusEnum =
   | "NOT_SENT"
   | "STALE"
   | "ERROR";
-export const GenericXdsConfigConfigStatusEnum = S.String;
+const GenericXdsConfigConfigStatusEnum = S.String;
 
 export interface UpdateFailureState {
   /** Time of the latest failed update attempt. */
@@ -553,7 +546,7 @@ export interface UpdateFailureState {
   /** This is the version of the rejected resource. [#not-implemented-hide:] */
   versionInfo?: string;
 }
-export const UpdateFailureState = /*@__PURE__*/ S.suspend(() =>
+const UpdateFailureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdateAttempt: S.optional(S.String),
     details: S.optional(S.String),
@@ -583,7 +576,7 @@ export interface GenericXdsConfig {
   /** Type_url represents the fully qualified name of xDS resource type like envoy.v3.Cluster, envoy.v3.ClusterLoadAssignment etc. */
   typeUrl?: string;
 }
-export const GenericXdsConfig = /*@__PURE__*/ S.suspend(() =>
+const GenericXdsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.optional(S.String),
     name: S.optional(S.String),
@@ -598,7 +591,7 @@ export const GenericXdsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GenericXdsConfig" }) as any as S.Schema<GenericXdsConfig>;
 
 export type GenericXdsConfigList = Array<GenericXdsConfig>;
-export const GenericXdsConfigList = /*@__PURE__*/ S.Array(
+const GenericXdsConfigList = /*@__PURE__*/ S.Array(
   GenericXdsConfig,
 ) as any as S.Schema<GenericXdsConfigList>;
 
@@ -609,7 +602,7 @@ export interface StaticListener {
   /** The timestamp when the Listener was last successfully updated. */
   lastUpdated?: string;
 }
-export const StaticListener = /*@__PURE__*/ S.suspend(() =>
+const StaticListener = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listener: S.optional(DocumentMap),
     lastUpdated: S.optional(S.String),
@@ -617,7 +610,7 @@ export const StaticListener = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticListener" }) as any as S.Schema<StaticListener>;
 
 export type StaticListenerList = Array<StaticListener>;
-export const StaticListenerList = /*@__PURE__*/ S.Array(
+const StaticListenerList = /*@__PURE__*/ S.Array(
   StaticListener,
 ) as any as S.Schema<StaticListenerList>;
 
@@ -629,7 +622,7 @@ export interface DynamicListenerState {
   /** The listener config. */
   listener?: DocumentMap;
 }
-export const DynamicListenerState = /*@__PURE__*/ S.suspend(() =>
+const DynamicListenerState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionInfo: S.optional(S.String),
     lastUpdated: S.optional(S.String),
@@ -645,7 +638,7 @@ export type DynamicListenerClientStatusEnum =
   | "NACKED"
   | "RECEIVED_ERROR"
   | "TIMEOUT";
-export const DynamicListenerClientStatusEnum = S.String;
+const DynamicListenerClientStatusEnum = S.String;
 
 /** Describes a dynamically loaded listener via the LDS API. [#next-free-field: 7] */
 export interface DynamicListener {
@@ -662,7 +655,7 @@ export interface DynamicListener {
   /** The name or unique id of this listener, pulled from the DynamicListenerState config. */
   name?: string;
 }
-export const DynamicListener = /*@__PURE__*/ S.suspend(() =>
+const DynamicListener = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorState: S.optional(UpdateFailureState),
     warmingState: S.optional(DynamicListenerState),
@@ -674,7 +667,7 @@ export const DynamicListener = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DynamicListener" }) as any as S.Schema<DynamicListener>;
 
 export type DynamicListenerList = Array<DynamicListener>;
-export const DynamicListenerList = /*@__PURE__*/ S.Array(
+const DynamicListenerList = /*@__PURE__*/ S.Array(
   DynamicListener,
 ) as any as S.Schema<DynamicListenerList>;
 
@@ -687,7 +680,7 @@ export interface ListenersConfigDump {
   /** State for any warming, active, or draining listeners. */
   dynamicListeners?: DynamicListenerList;
 }
-export const ListenersConfigDump = /*@__PURE__*/ S.suspend(() =>
+const ListenersConfigDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     staticListeners: S.optional(StaticListenerList),
     versionInfo: S.optional(S.String),
@@ -696,7 +689,7 @@ export const ListenersConfigDump = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListenersConfigDump" }) as any as S.Schema<ListenersConfigDump>;
 
 export type PerXdsConfigStatusEnum = "UNKNOWN" | "SYNCED" | "NOT_SENT" | "STALE" | "ERROR";
-export const PerXdsConfigStatusEnum = S.String;
+const PerXdsConfigStatusEnum = S.String;
 
 export interface StaticRouteConfig {
   /** The route config. */
@@ -704,7 +697,7 @@ export interface StaticRouteConfig {
   /** The timestamp when the Route was last updated. */
   lastUpdated?: string;
 }
-export const StaticRouteConfig = /*@__PURE__*/ S.suspend(() =>
+const StaticRouteConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routeConfig: S.optional(DocumentMap),
     lastUpdated: S.optional(S.String),
@@ -712,7 +705,7 @@ export const StaticRouteConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticRouteConfig" }) as any as S.Schema<StaticRouteConfig>;
 
 export type StaticRouteConfigList = Array<StaticRouteConfig>;
-export const StaticRouteConfigList = /*@__PURE__*/ S.Array(
+const StaticRouteConfigList = /*@__PURE__*/ S.Array(
   StaticRouteConfig,
 ) as any as S.Schema<StaticRouteConfigList>;
 
@@ -724,7 +717,7 @@ export type DynamicRouteConfigClientStatusEnum =
   | "NACKED"
   | "RECEIVED_ERROR"
   | "TIMEOUT";
-export const DynamicRouteConfigClientStatusEnum = S.String;
+const DynamicRouteConfigClientStatusEnum = S.String;
 
 /** [#next-free-field: 6] */
 export interface DynamicRouteConfig {
@@ -739,7 +732,7 @@ export interface DynamicRouteConfig {
   /** This is the per-resource version information. This version is currently taken from the :ref:`version_info ` field at the time that the route configuration was loaded. */
   versionInfo?: string;
 }
-export const DynamicRouteConfig = /*@__PURE__*/ S.suspend(() =>
+const DynamicRouteConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorState: S.optional(UpdateFailureState),
     lastUpdated: S.optional(S.String),
@@ -750,7 +743,7 @@ export const DynamicRouteConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DynamicRouteConfig" }) as any as S.Schema<DynamicRouteConfig>;
 
 export type DynamicRouteConfigList = Array<DynamicRouteConfig>;
-export const DynamicRouteConfigList = /*@__PURE__*/ S.Array(
+const DynamicRouteConfigList = /*@__PURE__*/ S.Array(
   DynamicRouteConfig,
 ) as any as S.Schema<DynamicRouteConfigList>;
 
@@ -761,7 +754,7 @@ export interface RoutesConfigDump {
   /** The dynamically loaded route configs. */
   dynamicRouteConfigs?: DynamicRouteConfigList;
 }
-export const RoutesConfigDump = /*@__PURE__*/ S.suspend(() =>
+const RoutesConfigDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     staticRouteConfigs: S.optional(StaticRouteConfigList),
     dynamicRouteConfigs: S.optional(DynamicRouteConfigList),
@@ -769,9 +762,7 @@ export const RoutesConfigDump = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutesConfigDump" }) as any as S.Schema<RoutesConfigDump>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 export type DynamicScopedRouteConfigsClientStatusEnum =
   | "UNKNOWN"
@@ -781,7 +772,7 @@ export type DynamicScopedRouteConfigsClientStatusEnum =
   | "NACKED"
   | "RECEIVED_ERROR"
   | "TIMEOUT";
-export const DynamicScopedRouteConfigsClientStatusEnum = S.String;
+const DynamicScopedRouteConfigsClientStatusEnum = S.String;
 
 /** [#next-free-field: 7] */
 export interface DynamicScopedRouteConfigs {
@@ -798,7 +789,7 @@ export interface DynamicScopedRouteConfigs {
   /** Set if the last update failed, cleared after the next successful update. The ``error_state`` field contains the rejected version of this particular resource along with the reason and timestamp. For successfully updated or acknowledged resource, this field should be empty. [#not-implemented-hide:] */
   errorState?: UpdateFailureState;
 }
-export const DynamicScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
+const DynamicScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopedRouteConfigs: S.optional(DocumentMapList),
     clientStatus: S.optional(DynamicScopedRouteConfigsClientStatusEnum),
@@ -812,7 +803,7 @@ export const DynamicScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicScopedRouteConfigs>;
 
 export type DynamicScopedRouteConfigsList = Array<DynamicScopedRouteConfigs>;
-export const DynamicScopedRouteConfigsList = /*@__PURE__*/ S.Array(
+const DynamicScopedRouteConfigsList = /*@__PURE__*/ S.Array(
   DynamicScopedRouteConfigs,
 ) as any as S.Schema<DynamicScopedRouteConfigsList>;
 
@@ -824,7 +815,7 @@ export interface InlineScopedRouteConfigs {
   /** The timestamp when the scoped route config set was last updated. */
   lastUpdated?: string;
 }
-export const InlineScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
+const InlineScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     scopedRouteConfigs: S.optional(DocumentMapList),
@@ -833,7 +824,7 @@ export const InlineScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InlineScopedRouteConfigs" }) as any as S.Schema<InlineScopedRouteConfigs>;
 
 export type InlineScopedRouteConfigsList = Array<InlineScopedRouteConfigs>;
-export const InlineScopedRouteConfigsList = /*@__PURE__*/ S.Array(
+const InlineScopedRouteConfigsList = /*@__PURE__*/ S.Array(
   InlineScopedRouteConfigs,
 ) as any as S.Schema<InlineScopedRouteConfigsList>;
 
@@ -844,7 +835,7 @@ export interface ScopedRoutesConfigDump {
   /** The statically loaded scoped route configs. */
   inlineScopedRouteConfigs?: InlineScopedRouteConfigsList;
 }
-export const ScopedRoutesConfigDump = /*@__PURE__*/ S.suspend(() =>
+const ScopedRoutesConfigDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dynamicScopedRouteConfigs: S.optional(DynamicScopedRouteConfigsList),
     inlineScopedRouteConfigs: S.optional(InlineScopedRouteConfigsList),
@@ -857,7 +848,7 @@ export type PerXdsConfigClientStatusEnum =
   | "CLIENT_ACKED"
   | "CLIENT_NACKED"
   | "CLIENT_RECEIVED_ERROR";
-export const PerXdsConfigClientStatusEnum = S.String;
+const PerXdsConfigClientStatusEnum = S.String;
 
 export type DynamicClusterClientStatusEnum =
   | "UNKNOWN"
@@ -867,7 +858,7 @@ export type DynamicClusterClientStatusEnum =
   | "NACKED"
   | "RECEIVED_ERROR"
   | "TIMEOUT";
-export const DynamicClusterClientStatusEnum = S.String;
+const DynamicClusterClientStatusEnum = S.String;
 
 /** Describes a dynamically loaded cluster via the CDS API. [#next-free-field: 6] */
 export interface DynamicCluster {
@@ -882,7 +873,7 @@ export interface DynamicCluster {
   /** Set if the last update failed, cleared after the next successful update. The ``error_state`` field contains the rejected version of this particular resource along with the reason and timestamp. For successfully updated or acknowledged resource, this field should be empty. [#not-implemented-hide:] */
   errorState?: UpdateFailureState;
 }
-export const DynamicCluster = /*@__PURE__*/ S.suspend(() =>
+const DynamicCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionInfo: S.optional(S.String),
     cluster: S.optional(DocumentMap),
@@ -893,7 +884,7 @@ export const DynamicCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DynamicCluster" }) as any as S.Schema<DynamicCluster>;
 
 export type DynamicClusterList = Array<DynamicCluster>;
-export const DynamicClusterList = /*@__PURE__*/ S.Array(
+const DynamicClusterList = /*@__PURE__*/ S.Array(
   DynamicCluster,
 ) as any as S.Schema<DynamicClusterList>;
 
@@ -904,7 +895,7 @@ export interface StaticCluster {
   /** The cluster config. */
   cluster?: DocumentMap;
 }
-export const StaticCluster = /*@__PURE__*/ S.suspend(() =>
+const StaticCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdated: S.optional(S.String),
     cluster: S.optional(DocumentMap),
@@ -912,7 +903,7 @@ export const StaticCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticCluster" }) as any as S.Schema<StaticCluster>;
 
 export type StaticClusterList = Array<StaticCluster>;
-export const StaticClusterList = /*@__PURE__*/ S.Array(
+const StaticClusterList = /*@__PURE__*/ S.Array(
   StaticCluster,
 ) as any as S.Schema<StaticClusterList>;
 
@@ -927,7 +918,7 @@ export interface ClustersConfigDump {
   /** This is the :ref:`version_info ` in the last processed CDS discovery response. If there are only static bootstrap clusters, this field will be "". */
   versionInfo?: string;
 }
-export const ClustersConfigDump = /*@__PURE__*/ S.suspend(() =>
+const ClustersConfigDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dynamicActiveClusters: S.optional(DynamicClusterList),
     staticClusters: S.optional(StaticClusterList),
@@ -942,7 +933,7 @@ export interface StaticEndpointConfig {
   /** [#not-implemented-hide:] The timestamp when the Endpoint was last updated. */
   lastUpdated?: string;
 }
-export const StaticEndpointConfig = /*@__PURE__*/ S.suspend(() =>
+const StaticEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointConfig: S.optional(DocumentMap),
     lastUpdated: S.optional(S.String),
@@ -950,7 +941,7 @@ export const StaticEndpointConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StaticEndpointConfig" }) as any as S.Schema<StaticEndpointConfig>;
 
 export type StaticEndpointConfigList = Array<StaticEndpointConfig>;
-export const StaticEndpointConfigList = /*@__PURE__*/ S.Array(
+const StaticEndpointConfigList = /*@__PURE__*/ S.Array(
   StaticEndpointConfig,
 ) as any as S.Schema<StaticEndpointConfigList>;
 
@@ -962,7 +953,7 @@ export type DynamicEndpointConfigClientStatusEnum =
   | "NACKED"
   | "RECEIVED_ERROR"
   | "TIMEOUT";
-export const DynamicEndpointConfigClientStatusEnum = S.String;
+const DynamicEndpointConfigClientStatusEnum = S.String;
 
 /** [#next-free-field: 6] */
 export interface DynamicEndpointConfig {
@@ -977,7 +968,7 @@ export interface DynamicEndpointConfig {
   /** [#not-implemented-hide:] The timestamp when the Endpoint was last updated. */
   lastUpdated?: string;
 }
-export const DynamicEndpointConfig = /*@__PURE__*/ S.suspend(() =>
+const DynamicEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionInfo: S.optional(S.String),
     endpointConfig: S.optional(DocumentMap),
@@ -988,7 +979,7 @@ export const DynamicEndpointConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DynamicEndpointConfig" }) as any as S.Schema<DynamicEndpointConfig>;
 
 export type DynamicEndpointConfigList = Array<DynamicEndpointConfig>;
-export const DynamicEndpointConfigList = /*@__PURE__*/ S.Array(
+const DynamicEndpointConfigList = /*@__PURE__*/ S.Array(
   DynamicEndpointConfig,
 ) as any as S.Schema<DynamicEndpointConfigList>;
 
@@ -999,7 +990,7 @@ export interface EndpointsConfigDump {
   /** The dynamically loaded endpoint configs. */
   dynamicEndpointConfigs?: DynamicEndpointConfigList;
 }
-export const EndpointsConfigDump = /*@__PURE__*/ S.suspend(() =>
+const EndpointsConfigDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     staticEndpointConfigs: S.optional(StaticEndpointConfigList),
     dynamicEndpointConfigs: S.optional(DynamicEndpointConfigList),
@@ -1018,7 +1009,7 @@ export interface PerXdsConfig {
   clusterConfig?: ClustersConfigDump;
   endpointConfig?: EndpointsConfigDump;
 }
-export const PerXdsConfig = /*@__PURE__*/ S.suspend(() =>
+const PerXdsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listenerConfig: S.optional(ListenersConfigDump),
     status: S.optional(PerXdsConfigStatusEnum),
@@ -1031,9 +1022,7 @@ export const PerXdsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PerXdsConfig" }) as any as S.Schema<PerXdsConfig>;
 
 export type PerXdsConfigList = Array<PerXdsConfig>;
-export const PerXdsConfigList = /*@__PURE__*/ S.Array(
-  PerXdsConfig,
-) as any as S.Schema<PerXdsConfigList>;
+const PerXdsConfigList = /*@__PURE__*/ S.Array(PerXdsConfig) as any as S.Schema<PerXdsConfigList>;
 
 /** All xds configs for a particular client. */
 export interface ClientConfig {
@@ -1046,7 +1035,7 @@ export interface ClientConfig {
   /** Node for a particular client. */
   node?: Node;
 }
-export const ClientConfig = /*@__PURE__*/ S.suspend(() =>
+const ClientConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     genericXdsConfigs: S.optional(GenericXdsConfigList),
     clientScope: S.optional(S.String),
@@ -1056,15 +1045,13 @@ export const ClientConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientConfig" }) as any as S.Schema<ClientConfig>;
 
 export type ClientConfigList = Array<ClientConfig>;
-export const ClientConfigList = /*@__PURE__*/ S.Array(
-  ClientConfig,
-) as any as S.Schema<ClientConfigList>;
+const ClientConfigList = /*@__PURE__*/ S.Array(ClientConfig) as any as S.Schema<ClientConfigList>;
 
 export interface ClientStatusResponse {
   /** Client configs for the clients specified in the ClientStatusRequest. */
   config?: ClientConfigList;
 }
-export const ClientStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ClientStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(ClientConfigList),
   }),

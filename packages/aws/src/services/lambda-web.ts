@@ -142,31 +142,31 @@ export interface S3Object {
   key: string;
   versionId?: string;
 }
-export const S3Object = /*@__PURE__*/ S.suspend(() =>
+const S3Object = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.String, key: S.String, versionId: S.optional(S.String) }),
 ).annotate({ identifier: "S3Object" }) as any as S.Schema<S3Object>;
 export interface CodeConfig {
   s3Object: S3Object;
 }
-export const CodeConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Object: S3Object })).annotate({
+const CodeConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ s3Object: S3Object })).annotate({
   identifier: "CodeConfig",
 }) as any as S.Schema<CodeConfig>;
 export interface RuntimeConfig {
   runtime: string;
 }
-export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ runtime: S.String }),
-).annotate({ identifier: "RuntimeConfig" }) as any as S.Schema<RuntimeConfig>;
+const RuntimeConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ runtime: S.String })).annotate({
+  identifier: "RuntimeConfig",
+}) as any as S.Schema<RuntimeConfig>;
 export interface BuildConfig {
   codeConfig: CodeConfig;
   runtimeConfig: RuntimeConfig;
 }
-export const BuildConfig = /*@__PURE__*/ S.suspend(() =>
+const BuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ codeConfig: CodeConfig, runtimeConfig: RuntimeConfig }),
 ).annotate({ identifier: "BuildConfig" }) as any as S.Schema<BuildConfig>;
 export type RoleArn = string;
 export type EnvironmentVariables = { [key: string]: string | undefined };
-export const EnvironmentVariables = /*@__PURE__*/ S.Record(
+const EnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -178,17 +178,17 @@ export type ApplicationLogLevel =
   | "ERROR"
   | "FATAL"
   | (string & {});
-export const ApplicationLogLevel = S.String;
+const ApplicationLogLevel = S.String;
 
 export type SystemLogLevel = "DEBUG" | "INFO" | "WARN" | (string & {});
-export const SystemLogLevel = S.String;
+const SystemLogLevel = S.String;
 
 export interface LoggingConfig {
   logGroup?: string;
   applicationLogLevel?: ApplicationLogLevel;
   systemLogLevel?: SystemLogLevel;
 }
-export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logGroup: S.optional(S.String),
     applicationLogLevel: S.optional(ApplicationLogLevel),
@@ -198,7 +198,7 @@ export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
 export interface TelemetryConfig {
   loggingConfig?: LoggingConfig;
 }
-export const TelemetryConfig = /*@__PURE__*/ S.suspend(() =>
+const TelemetryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ loggingConfig: S.optional(LoggingConfig) }),
 ).annotate({ identifier: "TelemetryConfig" }) as any as S.Schema<TelemetryConfig>;
 export interface ServiceConfig {
@@ -208,7 +208,7 @@ export interface ServiceConfig {
   environmentVariables?: { [key: string]: string | undefined };
   telemetryConfig?: TelemetryConfig;
 }
-export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionRoleArn: S.String,
     timeoutSeconds: S.optional(S.Number),
@@ -223,7 +223,7 @@ export interface RevisionConfig {
   buildConfig: BuildConfig;
   serviceConfig: ServiceConfig;
 }
-export const RevisionConfig = /*@__PURE__*/ S.suspend(() =>
+const RevisionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     kmsKeyArn: S.optional(S.String),
@@ -233,27 +233,27 @@ export const RevisionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevisionConfig" }) as any as S.Schema<RevisionConfig>;
 export type EndpointName = string;
 export type EndpointType = "HomeRegion" | "MultiRegion" | "PerRegion" | (string & {});
-export const EndpointType = S.String;
+const EndpointType = S.String;
 
 export type AuthType = "ApplicationManaged" | "IamAuth" | (string & {});
-export const AuthType = S.String;
+const AuthType = S.String;
 
 export type AutoDeploymentMode = "LatestRevision" | "Disabled" | (string & {});
-export const AutoDeploymentMode = S.String;
+const AutoDeploymentMode = S.String;
 
 export type Region = string;
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ S.Array(S.String);
+const RegionList = /*@__PURE__*/ S.Array(S.String);
 export interface ScalingConfig {
   maxEnvironments?: number;
 }
-export const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
+const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxEnvironments: S.optional(S.Number) }),
 ).annotate({ identifier: "ScalingConfig" }) as any as S.Schema<ScalingConfig>;
 export interface ThrottleConfig {
   rateLimit?: number;
 }
-export const ThrottleConfig = /*@__PURE__*/ S.suspend(() =>
+const ThrottleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ rateLimit: S.optional(S.Number) }),
 ).annotate({ identifier: "ThrottleConfig" }) as any as S.Schema<ThrottleConfig>;
 export interface EndpointConfig {
@@ -266,7 +266,7 @@ export interface EndpointConfig {
   scalingConfig?: ScalingConfig;
   throttleConfig?: ThrottleConfig;
 }
-export const EndpointConfig = /*@__PURE__*/ S.suspend(() =>
+const EndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointName: S.String,
     description: S.optional(S.String),
@@ -280,14 +280,14 @@ export const EndpointConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointConfig" }) as any as S.Schema<EndpointConfig>;
 export type TagKey = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateWebFunctionRequest {
   functionName: string;
   revisionConfig?: RevisionConfig;
   endpointConfig?: EndpointConfig;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String,
     revisionConfig: S.optional(RevisionConfig),
@@ -306,12 +306,12 @@ export const CreateWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateWebFunctionRequest" }) as any as S.Schema<CreateWebFunctionRequest>;
 export type FunctionArn = string;
 export type FunctionState = "Pending" | "Active" | "Failed" | "Deleting" | (string & {});
-export const FunctionState = S.String;
+const FunctionState = S.String;
 
 export type RevisionArn = string;
 export type RevisionId = string;
 export type RevisionState = "Pending" | "Active" | "Failed" | (string & {});
-export const RevisionState = S.String;
+const RevisionState = S.String;
 
 export interface FunctionRevisionSummary {
   revisionArn: string;
@@ -321,7 +321,7 @@ export interface FunctionRevisionSummary {
   stateReason: string;
   createdAt: Date;
 }
-export const FunctionRevisionSummary = /*@__PURE__*/ S.suspend(() =>
+const FunctionRevisionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionArn: S.String,
     revisionId: S.String,
@@ -337,16 +337,16 @@ export interface RevisionWeight {
   revisionId: string;
   weight: number;
 }
-export const RevisionWeight = /*@__PURE__*/ S.suspend(() =>
+const RevisionWeight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ revisionId: S.String, weight: S.Number }),
 ).annotate({ identifier: "RevisionWeight" }) as any as S.Schema<RevisionWeight>;
 export type RevisionWeightList = RevisionWeight[];
-export const RevisionWeightList = /*@__PURE__*/ S.Array(RevisionWeight);
+const RevisionWeightList = /*@__PURE__*/ S.Array(RevisionWeight);
 export type EndpointState = "Pending" | "Active" | "Failed" | "Deleting" | (string & {});
-export const EndpointState = S.String;
+const EndpointState = S.String;
 
 export type EndpointUpdateStatus = "InProgress" | "Successful" | "Failed" | (string & {});
-export const EndpointUpdateStatus = S.String;
+const EndpointUpdateStatus = S.String;
 
 export interface FunctionEndpointSummary {
   endpointArn: string;
@@ -367,7 +367,7 @@ export interface FunctionEndpointSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-export const FunctionEndpointSummary = /*@__PURE__*/ S.suspend(() =>
+const FunctionEndpointSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointArn: S.String,
     endpointName: S.String,
@@ -399,7 +399,7 @@ export interface CreateWebFunctionResponse {
   endpoint?: FunctionEndpointSummary;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateWebFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWebFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String,
     functionArn: S.String,
@@ -426,7 +426,7 @@ export interface CreateWebFunctionEndpointRequest {
   scalingConfig?: ScalingConfig;
   throttleConfig?: ThrottleConfig;
 }
-export const CreateWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     endpointName: S.String,
@@ -462,7 +462,7 @@ export interface RegionalEndpoint {
   updateStatus?: EndpointUpdateStatus;
   updateStatusReason?: string;
 }
-export const RegionalEndpoint = /*@__PURE__*/ S.suspend(() =>
+const RegionalEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     authType: AuthType,
@@ -476,7 +476,7 @@ export const RegionalEndpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegionalEndpoint" }) as any as S.Schema<RegionalEndpoint>;
 export type RegionalEndpoints = { [key: string]: RegionalEndpoint | undefined };
-export const RegionalEndpoints = /*@__PURE__*/ S.Record(
+const RegionalEndpoints = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ RegionalEndpoint.pipe(S.optional),
 );
@@ -501,7 +501,7 @@ export interface CreateWebFunctionEndpointResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const CreateWebFunctionEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWebFunctionEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionArn: S.String,
     endpointArn: S.String,
@@ -533,7 +533,7 @@ export interface CreateWebFunctionRevisionRequest {
   buildConfig: BuildConfig;
   serviceConfig: ServiceConfig;
 }
-export const CreateWebFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     description: S.optional(S.String),
@@ -558,11 +558,11 @@ export interface RevisionError {
   errorCode: string;
   errorMessage: string;
 }
-export const RevisionError = /*@__PURE__*/ S.suspend(() =>
+const RevisionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ attribute: S.String, errorCode: S.String, errorMessage: S.String }),
 ).annotate({ identifier: "RevisionError" }) as any as S.Schema<RevisionError>;
 export type RevisionErrors = RevisionError[];
-export const RevisionErrors = /*@__PURE__*/ S.Array(RevisionError);
+const RevisionErrors = /*@__PURE__*/ S.Array(RevisionError);
 export interface CreateWebFunctionRevisionResponse {
   functionArn: string;
   revisionArn: string;
@@ -576,7 +576,7 @@ export interface CreateWebFunctionRevisionResponse {
   errors?: RevisionError[];
   createdAt: Date;
 }
-export const CreateWebFunctionRevisionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWebFunctionRevisionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionArn: S.String,
     revisionArn: S.String,
@@ -599,7 +599,7 @@ export interface DeleteResourcePolicyRequest {
   resourceArn: string;
   revisionId?: string;
 }
-export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     revisionId: S.optional(S.String).pipe(T.HttpQuery("RevisionId")),
@@ -617,13 +617,13 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteResourcePolicyResponse",
 }) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteWebFunctionRequest {
   functionName: string;
 }
-export const DeleteWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ functionName: S.String.pipe(T.HttpLabel("functionName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/2025-03-07/web-functions/{functionName}" }),
@@ -636,13 +636,13 @@ export const DeleteWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteWebFunctionRequest" }) as any as S.Schema<DeleteWebFunctionRequest>;
 export interface DeleteWebFunctionResponse {}
-export const DeleteWebFunctionResponse =
+const DeleteWebFunctionResponse =
   DeleteResourcePolicyResponse as any as S.Schema<DeleteWebFunctionResponse>;
 export interface DeleteWebFunctionEndpointRequest {
   functionName: string;
   endpointName: string;
 }
-export const DeleteWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     endpointName: S.String.pipe(T.HttpLabel("endpointName")),
@@ -663,16 +663,14 @@ export const DeleteWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebFunctionEndpointRequest",
 }) as any as S.Schema<DeleteWebFunctionEndpointRequest>;
 export interface DeleteWebFunctionEndpointResponse {}
-export const DeleteWebFunctionEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteWebFunctionEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteWebFunctionEndpointResponse",
 }) as any as S.Schema<DeleteWebFunctionEndpointResponse>;
 export interface DeleteWebFunctionRevisionRequest {
   functionName: string;
   revisionId: string;
 }
-export const DeleteWebFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     revisionId: S.String.pipe(T.HttpLabel("revisionId")),
@@ -693,12 +691,12 @@ export const DeleteWebFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebFunctionRevisionRequest",
 }) as any as S.Schema<DeleteWebFunctionRevisionRequest>;
 export interface DeleteWebFunctionRevisionResponse {}
-export const DeleteWebFunctionRevisionResponse =
+const DeleteWebFunctionRevisionResponse =
   DeleteWebFunctionEndpointResponse as any as S.Schema<DeleteWebFunctionRevisionResponse>;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2025-03-07/resource-policy/{resourceArn}" }),
@@ -715,7 +713,7 @@ export interface GetResourcePolicyResponse {
   policy: string;
   revisionId: string;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ policy: S.String, revisionId: S.String }).pipe(
     S.encodeKeys({ policy: "Policy", revisionId: "RevisionId" }),
   ),
@@ -723,7 +721,7 @@ export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetWebAccountSettingsRequest {}
-export const GetWebAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2025-03-07/web-account-settings" }),
@@ -743,7 +741,7 @@ export interface AccountQuotas {
   maxRevisionsPerFunction: number;
   maxEndpointsPerFunction: number;
 }
-export const AccountQuotas = /*@__PURE__*/ S.suspend(() =>
+const AccountQuotas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxTotalArmVCpus: S.Number,
     maxTotalRateLimit: S.Number,
@@ -754,14 +752,14 @@ export const AccountQuotas = /*@__PURE__*/ S.suspend(() =>
 export interface AccountUsage {
   functionCount: number;
 }
-export const AccountUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ functionCount: S.Number }),
-).annotate({ identifier: "AccountUsage" }) as any as S.Schema<AccountUsage>;
+const AccountUsage = /*@__PURE__*/ S.suspend(() => S.Struct({ functionCount: S.Number })).annotate({
+  identifier: "AccountUsage",
+}) as any as S.Schema<AccountUsage>;
 export interface GetWebAccountSettingsResponse {
   accountQuotas: AccountQuotas;
   accountUsage: AccountUsage;
 }
-export const GetWebAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountQuotas: AccountQuotas, accountUsage: AccountUsage }),
 ).annotate({
   identifier: "GetWebAccountSettingsResponse",
@@ -769,7 +767,7 @@ export const GetWebAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetWebFunctionRequest {
   functionName: string;
 }
-export const GetWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ functionName: S.String.pipe(T.HttpLabel("functionName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2025-03-07/web-functions/{functionName}" }),
@@ -789,7 +787,7 @@ export interface GetWebFunctionResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const GetWebFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String,
     functionArn: S.String,
@@ -803,7 +801,7 @@ export interface GetWebFunctionEndpointRequest {
   functionName: string;
   endpointName: string;
 }
-export const GetWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     endpointName: S.String.pipe(T.HttpLabel("endpointName")),
@@ -844,13 +842,13 @@ export interface GetWebFunctionEndpointResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const GetWebFunctionEndpointResponse =
+const GetWebFunctionEndpointResponse =
   CreateWebFunctionEndpointResponse as any as S.Schema<GetWebFunctionEndpointResponse>;
 export interface GetWebFunctionRevisionRequest {
   functionName: string;
   revisionId: string;
 }
-export const GetWebFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebFunctionRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     revisionId: S.String.pipe(T.HttpLabel("revisionId")),
@@ -883,12 +881,12 @@ export interface GetWebFunctionRevisionResponse {
   errors?: RevisionError[];
   createdAt: Date;
 }
-export const GetWebFunctionRevisionResponse =
+const GetWebFunctionRevisionResponse =
   CreateWebFunctionRevisionResponse as any as S.Schema<GetWebFunctionRevisionResponse>;
 export interface ListTagsRequest {
   resource: string;
 }
-export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resource: S.String.pipe(T.HttpLabel("resource")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2025-03-07/tags/{resource}" }),
@@ -903,20 +901,20 @@ export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(Tags) }).pipe(S.encodeKeys({ tags: "Tags" })),
 ).annotate({ identifier: "ListTagsResponse" }) as any as S.Schema<ListTagsResponse>;
 export type FilterValueList = string[];
-export const FilterValueList = RegionList as any as S.Schema<FilterValueList>;
+const FilterValueList = RegionList as any as S.Schema<FilterValueList>;
 export interface Filter {
   name: string;
   values: string[];
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, values: FilterValueList }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
+const FilterList = /*@__PURE__*/ S.Array(Filter);
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListWebFunctionEndpointsRequest {
@@ -925,7 +923,7 @@ export interface ListWebFunctionEndpointsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListWebFunctionEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebFunctionEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     filters: S.optional(FilterList),
@@ -945,12 +943,12 @@ export const ListWebFunctionEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWebFunctionEndpointsRequest",
 }) as any as S.Schema<ListWebFunctionEndpointsRequest>;
 export type FunctionEndpointSummaryList = FunctionEndpointSummary[];
-export const FunctionEndpointSummaryList = /*@__PURE__*/ S.Array(FunctionEndpointSummary);
+const FunctionEndpointSummaryList = /*@__PURE__*/ S.Array(FunctionEndpointSummary);
 export interface ListWebFunctionEndpointsResponse {
   endpoints: FunctionEndpointSummary[];
   nextToken?: string;
 }
-export const ListWebFunctionEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebFunctionEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ endpoints: FunctionEndpointSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListWebFunctionEndpointsResponse",
@@ -961,7 +959,7 @@ export interface ListWebFunctionRevisionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListWebFunctionRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebFunctionRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     filters: S.optional(FilterList),
@@ -981,12 +979,12 @@ export const ListWebFunctionRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWebFunctionRevisionsRequest",
 }) as any as S.Schema<ListWebFunctionRevisionsRequest>;
 export type FunctionRevisionSummaryList = FunctionRevisionSummary[];
-export const FunctionRevisionSummaryList = /*@__PURE__*/ S.Array(FunctionRevisionSummary);
+const FunctionRevisionSummaryList = /*@__PURE__*/ S.Array(FunctionRevisionSummary);
 export interface ListWebFunctionRevisionsResponse {
   revisions: FunctionRevisionSummary[];
   nextToken?: string;
 }
-export const ListWebFunctionRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebFunctionRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ revisions: FunctionRevisionSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListWebFunctionRevisionsResponse",
@@ -996,7 +994,7 @@ export interface ListWebFunctionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListWebFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(FilterList),
     maxResults: S.optional(S.Number),
@@ -1020,14 +1018,14 @@ export interface FunctionSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-export const FunctionSummary = GetWebFunctionResponse as any as S.Schema<FunctionSummary>;
+const FunctionSummary = GetWebFunctionResponse as any as S.Schema<FunctionSummary>;
 export type FunctionSummaryList = FunctionSummary[];
-export const FunctionSummaryList = /*@__PURE__*/ S.Array(FunctionSummary);
+const FunctionSummaryList = /*@__PURE__*/ S.Array(FunctionSummary);
 export interface ListWebFunctionsResponse {
   functions: FunctionSummary[];
   nextToken?: string;
 }
-export const ListWebFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ functions: FunctionSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListWebFunctionsResponse" }) as any as S.Schema<ListWebFunctionsResponse>;
 export interface PutResourcePolicyRequest {
@@ -1035,7 +1033,7 @@ export interface PutResourcePolicyRequest {
   policy: string;
   revisionId?: string;
 }
-export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     policy: S.String,
@@ -1057,13 +1055,13 @@ export interface PutResourcePolicyResponse {
   policy: string;
   revisionId: string;
 }
-export const PutResourcePolicyResponse =
+const PutResourcePolicyResponse =
   GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface TagResourceRequest {
   resource: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resource: S.String.pipe(T.HttpLabel("resource")), tags: Tags })
     .pipe(S.encodeKeys({ tags: "Tags" }))
     .pipe(
@@ -1078,15 +1076,14 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = RegionList as any as S.Schema<TagKeyList>;
+const TagKeyList = RegionList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resource: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.HttpLabel("resource")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1102,7 +1099,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
+const UntagResourceResponse =
   DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateWebFunctionEndpointRequest {
   functionName: string;
@@ -1114,7 +1111,7 @@ export interface UpdateWebFunctionEndpointRequest {
   scalingConfig?: ScalingConfig;
   throttleConfig?: ThrottleConfig;
 }
-export const UpdateWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebFunctionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String.pipe(T.HttpLabel("functionName")),
     endpointName: S.String.pipe(T.HttpLabel("endpointName")),
@@ -1161,7 +1158,7 @@ export interface UpdateWebFunctionEndpointResponse {
   createdAt: Date;
   updatedAt: Date;
 }
-export const UpdateWebFunctionEndpointResponse =
+const UpdateWebFunctionEndpointResponse =
   CreateWebFunctionEndpointResponse as any as S.Schema<UpdateWebFunctionEndpointResponse>;
 export type CreateWebFunctionError =
   | AccessDeniedException

@@ -55,21 +55,21 @@ export class PaymentRequired
 
 /** Video length in seconds. Video only; defaults to 5. */
 export type GenerateMediaAssetRequestDurationSeconds = 5 | 10 | 15;
-export const GenerateMediaAssetRequestDurationSeconds = S.Number;
+const GenerateMediaAssetRequestDurationSeconds = S.Number;
 
 /** Optional reference image file IDs (`file_` prefixed), up to 4. For video, a single reference seeds the opening frame; multiple references guide subject and style instead. */
 export type GenerateMediaAssetRequestReferenceMediaList = Array<string>;
-export const GenerateMediaAssetRequestReferenceMediaList = /*@__PURE__*/ S.Array(
+const GenerateMediaAssetRequestReferenceMediaList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GenerateMediaAssetRequestReferenceMediaList>;
 
 /** Video resolution. Video only; defaults to `1080p`. `1080p` is not supported by Seedance 2.0 Fast or Mini; `4k` is only supported by Seedance 2.0. */
 export type GenerateMediaAssetRequestResolution = "480p" | "720p" | "1080p" | "4k";
-export const GenerateMediaAssetRequestResolution = S.String;
+const GenerateMediaAssetRequestResolution = S.String;
 
 /** The kind of media to generate. */
 export type GenerateMediaAssetRequestType = "video" | "image";
-export const GenerateMediaAssetRequestType = S.String;
+const GenerateMediaAssetRequestType = S.String;
 
 export interface GenerateMediaAssetRequest {
   /** Account ID, prefixed `biz_`. Defaults to the account the API key belongs to. */
@@ -87,7 +87,7 @@ export interface GenerateMediaAssetRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const GenerateMediaAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateMediaAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     duration_seconds: S.optional(GenerateMediaAssetRequestDurationSeconds),
@@ -107,7 +107,7 @@ export interface MediaAssetFile {
   /** CDN URL for downloading the file. */
   url: string;
 }
-export const MediaAssetFile = /*@__PURE__*/ S.suspend(() =>
+const MediaAssetFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     url: S.String,
@@ -115,12 +115,12 @@ export const MediaAssetFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MediaAssetFile" }) as any as S.Schema<MediaAssetFile>;
 
 export type MediaAssetGenerationReferenceMediaList = Array<string>;
-export const MediaAssetGenerationReferenceMediaList =
+const MediaAssetGenerationReferenceMediaList =
   GenerateMediaAssetRequestReferenceMediaList as any as S.Schema<MediaAssetGenerationReferenceMediaList>;
 
 /** Requested video resolution. `null` for images. `1080p` is not supported by Seedance 2.0 Fast or Mini; `4k` is only supported by Seedance 2.0. */
 export type MediaAssetGenerationResolution = "480p" | "720p" | "1080p" | "4k";
-export const MediaAssetGenerationResolution = S.String;
+const MediaAssetGenerationResolution = S.String;
 
 export interface MediaAssetGeneration {
   /** Requested video length in seconds. `null` for images. */
@@ -131,7 +131,7 @@ export interface MediaAssetGeneration {
   /** Requested video resolution. `null` for images. `1080p` is not supported by Seedance 2.0 Fast or Mini; `4k` is only supported by Seedance 2.0. */
   resolution: MediaAssetGenerationResolution | null;
 }
-export const MediaAssetGeneration = /*@__PURE__*/ S.suspend(() =>
+const MediaAssetGeneration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration_seconds: S.NullOr(S.Number),
     prompt: S.String,
@@ -142,15 +142,15 @@ export const MediaAssetGeneration = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of media this asset holds. */
 export type MediaAssetMediaType = "video" | "image";
-export const MediaAssetMediaType = S.String;
+const MediaAssetMediaType = S.String;
 
 /** How the asset was created. Always `generated`. */
 export type MediaAssetSource = "generated";
-export const MediaAssetSource = S.String;
+const MediaAssetSource = S.String;
 
 /** Lifecycle state: `processing` while generation runs, `ready` when the file is available, `failed` when generation failed and the charge was refunded. */
 export type MediaAssetStatus = "processing" | "ready" | "failed";
-export const MediaAssetStatus = S.String;
+const MediaAssetStatus = S.String;
 
 export interface MediaAsset {
   /** USD amount charged to the account's balance for this generation. `null` if the generation wasn't billed. */
@@ -176,7 +176,7 @@ export interface MediaAsset {
   /** Lifecycle state: `processing` while generation runs, `ready` when the file is available, `failed` when generation failed and the charge was refunded. */
   status: MediaAssetStatus;
 }
-export const MediaAsset = /*@__PURE__*/ S.suspend(() =>
+const MediaAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount_charged: S.NullOr(S.Number),
     completed_at: S.NullOr(S.String),
@@ -196,7 +196,7 @@ export interface GetMediaAssetRequest {
   /** Media asset ID, prefixed `media_`. */
   id: string;
 }
-export const GetMediaAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMediaAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/media/{id}", code: 200 })),

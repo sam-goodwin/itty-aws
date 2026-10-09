@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Type of Microsoft Entra principal to which the server administrator is associated. */
 export type PrincipalType = "Unknown" | "User" | "Group" | "ServicePrincipal";
-export const PrincipalType = S.String;
+const PrincipalType = S.String;
 
 /** Properties of a server administrator associated to a Microsoft Entra principal. */
 export interface AdministratorMicrosoftEntraPropertiesForAdd {
@@ -22,7 +22,7 @@ export interface AdministratorMicrosoftEntraPropertiesForAdd {
   /** Identifier of the tenant in which the Microsoft Entra principal exists. */
   tenantId?: string;
 }
-export const AdministratorMicrosoftEntraPropertiesForAdd = /*@__PURE__*/ S.suspend(() =>
+const AdministratorMicrosoftEntraPropertiesForAdd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalType: S.optional(PrincipalType),
     principalName: S.optional(S.String),
@@ -44,7 +44,7 @@ export interface AdministratorsMicrosoftEntraCreateOrUpdateRequest {
   /** Properties of the server administrator associated to a Microsoft Entra principal. */
   properties?: AdministratorMicrosoftEntraPropertiesForAdd;
 }
-export const AdministratorsMicrosoftEntraCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AdministratorsMicrosoftEntraCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -64,7 +64,7 @@ export const AdministratorsMicrosoftEntraCreateOrUpdateRequest = /*@__PURE__*/ S
 }) as any as S.Schema<AdministratorsMicrosoftEntraCreateOrUpdateRequest>;
 
 export interface AdministratorsMicrosoftEntraCreateOrUpdateResponse {}
-export const AdministratorsMicrosoftEntraCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AdministratorsMicrosoftEntraCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AdministratorsMicrosoftEntraCreateOrUpdateResponse",
@@ -80,7 +80,7 @@ export interface CancelMigrationRequest {
   /** Name of migration. */
   migrationName: string;
 }
-export const CancelMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -98,11 +98,11 @@ export const CancelMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -119,7 +119,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -132,7 +132,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CancelMigrationResponseTagsMap = { [key: string]: string | undefined };
-export const CancelMigrationResponseTagsMap = /*@__PURE__*/ S.Record(
+const CancelMigrationResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CancelMigrationResponseTagsMap>;
@@ -146,7 +146,7 @@ export type MigrationState =
   | "Succeeded"
   | "ValidationFailed"
   | "CleaningUp";
-export const MigrationState = S.String;
+const MigrationState = S.String;
 
 /** Substate of migration. */
 export type MigrationSubstate =
@@ -162,7 +162,7 @@ export type MigrationSubstate =
   | "Completed"
   | "CancelingRequestedDBMigrations"
   | "ValidationInProgress";
-export const MigrationSubstate = S.String;
+const MigrationSubstate = S.String;
 
 /** Migration state of a database. */
 export type MigrationDatabaseState =
@@ -172,7 +172,7 @@ export type MigrationDatabaseState =
   | "Canceled"
   | "Succeeded"
   | "Canceling";
-export const MigrationDatabaseState = S.String;
+const MigrationDatabaseState = S.String;
 
 /** Migration state of a database. */
 export interface DatabaseMigrationState {
@@ -209,7 +209,7 @@ export interface DatabaseMigrationState {
   /** Error message, if any, for the migration state. */
   message?: string;
 }
-export const DatabaseMigrationState = /*@__PURE__*/ S.suspend(() =>
+const DatabaseMigrationState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.optional(S.String),
     migrationState: S.optional(MigrationDatabaseState),
@@ -233,14 +233,14 @@ export const DatabaseMigrationState = /*@__PURE__*/ S.suspend(() =>
 export type MigrationSubstateDetailsDbDetailsMap = {
   [key: string]: DatabaseMigrationState | undefined;
 };
-export const MigrationSubstateDetailsDbDetailsMap = /*@__PURE__*/ S.Record(
+const MigrationSubstateDetailsDbDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   DatabaseMigrationState,
 ) as any as S.Schema<MigrationSubstateDetailsDbDetailsMap>;
 
 /** Validation state for migration. */
 export type ValidationState = "Failed" | "Succeeded" | "Warning";
-export const ValidationState = S.String;
+const ValidationState = S.String;
 
 /** Validation message object. */
 export interface ValidationMessage {
@@ -249,7 +249,7 @@ export interface ValidationMessage {
   /** Validation message string. */
   message?: string;
 }
-export const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
+const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ValidationState),
     message: S.optional(S.String),
@@ -258,7 +258,7 @@ export const ValidationMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** Validation messages. */
 export type ValidationSummaryItemMessagesList = Array<ValidationMessage>;
-export const ValidationSummaryItemMessagesList = /*@__PURE__*/ S.Array(
+const ValidationSummaryItemMessagesList = /*@__PURE__*/ S.Array(
   ValidationMessage,
 ) as any as S.Schema<ValidationSummaryItemMessagesList>;
 
@@ -271,7 +271,7 @@ export interface ValidationSummaryItem {
   /** Validation messages. */
   messages?: ValidationSummaryItemMessagesList;
 }
-export const ValidationSummaryItem = /*@__PURE__*/ S.suspend(() =>
+const ValidationSummaryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     state: S.optional(ValidationState),
@@ -281,13 +281,13 @@ export const ValidationSummaryItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of server level validations. */
 export type ValidationDetailsServerLevelValidationDetailsList = Array<ValidationSummaryItem>;
-export const ValidationDetailsServerLevelValidationDetailsList = /*@__PURE__*/ S.Array(
+const ValidationDetailsServerLevelValidationDetailsList = /*@__PURE__*/ S.Array(
   ValidationSummaryItem,
 ) as any as S.Schema<ValidationDetailsServerLevelValidationDetailsList>;
 
 /** Summary of database level validations. */
 export type DbLevelValidationStatusSummaryList = Array<ValidationSummaryItem>;
-export const DbLevelValidationStatusSummaryList =
+const DbLevelValidationStatusSummaryList =
   ValidationDetailsServerLevelValidationDetailsList as any as S.Schema<DbLevelValidationStatusSummaryList>;
 
 /** Validation status summary for a database. */
@@ -301,7 +301,7 @@ export interface DbLevelValidationStatus {
   /** Summary of database level validations. */
   summary?: DbLevelValidationStatusSummaryList;
 }
-export const DbLevelValidationStatus = /*@__PURE__*/ S.suspend(() =>
+const DbLevelValidationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.optional(S.String),
     startedOn: S.optional(S.String),
@@ -312,7 +312,7 @@ export const DbLevelValidationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of server level validations. */
 export type ValidationDetailsDbLevelValidationDetailsList = Array<DbLevelValidationStatus>;
-export const ValidationDetailsDbLevelValidationDetailsList = /*@__PURE__*/ S.Array(
+const ValidationDetailsDbLevelValidationDetailsList = /*@__PURE__*/ S.Array(
   DbLevelValidationStatus,
 ) as any as S.Schema<ValidationDetailsDbLevelValidationDetailsList>;
 
@@ -329,7 +329,7 @@ export interface ValidationDetails {
   /** Details of server level validations. */
   dbLevelValidationDetails?: ValidationDetailsDbLevelValidationDetailsList;
 }
-export const ValidationDetails = /*@__PURE__*/ S.suspend(() =>
+const ValidationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ValidationState),
     validationStartTimeInUtc: S.optional(S.String),
@@ -346,7 +346,7 @@ export interface MigrationSubstateDetails {
   dbDetails?: MigrationSubstateDetailsDbDetailsMap;
   validationDetails?: ValidationDetails;
 }
-export const MigrationSubstateDetails = /*@__PURE__*/ S.suspend(() =>
+const MigrationSubstateDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentSubState: S.optional(MigrationSubstate),
     dbDetails: S.optional(MigrationSubstateDetailsDbDetailsMap),
@@ -363,7 +363,7 @@ export interface MigrationStatus {
   /** Current migration sub state details. */
   currentSubStateDetails?: MigrationSubstateDetails;
 }
-export const MigrationStatus = /*@__PURE__*/ S.suspend(() =>
+const MigrationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(MigrationState),
     error: S.optional(S.String),
@@ -373,11 +373,11 @@ export const MigrationStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Mode used to perform the migration. */
 export type MigrationMode = "Offline" | "Online";
-export const MigrationMode = S.String;
+const MigrationMode = S.String;
 
 /** Supported option for a migration. */
 export type MigrationOption = "Validate" | "Migrate" | "ValidateAndMigrate";
-export const MigrationOption = S.String;
+const MigrationOption = S.String;
 
 /** Source server type used for the migration. */
 export type SourceType =
@@ -405,15 +405,15 @@ export type SourceType =
   | "Digital_Ocean_Droplets"
   | "Digital_Ocean_PostgreSQL"
   | "Supabase_PostgreSQL";
-export const SourceType = S.String;
+const SourceType = S.String;
 
 /** SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'. */
 export type SslMode = "Prefer" | "Require" | "VerifyCA" | "VerifyFull";
-export const SslMode = S.String;
+const SslMode = S.String;
 
 /** Tier of the compute assigned to a server. */
 export type SkuTier = "Burstable" | "GeneralPurpose" | "MemoryOptimized";
-export const SkuTier = S.String;
+const SkuTier = S.String;
 
 /** Compute information of a server. */
 export interface ServerSku {
@@ -422,7 +422,7 @@ export interface ServerSku {
   /** Tier of the compute assigned to a server. */
   tier?: SkuTier;
 }
-export const ServerSku = /*@__PURE__*/ S.suspend(() =>
+const ServerSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     tier: S.optional(SkuTier),
@@ -440,7 +440,7 @@ export interface DbServerMetadata {
   /** Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server. */
   sku?: ServerSku;
 }
-export const DbServerMetadata = /*@__PURE__*/ S.suspend(() =>
+const DbServerMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     version: S.optional(S.String),
@@ -456,7 +456,7 @@ export interface AdminCredentials {
   /** Password for the user of the target server. */
   targetServerPassword: string | Redacted.Redacted<string>;
 }
-export const AdminCredentials = /*@__PURE__*/ S.suspend(() =>
+const AdminCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceServerPassword: S.String.pipe(T.SensitiveValue({})),
     targetServerPassword: S.String.pipe(T.SensitiveValue({})),
@@ -472,7 +472,7 @@ export interface MigrationSecretParameters {
   /** Gets or sets the name of the user for the target server. This user doesn't need to be an administrator. */
   targetServerUsername?: string;
 }
-export const MigrationSecretParameters = /*@__PURE__*/ S.suspend(() =>
+const MigrationSecretParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminCredentials: AdminCredentials,
     sourceServerUsername: S.optional(S.String),
@@ -484,42 +484,42 @@ export const MigrationSecretParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of databases to migrate. */
 export type MigrationPropertiesDbsToMigrateList = Array<string>;
-export const MigrationPropertiesDbsToMigrateList = /*@__PURE__*/ S.Array(
+const MigrationPropertiesDbsToMigrateList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrationPropertiesDbsToMigrateList>;
 
 /** Indicates whether to setup logical replication on source server, if needed. */
 export type LogicalReplicationOnSourceServer = "True" | "False";
-export const LogicalReplicationOnSourceServer = S.String;
+const LogicalReplicationOnSourceServer = S.String;
 
 /** Indicates if databases on the target server can be overwritten when already present. */
 export type OverwriteDatabasesOnTargetServer = "True" | "False";
-export const OverwriteDatabasesOnTargetServer = S.String;
+const OverwriteDatabasesOnTargetServer = S.String;
 
 /** Indicates if roles and permissions must be migrated. */
 export type MigrateRolesAndPermissions = "True" | "False";
-export const MigrateRolesAndPermissions = S.String;
+const MigrateRolesAndPermissions = S.String;
 
 /** Indicates if data migration must start right away. */
 export type StartDataMigration = "True" | "False";
-export const StartDataMigration = S.String;
+const StartDataMigration = S.String;
 
 /** Indicates if cutover must be triggered for the entire migration. */
 export type TriggerCutover = "True" | "False";
-export const TriggerCutover = S.String;
+const TriggerCutover = S.String;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesDbsToTriggerCutoverOnList = Array<string>;
-export const MigrationPropertiesDbsToTriggerCutoverOnList =
+const MigrationPropertiesDbsToTriggerCutoverOnList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesDbsToTriggerCutoverOnList>;
 
 /** Indicates if cancel must be triggered for the entire migration. */
 export type Cancel = "True" | "False";
-export const Cancel = S.String;
+const Cancel = S.String;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesDbsToCancelMigrationOnList = Array<string>;
-export const MigrationPropertiesDbsToCancelMigrationOnList =
+const MigrationPropertiesDbsToCancelMigrationOnList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesDbsToCancelMigrationOnList>;
 
 /** Migration. */
@@ -575,7 +575,7 @@ export interface MigrationProperties {
   /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
   dbsToCancelMigrationOn?: MigrationPropertiesDbsToCancelMigrationOnList;
 }
-export const MigrationProperties = /*@__PURE__*/ S.suspend(() =>
+const MigrationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migrationId: S.optional(S.String),
     currentStatus: S.optional(MigrationStatus),
@@ -621,7 +621,7 @@ export interface CancelMigrationResponse {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const CancelMigrationResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelMigrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -638,7 +638,7 @@ export interface BackupSettings {
   /** Backup Name for the current backup */
   backupName: string;
 }
-export const BackupSettings = /*@__PURE__*/ S.suspend(() =>
+const BackupSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupName: S.String,
   }),
@@ -654,7 +654,7 @@ export interface CheckBackupsLongTermRetentionPrerequisitesRequest {
   /** Backup Settings */
   backupSettings: BackupSettings;
 }
-export const CheckBackupsLongTermRetentionPrerequisitesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckBackupsLongTermRetentionPrerequisitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -677,7 +677,7 @@ export interface BackupsLongTermRetentionResponseProperties {
   /** Number of storage containers the plugin will use during backup. More than one containers may be used for size limitations, parallelism, or redundancy etc. */
   numberOfContainers: number;
 }
-export const BackupsLongTermRetentionResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const BackupsLongTermRetentionResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberOfContainers: S.Number,
   }),
@@ -690,7 +690,7 @@ export interface LtrPreBackupResponse {
   /** Additional Properties for the pre backup response */
   properties: BackupsLongTermRetentionResponseProperties;
 }
-export const LtrPreBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const LtrPreBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: BackupsLongTermRetentionResponseProperties,
   }),
@@ -708,7 +708,7 @@ export interface CheckMigrationNameAvailabilityRequest {
   /** Type of resource. */
   type: string;
 }
-export const CheckMigrationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckMigrationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -729,7 +729,7 @@ export const CheckMigrationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Migration name availability reason. */
 export type MigrationNameAvailabilityReason = "Invalid" | "AlreadyExists";
-export const MigrationNameAvailabilityReason = S.String;
+const MigrationNameAvailabilityReason = S.String;
 
 /** Availability of a migration name. */
 export interface MigrationNameAvailability {
@@ -744,7 +744,7 @@ export interface MigrationNameAvailability {
   /** Migration name availability message. */
   message?: string;
 }
-export const MigrationNameAvailability = /*@__PURE__*/ S.suspend(() =>
+const MigrationNameAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -764,7 +764,7 @@ export interface CheckNameAvailabilityGloballyRequest {
   /** The resource type. */
   type?: string;
 }
-export const CheckNameAvailabilityGloballyRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityGloballyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -783,7 +783,7 @@ export const CheckNameAvailabilityGloballyRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The reason why the given name is not available. */
 export type CheckNameAvailabilityGloballyResponseReason = "Invalid" | "AlreadyExists";
-export const CheckNameAvailabilityGloballyResponseReason = S.String;
+const CheckNameAvailabilityGloballyResponseReason = S.String;
 
 export interface CheckNameAvailabilityGloballyResponse {
   /** Indicates if the resource name is available. */
@@ -797,7 +797,7 @@ export interface CheckNameAvailabilityGloballyResponse {
   /** Type of resource. It can be 'Microsoft.DBforPostgreSQL/flexibleServers' or 'Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints'. */
   type?: string;
 }
-export const CheckNameAvailabilityGloballyResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityGloballyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(CheckNameAvailabilityGloballyResponseReason),
@@ -819,7 +819,7 @@ export interface CheckNameAvailabilityWithLocationRequest {
   /** The resource type. */
   type?: string;
 }
-export const CheckNameAvailabilityWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationName: S.String.pipe(T.Label()),
@@ -839,8 +839,6 @@ export const CheckNameAvailabilityWithLocationRequest = /*@__PURE__*/ S.suspend(
 
 /** The reason why the given name is not available. */
 export type CheckNameAvailabilityWithLocationResponseReason = "Invalid" | "AlreadyExists";
-export const CheckNameAvailabilityWithLocationResponseReason = S.String;
-
 export interface CheckNameAvailabilityWithLocationResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -853,7 +851,7 @@ export interface CheckNameAvailabilityWithLocationResponse {
   /** Type of resource. It can be 'Microsoft.DBforPostgreSQL/flexibleServers' or 'Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints'. */
   type?: string;
 }
-export const CheckNameAvailabilityWithLocationResponse =
+const CheckNameAvailabilityWithLocationResponse =
   CheckNameAvailabilityGloballyResponse as any as S.Schema<CheckNameAvailabilityWithLocationResponse>;
 
 export interface CreateBackupsAutomaticAndOnDemandRequest {
@@ -866,7 +864,7 @@ export interface CreateBackupsAutomaticAndOnDemandRequest {
   /** Name of the backup. */
   backupName: string;
 }
-export const CreateBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -885,7 +883,7 @@ export const CreateBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateBackupsAutomaticAndOnDemandRequest>;
 
 export interface CreateBackupsAutomaticAndOnDemandResponse {}
-export const CreateBackupsAutomaticAndOnDemandResponse =
+const CreateBackupsAutomaticAndOnDemandResponse =
   AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<CreateBackupsAutomaticAndOnDemandResponse>;
 
 /** Properties of a database. */
@@ -895,7 +893,7 @@ export interface DatabaseProperties {
   /** Collation of the database. */
   collation?: string;
 }
-export const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
+const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charset: S.optional(S.String),
     collation: S.optional(S.String),
@@ -914,7 +912,7 @@ export interface CreateDatabaseRequest {
   /** Properties of a database. */
   properties?: DatabaseProperties;
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -932,28 +930,28 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatabaseRequest" }) as any as S.Schema<CreateDatabaseRequest>;
 
 export interface CreateDatabaseResponse {}
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateDatabaseResponse",
 }) as any as S.Schema<CreateDatabaseResponse>;
 
 /** Resource tags. */
 export type CreateMigrationRequestTagsMap = { [key: string]: string | undefined };
-export const CreateMigrationRequestTagsMap =
+const CreateMigrationRequestTagsMap =
   CancelMigrationResponseTagsMap as any as S.Schema<CreateMigrationRequestTagsMap>;
 
 /** Names of databases to migrate. */
 export type MigrationPropertiesInputDbsToMigrateList = Array<string>;
-export const MigrationPropertiesInputDbsToMigrateList =
+const MigrationPropertiesInputDbsToMigrateList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesInputDbsToMigrateList>;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesInputDbsToTriggerCutoverOnList = Array<string>;
-export const MigrationPropertiesInputDbsToTriggerCutoverOnList =
+const MigrationPropertiesInputDbsToTriggerCutoverOnList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesInputDbsToTriggerCutoverOnList>;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesInputDbsToCancelMigrationOnList = Array<string>;
-export const MigrationPropertiesInputDbsToCancelMigrationOnList =
+const MigrationPropertiesInputDbsToCancelMigrationOnList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesInputDbsToCancelMigrationOnList>;
 
 /** Migration. */
@@ -999,7 +997,7 @@ export interface MigrationPropertiesInput {
   /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
   dbsToCancelMigrationOn?: MigrationPropertiesInputDbsToCancelMigrationOnList;
 }
-export const MigrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MigrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migrationInstanceResourceId: S.optional(S.String),
     migrationMode: S.optional(MigrationMode),
@@ -1040,7 +1038,7 @@ export interface CreateMigrationRequest {
   /** Migration properties. */
   properties?: MigrationPropertiesInput;
 }
-export const CreateMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1061,9 +1059,6 @@ export const CreateMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMigrationResponseTagsMap = { [key: string]: string | undefined };
-export const CreateMigrationResponseTagsMap =
-  CancelMigrationResponseTagsMap as any as S.Schema<CreateMigrationResponseTagsMap>;
-
 export interface CreateMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1080,16 +1075,15 @@ export interface CreateMigrationResponse {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const CreateMigrationResponse =
-  CancelMigrationResponse as any as S.Schema<CreateMigrationResponse>;
+const CreateMigrationResponse = CancelMigrationResponse as any as S.Schema<CreateMigrationResponse>;
 
 /** Type of endpoint for the virtual endpoints. */
 export type VirtualEndpointType = "ReadWrite";
-export const VirtualEndpointType = S.String;
+const VirtualEndpointType = S.String;
 
 /** List of servers that one of the virtual endpoints can refer to. */
 export type VirtualEndpointResourcePropertiesInputMembersList = Array<string>;
-export const VirtualEndpointResourcePropertiesInputMembersList =
+const VirtualEndpointResourcePropertiesInputMembersList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<VirtualEndpointResourcePropertiesInputMembersList>;
 
 /** Properties of a pair of virtual endpoints. */
@@ -1099,7 +1093,7 @@ export interface VirtualEndpointResourcePropertiesInput {
   /** List of servers that one of the virtual endpoints can refer to. */
   members?: VirtualEndpointResourcePropertiesInputMembersList;
 }
-export const VirtualEndpointResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualEndpointResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointType: S.optional(VirtualEndpointType),
     members: S.optional(VirtualEndpointResourcePropertiesInputMembersList),
@@ -1120,7 +1114,7 @@ export interface CreateVirtualEndpointRequest {
   /** Properties of the pair of virtual endpoints. */
   properties?: VirtualEndpointResourcePropertiesInput;
 }
-export const CreateVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1140,7 +1134,7 @@ export const CreateVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVirtualEndpointRequest>;
 
 export interface CreateVirtualEndpointResponse {}
-export const CreateVirtualEndpointResponse =
+const CreateVirtualEndpointResponse =
   CreateDatabaseResponse as any as S.Schema<CreateVirtualEndpointResponse>;
 
 export interface DeleteAdministratorsMicrosoftEntraRequest {
@@ -1153,7 +1147,7 @@ export interface DeleteAdministratorsMicrosoftEntraRequest {
   /** Object identifier of the Microsoft Entra principal. */
   objectId: string;
 }
-export const DeleteAdministratorsMicrosoftEntraRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdministratorsMicrosoftEntraRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1172,7 +1166,7 @@ export const DeleteAdministratorsMicrosoftEntraRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteAdministratorsMicrosoftEntraRequest>;
 
 export interface DeleteAdministratorsMicrosoftEntraResponse {}
-export const DeleteAdministratorsMicrosoftEntraResponse =
+const DeleteAdministratorsMicrosoftEntraResponse =
   AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<DeleteAdministratorsMicrosoftEntraResponse>;
 
 export interface DeleteBackupsAutomaticAndOnDemandRequest {
@@ -1185,7 +1179,7 @@ export interface DeleteBackupsAutomaticAndOnDemandRequest {
   /** Name of the backup. */
   backupName: string;
 }
-export const DeleteBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1204,7 +1198,7 @@ export const DeleteBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteBackupsAutomaticAndOnDemandRequest>;
 
 export interface DeleteBackupsAutomaticAndOnDemandResponse {}
-export const DeleteBackupsAutomaticAndOnDemandResponse =
+const DeleteBackupsAutomaticAndOnDemandResponse =
   AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<DeleteBackupsAutomaticAndOnDemandResponse>;
 
 export interface DeleteDatabaseRequest {
@@ -1217,7 +1211,7 @@ export interface DeleteDatabaseRequest {
   /** Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server. */
   databaseName: string;
 }
-export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1234,8 +1228,7 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse =
-  CreateDatabaseResponse as any as S.Schema<DeleteDatabaseResponse>;
+const DeleteDatabaseResponse = CreateDatabaseResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1247,7 +1240,7 @@ export interface DeleteFirewallRuleRequest {
   /** Name of the firewall rule. */
   firewallRuleName: string;
 }
-export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1266,7 +1259,7 @@ export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallRuleRequest>;
 
 export interface DeleteFirewallRuleResponse {}
-export const DeleteFirewallRuleResponse =
+const DeleteFirewallRuleResponse =
   CreateDatabaseResponse as any as S.Schema<DeleteFirewallRuleResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
@@ -1279,7 +1272,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1298,7 +1291,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteServerRequest {
@@ -1309,7 +1302,7 @@ export interface DeleteServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1325,7 +1318,7 @@ export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServerRequest" }) as any as S.Schema<DeleteServerRequest>;
 
 export interface DeleteServerResponse {}
-export const DeleteServerResponse = CreateDatabaseResponse as any as S.Schema<DeleteServerResponse>;
+const DeleteServerResponse = CreateDatabaseResponse as any as S.Schema<DeleteServerResponse>;
 
 export interface DeleteVirtualEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1337,7 +1330,7 @@ export interface DeleteVirtualEndpointRequest {
   /** Base name of the virtual endpoints. */
   virtualEndpointName: string;
 }
-export const DeleteVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1356,7 +1349,7 @@ export const DeleteVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualEndpointRequest>;
 
 export interface DeleteVirtualEndpointResponse {}
-export const DeleteVirtualEndpointResponse =
+const DeleteVirtualEndpointResponse =
   CreateDatabaseResponse as any as S.Schema<DeleteVirtualEndpointResponse>;
 
 /** Properties of a firewall rule. */
@@ -1366,7 +1359,7 @@ export interface FirewallRuleProperties {
   /** IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format. */
   endIpAddress: string;
 }
-export const FirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const FirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIpAddress: S.String,
     endIpAddress: S.String,
@@ -1385,7 +1378,7 @@ export interface FirewallRulesCreateOrUpdateRequest {
   /** Properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
-export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1405,7 +1398,7 @@ export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>;
 
 export interface FirewallRulesCreateOrUpdateResponse {}
-export const FirewallRulesCreateOrUpdateResponse =
+const FirewallRulesCreateOrUpdateResponse =
   AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<FirewallRulesCreateOrUpdateResponse>;
 
 export interface GetAdministratorsMicrosoftEntraRequest {
@@ -1418,7 +1411,7 @@ export interface GetAdministratorsMicrosoftEntraRequest {
   /** Object identifier of the Microsoft Entra principal. */
   objectId: string;
 }
-export const GetAdministratorsMicrosoftEntraRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdministratorsMicrosoftEntraRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1447,7 +1440,7 @@ export interface AdministratorMicrosoftEntraProperties {
   /** Identifier of the tenant in which the Microsoft Entra principal exists. */
   tenantId?: string;
 }
-export const AdministratorMicrosoftEntraProperties = /*@__PURE__*/ S.suspend(() =>
+const AdministratorMicrosoftEntraProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalType: S.optional(PrincipalType),
     principalName: S.optional(S.String),
@@ -1470,7 +1463,7 @@ export interface GetAdministratorsMicrosoftEntraResponse {
   /** Properties of a server administrator associated to a Microsoft Entra principal. */
   properties: AdministratorMicrosoftEntraProperties;
 }
-export const GetAdministratorsMicrosoftEntraResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAdministratorsMicrosoftEntraResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1483,7 +1476,7 @@ export const GetAdministratorsMicrosoftEntraResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetAdministratorsMicrosoftEntraResponse>;
 
 export type GetAdvancedThreatProtectionSettingsRequestThreatProtectionName = "Default";
-export const GetAdvancedThreatProtectionSettingsRequestThreatProtectionName = S.String;
+const GetAdvancedThreatProtectionSettingsRequestThreatProtectionName = S.String;
 
 export interface GetAdvancedThreatProtectionSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1497,7 +1490,7 @@ export interface GetAdvancedThreatProtectionSettingsRequest {
     | GetAdvancedThreatProtectionSettingsRequestThreatProtectionName
     | (string & {});
 }
-export const GetAdvancedThreatProtectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvancedThreatProtectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1519,7 +1512,7 @@ export const GetAdvancedThreatProtectionSettingsRequest = /*@__PURE__*/ S.suspen
 
 /** Specifies the state of the advanced threat protection, whether it is enabled, disabled, or a state has not been applied yet on the server. */
 export type ThreatProtectionState = "Enabled" | "Disabled";
-export const ThreatProtectionState = S.String;
+const ThreatProtectionState = S.String;
 
 /** Properties of advanced threat protection state for a server. */
 export interface AdvancedThreatProtectionSettingsProperties {
@@ -1528,7 +1521,7 @@ export interface AdvancedThreatProtectionSettingsProperties {
   /** Specifies the creation time (UTC) of the policy. */
   creationTime?: string;
 }
-export const AdvancedThreatProtectionSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const AdvancedThreatProtectionSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: ThreatProtectionState,
     creationTime: S.optional(S.String),
@@ -1549,7 +1542,7 @@ export interface GetAdvancedThreatProtectionSettingsResponse {
   /** Advanced threat protection properties. */
   properties?: AdvancedThreatProtectionSettingsProperties;
 }
-export const GetAdvancedThreatProtectionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAdvancedThreatProtectionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1571,7 +1564,7 @@ export interface GetBackupsAutomaticAndOnDemandRequest {
   /** Name of the backup. */
   backupName: string;
 }
-export const GetBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1591,7 +1584,7 @@ export const GetBackupsAutomaticAndOnDemandRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Type of backup. */
 export type BackupType = "Full" | "Customer On-Demand";
-export const BackupType = S.String;
+const BackupType = S.String;
 
 /** Properties of a backup. */
 export interface BackupAutomaticAndOnDemandProperties {
@@ -1602,7 +1595,7 @@ export interface BackupAutomaticAndOnDemandProperties {
   /** Source of the backup. */
   source?: string;
 }
-export const BackupAutomaticAndOnDemandProperties = /*@__PURE__*/ S.suspend(() =>
+const BackupAutomaticAndOnDemandProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupType: S.optional(BackupType),
     completedTime: S.optional(S.String),
@@ -1624,7 +1617,7 @@ export interface GetBackupsAutomaticAndOnDemandResponse {
   /** Properties of a backup. */
   properties?: BackupAutomaticAndOnDemandProperties;
 }
-export const GetBackupsAutomaticAndOnDemandResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupsAutomaticAndOnDemandResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1646,7 +1639,7 @@ export interface GetBackupsLongTermRetentionRequest {
   /** The name of the backup. */
   backupName: string;
 }
-export const GetBackupsLongTermRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupsLongTermRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1666,7 +1659,7 @@ export const GetBackupsLongTermRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Service-set extensible enumeration indicating the status of operation. */
 export type ExecutionStatus = "Running" | "Cancelled" | "Failed" | "Succeeded";
-export const ExecutionStatus = S.String;
+const ExecutionStatus = S.String;
 
 /** Response for the backup request. */
 export interface LtrBackupOperationResponseProperties {
@@ -1691,7 +1684,7 @@ export interface LtrBackupOperationResponseProperties {
   /** Error message. */
   errorMessage?: string;
 }
-export const LtrBackupOperationResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const LtrBackupOperationResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasourceSizeInBytes: S.optional(S.Number),
     dataTransferredInBytes: S.optional(S.Number),
@@ -1720,7 +1713,7 @@ export interface GetBackupsLongTermRetentionResponse {
   /** Long Term Retention Backup Operation Resource Properties */
   properties?: LtrBackupOperationResponseProperties;
 }
-export const GetBackupsLongTermRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupsLongTermRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1742,7 +1735,7 @@ export interface GetConfigurationRequest {
   /** Name of the configuration (also known as server parameter). */
   configurationName: string;
 }
-export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1766,7 +1759,7 @@ export type ConfigurationDataType =
   | "Enumeration"
   | "String"
   | "Set";
-export const ConfigurationDataType = S.String;
+const ConfigurationDataType = S.String;
 
 /** Properties of a configuration (also known as server parameter). */
 export interface ConfigurationProperties {
@@ -1793,7 +1786,7 @@ export interface ConfigurationProperties {
   /** Link pointing to the documentation of the configuration (also known as server parameter). */
   documentationLink?: string;
 }
-export const ConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     description: S.optional(S.String),
@@ -1821,7 +1814,7 @@ export interface GetConfigurationResponse {
   /** Properties of a configuration (also known as server parameter). */
   properties?: ConfigurationProperties;
 }
-export const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1841,7 +1834,7 @@ export interface GetDatabaseRequest {
   /** Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server. */
   databaseName: string;
 }
-export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1869,7 +1862,7 @@ export interface GetDatabaseResponse {
   /** Properties of a database. */
   properties?: DatabaseProperties;
 }
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1889,7 +1882,7 @@ export interface GetFirewallRuleRequest {
   /** Name of the firewall rule. */
   firewallRuleName: string;
 }
-export const GetFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1917,7 +1910,7 @@ export interface GetFirewallRuleResponse {
   /** Properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
-export const GetFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFirewallRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1937,7 +1930,7 @@ export interface GetMigrationRequest {
   /** Name of migration. */
   migrationName: string;
 }
-export const GetMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1955,9 +1948,6 @@ export const GetMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMigrationResponseTagsMap = { [key: string]: string | undefined };
-export const GetMigrationResponseTagsMap =
-  CancelMigrationResponseTagsMap as any as S.Schema<GetMigrationResponseTagsMap>;
-
 export interface GetMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1974,11 +1964,10 @@ export interface GetMigrationResponse {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const GetMigrationResponse =
-  CancelMigrationResponse as any as S.Schema<GetMigrationResponse>;
+const GetMigrationResponse = CancelMigrationResponse as any as S.Schema<GetMigrationResponse>;
 
 export interface GetPrivateDnsZoneSuffixRequest {}
-export const GetPrivateDnsZoneSuffixRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateDnsZoneSuffixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -1992,7 +1981,7 @@ export const GetPrivateDnsZoneSuffixRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPrivateDnsZoneSuffixRequest>;
 
 export type GetPrivateDnsZoneSuffixResponse = string;
-export const GetPrivateDnsZoneSuffixResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateDnsZoneSuffixResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetPrivateDnsZoneSuffixResponse",
@@ -2008,7 +1997,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2028,7 +2017,7 @@ export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList =
+const PrivateEndpointConnectionPropertiesGroupIdsList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
 /** The private endpoint resource. */
@@ -2036,7 +2025,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -2044,7 +2033,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -2055,7 +2044,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -2071,7 +2060,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
@@ -2084,7 +2073,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -2107,7 +2096,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2129,7 +2118,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   groupName: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2149,12 +2138,12 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type GetPrivateLinkResourceResponsePropertiesRequiredMembersList = Array<string>;
-export const GetPrivateLinkResourceResponsePropertiesRequiredMembersList =
+const GetPrivateLinkResourceResponsePropertiesRequiredMembersList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList = Array<string>;
-export const GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList =
+const GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -2166,7 +2155,7 @@ export interface GetPrivateLinkResourceResponseProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList;
 }
-export const GetPrivateLinkResourceResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(GetPrivateLinkResourceResponsePropertiesRequiredMembersList),
@@ -2188,7 +2177,7 @@ export interface GetPrivateLinkResourceResponse {
   /** Properties of a private link resource. */
   properties?: GetPrivateLinkResourceResponseProperties;
 }
-export const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2208,7 +2197,7 @@ export interface GetServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const GetServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2225,12 +2214,12 @@ export const GetServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServerResponseTagsMap = { [key: string]: string | undefined };
-export const GetServerResponseTagsMap =
+const GetServerResponseTagsMap =
   CancelMigrationResponseTagsMap as any as S.Schema<GetServerResponseTagsMap>;
 
 /** Major version of PostgreSQL database engine. */
 export type PostgresMajorVersion = "18" | "17" | "16" | "15" | "14" | "13" | "12" | "11";
-export const PostgresMajorVersion = S.String;
+const PostgresMajorVersion = S.String;
 
 /** State of a server. */
 export type ServerState =
@@ -2244,11 +2233,11 @@ export type ServerState =
   | "Restarting"
   | "Inaccessible"
   | "Provisioning";
-export const ServerState = S.String;
+const ServerState = S.String;
 
 /** Indicates if the server is configured to automatically grow storage size when available space is nearing zero and conditions allow for automatic growing storage size. */
 export type StorageAutoGrow = "Enabled" | "Disabled";
-export const StorageAutoGrow = S.String;
+const StorageAutoGrow = S.String;
 
 /** Storage tier of a server. */
 export type AzureManagedDiskPerformanceTier =
@@ -2266,11 +2255,11 @@ export type AzureManagedDiskPerformanceTier =
   | "P60"
   | "P70"
   | "P80";
-export const AzureManagedDiskPerformanceTier = S.String;
+const AzureManagedDiskPerformanceTier = S.String;
 
 /** Type of storage assigned to a server. If not specified, it defaults to Premium_LRS. */
 export type StorageType = "Premium_LRS" | "PremiumV2_LRS" | "UltraSSD_LRS";
-export const StorageType = S.String;
+const StorageType = S.String;
 
 /** Storage properties of a server. */
 export interface Storage {
@@ -2287,7 +2276,7 @@ export interface Storage {
   /** Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS. */
   type?: StorageType | (string & {});
 }
-export const Storage = /*@__PURE__*/ S.suspend(() =>
+const Storage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageSizeGB: S.optional(S.Number),
     autoGrow: S.optional(StorageAutoGrow),
@@ -2300,11 +2289,11 @@ export const Storage = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates if the server supports Microsoft Entra authentication. */
 export type MicrosoftEntraAuth = "Enabled" | "Disabled";
-export const MicrosoftEntraAuth = S.String;
+const MicrosoftEntraAuth = S.String;
 
 /** Indicates if the server supports password based authentication. */
 export type AuthConfigPasswordAuth = "Enabled" | "Disabled";
-export const AuthConfigPasswordAuth = S.String;
+const AuthConfigPasswordAuth = S.String;
 
 /** Authentication configuration properties of a server. */
 export interface AuthConfig {
@@ -2315,7 +2304,7 @@ export interface AuthConfig {
   /** Identifier of the tenant of the delegated resource. */
   tenantId?: string;
 }
-export const AuthConfig = /*@__PURE__*/ S.suspend(() =>
+const AuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeDirectoryAuth: S.optional(MicrosoftEntraAuth),
     passwordAuth: S.optional(AuthConfigPasswordAuth),
@@ -2325,11 +2314,11 @@ export const AuthConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Data encryption type used by a server. */
 export type DataEncryptionType = "SystemManaged" | "AzureKeyVault";
-export const DataEncryptionType = S.String;
+const DataEncryptionType = S.String;
 
 /** Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server. */
 export type EncryptionKeyStatus = "Valid" | "Invalid";
-export const EncryptionKeyStatus = S.String;
+const EncryptionKeyStatus = S.String;
 
 /** Data encryption properties of a server. */
 export interface DataEncryption {
@@ -2348,7 +2337,7 @@ export interface DataEncryption {
   /** Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups. */
   geoBackupEncryptionKeyStatus?: EncryptionKeyStatus | (string & {});
 }
-export const DataEncryption = /*@__PURE__*/ S.suspend(() =>
+const DataEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryKeyURI: S.optional(S.String),
     primaryUserAssignedIdentityId: S.optional(S.String),
@@ -2362,7 +2351,7 @@ export const DataEncryption = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates if the server is configured to create geographically redundant backups. */
 export type BackupGeoRedundantBackup = "Enabled" | "Disabled";
-export const BackupGeoRedundantBackup = S.String;
+const BackupGeoRedundantBackup = S.String;
 
 /** Backup properties of a server. */
 export interface Backup {
@@ -2373,7 +2362,7 @@ export interface Backup {
   /** Earliest restore point time (ISO8601 format) for a server. */
   earliestRestoreDate?: string;
 }
-export const Backup = /*@__PURE__*/ S.suspend(() =>
+const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupRetentionDays: S.optional(S.Number),
     geoRedundantBackup: S.optional(BackupGeoRedundantBackup),
@@ -2383,7 +2372,7 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates if public network access is enabled or not. */
 export type ServerPublicNetworkAccessState = "Enabled" | "Disabled";
-export const ServerPublicNetworkAccessState = S.String;
+const ServerPublicNetworkAccessState = S.String;
 
 /** Network properties of a server. */
 export interface Network {
@@ -2394,7 +2383,7 @@ export interface Network {
   /** Identifier of the private DNS zone. Required during creation of a new server, in case you want the server to be integrated into your own virtual network. For an update operation, you only have to provide this property if you want to change the value assigned for the private DNS zone. */
   privateDnsZoneArmResourceId?: string;
 }
-export const Network = /*@__PURE__*/ S.suspend(() =>
+const Network = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(ServerPublicNetworkAccessState),
     delegatedSubnetResourceId: S.optional(S.String),
@@ -2404,7 +2393,7 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
 
 /** High availability mode for a server. */
 export type HighAvailabilityMode = "Disabled" | "ZoneRedundant" | "SameZone";
-export const HighAvailabilityMode = S.String;
+const HighAvailabilityMode = S.String;
 
 /** Possible states of the standby server created when high availability is set to SameZone or ZoneRedundant. */
 export type HighAvailabilityState =
@@ -2416,7 +2405,7 @@ export type HighAvailabilityState =
   | "RemovingStandby"
   | "RecreatingStandby"
   | "ComputeUpdatingByFailover";
-export const HighAvailabilityState = S.String;
+const HighAvailabilityState = S.String;
 
 /** High availability properties of a server. */
 export interface HighAvailability {
@@ -2427,7 +2416,7 @@ export interface HighAvailability {
   /** Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant. */
   standbyAvailabilityZone?: string;
 }
-export const HighAvailability = /*@__PURE__*/ S.suspend(() =>
+const HighAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(HighAvailabilityMode),
     state: S.optional(HighAvailabilityState),
@@ -2446,7 +2435,7 @@ export interface MaintenanceWindow {
   /** Day of the week to be used for maintenance window. */
   dayOfWeek?: number;
 }
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customWindow: S.optional(S.String),
     startHour: S.optional(S.Number),
@@ -2457,7 +2446,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Role of the server in a replication set. */
 export type ReplicationRole = "None" | "Primary" | "AsyncReplica" | "GeoAsyncReplica";
-export const ReplicationRole = S.String;
+const ReplicationRole = S.String;
 
 /** Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. */
 export type ReplicationState =
@@ -2467,15 +2456,15 @@ export type ReplicationState =
   | "Updating"
   | "Broken"
   | "Reconfiguring";
-export const ReplicationState = S.String;
+const ReplicationState = S.String;
 
 /** Type of operation to apply on the read replica. This property is write only. */
 export type ReadReplicaPromoteMode = "Standalone" | "Switchover";
-export const ReadReplicaPromoteMode = S.String;
+const ReadReplicaPromoteMode = S.String;
 
 /** Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only. */
 export type ReadReplicaPromoteOption = "Planned" | "Forced";
-export const ReadReplicaPromoteOption = S.String;
+const ReadReplicaPromoteOption = S.String;
 
 /** Replica properties of a server. */
 export interface Replica {
@@ -2490,7 +2479,7 @@ export interface Replica {
   /** Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only. */
   promoteOption?: ReadReplicaPromoteOption;
 }
-export const Replica = /*@__PURE__*/ S.suspend(() =>
+const Replica = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(ReplicationRole),
     capacity: S.optional(S.Number),
@@ -2509,7 +2498,7 @@ export type CreateMode =
   | "GeoRestore"
   | "Replica"
   | "ReviveDropped";
-export const CreateMode = S.String;
+const CreateMode = S.String;
 
 /** The private endpoint connection resource. */
 export interface ServerPropertiesPrivateEndpointConnectionsItem {
@@ -2524,13 +2513,13 @@ export interface ServerPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const ServerPropertiesPrivateEndpointConnectionsItem =
+const ServerPropertiesPrivateEndpointConnectionsItem =
   GetPrivateEndpointConnectionResponse as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsItem>;
 
 /** List of private endpoint connections associated with the specified server. */
 export type ServerPropertiesPrivateEndpointConnectionsList =
   Array<ServerPropertiesPrivateEndpointConnectionsItem>;
-export const ServerPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const ServerPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   ServerPropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsList>;
 
@@ -2541,7 +2530,7 @@ export interface Cluster {
   /** Default database name for the elastic cluster. */
   defaultDatabaseName?: string;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
+const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterSize: S.optional(S.Number),
     defaultDatabaseName: S.optional(S.String),
@@ -2595,7 +2584,7 @@ export interface ServerProperties {
   /** Cluster properties of a server. */
   cluster?: Cluster;
 }
-export const ServerProperties = /*@__PURE__*/ S.suspend(() =>
+const ServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administratorLogin: S.optional(S.String),
     administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -2629,7 +2618,7 @@ export interface Sku {
   /** Tier of the compute assigned to a server. */
   tier: SkuTier | (string & {});
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: SkuTier,
@@ -2643,7 +2632,7 @@ export interface UserIdentity {
   /** Identifier of the client of the service principal associated to the user assigned managed identity. */
   clientId?: string;
 }
-export const UserIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -2654,7 +2643,7 @@ export const UserIdentity = /*@__PURE__*/ S.suspend(() =>
 export type UserAssignedIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserIdentity | undefined;
 };
-export const UserAssignedIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const UserAssignedIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserIdentity,
 ) as any as S.Schema<UserAssignedIdentityUserAssignedIdentitiesMap>;
@@ -2665,7 +2654,7 @@ export type IdentityType =
   | "UserAssigned"
   | "SystemAssigned"
   | "SystemAssigned,UserAssigned";
-export const IdentityType = S.String;
+const IdentityType = S.String;
 
 /** Identities associated with a server. */
 export interface UserAssignedIdentity {
@@ -2678,7 +2667,7 @@ export interface UserAssignedIdentity {
   /** Identifier of the tenant of a server. */
   tenantId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAssignedIdentities: S.optional(UserAssignedIdentityUserAssignedIdentitiesMap),
     principalId: S.optional(S.String),
@@ -2707,7 +2696,7 @@ export interface GetServerResponse {
   /** User assigned managed identities assigned to the server. */
   identity?: UserAssignedIdentity;
 }
-export const GetServerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2722,7 +2711,7 @@ export const GetServerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetServerResponse" }) as any as S.Schema<GetServerResponse>;
 
 export type GetTuningOptionRequestTuningOption = "index" | "table";
-export const GetTuningOptionRequestTuningOption = S.String;
+const GetTuningOptionRequestTuningOption = S.String;
 
 export interface GetTuningOptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2734,7 +2723,7 @@ export interface GetTuningOptionRequest {
   /** The name of the tuning option. */
   tuningOption: GetTuningOptionRequestTuningOption | (string & {});
 }
-export const GetTuningOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTuningOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2755,7 +2744,7 @@ export interface TuningOptionsProperties {
   /** State of the tuning option. */
   state?: string;
 }
-export const TuningOptionsProperties = /*@__PURE__*/ S.suspend(() =>
+const TuningOptionsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.String),
   }),
@@ -2773,7 +2762,7 @@ export interface GetTuningOptionResponse {
   /** The resource-specific properties for this resource. */
   properties?: TuningOptionsProperties;
 }
-export const GetTuningOptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTuningOptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2793,7 +2782,7 @@ export interface GetVirtualEndpointRequest {
   /** Base name of the virtual endpoints. */
   virtualEndpointName: string;
 }
-export const GetVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2813,12 +2802,12 @@ export const GetVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of servers that one of the virtual endpoints can refer to. */
 export type VirtualEndpointResourcePropertiesMembersList = Array<string>;
-export const VirtualEndpointResourcePropertiesMembersList =
+const VirtualEndpointResourcePropertiesMembersList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<VirtualEndpointResourcePropertiesMembersList>;
 
 /** List of virtual endpoints for a server. */
 export type VirtualEndpointResourcePropertiesVirtualEndpointsList = Array<string>;
-export const VirtualEndpointResourcePropertiesVirtualEndpointsList =
+const VirtualEndpointResourcePropertiesVirtualEndpointsList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<VirtualEndpointResourcePropertiesVirtualEndpointsList>;
 
 /** Properties of a pair of virtual endpoints. */
@@ -2830,7 +2819,7 @@ export interface VirtualEndpointResourceProperties {
   /** List of virtual endpoints for a server. */
   virtualEndpoints?: VirtualEndpointResourcePropertiesVirtualEndpointsList;
 }
-export const VirtualEndpointResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualEndpointResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointType: S.optional(VirtualEndpointType),
     members: S.optional(VirtualEndpointResourcePropertiesMembersList),
@@ -2852,7 +2841,7 @@ export interface GetVirtualEndpointResponse {
   /** Properties of the pair of virtual endpoints. */
   properties?: VirtualEndpointResourceProperties;
 }
-export const GetVirtualEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2872,7 +2861,7 @@ export interface ListAdministratorsMicrosoftEntraByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListAdministratorsMicrosoftEntraByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdministratorsMicrosoftEntraByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2902,12 +2891,12 @@ export interface AdministratorMicrosoftEntra {
   /** Properties of a server administrator associated to a Microsoft Entra principal. */
   properties: AdministratorMicrosoftEntraProperties;
 }
-export const AdministratorMicrosoftEntra =
+const AdministratorMicrosoftEntra =
   GetAdministratorsMicrosoftEntraResponse as any as S.Schema<AdministratorMicrosoftEntra>;
 
 /** The AdministratorMicrosoftEntra items on this page */
 export type AdministratorMicrosoftEntraListValueList = Array<AdministratorMicrosoftEntra>;
-export const AdministratorMicrosoftEntraListValueList = /*@__PURE__*/ S.Array(
+const AdministratorMicrosoftEntraListValueList = /*@__PURE__*/ S.Array(
   AdministratorMicrosoftEntra,
 ) as any as S.Schema<AdministratorMicrosoftEntraListValueList>;
 
@@ -2918,7 +2907,7 @@ export interface AdministratorMicrosoftEntraList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AdministratorMicrosoftEntraList = /*@__PURE__*/ S.suspend(() =>
+const AdministratorMicrosoftEntraList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AdministratorMicrosoftEntraListValueList,
     nextLink: S.optional(S.String),
@@ -2935,7 +2924,7 @@ export interface ListAdvancedThreatProtectionSettingsByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListAdvancedThreatProtectionSettingsByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvancedThreatProtectionSettingsByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2965,13 +2954,13 @@ export interface AdvancedThreatProtectionSettingsModel {
   /** Advanced threat protection properties. */
   properties?: AdvancedThreatProtectionSettingsProperties;
 }
-export const AdvancedThreatProtectionSettingsModel =
+const AdvancedThreatProtectionSettingsModel =
   GetAdvancedThreatProtectionSettingsResponse as any as S.Schema<AdvancedThreatProtectionSettingsModel>;
 
 /** The AdvancedThreatProtectionSettingsModel items on this page */
 export type AdvancedThreatProtectionSettingsListValueList =
   Array<AdvancedThreatProtectionSettingsModel>;
-export const AdvancedThreatProtectionSettingsListValueList = /*@__PURE__*/ S.Array(
+const AdvancedThreatProtectionSettingsListValueList = /*@__PURE__*/ S.Array(
   AdvancedThreatProtectionSettingsModel,
 ) as any as S.Schema<AdvancedThreatProtectionSettingsListValueList>;
 
@@ -2982,7 +2971,7 @@ export interface AdvancedThreatProtectionSettingsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AdvancedThreatProtectionSettingsList = /*@__PURE__*/ S.suspend(() =>
+const AdvancedThreatProtectionSettingsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AdvancedThreatProtectionSettingsListValueList,
     nextLink: S.optional(S.String),
@@ -2999,7 +2988,7 @@ export interface ListBackupsAutomaticAndOnDemandByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListBackupsAutomaticAndOnDemandByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsAutomaticAndOnDemandByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3029,12 +3018,12 @@ export interface BackupAutomaticAndOnDemand {
   /** Properties of a backup. */
   properties?: BackupAutomaticAndOnDemandProperties;
 }
-export const BackupAutomaticAndOnDemand =
+const BackupAutomaticAndOnDemand =
   GetBackupsAutomaticAndOnDemandResponse as any as S.Schema<BackupAutomaticAndOnDemand>;
 
 /** The BackupAutomaticAndOnDemand items on this page */
 export type BackupAutomaticAndOnDemandListValueList = Array<BackupAutomaticAndOnDemand>;
-export const BackupAutomaticAndOnDemandListValueList = /*@__PURE__*/ S.Array(
+const BackupAutomaticAndOnDemandListValueList = /*@__PURE__*/ S.Array(
   BackupAutomaticAndOnDemand,
 ) as any as S.Schema<BackupAutomaticAndOnDemandListValueList>;
 
@@ -3045,7 +3034,7 @@ export interface BackupAutomaticAndOnDemandList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const BackupAutomaticAndOnDemandList = /*@__PURE__*/ S.suspend(() =>
+const BackupAutomaticAndOnDemandList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: BackupAutomaticAndOnDemandListValueList,
     nextLink: S.optional(S.String),
@@ -3062,7 +3051,7 @@ export interface ListBackupsLongTermRetentionByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListBackupsLongTermRetentionByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsLongTermRetentionByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3092,12 +3081,12 @@ export interface BackupsLongTermRetentionOperation {
   /** Long Term Retention Backup Operation Resource Properties */
   properties?: LtrBackupOperationResponseProperties;
 }
-export const BackupsLongTermRetentionOperation =
+const BackupsLongTermRetentionOperation =
   GetBackupsLongTermRetentionResponse as any as S.Schema<BackupsLongTermRetentionOperation>;
 
 /** The BackupsLongTermRetentionOperation items on this page */
 export type LtrServerBackupOperationListValueList = Array<BackupsLongTermRetentionOperation>;
-export const LtrServerBackupOperationListValueList = /*@__PURE__*/ S.Array(
+const LtrServerBackupOperationListValueList = /*@__PURE__*/ S.Array(
   BackupsLongTermRetentionOperation,
 ) as any as S.Schema<LtrServerBackupOperationListValueList>;
 
@@ -3108,7 +3097,7 @@ export interface LtrServerBackupOperationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const LtrServerBackupOperationList = /*@__PURE__*/ S.suspend(() =>
+const LtrServerBackupOperationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: LtrServerBackupOperationListValueList,
     nextLink: S.optional(S.String),
@@ -3123,7 +3112,7 @@ export interface ListCapabilitiesByLocationRequest {
   /** The name of the location. */
   locationName: string;
 }
-export const ListCapabilitiesByLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCapabilitiesByLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationName: S.String.pipe(T.Label()),
@@ -3141,7 +3130,7 @@ export const ListCapabilitiesByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the capability. */
 export type CapabilityStatus = "Visible" | "Available" | "Default" | "Disabled";
-export const CapabilityStatus = S.String;
+const CapabilityStatus = S.String;
 
 /** Capability of a storage tier. */
 export interface StorageTierCapability {
@@ -3154,7 +3143,7 @@ export interface StorageTierCapability {
   /** Supported IOPS for the storage tier. */
   iops?: number;
 }
-export const StorageTierCapability = /*@__PURE__*/ S.suspend(() =>
+const StorageTierCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CapabilityStatus),
     reason: S.optional(S.String),
@@ -3165,7 +3154,7 @@ export const StorageTierCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all supported storage tiers for this tier and storage size. */
 export type StorageMbCapabilitySupportedIopsTiersList = Array<StorageTierCapability>;
-export const StorageMbCapabilitySupportedIopsTiersList = /*@__PURE__*/ S.Array(
+const StorageMbCapabilitySupportedIopsTiersList = /*@__PURE__*/ S.Array(
   StorageTierCapability,
 ) as any as S.Schema<StorageMbCapabilitySupportedIopsTiersList>;
 
@@ -3192,7 +3181,7 @@ export interface StorageMbCapability {
   /** List of all supported storage tiers for this tier and storage size. */
   supportedIopsTiers?: StorageMbCapabilitySupportedIopsTiersList;
 }
-export const StorageMbCapability = /*@__PURE__*/ S.suspend(() =>
+const StorageMbCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CapabilityStatus),
     reason: S.optional(S.String),
@@ -3209,7 +3198,7 @@ export const StorageMbCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** Configurations of storage supported for this storage tier. */
 export type StorageEditionCapabilitySupportedStorageMbList = Array<StorageMbCapability>;
-export const StorageEditionCapabilitySupportedStorageMbList = /*@__PURE__*/ S.Array(
+const StorageEditionCapabilitySupportedStorageMbList = /*@__PURE__*/ S.Array(
   StorageMbCapability,
 ) as any as S.Schema<StorageEditionCapabilitySupportedStorageMbList>;
 
@@ -3226,7 +3215,7 @@ export interface StorageEditionCapability {
   /** Configurations of storage supported for this storage tier. */
   supportedStorageMb?: StorageEditionCapabilitySupportedStorageMbList;
 }
-export const StorageEditionCapability = /*@__PURE__*/ S.suspend(() =>
+const StorageEditionCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CapabilityStatus),
     reason: S.optional(S.String),
@@ -3238,28 +3227,28 @@ export const StorageEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of storage editions supported by this compute tier and compute name. */
 export type ServerEditionCapabilitySupportedStorageEditionsList = Array<StorageEditionCapability>;
-export const ServerEditionCapabilitySupportedStorageEditionsList = /*@__PURE__*/ S.Array(
+const ServerEditionCapabilitySupportedStorageEditionsList = /*@__PURE__*/ S.Array(
   StorageEditionCapability,
 ) as any as S.Schema<ServerEditionCapabilitySupportedStorageEditionsList>;
 
 /** List of supported availability zones. E.g. '1', '2', '3' */
 export type ServerSkuCapabilitySupportedZonesList = Array<string>;
-export const ServerSkuCapabilitySupportedZonesList =
+const ServerSkuCapabilitySupportedZonesList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<ServerSkuCapabilitySupportedZonesList>;
 
 /** Mode of high availability supported for this compute. */
 export type HighAvailabilityMode2 = "ZoneRedundant" | "SameZone";
-export const HighAvailabilityMode2 = S.String;
+const HighAvailabilityMode2 = S.String;
 
 /** Modes of high availability supported for this compute. */
 export type ServerSkuCapabilitySupportedHaModeList = Array<HighAvailabilityMode2>;
-export const ServerSkuCapabilitySupportedHaModeList = /*@__PURE__*/ S.Array(
+const ServerSkuCapabilitySupportedHaModeList = /*@__PURE__*/ S.Array(
   HighAvailabilityMode2,
 ) as any as S.Schema<ServerSkuCapabilitySupportedHaModeList>;
 
 /** Status of the feature. Indicates if the feature is enabled or not. */
 export type FeatureStatus = "Enabled" | "Disabled";
-export const FeatureStatus = S.String;
+const FeatureStatus = S.String;
 
 /** Features supported. */
 export interface SupportedFeature {
@@ -3268,7 +3257,7 @@ export interface SupportedFeature {
   /** Status of the feature. Indicates if the feature is enabled or not. */
   status?: FeatureStatus;
 }
-export const SupportedFeature = /*@__PURE__*/ S.suspend(() =>
+const SupportedFeature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(FeatureStatus),
@@ -3277,7 +3266,7 @@ export const SupportedFeature = /*@__PURE__*/ S.suspend(() =>
 
 /** Features supported. */
 export type ServerSkuCapabilitySupportedFeaturesList = Array<SupportedFeature>;
-export const ServerSkuCapabilitySupportedFeaturesList = /*@__PURE__*/ S.Array(
+const ServerSkuCapabilitySupportedFeaturesList = /*@__PURE__*/ S.Array(
   SupportedFeature,
 ) as any as S.Schema<ServerSkuCapabilitySupportedFeaturesList>;
 
@@ -3304,7 +3293,7 @@ export interface ServerSkuCapability {
   /** Security profile of the compute. Indicates if it's a Confidential Compute virtual machine. */
   securityProfile?: string;
 }
-export const ServerSkuCapability = /*@__PURE__*/ S.suspend(() =>
+const ServerSkuCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CapabilityStatus),
     reason: S.optional(S.String),
@@ -3321,7 +3310,7 @@ export const ServerSkuCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported compute names (SKUs). */
 export type ServerEditionCapabilitySupportedServerSkusList = Array<ServerSkuCapability>;
-export const ServerEditionCapabilitySupportedServerSkusList = /*@__PURE__*/ S.Array(
+const ServerEditionCapabilitySupportedServerSkusList = /*@__PURE__*/ S.Array(
   ServerSkuCapability,
 ) as any as S.Schema<ServerEditionCapabilitySupportedServerSkusList>;
 
@@ -3340,7 +3329,7 @@ export interface ServerEditionCapability {
   /** List of supported compute names (SKUs). */
   supportedServerSkus?: ServerEditionCapabilitySupportedServerSkusList;
 }
-export const ServerEditionCapability = /*@__PURE__*/ S.suspend(() =>
+const ServerEditionCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CapabilityStatus),
     reason: S.optional(S.String),
@@ -3353,18 +3342,18 @@ export const ServerEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported compute tiers. */
 export type CapabilitySupportedServerEditionsList = Array<ServerEditionCapability>;
-export const CapabilitySupportedServerEditionsList = /*@__PURE__*/ S.Array(
+const CapabilitySupportedServerEditionsList = /*@__PURE__*/ S.Array(
   ServerEditionCapability,
 ) as any as S.Schema<CapabilitySupportedServerEditionsList>;
 
 /** Major versions of PostgreSQL database engine to which this version can be automatically upgraded. */
 export type ServerVersionCapabilitySupportedVersionsToUpgradeList = Array<string>;
-export const ServerVersionCapabilitySupportedVersionsToUpgradeList =
+const ServerVersionCapabilitySupportedVersionsToUpgradeList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<ServerVersionCapabilitySupportedVersionsToUpgradeList>;
 
 /** Features supported. */
 export type ServerVersionCapabilitySupportedFeaturesList = Array<SupportedFeature>;
-export const ServerVersionCapabilitySupportedFeaturesList =
+const ServerVersionCapabilitySupportedFeaturesList =
   ServerSkuCapabilitySupportedFeaturesList as any as S.Schema<ServerVersionCapabilitySupportedFeaturesList>;
 
 /** Capabilities in terms of major versions of PostgreSQL database engine. */
@@ -3380,7 +3369,7 @@ export interface ServerVersionCapability {
   /** Features supported. */
   supportedFeatures?: ServerVersionCapabilitySupportedFeaturesList;
 }
-export const ServerVersionCapability = /*@__PURE__*/ S.suspend(() =>
+const ServerVersionCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CapabilityStatus),
     reason: S.optional(S.String),
@@ -3392,18 +3381,18 @@ export const ServerVersionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported major versions of PostgreSQL database engine. */
 export type CapabilitySupportedServerVersionsList = Array<ServerVersionCapability>;
-export const CapabilitySupportedServerVersionsList = /*@__PURE__*/ S.Array(
+const CapabilitySupportedServerVersionsList = /*@__PURE__*/ S.Array(
   ServerVersionCapability,
 ) as any as S.Schema<CapabilitySupportedServerVersionsList>;
 
 /** Features supported. */
 export type CapabilitySupportedFeaturesList = Array<SupportedFeature>;
-export const CapabilitySupportedFeaturesList =
+const CapabilitySupportedFeaturesList =
   ServerSkuCapabilitySupportedFeaturesList as any as S.Schema<CapabilitySupportedFeaturesList>;
 
 /** Indicates if fast provisioning is supported. 'Enabled' means fast provisioning is supported. 'Disabled' stands for fast provisioning is not supported. Will be deprecated in the future. Look to Supported Features for 'FastProvisioning'. */
 export type FastProvisioningSupport = "Enabled" | "Disabled";
-export const FastProvisioningSupport = S.String;
+const FastProvisioningSupport = S.String;
 
 /** Capability of a fast provisioning compute tier. */
 export interface FastProvisioningEditionCapability {
@@ -3422,7 +3411,7 @@ export interface FastProvisioningEditionCapability {
   /** Count of servers in cache matching this specification. */
   serverCount?: number;
 }
-export const FastProvisioningEditionCapability = /*@__PURE__*/ S.suspend(() =>
+const FastProvisioningEditionCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CapabilityStatus),
     reason: S.optional(S.String),
@@ -3439,35 +3428,35 @@ export const FastProvisioningEditionCapability = /*@__PURE__*/ S.suspend(() =>
 /** List of compute tiers supporting fast provisioning. */
 export type CapabilitySupportedFastProvisioningEditionsList =
   Array<FastProvisioningEditionCapability>;
-export const CapabilitySupportedFastProvisioningEditionsList = /*@__PURE__*/ S.Array(
+const CapabilitySupportedFastProvisioningEditionsList = /*@__PURE__*/ S.Array(
   FastProvisioningEditionCapability,
 ) as any as S.Schema<CapabilitySupportedFastProvisioningEditionsList>;
 
 /** Indicates if geographically redundant backups are supported in this location. Will be deprecated in the future. Look to Supported Features for 'GeoBackup'. */
 export type GeographicallyRedundantBackupSupport = "Enabled" | "Disabled";
-export const GeographicallyRedundantBackupSupport = S.String;
+const GeographicallyRedundantBackupSupport = S.String;
 
 /** Indicates if high availability with zone redundancy is supported in this location. Will be deprecated in the future. Look to Supported Features for 'ZoneRedundantHa'. */
 export type ZoneRedundantHighAvailabilitySupport = "Enabled" | "Disabled";
-export const ZoneRedundantHighAvailabilitySupport = S.String;
+const ZoneRedundantHighAvailabilitySupport = S.String;
 
 /** Indicates if high availability with zone redundancy is supported in conjunction with geographically redundant backups in this location. Will be deprecated in the future. Look to Supported Features for 'ZoneRedundantHaAndGeoBackup'. */
 export type ZoneRedundantHighAvailabilityAndGeographicallyRedundantBackupSupport =
   | "Enabled"
   | "Disabled";
-export const ZoneRedundantHighAvailabilityAndGeographicallyRedundantBackupSupport = S.String;
+const ZoneRedundantHighAvailabilityAndGeographicallyRedundantBackupSupport = S.String;
 
 /** Indicates if storage autogrow is supported in this location. Will be deprecated in the future. Look to Supported Features for 'StorageAutoGrowth'. */
 export type StorageAutoGrowthSupport = "Enabled" | "Disabled";
-export const StorageAutoGrowthSupport = S.String;
+const StorageAutoGrowthSupport = S.String;
 
 /** Indicates if resizing the storage, without interrupting the operation of the database engine, is supported in this location for the given subscription. Will be deprecated in the future. Look to Supported Features for 'OnlineResize'. */
 export type OnlineStorageResizeSupport = "Enabled" | "Disabled";
-export const OnlineStorageResizeSupport = S.String;
+const OnlineStorageResizeSupport = S.String;
 
 /** Indicates if this location is restricted. Will be deprecated in the future. Look to Supported Features for 'Restricted'. */
 export type LocationRestricted = "Enabled" | "Disabled";
-export const LocationRestricted = S.String;
+const LocationRestricted = S.String;
 
 /** Capability for the Azure Database for PostgreSQL flexible server. */
 export interface Capability {
@@ -3500,7 +3489,7 @@ export interface Capability {
   /** Indicates if this location is restricted. 'Enabled' means location is restricted. 'Disabled' stands for location is not restricted. Will be deprecated in the future. Look to Supported Features for 'Restricted'. */
   restricted?: LocationRestricted;
 }
-export const Capability = /*@__PURE__*/ S.suspend(() =>
+const Capability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CapabilityStatus),
     reason: S.optional(S.String),
@@ -3523,7 +3512,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 
 /** The Capability items on this page */
 export type CapabilityListValueList = Array<Capability>;
-export const CapabilityListValueList = /*@__PURE__*/ S.Array(
+const CapabilityListValueList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<CapabilityListValueList>;
 
@@ -3534,7 +3523,7 @@ export interface CapabilityList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CapabilityList = /*@__PURE__*/ S.suspend(() =>
+const CapabilityList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CapabilityListValueList,
     nextLink: S.optional(S.String),
@@ -3549,7 +3538,7 @@ export interface ListCapabilitiesByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListCapabilitiesByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCapabilitiesByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3574,7 +3563,7 @@ export interface ListCapturedLogByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListCapturedLogByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCapturedLogByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3604,7 +3593,7 @@ export interface CapturedLogProperties {
   /** URL to download the log file from. */
   url?: string;
 }
-export const CapturedLogProperties = /*@__PURE__*/ S.suspend(() =>
+const CapturedLogProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdTime: S.optional(S.String),
     lastModifiedTime: S.optional(S.String),
@@ -3627,7 +3616,7 @@ export interface CapturedLog {
   /** Properties of a log file. */
   properties?: CapturedLogProperties;
 }
-export const CapturedLog = /*@__PURE__*/ S.suspend(() =>
+const CapturedLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3639,7 +3628,7 @@ export const CapturedLog = /*@__PURE__*/ S.suspend(() =>
 
 /** The CapturedLog items on this page */
 export type CapturedLogListValueList = Array<CapturedLog>;
-export const CapturedLogListValueList = /*@__PURE__*/ S.Array(
+const CapturedLogListValueList = /*@__PURE__*/ S.Array(
   CapturedLog,
 ) as any as S.Schema<CapturedLogListValueList>;
 
@@ -3650,7 +3639,7 @@ export interface CapturedLogList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CapturedLogList = /*@__PURE__*/ S.suspend(() =>
+const CapturedLogList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CapturedLogListValueList,
     nextLink: S.optional(S.String),
@@ -3665,7 +3654,7 @@ export interface ListConfigurationByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListConfigurationByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3695,11 +3684,11 @@ export interface Configuration {
   /** Properties of a configuration (also known as server parameter). */
   properties?: ConfigurationProperties;
 }
-export const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
+const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
 export type ConfigurationListValueList = Array<Configuration>;
-export const ConfigurationListValueList = /*@__PURE__*/ S.Array(
+const ConfigurationListValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationListValueList>;
 
@@ -3710,7 +3699,7 @@ export interface ConfigurationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConfigurationList = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConfigurationListValueList,
     nextLink: S.optional(S.String),
@@ -3725,7 +3714,7 @@ export interface ListDatabaseByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListDatabaseByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3755,11 +3744,11 @@ export interface Database {
   /** Properties of a database. */
   properties?: DatabaseProperties;
 }
-export const Database = GetDatabaseResponse as any as S.Schema<Database>;
+const Database = GetDatabaseResponse as any as S.Schema<Database>;
 
 /** The Database items on this page */
 export type DatabaseListValueList = Array<Database>;
-export const DatabaseListValueList = /*@__PURE__*/ S.Array(
+const DatabaseListValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListValueList>;
 
@@ -3770,7 +3759,7 @@ export interface DatabaseList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatabaseList = /*@__PURE__*/ S.suspend(() =>
+const DatabaseList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatabaseListValueList,
     nextLink: S.optional(S.String),
@@ -3785,7 +3774,7 @@ export interface ListFirewallRuleByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListFirewallRuleByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFirewallRuleByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3815,11 +3804,11 @@ export interface FirewallRule {
   /** Properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
-export const FirewallRule = GetFirewallRuleResponse as any as S.Schema<FirewallRule>;
+const FirewallRule = GetFirewallRuleResponse as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
 export type FirewallRuleListValueList = Array<FirewallRule>;
-export const FirewallRuleListValueList = /*@__PURE__*/ S.Array(
+const FirewallRuleListValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListValueList>;
 
@@ -3830,7 +3819,7 @@ export interface FirewallRuleList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FirewallRuleList = /*@__PURE__*/ S.suspend(() =>
+const FirewallRuleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FirewallRuleListValueList,
     nextLink: S.optional(S.String),
@@ -3838,7 +3827,7 @@ export const FirewallRuleList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRuleList" }) as any as S.Schema<FirewallRuleList>;
 
 export type ListMigrationByTargetServerRequestMigrationListFilter = "Active" | "All";
-export const ListMigrationByTargetServerRequestMigrationListFilter = S.String;
+const ListMigrationByTargetServerRequestMigrationListFilter = S.String;
 
 export interface ListMigrationByTargetServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3850,7 +3839,7 @@ export interface ListMigrationByTargetServerRequest {
   /** Migration list filter. Indicates if the request should retrieve only active migrations or all migrations. Defaults to Active. */
   migrationListFilter?: ListMigrationByTargetServerRequestMigrationListFilter | (string & {});
 }
-export const ListMigrationByTargetServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMigrationByTargetServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3872,8 +3861,6 @@ export const ListMigrationByTargetServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MigrationTagsMap = { [key: string]: string | undefined };
-export const MigrationTagsMap = CancelMigrationResponseTagsMap as any as S.Schema<MigrationTagsMap>;
-
 /** Properties of a migration. */
 export interface Migration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3891,11 +3878,11 @@ export interface Migration {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const Migration = CancelMigrationResponse as any as S.Schema<Migration>;
+const Migration = CancelMigrationResponse as any as S.Schema<Migration>;
 
 /** The Migration items on this page */
 export type MigrationListValueList = Array<Migration>;
-export const MigrationListValueList = /*@__PURE__*/ S.Array(
+const MigrationListValueList = /*@__PURE__*/ S.Array(
   Migration,
 ) as any as S.Schema<MigrationListValueList>;
 
@@ -3906,7 +3893,7 @@ export interface MigrationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MigrationList = /*@__PURE__*/ S.suspend(() =>
+const MigrationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MigrationListValueList,
     nextLink: S.optional(S.String),
@@ -3914,7 +3901,7 @@ export const MigrationList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrationList" }) as any as S.Schema<MigrationList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -3936,7 +3923,7 @@ export interface OperationDisplay {
   /** Description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -3947,16 +3934,16 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** Intended executor of the operation. */
 export type OperationOrigin = "NotSpecified" | "user" | "system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Supported aggregation types for the metric. */
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-export const MetricSpecificationSupportedAggregationTypesList =
+const MetricSpecificationSupportedAggregationTypesList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
 
 /** Supported time grain types for the metric. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList =
+const MetricSpecificationSupportedTimeGrainTypesList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 /** Metric specification for an operation. */
@@ -3978,7 +3965,7 @@ export interface MetricSpecification {
   /** Category of the metric. */
   category?: string;
 }
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -3993,7 +3980,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications for the operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecification,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -4006,7 +3993,7 @@ export interface LogSpecification {
   /** Blob duration for the log. */
   blobDuration?: string;
 }
-export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
+const LogSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4016,7 +4003,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Log specifications for the operation. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
 
@@ -4027,7 +4014,7 @@ export interface ServiceSpecification {
   /** Log specifications for the operation. */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
     logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
@@ -4039,7 +4026,7 @@ export interface OperationProperties {
   /** Service specification for the operation. */
   serviceSpecification?: ServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -4058,7 +4045,7 @@ export interface Operation {
   /** Additional descriptions for the operation. */
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -4070,7 +4057,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The Operation items on this page */
 export type OperationListValueList = Array<Operation>;
-export const OperationListValueList = /*@__PURE__*/ S.Array(
+const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
 
@@ -4081,7 +4068,7 @@ export interface OperationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OperationList = /*@__PURE__*/ S.suspend(() =>
+const OperationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListValueList,
     nextLink: S.optional(S.String),
@@ -4096,7 +4083,7 @@ export interface ListPrivateEndpointConnectionByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListPrivateEndpointConnectionByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4115,13 +4102,10 @@ export const ListPrivateEndpointConnectionByServerRequest = /*@__PURE__*/ S.susp
 
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListValueItem = ServerPropertiesPrivateEndpointConnectionsItem;
-export const PrivateEndpointConnectionListValueItem =
-  ServerPropertiesPrivateEndpointConnectionsItem;
-
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListValueList =
   Array<ServerPropertiesPrivateEndpointConnectionsItem>;
-export const PrivateEndpointConnectionListValueList =
+const PrivateEndpointConnectionListValueList =
   ServerPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListValueList>;
 
 /** List of private endpoint connections. */
@@ -4131,7 +4115,7 @@ export interface PrivateEndpointConnectionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionList = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateEndpointConnectionListValueList,
     nextLink: S.optional(S.String),
@@ -4148,7 +4132,7 @@ export interface ListPrivateLinkResourceByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListPrivateLinkResourceByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4167,14 +4151,8 @@ export const ListPrivateLinkResourceByServerRequest = /*@__PURE__*/ S.suspend(()
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
-  MigrationPropertiesDbsToMigrateList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  MigrationPropertiesDbsToMigrateList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -4184,7 +4162,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties =
+const PrivateLinkResourceProperties =
   GetPrivateLinkResourceResponseProperties as any as S.Schema<PrivateLinkResourceProperties>;
 
 /** A private link resource. */
@@ -4200,7 +4178,7 @@ export interface PrivateLinkResource {
   /** Properties of a private link resource. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4212,7 +4190,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListValueList>;
 
@@ -4223,7 +4201,7 @@ export interface PrivateLinkResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateLinkResourceList = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateLinkResourceListValueList,
     nextLink: S.optional(S.String),
@@ -4236,7 +4214,7 @@ export interface ListQuotaUsagesRequest {
   /** The name of the location. */
   locationName: string;
 }
-export const ListQuotaUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuotaUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationName: S.String.pipe(T.Label()),
@@ -4257,7 +4235,7 @@ export interface NameProperty {
   /** Localized name */
   localizedValue?: string;
 }
-export const NameProperty = /*@__PURE__*/ S.suspend(() =>
+const NameProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -4277,7 +4255,7 @@ export interface QuotaUsage {
   /** Fully qualified ARM resource Id */
   id?: string;
 }
-export const QuotaUsage = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(NameProperty),
     limit: S.optional(S.Number),
@@ -4289,7 +4267,7 @@ export const QuotaUsage = /*@__PURE__*/ S.suspend(() =>
 
 /** The QuotaUsage items on this page */
 export type QuotaUsageListValueList = Array<QuotaUsage>;
-export const QuotaUsageListValueList = /*@__PURE__*/ S.Array(
+const QuotaUsageListValueList = /*@__PURE__*/ S.Array(
   QuotaUsage,
 ) as any as S.Schema<QuotaUsageListValueList>;
 
@@ -4300,7 +4278,7 @@ export interface QuotaUsageList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const QuotaUsageList = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: QuotaUsageListValueList,
     nextLink: S.optional(S.String),
@@ -4315,7 +4293,7 @@ export interface ListReplicasByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListReplicasByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReplicasByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4334,8 +4312,6 @@ export const ListReplicasByServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServerTagsMap = { [key: string]: string | undefined };
-export const ServerTagsMap = CancelMigrationResponseTagsMap as any as S.Schema<ServerTagsMap>;
-
 /** Properties of a server. */
 export interface Server {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4357,13 +4333,11 @@ export interface Server {
   /** User assigned managed identities assigned to the server. */
   identity?: UserAssignedIdentity;
 }
-export const Server = GetServerResponse as any as S.Schema<Server>;
+const Server = GetServerResponse as any as S.Schema<Server>;
 
 /** The Server items on this page */
 export type ServerListValueList = Array<Server>;
-export const ServerListValueList = /*@__PURE__*/ S.Array(
-  Server,
-) as any as S.Schema<ServerListValueList>;
+const ServerListValueList = /*@__PURE__*/ S.Array(Server) as any as S.Schema<ServerListValueList>;
 
 /** A list of servers. */
 export interface ServerList {
@@ -4372,7 +4346,7 @@ export interface ServerList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServerList = /*@__PURE__*/ S.suspend(() =>
+const ServerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ServerListValueList,
     nextLink: S.optional(S.String),
@@ -4385,7 +4359,7 @@ export interface ListServerByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4405,7 +4379,7 @@ export interface ListServerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListServerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4428,7 +4402,7 @@ export interface ListTuningOptionByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListTuningOptionByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTuningOptionByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4458,11 +4432,11 @@ export interface TuningOptions {
   /** The resource-specific properties for this resource. */
   properties?: TuningOptionsProperties;
 }
-export const TuningOptions = GetTuningOptionResponse as any as S.Schema<TuningOptions>;
+const TuningOptions = GetTuningOptionResponse as any as S.Schema<TuningOptions>;
 
 /** The TuningOptions items on this page */
 export type TuningOptionsListValueList = Array<TuningOptions>;
-export const TuningOptionsListValueList = /*@__PURE__*/ S.Array(
+const TuningOptionsListValueList = /*@__PURE__*/ S.Array(
   TuningOptions,
 ) as any as S.Schema<TuningOptionsListValueList>;
 
@@ -4473,7 +4447,7 @@ export interface TuningOptionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TuningOptionsList = /*@__PURE__*/ S.suspend(() =>
+const TuningOptionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TuningOptionsListValueList,
     nextLink: S.optional(S.String),
@@ -4481,14 +4455,14 @@ export const TuningOptionsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TuningOptionsList" }) as any as S.Schema<TuningOptionsList>;
 
 export type ListTuningOptionRecommendationsRequestTuningOption = "index" | "table";
-export const ListTuningOptionRecommendationsRequestTuningOption = S.String;
+const ListTuningOptionRecommendationsRequestTuningOption = S.String;
 
 export type ListTuningOptionRecommendationsRequestRecommendationType =
   | "CreateIndex"
   | "DropIndex"
   | "ReIndex"
   | "AnalyzeTable";
-export const ListTuningOptionRecommendationsRequestRecommendationType = S.String;
+const ListTuningOptionRecommendationsRequestRecommendationType = S.String;
 
 export interface ListTuningOptionRecommendationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4502,7 +4476,7 @@ export interface ListTuningOptionRecommendationsRequest {
   /** Recommendations list filter. Retrieves recommendations based on type. */
   recommendationType?: ListTuningOptionRecommendationsRequestRecommendationType | (string & {});
 }
-export const ListTuningOptionRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTuningOptionRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4525,13 +4499,13 @@ export const ListTuningOptionRecommendationsRequest = /*@__PURE__*/ S.suspend(()
 
 /** List of identifiers for all queries identified as targets for improvement if the recommendation is applied. The list is only populated for CREATE INDEX recommendations. */
 export type ObjectRecommendationPropertiesImprovedQueryIdsList = Array<number>;
-export const ObjectRecommendationPropertiesImprovedQueryIdsList = /*@__PURE__*/ S.Array(
+const ObjectRecommendationPropertiesImprovedQueryIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ObjectRecommendationPropertiesImprovedQueryIdsList>;
 
 /** Type for this recommendation. */
 export type RecommendationTypeEnum = "CreateIndex" | "DropIndex" | "ReIndex" | "AnalyzeTable";
-export const RecommendationTypeEnum = S.String;
+const RecommendationTypeEnum = S.String;
 
 /** Implementation details for the recommended action. */
 export interface ObjectRecommendationPropertiesImplementationDetails {
@@ -4540,7 +4514,7 @@ export interface ObjectRecommendationPropertiesImplementationDetails {
   /** Implementation script for the recommended action. */
   script?: string;
 }
-export const ObjectRecommendationPropertiesImplementationDetails = /*@__PURE__*/ S.suspend(() =>
+const ObjectRecommendationPropertiesImplementationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     script: S.optional(S.String),
@@ -4558,7 +4532,7 @@ export interface ObjectRecommendationPropertiesAnalyzedWorkload {
   /** Number of queries from the workload that were examined to produce this recommendation. For DROP INDEX recommendations it's 0 (zero). */
   queryCount?: number;
 }
-export const ObjectRecommendationPropertiesAnalyzedWorkload = /*@__PURE__*/ S.suspend(() =>
+const ObjectRecommendationPropertiesAnalyzedWorkload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -4579,7 +4553,7 @@ export interface ImpactRecord {
   /** Absolute value. */
   absoluteValue?: number;
 }
-export const ImpactRecord = /*@__PURE__*/ S.suspend(() =>
+const ImpactRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensionName: S.optional(S.String),
     unit: S.optional(S.String),
@@ -4590,18 +4564,18 @@ export const ImpactRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Estimated impact of this recommended action. */
 export type ObjectRecommendationPropertiesEstimatedImpactList = Array<ImpactRecord>;
-export const ObjectRecommendationPropertiesEstimatedImpactList = /*@__PURE__*/ S.Array(
+const ObjectRecommendationPropertiesEstimatedImpactList = /*@__PURE__*/ S.Array(
   ImpactRecord,
 ) as any as S.Schema<ObjectRecommendationPropertiesEstimatedImpactList>;
 
 /** Index columns. */
 export type ObjectRecommendationDetailsIndexColumnsList = Array<string>;
-export const ObjectRecommendationDetailsIndexColumnsList =
+const ObjectRecommendationDetailsIndexColumnsList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<ObjectRecommendationDetailsIndexColumnsList>;
 
 /** Index included columns. */
 export type ObjectRecommendationDetailsIncludedColumnsList = Array<string>;
-export const ObjectRecommendationDetailsIncludedColumnsList =
+const ObjectRecommendationDetailsIncludedColumnsList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<ObjectRecommendationDetailsIncludedColumnsList>;
 
 /** Recommendation details for the recommended action. */
@@ -4621,7 +4595,7 @@ export interface ObjectRecommendationDetails {
   /** Index included columns. */
   includedColumns?: ObjectRecommendationDetailsIncludedColumnsList;
 }
-export const ObjectRecommendationDetails = /*@__PURE__*/ S.suspend(() =>
+const ObjectRecommendationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.optional(S.String),
     schema: S.optional(S.String),
@@ -4660,7 +4634,7 @@ export interface ObjectRecommendationProperties {
   /** Recommendation details for the recommended action. */
   details?: ObjectRecommendationDetails;
 }
-export const ObjectRecommendationProperties = /*@__PURE__*/ S.suspend(() =>
+const ObjectRecommendationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialRecommendedTime: S.optional(S.String),
     lastRecommendedTime: S.optional(S.String),
@@ -4693,7 +4667,7 @@ export interface ObjectRecommendation {
   /** Properties of an object recommendation. */
   properties?: ObjectRecommendationProperties;
 }
-export const ObjectRecommendation = /*@__PURE__*/ S.suspend(() =>
+const ObjectRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4706,7 +4680,7 @@ export const ObjectRecommendation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ObjectRecommendation items on this page */
 export type ObjectRecommendationListValueList = Array<ObjectRecommendation>;
-export const ObjectRecommendationListValueList = /*@__PURE__*/ S.Array(
+const ObjectRecommendationListValueList = /*@__PURE__*/ S.Array(
   ObjectRecommendation,
 ) as any as S.Schema<ObjectRecommendationListValueList>;
 
@@ -4717,7 +4691,7 @@ export interface ObjectRecommendationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ObjectRecommendationList = /*@__PURE__*/ S.suspend(() =>
+const ObjectRecommendationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ObjectRecommendationListValueList,
     nextLink: S.optional(S.String),
@@ -4732,7 +4706,7 @@ export interface ListVirtualEndpointByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const ListVirtualEndpointByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualEndpointByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4762,7 +4736,7 @@ export interface VirtualEndpoint {
   /** Properties of the pair of virtual endpoints. */
   properties?: VirtualEndpointResourceProperties;
 }
-export const VirtualEndpoint = /*@__PURE__*/ S.suspend(() =>
+const VirtualEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4774,7 +4748,7 @@ export const VirtualEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualEndpoint items on this page */
 export type VirtualEndpointsListValueList = Array<VirtualEndpoint>;
-export const VirtualEndpointsListValueList = /*@__PURE__*/ S.Array(
+const VirtualEndpointsListValueList = /*@__PURE__*/ S.Array(
   VirtualEndpoint,
 ) as any as S.Schema<VirtualEndpointsListValueList>;
 
@@ -4785,7 +4759,7 @@ export interface VirtualEndpointsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VirtualEndpointsList = /*@__PURE__*/ S.suspend(() =>
+const VirtualEndpointsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VirtualEndpointsListValueList,
     nextLink: S.optional(S.String),
@@ -4800,7 +4774,7 @@ export interface ListVirtualNetworkSubnetUsageRequest {
   /** Virtual network resource id. */
   virtualNetworkArmResourceId?: string;
 }
-export const ListVirtualNetworkSubnetUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualNetworkSubnetUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationName: S.String.pipe(T.Label()),
@@ -4824,7 +4798,7 @@ export interface DelegatedSubnetUsage {
   /** Number of IP addresses used by the delegated subnet */
   usage?: number;
 }
-export const DelegatedSubnetUsage = /*@__PURE__*/ S.suspend(() =>
+const DelegatedSubnetUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetName: S.optional(S.String),
     usage: S.optional(S.Number),
@@ -4832,7 +4806,7 @@ export const DelegatedSubnetUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DelegatedSubnetUsage" }) as any as S.Schema<DelegatedSubnetUsage>;
 
 export type VirtualNetworkSubnetUsageModelDelegatedSubnetsUsageList = Array<DelegatedSubnetUsage>;
-export const VirtualNetworkSubnetUsageModelDelegatedSubnetsUsageList = /*@__PURE__*/ S.Array(
+const VirtualNetworkSubnetUsageModelDelegatedSubnetsUsageList = /*@__PURE__*/ S.Array(
   DelegatedSubnetUsage,
 ) as any as S.Schema<VirtualNetworkSubnetUsageModelDelegatedSubnetsUsageList>;
 
@@ -4844,7 +4818,7 @@ export interface VirtualNetworkSubnetUsageModel {
   /** subscriptionId of the delegated subnet usage */
   subscriptionId?: string;
 }
-export const VirtualNetworkSubnetUsageModel = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkSubnetUsageModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delegatedSubnetsUsage: S.optional(VirtualNetworkSubnetUsageModelDelegatedSubnetsUsageList),
     location: S.optional(S.String),
@@ -4861,7 +4835,7 @@ export interface ConfigurationPropertiesInput {
   /** Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration. */
   source?: string;
 }
-export const ConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     source: S.optional(S.String),
@@ -4882,7 +4856,7 @@ export interface PutConfigurationRequest {
   /** Properties of a configuration (also known as server parameter). */
   properties?: ConfigurationPropertiesInput;
 }
-export const PutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4900,7 +4874,7 @@ export const PutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutConfigurationRequest" }) as any as S.Schema<PutConfigurationRequest>;
 
 export interface PutConfigurationResponse {}
-export const PutConfigurationResponse =
+const PutConfigurationResponse =
   CreateDatabaseResponse as any as S.Schema<PutConfigurationResponse>;
 
 /** Failover mode. */
@@ -4909,7 +4883,7 @@ export type FailoverMode =
   | "ForcedFailover"
   | "PlannedSwitchover"
   | "ForcedSwitchover";
-export const FailoverMode = S.String;
+const FailoverMode = S.String;
 
 export interface RestartServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4923,7 +4897,7 @@ export interface RestartServerRequest {
   /** Failover mode. */
   failoverMode?: FailoverMode | (string & {});
 }
-export const RestartServerRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4941,17 +4915,16 @@ export const RestartServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartServerRequest" }) as any as S.Schema<RestartServerRequest>;
 
 export interface RestartServerResponse {}
-export const RestartServerResponse =
-  CreateDatabaseResponse as any as S.Schema<RestartServerResponse>;
+const RestartServerResponse = CreateDatabaseResponse as any as S.Schema<RestartServerResponse>;
 
 /** Resource tags. */
 export type ServersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServersCreateOrUpdateRequestTagsMap =
+const ServersCreateOrUpdateRequestTagsMap =
   CancelMigrationResponseTagsMap as any as S.Schema<ServersCreateOrUpdateRequestTagsMap>;
 
 /** Indicates if the server is configured to create geographically redundant backups. */
 export type BackupInputGeoRedundantBackup = "Enabled" | "Disabled";
-export const BackupInputGeoRedundantBackup = S.String;
+const BackupInputGeoRedundantBackup = S.String;
 
 /** Backup properties of a server. */
 export interface BackupInput {
@@ -4960,7 +4933,7 @@ export interface BackupInput {
   /** Indicates if the server is configured to create geographically redundant backups. */
   geoRedundantBackup?: BackupInputGeoRedundantBackup | (string & {});
 }
-export const BackupInput = /*@__PURE__*/ S.suspend(() =>
+const BackupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupRetentionDays: S.optional(S.Number),
     geoRedundantBackup: S.optional(BackupInputGeoRedundantBackup),
@@ -4976,7 +4949,7 @@ export interface ReplicaInput {
   /** Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only. */
   promoteOption?: ReadReplicaPromoteOption | (string & {});
 }
-export const ReplicaInput = /*@__PURE__*/ S.suspend(() =>
+const ReplicaInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(ReplicationRole),
     promoteMode: S.optional(ReadReplicaPromoteMode),
@@ -5021,7 +4994,7 @@ export interface ServerPropertiesInput {
   /** Cluster properties of a server. */
   cluster?: Cluster;
 }
-export const ServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administratorLogin: S.optional(S.String),
     administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -5047,7 +5020,7 @@ export const ServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type UserAssignedIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserIdentity | undefined;
 };
-export const UserAssignedIdentityInputUserAssignedIdentitiesMap =
+const UserAssignedIdentityInputUserAssignedIdentitiesMap =
   UserAssignedIdentityUserAssignedIdentitiesMap as any as S.Schema<UserAssignedIdentityInputUserAssignedIdentitiesMap>;
 
 /** Identities associated with a server. */
@@ -5059,7 +5032,7 @@ export interface UserAssignedIdentityInput {
   /** Types of identities associated with a server. */
   type: IdentityType | (string & {});
 }
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAssignedIdentities: S.optional(UserAssignedIdentityInputUserAssignedIdentitiesMap),
     principalId: S.optional(S.String),
@@ -5087,7 +5060,7 @@ export interface ServersCreateOrUpdateRequest {
   /** User assigned managed identities assigned to the server. */
   identity?: UserAssignedIdentityInput;
 }
-export const ServersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5110,18 +5083,18 @@ export const ServersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersCreateOrUpdateRequest>;
 
 export interface ServersCreateOrUpdateResponse {}
-export const ServersCreateOrUpdateResponse =
+const ServersCreateOrUpdateResponse =
   CreateDatabaseResponse as any as S.Schema<ServersCreateOrUpdateResponse>;
 
 export type ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName = "Default";
-export const ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName = S.String;
+const ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName = S.String;
 
 /** Properties of advanced threat protection state for a server. */
 export interface AdvancedThreatProtectionSettingsPropertiesInput {
   /** Specifies the state of the advanced threat protection, whether it is enabled, disabled, or a state has not been applied yet on the server. */
   state: ThreatProtectionState | (string & {});
 }
-export const AdvancedThreatProtectionSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AdvancedThreatProtectionSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: ThreatProtectionState,
   }),
@@ -5143,7 +5116,7 @@ export interface ServerThreatProtectionSettingsCreateOrUpdateRequest {
   /** Advanced threat protection properties. */
   properties?: AdvancedThreatProtectionSettingsPropertiesInput;
 }
-export const ServerThreatProtectionSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServerThreatProtectionSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5164,12 +5137,12 @@ export const ServerThreatProtectionSettingsCreateOrUpdateRequest = /*@__PURE__*/
 }) as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateRequest>;
 
 export interface ServerThreatProtectionSettingsCreateOrUpdateResponse {}
-export const ServerThreatProtectionSettingsCreateOrUpdateResponse =
+const ServerThreatProtectionSettingsCreateOrUpdateResponse =
   AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<ServerThreatProtectionSettingsCreateOrUpdateResponse>;
 
 /** List of SAS uri of storage containers where backup data is to be streamed/copied. */
 export type BackupStoreDetailsSasUriListList = Array<string>;
-export const BackupStoreDetailsSasUriListList =
+const BackupStoreDetailsSasUriListList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<BackupStoreDetailsSasUriListList>;
 
 /** Details about the target where the backup content will be stored. */
@@ -5177,7 +5150,7 @@ export interface BackupStoreDetails {
   /** List of SAS uri of storage containers where backup data is to be streamed/copied. */
   sasUriList: BackupStoreDetailsSasUriListList;
 }
-export const BackupStoreDetails = /*@__PURE__*/ S.suspend(() =>
+const BackupStoreDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sasUriList: BackupStoreDetailsSasUriListList,
   }),
@@ -5195,7 +5168,7 @@ export interface StartBackupsLongTermRetentionRequest {
   /** Backup store detail for target server. */
   targetDetails: BackupStoreDetails;
 }
-export const StartBackupsLongTermRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const StartBackupsLongTermRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5219,7 +5192,7 @@ export interface BackupsLongTermRetentionResponse {
   /** Long Term Retention Backup Operation Resource Properties */
   properties?: LtrBackupOperationResponseProperties;
 }
-export const BackupsLongTermRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupsLongTermRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(LtrBackupOperationResponseProperties),
   }),
@@ -5235,7 +5208,7 @@ export interface StartServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
+const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5251,7 +5224,7 @@ export const StartServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartServerRequest" }) as any as S.Schema<StartServerRequest>;
 
 export interface StartServerResponse {}
-export const StartServerResponse = CreateDatabaseResponse as any as S.Schema<StartServerResponse>;
+const StartServerResponse = CreateDatabaseResponse as any as S.Schema<StartServerResponse>;
 
 export interface StopServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5261,7 +5234,7 @@ export interface StopServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
+const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5277,7 +5250,7 @@ export const StopServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServerRequest" }) as any as S.Schema<StopServerRequest>;
 
 export interface StopServerResponse {}
-export const StopServerResponse = CreateDatabaseResponse as any as S.Schema<StopServerResponse>;
+const StopServerResponse = CreateDatabaseResponse as any as S.Schema<StopServerResponse>;
 
 export interface UpdateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5291,7 +5264,7 @@ export interface UpdateConfigurationRequest {
   /** Properties of a configuration (also known as server parameter). */
   properties?: ConfigurationPropertiesInput;
 }
-export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5311,7 +5284,7 @@ export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateConfigurationRequest>;
 
 export interface UpdateConfigurationResponse {}
-export const UpdateConfigurationResponse =
+const UpdateConfigurationResponse =
   CreateDatabaseResponse as any as S.Schema<UpdateConfigurationResponse>;
 
 /** Credentials of administrator users for source and target servers. */
@@ -5321,7 +5294,7 @@ export interface AdminCredentialsForPatch {
   /** Password for the user of the target server. */
   targetServerPassword?: string | Redacted.Redacted<string>;
 }
-export const AdminCredentialsForPatch = /*@__PURE__*/ S.suspend(() =>
+const AdminCredentialsForPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceServerPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     targetServerPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -5337,7 +5310,7 @@ export interface MigrationSecretParametersForPatch {
   /** Gets or sets the name of the user for the target server. This user doesn't need to be an administrator. */
   targetServerUsername?: string;
 }
-export const MigrationSecretParametersForPatch = /*@__PURE__*/ S.suspend(() =>
+const MigrationSecretParametersForPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminCredentials: S.optional(AdminCredentialsForPatch),
     sourceServerUsername: S.optional(S.String),
@@ -5349,17 +5322,17 @@ export const MigrationSecretParametersForPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of databases to migrate. */
 export type MigrationPropertiesForPatchDbsToMigrateList = Array<string>;
-export const MigrationPropertiesForPatchDbsToMigrateList =
+const MigrationPropertiesForPatchDbsToMigrateList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesForPatchDbsToMigrateList>;
 
 /** When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesForPatchDbsToTriggerCutoverOnList = Array<string>;
-export const MigrationPropertiesForPatchDbsToTriggerCutoverOnList =
+const MigrationPropertiesForPatchDbsToTriggerCutoverOnList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesForPatchDbsToTriggerCutoverOnList>;
 
 /** When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array. */
 export type MigrationPropertiesForPatchDbsToCancelMigrationOnList = Array<string>;
-export const MigrationPropertiesForPatchDbsToCancelMigrationOnList =
+const MigrationPropertiesForPatchDbsToCancelMigrationOnList =
   MigrationPropertiesDbsToMigrateList as any as S.Schema<MigrationPropertiesForPatchDbsToCancelMigrationOnList>;
 
 /** Migration properties. */
@@ -5395,7 +5368,7 @@ export interface MigrationPropertiesForPatch {
   /** Mode used to perform the migration: Online or Offline. */
   migrationMode?: MigrationMode | (string & {});
 }
-export const MigrationPropertiesForPatch = /*@__PURE__*/ S.suspend(() =>
+const MigrationPropertiesForPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceDbServerResourceId: S.optional(S.String),
     sourceDbServerFullyQualifiedDomainName: S.optional(S.String),
@@ -5419,7 +5392,7 @@ export const MigrationPropertiesForPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Application-specific metadata in the form of key-value pairs. */
 export type UpdateMigrationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMigrationRequestTagsMap =
+const UpdateMigrationRequestTagsMap =
   CancelMigrationResponseTagsMap as any as S.Schema<UpdateMigrationRequestTagsMap>;
 
 export interface UpdateMigrationRequest {
@@ -5436,7 +5409,7 @@ export interface UpdateMigrationRequest {
   /** Application-specific metadata in the form of key-value pairs. */
   tags?: UpdateMigrationRequestTagsMap;
 }
-export const UpdateMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5456,9 +5429,6 @@ export const UpdateMigrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMigrationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMigrationResponseTagsMap =
-  CancelMigrationResponseTagsMap as any as S.Schema<UpdateMigrationResponseTagsMap>;
-
 export interface UpdateMigrationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5475,12 +5445,11 @@ export interface UpdateMigrationResponse {
   /** Migration properties. */
   properties?: MigrationProperties;
 }
-export const UpdateMigrationResponse =
-  CancelMigrationResponse as any as S.Schema<UpdateMigrationResponse>;
+const UpdateMigrationResponse = CancelMigrationResponse as any as S.Schema<UpdateMigrationResponse>;
 
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = CreateDatabaseResponse as any as S.Schema<PrivateEndpointInput>;
+const PrivateEndpointInput = CreateDatabaseResponse as any as S.Schema<PrivateEndpointInput>;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -5489,7 +5458,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -5510,7 +5479,7 @@ export interface UpdatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5530,7 +5499,7 @@ export const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>;
 
 export interface UpdatePrivateEndpointConnectionResponse {}
-export const UpdatePrivateEndpointConnectionResponse =
+const UpdatePrivateEndpointConnectionResponse =
   AdministratorsMicrosoftEntraCreateOrUpdateResponse as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
 
 /** Compute information of a server. */
@@ -5540,14 +5509,14 @@ export interface SkuForPatch {
   /** Tier of the compute assigned to a server. */
   tier?: SkuTier | (string & {});
 }
-export const SkuForPatch = ServerSku as any as S.Schema<SkuForPatch>;
+const SkuForPatch = ServerSku as any as S.Schema<SkuForPatch>;
 
 /** Backup properties of a server. */
 export interface BackupForPatchInput {
   /** Backup retention days for the server. */
   backupRetentionDays?: number;
 }
-export const BackupForPatchInput = /*@__PURE__*/ S.suspend(() =>
+const BackupForPatchInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupRetentionDays: S.optional(S.Number),
   }),
@@ -5558,7 +5527,7 @@ export type PostgreSqlFlexibleServerHighAvailabilityMode =
   | "Disabled"
   | "ZoneRedundant"
   | "SameZone";
-export const PostgreSqlFlexibleServerHighAvailabilityMode = S.String;
+const PostgreSqlFlexibleServerHighAvailabilityMode = S.String;
 
 /** High availability properties of a server. */
 export interface HighAvailabilityForPatch {
@@ -5567,7 +5536,7 @@ export interface HighAvailabilityForPatch {
   /** Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant. */
   standbyAvailabilityZone?: string;
 }
-export const HighAvailabilityForPatch = /*@__PURE__*/ S.suspend(() =>
+const HighAvailabilityForPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(PostgreSqlFlexibleServerHighAvailabilityMode),
     standbyAvailabilityZone: S.optional(S.String),
@@ -5576,12 +5545,8 @@ export const HighAvailabilityForPatch = /*@__PURE__*/ S.suspend(() =>
 
 /** Maintenance window properties of a server. */
 export type MaintenanceWindowForPatch = MaintenanceWindow;
-export const MaintenanceWindowForPatch = MaintenanceWindow;
-
 /** Indicates if the server supports password based authentication. */
 export type PasswordBasedAuth = "Enabled" | "Disabled";
-export const PasswordBasedAuth = S.String;
-
 /** Authentication configuration properties of a server. */
 export interface AuthConfigForPatch {
   /** Indicates if the server supports Microsoft Entra authentication. */
@@ -5591,11 +5556,11 @@ export interface AuthConfigForPatch {
   /** Identifier of the tenant of the delegated resource. */
   tenantId?: string;
 }
-export const AuthConfigForPatch = AuthConfig as any as S.Schema<AuthConfigForPatch>;
+const AuthConfigForPatch = AuthConfig as any as S.Schema<AuthConfigForPatch>;
 
 /** Update mode of an existing server. */
 export type CreateModeForPatch = "Default" | "Update";
-export const CreateModeForPatch = S.String;
+const CreateModeForPatch = S.String;
 
 /** Properties of a server. */
 export interface ServerPropertiesForPatchInput {
@@ -5628,7 +5593,7 @@ export interface ServerPropertiesForPatchInput {
   /** Cluster properties of a server. */
   cluster?: Cluster;
 }
-export const ServerPropertiesForPatchInput = /*@__PURE__*/ S.suspend(() =>
+const ServerPropertiesForPatchInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     version: S.optional(PostgresMajorVersion),
@@ -5651,7 +5616,7 @@ export const ServerPropertiesForPatchInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Application-specific metadata in the form of key-value pairs. */
 export type UpdateServerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServerRequestTagsMap =
+const UpdateServerRequestTagsMap =
   CancelMigrationResponseTagsMap as any as S.Schema<UpdateServerRequestTagsMap>;
 
 export interface UpdateServerRequest {
@@ -5670,7 +5635,7 @@ export interface UpdateServerRequest {
   /** Application-specific metadata in the form of key-value pairs. */
   tags?: UpdateServerRequestTagsMap;
 }
-export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5690,7 +5655,7 @@ export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateServerRequest" }) as any as S.Schema<UpdateServerRequest>;
 
 export interface UpdateServerResponse {}
-export const UpdateServerResponse = CreateDatabaseResponse as any as S.Schema<UpdateServerResponse>;
+const UpdateServerResponse = CreateDatabaseResponse as any as S.Schema<UpdateServerResponse>;
 
 export interface UpdateVirtualEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5704,7 +5669,7 @@ export interface UpdateVirtualEndpointRequest {
   /** Properties of the pair of virtual endpoints. */
   properties?: VirtualEndpointResourcePropertiesInput;
 }
-export const UpdateVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5724,7 +5689,7 @@ export const UpdateVirtualEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateVirtualEndpointRequest>;
 
 export interface UpdateVirtualEndpointResponse {}
-export const UpdateVirtualEndpointResponse =
+const UpdateVirtualEndpointResponse =
   CreateDatabaseResponse as any as S.Schema<UpdateVirtualEndpointResponse>;
 
 export type AdministratorsMicrosoftEntraCreateOrUpdateError = AzureOpError;

@@ -13,7 +13,7 @@ export interface GetTodayBriefingRequest {
   /** IANA timezone of the person's browser, for example Europe/Prague. The briefing day starts at 8:00 in it. Defaults to the project timezone. */
   timezone?: string;
 }
-export const GetTodayBriefingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTodayBriefingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     timezone: S.optional(S.String.pipe(T.Query())),
@@ -28,7 +28,7 @@ export interface BriefingSegment {
   /** True only for the run that names the top item. */
   highlight: boolean;
 }
-export const BriefingSegment = /*@__PURE__*/ S.suspend(() =>
+const BriefingSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.String,
     item_key: S.NullOr(S.String),
@@ -37,19 +37,19 @@ export const BriefingSegment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BriefingSegment" }) as any as S.Schema<BriefingSegment>;
 
 export type BriefingParagraphsItemList = Array<BriefingSegment>;
-export const BriefingParagraphsItemList = /*@__PURE__*/ S.Array(
+const BriefingParagraphsItemList = /*@__PURE__*/ S.Array(
   BriefingSegment,
 ) as any as S.Schema<BriefingParagraphsItemList>;
 
 /** Up to 3 paragraphs, each a list of text runs; runs with an item_key are links. */
 export type BriefingParagraphsList = Array<BriefingParagraphsItemList>;
-export const BriefingParagraphsList = /*@__PURE__*/ S.Array(
+const BriefingParagraphsList = /*@__PURE__*/ S.Array(
   BriefingParagraphsItemList,
 ) as any as S.Schema<BriefingParagraphsList>;
 
 /** * `draft` - draft * `open` - open * `closed` - closed * `merged` - merged */
 export type PullRequestStateEnum = "draft" | "open" | "closed" | "merged";
-export const PullRequestStateEnum = S.String;
+const PullRequestStateEnum = S.String;
 
 /** * `affected_users` - affected_users * `affected_sessions` - affected_sessions * `occurrences` - occurrences * `conversion_rate` - conversion_rate * `error_rate` - error_rate * `duration` - duration * `revenue` - revenue * `custom` - custom */
 export type ReportMetricKindEnum =
@@ -61,15 +61,15 @@ export type ReportMetricKindEnum =
   | "duration"
   | "revenue"
   | "custom";
-export const ReportMetricKindEnum = S.String;
+const ReportMetricKindEnum = S.String;
 
 /** * `primary` - primary * `supporting` - supporting */
 export type RoleEnum = "primary" | "supporting";
-export const RoleEnum = S.String;
+const RoleEnum = S.String;
 
 /** Trailing per-bucket values saved with the snapshot, oldest first. Null when none were saved. */
 export type BriefingItemMetricSeriesList = Array<number>;
-export const BriefingItemMetricSeriesList = /*@__PURE__*/ S.Array(
+const BriefingItemMetricSeriesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BriefingItemMetricSeriesList>;
 
@@ -81,7 +81,7 @@ export type ValueFormatEnum =
   | "percentage_scaled"
   | "duration"
   | "currency";
-export const ValueFormatEnum = S.String;
+const ValueFormatEnum = S.String;
 
 export interface BriefingItemMetric {
   /** Stable slug of the metric within its report. */
@@ -103,7 +103,7 @@ export interface BriefingItemMetric {
   /** The metric's live InsightVizNode wrapping one TrendsQuery, as the report stores it. */
   query: unknown;
 }
-export const BriefingItemMetric = /*@__PURE__*/ S.suspend(() =>
+const BriefingItemMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_id: S.String,
     title: S.String,
@@ -119,7 +119,7 @@ export const BriefingItemMetric = /*@__PURE__*/ S.suspend(() =>
 
 /** The report's metrics that have a saved snapshot, in the report's order. */
 export type BriefingItemReportMetricsList = Array<BriefingItemMetric>;
-export const BriefingItemReportMetricsList = /*@__PURE__*/ S.Array(
+const BriefingItemReportMetricsList = /*@__PURE__*/ S.Array(
   BriefingItemMetric,
 ) as any as S.Schema<BriefingItemReportMetricsList>;
 
@@ -131,7 +131,7 @@ export interface BriefingItemChart {
   /** The query node the report body draws, as the report stores it. */
   query: unknown;
 }
-export const BriefingItemChart = /*@__PURE__*/ S.suspend(() =>
+const BriefingItemChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chart_id: S.String,
     title: S.String,
@@ -141,7 +141,7 @@ export const BriefingItemChart = /*@__PURE__*/ S.suspend(() =>
 
 /** The charts in the report body, in the report's order. */
 export type BriefingItemReportChartsList = Array<BriefingItemChart>;
-export const BriefingItemReportChartsList = /*@__PURE__*/ S.Array(
+const BriefingItemReportChartsList = /*@__PURE__*/ S.Array(
   BriefingItemChart,
 ) as any as S.Schema<BriefingItemReportChartsList>;
 
@@ -163,7 +163,7 @@ export interface BriefingItemReport {
   /** The charts in the report body, in the report's order. */
   charts: BriefingItemReportChartsList;
 }
-export const BriefingItemReport = /*@__PURE__*/ S.suspend(() =>
+const BriefingItemReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priority: S.NullOr(S.String),
     summary: S.String,
@@ -178,7 +178,7 @@ export const BriefingItemReport = /*@__PURE__*/ S.suspend(() =>
 
 /** * `report` - REPORT * `dashboard` - DASHBOARD * `other` - OTHER */
 export type TodayItemGroupEnum = "report" | "dashboard" | "other";
-export const TodayItemGroupEnum = S.String;
+const TodayItemGroupEnum = S.String;
 
 /** * `self_driving` - SELF_DRIVING * `product_analytics` - PRODUCT_ANALYTICS * `alerts` - ALERTS * `support` - SUPPORT * `error_tracking` - ERROR_TRACKING * `github` - GITHUB */
 export type TodayItemSourceEnum =
@@ -188,7 +188,7 @@ export type TodayItemSourceEnum =
   | "support"
   | "error_tracking"
   | "github";
-export const TodayItemSourceEnum = S.String;
+const TodayItemSourceEnum = S.String;
 
 /** * `claimed_by_you` - CLAIMED_BY_YOU * `waiting_for_you` - WAITING_FOR_YOU * `suggested_reviewer` - SUGGESTED_REVIEWER * `urgent_for_project` - URGENT_FOR_PROJECT * `dashboard_you_viewed` - DASHBOARD_YOU_VIEWED * `dashboard_you_starred` - DASHBOARD_YOU_STARRED * `insight_you_viewed` - INSIGHT_YOU_VIEWED * `insight_you_starred` - INSIGHT_YOU_STARRED * `alert_firing` - ALERT_FIRING * `assigned_ticket` - ASSIGNED_TICKET * `assigned_error_issue` - ASSIGNED_ERROR_ISSUE * `review_requested` - REVIEW_REQUESTED * `your_pull_request` - YOUR_PULL_REQUEST */
 export type TodayItemReasonEnum =
@@ -205,11 +205,11 @@ export type TodayItemReasonEnum =
   | "assigned_error_issue"
   | "review_requested"
   | "your_pull_request";
-export const TodayItemReasonEnum = S.String;
+const TodayItemReasonEnum = S.String;
 
 /** * `open` - OPEN * `done` - DONE * `dismissed` - DISMISSED */
 export type BriefingItemStateEnum = "open" | "done" | "dismissed";
-export const BriefingItemStateEnum = S.String;
+const BriefingItemStateEnum = S.String;
 
 export interface BriefingItem {
   /** Stable item key, for example report:<uuid>, dashboard:<id> or ticket:<uuid>. */
@@ -234,7 +234,7 @@ export interface BriefingItem {
   /** `done` when the item was resolved since the briefing was written, `dismissed` when it was dismissed or suppressed, else `open`. Pull requests always stay `open`. * `open` - OPEN * `done` - DONE * `dismissed` - DISMISSED */
   state: BriefingItemStateEnum;
 }
-export const BriefingItem = /*@__PURE__*/ S.suspend(() =>
+const BriefingItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     title: S.String,
@@ -253,17 +253,15 @@ export const BriefingItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The items the text names, in rank order: what the page and the left bar show. */
 export type BriefingItemsList = Array<BriefingItem>;
-export const BriefingItemsList = /*@__PURE__*/ S.Array(
-  BriefingItem,
-) as any as S.Schema<BriefingItemsList>;
+const BriefingItemsList = /*@__PURE__*/ S.Array(BriefingItem) as any as S.Schema<BriefingItemsList>;
 
 /** * `collecting` - COLLECTING * `writing` - WRITING * `ready` - READY * `failed` - FAILED */
 export type BriefingStatusEnum = "collecting" | "writing" | "ready" | "failed";
-export const BriefingStatusEnum = S.String;
+const BriefingStatusEnum = S.String;
 
 /** * `agent` - AGENT */
 export type WriterEnum = "agent";
-export const WriterEnum = S.String;
+const WriterEnum = S.String;
 
 export interface Briefing {
   /** Briefing id. */
@@ -285,7 +283,7 @@ export interface Briefing {
   created_at: string;
   ready_at: string | null;
 }
-export const Briefing = /*@__PURE__*/ S.suspend(() =>
+const Briefing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     local_day: S.String,
@@ -307,7 +305,7 @@ export interface GetTodayCandidateRequest {
   /** IANA timezone of the person's browser, for example Europe/Prague. The briefing day starts at 8:00 in it. Defaults to the project timezone. */
   timezone?: string;
 }
-export const GetTodayCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTodayCandidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     timezone: S.optional(S.String.pipe(T.Query())),
@@ -322,7 +320,7 @@ export interface CandidateFact {
   /** Fact value as text. */
   value: string;
 }
-export const CandidateFact = /*@__PURE__*/ S.suspend(() =>
+const CandidateFact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -331,7 +329,7 @@ export const CandidateFact = /*@__PURE__*/ S.suspend(() =>
 
 /** The numbers and short facts the briefing text rests on. */
 export type CandidateFactsList = Array<CandidateFact>;
-export const CandidateFactsList = /*@__PURE__*/ S.Array(
+const CandidateFactsList = /*@__PURE__*/ S.Array(
   CandidateFact,
 ) as any as S.Schema<CandidateFactsList>;
 
@@ -350,7 +348,7 @@ export interface Candidate {
   source: TodayItemSourceEnum;
   reason: TodayItemReasonEnum;
 }
-export const Candidate = /*@__PURE__*/ S.suspend(() =>
+const Candidate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     title: S.String,
@@ -365,7 +363,7 @@ export const Candidate = /*@__PURE__*/ S.suspend(() =>
 
 /** The briefing's items in rank order, up to 5. */
 export type CandidateListCandidatesList = Array<Candidate>;
-export const CandidateListCandidatesList = /*@__PURE__*/ S.Array(
+const CandidateListCandidatesList = /*@__PURE__*/ S.Array(
   Candidate,
 ) as any as S.Schema<CandidateListCandidatesList>;
 
@@ -377,7 +375,7 @@ export interface CandidateList {
   /** Other open reports for the person not in the list. */
   more_reports_count: number;
 }
-export const CandidateList = /*@__PURE__*/ S.suspend(() =>
+const CandidateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     local_day: S.String,
     candidates: CandidateListCandidatesList,
@@ -391,7 +389,7 @@ export interface TodayBriefingRefreshCreateRequest {
   /** IANA timezone of the person's browser, for example Europe/Prague. The briefing day starts at 8:00 in it. Defaults to the project timezone. */
   timezone?: string;
 }
-export const TodayBriefingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TodayBriefingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     timezone: S.optional(S.String.pipe(T.Query())),

@@ -60,7 +60,7 @@ export interface CreateControlCmbConfigRequest {
   /** Name of the region. */
   regions?: string;
 }
-export const CreateControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     allowOutOfRegionAccess: S.optional(S.Boolean.pipe(T.Body("allow_out_of_region_access"))),
@@ -81,7 +81,7 @@ export interface CreateControlCmbConfigResponse {
   /** Name of the region. */
   regions?: string | null;
 }
-export const CreateControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowOutOfRegionAccess: S.optional(
       S.NullOr(S.Boolean).pipe(T.Body("allow_out_of_region_access")),
@@ -98,7 +98,7 @@ export interface CreateControlRetentionRequest {
   /** The log retention flag for Logpull API. */
   flag?: boolean;
 }
-export const CreateControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     flag: S.optional(S.Boolean),
@@ -116,7 +116,7 @@ export interface CreateControlRetentionResponse {
   /** The log retention flag for Logpull API. */
   flag?: boolean | null;
 }
-export const CreateControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flag: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -130,7 +130,7 @@ export interface LogExplorerDatasetsCreateRequestFieldsItem {
   /** Field name in lowercase. */
   name: string;
 }
-export const LogExplorerDatasetsCreateRequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
+const LogExplorerDatasetsCreateRequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     name: S.String,
@@ -141,7 +141,7 @@ export const LogExplorerDatasetsCreateRequestFieldsItem = /*@__PURE__*/ S.suspen
 
 export type LogExplorerDatasetsCreateRequestFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsCreateRequestFieldsList = /*@__PURE__*/ S.Array(
+const LogExplorerDatasetsCreateRequestFieldsList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsCreateRequestFieldsItem,
 ) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsList>;
 
@@ -157,7 +157,7 @@ export interface CreateLogExplorerDatasetForAccountRequest {
   /** Whether to filter attack traffic from the Logpush job. Defaults to `true` for supported datasets when omitted. Supported datasets are `http_requests`, `firewall_events`, and `network_analytics_logs`. */
   filterAttackTraffic?: boolean;
 }
-export const CreateLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dataset: S.String,
@@ -175,16 +175,13 @@ export const CreateLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend
 
 export type LogExplorerDatasetsCreateResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
-export const LogExplorerDatasetsCreateResponseFieldsItem =
-  LogExplorerDatasetsCreateRequestFieldsItem;
-
 export type LogExplorerDatasetsCreateResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsCreateResponseFieldsList =
+const LogExplorerDatasetsCreateResponseFieldsList =
   LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsList>;
 
 export type LogExplorerDatasetsCreateResponseObjectType = "account" | "zone";
-export const LogExplorerDatasetsCreateResponseObjectType = S.String;
+const LogExplorerDatasetsCreateResponseObjectType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLogExplorerDatasetResponse {
@@ -211,7 +208,7 @@ export interface CreateLogExplorerDatasetResponse {
   /** Whether the Logpush job filters attack traffic. Omitted for datasets that do not support this option. */
   filterAttackTraffic?: boolean | null;
 }
-export const CreateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
@@ -241,7 +238,7 @@ export interface CreateLogExplorerDatasetForZoneRequest {
   /** Whether to filter attack traffic from the Logpush job. Defaults to `true` for supported datasets when omitted. Supported datasets are `http_requests`, `firewall_events`, and `network_analytics_logs`. */
   filterAttackTraffic?: boolean;
 }
-export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dataset: S.String,
@@ -259,7 +256,7 @@ export interface DeleteControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
 }
-export const DeleteControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -276,7 +273,7 @@ export const DeleteControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteControlCmbConfigRequest>;
 
 export type DeleteControlCmbConfigResponse = unknown;
-export const DeleteControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteControlCmbConfigResponse",
@@ -286,7 +283,7 @@ export interface GetControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
 }
-export const GetControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -305,14 +302,14 @@ export interface GetControlCmbConfigResponse {
   /** Name of the region. */
   regions?: string | null;
 }
-export const GetControlCmbConfigResponse =
+const GetControlCmbConfigResponse =
   CreateControlCmbConfigResponse as any as S.Schema<GetControlCmbConfigResponse>;
 
 export interface GetControlRetentionRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -327,7 +324,7 @@ export interface GetControlRetentionResponse {
   /** The log retention flag for Logpull API. */
   flag?: boolean | null;
 }
-export const GetControlRetentionResponse =
+const GetControlRetentionResponse =
   CreateControlRetentionResponse as any as S.Schema<GetControlRetentionResponse>;
 
 export interface GetLogExplorerDatasetForAccountRequest {
@@ -335,7 +332,7 @@ export interface GetLogExplorerDatasetForAccountRequest {
   accountId: string;
   datasetId: string;
 }
-export const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -353,15 +350,13 @@ export const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetLogExplorerDatasetForAccountRequest>;
 
 export type LogExplorerDatasetsGetResponseFieldsItem = LogExplorerDatasetsCreateRequestFieldsItem;
-export const LogExplorerDatasetsGetResponseFieldsItem = LogExplorerDatasetsCreateRequestFieldsItem;
-
 export type LogExplorerDatasetsGetResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsGetResponseFieldsList =
+const LogExplorerDatasetsGetResponseFieldsList =
   LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsGetResponseFieldsList>;
 
 export type LogExplorerDatasetsGetResponseObjectType = "account" | "zone";
-export const LogExplorerDatasetsGetResponseObjectType = S.String;
+const LogExplorerDatasetsGetResponseObjectType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLogExplorerDatasetResponse {
@@ -388,7 +383,7 @@ export interface GetLogExplorerDatasetResponse {
   /** Whether the Logpush job filters attack traffic. Omitted for datasets that do not support this option. */
   filterAttackTraffic?: boolean | null;
 }
-export const GetLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
@@ -411,7 +406,7 @@ export interface GetLogExplorerDatasetForZoneRequest {
   zoneId: string;
   datasetId: string;
 }
-export const GetLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -429,7 +424,7 @@ export const GetLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLogExplorerDatasetForZoneRequest>;
 
 export type RayidGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
-export const RayidGetRequestTimestamps = S.String;
+const RayidGetRequestTimestamps = S.String;
 
 export interface GetRayidRequest {
   /** Identifier. */
@@ -441,7 +436,7 @@ export interface GetRayidRequest {
   /** By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings. */
   timestamps?: RayidGetRequestTimestamps | (string & {});
 }
-export const GetRayidRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRayidRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rayId: S.String.pipe(T.Label("ray_id")),
@@ -454,12 +449,12 @@ export const GetRayidRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetRayidResponse {}
-export const GetRayidResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRayidResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRayidResponse" }) as any as S.Schema<GetRayidResponse>;
 
 export type ReceivedGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
-export const ReceivedGetRequestTimestamps = S.String;
+const ReceivedGetRequestTimestamps = S.String;
 
 export interface GetReceivedRequest {
   /** Identifier. */
@@ -477,7 +472,7 @@ export interface GetReceivedRequest {
   /** By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings. */
   timestamps?: ReceivedGetRequestTimestamps | (string & {});
 }
-export const GetReceivedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReceivedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     end: S.String.pipe(T.Query()),
@@ -493,13 +488,13 @@ export const GetReceivedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetReceivedResponse {}
-export const GetReceivedResponse = GetRayidResponse as any as S.Schema<GetReceivedResponse>;
+const GetReceivedResponse = GetRayidResponse as any as S.Schema<GetReceivedResponse>;
 
 export interface GetReceivedFieldRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetReceivedFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReceivedFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -511,7 +506,7 @@ export const GetReceivedFieldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetReceivedFieldResponse {
   key?: string | null;
 }
-export const GetReceivedFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReceivedFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -521,7 +516,7 @@ export interface ListLogExplorerDatasetAvailablesForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
 }
-export const ListLogExplorerDatasetAvailablesForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogExplorerDatasetAvailablesForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -538,30 +533,30 @@ export const ListLogExplorerDatasetAvailablesForAccountRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>;
 
 export type LogExplorerDatasetsAvailableListResultItemObjectType = "account" | "zone";
-export const LogExplorerDatasetsAvailableListResultItemObjectType = S.String;
+const LogExplorerDatasetsAvailableListResultItemObjectType = S.String;
 
 export type LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap = /*@__PURE__*/ S.Record(
+const LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap>;
 
 export type LogExplorerDatasetsAvailableListResultItemSchemaRequiredList = Array<string>;
-export const LogExplorerDatasetsAvailableListResultItemSchemaRequiredList = /*@__PURE__*/ S.Array(
+const LogExplorerDatasetsAvailableListResultItemSchemaRequiredList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogExplorerDatasetsAvailableListResultItemSchemaRequiredList>;
 
 export type LogExplorerDatasetsAvailableListResultItemSchemaType = "object";
-export const LogExplorerDatasetsAvailableListResultItemSchemaType = S.String;
+const LogExplorerDatasetsAvailableListResultItemSchemaType = S.String;
 
 export interface LogExplorerDatasetsAvailableListResultItemSchema {
   properties?: LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap | null;
   required?: LogExplorerDatasetsAvailableListResultItemSchemaRequiredList | null;
   type?: LogExplorerDatasetsAvailableListResultItemSchemaType | null;
 }
-export const LogExplorerDatasetsAvailableListResultItemSchema = /*@__PURE__*/ S.suspend(() =>
+const LogExplorerDatasetsAvailableListResultItemSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(S.NullOr(LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap)),
     required: S.optional(S.NullOr(LogExplorerDatasetsAvailableListResultItemSchemaRequiredList)),
@@ -581,7 +576,7 @@ export interface LogExplorerDatasetsAvailableListResultItem {
   /** The primary timestamp field name for this dataset. */
   timestampField: string;
 }
-export const LogExplorerDatasetsAvailableListResultItem = /*@__PURE__*/ S.suspend(() =>
+const LogExplorerDatasetsAvailableListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.String,
     objectType: LogExplorerDatasetsAvailableListResultItemObjectType.pipe(T.Body("object_type")),
@@ -594,7 +589,7 @@ export const LogExplorerDatasetsAvailableListResultItem = /*@__PURE__*/ S.suspen
 
 export type LogExplorerDatasetsAvailableListResultList =
   Array<LogExplorerDatasetsAvailableListResultItem>;
-export const LogExplorerDatasetsAvailableListResultList = /*@__PURE__*/ S.Array(
+const LogExplorerDatasetsAvailableListResultList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsAvailableListResultItem,
 ) as any as S.Schema<LogExplorerDatasetsAvailableListResultList>;
 
@@ -604,7 +599,7 @@ export interface ListLogExplorerDatasetAvailablesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListLogExplorerDatasetAvailablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogExplorerDatasetAvailablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LogExplorerDatasetsAvailableListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -617,7 +612,7 @@ export interface ListLogExplorerDatasetAvailablesForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
 }
-export const ListLogExplorerDatasetAvailablesForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogExplorerDatasetAvailablesForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -639,7 +634,7 @@ export interface ListLogExplorerDatasetsForAccountRequest {
   /** Set to true to include zone-scoped datasets belonging to this account. */
   includeZones?: boolean;
 }
-export const ListLogExplorerDatasetsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogExplorerDatasetsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
@@ -653,7 +648,7 @@ export const ListLogExplorerDatasetsForAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListLogExplorerDatasetsForAccountRequest>;
 
 export type LogExplorerDatasetsListResultItemObjectType = "account" | "zone";
-export const LogExplorerDatasetsListResultItemObjectType = S.String;
+const LogExplorerDatasetsListResultItemObjectType = S.String;
 
 export interface LogExplorerDatasetsListResultItem {
   /** RFC3339 timestamp recording when the API created this dataset. */
@@ -673,7 +668,7 @@ export interface LogExplorerDatasetsListResultItem {
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
 }
-export const LogExplorerDatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const LogExplorerDatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
@@ -689,7 +684,7 @@ export const LogExplorerDatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogExplorerDatasetsListResultItem>;
 
 export type LogExplorerDatasetsListResultList = Array<LogExplorerDatasetsListResultItem>;
-export const LogExplorerDatasetsListResultList = /*@__PURE__*/ S.Array(
+const LogExplorerDatasetsListResultList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsListResultItem,
 ) as any as S.Schema<LogExplorerDatasetsListResultList>;
 
@@ -699,7 +694,7 @@ export interface ListLogExplorerDatasetsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListLogExplorerDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogExplorerDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LogExplorerDatasetsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -714,7 +709,7 @@ export interface ListLogExplorerDatasetsForZoneRequest {
   /** Set to true to include zone-scoped datasets belonging to this account. */
   includeZones?: boolean;
 }
-export const ListLogExplorerDatasetsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogExplorerDatasetsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
@@ -730,7 +725,7 @@ export interface LogExplorerDatasetsDeleteForAccountRequest {
   accountId: string;
   datasetId: string;
 }
-export const LogExplorerDatasetsDeleteForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const LogExplorerDatasetsDeleteForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -749,16 +744,13 @@ export const LogExplorerDatasetsDeleteForAccountRequest = /*@__PURE__*/ S.suspen
 
 export type LogExplorerDatasetsDeleteResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
-export const LogExplorerDatasetsDeleteResponseFieldsItem =
-  LogExplorerDatasetsCreateRequestFieldsItem;
-
 export type LogExplorerDatasetsDeleteResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsDeleteResponseFieldsList =
+const LogExplorerDatasetsDeleteResponseFieldsList =
   LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsDeleteResponseFieldsList>;
 
 export type LogExplorerDatasetsDeleteResponseObjectType = "account" | "zone";
-export const LogExplorerDatasetsDeleteResponseObjectType = S.String;
+const LogExplorerDatasetsDeleteResponseObjectType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface LogExplorerDatasetsDeleteResponse {
@@ -785,7 +777,7 @@ export interface LogExplorerDatasetsDeleteResponse {
   /** Whether the Logpush job filters attack traffic. Omitted for datasets that do not support this option. */
   filterAttackTraffic?: boolean | null;
 }
-export const LogExplorerDatasetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const LogExplorerDatasetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
@@ -808,7 +800,7 @@ export interface LogExplorerDatasetsDeleteForZoneRequest {
   zoneId: string;
   datasetId: string;
 }
-export const LogExplorerDatasetsDeleteForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const LogExplorerDatasetsDeleteForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -829,7 +821,7 @@ export interface SqlLogExplorerQueryForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
 }
-export const SqlLogExplorerQueryForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlLogExplorerQueryForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -842,11 +834,11 @@ export const SqlLogExplorerQueryForAccountRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<SqlLogExplorerQueryForAccountRequest>;
 
 export type LogExplorerQuerySqlResultItemMap = { [key: string]: unknown | undefined };
-export const LogExplorerQuerySqlResultItemMap =
+const LogExplorerQuerySqlResultItemMap =
   LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap as any as S.Schema<LogExplorerQuerySqlResultItemMap>;
 
 export type LogExplorerQuerySqlResultList = Array<LogExplorerQuerySqlResultItemMap>;
-export const LogExplorerQuerySqlResultList = /*@__PURE__*/ S.Array(
+const LogExplorerQuerySqlResultList = /*@__PURE__*/ S.Array(
   LogExplorerQuerySqlResultItemMap,
 ) as any as S.Schema<LogExplorerQuerySqlResultList>;
 
@@ -856,7 +848,7 @@ export interface SqlLogExplorerQueryResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const SqlLogExplorerQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const SqlLogExplorerQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: LogExplorerQuerySqlResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -869,7 +861,7 @@ export interface SqlLogExplorerQueryForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
 }
-export const SqlLogExplorerQueryForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlLogExplorerQueryForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -880,12 +872,9 @@ export const SqlLogExplorerQueryForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlLogExplorerQueryForZoneRequest>;
 
 export type LogExplorerDatasetsUpdateRequestFieldsItem = LogExplorerDatasetsCreateRequestFieldsItem;
-export const LogExplorerDatasetsUpdateRequestFieldsItem =
-  LogExplorerDatasetsCreateRequestFieldsItem;
-
 export type LogExplorerDatasetsUpdateRequestFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsUpdateRequestFieldsList =
+const LogExplorerDatasetsUpdateRequestFieldsList =
   LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
 
 export interface UpdateLogExplorerDatasetForAccountRequest {
@@ -903,7 +892,7 @@ export interface UpdateLogExplorerDatasetForAccountRequest {
   /** Whether to filter attack traffic from the Logpush job. If omitted, the existing setting is left unchanged. Supported datasets are `http_requests`, `firewall_events`, and `network_analytics_logs`. */
   filterAttackTraffic?: boolean;
 }
-export const UpdateLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),
@@ -927,16 +916,13 @@ export const UpdateLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend
 
 export type LogExplorerDatasetsUpdateResponseFieldsItem =
   LogExplorerDatasetsCreateRequestFieldsItem;
-export const LogExplorerDatasetsUpdateResponseFieldsItem =
-  LogExplorerDatasetsCreateRequestFieldsItem;
-
 export type LogExplorerDatasetsUpdateResponseFieldsList =
   Array<LogExplorerDatasetsCreateRequestFieldsItem>;
-export const LogExplorerDatasetsUpdateResponseFieldsList =
+const LogExplorerDatasetsUpdateResponseFieldsList =
   LogExplorerDatasetsCreateRequestFieldsList as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsList>;
 
 export type LogExplorerDatasetsUpdateResponseObjectType = "account" | "zone";
-export const LogExplorerDatasetsUpdateResponseObjectType = S.String;
+const LogExplorerDatasetsUpdateResponseObjectType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateLogExplorerDatasetResponse {
@@ -963,7 +949,7 @@ export interface UpdateLogExplorerDatasetResponse {
   /** Whether the Logpush job filters attack traffic. Omitted for datasets that do not support this option. */
   filterAttackTraffic?: boolean | null;
 }
-export const UpdateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogExplorerDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String.pipe(T.Body("created_at")),
     dataset: S.String,
@@ -996,7 +982,7 @@ export interface UpdateLogExplorerDatasetForZoneRequest {
   /** Whether to filter attack traffic from the Logpush job. If omitted, the existing setting is left unchanged. Supported datasets are `http_requests`, `firewall_events`, and `network_analytics_logs`. */
   filterAttackTraffic?: boolean;
 }
-export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     datasetId: S.String.pipe(T.Label("dataset_id")),

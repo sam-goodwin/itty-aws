@@ -13,7 +13,7 @@ export interface CreateEvaluationDirectoryRequest {
   /** Directory name shown in the online evals list. */
   name: string;
 }
-export const CreateEvaluationDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -29,7 +29,7 @@ export const CreateEvaluationDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEvaluationDirectoryRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -45,14 +45,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -65,7 +60,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -90,7 +85,7 @@ export interface EvaluationDirectory {
   /** Number of active evaluations in the directory. */
   evaluation_count: number;
 }
-export const EvaluationDirectory = /*@__PURE__*/ S.suspend(() =>
+const EvaluationDirectory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -107,7 +102,7 @@ export interface EvaluationDirectoriesDestroyRequest {
   /** A UUID string identifying this evaluation directory. */
   id: string;
 }
-export const EvaluationDirectoriesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluationDirectoriesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -123,9 +118,7 @@ export const EvaluationDirectoriesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationDirectoriesDestroyRequest>;
 
 export interface EvaluationDirectoriesDestroyResponse {}
-export const EvaluationDirectoriesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const EvaluationDirectoriesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "EvaluationDirectoriesDestroyResponse",
 }) as any as S.Schema<EvaluationDirectoriesDestroyResponse>;
 
@@ -135,7 +128,7 @@ export interface GetEvaluationDirectoryRequest {
   /** A UUID string identifying this evaluation directory. */
   id: string;
 }
-export const GetEvaluationDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEvaluationDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -154,7 +147,7 @@ export interface ListEvaluationDirectoriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListEvaluationDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -165,12 +158,12 @@ export const ListEvaluationDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEvaluationDirectoriesRequest>;
 
 export type ListEvaluationDirectoriesResponseBodyList = Array<EvaluationDirectory>;
-export const ListEvaluationDirectoriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEvaluationDirectoriesResponseBodyList = /*@__PURE__*/ S.Array(
   EvaluationDirectory,
 ) as any as S.Schema<ListEvaluationDirectoriesResponseBodyList>;
 
 export type ListEvaluationDirectoriesResponse = ListEvaluationDirectoriesResponseBodyList;
-export const ListEvaluationDirectoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationDirectoriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListEvaluationDirectoriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListEvaluationDirectoriesResponse",
@@ -184,7 +177,7 @@ export interface UpdateEvaluationDirectoriesPartialRequest {
   /** Directory name shown in the online evals list. */
   name?: string;
 }
-export const UpdateEvaluationDirectoriesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEvaluationDirectoriesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

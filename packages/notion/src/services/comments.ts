@@ -16,7 +16,7 @@ export interface CreateCommentRequestAttachmentsItem {
   /** Always `file_upload` */
   type?: string;
 }
-export const CreateCommentRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file_upload_id: S.String,
     type: S.optional(S.String),
@@ -27,7 +27,7 @@ export const CreateCommentRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of files to attach to the comment. Maximum of 3 allowed. */
 export type CreateCommentRequestAttachmentsList = Array<CreateCommentRequestAttachmentsItem>;
-export const CreateCommentRequestAttachmentsList = /*@__PURE__*/ S.Array(
+const CreateCommentRequestAttachmentsList = /*@__PURE__*/ S.Array(
   CreateCommentRequestAttachmentsItem,
 ) as any as S.Schema<CreateCommentRequestAttachmentsList>;
 
@@ -35,53 +35,25 @@ export interface CreateCommentRequestDisplayNameCase0 {
   /** Always `integration` */
   type: string;
 }
-export const CreateCommentRequestDisplayNameCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({
-  identifier: "CreateCommentRequestDisplayNameCase0",
-}) as any as S.Schema<CreateCommentRequestDisplayNameCase0>;
-
 export interface CreateCommentRequestDisplayNameCase1 {
   /** Always `user` */
   type: string;
 }
-export const CreateCommentRequestDisplayNameCase1 =
-  CreateCommentRequestDisplayNameCase0 as any as S.Schema<CreateCommentRequestDisplayNameCase1>;
-
 export interface CreateCommentRequestDisplayNameCase2Custom {
   /** The custom display name to use */
   name: string;
 }
-export const CreateCommentRequestDisplayNameCase2Custom = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CreateCommentRequestDisplayNameCase2Custom",
-}) as any as S.Schema<CreateCommentRequestDisplayNameCase2Custom>;
-
 export interface CreateCommentRequestDisplayNameCase2 {
   /** Always `custom` */
   type: string;
   custom: CreateCommentRequestDisplayNameCase2Custom;
 }
-export const CreateCommentRequestDisplayNameCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    custom: CreateCommentRequestDisplayNameCase2Custom,
-  }),
-).annotate({
-  identifier: "CreateCommentRequestDisplayNameCase2",
-}) as any as S.Schema<CreateCommentRequestDisplayNameCase2>;
-
 /** Display name for the comment. */
 export type CreateCommentRequestDisplayName =
   | CreateCommentRequestDisplayNameCase0
   | CreateCommentRequestDisplayNameCase1
   | CreateCommentRequestDisplayNameCase2;
-export const CreateCommentRequestDisplayName =
+const CreateCommentRequestDisplayName =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateCommentRequestDisplayName>;
 
 export interface CreateCommentRequestParentCase0 {
@@ -90,35 +62,17 @@ export interface CreateCommentRequestParentCase0 {
   /** Always `page_id` */
   type?: string;
 }
-export const CreateCommentRequestParentCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    page_id: S.String,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateCommentRequestParentCase0",
-}) as any as S.Schema<CreateCommentRequestParentCase0>;
-
 export interface CreateCommentRequestParentCase1 {
   /** The ID of the parent block (with or without dashes), for example, 195de9221179449fab8075a27c979105 */
   block_id: string;
   /** Always `block_id` */
   type?: string;
 }
-export const CreateCommentRequestParentCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    block_id: S.String,
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateCommentRequestParentCase1",
-}) as any as S.Schema<CreateCommentRequestParentCase1>;
-
 /** The parent of the comment. This can be a page or a block. */
 export type CreateCommentRequestParent =
   | CreateCommentRequestParentCase0
   | CreateCommentRequestParentCase1;
-export const CreateCommentRequestParent =
+const CreateCommentRequestParent =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateCommentRequestParent>;
 
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red`, `default_background`, `gray_background`, `brown_background`, `orange_background`, `yellow_background`, `green_background`, `blue_background`, `purple_background`, `pink_background`, `red_background` */
@@ -143,7 +97,7 @@ export type ApiColor =
   | "purple_background"
   | "pink_background"
   | "red_background";
-export const ApiColor = S.String;
+const ApiColor = S.String;
 
 export interface AnnotationRequest {
   /** Whether the text is formatted as bold. */
@@ -159,7 +113,7 @@ export interface AnnotationRequest {
   /** The color of the text. */
   color?: ApiColor | (string & {});
 }
-export const AnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const AnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bold: S.optional(S.Boolean),
     italic: S.optional(S.Boolean),
@@ -174,7 +128,7 @@ export interface RichTextItemRequestTextLink {
   /** The URL of the link. */
   url: string;
 }
-export const RichTextItemRequestTextLink = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemRequestTextLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -189,7 +143,7 @@ export interface RichTextItemRequestText {
   /** An object with information about any inline link in this text, if included. */
   link?: RichTextItemRequestTextLink | null;
 }
-export const RichTextItemRequestText = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemRequestText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     link: S.optional(S.NullOr(RichTextItemRequestTextLink)),
@@ -202,28 +156,12 @@ export interface PartialUserObjectRequest {
   /** The user object type name. */
   object?: string;
 }
-export const PartialUserObjectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.optional(S.String),
-  }),
-).annotate({ identifier: "PartialUserObjectRequest" }) as any as S.Schema<PartialUserObjectRequest>;
-
 export interface RichTextItemRequestMentionCase0 {
   /** Always `user` */
   type?: string;
   /** Details of the user mention. */
   user: PartialUserObjectRequest;
 }
-export const RichTextItemRequestMentionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    user: PartialUserObjectRequest,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase0",
-}) as any as S.Schema<RichTextItemRequestMentionCase0>;
-
 export interface DateRequest {
   /** The start date of the date object. */
   start: string;
@@ -232,84 +170,36 @@ export interface DateRequest {
   /** The time zone of the date object, if any. E.g. America/Los_Angeles, Europe/London, etc. */
   time_zone?: string | null;
 }
-export const DateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.String,
-    end: S.optional(S.NullOr(S.String)),
-    time_zone: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "DateRequest" }) as any as S.Schema<DateRequest>;
-
 export interface RichTextItemRequestMentionCase1 {
   /** Always `date` */
   type?: string;
   /** Details of the date mention. */
   date: DateRequest;
 }
-export const RichTextItemRequestMentionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    date: DateRequest,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase1",
-}) as any as S.Schema<RichTextItemRequestMentionCase1>;
-
 /** Details of the page mention. */
 export interface RichTextItemRequestMentionCase2Page {
   /** The ID of the page in the mention. */
   id: string;
 }
-export const RichTextItemRequestMentionCase2Page = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase2Page",
-}) as any as S.Schema<RichTextItemRequestMentionCase2Page>;
-
 export interface RichTextItemRequestMentionCase2 {
   /** Always `page` */
   type?: string;
   /** Details of the page mention. */
   page: RichTextItemRequestMentionCase2Page;
 }
-export const RichTextItemRequestMentionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    page: RichTextItemRequestMentionCase2Page,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase2",
-}) as any as S.Schema<RichTextItemRequestMentionCase2>;
-
 /** Details of the database mention. */
 export interface RichTextItemRequestMentionCase3Database {
   /** The ID of the database in the mention. */
   id: string;
 }
-export const RichTextItemRequestMentionCase3Database =
-  RichTextItemRequestMentionCase2Page as any as S.Schema<RichTextItemRequestMentionCase3Database>;
-
 export interface RichTextItemRequestMentionCase3 {
   /** Always `database` */
   type?: string;
   /** Details of the database mention. */
   database: RichTextItemRequestMentionCase3Database;
 }
-export const RichTextItemRequestMentionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    database: RichTextItemRequestMentionCase3Database,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase3",
-}) as any as S.Schema<RichTextItemRequestMentionCase3>;
-
 /** The date of the template mention. */
 export type TemplateMentionDateTemplateMentionRequestTemplateMentionDate = "today" | "now";
-export const TemplateMentionDateTemplateMentionRequestTemplateMentionDate = S.String;
-
 export interface TemplateMentionDateTemplateMentionRequest {
   /** Always `template_mention_date` */
   type?: string;
@@ -318,51 +208,21 @@ export interface TemplateMentionDateTemplateMentionRequest {
     | TemplateMentionDateTemplateMentionRequestTemplateMentionDate
     | (string & {});
 }
-export const TemplateMentionDateTemplateMentionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    template_mention_date: TemplateMentionDateTemplateMentionRequestTemplateMentionDate,
-  }),
-).annotate({
-  identifier: "TemplateMentionDateTemplateMentionRequest",
-}) as any as S.Schema<TemplateMentionDateTemplateMentionRequest>;
-
 export interface TemplateMentionUserTemplateMentionRequest {
   /** Always `template_mention_user` */
   type?: string;
   /** The user of the template mention. */
   template_mention_user: string;
 }
-export const TemplateMentionUserTemplateMentionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    template_mention_user: S.String,
-  }),
-).annotate({
-  identifier: "TemplateMentionUserTemplateMentionRequest",
-}) as any as S.Schema<TemplateMentionUserTemplateMentionRequest>;
-
 export type TemplateMentionRequest =
   | TemplateMentionDateTemplateMentionRequest
   | TemplateMentionUserTemplateMentionRequest;
-export const TemplateMentionRequest =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TemplateMentionRequest>;
-
 export interface RichTextItemRequestMentionCase4 {
   /** Always `template_mention` */
   type?: string;
   /** Details of the template mention. */
   template_mention: TemplateMentionRequest;
 }
-export const RichTextItemRequestMentionCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    template_mention: TemplateMentionRequest,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase4",
-}) as any as S.Schema<RichTextItemRequestMentionCase4>;
-
 /** Details of the custom emoji mention. */
 export interface RichTextItemRequestMentionCase5CustomEmoji {
   /** The ID of the custom emoji. */
@@ -372,31 +232,12 @@ export interface RichTextItemRequestMentionCase5CustomEmoji {
   /** The URL of the custom emoji. */
   url?: string;
 }
-export const RichTextItemRequestMentionCase5CustomEmoji = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase5CustomEmoji",
-}) as any as S.Schema<RichTextItemRequestMentionCase5CustomEmoji>;
-
 export interface RichTextItemRequestMentionCase5 {
   /** Always `custom_emoji` */
   type?: string;
   /** Details of the custom emoji mention. */
   custom_emoji: RichTextItemRequestMentionCase5CustomEmoji;
 }
-export const RichTextItemRequestMentionCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    custom_emoji: RichTextItemRequestMentionCase5CustomEmoji,
-  }),
-).annotate({
-  identifier: "RichTextItemRequestMentionCase5",
-}) as any as S.Schema<RichTextItemRequestMentionCase5>;
-
 /** Mention objects represent an inline mention of a database, date, link preview mention, page, template mention, or user. A mention is created in the Notion UI when a user types `@` followed by the name of the reference. */
 export type RichTextItemRequestMention =
   | RichTextItemRequestMentionCase0
@@ -405,7 +246,7 @@ export type RichTextItemRequestMention =
   | RichTextItemRequestMentionCase3
   | RichTextItemRequestMentionCase4
   | RichTextItemRequestMentionCase5;
-export const RichTextItemRequestMention =
+const RichTextItemRequestMention =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemRequestMention>;
 
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
@@ -413,7 +254,7 @@ export interface RichTextItemRequestEquation {
   /** A KaTeX compatible string. */
   expression: string;
 }
-export const RichTextItemRequestEquation = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemRequestEquation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
   }),
@@ -433,7 +274,7 @@ export interface RichTextItemRequest {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemRequestEquation;
 }
-export const RichTextItemRequest = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(AnnotationRequest),
     type: S.optional(S.String),
@@ -445,7 +286,7 @@ export const RichTextItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of rich text objects that represent the content of the comment. */
 export type CreateCommentRequestRichTextList = Array<RichTextItemRequest>;
-export const CreateCommentRequestRichTextList = /*@__PURE__*/ S.Array(
+const CreateCommentRequestRichTextList = /*@__PURE__*/ S.Array(
   RichTextItemRequest,
 ) as any as S.Schema<CreateCommentRequestRichTextList>;
 
@@ -463,7 +304,7 @@ export interface CreateCommentRequest {
   /** The ID of the discussion to comment on. */
   discussion_id?: string;
 }
-export const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: S.optional(CreateCommentRequestAttachmentsList),
     display_name: S.optional(CreateCommentRequestDisplayName),
@@ -480,53 +321,25 @@ export interface PartialCommentObjectResponse {
   /** The ID of the comment. */
   id: string;
 }
-export const PartialCommentObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.String,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "PartialCommentObjectResponse",
-}) as any as S.Schema<PartialCommentObjectResponse>;
-
 export interface PageIdCommentParentResponse {
   /** Always `page_id` */
   type: string;
   page_id: string;
 }
-export const PageIdCommentParentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    page_id: S.String,
-  }),
-).annotate({
-  identifier: "PageIdCommentParentResponse",
-}) as any as S.Schema<PageIdCommentParentResponse>;
-
 export interface BlockIdCommentParentResponse {
   /** Always `block_id` */
   type: string;
   block_id: string;
 }
-export const BlockIdCommentParentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    block_id: S.String,
-  }),
-).annotate({
-  identifier: "BlockIdCommentParentResponse",
-}) as any as S.Schema<BlockIdCommentParentResponse>;
-
 export type CommentParentResponse = PageIdCommentParentResponse | BlockIdCommentParentResponse;
-export const CommentParentResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CommentParentResponse>;
+const CommentParentResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<CommentParentResponse>;
 
 export interface PartialUserObjectResponse {
   id: string;
   /** Always `user` */
   object: string;
 }
-export const PartialUserObjectResponse = /*@__PURE__*/ S.suspend(() =>
+const PartialUserObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: S.String,
@@ -543,7 +356,7 @@ export interface AnnotationResponse {
   code: boolean;
   color: ApiColor;
 }
-export const AnnotationResponse = /*@__PURE__*/ S.suspend(() =>
+const AnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bold: S.Boolean,
     italic: S.Boolean,
@@ -555,8 +368,6 @@ export const AnnotationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnotationResponse" }) as any as S.Schema<AnnotationResponse>;
 
 export type RichTextItemResponseTextLink = RichTextItemRequestTextLink;
-export const RichTextItemResponseTextLink = RichTextItemRequestTextLink;
-
 /** If a rich text object's type value is `text`, then the corresponding text field contains an object including the text content and any inline link. */
 export interface RichTextItemResponseText {
   /** The actual text content of the text. */
@@ -564,7 +375,7 @@ export interface RichTextItemResponseText {
   /** An object with information about any inline link in this text, if included. */
   link: RichTextItemRequestTextLink | null;
 }
-export const RichTextItemResponseText = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemResponseText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     link: S.NullOr(RichTextItemRequestTextLink),
@@ -578,17 +389,8 @@ export interface UserObjectResponsePerson {
   /** Whether the person's email is verified. */
   email_verified?: boolean;
 }
-export const UserObjectResponsePerson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    email_verified: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UserObjectResponsePerson" }) as any as S.Schema<UserObjectResponsePerson>;
-
 /** The person info of the user. */
 export type BotInfoResponseOwnerCase0UserCase0Person = UserObjectResponsePerson;
-export const BotInfoResponseOwnerCase0UserCase0Person = UserObjectResponsePerson;
-
 export interface BotInfoResponseOwnerCase0UserCase0 {
   /** The ID of the user. */
   id: string;
@@ -603,74 +405,29 @@ export interface BotInfoResponseOwnerCase0UserCase0 {
   /** The person info of the user. */
   person: UserObjectResponsePerson;
 }
-export const BotInfoResponseOwnerCase0UserCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-    name: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-    type: S.String,
-    person: UserObjectResponsePerson,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase0UserCase0",
-}) as any as S.Schema<BotInfoResponseOwnerCase0UserCase0>;
-
 /** Details about the owner of the bot, when the `type` of the owner is `user`. This means the bot is for a integration. */
 export type BotInfoResponseOwnerCase0User =
   | BotInfoResponseOwnerCase0UserCase0
   | PartialUserObjectResponse;
-export const BotInfoResponseOwnerCase0User =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BotInfoResponseOwnerCase0User>;
-
 export interface BotInfoResponseOwnerCase0 {
   /** Always `user` */
   type: string;
   /** Details about the owner of the bot, when the `type` of the owner is `user`. This means the bot is for a integration. */
   user: BotInfoResponseOwnerCase0User;
 }
-export const BotInfoResponseOwnerCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    user: BotInfoResponseOwnerCase0User,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase0",
-}) as any as S.Schema<BotInfoResponseOwnerCase0>;
-
 export interface BotInfoResponseOwnerCase1 {
   /** Always `workspace` */
   type: string;
   /** Details about the owner of the bot, when the `type` of the owner is `workspace`. This means the bot is for an internal integration. */
   workspace: boolean;
 }
-export const BotInfoResponseOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    workspace: S.Boolean,
-  }),
-).annotate({
-  identifier: "BotInfoResponseOwnerCase1",
-}) as any as S.Schema<BotInfoResponseOwnerCase1>;
-
 /** Details about the owner of the bot. */
 export type BotInfoResponseOwner = BotInfoResponseOwnerCase0 | BotInfoResponseOwnerCase1;
-export const BotInfoResponseOwner =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<BotInfoResponseOwner>;
-
 /** Limits and restrictions that apply to the bot's workspace */
 export interface BotInfoResponseWorkspaceLimits {
   /** The maximum allowable size of a file upload, in bytes */
   max_file_upload_size_in_bytes: number;
 }
-export const BotInfoResponseWorkspaceLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max_file_upload_size_in_bytes: S.Number,
-  }),
-).annotate({
-  identifier: "BotInfoResponseWorkspaceLimits",
-}) as any as S.Schema<BotInfoResponseWorkspaceLimits>;
-
 export interface BotInfoResponse {
   /** Details about the owner of the bot. */
   owner: BotInfoResponseOwner;
@@ -681,20 +438,8 @@ export interface BotInfoResponse {
   /** The name of the bot's workspace. */
   workspace_name: string | null;
 }
-export const BotInfoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: BotInfoResponseOwner,
-    workspace_id: S.String,
-    workspace_limits: BotInfoResponseWorkspaceLimits,
-    workspace_name: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "BotInfoResponse" }) as any as S.Schema<BotInfoResponse>;
-
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type UserObjectResponseBot = unknown | BotInfoResponse;
-export const UserObjectResponseBot =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserObjectResponseBot>;
-
 export interface UserObjectResponse {
   /** The ID of the user. */
   id: string;
@@ -711,36 +456,13 @@ export interface UserObjectResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: UserObjectResponseBot;
 }
-export const UserObjectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: S.String,
-    name: S.NullOr(S.String),
-    avatar_url: S.NullOr(S.String),
-    type: S.optional(S.String),
-    person: S.optional(UserObjectResponsePerson),
-    bot: S.optional(UserObjectResponseBot),
-  }),
-).annotate({ identifier: "UserObjectResponse" }) as any as S.Schema<UserObjectResponse>;
-
 export type UserValueResponse = PartialUserObjectResponse | UserObjectResponse;
-export const UserValueResponse = /*@__PURE__*/ S.Unknown as any as S.Schema<UserValueResponse>;
-
 export interface RichTextItemResponseMentionCase0 {
   /** Always `user` */
   type: string;
   /** Details of the user mention. */
   user: UserValueResponse;
 }
-export const RichTextItemResponseMentionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    user: UserValueResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase0",
-}) as any as S.Schema<RichTextItemResponseMentionCase0>;
-
 export interface DateResponse {
   /** The start date of the date object. */
   start: string;
@@ -749,51 +471,22 @@ export interface DateResponse {
   /** The time zone of the date object. */
   time_zone: string | null;
 }
-export const DateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    start: S.String,
-    end: S.NullOr(S.String),
-    time_zone: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "DateResponse" }) as any as S.Schema<DateResponse>;
-
 export interface RichTextItemResponseMentionCase1 {
   /** Always `date` */
   type: string;
   /** Details of the date mention. */
   date: DateResponse;
 }
-export const RichTextItemResponseMentionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    date: DateResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase1",
-}) as any as S.Schema<RichTextItemResponseMentionCase1>;
-
 export interface LinkPreviewMentionResponse {
   /** The URL of the link preview mention. */
   url: string;
 }
-export const LinkPreviewMentionResponse =
-  RichTextItemRequestTextLink as any as S.Schema<LinkPreviewMentionResponse>;
-
 export interface RichTextItemResponseMentionCase2 {
   /** Always `link_preview` */
   type: string;
   /** Details of the link preview mention. */
   link_preview: LinkPreviewMentionResponse;
 }
-export const RichTextItemResponseMentionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    link_preview: LinkPreviewMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase2",
-}) as any as S.Schema<RichTextItemResponseMentionCase2>;
-
 export interface LinkMentionResponse {
   /** The href of the link mention. */
   href: string;
@@ -818,130 +511,51 @@ export interface LinkMentionResponse {
   /** The top padding of the link preview iframe. */
   padding_top?: number;
 }
-export const LinkMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    link_author: S.optional(S.String),
-    link_provider: S.optional(S.String),
-    thumbnail_url: S.optional(S.String),
-    icon_url: S.optional(S.String),
-    iframe_url: S.optional(S.String),
-    height: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    padding_top: S.optional(S.Number),
-  }),
-).annotate({ identifier: "LinkMentionResponse" }) as any as S.Schema<LinkMentionResponse>;
-
 export interface RichTextItemResponseMentionCase3 {
   /** Always `link_mention` */
   type: string;
   /** Details of the link mention. */
   link_mention: LinkMentionResponse;
 }
-export const RichTextItemResponseMentionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    link_mention: LinkMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase3",
-}) as any as S.Schema<RichTextItemResponseMentionCase3>;
-
 /** Details of the page mention. */
 export type RichTextItemResponseMentionCase4Page = RichTextItemRequestMentionCase2Page;
-export const RichTextItemResponseMentionCase4Page = RichTextItemRequestMentionCase2Page;
-
 export interface RichTextItemResponseMentionCase4 {
   /** Always `page` */
   type: string;
   /** Details of the page mention. */
   page: RichTextItemRequestMentionCase2Page;
 }
-export const RichTextItemResponseMentionCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    page: RichTextItemRequestMentionCase2Page,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase4",
-}) as any as S.Schema<RichTextItemResponseMentionCase4>;
-
 /** Details of the database mention. */
 export type RichTextItemResponseMentionCase5Database = RichTextItemRequestMentionCase3Database;
-export const RichTextItemResponseMentionCase5Database = RichTextItemRequestMentionCase3Database;
-
 export interface RichTextItemResponseMentionCase5 {
   /** Always `database` */
   type: string;
   /** Details of the database mention. */
   database: RichTextItemRequestMentionCase3Database;
 }
-export const RichTextItemResponseMentionCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    database: RichTextItemRequestMentionCase3Database,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase5",
-}) as any as S.Schema<RichTextItemResponseMentionCase5>;
-
 /** The date of the template mention. */
 export type TemplateMentionDateTemplateMentionResponseTemplateMentionDate = "today" | "now";
-export const TemplateMentionDateTemplateMentionResponseTemplateMentionDate = S.String;
-
 export interface TemplateMentionDateTemplateMentionResponse {
   /** Always `template_mention_date` */
   type: string;
   /** The date of the template mention. */
   template_mention_date: TemplateMentionDateTemplateMentionResponseTemplateMentionDate;
 }
-export const TemplateMentionDateTemplateMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention_date: TemplateMentionDateTemplateMentionResponseTemplateMentionDate,
-  }),
-).annotate({
-  identifier: "TemplateMentionDateTemplateMentionResponse",
-}) as any as S.Schema<TemplateMentionDateTemplateMentionResponse>;
-
 export interface TemplateMentionUserTemplateMentionResponse {
   /** Always `template_mention_user` */
   type: string;
   /** The user of the template mention. */
   template_mention_user: string;
 }
-export const TemplateMentionUserTemplateMentionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention_user: S.String,
-  }),
-).annotate({
-  identifier: "TemplateMentionUserTemplateMentionResponse",
-}) as any as S.Schema<TemplateMentionUserTemplateMentionResponse>;
-
 export type TemplateMentionResponse =
   | TemplateMentionDateTemplateMentionResponse
   | TemplateMentionUserTemplateMentionResponse;
-export const TemplateMentionResponse =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TemplateMentionResponse>;
-
 export interface RichTextItemResponseMentionCase6 {
   /** Always `template_mention` */
   type: string;
   /** Details of the template mention. */
   template_mention: TemplateMentionResponse;
 }
-export const RichTextItemResponseMentionCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    template_mention: TemplateMentionResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase6",
-}) as any as S.Schema<RichTextItemResponseMentionCase6>;
-
 export interface CustomEmojiResponse {
   /** The ID of the custom emoji. */
   id: string;
@@ -950,29 +564,12 @@ export interface CustomEmojiResponse {
   /** The URL of the custom emoji. */
   url: string;
 }
-export const CustomEmojiResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    url: S.String,
-  }),
-).annotate({ identifier: "CustomEmojiResponse" }) as any as S.Schema<CustomEmojiResponse>;
-
 export interface RichTextItemResponseMentionCase7 {
   /** Always `custom_emoji` */
   type: string;
   /** Details of the custom emoji mention. */
   custom_emoji: CustomEmojiResponse;
 }
-export const RichTextItemResponseMentionCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    custom_emoji: CustomEmojiResponse,
-  }),
-).annotate({
-  identifier: "RichTextItemResponseMentionCase7",
-}) as any as S.Schema<RichTextItemResponseMentionCase7>;
-
 /** Mention objects represent an inline mention of a database, date, link preview mention, page, template mention, or user. A mention is created in the Notion UI when a user types `@` followed by the name of the reference. */
 export type RichTextItemResponseMention =
   | RichTextItemResponseMentionCase0
@@ -983,13 +580,11 @@ export type RichTextItemResponseMention =
   | RichTextItemResponseMentionCase5
   | RichTextItemResponseMentionCase6
   | RichTextItemResponseMentionCase7;
-export const RichTextItemResponseMention =
+const RichTextItemResponseMention =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemResponseMention>;
 
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
 export type RichTextItemResponseEquation = RichTextItemRequestEquation;
-export const RichTextItemResponseEquation = RichTextItemRequestEquation;
-
 export interface RichTextItemResponse {
   /** The plain text content of the rich text object, without any styling. */
   plain_text: string | Redacted.Redacted<string>;
@@ -1006,7 +601,7 @@ export interface RichTextItemResponse {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemRequestEquation;
 }
-export const RichTextItemResponse = /*@__PURE__*/ S.suspend(() =>
+const RichTextItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plain_text: S.String.pipe(T.SensitiveValue({})),
     href: S.NullOr(S.String),
@@ -1020,13 +615,13 @@ export const RichTextItemResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The rich text content of the comment. */
 export type CommentObjectResponseRichTextList = Array<RichTextItemResponse>;
-export const CommentObjectResponseRichTextList = /*@__PURE__*/ S.Array(
+const CommentObjectResponseRichTextList = /*@__PURE__*/ S.Array(
   RichTextItemResponse,
 ) as any as S.Schema<CommentObjectResponseRichTextList>;
 
 /** One of: `custom`, `user`, `integration` */
 export type CommentObjectResponseDisplayNameType = "custom" | "user" | "integration";
-export const CommentObjectResponseDisplayNameType = S.String;
+const CommentObjectResponseDisplayNameType = S.String;
 
 /** The display name of the comment. */
 export interface CommentObjectResponseDisplayName {
@@ -1034,7 +629,7 @@ export interface CommentObjectResponseDisplayName {
   type: CommentObjectResponseDisplayNameType;
   resolved_name: string | null;
 }
-export const CommentObjectResponseDisplayName = /*@__PURE__*/ S.suspend(() =>
+const CommentObjectResponseDisplayName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CommentObjectResponseDisplayNameType,
     resolved_name: S.NullOr(S.String),
@@ -1050,7 +645,7 @@ export type CommentObjectResponseAttachmentsItemCategory =
   | "pdf"
   | "productivity"
   | "video";
-export const CommentObjectResponseAttachmentsItemCategory = S.String;
+const CommentObjectResponseAttachmentsItemCategory = S.String;
 
 export interface InternalFileResponse {
   /** The URL of the file. */
@@ -1058,7 +653,7 @@ export interface InternalFileResponse {
   /** The time when the URL will expire. */
   expiry_time: string;
 }
-export const InternalFileResponse = /*@__PURE__*/ S.suspend(() =>
+const InternalFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     expiry_time: S.String,
@@ -1070,7 +665,7 @@ export interface CommentObjectResponseAttachmentsItem {
   category: CommentObjectResponseAttachmentsItemCategory;
   file: InternalFileResponse;
 }
-export const CommentObjectResponseAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+const CommentObjectResponseAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: CommentObjectResponseAttachmentsItemCategory,
     file: InternalFileResponse,
@@ -1081,7 +676,7 @@ export const CommentObjectResponseAttachmentsItem = /*@__PURE__*/ S.suspend(() =
 
 /** Any file attachments associated with the comment. */
 export type CommentObjectResponseAttachmentsList = Array<CommentObjectResponseAttachmentsItem>;
-export const CommentObjectResponseAttachmentsList = /*@__PURE__*/ S.Array(
+const CommentObjectResponseAttachmentsList = /*@__PURE__*/ S.Array(
   CommentObjectResponseAttachmentsItem,
 ) as any as S.Schema<CommentObjectResponseAttachmentsList>;
 
@@ -1111,7 +706,7 @@ export interface CommentObjectResponse {
   /** Any file attachments associated with the comment. */
   attachments?: CommentObjectResponseAttachmentsList;
 }
-export const CommentObjectResponse = /*@__PURE__*/ S.suspend(() =>
+const CommentObjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -1129,47 +724,46 @@ export const CommentObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommentObjectResponse" }) as any as S.Schema<CommentObjectResponse>;
 
 export type CreateCommentResponseBody = PartialCommentObjectResponse | CommentObjectResponse;
-export const CreateCommentResponseBody =
+const CreateCommentResponseBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateCommentResponseBody>;
 
 export type CreateCommentResponse = CreateCommentResponseBody;
-export const CreateCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentResponse = /*@__PURE__*/ S.suspend(() =>
   CreateCommentResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "CreateCommentResponse" }) as any as S.Schema<CreateCommentResponse>;
 
 export interface DeleteCommentRequest {
   comment_id: string;
 }
-export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/comments/{comment_id}", code: 200 })),
 ).annotate({ identifier: "DeleteCommentRequest" }) as any as S.Schema<DeleteCommentRequest>;
 
 export type DeleteCommentResponseBody = PartialCommentObjectResponse | CommentObjectResponse;
-export const DeleteCommentResponseBody =
+const DeleteCommentResponseBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DeleteCommentResponseBody>;
 
 export type DeleteCommentResponse = DeleteCommentResponseBody;
-export const DeleteCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentResponse = /*@__PURE__*/ S.suspend(() =>
   DeleteCommentResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteCommentResponse" }) as any as S.Schema<DeleteCommentResponse>;
 
 export interface GetCommentRequest {
   comment_id: string;
 }
-export const GetCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/comments/{comment_id}", code: 200 })),
 ).annotate({ identifier: "GetCommentRequest" }) as any as S.Schema<GetCommentRequest>;
 
 export type GetCommentResponseBody = PartialCommentObjectResponse | CommentObjectResponse;
-export const GetCommentResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetCommentResponseBody>;
+const GetCommentResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetCommentResponseBody>;
 
 export type GetCommentResponse = GetCommentResponseBody;
-export const GetCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCommentResponse = /*@__PURE__*/ S.suspend(() =>
   GetCommentResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetCommentResponse" }) as any as S.Schema<GetCommentResponse>;
 
@@ -1178,7 +772,7 @@ export interface ListCommentsRequest {
   start_cursor?: string;
   page_size?: number;
 }
-export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     block_id: S.String.pipe(T.Query()),
     start_cursor: S.optional(S.String.pipe(T.Query())),
@@ -1187,13 +781,13 @@ export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCommentsRequest" }) as any as S.Schema<ListCommentsRequest>;
 
 export type ListCommentsResponseResultsList = Array<CommentObjectResponse>;
-export const ListCommentsResponseResultsList = /*@__PURE__*/ S.Array(
+const ListCommentsResponseResultsList = /*@__PURE__*/ S.Array(
   CommentObjectResponse,
 ) as any as S.Schema<ListCommentsResponseResultsList>;
 
 /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
 export type RequestStatusResponseType = "complete" | "incomplete";
-export const RequestStatusResponseType = S.String;
+const RequestStatusResponseType = S.String;
 
 export interface RequestStatusResponse {
   /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
@@ -1201,7 +795,7 @@ export interface RequestStatusResponse {
   /** Why the result set is incomplete. Only present when `type` is `incomplete`. */
   incomplete_reason?: string;
 }
-export const RequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RequestStatusResponseType,
     incomplete_reason: S.optional(S.String),
@@ -1219,7 +813,7 @@ export interface ListCommentsResponse {
   comment: unknown;
   request_status?: RequestStatusResponse;
 }
-export const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     next_cursor: S.NullOr(S.String),
@@ -1233,44 +827,25 @@ export const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of rich text objects that represent the updated content of the comment. */
 export type UpdateCommentRequestBodyCase0RichTextList = Array<RichTextItemRequest>;
-export const UpdateCommentRequestBodyCase0RichTextList =
-  CreateCommentRequestRichTextList as any as S.Schema<UpdateCommentRequestBodyCase0RichTextList>;
-
 export interface UpdateCommentRequestBodyCase0 {
   /** An array of rich text objects that represent the updated content of the comment. */
   rich_text: UpdateCommentRequestBodyCase0RichTextList;
 }
-export const UpdateCommentRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rich_text: UpdateCommentRequestBodyCase0RichTextList,
-  }),
-).annotate({
-  identifier: "UpdateCommentRequestBodyCase0",
-}) as any as S.Schema<UpdateCommentRequestBodyCase0>;
-
 export interface UpdateCommentRequestBodyCase1 {
   /** The updated content of the comment as a Markdown string. Comment Markdown supports inline formatting only (bold, italic, strikethrough, code, links), inline equations ($expression$), and mentions. Block-level Markdown such as fenced code blocks, headings, lists, tables, and blockquotes does not render as structured blocks in comments. */
   markdown: string;
 }
-export const UpdateCommentRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    markdown: S.String,
-  }),
-).annotate({
-  identifier: "UpdateCommentRequestBodyCase1",
-}) as any as S.Schema<UpdateCommentRequestBodyCase1>;
-
 export type UpdateCommentRequestBody =
   | UpdateCommentRequestBodyCase0
   | UpdateCommentRequestBodyCase1;
-export const UpdateCommentRequestBody =
+const UpdateCommentRequestBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateCommentRequestBody>;
 
 export interface UpdateCommentRequest {
   comment_id: string;
   body: UpdateCommentRequestBody;
 }
-export const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment_id: S.String.pipe(T.Label()),
     body: UpdateCommentRequestBody.pipe(T.HttpBody()),
@@ -1278,11 +853,11 @@ export const UpdateCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCommentRequest" }) as any as S.Schema<UpdateCommentRequest>;
 
 export type UpdateCommentResponseBody = PartialCommentObjectResponse | CommentObjectResponse;
-export const UpdateCommentResponseBody =
+const UpdateCommentResponseBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateCommentResponseBody>;
 
 export type UpdateCommentResponse = UpdateCommentResponseBody;
-export const UpdateCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateCommentResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UpdateCommentResponse" }) as any as S.Schema<UpdateCommentResponse>;
 

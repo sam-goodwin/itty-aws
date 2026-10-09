@@ -22,7 +22,7 @@ export interface GetUserCustomerAnalyticsConfigRequest {
   project_id: string;
   id: string;
 }
-export const GetUserCustomerAnalyticsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserCustomerAnalyticsConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -39,7 +39,7 @@ export const GetUserCustomerAnalyticsConfigRequest = /*@__PURE__*/ S.suspend(() 
 
 /** * `custom_property` - Custom property * `relationship` - Relationship */
 export type AccountPropertyPinKindEnum = "custom_property" | "relationship";
-export const AccountPropertyPinKindEnum = S.String;
+const AccountPropertyPinKindEnum = S.String;
 
 export interface PinnedAccountProperty {
   /** Definition type for this pinned account property. * `custom_property` - Custom property * `relationship` - Relationship */
@@ -47,7 +47,7 @@ export interface PinnedAccountProperty {
   /** Team-scoped custom property or relationship definition UUID. */
   id: string;
 }
-export const PinnedAccountProperty = /*@__PURE__*/ S.suspend(() =>
+const PinnedAccountProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: AccountPropertyPinKindEnum,
     id: S.String,
@@ -56,13 +56,13 @@ export const PinnedAccountProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Account properties pinned in sidebar display order. */
 export type UserCustomerAnalyticsConfigPinnedPropertiesList = Array<PinnedAccountProperty>;
-export const UserCustomerAnalyticsConfigPinnedPropertiesList = /*@__PURE__*/ S.Array(
+const UserCustomerAnalyticsConfigPinnedPropertiesList = /*@__PURE__*/ S.Array(
   PinnedAccountProperty,
 ) as any as S.Schema<UserCustomerAnalyticsConfigPinnedPropertiesList>;
 
 /** * `weekdays` - Weekdays * `every_day` - Every day */
 export type TaskDigestCadenceEnum = "weekdays" | "every_day";
-export const TaskDigestCadenceEnum = S.String;
+const TaskDigestCadenceEnum = S.String;
 
 export interface TaskDigestPreferences {
   /** Whether the task digest email is sent to this user. */
@@ -72,7 +72,7 @@ export interface TaskDigestPreferences {
   /** How often the digest is sent. * `weekdays` - Weekdays * `every_day` - Every day */
   cadence: TaskDigestCadenceEnum;
 }
-export const TaskDigestPreferences = /*@__PURE__*/ S.suspend(() =>
+const TaskDigestPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     send_time: S.String,
@@ -82,13 +82,13 @@ export const TaskDigestPreferences = /*@__PURE__*/ S.suspend(() =>
 
 /** Tab identifiers in the user's preferred order. */
 export type AccountDetailTabsConfigOrderedTabIdsList = Array<string>;
-export const AccountDetailTabsConfigOrderedTabIdsList = /*@__PURE__*/ S.Array(
+const AccountDetailTabsConfigOrderedTabIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountDetailTabsConfigOrderedTabIdsList>;
 
 /** Tab identifiers hidden from the tab strip. */
 export type AccountDetailTabsConfigHiddenTabIdsList = Array<string>;
-export const AccountDetailTabsConfigHiddenTabIdsList =
+const AccountDetailTabsConfigHiddenTabIdsList =
   AccountDetailTabsConfigOrderedTabIdsList as any as S.Schema<AccountDetailTabsConfigHiddenTabIdsList>;
 
 export interface AccountDetailTabsConfig {
@@ -99,7 +99,7 @@ export interface AccountDetailTabsConfig {
   /** Tab identifier opened by default. Null uses the first available system tab. */
   default_tab_id: string | null;
 }
-export const AccountDetailTabsConfig = /*@__PURE__*/ S.suspend(() =>
+const AccountDetailTabsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ordered_tab_ids: AccountDetailTabsConfigOrderedTabIdsList,
     hidden_tab_ids: AccountDetailTabsConfigHiddenTabIdsList,
@@ -115,7 +115,7 @@ export interface UserCustomerAnalyticsConfig2 {
   /** Personal order, visibility, and default for account tabs. */
   account_detail_tabs: AccountDetailTabsConfig;
 }
-export const UserCustomerAnalyticsConfig2 = /*@__PURE__*/ S.suspend(() =>
+const UserCustomerAnalyticsConfig2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pinned_properties: UserCustomerAnalyticsConfigPinnedPropertiesList,
     task_digest: TaskDigestPreferences,
@@ -128,10 +128,9 @@ export const UserCustomerAnalyticsConfig2 = /*@__PURE__*/ S.suspend(() =>
 /** Complete ordered list of account properties to pin. Omit to keep the current pins; pass an empty list to clear them. */
 export type UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList =
   Array<PinnedAccountProperty>;
-export const UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList =
-  /*@__PURE__*/ S.Array(
-    PinnedAccountProperty,
-  ) as any as S.Schema<UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList>;
+const UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList = /*@__PURE__*/ S.Array(
+  PinnedAccountProperty,
+) as any as S.Schema<UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList>;
 
 export interface TaskDigestPreferencesUpdate {
   /** Whether the task digest email is sent to this user. */
@@ -141,7 +140,7 @@ export interface TaskDigestPreferencesUpdate {
   /** How often the digest is sent. * `weekdays` - Weekdays * `every_day` - Every day */
   cadence?: TaskDigestCadenceEnum | (string & {});
 }
-export const TaskDigestPreferencesUpdate = /*@__PURE__*/ S.suspend(() =>
+const TaskDigestPreferencesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     send_time: S.optional(S.String),
@@ -162,7 +161,7 @@ export interface UpdateUserCustomerAnalyticsConfigPartialRequest {
   /** Complete personal account tab configuration. Omit to keep it unchanged. */
   account_detail_tabs?: AccountDetailTabsConfig;
 }
-export const UpdateUserCustomerAnalyticsConfigPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserCustomerAnalyticsConfigPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

@@ -65,7 +65,7 @@ export interface GetNotificationSettingAccountsRequest {
   /** Required. The resource name of the notification setting we are trying to fetch. */
   name: string;
 }
-export const GetNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -92,12 +92,12 @@ export type NotificationSettingNotificationTypesItemEnum =
   | "DUPLICATE_LOCATION"
   | "LOSS_OF_VOICE_OF_MERCHANT"
   | "VOICE_OF_MERCHANT_UPDATED";
-export const NotificationSettingNotificationTypesItemEnum = S.String;
+const NotificationSettingNotificationTypesItemEnum = S.String;
 
 export type NotificationSettingNotificationTypesItemEnumList = Array<
   NotificationSettingNotificationTypesItemEnum | (string & {})
 >;
-export const NotificationSettingNotificationTypesItemEnumList = /*@__PURE__*/ S.Array(
+const NotificationSettingNotificationTypesItemEnumList = /*@__PURE__*/ S.Array(
   NotificationSettingNotificationTypesItemEnum,
 ) as any as S.Schema<NotificationSettingNotificationTypesItemEnumList>;
 
@@ -110,7 +110,7 @@ export interface NotificationSetting {
   /** The types of notifications that will be sent to the Pub/Sub topic. To stop receiving notifications entirely, use NotificationSettings.UpdateNotificationSetting with an empty notification_types or set the pubsub_topic to an empty string. */
   notificationTypes?: NotificationSettingNotificationTypesItemEnumList;
 }
-export const NotificationSetting = /*@__PURE__*/ S.suspend(() =>
+const NotificationSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     pubsubTopic: S.optional(S.String),
@@ -126,7 +126,7 @@ export interface UpdateNotificationSettingAccountsRequest {
   /** Request body */
   body?: NotificationSetting;
 }
-export const UpdateNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNotificationSettingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

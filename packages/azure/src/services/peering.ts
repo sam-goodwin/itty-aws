@@ -16,7 +16,7 @@ export interface CheckServiceProviderAvailabilityRequest {
   /** Gets or sets the peering service provider. */
   peeringServiceProvider?: string;
 }
-export const CheckServiceProviderAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckServiceProviderAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     peeringServiceLocation: S.optional(S.String),
@@ -35,10 +35,10 @@ export const CheckServiceProviderAvailabilityRequest = /*@__PURE__*/ S.suspend((
 
 /** Response for checking service provider availability */
 export type CheckServiceProviderAvailabilityResponse = "Available" | "Unavailable";
-export const CheckServiceProviderAvailabilityResponse = S.String;
+const CheckServiceProviderAvailabilityResponse = S.String;
 
 export type CheckServiceProviderAvailabilityResponse2 = CheckServiceProviderAvailabilityResponse;
-export const CheckServiceProviderAvailabilityResponse2 = /*@__PURE__*/ S.suspend(() =>
+const CheckServiceProviderAvailabilityResponse2 = /*@__PURE__*/ S.suspend(() =>
   CheckServiceProviderAvailabilityResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CheckServiceProviderAvailabilityResponse2",
@@ -55,7 +55,7 @@ export interface ConnectionMonitorTestPropertiesInput {
   /** The Connection Monitor test frequency in seconds */
   testFrequencyInSec?: number;
 }
-export const ConnectionMonitorTestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConnectionMonitorTestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceAgent: S.optional(S.String),
     destination: S.optional(S.String),
@@ -78,7 +78,7 @@ export interface ConnectionMonitorTestsCreateOrUpdateRequest {
   /** The properties that define a Connection Monitor Test. */
   properties?: ConnectionMonitorTestPropertiesInput;
 }
-export const ConnectionMonitorTestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectionMonitorTestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -99,11 +99,11 @@ export const ConnectionMonitorTestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspe
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -120,7 +120,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -133,13 +133,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The path representing the Connection Monitor test. */
 export type ConnectionMonitorTestPropertiesPathList = Array<string>;
-export const ConnectionMonitorTestPropertiesPathList = /*@__PURE__*/ S.Array(
+const ConnectionMonitorTestPropertiesPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionMonitorTestPropertiesPathList>;
 
 /** The provisioning state of the resource. */
 export type ProvisioningState = "Succeeded" | "Updating" | "Deleting" | "Failed" | "Canceled";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** The properties that define a Connection Monitor Test. */
 export interface ConnectionMonitorTestProperties {
@@ -158,7 +158,7 @@ export interface ConnectionMonitorTestProperties {
   /** The provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const ConnectionMonitorTestProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionMonitorTestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceAgent: S.optional(S.String),
     destination: S.optional(S.String),
@@ -184,7 +184,7 @@ export interface ConnectionMonitorTestsCreateOrUpdateResponse {
   /** The properties that define a Connection Monitor Test. */
   properties?: ConnectionMonitorTestProperties;
 }
-export const ConnectionMonitorTestsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionMonitorTestsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -206,7 +206,7 @@ export interface DeleteConnectionMonitorTestRequest {
   /** The name of the connection monitor test */
   connectionMonitorTestName: string;
 }
-export const DeleteConnectionMonitorTestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionMonitorTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -225,9 +225,7 @@ export const DeleteConnectionMonitorTestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConnectionMonitorTestRequest>;
 
 export interface DeleteConnectionMonitorTestResponse {}
-export const DeleteConnectionMonitorTestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteConnectionMonitorTestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteConnectionMonitorTestResponse",
 }) as any as S.Schema<DeleteConnectionMonitorTestResponse>;
 
@@ -237,7 +235,7 @@ export interface DeletePeerAsnRequest {
   /** The peer ASN name. */
   peerAsnName: string;
 }
-export const DeletePeerAsnRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePeerAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     peerAsnName: S.String.pipe(T.Label()),
@@ -252,7 +250,7 @@ export const DeletePeerAsnRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePeerAsnRequest" }) as any as S.Schema<DeletePeerAsnRequest>;
 
 export interface DeletePeerAsnResponse {}
-export const DeletePeerAsnResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePeerAsnResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePeerAsnResponse",
 }) as any as S.Schema<DeletePeerAsnResponse>;
 
@@ -264,7 +262,7 @@ export interface DeletePeeringRequest {
   /** The name of the peering. */
   peeringName: string;
 }
-export const DeletePeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -280,8 +278,7 @@ export const DeletePeeringRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePeeringRequest" }) as any as S.Schema<DeletePeeringRequest>;
 
 export interface DeletePeeringResponse {}
-export const DeletePeeringResponse =
-  DeletePeerAsnResponse as any as S.Schema<DeletePeeringResponse>;
+const DeletePeeringResponse = DeletePeerAsnResponse as any as S.Schema<DeletePeeringResponse>;
 
 export interface DeletePeeringServiceRequest {
   /** The ID of the target subscription. */
@@ -291,7 +288,7 @@ export interface DeletePeeringServiceRequest {
   /** The name of the peering. */
   peeringServiceName: string;
 }
-export const DeletePeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -309,7 +306,7 @@ export const DeletePeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePeeringServiceRequest>;
 
 export interface DeletePeeringServiceResponse {}
-export const DeletePeeringServiceResponse =
+const DeletePeeringServiceResponse =
   DeletePeerAsnResponse as any as S.Schema<DeletePeeringServiceResponse>;
 
 export interface DeletePrefixRequest {
@@ -322,7 +319,7 @@ export interface DeletePrefixRequest {
   /** The name of the prefix. */
   prefixName: string;
 }
-export const DeletePrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -339,7 +336,7 @@ export const DeletePrefixRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePrefixRequest" }) as any as S.Schema<DeletePrefixRequest>;
 
 export interface DeletePrefixResponse {}
-export const DeletePrefixResponse = DeletePeerAsnResponse as any as S.Schema<DeletePrefixResponse>;
+const DeletePrefixResponse = DeletePeerAsnResponse as any as S.Schema<DeletePrefixResponse>;
 
 export interface DeleteRegisteredAsnRequest {
   /** The ID of the target subscription. */
@@ -351,7 +348,7 @@ export interface DeleteRegisteredAsnRequest {
   /** The name of the registered ASN. */
   registeredAsnName: string;
 }
-export const DeleteRegisteredAsnRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegisteredAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -370,7 +367,7 @@ export const DeleteRegisteredAsnRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegisteredAsnRequest>;
 
 export interface DeleteRegisteredAsnResponse {}
-export const DeleteRegisteredAsnResponse =
+const DeleteRegisteredAsnResponse =
   DeletePeerAsnResponse as any as S.Schema<DeleteRegisteredAsnResponse>;
 
 export interface DeleteRegisteredPrefixRequest {
@@ -383,7 +380,7 @@ export interface DeleteRegisteredPrefixRequest {
   /** The name of the registered prefix. */
   registeredPrefixName: string;
 }
-export const DeleteRegisteredPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegisteredPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -402,7 +399,7 @@ export const DeleteRegisteredPrefixRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegisteredPrefixRequest>;
 
 export interface DeleteRegisteredPrefixResponse {}
-export const DeleteRegisteredPrefixResponse =
+const DeleteRegisteredPrefixResponse =
   DeletePeerAsnResponse as any as S.Schema<DeleteRegisteredPrefixResponse>;
 
 export interface GetConnectionMonitorTestRequest {
@@ -415,7 +412,7 @@ export interface GetConnectionMonitorTestRequest {
   /** The name of the connection monitor test */
   connectionMonitorTestName: string;
 }
-export const GetConnectionMonitorTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionMonitorTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -445,7 +442,7 @@ export interface GetConnectionMonitorTestResponse {
   /** The properties that define a Connection Monitor Test. */
   properties?: ConnectionMonitorTestProperties;
 }
-export const GetConnectionMonitorTestResponse =
+const GetConnectionMonitorTestResponse =
   ConnectionMonitorTestsCreateOrUpdateResponse as any as S.Schema<GetConnectionMonitorTestResponse>;
 
 export interface GetPeerAsnRequest {
@@ -454,7 +451,7 @@ export interface GetPeerAsnRequest {
   /** The peer ASN name. */
   peerAsnName: string;
 }
-export const GetPeerAsnRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPeerAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     peerAsnName: S.String.pipe(T.Label()),
@@ -470,7 +467,7 @@ export const GetPeerAsnRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The role of the contact. */
 export type Role = "Noc" | "Policy" | "Technical" | "Service" | "Escalation" | "Other";
-export const Role = S.String;
+const Role = S.String;
 
 /** The contact detail class. */
 export interface ContactDetail {
@@ -481,7 +478,7 @@ export interface ContactDetail {
   /** The phone number of the contact. */
   phone?: string;
 }
-export const ContactDetail = /*@__PURE__*/ S.suspend(() =>
+const ContactDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(Role),
     email: S.optional(S.String),
@@ -491,13 +488,13 @@ export const ContactDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The contact details of the peer. */
 export type PeerAsnPropertiesPeerContactDetailList = Array<ContactDetail>;
-export const PeerAsnPropertiesPeerContactDetailList = /*@__PURE__*/ S.Array(
+const PeerAsnPropertiesPeerContactDetailList = /*@__PURE__*/ S.Array(
   ContactDetail,
 ) as any as S.Schema<PeerAsnPropertiesPeerContactDetailList>;
 
 /** The validation state of the ASN associated with the peer. */
 export type ValidationState = "None" | "Pending" | "Approved" | "Failed";
-export const ValidationState = S.String;
+const ValidationState = S.String;
 
 /** The properties that define a peer's ASN. */
 export interface PeerAsnProperties {
@@ -512,7 +509,7 @@ export interface PeerAsnProperties {
   /** The error message for the validation state */
   errorMessage?: string;
 }
-export const PeerAsnProperties = /*@__PURE__*/ S.suspend(() =>
+const PeerAsnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peerAsn: S.optional(S.Number),
     peerContactDetail: S.optional(PeerAsnPropertiesPeerContactDetailList),
@@ -534,7 +531,7 @@ export interface GetPeerAsnResponse {
   /** The properties that define a peer's ASN. */
   properties?: PeerAsnProperties;
 }
-export const GetPeerAsnResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPeerAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -552,7 +549,7 @@ export interface GetPeeringRequest {
   /** The name of the peering. */
   peeringName: string;
 }
-export const GetPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -569,14 +566,14 @@ export const GetPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPeeringResponseTagsMap = { [key: string]: string | undefined };
-export const GetPeeringResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetPeeringResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetPeeringResponseTagsMap>;
 
 /** The field indicating if Microsoft provides session ip addresses. */
 export type SessionAddressProvider = "Microsoft" | "Peer";
-export const SessionAddressProvider = S.String;
+const SessionAddressProvider = S.String;
 
 /** The state of the connection. */
 export type ConnectionState =
@@ -591,7 +588,7 @@ export type ConnectionState =
   | "TypeChangeRequested"
   | "TypeChangeInProgress"
   | "ExternalBlocker";
-export const ConnectionState = S.String;
+const ConnectionState = S.String;
 
 /** The state of the IPv4 session. */
 export type SessionStateV4 =
@@ -606,7 +603,7 @@ export type SessionStateV4 =
   | "PendingAdd"
   | "PendingUpdate"
   | "PendingRemove";
-export const SessionStateV4 = S.String;
+const SessionStateV4 = S.String;
 
 /** The state of the IPv6 session. */
 export type SessionStateV6 =
@@ -621,7 +618,7 @@ export type SessionStateV6 =
   | "PendingAdd"
   | "PendingUpdate"
   | "PendingRemove";
-export const SessionStateV6 = S.String;
+const SessionStateV6 = S.String;
 
 /** The properties that define a BGP session. */
 export interface BgpSession {
@@ -648,7 +645,7 @@ export interface BgpSession {
   /** The MD5 authentication key of the session. */
   md5AuthenticationKey?: string;
 }
-export const BgpSession = /*@__PURE__*/ S.suspend(() =>
+const BgpSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionPrefixV4: S.optional(S.String),
     sessionPrefixV6: S.optional(S.String),
@@ -687,7 +684,7 @@ export interface DirectConnection {
   /** The error message related to the connection state, if any. */
   errorMessage?: string;
 }
-export const DirectConnection = /*@__PURE__*/ S.suspend(() =>
+const DirectConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidthInMbps: S.optional(S.Number),
     provisionedBandwidthInMbps: S.optional(S.Number),
@@ -704,7 +701,7 @@ export const DirectConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of connections that constitute a direct peering. */
 export type PeeringPropertiesDirectConnectionsList = Array<DirectConnection>;
-export const PeeringPropertiesDirectConnectionsList = /*@__PURE__*/ S.Array(
+const PeeringPropertiesDirectConnectionsList = /*@__PURE__*/ S.Array(
   DirectConnection,
 ) as any as S.Schema<PeeringPropertiesDirectConnectionsList>;
 
@@ -713,7 +710,7 @@ export interface SubResource {
   /** The identifier of the referenced resource. */
   id?: string;
 }
-export const SubResource = /*@__PURE__*/ S.suspend(() =>
+const SubResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -730,7 +727,7 @@ export type DirectPeeringType =
   | "Voice"
   | "EdgeZoneForOperators"
   | "PeerProp";
-export const DirectPeeringType = S.String;
+const DirectPeeringType = S.String;
 
 /** The properties that define a direct peering. */
 export interface PeeringPropertiesDirect {
@@ -743,7 +740,7 @@ export interface PeeringPropertiesDirect {
   /** The type of direct peering. */
   directPeeringType?: DirectPeeringType;
 }
-export const PeeringPropertiesDirect = /*@__PURE__*/ S.suspend(() =>
+const PeeringPropertiesDirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connections: S.optional(PeeringPropertiesDirectConnectionsList),
     useForPeeringService: S.optional(S.Boolean),
@@ -765,7 +762,7 @@ export interface ExchangeConnection {
   /** The error message related to the connection state, if any. */
   errorMessage?: string;
 }
-export const ExchangeConnection = /*@__PURE__*/ S.suspend(() =>
+const ExchangeConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peeringDBFacilityId: S.optional(S.Number),
     connectionState: S.optional(ConnectionState),
@@ -777,7 +774,7 @@ export const ExchangeConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of connections that constitute an exchange peering. */
 export type PeeringPropertiesExchangeConnectionsList = Array<ExchangeConnection>;
-export const PeeringPropertiesExchangeConnectionsList = /*@__PURE__*/ S.Array(
+const PeeringPropertiesExchangeConnectionsList = /*@__PURE__*/ S.Array(
   ExchangeConnection,
 ) as any as S.Schema<PeeringPropertiesExchangeConnectionsList>;
 
@@ -788,7 +785,7 @@ export interface PeeringPropertiesExchange {
   /** The reference of the peer ASN. */
   peerAsn?: SubResource;
 }
-export const PeeringPropertiesExchange = /*@__PURE__*/ S.suspend(() =>
+const PeeringPropertiesExchange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connections: S.optional(PeeringPropertiesExchangeConnectionsList),
     peerAsn: S.optional(SubResource),
@@ -799,11 +796,11 @@ export const PeeringPropertiesExchange = /*@__PURE__*/ S.suspend(() =>
 
 /** The protocol of the traffic that will be sent for the connectivity probe. */
 export type Protocol = "None" | "ICMP" | "TCP";
-export const Protocol = S.String;
+const Protocol = S.String;
 
 /** Set to contain the prefixes that agents in Azure will send traffic from. For peers to allow into their network the connectivity probe traffic can reach their endpoint for the connectivity probe. */
 export type ConnectivityProbePrefixesToAccesslistList = Array<string>;
-export const ConnectivityProbePrefixesToAccesslistList =
+const ConnectivityProbePrefixesToAccesslistList =
   ConnectionMonitorTestPropertiesPathList as any as S.Schema<ConnectivityProbePrefixesToAccesslistList>;
 
 /** Represents a connectivity probe, a configuration peers can add to direct and exchange peerings to create ping tests. These ping tests will allow us to generate availability, jitter, and latency data for traffic (using ICMP or TCP) from Azure to an endpoint IP address given by the customer. This data will be emitted such that the peer can view these metrics in the Azure portal in the Connectivity probe blade of their peering. */
@@ -817,7 +814,7 @@ export interface ConnectivityProbe {
   /** Set to contain the prefixes that agents in Azure will send traffic from. For peers to allow into their network the connectivity probe traffic can reach their endpoint for the connectivity probe. */
   prefixesToAccesslist?: ConnectivityProbePrefixesToAccesslistList;
 }
-export const ConnectivityProbe = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityProbe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     azureRegion: S.optional(S.String),
@@ -828,7 +825,7 @@ export const ConnectivityProbe = /*@__PURE__*/ S.suspend(() =>
 
 /** The connectivity probes associated with the peering. */
 export type PeeringPropertiesConnectivityProbesList = Array<ConnectivityProbe>;
-export const PeeringPropertiesConnectivityProbesList = /*@__PURE__*/ S.Array(
+const PeeringPropertiesConnectivityProbesList = /*@__PURE__*/ S.Array(
   ConnectivityProbe,
 ) as any as S.Schema<PeeringPropertiesConnectivityProbesList>;
 
@@ -845,7 +842,7 @@ export interface PeeringProperties {
   /** The provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const PeeringProperties = /*@__PURE__*/ S.suspend(() =>
+const PeeringProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct: S.optional(PeeringPropertiesDirect),
     exchange: S.optional(PeeringPropertiesExchange),
@@ -857,15 +854,15 @@ export const PeeringProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The tier of the peering SKU. */
 export type Tier = "Basic" | "Premium";
-export const Tier = S.String;
+const Tier = S.String;
 
 /** The family of the peering SKU. */
 export type Family = "Direct" | "Exchange";
-export const Family = S.String;
+const Family = S.String;
 
 /** The size of the peering SKU. */
 export type Size = "Free" | "Metered" | "Unlimited";
-export const Size = S.String;
+const Size = S.String;
 
 /** The SKU that defines the tier and kind of the peering. */
 export interface PeeringSku {
@@ -878,7 +875,7 @@ export interface PeeringSku {
   /** The size of the peering SKU. */
   size?: Size | (string & {});
 }
-export const PeeringSku = /*@__PURE__*/ S.suspend(() =>
+const PeeringSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     tier: S.optional(Tier),
@@ -889,7 +886,7 @@ export const PeeringSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of the peering. */
 export type Kind = "Direct" | "Exchange";
-export const Kind = S.String;
+const Kind = S.String;
 
 export interface GetPeeringResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -911,7 +908,7 @@ export interface GetPeeringResponse {
   /** The kind of the peering. */
   kind: Kind;
 }
-export const GetPeeringResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPeeringResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -933,7 +930,7 @@ export interface GetPeeringServiceRequest {
   /** The name of the peering. */
   peeringServiceName: string;
 }
-export const GetPeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -950,12 +947,12 @@ export const GetPeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPeeringServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetPeeringServiceResponseTagsMap =
+const GetPeeringServiceResponseTagsMap =
   GetPeeringResponseTagsMap as any as S.Schema<GetPeeringServiceResponseTagsMap>;
 
 /** The list of connected agents. */
 export type LogAnalyticsWorkspacePropertiesConnectedAgentsList = Array<string>;
-export const LogAnalyticsWorkspacePropertiesConnectedAgentsList =
+const LogAnalyticsWorkspacePropertiesConnectedAgentsList =
   ConnectionMonitorTestPropertiesPathList as any as S.Schema<LogAnalyticsWorkspacePropertiesConnectedAgentsList>;
 
 /** The properties that define a Log Analytics Workspace. */
@@ -967,7 +964,7 @@ export interface LogAnalyticsWorkspaceProperties {
   /** The list of connected agents. */
   connectedAgents?: LogAnalyticsWorkspacePropertiesConnectedAgentsList;
 }
-export const LogAnalyticsWorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
+const LogAnalyticsWorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceID: S.optional(S.String),
     key: S.optional(S.String),
@@ -992,7 +989,7 @@ export interface PeeringServiceProperties {
   /** The Log Analytics Workspace Properties */
   logAnalyticsWorkspaceProperties?: LogAnalyticsWorkspaceProperties;
 }
-export const PeeringServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peeringServiceLocation: S.optional(S.String),
     peeringServiceProvider: S.optional(S.String),
@@ -1008,7 +1005,7 @@ export interface PeeringServiceSku {
   /** The name of the peering service SKU. */
   name?: string;
 }
-export const PeeringServiceSku = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -1032,7 +1029,7 @@ export interface GetPeeringServiceResponse {
   /** The SKU that defines the type of the peering service. */
   sku?: PeeringServiceSku;
 }
-export const GetPeeringServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPeeringServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1059,7 +1056,7 @@ export interface GetPrefixRequest {
   /** The properties to be expanded. */
   _expand?: string;
 }
-export const GetPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1085,11 +1082,11 @@ export type PrefixValidationState =
   | "Pending"
   | "Warning"
   | "Unknown";
-export const PrefixValidationState = S.String;
+const PrefixValidationState = S.String;
 
 /** The prefix learned type */
 export type LearnedType = "None" | "ViaServiceProvider" | "ViaSession";
-export const LearnedType = S.String;
+const LearnedType = S.String;
 
 /** The details of the event associated with a prefix. */
 export interface PeeringServicePrefixEvent {
@@ -1104,7 +1101,7 @@ export interface PeeringServicePrefixEvent {
   /** The description of the event associated with a prefix. */
   eventDescription?: string;
 }
-export const PeeringServicePrefixEvent = /*@__PURE__*/ S.suspend(() =>
+const PeeringServicePrefixEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTimestamp: S.optional(S.String),
     eventType: S.optional(S.String),
@@ -1118,7 +1115,7 @@ export const PeeringServicePrefixEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for peering service prefix */
 export type PeeringServicePrefixPropertiesEventsList = Array<PeeringServicePrefixEvent>;
-export const PeeringServicePrefixPropertiesEventsList = /*@__PURE__*/ S.Array(
+const PeeringServicePrefixPropertiesEventsList = /*@__PURE__*/ S.Array(
   PeeringServicePrefixEvent,
 ) as any as S.Schema<PeeringServicePrefixPropertiesEventsList>;
 
@@ -1139,7 +1136,7 @@ export interface PeeringServicePrefixProperties {
   /** The provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const PeeringServicePrefixProperties = /*@__PURE__*/ S.suspend(() =>
+const PeeringServicePrefixProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     prefixValidationState: S.optional(PrefixValidationState),
@@ -1165,7 +1162,7 @@ export interface GetPrefixResponse {
   /** Gets or sets the peering prefix properties. */
   properties?: PeeringServicePrefixProperties;
 }
-export const GetPrefixResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrefixResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1185,7 +1182,7 @@ export interface GetRegisteredAsnRequest {
   /** The name of the registered ASN. */
   registeredAsnName: string;
 }
-export const GetRegisteredAsnRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegisteredAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1210,7 +1207,7 @@ export interface PeeringRegisteredAsnProperties {
   /** The provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const PeeringRegisteredAsnProperties = /*@__PURE__*/ S.suspend(() =>
+const PeeringRegisteredAsnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.optional(S.Number),
     peeringServicePrefixKey: S.optional(S.String),
@@ -1232,7 +1229,7 @@ export interface GetRegisteredAsnResponse {
   /** The properties that define a registered ASN. */
   properties?: PeeringRegisteredAsnProperties;
 }
-export const GetRegisteredAsnResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRegisteredAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1252,7 +1249,7 @@ export interface GetRegisteredPrefixRequest {
   /** The name of the registered prefix. */
   registeredPrefixName: string;
 }
-export const GetRegisteredPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegisteredPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1283,7 +1280,7 @@ export interface PeeringRegisteredPrefixProperties {
   /** The provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const PeeringRegisteredPrefixProperties = /*@__PURE__*/ S.suspend(() =>
+const PeeringRegisteredPrefixProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     prefixValidationState: S.optional(PrefixValidationState),
@@ -1307,7 +1304,7 @@ export interface GetRegisteredPrefixResponse {
   /** The properties that define a registered prefix. */
   properties?: PeeringRegisteredPrefixProperties;
 }
-export const GetRegisteredPrefixResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRegisteredPrefixResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1320,10 +1317,10 @@ export const GetRegisteredPrefixResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRegisteredPrefixResponse>;
 
 export type InvokeLookingGlassRequestCommand = "Traceroute" | "Ping" | "BgpRoute";
-export const InvokeLookingGlassRequestCommand = S.String;
+const InvokeLookingGlassRequestCommand = S.String;
 
 export type InvokeLookingGlassRequestSourceType = "EdgeSite" | "AzureRegion";
-export const InvokeLookingGlassRequestSourceType = S.String;
+const InvokeLookingGlassRequestSourceType = S.String;
 
 export interface InvokeLookingGlassRequest {
   /** The ID of the target subscription. */
@@ -1337,7 +1334,7 @@ export interface InvokeLookingGlassRequest {
   /** The IP address of the destination. */
   destinationIP: string;
 }
-export const InvokeLookingGlassRequest = /*@__PURE__*/ S.suspend(() =>
+const InvokeLookingGlassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     command: InvokeLookingGlassRequestCommand.pipe(T.Query()),
@@ -1358,7 +1355,7 @@ export const InvokeLookingGlassRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Invoked command */
 export type Command = "Traceroute" | "Ping" | "BgpRoute";
-export const Command = S.String;
+const Command = S.String;
 
 /** Looking glass output model */
 export interface LookingGlassOutput {
@@ -1367,7 +1364,7 @@ export interface LookingGlassOutput {
   /** Output of the command */
   output?: string;
 }
-export const LookingGlassOutput = /*@__PURE__*/ S.suspend(() =>
+const LookingGlassOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(Command),
     output: S.optional(S.String),
@@ -1380,7 +1377,7 @@ export interface ListCdnPeeringPrefixesRequest {
   /** The peering location. */
   peeringLocation: string;
 }
-export const ListCdnPeeringPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCdnPeeringPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     peeringLocation: S.String.pipe(T.Query()),
@@ -1409,7 +1406,7 @@ export interface CdnPeeringPrefixProperties {
   /** The BGP Community */
   bgpCommunity?: string;
 }
-export const CdnPeeringPrefixProperties = /*@__PURE__*/ S.suspend(() =>
+const CdnPeeringPrefixProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     azureRegion: S.optional(S.String),
@@ -1434,7 +1431,7 @@ export interface CdnPeeringPrefix {
   /** The properties that define a cdn peering prefix. */
   properties?: CdnPeeringPrefixProperties;
 }
-export const CdnPeeringPrefix = /*@__PURE__*/ S.suspend(() =>
+const CdnPeeringPrefix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1446,7 +1443,7 @@ export const CdnPeeringPrefix = /*@__PURE__*/ S.suspend(() =>
 
 /** The CdnPeeringPrefix items on this page */
 export type CdnPeeringPrefixListResultValueList = Array<CdnPeeringPrefix>;
-export const CdnPeeringPrefixListResultValueList = /*@__PURE__*/ S.Array(
+const CdnPeeringPrefixListResultValueList = /*@__PURE__*/ S.Array(
   CdnPeeringPrefix,
 ) as any as S.Schema<CdnPeeringPrefixListResultValueList>;
 
@@ -1457,7 +1454,7 @@ export interface CdnPeeringPrefixListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CdnPeeringPrefixListResult = /*@__PURE__*/ S.suspend(() =>
+const CdnPeeringPrefixListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CdnPeeringPrefixListResultValueList,
     nextLink: S.optional(S.String),
@@ -1474,7 +1471,7 @@ export interface ListConnectionMonitorTestByPeeringServiceRequest {
   /** The name of the peering. */
   peeringServiceName: string;
 }
-export const ListConnectionMonitorTestByPeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionMonitorTestByPeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1504,7 +1501,7 @@ export interface ConnectionMonitorTest {
   /** The properties that define a Connection Monitor Test. */
   properties?: ConnectionMonitorTestProperties;
 }
-export const ConnectionMonitorTest = /*@__PURE__*/ S.suspend(() =>
+const ConnectionMonitorTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1516,7 +1513,7 @@ export const ConnectionMonitorTest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectionMonitorTest items on this page */
 export type ConnectionMonitorTestListResultValueList = Array<ConnectionMonitorTest>;
-export const ConnectionMonitorTestListResultValueList = /*@__PURE__*/ S.Array(
+const ConnectionMonitorTestListResultValueList = /*@__PURE__*/ S.Array(
   ConnectionMonitorTest,
 ) as any as S.Schema<ConnectionMonitorTestListResultValueList>;
 
@@ -1527,7 +1524,7 @@ export interface ConnectionMonitorTestListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConnectionMonitorTestListResult = /*@__PURE__*/ S.suspend(() =>
+const ConnectionMonitorTestListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConnectionMonitorTestListResultValueList,
     nextLink: S.optional(S.String),
@@ -1537,7 +1534,7 @@ export const ConnectionMonitorTestListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionMonitorTestListResult>;
 
 export type ListLegacyPeeringsRequestKind = "Direct" | "Exchange";
-export const ListLegacyPeeringsRequestKind = S.String;
+const ListLegacyPeeringsRequestKind = S.String;
 
 export type ListLegacyPeeringsRequestDirectPeeringType =
   | "Edge"
@@ -1549,7 +1546,7 @@ export type ListLegacyPeeringsRequestDirectPeeringType =
   | "Voice"
   | "EdgeZoneForOperators"
   | "PeerProp";
-export const ListLegacyPeeringsRequestDirectPeeringType = S.String;
+const ListLegacyPeeringsRequestDirectPeeringType = S.String;
 
 export interface ListLegacyPeeringsRequest {
   /** The ID of the target subscription. */
@@ -1563,7 +1560,7 @@ export interface ListLegacyPeeringsRequest {
   /** The direct peering type. */
   directPeeringType?: ListLegacyPeeringsRequestDirectPeeringType | (string & {});
 }
-export const ListLegacyPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLegacyPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     peeringLocation: S.String.pipe(T.Query()),
@@ -1584,8 +1581,6 @@ export const ListLegacyPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PeeringTagsMap = { [key: string]: string | undefined };
-export const PeeringTagsMap = GetPeeringResponseTagsMap as any as S.Schema<PeeringTagsMap>;
-
 /** Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location. */
 export interface Peering2 {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1607,11 +1602,11 @@ export interface Peering2 {
   /** The kind of the peering. */
   kind: Kind;
 }
-export const Peering2 = GetPeeringResponse as any as S.Schema<Peering2>;
+const Peering2 = GetPeeringResponse as any as S.Schema<Peering2>;
 
 /** The Peering items on this page */
 export type PeeringListResultValueList = Array<Peering2>;
-export const PeeringListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringListResultValueList = /*@__PURE__*/ S.Array(
   Peering2,
 ) as any as S.Schema<PeeringListResultValueList>;
 
@@ -1622,7 +1617,7 @@ export interface PeeringListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringListResultValueList,
     nextLink: S.optional(S.String),
@@ -1630,7 +1625,7 @@ export const PeeringListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PeeringListResult" }) as any as S.Schema<PeeringListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1652,7 +1647,7 @@ export interface OperationDisplayInfo {
   /** The description of the operation. */
   description?: string;
 }
-export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1663,7 +1658,7 @@ export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported time grain types for the metric. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList =
+const MetricSpecificationSupportedTimeGrainTypesList =
   ConnectionMonitorTestPropertiesPathList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
 /** Dimensions of the metric. */
@@ -1673,7 +1668,7 @@ export interface MetricDimension {
   /** Localized friendly display name of the dimension. */
   displayName?: string;
 }
-export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
+const MetricDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1682,7 +1677,7 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Dimensions of the metric. */
 export type MetricSpecificationDimensionsList = Array<MetricDimension>;
-export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
 
@@ -1703,7 +1698,7 @@ export interface MetricSpecification {
   /** Dimensions of the metric. */
   dimensions?: MetricSpecificationDimensionsList;
 }
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1717,7 +1712,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the Metrics for Azure Monitoring. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecification,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -1726,7 +1721,7 @@ export interface ServiceSpecification {
   /** Specifications of the Metrics for Azure Monitoring. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
   }),
@@ -1737,7 +1732,7 @@ export interface OperationProperties {
   /** Service specification payload. */
   serviceSpecification?: ServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -1754,7 +1749,7 @@ export interface Operation {
   /** The properties of the operation. */
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplayInfo),
@@ -1765,7 +1760,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of peering API operations. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1776,7 +1771,7 @@ export interface OperationListResult {
   /** The link to fetch the next page of peering API operations. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1787,7 +1782,7 @@ export interface ListPeerAsnBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPeerAsnBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeerAsnBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1815,11 +1810,11 @@ export interface PeerAsn {
   /** The properties that define a peer's ASN. */
   properties?: PeerAsnProperties;
 }
-export const PeerAsn = GetPeerAsnResponse as any as S.Schema<PeerAsn>;
+const PeerAsn = GetPeerAsnResponse as any as S.Schema<PeerAsn>;
 
 /** The PeerAsn items on this page */
 export type PeerAsnListResultValueList = Array<PeerAsn>;
-export const PeerAsnListResultValueList = /*@__PURE__*/ S.Array(
+const PeerAsnListResultValueList = /*@__PURE__*/ S.Array(
   PeerAsn,
 ) as any as S.Schema<PeerAsnListResultValueList>;
 
@@ -1830,7 +1825,7 @@ export interface PeerAsnListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeerAsnListResult = /*@__PURE__*/ S.suspend(() =>
+const PeerAsnListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeerAsnListResultValueList,
     nextLink: S.optional(S.String),
@@ -1843,7 +1838,7 @@ export interface ListPeeringByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPeeringByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1863,7 +1858,7 @@ export interface ListPeeringBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPeeringBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1879,7 +1874,7 @@ export const ListPeeringBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPeeringBySubscriptionRequest>;
 
 export type ListPeeringLocationsRequestKind = "Direct" | "Exchange";
-export const ListPeeringLocationsRequestKind = S.String;
+const ListPeeringLocationsRequestKind = S.String;
 
 export type ListPeeringLocationsRequestDirectPeeringType =
   | "Edge"
@@ -1891,7 +1886,7 @@ export type ListPeeringLocationsRequestDirectPeeringType =
   | "Voice"
   | "EdgeZoneForOperators"
   | "PeerProp";
-export const ListPeeringLocationsRequestDirectPeeringType = S.String;
+const ListPeeringLocationsRequestDirectPeeringType = S.String;
 
 export interface ListPeeringLocationsRequest {
   /** The ID of the target subscription. */
@@ -1901,7 +1896,7 @@ export interface ListPeeringLocationsRequest {
   /** The type of direct peering. */
   directPeeringType?: ListPeeringLocationsRequestDirectPeeringType | (string & {});
 }
-export const ListPeeringLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     kind: ListPeeringLocationsRequestKind.pipe(T.Query()),
@@ -1929,7 +1924,7 @@ export interface DirectPeeringFacility {
   /** The PeeringDB.com URL of the facility. */
   peeringDBFacilityLink?: string;
 }
-export const DirectPeeringFacility = /*@__PURE__*/ S.suspend(() =>
+const DirectPeeringFacility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     directPeeringType: S.optional(DirectPeeringType),
@@ -1940,7 +1935,7 @@ export const DirectPeeringFacility = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of direct peering facilities at the peering location. */
 export type PeeringLocationPropertiesDirectPeeringFacilitiesList = Array<DirectPeeringFacility>;
-export const PeeringLocationPropertiesDirectPeeringFacilitiesList = /*@__PURE__*/ S.Array(
+const PeeringLocationPropertiesDirectPeeringFacilitiesList = /*@__PURE__*/ S.Array(
   DirectPeeringFacility,
 ) as any as S.Schema<PeeringLocationPropertiesDirectPeeringFacilitiesList>;
 
@@ -1951,7 +1946,7 @@ export interface PeeringBandwidthOffer {
   /** The value of the bandwidth offer in Mbps. */
   valueInMbps?: number;
 }
-export const PeeringBandwidthOffer = /*@__PURE__*/ S.suspend(() =>
+const PeeringBandwidthOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerName: S.optional(S.String),
     valueInMbps: S.optional(S.Number),
@@ -1960,7 +1955,7 @@ export const PeeringBandwidthOffer = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of bandwidth offers available at the peering location. */
 export type PeeringLocationPropertiesDirectBandwidthOffersList = Array<PeeringBandwidthOffer>;
-export const PeeringLocationPropertiesDirectBandwidthOffersList = /*@__PURE__*/ S.Array(
+const PeeringLocationPropertiesDirectBandwidthOffersList = /*@__PURE__*/ S.Array(
   PeeringBandwidthOffer,
 ) as any as S.Schema<PeeringLocationPropertiesDirectBandwidthOffersList>;
 
@@ -1971,7 +1966,7 @@ export interface PeeringLocationPropertiesDirect {
   /** The list of bandwidth offers available at the peering location. */
   bandwidthOffers?: PeeringLocationPropertiesDirectBandwidthOffersList;
 }
-export const PeeringLocationPropertiesDirect = /*@__PURE__*/ S.suspend(() =>
+const PeeringLocationPropertiesDirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peeringFacilities: S.optional(PeeringLocationPropertiesDirectPeeringFacilitiesList),
     bandwidthOffers: S.optional(PeeringLocationPropertiesDirectBandwidthOffersList),
@@ -1999,7 +1994,7 @@ export interface ExchangePeeringFacility {
   /** The PeeringDB.com URL of the facility. */
   peeringDBFacilityLink?: string;
 }
-export const ExchangePeeringFacility = /*@__PURE__*/ S.suspend(() =>
+const ExchangePeeringFacility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exchangeName: S.optional(S.String),
     bandwidthInMbps: S.optional(S.Number),
@@ -2014,7 +2009,7 @@ export const ExchangePeeringFacility = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of exchange peering facilities at the peering location. */
 export type PeeringLocationPropertiesExchangePeeringFacilitiesList = Array<ExchangePeeringFacility>;
-export const PeeringLocationPropertiesExchangePeeringFacilitiesList = /*@__PURE__*/ S.Array(
+const PeeringLocationPropertiesExchangePeeringFacilitiesList = /*@__PURE__*/ S.Array(
   ExchangePeeringFacility,
 ) as any as S.Schema<PeeringLocationPropertiesExchangePeeringFacilitiesList>;
 
@@ -2023,7 +2018,7 @@ export interface PeeringLocationPropertiesExchange {
   /** The list of exchange peering facilities at the peering location. */
   peeringFacilities?: PeeringLocationPropertiesExchangePeeringFacilitiesList;
 }
-export const PeeringLocationPropertiesExchange = /*@__PURE__*/ S.suspend(() =>
+const PeeringLocationPropertiesExchange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peeringFacilities: S.optional(PeeringLocationPropertiesExchangePeeringFacilitiesList),
   }),
@@ -2044,7 +2039,7 @@ export interface PeeringLocationProperties {
   /** The Azure region associated with the peering location. */
   azureRegion?: string;
 }
-export const PeeringLocationProperties = /*@__PURE__*/ S.suspend(() =>
+const PeeringLocationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct: S.optional(PeeringLocationPropertiesDirect),
     exchange: S.optional(PeeringLocationPropertiesExchange),
@@ -2071,7 +2066,7 @@ export interface PeeringLocation {
   /** The properties that define a peering location. */
   properties?: PeeringLocationProperties;
 }
-export const PeeringLocation = /*@__PURE__*/ S.suspend(() =>
+const PeeringLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2084,7 +2079,7 @@ export const PeeringLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringLocation items on this page */
 export type PeeringLocationListResultValueList = Array<PeeringLocation>;
-export const PeeringLocationListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringLocationListResultValueList = /*@__PURE__*/ S.Array(
   PeeringLocation,
 ) as any as S.Schema<PeeringLocationListResultValueList>;
 
@@ -2095,7 +2090,7 @@ export interface PeeringLocationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringLocationListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringLocationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringLocationListResultValueList,
     nextLink: S.optional(S.String),
@@ -2110,7 +2105,7 @@ export interface ListPeeringServiceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPeeringServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2128,8 +2123,7 @@ export const ListPeeringServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type PeeringServiceTagsMap = { [key: string]: string | undefined };
-export const PeeringServiceTagsMap =
-  GetPeeringResponseTagsMap as any as S.Schema<PeeringServiceTagsMap>;
+const PeeringServiceTagsMap = GetPeeringResponseTagsMap as any as S.Schema<PeeringServiceTagsMap>;
 
 /** Peering Service */
 export interface PeeringService {
@@ -2150,7 +2144,7 @@ export interface PeeringService {
   /** The SKU that defines the type of the peering service. */
   sku?: PeeringServiceSku;
 }
-export const PeeringService = /*@__PURE__*/ S.suspend(() =>
+const PeeringService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2165,7 +2159,7 @@ export const PeeringService = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringService items on this page */
 export type PeeringServiceListResultValueList = Array<PeeringService>;
-export const PeeringServiceListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringServiceListResultValueList = /*@__PURE__*/ S.Array(
   PeeringService,
 ) as any as S.Schema<PeeringServiceListResultValueList>;
 
@@ -2176,7 +2170,7 @@ export interface PeeringServiceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringServiceListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringServiceListResultValueList,
     nextLink: S.optional(S.String),
@@ -2187,7 +2181,7 @@ export interface ListPeeringServiceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPeeringServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2206,7 +2200,7 @@ export interface ListPeeringServiceCountriesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPeeringServiceCountriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringServiceCountriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2232,7 +2226,7 @@ export interface PeeringServiceCountry {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const PeeringServiceCountry = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceCountry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2243,7 +2237,7 @@ export const PeeringServiceCountry = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringServiceCountry items on this page */
 export type PeeringServiceCountryListResultValueList = Array<PeeringServiceCountry>;
-export const PeeringServiceCountryListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringServiceCountryListResultValueList = /*@__PURE__*/ S.Array(
   PeeringServiceCountry,
 ) as any as S.Schema<PeeringServiceCountryListResultValueList>;
 
@@ -2254,7 +2248,7 @@ export interface PeeringServiceCountryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringServiceCountryListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceCountryListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringServiceCountryListResultValueList,
     nextLink: S.optional(S.String),
@@ -2269,7 +2263,7 @@ export interface ListPeeringServiceLocationsRequest {
   /** The country of interest, in which the locations are to be present. */
   country?: string;
 }
-export const ListPeeringServiceLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringServiceLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     country: S.optional(S.String.pipe(T.Query())),
@@ -2294,7 +2288,7 @@ export interface PeeringServiceLocationProperties {
   /** Azure region for the location */
   azureRegion?: string;
 }
-export const PeeringServiceLocationProperties = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceLocationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     state: S.optional(S.String),
@@ -2317,7 +2311,7 @@ export interface PeeringServiceLocation {
   /** The properties that define a peering service location. */
   properties?: PeeringServiceLocationProperties;
 }
-export const PeeringServiceLocation = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2329,7 +2323,7 @@ export const PeeringServiceLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringServiceLocation items on this page */
 export type PeeringServiceLocationListResultValueList = Array<PeeringServiceLocation>;
-export const PeeringServiceLocationListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringServiceLocationListResultValueList = /*@__PURE__*/ S.Array(
   PeeringServiceLocation,
 ) as any as S.Schema<PeeringServiceLocationListResultValueList>;
 
@@ -2340,7 +2334,7 @@ export interface PeeringServiceLocationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringServiceLocationListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceLocationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringServiceLocationListResultValueList,
     nextLink: S.optional(S.String),
@@ -2353,7 +2347,7 @@ export interface ListPeeringServiceProvidersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPeeringServiceProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringServiceProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2370,7 +2364,7 @@ export const ListPeeringServiceProvidersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of locations at which the service provider peers with Microsoft. */
 export type PeeringServiceProviderPropertiesPeeringLocationsList = Array<string>;
-export const PeeringServiceProviderPropertiesPeeringLocationsList =
+const PeeringServiceProviderPropertiesPeeringLocationsList =
   ConnectionMonitorTestPropertiesPathList as any as S.Schema<PeeringServiceProviderPropertiesPeeringLocationsList>;
 
 /** The properties that define connectivity to the Peering Service Provider. */
@@ -2380,7 +2374,7 @@ export interface PeeringServiceProviderProperties {
   /** The list of locations at which the service provider peers with Microsoft. */
   peeringLocations?: PeeringServiceProviderPropertiesPeeringLocationsList;
 }
-export const PeeringServiceProviderProperties = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceProviderProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceProviderName: S.optional(S.String),
     peeringLocations: S.optional(PeeringServiceProviderPropertiesPeeringLocationsList),
@@ -2402,7 +2396,7 @@ export interface PeeringServiceProvider {
   /** The properties that define a peering service provider. */
   properties?: PeeringServiceProviderProperties;
 }
-export const PeeringServiceProvider = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2414,7 +2408,7 @@ export const PeeringServiceProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringServiceProvider items on this page */
 export type PeeringServiceProviderListResultValueList = Array<PeeringServiceProvider>;
-export const PeeringServiceProviderListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringServiceProviderListResultValueList = /*@__PURE__*/ S.Array(
   PeeringServiceProvider,
 ) as any as S.Schema<PeeringServiceProviderListResultValueList>;
 
@@ -2425,7 +2419,7 @@ export interface PeeringServiceProviderListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringServiceProviderListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringServiceProviderListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringServiceProviderListResultValueList,
     nextLink: S.optional(S.String),
@@ -2444,7 +2438,7 @@ export interface ListPrefixByPeeringServiceRequest {
   /** The properties to be expanded. */
   _expand?: string;
 }
-export const ListPrefixByPeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixByPeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2475,11 +2469,11 @@ export interface PeeringServicePrefix {
   /** Gets or sets the peering prefix properties. */
   properties?: PeeringServicePrefixProperties;
 }
-export const PeeringServicePrefix = GetPrefixResponse as any as S.Schema<PeeringServicePrefix>;
+const PeeringServicePrefix = GetPrefixResponse as any as S.Schema<PeeringServicePrefix>;
 
 /** The PeeringServicePrefix items on this page */
 export type PeeringServicePrefixListResultValueList = Array<PeeringServicePrefix>;
-export const PeeringServicePrefixListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringServicePrefixListResultValueList = /*@__PURE__*/ S.Array(
   PeeringServicePrefix,
 ) as any as S.Schema<PeeringServicePrefixListResultValueList>;
 
@@ -2490,7 +2484,7 @@ export interface PeeringServicePrefixListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringServicePrefixListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringServicePrefixListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringServicePrefixListResultValueList,
     nextLink: S.optional(S.String),
@@ -2517,7 +2511,7 @@ export interface ListReceivedRouteByPeeringRequest {
   /** The optional page continuation token that is used in the event of paginated result. */
   _skipToken?: string;
 }
-export const ListReceivedRouteByPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReceivedRouteByPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2556,7 +2550,7 @@ export interface PeeringReceivedRoute {
   /** The received timestamp associated with the prefix. */
   receivedTimestamp?: string;
 }
-export const PeeringReceivedRoute = /*@__PURE__*/ S.suspend(() =>
+const PeeringReceivedRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     nextHop: S.optional(S.String),
@@ -2570,7 +2564,7 @@ export const PeeringReceivedRoute = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringReceivedRoute items on this page */
 export type PeeringReceivedRouteListResultValueList = Array<PeeringReceivedRoute>;
-export const PeeringReceivedRouteListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringReceivedRouteListResultValueList = /*@__PURE__*/ S.Array(
   PeeringReceivedRoute,
 ) as any as S.Schema<PeeringReceivedRouteListResultValueList>;
 
@@ -2581,7 +2575,7 @@ export interface PeeringReceivedRouteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringReceivedRouteListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringReceivedRouteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringReceivedRouteListResultValueList,
     nextLink: S.optional(S.String),
@@ -2598,7 +2592,7 @@ export interface ListRegisteredAsnByPeeringRequest {
   /** The name of the peering. */
   peeringName: string;
 }
-export const ListRegisteredAsnByPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegisteredAsnByPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2628,12 +2622,11 @@ export interface PeeringRegisteredAsn {
   /** The properties that define a registered ASN. */
   properties?: PeeringRegisteredAsnProperties;
 }
-export const PeeringRegisteredAsn =
-  GetRegisteredAsnResponse as any as S.Schema<PeeringRegisteredAsn>;
+const PeeringRegisteredAsn = GetRegisteredAsnResponse as any as S.Schema<PeeringRegisteredAsn>;
 
 /** The PeeringRegisteredAsn items on this page */
 export type PeeringRegisteredAsnListResultValueList = Array<PeeringRegisteredAsn>;
-export const PeeringRegisteredAsnListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringRegisteredAsnListResultValueList = /*@__PURE__*/ S.Array(
   PeeringRegisteredAsn,
 ) as any as S.Schema<PeeringRegisteredAsnListResultValueList>;
 
@@ -2644,7 +2637,7 @@ export interface PeeringRegisteredAsnListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringRegisteredAsnListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringRegisteredAsnListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringRegisteredAsnListResultValueList,
     nextLink: S.optional(S.String),
@@ -2661,7 +2654,7 @@ export interface ListRegisteredPrefixByPeeringRequest {
   /** The name of the peering. */
   peeringName: string;
 }
-export const ListRegisteredPrefixByPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegisteredPrefixByPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2691,7 +2684,7 @@ export interface PeeringRegisteredPrefix {
   /** The properties that define a registered prefix. */
   properties?: PeeringRegisteredPrefixProperties;
 }
-export const PeeringRegisteredPrefix = /*@__PURE__*/ S.suspend(() =>
+const PeeringRegisteredPrefix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2703,7 +2696,7 @@ export const PeeringRegisteredPrefix = /*@__PURE__*/ S.suspend(() =>
 
 /** The PeeringRegisteredPrefix items on this page */
 export type PeeringRegisteredPrefixListResultValueList = Array<PeeringRegisteredPrefix>;
-export const PeeringRegisteredPrefixListResultValueList = /*@__PURE__*/ S.Array(
+const PeeringRegisteredPrefixListResultValueList = /*@__PURE__*/ S.Array(
   PeeringRegisteredPrefix,
 ) as any as S.Schema<PeeringRegisteredPrefixListResultValueList>;
 
@@ -2714,7 +2707,7 @@ export interface PeeringRegisteredPrefixListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PeeringRegisteredPrefixListResult = /*@__PURE__*/ S.suspend(() =>
+const PeeringRegisteredPrefixListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PeeringRegisteredPrefixListResultValueList,
     nextLink: S.optional(S.String),
@@ -2733,7 +2726,7 @@ export interface ListRpUnbilledPrefixesRequest {
   /** Flag to enable consolidation prefixes */
   consolidate?: boolean;
 }
-export const ListRpUnbilledPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRpUnbilledPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2760,7 +2753,7 @@ export interface RpUnbilledPrefix {
   /** The peer ASN. */
   peerAsn?: number;
 }
-export const RpUnbilledPrefix = /*@__PURE__*/ S.suspend(() =>
+const RpUnbilledPrefix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     azureRegion: S.optional(S.String),
@@ -2770,7 +2763,7 @@ export const RpUnbilledPrefix = /*@__PURE__*/ S.suspend(() =>
 
 /** The RpUnbilledPrefix items on this page */
 export type RpUnbilledPrefixListResultValueList = Array<RpUnbilledPrefix>;
-export const RpUnbilledPrefixListResultValueList = /*@__PURE__*/ S.Array(
+const RpUnbilledPrefixListResultValueList = /*@__PURE__*/ S.Array(
   RpUnbilledPrefix,
 ) as any as S.Schema<RpUnbilledPrefixListResultValueList>;
 
@@ -2781,7 +2774,7 @@ export interface RpUnbilledPrefixListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RpUnbilledPrefixListResult = /*@__PURE__*/ S.suspend(() =>
+const RpUnbilledPrefixListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RpUnbilledPrefixListResultValueList,
     nextLink: S.optional(S.String),
@@ -2792,7 +2785,7 @@ export const RpUnbilledPrefixListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The contact details of the peer. */
 export type PeerAsnPropertiesInputPeerContactDetailList = Array<ContactDetail>;
-export const PeerAsnPropertiesInputPeerContactDetailList =
+const PeerAsnPropertiesInputPeerContactDetailList =
   PeerAsnPropertiesPeerContactDetailList as any as S.Schema<PeerAsnPropertiesInputPeerContactDetailList>;
 
 /** The properties that define a peer's ASN. */
@@ -2804,7 +2797,7 @@ export interface PeerAsnPropertiesInput {
   /** The name of the peer. */
   peerName?: string;
 }
-export const PeerAsnPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PeerAsnPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peerAsn: S.optional(S.Number),
     peerContactDetail: S.optional(PeerAsnPropertiesInputPeerContactDetailList),
@@ -2820,7 +2813,7 @@ export interface PeerAsnsCreateOrUpdateRequest {
   /** The properties that define a peer's ASN. */
   properties?: PeerAsnPropertiesInput;
 }
-export const PeerAsnsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PeerAsnsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     peerAsnName: S.String.pipe(T.Label()),
@@ -2849,7 +2842,7 @@ export interface PeerAsnsCreateOrUpdateResponse {
   /** The properties that define a peer's ASN. */
   properties?: PeerAsnProperties;
 }
-export const PeerAsnsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PeerAsnsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2863,7 +2856,7 @@ export const PeerAsnsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PeeringsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PeeringsCreateOrUpdateRequestTagsMap =
+const PeeringsCreateOrUpdateRequestTagsMap =
   GetPeeringResponseTagsMap as any as S.Schema<PeeringsCreateOrUpdateRequestTagsMap>;
 
 /** The properties that define a direct connection. */
@@ -2881,7 +2874,7 @@ export interface DirectConnectionInput {
   /** The unique identifier (GUID) for the connection. */
   connectionIdentifier?: string;
 }
-export const DirectConnectionInput = /*@__PURE__*/ S.suspend(() =>
+const DirectConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidthInMbps: S.optional(S.Number),
     sessionAddressProvider: S.optional(SessionAddressProvider),
@@ -2894,7 +2887,7 @@ export const DirectConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of connections that constitute a direct peering. */
 export type PeeringPropertiesDirectInputConnectionsList = Array<DirectConnectionInput>;
-export const PeeringPropertiesDirectInputConnectionsList = /*@__PURE__*/ S.Array(
+const PeeringPropertiesDirectInputConnectionsList = /*@__PURE__*/ S.Array(
   DirectConnectionInput,
 ) as any as S.Schema<PeeringPropertiesDirectInputConnectionsList>;
 
@@ -2907,7 +2900,7 @@ export interface PeeringPropertiesDirectInput {
   /** The type of direct peering. */
   directPeeringType?: DirectPeeringType | (string & {});
 }
-export const PeeringPropertiesDirectInput = /*@__PURE__*/ S.suspend(() =>
+const PeeringPropertiesDirectInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connections: S.optional(PeeringPropertiesDirectInputConnectionsList),
     peerAsn: S.optional(SubResource),
@@ -2926,7 +2919,7 @@ export interface ExchangeConnectionInput {
   /** The unique identifier (GUID) for the connection. */
   connectionIdentifier?: string;
 }
-export const ExchangeConnectionInput = /*@__PURE__*/ S.suspend(() =>
+const ExchangeConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peeringDBFacilityId: S.optional(S.Number),
     bgpSession: S.optional(BgpSession),
@@ -2936,7 +2929,7 @@ export const ExchangeConnectionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of connections that constitute an exchange peering. */
 export type PeeringPropertiesExchangeInputConnectionsList = Array<ExchangeConnectionInput>;
-export const PeeringPropertiesExchangeInputConnectionsList = /*@__PURE__*/ S.Array(
+const PeeringPropertiesExchangeInputConnectionsList = /*@__PURE__*/ S.Array(
   ExchangeConnectionInput,
 ) as any as S.Schema<PeeringPropertiesExchangeInputConnectionsList>;
 
@@ -2947,7 +2940,7 @@ export interface PeeringPropertiesExchangeInput {
   /** The reference of the peer ASN. */
   peerAsn?: SubResource;
 }
-export const PeeringPropertiesExchangeInput = /*@__PURE__*/ S.suspend(() =>
+const PeeringPropertiesExchangeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connections: S.optional(PeeringPropertiesExchangeInputConnectionsList),
     peerAsn: S.optional(SubResource),
@@ -2965,7 +2958,7 @@ export interface ConnectivityProbeInput {
   /** The protocol of the traffic that will be sent for the connectivity probe. */
   protocol?: Protocol | (string & {});
 }
-export const ConnectivityProbeInput = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityProbeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     azureRegion: S.optional(S.String),
@@ -2975,7 +2968,7 @@ export const ConnectivityProbeInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The connectivity probes associated with the peering. */
 export type PeeringPropertiesInputConnectivityProbesList = Array<ConnectivityProbeInput>;
-export const PeeringPropertiesInputConnectivityProbesList = /*@__PURE__*/ S.Array(
+const PeeringPropertiesInputConnectivityProbesList = /*@__PURE__*/ S.Array(
   ConnectivityProbeInput,
 ) as any as S.Schema<PeeringPropertiesInputConnectivityProbesList>;
 
@@ -2990,7 +2983,7 @@ export interface PeeringPropertiesInput {
   /** The location of the peering. */
   peeringLocation?: string;
 }
-export const PeeringPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PeeringPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct: S.optional(PeeringPropertiesDirectInput),
     exchange: S.optional(PeeringPropertiesExchangeInput),
@@ -3017,7 +3010,7 @@ export interface PeeringsCreateOrUpdateRequest {
   /** The kind of the peering. */
   kind: Kind | (string & {});
 }
-export const PeeringsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PeeringsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3041,7 +3034,7 @@ export const PeeringsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PeeringsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PeeringsCreateOrUpdateResponseTagsMap =
+const PeeringsCreateOrUpdateResponseTagsMap =
   GetPeeringResponseTagsMap as any as S.Schema<PeeringsCreateOrUpdateResponseTagsMap>;
 
 export interface PeeringsCreateOrUpdateResponse {
@@ -3064,7 +3057,7 @@ export interface PeeringsCreateOrUpdateResponse {
   /** The kind of the peering. */
   kind: Kind;
 }
-export const PeeringsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PeeringsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3082,12 +3075,12 @@ export const PeeringsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PeeringServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PeeringServicesCreateOrUpdateRequestTagsMap =
+const PeeringServicesCreateOrUpdateRequestTagsMap =
   GetPeeringResponseTagsMap as any as S.Schema<PeeringServicesCreateOrUpdateRequestTagsMap>;
 
 /** The properties that define a Log Analytics Workspace. */
 export interface LogAnalyticsWorkspacePropertiesInput {}
-export const LogAnalyticsWorkspacePropertiesInput =
+const LogAnalyticsWorkspacePropertiesInput =
   DeleteConnectionMonitorTestResponse as any as S.Schema<LogAnalyticsWorkspacePropertiesInput>;
 
 /** The properties that define connectivity to the Peering Service. */
@@ -3103,7 +3096,7 @@ export interface PeeringServicePropertiesInput {
   /** The Log Analytics Workspace Properties */
   logAnalyticsWorkspaceProperties?: LogAnalyticsWorkspacePropertiesInput;
 }
-export const PeeringServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PeeringServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peeringServiceLocation: S.optional(S.String),
     peeringServiceProvider: S.optional(S.String),
@@ -3131,7 +3124,7 @@ export interface PeeringServicesCreateOrUpdateRequest {
   /** The SKU that defines the type of the peering service. */
   sku?: PeeringServiceSku;
 }
-export const PeeringServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PeeringServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3154,9 +3147,6 @@ export const PeeringServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type PeeringServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PeeringServicesCreateOrUpdateResponseTagsMap =
-  GetPeeringResponseTagsMap as any as S.Schema<PeeringServicesCreateOrUpdateResponseTagsMap>;
-
 export interface PeeringServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3175,14 +3165,14 @@ export interface PeeringServicesCreateOrUpdateResponse {
   /** The SKU that defines the type of the peering service. */
   sku?: PeeringServiceSku;
 }
-export const PeeringServicesCreateOrUpdateResponse =
+const PeeringServicesCreateOrUpdateResponse =
   GetPeeringServiceResponse as any as S.Schema<PeeringServicesCreateOrUpdateResponse>;
 
 export interface PeeringServicesInitializeConnectionMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const PeeringServicesInitializeConnectionMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const PeeringServicesInitializeConnectionMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3198,7 +3188,7 @@ export const PeeringServicesInitializeConnectionMonitorRequest = /*@__PURE__*/ S
 }) as any as S.Schema<PeeringServicesInitializeConnectionMonitorRequest>;
 
 export interface PeeringServicesInitializeConnectionMonitorResponse {}
-export const PeeringServicesInitializeConnectionMonitorResponse =
+const PeeringServicesInitializeConnectionMonitorResponse =
   DeleteConnectionMonitorTestResponse as any as S.Schema<PeeringServicesInitializeConnectionMonitorResponse>;
 
 /** The peering service prefix properties class. */
@@ -3208,7 +3198,7 @@ export interface PeeringServicePrefixPropertiesInput {
   /** The peering service prefix key */
   peeringServicePrefixKey?: string;
 }
-export const PeeringServicePrefixPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PeeringServicePrefixPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     peeringServicePrefixKey: S.optional(S.String),
@@ -3229,7 +3219,7 @@ export interface PrefixesCreateOrUpdateRequest {
   /** Gets or sets the peering prefix properties. */
   properties?: PeeringServicePrefixPropertiesInput;
 }
-export const PrefixesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrefixesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3260,7 +3250,7 @@ export interface PrefixesCreateOrUpdateResponse {
   /** Gets or sets the peering prefix properties. */
   properties?: PeeringServicePrefixProperties;
 }
-export const PrefixesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PrefixesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3277,7 +3267,7 @@ export interface PeeringRegisteredAsnPropertiesInput {
   /** The customer's ASN from which traffic originates. */
   asn?: number;
 }
-export const PeeringRegisteredAsnPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PeeringRegisteredAsnPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.optional(S.Number),
   }),
@@ -3297,7 +3287,7 @@ export interface RegisteredAsnsCreateOrUpdateRequest {
   /** The properties that define a registered ASN. */
   properties?: PeeringRegisteredAsnPropertiesInput;
 }
-export const RegisteredAsnsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisteredAsnsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3328,7 +3318,7 @@ export interface RegisteredAsnsCreateOrUpdateResponse {
   /** The properties that define a registered ASN. */
   properties?: PeeringRegisteredAsnProperties;
 }
-export const RegisteredAsnsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisteredAsnsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3345,7 +3335,7 @@ export interface PeeringRegisteredPrefixPropertiesInput {
   /** The customer's prefix from which traffic originates. */
   prefix?: string;
 }
-export const PeeringRegisteredPrefixPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PeeringRegisteredPrefixPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
   }),
@@ -3365,7 +3355,7 @@ export interface RegisteredPrefixesCreateOrUpdateRequest {
   /** The properties that define a registered prefix. */
   properties?: PeeringRegisteredPrefixPropertiesInput;
 }
-export const RegisteredPrefixesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisteredPrefixesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3396,12 +3386,12 @@ export interface RegisteredPrefixesCreateOrUpdateResponse {
   /** The properties that define a registered prefix. */
   properties?: PeeringRegisteredPrefixProperties;
 }
-export const RegisteredPrefixesCreateOrUpdateResponse =
+const RegisteredPrefixesCreateOrUpdateResponse =
   GetRegisteredPrefixResponse as any as S.Schema<RegisteredPrefixesCreateOrUpdateResponse>;
 
 /** Gets or sets the tags, a dictionary of descriptors arm object */
 export type UpdatePeeringRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePeeringRequestTagsMap =
+const UpdatePeeringRequestTagsMap =
   GetPeeringResponseTagsMap as any as S.Schema<UpdatePeeringRequestTagsMap>;
 
 export interface UpdatePeeringRequest {
@@ -3414,7 +3404,7 @@ export interface UpdatePeeringRequest {
   /** Gets or sets the tags, a dictionary of descriptors arm object */
   tags?: UpdatePeeringRequestTagsMap;
 }
-export const UpdatePeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3432,9 +3422,6 @@ export const UpdatePeeringRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePeeringResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePeeringResponseTagsMap =
-  GetPeeringResponseTagsMap as any as S.Schema<UpdatePeeringResponseTagsMap>;
-
 export interface UpdatePeeringResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3455,11 +3442,11 @@ export interface UpdatePeeringResponse {
   /** The kind of the peering. */
   kind: Kind;
 }
-export const UpdatePeeringResponse = GetPeeringResponse as any as S.Schema<UpdatePeeringResponse>;
+const UpdatePeeringResponse = GetPeeringResponse as any as S.Schema<UpdatePeeringResponse>;
 
 /** Gets or sets the tags, a dictionary of descriptors arm object */
 export type UpdatePeeringServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePeeringServiceRequestTagsMap =
+const UpdatePeeringServiceRequestTagsMap =
   GetPeeringResponseTagsMap as any as S.Schema<UpdatePeeringServiceRequestTagsMap>;
 
 export interface UpdatePeeringServiceRequest {
@@ -3472,7 +3459,7 @@ export interface UpdatePeeringServiceRequest {
   /** Gets or sets the tags, a dictionary of descriptors arm object */
   tags?: UpdatePeeringServiceRequestTagsMap;
 }
-export const UpdatePeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3492,9 +3479,6 @@ export const UpdatePeeringServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePeeringServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePeeringServiceResponseTagsMap =
-  GetPeeringResponseTagsMap as any as S.Schema<UpdatePeeringServiceResponseTagsMap>;
-
 export interface UpdatePeeringServiceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3513,7 +3497,7 @@ export interface UpdatePeeringServiceResponse {
   /** The SKU that defines the type of the peering service. */
   sku?: PeeringServiceSku;
 }
-export const UpdatePeeringServiceResponse =
+const UpdatePeeringServiceResponse =
   GetPeeringServiceResponse as any as S.Schema<UpdatePeeringServiceResponse>;
 
 export interface ValidateRegisteredPrefixRequest {
@@ -3526,7 +3510,7 @@ export interface ValidateRegisteredPrefixRequest {
   /** The name of the registered prefix. */
   registeredPrefixName: string;
 }
-export const ValidateRegisteredPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateRegisteredPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3556,7 +3540,7 @@ export interface ValidateRegisteredPrefixResponse {
   /** The properties that define a registered prefix. */
   properties?: PeeringRegisteredPrefixProperties;
 }
-export const ValidateRegisteredPrefixResponse =
+const ValidateRegisteredPrefixResponse =
   GetRegisteredPrefixResponse as any as S.Schema<ValidateRegisteredPrefixResponse>;
 
 export type CheckServiceProviderAvailabilityError = AzureOpError;

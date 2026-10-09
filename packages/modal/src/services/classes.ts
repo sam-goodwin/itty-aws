@@ -12,13 +12,13 @@ export type FunctionFunctionType =
   | "FUNCTION_TYPE_UNSPECIFIED"
   | "FUNCTION_TYPE_GENERATOR"
   | "FUNCTION_TYPE_FUNCTION";
-export const FunctionFunctionType = S.String;
+const FunctionFunctionType = S.String;
 
 export type ClassParameterInfoParameterSerializationFormat =
   | "PARAM_SERIALIZATION_FORMAT_UNSPECIFIED"
   | "PARAM_SERIALIZATION_FORMAT_PICKLE"
   | "PARAM_SERIALIZATION_FORMAT_PROTO";
-export const ClassParameterInfoParameterSerializationFormat = S.String;
+const ClassParameterInfoParameterSerializationFormat = S.String;
 
 export type ParameterType =
   | "PARAM_TYPE_UNSPECIFIED"
@@ -31,10 +31,10 @@ export type ParameterType =
   | "PARAM_TYPE_DICT"
   | "PARAM_TYPE_NONE"
   | "PARAM_TYPE_BOOL";
-export const ParameterType = S.String;
+const ParameterType = S.String;
 
 export type GenericPayloadTypeList = Array<GenericPayloadType>;
-export const GenericPayloadTypeList = /*@__PURE__*/ S.Array(
+const GenericPayloadTypeList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => GenericPayloadType),
 ) as any as S.Schema<GenericPayloadTypeList>;
 
@@ -42,7 +42,7 @@ export interface GenericPayloadType {
   baseType?: ParameterType | (string & {});
   subTypes?: GenericPayloadTypeList;
 }
-export const GenericPayloadType = /*@__PURE__*/ S.suspend(() =>
+const GenericPayloadType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseType: S.optional(ParameterType),
     subTypes: S.optional(GenericPayloadTypeList),
@@ -63,7 +63,7 @@ export interface ClassParameterSpec {
   boolDefault?: boolean;
   fullType?: GenericPayloadType;
 }
-export const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
+const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(ParameterType),
@@ -78,7 +78,7 @@ export const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassParameterSpec" }) as any as S.Schema<ClassParameterSpec>;
 
 export type ClassParameterSpecList = Array<ClassParameterSpec>;
-export const ClassParameterSpecList = /*@__PURE__*/ S.Array(
+const ClassParameterSpecList = /*@__PURE__*/ S.Array(
   ClassParameterSpec,
 ) as any as S.Schema<ClassParameterSpecList>;
 
@@ -87,7 +87,7 @@ export interface ClassParameterInfo {
   format?: ClassParameterInfoParameterSerializationFormat | (string & {});
   schema?: ClassParameterSpecList;
 }
-export const ClassParameterInfo = /*@__PURE__*/ S.suspend(() =>
+const ClassParameterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(ClassParameterInfoParameterSerializationFormat),
     schema: S.optional(ClassParameterSpecList),
@@ -95,13 +95,13 @@ export const ClassParameterInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassParameterInfo" }) as any as S.Schema<ClassParameterInfo>;
 
 export type FunctionHandleMetadataMap = { [key: string]: FunctionHandleMetadata | undefined };
-export const FunctionHandleMetadataMap = /*@__PURE__*/ S.Record(
+const FunctionHandleMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.suspend(() => FunctionHandleMetadata),
 ) as any as S.Schema<FunctionHandleMetadataMap>;
 
 export type FunctionSchemaFunctionSchemaType = "FUNCTION_SCHEMA_UNSPECIFIED" | "FUNCTION_SCHEMA_V1";
-export const FunctionSchemaFunctionSchemaType = S.String;
+const FunctionSchemaFunctionSchemaType = S.String;
 
 export interface FunctionSchema {
   schemaType?: FunctionSchemaFunctionSchemaType | (string & {});
@@ -109,7 +109,7 @@ export interface FunctionSchema {
   arguments?: ClassParameterSpecList;
   returnType?: GenericPayloadType;
 }
-export const FunctionSchema = /*@__PURE__*/ S.suspend(() =>
+const FunctionSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaType: S.optional(FunctionSchemaFunctionSchemaType),
     arguments: S.optional(ClassParameterSpecList),
@@ -118,7 +118,7 @@ export const FunctionSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionSchema" }) as any as S.Schema<FunctionSchema>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Which data format a binary message is encoded with. */
 export type DataFormat =
@@ -127,10 +127,10 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
-export const DataFormat = S.String;
+const DataFormat = S.String;
 
 export type DataFormatList = Array<DataFormat | (string & {})>;
-export const DataFormatList = /*@__PURE__*/ S.Array(DataFormat) as any as S.Schema<DataFormatList>;
+const DataFormatList = /*@__PURE__*/ S.Array(DataFormat) as any as S.Schema<DataFormatList>;
 
 export interface FunctionHandleMetadata {
   /** contains all the info about a function that is needed to trigger the right behaviour when using a FunctionHandler. Notably excludes things purely used for *executing* the function in a container entrypoint Should be a subset and use IDs/types from `Function` above */
@@ -159,7 +159,7 @@ export interface FunctionHandleMetadata {
   /** The base Function ID for a variant, or the Function's own ID otherwise. */
   baseFunctionId?: string;
 }
-export const FunctionHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const FunctionHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.optional(S.String),
     functionType: S.optional(FunctionFunctionType),
@@ -188,7 +188,7 @@ export interface ClassMethod {
   /** Class methods need to hydrate all functions on the class */
   functionHandleMetadata?: FunctionHandleMetadata;
 }
-export const ClassMethod = /*@__PURE__*/ S.suspend(() =>
+const ClassMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.optional(S.String),
     functionId: S.optional(S.String),
@@ -197,9 +197,7 @@ export const ClassMethod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassMethod" }) as any as S.Schema<ClassMethod>;
 
 export type ClassMethodList = Array<ClassMethod>;
-export const ClassMethodList = /*@__PURE__*/ S.Array(
-  ClassMethod,
-) as any as S.Schema<ClassMethodList>;
+const ClassMethodList = /*@__PURE__*/ S.Array(ClassMethod) as any as S.Schema<ClassMethodList>;
 
 export interface CreateClassRequest {
   appId?: string;
@@ -208,7 +206,7 @@ export interface CreateClassRequest {
   /** removed class_function_id */
   onlyClassFunction?: boolean;
 }
-export const CreateClassRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     existingClassId: S.optional(S.String),
@@ -222,7 +220,7 @@ export interface ClassHandleMetadata {
   classFunctionId?: string;
   classFunctionMetadata?: FunctionHandleMetadata;
 }
-export const ClassHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const ClassHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methods: S.optional(ClassMethodList),
     classFunctionId: S.optional(S.String),
@@ -234,7 +232,7 @@ export interface CreateClassResponse {
   classId?: string;
   handleMetadata?: ClassHandleMetadata;
 }
-export const CreateClassResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateClassResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classId: S.optional(S.String),
     handleMetadata: S.optional(ClassHandleMetadata),
@@ -251,7 +249,7 @@ export interface GetClassRequest {
   /** True starting with 0.67.x clients, which don't create method placeholder functions */
   appVersion?: number;
 }
-export const GetClassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appName: S.optional(S.String),
     objectTag: S.optional(S.String),
@@ -266,13 +264,13 @@ export type WarningWarningType =
   | "WARNING_TYPE_CLIENT_DEPRECATION"
   | "WARNING_TYPE_RESOURCE_LIMIT"
   | "WARNING_TYPE_FUNCTION_CONFIGURATION";
-export const WarningWarningType = S.String;
+const WarningWarningType = S.String;
 
 export interface Warning {
   type?: WarningWarningType;
   message?: string;
 }
-export const Warning = /*@__PURE__*/ S.suspend(() =>
+const Warning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(WarningWarningType),
     message: S.optional(S.String),
@@ -280,14 +278,14 @@ export const Warning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
 export type WarningList = Array<Warning>;
-export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
+const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
 
 export interface GetClassResponse {
   classId?: string;
   handleMetadata?: ClassHandleMetadata;
   serverWarnings?: WarningList;
 }
-export const GetClassResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClassResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classId: S.optional(S.String),
     handleMetadata: S.optional(ClassHandleMetadata),

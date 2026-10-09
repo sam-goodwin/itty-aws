@@ -49,7 +49,7 @@ export interface CreateFileSystemShortcutRequest {
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
 }
-export const CreateFileSystemShortcutRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileSystemShortcutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     path: S.optional(S.String),
@@ -80,7 +80,7 @@ export interface FileSystemShortcut2 {
   /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
   user_access_level?: string | null;
 }
-export const FileSystemShortcut2 = /*@__PURE__*/ S.suspend(() =>
+const FileSystemShortcut2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     path: S.optional(S.String),
@@ -95,7 +95,7 @@ export const FileSystemShortcut2 = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the current user's shortcuts in the desired display order. */
 export type CreateFileSystemShortcutReorderRequestOrderedIdsList = Array<string>;
-export const CreateFileSystemShortcutReorderRequestOrderedIdsList = /*@__PURE__*/ S.Array(
+const CreateFileSystemShortcutReorderRequestOrderedIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateFileSystemShortcutReorderRequestOrderedIdsList>;
 
@@ -105,7 +105,7 @@ export interface CreateFileSystemShortcutReorderRequest {
   /** IDs of the current user's shortcuts in the desired display order. */
   ordered_ids: CreateFileSystemShortcutReorderRequestOrderedIdsList;
 }
-export const CreateFileSystemShortcutReorderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileSystemShortcutReorderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ordered_ids: CreateFileSystemShortcutReorderRequestOrderedIdsList,
@@ -121,7 +121,7 @@ export const CreateFileSystemShortcutReorderRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateFileSystemShortcutReorderRequest>;
 
 export type PaginatedFileSystemShortcutListResultsList = Array<FileSystemShortcut2>;
-export const PaginatedFileSystemShortcutListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedFileSystemShortcutListResultsList = /*@__PURE__*/ S.Array(
   FileSystemShortcut2,
 ) as any as S.Schema<PaginatedFileSystemShortcutListResultsList>;
 
@@ -131,7 +131,7 @@ export interface PaginatedFileSystemShortcutList {
   previous?: string | null;
   results?: PaginatedFileSystemShortcutListResultsList;
 }
-export const PaginatedFileSystemShortcutList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedFileSystemShortcutList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -152,7 +152,7 @@ export interface FileSystemShortcutBulkItem {
   /** Destination URL the shortcut opens. Null when the shortcut points at an item by ref. */
   href?: string | null;
 }
-export const FileSystemShortcutBulkItem = /*@__PURE__*/ S.suspend(() =>
+const FileSystemShortcutBulkItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     type: S.optional(S.String),
@@ -165,13 +165,13 @@ export const FileSystemShortcutBulkItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Shortcuts to create, appended to the end of the current order in the given sequence. An item identical to a shortcut the user already has is skipped. */
 export type FileSystemShortcutBulkUpdateCreateRequestAddList = Array<FileSystemShortcutBulkItem>;
-export const FileSystemShortcutBulkUpdateCreateRequestAddList = /*@__PURE__*/ S.Array(
+const FileSystemShortcutBulkUpdateCreateRequestAddList = /*@__PURE__*/ S.Array(
   FileSystemShortcutBulkItem,
 ) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequestAddList>;
 
 /** IDs of the current user's shortcuts to delete. */
 export type FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList = Array<string>;
-export const FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList =
+const FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList =
   CreateFileSystemShortcutReorderRequestOrderedIdsList as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList>;
 
 export interface FileSystemShortcutBulkUpdateCreateRequest {
@@ -182,7 +182,7 @@ export interface FileSystemShortcutBulkUpdateCreateRequest {
   /** IDs of the current user's shortcuts to delete. */
   remove_ids?: FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList;
 }
-export const FileSystemShortcutBulkUpdateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FileSystemShortcutBulkUpdateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     add: S.optional(FileSystemShortcutBulkUpdateCreateRequestAddList),
@@ -199,12 +199,12 @@ export const FileSystemShortcutBulkUpdateCreateRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequest>;
 
 export type FileSystemShortcutBulkUpdateCreateResponseBodyList = Array<FileSystemShortcut2>;
-export const FileSystemShortcutBulkUpdateCreateResponseBodyList =
+const FileSystemShortcutBulkUpdateCreateResponseBodyList =
   PaginatedFileSystemShortcutListResultsList as any as S.Schema<FileSystemShortcutBulkUpdateCreateResponseBodyList>;
 
 export type FileSystemShortcutBulkUpdateCreateResponse =
   FileSystemShortcutBulkUpdateCreateResponseBodyList;
-export const FileSystemShortcutBulkUpdateCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const FileSystemShortcutBulkUpdateCreateResponse = /*@__PURE__*/ S.suspend(() =>
   FileSystemShortcutBulkUpdateCreateResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "FileSystemShortcutBulkUpdateCreateResponse",
@@ -216,7 +216,7 @@ export interface FileSystemShortcutDestroyRequest {
   /** A UUID string identifying this file system shortcut. */
   id: string;
 }
-export const FileSystemShortcutDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const FileSystemShortcutDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -232,9 +232,7 @@ export const FileSystemShortcutDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileSystemShortcutDestroyRequest>;
 
 export interface FileSystemShortcutDestroyResponse {}
-export const FileSystemShortcutDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const FileSystemShortcutDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "FileSystemShortcutDestroyResponse",
 }) as any as S.Schema<FileSystemShortcutDestroyResponse>;
 
@@ -244,7 +242,7 @@ export interface GetFileSystemShortcutRequest {
   /** A UUID string identifying this file system shortcut. */
   id: string;
 }
-export const GetFileSystemShortcutRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileSystemShortcutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -267,7 +265,7 @@ export interface ListFileSystemShortcutRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListFileSystemShortcutRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileSystemShortcutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -295,7 +293,7 @@ export interface UpdateFileSystemShortcutRequest {
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
 }
-export const UpdateFileSystemShortcutRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFileSystemShortcutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -331,7 +329,7 @@ export interface UpdateFileSystemShortcutPartialRequest {
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
 }
-export const UpdateFileSystemShortcutPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFileSystemShortcutPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

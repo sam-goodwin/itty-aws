@@ -62,10 +62,10 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type BatchGetAmpUrlsRequestLookupStrategyEnum = "FETCH_LIVE_DOC" | "IN_INDEX_DOC";
-export const BatchGetAmpUrlsRequestLookupStrategyEnum = S.String;
+const BatchGetAmpUrlsRequestLookupStrategyEnum = S.String;
 
 /** AMP URL request for a batch of URLs. */
 export interface BatchGetAmpUrlsRequest {
@@ -74,7 +74,7 @@ export interface BatchGetAmpUrlsRequest {
   /** The lookup_strategy being requested. */
   lookupStrategy?: BatchGetAmpUrlsRequestLookupStrategyEnum | (string & {});
 }
-export const BatchGetAmpUrlsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetAmpUrlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urls: S.optional(StringList),
     lookupStrategy: S.optional(BatchGetAmpUrlsRequestLookupStrategyEnum),
@@ -85,7 +85,7 @@ export interface BatchGetAmpUrlsRequest_ {
   /** Request body */
   body?: BatchGetAmpUrlsRequest;
 }
-export const BatchGetAmpUrlsRequest_ = /*@__PURE__*/ S.suspend(() =>
+const BatchGetAmpUrlsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(BatchGetAmpUrlsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -104,7 +104,7 @@ export type AmpUrlErrorErrorCodeEnum =
   | "APPLICATION_ERROR"
   | "URL_IS_VALID_AMP"
   | "URL_IS_INVALID_AMP";
-export const AmpUrlErrorErrorCodeEnum = S.String;
+const AmpUrlErrorErrorCodeEnum = S.String;
 
 /** AMP URL Error resource for a requested URL that couldn't be found. */
 export interface AmpUrlError {
@@ -115,7 +115,7 @@ export interface AmpUrlError {
   /** The error code of an API call. */
   errorCode?: AmpUrlErrorErrorCodeEnum;
 }
-export const AmpUrlError = /*@__PURE__*/ S.suspend(() =>
+const AmpUrlError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     originalUrl: S.optional(S.String),
@@ -124,9 +124,7 @@ export const AmpUrlError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AmpUrlError" }) as any as S.Schema<AmpUrlError>;
 
 export type AmpUrlErrorList = Array<AmpUrlError>;
-export const AmpUrlErrorList = /*@__PURE__*/ S.Array(
-  AmpUrlError,
-) as any as S.Schema<AmpUrlErrorList>;
+const AmpUrlErrorList = /*@__PURE__*/ S.Array(AmpUrlError) as any as S.Schema<AmpUrlErrorList>;
 
 /** AMP URL response for a requested URL. */
 export interface AmpUrl {
@@ -137,7 +135,7 @@ export interface AmpUrl {
   /** The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache. */
   cdnAmpUrl?: string;
 }
-export const AmpUrl = /*@__PURE__*/ S.suspend(() =>
+const AmpUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ampUrl: S.optional(S.String),
     originalUrl: S.optional(S.String),
@@ -146,7 +144,7 @@ export const AmpUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AmpUrl" }) as any as S.Schema<AmpUrl>;
 
 export type AmpUrlList = Array<AmpUrl>;
-export const AmpUrlList = /*@__PURE__*/ S.Array(AmpUrl) as any as S.Schema<AmpUrlList>;
+const AmpUrlList = /*@__PURE__*/ S.Array(AmpUrl) as any as S.Schema<AmpUrlList>;
 
 /** Batch AMP URL response. */
 export interface BatchGetAmpUrlsResponse {
@@ -155,7 +153,7 @@ export interface BatchGetAmpUrlsResponse {
   /** For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only once. */
   ampUrls?: AmpUrlList;
 }
-export const BatchGetAmpUrlsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetAmpUrlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urlErrors: S.optional(AmpUrlErrorList),
     ampUrls: S.optional(AmpUrlList),

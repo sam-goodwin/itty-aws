@@ -11,7 +11,7 @@ export interface GetHeatmapScreenshotSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetHeatmapScreenshotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHeatmapScreenshotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -27,7 +27,7 @@ export const GetHeatmapScreenshotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Exact DNS hostnames approved to receive the screenshot cookie. No URLs, wildcards, or IP addresses. */
 export type HeatmapScreenshotSettingsAllowedHostnamesList = Array<string>;
-export const HeatmapScreenshotSettingsAllowedHostnamesList = /*@__PURE__*/ S.Array(
+const HeatmapScreenshotSettingsAllowedHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HeatmapScreenshotSettingsAllowedHostnamesList>;
 
@@ -39,7 +39,7 @@ export interface HeatmapScreenshotSettings {
   /** Whether a screenshot bypass secret has been generated. */
   has_secret: boolean;
 }
-export const HeatmapScreenshotSettings = /*@__PURE__*/ S.suspend(() =>
+const HeatmapScreenshotSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed_hostnames: HeatmapScreenshotSettingsAllowedHostnamesList,
     cookie_delivery_enabled: S.Boolean,
@@ -51,7 +51,7 @@ export const HeatmapScreenshotSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Exact DNS hostnames approved to receive the screenshot cookie. No URLs, wildcards, or IP addresses. */
 export type UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList = Array<string>;
-export const UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList =
+const UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList =
   HeatmapScreenshotSettingsAllowedHostnamesList as any as S.Schema<UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList>;
 
 export interface UpdateHeatmapScreenshotSettingsRequest {
@@ -60,7 +60,7 @@ export interface UpdateHeatmapScreenshotSettingsRequest {
   /** Exact DNS hostnames approved to receive the screenshot cookie. No URLs, wildcards, or IP addresses. */
   allowed_hostnames?: UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList;
 }
-export const UpdateHeatmapScreenshotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHeatmapScreenshotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     allowed_hostnames: S.optional(UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList),

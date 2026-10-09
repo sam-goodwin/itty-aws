@@ -16,7 +16,7 @@ export interface CreateCanvaseRequest {
   /** Channel ID of the channel the canvas will be tabbed in. This is a required field for free teams. */
   channel_id?: string;
 }
-export const CreateCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     document_content: S.optional(S.Unknown),
@@ -30,7 +30,7 @@ export interface CreateCanvaseResponse {
   /** Encoded ID of the canvas */
   canvas_id: string;
 }
-export const CreateCanvaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCanvaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     canvas_id: S.String,
@@ -39,13 +39,13 @@ export const CreateCanvaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of channels you wish to update access for */
 export type DeleteAccessRequestChannelIdsList = Array<string>;
-export const DeleteAccessRequestChannelIdsList = /*@__PURE__*/ S.Array(
+const DeleteAccessRequestChannelIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteAccessRequestChannelIdsList>;
 
 /** List of users you wish to update access for */
 export type DeleteAccessRequestUserIdsList = Array<string>;
-export const DeleteAccessRequestUserIdsList =
+const DeleteAccessRequestUserIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessRequestUserIdsList>;
 
 export interface DeleteAccessRequest {
@@ -56,7 +56,7 @@ export interface DeleteAccessRequest {
   /** List of users you wish to update access for */
   user_ids?: DeleteAccessRequestUserIdsList;
 }
-export const DeleteAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canvas_id: S.String,
     channel_ids: S.optional(DeleteAccessRequestChannelIdsList),
@@ -66,12 +66,12 @@ export const DeleteAccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The channel IDs that could not be updated */
 export type DeleteAccessResponseFailedToUpdateChannelIdsList = Array<string>;
-export const DeleteAccessResponseFailedToUpdateChannelIdsList =
+const DeleteAccessResponseFailedToUpdateChannelIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessResponseFailedToUpdateChannelIdsList>;
 
 /** The user IDs that could not be updated */
 export type DeleteAccessResponseFailedToUpdateUserIdsList = Array<string>;
-export const DeleteAccessResponseFailedToUpdateUserIdsList =
+const DeleteAccessResponseFailedToUpdateUserIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessResponseFailedToUpdateUserIdsList>;
 
 export interface DeleteAccessResponse {
@@ -82,7 +82,7 @@ export interface DeleteAccessResponse {
   /** The user IDs that could not be updated */
   failed_to_update_user_ids?: DeleteAccessResponseFailedToUpdateUserIdsList;
 }
-export const DeleteAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     failed_to_update_channel_ids: S.optional(DeleteAccessResponseFailedToUpdateChannelIdsList),
@@ -94,7 +94,7 @@ export interface DeleteCanvaseRequest {
   /** Encoded ID of the canvas */
   canvas_id: string;
 }
-export const DeleteCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canvas_id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/canvases.delete", code: 200 })),
@@ -104,7 +104,7 @@ export interface DeleteCanvaseResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeleteCanvaseResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCanvaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -112,7 +112,7 @@ export const DeleteCanvaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of changes to apply on the specified canvas. The markdown content of each change is limited to 1 MiB (1,048,576 characters). */
 export type EditCanvaseRequestChangesList = Array<unknown>;
-export const EditCanvaseRequestChangesList = /*@__PURE__*/ S.Array(
+const EditCanvaseRequestChangesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EditCanvaseRequestChangesList>;
 
@@ -122,7 +122,7 @@ export interface EditCanvaseRequest {
   /** List of changes to apply on the specified canvas. The markdown content of each change is limited to 1 MiB (1,048,576 characters). */
   changes: EditCanvaseRequestChangesList;
 }
-export const EditCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
+const EditCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canvas_id: S.String,
     changes: EditCanvaseRequestChangesList,
@@ -133,11 +133,11 @@ export interface EditCanvaseResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const EditCanvaseResponse = DeleteCanvaseResponse as any as S.Schema<EditCanvaseResponse>;
+const EditCanvaseResponse = DeleteCanvaseResponse as any as S.Schema<EditCanvaseResponse>;
 
 /** Format in which to return the canvas content. Defaults to markdown. */
 export type GetContentRequestContentType = "html" | "markdown";
-export const GetContentRequestContentType = S.String;
+const GetContentRequestContentType = S.String;
 
 export interface GetContentRequest {
   /** Encoded ID of the canvas */
@@ -145,7 +145,7 @@ export interface GetContentRequest {
   /** Format in which to return the canvas content. Defaults to markdown. */
   content_type?: GetContentRequestContentType | (string & {});
 }
-export const GetContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canvas_id: S.String,
     content_type: S.optional(GetContentRequestContentType),
@@ -158,7 +158,7 @@ export interface GetContentResponse {
   /** The content of the canvas in the requested content_type. */
   content: string;
 }
-export const GetContentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     content: S.String,
@@ -171,7 +171,7 @@ export interface LookupSectionRequest {
   /** Filtering criteria */
   criteria: unknown;
 }
-export const LookupSectionRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupSectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canvas_id: S.String,
     criteria: S.Unknown,
@@ -180,7 +180,7 @@ export const LookupSectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of child sections within a layout container (blockquote, callout, flexbox, or table). */
 export type LookupSectionResponseSectionsItemChildSectionIdsList = Array<string>;
-export const LookupSectionResponseSectionsItemChildSectionIdsList =
+const LookupSectionResponseSectionsItemChildSectionIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<LookupSectionResponseSectionsItemChildSectionIdsList>;
 
 export interface LookupSectionResponseSectionsItem {
@@ -188,7 +188,7 @@ export interface LookupSectionResponseSectionsItem {
   /** IDs of child sections within a layout container (blockquote, callout, flexbox, or table). */
   child_section_ids?: LookupSectionResponseSectionsItemChildSectionIdsList;
 }
-export const LookupSectionResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const LookupSectionResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     child_section_ids: S.optional(LookupSectionResponseSectionsItemChildSectionIdsList),
@@ -199,7 +199,7 @@ export const LookupSectionResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Sections in the canvas that match the provided criteria */
 export type LookupSectionResponseSectionsList = Array<LookupSectionResponseSectionsItem>;
-export const LookupSectionResponseSectionsList = /*@__PURE__*/ S.Array(
+const LookupSectionResponseSectionsList = /*@__PURE__*/ S.Array(
   LookupSectionResponseSectionsItem,
 ) as any as S.Schema<LookupSectionResponseSectionsList>;
 
@@ -209,7 +209,7 @@ export interface LookupSectionResponse {
   /** Sections in the canvas that match the provided criteria */
   sections: LookupSectionResponseSectionsList;
 }
-export const LookupSectionResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupSectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     sections: LookupSectionResponseSectionsList,
@@ -218,12 +218,12 @@ export const LookupSectionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of channels you wish to update access for. Can only be used if user_ids is not provided. */
 export type SetAccessRequestChannelIdsList = Array<string>;
-export const SetAccessRequestChannelIdsList =
+const SetAccessRequestChannelIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessRequestChannelIdsList>;
 
 /** List of users you wish to update access for. Can only be used if channel_ids is not provided. */
 export type SetAccessRequestUserIdsList = Array<string>;
-export const SetAccessRequestUserIdsList =
+const SetAccessRequestUserIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessRequestUserIdsList>;
 
 export interface SetAccessRequest {
@@ -236,7 +236,7 @@ export interface SetAccessRequest {
   /** List of users you wish to update access for. Can only be used if channel_ids is not provided. */
   user_ids?: SetAccessRequestUserIdsList;
 }
-export const SetAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const SetAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canvas_id: S.String,
     access_level: S.String,
@@ -247,14 +247,8 @@ export const SetAccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The channel IDs that could not be updated */
 export type SetAccessResponseFailedToUpdateChannelIdsList = Array<string>;
-export const SetAccessResponseFailedToUpdateChannelIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessResponseFailedToUpdateChannelIdsList>;
-
 /** The user IDs that could not be updated */
 export type SetAccessResponseFailedToUpdateUserIdsList = Array<string>;
-export const SetAccessResponseFailedToUpdateUserIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessResponseFailedToUpdateUserIdsList>;
-
 export interface SetAccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -263,7 +257,7 @@ export interface SetAccessResponse {
   /** The user IDs that could not be updated */
   failed_to_update_user_ids?: SetAccessResponseFailedToUpdateUserIdsList;
 }
-export const SetAccessResponse = DeleteAccessResponse as any as S.Schema<SetAccessResponse>;
+const SetAccessResponse = DeleteAccessResponse as any as S.Schema<SetAccessResponse>;
 
 export type CreateCanvaseError = SlackOpError;
 /** Create canvas for a user Required scopes -- bot: `canvases:write`; user: `canvases:write`; seamless_user: `seamless.user` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `canvas_disabled_user_team` -- Canvas is disabled on user's team - `restricted_action` -- User does not have permission to perform this action. - `canvas_creation_failed` -- Canvas was unable to be created. - `free_team_canvas_tab_already_exists` -- Free teams are limited to one canvas tab per channel - `free_teams_cannot_create_standalone_canvases` -- Free teams cannot create standalone canvases See https://docs.slack.dev/reference/methods/canvases.create */

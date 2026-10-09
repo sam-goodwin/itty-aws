@@ -23,7 +23,7 @@ export interface AddDHCPStaticAddressRequest {
   /** Name of the DHCP static lease */
   name?: string;
 }
-export const AddDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -53,7 +53,7 @@ export interface XdslDHCPStaticAddress {
   /** ID of the ongoing todo (NULL if none) */
   taskId?: number | null;
 }
-export const XdslDHCPStaticAddress = /*@__PURE__*/ S.suspend(() =>
+const XdslDHCPStaticAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IPAddress: S.optional(S.String),
     MACAddress: S.optional(S.String),
@@ -64,11 +64,11 @@ export const XdslDHCPStaticAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** Frequency between notifications. */
 export type XdslMonitoringNotificationsFrequencyEnum = "1h" | "5m" | "6h" | "once";
-export const XdslMonitoringNotificationsFrequencyEnum = S.String;
+const XdslMonitoringNotificationsFrequencyEnum = S.String;
 
 /** Type of notification. */
 export type XdslMonitoringNotificationsTypeEnum = "mail" | "sms";
-export const XdslMonitoringNotificationsTypeEnum = S.String;
+const XdslMonitoringNotificationsTypeEnum = S.String;
 
 export interface AddMonitoringNotificationRequest {
   /** Service name */
@@ -88,7 +88,7 @@ export interface AddMonitoringNotificationRequest {
   /** Type of notification. */
   type: XdslMonitoringNotificationsTypeEnum | (string & {});
 }
-export const AddMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const AddMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     allowIncident: S.optional(S.Boolean),
@@ -124,7 +124,7 @@ export interface XdslMonitoringNotification {
   smsAccount?: string | null;
   type?: XdslMonitoringNotificationsTypeEnum;
 }
-export const XdslMonitoringNotification = /*@__PURE__*/ S.suspend(() =>
+const XdslMonitoringNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowIncident: S.optional(S.Boolean),
     downThreshold: S.optional(S.Number),
@@ -142,7 +142,7 @@ export const XdslMonitoringNotification = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of protocol for the Port Mapping */
 export type XdslXdslModemConfigProtocolTypeEnum = "TCP" | "UDP";
-export const XdslXdslModemConfigProtocolTypeEnum = S.String;
+const XdslXdslModemConfigProtocolTypeEnum = S.String;
 
 export interface AddPortMappingRequest {
   /** Service name */
@@ -166,7 +166,7 @@ export interface AddPortMappingRequest {
   /** Type of protocol for the Port Mapping */
   protocol: XdslXdslModemConfigProtocolTypeEnum | (string & {});
 }
-export const AddPortMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const AddPortMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     allowedRemoteIp: S.optional(S.String),
@@ -206,7 +206,7 @@ export interface XdslPortMapping {
   /** ID of the ongoing todo (NULL if none) */
   taskId?: number | null;
 }
-export const XdslPortMapping = /*@__PURE__*/ S.suspend(() =>
+const XdslPortMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedRemoteIp: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -228,7 +228,7 @@ export interface ApplyTemplateModemRequest {
   /** Modem Template Name */
   templateName: string;
 }
-export const ApplyTemplateModemRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyTemplateModemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     templateName: S.String,
@@ -239,7 +239,7 @@ export const ApplyTemplateModemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of a task. */
 export type XdslTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo";
-export const XdslTaskStatusEnum = S.String;
+const XdslTaskStatusEnum = S.String;
 
 /** Describes the current status of a task */
 export interface XdslTask {
@@ -250,7 +250,7 @@ export interface XdslTask {
   todoDate?: string;
   updateDate?: string;
 }
-export const XdslTask = /*@__PURE__*/ S.suspend(() =>
+const XdslTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(S.String),
     id: S.optional(S.Number),
@@ -266,7 +266,7 @@ export interface ArchiveXdslTaskRequest {
   /** Id */
   id: number;
 }
-export const ArchiveXdslTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchiveXdslTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -274,7 +274,7 @@ export const ArchiveXdslTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArchiveXdslTaskRequest" }) as any as S.Schema<ArchiveXdslTaskRequest>;
 
 export interface ArchiveXdslTaskResponse {}
-export const ArchiveXdslTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ArchiveXdslTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ArchiveXdslTaskResponse",
 }) as any as S.Schema<ArchiveXdslTaskResponse>;
 
@@ -288,7 +288,7 @@ export interface BookMeetingRequest {
   /** Meeting ui code ( code linked to the meeting returned by POST /xdsl/{serviceName}/orderMeetings ) */
   uiCode: string;
 }
-export const BookMeetingRequest = /*@__PURE__*/ S.suspend(() =>
+const BookMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     endDate: S.String,
@@ -298,7 +298,7 @@ export const BookMeetingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BookMeetingRequest" }) as any as S.Schema<BookMeetingRequest>;
 
 export interface BookMeetingResponse {}
-export const BookMeetingResponse = ArchiveXdslTaskResponse as any as S.Schema<BookMeetingResponse>;
+const BookMeetingResponse = ArchiveXdslTaskResponse as any as S.Schema<BookMeetingResponse>;
 
 export interface CancelXdslLinesDiagnosticRequest {
   /** Service name */
@@ -306,7 +306,7 @@ export interface CancelXdslLinesDiagnosticRequest {
   /** Number */
   number: string;
 }
-export const CancelXdslLinesDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelXdslLinesDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -322,9 +322,7 @@ export const CancelXdslLinesDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelXdslLinesDiagnosticRequest>;
 
 export interface CancelXdslLinesDiagnosticResponse {}
-export const CancelXdslLinesDiagnosticResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CancelXdslLinesDiagnosticResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelXdslLinesDiagnosticResponse",
 }) as any as S.Schema<CancelXdslLinesDiagnosticResponse>;
 
@@ -332,7 +330,7 @@ export interface CancelXdslResiliationRequest {
   /** Service name */
   serviceName: string;
 }
-export const CancelXdslResiliationRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelXdslResiliationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/cancelResiliation", code: 200 })),
@@ -341,7 +339,7 @@ export const CancelXdslResiliationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelXdslResiliationRequest>;
 
 export interface CancelXdslResiliationResponse {}
-export const CancelXdslResiliationResponse =
+const CancelXdslResiliationResponse =
   ArchiveXdslTaskResponse as any as S.Schema<CancelXdslResiliationResponse>;
 
 export interface ChangeContactRequest {
@@ -354,7 +352,7 @@ export interface ChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const ChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -364,12 +362,12 @@ export const ChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChangeContactRequest" }) as any as S.Schema<ChangeContactRequest>;
 
 export type ChangeContactResponseBodyList = Array<number>;
-export const ChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const ChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ChangeContactResponseBodyList>;
 
 export type ChangeContactResponse = ChangeContactResponseBodyList;
-export const ChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   ChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ChangeContactResponse" }) as any as S.Schema<ChangeContactResponse>;
 
@@ -379,7 +377,7 @@ export interface ChangeEmailPasswordRequest {
   /** New email password */
   password: string | Redacted.Redacted<string>;
 }
-export const ChangeEmailPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeEmailPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -390,7 +388,7 @@ export const ChangeEmailPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of an Email Pro task. */
 export type XdslEmailProTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo";
-export const XdslEmailProTaskStatusEnum = S.String;
+const XdslEmailProTaskStatusEnum = S.String;
 
 /** Task Struct */
 export interface XdslEmailProTask {
@@ -403,7 +401,7 @@ export interface XdslEmailProTask {
   /** Todo date of the task */
   todoDate?: string;
 }
-export const XdslEmailProTask = /*@__PURE__*/ S.suspend(() =>
+const XdslEmailProTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finishDate: S.optional(S.NullOr(S.String)),
     function: S.optional(S.String),
@@ -420,7 +418,7 @@ export interface ChangeLineDSLAMProfileRequest {
   /** The id of the xdsl.DslamLineProfile */
   dslamProfileId: number;
 }
-export const ChangeLineDSLAMProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeLineDSLAMProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -442,7 +440,7 @@ export interface CreateModemTemplateRequest {
   /** The access name with the config you want to duplicate */
   serviceName: string;
 }
-export const CreateModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     serviceName: S.String,
@@ -474,7 +472,7 @@ export interface XdslTemplateModemDHCP {
   /** IP address (e.g., 192.0.2.0) */
   subnetMask?: string;
 }
-export const XdslTemplateModemDHCP = /*@__PURE__*/ S.suspend(() =>
+const XdslTemplateModemDHCP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultGateway: S.optional(S.String),
     dhcpName: S.optional(S.String),
@@ -491,13 +489,13 @@ export const XdslTemplateModemDHCP = /*@__PURE__*/ S.suspend(() =>
 
 /** List of DHCP for this template */
 export type XdslTemplateModemDHCPList = Array<XdslTemplateModemDHCP>;
-export const XdslTemplateModemDHCPList = /*@__PURE__*/ S.Array(
+const XdslTemplateModemDHCPList = /*@__PURE__*/ S.Array(
   XdslTemplateModemDHCP,
 ) as any as S.Schema<XdslTemplateModemDHCPList>;
 
 /** How the modem gets its LAN IP Address */
 export type XdslXdslModemConfigAddressingTypeEnum = "DHCP" | "Static";
-export const XdslXdslModemConfigAddressingTypeEnum = S.String;
+const XdslXdslModemConfigAddressingTypeEnum = S.String;
 
 /** LAN Configuration for Modem Template */
 export interface XdslTemplateModemLAN {
@@ -510,7 +508,7 @@ export interface XdslTemplateModemLAN {
   /** IP address (e.g., 192.0.2.0) */
   subnetMask?: string;
 }
-export const XdslTemplateModemLAN = /*@__PURE__*/ S.suspend(() =>
+const XdslTemplateModemLAN = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IPAddress: S.optional(S.String),
     addressingType: S.optional(XdslXdslModemConfigAddressingTypeEnum),
@@ -521,17 +519,17 @@ export const XdslTemplateModemLAN = /*@__PURE__*/ S.suspend(() =>
 
 /** List of LAN for this template */
 export type XdslTemplateModemLANList = Array<XdslTemplateModemLAN>;
-export const XdslTemplateModemLANList = /*@__PURE__*/ S.Array(
+const XdslTemplateModemLANList = /*@__PURE__*/ S.Array(
   XdslTemplateModemLAN,
 ) as any as S.Schema<XdslTemplateModemLANList>;
 
 /** How the WiFi channel is selected */
 export type XdslXdslModemConfigChannelModeEnum = "Auto" | "Manual";
-export const XdslXdslModemConfigChannelModeEnum = S.String;
+const XdslXdslModemConfigChannelModeEnum = S.String;
 
 /** Modem frequency */
 export type XdslXdslModemConfigFrequencyEnum = "2.4GHz" | "5GHz";
-export const XdslXdslModemConfigFrequencyEnum = S.String;
+const XdslXdslModemConfigFrequencyEnum = S.String;
 
 /** Type of WLAN security protection */
 export type XdslTemplateModemSecurityTypeEnum =
@@ -541,7 +539,7 @@ export type XdslTemplateModemSecurityTypeEnum =
   | "WPA2andWPA3"
   | "WPA3"
   | "WPAandWPA2";
-export const XdslTemplateModemSecurityTypeEnum = S.String;
+const XdslTemplateModemSecurityTypeEnum = S.String;
 
 /** WLAN Configuration for Modem Template */
 export interface XdslTemplateModemWLAN {
@@ -568,7 +566,7 @@ export interface XdslTemplateModemWLAN {
   /** Wifi Name */
   wifiName?: string;
 }
-export const XdslTemplateModemWLAN = /*@__PURE__*/ S.suspend(() =>
+const XdslTemplateModemWLAN = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SSID: S.optional(S.String),
     SSIDAdvertisementEnabled: S.optional(S.Boolean),
@@ -586,23 +584,23 @@ export const XdslTemplateModemWLAN = /*@__PURE__*/ S.suspend(() =>
 
 /** List of WLAN for this template */
 export type XdslTemplateModemWLANList = Array<XdslTemplateModemWLAN>;
-export const XdslTemplateModemWLANList = /*@__PURE__*/ S.Array(
+const XdslTemplateModemWLANList = /*@__PURE__*/ S.Array(
   XdslTemplateModemWLAN,
 ) as any as S.Schema<XdslTemplateModemWLANList>;
 
 /** Size of the Maximum Transmission Unit on the modem's interfaces */
 export type XdslXdslModemConfigMTUSizeEnum = 1432 | 1456 | 1492;
-export const XdslXdslModemConfigMTUSizeEnum = S.Number;
+const XdslXdslModemConfigMTUSizeEnum = S.Number;
 
 /** WLAN names list to ignore. Ignore only listed WLAN */
 export type XdslTemplateModemParametersToIgnoreWLANListList = Array<string>;
-export const XdslTemplateModemParametersToIgnoreWLANListList = /*@__PURE__*/ S.Array(
+const XdslTemplateModemParametersToIgnoreWLANListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<XdslTemplateModemParametersToIgnoreWLANListList>;
 
 /** PortMapping names list to ignore. Ignore only listed portMapping */
 export type XdslTemplateModemParametersToIgnorePortMappingListList = Array<string>;
-export const XdslTemplateModemParametersToIgnorePortMappingListList =
+const XdslTemplateModemParametersToIgnorePortMappingListList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslTemplateModemParametersToIgnorePortMappingListList>;
 
 /** Parameters and values to ignore when apply modem template configuration */
@@ -618,7 +616,7 @@ export interface XdslTemplateModemParametersToIgnore {
   /** PortMapping names list to ignore. Ignore only listed portMapping */
   portMappingList?: XdslTemplateModemParametersToIgnorePortMappingListList | null;
 }
-export const XdslTemplateModemParametersToIgnore = /*@__PURE__*/ S.suspend(() =>
+const XdslTemplateModemParametersToIgnore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LANandDHCP: S.optional(S.NullOr(S.Boolean)),
     WLANList: S.optional(S.NullOr(XdslTemplateModemParametersToIgnoreWLANListList)),
@@ -649,7 +647,7 @@ export interface XdslTemplateModemPortMapping {
   /** Type of protocol for the Port Mapping */
   protocol?: XdslXdslModemConfigProtocolTypeEnum;
 }
-export const XdslTemplateModemPortMapping = /*@__PURE__*/ S.suspend(() =>
+const XdslTemplateModemPortMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedRemoteIp: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -666,7 +664,7 @@ export const XdslTemplateModemPortMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** List of PortMapping for this template */
 export type XdslTemplateModemPortMappingList = Array<XdslTemplateModemPortMapping>;
-export const XdslTemplateModemPortMappingList = /*@__PURE__*/ S.Array(
+const XdslTemplateModemPortMappingList = /*@__PURE__*/ S.Array(
   XdslTemplateModemPortMapping,
 ) as any as S.Schema<XdslTemplateModemPortMappingList>;
 
@@ -693,7 +691,7 @@ export interface XdslTemplateModem {
   /** List of PortMapping for this template */
   portMapping?: XdslTemplateModemPortMappingList;
 }
-export const XdslTemplateModem = /*@__PURE__*/ S.suspend(() =>
+const XdslTemplateModem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DHCP: S.optional(XdslTemplateModemDHCPList),
     LAN: S.optional(XdslTemplateModemLANList),
@@ -712,7 +710,7 @@ export interface CreateXdslAddressMoveExtraIpRangeMoveRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateXdslAddressMoveExtraIpRangeMoveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateXdslAddressMoveExtraIpRangeMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -726,7 +724,7 @@ export interface CreateXdslDiagnosticRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateXdslDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateXdslDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/diagnostic", code: 200 })),
@@ -738,7 +736,7 @@ export interface CreateXdslIpsRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/ips", code: 200 })),
@@ -748,7 +746,7 @@ export interface CreateXdslModemReconfigureVoipRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateXdslModemReconfigureVoipRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateXdslModemReconfigureVoipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/reconfigureVoip", code: 200 })),
@@ -757,14 +755,14 @@ export const CreateXdslModemReconfigureVoipRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateXdslModemReconfigureVoipRequest>;
 
 export interface CreateXdslModemReconfigureVoipResponse {}
-export const CreateXdslModemReconfigureVoipResponse =
+const CreateXdslModemReconfigureVoipResponse =
   CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslModemReconfigureVoipResponse>;
 
 export interface CreateXdslRequestPPPLoginMailRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateXdslRequestPPPLoginMailRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateXdslRequestPPPLoginMailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/requestPPPLoginMail", code: 200 })),
@@ -773,14 +771,14 @@ export const CreateXdslRequestPPPLoginMailRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateXdslRequestPPPLoginMailRequest>;
 
 export interface CreateXdslRequestPPPLoginMailResponse {}
-export const CreateXdslRequestPPPLoginMailResponse =
+const CreateXdslRequestPPPLoginMailResponse =
   CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslRequestPPPLoginMailResponse>;
 
 export interface CreateXdslSpareReturnMerchandiseRequest {
   /** Spare */
   spare: string;
 }
-export const CreateXdslSpareReturnMerchandiseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateXdslSpareReturnMerchandiseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/spare/{spare}/returnMerchandise", code: 200 })),
@@ -789,14 +787,14 @@ export const CreateXdslSpareReturnMerchandiseRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateXdslSpareReturnMerchandiseRequest>;
 
 export interface CreateXdslSpareReturnMerchandiseResponse {}
-export const CreateXdslSpareReturnMerchandiseResponse =
+const CreateXdslSpareReturnMerchandiseResponse =
   CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslSpareReturnMerchandiseResponse>;
 
 export interface DeleteModemTemplateRequest {
   /** Name */
   name: string;
 }
-export const DeleteModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/templateModem/{name}", code: 200 })),
@@ -805,14 +803,14 @@ export const DeleteModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteModemTemplateRequest>;
 
 export interface DeleteModemTemplateResponse {}
-export const DeleteModemTemplateResponse =
+const DeleteModemTemplateResponse =
   ArchiveXdslTaskResponse as any as S.Schema<DeleteModemTemplateResponse>;
 
 export interface DeleteXdslEmailProRequest {
   /** Email */
   email: string;
 }
-export const DeleteXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/email/pro/{email}", code: 200 })),
@@ -821,7 +819,7 @@ export const DeleteXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteXdslEmailProRequest>;
 
 export interface DeleteXdslEmailProResponse {}
-export const DeleteXdslEmailProResponse =
+const DeleteXdslEmailProResponse =
   ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslEmailProResponse>;
 
 export interface DeleteXdslIpsRequest {
@@ -830,7 +828,7 @@ export interface DeleteXdslIpsRequest {
   /** Ip */
   ip: string;
 }
-export const DeleteXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -838,8 +836,7 @@ export const DeleteXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteXdslIpsRequest" }) as any as S.Schema<DeleteXdslIpsRequest>;
 
 export interface DeleteXdslIpsResponse {}
-export const DeleteXdslIpsResponse =
-  ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslIpsResponse>;
+const DeleteXdslIpsResponse = ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslIpsResponse>;
 
 export interface DeleteXdslRmaRequest {
   /** Service name */
@@ -847,7 +844,7 @@ export interface DeleteXdslRmaRequest {
   /** Id */
   id: string;
 }
-export const DeleteXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -855,28 +852,26 @@ export const DeleteXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteXdslRmaRequest" }) as any as S.Schema<DeleteXdslRmaRequest>;
 
 export interface DeleteXdslRmaResponse {}
-export const DeleteXdslRmaResponse =
-  ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslRmaResponse>;
+const DeleteXdslRmaResponse = ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslRmaResponse>;
 
 export interface DeleteXdslSpareRequest {
   /** Spare */
   spare: string;
 }
-export const DeleteXdslSpareRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteXdslSpareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/xdsl/spare/{spare}", code: 200 })),
 ).annotate({ identifier: "DeleteXdslSpareRequest" }) as any as S.Schema<DeleteXdslSpareRequest>;
 
 export interface DeleteXdslSpareResponse {}
-export const DeleteXdslSpareResponse =
-  ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslSpareResponse>;
+const DeleteXdslSpareResponse = ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslSpareResponse>;
 
 export interface GetAccessModemReplacementRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetAccessModemReplacementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessModemReplacementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/comfortExchange", code: 200 })),
@@ -901,7 +896,7 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-export const OrderCurrencyCodeEnum = S.String;
+const OrderCurrencyCodeEnum = S.String;
 
 /** Price with its currency and textual representation */
 export interface OrderPrice {
@@ -914,7 +909,7 @@ export interface OrderPrice {
   /** The effective price */
   value?: number;
 }
-export const OrderPrice = /*@__PURE__*/ S.suspend(() =>
+const OrderPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     priceInUcents: S.optional(S.NullOr(S.Number)),
@@ -934,7 +929,7 @@ export interface XdslModemExchangeInfo {
   /** Price with it's currency and textual representation */
   priceWithTax?: OrderPrice;
 }
-export const XdslModemExchangeInfo = /*@__PURE__*/ S.suspend(() =>
+const XdslModemExchangeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canExchange: S.optional(S.Boolean),
     newModel: S.optional(S.String),
@@ -947,7 +942,7 @@ export interface GetBlocIPStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetBlocIPStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlocIPStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/blocIp", code: 200 })),
@@ -955,10 +950,10 @@ export const GetBlocIPStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the service */
 export type XdslServiceStatusEnum = "disabled" | "enabled";
-export const XdslServiceStatusEnum = S.String;
+const XdslServiceStatusEnum = S.String;
 
 export type GetBlocIPStatusResponse = XdslServiceStatusEnum;
-export const GetBlocIPStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBlocIPStatusResponse = /*@__PURE__*/ S.suspend(() =>
   XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetBlocIPStatusResponse" }) as any as S.Schema<GetBlocIPStatusResponse>;
 
@@ -966,7 +961,7 @@ export interface GetContentSharingStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetContentSharingStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContentSharingStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/contentSharing", code: 200 })),
@@ -975,7 +970,7 @@ export const GetContentSharingStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContentSharingStatusRequest>;
 
 export type GetContentSharingStatusResponse = XdslServiceStatusEnum;
-export const GetContentSharingStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContentSharingStatusResponse = /*@__PURE__*/ S.suspend(() =>
   XdslServiceStatusEnum.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetContentSharingStatusResponse",
@@ -991,7 +986,7 @@ export interface GetDHCPStaticAddressRequest {
   /** macaddress */
   MACAddress: string;
 }
-export const GetDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -1016,7 +1011,7 @@ export interface GetDHCPStaticAddressesRequest {
   /** Dhcp name */
   dhcpName: string;
 }
-export const GetDHCPStaticAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDHCPStaticAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -1033,11 +1028,11 @@ export const GetDHCPStaticAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDHCPStaticAddressesRequest>;
 
 export type GetDHCPStaticAddressesResponseBodyList = Array<string>;
-export const GetDHCPStaticAddressesResponseBodyList =
+const GetDHCPStaticAddressesResponseBodyList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<GetDHCPStaticAddressesResponseBodyList>;
 
 export type GetDHCPStaticAddressesResponse = GetDHCPStaticAddressesResponseBodyList;
-export const GetDHCPStaticAddressesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDHCPStaticAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   GetDHCPStaticAddressesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDHCPStaticAddressesResponse",
@@ -1047,7 +1042,7 @@ export interface GetFirmwareVersionRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetFirmwareVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFirmwareVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/firmware", code: 200 })),
@@ -1056,7 +1051,7 @@ export const GetFirmwareVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFirmwareVersionRequest>;
 
 export type GetFirmwareVersionResponse = string;
-export const GetFirmwareVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFirmwareVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetFirmwareVersionResponse",
@@ -1066,35 +1061,34 @@ export interface GetFTPStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetFTPStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFTPStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/ftp", code: 200 })),
 ).annotate({ identifier: "GetFTPStatusRequest" }) as any as S.Schema<GetFTPStatusRequest>;
 
 export type GetFTPStatusResponse = XdslServiceStatusEnum;
-export const GetFTPStatusResponse =
-  GetBlocIPStatusResponse as any as S.Schema<GetFTPStatusResponse>;
+const GetFTPStatusResponse = GetBlocIPStatusResponse as any as S.Schema<GetFTPStatusResponse>;
 
 export interface GetIpsecAlgStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetIpsecAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpsecAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/ipsecAlg", code: 200 })),
 ).annotate({ identifier: "GetIpsecAlgStatusRequest" }) as any as S.Schema<GetIpsecAlgStatusRequest>;
 
 export type GetIpsecAlgStatusResponse = XdslServiceStatusEnum;
-export const GetIpsecAlgStatusResponse =
+const GetIpsecAlgStatusResponse =
   GetContentSharingStatusResponse as any as S.Schema<GetIpsecAlgStatusResponse>;
 
 export interface GetModemCallWaitingStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetModemCallWaitingStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModemCallWaitingStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/callWaiting", code: 200 })),
@@ -1103,30 +1097,27 @@ export const GetModemCallWaitingStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetModemCallWaitingStatusRequest>;
 
 export type GetModemCallWaitingStatusResponse = XdslServiceStatusEnum;
-export const GetModemCallWaitingStatusResponse =
+const GetModemCallWaitingStatusResponse =
   GetContentSharingStatusResponse as any as S.Schema<GetModemCallWaitingStatusResponse>;
 
 export interface GetModemTemplateRequest {
   /** Name */
   name: string;
 }
-export const GetModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/templateModem/{name}", code: 200 })),
 ).annotate({ identifier: "GetModemTemplateRequest" }) as any as S.Schema<GetModemTemplateRequest>;
 
 export interface GetModemTemplatesRequest {}
-export const GetModemTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModemTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/xdsl/templateModem", code: 200 })),
 ).annotate({ identifier: "GetModemTemplatesRequest" }) as any as S.Schema<GetModemTemplatesRequest>;
 
 export type GetModemTemplatesResponseBodyList = Array<string>;
-export const GetModemTemplatesResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<GetModemTemplatesResponseBodyList>;
-
 export type GetModemTemplatesResponse = GetModemTemplatesResponseBodyList;
-export const GetModemTemplatesResponse =
+const GetModemTemplatesResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<GetModemTemplatesResponse>;
 
 export interface GetMonitoringNotificationRequest {
@@ -1135,7 +1126,7 @@ export interface GetMonitoringNotificationRequest {
   /** Id */
   id: number;
 }
-export const GetMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1150,7 +1141,7 @@ export interface GetMonitoringNotificationsRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetMonitoringNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoringNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/monitoringNotifications", code: 200 })),
@@ -1159,11 +1150,11 @@ export const GetMonitoringNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMonitoringNotificationsRequest>;
 
 export type GetMonitoringNotificationsResponseBodyList = Array<number>;
-export const GetMonitoringNotificationsResponseBodyList =
+const GetMonitoringNotificationsResponseBodyList =
   ChangeContactResponseBodyList as any as S.Schema<GetMonitoringNotificationsResponseBodyList>;
 
 export type GetMonitoringNotificationsResponse = GetMonitoringNotificationsResponseBodyList;
-export const GetMonitoringNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoringNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
   GetMonitoringNotificationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetMonitoringNotificationsResponse",
@@ -1175,7 +1166,7 @@ export interface GetPortMappingRequest {
   /** Name */
   name: string;
 }
-export const GetPortMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPortMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1188,18 +1179,18 @@ export interface GetPortMappingsRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetPortMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPortMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/portMappings", code: 200 })),
 ).annotate({ identifier: "GetPortMappingsRequest" }) as any as S.Schema<GetPortMappingsRequest>;
 
 export type GetPortMappingsResponseBodyList = Array<string>;
-export const GetPortMappingsResponseBodyList =
+const GetPortMappingsResponseBodyList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<GetPortMappingsResponseBodyList>;
 
 export type GetPortMappingsResponse = GetPortMappingsResponseBodyList;
-export const GetPortMappingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPortMappingsResponse = /*@__PURE__*/ S.suspend(() =>
   GetPortMappingsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetPortMappingsResponse" }) as any as S.Schema<GetPortMappingsResponse>;
 
@@ -1207,49 +1198,47 @@ export interface GetSipAlgStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetSipAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSipAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/sipAlg", code: 200 })),
 ).annotate({ identifier: "GetSipAlgStatusRequest" }) as any as S.Schema<GetSipAlgStatusRequest>;
 
 export type GetSipAlgStatusResponse = XdslServiceStatusEnum;
-export const GetSipAlgStatusResponse =
-  GetBlocIPStatusResponse as any as S.Schema<GetSipAlgStatusResponse>;
+const GetSipAlgStatusResponse = GetBlocIPStatusResponse as any as S.Schema<GetSipAlgStatusResponse>;
 
 export interface GetUpnpStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetUpnpStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpnpStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/upnp", code: 200 })),
 ).annotate({ identifier: "GetUpnpStatusRequest" }) as any as S.Schema<GetUpnpStatusRequest>;
 
 export type GetUpnpStatusResponse = XdslServiceStatusEnum;
-export const GetUpnpStatusResponse =
-  GetBlocIPStatusResponse as any as S.Schema<GetUpnpStatusResponse>;
+const GetUpnpStatusResponse = GetBlocIPStatusResponse as any as S.Schema<GetUpnpStatusResponse>;
 
 export interface GetWifiMeshStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetWifiMeshStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWifiMeshStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/mesh", code: 200 })),
 ).annotate({ identifier: "GetWifiMeshStatusRequest" }) as any as S.Schema<GetWifiMeshStatusRequest>;
 
 export type GetWifiMeshStatusResponse = XdslServiceStatusEnum;
-export const GetWifiMeshStatusResponse =
+const GetWifiMeshStatusResponse =
   GetContentSharingStatusResponse as any as S.Schema<GetWifiMeshStatusResponse>;
 
 export interface GetWifiOneSsidStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetWifiOneSsidStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWifiOneSsidStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/onessid", code: 200 })),
@@ -1258,14 +1247,14 @@ export const GetWifiOneSsidStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWifiOneSsidStatusRequest>;
 
 export type GetWifiOneSsidStatusResponse = XdslServiceStatusEnum;
-export const GetWifiOneSsidStatusResponse =
+const GetWifiOneSsidStatusResponse =
   GetContentSharingStatusResponse as any as S.Schema<GetWifiOneSsidStatusResponse>;
 
 export interface GetXdslRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}", code: 200 })),
@@ -1273,7 +1262,7 @@ export const GetXdslRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible DSL technologies */
 export type XdslDslTypeEnum = "adsl" | "ftte" | "ftth" | "sdsl" | "vdsl";
-export const XdslDslTypeEnum = S.String;
+const XdslDslTypeEnum = S.String;
 
 /** All components of an address */
 export interface XdslAddressDetail {
@@ -1293,7 +1282,7 @@ export interface XdslAddressDetail {
   street?: string;
   zipCode?: string;
 }
-export const XdslAddressDetail = /*@__PURE__*/ S.suspend(() =>
+const XdslAddressDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     building: S.optional(S.NullOr(S.String)),
     city: S.optional(S.String),
@@ -1320,7 +1309,7 @@ export interface XdslAccessCapabilities {
   canResetDslamPort?: boolean;
   hasDslamPort?: boolean;
 }
-export const XdslAccessCapabilities = /*@__PURE__*/ S.suspend(() =>
+const XdslAccessCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canApplyLnsRateLimit: S.optional(S.Boolean),
     canChangeDslamProfile: S.optional(S.Boolean),
@@ -1333,7 +1322,7 @@ export const XdslAccessCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -1349,7 +1338,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -1360,7 +1349,7 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Status allowed for mail sending */
 export type XdslMailSendingAccessStatusEnum = "blockedForSpam" | "disabled" | "enabled";
-export const XdslMailSendingAccessStatusEnum = S.String;
+const XdslMailSendingAccessStatusEnum = S.String;
 
 /** The providers */
 export type XdslProviderEnum =
@@ -1372,11 +1361,11 @@ export type XdslProviderEnum =
   | "koscDeg"
   | "ovh"
   | "sfr";
-export const XdslProviderEnum = S.String;
+const XdslProviderEnum = S.String;
 
 /** Available access roles */
 export type XdslAccessRoleEnum = "backup" | "main";
-export const XdslAccessRoleEnum = S.String;
+const XdslAccessRoleEnum = S.String;
 
 /** Status of the access */
 export type XdslAccessStatusEnum =
@@ -1389,7 +1378,7 @@ export type XdslAccessStatusEnum =
   | "slamming"
   | "terminated"
   | "upgradeOffer";
-export const XdslAccessStatusEnum = S.String;
+const XdslAccessStatusEnum = S.String;
 
 /** XDSL Access */
 export interface XdslAccessWithIAM {
@@ -1418,7 +1407,7 @@ export interface XdslAccessWithIAM {
   role?: XdslAccessRoleEnum;
   status?: XdslAccessStatusEnum;
 }
-export const XdslAccessWithIAM = /*@__PURE__*/ S.suspend(() =>
+const XdslAccessWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessName: S.optional(S.String),
     accessType: S.optional(XdslDslTypeEnum),
@@ -1444,7 +1433,7 @@ export interface GetXdslAddressMoveExtraIpRangeRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslAddressMoveExtraIpRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslAddressMoveExtraIpRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1463,7 +1452,7 @@ export interface XdslExtraIpRangeMove {
   /** Access where the IP range will be moved to */
   moveTo?: string;
 }
-export const XdslExtraIpRangeMove = /*@__PURE__*/ S.suspend(() =>
+const XdslExtraIpRangeMove = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     ipRange: S.optional(S.String),
@@ -1477,7 +1466,7 @@ export interface GetXdslAntiSpamRequest {
   /** Ip */
   ip: string;
 }
-export const GetXdslAntiSpamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslAntiSpamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -1486,7 +1475,7 @@ export const GetXdslAntiSpamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** AntiSpam status */
 export type XdslAntiSpamAntiSpamStatusEnum = "block" | "done" | "new" | "unblock" | "warn";
-export const XdslAntiSpamAntiSpamStatusEnum = S.String;
+const XdslAntiSpamAntiSpamStatusEnum = S.String;
 
 /** Spams detected from xdsl access */
 export interface XdslAntiSpam {
@@ -1499,7 +1488,7 @@ export interface XdslAntiSpam {
   /** AntiSpam status */
   status?: XdslAntiSpamAntiSpamStatusEnum;
 }
-export const XdslAntiSpam = /*@__PURE__*/ S.suspend(() =>
+const XdslAntiSpam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     ip: S.optional(S.String),
@@ -1512,7 +1501,7 @@ export interface GetXdslCanCancelResiliationRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslCanCancelResiliationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslCanCancelResiliationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/canCancelResiliation", code: 200 })),
@@ -1521,7 +1510,7 @@ export const GetXdslCanCancelResiliationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetXdslCanCancelResiliationRequest>;
 
 export type GetXdslCanCancelResiliationResponse = boolean;
-export const GetXdslCanCancelResiliationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetXdslCanCancelResiliationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetXdslCanCancelResiliationResponse",
@@ -1531,7 +1520,7 @@ export interface GetXdslDiagnosticRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/diagnostic", code: 200 })),
@@ -1547,7 +1536,7 @@ export interface XdslAccessDiagnosticCapabilities {
   proposedProfileId?: boolean;
   sync?: boolean;
 }
-export const XdslAccessDiagnosticCapabilities = /*@__PURE__*/ S.suspend(() =>
+const XdslAccessDiagnosticCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incident: S.optional(S.Boolean),
     isActiveOnLns: S.optional(S.Boolean),
@@ -1568,7 +1557,7 @@ export type XdslLineTestEnum =
   | "error"
   | "noProblem"
   | "ovhSideProblem";
-export const XdslLineTestEnum = S.String;
+const XdslLineTestEnum = S.String;
 
 /** Detailed line tests */
 export interface XdslLineDiagnostic {
@@ -1578,7 +1567,7 @@ export interface XdslLineDiagnostic {
   proposedProfileId?: number | null;
   sync?: boolean;
 }
-export const XdslLineDiagnostic = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnostic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineTest: S.optional(S.NullOr(XdslLineTestEnum)),
     lineTestTime: S.optional(S.NullOr(S.String)),
@@ -1590,7 +1579,7 @@ export const XdslLineDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** Test details by line */
 export type XdslAccessDiagnosticLineDetailsList = Array<XdslLineDiagnostic>;
-export const XdslAccessDiagnosticLineDetailsList = /*@__PURE__*/ S.Array(
+const XdslAccessDiagnosticLineDetailsList = /*@__PURE__*/ S.Array(
   XdslLineDiagnostic,
 ) as any as S.Schema<XdslAccessDiagnosticLineDetailsList>;
 
@@ -1615,7 +1604,7 @@ export interface XdslAccessDiagnostic {
   /** Remaining number of diagnostic for this access */
   remaining?: number;
 }
-export const XdslAccessDiagnostic = /*@__PURE__*/ S.suspend(() =>
+const XdslAccessDiagnostic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilities: S.optional(XdslAccessDiagnosticCapabilities),
     diagnosticTime: S.optional(S.String),
@@ -1633,7 +1622,7 @@ export interface GetXdslEmailProRequest {
   /** Email */
   email: string;
 }
-export const GetXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/email/pro/{email}", code: 200 })),
@@ -1644,7 +1633,7 @@ export interface ComplexTypeUnitAndValueDouble {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -1655,8 +1644,6 @@ export const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
 
 /** complexType.UnitAndValue_long */
 export type ComplexTypeUnitAndValueLong = ComplexTypeUnitAndValueDouble;
-export const ComplexTypeUnitAndValueLong = ComplexTypeUnitAndValueDouble;
-
 /** Current object state */
 export type EmailProObjectStateEnum =
   | "creating"
@@ -1666,7 +1653,7 @@ export type EmailProObjectStateEnum =
   | "suspended"
   | "suspending"
   | "unknown";
-export const EmailProObjectStateEnum = S.String;
+const EmailProObjectStateEnum = S.String;
 
 /** XDSL Email Pro */
 export interface XdslXdslEmailProWithIAM {
@@ -1703,7 +1690,7 @@ export interface XdslXdslEmailProWithIAM {
   /** Pending tasks for this account */
   taskPendingId?: number | null;
 }
-export const XdslXdslEmailProWithIAM = /*@__PURE__*/ S.suspend(() =>
+const XdslXdslEmailProWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentUsage: S.optional(ComplexTypeUnitAndValueDouble),
     displayName: S.optional(S.NullOr(S.String)),
@@ -1730,7 +1717,7 @@ export interface GetXdslFiberEligibilityRequest {
   /** Id */
   id: number;
 }
-export const GetXdslFiberEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslFiberEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1770,7 +1757,7 @@ export interface XdslCopperGridClosureTrajectory {
   /** Technical closure initial date */
   technicalClosureInitialDate?: string | null;
 }
-export const XdslCopperGridClosureTrajectory = /*@__PURE__*/ S.suspend(() =>
+const XdslCopperGridClosureTrajectory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commercialClosureAnnouncementDate: S.optional(S.NullOr(S.String)),
     commercialClosureDate: S.optional(S.NullOr(S.String)),
@@ -1802,11 +1789,11 @@ export type XdslGtrEnum =
   | "5m_4ho"
   | "dplus1"
   | "none";
-export const XdslGtrEnum = S.String;
+const XdslGtrEnum = S.String;
 
 /** Available GRTs */
 export type XdslFiberEligibilityGrtsList = Array<XdslGtrEnum>;
-export const XdslFiberEligibilityGrtsList = /*@__PURE__*/ S.Array(
+const XdslFiberEligibilityGrtsList = /*@__PURE__*/ S.Array(
   XdslGtrEnum,
 ) as any as S.Schema<XdslFiberEligibilityGrtsList>;
 
@@ -1817,7 +1804,7 @@ export interface XdslOffer {
   /** Offer name */
   name?: string;
 }
-export const XdslOffer = /*@__PURE__*/ S.suspend(() =>
+const XdslOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     name: S.optional(S.String),
@@ -1831,7 +1818,7 @@ export interface XdslProvider {
   /** Provider name */
   name?: string;
 }
-export const XdslProvider = XdslOffer as any as S.Schema<XdslProvider>;
+const XdslProvider = XdslOffer as any as S.Schema<XdslProvider>;
 
 /** Status of the fiber eligibility */
 export type XdslFiberEligibilityStatusEnum =
@@ -1839,7 +1826,7 @@ export type XdslFiberEligibilityStatusEnum =
   | "no_building"
   | "not_eligible"
   | "not_yet_eligible";
-export const XdslFiberEligibilityStatusEnum = S.String;
+const XdslFiberEligibilityStatusEnum = S.String;
 
 /** Fiber eligibility */
 export interface XdslFiberEligibility {
@@ -1868,7 +1855,7 @@ export interface XdslFiberEligibility {
   /** Status */
   status?: XdslFiberEligibilityStatusEnum;
 }
-export const XdslFiberEligibility = /*@__PURE__*/ S.suspend(() =>
+const XdslFiberEligibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityDate: S.optional(S.NullOr(S.String)),
     buildingName: S.optional(S.NullOr(S.String)),
@@ -1889,7 +1876,7 @@ export interface GetXdslIncidentRequest {
   /** Id */
   id: number;
 }
-export const GetXdslIncidentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslIncidentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/incidents/{id}", code: 200 })),
@@ -1897,21 +1884,19 @@ export const GetXdslIncidentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Department list */
 export type XdslIncidentDepartmentsList = Array<string>;
-export const XdslIncidentDepartmentsList =
+const XdslIncidentDepartmentsList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIncidentDepartmentsList>;
 
 /** NRA list */
 export type XdslIncidentNraList = Array<string>;
-export const XdslIncidentNraList =
+const XdslIncidentNraList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIncidentNraList>;
 
 /** Operators */
 export type XdslOperatorTypeEnum = "collect" | "kosc" | "ovh";
-export const XdslOperatorTypeEnum = S.String;
-
 /** Operator */
 export type XdslIncidentOperatorsList = Array<XdslOperatorTypeEnum>;
-export const XdslIncidentOperatorsList =
+const XdslIncidentOperatorsList =
   XdslFiberEligibilityGrtsList as any as S.Schema<XdslIncidentOperatorsList>;
 
 /** Detected incident */
@@ -1933,7 +1918,7 @@ export interface XdslIncident {
   taskId?: number | null;
   taskReference?: string | null;
 }
-export const XdslIncident = /*@__PURE__*/ S.suspend(() =>
+const XdslIncident = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     creationDate: S.optional(S.String),
@@ -1951,7 +1936,7 @@ export interface GetXdslIncidentRequest2 {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslIncidentRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetXdslIncidentRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/incident", code: 200 })),
@@ -1963,7 +1948,7 @@ export interface GetXdslIpsRequest {
   /** Ip */
   ip: string;
 }
-export const GetXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -1971,16 +1956,16 @@ export const GetXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetXdslIpsRequest" }) as any as S.Schema<GetXdslIpsRequest>;
 
 export type XdslIPDnsListList = Array<string>;
-export const XdslIPDnsListList =
+const XdslIPDnsListList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIPDnsListList>;
 
 /** Status of an IP. */
 export type XdslIpStatusEnum = "active" | "close" | "toDelete";
-export const XdslIpStatusEnum = S.String;
+const XdslIpStatusEnum = S.String;
 
 /** Ip versions */
 export type CoreTypesIpVersionEnum = "v4" | "v6";
-export const CoreTypesIpVersionEnum = S.String;
+const CoreTypesIpVersionEnum = S.String;
 
 /** Informations about an IP address */
 export interface XdslIP {
@@ -1992,7 +1977,7 @@ export interface XdslIP {
   status?: XdslIpStatusEnum;
   version?: CoreTypesIpVersionEnum;
 }
-export const XdslIP = /*@__PURE__*/ S.suspend(() =>
+const XdslIP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsList: S.optional(XdslIPDnsListList),
     ip: S.optional(S.String),
@@ -2008,7 +1993,7 @@ export interface GetXdslLineRequest {
   /** Number */
   number: string;
 }
-export const GetXdslLineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -2024,7 +2009,7 @@ export interface XdslLandlineConcentrationPoint {
   /** Identifier of the pair at the lineHead's lineInitialSection */
   lineInitialSectionPair?: number;
 }
-export const XdslLandlineConcentrationPoint = /*@__PURE__*/ S.suspend(() =>
+const XdslLandlineConcentrationPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineHead: S.optional(S.String),
     lineInitialSection: S.optional(S.Number),
@@ -2041,11 +2026,11 @@ export type XdslDeconsolidationEnum =
   | "creationNeighbour"
   | "partial"
   | "total";
-export const XdslDeconsolidationEnum = S.String;
+const XdslDeconsolidationEnum = S.String;
 
 /** Maximum time needed to repair a landline */
 export type XdslFaultRepairTimeEnum = "10HO" | "4HNO" | "4HO" | "DPLUS1" | "NORMAL";
-export const XdslFaultRepairTimeEnum = S.String;
+const XdslFaultRepairTimeEnum = S.String;
 
 /** xdsl.LineSectionLength */
 export interface XdslLineSectionLength {
@@ -2054,7 +2039,7 @@ export interface XdslLineSectionLength {
   /** The length of this section in meters */
   length?: number;
 }
-export const XdslLineSectionLength = /*@__PURE__*/ S.suspend(() =>
+const XdslLineSectionLength = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diameter: S.optional(S.Number),
     length: S.optional(S.Number),
@@ -2063,7 +2048,7 @@ export const XdslLineSectionLength = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed information about the sections between the DSLAM and the telephone jack */
 export type XdslLineLineSectionsLengthList = Array<XdslLineSectionLength>;
-export const XdslLineLineSectionsLengthList = /*@__PURE__*/ S.Array(
+const XdslLineLineSectionsLengthList = /*@__PURE__*/ S.Array(
   XdslLineSectionLength,
 ) as any as S.Schema<XdslLineLineSectionsLengthList>;
 
@@ -2092,7 +2077,7 @@ export interface XdslLine {
   /** The upload synchronisation on the DSLAM in Kbps */
   syncUp?: number | null;
 }
-export const XdslLine = /*@__PURE__*/ S.suspend(() =>
+const XdslLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     concentrationPoint: S.optional(S.NullOr(XdslLandlineConcentrationPoint)),
     deconsolidation: S.optional(XdslDeconsolidationEnum),
@@ -2115,7 +2100,7 @@ export interface GetXdslLineDslamPortRequest {
   /** Number */
   number: string;
 }
-export const GetXdslLineDslamPortRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslLineDslamPortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -2132,7 +2117,7 @@ export interface XdslDslamLineProfile {
   isCurrent?: boolean;
   name?: string;
 }
-export const XdslDslamLineProfile = /*@__PURE__*/ S.suspend(() =>
+const XdslDslamLineProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     isCurrent: S.optional(S.Boolean),
@@ -2142,7 +2127,7 @@ export const XdslDslamLineProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Different states of a DSLAM port */
 export type XdslDslamPortStatusEnum = "activated" | "deactivated" | "outofsync";
-export const XdslDslamPortStatusEnum = S.String;
+const XdslDslamPortStatusEnum = S.String;
 
 /** Information about the port on the DSLAM */
 export interface XdslDslamPort {
@@ -2153,7 +2138,7 @@ export interface XdslDslamPort {
   profile?: XdslDslamLineProfile | null;
   status?: XdslDslamPortStatusEnum;
 }
-export const XdslDslamPort = /*@__PURE__*/ S.suspend(() =>
+const XdslDslamPort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastDesyncDate: S.optional(S.NullOr(S.String)),
     lastSyncDate: S.optional(S.NullOr(S.String)),
@@ -2166,7 +2151,7 @@ export interface GetXdslModemRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslModemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslModemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem", code: 200 })),
@@ -2174,7 +2159,7 @@ export const GetXdslModemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ACS backend used by the modem */
 export type XdslXdslModemConfigACSBackendEnum = "beta" | "dev" | "stable";
-export const XdslXdslModemConfigACSBackendEnum = S.String;
+const XdslXdslModemConfigACSBackendEnum = S.String;
 
 /** Describe the capabilities of the Modem */
 export interface XdslModemCapabilities {
@@ -2198,7 +2183,7 @@ export interface XdslModemCapabilities {
   canReset?: boolean;
   canUseWifiRadio?: boolean;
 }
-export const XdslModemCapabilities = /*@__PURE__*/ S.suspend(() =>
+const XdslModemCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canBeManagedByOvh: S.optional(S.Boolean),
     canChangeACS: S.optional(S.Boolean),
@@ -2224,7 +2209,7 @@ export const XdslModemCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** Level of the Firewall ( BlockAll will block all connections, Normal will block all incoming connections except those in PortMapping and let go all outgoing connections , Disabled will disable all the Firewall and let all incoming or outgoing connections pass through ) */
 export type XdslXdslModemConfigEasyFirewallLevelEnum = "BlockAll" | "Disabled" | "Normal";
-export const XdslXdslModemConfigEasyFirewallLevelEnum = S.String;
+const XdslXdslModemConfigEasyFirewallLevelEnum = S.String;
 
 /** Modem */
 export interface XdslModem {
@@ -2252,7 +2237,7 @@ export interface XdslModem {
   mtuSize?: XdslXdslModemConfigMTUSizeEnum | null;
   serialNumber?: string;
 }
-export const XdslModem = /*@__PURE__*/ S.suspend(() =>
+const XdslModem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acsBackend: S.optional(XdslXdslModemConfigACSBackendEnum),
     acsVersion: S.optional(S.NullOr(S.String)),
@@ -2277,7 +2262,7 @@ export interface GetXdslModemConnectedDeviceRequest {
   /** Mac address */
   macAddress: string;
 }
-export const GetXdslModemConnectedDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslModemConnectedDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     macAddress: S.String.pipe(T.Label()),
@@ -2294,7 +2279,7 @@ export const GetXdslModemConnectedDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** How did the device got its IP Address */
 export type XdslXdslModemConfigConnectedDeviceAddressSourceEnum = "DHCP" | "Static" | "Unknown";
-export const XdslXdslModemConfigConnectedDeviceAddressSourceEnum = S.String;
+const XdslXdslModemConfigConnectedDeviceAddressSourceEnum = S.String;
 
 /** Connected Device */
 export interface XdslConnectedDevice {
@@ -2315,7 +2300,7 @@ export interface XdslConnectedDevice {
   /** MAC address of the device */
   macAddress?: string;
 }
-export const XdslConnectedDevice = /*@__PURE__*/ S.suspend(() =>
+const XdslConnectedDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     addressSource: S.optional(XdslXdslModemConfigConnectedDeviceAddressSourceEnum),
@@ -2332,7 +2317,7 @@ export interface GetXdslModemInfoRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslModemInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslModemInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/retrieveInfo", code: 200 })),
@@ -2361,7 +2346,7 @@ export interface XdslDeviceModemInfo {
   /** Software Version */
   softVersion?: string;
 }
-export const XdslDeviceModemInfo = /*@__PURE__*/ S.suspend(() =>
+const XdslDeviceModemInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String),
     ip: S.optional(S.String),
@@ -2409,7 +2394,7 @@ export interface XdslStatsModemInfo {
   /** Upstream synchronization */
   upstreamSync?: number;
 }
-export const XdslStatsModemInfo = /*@__PURE__*/ S.suspend(() =>
+const XdslStatsModemInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionUptime: S.optional(S.Number),
     crcError: S.optional(S.Number),
@@ -2436,7 +2421,7 @@ export interface XdslModemInfo {
   /** Describe statistics information of a Modem */
   statistics?: XdslStatsModemInfo;
 }
-export const XdslModemInfo = /*@__PURE__*/ S.suspend(() =>
+const XdslModemInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device: S.optional(XdslDeviceModemInfo),
     statistics: S.optional(XdslStatsModemInfo),
@@ -2445,7 +2430,7 @@ export const XdslModemInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** AsyncTask status */
 export type XdslAsyncTaskStatusEnum = "error" | "ok" | "pending";
-export const XdslAsyncTaskStatusEnum = S.String;
+const XdslAsyncTaskStatusEnum = S.String;
 
 /** xdsl.AsyncTask_xdsl.ModemInfo */
 export interface XdslAsyncTaskXdslModemInfo {
@@ -2455,7 +2440,7 @@ export interface XdslAsyncTaskXdslModemInfo {
   /** AsyncTask status */
   status?: XdslAsyncTaskStatusEnum;
 }
-export const XdslAsyncTaskXdslModemInfo = /*@__PURE__*/ S.suspend(() =>
+const XdslAsyncTaskXdslModemInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.NullOr(S.String)),
     result: S.optional(S.NullOr(XdslModemInfo)),
@@ -2471,7 +2456,7 @@ export interface GetXdslModemLanRequest {
   /** Lan name */
   lanName: string;
 }
-export const GetXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -2491,7 +2476,7 @@ export interface XdslLAN {
   /** ID of the ongoing todo (NULL if none) */
   taskId?: number | null;
 }
-export const XdslLAN = /*@__PURE__*/ S.suspend(() =>
+const XdslLAN = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IPAddress: S.optional(S.String),
     addressingType: S.optional(XdslXdslModemConfigAddressingTypeEnum),
@@ -2509,7 +2494,7 @@ export interface GetXdslModemLanDhcpRequest {
   /** Dhcp name */
   dhcpName: string;
 }
-export const GetXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -2550,7 +2535,7 @@ export interface XdslDHCP {
   /** ID of the ongoing todo (NULL if none) */
   taskId?: number | null;
 }
-export const XdslDHCP = /*@__PURE__*/ S.suspend(() =>
+const XdslDHCP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultGateway: S.optional(S.String),
     dhcpName: S.optional(S.String),
@@ -2572,7 +2557,7 @@ export interface GetXdslModemWifiRequest {
   /** Wifi name */
   wifiName: string;
 }
-export const GetXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     wifiName: S.String.pipe(T.Label()),
@@ -2588,7 +2573,7 @@ export type XdslXdslModemConfigSecurityTypeEnum =
   | "WPA2andWPA3"
   | "WPA3"
   | "WPAandWPA2";
-export const XdslXdslModemConfigSecurityTypeEnum = S.String;
+const XdslXdslModemConfigSecurityTypeEnum = S.String;
 
 /** WLAN Configuration of the Modem */
 export interface XdslWLAN {
@@ -2617,7 +2602,7 @@ export interface XdslWLAN {
   /** Name of the Wifi */
   wifiName?: string;
 }
-export const XdslWLAN = /*@__PURE__*/ S.suspend(() =>
+const XdslWLAN = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SSID: S.optional(S.String),
     SSIDAdvertisementEnabled: S.optional(S.Boolean),
@@ -2640,7 +2625,7 @@ export interface GetXdslModemWifiQrCodeRequest {
   /** Wifi name */
   wifiName: string;
 }
-export const GetXdslModemWifiQrCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslModemWifiQrCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     wifiName: S.String.pipe(T.Label()),
@@ -2652,7 +2637,7 @@ export const GetXdslModemWifiQrCodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetXdslModemWifiQrCodeRequest>;
 
 export type GetXdslModemWifiQrCodeResponse = string;
-export const GetXdslModemWifiQrCodeResponse =
+const GetXdslModemWifiQrCodeResponse =
   GetFirmwareVersionResponse as any as S.Schema<GetXdslModemWifiQrCodeResponse>;
 
 export interface GetXdslModemWifiRadioRequest {
@@ -2661,7 +2646,7 @@ export interface GetXdslModemWifiRadioRequest {
   /** Radio name */
   radioName: string;
 }
-export const GetXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     radioName: S.String.pipe(T.Label()),
@@ -2674,17 +2659,17 @@ export const GetXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported channels by this radio */
 export type XdslWifiRadioSupportedChannelsList = Array<number>;
-export const XdslWifiRadioSupportedChannelsList =
+const XdslWifiRadioSupportedChannelsList =
   ChangeContactResponseBodyList as any as S.Schema<XdslWifiRadioSupportedChannelsList>;
 
 /** Supported transmit power levels as percentage of full power */
 export type XdslWifiRadioSupportedPowersList = Array<number>;
-export const XdslWifiRadioSupportedPowersList =
+const XdslWifiRadioSupportedPowersList =
   ChangeContactResponseBodyList as any as S.Schema<XdslWifiRadioSupportedPowersList>;
 
 /** Supported IEEE 802.11 standards by this radio */
 export type XdslWifiRadioSupportedStandardsList = Array<string>;
-export const XdslWifiRadioSupportedStandardsList =
+const XdslWifiRadioSupportedStandardsList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslWifiRadioSupportedStandardsList>;
 
 /** Wifi Radio Configuration of the Modem */
@@ -2714,7 +2699,7 @@ export interface XdslWifiRadio {
   /** Current transmit power level */
   transmitPower?: number;
 }
-export const XdslWifiRadio = /*@__PURE__*/ S.suspend(() =>
+const XdslWifiRadio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.Number),
     channelBandwidth: S.optional(S.String),
@@ -2735,7 +2720,7 @@ export interface GetXdslOntRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslOntRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslOntRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/ont", code: 200 })),
@@ -2748,7 +2733,7 @@ export interface XdslOnt {
   /** Serial of the device */
   serial?: string;
 }
-export const XdslOnt = /*@__PURE__*/ S.suspend(() =>
+const XdslOnt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mac: S.optional(S.String),
     serial: S.optional(S.String),
@@ -2759,7 +2744,7 @@ export interface GetXdslPendingActionRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslPendingActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslPendingActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/pendingAction", code: 200 })),
@@ -2772,7 +2757,7 @@ export interface XdslPendingAction {
   action?: string;
   dateTodo?: string;
 }
-export const XdslPendingAction = /*@__PURE__*/ S.suspend(() =>
+const XdslPendingAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     dateTodo: S.optional(S.String),
@@ -2783,7 +2768,7 @@ export interface GetXdslResiliationFollowupRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslResiliationFollowupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslResiliationFollowupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/resiliationFollowup", code: 200 })),
@@ -2802,7 +2787,7 @@ export interface XdslResiliationFollowUpDetail {
   /** Status of the resiliation */
   status?: string;
 }
-export const XdslResiliationFollowUpDetail = /*@__PURE__*/ S.suspend(() =>
+const XdslResiliationFollowUpDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateTodo: S.optional(S.String),
     needModemReturn: S.optional(S.Boolean),
@@ -2819,7 +2804,7 @@ export interface GetXdslResiliationTermsRequest {
   /** The desired resiliation date */
   resiliationDate?: string;
 }
-export const GetXdslResiliationTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslResiliationTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     resiliationDate: S.optional(S.String.pipe(T.Query())),
@@ -2838,11 +2823,9 @@ export type XdslResiliationReasonEnum =
   | "goToCompetitor"
   | "other"
   | "technicalProblems";
-export const XdslResiliationReasonEnum = S.String;
-
 /** List of available resiliation reasons */
 export type XdslResiliationTermsResiliationReasonsList = Array<XdslResiliationReasonEnum>;
-export const XdslResiliationTermsResiliationReasonsList =
+const XdslResiliationTermsResiliationReasonsList =
   XdslFiberEligibilityGrtsList as any as S.Schema<XdslResiliationTermsResiliationReasonsList>;
 
 /** Show the resiliation terms */
@@ -2858,7 +2841,7 @@ export interface XdslResiliationTerms {
   /** List of available resiliation reasons */
   resiliationReasons?: XdslResiliationTermsResiliationReasonsList;
 }
-export const XdslResiliationTerms = /*@__PURE__*/ S.suspend(() =>
+const XdslResiliationTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     due: S.optional(OrderPrice),
     engageDate: S.optional(S.NullOr(S.String)),
@@ -2874,7 +2857,7 @@ export interface GetXdslRmaRequest {
   /** Id */
   id: string;
 }
-export const GetXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2883,11 +2866,11 @@ export const GetXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Return merchandise authorisation offer type */
 export type TelephonyRmaOfferTypeEnum = "deposit" | "loan" | "purchase";
-export const TelephonyRmaOfferTypeEnum = S.String;
+const TelephonyRmaOfferTypeEnum = S.String;
 
 /** Return merchandise authorisation type */
 export type TelephonyRmaReplaceTypeEnum = "changePhone" | "phoneRestitution" | "undefined";
-export const TelephonyRmaReplaceTypeEnum = S.String;
+const TelephonyRmaReplaceTypeEnum = S.String;
 
 /** ISO country codes */
 export type CoreTypesCountryEnum =
@@ -3151,7 +3134,7 @@ export type CoreTypesCountryEnum =
   | "za"
   | "zm"
   | "zw";
-export const CoreTypesCountryEnum = S.String;
+const CoreTypesCountryEnum = S.String;
 
 /** Contact information structure */
 export interface TelephonyContact {
@@ -3173,7 +3156,7 @@ export interface TelephonyContact {
   /** Contact zip */
   zip?: string | null;
 }
-export const TelephonyContact = /*@__PURE__*/ S.suspend(() =>
+const TelephonyContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     city: S.optional(S.NullOr(S.String)),
@@ -3189,7 +3172,7 @@ export const TelephonyContact = /*@__PURE__*/ S.suspend(() =>
 
 /** Return merchandise authorisation step */
 export type TelephonyRmaStatusEnum = "closed" | "open" | "received";
-export const TelephonyRmaStatusEnum = S.String;
+const TelephonyRmaStatusEnum = S.String;
 
 /** RMA step names */
 export type TelephonyRmaStepNameEnum =
@@ -3200,11 +3183,11 @@ export type TelephonyRmaStepNameEnum =
   | "parcelReception"
   | "parcelValidation"
   | "validation";
-export const TelephonyRmaStepNameEnum = S.String;
+const TelephonyRmaStepNameEnum = S.String;
 
 /** Status of the RMA step */
 export type TelephonyRmaStepStatusEnum = "done" | "todo";
-export const TelephonyRmaStepStatusEnum = S.String;
+const TelephonyRmaStepStatusEnum = S.String;
 
 /** Informations related to the current RMA step status */
 export interface TelephonyRmaStep {
@@ -3219,7 +3202,7 @@ export interface TelephonyRmaStep {
   /** Status of the RMA step */
   status?: TelephonyRmaStepStatusEnum;
 }
-export const TelephonyRmaStep = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRmaStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -3231,7 +3214,7 @@ export const TelephonyRmaStep = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the current status of the RMA with a list of steps */
 export type TelephonyRmaStepsList = Array<TelephonyRmaStep>;
-export const TelephonyRmaStepsList = /*@__PURE__*/ S.Array(
+const TelephonyRmaStepsList = /*@__PURE__*/ S.Array(
   TelephonyRmaStep,
 ) as any as S.Schema<TelephonyRmaStepsList>;
 
@@ -3248,7 +3231,7 @@ export type TelephonyRmaTypeEnum =
   | "specific return merchandise authorisation"
   | "termination"
   | "unknown";
-export const TelephonyRmaTypeEnum = S.String;
+const TelephonyRmaTypeEnum = S.String;
 
 /** Current Return Merchandise Authorisation */
 export interface TelephonyRma {
@@ -3281,7 +3264,7 @@ export interface TelephonyRma {
   /** Typology process of merchandise return */
   type?: TelephonyRmaTypeEnum;
 }
-export const TelephonyRma = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRma = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancellable: S.optional(S.Boolean),
     creationDatetime: S.optional(S.String),
@@ -3304,7 +3287,7 @@ export interface GetXdslServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/serviceInfos", code: 200 })),
@@ -3314,7 +3297,7 @@ export const GetXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   ChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -3330,7 +3313,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -3349,7 +3332,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 /** service.StateEnum */
 export type ServiceStateEnum =
@@ -3359,7 +3342,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -3380,7 +3363,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -3402,7 +3385,7 @@ export interface GetXdslSpareRequest {
   /** Spare */
   spare: string;
 }
-export const GetXdslSpareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslSpareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/{spare}", code: 200 })),
@@ -3417,7 +3400,7 @@ export interface SpareXdslXdslSpareWithIAM {
   /** Mac address */
   macAddress?: string;
 }
-export const SpareXdslXdslSpareWithIAM = /*@__PURE__*/ S.suspend(() =>
+const SpareXdslXdslSpareWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String),
     iam: S.optional(S.NullOr(IamResourceMetadata)),
@@ -3431,7 +3414,7 @@ export interface GetXdslSpareServiceInfosRequest {
   /** Spare */
   spare: string;
 }
-export const GetXdslSpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslSpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/{spare}/serviceInfos", code: 200 })),
@@ -3445,7 +3428,7 @@ export interface GetXdslTaskRequest {
   /** Id */
   id: number;
 }
-export const GetXdslTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3456,7 +3439,7 @@ export interface GetXdslTotalDeconsolidationTermsRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetXdslTotalDeconsolidationTermsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetXdslTotalDeconsolidationTermsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3475,7 +3458,7 @@ export interface XdslDeconsolidationTerms {
   /** Price with it's currency and textual representation */
   price?: OrderPrice;
 }
-export const XdslDeconsolidationTerms = /*@__PURE__*/ S.suspend(() =>
+const XdslDeconsolidationTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engagement: S.optional(S.Number),
     monthlyPrice: S.optional(OrderPrice),
@@ -3491,7 +3474,7 @@ export interface InstallFrimwareRequest {
   /** Date of execution, default is now */
   todoDate?: string;
 }
-export const InstallFrimwareRequest = /*@__PURE__*/ S.suspend(() =>
+const InstallFrimwareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     firmware: S.String,
@@ -3501,18 +3484,18 @@ export const InstallFrimwareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput =
+const IamResourceTagFilterInput =
   ArchiveXdslTaskResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListXdslRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListXdslRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListXdslRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListXdslRequestIamTagsValueList>;
 
 export type ListXdslRequestIamTagsMap = {
   [key: string]: ListXdslRequestIamTagsValueList | undefined;
 };
-export const ListXdslRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListXdslRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListXdslRequestIamTagsValueList,
 ) as any as S.Schema<ListXdslRequestIamTagsMap>;
@@ -3521,18 +3504,15 @@ export interface ListXdslRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListXdslRequestIamTagsMap;
 }
-export const ListXdslRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListXdslRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl", code: 200 })),
 ).annotate({ identifier: "ListXdslRequest" }) as any as S.Schema<ListXdslRequest>;
 
 export type ListXdslResponseBodyList = Array<string>;
-export const ListXdslResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslResponseBodyList>;
-
 export type ListXdslResponse = ListXdslResponseBodyList;
-export const ListXdslResponse = GetPortMappingsResponse as any as S.Schema<ListXdslResponse>;
+const ListXdslResponse = GetPortMappingsResponse as any as S.Schema<ListXdslResponse>;
 
 export interface ListXdslAntiSpamEvidencesRequest {
   /** Service name */
@@ -3540,7 +3520,7 @@ export interface ListXdslAntiSpamEvidencesRequest {
   /** Ip */
   ip: string;
 }
-export const ListXdslAntiSpamEvidencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslAntiSpamEvidencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -3560,7 +3540,7 @@ export interface XdslAntiSpamEvidencesInfoDetail {
   /** Temporary URL to access file */
   url?: string;
 }
-export const XdslAntiSpamEvidencesInfoDetail = /*@__PURE__*/ S.suspend(() =>
+const XdslAntiSpamEvidencesInfoDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     filename: S.optional(S.String),
@@ -3572,13 +3552,13 @@ export const XdslAntiSpamEvidencesInfoDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Table with evidences stored on PCS */
 export type XdslAntiSpamEvidencesInfoResultList = Array<XdslAntiSpamEvidencesInfoDetail>;
-export const XdslAntiSpamEvidencesInfoResultList = /*@__PURE__*/ S.Array(
+const XdslAntiSpamEvidencesInfoResultList = /*@__PURE__*/ S.Array(
   XdslAntiSpamEvidencesInfoDetail,
 ) as any as S.Schema<XdslAntiSpamEvidencesInfoResultList>;
 
 /** Evidences AsyncTask status */
 export type XdslAntiSpamEvidencesInfoStatusEnum = "error" | "ok" | "pending";
-export const XdslAntiSpamEvidencesInfoStatusEnum = S.String;
+const XdslAntiSpamEvidencesInfoStatusEnum = S.String;
 
 /** List of evidences */
 export interface XdslAntiSpamEvidencesInfo {
@@ -3589,7 +3569,7 @@ export interface XdslAntiSpamEvidencesInfo {
   /** Evidences AsyncTask status */
   status?: XdslAntiSpamEvidencesInfoStatusEnum;
 }
-export const XdslAntiSpamEvidencesInfo = /*@__PURE__*/ S.suspend(() =>
+const XdslAntiSpamEvidencesInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.NullOr(S.String)),
     result: S.optional(S.NullOr(XdslAntiSpamEvidencesInfoResultList)),
@@ -3603,46 +3583,37 @@ export interface ListXdslAntiSpamsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslAntiSpamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslAntiSpamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/antiSpams", code: 200 })),
 ).annotate({ identifier: "ListXdslAntiSpamsRequest" }) as any as S.Schema<ListXdslAntiSpamsRequest>;
 
 export type ListXdslAntiSpamsResponseBodyList = Array<string>;
-export const ListXdslAntiSpamsResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslAntiSpamsResponseBodyList>;
-
 export type ListXdslAntiSpamsResponse = ListXdslAntiSpamsResponseBodyList;
-export const ListXdslAntiSpamsResponse =
+const ListXdslAntiSpamsResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslAntiSpamsResponse>;
 
 export type ListXdslEmailProRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListXdslEmailProRequestIamTagsValueList =
-  ListXdslRequestIamTagsValueList as any as S.Schema<ListXdslEmailProRequestIamTagsValueList>;
-
 export type ListXdslEmailProRequestIamTagsMap = {
   [key: string]: ListXdslEmailProRequestIamTagsValueList | undefined;
 };
-export const ListXdslEmailProRequestIamTagsMap =
+const ListXdslEmailProRequestIamTagsMap =
   ListXdslRequestIamTagsMap as any as S.Schema<ListXdslEmailProRequestIamTagsMap>;
 
 export interface ListXdslEmailProRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListXdslEmailProRequestIamTagsMap;
 }
-export const ListXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListXdslEmailProRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/email/pro", code: 200 })),
 ).annotate({ identifier: "ListXdslEmailProRequest" }) as any as S.Schema<ListXdslEmailProRequest>;
 
 export type ListXdslEmailProResponseBodyList = Array<string>;
-export const ListXdslEmailProResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslEmailProResponseBodyList>;
-
 export type ListXdslEmailProResponse = ListXdslEmailProResponseBodyList;
-export const ListXdslEmailProResponse =
+const ListXdslEmailProResponse =
   GetPortMappingsResponse as any as S.Schema<ListXdslEmailProResponse>;
 
 export interface ListXdslFiberEligibilitiesRequest {
@@ -3651,7 +3622,7 @@ export interface ListXdslFiberEligibilitiesRequest {
   /** Filter the value of status property (=) */
   status?: XdslFiberEligibilityStatusEnum | (string & {});
 }
-export const ListXdslFiberEligibilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslFiberEligibilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     status: S.optional(XdslFiberEligibilityStatusEnum.pipe(T.Query())),
@@ -3661,11 +3632,8 @@ export const ListXdslFiberEligibilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslFiberEligibilitiesRequest>;
 
 export type ListXdslFiberEligibilitiesResponseBodyList = Array<number>;
-export const ListXdslFiberEligibilitiesResponseBodyList =
-  ChangeContactResponseBodyList as any as S.Schema<ListXdslFiberEligibilitiesResponseBodyList>;
-
 export type ListXdslFiberEligibilitiesResponse = ListXdslFiberEligibilitiesResponseBodyList;
-export const ListXdslFiberEligibilitiesResponse =
+const ListXdslFiberEligibilitiesResponse =
   GetMonitoringNotificationsResponse as any as S.Schema<ListXdslFiberEligibilitiesResponse>;
 
 export interface ListXdslIncidentsRequest {
@@ -3674,7 +3642,7 @@ export interface ListXdslIncidentsRequest {
   /** Filter the value of endDate property (<) */
   endDate?: string;
 }
-export const ListXdslIncidentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslIncidentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String.pipe(T.Query())),
     endDate: S.optional(S.String.pipe(T.Query())),
@@ -3682,29 +3650,23 @@ export const ListXdslIncidentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslIncidentsRequest" }) as any as S.Schema<ListXdslIncidentsRequest>;
 
 export type ListXdslIncidentsResponseBodyList = Array<number>;
-export const ListXdslIncidentsResponseBodyList =
-  ChangeContactResponseBodyList as any as S.Schema<ListXdslIncidentsResponseBodyList>;
-
 export type ListXdslIncidentsResponse = ListXdslIncidentsResponseBodyList;
-export const ListXdslIncidentsResponse =
+const ListXdslIncidentsResponse =
   GetMonitoringNotificationsResponse as any as S.Schema<ListXdslIncidentsResponse>;
 
 export interface ListXdslIpsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/ips", code: 200 })),
 ).annotate({ identifier: "ListXdslIpsRequest" }) as any as S.Schema<ListXdslIpsRequest>;
 
 export type ListXdslIpsResponseBodyList = Array<string>;
-export const ListXdslIpsResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslIpsResponseBodyList>;
-
 export type ListXdslIpsResponse = ListXdslIpsResponseBodyList;
-export const ListXdslIpsResponse = GetPortMappingsResponse as any as S.Schema<ListXdslIpsResponse>;
+const ListXdslIpsResponse = GetPortMappingsResponse as any as S.Schema<ListXdslIpsResponse>;
 
 export interface ListXdslLineDslamPortAvailableProfilesRequest {
   /** Service name */
@@ -3712,7 +3674,7 @@ export interface ListXdslLineDslamPortAvailableProfilesRequest {
   /** Number */
   number: string;
 }
-export const ListXdslLineDslamPortAvailableProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslLineDslamPortAvailableProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3728,13 +3690,13 @@ export const ListXdslLineDslamPortAvailableProfilesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesRequest>;
 
 export type ListXdslLineDslamPortAvailableProfilesResponseBodyList = Array<XdslDslamLineProfile>;
-export const ListXdslLineDslamPortAvailableProfilesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListXdslLineDslamPortAvailableProfilesResponseBodyList = /*@__PURE__*/ S.Array(
   XdslDslamLineProfile,
 ) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesResponseBodyList>;
 
 export type ListXdslLineDslamPortAvailableProfilesResponse =
   ListXdslLineDslamPortAvailableProfilesResponseBodyList;
-export const ListXdslLineDslamPortAvailableProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListXdslLineDslamPortAvailableProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   ListXdslLineDslamPortAvailableProfilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListXdslLineDslamPortAvailableProfilesResponse",
@@ -3747,7 +3709,7 @@ export interface ListXdslLineDslamPortLogsRequest {
   number: string;
   limit: number;
 }
-export const ListXdslLineDslamPortLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslLineDslamPortLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3768,7 +3730,7 @@ export interface XdslDslamPortLog {
   /** The number of times this message occured between date and lastOccurrenceDate */
   numberOfOccurrences?: number;
 }
-export const XdslDslamPortLog = /*@__PURE__*/ S.suspend(() =>
+const XdslDslamPortLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     lastOccurrenceDate: S.optional(S.String),
@@ -3778,12 +3740,12 @@ export const XdslDslamPortLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "XdslDslamPortLog" }) as any as S.Schema<XdslDslamPortLog>;
 
 export type ListXdslLineDslamPortLogsResponseBodyList = Array<XdslDslamPortLog>;
-export const ListXdslLineDslamPortLogsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListXdslLineDslamPortLogsResponseBodyList = /*@__PURE__*/ S.Array(
   XdslDslamPortLog,
 ) as any as S.Schema<ListXdslLineDslamPortLogsResponseBodyList>;
 
 export type ListXdslLineDslamPortLogsResponse = ListXdslLineDslamPortLogsResponseBodyList;
-export const ListXdslLineDslamPortLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListXdslLineDslamPortLogsResponse = /*@__PURE__*/ S.suspend(() =>
   ListXdslLineDslamPortLogsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListXdslLineDslamPortLogsResponse",
@@ -3793,23 +3755,19 @@ export interface ListXdslLinesRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslLinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslLinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/lines", code: 200 })),
 ).annotate({ identifier: "ListXdslLinesRequest" }) as any as S.Schema<ListXdslLinesRequest>;
 
 export type ListXdslLinesResponseBodyList = Array<string>;
-export const ListXdslLinesResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslLinesResponseBodyList>;
-
 export type ListXdslLinesResponse = ListXdslLinesResponseBodyList;
-export const ListXdslLinesResponse =
-  GetPortMappingsResponse as any as S.Schema<ListXdslLinesResponse>;
+const ListXdslLinesResponse = GetPortMappingsResponse as any as S.Schema<ListXdslLinesResponse>;
 
 /** Periods for statistics. */
 export type XdslStatisticsPeriodEnum = "daily" | "monthly" | "preview" | "weekly" | "yearly";
-export const XdslStatisticsPeriodEnum = S.String;
+const XdslStatisticsPeriodEnum = S.String;
 
 /** Various types of statisctics available for the line. */
 export type XdslLineStatisticsTypeEnum =
@@ -3822,7 +3780,7 @@ export type XdslLineStatisticsTypeEnum =
   | "snr:upload"
   | "synchronization:download"
   | "synchronization:upload";
-export const XdslLineStatisticsTypeEnum = S.String;
+const XdslLineStatisticsTypeEnum = S.String;
 
 export interface ListXdslLineStatisticsRequest {
   /** Service name */
@@ -3832,7 +3790,7 @@ export interface ListXdslLineStatisticsRequest {
   period: XdslStatisticsPeriodEnum | (string & {});
   type: XdslLineStatisticsTypeEnum | (string & {});
 }
-export const ListXdslLineStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslLineStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -3850,7 +3808,7 @@ export interface XdslTimestampAndValue {
   timestamp?: number;
   value?: number | null;
 }
-export const XdslTimestampAndValue = /*@__PURE__*/ S.suspend(() =>
+const XdslTimestampAndValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.Number),
     value: S.optional(S.NullOr(S.Number)),
@@ -3858,7 +3816,7 @@ export const XdslTimestampAndValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "XdslTimestampAndValue" }) as any as S.Schema<XdslTimestampAndValue>;
 
 export type ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList = Array<XdslTimestampAndValue>;
-export const ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList = /*@__PURE__*/ S.Array(
+const ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList = /*@__PURE__*/ S.Array(
   XdslTimestampAndValue,
 ) as any as S.Schema<ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList>;
 
@@ -3867,7 +3825,7 @@ export interface ComplexTypeUnitAndValuesXdslTimestampAndValue {
   unit?: string;
   values?: ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList;
 }
-export const ComplexTypeUnitAndValuesXdslTimestampAndValue = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValuesXdslTimestampAndValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     values: S.optional(ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList),
@@ -3880,7 +3838,7 @@ export interface ListXdslModemAvailableACSBackendRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslModemAvailableACSBackendRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslModemAvailableACSBackendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3891,17 +3849,14 @@ export const ListXdslModemAvailableACSBackendRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListXdslModemAvailableACSBackendRequest>;
 
 export type ListXdslModemAvailableACSBackendResponseBodyList = Array<string>;
-export const ListXdslModemAvailableACSBackendResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemAvailableACSBackendResponseBodyList>;
-
 export type ListXdslModemAvailableACSBackendResponse =
   ListXdslModemAvailableACSBackendResponseBodyList;
-export const ListXdslModemAvailableACSBackendResponse =
+const ListXdslModemAvailableACSBackendResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemAvailableACSBackendResponse>;
 
 /** Frequency of WLAN */
 export type XdslWLANFrequencyEnum = "2.4GHz" | "5GHz";
-export const XdslWLANFrequencyEnum = S.String;
+const XdslWLANFrequencyEnum = S.String;
 
 export interface ListXdslModemAvailableWLANChannelRequest {
   /** Service name */
@@ -3909,7 +3864,7 @@ export interface ListXdslModemAvailableWLANChannelRequest {
   /** WLAN frequency you want to retrieve channels */
   frequency: XdslWLANFrequencyEnum | (string & {});
 }
-export const ListXdslModemAvailableWLANChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslModemAvailableWLANChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     frequency: XdslWLANFrequencyEnum.pipe(T.Query()),
@@ -3921,19 +3876,16 @@ export const ListXdslModemAvailableWLANChannelRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListXdslModemAvailableWLANChannelRequest>;
 
 export type ListXdslModemAvailableWLANChannelResponseBodyList = Array<number>;
-export const ListXdslModemAvailableWLANChannelResponseBodyList =
-  ChangeContactResponseBodyList as any as S.Schema<ListXdslModemAvailableWLANChannelResponseBodyList>;
-
 export type ListXdslModemAvailableWLANChannelResponse =
   ListXdslModemAvailableWLANChannelResponseBodyList;
-export const ListXdslModemAvailableWLANChannelResponse =
+const ListXdslModemAvailableWLANChannelResponse =
   GetMonitoringNotificationsResponse as any as S.Schema<ListXdslModemAvailableWLANChannelResponse>;
 
 export interface ListXdslModemConnectedDevicesRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslModemConnectedDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslModemConnectedDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/connectedDevices", code: 200 })),
@@ -3942,18 +3894,15 @@ export const ListXdslModemConnectedDevicesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListXdslModemConnectedDevicesRequest>;
 
 export type ListXdslModemConnectedDevicesResponseBodyList = Array<string>;
-export const ListXdslModemConnectedDevicesResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemConnectedDevicesResponseBodyList>;
-
 export type ListXdslModemConnectedDevicesResponse = ListXdslModemConnectedDevicesResponseBodyList;
-export const ListXdslModemConnectedDevicesResponse =
+const ListXdslModemConnectedDevicesResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemConnectedDevicesResponse>;
 
 export interface ListXdslModemFirmwareAvailableRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslModemFirmwareAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslModemFirmwareAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/firmwareAvailable", code: 200 })),
@@ -3962,29 +3911,23 @@ export const ListXdslModemFirmwareAvailableRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListXdslModemFirmwareAvailableRequest>;
 
 export type ListXdslModemFirmwareAvailableResponseBodyList = Array<string>;
-export const ListXdslModemFirmwareAvailableResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemFirmwareAvailableResponseBodyList>;
-
 export type ListXdslModemFirmwareAvailableResponse = ListXdslModemFirmwareAvailableResponseBodyList;
-export const ListXdslModemFirmwareAvailableResponse =
+const ListXdslModemFirmwareAvailableResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemFirmwareAvailableResponse>;
 
 export interface ListXdslModemLanRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/lan", code: 200 })),
 ).annotate({ identifier: "ListXdslModemLanRequest" }) as any as S.Schema<ListXdslModemLanRequest>;
 
 export type ListXdslModemLanResponseBodyList = Array<string>;
-export const ListXdslModemLanResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemLanResponseBodyList>;
-
 export type ListXdslModemLanResponse = ListXdslModemLanResponseBodyList;
-export const ListXdslModemLanResponse =
+const ListXdslModemLanResponse =
   GetPortMappingsResponse as any as S.Schema<ListXdslModemLanResponse>;
 
 export interface ListXdslModemLanDhcpRequest {
@@ -3993,7 +3936,7 @@ export interface ListXdslModemLanDhcpRequest {
   /** Lan name */
   lanName: string;
 }
-export const ListXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -4005,36 +3948,30 @@ export const ListXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslModemLanDhcpRequest>;
 
 export type ListXdslModemLanDhcpResponseBodyList = Array<string>;
-export const ListXdslModemLanDhcpResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemLanDhcpResponseBodyList>;
-
 export type ListXdslModemLanDhcpResponse = ListXdslModemLanDhcpResponseBodyList;
-export const ListXdslModemLanDhcpResponse =
+const ListXdslModemLanDhcpResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemLanDhcpResponse>;
 
 export interface ListXdslModemWifiRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/wifi", code: 200 })),
 ).annotate({ identifier: "ListXdslModemWifiRequest" }) as any as S.Schema<ListXdslModemWifiRequest>;
 
 export type ListXdslModemWifiResponseBodyList = Array<string>;
-export const ListXdslModemWifiResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemWifiResponseBodyList>;
-
 export type ListXdslModemWifiResponse = ListXdslModemWifiResponseBodyList;
-export const ListXdslModemWifiResponse =
+const ListXdslModemWifiResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemWifiResponse>;
 
 export interface ListXdslModemWifiRadioRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/wifiRadio", code: 200 })),
@@ -4043,18 +3980,15 @@ export const ListXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslModemWifiRadioRequest>;
 
 export type ListXdslModemWifiRadioResponseBodyList = Array<string>;
-export const ListXdslModemWifiRadioResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslModemWifiRadioResponseBodyList>;
-
 export type ListXdslModemWifiRadioResponse = ListXdslModemWifiRadioResponseBodyList;
-export const ListXdslModemWifiRadioResponse =
+const ListXdslModemWifiRadioResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemWifiRadioResponse>;
 
 export interface ListXdslOrderFollowupRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslOrderFollowupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslOrderFollowupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/orderFollowup", code: 200 })),
@@ -4063,12 +3997,12 @@ export const ListXdslOrderFollowupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListXdslOrderFollowupRequest>;
 
 export type XdslOrderFollowupStepCommentsList = Array<string>;
-export const XdslOrderFollowupStepCommentsList =
+const XdslOrderFollowupStepCommentsList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslOrderFollowupStepCommentsList>;
 
 /** The duration units */
 export type XdslOrderFollowupDurationUnitEnum = "day" | "hour" | "minute";
-export const XdslOrderFollowupDurationUnitEnum = S.String;
+const XdslOrderFollowupDurationUnitEnum = S.String;
 
 /** The status of an order step */
 export type XdslOrderFollowupStepNameEnum =
@@ -4083,7 +4017,7 @@ export type XdslOrderFollowupStepNameEnum =
   | "setupCustomerPremisesEquipment"
   | "waitingForProviderInstallReport"
   | "waitingForWithdrawalPeriodToBeOver";
-export const XdslOrderFollowupStepNameEnum = S.String;
+const XdslOrderFollowupStepNameEnum = S.String;
 
 /** The status of an order step */
 export type XdslOrderFollowupStepStatusEnum =
@@ -4092,7 +4026,7 @@ export type XdslOrderFollowupStepStatusEnum =
   | "error"
   | "todo"
   | "waitingCustomer";
-export const XdslOrderFollowupStepStatusEnum = S.String;
+const XdslOrderFollowupStepStatusEnum = S.String;
 
 /** A step of the order process */
 export interface XdslOrderFollowupStep {
@@ -4106,7 +4040,7 @@ export interface XdslOrderFollowupStep {
   /** The status of an order step */
   status?: XdslOrderFollowupStepStatusEnum;
 }
-export const XdslOrderFollowupStep = /*@__PURE__*/ S.suspend(() =>
+const XdslOrderFollowupStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: S.optional(XdslOrderFollowupStepCommentsList),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -4118,12 +4052,12 @@ export const XdslOrderFollowupStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "XdslOrderFollowupStep" }) as any as S.Schema<XdslOrderFollowupStep>;
 
 export type ListXdslOrderFollowupResponseBodyList = Array<XdslOrderFollowupStep>;
-export const ListXdslOrderFollowupResponseBodyList = /*@__PURE__*/ S.Array(
+const ListXdslOrderFollowupResponseBodyList = /*@__PURE__*/ S.Array(
   XdslOrderFollowupStep,
 ) as any as S.Schema<ListXdslOrderFollowupResponseBodyList>;
 
 export type ListXdslOrderFollowupResponse = ListXdslOrderFollowupResponseBodyList;
-export const ListXdslOrderFollowupResponse = /*@__PURE__*/ S.suspend(() =>
+const ListXdslOrderFollowupResponse = /*@__PURE__*/ S.suspend(() =>
   ListXdslOrderFollowupResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListXdslOrderFollowupResponse",
@@ -4133,7 +4067,7 @@ export interface ListXdslRadiusConnectionLogsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslRadiusConnectionLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslRadiusConnectionLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/radiusConnectionLogs", code: 200 })),
@@ -4148,7 +4082,7 @@ export interface XdslRadiusConnectionLog {
   message?: string;
   state?: string;
 }
-export const XdslRadiusConnectionLog = /*@__PURE__*/ S.suspend(() =>
+const XdslRadiusConnectionLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     login: S.optional(S.String),
@@ -4158,12 +4092,12 @@ export const XdslRadiusConnectionLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "XdslRadiusConnectionLog" }) as any as S.Schema<XdslRadiusConnectionLog>;
 
 export type ListXdslRadiusConnectionLogsResponseBodyList = Array<XdslRadiusConnectionLog>;
-export const ListXdslRadiusConnectionLogsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListXdslRadiusConnectionLogsResponseBodyList = /*@__PURE__*/ S.Array(
   XdslRadiusConnectionLog,
 ) as any as S.Schema<ListXdslRadiusConnectionLogsResponseBodyList>;
 
 export type ListXdslRadiusConnectionLogsResponse = ListXdslRadiusConnectionLogsResponseBodyList;
-export const ListXdslRadiusConnectionLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListXdslRadiusConnectionLogsResponse = /*@__PURE__*/ S.suspend(() =>
   ListXdslRadiusConnectionLogsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListXdslRadiusConnectionLogsResponse",
@@ -4173,67 +4107,54 @@ export interface ListXdslRmaRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/rma", code: 200 })),
 ).annotate({ identifier: "ListXdslRmaRequest" }) as any as S.Schema<ListXdslRmaRequest>;
 
 export type ListXdslRmaResponseBodyList = Array<string>;
-export const ListXdslRmaResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslRmaResponseBodyList>;
-
 export type ListXdslRmaResponse = ListXdslRmaResponseBodyList;
-export const ListXdslRmaResponse = GetPortMappingsResponse as any as S.Schema<ListXdslRmaResponse>;
+const ListXdslRmaResponse = GetPortMappingsResponse as any as S.Schema<ListXdslRmaResponse>;
 
 export type ListXdslSpareRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListXdslSpareRequestIamTagsValueList =
-  ListXdslRequestIamTagsValueList as any as S.Schema<ListXdslSpareRequestIamTagsValueList>;
-
 export type ListXdslSpareRequestIamTagsMap = {
   [key: string]: ListXdslSpareRequestIamTagsValueList | undefined;
 };
-export const ListXdslSpareRequestIamTagsMap =
+const ListXdslSpareRequestIamTagsMap =
   ListXdslRequestIamTagsMap as any as S.Schema<ListXdslSpareRequestIamTagsMap>;
 
 export interface ListXdslSpareRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListXdslSpareRequestIamTagsMap;
 }
-export const ListXdslSpareRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslSpareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListXdslSpareRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare", code: 200 })),
 ).annotate({ identifier: "ListXdslSpareRequest" }) as any as S.Schema<ListXdslSpareRequest>;
 
 export type ListXdslSpareResponseBodyList = Array<string>;
-export const ListXdslSpareResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslSpareResponseBodyList>;
-
 export type ListXdslSpareResponse = ListXdslSpareResponseBodyList;
-export const ListXdslSpareResponse =
-  GetPortMappingsResponse as any as S.Schema<ListXdslSpareResponse>;
+const ListXdslSpareResponse = GetPortMappingsResponse as any as S.Schema<ListXdslSpareResponse>;
 
 export interface ListXdslSpareBrandsRequest {}
-export const ListXdslSpareBrandsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslSpareBrandsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/brands", code: 200 })),
 ).annotate({
   identifier: "ListXdslSpareBrandsRequest",
 }) as any as S.Schema<ListXdslSpareBrandsRequest>;
 
 export type ListXdslSpareBrandsResponseBodyList = Array<string>;
-export const ListXdslSpareBrandsResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslSpareBrandsResponseBodyList>;
-
 export type ListXdslSpareBrandsResponse = ListXdslSpareBrandsResponseBodyList;
-export const ListXdslSpareBrandsResponse =
+const ListXdslSpareBrandsResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslSpareBrandsResponse>;
 
 export interface ListXdslSpareCompatibleReplacementRequest {
   /** Spare */
   spare: string;
 }
-export const ListXdslSpareCompatibleReplacementRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslSpareCompatibleReplacementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare/{spare}/compatibleReplacement", code: 200 })),
@@ -4242,17 +4163,14 @@ export const ListXdslSpareCompatibleReplacementRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListXdslSpareCompatibleReplacementRequest>;
 
 export type ListXdslSpareCompatibleReplacementResponseBodyList = Array<string>;
-export const ListXdslSpareCompatibleReplacementResponseBodyList =
-  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<ListXdslSpareCompatibleReplacementResponseBodyList>;
-
 export type ListXdslSpareCompatibleReplacementResponse =
   ListXdslSpareCompatibleReplacementResponseBodyList;
-export const ListXdslSpareCompatibleReplacementResponse =
+const ListXdslSpareCompatibleReplacementResponse =
   GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslSpareCompatibleReplacementResponse>;
 
 /** Various types of statisctics available for the access. */
 export type XdslAccessStatisticsTypeEnum = "ping" | "traffic:download" | "traffic:upload";
-export const XdslAccessStatisticsTypeEnum = S.String;
+const XdslAccessStatisticsTypeEnum = S.String;
 
 export interface ListXdslStatisticsRequest {
   /** Service name */
@@ -4260,7 +4178,7 @@ export interface ListXdslStatisticsRequest {
   period: XdslStatisticsPeriodEnum | (string & {});
   type: XdslAccessStatisticsTypeEnum | (string & {});
 }
-export const ListXdslStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     period: XdslStatisticsPeriodEnum.pipe(T.Query()),
@@ -4278,7 +4196,7 @@ export interface XdslAccessLatency {
   value?: number | null;
   verboseStatus?: string | null;
 }
-export const XdslAccessLatency = /*@__PURE__*/ S.suspend(() =>
+const XdslAccessLatency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loss: S.optional(S.NullOr(S.Number)),
     status: S.optional(S.NullOr(S.Number)),
@@ -4289,7 +4207,7 @@ export const XdslAccessLatency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "XdslAccessLatency" }) as any as S.Schema<XdslAccessLatency>;
 
 export type ComplexTypeUnitAndValuesXdslAccessLatencyValuesList = Array<XdslAccessLatency>;
-export const ComplexTypeUnitAndValuesXdslAccessLatencyValuesList = /*@__PURE__*/ S.Array(
+const ComplexTypeUnitAndValuesXdslAccessLatencyValuesList = /*@__PURE__*/ S.Array(
   XdslAccessLatency,
 ) as any as S.Schema<ComplexTypeUnitAndValuesXdslAccessLatencyValuesList>;
 
@@ -4298,7 +4216,7 @@ export interface ComplexTypeUnitAndValuesXdslAccessLatency {
   unit?: string;
   values?: ComplexTypeUnitAndValuesXdslAccessLatencyValuesList;
 }
-export const ComplexTypeUnitAndValuesXdslAccessLatency = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValuesXdslAccessLatency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     values: S.optional(ComplexTypeUnitAndValuesXdslAccessLatencyValuesList),
@@ -4315,7 +4233,7 @@ export interface ListXdslTasksRequest {
   /** Filter the value of status property (=) */
   status?: XdslTaskStatusEnum | (string & {});
 }
-export const ListXdslTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListXdslTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     function: S.optional(S.String.pipe(T.Query())),
@@ -4324,12 +4242,8 @@ export const ListXdslTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListXdslTasksRequest" }) as any as S.Schema<ListXdslTasksRequest>;
 
 export type ListXdslTasksResponseBodyList = Array<number>;
-export const ListXdslTasksResponseBodyList =
-  ChangeContactResponseBodyList as any as S.Schema<ListXdslTasksResponseBodyList>;
-
 export type ListXdslTasksResponse = ListXdslTasksResponseBodyList;
-export const ListXdslTasksResponse =
-  ChangeContactResponse as any as S.Schema<ListXdslTasksResponse>;
+const ListXdslTasksResponse = ChangeContactResponse as any as S.Schema<ListXdslTasksResponse>;
 
 export interface PutXdslRequest {
   /** Service name */
@@ -4340,7 +4254,7 @@ export interface PutXdslRequest {
   /** Whether or not this access is monitored */
   monitoring?: boolean;
 }
-export const PutXdslRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -4350,7 +4264,7 @@ export const PutXdslRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslRequest" }) as any as S.Schema<PutXdslRequest>;
 
 export interface PutXdslResponse {}
-export const PutXdslResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslResponse>;
+const PutXdslResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslResponse>;
 
 export interface PutXdslEmailProRequest {
   /** Email */
@@ -4364,7 +4278,7 @@ export interface PutXdslEmailProRequest {
   /** Account last name */
   lastName?: string | null;
 }
-export const PutXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String.pipe(T.Label()),
     displayName: S.optional(S.NullOr(S.String)),
@@ -4375,8 +4289,7 @@ export const PutXdslEmailProRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslEmailProRequest" }) as any as S.Schema<PutXdslEmailProRequest>;
 
 export interface PutXdslEmailProResponse {}
-export const PutXdslEmailProResponse =
-  ArchiveXdslTaskResponse as any as S.Schema<PutXdslEmailProResponse>;
+const PutXdslEmailProResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslEmailProResponse>;
 
 export interface PutXdslModemRequest {
   /** Service name */
@@ -4392,7 +4305,7 @@ export interface PutXdslModemRequest {
   /** Size of the Maximum Transmission Unit on the modem's interfaces */
   mtuSize?: XdslXdslModemConfigMTUSizeEnum | (number & {}) | null;
 }
-export const PutXdslModemRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslModemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     acsBackend: S.optional(XdslXdslModemConfigACSBackendEnum),
@@ -4404,8 +4317,7 @@ export const PutXdslModemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslModemRequest" }) as any as S.Schema<PutXdslModemRequest>;
 
 export interface PutXdslModemResponse {}
-export const PutXdslModemResponse =
-  ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemResponse>;
+const PutXdslModemResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemResponse>;
 
 export interface PutXdslModemLanRequest {
   /** Service name */
@@ -4419,7 +4331,7 @@ export interface PutXdslModemLanRequest {
   /** IP address (e.g., 192.0.2.0) */
   subnetMask?: string;
 }
-export const PutXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -4430,8 +4342,7 @@ export const PutXdslModemLanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslModemLanRequest" }) as any as S.Schema<PutXdslModemLanRequest>;
 
 export interface PutXdslModemLanResponse {}
-export const PutXdslModemLanResponse =
-  ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemLanResponse>;
+const PutXdslModemLanResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemLanResponse>;
 
 export interface PutXdslModemLanDhcpRequest {
   /** Service name */
@@ -4459,7 +4370,7 @@ export interface PutXdslModemLanDhcpRequest {
   /** IP address (e.g., 192.0.2.0) */
   subnetMask?: string;
 }
-export const PutXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -4485,7 +4396,7 @@ export const PutXdslModemLanDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutXdslModemLanDhcpRequest>;
 
 export interface PutXdslModemLanDhcpResponse {}
-export const PutXdslModemLanDhcpResponse =
+const PutXdslModemLanDhcpResponse =
   ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemLanDhcpResponse>;
 
 export interface PutXdslModemWifiRequest {
@@ -4508,7 +4419,7 @@ export interface PutXdslModemWifiRequest {
   /** Type of WLAN security protection */
   securityType?: XdslXdslModemConfigSecurityTypeEnum | (string & {});
 }
-export const PutXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     wifiName: S.String.pipe(T.Label()),
@@ -4523,7 +4434,7 @@ export const PutXdslModemWifiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslModemWifiRequest" }) as any as S.Schema<PutXdslModemWifiRequest>;
 
 export interface PutXdslModemWifiResponse {}
-export const PutXdslModemWifiResponse =
+const PutXdslModemWifiResponse =
   ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemWifiResponse>;
 
 export interface PutXdslModemWifiRadioRequest {
@@ -4536,7 +4447,7 @@ export interface PutXdslModemWifiRadioRequest {
   /** Change channel selection mode (auto | manual) */
   channelMode?: XdslXdslModemConfigChannelModeEnum | (string & {});
 }
-export const PutXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslModemWifiRadioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     radioName: S.String.pipe(T.Label()),
@@ -4559,7 +4470,7 @@ export interface PutXdslRmaRequest {
   /** Contact information structure */
   shippingContact?: TelephonyContact;
 }
-export const PutXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4569,7 +4480,7 @@ export const PutXdslRmaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutXdslRmaRequest" }) as any as S.Schema<PutXdslRmaRequest>;
 
 export interface PutXdslRmaResponse {}
-export const PutXdslRmaResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslRmaResponse>;
+const PutXdslRmaResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslRmaResponse>;
 
 export interface PutXdslServiceInfosRequest {
   /** Service name */
@@ -4577,7 +4488,7 @@ export interface PutXdslServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -4587,7 +4498,7 @@ export const PutXdslServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutXdslServiceInfosRequest>;
 
 export interface PutXdslServiceInfosResponse {}
-export const PutXdslServiceInfosResponse =
+const PutXdslServiceInfosResponse =
   ArchiveXdslTaskResponse as any as S.Schema<PutXdslServiceInfosResponse>;
 
 export interface PutXdslSpareServiceInfosRequest {
@@ -4596,7 +4507,7 @@ export interface PutXdslSpareServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutXdslSpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutXdslSpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -4606,7 +4517,7 @@ export const PutXdslSpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutXdslSpareServiceInfosRequest>;
 
 export interface PutXdslSpareServiceInfosResponse {}
-export const PutXdslSpareServiceInfosResponse =
+const PutXdslSpareServiceInfosResponse =
   CancelXdslLinesDiagnosticResponse as any as S.Schema<PutXdslSpareServiceInfosResponse>;
 
 export interface RebootModemRequest {
@@ -4615,7 +4526,7 @@ export interface RebootModemRequest {
   /** Date when the reboot will start */
   todoDate?: string;
 }
-export const RebootModemRequest = /*@__PURE__*/ S.suspend(() =>
+const RebootModemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     todoDate: S.optional(S.String),
@@ -4626,7 +4537,7 @@ export interface RefreshXdslModemConnectedDevicesRequest {
   /** Service name */
   serviceName: string;
 }
-export const RefreshXdslModemConnectedDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshXdslModemConnectedDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4646,7 +4557,7 @@ export interface RemoveDHCPStaticAddressRequest {
   /** macaddress */
   MACAddress: string;
 }
-export const RemoveDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -4669,7 +4580,7 @@ export interface RemoveMonitoringNotificationRequest {
   /** Id */
   id: number;
 }
-export const RemoveMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4685,7 +4596,7 @@ export const RemoveMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveMonitoringNotificationRequest>;
 
 export interface RemoveMonitoringNotificationResponse {}
-export const RemoveMonitoringNotificationResponse =
+const RemoveMonitoringNotificationResponse =
   CancelXdslLinesDiagnosticResponse as any as S.Schema<RemoveMonitoringNotificationResponse>;
 
 export interface RemovePortMappingRequest {
@@ -4694,7 +4605,7 @@ export interface RemovePortMappingRequest {
   /** Name */
   name: string;
 }
-export const RemovePortMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePortMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4709,7 +4620,7 @@ export interface ReplaceAccessModemRequest {
   /** Customer identifier for shipping address. By default Internet access address will be used. Allowed values are nichandle or «/me/contact/xyz» */
   contactShipping?: string;
 }
-export const ReplaceAccessModemRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAccessModemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactShipping: S.optional(S.String),
@@ -4727,7 +4638,7 @@ export interface OrderContract {
   /** URL to download the contract */
   url?: string;
 }
-export const OrderContract = /*@__PURE__*/ S.suspend(() =>
+const OrderContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     name: S.optional(S.String),
@@ -4737,7 +4648,7 @@ export const OrderContract = /*@__PURE__*/ S.suspend(() =>
 
 /** List of contracts related to the order */
 export type OrderOrderContractsList = Array<OrderContract>;
-export const OrderOrderContractsList = /*@__PURE__*/ S.Array(
+const OrderOrderContractsList = /*@__PURE__*/ S.Array(
   OrderContract,
 ) as any as S.Schema<OrderOrderContractsList>;
 
@@ -4763,15 +4674,15 @@ export type OrderOrderDetailTypeEnum =
   | "SWITCH"
   | "TRANSFER"
   | "VOUCHER";
-export const OrderOrderDetailTypeEnum = S.String;
+const OrderOrderDetailTypeEnum = S.String;
 
 /** Context of the reduction */
 export type OrderReductionContextEnum = "promotion" | "voucher";
-export const OrderReductionContextEnum = S.String;
+const OrderReductionContextEnum = S.String;
 
 /** Type of reduction */
 export type OrderReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage";
-export const OrderReductionTypeEnum = S.String;
+const OrderReductionTypeEnum = S.String;
 
 /** Order detail reduction */
 export interface OrderReduction {
@@ -4788,7 +4699,7 @@ export interface OrderReduction {
   /** The reduction value */
   value?: OrderPrice;
 }
-export const OrderReduction = /*@__PURE__*/ S.suspend(() =>
+const OrderReduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(OrderReductionContextEnum),
     description: S.optional(S.String),
@@ -4801,7 +4712,7 @@ export const OrderReduction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of reductions applied to the detail */
 export type OrderOrderDetailReductionsList = Array<OrderReduction>;
-export const OrderOrderDetailReductionsList = /*@__PURE__*/ S.Array(
+const OrderOrderDetailReductionsList = /*@__PURE__*/ S.Array(
   OrderReduction,
 ) as any as S.Schema<OrderOrderDetailReductionsList>;
 
@@ -4828,7 +4739,7 @@ export interface OrderOrderDetail {
   /** Unitary price of the service */
   unitPrice?: OrderPrice;
 }
-export const OrderOrderDetail = /*@__PURE__*/ S.suspend(() =>
+const OrderOrderDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cartItemID: S.optional(S.NullOr(S.Number)),
     description: S.optional(S.String),
@@ -4845,7 +4756,7 @@ export const OrderOrderDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the order */
 export type OrderOrderDetailsList = Array<OrderOrderDetail>;
-export const OrderOrderDetailsList = /*@__PURE__*/ S.Array(
+const OrderOrderDetailsList = /*@__PURE__*/ S.Array(
   OrderOrderDetail,
 ) as any as S.Schema<OrderOrderDetailsList>;
 
@@ -4862,7 +4773,7 @@ export interface OrderOrderPrices {
   /** Price without tax */
   withoutTax?: OrderPrice;
 }
-export const OrderOrderPrices = /*@__PURE__*/ S.suspend(() =>
+const OrderOrderPrices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalWithoutTax: S.optional(S.NullOr(OrderPrice)),
     reduction: S.optional(S.NullOr(OrderPrice)),
@@ -4885,7 +4796,7 @@ export interface OrderOrder {
   /** URL to download the order */
   url?: string | null;
 }
-export const OrderOrder = /*@__PURE__*/ S.suspend(() =>
+const OrderOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contracts: S.optional(OrderOrderContractsList),
     details: S.optional(OrderOrderDetailsList),
@@ -4901,7 +4812,7 @@ export interface ReplaceModemBySpareRequest {
   /** The modem to replace by the spare */
   domain: string;
 }
-export const ReplaceModemBySpareRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceModemBySpareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
     domain: S.String,
@@ -4911,7 +4822,7 @@ export const ReplaceModemBySpareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceModemBySpareRequest>;
 
 export interface ReplaceModemBySpareResponse {}
-export const ReplaceModemBySpareResponse =
+const ReplaceModemBySpareResponse =
   ArchiveXdslTaskResponse as any as S.Schema<ReplaceModemBySpareResponse>;
 
 export interface RequestTotalDeconsolidationRequest {
@@ -4922,7 +4833,7 @@ export interface RequestTotalDeconsolidationRequest {
   /** A token to prove the ownership of the line number, needed to port the number */
   rio?: string;
 }
-export const RequestTotalDeconsolidationRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestTotalDeconsolidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     noPortability: S.optional(S.Boolean),
@@ -4940,7 +4851,7 @@ export interface ResetModemConfigurationRequest {
   /** Reset configuration stored in OVH databases */
   resetOvhConfig?: boolean;
 }
-export const ResetModemConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetModemConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     resetOvhConfig: S.optional(S.Boolean),
@@ -4955,7 +4866,7 @@ export interface ResetXdslLinesDslamPortRequest {
   /** Number */
   number: string;
 }
-export const ResetXdslLinesDslamPortRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetXdslLinesDslamPortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -4974,7 +4885,7 @@ export interface ResetXdslModemPortMappingConfigRequest {
   /** Service name */
   serviceName: string;
 }
-export const ResetXdslModemPortMappingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetXdslModemPortMappingConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4985,13 +4896,11 @@ export const ResetXdslModemPortMappingConfigRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ResetXdslModemPortMappingConfigRequest>;
 
 export interface ResetXdslModemPortMappingConfigResponse {}
-export const ResetXdslModemPortMappingConfigResponse =
+const ResetXdslModemPortMappingConfigResponse =
   CancelXdslLinesDiagnosticResponse as any as S.Schema<ResetXdslModemPortMappingConfigResponse>;
 
 /** Information about the reason for the resiliation */
 export type XdslResiliationSurveyInput = IamResourceTagFilterInput;
-export const XdslResiliationSurveyInput = IamResourceTagFilterInput;
-
 export interface ResiliateAccessRequest {
   /** Service name */
   serviceName: string;
@@ -5000,7 +4909,7 @@ export interface ResiliateAccessRequest {
   /** Information about the reason for the resiliation */
   resiliationSurvey: IamResourceTagFilterInput;
 }
-export const ResiliateAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ResiliateAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     resiliationDate: S.optional(S.String),
@@ -5012,7 +4921,7 @@ export interface SearchXdslOrderMeetingsRequest {
   /** Service name */
   serviceName: string;
 }
-export const SearchXdslOrderMeetingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchXdslOrderMeetingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/searchOrderMeetings", code: 200 })),
@@ -5027,7 +4936,7 @@ export interface ConnectivityEligibilityMeetingCapacities {
   /** Whether or not it is possible to be be called by phone to book a meeting */
   phoneCall?: boolean;
 }
-export const ConnectivityEligibilityMeetingCapacities = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityEligibilityMeetingCapacities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eRdv: S.optional(S.Boolean),
     phoneCall: S.optional(S.Boolean),
@@ -5047,7 +4956,7 @@ export interface ConnectivityEligibilityMeetingSlot {
   /** An opaque string that represents an intervention unit */
   uiCode?: string | null;
 }
-export const ConnectivityEligibilityMeetingSlot = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityEligibilityMeetingSlot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(S.String),
     slotId: S.optional(S.NullOr(S.String)),
@@ -5061,7 +4970,7 @@ export const ConnectivityEligibilityMeetingSlot = /*@__PURE__*/ S.suspend(() =>
 /** A time slot */
 export type ConnectivityEligibilityMeetingsMeetingSlotsList =
   Array<ConnectivityEligibilityMeetingSlot>;
-export const ConnectivityEligibilityMeetingsMeetingSlotsList = /*@__PURE__*/ S.Array(
+const ConnectivityEligibilityMeetingsMeetingSlotsList = /*@__PURE__*/ S.Array(
   ConnectivityEligibilityMeetingSlot,
 ) as any as S.Schema<ConnectivityEligibilityMeetingsMeetingSlotsList>;
 
@@ -5074,7 +4983,7 @@ export interface ConnectivityEligibilityMeetings {
   /** A time slot */
   meetingSlots?: ConnectivityEligibilityMeetingsMeetingSlotsList;
 }
-export const ConnectivityEligibilityMeetings = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityEligibilityMeetings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canBookFakeMeeting: S.optional(S.Boolean),
     capacities: S.optional(ConnectivityEligibilityMeetingCapacities),
@@ -5092,7 +5001,7 @@ export interface XdslAsyncTaskConnectivityEligibilityMeetings {
   /** AsyncTask status */
   status?: XdslAsyncTaskStatusEnum;
 }
-export const XdslAsyncTaskConnectivityEligibilityMeetings = /*@__PURE__*/ S.suspend(() =>
+const XdslAsyncTaskConnectivityEligibilityMeetings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.NullOr(S.String)),
     result: S.optional(ConnectivityEligibilityMeetings),
@@ -5106,7 +5015,7 @@ export interface SendXdslOrderToProviderRequest {
   /** Service name */
   serviceName: string;
 }
-export const SendXdslOrderToProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const SendXdslOrderToProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/sendOrderToProvider", code: 200 })),
@@ -5115,9 +5024,9 @@ export const SendXdslOrderToProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SendXdslOrderToProviderRequest>;
 
 export interface SendXdslOrderToProviderResponse {}
-export const SendXdslOrderToProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "SendXdslOrderToProviderResponse" },
-) as any as S.Schema<SendXdslOrderToProviderResponse>;
+const SendXdslOrderToProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "SendXdslOrderToProviderResponse",
+}) as any as S.Schema<SendXdslOrderToProviderResponse>;
 
 export interface SetWifiMeshStatusRequest {
   /** Service name */
@@ -5125,7 +5034,7 @@ export interface SetWifiMeshStatusRequest {
   /** Status of the mesh */
   wifiMesh: XdslServiceStatusEnum | (string & {});
 }
-export const SetWifiMeshStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const SetWifiMeshStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     wifiMesh: XdslServiceStatusEnum,
@@ -5138,7 +5047,7 @@ export interface SetWifiOneSsidStatusRequest {
   /** Status of the onessid */
   wifiOneSsid: XdslServiceStatusEnum | (string & {});
 }
-export const SetWifiOneSsidStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const SetWifiOneSsidStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     wifiOneSsid: XdslServiceStatusEnum,
@@ -5153,7 +5062,7 @@ export interface UpdateBlocIPStatusRequest {
   /** Status of the service */
   status: XdslServiceStatusEnum | (string & {});
 }
-export const UpdateBlocIPStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBlocIPStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     status: XdslServiceStatusEnum,
@@ -5168,7 +5077,7 @@ export interface UpdateContentSharingStatusRequest {
   /** Status of the service */
   contentSharing: XdslServiceStatusEnum | (string & {});
 }
-export const UpdateContentSharingStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContentSharingStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contentSharing: XdslServiceStatusEnum,
@@ -5191,7 +5100,7 @@ export interface UpdateDHCPStaticAddressRequest {
   /** Name of the DHCP Static lease */
   name?: string | null;
 }
-export const UpdateDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     lanName: S.String.pipe(T.Label()),
@@ -5211,7 +5120,7 @@ export const UpdateDHCPStaticAddressRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDHCPStaticAddressRequest>;
 
 export interface UpdateDHCPStaticAddressResponse {}
-export const UpdateDHCPStaticAddressResponse =
+const UpdateDHCPStaticAddressResponse =
   SendXdslOrderToProviderResponse as any as S.Schema<UpdateDHCPStaticAddressResponse>;
 
 export interface UpdateFTPStatusRequest {
@@ -5220,7 +5129,7 @@ export interface UpdateFTPStatusRequest {
   /** Status of the service */
   ftp: XdslServiceStatusEnum | (string & {});
 }
-export const UpdateFTPStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFTPStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ftp: XdslServiceStatusEnum,
@@ -5233,7 +5142,7 @@ export interface UpdateIpRequest {
   /** Should the IPv6 be enabled ? */
   enabled: boolean;
 }
-export const UpdateIpRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     enabled: S.Boolean,
@@ -5246,7 +5155,7 @@ export interface UpdateIpsecAlgStatusRequest {
   /** Status of the service */
   ipsecAlg: XdslServiceStatusEnum | (string & {});
 }
-export const UpdateIpsecAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIpsecAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipsecAlg: XdslServiceStatusEnum,
@@ -5270,26 +5179,24 @@ export type XdslLineDiagnosticCustomerActionsEnum =
   | "resetModem"
   | "unplugEveryModems"
   | "unplugModem";
-export const XdslLineDiagnosticCustomerActionsEnum = S.String;
+const XdslLineDiagnosticCustomerActionsEnum = S.String;
 
 /** Customer possible actions */
 export type UpdateLineDiagnosticRequestActionsDoneList = Array<
   XdslLineDiagnosticCustomerActionsEnum | (string & {})
 >;
-export const UpdateLineDiagnosticRequestActionsDoneList =
+const UpdateLineDiagnosticRequestActionsDoneList =
   XdslFiberEligibilityGrtsList as any as S.Schema<UpdateLineDiagnosticRequestActionsDoneList>;
 
 /** Customer answers for line diagnostic */
 export type XdslLineDiagnosticAnswersInput = IamResourceTagFilterInput;
-export const XdslLineDiagnosticAnswersInput = IamResourceTagFilterInput;
-
 /** Line diagnostic fault type */
 export type XdslLineDiagnosticFaultTypeEnum =
   | "alignment"
   | "noSync"
   | "syncLossOrLowBandwidth"
   | "unknown";
-export const XdslLineDiagnosticFaultTypeEnum = S.String;
+const XdslLineDiagnosticFaultTypeEnum = S.String;
 
 export interface UpdateLineDiagnosticRequest {
   /** Service name */
@@ -5303,7 +5210,7 @@ export interface UpdateLineDiagnosticRequest {
   /** Line diagnostic fault type */
   faultType: XdslLineDiagnosticFaultTypeEnum | (string & {});
 }
-export const UpdateLineDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLineDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     number: S.String.pipe(T.Label()),
@@ -5320,7 +5227,7 @@ export const UpdateLineDiagnosticRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of actions already done by customer */
 export type XdslLineDiagnosticDiagnosticDataActionsDoneList =
   Array<XdslLineDiagnosticCustomerActionsEnum>;
-export const XdslLineDiagnosticDiagnosticDataActionsDoneList =
+const XdslLineDiagnosticDiagnosticDataActionsDoneList =
   UpdateLineDiagnosticRequestActionsDoneList as any as S.Schema<XdslLineDiagnosticDiagnosticDataActionsDoneList>;
 
 /** Customer action to do */
@@ -5330,7 +5237,7 @@ export interface XdslLineDiagnosticCustomerActionToDo {
   /** Customer possible actions */
   name?: XdslLineDiagnosticCustomerActionsEnum;
 }
-export const XdslLineDiagnosticCustomerActionToDo = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticCustomerActionToDo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(XdslLineDiagnosticCustomerActionsEnum),
@@ -5342,17 +5249,17 @@ export const XdslLineDiagnosticCustomerActionToDo = /*@__PURE__*/ S.suspend(() =
 /** List of actions that must be done by customer */
 export type XdslLineDiagnosticDiagnosticDataActionsToDoList =
   Array<XdslLineDiagnosticCustomerActionToDo>;
-export const XdslLineDiagnosticDiagnosticDataActionsToDoList = /*@__PURE__*/ S.Array(
+const XdslLineDiagnosticDiagnosticDataActionsToDoList = /*@__PURE__*/ S.Array(
   XdslLineDiagnosticCustomerActionToDo,
 ) as any as S.Schema<XdslLineDiagnosticDiagnosticDataActionsToDoList>;
 
 /** bandwidth unit for proof.ovh.net test values */
 export type XdslLineDiagnosticBandwidthTestUnitEnum = "Kbps" | "Mbps";
-export const XdslLineDiagnosticBandwidthTestUnitEnum = S.String;
+const XdslLineDiagnosticBandwidthTestUnitEnum = S.String;
 
 /** Possible customer questions */
 export type XdslLineDiagnosticProblemTypeEnum = "lowBandwidth" | "syncLoss";
-export const XdslLineDiagnosticProblemTypeEnum = S.String;
+const XdslLineDiagnosticProblemTypeEnum = S.String;
 
 /** Customer answers for line diagnostic */
 export interface XdslLineDiagnosticAnswers {
@@ -5411,7 +5318,7 @@ export interface XdslLineDiagnosticAnswers {
   /** bandwidth upload value on proof.ovh.net test */
   uploadBandwidthTest?: number | null;
 }
-export const XdslLineDiagnosticAnswers = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticAnswers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidthTestUnit: S.optional(S.NullOr(XdslLineDiagnosticBandwidthTestUnitEnum)),
     comment: S.optional(S.NullOr(S.String)),
@@ -5466,7 +5373,7 @@ export interface XdslLineDiagnosticConnectionInformations {
   /** Upstream synchronization */
   upstreamSync?: number | null;
 }
-export const XdslLineDiagnosticConnectionInformations = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticConnectionInformations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crcError: S.optional(S.NullOr(S.Number)),
     downstreamAttenuation: S.optional(S.NullOr(S.Number)),
@@ -5493,7 +5400,7 @@ export interface XdslLineDiagnosticLineCapabilities {
   /** Theoretical Upstream synchronization */
   up?: number | null;
 }
-export const XdslLineDiagnosticLineCapabilities = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticLineCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     down: S.optional(S.NullOr(S.Number)),
     mitigation: S.optional(S.NullOr(S.String)),
@@ -5511,7 +5418,7 @@ export interface XdslLineDiagnosticSection {
   /** cables section in millimeters */
   section?: number;
 }
-export const XdslLineDiagnosticSection = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     length: S.optional(S.Number),
     section: S.optional(S.Number),
@@ -5522,7 +5429,7 @@ export const XdslLineDiagnosticSection = /*@__PURE__*/ S.suspend(() =>
 
 /** cables sections details */
 export type XdslLineDiagnosticLineDetailsSectionsList = Array<XdslLineDiagnosticSection>;
-export const XdslLineDiagnosticLineDetailsSectionsList = /*@__PURE__*/ S.Array(
+const XdslLineDiagnosticLineDetailsSectionsList = /*@__PURE__*/ S.Array(
   XdslLineDiagnosticSection,
 ) as any as S.Schema<XdslLineDiagnosticLineDetailsSectionsList>;
 
@@ -5559,7 +5466,7 @@ export interface XdslLineDiagnosticLineDetails {
   /** cables sections details */
   sections?: XdslLineDiagnosticLineDetailsSectionsList | null;
 }
-export const XdslLineDiagnosticLineDetails = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticLineDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessName: S.optional(S.String),
     accessPing: S.optional(S.NullOr(S.Boolean)),
@@ -5606,19 +5513,19 @@ export type XdslLineDiagnosticRobotActionsEnum =
   | "requestOperatorIntervention"
   | "requestOvhIntervention"
   | "seltTest";
-export const XdslLineDiagnosticRobotActionsEnum = S.String;
+const XdslLineDiagnosticRobotActionsEnum = S.String;
 
 /** Possible SELT test prelocalizations */
 export type XdslLineDiagnosticSeltPrelocEnum = "CUST" | "DSLAM" | "LINE" | "RE";
-export const XdslLineDiagnosticSeltPrelocEnum = S.String;
+const XdslLineDiagnosticSeltPrelocEnum = S.String;
 
 /** Possible SELT test states */
 export type XdslLineDiagnosticSeltStateEnum = "open" | "short" | "synced" | "unknown";
-export const XdslLineDiagnosticSeltStateEnum = S.String;
+const XdslLineDiagnosticSeltStateEnum = S.String;
 
 /** Possible SELT test status */
 export type XdslLineDiagnosticSeltStatusEnum = "failed" | "notAvailable" | "ok";
-export const XdslLineDiagnosticSeltStatusEnum = S.String;
+const XdslLineDiagnosticSeltStatusEnum = S.String;
 
 /** Customer answers for line diagnostic */
 export interface XdslLineDiagnosticSeltResult {
@@ -5633,7 +5540,7 @@ export interface XdslLineDiagnosticSeltResult {
   /** SELT test status */
   status?: XdslLineDiagnosticSeltStatusEnum | null;
 }
-export const XdslLineDiagnosticSeltResult = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticSeltResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.NullOr(S.String)),
     distance: S.optional(S.NullOr(S.Number)),
@@ -5647,7 +5554,7 @@ export const XdslLineDiagnosticSeltResult = /*@__PURE__*/ S.suspend(() =>
 
 /** available values for enum */
 export type XdslLineDiagnosticQuestionEnumValuesList = Array<string>;
-export const XdslLineDiagnosticQuestionEnumValuesList =
+const XdslLineDiagnosticQuestionEnumValuesList =
   XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslLineDiagnosticQuestionEnumValuesList>;
 
 /** Possible customer questions */
@@ -5679,7 +5586,7 @@ export type XdslLineDiagnosticQuestionsEnum =
   | "startAfternoonHours"
   | "startMorningHours"
   | "uploadBandwidthTest";
-export const XdslLineDiagnosticQuestionsEnum = S.String;
+const XdslLineDiagnosticQuestionsEnum = S.String;
 
 /** possible value for specific answer */
 export interface XdslLineDiagnosticPossibleValue {
@@ -5690,7 +5597,7 @@ export interface XdslLineDiagnosticPossibleValue {
   /** answer choice value */
   value?: string | null;
 }
-export const XdslLineDiagnosticPossibleValue = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticPossibleValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     label: S.optional(S.NullOr(S.String)),
@@ -5702,7 +5609,7 @@ export const XdslLineDiagnosticPossibleValue = /*@__PURE__*/ S.suspend(() =>
 
 /** list of possible values */
 export type XdslLineDiagnosticQuestionPossibleValuesList = Array<XdslLineDiagnosticPossibleValue>;
-export const XdslLineDiagnosticQuestionPossibleValuesList = /*@__PURE__*/ S.Array(
+const XdslLineDiagnosticQuestionPossibleValuesList = /*@__PURE__*/ S.Array(
   XdslLineDiagnosticPossibleValue,
 ) as any as S.Schema<XdslLineDiagnosticQuestionPossibleValuesList>;
 
@@ -5723,7 +5630,7 @@ export interface XdslLineDiagnosticQuestion {
   /** answer type */
   type?: string;
 }
-export const XdslLineDiagnosticQuestion = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultValue: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
@@ -5739,7 +5646,7 @@ export const XdslLineDiagnosticQuestion = /*@__PURE__*/ S.suspend(() =>
 
 /** List of questions that must be answered by customer */
 export type XdslLineDiagnosticDiagnosticDataToAnswerList = Array<XdslLineDiagnosticQuestion>;
-export const XdslLineDiagnosticDiagnosticDataToAnswerList = /*@__PURE__*/ S.Array(
+const XdslLineDiagnosticDiagnosticDataToAnswerList = /*@__PURE__*/ S.Array(
   XdslLineDiagnosticQuestion,
 ) as any as S.Schema<XdslLineDiagnosticDiagnosticDataToAnswerList>;
 
@@ -5772,7 +5679,7 @@ export interface XdslLineDiagnosticDiagnosticData {
   /** List of questions that must be answered by customer */
   toAnswer?: XdslLineDiagnosticDiagnosticDataToAnswerList;
 }
-export const XdslLineDiagnosticDiagnosticData = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticDiagnosticData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionsDone: S.optional(XdslLineDiagnosticDiagnosticDataActionsDoneList),
     actionsToDo: S.optional(XdslLineDiagnosticDiagnosticDataActionsToDoList),
@@ -5810,7 +5717,7 @@ export type XdslLineDiagnosticDiagnosticStatusEnum =
   | "waitingHuman"
   | "waitingRobot"
   | "waitingValidation";
-export const XdslLineDiagnosticDiagnosticStatusEnum = S.String;
+const XdslLineDiagnosticDiagnosticStatusEnum = S.String;
 
 /** Diagnostic status and information */
 export interface XdslLineDiagnosticDiagnostic {
@@ -5823,7 +5730,7 @@ export interface XdslLineDiagnosticDiagnostic {
   /** Diagnostic status possible values */
   status?: XdslLineDiagnosticDiagnosticStatusEnum;
 }
-export const XdslLineDiagnosticDiagnostic = /*@__PURE__*/ S.suspend(() =>
+const XdslLineDiagnosticDiagnostic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(XdslLineDiagnosticDiagnosticData),
     faultType: S.optional(XdslLineDiagnosticFaultTypeEnum),
@@ -5836,7 +5743,7 @@ export const XdslLineDiagnosticDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** Status allowed for mail sending */
 export type XdslMailSendingStatusEnum = "disabled" | "enabled";
-export const XdslMailSendingStatusEnum = S.String;
+const XdslMailSendingStatusEnum = S.String;
 
 export interface UpdateMailSendingRequest {
   /** Service name */
@@ -5844,7 +5751,7 @@ export interface UpdateMailSendingRequest {
   /** Status allowed for mail sending */
   status: XdslMailSendingStatusEnum | (string & {});
 }
-export const UpdateMailSendingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     status: XdslMailSendingStatusEnum,
@@ -5857,7 +5764,7 @@ export interface UpdateModemCallWaitingRequest {
   /** Status of the service */
   callWaiting: XdslServiceStatusEnum | (string & {});
 }
-export const UpdateModemCallWaitingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateModemCallWaitingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     callWaiting: XdslServiceStatusEnum,
@@ -5872,7 +5779,7 @@ export interface UpdateModemTemplateRequest {
   /** Do not apply these parameters from template. You can use parametersCapabilities to know availability */
   parametersToIgnore?: XdslTemplateModemParametersToIgnore | null;
 }
-export const UpdateModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     parametersToIgnore: S.optional(S.NullOr(XdslTemplateModemParametersToIgnore)),
@@ -5882,7 +5789,7 @@ export const UpdateModemTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateModemTemplateRequest>;
 
 export interface UpdateModemTemplateResponse {}
-export const UpdateModemTemplateResponse =
+const UpdateModemTemplateResponse =
   ArchiveXdslTaskResponse as any as S.Schema<UpdateModemTemplateResponse>;
 
 export interface UpdateMonitoringNotificationRequest {
@@ -5903,7 +5810,7 @@ export interface UpdateMonitoringNotificationRequest {
   /** The phone number, if type is sms */
   phone?: string | null;
 }
-export const UpdateMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -5921,7 +5828,7 @@ export const UpdateMonitoringNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMonitoringNotificationRequest>;
 
 export interface UpdateMonitoringNotificationResponse {}
-export const UpdateMonitoringNotificationResponse =
+const UpdateMonitoringNotificationResponse =
   CancelXdslLinesDiagnosticResponse as any as S.Schema<UpdateMonitoringNotificationResponse>;
 
 export interface UpdatePortMappingRequest {
@@ -5946,7 +5853,7 @@ export interface UpdatePortMappingRequest {
   /** Type of protocol for the Port Mapping */
   protocol?: XdslXdslModemConfigProtocolTypeEnum | (string & {});
 }
-export const UpdatePortMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePortMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -5964,7 +5871,7 @@ export const UpdatePortMappingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePortMappingRequest" }) as any as S.Schema<UpdatePortMappingRequest>;
 
 export interface UpdatePortMappingResponse {}
-export const UpdatePortMappingResponse =
+const UpdatePortMappingResponse =
   ArchiveXdslTaskResponse as any as S.Schema<UpdatePortMappingResponse>;
 
 export interface UpdateRIORequest {
@@ -5975,7 +5882,7 @@ export interface UpdateRIORequest {
   /** RIO number for portability */
   rio?: string;
 }
-export const UpdateRIORequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRIORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     relaunchWithoutPortability: S.Boolean,
@@ -5986,11 +5893,11 @@ export const UpdateRIORequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRIORequest" }) as any as S.Schema<UpdateRIORequest>;
 
 export interface UpdateRIOResponse {}
-export const UpdateRIOResponse = ArchiveXdslTaskResponse as any as S.Schema<UpdateRIOResponse>;
+const UpdateRIOResponse = ArchiveXdslTaskResponse as any as S.Schema<UpdateRIOResponse>;
 
 /** Types of return merchandise authorisation you can change to */
 export type TelephonyRmaChangeTypeEnum = "resiliate" | "toSip";
-export const TelephonyRmaChangeTypeEnum = S.String;
+const TelephonyRmaChangeTypeEnum = S.String;
 
 export interface UpdateRMATypeRequest {
   /** Service name */
@@ -6000,7 +5907,7 @@ export interface UpdateRMATypeRequest {
   /** Types of return merchandise authorisation you can change to */
   type: TelephonyRmaChangeTypeEnum | (string & {});
 }
-export const UpdateRMATypeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRMATypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -6009,8 +5916,7 @@ export const UpdateRMATypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRMATypeRequest" }) as any as S.Schema<UpdateRMATypeRequest>;
 
 export interface UpdateRMATypeResponse {}
-export const UpdateRMATypeResponse =
-  ArchiveXdslTaskResponse as any as S.Schema<UpdateRMATypeResponse>;
+const UpdateRMATypeResponse = ArchiveXdslTaskResponse as any as S.Schema<UpdateRMATypeResponse>;
 
 export interface UpdateSipAlgStatusRequest {
   /** Service name */
@@ -6018,7 +5924,7 @@ export interface UpdateSipAlgStatusRequest {
   /** Status of the service */
   sipAlg: XdslServiceStatusEnum | (string & {});
 }
-export const UpdateSipAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSipAlgStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     sipAlg: XdslServiceStatusEnum,
@@ -6033,7 +5939,7 @@ export interface UpdateUpnpStatusRequest {
   /** Status of the service */
   upnp: XdslServiceStatusEnum | (string & {});
 }
-export const UpdateUpnpStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUpnpStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     upnp: XdslServiceStatusEnum,

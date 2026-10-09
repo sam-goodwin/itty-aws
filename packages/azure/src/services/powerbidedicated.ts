@@ -18,7 +18,7 @@ export interface CheckCapacityNameAvailabilityRequest {
   /** The resource type of PowerBI dedicated. */
   type?: string;
 }
-export const CheckCapacityNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckCapacityNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -45,7 +45,7 @@ export interface CheckCapacityNameAvailabilityResult {
   /** The detailed message of the request unavailability. */
   message?: string;
 }
-export const CheckCapacityNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckCapacityNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(S.String),
@@ -57,14 +57,14 @@ export const CheckCapacityNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAutoScaleVCoreRequestTagsMap = { [key: string]: string | undefined };
-export const CreateAutoScaleVCoreRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateAutoScaleVCoreRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateAutoScaleVCoreRequestTagsMap>;
 
 /** The current deployment state of an auto scale v-core resource. The provisioningState is to indicate states for resource provisioning. */
 export type VCoreProvisioningState = "Succeeded";
-export const VCoreProvisioningState = S.String;
+const VCoreProvisioningState = S.String;
 
 /** Properties of an auto scale v-core resource. */
 export interface AutoScaleVCoreProperties {
@@ -75,7 +75,7 @@ export interface AutoScaleVCoreProperties {
   /** The current deployment state of an auto scale v-core resource. The provisioningState is to indicate states for resource provisioning. */
   provisioningState?: VCoreProvisioningState | (string & {});
 }
-export const AutoScaleVCoreProperties = /*@__PURE__*/ S.suspend(() =>
+const AutoScaleVCoreProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacityLimit: S.optional(S.Number),
     capacityObjectId: S.optional(S.String),
@@ -85,7 +85,7 @@ export const AutoScaleVCoreProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the Azure pricing tier to which the SKU applies. */
 export type VCoreSkuTier = "AutoScale";
-export const VCoreSkuTier = S.String;
+const VCoreSkuTier = S.String;
 
 /** Represents the SKU name and Azure pricing tier for auto scale v-core resource. */
 export interface AutoScaleVCoreSku {
@@ -96,7 +96,7 @@ export interface AutoScaleVCoreSku {
   /** The capacity of an auto scale v-core resource. */
   capacity?: number;
 }
-export const AutoScaleVCoreSku = /*@__PURE__*/ S.suspend(() =>
+const AutoScaleVCoreSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(VCoreSkuTier),
@@ -120,7 +120,7 @@ export interface CreateAutoScaleVCoreRequest {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const CreateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -143,11 +143,11 @@ export const CreateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -164,7 +164,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -177,7 +177,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateAutoScaleVCoreResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAutoScaleVCoreResponseTagsMap =
+const CreateAutoScaleVCoreResponseTagsMap =
   CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<CreateAutoScaleVCoreResponseTagsMap>;
 
 export interface CreateAutoScaleVCoreResponse {
@@ -198,7 +198,7 @@ export interface CreateAutoScaleVCoreResponse {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const CreateAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -215,12 +215,12 @@ export const CreateAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCapacityRequestTagsMap = { [key: string]: string | undefined };
-export const CreateCapacityRequestTagsMap =
+const CreateCapacityRequestTagsMap =
   CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<CreateCapacityRequestTagsMap>;
 
 /** An array of administrator user identities. */
 export type DedicatedCapacityAdministratorsMembersList = Array<string>;
-export const DedicatedCapacityAdministratorsMembersList = /*@__PURE__*/ S.Array(
+const DedicatedCapacityAdministratorsMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DedicatedCapacityAdministratorsMembersList>;
 
@@ -229,7 +229,7 @@ export interface DedicatedCapacityAdministrators {
   /** An array of administrator user identities. */
   members?: DedicatedCapacityAdministratorsMembersList;
 }
-export const DedicatedCapacityAdministrators = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCapacityAdministrators = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(DedicatedCapacityAdministratorsMembersList),
   }),
@@ -239,7 +239,7 @@ export const DedicatedCapacityAdministrators = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2) */
 export type Mode = "Gen1" | "Gen2";
-export const Mode = S.String;
+const Mode = S.String;
 
 /** Properties of Dedicated Capacity resource. */
 export interface DedicatedCapacityPropertiesInput {
@@ -248,7 +248,7 @@ export interface DedicatedCapacityPropertiesInput {
   /** Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2) */
   mode?: Mode | (string & {});
 }
-export const DedicatedCapacityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCapacityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administration: S.optional(DedicatedCapacityAdministrators),
     mode: S.optional(Mode),
@@ -259,8 +259,6 @@ export const DedicatedCapacityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the Azure pricing tier to which the SKU applies. */
 export type CapacitySkuTier = "PBIE_Azure" | "Premium" | "AutoPremiumHost";
-export const CapacitySkuTier = S.String;
-
 /** Represents the SKU name and Azure pricing tier for PowerBI Dedicated capacity resource. */
 export interface CapacitySku {
   /** Name of the SKU level. */
@@ -270,7 +268,7 @@ export interface CapacitySku {
   /** The capacity of the SKU. */
   capacity?: number;
 }
-export const CapacitySku = AutoScaleVCoreSku as any as S.Schema<CapacitySku>;
+const CapacitySku = AutoScaleVCoreSku as any as S.Schema<CapacitySku>;
 
 export interface CreateCapacityRequest {
   /** The ID of the target subscription. */
@@ -288,7 +286,7 @@ export interface CreateCapacityRequest {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const CreateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -309,7 +307,7 @@ export const CreateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCapacityResponseTagsMap = { [key: string]: string | undefined };
-export const CreateCapacityResponseTagsMap =
+const CreateCapacityResponseTagsMap =
   CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<CreateCapacityResponseTagsMap>;
 
 /** The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning. */
@@ -326,7 +324,7 @@ export type State =
   | "Resuming"
   | "Preparing"
   | "Scaling";
-export const State = S.String;
+const State = S.String;
 
 /** The current deployment state of PowerBI Dedicated resource. The provisioningState is to indicate states for resource provisioning. */
 export type CapacityProvisioningState =
@@ -342,7 +340,7 @@ export type CapacityProvisioningState =
   | "Resuming"
   | "Preparing"
   | "Scaling";
-export const CapacityProvisioningState = S.String;
+const CapacityProvisioningState = S.String;
 
 /** Properties of Dedicated Capacity resource. */
 export interface DedicatedCapacityProperties {
@@ -359,7 +357,7 @@ export interface DedicatedCapacityProperties {
   /** The current deployment state of PowerBI Dedicated resource. The provisioningState is to indicate states for resource provisioning. */
   provisioningState?: CapacityProvisioningState;
 }
-export const DedicatedCapacityProperties = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCapacityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administration: S.optional(DedicatedCapacityAdministrators),
     mode: S.optional(Mode),
@@ -390,7 +388,7 @@ export interface CreateCapacityResponse {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const CreateCapacityResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCapacityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -411,7 +409,7 @@ export interface DeleteAutoScaleVCoreRequest {
   /** The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63. */
   vcoreName: string;
 }
-export const DeleteAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -429,7 +427,7 @@ export const DeleteAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAutoScaleVCoreRequest>;
 
 export interface DeleteAutoScaleVCoreResponse {}
-export const DeleteAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAutoScaleVCoreResponse",
 }) as any as S.Schema<DeleteAutoScaleVCoreResponse>;
 
@@ -441,7 +439,7 @@ export interface DeleteCapacityRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export const DeleteCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -457,7 +455,7 @@ export const DeleteCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCapacityRequest" }) as any as S.Schema<DeleteCapacityRequest>;
 
 export interface DeleteCapacityResponse {}
-export const DeleteCapacityResponse =
+const DeleteCapacityResponse =
   DeleteAutoScaleVCoreResponse as any as S.Schema<DeleteCapacityResponse>;
 
 export interface GetAutoScaleVCoreRequest {
@@ -468,7 +466,7 @@ export interface GetAutoScaleVCoreRequest {
   /** The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63. */
   vcoreName: string;
 }
-export const GetAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -485,9 +483,6 @@ export const GetAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAutoScaleVCoreResponseTagsMap = { [key: string]: string | undefined };
-export const GetAutoScaleVCoreResponseTagsMap =
-  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<GetAutoScaleVCoreResponseTagsMap>;
-
 export interface GetAutoScaleVCoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -506,7 +501,7 @@ export interface GetAutoScaleVCoreResponse {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const GetAutoScaleVCoreResponse =
+const GetAutoScaleVCoreResponse =
   CreateAutoScaleVCoreResponse as any as S.Schema<GetAutoScaleVCoreResponse>;
 
 export interface GetCapacityDetailsRequest {
@@ -517,7 +512,7 @@ export interface GetCapacityDetailsRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export const GetCapacityDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCapacityDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -536,7 +531,7 @@ export const GetCapacityDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCapacityDetailsResponseTagsMap = { [key: string]: string | undefined };
-export const GetCapacityDetailsResponseTagsMap =
+const GetCapacityDetailsResponseTagsMap =
   CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<GetCapacityDetailsResponseTagsMap>;
 
 export interface GetCapacityDetailsResponse {
@@ -557,7 +552,7 @@ export interface GetCapacityDetailsResponse {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const GetCapacityDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCapacityDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -578,7 +573,7 @@ export interface ListAutoScaleVCoreByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAutoScaleVCoreByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoScaleVCoreByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -596,7 +591,7 @@ export const ListAutoScaleVCoreByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Resource tags. */
 export type AutoScaleVCoreTagsMap = { [key: string]: string | undefined };
-export const AutoScaleVCoreTagsMap =
+const AutoScaleVCoreTagsMap =
   CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<AutoScaleVCoreTagsMap>;
 
 /** Represents an instance of an auto scale v-core resource. */
@@ -618,7 +613,7 @@ export interface AutoScaleVCore {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const AutoScaleVCore = /*@__PURE__*/ S.suspend(() =>
+const AutoScaleVCore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -633,7 +628,7 @@ export const AutoScaleVCore = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of auto scale v-core resources. */
 export type AutoScaleVCoreListResultValueList = Array<AutoScaleVCore>;
-export const AutoScaleVCoreListResultValueList = /*@__PURE__*/ S.Array(
+const AutoScaleVCoreListResultValueList = /*@__PURE__*/ S.Array(
   AutoScaleVCore,
 ) as any as S.Schema<AutoScaleVCoreListResultValueList>;
 
@@ -643,7 +638,7 @@ export interface AutoScaleVCoreListResult {
   value: AutoScaleVCoreListResultValueList;
   nextLink?: string;
 }
-export const AutoScaleVCoreListResult = /*@__PURE__*/ S.suspend(() =>
+const AutoScaleVCoreListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AutoScaleVCoreListResultValueList,
     nextLink: S.optional(S.String),
@@ -654,7 +649,7 @@ export interface ListAutoScaleVCoreBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListAutoScaleVCoreBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoScaleVCoreBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -673,7 +668,7 @@ export interface ListCapacitiesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListCapacitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCapacitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -688,9 +683,6 @@ export const ListCapacitiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DedicatedCapacityTagsMap = { [key: string]: string | undefined };
-export const DedicatedCapacityTagsMap =
-  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<DedicatedCapacityTagsMap>;
-
 /** Represents an instance of a Dedicated Capacity resource. */
 export interface DedicatedCapacity {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -710,11 +702,11 @@ export interface DedicatedCapacity {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const DedicatedCapacity = CreateCapacityResponse as any as S.Schema<DedicatedCapacity>;
+const DedicatedCapacity = CreateCapacityResponse as any as S.Schema<DedicatedCapacity>;
 
 /** An array of Dedicated capacities resources. */
 export type DedicatedCapacitiesValueList = Array<DedicatedCapacity>;
-export const DedicatedCapacitiesValueList = /*@__PURE__*/ S.Array(
+const DedicatedCapacitiesValueList = /*@__PURE__*/ S.Array(
   DedicatedCapacity,
 ) as any as S.Schema<DedicatedCapacitiesValueList>;
 
@@ -725,7 +717,7 @@ export interface DedicatedCapacities {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DedicatedCapacities = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCapacities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DedicatedCapacitiesValueList,
     nextLink: S.optional(S.String),
@@ -738,7 +730,7 @@ export interface ListCapacityByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListCapacityByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCapacityByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -758,7 +750,7 @@ export interface ListCapacitySkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListCapacitySkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCapacitySkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -773,7 +765,7 @@ export const ListCapacitySkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for new resources */
 export type SkuEnumerationForNewResourceResultValueList = Array<CapacitySku>;
-export const SkuEnumerationForNewResourceResultValueList = /*@__PURE__*/ S.Array(
+const SkuEnumerationForNewResourceResultValueList = /*@__PURE__*/ S.Array(
   CapacitySku,
 ) as any as S.Schema<SkuEnumerationForNewResourceResultValueList>;
 
@@ -782,7 +774,7 @@ export interface SkuEnumerationForNewResourceResult {
   /** The collection of available SKUs for new resources */
   value?: SkuEnumerationForNewResourceResultValueList;
 }
-export const SkuEnumerationForNewResourceResult = /*@__PURE__*/ S.suspend(() =>
+const SkuEnumerationForNewResourceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SkuEnumerationForNewResourceResultValueList),
   }),
@@ -798,7 +790,7 @@ export interface ListCapacitySkusForCapacityRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export const ListCapacitySkusForCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCapacitySkusForCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -822,7 +814,7 @@ export interface SkuDetailsForExistingResource {
   /** The SKU in SKU details for existing resources. */
   sku?: CapacitySku;
 }
-export const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
+const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     sku: S.optional(CapacitySku),
@@ -833,7 +825,7 @@ export const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for existing resources */
 export type SkuEnumerationForExistingResourceResultValueList = Array<SkuDetailsForExistingResource>;
-export const SkuEnumerationForExistingResourceResultValueList = /*@__PURE__*/ S.Array(
+const SkuEnumerationForExistingResourceResultValueList = /*@__PURE__*/ S.Array(
   SkuDetailsForExistingResource,
 ) as any as S.Schema<SkuEnumerationForExistingResourceResultValueList>;
 
@@ -842,7 +834,7 @@ export interface SkuEnumerationForExistingResourceResult {
   /** The collection of available SKUs for existing resources */
   value?: SkuEnumerationForExistingResourceResultValueList;
 }
-export const SkuEnumerationForExistingResourceResult = /*@__PURE__*/ S.suspend(() =>
+const SkuEnumerationForExistingResourceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SkuEnumerationForExistingResourceResultValueList),
   }),
@@ -851,7 +843,7 @@ export const SkuEnumerationForExistingResourceResult = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SkuEnumerationForExistingResourceResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -873,7 +865,7 @@ export interface OperationDisplay {
   /** Localized description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -888,7 +880,7 @@ export interface MetricSpecificationDimensionsItem {
   /** Localizable dimension of the metric */
   displayName?: string;
 }
-export const MetricSpecificationDimensionsItem = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecificationDimensionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -899,7 +891,7 @@ export const MetricSpecificationDimensionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** For describing multi dimensional metrics */
 export type MetricSpecificationDimensionsList = Array<MetricSpecificationDimensionsItem>;
-export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricSpecificationDimensionsItem,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
 
@@ -920,7 +912,7 @@ export interface MetricSpecification {
   /** For describing multi dimensional metrics */
   dimensions?: MetricSpecificationDimensionsList;
 }
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -934,7 +926,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications for exposing performance metrics to shoebox. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecification,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -947,7 +939,7 @@ export interface LogSpecification {
   /** Blob duration for the log */
   blobDuration?: string;
 }
-export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
+const LogSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -957,7 +949,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Log specifications for exposing diagnostic logs to shoebox. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
 
@@ -968,7 +960,7 @@ export interface ServiceSpecification {
   /** Log specifications for exposing diagnostic logs to shoebox. */
   logSpecifications?: ServiceSpecificationLogSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
     logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
@@ -980,7 +972,7 @@ export interface OperationProperties {
   /** Service specification for exposing performance metrics to shoebox. */
   serviceSpecification?: ServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -997,7 +989,7 @@ export interface Operation {
   /** Additional properties to expose performance metrics to shoebox. */
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -1008,7 +1000,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of capacities supported by the Microsoft.PowerBIDedicated resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1019,7 +1011,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1034,7 +1026,7 @@ export interface ResumeCapacityRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export const ResumeCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1050,7 +1042,7 @@ export const ResumeCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeCapacityRequest" }) as any as S.Schema<ResumeCapacityRequest>;
 
 export interface ResumeCapacityResponse {}
-export const ResumeCapacityResponse =
+const ResumeCapacityResponse =
   DeleteAutoScaleVCoreResponse as any as S.Schema<ResumeCapacityResponse>;
 
 export interface SuspendCapacityRequest {
@@ -1061,7 +1053,7 @@ export interface SuspendCapacityRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export const SuspendCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1077,12 +1069,12 @@ export const SuspendCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendCapacityRequest" }) as any as S.Schema<SuspendCapacityRequest>;
 
 export interface SuspendCapacityResponse {}
-export const SuspendCapacityResponse =
+const SuspendCapacityResponse =
   DeleteAutoScaleVCoreResponse as any as S.Schema<SuspendCapacityResponse>;
 
 /** Key-value pairs of additional provisioning properties. */
 export type UpdateAutoScaleVCoreRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAutoScaleVCoreRequestTagsMap =
+const UpdateAutoScaleVCoreRequestTagsMap =
   CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<UpdateAutoScaleVCoreRequestTagsMap>;
 
 /** An object that represents a set of mutable auto scale v-core resource properties. */
@@ -1090,7 +1082,7 @@ export interface AutoScaleVCoreMutableProperties {
   /** The maximum capacity of an auto scale v-core resource. */
   capacityLimit?: number;
 }
-export const AutoScaleVCoreMutableProperties = /*@__PURE__*/ S.suspend(() =>
+const AutoScaleVCoreMutableProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacityLimit: S.optional(S.Number),
   }),
@@ -1112,7 +1104,7 @@ export interface UpdateAutoScaleVCoreRequest {
   /** Properties of the update operation request. */
   properties?: AutoScaleVCoreMutableProperties;
 }
-export const UpdateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1134,9 +1126,6 @@ export const UpdateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAutoScaleVCoreResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAutoScaleVCoreResponseTagsMap =
-  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<UpdateAutoScaleVCoreResponseTagsMap>;
-
 export interface UpdateAutoScaleVCoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1155,18 +1144,16 @@ export interface UpdateAutoScaleVCoreResponse {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const UpdateAutoScaleVCoreResponse =
+const UpdateAutoScaleVCoreResponse =
   CreateAutoScaleVCoreResponse as any as S.Schema<UpdateAutoScaleVCoreResponse>;
 
 /** Key-value pairs of additional provisioning properties. */
 export type UpdateCapacityRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCapacityRequestTagsMap =
+const UpdateCapacityRequestTagsMap =
   CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<UpdateCapacityRequestTagsMap>;
 
 /** An object that represents a set of mutable Dedicated capacity resource properties. */
 export type DedicatedCapacityMutablePropertiesInput = DedicatedCapacityPropertiesInput;
-export const DedicatedCapacityMutablePropertiesInput = DedicatedCapacityPropertiesInput;
-
 export interface UpdateCapacityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1181,7 +1168,7 @@ export interface UpdateCapacityRequest {
   /** Properties of the provision operation request. */
   properties?: DedicatedCapacityPropertiesInput;
 }
-export const UpdateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1201,9 +1188,6 @@ export const UpdateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCapacityResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCapacityResponseTagsMap =
-  CreateAutoScaleVCoreRequestTagsMap as any as S.Schema<UpdateCapacityResponseTagsMap>;
-
 export interface UpdateCapacityResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1222,8 +1206,7 @@ export interface UpdateCapacityResponse {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const UpdateCapacityResponse =
-  CreateCapacityResponse as any as S.Schema<UpdateCapacityResponse>;
+const UpdateCapacityResponse = CreateCapacityResponse as any as S.Schema<UpdateCapacityResponse>;
 
 export type CheckCapacityNameAvailabilityError = AzureOpError;
 /** Check the name availability in the target location. */

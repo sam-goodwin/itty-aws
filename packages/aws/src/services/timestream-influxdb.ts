@@ -143,17 +143,14 @@ export type RetentionDays = number;
 export type TagKey = string;
 export type TagValue = string;
 export type RequestTagMap = { [key: string]: string | undefined };
-export const RequestTagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const RequestTagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateDbBackupInput {
   name: string;
   dbResourceId: string;
   retentionDays?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDbBackupInput = /*@__PURE__*/ S.suspend(() =>
+const CreateDbBackupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     dbResourceId: S.String,
@@ -170,7 +167,7 @@ export type DbBackupStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const DbBackupStatus = S.String;
+const DbBackupStatus = S.String;
 
 export type DbBackupType =
   | "HOURLY"
@@ -181,21 +178,21 @@ export type DbBackupType =
   | "ON_DEMAND"
   | "CONTINUOUS"
   | (string & {});
-export const DbBackupType = S.String;
+const DbBackupType = S.String;
 
 export type EngineType =
   | "INFLUXDB_V2"
   | "INFLUXDB_V3_CORE"
   | "INFLUXDB_V3_ENTERPRISE"
   | (string & {});
-export const EngineType = S.String;
+const EngineType = S.String;
 
 export type ResourceDeploymentType =
   | "SINGLE_AZ"
   | "WITH_MULTIAZ_STANDBY"
   | "MULTI_NODE_READ_REPLICAS"
   | (string & {});
-export const ResourceDeploymentType = S.String;
+const ResourceDeploymentType = S.String;
 
 export type KmsKeyId = string;
 export interface ClusterConfiguration {
@@ -203,7 +200,7 @@ export interface ClusterConfiguration {
   queryOnlyInstances?: number;
   dedicatedCompactor?: boolean;
 }
-export const ClusterConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ClusterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingestQueryInstances: S.optional(S.Number),
     queryOnlyInstances: S.optional(S.Number),
@@ -222,40 +219,40 @@ export type DbInstanceType =
   | "db.influx.16xlarge"
   | "db.influx.24xlarge"
   | (string & {});
-export const DbInstanceType = S.String;
+const DbInstanceType = S.String;
 
 export interface S3Configuration {
   bucketName: string;
   enabled: boolean;
 }
-export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
+const S3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketName: S.String, enabled: S.Boolean }),
 ).annotate({ identifier: "S3Configuration" }) as any as S.Schema<S3Configuration>;
 export interface LogDeliveryConfiguration {
   s3Configuration: S3Configuration;
 }
-export const LogDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LogDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Configuration: S3Configuration }),
 ).annotate({ identifier: "LogDeliveryConfiguration" }) as any as S.Schema<LogDeliveryConfiguration>;
 export type FailoverMode = "AUTOMATIC" | "NO_FAILOVER" | (string & {});
-export const FailoverMode = S.String;
+const FailoverMode = S.String;
 
 export type DbStorageType =
   | "InfluxIOIncludedT1"
   | "InfluxIOIncludedT2"
   | "InfluxIOIncludedT3"
   | (string & {});
-export const DbStorageType = S.String;
+const DbStorageType = S.String;
 
 export type AllocatedStorage = number;
 export type VpcSubnetId = string;
 export type VpcSubnetIdList = string[];
-export const VpcSubnetIdList = /*@__PURE__*/ S.Array(S.String);
+const VpcSubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type VpcSecurityGroupId = string;
 export type VpcSecurityGroupIdList = string[];
-export const VpcSecurityGroupIdList = VpcSubnetIdList as any as S.Schema<VpcSecurityGroupIdList>;
+const VpcSecurityGroupIdList = VpcSubnetIdList as any as S.Schema<VpcSecurityGroupIdList>;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
-export const NetworkType = S.String;
+const NetworkType = S.String;
 
 export type IanaTimezone = string;
 export type MaintenanceWindow = string;
@@ -263,7 +260,7 @@ export interface MaintenanceSchedule {
   timezone: string;
   preferredMaintenanceWindow: string;
 }
-export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ timezone: S.String, preferredMaintenanceWindow: S.String }),
 ).annotate({ identifier: "MaintenanceSchedule" }) as any as S.Schema<MaintenanceSchedule>;
 export interface CreateDbBackupOutput {
@@ -293,7 +290,7 @@ export interface CreateDbBackupOutput {
   influxAuthParametersSecretArn?: string;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-export const CreateDbBackupOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateDbBackupOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -330,7 +327,7 @@ export type Bucket = string;
 export type Port = number;
 export type DbParameterGroupIdentifier = string;
 export type ClusterDeploymentType = "MULTI_NODE_READ_REPLICAS" | (string & {});
-export const ClusterDeploymentType = S.String;
+const ClusterDeploymentType = S.String;
 
 export type AutomatedDbBackupType =
   | "HOURLY"
@@ -340,7 +337,7 @@ export type AutomatedDbBackupType =
   | "CUSTOM_SCHEDULE"
   | "CONTINUOUS"
   | (string & {});
-export const AutomatedDbBackupType = S.String;
+const AutomatedDbBackupType = S.String;
 
 export type AutomatedBackupRetentionDays = number;
 export type AwsCronSchedule = string;
@@ -350,7 +347,7 @@ export interface DbBackupConfiguration {
   enabled: boolean;
   customSchedule?: string;
 }
-export const DbBackupConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DbBackupConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AutomatedDbBackupType,
     retentionDays: S.Number,
@@ -359,7 +356,7 @@ export const DbBackupConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DbBackupConfiguration" }) as any as S.Schema<DbBackupConfiguration>;
 export type DbBackupConfigurationInputList = DbBackupConfiguration[];
-export const DbBackupConfigurationInputList = /*@__PURE__*/ S.Array(DbBackupConfiguration);
+const DbBackupConfigurationInputList = /*@__PURE__*/ S.Array(DbBackupConfiguration);
 export interface CreateDbClusterInput {
   name: string;
   username?: string | redacted.Redacted<string>;
@@ -383,7 +380,7 @@ export interface CreateDbClusterInput {
   kmsKeyId?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+const CreateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     username: S.optional(SensitiveString),
@@ -424,18 +421,18 @@ export type ClusterStatus =
   | "RESTORING"
   | "RESTORE_FAILED"
   | (string & {});
-export const ClusterStatus = S.String;
+const ClusterStatus = S.String;
 
 export interface CreateDbClusterOutput {
   dbClusterId?: string;
   dbClusterStatus?: ClusterStatus;
 }
-export const CreateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterId: S.optional(S.String), dbClusterStatus: S.optional(ClusterStatus) }),
 ).annotate({ identifier: "CreateDbClusterOutput" }) as any as S.Schema<CreateDbClusterOutput>;
 export type DbInstanceName = string;
 export type DeploymentType = "SINGLE_AZ" | "WITH_MULTIAZ_STANDBY" | (string & {});
-export const DeploymentType = S.String;
+const DeploymentType = S.String;
 
 export interface CreateDbInstanceInput {
   name: string;
@@ -459,7 +456,7 @@ export interface CreateDbInstanceInput {
   dbBackupConfigurations?: DbBackupConfiguration[];
   kmsKeyId?: string;
 }
-export const CreateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+const CreateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     username: S.optional(SensitiveString),
@@ -500,7 +497,7 @@ export type Status =
   | "RESTORING"
   | "RESTORE_FAILED"
   | (string & {});
-export const Status = S.String;
+const Status = S.String;
 
 export type InstanceMode =
   | "PRIMARY"
@@ -511,10 +508,10 @@ export type InstanceMode =
   | "COMPACT"
   | "PROCESS"
   | (string & {});
-export const InstanceMode = S.String;
+const InstanceMode = S.String;
 
 export type InstanceModeList = InstanceMode[];
-export const InstanceModeList = /*@__PURE__*/ S.Array(InstanceMode);
+const InstanceModeList = /*@__PURE__*/ S.Array(InstanceMode);
 export interface DbBackupConfigurationOutput {
   type: AutomatedDbBackupType;
   retentionDays: number;
@@ -522,7 +519,7 @@ export interface DbBackupConfigurationOutput {
   customSchedule?: string;
   nextAutomatedBackupTime?: Date;
 }
-export const DbBackupConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+const DbBackupConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AutomatedDbBackupType,
     retentionDays: S.Number,
@@ -534,7 +531,7 @@ export const DbBackupConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DbBackupConfigurationOutput",
 }) as any as S.Schema<DbBackupConfigurationOutput>;
 export type DbBackupConfigurationOutputList = DbBackupConfigurationOutput[];
-export const DbBackupConfigurationOutputList = /*@__PURE__*/ S.Array(DbBackupConfigurationOutput);
+const DbBackupConfigurationOutputList = /*@__PURE__*/ S.Array(DbBackupConfigurationOutput);
 export interface CreateDbInstanceOutput {
   id: string;
   name: string;
@@ -564,7 +561,7 @@ export interface CreateDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const CreateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -597,10 +594,10 @@ export const CreateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDbInstanceOutput" }) as any as S.Schema<CreateDbInstanceOutput>;
 export type DbParameterGroupName = string;
 export type LogLevel = "debug" | "info" | "error" | (string & {});
-export const LogLevel = S.String;
+const LogLevel = S.String;
 
 export type TracingType = "log" | "jaeger" | "disabled" | (string & {});
-export const TracingType = S.String;
+const TracingType = S.String;
 
 export type DurationType =
   | "hours"
@@ -609,13 +606,13 @@ export type DurationType =
   | "milliseconds"
   | "days"
   | (string & {});
-export const DurationType = S.String;
+const DurationType = S.String;
 
 export interface Duration {
   durationType: DurationType;
   value: number;
 }
-export const Duration = /*@__PURE__*/ S.suspend(() =>
+const Duration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ durationType: DurationType, value: S.Number }),
 ).annotate({ identifier: "Duration" }) as any as S.Schema<Duration>;
 export interface InfluxDBv2Parameters {
@@ -654,7 +651,7 @@ export interface InfluxDBv2Parameters {
   storageWalMaxWriteDelay?: Duration;
   uiDisabled?: boolean;
 }
-export const InfluxDBv2Parameters = /*@__PURE__*/ S.suspend(() =>
+const InfluxDBv2Parameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fluxLogEnabled: S.optional(S.Boolean),
     logLevel: S.optional(LogLevel),
@@ -693,15 +690,15 @@ export const InfluxDBv2Parameters = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InfluxDBv2Parameters" }) as any as S.Schema<InfluxDBv2Parameters>;
 export type LogFormats = "full" | (string & {});
-export const LogFormats = S.String;
+const LogFormats = S.String;
 
 export type DataFusionRuntimeType = "multi-thread" | "multi-thread-alt" | (string & {});
-export const DataFusionRuntimeType = S.String;
+const DataFusionRuntimeType = S.String;
 
 export type PercentOrAbsoluteLong =
   | { percent: string; absolute?: never }
   | { percent?: never; absolute: number };
-export const PercentOrAbsoluteLong = /*@__PURE__*/ S.Union([
+const PercentOrAbsoluteLong = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ percent: S.String }),
   /*@__PURE__*/ S.Struct({ absolute: S.Number }),
 ]);
@@ -749,7 +746,7 @@ export interface InfluxDBv3CoreParameters {
   pluginRepositoryUrl?: string;
   pluginRepositorySecretArn?: string;
 }
-export const InfluxDBv3CoreParameters = /*@__PURE__*/ S.suspend(() =>
+const InfluxDBv3CoreParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryFileLimit: S.optional(S.Number),
     queryLogSize: S.optional(S.Number),
@@ -850,7 +847,7 @@ export interface InfluxDBv3EnterpriseParameters {
   replicationInterval?: Duration;
   catalogSyncInterval?: Duration;
 }
-export const InfluxDBv3EnterpriseParameters = /*@__PURE__*/ S.suspend(() =>
+const InfluxDBv3EnterpriseParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryFileLimit: S.optional(S.Number),
     queryLogSize: S.optional(S.Number),
@@ -918,7 +915,7 @@ export type Parameters =
       InfluxDBv3Core?: never;
       InfluxDBv3Enterprise: InfluxDBv3EnterpriseParameters;
     };
-export const Parameters = /*@__PURE__*/ S.Union([
+const Parameters = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ InfluxDBv2: InfluxDBv2Parameters }),
   /*@__PURE__*/ S.Struct({ InfluxDBv3Core: InfluxDBv3CoreParameters }),
   /*@__PURE__*/ S.Struct({ InfluxDBv3Enterprise: InfluxDBv3EnterpriseParameters }),
@@ -929,7 +926,7 @@ export interface CreateDbParameterGroupInput {
   parameters?: Parameters;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDbParameterGroupInput = /*@__PURE__*/ S.suspend(() =>
+const CreateDbParameterGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -946,7 +943,7 @@ export interface CreateDbParameterGroupOutput {
   description?: string;
   parameters?: Parameters;
 }
-export const CreateDbParameterGroupOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateDbParameterGroupOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -960,7 +957,7 @@ export const CreateDbParameterGroupOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDbBackupInput {
   identifier: string;
 }
-export const DeleteDbBackupInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbBackupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -992,12 +989,12 @@ export interface DeleteDbBackupOutput {
   influxAuthParametersSecretArn?: string;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-export const DeleteDbBackupOutput = CreateDbBackupOutput as any as S.Schema<DeleteDbBackupOutput>;
+const DeleteDbBackupOutput = CreateDbBackupOutput as any as S.Schema<DeleteDbBackupOutput>;
 export interface DeleteDbClusterInput {
   dbClusterId: string;
   retainAutomatedBackups?: boolean;
 }
-export const DeleteDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterId: S.String, retainAutomatedBackups: S.optional(S.Boolean) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1005,7 +1002,7 @@ export const DeleteDbClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-export const DeleteDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
 ).annotate({ identifier: "DeleteDbClusterOutput" }) as any as S.Schema<DeleteDbClusterOutput>;
 export type DbInstanceIdentifier = string;
@@ -1013,7 +1010,7 @@ export interface DeleteDbInstanceInput {
   identifier: string;
   retainAutomatedBackups?: boolean;
 }
-export const DeleteDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String, retainAutomatedBackups: S.optional(S.Boolean) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1047,12 +1044,11 @@ export interface DeleteDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const DeleteDbInstanceOutput =
-  CreateDbInstanceOutput as any as S.Schema<DeleteDbInstanceOutput>;
+const DeleteDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<DeleteDbInstanceOutput>;
 export interface GetDbBackupInput {
   identifier: string;
 }
-export const GetDbBackupInput = /*@__PURE__*/ S.suspend(() =>
+const GetDbBackupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1084,11 +1080,11 @@ export interface GetDbBackupOutput {
   influxAuthParametersSecretArn?: string;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-export const GetDbBackupOutput = CreateDbBackupOutput as any as S.Schema<GetDbBackupOutput>;
+const GetDbBackupOutput = CreateDbBackupOutput as any as S.Schema<GetDbBackupOutput>;
 export interface GetDbClusterInput {
   dbClusterId: string;
 }
-export const GetDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+const GetDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1122,7 +1118,7 @@ export interface GetDbClusterOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const GetDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
+const GetDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1156,7 +1152,7 @@ export const GetDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetDbInstanceInput {
   identifier: string;
 }
-export const GetDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+const GetDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1190,11 +1186,11 @@ export interface GetDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const GetDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<GetDbInstanceOutput>;
+const GetDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<GetDbInstanceOutput>;
 export interface GetDbParameterGroupInput {
   identifier: string;
 }
-export const GetDbParameterGroupInput = /*@__PURE__*/ S.suspend(() =>
+const GetDbParameterGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1206,7 +1202,7 @@ export interface GetDbParameterGroupOutput {
   description?: string;
   parameters?: Parameters;
 }
-export const GetDbParameterGroupOutput =
+const GetDbParameterGroupOutput =
   CreateDbParameterGroupOutput as any as S.Schema<GetDbParameterGroupOutput>;
 export type NextToken = string;
 export type MaxResults = number;
@@ -1215,7 +1211,7 @@ export interface ListDbBackupsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbBackupsInput = /*@__PURE__*/ S.suspend(() =>
+const ListDbBackupsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dbResourceId: S.optional(S.String),
     nextToken: S.optional(S.String),
@@ -1235,7 +1231,7 @@ export interface DbBackupSummary {
   deploymentType?: ResourceDeploymentType;
   kmsKeyId?: string;
 }
-export const DbBackupSummary = /*@__PURE__*/ S.suspend(() =>
+const DbBackupSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -1251,19 +1247,19 @@ export const DbBackupSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DbBackupSummary" }) as any as S.Schema<DbBackupSummary>;
 export type DbBackupSummaryList = DbBackupSummary[];
-export const DbBackupSummaryList = /*@__PURE__*/ S.Array(DbBackupSummary);
+const DbBackupSummaryList = /*@__PURE__*/ S.Array(DbBackupSummary);
 export interface ListDbBackupsOutput {
   items: DbBackupSummary[];
   nextToken?: string;
 }
-export const ListDbBackupsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListDbBackupsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: DbBackupSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListDbBackupsOutput" }) as any as S.Schema<ListDbBackupsOutput>;
 export interface ListDbClustersInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbClustersInput = /*@__PURE__*/ S.suspend(() =>
+const ListDbClustersInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1283,7 +1279,7 @@ export interface DbClusterSummary {
   allocatedStorage?: number;
   engineType?: EngineType;
 }
-export const DbClusterSummary = /*@__PURE__*/ S.suspend(() =>
+const DbClusterSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1301,19 +1297,19 @@ export const DbClusterSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DbClusterSummary" }) as any as S.Schema<DbClusterSummary>;
 export type DbClusterSummaryList = DbClusterSummary[];
-export const DbClusterSummaryList = /*@__PURE__*/ S.Array(DbClusterSummary);
+const DbClusterSummaryList = /*@__PURE__*/ S.Array(DbClusterSummary);
 export interface ListDbClustersOutput {
   items: DbClusterSummary[];
   nextToken?: string;
 }
-export const ListDbClustersOutput = /*@__PURE__*/ S.suspend(() =>
+const ListDbClustersOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: DbClusterSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListDbClustersOutput" }) as any as S.Schema<ListDbClustersOutput>;
 export interface ListDbInstancesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbInstancesInput = /*@__PURE__*/ S.suspend(() =>
+const ListDbInstancesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1331,7 +1327,7 @@ export interface DbInstanceSummary {
   allocatedStorage?: number;
   deploymentType?: DeploymentType;
 }
-export const DbInstanceSummary = /*@__PURE__*/ S.suspend(() =>
+const DbInstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1347,12 +1343,12 @@ export const DbInstanceSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DbInstanceSummary" }) as any as S.Schema<DbInstanceSummary>;
 export type DbInstanceSummaryList = DbInstanceSummary[];
-export const DbInstanceSummaryList = /*@__PURE__*/ S.Array(DbInstanceSummary);
+const DbInstanceSummaryList = /*@__PURE__*/ S.Array(DbInstanceSummary);
 export interface ListDbInstancesOutput {
   items: DbInstanceSummary[];
   nextToken?: string;
 }
-export const ListDbInstancesOutput = /*@__PURE__*/ S.suspend(() =>
+const ListDbInstancesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: DbInstanceSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListDbInstancesOutput" }) as any as S.Schema<ListDbInstancesOutput>;
 export interface ListDbInstancesForClusterInput {
@@ -1360,7 +1356,7 @@ export interface ListDbInstancesForClusterInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbInstancesForClusterInput = /*@__PURE__*/ S.suspend(() =>
+const ListDbInstancesForClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dbClusterId: S.String,
     nextToken: S.optional(S.String),
@@ -1384,7 +1380,7 @@ export interface DbInstanceForClusterSummary {
   instanceMode?: InstanceMode;
   instanceModes?: InstanceMode[];
 }
-export const DbInstanceForClusterSummary = /*@__PURE__*/ S.suspend(() =>
+const DbInstanceForClusterSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1404,12 +1400,12 @@ export const DbInstanceForClusterSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "DbInstanceForClusterSummary",
 }) as any as S.Schema<DbInstanceForClusterSummary>;
 export type DbInstanceForClusterSummaryList = DbInstanceForClusterSummary[];
-export const DbInstanceForClusterSummaryList = /*@__PURE__*/ S.Array(DbInstanceForClusterSummary);
+const DbInstanceForClusterSummaryList = /*@__PURE__*/ S.Array(DbInstanceForClusterSummary);
 export interface ListDbInstancesForClusterOutput {
   items: DbInstanceForClusterSummary[];
   nextToken?: string;
 }
-export const ListDbInstancesForClusterOutput = /*@__PURE__*/ S.suspend(() =>
+const ListDbInstancesForClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: DbInstanceForClusterSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDbInstancesForClusterOutput",
@@ -1418,7 +1414,7 @@ export interface ListDbParameterGroupsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbParameterGroupsInput = /*@__PURE__*/ S.suspend(() =>
+const ListDbParameterGroupsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1431,16 +1427,16 @@ export interface DbParameterGroupSummary {
   arn: string;
   description?: string;
 }
-export const DbParameterGroupSummary = /*@__PURE__*/ S.suspend(() =>
+const DbParameterGroupSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, name: S.String, arn: S.String, description: S.optional(S.String) }),
 ).annotate({ identifier: "DbParameterGroupSummary" }) as any as S.Schema<DbParameterGroupSummary>;
 export type DbParameterGroupSummaryList = DbParameterGroupSummary[];
-export const DbParameterGroupSummaryList = /*@__PURE__*/ S.Array(DbParameterGroupSummary);
+const DbParameterGroupSummaryList = /*@__PURE__*/ S.Array(DbParameterGroupSummary);
 export interface ListDbParameterGroupsOutput {
   items: DbParameterGroupSummary[];
   nextToken?: string;
 }
-export const ListDbParameterGroupsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListDbParameterGroupsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: DbParameterGroupSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDbParameterGroupsOutput",
@@ -1448,7 +1444,7 @@ export const ListDbParameterGroupsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1456,22 +1452,22 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
-export const ResponseTagMap = RequestTagMap as any as S.Schema<ResponseTagMap>;
+const ResponseTagMap = RequestTagMap as any as S.Schema<ResponseTagMap>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(ResponseTagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type DbInstanceIdList = string[];
-export const DbInstanceIdList = VpcSubnetIdList as any as S.Schema<DbInstanceIdList>;
+const DbInstanceIdList = VpcSubnetIdList as any as S.Schema<DbInstanceIdList>;
 export interface RebootDbClusterInput {
   dbClusterId: string;
   instanceIds?: string[];
 }
-export const RebootDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+const RebootDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterId: S.String, instanceIds: S.optional(DbInstanceIdList) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1479,12 +1475,11 @@ export const RebootDbClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface RebootDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-export const RebootDbClusterOutput =
-  DeleteDbClusterOutput as any as S.Schema<RebootDbClusterOutput>;
+const RebootDbClusterOutput = DeleteDbClusterOutput as any as S.Schema<RebootDbClusterOutput>;
 export interface RebootDbInstanceInput {
   identifier: string;
 }
-export const RebootDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+const RebootDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1518,11 +1513,10 @@ export interface RebootDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const RebootDbInstanceOutput =
-  CreateDbInstanceOutput as any as S.Schema<RebootDbInstanceOutput>;
+const RebootDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<RebootDbInstanceOutput>;
 export type DbResourceName = string;
 export type RestoreMode = "NEW_RESOURCE" | "REPLACE_EXISTING" | (string & {});
-export const RestoreMode = S.String;
+const RestoreMode = S.String;
 
 export interface RestoreFromDbBackupInput {
   name: string;
@@ -1541,7 +1535,7 @@ export interface RestoreFromDbBackupInput {
   dbBackupConfigurations?: DbBackupConfiguration[];
   kmsKeyId?: string;
 }
-export const RestoreFromDbBackupInput = /*@__PURE__*/ S.suspend(() =>
+const RestoreFromDbBackupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     dbBackupId: S.String,
@@ -1561,10 +1555,10 @@ export const RestoreFromDbBackupInput = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "RestoreFromDbBackupInput" }) as any as S.Schema<RestoreFromDbBackupInput>;
 export type RestoreStatus = "RESTORING" | (string & {});
-export const RestoreStatus = S.String;
+const RestoreStatus = S.String;
 
 export type ResourceType = "DB_INSTANCE" | "DB_CLUSTER" | (string & {});
-export const ResourceType = S.String;
+const ResourceType = S.String;
 
 export interface RestoreFromDbBackupOutput {
   restoredDbResourceId?: string;
@@ -1573,7 +1567,7 @@ export interface RestoreFromDbBackupOutput {
   engineType?: EngineType;
   deploymentType?: ResourceDeploymentType;
 }
-export const RestoreFromDbBackupOutput = /*@__PURE__*/ S.suspend(() =>
+const RestoreFromDbBackupOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restoredDbResourceId: S.optional(S.String),
     restoreStatus: S.optional(RestoreStatus),
@@ -1588,28 +1582,28 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = VpcSubnetIdList as any as S.Schema<TagKeys>;
+const TagKeys = VpcSubnetIdList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tagKeys: TagKeys }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDbClusterInput {
   dbClusterId: string;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
@@ -1620,7 +1614,7 @@ export interface UpdateDbClusterInput {
   maintenanceSchedule?: MaintenanceSchedule;
   dbBackupConfigurations?: DbBackupConfiguration[];
 }
-export const UpdateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dbClusterId: S.String,
     logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
@@ -1635,8 +1629,7 @@ export const UpdateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-export const UpdateDbClusterOutput =
-  DeleteDbClusterOutput as any as S.Schema<UpdateDbClusterOutput>;
+const UpdateDbClusterOutput = DeleteDbClusterOutput as any as S.Schema<UpdateDbClusterOutput>;
 export interface UpdateDbInstanceInput {
   identifier: string;
   logDeliveryConfiguration?: LogDeliveryConfiguration;
@@ -1649,7 +1642,7 @@ export interface UpdateDbInstanceInput {
   maintenanceSchedule?: MaintenanceSchedule;
   dbBackupConfigurations?: DbBackupConfiguration[];
 }
-export const UpdateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
@@ -1692,10 +1685,9 @@ export interface UpdateDbInstanceOutput {
   dbBackupConfigurations?: DbBackupConfigurationOutput[];
   kmsKeyId?: string;
 }
-export const UpdateDbInstanceOutput =
-  CreateDbInstanceOutput as any as S.Schema<UpdateDbInstanceOutput>;
+const UpdateDbInstanceOutput = CreateDbInstanceOutput as any as S.Schema<UpdateDbInstanceOutput>;
 export type ValidationExceptionReason = "FIELD_VALIDATION_FAILED" | "OTHER" | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export type CreateDbBackupError =
   | AccessDeniedException

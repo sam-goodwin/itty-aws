@@ -163,7 +163,7 @@ export type QueryId = string;
 export interface CancelQueryRequest {
   QueryId: string;
 }
-export const CancelQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ QueryId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -171,7 +171,7 @@ export const CancelQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CancelQueryResponse {
   CancellationMessage?: string;
 }
-export const CancelQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CancellationMessage: S.optional(S.String) }),
 ).annotate({ identifier: "CancelQueryResponse" }) as any as S.Schema<CancelQueryResponse>;
 export type ScheduledQueryName = string;
@@ -180,20 +180,20 @@ export type ScheduleExpression = string;
 export interface ScheduleConfiguration {
   ScheduleExpression: string;
 }
-export const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduleExpression: S.String }),
 ).annotate({ identifier: "ScheduleConfiguration" }) as any as S.Schema<ScheduleConfiguration>;
 export type AmazonResourceName = string;
 export interface SnsConfiguration {
   TopicArn: string;
 }
-export const SnsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TopicArn: S.String }),
-).annotate({ identifier: "SnsConfiguration" }) as any as S.Schema<SnsConfiguration>;
+const SnsConfiguration = /*@__PURE__*/ S.suspend(() => S.Struct({ TopicArn: S.String })).annotate({
+  identifier: "SnsConfiguration",
+}) as any as S.Schema<SnsConfiguration>;
 export interface NotificationConfiguration {
   SnsConfiguration: SnsConfiguration;
 }
-export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SnsConfiguration: SnsConfiguration }),
 ).annotate({
   identifier: "NotificationConfiguration",
@@ -201,17 +201,17 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ResourceName = string;
 export type SchemaName = string;
 export type DimensionValueType = "VARCHAR" | (string & {});
-export const DimensionValueType = S.String;
+const DimensionValueType = S.String;
 
 export interface DimensionMapping {
   Name: string;
   DimensionValueType: DimensionValueType;
 }
-export const DimensionMapping = /*@__PURE__*/ S.suspend(() =>
+const DimensionMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, DimensionValueType: DimensionValueType }),
 ).annotate({ identifier: "DimensionMapping" }) as any as S.Schema<DimensionMapping>;
 export type DimensionMappingList = DimensionMapping[];
-export const DimensionMappingList = /*@__PURE__*/ S.Array(DimensionMapping);
+const DimensionMappingList = /*@__PURE__*/ S.Array(DimensionMapping);
 export type ScalarMeasureValueType =
   | "BIGINT"
   | "BOOLEAN"
@@ -219,14 +219,14 @@ export type ScalarMeasureValueType =
   | "VARCHAR"
   | "TIMESTAMP"
   | (string & {});
-export const ScalarMeasureValueType = S.String;
+const ScalarMeasureValueType = S.String;
 
 export interface MultiMeasureAttributeMapping {
   SourceColumn: string;
   TargetMultiMeasureAttributeName?: string;
   MeasureValueType: ScalarMeasureValueType;
 }
-export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
+const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceColumn: S.String,
     TargetMultiMeasureAttributeName: S.optional(S.String),
@@ -236,12 +236,12 @@ export const MultiMeasureAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiMeasureAttributeMapping",
 }) as any as S.Schema<MultiMeasureAttributeMapping>;
 export type MultiMeasureAttributeMappingList = MultiMeasureAttributeMapping[];
-export const MultiMeasureAttributeMappingList = /*@__PURE__*/ S.Array(MultiMeasureAttributeMapping);
+const MultiMeasureAttributeMappingList = /*@__PURE__*/ S.Array(MultiMeasureAttributeMapping);
 export interface MultiMeasureMappings {
   TargetMultiMeasureName?: string;
   MultiMeasureAttributeMappings: MultiMeasureAttributeMapping[];
 }
-export const MultiMeasureMappings = /*@__PURE__*/ S.suspend(() =>
+const MultiMeasureMappings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TargetMultiMeasureName: S.optional(S.String),
     MultiMeasureAttributeMappings: MultiMeasureAttributeMappingList,
@@ -254,7 +254,7 @@ export type MeasureValueType =
   | "VARCHAR"
   | "MULTI"
   | (string & {});
-export const MeasureValueType = S.String;
+const MeasureValueType = S.String;
 
 export interface MixedMeasureMapping {
   MeasureName?: string;
@@ -263,7 +263,7 @@ export interface MixedMeasureMapping {
   MeasureValueType: MeasureValueType;
   MultiMeasureAttributeMappings?: MultiMeasureAttributeMapping[];
 }
-export const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
+const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MeasureName: S.optional(S.String),
     SourceColumn: S.optional(S.String),
@@ -273,7 +273,7 @@ export const MixedMeasureMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MixedMeasureMapping" }) as any as S.Schema<MixedMeasureMapping>;
 export type MixedMeasureMappingList = MixedMeasureMapping[];
-export const MixedMeasureMappingList = /*@__PURE__*/ S.Array(MixedMeasureMapping);
+const MixedMeasureMappingList = /*@__PURE__*/ S.Array(MixedMeasureMapping);
 export interface TimestreamConfiguration {
   DatabaseName: string;
   TableName: string;
@@ -283,7 +283,7 @@ export interface TimestreamConfiguration {
   MixedMeasureMappings?: MixedMeasureMapping[];
   MeasureNameColumn?: string;
 }
-export const TimestreamConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TimestreamConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DatabaseName: S.String,
     TableName: S.String,
@@ -297,7 +297,7 @@ export const TimestreamConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface TargetConfiguration {
   TimestreamConfiguration: TimestreamConfiguration;
 }
-export const TargetConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TargetConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TimestreamConfiguration: TimestreamConfiguration }),
 ).annotate({ identifier: "TargetConfiguration" }) as any as S.Schema<TargetConfiguration>;
 export type ClientToken = string | redacted.Redacted<string>;
@@ -307,23 +307,23 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+  identifier: "Tag",
+}) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export type StringValue2048 = string;
 export type S3BucketName = string;
 export type S3ObjectKeyPrefix = string;
 export type S3EncryptionOption = "SSE_S3" | "SSE_KMS" | (string & {});
-export const S3EncryptionOption = S.String;
+const S3EncryptionOption = S.String;
 
 export interface S3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
   EncryptionOption?: S3EncryptionOption;
 }
-export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
+const S3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BucketName: S.String,
     ObjectKeyPrefix: S.optional(S.String),
@@ -333,7 +333,7 @@ export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
 export interface ErrorReportConfiguration {
   S3Configuration: S3Configuration;
 }
-export const ErrorReportConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ErrorReportConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Configuration: S3Configuration }),
 ).annotate({ identifier: "ErrorReportConfiguration" }) as any as S.Schema<ErrorReportConfiguration>;
 export interface CreateScheduledQueryRequest {
@@ -348,7 +348,7 @@ export interface CreateScheduledQueryRequest {
   KmsKeyId?: string;
   ErrorReportConfiguration: ErrorReportConfiguration;
 }
-export const CreateScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     QueryString: SensitiveString,
@@ -367,7 +367,7 @@ export const CreateScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateScheduledQueryResponse {
   Arn: string;
 }
-export const CreateScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String }),
 ).annotate({
   identifier: "CreateScheduledQueryResponse",
@@ -375,7 +375,7 @@ export const CreateScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteScheduledQueryRequest {
   ScheduledQueryArn: string;
 }
-export const DeleteScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduledQueryArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -383,41 +383,41 @@ export const DeleteScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteScheduledQueryRequest",
 }) as any as S.Schema<DeleteScheduledQueryRequest>;
 export interface DeleteScheduledQueryResponse {}
-export const DeleteScheduledQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteScheduledQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteScheduledQueryResponse",
 }) as any as S.Schema<DeleteScheduledQueryResponse>;
 export interface DescribeAccountSettingsRequest {}
-export const DescribeAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({
   identifier: "DescribeAccountSettingsRequest",
 }) as any as S.Schema<DescribeAccountSettingsRequest>;
 export type MaxQueryCapacity = number;
 export type QueryPricingModel = "BYTES_SCANNED" | "COMPUTE_UNITS" | (string & {});
-export const QueryPricingModel = S.String;
+const QueryPricingModel = S.String;
 
 export type ComputeMode = "ON_DEMAND" | "PROVISIONED" | (string & {});
-export const ComputeMode = S.String;
+const ComputeMode = S.String;
 
 export type QueryTCU = number;
 export interface AccountSettingsNotificationConfiguration {
   SnsConfiguration?: SnsConfiguration;
   RoleArn: string;
 }
-export const AccountSettingsNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AccountSettingsNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SnsConfiguration: S.optional(SnsConfiguration), RoleArn: S.String }),
 ).annotate({
   identifier: "AccountSettingsNotificationConfiguration",
 }) as any as S.Schema<AccountSettingsNotificationConfiguration>;
 export type LastUpdateStatus = "PENDING" | "FAILED" | "SUCCEEDED" | (string & {});
-export const LastUpdateStatus = S.String;
+const LastUpdateStatus = S.String;
 
 export interface LastUpdate {
   TargetQueryTCU?: number;
   Status?: LastUpdateStatus;
   StatusMessage?: string;
 }
-export const LastUpdate = /*@__PURE__*/ S.suspend(() =>
+const LastUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TargetQueryTCU: S.optional(S.Number),
     Status: S.optional(LastUpdateStatus),
@@ -429,7 +429,7 @@ export interface ProvisionedCapacityResponse {
   NotificationConfiguration?: AccountSettingsNotificationConfiguration;
   LastUpdate?: LastUpdate;
 }
-export const ProvisionedCapacityResponse = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedCapacityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ActiveQueryTCU: S.optional(S.Number),
     NotificationConfiguration: S.optional(AccountSettingsNotificationConfiguration),
@@ -442,7 +442,7 @@ export interface QueryComputeResponse {
   ComputeMode?: ComputeMode;
   ProvisionedCapacity?: ProvisionedCapacityResponse;
 }
-export const QueryComputeResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryComputeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ComputeMode: S.optional(ComputeMode),
     ProvisionedCapacity: S.optional(ProvisionedCapacityResponse),
@@ -453,7 +453,7 @@ export interface DescribeAccountSettingsResponse {
   QueryPricingModel?: QueryPricingModel;
   QueryCompute?: QueryComputeResponse;
 }
-export const DescribeAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxQueryTCU: S.optional(S.Number),
     QueryPricingModel: S.optional(QueryPricingModel),
@@ -463,22 +463,22 @@ export const DescribeAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAccountSettingsResponse",
 }) as any as S.Schema<DescribeAccountSettingsResponse>;
 export interface DescribeEndpointsRequest {}
-export const DescribeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DescribeEndpointsRequest" }) as any as S.Schema<DescribeEndpointsRequest>;
 export interface Endpoint {
   Address: string;
   CachePeriodInMinutes: number;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Address: S.String, CachePeriodInMinutes: S.Number }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 export type Endpoints = Endpoint[];
-export const Endpoints = /*@__PURE__*/ S.Array(Endpoint);
+const Endpoints = /*@__PURE__*/ S.Array(Endpoint);
 export interface DescribeEndpointsResponse {
   Endpoints: Endpoint[];
 }
-export const DescribeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoints: Endpoints }),
 ).annotate({
   identifier: "DescribeEndpointsResponse",
@@ -486,7 +486,7 @@ export const DescribeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeScheduledQueryRequest {
   ScheduledQueryArn: string;
 }
-export const DescribeScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduledQueryArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -494,7 +494,7 @@ export const DescribeScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeScheduledQueryRequest",
 }) as any as S.Schema<DescribeScheduledQueryRequest>;
 export type ScheduledQueryState = "ENABLED" | "DISABLED" | (string & {});
-export const ScheduledQueryState = S.String;
+const ScheduledQueryState = S.String;
 
 export type ScheduledQueryRunStatus =
   | "AUTO_TRIGGER_SUCCESS"
@@ -502,7 +502,7 @@ export type ScheduledQueryRunStatus =
   | "MANUAL_TRIGGER_SUCCESS"
   | "MANUAL_TRIGGER_FAILURE"
   | (string & {});
-export const ScheduledQueryRunStatus = S.String;
+const ScheduledQueryRunStatus = S.String;
 
 export interface ExecutionStats {
   ExecutionTimeInMillis?: number;
@@ -512,7 +512,7 @@ export interface ExecutionStats {
   RecordsIngested?: number;
   QueryResultRows?: number;
 }
-export const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
+const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExecutionTimeInMillis: S.optional(S.Number),
     DataWrites: S.optional(S.Number),
@@ -524,13 +524,13 @@ export const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecutionStats" }) as any as S.Schema<ExecutionStats>;
 export type PartitionKey = string;
 export type PartitionKeyList = string[];
-export const PartitionKeyList = /*@__PURE__*/ S.Array(S.String);
+const PartitionKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface QuerySpatialCoverageMax {
   Value?: number;
   TableArn?: string;
   PartitionKey?: string[];
 }
-export const QuerySpatialCoverageMax = /*@__PURE__*/ S.suspend(() =>
+const QuerySpatialCoverageMax = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Value: S.optional(S.Number),
     TableArn: S.optional(S.String),
@@ -540,20 +540,20 @@ export const QuerySpatialCoverageMax = /*@__PURE__*/ S.suspend(() =>
 export interface QuerySpatialCoverage {
   Max?: QuerySpatialCoverageMax;
 }
-export const QuerySpatialCoverage = /*@__PURE__*/ S.suspend(() =>
+const QuerySpatialCoverage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Max: S.optional(QuerySpatialCoverageMax) }),
 ).annotate({ identifier: "QuerySpatialCoverage" }) as any as S.Schema<QuerySpatialCoverage>;
 export interface QueryTemporalRangeMax {
   Value?: number;
   TableArn?: string;
 }
-export const QueryTemporalRangeMax = /*@__PURE__*/ S.suspend(() =>
+const QueryTemporalRangeMax = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Number), TableArn: S.optional(S.String) }),
 ).annotate({ identifier: "QueryTemporalRangeMax" }) as any as S.Schema<QueryTemporalRangeMax>;
 export interface QueryTemporalRange {
   Max?: QueryTemporalRangeMax;
 }
-export const QueryTemporalRange = /*@__PURE__*/ S.suspend(() =>
+const QueryTemporalRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Max: S.optional(QueryTemporalRangeMax) }),
 ).annotate({ identifier: "QueryTemporalRange" }) as any as S.Schema<QueryTemporalRange>;
 export interface ScheduledQueryInsightsResponse {
@@ -563,7 +563,7 @@ export interface ScheduledQueryInsightsResponse {
   OutputRows?: number;
   OutputBytes?: number;
 }
-export const ScheduledQueryInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const ScheduledQueryInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     QuerySpatialCoverage: S.optional(QuerySpatialCoverage),
     QueryTemporalRange: S.optional(QueryTemporalRange),
@@ -579,13 +579,13 @@ export interface S3ReportLocation {
   BucketName?: string;
   ObjectKey?: string;
 }
-export const S3ReportLocation = /*@__PURE__*/ S.suspend(() =>
+const S3ReportLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BucketName: S.optional(S.String), ObjectKey: S.optional(S.String) }),
 ).annotate({ identifier: "S3ReportLocation" }) as any as S.Schema<S3ReportLocation>;
 export interface ErrorReportLocation {
   S3ReportLocation?: S3ReportLocation;
 }
-export const ErrorReportLocation = /*@__PURE__*/ S.suspend(() =>
+const ErrorReportLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3ReportLocation: S.optional(S3ReportLocation) }),
 ).annotate({ identifier: "ErrorReportLocation" }) as any as S.Schema<ErrorReportLocation>;
 export type ErrorMessage = string;
@@ -598,7 +598,7 @@ export interface ScheduledQueryRunSummary {
   ErrorReportLocation?: ErrorReportLocation;
   FailureReason?: string;
 }
-export const ScheduledQueryRunSummary = /*@__PURE__*/ S.suspend(() =>
+const ScheduledQueryRunSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InvocationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     TriggerTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -610,7 +610,7 @@ export const ScheduledQueryRunSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScheduledQueryRunSummary" }) as any as S.Schema<ScheduledQueryRunSummary>;
 export type ScheduledQueryRunSummaryList = ScheduledQueryRunSummary[];
-export const ScheduledQueryRunSummaryList = /*@__PURE__*/ S.Array(ScheduledQueryRunSummary);
+const ScheduledQueryRunSummaryList = /*@__PURE__*/ S.Array(ScheduledQueryRunSummary);
 export interface ScheduledQueryDescription {
   Arn: string;
   Name: string;
@@ -628,7 +628,7 @@ export interface ScheduledQueryDescription {
   LastRunSummary?: ScheduledQueryRunSummary;
   RecentlyFailedRuns?: ScheduledQueryRunSummary[];
 }
-export const ScheduledQueryDescription = /*@__PURE__*/ S.suspend(() =>
+const ScheduledQueryDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     Name: S.String,
@@ -652,18 +652,18 @@ export const ScheduledQueryDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeScheduledQueryResponse {
   ScheduledQuery: ScheduledQueryDescription;
 }
-export const DescribeScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduledQuery: ScheduledQueryDescription }),
 ).annotate({
   identifier: "DescribeScheduledQueryResponse",
 }) as any as S.Schema<DescribeScheduledQueryResponse>;
 export type ScheduledQueryInsightsMode = "ENABLED_WITH_RATE_CONTROL" | "DISABLED" | (string & {});
-export const ScheduledQueryInsightsMode = S.String;
+const ScheduledQueryInsightsMode = S.String;
 
 export interface ScheduledQueryInsights {
   Mode: ScheduledQueryInsightsMode;
 }
-export const ScheduledQueryInsights = /*@__PURE__*/ S.suspend(() =>
+const ScheduledQueryInsights = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Mode: ScheduledQueryInsightsMode }),
 ).annotate({ identifier: "ScheduledQueryInsights" }) as any as S.Schema<ScheduledQueryInsights>;
 export interface ExecuteScheduledQueryRequest {
@@ -672,7 +672,7 @@ export interface ExecuteScheduledQueryRequest {
   ClientToken?: string | redacted.Redacted<string>;
   QueryInsights?: ScheduledQueryInsights;
 }
-export const ExecuteScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ScheduledQueryArn: S.String,
     InvocationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -683,7 +683,7 @@ export const ExecuteScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecuteScheduledQueryRequest",
 }) as any as S.Schema<ExecuteScheduledQueryRequest>;
 export interface ExecuteScheduledQueryResponse {}
-export const ExecuteScheduledQueryResponse =
+const ExecuteScheduledQueryResponse =
   DeleteScheduledQueryResponse as any as S.Schema<ExecuteScheduledQueryResponse>;
 export type MaxScheduledQueriesResults = number;
 export type NextScheduledQueriesResultsToken = string;
@@ -691,7 +691,7 @@ export interface ListScheduledQueriesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListScheduledQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -702,13 +702,13 @@ export interface TimestreamDestination {
   DatabaseName?: string;
   TableName?: string;
 }
-export const TimestreamDestination = /*@__PURE__*/ S.suspend(() =>
+const TimestreamDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DatabaseName: S.optional(S.String), TableName: S.optional(S.String) }),
 ).annotate({ identifier: "TimestreamDestination" }) as any as S.Schema<TimestreamDestination>;
 export interface TargetDestination {
   TimestreamDestination?: TimestreamDestination;
 }
-export const TargetDestination = /*@__PURE__*/ S.suspend(() =>
+const TargetDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TimestreamDestination: S.optional(TimestreamDestination) }),
 ).annotate({ identifier: "TargetDestination" }) as any as S.Schema<TargetDestination>;
 export interface ScheduledQuery {
@@ -722,7 +722,7 @@ export interface ScheduledQuery {
   TargetDestination?: TargetDestination;
   LastRunStatus?: ScheduledQueryRunStatus;
 }
-export const ScheduledQuery = /*@__PURE__*/ S.suspend(() =>
+const ScheduledQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     Name: S.String,
@@ -736,12 +736,12 @@ export const ScheduledQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScheduledQuery" }) as any as S.Schema<ScheduledQuery>;
 export type ScheduledQueryList = ScheduledQuery[];
-export const ScheduledQueryList = /*@__PURE__*/ S.Array(ScheduledQuery);
+const ScheduledQueryList = /*@__PURE__*/ S.Array(ScheduledQuery);
 export interface ListScheduledQueriesResponse {
   ScheduledQueries: ScheduledQuery[];
   NextToken?: string;
 }
-export const ListScheduledQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduledQueries: ScheduledQueryList, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListScheduledQueriesResponse",
@@ -753,7 +753,7 @@ export interface ListTagsForResourceRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceARN: S.String,
     MaxResults: S.optional(S.Number),
@@ -766,7 +766,7 @@ export interface ListTagsForResourceResponse {
   Tags: Tag[];
   NextToken?: string;
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: TagList, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -775,7 +775,7 @@ export interface PrepareQueryRequest {
   QueryString: string | redacted.Redacted<string>;
   ValidateOnly?: boolean;
 }
-export const PrepareQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const PrepareQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ QueryString: SensitiveString, ValidateOnly: S.optional(S.Boolean) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -793,20 +793,20 @@ export type ScalarType =
   | "UNKNOWN"
   | "INTEGER"
   | (string & {});
-export const ScalarType = S.String;
+const ScalarType = S.String;
 
 export interface ColumnInfo {
   Name?: string;
   Type: Type;
 }
-export const ColumnInfo = /*@__PURE__*/ S.suspend(() =>
+const ColumnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Type: S.suspend((): S.Schema<Type> => Type).annotate({ identifier: "Type" }),
   }),
 ).annotate({ identifier: "ColumnInfo" }) as any as S.Schema<ColumnInfo>;
 export type ColumnInfoList = ColumnInfo[];
-export const ColumnInfoList = /*@__PURE__*/ S.Array(
+const ColumnInfoList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<ColumnInfo> => ColumnInfo).annotate({
     identifier: "ColumnInfo",
   }),
@@ -817,7 +817,7 @@ export interface Type {
   TimeSeriesMeasureValueColumnInfo?: ColumnInfo;
   RowColumnInfo?: ColumnInfo[];
 }
-export const Type = /*@__PURE__*/ S.suspend(() =>
+const Type = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ScalarType: S.optional(ScalarType),
     ArrayColumnInfo: S.optional(
@@ -838,7 +838,7 @@ export interface SelectColumn {
   TableName?: string;
   Aliased?: boolean;
 }
-export const SelectColumn = /*@__PURE__*/ S.suspend(() =>
+const SelectColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Type: S.optional(Type),
@@ -848,22 +848,22 @@ export const SelectColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SelectColumn" }) as any as S.Schema<SelectColumn>;
 export type SelectColumnList = SelectColumn[];
-export const SelectColumnList = /*@__PURE__*/ S.Array(SelectColumn);
+const SelectColumnList = /*@__PURE__*/ S.Array(SelectColumn);
 export interface ParameterMapping {
   Name: string;
   Type: Type;
 }
-export const ParameterMapping = /*@__PURE__*/ S.suspend(() =>
+const ParameterMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Type: Type }),
 ).annotate({ identifier: "ParameterMapping" }) as any as S.Schema<ParameterMapping>;
 export type ParameterMappingList = ParameterMapping[];
-export const ParameterMappingList = /*@__PURE__*/ S.Array(ParameterMapping);
+const ParameterMappingList = /*@__PURE__*/ S.Array(ParameterMapping);
 export interface PrepareQueryResponse {
   QueryString: string | redacted.Redacted<string>;
   Columns: SelectColumn[];
   Parameters: ParameterMapping[];
 }
-export const PrepareQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const PrepareQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     QueryString: SensitiveString,
     Columns: SelectColumnList,
@@ -874,12 +874,10 @@ export type ClientRequestToken = string | redacted.Redacted<string>;
 export type PaginationToken = string;
 export type MaxQueryResults = number;
 export type QueryInsightsMode = "ENABLED_WITH_RATE_CONTROL" | "DISABLED" | (string & {});
-export const QueryInsightsMode = S.String;
-
 export interface QueryInsights {
   Mode: QueryInsightsMode;
 }
-export const QueryInsights = ScheduledQueryInsights as any as S.Schema<QueryInsights>;
+const QueryInsights = ScheduledQueryInsights as any as S.Schema<QueryInsights>;
 export interface QueryRequest {
   QueryString: string | redacted.Redacted<string>;
   ClientToken?: string | redacted.Redacted<string>;
@@ -887,7 +885,7 @@ export interface QueryRequest {
   MaxRows?: number;
   QueryInsights?: QueryInsights;
 }
-export const QueryRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     QueryString: SensitiveString,
     ClientToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
@@ -901,14 +899,14 @@ export interface TimeSeriesDataPoint {
   Time: string;
   Value: Datum;
 }
-export const TimeSeriesDataPoint = /*@__PURE__*/ S.suspend(() =>
+const TimeSeriesDataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Time: S.String,
     Value: S.suspend((): S.Schema<Datum> => Datum).annotate({ identifier: "Datum" }),
   }),
 ).annotate({ identifier: "TimeSeriesDataPoint" }) as any as S.Schema<TimeSeriesDataPoint>;
 export type TimeSeriesDataPointList = TimeSeriesDataPoint[];
-export const TimeSeriesDataPointList = /*@__PURE__*/ S.Array(
+const TimeSeriesDataPointList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<TimeSeriesDataPoint> => TimeSeriesDataPoint).annotate({
     identifier: "TimeSeriesDataPoint",
   }),
@@ -920,7 +918,7 @@ export interface Datum {
   RowValue?: Row;
   NullValue?: boolean;
 }
-export const Datum = /*@__PURE__*/ S.suspend(() =>
+const Datum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ScalarValue: S.optional(S.String),
     TimeSeriesValue: S.optional(
@@ -932,17 +930,17 @@ export const Datum = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Datum" }) as any as S.Schema<Datum>;
 export type DatumList = Datum[];
-export const DatumList = /*@__PURE__*/ S.Array(
+const DatumList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<Datum> => Datum).annotate({ identifier: "Datum" }),
 ) as any as S.Schema<DatumList>;
 export interface Row {
   Data: Datum[];
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Data: S.suspend(() => DatumList).annotate({ identifier: "DatumList" }) }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 export type RowList = Row[];
-export const RowList = /*@__PURE__*/ S.Array(
+const RowList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<Row> => Row).annotate({ identifier: "Row" }),
 );
 export interface QueryStatus {
@@ -950,7 +948,7 @@ export interface QueryStatus {
   CumulativeBytesScanned?: number;
   CumulativeBytesMetered?: number;
 }
-export const QueryStatus = /*@__PURE__*/ S.suspend(() =>
+const QueryStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProgressPercentage: S.optional(S.Number),
     CumulativeBytesScanned: S.optional(S.Number),
@@ -967,7 +965,7 @@ export interface QueryInsightsResponse {
   UnloadWrittenRows?: number;
   UnloadWrittenBytes?: number;
 }
-export const QueryInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     QuerySpatialCoverage: S.optional(QuerySpatialCoverage),
     QueryTemporalRange: S.optional(QueryTemporalRange),
@@ -987,7 +985,7 @@ export interface QueryResponse {
   QueryStatus?: QueryStatus;
   QueryInsightsResponse?: QueryInsightsResponse;
 }
-export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     QueryId: S.String,
     NextToken: S.optional(S.String),
@@ -1001,33 +999,32 @@ export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteScheduledQueryResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteScheduledQueryResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = PartitionKeyList as any as S.Schema<TagKeyList>;
+const TagKeyList = PartitionKeyList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
+const UntagResourceResponse =
   DeleteScheduledQueryResponse as any as S.Schema<UntagResourceResponse>;
 export interface ProvisionedCapacityRequest {
   TargetQueryTCU: number;
   NotificationConfiguration?: AccountSettingsNotificationConfiguration;
 }
-export const ProvisionedCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TargetQueryTCU: S.Number,
     NotificationConfiguration: S.optional(AccountSettingsNotificationConfiguration),
@@ -1039,7 +1036,7 @@ export interface QueryComputeRequest {
   ComputeMode?: ComputeMode;
   ProvisionedCapacity?: ProvisionedCapacityRequest;
 }
-export const QueryComputeRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryComputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ComputeMode: S.optional(ComputeMode),
     ProvisionedCapacity: S.optional(ProvisionedCapacityRequest),
@@ -1050,7 +1047,7 @@ export interface UpdateAccountSettingsRequest {
   QueryPricingModel?: QueryPricingModel;
   QueryCompute?: QueryComputeRequest;
 }
-export const UpdateAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxQueryTCU: S.optional(S.Number),
     QueryPricingModel: S.optional(QueryPricingModel),
@@ -1064,13 +1061,13 @@ export interface UpdateAccountSettingsResponse {
   QueryPricingModel?: QueryPricingModel;
   QueryCompute?: QueryComputeResponse;
 }
-export const UpdateAccountSettingsResponse =
+const UpdateAccountSettingsResponse =
   DescribeAccountSettingsResponse as any as S.Schema<UpdateAccountSettingsResponse>;
 export interface UpdateScheduledQueryRequest {
   ScheduledQueryArn: string;
   State: ScheduledQueryState;
 }
-export const UpdateScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduledQueryArn: S.String, State: ScheduledQueryState }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1078,7 +1075,7 @@ export const UpdateScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateScheduledQueryRequest",
 }) as any as S.Schema<UpdateScheduledQueryRequest>;
 export interface UpdateScheduledQueryResponse {}
-export const UpdateScheduledQueryResponse =
+const UpdateScheduledQueryResponse =
   DeleteScheduledQueryResponse as any as S.Schema<UpdateScheduledQueryResponse>;
 export type ServiceErrorMessage = string;
 export type CancelQueryError =

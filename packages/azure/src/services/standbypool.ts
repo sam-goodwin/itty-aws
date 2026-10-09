@@ -16,7 +16,7 @@ export interface DeleteStandbyContainerGroupPoolRequest {
   /** Name of the standby container group pool */
   standbyContainerGroupPoolName: string;
 }
-export const DeleteStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -34,7 +34,7 @@ export const DeleteStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteStandbyContainerGroupPoolRequest>;
 
 export interface DeleteStandbyContainerGroupPoolResponse {}
-export const DeleteStandbyContainerGroupPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteStandbyContainerGroupPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteStandbyContainerGroupPoolResponse",
@@ -48,7 +48,7 @@ export interface DeleteStandbyVirtualMachinePoolRequest {
   /** Name of the standby virtual machine pool */
   standbyVirtualMachinePoolName: string;
 }
-export const DeleteStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -66,7 +66,7 @@ export const DeleteStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteStandbyVirtualMachinePoolRequest>;
 
 export interface DeleteStandbyVirtualMachinePoolResponse {}
-export const DeleteStandbyVirtualMachinePoolResponse =
+const DeleteStandbyVirtualMachinePoolResponse =
   DeleteStandbyContainerGroupPoolResponse as any as S.Schema<DeleteStandbyVirtualMachinePoolResponse>;
 
 export interface GetStandbyContainerGroupPoolRequest {
@@ -77,7 +77,7 @@ export interface GetStandbyContainerGroupPoolRequest {
   /** Name of the standby container group pool */
   standbyContainerGroupPoolName: string;
 }
-export const GetStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -96,11 +96,11 @@ export const GetStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -117,7 +117,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -130,21 +130,21 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStandbyContainerGroupPoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetStandbyContainerGroupPoolResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetStandbyContainerGroupPoolResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetStandbyContainerGroupPoolResponseTagsMap>;
 
 /** Refill policy of standby pool */
 export type RefillPolicy = "always";
-export const RefillPolicy = S.String;
+const RefillPolicy = S.String;
 
 /** Specifies the dynamic sizing configuration. */
 export interface DynamicSizing {
   /** Indicates whether dynamic sizing is enabled for the standby pool. */
   enabled?: boolean;
 }
-export const DynamicSizing = /*@__PURE__*/ S.suspend(() =>
+const DynamicSizing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -159,7 +159,7 @@ export interface StandbyContainerGroupPoolElasticityProfile {
   /** Specifies the dynamic sizing configuration. */
   dynamicSizing?: DynamicSizing;
 }
-export const StandbyContainerGroupPoolElasticityProfile = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolElasticityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxReadyCapacity: S.Number,
     refillPolicy: S.optional(RefillPolicy),
@@ -176,7 +176,7 @@ export interface ContainerGroupProfile {
   /** Specifies revision of container group profile. */
   revision?: number;
 }
-export const ContainerGroupProfile = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     revision: S.optional(S.Number),
@@ -188,7 +188,7 @@ export interface Subnet {
   /** Specifies ARM resource id of the subnet. */
   id: string;
 }
-export const Subnet = /*@__PURE__*/ S.suspend(() =>
+const Subnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -196,7 +196,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies subnet Ids for container group. */
 export type ContainerGroupPropertiesSubnetIdsList = Array<Subnet>;
-export const ContainerGroupPropertiesSubnetIdsList = /*@__PURE__*/ S.Array(
+const ContainerGroupPropertiesSubnetIdsList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<ContainerGroupPropertiesSubnetIdsList>;
 
@@ -207,7 +207,7 @@ export interface ContainerGroupProperties {
   /** Specifies subnet Ids for container group. */
   subnetIds?: ContainerGroupPropertiesSubnetIdsList;
 }
-export const ContainerGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerGroupProfile: ContainerGroupProfile,
     subnetIds: S.optional(ContainerGroupPropertiesSubnetIdsList),
@@ -216,13 +216,13 @@ export const ContainerGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies zones of standby container group pools. */
 export type StandbyContainerGroupPoolResourcePropertiesZonesList = Array<string>;
-export const StandbyContainerGroupPoolResourcePropertiesZonesList = /*@__PURE__*/ S.Array(
+const StandbyContainerGroupPoolResourcePropertiesZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StandbyContainerGroupPoolResourcePropertiesZonesList>;
 
 /** Provisioning state */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Deleting";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Details of the StandbyContainerGroupPool. */
 export interface StandbyContainerGroupPoolResourceProperties {
@@ -235,7 +235,7 @@ export interface StandbyContainerGroupPoolResourceProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const StandbyContainerGroupPoolResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticityProfile: StandbyContainerGroupPoolElasticityProfile,
     containerGroupProperties: ContainerGroupProperties,
@@ -262,7 +262,7 @@ export interface GetStandbyContainerGroupPoolResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolResourceProperties;
 }
-export const GetStandbyContainerGroupPoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyContainerGroupPoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -286,7 +286,7 @@ export interface GetStandbyContainerGroupPoolRuntimeViewRequest {
   /** The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception. */
   runtimeView: string;
 }
-export const GetStandbyContainerGroupPoolRuntimeViewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyContainerGroupPoolRuntimeViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -306,7 +306,7 @@ export const GetStandbyContainerGroupPoolRuntimeViewRequest = /*@__PURE__*/ S.su
 
 /** The state of the pooled container groups. */
 export type PoolContainerGroupState = "Running" | "Creating" | "Deleting";
-export const PoolContainerGroupState = S.String;
+const PoolContainerGroupState = S.String;
 
 /** Displays the counts of pooled container groups in each state, as known by the StandbyPool resource provider. */
 export interface PoolContainerGroupStateCount {
@@ -315,7 +315,7 @@ export interface PoolContainerGroupStateCount {
   /** The count of pooled container groups in the given state. */
   count: number;
 }
-export const PoolContainerGroupStateCount = /*@__PURE__*/ S.suspend(() =>
+const PoolContainerGroupStateCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: PoolContainerGroupState,
     count: S.Number,
@@ -327,7 +327,7 @@ export const PoolContainerGroupStateCount = /*@__PURE__*/ S.suspend(() =>
 /** The count of pooled container groups in each state for the given zone. */
 export type ContainerGroupInstanceCountSummaryInstanceCountsByStateList =
   Array<PoolContainerGroupStateCount>;
-export const ContainerGroupInstanceCountSummaryInstanceCountsByStateList = /*@__PURE__*/ S.Array(
+const ContainerGroupInstanceCountSummaryInstanceCountsByStateList = /*@__PURE__*/ S.Array(
   PoolContainerGroupStateCount,
 ) as any as S.Schema<ContainerGroupInstanceCountSummaryInstanceCountsByStateList>;
 
@@ -338,7 +338,7 @@ export interface ContainerGroupInstanceCountSummary {
   /** The count of pooled container groups in each state for the given zone. */
   instanceCountsByState: ContainerGroupInstanceCountSummaryInstanceCountsByStateList;
 }
-export const ContainerGroupInstanceCountSummary = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupInstanceCountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zone: S.optional(S.Number),
     instanceCountsByState: ContainerGroupInstanceCountSummaryInstanceCountsByStateList,
@@ -350,14 +350,14 @@ export const ContainerGroupInstanceCountSummary = /*@__PURE__*/ S.suspend(() =>
 /** A list containing the counts of container groups in each possible state, as known by the StandbyPool resource provider. */
 export type StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
   Array<ContainerGroupInstanceCountSummary>;
-export const StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
+const StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
   /*@__PURE__*/ S.Array(
     ContainerGroupInstanceCountSummary,
   ) as any as S.Schema<StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList>;
 
 /** StandbyPool health state. */
 export type HealthStateCode = "HealthState/healthy" | "HealthState/degraded";
-export const HealthStateCode = S.String;
+const HealthStateCode = S.String;
 
 /** Displays StandbyPool status. */
 export interface PoolStatus {
@@ -366,7 +366,7 @@ export interface PoolStatus {
   /** Displays the StandbyPool health state details. */
   message?: string;
 }
-export const PoolStatus = /*@__PURE__*/ S.suspend(() =>
+const PoolStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: HealthStateCode,
     message: S.optional(S.String),
@@ -375,17 +375,16 @@ export const PoolStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Displays the predicted count of instances to be requested from the standby pool. */
 export type StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList = Array<number>;
-export const StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList>;
+const StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList>;
 
 /** Displays the forecast information of the standby pool. */
 export interface StandbyContainerGroupPoolForecastValues {
   /** Displays the predicted count of instances to be requested from the standby pool. */
   instancesRequestedCount: StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList;
 }
-export const StandbyContainerGroupPoolForecastValues = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolForecastValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instancesRequestedCount: StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList,
   }),
@@ -402,7 +401,7 @@ export interface StandbyContainerGroupPoolPrediction {
   /** Displays additional information for the prediction of the standby pool. */
   forecastInfo: string;
 }
-export const StandbyContainerGroupPoolPrediction = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolPrediction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forecastValues: StandbyContainerGroupPoolForecastValues,
     forecastStartTime: S.String,
@@ -423,7 +422,7 @@ export interface StandbyContainerGroupPoolRuntimeViewResourceProperties {
   /** Displays prediction information of the standby pool */
   prediction?: StandbyContainerGroupPoolPrediction;
 }
-export const StandbyContainerGroupPoolRuntimeViewResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolRuntimeViewResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceCountSummary:
       StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList,
@@ -447,7 +446,7 @@ export interface GetStandbyContainerGroupPoolRuntimeViewResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolRuntimeViewResourceProperties;
 }
-export const GetStandbyContainerGroupPoolRuntimeViewResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyContainerGroupPoolRuntimeViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -469,7 +468,7 @@ export interface GetStandbyVirtualMachineRequest {
   /** Name of the standby virtual machine */
   standbyVirtualMachineName: string;
 }
-export const GetStandbyVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -494,7 +493,7 @@ export interface StandbyVirtualMachineResourceProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const StandbyVirtualMachineResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachineResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineResourceId: S.String,
     provisioningState: S.optional(ProvisioningState),
@@ -515,7 +514,7 @@ export interface GetStandbyVirtualMachineResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachineResourceProperties;
 }
-export const GetStandbyVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -535,7 +534,7 @@ export interface GetStandbyVirtualMachinePoolRequest {
   /** Name of the standby virtual machine pool */
   standbyVirtualMachinePoolName: string;
 }
-export const GetStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -554,7 +553,7 @@ export const GetStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStandbyVirtualMachinePoolResponseTagsMap = { [key: string]: string | undefined };
-export const GetStandbyVirtualMachinePoolResponseTagsMap =
+const GetStandbyVirtualMachinePoolResponseTagsMap =
   GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<GetStandbyVirtualMachinePoolResponseTagsMap>;
 
 /** Details of the elasticity profile. */
@@ -568,7 +567,7 @@ export interface StandbyVirtualMachinePoolElasticityProfile {
   /** Specifies the dynamic sizing configuration. */
   dynamicSizing?: DynamicSizing;
 }
-export const StandbyVirtualMachinePoolElasticityProfile = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachinePoolElasticityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxReadyCapacity: S.Number,
     minReadyCapacity: S.optional(S.Number),
@@ -581,7 +580,7 @@ export const StandbyVirtualMachinePoolElasticityProfile = /*@__PURE__*/ S.suspen
 
 /** State of standby virtual machines */
 export type VirtualMachineState = "Running" | "Deallocated" | "Hibernated" | "Mix";
-export const VirtualMachineState = S.String;
+const VirtualMachineState = S.String;
 
 /** Specifies the distribution of virtual machine states in the pool. */
 export interface VmStateDistribution {
@@ -592,7 +591,7 @@ export interface VmStateDistribution {
   /** Specifies the percentage of virtual machines in the Hibernated state in the standby pool. */
   hibernatedPercent?: number;
 }
-export const VmStateDistribution = /*@__PURE__*/ S.suspend(() =>
+const VmStateDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runningPercent: S.optional(S.Number),
     deallocatedPercent: S.optional(S.Number),
@@ -613,7 +612,7 @@ export interface StandbyVirtualMachinePoolResourceProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-export const StandbyVirtualMachinePoolResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachinePoolResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticityProfile: S.optional(StandbyVirtualMachinePoolElasticityProfile),
     virtualMachineState: VirtualMachineState,
@@ -641,7 +640,7 @@ export interface GetStandbyVirtualMachinePoolResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolResourceProperties;
 }
-export const GetStandbyVirtualMachinePoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyVirtualMachinePoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -665,7 +664,7 @@ export interface GetStandbyVirtualMachinePoolRuntimeViewRequest {
   /** The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception. */
   runtimeView: string;
 }
-export const GetStandbyVirtualMachinePoolRuntimeViewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyVirtualMachinePoolRuntimeViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -693,8 +692,6 @@ export type PoolVirtualMachineState =
   | "Deallocating"
   | "Hibernated"
   | "Hibernating";
-export const PoolVirtualMachineState = S.String;
-
 /** Displays the counts of pooled virtual machines in each state, as known by the StandbyPool resource provider. */
 export interface PoolVirtualMachineStateCount {
   /** The state that the pooled virtual machines count is for. */
@@ -702,15 +699,9 @@ export interface PoolVirtualMachineStateCount {
   /** The count of pooled virtual machines in the given state. */
   count: number;
 }
-export const PoolVirtualMachineStateCount =
-  PoolContainerGroupStateCount as any as S.Schema<PoolVirtualMachineStateCount>;
-
 /** The count of pooled virtual machines in each state for the given zone. */
 export type VirtualMachineInstanceCountSummaryInstanceCountsByStateList =
   Array<PoolVirtualMachineStateCount>;
-export const VirtualMachineInstanceCountSummaryInstanceCountsByStateList =
-  ContainerGroupInstanceCountSummaryInstanceCountsByStateList as any as S.Schema<VirtualMachineInstanceCountSummaryInstanceCountsByStateList>;
-
 /** Contains the counts of VMs in each power state in a given zone, fault domain, as known by the StandbyPool resource provider. Note: any resources in the Running state may still be installing extensions / not fully provisioned. */
 export interface VirtualMachineInstanceCountSummary {
   /** The zone that the provided counts are in. It will not have a value if zones are not enabled on the attached VMSS. */
@@ -718,28 +709,19 @@ export interface VirtualMachineInstanceCountSummary {
   /** The count of pooled virtual machines in each state for the given zone. */
   instanceCountsByState: VirtualMachineInstanceCountSummaryInstanceCountsByStateList;
 }
-export const VirtualMachineInstanceCountSummary =
-  ContainerGroupInstanceCountSummary as any as S.Schema<VirtualMachineInstanceCountSummary>;
-
 /** A list containing the counts of virtual machines in each possible power state for each zone if enabled, as known by the StandbyPool resource provider. If zones are not enabled on the attached VMSS, the list will contain a single entry without zone values. Note: any resources in the Running state may still be installing extensions / not fully provisioned. */
 export type StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
   Array<VirtualMachineInstanceCountSummary>;
-export const StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
+const StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList =
   StandbyContainerGroupPoolRuntimeViewResourcePropertiesInstanceCountSummaryList as any as S.Schema<StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList>;
 
 /** Displays the predicted count of instances to be requested from the standby pool. */
 export type StandbyVirtualMachinePoolForecastValuesInstancesRequestedCountList = Array<number>;
-export const StandbyVirtualMachinePoolForecastValuesInstancesRequestedCountList =
-  StandbyContainerGroupPoolForecastValuesInstancesRequestedCountList as any as S.Schema<StandbyVirtualMachinePoolForecastValuesInstancesRequestedCountList>;
-
 /** Displays the forecast information of the standby pool. */
 export interface StandbyVirtualMachinePoolForecastValues {
   /** Displays the predicted count of instances to be requested from the standby pool. */
   instancesRequestedCount: StandbyVirtualMachinePoolForecastValuesInstancesRequestedCountList;
 }
-export const StandbyVirtualMachinePoolForecastValues =
-  StandbyContainerGroupPoolForecastValues as any as S.Schema<StandbyVirtualMachinePoolForecastValues>;
-
 /** Displays prediction information of the standby pool. */
 export interface StandbyVirtualMachinePoolPrediction {
   /** Displays the forecast information of the standby pool. */
@@ -749,7 +731,7 @@ export interface StandbyVirtualMachinePoolPrediction {
   /** Displays additional information for the prediction of the standby pool. */
   forecastInfo: string;
 }
-export const StandbyVirtualMachinePoolPrediction =
+const StandbyVirtualMachinePoolPrediction =
   StandbyContainerGroupPoolPrediction as any as S.Schema<StandbyVirtualMachinePoolPrediction>;
 
 /** Contains information about a standby pool as last known by the StandbyPool resource provider. */
@@ -763,7 +745,7 @@ export interface StandbyVirtualMachinePoolRuntimeViewResourceProperties {
   /** Displays prediction information of the standby pool */
   prediction?: StandbyVirtualMachinePoolPrediction;
 }
-export const StandbyVirtualMachinePoolRuntimeViewResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachinePoolRuntimeViewResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceCountSummary:
       StandbyVirtualMachinePoolRuntimeViewResourcePropertiesInstanceCountSummaryList,
@@ -787,7 +769,7 @@ export interface GetStandbyVirtualMachinePoolRuntimeViewResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolRuntimeViewResourceProperties;
 }
-export const GetStandbyVirtualMachinePoolRuntimeViewResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStandbyVirtualMachinePoolRuntimeViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -800,7 +782,7 @@ export const GetStandbyVirtualMachinePoolRuntimeViewResponse = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetStandbyVirtualMachinePoolRuntimeViewResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -822,7 +804,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -833,11 +815,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -852,7 +834,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -864,7 +846,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -874,7 +856,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -887,7 +869,7 @@ export interface ListStandbyContainerGroupPoolByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListStandbyContainerGroupPoolByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStandbyContainerGroupPoolByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -905,9 +887,6 @@ export const ListStandbyContainerGroupPoolByResourceGroupRequest = /*@__PURE__*/
 
 /** Resource tags. */
 export type StandbyContainerGroupPoolResourceTagsMap = { [key: string]: string | undefined };
-export const StandbyContainerGroupPoolResourceTagsMap =
-  GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<StandbyContainerGroupPoolResourceTagsMap>;
-
 /** A StandbyContainerGroupPoolResource. */
 export interface StandbyContainerGroupPoolResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -925,13 +904,13 @@ export interface StandbyContainerGroupPoolResource {
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolResourceProperties;
 }
-export const StandbyContainerGroupPoolResource =
+const StandbyContainerGroupPoolResource =
   GetStandbyContainerGroupPoolResponse as any as S.Schema<StandbyContainerGroupPoolResource>;
 
 /** The StandbyContainerGroupPoolResource items on this page */
 export type StandbyContainerGroupPoolResourceListResultValueList =
   Array<StandbyContainerGroupPoolResource>;
-export const StandbyContainerGroupPoolResourceListResultValueList = /*@__PURE__*/ S.Array(
+const StandbyContainerGroupPoolResourceListResultValueList = /*@__PURE__*/ S.Array(
   StandbyContainerGroupPoolResource,
 ) as any as S.Schema<StandbyContainerGroupPoolResourceListResultValueList>;
 
@@ -942,7 +921,7 @@ export interface StandbyContainerGroupPoolResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StandbyContainerGroupPoolResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StandbyContainerGroupPoolResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -955,7 +934,7 @@ export interface ListStandbyContainerGroupPoolBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListStandbyContainerGroupPoolBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStandbyContainerGroupPoolBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -978,20 +957,19 @@ export interface ListStandbyContainerGroupPoolRuntimeViewByStandbyPoolRequest {
   /** Name of the standby container group pool */
   standbyContainerGroupPoolName: string;
 }
-export const ListStandbyContainerGroupPoolRuntimeViewByStandbyPoolRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      standbyContainerGroupPoolName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews",
-        code: 200,
-        apiVersion: "2026-04-01",
-      }),
-    ),
+const ListStandbyContainerGroupPoolRuntimeViewByStandbyPoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    standbyContainerGroupPoolName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews",
+      code: 200,
+      apiVersion: "2026-04-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListStandbyContainerGroupPoolRuntimeViewByStandbyPoolRequest",
 }) as any as S.Schema<ListStandbyContainerGroupPoolRuntimeViewByStandbyPoolRequest>;
@@ -1009,16 +987,15 @@ export interface StandbyContainerGroupPoolRuntimeViewResource {
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolRuntimeViewResourceProperties;
 }
-export const StandbyContainerGroupPoolRuntimeViewResource =
+const StandbyContainerGroupPoolRuntimeViewResource =
   GetStandbyContainerGroupPoolRuntimeViewResponse as any as S.Schema<StandbyContainerGroupPoolRuntimeViewResource>;
 
 /** The StandbyContainerGroupPoolRuntimeViewResource items on this page */
 export type StandbyContainerGroupPoolRuntimeViewResourceListResultValueList =
   Array<StandbyContainerGroupPoolRuntimeViewResource>;
-export const StandbyContainerGroupPoolRuntimeViewResourceListResultValueList =
-  /*@__PURE__*/ S.Array(
-    StandbyContainerGroupPoolRuntimeViewResource,
-  ) as any as S.Schema<StandbyContainerGroupPoolRuntimeViewResourceListResultValueList>;
+const StandbyContainerGroupPoolRuntimeViewResourceListResultValueList = /*@__PURE__*/ S.Array(
+  StandbyContainerGroupPoolRuntimeViewResource,
+) as any as S.Schema<StandbyContainerGroupPoolRuntimeViewResourceListResultValueList>;
 
 /** The response of a StandbyContainerGroupPoolRuntimeViewResource list operation. */
 export interface StandbyContainerGroupPoolRuntimeViewResourceListResult {
@@ -1027,7 +1004,7 @@ export interface StandbyContainerGroupPoolRuntimeViewResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StandbyContainerGroupPoolRuntimeViewResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolRuntimeViewResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StandbyContainerGroupPoolRuntimeViewResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -1044,8 +1021,8 @@ export interface ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceReq
   /** Name of the standby virtual machine pool */
   standbyVirtualMachinePoolName: string;
 }
-export const ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -1058,9 +1035,9 @@ export const ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest
         apiVersion: "2026-04-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest",
-  }) as any as S.Schema<ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest>;
+).annotate({
+  identifier: "ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest",
+}) as any as S.Schema<ListStandbyVirtualMachineByStandbyVirtualMachinePoolResourceRequest>;
 
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface StandbyVirtualMachineResource {
@@ -1075,12 +1052,12 @@ export interface StandbyVirtualMachineResource {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachineResourceProperties;
 }
-export const StandbyVirtualMachineResource =
+const StandbyVirtualMachineResource =
   GetStandbyVirtualMachineResponse as any as S.Schema<StandbyVirtualMachineResource>;
 
 /** The StandbyVirtualMachineResource items on this page */
 export type StandbyVirtualMachineResourceListResultValueList = Array<StandbyVirtualMachineResource>;
-export const StandbyVirtualMachineResourceListResultValueList = /*@__PURE__*/ S.Array(
+const StandbyVirtualMachineResourceListResultValueList = /*@__PURE__*/ S.Array(
   StandbyVirtualMachineResource,
 ) as any as S.Schema<StandbyVirtualMachineResourceListResultValueList>;
 
@@ -1091,7 +1068,7 @@ export interface StandbyVirtualMachineResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StandbyVirtualMachineResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachineResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StandbyVirtualMachineResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -1106,7 +1083,7 @@ export interface ListStandbyVirtualMachinePoolByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListStandbyVirtualMachinePoolByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStandbyVirtualMachinePoolByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1124,9 +1101,6 @@ export const ListStandbyVirtualMachinePoolByResourceGroupRequest = /*@__PURE__*/
 
 /** Resource tags. */
 export type StandbyVirtualMachinePoolResourceTagsMap = { [key: string]: string | undefined };
-export const StandbyVirtualMachinePoolResourceTagsMap =
-  GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<StandbyVirtualMachinePoolResourceTagsMap>;
-
 /** A StandbyVirtualMachinePoolResource. */
 export interface StandbyVirtualMachinePoolResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1144,13 +1118,13 @@ export interface StandbyVirtualMachinePoolResource {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolResourceProperties;
 }
-export const StandbyVirtualMachinePoolResource =
+const StandbyVirtualMachinePoolResource =
   GetStandbyVirtualMachinePoolResponse as any as S.Schema<StandbyVirtualMachinePoolResource>;
 
 /** The StandbyVirtualMachinePoolResource items on this page */
 export type StandbyVirtualMachinePoolResourceListResultValueList =
   Array<StandbyVirtualMachinePoolResource>;
-export const StandbyVirtualMachinePoolResourceListResultValueList = /*@__PURE__*/ S.Array(
+const StandbyVirtualMachinePoolResourceListResultValueList = /*@__PURE__*/ S.Array(
   StandbyVirtualMachinePoolResource,
 ) as any as S.Schema<StandbyVirtualMachinePoolResourceListResultValueList>;
 
@@ -1161,7 +1135,7 @@ export interface StandbyVirtualMachinePoolResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StandbyVirtualMachinePoolResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachinePoolResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StandbyVirtualMachinePoolResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -1174,7 +1148,7 @@ export interface ListStandbyVirtualMachinePoolBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListStandbyVirtualMachinePoolBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStandbyVirtualMachinePoolBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1197,20 +1171,19 @@ export interface ListStandbyVirtualMachinePoolRuntimeViewByStandbyPoolRequest {
   /** Name of the standby virtual machine pool */
   standbyVirtualMachinePoolName: string;
 }
-export const ListStandbyVirtualMachinePoolRuntimeViewByStandbyPoolRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      standbyVirtualMachinePoolName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews",
-        code: 200,
-        apiVersion: "2026-04-01",
-      }),
-    ),
+const ListStandbyVirtualMachinePoolRuntimeViewByStandbyPoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    standbyVirtualMachinePoolName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews",
+      code: 200,
+      apiVersion: "2026-04-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListStandbyVirtualMachinePoolRuntimeViewByStandbyPoolRequest",
 }) as any as S.Schema<ListStandbyVirtualMachinePoolRuntimeViewByStandbyPoolRequest>;
@@ -1228,16 +1201,15 @@ export interface StandbyVirtualMachinePoolRuntimeViewResource {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolRuntimeViewResourceProperties;
 }
-export const StandbyVirtualMachinePoolRuntimeViewResource =
+const StandbyVirtualMachinePoolRuntimeViewResource =
   GetStandbyVirtualMachinePoolRuntimeViewResponse as any as S.Schema<StandbyVirtualMachinePoolRuntimeViewResource>;
 
 /** The StandbyVirtualMachinePoolRuntimeViewResource items on this page */
 export type StandbyVirtualMachinePoolRuntimeViewResourceListResultValueList =
   Array<StandbyVirtualMachinePoolRuntimeViewResource>;
-export const StandbyVirtualMachinePoolRuntimeViewResourceListResultValueList =
-  /*@__PURE__*/ S.Array(
-    StandbyVirtualMachinePoolRuntimeViewResource,
-  ) as any as S.Schema<StandbyVirtualMachinePoolRuntimeViewResourceListResultValueList>;
+const StandbyVirtualMachinePoolRuntimeViewResourceListResultValueList = /*@__PURE__*/ S.Array(
+  StandbyVirtualMachinePoolRuntimeViewResource,
+) as any as S.Schema<StandbyVirtualMachinePoolRuntimeViewResourceListResultValueList>;
 
 /** The response of a StandbyVirtualMachinePoolRuntimeViewResource list operation. */
 export interface StandbyVirtualMachinePoolRuntimeViewResourceListResult {
@@ -1246,7 +1218,7 @@ export interface StandbyVirtualMachinePoolRuntimeViewResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StandbyVirtualMachinePoolRuntimeViewResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachinePoolRuntimeViewResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StandbyVirtualMachinePoolRuntimeViewResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -1259,12 +1231,12 @@ export const StandbyVirtualMachinePoolRuntimeViewResourceListResult = /*@__PURE_
 export type StandbyContainerGroupPoolsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const StandbyContainerGroupPoolsCreateOrUpdateRequestTagsMap =
+const StandbyContainerGroupPoolsCreateOrUpdateRequestTagsMap =
   GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<StandbyContainerGroupPoolsCreateOrUpdateRequestTagsMap>;
 
 /** Specifies zones of standby container group pools. */
 export type StandbyContainerGroupPoolResourcePropertiesInputZonesList = Array<string>;
-export const StandbyContainerGroupPoolResourcePropertiesInputZonesList =
+const StandbyContainerGroupPoolResourcePropertiesInputZonesList =
   StandbyContainerGroupPoolResourcePropertiesZonesList as any as S.Schema<StandbyContainerGroupPoolResourcePropertiesInputZonesList>;
 
 /** Details of the StandbyContainerGroupPool. */
@@ -1276,7 +1248,7 @@ export interface StandbyContainerGroupPoolResourcePropertiesInput {
   /** Specifies zones of standby container group pools. */
   zones?: StandbyContainerGroupPoolResourcePropertiesInputZonesList;
 }
-export const StandbyContainerGroupPoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticityProfile: StandbyContainerGroupPoolElasticityProfile,
     containerGroupProperties: ContainerGroupProperties,
@@ -1300,7 +1272,7 @@ export interface StandbyContainerGroupPoolsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolResourcePropertiesInput;
 }
-export const StandbyContainerGroupPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1324,9 +1296,6 @@ export const StandbyContainerGroupPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.s
 export type StandbyContainerGroupPoolsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const StandbyContainerGroupPoolsCreateOrUpdateResponseTagsMap =
-  GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<StandbyContainerGroupPoolsCreateOrUpdateResponseTagsMap>;
-
 export interface StandbyContainerGroupPoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1343,14 +1312,14 @@ export interface StandbyContainerGroupPoolsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolResourceProperties;
 }
-export const StandbyContainerGroupPoolsCreateOrUpdateResponse =
+const StandbyContainerGroupPoolsCreateOrUpdateResponse =
   GetStandbyContainerGroupPoolResponse as any as S.Schema<StandbyContainerGroupPoolsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type StandbyVirtualMachinePoolsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const StandbyVirtualMachinePoolsCreateOrUpdateRequestTagsMap =
+const StandbyVirtualMachinePoolsCreateOrUpdateRequestTagsMap =
   GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<StandbyVirtualMachinePoolsCreateOrUpdateRequestTagsMap>;
 
 /** Details of the StandbyVirtualMachinePool. */
@@ -1364,7 +1333,7 @@ export interface StandbyVirtualMachinePoolResourcePropertiesInput {
   /** Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to. */
   attachedVirtualMachineScaleSetId?: string;
 }
-export const StandbyVirtualMachinePoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachinePoolResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticityProfile: S.optional(StandbyVirtualMachinePoolElasticityProfile),
     virtualMachineState: VirtualMachineState,
@@ -1389,7 +1358,7 @@ export interface StandbyVirtualMachinePoolsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolResourcePropertiesInput;
 }
-export const StandbyVirtualMachinePoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachinePoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1413,9 +1382,6 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateRequest = /*@__PURE__*/ S.s
 export type StandbyVirtualMachinePoolsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const StandbyVirtualMachinePoolsCreateOrUpdateResponseTagsMap =
-  GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<StandbyVirtualMachinePoolsCreateOrUpdateResponseTagsMap>;
-
 export interface StandbyVirtualMachinePoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1432,17 +1398,17 @@ export interface StandbyVirtualMachinePoolsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolResourceProperties;
 }
-export const StandbyVirtualMachinePoolsCreateOrUpdateResponse =
+const StandbyVirtualMachinePoolsCreateOrUpdateResponse =
   GetStandbyVirtualMachinePoolResponse as any as S.Schema<StandbyVirtualMachinePoolsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type UpdateStandbyContainerGroupPoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStandbyContainerGroupPoolRequestTagsMap =
+const UpdateStandbyContainerGroupPoolRequestTagsMap =
   GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<UpdateStandbyContainerGroupPoolRequestTagsMap>;
 
 /** Specifies zones of standby container group pools. */
 export type StandbyContainerGroupPoolResourceUpdatePropertiesZonesList = Array<string>;
-export const StandbyContainerGroupPoolResourceUpdatePropertiesZonesList =
+const StandbyContainerGroupPoolResourceUpdatePropertiesZonesList =
   StandbyContainerGroupPoolResourcePropertiesZonesList as any as S.Schema<StandbyContainerGroupPoolResourceUpdatePropertiesZonesList>;
 
 /** The updatable properties of the StandbyContainerGroupPoolResource. */
@@ -1454,7 +1420,7 @@ export interface StandbyContainerGroupPoolResourceUpdateProperties {
   /** Specifies zones of standby container group pools. */
   zones?: StandbyContainerGroupPoolResourceUpdatePropertiesZonesList;
 }
-export const StandbyContainerGroupPoolResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const StandbyContainerGroupPoolResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticityProfile: S.optional(StandbyContainerGroupPoolElasticityProfile),
     containerGroupProperties: S.optional(ContainerGroupProperties),
@@ -1476,7 +1442,7 @@ export interface UpdateStandbyContainerGroupPoolRequest {
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolResourceUpdateProperties;
 }
-export const UpdateStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1497,9 +1463,6 @@ export const UpdateStandbyContainerGroupPoolRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type UpdateStandbyContainerGroupPoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStandbyContainerGroupPoolResponseTagsMap =
-  GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<UpdateStandbyContainerGroupPoolResponseTagsMap>;
-
 export interface UpdateStandbyContainerGroupPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1516,12 +1479,12 @@ export interface UpdateStandbyContainerGroupPoolResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyContainerGroupPoolResourceProperties;
 }
-export const UpdateStandbyContainerGroupPoolResponse =
+const UpdateStandbyContainerGroupPoolResponse =
   GetStandbyContainerGroupPoolResponse as any as S.Schema<UpdateStandbyContainerGroupPoolResponse>;
 
 /** Resource tags. */
 export type UpdateStandbyVirtualMachinePoolRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStandbyVirtualMachinePoolRequestTagsMap =
+const UpdateStandbyVirtualMachinePoolRequestTagsMap =
   GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<UpdateStandbyVirtualMachinePoolRequestTagsMap>;
 
 /** The updatable properties of the StandbyVirtualMachinePoolResource. */
@@ -1535,7 +1498,7 @@ export interface StandbyVirtualMachinePoolResourceUpdateProperties {
   /** Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to. */
   attachedVirtualMachineScaleSetId?: string;
 }
-export const StandbyVirtualMachinePoolResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const StandbyVirtualMachinePoolResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticityProfile: S.optional(StandbyVirtualMachinePoolElasticityProfile),
     virtualMachineState: S.optional(VirtualMachineState),
@@ -1558,7 +1521,7 @@ export interface UpdateStandbyVirtualMachinePoolRequest {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolResourceUpdateProperties;
 }
-export const UpdateStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1579,9 +1542,6 @@ export const UpdateStandbyVirtualMachinePoolRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type UpdateStandbyVirtualMachinePoolResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStandbyVirtualMachinePoolResponseTagsMap =
-  GetStandbyContainerGroupPoolResponseTagsMap as any as S.Schema<UpdateStandbyVirtualMachinePoolResponseTagsMap>;
-
 export interface UpdateStandbyVirtualMachinePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1598,7 +1558,7 @@ export interface UpdateStandbyVirtualMachinePoolResponse {
   /** The resource-specific properties for this resource. */
   properties?: StandbyVirtualMachinePoolResourceProperties;
 }
-export const UpdateStandbyVirtualMachinePoolResponse =
+const UpdateStandbyVirtualMachinePoolResponse =
   GetStandbyVirtualMachinePoolResponse as any as S.Schema<UpdateStandbyVirtualMachinePoolResponse>;
 
 export type DeleteStandbyContainerGroupPoolError = AzureOpError;

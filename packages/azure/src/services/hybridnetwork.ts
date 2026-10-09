@@ -14,7 +14,7 @@ export interface AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkF
   /** Resource ID. */
   id?: string;
 }
-export const AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
+const AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -27,7 +27,7 @@ export const AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabri
 /** list of network fabric controllers. */
 export type AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
   Array<AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
-export const AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
+const AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
   /*@__PURE__*/ S.Array(
     AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList>;
@@ -44,7 +44,7 @@ export interface AddArtifactStoreNetworkFabricControllerEndPointsRequest {
   /** list of network fabric controllers. */
   networkFabricControllerIds?: AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList;
 }
-export const AddArtifactStoreNetworkFabricControllerEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddArtifactStoreNetworkFabricControllerEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -66,8 +66,8 @@ export const AddArtifactStoreNetworkFabricControllerEndPointsRequest = /*@__PURE
 }) as any as S.Schema<AddArtifactStoreNetworkFabricControllerEndPointsRequest>;
 
 export interface AddArtifactStoreNetworkFabricControllerEndPointsResponse {}
-export const AddArtifactStoreNetworkFabricControllerEndPointsResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const AddArtifactStoreNetworkFabricControllerEndPointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "AddArtifactStoreNetworkFabricControllerEndPointsResponse",
 }) as any as S.Schema<AddArtifactStoreNetworkFabricControllerEndPointsResponse>;
@@ -75,13 +75,10 @@ export const AddArtifactStoreNetworkFabricControllerEndPointsResponse = /*@__PUR
 /** Reference to another resource. */
 export type ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** list of private endpoints. */
 export type ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
   Array<AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
-export const ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
+const ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList as any as S.Schema<ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList>;
 
 export interface ApproveArtifactStorePrivateEndPointsRequest {
@@ -96,7 +93,7 @@ export interface ApproveArtifactStorePrivateEndPointsRequest {
   /** list of private endpoints. */
   manualPrivateEndPointConnections?: ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList;
 }
-export const ApproveArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -118,7 +115,7 @@ export const ApproveArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ApproveArtifactStorePrivateEndPointsRequest>;
 
 export interface ApproveArtifactStorePrivateEndPointsResponse {}
-export const ApproveArtifactStorePrivateEndPointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ApproveArtifactStorePrivateEndPointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ApproveArtifactStorePrivateEndPointsResponse",
@@ -126,14 +123,14 @@ export const ApproveArtifactStorePrivateEndPointsResponse = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type ArtifactManifestsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ArtifactManifestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ArtifactManifestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ArtifactManifestsCreateOrUpdateRequestTagsMap>;
 
 /** The artifact type. */
 export type ArtifactType = "Unknown" | "OCIArtifact" | "VhdImageFile" | "ArmTemplate" | "ImageFile";
-export const ArtifactType = S.String;
+const ArtifactType = S.String;
 
 /** Manifest artifact properties. */
 export interface ManifestArtifactFormat {
@@ -144,7 +141,7 @@ export interface ManifestArtifactFormat {
   /** The artifact version. */
   artifactVersion?: string;
 }
-export const ManifestArtifactFormat = /*@__PURE__*/ S.suspend(() =>
+const ManifestArtifactFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactName: S.optional(S.String),
     artifactType: S.optional(ArtifactType),
@@ -154,7 +151,7 @@ export const ManifestArtifactFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** The artifacts list. */
 export type ArtifactManifestPropertiesFormatInputArtifactsList = Array<ManifestArtifactFormat>;
-export const ArtifactManifestPropertiesFormatInputArtifactsList = /*@__PURE__*/ S.Array(
+const ArtifactManifestPropertiesFormatInputArtifactsList = /*@__PURE__*/ S.Array(
   ManifestArtifactFormat,
 ) as any as S.Schema<ArtifactManifestPropertiesFormatInputArtifactsList>;
 
@@ -163,7 +160,7 @@ export interface ArtifactManifestPropertiesFormatInput {
   /** The artifacts list. */
   artifacts?: ArtifactManifestPropertiesFormatInputArtifactsList;
 }
-export const ArtifactManifestPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const ArtifactManifestPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: S.optional(ArtifactManifestPropertiesFormatInputArtifactsList),
   }),
@@ -189,7 +186,7 @@ export interface ArtifactManifestsCreateOrUpdateRequest {
   /** Artifact manifest properties. */
   properties?: ArtifactManifestPropertiesFormatInput;
 }
-export const ArtifactManifestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ArtifactManifestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -213,11 +210,11 @@ export const ArtifactManifestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(()
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -234,7 +231,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -247,7 +244,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ArtifactManifestsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ArtifactManifestsCreateOrUpdateResponseTagsMap =
+const ArtifactManifestsCreateOrUpdateResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactManifestsCreateOrUpdateResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -260,7 +257,7 @@ export type ArtifactManifestPropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const ArtifactManifestPropertiesFormatProvisioningState = S.String;
+const ArtifactManifestPropertiesFormatProvisioningState = S.String;
 
 /** The artifact manifest state. */
 export type ArtifactManifestState =
@@ -270,11 +267,11 @@ export type ArtifactManifestState =
   | "Validating"
   | "ValidationFailed"
   | "Succeeded";
-export const ArtifactManifestState = S.String;
+const ArtifactManifestState = S.String;
 
 /** The artifacts list. */
 export type ArtifactManifestPropertiesFormatArtifactsList = Array<ManifestArtifactFormat>;
-export const ArtifactManifestPropertiesFormatArtifactsList =
+const ArtifactManifestPropertiesFormatArtifactsList =
   ArtifactManifestPropertiesFormatInputArtifactsList as any as S.Schema<ArtifactManifestPropertiesFormatArtifactsList>;
 
 /** Artifact manifest properties. */
@@ -286,7 +283,7 @@ export interface ArtifactManifestPropertiesFormat {
   /** The artifacts list. */
   artifacts?: ArtifactManifestPropertiesFormatArtifactsList;
 }
-export const ArtifactManifestPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const ArtifactManifestPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ArtifactManifestPropertiesFormatProvisioningState),
     artifactManifestState: S.optional(ArtifactManifestState),
@@ -312,7 +309,7 @@ export interface ArtifactManifestsCreateOrUpdateResponse {
   /** Artifact manifest properties. */
   properties?: ArtifactManifestPropertiesFormat;
 }
-export const ArtifactManifestsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ArtifactManifestsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -328,7 +325,7 @@ export const ArtifactManifestsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type ArtifactStoresCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ArtifactStoresCreateOrUpdateRequestTagsMap =
+const ArtifactStoresCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactStoresCreateOrUpdateRequestTagsMap>;
 
 /** The artifact store type. */
@@ -336,17 +333,17 @@ export type ArtifactStorePropertiesFormatInputStoreType =
   | "Unknown"
   | "AzureContainerRegistry"
   | "AzureStorageAccount";
-export const ArtifactStorePropertiesFormatInputStoreType = S.String;
+const ArtifactStorePropertiesFormatInputStoreType = S.String;
 
 /** The backing resource network access type. */
 export type ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess =
   | "Enabled"
   | "Disabled";
-export const ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess = S.String;
+const ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess = S.String;
 
 /** The replication strategy. */
 export type ArtifactStorePropertiesFormatInputReplicationStrategy = "Unknown" | "SingleReplication";
-export const ArtifactStorePropertiesFormatInputReplicationStrategy = S.String;
+const ArtifactStorePropertiesFormatInputReplicationStrategy = S.String;
 
 export interface ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration {
   /** The managed resource group name. */
@@ -354,15 +351,15 @@ export interface ArtifactStorePropertiesFormatInputManagedResourceGroupConfigura
   /** The managed resource group location. */
   location?: string;
 }
-export const ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
+const ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.optional(S.String),
       location: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration",
-  }) as any as S.Schema<ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration>;
+).annotate({
+  identifier: "ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration",
+}) as any as S.Schema<ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration>;
 
 /** Artifact store properties. */
 export interface ArtifactStorePropertiesFormatInput {
@@ -376,7 +373,7 @@ export interface ArtifactStorePropertiesFormatInput {
   replicationStrategy?: ArtifactStorePropertiesFormatInputReplicationStrategy | (string & {});
   managedResourceGroupConfiguration?: ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration;
 }
-export const ArtifactStorePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStorePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeType: S.optional(ArtifactStorePropertiesFormatInputStoreType),
     backingResourcePublicNetworkAccess: S.optional(
@@ -407,7 +404,7 @@ export interface ArtifactStoresCreateOrUpdateRequest {
   /** ArtifactStores properties. */
   properties?: ArtifactStorePropertiesFormatInput;
 }
-export const ArtifactStoresCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStoresCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -430,7 +427,7 @@ export const ArtifactStoresCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ArtifactStoresCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ArtifactStoresCreateOrUpdateResponseTagsMap =
+const ArtifactStoresCreateOrUpdateResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactStoresCreateOrUpdateResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -443,30 +440,27 @@ export type ArtifactStorePropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const ArtifactStorePropertiesFormatProvisioningState = S.String;
+const ArtifactStorePropertiesFormatProvisioningState = S.String;
 
 /** The artifact store type. */
 export type ArtifactStorePropertiesFormatStoreType =
   | "Unknown"
   | "AzureContainerRegistry"
   | "AzureStorageAccount";
-export const ArtifactStorePropertiesFormatStoreType = S.String;
+const ArtifactStorePropertiesFormatStoreType = S.String;
 
 /** The backing resource network access type. */
 export type ArtifactStorePropertiesFormatBackingResourcePublicNetworkAccess =
   | "Enabled"
   | "Disabled";
-export const ArtifactStorePropertiesFormatBackingResourcePublicNetworkAccess = S.String;
+const ArtifactStorePropertiesFormatBackingResourcePublicNetworkAccess = S.String;
 
 /** The replication strategy. */
 export type ArtifactStorePropertiesFormatReplicationStrategy = "Unknown" | "SingleReplication";
-export const ArtifactStorePropertiesFormatReplicationStrategy = S.String;
+const ArtifactStorePropertiesFormatReplicationStrategy = S.String;
 
 export type ArtifactStorePropertiesFormatManagedResourceGroupConfiguration =
   ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration;
-export const ArtifactStorePropertiesFormatManagedResourceGroupConfiguration =
-  ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration;
-
 /** Artifact store properties. */
 export interface ArtifactStorePropertiesFormat {
   /** The current provisioning state. */
@@ -481,7 +475,7 @@ export interface ArtifactStorePropertiesFormat {
   /** The created storage resource id */
   storageResourceId?: string;
 }
-export const ArtifactStorePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStorePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ArtifactStorePropertiesFormatProvisioningState),
     storeType: S.optional(ArtifactStorePropertiesFormatStoreType),
@@ -514,7 +508,7 @@ export interface ArtifactStoresCreateOrUpdateResponse {
   /** ArtifactStores properties. */
   properties?: ArtifactStorePropertiesFormat;
 }
-export const ArtifactStoresCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStoresCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -532,7 +526,7 @@ export const ArtifactStoresCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 export type ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap =
+const ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap>;
 
 /** Configuration group schema properties. */
@@ -542,7 +536,7 @@ export interface ConfigurationGroupSchemaPropertiesFormatInput {
   /** Name and value pairs that define the configuration value. It can be a well formed escaped JSON string. */
   schemaDefinition?: string;
 }
-export const ConfigurationGroupSchemaPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupSchemaPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     schemaDefinition: S.optional(S.String),
@@ -567,7 +561,7 @@ export interface ConfigurationGroupSchemasCreateOrUpdateRequest {
   /** Configuration group schema properties. */
   properties?: ConfigurationGroupSchemaPropertiesFormatInput;
 }
-export const ConfigurationGroupSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -592,7 +586,7 @@ export const ConfigurationGroupSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.su
 export type ConfigurationGroupSchemasCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationGroupSchemasCreateOrUpdateResponseTagsMap =
+const ConfigurationGroupSchemasCreateOrUpdateResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationGroupSchemasCreateOrUpdateResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -605,11 +599,11 @@ export type ConfigurationGroupSchemaPropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const ConfigurationGroupSchemaPropertiesFormatProvisioningState = S.String;
+const ConfigurationGroupSchemaPropertiesFormatProvisioningState = S.String;
 
 /** The configuration group schema state. */
 export type ConfigurationGroupSchemaVersionState = "Unknown" | "Preview" | "Active" | "Deprecated";
-export const ConfigurationGroupSchemaVersionState = S.String;
+const ConfigurationGroupSchemaVersionState = S.String;
 
 /** Configuration group schema properties. */
 export interface ConfigurationGroupSchemaPropertiesFormat {
@@ -622,7 +616,7 @@ export interface ConfigurationGroupSchemaPropertiesFormat {
   /** Name and value pairs that define the configuration value. It can be a well formed escaped JSON string. */
   schemaDefinition?: string;
 }
-export const ConfigurationGroupSchemaPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupSchemaPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ConfigurationGroupSchemaPropertiesFormatProvisioningState),
     versionState: S.optional(ConfigurationGroupSchemaVersionState),
@@ -649,7 +643,7 @@ export interface ConfigurationGroupSchemasCreateOrUpdateResponse {
   /** Configuration group schema properties. */
   properties?: ConfigurationGroupSchemaPropertiesFormat;
 }
-export const ConfigurationGroupSchemasCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupSchemasCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -667,16 +661,16 @@ export const ConfigurationGroupSchemasCreateOrUpdateResponse = /*@__PURE__*/ S.s
 export type ConfigurationGroupValuesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationGroupValuesCreateOrUpdateRequestTagsMap =
+const ConfigurationGroupValuesCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationGroupValuesCreateOrUpdateRequestTagsMap>;
 
 /** Publisher Scope. */
 export type ConfigurationGroupValuePropertiesFormatInputPublisherScope = "Unknown" | "Private";
-export const ConfigurationGroupValuePropertiesFormatInputPublisherScope = S.String;
+const ConfigurationGroupValuePropertiesFormatInputPublisherScope = S.String;
 
 /** The resource reference arm id type. */
 export type IdType = "Unknown" | "Open" | "Secret";
-export const IdType = S.String;
+const IdType = S.String;
 
 /** The azure resource reference which is used for deployment. */
 export interface ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference {
@@ -685,7 +679,7 @@ export interface ConfigurationGroupValuePropertiesFormatInputConfigurationGroupS
   /** ARM resource id of the referenced resource. */
   id?: string;
 }
-export const ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference =
+const ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       idType: IdType,
@@ -698,7 +692,7 @@ export const ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchem
 
 /** The secret type which indicates if secret or not. */
 export type ConfigurationGroupValueConfigurationType = "Unknown" | "Secret" | "Open";
-export const ConfigurationGroupValueConfigurationType = S.String;
+const ConfigurationGroupValueConfigurationType = S.String;
 
 /** Hybrid configuration group value properties. */
 export interface ConfigurationGroupValuePropertiesFormatInput {
@@ -713,7 +707,7 @@ export interface ConfigurationGroupValuePropertiesFormatInput {
   /** Secret configuration values as a JSON string (`configurationType: Secret`). */
   secretConfigurationValue?: string | Redacted.Redacted<string>;
 }
-export const ConfigurationGroupValuePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupValuePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherScope: S.optional(ConfigurationGroupValuePropertiesFormatInputPublisherScope),
     configurationGroupSchemaResourceReference: S.optional(
@@ -741,7 +735,7 @@ export interface ConfigurationGroupValuesCreateOrUpdateRequest {
   /** Hybrid configuration group value properties. */
   properties?: ConfigurationGroupValuePropertiesFormatInput;
 }
-export const ConfigurationGroupValuesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupValuesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -765,7 +759,7 @@ export const ConfigurationGroupValuesCreateOrUpdateRequest = /*@__PURE__*/ S.sus
 export type ConfigurationGroupValuesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const ConfigurationGroupValuesCreateOrUpdateResponseTagsMap =
+const ConfigurationGroupValuesCreateOrUpdateResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationGroupValuesCreateOrUpdateResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -778,11 +772,11 @@ export type ConfigurationGroupValuePropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const ConfigurationGroupValuePropertiesFormatProvisioningState = S.String;
+const ConfigurationGroupValuePropertiesFormatProvisioningState = S.String;
 
 /** Publisher Scope. */
 export type ConfigurationGroupValuePropertiesFormatPublisherScope = "Unknown" | "Private";
-export const ConfigurationGroupValuePropertiesFormatPublisherScope = S.String;
+const ConfigurationGroupValuePropertiesFormatPublisherScope = S.String;
 
 /** The azure resource reference which is used for deployment. */
 export interface ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference {
@@ -791,7 +785,7 @@ export interface ConfigurationGroupValuePropertiesFormatConfigurationGroupSchema
   /** ARM resource id of the referenced resource. */
   id?: string;
 }
-export const ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference =
+const ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       idType: IdType,
@@ -820,7 +814,7 @@ export interface ConfigurationGroupValuePropertiesFormat {
   /** Configuration values as a JSON string (`configurationType: Open`). */
   configurationValue?: string;
 }
-export const ConfigurationGroupValuePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupValuePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ConfigurationGroupValuePropertiesFormatProvisioningState),
     publisherName: S.optional(S.String),
@@ -853,7 +847,7 @@ export interface ConfigurationGroupValuesCreateOrUpdateResponse {
   /** Hybrid configuration group value properties. */
   properties?: ConfigurationGroupValuePropertiesFormat;
 }
-export const ConfigurationGroupValuesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupValuesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -879,7 +873,7 @@ export interface DeleteArtifactManifestRequest {
   /** The name of the artifact manifest. */
   artifactManifestName: string;
 }
-export const DeleteArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -899,7 +893,7 @@ export const DeleteArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteArtifactManifestRequest>;
 
 export interface DeleteArtifactManifestResponse {}
-export const DeleteArtifactManifestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteArtifactManifestResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteArtifactManifestResponse",
 }) as any as S.Schema<DeleteArtifactManifestResponse>;
 
@@ -913,7 +907,7 @@ export interface DeleteArtifactStoreRequest {
   /** The name of the artifact store. */
   artifactStoreName: string;
 }
-export const DeleteArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -932,19 +926,16 @@ export const DeleteArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteArtifactStoreRequest>;
 
 export interface DeleteArtifactStoreResponse {}
-export const DeleteArtifactStoreResponse =
+const DeleteArtifactStoreResponse =
   DeleteArtifactManifestResponse as any as S.Schema<DeleteArtifactStoreResponse>;
 
 /** Reference to another resource. */
 export type DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** list of network fabric controllers. */
 export type DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
   Array<AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
-export const DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
+const DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList as any as S.Schema<DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList>;
 
 export interface DeleteArtifactStoreNetworkFabricControllerEndPointsRequest {
@@ -959,30 +950,29 @@ export interface DeleteArtifactStoreNetworkFabricControllerEndPointsRequest {
   /** list of network fabric controllers. */
   networkFabricControllerIds?: DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList;
 }
-export const DeleteArtifactStoreNetworkFabricControllerEndPointsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      publisherName: S.String.pipe(T.Label()),
-      artifactStoreName: S.String.pipe(T.Label()),
-      networkFabricControllerIds: S.optional(
-        DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/deleteNetworkFabricControllerEndPoints",
-        code: 200,
-        apiVersion: "2023-09-01",
-      }),
+const DeleteArtifactStoreNetworkFabricControllerEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    publisherName: S.String.pipe(T.Label()),
+    artifactStoreName: S.String.pipe(T.Label()),
+    networkFabricControllerIds: S.optional(
+      DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList,
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/deleteNetworkFabricControllerEndPoints",
+      code: 200,
+      apiVersion: "2023-09-01",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteArtifactStoreNetworkFabricControllerEndPointsRequest",
 }) as any as S.Schema<DeleteArtifactStoreNetworkFabricControllerEndPointsRequest>;
 
 export interface DeleteArtifactStoreNetworkFabricControllerEndPointsResponse {}
-export const DeleteArtifactStoreNetworkFabricControllerEndPointsResponse =
+const DeleteArtifactStoreNetworkFabricControllerEndPointsResponse =
   AddArtifactStoreNetworkFabricControllerEndPointsResponse as any as S.Schema<DeleteArtifactStoreNetworkFabricControllerEndPointsResponse>;
 
 export interface DeleteConfigurationGroupSchemaRequest {
@@ -995,7 +985,7 @@ export interface DeleteConfigurationGroupSchemaRequest {
   /** The name of the configuration group schema. */
   configurationGroupSchemaName: string;
 }
-export const DeleteConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1014,7 +1004,7 @@ export const DeleteConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteConfigurationGroupSchemaRequest>;
 
 export interface DeleteConfigurationGroupSchemaResponse {}
-export const DeleteConfigurationGroupSchemaResponse =
+const DeleteConfigurationGroupSchemaResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<DeleteConfigurationGroupSchemaResponse>;
 
 export interface DeleteConfigurationGroupValueRequest {
@@ -1025,7 +1015,7 @@ export interface DeleteConfigurationGroupValueRequest {
   /** The name of the configuration group value. */
   configurationGroupValueName: string;
 }
-export const DeleteConfigurationGroupValueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationGroupValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1043,7 +1033,7 @@ export const DeleteConfigurationGroupValueRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteConfigurationGroupValueRequest>;
 
 export interface DeleteConfigurationGroupValueResponse {}
-export const DeleteConfigurationGroupValueResponse =
+const DeleteConfigurationGroupValueResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<DeleteConfigurationGroupValueResponse>;
 
 export interface DeleteNetworkFunctionRequest {
@@ -1054,7 +1044,7 @@ export interface DeleteNetworkFunctionRequest {
   /** The name of the network function. */
   networkFunctionName: string;
 }
-export const DeleteNetworkFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1072,7 +1062,7 @@ export const DeleteNetworkFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNetworkFunctionRequest>;
 
 export interface DeleteNetworkFunctionResponse {}
-export const DeleteNetworkFunctionResponse =
+const DeleteNetworkFunctionResponse =
   DeleteArtifactManifestResponse as any as S.Schema<DeleteNetworkFunctionResponse>;
 
 export interface DeleteNetworkFunctionDefinitionGroupRequest {
@@ -1085,7 +1075,7 @@ export interface DeleteNetworkFunctionDefinitionGroupRequest {
   /** The name of the network function definition group. */
   networkFunctionDefinitionGroupName: string;
 }
-export const DeleteNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1104,7 +1094,7 @@ export const DeleteNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteNetworkFunctionDefinitionGroupRequest>;
 
 export interface DeleteNetworkFunctionDefinitionGroupResponse {}
-export const DeleteNetworkFunctionDefinitionGroupResponse =
+const DeleteNetworkFunctionDefinitionGroupResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<DeleteNetworkFunctionDefinitionGroupResponse>;
 
 export interface DeleteNetworkFunctionDefinitionVersionRequest {
@@ -1119,7 +1109,7 @@ export interface DeleteNetworkFunctionDefinitionVersionRequest {
   /** The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkFunctionDefinitionVersionName: string;
 }
-export const DeleteNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1139,7 +1129,7 @@ export const DeleteNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteNetworkFunctionDefinitionVersionRequest>;
 
 export interface DeleteNetworkFunctionDefinitionVersionResponse {}
-export const DeleteNetworkFunctionDefinitionVersionResponse =
+const DeleteNetworkFunctionDefinitionVersionResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<DeleteNetworkFunctionDefinitionVersionResponse>;
 
 export interface DeleteNetworkServiceDesignGroupRequest {
@@ -1152,7 +1142,7 @@ export interface DeleteNetworkServiceDesignGroupRequest {
   /** The name of the network service design group. */
   networkServiceDesignGroupName: string;
 }
-export const DeleteNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1171,7 +1161,7 @@ export const DeleteNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteNetworkServiceDesignGroupRequest>;
 
 export interface DeleteNetworkServiceDesignGroupResponse {}
-export const DeleteNetworkServiceDesignGroupResponse =
+const DeleteNetworkServiceDesignGroupResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<DeleteNetworkServiceDesignGroupResponse>;
 
 export interface DeleteNetworkServiceDesignVersionRequest {
@@ -1186,7 +1176,7 @@ export interface DeleteNetworkServiceDesignVersionRequest {
   /** The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkServiceDesignVersionName: string;
 }
-export const DeleteNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1206,7 +1196,7 @@ export const DeleteNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteNetworkServiceDesignVersionRequest>;
 
 export interface DeleteNetworkServiceDesignVersionResponse {}
-export const DeleteNetworkServiceDesignVersionResponse =
+const DeleteNetworkServiceDesignVersionResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<DeleteNetworkServiceDesignVersionResponse>;
 
 export interface DeletePublisherRequest {
@@ -1217,7 +1207,7 @@ export interface DeletePublisherRequest {
   /** The name of the publisher. */
   publisherName: string;
 }
-export const DeletePublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1233,7 +1223,7 @@ export const DeletePublisherRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePublisherRequest" }) as any as S.Schema<DeletePublisherRequest>;
 
 export interface DeletePublisherResponse {}
-export const DeletePublisherResponse =
+const DeletePublisherResponse =
   DeleteArtifactManifestResponse as any as S.Schema<DeletePublisherResponse>;
 
 export interface DeleteSiteRequest {
@@ -1244,7 +1234,7 @@ export interface DeleteSiteRequest {
   /** The name of the network service site. */
   siteName: string;
 }
-export const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1260,8 +1250,7 @@ export const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSiteRequest" }) as any as S.Schema<DeleteSiteRequest>;
 
 export interface DeleteSiteResponse {}
-export const DeleteSiteResponse =
-  DeleteArtifactManifestResponse as any as S.Schema<DeleteSiteResponse>;
+const DeleteSiteResponse = DeleteArtifactManifestResponse as any as S.Schema<DeleteSiteResponse>;
 
 export interface DeleteSiteNetworkServiceRequest {
   /** The ID of the target subscription. */
@@ -1271,7 +1260,7 @@ export interface DeleteSiteNetworkServiceRequest {
   /** The name of the site network service. */
   siteNetworkServiceName: string;
 }
-export const DeleteSiteNetworkServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSiteNetworkServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1289,12 +1278,12 @@ export const DeleteSiteNetworkServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSiteNetworkServiceRequest>;
 
 export interface DeleteSiteNetworkServiceResponse {}
-export const DeleteSiteNetworkServiceResponse =
+const DeleteSiteNetworkServiceResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<DeleteSiteNetworkServiceResponse>;
 
 /** The http method of the request. */
 export type RequestMetadataHttpMethod = "Unknown" | "Post" | "Put" | "Get" | "Patch" | "Delete";
-export const RequestMetadataHttpMethod = S.String;
+const RequestMetadataHttpMethod = S.String;
 
 /** Request metadata of execute request post call payload. */
 export interface RequestMetadata {
@@ -1307,7 +1296,7 @@ export interface RequestMetadata {
   /** The api version of the request. */
   apiVersion?: string;
 }
-export const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
+const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relativePath: S.String,
     httpMethod: RequestMetadataHttpMethod,
@@ -1328,7 +1317,7 @@ export interface ExecuteNetworkFunctionRequestRequest {
   /** The request metadata. */
   requestMetadata: RequestMetadata;
 }
-export const ExecuteNetworkFunctionRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteNetworkFunctionRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1348,7 +1337,7 @@ export const ExecuteNetworkFunctionRequestRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ExecuteNetworkFunctionRequestRequest>;
 
 export interface ExecuteNetworkFunctionRequestResponse {}
-export const ExecuteNetworkFunctionRequestResponse =
+const ExecuteNetworkFunctionRequestResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<ExecuteNetworkFunctionRequestResponse>;
 
 export interface GetArtifactManifestRequest {
@@ -1363,7 +1352,7 @@ export interface GetArtifactManifestRequest {
   /** The name of the artifact manifest. */
   artifactManifestName: string;
 }
-export const GetArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1384,9 +1373,6 @@ export const GetArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetArtifactManifestResponseTagsMap = { [key: string]: string | undefined };
-export const GetArtifactManifestResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetArtifactManifestResponseTagsMap>;
-
 export interface GetArtifactManifestResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1403,7 +1389,7 @@ export interface GetArtifactManifestResponse {
   /** Artifact manifest properties. */
   properties?: ArtifactManifestPropertiesFormat;
 }
-export const GetArtifactManifestResponse =
+const GetArtifactManifestResponse =
   ArtifactManifestsCreateOrUpdateResponse as any as S.Schema<GetArtifactManifestResponse>;
 
 export interface GetArtifactStoreRequest {
@@ -1416,7 +1402,7 @@ export interface GetArtifactStoreRequest {
   /** The name of the artifact store. */
   artifactStoreName: string;
 }
-export const GetArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1434,7 +1420,7 @@ export const GetArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetArtifactStoreResponseTagsMap = { [key: string]: string | undefined };
-export const GetArtifactStoreResponseTagsMap =
+const GetArtifactStoreResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetArtifactStoreResponseTagsMap>;
 
 export interface GetArtifactStoreResponse {
@@ -1453,7 +1439,7 @@ export interface GetArtifactStoreResponse {
   /** ArtifactStores properties. */
   properties?: ArtifactStorePropertiesFormat;
 }
-export const GetArtifactStoreResponse = /*@__PURE__*/ S.suspend(() =>
+const GetArtifactStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1475,7 +1461,7 @@ export interface GetComponentRequest {
   /** The name of the component. */
   componentName: string;
 }
-export const GetComponentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetComponentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1501,7 +1487,7 @@ export type ComponentPropertiesProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const ComponentPropertiesProvisioningState = S.String;
+const ComponentPropertiesProvisioningState = S.String;
 
 /** The component resource deployment status. */
 export type Status =
@@ -1519,7 +1505,7 @@ export type Status =
   | "Reinstalling"
   | "Rollingback"
   | "Upgrading";
-export const Status = S.String;
+const Status = S.String;
 
 /** Helm Deployment status properties. */
 export interface Deployment {
@@ -1538,7 +1524,7 @@ export interface Deployment {
   /** Creation Time of deployment. */
   creationTime?: string;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -1552,7 +1538,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 
 /** Deployments that are related to component resource. */
 export type ResourcesDeploymentsList = Array<Deployment>;
-export const ResourcesDeploymentsList = /*@__PURE__*/ S.Array(
+const ResourcesDeploymentsList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<ResourcesDeploymentsList>;
 
@@ -1565,11 +1551,11 @@ export type PodStatus =
   | "Pending"
   | "Terminating"
   | "NotReady";
-export const PodStatus = S.String;
+const PodStatus = S.String;
 
 /** The type of pod event. */
 export type PodEventType = "Normal" | "Warning";
-export const PodEventType = S.String;
+const PodEventType = S.String;
 
 /** Pod Event properties. */
 export interface PodEvent {
@@ -1582,7 +1568,7 @@ export interface PodEvent {
   /** Event Last seen. */
   lastSeenTime?: string;
 }
-export const PodEvent = /*@__PURE__*/ S.suspend(() =>
+const PodEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PodEventType),
     reason: S.optional(S.String),
@@ -1593,7 +1579,7 @@ export const PodEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Last 5 Pod events. */
 export type PodEventsList = Array<PodEvent>;
-export const PodEventsList = /*@__PURE__*/ S.Array(PodEvent) as any as S.Schema<PodEventsList>;
+const PodEventsList = /*@__PURE__*/ S.Array(PodEvent) as any as S.Schema<PodEventsList>;
 
 /** Helm Pod status properties. */
 export interface Pod {
@@ -1612,7 +1598,7 @@ export interface Pod {
   /** Last 5 Pod events. */
   events?: PodEventsList;
 }
-export const Pod = /*@__PURE__*/ S.suspend(() =>
+const Pod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -1626,7 +1612,7 @@ export const Pod = /*@__PURE__*/ S.suspend(() =>
 
 /** Pods related to component resource. */
 export type ResourcesPodsList = Array<Pod>;
-export const ResourcesPodsList = /*@__PURE__*/ S.Array(Pod) as any as S.Schema<ResourcesPodsList>;
+const ResourcesPodsList = /*@__PURE__*/ S.Array(Pod) as any as S.Schema<ResourcesPodsList>;
 
 /** Helm ReplicaSet status properties. */
 export interface ReplicaSet {
@@ -1643,7 +1629,7 @@ export interface ReplicaSet {
   /** Creation Time of replicaSet. */
   creationTime?: string;
 }
-export const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
+const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -1656,7 +1642,7 @@ export const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Replica sets related to component resource. */
 export type ResourcesReplicaSetsList = Array<ReplicaSet>;
-export const ResourcesReplicaSetsList = /*@__PURE__*/ S.Array(
+const ResourcesReplicaSetsList = /*@__PURE__*/ S.Array(
   ReplicaSet,
 ) as any as S.Schema<ResourcesReplicaSetsList>;
 
@@ -1673,7 +1659,7 @@ export interface StatefulSet {
   /** Creation Time of statefulset. */
   creationTime?: string;
 }
-export const StatefulSet = /*@__PURE__*/ S.suspend(() =>
+const StatefulSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -1685,7 +1671,7 @@ export const StatefulSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Stateful sets related to component resource. */
 export type ResourcesStatefulSetsList = Array<StatefulSet>;
-export const ResourcesStatefulSetsList = /*@__PURE__*/ S.Array(
+const ResourcesStatefulSetsList = /*@__PURE__*/ S.Array(
   StatefulSet,
 ) as any as S.Schema<ResourcesStatefulSetsList>;
 
@@ -1708,7 +1694,7 @@ export interface DaemonSet {
   /** Creation Time of daemonSet. */
   creationTime?: string;
 }
-export const DaemonSet = /*@__PURE__*/ S.suspend(() =>
+const DaemonSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -1723,7 +1709,7 @@ export const DaemonSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Daemonsets related to component resource. */
 export type ResourcesDaemonSetsList = Array<DaemonSet>;
-export const ResourcesDaemonSetsList = /*@__PURE__*/ S.Array(
+const ResourcesDaemonSetsList = /*@__PURE__*/ S.Array(
   DaemonSet,
 ) as any as S.Schema<ResourcesDaemonSetsList>;
 
@@ -1740,7 +1726,7 @@ export interface Resources {
   /** Daemonsets related to component resource. */
   daemonSets?: ResourcesDaemonSetsList;
 }
-export const Resources = /*@__PURE__*/ S.suspend(() =>
+const Resources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployments: S.optional(ResourcesDeploymentsList),
     pods: S.optional(ResourcesPodsList),
@@ -1759,7 +1745,7 @@ export interface DeploymentStatusProperties {
   /** The next expected update of deployment status. */
   nextExpectedUpdateAt?: string;
 }
-export const DeploymentStatusProperties = /*@__PURE__*/ S.suspend(() =>
+const DeploymentStatusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(Status),
     resources: S.optional(Resources),
@@ -1778,7 +1764,7 @@ export interface ComponentProperties {
   /** The deployment status of the component resource. */
   deploymentStatus?: DeploymentStatusProperties;
 }
-export const ComponentProperties = /*@__PURE__*/ S.suspend(() =>
+const ComponentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ComponentPropertiesProvisioningState),
     deploymentProfile: S.optional(S.String),
@@ -1798,7 +1784,7 @@ export interface GetComponentResponse {
   /** The component properties. */
   properties?: ComponentProperties;
 }
-export const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1818,7 +1804,7 @@ export interface GetConfigurationGroupSchemaRequest {
   /** The name of the configuration group schema. */
   configurationGroupSchemaName: string;
 }
-export const GetConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1838,9 +1824,6 @@ export const GetConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConfigurationGroupSchemaResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigurationGroupSchemaResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationGroupSchemaResponseTagsMap>;
-
 export interface GetConfigurationGroupSchemaResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1857,7 +1840,7 @@ export interface GetConfigurationGroupSchemaResponse {
   /** Configuration group schema properties. */
   properties?: ConfigurationGroupSchemaPropertiesFormat;
 }
-export const GetConfigurationGroupSchemaResponse =
+const GetConfigurationGroupSchemaResponse =
   ConfigurationGroupSchemasCreateOrUpdateResponse as any as S.Schema<GetConfigurationGroupSchemaResponse>;
 
 export interface GetConfigurationGroupValueRequest {
@@ -1868,7 +1851,7 @@ export interface GetConfigurationGroupValueRequest {
   /** The name of the configuration group value. */
   configurationGroupValueName: string;
 }
-export const GetConfigurationGroupValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationGroupValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1887,9 +1870,6 @@ export const GetConfigurationGroupValueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConfigurationGroupValueResponseTagsMap = { [key: string]: string | undefined };
-export const GetConfigurationGroupValueResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationGroupValueResponseTagsMap>;
-
 export interface GetConfigurationGroupValueResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1906,7 +1886,7 @@ export interface GetConfigurationGroupValueResponse {
   /** Hybrid configuration group value properties. */
   properties?: ConfigurationGroupValuePropertiesFormat;
 }
-export const GetConfigurationGroupValueResponse =
+const GetConfigurationGroupValueResponse =
   ConfigurationGroupValuesCreateOrUpdateResponse as any as S.Schema<GetConfigurationGroupValueResponse>;
 
 export interface GetNetworkFunctionRequest {
@@ -1917,7 +1897,7 @@ export interface GetNetworkFunctionRequest {
   /** The name of the network function resource. */
   networkFunctionName: string;
 }
-export const GetNetworkFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1936,7 +1916,7 @@ export const GetNetworkFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNetworkFunctionResponseTagsMap = { [key: string]: string | undefined };
-export const GetNetworkFunctionResponseTagsMap =
+const GetNetworkFunctionResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetNetworkFunctionResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -1949,33 +1929,30 @@ export type NetworkFunctionPropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const NetworkFunctionPropertiesFormatProvisioningState = S.String;
+const NetworkFunctionPropertiesFormatProvisioningState = S.String;
 
 /** Publisher Scope. */
 export type NetworkFunctionPropertiesFormatPublisherScope = "Unknown" | "Private";
-export const NetworkFunctionPropertiesFormatPublisherScope = S.String;
+const NetworkFunctionPropertiesFormatPublisherScope = S.String;
 
 /** The azure resource reference which is used for deployment. */
 export type NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference =
   ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
-export const NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference =
-  ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
-
 /** The NFVI type. */
 export type NetworkFunctionPropertiesFormatNfviType =
   | "Unknown"
   | "AzureArcKubernetes"
   | "AzureCore"
   | "AzureOperatorNexus";
-export const NetworkFunctionPropertiesFormatNfviType = S.String;
+const NetworkFunctionPropertiesFormatNfviType = S.String;
 
 /** The secret type which indicates if secret or not. */
 export type NetworkFunctionConfigurationType = "Unknown" | "Secret" | "Open";
-export const NetworkFunctionConfigurationType = S.String;
+const NetworkFunctionConfigurationType = S.String;
 
 /** The role configuration override values from the user. */
 export type NetworkFunctionPropertiesFormatRoleOverrideValuesList = Array<string>;
-export const NetworkFunctionPropertiesFormatRoleOverrideValuesList = /*@__PURE__*/ S.Array(
+const NetworkFunctionPropertiesFormatRoleOverrideValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkFunctionPropertiesFormatRoleOverrideValuesList>;
 
@@ -2008,7 +1985,7 @@ export interface NetworkFunctionPropertiesFormat {
   /** Deployment values as a JSON string (`configurationType: Open`). */
   deploymentValues?: string;
 }
-export const NetworkFunctionPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(NetworkFunctionPropertiesFormatProvisioningState),
     publisherName: S.optional(S.String),
@@ -2036,7 +2013,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -2045,7 +2022,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -2054,7 +2031,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -2068,7 +2045,7 @@ export interface GetNetworkFunctionResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities | null;
 }
-export const GetNetworkFunctionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkFunctionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -2099,7 +2076,7 @@ export interface GetNetworkFunctionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNetworkFunctionResponseIdentity;
 }
-export const GetNetworkFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2125,7 +2102,7 @@ export interface GetNetworkFunctionDefinitionGroupRequest {
   /** The name of the network function definition group. */
   networkFunctionDefinitionGroupName: string;
 }
-export const GetNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2147,7 +2124,7 @@ export const GetNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspend(
 export type GetNetworkFunctionDefinitionGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetNetworkFunctionDefinitionGroupResponseTagsMap =
+const GetNetworkFunctionDefinitionGroupResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetNetworkFunctionDefinitionGroupResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -2160,7 +2137,7 @@ export type NetworkFunctionDefinitionGroupPropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const NetworkFunctionDefinitionGroupPropertiesFormatProvisioningState = S.String;
+const NetworkFunctionDefinitionGroupPropertiesFormatProvisioningState = S.String;
 
 /** Network function definition group properties. */
 export interface NetworkFunctionDefinitionGroupPropertiesFormat {
@@ -2169,7 +2146,7 @@ export interface NetworkFunctionDefinitionGroupPropertiesFormat {
   /** The network function definition group description. */
   description?: string;
 }
-export const NetworkFunctionDefinitionGroupPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionGroupPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(NetworkFunctionDefinitionGroupPropertiesFormatProvisioningState),
     description: S.optional(S.String),
@@ -2194,7 +2171,7 @@ export interface GetNetworkFunctionDefinitionGroupResponse {
   /** Network function definition group properties. */
   properties?: NetworkFunctionDefinitionGroupPropertiesFormat;
 }
-export const GetNetworkFunctionDefinitionGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkFunctionDefinitionGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2220,7 +2197,7 @@ export interface GetNetworkFunctionDefinitionVersionRequest {
   /** The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkFunctionDefinitionVersionName: string;
 }
-export const GetNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2243,7 +2220,7 @@ export const GetNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.suspen
 export type GetNetworkFunctionDefinitionVersionResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetNetworkFunctionDefinitionVersionResponseTagsMap =
+const GetNetworkFunctionDefinitionVersionResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetNetworkFunctionDefinitionVersionResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -2256,7 +2233,7 @@ export type NetworkFunctionDefinitionVersionPropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const NetworkFunctionDefinitionVersionPropertiesFormatProvisioningState = S.String;
+const NetworkFunctionDefinitionVersionPropertiesFormatProvisioningState = S.String;
 
 /** The network function definition version state. */
 export type VersionState =
@@ -2266,14 +2243,14 @@ export type VersionState =
   | "ValidationFailed"
   | "Active"
   | "Deprecated";
-export const VersionState = S.String;
+const VersionState = S.String;
 
 /** The network function type. */
 export type NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType =
   | "Unknown"
   | "VirtualNetworkFunction"
   | "ContainerizedNetworkFunction";
-export const NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType = S.String;
+const NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType = S.String;
 
 /** Network function definition version properties. */
 export interface NetworkFunctionDefinitionVersionPropertiesFormat {
@@ -2290,7 +2267,7 @@ export interface NetworkFunctionDefinitionVersionPropertiesFormat {
   /** Network function template (polymorphic on `nfviType`). */
   networkFunctionTemplate?: unknown;
 }
-export const NetworkFunctionDefinitionVersionPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionVersionPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(
       NetworkFunctionDefinitionVersionPropertiesFormatProvisioningState,
@@ -2321,7 +2298,7 @@ export interface GetNetworkFunctionDefinitionVersionResponse {
   /** Network function definition version properties. */
   properties?: NetworkFunctionDefinitionVersionPropertiesFormat;
 }
-export const GetNetworkFunctionDefinitionVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkFunctionDefinitionVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2345,7 +2322,7 @@ export interface GetNetworkServiceDesignGroupRequest {
   /** The name of the network service design group. */
   networkServiceDesignGroupName: string;
 }
-export const GetNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2365,7 +2342,7 @@ export const GetNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNetworkServiceDesignGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetNetworkServiceDesignGroupResponseTagsMap =
+const GetNetworkServiceDesignGroupResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetNetworkServiceDesignGroupResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -2378,8 +2355,6 @@ export type NetworkServiceDesignGroupPropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const NetworkServiceDesignGroupPropertiesFormatProvisioningState = S.String;
-
 /** network service design group properties. */
 export interface NetworkServiceDesignGroupPropertiesFormat {
   /** The current provisioning state. */
@@ -2387,7 +2362,7 @@ export interface NetworkServiceDesignGroupPropertiesFormat {
   /** The network service design group description. */
   description?: string;
 }
-export const NetworkServiceDesignGroupPropertiesFormat =
+const NetworkServiceDesignGroupPropertiesFormat =
   NetworkFunctionDefinitionGroupPropertiesFormat as any as S.Schema<NetworkServiceDesignGroupPropertiesFormat>;
 
 export interface GetNetworkServiceDesignGroupResponse {
@@ -2406,7 +2381,7 @@ export interface GetNetworkServiceDesignGroupResponse {
   /** network service design group properties. */
   properties?: NetworkServiceDesignGroupPropertiesFormat;
 }
-export const GetNetworkServiceDesignGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkServiceDesignGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2432,7 +2407,7 @@ export interface GetNetworkServiceDesignVersionRequest {
   /** The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkServiceDesignVersionName: string;
 }
-export const GetNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2453,7 +2428,7 @@ export const GetNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type GetNetworkServiceDesignVersionResponseTagsMap = { [key: string]: string | undefined };
-export const GetNetworkServiceDesignVersionResponseTagsMap =
+const GetNetworkServiceDesignVersionResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetNetworkServiceDesignVersionResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -2466,25 +2441,22 @@ export type NetworkServiceDesignVersionPropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const NetworkServiceDesignVersionPropertiesFormatProvisioningState = S.String;
+const NetworkServiceDesignVersionPropertiesFormatProvisioningState = S.String;
 
 /** The network service design version state. */
 export type NSDVersionState = "Unknown" | "Preview" | "Active" | "Deprecated";
-export const NSDVersionState = S.String;
+const NSDVersionState = S.String;
 
 /** Reference to another resource. */
 export type NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** The configuration schemas to used to define the values. */
 export type NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap = {
   [key: string]:
     | AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
     | undefined;
 };
-export const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap =
+const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
@@ -2497,7 +2469,7 @@ export interface NfviDetails {
   /** The nfvi type. */
   type?: string;
 }
-export const NfviDetails = /*@__PURE__*/ S.suspend(() =>
+const NfviDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -2508,28 +2480,28 @@ export const NfviDetails = /*@__PURE__*/ S.suspend(() =>
 export type NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap = {
   [key: string]: NfviDetails | undefined;
 };
-export const NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap = /*@__PURE__*/ S.Record(
+const NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap = /*@__PURE__*/ S.Record(
   S.String,
   NfviDetails,
 ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap>;
 
 /** The resource element template type. */
 export type Type = "Unknown" | "ArmResourceDefinition" | "NetworkFunctionDefinition";
-export const Type = S.String;
+const Type = S.String;
 
 /** Application installation operation dependency. */
 export type ResourceElementTemplateDependsOnProfileInstallDependsOnList = Array<string>;
-export const ResourceElementTemplateDependsOnProfileInstallDependsOnList =
+const ResourceElementTemplateDependsOnProfileInstallDependsOnList =
   NetworkFunctionPropertiesFormatRoleOverrideValuesList as any as S.Schema<ResourceElementTemplateDependsOnProfileInstallDependsOnList>;
 
 /** Application deletion operation dependency. */
 export type ResourceElementTemplateDependsOnProfileUninstallDependsOnList = Array<string>;
-export const ResourceElementTemplateDependsOnProfileUninstallDependsOnList =
+const ResourceElementTemplateDependsOnProfileUninstallDependsOnList =
   NetworkFunctionPropertiesFormatRoleOverrideValuesList as any as S.Schema<ResourceElementTemplateDependsOnProfileUninstallDependsOnList>;
 
 /** Application update operation dependency. */
 export type ResourceElementTemplateDependsOnProfileUpdateDependsOnList = Array<string>;
-export const ResourceElementTemplateDependsOnProfileUpdateDependsOnList =
+const ResourceElementTemplateDependsOnProfileUpdateDependsOnList =
   NetworkFunctionPropertiesFormatRoleOverrideValuesList as any as S.Schema<ResourceElementTemplateDependsOnProfileUpdateDependsOnList>;
 
 /** Depends on profile definition. */
@@ -2541,7 +2513,7 @@ export interface ResourceElementTemplateDependsOnProfile {
   /** Application update operation dependency. */
   updateDependsOn?: ResourceElementTemplateDependsOnProfileUpdateDependsOnList;
 }
-export const ResourceElementTemplateDependsOnProfile = /*@__PURE__*/ S.suspend(() =>
+const ResourceElementTemplateDependsOnProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installDependsOn: S.optional(ResourceElementTemplateDependsOnProfileInstallDependsOnList),
     uninstallDependsOn: S.optional(ResourceElementTemplateDependsOnProfileUninstallDependsOnList),
@@ -2562,7 +2534,7 @@ export interface ResourceElementTemplate {
   /** Type-specific template configuration (polymorphic on `type`). */
   configuration?: unknown;
 }
-export const ResourceElementTemplate = /*@__PURE__*/ S.suspend(() =>
+const ResourceElementTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: Type,
@@ -2574,7 +2546,7 @@ export const ResourceElementTemplate = /*@__PURE__*/ S.suspend(() =>
 /** List of resource element template */
 export type NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList =
   Array<ResourceElementTemplate>;
-export const NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList =
+const NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList =
   /*@__PURE__*/ S.Array(
     ResourceElementTemplate,
   ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList>;
@@ -2594,7 +2566,7 @@ export interface NetworkServiceDesignVersionPropertiesFormat {
   /** List of resource element template */
   resourceElementTemplates?: NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList;
 }
-export const NetworkServiceDesignVersionPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const NetworkServiceDesignVersionPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(NetworkServiceDesignVersionPropertiesFormatProvisioningState),
     versionState: S.optional(NSDVersionState),
@@ -2627,7 +2599,7 @@ export interface GetNetworkServiceDesignVersionResponse {
   /** network service design version properties. */
   properties?: NetworkServiceDesignVersionPropertiesFormat;
 }
-export const GetNetworkServiceDesignVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkServiceDesignVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2653,7 +2625,7 @@ export interface GetProxyArtifactRequest {
   /** The name of the artifact. */
   artifactName: string;
 }
-export const GetProxyArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProxyArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2677,11 +2649,11 @@ export type ProxyArtifactOverviewPropertiesValueArtifactType =
   | "VhdImageFile"
   | "ArmTemplate"
   | "ImageFile";
-export const ProxyArtifactOverviewPropertiesValueArtifactType = S.String;
+const ProxyArtifactOverviewPropertiesValueArtifactType = S.String;
 
 /** The artifact state. */
 export type ArtifactState = "Unknown" | "Preview" | "Active" | "Deprecated";
-export const ArtifactState = S.String;
+const ArtifactState = S.String;
 
 export interface ProxyArtifactOverviewPropertiesValue {
   /** The artifact type. */
@@ -2691,7 +2663,7 @@ export interface ProxyArtifactOverviewPropertiesValue {
   /** The artifact state */
   artifactState?: ArtifactState;
 }
-export const ProxyArtifactOverviewPropertiesValue = /*@__PURE__*/ S.suspend(() =>
+const ProxyArtifactOverviewPropertiesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactType: S.optional(ProxyArtifactOverviewPropertiesValueArtifactType),
     artifactVersion: S.optional(S.String),
@@ -2714,7 +2686,7 @@ export interface ProxyArtifactVersionsListOverview {
   /** Proxy Artifact overview properties. */
   properties?: ProxyArtifactOverviewPropertiesValue;
 }
-export const ProxyArtifactVersionsListOverview = /*@__PURE__*/ S.suspend(() =>
+const ProxyArtifactVersionsListOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2729,7 +2701,7 @@ export const ProxyArtifactVersionsListOverview = /*@__PURE__*/ S.suspend(() =>
 /** A list of available proxy artifacts. */
 export type ProxyArtifactVersionsOverviewListResultValueList =
   Array<ProxyArtifactVersionsListOverview>;
-export const ProxyArtifactVersionsOverviewListResultValueList = /*@__PURE__*/ S.Array(
+const ProxyArtifactVersionsOverviewListResultValueList = /*@__PURE__*/ S.Array(
   ProxyArtifactVersionsListOverview,
 ) as any as S.Schema<ProxyArtifactVersionsOverviewListResultValueList>;
 
@@ -2740,7 +2712,7 @@ export interface ProxyArtifactVersionsOverviewListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ProxyArtifactVersionsOverviewListResult = /*@__PURE__*/ S.suspend(() =>
+const ProxyArtifactVersionsOverviewListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ProxyArtifactVersionsOverviewListResultValueList),
     nextLink: S.optional(S.String),
@@ -2757,7 +2729,7 @@ export interface GetPublisherRequest {
   /** The name of the publisher. */
   publisherName: string;
 }
-export const GetPublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2774,7 +2746,7 @@ export const GetPublisherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPublisherResponseTagsMap = { [key: string]: string | undefined };
-export const GetPublisherResponseTagsMap =
+const GetPublisherResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetPublisherResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -2787,11 +2759,11 @@ export type PublisherPropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const PublisherPropertiesFormatProvisioningState = S.String;
+const PublisherPropertiesFormatProvisioningState = S.String;
 
 /** Publisher Scope. */
 export type PublisherPropertiesFormatScope = "Unknown" | "Private";
-export const PublisherPropertiesFormatScope = S.String;
+const PublisherPropertiesFormatScope = S.String;
 
 /** publisher properties. */
 export interface PublisherPropertiesFormat {
@@ -2800,7 +2772,7 @@ export interface PublisherPropertiesFormat {
   /** Publisher Scope. */
   scope?: PublisherPropertiesFormatScope;
 }
-export const PublisherPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const PublisherPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(PublisherPropertiesFormatProvisioningState),
     scope: S.optional(PublisherPropertiesFormatScope),
@@ -2811,8 +2783,6 @@ export const PublisherPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetPublisherResponseIdentity = GetNetworkFunctionResponseIdentity;
-export const GetPublisherResponseIdentity = GetNetworkFunctionResponseIdentity;
-
 export interface GetPublisherResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2831,7 +2801,7 @@ export interface GetPublisherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNetworkFunctionResponseIdentity;
 }
-export const GetPublisherResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPublisherResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2852,7 +2822,7 @@ export interface GetSiteRequest {
   /** The name of the network service site. */
   siteName: string;
 }
-export const GetSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2869,7 +2839,7 @@ export const GetSiteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSiteResponseTagsMap = { [key: string]: string | undefined };
-export const GetSiteResponseTagsMap =
+const GetSiteResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetSiteResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -2882,11 +2852,11 @@ export type SitePropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const SitePropertiesFormatProvisioningState = S.String;
+const SitePropertiesFormatProvisioningState = S.String;
 
 /** The NFVI type. */
 export type NFVIsNfviType = "Unknown" | "AzureArcKubernetes" | "AzureCore" | "AzureOperatorNexus";
-export const NFVIsNfviType = S.String;
+const NFVIsNfviType = S.String;
 
 /** The NFVI object. */
 export interface NFVIs {
@@ -2899,7 +2869,7 @@ export interface NFVIs {
   /** Reference `{ id }` to the custom location (`AzureArcKubernetes` / `AzureOperatorNexus`). */
   customLocationReference?: unknown;
 }
-export const NFVIs = /*@__PURE__*/ S.suspend(() =>
+const NFVIs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     nfviType: NFVIsNfviType,
@@ -2910,20 +2880,17 @@ export const NFVIs = /*@__PURE__*/ S.suspend(() =>
 
 /** List of NFVIs */
 export type SitePropertiesFormatNfvisList = Array<NFVIs>;
-export const SitePropertiesFormatNfvisList = /*@__PURE__*/ S.Array(
+const SitePropertiesFormatNfvisList = /*@__PURE__*/ S.Array(
   NFVIs,
 ) as any as S.Schema<SitePropertiesFormatNfvisList>;
 
 /** Reference to another resource. */
 export type SitePropertiesFormatSiteNetworkServiceReferencesItem =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const SitePropertiesFormatSiteNetworkServiceReferencesItem =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** The list of site network services on the site. */
 export type SitePropertiesFormatSiteNetworkServiceReferencesList =
   Array<AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
-export const SitePropertiesFormatSiteNetworkServiceReferencesList = /*@__PURE__*/ S.Array(
+const SitePropertiesFormatSiteNetworkServiceReferencesList = /*@__PURE__*/ S.Array(
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
 ) as any as S.Schema<SitePropertiesFormatSiteNetworkServiceReferencesList>;
 
@@ -2936,7 +2903,7 @@ export interface SitePropertiesFormat {
   /** The list of site network services on the site. */
   siteNetworkServiceReferences?: SitePropertiesFormatSiteNetworkServiceReferencesList;
 }
-export const SitePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const SitePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(SitePropertiesFormatProvisioningState),
     nfvis: S.optional(SitePropertiesFormatNfvisList),
@@ -2960,7 +2927,7 @@ export interface GetSiteResponse {
   /** Site properties. */
   properties?: SitePropertiesFormat;
 }
-export const GetSiteResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSiteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2980,7 +2947,7 @@ export interface GetSiteNetworkServiceRequest {
   /** The name of the site network service. */
   siteNetworkServiceName: string;
 }
-export const GetSiteNetworkServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSiteNetworkServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2999,7 +2966,7 @@ export const GetSiteNetworkServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSiteNetworkServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetSiteNetworkServiceResponseTagsMap =
+const GetSiteNetworkServiceResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<GetSiteNetworkServiceResponseTagsMap>;
 
 /** The current provisioning state. */
@@ -3012,7 +2979,7 @@ export type SiteNetworkServicePropertiesFormatProvisioningState =
   | "Canceled"
   | "Deleted"
   | "Converging";
-export const SiteNetworkServicePropertiesFormatProvisioningState = S.String;
+const SiteNetworkServicePropertiesFormatProvisioningState = S.String;
 
 /** Managed resource group configuration. */
 export interface SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration {
@@ -3021,53 +2988,41 @@ export interface SiteNetworkServicePropertiesFormatManagedResourceGroupConfigura
   /** Managed resource group location. */
   location?: string;
 }
-export const SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration =
+const SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration =
   ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration as any as S.Schema<SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration>;
 
 /** Reference to another resource. */
 export type SiteNetworkServicePropertiesFormatSiteReference =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const SiteNetworkServicePropertiesFormatSiteReference =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** Publisher Scope. */
 export type SiteNetworkServicePropertiesFormatPublisherScope = "Unknown" | "Private";
-export const SiteNetworkServicePropertiesFormatPublisherScope = S.String;
+const SiteNetworkServicePropertiesFormatPublisherScope = S.String;
 
 /** The azure resource reference which is used for deployment. */
 export type SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference =
   ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
-export const SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference =
-  ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
-
 /** Reference to another resource. */
 export type SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
 export type SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap = {
   [key: string]:
     | AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
     | undefined;
 };
-export const SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap =
+const SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap =
   NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap as any as S.Schema<SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap>;
 
 /** Reference to another resource. */
 export type SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** The last state of the site network service resource. */
 export type SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesMap = {
   [key: string]:
     | AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
     | undefined;
 };
-export const SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesMap =
+const SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesMap =
   NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap as any as S.Schema<SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesMap>;
 
 /** Site network service properties. */
@@ -3097,7 +3052,7 @@ export interface SiteNetworkServicePropertiesFormat {
   /** The last state of the site network service resource. */
   lastStateConfigurationGroupValueReferences?: SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesMap;
 }
-export const SiteNetworkServicePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
+const SiteNetworkServicePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(SiteNetworkServicePropertiesFormatProvisioningState),
     managedResourceGroupConfiguration: S.optional(
@@ -3128,15 +3083,13 @@ export const SiteNetworkServicePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetSiteNetworkServiceResponseIdentity = GetNetworkFunctionResponseIdentity;
-export const GetSiteNetworkServiceResponseIdentity = GetNetworkFunctionResponseIdentity;
-
 /** Name of this Sku */
 export type SkuName = "Basic" | "Standard";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** The SKU tier based on the SKU name. */
 export type SkuTier = "Basic" | "Standard";
-export const SkuTier = S.String;
+const SkuTier = S.String;
 
 /** Sku, to be associated with a SiteNetworkService. */
 export interface Sku {
@@ -3145,7 +3098,7 @@ export interface Sku {
   /** The SKU tier based on the SKU name. */
   tier?: SkuTier;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuName,
     tier: S.optional(SkuTier),
@@ -3172,7 +3125,7 @@ export interface GetSiteNetworkServiceResponse {
   /** Sku of the site network service. */
   sku?: Sku;
 }
-export const GetSiteNetworkServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSiteNetworkServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3198,7 +3151,7 @@ export interface ListArtifactManifestByArtifactStoreRequest {
   /** The name of the artifact store. */
   artifactStoreName: string;
 }
-export const ListArtifactManifestByArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactManifestByArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3218,7 +3171,7 @@ export const ListArtifactManifestByArtifactStoreRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type ArtifactManifestTagsMap = { [key: string]: string | undefined };
-export const ArtifactManifestTagsMap =
+const ArtifactManifestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactManifestTagsMap>;
 
 /** Artifact manifest properties. */
@@ -3238,7 +3191,7 @@ export interface ArtifactManifest {
   /** Artifact manifest properties. */
   properties?: ArtifactManifestPropertiesFormat;
 }
-export const ArtifactManifest = /*@__PURE__*/ S.suspend(() =>
+const ArtifactManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3252,7 +3205,7 @@ export const ArtifactManifest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of artifact manifests. */
 export type ArtifactManifestListResultValueList = Array<ArtifactManifest>;
-export const ArtifactManifestListResultValueList = /*@__PURE__*/ S.Array(
+const ArtifactManifestListResultValueList = /*@__PURE__*/ S.Array(
   ArtifactManifest,
 ) as any as S.Schema<ArtifactManifestListResultValueList>;
 
@@ -3263,7 +3216,7 @@ export interface ArtifactManifestListResult {
   /** The URI to get the next set of results. */
   nextLink?: string;
 }
-export const ArtifactManifestListResult = /*@__PURE__*/ S.suspend(() =>
+const ArtifactManifestListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ArtifactManifestListResultValueList),
     nextLink: S.optional(S.String),
@@ -3284,7 +3237,7 @@ export interface ListArtifactManifestCredentialRequest {
   /** The name of the artifact manifest. */
   artifactManifestName: string;
 }
-export const ListArtifactManifestCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactManifestCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3308,7 +3261,7 @@ export type ListArtifactManifestCredentialResponseCredentialType =
   | "Unknown"
   | "AzureContainerRegistryScopedToken"
   | "AzureStorageAccountToken";
-export const ListArtifactManifestCredentialResponseCredentialType = S.String;
+const ListArtifactManifestCredentialResponseCredentialType = S.String;
 
 /** A storage container push credential (`AzureStorageAccountToken`). */
 export interface ArtifactManifestContainerCredential {
@@ -3319,7 +3272,7 @@ export interface ArtifactManifestContainerCredential {
   /** The UTC time when the container SAS expires. */
   expiry?: string;
 }
-export const ArtifactManifestContainerCredential = /*@__PURE__*/ S.suspend(() =>
+const ArtifactManifestContainerCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerName: S.optional(S.String),
     containerSasUri: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -3331,7 +3284,7 @@ export const ArtifactManifestContainerCredential = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage container push credentials. */
 export type ArtifactManifestContainerCredentialList = Array<ArtifactManifestContainerCredential>;
-export const ArtifactManifestContainerCredentialList = /*@__PURE__*/ S.Array(
+const ArtifactManifestContainerCredentialList = /*@__PURE__*/ S.Array(
   ArtifactManifestContainerCredential,
 ) as any as S.Schema<ArtifactManifestContainerCredentialList>;
 
@@ -3353,7 +3306,7 @@ export interface ListArtifactManifestCredentialResponse {
   /** The storage account ARM ID (`AzureStorageAccountToken`). */
   storageAccountId?: string;
 }
-export const ListArtifactManifestCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactManifestCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialType: ListArtifactManifestCredentialResponseCredentialType,
     username: S.optional(S.String),
@@ -3376,7 +3329,7 @@ export interface ListArtifactStoreByPublisherRequest {
   /** The name of the publisher. */
   publisherName: string;
 }
-export const ListArtifactStoreByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactStoreByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3395,9 +3348,6 @@ export const ListArtifactStoreByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ArtifactStoreTagsMap = { [key: string]: string | undefined };
-export const ArtifactStoreTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactStoreTagsMap>;
-
 /** Artifact store properties. */
 export interface ArtifactStore {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3415,11 +3365,11 @@ export interface ArtifactStore {
   /** ArtifactStores properties. */
   properties?: ArtifactStorePropertiesFormat;
 }
-export const ArtifactStore = GetArtifactStoreResponse as any as S.Schema<ArtifactStore>;
+const ArtifactStore = GetArtifactStoreResponse as any as S.Schema<ArtifactStore>;
 
 /** A list of artifact stores. */
 export type ArtifactStoreListResultValueList = Array<ArtifactStore>;
-export const ArtifactStoreListResultValueList = /*@__PURE__*/ S.Array(
+const ArtifactStoreListResultValueList = /*@__PURE__*/ S.Array(
   ArtifactStore,
 ) as any as S.Schema<ArtifactStoreListResultValueList>;
 
@@ -3430,7 +3380,7 @@ export interface ArtifactStoreListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ArtifactStoreListResult = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStoreListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ArtifactStoreListResultValueList),
     nextLink: S.optional(S.String),
@@ -3447,8 +3397,8 @@ export interface ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest
   /** The name of the artifact store. */
   artifactStoreName: string;
 }
-export const ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -3462,20 +3412,17 @@ export const ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest =
         apiVersion: "2023-09-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest",
-  }) as any as S.Schema<ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest>;
+).annotate({
+  identifier: "ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest",
+}) as any as S.Schema<ListArtifactStoreNetworkFabricControllerPrivateEndPointsRequest>;
 
 /** Reference to another resource. */
 export type ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** list of network fabric controllers. */
 export type ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
   Array<AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
-export const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
+const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList as any as S.Schema<ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList>;
 
 /** List of network fabric controller ids. */
@@ -3483,7 +3430,7 @@ export interface ArtifactStoreNetworkFabricControllerEndPoints {
   /** list of network fabric controllers. */
   networkFabricControllerIds?: ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList;
 }
-export const ArtifactStoreNetworkFabricControllerEndPoints = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStoreNetworkFabricControllerEndPoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkFabricControllerIds: S.optional(
       ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList,
@@ -3496,7 +3443,7 @@ export const ArtifactStoreNetworkFabricControllerEndPoints = /*@__PURE__*/ S.sus
 /** A list of network fabric controllers. */
 export type ArtifactStoreNetworkFabricControllerEndPointsListValueList =
   Array<ArtifactStoreNetworkFabricControllerEndPoints>;
-export const ArtifactStoreNetworkFabricControllerEndPointsListValueList = /*@__PURE__*/ S.Array(
+const ArtifactStoreNetworkFabricControllerEndPointsListValueList = /*@__PURE__*/ S.Array(
   ArtifactStoreNetworkFabricControllerEndPoints,
 ) as any as S.Schema<ArtifactStoreNetworkFabricControllerEndPointsListValueList>;
 
@@ -3507,7 +3454,7 @@ export interface ArtifactStoreNetworkFabricControllerEndPointsList {
   /** The URI to get the next set of results. */
   nextLink?: string;
 }
-export const ArtifactStoreNetworkFabricControllerEndPointsList = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStoreNetworkFabricControllerEndPointsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ArtifactStoreNetworkFabricControllerEndPointsListValueList),
     nextLink: S.optional(S.String),
@@ -3526,7 +3473,7 @@ export interface ListArtifactStorePrivateEndPointsRequest {
   /** The name of the artifact store. */
   artifactStoreName: string;
 }
-export const ListArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3547,13 +3494,10 @@ export const ListArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspend(
 /** Reference to another resource. */
 export type ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** list of private endpoints. */
 export type ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
   Array<AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
-export const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
+const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList as any as S.Schema<ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList>;
 
 /** List of manual private endpoints. */
@@ -3561,7 +3505,7 @@ export interface ArtifactStorePrivateEndPointsFormat {
   /** list of private endpoints. */
   manualPrivateEndPointConnections?: ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList;
 }
-export const ArtifactStorePrivateEndPointsFormat = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStorePrivateEndPointsFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manualPrivateEndPointConnections: S.optional(
       ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList,
@@ -3574,7 +3518,7 @@ export const ArtifactStorePrivateEndPointsFormat = /*@__PURE__*/ S.suspend(() =>
 /** A list of private endpoints. */
 export type ArtifactStorePrivateEndPointsListResultValueList =
   Array<ArtifactStorePrivateEndPointsFormat>;
-export const ArtifactStorePrivateEndPointsListResultValueList = /*@__PURE__*/ S.Array(
+const ArtifactStorePrivateEndPointsListResultValueList = /*@__PURE__*/ S.Array(
   ArtifactStorePrivateEndPointsFormat,
 ) as any as S.Schema<ArtifactStorePrivateEndPointsListResultValueList>;
 
@@ -3585,7 +3529,7 @@ export interface ArtifactStorePrivateEndPointsListResult {
   /** The URI to get the next set of results. */
   nextLink?: string;
 }
-export const ArtifactStorePrivateEndPointsListResult = /*@__PURE__*/ S.suspend(() =>
+const ArtifactStorePrivateEndPointsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ArtifactStorePrivateEndPointsListResultValueList),
     nextLink: S.optional(S.String),
@@ -3602,7 +3546,7 @@ export interface ListComponentByNetworkFunctionRequest {
   /** The name of the network function. */
   networkFunctionName: string;
 }
-export const ListComponentByNetworkFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListComponentByNetworkFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3632,11 +3576,11 @@ export interface Component {
   /** The component properties. */
   properties?: ComponentProperties;
 }
-export const Component = GetComponentResponse as any as S.Schema<Component>;
+const Component = GetComponentResponse as any as S.Schema<Component>;
 
 /** A list of component resources in a networkFunction. */
 export type ComponentListResultValueList = Array<Component>;
-export const ComponentListResultValueList = /*@__PURE__*/ S.Array(
+const ComponentListResultValueList = /*@__PURE__*/ S.Array(
   Component,
 ) as any as S.Schema<ComponentListResultValueList>;
 
@@ -3647,7 +3591,7 @@ export interface ComponentListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ComponentListResult = /*@__PURE__*/ S.suspend(() =>
+const ComponentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ComponentListResultValueList),
     nextLink: S.optional(S.String),
@@ -3662,7 +3606,7 @@ export interface ListConfigurationGroupSchemaByPublisherRequest {
   /** The name of the publisher. */
   publisherName: string;
 }
-export const ListConfigurationGroupSchemaByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationGroupSchemaByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3681,7 +3625,7 @@ export const ListConfigurationGroupSchemaByPublisherRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type ConfigurationGroupSchemaTagsMap = { [key: string]: string | undefined };
-export const ConfigurationGroupSchemaTagsMap =
+const ConfigurationGroupSchemaTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationGroupSchemaTagsMap>;
 
 /** Configuration group schema resource. */
@@ -3701,7 +3645,7 @@ export interface ConfigurationGroupSchema {
   /** Configuration group schema properties. */
   properties?: ConfigurationGroupSchemaPropertiesFormat;
 }
-export const ConfigurationGroupSchema = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3715,7 +3659,7 @@ export const ConfigurationGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of configuration group schema. */
 export type ConfigurationGroupSchemaListResultValueList = Array<ConfigurationGroupSchema>;
-export const ConfigurationGroupSchemaListResultValueList = /*@__PURE__*/ S.Array(
+const ConfigurationGroupSchemaListResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationGroupSchema,
 ) as any as S.Schema<ConfigurationGroupSchemaListResultValueList>;
 
@@ -3726,7 +3670,7 @@ export interface ConfigurationGroupSchemaListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ConfigurationGroupSchemaListResult = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupSchemaListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ConfigurationGroupSchemaListResultValueList),
     nextLink: S.optional(S.String),
@@ -3741,7 +3685,7 @@ export interface ListConfigurationGroupValueByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListConfigurationGroupValueByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationGroupValueByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3759,7 +3703,7 @@ export const ListConfigurationGroupValueByResourceGroupRequest = /*@__PURE__*/ S
 
 /** Resource tags. */
 export type ConfigurationGroupValueTagsMap = { [key: string]: string | undefined };
-export const ConfigurationGroupValueTagsMap =
+const ConfigurationGroupValueTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationGroupValueTagsMap>;
 
 /** Hybrid configuration group value resource. */
@@ -3779,7 +3723,7 @@ export interface ConfigurationGroupValue {
   /** Hybrid configuration group value properties. */
   properties?: ConfigurationGroupValuePropertiesFormat;
 }
-export const ConfigurationGroupValue = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3793,7 +3737,7 @@ export const ConfigurationGroupValue = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of hybrid configurationGroups. */
 export type ConfigurationGroupValueListResultValueList = Array<ConfigurationGroupValue>;
-export const ConfigurationGroupValueListResultValueList = /*@__PURE__*/ S.Array(
+const ConfigurationGroupValueListResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationGroupValue,
 ) as any as S.Schema<ConfigurationGroupValueListResultValueList>;
 
@@ -3804,7 +3748,7 @@ export interface ConfigurationGroupValueListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ConfigurationGroupValueListResult = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupValueListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ConfigurationGroupValueListResultValueList),
     nextLink: S.optional(S.String),
@@ -3817,7 +3761,7 @@ export interface ListConfigurationGroupValueBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListConfigurationGroupValueBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationGroupValueBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3838,7 +3782,7 @@ export interface ListNetworkFunctionByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListNetworkFunctionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkFunctionByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3856,13 +3800,11 @@ export const ListNetworkFunctionByResourceGroupRequest = /*@__PURE__*/ S.suspend
 
 /** Resource tags. */
 export type NetworkFunctionTagsMap = { [key: string]: string | undefined };
-export const NetworkFunctionTagsMap =
+const NetworkFunctionTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkFunctionTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NetworkFunctionIdentity = GetNetworkFunctionResponseIdentity;
-export const NetworkFunctionIdentity = GetNetworkFunctionResponseIdentity;
-
 /** Network function resource response. */
 export interface NetworkFunction {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3884,7 +3826,7 @@ export interface NetworkFunction {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNetworkFunctionResponseIdentity;
 }
-export const NetworkFunction = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3900,7 +3842,7 @@ export const NetworkFunction = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network function resources in a subscription or resource group. */
 export type NetworkFunctionListResultValueList = Array<NetworkFunction>;
-export const NetworkFunctionListResultValueList = /*@__PURE__*/ S.Array(
+const NetworkFunctionListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFunction,
 ) as any as S.Schema<NetworkFunctionListResultValueList>;
 
@@ -3911,7 +3853,7 @@ export interface NetworkFunctionListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const NetworkFunctionListResult = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NetworkFunctionListResultValueList),
     nextLink: S.optional(S.String),
@@ -3924,7 +3866,7 @@ export interface ListNetworkFunctionBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListNetworkFunctionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkFunctionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3947,7 +3889,7 @@ export interface ListNetworkFunctionDefinitionGroupByPublisherRequest {
   /** The name of the publisher. */
   publisherName: string;
 }
-export const ListNetworkFunctionDefinitionGroupByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkFunctionDefinitionGroupByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3966,9 +3908,6 @@ export const ListNetworkFunctionDefinitionGroupByPublisherRequest = /*@__PURE__*
 
 /** Resource tags. */
 export type NetworkFunctionDefinitionGroupTagsMap = { [key: string]: string | undefined };
-export const NetworkFunctionDefinitionGroupTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkFunctionDefinitionGroupTagsMap>;
-
 /** Network function definition group resource. */
 export interface NetworkFunctionDefinitionGroup {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3986,13 +3925,13 @@ export interface NetworkFunctionDefinitionGroup {
   /** Network function definition group properties. */
   properties?: NetworkFunctionDefinitionGroupPropertiesFormat;
 }
-export const NetworkFunctionDefinitionGroup =
+const NetworkFunctionDefinitionGroup =
   GetNetworkFunctionDefinitionGroupResponse as any as S.Schema<NetworkFunctionDefinitionGroup>;
 
 /** A list of network function definition group. */
 export type NetworkFunctionDefinitionGroupListResultValueList =
   Array<NetworkFunctionDefinitionGroup>;
-export const NetworkFunctionDefinitionGroupListResultValueList = /*@__PURE__*/ S.Array(
+const NetworkFunctionDefinitionGroupListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFunctionDefinitionGroup,
 ) as any as S.Schema<NetworkFunctionDefinitionGroupListResultValueList>;
 
@@ -4003,7 +3942,7 @@ export interface NetworkFunctionDefinitionGroupListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const NetworkFunctionDefinitionGroupListResult = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionGroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NetworkFunctionDefinitionGroupListResultValueList),
     nextLink: S.optional(S.String),
@@ -4022,7 +3961,7 @@ export interface ListNetworkFunctionDefinitionVersionByNetworkFunctionDefinition
   /** The name of the network function definition group. */
   networkFunctionDefinitionGroupName: string;
 }
-export const ListNetworkFunctionDefinitionVersionByNetworkFunctionDefinitionGroupRequest =
+const ListNetworkFunctionDefinitionVersionByNetworkFunctionDefinitionGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -4043,9 +3982,6 @@ export const ListNetworkFunctionDefinitionVersionByNetworkFunctionDefinitionGrou
 
 /** Resource tags. */
 export type NetworkFunctionDefinitionVersionTagsMap = { [key: string]: string | undefined };
-export const NetworkFunctionDefinitionVersionTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkFunctionDefinitionVersionTagsMap>;
-
 /** Network function definition version. */
 export interface NetworkFunctionDefinitionVersion {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4063,13 +3999,13 @@ export interface NetworkFunctionDefinitionVersion {
   /** Network function definition version properties. */
   properties?: NetworkFunctionDefinitionVersionPropertiesFormat;
 }
-export const NetworkFunctionDefinitionVersion =
+const NetworkFunctionDefinitionVersion =
   GetNetworkFunctionDefinitionVersionResponse as any as S.Schema<NetworkFunctionDefinitionVersion>;
 
 /** A list of network function definition versions. */
 export type NetworkFunctionDefinitionVersionListResultValueList =
   Array<NetworkFunctionDefinitionVersion>;
-export const NetworkFunctionDefinitionVersionListResultValueList = /*@__PURE__*/ S.Array(
+const NetworkFunctionDefinitionVersionListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFunctionDefinitionVersion,
 ) as any as S.Schema<NetworkFunctionDefinitionVersionListResultValueList>;
 
@@ -4080,7 +4016,7 @@ export interface NetworkFunctionDefinitionVersionListResult {
   /** The URI to get the next set of results. */
   nextLink?: string;
 }
-export const NetworkFunctionDefinitionVersionListResult = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionVersionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NetworkFunctionDefinitionVersionListResultValueList),
     nextLink: S.optional(S.String),
@@ -4097,7 +4033,7 @@ export interface ListNetworkServiceDesignGroupByPublisherRequest {
   /** The name of the publisher. */
   publisherName: string;
 }
-export const ListNetworkServiceDesignGroupByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkServiceDesignGroupByPublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4116,9 +4052,6 @@ export const ListNetworkServiceDesignGroupByPublisherRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type NetworkServiceDesignGroupTagsMap = { [key: string]: string | undefined };
-export const NetworkServiceDesignGroupTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkServiceDesignGroupTagsMap>;
-
 /** network service design group resource. */
 export interface NetworkServiceDesignGroup {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4136,12 +4069,12 @@ export interface NetworkServiceDesignGroup {
   /** network service design group properties. */
   properties?: NetworkServiceDesignGroupPropertiesFormat;
 }
-export const NetworkServiceDesignGroup =
+const NetworkServiceDesignGroup =
   GetNetworkServiceDesignGroupResponse as any as S.Schema<NetworkServiceDesignGroup>;
 
 /** A list of network service design group. */
 export type NetworkServiceDesignGroupListResultValueList = Array<NetworkServiceDesignGroup>;
-export const NetworkServiceDesignGroupListResultValueList = /*@__PURE__*/ S.Array(
+const NetworkServiceDesignGroupListResultValueList = /*@__PURE__*/ S.Array(
   NetworkServiceDesignGroup,
 ) as any as S.Schema<NetworkServiceDesignGroupListResultValueList>;
 
@@ -4152,7 +4085,7 @@ export interface NetworkServiceDesignGroupListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const NetworkServiceDesignGroupListResult = /*@__PURE__*/ S.suspend(() =>
+const NetworkServiceDesignGroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NetworkServiceDesignGroupListResultValueList),
     nextLink: S.optional(S.String),
@@ -4171,8 +4104,8 @@ export interface ListNetworkServiceDesignVersionByNetworkServiceDesignGroupReque
   /** The name of the network service design group. */
   networkServiceDesignGroupName: string;
 }
-export const ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -4186,15 +4119,12 @@ export const ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest =
         apiVersion: "2023-09-01",
       }),
     ),
-  ).annotate({
-    identifier: "ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest",
-  }) as any as S.Schema<ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest>;
+).annotate({
+  identifier: "ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest",
+}) as any as S.Schema<ListNetworkServiceDesignVersionByNetworkServiceDesignGroupRequest>;
 
 /** Resource tags. */
 export type NetworkServiceDesignVersionTagsMap = { [key: string]: string | undefined };
-export const NetworkServiceDesignVersionTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkServiceDesignVersionTagsMap>;
-
 /** network service design version. */
 export interface NetworkServiceDesignVersion {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4212,12 +4142,12 @@ export interface NetworkServiceDesignVersion {
   /** network service design version properties. */
   properties?: NetworkServiceDesignVersionPropertiesFormat;
 }
-export const NetworkServiceDesignVersion =
+const NetworkServiceDesignVersion =
   GetNetworkServiceDesignVersionResponse as any as S.Schema<NetworkServiceDesignVersion>;
 
 /** A list of network service design versions. */
 export type NetworkServiceDesignVersionListResultValueList = Array<NetworkServiceDesignVersion>;
-export const NetworkServiceDesignVersionListResultValueList = /*@__PURE__*/ S.Array(
+const NetworkServiceDesignVersionListResultValueList = /*@__PURE__*/ S.Array(
   NetworkServiceDesignVersion,
 ) as any as S.Schema<NetworkServiceDesignVersionListResultValueList>;
 
@@ -4228,7 +4158,7 @@ export interface NetworkServiceDesignVersionListResult {
   /** The URI to get the next set of results. */
   nextLink?: string;
 }
-export const NetworkServiceDesignVersionListResult = /*@__PURE__*/ S.suspend(() =>
+const NetworkServiceDesignVersionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NetworkServiceDesignVersionListResultValueList),
     nextLink: S.optional(S.String),
@@ -4238,7 +4168,7 @@ export const NetworkServiceDesignVersionListResult = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<NetworkServiceDesignVersionListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -4260,7 +4190,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -4271,11 +4201,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -4290,7 +4220,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -4302,7 +4232,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -4312,7 +4242,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -4329,7 +4259,7 @@ export interface ListProxyArtifactRequest {
   /** The name of the artifact store. */
   artifactStoreName: string;
 }
-export const ListProxyArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProxyArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4356,7 +4286,7 @@ export interface Resource {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4367,7 +4297,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of available proxy artifacts. */
 export type ProxyArtifactOverviewListResultValueList = Array<Resource>;
-export const ProxyArtifactOverviewListResultValueList = /*@__PURE__*/ S.Array(
+const ProxyArtifactOverviewListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<ProxyArtifactOverviewListResultValueList>;
 
@@ -4378,7 +4308,7 @@ export interface ProxyArtifactOverviewListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ProxyArtifactOverviewListResult = /*@__PURE__*/ S.suspend(() =>
+const ProxyArtifactOverviewListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ProxyArtifactOverviewListResultValueList),
     nextLink: S.optional(S.String),
@@ -4393,7 +4323,7 @@ export interface ListPublisherByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPublisherByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublisherByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4411,13 +4341,8 @@ export const ListPublisherByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PublisherTagsMap = { [key: string]: string | undefined };
-export const PublisherTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<PublisherTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PublisherIdentity = GetNetworkFunctionResponseIdentity;
-export const PublisherIdentity = GetNetworkFunctionResponseIdentity;
-
 /** publisher resource. */
 export interface Publisher {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4437,11 +4362,11 @@ export interface Publisher {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNetworkFunctionResponseIdentity;
 }
-export const Publisher = GetPublisherResponse as any as S.Schema<Publisher>;
+const Publisher = GetPublisherResponse as any as S.Schema<Publisher>;
 
 /** A list of publishers. */
 export type PublisherListResultValueList = Array<Publisher>;
-export const PublisherListResultValueList = /*@__PURE__*/ S.Array(
+const PublisherListResultValueList = /*@__PURE__*/ S.Array(
   Publisher,
 ) as any as S.Schema<PublisherListResultValueList>;
 
@@ -4452,7 +4377,7 @@ export interface PublisherListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const PublisherListResult = /*@__PURE__*/ S.suspend(() =>
+const PublisherListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PublisherListResultValueList),
     nextLink: S.optional(S.String),
@@ -4463,7 +4388,7 @@ export interface ListPublisherBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPublisherBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublisherBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4484,7 +4409,7 @@ export interface ListSiteByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListSiteByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSiteByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4502,9 +4427,6 @@ export const ListSiteByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SiteTagsMap = { [key: string]: string | undefined };
-export const SiteTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<SiteTagsMap>;
-
 /** Site resource. */
 export interface Site {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4522,11 +4444,11 @@ export interface Site {
   /** Site properties. */
   properties?: SitePropertiesFormat;
 }
-export const Site = GetSiteResponse as any as S.Schema<Site>;
+const Site = GetSiteResponse as any as S.Schema<Site>;
 
 /** A list of sites in a resource group. */
 export type SiteListResultValueList = Array<Site>;
-export const SiteListResultValueList = /*@__PURE__*/ S.Array(
+const SiteListResultValueList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteListResultValueList>;
 
@@ -4537,7 +4459,7 @@ export interface SiteListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const SiteListResult = /*@__PURE__*/ S.suspend(() =>
+const SiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SiteListResultValueList),
     nextLink: S.optional(S.String),
@@ -4548,7 +4470,7 @@ export interface ListSiteBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4569,7 +4491,7 @@ export interface ListSiteNetworkServiceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListSiteNetworkServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSiteNetworkServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4587,13 +4509,11 @@ export const ListSiteNetworkServiceByResourceGroupRequest = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type SiteNetworkServiceTagsMap = { [key: string]: string | undefined };
-export const SiteNetworkServiceTagsMap =
+const SiteNetworkServiceTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<SiteNetworkServiceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SiteNetworkServiceIdentity = GetNetworkFunctionResponseIdentity;
-export const SiteNetworkServiceIdentity = GetNetworkFunctionResponseIdentity;
-
 /** Site network service resource. */
 export interface SiteNetworkService {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4615,7 +4535,7 @@ export interface SiteNetworkService {
   /** Sku of the site network service. */
   sku?: Sku;
 }
-export const SiteNetworkService = /*@__PURE__*/ S.suspend(() =>
+const SiteNetworkService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4631,7 +4551,7 @@ export const SiteNetworkService = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of site network services in a resource group. */
 export type SiteNetworkServiceListResultValueList = Array<SiteNetworkService>;
-export const SiteNetworkServiceListResultValueList = /*@__PURE__*/ S.Array(
+const SiteNetworkServiceListResultValueList = /*@__PURE__*/ S.Array(
   SiteNetworkService,
 ) as any as S.Schema<SiteNetworkServiceListResultValueList>;
 
@@ -4642,7 +4562,7 @@ export interface SiteNetworkServiceListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const SiteNetworkServiceListResult = /*@__PURE__*/ S.suspend(() =>
+const SiteNetworkServiceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SiteNetworkServiceListResultValueList),
     nextLink: S.optional(S.String),
@@ -4655,7 +4575,7 @@ export interface ListSiteNetworkServiceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListSiteNetworkServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSiteNetworkServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4674,7 +4594,7 @@ export const ListSiteNetworkServiceBySubscriptionRequest = /*@__PURE__*/ S.suspe
 export type NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap =
+const NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap>;
 
 /** Network function definition group properties. */
@@ -4682,7 +4602,7 @@ export interface NetworkFunctionDefinitionGroupPropertiesFormatInput {
   /** The network function definition group description. */
   description?: string;
 }
-export const NetworkFunctionDefinitionGroupPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionGroupPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -4706,7 +4626,7 @@ export interface NetworkFunctionDefinitionGroupsCreateOrUpdateRequest {
   /** Network function definition group properties. */
   properties?: NetworkFunctionDefinitionGroupPropertiesFormatInput;
 }
-export const NetworkFunctionDefinitionGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4731,9 +4651,6 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdateRequest = /*@__PURE__*
 export type NetworkFunctionDefinitionGroupsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkFunctionDefinitionGroupsCreateOrUpdateResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkFunctionDefinitionGroupsCreateOrUpdateResponseTagsMap>;
-
 export interface NetworkFunctionDefinitionGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4750,14 +4667,14 @@ export interface NetworkFunctionDefinitionGroupsCreateOrUpdateResponse {
   /** Network function definition group properties. */
   properties?: NetworkFunctionDefinitionGroupPropertiesFormat;
 }
-export const NetworkFunctionDefinitionGroupsCreateOrUpdateResponse =
+const NetworkFunctionDefinitionGroupsCreateOrUpdateResponse =
   GetNetworkFunctionDefinitionGroupResponse as any as S.Schema<NetworkFunctionDefinitionGroupsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap =
+const NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap>;
 
 /** The network function type. */
@@ -4765,7 +4682,7 @@ export type NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunction
   | "Unknown"
   | "VirtualNetworkFunction"
   | "ContainerizedNetworkFunction";
-export const NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType = S.String;
+const NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType = S.String;
 
 /** Network function definition version properties. */
 export interface NetworkFunctionDefinitionVersionPropertiesFormatInput {
@@ -4780,7 +4697,7 @@ export interface NetworkFunctionDefinitionVersionPropertiesFormatInput {
   /** Network function template (polymorphic on `nfviType`). */
   networkFunctionTemplate?: unknown;
 }
-export const NetworkFunctionDefinitionVersionPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionVersionPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     deployParameters: S.optional(S.String),
@@ -4809,7 +4726,7 @@ export interface NetworkFunctionDefinitionVersionsCreateOrUpdateRequest {
   /** Network function definition version properties. */
   properties?: NetworkFunctionDefinitionVersionPropertiesFormatInput;
 }
-export const NetworkFunctionDefinitionVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4835,11 +4752,10 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateRequest = /*@__PURE_
 export type NetworkFunctionDefinitionVersionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkFunctionDefinitionVersionsCreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<NetworkFunctionDefinitionVersionsCreateOrUpdateResponseTagsMap>;
+const NetworkFunctionDefinitionVersionsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkFunctionDefinitionVersionsCreateOrUpdateResponseTagsMap>;
 
 export interface NetworkFunctionDefinitionVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4857,7 +4773,7 @@ export interface NetworkFunctionDefinitionVersionsCreateOrUpdateResponse {
   /** Network function definition version properties. */
   properties?: NetworkFunctionDefinitionVersionPropertiesFormat;
 }
-export const NetworkFunctionDefinitionVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionDefinitionVersionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4873,30 +4789,27 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateResponse = /*@__PURE
 
 /** Resource tags. */
 export type NetworkFunctionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NetworkFunctionsCreateOrUpdateRequestTagsMap =
+const NetworkFunctionsCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkFunctionsCreateOrUpdateRequestTagsMap>;
 
 /** Publisher Scope. */
 export type NetworkFunctionPropertiesFormatInputPublisherScope = "Unknown" | "Private";
-export const NetworkFunctionPropertiesFormatInputPublisherScope = S.String;
+const NetworkFunctionPropertiesFormatInputPublisherScope = S.String;
 
 /** The azure resource reference which is used for deployment. */
 export type NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference =
   ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
-export const NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference =
-  ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
-
 /** The NFVI type. */
 export type NetworkFunctionPropertiesFormatInputNfviType =
   | "Unknown"
   | "AzureArcKubernetes"
   | "AzureCore"
   | "AzureOperatorNexus";
-export const NetworkFunctionPropertiesFormatInputNfviType = S.String;
+const NetworkFunctionPropertiesFormatInputNfviType = S.String;
 
 /** The role configuration override values from the user. */
 export type NetworkFunctionPropertiesFormatInputRoleOverrideValuesList = Array<string>;
-export const NetworkFunctionPropertiesFormatInputRoleOverrideValuesList =
+const NetworkFunctionPropertiesFormatInputRoleOverrideValuesList =
   NetworkFunctionPropertiesFormatRoleOverrideValuesList as any as S.Schema<NetworkFunctionPropertiesFormatInputRoleOverrideValuesList>;
 
 /** Network function properties. */
@@ -4928,7 +4841,7 @@ export interface NetworkFunctionPropertiesFormatInput {
   /** Secret deployment values as a JSON string (`configurationType: Secret`). */
   secretDeploymentValues?: string | Redacted.Redacted<string>;
 }
-export const NetworkFunctionPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherName: S.optional(S.String),
     publisherScope: S.optional(NetworkFunctionPropertiesFormatInputPublisherScope),
@@ -4952,12 +4865,12 @@ export const NetworkFunctionPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput =
+const UserAssignedIdentityInput =
   DeleteArtifactManifestResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -4967,7 +4880,7 @@ export interface NetworkFunctionsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
-export const NetworkFunctionsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
@@ -4994,7 +4907,7 @@ export interface NetworkFunctionsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: NetworkFunctionsCreateOrUpdateRequestIdentity;
 }
-export const NetworkFunctionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkFunctionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5018,13 +4931,8 @@ export const NetworkFunctionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type NetworkFunctionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NetworkFunctionsCreateOrUpdateResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkFunctionsCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NetworkFunctionsCreateOrUpdateResponseIdentity = GetNetworkFunctionResponseIdentity;
-export const NetworkFunctionsCreateOrUpdateResponseIdentity = GetNetworkFunctionResponseIdentity;
-
 export interface NetworkFunctionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5045,14 +4953,14 @@ export interface NetworkFunctionsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNetworkFunctionResponseIdentity;
 }
-export const NetworkFunctionsCreateOrUpdateResponse =
+const NetworkFunctionsCreateOrUpdateResponse =
   GetNetworkFunctionResponse as any as S.Schema<NetworkFunctionsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap =
+const NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap>;
 
 /** network service design group properties. */
@@ -5060,7 +4968,7 @@ export interface NetworkServiceDesignGroupPropertiesFormatInput {
   /** The network service design group description. */
   description?: string;
 }
-export const NetworkServiceDesignGroupPropertiesFormatInput =
+const NetworkServiceDesignGroupPropertiesFormatInput =
   NetworkFunctionDefinitionGroupPropertiesFormatInput as any as S.Schema<NetworkServiceDesignGroupPropertiesFormatInput>;
 
 export interface NetworkServiceDesignGroupsCreateOrUpdateRequest {
@@ -5079,7 +4987,7 @@ export interface NetworkServiceDesignGroupsCreateOrUpdateRequest {
   /** network service design group properties. */
   properties?: NetworkServiceDesignGroupPropertiesFormatInput;
 }
-export const NetworkServiceDesignGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkServiceDesignGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5104,9 +5012,6 @@ export const NetworkServiceDesignGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.s
 export type NetworkServiceDesignGroupsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkServiceDesignGroupsCreateOrUpdateResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkServiceDesignGroupsCreateOrUpdateResponseTagsMap>;
-
 export interface NetworkServiceDesignGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5123,22 +5028,19 @@ export interface NetworkServiceDesignGroupsCreateOrUpdateResponse {
   /** network service design group properties. */
   properties?: NetworkServiceDesignGroupPropertiesFormat;
 }
-export const NetworkServiceDesignGroupsCreateOrUpdateResponse =
+const NetworkServiceDesignGroupsCreateOrUpdateResponse =
   GetNetworkServiceDesignGroupResponse as any as S.Schema<NetworkServiceDesignGroupsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap =
+const NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap>;
 
 /** Reference to another resource. */
 export type NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** The configuration schemas to used to define the values. */
 export type NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap =
   {
@@ -5146,23 +5048,22 @@ export type NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSc
       | AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
       | undefined;
   };
-export const NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap =
+const NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap =
   NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap>;
 
 /** The nfvis from the site. */
 export type NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap = {
   [key: string]: NfviDetails | undefined;
 };
-export const NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    NfviDetails,
-  ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap>;
+const NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap = /*@__PURE__*/ S.Record(
+  S.String,
+  NfviDetails,
+) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap>;
 
 /** List of resource element template */
 export type NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList =
   Array<ResourceElementTemplate>;
-export const NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList =
+const NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList =
   NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList>;
 
 /** network service design version properties. */
@@ -5176,7 +5077,7 @@ export interface NetworkServiceDesignVersionPropertiesFormatInput {
   /** List of resource element template */
   resourceElementTemplates?: NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList;
 }
-export const NetworkServiceDesignVersionPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const NetworkServiceDesignVersionPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     configurationGroupSchemaReferences: S.optional(
@@ -5209,7 +5110,7 @@ export interface NetworkServiceDesignVersionsCreateOrUpdateRequest {
   /** network service design version properties. */
   properties?: NetworkServiceDesignVersionPropertiesFormatInput;
 }
-export const NetworkServiceDesignVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkServiceDesignVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5235,9 +5136,6 @@ export const NetworkServiceDesignVersionsCreateOrUpdateRequest = /*@__PURE__*/ S
 export type NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap>;
-
 export interface NetworkServiceDesignVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5254,24 +5152,24 @@ export interface NetworkServiceDesignVersionsCreateOrUpdateResponse {
   /** network service design version properties. */
   properties?: NetworkServiceDesignVersionPropertiesFormat;
 }
-export const NetworkServiceDesignVersionsCreateOrUpdateResponse =
+const NetworkServiceDesignVersionsCreateOrUpdateResponse =
   GetNetworkServiceDesignVersionResponse as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type PublishersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PublishersCreateOrUpdateRequestTagsMap =
+const PublishersCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<PublishersCreateOrUpdateRequestTagsMap>;
 
 /** Publisher Scope. */
 export type PublisherPropertiesFormatInputScope = "Unknown" | "Private";
-export const PublisherPropertiesFormatInputScope = S.String;
+const PublisherPropertiesFormatInputScope = S.String;
 
 /** publisher properties. */
 export interface PublisherPropertiesFormatInput {
   /** Publisher Scope. */
   scope?: PublisherPropertiesFormatInputScope | (string & {});
 }
-export const PublisherPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const PublisherPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(PublisherPropertiesFormatInputScope),
   }),
@@ -5281,9 +5179,6 @@ export const PublisherPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PublishersCreateOrUpdateRequestIdentity = NetworkFunctionsCreateOrUpdateRequestIdentity;
-export const PublishersCreateOrUpdateRequestIdentity =
-  NetworkFunctionsCreateOrUpdateRequestIdentity;
-
 export interface PublishersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5300,7 +5195,7 @@ export interface PublishersCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: NetworkFunctionsCreateOrUpdateRequestIdentity;
 }
-export const PublishersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5323,13 +5218,11 @@ export const PublishersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PublishersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PublishersCreateOrUpdateResponseTagsMap =
+const PublishersCreateOrUpdateResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<PublishersCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PublishersCreateOrUpdateResponseIdentity = GetNetworkFunctionResponseIdentity;
-export const PublishersCreateOrUpdateResponseIdentity = GetNetworkFunctionResponseIdentity;
-
 export interface PublishersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5348,7 +5241,7 @@ export interface PublishersCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNetworkFunctionResponseIdentity;
 }
-export const PublishersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PublishersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5366,13 +5259,10 @@ export const PublishersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 /** Reference to another resource. */
 export type RemoveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const RemoveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** list of private endpoints. */
 export type RemoveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
   Array<AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
-export const RemoveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
+const RemoveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList as any as S.Schema<RemoveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList>;
 
 export interface RemoveArtifactStorePrivateEndPointsRequest {
@@ -5387,7 +5277,7 @@ export interface RemoveArtifactStorePrivateEndPointsRequest {
   /** list of private endpoints. */
   manualPrivateEndPointConnections?: RemoveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList;
 }
-export const RemoveArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5409,42 +5299,30 @@ export const RemoveArtifactStorePrivateEndPointsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RemoveArtifactStorePrivateEndPointsRequest>;
 
 export interface RemoveArtifactStorePrivateEndPointsResponse {}
-export const RemoveArtifactStorePrivateEndPointsResponse =
+const RemoveArtifactStorePrivateEndPointsResponse =
   ApproveArtifactStorePrivateEndPointsResponse as any as S.Schema<RemoveArtifactStorePrivateEndPointsResponse>;
 
 /** Resource tags. */
 export type SiteNetworkServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SiteNetworkServicesCreateOrUpdateRequestTagsMap =
+const SiteNetworkServicesCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<SiteNetworkServicesCreateOrUpdateRequestTagsMap>;
 
 /** Managed resource group configuration. */
 export type SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration =
   SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration;
-export const SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration =
-  SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration;
-
 /** Reference to another resource. */
 export type SiteNetworkServicePropertiesFormatInputSiteReference =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const SiteNetworkServicePropertiesFormatInputSiteReference =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** Publisher Scope. */
 export type SiteNetworkServicePropertiesFormatInputPublisherScope = "Unknown" | "Private";
-export const SiteNetworkServicePropertiesFormatInputPublisherScope = S.String;
+const SiteNetworkServicePropertiesFormatInputPublisherScope = S.String;
 
 /** The azure resource reference which is used for deployment. */
 export type SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference =
   ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
-export const SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference =
-  ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
-
 /** Reference to another resource. */
 export type SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-export const SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue =
-  AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
-
 /** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
 export type SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap =
   {
@@ -5452,7 +5330,7 @@ export type SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGrou
       | AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
       | undefined;
   };
-export const SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap =
+const SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap =
   NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap as any as S.Schema<SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap>;
 
 /** Site network service properties. */
@@ -5468,7 +5346,7 @@ export interface SiteNetworkServicePropertiesFormatInput {
   /** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
   desiredStateConfigurationGroupValueReferences?: SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap;
 }
-export const SiteNetworkServicePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const SiteNetworkServicePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedResourceGroupConfiguration: S.optional(
       SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration,
@@ -5491,19 +5369,16 @@ export const SiteNetworkServicePropertiesFormatInput = /*@__PURE__*/ S.suspend((
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SiteNetworkServicesCreateOrUpdateRequestIdentity =
   NetworkFunctionsCreateOrUpdateRequestIdentity;
-export const SiteNetworkServicesCreateOrUpdateRequestIdentity =
-  NetworkFunctionsCreateOrUpdateRequestIdentity;
-
 /** Name of this Sku */
 export type SkuInputName = "Basic" | "Standard";
-export const SkuInputName = S.String;
+const SkuInputName = S.String;
 
 /** Sku, to be associated with a SiteNetworkService. */
 export interface SkuInput {
   /** Name of this Sku */
   name: SkuInputName | (string & {});
 }
-export const SkuInput = /*@__PURE__*/ S.suspend(() =>
+const SkuInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuInputName,
   }),
@@ -5527,7 +5402,7 @@ export interface SiteNetworkServicesCreateOrUpdateRequest {
   /** Sku of the site network service. */
   sku?: SkuInput;
 }
-export const SiteNetworkServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SiteNetworkServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5553,13 +5428,8 @@ export const SiteNetworkServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 export type SiteNetworkServicesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SiteNetworkServicesCreateOrUpdateResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<SiteNetworkServicesCreateOrUpdateResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SiteNetworkServicesCreateOrUpdateResponseIdentity = GetNetworkFunctionResponseIdentity;
-export const SiteNetworkServicesCreateOrUpdateResponseIdentity = GetNetworkFunctionResponseIdentity;
-
 export interface SiteNetworkServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5580,17 +5450,17 @@ export interface SiteNetworkServicesCreateOrUpdateResponse {
   /** Sku of the site network service. */
   sku?: Sku;
 }
-export const SiteNetworkServicesCreateOrUpdateResponse =
+const SiteNetworkServicesCreateOrUpdateResponse =
   GetSiteNetworkServiceResponse as any as S.Schema<SiteNetworkServicesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type SitesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SitesCreateOrUpdateRequestTagsMap =
+const SitesCreateOrUpdateRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<SitesCreateOrUpdateRequestTagsMap>;
 
 /** List of NFVIs */
 export type SitePropertiesFormatInputNfvisList = Array<NFVIs>;
-export const SitePropertiesFormatInputNfvisList =
+const SitePropertiesFormatInputNfvisList =
   SitePropertiesFormatNfvisList as any as S.Schema<SitePropertiesFormatInputNfvisList>;
 
 /** Site properties. */
@@ -5598,7 +5468,7 @@ export interface SitePropertiesFormatInput {
   /** List of NFVIs */
   nfvis?: SitePropertiesFormatInputNfvisList;
 }
-export const SitePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+const SitePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nfvis: S.optional(SitePropertiesFormatInputNfvisList),
   }),
@@ -5620,7 +5490,7 @@ export interface SitesCreateOrUpdateRequest {
   /** Site properties. */
   properties?: SitePropertiesFormatInput;
 }
-export const SitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5642,7 +5512,7 @@ export const SitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SitesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SitesCreateOrUpdateResponseTagsMap =
+const SitesCreateOrUpdateResponseTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<SitesCreateOrUpdateResponseTagsMap>;
 
 export interface SitesCreateOrUpdateResponse {
@@ -5661,7 +5531,7 @@ export interface SitesCreateOrUpdateResponse {
   /** Site properties. */
   properties?: SitePropertiesFormat;
 }
-export const SitesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SitesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5677,7 +5547,7 @@ export const SitesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateArtifactManifestRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateArtifactManifestRequestTagsMap =
+const UpdateArtifactManifestRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateArtifactManifestRequestTagsMap>;
 
 export interface UpdateArtifactManifestRequest {
@@ -5694,7 +5564,7 @@ export interface UpdateArtifactManifestRequest {
   /** Resource tags. */
   tags?: UpdateArtifactManifestRequestTagsMap;
 }
-export const UpdateArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5716,9 +5586,6 @@ export const UpdateArtifactManifestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateArtifactManifestResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateArtifactManifestResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateArtifactManifestResponseTagsMap>;
-
 export interface UpdateArtifactManifestResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5735,7 +5602,7 @@ export interface UpdateArtifactManifestResponse {
   /** Artifact manifest properties. */
   properties?: ArtifactManifestPropertiesFormat;
 }
-export const UpdateArtifactManifestResponse =
+const UpdateArtifactManifestResponse =
   ArtifactManifestsCreateOrUpdateResponse as any as S.Schema<UpdateArtifactManifestResponse>;
 
 export interface UpdateArtifactManifestStateRequest {
@@ -5752,7 +5619,7 @@ export interface UpdateArtifactManifestStateRequest {
   /** The artifact manifest state. */
   artifactManifestState?: ArtifactManifestState | (string & {});
 }
-export const UpdateArtifactManifestStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateArtifactManifestStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5777,7 +5644,7 @@ export interface ArtifactManifestUpdateState {
   /** The artifact manifest state. */
   artifactManifestState?: ArtifactManifestState;
 }
-export const ArtifactManifestUpdateState = /*@__PURE__*/ S.suspend(() =>
+const ArtifactManifestUpdateState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactManifestState: S.optional(ArtifactManifestState),
   }),
@@ -5787,7 +5654,7 @@ export const ArtifactManifestUpdateState = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateArtifactStoreRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateArtifactStoreRequestTagsMap =
+const UpdateArtifactStoreRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateArtifactStoreRequestTagsMap>;
 
 export interface UpdateArtifactStoreRequest {
@@ -5802,7 +5669,7 @@ export interface UpdateArtifactStoreRequest {
   /** Resource tags. */
   tags?: UpdateArtifactStoreRequestTagsMap;
 }
-export const UpdateArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5823,9 +5690,6 @@ export const UpdateArtifactStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateArtifactStoreResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateArtifactStoreResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateArtifactStoreResponseTagsMap>;
-
 export interface UpdateArtifactStoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5842,12 +5706,12 @@ export interface UpdateArtifactStoreResponse {
   /** ArtifactStores properties. */
   properties?: ArtifactStorePropertiesFormat;
 }
-export const UpdateArtifactStoreResponse =
+const UpdateArtifactStoreResponse =
   ArtifactStoresCreateOrUpdateResponse as any as S.Schema<UpdateArtifactStoreResponse>;
 
 /** Resource tags. */
 export type UpdateConfigurationGroupSchemaRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationGroupSchemaRequestTagsMap =
+const UpdateConfigurationGroupSchemaRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationGroupSchemaRequestTagsMap>;
 
 export interface UpdateConfigurationGroupSchemaRequest {
@@ -5862,7 +5726,7 @@ export interface UpdateConfigurationGroupSchemaRequest {
   /** Resource tags. */
   tags?: UpdateConfigurationGroupSchemaRequestTagsMap;
 }
-export const UpdateConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5883,9 +5747,6 @@ export const UpdateConfigurationGroupSchemaRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type UpdateConfigurationGroupSchemaResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationGroupSchemaResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationGroupSchemaResponseTagsMap>;
-
 export interface UpdateConfigurationGroupSchemaResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5902,7 +5763,7 @@ export interface UpdateConfigurationGroupSchemaResponse {
   /** Configuration group schema properties. */
   properties?: ConfigurationGroupSchemaPropertiesFormat;
 }
-export const UpdateConfigurationGroupSchemaResponse =
+const UpdateConfigurationGroupSchemaResponse =
   ConfigurationGroupSchemasCreateOrUpdateResponse as any as S.Schema<UpdateConfigurationGroupSchemaResponse>;
 
 export interface UpdateConfigurationGroupSchemaStateRequest {
@@ -5917,7 +5778,7 @@ export interface UpdateConfigurationGroupSchemaStateRequest {
   /** The configuration group schema state. */
   versionState?: ConfigurationGroupSchemaVersionState | (string & {});
 }
-export const UpdateConfigurationGroupSchemaStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationGroupSchemaStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5941,7 +5802,7 @@ export interface ConfigurationGroupSchemaVersionUpdateState {
   /** The configuration group schema state. */
   versionState?: ConfigurationGroupSchemaVersionState;
 }
-export const ConfigurationGroupSchemaVersionUpdateState = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGroupSchemaVersionUpdateState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionState: S.optional(ConfigurationGroupSchemaVersionState),
   }),
@@ -5951,7 +5812,7 @@ export const ConfigurationGroupSchemaVersionUpdateState = /*@__PURE__*/ S.suspen
 
 /** Resource tags. */
 export type UpdateConfigurationGroupValueTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConfigurationGroupValueTagsRequestTagsMap =
+const UpdateConfigurationGroupValueTagsRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationGroupValueTagsRequestTagsMap>;
 
 export interface UpdateConfigurationGroupValueTagsRequest {
@@ -5964,7 +5825,7 @@ export interface UpdateConfigurationGroupValueTagsRequest {
   /** Resource tags. */
   tags?: UpdateConfigurationGroupValueTagsRequestTagsMap;
 }
-export const UpdateConfigurationGroupValueTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationGroupValueTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5986,9 +5847,6 @@ export const UpdateConfigurationGroupValueTagsRequest = /*@__PURE__*/ S.suspend(
 export type UpdateConfigurationGroupValueTagsResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateConfigurationGroupValueTagsResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationGroupValueTagsResponseTagsMap>;
-
 export interface UpdateConfigurationGroupValueTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6005,14 +5863,14 @@ export interface UpdateConfigurationGroupValueTagsResponse {
   /** Hybrid configuration group value properties. */
   properties?: ConfigurationGroupValuePropertiesFormat;
 }
-export const UpdateConfigurationGroupValueTagsResponse =
+const UpdateConfigurationGroupValueTagsResponse =
   ConfigurationGroupValuesCreateOrUpdateResponse as any as S.Schema<UpdateConfigurationGroupValueTagsResponse>;
 
 /** Resource tags. */
 export type UpdateNetworkFunctionDefinitionGroupRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateNetworkFunctionDefinitionGroupRequestTagsMap =
+const UpdateNetworkFunctionDefinitionGroupRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkFunctionDefinitionGroupRequestTagsMap>;
 
 export interface UpdateNetworkFunctionDefinitionGroupRequest {
@@ -6027,7 +5885,7 @@ export interface UpdateNetworkFunctionDefinitionGroupRequest {
   /** Resource tags. */
   tags?: UpdateNetworkFunctionDefinitionGroupRequestTagsMap;
 }
-export const UpdateNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6050,9 +5908,6 @@ export const UpdateNetworkFunctionDefinitionGroupRequest = /*@__PURE__*/ S.suspe
 export type UpdateNetworkFunctionDefinitionGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateNetworkFunctionDefinitionGroupResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkFunctionDefinitionGroupResponseTagsMap>;
-
 export interface UpdateNetworkFunctionDefinitionGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6069,14 +5924,14 @@ export interface UpdateNetworkFunctionDefinitionGroupResponse {
   /** Network function definition group properties. */
   properties?: NetworkFunctionDefinitionGroupPropertiesFormat;
 }
-export const UpdateNetworkFunctionDefinitionGroupResponse =
+const UpdateNetworkFunctionDefinitionGroupResponse =
   GetNetworkFunctionDefinitionGroupResponse as any as S.Schema<UpdateNetworkFunctionDefinitionGroupResponse>;
 
 /** Resource tags. */
 export type UpdateNetworkFunctionDefinitionVersionRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateNetworkFunctionDefinitionVersionRequestTagsMap =
+const UpdateNetworkFunctionDefinitionVersionRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkFunctionDefinitionVersionRequestTagsMap>;
 
 export interface UpdateNetworkFunctionDefinitionVersionRequest {
@@ -6093,7 +5948,7 @@ export interface UpdateNetworkFunctionDefinitionVersionRequest {
   /** Resource tags. */
   tags?: UpdateNetworkFunctionDefinitionVersionRequestTagsMap;
 }
-export const UpdateNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6117,9 +5972,6 @@ export const UpdateNetworkFunctionDefinitionVersionRequest = /*@__PURE__*/ S.sus
 export type UpdateNetworkFunctionDefinitionVersionResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateNetworkFunctionDefinitionVersionResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkFunctionDefinitionVersionResponseTagsMap>;
-
 export interface UpdateNetworkFunctionDefinitionVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6136,7 +5988,7 @@ export interface UpdateNetworkFunctionDefinitionVersionResponse {
   /** Network function definition version properties. */
   properties?: NetworkFunctionDefinitionVersionPropertiesFormat;
 }
-export const UpdateNetworkFunctionDefinitionVersionResponse =
+const UpdateNetworkFunctionDefinitionVersionResponse =
   GetNetworkFunctionDefinitionVersionResponse as any as S.Schema<UpdateNetworkFunctionDefinitionVersionResponse>;
 
 export interface UpdateNetworkFunctionDefinitionVersionStateRequest {
@@ -6153,7 +6005,7 @@ export interface UpdateNetworkFunctionDefinitionVersionStateRequest {
   /** The network function definition version state. Only the 'Active' and 'Deprecated' states are allowed for updates. Other states are used for internal state transitioning. */
   versionState?: VersionState | (string & {});
 }
-export const UpdateNetworkFunctionDefinitionVersionStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkFunctionDefinitionVersionStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6178,12 +6030,12 @@ export interface NetworkFunctionDefinitionVersionUpdateState {
   /** The network function definition version state. Only the 'Active' and 'Deprecated' states are allowed for updates. Other states are used for internal state transitioning. */
   versionState?: VersionState;
 }
-export const NetworkFunctionDefinitionVersionUpdateState =
+const NetworkFunctionDefinitionVersionUpdateState =
   ConfigurationGroupSchemaVersionUpdateState as any as S.Schema<NetworkFunctionDefinitionVersionUpdateState>;
 
 /** Resource tags. */
 export type UpdateNetworkFunctionTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkFunctionTagsRequestTagsMap =
+const UpdateNetworkFunctionTagsRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkFunctionTagsRequestTagsMap>;
 
 export interface UpdateNetworkFunctionTagsRequest {
@@ -6196,7 +6048,7 @@ export interface UpdateNetworkFunctionTagsRequest {
   /** Resource tags. */
   tags?: UpdateNetworkFunctionTagsRequestTagsMap;
 }
-export const UpdateNetworkFunctionTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkFunctionTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6216,13 +6068,8 @@ export const UpdateNetworkFunctionTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNetworkFunctionTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkFunctionTagsResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkFunctionTagsResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateNetworkFunctionTagsResponseIdentity = GetNetworkFunctionResponseIdentity;
-export const UpdateNetworkFunctionTagsResponseIdentity = GetNetworkFunctionResponseIdentity;
-
 export interface UpdateNetworkFunctionTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6243,12 +6090,12 @@ export interface UpdateNetworkFunctionTagsResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNetworkFunctionResponseIdentity;
 }
-export const UpdateNetworkFunctionTagsResponse =
+const UpdateNetworkFunctionTagsResponse =
   GetNetworkFunctionResponse as any as S.Schema<UpdateNetworkFunctionTagsResponse>;
 
 /** Resource tags. */
 export type UpdateNetworkServiceDesignGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkServiceDesignGroupRequestTagsMap =
+const UpdateNetworkServiceDesignGroupRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkServiceDesignGroupRequestTagsMap>;
 
 export interface UpdateNetworkServiceDesignGroupRequest {
@@ -6263,7 +6110,7 @@ export interface UpdateNetworkServiceDesignGroupRequest {
   /** Resource tags. */
   tags?: UpdateNetworkServiceDesignGroupRequestTagsMap;
 }
-export const UpdateNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6284,9 +6131,6 @@ export const UpdateNetworkServiceDesignGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type UpdateNetworkServiceDesignGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkServiceDesignGroupResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkServiceDesignGroupResponseTagsMap>;
-
 export interface UpdateNetworkServiceDesignGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6303,12 +6147,12 @@ export interface UpdateNetworkServiceDesignGroupResponse {
   /** network service design group properties. */
   properties?: NetworkServiceDesignGroupPropertiesFormat;
 }
-export const UpdateNetworkServiceDesignGroupResponse =
+const UpdateNetworkServiceDesignGroupResponse =
   GetNetworkServiceDesignGroupResponse as any as S.Schema<UpdateNetworkServiceDesignGroupResponse>;
 
 /** Resource tags. */
 export type UpdateNetworkServiceDesignVersionRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNetworkServiceDesignVersionRequestTagsMap =
+const UpdateNetworkServiceDesignVersionRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkServiceDesignVersionRequestTagsMap>;
 
 export interface UpdateNetworkServiceDesignVersionRequest {
@@ -6325,7 +6169,7 @@ export interface UpdateNetworkServiceDesignVersionRequest {
   /** Resource tags. */
   tags?: UpdateNetworkServiceDesignVersionRequestTagsMap;
 }
-export const UpdateNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6349,9 +6193,6 @@ export const UpdateNetworkServiceDesignVersionRequest = /*@__PURE__*/ S.suspend(
 export type UpdateNetworkServiceDesignVersionResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateNetworkServiceDesignVersionResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkServiceDesignVersionResponseTagsMap>;
-
 export interface UpdateNetworkServiceDesignVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6368,7 +6209,7 @@ export interface UpdateNetworkServiceDesignVersionResponse {
   /** network service design version properties. */
   properties?: NetworkServiceDesignVersionPropertiesFormat;
 }
-export const UpdateNetworkServiceDesignVersionResponse =
+const UpdateNetworkServiceDesignVersionResponse =
   GetNetworkServiceDesignVersionResponse as any as S.Schema<UpdateNetworkServiceDesignVersionResponse>;
 
 export interface UpdateNetworkServiceDesignVersionStateRequest {
@@ -6385,7 +6226,7 @@ export interface UpdateNetworkServiceDesignVersionStateRequest {
   /** The network service design version state. */
   versionState?: NSDVersionState | (string & {});
 }
-export const UpdateNetworkServiceDesignVersionStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkServiceDesignVersionStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6410,7 +6251,7 @@ export interface NetworkServiceDesignVersionUpdateState {
   /** The network service design version state. */
   versionState?: NSDVersionState;
 }
-export const NetworkServiceDesignVersionUpdateState =
+const NetworkServiceDesignVersionUpdateState =
   ConfigurationGroupSchemaVersionUpdateState as any as S.Schema<NetworkServiceDesignVersionUpdateState>;
 
 /** The artifact update state properties. */
@@ -6418,7 +6259,7 @@ export interface ArtifactChangeStateProperties {
   /** The artifact state */
   artifactState?: ArtifactState | (string & {});
 }
-export const ArtifactChangeStateProperties = /*@__PURE__*/ S.suspend(() =>
+const ArtifactChangeStateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactState: S.optional(ArtifactState),
   }),
@@ -6442,7 +6283,7 @@ export interface UpdateProxyArtifactStateRequest {
   /** Artifact update state properties. */
   properties?: ArtifactChangeStateProperties;
 }
-export const UpdateProxyArtifactStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProxyArtifactStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6475,12 +6316,12 @@ export interface UpdateProxyArtifactStateResponse {
   /** Proxy Artifact overview properties. */
   properties?: ProxyArtifactOverviewPropertiesValue;
 }
-export const UpdateProxyArtifactStateResponse =
+const UpdateProxyArtifactStateResponse =
   ProxyArtifactVersionsListOverview as any as S.Schema<UpdateProxyArtifactStateResponse>;
 
 /** Resource tags. */
 export type UpdatePublisherRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePublisherRequestTagsMap =
+const UpdatePublisherRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePublisherRequestTagsMap>;
 
 export interface UpdatePublisherRequest {
@@ -6493,7 +6334,7 @@ export interface UpdatePublisherRequest {
   /** Resource tags. */
   tags?: UpdatePublisherRequestTagsMap;
 }
-export const UpdatePublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6511,13 +6352,8 @@ export const UpdatePublisherRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePublisherResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePublisherResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePublisherResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdatePublisherResponseIdentity = GetNetworkFunctionResponseIdentity;
-export const UpdatePublisherResponseIdentity = GetNetworkFunctionResponseIdentity;
-
 export interface UpdatePublisherResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6536,12 +6372,11 @@ export interface UpdatePublisherResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetNetworkFunctionResponseIdentity;
 }
-export const UpdatePublisherResponse =
-  GetPublisherResponse as any as S.Schema<UpdatePublisherResponse>;
+const UpdatePublisherResponse = GetPublisherResponse as any as S.Schema<UpdatePublisherResponse>;
 
 /** Resource tags. */
 export type UpdateSiteNetworkServiceTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSiteNetworkServiceTagsRequestTagsMap =
+const UpdateSiteNetworkServiceTagsRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSiteNetworkServiceTagsRequestTagsMap>;
 
 export interface UpdateSiteNetworkServiceTagsRequest {
@@ -6554,7 +6389,7 @@ export interface UpdateSiteNetworkServiceTagsRequest {
   /** Resource tags. */
   tags?: UpdateSiteNetworkServiceTagsRequestTagsMap;
 }
-export const UpdateSiteNetworkServiceTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSiteNetworkServiceTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6574,13 +6409,8 @@ export const UpdateSiteNetworkServiceTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSiteNetworkServiceTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSiteNetworkServiceTagsResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSiteNetworkServiceTagsResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateSiteNetworkServiceTagsResponseIdentity = GetNetworkFunctionResponseIdentity;
-export const UpdateSiteNetworkServiceTagsResponseIdentity = GetNetworkFunctionResponseIdentity;
-
 export interface UpdateSiteNetworkServiceTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6601,12 +6431,12 @@ export interface UpdateSiteNetworkServiceTagsResponse {
   /** Sku of the site network service. */
   sku?: Sku;
 }
-export const UpdateSiteNetworkServiceTagsResponse =
+const UpdateSiteNetworkServiceTagsResponse =
   GetSiteNetworkServiceResponse as any as S.Schema<UpdateSiteNetworkServiceTagsResponse>;
 
 /** Resource tags. */
 export type UpdateSiteTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSiteTagsRequestTagsMap =
+const UpdateSiteTagsRequestTagsMap =
   ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSiteTagsRequestTagsMap>;
 
 export interface UpdateSiteTagsRequest {
@@ -6619,7 +6449,7 @@ export interface UpdateSiteTagsRequest {
   /** Resource tags. */
   tags?: UpdateSiteTagsRequestTagsMap;
 }
-export const UpdateSiteTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSiteTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6637,9 +6467,6 @@ export const UpdateSiteTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSiteTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSiteTagsResponseTagsMap =
-  ArtifactManifestsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSiteTagsResponseTagsMap>;
-
 export interface UpdateSiteTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6656,7 +6483,7 @@ export interface UpdateSiteTagsResponse {
   /** Site properties. */
   properties?: SitePropertiesFormat;
 }
-export const UpdateSiteTagsResponse = GetSiteResponse as any as S.Schema<UpdateSiteTagsResponse>;
+const UpdateSiteTagsResponse = GetSiteResponse as any as S.Schema<UpdateSiteTagsResponse>;
 
 export type AddArtifactStoreNetworkFabricControllerEndPointsError = AzureOpError;
 /** Add network fabric controllers to artifact stores */

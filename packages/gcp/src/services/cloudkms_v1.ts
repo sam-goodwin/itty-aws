@@ -68,7 +68,7 @@ export interface ChallengeReply {
   /** Required. The public key associated with the 2FA key. */
   publicKeyPem?: string;
 }
-export const ChallengeReply = /*@__PURE__*/ S.suspend(() =>
+const ChallengeReply = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signedChallenge: S.optional(S.String),
     publicKeyPem: S.optional(S.String),
@@ -76,7 +76,7 @@ export const ChallengeReply = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChallengeReply" }) as any as S.Schema<ChallengeReply>;
 
 export type ChallengeReplyList = Array<ChallengeReply>;
-export const ChallengeReplyList = /*@__PURE__*/ S.Array(
+const ChallengeReplyList = /*@__PURE__*/ S.Array(
   ChallengeReply,
 ) as any as S.Schema<ChallengeReplyList>;
 
@@ -85,7 +85,7 @@ export interface QuorumReply {
   /** Required. The challenge replies to approve the proposal. Challenge replies can be sent across multiple requests. The proposal will be approved when required_approver_count challenge replies are provided. */
   challengeReplies?: ChallengeReplyList;
 }
-export const QuorumReply = /*@__PURE__*/ S.suspend(() =>
+const QuorumReply = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challengeReplies: S.optional(ChallengeReplyList),
   }),
@@ -98,7 +98,7 @@ export interface RequiredActionQuorumReply {
   /** Required. Quorum members' signed challenge replies. These can be provided across multiple requests. The proposal will be approved when required_approver_count quorum_challenge_replies are provided and when all required_challenge_replies are provided. */
   quorumChallengeReplies?: ChallengeReplyList;
 }
-export const RequiredActionQuorumReply = /*@__PURE__*/ S.suspend(() =>
+const RequiredActionQuorumReply = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredChallengeReplies: S.optional(ChallengeReplyList),
     quorumChallengeReplies: S.optional(ChallengeReplyList),
@@ -114,7 +114,7 @@ export interface ApproveSingleTenantHsmInstanceProposalRequest {
   /** Required. The reply to RequiredActionQuorumParameters for approving the proposal. */
   requiredActionQuorumReply?: RequiredActionQuorumReply;
 }
-export const ApproveSingleTenantHsmInstanceProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveSingleTenantHsmInstanceProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quorumReply: S.optional(QuorumReply),
     requiredActionQuorumReply: S.optional(RequiredActionQuorumReply),
@@ -129,8 +129,8 @@ export interface ApproveProjectsLocationsSingleTenantHsmInstancesProposalsReques
   /** Request body */
   body?: ApproveSingleTenantHsmInstanceProposalRequest;
 }
-export const ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(ApproveSingleTenantHsmInstanceProposalRequest.pipe(T.HttpBody())),
@@ -141,13 +141,13 @@ export const ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
-  }) as any as S.Schema<ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+).annotate({
+  identifier: "ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
+}) as any as S.Schema<ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 /** Response message for HsmManagement.ApproveSingleTenantHsmInstanceProposal. */
 export interface ApproveSingleTenantHsmInstanceProposalResponse {}
-export const ApproveSingleTenantHsmInstanceProposalResponse = /*@__PURE__*/ S.suspend(() =>
+const ApproveSingleTenantHsmInstanceProposalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ApproveSingleTenantHsmInstanceProposalResponse",
@@ -160,7 +160,7 @@ export interface AsymmetricDecryptRequest {
   /** Optional. An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received AsymmetricDecryptRequest.ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricDecryptRequest.ciphertext) is equal to AsymmetricDecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   ciphertextCrc32c?: string;
 }
-export const AsymmetricDecryptRequest = /*@__PURE__*/ S.suspend(() =>
+const AsymmetricDecryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphertext: S.optional(S.String),
     ciphertextCrc32c: S.optional(S.String),
@@ -173,7 +173,7 @@ export interface AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVe
   /** Request body */
   body?: AsymmetricDecryptRequest;
 }
-export const AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -196,7 +196,7 @@ export type AsymmetricDecryptResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const AsymmetricDecryptResponseProtectionLevelEnum = S.String;
+const AsymmetricDecryptResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.AsymmetricDecrypt. */
 export interface AsymmetricDecryptResponse {
@@ -209,7 +209,7 @@ export interface AsymmetricDecryptResponse {
   /** The ProtectionLevel of the CryptoKeyVersion used in decryption. */
   protectionLevel?: AsymmetricDecryptResponseProtectionLevelEnum;
 }
-export const AsymmetricDecryptResponse = /*@__PURE__*/ S.suspend(() =>
+const AsymmetricDecryptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plaintext: S.optional(S.String),
     plaintextCrc32c: S.optional(S.String),
@@ -231,7 +231,7 @@ export interface Digest {
   /** A message digest produced with the SHA-512 algorithm. */
   sha512?: string;
 }
-export const Digest = /*@__PURE__*/ S.suspend(() =>
+const Digest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalMu: S.optional(S.String),
     sha256: S.optional(S.String),
@@ -251,7 +251,7 @@ export interface AsymmetricSignRequest {
   /** Optional. An optional CRC32C checksum of the AsymmetricSignRequest.data. If specified, KeyManagementService will verify the integrity of the received AsymmetricSignRequest.data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricSignRequest.data) is equal to AsymmetricSignRequest.data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   dataCrc32c?: string;
 }
-export const AsymmetricSignRequest = /*@__PURE__*/ S.suspend(() =>
+const AsymmetricSignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     digest: S.optional(Digest),
     data: S.optional(S.String),
@@ -266,7 +266,7 @@ export interface AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersi
   /** Request body */
   body?: AsymmetricSignRequest;
 }
-export const AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -289,7 +289,7 @@ export type AsymmetricSignResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const AsymmetricSignResponseProtectionLevelEnum = S.String;
+const AsymmetricSignResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.AsymmetricSign. */
 export interface AsymmetricSignResponse {
@@ -306,7 +306,7 @@ export interface AsymmetricSignResponse {
   /** The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended resource was used for signing. */
   name?: string;
 }
-export const AsymmetricSignResponse = /*@__PURE__*/ S.suspend(() =>
+const AsymmetricSignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifiedDigestCrc32c: S.optional(S.Boolean),
     signature: S.optional(S.String),
@@ -321,10 +321,10 @@ export type EkmConnectionKeyManagementModeEnum =
   | "KEY_MANAGEMENT_MODE_UNSPECIFIED"
   | "MANUAL"
   | "CLOUD_KMS";
-export const EkmConnectionKeyManagementModeEnum = S.String;
+const EkmConnectionKeyManagementModeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas. */
 export interface Certificate {
@@ -347,7 +347,7 @@ export interface Certificate {
   /** Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true. */
   subject?: string;
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
+const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rawDer: S.optional(S.String),
     notAfterTime: S.optional(S.String),
@@ -362,9 +362,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 export type CertificateList = Array<Certificate>;
-export const CertificateList = /*@__PURE__*/ S.Array(
-  Certificate,
-) as any as S.Schema<CertificateList>;
+const CertificateList = /*@__PURE__*/ S.Array(Certificate) as any as S.Schema<CertificateList>;
 
 /** A ServiceResolver represents an EKM replica that can be reached within an EkmConnection. */
 export interface ServiceResolver {
@@ -377,7 +375,7 @@ export interface ServiceResolver {
   /** Required. The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/*\/locations/*\/namespaces/*\/services/*`. */
   serviceDirectoryService?: string;
 }
-export const ServiceResolver = /*@__PURE__*/ S.suspend(() =>
+const ServiceResolver = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverCertificates: S.optional(CertificateList),
     endpointFilter: S.optional(S.String),
@@ -387,7 +385,7 @@ export const ServiceResolver = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceResolver" }) as any as S.Schema<ServiceResolver>;
 
 export type ServiceResolverList = Array<ServiceResolver>;
-export const ServiceResolverList = /*@__PURE__*/ S.Array(
+const ServiceResolverList = /*@__PURE__*/ S.Array(
   ServiceResolver,
 ) as any as S.Schema<ServiceResolverList>;
 
@@ -406,7 +404,7 @@ export interface EkmConnection {
   /** Output only. The resource name for the EkmConnection in the format `projects/*\/locations/*\/ekmConnections/*`. */
   name?: string;
 }
-export const EkmConnection = /*@__PURE__*/ S.suspend(() =>
+const EkmConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     cryptoSpacePath: S.optional(S.String),
@@ -425,7 +423,7 @@ export interface CreateProjectsLocationsEkmConnectionsRequest {
   /** Request body */
   body?: EkmConnection;
 }
-export const CreateProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     ekmConnectionId: S.optional(S.String.pipe(T.Query())),
@@ -450,7 +448,7 @@ export interface KeyHandle {
   /** Required. Indicates the resource type that the resulting CryptoKey is meant to protect, e.g. `{SERVICE}.googleapis.com/{TYPE}`. See documentation for supported resource types. */
   resourceTypeSelector?: string;
 }
-export const KeyHandle = /*@__PURE__*/ S.suspend(() =>
+const KeyHandle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKey: S.optional(S.String),
     name: S.optional(S.String),
@@ -466,7 +464,7 @@ export interface CreateProjectsLocationsKeyHandlesRequest {
   /** Request body */
   body?: KeyHandle;
 }
-export const CreateProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     keyHandleId: S.optional(S.String.pipe(T.Query())),
@@ -483,15 +481,10 @@ export const CreateProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProjectsLocationsKeyHandlesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -502,7 +495,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -523,7 +516,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     metadata: S.optional(DocumentMap),
@@ -540,7 +533,7 @@ export interface KeyRing {
   /** Output only. The resource name for the KeyRing in the format `projects/*\/locations/*\/keyRings/*`. */
   name?: string;
 }
-export const KeyRing = /*@__PURE__*/ S.suspend(() =>
+const KeyRing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -555,7 +548,7 @@ export interface CreateProjectsLocationsKeyRingsRequest {
   /** Request body */
   body?: KeyRing;
 }
-export const CreateProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     keyRingId: S.optional(S.String.pipe(T.Query())),
@@ -584,12 +577,12 @@ export type KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum =
   | "MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION"
   | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
   | "CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING";
-export const KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum = S.String;
+const KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum = S.String;
 
 export type KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList = Array<
   KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum | (string & {})
 >;
-export const KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList = /*@__PURE__*/ S.Array(
+const KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList = /*@__PURE__*/ S.Array(
   KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum,
 ) as any as S.Schema<KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList>;
 
@@ -598,7 +591,7 @@ export interface KeyAccessJustificationsPolicy {
   /** The list of allowed reasons for access to a CryptoKey. Note that empty allowed_access_reasons has a different meaning depending on where this message appears. If this is under KeyAccessJustificationsPolicyConfig, it means allow-all. If this is under CryptoKey, it means deny-all. */
   allowedAccessReasons?: KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList;
 }
-export const KeyAccessJustificationsPolicy = /*@__PURE__*/ S.suspend(() =>
+const KeyAccessJustificationsPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedAccessReasons: S.optional(KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList),
   }),
@@ -615,7 +608,7 @@ export type CryptoKeyPurposeEnum =
   | "MAC"
   | "KEY_ENCAPSULATION"
   | "AES_WRAPPING";
-export const CryptoKeyPurposeEnum = S.String;
+const CryptoKeyPurposeEnum = S.String;
 
 export type CryptoKeyVersionTemplateProtectionLevelEnum =
   | "PROTECTION_LEVEL_UNSPECIFIED"
@@ -624,7 +617,7 @@ export type CryptoKeyVersionTemplateProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const CryptoKeyVersionTemplateProtectionLevelEnum = S.String;
+const CryptoKeyVersionTemplateProtectionLevelEnum = S.String;
 
 export type CryptoKeyVersionTemplateAlgorithmEnum =
   | "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
@@ -677,7 +670,7 @@ export type CryptoKeyVersionTemplateAlgorithmEnum =
   | "KEM_ECDH_P256"
   | "KEM_ECDH_P384"
   | "AES_256_KWP";
-export const CryptoKeyVersionTemplateAlgorithmEnum = S.String;
+const CryptoKeyVersionTemplateAlgorithmEnum = S.String;
 
 /** A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation. */
 export interface CryptoKeyVersionTemplate {
@@ -686,7 +679,7 @@ export interface CryptoKeyVersionTemplate {
   /** Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT. */
   algorithm?: CryptoKeyVersionTemplateAlgorithmEnum | (string & {});
 }
-export const CryptoKeyVersionTemplate = /*@__PURE__*/ S.suspend(() =>
+const CryptoKeyVersionTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protectionLevel: S.optional(CryptoKeyVersionTemplateProtectionLevelEnum),
     algorithm: S.optional(CryptoKeyVersionTemplateAlgorithmEnum),
@@ -700,7 +693,7 @@ export type CryptoKeyVersionProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const CryptoKeyVersionProtectionLevelEnum = S.String;
+const CryptoKeyVersionProtectionLevelEnum = S.String;
 
 export type CryptoKeyVersionAlgorithmEnum =
   | "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
@@ -753,7 +746,7 @@ export type CryptoKeyVersionAlgorithmEnum =
   | "KEM_ECDH_P256"
   | "KEM_ECDH_P384"
   | "AES_256_KWP";
-export const CryptoKeyVersionAlgorithmEnum = S.String;
+const CryptoKeyVersionAlgorithmEnum = S.String;
 
 /** ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels. */
 export interface ExternalProtectionLevelOptions {
@@ -764,7 +757,7 @@ export interface ExternalProtectionLevelOptions {
   /** Optional. The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection. */
   ekmConnectionKeyPath?: string;
 }
-export const ExternalProtectionLevelOptions = /*@__PURE__*/ S.suspend(() =>
+const ExternalProtectionLevelOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalKeyUri: S.optional(S.String),
     ekmConnectionBackendOverride: S.optional(S.String),
@@ -786,14 +779,14 @@ export type CryptoKeyVersionStateEnum =
   | "GENERATION_FAILED"
   | "PENDING_EXTERNAL_DESTRUCTION"
   | "EXTERNAL_DESTRUCTION_FAILED";
-export const CryptoKeyVersionStateEnum = S.String;
+const CryptoKeyVersionStateEnum = S.String;
 
 export type KeyOperationAttestationFormatEnum =
   | "ATTESTATION_FORMAT_UNSPECIFIED"
   | "CAVIUM_V1_COMPRESSED"
   | "CAVIUM_V2_COMPRESSED"
   | "CAVIUM_V209";
-export const KeyOperationAttestationFormatEnum = S.String;
+const KeyOperationAttestationFormatEnum = S.String;
 
 /** Certificate chains needed to verify the attestation. Certificates in chains are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#section-7.4.2. */
 export interface CertificateChains {
@@ -804,7 +797,7 @@ export interface CertificateChains {
   /** Cavium certificate chain corresponding to the attestation. */
   caviumCerts?: StringList;
 }
-export const CertificateChains = /*@__PURE__*/ S.suspend(() =>
+const CertificateChains = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleCardCerts: S.optional(StringList),
     googlePartitionCerts: S.optional(StringList),
@@ -821,7 +814,7 @@ export interface KeyOperationAttestation {
   /** Output only. The certificate chains needed to validate the attestation */
   certChains?: CertificateChains;
 }
-export const KeyOperationAttestation = /*@__PURE__*/ S.suspend(() =>
+const KeyOperationAttestation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(KeyOperationAttestationFormatEnum),
     content: S.optional(S.String),
@@ -868,7 +861,7 @@ export interface CryptoKeyVersion {
   /** Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM. */
   attestation?: KeyOperationAttestation;
 }
-export const CryptoKeyVersion = /*@__PURE__*/ S.suspend(() =>
+const CryptoKeyVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protectionLevel: S.optional(CryptoKeyVersionProtectionLevelEnum),
     reimportEligible: S.optional(S.Boolean),
@@ -892,7 +885,7 @@ export const CryptoKeyVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CryptoKeyVersion" }) as any as S.Schema<CryptoKeyVersion>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A CryptoKey represents a logical key that can be used for cryptographic operations. A CryptoKey is made up of zero or more versions, which represent the actual key material used in cryptographic operations. */
 export interface CryptoKey {
@@ -921,7 +914,7 @@ export interface CryptoKey {
   /** Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys). */
   labels?: StringMap;
 }
-export const CryptoKey = /*@__PURE__*/ S.suspend(() =>
+const CryptoKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyAccessJustificationsPolicy: S.optional(KeyAccessJustificationsPolicy),
     purpose: S.optional(CryptoKeyPurposeEnum),
@@ -950,7 +943,7 @@ export interface CreateProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Request body */
   body?: CryptoKey;
 }
-export const CreateProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptoKeyId: S.optional(S.String.pipe(T.Query())),
     skipInitialVersionCreation: S.optional(S.Boolean.pipe(T.Query())),
@@ -974,8 +967,8 @@ export interface CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReque
   /** Request body */
   body?: CryptoKeyVersion;
 }
-export const CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(CryptoKeyVersion.pipe(T.HttpBody())),
@@ -986,9 +979,9 @@ export const CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type ImportJobImportMethodEnum =
   | "IMPORT_METHOD_UNSPECIFIED"
@@ -1001,14 +994,14 @@ export type ImportJobImportMethodEnum =
   | "HPKE_KEM_ML_KEM_768_HKDF_SHA256_AES_256_GCM"
   | "HPKE_KEM_ML_KEM_1024_HKDF_SHA256_AES_256_GCM"
   | "HPKE_KEM_XWING_HKDF_SHA256_AES_256_GCM";
-export const ImportJobImportMethodEnum = S.String;
+const ImportJobImportMethodEnum = S.String;
 
 export type ImportJobStateEnum =
   | "IMPORT_JOB_STATE_UNSPECIFIED"
   | "PENDING_GENERATION"
   | "ACTIVE"
   | "EXPIRED";
-export const ImportJobStateEnum = S.String;
+const ImportJobStateEnum = S.String;
 
 /** The public key component of the wrapping key. For details of the type of key this public key corresponds to, see the ImportMethod. */
 export interface WrappingPublicKey {
@@ -1017,7 +1010,7 @@ export interface WrappingPublicKey {
   /** Output only. Contains the public key, formatted according to the PublicKey.PublicKeyFormat specified in the KeyManagementService.GetImportJob request. */
   data?: string;
 }
-export const WrappingPublicKey = /*@__PURE__*/ S.suspend(() =>
+const WrappingPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pem: S.optional(S.String),
     data: S.optional(S.String),
@@ -1031,7 +1024,7 @@ export type ImportJobProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const ImportJobProtectionLevelEnum = S.String;
+const ImportJobProtectionLevelEnum = S.String;
 
 export type ImportJobPublicKeyFormatEnum =
   | "PUBLIC_KEY_FORMAT_UNSPECIFIED"
@@ -1039,7 +1032,7 @@ export type ImportJobPublicKeyFormatEnum =
   | "DER"
   | "NIST_PQC"
   | "XWING_RAW_BYTES";
-export const ImportJobPublicKeyFormatEnum = S.String;
+const ImportJobPublicKeyFormatEnum = S.String;
 
 /** An ImportJob can be used to create CryptoKeys and CryptoKeyVersions using pre-existing key material, generated outside of Cloud KMS. When an ImportJob is created, Cloud KMS will generate a "wrapping key", which is a public/private key pair. You use the wrapping key to encrypt (also known as wrap) the pre-existing key material to protect it during the import process. The nature of the wrapping key depends on the choice of import_method. When the wrapping key generation is complete, the state will be set to ACTIVE and the public_key can be fetched. The fetched public key can then be used to wrap your pre-existing key material. Once the key material is wrapped, it can be imported into a new CryptoKeyVersion in an existing CryptoKey by calling ImportCryptoKeyVersion. Multiple CryptoKeyVersions can be imported with a single ImportJob. Cloud KMS uses the private key portion of the wrapping key to unwrap the key material. Only Cloud KMS has access to the private key. An ImportJob expires 3 days after it is created. Once expired, Cloud KMS will no longer be able to import or unwrap any key material that was wrapped with the ImportJob's public key. For more information, see [Importing a key](https://cloud.google.com/kms/docs/importing-a-key). */
 export interface ImportJob {
@@ -1068,7 +1061,7 @@ export interface ImportJob {
   /** Output only. The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material. */
   expireTime?: string;
 }
-export const ImportJob = /*@__PURE__*/ S.suspend(() =>
+const ImportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     importMethod: S.optional(ImportJobImportMethodEnum),
     state: S.optional(ImportJobStateEnum),
@@ -1093,7 +1086,7 @@ export interface CreateProjectsLocationsKeyRingsImportJobsRequest {
   /** Request body */
   body?: ImportJob;
 }
-export const CreateProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     importJobId: S.optional(S.String.pipe(T.Query())),
@@ -1118,7 +1111,7 @@ export interface QuorumAuth {
   /** Output only. The required numbers of approvers. The M value used for M of N quorum auth. Must be greater than or equal to 2 and less than or equal to total_approver_count - 1. */
   requiredApproverCount?: number;
 }
-export const QuorumAuth = /*@__PURE__*/ S.suspend(() =>
+const QuorumAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     twoFactorPublicKeyPems: S.optional(StringList),
     totalApproverCount: S.optional(S.Number),
@@ -1136,7 +1129,7 @@ export type SingleTenantHsmInstanceStateEnum =
   | "DELETING"
   | "DELETED"
   | "FAILED";
-export const SingleTenantHsmInstanceStateEnum = S.String;
+const SingleTenantHsmInstanceStateEnum = S.String;
 
 /** A SingleTenantHsmInstance represents a single-tenant HSM instance. It can be used for creating CryptoKeys with a ProtectionLevel of HSM_SINGLE_TENANT, as well as performing cryptographic operations using keys created within the SingleTenantHsmInstance. */
 export interface SingleTenantHsmInstance {
@@ -1157,7 +1150,7 @@ export interface SingleTenantHsmInstance {
   /** Optional. Immutable. Indicates whether key portability is enabled for the SingleTenantHsmInstance. This can only be set at creation time. Key portability features are disabled by default. */
   keyPortabilityEnabled?: boolean;
 }
-export const SingleTenantHsmInstance = /*@__PURE__*/ S.suspend(() =>
+const SingleTenantHsmInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quorumAuth: S.optional(QuorumAuth),
     deleteTime: S.optional(S.String),
@@ -1178,7 +1171,7 @@ export interface CreateProjectsLocationsSingleTenantHsmInstancesRequest {
   /** Request body */
   body?: SingleTenantHsmInstance;
 }
-export const CreateProjectsLocationsSingleTenantHsmInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSingleTenantHsmInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     singleTenantHsmInstanceId: S.optional(S.String.pipe(T.Query())),
@@ -1196,7 +1189,7 @@ export const CreateProjectsLocationsSingleTenantHsmInstancesRequest = /*@__PURE_
 
 /** Disable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the ACTIVE state to perform this operation. */
 export interface DisableSingleTenantHsmInstance {}
-export const DisableSingleTenantHsmInstance = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DisableSingleTenantHsmInstance = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DisableSingleTenantHsmInstance",
 }) as any as S.Schema<DisableSingleTenantHsmInstance>;
 
@@ -1209,12 +1202,10 @@ export type SingleTenantHsmInstanceProposalStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "DELETED";
-export const SingleTenantHsmInstanceProposalStateEnum = S.String;
+const SingleTenantHsmInstanceProposalStateEnum = S.String;
 
 /** Refreshes the SingleTenantHsmInstance. This operation must be performed periodically to keep the SingleTenantHsmInstance active. This operation must be performed before unrefreshed_duration_until_disable has passed. The SingleTenantHsmInstance must be in the ACTIVE state to perform this operation. */
 export type RefreshSingleTenantHsmInstance = DisableSingleTenantHsmInstance;
-export const RefreshSingleTenantHsmInstance = DisableSingleTenantHsmInstance;
-
 /** Register 2FA keys for the SingleTenantHsmInstance. This operation requires all Challenges to be signed by 2FA keys. The SingleTenantHsmInstance must be in the PENDING_TWO_FACTOR_AUTH_REGISTRATION state to perform this operation. */
 export interface RegisterTwoFactorAuthKeys {
   /** Required. The required numbers of approvers to set for the SingleTenantHsmInstance. This is the M value used for M of N quorum auth. Must be greater than or equal to 2 and less than or equal to total_approver_count - 1. */
@@ -1222,7 +1213,7 @@ export interface RegisterTwoFactorAuthKeys {
   /** Required. The public keys associated with the 2FA keys for M of N quorum auth. Public keys must be associated with RSA 2048 keys. */
   twoFactorPublicKeyPems?: StringList;
 }
-export const RegisterTwoFactorAuthKeys = /*@__PURE__*/ S.suspend(() =>
+const RegisterTwoFactorAuthKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredApproverCount: S.optional(S.Number),
     twoFactorPublicKeyPems: S.optional(StringList),
@@ -1236,7 +1227,7 @@ export interface RemoveQuorumMember {
   /** Required. The public key associated with the 2FA key for the quorum member to remove. Public keys must be associated with RSA 2048 keys. */
   twoFactorPublicKeyPem?: string;
 }
-export const RemoveQuorumMember = /*@__PURE__*/ S.suspend(() =>
+const RemoveQuorumMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     twoFactorPublicKeyPem: S.optional(S.String),
   }),
@@ -1244,8 +1235,6 @@ export const RemoveQuorumMember = /*@__PURE__*/ S.suspend(() =>
 
 /** Delete the SingleTenantHsmInstance. Deleting a SingleTenantHsmInstance will make all CryptoKeys attached to the SingleTenantHsmInstance unusable. The SingleTenantHsmInstance must not be in the DELETING or DELETED state to perform this operation. */
 export type DeleteSingleTenantHsmInstance = DisableSingleTenantHsmInstance;
-export const DeleteSingleTenantHsmInstance = DisableSingleTenantHsmInstance;
-
 /** A challenge to be signed by a 2FA key. */
 export interface Challenge {
   /** Output only. The public key associated with the 2FA key that should sign the challenge. */
@@ -1253,7 +1242,7 @@ export interface Challenge {
   /** Output only. The challenge to be signed by the 2FA key indicated by the public key. */
   challenge?: string;
 }
-export const Challenge = /*@__PURE__*/ S.suspend(() =>
+const Challenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKeyPem: S.optional(S.String),
     challenge: S.optional(S.String),
@@ -1261,7 +1250,7 @@ export const Challenge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Challenge" }) as any as S.Schema<Challenge>;
 
 export type ChallengeList = Array<Challenge>;
-export const ChallengeList = /*@__PURE__*/ S.Array(Challenge) as any as S.Schema<ChallengeList>;
+const ChallengeList = /*@__PURE__*/ S.Array(Challenge) as any as S.Schema<ChallengeList>;
 
 /** Parameters of quorum approval for the SingleTenantHsmInstanceProposal. */
 export interface QuorumParameters {
@@ -1272,7 +1261,7 @@ export interface QuorumParameters {
   /** Output only. The public keys associated with the 2FA keys that have already approved the SingleTenantHsmInstanceProposal by signing the challenge. */
   approvedTwoFactorPublicKeyPems?: StringList;
 }
-export const QuorumParameters = /*@__PURE__*/ S.suspend(() =>
+const QuorumParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challenges: S.optional(ChallengeList),
     requiredApproverCount: S.optional(S.Number),
@@ -1291,7 +1280,7 @@ export interface RequiredActionQuorumParameters {
   /** Output only. The challenges to be signed by 2FA keys for quorum auth. M of N of these challenges are required to be signed to approve the operation. */
   quorumChallenges?: ChallengeList;
 }
-export const RequiredActionQuorumParameters = /*@__PURE__*/ S.suspend(() =>
+const RequiredActionQuorumParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredApproverCount: S.optional(S.Number),
     approvedTwoFactorPublicKeyPems: S.optional(StringList),
@@ -1309,7 +1298,7 @@ export interface UpgradeKeyTrust {
   /** Required. The name of the CryptoKeyVersion to promote. */
   name?: string;
 }
-export const UpgradeKeyTrust = /*@__PURE__*/ S.suspend(() =>
+const UpgradeKeyTrust = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     twoFactorPublicKeyPem: S.optional(S.String),
     name: S.optional(S.String),
@@ -1318,14 +1307,12 @@ export const UpgradeKeyTrust = /*@__PURE__*/ S.suspend(() =>
 
 /** Enable the SingleTenantHsmInstance. The SingleTenantHsmInstance must be in the DISABLED state to perform this operation. */
 export type EnableSingleTenantHsmInstance = DisableSingleTenantHsmInstance;
-export const EnableSingleTenantHsmInstance = DisableSingleTenantHsmInstance;
-
 /** Add a quorum member to the SingleTenantHsmInstance. This will increase the total_approver_count by 1. The SingleTenantHsmInstance must be in the ACTIVE state to perform this operation. */
 export interface AddQuorumMember {
   /** Required. The public key associated with the 2FA key for the new quorum member to add. Public keys must be associated with RSA 2048 keys. */
   twoFactorPublicKeyPem?: string;
 }
-export const AddQuorumMember = RemoveQuorumMember as any as S.Schema<AddQuorumMember>;
+const AddQuorumMember = RemoveQuorumMember as any as S.Schema<AddQuorumMember>;
 
 /** A SingleTenantHsmInstanceProposal represents a proposal to perform an operation on a SingleTenantHsmInstance. */
 export interface SingleTenantHsmInstanceProposal {
@@ -1366,7 +1353,7 @@ export interface SingleTenantHsmInstanceProposal {
   /** Input only. The TTL for the SingleTenantHsmInstanceProposal. Proposals will expire after this duration. */
   ttl?: string;
 }
-export const SingleTenantHsmInstanceProposal = /*@__PURE__*/ S.suspend(() =>
+const SingleTenantHsmInstanceProposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableSingleTenantHsmInstance: S.optional(DisableSingleTenantHsmInstance),
     purgeTime: S.optional(S.String),
@@ -1399,8 +1386,8 @@ export interface CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest
   /** Request body */
   body?: SingleTenantHsmInstanceProposal;
 }
-export const CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       singleTenantHsmInstanceProposalId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -1412,9 +1399,9 @@ export const CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
+}) as any as S.Schema<CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 /** Request message for KeyManagementService.Decapsulate. */
 export interface DecapsulateRequest {
@@ -1423,7 +1410,7 @@ export interface DecapsulateRequest {
   /** Required. The ciphertext produced from encapsulation with the named CryptoKeyVersion public key(s). */
   ciphertext?: string;
 }
-export const DecapsulateRequest = /*@__PURE__*/ S.suspend(() =>
+const DecapsulateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphertextCrc32c: S.optional(S.String),
     ciphertext: S.optional(S.String),
@@ -1436,7 +1423,7 @@ export interface DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions
   /** Request body */
   body?: DecapsulateRequest;
 }
-export const DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1459,7 +1446,7 @@ export type DecapsulateResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const DecapsulateResponseProtectionLevelEnum = S.String;
+const DecapsulateResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.Decapsulate. */
 export interface DecapsulateResponse {
@@ -1474,7 +1461,7 @@ export interface DecapsulateResponse {
   /** Integrity verification field. A CRC32C checksum of the returned DecapsulateResponse.shared_secret. An integrity check of DecapsulateResponse.shared_secret can be performed by computing the CRC32C checksum of DecapsulateResponse.shared_secret and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   sharedSecretCrc32c?: string;
 }
-export const DecapsulateResponse = /*@__PURE__*/ S.suspend(() =>
+const DecapsulateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifiedCiphertextCrc32c: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -1495,7 +1482,7 @@ export interface DecryptRequest {
   /** Optional. An optional CRC32C checksum of the DecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received DecryptRequest.ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(DecryptRequest.ciphertext) is equal to DecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   ciphertextCrc32c?: string;
 }
-export const DecryptRequest = /*@__PURE__*/ S.suspend(() =>
+const DecryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ciphertext: S.optional(S.String),
     additionalAuthenticatedData: S.optional(S.String),
@@ -1510,7 +1497,7 @@ export interface DecryptProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Request body */
   body?: DecryptRequest;
 }
-export const DecryptProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const DecryptProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DecryptRequest.pipe(T.HttpBody())),
@@ -1532,7 +1519,7 @@ export type DecryptResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const DecryptResponseProtectionLevelEnum = S.String;
+const DecryptResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.Decrypt. */
 export interface DecryptResponse {
@@ -1545,7 +1532,7 @@ export interface DecryptResponse {
   /** The decrypted data originally supplied in EncryptRequest.plaintext. */
   plaintext?: string;
 }
-export const DecryptResponse = /*@__PURE__*/ S.suspend(() =>
+const DecryptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protectionLevel: S.optional(DecryptResponseProtectionLevelEnum),
     usedPrimary: S.optional(S.Boolean),
@@ -1558,7 +1545,7 @@ export interface DeleteProjectsLocationsKeyRingsRequest {
   /** Required. The name of the KeyRing to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1572,7 +1559,7 @@ export interface DeleteProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Required. The name of the CryptoKey to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1586,48 +1573,46 @@ export interface DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReque
   /** Required. The name of the CryptoKeyVersion to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://cloudkms.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export interface DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
   /** Required. The name of the SingleTenantHsmInstanceProposal to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://cloudkms.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = DisableSingleTenantHsmInstance as any as S.Schema<Empty>;
+const Empty = DisableSingleTenantHsmInstance as any as S.Schema<Empty>;
 
 /** Request message for KeyManagementService.DestroyCryptoKeyVersion. */
 export type DestroyCryptoKeyVersionRequest = DisableSingleTenantHsmInstance;
-export const DestroyCryptoKeyVersionRequest = DisableSingleTenantHsmInstance;
-
 export interface DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
   /** Required. The resource name of the CryptoKeyVersion to destroy. */
   name: string;
   /** Request body */
   body?: DisableSingleTenantHsmInstance;
 }
-export const DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(DisableSingleTenantHsmInstance.pipe(T.HttpBody())),
@@ -1638,9 +1623,9 @@ export const DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+).annotate({
+  identifier: "DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 /** Request message for KeyManagementService.Encrypt. */
 export interface EncryptRequest {
@@ -1653,7 +1638,7 @@ export interface EncryptRequest {
   /** Optional. Optional data that, if specified, must also be provided during decryption through DecryptRequest.additional_authenticated_data. The maximum size depends on the key version's protection_level. For SOFTWARE, EXTERNAL, and EXTERNAL_VPC keys the AAD must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB. */
   additionalAuthenticatedData?: string;
 }
-export const EncryptRequest = /*@__PURE__*/ S.suspend(() =>
+const EncryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plaintextCrc32c: S.optional(S.String),
     additionalAuthenticatedDataCrc32c: S.optional(S.String),
@@ -1668,7 +1653,7 @@ export interface EncryptProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Request body */
   body?: EncryptRequest;
 }
-export const EncryptProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const EncryptProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(EncryptRequest.pipe(T.HttpBody())),
@@ -1690,7 +1675,7 @@ export type EncryptResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const EncryptResponseProtectionLevelEnum = S.String;
+const EncryptResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.Encrypt. */
 export interface EncryptResponse {
@@ -1707,7 +1692,7 @@ export interface EncryptResponse {
   /** The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the intended resource was used for encryption. */
   name?: string;
 }
-export const EncryptResponse = /*@__PURE__*/ S.suspend(() =>
+const EncryptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifiedPlaintextCrc32c: S.optional(S.Boolean),
     ciphertext: S.optional(S.String),
@@ -1720,16 +1705,14 @@ export const EncryptResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for HsmManagement.ExecuteSingleTenantHsmInstanceProposal. */
 export type ExecuteSingleTenantHsmInstanceProposalRequest = DisableSingleTenantHsmInstance;
-export const ExecuteSingleTenantHsmInstanceProposalRequest = DisableSingleTenantHsmInstance;
-
 export interface ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
   /** Required. The name of the SingleTenantHsmInstanceProposal to execute. */
   name: string;
   /** Request body */
   body?: DisableSingleTenantHsmInstance;
 }
-export const ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(DisableSingleTenantHsmInstance.pipe(T.HttpBody())),
@@ -1740,9 +1723,9 @@ export const ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
-  }) as any as S.Schema<ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+).annotate({
+  identifier: "ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
+}) as any as S.Schema<ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export interface ExportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
   /** Required. The name of the CryptoKeyVersion to export. The CryptoKeyVersion must have trusted_wrapping_enabled set to true. */
@@ -1750,7 +1733,7 @@ export interface ExportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRing
   /** Required. The name of the CryptoKeyVersion to use as a wrapping key. The CryptoKeyVersion must have hsm_trusted set to true. */
   wrappingKey?: string;
 }
-export const ExportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const ExportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1774,7 +1757,7 @@ export interface ExportTrustedKeyWrappedCryptoKeyVersionResponse {
   /** Integrity verification field. A CRC32C checksum of the returned ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key. An integrity check of ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key can be performed by computing the CRC32C checksum of ExportTrustedKeyWrappedCryptoKeyVersionResponse.wrapped_key and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   wrappedKeyCrc32c?: string;
 }
-export const ExportTrustedKeyWrappedCryptoKeyVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const ExportTrustedKeyWrappedCryptoKeyVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wrappedKey: S.optional(S.String),
     wrappedKeyCrc32c: S.optional(S.String),
@@ -1790,7 +1773,7 @@ export type GenerateRandomBytesRequestProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const GenerateRandomBytesRequestProtectionLevelEnum = S.String;
+const GenerateRandomBytesRequestProtectionLevelEnum = S.String;
 
 /** Request message for KeyManagementService.GenerateRandomBytes. */
 export interface GenerateRandomBytesRequest {
@@ -1799,7 +1782,7 @@ export interface GenerateRandomBytesRequest {
   /** The length in bytes of the amount of randomness to retrieve. Minimum 8 bytes, maximum 1024 bytes. */
   lengthBytes?: number;
 }
-export const GenerateRandomBytesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateRandomBytesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protectionLevel: S.optional(GenerateRandomBytesRequestProtectionLevelEnum),
     lengthBytes: S.optional(S.Number),
@@ -1814,7 +1797,7 @@ export interface GenerateRandomBytesProjectsLocationsRequest {
   /** Request body */
   body?: GenerateRandomBytesRequest;
 }
-export const GenerateRandomBytesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateRandomBytesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(GenerateRandomBytesRequest.pipe(T.HttpBody())),
@@ -1836,7 +1819,7 @@ export interface GenerateRandomBytesResponse {
   /** Integrity verification field. A CRC32C checksum of the returned GenerateRandomBytesResponse.data. An integrity check of GenerateRandomBytesResponse.data can be performed by computing the CRC32C checksum of GenerateRandomBytesResponse.data and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   dataCrc32c?: string;
 }
-export const GenerateRandomBytesResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateRandomBytesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     dataCrc32c: S.optional(S.String),
@@ -1849,7 +1832,7 @@ export interface GetAutokeyConfigFoldersRequest {
   /** Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`, `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`. */
   name: string;
 }
-export const GetAutokeyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutokeyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1865,14 +1848,14 @@ export type AutokeyConfigStateEnum =
   | "KEY_PROJECT_DELETED"
   | "UNINITIALIZED"
   | "KEY_PROJECT_PERMISSION_DENIED";
-export const AutokeyConfigStateEnum = S.String;
+const AutokeyConfigStateEnum = S.String;
 
 export type AutokeyConfigKeyProjectResolutionModeEnum =
   | "KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED"
   | "DEDICATED_KEY_PROJECT"
   | "RESOURCE_PROJECT"
   | "DISABLED";
-export const AutokeyConfigKeyProjectResolutionModeEnum = S.String;
+const AutokeyConfigKeyProjectResolutionModeEnum = S.String;
 
 /** Cloud KMS Autokey configuration for a project or folder. */
 export interface AutokeyConfig {
@@ -1887,7 +1870,7 @@ export interface AutokeyConfig {
   /** Optional. A checksum computed by the server based on the value of other fields. This may be sent on update requests to ensure that the client has an up-to-date value before proceeding. The request will be rejected with an ABORTED error on a mismatched etag. */
   etag?: string;
 }
-export const AutokeyConfig = /*@__PURE__*/ S.suspend(() =>
+const AutokeyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyProject: S.optional(S.String),
     state: S.optional(AutokeyConfigStateEnum),
@@ -1901,7 +1884,7 @@ export interface GetAutokeyConfigProjectsRequest {
   /** Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`, `projects/{PROJECT_NUMBER}/autokeyConfig`, or `projects/{PROJECT_ID}/autokeyConfig`. */
   name: string;
 }
-export const GetAutokeyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutokeyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1915,7 +1898,7 @@ export interface GetEffectiveAutokeyConfigFoldersRequest {
   /** Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for. This may be helpful for evaluating the effect of nested folder configurations on a given resource project. Format: * projects/{project} * folders/{folder} */
   parent: string;
 }
-export const GetEffectiveAutokeyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectiveAutokeyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -1934,7 +1917,7 @@ export interface Source {
   /** Contains the resource name of the AutokeyConfig that is effective, for example, `folders/{FOLDER_NUMBER}` or `projects/{PROJECT_NUMBER}` or `organizations/{ORGANIZATION_NUMBER}`. */
   name?: string;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -1945,7 +1928,7 @@ export type ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum =
   | "DEDICATED_KEY_PROJECT"
   | "RESOURCE_PROJECT"
   | "DISABLED";
-export const ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum = S.String;
+const ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum = S.String;
 
 /** Response message for ShowEffectiveAutokeyConfig */
 export interface ShowEffectiveAutokeyConfigResponse {
@@ -1956,7 +1939,7 @@ export interface ShowEffectiveAutokeyConfigResponse {
   /** Name of the key project configured in the ancestry of the project or folder. */
   keyProject?: string;
 }
-export const ShowEffectiveAutokeyConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const ShowEffectiveAutokeyConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     keyProjectResolutionMode: S.optional(
@@ -1972,7 +1955,7 @@ export interface GetEffectiveAutokeyConfigProjectsRequest {
   /** Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for. This may be helpful for evaluating the effect of nested folder configurations on a given resource project. Format: * projects/{project} * folders/{folder} */
   parent: string;
 }
-export const GetEffectiveAutokeyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEffectiveAutokeyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -1990,8 +1973,8 @@ export interface GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequ
   /** Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for. */
   project: string;
 }
-export const GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       project: S.String.pipe(T.Label()),
     }).pipe(
@@ -2001,9 +1984,9 @@ export const GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest 
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest",
-  }) as any as S.Schema<GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest>;
+).annotate({
+  identifier: "GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest",
+}) as any as S.Schema<GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest>;
 
 /** Represents the configuration of a protection level for a project's Key Access Justifications enrollment. */
 export interface KeyAccessJustificationsEnrollmentConfig {
@@ -2012,7 +1995,7 @@ export interface KeyAccessJustificationsEnrollmentConfig {
   /** Indicates whether the project has KAJ logging enabled. */
   auditLogging?: boolean;
 }
-export const KeyAccessJustificationsEnrollmentConfig = /*@__PURE__*/ S.suspend(() =>
+const KeyAccessJustificationsEnrollmentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyEnforcement: S.optional(S.Boolean),
     auditLogging: S.optional(S.Boolean),
@@ -2030,13 +2013,12 @@ export interface ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
   /** Contains the effective KeyAccessJustificationsEnrollmentConfig for software keys. */
   softwareConfig?: KeyAccessJustificationsEnrollmentConfig;
 }
-export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      externalConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
-      hardwareConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
-      softwareConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
-    }),
+const ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    externalConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
+    hardwareConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
+    softwareConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
+  }),
 ).annotate({
   identifier: "ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse",
 }) as any as S.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse>;
@@ -2045,20 +2027,19 @@ export interface GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest 
   /** Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}" */
   project: string;
 }
-export const GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+project}:showEffectiveKeyAccessJustificationsPolicyConfig",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest",
-  }) as any as S.Schema<GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest>;
+const GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+project}:showEffectiveKeyAccessJustificationsPolicyConfig",
+      baseUrl: "https://cloudkms.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest",
+}) as any as S.Schema<GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest>;
 
 /** Represents a singleton configuration for Key Access Justifications policies. */
 export interface KeyAccessJustificationsPolicyConfig {
@@ -2069,7 +2050,7 @@ export interface KeyAccessJustificationsPolicyConfig {
   /** Optional. Specifies the default key access justifications (KAJ) policy used when a CryptoKey is created in this folder. This is only used when a Key Access Justifications policy is not provided in the CreateCryptoKeyRequest. This overrides any default policies in its ancestry. If this field is unset, or is set but contains an empty allowed_access_reasons list, no default Key Access Justifications (KAJ) policy configuration is active. In this scenario, all newly created keys will default to an "allow-all" policy. */
   defaultKeyAccessJustificationPolicy?: KeyAccessJustificationsPolicy;
 }
-export const KeyAccessJustificationsPolicyConfig = /*@__PURE__*/ S.suspend(() =>
+const KeyAccessJustificationsPolicyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultPolicyAvailable: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -2084,11 +2065,10 @@ export interface ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
   /** Contains the effective KeyAccessJustificationsPolicyConfig. */
   effectiveKajPolicy?: KeyAccessJustificationsPolicyConfig;
 }
-export const ShowEffectiveKeyAccessJustificationsPolicyConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      effectiveKajPolicy: S.optional(KeyAccessJustificationsPolicyConfig),
-    }),
+const ShowEffectiveKeyAccessJustificationsPolicyConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    effectiveKajPolicy: S.optional(KeyAccessJustificationsPolicyConfig),
+  }),
 ).annotate({
   identifier: "ShowEffectiveKeyAccessJustificationsPolicyConfigResponse",
 }) as any as S.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse>;
@@ -2097,7 +2077,7 @@ export interface GetEkmConfigProjectsLocationsRequest {
   /** Required. The name of the EkmConfig to get. */
   name: string;
 }
-export const GetEkmConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEkmConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2114,7 +2094,7 @@ export interface EkmConfig {
   /** Optional. Resource name of the default EkmConnection. Setting this field to the empty string removes the default. */
   defaultEkmConnection?: string;
 }
-export const EkmConfig = /*@__PURE__*/ S.suspend(() =>
+const EkmConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     defaultEkmConnection: S.optional(S.String),
@@ -2127,7 +2107,7 @@ export interface GetIamPolicyProjectsLocationsEkmConfigRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsEkmConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsEkmConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -2147,7 +2127,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -2156,7 +2136,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -2164,7 +2144,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -2175,7 +2155,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -2183,9 +2163,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -2198,7 +2176,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     description: S.optional(S.String),
@@ -2216,7 +2194,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     condition: S.optional(Expr),
@@ -2225,7 +2203,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2238,7 +2216,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditConfigs: S.optional(AuditConfigList),
     etag: S.optional(S.String),
@@ -2253,7 +2231,7 @@ export interface GetIamPolicyProjectsLocationsEkmConnectionsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -2274,7 +2252,7 @@ export interface GetIamPolicyProjectsLocationsKeyRingsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -2295,7 +2273,7 @@ export interface GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -2316,7 +2294,7 @@ export interface GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -2335,7 +2313,7 @@ export interface GetKajPolicyConfigFoldersRequest {
   /** Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get. */
   name: string;
 }
-export const GetKajPolicyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKajPolicyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2349,7 +2327,7 @@ export interface GetKajPolicyConfigOrganizationsRequest {
   /** Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get. */
   name: string;
 }
-export const GetKajPolicyConfigOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKajPolicyConfigOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2363,7 +2341,7 @@ export interface GetKajPolicyConfigProjectsRequest {
   /** Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get. */
   name: string;
 }
-export const GetKajPolicyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKajPolicyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2377,7 +2355,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2400,7 +2378,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     locationId: S.optional(S.String),
@@ -2414,7 +2392,7 @@ export interface GetProjectsLocationsEkmConnectionsRequest {
   /** Required. The name of the EkmConnection to get. */
   name: string;
 }
-export const GetProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2428,7 +2406,7 @@ export interface GetProjectsLocationsKeyHandlesRequest {
   /** Required. Name of the KeyHandle resource, e.g. `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`. */
   name: string;
 }
-export const GetProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2442,7 +2420,7 @@ export interface GetProjectsLocationsKeyRingsRequest {
   /** Required. The name of the KeyRing to get. */
   name: string;
 }
-export const GetProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2456,7 +2434,7 @@ export interface GetProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Required. The name of the CryptoKey to get. */
   name: string;
 }
-export const GetProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2470,16 +2448,15 @@ export interface GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
   /** Required. The name of the CryptoKeyVersion to get. */
   name: string;
 }
-export const GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://cloudkms.googleapis.com/" }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+const GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://cloudkms.googleapis.com/" }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type GetProjectsLocationsKeyRingsImportJobsPublicKeyFormatEnum =
   | "PUBLIC_KEY_FORMAT_UNSPECIFIED"
@@ -2487,7 +2464,7 @@ export type GetProjectsLocationsKeyRingsImportJobsPublicKeyFormatEnum =
   | "DER"
   | "NIST_PQC"
   | "XWING_RAW_BYTES";
-export const GetProjectsLocationsKeyRingsImportJobsPublicKeyFormatEnum = S.String;
+const GetProjectsLocationsKeyRingsImportJobsPublicKeyFormatEnum = S.String;
 
 export interface GetProjectsLocationsKeyRingsImportJobsRequest {
   /** Required. The name of the ImportJob to get. */
@@ -2495,7 +2472,7 @@ export interface GetProjectsLocationsKeyRingsImportJobsRequest {
   /** Optional. Specifies the WrappingPublicKey format. If not specified: * For RSA-based import methods, the wrapping key will be returned in PEM format * For pure ML-KEM-based import methods, the wrapping key will be returned in the raw bytes format specified in FIPS-203 * For X-Wing-based import methods, the wrapping key will be returned in the raw bytes format specified in https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem. */
   publicKeyFormat?: GetProjectsLocationsKeyRingsImportJobsPublicKeyFormatEnum | (string & {});
 }
-export const GetProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     publicKeyFormat: S.optional(
@@ -2512,7 +2489,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2526,7 +2503,7 @@ export interface GetProjectsLocationsRetiredResourcesRequest {
   /** Required. The name of the RetiredResource to get. */
   name: string;
 }
-export const GetProjectsLocationsRetiredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRetiredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2547,7 +2524,7 @@ export interface RetiredResource {
   /** Output only. Identifier. The resource name for this RetiredResource in the format `projects/*\/locations/*\/retiredResources/*`. */
   name?: string;
 }
-export const RetiredResource = /*@__PURE__*/ S.suspend(() =>
+const RetiredResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteTime: S.optional(S.String),
     originalResource: S.optional(S.String),
@@ -2560,7 +2537,7 @@ export interface GetProjectsLocationsSingleTenantHsmInstancesRequest {
   /** Required. The name of the SingleTenantHsmInstance to get. */
   name: string;
 }
-export const GetProjectsLocationsSingleTenantHsmInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSingleTenantHsmInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2574,13 +2551,12 @@ export interface GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
   /** Required. The name of the SingleTenantHsmInstanceProposal to get. */
   name: string;
 }
-export const GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://cloudkms.googleapis.com/" }),
-    ),
+const GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://cloudkms.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
 }) as any as S.Schema<GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
@@ -2591,7 +2567,7 @@ export type GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsPubl
   | "DER"
   | "NIST_PQC"
   | "XWING_RAW_BYTES";
-export const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsPublicKeyFormatEnum =
+const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsPublicKeyFormatEnum =
   S.String;
 
 export interface GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -2602,7 +2578,7 @@ export interface GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersion
     | GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsPublicKeyFormatEnum
     | (string & {});
 }
-export const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2628,7 +2604,7 @@ export type PublicKeyPublicKeyFormatEnum =
   | "DER"
   | "NIST_PQC"
   | "XWING_RAW_BYTES";
-export const PublicKeyPublicKeyFormatEnum = S.String;
+const PublicKeyPublicKeyFormatEnum = S.String;
 
 export type PublicKeyAlgorithmEnum =
   | "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
@@ -2681,7 +2657,7 @@ export type PublicKeyAlgorithmEnum =
   | "KEM_ECDH_P256"
   | "KEM_ECDH_P384"
   | "AES_256_KWP";
-export const PublicKeyAlgorithmEnum = S.String;
+const PublicKeyAlgorithmEnum = S.String;
 
 export type PublicKeyProtectionLevelEnum =
   | "PROTECTION_LEVEL_UNSPECIFIED"
@@ -2690,7 +2666,7 @@ export type PublicKeyProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const PublicKeyProtectionLevelEnum = S.String;
+const PublicKeyProtectionLevelEnum = S.String;
 
 /** Data with integrity verification field. */
 export interface ChecksummedData {
@@ -2699,7 +2675,7 @@ export interface ChecksummedData {
   /** Raw Data. */
   data?: string;
 }
-export const ChecksummedData = /*@__PURE__*/ S.suspend(() =>
+const ChecksummedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crc32cChecksum: S.optional(S.String),
     data: S.optional(S.String),
@@ -2723,7 +2699,7 @@ export interface PublicKey {
   /** The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13). */
   pem?: string;
 }
-export const PublicKey = /*@__PURE__*/ S.suspend(() =>
+const PublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKeyFormat: S.optional(PublicKeyPublicKeyFormatEnum),
     name: S.optional(S.String),
@@ -2786,7 +2762,7 @@ export type ImportCryptoKeyVersionRequestAlgorithmEnum =
   | "KEM_ECDH_P256"
   | "KEM_ECDH_P384"
   | "AES_256_KWP";
-export const ImportCryptoKeyVersionRequestAlgorithmEnum = S.String;
+const ImportCryptoKeyVersionRequestAlgorithmEnum = S.String;
 
 /** Request message for KeyManagementService.ImportCryptoKeyVersion. */
 export interface ImportCryptoKeyVersionRequest {
@@ -2803,7 +2779,7 @@ export interface ImportCryptoKeyVersionRequest {
   /** Required. The algorithm of the key being imported. This does not need to match the version_template of the CryptoKey this version imports into. */
   algorithm?: ImportCryptoKeyVersionRequestAlgorithmEnum | (string & {});
 }
-export const ImportCryptoKeyVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportCryptoKeyVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rsaAesWrappedKey: S.optional(S.String),
     importJob: S.optional(S.String),
@@ -2822,8 +2798,8 @@ export interface ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReque
   /** Request body */
   body?: ImportCryptoKeyVersionRequest;
 }
-export const ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(ImportCryptoKeyVersionRequest.pipe(T.HttpBody())),
@@ -2834,9 +2810,9 @@ export const ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+).annotate({
+  identifier: "ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type ImportTrustedKeyWrappedCryptoKeyVersionRequestAlgorithmEnum =
   | "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
@@ -2889,7 +2865,7 @@ export type ImportTrustedKeyWrappedCryptoKeyVersionRequestAlgorithmEnum =
   | "KEM_ECDH_P256"
   | "KEM_ECDH_P384"
   | "AES_256_KWP";
-export const ImportTrustedKeyWrappedCryptoKeyVersionRequestAlgorithmEnum = S.String;
+const ImportTrustedKeyWrappedCryptoKeyVersionRequestAlgorithmEnum = S.String;
 
 /** Request message for KeyManagementService.ImportTrustedKeyWrappedCryptoKeyVersion. */
 export interface ImportTrustedKeyWrappedCryptoKeyVersionRequest {
@@ -2902,7 +2878,7 @@ export interface ImportTrustedKeyWrappedCryptoKeyVersionRequest {
   /** Required. The target key pre-wrapped on premises. */
   wrappedKey?: string;
 }
-export const ImportTrustedKeyWrappedCryptoKeyVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportTrustedKeyWrappedCryptoKeyVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptoKeyVersion: S.optional(S.String),
     algorithm: S.optional(ImportTrustedKeyWrappedCryptoKeyVersionRequestAlgorithmEnum),
@@ -2919,7 +2895,7 @@ export interface ImportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRing
   /** Request body */
   body?: ImportTrustedKeyWrappedCryptoKeyVersionRequest;
 }
-export const ImportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const ImportTrustedKeyWrappedCryptoKeyVersionProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2948,7 +2924,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -2967,7 +2943,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2976,7 +2952,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -2995,7 +2971,7 @@ export interface ListProjectsLocationsEkmConnectionsRequest {
   /** Optional. Optional limit on the number of EkmConnections to include in the response. Further EkmConnections can subsequently be obtained by including the ListEkmConnectionsResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -3014,7 +2990,7 @@ export const ListProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsEkmConnectionsRequest>;
 
 export type EkmConnectionList = Array<EkmConnection>;
-export const EkmConnectionList = /*@__PURE__*/ S.Array(
+const EkmConnectionList = /*@__PURE__*/ S.Array(
   EkmConnection,
 ) as any as S.Schema<EkmConnectionList>;
 
@@ -3027,7 +3003,7 @@ export interface ListEkmConnectionsResponse {
   /** A token to retrieve next page of results. Pass this value in ListEkmConnectionsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListEkmConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEkmConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.Number),
     ekmConnections: S.optional(EkmConnectionList),
@@ -3047,7 +3023,7 @@ export interface ListProjectsLocationsKeyHandlesRequest {
   /** Optional. Optional pagination token, returned earlier via ListKeyHandlesResponse.next_page_token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3065,7 +3041,7 @@ export const ListProjectsLocationsKeyHandlesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsKeyHandlesRequest>;
 
 export type KeyHandleList = Array<KeyHandle>;
-export const KeyHandleList = /*@__PURE__*/ S.Array(KeyHandle) as any as S.Schema<KeyHandleList>;
+const KeyHandleList = /*@__PURE__*/ S.Array(KeyHandle) as any as S.Schema<KeyHandleList>;
 
 /** Response message for Autokey.ListKeyHandles. */
 export interface ListKeyHandlesResponse {
@@ -3074,7 +3050,7 @@ export interface ListKeyHandlesResponse {
   /** A token to retrieve next page of results. Pass this value in ListKeyHandlesRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListKeyHandlesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListKeyHandlesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyHandles: S.optional(KeyHandleList),
     nextPageToken: S.optional(S.String),
@@ -3093,7 +3069,7 @@ export interface ListProjectsLocationsKeyRingsRequest {
   /** Optional. Optional limit on the number of KeyRings to include in the response. Further KeyRings can subsequently be obtained by including the ListKeyRingsResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3112,7 +3088,7 @@ export const ListProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsKeyRingsRequest>;
 
 export type KeyRingList = Array<KeyRing>;
-export const KeyRingList = /*@__PURE__*/ S.Array(KeyRing) as any as S.Schema<KeyRingList>;
+const KeyRingList = /*@__PURE__*/ S.Array(KeyRing) as any as S.Schema<KeyRingList>;
 
 /** Response message for KeyManagementService.ListKeyRings. */
 export interface ListKeyRingsResponse {
@@ -3123,7 +3099,7 @@ export interface ListKeyRingsResponse {
   /** A token to retrieve next page of results. Pass this value in ListKeyRingsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListKeyRingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListKeyRingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.Number),
     keyRings: S.optional(KeyRingList),
@@ -3134,7 +3110,7 @@ export const ListKeyRingsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsKeyRingsCryptoKeysVersionViewEnum =
   | "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED"
   | "FULL";
-export const ListProjectsLocationsKeyRingsCryptoKeysVersionViewEnum = S.String;
+const ListProjectsLocationsKeyRingsCryptoKeysVersionViewEnum = S.String;
 
 export interface ListProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Required. The resource name of the KeyRing to list, in the format `projects/*\/locations/*\/keyRings/*`. */
@@ -3150,7 +3126,7 @@ export interface ListProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Optional. Optional pagination token, returned earlier via ListCryptoKeysResponse.next_page_token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3170,7 +3146,7 @@ export const ListProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export type CryptoKeyList = Array<CryptoKey>;
-export const CryptoKeyList = /*@__PURE__*/ S.Array(CryptoKey) as any as S.Schema<CryptoKeyList>;
+const CryptoKeyList = /*@__PURE__*/ S.Array(CryptoKey) as any as S.Schema<CryptoKeyList>;
 
 /** Response message for KeyManagementService.ListCryptoKeys. */
 export interface ListCryptoKeysResponse {
@@ -3181,7 +3157,7 @@ export interface ListCryptoKeysResponse {
   /** The list of CryptoKeys. */
   cryptoKeys?: CryptoKeyList;
 }
-export const ListCryptoKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCryptoKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.Number),
     nextPageToken: S.optional(S.String),
@@ -3192,7 +3168,7 @@ export const ListCryptoKeysResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsViewEnum =
   | "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED"
   | "FULL";
-export const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsViewEnum = S.String;
+const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsViewEnum = S.String;
 
 export interface ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
   /** Optional. Optional limit on the number of CryptoKeyVersions to include in the response. Further CryptoKeyVersions can subsequently be obtained by including the ListCryptoKeyVersionsResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default. */
@@ -3208,8 +3184,8 @@ export interface ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest
   /** Optional. Specify how the results should be sorted. If not specified, the results will be sorted in the default order. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering). */
   orderBy?: string;
 }
-export const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3226,12 +3202,12 @@ export const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type CryptoKeyVersionList = Array<CryptoKeyVersion>;
-export const CryptoKeyVersionList = /*@__PURE__*/ S.Array(
+const CryptoKeyVersionList = /*@__PURE__*/ S.Array(
   CryptoKeyVersion,
 ) as any as S.Schema<CryptoKeyVersionList>;
 
@@ -3244,7 +3220,7 @@ export interface ListCryptoKeyVersionsResponse {
   /** The list of CryptoKeyVersions. */
   cryptoKeyVersions?: CryptoKeyVersionList;
 }
-export const ListCryptoKeyVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCryptoKeyVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     totalSize: S.optional(S.Number),
@@ -3266,7 +3242,7 @@ export interface ListProjectsLocationsKeyRingsImportJobsRequest {
   /** Optional. Optional limit on the number of ImportJobs to include in the response. Further ImportJobs can subsequently be obtained by including the ListImportJobsResponse.next_page_token in a subsequent request. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3285,7 +3261,7 @@ export const ListProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsKeyRingsImportJobsRequest>;
 
 export type ImportJobList = Array<ImportJob>;
-export const ImportJobList = /*@__PURE__*/ S.Array(ImportJob) as any as S.Schema<ImportJobList>;
+const ImportJobList = /*@__PURE__*/ S.Array(ImportJob) as any as S.Schema<ImportJobList>;
 
 /** Response message for KeyManagementService.ListImportJobs. */
 export interface ListImportJobsResponse {
@@ -3296,7 +3272,7 @@ export interface ListImportJobsResponse {
   /** The total number of ImportJobs that matched the query. This field is not populated if ListImportJobsRequest.filter is applied. */
   totalSize?: number;
 }
-export const ListImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     importJobs: S.optional(ImportJobList),
@@ -3312,7 +3288,7 @@ export interface ListProjectsLocationsRetiredResourcesRequest {
   /** Optional. Optional pagination token, returned earlier via ListRetiredResourcesResponse.next_page_token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRetiredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRetiredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3329,7 +3305,7 @@ export const ListProjectsLocationsRetiredResourcesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsRetiredResourcesRequest>;
 
 export type RetiredResourceList = Array<RetiredResource>;
-export const RetiredResourceList = /*@__PURE__*/ S.Array(
+const RetiredResourceList = /*@__PURE__*/ S.Array(
   RetiredResource,
 ) as any as S.Schema<RetiredResourceList>;
 
@@ -3342,7 +3318,7 @@ export interface ListRetiredResourcesResponse {
   /** The list of RetiredResources. */
   retiredResources?: RetiredResourceList;
 }
-export const ListRetiredResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRetiredResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -3366,7 +3342,7 @@ export interface ListProjectsLocationsSingleTenantHsmInstancesRequest {
   /** Optional. If set to true, HsmManagement.ListSingleTenantHsmInstances will also return SingleTenantHsmInstances in DELETED state. */
   showDeleted?: boolean;
 }
-export const ListProjectsLocationsSingleTenantHsmInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSingleTenantHsmInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3386,7 +3362,7 @@ export const ListProjectsLocationsSingleTenantHsmInstancesRequest = /*@__PURE__*
 }) as any as S.Schema<ListProjectsLocationsSingleTenantHsmInstancesRequest>;
 
 export type SingleTenantHsmInstanceList = Array<SingleTenantHsmInstance>;
-export const SingleTenantHsmInstanceList = /*@__PURE__*/ S.Array(
+const SingleTenantHsmInstanceList = /*@__PURE__*/ S.Array(
   SingleTenantHsmInstance,
 ) as any as S.Schema<SingleTenantHsmInstanceList>;
 
@@ -3399,7 +3375,7 @@ export interface ListSingleTenantHsmInstancesResponse {
   /** A token to retrieve next page of results. Pass this value in ListSingleTenantHsmInstancesRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListSingleTenantHsmInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSingleTenantHsmInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     singleTenantHsmInstances: S.optional(SingleTenantHsmInstanceList),
     totalSize: S.optional(S.Number),
@@ -3423,28 +3399,27 @@ export interface ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
   /** Optional. Only include resources that match the filter in the response. For more information, see [Sorting and filtering list results](https://cloud.google.com/kms/docs/sorting-and-filtering). */
   filter?: string;
 }
-export const ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/proposals",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
-  }) as any as S.Schema<ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
+const ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    showDeleted: S.optional(S.Boolean.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/proposals",
+      baseUrl: "https://cloudkms.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest",
+}) as any as S.Schema<ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
 export type SingleTenantHsmInstanceProposalList = Array<SingleTenantHsmInstanceProposal>;
-export const SingleTenantHsmInstanceProposalList = /*@__PURE__*/ S.Array(
+const SingleTenantHsmInstanceProposalList = /*@__PURE__*/ S.Array(
   SingleTenantHsmInstanceProposal,
 ) as any as S.Schema<SingleTenantHsmInstanceProposalList>;
 
@@ -3457,7 +3432,7 @@ export interface ListSingleTenantHsmInstanceProposalsResponse {
   /** A token to retrieve next page of results. Pass this value in ListSingleTenantHsmInstanceProposalsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListSingleTenantHsmInstanceProposalsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSingleTenantHsmInstanceProposalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     singleTenantHsmInstanceProposals: S.optional(SingleTenantHsmInstanceProposalList),
     totalSize: S.optional(S.Number),
@@ -3474,7 +3449,7 @@ export interface MacSignRequest {
   /** Required. The data to sign. The MAC tag is computed over this data field based on the specific algorithm. */
   data?: string;
 }
-export const MacSignRequest = /*@__PURE__*/ S.suspend(() =>
+const MacSignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataCrc32c: S.optional(S.String),
     data: S.optional(S.String),
@@ -3487,8 +3462,8 @@ export interface MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequ
   /** Request body */
   body?: MacSignRequest;
 }
-export const MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(MacSignRequest.pipe(T.HttpBody())),
@@ -3499,9 +3474,9 @@ export const MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+).annotate({
+  identifier: "MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 export type MacSignResponseProtectionLevelEnum =
   | "PROTECTION_LEVEL_UNSPECIFIED"
@@ -3510,7 +3485,7 @@ export type MacSignResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const MacSignResponseProtectionLevelEnum = S.String;
+const MacSignResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.MacSign. */
 export interface MacSignResponse {
@@ -3525,7 +3500,7 @@ export interface MacSignResponse {
   /** The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended resource was used for signing. */
   name?: string;
 }
-export const MacSignResponse = /*@__PURE__*/ S.suspend(() =>
+const MacSignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protectionLevel: S.optional(MacSignResponseProtectionLevelEnum),
     mac: S.optional(S.String),
@@ -3546,7 +3521,7 @@ export interface MacVerifyRequest {
   /** Optional. An optional CRC32C checksum of the MacVerifyRequest.data. If specified, KeyManagementService will verify the integrity of the received MacVerifyRequest.data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(MacVerifyRequest.data) is equal to MacVerifyRequest.data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   dataCrc32c?: string;
 }
-export const MacVerifyRequest = /*@__PURE__*/ S.suspend(() =>
+const MacVerifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     macCrc32c: S.optional(S.String),
     data: S.optional(S.String),
@@ -3561,7 +3536,7 @@ export interface MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRe
   /** Request body */
   body?: MacVerifyRequest;
 }
-export const MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3584,7 +3559,7 @@ export type MacVerifyResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const MacVerifyResponseProtectionLevelEnum = S.String;
+const MacVerifyResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.MacVerify. */
 export interface MacVerifyResponse {
@@ -3601,7 +3576,7 @@ export interface MacVerifyResponse {
   /** Integrity verification field. This value is used for the integrity verification of [MacVerifyResponse.success]. If the value of this field contradicts the value of [MacVerifyResponse.success], discard the response and perform a limited number of retries. */
   verifiedSuccessIntegrity?: boolean;
 }
-export const MacVerifyResponse = /*@__PURE__*/ S.suspend(() =>
+const MacVerifyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     verifiedMacCrc32c: S.optional(S.Boolean),
@@ -3620,7 +3595,7 @@ export interface PatchProjectsLocationsEkmConnectionsRequest {
   /** Request body */
   body?: EkmConnection;
 }
-export const PatchProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -3640,7 +3615,7 @@ export interface PatchProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Request body */
   body?: CryptoKey;
 }
-export const PatchProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -3660,8 +3635,8 @@ export interface PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReques
   /** Request body */
   body?: CryptoKeyVersion;
 }
-export const PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
@@ -3669,9 +3644,9 @@ export const PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
     }).pipe(
       T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://cloudkms.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 /** Request message for KeyManagementService.RawDecrypt. */
 export interface RawDecryptRequest {
@@ -3690,7 +3665,7 @@ export interface RawDecryptRequest {
   /** Optional. An optional CRC32C checksum of the RawDecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(ciphertext) is equal to ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   ciphertextCrc32c?: string;
 }
-export const RawDecryptRequest = /*@__PURE__*/ S.suspend(() =>
+const RawDecryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalAuthenticatedDataCrc32c: S.optional(S.String),
     initializationVector: S.optional(S.String),
@@ -3708,7 +3683,7 @@ export interface RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsR
   /** Request body */
   body?: RawDecryptRequest;
 }
-export const RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3731,7 +3706,7 @@ export type RawDecryptResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const RawDecryptResponseProtectionLevelEnum = S.String;
+const RawDecryptResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.RawDecrypt. */
 export interface RawDecryptResponse {
@@ -3748,7 +3723,7 @@ export interface RawDecryptResponse {
   /** Integrity verification field. A CRC32C checksum of the returned RawDecryptResponse.plaintext. An integrity check of plaintext can be performed by computing the CRC32C checksum of plaintext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   plaintextCrc32c?: string;
 }
-export const RawDecryptResponse = /*@__PURE__*/ S.suspend(() =>
+const RawDecryptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifiedInitializationVectorCrc32c: S.optional(S.Boolean),
     verifiedCiphertextCrc32c: S.optional(S.Boolean),
@@ -3774,7 +3749,7 @@ export interface RawEncryptRequest {
   /** Optional. Optional data that, if specified, must also be provided during decryption through RawDecryptRequest.additional_authenticated_data. This field may only be used in conjunction with an algorithm that accepts additional authenticated data (for example, AES-GCM). The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB. */
   additionalAuthenticatedData?: string;
 }
-export const RawEncryptRequest = /*@__PURE__*/ S.suspend(() =>
+const RawEncryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initializationVectorCrc32c: S.optional(S.String),
     plaintext: S.optional(S.String),
@@ -3791,7 +3766,7 @@ export interface RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsR
   /** Request body */
   body?: RawEncryptRequest;
 }
-export const RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
+const RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3814,7 +3789,7 @@ export type RawEncryptResponseProtectionLevelEnum =
   | "EXTERNAL"
   | "EXTERNAL_VPC"
   | "HSM_SINGLE_TENANT";
-export const RawEncryptResponseProtectionLevelEnum = S.String;
+const RawEncryptResponseProtectionLevelEnum = S.String;
 
 /** Response message for KeyManagementService.RawEncrypt. */
 export interface RawEncryptResponse {
@@ -3839,7 +3814,7 @@ export interface RawEncryptResponse {
   /** Integrity verification field. A CRC32C checksum of the returned RawEncryptResponse.initialization_vector. An integrity check of initialization_vector can be performed by computing the CRC32C checksum of initialization_vector and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
   initializationVectorCrc32c?: string;
 }
-export const RawEncryptResponse = /*@__PURE__*/ S.suspend(() =>
+const RawEncryptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifiedInitializationVectorCrc32c: S.optional(S.Boolean),
     tagLength: S.optional(S.Number),
@@ -3856,16 +3831,14 @@ export const RawEncryptResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for KeyManagementService.RestoreCryptoKeyVersion. */
 export type RestoreCryptoKeyVersionRequest = DisableSingleTenantHsmInstance;
-export const RestoreCryptoKeyVersionRequest = DisableSingleTenantHsmInstance;
-
 export interface RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
   /** Required. The resource name of the CryptoKeyVersion to restore. */
   name: string;
   /** Request body */
   body?: DisableSingleTenantHsmInstance;
 }
-export const RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(DisableSingleTenantHsmInstance.pipe(T.HttpBody())),
@@ -3876,9 +3849,9 @@ export const RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
+).annotate({
+  identifier: "RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
+}) as any as S.Schema<RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
@@ -3887,7 +3860,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -3900,7 +3873,7 @@ export interface SetIamPolicyProjectsLocationsEkmConfigRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsEkmConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsEkmConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3921,7 +3894,7 @@ export interface SetIamPolicyProjectsLocationsEkmConnectionsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3942,7 +3915,7 @@ export interface SetIamPolicyProjectsLocationsKeyRingsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3963,7 +3936,7 @@ export interface SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3984,7 +3957,7 @@ export interface SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4004,7 +3977,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -4018,7 +3991,7 @@ export interface TestIamPermissionsProjectsLocationsEkmConfigRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsEkmConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsEkmConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4038,7 +4011,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsEkmConnectionsRequest {
@@ -4047,18 +4020,17 @@ export interface TestIamPermissionsProjectsLocationsEkmConnectionsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://cloudkms.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsEkmConnectionsRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsEkmConnectionsRequest>;
@@ -4069,7 +4041,7 @@ export interface TestIamPermissionsProjectsLocationsKeyRingsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -4090,18 +4062,17 @@ export interface TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://cloudkms.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest>;
@@ -4112,18 +4083,17 @@ export interface TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://cloudkms.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest>;
@@ -4136,7 +4106,7 @@ export interface UpdateAutokeyConfigFoldersRequest {
   /** Request body */
   body?: AutokeyConfig;
 }
-export const UpdateAutokeyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutokeyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4156,7 +4126,7 @@ export interface UpdateAutokeyConfigProjectsRequest {
   /** Request body */
   body?: AutokeyConfig;
 }
-export const UpdateAutokeyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutokeyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4176,7 +4146,7 @@ export interface UpdateEkmConfigProjectsLocationsRequest {
   /** Request body */
   body?: EkmConfig;
 }
-export const UpdateEkmConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEkmConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4196,7 +4166,7 @@ export interface UpdateKajPolicyConfigFoldersRequest {
   /** Request body */
   body?: KeyAccessJustificationsPolicyConfig;
 }
-export const UpdateKajPolicyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateKajPolicyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4216,7 +4186,7 @@ export interface UpdateKajPolicyConfigOrganizationsRequest {
   /** Request body */
   body?: KeyAccessJustificationsPolicyConfig;
 }
-export const UpdateKajPolicyConfigOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateKajPolicyConfigOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4236,7 +4206,7 @@ export interface UpdateKajPolicyConfigProjectsRequest {
   /** Request body */
   body?: KeyAccessJustificationsPolicyConfig;
 }
-export const UpdateKajPolicyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateKajPolicyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4253,7 +4223,7 @@ export interface UpdateCryptoKeyPrimaryVersionRequest {
   /** Required. The id of the child CryptoKeyVersion to use as primary. */
   cryptoKeyVersionId?: string;
 }
-export const UpdateCryptoKeyPrimaryVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCryptoKeyPrimaryVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptoKeyVersionId: S.optional(S.String),
   }),
@@ -4267,44 +4237,42 @@ export interface UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest 
   /** Request body */
   body?: UpdateCryptoKeyPrimaryVersionRequest;
 }
-export const UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UpdateCryptoKeyPrimaryVersionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:updatePrimaryVersion",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest",
-  }) as any as S.Schema<UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest>;
+const UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateCryptoKeyPrimaryVersionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:updatePrimaryVersion",
+      baseUrl: "https://cloudkms.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest",
+}) as any as S.Schema<UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest>;
 
 export interface VerifyConnectivityProjectsLocationsEkmConnectionsRequest {
   /** Required. The name of the EkmConnection to verify. */
   name: string;
 }
-export const VerifyConnectivityProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:verifyConnectivity",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
+const VerifyConnectivityProjectsLocationsEkmConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:verifyConnectivity",
+      baseUrl: "https://cloudkms.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "VerifyConnectivityProjectsLocationsEkmConnectionsRequest",
 }) as any as S.Schema<VerifyConnectivityProjectsLocationsEkmConnectionsRequest>;
 
 /** Response message for EkmService.VerifyConnectivity. */
 export interface VerifyConnectivityResponse {}
-export const VerifyConnectivityResponse =
+const VerifyConnectivityResponse =
   DisableSingleTenantHsmInstance as any as S.Schema<VerifyConnectivityResponse>;
 
 export type ApproveProjectsLocationsSingleTenantHsmInstancesProposalsError =

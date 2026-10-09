@@ -12,7 +12,7 @@ export interface DeleteConsoleRequest {
   /** The name of the console */
   consoleName: string;
 }
-export const DeleteConsoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConsoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consoleName: S.String.pipe(T.Label()),
   }).pipe(
@@ -26,7 +26,7 @@ export const DeleteConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConsoleRequest" }) as any as S.Schema<DeleteConsoleRequest>;
 
 export interface DeleteConsoleResponse {}
-export const DeleteConsoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteConsoleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteConsoleResponse",
 }) as any as S.Schema<DeleteConsoleResponse>;
 
@@ -36,7 +36,7 @@ export interface DeleteConsoleWithLocationRequest {
   /** The name of the console */
   consoleName: string;
 }
-export const DeleteConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     consoleName: S.String.pipe(T.Label()),
@@ -53,9 +53,7 @@ export const DeleteConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConsoleWithLocationRequest>;
 
 export interface DeleteConsoleWithLocationResponse {}
-export const DeleteConsoleWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteConsoleWithLocationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteConsoleWithLocationResponse",
 }) as any as S.Schema<DeleteConsoleWithLocationResponse>;
 
@@ -63,7 +61,7 @@ export interface DeleteUserSettingsRequest {
   /** The name of the user settings */
   userSettingsName: string;
 }
-export const DeleteUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userSettingsName: S.String.pipe(T.Label()),
   }).pipe(
@@ -79,7 +77,7 @@ export const DeleteUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUserSettingsRequest>;
 
 export interface DeleteUserSettingsResponse {}
-export const DeleteUserSettingsResponse =
+const DeleteUserSettingsResponse =
   DeleteConsoleResponse as any as S.Schema<DeleteUserSettingsResponse>;
 
 export interface DeleteUserSettingsWithLocationRequest {
@@ -88,7 +86,7 @@ export interface DeleteUserSettingsWithLocationRequest {
   /** The name of the user settings */
   userSettingsName: string;
 }
-export const DeleteUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     userSettingsName: S.String.pipe(T.Label()),
@@ -105,14 +103,14 @@ export const DeleteUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteUserSettingsWithLocationRequest>;
 
 export interface DeleteUserSettingsWithLocationResponse {}
-export const DeleteUserSettingsWithLocationResponse =
+const DeleteUserSettingsWithLocationResponse =
   DeleteConsoleWithLocationResponse as any as S.Schema<DeleteUserSettingsWithLocationResponse>;
 
 export interface GetConsoleRequest {
   /** The name of the console */
   consoleName: string;
 }
-export const GetConsoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConsoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consoleName: S.String.pipe(T.Label()),
   }).pipe(
@@ -127,7 +125,7 @@ export const GetConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operating system type of the cloud shell. */
 export type ConsolePropertiesOsType = "Linux" | "Windows";
-export const ConsolePropertiesOsType = S.String;
+const ConsolePropertiesOsType = S.String;
 
 /** Provisioning state of the console. */
 export type ConsolePropertiesProvisioningState =
@@ -140,7 +138,7 @@ export type ConsolePropertiesProvisioningState =
   | "Failed"
   | "Canceled"
   | "Succeeded";
-export const ConsolePropertiesProvisioningState = S.String;
+const ConsolePropertiesProvisioningState = S.String;
 
 /** Cloud shell console properties. */
 export interface ConsoleProperties {
@@ -151,7 +149,7 @@ export interface ConsoleProperties {
   /** Uri of the console. */
   uri: string;
 }
-export const ConsoleProperties = /*@__PURE__*/ S.suspend(() =>
+const ConsoleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: ConsolePropertiesOsType,
     provisioningState: ConsolePropertiesProvisioningState,
@@ -162,7 +160,7 @@ export const ConsoleProperties = /*@__PURE__*/ S.suspend(() =>
 export interface GetConsoleResponse {
   properties: ConsoleProperties;
 }
-export const GetConsoleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConsoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: ConsoleProperties,
   }),
@@ -174,7 +172,7 @@ export interface GetConsoleWithLocationRequest {
   /** The name of the console */
   consoleName: string;
 }
-export const GetConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     consoleName: S.String.pipe(T.Label()),
@@ -193,7 +191,7 @@ export const GetConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConsoleWithLocationResponse {
   properties: ConsoleProperties;
 }
-export const GetConsoleWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConsoleWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: ConsoleProperties,
   }),
@@ -205,7 +203,7 @@ export interface GetUserSettingsRequest {
   /** The name of the user settings */
   userSettingsName: string;
 }
-export const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userSettingsName: S.String.pipe(T.Label()),
   }).pipe(
@@ -220,7 +218,7 @@ export const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operating system type of the cloud shell. Deprecated, use preferredShellType. */
 export type UserPropertiesPreferredOsType = "Windows" | "Linux";
-export const UserPropertiesPreferredOsType = S.String;
+const UserPropertiesPreferredOsType = S.String;
 
 /** The storage profile of the user settings. */
 export interface StorageProfile {
@@ -231,7 +229,7 @@ export interface StorageProfile {
   /** Size of file share */
   diskSizeInGB?: number;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
+const StorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountResourceId: S.optional(S.String),
     fileShareName: S.optional(S.String),
@@ -241,11 +239,11 @@ export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Size of terminal font. */
 export type TerminalSettingsFontSize = "NotSpecified" | "Small" | "Medium" | "Large";
-export const TerminalSettingsFontSize = S.String;
+const TerminalSettingsFontSize = S.String;
 
 /** Style of terminal font. */
 export type TerminalSettingsFontStyle = "NotSpecified" | "Monospace" | "Courier";
-export const TerminalSettingsFontStyle = S.String;
+const TerminalSettingsFontStyle = S.String;
 
 /** Settings for terminal appearance. */
 export interface TerminalSettings {
@@ -254,7 +252,7 @@ export interface TerminalSettings {
   /** Style of terminal font. */
   fontStyle?: TerminalSettingsFontStyle | (string & {});
 }
-export const TerminalSettings = /*@__PURE__*/ S.suspend(() =>
+const TerminalSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fontSize: S.optional(TerminalSettingsFontSize),
     fontStyle: S.optional(TerminalSettingsFontStyle),
@@ -263,7 +261,7 @@ export const TerminalSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** The shell type of the cloud shell. */
 export type UserPropertiesPreferredShellType = "bash" | "pwsh" | "powershell";
-export const UserPropertiesPreferredShellType = S.String;
+const UserPropertiesPreferredShellType = S.String;
 
 /** The cloud shell user settings properties. */
 export interface UserProperties {
@@ -276,7 +274,7 @@ export interface UserProperties {
   /** The shell type of the cloud shell. */
   preferredShellType: UserPropertiesPreferredShellType | (string & {});
 }
-export const UserProperties = /*@__PURE__*/ S.suspend(() =>
+const UserProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferredOsType: UserPropertiesPreferredOsType,
     preferredLocation: S.String,
@@ -289,7 +287,7 @@ export const UserProperties = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserSettingsResponse {
   properties: UserProperties;
 }
-export const GetUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: UserProperties,
   }),
@@ -301,7 +299,7 @@ export interface GetUserSettingsWithLocationRequest {
   /** The name of the user settings */
   userSettingsName: string;
 }
-export const GetUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     userSettingsName: S.String.pipe(T.Label()),
@@ -320,7 +318,7 @@ export const GetUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserSettingsWithLocationResponse {
   properties: UserProperties;
 }
-export const GetUserSettingsWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserSettingsWithLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: UserProperties,
   }),
@@ -332,7 +330,7 @@ export interface KeepAliveRequest {
   /** The name of the console */
   consoleName: string;
 }
-export const KeepAliveRequest = /*@__PURE__*/ S.suspend(() =>
+const KeepAliveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consoleName: S.String.pipe(T.Label()),
   }).pipe(
@@ -346,7 +344,7 @@ export const KeepAliveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeepAliveRequest" }) as any as S.Schema<KeepAliveRequest>;
 
 export interface KeepAliveResponse {}
-export const KeepAliveResponse = DeleteConsoleResponse as any as S.Schema<KeepAliveResponse>;
+const KeepAliveResponse = DeleteConsoleResponse as any as S.Schema<KeepAliveResponse>;
 
 export interface KeepAliveWithLocationRequest {
   /** The provider location */
@@ -354,7 +352,7 @@ export interface KeepAliveWithLocationRequest {
   /** The name of the console */
   consoleName: string;
 }
-export const KeepAliveWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const KeepAliveWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     consoleName: S.String.pipe(T.Label()),
@@ -371,7 +369,7 @@ export const KeepAliveWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeepAliveWithLocationRequest>;
 
 export interface KeepAliveWithLocationResponse {}
-export const KeepAliveWithLocationResponse =
+const KeepAliveWithLocationResponse =
   DeleteConsoleResponse as any as S.Schema<KeepAliveWithLocationResponse>;
 
 export interface PatchUserSettingsRequest {
@@ -379,7 +377,7 @@ export interface PatchUserSettingsRequest {
   userSettingsName: string;
   properties?: UserProperties;
 }
-export const PatchUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userSettingsName: S.String.pipe(T.Label()),
     properties: S.optional(UserProperties),
@@ -396,7 +394,7 @@ export const PatchUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchUserSettingsResponse {
   properties: UserProperties;
 }
-export const PatchUserSettingsResponse =
+const PatchUserSettingsResponse =
   GetUserSettingsWithLocationResponse as any as S.Schema<PatchUserSettingsResponse>;
 
 export interface PatchUserSettingsWithLocationRequest {
@@ -406,7 +404,7 @@ export interface PatchUserSettingsWithLocationRequest {
   userSettingsName: string;
   properties?: UserProperties;
 }
-export const PatchUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     userSettingsName: S.String.pipe(T.Label()),
@@ -426,12 +424,12 @@ export const PatchUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =
 export interface PatchUserSettingsWithLocationResponse {
   properties: UserProperties;
 }
-export const PatchUserSettingsWithLocationResponse =
+const PatchUserSettingsWithLocationResponse =
   GetUserSettingsWithLocationResponse as any as S.Schema<PatchUserSettingsWithLocationResponse>;
 
 /** The operating system type of the cloud shell. */
 export type ConsoleCreatePropertiesOsType = "Linux" | "Windows";
-export const ConsoleCreatePropertiesOsType = S.String;
+const ConsoleCreatePropertiesOsType = S.String;
 
 /** Provisioning state of the console. */
 export type ConsoleCreatePropertiesProvisioningState =
@@ -444,7 +442,7 @@ export type ConsoleCreatePropertiesProvisioningState =
   | "Failed"
   | "Canceled"
   | "Succeeded";
-export const ConsoleCreatePropertiesProvisioningState = S.String;
+const ConsoleCreatePropertiesProvisioningState = S.String;
 
 /** Cloud shell properties for creating a console. */
 export interface ConsoleCreateProperties {
@@ -455,7 +453,7 @@ export interface ConsoleCreateProperties {
   /** Uri of the console. */
   uri?: string;
 }
-export const ConsoleCreateProperties = /*@__PURE__*/ S.suspend(() =>
+const ConsoleCreateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: ConsoleCreatePropertiesOsType,
     provisioningState: S.optional(ConsoleCreatePropertiesProvisioningState),
@@ -468,7 +466,7 @@ export interface PutConsoleRequest {
   consoleName: string;
   properties: ConsoleCreateProperties;
 }
-export const PutConsoleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutConsoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consoleName: S.String.pipe(T.Label()),
     properties: ConsoleCreateProperties,
@@ -485,7 +483,7 @@ export const PutConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConsoleResponse {
   properties: ConsoleProperties;
 }
-export const PutConsoleResponse = GetConsoleResponse as any as S.Schema<PutConsoleResponse>;
+const PutConsoleResponse = GetConsoleResponse as any as S.Schema<PutConsoleResponse>;
 
 export interface PutConsoleWithLocationRequest {
   /** The provider location */
@@ -493,7 +491,7 @@ export interface PutConsoleWithLocationRequest {
   /** The name of the console */
   consoleName: string;
 }
-export const PutConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     consoleName: S.String.pipe(T.Label()),
@@ -512,7 +510,7 @@ export const PutConsoleWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutConsoleWithLocationResponse {
   properties: ConsoleProperties;
 }
-export const PutConsoleWithLocationResponse =
+const PutConsoleWithLocationResponse =
   GetConsoleWithLocationResponse as any as S.Schema<PutConsoleWithLocationResponse>;
 
 export interface PutUserSettingsRequest {
@@ -520,7 +518,7 @@ export interface PutUserSettingsRequest {
   userSettingsName: string;
   properties: UserProperties;
 }
-export const PutUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userSettingsName: S.String.pipe(T.Label()),
     properties: UserProperties,
@@ -537,8 +535,7 @@ export const PutUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutUserSettingsResponse {
   properties: UserProperties;
 }
-export const PutUserSettingsResponse =
-  GetUserSettingsResponse as any as S.Schema<PutUserSettingsResponse>;
+const PutUserSettingsResponse = GetUserSettingsResponse as any as S.Schema<PutUserSettingsResponse>;
 
 export interface PutUserSettingsWithLocationRequest {
   /** The provider location */
@@ -547,7 +544,7 @@ export interface PutUserSettingsWithLocationRequest {
   userSettingsName: string;
   properties: UserProperties;
 }
-export const PutUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     userSettingsName: S.String.pipe(T.Label()),
@@ -567,7 +564,7 @@ export const PutUserSettingsWithLocationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutUserSettingsWithLocationResponse {
   properties: UserProperties;
 }
-export const PutUserSettingsWithLocationResponse =
+const PutUserSettingsWithLocationResponse =
   GetUserSettingsWithLocationResponse as any as S.Schema<PutUserSettingsWithLocationResponse>;
 
 export type DeleteConsoleError = AzureOpError;

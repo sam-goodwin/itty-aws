@@ -58,7 +58,7 @@ export interface AddRepositoryForSecretForAuthenticatedUserRequest {
   secret_name: string;
   repository_id: number;
 }
-export const AddRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AddRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret_name: S.String.pipe(T.Label()),
     repository_id: S.Number.pipe(T.Label()),
@@ -74,7 +74,7 @@ export const AddRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S
 }) as any as S.Schema<AddRepositoryForSecretForAuthenticatedUserRequest>;
 
 export interface AddRepositoryForSecretForAuthenticatedUserResponse {}
-export const AddRepositoryForSecretForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const AddRepositoryForSecretForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AddRepositoryForSecretForAuthenticatedUserResponse",
@@ -87,7 +87,7 @@ export interface AddSelectedRepoToOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-export const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -104,7 +104,7 @@ export const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>;
 
 export interface AddSelectedRepoToOrgSecretResponse {}
-export const AddSelectedRepoToOrgSecretResponse =
+const AddSelectedRepoToOrgSecretResponse =
   AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<AddSelectedRepoToOrgSecretResponse>;
 
 export interface CheckPermissionsForDevcontainerRequest {
@@ -117,7 +117,7 @@ export interface CheckPermissionsForDevcontainerRequest {
   /** Path to the devcontainer.json configuration to use for the permission check. */
   devcontainer_path: string;
 }
-export const CheckPermissionsForDevcontainerRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckPermissionsForDevcontainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -135,7 +135,7 @@ export interface CodespacesPermissionsCheckForDevcontainer {
   /** Whether the user has accepted the permissions defined by the devcontainer config */
   accepted: boolean;
 }
-export const CodespacesPermissionsCheckForDevcontainer = /*@__PURE__*/ S.suspend(() =>
+const CodespacesPermissionsCheckForDevcontainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted: S.Boolean,
   }),
@@ -147,7 +147,7 @@ export interface CodespaceMachinesForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-export const CodespaceMachinesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CodespaceMachinesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/codespaces/{codespace_name}/machines", code: 200 })),
@@ -157,7 +157,7 @@ export const CodespaceMachinesForAuthenticatedUserRequest = /*@__PURE__*/ S.susp
 
 /** Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status. */
 export type CodespaceMachinePrebuildAvailability = "none" | "ready" | "in_progress";
-export const CodespaceMachinePrebuildAvailability = S.String;
+const CodespaceMachinePrebuildAvailability = S.String;
 
 /** A description of the machine powering a codespace. */
 export interface CodespaceMachine {
@@ -176,7 +176,7 @@ export interface CodespaceMachine {
   /** Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status. */
   prebuild_availability: CodespaceMachinePrebuildAvailability | null;
 }
-export const CodespaceMachine = /*@__PURE__*/ S.suspend(() =>
+const CodespaceMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     display_name: S.String,
@@ -189,7 +189,7 @@ export const CodespaceMachine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodespaceMachine" }) as any as S.Schema<CodespaceMachine>;
 
 export type CodespaceMachinesForAuthenticatedUserResponseMachinesList = Array<CodespaceMachine>;
-export const CodespaceMachinesForAuthenticatedUserResponseMachinesList = /*@__PURE__*/ S.Array(
+const CodespaceMachinesForAuthenticatedUserResponseMachinesList = /*@__PURE__*/ S.Array(
   CodespaceMachine,
 ) as any as S.Schema<CodespaceMachinesForAuthenticatedUserResponseMachinesList>;
 
@@ -197,7 +197,7 @@ export interface CodespaceMachinesForAuthenticatedUserResponse {
   total_count: number;
   machines: CodespaceMachinesForAuthenticatedUserResponseMachinesList;
 }
-export const CodespaceMachinesForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const CodespaceMachinesForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     machines: CodespaceMachinesForAuthenticatedUserResponseMachinesList,
@@ -212,8 +212,6 @@ export type CreateForAuthenticatedUserRequestBodyCase0Geo =
   | "SoutheastAsia"
   | "UsEast"
   | "UsWest";
-export const CreateForAuthenticatedUserRequestBodyCase0Geo = S.String;
-
 export interface CreateForAuthenticatedUserRequestBodyCase0 {
   /** Repository id for this codespace */
   repository_id: number;
@@ -240,25 +238,6 @@ export interface CreateForAuthenticatedUserRequestBodyCase0 {
   /** Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days). */
   retention_period_minutes?: number;
 }
-export const CreateForAuthenticatedUserRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository_id: S.Number,
-    ref: S.optional(S.String),
-    location: S.optional(S.String),
-    geo: S.optional(CreateForAuthenticatedUserRequestBodyCase0Geo),
-    client_ip: S.optional(S.String),
-    machine: S.optional(S.String),
-    devcontainer_path: S.optional(S.String),
-    multi_repo_permissions_opt_out: S.optional(S.Boolean),
-    working_directory: S.optional(S.String),
-    idle_timeout_minutes: S.optional(S.Number),
-    display_name: S.optional(S.String),
-    retention_period_minutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateForAuthenticatedUserRequestBodyCase0",
-}) as any as S.Schema<CreateForAuthenticatedUserRequestBodyCase0>;
-
 /** Pull request number for this codespace */
 export interface CreateForAuthenticatedUserRequestBodyCase1PullRequest {
   /** Pull request number */
@@ -266,23 +245,12 @@ export interface CreateForAuthenticatedUserRequestBodyCase1PullRequest {
   /** Repository id for this codespace */
   repository_id: number;
 }
-export const CreateForAuthenticatedUserRequestBodyCase1PullRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull_request_number: S.Number,
-    repository_id: S.Number,
-  }),
-).annotate({
-  identifier: "CreateForAuthenticatedUserRequestBodyCase1PullRequest",
-}) as any as S.Schema<CreateForAuthenticatedUserRequestBodyCase1PullRequest>;
-
 /** The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down. */
 export type CreateForAuthenticatedUserRequestBodyCase1Geo =
   | "EuropeWest"
   | "SoutheastAsia"
   | "UsEast"
   | "UsWest";
-export const CreateForAuthenticatedUserRequestBodyCase1Geo = S.String;
-
 export interface CreateForAuthenticatedUserRequestBodyCase1 {
   /** Pull request number for this codespace */
   pull_request: CreateForAuthenticatedUserRequestBodyCase1PullRequest;
@@ -299,30 +267,16 @@ export interface CreateForAuthenticatedUserRequestBodyCase1 {
   /** Time in minutes before codespace stops from inactivity */
   idle_timeout_minutes?: number;
 }
-export const CreateForAuthenticatedUserRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull_request: CreateForAuthenticatedUserRequestBodyCase1PullRequest,
-    location: S.optional(S.String),
-    geo: S.optional(CreateForAuthenticatedUserRequestBodyCase1Geo),
-    machine: S.optional(S.String),
-    devcontainer_path: S.optional(S.String),
-    working_directory: S.optional(S.String),
-    idle_timeout_minutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateForAuthenticatedUserRequestBodyCase1",
-}) as any as S.Schema<CreateForAuthenticatedUserRequestBodyCase1>;
-
 export type CreateForAuthenticatedUserRequestBody =
   | CreateForAuthenticatedUserRequestBodyCase0
   | CreateForAuthenticatedUserRequestBodyCase1;
-export const CreateForAuthenticatedUserRequestBody =
+const CreateForAuthenticatedUserRequestBody =
   S.Unknown as any as S.Schema<CreateForAuthenticatedUserRequestBody>;
 
 export interface CreateForAuthenticatedUserRequest {
   body: CreateForAuthenticatedUserRequestBody;
 }
-export const CreateForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: CreateForAuthenticatedUserRequestBody.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/user/codespaces", code: 200 })),
@@ -355,7 +309,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -383,13 +337,13 @@ export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SimpleUser" }) as any as S.Schema<SimpleUser>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
+const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -398,7 +352,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -418,7 +372,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -435,7 +389,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -446,13 +400,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -461,98 +415,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -562,7 +500,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -577,16 +515,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -608,7 +545,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -631,7 +568,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -732,7 +669,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -829,8 +766,6 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status. */
 export type NullableCodespaceMachinePrebuildAvailability = "none" | "ready" | "in_progress";
-export const NullableCodespaceMachinePrebuildAvailability = S.String;
-
 /** A description of the machine powering a codespace. */
 export interface NullableCodespaceMachine {
   /** The name of the machine. */
@@ -848,8 +783,7 @@ export interface NullableCodespaceMachine {
   /** Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status. */
   prebuild_availability: NullableCodespaceMachinePrebuildAvailability | null;
 }
-export const NullableCodespaceMachine =
-  CodespaceMachine as any as S.Schema<NullableCodespaceMachine>;
+const NullableCodespaceMachine = CodespaceMachine as any as S.Schema<NullableCodespaceMachine>;
 
 /** State of this codespace. */
 export type CodespaceState =
@@ -870,7 +804,7 @@ export type CodespaceState =
   | "Exporting"
   | "Updating"
   | "Rebuilding";
-export const CodespaceState = S.String;
+const CodespaceState = S.String;
 
 /** Details about the codespace's git repository. */
 export interface CodespaceGitStatus {
@@ -885,7 +819,7 @@ export interface CodespaceGitStatus {
   /** The current branch (or SHA if in detached HEAD state) of the local repository. */
   ref?: string;
 }
-export const CodespaceGitStatus = /*@__PURE__*/ S.suspend(() =>
+const CodespaceGitStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ahead: S.optional(S.Number),
     behind: S.optional(S.Number),
@@ -897,22 +831,22 @@ export const CodespaceGitStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The initally assigned location of a new codespace. */
 export type CodespaceLocation = "EastUs" | "SouthEastAsia" | "WestEurope" | "WestUs2";
-export const CodespaceLocation = S.String;
+const CodespaceLocation = S.String;
 
 export type CodespaceRecentFoldersList = Array<string>;
-export const CodespaceRecentFoldersList =
+const CodespaceRecentFoldersList =
   MinimalRepositoryTopicsList as any as S.Schema<CodespaceRecentFoldersList>;
 
 /** The privacy settings a user can select from when forwarding a port. */
 export type CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList = Array<string>;
-export const CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList =
+const CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList =
   MinimalRepositoryTopicsList as any as S.Schema<CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList>;
 
 export interface CodespaceRuntimeConstraints {
   /** The privacy settings a user can select from when forwarding a port. */
   allowed_port_privacy_settings?: CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList | null;
 }
-export const CodespaceRuntimeConstraints = /*@__PURE__*/ S.suspend(() =>
+const CodespaceRuntimeConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed_port_privacy_settings: S.optional(
       S.NullOr(CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList),
@@ -980,7 +914,7 @@ export interface Codespace {
   /** The text to display to a user when a codespace has been stopped for a potentially actionable reason. */
   last_known_stop_notice?: string | null;
 }
-export const Codespace = /*@__PURE__*/ S.suspend(() =>
+const Codespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1019,11 +953,11 @@ export const Codespace = /*@__PURE__*/ S.suspend(() =>
 
 /** Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret. */
 export type CreateOrUpdateOrgSecretRequestVisibility = "all" | "private" | "selected";
-export const CreateOrUpdateOrgSecretRequestVisibility = S.String;
+const CreateOrUpdateOrgSecretRequestVisibility = S.String;
 
 /** An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-export const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
+const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList>;
 
@@ -1041,7 +975,7 @@ export interface CreateOrUpdateOrgSecretRequest {
   /** An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids?: CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList;
 }
-export const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -1057,7 +991,7 @@ export const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateOrgSecretRequest>;
 
 export type CreateOrUpdateOrgSecretResponse = unknown;
-export const CreateOrUpdateOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateOrUpdateOrgSecretResponse",
@@ -1075,7 +1009,7 @@ export interface CreateOrUpdateRepoSecretRequest {
   /** ID of the key you used to encrypt the secret. */
   key_id?: string;
 }
-export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1094,19 +1028,19 @@ export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
 
 export type CreateOrUpdateRepoSecretResponse = unknown;
-export const CreateOrUpdateRepoSecretResponse =
+const CreateOrUpdateRepoSecretResponse =
   CreateOrUpdateOrgSecretResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
 
 export type CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem =
   | number
   | string;
-export const CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem =
+const CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem =
   S.Unknown as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem>;
 
 /** An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
 export type CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
   Array<CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem>;
-export const CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
+const CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
   /*@__PURE__*/ S.Array(
     CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem,
   ) as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList>;
@@ -1121,7 +1055,7 @@ export interface CreateOrUpdateSecretForAuthenticatedUserRequest {
   /** An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
   selected_repository_ids?: CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList;
 }
-export const CreateOrUpdateSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret_name: S.String.pipe(T.Label()),
     encrypted_value: S.optional(S.String),
@@ -1135,7 +1069,7 @@ export const CreateOrUpdateSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequest>;
 
 export type CreateOrUpdateSecretForAuthenticatedUserResponse = unknown;
-export const CreateOrUpdateSecretForAuthenticatedUserResponse =
+const CreateOrUpdateSecretForAuthenticatedUserResponse =
   CreateOrUpdateOrgSecretResponse as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserResponse>;
 
 /** The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down. */
@@ -1144,7 +1078,7 @@ export type CreateWithPrForAuthenticatedUserRequestGeo =
   | "SoutheastAsia"
   | "UsEast"
   | "UsWest";
-export const CreateWithPrForAuthenticatedUserRequestGeo = S.String;
+const CreateWithPrForAuthenticatedUserRequestGeo = S.String;
 
 export interface CreateWithPrForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1174,7 +1108,7 @@ export interface CreateWithPrForAuthenticatedUserRequest {
   /** Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days). */
   retention_period_minutes?: number;
 }
-export const CreateWithPrForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWithPrForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1206,7 +1140,7 @@ export type CreateWithRepoForAuthenticatedUserRequestGeo =
   | "SoutheastAsia"
   | "UsEast"
   | "UsWest";
-export const CreateWithRepoForAuthenticatedUserRequestGeo = S.String;
+const CreateWithRepoForAuthenticatedUserRequestGeo = S.String;
 
 export interface CreateWithRepoForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1236,7 +1170,7 @@ export interface CreateWithRepoForAuthenticatedUserRequest {
   /** Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days). */
   retention_period_minutes?: number;
 }
-export const CreateWithRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWithRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1260,7 +1194,7 @@ export interface DeleteForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-export const DeleteForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/codespaces/{codespace_name}", code: 200 })),
@@ -1269,7 +1203,7 @@ export const DeleteForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteForAuthenticatedUserRequest>;
 
 export interface DeleteForAuthenticatedUserResponse {}
-export const DeleteForAuthenticatedUserResponse =
+const DeleteForAuthenticatedUserResponse =
   AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<DeleteForAuthenticatedUserResponse>;
 
 export interface DeleteFromOrganizationRequest {
@@ -1280,7 +1214,7 @@ export interface DeleteFromOrganizationRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-export const DeleteFromOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFromOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -1297,7 +1231,7 @@ export const DeleteFromOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFromOrganizationRequest>;
 
 export interface DeleteFromOrganizationResponse {}
-export const DeleteFromOrganizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteFromOrganizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteFromOrganizationResponse",
 }) as any as S.Schema<DeleteFromOrganizationResponse>;
 
@@ -1307,7 +1241,7 @@ export interface DeleteOrgSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -1317,7 +1251,7 @@ export const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgSecretRequest" }) as any as S.Schema<DeleteOrgSecretRequest>;
 
 export interface DeleteOrgSecretResponse {}
-export const DeleteOrgSecretResponse =
+const DeleteOrgSecretResponse =
   DeleteFromOrganizationResponse as any as S.Schema<DeleteOrgSecretResponse>;
 
 export interface DeleteRepoSecretRequest {
@@ -1328,7 +1262,7 @@ export interface DeleteRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1343,14 +1277,14 @@ export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoSecretRequest" }) as any as S.Schema<DeleteRepoSecretRequest>;
 
 export interface DeleteRepoSecretResponse {}
-export const DeleteRepoSecretResponse =
+const DeleteRepoSecretResponse =
   DeleteFromOrganizationResponse as any as S.Schema<DeleteRepoSecretResponse>;
 
 export interface DeleteSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const DeleteSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/codespaces/secrets/{secret_name}", code: 200 })),
@@ -1359,14 +1293,14 @@ export const DeleteSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSecretForAuthenticatedUserRequest>;
 
 export interface DeleteSecretForAuthenticatedUserResponse {}
-export const DeleteSecretForAuthenticatedUserResponse =
+const DeleteSecretForAuthenticatedUserResponse =
   AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<DeleteSecretForAuthenticatedUserResponse>;
 
 export interface ExportForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-export const ExportForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/user/codespaces/{codespace_name}/exports", code: 200 })),
@@ -1375,7 +1309,7 @@ export const ExportForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportForAuthenticatedUserRequest>;
 
 export interface ExportForAuthenticatedUserResponse {}
-export const ExportForAuthenticatedUserResponse =
+const ExportForAuthenticatedUserResponse =
   AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<ExportForAuthenticatedUserResponse>;
 
 export interface GetCodespacesForUserInOrgRequest {
@@ -1388,7 +1322,7 @@ export interface GetCodespacesForUserInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetCodespacesForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCodespacesForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -1400,7 +1334,7 @@ export const GetCodespacesForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCodespacesForUserInOrgRequest>;
 
 export type GetCodespacesForUserInOrgResponseCodespacesList = Array<Codespace>;
-export const GetCodespacesForUserInOrgResponseCodespacesList = /*@__PURE__*/ S.Array(
+const GetCodespacesForUserInOrgResponseCodespacesList = /*@__PURE__*/ S.Array(
   Codespace,
 ) as any as S.Schema<GetCodespacesForUserInOrgResponseCodespacesList>;
 
@@ -1408,7 +1342,7 @@ export interface GetCodespacesForUserInOrgResponse {
   total_count: number;
   codespaces: GetCodespacesForUserInOrgResponseCodespacesList;
 }
-export const GetCodespacesForUserInOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCodespacesForUserInOrgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     codespaces: GetCodespacesForUserInOrgResponseCodespacesList,
@@ -1423,7 +1357,7 @@ export interface GetExportDetailsForAuthenticatedUserRequest {
   /** The ID of the export operation, or `latest`. Currently only `latest` is currently supported. */
   export_id: string;
 }
-export const GetExportDetailsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExportDetailsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
     export_id: S.String.pipe(T.Label()),
@@ -1455,7 +1389,7 @@ export interface CodespaceExportDetails {
   /** Web url for the exported branch */
   html_url?: string | null;
 }
-export const CodespaceExportDetails = /*@__PURE__*/ S.suspend(() =>
+const CodespaceExportDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.NullOr(S.String)),
     completed_at: S.optional(S.NullOr(S.String)),
@@ -1471,7 +1405,7 @@ export interface GetForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-export const GetForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/codespaces/{codespace_name}", code: 200 })),
@@ -1483,7 +1417,7 @@ export interface GetOrgPublicKeyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetOrgPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/codespaces/secrets/public-key", code: 200 })),
@@ -1500,7 +1434,7 @@ export interface CodespacesPublicKey {
   title?: string;
   created_at?: string;
 }
-export const CodespacesPublicKey = /*@__PURE__*/ S.suspend(() =>
+const CodespacesPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.String,
     key: S.String,
@@ -1517,7 +1451,7 @@ export interface GetOrgSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -1528,7 +1462,7 @@ export const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of repositories in the organization that the secret is visible to */
 export type CodespacesOrgSecretVisibility = "all" | "private" | "selected";
-export const CodespacesOrgSecretVisibility = S.String;
+const CodespacesOrgSecretVisibility = S.String;
 
 /** Secrets for a GitHub Codespace. */
 export interface CodespacesOrgSecret {
@@ -1543,7 +1477,7 @@ export interface CodespacesOrgSecret {
   /** The API URL at which the list of repositories this secret is visible to can be retrieved */
   selected_repositories_url?: string;
 }
-export const CodespacesOrgSecret = /*@__PURE__*/ S.suspend(() =>
+const CodespacesOrgSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     created_at: S.String,
@@ -1554,7 +1488,7 @@ export const CodespacesOrgSecret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodespacesOrgSecret" }) as any as S.Schema<CodespacesOrgSecret>;
 
 export interface GetPublicKeyForAuthenticatedUserRequest {}
-export const GetPublicKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicKeyForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/user/codespaces/secrets/public-key", code: 200 }),
   ),
@@ -1569,7 +1503,7 @@ export interface CodespacesUserPublicKey {
   /** The Base64 encoded public key. */
   key: string;
 }
-export const CodespacesUserPublicKey = /*@__PURE__*/ S.suspend(() =>
+const CodespacesUserPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.String,
     key: S.String,
@@ -1582,7 +1516,7 @@ export interface GetRepoPublicKeyRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetRepoPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1603,7 +1537,7 @@ export interface GetRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const GetRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1624,7 +1558,7 @@ export interface RepoCodespacesSecret {
   created_at: string;
   updated_at: string;
 }
-export const RepoCodespacesSecret = /*@__PURE__*/ S.suspend(() =>
+const RepoCodespacesSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     created_at: S.String,
@@ -1636,7 +1570,7 @@ export interface GetSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const GetSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/codespaces/secrets/{secret_name}", code: 200 })),
@@ -1646,7 +1580,7 @@ export const GetSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The type of repositories in the organization that the secret is visible to */
 export type CodespacesSecretVisibility = "all" | "private" | "selected";
-export const CodespacesSecretVisibility = S.String;
+const CodespacesSecretVisibility = S.String;
 
 /** Secrets for a GitHub Codespace. */
 export interface CodespacesSecret {
@@ -1661,7 +1595,7 @@ export interface CodespacesSecret {
   /** The API URL at which the list of repositories this secret is visible to can be retrieved */
   selected_repositories_url: string;
 }
-export const CodespacesSecret = /*@__PURE__*/ S.suspend(() =>
+const CodespacesSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     created_at: S.String,
@@ -1681,16 +1615,15 @@ export interface ListDevcontainersInRepositoryForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListDevcontainersInRepositoryForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      owner: S.String.pipe(T.Label()),
-      repo: S.String.pipe(T.Label()),
-      per_page: S.optional(S.Number.pipe(T.Query())),
-      page: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/codespaces/devcontainers", code: 200 }),
-    ),
+const ListDevcontainersInRepositoryForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    owner: S.String.pipe(T.Label()),
+    repo: S.String.pipe(T.Label()),
+    per_page: S.optional(S.Number.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/codespaces/devcontainers", code: 200 }),
+  ),
 ).annotate({
   identifier: "ListDevcontainersInRepositoryForAuthenticatedUserRequest",
 }) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserRequest>;
@@ -1700,7 +1633,7 @@ export interface ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcon
   name?: string;
   display_name?: string;
 }
-export const ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem =
+const ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       path: S.String,
@@ -1713,7 +1646,7 @@ export const ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontain
 
 export type ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList =
   Array<ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem>;
-export const ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList =
+const ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList =
   /*@__PURE__*/ S.Array(
     ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem,
   ) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList>;
@@ -1722,12 +1655,11 @@ export interface ListDevcontainersInRepositoryForAuthenticatedUserResponse {
   total_count: number;
   devcontainers: ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList;
 }
-export const ListDevcontainersInRepositoryForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      total_count: S.Number,
-      devcontainers: ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList,
-    }),
+const ListDevcontainersInRepositoryForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    total_count: S.Number,
+    devcontainers: ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList,
+  }),
 ).annotate({
   identifier: "ListDevcontainersInRepositoryForAuthenticatedUserResponse",
 }) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserResponse>;
@@ -1740,7 +1672,7 @@ export interface ListForAuthenticatedUserRequest {
   /** ID of the Repository to filter on */
   repository_id?: number;
 }
-export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1751,14 +1683,11 @@ export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForAuthenticatedUserRequest>;
 
 export type ListForAuthenticatedUserResponseCodespacesList = Array<Codespace>;
-export const ListForAuthenticatedUserResponseCodespacesList =
-  GetCodespacesForUserInOrgResponseCodespacesList as any as S.Schema<ListForAuthenticatedUserResponseCodespacesList>;
-
 export interface ListForAuthenticatedUserResponse {
   total_count: number;
   codespaces: ListForAuthenticatedUserResponseCodespacesList;
 }
-export const ListForAuthenticatedUserResponse =
+const ListForAuthenticatedUserResponse =
   GetCodespacesForUserInOrgResponse as any as S.Schema<ListForAuthenticatedUserResponse>;
 
 export interface ListInOrganizationRequest {
@@ -1769,7 +1698,7 @@ export interface ListInOrganizationRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1780,14 +1709,11 @@ export const ListInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInOrganizationRequest>;
 
 export type ListInOrganizationResponseCodespacesList = Array<Codespace>;
-export const ListInOrganizationResponseCodespacesList =
-  GetCodespacesForUserInOrgResponseCodespacesList as any as S.Schema<ListInOrganizationResponseCodespacesList>;
-
 export interface ListInOrganizationResponse {
   total_count: number;
   codespaces: ListInOrganizationResponseCodespacesList;
 }
-export const ListInOrganizationResponse =
+const ListInOrganizationResponse =
   GetCodespacesForUserInOrgResponse as any as S.Schema<ListInOrganizationResponse>;
 
 export interface ListInRepositoryForAuthenticatedUserRequest {
@@ -1800,7 +1726,7 @@ export interface ListInRepositoryForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListInRepositoryForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInRepositoryForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1812,14 +1738,11 @@ export const ListInRepositoryForAuthenticatedUserRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListInRepositoryForAuthenticatedUserRequest>;
 
 export type ListInRepositoryForAuthenticatedUserResponseCodespacesList = Array<Codespace>;
-export const ListInRepositoryForAuthenticatedUserResponseCodespacesList =
-  GetCodespacesForUserInOrgResponseCodespacesList as any as S.Schema<ListInRepositoryForAuthenticatedUserResponseCodespacesList>;
-
 export interface ListInRepositoryForAuthenticatedUserResponse {
   total_count: number;
   codespaces: ListInRepositoryForAuthenticatedUserResponseCodespacesList;
 }
-export const ListInRepositoryForAuthenticatedUserResponse =
+const ListInRepositoryForAuthenticatedUserResponse =
   GetCodespacesForUserInOrgResponse as any as S.Schema<ListInRepositoryForAuthenticatedUserResponse>;
 
 export interface ListOrgSecretsRequest {
@@ -1830,7 +1753,7 @@ export interface ListOrgSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1839,7 +1762,7 @@ export const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrgSecretsRequest" }) as any as S.Schema<ListOrgSecretsRequest>;
 
 export type ListOrgSecretsResponseSecretsList = Array<CodespacesOrgSecret>;
-export const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
+const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
   CodespacesOrgSecret,
 ) as any as S.Schema<ListOrgSecretsResponseSecretsList>;
 
@@ -1847,7 +1770,7 @@ export interface ListOrgSecretsResponse {
   total_count: number;
   secrets: ListOrgSecretsResponseSecretsList;
 }
-export const ListOrgSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     secrets: ListOrgSecretsResponseSecretsList,
@@ -1864,7 +1787,7 @@ export interface ListRepoSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1874,7 +1797,7 @@ export const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRepoSecretsRequest" }) as any as S.Schema<ListRepoSecretsRequest>;
 
 export type ListRepoSecretsResponseSecretsList = Array<RepoCodespacesSecret>;
-export const ListRepoSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
+const ListRepoSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
   RepoCodespacesSecret,
 ) as any as S.Schema<ListRepoSecretsResponseSecretsList>;
 
@@ -1882,7 +1805,7 @@ export interface ListRepoSecretsResponse {
   total_count: number;
   secrets: ListRepoSecretsResponseSecretsList;
 }
-export const ListRepoSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepoSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     secrets: ListRepoSecretsResponseSecretsList,
@@ -1893,7 +1816,7 @@ export interface ListRepositoriesForSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const ListRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1909,16 +1832,15 @@ export const ListRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*
 
 export type ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList =
   Array<MinimalRepository>;
-export const ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList =
-  /*@__PURE__*/ S.Array(
-    MinimalRepository,
-  ) as any as S.Schema<ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList>;
+const ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList = /*@__PURE__*/ S.Array(
+  MinimalRepository,
+) as any as S.Schema<ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList>;
 
 export interface ListRepositoriesForSecretForAuthenticatedUserResponse {
   total_count: number;
   repositories: ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList;
 }
-export const ListRepositoriesForSecretForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepositoriesForSecretForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     repositories: ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList,
@@ -1933,7 +1855,7 @@ export interface ListSecretsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListSecretsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1943,7 +1865,7 @@ export const ListSecretsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListSecretsForAuthenticatedUserRequest>;
 
 export type ListSecretsForAuthenticatedUserResponseSecretsList = Array<CodespacesSecret>;
-export const ListSecretsForAuthenticatedUserResponseSecretsList = /*@__PURE__*/ S.Array(
+const ListSecretsForAuthenticatedUserResponseSecretsList = /*@__PURE__*/ S.Array(
   CodespacesSecret,
 ) as any as S.Schema<ListSecretsForAuthenticatedUserResponseSecretsList>;
 
@@ -1951,7 +1873,7 @@ export interface ListSecretsForAuthenticatedUserResponse {
   total_count: number;
   secrets: ListSecretsForAuthenticatedUserResponseSecretsList;
 }
-export const ListSecretsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     secrets: ListSecretsForAuthenticatedUserResponseSecretsList,
@@ -1970,7 +1892,7 @@ export interface ListSelectedReposForOrgSecretRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -1988,7 +1910,7 @@ export const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListSelectedReposForOrgSecretRequest>;
 
 export type ListSelectedReposForOrgSecretResponseRepositoriesList = Array<MinimalRepository>;
-export const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ S.Array(
+const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ S.Array(
   MinimalRepository,
 ) as any as S.Schema<ListSelectedReposForOrgSecretResponseRepositoriesList>;
 
@@ -1996,7 +1918,7 @@ export interface ListSelectedReposForOrgSecretResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgSecretResponseRepositoriesList;
 }
-export const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     repositories: ListSelectedReposForOrgSecretResponseRepositoriesList,
@@ -2015,7 +1937,7 @@ export interface PreFlightWithRepoForAuthenticatedUserRequest {
   /** An alternative IP for default location auto-detection, such as when proxying a request. */
   client_ip?: string;
 }
-export const PreFlightWithRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const PreFlightWithRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2030,7 +1952,7 @@ export interface PreFlightWithRepoForAuthenticatedUserResponseDefaults {
   location: string;
   devcontainer_path: string | null;
 }
-export const PreFlightWithRepoForAuthenticatedUserResponseDefaults = /*@__PURE__*/ S.suspend(() =>
+const PreFlightWithRepoForAuthenticatedUserResponseDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String,
     devcontainer_path: S.NullOr(S.String),
@@ -2043,7 +1965,7 @@ export interface PreFlightWithRepoForAuthenticatedUserResponse {
   billable_owner?: SimpleUser;
   defaults?: PreFlightWithRepoForAuthenticatedUserResponseDefaults;
 }
-export const PreFlightWithRepoForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const PreFlightWithRepoForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billable_owner: S.optional(SimpleUser),
     defaults: S.optional(PreFlightWithRepoForAuthenticatedUserResponseDefaults),
@@ -2060,7 +1982,7 @@ export interface PublishForAuthenticatedUserRequest {
   /** Whether the new repository should be private. */
   private?: boolean;
 }
-export const PublishForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -2071,12 +1993,12 @@ export const PublishForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublishForAuthenticatedUserRequest>;
 
 export type FullRepositoryTopicsList = Array<string>;
-export const FullRepositoryTopicsList =
+const FullRepositoryTopicsList =
   MinimalRepositoryTopicsList as any as S.Schema<FullRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type FullRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const FullRepositoryPullRequestCreationPolicy = S.String;
+const FullRepositoryPullRequestCreationPolicy = S.String;
 
 export interface FullRepositoryPermissions {
   admin: boolean;
@@ -2085,7 +2007,7 @@ export interface FullRepositoryPermissions {
   triage?: boolean;
   pull: boolean;
 }
-export const FullRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const FullRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     maintain: S.optional(S.Boolean),
@@ -2106,7 +2028,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -2124,7 +2046,7 @@ export interface NullableRepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const NullableRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const NullableRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -2137,35 +2059,35 @@ export const NullableRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NullableRepositoryPermissions>;
 
 export type NullableRepositoryTopicsList = Array<string>;
-export const NullableRepositoryTopicsList =
+const NullableRepositoryTopicsList =
   MinimalRepositoryTopicsList as any as S.Schema<NullableRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const NullableRepositoryPullRequestCreationPolicy = S.String;
+const NullableRepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type NullableRepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const NullableRepositorySquashMergeCommitTitle = S.String;
+const NullableRepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type NullableRepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const NullableRepositorySquashMergeCommitMessage = S.String;
+const NullableRepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type NullableRepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const NullableRepositoryMergeCommitTitle = S.String;
+const NullableRepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type NullableRepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const NullableRepositoryMergeCommitMessage = S.String;
+const NullableRepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export interface NullableRepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const NullableRepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const NullableRepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lexical_search_ok: S.optional(S.Boolean),
     lexical_commit_sha: S.optional(S.String),
@@ -2306,7 +2228,7 @@ export interface NullableRepository {
   /** The status of the code search index for this repository */
   code_search_index_status?: NullableRepositoryCodeSearchIndexStatus;
 }
-export const NullableRepository = /*@__PURE__*/ S.suspend(() =>
+const NullableRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2411,55 +2333,48 @@ export const NullableRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type FullRepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const FullRepositorySquashMergeCommitTitle = S.String;
+const FullRepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type FullRepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const FullRepositorySquashMergeCommitMessage = S.String;
+const FullRepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type FullRepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const FullRepositoryMergeCommitTitle = S.String;
+const FullRepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type FullRepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const FullRepositoryMergeCommitMessage = S.String;
+const FullRepositoryMergeCommitMessage = S.String;
 
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
-export const NullableSimpleUser = SimpleUser;
-
 export type RepositoryPermissions = NullableRepositoryPermissions;
-export const RepositoryPermissions = NullableRepositoryPermissions;
-
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList =
-  MinimalRepositoryTopicsList as any as S.Schema<RepositoryTopicsList>;
+const RepositoryTopicsList = MinimalRepositoryTopicsList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
+const RepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
+const RepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
+const RepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
+const RepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
+const RepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export type RepositoryCodeSearchIndexStatus = NullableRepositoryCodeSearchIndexStatus;
-export const RepositoryCodeSearchIndexStatus = NullableRepositoryCodeSearchIndexStatus;
-
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -2592,7 +2507,7 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: NullableRepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2702,7 +2617,7 @@ export interface CodeOfConductSimple {
   name: string;
   html_url: string | null;
 }
-export const CodeOfConductSimple = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConductSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     key: S.String,
@@ -2713,7 +2628,7 @@ export const CodeOfConductSimple = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type FullRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const FullRepositoryCustomPropertiesMap =
+const FullRepositoryCustomPropertiesMap =
   MinimalRepositoryCustomPropertiesMap as any as S.Schema<FullRepositoryCustomPropertiesMap>;
 
 /** Full Repository */
@@ -2834,7 +2749,7 @@ export interface FullRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: FullRepositoryCustomPropertiesMap;
 }
-export const FullRepository = /*@__PURE__*/ S.suspend(() =>
+const FullRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2963,28 +2878,26 @@ export type CodespaceWithFullRepositoryState =
   | "Exporting"
   | "Updating"
   | "Rebuilding";
-export const CodespaceWithFullRepositoryState = S.String;
+const CodespaceWithFullRepositoryState = S.String;
 
 /** Details about the codespace's git repository. */
 export type CodespaceWithFullRepositoryGitStatus = CodespaceGitStatus;
-export const CodespaceWithFullRepositoryGitStatus = CodespaceGitStatus;
-
 /** The initally assigned location of a new codespace. */
 export type CodespaceWithFullRepositoryLocation =
   | "EastUs"
   | "SouthEastAsia"
   | "WestEurope"
   | "WestUs2";
-export const CodespaceWithFullRepositoryLocation = S.String;
+const CodespaceWithFullRepositoryLocation = S.String;
 
 export type CodespaceWithFullRepositoryRecentFoldersList = Array<string>;
-export const CodespaceWithFullRepositoryRecentFoldersList =
+const CodespaceWithFullRepositoryRecentFoldersList =
   MinimalRepositoryTopicsList as any as S.Schema<CodespaceWithFullRepositoryRecentFoldersList>;
 
 /** The privacy settings a user can select from when forwarding a port. */
 export type CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList =
   Array<string>;
-export const CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList =
+const CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList>;
@@ -2993,7 +2906,7 @@ export interface CodespaceWithFullRepositoryRuntimeConstraints {
   /** The privacy settings a user can select from when forwarding a port. */
   allowed_port_privacy_settings?: CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList | null;
 }
-export const CodespaceWithFullRepositoryRuntimeConstraints = /*@__PURE__*/ S.suspend(() =>
+const CodespaceWithFullRepositoryRuntimeConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed_port_privacy_settings: S.optional(
       S.NullOr(CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList),
@@ -3059,7 +2972,7 @@ export interface CodespaceWithFullRepository {
   /** When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at" */
   retention_expires_at?: string | null;
 }
-export const CodespaceWithFullRepository = /*@__PURE__*/ S.suspend(() =>
+const CodespaceWithFullRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -3102,7 +3015,7 @@ export interface RemoveRepositoryForSecretForAuthenticatedUserRequest {
   secret_name: string;
   repository_id: number;
 }
-export const RemoveRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret_name: S.String.pipe(T.Label()),
     repository_id: S.Number.pipe(T.Label()),
@@ -3118,7 +3031,7 @@ export const RemoveRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*
 }) as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserRequest>;
 
 export interface RemoveRepositoryForSecretForAuthenticatedUserResponse {}
-export const RemoveRepositoryForSecretForAuthenticatedUserResponse =
+const RemoveRepositoryForSecretForAuthenticatedUserResponse =
   AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserResponse>;
 
 export interface RemoveSelectedRepoFromOrgSecretRequest {
@@ -3128,7 +3041,7 @@ export interface RemoveSelectedRepoFromOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -3145,7 +3058,7 @@ export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
 
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
-export const RemoveSelectedRepoFromOrgSecretResponse =
+const RemoveSelectedRepoFromOrgSecretResponse =
   AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
 
 export interface RepoMachinesForAuthenticatedUserRequest {
@@ -3160,7 +3073,7 @@ export interface RepoMachinesForAuthenticatedUserRequest {
   /** The branch or commit to check for prebuild availability and devcontainer restrictions. */
   ref?: string;
 }
-export const RepoMachinesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoMachinesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3173,20 +3086,17 @@ export const RepoMachinesForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RepoMachinesForAuthenticatedUserRequest>;
 
 export type RepoMachinesForAuthenticatedUserResponseMachinesList = Array<CodespaceMachine>;
-export const RepoMachinesForAuthenticatedUserResponseMachinesList =
-  CodespaceMachinesForAuthenticatedUserResponseMachinesList as any as S.Schema<RepoMachinesForAuthenticatedUserResponseMachinesList>;
-
 export interface RepoMachinesForAuthenticatedUserResponse {
   total_count: number;
   machines: RepoMachinesForAuthenticatedUserResponseMachinesList;
 }
-export const RepoMachinesForAuthenticatedUserResponse =
+const RepoMachinesForAuthenticatedUserResponse =
   CodespaceMachinesForAuthenticatedUserResponse as any as S.Schema<RepoMachinesForAuthenticatedUserResponse>;
 
 /** An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
 export type SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
   Array<number>;
-export const SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
+const SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList>;
@@ -3197,7 +3107,7 @@ export interface SetRepositoriesForSecretForAuthenticatedUserRequest {
   /** An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
   selected_repository_ids: SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList;
 }
-export const SetRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const SetRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret_name: S.String.pipe(T.Label()),
     selected_repository_ids:
@@ -3214,12 +3124,12 @@ export const SetRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*/
 }) as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserRequest>;
 
 export interface SetRepositoriesForSecretForAuthenticatedUserResponse {}
-export const SetRepositoriesForSecretForAuthenticatedUserResponse =
+const SetRepositoriesForSecretForAuthenticatedUserResponse =
   AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserResponse>;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-export const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
+const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
   CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
 
 export interface SetSelectedReposForOrgSecretRequest {
@@ -3230,7 +3140,7 @@ export interface SetSelectedReposForOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList;
 }
-export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -3247,14 +3157,14 @@ export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
 
 export interface SetSelectedReposForOrgSecretResponse {}
-export const SetSelectedReposForOrgSecretResponse =
+const SetSelectedReposForOrgSecretResponse =
   AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
 
 export interface StartForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-export const StartForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const StartForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/user/codespaces/{codespace_name}/start", code: 200 })),
@@ -3266,7 +3176,7 @@ export interface StopForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-export const StopForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const StopForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/user/codespaces/{codespace_name}/stop", code: 200 })),
@@ -3282,7 +3192,7 @@ export interface StopInOrganizationRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-export const StopInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const StopInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -3300,7 +3210,7 @@ export const StopInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in. */
 export type UpdateForAuthenticatedUserRequestRecentFoldersList = Array<string>;
-export const UpdateForAuthenticatedUserRequestRecentFoldersList =
+const UpdateForAuthenticatedUserRequestRecentFoldersList =
   MinimalRepositoryTopicsList as any as S.Schema<UpdateForAuthenticatedUserRequestRecentFoldersList>;
 
 export interface UpdateForAuthenticatedUserRequest {
@@ -3313,7 +3223,7 @@ export interface UpdateForAuthenticatedUserRequest {
   /** Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in. */
   recent_folders?: UpdateForAuthenticatedUserRequestRecentFoldersList;
 }
-export const UpdateForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codespace_name: S.String.pipe(T.Label()),
     machine: S.optional(S.String),

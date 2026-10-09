@@ -23,7 +23,7 @@ export interface ListIpsRequest {
   /** Specified as `jdcloud` to list IPs used by JD Cloud data centers. */
   networks?: string;
 }
-export const ListIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networks: S.optional(S.String.pipe(T.Query())),
   })
@@ -32,14 +32,7 @@ export const ListIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIpsRequest" }) as any as S.Schema<ListIpsRequest>;
 
 export type ListResultPublicIPIPsIpv4CidrsList = Array<string>;
-export const ListResultPublicIPIPsIpv4CidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultPublicIPIPsIpv4CidrsList>;
-
 export type ListResultPublicIPIPsIpv6CidrsList = Array<string>;
-export const ListResultPublicIPIPsIpv6CidrsList =
-  ListResultPublicIPIPsIpv4CidrsList as any as S.Schema<ListResultPublicIPIPsIpv6CidrsList>;
-
 export interface ListResultPublicIPIPs {
   /** A digest of the IP data. Useful for determining if the data has changed. */
   etag?: string | null;
@@ -48,26 +41,9 @@ export interface ListResultPublicIPIPs {
   /** List of Cloudflare IPv6 CIDR addresses. */
   ipv6Cidrs?: ListResultPublicIPIPsIpv6CidrsList | null;
 }
-export const ListResultPublicIPIPs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.NullOr(S.String)),
-    ipv4Cidrs: S.optional(S.NullOr(ListResultPublicIPIPsIpv4CidrsList).pipe(T.Body("ipv4_cidrs"))),
-    ipv6Cidrs: S.optional(S.NullOr(ListResultPublicIPIPsIpv6CidrsList).pipe(T.Body("ipv6_cidrs"))),
-  }),
-).annotate({ identifier: "ListResultPublicIPIPs" }) as any as S.Schema<ListResultPublicIPIPs>;
-
 export type ListResultPublicIPIPsJDCloudIpv4CidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudIpv4CidrsList =
-  ListResultPublicIPIPsIpv4CidrsList as any as S.Schema<ListResultPublicIPIPsJDCloudIpv4CidrsList>;
-
 export type ListResultPublicIPIPsJDCloudIpv6CidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudIpv6CidrsList =
-  ListResultPublicIPIPsIpv4CidrsList as any as S.Schema<ListResultPublicIPIPsJDCloudIpv6CidrsList>;
-
 export type ListResultPublicIPIPsJDCloudJdcloudCidrsList = Array<string>;
-export const ListResultPublicIPIPsJDCloudJdcloudCidrsList =
-  ListResultPublicIPIPsIpv4CidrsList as any as S.Schema<ListResultPublicIPIPsJDCloudJdcloudCidrsList>;
-
 export interface ListResultPublicIPIPsJDCloud {
   /** A digest of the IP data. Useful for determining if the data has changed. */
   etag?: string | null;
@@ -78,25 +54,8 @@ export interface ListResultPublicIPIPsJDCloud {
   /** List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used. */
   jdcloudCidrs?: ListResultPublicIPIPsJDCloudJdcloudCidrsList | null;
 }
-export const ListResultPublicIPIPsJDCloud = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    etag: S.optional(S.NullOr(S.String)),
-    ipv4Cidrs: S.optional(
-      S.NullOr(ListResultPublicIPIPsJDCloudIpv4CidrsList).pipe(T.Body("ipv4_cidrs")),
-    ),
-    ipv6Cidrs: S.optional(
-      S.NullOr(ListResultPublicIPIPsJDCloudIpv6CidrsList).pipe(T.Body("ipv6_cidrs")),
-    ),
-    jdcloudCidrs: S.optional(
-      S.NullOr(ListResultPublicIPIPsJDCloudJdcloudCidrsList).pipe(T.Body("jdcloud_cidrs")),
-    ),
-  }),
-).annotate({
-  identifier: "ListResultPublicIPIPsJDCloud",
-}) as any as S.Schema<ListResultPublicIPIPsJDCloud>;
-
 export type ListResult = ListResultPublicIPIPs | ListResultPublicIPIPsJDCloud;
-export const ListResult = /*@__PURE__*/ S.Unknown.pipe(
+const ListResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["etag", "ipv4Cidrs", "ipv6Cidrs"],
     ["etag", "ipv4Cidrs", "ipv6Cidrs", "jdcloudCidrs"],
@@ -104,7 +63,7 @@ export const ListResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type ListIpsResponse = ListResult;
-export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
   ListResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListIpsResponse" }) as any as S.Schema<ListIpsResponse>;
 

@@ -71,18 +71,18 @@ export class ZoneNotFound
   ) {}
 
 export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
-export const CreateRequestBundleMethod = S.String;
+const CreateRequestBundleMethod = S.String;
 
 export type CreateRequestDeploy = "staging" | "production";
-export const CreateRequestDeploy = S.String;
+const CreateRequestDeploy = S.String;
 
 export type CreateRequestGeoRestrictionsLabel = "us" | "eu" | "highest_security";
-export const CreateRequestGeoRestrictionsLabel = S.String;
+const CreateRequestGeoRestrictionsLabel = S.String;
 
 export interface CreateRequestGeoRestrictions {
   label?: CreateRequestGeoRestrictionsLabel | (string & {});
 }
-export const CreateRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(CreateRequestGeoRestrictionsLabel),
   }),
@@ -91,7 +91,7 @@ export const CreateRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestGeoRestrictions>;
 
 export type CreateRequestType = "legacy_custom" | "sni_custom";
-export const CreateRequestType = S.String;
+const CreateRequestType = S.String;
 
 export interface CreateCustomCertificateRequest {
   /** Identifier. */
@@ -113,7 +113,7 @@ export interface CreateCustomCertificateRequest {
   /** The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake. */
   type?: CreateRequestType | (string & {});
 }
-export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
@@ -132,15 +132,15 @@ export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomCertificateRequest>;
 
 export type CreateResponseBundleMethod = "ubiquitous" | "optimal" | "force";
-export const CreateResponseBundleMethod = S.String;
+const CreateResponseBundleMethod = S.String;
 
 export type CreateResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
-export const CreateResponseGeoRestrictionsLabel = S.String;
+const CreateResponseGeoRestrictionsLabel = S.String;
 
 export interface CreateResponseGeoRestrictions {
   label?: CreateResponseGeoRestrictionsLabel | null;
 }
-export const CreateResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.NullOr(CreateResponseGeoRestrictionsLabel)),
   }),
@@ -149,16 +149,16 @@ export const CreateResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseGeoRestrictions>;
 
 export type CreateResponseHostsList = Array<string>;
-export const CreateResponseHostsList = /*@__PURE__*/ S.Array(
+const CreateResponseHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseHostsList>;
 
 export type CreateResponseKeylessServerPermissionsList = Array<string>;
-export const CreateResponseKeylessServerPermissionsList =
+const CreateResponseKeylessServerPermissionsList =
   CreateResponseHostsList as any as S.Schema<CreateResponseKeylessServerPermissionsList>;
 
 export type CreateResponseKeylessServerStatus = "active" | "deleted";
-export const CreateResponseKeylessServerStatus = S.String;
+const CreateResponseKeylessServerStatus = S.String;
 
 export interface CreateResponseKeylessServerTunnel {
   /** Private IP of the Key Server Host. */
@@ -166,7 +166,7 @@ export interface CreateResponseKeylessServerTunnel {
   /** Cloudflare Tunnel Virtual Network ID. */
   vnetId: string;
 }
-export const CreateResponseKeylessServerTunnel = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseKeylessServerTunnel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateIp: S.String.pipe(T.Body("private_ip")),
     vnetId: S.String.pipe(T.Body("vnet_id")),
@@ -197,7 +197,7 @@ export interface CreateResponseKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
-export const CreateResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -215,7 +215,7 @@ export const CreateResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseKeylessServer>;
 
 export type CreateResponseStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
-export const CreateResponseStatus = S.String;
+const CreateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomCertificateResponse {
@@ -248,7 +248,7 @@ export interface CreateCustomCertificateResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
-export const CreateCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
@@ -278,7 +278,7 @@ export interface DeleteCustomCertificateRequest {
   /** Custom certificate identifier tag. */
   customCertificateId: string;
 }
-export const DeleteCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
@@ -300,7 +300,7 @@ export interface DeleteCustomCertificateResponse {
   /** Custom certificate identifier tag. */
   id?: string | null;
 }
-export const DeleteCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -314,7 +314,7 @@ export interface GetCustomCertificateRequest {
   /** Custom certificate identifier tag. */
   customCertificateId: string;
 }
-export const GetCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
@@ -332,31 +332,26 @@ export const GetCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomCertificateRequest>;
 
 export type GetResponseBundleMethod = "ubiquitous" | "optimal" | "force";
-export const GetResponseBundleMethod = S.String;
+const GetResponseBundleMethod = S.String;
 
 export type GetResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
-export const GetResponseGeoRestrictionsLabel = S.String;
-
 export interface GetResponseGeoRestrictions {
   label?: GetResponseGeoRestrictionsLabel | null;
 }
-export const GetResponseGeoRestrictions =
+const GetResponseGeoRestrictions =
   CreateResponseGeoRestrictions as any as S.Schema<GetResponseGeoRestrictions>;
 
 export type GetResponseHostsList = Array<string>;
-export const GetResponseHostsList =
-  CreateResponseHostsList as any as S.Schema<GetResponseHostsList>;
+const GetResponseHostsList = CreateResponseHostsList as any as S.Schema<GetResponseHostsList>;
 
 export type GetResponseKeylessServerPermissionsList = Array<string>;
-export const GetResponseKeylessServerPermissionsList =
+const GetResponseKeylessServerPermissionsList =
   CreateResponseHostsList as any as S.Schema<GetResponseKeylessServerPermissionsList>;
 
 export type GetResponseKeylessServerStatus = "active" | "deleted";
-export const GetResponseKeylessServerStatus = S.String;
+const GetResponseKeylessServerStatus = S.String;
 
 export type GetResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
-export const GetResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
-
 export interface GetResponseKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -379,7 +374,7 @@ export interface GetResponseKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
-export const GetResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
+const GetResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -395,7 +390,7 @@ export const GetResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponseKeylessServer" }) as any as S.Schema<GetResponseKeylessServer>;
 
 export type GetResponseStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
-export const GetResponseStatus = S.String;
+const GetResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomCertificateResponse {
@@ -428,7 +423,7 @@ export interface GetCustomCertificateResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
-export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
@@ -453,10 +448,10 @@ export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomCertificateResponse>;
 
 export type ListRequestMatch = "any" | "all";
-export const ListRequestMatch = S.String;
+const ListRequestMatch = S.String;
 
 export type ListRequestStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
-export const ListRequestStatus = S.String;
+const ListRequestStatus = S.String;
 
 export interface ListCustomCertificatesRequest {
   /** Identifier. */
@@ -470,7 +465,7 @@ export interface ListCustomCertificatesRequest {
   /** Status of the zone's custom SSL. */
   status?: ListRequestStatus | (string & {});
 }
-export const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     match: S.optional(ListRequestMatch.pipe(T.Query())),
@@ -485,31 +480,26 @@ export const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomCertificatesRequest>;
 
 export type ListResultItemBundleMethod = "ubiquitous" | "optimal" | "force";
-export const ListResultItemBundleMethod = S.String;
+const ListResultItemBundleMethod = S.String;
 
 export type ListResultItemGeoRestrictionsLabel = "us" | "eu" | "highest_security";
-export const ListResultItemGeoRestrictionsLabel = S.String;
-
 export interface ListResultItemGeoRestrictions {
   label?: ListResultItemGeoRestrictionsLabel | null;
 }
-export const ListResultItemGeoRestrictions =
+const ListResultItemGeoRestrictions =
   CreateResponseGeoRestrictions as any as S.Schema<ListResultItemGeoRestrictions>;
 
 export type ListResultItemHostsList = Array<string>;
-export const ListResultItemHostsList =
-  CreateResponseHostsList as any as S.Schema<ListResultItemHostsList>;
+const ListResultItemHostsList = CreateResponseHostsList as any as S.Schema<ListResultItemHostsList>;
 
 export type ListResultItemKeylessServerPermissionsList = Array<string>;
-export const ListResultItemKeylessServerPermissionsList =
+const ListResultItemKeylessServerPermissionsList =
   CreateResponseHostsList as any as S.Schema<ListResultItemKeylessServerPermissionsList>;
 
 export type ListResultItemKeylessServerStatus = "active" | "deleted";
-export const ListResultItemKeylessServerStatus = S.String;
+const ListResultItemKeylessServerStatus = S.String;
 
 export type ListResultItemKeylessServerTunnel = CreateResponseKeylessServerTunnel;
-export const ListResultItemKeylessServerTunnel = CreateResponseKeylessServerTunnel;
-
 export interface ListResultItemKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -532,7 +522,7 @@ export interface ListResultItemKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
-export const ListResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
+const ListResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -550,7 +540,7 @@ export const ListResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResultItemKeylessServer>;
 
 export type ListResultItemStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
-export const ListResultItemStatus = S.String;
+const ListResultItemStatus = S.String;
 
 export interface ListResultItem {
   /** Custom certificate identifier tag. */
@@ -582,7 +572,7 @@ export interface ListResultItem {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
@@ -605,9 +595,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListCustomCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -615,7 +603,7 @@ export interface ListCustomCertificatesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -625,18 +613,16 @@ export const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomCertificatesResponse>;
 
 export type EditRequestBundleMethod = "ubiquitous" | "optimal" | "force";
-export const EditRequestBundleMethod = S.String;
+const EditRequestBundleMethod = S.String;
 
 export type EditRequestDeploy = "staging" | "production";
-export const EditRequestDeploy = S.String;
+const EditRequestDeploy = S.String;
 
 export type EditRequestGeoRestrictionsLabel = "us" | "eu" | "highest_security";
-export const EditRequestGeoRestrictionsLabel = S.String;
-
 export interface EditRequestGeoRestrictions {
   label?: EditRequestGeoRestrictionsLabel | (string & {});
 }
-export const EditRequestGeoRestrictions =
+const EditRequestGeoRestrictions =
   CreateRequestGeoRestrictions as any as S.Schema<EditRequestGeoRestrictions>;
 
 export interface PatchCustomCertificateRequest {
@@ -659,7 +645,7 @@ export interface PatchCustomCertificateRequest {
   /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
   privateKey?: string;
 }
-export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
@@ -684,31 +670,26 @@ export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchCustomCertificateRequest>;
 
 export type EditResponseBundleMethod = "ubiquitous" | "optimal" | "force";
-export const EditResponseBundleMethod = S.String;
+const EditResponseBundleMethod = S.String;
 
 export type EditResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
-export const EditResponseGeoRestrictionsLabel = S.String;
-
 export interface EditResponseGeoRestrictions {
   label?: EditResponseGeoRestrictionsLabel | null;
 }
-export const EditResponseGeoRestrictions =
+const EditResponseGeoRestrictions =
   CreateResponseGeoRestrictions as any as S.Schema<EditResponseGeoRestrictions>;
 
 export type EditResponseHostsList = Array<string>;
-export const EditResponseHostsList =
-  CreateResponseHostsList as any as S.Schema<EditResponseHostsList>;
+const EditResponseHostsList = CreateResponseHostsList as any as S.Schema<EditResponseHostsList>;
 
 export type EditResponseKeylessServerPermissionsList = Array<string>;
-export const EditResponseKeylessServerPermissionsList =
+const EditResponseKeylessServerPermissionsList =
   CreateResponseHostsList as any as S.Schema<EditResponseKeylessServerPermissionsList>;
 
 export type EditResponseKeylessServerStatus = "active" | "deleted";
-export const EditResponseKeylessServerStatus = S.String;
+const EditResponseKeylessServerStatus = S.String;
 
 export type EditResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
-export const EditResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
-
 export interface EditResponseKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -731,7 +712,7 @@ export interface EditResponseKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
-export const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
+const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -749,7 +730,7 @@ export const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseKeylessServer>;
 
 export type EditResponseStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
-export const EditResponseStatus = S.String;
+const EditResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCustomCertificateResponse {
@@ -782,7 +763,7 @@ export interface PatchCustomCertificateResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
-export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
@@ -812,7 +793,7 @@ export interface PrioritizeUpdateRequestCertificatesItem {
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
   priority?: number;
 }
-export const PrioritizeUpdateRequestCertificatesItem = /*@__PURE__*/ S.suspend(() =>
+const PrioritizeUpdateRequestCertificatesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     priority: S.optional(S.Number),
@@ -823,7 +804,7 @@ export const PrioritizeUpdateRequestCertificatesItem = /*@__PURE__*/ S.suspend((
 
 export type PrioritizeUpdateRequestCertificatesList =
   Array<PrioritizeUpdateRequestCertificatesItem>;
-export const PrioritizeUpdateRequestCertificatesList = /*@__PURE__*/ S.Array(
+const PrioritizeUpdateRequestCertificatesList = /*@__PURE__*/ S.Array(
   PrioritizeUpdateRequestCertificatesItem,
 ) as any as S.Schema<PrioritizeUpdateRequestCertificatesList>;
 
@@ -833,7 +814,7 @@ export interface PutPrioritizeRequest {
   /** Array of ordered certificates. */
   certificates: PrioritizeUpdateRequestCertificatesList;
 }
-export const PutPrioritizeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutPrioritizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificates: PrioritizeUpdateRequestCertificatesList,
@@ -845,31 +826,27 @@ export const PutPrioritizeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutPrioritizeRequest" }) as any as S.Schema<PutPrioritizeRequest>;
 
 export type PrioritizeUpdateResultItemBundleMethod = "ubiquitous" | "optimal" | "force";
-export const PrioritizeUpdateResultItemBundleMethod = S.String;
+const PrioritizeUpdateResultItemBundleMethod = S.String;
 
 export type PrioritizeUpdateResultItemGeoRestrictionsLabel = "us" | "eu" | "highest_security";
-export const PrioritizeUpdateResultItemGeoRestrictionsLabel = S.String;
-
 export interface PrioritizeUpdateResultItemGeoRestrictions {
   label?: PrioritizeUpdateResultItemGeoRestrictionsLabel | null;
 }
-export const PrioritizeUpdateResultItemGeoRestrictions =
+const PrioritizeUpdateResultItemGeoRestrictions =
   CreateResponseGeoRestrictions as any as S.Schema<PrioritizeUpdateResultItemGeoRestrictions>;
 
 export type PrioritizeUpdateResultItemHostsList = Array<string>;
-export const PrioritizeUpdateResultItemHostsList =
+const PrioritizeUpdateResultItemHostsList =
   CreateResponseHostsList as any as S.Schema<PrioritizeUpdateResultItemHostsList>;
 
 export type PrioritizeUpdateResultItemKeylessServerPermissionsList = Array<string>;
-export const PrioritizeUpdateResultItemKeylessServerPermissionsList =
+const PrioritizeUpdateResultItemKeylessServerPermissionsList =
   CreateResponseHostsList as any as S.Schema<PrioritizeUpdateResultItemKeylessServerPermissionsList>;
 
 export type PrioritizeUpdateResultItemKeylessServerStatus = "active" | "deleted";
-export const PrioritizeUpdateResultItemKeylessServerStatus = S.String;
+const PrioritizeUpdateResultItemKeylessServerStatus = S.String;
 
 export type PrioritizeUpdateResultItemKeylessServerTunnel = CreateResponseKeylessServerTunnel;
-export const PrioritizeUpdateResultItemKeylessServerTunnel = CreateResponseKeylessServerTunnel;
-
 export interface PrioritizeUpdateResultItemKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -892,7 +869,7 @@ export interface PrioritizeUpdateResultItemKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
-export const PrioritizeUpdateResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
+const PrioritizeUpdateResultItemKeylessServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -915,7 +892,7 @@ export type PrioritizeUpdateResultItemStatus =
   | "deleted"
   | "pending"
   | "initializing";
-export const PrioritizeUpdateResultItemStatus = S.String;
+const PrioritizeUpdateResultItemStatus = S.String;
 
 export interface PrioritizeUpdateResultItem {
   /** Custom certificate identifier tag. */
@@ -947,7 +924,7 @@ export interface PrioritizeUpdateResultItem {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
-export const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
+const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
@@ -976,7 +953,7 @@ export const PrioritizeUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrioritizeUpdateResultItem>;
 
 export type PrioritizeUpdateResultList = Array<PrioritizeUpdateResultItem>;
-export const PrioritizeUpdateResultList = /*@__PURE__*/ S.Array(
+const PrioritizeUpdateResultList = /*@__PURE__*/ S.Array(
   PrioritizeUpdateResultItem,
 ) as any as S.Schema<PrioritizeUpdateResultList>;
 
@@ -986,7 +963,7 @@ export interface PutPrioritizeResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const PutPrioritizeResponse = /*@__PURE__*/ S.suspend(() =>
+const PutPrioritizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PrioritizeUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

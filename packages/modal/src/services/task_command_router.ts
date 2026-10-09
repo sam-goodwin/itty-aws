@@ -9,10 +9,10 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface VolumeMount {
   volumeId?: string;
@@ -21,7 +21,7 @@ export interface VolumeMount {
   readOnly?: boolean;
   subPath?: string;
 }
-export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
+const VolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     mountPath: S.optional(S.String),
@@ -32,19 +32,17 @@ export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeMount" }) as any as S.Schema<VolumeMount>;
 
 export type VolumeMountList = Array<VolumeMount>;
-export const VolumeMountList = /*@__PURE__*/ S.Array(
-  VolumeMount,
-) as any as S.Schema<VolumeMountList>;
+const VolumeMountList = /*@__PURE__*/ S.Array(VolumeMount) as any as S.Schema<VolumeMountList>;
 
 export type NetworkAccessNetworkAccessType = "UNSPECIFIED" | "OPEN" | "BLOCKED" | "ALLOWLIST";
-export const NetworkAccessNetworkAccessType = S.String;
+const NetworkAccessNetworkAccessType = S.String;
 
 export interface NetworkAccess {
   networkAccessType?: NetworkAccessNetworkAccessType | (string & {});
   allowedCidrs?: StringList;
   allowedDomains?: StringList;
 }
-export const NetworkAccess = /*@__PURE__*/ S.suspend(() =>
+const NetworkAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkAccessType: S.optional(NetworkAccessNetworkAccessType),
     allowedCidrs: S.optional(StringList),
@@ -53,7 +51,7 @@ export const NetworkAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkAccess" }) as any as S.Schema<NetworkAccess>;
 
 export type PTYInfoPTYType = "PTY_TYPE_UNSPECIFIED" | "PTY_TYPE_FUNCTION" | "PTY_TYPE_SHELL";
-export const PTYInfoPTYType = S.String;
+const PTYInfoPTYType = S.String;
 
 export interface PTYInfo {
   enabled?: boolean;
@@ -67,7 +65,7 @@ export interface PTYInfo {
   ptyType?: PTYInfoPTYType | (string & {});
   noTerminateOnIdleStdin?: boolean;
 }
-export const PTYInfo = /*@__PURE__*/ S.suspend(() =>
+const PTYInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     winszRows: S.optional(S.Number),
@@ -83,7 +81,7 @@ export const PTYInfo = /*@__PURE__*/ S.suspend(() =>
 export interface StringMap2 {
   contents?: StringMap;
 }
-export const StringMap2 = /*@__PURE__*/ S.suspend(() =>
+const StringMap2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contents: S.optional(StringMap),
   }),
@@ -96,7 +94,7 @@ export interface SecretSource {
   /** Plaintext values sent directly to the worker. Must not be persisted. */
   env?: StringMap2;
 }
-export const SecretSource = /*@__PURE__*/ S.suspend(() =>
+const SecretSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.optional(S.String),
     env: S.optional(StringMap2),
@@ -104,9 +102,7 @@ export const SecretSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretSource" }) as any as S.Schema<SecretSource>;
 
 export type SecretSourceList = Array<SecretSource>;
-export const SecretSourceList = /*@__PURE__*/ S.Array(
-  SecretSource,
-) as any as S.Schema<SecretSourceList>;
+const SecretSourceList = /*@__PURE__*/ S.Array(SecretSource) as any as S.Schema<SecretSourceList>;
 
 export interface CreateTaskContainerRequest {
   taskId?: string;
@@ -129,7 +125,7 @@ export interface CreateTaskContainerRequest {
   /** Applied in order. Cannot be combined with secret_ids or env. */
   secretSources?: SecretSourceList;
 }
-export const CreateTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     containerName: S.optional(S.String),
@@ -160,7 +156,7 @@ export interface CreateTaskContainerResponse {
   /** Logical container name associated with this container. */
   containerName?: string;
 }
-export const CreateTaskContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.optional(S.String),
     containerName: S.optional(S.String),
@@ -175,7 +171,7 @@ export interface GetTaskContainerRequest {
   /** Include the latest terminated container if the name is no longer active. */
   includeTerminated?: boolean;
 }
-export const GetTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     containerName: S.optional(S.String),
@@ -200,7 +196,7 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-export const GenericResultGenericStatus = S.String;
+const GenericResultGenericStatus = S.String;
 
 /** sub-type for generic types like lists */
 export interface GenericResult {
@@ -222,7 +218,7 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-export const GenericResult = /*@__PURE__*/ S.suspend(() =>
+const GenericResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenericResultGenericStatus),
     exception: S.optional(S.String),
@@ -242,7 +238,7 @@ export interface TaskContainerInfo {
   status?: string;
   result?: GenericResult;
 }
-export const TaskContainerInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskContainerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.optional(S.String),
     containerName: S.optional(S.String),
@@ -254,7 +250,7 @@ export const TaskContainerInfo = /*@__PURE__*/ S.suspend(() =>
 export interface GetTaskContainerResponse {
   container?: TaskContainerInfo;
 }
-export const GetTaskContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaskContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     container: S.optional(TaskContainerInfo),
   }),
@@ -265,7 +261,7 @@ export interface ListTaskContainerRequest {
   /** Include all tracked terminated containers in addition to active ones. */
   includeTerminated?: boolean;
 }
-export const ListTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     includeTerminated: S.optional(S.Boolean),
@@ -279,14 +275,14 @@ export const ListTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTaskContainerRequest" }) as any as S.Schema<ListTaskContainerRequest>;
 
 export type TaskContainerInfoList = Array<TaskContainerInfo>;
-export const TaskContainerInfoList = /*@__PURE__*/ S.Array(
+const TaskContainerInfoList = /*@__PURE__*/ S.Array(
   TaskContainerInfo,
 ) as any as S.Schema<TaskContainerInfoList>;
 
 export interface ListTaskContainerResponse {
   containers?: TaskContainerInfoList;
 }
-export const ListTaskContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTaskContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containers: S.optional(TaskContainerInfoList),
   }),
@@ -300,7 +296,7 @@ export interface SandboxStdinWriteV2Request {
   data?: string;
   eof?: boolean;
 }
-export const SandboxStdinWriteV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxStdinWriteV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     offset: S.optional(S.String),
@@ -318,7 +314,7 @@ export const SandboxStdinWriteV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SandboxStdinWriteV2Request>;
 
 export interface SandboxStdinWriteV2Response {}
-export const SandboxStdinWriteV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SandboxStdinWriteV2Response = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SandboxStdinWriteV2Response",
 }) as any as S.Schema<SandboxStdinWriteV2Response>;
 
@@ -326,7 +322,7 @@ export interface SandboxWaitUntilReadyRequest {
   taskId?: string;
   timeout?: number;
 }
-export const SandboxWaitUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxWaitUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -344,7 +340,7 @@ export const SandboxWaitUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxWaitUntilReadyResponse {
   readyAt?: number;
 }
-export const SandboxWaitUntilReadyResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxWaitUntilReadyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readyAt: S.optional(S.Number),
   }),
@@ -358,7 +354,7 @@ export interface TaskExecPollRequest {
   /** The execution ID of the command to wait on. */
   execId?: string;
 }
-export const TaskExecPollRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskExecPollRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     execId: S.optional(S.String),
@@ -377,7 +373,7 @@ export interface TaskExecPollResponse {
   /** The signal that terminated the command. */
   signal?: number;
 }
-export const TaskExecPollResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskExecPollResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     signal: S.optional(S.Number),
@@ -387,13 +383,13 @@ export const TaskExecPollResponse = /*@__PURE__*/ S.suspend(() =>
 export type TaskExecStdoutConfig =
   | "TASK_EXEC_STDOUT_CONFIG_DEVNULL"
   | "TASK_EXEC_STDOUT_CONFIG_PIPE";
-export const TaskExecStdoutConfig = S.String;
+const TaskExecStdoutConfig = S.String;
 
 export type TaskExecStderrConfig =
   | "TASK_EXEC_STDERR_CONFIG_DEVNULL"
   | "TASK_EXEC_STDERR_CONFIG_PIPE"
   | "TASK_EXEC_STDERR_CONFIG_STDOUT";
-export const TaskExecStderrConfig = S.String;
+const TaskExecStderrConfig = S.String;
 
 export interface TaskExecStartRequest {
   /** The ID of the task to execute the command in. */
@@ -423,7 +419,7 @@ export interface TaskExecStartRequest {
   /** Applied in order. Cannot be combined with secret_ids or env. */
   secretSources?: SecretSourceList;
 }
-export const TaskExecStartRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskExecStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     execId: S.optional(S.String),
@@ -448,8 +444,7 @@ export const TaskExecStartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskExecStartRequest" }) as any as S.Schema<TaskExecStartRequest>;
 
 export interface TaskExecStartResponse {}
-export const TaskExecStartResponse =
-  SandboxStdinWriteV2Response as any as S.Schema<TaskExecStartResponse>;
+const TaskExecStartResponse = SandboxStdinWriteV2Response as any as S.Schema<TaskExecStartResponse>;
 
 export interface TaskExecStdinStatusRequest {
   /** The ID of the task running the exec'd command. */
@@ -457,7 +452,7 @@ export interface TaskExecStdinStatusRequest {
   /** The execution ID of the command to query. */
   execId?: string;
 }
-export const TaskExecStdinStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskExecStdinStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     execId: S.optional(S.String),
@@ -478,7 +473,7 @@ export interface TaskExecStdinStatusResponse {
   /** True if stdin has already been closed (EOF sent) for this exec. */
   closed?: boolean;
 }
-export const TaskExecStdinStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskExecStdinStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numBytesWritten: S.optional(S.String),
     closed: S.optional(S.Boolean),
@@ -498,7 +493,7 @@ export interface TaskExecStdinWriteRequest {
   /** If true, close the stdin stream after writing any provided data. This signals EOF to the exec'd process. */
   eof?: boolean;
 }
-export const TaskExecStdinWriteRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskExecStdinWriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     execId: S.optional(S.String),
@@ -517,7 +512,7 @@ export const TaskExecStdinWriteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskExecStdinWriteRequest>;
 
 export interface TaskExecStdinWriteResponse {}
-export const TaskExecStdinWriteResponse =
+const TaskExecStdinWriteResponse =
   SandboxStdinWriteV2Response as any as S.Schema<TaskExecStdinWriteResponse>;
 
 export interface TaskExecWaitRequest {
@@ -526,7 +521,7 @@ export interface TaskExecWaitRequest {
   /** The execution ID of the command to wait on. */
   execId?: string;
 }
-export const TaskExecWaitRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskExecWaitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     execId: S.optional(S.String),
@@ -545,7 +540,7 @@ export interface TaskExecWaitResponse {
   /** The signal that terminated the command. */
   signal?: number;
 }
-export const TaskExecWaitResponse = TaskExecPollResponse as any as S.Schema<TaskExecWaitResponse>;
+const TaskExecWaitResponse = TaskExecPollResponse as any as S.Schema<TaskExecWaitResponse>;
 
 export interface TaskMountDirectoryRequest {
   taskId?: string;
@@ -556,7 +551,7 @@ export interface TaskMountDirectoryRequest {
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-export const TaskMountDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskMountDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     path: S.optional(S.String),
@@ -575,7 +570,7 @@ export const TaskMountDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskMountDirectoryRequest>;
 
 export interface TaskMountDirectoryResponse {}
-export const TaskMountDirectoryResponse =
+const TaskMountDirectoryResponse =
   SandboxStdinWriteV2Response as any as S.Schema<TaskMountDirectoryResponse>;
 
 export interface TaskReloadVolumesRequest {
@@ -583,7 +578,7 @@ export interface TaskReloadVolumesRequest {
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-export const TaskReloadVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskReloadVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     containerId: S.optional(S.String),
@@ -597,7 +592,7 @@ export const TaskReloadVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskReloadVolumesRequest" }) as any as S.Schema<TaskReloadVolumesRequest>;
 
 export interface TaskReloadVolumesResponse {}
-export const TaskReloadVolumesResponse =
+const TaskReloadVolumesResponse =
   SandboxStdinWriteV2Response as any as S.Schema<TaskReloadVolumesResponse>;
 
 export interface TaskSetNetworkAccessRequest {
@@ -605,7 +600,7 @@ export interface TaskSetNetworkAccessRequest {
   /** Replaces the task's network access policy. Only ALLOWLIST is currently supported; open access is expressed as an allow-all allowlist. */
   networkAccess?: NetworkAccess;
 }
-export const TaskSetNetworkAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskSetNetworkAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     networkAccess: S.optional(NetworkAccess),
@@ -621,7 +616,7 @@ export const TaskSetNetworkAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskSetNetworkAccessRequest>;
 
 export interface TaskSetNetworkAccessResponse {}
-export const TaskSetNetworkAccessResponse =
+const TaskSetNetworkAccessResponse =
   SandboxStdinWriteV2Response as any as S.Schema<TaskSetNetworkAccessResponse>;
 
 export interface OutboundPolicyHeaderReplacement {
@@ -632,7 +627,7 @@ export interface OutboundPolicyHeaderReplacement {
   /** Header name -> header value. Values support templating with keys in the stanza's secret_id: a $-prefixed key name in the secret will be replaced with the secret value. Literal $ characters can be represented by two dollars: `$$`. */
   headers?: StringMap;
 }
-export const OutboundPolicyHeaderReplacement = /*@__PURE__*/ S.suspend(() =>
+const OutboundPolicyHeaderReplacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     secretId: S.optional(S.String),
@@ -643,7 +638,7 @@ export const OutboundPolicyHeaderReplacement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutboundPolicyHeaderReplacement>;
 
 export type OutboundPolicyHeaderReplacementList = Array<OutboundPolicyHeaderReplacement>;
-export const OutboundPolicyHeaderReplacementList = /*@__PURE__*/ S.Array(
+const OutboundPolicyHeaderReplacementList = /*@__PURE__*/ S.Array(
   OutboundPolicyHeaderReplacement,
 ) as any as S.Schema<OutboundPolicyHeaderReplacementList>;
 
@@ -652,7 +647,7 @@ export interface OutboundPolicy {
   /** Replace headers in outbound HTTPS requests, potentially with secret values. */
   headerReplacements?: OutboundPolicyHeaderReplacementList;
 }
-export const OutboundPolicy = /*@__PURE__*/ S.suspend(() =>
+const OutboundPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerReplacements: S.optional(OutboundPolicyHeaderReplacementList),
   }),
@@ -663,7 +658,7 @@ export interface TaskSetOutboundPolicyRequest {
   /** Replaces the task's outbound policy. */
   outboundPolicy?: OutboundPolicy;
 }
-export const TaskSetOutboundPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskSetOutboundPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     outboundPolicy: S.optional(OutboundPolicy),
@@ -679,7 +674,7 @@ export const TaskSetOutboundPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskSetOutboundPolicyRequest>;
 
 export interface TaskSetOutboundPolicyResponse {}
-export const TaskSetOutboundPolicyResponse =
+const TaskSetOutboundPolicyResponse =
   SandboxStdinWriteV2Response as any as S.Schema<TaskSetOutboundPolicyResponse>;
 
 export interface TaskSnapshotDirectoryRequest {
@@ -694,7 +689,7 @@ export interface TaskSnapshotDirectoryRequest {
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-export const TaskSnapshotDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskSnapshotDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     path: S.optional(S.String),
@@ -716,7 +711,7 @@ export const TaskSnapshotDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TaskSnapshotDirectoryResponse {
   imageId?: string;
 }
-export const TaskSnapshotDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskSnapshotDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
   }),
@@ -735,7 +730,7 @@ export interface TaskSnapshotFilesystemRequest {
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-export const TaskSnapshotFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskSnapshotFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     snapshotId: S.optional(S.String),
@@ -756,14 +751,14 @@ export const TaskSnapshotFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TaskSnapshotFilesystemResponse {
   imageId?: string;
 }
-export const TaskSnapshotFilesystemResponse =
+const TaskSnapshotFilesystemResponse =
   TaskSnapshotDirectoryResponse as any as S.Schema<TaskSnapshotFilesystemResponse>;
 
 export interface TaskSnapshotMemoryRequest {
   taskId?: string;
   idempotencyKey?: string;
 }
-export const TaskSnapshotMemoryRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskSnapshotMemoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     idempotencyKey: S.optional(S.String),
@@ -781,7 +776,7 @@ export const TaskSnapshotMemoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TaskSnapshotMemoryResponse {
   snapshotId?: string;
 }
-export const TaskSnapshotMemoryResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskSnapshotMemoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
   }),
@@ -795,7 +790,7 @@ export interface TaskUnmountDirectoryRequest {
   /** Fully qualified target container ID. Empty targets the main container. */
   containerId?: string;
 }
-export const TaskUnmountDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskUnmountDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     path: S.optional(S.String),
@@ -812,14 +807,14 @@ export const TaskUnmountDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskUnmountDirectoryRequest>;
 
 export interface TaskUnmountDirectoryResponse {}
-export const TaskUnmountDirectoryResponse =
+const TaskUnmountDirectoryResponse =
   SandboxStdinWriteV2Response as any as S.Schema<TaskUnmountDirectoryResponse>;
 
 export interface TerminateTaskContainerRequest {
   taskId?: string;
   containerId?: string;
 }
-export const TerminateTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     containerId: S.optional(S.String),
@@ -835,7 +830,7 @@ export const TerminateTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateTaskContainerRequest>;
 
 export interface TerminateTaskContainerResponse {}
-export const TerminateTaskContainerResponse =
+const TerminateTaskContainerResponse =
   SandboxStdinWriteV2Response as any as S.Schema<TerminateTaskContainerResponse>;
 
 export interface WaitTaskContainerRequest {
@@ -843,7 +838,7 @@ export interface WaitTaskContainerRequest {
   containerId?: string;
   timeout?: number;
 }
-export const WaitTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     containerId: S.optional(S.String),
@@ -860,7 +855,7 @@ export const WaitTaskContainerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface WaitTaskContainerResponse {
   result?: GenericResult;
 }
-export const WaitTaskContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const WaitTaskContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
   }),

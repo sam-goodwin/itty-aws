@@ -62,14 +62,14 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A set of field paths on a document. Used to restrict a get or update operation on a document to a subset of its fields. This is different from standard field masks, as this is always scoped to a Document, and takes in account the dynamic nature of Value. */
 export interface DocumentMask {
   /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
   fieldPaths?: StringList;
 }
-export const DocumentMask = /*@__PURE__*/ S.suspend(() =>
+const DocumentMask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPaths: S.optional(StringList),
   }),
@@ -80,7 +80,7 @@ export interface RequestOptions {
   /** Optional. The request tags for the request. Request tags are user-provided strings used for usage monitoring, cost management, and observability. Callers can associate custom application context (such as component, microservice, feature name, or operation type) with database requests. These tags are collected and aggregated in usage and monitoring reports, allowing billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show up in monitoring and are visible in administrative operations (such as usage reports). They do not affect data storage, query semantics, or request execution. Cardinality and Best Practices: - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than 100 distinct tags across an entire database). Using a large number of distinct tags may result in tags being omitted from top usage dashboards. - Use structured identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs, request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or personally identifiable information (PII) in request tags, as they show up in administrative monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. - Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. - Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags are silently discarded). */
   requestTags?: StringList;
 }
-export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
+const RequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestTags: S.optional(StringList),
   }),
@@ -90,7 +90,7 @@ export type ReadWriteConcurrencyModeEnum =
   | "CONCURRENCY_MODE_UNSPECIFIED"
   | "OPTIMISTIC"
   | "PESSIMISTIC";
-export const ReadWriteConcurrencyModeEnum = S.String;
+const ReadWriteConcurrencyModeEnum = S.String;
 
 /** Options for a transaction that can be used to read and write documents. */
 export interface ReadWrite {
@@ -99,7 +99,7 @@ export interface ReadWrite {
   /** An optional transaction to retry. */
   retryTransaction?: string;
 }
-export const ReadWrite = /*@__PURE__*/ S.suspend(() =>
+const ReadWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     concurrencyMode: S.optional(ReadWriteConcurrencyModeEnum),
     retryTransaction: S.optional(S.String),
@@ -111,7 +111,7 @@ export interface ReadOnly {
   /** Reads documents at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
+const ReadOnly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
   }),
@@ -124,7 +124,7 @@ export interface TransactionOptions {
   /** The transaction can only be used for read operations. */
   readOnly?: ReadOnly;
 }
-export const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
+const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readWrite: S.optional(ReadWrite),
     readOnly: S.optional(ReadOnly),
@@ -146,7 +146,7 @@ export interface BatchGetDocumentsRequest {
   /** Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream. */
   newTransaction?: TransactionOptions;
 }
-export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String),
     mask: S.optional(DocumentMask),
@@ -163,7 +163,7 @@ export interface BatchGetProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BatchGetDocumentsRequest;
 }
-export const BatchGetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(BatchGetDocumentsRequest.pipe(T.HttpBody())),
@@ -179,9 +179,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
 
 export type ValueList = Array<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Value),
-) as any as S.Schema<ValueList>;
+const ValueList = /*@__PURE__*/ S.Array(S.suspend(() => Value)) as any as S.Schema<ValueList>;
 
 /** A single operation within a pipeline. A stage is made up of a unique name, and a list of arguments. The exact number of arguments & types is dependent on the stage type. To give an example, the stage `filter(state = "MD")` would be encoded as: ``` name: "filter" args { function_value { name: "eq" args { field_reference_value: "state" } args { string_value: "MD" } } } ``` See public documentation for the full list. */
 export interface Stage {
@@ -192,7 +190,7 @@ export interface Stage {
   /** Optional. Optional named arguments that certain functions may support. */
   options?: ValueMap;
 }
-export const Stage = /*@__PURE__*/ S.suspend(() =>
+const Stage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(ValueList),
     name: S.optional(S.String),
@@ -201,28 +199,28 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
 export type StageList = Array<Stage>;
-export const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
+const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
 
 /** A Firestore query represented as an ordered list of operations / stages. */
 export interface Pipeline {
   /** Required. Ordered list of stages to evaluate. */
   stages?: StageList;
 }
-export const Pipeline = /*@__PURE__*/ S.suspend(() =>
+const Pipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stages: S.optional(StageList),
   }),
 ).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
 
 export type ValueNullValueEnum = "NULL_VALUE";
-export const ValueNullValueEnum = S.String;
+const ValueNullValueEnum = S.String;
 
 /** An array value. */
 export interface ArrayValue {
   /** Values in the array. */
   values?: ValueList;
 }
-export const ArrayValue = /*@__PURE__*/ S.suspend(() =>
+const ArrayValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(ValueList),
   }),
@@ -235,7 +233,7 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -247,7 +245,7 @@ export interface MapValue {
   /** The map's fields. The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. */
   fields?: ValueMap;
 }
-export const MapValue = /*@__PURE__*/ S.suspend(() =>
+const MapValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.suspend(() => ValueMap)),
   }),
@@ -262,7 +260,7 @@ export interface Firestore_Function {
   /** Required. The name of the function to evaluate. **Requires:** * must be in snake case (lower case with underscore separator). */
   name?: string;
 }
-export const Firestore_Function = /*@__PURE__*/ S.suspend(() =>
+const Firestore_Function = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(ValueList),
     options: S.optional(S.suspend(() => ValueMap)),
@@ -303,7 +301,7 @@ export interface Value {
   /** A reference to a document. For example: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
   referenceValue?: string;
 }
-export const Value = /*@__PURE__*/ S.suspend(() =>
+const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineValue: S.optional(Pipeline),
     timestampValue: S.optional(S.String),
@@ -324,7 +322,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueMap = { [key: string]: Value | undefined };
-export const ValueMap = /*@__PURE__*/ S.Record(S.String, Value) as any as S.Schema<ValueMap>;
+const ValueMap = /*@__PURE__*/ S.Record(S.String, Value) as any as S.Schema<ValueMap>;
 
 /** A Firestore document. Must not exceed 1 MiB - 4 bytes. */
 export interface Document {
@@ -337,7 +335,7 @@ export interface Document {
   /** The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
   name?: string;
 }
-export const Document = /*@__PURE__*/ S.suspend(() =>
+const Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(ValueMap),
     createTime: S.optional(S.String),
@@ -357,7 +355,7 @@ export interface BatchGetDocumentsResponse {
   /** The time at which the document was read. This may be monotically increasing, in this case the previous documents in the result stream are guaranteed not to have changed between their read_time and this one. */
   readTime?: string;
 }
-export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.optional(Document),
     transaction: S.optional(S.String),
@@ -369,7 +367,7 @@ export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetDocumentsResponse>;
 
 export type FieldTransformSetToServerValueEnum = "SERVER_VALUE_UNSPECIFIED" | "REQUEST_TIME";
-export const FieldTransformSetToServerValueEnum = S.String;
+const FieldTransformSetToServerValueEnum = S.String;
 
 /** A transformation of a field of the document. */
 export interface FieldTransform {
@@ -388,7 +386,7 @@ export interface FieldTransform {
   /** Remove all of the given elements from the array in the field. If the field is not an array, or if the field does not yet exist, it is set to the empty array. Equivalent numbers of the different types (e.g. 3L and 3.0) are considered equal when deciding whether an element should be removed. NaN is equal to NaN, and Null is equal to Null. This will remove all equivalent values if there are duplicates. The corresponding transform_result will be the null value. */
   removeAllFromArray?: ArrayValue;
 }
-export const FieldTransform = /*@__PURE__*/ S.suspend(() =>
+const FieldTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPath: S.optional(S.String),
     setToServerValue: S.optional(FieldTransformSetToServerValueEnum),
@@ -401,7 +399,7 @@ export const FieldTransform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldTransform" }) as any as S.Schema<FieldTransform>;
 
 export type FieldTransformList = Array<FieldTransform>;
-export const FieldTransformList = /*@__PURE__*/ S.Array(
+const FieldTransformList = /*@__PURE__*/ S.Array(
   FieldTransform,
 ) as any as S.Schema<FieldTransformList>;
 
@@ -412,7 +410,7 @@ export interface DocumentTransform {
   /** The list of transformations to apply to the fields of the document, in order. This must not be empty. */
   fieldTransforms?: FieldTransformList;
 }
-export const DocumentTransform = /*@__PURE__*/ S.suspend(() =>
+const DocumentTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(S.String),
     fieldTransforms: S.optional(FieldTransformList),
@@ -426,7 +424,7 @@ export interface Precondition {
   /** When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. */
   updateTime?: string;
 }
-export const Precondition = /*@__PURE__*/ S.suspend(() =>
+const Precondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exists: S.optional(S.Boolean),
     updateTime: S.optional(S.String),
@@ -448,7 +446,7 @@ export interface Write {
   /** A document name to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
   delete?: string;
 }
-export const Write = /*@__PURE__*/ S.suspend(() =>
+const Write = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transform: S.optional(DocumentTransform),
     updateMask: S.optional(DocumentMask),
@@ -460,10 +458,10 @@ export const Write = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Write" }) as any as S.Schema<Write>;
 
 export type WriteList = Array<Write>;
-export const WriteList = /*@__PURE__*/ S.Array(Write) as any as S.Schema<WriteList>;
+const WriteList = /*@__PURE__*/ S.Array(Write) as any as S.Schema<WriteList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The request for Firestore.BatchWrite. */
 export interface BatchWriteRequest {
@@ -474,7 +472,7 @@ export interface BatchWriteRequest {
   /** Labels associated with this batch write. */
   labels?: StringMap;
 }
-export const BatchWriteRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writes: S.optional(WriteList),
     requestOptions: S.optional(RequestOptions),
@@ -488,7 +486,7 @@ export interface BatchWriteProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BatchWriteRequest;
 }
-export const BatchWriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(BatchWriteRequest.pipe(T.HttpBody())),
@@ -510,7 +508,7 @@ export interface WriteResult {
   /** The last update time of the document after applying the write. Not set after a `delete`. If the write did not actually change the document, this will be the previous update_time. */
   updateTime?: string;
 }
-export const WriteResult = /*@__PURE__*/ S.suspend(() =>
+const WriteResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transformResults: S.optional(ValueList),
     updateTime: S.optional(S.String),
@@ -518,20 +516,13 @@ export const WriteResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WriteResult" }) as any as S.Schema<WriteResult>;
 
 export type WriteResultList = Array<WriteResult>;
-export const WriteResultList = /*@__PURE__*/ S.Array(
-  WriteResult,
-) as any as S.Schema<WriteResultList>;
+const WriteResultList = /*@__PURE__*/ S.Array(WriteResult) as any as S.Schema<WriteResultList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -542,7 +533,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -551,7 +542,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** The response from Firestore.BatchWrite. */
 export interface BatchWriteResponse {
@@ -560,7 +551,7 @@ export interface BatchWriteResponse {
   /** The status of applying the writes. This i-th write status corresponds to the i-th write in the request. */
   status?: StatusList;
 }
-export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writeResults: S.optional(WriteResultList),
     status: S.optional(StatusList),
@@ -574,7 +565,7 @@ export interface BeginTransactionRequest {
   /** Optional. The request options for this request. */
   requestOptions?: RequestOptions;
 }
-export const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(TransactionOptions),
     requestOptions: S.optional(RequestOptions),
@@ -587,7 +578,7 @@ export interface BeginTransactionProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BeginTransactionRequest;
 }
-export const BeginTransactionProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
@@ -607,7 +598,7 @@ export interface BeginTransactionResponse {
   /** The transaction that was started. */
   transaction?: string;
 }
-export const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String),
   }),
@@ -622,7 +613,7 @@ export interface CommitRequest {
   /** Optional. The request options for this request. */
   requestOptions?: RequestOptions;
 }
-export const CommitRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writes: S.optional(WriteList),
     transaction: S.optional(S.String),
@@ -636,7 +627,7 @@ export interface CommitProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: CommitRequest;
 }
-export const CommitProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(CommitRequest.pipe(T.HttpBody())),
@@ -658,7 +649,7 @@ export interface CommitResponse {
   /** The result of applying the writes. This i-th write result corresponds to the i-th write in the request. */
   writeResults?: WriteResultList;
 }
-export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitTime: S.optional(S.String),
     writeResults: S.optional(WriteResultList),
@@ -679,7 +670,7 @@ export interface CreateDocumentProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: Document;
 }
-export const CreateDocumentProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDocumentProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionId: S.String.pipe(T.Label()),
     documentId: S.optional(S.String.pipe(T.Query())),
@@ -703,14 +694,14 @@ export type GoogleFirestoreAdminV1beta1IndexStateEnum =
   | "CREATING"
   | "READY"
   | "ERROR";
-export const GoogleFirestoreAdminV1beta1IndexStateEnum = S.String;
+const GoogleFirestoreAdminV1beta1IndexStateEnum = S.String;
 
 export type GoogleFirestoreAdminV1beta1IndexFieldModeEnum =
   | "MODE_UNSPECIFIED"
   | "ASCENDING"
   | "DESCENDING"
   | "ARRAY_CONTAINS";
-export const GoogleFirestoreAdminV1beta1IndexFieldModeEnum = S.String;
+const GoogleFirestoreAdminV1beta1IndexFieldModeEnum = S.String;
 
 /** A field of an index. */
 export interface GoogleFirestoreAdminV1beta1IndexField {
@@ -719,7 +710,7 @@ export interface GoogleFirestoreAdminV1beta1IndexField {
   /** The field's mode. */
   mode?: GoogleFirestoreAdminV1beta1IndexFieldModeEnum | (string & {});
 }
-export const GoogleFirestoreAdminV1beta1IndexField = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta1IndexField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPath: S.optional(S.String),
     mode: S.optional(GoogleFirestoreAdminV1beta1IndexFieldModeEnum),
@@ -730,7 +721,7 @@ export const GoogleFirestoreAdminV1beta1IndexField = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleFirestoreAdminV1beta1IndexFieldList =
   Array<GoogleFirestoreAdminV1beta1IndexField>;
-export const GoogleFirestoreAdminV1beta1IndexFieldList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1beta1IndexFieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta1IndexField,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta1IndexFieldList>;
 
@@ -745,7 +736,7 @@ export interface GoogleFirestoreAdminV1beta1Index {
   /** The collection ID to which this index applies. Required. */
   collectionId?: string;
 }
-export const GoogleFirestoreAdminV1beta1Index = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta1Index = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleFirestoreAdminV1beta1IndexStateEnum),
     fields: S.optional(GoogleFirestoreAdminV1beta1IndexFieldList),
@@ -762,7 +753,7 @@ export interface CreateProjectsDatabasesIndexesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1beta1Index;
 }
-export const CreateProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1beta1Index.pipe(T.HttpBody())),
@@ -790,7 +781,7 @@ export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     error: S.optional(Status),
@@ -812,7 +803,7 @@ export interface DeleteProjectsDatabasesDocumentsRequest {
   /** Required. The resource name of the Document to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
   name: string;
 }
-export const DeleteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "currentDocument.exists": S.optional(S.Boolean.pipe(T.Query())),
     "currentDocument.updateTime": S.optional(S.String.pipe(T.Query())),
@@ -831,7 +822,7 @@ export const DeleteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend((
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -839,7 +830,7 @@ export interface DeleteProjectsDatabasesIndexesRequest {
   /** The index name. For example: `projects/{project_id}/databases/{database_id}/indexes/{index_id}` */
   name: string;
 }
-export const DeleteProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -860,7 +851,7 @@ export interface StructuredPipeline {
   /** Required. The pipeline query to execute. */
   pipeline?: Pipeline;
 }
-export const StructuredPipeline = /*@__PURE__*/ S.suspend(() =>
+const StructuredPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(ValueMap),
     pipeline: S.optional(Pipeline),
@@ -882,7 +873,7 @@ export interface ExecutePipelineRequest {
   /** Optional. The request options for this request. */
   requestOptions?: RequestOptions;
 }
-export const ExecutePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecutePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     newTransaction: S.optional(TransactionOptions),
@@ -899,7 +890,7 @@ export interface ExecutePipelineProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ExecutePipelineRequest;
 }
-export const ExecutePipelineProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecutePipelineProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(ExecutePipelineRequest.pipe(T.HttpBody())),
@@ -915,14 +906,14 @@ export const ExecutePipelineProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ExecutePipelineProjectsDatabasesDocumentsRequest>;
 
 export type DocumentList = Array<Document>;
-export const DocumentList = /*@__PURE__*/ S.Array(Document) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(Document) as any as S.Schema<DocumentList>;
 
 /** Pipeline explain stats. Depending on the explain options in the original request, this can contain the optimized plan and / or execution stats. */
 export interface ExplainStats {
   /** The format depends on the `output_format` options in the request. Currently there are two supported options: `TEXT` and `JSON`. Both supply a `google.protobuf.StringValue`. */
   data?: DocumentMap;
 }
-export const ExplainStats = /*@__PURE__*/ S.suspend(() =>
+const ExplainStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(DocumentMap),
   }),
@@ -939,7 +930,7 @@ export interface ExecutePipelineResponse {
   /** Query explain stats. This is present on the **last** response if the request configured explain to run in 'analyze' or 'explain' mode in the pipeline options. If the query does not return any results, a response with `explain_stats` and no `results` will still be sent. */
   explainStats?: ExplainStats;
 }
-export const ExecutePipelineResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecutePipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String),
     executionTime: S.optional(S.String),
@@ -955,7 +946,7 @@ export interface GoogleFirestoreAdminV1beta1ExportDocumentsRequest {
   /** The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time. */
   outputUriPrefix?: string;
 }
-export const GoogleFirestoreAdminV1beta1ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta1ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(StringList),
     outputUriPrefix: S.optional(S.String),
@@ -970,7 +961,7 @@ export interface ExportDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1beta1ExportDocumentsRequest;
 }
-export const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1beta1ExportDocumentsRequest.pipe(T.HttpBody())),
@@ -997,7 +988,7 @@ export interface GetProjectsDatabasesDocumentsRequest {
   /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
   "mask.fieldPaths"?: StringList;
 }
-export const GetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "requestOptions.requestTags": S.optional(StringList.pipe(T.Query())),
@@ -1015,7 +1006,7 @@ export interface GetProjectsDatabasesIndexesRequest {
   /** The name of the index. For example: `projects/{project_id}/databases/{database_id}/indexes/{index_id}` */
   name: string;
 }
-export const GetProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1032,7 +1023,7 @@ export interface GoogleFirestoreAdminV1beta1ImportDocumentsRequest {
   /** Location of the exported files. This must match the output_uri_prefix of an ExportDocumentsResponse from an export that has completed successfully. See: google.firestore.admin.v1beta1.ExportDocumentsResponse.output_uri_prefix. */
   inputUriPrefix?: string;
 }
-export const GoogleFirestoreAdminV1beta1ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta1ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(StringList),
     inputUriPrefix: S.optional(S.String),
@@ -1047,7 +1038,7 @@ export interface ImportDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1beta1ImportDocumentsRequest;
 }
-export const ImportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1beta1ImportDocumentsRequest.pipe(T.HttpBody())),
@@ -1073,7 +1064,7 @@ export interface ListCollectionIdsRequest {
   /** A page token. Must be a value from ListCollectionIdsResponse. */
   pageToken?: string;
 }
-export const ListCollectionIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     pageSize: S.optional(S.Number),
@@ -1088,7 +1079,7 @@ export interface ListCollectionIdsProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ListCollectionIdsRequest;
 }
-export const ListCollectionIdsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionIdsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ListCollectionIdsRequest.pipe(T.HttpBody())),
@@ -1110,7 +1101,7 @@ export interface ListCollectionIdsResponse {
   /** The collection ids. */
   collectionIds?: StringList;
 }
-export const ListCollectionIdsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionIdsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     collectionIds: S.optional(StringList),
@@ -1143,7 +1134,7 @@ export interface ListDocumentsProjectsDatabasesDocumentsRequest {
   /** Optional. The maximum number of documents to return in a single response. Firestore may return fewer than this value. */
   pageSize?: number;
 }
-export const ListDocumentsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDocumentsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "requestOptions.requestTags": S.optional(StringList.pipe(T.Query())),
     showMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -1174,7 +1165,7 @@ export interface ListDocumentsResponse {
   /** The Documents found. */
   documents?: DocumentList;
 }
-export const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     documents: S.optional(DocumentList),
@@ -1182,12 +1173,10 @@ export const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDocumentsResponse" }) as any as S.Schema<ListDocumentsResponse>;
 
 export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
-export const CompositeFilterOpEnum = S.String;
+const CompositeFilterOpEnum = S.String;
 
 export type FilterList = Array<Filter>;
-export const FilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Filter),
-) as any as S.Schema<FilterList>;
+const FilterList = /*@__PURE__*/ S.Array(S.suspend(() => Filter)) as any as S.Schema<FilterList>;
 
 /** A filter that merges multiple other filters using the given operator. */
 export interface CompositeFilter {
@@ -1196,7 +1185,7 @@ export interface CompositeFilter {
   /** The list of filters to combine. Requires: * At least one filter is present. */
   filters?: FilterList;
 }
-export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
+const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: S.optional(CompositeFilterOpEnum),
     filters: S.optional(FilterList),
@@ -1215,14 +1204,14 @@ export type FieldFilterOpEnum =
   | "IN"
   | "ARRAY_CONTAINS_ANY"
   | "NOT_IN";
-export const FieldFilterOpEnum = S.String;
+const FieldFilterOpEnum = S.String;
 
 /** A reference to a field in a document, ex: `stats.operations`. */
 export interface FieldReference {
   /** A reference to a field in a document. Requires: * MUST be a dot-delimited (`.`) string of segments, where each segment conforms to document field name limitations. */
   fieldPath?: string;
 }
-export const FieldReference = /*@__PURE__*/ S.suspend(() =>
+const FieldReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPath: S.optional(S.String),
   }),
@@ -1237,7 +1226,7 @@ export interface FieldFilter {
   /** The value to compare to. */
   value?: Value;
 }
-export const FieldFilter = /*@__PURE__*/ S.suspend(() =>
+const FieldFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: S.optional(FieldFilterOpEnum),
     field: S.optional(FieldReference),
@@ -1251,7 +1240,7 @@ export type UnaryFilterOpEnum =
   | "IS_NULL"
   | "IS_NOT_NAN"
   | "IS_NOT_NULL";
-export const UnaryFilterOpEnum = S.String;
+const UnaryFilterOpEnum = S.String;
 
 /** A filter with a single operand. */
 export interface UnaryFilter {
@@ -1260,7 +1249,7 @@ export interface UnaryFilter {
   /** The unary operator to apply. */
   op?: UnaryFilterOpEnum | (string & {});
 }
-export const UnaryFilter = /*@__PURE__*/ S.suspend(() =>
+const UnaryFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(FieldReference),
     op: S.optional(UnaryFilterOpEnum),
@@ -1276,7 +1265,7 @@ export interface Filter {
   /** A filter that takes exactly one argument. */
   unaryFilter?: UnaryFilter;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compositeFilter: S.optional(CompositeFilter),
     fieldFilter: S.optional(FieldFilter),
@@ -1291,7 +1280,7 @@ export interface Cursor {
   /** If the position is just before or just after the given values, relative to the sort order defined by the query. */
   before?: boolean;
 }
-export const Cursor = /*@__PURE__*/ S.suspend(() =>
+const Cursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(ValueList),
     before: S.optional(S.Boolean),
@@ -1305,7 +1294,7 @@ export interface CollectionSelector {
   /** The collection ID. When set, selects only collections with this ID. */
   collectionId?: string;
 }
-export const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
+const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allDescendants: S.optional(S.Boolean),
     collectionId: S.optional(S.String),
@@ -1313,12 +1302,12 @@ export const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CollectionSelector" }) as any as S.Schema<CollectionSelector>;
 
 export type CollectionSelectorList = Array<CollectionSelector>;
-export const CollectionSelectorList = /*@__PURE__*/ S.Array(
+const CollectionSelectorList = /*@__PURE__*/ S.Array(
   CollectionSelector,
 ) as any as S.Schema<CollectionSelectorList>;
 
 export type OrderDirectionEnum = "DIRECTION_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
-export const OrderDirectionEnum = S.String;
+const OrderDirectionEnum = S.String;
 
 /** An order on a field. */
 export interface Order {
@@ -1327,7 +1316,7 @@ export interface Order {
   /** The field to order by. */
   field?: FieldReference;
 }
-export const Order = /*@__PURE__*/ S.suspend(() =>
+const Order = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(OrderDirectionEnum),
     field: S.optional(FieldReference),
@@ -1335,14 +1324,14 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 export type OrderList = Array<Order>;
-export const OrderList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderList>;
+const OrderList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderList>;
 
 export type FindNearestDistanceMeasureEnum =
   | "DISTANCE_MEASURE_UNSPECIFIED"
   | "EUCLIDEAN"
   | "COSINE"
   | "DOT_PRODUCT";
-export const FindNearestDistanceMeasureEnum = S.String;
+const FindNearestDistanceMeasureEnum = S.String;
 
 /** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
 export interface FindNearest {
@@ -1359,7 +1348,7 @@ export interface FindNearest {
   /** Required. The distance measure to use, required. */
   distanceMeasure?: FindNearestDistanceMeasureEnum | (string & {});
 }
-export const FindNearest = /*@__PURE__*/ S.suspend(() =>
+const FindNearest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distanceResultField: S.optional(S.String),
     queryVector: S.optional(Value),
@@ -1371,7 +1360,7 @@ export const FindNearest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FindNearest" }) as any as S.Schema<FindNearest>;
 
 export type FieldReferenceList = Array<FieldReference>;
-export const FieldReferenceList = /*@__PURE__*/ S.Array(
+const FieldReferenceList = /*@__PURE__*/ S.Array(
   FieldReference,
 ) as any as S.Schema<FieldReferenceList>;
 
@@ -1380,7 +1369,7 @@ export interface Projection {
   /** The fields to return. If empty, all fields are returned. To only return the name of the document, use `['__name__']`. */
   fields?: FieldReferenceList;
 }
-export const Projection = /*@__PURE__*/ S.suspend(() =>
+const Projection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(FieldReferenceList),
   }),
@@ -1407,7 +1396,7 @@ export interface StructuredQuery {
   /** The maximum number of results to return. Applies after all other constraints. Requires: * The value must be greater than or equal to zero if specified. */
   limit?: number;
 }
-export const StructuredQuery = /*@__PURE__*/ S.suspend(() =>
+const StructuredQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     where: S.optional(Filter),
     endAt: S.optional(Cursor),
@@ -1428,7 +1417,7 @@ export interface QueryTarget {
   /** A structured query. */
   structuredQuery?: StructuredQuery;
 }
-export const QueryTarget = /*@__PURE__*/ S.suspend(() =>
+const QueryTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     structuredQuery: S.optional(StructuredQuery),
@@ -1440,7 +1429,7 @@ export interface DocumentsTarget {
   /** The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of the document is not a child resource of the given `database`. Duplicate names will be elided. */
   documents?: StringList;
 }
-export const DocumentsTarget = /*@__PURE__*/ S.suspend(() =>
+const DocumentsTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documents: S.optional(StringList),
   }),
@@ -1463,7 +1452,7 @@ export interface Target {
   /** A target specified by a set of document names. */
   documents?: DocumentsTarget;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
+const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.optional(S.Number),
     once: S.optional(S.Boolean),
@@ -1486,7 +1475,7 @@ export interface ListenRequest {
   /** Labels associated with this target change. */
   labels?: StringMap;
 }
-export const ListenRequest = /*@__PURE__*/ S.suspend(() =>
+const ListenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addTarget: S.optional(Target),
     removeTarget: S.optional(S.Number),
@@ -1501,7 +1490,7 @@ export interface ListenProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ListenRequest;
 }
-export const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(ListenRequest.pipe(T.HttpBody())),
@@ -1517,10 +1506,10 @@ export const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListenProjectsDatabasesDocumentsRequest>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export type TargetChangeTargetChangeTypeEnum = "NO_CHANGE" | "ADD" | "REMOVE" | "CURRENT" | "RESET";
-export const TargetChangeTargetChangeTypeEnum = S.String;
+const TargetChangeTargetChangeTypeEnum = S.String;
 
 /** Targets being watched have changed. */
 export interface TargetChange {
@@ -1535,7 +1524,7 @@ export interface TargetChange {
   /** The type of change that occurred. */
   targetChangeType?: TargetChangeTargetChangeTypeEnum;
 }
-export const TargetChange = /*@__PURE__*/ S.suspend(() =>
+const TargetChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resumeToken: S.optional(S.String),
     cause: S.optional(Status),
@@ -1554,7 +1543,7 @@ export interface DocumentRemove {
   /** The resource name of the Document that has gone out of view. */
   document?: string;
 }
-export const DocumentRemove = /*@__PURE__*/ S.suspend(() =>
+const DocumentRemove = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removedTargetIds: S.optional(IntegerList),
     readTime: S.optional(S.String),
@@ -1569,7 +1558,7 @@ export interface BitSequence {
   /** The number of bits of the last byte in `bitmap` to ignore as "padding". If the length of `bitmap` is zero, then this value must be `0`. Otherwise, this value must be between 0 and 7, inclusive. */
   padding?: number;
 }
-export const BitSequence = /*@__PURE__*/ S.suspend(() =>
+const BitSequence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bitmap: S.optional(S.String),
     padding: S.optional(S.Number),
@@ -1583,7 +1572,7 @@ export interface BloomFilter {
   /** The bloom filter data. */
   bits?: BitSequence;
 }
-export const BloomFilter = /*@__PURE__*/ S.suspend(() =>
+const BloomFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashCount: S.optional(S.Number),
     bits: S.optional(BitSequence),
@@ -1599,7 +1588,7 @@ export interface ExistenceFilter {
   /** The total count of documents that match target_id. If different from the count of documents in the client that match, the client must manually determine which documents no longer match the target. The client can use the `unchanged_names` bloom filter to assist with this determination by testing ALL the document names against the filter; if the document name is NOT in the filter, it means the document no longer matches the target. */
   count?: number;
 }
-export const ExistenceFilter = /*@__PURE__*/ S.suspend(() =>
+const ExistenceFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.optional(S.Number),
     unchangedNames: S.optional(BloomFilter),
@@ -1616,7 +1605,7 @@ export interface DocumentChange {
   /** A set of target IDs of targets that match this document. */
   targetIds?: IntegerList;
 }
-export const DocumentChange = /*@__PURE__*/ S.suspend(() =>
+const DocumentChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(Document),
     removedTargetIds: S.optional(IntegerList),
@@ -1633,7 +1622,7 @@ export interface DocumentDelete {
   /** The read timestamp at which the delete was observed. Greater or equal to the `commit_time` of the delete. */
   readTime?: string;
 }
-export const DocumentDelete = /*@__PURE__*/ S.suspend(() =>
+const DocumentDelete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removedTargetIds: S.optional(IntegerList),
     document: S.optional(S.String),
@@ -1654,7 +1643,7 @@ export interface ListenResponse {
   /** A Document has been deleted. */
   documentDelete?: DocumentDelete;
 }
-export const ListenResponse = /*@__PURE__*/ S.suspend(() =>
+const ListenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetChange: S.optional(TargetChange),
     documentRemove: S.optional(DocumentRemove),
@@ -1688,7 +1677,7 @@ export interface ListProjectsDatabasesDocumentsRequest {
   /** Optional. The optional ordering of the documents to return. For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string representation. When absent, documents are ordered based on `__name__ ASC`. */
   orderBy?: string;
 }
-export const ListProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
     showMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -1721,7 +1710,7 @@ export interface ListProjectsDatabasesIndexesRequest {
   /** The standard List page size. */
   pageSize?: number;
 }
-export const ListProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1739,7 +1728,7 @@ export const ListProjectsDatabasesIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsDatabasesIndexesRequest>;
 
 export type GoogleFirestoreAdminV1beta1IndexList = Array<GoogleFirestoreAdminV1beta1Index>;
-export const GoogleFirestoreAdminV1beta1IndexList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1beta1IndexList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta1Index,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta1IndexList>;
 
@@ -1750,7 +1739,7 @@ export interface GoogleFirestoreAdminV1beta1ListIndexesResponse {
   /** The indexes. */
   indexes?: GoogleFirestoreAdminV1beta1IndexList;
 }
-export const GoogleFirestoreAdminV1beta1ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta1ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     indexes: S.optional(GoogleFirestoreAdminV1beta1IndexList),
@@ -1774,7 +1763,7 @@ export interface PartitionQueryRequest {
   /** The desired maximum number of partition points. The partitions may be returned across multiple pages of results. The number must be positive. The actual number of partitions returned may be fewer. For example, this may be set to one fewer than the number of parallel queries to be run, or in running a data pipeline job, one fewer than the number of workers or compute instances available. */
   partitionCount?: string;
 }
-export const PartitionQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const PartitionQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structuredQuery: S.optional(StructuredQuery),
     pageSize: S.optional(S.Number),
@@ -1791,7 +1780,7 @@ export interface PartitionQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: PartitionQueryRequest;
 }
-export const PartitionQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PartitionQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(PartitionQueryRequest.pipe(T.HttpBody())),
@@ -1807,7 +1796,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PartitionQueryProjectsDatabasesDocumentsRequest>;
 
 export type CursorList = Array<Cursor>;
-export const CursorList = /*@__PURE__*/ S.Array(Cursor) as any as S.Schema<CursorList>;
+const CursorList = /*@__PURE__*/ S.Array(Cursor) as any as S.Schema<CursorList>;
 
 /** The response for Firestore.PartitionQuery. */
 export interface PartitionQueryResponse {
@@ -1816,7 +1805,7 @@ export interface PartitionQueryResponse {
   /** Partition results. Each partition is a split point that can be used by RunQuery as a starting or end point for the query results. The RunQuery requests must be made with the same query supplied to this PartitionQuery request. The partition cursors will be ordered according to same ordering as the results of the query supplied to PartitionQuery. For example, if a PartitionQuery request returns partition cursors A and B, running the following three queries will return the entire result set of the original query: * query, end_at A * query, start_at A, end_at B * query, start_at B An empty result may indicate that the query has too few results to be partitioned, or that the query is not yet supported for partitioning. */
   partitions?: CursorList;
 }
-export const PartitionQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const PartitionQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     partitions: S.optional(CursorList),
@@ -1839,7 +1828,7 @@ export interface PatchProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: Document;
 }
-export const PatchProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "currentDocument.updateTime": S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1866,7 +1855,7 @@ export interface RollbackRequest {
   /** Required. The transaction to roll back. */
   transaction?: string;
 }
-export const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestOptions: S.optional(RequestOptions),
     transaction: S.optional(S.String),
@@ -1879,7 +1868,7 @@ export interface RollbackProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RollbackRequest;
 }
-export const RollbackProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(RollbackRequest.pipe(T.HttpBody())),
@@ -1899,7 +1888,7 @@ export interface ExplainOptions {
   /** Optional. Whether to execute this query. When false (the default), the query will be planned, returning only metrics from the planning stages. When true, the query will be planned and executed, returning the full query results along with both planning and execution stage metrics. */
   analyze?: boolean;
 }
-export const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
+const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyze: S.optional(S.Boolean),
   }),
@@ -1910,7 +1899,7 @@ export interface Sum {
   /** The field to aggregate on. */
   field?: FieldReference;
 }
-export const Sum = /*@__PURE__*/ S.suspend(() =>
+const Sum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(FieldReference),
   }),
@@ -1921,7 +1910,7 @@ export interface Count {
   /** Optional. Optional constraint on the maximum number of documents to count. This provides a way to set an upper bound on the number of documents to scan, limiting latency, and cost. Unspecified is interpreted as no bound. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ``` Requires: * Must be greater than zero when present. */
   upTo?: string;
 }
-export const Count = /*@__PURE__*/ S.suspend(() =>
+const Count = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upTo: S.optional(S.String),
   }),
@@ -1929,8 +1918,6 @@ export const Count = /*@__PURE__*/ S.suspend(() =>
 
 /** Average of the values of the requested field. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns `NULL`. * Always returns the result as a double. */
 export type Avg = Sum;
-export const Avg = Sum;
-
 /** Defines an aggregation that produces a single result. */
 export interface Aggregation {
   /** Optional. Optional name of the field to store the result of the aggregation into. If not provided, Firestore will pick a default name following the format `field_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... ); ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS field_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS field_2 OVER ( ... ); ``` Requires: * Must be unique across all aggregation aliases. * Conform to document field name limitations. */
@@ -1942,7 +1929,7 @@ export interface Aggregation {
   /** Average aggregator. */
   avg?: Sum;
 }
-export const Aggregation = /*@__PURE__*/ S.suspend(() =>
+const Aggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
     sum: S.optional(Sum),
@@ -1952,9 +1939,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
 export type AggregationList = Array<Aggregation>;
-export const AggregationList = /*@__PURE__*/ S.Array(
-  Aggregation,
-) as any as S.Schema<AggregationList>;
+const AggregationList = /*@__PURE__*/ S.Array(Aggregation) as any as S.Schema<AggregationList>;
 
 /** Firestore query for running an aggregation over a StructuredQuery. */
 export interface StructuredAggregationQuery {
@@ -1963,7 +1948,7 @@ export interface StructuredAggregationQuery {
   /** Optional. Series of aggregations to apply over the results of the `structured_query`. Requires: * A minimum of one and maximum of five aggregations per query. */
   aggregations?: AggregationList;
 }
-export const StructuredAggregationQuery = /*@__PURE__*/ S.suspend(() =>
+const StructuredAggregationQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structuredQuery: S.optional(StructuredQuery),
     aggregations: S.optional(AggregationList),
@@ -1987,7 +1972,7 @@ export interface RunAggregationQueryRequest {
   /** Optional. The request options for the request. */
   requestOptions?: RequestOptions;
 }
-export const RunAggregationQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     explainOptions: S.optional(ExplainOptions),
     structuredAggregationQuery: S.optional(StructuredAggregationQuery),
@@ -2006,7 +1991,7 @@ export interface RunAggregationQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RunAggregationQueryRequest;
 }
-export const RunAggregationQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RunAggregationQueryRequest.pipe(T.HttpBody())),
@@ -2026,7 +2011,7 @@ export interface AggregationResult {
   /** The result of the aggregation functions, ex: `COUNT(*) AS total_docs`. The key is the alias assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query. */
   aggregateFields?: ValueMap;
 }
-export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
+const AggregationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregateFields: S.optional(ValueMap),
   }),
@@ -2043,7 +2028,7 @@ export interface ExecutionStats {
   /** Total billable read operations. */
   readOperations?: string;
 }
-export const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
+const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugStats: S.optional(DocumentMap),
     resultsReturned: S.optional(S.String),
@@ -2057,7 +2042,7 @@ export interface PlanSummary {
   /** The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ] */
   indexesUsed?: DocumentMapList;
 }
-export const PlanSummary = /*@__PURE__*/ S.suspend(() =>
+const PlanSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexesUsed: S.optional(DocumentMapList),
   }),
@@ -2070,7 +2055,7 @@ export interface ExplainMetrics {
   /** Planning phase information for the query. */
   planSummary?: PlanSummary;
 }
-export const ExplainMetrics = /*@__PURE__*/ S.suspend(() =>
+const ExplainMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionStats: S.optional(ExecutionStats),
     planSummary: S.optional(PlanSummary),
@@ -2088,7 +2073,7 @@ export interface RunAggregationQueryResponse {
   /** The transaction that was started as part of this request. Only present on the first response when the request requested to start a new transaction. */
   transaction?: string;
 }
-export const RunAggregationQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AggregationResult),
     explainMetrics: S.optional(ExplainMetrics),
@@ -2114,7 +2099,7 @@ export interface RunQueryRequest {
   /** Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream. */
   newTransaction?: TransactionOptions;
 }
-export const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String),
     requestOptions: S.optional(RequestOptions),
@@ -2131,7 +2116,7 @@ export interface RunQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RunQueryRequest;
 }
-export const RunQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RunQueryRequest.pipe(T.HttpBody())),
@@ -2161,7 +2146,7 @@ export interface RunQueryResponse {
   /** Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream. */
   explainMetrics?: ExplainMetrics;
 }
-export const RunQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const RunQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     skippedResults: S.optional(S.Number),
@@ -2185,7 +2170,7 @@ export interface WriteRequest {
   /** Labels associated with this write request. */
   labels?: StringMap;
 }
-export const WriteRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamToken: S.optional(S.String),
     streamId: S.optional(S.String),
@@ -2201,7 +2186,7 @@ export interface WriteProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: WriteRequest;
 }
-export const WriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(WriteRequest.pipe(T.HttpBody())),
@@ -2227,7 +2212,7 @@ export interface WriteResponse {
   /** A token that represents the position of this response in the stream. This can be used by a client to resume the stream at this point. This field is always set. */
   streamToken?: string;
 }
-export const WriteResponse = /*@__PURE__*/ S.suspend(() =>
+const WriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writeResults: S.optional(WriteResultList),
     streamId: S.optional(S.String),

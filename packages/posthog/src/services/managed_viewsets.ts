@@ -19,14 +19,14 @@ export class BadRequest
 
 /** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
 export type GetManagedViewsetRequestKind = "revenue_analytics" | "engineering_analytics";
-export const GetManagedViewsetRequestKind = S.String;
+const GetManagedViewsetRequestKind = S.String;
 
 export interface GetManagedViewsetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   kind: GetManagedViewsetRequestKind | (string & {});
 }
-export const GetManagedViewsetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagedViewsetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     kind: GetManagedViewsetRequestKind.pipe(T.Label()),
@@ -49,7 +49,7 @@ export interface DataWarehouseManagedView {
   /** User who created the saved query, or null when the sync did. */
   created_by_id: number | null;
 }
-export const DataWarehouseManagedView = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseManagedView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -60,7 +60,7 @@ export const DataWarehouseManagedView = /*@__PURE__*/ S.suspend(() =>
 
 /** Saved queries in the managed viewset. */
 export type DataWarehouseManagedViewSetResponseViewsList = Array<DataWarehouseManagedView>;
-export const DataWarehouseManagedViewSetResponseViewsList = /*@__PURE__*/ S.Array(
+const DataWarehouseManagedViewSetResponseViewsList = /*@__PURE__*/ S.Array(
   DataWarehouseManagedView,
 ) as any as S.Schema<DataWarehouseManagedViewSetResponseViewsList>;
 
@@ -70,7 +70,7 @@ export interface DataWarehouseManagedViewSetResponse {
   /** Number of saved queries returned. */
   count: number;
 }
-export const DataWarehouseManagedViewSetResponse = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseManagedViewSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     views: DataWarehouseManagedViewSetResponseViewsList,
     count: S.Number,
@@ -81,7 +81,7 @@ export const DataWarehouseManagedViewSetResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
 export type UpdateManagedViewsetRequestKind = "revenue_analytics" | "engineering_analytics";
-export const UpdateManagedViewsetRequestKind = S.String;
+const UpdateManagedViewsetRequestKind = S.String;
 
 export interface UpdateManagedViewsetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -90,7 +90,7 @@ export interface UpdateManagedViewsetRequest {
   /** Whether the managed viewset should exist. */
   enabled: boolean;
 }
-export const UpdateManagedViewsetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateManagedViewsetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     kind: UpdateManagedViewsetRequestKind.pipe(T.Label()),
@@ -108,7 +108,7 @@ export const UpdateManagedViewsetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
 export type DataWarehouseManagedViewSetKindEnum = "revenue_analytics" | "engineering_analytics";
-export const DataWarehouseManagedViewSetKindEnum = S.String;
+const DataWarehouseManagedViewSetKindEnum = S.String;
 
 export interface DataWarehouseManagedViewSetUpdateResponse {
   /** State the managed viewset is now in. */
@@ -116,7 +116,7 @@ export interface DataWarehouseManagedViewSetUpdateResponse {
   /** Managed viewset that was toggled. * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
   kind: DataWarehouseManagedViewSetKindEnum;
 }
-export const DataWarehouseManagedViewSetUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseManagedViewSetUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     kind: DataWarehouseManagedViewSetKindEnum,

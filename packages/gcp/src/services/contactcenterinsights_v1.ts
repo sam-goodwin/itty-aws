@@ -91,8 +91,8 @@ export class QaScorecardPreconditionFailed
 
 /** The message to appeal an assessment. */
 export interface GoogleCloudContactcenterinsightsV1AppealAssessmentRequest {}
-export const GoogleCloudContactcenterinsightsV1AppealAssessmentRequest = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const GoogleCloudContactcenterinsightsV1AppealAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1AppealAssessmentRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AppealAssessmentRequest>;
@@ -103,7 +103,7 @@ export interface AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
+const AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -128,11 +128,11 @@ export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentIn
   | "AUTOMATED_AGENT"
   | "END_USER"
   | "ANY_AGENT";
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
+const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
   S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Information about an agent involved in the conversation. */
 export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
@@ -165,7 +165,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAg
   /** A user-specified string representing the agent's team. Deprecated in favor of the `teams` field. */
   team?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo =
+const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       location: S.optional(S.String),
@@ -194,7 +194,7 @@ export type GoogleCloudContactcenterinsightsV1AssessmentStateEnum =
   | "PUBLISHED"
   | "APPEALED"
   | "FINALIZED";
-export const GoogleCloudContactcenterinsightsV1AssessmentStateEnum = S.String;
+const GoogleCloudContactcenterinsightsV1AssessmentStateEnum = S.String;
 
 /** The assessment resource. */
 export interface GoogleCloudContactcenterinsightsV1Assessment {
@@ -209,7 +209,7 @@ export interface GoogleCloudContactcenterinsightsV1Assessment {
   /** Output only. The state of the assessment. */
   state?: GoogleCloudContactcenterinsightsV1AssessmentStateEnum | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1Assessment = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Assessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -227,7 +227,7 @@ export interface AppealProjectsLocationsConversationsAssessmentsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const AppealProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const AppealProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody())),
@@ -246,7 +246,7 @@ export type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConf
   | "SUMMARIZATION_MODEL_UNSPECIFIED"
   | "BASELINE_MODEL"
   | "BASELINE_MODEL_V2_0";
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
+const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
   S.String;
 
 /** Configuration for summarization. */
@@ -260,7 +260,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizatio
   /** Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile} */
   conversationProfile?: string;
 }
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig =
+const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       summarizationModel: S.optional(
@@ -278,7 +278,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScor
   /** List of QaScorecardRevisions. */
   qaScorecardRevisions?: StringList;
 }
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList =
+const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       qaScorecardRevisions: S.optional(StringList),
@@ -292,13 +292,12 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig {
   /** A manual list of scorecards to score. */
   scorecardList?: GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList;
 }
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scorecardList: S.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scorecardList: S.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig>;
@@ -334,7 +333,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /** Whether to run the issue model annotator. A model should have already been deployed for this to take effect. */
   runIssueModelAnnotator?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelector = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AnnotatorSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runPhraseMatcherAnnotator: S.optional(S.Boolean),
     phraseMatchers: S.optional(StringList),
@@ -370,8 +369,8 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsReque
   /** Required. The parent resource to create analyses in. */
   parent?: string;
 }
-export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       analysisPercentage: S.optional(S.Number),
       relabel: S.optional(S.Boolean),
@@ -379,9 +378,9 @@ export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest =
       filter: S.optional(S.String),
       parent: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest>;
 
 export interface BulkAnalyzeProjectsLocationsConversationsRequest {
   /** Required. The parent resource to create analyses in. */
@@ -389,7 +388,7 @@ export interface BulkAnalyzeProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest;
 }
-export const BulkAnalyzeProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkAnalyzeProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -407,15 +406,10 @@ export const BulkAnalyzeProjectsLocationsConversationsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<BulkAnalyzeProjectsLocationsConversationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -426,7 +420,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -447,7 +441,7 @@ export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: GoogleRpcStatus;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
@@ -465,20 +459,19 @@ export interface BulkAnalyzeProjectsLocationsConversationsSegmentsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest;
 }
-export const BulkAnalyzeProjectsLocationsConversationsSegmentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/segments:bulkAnalyze",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
+const BulkAnalyzeProjectsLocationsConversationsSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/segments:bulkAnalyze",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkAnalyzeProjectsLocationsConversationsSegmentsRequest",
 }) as any as S.Schema<BulkAnalyzeProjectsLocationsConversationsSegmentsRequest>;
@@ -490,15 +483,15 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsReque
   /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
 }
-export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.optional(S.String),
       filter: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest>;
 
 export interface BulkDeleteFeedbackLabelsProjectsLocationsRequest {
   /** Required. The parent resource for new feedback labels. */
@@ -506,7 +499,7 @@ export interface BulkDeleteFeedbackLabelsProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
 }
-export const BulkDeleteFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -529,20 +522,19 @@ export interface BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
 }
-export const BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:bulkDeleteFeedbackLabels",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
+const BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}:bulkDeleteFeedbackLabels",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest",
 }) as any as S.Schema<BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest>;
@@ -558,17 +550,17 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsReques
   /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
   parent?: string;
 }
-export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       maxDeleteCount: S.optional(S.Number),
       force: S.optional(S.Boolean),
       filter: S.optional(S.String),
       parent: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest>;
 
 export interface BulkDeleteProjectsLocationsConversationsRequest {
   /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
@@ -576,7 +568,7 @@ export interface BulkDeleteProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
 }
-export const BulkDeleteProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -599,7 +591,7 @@ export interface BulkDeleteProjectsLocationsDatasetsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
 }
-export const BulkDeleteProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -623,7 +615,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   /** Optional. The title of the new sheet to write the feedback labels to. */
   sheetTitle?: string;
 }
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination =
+const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       spreadsheetUri: S.optional(S.String),
@@ -639,14 +631,14 @@ export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestF
   | "QUALITY_AI"
   | "TOPIC_MODELING"
   | "AGENT_ASSIST_SUMMARY";
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
+const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
   S.String;
 
 export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
   | "FORMAT_UNSPECIFIED"
   | "CSV"
   | "JSON";
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
+const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
   S.String;
 
 /** Google Cloud Storage Object details to write the feedback labels to. */
@@ -664,7 +656,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   /** Required. The Google Cloud Storage URI to write the feedback labels to. The file name will be used as a prefix for the files written to the bucket if the output needs to be split across multiple files, otherwise it will be used as is. The file extension will be appended to the file name based on the format selected. E.g. `gs://bucket_name/object_uri_prefix` */
   objectUri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination =
+const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       recordsPerFileCount: S.optional(S.String),
@@ -700,8 +692,8 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   /** A cloud storage bucket destination. */
   gcsDestination?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination;
 }
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       templateQaScorecardId: S.optional(StringList),
       parent: S.optional(S.String),
@@ -718,9 +710,9 @@ export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest
         GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest>;
 
 export interface BulkDownloadFeedbackLabelsProjectsLocationsRequest {
   /** Required. The parent resource for new feedback labels. */
@@ -728,7 +720,7 @@ export interface BulkDownloadFeedbackLabelsProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest;
 }
-export const BulkDownloadFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDownloadFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -751,20 +743,19 @@ export interface BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest;
 }
-export const BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:bulkDownloadFeedbackLabels",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
+const BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}:bulkDownloadFeedbackLabels",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest",
 }) as any as S.Schema<BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest>;
@@ -774,7 +765,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
   /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. */
   spreadsheetUri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource =
+const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       spreadsheetUri: S.optional(S.String),
@@ -787,7 +778,7 @@ export type GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcs
   | "FORMAT_UNSPECIFIED"
   | "CSV"
   | "JSON";
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum =
+const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum =
   S.String;
 
 /** Google Cloud Storage Object details to get the feedback label file from. */
@@ -799,7 +790,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
     | GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum
     | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource =
+const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       objectUri: S.optional(S.String),
@@ -820,8 +811,8 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
   /** Optional. If set, upload will not happen and the labels will be validated. If not set, then default behavior will be to upload the labels after validation is complete. */
   validateOnly?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       sheetsSource: S.optional(
         GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource,
@@ -831,9 +822,9 @@ export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest =
       ),
       validateOnly: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest>;
 
 export interface BulkUploadFeedbackLabelsProjectsLocationsRequest {
   /** Required. The parent resource for new feedback labels. */
@@ -841,7 +832,7 @@ export interface BulkUploadFeedbackLabelsProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest;
 }
-export const BulkUploadFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkUploadFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -864,20 +855,19 @@ export interface BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest;
 }
-export const BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:bulkUploadFeedbackLabels",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
+const BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}:bulkUploadFeedbackLabels",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest",
 }) as any as S.Schema<BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest>;
@@ -886,17 +876,16 @@ export interface CalculateIssueModelStatsProjectsLocationsIssueModelsRequest {
   /** Required. The resource name of the issue model to query against. */
   issueModel: string;
 }
-export const CalculateIssueModelStatsProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      issueModel: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+issueModel}:calculateIssueModelStats",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const CalculateIssueModelStatsProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    issueModel: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+issueModel}:calculateIssueModelStats",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CalculateIssueModelStatsProjectsLocationsIssueModelsRequest",
 }) as any as S.Schema<CalculateIssueModelStatsProjectsLocationsIssueModelsRequest>;
@@ -910,25 +899,24 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStat
   /** Number of conversations attached to the issue at this point in time. */
   labeledConversationsCount?: string;
 }
-export const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       displayName: S.optional(S.String),
       issue: S.optional(S.String),
       labeledConversationsCount: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>;
 
 export type GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats | undefined;
 };
-export const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap>;
+const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats,
+) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap>;
 
 /** Aggregated statistics about an issue model. */
 export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
@@ -939,7 +927,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   /** Number of conversations the issue model has analyzed at this point in time. */
   analyzedConversationsCount?: string;
 }
-export const GoogleCloudContactcenterinsightsV1IssueModelLabelStats = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1IssueModelLabelStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unclassifiedConversationsCount: S.optional(S.String),
     issueStats: S.optional(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap),
@@ -954,14 +942,14 @@ export interface GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsRespo
   /** The latest label statistics for the queried issue model. Includes results on both training data and data labeled after deployment. */
   currentStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStats;
 }
-export const GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       currentStats: S.optional(GoogleCloudContactcenterinsightsV1IssueModelLabelStats),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse>;
 
 export interface CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. */
@@ -969,7 +957,7 @@ export interface CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedView
   /** Required. The location of the conversations. */
   location: string;
 }
-export const CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
+const CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
@@ -987,7 +975,7 @@ export const CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsCon
   }) as any as S.Schema<CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
 export type IntegerMap = { [key: string]: number | undefined };
-export const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
+const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
 
 /** A single interval in a time series. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval {
@@ -996,7 +984,7 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSer
   /** The number of conversations created in this interval. */
   conversationCount?: number;
 }
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval =
+const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       startTime: S.optional(S.String),
@@ -1008,7 +996,7 @@ export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesI
 
 export type GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList =
   Array<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>;
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList =
+const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList>;
@@ -1020,17 +1008,17 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSer
   /** The duration of each interval. */
   intervalDuration?: string;
 }
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       points: S.optional(
         GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList,
       ),
       intervalDuration: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries>;
 
 /** The response for calculating conversation statistics. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
@@ -1051,22 +1039,21 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   /** A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` */
   issueMatchesStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap;
 }
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      averageDuration: S.optional(S.String),
-      conversationCount: S.optional(S.Number),
-      issueMatches: S.optional(IntegerMap),
-      customHighlighterMatches: S.optional(IntegerMap),
-      averageTurnCount: S.optional(S.Number),
-      conversationCountTimeSeries: S.optional(
-        GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries,
-      ),
-      smartHighlighterMatches: S.optional(IntegerMap),
-      issueMatchesStats: S.optional(
-        GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1CalculateStatsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    averageDuration: S.optional(S.String),
+    conversationCount: S.optional(S.Number),
+    issueMatches: S.optional(IntegerMap),
+    customHighlighterMatches: S.optional(IntegerMap),
+    averageTurnCount: S.optional(S.Number),
+    conversationCountTimeSeries: S.optional(
+      GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries,
+    ),
+    smartHighlighterMatches: S.optional(IntegerMap),
+    issueMatchesStats: S.optional(
+      GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1CalculateStatsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>;
@@ -1077,7 +1064,7 @@ export interface CalculateStatsProjectsLocationsConversationsRequest {
   /** Required. The location of the conversations. */
   location: string;
 }
-export const CalculateStatsProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateStatsProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     location: S.String.pipe(T.Label()),
@@ -1097,7 +1084,7 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsRequest {
   /** A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. */
   filter?: string;
 }
-export const GoogleCloudContactcenterinsightsV1CalculateStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1CalculateStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
   }),
@@ -1111,18 +1098,17 @@ export interface CalculateStatsProjectsLocationsDatasetsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1CalculateStatsRequest;
 }
-export const CalculateStatsProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      location: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudContactcenterinsightsV1CalculateStatsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+location}/conversations:calculateStats",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const CalculateStatsProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudContactcenterinsightsV1CalculateStatsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+location}/conversations:calculateStats",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CalculateStatsProjectsLocationsDatasetsConversationsRequest",
 }) as any as S.Schema<CalculateStatsProjectsLocationsDatasetsConversationsRequest>;
@@ -1131,7 +1117,7 @@ export interface CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperati
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
+const CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1148,7 +1134,7 @@ export const CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsR
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -1156,7 +1142,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1193,7 +1179,7 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisRule {
   /** Selector of annotators to run and the phrase matchers to use for conversations that matches the conversation_filter. If not specified, NO annotators will be run. */
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
 }
-export const GoogleCloudContactcenterinsightsV1AnalysisRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AnalysisRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -1216,7 +1202,7 @@ export interface CreateProjectsLocationsAnalysisRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AnalysisRule;
 }
-export const CreateProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1AnalysisRule.pipe(T.HttpBody())),
@@ -1242,7 +1228,7 @@ export interface GoogleCloudContactcenterinsightsV1ScheduleInfo {
   /** The timezone to use for the groc expression. If not specified, defaults to UTC. */
   timeZone?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -1264,7 +1250,7 @@ export interface GoogleCloudContactcenterinsightsV1SampleRule {
   /** Optional. Group by dimension to sample the conversation. If no dimension is provided, the sampling will be applied to the project level. Current supported dimensions is 'quality_metadata.agent_info.agent_id'. */
   dimension?: string;
 }
-export const GoogleCloudContactcenterinsightsV1SampleRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1SampleRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversationFilter: S.optional(S.String),
     samplePercentage: S.optional(S.Number),
@@ -1296,7 +1282,7 @@ export interface GoogleCloudContactcenterinsightsV1AssessmentRule {
   /** Output only. The most recent time at which this assessment rule was updated. */
   updateTime?: string;
 }
-export const GoogleCloudContactcenterinsightsV1AssessmentRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AssessmentRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleInfo: S.optional(GoogleCloudContactcenterinsightsV1ScheduleInfo),
     displayName: S.optional(S.String),
@@ -1320,7 +1306,7 @@ export interface CreateProjectsLocationsAssessmentRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AssessmentRule;
 }
-export const CreateProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     assessmentRuleId: S.optional(S.String.pipe(T.Query())),
@@ -1340,20 +1326,20 @@ export type GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum =
   | "STATE_UNSPECIFIED"
   | "PROCESSING"
   | "IDLE";
-export const GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum = S.String;
+const GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum = S.String;
 
 export type GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "USER"
   | "MODEL";
-export const GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum = S.String;
+const GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum = S.String;
 
 /** A chunk of data in an assistant message. */
 export interface GoogleCloudContactcenterinsightsV1AssistantChunk {
   /** Optional. Text data. */
   text?: string;
 }
-export const GoogleCloudContactcenterinsightsV1AssistantChunk = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AssistantChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
   }),
@@ -1363,7 +1349,7 @@ export const GoogleCloudContactcenterinsightsV1AssistantChunk = /*@__PURE__*/ S.
 
 export type GoogleCloudContactcenterinsightsV1AssistantChunkList =
   Array<GoogleCloudContactcenterinsightsV1AssistantChunk>;
-export const GoogleCloudContactcenterinsightsV1AssistantChunkList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AssistantChunkList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1AssistantChunk,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantChunkList>;
 
@@ -1376,7 +1362,7 @@ export interface GoogleCloudContactcenterinsightsV1AssistantMessage {
   /** Required. Content of the message. */
   chunks?: GoogleCloudContactcenterinsightsV1AssistantChunkList;
 }
-export const GoogleCloudContactcenterinsightsV1AssistantMessage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AssistantMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum),
     eventTime: S.optional(S.String),
@@ -1388,7 +1374,7 @@ export const GoogleCloudContactcenterinsightsV1AssistantMessage = /*@__PURE__*/ 
 
 export type GoogleCloudContactcenterinsightsV1AssistantMessageList =
   Array<GoogleCloudContactcenterinsightsV1AssistantMessage>;
-export const GoogleCloudContactcenterinsightsV1AssistantMessageList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AssistantMessageList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1AssistantMessage,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantMessageList>;
 
@@ -1409,7 +1395,7 @@ export interface GoogleCloudContactcenterinsightsV1AssistantSession {
   /** Optional. The display name of the session. */
   displayName?: string;
 }
-export const GoogleCloudContactcenterinsightsV1AssistantSession = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AssistantSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requester: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -1431,7 +1417,7 @@ export interface CreateProjectsLocationsAssistantSessionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AssistantSession;
 }
-export const CreateProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assistantSessionId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1462,7 +1448,7 @@ export interface GoogleCloudContactcenterinsightsV1AuthorizedViewSet {
   /** Output only. Whether this resource is zone separated. */
   satisfiesPzs?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1AuthorizedViewSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AuthorizedViewSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -1483,7 +1469,7 @@ export interface CreateProjectsLocationsAuthorizedViewSetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedViewSet;
 }
-export const CreateProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     authorizedViewSetId: S.optional(S.String.pipe(T.Query())),
@@ -1516,7 +1502,7 @@ export interface GoogleCloudContactcenterinsightsV1AuthorizedView {
   /** A filter to reduce conversation results to a specific subset. The AuthorizedView's assigned permission (read/write) could be applied to the subset of conversations. If conversation_filter is empty, there is no restriction on the conversations that the AuthorizedView can access. Having *authorizedViews.get* access to the AuthorizedView means having the same read/write access to the Conversations (as well as metadata/annotations linked to the conversation) that this AuthorizedView has. */
   conversationFilter?: string;
 }
-export const GoogleCloudContactcenterinsightsV1AuthorizedView = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AuthorizedView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satisfiesPzi: S.optional(S.Boolean),
     createTime: S.optional(S.String),
@@ -1538,8 +1524,8 @@ export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedView;
 }
-export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       authorizedViewId: S.optional(S.String.pipe(T.Query())),
@@ -1551,9 +1537,9 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
         baseUrl: "https://contactcenterinsights.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
+}) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
   /** Required. The parent resource of the assessment. */
@@ -1561,7 +1547,7 @@ export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Assessment;
 }
-export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
+const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -1583,7 +1569,7 @@ export interface GoogleCloudContactcenterinsightsV1NoteQaQuestionNote {
   /** The question resource that the note is associated with. */
   qaQuestion?: string;
 }
-export const GoogleCloudContactcenterinsightsV1NoteQaQuestionNote = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1NoteQaQuestionNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     qaQuestion: S.optional(S.String),
   }),
@@ -1596,11 +1582,10 @@ export interface GoogleCloudContactcenterinsightsV1NoteConversationTurnNote {
   /** The conversation turn index that the note is associated with. */
   turnIndex?: number;
 }
-export const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      turnIndex: S.optional(S.Number),
-    }),
+const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    turnIndex: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1NoteConversationTurnNote",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1NoteConversationTurnNote>;
@@ -1608,15 +1593,12 @@ export const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote = /*@__P
 /** A note about the entire parent assessment. */
 export type GoogleCloudContactcenterinsightsV1NoteAssessmentNote =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1NoteAssessmentNote =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 /** Information about a user. */
 export interface GoogleCloudContactcenterinsightsV1UserInfo {
   /** The user's username. */
   username?: string;
 }
-export const GoogleCloudContactcenterinsightsV1UserInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1UserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
   }),
@@ -1643,7 +1625,7 @@ export interface GoogleCloudContactcenterinsightsV1Note {
   /** Output only. The time at which the note was last updated. */
   updateTime?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Note = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Note = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     qaQuestionNote: S.optional(GoogleCloudContactcenterinsightsV1NoteQaQuestionNote),
     conversationTurnNote: S.optional(GoogleCloudContactcenterinsightsV1NoteConversationTurnNote),
@@ -1664,7 +1646,7 @@ export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
-export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
+const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -1702,7 +1684,7 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   /** A value of "Not Applicable (N/A)". Should only ever be `true`. */
   naValue?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     strValue: S.optional(S.String),
     normalizedScore: S.optional(S.Number),
@@ -1737,7 +1719,7 @@ export interface GoogleCloudContactcenterinsightsV1FeedbackLabel {
   /** Output only. Whether this resource is zone separated. */
   satisfiesPzs?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1FeedbackLabel = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1FeedbackLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -1760,7 +1742,7 @@ export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
+const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       feedbackLabelId: S.optional(S.String.pipe(T.Query())),
@@ -1781,7 +1763,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum =
   | "LABEL_KEY_TYPE_UNSPECIFIED"
   | "LABEL_KEY_TYPE_CUSTOM";
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum = S.String;
 
 /** Condition for auto-labeling conversations. */
 export interface GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition {
@@ -1790,19 +1772,19 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondi
   /** CEL expression to be evaluated as the value. */
   value?: string;
 }
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       condition: S.optional(S.String),
       value: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
 
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList =
   Array<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList =
+const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList>;
@@ -1828,7 +1810,7 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRule {
   /** The label key. This is also the {auto_labeling_rule} in the resource name. Only settable if label_key_type is LABEL_KEY_TYPE_CUSTOM. */
   labelKey?: string;
 }
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AutoLabelingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -1852,7 +1834,7 @@ export interface CreateProjectsLocationsAutoLabelingRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
 }
-export const CreateProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     autoLabelingRuleId: S.optional(S.String.pipe(T.Query())),
@@ -1875,26 +1857,25 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
   /** The audio channel that contains the agent. */
   agentChannel?: number;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationCallMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customerChannel: S.optional(S.Number),
-      agentChannel: S.optional(S.Number),
-    }),
+const GoogleCloudContactcenterinsightsV1ConversationCallMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerChannel: S.optional(S.Number),
+    agentChannel: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ConversationCallMetadata",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>;
 
 export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
   Array<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
+const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList>;
 
 export type GoogleCloudContactcenterinsightsV1FeedbackLabelList =
   Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
-export const GoogleCloudContactcenterinsightsV1FeedbackLabelList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1FeedbackLabelList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1FeedbackLabel,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabelList>;
 
@@ -1911,20 +1892,19 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   /** An arbitrary string value specifying the menu path the customer took. */
   menuPath?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      agentInfo: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList,
-      ),
-      waitDuration: S.optional(S.String),
-      feedbackLabels: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabelList),
-      customerSatisfactionRating: S.optional(S.Number),
-      menuPath: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationQualityMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata>;
+const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentInfo: S.optional(
+      GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList,
+    ),
+    waitDuration: S.optional(S.String),
+    feedbackLabels: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabelList),
+    customerSatisfactionRating: S.optional(S.Number),
+    menuPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ConversationQualityMetadata",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata>;
 
 /** Tags and their corresponding results. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult {
@@ -1937,31 +1917,28 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult 
   /** The normalized score the tag applies to. */
   normalizedScore?: number;
 }
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      potentialScore: S.optional(S.Number),
-      score: S.optional(S.Number),
-      tag: S.optional(S.String),
-      normalizedScore: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
+const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    potentialScore: S.optional(S.Number),
+    score: S.optional(S.Number),
+    tag: S.optional(S.String),
+    normalizedScore: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList>;
+const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList = /*@__PURE__*/ S.Array(
+  GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult,
+) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "SYSTEM_GENERATED_ONLY"
   | "INCLUDES_MANUAL_EDITS";
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
-  S.String;
+const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum = S.String;
 
 /** A scorecard result may have multiple sets of scores from varying sources, one of which becomes the "main" answer above. A ScoreSource represents each individual set of scores. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource {
@@ -1978,33 +1955,31 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource 
   /** The normalized score, which is the score divided by the potential score. */
   normalizedScore?: number;
 }
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      score: S.optional(S.Number),
-      qaTagResults: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList),
-      sourceType: S.optional(
-        GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum,
-      ),
-      potentialScore: S.optional(S.Number),
-      normalizedScore: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
+const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    score: S.optional(S.Number),
+    qaTagResults: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList),
+    sourceType: S.optional(
+      GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum,
+    ),
+    potentialScore: S.optional(S.Number),
+    normalizedScore: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList>;
+const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList = /*@__PURE__*/ S.Array(
+  GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource,
+) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList>;
 
 export type GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "SYSTEM_GENERATED"
   | "MANUAL_EDIT";
-export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum = S.String;
 
 /** A question may have multiple answers from varying sources, one of which becomes the "main" answer above. AnswerSource represents each individual answer. */
 export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
@@ -2013,7 +1988,7 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
   /** The answer value from this source. This field is populated by default, unless the question has a selection strategy configured to return multiple answer values, in which case `answer_values` will be populated instead. */
   answerValue?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue;
 }
-export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: S.optional(GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum),
     answerValue: S.optional(GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue),
@@ -2024,7 +1999,7 @@ export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource = /*@__PURE_
 
 export type GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList =
   Array<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
-export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList>;
 
@@ -2043,7 +2018,7 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswer {
   /** Lists all answer sources containing one or more answer values of a specific source type, e.g., all system-generated answer sources, or all manual edit answer sources. */
   answerSources?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList;
 }
-export const GoogleCloudContactcenterinsightsV1QaAnswer = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaAnswer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(StringList),
     qaQuestion: S.optional(S.String),
@@ -2058,7 +2033,7 @@ export const GoogleCloudContactcenterinsightsV1QaAnswer = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudContactcenterinsightsV1QaAnswerList =
   Array<GoogleCloudContactcenterinsightsV1QaAnswer>;
-export const GoogleCloudContactcenterinsightsV1QaAnswerList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1QaAnswerList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1QaAnswer,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswerList>;
 
@@ -2087,7 +2062,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
   /** Set of QaAnswers represented in the result. */
   qaAnswers?: GoogleCloudContactcenterinsightsV1QaAnswerList;
 }
-export const GoogleCloudContactcenterinsightsV1QaScorecardResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaScorecardResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     qaScorecardRevision: S.optional(S.String),
     scoreSources: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList),
@@ -2107,7 +2082,7 @@ export const GoogleCloudContactcenterinsightsV1QaScorecardResult = /*@__PURE__*/
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecardResult>;
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1QaScorecardResultList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1QaScorecardResult,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultList>;
 
@@ -2118,12 +2093,11 @@ export interface GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
   /** Percentage of the total conversation spent in silence. */
   silencePercentage?: number;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationLevelSilence = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      silenceDuration: S.optional(S.String),
-      silencePercentage: S.optional(S.Number),
-    }),
+const GoogleCloudContactcenterinsightsV1ConversationLevelSilence = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    silenceDuration: S.optional(S.String),
+    silencePercentage: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ConversationLevelSilence",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSilence>;
@@ -2135,7 +2109,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchData {
   /** The human-readable name of the phrase matcher. */
   displayName?: string;
 }
-export const GoogleCloudContactcenterinsightsV1PhraseMatchData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1PhraseMatchData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phraseMatcher: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2147,7 +2121,7 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatchData = /*@__PURE__*/ S
 export type GoogleCloudContactcenterinsightsV1PhraseMatchDataMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1PhraseMatchData | undefined;
 };
-export const GoogleCloudContactcenterinsightsV1PhraseMatchDataMap = /*@__PURE__*/ S.Record(
+const GoogleCloudContactcenterinsightsV1PhraseMatchDataMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudContactcenterinsightsV1PhraseMatchData,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchDataMap>;
@@ -2159,7 +2133,7 @@ export interface GoogleCloudContactcenterinsightsV1SentimentData {
   /** A non-negative number from 0 to infinity which represents the absolute magnitude of sentiment regardless of score. */
   magnitude?: number;
 }
-export const GoogleCloudContactcenterinsightsV1SentimentData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1SentimentData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     score: S.optional(S.Number),
     magnitude: S.optional(S.Number),
@@ -2175,22 +2149,20 @@ export interface GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
   /** Data specifying sentiment. */
   sentimentData?: GoogleCloudContactcenterinsightsV1SentimentData;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationLevelSentiment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      channelTag: S.optional(S.Number),
-      sentimentData: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
-    }),
+const GoogleCloudContactcenterinsightsV1ConversationLevelSentiment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    channelTag: S.optional(S.Number),
+    sentimentData: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ConversationLevelSentiment",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
 
 export type GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList =
   Array<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
-export const GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudContactcenterinsightsV1ConversationLevelSentiment,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList>;
+const GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList = /*@__PURE__*/ S.Array(
+  GoogleCloudContactcenterinsightsV1ConversationLevelSentiment,
+) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList>;
 
 /** Information about the issue. */
 export interface GoogleCloudContactcenterinsightsV1IssueAssignment {
@@ -2201,7 +2173,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueAssignment {
   /** Score indicating the likelihood of the issue assignment. currently bounded on [0,1]. */
   score?: number;
 }
-export const GoogleCloudContactcenterinsightsV1IssueAssignment = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1IssueAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     issue: S.optional(S.String),
@@ -2213,7 +2185,7 @@ export const GoogleCloudContactcenterinsightsV1IssueAssignment = /*@__PURE__*/ S
 
 export type GoogleCloudContactcenterinsightsV1IssueAssignmentList =
   Array<GoogleCloudContactcenterinsightsV1IssueAssignment>;
-export const GoogleCloudContactcenterinsightsV1IssueAssignmentList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1IssueAssignmentList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1IssueAssignment,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueAssignmentList>;
 
@@ -2224,7 +2196,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelResult {
   /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
   issueModel?: string;
 }
-export const GoogleCloudContactcenterinsightsV1IssueModelResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1IssueModelResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(GoogleCloudContactcenterinsightsV1IssueAssignmentList),
     issueModel: S.optional(S.String),
@@ -2234,7 +2206,7 @@ export const GoogleCloudContactcenterinsightsV1IssueModelResult = /*@__PURE__*/ 
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelResult>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type GoogleCloudContactcenterinsightsV1EntityTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -2250,7 +2222,7 @@ export type GoogleCloudContactcenterinsightsV1EntityTypeEnum =
   | "DATE"
   | "NUMBER"
   | "PRICE";
-export const GoogleCloudContactcenterinsightsV1EntityTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1EntityTypeEnum = S.String;
 
 /** The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a person, an organization, or location. */
 export interface GoogleCloudContactcenterinsightsV1Entity {
@@ -2265,7 +2237,7 @@ export interface GoogleCloudContactcenterinsightsV1Entity {
   /** The representative name for the entity. */
   displayName?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Entity = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Entity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(StringMap),
     salience: S.optional(S.Number),
@@ -2280,7 +2252,7 @@ export const GoogleCloudContactcenterinsightsV1Entity = /*@__PURE__*/ S.suspend(
 export type GoogleCloudContactcenterinsightsV1EntityMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1Entity | undefined;
 };
-export const GoogleCloudContactcenterinsightsV1EntityMap = /*@__PURE__*/ S.Record(
+const GoogleCloudContactcenterinsightsV1EntityMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudContactcenterinsightsV1Entity,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1EntityMap>;
@@ -2292,7 +2264,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotationBoundary {
   /** The word index of this boundary with respect to the first word in the transcript piece. This index starts at zero. */
   wordIndex?: number;
 }
-export const GoogleCloudContactcenterinsightsV1AnnotationBoundary = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AnnotationBoundary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transcriptIndex: S.optional(S.Number),
     wordIndex: S.optional(S.Number),
@@ -2304,15 +2276,12 @@ export const GoogleCloudContactcenterinsightsV1AnnotationBoundary = /*@__PURE__*
 /** The data for an interruption annotation. */
 export type GoogleCloudContactcenterinsightsV1InterruptionData =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1InterruptionData =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 /** The data for an intent match. Represents an intent match for a text segment in the conversation. A text segment can be part of a sentence, a complete sentence, or an utterance with multiple sentences. */
 export interface GoogleCloudContactcenterinsightsV1IntentMatchData {
   /** The id of the matched intent. Can be used to retrieve the corresponding intent information. */
   intentUniqueId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1IntentMatchData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1IntentMatchData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intentUniqueId: S.optional(S.String),
   }),
@@ -2323,21 +2292,15 @@ export const GoogleCloudContactcenterinsightsV1IntentMatchData = /*@__PURE__*/ S
 /** The data for a silence annotation. */
 export type GoogleCloudContactcenterinsightsV1SilenceData =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1SilenceData =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 /** The data for a hold annotation. */
 export type GoogleCloudContactcenterinsightsV1HoldData =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1HoldData =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 /** The data for an issue match annotation. */
 export interface GoogleCloudContactcenterinsightsV1IssueMatchData {
   /** Information about the issue's assignment. */
   issueAssignment?: GoogleCloudContactcenterinsightsV1IssueAssignment;
 }
-export const GoogleCloudContactcenterinsightsV1IssueMatchData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1IssueMatchData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueAssignment: S.optional(GoogleCloudContactcenterinsightsV1IssueAssignment),
   }),
@@ -2349,7 +2312,7 @@ export type GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum =
   | "MENTION_TYPE_UNSPECIFIED"
   | "PROPER"
   | "COMMON";
-export const GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum = S.String;
 
 /** The data for an entity mention annotation. This represents a mention of an `Entity` in the conversation. */
 export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
@@ -2360,7 +2323,7 @@ export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
   /** The type of the entity mention. */
   type?: GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1EntityMentionData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1EntityMentionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityUniqueId: S.optional(S.String),
     sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
@@ -2395,7 +2358,7 @@ export interface GoogleCloudContactcenterinsightsV1CallAnnotation {
   /** Data specifying an entity mention. */
   entityMentionData?: GoogleCloudContactcenterinsightsV1EntityMentionData;
 }
-export const GoogleCloudContactcenterinsightsV1CallAnnotation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1CallAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationEndBoundary: S.optional(GoogleCloudContactcenterinsightsV1AnnotationBoundary),
     interruptionData: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest),
@@ -2415,7 +2378,7 @@ export const GoogleCloudContactcenterinsightsV1CallAnnotation = /*@__PURE__*/ S.
 
 export type GoogleCloudContactcenterinsightsV1CallAnnotationList =
   Array<GoogleCloudContactcenterinsightsV1CallAnnotation>;
-export const GoogleCloudContactcenterinsightsV1CallAnnotationList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1CallAnnotationList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1CallAnnotation,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1CallAnnotationList>;
 
@@ -2426,7 +2389,7 @@ export interface GoogleCloudContactcenterinsightsV1Intent {
   /** The unique identifier of the intent. */
   id?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Intent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Intent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     id: S.optional(S.String),
@@ -2438,7 +2401,7 @@ export const GoogleCloudContactcenterinsightsV1Intent = /*@__PURE__*/ S.suspend(
 export type GoogleCloudContactcenterinsightsV1IntentMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1Intent | undefined;
 };
-export const GoogleCloudContactcenterinsightsV1IntentMap = /*@__PURE__*/ S.Record(
+const GoogleCloudContactcenterinsightsV1IntentMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudContactcenterinsightsV1Intent,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1IntentMap>;
@@ -2462,7 +2425,7 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMet
   /** All the matched intents in the call. */
   intents?: GoogleCloudContactcenterinsightsV1IntentMap;
 }
-export const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata =
+const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       qaScorecardResults: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardResultList),
@@ -2485,7 +2448,7 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResult {
   /** Call-specific metadata created by the analysis. */
   callAnalysisMetadata?: GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata;
 }
-export const GoogleCloudContactcenterinsightsV1AnalysisResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AnalysisResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     callAnalysisMetadata: S.optional(
@@ -2513,7 +2476,7 @@ export interface GoogleCloudContactcenterinsightsV1Analysis {
   /** To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run. */
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
 }
-export const GoogleCloudContactcenterinsightsV1Analysis = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Analysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satisfiesPzs: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -2531,7 +2494,7 @@ export type GoogleCloudContactcenterinsightsV1ConversationMediumEnum =
   | "MEDIUM_UNSPECIFIED"
   | "PHONE_CALL"
   | "CHAT";
-export const GoogleCloudContactcenterinsightsV1ConversationMediumEnum = S.String;
+const GoogleCloudContactcenterinsightsV1ConversationMediumEnum = S.String;
 
 export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
   | "CORRELATION_TYPE_UNSPECIFIED"
@@ -2539,7 +2502,7 @@ export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrela
   | "PARTIAL"
   | "FULL"
   | "SYNTHETIC";
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
+const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
   S.String;
 
 export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
@@ -2547,7 +2510,7 @@ export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrela
     | GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum
     | (string & {})
   >;
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
+const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList>;
@@ -2561,25 +2524,24 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
   /** Output only. The correlation types of this conversation. A single conversation can have multiple correlation types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION. */
   correlationTypes?: GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fullConversationCorrelationId: S.optional(S.String),
-      mergedFullConversationCorrelationId: S.optional(S.String),
-      correlationTypes: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo>;
+const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fullConversationCorrelationId: S.optional(S.String),
+    mergedFullConversationCorrelationId: S.optional(S.String),
+    correlationTypes: S.optional(
+      GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo>;
 
 /** The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE. */
 export interface GoogleCloudContactcenterinsightsV1DialogflowIntent {
   /** The human-readable name of the intent. */
   displayName?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DialogflowIntent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1DialogflowIntent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
@@ -2590,7 +2552,7 @@ export const GoogleCloudContactcenterinsightsV1DialogflowIntent = /*@__PURE__*/ 
 export type GoogleCloudContactcenterinsightsV1DialogflowIntentMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1DialogflowIntent | undefined;
 };
-export const GoogleCloudContactcenterinsightsV1DialogflowIntentMap = /*@__PURE__*/ S.Record(
+const GoogleCloudContactcenterinsightsV1DialogflowIntentMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudContactcenterinsightsV1DialogflowIntent,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntentMap>;
@@ -2602,7 +2564,7 @@ export interface GoogleCloudCesV1mainBlob {
   /** Required. Raw bytes of the blob. */
   data?: string;
 }
-export const GoogleCloudCesV1mainBlob = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainBlob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     data: S.optional(S.String),
@@ -2616,7 +2578,7 @@ export interface GoogleCloudCesV1mainAgentTransfer {
   /** Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   targetAgent?: string;
 }
-export const GoogleCloudCesV1mainAgentTransfer = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainAgentTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     targetAgent: S.optional(S.String),
@@ -2634,7 +2596,7 @@ export interface GoogleCloudCesV1mainImage {
   /** Required. Raw bytes of the image. */
   data?: string;
 }
-export const GoogleCloudCesV1mainImage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     altText: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -2651,7 +2613,7 @@ export interface GoogleCloudCesV1mainToolsetTool {
   /** Optional. The tool ID to filter the tools to retrieve the schema for. */
   toolId?: string;
 }
-export const GoogleCloudCesV1mainToolsetTool = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainToolsetTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolset: S.optional(S.String),
     toolId: S.optional(S.String),
@@ -2677,7 +2639,7 @@ export interface GoogleCloudCesV1mainToolCall {
   /** Output only. Display name of the tool. */
   displayName?: string;
 }
-export const GoogleCloudCesV1mainToolCall = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainToolCall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentName: S.optional(S.String),
     toolsetTool: S.optional(GoogleCloudCesV1mainToolsetTool),
@@ -2708,7 +2670,7 @@ export interface GoogleCloudCesV1mainToolResponse {
   /** Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call that started it instead of rendering every step as a sibling. */
   parentToolCallId?: string;
 }
-export const GoogleCloudCesV1mainToolResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainToolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     agentName: S.optional(S.String),
@@ -2745,7 +2707,7 @@ export interface GoogleCloudCesV1mainChunk {
   /** Optional. Tool execution response. */
   toolResponse?: GoogleCloudCesV1mainToolResponse;
 }
-export const GoogleCloudCesV1mainChunk = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(GoogleCloudCesV1mainBlob),
     agentTransfer: S.optional(GoogleCloudCesV1mainAgentTransfer),
@@ -2763,7 +2725,7 @@ export const GoogleCloudCesV1mainChunk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudCesV1mainChunk>;
 
 export type GoogleCloudCesV1mainChunkList = Array<GoogleCloudCesV1mainChunk>;
-export const GoogleCloudCesV1mainChunkList = /*@__PURE__*/ S.Array(
+const GoogleCloudCesV1mainChunkList = /*@__PURE__*/ S.Array(
   GoogleCloudCesV1mainChunk,
 ) as any as S.Schema<GoogleCloudCesV1mainChunkList>;
 
@@ -2776,7 +2738,7 @@ export interface GoogleCloudCesV1mainMessage {
   /** Optional. The role within the conversation, e.g., user, agent. */
   role?: string;
 }
-export const GoogleCloudCesV1mainMessage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: S.optional(GoogleCloudCesV1mainChunkList),
     eventTime: S.optional(S.String),
@@ -2787,12 +2749,12 @@ export const GoogleCloudCesV1mainMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudCesV1mainMessage>;
 
 export type GoogleCloudCesV1mainMessageList = Array<GoogleCloudCesV1mainMessage>;
-export const GoogleCloudCesV1mainMessageList = /*@__PURE__*/ S.Array(
+const GoogleCloudCesV1mainMessageList = /*@__PURE__*/ S.Array(
   GoogleCloudCesV1mainMessage,
 ) as any as S.Schema<GoogleCloudCesV1mainMessageList>;
 
 export type GoogleCloudCesV1mainSpanList = Array<GoogleCloudCesV1mainSpan>;
-export const GoogleCloudCesV1mainSpanList = /*@__PURE__*/ S.Array(
+const GoogleCloudCesV1mainSpanList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => GoogleCloudCesV1mainSpan),
 ) as any as S.Schema<GoogleCloudCesV1mainSpanList>;
 
@@ -2811,7 +2773,7 @@ export interface GoogleCloudCesV1mainSpan {
   /** Output only. The name of the span. */
   name?: string;
 }
-export const GoogleCloudCesV1mainSpan = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainSpan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.String),
     childSpans: S.optional(GoogleCloudCesV1mainSpanList),
@@ -2829,7 +2791,7 @@ export interface GoogleCloudContactcenterinsightsV1CesTurnAnnotation {
   /** The root span of the action processing. */
   rootSpan?: GoogleCloudCesV1mainSpan;
 }
-export const GoogleCloudContactcenterinsightsV1CesTurnAnnotation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1CesTurnAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(GoogleCloudCesV1mainMessageList),
     rootSpan: S.optional(GoogleCloudCesV1mainSpan),
@@ -2843,7 +2805,7 @@ export type GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum
   | "NOT_CORRECT"
   | "PARTIALLY_CORRECT"
   | "FULLY_CORRECT";
-export const GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum = S.String;
+const GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum = S.String;
 
 /** The feedback that the customer has about a certain answer in the conversation. */
 export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
@@ -2856,7 +2818,7 @@ export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
   /** Indicates whether an answer or item was clicked by the human agent. */
   clicked?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1AnswerFeedback = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1AnswerFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correctnessLevel: S.optional(
       GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum,
@@ -2873,7 +2835,7 @@ export interface GoogleCloudCesV1mainEndSession {
   /** Optional. Provides additional information about the end session signal, such as the reason for ending the session. */
   metadata?: DocumentMap;
 }
-export const GoogleCloudCesV1mainEndSession = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudCesV1mainEndSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
   }),
@@ -2886,11 +2848,10 @@ export interface GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation {
   /** End session signal from CES. */
   endSession?: GoogleCloudCesV1mainEndSession;
 }
-export const GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endSession: S.optional(GoogleCloudCesV1mainEndSession),
-    }),
+const GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endSession: S.optional(GoogleCloudCesV1mainEndSession),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation>;
@@ -2899,7 +2860,7 @@ export type GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySou
   | "QUERY_SOURCE_UNSPECIFIED"
   | "AGENT_QUERY"
   | "SUGGESTED_QUERY";
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum = S.String;
+const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum = S.String;
 
 /** Explicit input used for generating the answer */
 export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
@@ -2912,15 +2873,14 @@ export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
     | GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum
     | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      generatorName: S.optional(S.String),
-      query: S.optional(S.String),
-      querySource: S.optional(
-        GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    generatorName: S.optional(S.String),
+    query: S.optional(S.String),
+    querySource: S.optional(
+      GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput>;
@@ -2940,7 +2900,7 @@ export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   /** The system's confidence score that this article is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
   confidenceScore?: number;
 }
-export const GoogleCloudContactcenterinsightsV1ArticleSuggestionData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ArticleSuggestionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(StringMap),
     uri: S.optional(S.String),
@@ -2960,12 +2920,11 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
   /** The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent} */
   dialogflowIntentId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DialogflowInteractionData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      confidence: S.optional(S.Number),
-      dialogflowIntentId: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1DialogflowInteractionData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    confidence: S.optional(S.Number),
+    dialogflowIntentId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1DialogflowInteractionData",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowInteractionData>;
@@ -2981,7 +2940,7 @@ export interface GoogleCloudContactcenterinsightsV1SmartReplyData {
   /** The content of the reply. */
   reply?: string;
 }
-export const GoogleCloudContactcenterinsightsV1SmartReplyData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1SmartReplyData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confidenceScore: S.optional(S.Number),
     queryRecord: S.optional(S.String),
@@ -3003,14 +2962,13 @@ export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   /** The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
   confidenceScore?: number;
 }
-export const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      queryRecord: S.optional(S.String),
-      metadata: S.optional(StringMap),
-      suggestion: S.optional(S.String),
-      confidenceScore: S.optional(S.Number),
-    }),
+const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queryRecord: S.optional(S.String),
+    metadata: S.optional(StringMap),
+    suggestion: S.optional(S.String),
+    confidenceScore: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData>;
@@ -3032,7 +2990,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationSummarizationSugg
   /** Agent Assist generator ID. */
   generatorId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData =
+const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       text: S.optional(S.String),
@@ -3062,7 +3020,7 @@ export interface GoogleCloudContactcenterinsightsV1FaqAnswerData {
   /** The corresponding FAQ question. */
   question?: string;
 }
-export const GoogleCloudContactcenterinsightsV1FaqAnswerData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1FaqAnswerData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryRecord: S.optional(S.String),
     metadata: S.optional(StringMap),
@@ -3106,7 +3064,7 @@ export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   /** Agent Assist FAQ answer data. */
   faqAnswer?: GoogleCloudContactcenterinsightsV1FaqAnswerData;
 }
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1RuntimeAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     endBoundary: S.optional(GoogleCloudContactcenterinsightsV1AnnotationBoundary),
@@ -3133,7 +3091,7 @@ export const GoogleCloudContactcenterinsightsV1RuntimeAnnotation = /*@__PURE__*/
 
 export type GoogleCloudContactcenterinsightsV1RuntimeAnnotationList =
   Array<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>;
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1RuntimeAnnotationList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1RuntimeAnnotation,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationList>;
 
@@ -3148,7 +3106,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Time offset of the end of this word relative to the beginning of the total conversation. */
   endOffset?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       startOffset: S.optional(S.String),
@@ -3162,7 +3120,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList>;
@@ -3172,7 +3130,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The text content. */
   text?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       text: S.optional(S.String),
@@ -3187,7 +3145,7 @@ export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSe
   | "UNORDERED"
   | "ORDERED_NUMBER"
   | "ORDERED_ALPHA";
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum =
   S.String;
 
 /** An item in a list. */
@@ -3197,7 +3155,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The text of the list item. */
   text?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subItems: S.optional(
@@ -3215,7 +3173,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList>;
@@ -3229,7 +3187,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. List items. */
   items?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       listType: S.optional(
@@ -3253,7 +3211,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The cited source URI. */
   sourceUri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sourceTitle: S.optional(S.String),
@@ -3270,7 +3228,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The cell values in the row. */
   cells?: StringList;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cells: S.optional(StringList),
@@ -3282,7 +3240,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList>;
@@ -3296,7 +3254,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Optional title for the table. */
   title?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       headers: S.optional(StringList),
@@ -3319,7 +3277,7 @@ export interface GoogleTypeMoney {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
   units?: string;
 }
-export const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nanos: S.optional(S.Number),
     currencyCode: S.optional(S.String),
@@ -3342,7 +3300,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Product price. */
   price?: GoogleTypeMoney;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       displayName: S.optional(S.String),
@@ -3359,7 +3317,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList>;
@@ -3369,7 +3327,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. List of products. */
   products?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       products: S.optional(
@@ -3388,7 +3346,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Type identifier for the payload. */
   payloadType?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       payload: S.optional(DocumentMap),
@@ -3406,7 +3364,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The chip label or text. */
   text?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       actionUri: S.optional(S.String),
@@ -3419,7 +3377,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList>;
@@ -3429,7 +3387,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. List of suggestion chips. */
   chips?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       chips: S.optional(
@@ -3448,7 +3406,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Anchor or display text. */
   text?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       uri: S.optional(S.String),
@@ -3466,7 +3424,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. URI or URL to the media. */
   uri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       alternativeText: S.optional(S.String),
@@ -3482,7 +3440,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The thought or reasoning text. */
   text?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart =
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart>;
 
 /** A structured component/part of a transcript segment. */
@@ -3510,7 +3468,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Model thought or internal reasoning. */
   thought?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       text: S.optional(
@@ -3554,7 +3512,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList>;
@@ -3566,7 +3524,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLev
   /** The Cloud Storage URI of the audio for any given turn. */
   audioGcsUri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio =
+const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       audioDuration: S.optional(S.String),
@@ -3582,7 +3540,7 @@ export type GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum =
   | "AUTOMATED_AGENT"
   | "END_USER"
   | "ANY_AGENT";
-export const GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum = S.String;
+const GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum = S.String;
 
 /** The call participant speaking for a given utterance. */
 export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
@@ -3597,15 +3555,14 @@ export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
   /** Obfuscated user ID from Dialogflow. */
   obfuscatedExternalUserId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationParticipant = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dialogflowParticipantName: S.optional(S.String),
-      dialogflowParticipant: S.optional(S.String),
-      userId: S.optional(S.String),
-      role: S.optional(GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum),
-      obfuscatedExternalUserId: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1ConversationParticipant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dialogflowParticipantName: S.optional(S.String),
+    dialogflowParticipant: S.optional(S.String),
+    userId: S.optional(S.String),
+    role: S.optional(GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum),
+    obfuscatedExternalUserId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ConversationParticipant",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationParticipant>;
@@ -3615,7 +3572,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist. */
   smartReplyAllowlistCovered?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       smartReplyAllowlistCovered: S.optional(S.Boolean),
@@ -3650,7 +3607,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** The sentiment for this transcript segment. */
   sentiment?: GoogleCloudContactcenterinsightsV1SentimentData;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       words: S.optional(
@@ -3679,7 +3636,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
+const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList>;
@@ -3689,13 +3646,12 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscript {
   /** A list of sequential transcript segments that comprise the conversation. */
   transcriptSegments?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationTranscript = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      transcriptSegments: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1ConversationTranscript = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    transcriptSegments: S.optional(
+      GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ConversationTranscript",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscript>;
@@ -3707,7 +3663,7 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowSource {
   /** Output only. The name of the Dialogflow conversation that this conversation resource is derived from. Format: projects/{project}/locations/{location}/conversations/{conversation} */
   dialogflowConversation?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DialogflowSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1DialogflowSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioUri: S.optional(S.String),
     dialogflowConversation: S.optional(S.String),
@@ -3725,7 +3681,7 @@ export interface GoogleCloudContactcenterinsightsV1GcsSource {
   /** Immutable. Cloud Storage URI that points to a file that contains the conversation transcript. */
   transcriptUri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1GcsSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1GcsSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioUris: S.optional(StringList),
     audioUri: S.optional(S.String),
@@ -3737,7 +3693,7 @@ export const GoogleCloudContactcenterinsightsV1GcsSource = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
   Array<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
-export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
+const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList>;
@@ -3753,16 +3709,15 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /** Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order of the URIs is the same as the order of the transcript turns. */
   turnLevelAudios?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationDataSource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dialogflowSource: S.optional(GoogleCloudContactcenterinsightsV1DialogflowSource),
-      gcsSource: S.optional(GoogleCloudContactcenterinsightsV1GcsSource),
-      metadataUri: S.optional(S.String),
-      turnLevelAudios: S.optional(
-        GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1ConversationDataSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dialogflowSource: S.optional(GoogleCloudContactcenterinsightsV1DialogflowSource),
+    gcsSource: S.optional(GoogleCloudContactcenterinsightsV1GcsSource),
+    metadataUri: S.optional(S.String),
+    turnLevelAudios: S.optional(
+      GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ConversationDataSource",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSource>;
@@ -3820,7 +3775,7 @@ export interface GoogleCloudContactcenterinsightsV1Conversation {
   /** A map for the user to specify any custom fields. A maximum of 100 labels per conversation is allowed, with a maximum of 256 characters per entry. */
   labels?: StringMap;
 }
-export const GoogleCloudContactcenterinsightsV1Conversation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Conversation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callMetadata: S.optional(GoogleCloudContactcenterinsightsV1ConversationCallMetadata),
     qualityMetadata: S.optional(GoogleCloudContactcenterinsightsV1ConversationQualityMetadata),
@@ -3862,7 +3817,7 @@ export interface CreateProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Conversation;
 }
-export const CreateProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     conversationId: S.optional(S.String.pipe(T.Query())),
@@ -3884,7 +3839,7 @@ export interface CreateProjectsLocationsConversationsAnalysesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Analysis;
 }
-export const CreateProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1Analysis.pipe(T.HttpBody())),
@@ -3905,7 +3860,7 @@ export interface CreateProjectsLocationsConversationsAssessmentsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Assessment;
 }
-export const CreateProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1Assessment.pipe(T.HttpBody())),
@@ -3926,18 +3881,17 @@ export interface CreateProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
-export const CreateProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/notes",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/notes",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsConversationsAssessmentsNotesRequest",
 }) as any as S.Schema<CreateProjectsLocationsConversationsAssessmentsNotesRequest>;
@@ -3950,19 +3904,18 @@ export interface CreateProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-export const CreateProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      feedbackLabelId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/feedbackLabels",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    feedbackLabelId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/feedbackLabels",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsConversationsFeedbackLabelsRequest",
 }) as any as S.Schema<CreateProjectsLocationsConversationsFeedbackLabelsRequest>;
@@ -3974,7 +3927,7 @@ export type GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUn
   | "MONTH"
   | "QUARTER"
   | "YEAR";
-export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum = S.String;
+const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum = S.String;
 
 /** Relative date range configuration. */
 export interface GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange {
@@ -3983,15 +3936,15 @@ export interface GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRa
   /** Required. The quantity of units in the past. */
   quantity?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       unit: S.optional(GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum),
       quantity: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange>;
 
 /** A time window for querying conversations. */
 export interface GoogleCloudContactcenterinsightsV1QueryInterval {
@@ -4000,7 +3953,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryInterval {
   /** Required. The start time of the time window. */
   startTime?: string;
 }
-export const GoogleCloudContactcenterinsightsV1QueryInterval = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QueryInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -4016,7 +3969,7 @@ export interface GoogleCloudContactcenterinsightsV1DateRangeConfig {
   /** An absolute date range. */
   absoluteDateRange?: GoogleCloudContactcenterinsightsV1QueryInterval;
 }
-export const GoogleCloudContactcenterinsightsV1DateRangeConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1DateRangeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relativeDateRange: S.optional(
       GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange,
@@ -4031,7 +3984,7 @@ export const GoogleCloudContactcenterinsightsV1DateRangeConfig = /*@__PURE__*/ S
 export interface GoogleCloudContactcenterinsightsV1QueryMetrics {
   request?: DocumentMap;
 }
-export const GoogleCloudContactcenterinsightsV1QueryMetrics = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QueryMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     request: S.optional(DocumentMap),
   }),
@@ -4046,22 +3999,22 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckp
   /** The session id of the chart. */
   sessionId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       revisionId: S.optional(S.String),
       sessionId: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint>;
 
 /** The user message. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage {
   /** A message from the user that is interacting with the system. */
   text?: string;
 }
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage =
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage =
   GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage>;
 
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
@@ -4069,7 +4022,7 @@ export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversatio
   | "THOUGHT"
   | "FINAL_RESPONSE"
   | "PROGRESS";
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
   S.String;
 
 /** A text output message from the system. */
@@ -4081,7 +4034,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** The parts of the message. */
   texts?: StringList;
 }
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput =
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
@@ -4103,7 +4056,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** A direct natural language response to the user message. */
   textOutput?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput;
 }
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage =
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       generatedSqlQuery: S.optional(S.String),
@@ -4128,7 +4081,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** A message from the system in response to the user. */
   systemMessage?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage;
 }
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage =
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       userMessage: S.optional(
@@ -4146,7 +4099,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
 
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList =
   Array<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList =
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList>;
@@ -4162,7 +4115,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** Ordered list of messages, including user inputs and system responses. */
   messages?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList;
 }
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation =
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       createTime: S.optional(S.String),
@@ -4178,7 +4131,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
 
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList =
   Array<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>;
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList =
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList>;
@@ -4197,7 +4150,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsights {
   /** Chart spec for the chart. */
   chartSpec?: DocumentMap;
 }
-export const GoogleCloudContactcenterinsightsV1GenerativeInsights = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1GenerativeInsights = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlComparisonKey: S.optional(S.String),
     request: S.optional(DocumentMap),
@@ -4221,7 +4174,7 @@ export interface GoogleCloudContactcenterinsightsV1ChartDataSource {
   /** Use natural language query to generate the chart. */
   generativeInsights?: GoogleCloudContactcenterinsightsV1GenerativeInsights;
 }
-export const GoogleCloudContactcenterinsightsV1ChartDataSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ChartDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryMetrics: S.optional(GoogleCloudContactcenterinsightsV1QueryMetrics),
     generativeInsights: S.optional(GoogleCloudContactcenterinsightsV1GenerativeInsights),
@@ -4242,13 +4195,13 @@ export type GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
   | "SUNBURST"
   | "GAUGE"
   | "SANKEY";
-export const GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum = S.String;
 
 export type GoogleCloudContactcenterinsightsV1ChartChartTypeEnum =
   | "CHART_TYPE_UNSPECIFIED"
   | "SYSTEM_DEFINED"
   | "USER_DEFINED";
-export const GoogleCloudContactcenterinsightsV1ChartChartTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1ChartChartTypeEnum = S.String;
 
 /** The redirect action to be taken when the chart is clicked. */
 export interface GoogleCloudContactcenterinsightsV1RedirectAction {
@@ -4257,7 +4210,7 @@ export interface GoogleCloudContactcenterinsightsV1RedirectAction {
   /** The relative path to redirect to. */
   relativePath?: string;
 }
-export const GoogleCloudContactcenterinsightsV1RedirectAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1RedirectAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryParams: S.optional(StringMap),
     relativePath: S.optional(S.String),
@@ -4273,7 +4226,7 @@ export interface GoogleCloudContactcenterinsightsV1ChartAction {
   /** Redirect action. */
   redirectAction?: GoogleCloudContactcenterinsightsV1RedirectAction;
 }
-export const GoogleCloudContactcenterinsightsV1ChartAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ChartAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversationFilter: S.optional(S.String),
     redirectAction: S.optional(GoogleCloudContactcenterinsightsV1RedirectAction),
@@ -4312,7 +4265,7 @@ export interface GoogleCloudContactcenterinsightsV1Chart {
   /** Chart description */
   description?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Chart = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Chart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateRangeConfig: S.optional(GoogleCloudContactcenterinsightsV1DateRangeConfig),
     dataSource: S.optional(GoogleCloudContactcenterinsightsV1ChartDataSource),
@@ -4345,7 +4298,7 @@ export interface GoogleCloudContactcenterinsightsV1Widget {
   /** A reference to a chart widget. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
   chartReference?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Widget = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Widget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     container: S.optional(S.suspend(() => GoogleCloudContactcenterinsightsV1Container)),
     chart: S.optional(GoogleCloudContactcenterinsightsV1Chart),
@@ -4358,7 +4311,7 @@ export const GoogleCloudContactcenterinsightsV1Widget = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudContactcenterinsightsV1WidgetList =
   Array<GoogleCloudContactcenterinsightsV1Widget>;
-export const GoogleCloudContactcenterinsightsV1WidgetList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1WidgetList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Widget,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1WidgetList>;
 
@@ -4381,7 +4334,7 @@ export interface GoogleCloudContactcenterinsightsV1Container {
   /** Container description */
   description?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Container = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Container = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     containerId: S.optional(S.String),
@@ -4417,7 +4370,7 @@ export interface GoogleCloudContactcenterinsightsV1Dashboard {
   /** Output only. Dashboard last update time. */
   updateTime?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Dashboard = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Dashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -4441,7 +4394,7 @@ export interface CreateProjectsLocationsDashboardsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dashboard;
 }
-export const CreateProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     dashboardId: S.optional(S.String.pipe(T.Query())),
@@ -4465,7 +4418,7 @@ export interface CreateProjectsLocationsDashboardsChartsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Chart;
 }
-export const CreateProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chartId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4485,7 +4438,7 @@ export type GoogleCloudContactcenterinsightsV1DatasetTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EVAL"
   | "LIVE";
-export const GoogleCloudContactcenterinsightsV1DatasetTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1DatasetTypeEnum = S.String;
 
 /** Dataset resource represents a collection of conversations that may be bounded (Static Dataset, e.g. golden dataset for training), or unbounded (Dynamic Dataset, e.g. live traffic, or agent training traffic) */
 export interface GoogleCloudContactcenterinsightsV1Dataset {
@@ -4508,7 +4461,7 @@ export interface GoogleCloudContactcenterinsightsV1Dataset {
   /** Optional. Option TTL for the dataset. */
   ttl?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Dataset = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4532,7 +4485,7 @@ export interface CreateProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dataset;
 }
-export const CreateProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     datasetId: S.optional(S.String.pipe(T.Query())),
@@ -4556,8 +4509,8 @@ export interface CreateProjectsLocationsDatasetsConversationsFeedbackLabelsReque
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-export const CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       feedbackLabelId: S.optional(S.String.pipe(T.Query())),
@@ -4569,15 +4522,15 @@ export const CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
         baseUrl: "https://contactcenterinsights.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
+}) as any as S.Schema<CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum =
   | "MODEL_TYPE_UNSPECIFIED"
   | "TYPE_V1"
   | "TYPE_V2";
-export const GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum = S.String;
 
 export type GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
   | "STATE_UNSPECIFIED"
@@ -4586,13 +4539,13 @@ export type GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
   | "DEPLOYED"
   | "UNDEPLOYING"
   | "DELETING";
-export const GoogleCloudContactcenterinsightsV1IssueModelStateEnum = S.String;
+const GoogleCloudContactcenterinsightsV1IssueModelStateEnum = S.String;
 
 export type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum =
   | "MEDIUM_UNSPECIFIED"
   | "PHONE_CALL"
   | "CHAT";
-export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum = S.String;
+const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum = S.String;
 
 /** Configs for the input data used to create the issue model. */
 export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
@@ -4603,13 +4556,12 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /** Output only. Number of conversations used in training. Output only. */
   trainingConversationsCount?: string;
 }
-export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String),
-      medium: S.optional(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum),
-      trainingConversationsCount: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String),
+    medium: S.optional(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum),
+    trainingConversationsCount: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>;
@@ -4637,7 +4589,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModel {
   /** Configs for the input data that used to create the issue model. */
   inputDataConfig?: GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig;
 }
-export const GoogleCloudContactcenterinsightsV1IssueModel = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1IssueModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
     name: S.optional(S.String),
@@ -4660,7 +4612,7 @@ export interface CreateProjectsLocationsIssueModelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
-export const CreateProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1IssueModel.pipe(T.HttpBody())),
@@ -4690,7 +4642,7 @@ export interface GoogleCloudContactcenterinsightsV1Issue {
   /** The representative name for the issue. */
   displayName?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Issue = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Issue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sampleUtterances: S.optional(StringList),
     displayDescription: S.optional(S.String),
@@ -4709,7 +4661,7 @@ export interface CreateProjectsLocationsIssueModelsIssuesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Issue;
 }
-export const CreateProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1Issue.pipe(T.HttpBody())),
@@ -4728,20 +4680,20 @@ export type GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum =
   | "PHRASE_MATCHER_TYPE_UNSPECIFIED"
   | "ALL_OF"
   | "ANY_OF";
-export const GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum = S.String;
 
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum =
   | "PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED"
   | "ALL_OF"
   | "ANY_OF";
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum = S.String;
 
 /** Exact match configuration. */
 export interface GoogleCloudContactcenterinsightsV1ExactMatchConfig {
   /** Whether to consider case sensitivity when performing an exact match. */
   caseSensitive?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1ExactMatchConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ExactMatchConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caseSensitive: S.optional(S.Boolean),
   }),
@@ -4752,9 +4704,6 @@ export const GoogleCloudContactcenterinsightsV1ExactMatchConfig = /*@__PURE__*/ 
 /** Regex match configuration. */
 export type GoogleCloudContactcenterinsightsV1RegexMatchConfig =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1RegexMatchConfig =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 /** Configuration information of a phrase match rule. */
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
   /** The configuration for the exact match rule. */
@@ -4762,7 +4711,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
   /** The configuration for the regex match rule. */
   regexMatchConfig?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exactMatchConfig: S.optional(GoogleCloudContactcenterinsightsV1ExactMatchConfig),
     regexMatchConfig: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest),
@@ -4780,7 +4729,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRule {
   /** Required. The phrase to be matched. */
   query?: string;
 }
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1PhraseMatchRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negated: S.optional(S.Boolean),
     config: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig),
@@ -4792,7 +4741,7 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatchRule = /*@__PURE__*/ S
 
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleList =
   Array<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1PhraseMatchRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1PhraseMatchRule,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleList>;
 
@@ -4803,7 +4752,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   /** A list of phrase match rules that are included in this group. */
   phraseMatchRules?: GoogleCloudContactcenterinsightsV1PhraseMatchRuleList;
 }
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum),
     phraseMatchRules: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatchRuleList),
@@ -4814,7 +4763,7 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup = /*@__PURE_
 
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList =
   Array<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>;
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList>;
 
@@ -4824,7 +4773,7 @@ export type GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum =
   | "AUTOMATED_AGENT"
   | "END_USER"
   | "ANY_AGENT";
-export const GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum = S.String;
+const GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum = S.String;
 
 /** The phrase matcher resource. */
 export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
@@ -4851,7 +4800,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
   /** The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript. */
   roleMatch?: GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1PhraseMatcher = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1PhraseMatcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionCreateTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -4875,7 +4824,7 @@ export interface CreateProjectsLocationsPhraseMatchersRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1PhraseMatcher;
 }
-export const CreateProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcher.pipe(T.HttpBody())),
@@ -4907,7 +4856,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTag {
   /** Output only. Whether this resource is zone separated. */
   satisfiesPzs?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1QaQuestionTag = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaQuestionTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -4929,7 +4878,7 @@ export interface CreateProjectsLocationsQaQuestionTagsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaQuestionTag;
 }
-export const CreateProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     qaQuestionTagId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4950,7 +4899,7 @@ export type GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum =
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
   | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
   | "QA_SCORECARD_SOURCE_INTENT_TAXONOMY";
-export const GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum = S.String;
+const GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum = S.String;
 
 /** A QaScorecard represents a collection of questions to be scored during analysis. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecard {
@@ -4973,7 +4922,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecard {
   /** Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard} */
   name?: string;
 }
-export const GoogleCloudContactcenterinsightsV1QaScorecard = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaScorecard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum),
     displayName: S.optional(S.String),
@@ -4997,7 +4946,7 @@ export interface CreateProjectsLocationsQaScorecardsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaScorecard;
 }
-export const CreateProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     qaScorecardId: S.optional(S.String.pipe(T.Query())),
@@ -5021,7 +4970,7 @@ export type GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum =
   | "READY"
   | "DELETING"
   | "TRAINING_CANCELLED";
-export const GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum = S.String;
+const GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum = S.String;
 
 /** A revision of a QaScorecard. Modifying published scorecard fields would invalidate existing scorecard results -- the questions may have changed, or the score weighting will make existing scores impossible to understand. So changes must create a new revision, rather than modifying the existing resource. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
@@ -5040,7 +4989,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   /** Output only. State of the scorecard revision, indicating whether it's ready to be used in analysis. */
   state?: GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1QaScorecardRevision = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaScorecardRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     alternateIds: S.optional(StringList),
@@ -5062,7 +5011,7 @@ export interface CreateProjectsLocationsQaScorecardsRevisionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaScorecardRevision;
 }
-export const CreateProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     qaScorecardRevisionId: S.optional(S.String.pipe(T.Query())),
@@ -5082,18 +5031,17 @@ export type GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum =
   | "QA_QUESTION_TYPE_UNSPECIFIED"
   | "CUSTOMIZABLE"
   | "PREDEFINED";
-export const GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum = S.String;
+const GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum = S.String;
 
 /** Options for configuring what metadata is included in the conversation data used in QAI and Discovery Engine. */
 export interface GoogleCloudContactcenterinsightsV1ConversationDataOptions {
   /** Whether to include the per turn Dialogflow interaction data in conversation transcript. */
   includeDialogflowInteractionData?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1ConversationDataOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      includeDialogflowInteractionData: S.optional(S.Boolean),
-    }),
+const GoogleCloudContactcenterinsightsV1ConversationDataOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    includeDialogflowInteractionData: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ConversationDataOptions",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataOptions>;
@@ -5103,16 +5051,16 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptio
   /** Options for configuring the conversation data used to generate the QA question. */
   conversationDataOptions?: GoogleCloudContactcenterinsightsV1ConversationDataOptions;
 }
-export const GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       conversationDataOptions: S.optional(
         GoogleCloudContactcenterinsightsV1ConversationDataOptions,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions>;
 
 /** Message representing a possible answer to the question. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
@@ -5129,23 +5077,22 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
   /** A value of "Not Applicable (N/A)". If provided, this field may only be set to `true`. If a question receives this answer, it will be excluded from any score calculations. */
   naValue?: boolean;
 }
-export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      boolValue: S.optional(S.Boolean),
-      numValue: S.optional(S.Number),
-      key: S.optional(S.String),
-      strValue: S.optional(S.String),
-      score: S.optional(S.Number),
-      naValue: S.optional(S.Boolean),
-    }),
+const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    boolValue: S.optional(S.Boolean),
+    numValue: S.optional(S.Number),
+    key: S.optional(S.String),
+    strValue: S.optional(S.String),
+    score: S.optional(S.Number),
+    naValue: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
 
 export type GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList =
   Array<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
-export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList>;
 
@@ -5154,8 +5101,7 @@ export type GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig
   | "CONVERSATION_OUTCOME"
   | "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE"
   | "CONVERSATION_OUTCOME_AI_AVERSION";
-export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum =
-  S.String;
+const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum = S.String;
 
 /** Configuration for a predefined question. This field will only be set if the Question Type is predefined. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig {
@@ -5164,7 +5110,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionC
     | GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum
     | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig =
+const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
@@ -5180,7 +5126,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
   /** Output only. Accuracy of the model. Measures the percentage of correct answers the model gave on the test set. */
   accuracy?: number;
 }
-export const GoogleCloudContactcenterinsightsV1QaQuestionMetrics = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaQuestionMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accuracy: S.optional(S.Number),
   }),
@@ -5194,15 +5140,12 @@ export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetVal
   | "INSUFFICIENT_FEEDBACK_LABELS"
   | "INSUFFICIENT_FEEDBACK_LABELS_PER_ANSWER"
   | "ALL_FEEDBACK_LABELS_HAVE_THE_SAME_ANSWER";
-export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum =
-  S.String;
-
 export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
   Array<
     | GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum
     | (string & {})
   >;
-export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
+const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
   GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList>;
 
 /** Metadata about the tuning operation for the question. Will only be set if a scorecard containing this question has been tuned. */
@@ -5214,15 +5157,14 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
   /** A list of any applicable data validation warnings about the question's feedback labels. */
   datasetValidationWarnings?: GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList;
 }
-export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      totalValidLabelCount: S.optional(S.String),
-      tuningError: S.optional(S.String),
-      datasetValidationWarnings: S.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalValidLabelCount: S.optional(S.String),
+    tuningError: S.optional(S.String),
+    datasetValidationWarnings: S.optional(
+      GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata>;
@@ -5262,7 +5204,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestion {
   /** Instructions describing how to determine the answer. */
   answerInstructions?: string;
 }
-export const GoogleCloudContactcenterinsightsV1QaQuestion = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QaQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     questionType: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum),
@@ -5297,22 +5239,21 @@ export interface CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest 
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaQuestion;
 }
-export const CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      qaQuestionId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudContactcenterinsightsV1QaQuestion.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/qaQuestions",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
+const CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    qaQuestionId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudContactcenterinsightsV1QaQuestion.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/qaQuestions",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
+}) as any as S.Schema<CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 /** The View resource. */
 export interface GoogleCloudContactcenterinsightsV1View {
@@ -5327,7 +5268,7 @@ export interface GoogleCloudContactcenterinsightsV1View {
   /** Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} */
   name?: string;
 }
-export const GoogleCloudContactcenterinsightsV1View = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1View = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -5345,7 +5286,7 @@ export interface CreateProjectsLocationsViewsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1View;
 }
-export const CreateProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1View.pipe(T.HttpBody())),
@@ -5364,7 +5305,7 @@ export interface DeleteProjectsLocationsAnalysisRulesRequest {
   /** Required. The name of the analysis rule to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5382,7 +5323,7 @@ export interface DeleteProjectsLocationsAssessmentRulesRequest {
   /** Required. The name of the assessment rule to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5402,7 +5343,7 @@ export interface DeleteProjectsLocationsAuthorizedViewSetsRequest {
   /** Optional. If set to true, all of this AuthorizedViewSet's child resources will also be deleted. Otherwise, the request will only succeed if it has none. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -5421,8 +5362,8 @@ export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest
   /** Required. The name of the AuthorizedView to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -5432,9 +5373,9 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
         baseUrl: "https://contactcenterinsights.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
@@ -5442,7 +5383,7 @@ export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Required. The name of the conversation to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
+const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       force: S.optional(S.Boolean.pipe(T.Query())),
@@ -5464,7 +5405,7 @@ export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Optional. If set to true, all of this assessment's notes will also be deleted. Otherwise, the request will only succeed if it has no notes. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
+const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5485,7 +5426,7 @@ export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Required. The name of the note to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
+const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5505,7 +5446,7 @@ export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Required. The name of the feedback label to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
+const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5525,7 +5466,7 @@ export interface DeleteProjectsLocationsAutoLabelingRulesRequest {
   /** Required. The name of the auto labeling rule to delete. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} */
   name: string;
 }
-export const DeleteProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5545,7 +5486,7 @@ export interface DeleteProjectsLocationsConversationsRequest {
   /** Required. The name of the conversation to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5564,7 +5505,7 @@ export interface DeleteProjectsLocationsConversationsAnalysesRequest {
   /** Required. The name of the analysis to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5584,7 +5525,7 @@ export interface DeleteProjectsLocationsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5603,17 +5544,16 @@ export interface DeleteProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Required. The name of the note to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsConversationsAssessmentsNotesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsConversationsAssessmentsNotesRequest>;
@@ -5622,17 +5562,16 @@ export interface DeleteProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Required. The name of the feedback label to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsConversationsFeedbackLabelsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsConversationsFeedbackLabelsRequest>;
@@ -5641,7 +5580,7 @@ export interface DeleteProjectsLocationsDashboardsRequest {
   /** Required. The name of the dashboard to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5659,7 +5598,7 @@ export interface DeleteProjectsLocationsDashboardsChartsRequest {
   /** Required. The name of the chart to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5677,7 +5616,7 @@ export interface DeleteProjectsLocationsDatasetsRequest {
   /** Required. The name of the dataset to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5697,7 +5636,7 @@ export interface DeleteProjectsLocationsDatasetsConversationsRequest {
   /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -5716,8 +5655,8 @@ export interface DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsReque
   /** Required. The name of the feedback label to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -5727,15 +5666,15 @@ export const DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
         baseUrl: "https://contactcenterinsights.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export interface DeleteProjectsLocationsIssueModelsRequest {
   /** Required. The name of the issue model to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5753,7 +5692,7 @@ export interface DeleteProjectsLocationsIssueModelsIssuesRequest {
   /** Required. The name of the issue to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5771,7 +5710,7 @@ export interface DeleteProjectsLocationsPhraseMatchersRequest {
   /** Required. The name of the phrase matcher to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5789,7 +5728,7 @@ export interface DeleteProjectsLocationsQaQuestionTagsRequest {
   /** Required. The name of the QaQuestionTag to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5809,7 +5748,7 @@ export interface DeleteProjectsLocationsQaScorecardsRequest {
   /** Required. The name of the QaScorecard to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5830,7 +5769,7 @@ export interface DeleteProjectsLocationsQaScorecardsRevisionsRequest {
   /** Required. The name of the QaScorecardRevision to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5849,26 +5788,25 @@ export interface DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest 
   /** Required. The name of the QaQuestion to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
+const DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export interface DeleteProjectsLocationsViewsRequest {
   /** Required. The name of the view to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5887,11 +5825,10 @@ export interface GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
   /** Required. The issue model to deploy. */
   name?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DeployIssueModelRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1DeployIssueModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1DeployIssueModelRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelRequest>;
@@ -5902,7 +5839,7 @@ export interface DeployProjectsLocationsIssueModelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1DeployIssueModelRequest;
 }
-export const DeployProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeployProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1DeployIssueModelRequest.pipe(T.HttpBody())),
@@ -5920,16 +5857,13 @@ export const DeployProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend
 /** The request to deploy a QaScorecardRevision */
 export type GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 export interface DeployProjectsLocationsQaScorecardsRevisionsRequest {
   /** Required. The name of the QaScorecardRevision to deploy. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const DeployProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeployProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody())),
@@ -5964,8 +5898,7 @@ export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSch
   | "EXPORT_V16"
   | "EXPORT_V17"
   | "EXPORT_VERSION_LATEST_AVAILABLE";
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum =
-  S.String;
+const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum = S.String;
 
 /** A BigQuery Table Reference. */
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination {
@@ -5976,7 +5909,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQ
   /** The BigQuery table name to which the insights data should be written. If this table does not exist, the export call returns an INVALID_ARGUMENT error. */
   table?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination =
+const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataset: S.optional(S.String),
@@ -5991,8 +5924,7 @@ export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDisp
   | "WRITE_DISPOSITION_UNSPECIFIED"
   | "WRITE_TRUNCATE"
   | "WRITE_APPEND";
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum =
-  S.String;
+const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum = S.String;
 
 /** The request to export insights. */
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
@@ -6013,22 +5945,21 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
     | GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum
     | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.optional(S.String),
-      filter: S.optional(S.String),
-      exportSchemaVersion: S.optional(
-        GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum,
-      ),
-      bigQueryDestination: S.optional(
-        GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination,
-      ),
-      kmsKey: S.optional(S.String),
-      writeDisposition: S.optional(
-        GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.optional(S.String),
+    filter: S.optional(S.String),
+    exportSchemaVersion: S.optional(
+      GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum,
+    ),
+    bigQueryDestination: S.optional(
+      GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination,
+    ),
+    kmsKey: S.optional(S.String),
+    writeDisposition: S.optional(
+      GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest>;
@@ -6039,7 +5970,7 @@ export interface ExportProjectsLocationsDatasetsInsightsdataRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest;
 }
-export const ExportProjectsLocationsDatasetsInsightsdataRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsDatasetsInsightsdataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -6062,7 +5993,7 @@ export interface ExportProjectsLocationsInsightsdataRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest;
 }
-export const ExportProjectsLocationsInsightsdataRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsInsightsdataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -6084,7 +6015,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDes
   /** Required. Format: `gs:///` */
   objectUri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination =
+const GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       objectUri: S.optional(S.String),
@@ -6100,14 +6031,13 @@ export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
   /** Required. The issue model to export. */
   name?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      gcsDestination: S.optional(
-        GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
-      ),
-      name: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gcsDestination: S.optional(
+      GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
+    ),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ExportIssueModelRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequest>;
@@ -6118,7 +6048,7 @@ export interface ExportProjectsLocationsIssueModelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequest;
 }
-export const ExportProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1ExportIssueModelRequest.pipe(T.HttpBody())),
@@ -6136,16 +6066,13 @@ export const ExportProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend
 /** The message to finalize an assessment. Finalizing makes an assessment and its notes immutable. */
 export type GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 export interface FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to finalize. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
+const FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -6170,20 +6097,17 @@ export interface FinalizeProjectsLocationsConversationsAssessmentsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const FinalizeProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:finalize",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const FinalizeProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:finalize",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "FinalizeProjectsLocationsConversationsAssessmentsRequest",
 }) as any as S.Schema<FinalizeProjectsLocationsConversationsAssessmentsRequest>;
@@ -6192,7 +6116,7 @@ export interface GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorize
   /** Required. The name of the conversation to sign. */
   name: string;
 }
-export const GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
+const GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -6219,7 +6143,7 @@ export interface GoogleCloudContactcenterinsightsV1SignedAudioUris {
   /** The signed URI for the audio corresponding to each turn in the conversation. */
   signedTurnLevelAudios?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList;
 }
-export const GoogleCloudContactcenterinsightsV1SignedAudioUris = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1SignedAudioUris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signedGcsAudioUri: S.optional(S.String),
     signedDialogflowAudioUri: S.optional(S.String),
@@ -6237,7 +6161,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerateConversationSignedAud
   /** The signed uris for the audio. */
   signedAudioUris?: GoogleCloudContactcenterinsightsV1SignedAudioUris;
 }
-export const GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse =
+const GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       signedAudioUris: S.optional(GoogleCloudContactcenterinsightsV1SignedAudioUris),
@@ -6250,7 +6174,25 @@ export interface GenerateSignedAudioProjectsLocationsConversationsRequest {
   /** Required. The name of the conversation to sign. */
   name: string;
 }
-export const GenerateSignedAudioProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(
+const GenerateSignedAudioProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:generateSignedAudio",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateSignedAudioProjectsLocationsConversationsRequest",
+}) as any as S.Schema<GenerateSignedAudioProjectsLocationsConversationsRequest>;
+
+export interface GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest {
+  /** Required. The name of the conversation to sign. */
+  name: string;
+}
+const GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -6262,27 +6204,8 @@ export const GenerateSignedAudioProjectsLocationsConversationsRequest = /*@__PUR
       }),
     ),
 ).annotate({
-  identifier: "GenerateSignedAudioProjectsLocationsConversationsRequest",
-}) as any as S.Schema<GenerateSignedAudioProjectsLocationsConversationsRequest>;
-
-export interface GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest {
-  /** Required. The name of the conversation to sign. */
-  name: string;
-}
-export const GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:generateSignedAudio",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest",
-  }) as any as S.Schema<GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest>;
+  identifier: "GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest",
+}) as any as S.Schema<GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest>;
 
 /** The request for generative insights. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest {
@@ -6305,19 +6228,18 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest {
   /** Optional. For charts with comparison, this key will determine the metric that will be compared between the current and another dataset. */
   sqlComparisonKey?: string;
 }
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      naturalLanguageQuery: S.optional(S.String),
-      filter: S.optional(S.String),
-      revisionId: S.optional(S.String),
-      userProvidedChartSpec: S.optional(DocumentMap),
-      sessionId: S.optional(S.String),
-      sqlQuery: S.optional(S.String),
-      comparisonFilter: S.optional(S.String),
-      chart: S.optional(S.String),
-      sqlComparisonKey: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    naturalLanguageQuery: S.optional(S.String),
+    filter: S.optional(S.String),
+    revisionId: S.optional(S.String),
+    userProvidedChartSpec: S.optional(DocumentMap),
+    sessionId: S.optional(S.String),
+    sqlQuery: S.optional(S.String),
+    comparisonFilter: S.optional(S.String),
+    chart: S.optional(S.String),
+    sqlComparisonKey: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest>;
@@ -6328,7 +6250,7 @@ export interface GenerativeInsightsProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest;
 }
-export const GenerativeInsightsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerativeInsightsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(
@@ -6351,7 +6273,7 @@ export interface GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorized
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest;
 }
-export const GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
+const GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       location: S.String.pipe(T.Label()),
@@ -6373,7 +6295,7 @@ export interface GetCorrelationConfigProjectsLocationsRequest {
   /** Required. The name of the correlation config resource to get. Format: projects/{project}/locations/{location}/correlationConfig */
   name: string;
 }
-export const GetCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6398,7 +6320,7 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationRule {
   /** Optional. A cel expression (go/cel) to be evaluated as a boolean value. Two variables conversation_a and conversation_b will be available for evaluation. This expression should evaluate to true if conversation_a and conversation_b should be joined. This is used as an extra constraint on top of the join_key_expression to further refine the group of conversations that are joined together and will be evaluated in both directions. for two conversations c1 and c2 and the result will be OR'd. We will evaluate: f(c1, c2) OR f(c2, c1) */
   constraintExpression?: string;
 }
-export const GoogleCloudContactcenterinsightsV1CorrelationRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1CorrelationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     joinKeyExpression: S.optional(S.String),
     ruleId: S.optional(S.String),
@@ -6411,7 +6333,7 @@ export const GoogleCloudContactcenterinsightsV1CorrelationRule = /*@__PURE__*/ S
 
 export type GoogleCloudContactcenterinsightsV1CorrelationRuleList =
   Array<GoogleCloudContactcenterinsightsV1CorrelationRule>;
-export const GoogleCloudContactcenterinsightsV1CorrelationRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1CorrelationRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1CorrelationRule,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1CorrelationRuleList>;
 
@@ -6420,7 +6342,7 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationTypeConfig {
   /** A list of correlation rules to be evaluated for correlation. */
   correlationRules?: GoogleCloudContactcenterinsightsV1CorrelationRuleList;
 }
-export const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correlationRules: S.optional(GoogleCloudContactcenterinsightsV1CorrelationRuleList),
   }),
@@ -6439,7 +6361,7 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationConfig {
   /** The correlation type config for full conversations. */
   fullConversationConfig?: GoogleCloudContactcenterinsightsV1CorrelationTypeConfig;
 }
-export const GoogleCloudContactcenterinsightsV1CorrelationConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1CorrelationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -6454,7 +6376,7 @@ export interface GetEncryptionSpecProjectsLocationsRequest {
   /** Required. The name of the encryption spec resource to get. */
   name: string;
 }
-export const GetEncryptionSpecProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEncryptionSpecProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6479,7 +6401,7 @@ export interface GoogleCloudContactcenterinsightsV1EncryptionSpec {
   /** Required. The name of customer-managed encryption key that is used to secure a resource and its sub-resources. If empty, the resource is secured by our default encryption key. Only the key in the same location as this resource is allowed to be used for encryption. Format: `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}` */
   kmsKey?: string;
 }
-export const GoogleCloudContactcenterinsightsV1EncryptionSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1EncryptionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     satisfiesPzi: S.optional(S.Boolean),
@@ -6496,7 +6418,7 @@ export interface GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsR
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
+const GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -6523,7 +6445,7 @@ export interface GoogleTypeExpr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     title: S.optional(S.String),
@@ -6541,7 +6463,7 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
-export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -6550,7 +6472,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
+const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
 
@@ -6559,7 +6481,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
+const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
@@ -6568,7 +6490,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
   logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
 }
-export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
@@ -6578,7 +6500,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
 
@@ -6589,7 +6511,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
@@ -6597,7 +6519,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1AuditConfig" }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
 
@@ -6612,7 +6534,7 @@ export interface GoogleIamV1Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: GoogleIamV1AuditConfigList;
 }
-export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     etag: S.optional(S.String),
@@ -6625,7 +6547,7 @@ export interface GetProjectsLocationsAnalysisRulesRequest {
   /** Required. The name of the AnalysisRule to get. */
   name: string;
 }
-export const GetProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6643,7 +6565,7 @@ export interface GetProjectsLocationsAssessmentRulesRequest {
   /** Required. The name of the assessment rule to get. */
   name: string;
 }
-export const GetProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6661,7 +6583,7 @@ export interface GetProjectsLocationsAssistantSessionsRequest {
   /** Required. The name of the assistant session to retrieve. Format: `projects/{project}/locations/{location}/assistantSessions/{assistant_session}` */
   name: string;
 }
-export const GetProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6679,7 +6601,7 @@ export interface GetProjectsLocationsAuthorizedViewSetsRequest {
   /** Required. The name of the AuthorizedViewSet to get. */
   name: string;
 }
-export const GetProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6697,17 +6619,16 @@ export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Required. The name of the AuthorizedView to get. */
   name: string;
 }
-export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
 }) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
@@ -6717,7 +6638,7 @@ export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsVi
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum = S.String;
+const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum = S.String;
 
 export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** Required. The name of the conversation to get. */
@@ -6725,7 +6646,7 @@ export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversati
   /** The level of details of the conversation. Default is `FULL`. */
   view?: GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum | (string & {});
 }
-export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
+const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -6747,7 +6668,7 @@ export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversati
   /** Required. The name of the assessment to get. */
   name: string;
 }
-export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
+const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -6767,7 +6688,7 @@ export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversati
   /** Required. The name of the feedback label to get. */
   name: string;
 }
-export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
+const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -6787,7 +6708,7 @@ export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
+const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -6806,7 +6727,7 @@ export interface GetProjectsLocationsAutoLabelingRulesRequest {
   /** Required. The name of the auto labeling rule to get. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} */
   name: string;
 }
-export const GetProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6825,7 +6746,7 @@ export type GetProjectsLocationsConversationsViewEnum =
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-export const GetProjectsLocationsConversationsViewEnum = S.String;
+const GetProjectsLocationsConversationsViewEnum = S.String;
 
 export interface GetProjectsLocationsConversationsRequest {
   /** Required. The name of the conversation to get. */
@@ -6833,7 +6754,7 @@ export interface GetProjectsLocationsConversationsRequest {
   /** The level of details of the conversation. Default is `FULL`. */
   view?: GetProjectsLocationsConversationsViewEnum | (string & {});
 }
-export const GetProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsConversationsViewEnum.pipe(T.Query())),
@@ -6852,7 +6773,7 @@ export interface GetProjectsLocationsConversationsAnalysesRequest {
   /** Required. The name of the analysis to get. */
   name: string;
 }
-export const GetProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6870,7 +6791,7 @@ export interface GetProjectsLocationsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to get. */
   name: string;
 }
-export const GetProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6888,7 +6809,7 @@ export interface GetProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Required. The name of the feedback label to get. */
   name: string;
 }
-export const GetProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6906,7 +6827,7 @@ export interface GetProjectsLocationsDashboardsRequest {
   /** Required. The name of the dashboard to get. */
   name: string;
 }
-export const GetProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6924,7 +6845,7 @@ export interface GetProjectsLocationsDashboardsChartsRequest {
   /** Required. The name of the chart to get. */
   name: string;
 }
-export const GetProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6942,7 +6863,7 @@ export interface GetProjectsLocationsDatasetsRequest {
   /** Required. The name of the dataset to get. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6961,7 +6882,7 @@ export type GetProjectsLocationsDatasetsConversationsViewEnum =
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-export const GetProjectsLocationsDatasetsConversationsViewEnum = S.String;
+const GetProjectsLocationsDatasetsConversationsViewEnum = S.String;
 
 export interface GetProjectsLocationsDatasetsConversationsRequest {
   /** Required. The name of the conversation to get. */
@@ -6969,7 +6890,7 @@ export interface GetProjectsLocationsDatasetsConversationsRequest {
   /** The level of details of the conversation. Default is `FULL`. */
   view?: GetProjectsLocationsDatasetsConversationsViewEnum | (string & {});
 }
-export const GetProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsDatasetsConversationsViewEnum.pipe(T.Query())),
@@ -6988,26 +6909,25 @@ export interface GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest 
   /** Required. The name of the feedback label to get. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
-  }) as any as S.Schema<GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+const GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
+}) as any as S.Schema<GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export interface GetProjectsLocationsIssueModelsRequest {
   /** Required. The name of the issue model to get. */
   name: string;
 }
-export const GetProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7025,7 +6945,7 @@ export interface GetProjectsLocationsIssueModelsIssuesRequest {
   /** Required. The name of the issue to get. */
   name: string;
 }
-export const GetProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7043,7 +6963,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7061,7 +6981,7 @@ export interface GetProjectsLocationsPhraseMatchersRequest {
   /** Required. The name of the phrase matcher to get. */
   name: string;
 }
-export const GetProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7079,7 +6999,7 @@ export interface GetProjectsLocationsQaQuestionTagsRequest {
   /** Required. The name of the QaQuestionTag to get. */
   name: string;
 }
-export const GetProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7097,7 +7017,7 @@ export interface GetProjectsLocationsQaScorecardsRequest {
   /** Required. The name of the QaScorecard to get. */
   name: string;
 }
-export const GetProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7115,7 +7035,7 @@ export interface GetProjectsLocationsQaScorecardsRevisionsRequest {
   /** Required. The name of the QaScorecardRevision to get. */
   name: string;
 }
-export const GetProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7133,17 +7053,16 @@ export interface GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Required. The name of the QaQuestion to get. */
   name: string;
 }
-export const GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
 }) as any as S.Schema<GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
@@ -7152,7 +7071,7 @@ export interface GetProjectsLocationsViewsRequest {
   /** Required. The name of the view to get. */
   name: string;
 }
-export const GetProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7170,7 +7089,7 @@ export interface GetSettingsProjectsLocationsRequest {
   /** Required. The name of the settings resource to get. */
   name: string;
 }
-export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -7191,7 +7110,7 @@ export interface GoogleCloudContactcenterinsightsV1RedactionConfig {
   /** The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}` */
   inspectTemplate?: string;
 }
-export const GoogleCloudContactcenterinsightsV1RedactionConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1RedactionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deidentifyTemplate: S.optional(S.String),
     inspectTemplate: S.optional(S.String),
@@ -7207,7 +7126,7 @@ export interface GoogleCloudContactcenterinsightsV1SpeechConfig {
   /** The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}` */
   speechRecognizer?: string;
 }
-export const GoogleCloudContactcenterinsightsV1SpeechConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1SpeechConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableWordTimeOffsets: S.optional(S.Boolean),
     speechRecognizer: S.optional(S.String),
@@ -7223,7 +7142,7 @@ export interface GoogleCloudContactcenterinsightsV1MetricDefinition {
   /** Output only. The resource name of the underlying Insights primitive (e.g., Tag or QaQuestion) used to calculate this metric. */
   sourceId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1MetricDefinition = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1MetricDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     sourceId: S.optional(S.String),
@@ -7235,7 +7154,7 @@ export const GoogleCloudContactcenterinsightsV1MetricDefinition = /*@__PURE__*/ 
 export type GoogleCloudContactcenterinsightsV1MetricDefinitionMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1MetricDefinition | undefined;
 };
-export const GoogleCloudContactcenterinsightsV1MetricDefinitionMap = /*@__PURE__*/ S.Record(
+const GoogleCloudContactcenterinsightsV1MetricDefinitionMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudContactcenterinsightsV1MetricDefinition,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1MetricDefinitionMap>;
@@ -7245,14 +7164,14 @@ export interface GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfi
   /** Optional. A map of diagnostic metrics. The key is a unique identifier for the metric (e.g., "containment"). */
   metrics?: GoogleCloudContactcenterinsightsV1MetricDefinitionMap;
 }
-export const GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       metrics: S.optional(GoogleCloudContactcenterinsightsV1MetricDefinitionMap),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig>;
 
 /** Default configuration when creating Analyses in Insights. */
 export interface GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
@@ -7263,13 +7182,12 @@ export interface GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   /** Percentage of conversations created using the UploadConversation endpoint to analyze automatically, between [0, 100]. */
   uploadConversationAnalysisPercentage?: number;
 }
-export const GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      annotatorSelector: S.optional(GoogleCloudContactcenterinsightsV1AnnotatorSelector),
-      runtimeIntegrationAnalysisPercentage: S.optional(S.Number),
-      uploadConversationAnalysisPercentage: S.optional(S.Number),
-    }),
+const GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    annotatorSelector: S.optional(GoogleCloudContactcenterinsightsV1AnnotatorSelector),
+    runtimeIntegrationAnalysisPercentage: S.optional(S.Number),
+    uploadConversationAnalysisPercentage: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig>;
@@ -7305,7 +7223,7 @@ export interface GoogleCloudContactcenterinsightsV1Settings {
   /** Optional. The time zone applied to the project. This is a string representation of the time zone, for example, "America/New_York". This field follows the IANA TZ database format. See https://www.iana.org/time-zones for a list of valid values. If no value is set the user time zone will be used. */
   timeZone?: string;
 }
-export const GoogleCloudContactcenterinsightsV1Settings = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubNotificationSettings: S.optional(StringMap),
     createTime: S.optional(S.String),
@@ -7331,9 +7249,6 @@ export const GoogleCloudContactcenterinsightsV1Settings = /*@__PURE__*/ S.suspen
 /** Google Cloud Storage Object URI to get the issue model file from. */
 export type GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource =
   GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource =
-  GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
-
 /** Request to import an issue model. */
 export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
   /** Optional. If set to true, will create an issue model from the imported file with randomly generated IDs for the issue model and corresponding issues. Otherwise, replaces an existing model with the same ID as the file. */
@@ -7343,15 +7258,12 @@ export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
   /** Google Cloud Storage source message. */
   gcsSource?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
 }
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createNewModel: S.optional(S.Boolean),
-      parent: S.optional(S.String),
-      gcsSource: S.optional(
-        GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1ImportIssueModelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createNewModel: S.optional(S.Boolean),
+    parent: S.optional(S.String),
+    gcsSource: S.optional(GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ImportIssueModelRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelRequest>;
@@ -7362,7 +7274,7 @@ export interface ImportProjectsLocationsIssueModelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1ImportIssueModelRequest;
 }
-export const ImportProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1ImportIssueModelRequest.pipe(T.HttpBody())),
@@ -7381,7 +7293,7 @@ export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscri
   | "MEDIUM_UNSPECIFIED"
   | "PHONE_CALL"
   | "CHAT";
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum =
+const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum =
   S.String;
 
 /** Configuration for processing transcript objects. */
@@ -7391,7 +7303,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestTra
     | GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum
     | (string & {});
 }
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig =
+const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       medium: S.optional(
@@ -7407,7 +7319,7 @@ export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourc
   | "BUCKET_OBJECT_TYPE_UNSPECIFIED"
   | "TRANSCRIPT"
   | "AUDIO";
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
+const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
   S.String;
 
 /** Configuration for Cloud Storage bucket sources. */
@@ -7427,7 +7339,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcs
   /** Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3] A source file and its corresponding audio file must share the same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`. */
   audioBucketUri?: string;
 }
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource =
+const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customMetadataKeys: S.optional(StringList),
@@ -7452,7 +7364,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestCon
   /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
   customerChannel?: number;
 }
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig =
+const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       agentChannel: S.optional(S.Number),
@@ -7480,21 +7392,20 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   /** Configuration that applies to all conversations. */
   conversationConfig?: GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig;
 }
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      redactionConfig: S.optional(GoogleCloudContactcenterinsightsV1RedactionConfig),
-      speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
-      sampleSize: S.optional(S.Number),
-      transcriptObjectConfig: S.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig,
-      ),
-      gcsSource: S.optional(GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource),
-      parent: S.optional(S.String),
-      conversationConfig: S.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig,
-      ),
-    }),
+const GoogleCloudContactcenterinsightsV1IngestConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    redactionConfig: S.optional(GoogleCloudContactcenterinsightsV1RedactionConfig),
+    speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
+    sampleSize: S.optional(S.Number),
+    transcriptObjectConfig: S.optional(
+      GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig,
+    ),
+    gcsSource: S.optional(GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource),
+    parent: S.optional(S.String),
+    conversationConfig: S.optional(
+      GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1IngestConversationsRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequest>;
@@ -7505,7 +7416,7 @@ export interface IngestProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IngestConversationsRequest;
 }
-export const IngestProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const IngestProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -7528,7 +7439,7 @@ export interface IngestProjectsLocationsDatasetsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IngestConversationsRequest;
 }
-export const IngestProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const IngestProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -7550,14 +7461,14 @@ export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecReque
   /** Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same region as the endpoint. The same key will be used for all provisioned resources, if encryption is available. If the `kms_key_name` field is left empty, no encryption will be enforced. */
   encryptionSpec?: GoogleCloudContactcenterinsightsV1EncryptionSpec;
 }
-export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       encryptionSpec: S.optional(GoogleCloudContactcenterinsightsV1EncryptionSpec),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest>;
 
 export interface InitializeProjectsLocationsEncryptionSpecRequest {
   /** Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec */
@@ -7565,7 +7476,7 @@ export interface InitializeProjectsLocationsEncryptionSpecRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest;
 }
-export const InitializeProjectsLocationsEncryptionSpecRequest = /*@__PURE__*/ S.suspend(() =>
+const InitializeProjectsLocationsEncryptionSpecRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -7592,7 +7503,7 @@ export interface ListAllFeedbackLabelsProjectsLocationsRequest {
   /** Required. The parent resource of all feedback labels per project. */
   parent: string;
 }
-export const ListAllFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAllFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7616,15 +7527,15 @@ export interface GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
   /** The feedback labels that match the request. */
   feedbackLabels?: GoogleCloudContactcenterinsightsV1FeedbackLabelList;
 }
-export const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextPageToken: S.optional(S.String),
       feedbackLabels: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabelList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>;
 
 export interface ListAllFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
@@ -7636,7 +7547,7 @@ export interface ListAllFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
 }
-export const ListAllFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAllFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7661,7 +7572,7 @@ export interface ListProjectsLocationsAnalysisRulesRequest {
   /** Required. The parent resource of the analysis rules. */
   parent: string;
 }
-export const ListProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7679,7 +7590,7 @@ export const ListProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudContactcenterinsightsV1AnalysisRuleList =
   Array<GoogleCloudContactcenterinsightsV1AnalysisRule>;
-export const GoogleCloudContactcenterinsightsV1AnalysisRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AnalysisRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1AnalysisRule,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisRuleList>;
 
@@ -7690,12 +7601,11 @@ export interface GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      analysisRules: S.optional(GoogleCloudContactcenterinsightsV1AnalysisRuleList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    analysisRules: S.optional(GoogleCloudContactcenterinsightsV1AnalysisRuleList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse>;
@@ -7708,7 +7618,7 @@ export interface ListProjectsLocationsAssessmentRulesRequest {
   /** Optional. The maximum number of assessment rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -7726,7 +7636,7 @@ export const ListProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudContactcenterinsightsV1AssessmentRuleList =
   Array<GoogleCloudContactcenterinsightsV1AssessmentRule>;
-export const GoogleCloudContactcenterinsightsV1AssessmentRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AssessmentRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1AssessmentRule,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssessmentRuleList>;
 
@@ -7737,15 +7647,14 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      assessmentRules: S.optional(GoogleCloudContactcenterinsightsV1AssessmentRuleList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse>;
+const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentRules: S.optional(GoogleCloudContactcenterinsightsV1AssessmentRuleList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse>;
 
 export interface ListProjectsLocationsAssistantSessionsRequest {
   /** Optional. The maximum number of assistant sessions to return in a single response. If unspecified, at most 100 assistant sessions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
@@ -7757,7 +7666,7 @@ export interface ListProjectsLocationsAssistantSessionsRequest {
   /** Required. The parent resource, which owns this collection of assistant sessions. Format: `projects/{project}/locations/{location}` */
   parent: string;
 }
-export const ListProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -7776,7 +7685,7 @@ export const ListProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.sus
 
 export type GoogleCloudContactcenterinsightsV1AssistantSessionList =
   Array<GoogleCloudContactcenterinsightsV1AssistantSession>;
-export const GoogleCloudContactcenterinsightsV1AssistantSessionList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AssistantSessionList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1AssistantSession,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantSessionList>;
 
@@ -7787,15 +7696,15 @@ export interface GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse
   /** A token, which can be sent as `page_token` to retrieve the next page. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       assistantSessions: S.optional(GoogleCloudContactcenterinsightsV1AssistantSessionList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse>;
 
 export interface ListProjectsLocationsAuthorizedViewSetsRequest {
   /** Optional. The value returned by the last `ListAuthorizedViewSetsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViewSets` call and that the system should return the next page of data. */
@@ -7809,7 +7718,7 @@ export interface ListProjectsLocationsAuthorizedViewSetsRequest {
   /** Optional. The order by expression to order authorized view sets listed in the response. */
   orderBy?: string;
 }
-export const ListProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -7829,7 +7738,7 @@ export const ListProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.su
 
 export type GoogleCloudContactcenterinsightsV1AuthorizedViewSetList =
   Array<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>;
-export const GoogleCloudContactcenterinsightsV1AuthorizedViewSetList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AuthorizedViewSetList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1AuthorizedViewSet,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSetList>;
 
@@ -7840,15 +7749,15 @@ export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       authorizedViewSets: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewSetList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse>;
 
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Optional. The filter expression to filter authorized views listed in the response. */
@@ -7862,28 +7771,27 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/authorizedViews",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
-  }) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/authorizedViews",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
+}) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1AuthorizedViewList =
   Array<GoogleCloudContactcenterinsightsV1AuthorizedView>;
-export const GoogleCloudContactcenterinsightsV1AuthorizedViewList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AuthorizedViewList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1AuthorizedView,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewList>;
 
@@ -7894,22 +7802,21 @@ export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authorizedViews: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse>;
+const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authorizedViews: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum = S.String;
+const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum = S.String;
 
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. */
@@ -7927,7 +7834,7 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
   orderBy?: string;
 }
-export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
+const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
@@ -7951,7 +7858,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
 
 export type GoogleCloudContactcenterinsightsV1ConversationList =
   Array<GoogleCloudContactcenterinsightsV1Conversation>;
-export const GoogleCloudContactcenterinsightsV1ConversationList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1ConversationList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Conversation,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationList>;
 
@@ -7962,12 +7869,11 @@ export interface GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   /** The conversations that match the request. */
   conversations?: GoogleCloudContactcenterinsightsV1ConversationList;
 }
-export const GoogleCloudContactcenterinsightsV1ListConversationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      conversations: S.optional(GoogleCloudContactcenterinsightsV1ConversationList),
-    }),
+const GoogleCloudContactcenterinsightsV1ListConversationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    conversations: S.optional(GoogleCloudContactcenterinsightsV1ConversationList),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListConversationsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse>;
@@ -7982,7 +7888,7 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /** Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. */
   parent: string;
 }
-export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
+const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
@@ -8003,7 +7909,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
 
 export type GoogleCloudContactcenterinsightsV1AssessmentList =
   Array<GoogleCloudContactcenterinsightsV1Assessment>;
-export const GoogleCloudContactcenterinsightsV1AssessmentList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AssessmentList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Assessment,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssessmentList>;
 
@@ -8014,12 +7920,11 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListAssessmentsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      assessments: S.optional(GoogleCloudContactcenterinsightsV1AssessmentList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1ListAssessmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessments: S.optional(GoogleCloudContactcenterinsightsV1AssessmentList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListAssessmentsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse>;
@@ -8032,7 +7937,7 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /** Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
+const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8052,7 +7957,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
 
 export type GoogleCloudContactcenterinsightsV1NoteList =
   Array<GoogleCloudContactcenterinsightsV1Note>;
-export const GoogleCloudContactcenterinsightsV1NoteList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1NoteList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Note,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1NoteList>;
 
@@ -8063,7 +7968,7 @@ export interface GoogleCloudContactcenterinsightsV1ListNotesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListNotesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notes: S.optional(GoogleCloudContactcenterinsightsV1NoteList),
     nextPageToken: S.optional(S.String),
@@ -8082,7 +7987,7 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
 }
-export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
+const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8108,12 +8013,11 @@ export interface GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   /** The next page token. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      feedbackLabels: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabelList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    feedbackLabels: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabelList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>;
@@ -8130,7 +8034,7 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperation
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
+const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
@@ -8150,7 +8054,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsReq
   }) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -8163,7 +8067,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(GoogleLongrunningOperationList),
     nextPageToken: S.optional(S.String),
@@ -8181,7 +8085,7 @@ export interface ListProjectsLocationsAutoLabelingRulesRequest {
   /** Optional. The maximum number of auto labeling rules to return in a single response. If unspecified, at most 100 rules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8199,7 +8103,7 @@ export const ListProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.sus
 
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleList =
   Array<GoogleCloudContactcenterinsightsV1AutoLabelingRule>;
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AutoLabelingRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1AutoLabelingRule,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleList>;
 
@@ -8210,22 +8114,22 @@ export interface GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
   /** The auto labeling rules. */
   autoLabelingRules?: GoogleCloudContactcenterinsightsV1AutoLabelingRuleList;
 }
-export const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextPageToken: S.optional(S.String),
       autoLabelingRules: S.optional(GoogleCloudContactcenterinsightsV1AutoLabelingRuleList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse>;
 
 export type ListProjectsLocationsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-export const ListProjectsLocationsConversationsViewEnum = S.String;
+const ListProjectsLocationsConversationsViewEnum = S.String;
 
 export interface ListProjectsLocationsConversationsRequest {
   /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
@@ -8241,7 +8145,7 @@ export interface ListProjectsLocationsConversationsRequest {
   /** Required. The parent resource of the conversation. */
   parent: string;
 }
-export const ListProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8270,7 +8174,7 @@ export interface ListProjectsLocationsConversationsAnalysesRequest {
   /** The value returned by the last `ListAnalysesResponse`; indicates that this is a continuation of a prior `ListAnalyses` call and the system should return the next page of data. */
   pageToken?: string;
 }
-export const ListProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8289,7 +8193,7 @@ export const ListProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ S
 
 export type GoogleCloudContactcenterinsightsV1AnalysisList =
   Array<GoogleCloudContactcenterinsightsV1Analysis>;
-export const GoogleCloudContactcenterinsightsV1AnalysisList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1AnalysisList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Analysis,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisList>;
 
@@ -8300,7 +8204,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListAnalysesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListAnalysesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyses: S.optional(GoogleCloudContactcenterinsightsV1AnalysisList),
     nextPageToken: S.optional(S.String),
@@ -8319,7 +8223,7 @@ export interface ListProjectsLocationsConversationsAssessmentsRequest {
   /** The maximum number of assessments to list. If zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8344,19 +8248,18 @@ export interface ListProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Required. The parent resource of the notes. */
   parent: string;
 }
-export const ListProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/notes",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/notes",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsConversationsAssessmentsNotesRequest",
 }) as any as S.Schema<ListProjectsLocationsConversationsAssessmentsNotesRequest>;
@@ -8371,7 +8274,7 @@ export interface ListProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8400,7 +8303,7 @@ export interface ListProjectsLocationsDashboardsRequest {
   /** Optional. The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8420,7 +8323,7 @@ export const ListProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(()
 
 export type GoogleCloudContactcenterinsightsV1DashboardList =
   Array<GoogleCloudContactcenterinsightsV1Dashboard>;
-export const GoogleCloudContactcenterinsightsV1DashboardList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1DashboardList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Dashboard,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DashboardList>;
 
@@ -8431,12 +8334,11 @@ export interface GoogleCloudContactcenterinsightsV1ListDashboardsResponse {
   /** The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListDashboardsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dashboards: S.optional(GoogleCloudContactcenterinsightsV1DashboardList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1ListDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dashboards: S.optional(GoogleCloudContactcenterinsightsV1DashboardList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListDashboardsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListDashboardsResponse>;
@@ -8445,7 +8347,7 @@ export interface ListProjectsLocationsDashboardsChartsRequest {
   /** Required. The parent resource of the charts. */
   parent: string;
 }
-export const ListProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -8461,7 +8363,7 @@ export const ListProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.susp
 
 export type GoogleCloudContactcenterinsightsV1ChartList =
   Array<GoogleCloudContactcenterinsightsV1Chart>;
-export const GoogleCloudContactcenterinsightsV1ChartList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1ChartList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Chart,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ChartList>;
 
@@ -8472,7 +8374,7 @@ export interface GoogleCloudContactcenterinsightsV1ListChartsResponse {
   /** The value returned by the last `ListChartsResponse`. This value indicates that this is a continuation of a prior `ListCharts` call and that the system should return the next page of data. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListChartsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListChartsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charts: S.optional(GoogleCloudContactcenterinsightsV1ChartList),
     nextPageToken: S.optional(S.String),
@@ -8491,7 +8393,7 @@ export interface ListProjectsLocationsDatasetsRequest {
   /** Optional. The maximum number of datasets to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8510,7 +8412,7 @@ export const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =
 
 export type GoogleCloudContactcenterinsightsV1DatasetList =
   Array<GoogleCloudContactcenterinsightsV1Dataset>;
-export const GoogleCloudContactcenterinsightsV1DatasetList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1DatasetList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Dataset,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DatasetList>;
 
@@ -8521,7 +8423,7 @@ export interface GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: S.optional(GoogleCloudContactcenterinsightsV1DatasetList),
     nextPageToken: S.optional(S.String),
@@ -8535,7 +8437,7 @@ export type ListProjectsLocationsDatasetsConversationsViewEnum =
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-export const ListProjectsLocationsDatasetsConversationsViewEnum = S.String;
+const ListProjectsLocationsDatasetsConversationsViewEnum = S.String;
 
 export interface ListProjectsLocationsDatasetsConversationsRequest {
   /** The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
@@ -8551,7 +8453,7 @@ export interface ListProjectsLocationsDatasetsConversationsRequest {
   /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
   orderBy?: string;
 }
-export const ListProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8580,8 +8482,8 @@ export interface ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest
   /** Required. The parent resource of the feedback labels. */
   parent: string;
 }
-export const ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8594,15 +8496,15 @@ export const ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
         baseUrl: "https://contactcenterinsights.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
-  }) as any as S.Schema<ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
+}) as any as S.Schema<ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export interface ListProjectsLocationsIssueModelsRequest {
   /** Required. The parent resource of the issue model. */
   parent: string;
 }
-export const ListProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -8618,7 +8520,7 @@ export const ListProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudContactcenterinsightsV1IssueModelList =
   Array<GoogleCloudContactcenterinsightsV1IssueModel>;
-export const GoogleCloudContactcenterinsightsV1IssueModelList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1IssueModelList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1IssueModel,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelList>;
 
@@ -8627,11 +8529,10 @@ export interface GoogleCloudContactcenterinsightsV1ListIssueModelsResponse {
   /** The issue models that match the request. */
   issueModels?: GoogleCloudContactcenterinsightsV1IssueModelList;
 }
-export const GoogleCloudContactcenterinsightsV1ListIssueModelsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      issueModels: S.optional(GoogleCloudContactcenterinsightsV1IssueModelList),
-    }),
+const GoogleCloudContactcenterinsightsV1ListIssueModelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    issueModels: S.optional(GoogleCloudContactcenterinsightsV1IssueModelList),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListIssueModelsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListIssueModelsResponse>;
@@ -8640,7 +8541,7 @@ export interface ListProjectsLocationsIssueModelsIssuesRequest {
   /** Required. The parent resource of the issue. */
   parent: string;
 }
-export const ListProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -8656,7 +8557,7 @@ export const ListProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.sus
 
 export type GoogleCloudContactcenterinsightsV1IssueList =
   Array<GoogleCloudContactcenterinsightsV1Issue>;
-export const GoogleCloudContactcenterinsightsV1IssueList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1IssueList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Issue,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueList>;
 
@@ -8665,7 +8566,7 @@ export interface GoogleCloudContactcenterinsightsV1ListIssuesResponse {
   /** The issues that match the request. */
   issues?: GoogleCloudContactcenterinsightsV1IssueList;
 }
-export const GoogleCloudContactcenterinsightsV1ListIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(GoogleCloudContactcenterinsightsV1IssueList),
   }),
@@ -8685,7 +8586,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8713,7 +8614,7 @@ export interface ListProjectsLocationsPhraseMatchersRequest {
   /** Required. The parent resource of the phrase matcher. */
   parent: string;
 }
-export const ListProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8732,7 +8633,7 @@ export const ListProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudContactcenterinsightsV1PhraseMatcherList =
   Array<GoogleCloudContactcenterinsightsV1PhraseMatcher>;
-export const GoogleCloudContactcenterinsightsV1PhraseMatcherList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1PhraseMatcherList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1PhraseMatcher,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcherList>;
 
@@ -8743,12 +8644,11 @@ export interface GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      phraseMatchers: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcherList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    phraseMatchers: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcherList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse>;
@@ -8759,7 +8659,7 @@ export interface ListProjectsLocationsQaQuestionTagsRequest {
   /** Required. The parent resource of the QaQuestionTags. */
   parent: string;
 }
-export const ListProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8776,7 +8676,7 @@ export const ListProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudContactcenterinsightsV1QaQuestionTagList =
   Array<GoogleCloudContactcenterinsightsV1QaQuestionTag>;
-export const GoogleCloudContactcenterinsightsV1QaQuestionTagList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1QaQuestionTagList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1QaQuestionTag,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTagList>;
 
@@ -8787,12 +8687,11 @@ export interface GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      qaQuestionTags: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionTagList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    qaQuestionTags: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionTagList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse>;
@@ -8802,12 +8701,12 @@ export type ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum =
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
   | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
   | "QA_SCORECARD_SOURCE_INTENT_TAXONOMY";
-export const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum = S.String;
+const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum = S.String;
 
 export type ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList = Array<
   ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum | (string & {})
 >;
-export const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList = /*@__PURE__*/ S.Array(
+const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList = /*@__PURE__*/ S.Array(
   ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum,
 ) as any as S.Schema<ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList>;
 
@@ -8821,7 +8720,7 @@ export interface ListProjectsLocationsQaScorecardsRequest {
   /** Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards of one or more sources. */
   qaScorecardSources?: ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList;
 }
-export const ListProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8842,7 +8741,7 @@ export const ListProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecard>;
-export const GoogleCloudContactcenterinsightsV1QaScorecardList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1QaScorecardList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1QaScorecard,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardList>;
 
@@ -8853,12 +8752,11 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
   /** The QaScorecards under the parent. */
   qaScorecards?: GoogleCloudContactcenterinsightsV1QaScorecardList;
 }
-export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      qaScorecards: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardList),
-    }),
+const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    qaScorecards: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardList),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse>;
@@ -8868,12 +8766,10 @@ export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum =
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
   | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
   | "QA_SCORECARD_SOURCE_INTENT_TAXONOMY";
-export const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum = S.String;
-
 export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList = Array<
   ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum | (string & {})
 >;
-export const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList =
+const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList =
   GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList>;
 
 export interface ListProjectsLocationsQaScorecardsRevisionsRequest {
@@ -8888,7 +8784,7 @@ export interface ListProjectsLocationsQaScorecardsRevisionsRequest {
   /** Optional. The maximum number of scorecard revisions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     qaScorecardSources: S.optional(
       ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList.pipe(T.Query()),
@@ -8910,7 +8806,7 @@ export const ListProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardRevisionList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecardRevision>;
-export const GoogleCloudContactcenterinsightsV1QaScorecardRevisionList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1QaScorecardRevisionList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1QaScorecardRevision,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevisionList>;
 
@@ -8921,15 +8817,15 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsRespo
   /** The QaScorecards under the parent. */
   qaScorecardRevisions?: GoogleCloudContactcenterinsightsV1QaScorecardRevisionList;
 }
-export const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextPageToken: S.optional(S.String),
       qaScorecardRevisions: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardRevisionList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse>;
 
 export interface ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Optional. The maximum number of questions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
@@ -8939,26 +8835,25 @@ export interface ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Required. The parent resource of the questions. */
   parent: string;
 }
-export const ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/qaQuestions",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/qaQuestions",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
 }) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1QaQuestionList =
   Array<GoogleCloudContactcenterinsightsV1QaQuestion>;
-export const GoogleCloudContactcenterinsightsV1QaQuestionList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1QaQuestionList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1QaQuestion,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionList>;
 
@@ -8969,12 +8864,11 @@ export interface GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
   /** The QaQuestions under the parent. */
   qaQuestions?: GoogleCloudContactcenterinsightsV1QaQuestionList;
 }
-export const GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      qaQuestions: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionList),
-    }),
+const GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    qaQuestions: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionList),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse>;
@@ -8987,7 +8881,7 @@ export interface ListProjectsLocationsViewsRequest {
   /** The value returned by the last `ListViewsResponse`; indicates that this is a continuation of a prior `ListViews` call and the system should return the next page of data. */
   pageToken?: string;
 }
-export const ListProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -9005,7 +8899,7 @@ export const ListProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudContactcenterinsightsV1ViewList =
   Array<GoogleCloudContactcenterinsightsV1View>;
-export const GoogleCloudContactcenterinsightsV1ViewList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1ViewList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1View,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ViewList>;
 
@@ -9016,7 +8910,7 @@ export interface GoogleCloudContactcenterinsightsV1ListViewsResponse {
   /** The views that match the request. */
   views?: GoogleCloudContactcenterinsightsV1ViewList;
 }
-export const GoogleCloudContactcenterinsightsV1ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     views: S.optional(GoogleCloudContactcenterinsightsV1ViewList),
@@ -9033,7 +8927,7 @@ export interface PatchProjectsLocationsAnalysisRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AnalysisRule;
 }
-export const PatchProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9057,7 +8951,7 @@ export interface PatchProjectsLocationsAssessmentRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AssessmentRule;
 }
-export const PatchProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9081,7 +8975,7 @@ export interface PatchProjectsLocationsAuthorizedViewSetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedViewSet;
 }
-export const PatchProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9105,22 +8999,21 @@ export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest 
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedView;
 }
-export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedView.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedView.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
+}) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest {
   /** Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` */
@@ -9130,7 +9023,7 @@ export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversa
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
-export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
+const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9156,7 +9049,7 @@ export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversa
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
+const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -9182,7 +9075,7 @@ export interface PatchProjectsLocationsAutoLabelingRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
 }
-export const PatchProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9210,7 +9103,7 @@ export interface PatchProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Conversation;
 }
-export const PatchProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     "conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate": S.optional(
@@ -9238,19 +9131,18 @@ export interface PatchProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
-export const PatchProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsConversationsAssessmentsNotesRequest",
 }) as any as S.Schema<PatchProjectsLocationsConversationsAssessmentsNotesRequest>;
@@ -9263,19 +9155,18 @@ export interface PatchProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-export const PatchProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsConversationsFeedbackLabelsRequest",
 }) as any as S.Schema<PatchProjectsLocationsConversationsFeedbackLabelsRequest>;
@@ -9288,7 +9179,7 @@ export interface PatchProjectsLocationsDashboardsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dashboard;
 }
-export const PatchProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9312,7 +9203,7 @@ export interface PatchProjectsLocationsDashboardsChartsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Chart;
 }
-export const PatchProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9336,7 +9227,7 @@ export interface PatchProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dataset;
 }
-export const PatchProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9360,8 +9251,8 @@ export interface PatchProjectsLocationsDatasetsConversationsFeedbackLabelsReques
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-export const PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9373,9 +9264,9 @@ export const PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
         baseUrl: "https://contactcenterinsights.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest",
+}) as any as S.Schema<PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
 export interface PatchProjectsLocationsIssueModelsRequest {
   /** Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
@@ -9385,7 +9276,7 @@ export interface PatchProjectsLocationsIssueModelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
-export const PatchProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9409,7 +9300,7 @@ export interface PatchProjectsLocationsIssueModelsIssuesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Issue;
 }
-export const PatchProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9433,7 +9324,7 @@ export interface PatchProjectsLocationsPhraseMatchersRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1PhraseMatcher;
 }
-export const PatchProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9457,7 +9348,7 @@ export interface PatchProjectsLocationsQaQuestionTagsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaQuestionTag;
 }
-export const PatchProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9481,7 +9372,7 @@ export interface PatchProjectsLocationsQaScorecardsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaScorecard;
 }
-export const PatchProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9505,22 +9396,21 @@ export interface PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaQuestion;
 }
-export const PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudContactcenterinsightsV1QaQuestion.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
+const PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudContactcenterinsightsV1QaQuestion.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://contactcenterinsights.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
+}) as any as S.Schema<PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export interface PatchProjectsLocationsViewsRequest {
   /** The list of fields to be updated. */
@@ -9530,7 +9420,7 @@ export interface PatchProjectsLocationsViewsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1View;
 }
-export const PatchProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9549,16 +9439,13 @@ export const PatchProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
 /** The message to publish an assessment. Draft and appealed assessments can be published. Publishing simply changes the state of the assessment to published, allowing the console and authorized views to filter on the state. */
 export type GoogleCloudContactcenterinsightsV1PublishAssessmentRequest =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1PublishAssessmentRequest =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 export interface PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to publish. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
+const PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -9583,7 +9470,7 @@ export interface PublishProjectsLocationsConversationsAssessmentsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const PublishProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody())),
@@ -9605,15 +9492,15 @@ export interface GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetada
   /** Optional. The label key. */
   labelKey?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       labelValue: S.optional(S.String),
       labelKey: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata>;
 
 /** Metadata about the Conversational Agents tool dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata {
@@ -9622,7 +9509,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgents
   /** Optional. The dialogflow tool display name. */
   toolDisplayName?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata =
+const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       toolId: S.optional(S.String),
@@ -9642,16 +9529,16 @@ export interface GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetada
   /** The issue ID. */
   issueId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       issueDisplayName: S.optional(S.String),
       issueModelId: S.optional(S.String),
       issueId: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata>;
 
 /** Metadata about the QA question-answer dimension. This is useful for showing the answer distribution for questions for a given scorecard. */
 export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata {
@@ -9664,7 +9551,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDime
   /** Optional. The QA question ID. */
   qaQuestionId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata =
+const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       answerValue: S.optional(S.String),
@@ -9681,7 +9568,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationProfileD
   /** Optional. The conversation profile ID. */
   conversationProfileId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata =
+const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       conversationProfileId: S.optional(S.String),
@@ -9695,7 +9582,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimension
   /** Optional. The QA scorecard ID. */
   qaScorecardId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata =
+const GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       qaScorecardId: S.optional(S.String),
@@ -9713,7 +9600,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionM
   /** Optional. The QA scorecard ID. */
   qaScorecardId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata =
+const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       qaQuestionId: S.optional(S.String),
@@ -9731,7 +9618,7 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgents
   /** Optional. The dialogflow playbook ID. */
   playbookId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata =
+const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       playbookDisplayName: S.optional(S.String),
@@ -9759,8 +9646,8 @@ export interface GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetada
   /** Optional. A user-specified string representing the agent's team. */
   agentTeam?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       agentDeploymentId: S.optional(S.String),
       agentId: S.optional(S.String),
@@ -9770,9 +9657,9 @@ export const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata =
       agentDeploymentDisplayName: S.optional(S.String),
       agentTeam: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata>;
 
 export type GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
   | "DIMENSION_KEY_UNSPECIFIED"
@@ -9797,14 +9684,14 @@ export type GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
   | "LABEL_VALUE"
   | "LABEL_KEY_AND_VALUE"
   | "LAST_TRANSFER_SUB_AGENT_NAME";
-export const GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum = S.String;
+const GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum = S.String;
 
 /** Metadata about the client sentiment category dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata {
   /** Optional. The client sentiment category. */
   sentimentCategory?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata =
+const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sentimentCategory: S.optional(S.String),
@@ -9819,14 +9706,14 @@ export interface GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetad
   /** Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT. */
   medium?: string;
 }
-export const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       medium: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata>;
 
 /** A dimension determines the grouping key for the query. In SQL terms, these would be part of both the "SELECT" and "GROUP BY" clauses. */
 export interface GoogleCloudContactcenterinsightsV1Dimension {
@@ -9855,7 +9742,7 @@ export interface GoogleCloudContactcenterinsightsV1Dimension {
   /** Output only. Metadata about the conversation medium dimension. */
   mediumDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata;
 }
-export const GoogleCloudContactcenterinsightsV1Dimension = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelDimensionMetadata: S.optional(
       GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata,
@@ -9898,7 +9785,7 @@ export const GoogleCloudContactcenterinsightsV1Dimension = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudContactcenterinsightsV1DimensionList =
   Array<GoogleCloudContactcenterinsightsV1Dimension>;
-export const GoogleCloudContactcenterinsightsV1DimensionList = /*@__PURE__*/ S.Array(
+const GoogleCloudContactcenterinsightsV1DimensionList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Dimension,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionList>;
 
@@ -9910,7 +9797,7 @@ export type GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularity
   | "PER_MINUTE"
   | "PER_5_MINUTES"
   | "MONTHLY";
-export const GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum = S.String;
+const GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum = S.String;
 
 /** The request for querying metrics. */
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
@@ -9925,7 +9812,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
   /** Measures to return. Defaults to all measures if this field is unspecified. A valid mask should traverse from the `measure` field from the response. For example, a path from a measure mask to get the conversation count is "conversation_measure.count". */
   measureMask?: string;
 }
-export const GoogleCloudContactcenterinsightsV1QueryMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QueryMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(GoogleCloudContactcenterinsightsV1DimensionList),
     filter: S.optional(S.String),
@@ -9944,7 +9831,7 @@ export interface QueryMetricsProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QueryMetricsRequest;
 }
-export const QueryMetricsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryMetricsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1QueryMetricsRequest.pipe(T.HttpBody())),
@@ -9965,7 +9852,7 @@ export interface QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsR
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QueryMetricsRequest;
 }
-export const QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
+const QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       location: S.String.pipe(T.Label()),
@@ -9986,7 +9873,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewReque
   /** Required. Agent id to query performance overview for. */
   agentId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource =
+const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       agentId: S.optional(S.String),
@@ -10006,8 +9893,8 @@ export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewReque
   /** The time window of the conversations to compare the performance to. */
   comparisonQueryInterval?: GoogleCloudContactcenterinsightsV1QueryInterval;
 }
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       agentPerformanceSource: S.optional(
         GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource,
@@ -10016,9 +9903,9 @@ export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest =
       filter: S.optional(S.String),
       comparisonQueryInterval: S.optional(GoogleCloudContactcenterinsightsV1QueryInterval),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest>;
 
 export interface QueryPerformanceOverviewProjectsLocationsRequest {
   /** Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" */
@@ -10026,7 +9913,7 @@ export interface QueryPerformanceOverviewProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest;
 }
-export const QueryPerformanceOverviewProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryPerformanceOverviewProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -10049,7 +9936,7 @@ export interface QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuth
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest;
 }
-export const QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
+const QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -10076,13 +9963,12 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsRequest {
   /** Required. The parent resource of the dataset. */
   parent?: string;
 }
-export const GoogleCloudContactcenterinsightsV1SampleConversationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinationDataset: S.optional(GoogleCloudContactcenterinsightsV1Dataset),
-      sampleRule: S.optional(GoogleCloudContactcenterinsightsV1SampleRule),
-      parent: S.optional(S.String),
-    }),
+const GoogleCloudContactcenterinsightsV1SampleConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinationDataset: S.optional(GoogleCloudContactcenterinsightsV1Dataset),
+    sampleRule: S.optional(GoogleCloudContactcenterinsightsV1SampleRule),
+    parent: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1SampleConversationsRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsRequest>;
@@ -10093,7 +9979,7 @@ export interface SampleProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1SampleConversationsRequest;
 }
-export const SampleProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SampleProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -10116,7 +10002,7 @@ export interface SampleProjectsLocationsDatasetsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1SampleConversationsRequest;
 }
-export const SampleProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SampleProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -10145,8 +10031,8 @@ export interface SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest
   /** Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. */
   parent: string;
 }
-export const SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       orderBy: S.optional(S.String.pipe(T.Query())),
@@ -10160,9 +10046,9 @@ export const SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
         baseUrl: "https://contactcenterinsights.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
-  }) as any as S.Schema<SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
+).annotate({
+  identifier: "SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
+}) as any as S.Schema<SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 /** The response from a ListAuthorizedViews request. */
 export interface GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse {
@@ -10171,15 +10057,15 @@ export interface GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse
   /** The AuthorizedViews under the parent. */
   authorizedViews?: GoogleCloudContactcenterinsightsV1AuthorizedViewList;
 }
-export const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextPageToken: S.optional(S.String),
       authorizedViews: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse>;
 
 /** Request message for `SetIamPolicy` method. */
 export interface GoogleIamV1SetIamPolicyRequest {
@@ -10188,7 +10074,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: GoogleIamV1Policy;
 }
-export const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(GoogleIamV1Policy),
@@ -10203,7 +10089,7 @@ export interface SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsR
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
+const SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -10224,7 +10110,7 @@ export interface GoogleCloudContactcenterinsightsV1StreamChatRequest {
   /** Required. The message to send to the assistant. */
   message?: string;
 }
-export const GoogleCloudContactcenterinsightsV1StreamChatRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1StreamChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -10238,7 +10124,7 @@ export interface StreamChatProjectsLocationsAssistantSessionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1StreamChatRequest;
 }
-export const StreamChatProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamChatProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1StreamChatRequest.pipe(T.HttpBody())),
@@ -10264,7 +10150,7 @@ export interface GoogleCloudContactcenterinsightsV1StreamChatResponse {
   /** The unique ID of the event. */
   eventId?: string;
 }
-export const GoogleCloudContactcenterinsightsV1StreamChatResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1StreamChatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTime: S.optional(S.String),
     chunk: S.optional(GoogleCloudContactcenterinsightsV1AssistantChunk),
@@ -10280,7 +10166,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestC
   /** Optional. The conversations. */
   conversations?: GoogleCloudContactcenterinsightsV1ConversationList;
 }
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations =
+const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       conversations: S.optional(GoogleCloudContactcenterinsightsV1ConversationList),
@@ -10300,19 +10186,18 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest 
   /** Optional. Filter to select conversations to test correlation against. Conversations matching this filter will be sampled based on start time. The most recent `max_sample_count` conversations will be selected. If no conversations match the filter, the request will fail with an `INVALID_ARGUMENT` error. */
   filter?: string;
 }
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      conversations: S.optional(
-        GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations,
-      ),
-      correlationConfig: S.optional(GoogleCloudContactcenterinsightsV1CorrelationConfig),
-      maxSampleCount: S.optional(S.Number),
-      filter: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest>;
+const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conversations: S.optional(
+      GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations,
+    ),
+    correlationConfig: S.optional(GoogleCloudContactcenterinsightsV1CorrelationConfig),
+    maxSampleCount: S.optional(S.Number),
+    filter: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest>;
 
 export interface TestCorrelationConfigProjectsLocationsRequest {
   /** Required. The location to test correlation config. Format: projects/{project}/locations/{location} */
@@ -10320,7 +10205,7 @@ export interface TestCorrelationConfigProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest;
 }
-export const TestCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(
@@ -10342,7 +10227,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -10356,7 +10241,7 @@ export interface TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorized
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
+const TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -10377,7 +10262,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse =
+const GoogleIamV1TestIamPermissionsResponse =
   GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 /** The request message for testing auto labeling rules. */
@@ -10387,15 +10272,14 @@ export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest {
   /** Required. The auto labeling rule to test. */
   autoLabelingRule?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
 }
-export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
-      autoLabelingRule: S.optional(GoogleCloudContactcenterinsightsV1AutoLabelingRule),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest>;
+const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
+    autoLabelingRule: S.optional(GoogleCloudContactcenterinsightsV1AutoLabelingRule),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest>;
 
 export interface TestProjectsLocationsAutoLabelingRulesRequest {
   /** Required. The parent project and location. Format: projects/{project}/locations/{location} */
@@ -10403,7 +10287,7 @@ export interface TestProjectsLocationsAutoLabelingRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest;
 }
-export const TestProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -10425,14 +10309,13 @@ export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse 
   /** The result of the test auto labeling rule. */
   labelResult?: string;
 }
-export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      labelResult: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse>;
+const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    labelResult: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse>;
 
 /** Request for TuneQaScorecardRevision endpoint. */
 export interface GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest {
@@ -10441,15 +10324,15 @@ export interface GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionReques
   /** Required. Filter for selecting the feedback labels that needs to be used for training. This filter can be used to limit the feedback labels used for tuning to a feedback labels created or updated for a specific time-window etc. */
   filter?: string;
 }
-export const GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       validateOnly: S.optional(S.Boolean),
       filter: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest>;
+).annotate({
+  identifier: "GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest",
+}) as any as S.Schema<GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest>;
 
 export interface TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest {
   /** Required. The parent resource for new fine tuning job instance. */
@@ -10457,7 +10340,7 @@ export interface TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRe
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest;
 }
-export const TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest =
+const TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -10480,7 +10363,7 @@ export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
   /** Required. The issue model to undeploy. */
   name?: string;
 }
-export const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest =
+const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest =
   GoogleCloudContactcenterinsightsV1DeployIssueModelRequest as any as S.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest>;
 
 export interface UndeployProjectsLocationsIssueModelsRequest {
@@ -10489,7 +10372,7 @@ export interface UndeployProjectsLocationsIssueModelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest;
 }
-export const UndeployProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeployProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -10509,16 +10392,13 @@ export const UndeployProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspe
 /** The request to undeploy a QaScorecardRevision */
 export type GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-export const GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest =
-  GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
-
 export interface UndeployProjectsLocationsQaScorecardsRevisionsRequest {
   /** Required. The name of the QaScorecardRevision to undeploy. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-export const UndeployProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeployProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody())),
@@ -10541,7 +10421,7 @@ export interface UpdateCorrelationConfigProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1CorrelationConfig;
 }
-export const UpdateCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -10565,7 +10445,7 @@ export interface UpdateSettingsProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Settings;
 }
-export const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -10594,15 +10474,14 @@ export interface GoogleCloudContactcenterinsightsV1UploadConversationRequest {
   /** Optional. Speech-to-Text configuration. Will default to the config specified in Settings. */
   speechConfig?: GoogleCloudContactcenterinsightsV1SpeechConfig;
 }
-export const GoogleCloudContactcenterinsightsV1UploadConversationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.optional(S.String),
-      conversationId: S.optional(S.String),
-      conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
-      redactionConfig: S.optional(GoogleCloudContactcenterinsightsV1RedactionConfig),
-      speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
-    }),
+const GoogleCloudContactcenterinsightsV1UploadConversationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.optional(S.String),
+    conversationId: S.optional(S.String),
+    conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
+    redactionConfig: S.optional(GoogleCloudContactcenterinsightsV1RedactionConfig),
+    speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
+  }),
 ).annotate({
   identifier: "GoogleCloudContactcenterinsightsV1UploadConversationRequest",
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1UploadConversationRequest>;
@@ -10613,7 +10492,7 @@ export interface UploadProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1UploadConversationRequest;
 }
-export const UploadProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadProjectsLocationsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(

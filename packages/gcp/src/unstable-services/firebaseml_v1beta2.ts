@@ -70,7 +70,7 @@ export interface TfLiteModel {
   /** The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file. */
   gcsTfliteUri?: string;
 }
-export const TfLiteModel = /*@__PURE__*/ S.suspend(() =>
+const TfLiteModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automlModel: S.optional(S.String),
     sizeBytes: S.optional(S.String),
@@ -79,18 +79,13 @@ export const TfLiteModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TfLiteModel" }) as any as S.Schema<TfLiteModel>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -101,7 +96,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -116,7 +111,7 @@ export interface ModelState {
   /** Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models. */
   validationError?: Status;
 }
-export const ModelState = /*@__PURE__*/ S.suspend(() =>
+const ModelState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     published: S.optional(S.Boolean),
     validationError: S.optional(Status),
@@ -136,7 +131,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -147,7 +142,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** An ML model hosted in Firebase ML */
 export interface Model {
@@ -172,7 +167,7 @@ export interface Model {
   /** Output only. The model_hash will change if a new file is available for download. */
   modelHash?: string;
 }
-export const Model = /*@__PURE__*/ S.suspend(() =>
+const Model = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tfliteModel: S.optional(TfLiteModel),
     createTime: S.optional(S.String),
@@ -193,7 +188,7 @@ export interface CreateProjectsModelsRequest {
   /** Request body */
   body?: Model;
 }
-export const CreateProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Model.pipe(T.HttpBody())),
@@ -212,7 +207,7 @@ export interface DeleteProjectsModelsRequest {
   /** Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` */
   name: string;
 }
-export const DeleteProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -228,7 +223,7 @@ export const DeleteProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -236,7 +231,7 @@ export interface DownloadProjectsModelsRequest {
   /** Required. The name of the model to download. The name must have the form `projects/{project}/models/{model}` */
   name: string;
 }
-export const DownloadProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -251,7 +246,7 @@ export const DownloadProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadProjectsModelsRequest>;
 
 export type DownloadModelResponseModelFormatEnum = "MODEL_FORMAT_UNSPECIFIED" | "TFLITE";
-export const DownloadModelResponseModelFormatEnum = S.String;
+const DownloadModelResponseModelFormatEnum = S.String;
 
 /** The response for downloading a model to device. */
 export interface DownloadModelResponse {
@@ -264,7 +259,7 @@ export interface DownloadModelResponse {
   /** Output only. The size of the file(s), if this information is available. */
   sizeBytes?: string;
 }
-export const DownloadModelResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String),
     downloadUri: S.optional(S.String),
@@ -277,7 +272,7 @@ export interface GetProjectsModelsRequest {
   /** Required. The name of the model to get. The name must have the form `projects/{project_id}/models/{model_id}` */
   name: string;
 }
-export const GetProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -293,7 +288,7 @@ export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -317,7 +312,7 @@ export interface ListProjectsModelsRequest {
   /** Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' */
   parent: string;
 }
-export const ListProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -335,7 +330,7 @@ export const ListProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsModelsRequest>;
 
 export type ModelList = Array<Model>;
-export const ModelList = /*@__PURE__*/ S.Array(Model) as any as S.Schema<ModelList>;
+const ModelList = /*@__PURE__*/ S.Array(Model) as any as S.Schema<ModelList>;
 
 /** The response for list models */
 export interface ListModelsResponse {
@@ -344,7 +339,7 @@ export interface ListModelsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     models: S.optional(ModelList),
     nextPageToken: S.optional(S.String),
@@ -359,7 +354,7 @@ export interface PatchProjectsModelsRequest {
   /** Request body */
   body?: Model;
 }
-export const PatchProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

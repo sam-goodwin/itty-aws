@@ -65,7 +65,7 @@ export interface ClearCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
-export const ClearCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
   }).pipe(
@@ -78,7 +78,7 @@ export const ClearCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClearCalendarsRequest" }) as any as S.Schema<ClearCalendarsRequest>;
 
 export interface ClearCalendarsResponse {}
-export const ClearCalendarsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ClearCalendarsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ClearCalendarsResponse",
 }) as any as S.Schema<ClearCalendarsResponse>;
 
@@ -88,7 +88,7 @@ export interface DeleteAclRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
-export const DeleteAclRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String.pipe(T.Label()),
     calendarId: S.String.pipe(T.Label()),
@@ -102,13 +102,13 @@ export const DeleteAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAclRequest" }) as any as S.Schema<DeleteAclRequest>;
 
 export interface DeleteAclResponse {}
-export const DeleteAclResponse = ClearCalendarsResponse as any as S.Schema<DeleteAclResponse>;
+const DeleteAclResponse = ClearCalendarsResponse as any as S.Schema<DeleteAclResponse>;
 
 export interface DeleteCalendarListRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
-export const DeleteCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
   }).pipe(
@@ -123,14 +123,14 @@ export const DeleteCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCalendarListRequest>;
 
 export interface DeleteCalendarListResponse {}
-export const DeleteCalendarListResponse =
+const DeleteCalendarListResponse =
   ClearCalendarsResponse as any as S.Schema<DeleteCalendarListResponse>;
 
 export interface DeleteCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
-export const DeleteCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
   }).pipe(
@@ -143,11 +143,10 @@ export const DeleteCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCalendarsRequest" }) as any as S.Schema<DeleteCalendarsRequest>;
 
 export interface DeleteCalendarsResponse {}
-export const DeleteCalendarsResponse =
-  ClearCalendarsResponse as any as S.Schema<DeleteCalendarsResponse>;
+const DeleteCalendarsResponse = ClearCalendarsResponse as any as S.Schema<DeleteCalendarsResponse>;
 
 export type DeleteEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
-export const DeleteEventsSendUpdatesEnum = S.String;
+const DeleteEventsSendUpdatesEnum = S.String;
 
 export interface DeleteEventsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -159,7 +158,7 @@ export interface DeleteEventsRequest {
   /** Event identifier. */
   eventId: string;
 }
-export const DeleteEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
     sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
@@ -175,7 +174,7 @@ export const DeleteEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEventsRequest" }) as any as S.Schema<DeleteEventsRequest>;
 
 export interface DeleteEventsResponse {}
-export const DeleteEventsResponse = ClearCalendarsResponse as any as S.Schema<DeleteEventsResponse>;
+const DeleteEventsResponse = ClearCalendarsResponse as any as S.Schema<DeleteEventsResponse>;
 
 export interface GetAclRequest {
   /** ACL rule identifier. */
@@ -183,7 +182,7 @@ export interface GetAclRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
-export const GetAclRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String.pipe(T.Label()),
     calendarId: S.String.pipe(T.Label()),
@@ -202,7 +201,7 @@ export interface AclRuleScope {
   /** The type of the scope. Possible values are: - "default" - The public scope. This is the default value. - "user" - Limits the scope to a single user. - "group" - Limits the scope to a group. - "domain" - Limits the scope to a domain. Note: The permissions granted to the "default", or public, scope apply to any user, authenticated or not. */
   type?: string;
 }
-export const AclRuleScope = /*@__PURE__*/ S.suspend(() =>
+const AclRuleScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     type: S.optional(S.String),
@@ -221,7 +220,7 @@ export interface AclRule {
   /** ETag of the resource. */
   etag?: string;
 }
-export const AclRule = /*@__PURE__*/ S.suspend(() =>
+const AclRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     kind: S.optional(S.String),
@@ -235,7 +234,7 @@ export interface GetCalendarListRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
-export const GetCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
   }).pipe(
@@ -253,7 +252,7 @@ export interface EventReminder {
   /** Number of minutes before the start of the event when the reminder should trigger. Valid values are between 0 and 40320 (4 weeks in minutes). Required when adding a reminder. */
   minutes?: number;
 }
-export const EventReminder = /*@__PURE__*/ S.suspend(() =>
+const EventReminder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     minutes: S.optional(S.Number),
@@ -261,7 +260,7 @@ export const EventReminder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventReminder" }) as any as S.Schema<EventReminder>;
 
 export type EventReminderList = Array<EventReminder>;
-export const EventReminderList = /*@__PURE__*/ S.Array(
+const EventReminderList = /*@__PURE__*/ S.Array(
   EventReminder,
 ) as any as S.Schema<EventReminderList>;
 
@@ -271,7 +270,7 @@ export interface CalendarNotification {
   /** The type of notification. Possible values are: - "eventCreation" - Notification sent when a new event is put on the calendar. - "eventChange" - Notification sent when an event is changed. - "eventCancellation" - Notification sent when an event is cancelled. - "eventResponse" - Notification sent when an attendee responds to the event invitation. - "agenda" - An agenda with the events of the day (sent out in the morning). Required when adding a notification. */
   type?: string;
 }
-export const CalendarNotification = /*@__PURE__*/ S.suspend(() =>
+const CalendarNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     type: S.optional(S.String),
@@ -279,7 +278,7 @@ export const CalendarNotification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CalendarNotification" }) as any as S.Schema<CalendarNotification>;
 
 export type CalendarNotificationList = Array<CalendarNotification>;
-export const CalendarNotificationList = /*@__PURE__*/ S.Array(
+const CalendarNotificationList = /*@__PURE__*/ S.Array(
   CalendarNotification,
 ) as any as S.Schema<CalendarNotificationList>;
 
@@ -287,7 +286,7 @@ export interface CalendarListEntryNotificationSettings {
   /** The list of notifications set for this calendar. */
   notifications?: CalendarNotificationList;
 }
-export const CalendarListEntryNotificationSettings = /*@__PURE__*/ S.suspend(() =>
+const CalendarListEntryNotificationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notifications: S.optional(CalendarNotificationList),
   }),
@@ -296,13 +295,13 @@ export const CalendarListEntryNotificationSettings = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CalendarListEntryNotificationSettings>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ConferenceProperties {
   /** The types of conference solutions that are supported for this calendar. The possible values are: - "eventHangout" - "eventNamedHangout" - "hangoutsMeet" Optional. */
   allowedConferenceSolutionTypes?: StringList;
 }
-export const ConferenceProperties = /*@__PURE__*/ S.suspend(() =>
+const ConferenceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedConferenceSolutionTypes: S.optional(StringList),
   }),
@@ -352,7 +351,7 @@ export interface CalendarListEntry {
   /** Conferencing properties for this calendar, for example what types of conferences are allowed. */
   conferenceProperties?: ConferenceProperties;
 }
-export const CalendarListEntry = /*@__PURE__*/ S.suspend(() =>
+const CalendarListEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     backgroundColor: S.optional(S.String),
@@ -382,7 +381,7 @@ export interface GetCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
-export const GetCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
   }).pipe(
@@ -402,7 +401,7 @@ export interface EventLabel {
   /** The ID of the label. Optional when inserting a new label. If not provided, a unique ID will be generated. Required when updating a label. If provided, the ID must be unique within the calendar and follow UUID format. */
   id?: string;
 }
-export const EventLabel = /*@__PURE__*/ S.suspend(() =>
+const EventLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     backgroundColor: S.optional(S.String),
@@ -411,13 +410,13 @@ export const EventLabel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventLabel" }) as any as S.Schema<EventLabel>;
 
 export type EventLabelList = Array<EventLabel>;
-export const EventLabelList = /*@__PURE__*/ S.Array(EventLabel) as any as S.Schema<EventLabelList>;
+const EventLabelList = /*@__PURE__*/ S.Array(EventLabel) as any as S.Schema<EventLabelList>;
 
 export interface LabelProperties {
   /** Event labels defined on this calendar. If this is present when updating the calendar, it will replace the existing event labels. Extend the list to add a new event label, and remove entities from the list to delete a label from calendar. Each calendar can have a maximum of 200 labels. */
   eventLabels?: EventLabelList;
 }
-export const LabelProperties = /*@__PURE__*/ S.suspend(() =>
+const LabelProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventLabels: S.optional(EventLabelList),
   }),
@@ -447,7 +446,7 @@ export interface Calendar {
   /** The email of the owner of the calendar. Set only for secondary calendars. Read-only. */
   dataOwner?: string;
 }
-export const Calendar = /*@__PURE__*/ S.suspend(() =>
+const Calendar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conferenceProperties: S.optional(ConferenceProperties),
     description: S.optional(S.String),
@@ -464,7 +463,7 @@ export const Calendar = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Calendar" }) as any as S.Schema<Calendar>;
 
 export interface GetColorsRequest {}
-export const GetColorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetColorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "colors", baseUrl: "https://www.googleapis.com/calendar/v3/" }),
   ),
@@ -476,7 +475,7 @@ export interface ColorDefinition {
   /** The foreground color that can be used to write on top of a background with 'background' color. */
   foreground?: string;
 }
-export const ColorDefinition = /*@__PURE__*/ S.suspend(() =>
+const ColorDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     background: S.optional(S.String),
     foreground: S.optional(S.String),
@@ -484,7 +483,7 @@ export const ColorDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ColorDefinition" }) as any as S.Schema<ColorDefinition>;
 
 export type ColorDefinitionMap = { [key: string]: ColorDefinition | undefined };
-export const ColorDefinitionMap = /*@__PURE__*/ S.Record(
+const ColorDefinitionMap = /*@__PURE__*/ S.Record(
   S.String,
   ColorDefinition,
 ) as any as S.Schema<ColorDefinitionMap>;
@@ -499,7 +498,7 @@ export interface Colors {
   /** Last modification time of the color palette (as a RFC3339 timestamp). Read-only. */
   updated?: string;
 }
-export const Colors = /*@__PURE__*/ S.suspend(() =>
+const Colors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(ColorDefinitionMap),
     calendar: S.optional(ColorDefinitionMap),
@@ -520,7 +519,7 @@ export interface GetEventsRequest {
   /** The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional. */
   maxAttendees?: number;
 }
-export const GetEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
     calendarId: S.String.pipe(T.Label()),
@@ -544,7 +543,7 @@ export interface EventDateTime {
   /** The time, as a combined date-time value (formatted according to RFC3339). A time zone offset is required unless a time zone is explicitly specified in timeZone. */
   dateTime?: string;
 }
-export const EventDateTime = /*@__PURE__*/ S.suspend(() =>
+const EventDateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String),
     date: S.optional(S.String),
@@ -556,7 +555,7 @@ export interface ConferenceSolutionKey {
   /** The conference solution type. If a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications. The possible values are: - "eventHangout" for Hangouts for consumers (deprecated; existing events may show this conference solution type but new conferences cannot be created) - "eventNamedHangout" for classic Hangouts for Google Workspace users (deprecated; existing events may show this conference solution type but new conferences cannot be created) - "hangoutsMeet" for Google Meet (http://meet.google.com) - "addOn" for 3P conference providers */
   type?: string;
 }
-export const ConferenceSolutionKey = /*@__PURE__*/ S.suspend(() =>
+const ConferenceSolutionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
   }),
@@ -570,7 +569,7 @@ export interface ConferenceSolution {
   /** The key which can uniquely identify the conference solution for this event. */
   key?: ConferenceSolutionKey;
 }
-export const ConferenceSolution = /*@__PURE__*/ S.suspend(() =>
+const ConferenceSolution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iconUri: S.optional(S.String),
     name: S.optional(S.String),
@@ -582,7 +581,7 @@ export interface ConferenceRequestStatus {
   /** The current status of the conference create request. Read-only. The possible values are: - "pending": the conference create request is still being processed. - "success": the conference create request succeeded, the entry points are populated. - "failure": the conference create request failed, there are no entry points. */
   statusCode?: string;
 }
-export const ConferenceRequestStatus = /*@__PURE__*/ S.suspend(() =>
+const ConferenceRequestStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.String),
   }),
@@ -596,7 +595,7 @@ export interface CreateConferenceRequest {
   /** The conference solution, such as Hangouts or Google Meet. */
   conferenceSolutionKey?: ConferenceSolutionKey;
 }
-export const CreateConferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ConferenceRequestStatus),
     requestId: S.optional(S.String),
@@ -626,7 +625,7 @@ export interface EntryPoint {
   /** The label for the URI. Visible to end users. Not localized. The maximum length is 512 characters. Examples: - for video: meet.google.com/aaa-bbbb-ccc - for phone: +1 123 268 2601 - for sip: 12345678@altostrat.com - for more: should not be filled Optional. */
   label?: string;
 }
-export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
+const EntryPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pin: S.optional(S.String),
     meetingCode: S.optional(S.String),
@@ -642,15 +641,15 @@ export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EntryPoint" }) as any as S.Schema<EntryPoint>;
 
 export type EntryPointList = Array<EntryPoint>;
-export const EntryPointList = /*@__PURE__*/ S.Array(EntryPoint) as any as S.Schema<EntryPointList>;
+const EntryPointList = /*@__PURE__*/ S.Array(EntryPoint) as any as S.Schema<EntryPointList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface ConferenceParametersAddOnParameters {
   parameters?: StringMap;
 }
-export const ConferenceParametersAddOnParameters = /*@__PURE__*/ S.suspend(() =>
+const ConferenceParametersAddOnParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(StringMap),
   }),
@@ -662,7 +661,7 @@ export interface ConferenceParameters {
   /** Additional add-on specific data. */
   addOnParameters?: ConferenceParametersAddOnParameters;
 }
-export const ConferenceParameters = /*@__PURE__*/ S.suspend(() =>
+const ConferenceParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnParameters: S.optional(ConferenceParametersAddOnParameters),
   }),
@@ -684,7 +683,7 @@ export interface ConferenceData {
   /** Additional properties related to a conference. An example would be a solution-specific setting for enabling video streaming. */
   parameters?: ConferenceParameters;
 }
-export const ConferenceData = /*@__PURE__*/ S.suspend(() =>
+const ConferenceData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conferenceSolution: S.optional(ConferenceSolution),
     conferenceId: S.optional(S.String),
@@ -708,7 +707,7 @@ export interface EventAttachment {
   /** Internet media type (MIME type) of the attachment. */
   mimeType?: string;
 }
-export const EventAttachment = /*@__PURE__*/ S.suspend(() =>
+const EventAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iconLink: S.optional(S.String),
     fileUrl: S.optional(S.String),
@@ -719,7 +718,7 @@ export const EventAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventAttachment" }) as any as S.Schema<EventAttachment>;
 
 export type EventAttachmentList = Array<EventAttachment>;
-export const EventAttachmentList = /*@__PURE__*/ S.Array(
+const EventAttachmentList = /*@__PURE__*/ S.Array(
   EventAttachment,
 ) as any as S.Schema<EventAttachmentList>;
 
@@ -741,7 +740,7 @@ export interface EventGadget {
   /** Preferences. */
   preferences?: StringMap;
 }
-export const EventGadget = /*@__PURE__*/ S.suspend(() =>
+const EventGadget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display: S.optional(S.String),
     title: S.optional(S.String),
@@ -760,7 +759,7 @@ export interface EventReminders {
   /** Whether the default reminders of the calendar apply to the event. */
   useDefault?: boolean;
 }
-export const EventReminders = /*@__PURE__*/ S.suspend(() =>
+const EventReminders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overrides: S.optional(EventReminderList),
     useDefault: S.optional(S.Boolean),
@@ -777,7 +776,7 @@ export interface EventOrganizer {
   /** The organizer's name, if available. */
   displayName?: string;
 }
-export const EventOrganizer = /*@__PURE__*/ S.suspend(() =>
+const EventOrganizer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.optional(S.Boolean),
     email: S.optional(S.String),
@@ -794,7 +793,7 @@ export interface EventFocusTimeProperties {
   /** Whether to decline meeting invitations which overlap Focus Time events. Valid values are declineNone, meaning that no meeting invitations are declined; declineAllConflictingInvitations, meaning that all conflicting meeting invitations that conflict with the event are declined; and declineOnlyNewConflictingInvitations, meaning that only new conflicting meeting invitations which arrive while the Focus Time event is present are to be declined. */
   autoDeclineMode?: string;
 }
-export const EventFocusTimeProperties = /*@__PURE__*/ S.suspend(() =>
+const EventFocusTimeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     declineMessage: S.optional(S.String),
     chatStatus: S.optional(S.String),
@@ -806,7 +805,7 @@ export interface EventWorkingLocationPropertiesCustomLocation {
   /** An optional extra label for additional information. */
   label?: string;
 }
-export const EventWorkingLocationPropertiesCustomLocation = /*@__PURE__*/ S.suspend(() =>
+const EventWorkingLocationPropertiesCustomLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
   }),
@@ -826,7 +825,7 @@ export interface EventWorkingLocationPropertiesOfficeLocation {
   /** An optional floor identifier. */
   floorId?: string;
 }
-export const EventWorkingLocationPropertiesOfficeLocation = /*@__PURE__*/ S.suspend(() =>
+const EventWorkingLocationPropertiesOfficeLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deskId: S.optional(S.String),
     floorSectionId: S.optional(S.String),
@@ -848,7 +847,7 @@ export interface EventWorkingLocationProperties {
   /** If present, specifies that the user is working from an office. */
   officeLocation?: EventWorkingLocationPropertiesOfficeLocation;
 }
-export const EventWorkingLocationProperties = /*@__PURE__*/ S.suspend(() =>
+const EventWorkingLocationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLocation: S.optional(EventWorkingLocationPropertiesCustomLocation),
     homeOffice: S.optional(S.Unknown),
@@ -883,7 +882,7 @@ export interface EventAttendee {
   /** The attendee's name, if available. Optional. */
   displayName?: string;
 }
-export const EventAttendee = /*@__PURE__*/ S.suspend(() =>
+const EventAttendee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.Boolean),
     asyncOperation: S.optional(S.String),
@@ -900,7 +899,7 @@ export const EventAttendee = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventAttendee" }) as any as S.Schema<EventAttendee>;
 
 export type EventAttendeeList = Array<EventAttendee>;
-export const EventAttendeeList = /*@__PURE__*/ S.Array(
+const EventAttendeeList = /*@__PURE__*/ S.Array(
   EventAttendee,
 ) as any as S.Schema<EventAttendeeList>;
 
@@ -910,7 +909,7 @@ export interface EventOutOfOfficeProperties {
   /** Response message to set if an existing event or new invitation is automatically declined by Calendar. */
   declineMessage?: string;
 }
-export const EventOutOfOfficeProperties = /*@__PURE__*/ S.suspend(() =>
+const EventOutOfOfficeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoDeclineMode: S.optional(S.String),
     declineMessage: S.optional(S.String),
@@ -927,7 +926,7 @@ export interface EventBirthdayProperties {
   /** Resource name of the contact this birthday event is linked to. This can be used to fetch contact details from People API. Format: "people/c12345". Read-only. */
   contact?: string;
 }
-export const EventBirthdayProperties = /*@__PURE__*/ S.suspend(() =>
+const EventBirthdayProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     customTypeName: S.optional(S.String),
@@ -941,7 +940,7 @@ export interface EventExtendedProperties {
   /** Properties that are private to the copy of the event that appears on this calendar. */
   private?: StringMap;
 }
-export const EventExtendedProperties = /*@__PURE__*/ S.suspend(() =>
+const EventExtendedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shared: S.optional(StringMap),
     private: S.optional(StringMap),
@@ -958,7 +957,7 @@ export interface EventCreator {
   /** Whether the creator corresponds to the calendar on which this copy of the event appears. Read-only. The default is False. */
   self?: boolean;
 }
-export const EventCreator = /*@__PURE__*/ S.suspend(() =>
+const EventCreator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     id: S.optional(S.String),
@@ -973,7 +972,7 @@ export interface EventSource {
   /** URL of the source pointing to a resource. The URL scheme must be HTTP or HTTPS. */
   url?: string;
 }
-export const EventSource = /*@__PURE__*/ S.suspend(() =>
+const EventSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     url: S.optional(S.String),
@@ -1070,7 +1069,7 @@ export interface Event {
   /** Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the event. */
   source?: EventSource;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guestsCanModify: S.optional(S.Boolean),
     originalStartTime: S.optional(EventDateTime),
@@ -1123,7 +1122,7 @@ export interface GetSettingsRequest {
   /** The id of the user setting. */
   setting: string;
 }
-export const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setting: S.String.pipe(T.Label()),
   }).pipe(
@@ -1145,7 +1144,7 @@ export interface Setting {
   /** The id of the user setting. */
   id?: string;
 }
-export const Setting = /*@__PURE__*/ S.suspend(() =>
+const Setting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1166,7 +1165,7 @@ export interface ImportEventsRequest {
   /** Request body */
   body?: Event;
 }
-export const ImportEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportsAttachments: S.optional(S.Boolean.pipe(T.Query())),
     calendarId: S.String.pipe(T.Label()),
@@ -1190,7 +1189,7 @@ export interface InsertAclRequest {
   /** Request body */
   body?: AclRule;
 }
-export const InsertAclRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
     sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
@@ -1210,7 +1209,7 @@ export interface InsertCalendarListRequest {
   /** Request body */
   body?: CalendarListEntry;
 }
-export const InsertCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(CalendarListEntry.pipe(T.HttpBody())),
@@ -1229,7 +1228,7 @@ export interface InsertCalendarsRequest {
   /** Request body */
   body?: Calendar;
 }
-export const InsertCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Calendar.pipe(T.HttpBody())),
   }).pipe(
@@ -1242,7 +1241,7 @@ export const InsertCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertCalendarsRequest" }) as any as S.Schema<InsertCalendarsRequest>;
 
 export type InsertEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
-export const InsertEventsSendUpdatesEnum = S.String;
+const InsertEventsSendUpdatesEnum = S.String;
 
 export interface InsertEventsRequest {
   /** Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0. */
@@ -1262,7 +1261,7 @@ export interface InsertEventsRequest {
   /** Request body */
   body?: Event;
 }
-export const InsertEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conferenceDataVersion: S.optional(S.Number.pipe(T.Query())),
     sendUpdates: S.optional(InsertEventsSendUpdatesEnum.pipe(T.Query())),
@@ -1305,7 +1304,7 @@ export interface InstancesEventsRequest {
   /** Time zone used in the response. Optional. The default is the time zone of the calendar. */
   timeZone?: string;
 }
-export const InstancesEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const InstancesEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alwaysIncludeEmail: S.optional(S.Boolean.pipe(T.Query())),
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -1328,7 +1327,7 @@ export const InstancesEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstancesEventsRequest" }) as any as S.Schema<InstancesEventsRequest>;
 
 export type EventList = Array<Event>;
-export const EventList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList>;
+const EventList = /*@__PURE__*/ S.Array(Event) as any as S.Schema<EventList>;
 
 export interface Events {
   /** ETag of the collection. */
@@ -1354,7 +1353,7 @@ export interface Events {
   /** Description of the calendar. Read-only. */
   description?: string;
 }
-export const Events = /*@__PURE__*/ S.suspend(() =>
+const Events = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     timeZone: S.optional(S.String),
@@ -1382,7 +1381,7 @@ export interface ListAclRequest {
   /** Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. All entries deleted since the previous list request will always be in the result set and it is not allowed to set showDeleted to False. If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken. Learn more about incremental synchronization. Optional. The default is to return all entries. */
   syncToken?: string;
 }
-export const ListAclRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -1399,7 +1398,7 @@ export const ListAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAclRequest" }) as any as S.Schema<ListAclRequest>;
 
 export type AclRuleList = Array<AclRule>;
-export const AclRuleList = /*@__PURE__*/ S.Array(AclRule) as any as S.Schema<AclRuleList>;
+const AclRuleList = /*@__PURE__*/ S.Array(AclRule) as any as S.Schema<AclRuleList>;
 
 export interface Acl {
   /** List of rules on the access control list. */
@@ -1413,7 +1412,7 @@ export interface Acl {
   /** ETag of the collection. */
   etag?: string;
 }
-export const Acl = /*@__PURE__*/ S.suspend(() =>
+const Acl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: AclRuleList,
     kind: S.optional(S.String),
@@ -1429,7 +1428,7 @@ export type ListCalendarListMinAccessRoleEnum =
   | "reader"
   | "writer"
   | "writerWithoutPrivateAccess";
-export const ListCalendarListMinAccessRoleEnum = S.String;
+const ListCalendarListMinAccessRoleEnum = S.String;
 
 export interface ListCalendarListRequest {
   /** Whether to include deleted calendar list entries in the result. Optional. The default is False. */
@@ -1447,7 +1446,7 @@ export interface ListCalendarListRequest {
   /** The minimum access role for the user in the returned entries. Optional. The default is no restriction. */
   minAccessRole?: ListCalendarListMinAccessRoleEnum | (string & {});
 }
-export const ListCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1466,7 +1465,7 @@ export const ListCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCalendarListRequest" }) as any as S.Schema<ListCalendarListRequest>;
 
 export type CalendarListEntryList = Array<CalendarListEntry>;
-export const CalendarListEntryList = /*@__PURE__*/ S.Array(
+const CalendarListEntryList = /*@__PURE__*/ S.Array(
   CalendarListEntry,
 ) as any as S.Schema<CalendarListEntryList>;
 
@@ -1482,7 +1481,7 @@ export interface CalendarList {
   /** ETag of the collection. */
   etag?: string;
 }
-export const CalendarList = /*@__PURE__*/ S.suspend(() =>
+const CalendarList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     nextSyncToken: S.optional(S.String),
@@ -1499,15 +1498,15 @@ export type ListEventsEventTypesEnum =
   | "fromGmail"
   | "outOfOffice"
   | "workingLocation";
-export const ListEventsEventTypesEnum = S.String;
+const ListEventsEventTypesEnum = S.String;
 
 export type ListEventsEventTypesEnumList = Array<ListEventsEventTypesEnum | (string & {})>;
-export const ListEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
+const ListEventsEventTypesEnumList = /*@__PURE__*/ S.Array(
   ListEventsEventTypesEnum,
 ) as any as S.Schema<ListEventsEventTypesEnumList>;
 
 export type ListEventsOrderByEnum = "startTime" | "updated";
-export const ListEventsOrderByEnum = S.String;
+const ListEventsOrderByEnum = S.String;
 
 export interface ListEventsRequest {
   /** Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. All events deleted since the previous list request will always be in the result set and it is not allowed to set showDeleted to False. There are several query parameters that cannot be specified together with nextSyncToken to ensure consistency of the client state. These are: - iCalUID - orderBy - privateExtendedProperty - q - sharedExtendedProperty - timeMin - timeMax - updatedMin All other query parameters should be the same as for the initial synchronization to avoid undefined behavior. If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken. Learn more about incremental synchronization. Optional. The default is to return all entries. */
@@ -1549,7 +1548,7 @@ export interface ListEventsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
   calendarId: string;
 }
-export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syncToken: S.optional(S.String.pipe(T.Query())),
     eventTypes: S.optional(ListEventsEventTypesEnumList.pipe(T.Query())),
@@ -1587,7 +1586,7 @@ export interface ListSettingsRequest {
   /** Token specifying which result page to return. Optional. */
   pageToken?: string;
 }
-export const ListSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syncToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -1602,7 +1601,7 @@ export const ListSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSettingsRequest" }) as any as S.Schema<ListSettingsRequest>;
 
 export type SettingList = Array<Setting>;
-export const SettingList = /*@__PURE__*/ S.Array(Setting) as any as S.Schema<SettingList>;
+const SettingList = /*@__PURE__*/ S.Array(Setting) as any as S.Schema<SettingList>;
 
 export interface Settings {
   /** Type of the collection ("calendar#settings"). */
@@ -1616,7 +1615,7 @@ export interface Settings {
   /** Etag of the collection. */
   etag?: string;
 }
-export const Settings = /*@__PURE__*/ S.suspend(() =>
+const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -1627,7 +1626,7 @@ export const Settings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 
 export type MoveEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
-export const MoveEventsSendUpdatesEnum = S.String;
+const MoveEventsSendUpdatesEnum = S.String;
 
 export interface MoveEventsRequest {
   /** Event identifier. */
@@ -1641,7 +1640,7 @@ export interface MoveEventsRequest {
   /** Guests who should receive notifications about the change of the event's organizer. */
   sendUpdates?: MoveEventsSendUpdatesEnum | (string & {});
 }
-export const MoveEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String.pipe(T.Label()),
     sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
@@ -1667,7 +1666,7 @@ export interface PatchAclRequest {
   /** Request body */
   body?: AclRule;
 }
-export const PatchAclRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
     ruleId: S.String.pipe(T.Label()),
@@ -1690,7 +1689,7 @@ export interface PatchCalendarListRequest {
   /** Request body */
   body?: CalendarListEntry;
 }
-export const PatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
     colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
@@ -1710,7 +1709,7 @@ export interface PatchCalendarsRequest {
   /** Request body */
   body?: Calendar;
 }
-export const PatchCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
     body: S.optional(Calendar.pipe(T.HttpBody())),
@@ -1724,7 +1723,7 @@ export const PatchCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchCalendarsRequest" }) as any as S.Schema<PatchCalendarsRequest>;
 
 export type PatchEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
-export const PatchEventsSendUpdatesEnum = S.String;
+const PatchEventsSendUpdatesEnum = S.String;
 
 export interface PatchEventsRequest {
   /** Guests who should receive notifications about the event update (for example, title changes, etc.). */
@@ -1748,7 +1747,7 @@ export interface PatchEventsRequest {
   /** Request body */
   body?: Event;
 }
-export const PatchEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sendUpdates: S.optional(PatchEventsSendUpdatesEnum.pipe(T.Query())),
     calendarId: S.String.pipe(T.Label()),
@@ -1773,14 +1772,14 @@ export interface FreeBusyRequestItem {
   /** The identifier of a calendar or a group. */
   id?: string;
 }
-export const FreeBusyRequestItem = /*@__PURE__*/ S.suspend(() =>
+const FreeBusyRequestItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({ identifier: "FreeBusyRequestItem" }) as any as S.Schema<FreeBusyRequestItem>;
 
 export type FreeBusyRequestItemList = Array<FreeBusyRequestItem>;
-export const FreeBusyRequestItemList = /*@__PURE__*/ S.Array(
+const FreeBusyRequestItemList = /*@__PURE__*/ S.Array(
   FreeBusyRequestItem,
 ) as any as S.Schema<FreeBusyRequestItemList>;
 
@@ -1798,7 +1797,7 @@ export interface FreeBusyRequest {
   /** The end of the interval for the query formatted as per RFC3339. */
   timeMax?: string;
 }
-export const FreeBusyRequest = /*@__PURE__*/ S.suspend(() =>
+const FreeBusyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupExpansionMax: S.optional(S.Number),
     timeMin: S.optional(S.String),
@@ -1813,7 +1812,7 @@ export interface QueryFreebusyRequest {
   /** Request body */
   body?: FreeBusyRequest;
 }
-export const QueryFreebusyRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryFreebusyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(FreeBusyRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1827,7 +1826,7 @@ export interface TimePeriod {
   /** The (inclusive) start of the time period. */
   start?: string;
 }
-export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
+const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.optional(S.String),
     start: S.optional(S.String),
@@ -1835,7 +1834,7 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
 export type TimePeriodList = Array<TimePeriod>;
-export const TimePeriodList = /*@__PURE__*/ S.Array(TimePeriod) as any as S.Schema<TimePeriodList>;
+const TimePeriodList = /*@__PURE__*/ S.Array(TimePeriod) as any as S.Schema<TimePeriodList>;
 
 export interface Calendar_Error {
   /** Domain, or broad category, of the error. */
@@ -1843,7 +1842,7 @@ export interface Calendar_Error {
   /** Specific reason for the error. Some of the possible values are: - "groupTooBig" - The group of users requested is too large for a single query. - "tooManyCalendarsRequested" - The number of calendars requested is too large for a single query. - "notFound" - The requested resource was not found. - "internalError" - The API service has encountered an internal error. Additional error types may be added in the future, so clients should gracefully handle additional error statuses not included in this list. */
   reason?: string;
 }
-export const Calendar_Error = /*@__PURE__*/ S.suspend(() =>
+const Calendar_Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     reason: S.optional(S.String),
@@ -1851,7 +1850,7 @@ export const Calendar_Error = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Calendar_Error" }) as any as S.Schema<Calendar_Error>;
 
 export type Calendar_ErrorList = Array<Calendar_Error>;
-export const Calendar_ErrorList = /*@__PURE__*/ S.Array(
+const Calendar_ErrorList = /*@__PURE__*/ S.Array(
   Calendar_Error,
 ) as any as S.Schema<Calendar_ErrorList>;
 
@@ -1861,7 +1860,7 @@ export interface FreeBusyCalendar {
   /** Optional error(s) (if computation for the calendar failed). */
   errors?: Calendar_ErrorList;
 }
-export const FreeBusyCalendar = /*@__PURE__*/ S.suspend(() =>
+const FreeBusyCalendar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     busy: S.optional(TimePeriodList),
     errors: S.optional(Calendar_ErrorList),
@@ -1869,7 +1868,7 @@ export const FreeBusyCalendar = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FreeBusyCalendar" }) as any as S.Schema<FreeBusyCalendar>;
 
 export type FreeBusyCalendarMap = { [key: string]: FreeBusyCalendar | undefined };
-export const FreeBusyCalendarMap = /*@__PURE__*/ S.Record(
+const FreeBusyCalendarMap = /*@__PURE__*/ S.Record(
   S.String,
   FreeBusyCalendar,
 ) as any as S.Schema<FreeBusyCalendarMap>;
@@ -1880,7 +1879,7 @@ export interface FreeBusyGroup {
   /** Optional error(s) (if computation for the group failed). */
   errors?: Calendar_ErrorList;
 }
-export const FreeBusyGroup = /*@__PURE__*/ S.suspend(() =>
+const FreeBusyGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendars: S.optional(StringList),
     errors: S.optional(Calendar_ErrorList),
@@ -1888,7 +1887,7 @@ export const FreeBusyGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FreeBusyGroup" }) as any as S.Schema<FreeBusyGroup>;
 
 export type FreeBusyGroupMap = { [key: string]: FreeBusyGroup | undefined };
-export const FreeBusyGroupMap = /*@__PURE__*/ S.Record(
+const FreeBusyGroupMap = /*@__PURE__*/ S.Record(
   S.String,
   FreeBusyGroup,
 ) as any as S.Schema<FreeBusyGroupMap>;
@@ -1905,7 +1904,7 @@ export interface FreeBusyResponse {
   /** Type of the resource ("calendar#freeBusy"). */
   kind?: string;
 }
-export const FreeBusyResponse = /*@__PURE__*/ S.suspend(() =>
+const FreeBusyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendars: S.optional(FreeBusyCalendarMap),
     timeMin: S.optional(S.String),
@@ -1916,7 +1915,7 @@ export const FreeBusyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FreeBusyResponse" }) as any as S.Schema<FreeBusyResponse>;
 
 export type QuickAddEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
-export const QuickAddEventsSendUpdatesEnum = S.String;
+const QuickAddEventsSendUpdatesEnum = S.String;
 
 export interface QuickAddEventsRequest {
   /** Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. */
@@ -1928,7 +1927,7 @@ export interface QuickAddEventsRequest {
   /** The text describing the event to be created. */
   text: string;
 }
-export const QuickAddEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const QuickAddEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
     sendUpdates: S.optional(QuickAddEventsSendUpdatesEnum.pipe(T.Query())),
@@ -1965,7 +1964,7 @@ export interface Channel {
   /** Identifies this as a notification channel used to watch for changes to a resource, which is "api#channel". */
   kind?: string;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     id: S.optional(S.String),
@@ -1984,7 +1983,7 @@ export interface StopChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Channel.pipe(T.HttpBody())),
   }).pipe(
@@ -1997,7 +1996,7 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = ClearCalendarsResponse as any as S.Schema<StopChannelsResponse>;
+const StopChannelsResponse = ClearCalendarsResponse as any as S.Schema<StopChannelsResponse>;
 
 export interface TransferOwnershipCalendarsRequest {
   /** The email address of a user who will become the data owner of the calendar. */
@@ -2007,7 +2006,7 @@ export interface TransferOwnershipCalendarsRequest {
   /** Calendar identifier. To retrieve calendar IDs, call the calendarList.list method. */
   calendarId: string;
 }
-export const TransferOwnershipCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferOwnershipCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newDataOwner: S.String.pipe(T.Query()),
     useAdminAccess: S.Boolean.pipe(T.Query()),
@@ -2024,9 +2023,7 @@ export const TransferOwnershipCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferOwnershipCalendarsRequest>;
 
 export interface TransferOwnershipCalendarsResponse {}
-export const TransferOwnershipCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const TransferOwnershipCalendarsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TransferOwnershipCalendarsResponse",
 }) as any as S.Schema<TransferOwnershipCalendarsResponse>;
 
@@ -2040,7 +2037,7 @@ export interface UpdateAclRequest {
   /** Request body */
   body?: AclRule;
 }
-export const UpdateAclRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String.pipe(T.Label()),
     calendarId: S.String.pipe(T.Label()),
@@ -2063,7 +2060,7 @@ export interface UpdateCalendarListRequest {
   /** Request body */
   body?: CalendarListEntry;
 }
-export const UpdateCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colorRgbFormat: S.optional(S.Boolean.pipe(T.Query())),
     calendarId: S.String.pipe(T.Label()),
@@ -2085,7 +2082,7 @@ export interface UpdateCalendarsRequest {
   /** Request body */
   body?: Calendar;
 }
-export const UpdateCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
     body: S.optional(Calendar.pipe(T.HttpBody())),
@@ -2099,7 +2096,7 @@ export const UpdateCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCalendarsRequest" }) as any as S.Schema<UpdateCalendarsRequest>;
 
 export type UpdateEventsSendUpdatesEnum = "all" | "externalOnly" | "none";
-export const UpdateEventsSendUpdatesEnum = S.String;
+const UpdateEventsSendUpdatesEnum = S.String;
 
 export interface UpdateEventsRequest {
   /** Deprecated. Please use sendUpdates instead. Whether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false. */
@@ -2123,7 +2120,7 @@ export interface UpdateEventsRequest {
   /** Request body */
   body?: Event;
 }
-export const UpdateEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sendNotifications: S.optional(S.Boolean.pipe(T.Query())),
     eventLabelVersion: S.optional(S.Number.pipe(T.Query())),
@@ -2158,7 +2155,7 @@ export interface WatchAclRequest {
   /** Request body */
   body?: Channel;
 }
-export const WatchAclRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calendarId: S.String.pipe(T.Label()),
     syncToken: S.optional(S.String.pipe(T.Query())),
@@ -2181,7 +2178,7 @@ export type WatchCalendarListMinAccessRoleEnum =
   | "reader"
   | "writer"
   | "writerWithoutPrivateAccess";
-export const WatchCalendarListMinAccessRoleEnum = S.String;
+const WatchCalendarListMinAccessRoleEnum = S.String;
 
 export interface WatchCalendarListRequest {
   /** Token specifying which result page to return. Optional. */
@@ -2201,7 +2198,7 @@ export interface WatchCalendarListRequest {
   /** Request body */
   body?: Channel;
 }
-export const WatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchCalendarListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     showOwnOrganizationOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2227,14 +2224,12 @@ export type WatchEventsEventTypesEnum =
   | "fromGmail"
   | "outOfOffice"
   | "workingLocation";
-export const WatchEventsEventTypesEnum = S.String;
-
 export type WatchEventsEventTypesEnumList = Array<WatchEventsEventTypesEnum | (string & {})>;
-export const WatchEventsEventTypesEnumList =
+const WatchEventsEventTypesEnumList =
   ListEventsEventTypesEnumList as any as S.Schema<WatchEventsEventTypesEnumList>;
 
 export type WatchEventsOrderByEnum = "startTime" | "updated";
-export const WatchEventsOrderByEnum = S.String;
+const WatchEventsOrderByEnum = S.String;
 
 export interface WatchEventsRequest {
   /** Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. All events deleted since the previous list request will always be in the result set and it is not allowed to set showDeleted to False. There are several query parameters that cannot be specified together with nextSyncToken to ensure consistency of the client state. These are: - iCalUID - orderBy - privateExtendedProperty - q - sharedExtendedProperty - timeMin - timeMax - updatedMin All other query parameters should be the same as for the initial synchronization to avoid undefined behavior. If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken. Learn more about incremental synchronization. Optional. The default is to return all entries. */
@@ -2278,7 +2273,7 @@ export interface WatchEventsRequest {
   /** Request body */
   body?: Channel;
 }
-export const WatchEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syncToken: S.optional(S.String.pipe(T.Query())),
     singleEvents: S.optional(S.Boolean.pipe(T.Query())),
@@ -2319,7 +2314,7 @@ export interface WatchSettingsRequest {
   /** Request body */
   body?: Channel;
 }
-export const WatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),

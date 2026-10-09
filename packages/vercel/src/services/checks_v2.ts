@@ -43,7 +43,7 @@ export interface CreateDeploymentCheckRunRequest {
   slug?: string;
   checkId: string;
 }
-export const CreateDeploymentCheckRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentCheckRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -60,8 +60,6 @@ export type CreateDeploymentCheckRunResponseBodyCase0Blocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const CreateDeploymentCheckRunResponseBodyCase0Blocks = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase0Conclusion =
   | "canceled"
   | "failed"
@@ -69,50 +67,26 @@ export type CreateDeploymentCheckRunResponseBodyCase0Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const CreateDeploymentCheckRunResponseBodyCase0Conclusion = S.String;
-
 export interface CreateDeploymentCheckRunResponseBodyCase0ExpectationRef {
   invocationAttempt: number;
   invocationId: string;
   jobDefinitionId: string;
   jobRunAttempt: number;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0ExpectationRef = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationAttempt: S.Number,
-    invocationId: S.String,
-    jobDefinitionId: S.String,
-    jobRunAttempt: S.Number,
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase0ExpectationRef",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0ExpectationRef>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateDeploymentCheckRunResponseBodyCase0OutputMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0OutputMap>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0Requires =
   | "build-ready"
   | "deployment-url"
   | "none";
-export const CreateDeploymentCheckRunResponseBodyCase0Requires = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase0Status = "completed" | "queued" | "running";
-export const CreateDeploymentCheckRunResponseBodyCase0Status = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase0TargetsList = Array<string>;
-export const CreateDeploymentCheckRunResponseBodyCase0TargetsList = /*@__PURE__*/ S.Array(
+const CreateDeploymentCheckRunResponseBodyCase0TargetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0TargetsList>;
 
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase0Kind = "integration";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase0Kind = S.String;
-
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -120,126 +94,42 @@ export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase0 {
   kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalResourceId: S.optional(S.String),
-    integrationConfigurationId: S.String,
-    integrationId: S.String,
-    kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase0Kind,
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase0SourceCase0",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase0>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase1Kind = "webhook";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase1Kind = S.String;
-
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase1 {
   kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase1Kind,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase0SourceCase1",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase1>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase2Kind = "git-provider";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase2Kind = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase2Provider =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase2Provider = S.String;
-
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase2 {
   externalCheckName: string;
   kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase2Kind;
   provider: CreateDeploymentCheckRunResponseBodyCase0SourceCase2Provider;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    externalCheckName: S.String,
-    kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase2Kind,
-    provider: CreateDeploymentCheckRunResponseBodyCase0SourceCase2Provider,
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase0SourceCase2",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase2>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase3Origin = "api" | "platform";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase3Origin = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = "vercel-native-check";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = S.String;
-
 /** Native Vercel checks -- check definition and check run `source`. */
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase3 {
   origin?: CreateDeploymentCheckRunResponseBodyCase0SourceCase3Origin;
   subKind?: CreateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(CreateDeploymentCheckRunResponseBodyCase0SourceCase3Origin),
-    subKind: S.optional(CreateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind),
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase0SourceCase3",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase3>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase4Origin = "api";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4Origin = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind = "invocation";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind = S.String;
-
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 {
   kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0",
-  }) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = "job";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = S.String;
-
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 {
   job: string;
   kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      job: S.String,
-      kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1",
-  }) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = "Turborepo";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind = "turborepo";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind = S.String;
-
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2 {
   failIfNoMatch?: boolean;
   filters: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList;
@@ -247,54 +137,23 @@ export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCa
   kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind;
   task: string;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      failIfNoMatch: S.optional(S.Boolean),
-      filters: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList,
-      job: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job,
-      kind: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind,
-      task: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2",
-  }) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase4Selection =
   | CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0
   | CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1
   | CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2;
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4Selection =
-  S.Unknown as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase4Selection>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0SourceCase4SubKind = "vercel-ci-check";
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4SubKind = S.String;
-
 /** Project-defined CI requirement; its selection is frozen on each check run. */
 export interface CreateDeploymentCheckRunResponseBodyCase0SourceCase4 {
   origin: CreateDeploymentCheckRunResponseBodyCase0SourceCase4Origin;
   selection: CreateDeploymentCheckRunResponseBodyCase0SourceCase4Selection;
   subKind: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SubKind;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0SourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: CreateDeploymentCheckRunResponseBodyCase0SourceCase4Origin,
-    selection: CreateDeploymentCheckRunResponseBodyCase0SourceCase4Selection,
-    subKind: CreateDeploymentCheckRunResponseBodyCase0SourceCase4SubKind,
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase0SourceCase4",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0SourceCase4>;
-
 export type CreateDeploymentCheckRunResponseBodyCase0Source =
   | CreateDeploymentCheckRunResponseBodyCase0SourceCase0
   | CreateDeploymentCheckRunResponseBodyCase0SourceCase1
   | CreateDeploymentCheckRunResponseBodyCase0SourceCase2
   | CreateDeploymentCheckRunResponseBodyCase0SourceCase3
   | CreateDeploymentCheckRunResponseBodyCase0SourceCase4;
-export const CreateDeploymentCheckRunResponseBodyCase0Source =
-  S.Unknown as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0Source>;
-
 /** Check run backed by a project-level `check` definition. */
 export interface CreateDeploymentCheckRunResponseBodyCase0 {
   blocks?: CreateDeploymentCheckRunResponseBodyCase0Blocks;
@@ -321,43 +180,12 @@ export interface CreateDeploymentCheckRunResponseBodyCase0 {
   checkId: string;
   source: CreateDeploymentCheckRunResponseBodyCase0Source;
 }
-export const CreateDeploymentCheckRunResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(CreateDeploymentCheckRunResponseBodyCase0Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(CreateDeploymentCheckRunResponseBodyCase0Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(CreateDeploymentCheckRunResponseBodyCase0OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(CreateDeploymentCheckRunResponseBodyCase0Requires),
-    status: CreateDeploymentCheckRunResponseBodyCase0Status,
-    targets: S.optional(CreateDeploymentCheckRunResponseBodyCase0TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    checkId: S.String,
-    source: CreateDeploymentCheckRunResponseBodyCase0Source,
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase0",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase0>;
-
 export type CreateDeploymentCheckRunResponseBodyCase1Blocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const CreateDeploymentCheckRunResponseBodyCase1Blocks = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase1Conclusion =
   | "canceled"
   | "failed"
@@ -365,38 +193,19 @@ export type CreateDeploymentCheckRunResponseBodyCase1Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const CreateDeploymentCheckRunResponseBodyCase1Conclusion = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase1ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const CreateDeploymentCheckRunResponseBodyCase1ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type CreateDeploymentCheckRunResponseBodyCase1OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateDeploymentCheckRunResponseBodyCase1OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1OutputMap>;
-
 export type CreateDeploymentCheckRunResponseBodyCase1Requires =
   | "build-ready"
   | "deployment-url"
   | "none";
-export const CreateDeploymentCheckRunResponseBodyCase1Requires = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase1Status = "completed" | "queued" | "running";
-export const CreateDeploymentCheckRunResponseBodyCase1Status = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase1TargetsList = Array<string>;
-export const CreateDeploymentCheckRunResponseBodyCase1TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1TargetsList>;
-
 export type CreateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = "config";
-export const CreateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = "vercel-ci";
-export const CreateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = S.String;
-
 /** Config-driven CI task -- check run `source` only (no parent check). */
 export interface CreateDeploymentCheckRunResponseBodyCase1SourceCase0 {
   invocationAttempt?: number;
@@ -405,44 +214,16 @@ export interface CreateDeploymentCheckRunResponseBodyCase1SourceCase0 {
   origin: CreateDeploymentCheckRunResponseBodyCase1SourceCase0Origin;
   subKind: CreateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind;
 }
-export const CreateDeploymentCheckRunResponseBodyCase1SourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationAttempt: S.optional(S.Number),
-    invocationId: S.String,
-    jobDefinitionId: S.String,
-    origin: CreateDeploymentCheckRunResponseBodyCase1SourceCase0Origin,
-    subKind: CreateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind,
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase1SourceCase0",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1SourceCase0>;
-
 export type CreateDeploymentCheckRunResponseBodyCase1SourceCase1Origin = "platform";
-export const CreateDeploymentCheckRunResponseBodyCase1SourceCase1Origin = S.String;
-
 export type CreateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = "vercel-ci-sentinel";
-export const CreateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = S.String;
-
 /** CI sentinel -- check run `source` only (no parent check). */
 export interface CreateDeploymentCheckRunResponseBodyCase1SourceCase1 {
   origin: CreateDeploymentCheckRunResponseBodyCase1SourceCase1Origin;
   subKind: CreateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind;
 }
-export const CreateDeploymentCheckRunResponseBodyCase1SourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: CreateDeploymentCheckRunResponseBodyCase1SourceCase1Origin,
-    subKind: CreateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind,
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase1SourceCase1",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1SourceCase1>;
-
 export type CreateDeploymentCheckRunResponseBodyCase1Source =
   | CreateDeploymentCheckRunResponseBodyCase1SourceCase0
   | CreateDeploymentCheckRunResponseBodyCase1SourceCase1;
-export const CreateDeploymentCheckRunResponseBodyCase1Source =
-  S.Unknown as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1Source>;
-
 /** Vercel CI check run without a parent `check` (no `checkId` field). */
 export interface CreateDeploymentCheckRunResponseBodyCase1 {
   blocks?: CreateDeploymentCheckRunResponseBodyCase1Blocks;
@@ -468,52 +249,24 @@ export interface CreateDeploymentCheckRunResponseBodyCase1 {
   updatedAt: number;
   source: CreateDeploymentCheckRunResponseBodyCase1Source;
 }
-export const CreateDeploymentCheckRunResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(CreateDeploymentCheckRunResponseBodyCase1Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(CreateDeploymentCheckRunResponseBodyCase1Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(CreateDeploymentCheckRunResponseBodyCase1OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(CreateDeploymentCheckRunResponseBodyCase1Requires),
-    status: CreateDeploymentCheckRunResponseBodyCase1Status,
-    targets: S.optional(CreateDeploymentCheckRunResponseBodyCase1TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    source: CreateDeploymentCheckRunResponseBodyCase1Source,
-  }),
-).annotate({
-  identifier: "CreateDeploymentCheckRunResponseBodyCase1",
-}) as any as S.Schema<CreateDeploymentCheckRunResponseBodyCase1>;
-
 export type CreateDeploymentCheckRunResponseBody =
   | CreateDeploymentCheckRunResponseBodyCase0
   | CreateDeploymentCheckRunResponseBodyCase1;
-export const CreateDeploymentCheckRunResponseBody =
+const CreateDeploymentCheckRunResponseBody =
   S.Unknown as any as S.Schema<CreateDeploymentCheckRunResponseBody>;
 
 export type CreateDeploymentCheckRunResponse = CreateDeploymentCheckRunResponseBody;
-export const CreateDeploymentCheckRunResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentCheckRunResponse = /*@__PURE__*/ S.suspend(() =>
   CreateDeploymentCheckRunResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateDeploymentCheckRunResponse",
 }) as any as S.Schema<CreateDeploymentCheckRunResponse>;
 
 export type CreateProjectCheckRequestRequires = "build-ready" | "deployment-url" | "none";
-export const CreateProjectCheckRequestRequires = S.String;
+const CreateProjectCheckRequestRequires = S.String;
 
 export type CreateProjectCheckRequestTargetsList = Array<string>;
-export const CreateProjectCheckRequestTargetsList =
+const CreateProjectCheckRequestTargetsList =
   CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<CreateProjectCheckRequestTargetsList>;
 
 export type CreateProjectCheckRequestBlocks =
@@ -522,57 +275,27 @@ export type CreateProjectCheckRequestBlocks =
   | "deployment-alias"
   | "deployment-promotion"
   | "none";
-export const CreateProjectCheckRequestBlocks = S.String;
+const CreateProjectCheckRequestBlocks = S.String;
 
 export interface CreateProjectCheckRequestSourceCase0 {
   kind?: string;
   externalResourceId?: string;
 }
-export const CreateProjectCheckRequestSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.optional(S.String),
-    externalResourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateProjectCheckRequestSourceCase0",
-}) as any as S.Schema<CreateProjectCheckRequestSourceCase0>;
-
 export interface CreateProjectCheckRequestSourceCase1 {
   kind: string;
   webhookId?: string;
 }
-export const CreateProjectCheckRequestSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.String,
-    webhookId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateProjectCheckRequestSourceCase1",
-}) as any as S.Schema<CreateProjectCheckRequestSourceCase1>;
-
 export type CreateProjectCheckRequestSourceCase2Provider = "github";
-export const CreateProjectCheckRequestSourceCase2Provider = S.String;
-
 export interface CreateProjectCheckRequestSourceCase2 {
   kind: string;
   externalCheckName: string;
   provider: CreateProjectCheckRequestSourceCase2Provider;
 }
-export const CreateProjectCheckRequestSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.String,
-    externalCheckName: S.String,
-    provider: CreateProjectCheckRequestSourceCase2Provider,
-  }),
-).annotate({
-  identifier: "CreateProjectCheckRequestSourceCase2",
-}) as any as S.Schema<CreateProjectCheckRequestSourceCase2>;
-
 export type CreateProjectCheckRequestSource =
   | CreateProjectCheckRequestSourceCase0
   | CreateProjectCheckRequestSourceCase1
   | CreateProjectCheckRequestSourceCase2;
-export const CreateProjectCheckRequestSource =
+const CreateProjectCheckRequestSource =
   S.Unknown as any as S.Schema<CreateProjectCheckRequestSource>;
 
 export interface CreateProjectCheckRequest {
@@ -589,7 +312,7 @@ export interface CreateProjectCheckRequest {
   source?: CreateProjectCheckRequestSource;
   timeout?: number;
 }
-export const CreateProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -612,14 +335,12 @@ export type CreateProjectCheckResponseBlocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const CreateProjectCheckResponseBlocks = S.String;
+const CreateProjectCheckResponseBlocks = S.String;
 
 export type CreateProjectCheckResponseRequires = "build-ready" | "deployment-url" | "none";
-export const CreateProjectCheckResponseRequires = S.String;
+const CreateProjectCheckResponseRequires = S.String;
 
 export type CreateProjectCheckResponseSourceCase0Kind = "integration";
-export const CreateProjectCheckResponseSourceCase0Kind = S.String;
-
 export interface CreateProjectCheckResponseSourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -627,38 +348,23 @@ export interface CreateProjectCheckResponseSourceCase0 {
   kind: CreateProjectCheckResponseSourceCase0Kind;
   resourceId?: string;
 }
-export const CreateProjectCheckResponseSourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<CreateProjectCheckResponseSourceCase0>;
-
 export type CreateProjectCheckResponseSourceCase1Kind = "webhook";
-export const CreateProjectCheckResponseSourceCase1Kind = S.String;
-
 export interface CreateProjectCheckResponseSourceCase1 {
   kind: CreateProjectCheckResponseSourceCase1Kind;
   webhookId?: string;
 }
-export const CreateProjectCheckResponseSourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<CreateProjectCheckResponseSourceCase1>;
-
 export type CreateProjectCheckResponseSourceCase2Kind = "git-provider";
-export const CreateProjectCheckResponseSourceCase2Kind = S.String;
-
 export type CreateProjectCheckResponseSourceCase2Provider = "bitbucket" | "github" | "gitlab";
-export const CreateProjectCheckResponseSourceCase2Provider = S.String;
-
 export interface CreateProjectCheckResponseSourceCase2 {
   externalCheckName: string;
   kind: CreateProjectCheckResponseSourceCase2Kind;
   provider: CreateProjectCheckResponseSourceCase2Provider;
 }
-export const CreateProjectCheckResponseSourceCase2 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<CreateProjectCheckResponseSourceCase2>;
-
 export type CreateProjectCheckResponseSource =
   | CreateProjectCheckResponseSourceCase0
   | CreateProjectCheckResponseSourceCase1
   | CreateProjectCheckResponseSourceCase2;
-export const CreateProjectCheckResponseSource =
+const CreateProjectCheckResponseSource =
   S.Unknown as any as S.Schema<CreateProjectCheckResponseSource>;
 
 export type CreateProjectCheckResponseSourceKind =
@@ -669,10 +375,10 @@ export type CreateProjectCheckResponseSourceKind =
   | "integration"
   | "webhook"
   | "git-provider";
-export const CreateProjectCheckResponseSourceKind = S.String;
+const CreateProjectCheckResponseSourceKind = S.String;
 
 export type CreateProjectCheckResponseTargetsList = Array<string>;
-export const CreateProjectCheckResponseTargetsList =
+const CreateProjectCheckResponseTargetsList =
   CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<CreateProjectCheckResponseTargetsList>;
 
 export interface CreateProjectCheckResponse {
@@ -692,7 +398,7 @@ export interface CreateProjectCheckResponse {
   timeout: number;
   updatedAt: number;
 }
-export const CreateProjectCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocks: CreateProjectCheckResponseBlocks,
     createdAt: S.Number,
@@ -722,7 +428,7 @@ export interface DeleteProjectCheckRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Label()),
     checkId: S.String.pipe(T.Label()),
@@ -738,7 +444,7 @@ export const DeleteProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteProjectCheckResponse {
   success: boolean;
 }
-export const DeleteProjectCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),
@@ -755,7 +461,7 @@ export interface GetDeploymentCheckRunRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetDeploymentCheckRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentCheckRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String.pipe(T.Label()),
     checkRunId: S.String.pipe(T.Label()),
@@ -778,8 +484,6 @@ export type GetDeploymentCheckRunResponseBodyCase0Blocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const GetDeploymentCheckRunResponseBodyCase0Blocks = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase0Conclusion =
   | "canceled"
   | "failed"
@@ -787,35 +491,18 @@ export type GetDeploymentCheckRunResponseBodyCase0Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const GetDeploymentCheckRunResponseBodyCase0Conclusion = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase0ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const GetDeploymentCheckRunResponseBodyCase0ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type GetDeploymentCheckRunResponseBodyCase0OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const GetDeploymentCheckRunResponseBodyCase0OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0OutputMap>;
-
 export type GetDeploymentCheckRunResponseBodyCase0Requires =
   | "build-ready"
   | "deployment-url"
   | "none";
-export const GetDeploymentCheckRunResponseBodyCase0Requires = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase0Status = "completed" | "queued" | "running";
-export const GetDeploymentCheckRunResponseBodyCase0Status = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase0TargetsList = Array<string>;
-export const GetDeploymentCheckRunResponseBodyCase0TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0TargetsList>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase0Kind = "integration";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase0Kind = S.String;
-
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -823,83 +510,42 @@ export interface GetDeploymentCheckRunResponseBodyCase0SourceCase0 {
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase0>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase1Kind = "webhook";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase1Kind = S.String;
-
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase1 {
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase1>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase2Kind = "git-provider";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase2Kind = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase2Provider =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase2Provider = S.String;
-
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase2 {
   externalCheckName: string;
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase2Kind;
   provider: GetDeploymentCheckRunResponseBodyCase0SourceCase2Provider;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase2 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase2>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin = "api" | "platform";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = "vercel-native-check";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = S.String;
-
 /** Native Vercel checks -- check definition and check run `source`. */
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase3 {
   origin?: GetDeploymentCheckRunResponseBodyCase0SourceCase3Origin;
   subKind?: GetDeploymentCheckRunResponseBodyCase0SourceCase3SubKind;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase3 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase3 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase3>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4Origin = "api";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4Origin = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind = "invocation";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind = S.String;
-
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 {
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = "job";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = S.String;
-
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 {
   job: string;
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = "Turborepo";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind = "turborepo";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind = S.String;
-
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2 {
   failIfNoMatch?: boolean;
   filters: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList;
@@ -907,54 +553,23 @@ export interface GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2
   kind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind;
   task: string;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      failIfNoMatch: S.optional(S.Boolean),
-      filters: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList,
-      job: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job,
-      kind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind,
-      task: S.String,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2",
-  }) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4Selection =
   | GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0
   | GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1
   | GetDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2;
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4Selection =
-  S.Unknown as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4Selection>;
-
 export type GetDeploymentCheckRunResponseBodyCase0SourceCase4SubKind = "vercel-ci-check";
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4SubKind = S.String;
-
 /** Project-defined CI requirement; its selection is frozen on each check run. */
 export interface GetDeploymentCheckRunResponseBodyCase0SourceCase4 {
   origin: GetDeploymentCheckRunResponseBodyCase0SourceCase4Origin;
   selection: GetDeploymentCheckRunResponseBodyCase0SourceCase4Selection;
   subKind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SubKind;
 }
-export const GetDeploymentCheckRunResponseBodyCase0SourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: GetDeploymentCheckRunResponseBodyCase0SourceCase4Origin,
-    selection: GetDeploymentCheckRunResponseBodyCase0SourceCase4Selection,
-    subKind: GetDeploymentCheckRunResponseBodyCase0SourceCase4SubKind,
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase0SourceCase4",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0SourceCase4>;
-
 export type GetDeploymentCheckRunResponseBodyCase0Source =
   | GetDeploymentCheckRunResponseBodyCase0SourceCase0
   | GetDeploymentCheckRunResponseBodyCase0SourceCase1
   | GetDeploymentCheckRunResponseBodyCase0SourceCase2
   | GetDeploymentCheckRunResponseBodyCase0SourceCase3
   | GetDeploymentCheckRunResponseBodyCase0SourceCase4;
-export const GetDeploymentCheckRunResponseBodyCase0Source =
-  S.Unknown as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0Source>;
-
 /** Check run backed by a project-level `check` definition. */
 export interface GetDeploymentCheckRunResponseBodyCase0 {
   blocks?: GetDeploymentCheckRunResponseBodyCase0Blocks;
@@ -981,43 +596,12 @@ export interface GetDeploymentCheckRunResponseBodyCase0 {
   checkId: string;
   source: GetDeploymentCheckRunResponseBodyCase0Source;
 }
-export const GetDeploymentCheckRunResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(GetDeploymentCheckRunResponseBodyCase0Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(GetDeploymentCheckRunResponseBodyCase0Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(GetDeploymentCheckRunResponseBodyCase0OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(GetDeploymentCheckRunResponseBodyCase0Requires),
-    status: GetDeploymentCheckRunResponseBodyCase0Status,
-    targets: S.optional(GetDeploymentCheckRunResponseBodyCase0TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    checkId: S.String,
-    source: GetDeploymentCheckRunResponseBodyCase0Source,
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase0",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase0>;
-
 export type GetDeploymentCheckRunResponseBodyCase1Blocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const GetDeploymentCheckRunResponseBodyCase1Blocks = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase1Conclusion =
   | "canceled"
   | "failed"
@@ -1025,38 +609,19 @@ export type GetDeploymentCheckRunResponseBodyCase1Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const GetDeploymentCheckRunResponseBodyCase1Conclusion = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase1ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const GetDeploymentCheckRunResponseBodyCase1ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type GetDeploymentCheckRunResponseBodyCase1OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const GetDeploymentCheckRunResponseBodyCase1OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1OutputMap>;
-
 export type GetDeploymentCheckRunResponseBodyCase1Requires =
   | "build-ready"
   | "deployment-url"
   | "none";
-export const GetDeploymentCheckRunResponseBodyCase1Requires = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase1Status = "completed" | "queued" | "running";
-export const GetDeploymentCheckRunResponseBodyCase1Status = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase1TargetsList = Array<string>;
-export const GetDeploymentCheckRunResponseBodyCase1TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1TargetsList>;
-
 export type GetDeploymentCheckRunResponseBodyCase1SourceCase0Origin = "config";
-export const GetDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = "vercel-ci";
-export const GetDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = S.String;
-
 /** Config-driven CI task -- check run `source` only (no parent check). */
 export interface GetDeploymentCheckRunResponseBodyCase1SourceCase0 {
   invocationAttempt?: number;
@@ -1065,29 +630,16 @@ export interface GetDeploymentCheckRunResponseBodyCase1SourceCase0 {
   origin: GetDeploymentCheckRunResponseBodyCase1SourceCase0Origin;
   subKind: GetDeploymentCheckRunResponseBodyCase1SourceCase0SubKind;
 }
-export const GetDeploymentCheckRunResponseBodyCase1SourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase1SourceCase0 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1SourceCase0>;
-
 export type GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin = "platform";
-export const GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin = S.String;
-
 export type GetDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = "vercel-ci-sentinel";
-export const GetDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = S.String;
-
 /** CI sentinel -- check run `source` only (no parent check). */
 export interface GetDeploymentCheckRunResponseBodyCase1SourceCase1 {
   origin: GetDeploymentCheckRunResponseBodyCase1SourceCase1Origin;
   subKind: GetDeploymentCheckRunResponseBodyCase1SourceCase1SubKind;
 }
-export const GetDeploymentCheckRunResponseBodyCase1SourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase1SourceCase1 as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1SourceCase1>;
-
 export type GetDeploymentCheckRunResponseBodyCase1Source =
   | GetDeploymentCheckRunResponseBodyCase1SourceCase0
   | GetDeploymentCheckRunResponseBodyCase1SourceCase1;
-export const GetDeploymentCheckRunResponseBodyCase1Source =
-  S.Unknown as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1Source>;
-
 /** Vercel CI check run without a parent `check` (no `checkId` field). */
 export interface GetDeploymentCheckRunResponseBodyCase1 {
   blocks?: GetDeploymentCheckRunResponseBodyCase1Blocks;
@@ -1113,42 +665,14 @@ export interface GetDeploymentCheckRunResponseBodyCase1 {
   updatedAt: number;
   source: GetDeploymentCheckRunResponseBodyCase1Source;
 }
-export const GetDeploymentCheckRunResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(GetDeploymentCheckRunResponseBodyCase1Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(GetDeploymentCheckRunResponseBodyCase1Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(GetDeploymentCheckRunResponseBodyCase1OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(GetDeploymentCheckRunResponseBodyCase1Requires),
-    status: GetDeploymentCheckRunResponseBodyCase1Status,
-    targets: S.optional(GetDeploymentCheckRunResponseBodyCase1TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    source: GetDeploymentCheckRunResponseBodyCase1Source,
-  }),
-).annotate({
-  identifier: "GetDeploymentCheckRunResponseBodyCase1",
-}) as any as S.Schema<GetDeploymentCheckRunResponseBodyCase1>;
-
 export type GetDeploymentCheckRunResponseBody =
   | GetDeploymentCheckRunResponseBodyCase0
   | GetDeploymentCheckRunResponseBodyCase1;
-export const GetDeploymentCheckRunResponseBody =
+const GetDeploymentCheckRunResponseBody =
   S.Unknown as any as S.Schema<GetDeploymentCheckRunResponseBody>;
 
 export type GetDeploymentCheckRunResponse = GetDeploymentCheckRunResponseBody;
-export const GetDeploymentCheckRunResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentCheckRunResponse = /*@__PURE__*/ S.suspend(() =>
   GetDeploymentCheckRunResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDeploymentCheckRunResponse",
@@ -1163,7 +687,7 @@ export interface GetProjectCheckRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Label()),
     checkId: S.String.pipe(T.Label()),
@@ -1180,14 +704,12 @@ export type GetProjectCheckResponseBlocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const GetProjectCheckResponseBlocks = S.String;
+const GetProjectCheckResponseBlocks = S.String;
 
 export type GetProjectCheckResponseRequires = "build-ready" | "deployment-url" | "none";
-export const GetProjectCheckResponseRequires = S.String;
+const GetProjectCheckResponseRequires = S.String;
 
 export type GetProjectCheckResponseSourceCase0Kind = "integration";
-export const GetProjectCheckResponseSourceCase0Kind = S.String;
-
 export interface GetProjectCheckResponseSourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -1195,39 +717,23 @@ export interface GetProjectCheckResponseSourceCase0 {
   kind: GetProjectCheckResponseSourceCase0Kind;
   resourceId?: string;
 }
-export const GetProjectCheckResponseSourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<GetProjectCheckResponseSourceCase0>;
-
 export type GetProjectCheckResponseSourceCase1Kind = "webhook";
-export const GetProjectCheckResponseSourceCase1Kind = S.String;
-
 export interface GetProjectCheckResponseSourceCase1 {
   kind: GetProjectCheckResponseSourceCase1Kind;
   webhookId?: string;
 }
-export const GetProjectCheckResponseSourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<GetProjectCheckResponseSourceCase1>;
-
 export type GetProjectCheckResponseSourceCase2Kind = "git-provider";
-export const GetProjectCheckResponseSourceCase2Kind = S.String;
-
 export type GetProjectCheckResponseSourceCase2Provider = "bitbucket" | "github" | "gitlab";
-export const GetProjectCheckResponseSourceCase2Provider = S.String;
-
 export interface GetProjectCheckResponseSourceCase2 {
   externalCheckName: string;
   kind: GetProjectCheckResponseSourceCase2Kind;
   provider: GetProjectCheckResponseSourceCase2Provider;
 }
-export const GetProjectCheckResponseSourceCase2 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<GetProjectCheckResponseSourceCase2>;
-
 export type GetProjectCheckResponseSource =
   | GetProjectCheckResponseSourceCase0
   | GetProjectCheckResponseSourceCase1
   | GetProjectCheckResponseSourceCase2;
-export const GetProjectCheckResponseSource =
-  S.Unknown as any as S.Schema<GetProjectCheckResponseSource>;
+const GetProjectCheckResponseSource = S.Unknown as any as S.Schema<GetProjectCheckResponseSource>;
 
 export type GetProjectCheckResponseSourceKind =
   | "git-provider"
@@ -1237,10 +743,10 @@ export type GetProjectCheckResponseSourceKind =
   | "integration"
   | "webhook"
   | "git-provider";
-export const GetProjectCheckResponseSourceKind = S.String;
+const GetProjectCheckResponseSourceKind = S.String;
 
 export type GetProjectCheckResponseTargetsList = Array<string>;
-export const GetProjectCheckResponseTargetsList =
+const GetProjectCheckResponseTargetsList =
   CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<GetProjectCheckResponseTargetsList>;
 
 export interface GetProjectCheckResponse {
@@ -1260,7 +766,7 @@ export interface GetProjectCheckResponse {
   timeout: number;
   updatedAt: number;
 }
-export const GetProjectCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocks: GetProjectCheckResponseBlocks,
     createdAt: S.Number,
@@ -1289,7 +795,7 @@ export interface ListCheckRunsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListCheckRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCheckRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Label()),
     checkId: S.String.pipe(T.Label()),
@@ -1310,8 +816,6 @@ export type ListCheckRunsResponseRunsItemCase0Blocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const ListCheckRunsResponseRunsItemCase0Blocks = S.String;
-
 export type ListCheckRunsResponseRunsItemCase0Conclusion =
   | "canceled"
   | "failed"
@@ -1319,30 +823,13 @@ export type ListCheckRunsResponseRunsItemCase0Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const ListCheckRunsResponseRunsItemCase0Conclusion = S.String;
-
 export type ListCheckRunsResponseRunsItemCase0ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const ListCheckRunsResponseRunsItemCase0ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type ListCheckRunsResponseRunsItemCase0OutputMap = { [key: string]: unknown | undefined };
-export const ListCheckRunsResponseRunsItemCase0OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<ListCheckRunsResponseRunsItemCase0OutputMap>;
-
 export type ListCheckRunsResponseRunsItemCase0Requires = "build-ready" | "deployment-url" | "none";
-export const ListCheckRunsResponseRunsItemCase0Requires = S.String;
-
 export type ListCheckRunsResponseRunsItemCase0Status = "completed" | "queued" | "running";
-export const ListCheckRunsResponseRunsItemCase0Status = S.String;
-
 export type ListCheckRunsResponseRunsItemCase0TargetsList = Array<string>;
-export const ListCheckRunsResponseRunsItemCase0TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListCheckRunsResponseRunsItemCase0TargetsList>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase0Kind = "integration";
-export const ListCheckRunsResponseRunsItemCase0SourceCase0Kind = S.String;
-
 export interface ListCheckRunsResponseRunsItemCase0SourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -1350,95 +837,41 @@ export interface ListCheckRunsResponseRunsItemCase0SourceCase0 {
   kind: ListCheckRunsResponseRunsItemCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase0>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase1Kind = "webhook";
-export const ListCheckRunsResponseRunsItemCase0SourceCase1Kind = S.String;
-
 export interface ListCheckRunsResponseRunsItemCase0SourceCase1 {
   kind: ListCheckRunsResponseRunsItemCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase1>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase2Kind = "git-provider";
-export const ListCheckRunsResponseRunsItemCase0SourceCase2Kind = S.String;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase2Provider =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const ListCheckRunsResponseRunsItemCase0SourceCase2Provider = S.String;
-
 export interface ListCheckRunsResponseRunsItemCase0SourceCase2 {
   externalCheckName: string;
   kind: ListCheckRunsResponseRunsItemCase0SourceCase2Kind;
   provider: ListCheckRunsResponseRunsItemCase0SourceCase2Provider;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase2 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase2>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase3Origin = "api" | "platform";
-export const ListCheckRunsResponseRunsItemCase0SourceCase3Origin = S.String;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase3SubKind = "vercel-native-check";
-export const ListCheckRunsResponseRunsItemCase0SourceCase3SubKind = S.String;
-
 /** Native Vercel checks -- check definition and check run `source`. */
 export interface ListCheckRunsResponseRunsItemCase0SourceCase3 {
   origin?: ListCheckRunsResponseRunsItemCase0SourceCase3Origin;
   subKind?: ListCheckRunsResponseRunsItemCase0SourceCase3SubKind;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase3 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase3 as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase3>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase4Origin = "api";
-export const ListCheckRunsResponseRunsItemCase0SourceCase4Origin = S.String;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind = "invocation";
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind = S.String;
-
 export interface ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0 {
   kind: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind,
-    }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind = "job";
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind = S.String;
-
 export interface ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1 {
   job: string;
   kind: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      job: S.String,
-      kind: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind,
-    }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList = Array<string>;
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job = "Turborepo";
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job = S.String;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Kind = "turborepo";
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Kind = S.String;
-
 export interface ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2 {
   failIfNoMatch?: boolean;
   filters: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList;
@@ -1446,54 +879,23 @@ export interface ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2 {
   kind: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Kind;
   task: string;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      failIfNoMatch: S.optional(S.Boolean),
-      filters: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList,
-      job: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job,
-      kind: ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Kind,
-      task: S.String,
-    }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase4Selection =
   | ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0
   | ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1
   | ListCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2;
-export const ListCheckRunsResponseRunsItemCase0SourceCase4Selection =
-  S.Unknown as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase4Selection>;
-
 export type ListCheckRunsResponseRunsItemCase0SourceCase4SubKind = "vercel-ci-check";
-export const ListCheckRunsResponseRunsItemCase0SourceCase4SubKind = S.String;
-
 /** Project-defined CI requirement; its selection is frozen on each check run. */
 export interface ListCheckRunsResponseRunsItemCase0SourceCase4 {
   origin: ListCheckRunsResponseRunsItemCase0SourceCase4Origin;
   selection: ListCheckRunsResponseRunsItemCase0SourceCase4Selection;
   subKind: ListCheckRunsResponseRunsItemCase0SourceCase4SubKind;
 }
-export const ListCheckRunsResponseRunsItemCase0SourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: ListCheckRunsResponseRunsItemCase0SourceCase4Origin,
-    selection: ListCheckRunsResponseRunsItemCase0SourceCase4Selection,
-    subKind: ListCheckRunsResponseRunsItemCase0SourceCase4SubKind,
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0SourceCase4",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0SourceCase4>;
-
 export type ListCheckRunsResponseRunsItemCase0Source =
   | ListCheckRunsResponseRunsItemCase0SourceCase0
   | ListCheckRunsResponseRunsItemCase0SourceCase1
   | ListCheckRunsResponseRunsItemCase0SourceCase2
   | ListCheckRunsResponseRunsItemCase0SourceCase3
   | ListCheckRunsResponseRunsItemCase0SourceCase4;
-export const ListCheckRunsResponseRunsItemCase0Source =
-  S.Unknown as any as S.Schema<ListCheckRunsResponseRunsItemCase0Source>;
-
 /** Check run backed by a project-level `check` definition. */
 export interface ListCheckRunsResponseRunsItemCase0 {
   blocks?: ListCheckRunsResponseRunsItemCase0Blocks;
@@ -1520,43 +922,12 @@ export interface ListCheckRunsResponseRunsItemCase0 {
   checkId: string;
   source: ListCheckRunsResponseRunsItemCase0Source;
 }
-export const ListCheckRunsResponseRunsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(ListCheckRunsResponseRunsItemCase0Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(ListCheckRunsResponseRunsItemCase0Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(ListCheckRunsResponseRunsItemCase0OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(ListCheckRunsResponseRunsItemCase0Requires),
-    status: ListCheckRunsResponseRunsItemCase0Status,
-    targets: S.optional(ListCheckRunsResponseRunsItemCase0TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    checkId: S.String,
-    source: ListCheckRunsResponseRunsItemCase0Source,
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase0",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase0>;
-
 export type ListCheckRunsResponseRunsItemCase1Blocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const ListCheckRunsResponseRunsItemCase1Blocks = S.String;
-
 export type ListCheckRunsResponseRunsItemCase1Conclusion =
   | "canceled"
   | "failed"
@@ -1564,33 +935,14 @@ export type ListCheckRunsResponseRunsItemCase1Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const ListCheckRunsResponseRunsItemCase1Conclusion = S.String;
-
 export type ListCheckRunsResponseRunsItemCase1ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const ListCheckRunsResponseRunsItemCase1ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type ListCheckRunsResponseRunsItemCase1OutputMap = { [key: string]: unknown | undefined };
-export const ListCheckRunsResponseRunsItemCase1OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<ListCheckRunsResponseRunsItemCase1OutputMap>;
-
 export type ListCheckRunsResponseRunsItemCase1Requires = "build-ready" | "deployment-url" | "none";
-export const ListCheckRunsResponseRunsItemCase1Requires = S.String;
-
 export type ListCheckRunsResponseRunsItemCase1Status = "completed" | "queued" | "running";
-export const ListCheckRunsResponseRunsItemCase1Status = S.String;
-
 export type ListCheckRunsResponseRunsItemCase1TargetsList = Array<string>;
-export const ListCheckRunsResponseRunsItemCase1TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListCheckRunsResponseRunsItemCase1TargetsList>;
-
 export type ListCheckRunsResponseRunsItemCase1SourceCase0Origin = "config";
-export const ListCheckRunsResponseRunsItemCase1SourceCase0Origin = S.String;
-
 export type ListCheckRunsResponseRunsItemCase1SourceCase0SubKind = "vercel-ci";
-export const ListCheckRunsResponseRunsItemCase1SourceCase0SubKind = S.String;
-
 /** Config-driven CI task -- check run `source` only (no parent check). */
 export interface ListCheckRunsResponseRunsItemCase1SourceCase0 {
   invocationAttempt?: number;
@@ -1599,29 +951,16 @@ export interface ListCheckRunsResponseRunsItemCase1SourceCase0 {
   origin: ListCheckRunsResponseRunsItemCase1SourceCase0Origin;
   subKind: ListCheckRunsResponseRunsItemCase1SourceCase0SubKind;
 }
-export const ListCheckRunsResponseRunsItemCase1SourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase1SourceCase0 as any as S.Schema<ListCheckRunsResponseRunsItemCase1SourceCase0>;
-
 export type ListCheckRunsResponseRunsItemCase1SourceCase1Origin = "platform";
-export const ListCheckRunsResponseRunsItemCase1SourceCase1Origin = S.String;
-
 export type ListCheckRunsResponseRunsItemCase1SourceCase1SubKind = "vercel-ci-sentinel";
-export const ListCheckRunsResponseRunsItemCase1SourceCase1SubKind = S.String;
-
 /** CI sentinel -- check run `source` only (no parent check). */
 export interface ListCheckRunsResponseRunsItemCase1SourceCase1 {
   origin: ListCheckRunsResponseRunsItemCase1SourceCase1Origin;
   subKind: ListCheckRunsResponseRunsItemCase1SourceCase1SubKind;
 }
-export const ListCheckRunsResponseRunsItemCase1SourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase1SourceCase1 as any as S.Schema<ListCheckRunsResponseRunsItemCase1SourceCase1>;
-
 export type ListCheckRunsResponseRunsItemCase1Source =
   | ListCheckRunsResponseRunsItemCase1SourceCase0
   | ListCheckRunsResponseRunsItemCase1SourceCase1;
-export const ListCheckRunsResponseRunsItemCase1Source =
-  S.Unknown as any as S.Schema<ListCheckRunsResponseRunsItemCase1Source>;
-
 /** Vercel CI check run without a parent `check` (no `checkId` field). */
 export interface ListCheckRunsResponseRunsItemCase1 {
   blocks?: ListCheckRunsResponseRunsItemCase1Blocks;
@@ -1647,49 +986,20 @@ export interface ListCheckRunsResponseRunsItemCase1 {
   updatedAt: number;
   source: ListCheckRunsResponseRunsItemCase1Source;
 }
-export const ListCheckRunsResponseRunsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(ListCheckRunsResponseRunsItemCase1Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(ListCheckRunsResponseRunsItemCase1Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(ListCheckRunsResponseRunsItemCase1OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(ListCheckRunsResponseRunsItemCase1Requires),
-    status: ListCheckRunsResponseRunsItemCase1Status,
-    targets: S.optional(ListCheckRunsResponseRunsItemCase1TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    source: ListCheckRunsResponseRunsItemCase1Source,
-  }),
-).annotate({
-  identifier: "ListCheckRunsResponseRunsItemCase1",
-}) as any as S.Schema<ListCheckRunsResponseRunsItemCase1>;
-
 export type ListCheckRunsResponseRunsItem =
   | ListCheckRunsResponseRunsItemCase0
   | ListCheckRunsResponseRunsItemCase1;
-export const ListCheckRunsResponseRunsItem =
-  S.Unknown as any as S.Schema<ListCheckRunsResponseRunsItem>;
+const ListCheckRunsResponseRunsItem = S.Unknown as any as S.Schema<ListCheckRunsResponseRunsItem>;
 
 export type ListCheckRunsResponseRunsList = Array<ListCheckRunsResponseRunsItem>;
-export const ListCheckRunsResponseRunsList = /*@__PURE__*/ S.Array(
+const ListCheckRunsResponseRunsList = /*@__PURE__*/ S.Array(
   ListCheckRunsResponseRunsItem,
 ) as any as S.Schema<ListCheckRunsResponseRunsList>;
 
 export interface ListCheckRunsResponse {
   runs: ListCheckRunsResponseRunsList;
 }
-export const ListCheckRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCheckRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runs: ListCheckRunsResponseRunsList,
   }),
@@ -1702,7 +1012,7 @@ export interface ListDeploymentCheckRunsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListDeploymentCheckRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentCheckRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1718,8 +1028,6 @@ export type ListDeploymentCheckRunsResponseRunsItemCase0Blocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const ListDeploymentCheckRunsResponseRunsItemCase0Blocks = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0Conclusion =
   | "canceled"
   | "failed"
@@ -1727,35 +1035,18 @@ export type ListDeploymentCheckRunsResponseRunsItemCase0Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const ListDeploymentCheckRunsResponseRunsItemCase0Conclusion = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const ListDeploymentCheckRunsResponseRunsItemCase0ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const ListDeploymentCheckRunsResponseRunsItemCase0OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0OutputMap>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0Requires =
   | "build-ready"
   | "deployment-url"
   | "none";
-export const ListDeploymentCheckRunsResponseRunsItemCase0Requires = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0Status = "completed" | "queued" | "running";
-export const ListDeploymentCheckRunsResponseRunsItemCase0Status = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0TargetsList = Array<string>;
-export const ListDeploymentCheckRunsResponseRunsItemCase0TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0TargetsList>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0Kind = "integration";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0Kind = S.String;
-
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -1763,84 +1054,43 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0 {
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1Kind = "webhook";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1Kind = S.String;
-
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1 {
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Kind = "git-provider";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Kind = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Provider =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Provider = S.String;
-
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2 {
   externalCheckName: string;
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Kind;
   provider: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2Provider;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin = "api" | "platform";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3SubKind = "vercel-native-check";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3SubKind = S.String;
-
 /** Native Vercel checks -- check definition and check run `source`. */
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3 {
   origin?: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3Origin;
   subKind?: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3SubKind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase3 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Origin = "api";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Origin = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind =
   "invocation";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind = S.String;
-
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0 {
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0Kind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind = "job";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind = S.String;
-
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1 {
   job: string;
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1Kind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job = "Turborepo";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Kind = "turborepo";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Kind = S.String;
-
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2 {
   failIfNoMatch?: boolean;
   filters: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList;
@@ -1848,54 +1098,23 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Selectio
   kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Kind;
   task: string;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      failIfNoMatch: S.optional(S.Boolean),
-      filters: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2FiltersList,
-      job: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Job,
-      kind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2Kind,
-      task: S.String,
-    }),
-  ).annotate({
-    identifier: "ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2",
-  }) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Selection =
   | ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase0
   | ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase1
   | ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SelectionCase2;
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Selection =
-  S.Unknown as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Selection>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SubKind = "vercel-ci-check";
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SubKind = S.String;
-
 /** Project-defined CI requirement; its selection is frozen on each check run. */
 export interface ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4 {
   origin: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Origin;
   selection: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Selection;
   subKind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SubKind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Origin,
-    selection: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4Selection,
-    subKind: ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4SubKind,
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase0Source =
   | ListDeploymentCheckRunsResponseRunsItemCase0SourceCase0
   | ListDeploymentCheckRunsResponseRunsItemCase0SourceCase1
   | ListDeploymentCheckRunsResponseRunsItemCase0SourceCase2
   | ListDeploymentCheckRunsResponseRunsItemCase0SourceCase3
   | ListDeploymentCheckRunsResponseRunsItemCase0SourceCase4;
-export const ListDeploymentCheckRunsResponseRunsItemCase0Source =
-  S.Unknown as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0Source>;
-
 /** Check run backed by a project-level `check` definition. */
 export interface ListDeploymentCheckRunsResponseRunsItemCase0 {
   blocks?: ListDeploymentCheckRunsResponseRunsItemCase0Blocks;
@@ -1922,43 +1141,12 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase0 {
   checkId: string;
   source: ListDeploymentCheckRunsResponseRunsItemCase0Source;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(ListDeploymentCheckRunsResponseRunsItemCase0Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(ListDeploymentCheckRunsResponseRunsItemCase0Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(ListDeploymentCheckRunsResponseRunsItemCase0OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(ListDeploymentCheckRunsResponseRunsItemCase0Requires),
-    status: ListDeploymentCheckRunsResponseRunsItemCase0Status,
-    targets: S.optional(ListDeploymentCheckRunsResponseRunsItemCase0TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    checkId: S.String,
-    source: ListDeploymentCheckRunsResponseRunsItemCase0Source,
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase0",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase0>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1Blocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const ListDeploymentCheckRunsResponseRunsItemCase1Blocks = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1Conclusion =
   | "canceled"
   | "failed"
@@ -1966,38 +1154,19 @@ export type ListDeploymentCheckRunsResponseRunsItemCase1Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const ListDeploymentCheckRunsResponseRunsItemCase1Conclusion = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const ListDeploymentCheckRunsResponseRunsItemCase1ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const ListDeploymentCheckRunsResponseRunsItemCase1OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1OutputMap>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1Requires =
   | "build-ready"
   | "deployment-url"
   | "none";
-export const ListDeploymentCheckRunsResponseRunsItemCase1Requires = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1Status = "completed" | "queued" | "running";
-export const ListDeploymentCheckRunsResponseRunsItemCase1Status = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1TargetsList = Array<string>;
-export const ListDeploymentCheckRunsResponseRunsItemCase1TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1TargetsList>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0Origin = "config";
-export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0Origin = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0SubKind = "vercel-ci";
-export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0SubKind = S.String;
-
 /** Config-driven CI task -- check run `source` only (no parent check). */
 export interface ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0 {
   invocationAttempt?: number;
@@ -2006,29 +1175,16 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0 {
   origin: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0Origin;
   subKind: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0SubKind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase1SourceCase0 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin = "platform";
-export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin = S.String;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1SubKind = "vercel-ci-sentinel";
-export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1SubKind = S.String;
-
 /** CI sentinel -- check run `source` only (no parent check). */
 export interface ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1 {
   origin: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1Origin;
   subKind: ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1SubKind;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase1SourceCase1 as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1>;
-
 export type ListDeploymentCheckRunsResponseRunsItemCase1Source =
   | ListDeploymentCheckRunsResponseRunsItemCase1SourceCase0
   | ListDeploymentCheckRunsResponseRunsItemCase1SourceCase1;
-export const ListDeploymentCheckRunsResponseRunsItemCase1Source =
-  S.Unknown as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1Source>;
-
 /** Vercel CI check run without a parent `check` (no `checkId` field). */
 export interface ListDeploymentCheckRunsResponseRunsItemCase1 {
   blocks?: ListDeploymentCheckRunsResponseRunsItemCase1Blocks;
@@ -2054,50 +1210,22 @@ export interface ListDeploymentCheckRunsResponseRunsItemCase1 {
   updatedAt: number;
   source: ListDeploymentCheckRunsResponseRunsItemCase1Source;
 }
-export const ListDeploymentCheckRunsResponseRunsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(ListDeploymentCheckRunsResponseRunsItemCase1Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(ListDeploymentCheckRunsResponseRunsItemCase1Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(ListDeploymentCheckRunsResponseRunsItemCase1OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(ListDeploymentCheckRunsResponseRunsItemCase1Requires),
-    status: ListDeploymentCheckRunsResponseRunsItemCase1Status,
-    targets: S.optional(ListDeploymentCheckRunsResponseRunsItemCase1TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    source: ListDeploymentCheckRunsResponseRunsItemCase1Source,
-  }),
-).annotate({
-  identifier: "ListDeploymentCheckRunsResponseRunsItemCase1",
-}) as any as S.Schema<ListDeploymentCheckRunsResponseRunsItemCase1>;
-
 export type ListDeploymentCheckRunsResponseRunsItem =
   | ListDeploymentCheckRunsResponseRunsItemCase0
   | ListDeploymentCheckRunsResponseRunsItemCase1;
-export const ListDeploymentCheckRunsResponseRunsItem =
+const ListDeploymentCheckRunsResponseRunsItem =
   S.Unknown as any as S.Schema<ListDeploymentCheckRunsResponseRunsItem>;
 
 export type ListDeploymentCheckRunsResponseRunsList =
   Array<ListDeploymentCheckRunsResponseRunsItem>;
-export const ListDeploymentCheckRunsResponseRunsList = /*@__PURE__*/ S.Array(
+const ListDeploymentCheckRunsResponseRunsList = /*@__PURE__*/ S.Array(
   ListDeploymentCheckRunsResponseRunsItem,
 ) as any as S.Schema<ListDeploymentCheckRunsResponseRunsList>;
 
 export interface ListDeploymentCheckRunsResponse {
   runs: ListDeploymentCheckRunsResponseRunsList;
 }
-export const ListDeploymentCheckRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentCheckRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runs: ListDeploymentCheckRunsResponseRunsList,
   }),
@@ -2111,7 +1239,7 @@ export type ListProjectChecksRequestBlocks =
   | "deployment-alias"
   | "deployment-promotion"
   | "none";
-export const ListProjectChecksRequestBlocks = S.String;
+const ListProjectChecksRequestBlocks = S.String;
 
 export interface ListProjectChecksRequest {
   projectIdOrName: string;
@@ -2121,7 +1249,7 @@ export interface ListProjectChecksRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListProjectChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Label()),
     blocks: S.optional(ListProjectChecksRequestBlocks.pipe(T.Query())),
@@ -2131,7 +1259,7 @@ export const ListProjectChecksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectChecksRequest" }) as any as S.Schema<ListProjectChecksRequest>;
 
 export type ListProjectChecksResponseAvailableNativeChecksList = Array<string>;
-export const ListProjectChecksResponseAvailableNativeChecksList =
+const ListProjectChecksResponseAvailableNativeChecksList =
   CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListProjectChecksResponseAvailableNativeChecksList>;
 
 export type ListProjectChecksResponseChecksItemBlocks =
@@ -2140,14 +1268,12 @@ export type ListProjectChecksResponseChecksItemBlocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const ListProjectChecksResponseChecksItemBlocks = S.String;
+const ListProjectChecksResponseChecksItemBlocks = S.String;
 
 export type ListProjectChecksResponseChecksItemRequires = "build-ready" | "deployment-url" | "none";
-export const ListProjectChecksResponseChecksItemRequires = S.String;
+const ListProjectChecksResponseChecksItemRequires = S.String;
 
 export type ListProjectChecksResponseChecksItemSourceCase0Kind = "integration";
-export const ListProjectChecksResponseChecksItemSourceCase0Kind = S.String;
-
 export interface ListProjectChecksResponseChecksItemSourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -2155,41 +1281,26 @@ export interface ListProjectChecksResponseChecksItemSourceCase0 {
   kind: ListProjectChecksResponseChecksItemSourceCase0Kind;
   resourceId?: string;
 }
-export const ListProjectChecksResponseChecksItemSourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase0>;
-
 export type ListProjectChecksResponseChecksItemSourceCase1Kind = "webhook";
-export const ListProjectChecksResponseChecksItemSourceCase1Kind = S.String;
-
 export interface ListProjectChecksResponseChecksItemSourceCase1 {
   kind: ListProjectChecksResponseChecksItemSourceCase1Kind;
   webhookId?: string;
 }
-export const ListProjectChecksResponseChecksItemSourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase1>;
-
 export type ListProjectChecksResponseChecksItemSourceCase2Kind = "git-provider";
-export const ListProjectChecksResponseChecksItemSourceCase2Kind = S.String;
-
 export type ListProjectChecksResponseChecksItemSourceCase2Provider =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const ListProjectChecksResponseChecksItemSourceCase2Provider = S.String;
-
 export interface ListProjectChecksResponseChecksItemSourceCase2 {
   externalCheckName: string;
   kind: ListProjectChecksResponseChecksItemSourceCase2Kind;
   provider: ListProjectChecksResponseChecksItemSourceCase2Provider;
 }
-export const ListProjectChecksResponseChecksItemSourceCase2 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<ListProjectChecksResponseChecksItemSourceCase2>;
-
 export type ListProjectChecksResponseChecksItemSource =
   | ListProjectChecksResponseChecksItemSourceCase0
   | ListProjectChecksResponseChecksItemSourceCase1
   | ListProjectChecksResponseChecksItemSourceCase2;
-export const ListProjectChecksResponseChecksItemSource =
+const ListProjectChecksResponseChecksItemSource =
   S.Unknown as any as S.Schema<ListProjectChecksResponseChecksItemSource>;
 
 export type ListProjectChecksResponseChecksItemSourceKind =
@@ -2200,10 +1311,10 @@ export type ListProjectChecksResponseChecksItemSourceKind =
   | "integration"
   | "webhook"
   | "git-provider";
-export const ListProjectChecksResponseChecksItemSourceKind = S.String;
+const ListProjectChecksResponseChecksItemSourceKind = S.String;
 
 export type ListProjectChecksResponseChecksItemTargetsList = Array<string>;
-export const ListProjectChecksResponseChecksItemTargetsList =
+const ListProjectChecksResponseChecksItemTargetsList =
   CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<ListProjectChecksResponseChecksItemTargetsList>;
 
 export interface ListProjectChecksResponseChecksItem {
@@ -2223,7 +1334,7 @@ export interface ListProjectChecksResponseChecksItem {
   timeout: number;
   updatedAt: number;
 }
-export const ListProjectChecksResponseChecksItem = /*@__PURE__*/ S.suspend(() =>
+const ListProjectChecksResponseChecksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocks: ListProjectChecksResponseChecksItemBlocks,
     createdAt: S.Number,
@@ -2246,7 +1357,7 @@ export const ListProjectChecksResponseChecksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectChecksResponseChecksItem>;
 
 export type ListProjectChecksResponseChecksList = Array<ListProjectChecksResponseChecksItem>;
-export const ListProjectChecksResponseChecksList = /*@__PURE__*/ S.Array(
+const ListProjectChecksResponseChecksList = /*@__PURE__*/ S.Array(
   ListProjectChecksResponseChecksItem,
 ) as any as S.Schema<ListProjectChecksResponseChecksList>;
 
@@ -2254,7 +1365,7 @@ export interface ListProjectChecksResponse {
   availableNativeChecks: ListProjectChecksResponseAvailableNativeChecksList;
   checks: ListProjectChecksResponseChecksList;
 }
-export const ListProjectChecksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectChecksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableNativeChecks: ListProjectChecksResponseAvailableNativeChecksList,
     checks: ListProjectChecksResponseChecksList,
@@ -2264,7 +1375,7 @@ export const ListProjectChecksResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectChecksResponse>;
 
 export type UpdateDeploymentCheckRunRequestStatus = "queued" | "running" | "completed";
-export const UpdateDeploymentCheckRunRequestStatus = S.String;
+const UpdateDeploymentCheckRunRequestStatus = S.String;
 
 export type UpdateDeploymentCheckRunRequestConclusion =
   | "canceled"
@@ -2273,7 +1384,7 @@ export type UpdateDeploymentCheckRunRequestConclusion =
   | "failed"
   | "neutral"
   | "succeeded";
-export const UpdateDeploymentCheckRunRequestConclusion = S.String;
+const UpdateDeploymentCheckRunRequestConclusion = S.String;
 
 export interface UpdateDeploymentCheckRunRequest {
   deploymentId: string;
@@ -2290,7 +1401,7 @@ export interface UpdateDeploymentCheckRunRequest {
   conclusion?: UpdateDeploymentCheckRunRequestConclusion | (string & {});
   conclusionText?: string;
 }
-export const UpdateDeploymentCheckRunRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeploymentCheckRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String.pipe(T.Label()),
     checkRunId: S.String.pipe(T.Label()),
@@ -2320,8 +1431,6 @@ export type UpdateDeploymentCheckRunResponseBodyCase0Blocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const UpdateDeploymentCheckRunResponseBodyCase0Blocks = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0Conclusion =
   | "canceled"
   | "failed"
@@ -2329,35 +1438,18 @@ export type UpdateDeploymentCheckRunResponseBodyCase0Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const UpdateDeploymentCheckRunResponseBodyCase0Conclusion = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const UpdateDeploymentCheckRunResponseBodyCase0ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateDeploymentCheckRunResponseBodyCase0OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0OutputMap>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0Requires =
   | "build-ready"
   | "deployment-url"
   | "none";
-export const UpdateDeploymentCheckRunResponseBodyCase0Requires = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0Status = "completed" | "queued" | "running";
-export const UpdateDeploymentCheckRunResponseBodyCase0Status = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0TargetsList = Array<string>;
-export const UpdateDeploymentCheckRunResponseBodyCase0TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0TargetsList>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase0Kind = "integration";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase0Kind = S.String;
-
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -2365,83 +1457,42 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase0 {
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase0Kind;
   resourceId?: string;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase0>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase1Kind = "webhook";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase1Kind = S.String;
-
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase1 {
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase1Kind;
   webhookId?: string;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase1>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Kind = "git-provider";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Kind = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Provider =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Provider = S.String;
-
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase2 {
   externalCheckName: string;
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Kind;
   provider: UpdateDeploymentCheckRunResponseBodyCase0SourceCase2Provider;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase2 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase2>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin = "api" | "platform";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = "vercel-native-check";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind = S.String;
-
 /** Native Vercel checks -- check definition and check run `source`. */
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase3 {
   origin?: UpdateDeploymentCheckRunResponseBodyCase0SourceCase3Origin;
   subKind?: UpdateDeploymentCheckRunResponseBodyCase0SourceCase3SubKind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase3 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase3 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase3>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Origin = "api";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Origin = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind = "invocation";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind = S.String;
-
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 {
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0Kind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = "job";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind = S.String;
-
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 {
   job: string;
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1Kind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
   Array<string>;
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = "Turborepo";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind = "turborepo";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind = S.String;
-
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2 {
   failIfNoMatch?: boolean;
   filters: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList;
@@ -2449,54 +1500,23 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCa
   kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind;
   task: string;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      failIfNoMatch: S.optional(S.Boolean),
-      filters: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2FiltersList,
-      job: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Job,
-      kind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2Kind,
-      task: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2",
-  }) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Selection =
   | UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase0
   | UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase1
   | UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SelectionCase2;
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Selection =
-  S.Unknown as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Selection>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SubKind = "vercel-ci-check";
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SubKind = S.String;
-
 /** Project-defined CI requirement; its selection is frozen on each check run. */
 export interface UpdateDeploymentCheckRunResponseBodyCase0SourceCase4 {
   origin: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Origin;
   selection: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Selection;
   subKind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SubKind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0SourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Origin,
-    selection: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4Selection,
-    subKind: UpdateDeploymentCheckRunResponseBodyCase0SourceCase4SubKind,
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase0SourceCase4",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0SourceCase4>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase0Source =
   | UpdateDeploymentCheckRunResponseBodyCase0SourceCase0
   | UpdateDeploymentCheckRunResponseBodyCase0SourceCase1
   | UpdateDeploymentCheckRunResponseBodyCase0SourceCase2
   | UpdateDeploymentCheckRunResponseBodyCase0SourceCase3
   | UpdateDeploymentCheckRunResponseBodyCase0SourceCase4;
-export const UpdateDeploymentCheckRunResponseBodyCase0Source =
-  S.Unknown as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0Source>;
-
 /** Check run backed by a project-level `check` definition. */
 export interface UpdateDeploymentCheckRunResponseBodyCase0 {
   blocks?: UpdateDeploymentCheckRunResponseBodyCase0Blocks;
@@ -2523,43 +1543,12 @@ export interface UpdateDeploymentCheckRunResponseBodyCase0 {
   checkId: string;
   source: UpdateDeploymentCheckRunResponseBodyCase0Source;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(UpdateDeploymentCheckRunResponseBodyCase0Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(UpdateDeploymentCheckRunResponseBodyCase0Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(UpdateDeploymentCheckRunResponseBodyCase0OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(UpdateDeploymentCheckRunResponseBodyCase0Requires),
-    status: UpdateDeploymentCheckRunResponseBodyCase0Status,
-    targets: S.optional(UpdateDeploymentCheckRunResponseBodyCase0TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    checkId: S.String,
-    source: UpdateDeploymentCheckRunResponseBodyCase0Source,
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase0",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase0>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1Blocks =
   | "build-start"
   | "deployment-alias"
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const UpdateDeploymentCheckRunResponseBodyCase1Blocks = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1Conclusion =
   | "canceled"
   | "failed"
@@ -2567,38 +1556,19 @@ export type UpdateDeploymentCheckRunResponseBodyCase1Conclusion =
   | "skipped"
   | "succeeded"
   | "timeout";
-export const UpdateDeploymentCheckRunResponseBodyCase1Conclusion = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1ExpectationRef =
   CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-export const UpdateDeploymentCheckRunResponseBodyCase1ExpectationRef =
-  CreateDeploymentCheckRunResponseBodyCase0ExpectationRef;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1OutputMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateDeploymentCheckRunResponseBodyCase1OutputMap =
-  CreateDeploymentCheckRunResponseBodyCase0OutputMap as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1OutputMap>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1Requires =
   | "build-ready"
   | "deployment-url"
   | "none";
-export const UpdateDeploymentCheckRunResponseBodyCase1Requires = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1Status = "completed" | "queued" | "running";
-export const UpdateDeploymentCheckRunResponseBodyCase1Status = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1TargetsList = Array<string>;
-export const UpdateDeploymentCheckRunResponseBodyCase1TargetsList =
-  CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1TargetsList>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = "config";
-export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase0Origin = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = "vercel-ci";
-export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind = S.String;
-
 /** Config-driven CI task -- check run `source` only (no parent check). */
 export interface UpdateDeploymentCheckRunResponseBodyCase1SourceCase0 {
   invocationAttempt?: number;
@@ -2607,29 +1577,16 @@ export interface UpdateDeploymentCheckRunResponseBodyCase1SourceCase0 {
   origin: UpdateDeploymentCheckRunResponseBodyCase1SourceCase0Origin;
   subKind: UpdateDeploymentCheckRunResponseBodyCase1SourceCase0SubKind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase1SourceCase0 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1SourceCase0>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin = "platform";
-export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin = S.String;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = "vercel-ci-sentinel";
-export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind = S.String;
-
 /** CI sentinel -- check run `source` only (no parent check). */
 export interface UpdateDeploymentCheckRunResponseBodyCase1SourceCase1 {
   origin: UpdateDeploymentCheckRunResponseBodyCase1SourceCase1Origin;
   subKind: UpdateDeploymentCheckRunResponseBodyCase1SourceCase1SubKind;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase1SourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase1SourceCase1 as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1SourceCase1>;
-
 export type UpdateDeploymentCheckRunResponseBodyCase1Source =
   | UpdateDeploymentCheckRunResponseBodyCase1SourceCase0
   | UpdateDeploymentCheckRunResponseBodyCase1SourceCase1;
-export const UpdateDeploymentCheckRunResponseBodyCase1Source =
-  S.Unknown as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1Source>;
-
 /** Vercel CI check run without a parent `check` (no `checkId` field). */
 export interface UpdateDeploymentCheckRunResponseBodyCase1 {
   blocks?: UpdateDeploymentCheckRunResponseBodyCase1Blocks;
@@ -2655,52 +1612,24 @@ export interface UpdateDeploymentCheckRunResponseBodyCase1 {
   updatedAt: number;
   source: UpdateDeploymentCheckRunResponseBodyCase1Source;
 }
-export const UpdateDeploymentCheckRunResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocks: S.optional(UpdateDeploymentCheckRunResponseBodyCase1Blocks),
-    completedAt: S.optional(S.Number),
-    conclusion: S.optional(UpdateDeploymentCheckRunResponseBodyCase1Conclusion),
-    conclusionText: S.optional(S.String),
-    createdAt: S.Number,
-    deploymentId: S.String,
-    expectationRef: S.optional(CreateDeploymentCheckRunResponseBodyCase0ExpectationRef),
-    expectationRevision: S.optional(S.Number),
-    externalId: S.optional(S.String),
-    externalUrl: S.optional(S.String),
-    id: S.String,
-    name: S.String,
-    output: S.optional(UpdateDeploymentCheckRunResponseBodyCase1OutputMap),
-    ownerId: S.String,
-    projectId: S.optional(S.String),
-    requires: S.optional(UpdateDeploymentCheckRunResponseBodyCase1Requires),
-    status: UpdateDeploymentCheckRunResponseBodyCase1Status,
-    targets: S.optional(UpdateDeploymentCheckRunResponseBodyCase1TargetsList),
-    timeout: S.Number,
-    updatedAt: S.Number,
-    source: UpdateDeploymentCheckRunResponseBodyCase1Source,
-  }),
-).annotate({
-  identifier: "UpdateDeploymentCheckRunResponseBodyCase1",
-}) as any as S.Schema<UpdateDeploymentCheckRunResponseBodyCase1>;
-
 export type UpdateDeploymentCheckRunResponseBody =
   | UpdateDeploymentCheckRunResponseBodyCase0
   | UpdateDeploymentCheckRunResponseBodyCase1;
-export const UpdateDeploymentCheckRunResponseBody =
+const UpdateDeploymentCheckRunResponseBody =
   S.Unknown as any as S.Schema<UpdateDeploymentCheckRunResponseBody>;
 
 export type UpdateDeploymentCheckRunResponse = UpdateDeploymentCheckRunResponseBody;
-export const UpdateDeploymentCheckRunResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeploymentCheckRunResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateDeploymentCheckRunResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateDeploymentCheckRunResponse",
 }) as any as S.Schema<UpdateDeploymentCheckRunResponse>;
 
 export type UpdateProjectCheckRequestRequires = "build-ready" | "deployment-url" | "none";
-export const UpdateProjectCheckRequestRequires = S.String;
+const UpdateProjectCheckRequestRequires = S.String;
 
 export type UpdateProjectCheckRequestTargetsList = Array<string>;
-export const UpdateProjectCheckRequestTargetsList =
+const UpdateProjectCheckRequestTargetsList =
   CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateProjectCheckRequestTargetsList>;
 
 export type UpdateProjectCheckRequestBlocks =
@@ -2709,7 +1638,7 @@ export type UpdateProjectCheckRequestBlocks =
   | "deployment-alias"
   | "deployment-promotion"
   | "none";
-export const UpdateProjectCheckRequestBlocks = S.String;
+const UpdateProjectCheckRequestBlocks = S.String;
 
 export interface UpdateProjectCheckRequest {
   projectIdOrName: string;
@@ -2725,7 +1654,7 @@ export interface UpdateProjectCheckRequest {
   blocks?: UpdateProjectCheckRequestBlocks | (string & {});
   timeout?: number;
 }
-export const UpdateProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Label()),
     checkId: S.String.pipe(T.Label()),
@@ -2750,14 +1679,12 @@ export type UpdateProjectCheckResponseBlocks =
   | "deployment-promotion"
   | "deployment-start"
   | "none";
-export const UpdateProjectCheckResponseBlocks = S.String;
+const UpdateProjectCheckResponseBlocks = S.String;
 
 export type UpdateProjectCheckResponseRequires = "build-ready" | "deployment-url" | "none";
-export const UpdateProjectCheckResponseRequires = S.String;
+const UpdateProjectCheckResponseRequires = S.String;
 
 export type UpdateProjectCheckResponseSourceCase0Kind = "integration";
-export const UpdateProjectCheckResponseSourceCase0Kind = S.String;
-
 export interface UpdateProjectCheckResponseSourceCase0 {
   externalResourceId?: string;
   integrationConfigurationId: string;
@@ -2765,38 +1692,23 @@ export interface UpdateProjectCheckResponseSourceCase0 {
   kind: UpdateProjectCheckResponseSourceCase0Kind;
   resourceId?: string;
 }
-export const UpdateProjectCheckResponseSourceCase0 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase0 as any as S.Schema<UpdateProjectCheckResponseSourceCase0>;
-
 export type UpdateProjectCheckResponseSourceCase1Kind = "webhook";
-export const UpdateProjectCheckResponseSourceCase1Kind = S.String;
-
 export interface UpdateProjectCheckResponseSourceCase1 {
   kind: UpdateProjectCheckResponseSourceCase1Kind;
   webhookId?: string;
 }
-export const UpdateProjectCheckResponseSourceCase1 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase1 as any as S.Schema<UpdateProjectCheckResponseSourceCase1>;
-
 export type UpdateProjectCheckResponseSourceCase2Kind = "git-provider";
-export const UpdateProjectCheckResponseSourceCase2Kind = S.String;
-
 export type UpdateProjectCheckResponseSourceCase2Provider = "bitbucket" | "github" | "gitlab";
-export const UpdateProjectCheckResponseSourceCase2Provider = S.String;
-
 export interface UpdateProjectCheckResponseSourceCase2 {
   externalCheckName: string;
   kind: UpdateProjectCheckResponseSourceCase2Kind;
   provider: UpdateProjectCheckResponseSourceCase2Provider;
 }
-export const UpdateProjectCheckResponseSourceCase2 =
-  CreateDeploymentCheckRunResponseBodyCase0SourceCase2 as any as S.Schema<UpdateProjectCheckResponseSourceCase2>;
-
 export type UpdateProjectCheckResponseSource =
   | UpdateProjectCheckResponseSourceCase0
   | UpdateProjectCheckResponseSourceCase1
   | UpdateProjectCheckResponseSourceCase2;
-export const UpdateProjectCheckResponseSource =
+const UpdateProjectCheckResponseSource =
   S.Unknown as any as S.Schema<UpdateProjectCheckResponseSource>;
 
 export type UpdateProjectCheckResponseSourceKind =
@@ -2807,10 +1719,10 @@ export type UpdateProjectCheckResponseSourceKind =
   | "integration"
   | "webhook"
   | "git-provider";
-export const UpdateProjectCheckResponseSourceKind = S.String;
+const UpdateProjectCheckResponseSourceKind = S.String;
 
 export type UpdateProjectCheckResponseTargetsList = Array<string>;
-export const UpdateProjectCheckResponseTargetsList =
+const UpdateProjectCheckResponseTargetsList =
   CreateDeploymentCheckRunResponseBodyCase0TargetsList as any as S.Schema<UpdateProjectCheckResponseTargetsList>;
 
 export interface UpdateProjectCheckResponse {
@@ -2830,7 +1742,7 @@ export interface UpdateProjectCheckResponse {
   timeout: number;
   updatedAt: number;
 }
-export const UpdateProjectCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocks: UpdateProjectCheckResponseBlocks,
     createdAt: S.Number,

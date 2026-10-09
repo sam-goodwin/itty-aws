@@ -24,7 +24,7 @@ export interface AddSelectedRepoToOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-export const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -41,9 +41,7 @@ export const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>;
 
 export interface AddSelectedRepoToOrgSecretResponse {}
-export const AddSelectedRepoToOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AddSelectedRepoToOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddSelectedRepoToOrgSecretResponse",
 }) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>;
 
@@ -54,7 +52,7 @@ export interface AddSelectedRepoToOrgVariableRequest {
   name: string;
   repository_id: number;
 }
-export const AddSelectedRepoToOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSelectedRepoToOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -71,16 +69,16 @@ export const AddSelectedRepoToOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddSelectedRepoToOrgVariableRequest>;
 
 export interface AddSelectedRepoToOrgVariableResponse {}
-export const AddSelectedRepoToOrgVariableResponse =
+const AddSelectedRepoToOrgVariableResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<AddSelectedRepoToOrgVariableResponse>;
 
 /** The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable. */
 export type CreateOrgVariableRequestVisibility = "all" | "private" | "selected";
-export const CreateOrgVariableRequestVisibility = S.String;
+const CreateOrgVariableRequestVisibility = S.String;
 
 /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
 export type CreateOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
-export const CreateOrgVariableRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
+const CreateOrgVariableRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateOrgVariableRequestSelectedRepositoryIdsList>;
 
@@ -96,7 +94,7 @@ export interface CreateOrgVariableRequest {
   /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
   selected_repository_ids?: CreateOrgVariableRequestSelectedRepositoryIdsList;
 }
-export const CreateOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -107,7 +105,7 @@ export const CreateOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateOrgVariableRequest" }) as any as S.Schema<CreateOrgVariableRequest>;
 
 export type CreateOrgVariableResponse = unknown;
-export const CreateOrgVariableResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgVariableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateOrgVariableResponse",
@@ -115,11 +113,11 @@ export const CreateOrgVariableResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret. */
 export type CreateOrUpdateOrgSecretRequestVisibility = "all" | "private" | "selected";
-export const CreateOrUpdateOrgSecretRequestVisibility = S.String;
+const CreateOrUpdateOrgSecretRequestVisibility = S.String;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-export const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList =
+const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList =
   CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList>;
 
 export interface CreateOrUpdateOrgSecretRequest {
@@ -136,7 +134,7 @@ export interface CreateOrUpdateOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids?: CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList;
 }
-export const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -150,7 +148,7 @@ export const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateOrgSecretRequest>;
 
 export type CreateOrUpdateOrgSecretResponse = unknown;
-export const CreateOrUpdateOrgSecretResponse =
+const CreateOrUpdateOrgSecretResponse =
   CreateOrgVariableResponse as any as S.Schema<CreateOrUpdateOrgSecretResponse>;
 
 export interface CreateOrUpdateRepoSecretRequest {
@@ -165,7 +163,7 @@ export interface CreateOrUpdateRepoSecretRequest {
   /** ID of the key you used to encrypt the secret. */
   key_id: string;
 }
-export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -180,7 +178,7 @@ export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
 
 export type CreateOrUpdateRepoSecretResponse = unknown;
-export const CreateOrUpdateRepoSecretResponse =
+const CreateOrUpdateRepoSecretResponse =
   CreateOrgVariableResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
 
 export interface CreateRepoVariableRequest {
@@ -193,7 +191,7 @@ export interface CreateRepoVariableRequest {
   /** The value of the variable. */
   value: string;
 }
-export const CreateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -205,7 +203,7 @@ export const CreateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRepoVariableRequest>;
 
 export type CreateRepoVariableResponse = unknown;
-export const CreateRepoVariableResponse =
+const CreateRepoVariableResponse =
   CreateOrgVariableResponse as any as S.Schema<CreateRepoVariableResponse>;
 
 export interface DeleteOrgSecretRequest {
@@ -214,7 +212,7 @@ export interface DeleteOrgSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -222,7 +220,7 @@ export const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgSecretRequest" }) as any as S.Schema<DeleteOrgSecretRequest>;
 
 export interface DeleteOrgSecretResponse {}
-export const DeleteOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteOrgSecretResponse",
 }) as any as S.Schema<DeleteOrgSecretResponse>;
 
@@ -232,7 +230,7 @@ export interface DeleteOrgVariableRequest {
   /** The name of the variable. */
   name: string;
 }
-export const DeleteOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -240,7 +238,7 @@ export const DeleteOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgVariableRequest" }) as any as S.Schema<DeleteOrgVariableRequest>;
 
 export interface DeleteOrgVariableResponse {}
-export const DeleteOrgVariableResponse =
+const DeleteOrgVariableResponse =
   DeleteOrgSecretResponse as any as S.Schema<DeleteOrgVariableResponse>;
 
 export interface DeleteRepoSecretRequest {
@@ -251,7 +249,7 @@ export interface DeleteRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -266,7 +264,7 @@ export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoSecretRequest" }) as any as S.Schema<DeleteRepoSecretRequest>;
 
 export interface DeleteRepoSecretResponse {}
-export const DeleteRepoSecretResponse =
+const DeleteRepoSecretResponse =
   DeleteOrgSecretResponse as any as S.Schema<DeleteRepoSecretResponse>;
 
 export interface DeleteRepoVariableRequest {
@@ -277,7 +275,7 @@ export interface DeleteRepoVariableRequest {
   /** The name of the variable. */
   name: string;
 }
-export const DeleteRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -290,14 +288,14 @@ export const DeleteRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRepoVariableRequest>;
 
 export interface DeleteRepoVariableResponse {}
-export const DeleteRepoVariableResponse =
+const DeleteRepoVariableResponse =
   DeleteOrgSecretResponse as any as S.Schema<DeleteRepoVariableResponse>;
 
 export interface GetOrgPublicKeyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetOrgPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/agents/secrets/public-key", code: 200 })),
@@ -314,7 +312,7 @@ export interface ActionsPublicKey {
   title?: string;
   created_at?: string;
 }
-export const ActionsPublicKey = /*@__PURE__*/ S.suspend(() =>
+const ActionsPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.String,
     key: S.String,
@@ -331,7 +329,7 @@ export interface GetOrgSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -340,7 +338,7 @@ export const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Visibility of a secret */
 export type OrganizationActionsSecretVisibility = "all" | "private" | "selected";
-export const OrganizationActionsSecretVisibility = S.String;
+const OrganizationActionsSecretVisibility = S.String;
 
 /** Secrets for GitHub Actions for an organization. */
 export interface OrganizationActionsSecret {
@@ -352,7 +350,7 @@ export interface OrganizationActionsSecret {
   visibility: OrganizationActionsSecretVisibility;
   selected_repositories_url?: string;
 }
-export const OrganizationActionsSecret = /*@__PURE__*/ S.suspend(() =>
+const OrganizationActionsSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     created_at: S.String,
@@ -370,7 +368,7 @@ export interface GetOrgVariableRequest {
   /** The name of the variable. */
   name: string;
 }
-export const GetOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -379,7 +377,7 @@ export const GetOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Visibility of a variable */
 export type OrganizationActionsVariableVisibility = "all" | "private" | "selected";
-export const OrganizationActionsVariableVisibility = S.String;
+const OrganizationActionsVariableVisibility = S.String;
 
 /** Organization variable for GitHub Actions. */
 export interface OrganizationActionsVariable {
@@ -395,7 +393,7 @@ export interface OrganizationActionsVariable {
   visibility: OrganizationActionsVariableVisibility;
   selected_repositories_url?: string;
 }
-export const OrganizationActionsVariable = /*@__PURE__*/ S.suspend(() =>
+const OrganizationActionsVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -414,7 +412,7 @@ export interface GetRepoPublicKeyRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetRepoPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -431,7 +429,7 @@ export interface GetRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const GetRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -448,7 +446,7 @@ export interface ActionsSecret {
   created_at: string;
   updated_at: string;
 }
-export const ActionsSecret = /*@__PURE__*/ S.suspend(() =>
+const ActionsSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     created_at: S.String,
@@ -464,7 +462,7 @@ export interface GetRepoVariableRequest {
   /** The name of the variable. */
   name: string;
 }
-export const GetRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -484,7 +482,7 @@ export interface ActionsVariable {
   /** The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. */
   updated_at: string;
 }
-export const ActionsVariable = /*@__PURE__*/ S.suspend(() =>
+const ActionsVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -501,7 +499,7 @@ export interface ListOrgSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -510,7 +508,7 @@ export const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrgSecretsRequest" }) as any as S.Schema<ListOrgSecretsRequest>;
 
 export type ListOrgSecretsResponseSecretsList = Array<OrganizationActionsSecret>;
-export const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
+const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
   OrganizationActionsSecret,
 ) as any as S.Schema<ListOrgSecretsResponseSecretsList>;
 
@@ -518,7 +516,7 @@ export interface ListOrgSecretsResponse {
   total_count: number;
   secrets: ListOrgSecretsResponseSecretsList;
 }
-export const ListOrgSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     secrets: ListOrgSecretsResponseSecretsList,
@@ -533,7 +531,7 @@ export interface ListOrgVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListOrgVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -542,7 +540,7 @@ export const ListOrgVariablesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrgVariablesRequest" }) as any as S.Schema<ListOrgVariablesRequest>;
 
 export type ListOrgVariablesResponseVariablesList = Array<OrganizationActionsVariable>;
-export const ListOrgVariablesResponseVariablesList = /*@__PURE__*/ S.Array(
+const ListOrgVariablesResponseVariablesList = /*@__PURE__*/ S.Array(
   OrganizationActionsVariable,
 ) as any as S.Schema<ListOrgVariablesResponseVariablesList>;
 
@@ -550,7 +548,7 @@ export interface ListOrgVariablesResponse {
   total_count: number;
   variables: ListOrgVariablesResponseVariablesList;
 }
-export const ListOrgVariablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgVariablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     variables: ListOrgVariablesResponseVariablesList,
@@ -567,7 +565,7 @@ export interface ListRepoOrganizationSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRepoOrganizationSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoOrganizationSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -581,7 +579,7 @@ export const ListRepoOrganizationSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRepoOrganizationSecretsRequest>;
 
 export type ListRepoOrganizationSecretsResponseSecretsList = Array<ActionsSecret>;
-export const ListRepoOrganizationSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
+const ListRepoOrganizationSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
   ActionsSecret,
 ) as any as S.Schema<ListRepoOrganizationSecretsResponseSecretsList>;
 
@@ -589,7 +587,7 @@ export interface ListRepoOrganizationSecretsResponse {
   total_count: number;
   secrets: ListRepoOrganizationSecretsResponseSecretsList;
 }
-export const ListRepoOrganizationSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepoOrganizationSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     secrets: ListRepoOrganizationSecretsResponseSecretsList,
@@ -608,7 +606,7 @@ export interface ListRepoOrganizationVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRepoOrganizationVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoOrganizationVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -626,7 +624,7 @@ export const ListRepoOrganizationVariablesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListRepoOrganizationVariablesRequest>;
 
 export type ListRepoOrganizationVariablesResponseVariablesList = Array<ActionsVariable>;
-export const ListRepoOrganizationVariablesResponseVariablesList = /*@__PURE__*/ S.Array(
+const ListRepoOrganizationVariablesResponseVariablesList = /*@__PURE__*/ S.Array(
   ActionsVariable,
 ) as any as S.Schema<ListRepoOrganizationVariablesResponseVariablesList>;
 
@@ -634,7 +632,7 @@ export interface ListRepoOrganizationVariablesResponse {
   total_count: number;
   variables: ListRepoOrganizationVariablesResponseVariablesList;
 }
-export const ListRepoOrganizationVariablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepoOrganizationVariablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     variables: ListRepoOrganizationVariablesResponseVariablesList,
@@ -653,7 +651,7 @@ export interface ListRepoSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -663,14 +661,14 @@ export const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRepoSecretsRequest" }) as any as S.Schema<ListRepoSecretsRequest>;
 
 export type ListRepoSecretsResponseSecretsList = Array<ActionsSecret>;
-export const ListRepoSecretsResponseSecretsList =
+const ListRepoSecretsResponseSecretsList =
   ListRepoOrganizationSecretsResponseSecretsList as any as S.Schema<ListRepoSecretsResponseSecretsList>;
 
 export interface ListRepoSecretsResponse {
   total_count: number;
   secrets: ListRepoSecretsResponseSecretsList;
 }
-export const ListRepoSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepoSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     secrets: ListRepoSecretsResponseSecretsList,
@@ -687,7 +685,7 @@ export interface ListRepoVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRepoVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -697,14 +695,11 @@ export const ListRepoVariablesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRepoVariablesRequest" }) as any as S.Schema<ListRepoVariablesRequest>;
 
 export type ListRepoVariablesResponseVariablesList = Array<ActionsVariable>;
-export const ListRepoVariablesResponseVariablesList =
-  ListRepoOrganizationVariablesResponseVariablesList as any as S.Schema<ListRepoVariablesResponseVariablesList>;
-
 export interface ListRepoVariablesResponse {
   total_count: number;
   variables: ListRepoVariablesResponseVariablesList;
 }
-export const ListRepoVariablesResponse =
+const ListRepoVariablesResponse =
   ListRepoOrganizationVariablesResponse as any as S.Schema<ListRepoVariablesResponse>;
 
 export interface ListSelectedReposForOrgSecretRequest {
@@ -717,7 +712,7 @@ export interface ListSelectedReposForOrgSecretRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -759,7 +754,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -787,13 +782,13 @@ export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SimpleUser" }) as any as S.Schema<SimpleUser>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
+const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -802,7 +797,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -822,7 +817,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -839,7 +834,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -850,13 +845,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -865,98 +860,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -966,7 +945,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -981,16 +960,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -1012,7 +990,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -1035,7 +1013,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -1136,7 +1114,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1232,7 +1210,7 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepository" }) as any as S.Schema<MinimalRepository>;
 
 export type ListSelectedReposForOrgSecretResponseRepositoriesList = Array<MinimalRepository>;
-export const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ S.Array(
+const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ S.Array(
   MinimalRepository,
 ) as any as S.Schema<ListSelectedReposForOrgSecretResponseRepositoriesList>;
 
@@ -1240,7 +1218,7 @@ export interface ListSelectedReposForOrgSecretResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgSecretResponseRepositoriesList;
 }
-export const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     repositories: ListSelectedReposForOrgSecretResponseRepositoriesList,
@@ -1259,7 +1237,7 @@ export interface ListSelectedReposForOrgVariableRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListSelectedReposForOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSelectedReposForOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1273,14 +1251,11 @@ export const ListSelectedReposForOrgVariableRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListSelectedReposForOrgVariableRequest>;
 
 export type ListSelectedReposForOrgVariableResponseRepositoriesList = Array<MinimalRepository>;
-export const ListSelectedReposForOrgVariableResponseRepositoriesList =
-  ListSelectedReposForOrgSecretResponseRepositoriesList as any as S.Schema<ListSelectedReposForOrgVariableResponseRepositoriesList>;
-
 export interface ListSelectedReposForOrgVariableResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgVariableResponseRepositoriesList;
 }
-export const ListSelectedReposForOrgVariableResponse =
+const ListSelectedReposForOrgVariableResponse =
   ListSelectedReposForOrgSecretResponse as any as S.Schema<ListSelectedReposForOrgVariableResponse>;
 
 export interface RemoveSelectedRepoFromOrgSecretRequest {
@@ -1290,7 +1265,7 @@ export interface RemoveSelectedRepoFromOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -1307,7 +1282,7 @@ export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
 
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
-export const RemoveSelectedRepoFromOrgSecretResponse =
+const RemoveSelectedRepoFromOrgSecretResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
 
 export interface RemoveSelectedRepoFromOrgVariableRequest {
@@ -1317,7 +1292,7 @@ export interface RemoveSelectedRepoFromOrgVariableRequest {
   name: string;
   repository_id: number;
 }
-export const RemoveSelectedRepoFromOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveSelectedRepoFromOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1334,12 +1309,12 @@ export const RemoveSelectedRepoFromOrgVariableRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RemoveSelectedRepoFromOrgVariableRequest>;
 
 export interface RemoveSelectedRepoFromOrgVariableResponse {}
-export const RemoveSelectedRepoFromOrgVariableResponse =
+const RemoveSelectedRepoFromOrgVariableResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<RemoveSelectedRepoFromOrgVariableResponse>;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/agents/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-export const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
+const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
   CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
 
 export interface SetSelectedReposForOrgSecretRequest {
@@ -1350,7 +1325,7 @@ export interface SetSelectedReposForOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/agents/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList;
 }
-export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -1367,12 +1342,12 @@ export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
 
 export interface SetSelectedReposForOrgSecretResponse {}
-export const SetSelectedReposForOrgSecretResponse =
+const SetSelectedReposForOrgSecretResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
 
 /** The IDs of the repositories that can access the organization variable. */
 export type SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
-export const SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList =
+const SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList =
   CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList>;
 
 export interface SetSelectedReposForOrgVariableRequest {
@@ -1383,7 +1358,7 @@ export interface SetSelectedReposForOrgVariableRequest {
   /** The IDs of the repositories that can access the organization variable. */
   selected_repository_ids: SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList;
 }
-export const SetSelectedReposForOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSelectedReposForOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1396,16 +1371,16 @@ export const SetSelectedReposForOrgVariableRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SetSelectedReposForOrgVariableRequest>;
 
 export interface SetSelectedReposForOrgVariableResponse {}
-export const SetSelectedReposForOrgVariableResponse =
+const SetSelectedReposForOrgVariableResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetSelectedReposForOrgVariableResponse>;
 
 /** The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable. */
 export type UpdateOrgVariableRequestVisibility = "all" | "private" | "selected";
-export const UpdateOrgVariableRequestVisibility = S.String;
+const UpdateOrgVariableRequestVisibility = S.String;
 
 /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
 export type UpdateOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
-export const UpdateOrgVariableRequestSelectedRepositoryIdsList =
+const UpdateOrgVariableRequestSelectedRepositoryIdsList =
   CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<UpdateOrgVariableRequestSelectedRepositoryIdsList>;
 
 export interface UpdateOrgVariableRequest {
@@ -1420,7 +1395,7 @@ export interface UpdateOrgVariableRequest {
   /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
   selected_repository_ids?: UpdateOrgVariableRequestSelectedRepositoryIdsList;
 }
-export const UpdateOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1431,7 +1406,7 @@ export const UpdateOrgVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateOrgVariableRequest" }) as any as S.Schema<UpdateOrgVariableRequest>;
 
 export interface UpdateOrgVariableResponse {}
-export const UpdateOrgVariableResponse =
+const UpdateOrgVariableResponse =
   DeleteOrgSecretResponse as any as S.Schema<UpdateOrgVariableResponse>;
 
 export interface UpdateRepoVariableRequest {
@@ -1444,7 +1419,7 @@ export interface UpdateRepoVariableRequest {
   /** The value of the variable. */
   value?: string;
 }
-export const UpdateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1458,7 +1433,7 @@ export const UpdateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRepoVariableRequest>;
 
 export interface UpdateRepoVariableResponse {}
-export const UpdateRepoVariableResponse =
+const UpdateRepoVariableResponse =
   DeleteOrgSecretResponse as any as S.Schema<UpdateRepoVariableResponse>;
 
 export type AddSelectedRepoToOrgSecretError = Conflict | GithubOpError;

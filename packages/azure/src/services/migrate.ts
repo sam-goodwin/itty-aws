@@ -17,7 +17,7 @@ export interface AssessmentScopeParameters {
   /** Azure Resource Graph query selecting the assessed resources. */
   azureResourceGraphQuery?: string;
 }
-export const AssessmentScopeParameters = /*@__PURE__*/ S.suspend(() =>
+const AssessmentScopeParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverGroupId: S.optional(S.String),
     scopeType: S.optional(S.String),
@@ -29,7 +29,7 @@ export const AssessmentScopeParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Environment Type for Azure. */
 export type AzureEnvironmentType = "Unknown" | "DevTest" | "Production";
-export const AzureEnvironmentType = S.String;
+const AzureEnvironmentType = S.String;
 
 /** Currency for Azure. */
 export type AzureCurrency =
@@ -59,15 +59,15 @@ export type AzureCurrency =
   | "ARS"
   | "AUD"
   | "CNY";
-export const AzureCurrency = S.String;
+const AzureCurrency = S.String;
 
 /** Time Range for Performance Data. */
 export type TimeRange = "Day" | "Week" | "Month" | "Custom";
-export const TimeRange = S.String;
+const TimeRange = S.String;
 
 /** Percentile for Performance Data. */
 export type Percentile = "Percentile50" | "Percentile90" | "Percentile95" | "Percentile99";
-export const Percentile = S.String;
+const Percentile = S.String;
 
 /** Data model of Performance Data Settings. */
 export interface PerfDataSettings {
@@ -80,7 +80,7 @@ export interface PerfDataSettings {
   /** Gets percentile utilization for performance data. */
   percentile: Percentile | (string & {});
 }
-export const PerfDataSettings = /*@__PURE__*/ S.suspend(() =>
+const PerfDataSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeRange: TimeRange,
     perfDataStartTime: S.optional(S.String),
@@ -99,19 +99,19 @@ export type AzureVmCategory =
   | "MemoryOptimized"
   | "StorageOptimized"
   | "Isolated";
-export const AzureVmCategory = S.String;
+const AzureVmCategory = S.String;
 
 /** Consolidation Type. */
 export type ConsolidationType = "Full" | "AsOnSource";
-export const ConsolidationType = S.String;
+const ConsolidationType = S.String;
 
 /** Pricing Tier for Azure. */
 export type PricingTier = "Standard" | "Free";
-export const PricingTier = S.String;
+const PricingTier = S.String;
 
 /** Assessment Sizing Criteria. */
 export type AssessmentSizingCriterion = "PerformanceBased" | "AsOnPremises";
-export const AssessmentSizingCriterion = S.String;
+const AssessmentSizingCriterion = S.String;
 
 /** Savings Options for Azure. */
 export type SavingsOptions =
@@ -120,7 +120,7 @@ export type SavingsOptions =
   | "ThreeYearsSavings"
   | "OneYearReserved"
   | "ThreeYearsReserved";
-export const SavingsOptions = S.String;
+const SavingsOptions = S.String;
 
 /** AKS assessment savings settings. */
 export interface AKSAssessmentSavingsSettings {
@@ -129,7 +129,7 @@ export interface AKSAssessmentSavingsSettings {
   /** Azure offer code, e.g. `MSAZR0003P` (pay-as-you-go). */
   azureOfferCode?: string;
 }
-export const AKSAssessmentSavingsSettings = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentSavingsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsOptions: S.optional(SavingsOptions),
     azureOfferCode: S.optional(S.String),
@@ -140,7 +140,7 @@ export const AKSAssessmentSavingsSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Licensing Program for Azure. */
 export type LicensingProgram = "Default" | "EA";
-export const LicensingProgram = S.String;
+const LicensingProgram = S.String;
 
 /** AKS assessment billing settings. */
 export interface AKSAssessmentBillingSettings {
@@ -149,7 +149,7 @@ export interface AKSAssessmentBillingSettings {
   /** Subscription the prices are computed for. */
   subscriptionId?: string;
 }
-export const AKSAssessmentBillingSettings = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentBillingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     licensingProgram: S.optional(LicensingProgram),
     subscriptionId: S.optional(S.String),
@@ -185,7 +185,7 @@ export interface AKSAssessmentSettings {
   /** Billing settings. */
   billingSettings?: AKSAssessmentBillingSettings;
 }
-export const AKSAssessmentSettings = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureLocation: S.String,
     environmentType: AzureEnvironmentType,
@@ -209,7 +209,7 @@ export interface AKSAssessmentPropertiesInput {
   /** Gets or sets AKS Assessment Settings. */
   settings: AKSAssessmentSettings;
 }
-export const AKSAssessmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(AssessmentScopeParameters),
     settings: AKSAssessmentSettings,
@@ -230,7 +230,7 @@ export interface CreateAksAssessmentOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: AKSAssessmentPropertiesInput;
 }
-export const CreateAksAssessmentOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAksAssessmentOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -251,11 +251,11 @@ export const CreateAksAssessmentOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -272,7 +272,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -285,7 +285,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Provisioning Status. */
 export type ProvisioningStatus = "Unknown" | "Succeeded" | "Failed" | "Canceled" | "InProgress";
-export const ProvisioningStatus = S.String;
+const ProvisioningStatus = S.String;
 
 /** Assessment Status. */
 export type AssessmentStatus =
@@ -297,7 +297,7 @@ export type AssessmentStatus =
   | "OutOfSync"
   | "OutDated"
   | "Deleted";
-export const AssessmentStatus = S.String;
+const AssessmentStatus = S.String;
 
 /** Data model of AKS Assessment Details. */
 export interface AKSAssessmentDetails {
@@ -320,7 +320,7 @@ export interface AKSAssessmentDetails {
   /** Gets the total monthly cost. */
   totalMonthlyCost: number;
 }
-export const AKSAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricesTimestamp: S.optional(S.String),
     confidenceRatingInPercentage: S.optional(S.Number),
@@ -345,7 +345,7 @@ export interface AKSAssessmentProperties {
   /** Gets AKS Assessment Details. */
   details?: AKSAssessmentDetails;
 }
-export const AKSAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningStatus),
     scope: S.optional(AssessmentScopeParameters),
@@ -368,7 +368,7 @@ export interface CreateAksAssessmentOperationResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const CreateAksAssessmentOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAksAssessmentOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -383,7 +383,7 @@ export const CreateAksAssessmentOperationResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type CreateAssessmentProjectsOperationRequestTagsMap = { [key: string]: string | undefined };
-export const CreateAssessmentProjectsOperationRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateAssessmentProjectsOperationRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateAssessmentProjectsOperationRequestTagsMap>;
@@ -397,11 +397,11 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Project Status. */
 export type ProjectStatus = "Active" | "Inactive";
-export const ProjectStatus = S.String;
+const ProjectStatus = S.String;
 
 /** Properties of a project. */
 export interface ProjectPropertiesInput {
@@ -420,7 +420,7 @@ export interface ProjectPropertiesInput {
   /** The ARM id of the storage account used for interactions when public access is disabled. */
   customerStorageAccountArmId?: string;
 }
-export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     assessmentSolutionId: S.optional(S.String),
@@ -446,7 +446,7 @@ export interface CreateAssessmentProjectsOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: ProjectPropertiesInput;
 }
-export const CreateAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -470,12 +470,12 @@ export const CreateAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(
 export type CreateAssessmentProjectsOperationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const CreateAssessmentProjectsOperationResponseTagsMap =
+const CreateAssessmentProjectsOperationResponseTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateAssessmentProjectsOperationResponseTagsMap>;
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
@@ -484,7 +484,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -492,7 +492,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -503,7 +503,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -519,7 +519,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
@@ -532,7 +532,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -556,7 +556,7 @@ export interface PrivateEndpointConnection {
   /** Properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -570,7 +570,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections to the project. */
 export type ProjectPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const ProjectPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const ProjectPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<ProjectPropertiesPrivateEndpointConnectionsList>;
 
@@ -599,7 +599,7 @@ export interface ProjectProperties {
   /** The ARM id of the storage account used for interactions when public access is disabled. */
   customerStorageAccountArmId?: string;
 }
-export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
+const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     createdTimestamp: S.optional(S.String),
@@ -631,7 +631,7 @@ export interface CreateAssessmentProjectsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProjectProperties;
 }
-export const CreateAssessmentProjectsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAssessmentProjectsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -646,7 +646,7 @@ export const CreateAssessmentProjectsOperationResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateAssessmentProjectsOperationResponse>;
 
 export type AzurePricingTier = "Standard" | "Basic";
-export const AzurePricingTier = S.String;
+const AzurePricingTier = S.String;
 
 export type AzureStorageRedundancy =
   | "Unknown"
@@ -654,13 +654,13 @@ export type AzureStorageRedundancy =
   | "ZoneRedundant"
   | "GeoRedundant"
   | "ReadAccessGeoRedundant";
-export const AzureStorageRedundancy = S.String;
+const AzureStorageRedundancy = S.String;
 
 export type AzureReservedInstance = "None" | "RI1Year" | "RI3Year";
-export const AzureReservedInstance = S.String;
+const AzureReservedInstance = S.String;
 
 export type AzureHybridUseBenefit = "Unknown" | "Yes" | "No";
-export const AzureHybridUseBenefit = S.String;
+const AzureHybridUseBenefit = S.String;
 
 export type AzureDiskType =
   | "Unknown"
@@ -670,13 +670,13 @@ export type AzureDiskType =
   | "StandardOrPremium"
   | "Ultra"
   | "PremiumV2";
-export const AzureDiskType = S.String;
+const AzureDiskType = S.String;
 
 /** Gets or sets the azure storage type. Premium, Standard etc. */
 export type MachineAssessmentPropertiesInputAzureDiskTypesList = Array<
   AzureDiskType | (string & {})
 >;
-export const MachineAssessmentPropertiesInputAzureDiskTypesList = /*@__PURE__*/ S.Array(
+const MachineAssessmentPropertiesInputAzureDiskTypesList = /*@__PURE__*/ S.Array(
   AzureDiskType,
 ) as any as S.Schema<MachineAssessmentPropertiesInputAzureDiskTypesList>;
 
@@ -733,13 +733,13 @@ export type AzureVmFamily =
   | "Eadsv5_series"
   | "Ebsv5_series"
   | "Ebdsv5_series";
-export const AzureVmFamily = S.String;
+const AzureVmFamily = S.String;
 
 /** Gets or sets the Azure VM families. */
 export type MachineAssessmentPropertiesInputAzureVmFamiliesList = Array<
   AzureVmFamily | (string & {})
 >;
-export const MachineAssessmentPropertiesInputAzureVmFamiliesList =
+const MachineAssessmentPropertiesInputAzureVmFamiliesList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<MachineAssessmentPropertiesInputAzureVmFamiliesList>;
 
 /** Details on the total up-time for the VM. */
@@ -749,7 +749,7 @@ export interface VmUptime {
   /** Number of hours per day for VM uptime. */
   hoursPerDay?: number;
 }
-export const VmUptime = /*@__PURE__*/ S.suspend(() =>
+const VmUptime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     daysPerMonth: S.optional(S.Number),
     hoursPerDay: S.optional(S.Number),
@@ -800,7 +800,7 @@ export type AzureOfferCode =
   | "MSAZR0243P"
   | "SavingsPlan1Year"
   | "SavingsPlan3Year";
-export const AzureOfferCode = S.String;
+const AzureOfferCode = S.String;
 
 /** Properties of an assessment. */
 export interface MachineAssessmentPropertiesInput {
@@ -845,7 +845,7 @@ export interface MachineAssessmentPropertiesInput {
   /** Assessment sizing criterion. */
   sizingCriterion?: AssessmentSizingCriterion | (string & {});
 }
-export const MachineAssessmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MachineAssessmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     eaSubscriptionId: S.optional(S.String),
@@ -886,7 +886,7 @@ export interface CreateAssessmentsOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: MachineAssessmentPropertiesInput;
 }
-export const CreateAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -910,7 +910,7 @@ export const CreateAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
 export type MachineAssessmentPropertiesAssessmentErrorSummaryMap = {
   [key: string]: number | undefined;
 };
-export const MachineAssessmentPropertiesAssessmentErrorSummaryMap = /*@__PURE__*/ S.Record(
+const MachineAssessmentPropertiesAssessmentErrorSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<MachineAssessmentPropertiesAssessmentErrorSummaryMap>;
@@ -926,7 +926,7 @@ export type CostComponentName =
   | "MonthlyAvsExternalStorageCost"
   | "MonthlyAvsNetworkCost"
   | "MonthlyVcfByolCostDifference";
-export const CostComponentName = S.String;
+const CostComponentName = S.String;
 
 /** Class to represent the component of the cost. */
 export interface CostComponent {
@@ -937,7 +937,7 @@ export interface CostComponent {
   /** The textual description of the component. */
   description?: string;
 }
-export const CostComponent = /*@__PURE__*/ S.suspend(() =>
+const CostComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(CostComponentName),
     value: S.optional(S.Number),
@@ -947,53 +947,52 @@ export const CostComponent = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the collection of cost components. */
 export type MachineAssessmentPropertiesCostComponentsList = Array<CostComponent>;
-export const MachineAssessmentPropertiesCostComponentsList = /*@__PURE__*/ S.Array(
+const MachineAssessmentPropertiesCostComponentsList = /*@__PURE__*/ S.Array(
   CostComponent,
 ) as any as S.Schema<MachineAssessmentPropertiesCostComponentsList>;
 
 /** Gets or sets the azure storage type. Premium, Standard etc. */
 export type MachineAssessmentPropertiesAzureDiskTypesList = Array<AzureDiskType>;
-export const MachineAssessmentPropertiesAzureDiskTypesList =
+const MachineAssessmentPropertiesAzureDiskTypesList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<MachineAssessmentPropertiesAzureDiskTypesList>;
 
 /** Gets or sets the Azure VM families. */
 export type MachineAssessmentPropertiesAzureVmFamiliesList = Array<AzureVmFamily>;
-export const MachineAssessmentPropertiesAzureVmFamiliesList =
+const MachineAssessmentPropertiesAzureVmFamiliesList =
   MachineAssessmentPropertiesInputAzureVmFamiliesList as any as S.Schema<MachineAssessmentPropertiesAzureVmFamiliesList>;
 
 /** Gets the distribution of sqlInstances by support status. */
 export type MachineAssessmentPropertiesDistributionBySupportStatusMap = {
   [key: string]: number | undefined;
 };
-export const MachineAssessmentPropertiesDistributionBySupportStatusMap =
+const MachineAssessmentPropertiesDistributionBySupportStatusMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<MachineAssessmentPropertiesDistributionBySupportStatusMap>;
 
 /** Gets the distribution distribution of sqlInstances by service pack insight. */
 export type MachineAssessmentPropertiesDistributionByServicePackInsightMap = {
   [key: string]: number | undefined;
 };
-export const MachineAssessmentPropertiesDistributionByServicePackInsightMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Number,
-  ) as any as S.Schema<MachineAssessmentPropertiesDistributionByServicePackInsightMap>;
+const MachineAssessmentPropertiesDistributionByServicePackInsightMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Number,
+) as any as S.Schema<MachineAssessmentPropertiesDistributionByServicePackInsightMap>;
 
 /** Gets the distribution by os name. */
 export type MachineAssessmentPropertiesDistributionByOsNameMap = {
   [key: string]: number | undefined;
 };
-export const MachineAssessmentPropertiesDistributionByOsNameMap =
+const MachineAssessmentPropertiesDistributionByOsNameMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<MachineAssessmentPropertiesDistributionByOsNameMap>;
 
 /** Gets or sets the Cloud suitability summary for all the machines in the assessment. */
 export type MachineAssessmentPropertiesSuitabilitySummaryMap = {
   [key: string]: number | undefined;
 };
-export const MachineAssessmentPropertiesSuitabilitySummaryMap =
+const MachineAssessmentPropertiesSuitabilitySummaryMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<MachineAssessmentPropertiesSuitabilitySummaryMap>;
 
 export type GroupType = "Default" | "Import";
-export const GroupType = S.String;
+const GroupType = S.String;
 
 export type AssessmentType =
   | "Unknown"
@@ -1001,10 +1000,10 @@ export type AssessmentType =
   | "AvsAssessment"
   | "SqlAssessment"
   | "WebAppAssessment";
-export const AssessmentType = S.String;
+const AssessmentType = S.String;
 
 export type AssessmentStage = "InProgress" | "UnderReview" | "Approved";
-export const AssessmentStage = S.String;
+const AssessmentStage = S.String;
 
 /** Properties of an assessment. */
 export interface MachineAssessmentProperties {
@@ -1093,7 +1092,7 @@ export interface MachineAssessmentProperties {
   /** Schema version. */
   schemaVersion?: string;
 }
-export const MachineAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
+const MachineAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     assessmentErrorSummary: S.optional(MachineAssessmentPropertiesAssessmentErrorSummaryMap),
@@ -1158,7 +1157,7 @@ export interface CreateAssessmentsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: MachineAssessmentProperties;
 }
-export const CreateAssessmentsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAssessmentsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1178,39 +1177,38 @@ export type FttAndRaidLevel =
   | "Ftt2Raid1"
   | "Ftt2Raid6"
   | "Ftt3Raid1";
-export const FttAndRaidLevel = S.String;
+const FttAndRaidLevel = S.String;
 
 /** List of Failures to tolerate and RAID levels in a common property. */
 export type AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList = Array<
   FttAndRaidLevel | (string & {})
 >;
-export const AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList =
-  /*@__PURE__*/ S.Array(
-    FttAndRaidLevel,
-  ) as any as S.Schema<AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList>;
+const AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList = /*@__PURE__*/ S.Array(
+  FttAndRaidLevel,
+) as any as S.Schema<AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList>;
 
 export type AzureAvsNodeType = "Unknown" | "AV36" | "AV36P" | "AV52" | "AV64";
-export const AzureAvsNodeType = S.String;
+const AzureAvsNodeType = S.String;
 
 /** AVS node types. */
 export type AvsAssessmentPropertiesInputNodeTypesList = Array<AzureAvsNodeType | (string & {})>;
-export const AvsAssessmentPropertiesInputNodeTypesList =
+const AvsAssessmentPropertiesInputNodeTypesList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<AvsAssessmentPropertiesInputNodeTypesList>;
 
 /** Different External storage skus. */
 export type ExternalStorageType = "Unknown" | "None" | "AnfStandard" | "AnfPremium" | "AnfUltra";
-export const ExternalStorageType = S.String;
+const ExternalStorageType = S.String;
 
 /** List of AVS external storage types. */
 export type AvsAssessmentPropertiesInputExternalStorageTypesList = Array<
   ExternalStorageType | (string & {})
 >;
-export const AvsAssessmentPropertiesInputExternalStorageTypesList =
+const AvsAssessmentPropertiesInputExternalStorageTypesList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<AvsAssessmentPropertiesInputExternalStorageTypesList>;
 
 /** Scenarios with which Avs Assessments can be created. */
 export type AvsAssessmentScenario = "Unknown" | "NewAvsSddc" | "AvsSddcExpansion";
-export const AvsAssessmentScenario = S.String;
+const AvsAssessmentScenario = S.String;
 
 /** Location for Azure. */
 export type AzureLocation =
@@ -1274,7 +1272,7 @@ export type AzureLocation =
   | "UsSecWest"
   | "SwedenCentral"
   | "QatarCentral";
-export const AzureLocation = S.String;
+const AzureLocation = S.String;
 
 /** Properties of the AVS assessment. */
 export interface AvsAssessmentPropertiesInput {
@@ -1327,7 +1325,7 @@ export interface AvsAssessmentPropertiesInput {
   /** Assessment sizing criterion. */
   sizingCriterion?: AssessmentSizingCriterion | (string & {});
 }
-export const AvsAssessmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     failuresToTolerateAndRaidLevel: S.optional(FttAndRaidLevel),
@@ -1374,7 +1372,7 @@ export interface CreateAvsAssessmentsOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: AvsAssessmentPropertiesInput;
 }
-export const CreateAvsAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAvsAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1398,27 +1396,27 @@ export const CreateAvsAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =
 export type AvsAssessmentPropertiesAssessmentErrorSummaryMap = {
   [key: string]: number | undefined;
 };
-export const AvsAssessmentPropertiesAssessmentErrorSummaryMap =
+const AvsAssessmentPropertiesAssessmentErrorSummaryMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<AvsAssessmentPropertiesAssessmentErrorSummaryMap>;
 
 /** List of Failures to tolerate and RAID levels in a common property. */
 export type AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList = Array<FttAndRaidLevel>;
-export const AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList =
+const AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<AvsAssessmentPropertiesFailuresToTolerateAndRaidLevelListList>;
 
 /** AVS node types. */
 export type AvsAssessmentPropertiesNodeTypesList = Array<AzureAvsNodeType>;
-export const AvsAssessmentPropertiesNodeTypesList =
+const AvsAssessmentPropertiesNodeTypesList =
   AvsAssessmentPropertiesInputNodeTypesList as any as S.Schema<AvsAssessmentPropertiesNodeTypesList>;
 
 /** List of AVS external storage types. */
 export type AvsAssessmentPropertiesExternalStorageTypesList = Array<ExternalStorageType>;
-export const AvsAssessmentPropertiesExternalStorageTypesList =
+const AvsAssessmentPropertiesExternalStorageTypesList =
   AvsAssessmentPropertiesInputExternalStorageTypesList as any as S.Schema<AvsAssessmentPropertiesExternalStorageTypesList>;
 
 /** collection of cost components. */
 export type AvsAssessmentPropertiesCostComponentsList = Array<CostComponent>;
-export const AvsAssessmentPropertiesCostComponentsList =
+const AvsAssessmentPropertiesCostComponentsList =
   MachineAssessmentPropertiesCostComponentsList as any as S.Schema<AvsAssessmentPropertiesCostComponentsList>;
 
 /** Cloud Suitability for Azure. */
@@ -1428,7 +1426,7 @@ export type CloudSuitability =
   | "Suitable"
   | "ConditionallySuitable"
   | "ReadinessUnknown";
-export const CloudSuitability = S.String;
+const CloudSuitability = S.String;
 
 export type AzureAvsSuitabilityExplanation =
   | "Unknown"
@@ -1436,7 +1434,7 @@ export type AzureAvsSuitabilityExplanation =
   | "UnsupportedLocationForSelectedNode"
   | "InternalErrorInRecommendation"
   | "UnsupportedLocationForSelectedExternalStorageTypes";
-export const AzureAvsSuitabilityExplanation = S.String;
+const AzureAvsSuitabilityExplanation = S.String;
 
 /** Details on the Estimated nodes for AVS Assessment. */
 export interface AvsEstimatedNode {
@@ -1463,7 +1461,7 @@ export interface AvsEstimatedNode {
   /** FttRaidLevel recommended for Node. */
   fttRaidLevel?: FttAndRaidLevel;
 }
-export const AvsEstimatedNode = /*@__PURE__*/ S.suspend(() =>
+const AvsEstimatedNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monthlyPrice: S.optional(S.Number),
     nodeType: S.optional(AzureAvsNodeType),
@@ -1481,7 +1479,7 @@ export const AvsEstimatedNode = /*@__PURE__*/ S.suspend(() =>
 
 /** Estimated AVS SKU for Assessment. */
 export type AvsAssessmentPropertiesAvsEstimatedNodesList = Array<AvsEstimatedNode>;
-export const AvsAssessmentPropertiesAvsEstimatedNodesList = /*@__PURE__*/ S.Array(
+const AvsAssessmentPropertiesAvsEstimatedNodesList = /*@__PURE__*/ S.Array(
   AvsEstimatedNode,
 ) as any as S.Schema<AvsAssessmentPropertiesAvsEstimatedNodesList>;
 
@@ -1496,7 +1494,7 @@ export interface AvsEstimatedExternalStorage {
   /** Predicted storage utilization. */
   storageUtilization?: number;
 }
-export const AvsEstimatedExternalStorage = /*@__PURE__*/ S.suspend(() =>
+const AvsEstimatedExternalStorage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monthlyPrice: S.optional(S.Number),
     storageType: S.optional(ExternalStorageType),
@@ -1510,13 +1508,13 @@ export const AvsEstimatedExternalStorage = /*@__PURE__*/ S.suspend(() =>
 /** Estimated External Storage for Assessment. */
 export type AvsAssessmentPropertiesAvsEstimatedExternalStoragesList =
   Array<AvsEstimatedExternalStorage>;
-export const AvsAssessmentPropertiesAvsEstimatedExternalStoragesList = /*@__PURE__*/ S.Array(
+const AvsAssessmentPropertiesAvsEstimatedExternalStoragesList = /*@__PURE__*/ S.Array(
   AvsEstimatedExternalStorage,
 ) as any as S.Schema<AvsAssessmentPropertiesAvsEstimatedExternalStoragesList>;
 
 /** Different network skus. */
 export type NetworkSkuType = "Unknown" | "None" | "ExpressRouteUltra";
-export const NetworkSkuType = S.String;
+const NetworkSkuType = S.String;
 
 /** Details on the Estimated Network Costs for AVS Assessment. */
 export interface AvsEstimatedNetwork {
@@ -1525,7 +1523,7 @@ export interface AvsEstimatedNetwork {
   /** Recommended Network Sku. */
   networkType?: NetworkSkuType;
 }
-export const AvsEstimatedNetwork = /*@__PURE__*/ S.suspend(() =>
+const AvsEstimatedNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monthlyPrice: S.optional(S.Number),
     networkType: S.optional(NetworkSkuType),
@@ -1534,13 +1532,13 @@ export const AvsEstimatedNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** Estimated External Storage for Assessment. */
 export type AvsAssessmentPropertiesAvsEstimatedNetworksList = Array<AvsEstimatedNetwork>;
-export const AvsAssessmentPropertiesAvsEstimatedNetworksList = /*@__PURE__*/ S.Array(
+const AvsAssessmentPropertiesAvsEstimatedNetworksList = /*@__PURE__*/ S.Array(
   AvsEstimatedNetwork,
 ) as any as S.Schema<AvsAssessmentPropertiesAvsEstimatedNetworksList>;
 
 /** Cloud suitability summary for all the machines in the assessment. */
 export type AvsAssessmentPropertiesSuitabilitySummaryMap = { [key: string]: number | undefined };
-export const AvsAssessmentPropertiesSuitabilitySummaryMap =
+const AvsAssessmentPropertiesSuitabilitySummaryMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<AvsAssessmentPropertiesSuitabilitySummaryMap>;
 
 /** Properties of the AVS assessment. */
@@ -1648,7 +1646,7 @@ export interface AvsAssessmentProperties {
   /** Schema version. */
   schemaVersion?: string;
 }
-export const AvsAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     assessmentErrorSummary: S.optional(AvsAssessmentPropertiesAssessmentErrorSummaryMap),
@@ -1720,7 +1718,7 @@ export interface CreateAvsAssessmentsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AvsAssessmentProperties;
 }
-export const CreateAvsAssessmentsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAvsAssessmentsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1736,7 +1734,7 @@ export const CreateAvsAssessmentsOperationResponse = /*@__PURE__*/ S.suspend(() 
 export type GroupPropertiesInputSupportedAssessmentTypesList = Array<
   AssessmentType | (string & {})
 >;
-export const GroupPropertiesInputSupportedAssessmentTypesList =
+const GroupPropertiesInputSupportedAssessmentTypesList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<GroupPropertiesInputSupportedAssessmentTypesList>;
 
 /** Properties of group resource. */
@@ -1748,7 +1746,7 @@ export interface GroupPropertiesInput {
   /** The type of group. */
   groupType?: GroupType | (string & {});
 }
-export const GroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     supportedAssessmentTypes: S.optional(GroupPropertiesInputSupportedAssessmentTypesList),
@@ -1768,7 +1766,7 @@ export interface CreateGroupsOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: GroupPropertiesInput;
 }
-export const CreateGroupsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1788,16 +1786,16 @@ export const CreateGroupsOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGroupsOperationRequest>;
 
 export type GroupStatus = "Created" | "Updated" | "Running" | "Completed" | "Invalid";
-export const GroupStatus = S.String;
+const GroupStatus = S.String;
 
 /** List of References to Assessments created on this group. */
 export type GroupPropertiesAssessmentsList = Array<string>;
-export const GroupPropertiesAssessmentsList =
+const GroupPropertiesAssessmentsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<GroupPropertiesAssessmentsList>;
 
 /** List of assessment types supported on this group. */
 export type GroupPropertiesSupportedAssessmentTypesList = Array<AssessmentType>;
-export const GroupPropertiesSupportedAssessmentTypesList =
+const GroupPropertiesSupportedAssessmentTypesList =
   GroupPropertiesInputSupportedAssessmentTypesList as any as S.Schema<GroupPropertiesSupportedAssessmentTypesList>;
 
 /** Properties of group resource. */
@@ -1821,7 +1819,7 @@ export interface GroupProperties {
   /** The type of group. */
   groupType?: GroupType;
 }
-export const GroupProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     groupStatus: S.optional(GroupStatus),
@@ -1847,7 +1845,7 @@ export interface CreateGroupsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: GroupProperties;
 }
-export const CreateGroupsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1861,7 +1859,7 @@ export const CreateGroupsOperationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets list of hosts (FQDN) currently being tracked by the cluster. */
 export type HypervClusterPropertiesInputHostFqdnListList = Array<string>;
-export const HypervClusterPropertiesInputHostFqdnListList =
+const HypervClusterPropertiesInputHostFqdnListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<HypervClusterPropertiesInputHostFqdnListList>;
 
 /** The status of the current operation. */
@@ -1873,7 +1871,7 @@ export type ProvisioningState_2 =
   | "Failed"
   | "Succeeded"
   | "Canceled";
-export const ProvisioningState_2 = S.String;
+const ProvisioningState_2 = S.String;
 
 /** The properties of Hyperv Cluster */
 export interface HypervClusterPropertiesInput {
@@ -1886,7 +1884,7 @@ export interface HypervClusterPropertiesInput {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2 | (string & {});
 }
-export const HypervClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const HypervClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
     runAsAccountId: S.optional(S.String),
@@ -1909,7 +1907,7 @@ export interface CreateHypervClusterControllerClusterRequest {
   /** The resource-specific properties for this resource. */
   properties?: HypervClusterPropertiesInput;
 }
-export const CreateHypervClusterControllerClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHypervClusterControllerClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1930,12 +1928,12 @@ export const CreateHypervClusterControllerClusterRequest = /*@__PURE__*/ S.suspe
 
 /** Gets or sets list of hosts (FQDN) currently being tracked by the cluster. */
 export type HypervClusterPropertiesHostFqdnListList = Array<string>;
-export const HypervClusterPropertiesHostFqdnListList =
+const HypervClusterPropertiesHostFqdnListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<HypervClusterPropertiesHostFqdnListList>;
 
 /** Gets the message parameters. */
 export type HealthErrorDetailsMessageParametersMap = { [key: string]: string | undefined };
-export const HealthErrorDetailsMessageParametersMap =
+const HealthErrorDetailsMessageParametersMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<HealthErrorDetailsMessageParametersMap>;
 
 /** HealthError Details Source */
@@ -1943,7 +1941,7 @@ export type HealthErrorDetailsSource =
   | "RefreshFabricLayout"
   | "RefreshFabricLayoutGuest"
   | "RefreshFabricLayoutDependencyMap";
-export const HealthErrorDetailsSource = S.String;
+const HealthErrorDetailsSource = S.String;
 
 /** Gets discovery scope for which error is encountered. */
 export type HealthErrorDetailsDiscoveryScope =
@@ -1952,7 +1950,7 @@ export type HealthErrorDetailsDiscoveryScope =
   | "StaticData"
   | "SQLServerConnectionInfo"
   | "DiscoveryTargets";
-export const HealthErrorDetailsDiscoveryScope = S.String;
+const HealthErrorDetailsDiscoveryScope = S.String;
 
 /** Error contract returned when some exception occurs in Rest API. */
 export interface HealthErrorDetails {
@@ -1983,7 +1981,7 @@ export interface HealthErrorDetails {
   /** Gets discovery scope for which error is encountered. */
   discoveryScope?: HealthErrorDetailsDiscoveryScope;
 }
-export const HealthErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const HealthErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     messageParameters: S.optional(HealthErrorDetailsMessageParametersMap),
@@ -2003,7 +2001,7 @@ export const HealthErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the errors. */
 export type HypervClusterPropertiesErrorsList = Array<HealthErrorDetails>;
-export const HypervClusterPropertiesErrorsList = /*@__PURE__*/ S.Array(
+const HypervClusterPropertiesErrorsList = /*@__PURE__*/ S.Array(
   HealthErrorDetails,
 ) as any as S.Schema<HypervClusterPropertiesErrorsList>;
 
@@ -2028,7 +2026,7 @@ export interface HypervClusterProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const HypervClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const HypervClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdTimestamp: S.optional(S.String),
     updatedTimestamp: S.optional(S.String),
@@ -2054,7 +2052,7 @@ export interface CreateHypervClusterControllerClusterResponse {
   /** The resource-specific properties for this resource. */
   properties?: HypervClusterProperties;
 }
-export const CreateHypervClusterControllerClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHypervClusterControllerClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2079,7 +2077,7 @@ export interface CollectorAgentSpnPropertiesBase {
   /** Gets the tenant id of the AAD application. */
   tenantId?: string;
 }
-export const CollectorAgentSpnPropertiesBase = /*@__PURE__*/ S.suspend(() =>
+const CollectorAgentSpnPropertiesBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authority: S.optional(S.String),
     applicationId: S.optional(S.String),
@@ -2102,7 +2100,7 @@ export interface CollectorAgentPropertiesBase {
   /** Gets or sets the SPN details. */
   spnDetails?: CollectorAgentSpnPropertiesBase;
 }
-export const CollectorAgentPropertiesBase = /*@__PURE__*/ S.suspend(() =>
+const CollectorAgentPropertiesBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -2122,7 +2120,7 @@ export interface CollectorPropertiesBaseWithAgentInput {
   /** Gets the discovery site id. */
   discoverySiteId?: string;
 }
-export const CollectorPropertiesBaseWithAgentInput = /*@__PURE__*/ S.suspend(() =>
+const CollectorPropertiesBaseWithAgentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     agentProperties: S.optional(CollectorAgentPropertiesBase),
@@ -2144,7 +2142,7 @@ export interface CreateHypervCollectorsOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgentInput;
 }
-export const CreateHypervCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHypervCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2176,7 +2174,7 @@ export interface CollectorPropertiesBaseWithAgent {
   /** Timestamp when collector was last updated. */
   updatedTimestamp?: string;
 }
-export const CollectorPropertiesBaseWithAgent = /*@__PURE__*/ S.suspend(() =>
+const CollectorPropertiesBaseWithAgent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     agentProperties: S.optional(CollectorAgentPropertiesBase),
@@ -2200,7 +2198,7 @@ export interface CreateHypervCollectorsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const CreateHypervCollectorsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHypervCollectorsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2221,7 +2219,7 @@ export interface HypervHostPropertiesInput {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2 | (string & {});
 }
-export const HypervHostPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const HypervHostPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
     runAsAccountId: S.optional(S.String),
@@ -2243,7 +2241,7 @@ export interface CreateHypervHostControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: HypervHostPropertiesInput;
 }
-export const CreateHypervHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHypervHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2264,7 +2262,7 @@ export const CreateHypervHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the errors. */
 export type HypervHostPropertiesErrorsList = Array<HealthErrorDetails>;
-export const HypervHostPropertiesErrorsList =
+const HypervHostPropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<HypervHostPropertiesErrorsList>;
 
 /** The properties of Hyperv Host */
@@ -2284,7 +2282,7 @@ export interface HypervHostProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const HypervHostProperties = /*@__PURE__*/ S.suspend(() =>
+const HypervHostProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdTimestamp: S.optional(S.String),
     updatedTimestamp: S.optional(S.String),
@@ -2308,7 +2306,7 @@ export interface CreateHypervHostControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: HypervHostProperties;
 }
-export const CreateHypervHostControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHypervHostControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2322,7 +2320,7 @@ export const CreateHypervHostControllerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateHypervSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const CreateHypervSitesControllerRequestTagsMap =
+const CreateHypervSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateHypervSitesControllerRequestTagsMap>;
 
 /** Class for site properties. */
@@ -2340,7 +2338,7 @@ export interface SiteSpnProperties {
   /** Gets or sets the raw certificate data for building certificate expiry flows. */
   rawCertData?: string;
 }
-export const SiteSpnProperties = /*@__PURE__*/ S.suspend(() =>
+const SiteSpnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     applicationId: S.optional(S.String),
@@ -2358,7 +2356,7 @@ export interface SiteAgentPropertiesInput {
   /** Gets or sets the key vault ARM Id. */
   keyVaultId?: string;
 }
-export const SiteAgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SiteAgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyVaultUri: S.optional(S.String),
     keyVaultId: S.optional(S.String),
@@ -2378,7 +2376,7 @@ export interface SitePropertiesInput {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2 | (string & {});
 }
-export const SitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
     agentDetails: S.optional(SiteAgentPropertiesInput),
@@ -2402,7 +2400,7 @@ export interface CreateHypervSitesControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: SitePropertiesInput;
 }
-export const CreateHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2424,7 +2422,7 @@ export const CreateHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateHypervSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateHypervSitesControllerResponseTagsMap =
+const CreateHypervSitesControllerResponseTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateHypervSitesControllerResponseTagsMap>;
 
 /** Class for site agent properties. */
@@ -2440,7 +2438,7 @@ export interface SiteAgentProperties {
   /** Gets or sets the key vault ARM Id. */
   keyVaultId?: string;
 }
-export const SiteAgentProperties = /*@__PURE__*/ S.suspend(() =>
+const SiteAgentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -2467,7 +2465,7 @@ export interface SiteProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const SiteProperties = /*@__PURE__*/ S.suspend(() =>
+const SiteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     masterSiteId: S.optional(S.String),
     servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
@@ -2495,7 +2493,7 @@ export interface CreateHypervSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const CreateHypervSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHypervSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2516,7 +2514,7 @@ export interface CollectorPropertiesBaseInput {
   /** Gets the discovery site id. */
   discoverySiteId?: string;
 }
-export const CollectorPropertiesBaseInput = /*@__PURE__*/ S.suspend(() =>
+const CollectorPropertiesBaseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     discoverySiteId: S.optional(S.String),
@@ -2537,7 +2535,7 @@ export interface CreateImportCollectorsOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseInput;
 }
-export const CreateImportCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateImportCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2567,7 +2565,7 @@ export interface CollectorPropertiesBase {
   /** Timestamp when collector was last updated. */
   updatedTimestamp?: string;
 }
-export const CollectorPropertiesBase = /*@__PURE__*/ S.suspend(() =>
+const CollectorPropertiesBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     discoverySiteId: S.optional(S.String),
@@ -2588,7 +2586,7 @@ export interface CreateImportCollectorsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBase;
 }
-export const CreateImportCollectorsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateImportCollectorsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2602,7 +2600,7 @@ export const CreateImportCollectorsOperationResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type CreateImportSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const CreateImportSitesControllerRequestTagsMap =
+const CreateImportSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateImportSitesControllerRequestTagsMap>;
 
 /** The properties of ImportSiteResource */
@@ -2612,7 +2610,7 @@ export interface ImportSitePropertiesInput {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2 | (string & {});
 }
-export const ImportSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ImportSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoverySolutionId: S.optional(S.String),
     provisioningState: S.optional(ProvisioningState_2),
@@ -2635,7 +2633,7 @@ export interface CreateImportSitesControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: ImportSitePropertiesInput;
 }
-export const CreateImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2657,7 +2655,7 @@ export const CreateImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateImportSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateImportSitesControllerResponseTagsMap =
+const CreateImportSitesControllerResponseTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateImportSitesControllerResponseTagsMap>;
 
 /** The properties of ImportSiteResource */
@@ -2671,7 +2669,7 @@ export interface ImportSiteProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const ImportSiteProperties = /*@__PURE__*/ S.suspend(() =>
+const ImportSiteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoverySolutionId: S.optional(S.String),
     masterSiteId: S.optional(S.String),
@@ -2696,7 +2694,7 @@ export interface CreateImportSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: ImportSiteProperties;
 }
-export const CreateImportSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateImportSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2712,16 +2710,16 @@ export const CreateImportSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMasterSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const CreateMasterSitesControllerRequestTagsMap =
+const CreateMasterSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateMasterSitesControllerRequestTagsMap>;
 
 /** PublicNetworkAccess */
 export type MasterSitePropertiesPublicNetworkAccess = "NotSpecified" | "Enabled" | "Disabled";
-export const MasterSitePropertiesPublicNetworkAccess = S.String;
+const MasterSitePropertiesPublicNetworkAccess = S.String;
 
 /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
 export type MasterSitePropertiesInputSitesList = Array<string>;
-export const MasterSitePropertiesInputSitesList =
+const MasterSitePropertiesInputSitesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MasterSitePropertiesInputSitesList>;
 
 /** Class for site properties. */
@@ -2735,7 +2733,7 @@ export interface MasterSitePropertiesInput {
   /** Gets or sets a value for customer storage account ARM id. */
   customerStorageAccountArmId?: string;
 }
-export const MasterSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MasterSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(MasterSitePropertiesPublicNetworkAccess),
     allowMultipleSites: S.optional(S.Boolean),
@@ -2760,7 +2758,7 @@ export interface CreateMasterSitesControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: MasterSitePropertiesInput;
 }
-export const CreateMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2782,17 +2780,17 @@ export const CreateMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMasterSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateMasterSitesControllerResponseTagsMap =
+const CreateMasterSitesControllerResponseTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateMasterSitesControllerResponseTagsMap>;
 
 /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
 export type MasterSitePropertiesSitesList = Array<string>;
-export const MasterSitePropertiesSitesList =
+const MasterSitePropertiesSitesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MasterSitePropertiesSitesList>;
 
 /** array of group ids */
 export type PrivateEndpointConnectionPropertiesV2GroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesV2GroupIdsList =
+const PrivateEndpointConnectionPropertiesV2GroupIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateEndpointConnectionPropertiesV2GroupIdsList>;
 
 /** PrivateEndpointModelsResourceId */
@@ -2800,7 +2798,7 @@ export interface ResourceId_2 {
   /** id name */
   id?: string;
 }
-export const ResourceId_2 = PrivateEndpoint as any as S.Schema<ResourceId_2>;
+const ResourceId_2 = PrivateEndpoint as any as S.Schema<ResourceId_2>;
 
 /** PrivateLinkServiceConnectionState */
 export type PrivateLinkServiceConnectionStateStatus_2 =
@@ -2808,8 +2806,6 @@ export type PrivateLinkServiceConnectionStateStatus_2 =
   | "Pending"
   | "Rejected"
   | "Disconnected";
-export const PrivateLinkServiceConnectionStateStatus_2 = S.String;
-
 /** Service Connection State */
 export interface PrivateLinkServiceConnectionState_3 {
   /** state status */
@@ -2819,7 +2815,7 @@ export interface PrivateLinkServiceConnectionState_3 {
   /** actions required */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState_3 =
+const PrivateLinkServiceConnectionState_3 =
   PrivateLinkServiceConnectionState as any as S.Schema<PrivateLinkServiceConnectionState_3>;
 
 /** PrivateEndpointConnectionProperties V2 */
@@ -2833,7 +2829,7 @@ export interface PrivateEndpointConnectionPropertiesV2 {
   /** private endpoints connection state */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState_3;
 }
-export const PrivateEndpointConnectionPropertiesV2 = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesV2GroupIdsList),
     provisioningState: S.optional(ProvisioningState_2),
@@ -2857,7 +2853,7 @@ export interface PrivateEndpointConnection_3 {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionPropertiesV2;
 }
-export const PrivateEndpointConnection_3 = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection_3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2871,13 +2867,13 @@ export const PrivateEndpointConnection_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the private endpoint connections. */
 export type MasterSitePropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection_3>;
-export const MasterSitePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const MasterSitePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection_3,
 ) as any as S.Schema<MasterSitePropertiesPrivateEndpointConnectionsList>;
 
 /** Gets the nested sites under Master Site. */
 export type MasterSitePropertiesNestedSitesList = Array<string>;
-export const MasterSitePropertiesNestedSitesList =
+const MasterSitePropertiesNestedSitesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MasterSitePropertiesNestedSitesList>;
 
 /** Class for site properties. */
@@ -2897,7 +2893,7 @@ export interface MasterSiteProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const MasterSiteProperties = /*@__PURE__*/ S.suspend(() =>
+const MasterSiteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(MasterSitePropertiesPublicNetworkAccess),
     allowMultipleSites: S.optional(S.Boolean),
@@ -2925,7 +2921,7 @@ export interface CreateMasterSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: MasterSiteProperties;
 }
-export const CreateMasterSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMasterSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2944,7 +2940,7 @@ export interface PrivateEndpointConnectionPropertiesV2Input {
   /** private endpoints connection state */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState_3;
 }
-export const PrivateEndpointConnectionPropertiesV2Input = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesV2Input = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState_3),
   }),
@@ -2964,7 +2960,7 @@ export interface CreatePrivateEndpointConnectionControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionPropertiesV2Input;
 }
-export const CreatePrivateEndpointConnectionControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2995,12 +2991,12 @@ export interface CreatePrivateEndpointConnectionControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionPropertiesV2;
 }
-export const CreatePrivateEndpointConnectionControllerResponse =
+const CreatePrivateEndpointConnectionControllerResponse =
   PrivateEndpointConnection_3 as any as S.Schema<CreatePrivateEndpointConnectionControllerResponse>;
 
 /** Properties of a private endpoint connection proxy. */
 export interface PrivateEndpointConnectionProxyPropertiesInput {}
-export const PrivateEndpointConnectionProxyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProxyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "PrivateEndpointConnectionProxyPropertiesInput",
@@ -3018,7 +3014,7 @@ export interface CreatePrivateEndpointConnectionProxyControllerRequest {
   eTag?: string;
   properties?: PrivateEndpointConnectionProxyPropertiesInput;
 }
-export const CreatePrivateEndpointConnectionProxyControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionProxyControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3039,7 +3035,7 @@ export const CreatePrivateEndpointConnectionProxyControllerRequest = /*@__PURE__
 }) as any as S.Schema<CreatePrivateEndpointConnectionProxyControllerRequest>;
 
 export type PrivateLinkServiceConnectionGroupIdsList = Array<string>;
-export const PrivateLinkServiceConnectionGroupIdsList =
+const PrivateLinkServiceConnectionGroupIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkServiceConnectionGroupIdsList>;
 
 /** Defines Private link service connection. */
@@ -3049,7 +3045,7 @@ export interface PrivateLinkServiceConnection {
   groupIds?: PrivateLinkServiceConnectionGroupIdsList;
   requestMessage?: string;
 }
-export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3062,17 +3058,17 @@ export const PrivateLinkServiceConnection = /*@__PURE__*/ S.suspend(() =>
 
 export type PrivateEndpointDetailsManualPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
-export const PrivateEndpointDetailsManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointDetailsManualPrivateLinkServiceConnectionsList = /*@__PURE__*/ S.Array(
   PrivateLinkServiceConnection,
 ) as any as S.Schema<PrivateEndpointDetailsManualPrivateLinkServiceConnectionsList>;
 
 export type PrivateEndpointDetailsPrivateLinkServiceConnectionsList =
   Array<PrivateLinkServiceConnection>;
-export const PrivateEndpointDetailsPrivateLinkServiceConnectionsList =
+const PrivateEndpointDetailsPrivateLinkServiceConnectionsList =
   PrivateEndpointDetailsManualPrivateLinkServiceConnectionsList as any as S.Schema<PrivateEndpointDetailsPrivateLinkServiceConnectionsList>;
 
 export type GroupConnectivityInformationCustomerVisibleFqdnsList = Array<string>;
-export const GroupConnectivityInformationCustomerVisibleFqdnsList =
+const GroupConnectivityInformationCustomerVisibleFqdnsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<GroupConnectivityInformationCustomerVisibleFqdnsList>;
 
 /** Defines Private link service group connectivity. */
@@ -3085,7 +3081,7 @@ export interface GroupConnectivityInformation {
   redirectMapId?: string;
   privateLinkServiceArmRegion?: string;
 }
-export const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
+const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     groupId: S.optional(S.String),
@@ -3101,7 +3097,7 @@ export const GroupConnectivityInformation = /*@__PURE__*/ S.suspend(() =>
 
 export type PrivateLinkServiceProxyGroupConnectivityInformationList =
   Array<GroupConnectivityInformation>;
-export const PrivateLinkServiceProxyGroupConnectivityInformationList = /*@__PURE__*/ S.Array(
+const PrivateLinkServiceProxyGroupConnectivityInformationList = /*@__PURE__*/ S.Array(
   GroupConnectivityInformation,
 ) as any as S.Schema<PrivateLinkServiceProxyGroupConnectivityInformationList>;
 
@@ -3109,7 +3105,7 @@ export const PrivateLinkServiceProxyGroupConnectivityInformationList = /*@__PURE
 export interface ResourceId {
   id?: string;
 }
-export const ResourceId = PrivateEndpoint as any as S.Schema<ResourceId>;
+const ResourceId = PrivateEndpoint as any as S.Schema<ResourceId>;
 
 /** Private link connection state. */
 export type PrivateLinkServiceConnectionStateStatus =
@@ -3117,8 +3113,6 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Pending"
   | "Rejected"
   | "Disconnected";
-export const PrivateLinkServiceConnectionStateStatus = S.String;
-
 /** Private endpoint connection state. */
 export interface PrivateLinkServiceConnectionState_2 {
   /** Private link connection state. */
@@ -3128,7 +3122,7 @@ export interface PrivateLinkServiceConnectionState_2 {
   /** Action required. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState_2 =
+const PrivateLinkServiceConnectionState_2 =
   PrivateLinkServiceConnectionState as any as S.Schema<PrivateLinkServiceConnectionState_2>;
 
 /** Defines Private link service proxy. */
@@ -3138,7 +3132,7 @@ export interface PrivateLinkServiceProxy {
   remotePrivateEndpointConnection?: ResourceId;
   remotePrivateLinkServiceConnectionState?: PrivateLinkServiceConnectionState_2;
 }
-export const PrivateLinkServiceProxy = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceProxy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     groupConnectivityInformation: S.optional(
@@ -3150,7 +3144,7 @@ export const PrivateLinkServiceProxy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateLinkServiceProxy" }) as any as S.Schema<PrivateLinkServiceProxy>;
 
 export type PrivateEndpointDetailsPrivateLinkServiceProxiesList = Array<PrivateLinkServiceProxy>;
-export const PrivateEndpointDetailsPrivateLinkServiceProxiesList = /*@__PURE__*/ S.Array(
+const PrivateEndpointDetailsPrivateLinkServiceProxiesList = /*@__PURE__*/ S.Array(
   PrivateLinkServiceProxy,
 ) as any as S.Schema<PrivateEndpointDetailsPrivateLinkServiceProxiesList>;
 
@@ -3162,7 +3156,7 @@ export interface IpConfiguration {
   groupId?: string;
   memberName?: string;
 }
-export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     privateIpAddress: S.optional(S.String),
@@ -3173,7 +3167,7 @@ export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpConfiguration" }) as any as S.Schema<IpConfiguration>;
 
 export type PrivateEndpointDetailsConnectionDetailsList = Array<IpConfiguration>;
-export const PrivateEndpointDetailsConnectionDetailsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointDetailsConnectionDetailsList = /*@__PURE__*/ S.Array(
   IpConfiguration,
 ) as any as S.Schema<PrivateEndpointDetailsConnectionDetailsList>;
 
@@ -3185,7 +3179,7 @@ export interface PrivateEndpointDetails {
   privateLinkServiceProxies?: PrivateEndpointDetailsPrivateLinkServiceProxiesList;
   connectionDetails?: PrivateEndpointDetailsConnectionDetailsList;
 }
-export const PrivateEndpointDetails = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     manualPrivateLinkServiceConnections: S.optional(
@@ -3204,14 +3198,14 @@ export type PrivateEndpointConnectionProxyPropertiesStatus =
   | "Failed"
   | "Cancelled"
   | "Running";
-export const PrivateEndpointConnectionProxyPropertiesStatus = S.String;
+const PrivateEndpointConnectionProxyPropertiesStatus = S.String;
 
 /** Properties of a private endpoint connection proxy. */
 export interface PrivateEndpointConnectionProxyProperties {
   remotePrivateEndpoint?: PrivateEndpointDetails;
   status?: PrivateEndpointConnectionProxyPropertiesStatus;
 }
-export const PrivateEndpointConnectionProxyProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProxyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remotePrivateEndpoint: S.optional(PrivateEndpointDetails),
     status: S.optional(PrivateEndpointConnectionProxyPropertiesStatus),
@@ -3226,7 +3220,7 @@ export type PrivateEndpointConnectionProxySystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionProxySystemDataCreatedByType = S.String;
+const PrivateEndpointConnectionProxySystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type PrivateEndpointConnectionProxySystemDataLastModifiedByType =
@@ -3234,7 +3228,7 @@ export type PrivateEndpointConnectionProxySystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionProxySystemDataLastModifiedByType = S.String;
+const PrivateEndpointConnectionProxySystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PrivateEndpointConnectionProxySystemData {
@@ -3251,7 +3245,7 @@ export interface PrivateEndpointConnectionProxySystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionProxySystemData = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProxySystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(PrivateEndpointConnectionProxySystemDataCreatedByType),
@@ -3274,7 +3268,7 @@ export interface PrivateEndpointConnectionProxy {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateEndpointConnectionProxySystemData;
 }
-export const PrivateEndpointConnectionProxy = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProxy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3299,7 +3293,7 @@ export interface CreateServerCollectorsOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgentInput;
 }
-export const CreateServerCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServerCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3330,12 +3324,12 @@ export interface CreateServerCollectorsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const CreateServerCollectorsOperationResponse =
+const CreateServerCollectorsOperationResponse =
   CreateHypervCollectorsOperationResponse as any as S.Schema<CreateServerCollectorsOperationResponse>;
 
 /** Resource tags. */
 export type CreateServerSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const CreateServerSitesControllerRequestTagsMap =
+const CreateServerSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateServerSitesControllerRequestTagsMap>;
 
 /** The properties of SiteResource */
@@ -3349,7 +3343,7 @@ export interface SitesPropertiesInput {
   /** Gets or sets the ARM ID of migration hub solution for SDS. */
   discoverySolutionId?: string;
 }
-export const SitesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SitesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
     agentDetails: S.optional(SiteAgentPropertiesInput),
@@ -3372,7 +3366,7 @@ export interface CreateServerSitesControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: SitesPropertiesInput;
 }
-export const CreateServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3394,13 +3388,8 @@ export const CreateServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateServerSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateServerSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateServerSitesControllerResponseTagsMap>;
-
 /** The properties of SiteResource */
 export type SitesProperties = SiteProperties;
-export const SitesProperties = SiteProperties;
-
 export interface CreateServerSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3417,12 +3406,12 @@ export interface CreateServerSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const CreateServerSitesControllerResponse =
+const CreateServerSitesControllerResponse =
   CreateHypervSitesControllerResponse as any as S.Schema<CreateServerSitesControllerResponse>;
 
 /** Resource tags. */
 export type CreateSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSitesControllerRequestTagsMap =
+const CreateSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateSitesControllerRequestTagsMap>;
 
 export interface CreateSitesControllerRequest {
@@ -3439,7 +3428,7 @@ export interface CreateSitesControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: SitesPropertiesInput;
 }
-export const CreateSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3461,7 +3450,7 @@ export const CreateSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSitesControllerResponseTagsMap =
+const CreateSitesControllerResponseTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<CreateSitesControllerResponseTagsMap>;
 
 export interface CreateSitesControllerResponse {
@@ -3482,7 +3471,7 @@ export interface CreateSitesControllerResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const CreateSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3524,11 +3513,11 @@ export type SolutionPropertiesInputTool =
   | "Modernization"
   | "ServerMigration_DataReplication"
   | "Unknown";
-export const SolutionPropertiesInputTool = S.String;
+const SolutionPropertiesInputTool = S.String;
 
 /** Gets or sets the purpose of the solution. */
 export type SolutionPropertiesInputPurpose = "Discovery" | "Assessment" | "Migration";
-export const SolutionPropertiesInputPurpose = S.String;
+const SolutionPropertiesInputPurpose = S.String;
 
 /** Gets or sets the goal of the solution. */
 export type SolutionPropertiesInputGoal =
@@ -3537,11 +3526,11 @@ export type SolutionPropertiesInputGoal =
   | "DesktopVirtualization"
   | "WebApplications"
   | "DataCenter";
-export const SolutionPropertiesInputGoal = S.String;
+const SolutionPropertiesInputGoal = S.String;
 
 /** Gets or sets the current status of the solution. */
 export type SolutionPropertiesInputStatus = "Inactive" | "Active";
-export const SolutionPropertiesInputStatus = S.String;
+const SolutionPropertiesInputStatus = S.String;
 
 /** Gets or sets the cleanup state of the solution. */
 export type SolutionPropertiesInputCleanupState =
@@ -3550,15 +3539,13 @@ export type SolutionPropertiesInputCleanupState =
   | "InProgress"
   | "Completed"
   | "Failed";
-export const SolutionPropertiesInputCleanupState = S.String;
+const SolutionPropertiesInputCleanupState = S.String;
 
 /** The solution summary class. */
 export type SolutionSummaryInput = PrivateEndpointConnectionProxyPropertiesInput;
-export const SolutionSummaryInput = PrivateEndpointConnectionProxyPropertiesInput;
-
 /** Gets or sets the extended details reported by the solution. */
 export type SolutionDetailsExtendedDetailsMap = { [key: string]: string | undefined };
-export const SolutionDetailsExtendedDetailsMap =
+const SolutionDetailsExtendedDetailsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<SolutionDetailsExtendedDetailsMap>;
 
 /** Class representing the details of the solution. */
@@ -3570,7 +3557,7 @@ export interface SolutionDetails {
   /** Gets or sets the extended details reported by the solution. */
   extendedDetails?: SolutionDetailsExtendedDetailsMap;
 }
-export const SolutionDetails = /*@__PURE__*/ S.suspend(() =>
+const SolutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupCount: S.optional(S.Number),
     assessmentCount: S.optional(S.Number),
@@ -3595,7 +3582,7 @@ export interface SolutionPropertiesInput {
   /** Gets or sets the details of the solution. */
   details?: SolutionDetails;
 }
-export const SolutionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SolutionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: S.optional(SolutionPropertiesInputTool),
     purpose: S.optional(SolutionPropertiesInputPurpose),
@@ -3621,7 +3608,7 @@ export interface CreateSolutionsControllerRequest {
   /** Gets or sets the properties of the solution. */
   properties?: SolutionPropertiesInput;
 }
-export const CreateSolutionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSolutionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3668,11 +3655,11 @@ export type SolutionPropertiesTool =
   | "Modernization"
   | "ServerMigration_DataReplication"
   | "Unknown";
-export const SolutionPropertiesTool = S.String;
+const SolutionPropertiesTool = S.String;
 
 /** Gets or sets the purpose of the solution. */
 export type SolutionPropertiesPurpose = "Discovery" | "Assessment" | "Migration";
-export const SolutionPropertiesPurpose = S.String;
+const SolutionPropertiesPurpose = S.String;
 
 /** Gets or sets the goal of the solution. */
 export type SolutionPropertiesGoal =
@@ -3681,11 +3668,11 @@ export type SolutionPropertiesGoal =
   | "DesktopVirtualization"
   | "WebApplications"
   | "DataCenter";
-export const SolutionPropertiesGoal = S.String;
+const SolutionPropertiesGoal = S.String;
 
 /** Gets or sets the current status of the solution. */
 export type SolutionPropertiesStatus = "Inactive" | "Active";
-export const SolutionPropertiesStatus = S.String;
+const SolutionPropertiesStatus = S.String;
 
 /** Gets or sets the cleanup state of the solution. */
 export type SolutionPropertiesCleanupState =
@@ -3694,14 +3681,14 @@ export type SolutionPropertiesCleanupState =
   | "InProgress"
   | "Completed"
   | "Failed";
-export const SolutionPropertiesCleanupState = S.String;
+const SolutionPropertiesCleanupState = S.String;
 
 /** The solution summary class. */
 export interface SolutionSummary {
   /** Gets the Instance type. */
   instanceType?: string;
 }
-export const SolutionSummary = /*@__PURE__*/ S.suspend(() =>
+const SolutionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceType: S.optional(S.String),
   }),
@@ -3724,7 +3711,7 @@ export interface SolutionProperties {
   /** Gets or sets the details of the solution. */
   details?: SolutionDetails;
 }
-export const SolutionProperties = /*@__PURE__*/ S.suspend(() =>
+const SolutionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: S.optional(SolutionPropertiesTool),
     purpose: S.optional(SolutionPropertiesPurpose),
@@ -3749,7 +3736,7 @@ export interface Solution {
   /** Gets or sets the properties of the solution. */
   properties?: SolutionProperties;
 }
-export const Solution = /*@__PURE__*/ S.suspend(() =>
+const Solution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3760,10 +3747,10 @@ export const Solution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Solution" }) as any as S.Schema<Solution>;
 
 export type OsLicense = "Unknown" | "Yes" | "No";
-export const OsLicense = S.String;
+const OsLicense = S.String;
 
 export type EnvironmentType = "Production" | "Test";
-export const EnvironmentType = S.String;
+const EnvironmentType = S.String;
 
 /** Entity Uptime. */
 export interface EntityUptime {
@@ -3772,14 +3759,14 @@ export interface EntityUptime {
   /** Gets the hours per day. */
   hoursPerDay?: number;
 }
-export const EntityUptime = VmUptime as any as S.Schema<EntityUptime>;
+const EntityUptime = VmUptime as any as S.Schema<EntityUptime>;
 
 export type OptimizationLogic =
   | "MinimizeCost"
   | "ModernizeToPaaS"
   | "ModernizeToAzureSqlMi"
   | "ModernizeToAzureSqlDb";
-export const OptimizationLogic = S.String;
+const OptimizationLogic = S.String;
 
 export type AzureSqlServiceTier =
   | "Unknown"
@@ -3787,10 +3774,10 @@ export type AzureSqlServiceTier =
   | "GeneralPurpose"
   | "BusinessCritical"
   | "HyperScale";
-export const AzureSqlServiceTier = S.String;
+const AzureSqlServiceTier = S.String;
 
 export type AzureSqlInstanceType = "Unknown" | "Automatic" | "SingleInstance" | "InstancePools";
-export const AzureSqlInstanceType = S.String;
+const AzureSqlInstanceType = S.String;
 
 /** SQL managed instance assessment settings. */
 export interface SqlMiSettings {
@@ -3799,7 +3786,7 @@ export interface SqlMiSettings {
   /** Gets or sets the azure PAAS SQL instance type. */
   azureSqlInstanceType?: AzureSqlInstanceType | (string & {});
 }
-export const SqlMiSettings = /*@__PURE__*/ S.suspend(() =>
+const SqlMiSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureSqlServiceTier: S.optional(AzureSqlServiceTier),
     azureSqlInstanceType: S.optional(AzureSqlInstanceType),
@@ -3807,13 +3794,13 @@ export const SqlMiSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlMiSettings" }) as any as S.Schema<SqlMiSettings>;
 
 export type AzureSqlDataBaseType = "Unknown" | "Automatic" | "SingleDatabase" | "ElasticPool";
-export const AzureSqlDataBaseType = S.String;
+const AzureSqlDataBaseType = S.String;
 
 export type ComputeTier = "Unknown" | "Automatic" | "Provisioned" | "Serverless";
-export const ComputeTier = S.String;
+const ComputeTier = S.String;
 
 export type AzureSqlPurchaseModel = "Unknown" | "VCore" | "DTU";
-export const AzureSqlPurchaseModel = S.String;
+const AzureSqlPurchaseModel = S.String;
 
 /** SQL database assessment settings. */
 export interface SqlDbSettings {
@@ -3826,7 +3813,7 @@ export interface SqlDbSettings {
   /** Gets or sets the azure SQL purchase model. */
   azureSqlPurchaseModel?: AzureSqlPurchaseModel | (string & {});
 }
-export const SqlDbSettings = /*@__PURE__*/ S.suspend(() =>
+const SqlDbSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureSqlServiceTier: S.optional(AzureSqlServiceTier),
     azureSqlDataBaseType: S.optional(AzureSqlDataBaseType),
@@ -3837,7 +3824,7 @@ export const SqlDbSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the Azure VM families (calling instance series to keep it consistent with other targets). */
 export type SqlVmSettingsInstanceSeriesList = Array<AzureVmFamily | (string & {})>;
-export const SqlVmSettingsInstanceSeriesList =
+const SqlVmSettingsInstanceSeriesList =
   MachineAssessmentPropertiesInputAzureVmFamiliesList as any as S.Schema<SqlVmSettingsInstanceSeriesList>;
 
 /** SQL VM assessment settings. */
@@ -3845,23 +3832,23 @@ export interface SqlVmSettings {
   /** Gets or sets the Azure VM families (calling instance series to keep it consistent with other targets). */
   instanceSeries?: SqlVmSettingsInstanceSeriesList;
 }
-export const SqlVmSettings = /*@__PURE__*/ S.suspend(() =>
+const SqlVmSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceSeries: S.optional(SqlVmSettingsInstanceSeriesList),
   }),
 ).annotate({ identifier: "SqlVmSettings" }) as any as S.Schema<SqlVmSettings>;
 
 export type MultiSubnetIntent = "None" | "HighAvailability" | "DisasterRecovery";
-export const MultiSubnetIntent = S.String;
+const MultiSubnetIntent = S.String;
 
 export type AsyncCommitModeIntent = "None" | "HighAvailability" | "DisasterRecovery";
-export const AsyncCommitModeIntent = S.String;
+const AsyncCommitModeIntent = S.String;
 
 export type AzureSecurityOfferingType = "NO" | "MDC";
-export const AzureSecurityOfferingType = S.String;
+const AzureSecurityOfferingType = S.String;
 
 export type SqlServerLicense = "Unknown" | "Yes" | "No";
-export const SqlServerLicense = S.String;
+const SqlServerLicense = S.String;
 
 /** SQL assessment properties class. */
 export interface SqlAssessmentV2PropertiesInput {
@@ -3930,7 +3917,7 @@ export interface SqlAssessmentV2PropertiesInput {
   /** Confidence Rating in Percentage. */
   confidenceRatingInPercentage?: number;
 }
-export const SqlAssessmentV2PropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2PropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     osLicense: S.optional(OsLicense),
@@ -3983,7 +3970,7 @@ export interface CreateSqlAssessmentV2OperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: SqlAssessmentV2PropertiesInput;
 }
-export const CreateSqlAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4082,7 +4069,7 @@ export interface SqlAssessmentV2Properties {
   /** Schema version. */
   schemaVersion?: string;
 }
-export const SqlAssessmentV2Properties = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     osLicense: S.optional(OsLicense),
@@ -4139,7 +4126,7 @@ export interface CreateSqlAssessmentV2OperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlAssessmentV2Properties;
 }
-export const CreateSqlAssessmentV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlAssessmentV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4163,7 +4150,7 @@ export interface CreateSqlCollectorOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgentInput;
 }
-export const CreateSqlCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4194,7 +4181,7 @@ export interface CreateSqlCollectorOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const CreateSqlCollectorOperationResponse =
+const CreateSqlCollectorOperationResponse =
   CreateHypervCollectorsOperationResponse as any as S.Schema<CreateSqlCollectorOperationResponse>;
 
 /** Discovery site data source properties class. */
@@ -4204,7 +4191,7 @@ export interface SqlDiscoverySiteDataSourceProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2 | (string & {});
 }
-export const SqlDiscoverySiteDataSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlDiscoverySiteDataSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoverySiteId: S.optional(S.String),
     provisioningState: S.optional(ProvisioningState_2),
@@ -4227,7 +4214,7 @@ export interface CreateSqlDiscoverySiteDataSourceControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: SqlDiscoverySiteDataSourceProperties;
 }
-export const CreateSqlDiscoverySiteDataSourceControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlDiscoverySiteDataSourceControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4259,7 +4246,7 @@ export interface CreateSqlDiscoverySiteDataSourceControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlDiscoverySiteDataSourceProperties;
 }
-export const CreateSqlDiscoverySiteDataSourceControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlDiscoverySiteDataSourceControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4280,7 +4267,7 @@ export interface SiteAppliancePropertiesInput {
   /** Gets or sets the Appliance Name. */
   applianceName?: string;
 }
-export const SiteAppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SiteAppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
     agentDetails: S.optional(SiteAgentPropertiesInput),
@@ -4293,13 +4280,13 @@ export const SiteAppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type SqlSitePropertiesInputSiteAppliancePropertiesCollectionList =
   Array<SiteAppliancePropertiesInput>;
-export const SqlSitePropertiesInputSiteAppliancePropertiesCollectionList = /*@__PURE__*/ S.Array(
+const SqlSitePropertiesInputSiteAppliancePropertiesCollectionList = /*@__PURE__*/ S.Array(
   SiteAppliancePropertiesInput,
 ) as any as S.Schema<SqlSitePropertiesInputSiteAppliancePropertiesCollectionList>;
 
 /** SqlSiteProperties DiscoveryScenario */
 export type SqlSitePropertiesDiscoveryScenario = "Migrate" | "DR";
-export const SqlSitePropertiesDiscoveryScenario = S.String;
+const SqlSitePropertiesDiscoveryScenario = S.String;
 
 /** Class for SQL site properties. */
 export interface SqlSitePropertiesInput {
@@ -4308,7 +4295,7 @@ export interface SqlSitePropertiesInput {
   /** Gets or sets the discovery scenario. */
   discoveryScenario?: SqlSitePropertiesDiscoveryScenario | (string & {});
 }
-export const SqlSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SqlSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteAppliancePropertiesCollection: S.optional(
       SqlSitePropertiesInputSiteAppliancePropertiesCollectionList,
@@ -4329,7 +4316,7 @@ export interface CreateSqlSitesControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: SqlSitePropertiesInput;
 }
-export const CreateSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4357,7 +4344,7 @@ export interface SiteApplianceProperties {
   /** Gets or sets the Appliance Name. */
   applianceName?: string;
 }
-export const SiteApplianceProperties = /*@__PURE__*/ S.suspend(() =>
+const SiteApplianceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
     agentDetails: S.optional(SiteAgentProperties),
@@ -4367,7 +4354,7 @@ export const SiteApplianceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type SqlSitePropertiesSiteAppliancePropertiesCollectionList = Array<SiteApplianceProperties>;
-export const SqlSitePropertiesSiteAppliancePropertiesCollectionList = /*@__PURE__*/ S.Array(
+const SqlSitePropertiesSiteAppliancePropertiesCollectionList = /*@__PURE__*/ S.Array(
   SiteApplianceProperties,
 ) as any as S.Schema<SqlSitePropertiesSiteAppliancePropertiesCollectionList>;
 
@@ -4382,7 +4369,7 @@ export interface SqlSiteProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const SqlSiteProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlSiteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteAppliancePropertiesCollection: S.optional(
       SqlSitePropertiesSiteAppliancePropertiesCollectionList,
@@ -4405,7 +4392,7 @@ export interface CreateSqlSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlSiteProperties;
 }
-export const CreateSqlSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSqlSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4430,7 +4417,7 @@ export interface VcenterPropertiesInput {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2 | (string & {});
 }
-export const VcenterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VcenterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runAsAccountId: S.optional(S.String),
     fqdn: S.optional(S.String),
@@ -4452,7 +4439,7 @@ export interface CreateVcenterControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: VcenterPropertiesInput;
 }
-export const CreateVcenterControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVcenterControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4473,7 +4460,7 @@ export const CreateVcenterControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the errors. */
 export type VcenterPropertiesErrorsList = Array<HealthErrorDetails>;
-export const VcenterPropertiesErrorsList =
+const VcenterPropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<VcenterPropertiesErrorsList>;
 
 /** The properties of VMwareSiteResource */
@@ -4501,7 +4488,7 @@ export interface VcenterProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const VcenterProperties = /*@__PURE__*/ S.suspend(() =>
+const VcenterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runAsAccountId: S.optional(S.String),
     errors: S.optional(VcenterPropertiesErrorsList),
@@ -4529,7 +4516,7 @@ export interface CreateVcenterControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: VcenterProperties;
 }
-export const CreateVcenterControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVcenterControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4553,7 +4540,7 @@ export interface CreateVmwareCollectorsOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgentInput;
 }
-export const CreateVmwareCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVmwareCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4584,7 +4571,7 @@ export interface CreateVmwareCollectorsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const CreateVmwareCollectorsOperationResponse =
+const CreateVmwareCollectorsOperationResponse =
   CreateHypervCollectorsOperationResponse as any as S.Schema<CreateVmwareCollectorsOperationResponse>;
 
 /** App service native settings. */
@@ -4592,7 +4579,7 @@ export interface AppSvcNativeSettings {
   /** Gets or sets the isolation required. */
   isolationRequired: boolean;
 }
-export const AppSvcNativeSettings = /*@__PURE__*/ S.suspend(() =>
+const AppSvcNativeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isolationRequired: S.Boolean,
   }),
@@ -4600,8 +4587,6 @@ export const AppSvcNativeSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** App service container settings. */
 export type AppSvcContainerSettings = AppSvcNativeSettings;
-export const AppSvcContainerSettings = AppSvcNativeSettings;
-
 /** Discovered entity light summary. */
 export interface DiscoveredEntityLightSummary {
   /** Gets or sets the number of servers. */
@@ -4611,7 +4596,7 @@ export interface DiscoveredEntityLightSummary {
   /** Gets or sets the number of machines. */
   numberOfMachines: number;
 }
-export const DiscoveredEntityLightSummary = /*@__PURE__*/ S.suspend(() =>
+const DiscoveredEntityLightSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberOfServers: S.Number,
     numberOfWebApps: S.Number,
@@ -4666,7 +4651,7 @@ export interface WebAppAssessmentV2PropertiesInput {
   /** Confidence Rating in Percentage. */
   confidenceRatingInPercentage?: number;
 }
-export const WebAppAssessmentV2PropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentV2PropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentType: S.optional(EnvironmentType),
     entityUptime: S.optional(EntityUptime),
@@ -4708,7 +4693,7 @@ export interface CreateWebAppAssessmentV2OperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: WebAppAssessmentV2PropertiesInput;
 }
-export const CreateWebAppAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebAppAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4737,7 +4722,7 @@ export type ProvisioningState2 =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState2 = S.String;
+const ProvisioningState2 = S.String;
 
 /** Web app assessment properties class. */
 export interface WebAppAssessmentV2Properties {
@@ -4798,7 +4783,7 @@ export interface WebAppAssessmentV2Properties {
   /** Schema version. */
   schemaVersion?: string;
 }
-export const WebAppAssessmentV2Properties = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentV2Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState2),
     environmentType: S.optional(EnvironmentType),
@@ -4845,7 +4830,7 @@ export interface CreateWebAppAssessmentV2OperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppAssessmentV2Properties;
 }
-export const CreateWebAppAssessmentV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWebAppAssessmentV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4864,7 +4849,7 @@ export interface WebAppCollectorPropertiesBaseWithAgentInput {
   /** Gets the discovery site id. */
   discoverySiteId?: string;
 }
-export const WebAppCollectorPropertiesBaseWithAgentInput = /*@__PURE__*/ S.suspend(() =>
+const WebAppCollectorPropertiesBaseWithAgentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentProperties: S.optional(CollectorAgentPropertiesBase),
     discoverySiteId: S.optional(S.String),
@@ -4885,7 +4870,7 @@ export interface CreateWebAppCollectorOperationRequest {
   /** The resource-specific properties for this resource. */
   properties?: WebAppCollectorPropertiesBaseWithAgentInput;
 }
-export const CreateWebAppCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebAppCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4917,9 +4902,6 @@ export interface WebAppCollectorPropertiesBaseWithAgent {
   /** Timestamp when collector was last updated. */
   updatedTimestamp?: string;
 }
-export const WebAppCollectorPropertiesBaseWithAgent =
-  CollectorPropertiesBaseWithAgent as any as S.Schema<WebAppCollectorPropertiesBaseWithAgent>;
-
 export interface CreateWebAppCollectorOperationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4932,13 +4914,11 @@ export interface CreateWebAppCollectorOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppCollectorPropertiesBaseWithAgent;
 }
-export const CreateWebAppCollectorOperationResponse =
+const CreateWebAppCollectorOperationResponse =
   CreateHypervCollectorsOperationResponse as any as S.Schema<CreateWebAppCollectorOperationResponse>;
 
 /** Discovery site data source properties class. */
 export type DiscoverySiteDataSourceProperties = SqlDiscoverySiteDataSourceProperties;
-export const DiscoverySiteDataSourceProperties = SqlDiscoverySiteDataSourceProperties;
-
 export interface CreateWebAppDiscoverySiteDataSourcesControllerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4953,7 +4933,7 @@ export interface CreateWebAppDiscoverySiteDataSourcesControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: SqlDiscoverySiteDataSourceProperties;
 }
-export const CreateWebAppDiscoverySiteDataSourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebAppDiscoverySiteDataSourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4985,18 +4965,18 @@ export interface CreateWebAppDiscoverySiteDataSourcesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlDiscoverySiteDataSourceProperties;
 }
-export const CreateWebAppDiscoverySiteDataSourcesControllerResponse =
+const CreateWebAppDiscoverySiteDataSourcesControllerResponse =
   CreateSqlDiscoverySiteDataSourceControllerResponse as any as S.Schema<CreateWebAppDiscoverySiteDataSourcesControllerResponse>;
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList =
   Array<SiteAppliancePropertiesInput>;
-export const WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList =
+const WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList =
   SqlSitePropertiesInputSiteAppliancePropertiesCollectionList as any as S.Schema<WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList>;
 
 /** Discovery Scenario */
 export type WebAppSitePropertiesDiscoveryScenario = "Migrate" | "DR";
-export const WebAppSitePropertiesDiscoveryScenario = S.String;
+const WebAppSitePropertiesDiscoveryScenario = S.String;
 
 /** Class for Web app site properties. */
 export interface WebAppSitePropertiesInput {
@@ -5005,7 +4985,7 @@ export interface WebAppSitePropertiesInput {
   /** Gets or sets the discovery scenario. */
   discoveryScenario?: WebAppSitePropertiesDiscoveryScenario | (string & {});
 }
-export const WebAppSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WebAppSitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteAppliancePropertiesCollection: S.optional(
       WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList,
@@ -5028,7 +5008,7 @@ export interface CreateWebAppSitesControllerRequest {
   /** The resource-specific properties for this resource. */
   properties?: WebAppSitePropertiesInput;
 }
-export const CreateWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5050,7 +5030,7 @@ export const CreateWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type WebAppSitePropertiesSiteAppliancePropertiesCollectionList =
   Array<SiteApplianceProperties>;
-export const WebAppSitePropertiesSiteAppliancePropertiesCollectionList =
+const WebAppSitePropertiesSiteAppliancePropertiesCollectionList =
   SqlSitePropertiesSiteAppliancePropertiesCollectionList as any as S.Schema<WebAppSitePropertiesSiteAppliancePropertiesCollectionList>;
 
 /** Class for Web app site properties. */
@@ -5064,7 +5044,7 @@ export interface WebAppSiteProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const WebAppSiteProperties = /*@__PURE__*/ S.suspend(() =>
+const WebAppSiteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteAppliancePropertiesCollection: S.optional(
       WebAppSitePropertiesSiteAppliancePropertiesCollectionList,
@@ -5087,7 +5067,7 @@ export interface CreateWebAppSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppSiteProperties;
 }
-export const CreateWebAppSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWebAppSitesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5109,7 +5089,7 @@ export interface DeleteAksAssessmentOperationRequest {
   /** AKS Assessment Name. */
   assessmentName: string;
 }
-export const DeleteAksAssessmentOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAksAssessmentOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5128,7 +5108,7 @@ export const DeleteAksAssessmentOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAksAssessmentOperationRequest>;
 
 export interface DeleteAksAssessmentOperationResponse {}
-export const DeleteAksAssessmentOperationResponse =
+const DeleteAksAssessmentOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteAksAssessmentOperationResponse>;
 
 export interface DeleteAssessmentProjectsOperationRequest {
@@ -5139,7 +5119,7 @@ export interface DeleteAssessmentProjectsOperationRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const DeleteAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5157,7 +5137,7 @@ export const DeleteAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteAssessmentProjectsOperationRequest>;
 
 export interface DeleteAssessmentProjectsOperationResponse {}
-export const DeleteAssessmentProjectsOperationResponse =
+const DeleteAssessmentProjectsOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteAssessmentProjectsOperationResponse>;
 
 export interface DeleteAssessmentsOperationRequest {
@@ -5172,7 +5152,7 @@ export interface DeleteAssessmentsOperationRequest {
   /** Machine Assessment ARM name */
   assessmentName: string;
 }
-export const DeleteAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5192,7 +5172,7 @@ export const DeleteAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAssessmentsOperationRequest>;
 
 export interface DeleteAssessmentsOperationResponse {}
-export const DeleteAssessmentsOperationResponse =
+const DeleteAssessmentsOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteAssessmentsOperationResponse>;
 
 export interface DeleteAvsAssessmentsOperationRequest {
@@ -5207,7 +5187,7 @@ export interface DeleteAvsAssessmentsOperationRequest {
   /** AVS Assessment ARM name */
   assessmentName: string;
 }
-export const DeleteAvsAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAvsAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5227,7 +5207,7 @@ export const DeleteAvsAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteAvsAssessmentsOperationRequest>;
 
 export interface DeleteAvsAssessmentsOperationResponse {}
-export const DeleteAvsAssessmentsOperationResponse =
+const DeleteAvsAssessmentsOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteAvsAssessmentsOperationResponse>;
 
 export interface DeleteEventsControllerRequest {
@@ -5240,7 +5220,7 @@ export interface DeleteEventsControllerRequest {
   /** Unique name of an event within a migrate project. */
   eventName: string;
 }
-export const DeleteEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5259,7 +5239,7 @@ export const DeleteEventsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEventsControllerRequest>;
 
 export type DeleteEventsControllerResponse = unknown;
-export const DeleteEventsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteEventsControllerResponse",
@@ -5275,7 +5255,7 @@ export interface DeleteGroupsOperationRequest {
   /** Group ARM name */
   groupName: string;
 }
-export const DeleteGroupsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5294,7 +5274,7 @@ export const DeleteGroupsOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupsOperationRequest>;
 
 export interface DeleteGroupsOperationResponse {}
-export const DeleteGroupsOperationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteGroupsOperationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteGroupsOperationResponse",
 }) as any as S.Schema<DeleteGroupsOperationResponse>;
 
@@ -5308,7 +5288,7 @@ export interface DeleteHypervClusterControllerRequest {
   /** Cluster ARM name */
   clusterName: string;
 }
-export const DeleteHypervClusterControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHypervClusterControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5327,7 +5307,7 @@ export const DeleteHypervClusterControllerRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteHypervClusterControllerRequest>;
 
 export interface DeleteHypervClusterControllerResponse {}
-export const DeleteHypervClusterControllerResponse =
+const DeleteHypervClusterControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteHypervClusterControllerResponse>;
 
 export interface DeleteHypervCollectorsOperationRequest {
@@ -5340,7 +5320,7 @@ export interface DeleteHypervCollectorsOperationRequest {
   /** Hyper-V collector ARM name */
   hypervCollectorName: string;
 }
-export const DeleteHypervCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHypervCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5359,7 +5339,7 @@ export const DeleteHypervCollectorsOperationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteHypervCollectorsOperationRequest>;
 
 export interface DeleteHypervCollectorsOperationResponse {}
-export const DeleteHypervCollectorsOperationResponse =
+const DeleteHypervCollectorsOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteHypervCollectorsOperationResponse>;
 
 export interface DeleteHypervHostControllerRequest {
@@ -5372,7 +5352,7 @@ export interface DeleteHypervHostControllerRequest {
   /** Host name */
   hostName: string;
 }
-export const DeleteHypervHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHypervHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5391,7 +5371,7 @@ export const DeleteHypervHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHypervHostControllerRequest>;
 
 export interface DeleteHypervHostControllerResponse {}
-export const DeleteHypervHostControllerResponse =
+const DeleteHypervHostControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteHypervHostControllerResponse>;
 
 export interface DeleteHypervSitesControllerRequest {
@@ -5402,7 +5382,7 @@ export interface DeleteHypervSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const DeleteHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5420,7 +5400,7 @@ export const DeleteHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHypervSitesControllerRequest>;
 
 export interface DeleteHypervSitesControllerResponse {}
-export const DeleteHypervSitesControllerResponse =
+const DeleteHypervSitesControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteHypervSitesControllerResponse>;
 
 export interface DeleteImportCollectorsOperationRequest {
@@ -5433,7 +5413,7 @@ export interface DeleteImportCollectorsOperationRequest {
   /** Import collector ARM name */
   importCollectorName: string;
 }
-export const DeleteImportCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteImportCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5452,7 +5432,7 @@ export const DeleteImportCollectorsOperationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteImportCollectorsOperationRequest>;
 
 export interface DeleteImportCollectorsOperationResponse {}
-export const DeleteImportCollectorsOperationResponse =
+const DeleteImportCollectorsOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteImportCollectorsOperationResponse>;
 
 export interface DeleteImportMachinesControllerRequest {
@@ -5465,7 +5445,7 @@ export interface DeleteImportMachinesControllerRequest {
   /** Machine name */
   machineName: string;
 }
-export const DeleteImportMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteImportMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5484,7 +5464,7 @@ export const DeleteImportMachinesControllerRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteImportMachinesControllerRequest>;
 
 export interface DeleteImportMachinesControllerResponse {}
-export const DeleteImportMachinesControllerResponse =
+const DeleteImportMachinesControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteImportMachinesControllerResponse>;
 
 export interface DeleteImportSitesControllerRequest {
@@ -5495,7 +5475,7 @@ export interface DeleteImportSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const DeleteImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5513,7 +5493,7 @@ export const DeleteImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteImportSitesControllerRequest>;
 
 export interface DeleteImportSitesControllerResponse {}
-export const DeleteImportSitesControllerResponse =
+const DeleteImportSitesControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteImportSitesControllerResponse>;
 
 export interface DeleteImportSitesControllerImportedMachinesRequest {
@@ -5524,7 +5504,7 @@ export interface DeleteImportSitesControllerImportedMachinesRequest {
   /** Site name */
   siteName: string;
 }
-export const DeleteImportSitesControllerImportedMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteImportSitesControllerImportedMachinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5548,7 +5528,7 @@ export interface SasUriResponse {
   /** Gets or sets the SAS URI. */
   uri?: string;
 }
-export const SasUriResponse = /*@__PURE__*/ S.suspend(() =>
+const SasUriResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobArmId: S.optional(S.String),
     uri: S.optional(S.String),
@@ -5563,7 +5543,7 @@ export interface DeleteMasterSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const DeleteMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5581,7 +5561,7 @@ export const DeleteMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMasterSitesControllerRequest>;
 
 export interface DeleteMasterSitesControllerResponse {}
-export const DeleteMasterSitesControllerResponse =
+const DeleteMasterSitesControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteMasterSitesControllerResponse>;
 
 export interface DeletePrivateEndpointConnectionControllerRequest {
@@ -5594,7 +5574,7 @@ export interface DeletePrivateEndpointConnectionControllerRequest {
   /** Private link resource name. */
   peConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5613,7 +5593,7 @@ export const DeletePrivateEndpointConnectionControllerRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeletePrivateEndpointConnectionControllerRequest>;
 
 export interface DeletePrivateEndpointConnectionControllerResponse {}
-export const DeletePrivateEndpointConnectionControllerResponse =
+const DeletePrivateEndpointConnectionControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeletePrivateEndpointConnectionControllerResponse>;
 
 export interface DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionRequest {
@@ -5626,7 +5606,7 @@ export interface DeletePrivateEndpointConnectionControllerPrivateEndpointConnect
   /** Private endpoint connection name. */
   peConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionRequest =
+const DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -5693,12 +5673,11 @@ export type DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionRe
   | "ServiceUnavailable"
   | "GatewayTimeout"
   | "HttpVersionNotSupported";
-export const DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionResponseBody =
-  S.String;
+const DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionResponseBody = S.String;
 
 export type DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionResponse =
   DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionResponseBody;
-export const DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionResponse =
   /*@__PURE__*/ S.suspend(() =>
     DeletePrivateEndpointConnectionControllerPrivateEndpointConnectionResponseBody.pipe(
       T.RawResponseRoot(),
@@ -5717,7 +5696,7 @@ export interface DeletePrivateEndpointConnectionOperationRequest {
   /** Private endpoint connection ARM name */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5736,7 +5715,7 @@ export const DeletePrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeletePrivateEndpointConnectionOperationRequest>;
 
 export interface DeletePrivateEndpointConnectionOperationResponse {}
-export const DeletePrivateEndpointConnectionOperationResponse =
+const DeletePrivateEndpointConnectionOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeletePrivateEndpointConnectionOperationResponse>;
 
 export interface DeletePrivateEndpointConnectionProxyControllerRequest {
@@ -5749,7 +5728,7 @@ export interface DeletePrivateEndpointConnectionProxyControllerRequest {
   /** Private endpoint proxy name. */
   pecProxyName: string;
 }
-export const DeletePrivateEndpointConnectionProxyControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionProxyControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5768,7 +5747,7 @@ export const DeletePrivateEndpointConnectionProxyControllerRequest = /*@__PURE__
 }) as any as S.Schema<DeletePrivateEndpointConnectionProxyControllerRequest>;
 
 export type DeletePrivateEndpointConnectionProxyControllerResponse = unknown;
-export const DeletePrivateEndpointConnectionProxyControllerResponse =
+const DeletePrivateEndpointConnectionProxyControllerResponse =
   DeleteEventsControllerResponse as any as S.Schema<DeletePrivateEndpointConnectionProxyControllerResponse>;
 
 export interface DeleteServerCollectorsOperationRequest {
@@ -5781,7 +5760,7 @@ export interface DeleteServerCollectorsOperationRequest {
   /** Physical server collector ARM name */
   serverCollectorName: string;
 }
-export const DeleteServerCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServerCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5800,7 +5779,7 @@ export const DeleteServerCollectorsOperationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteServerCollectorsOperationRequest>;
 
 export interface DeleteServerCollectorsOperationResponse {}
-export const DeleteServerCollectorsOperationResponse =
+const DeleteServerCollectorsOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteServerCollectorsOperationResponse>;
 
 export interface DeleteServersControllerMachineRequest {
@@ -5813,7 +5792,7 @@ export interface DeleteServersControllerMachineRequest {
   /** A server machine name */
   machineName: string;
 }
-export const DeleteServersControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServersControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5832,7 +5811,7 @@ export const DeleteServersControllerMachineRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteServersControllerMachineRequest>;
 
 export interface DeleteServersControllerMachineResponse {}
-export const DeleteServersControllerMachineResponse =
+const DeleteServersControllerMachineResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteServersControllerMachineResponse>;
 
 export interface DeleteServerSitesControllerRequest {
@@ -5843,7 +5822,7 @@ export interface DeleteServerSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const DeleteServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5861,7 +5840,7 @@ export const DeleteServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServerSitesControllerRequest>;
 
 export interface DeleteServerSitesControllerResponse {}
-export const DeleteServerSitesControllerResponse =
+const DeleteServerSitesControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteServerSitesControllerResponse>;
 
 export interface DeleteSitesControllerRequest {
@@ -5872,7 +5851,7 @@ export interface DeleteSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const DeleteSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5890,7 +5869,7 @@ export const DeleteSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSitesControllerRequest>;
 
 export interface DeleteSitesControllerResponse {}
-export const DeleteSitesControllerResponse =
+const DeleteSitesControllerResponse =
   DeleteGroupsOperationResponse as any as S.Schema<DeleteSitesControllerResponse>;
 
 export interface DeleteSolutionsControllerSolutionRequest {
@@ -5903,7 +5882,7 @@ export interface DeleteSolutionsControllerSolutionRequest {
   /** Unique name of a migration solution within a migrate project. */
   solutionName: string;
 }
-export const DeleteSolutionsControllerSolutionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSolutionsControllerSolutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5922,7 +5901,7 @@ export const DeleteSolutionsControllerSolutionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteSolutionsControllerSolutionRequest>;
 
 export type DeleteSolutionsControllerSolutionResponse = unknown;
-export const DeleteSolutionsControllerSolutionResponse =
+const DeleteSolutionsControllerSolutionResponse =
   DeleteEventsControllerResponse as any as S.Schema<DeleteSolutionsControllerSolutionResponse>;
 
 export interface DeleteSqlAssessmentV2OperationRequest {
@@ -5937,7 +5916,7 @@ export interface DeleteSqlAssessmentV2OperationRequest {
   /** SQL Assessment arm name. */
   assessmentName: string;
 }
-export const DeleteSqlAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5957,7 +5936,7 @@ export const DeleteSqlAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteSqlAssessmentV2OperationRequest>;
 
 export interface DeleteSqlAssessmentV2OperationResponse {}
-export const DeleteSqlAssessmentV2OperationResponse =
+const DeleteSqlAssessmentV2OperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteSqlAssessmentV2OperationResponse>;
 
 export interface DeleteSqlCollectorOperationRequest {
@@ -5970,7 +5949,7 @@ export interface DeleteSqlCollectorOperationRequest {
   /** Sql collector ARM name. */
   collectorName: string;
 }
-export const DeleteSqlCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5989,7 +5968,7 @@ export const DeleteSqlCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlCollectorOperationRequest>;
 
 export interface DeleteSqlCollectorOperationResponse {}
-export const DeleteSqlCollectorOperationResponse =
+const DeleteSqlCollectorOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteSqlCollectorOperationResponse>;
 
 export interface DeleteSqlDiscoverySiteDataSourceControllerRequest {
@@ -6004,7 +5983,7 @@ export interface DeleteSqlDiscoverySiteDataSourceControllerRequest {
   /** SQL Discovery site data source name. */
   discoverySiteDataSourceName: string;
 }
-export const DeleteSqlDiscoverySiteDataSourceControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlDiscoverySiteDataSourceControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6024,7 +6003,7 @@ export const DeleteSqlDiscoverySiteDataSourceControllerRequest = /*@__PURE__*/ S
 }) as any as S.Schema<DeleteSqlDiscoverySiteDataSourceControllerRequest>;
 
 export interface DeleteSqlDiscoverySiteDataSourceControllerResponse {}
-export const DeleteSqlDiscoverySiteDataSourceControllerResponse =
+const DeleteSqlDiscoverySiteDataSourceControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteSqlDiscoverySiteDataSourceControllerResponse>;
 
 export interface DeleteSqlSitesControllerRequest {
@@ -6037,7 +6016,7 @@ export interface DeleteSqlSitesControllerRequest {
   /** SQL site name. */
   sqlSiteName: string;
 }
-export const DeleteSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6056,7 +6035,7 @@ export const DeleteSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSqlSitesControllerRequest>;
 
 export interface DeleteSqlSitesControllerResponse {}
-export const DeleteSqlSitesControllerResponse =
+const DeleteSqlSitesControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteSqlSitesControllerResponse>;
 
 export interface DeleteVcenterControllerRequest {
@@ -6069,7 +6048,7 @@ export interface DeleteVcenterControllerRequest {
   /** VCenters name */
   vcenterName: string;
 }
-export const DeleteVcenterControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVcenterControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6088,9 +6067,9 @@ export const DeleteVcenterControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVcenterControllerRequest>;
 
 export interface DeleteVcenterControllerResponse {}
-export const DeleteVcenterControllerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteVcenterControllerResponse" },
-) as any as S.Schema<DeleteVcenterControllerResponse>;
+const DeleteVcenterControllerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteVcenterControllerResponse",
+}) as any as S.Schema<DeleteVcenterControllerResponse>;
 
 export interface DeleteVmwareCollectorsOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6102,7 +6081,7 @@ export interface DeleteVmwareCollectorsOperationRequest {
   /** VMware collector ARM name */
   vmWareCollectorName: string;
 }
-export const DeleteVmwareCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVmwareCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6121,7 +6100,7 @@ export const DeleteVmwareCollectorsOperationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteVmwareCollectorsOperationRequest>;
 
 export interface DeleteVmwareCollectorsOperationResponse {}
-export const DeleteVmwareCollectorsOperationResponse =
+const DeleteVmwareCollectorsOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteVmwareCollectorsOperationResponse>;
 
 export interface DeleteWebAppAssessmentV2OperationRequest {
@@ -6136,7 +6115,7 @@ export interface DeleteWebAppAssessmentV2OperationRequest {
   /** Web app Assessment arm name. */
   assessmentName: string;
 }
-export const DeleteWebAppAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebAppAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6156,7 +6135,7 @@ export const DeleteWebAppAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteWebAppAssessmentV2OperationRequest>;
 
 export interface DeleteWebAppAssessmentV2OperationResponse {}
-export const DeleteWebAppAssessmentV2OperationResponse =
+const DeleteWebAppAssessmentV2OperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteWebAppAssessmentV2OperationResponse>;
 
 export interface DeleteWebAppCollectorOperationRequest {
@@ -6169,7 +6148,7 @@ export interface DeleteWebAppCollectorOperationRequest {
   /** Web app collector ARM name. */
   collectorName: string;
 }
-export const DeleteWebAppCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebAppCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6188,7 +6167,7 @@ export const DeleteWebAppCollectorOperationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteWebAppCollectorOperationRequest>;
 
 export interface DeleteWebAppCollectorOperationResponse {}
-export const DeleteWebAppCollectorOperationResponse =
+const DeleteWebAppCollectorOperationResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteWebAppCollectorOperationResponse>;
 
 export interface DeleteWebAppDiscoverySiteDataSourcesControllerRequest {
@@ -6203,7 +6182,7 @@ export interface DeleteWebAppDiscoverySiteDataSourcesControllerRequest {
   /** Data Source ARM name. */
   discoverySiteDataSourceName: string;
 }
-export const DeleteWebAppDiscoverySiteDataSourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebAppDiscoverySiteDataSourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6223,7 +6202,7 @@ export const DeleteWebAppDiscoverySiteDataSourcesControllerRequest = /*@__PURE__
 }) as any as S.Schema<DeleteWebAppDiscoverySiteDataSourcesControllerRequest>;
 
 export interface DeleteWebAppDiscoverySiteDataSourcesControllerResponse {}
-export const DeleteWebAppDiscoverySiteDataSourcesControllerResponse =
+const DeleteWebAppDiscoverySiteDataSourcesControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteWebAppDiscoverySiteDataSourcesControllerResponse>;
 
 export interface DeleteWebAppSitesControllerRequest {
@@ -6236,7 +6215,7 @@ export interface DeleteWebAppSitesControllerRequest {
   /** Web app site name. */
   webAppSiteName: string;
 }
-export const DeleteWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6255,13 +6234,13 @@ export const DeleteWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebAppSitesControllerRequest>;
 
 export interface DeleteWebAppSitesControllerResponse {}
-export const DeleteWebAppSitesControllerResponse =
+const DeleteWebAppSitesControllerResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<DeleteWebAppSitesControllerResponse>;
 
 /** array of machine ids */
 export type DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList =
   Array<string>;
-export const DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList =
+const DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList>;
@@ -6269,7 +6248,7 @@ export const DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachine
 /** array of process Ids */
 export type DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList =
   Array<string>;
-export const DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList =
+const DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList =
   DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList as any as S.Schema<DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList>;
 
 /** DependencyMap Service Map extensions Dependency Map Request Filters */
@@ -6279,16 +6258,15 @@ export interface DependencyMapServiceMapextensionsDependencyMapRequestFilters {
   /** array of process Ids */
   processIds?: DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList;
 }
-export const DependencyMapServiceMapextensionsDependencyMapRequestFilters = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      machineIds: S.optional(
-        DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList,
-      ),
-      processIds: S.optional(
-        DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList,
-      ),
-    }),
+const DependencyMapServiceMapextensionsDependencyMapRequestFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    machineIds: S.optional(
+      DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList,
+    ),
+    processIds: S.optional(
+      DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList,
+    ),
+  }),
 ).annotate({
   identifier: "DependencyMapServiceMapextensionsDependencyMapRequestFilters",
 }) as any as S.Schema<DependencyMapServiceMapextensionsDependencyMapRequestFilters>;
@@ -6313,7 +6291,7 @@ export interface DependencyMapControllerClientGroupMembersRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const DependencyMapControllerClientGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const DependencyMapControllerClientGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6337,7 +6315,7 @@ export const DependencyMapControllerClientGroupMembersRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DependencyMapControllerClientGroupMembersRequest>;
 
 export type DependencyMapControllerClientGroupMembersResponse = unknown;
-export const DependencyMapControllerClientGroupMembersResponse =
+const DependencyMapControllerClientGroupMembersResponse =
   DeleteEventsControllerResponse as any as S.Schema<DependencyMapControllerClientGroupMembersResponse>;
 
 export interface DependencyMapControllerServerGroupMembersRequest {
@@ -6356,7 +6334,7 @@ export interface DependencyMapControllerServerGroupMembersRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const DependencyMapControllerServerGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const DependencyMapControllerServerGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6378,7 +6356,7 @@ export const DependencyMapControllerServerGroupMembersRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DependencyMapControllerServerGroupMembersRequest>;
 
 export type DependencyMapControllerServerGroupMembersResponse = unknown;
-export const DependencyMapControllerServerGroupMembersResponse =
+const DependencyMapControllerServerGroupMembersResponse =
   DeleteEventsControllerResponse as any as S.Schema<DependencyMapControllerServerGroupMembersResponse>;
 
 export interface DownloadAksAssessmentOperationUrlRequest {
@@ -6391,7 +6369,7 @@ export interface DownloadAksAssessmentOperationUrlRequest {
   /** AKS Assessment Name. */
   assessmentName: string;
 }
-export const DownloadAksAssessmentOperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadAksAssessmentOperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6416,7 +6394,7 @@ export interface DownloadUrl {
   /** Expiry date of download url. */
   expirationTime: string;
 }
-export const DownloadUrl = /*@__PURE__*/ S.suspend(() =>
+const DownloadUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentReportUrl: S.String,
     expirationTime: S.String,
@@ -6435,7 +6413,7 @@ export interface DownloadAssessmentsOperationUrlRequest {
   /** Machine Assessment ARM name */
   assessmentName: string;
 }
-export const DownloadAssessmentsOperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadAssessmentsOperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6466,7 +6444,7 @@ export interface DownloadAvsAssessmentsOperationUrlRequest {
   /** AVS Assessment ARM name */
   assessmentName: string;
 }
-export const DownloadAvsAssessmentsOperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadAvsAssessmentsOperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6497,7 +6475,7 @@ export interface DownloadSqlAssessmentV2OperationUrlRequest {
   /** SQL Assessment arm name. */
   assessmentName: string;
 }
-export const DownloadSqlAssessmentV2OperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadSqlAssessmentV2OperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6528,7 +6506,7 @@ export interface DownloadWebAppAssessmentV2OperationUrlRequest {
   /** Web app Assessment arm name. */
   assessmentName: string;
 }
-export const DownloadWebAppAssessmentV2OperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadWebAppAssessmentV2OperationUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6559,7 +6537,7 @@ export interface ExportDependencyMapControllerDependenciesRequest {
   /** end time */
   endTime?: string;
 }
-export const ExportDependencyMapControllerDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDependencyMapControllerDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6579,7 +6557,7 @@ export const ExportDependencyMapControllerDependenciesRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ExportDependencyMapControllerDependenciesRequest>;
 
 export type ExportDependencyMapControllerDependenciesResponse = unknown;
-export const ExportDependencyMapControllerDependenciesResponse =
+const ExportDependencyMapControllerDependenciesResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportDependencyMapControllerDependenciesResponse>;
 
 export interface ExportHypervDependencyMapControllerDependenciesRequest {
@@ -6594,7 +6572,7 @@ export interface ExportHypervDependencyMapControllerDependenciesRequest {
   /** end time */
   endTime?: string;
 }
-export const ExportHypervDependencyMapControllerDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportHypervDependencyMapControllerDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6614,7 +6592,7 @@ export const ExportHypervDependencyMapControllerDependenciesRequest = /*@__PURE_
 }) as any as S.Schema<ExportHypervDependencyMapControllerDependenciesRequest>;
 
 export type ExportHypervDependencyMapControllerDependenciesResponse = unknown;
-export const ExportHypervDependencyMapControllerDependenciesResponse =
+const ExportHypervDependencyMapControllerDependenciesResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportHypervDependencyMapControllerDependenciesResponse>;
 
 export interface ExportHypervSitesControllerApplicationsRequest {
@@ -6625,7 +6603,7 @@ export interface ExportHypervSitesControllerApplicationsRequest {
   /** Site name */
   siteName: string;
 }
-export const ExportHypervSitesControllerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportHypervSitesControllerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6643,7 +6621,7 @@ export const ExportHypervSitesControllerApplicationsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ExportHypervSitesControllerApplicationsRequest>;
 
 export type ExportHypervSitesControllerApplicationsResponse = unknown;
-export const ExportHypervSitesControllerApplicationsResponse =
+const ExportHypervSitesControllerApplicationsResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportHypervSitesControllerApplicationsResponse>;
 
 /** Export Machine Errors Properties */
@@ -6652,14 +6630,14 @@ export type ExportMachineErrorsProperties =
   | "DependencyMap"
   | "StaticData"
   | "SQLServerConnectionInfo";
-export const ExportMachineErrorsProperties = S.String;
+const ExportMachineErrorsProperties = S.String;
 
 /** The Properties class for export machine errors request body. */
 export interface RequestExportMachineErrorsProperties {
   /** Gets or sets the discovery scope. */
   discoveryScope?: ExportMachineErrorsProperties | (string & {});
 }
-export const RequestExportMachineErrorsProperties = /*@__PURE__*/ S.suspend(() =>
+const RequestExportMachineErrorsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryScope: S.optional(ExportMachineErrorsProperties),
   }),
@@ -6677,7 +6655,7 @@ export interface ExportHypervSitesControllerMachineErrorsRequest {
   /** Gets or sets the properties. */
   properties?: RequestExportMachineErrorsProperties;
 }
-export const ExportHypervSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportHypervSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6696,7 +6674,7 @@ export const ExportHypervSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ExportHypervSitesControllerMachineErrorsRequest>;
 
 export type ExportHypervSitesControllerMachineErrorsResponse = unknown;
-export const ExportHypervSitesControllerMachineErrorsResponse =
+const ExportHypervSitesControllerMachineErrorsResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportHypervSitesControllerMachineErrorsResponse>;
 
 export interface ExportImportSitesControllerUriRequest {
@@ -6711,7 +6689,7 @@ export interface ExportImportSitesControllerUriRequest {
   /** Gets or sets the SAS URI. */
   uri?: string;
 }
-export const ExportImportSitesControllerUriRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportImportSitesControllerUriRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6742,7 +6720,7 @@ export interface ExportServerDependencyMapControllerDependenciesRequest {
   /** end time */
   endTime?: string;
 }
-export const ExportServerDependencyMapControllerDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportServerDependencyMapControllerDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6762,7 +6740,7 @@ export const ExportServerDependencyMapControllerDependenciesRequest = /*@__PURE_
 }) as any as S.Schema<ExportServerDependencyMapControllerDependenciesRequest>;
 
 export type ExportServerDependencyMapControllerDependenciesResponse = unknown;
-export const ExportServerDependencyMapControllerDependenciesResponse =
+const ExportServerDependencyMapControllerDependenciesResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportServerDependencyMapControllerDependenciesResponse>;
 
 export interface ExportServerSitesControllerApplicationsRequest {
@@ -6773,7 +6751,7 @@ export interface ExportServerSitesControllerApplicationsRequest {
   /** Site name */
   siteName: string;
 }
-export const ExportServerSitesControllerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportServerSitesControllerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6791,7 +6769,7 @@ export const ExportServerSitesControllerApplicationsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ExportServerSitesControllerApplicationsRequest>;
 
 export type ExportServerSitesControllerApplicationsResponse = unknown;
-export const ExportServerSitesControllerApplicationsResponse =
+const ExportServerSitesControllerApplicationsResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportServerSitesControllerApplicationsResponse>;
 
 export interface ExportServerSitesControllerMachineErrorsRequest {
@@ -6804,7 +6782,7 @@ export interface ExportServerSitesControllerMachineErrorsRequest {
   /** Gets or sets the properties. */
   properties?: RequestExportMachineErrorsProperties;
 }
-export const ExportServerSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportServerSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6823,7 +6801,7 @@ export const ExportServerSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ExportServerSitesControllerMachineErrorsRequest>;
 
 export type ExportServerSitesControllerMachineErrorsResponse = unknown;
-export const ExportServerSitesControllerMachineErrorsResponse =
+const ExportServerSitesControllerMachineErrorsResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportServerSitesControllerMachineErrorsResponse>;
 
 export interface ExportSitesControllerApplicationsRequest {
@@ -6834,7 +6812,7 @@ export interface ExportSitesControllerApplicationsRequest {
   /** Site name */
   siteName: string;
 }
-export const ExportSitesControllerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportSitesControllerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6852,7 +6830,7 @@ export const ExportSitesControllerApplicationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExportSitesControllerApplicationsRequest>;
 
 export type ExportSitesControllerApplicationsResponse = unknown;
-export const ExportSitesControllerApplicationsResponse =
+const ExportSitesControllerApplicationsResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportSitesControllerApplicationsResponse>;
 
 export interface ExportSitesControllerMachineErrorsRequest {
@@ -6865,7 +6843,7 @@ export interface ExportSitesControllerMachineErrorsRequest {
   /** Gets or sets the properties. */
   properties?: RequestExportMachineErrorsProperties;
 }
-export const ExportSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6884,7 +6862,7 @@ export const ExportSitesControllerMachineErrorsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ExportSitesControllerMachineErrorsRequest>;
 
 export type ExportSitesControllerMachineErrorsResponse = unknown;
-export const ExportSitesControllerMachineErrorsResponse =
+const ExportSitesControllerMachineErrorsResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportSitesControllerMachineErrorsResponse>;
 
 export interface ExportSitesControllerMachinesRequest {
@@ -6897,7 +6875,7 @@ export interface ExportSitesControllerMachinesRequest {
   /** filter options. */
   filter?: string;
 }
-export const ExportSitesControllerMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportSitesControllerMachinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6916,7 +6894,7 @@ export const ExportSitesControllerMachinesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ExportSitesControllerMachinesRequest>;
 
 export type ExportSitesControllerMachinesResponse = unknown;
-export const ExportSitesControllerMachinesResponse =
+const ExportSitesControllerMachinesResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportSitesControllerMachinesResponse>;
 
 export interface ExportSqlSitesControllerSqlServerErrorsRequest {
@@ -6929,7 +6907,7 @@ export interface ExportSqlSitesControllerSqlServerErrorsRequest {
   /** SQL site name. */
   sqlSiteName: string;
 }
-export const ExportSqlSitesControllerSqlServerErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportSqlSitesControllerSqlServerErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6948,7 +6926,7 @@ export const ExportSqlSitesControllerSqlServerErrorsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ExportSqlSitesControllerSqlServerErrorsRequest>;
 
 export type ExportSqlSitesControllerSqlServerErrorsResponse = unknown;
-export const ExportSqlSitesControllerSqlServerErrorsResponse =
+const ExportSqlSitesControllerSqlServerErrorsResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportSqlSitesControllerSqlServerErrorsResponse>;
 
 export interface ExportSqlSitesControllerSqlServersRequest {
@@ -6965,7 +6943,7 @@ export interface ExportSqlSitesControllerSqlServersRequest {
   /** filter options. */
   filter?: string;
 }
-export const ExportSqlSitesControllerSqlServersRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportSqlSitesControllerSqlServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6986,7 +6964,7 @@ export const ExportSqlSitesControllerSqlServersRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ExportSqlSitesControllerSqlServersRequest>;
 
 export type ExportSqlSitesControllerSqlServersResponse = unknown;
-export const ExportSqlSitesControllerSqlServersResponse =
+const ExportSqlSitesControllerSqlServersResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportSqlSitesControllerSqlServersResponse>;
 
 export interface ExportWebAppSitesControllerInventoryRequest {
@@ -7001,7 +6979,7 @@ export interface ExportWebAppSitesControllerInventoryRequest {
   /** filter options. */
   filter?: string;
 }
-export const ExportWebAppSitesControllerInventoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportWebAppSitesControllerInventoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7021,7 +6999,7 @@ export const ExportWebAppSitesControllerInventoryRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ExportWebAppSitesControllerInventoryRequest>;
 
 export type ExportWebAppSitesControllerInventoryResponse = unknown;
-export const ExportWebAppSitesControllerInventoryResponse =
+const ExportWebAppSitesControllerInventoryResponse =
   DeleteEventsControllerResponse as any as S.Schema<ExportWebAppSitesControllerInventoryResponse>;
 
 export interface GenerateDependencyMapControllerCoarseMapRequest {
@@ -7038,7 +7016,7 @@ export interface GenerateDependencyMapControllerCoarseMapRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const GenerateDependencyMapControllerCoarseMapRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateDependencyMapControllerCoarseMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7059,7 +7037,7 @@ export const GenerateDependencyMapControllerCoarseMapRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GenerateDependencyMapControllerCoarseMapRequest>;
 
 export type GenerateDependencyMapControllerCoarseMapResponse = unknown;
-export const GenerateDependencyMapControllerCoarseMapResponse =
+const GenerateDependencyMapControllerCoarseMapResponse =
   DeleteEventsControllerResponse as any as S.Schema<GenerateDependencyMapControllerCoarseMapResponse>;
 
 export interface GenerateDependencyMapControllerDetailedMapRequest {
@@ -7078,7 +7056,7 @@ export interface GenerateDependencyMapControllerDetailedMapRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const GenerateDependencyMapControllerDetailedMapRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateDependencyMapControllerDetailedMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7100,7 +7078,7 @@ export const GenerateDependencyMapControllerDetailedMapRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GenerateDependencyMapControllerDetailedMapRequest>;
 
 export type GenerateDependencyMapControllerDetailedMapResponse = unknown;
-export const GenerateDependencyMapControllerDetailedMapResponse =
+const GenerateDependencyMapControllerDetailedMapResponse =
   DeleteEventsControllerResponse as any as S.Schema<GenerateDependencyMapControllerDetailedMapResponse>;
 
 export interface GenerateHypervDependencyMapControllerCoarseMapRequest {
@@ -7117,7 +7095,7 @@ export interface GenerateHypervDependencyMapControllerCoarseMapRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const GenerateHypervDependencyMapControllerCoarseMapRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateHypervDependencyMapControllerCoarseMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7138,7 +7116,7 @@ export const GenerateHypervDependencyMapControllerCoarseMapRequest = /*@__PURE__
 }) as any as S.Schema<GenerateHypervDependencyMapControllerCoarseMapRequest>;
 
 export type GenerateHypervDependencyMapControllerCoarseMapResponse = unknown;
-export const GenerateHypervDependencyMapControllerCoarseMapResponse =
+const GenerateHypervDependencyMapControllerCoarseMapResponse =
   DeleteEventsControllerResponse as any as S.Schema<GenerateHypervDependencyMapControllerCoarseMapResponse>;
 
 export interface GenerateHypervDependencyMapControllerDetailedMapRequest {
@@ -7157,7 +7135,7 @@ export interface GenerateHypervDependencyMapControllerDetailedMapRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const GenerateHypervDependencyMapControllerDetailedMapRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateHypervDependencyMapControllerDetailedMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7179,8 +7157,8 @@ export const GenerateHypervDependencyMapControllerDetailedMapRequest = /*@__PURE
 }) as any as S.Schema<GenerateHypervDependencyMapControllerDetailedMapRequest>;
 
 export type GenerateHypervDependencyMapControllerDetailedMapResponse = unknown;
-export const GenerateHypervDependencyMapControllerDetailedMapResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.RawResponseRoot()),
+const GenerateHypervDependencyMapControllerDetailedMapResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GenerateHypervDependencyMapControllerDetailedMapResponse",
 }) as any as S.Schema<GenerateHypervDependencyMapControllerDetailedMapResponse>;
@@ -7199,7 +7177,7 @@ export interface GenerateServerDependencyMapControllerCoarseMapRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const GenerateServerDependencyMapControllerCoarseMapRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateServerDependencyMapControllerCoarseMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7220,7 +7198,7 @@ export const GenerateServerDependencyMapControllerCoarseMapRequest = /*@__PURE__
 }) as any as S.Schema<GenerateServerDependencyMapControllerCoarseMapRequest>;
 
 export type GenerateServerDependencyMapControllerCoarseMapResponse = unknown;
-export const GenerateServerDependencyMapControllerCoarseMapResponse =
+const GenerateServerDependencyMapControllerCoarseMapResponse =
   DeleteEventsControllerResponse as any as S.Schema<GenerateServerDependencyMapControllerCoarseMapResponse>;
 
 export interface GenerateServerDependencyMapControllerDetailedMapRequest {
@@ -7239,7 +7217,7 @@ export interface GenerateServerDependencyMapControllerDetailedMapRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const GenerateServerDependencyMapControllerDetailedMapRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateServerDependencyMapControllerDetailedMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7261,7 +7239,7 @@ export const GenerateServerDependencyMapControllerDetailedMapRequest = /*@__PURE
 }) as any as S.Schema<GenerateServerDependencyMapControllerDetailedMapRequest>;
 
 export type GenerateServerDependencyMapControllerDetailedMapResponse = unknown;
-export const GenerateServerDependencyMapControllerDetailedMapResponse =
+const GenerateServerDependencyMapControllerDetailedMapResponse =
   GenerateHypervDependencyMapControllerDetailedMapResponse as any as S.Schema<GenerateServerDependencyMapControllerDetailedMapResponse>;
 
 export interface GetAksAssessmentOperationRequest {
@@ -7274,7 +7252,7 @@ export interface GetAksAssessmentOperationRequest {
   /** AKS Assessment Name. */
   assessmentName: string;
 }
-export const GetAksAssessmentOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAksAssessmentOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7306,7 +7284,7 @@ export interface GetAksAssessmentOperationResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetAksAssessmentOperationResponse =
+const GetAksAssessmentOperationResponse =
   CreateAksAssessmentOperationResponse as any as S.Schema<GetAksAssessmentOperationResponse>;
 
 export interface GetAksClusterOperationRequest {
@@ -7321,7 +7299,7 @@ export interface GetAksClusterOperationRequest {
   /** AKS Cluster Name. */
   clusterName: string;
 }
-export const GetAksClusterOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAksClusterOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7342,11 +7320,11 @@ export const GetAksClusterOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Node Pool Mode. */
 export type NodePoolMode = "User" | "System";
-export const NodePoolMode = S.String;
+const NodePoolMode = S.String;
 
 /** Operating System Type. */
 export type OSType = "Linux" | "Windows";
-export const OSType = S.String;
+const OSType = S.String;
 
 /** Data model of Node Pool. */
 export interface NodePool {
@@ -7371,7 +7349,7 @@ export interface NodePool {
   /** Gets pod approximate monthly cost. */
   podApproxMonthlyCost: number;
 }
-export const NodePool = /*@__PURE__*/ S.suspend(() =>
+const NodePool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -7388,7 +7366,7 @@ export const NodePool = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets list of node pools. */
 export type ClusterNodePoolsList = Array<NodePool>;
-export const ClusterNodePoolsList = /*@__PURE__*/ S.Array(
+const ClusterNodePoolsList = /*@__PURE__*/ S.Array(
   NodePool,
 ) as any as S.Schema<ClusterNodePoolsList>;
 
@@ -7413,7 +7391,7 @@ export interface Cluster {
   /** Gets monthly cost. */
   monthlyCost: number;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
+const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     nodePools: ClusterNodePoolsList,
@@ -7441,7 +7419,7 @@ export interface GetAksClusterOperationResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetAksClusterOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAksClusterOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7464,7 +7442,7 @@ export interface GetAksOptionsOperationRequest {
   /** AKS Assessment Options Name. */
   assessmentOptionsName: string;
 }
-export const GetAksOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAksOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7483,19 +7461,19 @@ export const GetAksOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAksOptionsOperationRequest>;
 
 export type RecordOfStringArrayValueList = Array<string>;
-export const RecordOfStringArrayValueList =
+const RecordOfStringArrayValueList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<RecordOfStringArrayValueList>;
 
 /** Data Model for Dictionary<string, string[]>. */
 export type RecordOfStringArray = { [key: string]: RecordOfStringArrayValueList | undefined };
-export const RecordOfStringArray = /*@__PURE__*/ S.Record(
+const RecordOfStringArray = /*@__PURE__*/ S.Record(
   S.String,
   RecordOfStringArrayValueList,
 ) as any as S.Schema<RecordOfStringArray>;
 
 /** Gets the mapping of Assessment Options in graph representation. */
 export type OptionsArmPropertiesBaseEdgesMap = { [key: string]: RecordOfStringArray | undefined };
-export const OptionsArmPropertiesBaseEdgesMap = /*@__PURE__*/ S.Record(
+const OptionsArmPropertiesBaseEdgesMap = /*@__PURE__*/ S.Record(
   S.String,
   RecordOfStringArray,
 ) as any as S.Schema<OptionsArmPropertiesBaseEdgesMap>;
@@ -7505,7 +7483,7 @@ export interface OptionsArmPropertiesBase {
   /** Gets the mapping of Assessment Options in graph representation. */
   edges: OptionsArmPropertiesBaseEdgesMap;
 }
-export const OptionsArmPropertiesBase = /*@__PURE__*/ S.suspend(() =>
+const OptionsArmPropertiesBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edges: OptionsArmPropertiesBaseEdgesMap,
   }),
@@ -7525,7 +7503,7 @@ export interface GetAksOptionsOperationResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetAksOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAksOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7550,7 +7528,7 @@ export interface GetAksSummaryOperationRequest {
   /** AKS Assessment Summary Name. */
   summaryName: string;
 }
-export const GetAksSummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAksSummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7571,14 +7549,14 @@ export const GetAksSummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Data Model for Dictionary<string, int>. */
 export type RecordOfInt = { [key: string]: number | undefined };
-export const RecordOfInt =
+const RecordOfInt =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<RecordOfInt>;
 
 /** Gets the cloud suitability summary for all entities in the assessment per target. */
 export type AKSSummaryPropertiesSuitabilityPerTargetMap = {
   [key: string]: RecordOfInt | undefined;
 };
-export const AKSSummaryPropertiesSuitabilityPerTargetMap = /*@__PURE__*/ S.Record(
+const AKSSummaryPropertiesSuitabilityPerTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   RecordOfInt,
 ) as any as S.Schema<AKSSummaryPropertiesSuitabilityPerTargetMap>;
@@ -7590,7 +7568,7 @@ export interface SummaryDetails {
   /** Gets monthly cost. */
   monthlyCost: number;
 }
-export const SummaryDetails = /*@__PURE__*/ S.suspend(() =>
+const SummaryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     monthlyCost: S.Number,
@@ -7599,19 +7577,19 @@ export const SummaryDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets SKU summary. */
 export type AKSAssessmentSummarySkuSummaryMap = { [key: string]: SummaryDetails | undefined };
-export const AKSAssessmentSummarySkuSummaryMap = /*@__PURE__*/ S.Record(
+const AKSAssessmentSummarySkuSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   SummaryDetails,
 ) as any as S.Schema<AKSAssessmentSummarySkuSummaryMap>;
 
 /** Gets web app summary. */
 export type AKSAssessmentSummaryWebAppSummaryMap = { [key: string]: SummaryDetails | undefined };
-export const AKSAssessmentSummaryWebAppSummaryMap =
+const AKSAssessmentSummaryWebAppSummaryMap =
   AKSAssessmentSummarySkuSummaryMap as any as S.Schema<AKSAssessmentSummaryWebAppSummaryMap>;
 
 /** Gets web server summary. */
 export type AKSAssessmentSummaryWebServerSummaryMap = { [key: string]: number | undefined };
-export const AKSAssessmentSummaryWebServerSummaryMap =
+const AKSAssessmentSummaryWebServerSummaryMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<AKSAssessmentSummaryWebServerSummaryMap>;
 
 /** Data model of AKS Assessment Summary. */
@@ -7631,7 +7609,7 @@ export interface AKSAssessmentSummary {
   /** Gets the total monthly cost. */
   totalMonthlyCost: number;
 }
-export const AKSAssessmentSummary = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuSummary: AKSAssessmentSummarySkuSummaryMap,
     webAppSummary: AKSAssessmentSummaryWebAppSummaryMap,
@@ -7660,7 +7638,7 @@ export interface AKSSummaryProperties {
   /** Gets AKS assessment summary. */
   aksAssessmentSummary: AKSAssessmentSummary;
 }
-export const AKSSummaryProperties = /*@__PURE__*/ S.suspend(() =>
+const AKSSummaryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentName: S.String,
     summaryName: S.String,
@@ -7686,7 +7664,7 @@ export interface GetAksSummaryOperationResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetAksSummaryOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAksSummaryOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7713,7 +7691,7 @@ export interface GetAssessedMachinesOperationRequest {
   /** Machine assessment Assessed Machine ARM name */
   assessedMachineName: string;
 }
-export const GetAssessedMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7735,7 +7713,7 @@ export const GetAssessedMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the error message parameters. */
 export type ErrorMessageParametersMap = { [key: string]: string | undefined };
-export const ErrorMessageParametersMap =
+const ErrorMessageParametersMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<ErrorMessageParametersMap>;
 
 /** Error web model class. */
@@ -7767,7 +7745,7 @@ export interface Error {
   /** Gets the type of assessment impacted by this error. */
   impactedAssessmentType?: string;
 }
-export const Error = /*@__PURE__*/ S.suspend(() =>
+const Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     code: S.optional(S.String),
@@ -7787,7 +7765,7 @@ export const Error = /*@__PURE__*/ S.suspend(() =>
 
 /** List of errors for this machine. */
 export type AssessedMachinePropertiesErrorsList = Array<Error>;
-export const AssessedMachinePropertiesErrorsList = /*@__PURE__*/ S.Array(
+const AssessedMachinePropertiesErrorsList = /*@__PURE__*/ S.Array(
   Error,
 ) as any as S.Schema<AssessedMachinePropertiesErrorsList>;
 
@@ -7801,7 +7779,7 @@ export type AzureDiskSuitabilityExplanation =
   | "NoDiskSizeFoundForSelectedRedundancy"
   | "InternalErrorOccurredForDiskEvaluation"
   | "NoEaPriceFoundForDiskSize";
-export const AzureDiskSuitabilityExplanation = S.String;
+const AzureDiskSuitabilityExplanation = S.String;
 
 export type AzureDiskSuitabilityDetail =
   | "None"
@@ -7817,7 +7795,7 @@ export type AzureDiskSuitabilityDetail =
   | "MegabytesPerSecondOfWriteOutOfRange"
   | "DiskGigabytesConsumedOutOfRange"
   | "DiskGigabytesProvisionedOutOfRange";
-export const AzureDiskSuitabilityDetail = S.String;
+const AzureDiskSuitabilityDetail = S.String;
 
 export type AzureDiskSize =
   | "Unknown"
@@ -7862,7 +7840,7 @@ export type AzureDiskSize =
   | "Premium_P3"
   | "Ultra"
   | "PremiumV2";
-export const AzureDiskSize = S.String;
+const AzureDiskSize = S.String;
 
 /** Assessed disk properties class. */
 export interface AssessedDisk {
@@ -7899,7 +7877,7 @@ export interface AssessedDisk {
   /** Gets the number of write operations per second. */
   numberOfWriteOperationsPerSecond?: number;
 }
-export const AssessedDisk = /*@__PURE__*/ S.suspend(() =>
+const AssessedDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suitability: S.optional(CloudSuitability),
     suitabilityExplanation: S.optional(AzureDiskSuitabilityExplanation),
@@ -7922,7 +7900,7 @@ export const AssessedDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of disks attached to the machine. Key is ID of disk. Value is a disk object. */
 export type AssessedMachinePropertiesDisksMap = { [key: string]: AssessedDisk | undefined };
-export const AssessedMachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
+const AssessedMachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
   S.String,
   AssessedDisk,
 ) as any as S.Schema<AssessedMachinePropertiesDisksMap>;
@@ -7936,7 +7914,7 @@ export interface ProcessorInfo {
   /** Gets or sets the number of cores in a socket. */
   numberOfCoresPerSocket?: number;
 }
-export const ProcessorInfo = /*@__PURE__*/ S.suspend(() =>
+const ProcessorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     numberOfSockets: S.optional(S.Number),
@@ -7946,7 +7924,7 @@ export const ProcessorInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the collection of cost components. */
 export type AssessedMachinePropertiesCostComponentsList = Array<CostComponent>;
-export const AssessedMachinePropertiesCostComponentsList =
+const AssessedMachinePropertiesCostComponentsList =
   MachineAssessmentPropertiesCostComponentsList as any as S.Schema<AssessedMachinePropertiesCostComponentsList>;
 
 /** Class to represent the Product Support Status. */
@@ -7974,7 +7952,7 @@ export interface ProductSupportStatus {
   /** Gets or sets the extended security update year 3 end date of the product. */
   extendedSecurityUpdateYear3EndDate?: string;
 }
-export const ProductSupportStatus = /*@__PURE__*/ S.suspend(() =>
+const ProductSupportStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentVersion: S.optional(S.String),
     servicePackStatus: S.optional(S.String),
@@ -7996,17 +7974,17 @@ export type AzureNetworkAdapterSuitabilityDetail =
   | "MegabytesOfDataTransmittedOutOfRange"
   | "MegabytesOfDataRecievedMissing"
   | "MegabytesOfDataRecievedOutOfRange";
-export const AzureNetworkAdapterSuitabilityDetail = S.String;
+const AzureNetworkAdapterSuitabilityDetail = S.String;
 
 export type AzureNetworkAdapterSuitabilityExplanation =
   | "Unknown"
   | "NotApplicable"
   | "InternalErrorOccurred";
-export const AzureNetworkAdapterSuitabilityExplanation = S.String;
+const AzureNetworkAdapterSuitabilityExplanation = S.String;
 
 /** Gets the ip addresses. */
 export type AssessedNetworkAdapterIpAddressesList = Array<string>;
-export const AssessedNetworkAdapterIpAddressesList =
+const AssessedNetworkAdapterIpAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AssessedNetworkAdapterIpAddressesList>;
 
 /** Assessed Network Adapter. */
@@ -8032,7 +8010,7 @@ export interface AssessedNetworkAdapter {
   /** Gets the megabytes per second transmitted. */
   megabytesPerSecondTransmitted?: number;
 }
-export const AssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const AssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suitability: S.optional(CloudSuitability),
     suitabilityDetail: S.optional(AzureNetworkAdapterSuitabilityDetail),
@@ -8051,7 +8029,7 @@ export const AssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 export type AssessedMachinePropertiesNetworkAdaptersMap = {
   [key: string]: AssessedNetworkAdapter | undefined;
 };
-export const AssessedMachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
+const AssessedMachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
   S.String,
   AssessedNetworkAdapter,
 ) as any as S.Schema<AssessedMachinePropertiesNetworkAdaptersMap>;
@@ -8547,7 +8525,7 @@ export type AzureVmSize =
   | "Standard_E32bds_v5"
   | "Standard_E48bds_v5"
   | "Standard_E64bds_v5";
-export const AzureVmSize = S.String;
+const AzureVmSize = S.String;
 
 export type AzureVmSuitabilityExplanation =
   | "Unknown"
@@ -8589,7 +8567,7 @@ export type AzureVmSuitabilityExplanation =
   | "NoVmSizeInSelectedFamilyFound"
   | "NoEaPriceFoundForVmSize"
   | "NoVmSizeFoundForOfferCurrencyReservedInstance";
-export const AzureVmSuitabilityExplanation = S.String;
+const AzureVmSuitabilityExplanation = S.String;
 
 export type AzureVmSuitabilityDetail =
   | "None"
@@ -8601,20 +8579,20 @@ export type AzureVmSuitabilityDetail =
   | "PercentageOfMemoryUtilizedMissing"
   | "PercentageOfCoresUtilizedOutOfRange"
   | "PercentageOfMemoryUtilizedOutOfRange";
-export const AzureVmSuitabilityDetail = S.String;
+const AzureVmSuitabilityDetail = S.String;
 
 export type AssessedMachineType =
   | "Unknown"
   | "AssessedMachine"
   | "AvsAssessedMachine"
   | "SqlAssessedMachine";
-export const AssessedMachineType = S.String;
+const AssessedMachineType = S.String;
 
 export type MachineBootType = "Unknown" | "EFI" | "BIOS" | "NotSpecified";
-export const MachineBootType = S.String;
+const MachineBootType = S.String;
 
 export type GuestOperatingSystemArchitecture = "Unknown" | "X86" | "X64";
-export const GuestOperatingSystemArchitecture = S.String;
+const GuestOperatingSystemArchitecture = S.String;
 
 /** Assessed machine properties class. */
 export interface AssessedMachineProperties {
@@ -8691,7 +8669,7 @@ export interface AssessedMachineProperties {
   /** Gets a value indicating whether machine is suitable for the cloud platform selected. */
   suitability?: CloudSuitability;
 }
-export const AssessedMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const AssessedMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(AssessedMachinePropertiesErrorsList),
     disks: S.optional(AssessedMachinePropertiesDisksMap),
@@ -8746,7 +8724,7 @@ export interface GetAssessedMachinesOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssessedMachineProperties;
 }
-export const GetAssessedMachinesOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedMachinesOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8772,7 +8750,7 @@ export interface GetAssessedSqlDatabaseV2OperationRequest {
   /** Sql assessment Assessed Databases ARM name. */
   assessedSqlDatabaseName: string;
 }
-export const GetAssessedSqlDatabaseV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedSqlDatabaseV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8799,7 +8777,7 @@ export type TargetType =
   | "AzureSqlManagedInstance"
   | "AzureSqlVirtualMachine"
   | "AzureVirtualMachine";
-export const TargetType = S.String;
+const TargetType = S.String;
 
 export type RecommendedSuitability =
   | "Unknown"
@@ -8814,7 +8792,7 @@ export type RecommendedSuitability =
   | "ConditionallySuitableForSqlMI"
   | "ConditionallySuitableForVM"
   | "ConditionallySuitableForSqlVM";
-export const RecommendedSuitability = S.String;
+const RecommendedSuitability = S.String;
 
 export type HardwareGeneration =
   | "Unknown"
@@ -8823,7 +8801,7 @@ export type HardwareGeneration =
   | "Fsv2_series"
   | "M_series"
   | "DC_series";
-export const HardwareGeneration = S.String;
+const HardwareGeneration = S.String;
 
 /** Class representing Azure SQL PAAS SKU. */
 export interface AzureSqlPaasSkuDTO {
@@ -8844,7 +8822,7 @@ export interface AzureSqlPaasSkuDTO {
   /** Gets the target type. */
   azureSqlTargetType?: TargetType;
 }
-export const AzureSqlPaasSkuDTO = /*@__PURE__*/ S.suspend(() =>
+const AzureSqlPaasSkuDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureSqlServiceTier: S.optional(AzureSqlServiceTier),
     azureSqlComputeTier: S.optional(ComputeTier),
@@ -8859,7 +8837,7 @@ export const AzureSqlPaasSkuDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the replica azure SQL PAAS SKU. */
 export type SqlAssessmentV2PaasSuitabilityDataReplicaAzureSqlSkuList = Array<AzureSqlPaasSkuDTO>;
-export const SqlAssessmentV2PaasSuitabilityDataReplicaAzureSqlSkuList = /*@__PURE__*/ S.Array(
+const SqlAssessmentV2PaasSuitabilityDataReplicaAzureSqlSkuList = /*@__PURE__*/ S.Array(
   AzureSqlPaasSkuDTO,
 ) as any as S.Schema<SqlAssessmentV2PaasSuitabilityDataReplicaAzureSqlSkuList>;
 
@@ -8871,10 +8849,10 @@ export type AzureManagedDiskSkuDTODiskType =
   | "StandardOrPremium"
   | "Ultra"
   | "PremiumV2";
-export const AzureManagedDiskSkuDTODiskType = S.String;
+const AzureManagedDiskSkuDTODiskType = S.String;
 
 export type AzureManagedDiskSkuDTODiskRedundancy = "Unknown" | "LRS" | "ZRS";
-export const AzureManagedDiskSkuDTODiskRedundancy = S.String;
+const AzureManagedDiskSkuDTODiskRedundancy = S.String;
 
 /** Class representing an Azure Managed Disk SKU. */
 export interface AzureManagedDiskSkuDTO {
@@ -8893,7 +8871,7 @@ export interface AzureManagedDiskSkuDTO {
   /** Gets the recommended IOPS of the managed disk. */
   recommendedIops?: number;
 }
-export const AzureManagedDiskSkuDTO = /*@__PURE__*/ S.suspend(() =>
+const AzureManagedDiskSkuDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskType: S.optional(AzureManagedDiskSkuDTODiskType),
     diskSize: S.optional(AzureDiskSize),
@@ -8907,29 +8885,29 @@ export const AzureManagedDiskSkuDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of shared data disks. */
 export type SharedResourcesDTOSharedDataDisksList = Array<AzureManagedDiskSkuDTO>;
-export const SharedResourcesDTOSharedDataDisksList = /*@__PURE__*/ S.Array(
+const SharedResourcesDTOSharedDataDisksList = /*@__PURE__*/ S.Array(
   AzureManagedDiskSkuDTO,
 ) as any as S.Schema<SharedResourcesDTOSharedDataDisksList>;
 
 /** Gets the list of shared log disks. */
 export type SharedResourcesDTOSharedLogDisksList = Array<AzureManagedDiskSkuDTO>;
-export const SharedResourcesDTOSharedLogDisksList =
+const SharedResourcesDTOSharedLogDisksList =
   SharedResourcesDTOSharedDataDisksList as any as S.Schema<SharedResourcesDTOSharedLogDisksList>;
 
 /** Gets the list of shared Temporary database disks. */
 export type SharedResourcesDTOSharedTempDbDisksList = Array<AzureManagedDiskSkuDTO>;
-export const SharedResourcesDTOSharedTempDbDisksList =
+const SharedResourcesDTOSharedTempDbDisksList =
   SharedResourcesDTOSharedDataDisksList as any as S.Schema<SharedResourcesDTOSharedTempDbDisksList>;
 
 export type AzureQuorumWitnessDTOQuorumWitnessType = "Unknown" | "Cloud" | "Disk";
-export const AzureQuorumWitnessDTOQuorumWitnessType = S.String;
+const AzureQuorumWitnessDTOQuorumWitnessType = S.String;
 
 /** Quorum Witness. */
 export interface AzureQuorumWitnessDTO {
   /** Gets quorum witness type. */
   quorumWitnessType?: AzureQuorumWitnessDTOQuorumWitnessType;
 }
-export const AzureQuorumWitnessDTO = /*@__PURE__*/ S.suspend(() =>
+const AzureQuorumWitnessDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quorumWitnessType: S.optional(AzureQuorumWitnessDTOQuorumWitnessType),
   }),
@@ -8948,7 +8926,7 @@ export interface SharedResourcesDTO {
   /** Gets quorum witness. */
   quorumWitness?: AzureQuorumWitnessDTO;
 }
-export const SharedResourcesDTO = /*@__PURE__*/ S.suspend(() =>
+const SharedResourcesDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedDataDisks: S.optional(SharedResourcesDTOSharedDataDisksList),
     sharedLogDisks: S.optional(SharedResourcesDTOSharedLogDisksList),
@@ -8960,18 +8938,18 @@ export const SharedResourcesDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the collection of cost components. */
 export type SqlAssessmentV2PaasSuitabilityDataCostComponentsList = Array<CostComponent>;
-export const SqlAssessmentV2PaasSuitabilityDataCostComponentsList =
+const SqlAssessmentV2PaasSuitabilityDataCostComponentsList =
   MachineAssessmentPropertiesCostComponentsList as any as S.Schema<SqlAssessmentV2PaasSuitabilityDataCostComponentsList>;
 
 export type SkuReplicationMode = "NotApplicable" | "ActiveGeoReplication" | "FailoverGroupInstance";
-export const SkuReplicationMode = S.String;
+const SkuReplicationMode = S.String;
 
 export type SqlMigrationGuidelineCategory =
   | "Unknown"
   | "General"
   | "FailoverCluterInstanceGuideLine"
   | "AvailabilityGroupGuideline";
-export const SqlMigrationGuidelineCategory = S.String;
+const SqlMigrationGuidelineCategory = S.String;
 
 /** Migration Guideline Context. */
 export interface MigrationGuidelineContext {
@@ -8980,7 +8958,7 @@ export interface MigrationGuidelineContext {
   /** Gets the reasoning context value. */
   contextValue?: string;
 }
-export const MigrationGuidelineContext = /*@__PURE__*/ S.suspend(() =>
+const MigrationGuidelineContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextKey: S.optional(S.String),
     contextValue: S.optional(S.String),
@@ -8991,7 +8969,7 @@ export const MigrationGuidelineContext = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the migration guideline context. */
 export type SqlMigrationGuidelineMigrationGuidelineContextList = Array<MigrationGuidelineContext>;
-export const SqlMigrationGuidelineMigrationGuidelineContextList = /*@__PURE__*/ S.Array(
+const SqlMigrationGuidelineMigrationGuidelineContextList = /*@__PURE__*/ S.Array(
   MigrationGuidelineContext,
 ) as any as S.Schema<SqlMigrationGuidelineMigrationGuidelineContextList>;
 
@@ -9004,7 +8982,7 @@ export interface SqlMigrationGuideline {
   /** Gets the migration guideline context. */
   migrationGuidelineContext?: SqlMigrationGuidelineMigrationGuidelineContextList;
 }
-export const SqlMigrationGuideline = /*@__PURE__*/ S.suspend(() =>
+const SqlMigrationGuideline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guidelineId: S.optional(S.String),
     migrationGuidelineCategory: S.optional(SqlMigrationGuidelineCategory),
@@ -9015,17 +8993,15 @@ export const SqlMigrationGuideline = /*@__PURE__*/ S.suspend(() =>
 /** Gets the list of migration guidelines applicable to this target. */
 export type SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList =
   Array<SqlMigrationGuideline>;
-export const SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList = /*@__PURE__*/ S.Array(
+const SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList = /*@__PURE__*/ S.Array(
   SqlMigrationGuideline,
 ) as any as S.Schema<SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList>;
 
 /** Class representing Azure SQL Recommendation Reasoning Context. */
 export type SqlRecommendationReasoningContext = MigrationGuidelineContext;
-export const SqlRecommendationReasoningContext = MigrationGuidelineContext;
-
 /** Gets the Sql recommended reasoning parameters. */
 export type SqlRecommendationReasoningContextParametersList = Array<MigrationGuidelineContext>;
-export const SqlRecommendationReasoningContextParametersList =
+const SqlRecommendationReasoningContextParametersList =
   SqlMigrationGuidelineMigrationGuidelineContextList as any as S.Schema<SqlRecommendationReasoningContextParametersList>;
 
 /** Class representing Azure SQL Recommendation Reasoning. */
@@ -9039,7 +9015,7 @@ export interface SqlRecommendationReasoning {
   /** Gets the Sql recommended reasoning parameters. */
   contextParameters?: SqlRecommendationReasoningContextParametersList;
 }
-export const SqlRecommendationReasoning = /*@__PURE__*/ S.suspend(() =>
+const SqlRecommendationReasoning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasoningId: S.optional(S.String),
     reasoningString: S.optional(S.String),
@@ -9053,12 +9029,12 @@ export const SqlRecommendationReasoning = /*@__PURE__*/ S.suspend(() =>
 /** Gets the list of SQL recommendation Reasoning. */
 export type SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList =
   Array<SqlRecommendationReasoning>;
-export const SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList = /*@__PURE__*/ S.Array(
+const SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList = /*@__PURE__*/ S.Array(
   SqlRecommendationReasoning,
 ) as any as S.Schema<SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList>;
 
 export type SqlAssessmentMigrationIssueCategory = "Issue" | "Warning" | "Internal";
-export const SqlAssessmentMigrationIssueCategory = S.String;
+const SqlAssessmentMigrationIssueCategory = S.String;
 
 /** Class representing the impacted objects. */
 export interface ImpactedAssessmentObject {
@@ -9067,7 +9043,7 @@ export interface ImpactedAssessmentObject {
   /** Gets the object type. */
   objectType?: string;
 }
-export const ImpactedAssessmentObject = /*@__PURE__*/ S.suspend(() =>
+const ImpactedAssessmentObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectName: S.optional(S.String),
     objectType: S.optional(S.String),
@@ -9076,7 +9052,7 @@ export const ImpactedAssessmentObject = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of impacted objects. */
 export type SqlAssessmentMigrationIssueImpactedObjectsList = Array<ImpactedAssessmentObject>;
-export const SqlAssessmentMigrationIssueImpactedObjectsList = /*@__PURE__*/ S.Array(
+const SqlAssessmentMigrationIssueImpactedObjectsList = /*@__PURE__*/ S.Array(
   ImpactedAssessmentObject,
 ) as any as S.Schema<SqlAssessmentMigrationIssueImpactedObjectsList>;
 
@@ -9089,7 +9065,7 @@ export interface SqlAssessmentMigrationIssue {
   /** Gets the list of impacted objects. */
   impactedObjects?: SqlAssessmentMigrationIssueImpactedObjectsList;
 }
-export const SqlAssessmentMigrationIssue = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentMigrationIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueId: S.optional(S.String),
     issueCategory: S.optional(SqlAssessmentMigrationIssueCategory),
@@ -9102,7 +9078,7 @@ export const SqlAssessmentMigrationIssue = /*@__PURE__*/ S.suspend(() =>
 /** Gets the list of migrations issues. */
 export type SqlAssessmentV2PaasSuitabilityDataMigrationIssuesList =
   Array<SqlAssessmentMigrationIssue>;
-export const SqlAssessmentV2PaasSuitabilityDataMigrationIssuesList = /*@__PURE__*/ S.Array(
+const SqlAssessmentV2PaasSuitabilityDataMigrationIssuesList = /*@__PURE__*/ S.Array(
   SqlAssessmentMigrationIssue,
 ) as any as S.Schema<SqlAssessmentV2PaasSuitabilityDataMigrationIssuesList>;
 
@@ -9137,7 +9113,7 @@ export interface SqlAssessmentV2PaasSuitabilityData {
   /** Gets the list of migrations issues. */
   migrationIssues?: SqlAssessmentV2PaasSuitabilityDataMigrationIssuesList;
 }
-export const SqlAssessmentV2PaasSuitabilityData = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2PaasSuitabilityData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureSqlSku: S.optional(AzureSqlPaasSkuDTO),
     replicaAzureSqlSku: S.optional(SqlAssessmentV2PaasSuitabilityDataReplicaAzureSqlSkuList),
@@ -9173,7 +9149,7 @@ export interface SqlAvailabilityGroupDataOverview {
   /** Gets the availability replica id. */
   sqlAvailabilityReplicaId?: string;
 }
-export const SqlAvailabilityGroupDataOverview = /*@__PURE__*/ S.suspend(() =>
+const SqlAvailabilityGroupDataOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityGroupId: S.optional(S.String),
     availabilityGroupName: S.optional(S.String),
@@ -9195,7 +9171,7 @@ export type CompatibilityLevel =
   | "CompatLevel130"
   | "CompatLevel140"
   | "CompatLevel150";
-export const CompatibilityLevel = S.String;
+const CompatibilityLevel = S.String;
 
 /** Assessed SQL database properties web model. */
 export interface AssessedSqlDatabaseV2Properties {
@@ -9250,7 +9226,7 @@ export interface AssessedSqlDatabaseV2Properties {
   /** When was assessed SQL database last updated. */
   updatedTimestamp?: string;
 }
-export const AssessedSqlDatabaseV2Properties = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlDatabaseV2Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendedAzureSqlTargetType: S.optional(TargetType),
     recommendedSuitability: S.optional(RecommendedSuitability),
@@ -9294,7 +9270,7 @@ export interface GetAssessedSqlDatabaseV2OperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssessedSqlDatabaseV2Properties;
 }
-export const GetAssessedSqlDatabaseV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedSqlDatabaseV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9320,7 +9296,7 @@ export interface GetAssessedSqlInstanceV2OperationRequest {
   /** Sql assessment Assessed Instance ARM name. */
   assessedSqlInstanceName: string;
 }
-export const GetAssessedSqlInstanceV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedSqlInstanceV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9353,7 +9329,7 @@ export interface AzureVirtualMachineSkuDTO {
   /** Gets the Max network interfaces. */
   maxNetworkInterfaces?: number;
 }
-export const AzureVirtualMachineSkuDTO = /*@__PURE__*/ S.suspend(() =>
+const AzureVirtualMachineSkuDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureVmFamily: S.optional(AzureVmFamily),
     cores: S.optional(S.Number),
@@ -9367,12 +9343,12 @@ export const AzureVirtualMachineSkuDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the The list of data disk sizes. */
 export type AzureSqlIaasSkuDTODataDiskSizesList = Array<AzureManagedDiskSkuDTO>;
-export const AzureSqlIaasSkuDTODataDiskSizesList =
+const AzureSqlIaasSkuDTODataDiskSizesList =
   SharedResourcesDTOSharedDataDisksList as any as S.Schema<AzureSqlIaasSkuDTODataDiskSizesList>;
 
 /** Gets the The list of log disk sizes. */
 export type AzureSqlIaasSkuDTOLogDiskSizesList = Array<AzureManagedDiskSkuDTO>;
-export const AzureSqlIaasSkuDTOLogDiskSizesList =
+const AzureSqlIaasSkuDTOLogDiskSizesList =
   SharedResourcesDTOSharedDataDisksList as any as S.Schema<AzureSqlIaasSkuDTOLogDiskSizesList>;
 
 /** Class representing Azure SQL IAAS SKU. */
@@ -9386,7 +9362,7 @@ export interface AzureSqlIaasSkuDTO {
   /** Gets the target type. */
   azureSqlTargetType?: TargetType;
 }
-export const AzureSqlIaasSkuDTO = /*@__PURE__*/ S.suspend(() =>
+const AzureSqlIaasSkuDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineSize: S.optional(AzureVirtualMachineSkuDTO),
     dataDiskSizes: S.optional(AzureSqlIaasSkuDTODataDiskSizesList),
@@ -9397,31 +9373,31 @@ export const AzureSqlIaasSkuDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the replica azure SQL IAAS SKU. */
 export type SqlAssessmentV2IaasSuitabilityDataReplicaAzureSqlSkuList = Array<AzureSqlIaasSkuDTO>;
-export const SqlAssessmentV2IaasSuitabilityDataReplicaAzureSqlSkuList = /*@__PURE__*/ S.Array(
+const SqlAssessmentV2IaasSuitabilityDataReplicaAzureSqlSkuList = /*@__PURE__*/ S.Array(
   AzureSqlIaasSkuDTO,
 ) as any as S.Schema<SqlAssessmentV2IaasSuitabilityDataReplicaAzureSqlSkuList>;
 
 /** Gets the collection of cost components. */
 export type SqlAssessmentV2IaasSuitabilityDataCostComponentsList = Array<CostComponent>;
-export const SqlAssessmentV2IaasSuitabilityDataCostComponentsList =
+const SqlAssessmentV2IaasSuitabilityDataCostComponentsList =
   MachineAssessmentPropertiesCostComponentsList as any as S.Schema<SqlAssessmentV2IaasSuitabilityDataCostComponentsList>;
 
 /** Gets the list of migration guidelines applicable to this target. */
 export type SqlAssessmentV2IaasSuitabilityDataMigrationGuidelinesList =
   Array<SqlMigrationGuideline>;
-export const SqlAssessmentV2IaasSuitabilityDataMigrationGuidelinesList =
+const SqlAssessmentV2IaasSuitabilityDataMigrationGuidelinesList =
   SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList as any as S.Schema<SqlAssessmentV2IaasSuitabilityDataMigrationGuidelinesList>;
 
 /** Gets the list of SQL recommendation Reasoning. */
 export type SqlAssessmentV2IaasSuitabilityDataRecommendationReasoningsList =
   Array<SqlRecommendationReasoning>;
-export const SqlAssessmentV2IaasSuitabilityDataRecommendationReasoningsList =
+const SqlAssessmentV2IaasSuitabilityDataRecommendationReasoningsList =
   SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList as any as S.Schema<SqlAssessmentV2IaasSuitabilityDataRecommendationReasoningsList>;
 
 /** Gets the list of migrations issues. */
 export type SqlAssessmentV2IaasSuitabilityDataMigrationIssuesList =
   Array<SqlAssessmentMigrationIssue>;
-export const SqlAssessmentV2IaasSuitabilityDataMigrationIssuesList =
+const SqlAssessmentV2IaasSuitabilityDataMigrationIssuesList =
   SqlAssessmentV2PaasSuitabilityDataMigrationIssuesList as any as S.Schema<SqlAssessmentV2IaasSuitabilityDataMigrationIssuesList>;
 
 /** Class representing Azure SQL IAAS suitability details. */
@@ -9455,7 +9431,7 @@ export interface SqlAssessmentV2IaasSuitabilityData {
   /** Gets the list of migrations issues. */
   migrationIssues?: SqlAssessmentV2IaasSuitabilityDataMigrationIssuesList;
 }
-export const SqlAssessmentV2IaasSuitabilityData = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2IaasSuitabilityData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureSqlSku: S.optional(AzureSqlIaasSkuDTO),
     replicaAzureSqlSku: S.optional(SqlAssessmentV2IaasSuitabilityDataReplicaAzureSqlSkuList),
@@ -9493,7 +9469,7 @@ export interface AssessedSqlInstanceStorageDetails {
   /** Gets the number of write operations per second. */
   numberOfWriteOperationsPerSecond?: number;
 }
-export const AssessedSqlInstanceStorageDetails = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlInstanceStorageDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageType: S.optional(S.String),
     diskSizeInMB: S.optional(S.Number),
@@ -9509,7 +9485,7 @@ export const AssessedSqlInstanceStorageDetails = /*@__PURE__*/ S.suspend(() =>
 /** Gets the storage details. */
 export type AssessedSqlInstanceV2PropertiesStorageTypeBasedDetailsList =
   Array<AssessedSqlInstanceStorageDetails>;
-export const AssessedSqlInstanceV2PropertiesStorageTypeBasedDetailsList = /*@__PURE__*/ S.Array(
+const AssessedSqlInstanceV2PropertiesStorageTypeBasedDetailsList = /*@__PURE__*/ S.Array(
   AssessedSqlInstanceStorageDetails,
 ) as any as S.Schema<AssessedSqlInstanceV2PropertiesStorageTypeBasedDetailsList>;
 
@@ -9523,7 +9499,7 @@ export type SqlFCIMetadataState =
   | "Pending"
   | "OnlinePending"
   | "OfflinePending";
-export const SqlFCIMetadataState = S.String;
+const SqlFCIMetadataState = S.String;
 
 /** Sql fci meta data. */
 export interface SqlFCIMetadata {
@@ -9534,7 +9510,7 @@ export interface SqlFCIMetadata {
   /** Gets the fci shared disk count. */
   fciSharedDiskCount?: number;
 }
-export const SqlFCIMetadata = /*@__PURE__*/ S.suspend(() =>
+const SqlFCIMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SqlFCIMetadataState),
     isMultiSubnet: S.optional(S.Boolean),
@@ -9555,7 +9531,7 @@ export interface SqlAvailabilityReplicaSummary {
   /** Gets the number Of primary replicas. */
   numberOfPrimaryReplicas?: number;
 }
-export const SqlAvailabilityReplicaSummary = /*@__PURE__*/ S.suspend(() =>
+const SqlAvailabilityReplicaSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberOfSynchronousReadReplicas: S.optional(S.Number),
     numberOfSynchronousNonReadReplicas: S.optional(S.Number),
@@ -9570,7 +9546,7 @@ export const SqlAvailabilityReplicaSummary = /*@__PURE__*/ S.suspend(() =>
 /** Gets the list of recommended target reasoning. */
 export type AssessedSqlInstanceV2PropertiesRecommendedTargetReasoningsList =
   Array<SqlRecommendationReasoning>;
-export const AssessedSqlInstanceV2PropertiesRecommendedTargetReasoningsList =
+const AssessedSqlInstanceV2PropertiesRecommendedTargetReasoningsList =
   SqlAssessmentV2PaasSuitabilityDataRecommendationReasoningsList as any as S.Schema<AssessedSqlInstanceV2PropertiesRecommendedTargetReasoningsList>;
 
 /** Assessed Sql Instance Disk Details. */
@@ -9588,7 +9564,7 @@ export interface AssessedSqlInstanceDiskDetails {
   /** Gets the number of write operations per second. */
   numberOfWriteOperationsPerSecond?: number;
 }
-export const AssessedSqlInstanceDiskDetails = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlInstanceDiskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskId: S.optional(S.String),
     diskSizeInMB: S.optional(S.Number),
@@ -9603,7 +9579,7 @@ export const AssessedSqlInstanceDiskDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The logical disk details. */
 export type AssessedSqlInstanceV2PropertiesLogicalDisksList = Array<AssessedSqlInstanceDiskDetails>;
-export const AssessedSqlInstanceV2PropertiesLogicalDisksList = /*@__PURE__*/ S.Array(
+const AssessedSqlInstanceV2PropertiesLogicalDisksList = /*@__PURE__*/ S.Array(
   AssessedSqlInstanceDiskDetails,
 ) as any as S.Schema<AssessedSqlInstanceV2PropertiesLogicalDisksList>;
 
@@ -9618,7 +9594,7 @@ export interface AssessedSqlInstanceDatabaseSummary {
   /** Gets the total discovered user databases. */
   totalDiscoveredUserDatabases?: number;
 }
-export const AssessedSqlInstanceDatabaseSummary = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlInstanceDatabaseSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberOfUserDatabases: S.optional(S.Number),
     totalDatabaseSizeInMB: S.optional(S.Number),
@@ -9688,7 +9664,7 @@ export interface AssessedSqlInstanceV2Properties {
   /** When was assessed SQL instance last updated. */
   updatedTimestamp?: string;
 }
-export const AssessedSqlInstanceV2Properties = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlInstanceV2Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryInUseInMB: S.optional(S.Number),
     hasScanOccurred: S.optional(S.Boolean),
@@ -9737,7 +9713,7 @@ export interface GetAssessedSqlInstanceV2OperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssessedSqlInstanceV2Properties;
 }
-export const GetAssessedSqlInstanceV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedSqlInstanceV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9763,7 +9739,7 @@ export interface GetAssessedSqlMachinesOperationRequest {
   /** Sql assessment Assessed Machine ARM name. */
   assessedSqlMachineName: string;
 }
-export const GetAssessedSqlMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedSqlMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9784,7 +9760,7 @@ export const GetAssessedSqlMachinesOperationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetAssessedSqlMachinesOperationRequest>;
 
 export type SqlFCIState = "Unknown" | "Active" | "Passive" | "NotApplicable";
-export const SqlFCIState = S.String;
+const SqlFCIState = S.String;
 
 /** Assessed Sql Instance Summary. */
 export interface AssessedSqlInstanceSummary {
@@ -9807,7 +9783,7 @@ export interface AssessedSqlInstanceSummary {
   /** Gets the Sql Fci state. */
   sqlFciState?: SqlFCIState;
 }
-export const AssessedSqlInstanceSummary = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlInstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.optional(S.String),
     instanceName: S.optional(S.String),
@@ -9825,7 +9801,7 @@ export const AssessedSqlInstanceSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of SQL instances discovered on the machine. */
 export type AssessedSqlMachinePropertiesSqlInstancesList = Array<AssessedSqlInstanceSummary>;
-export const AssessedSqlMachinePropertiesSqlInstancesList = /*@__PURE__*/ S.Array(
+const AssessedSqlMachinePropertiesSqlInstancesList = /*@__PURE__*/ S.Array(
   AssessedSqlInstanceSummary,
 ) as any as S.Schema<AssessedSqlMachinePropertiesSqlInstancesList>;
 
@@ -9864,7 +9840,7 @@ export interface AssessedDiskData {
   /** Gets the number of write operations per second. */
   numberOfWriteOperationsPerSecond?: number;
 }
-export const AssessedDiskData = /*@__PURE__*/ S.suspend(() =>
+const AssessedDiskData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suitability: S.optional(CloudSuitability),
     suitabilityExplanation: S.optional(AzureDiskSuitabilityExplanation),
@@ -9887,14 +9863,14 @@ export const AssessedDiskData = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of data disks that were assessed as part of this assessment. */
 export type AssessedSqlMachinePropertiesDisksMap = { [key: string]: AssessedDiskData | undefined };
-export const AssessedSqlMachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
+const AssessedSqlMachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
   S.String,
   AssessedDiskData,
 ) as any as S.Schema<AssessedSqlMachinePropertiesDisksMap>;
 
 /** Gets the ip addresses. */
 export type SqlAssessedNetworkAdapterIpAddressesList = Array<string>;
-export const SqlAssessedNetworkAdapterIpAddressesList =
+const SqlAssessedNetworkAdapterIpAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<SqlAssessedNetworkAdapterIpAddressesList>;
 
 /** SQL Assessed Network Adapter. */
@@ -9922,7 +9898,7 @@ export interface SqlAssessedNetworkAdapter {
   /** Gets the megabytes per second transmitted. */
   megabytesPerSecondTransmitted?: number;
 }
-export const SqlAssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suitability: S.optional(CloudSuitability),
     suitabilityDetail: S.optional(AzureNetworkAdapterSuitabilityDetail),
@@ -9944,19 +9920,19 @@ export const SqlAssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 export type AssessedSqlMachinePropertiesNetworkAdaptersMap = {
   [key: string]: SqlAssessedNetworkAdapter | undefined;
 };
-export const AssessedSqlMachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
+const AssessedSqlMachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
   S.String,
   SqlAssessedNetworkAdapter,
 ) as any as S.Schema<AssessedSqlMachinePropertiesNetworkAdaptersMap>;
 
 /** Gets the collection of cost components. */
 export type AssessedSqlMachinePropertiesCostComponentsList = Array<CostComponent>;
-export const AssessedSqlMachinePropertiesCostComponentsList =
+const AssessedSqlMachinePropertiesCostComponentsList =
   MachineAssessmentPropertiesCostComponentsList as any as S.Schema<AssessedSqlMachinePropertiesCostComponentsList>;
 
 /** Gets the list of migration guidelines applicable. */
 export type AssessedSqlMachinePropertiesMigrationGuidelinesList = Array<SqlMigrationGuideline>;
-export const AssessedSqlMachinePropertiesMigrationGuidelinesList =
+const AssessedSqlMachinePropertiesMigrationGuidelinesList =
   SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList as any as S.Schema<AssessedSqlMachinePropertiesMigrationGuidelinesList>;
 
 /** Assessed SQL machine properties. */
@@ -10038,7 +10014,7 @@ export interface AssessedSqlMachineProperties {
   /** Assessment sizing criterion. */
   sizingCriterion?: AssessmentSizingCriterion;
 }
-export const AssessedSqlMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     biosGuid: S.optional(S.String),
     fqdn: S.optional(S.String),
@@ -10095,7 +10071,7 @@ export interface GetAssessedSqlMachinesOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssessedSqlMachineProperties;
 }
-export const GetAssessedSqlMachinesOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedSqlMachinesOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10121,7 +10097,7 @@ export interface GetAssessedSqlRecommendedEntityOperationRequest {
   /** Sql assessment Assessed Recommended Entity ARM name. */
   recommendedAssessedEntityName: string;
 }
-export const GetAssessedSqlRecommendedEntityOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedSqlRecommendedEntityOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10178,7 +10154,7 @@ export interface AssessedSqlRecommendedEntityProperties {
   /** Assessment sizing criterion. */
   sizingCriterion?: AssessmentSizingCriterion;
 }
-export const AssessedSqlRecommendedEntityProperties = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlRecommendedEntityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineName: S.optional(S.String),
     instanceName: S.optional(S.String),
@@ -10214,7 +10190,7 @@ export interface GetAssessedSqlRecommendedEntityOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssessedSqlRecommendedEntityProperties;
 }
-export const GetAssessedSqlRecommendedEntityOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedSqlRecommendedEntityOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10238,7 +10214,7 @@ export interface GetAssessedWebApplicationOperationRequest {
   /** Assessed Web Application Name. */
   assessedWorkload: string;
 }
-export const GetAssessedWebApplicationOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedWebApplicationOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10259,19 +10235,19 @@ export const GetAssessedWebApplicationOperationRequest = /*@__PURE__*/ S.suspend
 
 /** Web App Type. */
 export type WebAppType = "Unknown" | "IIS" | "Tomcat";
-export const WebAppType = S.String;
+const WebAppType = S.String;
 
 /** Readiness for Azure. */
 export type Readiness = "Unknown" | "NotReady" | "ReadyWithConditions" | "Ready";
-export const Readiness = S.String;
+const Readiness = S.String;
 
 /** Suitability for Azure. */
 export type Suitability = "NotSuitable" | "Suitable";
-export const Suitability = S.String;
+const Suitability = S.String;
 
 /** Suitability Check or Rule Result. */
 export type CheckResult = "Unknown" | "Issue" | "Warn" | "Pass";
-export const CheckResult = S.String;
+const CheckResult = S.String;
 
 /** Data model of More information about check or rule. */
 export interface MoreInfo {
@@ -10280,7 +10256,7 @@ export interface MoreInfo {
   /** Gets url. */
   url: string;
 }
-export const MoreInfo = /*@__PURE__*/ S.suspend(() =>
+const MoreInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     url: S.String,
@@ -10302,7 +10278,7 @@ export interface Check {
   /** Gets more information about check or rule. */
   moreInfo: MoreInfo;
 }
-export const Check = /*@__PURE__*/ S.suspend(() =>
+const Check = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     behavior: CheckResult,
@@ -10315,13 +10291,13 @@ export const Check = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets list of failed Checks. */
 export type SuitabilityResultFailedChecksList = Array<Check>;
-export const SuitabilityResultFailedChecksList = /*@__PURE__*/ S.Array(
+const SuitabilityResultFailedChecksList = /*@__PURE__*/ S.Array(
   Check,
 ) as any as S.Schema<SuitabilityResultFailedChecksList>;
 
 /** Suggested Migration Tool for Azure. */
 export type SuggestedMigrationTool = "None" | "WebAppMigration" | "ServerMigration";
-export const SuggestedMigrationTool = S.String;
+const SuggestedMigrationTool = S.String;
 
 /** Data model of Suitability Result. */
 export interface SuitabilityResult {
@@ -10334,7 +10310,7 @@ export interface SuitabilityResult {
   /** Gets suggested migration tool. */
   suggestedMigrationTool: SuggestedMigrationTool;
 }
-export const SuitabilityResult = /*@__PURE__*/ S.suspend(() =>
+const SuitabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readiness: Readiness,
     suitability: Suitability,
@@ -10350,7 +10326,7 @@ export interface ComputeResource {
   /** Gets memory. */
   memory: number;
 }
-export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
+const ComputeResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cores: S.Number,
     memory: S.Number,
@@ -10376,7 +10352,7 @@ export interface RecommendationResult {
   /** Gets approximate monthly cost. */
   approxMonthlyCost: number;
 }
-export const RecommendationResult = /*@__PURE__*/ S.suspend(() =>
+const RecommendationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     request: ComputeResource,
     limit: ComputeResource,
@@ -10410,7 +10386,7 @@ export interface AssessedWebApp {
   /** Gets recommendation result. */
   recommendationResult?: RecommendationResult;
 }
-export const AssessedWebApp = /*@__PURE__*/ S.suspend(() =>
+const AssessedWebApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryArmId: S.String,
     displayName: S.String,
@@ -10438,7 +10414,7 @@ export interface GetAssessedWebApplicationOperationResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetAssessedWebApplicationOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedWebApplicationOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10465,7 +10441,7 @@ export interface GetAssessedWebAppV2OperationRequest {
   /** Assessed web app ARM name. */
   assessedWebAppName: string;
 }
-export const GetAssessedWebAppV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedWebAppV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10498,7 +10474,7 @@ export interface AssessmentResult {
   /** Gets or sets the web app sku size. */
   webAppSkuSize: string;
 }
-export const AssessmentResult = /*@__PURE__*/ S.suspend(() =>
+const AssessmentResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appServicePlanName: S.String,
     suitability: CloudSuitability,
@@ -10509,11 +10485,11 @@ export const AssessmentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssessmentResult" }) as any as S.Schema<AssessmentResult>;
 
 export type AzureWebAppSuitabilityIssueCategory = "Unknown" | "Issue" | "Info";
-export const AzureWebAppSuitabilityIssueCategory = S.String;
+const AzureWebAppSuitabilityIssueCategory = S.String;
 
 /** Gets or sets the issue description list. */
 export type WebAppMigrationIssuesIssueDescriptionListList = Array<string>;
-export const WebAppMigrationIssuesIssueDescriptionListList =
+const WebAppMigrationIssuesIssueDescriptionListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebAppMigrationIssuesIssueDescriptionListList>;
 
 /** Web app migration issues. */
@@ -10525,7 +10501,7 @@ export interface WebAppMigrationIssues {
   /** Gets or sets the issue description list. */
   issueDescriptionList: WebAppMigrationIssuesIssueDescriptionListList;
 }
-export const WebAppMigrationIssues = /*@__PURE__*/ S.suspend(() =>
+const WebAppMigrationIssues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueId: S.String,
     issueCategory: AzureWebAppSuitabilityIssueCategory,
@@ -10535,7 +10511,7 @@ export const WebAppMigrationIssues = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the web app migration issues. */
 export type TargetSpecificResultMigrationIssuesList = Array<WebAppMigrationIssues>;
-export const TargetSpecificResultMigrationIssuesList = /*@__PURE__*/ S.Array(
+const TargetSpecificResultMigrationIssuesList = /*@__PURE__*/ S.Array(
   WebAppMigrationIssues,
 ) as any as S.Schema<TargetSpecificResultMigrationIssuesList>;
 
@@ -10546,7 +10522,7 @@ export interface TargetSpecificResult {
   /** Gets or sets the web app migration issues. */
   migrationIssues: TargetSpecificResultMigrationIssuesList;
 }
-export const TargetSpecificResult = /*@__PURE__*/ S.suspend(() =>
+const TargetSpecificResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentResult: AssessmentResult,
     migrationIssues: TargetSpecificResultMigrationIssuesList,
@@ -10557,7 +10533,7 @@ export const TargetSpecificResult = /*@__PURE__*/ S.suspend(() =>
 export type AssessedWebAppV2PropertiesTargetSpecificResultMap = {
   [key: string]: TargetSpecificResult | undefined;
 };
-export const AssessedWebAppV2PropertiesTargetSpecificResultMap = /*@__PURE__*/ S.Record(
+const AssessedWebAppV2PropertiesTargetSpecificResultMap = /*@__PURE__*/ S.Record(
   S.String,
   TargetSpecificResult,
 ) as any as S.Schema<AssessedWebAppV2PropertiesTargetSpecificResultMap>;
@@ -10589,7 +10565,7 @@ export interface AssessedWebAppV2Properties {
   /** When was assessed Web app database last updated. */
   updatedTimestamp?: string;
 }
-export const AssessedWebAppV2Properties = /*@__PURE__*/ S.suspend(() =>
+const AssessedWebAppV2Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webAppType: S.optional(WebAppType),
     targetSpecificResult: S.optional(AssessedWebAppV2PropertiesTargetSpecificResultMap),
@@ -10620,7 +10596,7 @@ export interface GetAssessedWebAppV2OperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssessedWebAppV2Properties;
 }
-export const GetAssessedWebAppV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessedWebAppV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10642,7 +10618,7 @@ export interface GetAssessmentOptionsOperationRequest {
   /** assessment options ARM name. Accepted value is 'default' */
   assessmentOptionsName: string;
 }
-export const GetAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10662,12 +10638,12 @@ export const GetAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of Azure regions. */
 export type VmFamilyOptionsTargetLocationsList = Array<string>;
-export const VmFamilyOptionsTargetLocationsList =
+const VmFamilyOptionsTargetLocationsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VmFamilyOptionsTargetLocationsList>;
 
 /** Category of the VM family. */
 export type VmFamilyOptionsCategoryList = Array<string>;
-export const VmFamilyOptionsCategoryList =
+const VmFamilyOptionsCategoryList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VmFamilyOptionsCategoryList>;
 
 /** VM family name, the list of targeted azure locations and the category of the family. */
@@ -10679,7 +10655,7 @@ export interface VmFamilyOptions {
   /** Category of the VM family. */
   category?: VmFamilyOptionsCategoryList;
 }
-export const VmFamilyOptions = /*@__PURE__*/ S.suspend(() =>
+const VmFamilyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     familyName: S.optional(S.String),
     targetLocations: S.optional(VmFamilyOptionsTargetLocationsList),
@@ -10689,33 +10665,33 @@ export const VmFamilyOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of VM families grouped by vm family name describing the targeted azure locations of VM family and the category of the family. */
 export type AssessmentOptionsPropertiesVmFamiliesList = Array<VmFamilyOptions>;
-export const AssessmentOptionsPropertiesVmFamiliesList = /*@__PURE__*/ S.Array(
+const AssessmentOptionsPropertiesVmFamiliesList = /*@__PURE__*/ S.Array(
   VmFamilyOptions,
 ) as any as S.Schema<AssessmentOptionsPropertiesVmFamiliesList>;
 
 /** List of supported VM Families. */
 export type AssessmentOptionsPropertiesReservedInstanceVmFamiliesList = Array<string>;
-export const AssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
+const AssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AssessmentOptionsPropertiesReservedInstanceVmFamiliesList>;
 
 /** List of supported Azure regions for reserved instances. */
 export type AssessmentOptionsPropertiesReservedInstanceSupportedLocationsList = Array<string>;
-export const AssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
+const AssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList as any as S.Schema<AssessmentOptionsPropertiesReservedInstanceSupportedLocationsList>;
 
 /** List of supported currencies for reserved instances. */
 export type AssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList = Array<string>;
-export const AssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
+const AssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList as any as S.Schema<AssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList>;
 
 /** List of supported Azure offer codes for reserved instances. */
 export type AssessmentOptionsPropertiesReservedInstanceSupportedOffersList = Array<string>;
-export const AssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
+const AssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AssessmentOptionsPropertiesReservedInstanceSupportedOffersList>;
 
 /** List of locations where ultra disk is supported for this VMfamily. */
 export type UltraDiskAssessmentOptionsTargetLocationsList = Array<string>;
-export const UltraDiskAssessmentOptionsTargetLocationsList =
+const UltraDiskAssessmentOptionsTargetLocationsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<UltraDiskAssessmentOptionsTargetLocationsList>;
 
 /** Assessment options for Ultra disk type. */
@@ -10725,7 +10701,7 @@ export interface UltraDiskAssessmentOptions {
   /** List of locations where ultra disk is supported for this VMfamily. */
   targetLocations?: UltraDiskAssessmentOptionsTargetLocationsList;
 }
-export const UltraDiskAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
+const UltraDiskAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     familyName: S.optional(S.String),
     targetLocations: S.optional(UltraDiskAssessmentOptionsTargetLocationsList),
@@ -10736,28 +10712,28 @@ export const UltraDiskAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Ultra disk related assessment options. */
 export type AssessmentOptionsPropertiesUltraDiskVmFamiliesList = Array<UltraDiskAssessmentOptions>;
-export const AssessmentOptionsPropertiesUltraDiskVmFamiliesList = /*@__PURE__*/ S.Array(
+const AssessmentOptionsPropertiesUltraDiskVmFamiliesList = /*@__PURE__*/ S.Array(
   UltraDiskAssessmentOptions,
 ) as any as S.Schema<AssessmentOptionsPropertiesUltraDiskVmFamiliesList>;
 
 /** List of VM Families that support premium disks for assessments. */
 export type AssessmentOptionsPropertiesPremiumDiskVmFamiliesList = Array<string>;
-export const AssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
+const AssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AssessmentOptionsPropertiesPremiumDiskVmFamiliesList>;
 
 /** List of VM Families that support Savings plan offer for assessments. */
 export type AssessmentOptionsPropertiesSavingsPlanVmFamiliesList = Array<string>;
-export const AssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
+const AssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AssessmentOptionsPropertiesSavingsPlanVmFamiliesList>;
 
 /** List of Azure locations that support Savings plan offer for assessments. */
 export type AssessmentOptionsPropertiesSavingsPlanSupportedLocationsList = Array<string>;
-export const AssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
+const AssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AssessmentOptionsPropertiesSavingsPlanSupportedLocationsList>;
 
 /** List of Azure locations that support Premium SSD V2 disks for assessments. */
 export type AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList = Array<AzureLocation>;
-export const AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList =
+const AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList>;
 
 /** Assessment options properties. */
@@ -10783,7 +10759,7 @@ export interface AssessmentOptionsProperties {
   /** List of Azure locations that support Premium SSD V2 disks for assessments. */
   premiumV2DiskSupportedLocations?: AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList;
 }
-export const AssessmentOptionsProperties = /*@__PURE__*/ S.suspend(() =>
+const AssessmentOptionsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmFamilies: S.optional(AssessmentOptionsPropertiesVmFamiliesList),
     reservedInstanceVmFamilies: S.optional(
@@ -10824,7 +10800,7 @@ export interface GetAssessmentOptionsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssessmentOptionsProperties;
 }
-export const GetAssessmentOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessmentOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10844,7 +10820,7 @@ export interface GetAssessmentProjectsOperationRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const GetAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10863,9 +10839,6 @@ export const GetAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type GetAssessmentProjectsOperationResponseTagsMap = { [key: string]: string | undefined };
-export const GetAssessmentProjectsOperationResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<GetAssessmentProjectsOperationResponseTagsMap>;
-
 export interface GetAssessmentProjectsOperationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -10882,7 +10855,7 @@ export interface GetAssessmentProjectsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProjectProperties;
 }
-export const GetAssessmentProjectsOperationResponse =
+const GetAssessmentProjectsOperationResponse =
   CreateAssessmentProjectsOperationResponse as any as S.Schema<GetAssessmentProjectsOperationResponse>;
 
 export interface GetAssessmentProjectSummaryOperationRequest {
@@ -10895,7 +10868,7 @@ export interface GetAssessmentProjectSummaryOperationRequest {
   /** Group ARM name */
   projectSummaryName: string;
 }
-export const GetAssessmentProjectSummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessmentProjectSummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10920,7 +10893,7 @@ export interface ErrorSummary {
   /** Gets the affected entity count. */
   count?: number;
 }
-export const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
+const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentType: S.optional(AssessmentType),
     count: S.optional(S.Number),
@@ -10930,10 +10903,9 @@ export const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
 /** Gets the Error summary by feature. Contains number of affected Entities per feature. */
 export type AssessmentProjectSummaryPropertiesErrorSummaryAffectedEntitiesList =
   Array<ErrorSummary>;
-export const AssessmentProjectSummaryPropertiesErrorSummaryAffectedEntitiesList =
-  /*@__PURE__*/ S.Array(
-    ErrorSummary,
-  ) as any as S.Schema<AssessmentProjectSummaryPropertiesErrorSummaryAffectedEntitiesList>;
+const AssessmentProjectSummaryPropertiesErrorSummaryAffectedEntitiesList = /*@__PURE__*/ S.Array(
+  ErrorSummary,
+) as any as S.Schema<AssessmentProjectSummaryPropertiesErrorSummaryAffectedEntitiesList>;
 
 /** Assessment project summary properties class. */
 export interface AssessmentProjectSummaryProperties {
@@ -10952,7 +10924,7 @@ export interface AssessmentProjectSummaryProperties {
   /** Gets the last assessment timestamp. */
   lastAssessmentTimestamp?: string;
 }
-export const AssessmentProjectSummaryProperties = /*@__PURE__*/ S.suspend(() =>
+const AssessmentProjectSummaryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorSummaryAffectedEntities: S.optional(
       AssessmentProjectSummaryPropertiesErrorSummaryAffectedEntitiesList,
@@ -10980,7 +10952,7 @@ export interface GetAssessmentProjectSummaryOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AssessmentProjectSummaryProperties;
 }
-export const GetAssessmentProjectSummaryOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAssessmentProjectSummaryOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11004,7 +10976,7 @@ export interface GetAssessmentsOperationRequest {
   /** Machine Assessment ARM name */
   assessmentName: string;
 }
-export const GetAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11035,7 +11007,7 @@ export interface GetAssessmentsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: MachineAssessmentProperties;
 }
-export const GetAssessmentsOperationResponse =
+const GetAssessmentsOperationResponse =
   CreateAssessmentsOperationResponse as any as S.Schema<GetAssessmentsOperationResponse>;
 
 export interface GetAvsAssessedMachinesOperationRequest {
@@ -11052,7 +11024,7 @@ export interface GetAvsAssessedMachinesOperationRequest {
   /** AVS assessment Assessed Machine ARM name */
   avsAssessedMachineName: string;
 }
-export const GetAvsAssessedMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvsAssessedMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11074,7 +11046,7 @@ export const GetAvsAssessedMachinesOperationRequest = /*@__PURE__*/ S.suspend(()
 
 /** List of errors for this machine. */
 export type AvsAssessedMachinePropertiesErrorsList = Array<Error>;
-export const AvsAssessedMachinePropertiesErrorsList =
+const AvsAssessedMachinePropertiesErrorsList =
   AssessedMachinePropertiesErrorsList as any as S.Schema<AvsAssessedMachinePropertiesErrorsList>;
 
 /** AVS assessed disk web model class. */
@@ -11100,7 +11072,7 @@ export interface AvsAssessedDisk {
   /** Gets the suitability detail. */
   suitabilityDetail?: AzureDiskSuitabilityDetail;
 }
-export const AvsAssessedDisk = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessedDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -11117,14 +11089,14 @@ export const AvsAssessedDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Disks that were assessed as part of this machine's assessment. */
 export type AvsAssessedMachinePropertiesDisksMap = { [key: string]: AvsAssessedDisk | undefined };
-export const AvsAssessedMachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
+const AvsAssessedMachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
   S.String,
   AvsAssessedDisk,
 ) as any as S.Schema<AvsAssessedMachinePropertiesDisksMap>;
 
 /** IP V4 addresses for the machine. */
 export type AvsAssessedNetworkAdapterIpAddressesList = Array<string>;
-export const AvsAssessedNetworkAdapterIpAddressesList =
+const AvsAssessedNetworkAdapterIpAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AvsAssessedNetworkAdapterIpAddressesList>;
 
 /** Second level object returned as part of AVS AssessedMachine REST resource. */
@@ -11140,7 +11112,7 @@ export interface AvsAssessedNetworkAdapter {
   /** Gets the Transmitted data for Network Adapter in MB/s. This value is the percentile of historical data based on options selected in Assessment. */
   megabytesPerSecondTransmitted?: number;
 }
-export const AvsAssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     macAddress: S.optional(S.String),
     ipAddresses: S.optional(AvsAssessedNetworkAdapterIpAddressesList),
@@ -11156,7 +11128,7 @@ export const AvsAssessedNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 export type AvsAssessedMachinePropertiesNetworkAdaptersMap = {
   [key: string]: AvsAssessedNetworkAdapter | undefined;
 };
-export const AvsAssessedMachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
+const AvsAssessedMachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
   S.String,
   AvsAssessedNetworkAdapter,
 ) as any as S.Schema<AvsAssessedMachinePropertiesNetworkAdaptersMap>;
@@ -11166,7 +11138,7 @@ export type AzureAvsVmSuitabilityExplanation =
   | "NotApplicable"
   | "IpV6NotSupported"
   | "UnsupportedOperatingSystem";
-export const AzureAvsVmSuitabilityExplanation = S.String;
+const AzureAvsVmSuitabilityExplanation = S.String;
 
 export type AzureAvsVmSuitabilityDetail =
   | "None"
@@ -11175,7 +11147,7 @@ export type AzureAvsVmSuitabilityDetail =
   | "PercentageOfCoresUtilizedOutOfRange"
   | "PercentageOfMemoryUtilizedOutOfRange"
   | "PercentageOfStorageUtilizedOutOfRange";
-export const AzureAvsVmSuitabilityDetail = S.String;
+const AzureAvsVmSuitabilityDetail = S.String;
 
 /** AVS assessed machine properties web model. */
 export interface AvsAssessedMachineProperties {
@@ -11230,7 +11202,7 @@ export interface AvsAssessedMachineProperties {
   /** Gets a value indicating whether machine is suitable for the cloud platform selected. */
   suitability?: CloudSuitability;
 }
-export const AvsAssessedMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessedMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(AvsAssessedMachinePropertiesErrorsList),
     disks: S.optional(AvsAssessedMachinePropertiesDisksMap),
@@ -11274,7 +11246,7 @@ export interface GetAvsAssessedMachinesOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AvsAssessedMachineProperties;
 }
-export const GetAvsAssessedMachinesOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAvsAssessedMachinesOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11296,7 +11268,7 @@ export interface GetAvsAssessmentOptionsOperationRequest {
   /** AVS Assessment options ARM name. Accepted value is 'default' */
   avsAssessmentOptionsName: string;
 }
-export const GetAvsAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvsAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11316,7 +11288,7 @@ export const GetAvsAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend((
 
 /** List of locations where this node type is available. */
 export type AvsSkuOptionsTargetLocationsList = Array<AzureLocation>;
-export const AvsSkuOptionsTargetLocationsList =
+const AvsSkuOptionsTargetLocationsList =
   AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList as any as S.Schema<AvsSkuOptionsTargetLocationsList>;
 
 /** AVS SKU specific options. */
@@ -11326,7 +11298,7 @@ export interface AvsSkuOptions {
   /** List of locations where this node type is available. */
   targetLocations?: AvsSkuOptionsTargetLocationsList;
 }
-export const AvsSkuOptions = /*@__PURE__*/ S.suspend(() =>
+const AvsSkuOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeType: S.optional(AzureAvsNodeType),
     targetLocations: S.optional(AvsSkuOptionsTargetLocationsList),
@@ -11335,13 +11307,13 @@ export const AvsSkuOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** AVS SKU Nodes. */
 export type AvsAssessmentOptionsPropertiesAvsNodesList = Array<AvsSkuOptions>;
-export const AvsAssessmentOptionsPropertiesAvsNodesList = /*@__PURE__*/ S.Array(
+const AvsAssessmentOptionsPropertiesAvsNodesList = /*@__PURE__*/ S.Array(
   AvsSkuOptions,
 ) as any as S.Schema<AvsAssessmentOptionsPropertiesAvsNodesList>;
 
 /** List of locations where this storage type is available. */
 export type AvsExternalStorageOptionsTargetLocationsList = Array<AzureLocation>;
-export const AvsExternalStorageOptionsTargetLocationsList =
+const AvsExternalStorageOptionsTargetLocationsList =
   AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList as any as S.Schema<AvsExternalStorageOptionsTargetLocationsList>;
 
 /** AVS External Storage specific options. */
@@ -11351,7 +11323,7 @@ export interface AvsExternalStorageOptions {
   /** List of locations where this storage type is available. */
   targetLocations?: AvsExternalStorageOptionsTargetLocationsList;
 }
-export const AvsExternalStorageOptions = /*@__PURE__*/ S.suspend(() =>
+const AvsExternalStorageOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageType: S.optional(ExternalStorageType),
     targetLocations: S.optional(AvsExternalStorageOptionsTargetLocationsList),
@@ -11363,37 +11335,37 @@ export const AvsExternalStorageOptions = /*@__PURE__*/ S.suspend(() =>
 /** AVS External Storage Types Supported. */
 export type AvsAssessmentOptionsPropertiesAvsExternalStorageTypesList =
   Array<AvsExternalStorageOptions>;
-export const AvsAssessmentOptionsPropertiesAvsExternalStorageTypesList = /*@__PURE__*/ S.Array(
+const AvsAssessmentOptionsPropertiesAvsExternalStorageTypesList = /*@__PURE__*/ S.Array(
   AvsExternalStorageOptions,
 ) as any as S.Schema<AvsAssessmentOptionsPropertiesAvsExternalStorageTypesList>;
 
 /** FTT and Raid level values. */
 export type AvsAssessmentOptionsPropertiesFailuresToTolerateAndRaidLevelValuesList =
   Array<FttAndRaidLevel>;
-export const AvsAssessmentOptionsPropertiesFailuresToTolerateAndRaidLevelValuesList =
+const AvsAssessmentOptionsPropertiesFailuresToTolerateAndRaidLevelValuesList =
   AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<AvsAssessmentOptionsPropertiesFailuresToTolerateAndRaidLevelValuesList>;
 
 /** List of AVS nodes for RI. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceAvsNodesList = Array<AzureAvsNodeType>;
-export const AvsAssessmentOptionsPropertiesReservedInstanceAvsNodesList =
+const AvsAssessmentOptionsPropertiesReservedInstanceAvsNodesList =
   AvsAssessmentPropertiesInputNodeTypesList as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceAvsNodesList>;
 
 /** List of supported Azure regions for reserved instances. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   Array<AzureLocation>;
-export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
+const AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList>;
 
 /** List of supported currencies for reserved instances. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   Array<AzureCurrency>;
-export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
+const AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList>;
 
 /** List of supported Azure offer codes for reserved instances. */
 export type AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   Array<AzureOfferCode>;
-export const AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
+const AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList>;
 
 /** AVS Assessment options properties. */
@@ -11413,7 +11385,7 @@ export interface AvsAssessmentOptionsProperties {
   /** List of supported Azure offer codes for reserved instances. */
   reservedInstanceSupportedOffers?: AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList;
 }
-export const AvsAssessmentOptionsProperties = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessmentOptionsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avsNodes: S.optional(AvsAssessmentOptionsPropertiesAvsNodesList),
     avsExternalStorageTypes: S.optional(AvsAssessmentOptionsPropertiesAvsExternalStorageTypesList),
@@ -11449,7 +11421,7 @@ export interface GetAvsAssessmentOptionsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AvsAssessmentOptionsProperties;
 }
-export const GetAvsAssessmentOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAvsAssessmentOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11473,7 +11445,7 @@ export interface GetAvsAssessmentsOperationRequest {
   /** AVS Assessment ARM name */
   assessmentName: string;
 }
-export const GetAvsAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvsAssessmentsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11504,7 +11476,7 @@ export interface GetAvsAssessmentsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: AvsAssessmentProperties;
 }
-export const GetAvsAssessmentsOperationResponse =
+const GetAvsAssessmentsOperationResponse =
   CreateAvsAssessmentsOperationResponse as any as S.Schema<GetAvsAssessmentsOperationResponse>;
 
 export interface GetDatabaseInstancesControllerDatabaseInstanceRequest {
@@ -11517,7 +11489,7 @@ export interface GetDatabaseInstancesControllerDatabaseInstanceRequest {
   /** Unique name of a database instance in Azure migration hub. */
   databaseInstanceName: string;
 }
-export const GetDatabaseInstancesControllerDatabaseInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseInstancesControllerDatabaseInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11537,7 +11509,7 @@ export const GetDatabaseInstancesControllerDatabaseInstanceRequest = /*@__PURE__
 
 /** Gets or sets the extended properties of the database server. */
 export type DatabaseInstanceDiscoveryDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const DatabaseInstanceDiscoveryDetailsExtendedInfoMap =
+const DatabaseInstanceDiscoveryDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<DatabaseInstanceDiscoveryDetailsExtendedInfoMap>;
 
 /** Discovery properties that can be shared by various publishers. */
@@ -11567,7 +11539,7 @@ export interface DatabaseInstanceDiscoveryDetails {
   /** Gets or sets the extended properties of the database server. */
   extendedInfo?: DatabaseInstanceDiscoveryDetailsExtendedInfoMap;
 }
-export const DatabaseInstanceDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInstanceDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTime: S.optional(S.String),
     id: S.optional(S.String),
@@ -11588,7 +11560,7 @@ export const DatabaseInstanceDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the assessment details of the database instance published by various sources. */
 export type DatabaseInstancePropertiesDiscoveryDataList = Array<DatabaseInstanceDiscoveryDetails>;
-export const DatabaseInstancePropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
+const DatabaseInstancePropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
   DatabaseInstanceDiscoveryDetails,
 ) as any as S.Schema<DatabaseInstancePropertiesDiscoveryDataList>;
 
@@ -11599,7 +11571,7 @@ export interface DatabaseInstanceSummary {
   /** Gets or sets the count of databases ready for migration. */
   migrationReadyCount?: number;
 }
-export const DatabaseInstanceSummary = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databasesAssessedCount: S.optional(S.Number),
     migrationReadyCount: S.optional(S.Number),
@@ -11610,7 +11582,7 @@ export const DatabaseInstanceSummary = /*@__PURE__*/ S.suspend(() =>
 export type DatabaseInstancePropertiesSummaryMap = {
   [key: string]: DatabaseInstanceSummary | undefined;
 };
-export const DatabaseInstancePropertiesSummaryMap = /*@__PURE__*/ S.Record(
+const DatabaseInstancePropertiesSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   DatabaseInstanceSummary,
 ) as any as S.Schema<DatabaseInstancePropertiesSummaryMap>;
@@ -11624,7 +11596,7 @@ export interface DatabaseInstanceProperties {
   /** Gets or sets the time of the last modification of the database. */
   lastUpdatedTime?: string;
 }
-export const DatabaseInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryData: S.optional(DatabaseInstancePropertiesDiscoveryDataList),
     summary: S.optional(DatabaseInstancePropertiesSummaryMap),
@@ -11645,7 +11617,7 @@ export interface DatabaseInstance {
   /** Gets or sets the properties of the machine. */
   properties?: DatabaseInstanceProperties;
 }
-export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11664,7 +11636,7 @@ export interface GetDatabasesControllerDatabaseRequest {
   /** Unique name of a database in Azure migration hub. */
   databaseName: string;
 }
-export const GetDatabasesControllerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabasesControllerDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11684,7 +11656,7 @@ export const GetDatabasesControllerDatabaseRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Gets or sets the extended properties of the database. */
 export type DatabaseAssessmentDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const DatabaseAssessmentDetailsExtendedInfoMap =
+const DatabaseAssessmentDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<DatabaseAssessmentDetailsExtendedInfoMap>;
 
 /** Assessment properties that can be shared by various publishers. */
@@ -11720,7 +11692,7 @@ export interface DatabaseAssessmentDetails {
   /** Gets or sets the extended properties of the database. */
   extendedInfo?: DatabaseAssessmentDetailsExtendedInfoMap;
 }
-export const DatabaseAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
+const DatabaseAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentId: S.optional(S.String),
     id: S.optional(S.String),
@@ -11744,7 +11716,7 @@ export const DatabaseAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the assessment details of the database published by various sources. */
 export type DatabasePropertiesAssessmentDataList = Array<DatabaseAssessmentDetails>;
-export const DatabasePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
+const DatabasePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
   DatabaseAssessmentDetails,
 ) as any as S.Schema<DatabasePropertiesAssessmentDataList>;
 
@@ -11755,7 +11727,7 @@ export interface DatabaseProperties {
   /** Gets or sets the time of the last modification of the database. */
   lastUpdatedTime?: string;
 }
-export const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
+const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentData: S.optional(DatabasePropertiesAssessmentDataList),
     lastUpdatedTime: S.optional(S.String),
@@ -11773,7 +11745,7 @@ export interface Database {
   /** Gets or sets the properties of the database. */
   properties?: DatabaseProperties;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11792,7 +11764,7 @@ export interface GetEventsControllerEventRequest {
   /** Unique name of an event within a migrate project. */
   eventName: string;
 }
-export const GetEventsControllerEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventsControllerEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11827,7 +11799,7 @@ export interface MigrateEventProperties {
   /** Gets or sets the client request Id of the payload for which the event is being reported. */
   clientRequestId?: string;
 }
-export const MigrateEventProperties = /*@__PURE__*/ S.suspend(() =>
+const MigrateEventProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceType: S.optional(S.String),
     errorCode: S.optional(S.String),
@@ -11850,7 +11822,7 @@ export interface MigrateEvent {
   /** Gets or sets the properties of the event. */
   properties?: MigrateEventProperties;
 }
-export const MigrateEvent = /*@__PURE__*/ S.suspend(() =>
+const MigrateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -11869,7 +11841,7 @@ export interface GetGroupsOperationRequest {
   /** Group ARM name */
   groupName: string;
 }
-export const GetGroupsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11899,7 +11871,7 @@ export interface GetGroupsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: GroupProperties;
 }
-export const GetGroupsOperationResponse =
+const GetGroupsOperationResponse =
   CreateGroupsOperationResponse as any as S.Schema<GetGroupsOperationResponse>;
 
 export interface GetHypervClusterControllerClusterRequest {
@@ -11912,7 +11884,7 @@ export interface GetHypervClusterControllerClusterRequest {
   /** Cluster ARM name */
   clusterName: string;
 }
-export const GetHypervClusterControllerClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHypervClusterControllerClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11942,7 +11914,7 @@ export interface GetHypervClusterControllerClusterResponse {
   /** The resource-specific properties for this resource. */
   properties?: HypervClusterProperties;
 }
-export const GetHypervClusterControllerClusterResponse =
+const GetHypervClusterControllerClusterResponse =
   CreateHypervClusterControllerClusterResponse as any as S.Schema<GetHypervClusterControllerClusterResponse>;
 
 export interface GetHypervCollectorsOperationRequest {
@@ -11955,7 +11927,7 @@ export interface GetHypervCollectorsOperationRequest {
   /** Hyper-V collector ARM name */
   hypervCollectorName: string;
 }
-export const GetHypervCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHypervCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -11985,7 +11957,7 @@ export interface GetHypervCollectorsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const GetHypervCollectorsOperationResponse =
+const GetHypervCollectorsOperationResponse =
   CreateHypervCollectorsOperationResponse as any as S.Schema<GetHypervCollectorsOperationResponse>;
 
 export interface GetHypervHostControllerRequest {
@@ -11998,7 +11970,7 @@ export interface GetHypervHostControllerRequest {
   /** Host name */
   hostName: string;
 }
-export const GetHypervHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHypervHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12028,7 +12000,7 @@ export interface GetHypervHostControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: HypervHostProperties;
 }
-export const GetHypervHostControllerResponse =
+const GetHypervHostControllerResponse =
   CreateHypervHostControllerResponse as any as S.Schema<GetHypervHostControllerResponse>;
 
 export interface GetHypervJobRequest {
@@ -12041,7 +12013,7 @@ export interface GetHypervJobRequest {
   /** Job name */
   jobName: string;
 }
-export const GetHypervJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHypervJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12080,7 +12052,7 @@ export interface ErrorDetails {
   /** Gets the recommended action for the agent error. */
   agentErrorRecommendedAction?: string;
 }
-export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -12097,7 +12069,7 @@ export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the errors. */
 export type JobPropertiesErrorsList = Array<ErrorDetails>;
-export const JobPropertiesErrorsList = /*@__PURE__*/ S.Array(
+const JobPropertiesErrorsList = /*@__PURE__*/ S.Array(
   ErrorDetails,
 ) as any as S.Schema<JobPropertiesErrorsList>;
 
@@ -12120,7 +12092,7 @@ export interface JobProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const JobProperties = /*@__PURE__*/ S.suspend(() =>
+const JobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -12145,7 +12117,7 @@ export interface GetHypervJobResponse {
   /** The resource-specific properties for this resource. */
   properties?: JobProperties;
 }
-export const GetHypervJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHypervJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12165,7 +12137,7 @@ export interface GetHypervJobsControllerRequest {
   /** Jobs name */
   jobName: string;
 }
-export const GetHypervJobsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHypervJobsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12195,7 +12167,7 @@ export interface GetHypervJobsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: JobProperties;
 }
-export const GetHypervJobsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHypervJobsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -12217,7 +12189,7 @@ export interface GetHypervMachinesControllerRequest {
   /** HypervMachine name */
   machineName: string;
 }
-export const GetHypervMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHypervMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -12237,7 +12209,7 @@ export const GetHypervMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Value indicating whether the VM is highly available */
 export type HighAvailability = "Unknown" | "No" | "Yes";
-export const HighAvailability = S.String;
+const HighAvailability = S.String;
 
 /** Second level object returned as part of Machine REST resource. */
 export interface HypervDisk {
@@ -12256,7 +12228,7 @@ export interface HypervDisk {
   /** Gets or sets Path of the disk. */
   path?: string;
 }
-export const HypervDisk = /*@__PURE__*/ S.suspend(() =>
+const HypervDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.optional(S.String),
     vhdId: S.optional(S.String),
@@ -12270,13 +12242,13 @@ export const HypervDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Disks attached to the machine. */
 export type HypervMachinePropertiesDisksList = Array<HypervDisk>;
-export const HypervMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
+const HypervMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
   HypervDisk,
 ) as any as S.Schema<HypervMachinePropertiesDisksList>;
 
 /** Gets IP addresses for the machine. */
 export type HypervNetworkAdapterIpAddressListList = Array<string>;
-export const HypervNetworkAdapterIpAddressListList =
+const HypervNetworkAdapterIpAddressListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<HypervNetworkAdapterIpAddressListList>;
 
 /** Second level object represented in responses as part of Machine REST resource. */
@@ -12300,7 +12272,7 @@ export interface HypervNetworkAdapter {
   /** Gets or sets Type of the IP address. */
   ipAddressType?: string;
 }
-export const HypervNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const HypervNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkId: S.optional(S.String),
     subnetName: S.optional(S.String),
@@ -12316,7 +12288,7 @@ export const HypervNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network adapters attached to the machine. */
 export type HypervMachinePropertiesNetworkAdaptersList = Array<HypervNetworkAdapter>;
-export const HypervMachinePropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
+const HypervMachinePropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
   HypervNetworkAdapter,
 ) as any as S.Schema<HypervMachinePropertiesNetworkAdaptersList>;
 
@@ -12331,7 +12303,7 @@ export interface GuestOsDetails {
   /** Gets or sets the Architecture of the operating system. */
   osArchitecture?: string;
 }
-export const GuestOsDetails = /*@__PURE__*/ S.suspend(() =>
+const GuestOsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: S.optional(S.String),
     osName: S.optional(S.String),
@@ -12342,12 +12314,12 @@ export const GuestOsDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the appliance names. */
 export type HypervMachinePropertiesApplianceNamesList = Array<string>;
-export const HypervMachinePropertiesApplianceNamesList =
+const HypervMachinePropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<HypervMachinePropertiesApplianceNamesList>;
 
 /** Errors for machine. */
 export type HypervMachinePropertiesErrorsList = Array<HealthErrorDetails>;
-export const HypervMachinePropertiesErrorsList =
+const HypervMachinePropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<HypervMachinePropertiesErrorsList>;
 
 /** Application Discovery Scope Status */
@@ -12360,11 +12332,11 @@ export type ApplicationDiscoveryScopeStatus =
   | "Disabled"
   | "DiscoveryPartiallySucceded"
   | "DiscoverySucceeded";
-export const ApplicationDiscoveryScopeStatus = S.String;
+const ApplicationDiscoveryScopeStatus = S.String;
 
 /** Gets errors for discovery scope. */
 export type ApplicationDiscoveryErrorsList = Array<HealthErrorDetails>;
-export const ApplicationDiscoveryErrorsList =
+const ApplicationDiscoveryErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<ApplicationDiscoveryErrorsList>;
 
 /** Contains data related application and roles discovery scope. */
@@ -12376,7 +12348,7 @@ export interface ApplicationDiscovery {
   /** Gets the run as account ID with which feature worked successfully. It is discovered by the agent from the list of credentials. */
   hydratedRunAsAccountId?: string;
 }
-export const ApplicationDiscovery = /*@__PURE__*/ S.suspend(() =>
+const ApplicationDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryScopeStatus: S.optional(ApplicationDiscoveryScopeStatus),
     errors: S.optional(ApplicationDiscoveryErrorsList),
@@ -12394,11 +12366,11 @@ export type DependencyMapDiscoveryScopeStatus =
   | "Disabled"
   | "DiscoveryPartiallySucceded"
   | "DiscoverySucceeded";
-export const DependencyMapDiscoveryScopeStatus = S.String;
+const DependencyMapDiscoveryScopeStatus = S.String;
 
 /** Gets errors for discovery scope. */
 export type DependencyMapDiscoveryErrorsList = Array<HealthErrorDetails>;
-export const DependencyMapDiscoveryErrorsList =
+const DependencyMapDiscoveryErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<DependencyMapDiscoveryErrorsList>;
 
 /** Contains data related dependency map discovery scope. */
@@ -12410,7 +12382,7 @@ export interface DependencyMapDiscovery {
   /** Gets the run as account ID with which feature worked successfully. It is discovered by the agent from the list of credentials. */
   hydratedRunAsAccountId?: string;
 }
-export const DependencyMapDiscovery = /*@__PURE__*/ S.suspend(() =>
+const DependencyMapDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryScopeStatus: S.optional(DependencyMapDiscoveryScopeStatus),
     errors: S.optional(DependencyMapDiscoveryErrorsList),
@@ -12428,11 +12400,11 @@ export type StaticDiscoveryScopeStatus =
   | "Disabled"
   | "DiscoveryPartiallySucceded"
   | "DiscoverySucceeded";
-export const StaticDiscoveryScopeStatus = S.String;
+const StaticDiscoveryScopeStatus = S.String;
 
 /** Gets errors for discovery scope. */
 export type StaticDiscoveryErrorsList = Array<HealthErrorDetails>;
-export const StaticDiscoveryErrorsList =
+const StaticDiscoveryErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<StaticDiscoveryErrorsList>;
 
 /** Contains data related static data discovery scope. */
@@ -12444,7 +12416,7 @@ export interface StaticDiscovery {
   /** Gets the run as account ID with which feature worked successfully. It is discovered by the agent from the list of credentials. */
   hydratedRunAsAccountId?: string;
 }
-export const StaticDiscovery = /*@__PURE__*/ S.suspend(() =>
+const StaticDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryScopeStatus: S.optional(StaticDiscoveryScopeStatus),
     errors: S.optional(StaticDiscoveryErrorsList),
@@ -12460,7 +12432,7 @@ export type SqlMetadataDiscoveryPipe =
   | "SSH"
   | "CIM"
   | "Other";
-export const SqlMetadataDiscoveryPipe = S.String;
+const SqlMetadataDiscoveryPipe = S.String;
 
 /** SQLDiscoveryScope Status */
 export type SQLDiscoveryScopeStatus =
@@ -12472,7 +12444,7 @@ export type SQLDiscoveryScopeStatus =
   | "Disabled"
   | "DiscoveryPartiallySucceded"
   | "DiscoverySucceeded";
-export const SQLDiscoveryScopeStatus = S.String;
+const SQLDiscoveryScopeStatus = S.String;
 
 /** Contains data related SQL discovery. */
 export interface SqlDiscovery {
@@ -12487,7 +12459,7 @@ export interface SqlDiscovery {
   /** discovery Scope Status */
   discoveryScopeStatus?: SQLDiscoveryScopeStatus;
 }
-export const SqlDiscovery = /*@__PURE__*/ S.suspend(() =>
+const SqlDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successfullyDiscoveredServerCount: S.optional(S.Number),
     totalServerCount: S.optional(S.Number),
@@ -12507,7 +12479,7 @@ export type DiscoveryScopeStatus =
   | "Disabled"
   | "DiscoveryPartiallySucceded"
   | "DiscoverySucceeded";
-export const DiscoveryScopeStatus = S.String;
+const DiscoveryScopeStatus = S.String;
 
 /** Data related to a machine's WebApps discovery. */
 export interface WebAppDiscovery {
@@ -12518,7 +12490,7 @@ export interface WebAppDiscovery {
   /** Gets or sets status of partner discovery. */
   discoveryScopeStatus?: DiscoveryScopeStatus;
 }
-export const WebAppDiscovery = /*@__PURE__*/ S.suspend(() =>
+const WebAppDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalWebServerCount: S.optional(S.Number),
     totalWebApplicationCount: S.optional(S.Number),
@@ -12536,7 +12508,7 @@ export type ShallowDiscoveryStatus =
   | "Disabled"
   | "DiscoveryPartiallySucceded"
   | "DiscoverySucceeded";
-export const ShallowDiscoveryStatus = S.String;
+const ShallowDiscoveryStatus = S.String;
 
 /** Data related to a machine's Oracle discovery. */
 export interface OracleDiscovery {
@@ -12549,7 +12521,7 @@ export interface OracleDiscovery {
   /** Gets or sets status of partner discovery. */
   discoveryScopeStatus?: DiscoveryScopeStatus;
 }
-export const OracleDiscovery = /*@__PURE__*/ S.suspend(() =>
+const OracleDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalInstanceCount: S.optional(S.Number),
     totalDatabaseCount: S.optional(S.Number),
@@ -12569,7 +12541,7 @@ export interface SpringBootDiscovery {
   /** Gets or sets status of partner discovery. */
   discoveryScopeStatus?: DiscoveryScopeStatus;
 }
-export const SpringBootDiscovery = /*@__PURE__*/ S.suspend(() =>
+const SpringBootDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalInstanceCount: S.optional(S.Number),
     totalApplicationCount: S.optional(S.Number),
@@ -12587,7 +12559,7 @@ export interface Application {
   /** Gets or sets Provider of the Application. */
   provider?: string;
 }
-export const Application = /*@__PURE__*/ S.suspend(() =>
+const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -12597,7 +12569,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets Applications of the AppsAndRoles. */
 export type AppsAndRolesApplicationsList = Array<Application>;
-export const AppsAndRolesApplicationsList = /*@__PURE__*/ S.Array(
+const AppsAndRolesApplicationsList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<AppsAndRolesApplicationsList>;
 
@@ -12616,7 +12588,7 @@ export interface WebApplicationAppsAndRolesModel {
   /** Gets or sets ApplicationPool of the WebApplication. */
   applicationPool?: string;
 }
-export const WebApplicationAppsAndRolesModel = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationAppsAndRolesModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(S.String),
@@ -12631,7 +12603,7 @@ export const WebApplicationAppsAndRolesModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets WebApplications of the AppsAndRoles. */
 export type AppsAndRolesWebApplicationsList = Array<WebApplicationAppsAndRolesModel>;
-export const AppsAndRolesWebApplicationsList = /*@__PURE__*/ S.Array(
+const AppsAndRolesWebApplicationsList = /*@__PURE__*/ S.Array(
   WebApplicationAppsAndRolesModel,
 ) as any as S.Schema<AppsAndRolesWebApplicationsList>;
 
@@ -12646,7 +12618,7 @@ export interface Feature {
   /** Gets or sets Status of the Feature. */
   status?: string;
 }
-export const Feature = /*@__PURE__*/ S.suspend(() =>
+const Feature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     featureType: S.optional(S.String),
@@ -12657,7 +12629,7 @@ export const Feature = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets Features of the AppsAndRoles. */
 export type AppsAndRolesFeaturesList = Array<Feature>;
-export const AppsAndRolesFeaturesList = /*@__PURE__*/ S.Array(
+const AppsAndRolesFeaturesList = /*@__PURE__*/ S.Array(
   Feature,
 ) as any as S.Schema<AppsAndRolesFeaturesList>;
 
@@ -12690,7 +12662,7 @@ export interface SqlServerApplication {
   /** Gets the status. */
   namedPipeName?: string;
 }
-export const SqlServerApplication = /*@__PURE__*/ S.suspend(() =>
+const SqlServerApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     edition: S.optional(S.String),
@@ -12710,7 +12682,7 @@ export const SqlServerApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets SQLServers of the AppsAndRoles. */
 export type AppsAndRolesSqlServersList = Array<SqlServerApplication>;
-export const AppsAndRolesSqlServersList = /*@__PURE__*/ S.Array(
+const AppsAndRolesSqlServersList = /*@__PURE__*/ S.Array(
   SqlServerApplication,
 ) as any as S.Schema<AppsAndRolesSqlServersList>;
 
@@ -12725,7 +12697,7 @@ export interface SharePointServer {
   /** Gets or sets Version of the SharePointServer. */
   version?: string;
 }
-export const SharePointServer = /*@__PURE__*/ S.suspend(() =>
+const SharePointServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productName: S.optional(S.String),
     isEnterprise: S.optional(S.Boolean),
@@ -12736,7 +12708,7 @@ export const SharePointServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets SharePointServers of the AppsAndRoles. */
 export type AppsAndRolesSharePointServersList = Array<SharePointServer>;
-export const AppsAndRolesSharePointServersList = /*@__PURE__*/ S.Array(
+const AppsAndRolesSharePointServersList = /*@__PURE__*/ S.Array(
   SharePointServer,
 ) as any as S.Schema<AppsAndRolesSharePointServersList>;
 
@@ -12749,7 +12721,7 @@ export interface SystemCenter {
   /** Gets or sets Version of the SystemCenter. */
   version?: string;
 }
-export const SystemCenter = /*@__PURE__*/ S.suspend(() =>
+const SystemCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productName: S.optional(S.String),
     status: S.optional(S.String),
@@ -12759,7 +12731,7 @@ export const SystemCenter = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets SystemCenters of the AppsAndRoles. */
 export type AppsAndRolesSystemCentersList = Array<SystemCenter>;
-export const AppsAndRolesSystemCentersList = /*@__PURE__*/ S.Array(
+const AppsAndRolesSystemCentersList = /*@__PURE__*/ S.Array(
   SystemCenter,
 ) as any as S.Schema<AppsAndRolesSystemCentersList>;
 
@@ -12770,7 +12742,7 @@ export interface BizTalkServer {
   /** Gets or sets Status of the BizTalkServer. */
   status?: string;
 }
-export const BizTalkServer = /*@__PURE__*/ S.suspend(() =>
+const BizTalkServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productName: S.optional(S.String),
     status: S.optional(S.String),
@@ -12779,7 +12751,7 @@ export const BizTalkServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets BizTalkServers of the AppsAndRoles. */
 export type AppsAndRolesBizTalkServersList = Array<BizTalkServer>;
-export const AppsAndRolesBizTalkServersList = /*@__PURE__*/ S.Array(
+const AppsAndRolesBizTalkServersList = /*@__PURE__*/ S.Array(
   BizTalkServer,
 ) as any as S.Schema<AppsAndRolesBizTalkServersList>;
 
@@ -12796,7 +12768,7 @@ export interface ExchangeServer {
   /** Gets or sets Version of the ExchangeServer. */
   version?: string;
 }
-export const ExchangeServer = /*@__PURE__*/ S.suspend(() =>
+const ExchangeServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productName: S.optional(S.String),
     edition: S.optional(S.String),
@@ -12808,7 +12780,7 @@ export const ExchangeServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets ExchangeServers of the AppsAndRoles. */
 export type AppsAndRolesExchangeServersList = Array<ExchangeServer>;
-export const AppsAndRolesExchangeServersList = /*@__PURE__*/ S.Array(
+const AppsAndRolesExchangeServersList = /*@__PURE__*/ S.Array(
   ExchangeServer,
 ) as any as S.Schema<AppsAndRolesExchangeServersList>;
 
@@ -12821,7 +12793,7 @@ export interface OtherDatabase {
   /** Gets or sets Version of the OtherDatabase. */
   version?: string;
 }
-export const OtherDatabase = /*@__PURE__*/ S.suspend(() =>
+const OtherDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseType: S.optional(S.String),
     instance: S.optional(S.String),
@@ -12831,7 +12803,7 @@ export const OtherDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets OtherDatabaseServers of the AppsAndRoles. */
 export type AppsAndRolesOtherDatabasesList = Array<OtherDatabase>;
-export const AppsAndRolesOtherDatabasesList = /*@__PURE__*/ S.Array(
+const AppsAndRolesOtherDatabasesList = /*@__PURE__*/ S.Array(
   OtherDatabase,
 ) as any as S.Schema<AppsAndRolesOtherDatabasesList>;
 
@@ -12856,7 +12828,7 @@ export interface AppsAndRoles {
   /** Gets or sets OtherDatabaseServers of the AppsAndRoles. */
   otherDatabases?: AppsAndRolesOtherDatabasesList;
 }
-export const AppsAndRoles = /*@__PURE__*/ S.suspend(() =>
+const AppsAndRoles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applications: S.optional(AppsAndRolesApplicationsList),
     webApplications: S.optional(AppsAndRolesWebApplicationsList),
@@ -12872,15 +12844,15 @@ export const AppsAndRoles = /*@__PURE__*/ S.suspend(() =>
 
 /** esu Status */
 export type EsuStatus = "Unknown" | "Active" | "InActive";
-export const EsuStatus = S.String;
+const EsuStatus = S.String;
 
 /** support status */
 export type SupportStatus = "Unknown" | "Mainstream" | "Extended";
-export const SupportStatus = S.String;
+const SupportStatus = S.String;
 
 /** esu year */
 export type EsuYear = "Unknown" | "FirstYear" | "SecondYear" | "ThirdYear" | "UpgradeYear";
-export const EsuYear = S.String;
+const EsuYear = S.String;
 
 /** product support status. */
 export interface ProductSupportStatus_2 {
@@ -12895,7 +12867,7 @@ export interface ProductSupportStatus_2 {
   /** esu year. */
   esuYear?: EsuYear | (string & {});
 }
-export const ProductSupportStatus_2 = /*@__PURE__*/ S.suspend(() =>
+const ProductSupportStatus_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentVersion: S.optional(S.String),
     esuStatus: S.optional(EsuStatus),
@@ -12907,11 +12879,9 @@ export const ProductSupportStatus_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Second level object returned as part of Machine REST resource. */
 export type OperatingSystem = GuestOsDetails;
-export const OperatingSystem = GuestOsDetails;
-
 /** Gets or sets tags on the resource. */
 export type HypervMachinePropertiesTagsMap = { [key: string]: string | undefined };
-export const HypervMachinePropertiesTagsMap =
+const HypervMachinePropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<HypervMachinePropertiesTagsMap>;
 
 /** The properties of AddressResource */
@@ -13033,7 +13003,7 @@ export interface HypervMachineProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const HypervMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const HypervMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceUuid: S.optional(S.String),
     hostFqdn: S.optional(S.String),
@@ -13108,7 +13078,7 @@ export interface GetHypervMachinesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: HypervMachineProperties;
 }
-export const GetHypervMachinesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHypervMachinesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13130,8 +13100,8 @@ export interface GetHypervOperationsStatusControllerHypervOperationsStatusReques
   /** Operation status Arm Name. */
   operationStatusName: string;
 }
-export const GetHypervOperationsStatusControllerHypervOperationsStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetHypervOperationsStatusControllerHypervOperationsStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -13145,9 +13115,9 @@ export const GetHypervOperationsStatusControllerHypervOperationsStatusRequest =
         apiVersion: "2023-06-06",
       }),
     ),
-  ).annotate({
-    identifier: "GetHypervOperationsStatusControllerHypervOperationsStatusRequest",
-  }) as any as S.Schema<GetHypervOperationsStatusControllerHypervOperationsStatusRequest>;
+).annotate({
+  identifier: "GetHypervOperationsStatusControllerHypervOperationsStatusRequest",
+}) as any as S.Schema<GetHypervOperationsStatusControllerHypervOperationsStatusRequest>;
 
 /** Class for operation status errors. */
 export interface OperationStatusError {
@@ -13156,7 +13126,7 @@ export interface OperationStatusError {
   /** Gets the error message. */
   message?: string;
 }
-export const OperationStatusError = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -13168,7 +13138,7 @@ export interface OperationStatusProperties {
   /** Gets or sets the result or output of the workflow. */
   result?: string;
 }
-export const OperationStatusProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String),
   }),
@@ -13193,7 +13163,7 @@ export interface OperationStatus {
   /** Operation status properties */
   properties?: OperationStatusProperties;
 }
-export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
+const OperationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13215,7 +13185,7 @@ export interface GetHypervRunAsAccountsControllerRequest {
   /** RunAsAccounts name */
   accountName: string;
 }
-export const GetHypervRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHypervRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13248,7 +13218,7 @@ export interface RunAsAccountProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const RunAsAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const RunAsAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     credentialType: S.optional(S.String),
@@ -13271,7 +13241,7 @@ export interface GetHypervRunAsAccountsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: RunAsAccountProperties;
 }
-export const GetHypervRunAsAccountsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHypervRunAsAccountsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13291,7 +13261,7 @@ export interface GetHypervSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const GetHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13310,9 +13280,6 @@ export const GetHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetHypervSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const GetHypervSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<GetHypervSitesControllerResponseTagsMap>;
-
 export interface GetHypervSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -13329,13 +13296,12 @@ export interface GetHypervSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const GetHypervSitesControllerResponse =
+const GetHypervSitesControllerResponse =
   CreateHypervSitesControllerResponse as any as S.Schema<GetHypervSitesControllerResponse>;
 
 export type GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault =
   "default";
-export const GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault =
-  S.String;
+const GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault = S.String;
 
 export interface GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryRequest {
   /** The ID of the target subscription. */
@@ -13351,7 +13317,7 @@ export interface GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryR
     | GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault
     | (string & {});
 }
-export const GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryRequest =
+const GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -13380,7 +13346,7 @@ export interface MachineSoftwareInventoryProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const MachineSoftwareInventoryProperties = /*@__PURE__*/ S.suspend(() =>
+const MachineSoftwareInventoryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appsAndRoles: S.optional(AppsAndRoles),
     provisioningState: S.optional(ProvisioningState_2),
@@ -13401,7 +13367,7 @@ export interface GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryR
   /** The resource-specific properties for this resource. */
   properties?: MachineSoftwareInventoryProperties;
 }
-export const GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryResponse =
+const GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -13426,7 +13392,7 @@ export interface GetIisWebApplicationsControllerRequest {
   /** Web application name. */
   webApplicationName: string;
 }
-export const GetIisWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIisWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13452,7 +13418,7 @@ export interface DirectoryPath {
   /** Gets or sets the physical path of the directory on the web server. */
   physical?: string;
 }
-export const DirectoryPath = /*@__PURE__*/ S.suspend(() =>
+const DirectoryPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtual: S.optional(S.String),
     physical: S.optional(S.String),
@@ -13461,7 +13427,7 @@ export const DirectoryPath = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of directories. */
 export type IisApplicationUnitDirectoriesList = Array<DirectoryPath>;
-export const IisApplicationUnitDirectoriesList = /*@__PURE__*/ S.Array(
+const IisApplicationUnitDirectoriesList = /*@__PURE__*/ S.Array(
   DirectoryPath,
 ) as any as S.Schema<IisApplicationUnitDirectoriesList>;
 
@@ -13480,7 +13446,7 @@ export interface IisApplicationUnit {
   /** Gets or sets the list of directories. */
   directories?: IisApplicationUnitDirectoriesList;
 }
-export const IisApplicationUnit = /*@__PURE__*/ S.suspend(() =>
+const IisApplicationUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationPoolName: S.optional(S.String),
     managedPipelineMode: S.optional(S.String),
@@ -13493,13 +13459,13 @@ export const IisApplicationUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of application units for the web site. */
 export type IisWebApplicationPropertiesApplicationsList = Array<IisApplicationUnit>;
-export const IisWebApplicationPropertiesApplicationsList = /*@__PURE__*/ S.Array(
+const IisWebApplicationPropertiesApplicationsList = /*@__PURE__*/ S.Array(
   IisApplicationUnit,
 ) as any as S.Schema<IisWebApplicationPropertiesApplicationsList>;
 
 /** Gets or sets the list of directories. */
 export type IisVirtualApplicationUnitDirectoriesList = Array<DirectoryPath>;
-export const IisVirtualApplicationUnitDirectoriesList =
+const IisVirtualApplicationUnitDirectoriesList =
   IisApplicationUnitDirectoriesList as any as S.Schema<IisVirtualApplicationUnitDirectoriesList>;
 
 /** Second-level object for identification of virtual applications in a web site hosted on IIS. */
@@ -13511,7 +13477,7 @@ export interface IisVirtualApplicationUnit {
   /** Gets or sets the list of directories. */
   directories?: IisVirtualApplicationUnitDirectoriesList;
 }
-export const IisVirtualApplicationUnit = /*@__PURE__*/ S.suspend(() =>
+const IisVirtualApplicationUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isVirtualDirectory: S.optional(S.Boolean),
     path: S.optional(DirectoryPath),
@@ -13523,13 +13489,13 @@ export const IisVirtualApplicationUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of application units for the web site. */
 export type IisWebApplicationPropertiesVirtualApplicationsList = Array<IisVirtualApplicationUnit>;
-export const IisWebApplicationPropertiesVirtualApplicationsList = /*@__PURE__*/ S.Array(
+const IisWebApplicationPropertiesVirtualApplicationsList = /*@__PURE__*/ S.Array(
   IisVirtualApplicationUnit,
 ) as any as S.Schema<IisWebApplicationPropertiesVirtualApplicationsList>;
 
 /** Gets the list of machine ARM Ids on which the SQL server is deployed. */
 export type IisWebApplicationPropertiesMachineArmIdsList = Array<string>;
-export const IisWebApplicationPropertiesMachineArmIdsList =
+const IisWebApplicationPropertiesMachineArmIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<IisWebApplicationPropertiesMachineArmIdsList>;
 
 /** Frontend bindings for a web application. */
@@ -13543,7 +13509,7 @@ export interface FrontEndBinding {
   /** Gets or sets the IP Address. */
   ipAddress?: string;
 }
-export const FrontEndBinding = /*@__PURE__*/ S.suspend(() =>
+const FrontEndBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocol: S.optional(S.String),
     hostName: S.optional(S.String),
@@ -13554,7 +13520,7 @@ export const FrontEndBinding = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the front end bindings for the application. */
 export type IisWebApplicationPropertiesBindingsList = Array<FrontEndBinding>;
-export const IisWebApplicationPropertiesBindingsList = /*@__PURE__*/ S.Array(
+const IisWebApplicationPropertiesBindingsList = /*@__PURE__*/ S.Array(
   FrontEndBinding,
 ) as any as S.Schema<IisWebApplicationPropertiesBindingsList>;
 
@@ -13565,7 +13531,7 @@ export interface WebApplicationFramework {
   /** Gets or sets Version of the framework. */
   version?: string;
 }
-export const WebApplicationFramework = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationFramework = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -13574,7 +13540,7 @@ export const WebApplicationFramework = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the Error details. */
 export type IisWebApplicationPropertiesFrameworksList = Array<WebApplicationFramework>;
-export const IisWebApplicationPropertiesFrameworksList = /*@__PURE__*/ S.Array(
+const IisWebApplicationPropertiesFrameworksList = /*@__PURE__*/ S.Array(
   WebApplicationFramework,
 ) as any as S.Schema<IisWebApplicationPropertiesFrameworksList>;
 
@@ -13597,7 +13563,7 @@ export interface WebApplicationConfigurationUnit {
   /** Gets or sets the identifier for the configuration. */
   identifier?: string;
 }
-export const WebApplicationConfigurationUnit = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationConfigurationUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     filePath: S.optional(S.String),
@@ -13614,13 +13580,13 @@ export const WebApplicationConfigurationUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the configuration. */
 export type IisWebApplicationPropertiesConfigurationsList = Array<WebApplicationConfigurationUnit>;
-export const IisWebApplicationPropertiesConfigurationsList = /*@__PURE__*/ S.Array(
+const IisWebApplicationPropertiesConfigurationsList = /*@__PURE__*/ S.Array(
   WebApplicationConfigurationUnit,
 ) as any as S.Schema<IisWebApplicationPropertiesConfigurationsList>;
 
 /** Gets or sets the paths of the directory on the source machine. */
 export type WebApplicationDirectoryUnitSourcePathsList = Array<string>;
-export const WebApplicationDirectoryUnitSourcePathsList =
+const WebApplicationDirectoryUnitSourcePathsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebApplicationDirectoryUnitSourcePathsList>;
 
 /** Web Application directory unit. */
@@ -13638,7 +13604,7 @@ export interface WebApplicationDirectoryUnit {
   /** Gets or sets the size of the directory on the source machine. */
   sourceSize?: string;
 }
-export const WebApplicationDirectoryUnit = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationDirectoryUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     isEditable: S.optional(S.Boolean),
@@ -13653,28 +13619,28 @@ export const WebApplicationDirectoryUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the directories. */
 export type IisWebApplicationPropertiesDirectoriesList = Array<WebApplicationDirectoryUnit>;
-export const IisWebApplicationPropertiesDirectoriesList = /*@__PURE__*/ S.Array(
+const IisWebApplicationPropertiesDirectoriesList = /*@__PURE__*/ S.Array(
   WebApplicationDirectoryUnit,
 ) as any as S.Schema<IisWebApplicationPropertiesDirectoriesList>;
 
 /** Gets or sets tags on the resource. */
 export type IisWebApplicationPropertiesTagsMap = { [key: string]: string | undefined };
-export const IisWebApplicationPropertiesTagsMap =
+const IisWebApplicationPropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<IisWebApplicationPropertiesTagsMap>;
 
 /** Static folders. */
 export type IisWebApplicationPropertiesStaticFoldersList = Array<string>;
-export const IisWebApplicationPropertiesStaticFoldersList =
+const IisWebApplicationPropertiesStaticFoldersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<IisWebApplicationPropertiesStaticFoldersList>;
 
 /** Gets the Error details. */
 export type IisWebApplicationPropertiesErrorsList = Array<HealthErrorDetails>;
-export const IisWebApplicationPropertiesErrorsList =
+const IisWebApplicationPropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<IisWebApplicationPropertiesErrorsList>;
 
 /** Gets the appliance names. */
 export type IisWebApplicationPropertiesApplianceNamesList = Array<string>;
-export const IisWebApplicationPropertiesApplianceNamesList =
+const IisWebApplicationPropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<IisWebApplicationPropertiesApplianceNamesList>;
 
 /** Class for web application properties. */
@@ -13726,7 +13692,7 @@ export interface IisWebApplicationProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const IisWebApplicationProperties = /*@__PURE__*/ S.suspend(() =>
+const IisWebApplicationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applications: S.optional(IisWebApplicationPropertiesApplicationsList),
     virtualApplications: S.optional(IisWebApplicationPropertiesVirtualApplicationsList),
@@ -13768,7 +13734,7 @@ export interface GetIisWebApplicationsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: IisWebApplicationProperties;
 }
-export const GetIisWebApplicationsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIisWebApplicationsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13792,7 +13758,7 @@ export interface GetIisWebServersControllerRequest {
   /** Web server name. */
   webServerName: string;
 }
-export const GetIisWebServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIisWebServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13813,22 +13779,22 @@ export const GetIisWebServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of machines. */
 export type IisWebServerPropertiesMachineIdsList = Array<string>;
-export const IisWebServerPropertiesMachineIdsList =
+const IisWebServerPropertiesMachineIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<IisWebServerPropertiesMachineIdsList>;
 
 /** Gets the list of web applications. */
 export type IisWebServerPropertiesWebApplicationsList = Array<string>;
-export const IisWebServerPropertiesWebApplicationsList =
+const IisWebServerPropertiesWebApplicationsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<IisWebServerPropertiesWebApplicationsList>;
 
 /** Gets the Error details. */
 export type IisWebServerPropertiesErrorsList = Array<HealthErrorDetails>;
-export const IisWebServerPropertiesErrorsList =
+const IisWebServerPropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<IisWebServerPropertiesErrorsList>;
 
 /** Gets the appliance names. */
 export type IisWebServerPropertiesApplianceNamesList = Array<string>;
-export const IisWebServerPropertiesApplianceNamesList =
+const IisWebServerPropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<IisWebServerPropertiesApplianceNamesList>;
 
 /** Class for web server properties. */
@@ -13864,7 +13830,7 @@ export interface IisWebServerProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const IisWebServerProperties = /*@__PURE__*/ S.suspend(() =>
+const IisWebServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationLocation: S.optional(S.String),
     version: S.optional(S.String),
@@ -13896,7 +13862,7 @@ export interface GetIisWebServersControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: IisWebServerProperties;
 }
-export const GetIisWebServersControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIisWebServersControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13918,7 +13884,7 @@ export interface GetImportCollectorsOperationRequest {
   /** Import collector ARM name */
   importCollectorName: string;
 }
-export const GetImportCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImportCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13948,7 +13914,7 @@ export interface GetImportCollectorsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBase;
 }
-export const GetImportCollectorsOperationResponse =
+const GetImportCollectorsOperationResponse =
   CreateImportCollectorsOperationResponse as any as S.Schema<GetImportCollectorsOperationResponse>;
 
 export interface GetImportJobsControllerRequest {
@@ -13961,7 +13927,7 @@ export interface GetImportJobsControllerRequest {
   /** Jobs name */
   jobName: string;
 }
-export const GetImportJobsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImportJobsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -13991,7 +13957,7 @@ export interface GetImportJobsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: JobProperties;
 }
-export const GetImportJobsControllerResponse =
+const GetImportJobsControllerResponse =
   GetHypervJobsControllerResponse as any as S.Schema<GetImportJobsControllerResponse>;
 
 export interface GetImportJobsControllerDeletejobRequest {
@@ -14004,7 +13970,7 @@ export interface GetImportJobsControllerDeletejobRequest {
   /** Job Arm Name. */
   jobName: string;
 }
-export const GetImportJobsControllerDeletejobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImportJobsControllerDeletejobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14029,11 +13995,11 @@ export type DeleteImportedMachinesJobPropertiesJobState =
   | "VerifiedWithErrors"
   | "Completed"
   | "Failed";
-export const DeleteImportedMachinesJobPropertiesJobState = S.String;
+const DeleteImportedMachinesJobPropertiesJobState = S.String;
 
 /** errors list */
 export type DeleteImportedMachinesJobPropertiesErrorsList = Array<string>;
-export const DeleteImportedMachinesJobPropertiesErrorsList =
+const DeleteImportedMachinesJobPropertiesErrorsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<DeleteImportedMachinesJobPropertiesErrorsList>;
 
 /** Delete Imported Machines Job Properties */
@@ -14061,7 +14027,7 @@ export interface DeleteImportedMachinesJobProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const DeleteImportedMachinesJobProperties = /*@__PURE__*/ S.suspend(() =>
+const DeleteImportedMachinesJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobName: S.optional(S.String),
     errorSasUri: S.optional(S.String),
@@ -14091,7 +14057,7 @@ export interface GetImportJobsControllerDeletejobResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeleteImportedMachinesJobProperties;
 }
-export const GetImportJobsControllerDeletejobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImportJobsControllerDeletejobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -14113,7 +14079,7 @@ export interface GetImportJobsControllerExportjobRequest {
   /** Job Arm Name. */
   jobName: string;
 }
-export const GetImportJobsControllerExportjobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImportJobsControllerExportjobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14138,7 +14104,7 @@ export interface ExportImportedMachinesJobEntityProperties {
   /** sas uri */
   sasUri?: string;
 }
-export const ExportImportedMachinesJobEntityProperties = /*@__PURE__*/ S.suspend(() =>
+const ExportImportedMachinesJobEntityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobName: S.optional(S.String),
     sasUri: S.optional(S.String),
@@ -14166,7 +14132,7 @@ export interface ExportImportedMachinesJob {
   /** Gets or sets the Display name. */
   displayName?: string;
 }
-export const ExportImportedMachinesJob = /*@__PURE__*/ S.suspend(() =>
+const ExportImportedMachinesJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     properties: S.optional(ExportImportedMachinesJobEntityProperties),
@@ -14191,7 +14157,7 @@ export interface GetImportJobsControllerImportjobRequest {
   /** Job Arm Name. */
   jobName: string;
 }
-export const GetImportJobsControllerImportjobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImportJobsControllerImportjobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14218,11 +14184,11 @@ export type JobResult =
   | "Failed"
   | "WaitingForBlobUpload"
   | "InProgress";
-export const JobResult = S.String;
+const JobResult = S.String;
 
 /** errors list */
 export type JobErrorSummaryErrorsList = Array<string>;
-export const JobErrorSummaryErrorsList =
+const JobErrorSummaryErrorsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<JobErrorSummaryErrorsList>;
 
 /** Job Error Summary */
@@ -14234,7 +14200,7 @@ export interface JobErrorSummary {
   /** warning Count */
   warningCount?: number;
 }
-export const JobErrorSummary = /*@__PURE__*/ S.suspend(() =>
+const JobErrorSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(JobErrorSummaryErrorsList),
     errorCount: S.optional(S.Number),
@@ -14257,7 +14223,7 @@ export interface ImportMachinesJobProperties {
   /** error summary */
   errorSummary?: JobErrorSummary;
 }
-export const ImportMachinesJobProperties = /*@__PURE__*/ S.suspend(() =>
+const ImportMachinesJobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobName: S.optional(S.String),
     blobSasUri: S.optional(S.String),
@@ -14289,7 +14255,7 @@ export interface ImportMachinesJob {
   /** Gets or sets the Display name. */
   displayName?: string;
 }
-export const ImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
+const ImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     properties: S.optional(ImportMachinesJobProperties),
@@ -14312,7 +14278,7 @@ export interface GetImportMachinesControllerRequest {
   /** Machine name */
   machineName: string;
 }
-export const GetImportMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImportMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14332,7 +14298,7 @@ export const GetImportMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IP Addresses. */
 export type ImportMachinePropertiesIpAddressesList = Array<string>;
-export const ImportMachinePropertiesIpAddressesList =
+const ImportMachinePropertiesIpAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<ImportMachinePropertiesIpAddressesList>;
 
 /** Class representing the imported machine web model. */
@@ -14356,7 +14322,7 @@ export interface WebRoleImportDisk {
   /** Gets or sets Path of the disk. */
   path?: string;
 }
-export const WebRoleImportDisk = /*@__PURE__*/ S.suspend(() =>
+const WebRoleImportDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     megabytesPerSecondOfRead: S.optional(S.Number),
     megabytesPerSecondOfWrite: S.optional(S.Number),
@@ -14372,17 +14338,15 @@ export const WebRoleImportDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Disks attached to the machine. */
 export type ImportMachinePropertiesDisksList = Array<WebRoleImportDisk>;
-export const ImportMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
+const ImportMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
   WebRoleImportDisk,
 ) as any as S.Schema<ImportMachinePropertiesDisksList>;
 
 /** Second level object returned as part of Machine REST resource. */
 export type WebRoleOperatingSystem = GuestOsDetails;
-export const WebRoleOperatingSystem = GuestOsDetails;
-
 /** machine tags */
 export type ImportMachinePropertiesTagsMap = { [key: string]: string | undefined };
-export const ImportMachinePropertiesTagsMap =
+const ImportMachinePropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<ImportMachinePropertiesTagsMap>;
 
 /** Class for machine properties. */
@@ -14452,7 +14416,7 @@ export interface ImportMachineProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const ImportMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const ImportMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firmware: S.optional(S.String),
     percentageCpuUtilization: S.optional(S.Number),
@@ -14501,7 +14465,7 @@ export interface GetImportMachinesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: ImportMachineProperties;
 }
-export const GetImportMachinesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImportMachinesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -14521,7 +14485,7 @@ export interface GetImportSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const GetImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14540,9 +14504,6 @@ export const GetImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetImportSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const GetImportSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<GetImportSitesControllerResponseTagsMap>;
-
 export interface GetImportSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -14559,7 +14520,7 @@ export interface GetImportSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: ImportSiteProperties;
 }
-export const GetImportSitesControllerResponse =
+const GetImportSitesControllerResponse =
   CreateImportSitesControllerResponse as any as S.Schema<GetImportSitesControllerResponse>;
 
 export interface GetMachinesControllerRequest {
@@ -14572,7 +14533,7 @@ export interface GetMachinesControllerRequest {
   /** Machine name */
   machineName: string;
 }
-export const GetMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14615,7 +14576,7 @@ export interface VmwareDisk {
   /** Gets or sets Path of the disk. */
   path?: string;
 }
-export const VmwareDisk = /*@__PURE__*/ S.suspend(() =>
+const VmwareDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     label: S.optional(S.String),
@@ -14633,13 +14594,13 @@ export const VmwareDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Disks attached to the machine. */
 export type VmwareMachinePropertiesDisksList = Array<VmwareDisk>;
-export const VmwareMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
+const VmwareMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
   VmwareDisk,
 ) as any as S.Schema<VmwareMachinePropertiesDisksList>;
 
 /** Gets IP addresses for the machine. */
 export type VmwareNetworkAdapterIpAddressListList = Array<string>;
-export const VmwareNetworkAdapterIpAddressListList =
+const VmwareNetworkAdapterIpAddressListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VmwareNetworkAdapterIpAddressListList>;
 
 /** Second level object represented in responses as part of Machine REST resource. */
@@ -14659,7 +14620,7 @@ export interface VmwareNetworkAdapter {
   /** Gets or sets Type of the IP address. */
   ipAddressType?: string;
 }
-export const VmwareNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const VmwareNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     adapterType: S.optional(S.String),
@@ -14673,23 +14634,23 @@ export const VmwareNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network adapters attached to the machine. */
 export type VmwareMachinePropertiesNetworkAdaptersList = Array<VmwareNetworkAdapter>;
-export const VmwareMachinePropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
+const VmwareMachinePropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
   VmwareNetworkAdapter,
 ) as any as S.Schema<VmwareMachinePropertiesNetworkAdaptersList>;
 
 /** Gets the appliance names. */
 export type VmwareMachinePropertiesApplianceNamesList = Array<string>;
-export const VmwareMachinePropertiesApplianceNamesList =
+const VmwareMachinePropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VmwareMachinePropertiesApplianceNamesList>;
 
 /** Errors for machine. */
 export type VmwareMachinePropertiesErrorsList = Array<HealthErrorDetails>;
-export const VmwareMachinePropertiesErrorsList =
+const VmwareMachinePropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<VmwareMachinePropertiesErrorsList>;
 
 /** Gets or sets tags on the VMware machine. */
 export type VmwareMachinePropertiesTagsMap = { [key: string]: string | undefined };
-export const VmwareMachinePropertiesTagsMap =
+const VmwareMachinePropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<VmwareMachinePropertiesTagsMap>;
 
 /** Class for machine properties. */
@@ -14805,7 +14766,7 @@ export interface VmwareMachineProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const VmwareMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const VmwareMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vCenterFqdn: S.optional(S.String),
     vCenterId: S.optional(S.String),
@@ -14877,7 +14838,7 @@ export interface GetMachinesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: VmwareMachineProperties;
 }
-export const GetMachinesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMachinesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -14899,7 +14860,7 @@ export interface GetMachinesControllerMachineRequest {
   /** Unique name of a machine in Azure migration hub. */
   machineName: string;
 }
-export const GetMachinesControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachinesControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -14919,17 +14880,17 @@ export const GetMachinesControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of IP addresses of the machine. IP addresses could be IP V4 or IP V6. */
 export type DiscoveryDetailsIpAddressesList = Array<string>;
-export const DiscoveryDetailsIpAddressesList =
+const DiscoveryDetailsIpAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<DiscoveryDetailsIpAddressesList>;
 
 /** Gets or sets the list of MAC addresses of the machine. */
 export type DiscoveryDetailsMacAddressesList = Array<string>;
-export const DiscoveryDetailsMacAddressesList =
+const DiscoveryDetailsMacAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<DiscoveryDetailsMacAddressesList>;
 
 /** Gets or sets the ISV specific extended information. */
 export type DiscoveryDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const DiscoveryDetailsExtendedInfoMap =
+const DiscoveryDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<DiscoveryDetailsExtendedInfoMap>;
 
 /** Discovery properties that can be published by various ISVs. */
@@ -14967,7 +14928,7 @@ export interface DiscoveryDetails {
   /** Gets or sets the ISV specific extended information. */
   extendedInfo?: DiscoveryDetailsExtendedInfoMap;
 }
-export const DiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     osType: S.optional(S.String),
@@ -14990,28 +14951,28 @@ export const DiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the discovery details of the machine published by various sources. */
 export type MachinePropertiesDiscoveryDataList = Array<DiscoveryDetails>;
-export const MachinePropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
+const MachinePropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
   DiscoveryDetails,
 ) as any as S.Schema<MachinePropertiesDiscoveryDataList>;
 
 /** Gets or sets the target storage type. */
 export type AssessmentDetailsTargetStorageTypeMap = { [key: string]: string | undefined };
-export const AssessmentDetailsTargetStorageTypeMap =
+const AssessmentDetailsTargetStorageTypeMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<AssessmentDetailsTargetStorageTypeMap>;
 
 /** Gets or sets the list of IP addresses of the machine. IP addresses could be IP V4 or IP V6. */
 export type AssessmentDetailsIpAddressesList = Array<string>;
-export const AssessmentDetailsIpAddressesList =
+const AssessmentDetailsIpAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AssessmentDetailsIpAddressesList>;
 
 /** Gets or sets the list of MAC addresses of the machine. */
 export type AssessmentDetailsMacAddressesList = Array<string>;
-export const AssessmentDetailsMacAddressesList =
+const AssessmentDetailsMacAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<AssessmentDetailsMacAddressesList>;
 
 /** Gets or sets the ISV specific extended information. */
 export type AssessmentDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const AssessmentDetailsExtendedInfoMap =
+const AssessmentDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<AssessmentDetailsExtendedInfoMap>;
 
 /** Assessment properties that can be shared by various publishers. */
@@ -15051,7 +15012,7 @@ export interface AssessmentDetails {
   /** Gets or sets the ISV specific extended information. */
   extendedInfo?: AssessmentDetailsExtendedInfoMap;
 }
-export const AssessmentDetails = /*@__PURE__*/ S.suspend(() =>
+const AssessmentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     assessmentId: S.optional(S.String),
@@ -15075,23 +15036,23 @@ export const AssessmentDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the assessment details of the machine published by various sources. */
 export type MachinePropertiesAssessmentDataList = Array<AssessmentDetails>;
-export const MachinePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
+const MachinePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
   AssessmentDetails,
 ) as any as S.Schema<MachinePropertiesAssessmentDataList>;
 
 /** Gets or sets the list of IP addresses of the machine. IP addresses could be IP V4 or IP V6. */
 export type MigrationDetailsIpAddressesList = Array<string>;
-export const MigrationDetailsIpAddressesList =
+const MigrationDetailsIpAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MigrationDetailsIpAddressesList>;
 
 /** Gets or sets the list of MAC addresses of the machine. */
 export type MigrationDetailsMacAddressesList = Array<string>;
-export const MigrationDetailsMacAddressesList =
+const MigrationDetailsMacAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MigrationDetailsMacAddressesList>;
 
 /** Gets or sets the ISV specific extended information. */
 export type MigrationDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const MigrationDetailsExtendedInfoMap =
+const MigrationDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<MigrationDetailsExtendedInfoMap>;
 
 /** Migration properties that can be shared by various publishers. */
@@ -15131,7 +15092,7 @@ export interface MigrationDetails {
   /** Gets or sets the ISV specific extended information. */
   extendedInfo?: MigrationDetailsExtendedInfoMap;
 }
-export const MigrationDetails = /*@__PURE__*/ S.suspend(() =>
+const MigrationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     migrationPhase: S.optional(S.String),
@@ -15155,7 +15116,7 @@ export const MigrationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the migration details of the machine published by various sources. */
 export type MachinePropertiesMigrationDataList = Array<MigrationDetails>;
-export const MachinePropertiesMigrationDataList = /*@__PURE__*/ S.Array(
+const MachinePropertiesMigrationDataList = /*@__PURE__*/ S.Array(
   MigrationDetails,
 ) as any as S.Schema<MachinePropertiesMigrationDataList>;
 
@@ -15170,7 +15131,7 @@ export interface MachineProperties_2 {
   /** Gets or sets the time of the last modification of the machine. */
   lastUpdatedTime?: string;
 }
-export const MachineProperties_2 = /*@__PURE__*/ S.suspend(() =>
+const MachineProperties_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryData: S.optional(MachinePropertiesDiscoveryDataList),
     assessmentData: S.optional(MachinePropertiesAssessmentDataList),
@@ -15190,7 +15151,7 @@ export interface Machine_2 {
   /** Gets or sets the properties of the machine. */
   properties?: MachineProperties_2;
 }
-export const Machine_2 = /*@__PURE__*/ S.suspend(() =>
+const Machine_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -15209,7 +15170,7 @@ export interface GetMachinesOperationRequest {
   /** Assessible Machine ARM name */
   machineName: string;
 }
-export const GetMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachinesOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15234,7 +15195,7 @@ export interface WorkloadSummary {
   /** Gets or sets oracle databases. */
   springApps?: number;
 }
-export const WorkloadSummary = /*@__PURE__*/ S.suspend(() =>
+const WorkloadSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oracleInstances: S.optional(S.Number),
     springApps: S.optional(S.Number),
@@ -15243,7 +15204,7 @@ export const WorkloadSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** List of errors for this machine. */
 export type MachinePropertiesErrorsList = Array<Error>;
-export const MachinePropertiesErrorsList =
+const MachinePropertiesErrorsList =
   AssessedMachinePropertiesErrorsList as any as S.Schema<MachinePropertiesErrorsList>;
 
 /** A disk discovered on a machine. */
@@ -15253,7 +15214,7 @@ export interface Disk {
   /** User friendly name of the disk. */
   displayName?: string;
 }
-export const Disk = /*@__PURE__*/ S.suspend(() =>
+const Disk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gigabytesAllocated: S.optional(S.Number),
     displayName: S.optional(S.String),
@@ -15262,19 +15223,19 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 
 /** Disks attached to the machine discovered in private data center. */
 export type MachinePropertiesDisksMap = { [key: string]: Disk | undefined };
-export const MachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
+const MachinePropertiesDisksMap = /*@__PURE__*/ S.Record(
   S.String,
   Disk,
 ) as any as S.Schema<MachinePropertiesDisksMap>;
 
 /** Gets the References to the groups that this machine is member of. */
 export type MachinePropertiesGroupsList = Array<string>;
-export const MachinePropertiesGroupsList =
+const MachinePropertiesGroupsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MachinePropertiesGroupsList>;
 
 /** List of IP Addresses on the network adapter. */
 export type NetworkAdapterIpAddressesList = Array<string>;
-export const NetworkAdapterIpAddressesList =
+const NetworkAdapterIpAddressesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<NetworkAdapterIpAddressesList>;
 
 /** A network adapter discovered on a machine. */
@@ -15286,7 +15247,7 @@ export interface NetworkAdapter {
   /** User friendly name of the network adapter. */
   displayName?: string;
 }
-export const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     macAddress: S.optional(S.String),
     ipAddresses: S.optional(NetworkAdapterIpAddressesList),
@@ -15296,19 +15257,19 @@ export const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network adapters attached to the machine discovered in private data center. */
 export type MachinePropertiesNetworkAdaptersMap = { [key: string]: NetworkAdapter | undefined };
-export const MachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
+const MachinePropertiesNetworkAdaptersMap = /*@__PURE__*/ S.Record(
   S.String,
   NetworkAdapter,
 ) as any as S.Schema<MachinePropertiesNetworkAdaptersMap>;
 
 /** SQL instances discovered on the machine. */
 export type MachinePropertiesSqlInstancesList = Array<string>;
-export const MachinePropertiesSqlInstancesList =
+const MachinePropertiesSqlInstancesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MachinePropertiesSqlInstancesList>;
 
 /** Web applications discovered on the machine. */
 export type MachinePropertiesWebApplicationsList = Array<string>;
-export const MachinePropertiesWebApplicationsList =
+const MachinePropertiesWebApplicationsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MachinePropertiesWebApplicationsList>;
 
 /** Properties of a machine. */
@@ -15358,7 +15319,7 @@ export interface MachineProperties {
   /** When was machine last updated. */
   updatedTimestamp?: string;
 }
-export const MachineProperties = /*@__PURE__*/ S.suspend(() =>
+const MachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadSummary: S.optional(WorkloadSummary),
     errors: S.optional(MachinePropertiesErrorsList),
@@ -15397,7 +15358,7 @@ export interface GetMachinesOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: MachineProperties;
 }
-export const GetMachinesOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMachinesOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -15417,7 +15378,7 @@ export interface GetMasterSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const GetMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15436,9 +15397,6 @@ export const GetMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMasterSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const GetMasterSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<GetMasterSitesControllerResponseTagsMap>;
-
 export interface GetMasterSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -15455,7 +15413,7 @@ export interface GetMasterSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: MasterSiteProperties;
 }
-export const GetMasterSitesControllerResponse =
+const GetMasterSitesControllerResponse =
   CreateMasterSitesControllerResponse as any as S.Schema<GetMasterSitesControllerResponse>;
 
 export interface GetMasterSitesOperationsStatusControllerVmwareOperationStatusRequest {
@@ -15468,7 +15426,7 @@ export interface GetMasterSitesOperationsStatusControllerVmwareOperationStatusRe
   /** Operation status Arm Name. */
   operationStatusName: string;
 }
-export const GetMasterSitesOperationsStatusControllerVmwareOperationStatusRequest =
+const GetMasterSitesOperationsStatusControllerVmwareOperationStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -15513,13 +15471,13 @@ export type GetMigrateProjectsControllerToolRegistrationDetailsRequestTool =
   | "Modernization"
   | "ServerMigration_DataReplication"
   | "Unknown";
-export const GetMigrateProjectsControllerToolRegistrationDetailsRequestTool = S.String;
+const GetMigrateProjectsControllerToolRegistrationDetailsRequestTool = S.String;
 
 export interface AadAppDetails {
   tenantId?: string;
   applicationId?: string;
 }
-export const AadAppDetails = /*@__PURE__*/ S.suspend(() =>
+const AadAppDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     applicationId: S.optional(S.String),
@@ -15536,22 +15494,21 @@ export interface GetMigrateProjectsControllerToolRegistrationDetailsRequest {
   tool?: GetMigrateProjectsControllerToolRegistrationDetailsRequestTool | (string & {});
   applicationDetails?: AadAppDetails;
 }
-export const GetMigrateProjectsControllerToolRegistrationDetailsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      migrateProjectName: S.String.pipe(T.Label()),
-      tool: S.optional(GetMigrateProjectsControllerToolRegistrationDetailsRequestTool),
-      applicationDetails: S.optional(AadAppDetails),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registrationDetails",
-        code: 200,
-        apiVersion: "2023-01-01",
-      }),
-    ),
+const GetMigrateProjectsControllerToolRegistrationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    migrateProjectName: S.String.pipe(T.Label()),
+    tool: S.optional(GetMigrateProjectsControllerToolRegistrationDetailsRequestTool),
+    applicationDetails: S.optional(AadAppDetails),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registrationDetails",
+      code: 200,
+      apiVersion: "2023-01-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetMigrateProjectsControllerToolRegistrationDetailsRequest",
 }) as any as S.Schema<GetMigrateProjectsControllerToolRegistrationDetailsRequest>;
@@ -15560,7 +15517,7 @@ export interface RegistrationDetailsResponse {
   serviceEndpoint?: string;
   oneTimeKey?: string;
 }
-export const RegistrationDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const RegistrationDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceEndpoint: S.optional(S.String),
     oneTimeKey: S.optional(S.String),
@@ -15579,7 +15536,7 @@ export interface GetPrivateEndpointConnectionControllerRequest {
   /** Private link resource name. */
   peConnectionName: string;
 }
-export const GetPrivateEndpointConnectionControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15609,7 +15566,7 @@ export interface GetPrivateEndpointConnectionControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointConnectionPropertiesV2;
 }
-export const GetPrivateEndpointConnectionControllerResponse =
+const GetPrivateEndpointConnectionControllerResponse =
   PrivateEndpointConnection_3 as any as S.Schema<GetPrivateEndpointConnectionControllerResponse>;
 
 export interface GetPrivateEndpointConnectionControllerPrivateEndpointConnectionRequest {
@@ -15622,7 +15579,7 @@ export interface GetPrivateEndpointConnectionControllerPrivateEndpointConnection
   /** Private endpoint connection name. */
   peConnectionName: string;
 }
-export const GetPrivateEndpointConnectionControllerPrivateEndpointConnectionRequest =
+const GetPrivateEndpointConnectionControllerPrivateEndpointConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -15648,7 +15605,7 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-export const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
+const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
 
 /** Properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionProperties_2 {
@@ -15658,7 +15615,7 @@ export interface PrivateEndpointConnectionProperties_2 {
   /** Gets the properties of the object. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState_2;
 }
-export const PrivateEndpointConnectionProperties_2 = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(PrivateEndpointConnectionPropertiesProvisioningState),
     privateEndpoint: S.optional(ResourceId),
@@ -15674,16 +15631,12 @@ export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PrivateEndpointConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PrivateEndpointConnectionSystemData {
   /** The identity that created the resource. */
@@ -15699,7 +15652,7 @@ export interface PrivateEndpointConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionSystemData =
+const PrivateEndpointConnectionSystemData =
   PrivateEndpointConnectionProxySystemData as any as S.Schema<PrivateEndpointConnectionSystemData>;
 
 /** REST model used to encapsulate the user visible state of a PrivateEndpoint. */
@@ -15717,7 +15670,7 @@ export interface PrivateEndpointConnection_2 {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateEndpointConnectionSystemData;
 }
-export const PrivateEndpointConnection_2 = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -15740,7 +15693,7 @@ export interface GetPrivateEndpointConnectionOperationRequest {
   /** Private endpoint connection ARM name */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15760,7 +15713,7 @@ export const GetPrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.susp
 
 /** The group ids for the private endpoint resource. */
 export type GetPrivateEndpointConnectionOperationResponsePropertiesGroupIdsList = Array<string>;
-export const GetPrivateEndpointConnectionOperationResponsePropertiesGroupIdsList =
+const GetPrivateEndpointConnectionOperationResponsePropertiesGroupIdsList =
   DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList as any as S.Schema<GetPrivateEndpointConnectionOperationResponsePropertiesGroupIdsList>;
 
 /** Properties of the private endpoint connection. */
@@ -15774,7 +15727,7 @@ export interface GetPrivateEndpointConnectionOperationResponseProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const GetPrivateEndpointConnectionOperationResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionOperationResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(GetPrivateEndpointConnectionOperationResponsePropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -15797,7 +15750,7 @@ export interface GetPrivateEndpointConnectionOperationResponse {
   /** Properties of the private endpoint connection. */
   properties?: GetPrivateEndpointConnectionOperationResponseProperties;
 }
-export const GetPrivateEndpointConnectionOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -15819,7 +15772,7 @@ export interface GetPrivateEndpointConnectionProxyControllerRequest {
   /** Private link proxy name. */
   pecProxyName: string;
 }
-export const GetPrivateEndpointConnectionProxyControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionProxyControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -15845,7 +15798,7 @@ export interface GetPrivateEndpointConnectionsControllerPrivateEndpointConnectio
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
 }
-export const GetPrivateEndpointConnectionsControllerPrivateEndpointConnectionsRequest =
+const GetPrivateEndpointConnectionsControllerPrivateEndpointConnectionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -15865,7 +15818,7 @@ export const GetPrivateEndpointConnectionsControllerPrivateEndpointConnectionsRe
 
 /** Gets the list of machines. */
 export type PrivateEndpointConnectionCollectionValueList = Array<PrivateEndpointConnection_2>;
-export const PrivateEndpointConnectionCollectionValueList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionCollectionValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection_2,
 ) as any as S.Schema<PrivateEndpointConnectionCollectionValueList>;
 
@@ -15876,7 +15829,7 @@ export interface PrivateEndpointConnectionCollection {
   /** Gets the value of next link. */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionCollection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionCollectionValueList),
     nextLink: S.optional(S.String),
@@ -15895,33 +15848,32 @@ export interface GetPrivateLinkResourceControllerPrivateLinkResourceRequest {
   /** Private Link resource name. */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourceControllerPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      migrateProjectName: S.String.pipe(T.Label()),
-      privateLinkResourceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources/{privateLinkResourceName}",
-        code: 200,
-        apiVersion: "2023-01-01",
-      }),
-    ),
+const GetPrivateLinkResourceControllerPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    migrateProjectName: S.String.pipe(T.Label()),
+    privateLinkResourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources/{privateLinkResourceName}",
+      code: 200,
+      apiVersion: "2023-01-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetPrivateLinkResourceControllerPrivateLinkResourceRequest",
 }) as any as S.Schema<GetPrivateLinkResourceControllerPrivateLinkResourceRequest>;
 
 /** Required members. */
 export type PrivateLinkResourcePropertiesRequiredMembersList_2 = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList_2 =
+const PrivateLinkResourcePropertiesRequiredMembersList_2 =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList_2>;
 
 /** Required zone names. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList_2 = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList_2 =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList_2 =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList_2>;
 
 /** Properties of private link resource. */
@@ -15933,7 +15885,7 @@ export interface PrivateLinkResourceProperties_2 {
   /** Group id. */
   groupId?: string;
 }
-export const PrivateLinkResourceProperties_2 = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList_2),
     requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList_2),
@@ -15954,7 +15906,7 @@ export interface PrivateLinkResource_2 {
   /** Gets nested properties. */
   properties?: PrivateLinkResourceProperties_2;
 }
-export const PrivateLinkResource_2 = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -15971,27 +15923,26 @@ export interface GetPrivateLinkResourceControllerPrivateLinkResourcesRequest {
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
 }
-export const GetPrivateLinkResourceControllerPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      migrateProjectName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources",
-        code: 200,
-        apiVersion: "2023-01-01",
-      }),
-    ),
+const GetPrivateLinkResourceControllerPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    migrateProjectName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/privateLinkResources",
+      code: 200,
+      apiVersion: "2023-01-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetPrivateLinkResourceControllerPrivateLinkResourcesRequest",
 }) as any as S.Schema<GetPrivateLinkResourceControllerPrivateLinkResourcesRequest>;
 
 /** List of private links. */
 export type PrivateLinkResourceCollectionValueList = Array<PrivateLinkResource_2>;
-export const PrivateLinkResourceCollectionValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceCollectionValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource_2,
 ) as any as S.Schema<PrivateLinkResourceCollectionValueList>;
 
@@ -16002,7 +15953,7 @@ export interface PrivateLinkResourceCollection {
   /** Value of next link. */
   nextLink?: string;
 }
-export const PrivateLinkResourceCollection = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourceCollectionValueList),
     nextLink: S.optional(S.String),
@@ -16021,7 +15972,7 @@ export interface GetPrivateLinkResourceOperationRequest {
   /** Private link resource ARM name */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourceOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16041,12 +15992,12 @@ export const GetPrivateLinkResourceOperationRequest = /*@__PURE__*/ S.suspend(()
 
 /** The private link resource required member names. */
 export type GetPrivateLinkResourceOperationResponsePropertiesRequiredMembersList = Array<string>;
-export const GetPrivateLinkResourceOperationResponsePropertiesRequiredMembersList =
+const GetPrivateLinkResourceOperationResponsePropertiesRequiredMembersList =
   DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList as any as S.Schema<GetPrivateLinkResourceOperationResponsePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type GetPrivateLinkResourceOperationResponsePropertiesRequiredZoneNamesList = Array<string>;
-export const GetPrivateLinkResourceOperationResponsePropertiesRequiredZoneNamesList =
+const GetPrivateLinkResourceOperationResponsePropertiesRequiredZoneNamesList =
   DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList as any as S.Schema<GetPrivateLinkResourceOperationResponsePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -16058,7 +16009,7 @@ export interface GetPrivateLinkResourceOperationResponseProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: GetPrivateLinkResourceOperationResponsePropertiesRequiredZoneNamesList;
 }
-export const GetPrivateLinkResourceOperationResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceOperationResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(
@@ -16084,7 +16035,7 @@ export interface GetPrivateLinkResourceOperationResponse {
   /** Properties of a private link resource. */
   properties?: GetPrivateLinkResourceOperationResponseProperties;
 }
-export const GetPrivateLinkResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -16106,7 +16057,7 @@ export interface GetPrivateLinkResourcesControllerRequest {
   /** Private link resource name. */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16126,12 +16077,12 @@ export const GetPrivateLinkResourcesControllerRequest = /*@__PURE__*/ S.suspend(
 
 /** required members */
 export type PrivateLinkResourcePropertiesRequiredMembersList_3 = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList_3 =
+const PrivateLinkResourcePropertiesRequiredMembersList_3 =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList_3>;
 
 /** required zone names */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList_3 = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList_3 =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList_3 =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList_3>;
 
 /** private link resource properties model */
@@ -16145,7 +16096,7 @@ export interface PrivateLinkResourceProperties_3 {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const PrivateLinkResourceProperties_3 = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties_3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList_3),
     requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList_3),
@@ -16168,7 +16119,7 @@ export interface GetPrivateLinkResourcesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateLinkResourceProperties_3;
 }
-export const GetPrivateLinkResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourcesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -16190,7 +16141,7 @@ export interface GetRunAsAccountsControllerRequest {
   /** RunAsAccounts name */
   accountName: string;
 }
-export const GetRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16220,7 +16171,7 @@ export interface GetRunAsAccountsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: RunAsAccountProperties;
 }
-export const GetRunAsAccountsControllerResponse =
+const GetRunAsAccountsControllerResponse =
   GetHypervRunAsAccountsControllerResponse as any as S.Schema<GetRunAsAccountsControllerResponse>;
 
 export interface GetServerCollectorsOperationRequest {
@@ -16233,7 +16184,7 @@ export interface GetServerCollectorsOperationRequest {
   /** Physical server collector ARM name */
   serverCollectorName: string;
 }
-export const GetServerCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServerCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16263,7 +16214,7 @@ export interface GetServerCollectorsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const GetServerCollectorsOperationResponse =
+const GetServerCollectorsOperationResponse =
   CreateHypervCollectorsOperationResponse as any as S.Schema<GetServerCollectorsOperationResponse>;
 
 export interface GetServerJobsControllerRequest {
@@ -16276,7 +16227,7 @@ export interface GetServerJobsControllerRequest {
   /** Jobs name */
   jobName: string;
 }
-export const GetServerJobsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServerJobsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16306,7 +16257,7 @@ export interface GetServerJobsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: JobProperties;
 }
-export const GetServerJobsControllerResponse =
+const GetServerJobsControllerResponse =
   GetHypervJobsControllerResponse as any as S.Schema<GetServerJobsControllerResponse>;
 
 export interface GetServerOperationsStatusControllerServerSiteOperationsStatusRequest {
@@ -16319,7 +16270,7 @@ export interface GetServerOperationsStatusControllerServerSiteOperationsStatusRe
   /** Operation status Arm Name. */
   operationStatusName: string;
 }
-export const GetServerOperationsStatusControllerServerSiteOperationsStatusRequest =
+const GetServerOperationsStatusControllerServerSiteOperationsStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -16348,7 +16299,7 @@ export interface GetServerRunAsAccountsControllerRequest {
   /** RunAsAccounts name */
   accountName: string;
 }
-export const GetServerRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServerRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16378,7 +16329,7 @@ export interface GetServerRunAsAccountsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: RunAsAccountProperties;
 }
-export const GetServerRunAsAccountsControllerResponse =
+const GetServerRunAsAccountsControllerResponse =
   GetHypervRunAsAccountsControllerResponse as any as S.Schema<GetServerRunAsAccountsControllerResponse>;
 
 export interface GetServersControllerMachineRequest {
@@ -16391,7 +16342,7 @@ export interface GetServersControllerMachineRequest {
   /** A server machine name */
   machineName: string;
 }
-export const GetServersControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServersControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16411,7 +16362,7 @@ export const GetServersControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets IP addresses for the machine. */
 export type ServerNetworkAdapterIpAddressListList = Array<string>;
-export const ServerNetworkAdapterIpAddressListList =
+const ServerNetworkAdapterIpAddressListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<ServerNetworkAdapterIpAddressListList>;
 
 /** Second level object represented in responses as part of Machine REST resource. */
@@ -16427,7 +16378,7 @@ export interface ServerNetworkAdapter {
   /** Gets or sets Type of the IP address. */
   ipAddressType?: string;
 }
-export const ServerNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const ServerNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nicId: S.optional(S.String),
     macAddress: S.optional(S.String),
@@ -16439,7 +16390,7 @@ export const ServerNetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the network adapters of the server. */
 export type ServerPropertiesNetworkAdaptersList = Array<ServerNetworkAdapter>;
-export const ServerPropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
+const ServerPropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
   ServerNetworkAdapter,
 ) as any as S.Schema<ServerPropertiesNetworkAdaptersList>;
 
@@ -16460,7 +16411,7 @@ export interface ServerDisk {
   /** Gets or sets Path of the disk. */
   path?: string;
 }
-export const ServerDisk = /*@__PURE__*/ S.suspend(() =>
+const ServerDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     generatedId: S.optional(S.String),
@@ -16474,7 +16425,7 @@ export const ServerDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the disk details of server. */
 export type ServerPropertiesDisksList = Array<ServerDisk>;
-export const ServerPropertiesDisksList = /*@__PURE__*/ S.Array(
+const ServerPropertiesDisksList = /*@__PURE__*/ S.Array(
   ServerDisk,
 ) as any as S.Schema<ServerPropertiesDisksList>;
 
@@ -16487,21 +16438,21 @@ export interface ProcessorInfo_2 {
   /** Gets or sets the total number of cores in a socket. */
   numberOfCoresPerSocket?: number;
 }
-export const ProcessorInfo_2 = ProcessorInfo as any as S.Schema<ProcessorInfo_2>;
+const ProcessorInfo_2 = ProcessorInfo as any as S.Schema<ProcessorInfo_2>;
 
 /** Gets the appliance names. */
 export type ServerPropertiesApplianceNamesList = Array<string>;
-export const ServerPropertiesApplianceNamesList =
+const ServerPropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<ServerPropertiesApplianceNamesList>;
 
 /** Errors for machine. */
 export type ServerPropertiesErrorsList = Array<HealthErrorDetails>;
-export const ServerPropertiesErrorsList =
+const ServerPropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<ServerPropertiesErrorsList>;
 
 /** Gets or sets tags on the Server machine. */
 export type ServerPropertiesTagsMap = { [key: string]: unknown | undefined };
-export const ServerPropertiesTagsMap = /*@__PURE__*/ S.Record(
+const ServerPropertiesTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ServerPropertiesTagsMap>;
@@ -16587,7 +16538,7 @@ export interface ServerProperties {
   /** Provisioning state of the server resource. */
   provisioningState?: ProvisioningState_2;
 }
-export const ServerProperties = /*@__PURE__*/ S.suspend(() =>
+const ServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     fqdn: S.optional(S.String),
@@ -16643,7 +16594,7 @@ export interface GetServersControllerMachineResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServerProperties;
 }
-export const GetServersControllerMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServersControllerMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -16663,7 +16614,7 @@ export interface GetServerSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const GetServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16682,9 +16633,6 @@ export const GetServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServerSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const GetServerSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<GetServerSitesControllerResponseTagsMap>;
-
 export interface GetServerSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16701,13 +16649,12 @@ export interface GetServerSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const GetServerSitesControllerResponse =
+const GetServerSitesControllerResponse =
   CreateHypervSitesControllerResponse as any as S.Schema<GetServerSitesControllerResponse>;
 
 export type GetServerSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault =
   "default";
-export const GetServerSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault =
-  S.String;
+const GetServerSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault = S.String;
 
 export interface GetServerSoftwareInventoriesControllerMachineSoftwareInventoryRequest {
   /** The ID of the target subscription. */
@@ -16723,7 +16670,7 @@ export interface GetServerSoftwareInventoriesControllerMachineSoftwareInventoryR
     | GetServerSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault
     | (string & {});
 }
-export const GetServerSoftwareInventoriesControllerMachineSoftwareInventoryRequest =
+const GetServerSoftwareInventoriesControllerMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -16757,7 +16704,7 @@ export interface GetServerSoftwareInventoriesControllerMachineSoftwareInventoryR
   /** The resource-specific properties for this resource. */
   properties?: MachineSoftwareInventoryProperties;
 }
-export const GetServerSoftwareInventoriesControllerMachineSoftwareInventoryResponse =
+const GetServerSoftwareInventoriesControllerMachineSoftwareInventoryResponse =
   GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryResponse as any as S.Schema<GetServerSoftwareInventoriesControllerMachineSoftwareInventoryResponse>;
 
 export interface GetSitesControllerRequest {
@@ -16768,7 +16715,7 @@ export interface GetSitesControllerRequest {
   /** Site name */
   siteName: string;
 }
-export const GetSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16787,9 +16734,6 @@ export const GetSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const GetSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<GetSitesControllerResponseTagsMap>;
-
 export interface GetSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -16808,7 +16752,7 @@ export interface GetSitesControllerResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const GetSitesControllerResponse =
+const GetSitesControllerResponse =
   CreateSitesControllerResponse as any as S.Schema<GetSitesControllerResponse>;
 
 export interface GetSolutionsControllerConfigRequest {
@@ -16821,7 +16765,7 @@ export interface GetSolutionsControllerConfigRequest {
   /** Unique name of a migration solution within a migrate project. */
   solutionName: string;
 }
-export const GetSolutionsControllerConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSolutionsControllerConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16844,7 +16788,7 @@ export interface SolutionConfig {
   /** Gets or sets the publisher sas uri for the solution. */
   publisherSasUri?: string;
 }
-export const SolutionConfig = /*@__PURE__*/ S.suspend(() =>
+const SolutionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherSasUri: S.optional(S.String),
   }),
@@ -16860,7 +16804,7 @@ export interface GetSolutionsControllerSolutionRequest {
   /** Unique name of a migration solution within a migrate project. */
   solutionName: string;
 }
-export const GetSolutionsControllerSolutionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSolutionsControllerSolutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16888,7 +16832,7 @@ export interface GetSqlAssessmentOptionsOperationRequest {
   /** Sql assessment options ARM name. Accepted values is 'default' */
   assessmentOptionsName: string;
 }
-export const GetSqlAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -16908,49 +16852,49 @@ export const GetSqlAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend((
 
 /** Gets the list of VM families. */
 export type SqlAssessmentOptionsPropertiesVmFamiliesList = Array<VmFamilyOptions>;
-export const SqlAssessmentOptionsPropertiesVmFamiliesList =
+const SqlAssessmentOptionsPropertiesVmFamiliesList =
   AssessmentOptionsPropertiesVmFamiliesList as any as S.Schema<SqlAssessmentOptionsPropertiesVmFamiliesList>;
 
 /** Gets the Reserved Instance VM Families list. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceVmFamiliesList = Array<AzureVmFamily>;
-export const SqlAssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
+const SqlAssessmentOptionsPropertiesReservedInstanceVmFamiliesList =
   MachineAssessmentPropertiesInputAzureVmFamiliesList as any as S.Schema<SqlAssessmentOptionsPropertiesReservedInstanceVmFamiliesList>;
 
 /** Gets the Premium disk VM Families list. */
 export type SqlAssessmentOptionsPropertiesPremiumDiskVmFamiliesList = Array<AzureVmFamily>;
-export const SqlAssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
+const SqlAssessmentOptionsPropertiesPremiumDiskVmFamiliesList =
   MachineAssessmentPropertiesInputAzureVmFamiliesList as any as S.Schema<SqlAssessmentOptionsPropertiesPremiumDiskVmFamiliesList>;
 
 /** Gets or sets the Premium disk VM Families list. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanVmFamiliesList = Array<AzureVmFamily>;
-export const SqlAssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
+const SqlAssessmentOptionsPropertiesSavingsPlanVmFamiliesList =
   MachineAssessmentPropertiesInputAzureVmFamiliesList as any as S.Schema<SqlAssessmentOptionsPropertiesSavingsPlanVmFamiliesList>;
 
 /** Gets or sets the list of Azure locations supporting Saving Plans for IAAS. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList = Array<AzureLocation>;
-export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
+const SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList as any as S.Schema<SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList>;
 
 /** Gets or sets the list of Azure locations supporting Saving Plans for PAAS. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsForPaasList =
   Array<AzureLocation>;
-export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsForPaasList =
+const SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsForPaasList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList as any as S.Schema<SqlAssessmentOptionsPropertiesSavingsPlanSupportedLocationsForPaasList>;
 
 /** Gets or sets the list of Azure locations supporting Reserved Instances for IAAS. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsForIaasList =
   Array<AzureLocation>;
-export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsForIaasList =
+const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsForIaasList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList as any as S.Schema<SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsForIaasList>;
 
 /** Gets or sets the list of Azure Offers supporting Saving Plans. */
 export type SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList = Array<AzureOfferCode>;
-export const SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList =
+const SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList>;
 
 /** Gets or sets the target location. */
 export type SqlPaaSTargetOptionsTargetLocationsList = Array<AzureLocation>;
-export const SqlPaaSTargetOptionsTargetLocationsList =
+const SqlPaaSTargetOptionsTargetLocationsList =
   AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList as any as S.Schema<SqlPaaSTargetOptionsTargetLocationsList>;
 
 /** SQL target options. */
@@ -16966,7 +16910,7 @@ export interface SqlPaaSTargetOptions {
   /** Gets or sets the target location. */
   targetLocations?: SqlPaaSTargetOptionsTargetLocationsList;
 }
-export const SqlPaaSTargetOptions = /*@__PURE__*/ S.suspend(() =>
+const SqlPaaSTargetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computeTier: S.optional(ComputeTier),
     hardwareGeneration: S.optional(HardwareGeneration),
@@ -16978,36 +16922,36 @@ export const SqlPaaSTargetOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of SQL target SKU properties for dropdowns. */
 export type SqlAssessmentOptionsPropertiesSqlSkusList = Array<SqlPaaSTargetOptions>;
-export const SqlAssessmentOptionsPropertiesSqlSkusList = /*@__PURE__*/ S.Array(
+const SqlAssessmentOptionsPropertiesSqlSkusList = /*@__PURE__*/ S.Array(
   SqlPaaSTargetOptions,
 ) as any as S.Schema<SqlAssessmentOptionsPropertiesSqlSkusList>;
 
 /** Gets or sets the Reserved Instance SQL target types. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList = Array<TargetType>;
-export const SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList =
+const SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<SqlAssessmentOptionsPropertiesReservedInstanceSqlTargetsList>;
 
 /** Gets or sets the list of Azure locations supporting Reserved Instances. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   Array<AzureLocation>;
-export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
+const SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList as any as S.Schema<SqlAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList>;
 
 /** Gets or sets the list of currencies supported for Reserved Instances. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   Array<AzureCurrency>;
-export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
+const SqlAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList as any as S.Schema<SqlAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList>;
 
 /** Gets or sets the list of offers supported for Reserved Instances. */
 export type SqlAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   Array<AzureOfferCode>;
-export const SqlAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
+const SqlAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList as any as S.Schema<SqlAssessmentOptionsPropertiesReservedInstanceSupportedOffersList>;
 
 /** Gets or sets the list of offers supported for SQL assessments. */
 export type SqlAssessmentOptionsPropertiesSupportedOffersList = Array<AzureOfferCode>;
-export const SqlAssessmentOptionsPropertiesSupportedOffersList =
+const SqlAssessmentOptionsPropertiesSupportedOffersList =
   SqlAssessmentOptionsPropertiesSavingsPlanSupportedOffersList as any as S.Schema<SqlAssessmentOptionsPropertiesSupportedOffersList>;
 
 /** SQL Assessment options properties Web model object. */
@@ -17041,7 +16985,7 @@ export interface SqlAssessmentOptionsProperties {
   /** Gets or sets the list of offers supported for SQL assessments. */
   supportedOffers?: SqlAssessmentOptionsPropertiesSupportedOffersList;
 }
-export const SqlAssessmentOptionsProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentOptionsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmFamilies: S.optional(SqlAssessmentOptionsPropertiesVmFamiliesList),
     reservedInstanceVmFamilies: S.optional(
@@ -17092,7 +17036,7 @@ export interface GetSqlAssessmentOptionsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlAssessmentOptionsProperties;
 }
-export const GetSqlAssessmentOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlAssessmentOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -17116,7 +17060,7 @@ export interface GetSqlAssessmentV2OperationRequest {
   /** SQL Assessment arm name. */
   assessmentName: string;
 }
-export const GetSqlAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17147,7 +17091,7 @@ export interface GetSqlAssessmentV2OperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlAssessmentV2Properties;
 }
-export const GetSqlAssessmentV2OperationResponse =
+const GetSqlAssessmentV2OperationResponse =
   CreateSqlAssessmentV2OperationResponse as any as S.Schema<GetSqlAssessmentV2OperationResponse>;
 
 export interface GetSqlAssessmentV2SummaryOperationRequest {
@@ -17164,7 +17108,7 @@ export interface GetSqlAssessmentV2SummaryOperationRequest {
   /** Gets the Name of the SQL Summary. */
   summaryName: string;
 }
-export const GetSqlAssessmentV2SummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlAssessmentV2SummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17186,7 +17130,7 @@ export const GetSqlAssessmentV2SummaryOperationRequest = /*@__PURE__*/ S.suspend
 
 /** Sql assessment summary data */
 export type SqlAssessmentV2SummaryDataSuitabilitySummaryMap = { [key: string]: number | undefined };
-export const SqlAssessmentV2SummaryDataSuitabilitySummaryMap =
+const SqlAssessmentV2SummaryDataSuitabilitySummaryMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<SqlAssessmentV2SummaryDataSuitabilitySummaryMap>;
 
 /** SQL Assessment V2 summary data. */
@@ -17204,7 +17148,7 @@ export interface SqlAssessmentV2SummaryData {
   /** Monthly security cost */
   monthlySecurityCost?: number;
 }
-export const SqlAssessmentV2SummaryData = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2SummaryData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suitabilitySummary: S.optional(SqlAssessmentV2SummaryDataSuitabilitySummaryMap),
     monthlyComputeCost: S.optional(S.Number),
@@ -17221,7 +17165,7 @@ export const SqlAssessmentV2SummaryData = /*@__PURE__*/ S.suspend(() =>
 export type SqlAssessmentV2SummaryPropertiesAssessmentSummaryMap = {
   [key: string]: SqlAssessmentV2SummaryData | undefined;
 };
-export const SqlAssessmentV2SummaryPropertiesAssessmentSummaryMap = /*@__PURE__*/ S.Record(
+const SqlAssessmentV2SummaryPropertiesAssessmentSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   SqlAssessmentV2SummaryData,
 ) as any as S.Schema<SqlAssessmentV2SummaryPropertiesAssessmentSummaryMap>;
@@ -17230,42 +17174,42 @@ export const SqlAssessmentV2SummaryPropertiesAssessmentSummaryMap = /*@__PURE__*
 export type SqlAssessmentV2SummaryPropertiesDistributionBySupportStatusMap = {
   [key: string]: number | undefined;
 };
-export const SqlAssessmentV2SummaryPropertiesDistributionBySupportStatusMap =
+const SqlAssessmentV2SummaryPropertiesDistributionBySupportStatusMap =
   MachineAssessmentPropertiesDistributionByServicePackInsightMap as any as S.Schema<SqlAssessmentV2SummaryPropertiesDistributionBySupportStatusMap>;
 
 /** Gets the distribution distribution of sqlInstances by service pack insight. */
 export type SqlAssessmentV2SummaryPropertiesDistributionByServicePackInsightMap = {
   [key: string]: number | undefined;
 };
-export const SqlAssessmentV2SummaryPropertiesDistributionByServicePackInsightMap =
+const SqlAssessmentV2SummaryPropertiesDistributionByServicePackInsightMap =
   MachineAssessmentPropertiesDistributionByServicePackInsightMap as any as S.Schema<SqlAssessmentV2SummaryPropertiesDistributionByServicePackInsightMap>;
 
 /** Gets the distribution of sqlInstances by sql version. */
 export type SqlAssessmentV2SummaryPropertiesDistributionBySqlVersionMap = {
   [key: string]: number | undefined;
 };
-export const SqlAssessmentV2SummaryPropertiesDistributionBySqlVersionMap =
+const SqlAssessmentV2SummaryPropertiesDistributionBySqlVersionMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<SqlAssessmentV2SummaryPropertiesDistributionBySqlVersionMap>;
 
 /** Gets the distribution of sqlInstances by sql edition. */
 export type SqlAssessmentV2SummaryPropertiesDistributionBySqlEditionMap = {
   [key: string]: number | undefined;
 };
-export const SqlAssessmentV2SummaryPropertiesDistributionBySqlEditionMap =
+const SqlAssessmentV2SummaryPropertiesDistributionBySqlEditionMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<SqlAssessmentV2SummaryPropertiesDistributionBySqlEditionMap>;
 
 /** Gets the instance distribution by sizing criterion. */
 export type SqlAssessmentV2SummaryPropertiesInstanceDistributionBySizingCriterionMap = {
   [key: string]: number | undefined;
 };
-export const SqlAssessmentV2SummaryPropertiesInstanceDistributionBySizingCriterionMap =
+const SqlAssessmentV2SummaryPropertiesInstanceDistributionBySizingCriterionMap =
   MachineAssessmentPropertiesDistributionByServicePackInsightMap as any as S.Schema<SqlAssessmentV2SummaryPropertiesInstanceDistributionBySizingCriterionMap>;
 
 /** Gets the database distribution by sizing criterion. */
 export type SqlAssessmentV2SummaryPropertiesDatabaseDistributionBySizingCriterionMap = {
   [key: string]: number | undefined;
 };
-export const SqlAssessmentV2SummaryPropertiesDatabaseDistributionBySizingCriterionMap =
+const SqlAssessmentV2SummaryPropertiesDatabaseDistributionBySizingCriterionMap =
   MachineAssessmentPropertiesDistributionByServicePackInsightMap as any as S.Schema<SqlAssessmentV2SummaryPropertiesDatabaseDistributionBySizingCriterionMap>;
 
 /** SQL Assessment V2 summary properties. */
@@ -17297,7 +17241,7 @@ export interface SqlAssessmentV2SummaryProperties {
   /** Number of sql availability groups part of the assessment. */
   numberOfSqlAvailabilityGroups?: number;
 }
-export const SqlAssessmentV2SummaryProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2SummaryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentSummary: S.optional(SqlAssessmentV2SummaryPropertiesAssessmentSummaryMap),
     distributionBySupportStatus: S.optional(
@@ -17341,7 +17285,7 @@ export interface GetSqlAssessmentV2SummaryOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlAssessmentV2SummaryProperties;
 }
-export const GetSqlAssessmentV2SummaryOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlAssessmentV2SummaryOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -17365,7 +17309,7 @@ export interface GetSqlAvailabilityGroupsControllerRequest {
   /** SQL availability group name. */
   sqlAvailabilityGroupName: string;
 }
-export const GetSqlAvailabilityGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlAvailabilityGroupsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17389,35 +17333,35 @@ export type SqlAvailabilityGroupPropertiesAvailabilityGroupType =
   | "Unknown"
   | "Traditional"
   | "Distributed";
-export const SqlAvailabilityGroupPropertiesAvailabilityGroupType = S.String;
+const SqlAvailabilityGroupPropertiesAvailabilityGroupType = S.String;
 
 /** ReplicaType */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaType =
   | "Unknown"
   | "DatabaseReplica"
   | "AvailabilityGroupReplica";
-export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaType = S.String;
+const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaType = S.String;
 
 /** ReplicaState */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaState =
   | "Unknown"
   | "Primary"
   | "Secondary";
-export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaState = S.String;
+const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaState = S.String;
 
 /** ReplicaSyncStatus */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSyncStatus =
   | "Unknown"
   | "Synchronized"
   | "Unsynchronized";
-export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSyncStatus = S.String;
+const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSyncStatus = S.String;
 
 /** ReplicaCommitMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaCommitMode =
   | "Unknown"
   | "Synchronous"
   | "Asynchronous";
-export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaCommitMode = S.String;
+const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaCommitMode = S.String;
 
 /** ReplicaReadMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaReadMode =
@@ -17425,14 +17369,14 @@ export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaReadMode 
   | "None"
   | "ReadOnly"
   | "ReadWrite";
-export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaReadMode = S.String;
+const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaReadMode = S.String;
 
 /** ReplicaSeedMode */
 export type SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSeedMode =
   | "Unknown"
   | "Manual"
   | "Automatic";
-export const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSeedMode = S.String;
+const SqlAvailabilityGroupSqlAvailabilityReplicaPropertiesReplicaSeedMode = S.String;
 
 /** Class which represents the SQL availability replica properties of type databases. */
 export interface SqlDatabaseReplicaInfo {
@@ -17443,7 +17387,7 @@ export interface SqlDatabaseReplicaInfo {
   /** Gets or sets the SQL Server name of the availability replica. */
   sqlServerArmId?: string;
 }
-export const SqlDatabaseReplicaInfo = /*@__PURE__*/ S.suspend(() =>
+const SqlDatabaseReplicaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostName: S.optional(S.String),
     sqlServerName: S.optional(S.String),
@@ -17460,7 +17404,7 @@ export interface SqlAvailabilityGroupReplicaInfo {
   /** Gets or sets the AG ARM ID which are part of this Replica. */
   availabilityGroupArmId?: string;
 }
-export const SqlAvailabilityGroupReplicaInfo = /*@__PURE__*/ S.suspend(() =>
+const SqlAvailabilityGroupReplicaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterName: S.optional(S.String),
     availabilityGroupName: S.optional(S.String),
@@ -17493,7 +17437,7 @@ export interface SqlAvailabilityReplicaProperties {
   /** Gets or sets the Availability Replica object if Replica is of type AG. This is null in case Replica is of type database. This is to be populated in case AG is of type DAG. */
   sqlAvailabilityGroupReplicaInfo?: SqlAvailabilityGroupReplicaInfo;
 }
-export const SqlAvailabilityReplicaProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlAvailabilityReplicaProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityReplicaName: S.optional(S.String),
     availabilityReplicaId: S.optional(S.String),
@@ -17521,13 +17465,13 @@ export const SqlAvailabilityReplicaProperties = /*@__PURE__*/ S.suspend(() =>
 /** Gets the list of availability replica properties which together forms this availability group. */
 export type SqlAvailabilityGroupPropertiesAvailabilityReplicasList =
   Array<SqlAvailabilityReplicaProperties>;
-export const SqlAvailabilityGroupPropertiesAvailabilityReplicasList = /*@__PURE__*/ S.Array(
+const SqlAvailabilityGroupPropertiesAvailabilityReplicasList = /*@__PURE__*/ S.Array(
   SqlAvailabilityReplicaProperties,
 ) as any as S.Schema<SqlAvailabilityGroupPropertiesAvailabilityReplicasList>;
 
 /** Overview Replica State */
 export type SqlAvailabilityReplicaOverviewReplicaState = "Unknown" | "Primary" | "Secondary";
-export const SqlAvailabilityReplicaOverviewReplicaState = S.String;
+const SqlAvailabilityReplicaOverviewReplicaState = S.String;
 
 /** Web model for SQL replica overview. */
 export interface SqlAvailabilityReplicaOverview {
@@ -17540,7 +17484,7 @@ export interface SqlAvailabilityReplicaOverview {
   /** Gets or sets the SQL Availability group name. */
   availabilityGroupName?: string;
 }
-export const SqlAvailabilityReplicaOverview = /*@__PURE__*/ S.suspend(() =>
+const SqlAvailabilityReplicaOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaState: S.optional(SqlAvailabilityReplicaOverviewReplicaState),
     availabilityReplicaId: S.optional(S.String),
@@ -17554,7 +17498,7 @@ export const SqlAvailabilityReplicaOverview = /*@__PURE__*/ S.suspend(() =>
 /** Gets the parent availability replica overview if any. This would be set with details of parent AG and AR for cases where this availability group is a part of a distributed AG. Currently, we do not populate this since discovery and linking of DAG(Distributed Availability Group) is not implemented. */
 export type SqlAvailabilityGroupPropertiesParentReplicaOverviewListList =
   Array<SqlAvailabilityReplicaOverview>;
-export const SqlAvailabilityGroupPropertiesParentReplicaOverviewListList = /*@__PURE__*/ S.Array(
+const SqlAvailabilityGroupPropertiesParentReplicaOverviewListList = /*@__PURE__*/ S.Array(
   SqlAvailabilityReplicaOverview,
 ) as any as S.Schema<SqlAvailabilityGroupPropertiesParentReplicaOverviewListList>;
 
@@ -17583,7 +17527,7 @@ export interface SqlAvailabilityGroupProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const SqlAvailabilityGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlAvailabilityGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityGroupName: S.optional(S.String),
     availabilityGroupType: S.optional(SqlAvailabilityGroupPropertiesAvailabilityGroupType),
@@ -17615,7 +17559,7 @@ export interface GetSqlAvailabilityGroupsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlAvailabilityGroupProperties;
 }
-export const GetSqlAvailabilityGroupsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlAvailabilityGroupsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -17637,7 +17581,7 @@ export interface GetSqlCollectorOperationRequest {
   /** Sql collector ARM name. */
   collectorName: string;
 }
-export const GetSqlCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17667,7 +17611,7 @@ export interface GetSqlCollectorOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const GetSqlCollectorOperationResponse =
+const GetSqlCollectorOperationResponse =
   CreateHypervCollectorsOperationResponse as any as S.Schema<GetSqlCollectorOperationResponse>;
 
 export interface GetSqlDatabasesControllerRequest {
@@ -17682,7 +17626,7 @@ export interface GetSqlDatabasesControllerRequest {
   /** SQL Database name. */
   sqlDatabaseName: string;
 }
-export const GetSqlDatabasesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlDatabasesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17703,7 +17647,7 @@ export const GetSqlDatabasesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** file type */
 export type FileType = "Rows" | "Log" | "Filestream" | "NotSupported" | "Fulltext";
-export const FileType = S.String;
+const FileType = S.String;
 
 /** File Metadata web model. */
 export interface FileMetaData {
@@ -17718,7 +17662,7 @@ export interface FileMetaData {
   /** Gets or sets a value indicating whether memory optimized data option is enabled. */
   isMemoryOptimizedDataOptionEnabled?: boolean;
 }
-export const FileMetaData = /*@__PURE__*/ S.suspend(() =>
+const FileMetaData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logicalName: S.optional(S.String),
     physicalFullName: S.optional(S.String),
@@ -17730,13 +17674,13 @@ export const FileMetaData = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the file metadata list. */
 export type SqlDatabasePropertiesV2FileMetadataListList = Array<FileMetaData>;
-export const SqlDatabasePropertiesV2FileMetadataListList = /*@__PURE__*/ S.Array(
+const SqlDatabasePropertiesV2FileMetadataListList = /*@__PURE__*/ S.Array(
   FileMetaData,
 ) as any as S.Schema<SqlDatabasePropertiesV2FileMetadataListList>;
 
 /** Gets the message parameters. */
 export type ErrorsMessageParametersMap = { [key: string]: string | undefined };
-export const ErrorsMessageParametersMap =
+const ErrorsMessageParametersMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<ErrorsMessageParametersMap>;
 
 /** HealthError Details Source */
@@ -17744,7 +17688,7 @@ export type MicrosoftAzureFDSWebRoleHealthErrorDetailsSource =
   | "RefreshFabricLayout"
   | "RefreshFabricLayoutGuest"
   | "RefreshFabricLayoutDependencyMap";
-export const MicrosoftAzureFDSWebRoleHealthErrorDetailsSource = S.String;
+const MicrosoftAzureFDSWebRoleHealthErrorDetailsSource = S.String;
 
 /** The properties of a server machine tracked resource */
 export interface Errors {
@@ -17775,7 +17719,7 @@ export interface Errors {
   /** Gets discovery scope for which error is encountered. */
   discoveryScope?: HealthErrorDetailsDiscoveryScope;
 }
-export const Errors = /*@__PURE__*/ S.suspend(() =>
+const Errors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     messageParameters: S.optional(ErrorsMessageParametersMap),
@@ -17795,7 +17739,7 @@ export const Errors = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the errors. */
 export type SqlDatabasePropertiesV2ErrorsList = Array<Errors>;
-export const SqlDatabasePropertiesV2ErrorsList = /*@__PURE__*/ S.Array(
+const SqlDatabasePropertiesV2ErrorsList = /*@__PURE__*/ S.Array(
   Errors,
 ) as any as S.Schema<SqlDatabasePropertiesV2ErrorsList>;
 
@@ -17832,7 +17776,7 @@ export interface SqlDatabasePropertiesV2 {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const SqlDatabasePropertiesV2 = /*@__PURE__*/ S.suspend(() =>
+const SqlDatabasePropertiesV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentReplicaOverview: S.optional(SqlAvailabilityReplicaOverview),
     isDatabaseHighlyAvailable: S.optional(S.Boolean),
@@ -17864,7 +17808,7 @@ export interface GetSqlDatabasesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlDatabasePropertiesV2;
 }
-export const GetSqlDatabasesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlDatabasesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -17888,7 +17832,7 @@ export interface GetSqlDiscoverySiteDataSourceControllerRequest {
   /** SQL Discovery site data source name. */
   discoverySiteDataSourceName: string;
 }
-export const GetSqlDiscoverySiteDataSourceControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlDiscoverySiteDataSourceControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17919,7 +17863,7 @@ export interface GetSqlDiscoverySiteDataSourceControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlDiscoverySiteDataSourceProperties;
 }
-export const GetSqlDiscoverySiteDataSourceControllerResponse =
+const GetSqlDiscoverySiteDataSourceControllerResponse =
   CreateSqlDiscoverySiteDataSourceControllerResponse as any as S.Schema<GetSqlDiscoverySiteDataSourceControllerResponse>;
 
 export interface GetSqlJobsControllerRequest {
@@ -17934,7 +17878,7 @@ export interface GetSqlJobsControllerRequest {
   /** SQL Job name. */
   jobName: string;
 }
-export const GetSqlJobsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlJobsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -17965,7 +17909,7 @@ export interface GetSqlJobsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: JobProperties;
 }
-export const GetSqlJobsControllerResponse =
+const GetSqlJobsControllerResponse =
   GetHypervJobsControllerResponse as any as S.Schema<GetSqlJobsControllerResponse>;
 
 export interface GetSqlOperationsStatusControllerSqlOperationStatusRequest {
@@ -17980,22 +17924,21 @@ export interface GetSqlOperationsStatusControllerSqlOperationStatusRequest {
   /** Operation status Arm Name. */
   operationStatusName: string;
 }
-export const GetSqlOperationsStatusControllerSqlOperationStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      siteName: S.String.pipe(T.Label()),
-      sqlSiteName: S.String.pipe(T.Label()),
-      operationStatusName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/operationsStatus/{operationStatusName}",
-        code: 200,
-        apiVersion: "2023-06-06",
-      }),
-    ),
+const GetSqlOperationsStatusControllerSqlOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    siteName: S.String.pipe(T.Label()),
+    sqlSiteName: S.String.pipe(T.Label()),
+    operationStatusName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/operationsStatus/{operationStatusName}",
+      code: 200,
+      apiVersion: "2023-06-06",
+    }),
+  ),
 ).annotate({
   identifier: "GetSqlOperationsStatusControllerSqlOperationStatusRequest",
 }) as any as S.Schema<GetSqlOperationsStatusControllerSqlOperationStatusRequest>;
@@ -18012,7 +17955,7 @@ export interface GetSqlRunAsAccountsControllerRequest {
   /** SQL RunAsAccounts name */
   accountName: string;
 }
-export const GetSqlRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -18043,7 +17986,7 @@ export interface GetSqlRunAsAccountsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: RunAsAccountProperties;
 }
-export const GetSqlRunAsAccountsControllerResponse =
+const GetSqlRunAsAccountsControllerResponse =
   GetHypervRunAsAccountsControllerResponse as any as S.Schema<GetSqlRunAsAccountsControllerResponse>;
 
 export interface GetSqlServersControllerRequest {
@@ -18058,7 +18001,7 @@ export interface GetSqlServersControllerRequest {
   /** SQL server name. */
   sqlServerName: string;
 }
-export const GetSqlServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -18083,7 +18026,7 @@ export type SqlMachineOverviewFciRole =
   | "NotApplicable"
   | "ActiveNode"
   | "PossibleOwnerNode";
-export const SqlMachineOverviewFciRole = S.String;
+const SqlMachineOverviewFciRole = S.String;
 
 /** Gets or sets SQL machine overview data. */
 export interface SqlMachineOverview {
@@ -18094,7 +18037,7 @@ export interface SqlMachineOverview {
   /** Gets or sets SQL machine FCI role. */
   fciRole?: SqlMachineOverviewFciRole;
 }
-export const SqlMachineOverview = /*@__PURE__*/ S.suspend(() =>
+const SqlMachineOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineArmId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -18104,7 +18047,7 @@ export const SqlMachineOverview = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the Machine Overview properties of all machines on which the SQL server is deployed. */
 export type SqlServerPropertiesMachineOverviewListList = Array<SqlMachineOverview>;
-export const SqlServerPropertiesMachineOverviewListList = /*@__PURE__*/ S.Array(
+const SqlServerPropertiesMachineOverviewListList = /*@__PURE__*/ S.Array(
   SqlMachineOverview,
 ) as any as S.Schema<SqlServerPropertiesMachineOverviewListList>;
 
@@ -18119,7 +18062,7 @@ export type FCIInstanceState =
   | "Pending"
   | "OnlinePending"
   | "OfflinePending";
-export const FCIInstanceState = S.String;
+const FCIInstanceState = S.String;
 
 /** The class representing the properties for an FCI instance. */
 export interface SqlFciProperties {
@@ -18132,7 +18075,7 @@ export interface SqlFciProperties {
   /** Gets or sets the count of Shared Disks for SQL FCI. */
   sharedDiskCount?: number;
 }
-export const SqlFciProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlFciProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(FCIInstanceState),
     networkName: S.optional(S.String),
@@ -18143,17 +18086,17 @@ export const SqlFciProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of machine ARM Ids on which the SQL server is deployed. */
 export type SqlServerPropertiesMachineArmIdsList = Array<string>;
-export const SqlServerPropertiesMachineArmIdsList =
+const SqlServerPropertiesMachineArmIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<SqlServerPropertiesMachineArmIdsList>;
 
 /** Gets the errors. */
 export type SqlServerPropertiesErrorsList = Array<Errors>;
-export const SqlServerPropertiesErrorsList =
+const SqlServerPropertiesErrorsList =
   SqlDatabasePropertiesV2ErrorsList as any as S.Schema<SqlServerPropertiesErrorsList>;
 
 /** Gets or sets tags on the resource. */
 export type SqlServerPropertiesTagsMap = { [key: string]: unknown | undefined };
-export const SqlServerPropertiesTagsMap =
+const SqlServerPropertiesTagsMap =
   ServerPropertiesTagsMap as any as S.Schema<SqlServerPropertiesTagsMap>;
 
 /** sql server status */
@@ -18166,7 +18109,7 @@ export type SqlServerStatus =
   | "StartPending"
   | "Stopped"
   | "StopPending";
-export const SqlServerStatus = S.String;
+const SqlServerStatus = S.String;
 
 /** Class for SQL Server properties. */
 export interface SqlServerProperties {
@@ -18235,7 +18178,7 @@ export interface SqlServerProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2;
 }
-export const SqlServerProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineOverviewList: S.optional(SqlServerPropertiesMachineOverviewListList),
     numberOfAgDatabases: S.optional(S.Number),
@@ -18284,7 +18227,7 @@ export interface GetSqlServersControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlServerProperties;
 }
-export const GetSqlServersControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSqlServersControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -18306,7 +18249,7 @@ export interface GetSqlSitesControllerRequest {
   /** SQL site name. */
   sqlSiteName: string;
 }
-export const GetSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -18336,7 +18279,7 @@ export interface GetSqlSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlSiteProperties;
 }
-export const GetSqlSitesControllerResponse =
+const GetSqlSitesControllerResponse =
   CreateSqlSitesControllerResponse as any as S.Schema<GetSqlSitesControllerResponse>;
 
 export interface GetTomcatWebApplicationsControllerRequest {
@@ -18351,7 +18294,7 @@ export interface GetTomcatWebApplicationsControllerRequest {
   /** Web application name. */
   webApplicationName: string;
 }
-export const GetTomcatWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTomcatWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -18372,48 +18315,48 @@ export const GetTomcatWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend
 
 /** Gets the list of machine ARM Ids on which the web application is deployed. */
 export type TomcatWebApplicationPropertiesMachineArmIdsList = Array<string>;
-export const TomcatWebApplicationPropertiesMachineArmIdsList =
+const TomcatWebApplicationPropertiesMachineArmIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TomcatWebApplicationPropertiesMachineArmIdsList>;
 
 /** Gets the front end bindings for the application. */
 export type TomcatWebApplicationPropertiesBindingsList = Array<FrontEndBinding>;
-export const TomcatWebApplicationPropertiesBindingsList =
+const TomcatWebApplicationPropertiesBindingsList =
   IisWebApplicationPropertiesBindingsList as any as S.Schema<TomcatWebApplicationPropertiesBindingsList>;
 
 /** Gets the Error details. */
 export type TomcatWebApplicationPropertiesFrameworksList = Array<WebApplicationFramework>;
-export const TomcatWebApplicationPropertiesFrameworksList =
+const TomcatWebApplicationPropertiesFrameworksList =
   IisWebApplicationPropertiesFrameworksList as any as S.Schema<TomcatWebApplicationPropertiesFrameworksList>;
 
 /** Gets the configuration. */
 export type TomcatWebApplicationPropertiesConfigurationsList =
   Array<WebApplicationConfigurationUnit>;
-export const TomcatWebApplicationPropertiesConfigurationsList =
+const TomcatWebApplicationPropertiesConfigurationsList =
   IisWebApplicationPropertiesConfigurationsList as any as S.Schema<TomcatWebApplicationPropertiesConfigurationsList>;
 
 /** Gets the directories. */
 export type TomcatWebApplicationPropertiesDirectoriesList = Array<WebApplicationDirectoryUnit>;
-export const TomcatWebApplicationPropertiesDirectoriesList =
+const TomcatWebApplicationPropertiesDirectoriesList =
   IisWebApplicationPropertiesDirectoriesList as any as S.Schema<TomcatWebApplicationPropertiesDirectoriesList>;
 
 /** Gets tags that can be used with ODATA. */
 export type TomcatWebApplicationPropertiesTagsMap = { [key: string]: string | undefined };
-export const TomcatWebApplicationPropertiesTagsMap =
+const TomcatWebApplicationPropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<TomcatWebApplicationPropertiesTagsMap>;
 
 /** Static folders. */
 export type TomcatWebApplicationPropertiesStaticFoldersList = Array<string>;
-export const TomcatWebApplicationPropertiesStaticFoldersList =
+const TomcatWebApplicationPropertiesStaticFoldersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TomcatWebApplicationPropertiesStaticFoldersList>;
 
 /** Gets the Error details. */
 export type TomcatWebApplicationPropertiesErrorsList = Array<HealthErrorDetails>;
-export const TomcatWebApplicationPropertiesErrorsList =
+const TomcatWebApplicationPropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<TomcatWebApplicationPropertiesErrorsList>;
 
 /** Gets the appliance names. */
 export type TomcatWebApplicationPropertiesApplianceNamesList = Array<string>;
-export const TomcatWebApplicationPropertiesApplianceNamesList =
+const TomcatWebApplicationPropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TomcatWebApplicationPropertiesApplianceNamesList>;
 
 /** Class for web application properties. */
@@ -18465,7 +18408,7 @@ export interface TomcatWebApplicationProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const TomcatWebApplicationProperties = /*@__PURE__*/ S.suspend(() =>
+const TomcatWebApplicationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasDatabaseDependency: S.optional(S.Boolean),
     isExternalLoggingConfigured: S.optional(S.Boolean),
@@ -18507,7 +18450,7 @@ export interface GetTomcatWebApplicationsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: TomcatWebApplicationProperties;
 }
-export const GetTomcatWebApplicationsControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTomcatWebApplicationsControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -18531,7 +18474,7 @@ export interface GetTomcatWebServersControllerRequest {
   /** Web server name. */
   webServerName: string;
 }
-export const GetTomcatWebServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTomcatWebServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -18552,7 +18495,7 @@ export const GetTomcatWebServersControllerRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Gets or sets the bindings for the connector. */
 export type ConnectorUnitBindingsList = Array<FrontEndBinding>;
-export const ConnectorUnitBindingsList =
+const ConnectorUnitBindingsList =
   IisWebApplicationPropertiesBindingsList as any as S.Schema<ConnectorUnitBindingsList>;
 
 /** The connectors of the web server. */
@@ -18560,7 +18503,7 @@ export interface ConnectorUnit {
   /** Gets or sets the bindings for the connector. */
   bindings?: ConnectorUnitBindingsList;
 }
-export const ConnectorUnit = /*@__PURE__*/ S.suspend(() =>
+const ConnectorUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(ConnectorUnitBindingsList),
   }),
@@ -18568,7 +18511,7 @@ export const ConnectorUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the connectors defined for the service component. */
 export type TomcatServiceUnitConnectorsList = Array<ConnectorUnit>;
-export const TomcatServiceUnitConnectorsList = /*@__PURE__*/ S.Array(
+const TomcatServiceUnitConnectorsList = /*@__PURE__*/ S.Array(
   ConnectorUnit,
 ) as any as S.Schema<TomcatServiceUnitConnectorsList>;
 
@@ -18581,7 +18524,7 @@ export interface TomcatHostUnit {
   /** Gets or sets the app base value configured for the host. */
   appBase?: string;
 }
-export const TomcatHostUnit = /*@__PURE__*/ S.suspend(() =>
+const TomcatHostUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     appBasePath: S.optional(S.String),
@@ -18591,7 +18534,7 @@ export const TomcatHostUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the hosts defined for the engine. */
 export type TomcatEngineUnitHostsList = Array<TomcatHostUnit>;
-export const TomcatEngineUnitHostsList = /*@__PURE__*/ S.Array(
+const TomcatEngineUnitHostsList = /*@__PURE__*/ S.Array(
   TomcatHostUnit,
 ) as any as S.Schema<TomcatEngineUnitHostsList>;
 
@@ -18602,7 +18545,7 @@ export interface TomcatEngineUnit {
   /** Gets or sets the hosts defined for the engine. */
   hosts?: TomcatEngineUnitHostsList;
 }
-export const TomcatEngineUnit = /*@__PURE__*/ S.suspend(() =>
+const TomcatEngineUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     hosts: S.optional(TomcatEngineUnitHostsList),
@@ -18618,7 +18561,7 @@ export interface TomcatServiceUnit {
   /** Gets or sets the engine defined for the service component. */
   engine?: TomcatEngineUnit;
 }
-export const TomcatServiceUnit = /*@__PURE__*/ S.suspend(() =>
+const TomcatServiceUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     connectors: S.optional(TomcatServiceUnitConnectorsList),
@@ -18628,28 +18571,28 @@ export const TomcatServiceUnit = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the services defined in the server. */
 export type TomcatWebServerPropertiesServicesList = Array<TomcatServiceUnit>;
-export const TomcatWebServerPropertiesServicesList = /*@__PURE__*/ S.Array(
+const TomcatWebServerPropertiesServicesList = /*@__PURE__*/ S.Array(
   TomcatServiceUnit,
 ) as any as S.Schema<TomcatWebServerPropertiesServicesList>;
 
 /** Gets the list of machines. */
 export type TomcatWebServerPropertiesMachineIdsList = Array<string>;
-export const TomcatWebServerPropertiesMachineIdsList =
+const TomcatWebServerPropertiesMachineIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TomcatWebServerPropertiesMachineIdsList>;
 
 /** Gets the list of web applications. */
 export type TomcatWebServerPropertiesWebApplicationsList = Array<string>;
-export const TomcatWebServerPropertiesWebApplicationsList =
+const TomcatWebServerPropertiesWebApplicationsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TomcatWebServerPropertiesWebApplicationsList>;
 
 /** Gets the Error details. */
 export type TomcatWebServerPropertiesErrorsList = Array<HealthErrorDetails>;
-export const TomcatWebServerPropertiesErrorsList =
+const TomcatWebServerPropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<TomcatWebServerPropertiesErrorsList>;
 
 /** Gets the appliance names. */
 export type TomcatWebServerPropertiesApplianceNamesList = Array<string>;
-export const TomcatWebServerPropertiesApplianceNamesList =
+const TomcatWebServerPropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<TomcatWebServerPropertiesApplianceNamesList>;
 
 /** Class for web server properties. */
@@ -18705,7 +18648,7 @@ export interface TomcatWebServerProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const TomcatWebServerProperties = /*@__PURE__*/ S.suspend(() =>
+const TomcatWebServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(TomcatWebServerPropertiesServicesList),
     catalinaHome: S.optional(S.String),
@@ -18749,7 +18692,7 @@ export interface GetTomcatWebServersControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: TomcatWebServerProperties;
 }
-export const GetTomcatWebServersControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTomcatWebServersControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -18771,7 +18714,7 @@ export interface GetVcenterControllerRequest {
   /** VCenters name */
   vcenterName: string;
 }
-export const GetVcenterControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVcenterControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -18801,7 +18744,7 @@ export interface GetVcenterControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: VcenterProperties;
 }
-export const GetVcenterControllerResponse =
+const GetVcenterControllerResponse =
   CreateVcenterControllerResponse as any as S.Schema<GetVcenterControllerResponse>;
 
 export interface GetVirtualDesktopUserControllerVirtualDesktopUserRequest {
@@ -18814,41 +18757,40 @@ export interface GetVirtualDesktopUserControllerVirtualDesktopUserRequest {
   /** The ARM name of the webserver to be fetched. */
   virtualDesktopUserName: string;
 }
-export const GetVirtualDesktopUserControllerVirtualDesktopUserRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      migrateProjectName: S.String.pipe(T.Label()),
-      virtualDesktopUserName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers/{virtualDesktopUserName}",
-        code: 200,
-        apiVersion: "2023-01-01",
-      }),
-    ),
+const GetVirtualDesktopUserControllerVirtualDesktopUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    migrateProjectName: S.String.pipe(T.Label()),
+    virtualDesktopUserName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers/{virtualDesktopUserName}",
+      code: 200,
+      apiVersion: "2023-01-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetVirtualDesktopUserControllerVirtualDesktopUserRequest",
 }) as any as S.Schema<GetVirtualDesktopUserControllerVirtualDesktopUserRequest>;
 
 export type VirtualDesktopUserAssessmentDetailsDevicesUsedList = Array<string>;
-export const VirtualDesktopUserAssessmentDetailsDevicesUsedList =
+const VirtualDesktopUserAssessmentDetailsDevicesUsedList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VirtualDesktopUserAssessmentDetailsDevicesUsedList>;
 
 export type VirtualDesktopUserAssessmentDetailsCriticalApplicationsList = Array<string>;
-export const VirtualDesktopUserAssessmentDetailsCriticalApplicationsList =
+const VirtualDesktopUserAssessmentDetailsCriticalApplicationsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VirtualDesktopUserAssessmentDetailsCriticalApplicationsList>;
 
 export type VirtualDesktopUserAssessmentDetailsOsUsedList = Array<string>;
-export const VirtualDesktopUserAssessmentDetailsOsUsedList =
+const VirtualDesktopUserAssessmentDetailsOsUsedList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VirtualDesktopUserAssessmentDetailsOsUsedList>;
 
 export type VirtualDesktopUserAssessmentDetailsExtendedInfoMap = {
   [key: string]: string | undefined;
 };
-export const VirtualDesktopUserAssessmentDetailsExtendedInfoMap =
+const VirtualDesktopUserAssessmentDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<VirtualDesktopUserAssessmentDetailsExtendedInfoMap>;
 
 /** Details of assessment data of virtual desktop user. */
@@ -18882,7 +18824,7 @@ export interface VirtualDesktopUserAssessmentDetails {
   egressBandwidthWeekly?: number;
   extendedInfo?: VirtualDesktopUserAssessmentDetailsExtendedInfoMap;
 }
-export const VirtualDesktopUserAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
+const VirtualDesktopUserAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTime: S.optional(S.String),
     userId: S.optional(S.String),
@@ -18918,7 +18860,7 @@ export const VirtualDesktopUserAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
 
 export type VirtualDesktopUserPropertiesAssessmentDataList =
   Array<VirtualDesktopUserAssessmentDetails>;
-export const VirtualDesktopUserPropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
+const VirtualDesktopUserPropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
   VirtualDesktopUserAssessmentDetails,
 ) as any as S.Schema<VirtualDesktopUserPropertiesAssessmentDataList>;
 
@@ -18927,7 +18869,7 @@ export interface VirtualDesktopUserProperties {
   assessmentData?: VirtualDesktopUserPropertiesAssessmentDataList;
   lastUpdatedTime?: string;
 }
-export const VirtualDesktopUserProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualDesktopUserProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentData: S.optional(VirtualDesktopUserPropertiesAssessmentDataList),
     lastUpdatedTime: S.optional(S.String),
@@ -18943,7 +18885,7 @@ export interface VirtualDesktopUser {
   type?: string;
   properties?: VirtualDesktopUserProperties;
 }
-export const VirtualDesktopUser = /*@__PURE__*/ S.suspend(() =>
+const VirtualDesktopUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -18962,7 +18904,7 @@ export interface GetVmwareCollectorsOperationRequest {
   /** VMware collector ARM name */
   vmWareCollectorName: string;
 }
-export const GetVmwareCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmwareCollectorsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -18992,7 +18934,7 @@ export interface GetVmwareCollectorsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const GetVmwareCollectorsOperationResponse =
+const GetVmwareCollectorsOperationResponse =
   CreateHypervCollectorsOperationResponse as any as S.Schema<GetVmwareCollectorsOperationResponse>;
 
 export interface GetVmwareHostControllerRequest {
@@ -19005,7 +18947,7 @@ export interface GetVmwareHostControllerRequest {
   /** Hosts name */
   hostName: string;
 }
-export const GetVmwareHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmwareHostControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19034,7 +18976,7 @@ export type VMwareDatastoreType =
   | "VMFS"
   | "VSAN"
   | "VVOL";
-export const VMwareDatastoreType = S.String;
+const VMwareDatastoreType = S.String;
 
 /** Second level object returned as part of VMware host REST resource. */
 export interface VmwareDatastore {
@@ -19049,7 +18991,7 @@ export interface VmwareDatastore {
   /** Symbolic name of the data store. */
   symbolicName?: string;
 }
-export const VmwareDatastore = /*@__PURE__*/ S.suspend(() =>
+const VmwareDatastore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     capacityInGb: S.optional(S.Number),
@@ -19061,13 +19003,13 @@ export const VmwareDatastore = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the data stores. */
 export type VmwareHostPropertiesDatastoresList = Array<VmwareDatastore>;
-export const VmwareHostPropertiesDatastoresList = /*@__PURE__*/ S.Array(
+const VmwareHostPropertiesDatastoresList = /*@__PURE__*/ S.Array(
   VmwareDatastore,
 ) as any as S.Schema<VmwareHostPropertiesDatastoresList>;
 
 /** Gets the appliance names. */
 export type VmwareHostPropertiesApplianceNamesList = Array<string>;
-export const VmwareHostPropertiesApplianceNamesList =
+const VmwareHostPropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<VmwareHostPropertiesApplianceNamesList>;
 
 /** Class for host properties. */
@@ -19087,7 +19029,7 @@ export interface VmwareHostProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const VmwareHostProperties = /*@__PURE__*/ S.suspend(() =>
+const VmwareHostProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdTimestamp: S.optional(S.String),
     updatedTimestamp: S.optional(S.String),
@@ -19111,7 +19053,7 @@ export interface GetVmwareHostControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: VmwareHostProperties;
 }
-export const GetVmwareHostControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVmwareHostControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -19133,7 +19075,7 @@ export interface GetVmwareOperationsStatusVmwareOperationStatusRequest {
   /** Operation status Arm Name. */
   operationStatusName: string;
 }
-export const GetVmwareOperationsStatusVmwareOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmwareOperationsStatusVmwareOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19153,8 +19095,7 @@ export const GetVmwareOperationsStatusVmwareOperationStatusRequest = /*@__PURE__
 
 export type GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault =
   "default";
-export const GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault =
-  S.String;
+const GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault = S.String;
 
 export interface GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryRequest {
   /** The ID of the target subscription. */
@@ -19170,7 +19111,7 @@ export interface GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryR
     | GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryRequestDefault
     | (string & {});
 }
-export const GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryRequest =
+const GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -19204,7 +19145,7 @@ export interface GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryR
   /** The resource-specific properties for this resource. */
   properties?: MachineSoftwareInventoryProperties;
 }
-export const GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryResponse =
+const GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryResponse =
   GetHypervSoftwareInventoriesControllerMachineSoftwareInventoryResponse as any as S.Schema<GetVmwareSoftwareInventoriesControllerMachineSoftwareInventoryResponse>;
 
 export interface GetWebAppAssessmentOptionsOperationRequest {
@@ -19217,7 +19158,7 @@ export interface GetWebAppAssessmentOptionsOperationRequest {
   /** Web app assessment options ARM name. Accepted values is 'default' */
   assessmentOptionsName: string;
 }
-export const GetWebAppAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19236,11 +19177,11 @@ export const GetWebAppAssessmentOptionsOperationRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetWebAppAssessmentOptionsOperationRequest>;
 
 export type AzureWebAppTier = "Unknown" | "Free" | "Premium_V2" | "Premium_V3" | "Isolated";
-export const AzureWebAppTier = S.String;
+const AzureWebAppTier = S.String;
 
 /** Gets or sets the target location. */
 export type WebAppTargetOptionsTargetLocationsList = Array<AzureLocation>;
-export const WebAppTargetOptionsTargetLocationsList =
+const WebAppTargetOptionsTargetLocationsList =
   AssessmentOptionsPropertiesPremiumV2DiskSupportedLocationsList as any as S.Schema<WebAppTargetOptionsTargetLocationsList>;
 
 /** Web app target options. */
@@ -19250,7 +19191,7 @@ export interface WebAppTargetOptions {
   /** Gets or sets the target location. */
   targetLocations?: WebAppTargetOptionsTargetLocationsList;
 }
-export const WebAppTargetOptions = /*@__PURE__*/ S.suspend(() =>
+const WebAppTargetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webAppTier: S.optional(AzureWebAppTier),
     targetLocations: S.optional(WebAppTargetOptionsTargetLocationsList),
@@ -19259,44 +19200,44 @@ export const WebAppTargetOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of web app target options. */
 export type WebAppAssessmentOptionsPropertiesWebAppSkusList = Array<WebAppTargetOptions>;
-export const WebAppAssessmentOptionsPropertiesWebAppSkusList = /*@__PURE__*/ S.Array(
+const WebAppAssessmentOptionsPropertiesWebAppSkusList = /*@__PURE__*/ S.Array(
   WebAppTargetOptions,
 ) as any as S.Schema<WebAppAssessmentOptionsPropertiesWebAppSkusList>;
 
 /** Gets or sets the list of Azure locations supporting Saving Plans for IAAS. */
 export type WebAppAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
   Array<AzureLocation>;
-export const WebAppAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
+const WebAppAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList as any as S.Schema<WebAppAssessmentOptionsPropertiesSavingsPlanSupportedLocationsList>;
 
 /** Gets or sets the list of Azure locations supporting Reserved Instances. */
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   Array<AzureLocation>;
-export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
+const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList as any as S.Schema<WebAppAssessmentOptionsPropertiesReservedInstanceSupportedLocationsList>;
 
 /** Gets or sets the list of currencies supported for Reserved Instances. */
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   Array<AzureCurrency>;
-export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
+const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList as any as S.Schema<WebAppAssessmentOptionsPropertiesReservedInstanceSupportedCurrenciesList>;
 
 /** Gets or sets the list of offers supported for Reserved Instances. */
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   Array<AzureOfferCode>;
-export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
+const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedOffersList =
   AvsAssessmentOptionsPropertiesReservedInstanceSupportedOffersList as any as S.Schema<WebAppAssessmentOptionsPropertiesReservedInstanceSupportedOffersList>;
 
 /** Gets or sets the list of currencies supported for Reserved Instances. */
 export type WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList =
   Array<AzureWebAppTier>;
-export const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList =
+const WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList =
   AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList as any as S.Schema<WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList>;
 
 /** Gets or sets the list of Azure Offers supporting Saving Plans. */
 export type WebAppAssessmentOptionsPropertiesSavingsPlanSupportedWebAppTiersList =
   Array<AzureWebAppTier>;
-export const WebAppAssessmentOptionsPropertiesSavingsPlanSupportedWebAppTiersList =
+const WebAppAssessmentOptionsPropertiesSavingsPlanSupportedWebAppTiersList =
   WebAppAssessmentOptionsPropertiesReservedInstanceSupportedWebAppTiersList as any as S.Schema<WebAppAssessmentOptionsPropertiesSavingsPlanSupportedWebAppTiersList>;
 
 /** Web app Assessment options properties Web model object. */
@@ -19316,7 +19257,7 @@ export interface WebAppAssessmentOptionsProperties {
   /** Gets or sets the list of Azure Offers supporting Saving Plans. */
   savingsPlanSupportedWebAppTiers?: WebAppAssessmentOptionsPropertiesSavingsPlanSupportedWebAppTiersList;
 }
-export const WebAppAssessmentOptionsProperties = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentOptionsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webAppSkus: S.optional(WebAppAssessmentOptionsPropertiesWebAppSkusList),
     savingsPlanSupportedLocations: S.optional(
@@ -19354,7 +19295,7 @@ export interface GetWebAppAssessmentOptionsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppAssessmentOptionsProperties;
 }
-export const GetWebAppAssessmentOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppAssessmentOptionsOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -19378,7 +19319,7 @@ export interface GetWebAppAssessmentV2OperationRequest {
   /** Web app Assessment arm name. */
   assessmentName: string;
 }
-export const GetWebAppAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppAssessmentV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19409,7 +19350,7 @@ export interface GetWebAppAssessmentV2OperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppAssessmentV2Properties;
 }
-export const GetWebAppAssessmentV2OperationResponse =
+const GetWebAppAssessmentV2OperationResponse =
   CreateWebAppAssessmentV2OperationResponse as any as S.Schema<GetWebAppAssessmentV2OperationResponse>;
 
 export interface GetWebAppAssessmentV2SummaryOperationRequest {
@@ -19426,7 +19367,7 @@ export interface GetWebAppAssessmentV2SummaryOperationRequest {
   /** Gets the Name of the Web app Summary. */
   summaryName: string;
 }
-export const GetWebAppAssessmentV2SummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppAssessmentV2SummaryOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19448,12 +19389,12 @@ export const GetWebAppAssessmentV2SummaryOperationRequest = /*@__PURE__*/ S.susp
 
 /** Web server summary data */
 export type DiscoveredEntitiesSummaryWebServerSummaryMap = { [key: string]: number | undefined };
-export const DiscoveredEntitiesSummaryWebServerSummaryMap =
+const DiscoveredEntitiesSummaryWebServerSummaryMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<DiscoveredEntitiesSummaryWebServerSummaryMap>;
 
 /** Web app summary data */
 export type DiscoveredEntitiesSummaryWebAppSummaryMap = { [key: string]: number | undefined };
-export const DiscoveredEntitiesSummaryWebAppSummaryMap =
+const DiscoveredEntitiesSummaryWebAppSummaryMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<DiscoveredEntitiesSummaryWebAppSummaryMap>;
 
 /** Discovered entities summary. */
@@ -19469,7 +19410,7 @@ export interface DiscoveredEntitiesSummary {
   /** Web app summary data */
   webAppSummary?: DiscoveredEntitiesSummaryWebAppSummaryMap;
 }
-export const DiscoveredEntitiesSummary = /*@__PURE__*/ S.suspend(() =>
+const DiscoveredEntitiesSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberOfServers: S.optional(S.Number),
     numberOfWebApps: S.optional(S.Number),
@@ -19485,14 +19426,14 @@ export const DiscoveredEntitiesSummary = /*@__PURE__*/ S.suspend(() =>
 export type WebAppAssessmentV2SummaryPropertiesAssessmentSummaryMap = {
   [key: string]: DiscoveredEntitiesSummary | undefined;
 };
-export const WebAppAssessmentV2SummaryPropertiesAssessmentSummaryMap = /*@__PURE__*/ S.Record(
+const WebAppAssessmentV2SummaryPropertiesAssessmentSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   DiscoveredEntitiesSummary,
 ) as any as S.Schema<WebAppAssessmentV2SummaryPropertiesAssessmentSummaryMap>;
 
 /** Web app readiness summary data */
 export type TargetSpecificSummaryReadinessSummaryMap = { [key: string]: number | undefined };
-export const TargetSpecificSummaryReadinessSummaryMap =
+const TargetSpecificSummaryReadinessSummaryMap =
   MachineAssessmentPropertiesAssessmentErrorSummaryMap as any as S.Schema<TargetSpecificSummaryReadinessSummaryMap>;
 
 /** Web app sku details. */
@@ -19508,7 +19449,7 @@ export interface WebAppSkuDetails {
   /** App service plan count */
   appServicePlanCount: number;
 }
-export const WebAppSkuDetails = /*@__PURE__*/ S.suspend(() =>
+const WebAppSkuDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalMonthlyCost: S.optional(S.Number),
     monthlySecurityCost: S.optional(S.Number),
@@ -19522,7 +19463,7 @@ export const WebAppSkuDetails = /*@__PURE__*/ S.suspend(() =>
 export type TargetSpecificSummaryRecommendationResultSkuDetailsMap = {
   [key: string]: WebAppSkuDetails | undefined;
 };
-export const TargetSpecificSummaryRecommendationResultSkuDetailsMap = /*@__PURE__*/ S.Record(
+const TargetSpecificSummaryRecommendationResultSkuDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   WebAppSkuDetails,
 ) as any as S.Schema<TargetSpecificSummaryRecommendationResultSkuDetailsMap>;
@@ -19534,7 +19475,7 @@ export interface TargetSpecificSummary {
   /** Web app recommendation sku details data */
   recommendationResultSkuDetails?: TargetSpecificSummaryRecommendationResultSkuDetailsMap;
 }
-export const TargetSpecificSummary = /*@__PURE__*/ S.suspend(() =>
+const TargetSpecificSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readinessSummary: S.optional(TargetSpecificSummaryReadinessSummaryMap),
     recommendationResultSkuDetails: S.optional(
@@ -19547,7 +19488,7 @@ export const TargetSpecificSummary = /*@__PURE__*/ S.suspend(() =>
 export type WebAppAssessmentV2SummaryPropertiesTargetSpecificSummaryMap = {
   [key: string]: TargetSpecificSummary | undefined;
 };
-export const WebAppAssessmentV2SummaryPropertiesTargetSpecificSummaryMap = /*@__PURE__*/ S.Record(
+const WebAppAssessmentV2SummaryPropertiesTargetSpecificSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   TargetSpecificSummary,
 ) as any as S.Schema<WebAppAssessmentV2SummaryPropertiesTargetSpecificSummaryMap>;
@@ -19559,7 +19500,7 @@ export interface WebAppAssessmentV2SummaryProperties {
   /** Gets the target specific summary. */
   targetSpecificSummary?: WebAppAssessmentV2SummaryPropertiesTargetSpecificSummaryMap;
 }
-export const WebAppAssessmentV2SummaryProperties = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentV2SummaryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentSummary: S.optional(WebAppAssessmentV2SummaryPropertiesAssessmentSummaryMap),
     targetSpecificSummary: S.optional(WebAppAssessmentV2SummaryPropertiesTargetSpecificSummaryMap),
@@ -19580,7 +19521,7 @@ export interface GetWebAppAssessmentV2SummaryOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppAssessmentV2SummaryProperties;
 }
-export const GetWebAppAssessmentV2SummaryOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppAssessmentV2SummaryOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -19602,7 +19543,7 @@ export interface GetWebAppCollectorOperationRequest {
   /** Web app collector ARM name. */
   collectorName: string;
 }
-export const GetWebAppCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppCollectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19632,7 +19573,7 @@ export interface GetWebAppCollectorOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppCollectorPropertiesBaseWithAgent;
 }
-export const GetWebAppCollectorOperationResponse =
+const GetWebAppCollectorOperationResponse =
   CreateWebAppCollectorOperationResponse as any as S.Schema<GetWebAppCollectorOperationResponse>;
 
 export interface GetWebAppDiscoverySiteDataSourcesControllerRequest {
@@ -19647,7 +19588,7 @@ export interface GetWebAppDiscoverySiteDataSourcesControllerRequest {
   /** Data Source ARM name. */
   discoverySiteDataSourceName: string;
 }
-export const GetWebAppDiscoverySiteDataSourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppDiscoverySiteDataSourcesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19678,7 +19619,7 @@ export interface GetWebAppDiscoverySiteDataSourcesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlDiscoverySiteDataSourceProperties;
 }
-export const GetWebAppDiscoverySiteDataSourcesControllerResponse =
+const GetWebAppDiscoverySiteDataSourcesControllerResponse =
   CreateSqlDiscoverySiteDataSourceControllerResponse as any as S.Schema<GetWebAppDiscoverySiteDataSourcesControllerResponse>;
 
 export interface GetWebAppExtendedMachinesControllerRequest {
@@ -19693,7 +19634,7 @@ export interface GetWebAppExtendedMachinesControllerRequest {
   /** Extended machine name. */
   extendedMachineName: string;
 }
-export const GetWebAppExtendedMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppExtendedMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19714,7 +19655,7 @@ export const GetWebAppExtendedMachinesControllerRequest = /*@__PURE__*/ S.suspen
 
 /** Gets the Error details. */
 export type WebAppExtendedMachinePropertiesErrorsList = Array<HealthErrorDetails>;
-export const WebAppExtendedMachinePropertiesErrorsList =
+const WebAppExtendedMachinePropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<WebAppExtendedMachinePropertiesErrorsList>;
 
 /** Class for web extended machine properties. */
@@ -19740,7 +19681,7 @@ export interface WebAppExtendedMachineProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const WebAppExtendedMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const WebAppExtendedMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isDeleted: S.optional(S.Boolean),
     createdTimestamp: S.optional(S.String),
@@ -19769,7 +19710,7 @@ export interface GetWebAppExtendedMachinesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppExtendedMachineProperties;
 }
-export const GetWebAppExtendedMachinesControllerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppExtendedMachinesControllerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -19793,7 +19734,7 @@ export interface GetWebAppRunAsAccountsControllerRequest {
   /** Run as account ARM name. */
   accountName: string;
 }
-export const GetWebAppRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppRunAsAccountsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19824,7 +19765,7 @@ export interface GetWebAppRunAsAccountsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: RunAsAccountProperties;
 }
-export const GetWebAppRunAsAccountsControllerResponse =
+const GetWebAppRunAsAccountsControllerResponse =
   GetHypervRunAsAccountsControllerResponse as any as S.Schema<GetWebAppRunAsAccountsControllerResponse>;
 
 export interface GetWebAppServicePlanV2OperationRequest {
@@ -19841,7 +19782,7 @@ export interface GetWebAppServicePlanV2OperationRequest {
   /** Web app service plan ARM name. */
   webAppServicePlanName: string;
 }
-export const GetWebAppServicePlanV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppServicePlanV2OperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19862,11 +19803,11 @@ export const GetWebAppServicePlanV2OperationRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetWebAppServicePlanV2OperationRequest>;
 
 export type AzureWebAppTargetType = "Unknown" | "AzureAppService" | "AzureAppServiceContainer";
-export const AzureWebAppTargetType = S.String;
+const AzureWebAppTargetType = S.String;
 
 /** Cost components. */
 export type WebAppServicePlanV2PropertiesCostComponentsList = Array<CostComponent>;
-export const WebAppServicePlanV2PropertiesCostComponentsList =
+const WebAppServicePlanV2PropertiesCostComponentsList =
   MachineAssessmentPropertiesCostComponentsList as any as S.Schema<WebAppServicePlanV2PropertiesCostComponentsList>;
 
 /** Assessed Web app database properties web model. */
@@ -19900,7 +19841,7 @@ export interface WebAppServicePlanV2Properties {
   /** Cost components. */
   costComponents?: WebAppServicePlanV2PropertiesCostComponentsList;
 }
-export const WebAppServicePlanV2Properties = /*@__PURE__*/ S.suspend(() =>
+const WebAppServicePlanV2Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webAppType: S.optional(WebAppType),
     webAppTargetType: S.optional(AzureWebAppTargetType),
@@ -19933,7 +19874,7 @@ export interface GetWebAppServicePlanV2OperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppServicePlanV2Properties;
 }
-export const GetWebAppServicePlanV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppServicePlanV2OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -19955,7 +19896,7 @@ export interface GetWebAppSitesControllerRequest {
   /** Web app site name. */
   webAppSiteName: string;
 }
-export const GetWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -19985,7 +19926,7 @@ export interface GetWebAppSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppSiteProperties;
 }
-export const GetWebAppSitesControllerResponse =
+const GetWebAppSitesControllerResponse =
   CreateWebAppSitesControllerResponse as any as S.Schema<GetWebAppSitesControllerResponse>;
 
 export interface GetWebServersControllerWebServerRequest {
@@ -19998,7 +19939,7 @@ export interface GetWebServersControllerWebServerRequest {
   /** The ARM name of the virtual desktop user. */
   webServerId: string;
 }
-export const GetWebServersControllerWebServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebServersControllerWebServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20017,12 +19958,12 @@ export const GetWebServersControllerWebServerRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetWebServersControllerWebServerRequest>;
 
 export type WebServerDiscoveryDetailsPortListList = Array<number>;
-export const WebServerDiscoveryDetailsPortListList = /*@__PURE__*/ S.Array(
+const WebServerDiscoveryDetailsPortListList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<WebServerDiscoveryDetailsPortListList>;
 
 export type WebServerDiscoveryDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const WebServerDiscoveryDetailsExtendedInfoMap =
+const WebServerDiscoveryDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<WebServerDiscoveryDetailsExtendedInfoMap>;
 
 /** Details of discovery data of web server. */
@@ -20043,7 +19984,7 @@ export interface WebServerDiscoveryDetails {
   webServerName?: string;
   extendedInfo?: WebServerDiscoveryDetailsExtendedInfoMap;
 }
-export const WebServerDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
+const WebServerDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     osName: S.optional(S.String),
@@ -20065,7 +20006,7 @@ export const WebServerDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebServerDiscoveryDetails>;
 
 export type WebServerPropertiesDiscoveryDataList = Array<WebServerDiscoveryDetails>;
-export const WebServerPropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
+const WebServerPropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
   WebServerDiscoveryDetails,
 ) as any as S.Schema<WebServerPropertiesDiscoveryDataList>;
 
@@ -20077,7 +20018,7 @@ export interface WebServerSummary {
   migratingCount?: number;
   migratedCount?: number;
 }
-export const WebServerSummary = /*@__PURE__*/ S.suspend(() =>
+const WebServerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveredCount: S.optional(S.Number),
     assessedCount: S.optional(S.Number),
@@ -20088,7 +20029,7 @@ export const WebServerSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebServerSummary" }) as any as S.Schema<WebServerSummary>;
 
 export type WebServerPropertiesSummaryMap = { [key: string]: WebServerSummary | undefined };
-export const WebServerPropertiesSummaryMap = /*@__PURE__*/ S.Record(
+const WebServerPropertiesSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   WebServerSummary,
 ) as any as S.Schema<WebServerPropertiesSummaryMap>;
@@ -20099,7 +20040,7 @@ export interface WebServerProperties {
   summary?: WebServerPropertiesSummaryMap;
   lastUpdatedTime?: string;
 }
-export const WebServerProperties = /*@__PURE__*/ S.suspend(() =>
+const WebServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryData: S.optional(WebServerPropertiesDiscoveryDataList),
     summary: S.optional(WebServerPropertiesSummaryMap),
@@ -20114,7 +20055,7 @@ export interface WebServer {
   type?: string;
   properties?: WebServerProperties;
 }
-export const WebServer = /*@__PURE__*/ S.suspend(() =>
+const WebServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -20133,7 +20074,7 @@ export interface GetWebSitesControllerWebSiteRequest {
   /** The ARM name of the website to be fetched. */
   webSiteName: string;
 }
-export const GetWebSitesControllerWebSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebSitesControllerWebSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20152,7 +20093,7 @@ export const GetWebSitesControllerWebSiteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWebSitesControllerWebSiteRequest>;
 
 export type WebSiteDiscoveryDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const WebSiteDiscoveryDetailsExtendedInfoMap =
+const WebSiteDiscoveryDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<WebSiteDiscoveryDetailsExtendedInfoMap>;
 
 /** Details of discovery data of web site. */
@@ -20168,7 +20109,7 @@ export interface WebSiteDiscoveryDetails {
   port?: number;
   extendedInfo?: WebSiteDiscoveryDetailsExtendedInfoMap;
 }
-export const WebSiteDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
+const WebSiteDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTime: S.optional(S.String),
     id: S.optional(S.String),
@@ -20183,24 +20124,24 @@ export const WebSiteDiscoveryDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebSiteDiscoveryDetails" }) as any as S.Schema<WebSiteDiscoveryDetails>;
 
 export type WebSitePropertiesDiscoveryDataList = Array<WebSiteDiscoveryDetails>;
-export const WebSitePropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
+const WebSitePropertiesDiscoveryDataList = /*@__PURE__*/ S.Array(
   WebSiteDiscoveryDetails,
 ) as any as S.Schema<WebSitePropertiesDiscoveryDataList>;
 
 export type WebSiteAssessmentDetailsSuccessListList = Array<string>;
-export const WebSiteAssessmentDetailsSuccessListList =
+const WebSiteAssessmentDetailsSuccessListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebSiteAssessmentDetailsSuccessListList>;
 
 export type WebSiteAssessmentDetailsWarningListList = Array<string>;
-export const WebSiteAssessmentDetailsWarningListList =
+const WebSiteAssessmentDetailsWarningListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebSiteAssessmentDetailsWarningListList>;
 
 export type WebSiteAssessmentDetailsErrorListList = Array<string>;
-export const WebSiteAssessmentDetailsErrorListList =
+const WebSiteAssessmentDetailsErrorListList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebSiteAssessmentDetailsErrorListList>;
 
 export type WebSiteAssessmentDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const WebSiteAssessmentDetailsExtendedInfoMap =
+const WebSiteAssessmentDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<WebSiteAssessmentDetailsExtendedInfoMap>;
 
 /** Details of assessment data of web site. */
@@ -20225,7 +20166,7 @@ export interface WebSiteAssessmentDetails {
   port?: number;
   extendedInfo?: WebSiteAssessmentDetailsExtendedInfoMap;
 }
-export const WebSiteAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
+const WebSiteAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentId: S.optional(S.String),
     id: S.optional(S.String),
@@ -20249,12 +20190,12 @@ export const WebSiteAssessmentDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebSiteAssessmentDetails" }) as any as S.Schema<WebSiteAssessmentDetails>;
 
 export type WebSitePropertiesAssessmentDataList = Array<WebSiteAssessmentDetails>;
-export const WebSitePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
+const WebSitePropertiesAssessmentDataList = /*@__PURE__*/ S.Array(
   WebSiteAssessmentDetails,
 ) as any as S.Schema<WebSitePropertiesAssessmentDataList>;
 
 export type WebSiteMigrationDetailsExtendedInfoMap = { [key: string]: string | undefined };
-export const WebSiteMigrationDetailsExtendedInfoMap =
+const WebSiteMigrationDetailsExtendedInfoMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<WebSiteMigrationDetailsExtendedInfoMap>;
 
 /** Details of migration data of web site. */
@@ -20273,7 +20214,7 @@ export interface WebSiteMigrationDetails {
   port?: number;
   extendedInfo?: WebSiteMigrationDetailsExtendedInfoMap;
 }
-export const WebSiteMigrationDetails = /*@__PURE__*/ S.suspend(() =>
+const WebSiteMigrationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     migrationPhase: S.optional(S.String),
@@ -20291,7 +20232,7 @@ export const WebSiteMigrationDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebSiteMigrationDetails" }) as any as S.Schema<WebSiteMigrationDetails>;
 
 export type WebSitePropertiesMigrationDataList = Array<WebSiteMigrationDetails>;
-export const WebSitePropertiesMigrationDataList = /*@__PURE__*/ S.Array(
+const WebSitePropertiesMigrationDataList = /*@__PURE__*/ S.Array(
   WebSiteMigrationDetails,
 ) as any as S.Schema<WebSitePropertiesMigrationDataList>;
 
@@ -20302,7 +20243,7 @@ export interface WebSiteProperties {
   migrationData?: WebSitePropertiesMigrationDataList;
   lastUpdatedTime?: string;
 }
-export const WebSiteProperties = /*@__PURE__*/ S.suspend(() =>
+const WebSiteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryData: S.optional(WebSitePropertiesDiscoveryDataList),
     assessmentData: S.optional(WebSitePropertiesAssessmentDataList),
@@ -20318,7 +20259,7 @@ export interface WebSite {
   type?: string;
   properties?: WebSiteProperties;
 }
-export const WebSite = /*@__PURE__*/ S.suspend(() =>
+const WebSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -20347,7 +20288,7 @@ export interface HypervDependencyMapControllerClientGroupMembersRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const HypervDependencyMapControllerClientGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const HypervDependencyMapControllerClientGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20371,7 +20312,7 @@ export const HypervDependencyMapControllerClientGroupMembersRequest = /*@__PURE_
 }) as any as S.Schema<HypervDependencyMapControllerClientGroupMembersRequest>;
 
 export type HypervDependencyMapControllerClientGroupMembersResponse = unknown;
-export const HypervDependencyMapControllerClientGroupMembersResponse =
+const HypervDependencyMapControllerClientGroupMembersResponse =
   DeleteEventsControllerResponse as any as S.Schema<HypervDependencyMapControllerClientGroupMembersResponse>;
 
 export interface HypervDependencyMapControllerServerGroupMembersRequest {
@@ -20390,7 +20331,7 @@ export interface HypervDependencyMapControllerServerGroupMembersRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const HypervDependencyMapControllerServerGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const HypervDependencyMapControllerServerGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20412,7 +20353,7 @@ export const HypervDependencyMapControllerServerGroupMembersRequest = /*@__PURE_
 }) as any as S.Schema<HypervDependencyMapControllerServerGroupMembersRequest>;
 
 export type HypervDependencyMapControllerServerGroupMembersResponse = unknown;
-export const HypervDependencyMapControllerServerGroupMembersResponse =
+const HypervDependencyMapControllerServerGroupMembersResponse =
   DeleteEventsControllerResponse as any as S.Schema<HypervDependencyMapControllerServerGroupMembersResponse>;
 
 export interface HypervSitesControllerComputeErrorSummaryRequest {
@@ -20423,7 +20364,7 @@ export interface HypervSitesControllerComputeErrorSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const HypervSitesControllerComputeErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const HypervSitesControllerComputeErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20446,7 +20387,7 @@ export type DiscoveryScopes =
   | "DependencyMap"
   | "StaticData"
   | "SQLServerConnectionInfo";
-export const DiscoveryScopes = S.String;
+const DiscoveryScopes = S.String;
 
 /** The site error summary model. */
 export interface DiscoveryScopeErrorSummary {
@@ -20457,7 +20398,7 @@ export interface DiscoveryScopeErrorSummary {
   /** Gets or sets the count of affected objects. */
   discoveryScope: DiscoveryScopes;
 }
-export const DiscoveryScopeErrorSummary = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryScopeErrorSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affectedResourceType: S.String,
     affectedObjectsCount: S.Number,
@@ -20476,7 +20417,7 @@ export interface SiteErrorSummary {
   /** The link to fetch more models. */
   nextLink?: string;
 }
-export const SiteErrorSummary = /*@__PURE__*/ S.suspend(() =>
+const SiteErrorSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applianceName: S.String,
     discoveryScopeErrorSummaries: DiscoveryScopeErrorSummary,
@@ -20492,7 +20433,7 @@ export interface HypervSitesControllerComputeusageRequest {
   /** Site name */
   siteName: string;
 }
-export const HypervSitesControllerComputeusageRequest = /*@__PURE__*/ S.suspend(() =>
+const HypervSitesControllerComputeusageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20520,7 +20461,7 @@ export interface HypervSiteUsage {
   /** Gets or sets the number of clusters part of the site. */
   clusterCount?: number;
 }
-export const HypervSiteUsage = /*@__PURE__*/ S.suspend(() =>
+const HypervSiteUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineCount: S.optional(S.Number),
     runAsAccountCount: S.optional(S.Number),
@@ -20537,7 +20478,7 @@ export interface HypervSitesControllerSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const HypervSitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const HypervSitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20566,7 +20507,7 @@ export interface ImportImportSitesControllerUriRequest {
   /** Gets or sets the SAS URI. */
   uri?: string;
 }
-export const ImportImportSitesControllerUriRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportImportSitesControllerUriRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20593,7 +20534,7 @@ export interface ImportJobsControllerListByImportSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ImportJobsControllerListByImportSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportJobsControllerListByImportSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20623,11 +20564,11 @@ export interface ImportJob {
   /** The resource-specific properties for this resource. */
   properties?: JobProperties;
 }
-export const ImportJob = GetHypervJobResponse as any as S.Schema<ImportJob>;
+const ImportJob = GetHypervJobResponse as any as S.Schema<ImportJob>;
 
 /** The ImportJob items on this page */
 export type ImportJobListResultValueList = Array<ImportJob>;
-export const ImportJobListResultValueList = /*@__PURE__*/ S.Array(
+const ImportJobListResultValueList = /*@__PURE__*/ S.Array(
   ImportJob,
 ) as any as S.Schema<ImportJobListResultValueList>;
 
@@ -20638,7 +20579,7 @@ export interface ImportJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ImportJobListResult = /*@__PURE__*/ S.suspend(() =>
+const ImportJobListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ImportJobListResultValueList,
     nextLink: S.optional(S.String),
@@ -20661,7 +20602,7 @@ export interface ImportMachinesControllerListByImportSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ImportMachinesControllerListByImportSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportMachinesControllerListByImportSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20695,7 +20636,7 @@ export interface ImportMachine {
   /** The resource-specific properties for this resource. */
   properties?: ImportMachineProperties;
 }
-export const ImportMachine = /*@__PURE__*/ S.suspend(() =>
+const ImportMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -20707,7 +20648,7 @@ export const ImportMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The ImportMachine items on this page */
 export type ImportMachineListResultValueList = Array<ImportMachine>;
-export const ImportMachineListResultValueList = /*@__PURE__*/ S.Array(
+const ImportMachineListResultValueList = /*@__PURE__*/ S.Array(
   ImportMachine,
 ) as any as S.Schema<ImportMachineListResultValueList>;
 
@@ -20718,7 +20659,7 @@ export interface ImportMachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ImportMachineListResult = /*@__PURE__*/ S.suspend(() =>
+const ImportMachineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ImportMachineListResultValueList,
     nextLink: S.optional(S.String),
@@ -20741,7 +20682,7 @@ export interface ListAksAssessmentOperationByAssessmentProjectRequest {
   /** Total Record Count Query Parameter. */
   totalRecordCount?: number;
 }
-export const ListAksAssessmentOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAksAssessmentOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20777,7 +20718,7 @@ export interface AKSAssessment {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const AKSAssessment = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -20790,7 +20731,7 @@ export const AKSAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** The AKSAssessment items on this page */
 export type AKSAssessmentListResultValueList = Array<AKSAssessment>;
-export const AKSAssessmentListResultValueList = /*@__PURE__*/ S.Array(
+const AKSAssessmentListResultValueList = /*@__PURE__*/ S.Array(
   AKSAssessment,
 ) as any as S.Schema<AKSAssessmentListResultValueList>;
 
@@ -20801,7 +20742,7 @@ export interface AKSAssessmentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AKSAssessmentListResult = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AKSAssessmentListResultValueList,
     nextLink: S.optional(S.String),
@@ -20820,7 +20761,7 @@ export interface ListAksClusterOperationByAksAssessmentRequest {
   /** Filter Query Parameter. */
   _filter?: string;
 }
-export const ListAksClusterOperationByAksAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAksClusterOperationByAksAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20854,7 +20795,7 @@ export interface AKSCluster {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const AKSCluster = /*@__PURE__*/ S.suspend(() =>
+const AKSCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -20867,7 +20808,7 @@ export const AKSCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** The AKSCluster items on this page */
 export type AKSClusterListResultValueList = Array<AKSCluster>;
-export const AKSClusterListResultValueList = /*@__PURE__*/ S.Array(
+const AKSClusterListResultValueList = /*@__PURE__*/ S.Array(
   AKSCluster,
 ) as any as S.Schema<AKSClusterListResultValueList>;
 
@@ -20878,7 +20819,7 @@ export interface AKSClusterListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AKSClusterListResult = /*@__PURE__*/ S.suspend(() =>
+const AKSClusterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AKSClusterListResultValueList,
     nextLink: S.optional(S.String),
@@ -20897,7 +20838,7 @@ export interface ListAksCostDetailOperationByAksAssessmentRequest {
   /** Filter Query Parameter. */
   _filter?: string;
 }
-export const ListAksCostDetailOperationByAksAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAksCostDetailOperationByAksAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -20931,7 +20872,7 @@ export interface AKSCostDetail {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const AKSCostDetail = /*@__PURE__*/ S.suspend(() =>
+const AKSCostDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -20944,7 +20885,7 @@ export const AKSCostDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The AKSCostDetail items on this page */
 export type AKSCostDetailListResultValueList = Array<AKSCostDetail>;
-export const AKSCostDetailListResultValueList = /*@__PURE__*/ S.Array(
+const AKSCostDetailListResultValueList = /*@__PURE__*/ S.Array(
   AKSCostDetail,
 ) as any as S.Schema<AKSCostDetailListResultValueList>;
 
@@ -20955,7 +20896,7 @@ export interface AKSCostDetailListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AKSCostDetailListResult = /*@__PURE__*/ S.suspend(() =>
+const AKSCostDetailListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AKSCostDetailListResultValueList,
     nextLink: S.optional(S.String),
@@ -20970,7 +20911,7 @@ export interface ListAksOptionsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListAksOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAksOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -21002,7 +20943,7 @@ export interface AKSAssessmentOptions {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const AKSAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21015,7 +20956,7 @@ export const AKSAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The AKSAssessmentOptions items on this page */
 export type AKSAssessmentOptionsListResultValueList = Array<AKSAssessmentOptions>;
-export const AKSAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
+const AKSAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   AKSAssessmentOptions,
 ) as any as S.Schema<AKSAssessmentOptionsListResultValueList>;
 
@@ -21026,7 +20967,7 @@ export interface AKSAssessmentOptionsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AKSAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
+const AKSAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AKSAssessmentOptionsListResultValueList,
     nextLink: S.optional(S.String),
@@ -21045,7 +20986,7 @@ export interface ListAksSummaryOperationByAksAssessmentRequest {
   /** AKS Assessment Name. */
   assessmentName: string;
 }
-export const ListAksSummaryOperationByAksAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAksSummaryOperationByAksAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -21078,7 +21019,7 @@ export interface AKSSummary {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const AKSSummary = /*@__PURE__*/ S.suspend(() =>
+const AKSSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21091,7 +21032,7 @@ export const AKSSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The AKSSummary items on this page */
 export type AKSSummaryListResultValueList = Array<AKSSummary>;
-export const AKSSummaryListResultValueList = /*@__PURE__*/ S.Array(
+const AKSSummaryListResultValueList = /*@__PURE__*/ S.Array(
   AKSSummary,
 ) as any as S.Schema<AKSSummaryListResultValueList>;
 
@@ -21102,7 +21043,7 @@ export interface AKSSummaryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AKSSummaryListResult = /*@__PURE__*/ S.suspend(() =>
+const AKSSummaryListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AKSSummaryListResultValueList,
     nextLink: S.optional(S.String),
@@ -21129,7 +21070,7 @@ export interface ListAssessedMachinesOperationByAssessmentRequest {
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListAssessedMachinesOperationByAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssessedMachinesOperationByAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -21165,7 +21106,7 @@ export interface AssessedMachine {
   /** The resource-specific properties for this resource. */
   properties?: AssessedMachineProperties;
 }
-export const AssessedMachine = /*@__PURE__*/ S.suspend(() =>
+const AssessedMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21177,7 +21118,7 @@ export const AssessedMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedMachine items on this page */
 export type AssessedMachineListResultValueList = Array<AssessedMachine>;
-export const AssessedMachineListResultValueList = /*@__PURE__*/ S.Array(
+const AssessedMachineListResultValueList = /*@__PURE__*/ S.Array(
   AssessedMachine,
 ) as any as S.Schema<AssessedMachineListResultValueList>;
 
@@ -21188,7 +21129,7 @@ export interface AssessedMachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessedMachineListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessedMachineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessedMachineListResultValueList,
     nextLink: S.optional(S.String),
@@ -21217,26 +21158,25 @@ export interface ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Request {
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      assessmentName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      continuationToken: S.optional(S.String.pipe(T.Query())),
-      totalRecordCount: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlDatabases",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    assessmentName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    continuationToken: S.optional(S.String.pipe(T.Query())),
+    totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlDatabases",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Request",
 }) as any as S.Schema<ListAssessedSqlDatabaseV2OperationBySqlAssessmentV2Request>;
@@ -21254,7 +21194,7 @@ export interface AssessedSqlDatabaseV2 {
   /** The resource-specific properties for this resource. */
   properties?: AssessedSqlDatabaseV2Properties;
 }
-export const AssessedSqlDatabaseV2 = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlDatabaseV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21266,7 +21206,7 @@ export const AssessedSqlDatabaseV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedSqlDatabaseV2 items on this page */
 export type AssessedSqlDatabaseV2ListResultValueList = Array<AssessedSqlDatabaseV2>;
-export const AssessedSqlDatabaseV2ListResultValueList = /*@__PURE__*/ S.Array(
+const AssessedSqlDatabaseV2ListResultValueList = /*@__PURE__*/ S.Array(
   AssessedSqlDatabaseV2,
 ) as any as S.Schema<AssessedSqlDatabaseV2ListResultValueList>;
 
@@ -21277,7 +21217,7 @@ export interface AssessedSqlDatabaseV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessedSqlDatabaseV2ListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlDatabaseV2ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessedSqlDatabaseV2ListResultValueList,
     nextLink: S.optional(S.String),
@@ -21306,26 +21246,25 @@ export interface ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Request {
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      assessmentName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      continuationToken: S.optional(S.String.pipe(T.Query())),
-      totalRecordCount: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlInstances",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    assessmentName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    continuationToken: S.optional(S.String.pipe(T.Query())),
+    totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlInstances",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Request",
 }) as any as S.Schema<ListAssessedSqlInstanceV2OperationBySqlAssessmentV2Request>;
@@ -21343,7 +21282,7 @@ export interface AssessedSqlInstanceV2 {
   /** The resource-specific properties for this resource. */
   properties?: AssessedSqlInstanceV2Properties;
 }
-export const AssessedSqlInstanceV2 = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlInstanceV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21355,7 +21294,7 @@ export const AssessedSqlInstanceV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedSqlInstanceV2 items on this page */
 export type AssessedSqlInstanceV2ListResultValueList = Array<AssessedSqlInstanceV2>;
-export const AssessedSqlInstanceV2ListResultValueList = /*@__PURE__*/ S.Array(
+const AssessedSqlInstanceV2ListResultValueList = /*@__PURE__*/ S.Array(
   AssessedSqlInstanceV2,
 ) as any as S.Schema<AssessedSqlInstanceV2ListResultValueList>;
 
@@ -21366,7 +21305,7 @@ export interface AssessedSqlInstanceV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessedSqlInstanceV2ListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlInstanceV2ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessedSqlInstanceV2ListResultValueList,
     nextLink: S.optional(S.String),
@@ -21395,26 +21334,25 @@ export interface ListAssessedSqlMachinesOperationBySqlAssessmentV2Request {
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListAssessedSqlMachinesOperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      assessmentName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      continuationToken: S.optional(S.String.pipe(T.Query())),
-      totalRecordCount: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlMachines",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListAssessedSqlMachinesOperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    assessmentName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    continuationToken: S.optional(S.String.pipe(T.Query())),
+    totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/assessedSqlMachines",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListAssessedSqlMachinesOperationBySqlAssessmentV2Request",
 }) as any as S.Schema<ListAssessedSqlMachinesOperationBySqlAssessmentV2Request>;
@@ -21432,7 +21370,7 @@ export interface AssessedSqlMachine {
   /** The resource-specific properties for this resource. */
   properties?: AssessedSqlMachineProperties;
 }
-export const AssessedSqlMachine = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21444,7 +21382,7 @@ export const AssessedSqlMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedSqlMachine items on this page */
 export type AssessedSqlMachineListResultValueList = Array<AssessedSqlMachine>;
-export const AssessedSqlMachineListResultValueList = /*@__PURE__*/ S.Array(
+const AssessedSqlMachineListResultValueList = /*@__PURE__*/ S.Array(
   AssessedSqlMachine,
 ) as any as S.Schema<AssessedSqlMachineListResultValueList>;
 
@@ -21455,7 +21393,7 @@ export interface AssessedSqlMachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessedSqlMachineListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlMachineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessedSqlMachineListResultValueList,
     nextLink: S.optional(S.String),
@@ -21484,8 +21422,8 @@ export interface ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Reque
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Request =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -21504,9 +21442,9 @@ export const ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Request =
         apiVersion: "2024-01-15",
       }),
     ),
-  ).annotate({
-    identifier: "ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Request",
-  }) as any as S.Schema<ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Request>;
+).annotate({
+  identifier: "ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Request",
+}) as any as S.Schema<ListAssessedSqlRecommendedEntityOperationBySqlAssessmentV2Request>;
 
 /** SQL Assessment REST resource. */
 export interface AssessedSqlRecommendedEntity {
@@ -21521,12 +21459,12 @@ export interface AssessedSqlRecommendedEntity {
   /** The resource-specific properties for this resource. */
   properties?: AssessedSqlRecommendedEntityProperties;
 }
-export const AssessedSqlRecommendedEntity =
+const AssessedSqlRecommendedEntity =
   GetAssessedSqlRecommendedEntityOperationResponse as any as S.Schema<AssessedSqlRecommendedEntity>;
 
 /** The AssessedSqlRecommendedEntity items on this page */
 export type AssessedSqlRecommendedEntityListResultValueList = Array<AssessedSqlRecommendedEntity>;
-export const AssessedSqlRecommendedEntityListResultValueList = /*@__PURE__*/ S.Array(
+const AssessedSqlRecommendedEntityListResultValueList = /*@__PURE__*/ S.Array(
   AssessedSqlRecommendedEntity,
 ) as any as S.Schema<AssessedSqlRecommendedEntityListResultValueList>;
 
@@ -21537,7 +21475,7 @@ export interface AssessedSqlRecommendedEntityListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessedSqlRecommendedEntityListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessedSqlRecommendedEntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessedSqlRecommendedEntityListResultValueList,
     nextLink: S.optional(S.String),
@@ -21564,25 +21502,24 @@ export interface ListAssessedWebApplicationOperationByAksAssessmentRequest {
   /** Total Record Count Query Parameter. */
   totalRecordCount?: number;
 }
-export const ListAssessedWebApplicationOperationByAksAssessmentRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      assessmentName: S.String.pipe(T.Label()),
-      continuationToken: S.optional(S.String.pipe(T.Query())),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      totalRecordCount: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/assessedWebApps",
-        code: 200,
-        apiVersion: "2024-03-03-preview",
-      }),
-    ),
+const ListAssessedWebApplicationOperationByAksAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    assessmentName: S.String.pipe(T.Label()),
+    continuationToken: S.optional(S.String.pipe(T.Query())),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/assessedWebApps",
+      code: 200,
+      apiVersion: "2024-03-03-preview",
+    }),
+  ),
 ).annotate({
   identifier: "ListAssessedWebApplicationOperationByAksAssessmentRequest",
 }) as any as S.Schema<ListAssessedWebApplicationOperationByAksAssessmentRequest>;
@@ -21602,7 +21539,7 @@ export interface AssessedWebApplication {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const AssessedWebApplication = /*@__PURE__*/ S.suspend(() =>
+const AssessedWebApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21615,7 +21552,7 @@ export const AssessedWebApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedWebApplication items on this page */
 export type AssessedWebApplicationListResultValueList = Array<AssessedWebApplication>;
-export const AssessedWebApplicationListResultValueList = /*@__PURE__*/ S.Array(
+const AssessedWebApplicationListResultValueList = /*@__PURE__*/ S.Array(
   AssessedWebApplication,
 ) as any as S.Schema<AssessedWebApplicationListResultValueList>;
 
@@ -21626,7 +21563,7 @@ export interface AssessedWebApplicationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessedWebApplicationListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessedWebApplicationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessedWebApplicationListResultValueList,
     nextLink: S.optional(S.String),
@@ -21655,26 +21592,25 @@ export interface ListAssessedWebAppV2OperationByWebAppAssessmentV2Request {
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListAssessedWebAppV2OperationByWebAppAssessmentV2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      assessmentName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      continuationToken: S.optional(S.String.pipe(T.Query())),
-      totalRecordCount: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/assessedWebApps",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListAssessedWebAppV2OperationByWebAppAssessmentV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    assessmentName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    continuationToken: S.optional(S.String.pipe(T.Query())),
+    totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/assessedWebApps",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListAssessedWebAppV2OperationByWebAppAssessmentV2Request",
 }) as any as S.Schema<ListAssessedWebAppV2OperationByWebAppAssessmentV2Request>;
@@ -21692,7 +21628,7 @@ export interface AssessedWebAppV2 {
   /** The resource-specific properties for this resource. */
   properties?: AssessedWebAppV2Properties;
 }
-export const AssessedWebAppV2 = /*@__PURE__*/ S.suspend(() =>
+const AssessedWebAppV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21704,7 +21640,7 @@ export const AssessedWebAppV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessedWebAppV2 items on this page */
 export type AssessedWebAppV2ListResultValueList = Array<AssessedWebAppV2>;
-export const AssessedWebAppV2ListResultValueList = /*@__PURE__*/ S.Array(
+const AssessedWebAppV2ListResultValueList = /*@__PURE__*/ S.Array(
   AssessedWebAppV2,
 ) as any as S.Schema<AssessedWebAppV2ListResultValueList>;
 
@@ -21715,7 +21651,7 @@ export interface AssessedWebAppV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessedWebAppV2ListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessedWebAppV2ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessedWebAppV2ListResultValueList,
     nextLink: S.optional(S.String),
@@ -21732,20 +21668,19 @@ export interface ListAssessmentOptionsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListAssessmentOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListAssessmentOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/assessmentOptions",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListAssessmentOptionsOperationByAssessmentProjectRequest",
 }) as any as S.Schema<ListAssessmentOptionsOperationByAssessmentProjectRequest>;
@@ -21763,7 +21698,7 @@ export interface AssessmentOptions {
   /** The resource-specific properties for this resource. */
   properties?: AssessmentOptionsProperties;
 }
-export const AssessmentOptions = /*@__PURE__*/ S.suspend(() =>
+const AssessmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21775,7 +21710,7 @@ export const AssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessmentOptions items on this page */
 export type AssessmentOptionsListResultValueList = Array<AssessmentOptions>;
-export const AssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
+const AssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   AssessmentOptions,
 ) as any as S.Schema<AssessmentOptionsListResultValueList>;
 
@@ -21786,7 +21721,7 @@ export interface AssessmentOptionsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessmentOptionsListResultValueList,
     nextLink: S.optional(S.String),
@@ -21801,7 +21736,7 @@ export interface ListAssessmentProjectsOperationByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAssessmentProjectsOperationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssessmentProjectsOperationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -21819,7 +21754,7 @@ export const ListAssessmentProjectsOperationByResourceGroupRequest = /*@__PURE__
 
 /** Resource tags. */
 export type AssessmentProjectTagsMap = { [key: string]: string | undefined };
-export const AssessmentProjectTagsMap =
+const AssessmentProjectTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<AssessmentProjectTagsMap>;
 
 /** An Assessment project site resource. */
@@ -21839,7 +21774,7 @@ export interface AssessmentProject {
   /** The resource-specific properties for this resource. */
   properties?: ProjectProperties;
 }
-export const AssessmentProject = /*@__PURE__*/ S.suspend(() =>
+const AssessmentProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21853,7 +21788,7 @@ export const AssessmentProject = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessmentProject items on this page */
 export type AssessmentProjectListResultValueList = Array<AssessmentProject>;
-export const AssessmentProjectListResultValueList = /*@__PURE__*/ S.Array(
+const AssessmentProjectListResultValueList = /*@__PURE__*/ S.Array(
   AssessmentProject,
 ) as any as S.Schema<AssessmentProjectListResultValueList>;
 
@@ -21864,7 +21799,7 @@ export interface AssessmentProjectListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessmentProjectListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessmentProjectListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessmentProjectListResultValueList,
     nextLink: S.optional(S.String),
@@ -21877,7 +21812,7 @@ export interface ListAssessmentProjectsOperationBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListAssessmentProjectsOperationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssessmentProjectsOperationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -21900,8 +21835,8 @@ export interface ListAssessmentProjectSummaryOperationByAssessmentProjectRequest
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListAssessmentProjectSummaryOperationByAssessmentProjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAssessmentProjectSummaryOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -21914,9 +21849,9 @@ export const ListAssessmentProjectSummaryOperationByAssessmentProjectRequest =
         apiVersion: "2024-01-15",
       }),
     ),
-  ).annotate({
-    identifier: "ListAssessmentProjectSummaryOperationByAssessmentProjectRequest",
-  }) as any as S.Schema<ListAssessmentProjectSummaryOperationByAssessmentProjectRequest>;
+).annotate({
+  identifier: "ListAssessmentProjectSummaryOperationByAssessmentProjectRequest",
+}) as any as S.Schema<ListAssessmentProjectSummaryOperationByAssessmentProjectRequest>;
 
 /** Assessment project summary resource. */
 export interface AssessmentProjectSummary {
@@ -21931,7 +21866,7 @@ export interface AssessmentProjectSummary {
   /** The resource-specific properties for this resource. */
   properties?: AssessmentProjectSummaryProperties;
 }
-export const AssessmentProjectSummary = /*@__PURE__*/ S.suspend(() =>
+const AssessmentProjectSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -21943,7 +21878,7 @@ export const AssessmentProjectSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The AssessmentProjectSummary items on this page */
 export type AssessmentProjectSummaryListResultValueList = Array<AssessmentProjectSummary>;
-export const AssessmentProjectSummaryListResultValueList = /*@__PURE__*/ S.Array(
+const AssessmentProjectSummaryListResultValueList = /*@__PURE__*/ S.Array(
   AssessmentProjectSummary,
 ) as any as S.Schema<AssessmentProjectSummaryListResultValueList>;
 
@@ -21954,7 +21889,7 @@ export interface AssessmentProjectSummaryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessmentProjectSummaryListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessmentProjectSummaryListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessmentProjectSummaryListResultValueList,
     nextLink: S.optional(S.String),
@@ -21973,7 +21908,7 @@ export interface ListAssessmentsOperationByGroupRequest {
   /** Group ARM name */
   groupName: string;
 }
-export const ListAssessmentsOperationByGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssessmentsOperationByGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22004,7 +21939,7 @@ export interface Assessment {
   /** The resource-specific properties for this resource. */
   properties?: MachineAssessmentProperties;
 }
-export const Assessment = /*@__PURE__*/ S.suspend(() =>
+const Assessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22016,7 +21951,7 @@ export const Assessment = /*@__PURE__*/ S.suspend(() =>
 
 /** The Assessment items on this page */
 export type AssessmentListResultValueList = Array<Assessment>;
-export const AssessmentListResultValueList = /*@__PURE__*/ S.Array(
+const AssessmentListResultValueList = /*@__PURE__*/ S.Array(
   Assessment,
 ) as any as S.Schema<AssessmentListResultValueList>;
 
@@ -22027,7 +21962,7 @@ export interface AssessmentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AssessmentListResult = /*@__PURE__*/ S.suspend(() =>
+const AssessmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AssessmentListResultValueList,
     nextLink: S.optional(S.String),
@@ -22054,7 +21989,7 @@ export interface ListAvsAssessedMachinesOperationByAvsAssessmentRequest {
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListAvsAssessedMachinesOperationByAvsAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvsAssessedMachinesOperationByAvsAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22090,7 +22025,7 @@ export interface AvsAssessedMachine {
   /** The resource-specific properties for this resource. */
   properties?: AvsAssessedMachineProperties;
 }
-export const AvsAssessedMachine = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessedMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22102,7 +22037,7 @@ export const AvsAssessedMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvsAssessedMachine items on this page */
 export type AvsAssessedMachineListResultValueList = Array<AvsAssessedMachine>;
-export const AvsAssessedMachineListResultValueList = /*@__PURE__*/ S.Array(
+const AvsAssessedMachineListResultValueList = /*@__PURE__*/ S.Array(
   AvsAssessedMachine,
 ) as any as S.Schema<AvsAssessedMachineListResultValueList>;
 
@@ -22113,7 +22048,7 @@ export interface AvsAssessedMachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AvsAssessedMachineListResult = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessedMachineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AvsAssessedMachineListResultValueList,
     nextLink: S.optional(S.String),
@@ -22130,20 +22065,19 @@ export interface ListAvsAssessmentOptionsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListAvsAssessmentOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/avsAssessmentOptions",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListAvsAssessmentOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/avsAssessmentOptions",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListAvsAssessmentOptionsOperationByAssessmentProjectRequest",
 }) as any as S.Schema<ListAvsAssessmentOptionsOperationByAssessmentProjectRequest>;
@@ -22161,7 +22095,7 @@ export interface AvsAssessmentOptions {
   /** The resource-specific properties for this resource. */
   properties?: AvsAssessmentOptionsProperties;
 }
-export const AvsAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22173,7 +22107,7 @@ export const AvsAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvsAssessmentOptions items on this page */
 export type AvsAssessmentOptionsListResultValueList = Array<AvsAssessmentOptions>;
-export const AvsAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
+const AvsAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   AvsAssessmentOptions,
 ) as any as S.Schema<AvsAssessmentOptionsListResultValueList>;
 
@@ -22184,7 +22118,7 @@ export interface AvsAssessmentOptionsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AvsAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AvsAssessmentOptionsListResultValueList,
     nextLink: S.optional(S.String),
@@ -22203,7 +22137,7 @@ export interface ListAvsAssessmentsOperationByGroupRequest {
   /** Group ARM name */
   groupName: string;
 }
-export const ListAvsAssessmentsOperationByGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvsAssessmentsOperationByGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22234,7 +22168,7 @@ export interface AvsAssessment {
   /** The resource-specific properties for this resource. */
   properties?: AvsAssessmentProperties;
 }
-export const AvsAssessment = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22246,7 +22180,7 @@ export const AvsAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** The AvsAssessment items on this page */
 export type AvsAssessmentListResultValueList = Array<AvsAssessment>;
-export const AvsAssessmentListResultValueList = /*@__PURE__*/ S.Array(
+const AvsAssessmentListResultValueList = /*@__PURE__*/ S.Array(
   AvsAssessment,
 ) as any as S.Schema<AvsAssessmentListResultValueList>;
 
@@ -22257,7 +22191,7 @@ export interface AvsAssessmentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AvsAssessmentListResult = /*@__PURE__*/ S.suspend(() =>
+const AvsAssessmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AvsAssessmentListResultValueList,
     nextLink: S.optional(S.String),
@@ -22276,7 +22210,7 @@ export interface ListDatabaseInstancesControllerDatabaseInstancesRequest {
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
 }
-export const ListDatabaseInstancesControllerDatabaseInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseInstancesControllerDatabaseInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22297,7 +22231,7 @@ export const ListDatabaseInstancesControllerDatabaseInstancesRequest = /*@__PURE
 
 /** Gets or sets the database instances. */
 export type DatabaseInstanceCollectionValueList = Array<DatabaseInstance>;
-export const DatabaseInstanceCollectionValueList = /*@__PURE__*/ S.Array(
+const DatabaseInstanceCollectionValueList = /*@__PURE__*/ S.Array(
   DatabaseInstance,
 ) as any as S.Schema<DatabaseInstanceCollectionValueList>;
 
@@ -22308,7 +22242,7 @@ export interface DatabaseInstanceCollection {
   /** Gets or sets the value of nextLink. */
   nextLink?: string;
 }
-export const DatabaseInstanceCollection = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInstanceCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DatabaseInstanceCollectionValueList),
     nextLink: S.optional(S.String),
@@ -22329,7 +22263,7 @@ export interface ListDatabasesControllerDatabasesRequest {
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
 }
-export const ListDatabasesControllerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesControllerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22350,7 +22284,7 @@ export const ListDatabasesControllerDatabasesRequest = /*@__PURE__*/ S.suspend((
 
 /** Gets or sets the databases. */
 export type DatabaseCollectionValueList = Array<Database>;
-export const DatabaseCollectionValueList = /*@__PURE__*/ S.Array(
+const DatabaseCollectionValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseCollectionValueList>;
 
@@ -22361,7 +22295,7 @@ export interface DatabaseCollection {
   /** Gets or sets the value of nextLink. */
   nextLink?: string;
 }
-export const DatabaseCollection = /*@__PURE__*/ S.suspend(() =>
+const DatabaseCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DatabaseCollectionValueList),
     nextLink: S.optional(S.String),
@@ -22378,7 +22312,7 @@ export interface ListEventsControllerEventsRequest {
   /** The continuation token. */
   continuationToken?: string;
 }
-export const ListEventsControllerEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsControllerEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22398,7 +22332,7 @@ export const ListEventsControllerEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the machines. */
 export type EventCollectionValueList = Array<MigrateEvent>;
-export const EventCollectionValueList = /*@__PURE__*/ S.Array(
+const EventCollectionValueList = /*@__PURE__*/ S.Array(
   MigrateEvent,
 ) as any as S.Schema<EventCollectionValueList>;
 
@@ -22409,7 +22343,7 @@ export interface EventCollection {
   /** Gets or sets the value of nextLink. */
   nextLink?: string;
 }
-export const EventCollection = /*@__PURE__*/ S.suspend(() =>
+const EventCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EventCollectionValueList),
     nextLink: S.optional(S.String),
@@ -22424,7 +22358,7 @@ export interface ListGroupsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListGroupsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22454,7 +22388,7 @@ export interface Group {
   /** The resource-specific properties for this resource. */
   properties?: GroupProperties;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22466,7 +22400,7 @@ export const Group = /*@__PURE__*/ S.suspend(() =>
 
 /** The Group items on this page */
 export type GroupListResultValueList = Array<Group>;
-export const GroupListResultValueList = /*@__PURE__*/ S.Array(
+const GroupListResultValueList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupListResultValueList>;
 
@@ -22477,7 +22411,7 @@ export interface GroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GroupListResult = /*@__PURE__*/ S.suspend(() =>
+const GroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GroupListResultValueList,
     nextLink: S.optional(S.String),
@@ -22494,7 +22428,7 @@ export interface ListHypervClusterControllerByHypervSiteRequest {
   /** filter query */
   filter?: string;
 }
-export const ListHypervClusterControllerByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervClusterControllerByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22525,7 +22459,7 @@ export interface HypervCluster {
   /** The resource-specific properties for this resource. */
   properties?: HypervClusterProperties;
 }
-export const HypervCluster = /*@__PURE__*/ S.suspend(() =>
+const HypervCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22537,7 +22471,7 @@ export const HypervCluster = /*@__PURE__*/ S.suspend(() =>
 
 /** The HypervCluster items on this page */
 export type HypervClusterListResultValueList = Array<HypervCluster>;
-export const HypervClusterListResultValueList = /*@__PURE__*/ S.Array(
+const HypervClusterListResultValueList = /*@__PURE__*/ S.Array(
   HypervCluster,
 ) as any as S.Schema<HypervClusterListResultValueList>;
 
@@ -22548,7 +22482,7 @@ export interface HypervClusterListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HypervClusterListResult = /*@__PURE__*/ S.suspend(() =>
+const HypervClusterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HypervClusterListResultValueList,
     nextLink: S.optional(S.String),
@@ -22563,7 +22497,7 @@ export interface ListHypervCollectorsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListHypervCollectorsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervCollectorsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22593,7 +22527,7 @@ export interface HypervCollector {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBaseWithAgent;
 }
-export const HypervCollector = /*@__PURE__*/ S.suspend(() =>
+const HypervCollector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22605,7 +22539,7 @@ export const HypervCollector = /*@__PURE__*/ S.suspend(() =>
 
 /** The HypervCollector items on this page */
 export type HypervCollectorListResultValueList = Array<HypervCollector>;
-export const HypervCollectorListResultValueList = /*@__PURE__*/ S.Array(
+const HypervCollectorListResultValueList = /*@__PURE__*/ S.Array(
   HypervCollector,
 ) as any as S.Schema<HypervCollectorListResultValueList>;
 
@@ -22616,7 +22550,7 @@ export interface HypervCollectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HypervCollectorListResult = /*@__PURE__*/ S.suspend(() =>
+const HypervCollectorListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HypervCollectorListResultValueList,
     nextLink: S.optional(S.String),
@@ -22635,7 +22569,7 @@ export interface ListHypervHostControllerByHypervSiteRequest {
   /** filter query */
   filter?: string;
 }
-export const ListHypervHostControllerByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervHostControllerByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22666,7 +22600,7 @@ export interface HypervHost {
   /** The resource-specific properties for this resource. */
   properties?: HypervHostProperties;
 }
-export const HypervHost = /*@__PURE__*/ S.suspend(() =>
+const HypervHost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22678,7 +22612,7 @@ export const HypervHost = /*@__PURE__*/ S.suspend(() =>
 
 /** The HypervHost items on this page */
 export type HypervHostListResultValueList = Array<HypervHost>;
-export const HypervHostListResultValueList = /*@__PURE__*/ S.Array(
+const HypervHostListResultValueList = /*@__PURE__*/ S.Array(
   HypervHost,
 ) as any as S.Schema<HypervHostListResultValueList>;
 
@@ -22689,7 +22623,7 @@ export interface HypervHostListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HypervHostListResult = /*@__PURE__*/ S.suspend(() =>
+const HypervHostListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HypervHostListResultValueList,
     nextLink: S.optional(S.String),
@@ -22704,7 +22638,7 @@ export interface ListHypervJobByHypervSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListHypervJobByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervJobByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22723,13 +22657,8 @@ export const ListHypervJobByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A job resource belonging to a site resource. */
 export type HypervJob = ImportJob;
-export const HypervJob = ImportJob;
-
 /** The HypervJob items on this page */
 export type HypervJobListResultValueList = Array<ImportJob>;
-export const HypervJobListResultValueList =
-  ImportJobListResultValueList as any as S.Schema<HypervJobListResultValueList>;
-
 /** The response of a HypervJob list operation. */
 export interface HypervJobListResult {
   /** The HypervJob items on this page */
@@ -22737,7 +22666,7 @@ export interface HypervJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HypervJobListResult = ImportJobListResult as any as S.Schema<HypervJobListResult>;
+const HypervJobListResult = ImportJobListResult as any as S.Schema<HypervJobListResult>;
 
 export interface ListHypervJobsControllerByVmwareSiteRequest {
   /** The ID of the target subscription. */
@@ -22747,7 +22676,7 @@ export interface ListHypervJobsControllerByVmwareSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListHypervJobsControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervJobsControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22766,13 +22695,8 @@ export const ListHypervJobsControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspe
 
 /** A host resource belonging to a site resource. */
 export type VmwareJob = ImportJob;
-export const VmwareJob = ImportJob;
-
 /** The VmwareJob items on this page */
 export type VmwareJobListResultValueList = Array<ImportJob>;
-export const VmwareJobListResultValueList =
-  ImportJobListResultValueList as any as S.Schema<VmwareJobListResultValueList>;
-
 /** The response of a VmwareJob list operation. */
 export interface VmwareJobListResult {
   /** The VmwareJob items on this page */
@@ -22780,7 +22704,7 @@ export interface VmwareJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmwareJobListResult = ImportJobListResult as any as S.Schema<VmwareJobListResult>;
+const VmwareJobListResult = ImportJobListResult as any as S.Schema<VmwareJobListResult>;
 
 export interface ListHypervMachinesControllerByHypervSiteRequest {
   /** The ID of the target subscription. */
@@ -22798,7 +22722,7 @@ export interface ListHypervMachinesControllerByHypervSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListHypervMachinesControllerByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervMachinesControllerByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22832,7 +22756,7 @@ export interface HypervMachine {
   /** The resource-specific properties for this resource. */
   properties?: HypervMachineProperties;
 }
-export const HypervMachine = /*@__PURE__*/ S.suspend(() =>
+const HypervMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22844,7 +22768,7 @@ export const HypervMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The HypervMachine items on this page */
 export type HypervMachineListResultValueList = Array<HypervMachine>;
-export const HypervMachineListResultValueList = /*@__PURE__*/ S.Array(
+const HypervMachineListResultValueList = /*@__PURE__*/ S.Array(
   HypervMachine,
 ) as any as S.Schema<HypervMachineListResultValueList>;
 
@@ -22855,7 +22779,7 @@ export interface HypervMachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HypervMachineListResult = /*@__PURE__*/ S.suspend(() =>
+const HypervMachineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HypervMachineListResultValueList,
     nextLink: S.optional(S.String),
@@ -22870,7 +22794,7 @@ export interface ListHypervRunAsAccountsControllerByHypervSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListHypervRunAsAccountsControllerByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervRunAsAccountsControllerByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22900,12 +22824,12 @@ export interface HypervRunAsAccountResource {
   /** The resource-specific properties for this resource. */
   properties?: RunAsAccountProperties;
 }
-export const HypervRunAsAccountResource =
+const HypervRunAsAccountResource =
   GetHypervRunAsAccountsControllerResponse as any as S.Schema<HypervRunAsAccountResource>;
 
 /** The HypervRunAsAccountResource items on this page */
 export type HypervRunAsAccountResourceListResultValueList = Array<HypervRunAsAccountResource>;
-export const HypervRunAsAccountResourceListResultValueList = /*@__PURE__*/ S.Array(
+const HypervRunAsAccountResourceListResultValueList = /*@__PURE__*/ S.Array(
   HypervRunAsAccountResource,
 ) as any as S.Schema<HypervRunAsAccountResourceListResultValueList>;
 
@@ -22916,7 +22840,7 @@ export interface HypervRunAsAccountResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HypervRunAsAccountResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const HypervRunAsAccountResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HypervRunAsAccountResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -22931,7 +22855,7 @@ export interface ListHypervSiteByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListHypervSiteByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervSiteByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -22949,7 +22873,7 @@ export const ListHypervSiteByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type HypervSiteTagsMap = { [key: string]: string | undefined };
-export const HypervSiteTagsMap =
+const HypervSiteTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<HypervSiteTagsMap>;
 
 /** A HyperV SiteResource */
@@ -22969,7 +22893,7 @@ export interface HypervSite {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const HypervSite = /*@__PURE__*/ S.suspend(() =>
+const HypervSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -22983,7 +22907,7 @@ export const HypervSite = /*@__PURE__*/ S.suspend(() =>
 
 /** The HypervSite items on this page */
 export type HypervSiteListResultValueList = Array<HypervSite>;
-export const HypervSiteListResultValueList = /*@__PURE__*/ S.Array(
+const HypervSiteListResultValueList = /*@__PURE__*/ S.Array(
   HypervSite,
 ) as any as S.Schema<HypervSiteListResultValueList>;
 
@@ -22994,7 +22918,7 @@ export interface HypervSiteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HypervSiteListResult = /*@__PURE__*/ S.suspend(() =>
+const HypervSiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HypervSiteListResultValueList,
     nextLink: S.optional(S.String),
@@ -23005,7 +22929,7 @@ export interface ListHypervSiteBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListHypervSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -23028,7 +22952,7 @@ export interface ListHypervSitesControllerHealthSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const ListHypervSitesControllerHealthSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHypervSitesControllerHealthSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23047,7 +22971,7 @@ export const ListHypervSitesControllerHealthSummaryRequest = /*@__PURE__*/ S.sus
 
 /** Gets or sets the affected resources. */
 export type SiteHealthSummaryAffectedResourcesList = Array<string>;
-export const SiteHealthSummaryAffectedResourcesList =
+const SiteHealthSummaryAffectedResourcesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<SiteHealthSummaryAffectedResourcesList>;
 
 /** SiteHealthSummary FabricLayout UpdateSources */
@@ -23055,12 +22979,10 @@ export type SiteHealthSummaryFabricLayoutUpdateSourcesItem =
   | "RefreshFabricLayout"
   | "RefreshFabricLayoutGuest"
   | "RefreshFabricLayoutDependencyMap";
-export const SiteHealthSummaryFabricLayoutUpdateSourcesItem = S.String;
-
 /** Gets or sets sources of the exception. */
 export type SiteHealthSummaryFabricLayoutUpdateSourcesList =
   Array<SiteHealthSummaryFabricLayoutUpdateSourcesItem>;
-export const SiteHealthSummaryFabricLayoutUpdateSourcesList =
+const SiteHealthSummaryFabricLayoutUpdateSourcesList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<SiteHealthSummaryFabricLayoutUpdateSourcesList>;
 
 /** The properties of ServerSiteResource. */
@@ -23090,7 +23012,7 @@ export interface SiteHealthSummary {
   /** Gets or sets sources of the exception. */
   fabricLayoutUpdateSources?: SiteHealthSummaryFabricLayoutUpdateSourcesList;
 }
-export const SiteHealthSummary = /*@__PURE__*/ S.suspend(() =>
+const SiteHealthSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applianceName: S.optional(S.String),
     errorMessage: S.optional(S.String),
@@ -23109,7 +23031,7 @@ export const SiteHealthSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the list of SiteHealthSummary. */
 export type SiteHealthSummaryCollectionValueList = Array<SiteHealthSummary>;
-export const SiteHealthSummaryCollectionValueList = /*@__PURE__*/ S.Array(
+const SiteHealthSummaryCollectionValueList = /*@__PURE__*/ S.Array(
   SiteHealthSummary,
 ) as any as S.Schema<SiteHealthSummaryCollectionValueList>;
 
@@ -23120,7 +23042,7 @@ export interface SiteHealthSummaryCollection {
   /** Gets the value of next link. */
   nextLink?: string;
 }
-export const SiteHealthSummaryCollection = /*@__PURE__*/ S.suspend(() =>
+const SiteHealthSummaryCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SiteHealthSummaryCollectionValueList,
     nextLink: S.optional(S.String),
@@ -23139,24 +23061,23 @@ export interface ListHypervSoftwareInventoriesControllerByHypervMachineRequest {
   /** HypervMachine name */
   machineName: string;
 }
-export const ListHypervSoftwareInventoriesControllerByHypervMachineRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      siteName: S.String.pipe(T.Label()),
-      machineName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}/softwareinventories",
-        code: 200,
-        apiVersion: "2023-06-06",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListHypervSoftwareInventoriesControllerByHypervMachineRequest",
-  }) as any as S.Schema<ListHypervSoftwareInventoriesControllerByHypervMachineRequest>;
+const ListHypervSoftwareInventoriesControllerByHypervMachineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    siteName: S.String.pipe(T.Label()),
+    machineName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/machines/{machineName}/softwareinventories",
+      code: 200,
+      apiVersion: "2023-06-06",
+    }),
+  ),
+).annotate({
+  identifier: "ListHypervSoftwareInventoriesControllerByHypervMachineRequest",
+}) as any as S.Schema<ListHypervSoftwareInventoriesControllerByHypervMachineRequest>;
 
 /** HyperV VM software inventory REST resource. */
 export interface HypervVmSoftwareInventory {
@@ -23171,7 +23092,7 @@ export interface HypervVmSoftwareInventory {
   /** The resource-specific properties for this resource. */
   properties?: MachineSoftwareInventoryProperties;
 }
-export const HypervVmSoftwareInventory = /*@__PURE__*/ S.suspend(() =>
+const HypervVmSoftwareInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23185,7 +23106,7 @@ export const HypervVmSoftwareInventory = /*@__PURE__*/ S.suspend(() =>
 
 /** The HypervVmSoftwareInventory items on this page */
 export type HypervVmSoftwareInventoryListResultValueList = Array<HypervVmSoftwareInventory>;
-export const HypervVmSoftwareInventoryListResultValueList = /*@__PURE__*/ S.Array(
+const HypervVmSoftwareInventoryListResultValueList = /*@__PURE__*/ S.Array(
   HypervVmSoftwareInventory,
 ) as any as S.Schema<HypervVmSoftwareInventoryListResultValueList>;
 
@@ -23196,7 +23117,7 @@ export interface HypervVmSoftwareInventoryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HypervVmSoftwareInventoryListResult = /*@__PURE__*/ S.suspend(() =>
+const HypervVmSoftwareInventoryListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HypervVmSoftwareInventoryListResultValueList,
     nextLink: S.optional(S.String),
@@ -23223,7 +23144,7 @@ export interface ListIisWebApplicationsControllerByWebAppSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListIisWebApplicationsControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIisWebApplicationsControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23258,7 +23179,7 @@ export interface IisWebApplications {
   /** The resource-specific properties for this resource. */
   properties?: IisWebApplicationProperties;
 }
-export const IisWebApplications = /*@__PURE__*/ S.suspend(() =>
+const IisWebApplications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23270,7 +23191,7 @@ export const IisWebApplications = /*@__PURE__*/ S.suspend(() =>
 
 /** The IisWebApplications items on this page */
 export type IisWebApplicationsListResultValueList = Array<IisWebApplications>;
-export const IisWebApplicationsListResultValueList = /*@__PURE__*/ S.Array(
+const IisWebApplicationsListResultValueList = /*@__PURE__*/ S.Array(
   IisWebApplications,
 ) as any as S.Schema<IisWebApplicationsListResultValueList>;
 
@@ -23281,7 +23202,7 @@ export interface IisWebApplicationsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const IisWebApplicationsListResult = /*@__PURE__*/ S.suspend(() =>
+const IisWebApplicationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IisWebApplicationsListResultValueList,
     nextLink: S.optional(S.String),
@@ -23308,7 +23229,7 @@ export interface ListIisWebServersControllerByWebAppSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListIisWebServersControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIisWebServersControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23343,7 +23264,7 @@ export interface IisWebServers {
   /** The resource-specific properties for this resource. */
   properties?: IisWebServerProperties;
 }
-export const IisWebServers = /*@__PURE__*/ S.suspend(() =>
+const IisWebServers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23355,7 +23276,7 @@ export const IisWebServers = /*@__PURE__*/ S.suspend(() =>
 
 /** The IisWebServers items on this page */
 export type IisWebServersListResultValueList = Array<IisWebServers>;
-export const IisWebServersListResultValueList = /*@__PURE__*/ S.Array(
+const IisWebServersListResultValueList = /*@__PURE__*/ S.Array(
   IisWebServers,
 ) as any as S.Schema<IisWebServersListResultValueList>;
 
@@ -23366,7 +23287,7 @@ export interface IisWebServersListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const IisWebServersListResult = /*@__PURE__*/ S.suspend(() =>
+const IisWebServersListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IisWebServersListResultValueList,
     nextLink: S.optional(S.String),
@@ -23381,7 +23302,7 @@ export interface ListImportCollectorsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListImportCollectorsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImportCollectorsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23411,7 +23332,7 @@ export interface ImportCollector {
   /** The resource-specific properties for this resource. */
   properties?: CollectorPropertiesBase;
 }
-export const ImportCollector = /*@__PURE__*/ S.suspend(() =>
+const ImportCollector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23423,7 +23344,7 @@ export const ImportCollector = /*@__PURE__*/ S.suspend(() =>
 
 /** The ImportCollector items on this page */
 export type ImportCollectorListResultValueList = Array<ImportCollector>;
-export const ImportCollectorListResultValueList = /*@__PURE__*/ S.Array(
+const ImportCollectorListResultValueList = /*@__PURE__*/ S.Array(
   ImportCollector,
 ) as any as S.Schema<ImportCollectorListResultValueList>;
 
@@ -23434,7 +23355,7 @@ export interface ImportCollectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ImportCollectorListResult = /*@__PURE__*/ S.suspend(() =>
+const ImportCollectorListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ImportCollectorListResultValueList,
     nextLink: S.optional(S.String),
@@ -23451,7 +23372,7 @@ export interface ListImportJobsControllerDeletejobsRequest {
   /** Site name */
   siteName: string;
 }
-export const ListImportJobsControllerDeletejobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImportJobsControllerDeletejobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23481,7 +23402,7 @@ export interface DeleteImportMachinesJob {
   /** The resource-specific properties for this resource. */
   properties?: DeleteImportedMachinesJobProperties;
 }
-export const DeleteImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
+const DeleteImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23493,7 +23414,7 @@ export const DeleteImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeleteImportMachinesJob items on this page */
 export type PagedDeleteImportMachinesJobValueList = Array<DeleteImportMachinesJob>;
-export const PagedDeleteImportMachinesJobValueList = /*@__PURE__*/ S.Array(
+const PagedDeleteImportMachinesJobValueList = /*@__PURE__*/ S.Array(
   DeleteImportMachinesJob,
 ) as any as S.Schema<PagedDeleteImportMachinesJobValueList>;
 
@@ -23504,7 +23425,7 @@ export interface PagedDeleteImportMachinesJob {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PagedDeleteImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
+const PagedDeleteImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedDeleteImportMachinesJobValueList),
     nextLink: S.optional(S.String),
@@ -23521,7 +23442,7 @@ export interface ListImportJobsControllerExportjobsRequest {
   /** Site name */
   siteName: string;
 }
-export const ListImportJobsControllerExportjobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImportJobsControllerExportjobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23540,7 +23461,7 @@ export const ListImportJobsControllerExportjobsRequest = /*@__PURE__*/ S.suspend
 
 /** The ExportImportedMachinesJob items on this page */
 export type PagedExportImportedMachinesJobValueList = Array<ExportImportedMachinesJob>;
-export const PagedExportImportedMachinesJobValueList = /*@__PURE__*/ S.Array(
+const PagedExportImportedMachinesJobValueList = /*@__PURE__*/ S.Array(
   ExportImportedMachinesJob,
 ) as any as S.Schema<PagedExportImportedMachinesJobValueList>;
 
@@ -23551,7 +23472,7 @@ export interface PagedExportImportedMachinesJob {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PagedExportImportedMachinesJob = /*@__PURE__*/ S.suspend(() =>
+const PagedExportImportedMachinesJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedExportImportedMachinesJobValueList),
     nextLink: S.optional(S.String),
@@ -23568,7 +23489,7 @@ export interface ListImportJobsControllerImportjobsRequest {
   /** Site name */
   siteName: string;
 }
-export const ListImportJobsControllerImportjobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImportJobsControllerImportjobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23587,7 +23508,7 @@ export const ListImportJobsControllerImportjobsRequest = /*@__PURE__*/ S.suspend
 
 /** The ImportMachinesJob items on this page */
 export type PagedImportMachinesJobValueList = Array<ImportMachinesJob>;
-export const PagedImportMachinesJobValueList = /*@__PURE__*/ S.Array(
+const PagedImportMachinesJobValueList = /*@__PURE__*/ S.Array(
   ImportMachinesJob,
 ) as any as S.Schema<PagedImportMachinesJobValueList>;
 
@@ -23598,7 +23519,7 @@ export interface PagedImportMachinesJob {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PagedImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
+const PagedImportMachinesJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedImportMachinesJobValueList),
     nextLink: S.optional(S.String),
@@ -23611,7 +23532,7 @@ export interface ListImportSitesControllerByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListImportSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImportSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23629,7 +23550,7 @@ export const ListImportSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type ImportSiteTagsMap = { [key: string]: string | undefined };
-export const ImportSiteTagsMap =
+const ImportSiteTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<ImportSiteTagsMap>;
 
 /** A ImportSite */
@@ -23649,7 +23570,7 @@ export interface ImportSite {
   /** The resource-specific properties for this resource. */
   properties?: ImportSiteProperties;
 }
-export const ImportSite = /*@__PURE__*/ S.suspend(() =>
+const ImportSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23663,7 +23584,7 @@ export const ImportSite = /*@__PURE__*/ S.suspend(() =>
 
 /** The ImportSite items on this page */
 export type ImportSiteListResultValueList = Array<ImportSite>;
-export const ImportSiteListResultValueList = /*@__PURE__*/ S.Array(
+const ImportSiteListResultValueList = /*@__PURE__*/ S.Array(
   ImportSite,
 ) as any as S.Schema<ImportSiteListResultValueList>;
 
@@ -23674,7 +23595,7 @@ export interface ImportSiteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ImportSiteListResult = /*@__PURE__*/ S.suspend(() =>
+const ImportSiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ImportSiteListResultValueList,
     nextLink: S.optional(S.String),
@@ -23685,7 +23606,7 @@ export interface ListImportSitesControllerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListImportSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImportSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -23716,7 +23637,7 @@ export interface ListMachinesControllerByVmwareSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListMachinesControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachinesControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23750,7 +23671,7 @@ export interface MachineResource {
   /** The resource-specific properties for this resource. */
   properties?: VmwareMachineProperties;
 }
-export const MachineResource = /*@__PURE__*/ S.suspend(() =>
+const MachineResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23762,7 +23683,7 @@ export const MachineResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MachineResource items on this page */
 export type MachineResourceListResultValueList = Array<MachineResource>;
-export const MachineResourceListResultValueList = /*@__PURE__*/ S.Array(
+const MachineResourceListResultValueList = /*@__PURE__*/ S.Array(
   MachineResource,
 ) as any as S.Schema<MachineResourceListResultValueList>;
 
@@ -23773,7 +23694,7 @@ export interface MachineResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MachineResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const MachineResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MachineResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -23794,7 +23715,7 @@ export interface ListMachinesControllerMachinesRequest {
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
 }
-export const ListMachinesControllerMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachinesControllerMachinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23815,7 +23736,7 @@ export const ListMachinesControllerMachinesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Gets or sets the machines. */
 export type MachineCollectionValueList = Array<Machine_2>;
-export const MachineCollectionValueList = /*@__PURE__*/ S.Array(
+const MachineCollectionValueList = /*@__PURE__*/ S.Array(
   Machine_2,
 ) as any as S.Schema<MachineCollectionValueList>;
 
@@ -23826,7 +23747,7 @@ export interface MachineCollection {
   /** Gets or sets the value of nextLink. */
   nextLink?: string;
 }
-export const MachineCollection = /*@__PURE__*/ S.suspend(() =>
+const MachineCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(MachineCollectionValueList),
     nextLink: S.optional(S.String),
@@ -23849,7 +23770,7 @@ export interface ListMachinesOperationByAssessmentProjectRequest {
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListMachinesOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachinesOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23883,7 +23804,7 @@ export interface Machine {
   /** The resource-specific properties for this resource. */
   properties?: MachineProperties;
 }
-export const Machine = /*@__PURE__*/ S.suspend(() =>
+const Machine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23895,7 +23816,7 @@ export const Machine = /*@__PURE__*/ S.suspend(() =>
 
 /** The Machine items on this page */
 export type MachineListResultValueList = Array<Machine>;
-export const MachineListResultValueList = /*@__PURE__*/ S.Array(
+const MachineListResultValueList = /*@__PURE__*/ S.Array(
   Machine,
 ) as any as S.Schema<MachineListResultValueList>;
 
@@ -23906,7 +23827,7 @@ export interface MachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MachineListResult = /*@__PURE__*/ S.suspend(() =>
+const MachineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MachineListResultValueList,
     nextLink: S.optional(S.String),
@@ -23919,7 +23840,7 @@ export interface ListMasterSitesControllerByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListMasterSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMasterSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -23937,7 +23858,7 @@ export const ListMasterSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type MasterSiteTagsMap = { [key: string]: string | undefined };
-export const MasterSiteTagsMap =
+const MasterSiteTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<MasterSiteTagsMap>;
 
 /** A MasterSite */
@@ -23957,7 +23878,7 @@ export interface MasterSite {
   /** The resource-specific properties for this resource. */
   properties?: MasterSiteProperties;
 }
-export const MasterSite = /*@__PURE__*/ S.suspend(() =>
+const MasterSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -23971,7 +23892,7 @@ export const MasterSite = /*@__PURE__*/ S.suspend(() =>
 
 /** The MasterSite items on this page */
 export type MasterSiteListResultValueList = Array<MasterSite>;
-export const MasterSiteListResultValueList = /*@__PURE__*/ S.Array(
+const MasterSiteListResultValueList = /*@__PURE__*/ S.Array(
   MasterSite,
 ) as any as S.Schema<MasterSiteListResultValueList>;
 
@@ -23982,7 +23903,7 @@ export interface MasterSiteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MasterSiteListResult = /*@__PURE__*/ S.suspend(() =>
+const MasterSiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MasterSiteListResultValueList,
     nextLink: S.optional(S.String),
@@ -23993,7 +23914,7 @@ export interface ListMasterSitesControllerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListMasterSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMasterSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -24009,7 +23930,7 @@ export const ListMasterSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListMasterSitesControllerBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -24031,7 +23952,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -24042,11 +23963,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -24061,7 +23982,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -24073,7 +23994,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -24083,7 +24004,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -24098,27 +24019,26 @@ export interface ListPrivateEndpointConnectionControllerByMasterSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListPrivateEndpointConnectionControllerByMasterSiteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      siteName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections",
-        code: 200,
-        apiVersion: "2023-06-06",
-      }),
-    ),
+const ListPrivateEndpointConnectionControllerByMasterSiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    siteName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/privateEndpointConnections",
+      code: 200,
+      apiVersion: "2023-06-06",
+    }),
+  ),
 ).annotate({
   identifier: "ListPrivateEndpointConnectionControllerByMasterSiteRequest",
 }) as any as S.Schema<ListPrivateEndpointConnectionControllerByMasterSiteRequest>;
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList_2 = Array<PrivateEndpointConnection_3>;
-export const PrivateEndpointConnectionListResultValueList_2 =
+const PrivateEndpointConnectionListResultValueList_2 =
   MasterSitePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList_2>;
 
 /** The response of a PrivateEndpointConnection list operation. */
@@ -24128,7 +24048,7 @@ export interface PrivateEndpointConnectionListResult_2 {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult_2 = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateEndpointConnectionListResultValueList_2,
     nextLink: S.optional(S.String),
@@ -24145,8 +24065,8 @@ export interface ListPrivateEndpointConnectionOperationByAssessmentProjectReques
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListPrivateEndpointConnectionOperationByAssessmentProjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -24159,13 +24079,13 @@ export const ListPrivateEndpointConnectionOperationByAssessmentProjectRequest =
         apiVersion: "2024-01-15",
       }),
     ),
-  ).annotate({
-    identifier: "ListPrivateEndpointConnectionOperationByAssessmentProjectRequest",
-  }) as any as S.Schema<ListPrivateEndpointConnectionOperationByAssessmentProjectRequest>;
+).annotate({
+  identifier: "ListPrivateEndpointConnectionOperationByAssessmentProjectRequest",
+}) as any as S.Schema<ListPrivateEndpointConnectionOperationByAssessmentProjectRequest>;
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   ProjectPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
@@ -24175,7 +24095,7 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateEndpointConnectionListResultValueList,
     nextLink: S.optional(S.String),
@@ -24192,7 +24112,7 @@ export interface ListPrivateEndpointConnectionProxyControllerPrivateEndpointConn
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
 }
-export const ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnectionProxiesRequest =
+const ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnectionProxiesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -24214,7 +24134,7 @@ export const ListPrivateEndpointConnectionProxyControllerPrivateEndpointConnecti
 /** Gets the list of PrivateLink proxy resources. */
 export type PrivateEndpointConnectionProxyCollectionValueList =
   Array<PrivateEndpointConnectionProxy>;
-export const PrivateEndpointConnectionProxyCollectionValueList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionProxyCollectionValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionProxy,
 ) as any as S.Schema<PrivateEndpointConnectionProxyCollectionValueList>;
 
@@ -24225,7 +24145,7 @@ export interface PrivateEndpointConnectionProxyCollection {
   /** Gets the value of next link. */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionProxyCollection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProxyCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionProxyCollectionValueList),
     nextLink: S.optional(S.String),
@@ -24242,32 +24162,31 @@ export interface ListPrivateLinkResourceOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListPrivateLinkResourceOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateLinkResources",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListPrivateLinkResourceOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateLinkResources",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListPrivateLinkResourceOperationByAssessmentProjectRequest",
 }) as any as S.Schema<ListPrivateLinkResourceOperationByAssessmentProjectRequest>;
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -24279,7 +24198,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -24302,7 +24221,7 @@ export interface PrivateLinkResource {
   /** Properties of a private link resource. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -24314,7 +24233,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -24325,7 +24244,7 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateLinkResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -24342,7 +24261,7 @@ export interface ListPrivateLinkResourcesControllerByMasterSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListPrivateLinkResourcesControllerByMasterSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourcesControllerByMasterSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -24372,7 +24291,7 @@ export interface PrivateLinkResource_3 {
   /** The resource-specific properties for this resource. */
   properties?: PrivateLinkResourceProperties_3;
 }
-export const PrivateLinkResource_3 = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource_3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -24384,7 +24303,7 @@ export const PrivateLinkResource_3 = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList_2 = Array<PrivateLinkResource_3>;
-export const PrivateLinkResourceListResultValueList_2 = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList_2 = /*@__PURE__*/ S.Array(
   PrivateLinkResource_3,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList_2>;
 
@@ -24395,7 +24314,7 @@ export interface PrivateLinkResourceListResult_2 {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult_2 = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateLinkResourceListResultValueList_2,
     nextLink: S.optional(S.String),
@@ -24408,7 +24327,7 @@ export interface ListProjectBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListProjectBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -24449,21 +24368,19 @@ export type MigrateProjectPropertiesRegisteredToolsItem =
   | "Modernization"
   | "ServerMigration_DataReplication"
   | "Unknown";
-export const MigrateProjectPropertiesRegisteredToolsItem = S.String;
-
 /** Register tools inside project. */
 export type MigrateProjectPropertiesRegisteredToolsList =
   Array<MigrateProjectPropertiesRegisteredToolsItem>;
-export const MigrateProjectPropertiesRegisteredToolsList =
+const MigrateProjectPropertiesRegisteredToolsList =
   MachineAssessmentPropertiesInputAzureDiskTypesList as any as S.Schema<MigrateProjectPropertiesRegisteredToolsList>;
 
 /** Refresh summary state. */
 export type ProjectSummaryRefreshSummaryState = "Started" | "InProgress" | "Completed" | "Failed";
-export const ProjectSummaryRefreshSummaryState = S.String;
+const ProjectSummaryRefreshSummaryState = S.String;
 
 /** Extended summary. */
 export type ProjectSummaryExtendedSummaryMap = { [key: string]: string | undefined };
-export const ProjectSummaryExtendedSummaryMap =
+const ProjectSummaryExtendedSummaryMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<ProjectSummaryExtendedSummaryMap>;
 
 /** Project summary. */
@@ -24477,7 +24394,7 @@ export interface ProjectSummary {
   /** Extended summary. */
   extendedSummary?: ProjectSummaryExtendedSummaryMap;
 }
-export const ProjectSummary = /*@__PURE__*/ S.suspend(() =>
+const ProjectSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceType: S.optional(S.String),
     refreshSummaryState: S.optional(ProjectSummaryRefreshSummaryState),
@@ -24488,7 +24405,7 @@ export const ProjectSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Project summary. */
 export type MigrateProjectPropertiesSummaryMap = { [key: string]: ProjectSummary | undefined };
-export const MigrateProjectPropertiesSummaryMap = /*@__PURE__*/ S.Record(
+const MigrateProjectPropertiesSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   ProjectSummary,
 ) as any as S.Schema<MigrateProjectPropertiesSummaryMap>;
@@ -24499,16 +24416,16 @@ export type MigrateProjectPropertiesRefreshSummaryState =
   | "InProgress"
   | "Completed"
   | "Failed";
-export const MigrateProjectPropertiesRefreshSummaryState = S.String;
+const MigrateProjectPropertiesRefreshSummaryState = S.String;
 
 /** Gets or sets the state of public network access. */
 export type MigrateProjectPropertiesPublicNetworkAccess = "NotSpecified" | "Enabled" | "Disabled";
-export const MigrateProjectPropertiesPublicNetworkAccess = S.String;
+const MigrateProjectPropertiesPublicNetworkAccess = S.String;
 
 /** Gets the private endpoint connections. */
 export type MigrateProjectPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection_2>;
-export const MigrateProjectPropertiesPrivateEndpointConnectionsList =
+const MigrateProjectPropertiesPrivateEndpointConnectionsList =
   PrivateEndpointConnectionCollectionValueList as any as S.Schema<MigrateProjectPropertiesPrivateEndpointConnectionsList>;
 
 /** Properties of a migrate project. */
@@ -24530,7 +24447,7 @@ export interface MigrateProjectProperties {
   /** Gets the private endpoint connections. */
   privateEndpointConnections?: MigrateProjectPropertiesPrivateEndpointConnectionsList;
 }
-export const MigrateProjectProperties = /*@__PURE__*/ S.suspend(() =>
+const MigrateProjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registeredTools: S.optional(MigrateProjectPropertiesRegisteredToolsList),
     serviceEndpoint: S.optional(S.String),
@@ -24549,16 +24466,12 @@ export type MigrateProjectSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const MigrateProjectSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type MigrateProjectSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const MigrateProjectSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface MigrateProjectSystemData {
   /** The identity that created the resource. */
@@ -24574,7 +24487,7 @@ export interface MigrateProjectSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MigrateProjectSystemData = SystemData as any as S.Schema<MigrateProjectSystemData>;
+const MigrateProjectSystemData = SystemData as any as S.Schema<MigrateProjectSystemData>;
 
 /** Migrate project. */
 export interface MigrateProject {
@@ -24594,7 +24507,7 @@ export interface MigrateProject {
   /** Resource tags. */
   tags?: CreateAssessmentProjectsOperationRequestTagsMap;
 }
-export const MigrateProject = /*@__PURE__*/ S.suspend(() =>
+const MigrateProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(MigrateProjectProperties),
     eTag: S.optional(S.String),
@@ -24609,7 +24522,7 @@ export const MigrateProject = /*@__PURE__*/ S.suspend(() =>
 
 /** List of projects. */
 export type ProjectResultListValueList = Array<MigrateProject>;
-export const ProjectResultListValueList = /*@__PURE__*/ S.Array(
+const ProjectResultListValueList = /*@__PURE__*/ S.Array(
   MigrateProject,
 ) as any as S.Schema<ProjectResultListValueList>;
 
@@ -24619,7 +24532,7 @@ export interface ProjectResultList {
   value?: ProjectResultListValueList;
   nextLink?: string;
 }
-export const ProjectResultList = /*@__PURE__*/ S.suspend(() =>
+const ProjectResultList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ProjectResultListValueList),
     nextLink: S.optional(S.String),
@@ -24632,7 +24545,7 @@ export interface ListProjectsRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -24654,7 +24567,7 @@ export interface ListRunAsAccountsControllerByVmwareSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListRunAsAccountsControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRunAsAccountsControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -24673,13 +24586,8 @@ export const ListRunAsAccountsControllerByVmwareSiteRequest = /*@__PURE__*/ S.su
 
 /** A runasaccount resource belonging to a site resource. */
 export type VmwareRunAsAccountResource = HypervRunAsAccountResource;
-export const VmwareRunAsAccountResource = HypervRunAsAccountResource;
-
 /** The VmwareRunAsAccountResource items on this page */
 export type VmwareRunAsAccountResourceListResultValueList = Array<HypervRunAsAccountResource>;
-export const VmwareRunAsAccountResourceListResultValueList =
-  HypervRunAsAccountResourceListResultValueList as any as S.Schema<VmwareRunAsAccountResourceListResultValueList>;
-
 /** The response of a VmwareRunAsAccountResource list operation. */
 export interface VmwareRunAsAccountResourceListResult {
   /** The VmwareRunAsAccountResource items on this page */
@@ -24687,7 +24595,7 @@ export interface VmwareRunAsAccountResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmwareRunAsAccountResourceListResult =
+const VmwareRunAsAccountResourceListResult =
   HypervRunAsAccountResourceListResult as any as S.Schema<VmwareRunAsAccountResourceListResult>;
 
 export interface ListServerCollectorsOperationByAssessmentProjectRequest {
@@ -24698,7 +24606,7 @@ export interface ListServerCollectorsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListServerCollectorsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerCollectorsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -24717,13 +24625,8 @@ export const ListServerCollectorsOperationByAssessmentProjectRequest = /*@__PURE
 
 /** Physical server collector resource. */
 export type ServerCollector = HypervCollector;
-export const ServerCollector = HypervCollector;
-
 /** The ServerCollector items on this page */
 export type ServerCollectorListResultValueList = Array<HypervCollector>;
-export const ServerCollectorListResultValueList =
-  HypervCollectorListResultValueList as any as S.Schema<ServerCollectorListResultValueList>;
-
 /** The response of a ServerCollector list operation. */
 export interface ServerCollectorListResult {
   /** The ServerCollector items on this page */
@@ -24731,7 +24634,7 @@ export interface ServerCollectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServerCollectorListResult =
+const ServerCollectorListResult =
   HypervCollectorListResult as any as S.Schema<ServerCollectorListResult>;
 
 export interface ListServerJobsControllerByServerSiteResourceRequest {
@@ -24742,7 +24645,7 @@ export interface ListServerJobsControllerByServerSiteResourceRequest {
   /** Site name */
   siteName: string;
 }
-export const ListServerJobsControllerByServerSiteResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerJobsControllerByServerSiteResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -24761,13 +24664,8 @@ export const ListServerJobsControllerByServerSiteResourceRequest = /*@__PURE__*/
 
 /** A host resource belonging to a site resource. */
 export type ServerJob = ImportJob;
-export const ServerJob = ImportJob;
-
 /** The ServerJob items on this page */
 export type ServerJobListResultValueList = Array<ImportJob>;
-export const ServerJobListResultValueList =
-  ImportJobListResultValueList as any as S.Schema<ServerJobListResultValueList>;
-
 /** The response of a ServerJob list operation. */
 export interface ServerJobListResult {
   /** The ServerJob items on this page */
@@ -24775,7 +24673,7 @@ export interface ServerJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServerJobListResult = ImportJobListResult as any as S.Schema<ServerJobListResult>;
+const ServerJobListResult = ImportJobListResult as any as S.Schema<ServerJobListResult>;
 
 export interface ListServerRunAsAccountsControllerByServerSiteResourceRequest {
   /** The ID of the target subscription. */
@@ -24785,33 +24683,27 @@ export interface ListServerRunAsAccountsControllerByServerSiteResourceRequest {
   /** Site name */
   siteName: string;
 }
-export const ListServerRunAsAccountsControllerByServerSiteResourceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      siteName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/runAsAccounts",
-        code: 200,
-        apiVersion: "2023-06-06",
-      }),
-    ),
+const ListServerRunAsAccountsControllerByServerSiteResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    siteName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/runAsAccounts",
+      code: 200,
+      apiVersion: "2023-06-06",
+    }),
+  ),
 ).annotate({
   identifier: "ListServerRunAsAccountsControllerByServerSiteResourceRequest",
 }) as any as S.Schema<ListServerRunAsAccountsControllerByServerSiteResourceRequest>;
 
 /** A run as account resource belonging to a site resource. */
 export type ServerRunAsAccount = HypervRunAsAccountResource;
-export const ServerRunAsAccount = HypervRunAsAccountResource;
-
 /** The ServerRunAsAccount items on this page */
 export type ServerRunAsAccountListResultValueList = Array<HypervRunAsAccountResource>;
-export const ServerRunAsAccountListResultValueList =
-  HypervRunAsAccountResourceListResultValueList as any as S.Schema<ServerRunAsAccountListResultValueList>;
-
 /** The response of a ServerRunAsAccount list operation. */
 export interface ServerRunAsAccountListResult {
   /** The ServerRunAsAccount items on this page */
@@ -24819,7 +24711,7 @@ export interface ServerRunAsAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServerRunAsAccountListResult =
+const ServerRunAsAccountListResult =
   HypervRunAsAccountResourceListResult as any as S.Schema<ServerRunAsAccountListResult>;
 
 export interface ListServersControllerByServerSiteResourceRequest {
@@ -24838,7 +24730,7 @@ export interface ListServersControllerByServerSiteResourceRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListServersControllerByServerSiteResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServersControllerByServerSiteResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -24872,7 +24764,7 @@ export interface Server {
   /** The resource-specific properties for this resource. */
   properties?: ServerProperties;
 }
-export const Server = /*@__PURE__*/ S.suspend(() =>
+const Server = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -24884,7 +24776,7 @@ export const Server = /*@__PURE__*/ S.suspend(() =>
 
 /** The Server items on this page */
 export type ServerListResultValueList = Array<Server>;
-export const ServerListResultValueList = /*@__PURE__*/ S.Array(
+const ServerListResultValueList = /*@__PURE__*/ S.Array(
   Server,
 ) as any as S.Schema<ServerListResultValueList>;
 
@@ -24895,7 +24787,7 @@ export interface ServerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServerListResult = /*@__PURE__*/ S.suspend(() =>
+const ServerListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ServerListResultValueList,
     nextLink: S.optional(S.String),
@@ -24908,7 +24800,7 @@ export interface ListServerSitesControllerByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListServerSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -24926,9 +24818,6 @@ export const ListServerSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type ServerSiteResourceTagsMap = { [key: string]: string | undefined };
-export const ServerSiteResourceTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<ServerSiteResourceTagsMap>;
-
 /** A ServerSiteResource */
 export interface ServerSiteResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -24946,11 +24835,9 @@ export interface ServerSiteResource {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const ServerSiteResource = HypervSite as any as S.Schema<ServerSiteResource>;
-
 /** The ServerSiteResource items on this page */
 export type ServerSiteResourceListResultValueList = Array<ServerSiteResource>;
-export const ServerSiteResourceListResultValueList =
+const ServerSiteResourceListResultValueList =
   HypervSiteListResultValueList as any as S.Schema<ServerSiteResourceListResultValueList>;
 
 /** The response of a ServerSiteResource list operation. */
@@ -24960,7 +24847,7 @@ export interface ServerSiteResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServerSiteResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const ServerSiteResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ServerSiteResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -24973,7 +24860,7 @@ export interface ListServerSitesControllerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListServerSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -24996,7 +24883,7 @@ export interface ListServerSitesControllerHealthSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const ListServerSitesControllerHealthSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerSitesControllerHealthSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25023,7 +24910,7 @@ export interface ListServerSoftwareInventoriesControllerByServerRequest {
   /** A server machine name */
   machineName: string;
 }
-export const ListServerSoftwareInventoriesControllerByServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerSoftwareInventoriesControllerByServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25043,13 +24930,8 @@ export const ListServerSoftwareInventoriesControllerByServerRequest = /*@__PURE_
 
 /** An software inventory resource belonging to a server resource. */
 export type ServerSoftwareInventory = HypervVmSoftwareInventory;
-export const ServerSoftwareInventory = HypervVmSoftwareInventory;
-
 /** The ServerSoftwareInventory items on this page */
 export type ServerSoftwareInventoryListResultValueList = Array<HypervVmSoftwareInventory>;
-export const ServerSoftwareInventoryListResultValueList =
-  HypervVmSoftwareInventoryListResultValueList as any as S.Schema<ServerSoftwareInventoryListResultValueList>;
-
 /** The response of a ServerSoftwareInventory list operation. */
 export interface ServerSoftwareInventoryListResult {
   /** The ServerSoftwareInventory items on this page */
@@ -25057,7 +24939,7 @@ export interface ServerSoftwareInventoryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ServerSoftwareInventoryListResult =
+const ServerSoftwareInventoryListResult =
   HypervVmSoftwareInventoryListResult as any as S.Schema<ServerSoftwareInventoryListResult>;
 
 export interface ListSitesControllerByResourceGroupRequest {
@@ -25066,7 +24948,7 @@ export interface ListSitesControllerByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25084,7 +24966,7 @@ export const ListSitesControllerByResourceGroupRequest = /*@__PURE__*/ S.suspend
 
 /** Resource tags. */
 export type VmwareSiteTagsMap = { [key: string]: string | undefined };
-export const VmwareSiteTagsMap =
+const VmwareSiteTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<VmwareSiteTagsMap>;
 
 /** A VmwareSite */
@@ -25106,7 +24988,7 @@ export interface VmwareSite {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const VmwareSite = /*@__PURE__*/ S.suspend(() =>
+const VmwareSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -25121,7 +25003,7 @@ export const VmwareSite = /*@__PURE__*/ S.suspend(() =>
 
 /** The VmwareSite items on this page */
 export type VmwareSiteListResultValueList = Array<VmwareSite>;
-export const VmwareSiteListResultValueList = /*@__PURE__*/ S.Array(
+const VmwareSiteListResultValueList = /*@__PURE__*/ S.Array(
   VmwareSite,
 ) as any as S.Schema<VmwareSiteListResultValueList>;
 
@@ -25132,7 +25014,7 @@ export interface VmwareSiteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmwareSiteListResult = /*@__PURE__*/ S.suspend(() =>
+const VmwareSiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VmwareSiteListResultValueList,
     nextLink: S.optional(S.String),
@@ -25143,7 +25025,7 @@ export interface ListSitesControllerBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesControllerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -25166,7 +25048,7 @@ export interface ListSitesControllerHealthSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const ListSitesControllerHealthSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSitesControllerHealthSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25191,7 +25073,7 @@ export interface ListSolutionsControllerSolutionsRequest {
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
 }
-export const ListSolutionsControllerSolutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSolutionsControllerSolutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25210,7 +25092,7 @@ export const ListSolutionsControllerSolutionsRequest = /*@__PURE__*/ S.suspend((
 
 /** Gets or sets the list of solutions. */
 export type SolutionsCollectionValueList = Array<Solution>;
-export const SolutionsCollectionValueList = /*@__PURE__*/ S.Array(
+const SolutionsCollectionValueList = /*@__PURE__*/ S.Array(
   Solution,
 ) as any as S.Schema<SolutionsCollectionValueList>;
 
@@ -25221,7 +25103,7 @@ export interface SolutionsCollection {
   /** Gets or sets the value of next link. */
   nextLink?: string;
 }
-export const SolutionsCollection = /*@__PURE__*/ S.suspend(() =>
+const SolutionsCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SolutionsCollectionValueList),
     nextLink: S.optional(S.String),
@@ -25236,20 +25118,19 @@ export interface ListSqlAssessmentOptionsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListSqlAssessmentOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlAssessmentOptions",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListSqlAssessmentOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlAssessmentOptions",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListSqlAssessmentOptionsOperationByAssessmentProjectRequest",
 }) as any as S.Schema<ListSqlAssessmentOptionsOperationByAssessmentProjectRequest>;
@@ -25267,7 +25148,7 @@ export interface SqlAssessmentOptions {
   /** The resource-specific properties for this resource. */
   properties?: SqlAssessmentOptionsProperties;
 }
-export const SqlAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -25279,7 +25160,7 @@ export const SqlAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlAssessmentOptions items on this page */
 export type SqlAssessmentOptionsListResultValueList = Array<SqlAssessmentOptions>;
-export const SqlAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
+const SqlAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   SqlAssessmentOptions,
 ) as any as S.Schema<SqlAssessmentOptionsListResultValueList>;
 
@@ -25290,7 +25171,7 @@ export interface SqlAssessmentOptionsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlAssessmentOptionsListResultValueList,
     nextLink: S.optional(S.String),
@@ -25309,7 +25190,7 @@ export interface ListSqlAssessmentV2OperationByGroupRequest {
   /** Group ARM name */
   groupName: string;
 }
-export const ListSqlAssessmentV2OperationByGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlAssessmentV2OperationByGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25340,7 +25221,7 @@ export interface SqlAssessmentV2 {
   /** The resource-specific properties for this resource. */
   properties?: SqlAssessmentV2Properties;
 }
-export const SqlAssessmentV2 = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -25352,7 +25233,7 @@ export const SqlAssessmentV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlAssessmentV2 items on this page */
 export type SqlAssessmentV2ListResultValueList = Array<SqlAssessmentV2>;
-export const SqlAssessmentV2ListResultValueList = /*@__PURE__*/ S.Array(
+const SqlAssessmentV2ListResultValueList = /*@__PURE__*/ S.Array(
   SqlAssessmentV2,
 ) as any as S.Schema<SqlAssessmentV2ListResultValueList>;
 
@@ -25363,7 +25244,7 @@ export interface SqlAssessmentV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlAssessmentV2ListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlAssessmentV2ListResultValueList,
     nextLink: S.optional(S.String),
@@ -25384,22 +25265,21 @@ export interface ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Request {
   /** SQL Assessment arm name. */
   assessmentName: string;
 }
-export const ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      assessmentName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/summaries",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    assessmentName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/summaries",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Request",
 }) as any as S.Schema<ListSqlAssessmentV2SummaryOperationBySqlAssessmentV2Request>;
@@ -25417,7 +25297,7 @@ export interface SqlAssessmentV2Summary {
   /** The resource-specific properties for this resource. */
   properties?: SqlAssessmentV2SummaryProperties;
 }
-export const SqlAssessmentV2Summary = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2Summary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -25429,7 +25309,7 @@ export const SqlAssessmentV2Summary = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlAssessmentV2Summary items on this page */
 export type SqlAssessmentV2SummaryListResultValueList = Array<SqlAssessmentV2Summary>;
-export const SqlAssessmentV2SummaryListResultValueList = /*@__PURE__*/ S.Array(
+const SqlAssessmentV2SummaryListResultValueList = /*@__PURE__*/ S.Array(
   SqlAssessmentV2Summary,
 ) as any as S.Schema<SqlAssessmentV2SummaryListResultValueList>;
 
@@ -25440,7 +25320,7 @@ export interface SqlAssessmentV2SummaryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlAssessmentV2SummaryListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlAssessmentV2SummaryListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlAssessmentV2SummaryListResultValueList,
     nextLink: S.optional(S.String),
@@ -25467,7 +25347,7 @@ export interface ListSqlAvailabilityGroupsControllerBySqlSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListSqlAvailabilityGroupsControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlAvailabilityGroupsControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25502,7 +25382,7 @@ export interface SqlAvailabilityGroup {
   /** The resource-specific properties for this resource. */
   properties?: SqlAvailabilityGroupProperties;
 }
-export const SqlAvailabilityGroup = /*@__PURE__*/ S.suspend(() =>
+const SqlAvailabilityGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -25514,7 +25394,7 @@ export const SqlAvailabilityGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlAvailabilityGroup items on this page */
 export type SqlAvailabilityGroupListResultValueList = Array<SqlAvailabilityGroup>;
-export const SqlAvailabilityGroupListResultValueList = /*@__PURE__*/ S.Array(
+const SqlAvailabilityGroupListResultValueList = /*@__PURE__*/ S.Array(
   SqlAvailabilityGroup,
 ) as any as S.Schema<SqlAvailabilityGroupListResultValueList>;
 
@@ -25525,7 +25405,7 @@ export interface SqlAvailabilityGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlAvailabilityGroupListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlAvailabilityGroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlAvailabilityGroupListResultValueList,
     nextLink: S.optional(S.String),
@@ -25542,7 +25422,7 @@ export interface ListSqlCollectorOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListSqlCollectorOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlCollectorOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25561,11 +25441,9 @@ export const ListSqlCollectorOperationByAssessmentProjectRequest = /*@__PURE__*/
 
 /** The SQL collector REST object. */
 export type SqlCollector = HypervCollector;
-export const SqlCollector = HypervCollector;
-
 /** The SqlCollector items on this page */
 export type SqlCollectorListResultValueList = Array<HypervCollector>;
-export const SqlCollectorListResultValueList =
+const SqlCollectorListResultValueList =
   HypervCollectorListResultValueList as any as S.Schema<SqlCollectorListResultValueList>;
 
 /** The response of a SqlCollector list operation. */
@@ -25575,7 +25453,7 @@ export interface SqlCollectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlCollectorListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlCollectorListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlCollectorListResultValueList,
     nextLink: S.optional(S.String),
@@ -25600,7 +25478,7 @@ export interface ListSqlDatabasesControllerBySqlSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListSqlDatabasesControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlDatabasesControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25635,7 +25513,7 @@ export interface SqlDatabaseV2 {
   /** The resource-specific properties for this resource. */
   properties?: SqlDatabasePropertiesV2;
 }
-export const SqlDatabaseV2 = /*@__PURE__*/ S.suspend(() =>
+const SqlDatabaseV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -25647,7 +25525,7 @@ export const SqlDatabaseV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlDatabaseV2 items on this page */
 export type SqlDatabaseV2ListResultValueList = Array<SqlDatabaseV2>;
-export const SqlDatabaseV2ListResultValueList = /*@__PURE__*/ S.Array(
+const SqlDatabaseV2ListResultValueList = /*@__PURE__*/ S.Array(
   SqlDatabaseV2,
 ) as any as S.Schema<SqlDatabaseV2ListResultValueList>;
 
@@ -25658,7 +25536,7 @@ export interface SqlDatabaseV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlDatabaseV2ListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlDatabaseV2ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlDatabaseV2ListResultValueList,
     nextLink: S.optional(S.String),
@@ -25675,21 +25553,20 @@ export interface ListSqlDiscoverySiteDataSourceControllerBySqlSiteRequest {
   /** SQL site name. */
   sqlSiteName: string;
 }
-export const ListSqlDiscoverySiteDataSourceControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      siteName: S.String.pipe(T.Label()),
-      sqlSiteName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources",
-        code: 200,
-        apiVersion: "2023-06-06",
-      }),
-    ),
+const ListSqlDiscoverySiteDataSourceControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    siteName: S.String.pipe(T.Label()),
+    sqlSiteName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources",
+      code: 200,
+      apiVersion: "2023-06-06",
+    }),
+  ),
 ).annotate({
   identifier: "ListSqlDiscoverySiteDataSourceControllerBySqlSiteRequest",
 }) as any as S.Schema<ListSqlDiscoverySiteDataSourceControllerBySqlSiteRequest>;
@@ -25707,12 +25584,12 @@ export interface SqlDiscoverySiteDataSource {
   /** The resource-specific properties for this resource. */
   properties?: SqlDiscoverySiteDataSourceProperties;
 }
-export const SqlDiscoverySiteDataSource =
+const SqlDiscoverySiteDataSource =
   CreateSqlDiscoverySiteDataSourceControllerResponse as any as S.Schema<SqlDiscoverySiteDataSource>;
 
 /** The SqlDiscoverySiteDataSource items on this page */
 export type SqlDiscoverySiteDataSourceListResultValueList = Array<SqlDiscoverySiteDataSource>;
-export const SqlDiscoverySiteDataSourceListResultValueList = /*@__PURE__*/ S.Array(
+const SqlDiscoverySiteDataSourceListResultValueList = /*@__PURE__*/ S.Array(
   SqlDiscoverySiteDataSource,
 ) as any as S.Schema<SqlDiscoverySiteDataSourceListResultValueList>;
 
@@ -25723,7 +25600,7 @@ export interface SqlDiscoverySiteDataSourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlDiscoverySiteDataSourceListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlDiscoverySiteDataSourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlDiscoverySiteDataSourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -25742,7 +25619,7 @@ export interface ListSqlJobsControllerBySqlSiteRequest {
   /** SQL site name. */
   sqlSiteName: string;
 }
-export const ListSqlJobsControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlJobsControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25762,13 +25639,8 @@ export const ListSqlJobsControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Class representing the web model of SQL Database. */
 export type SqlJob = ImportJob;
-export const SqlJob = ImportJob;
-
 /** The SqlJob items on this page */
 export type SqlJobListResultValueList = Array<ImportJob>;
-export const SqlJobListResultValueList =
-  ImportJobListResultValueList as any as S.Schema<SqlJobListResultValueList>;
-
 /** The response of a SqlJob list operation. */
 export interface SqlJobListResult {
   /** The SqlJob items on this page */
@@ -25776,7 +25648,7 @@ export interface SqlJobListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlJobListResult = ImportJobListResult as any as S.Schema<SqlJobListResult>;
+const SqlJobListResult = ImportJobListResult as any as S.Schema<SqlJobListResult>;
 
 export interface ListSqlRunAsAccountsControllerBySqlSiteRequest {
   /** The ID of the target subscription. */
@@ -25788,7 +25660,7 @@ export interface ListSqlRunAsAccountsControllerBySqlSiteRequest {
   /** SQL site name. */
   sqlSiteName: string;
 }
-export const ListSqlRunAsAccountsControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlRunAsAccountsControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25808,13 +25680,8 @@ export const ListSqlRunAsAccountsControllerBySqlSiteRequest = /*@__PURE__*/ S.su
 
 /** A runasaccount resource belonging to a site resource. */
 export type SqlRunAsAccount = HypervRunAsAccountResource;
-export const SqlRunAsAccount = HypervRunAsAccountResource;
-
 /** The SqlRunAsAccount items on this page */
 export type SqlRunAsAccountListResultValueList = Array<HypervRunAsAccountResource>;
-export const SqlRunAsAccountListResultValueList =
-  HypervRunAsAccountResourceListResultValueList as any as S.Schema<SqlRunAsAccountListResultValueList>;
-
 /** The response of a SqlRunAsAccount list operation. */
 export interface SqlRunAsAccountListResult {
   /** The SqlRunAsAccount items on this page */
@@ -25822,7 +25689,7 @@ export interface SqlRunAsAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlRunAsAccountListResult =
+const SqlRunAsAccountListResult =
   HypervRunAsAccountResourceListResult as any as S.Schema<SqlRunAsAccountListResult>;
 
 export interface ListSqlServersControllerBySqlSiteRequest {
@@ -25843,7 +25710,7 @@ export interface ListSqlServersControllerBySqlSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListSqlServersControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlServersControllerBySqlSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25878,7 +25745,7 @@ export interface SqlServerV2 {
   /** The resource-specific properties for this resource. */
   properties?: SqlServerProperties;
 }
-export const SqlServerV2 = /*@__PURE__*/ S.suspend(() =>
+const SqlServerV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -25890,7 +25757,7 @@ export const SqlServerV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlServerV2 items on this page */
 export type SqlServerV2ListResultValueList = Array<SqlServerV2>;
-export const SqlServerV2ListResultValueList = /*@__PURE__*/ S.Array(
+const SqlServerV2ListResultValueList = /*@__PURE__*/ S.Array(
   SqlServerV2,
 ) as any as S.Schema<SqlServerV2ListResultValueList>;
 
@@ -25901,7 +25768,7 @@ export interface SqlServerV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlServerV2ListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlServerV2ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlServerV2ListResultValueList,
     nextLink: S.optional(S.String),
@@ -25916,7 +25783,7 @@ export interface ListSqlSitesControllerByMasterSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListSqlSitesControllerByMasterSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSqlSitesControllerByMasterSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -25946,7 +25813,7 @@ export interface SqlSite {
   /** The resource-specific properties for this resource. */
   properties?: SqlSiteProperties;
 }
-export const SqlSite = /*@__PURE__*/ S.suspend(() =>
+const SqlSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -25958,7 +25825,7 @@ export const SqlSite = /*@__PURE__*/ S.suspend(() =>
 
 /** The SqlSite items on this page */
 export type SqlSiteListResultValueList = Array<SqlSite>;
-export const SqlSiteListResultValueList = /*@__PURE__*/ S.Array(
+const SqlSiteListResultValueList = /*@__PURE__*/ S.Array(
   SqlSite,
 ) as any as S.Schema<SqlSiteListResultValueList>;
 
@@ -25969,7 +25836,7 @@ export interface SqlSiteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SqlSiteListResult = /*@__PURE__*/ S.suspend(() =>
+const SqlSiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SqlSiteListResultValueList,
     nextLink: S.optional(S.String),
@@ -25994,7 +25861,7 @@ export interface ListTomcatWebApplicationsControllerByWebAppSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListTomcatWebApplicationsControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTomcatWebApplicationsControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26029,7 +25896,7 @@ export interface TomcatWebApplications {
   /** The resource-specific properties for this resource. */
   properties?: TomcatWebApplicationProperties;
 }
-export const TomcatWebApplications = /*@__PURE__*/ S.suspend(() =>
+const TomcatWebApplications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -26041,7 +25908,7 @@ export const TomcatWebApplications = /*@__PURE__*/ S.suspend(() =>
 
 /** The TomcatWebApplications items on this page */
 export type TomcatWebApplicationsListResultValueList = Array<TomcatWebApplications>;
-export const TomcatWebApplicationsListResultValueList = /*@__PURE__*/ S.Array(
+const TomcatWebApplicationsListResultValueList = /*@__PURE__*/ S.Array(
   TomcatWebApplications,
 ) as any as S.Schema<TomcatWebApplicationsListResultValueList>;
 
@@ -26052,7 +25919,7 @@ export interface TomcatWebApplicationsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TomcatWebApplicationsListResult = /*@__PURE__*/ S.suspend(() =>
+const TomcatWebApplicationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TomcatWebApplicationsListResultValueList,
     nextLink: S.optional(S.String),
@@ -26079,7 +25946,7 @@ export interface ListTomcatWebServersControllerByWebAppSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListTomcatWebServersControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTomcatWebServersControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26114,7 +25981,7 @@ export interface TomcatWebServers {
   /** The resource-specific properties for this resource. */
   properties?: TomcatWebServerProperties;
 }
-export const TomcatWebServers = /*@__PURE__*/ S.suspend(() =>
+const TomcatWebServers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -26126,7 +25993,7 @@ export const TomcatWebServers = /*@__PURE__*/ S.suspend(() =>
 
 /** The TomcatWebServers items on this page */
 export type TomcatWebServersListResultValueList = Array<TomcatWebServers>;
-export const TomcatWebServersListResultValueList = /*@__PURE__*/ S.Array(
+const TomcatWebServersListResultValueList = /*@__PURE__*/ S.Array(
   TomcatWebServers,
 ) as any as S.Schema<TomcatWebServersListResultValueList>;
 
@@ -26137,7 +26004,7 @@ export interface TomcatWebServersListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TomcatWebServersListResult = /*@__PURE__*/ S.suspend(() =>
+const TomcatWebServersListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TomcatWebServersListResultValueList,
     nextLink: S.optional(S.String),
@@ -26156,7 +26023,7 @@ export interface ListVcenterControllerByVmwareSiteRequest {
   /** filter query */
   filter?: string;
 }
-export const ListVcenterControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVcenterControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26187,7 +26054,7 @@ export interface Vcenter {
   /** The resource-specific properties for this resource. */
   properties?: VcenterProperties;
 }
-export const Vcenter = /*@__PURE__*/ S.suspend(() =>
+const Vcenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -26199,7 +26066,7 @@ export const Vcenter = /*@__PURE__*/ S.suspend(() =>
 
 /** The Vcenter items on this page */
 export type VcenterListResultValueList = Array<Vcenter>;
-export const VcenterListResultValueList = /*@__PURE__*/ S.Array(
+const VcenterListResultValueList = /*@__PURE__*/ S.Array(
   Vcenter,
 ) as any as S.Schema<VcenterListResultValueList>;
 
@@ -26210,7 +26077,7 @@ export interface VcenterListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VcenterListResult = /*@__PURE__*/ S.suspend(() =>
+const VcenterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VcenterListResultValueList,
     nextLink: S.optional(S.String),
@@ -26229,28 +26096,27 @@ export interface ListVirtualDesktopUserControllerVirtualDesktopUsersRequest {
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
 }
-export const ListVirtualDesktopUserControllerVirtualDesktopUsersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      migrateProjectName: S.String.pipe(T.Label()),
-      continuationToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers",
-        code: 200,
-        apiVersion: "2023-01-01",
-      }),
-    ),
+const ListVirtualDesktopUserControllerVirtualDesktopUsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    migrateProjectName: S.String.pipe(T.Label()),
+    continuationToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/virtualDesktopUsers",
+      code: 200,
+      apiVersion: "2023-01-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListVirtualDesktopUserControllerVirtualDesktopUsersRequest",
 }) as any as S.Schema<ListVirtualDesktopUserControllerVirtualDesktopUsersRequest>;
 
 export type VirtualDesktopUserCollectionValueList = Array<VirtualDesktopUser>;
-export const VirtualDesktopUserCollectionValueList = /*@__PURE__*/ S.Array(
+const VirtualDesktopUserCollectionValueList = /*@__PURE__*/ S.Array(
   VirtualDesktopUser,
 ) as any as S.Schema<VirtualDesktopUserCollectionValueList>;
 
@@ -26259,7 +26125,7 @@ export interface VirtualDesktopUserCollection {
   value?: VirtualDesktopUserCollectionValueList;
   nextLink?: string;
 }
-export const VirtualDesktopUserCollection = /*@__PURE__*/ S.suspend(() =>
+const VirtualDesktopUserCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(VirtualDesktopUserCollectionValueList),
     nextLink: S.optional(S.String),
@@ -26276,7 +26142,7 @@ export interface ListVmwareCollectorsOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListVmwareCollectorsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareCollectorsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26295,13 +26161,8 @@ export const ListVmwareCollectorsOperationByAssessmentProjectRequest = /*@__PURE
 
 /** VMware collector resource. */
 export type VmwareCollector = HypervCollector;
-export const VmwareCollector = HypervCollector;
-
 /** The VmwareCollector items on this page */
 export type VmwareCollectorListResultValueList = Array<HypervCollector>;
-export const VmwareCollectorListResultValueList =
-  HypervCollectorListResultValueList as any as S.Schema<VmwareCollectorListResultValueList>;
-
 /** The response of a VmwareCollector list operation. */
 export interface VmwareCollectorListResult {
   /** The VmwareCollector items on this page */
@@ -26309,7 +26170,7 @@ export interface VmwareCollectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmwareCollectorListResult =
+const VmwareCollectorListResult =
   HypervCollectorListResult as any as S.Schema<VmwareCollectorListResult>;
 
 export interface ListVmwareHostControllerByVmwareSiteRequest {
@@ -26320,7 +26181,7 @@ export interface ListVmwareHostControllerByVmwareSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListVmwareHostControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmwareHostControllerByVmwareSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26350,7 +26211,7 @@ export interface VmwareHost {
   /** The resource-specific properties for this resource. */
   properties?: VmwareHostProperties;
 }
-export const VmwareHost = /*@__PURE__*/ S.suspend(() =>
+const VmwareHost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -26362,7 +26223,7 @@ export const VmwareHost = /*@__PURE__*/ S.suspend(() =>
 
 /** The VmwareHost items on this page */
 export type VmwareHostListResultValueList = Array<VmwareHost>;
-export const VmwareHostListResultValueList = /*@__PURE__*/ S.Array(
+const VmwareHostListResultValueList = /*@__PURE__*/ S.Array(
   VmwareHost,
 ) as any as S.Schema<VmwareHostListResultValueList>;
 
@@ -26373,7 +26234,7 @@ export interface VmwareHostListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmwareHostListResult = /*@__PURE__*/ S.suspend(() =>
+const VmwareHostListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VmwareHostListResultValueList,
     nextLink: S.optional(S.String),
@@ -26390,8 +26251,8 @@ export interface ListVmwareSoftwareInventoriesControllerByMachineResourceRequest
   /** Machine name */
   machineName: string;
 }
-export const ListVmwareSoftwareInventoriesControllerByMachineResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListVmwareSoftwareInventoriesControllerByMachineResourceRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -26405,19 +26266,14 @@ export const ListVmwareSoftwareInventoriesControllerByMachineResourceRequest =
         apiVersion: "2023-06-06",
       }),
     ),
-  ).annotate({
-    identifier: "ListVmwareSoftwareInventoriesControllerByMachineResourceRequest",
-  }) as any as S.Schema<ListVmwareSoftwareInventoriesControllerByMachineResourceRequest>;
+).annotate({
+  identifier: "ListVmwareSoftwareInventoriesControllerByMachineResourceRequest",
+}) as any as S.Schema<ListVmwareSoftwareInventoriesControllerByMachineResourceRequest>;
 
 /** An software inventory resource belonging to a machine resource. */
 export type VmwareMachineSoftwareInventory = HypervVmSoftwareInventory;
-export const VmwareMachineSoftwareInventory = HypervVmSoftwareInventory;
-
 /** The VmwareMachineSoftwareInventory items on this page */
 export type VmwareMachineSoftwareInventoryListResultValueList = Array<HypervVmSoftwareInventory>;
-export const VmwareMachineSoftwareInventoryListResultValueList =
-  HypervVmSoftwareInventoryListResultValueList as any as S.Schema<VmwareMachineSoftwareInventoryListResultValueList>;
-
 /** The response of a VmwareMachineSoftwareInventory list operation. */
 export interface VmwareMachineSoftwareInventoryListResult {
   /** The VmwareMachineSoftwareInventory items on this page */
@@ -26425,7 +26281,7 @@ export interface VmwareMachineSoftwareInventoryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmwareMachineSoftwareInventoryListResult =
+const VmwareMachineSoftwareInventoryListResult =
   HypervVmSoftwareInventoryListResult as any as S.Schema<VmwareMachineSoftwareInventoryListResult>;
 
 export interface ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest {
@@ -26436,23 +26292,22 @@ export interface ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest 
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppAssessmentOptions",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest",
-  }) as any as S.Schema<ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest>;
+const ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppAssessmentOptions",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
+).annotate({
+  identifier: "ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest",
+}) as any as S.Schema<ListWebAppAssessmentOptionsOperationByAssessmentProjectRequest>;
 
 /** Web app Assessment options web model object. */
 export interface WebAppAssessmentOptions {
@@ -26467,7 +26322,7 @@ export interface WebAppAssessmentOptions {
   /** The resource-specific properties for this resource. */
   properties?: WebAppAssessmentOptionsProperties;
 }
-export const WebAppAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -26479,7 +26334,7 @@ export const WebAppAssessmentOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebAppAssessmentOptions items on this page */
 export type WebAppAssessmentOptionsListResultValueList = Array<WebAppAssessmentOptions>;
-export const WebAppAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
+const WebAppAssessmentOptionsListResultValueList = /*@__PURE__*/ S.Array(
   WebAppAssessmentOptions,
 ) as any as S.Schema<WebAppAssessmentOptionsListResultValueList>;
 
@@ -26490,7 +26345,7 @@ export interface WebAppAssessmentOptionsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentOptionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebAppAssessmentOptionsListResultValueList,
     nextLink: S.optional(S.String),
@@ -26509,7 +26364,7 @@ export interface ListWebAppAssessmentV2OperationByGroupRequest {
   /** Group ARM name */
   groupName: string;
 }
-export const ListWebAppAssessmentV2OperationByGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAppAssessmentV2OperationByGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26540,7 +26395,7 @@ export interface WebAppAssessmentV2 {
   /** The resource-specific properties for this resource. */
   properties?: WebAppAssessmentV2Properties;
 }
-export const WebAppAssessmentV2 = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -26552,7 +26407,7 @@ export const WebAppAssessmentV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebAppAssessmentV2 items on this page */
 export type WebAppAssessmentV2ListResultValueList = Array<WebAppAssessmentV2>;
-export const WebAppAssessmentV2ListResultValueList = /*@__PURE__*/ S.Array(
+const WebAppAssessmentV2ListResultValueList = /*@__PURE__*/ S.Array(
   WebAppAssessmentV2,
 ) as any as S.Schema<WebAppAssessmentV2ListResultValueList>;
 
@@ -26563,7 +26418,7 @@ export interface WebAppAssessmentV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppAssessmentV2ListResult = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentV2ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebAppAssessmentV2ListResultValueList,
     nextLink: S.optional(S.String),
@@ -26584,8 +26439,8 @@ export interface ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Reque
   /** Web app Assessment arm name. */
   assessmentName: string;
 }
-export const ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Request =
-  /*@__PURE__*/ S.suspend(() =>
+const ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Request = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -26600,9 +26455,9 @@ export const ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Request =
         apiVersion: "2024-01-15",
       }),
     ),
-  ).annotate({
-    identifier: "ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Request",
-  }) as any as S.Schema<ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Request>;
+).annotate({
+  identifier: "ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Request",
+}) as any as S.Schema<ListWebAppAssessmentV2SummaryOperationByWebAppAssessmentV2Request>;
 
 /** Web app Assessment REST resource. */
 export interface WebAppAssessmentV2Summary {
@@ -26617,12 +26472,12 @@ export interface WebAppAssessmentV2Summary {
   /** The resource-specific properties for this resource. */
   properties?: WebAppAssessmentV2SummaryProperties;
 }
-export const WebAppAssessmentV2Summary =
+const WebAppAssessmentV2Summary =
   GetWebAppAssessmentV2SummaryOperationResponse as any as S.Schema<WebAppAssessmentV2Summary>;
 
 /** The WebAppAssessmentV2Summary items on this page */
 export type WebAppAssessmentV2SummaryListResultValueList = Array<WebAppAssessmentV2Summary>;
-export const WebAppAssessmentV2SummaryListResultValueList = /*@__PURE__*/ S.Array(
+const WebAppAssessmentV2SummaryListResultValueList = /*@__PURE__*/ S.Array(
   WebAppAssessmentV2Summary,
 ) as any as S.Schema<WebAppAssessmentV2SummaryListResultValueList>;
 
@@ -26633,7 +26488,7 @@ export interface WebAppAssessmentV2SummaryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppAssessmentV2SummaryListResult = /*@__PURE__*/ S.suspend(() =>
+const WebAppAssessmentV2SummaryListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebAppAssessmentV2SummaryListResultValueList,
     nextLink: S.optional(S.String),
@@ -26650,7 +26505,7 @@ export interface ListWebAppCollectorOperationByAssessmentProjectRequest {
   /** Assessment Project Name */
   projectName: string;
 }
-export const ListWebAppCollectorOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAppCollectorOperationByAssessmentProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26680,13 +26535,8 @@ export interface WebAppCollector {
   /** The resource-specific properties for this resource. */
   properties?: WebAppCollectorPropertiesBaseWithAgent;
 }
-export const WebAppCollector = HypervCollector as any as S.Schema<WebAppCollector>;
-
 /** The WebAppCollector items on this page */
 export type WebAppCollectorListResultValueList = Array<WebAppCollector>;
-export const WebAppCollectorListResultValueList =
-  HypervCollectorListResultValueList as any as S.Schema<WebAppCollectorListResultValueList>;
-
 /** The response of a WebAppCollector list operation. */
 export interface WebAppCollectorListResult {
   /** The WebAppCollector items on this page */
@@ -26694,7 +26544,7 @@ export interface WebAppCollectorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppCollectorListResult =
+const WebAppCollectorListResult =
   HypervCollectorListResult as any as S.Schema<WebAppCollectorListResult>;
 
 export interface ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest {
@@ -26707,8 +26557,8 @@ export interface ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest
   /** Web app site name. */
   webAppSiteName: string;
 }
-export const ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -26722,19 +26572,14 @@ export const ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest =
         apiVersion: "2023-06-06",
       }),
     ),
-  ).annotate({
-    identifier: "ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest",
-  }) as any as S.Schema<ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest>;
+).annotate({
+  identifier: "ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest",
+}) as any as S.Schema<ListWebAppDiscoverySiteDataSourcesControllerByWebAppSiteRequest>;
 
 /** Web app data source web model. */
 export type DiscoverySiteDataSource = SqlDiscoverySiteDataSource;
-export const DiscoverySiteDataSource = SqlDiscoverySiteDataSource;
-
 /** The DiscoverySiteDataSource items on this page */
 export type DiscoverySiteDataSourceListResultValueList = Array<SqlDiscoverySiteDataSource>;
-export const DiscoverySiteDataSourceListResultValueList =
-  SqlDiscoverySiteDataSourceListResultValueList as any as S.Schema<DiscoverySiteDataSourceListResultValueList>;
-
 /** The response of a DiscoverySiteDataSource list operation. */
 export interface DiscoverySiteDataSourceListResult {
   /** The DiscoverySiteDataSource items on this page */
@@ -26742,7 +26587,7 @@ export interface DiscoverySiteDataSourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DiscoverySiteDataSourceListResult =
+const DiscoverySiteDataSourceListResult =
   SqlDiscoverySiteDataSourceListResult as any as S.Schema<DiscoverySiteDataSourceListResult>;
 
 export interface ListWebAppExtendedMachinesControllerByWebAppSiteRequest {
@@ -26763,7 +26608,7 @@ export interface ListWebAppExtendedMachinesControllerByWebAppSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListWebAppExtendedMachinesControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAppExtendedMachinesControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26798,7 +26643,7 @@ export interface WebAppExtendedMachine {
   /** The resource-specific properties for this resource. */
   properties?: WebAppExtendedMachineProperties;
 }
-export const WebAppExtendedMachine = /*@__PURE__*/ S.suspend(() =>
+const WebAppExtendedMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -26810,7 +26655,7 @@ export const WebAppExtendedMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebAppExtendedMachine items on this page */
 export type WebAppExtendedMachineListResultValueList = Array<WebAppExtendedMachine>;
-export const WebAppExtendedMachineListResultValueList = /*@__PURE__*/ S.Array(
+const WebAppExtendedMachineListResultValueList = /*@__PURE__*/ S.Array(
   WebAppExtendedMachine,
 ) as any as S.Schema<WebAppExtendedMachineListResultValueList>;
 
@@ -26821,7 +26666,7 @@ export interface WebAppExtendedMachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppExtendedMachineListResult = /*@__PURE__*/ S.suspend(() =>
+const WebAppExtendedMachineListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebAppExtendedMachineListResultValueList,
     nextLink: S.optional(S.String),
@@ -26848,7 +26693,7 @@ export interface ListWebApplicationsControllerByWebAppSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListWebApplicationsControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebApplicationsControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -26872,47 +26717,47 @@ export const ListWebApplicationsControllerByWebAppSiteRequest = /*@__PURE__*/ S.
 
 /** Gets the list of machine ARM Ids on which the SQL server is deployed. */
 export type WebApplicationPropertiesMachineArmIdsList = Array<string>;
-export const WebApplicationPropertiesMachineArmIdsList =
+const WebApplicationPropertiesMachineArmIdsList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebApplicationPropertiesMachineArmIdsList>;
 
 /** Gets the front end bindings for the application. */
 export type WebApplicationPropertiesBindingsList = Array<FrontEndBinding>;
-export const WebApplicationPropertiesBindingsList =
+const WebApplicationPropertiesBindingsList =
   IisWebApplicationPropertiesBindingsList as any as S.Schema<WebApplicationPropertiesBindingsList>;
 
 /** Gets the Error details. */
 export type WebApplicationPropertiesFrameworksList = Array<WebApplicationFramework>;
-export const WebApplicationPropertiesFrameworksList =
+const WebApplicationPropertiesFrameworksList =
   IisWebApplicationPropertiesFrameworksList as any as S.Schema<WebApplicationPropertiesFrameworksList>;
 
 /** Gets the configuration. */
 export type WebApplicationPropertiesConfigurationsList = Array<WebApplicationConfigurationUnit>;
-export const WebApplicationPropertiesConfigurationsList =
+const WebApplicationPropertiesConfigurationsList =
   IisWebApplicationPropertiesConfigurationsList as any as S.Schema<WebApplicationPropertiesConfigurationsList>;
 
 /** Gets the directories. */
 export type WebApplicationPropertiesDirectoriesList = Array<WebApplicationDirectoryUnit>;
-export const WebApplicationPropertiesDirectoriesList =
+const WebApplicationPropertiesDirectoriesList =
   IisWebApplicationPropertiesDirectoriesList as any as S.Schema<WebApplicationPropertiesDirectoriesList>;
 
 /** Gets tags that can be used with ODATA. */
 export type WebApplicationPropertiesTagsMap = { [key: string]: string | undefined };
-export const WebApplicationPropertiesTagsMap =
+const WebApplicationPropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<WebApplicationPropertiesTagsMap>;
 
 /** Static folders. */
 export type WebApplicationPropertiesStaticFoldersList = Array<string>;
-export const WebApplicationPropertiesStaticFoldersList =
+const WebApplicationPropertiesStaticFoldersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebApplicationPropertiesStaticFoldersList>;
 
 /** Gets the Error details. */
 export type WebApplicationPropertiesErrorsList = Array<HealthErrorDetails>;
-export const WebApplicationPropertiesErrorsList =
+const WebApplicationPropertiesErrorsList =
   HypervClusterPropertiesErrorsList as any as S.Schema<WebApplicationPropertiesErrorsList>;
 
 /** Gets the appliance names. */
 export type WebApplicationPropertiesApplianceNamesList = Array<string>;
-export const WebApplicationPropertiesApplianceNamesList =
+const WebApplicationPropertiesApplianceNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebApplicationPropertiesApplianceNamesList>;
 
 /** Class for web application properties. */
@@ -26960,7 +26805,7 @@ export interface WebApplicationProperties {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const WebApplicationProperties = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webServerId: S.optional(S.String),
     webServerName: S.optional(S.String),
@@ -26999,7 +26844,7 @@ export interface WebApplication {
   /** The resource-specific properties for this resource. */
   properties?: WebApplicationProperties;
 }
-export const WebApplication = /*@__PURE__*/ S.suspend(() =>
+const WebApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -27011,7 +26856,7 @@ export const WebApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebApplication items on this page */
 export type WebApplicationListResultValueList = Array<WebApplication>;
-export const WebApplicationListResultValueList = /*@__PURE__*/ S.Array(
+const WebApplicationListResultValueList = /*@__PURE__*/ S.Array(
   WebApplication,
 ) as any as S.Schema<WebApplicationListResultValueList>;
 
@@ -27022,7 +26867,7 @@ export interface WebApplicationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebApplicationListResult = /*@__PURE__*/ S.suspend(() =>
+const WebApplicationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebApplicationListResultValueList,
     nextLink: S.optional(S.String),
@@ -27039,7 +26884,7 @@ export interface ListWebAppRunAsAccountsControllerByWebAppSiteRequest {
   /** Web app site name. */
   webAppSiteName: string;
 }
-export const ListWebAppRunAsAccountsControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAppRunAsAccountsControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27059,13 +26904,8 @@ export const ListWebAppRunAsAccountsControllerByWebAppSiteRequest = /*@__PURE__*
 
 /** Run as account REST Resource. */
 export type WebAppRunAsAccount = HypervRunAsAccountResource;
-export const WebAppRunAsAccount = HypervRunAsAccountResource;
-
 /** The WebAppRunAsAccount items on this page */
 export type WebAppRunAsAccountListResultValueList = Array<HypervRunAsAccountResource>;
-export const WebAppRunAsAccountListResultValueList =
-  HypervRunAsAccountResourceListResultValueList as any as S.Schema<WebAppRunAsAccountListResultValueList>;
-
 /** The response of a WebAppRunAsAccount list operation. */
 export interface WebAppRunAsAccountListResult {
   /** The WebAppRunAsAccount items on this page */
@@ -27073,7 +26913,7 @@ export interface WebAppRunAsAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppRunAsAccountListResult =
+const WebAppRunAsAccountListResult =
   HypervRunAsAccountResourceListResult as any as S.Schema<WebAppRunAsAccountListResult>;
 
 export interface ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request {
@@ -27096,26 +26936,25 @@ export interface ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request {
   /** Total record count. */
   totalRecordCount?: number;
 }
-export const ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      projectName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      assessmentName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      continuationToken: S.optional(S.String.pipe(T.Query())),
-      totalRecordCount: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/webAppServicePlans",
-        code: 200,
-        apiVersion: "2024-01-15",
-      }),
-    ),
+const ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    assessmentName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    continuationToken: S.optional(S.String.pipe(T.Query())),
+    totalRecordCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/webAppServicePlans",
+      code: 200,
+      apiVersion: "2024-01-15",
+    }),
+  ),
 ).annotate({
   identifier: "ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request",
 }) as any as S.Schema<ListWebAppServicePlanV2OperationByWebAppAssessmentV2Request>;
@@ -27133,7 +26972,7 @@ export interface WebAppServicePlanV2 {
   /** The resource-specific properties for this resource. */
   properties?: WebAppServicePlanV2Properties;
 }
-export const WebAppServicePlanV2 = /*@__PURE__*/ S.suspend(() =>
+const WebAppServicePlanV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -27145,7 +26984,7 @@ export const WebAppServicePlanV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebAppServicePlanV2 items on this page */
 export type WebAppServicePlanV2ListResultValueList = Array<WebAppServicePlanV2>;
-export const WebAppServicePlanV2ListResultValueList = /*@__PURE__*/ S.Array(
+const WebAppServicePlanV2ListResultValueList = /*@__PURE__*/ S.Array(
   WebAppServicePlanV2,
 ) as any as S.Schema<WebAppServicePlanV2ListResultValueList>;
 
@@ -27156,7 +26995,7 @@ export interface WebAppServicePlanV2ListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppServicePlanV2ListResult = /*@__PURE__*/ S.suspend(() =>
+const WebAppServicePlanV2ListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebAppServicePlanV2ListResultValueList,
     nextLink: S.optional(S.String),
@@ -27173,7 +27012,7 @@ export interface ListWebAppSitesControllerByMasterSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const ListWebAppSitesControllerByMasterSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAppSitesControllerByMasterSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27203,7 +27042,7 @@ export interface WebAppSite {
   /** The resource-specific properties for this resource. */
   properties?: WebAppSiteProperties;
 }
-export const WebAppSite = /*@__PURE__*/ S.suspend(() =>
+const WebAppSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -27215,7 +27054,7 @@ export const WebAppSite = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebAppSite items on this page */
 export type WebAppSiteListResultValueList = Array<WebAppSite>;
-export const WebAppSiteListResultValueList = /*@__PURE__*/ S.Array(
+const WebAppSiteListResultValueList = /*@__PURE__*/ S.Array(
   WebAppSite,
 ) as any as S.Schema<WebAppSiteListResultValueList>;
 
@@ -27226,7 +27065,7 @@ export interface WebAppSiteListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebAppSiteListResult = /*@__PURE__*/ S.suspend(() =>
+const WebAppSiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WebAppSiteListResultValueList,
     nextLink: S.optional(S.String),
@@ -27251,7 +27090,7 @@ export interface ListWebServersControllerByWebAppSiteRequest {
   /** Total count of machines in the given site. */
   totalRecordCount?: number;
 }
-export const ListWebServersControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebServersControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27275,24 +27114,12 @@ export const ListWebServersControllerByWebAppSiteRequest = /*@__PURE__*/ S.suspe
 
 /** Gets the list of machines. */
 export type WebServerPropertiesMachineIdsList = Array<string>;
-export const WebServerPropertiesMachineIdsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebServerPropertiesMachineIdsList>;
-
 /** Gets the list of web applications. */
 export type WebServerPropertiesWebApplicationsList = Array<string>;
-export const WebServerPropertiesWebApplicationsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebServerPropertiesWebApplicationsList>;
-
 /** Gets the Error details. */
 export type WebServerPropertiesErrorsList = Array<HealthErrorDetails>;
-export const WebServerPropertiesErrorsList =
-  HypervClusterPropertiesErrorsList as any as S.Schema<WebServerPropertiesErrorsList>;
-
 /** Gets the appliance names. */
 export type WebServerPropertiesApplianceNamesList = Array<string>;
-export const WebServerPropertiesApplianceNamesList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<WebServerPropertiesApplianceNamesList>;
-
 /** Class for web server properties. */
 export interface WebServerProperties_2 {
   /** Gets the configuration location. */
@@ -27326,9 +27153,6 @@ export interface WebServerProperties_2 {
   /** provisioning state enum */
   provisioningState?: ProvisioningState_2;
 }
-export const WebServerProperties_2 =
-  IisWebServerProperties as any as S.Schema<WebServerProperties_2>;
-
 /** Web application REST Resource. */
 export interface WebServer_2 {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -27342,13 +27166,8 @@ export interface WebServer_2 {
   /** The resource-specific properties for this resource. */
   properties?: WebServerProperties_2;
 }
-export const WebServer_2 = IisWebServers as any as S.Schema<WebServer_2>;
-
 /** The WebServer items on this page */
 export type WebServerListResultValueList = Array<WebServer_2>;
-export const WebServerListResultValueList =
-  IisWebServersListResultValueList as any as S.Schema<WebServerListResultValueList>;
-
 /** The response of a WebServer list operation. */
 export interface WebServerListResult {
   /** The WebServer items on this page */
@@ -27356,7 +27175,7 @@ export interface WebServerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WebServerListResult = IisWebServersListResult as any as S.Schema<WebServerListResult>;
+const WebServerListResult = IisWebServersListResult as any as S.Schema<WebServerListResult>;
 
 export interface ListWebServersControllerWebServersRequest {
   /** The ID of the target subscription. */
@@ -27370,7 +27189,7 @@ export interface ListWebServersControllerWebServersRequest {
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
 }
-export const ListWebServersControllerWebServersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebServersControllerWebServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27390,7 +27209,7 @@ export const ListWebServersControllerWebServersRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListWebServersControllerWebServersRequest>;
 
 export type WebServerCollectionValueList = Array<WebServer>;
-export const WebServerCollectionValueList = /*@__PURE__*/ S.Array(
+const WebServerCollectionValueList = /*@__PURE__*/ S.Array(
   WebServer,
 ) as any as S.Schema<WebServerCollectionValueList>;
 
@@ -27399,7 +27218,7 @@ export interface WebServerCollection {
   value?: WebServerCollectionValueList;
   nextLink?: string;
 }
-export const WebServerCollection = /*@__PURE__*/ S.suspend(() =>
+const WebServerCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WebServerCollectionValueList),
     nextLink: S.optional(S.String),
@@ -27418,7 +27237,7 @@ export interface ListWebSitesControllerWebSitesRequest {
   /** The number of items to be returned in a single page. This value is honored only if it is less than the 100. */
   pageSize?: number;
 }
-export const ListWebSitesControllerWebSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebSitesControllerWebSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27438,7 +27257,7 @@ export const ListWebSitesControllerWebSitesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListWebSitesControllerWebSitesRequest>;
 
 export type WebSiteCollectionValueList = Array<WebSite>;
-export const WebSiteCollectionValueList = /*@__PURE__*/ S.Array(
+const WebSiteCollectionValueList = /*@__PURE__*/ S.Array(
   WebSite,
 ) as any as S.Schema<WebSiteCollectionValueList>;
 
@@ -27447,7 +27266,7 @@ export interface WebSiteCollection {
   value?: WebSiteCollectionValueList;
   nextLink?: string;
 }
-export const WebSiteCollection = /*@__PURE__*/ S.suspend(() =>
+const WebSiteCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WebSiteCollectionValueList),
     nextLink: S.optional(S.String),
@@ -27464,7 +27283,7 @@ export interface MasterSitesControllerErrorSummaryRequest {
   /** Gets or sets the Appliance Name. */
   applianceName?: string;
 }
-export const MasterSitesControllerErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const MasterSitesControllerErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27490,7 +27309,7 @@ export interface MigrateProjectsControllerDeleteMigrateProjectRequest {
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
 }
-export const MigrateProjectsControllerDeleteMigrateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateProjectsControllerDeleteMigrateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27508,7 +27327,7 @@ export const MigrateProjectsControllerDeleteMigrateProjectRequest = /*@__PURE__*
 }) as any as S.Schema<MigrateProjectsControllerDeleteMigrateProjectRequest>;
 
 export interface MigrateProjectsControllerDeleteMigrateProjectResponse {}
-export const MigrateProjectsControllerDeleteMigrateProjectResponse =
+const MigrateProjectsControllerDeleteMigrateProjectResponse =
   PrivateEndpointConnectionProxyPropertiesInput as any as S.Schema<MigrateProjectsControllerDeleteMigrateProjectResponse>;
 
 export interface MigrateProjectsControllerGetMigrateProjectRequest {
@@ -27519,7 +27338,7 @@ export interface MigrateProjectsControllerGetMigrateProjectRequest {
   /** Name of the Azure Migrate project. */
   migrateProjectName: string;
 }
-export const MigrateProjectsControllerGetMigrateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateProjectsControllerGetMigrateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27541,7 +27360,7 @@ export type MigrateProjectPropertiesInputPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
   | "Disabled";
-export const MigrateProjectPropertiesInputPublicNetworkAccess = S.String;
+const MigrateProjectPropertiesInputPublicNetworkAccess = S.String;
 
 /** Properties of a migrate project. */
 export interface MigrateProjectPropertiesInput {
@@ -27552,7 +27371,7 @@ export interface MigrateProjectPropertiesInput {
   /** Gets or sets the state of public network access. */
   publicNetworkAccess?: MigrateProjectPropertiesInputPublicNetworkAccess | (string & {});
 }
-export const MigrateProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MigrateProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceEndpoint: S.optional(S.String),
     utilityStorageAccountId: S.optional(S.String),
@@ -27577,7 +27396,7 @@ export interface MigrateProjectsControllerPatchMigrateProjectRequest {
   /** Resource tags. */
   tags?: CreateAssessmentProjectsOperationRequestTagsMap;
 }
-export const MigrateProjectsControllerPatchMigrateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateProjectsControllerPatchMigrateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27613,7 +27432,7 @@ export interface MigrateProjectsControllerPutMigrateProjectRequest {
   /** Resource tags. */
   tags?: CreateAssessmentProjectsOperationRequestTagsMap;
 }
-export const MigrateProjectsControllerPutMigrateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateProjectsControllerPutMigrateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27639,7 +27458,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Gets the properties of the object. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState_2;
 }
-export const PrivateEndpointConnectionPropertiesInput =
+const PrivateEndpointConnectionPropertiesInput =
   PrivateEndpointConnectionPropertiesV2Input as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
 
 export interface PutPrivateEndpointConnectionControllerPrivateEndpointConnectionRequest {
@@ -27654,7 +27473,7 @@ export interface PutPrivateEndpointConnectionControllerPrivateEndpointConnection
   /** Gets the properties of the object. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const PutPrivateEndpointConnectionControllerPrivateEndpointConnectionRequest =
+const PutPrivateEndpointConnectionControllerPrivateEndpointConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -27676,7 +27495,7 @@ export const PutPrivateEndpointConnectionControllerPrivateEndpointConnectionRequ
 
 /** Gets or sets the goal for which summary needs to be refreshed. */
 export type RefreshMigrateProjectsControllerSummaryRequestGoal = "Servers" | "Databases";
-export const RefreshMigrateProjectsControllerSummaryRequestGoal = S.String;
+const RefreshMigrateProjectsControllerSummaryRequestGoal = S.String;
 
 export interface RefreshMigrateProjectsControllerSummaryRequest {
   /** The ID of the target subscription. */
@@ -27688,7 +27507,7 @@ export interface RefreshMigrateProjectsControllerSummaryRequest {
   /** Gets or sets the goal for which summary needs to be refreshed. */
   goal?: RefreshMigrateProjectsControllerSummaryRequestGoal | (string & {});
 }
-export const RefreshMigrateProjectsControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshMigrateProjectsControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27711,7 +27530,7 @@ export interface RefreshSummaryResult {
   /** Gets or sets a value indicating whether the migrate project summary is refreshed. */
   isRefreshed?: boolean;
 }
-export const RefreshSummaryResult = /*@__PURE__*/ S.suspend(() =>
+const RefreshSummaryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isRefreshed: S.optional(S.Boolean),
   }),
@@ -27725,7 +27544,7 @@ export interface RefreshServerSitesControllerSiteRequest {
   /** Site name */
   siteName: string;
 }
-export const RefreshServerSitesControllerSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshServerSitesControllerSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27743,7 +27562,7 @@ export const RefreshServerSitesControllerSiteRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RefreshServerSitesControllerSiteRequest>;
 
 export type RefreshServerSitesControllerSiteResponse = unknown;
-export const RefreshServerSitesControllerSiteResponse =
+const RefreshServerSitesControllerSiteResponse =
   DeleteEventsControllerResponse as any as S.Schema<RefreshServerSitesControllerSiteResponse>;
 
 export interface RefreshSqlSitesControllerRequest {
@@ -27758,7 +27577,7 @@ export interface RefreshSqlSitesControllerRequest {
   /** Gets or sets the appliance name of the agent in the site. */
   applianceName?: string;
 }
-export const RefreshSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27778,7 +27597,7 @@ export const RefreshSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshSqlSitesControllerRequest>;
 
 export type RefreshSqlSitesControllerResponse = unknown;
-export const RefreshSqlSitesControllerResponse =
+const RefreshSqlSitesControllerResponse =
   DeleteEventsControllerResponse as any as S.Schema<RefreshSqlSitesControllerResponse>;
 
 export interface RefreshWebAppSitesControllerRequest {
@@ -27793,7 +27612,7 @@ export interface RefreshWebAppSitesControllerRequest {
   /** Gets or sets the appliance name of the agent in the site. */
   applianceName?: string;
 }
-export const RefreshWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27813,7 +27632,7 @@ export const RefreshWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshWebAppSitesControllerRequest>;
 
 export type RefreshWebAppSitesControllerResponse = unknown;
-export const RefreshWebAppSitesControllerResponse =
+const RefreshWebAppSitesControllerResponse =
   DeleteEventsControllerResponse as any as S.Schema<RefreshWebAppSitesControllerResponse>;
 
 /** Gets or sets the tool to be registered. */
@@ -27843,7 +27662,7 @@ export type RegisterMigrateProjectsControllerToolRequestTool =
   | "Modernization"
   | "ServerMigration_DataReplication"
   | "Unknown";
-export const RegisterMigrateProjectsControllerToolRequestTool = S.String;
+const RegisterMigrateProjectsControllerToolRequestTool = S.String;
 
 export interface RegisterMigrateProjectsControllerToolRequest {
   /** The ID of the target subscription. */
@@ -27855,7 +27674,7 @@ export interface RegisterMigrateProjectsControllerToolRequest {
   /** Gets or sets the tool to be registered. */
   tool?: RegisterMigrateProjectsControllerToolRequestTool | (string & {});
 }
-export const RegisterMigrateProjectsControllerToolRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterMigrateProjectsControllerToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27878,7 +27697,7 @@ export interface RegistrationResult {
   /** Gets or sets a value indicating whether the tool is registered or not. */
   isRegistered?: boolean;
 }
-export const RegistrationResult = /*@__PURE__*/ S.suspend(() =>
+const RegistrationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isRegistered: S.optional(S.Boolean),
   }),
@@ -27904,7 +27723,7 @@ export interface ServerDependencyMapControllerClientGroupMembersRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const ServerDependencyMapControllerClientGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ServerDependencyMapControllerClientGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27928,7 +27747,7 @@ export const ServerDependencyMapControllerClientGroupMembersRequest = /*@__PURE_
 }) as any as S.Schema<ServerDependencyMapControllerClientGroupMembersRequest>;
 
 export type ServerDependencyMapControllerClientGroupMembersResponse = unknown;
-export const ServerDependencyMapControllerClientGroupMembersResponse =
+const ServerDependencyMapControllerClientGroupMembersResponse =
   DeleteEventsControllerResponse as any as S.Schema<ServerDependencyMapControllerClientGroupMembersResponse>;
 
 export interface ServerDependencyMapControllerServerGroupMembersRequest {
@@ -27947,7 +27766,7 @@ export interface ServerDependencyMapControllerServerGroupMembersRequest {
   /** optional filters */
   filters?: DependencyMapServiceMapextensionsDependencyMapRequestFilters;
 }
-export const ServerDependencyMapControllerServerGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ServerDependencyMapControllerServerGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -27969,7 +27788,7 @@ export const ServerDependencyMapControllerServerGroupMembersRequest = /*@__PURE_
 }) as any as S.Schema<ServerDependencyMapControllerServerGroupMembersRequest>;
 
 export type ServerDependencyMapControllerServerGroupMembersResponse = unknown;
-export const ServerDependencyMapControllerServerGroupMembersResponse =
+const ServerDependencyMapControllerServerGroupMembersResponse =
   DeleteEventsControllerResponse as any as S.Schema<ServerDependencyMapControllerServerGroupMembersResponse>;
 
 export interface ServerSitesControllerComputeErrorSummaryRequest {
@@ -27980,7 +27799,7 @@ export interface ServerSitesControllerComputeErrorSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const ServerSitesControllerComputeErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ServerSitesControllerComputeErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28005,7 +27824,7 @@ export interface ServerSitesControllerComputeusageRequest {
   /** Site name */
   siteName: string;
 }
-export const ServerSitesControllerComputeusageRequest = /*@__PURE__*/ S.suspend(() =>
+const ServerSitesControllerComputeusageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28029,7 +27848,7 @@ export interface ServerSiteUsageResponse {
   /** Gets or sets the number of servers part of the site. */
   serverCount: number;
 }
-export const ServerSiteUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const ServerSiteUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runAsAccounts: S.Number,
     serverCount: S.Number,
@@ -28044,7 +27863,7 @@ export interface ServerSitesControllerSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const ServerSitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ServerSitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28068,7 +27887,7 @@ export interface ServerSiteUsage {
   /** Gets or sets the number of servers part of the site. */
   serverCount?: number;
 }
-export const ServerSiteUsage = /*@__PURE__*/ S.suspend(() =>
+const ServerSiteUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runAsAccountCount: S.optional(S.Number),
     serverCount: S.optional(S.Number),
@@ -28083,7 +27902,7 @@ export interface SitesControllerComputeErrorSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const SitesControllerComputeErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const SitesControllerComputeErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28108,7 +27927,7 @@ export interface SitesControllerComputeusageRequest {
   /** Site name */
   siteName: string;
 }
-export const SitesControllerComputeusageRequest = /*@__PURE__*/ S.suspend(() =>
+const SitesControllerComputeusageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28134,7 +27953,7 @@ export interface VmwareSiteUsage {
   /** Gets or sets the number of vCenters part of the site. */
   vCenterCount?: number;
 }
-export const VmwareSiteUsage = /*@__PURE__*/ S.suspend(() =>
+const VmwareSiteUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineCount: S.optional(S.Number),
     runAsAccountCount: S.optional(S.Number),
@@ -28150,7 +27969,7 @@ export interface SitesControllerSummaryRequest {
   /** Site name */
   siteName: string;
 }
-export const SitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const SitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28177,7 +27996,7 @@ export interface SolutionsControllerCleanupDataRequest {
   /** Unique name of a migration solution within a migrate project. */
   solutionName: string;
 }
-export const SolutionsControllerCleanupDataRequest = /*@__PURE__*/ S.suspend(() =>
+const SolutionsControllerCleanupDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28196,7 +28015,7 @@ export const SolutionsControllerCleanupDataRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SolutionsControllerCleanupDataRequest>;
 
 export type SolutionsControllerCleanupDataResponse = unknown;
-export const SolutionsControllerCleanupDataResponse =
+const SolutionsControllerCleanupDataResponse =
   DeleteEventsControllerResponse as any as S.Schema<SolutionsControllerCleanupDataResponse>;
 
 export interface SqlSitesControllerErrorSummaryRequest {
@@ -28211,7 +28030,7 @@ export interface SqlSitesControllerErrorSummaryRequest {
   /** Gets or sets the Appliance Name. */
   applianceName?: string;
 }
-export const SqlSitesControllerErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlSitesControllerErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28240,7 +28059,7 @@ export interface SqlSitesControllerSummaryRequest {
   /** SQL site name. */
   sqlSiteName: string;
 }
-export const SqlSitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const SqlSitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28267,7 +28086,7 @@ export interface SqlSiteUsage {
   /** Gets or sets the number of run as accounts in the site. */
   runAsAccountCount?: number;
 }
-export const SqlSiteUsage = /*@__PURE__*/ S.suspend(() =>
+const SqlSiteUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverCount: S.optional(S.Number),
     databaseCount: S.optional(S.Number),
@@ -28285,7 +28104,7 @@ export interface StartMachinesControllerRequest {
   /** Machine name */
   machineName: string;
 }
-export const StartMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const StartMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28304,7 +28123,7 @@ export const StartMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartMachinesControllerRequest>;
 
 export type StartMachinesControllerResponse = unknown;
-export const StartMachinesControllerResponse =
+const StartMachinesControllerResponse =
   DeleteEventsControllerResponse as any as S.Schema<StartMachinesControllerResponse>;
 
 export interface StopMachinesControllerRequest {
@@ -28317,7 +28136,7 @@ export interface StopMachinesControllerRequest {
   /** Machine name */
   machineName: string;
 }
-export const StopMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const StopMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28336,12 +28155,12 @@ export const StopMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopMachinesControllerRequest>;
 
 export type StopMachinesControllerResponse = unknown;
-export const StopMachinesControllerResponse =
+const StopMachinesControllerResponse =
   DeleteEventsControllerResponse as any as S.Schema<StopMachinesControllerResponse>;
 
 /** Resource tags. */
 export type UpdateAssessmentProjectsOperationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAssessmentProjectsOperationRequestTagsMap =
+const UpdateAssessmentProjectsOperationRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateAssessmentProjectsOperationRequestTagsMap>;
 
 /** The updatable properties of the AssessmentProject. */
@@ -28361,7 +28180,7 @@ export interface AssessmentProjectUpdateProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState | (string & {});
 }
-export const AssessmentProjectUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const AssessmentProjectUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assessmentSolutionId: S.optional(S.String),
     projectStatus: S.optional(ProjectStatus),
@@ -28386,7 +28205,7 @@ export interface UpdateAssessmentProjectsOperationRequest {
   tags?: UpdateAssessmentProjectsOperationRequestTagsMap;
   properties?: AssessmentProjectUpdateProperties;
 }
-export const UpdateAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28409,9 +28228,6 @@ export const UpdateAssessmentProjectsOperationRequest = /*@__PURE__*/ S.suspend(
 export type UpdateAssessmentProjectsOperationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UpdateAssessmentProjectsOperationResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateAssessmentProjectsOperationResponseTagsMap>;
-
 export interface UpdateAssessmentProjectsOperationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -28428,15 +28244,15 @@ export interface UpdateAssessmentProjectsOperationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProjectProperties;
 }
-export const UpdateAssessmentProjectsOperationResponse =
+const UpdateAssessmentProjectsOperationResponse =
   CreateAssessmentProjectsOperationResponse as any as S.Schema<UpdateAssessmentProjectsOperationResponse>;
 
 export type GroupUpdateOperation = "Add" | "Remove";
-export const GroupUpdateOperation = S.String;
+const GroupUpdateOperation = S.String;
 
 /** List of machine names that are part of this group. */
 export type GroupBodyPropertiesMachinesList = Array<string>;
-export const GroupBodyPropertiesMachinesList =
+const GroupBodyPropertiesMachinesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<GroupBodyPropertiesMachinesList>;
 
 /** Body properties of group update. */
@@ -28446,7 +28262,7 @@ export interface GroupBodyProperties {
   /** List of machine names that are part of this group. */
   machines?: GroupBodyPropertiesMachinesList;
 }
-export const GroupBodyProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupBodyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationType: S.optional(GroupUpdateOperation),
     machines: S.optional(GroupBodyPropertiesMachinesList),
@@ -28467,7 +28283,7 @@ export interface UpdateGroupsOperationMachinesRequest {
   /** Properties of the group. */
   properties?: GroupBodyProperties;
 }
-export const UpdateGroupsOperationMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupsOperationMachinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28499,7 +28315,7 @@ export interface UpdateGroupsOperationMachinesResponse {
   /** The resource-specific properties for this resource. */
   properties?: GroupProperties;
 }
-export const UpdateGroupsOperationMachinesResponse =
+const UpdateGroupsOperationMachinesResponse =
   CreateGroupsOperationResponse as any as S.Schema<UpdateGroupsOperationMachinesResponse>;
 
 /** Machine class. */
@@ -28509,7 +28325,7 @@ export interface DependencyMapMachineInput {
   /** Gets or sets a value indicating whether dependency mapping is to be enabled or not. */
   isDependencyMapToBeEnabled?: boolean;
 }
-export const DependencyMapMachineInput = /*@__PURE__*/ S.suspend(() =>
+const DependencyMapMachineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineId: S.optional(S.String),
     isDependencyMapToBeEnabled: S.optional(S.Boolean),
@@ -28521,7 +28337,7 @@ export const DependencyMapMachineInput = /*@__PURE__*/ S.suspend(() =>
 /** Gets or sets the machine collection. */
 export type UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList =
   Array<DependencyMapMachineInput>;
-export const UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList =
+const UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList =
   /*@__PURE__*/ S.Array(
     DependencyMapMachineInput,
   ) as any as S.Schema<UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList>;
@@ -28536,36 +28352,34 @@ export interface UpdateHypervDependencyMapControllerDependencyMapStatusRequest {
   /** Gets or sets the machine collection. */
   machines?: UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList;
 }
-export const UpdateHypervDependencyMapControllerDependencyMapStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      siteName: S.String.pipe(T.Label()),
-      machines: S.optional(
-        UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/updateDependencyMapStatus",
-        code: 200,
-        apiVersion: "2023-06-06",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateHypervDependencyMapControllerDependencyMapStatusRequest",
-  }) as any as S.Schema<UpdateHypervDependencyMapControllerDependencyMapStatusRequest>;
+const UpdateHypervDependencyMapControllerDependencyMapStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    siteName: S.String.pipe(T.Label()),
+    machines: S.optional(UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/updateDependencyMapStatus",
+      code: 200,
+      apiVersion: "2023-06-06",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateHypervDependencyMapControllerDependencyMapStatusRequest",
+}) as any as S.Schema<UpdateHypervDependencyMapControllerDependencyMapStatusRequest>;
 
 export type UpdateHypervDependencyMapControllerDependencyMapStatusResponse = unknown;
-export const UpdateHypervDependencyMapControllerDependencyMapStatusResponse =
-  /*@__PURE__*/ S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-    identifier: "UpdateHypervDependencyMapControllerDependencyMapStatusResponse",
-  }) as any as S.Schema<UpdateHypervDependencyMapControllerDependencyMapStatusResponse>;
+const UpdateHypervDependencyMapControllerDependencyMapStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Unknown.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "UpdateHypervDependencyMapControllerDependencyMapStatusResponse",
+}) as any as S.Schema<UpdateHypervDependencyMapControllerDependencyMapStatusResponse>;
 
 /** Gets or sets tags on the resource. */
 export type HypervMachineUpdatePropertiesTagsMap = { [key: string]: string | undefined };
-export const HypervMachineUpdatePropertiesTagsMap =
+const HypervMachineUpdatePropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<HypervMachineUpdatePropertiesTagsMap>;
 
 /** The updatable properties of the HypervMachine. */
@@ -28589,7 +28403,7 @@ export interface HypervMachineUpdateProperties {
   /** Gets or sets tags on the resource. */
   tags?: HypervMachineUpdatePropertiesTagsMap;
 }
-export const HypervMachineUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const HypervMachineUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firmware: S.optional(S.String),
     runAsAccountId: S.optional(S.String),
@@ -28616,7 +28430,7 @@ export interface UpdateHypervMachinesControllerRequest {
   machineName: string;
   properties?: HypervMachineUpdateProperties;
 }
-export const UpdateHypervMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHypervMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28647,12 +28461,12 @@ export interface UpdateHypervMachinesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: HypervMachineProperties;
 }
-export const UpdateHypervMachinesControllerResponse =
+const UpdateHypervMachinesControllerResponse =
   GetHypervMachinesControllerResponse as any as S.Schema<UpdateHypervMachinesControllerResponse>;
 
 /** machine tags */
 export type MachineMetadataTagsMap = { [key: string]: string | undefined };
-export const MachineMetadataTagsMap =
+const MachineMetadataTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<MachineMetadataTagsMap>;
 
 /** The properties of Machine MetaData */
@@ -28664,7 +28478,7 @@ export interface MachineMetadata {
   /** machine tags */
   tags: MachineMetadataTagsMap;
 }
-export const MachineMetadata = /*@__PURE__*/ S.suspend(() =>
+const MachineMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineArmId: S.String,
     dependencyMapping: S.String,
@@ -28674,7 +28488,7 @@ export const MachineMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Machine MetaData. */
 export type UpdateHypervMachinesControllerPropertiesRequestValueList = Array<MachineMetadata>;
-export const UpdateHypervMachinesControllerPropertiesRequestValueList = /*@__PURE__*/ S.Array(
+const UpdateHypervMachinesControllerPropertiesRequestValueList = /*@__PURE__*/ S.Array(
   MachineMetadata,
 ) as any as S.Schema<UpdateHypervMachinesControllerPropertiesRequestValueList>;
 
@@ -28688,7 +28502,7 @@ export interface UpdateHypervMachinesControllerPropertiesRequest {
   /** The list of Machine MetaData. */
   value: UpdateHypervMachinesControllerPropertiesRequestValueList;
 }
-export const UpdateHypervMachinesControllerPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHypervMachinesControllerPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28707,18 +28521,16 @@ export const UpdateHypervMachinesControllerPropertiesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<UpdateHypervMachinesControllerPropertiesRequest>;
 
 export type UpdateHypervMachinesControllerPropertiesResponse = unknown;
-export const UpdateHypervMachinesControllerPropertiesResponse =
+const UpdateHypervMachinesControllerPropertiesResponse =
   DeleteEventsControllerResponse as any as S.Schema<UpdateHypervMachinesControllerPropertiesResponse>;
 
 /** Resource tags. */
 export type UpdateHypervSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateHypervSitesControllerRequestTagsMap =
+const UpdateHypervSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateHypervSitesControllerRequestTagsMap>;
 
 /** The updatable properties of the HypervSite. */
 export type HypervSiteUpdatePropertiesInput = SitePropertiesInput;
-export const HypervSiteUpdatePropertiesInput = SitePropertiesInput;
-
 export interface UpdateHypervSitesControllerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -28730,7 +28542,7 @@ export interface UpdateHypervSitesControllerRequest {
   tags?: UpdateHypervSitesControllerRequestTagsMap;
   properties?: SitePropertiesInput;
 }
-export const UpdateHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28751,9 +28563,6 @@ export const UpdateHypervSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateHypervSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateHypervSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateHypervSitesControllerResponseTagsMap>;
-
 export interface UpdateHypervSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -28770,12 +28579,12 @@ export interface UpdateHypervSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const UpdateHypervSitesControllerResponse =
+const UpdateHypervSitesControllerResponse =
   CreateHypervSitesControllerResponse as any as S.Schema<UpdateHypervSitesControllerResponse>;
 
 /** Gets or sets tags on the resource. */
 export type IisWebApplicationsUpdatePropertiesTagsMap = { [key: string]: string | undefined };
-export const IisWebApplicationsUpdatePropertiesTagsMap =
+const IisWebApplicationsUpdatePropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<IisWebApplicationsUpdatePropertiesTagsMap>;
 
 /** The updatable properties of the IisWebApplications. */
@@ -28783,7 +28592,7 @@ export interface IisWebApplicationsUpdateProperties {
   /** Gets or sets tags on the resource. */
   tags?: IisWebApplicationsUpdatePropertiesTagsMap;
 }
-export const IisWebApplicationsUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const IisWebApplicationsUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(IisWebApplicationsUpdatePropertiesTagsMap),
   }),
@@ -28804,7 +28613,7 @@ export interface UpdateIisWebApplicationsControllerRequest {
   webApplicationName: string;
   properties?: IisWebApplicationsUpdateProperties;
 }
-export const UpdateIisWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIisWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28836,18 +28645,16 @@ export interface UpdateIisWebApplicationsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: IisWebApplicationProperties;
 }
-export const UpdateIisWebApplicationsControllerResponse =
+const UpdateIisWebApplicationsControllerResponse =
   GetIisWebApplicationsControllerResponse as any as S.Schema<UpdateIisWebApplicationsControllerResponse>;
 
 /** Resource tags. */
 export type UpdateImportSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateImportSitesControllerRequestTagsMap =
+const UpdateImportSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateImportSitesControllerRequestTagsMap>;
 
 /** The updatable properties of the ImportSite. */
 export type ImportSiteUpdateProperties = ImportSitePropertiesInput;
-export const ImportSiteUpdateProperties = ImportSitePropertiesInput;
-
 export interface UpdateImportSitesControllerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -28859,7 +28666,7 @@ export interface UpdateImportSitesControllerRequest {
   tags?: UpdateImportSitesControllerRequestTagsMap;
   properties?: ImportSitePropertiesInput;
 }
-export const UpdateImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28880,9 +28687,6 @@ export const UpdateImportSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateImportSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateImportSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateImportSitesControllerResponseTagsMap>;
-
 export interface UpdateImportSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -28899,14 +28703,11 @@ export interface UpdateImportSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: ImportSiteProperties;
 }
-export const UpdateImportSitesControllerResponse =
+const UpdateImportSitesControllerResponse =
   CreateImportSitesControllerResponse as any as S.Schema<UpdateImportSitesControllerResponse>;
 
 /** Gets or sets tags on the VMware machine. */
 export type MachineResourceUpdatePropertiesTagsMap = { [key: string]: string | undefined };
-export const MachineResourceUpdatePropertiesTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<MachineResourceUpdatePropertiesTagsMap>;
-
 /** The updatable properties of the MachineResource. */
 export interface MachineResourceUpdateProperties {
   /** Gets or sets the firmware. */
@@ -28928,7 +28729,7 @@ export interface MachineResourceUpdateProperties {
   /** Gets or sets tags on the VMware machine. */
   tags?: MachineResourceUpdatePropertiesTagsMap;
 }
-export const MachineResourceUpdateProperties =
+const MachineResourceUpdateProperties =
   HypervMachineUpdateProperties as any as S.Schema<MachineResourceUpdateProperties>;
 
 export interface UpdateMachinesControllerRequest {
@@ -28942,7 +28743,7 @@ export interface UpdateMachinesControllerRequest {
   machineName: string;
   properties?: MachineResourceUpdateProperties;
 }
-export const UpdateMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMachinesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -28973,19 +28774,16 @@ export interface UpdateMachinesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: VmwareMachineProperties;
 }
-export const UpdateMachinesControllerResponse =
+const UpdateMachinesControllerResponse =
   GetMachinesControllerResponse as any as S.Schema<UpdateMachinesControllerResponse>;
 
 /** Resource tags. */
 export type UpdateMasterSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMasterSitesControllerRequestTagsMap =
+const UpdateMasterSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateMasterSitesControllerRequestTagsMap>;
 
 /** Gets or sets the sites that are a part of Master Site. The key should contain the Site ARM name. */
 export type MasterSiteUpdatePropertiesSitesList = Array<string>;
-export const MasterSiteUpdatePropertiesSitesList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<MasterSiteUpdatePropertiesSitesList>;
-
 /** The updatable properties of the MasterSite. */
 export interface MasterSiteUpdateProperties {
   /** Gets or sets the state of public network access. */
@@ -28997,7 +28795,7 @@ export interface MasterSiteUpdateProperties {
   /** Gets or sets a value for customer storage account ARM id. */
   customerStorageAccountArmId?: string;
 }
-export const MasterSiteUpdateProperties =
+const MasterSiteUpdateProperties =
   MasterSitePropertiesInput as any as S.Schema<MasterSiteUpdateProperties>;
 
 export interface UpdateMasterSitesControllerRequest {
@@ -29011,7 +28809,7 @@ export interface UpdateMasterSitesControllerRequest {
   tags?: UpdateMasterSitesControllerRequestTagsMap;
   properties?: MasterSiteUpdateProperties;
 }
-export const UpdateMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29032,9 +28830,6 @@ export const UpdateMasterSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMasterSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMasterSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateMasterSitesControllerResponseTagsMap>;
-
 export interface UpdateMasterSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -29051,13 +28846,11 @@ export interface UpdateMasterSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: MasterSiteProperties;
 }
-export const UpdateMasterSitesControllerResponse =
+const UpdateMasterSitesControllerResponse =
   CreateMasterSitesControllerResponse as any as S.Schema<UpdateMasterSitesControllerResponse>;
 
 /** The private endpoint resource. */
 export type PrivateEndpointInput = PrivateEndpointConnectionProxyPropertiesInput;
-export const PrivateEndpointInput = PrivateEndpointConnectionProxyPropertiesInput;
-
 /** Properties of the private endpoint connection. */
 export interface UpdatePrivateEndpointConnectionOperationRequestProperties {
   /** The private endpoint resource. */
@@ -29065,12 +28858,11 @@ export interface UpdatePrivateEndpointConnectionOperationRequestProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const UpdatePrivateEndpointConnectionOperationRequestProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointConnectionProxyPropertiesInput),
-      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-    }),
+const UpdatePrivateEndpointConnectionOperationRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateEndpoint: S.optional(PrivateEndpointConnectionProxyPropertiesInput),
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+  }),
 ).annotate({
   identifier: "UpdatePrivateEndpointConnectionOperationRequestProperties",
 }) as any as S.Schema<UpdatePrivateEndpointConnectionOperationRequestProperties>;
@@ -29087,7 +28879,7 @@ export interface UpdatePrivateEndpointConnectionOperationRequest {
   /** Properties of the private endpoint connection. */
   properties?: UpdatePrivateEndpointConnectionOperationRequestProperties;
 }
-export const UpdatePrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29108,7 +28900,7 @@ export const UpdatePrivateEndpointConnectionOperationRequest = /*@__PURE__*/ S.s
 
 /** The group ids for the private endpoint resource. */
 export type UpdatePrivateEndpointConnectionOperationResponsePropertiesGroupIdsList = Array<string>;
-export const UpdatePrivateEndpointConnectionOperationResponsePropertiesGroupIdsList =
+const UpdatePrivateEndpointConnectionOperationResponsePropertiesGroupIdsList =
   DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList as any as S.Schema<UpdatePrivateEndpointConnectionOperationResponsePropertiesGroupIdsList>;
 
 /** Properties of the private endpoint connection. */
@@ -29122,14 +28914,13 @@ export interface UpdatePrivateEndpointConnectionOperationResponseProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const UpdatePrivateEndpointConnectionOperationResponseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      groupIds: S.optional(UpdatePrivateEndpointConnectionOperationResponsePropertiesGroupIdsList),
-      privateEndpoint: S.optional(PrivateEndpoint),
-      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-      provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
-    }),
+const UpdatePrivateEndpointConnectionOperationResponseProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupIds: S.optional(UpdatePrivateEndpointConnectionOperationResponsePropertiesGroupIdsList),
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
+  }),
 ).annotate({
   identifier: "UpdatePrivateEndpointConnectionOperationResponseProperties",
 }) as any as S.Schema<UpdatePrivateEndpointConnectionOperationResponseProperties>;
@@ -29146,7 +28937,7 @@ export interface UpdatePrivateEndpointConnectionOperationResponse {
   /** Properties of the private endpoint connection. */
   properties?: UpdatePrivateEndpointConnectionOperationResponseProperties;
 }
-export const UpdatePrivateEndpointConnectionOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateEndpointConnectionOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -29169,7 +28960,7 @@ export interface ServerNetworkAdapterInput {
   /** Gets or sets Type of the IP address. */
   ipAddressType?: string;
 }
-export const ServerNetworkAdapterInput = /*@__PURE__*/ S.suspend(() =>
+const ServerNetworkAdapterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nicId: S.optional(S.String),
     macAddress: S.optional(S.String),
@@ -29182,18 +28973,18 @@ export const ServerNetworkAdapterInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the network adapters of the server. */
 export type ServerUpdatePropertiesInputNetworkAdaptersList = Array<ServerNetworkAdapterInput>;
-export const ServerUpdatePropertiesInputNetworkAdaptersList = /*@__PURE__*/ S.Array(
+const ServerUpdatePropertiesInputNetworkAdaptersList = /*@__PURE__*/ S.Array(
   ServerNetworkAdapterInput,
 ) as any as S.Schema<ServerUpdatePropertiesInputNetworkAdaptersList>;
 
 /** Gets or sets the disk details of server. */
 export type ServerUpdatePropertiesInputDisksList = Array<ServerDisk>;
-export const ServerUpdatePropertiesInputDisksList =
+const ServerUpdatePropertiesInputDisksList =
   ServerPropertiesDisksList as any as S.Schema<ServerUpdatePropertiesInputDisksList>;
 
 /** Gets or sets tags on the Server machine. */
 export type ServerUpdatePropertiesInputTagsMap = { [key: string]: unknown | undefined };
-export const ServerUpdatePropertiesInputTagsMap =
+const ServerUpdatePropertiesInputTagsMap =
   ServerPropertiesTagsMap as any as S.Schema<ServerUpdatePropertiesInputTagsMap>;
 
 /** The updatable properties of the Server. */
@@ -29229,7 +29020,7 @@ export interface ServerUpdatePropertiesInput {
   /** Provisioning state of the server resource. */
   provisioningState?: ProvisioningState_2 | (string & {});
 }
-export const ServerUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ServerUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
     networkAdapters: S.optional(ServerUpdatePropertiesInputNetworkAdaptersList),
@@ -29262,7 +29053,7 @@ export interface UpdateServersControllerMachineRequest {
   machineName: string;
   properties?: ServerUpdatePropertiesInput;
 }
-export const UpdateServersControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServersControllerMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29293,18 +29084,16 @@ export interface UpdateServersControllerMachineResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServerProperties;
 }
-export const UpdateServersControllerMachineResponse =
+const UpdateServersControllerMachineResponse =
   GetServersControllerMachineResponse as any as S.Schema<UpdateServersControllerMachineResponse>;
 
 /** Resource tags. */
 export type UpdateServerSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServerSitesControllerRequestTagsMap =
+const UpdateServerSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateServerSitesControllerRequestTagsMap>;
 
 /** The updatable properties of the ServerSiteResource. */
 export type ServerSiteResourceUpdatePropertiesInput = SitesPropertiesInput;
-export const ServerSiteResourceUpdatePropertiesInput = SitesPropertiesInput;
-
 export interface UpdateServerSitesControllerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -29316,7 +29105,7 @@ export interface UpdateServerSitesControllerRequest {
   tags?: UpdateServerSitesControllerRequestTagsMap;
   properties?: SitesPropertiesInput;
 }
-export const UpdateServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29337,9 +29126,6 @@ export const UpdateServerSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServerSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServerSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateServerSitesControllerResponseTagsMap>;
-
 export interface UpdateServerSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -29356,13 +29142,13 @@ export interface UpdateServerSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
 }
-export const UpdateServerSitesControllerResponse =
+const UpdateServerSitesControllerResponse =
   CreateHypervSitesControllerResponse as any as S.Schema<UpdateServerSitesControllerResponse>;
 
 /** Gets or sets the machine collection. */
 export type UpdateServerSitesControllerDependencyMapStatusRequestMachinesList =
   Array<DependencyMapMachineInput>;
-export const UpdateServerSitesControllerDependencyMapStatusRequestMachinesList =
+const UpdateServerSitesControllerDependencyMapStatusRequestMachinesList =
   UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList as any as S.Schema<UpdateServerSitesControllerDependencyMapStatusRequestMachinesList>;
 
 export interface UpdateServerSitesControllerDependencyMapStatusRequest {
@@ -29375,7 +29161,7 @@ export interface UpdateServerSitesControllerDependencyMapStatusRequest {
   /** Gets or sets the machine collection. */
   machines?: UpdateServerSitesControllerDependencyMapStatusRequestMachinesList;
 }
-export const UpdateServerSitesControllerDependencyMapStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServerSitesControllerDependencyMapStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29394,12 +29180,12 @@ export const UpdateServerSitesControllerDependencyMapStatusRequest = /*@__PURE__
 }) as any as S.Schema<UpdateServerSitesControllerDependencyMapStatusRequest>;
 
 export type UpdateServerSitesControllerDependencyMapStatusResponse = unknown;
-export const UpdateServerSitesControllerDependencyMapStatusResponse =
+const UpdateServerSitesControllerDependencyMapStatusResponse =
   DeleteEventsControllerResponse as any as S.Schema<UpdateServerSitesControllerDependencyMapStatusResponse>;
 
 /** The list of Machine MetaData. */
 export type UpdateServerSitesControllerPropertiesRequestValueList = Array<MachineMetadata>;
-export const UpdateServerSitesControllerPropertiesRequestValueList =
+const UpdateServerSitesControllerPropertiesRequestValueList =
   UpdateHypervMachinesControllerPropertiesRequestValueList as any as S.Schema<UpdateServerSitesControllerPropertiesRequestValueList>;
 
 export interface UpdateServerSitesControllerPropertiesRequest {
@@ -29412,7 +29198,7 @@ export interface UpdateServerSitesControllerPropertiesRequest {
   /** The list of Machine MetaData. */
   value: UpdateServerSitesControllerPropertiesRequestValueList;
 }
-export const UpdateServerSitesControllerPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServerSitesControllerPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29431,18 +29217,16 @@ export const UpdateServerSitesControllerPropertiesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<UpdateServerSitesControllerPropertiesRequest>;
 
 export type UpdateServerSitesControllerPropertiesResponse = unknown;
-export const UpdateServerSitesControllerPropertiesResponse =
+const UpdateServerSitesControllerPropertiesResponse =
   DeleteEventsControllerResponse as any as S.Schema<UpdateServerSitesControllerPropertiesResponse>;
 
 /** Resource tags. */
 export type UpdateSitesControllerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSitesControllerRequestTagsMap =
+const UpdateSitesControllerRequestTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateSitesControllerRequestTagsMap>;
 
 /** The updatable properties of the VmwareSite. */
 export type VmwareSiteUpdatePropertiesInput = SitePropertiesInput;
-export const VmwareSiteUpdatePropertiesInput = SitePropertiesInput;
-
 export interface UpdateSitesControllerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -29454,7 +29238,7 @@ export interface UpdateSitesControllerRequest {
   tags?: UpdateSitesControllerRequestTagsMap;
   properties?: SitePropertiesInput;
 }
-export const UpdateSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29475,9 +29259,6 @@ export const UpdateSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSitesControllerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSitesControllerResponseTagsMap =
-  CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<UpdateSitesControllerResponseTagsMap>;
-
 export interface UpdateSitesControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -29496,7 +29277,7 @@ export interface UpdateSitesControllerResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-export const UpdateSitesControllerResponse =
+const UpdateSitesControllerResponse =
   CreateSitesControllerResponse as any as S.Schema<UpdateSitesControllerResponse>;
 
 export interface UpdateSolutionsControllerRequest {
@@ -29513,7 +29294,7 @@ export interface UpdateSolutionsControllerRequest {
   /** Gets or sets the properties of the solution. */
   properties?: SolutionPropertiesInput;
 }
-export const UpdateSolutionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSolutionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29535,7 +29316,7 @@ export const UpdateSolutionsControllerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets tags on the resource. */
 export type SqlServerV2UpdatePropertiesTagsMap = { [key: string]: unknown | undefined };
-export const SqlServerV2UpdatePropertiesTagsMap =
+const SqlServerV2UpdatePropertiesTagsMap =
   ServerPropertiesTagsMap as any as S.Schema<SqlServerV2UpdatePropertiesTagsMap>;
 
 /** The updatable properties of the SqlServerV2. */
@@ -29599,7 +29380,7 @@ export interface SqlServerV2UpdateProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState_2 | (string & {});
 }
-export const SqlServerV2UpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const SqlServerV2UpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberOfAgDatabases: S.optional(S.Number),
     sqlFciProperties: S.optional(SqlFciProperties),
@@ -29648,7 +29429,7 @@ export interface UpdateSqlServersControllerRequest {
   sqlServerName: string;
   properties?: SqlServerV2UpdateProperties;
 }
-export const UpdateSqlServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSqlServersControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29680,16 +29461,15 @@ export interface UpdateSqlServersControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlServerProperties;
 }
-export const UpdateSqlServersControllerResponse =
+const UpdateSqlServersControllerResponse =
   GetSqlServersControllerResponse as any as S.Schema<UpdateSqlServersControllerResponse>;
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
   Array<SiteAppliancePropertiesInput>;
-export const SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
-  /*@__PURE__*/ S.Array(
-    SiteAppliancePropertiesInput,
-  ) as any as S.Schema<SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList>;
+const SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList = /*@__PURE__*/ S.Array(
+  SiteAppliancePropertiesInput,
+) as any as S.Schema<SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList>;
 
 /** The updatable properties of the SqlSite. */
 export interface SqlSiteUpdatePropertiesInput {
@@ -29698,7 +29478,7 @@ export interface SqlSiteUpdatePropertiesInput {
   /** Gets or sets the discovery scenario. */
   discoveryScenario?: SqlSitePropertiesDiscoveryScenario | (string & {});
 }
-export const SqlSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SqlSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteAppliancePropertiesCollection: S.optional(
       SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList,
@@ -29720,7 +29500,7 @@ export interface UpdateSqlSitesControllerRequest {
   sqlSiteName: string;
   properties?: SqlSiteUpdatePropertiesInput;
 }
-export const UpdateSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSqlSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29751,7 +29531,7 @@ export interface UpdateSqlSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SqlSiteProperties;
 }
-export const UpdateSqlSitesControllerResponse =
+const UpdateSqlSitesControllerResponse =
   CreateSqlSitesControllerResponse as any as S.Schema<UpdateSqlSitesControllerResponse>;
 
 export interface UpdateTomcatWebApplicationsControllerRequest {
@@ -29766,7 +29546,7 @@ export interface UpdateTomcatWebApplicationsControllerRequest {
   /** Web application name. */
   webApplicationName: string;
 }
-export const UpdateTomcatWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTomcatWebApplicationsControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29797,13 +29577,13 @@ export interface UpdateTomcatWebApplicationsControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: TomcatWebApplicationProperties;
 }
-export const UpdateTomcatWebApplicationsControllerResponse =
+const UpdateTomcatWebApplicationsControllerResponse =
   GetTomcatWebApplicationsControllerResponse as any as S.Schema<UpdateTomcatWebApplicationsControllerResponse>;
 
 /** Gets or sets the machine collection. */
 export type UpdateVmwarePropertiesControllerDependencyMapStatusRequestMachinesList =
   Array<DependencyMapMachineInput>;
-export const UpdateVmwarePropertiesControllerDependencyMapStatusRequestMachinesList =
+const UpdateVmwarePropertiesControllerDependencyMapStatusRequestMachinesList =
   UpdateHypervDependencyMapControllerDependencyMapStatusRequestMachinesList as any as S.Schema<UpdateVmwarePropertiesControllerDependencyMapStatusRequestMachinesList>;
 
 export interface UpdateVmwarePropertiesControllerDependencyMapStatusRequest {
@@ -29816,32 +29596,31 @@ export interface UpdateVmwarePropertiesControllerDependencyMapStatusRequest {
   /** Gets or sets the machine collection. */
   machines?: UpdateVmwarePropertiesControllerDependencyMapStatusRequestMachinesList;
 }
-export const UpdateVmwarePropertiesControllerDependencyMapStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      siteName: S.String.pipe(T.Label()),
-      machines: S.optional(UpdateVmwarePropertiesControllerDependencyMapStatusRequestMachinesList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateDependencyMapStatus",
-        code: 200,
-        apiVersion: "2023-06-06",
-      }),
-    ),
+const UpdateVmwarePropertiesControllerDependencyMapStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    siteName: S.String.pipe(T.Label()),
+    machines: S.optional(UpdateVmwarePropertiesControllerDependencyMapStatusRequestMachinesList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateDependencyMapStatus",
+      code: 200,
+      apiVersion: "2023-06-06",
+    }),
+  ),
 ).annotate({
   identifier: "UpdateVmwarePropertiesControllerDependencyMapStatusRequest",
 }) as any as S.Schema<UpdateVmwarePropertiesControllerDependencyMapStatusRequest>;
 
 export type UpdateVmwarePropertiesControllerDependencyMapStatusResponse = unknown;
-export const UpdateVmwarePropertiesControllerDependencyMapStatusResponse =
+const UpdateVmwarePropertiesControllerDependencyMapStatusResponse =
   GenerateHypervDependencyMapControllerDetailedMapResponse as any as S.Schema<UpdateVmwarePropertiesControllerDependencyMapStatusResponse>;
 
 /** The list of Machine MetaData. */
 export type UpdateVmwarePropertiesControllerPropertiesRequestValueList = Array<MachineMetadata>;
-export const UpdateVmwarePropertiesControllerPropertiesRequestValueList =
+const UpdateVmwarePropertiesControllerPropertiesRequestValueList =
   UpdateHypervMachinesControllerPropertiesRequestValueList as any as S.Schema<UpdateVmwarePropertiesControllerPropertiesRequestValueList>;
 
 export interface UpdateVmwarePropertiesControllerPropertiesRequest {
@@ -29854,7 +29633,7 @@ export interface UpdateVmwarePropertiesControllerPropertiesRequest {
   /** The list of Machine MetaData. */
   value: UpdateVmwarePropertiesControllerPropertiesRequestValueList;
 }
-export const UpdateVmwarePropertiesControllerPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVmwarePropertiesControllerPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29873,7 +29652,7 @@ export const UpdateVmwarePropertiesControllerPropertiesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<UpdateVmwarePropertiesControllerPropertiesRequest>;
 
 export type UpdateVmwarePropertiesControllerPropertiesResponse = unknown;
-export const UpdateVmwarePropertiesControllerPropertiesResponse =
+const UpdateVmwarePropertiesControllerPropertiesResponse =
   DeleteEventsControllerResponse as any as S.Schema<UpdateVmwarePropertiesControllerPropertiesResponse>;
 
 /** Machine class. */
@@ -29883,7 +29662,7 @@ export interface RunAsAccountMachineInput {
   /** run as AccountId */
   runAsAccountId?: string;
 }
-export const RunAsAccountMachineInput = /*@__PURE__*/ S.suspend(() =>
+const RunAsAccountMachineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineId: S.optional(S.String),
     runAsAccountId: S.optional(S.String),
@@ -29893,10 +29672,9 @@ export const RunAsAccountMachineInput = /*@__PURE__*/ S.suspend(() =>
 /** Gets or sets the machine collection. */
 export type UpdateVmwarePropertiesControllerRunAsAccountRequestMachinesList =
   Array<RunAsAccountMachineInput>;
-export const UpdateVmwarePropertiesControllerRunAsAccountRequestMachinesList =
-  /*@__PURE__*/ S.Array(
-    RunAsAccountMachineInput,
-  ) as any as S.Schema<UpdateVmwarePropertiesControllerRunAsAccountRequestMachinesList>;
+const UpdateVmwarePropertiesControllerRunAsAccountRequestMachinesList = /*@__PURE__*/ S.Array(
+  RunAsAccountMachineInput,
+) as any as S.Schema<UpdateVmwarePropertiesControllerRunAsAccountRequestMachinesList>;
 
 export interface UpdateVmwarePropertiesControllerRunAsAccountRequest {
   /** The ID of the target subscription. */
@@ -29908,7 +29686,7 @@ export interface UpdateVmwarePropertiesControllerRunAsAccountRequest {
   /** Gets or sets the machine collection. */
   machines?: UpdateVmwarePropertiesControllerRunAsAccountRequestMachinesList;
 }
-export const UpdateVmwarePropertiesControllerRunAsAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVmwarePropertiesControllerRunAsAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29927,12 +29705,12 @@ export const UpdateVmwarePropertiesControllerRunAsAccountRequest = /*@__PURE__*/
 }) as any as S.Schema<UpdateVmwarePropertiesControllerRunAsAccountRequest>;
 
 export type UpdateVmwarePropertiesControllerRunAsAccountResponse = unknown;
-export const UpdateVmwarePropertiesControllerRunAsAccountResponse =
+const UpdateVmwarePropertiesControllerRunAsAccountResponse =
   DeleteEventsControllerResponse as any as S.Schema<UpdateVmwarePropertiesControllerRunAsAccountResponse>;
 
 /** run as AccountId */
 export type TagsMachineInputTagsMap = { [key: string]: string | undefined };
-export const TagsMachineInputTagsMap =
+const TagsMachineInputTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<TagsMachineInputTagsMap>;
 
 /** Machine class. */
@@ -29942,7 +29720,7 @@ export interface TagsMachineInput {
   /** run as AccountId */
   tags?: TagsMachineInputTagsMap;
 }
-export const TagsMachineInput = /*@__PURE__*/ S.suspend(() =>
+const TagsMachineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineId: S.optional(S.String),
     tags: S.optional(TagsMachineInputTagsMap),
@@ -29951,7 +29729,7 @@ export const TagsMachineInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the machine collection. */
 export type UpdateVmwarePropertiesControllerTagsRequestMachinesList = Array<TagsMachineInput>;
-export const UpdateVmwarePropertiesControllerTagsRequestMachinesList = /*@__PURE__*/ S.Array(
+const UpdateVmwarePropertiesControllerTagsRequestMachinesList = /*@__PURE__*/ S.Array(
   TagsMachineInput,
 ) as any as S.Schema<UpdateVmwarePropertiesControllerTagsRequestMachinesList>;
 
@@ -29965,7 +29743,7 @@ export interface UpdateVmwarePropertiesControllerTagsRequest {
   /** Gets or sets the machine collection. */
   machines?: UpdateVmwarePropertiesControllerTagsRequestMachinesList;
 }
-export const UpdateVmwarePropertiesControllerTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVmwarePropertiesControllerTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -29984,12 +29762,12 @@ export const UpdateVmwarePropertiesControllerTagsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateVmwarePropertiesControllerTagsRequest>;
 
 export type UpdateVmwarePropertiesControllerTagsResponse = unknown;
-export const UpdateVmwarePropertiesControllerTagsResponse =
+const UpdateVmwarePropertiesControllerTagsResponse =
   DeleteEventsControllerResponse as any as S.Schema<UpdateVmwarePropertiesControllerTagsResponse>;
 
 /** Gets or sets Tags. */
 export type WebAppPropertiesTagsMap = { [key: string]: string | undefined };
-export const WebAppPropertiesTagsMap =
+const WebAppPropertiesTagsMap =
   CreateAssessmentProjectsOperationRequestTagsMap as any as S.Schema<WebAppPropertiesTagsMap>;
 
 /** Class representing web app properties web model. */
@@ -29999,7 +29777,7 @@ export interface WebAppProperties {
   /** Gets or sets Tags. */
   tags?: WebAppPropertiesTagsMap;
 }
-export const WebAppProperties = /*@__PURE__*/ S.suspend(() =>
+const WebAppProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webAppArmId: S.optional(S.String),
     tags: S.optional(WebAppPropertiesTagsMap),
@@ -30008,7 +29786,7 @@ export const WebAppProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of web app properties. */
 export type UpdateWebAppPropertiesControllerPropertiesRequestWebAppsList = Array<WebAppProperties>;
-export const UpdateWebAppPropertiesControllerPropertiesRequestWebAppsList = /*@__PURE__*/ S.Array(
+const UpdateWebAppPropertiesControllerPropertiesRequestWebAppsList = /*@__PURE__*/ S.Array(
   WebAppProperties,
 ) as any as S.Schema<UpdateWebAppPropertiesControllerPropertiesRequestWebAppsList>;
 
@@ -30024,7 +29802,7 @@ export interface UpdateWebAppPropertiesControllerPropertiesRequest {
   /** Gets or sets the list of web app properties. */
   webApps?: UpdateWebAppPropertiesControllerPropertiesRequestWebAppsList;
 }
-export const UpdateWebAppPropertiesControllerPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebAppPropertiesControllerPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -30044,13 +29822,13 @@ export const UpdateWebAppPropertiesControllerPropertiesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<UpdateWebAppPropertiesControllerPropertiesRequest>;
 
 export type UpdateWebAppPropertiesControllerPropertiesResponse = unknown;
-export const UpdateWebAppPropertiesControllerPropertiesResponse =
+const UpdateWebAppPropertiesControllerPropertiesResponse =
   DeleteEventsControllerResponse as any as S.Schema<UpdateWebAppPropertiesControllerPropertiesResponse>;
 
 /** Gets or sets the appliance details used by service to communicate to the appliance. */
 export type WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
   Array<SiteAppliancePropertiesInput>;
-export const WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
+const WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList =
   SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList as any as S.Schema<WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList>;
 
 /** The updatable properties of the WebAppSite. */
@@ -30060,7 +29838,7 @@ export interface WebAppSiteUpdatePropertiesInput {
   /** Gets or sets the discovery scenario. */
   discoveryScenario?: WebAppSitePropertiesDiscoveryScenario | (string & {});
 }
-export const WebAppSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WebAppSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteAppliancePropertiesCollection: S.optional(
       WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList,
@@ -30082,7 +29860,7 @@ export interface UpdateWebAppSitesControllerRequest {
   webAppSiteName: string;
   properties?: WebAppSiteUpdatePropertiesInput;
 }
-export const UpdateWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebAppSitesControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -30113,7 +29891,7 @@ export interface UpdateWebAppSitesControllerResponse {
   /** The resource-specific properties for this resource. */
   properties?: WebAppSiteProperties;
 }
-export const UpdateWebAppSitesControllerResponse =
+const UpdateWebAppSitesControllerResponse =
   CreateWebAppSitesControllerResponse as any as S.Schema<UpdateWebAppSitesControllerResponse>;
 
 export interface ValidatePrivateEndpointConnectionProxyControllerRequest {
@@ -30128,7 +29906,7 @@ export interface ValidatePrivateEndpointConnectionProxyControllerRequest {
   eTag?: string;
   properties?: PrivateEndpointConnectionProxyPropertiesInput;
 }
-export const ValidatePrivateEndpointConnectionProxyControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidatePrivateEndpointConnectionProxyControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -30160,7 +29938,7 @@ export interface WebAppSitesControllerErrorSummaryRequest {
   /** Gets or sets the Appliance Name. */
   applianceName?: string;
 }
-export const WebAppSitesControllerErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAppSitesControllerErrorSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -30189,7 +29967,7 @@ export interface WebAppSitesControllerSummaryRequest {
   /** Web app site name. */
   webAppSiteName: string;
 }
-export const WebAppSitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAppSitesControllerSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -30216,7 +29994,7 @@ export interface WebAppSiteUsage {
   /** Gets or sets the number of run as accounts in the site. */
   runAsAccountCount?: number;
 }
-export const WebAppSiteUsage = /*@__PURE__*/ S.suspend(() =>
+const WebAppSiteUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webServerCount: S.optional(S.Number),
     webApplicationCount: S.optional(S.Number),

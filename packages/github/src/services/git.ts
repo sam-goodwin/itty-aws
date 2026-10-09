@@ -54,7 +54,7 @@ export interface CreateBlobRequest {
   /** The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported. */
   encoding?: string;
 }
-export const CreateBlobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBlobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -68,7 +68,7 @@ export interface ShortBlob {
   url: string;
   sha: string;
 }
-export const ShortBlob = /*@__PURE__*/ S.suspend(() =>
+const ShortBlob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     sha: S.String,
@@ -77,7 +77,7 @@ export const ShortBlob = /*@__PURE__*/ S.suspend(() =>
 
 /** The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided. */
 export type CreateCommitRequestParentsList = Array<string>;
-export const CreateCommitRequestParentsList = /*@__PURE__*/ S.Array(
+const CreateCommitRequestParentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCommitRequestParentsList>;
 
@@ -90,7 +90,7 @@ export interface CreateCommitRequestAuthor {
   /** Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   date?: string;
 }
-export const CreateCommitRequestAuthor = /*@__PURE__*/ S.suspend(() =>
+const CreateCommitRequestAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     email: S.String,
@@ -109,7 +109,7 @@ export interface CreateCommitRequestCommitter {
   /** Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   date?: string;
 }
-export const CreateCommitRequestCommitter = /*@__PURE__*/ S.suspend(() =>
+const CreateCommitRequestCommitter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     email: S.optional(S.String),
@@ -137,7 +137,7 @@ export interface CreateCommitRequest {
   /** The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits. */
   signature?: string;
 }
-export const CreateCommitRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -159,7 +159,7 @@ export interface GitCommitAuthor {
   /** Name of the git user */
   name: string;
 }
-export const GitCommitAuthor = /*@__PURE__*/ S.suspend(() =>
+const GitCommitAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String,
     email: S.String,
@@ -169,14 +169,12 @@ export const GitCommitAuthor = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifying information for the git-user */
 export type GitCommitCommitter = GitCommitAuthor;
-export const GitCommitCommitter = GitCommitAuthor;
-
 export interface GitCommitTree {
   /** SHA for the commit */
   sha: string;
   url: string;
 }
-export const GitCommitTree = /*@__PURE__*/ S.suspend(() =>
+const GitCommitTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     url: S.String,
@@ -189,7 +187,7 @@ export interface GitCommitParentsItem {
   url: string;
   html_url: string;
 }
-export const GitCommitParentsItem = /*@__PURE__*/ S.suspend(() =>
+const GitCommitParentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     url: S.String,
@@ -198,7 +196,7 @@ export const GitCommitParentsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitCommitParentsItem" }) as any as S.Schema<GitCommitParentsItem>;
 
 export type GitCommitParentsList = Array<GitCommitParentsItem>;
-export const GitCommitParentsList = /*@__PURE__*/ S.Array(
+const GitCommitParentsList = /*@__PURE__*/ S.Array(
   GitCommitParentsItem,
 ) as any as S.Schema<GitCommitParentsList>;
 
@@ -209,7 +207,7 @@ export interface GitCommitVerification {
   payload: string | null;
   verified_at: string | null;
 }
-export const GitCommitVerification = /*@__PURE__*/ S.suspend(() =>
+const GitCommitVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verified: S.Boolean,
     reason: S.String,
@@ -236,7 +234,7 @@ export interface GitCommit {
   verification: GitCommitVerification;
   html_url: string;
 }
-export const GitCommit = /*@__PURE__*/ S.suspend(() =>
+const GitCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     node_id: S.String,
@@ -261,7 +259,7 @@ export interface CreateRefRequest {
   /** The SHA1 value for this reference. */
   sha: string;
 }
-export const CreateRefRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -276,7 +274,7 @@ export interface GitRefObject {
   sha: string;
   url: string;
 }
-export const GitRefObject = /*@__PURE__*/ S.suspend(() =>
+const GitRefObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     sha: S.String,
@@ -291,7 +289,7 @@ export interface GitRef {
   url: string;
   object: GitRefObject;
 }
-export const GitRef = /*@__PURE__*/ S.suspend(() =>
+const GitRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String,
     node_id: S.String,
@@ -302,7 +300,7 @@ export const GitRef = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`. */
 export type CreateTagRequestType = "commit" | "tree" | "blob";
-export const CreateTagRequestType = S.String;
+const CreateTagRequestType = S.String;
 
 /** An object with information about the individual creating the tag. */
 export interface CreateTagRequestTagger {
@@ -313,7 +311,7 @@ export interface CreateTagRequestTagger {
   /** When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   date?: string;
 }
-export const CreateTagRequestTagger = /*@__PURE__*/ S.suspend(() =>
+const CreateTagRequestTagger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     email: S.String,
@@ -337,7 +335,7 @@ export interface CreateTagRequest {
   /** An object with information about the individual creating the tag. */
   tagger?: CreateTagRequestTagger;
 }
-export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -354,14 +352,14 @@ export interface GitTagTagger {
   email: string;
   name: string;
 }
-export const GitTagTagger = GitCommitAuthor as any as S.Schema<GitTagTagger>;
+const GitTagTagger = GitCommitAuthor as any as S.Schema<GitTagTagger>;
 
 export interface GitTagObject {
   sha: string;
   type: string;
   url: string;
 }
-export const GitTagObject = /*@__PURE__*/ S.suspend(() =>
+const GitTagObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     type: S.String,
@@ -376,7 +374,7 @@ export interface Verification {
   signature: string | null;
   verified_at: string | null;
 }
-export const Verification = /*@__PURE__*/ S.suspend(() =>
+const Verification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verified: S.Boolean,
     reason: S.String,
@@ -400,7 +398,7 @@ export interface GitTag {
   object: GitTagObject;
   verification?: Verification;
 }
-export const GitTag = /*@__PURE__*/ S.suspend(() =>
+const GitTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     node_id: S.String,
     tag: S.String,
@@ -415,11 +413,11 @@ export const GitTag = /*@__PURE__*/ S.suspend(() =>
 
 /** The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink. */
 export type CreateTreeRequestTreeItemMode = "100644" | "100755" | "040000" | "160000" | "120000";
-export const CreateTreeRequestTreeItemMode = S.String;
+const CreateTreeRequestTreeItemMode = S.String;
 
 /** Either `blob`, `tree`, or `commit`. */
 export type CreateTreeRequestTreeItemType = "blob" | "tree" | "commit";
-export const CreateTreeRequestTreeItemType = S.String;
+const CreateTreeRequestTreeItemType = S.String;
 
 export interface CreateTreeRequestTreeItem {
   /** The file referenced in the tree. */
@@ -433,7 +431,7 @@ export interface CreateTreeRequestTreeItem {
   /** The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`. **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error. */
   content?: string;
 }
-export const CreateTreeRequestTreeItem = /*@__PURE__*/ S.suspend(() =>
+const CreateTreeRequestTreeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     mode: S.optional(CreateTreeRequestTreeItemMode),
@@ -447,7 +445,7 @@ export const CreateTreeRequestTreeItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure. */
 export type CreateTreeRequestTreeList = Array<CreateTreeRequestTreeItem>;
-export const CreateTreeRequestTreeList = /*@__PURE__*/ S.Array(
+const CreateTreeRequestTreeList = /*@__PURE__*/ S.Array(
   CreateTreeRequestTreeItem,
 ) as any as S.Schema<CreateTreeRequestTreeList>;
 
@@ -461,7 +459,7 @@ export interface CreateTreeRequest {
   /** The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on. If not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit. */
   base_tree?: string;
 }
-export const CreateTreeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTreeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -478,7 +476,7 @@ export interface GitTreeTreeItem {
   size?: number;
   url?: string;
 }
-export const GitTreeTreeItem = /*@__PURE__*/ S.suspend(() =>
+const GitTreeTreeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     mode: S.String,
@@ -491,9 +489,7 @@ export const GitTreeTreeItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Objects specifying a tree structure */
 export type GitTreeTreeList = Array<GitTreeTreeItem>;
-export const GitTreeTreeList = /*@__PURE__*/ S.Array(
-  GitTreeTreeItem,
-) as any as S.Schema<GitTreeTreeList>;
+const GitTreeTreeList = /*@__PURE__*/ S.Array(GitTreeTreeItem) as any as S.Schema<GitTreeTreeList>;
 
 /** The hierarchy between files in a Git repository. */
 export interface GitTree {
@@ -503,7 +499,7 @@ export interface GitTree {
   /** Objects specifying a tree structure */
   tree: GitTreeTreeList;
 }
-export const GitTree = /*@__PURE__*/ S.suspend(() =>
+const GitTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     url: S.optional(S.String),
@@ -520,7 +516,7 @@ export interface DeleteRefRequest {
   /** The Git reference. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation. */
   ref: string;
 }
-export const DeleteRefRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -529,7 +525,7 @@ export const DeleteRefRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRefRequest" }) as any as S.Schema<DeleteRefRequest>;
 
 export interface DeleteRefResponse {}
-export const DeleteRefResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteRefResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteRefResponse",
 }) as any as S.Schema<DeleteRefResponse>;
 
@@ -540,7 +536,7 @@ export interface GetBlobRequest {
   repo: string;
   file_sha: string;
 }
-export const GetBlobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -558,7 +554,7 @@ export interface Blob {
   node_id: string;
   highlighted_content?: string;
 }
-export const Blob = /*@__PURE__*/ S.suspend(() =>
+const Blob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     encoding: S.String,
@@ -578,7 +574,7 @@ export interface GetCommitRequest {
   /** The SHA of the commit. */
   commit_sha: string;
 }
-export const GetCommitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -596,7 +592,7 @@ export interface GetRefRequest {
   /** The Git reference. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation. */
   ref: string;
 }
-export const GetRefRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -611,7 +607,7 @@ export interface GetTagRequest {
   repo: string;
   tag_sha: string;
 }
-export const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -629,7 +625,7 @@ export interface GetTreeRequest {
   /** Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees. */
   recursive?: string;
 }
-export const GetTreeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTreeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -646,7 +642,7 @@ export interface ListMatchingRefsRequest {
   /** The Git reference. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation. */
   ref: string;
 }
-export const ListMatchingRefsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMatchingRefsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -657,12 +653,12 @@ export const ListMatchingRefsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMatchingRefsRequest" }) as any as S.Schema<ListMatchingRefsRequest>;
 
 export type ListMatchingRefsResponseBodyList = Array<GitRef>;
-export const ListMatchingRefsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMatchingRefsResponseBodyList = /*@__PURE__*/ S.Array(
   GitRef,
 ) as any as S.Schema<ListMatchingRefsResponseBodyList>;
 
 export type ListMatchingRefsResponse = ListMatchingRefsResponseBodyList;
-export const ListMatchingRefsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMatchingRefsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMatchingRefsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMatchingRefsResponse" }) as any as S.Schema<ListMatchingRefsResponse>;
 
@@ -678,7 +674,7 @@ export interface UpdateRefRequest {
   /** Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work. */
   force?: boolean;
 }
-export const UpdateRefRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),

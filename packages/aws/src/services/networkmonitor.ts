@@ -123,13 +123,13 @@ export type Arn = string;
 export type Destination = string;
 export type Port = number;
 export type Protocol = "TCP" | "ICMP" | (string & {});
-export const Protocol = S.String;
+const Protocol = S.String;
 
 export type PacketSize = number;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateMonitorProbeInput {
   sourceArn: string;
   destination: string;
@@ -138,7 +138,7 @@ export interface CreateMonitorProbeInput {
   packetSize?: number;
   probeTags?: { [key: string]: string | undefined };
 }
-export const CreateMonitorProbeInput = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorProbeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceArn: S.String,
     destination: S.String,
@@ -149,7 +149,7 @@ export const CreateMonitorProbeInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateMonitorProbeInput" }) as any as S.Schema<CreateMonitorProbeInput>;
 export type CreateMonitorProbeInputList = CreateMonitorProbeInput[];
-export const CreateMonitorProbeInputList = /*@__PURE__*/ S.Array(CreateMonitorProbeInput);
+const CreateMonitorProbeInputList = /*@__PURE__*/ S.Array(CreateMonitorProbeInput);
 export type AggregationPeriod = number;
 export interface CreateMonitorInput {
   monitorName: string;
@@ -158,7 +158,7 @@ export interface CreateMonitorInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateMonitorInput = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorName: S.String,
     probes: S.optional(CreateMonitorProbeInputList),
@@ -169,7 +169,7 @@ export const CreateMonitorInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMonitorInput" }) as any as S.Schema<CreateMonitorInput>;
 export type MonitorArn = string;
 export type MonitorState = "PENDING" | "ACTIVE" | "INACTIVE" | "ERROR" | "DELETING" | (string & {});
-export const MonitorState = S.String;
+const MonitorState = S.String;
 
 export interface CreateMonitorOutput {
   monitorArn: string;
@@ -178,7 +178,7 @@ export interface CreateMonitorOutput {
   aggregationPeriod?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorArn: S.String,
     monitorName: S.String,
@@ -195,7 +195,7 @@ export interface ProbeInput {
   packetSize?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const ProbeInput = /*@__PURE__*/ S.suspend(() =>
+const ProbeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceArn: S.String,
     destination: S.String,
@@ -211,7 +211,7 @@ export interface CreateProbeInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateProbeInput = /*@__PURE__*/ S.suspend(() =>
+const CreateProbeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorName: S.String.pipe(T.HttpLabel("monitorName")),
     probe: ProbeInput,
@@ -230,7 +230,7 @@ export const CreateProbeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateProbeInput" }) as any as S.Schema<CreateProbeInput>;
 export type ProbeId = string;
 export type AddressFamily = "IPV4" | "IPV6" | (string & {});
-export const AddressFamily = S.String;
+const AddressFamily = S.String;
 
 export type VpcId = string;
 export type ProbeState =
@@ -241,7 +241,7 @@ export type ProbeState =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const ProbeState = S.String;
+const ProbeState = S.String;
 
 export type Iso8601Timestamp = Date;
 export interface CreateProbeOutput {
@@ -259,7 +259,7 @@ export interface CreateProbeOutput {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateProbeOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateProbeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     probeId: S.optional(S.String),
     probeArn: S.optional(S.String),
@@ -279,7 +279,7 @@ export const CreateProbeOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMonitorInput {
   monitorName: string;
 }
-export const DeleteMonitorInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonitorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ monitorName: S.String.pipe(T.HttpLabel("monitorName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/monitors/{monitorName}" }),
@@ -292,14 +292,14 @@ export const DeleteMonitorInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteMonitorInput" }) as any as S.Schema<DeleteMonitorInput>;
 export interface DeleteMonitorOutput {}
-export const DeleteMonitorOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteMonitorOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteMonitorOutput",
 }) as any as S.Schema<DeleteMonitorOutput>;
 export interface DeleteProbeInput {
   monitorName: string;
   probeId: string;
 }
-export const DeleteProbeInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteProbeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorName: S.String.pipe(T.HttpLabel("monitorName")),
     probeId: S.String.pipe(T.HttpLabel("probeId")),
@@ -315,11 +315,11 @@ export const DeleteProbeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteProbeInput" }) as any as S.Schema<DeleteProbeInput>;
 export interface DeleteProbeOutput {}
-export const DeleteProbeOutput = DeleteMonitorOutput as any as S.Schema<DeleteProbeOutput>;
+const DeleteProbeOutput = DeleteMonitorOutput as any as S.Schema<DeleteProbeOutput>;
 export interface GetMonitorInput {
   monitorName: string;
 }
-export const GetMonitorInput = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ monitorName: S.String.pipe(T.HttpLabel("monitorName")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/monitors/{monitorName}" }), svc, auth, proto, ver, rules),
   ),
@@ -339,9 +339,9 @@ export interface Probe {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const Probe = CreateProbeOutput as any as S.Schema<Probe>;
+const Probe = CreateProbeOutput as any as S.Schema<Probe>;
 export type ProbeList = Probe[];
-export const ProbeList = /*@__PURE__*/ S.Array(Probe);
+const ProbeList = /*@__PURE__*/ S.Array(Probe);
 export interface GetMonitorOutput {
   monitorArn: string;
   monitorName: string;
@@ -352,7 +352,7 @@ export interface GetMonitorOutput {
   createdAt: Date;
   modifiedAt: Date;
 }
-export const GetMonitorOutput = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorArn: S.String,
     monitorName: S.String,
@@ -368,7 +368,7 @@ export interface GetProbeInput {
   monitorName: string;
   probeId: string;
 }
-export const GetProbeInput = /*@__PURE__*/ S.suspend(() =>
+const GetProbeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorName: S.String.pipe(T.HttpLabel("monitorName")),
     probeId: S.String.pipe(T.HttpLabel("probeId")),
@@ -398,7 +398,7 @@ export interface GetProbeOutput {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const GetProbeOutput = CreateProbeOutput as any as S.Schema<GetProbeOutput>;
+const GetProbeOutput = CreateProbeOutput as any as S.Schema<GetProbeOutput>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface ListMonitorsInput {
@@ -406,7 +406,7 @@ export interface ListMonitorsInput {
   maxResults?: number;
   state?: string;
 }
-export const ListMonitorsInput = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -420,20 +420,20 @@ export interface MonitorSummary {
   aggregationPeriod?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const MonitorSummary = CreateMonitorOutput as any as S.Schema<MonitorSummary>;
+const MonitorSummary = CreateMonitorOutput as any as S.Schema<MonitorSummary>;
 export type MonitorList = MonitorSummary[];
-export const MonitorList = /*@__PURE__*/ S.Array(MonitorSummary);
+const MonitorList = /*@__PURE__*/ S.Array(MonitorSummary);
 export interface ListMonitorsOutput {
   monitors: MonitorSummary[];
   nextToken?: string;
 }
-export const ListMonitorsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ monitors: MonitorList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListMonitorsOutput" }) as any as S.Schema<ListMonitorsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -441,7 +441,7 @@ export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
@@ -450,20 +450,20 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = DeleteMonitorOutput as any as S.Schema<TagResourceOutput>;
+const TagResourceOutput = DeleteMonitorOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -472,12 +472,12 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = DeleteMonitorOutput as any as S.Schema<UntagResourceOutput>;
+const UntagResourceOutput = DeleteMonitorOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMonitorInput {
   monitorName: string;
   aggregationPeriod: number;
 }
-export const UpdateMonitorInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorName: S.String.pipe(T.HttpLabel("monitorName")),
     aggregationPeriod: S.Number,
@@ -499,7 +499,7 @@ export interface UpdateMonitorOutput {
   aggregationPeriod?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateMonitorOutput = CreateMonitorOutput as any as S.Schema<UpdateMonitorOutput>;
+const UpdateMonitorOutput = CreateMonitorOutput as any as S.Schema<UpdateMonitorOutput>;
 export interface UpdateProbeInput {
   monitorName: string;
   probeId: string;
@@ -509,7 +509,7 @@ export interface UpdateProbeInput {
   protocol?: Protocol;
   packetSize?: number;
 }
-export const UpdateProbeInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateProbeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorName: S.String.pipe(T.HttpLabel("monitorName")),
     probeId: S.String.pipe(T.HttpLabel("probeId")),
@@ -544,7 +544,7 @@ export interface UpdateProbeOutput {
   modifiedAt?: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateProbeOutput = CreateProbeOutput as any as S.Schema<UpdateProbeOutput>;
+const UpdateProbeOutput = CreateProbeOutput as any as S.Schema<UpdateProbeOutput>;
 export type CreateMonitorError =
   | AccessDeniedException
   | ConflictException

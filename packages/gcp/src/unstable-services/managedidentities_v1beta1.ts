@@ -62,10 +62,10 @@ export class NotFound
   ) {}
 
 export type TrustTrustTypeEnum = "TRUST_TYPE_UNSPECIFIED" | "FOREST" | "EXTERNAL";
-export const TrustTrustTypeEnum = S.String;
+const TrustTrustTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type TrustStateEnum =
   | "STATE_UNSPECIFIED"
@@ -74,14 +74,14 @@ export type TrustStateEnum =
   | "DELETING"
   | "CONNECTED"
   | "DISCONNECTED";
-export const TrustStateEnum = S.String;
+const TrustStateEnum = S.String;
 
 export type TrustTrustDirectionEnum =
   | "TRUST_DIRECTION_UNSPECIFIED"
   | "INBOUND"
   | "OUTBOUND"
   | "BIDIRECTIONAL";
-export const TrustTrustDirectionEnum = S.String;
+const TrustTrustDirectionEnum = S.String;
 
 /** Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain. */
 export interface Trust {
@@ -108,7 +108,7 @@ export interface Trust {
   /** Output only. The last heartbeat time when the trust was known to be connected. */
   lastTrustHeartbeatTime?: string;
 }
-export const Trust = /*@__PURE__*/ S.suspend(() =>
+const Trust = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     trustType: S.optional(TrustTrustTypeEnum),
@@ -129,7 +129,7 @@ export interface AttachTrustRequest {
   /** Required. The domain trust resource. */
   trust?: Trust;
 }
-export const AttachTrustRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachTrustRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trust: S.optional(Trust),
   }),
@@ -141,7 +141,7 @@ export interface AttachTrustProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: AttachTrustRequest;
 }
-export const AttachTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AttachTrustRequest.pipe(T.HttpBody())),
@@ -157,15 +157,10 @@ export const AttachTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<AttachTrustProjectsLocationsGlobalDomainsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -176,7 +171,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -197,7 +192,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -209,7 +204,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -219,7 +214,7 @@ export interface CancelProjectsLocationsGlobalOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -236,39 +231,36 @@ export const CancelProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.su
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** CheckMigrationPermissionRequest is the request message for CheckMigrationPermission method. */
 export type CheckMigrationPermissionRequest = CancelOperationRequest;
-export const CheckMigrationPermissionRequest = CancelOperationRequest;
-
 export interface CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   domain: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domain: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+domain}:checkMigrationPermission",
-        baseUrl: "https://managedidentities.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest",
-  }) as any as S.Schema<CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest>;
+const CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain: S.String.pipe(T.Label()),
+    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+domain}:checkMigrationPermission",
+      baseUrl: "https://managedidentities.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest",
+}) as any as S.Schema<CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest>;
 
 export type OnPremDomainSIDDetailsSidFilteringStateEnum =
   | "SID_FILTERING_STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
-export const OnPremDomainSIDDetailsSidFilteringStateEnum = S.String;
+const OnPremDomainSIDDetailsSidFilteringStateEnum = S.String;
 
 /** OnPremDomainDetails is the message which contains details of on-prem domain which is trusted and needs to be migrated. */
 export interface OnPremDomainSIDDetails {
@@ -277,7 +269,7 @@ export interface OnPremDomainSIDDetails {
   /** Current SID filtering state. */
   sidFilteringState?: OnPremDomainSIDDetailsSidFilteringStateEnum;
 }
-export const OnPremDomainSIDDetails = /*@__PURE__*/ S.suspend(() =>
+const OnPremDomainSIDDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     sidFilteringState: S.optional(OnPremDomainSIDDetailsSidFilteringStateEnum),
@@ -285,7 +277,7 @@ export const OnPremDomainSIDDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OnPremDomainSIDDetails" }) as any as S.Schema<OnPremDomainSIDDetails>;
 
 export type OnPremDomainSIDDetailsList = Array<OnPremDomainSIDDetails>;
-export const OnPremDomainSIDDetailsList = /*@__PURE__*/ S.Array(
+const OnPremDomainSIDDetailsList = /*@__PURE__*/ S.Array(
   OnPremDomainSIDDetails,
 ) as any as S.Schema<OnPremDomainSIDDetailsList>;
 
@@ -294,7 +286,7 @@ export type CheckMigrationPermissionResponseStateEnum =
   | "DISABLED"
   | "ENABLED"
   | "NEEDS_MAINTENANCE";
-export const CheckMigrationPermissionResponseStateEnum = S.String;
+const CheckMigrationPermissionResponseStateEnum = S.String;
 
 /** CheckMigrationPermissionResponse is the response message for CheckMigrationPermission method. */
 export interface CheckMigrationPermissionResponse {
@@ -303,7 +295,7 @@ export interface CheckMigrationPermissionResponse {
   /** The state of DomainMigration. */
   state?: CheckMigrationPermissionResponseStateEnum;
 }
-export const CheckMigrationPermissionResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckMigrationPermissionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onpremDomains: S.optional(OnPremDomainSIDDetailsList),
     state: S.optional(CheckMigrationPermissionResponseStateEnum),
@@ -313,7 +305,7 @@ export const CheckMigrationPermissionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckMigrationPermissionResponse>;
 
 export type TrustList = Array<Trust>;
-export const TrustList = /*@__PURE__*/ S.Array(Trust) as any as S.Schema<TrustList>;
+const TrustList = /*@__PURE__*/ S.Array(Trust) as any as S.Schema<TrustList>;
 
 export type DomainStateEnum =
   | "STATE_UNSPECIFIED"
@@ -324,10 +316,10 @@ export type DomainStateEnum =
   | "REPAIRING"
   | "PERFORMING_MAINTENANCE"
   | "UNAVAILABLE";
-export const DomainStateEnum = S.String;
+const DomainStateEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Represents a managed Microsoft Active Directory domain. If the domain is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state. */
 export interface Domain {
@@ -358,7 +350,7 @@ export interface Domain {
   /** Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. */
   name?: string;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trusts: S.optional(TrustList),
     authorizedNetworks: S.optional(StringList),
@@ -384,7 +376,7 @@ export interface CreateProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const CreateProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     domainName: S.optional(S.String.pipe(T.Query())),
@@ -401,10 +393,10 @@ export const CreateProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateProjectsLocationsGlobalDomainsRequest>;
 
 export type BackupTypeEnum = "TYPE_UNSPECIFIED" | "ON_DEMAND" | "SCHEDULED" | "SCHEMA_EXTENSION";
-export const BackupTypeEnum = S.String;
+const BackupTypeEnum = S.String;
 
 export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "FAILED" | "DELETING";
-export const BackupStateEnum = S.String;
+const BackupStateEnum = S.String;
 
 /** Represents a Managed Microsoft Identities backup. */
 export interface Backup {
@@ -425,7 +417,7 @@ export interface Backup {
   /** Optional. Resource labels to represent user provided metadata. */
   labels?: StringMap;
 }
-export const Backup = /*@__PURE__*/ S.suspend(() =>
+const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(BackupTypeEnum),
     statusMessage: S.optional(S.String),
@@ -446,7 +438,7 @@ export interface CreateProjectsLocationsGlobalDomainsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     backupId: S.optional(S.String.pipe(T.Query())),
@@ -468,7 +460,7 @@ export type PeeringStateEnum =
   | "CONNECTED"
   | "DISCONNECTED"
   | "DELETING";
-export const PeeringStateEnum = S.String;
+const PeeringStateEnum = S.String;
 
 /** Represents a Managed Microsoft Identities Peering. */
 export interface Peering {
@@ -489,7 +481,7 @@ export interface Peering {
   /** Output only. The time the instance was created. */
   createTime?: string;
 }
-export const Peering = /*@__PURE__*/ S.suspend(() =>
+const Peering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     authorizedNetwork: S.optional(S.String),
@@ -510,7 +502,7 @@ export interface CreateProjectsLocationsGlobalPeeringsRequest {
   /** Request body */
   body?: Peering;
 }
-export const CreateProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     peeringId: S.optional(S.String.pipe(T.Query())),
@@ -530,7 +522,7 @@ export interface DeleteProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -548,7 +540,7 @@ export interface DeleteProjectsLocationsGlobalDomainsBackupsRequest {
   /** Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -566,7 +558,7 @@ export interface DeleteProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -584,7 +576,7 @@ export interface DeleteProjectsLocationsGlobalPeeringsRequest {
   /** Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -603,7 +595,7 @@ export interface DetachTrustRequest {
   /** Required. The domain trust resource to removed. */
   trust?: Trust;
 }
-export const DetachTrustRequest = AttachTrustRequest as any as S.Schema<DetachTrustRequest>;
+const DetachTrustRequest = AttachTrustRequest as any as S.Schema<DetachTrustRequest>;
 
 export interface DetachTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
@@ -611,7 +603,7 @@ export interface DetachTrustProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: DetachTrustRequest;
 }
-export const DetachTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DetachTrustRequest.pipe(T.HttpBody())),
@@ -628,15 +620,13 @@ export const DetachTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.
 
 /** DisableMigrationRequest is the request message for DisableMigration method. */
 export type DisableMigrationRequest = CancelOperationRequest;
-export const DisableMigrationRequest = CancelOperationRequest;
-
 export interface DisableMigrationProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   domain: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const DisableMigrationProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableMigrationProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -660,7 +650,7 @@ export interface DomainJoinMachineRequest {
   /** Optional. force if True, forces domain join even if the computer account already exists. */
   force?: boolean;
 }
-export const DomainJoinMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainJoinMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ouName: S.optional(S.String),
     vmIdToken: S.optional(S.String),
@@ -674,7 +664,7 @@ export interface DomainJoinMachineProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: DomainJoinMachineRequest;
 }
-export const DomainJoinMachineProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainJoinMachineProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     body: S.optional(DomainJoinMachineRequest.pipe(T.HttpBody())),
@@ -694,7 +684,7 @@ export interface DomainJoinMachineResponse {
   /** The response is the offline domain join blob that is returned after running the djoin command. To correctly use the response of the API, please refer to the sample usage. */
   domainJoinBlob?: string;
 }
-export const DomainJoinMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainJoinMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainJoinBlob: S.optional(S.String),
   }),
@@ -709,7 +699,7 @@ export interface OnPremDomainDetails {
   /** Optional. Option to disable SID filtering. */
   disableSidFiltering?: boolean;
 }
-export const OnPremDomainDetails = /*@__PURE__*/ S.suspend(() =>
+const OnPremDomainDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     disableSidFiltering: S.optional(S.Boolean),
@@ -717,7 +707,7 @@ export const OnPremDomainDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OnPremDomainDetails" }) as any as S.Schema<OnPremDomainDetails>;
 
 export type OnPremDomainDetailsList = Array<OnPremDomainDetails>;
-export const OnPremDomainDetailsList = /*@__PURE__*/ S.Array(
+const OnPremDomainDetailsList = /*@__PURE__*/ S.Array(
   OnPremDomainDetails,
 ) as any as S.Schema<OnPremDomainDetailsList>;
 
@@ -728,7 +718,7 @@ export interface EnableMigrationRequest {
   /** Optional. Period after which the migration would be auto disabled. If unspecified, a default timeout of 48h is used. */
   enableDuration?: string;
 }
-export const EnableMigrationRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableMigrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migratingDomains: S.optional(OnPremDomainDetailsList),
     enableDuration: S.optional(S.String),
@@ -741,7 +731,7 @@ export interface EnableMigrationProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: EnableMigrationRequest;
 }
-export const EnableMigrationProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableMigrationProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     body: S.optional(EnableMigrationRequest.pipe(T.HttpBody())),
@@ -765,7 +755,7 @@ export interface ExtendSchemaRequest {
   /** File uploaded as a byte stream input. */
   fileContents?: string;
 }
-export const ExtendSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtendSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsPath: S.optional(S.String),
     description: S.optional(S.String),
@@ -779,7 +769,7 @@ export interface ExtendSchemaProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: ExtendSchemaRequest;
 }
-export const ExtendSchemaProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtendSchemaProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     body: S.optional(ExtendSchemaRequest.pipe(T.HttpBody())),
@@ -800,7 +790,7 @@ export interface GetIamPolicyProjectsLocationsGlobalDomainsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -826,7 +816,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     location: S.optional(S.String),
@@ -844,7 +834,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     members: S.optional(StringList),
@@ -853,7 +843,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -864,7 +854,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     etag: S.optional(S.String),
@@ -878,18 +868,17 @@ export interface GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://managedidentities.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+resource}:getIamPolicy",
+      baseUrl: "https://managedidentities.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>;
@@ -900,7 +889,7 @@ export interface GetIamPolicyProjectsLocationsGlobalPeeringsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -919,7 +908,7 @@ export interface GetLdapssettingsProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
 }
-export const GetLdapssettingsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLdapssettingsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -934,7 +923,7 @@ export const GetLdapssettingsProjectsLocationsGlobalDomainsRequest = /*@__PURE__
 }) as any as S.Schema<GetLdapssettingsProjectsLocationsGlobalDomainsRequest>;
 
 export type LDAPSSettingsStateEnum = "STATE_UNSPECIFIED" | "UPDATING" | "ACTIVE" | "FAILED";
-export const LDAPSSettingsStateEnum = S.String;
+const LDAPSSettingsStateEnum = S.String;
 
 /** Certificate used to configure LDAPS. */
 export interface Certificate {
@@ -949,7 +938,7 @@ export interface Certificate {
   /** The additional hostnames for the domain. */
   subjectAlternativeName?: StringList;
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
+const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String),
     subject: S.optional(S.String),
@@ -974,7 +963,7 @@ export interface LDAPSSettings {
   /** Output only. The certificate used to configure LDAPS. Certificates can be chained with a maximum length of 15. */
   certificate?: Certificate;
 }
-export const LDAPSSettings = /*@__PURE__*/ S.suspend(() =>
+const LDAPSSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     certificatePfx: S.optional(S.String),
@@ -989,7 +978,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1016,7 +1005,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -1030,7 +1019,7 @@ export interface GetProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
 }
-export const GetProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1048,7 +1037,7 @@ export interface GetProjectsLocationsGlobalDomainsBackupsRequest {
   /** Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` */
   name: string;
 }
-export const GetProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1066,7 +1055,7 @@ export interface GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest {
   /** Required. SqlIntegration resource name using the form: `projects/{project_id}/locations/global/domains/*\/sqlIntegrations/{name}` */
   name: string;
 }
-export const GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1081,7 +1070,7 @@ export const GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest = /*@__PURE
 }) as any as S.Schema<GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest>;
 
 export type SqlIntegrationStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "DELETING" | "READY";
-export const SqlIntegrationStateEnum = S.String;
+const SqlIntegrationStateEnum = S.String;
 
 /** Represents the Sql instance integrated with AD. */
 export interface SqlIntegration {
@@ -1096,7 +1085,7 @@ export interface SqlIntegration {
   /** The unique name of the sql integration in the form of `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}` */
   name?: string;
 }
-export const SqlIntegration = /*@__PURE__*/ S.suspend(() =>
+const SqlIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SqlIntegrationStateEnum),
     sqlInstance: S.optional(S.String),
@@ -1110,7 +1099,7 @@ export interface GetProjectsLocationsGlobalOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1128,7 +1117,7 @@ export interface GetProjectsLocationsGlobalPeeringsRequest {
   /** Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` */
   name: string;
 }
-export const GetProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1154,7 +1143,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1173,7 +1162,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1182,7 +1171,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1201,7 +1190,7 @@ export interface ListProjectsLocationsGlobalDomainsRequest {
   /** The `next_page_token` value returned from a previous ListDomainsRequest request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1220,7 +1209,7 @@ export const ListProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsGlobalDomainsRequest>;
 
 export type DomainList = Array<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
+const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
 
 /** Response message for ListDomains */
 export interface ListDomainsResponse {
@@ -1231,7 +1220,7 @@ export interface ListDomainsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(DomainList),
     unreachable: S.optional(StringList),
@@ -1251,7 +1240,7 @@ export interface ListProjectsLocationsGlobalDomainsBackupsRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1270,7 +1259,7 @@ export const ListProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsGlobalDomainsBackupsRequest>;
 
 export type BackupList = Array<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
+const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
 
 /** ListBackupsResponse is the response message for ListBackups method. */
 export interface ListBackupsResponse {
@@ -1281,7 +1270,7 @@ export interface ListBackupsResponse {
   /** A list of Cloud AD backups in the domain. */
   backups?: BackupList;
 }
-export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1301,27 +1290,26 @@ export interface ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest {
   /** Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. */
   orderBy?: string;
 }
-export const ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/sqlIntegrations",
-        baseUrl: "https://managedidentities.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/sqlIntegrations",
+      baseUrl: "https://managedidentities.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest",
 }) as any as S.Schema<ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest>;
 
 export type SqlIntegrationList = Array<SqlIntegration>;
-export const SqlIntegrationList = /*@__PURE__*/ S.Array(
+const SqlIntegrationList = /*@__PURE__*/ S.Array(
   SqlIntegration,
 ) as any as S.Schema<SqlIntegrationList>;
 
@@ -1334,7 +1322,7 @@ export interface ListSqlIntegrationsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListSqlIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSqlIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     sqlIntegrations: S.optional(SqlIntegrationList),
@@ -1356,7 +1344,7 @@ export interface ListProjectsLocationsGlobalOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1375,7 +1363,7 @@ export const ListProjectsLocationsGlobalOperationsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1386,7 +1374,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -1406,7 +1394,7 @@ export interface ListProjectsLocationsGlobalPeeringsRequest {
   /** Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1425,7 +1413,7 @@ export const ListProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsGlobalPeeringsRequest>;
 
 export type PeeringList = Array<Peering>;
-export const PeeringList = /*@__PURE__*/ S.Array(Peering) as any as S.Schema<PeeringList>;
+const PeeringList = /*@__PURE__*/ S.Array(Peering) as any as S.Schema<PeeringList>;
 
 /** ListPeeringsResponse is the response message for ListPeerings method. */
 export interface ListPeeringsResponse {
@@ -1436,7 +1424,7 @@ export interface ListPeeringsResponse {
   /** A list of Managed Identities Service Peerings in the project. */
   peerings?: PeeringList;
 }
-export const ListPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1452,7 +1440,7 @@ export interface PatchProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: Domain;
 }
-export const PatchProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1476,7 +1464,7 @@ export interface PatchProjectsLocationsGlobalDomainsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const PatchProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1500,7 +1488,7 @@ export interface PatchProjectsLocationsGlobalPeeringsRequest {
   /** Request body */
   body?: Peering;
 }
-export const PatchProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1523,7 +1511,7 @@ export interface ReconfigureTrustRequest {
   /** Required. The target DNS server IP addresses to resolve the remote domain involved in the trust. */
   targetDnsIpAddresses?: StringList;
 }
-export const ReconfigureTrustRequest = /*@__PURE__*/ S.suspend(() =>
+const ReconfigureTrustRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetDomainName: S.optional(S.String),
     targetDnsIpAddresses: S.optional(StringList),
@@ -1536,7 +1524,7 @@ export interface ReconfigureTrustProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: ReconfigureTrustRequest;
 }
-export const ReconfigureTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReconfigureTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ReconfigureTrustRequest.pipe(T.HttpBody())),
@@ -1553,15 +1541,13 @@ export const ReconfigureTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__
 
 /** Request message for ResetAdminPassword */
 export type ResetAdminPasswordRequest = CancelOperationRequest;
-export const ResetAdminPasswordRequest = CancelOperationRequest;
-
 export interface ResetAdminPasswordProjectsLocationsGlobalDomainsRequest {
   /** Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const ResetAdminPasswordProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetAdminPasswordProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1581,7 +1567,7 @@ export interface ResetAdminPasswordResponse {
   /** A random password. See admin for more information. */
   password?: string;
 }
-export const ResetAdminPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetAdminPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String),
   }),
@@ -1594,7 +1580,7 @@ export interface RestoreDomainRequest {
   /** Required. ID of the backup to be restored */
   backupId?: string;
 }
-export const RestoreDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupId: S.optional(S.String),
   }),
@@ -1606,7 +1592,7 @@ export interface RestoreProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: RestoreDomainRequest;
 }
-export const RestoreProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RestoreDomainRequest.pipe(T.HttpBody())),
@@ -1626,7 +1612,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -1638,7 +1624,7 @@ export interface SetIamPolicyProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1659,18 +1645,17 @@ export interface SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://managedidentities.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:setIamPolicy",
+      baseUrl: "https://managedidentities.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest>;
@@ -1681,7 +1666,7 @@ export interface SetIamPolicyProjectsLocationsGlobalPeeringsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1701,7 +1686,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1715,7 +1700,7 @@ export interface TestIamPermissionsProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1735,7 +1720,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest {
@@ -1744,21 +1729,20 @@ export interface TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest 
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://managedidentities.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest>;
+const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:testIamPermissions",
+      baseUrl: "https://managedidentities.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest>;
 
 export interface TestIamPermissionsProjectsLocationsGlobalPeeringsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -1766,18 +1750,17 @@ export interface TestIamPermissionsProjectsLocationsGlobalPeeringsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:testIamPermissions",
-        baseUrl: "https://managedidentities.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsGlobalPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:testIamPermissions",
+      baseUrl: "https://managedidentities.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsGlobalPeeringsRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalPeeringsRequest>;
@@ -1790,19 +1773,18 @@ export interface UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: LDAPSSettings;
 }
-export const UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(LDAPSSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta1/{+name}/ldapssettings",
-        baseUrl: "https://managedidentities.googleapis.com/",
-      }),
-    ),
+const UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(LDAPSSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta1/{+name}/ldapssettings",
+      baseUrl: "https://managedidentities.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest",
 }) as any as S.Schema<UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest>;
@@ -1812,7 +1794,7 @@ export interface ValidateTrustRequest {
   /** Required. The domain trust to validate trust state for. */
   trust?: Trust;
 }
-export const ValidateTrustRequest = AttachTrustRequest as any as S.Schema<ValidateTrustRequest>;
+const ValidateTrustRequest = AttachTrustRequest as any as S.Schema<ValidateTrustRequest>;
 
 export interface ValidateTrustProjectsLocationsGlobalDomainsRequest {
   /** Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` */
@@ -1820,7 +1802,7 @@ export interface ValidateTrustProjectsLocationsGlobalDomainsRequest {
   /** Request body */
   body?: ValidateTrustRequest;
 }
-export const ValidateTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateTrustProjectsLocationsGlobalDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ValidateTrustRequest.pipe(T.HttpBody())),

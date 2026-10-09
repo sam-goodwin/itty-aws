@@ -9,11 +9,11 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `FeatureFlag` - feature flag */
 export type ScheduledChangeAllowedModelsEnum = "FeatureFlag";
-export const ScheduledChangeAllowedModelsEnum = S.String;
+const ScheduledChangeAllowedModelsEnum = S.String;
 
 /** * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
 export type ScheduledChangeRecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
-export const ScheduledChangeRecurrenceIntervalEnum = S.String;
+const ScheduledChangeRecurrenceIntervalEnum = S.String;
 
 export interface CreateScheduledChangeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -34,7 +34,7 @@ export interface CreateScheduledChangeRequest {
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
 }
-export const CreateScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     record_id: S.String,
@@ -53,7 +53,7 @@ export const CreateScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScheduledChangeRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -69,14 +69,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -89,7 +84,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -111,7 +106,7 @@ export type ChangeRequestStateEnum =
   | "rejected"
   | "expired"
   | "failed";
-export const ChangeRequestStateEnum = S.String;
+const ChangeRequestStateEnum = S.String;
 
 /** Minimal read-only ChangeRequest shape for embedding on resources gated by an approval, e.g. the scheduled change that carries it. Exposes just enough to show the approval state and link to the change request. */
 export interface ChangeRequestSummary {
@@ -120,7 +115,7 @@ export interface ChangeRequestSummary {
   /** Current approval state: 'pending' (awaiting approval), 'approved' (awaiting application), 'applied', 'rejected', 'expired', or 'failed'. * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
   state: ChangeRequestStateEnum;
 }
-export const ChangeRequestSummary = /*@__PURE__*/ S.suspend(() =>
+const ChangeRequestSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     state: ChangeRequestStateEnum,
@@ -156,7 +151,7 @@ export interface ScheduledChange {
   /** Summary of the approval change request gating this scheduled change. Null when no approval policy applies. The change only applies at its scheduled time if the request is approved by then. */
   change_request: ChangeRequestSummary | null;
 }
-export const ScheduledChange = /*@__PURE__*/ S.suspend(() =>
+const ScheduledChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     team_id: S.Number,
@@ -185,7 +180,7 @@ export interface GetScheduledChangeRequest {
   /** A unique integer value identifying this scheduled change. */
   id: number;
 }
-export const GetScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -208,7 +203,7 @@ export interface ListScheduledChangesRequest {
   /** Filter by the ID of a specific feature flag. */
   record_id?: string;
 }
-export const ListScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -223,7 +218,7 @@ export const ListScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListScheduledChangesRequest>;
 
 export type PaginatedScheduledChangeListResultsList = Array<ScheduledChange>;
-export const PaginatedScheduledChangeListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedScheduledChangeListResultsList = /*@__PURE__*/ S.Array(
   ScheduledChange,
 ) as any as S.Schema<PaginatedScheduledChangeListResultsList>;
 
@@ -233,7 +228,7 @@ export interface PaginatedScheduledChangeList {
   previous?: string | null;
   results: PaginatedScheduledChangeListResultsList;
 }
-export const PaginatedScheduledChangeList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedScheduledChangeList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -250,7 +245,7 @@ export interface ScheduledChangesDestroyRequest {
   /** A unique integer value identifying this scheduled change. */
   id: number;
 }
-export const ScheduledChangesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledChangesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -266,9 +261,9 @@ export const ScheduledChangesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScheduledChangesDestroyRequest>;
 
 export interface ScheduledChangesDestroyResponse {}
-export const ScheduledChangesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "ScheduledChangesDestroyResponse" },
-) as any as S.Schema<ScheduledChangesDestroyResponse>;
+const ScheduledChangesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "ScheduledChangesDestroyResponse",
+}) as any as S.Schema<ScheduledChangesDestroyResponse>;
 
 export interface UpdateScheduledChangeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -291,7 +286,7 @@ export interface UpdateScheduledChangeRequest {
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
 }
-export const UpdateScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -331,7 +326,7 @@ export interface UpdateScheduledChangesPartialRequest {
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
 }
-export const UpdateScheduledChangesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduledChangesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

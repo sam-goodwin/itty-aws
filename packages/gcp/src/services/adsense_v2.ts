@@ -82,7 +82,7 @@ export type ContentAdsSettingsTypeEnum =
   | "ARTICLE"
   | "MATCHED_CONTENT"
   | "LINK";
-export const ContentAdsSettingsTypeEnum = S.String;
+const ContentAdsSettingsTypeEnum = S.String;
 
 /** Settings specific to content ads (AFC). */
 export interface ContentAdsSettings {
@@ -91,7 +91,7 @@ export interface ContentAdsSettings {
   /** Required. Type of the ad unit. */
   type?: ContentAdsSettingsTypeEnum | (string & {});
 }
-export const ContentAdsSettings = /*@__PURE__*/ S.suspend(() =>
+const ContentAdsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(S.String),
     type: S.optional(ContentAdsSettingsTypeEnum),
@@ -99,7 +99,7 @@ export const ContentAdsSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContentAdsSettings" }) as any as S.Schema<ContentAdsSettings>;
 
 export type AdUnitStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED";
-export const AdUnitStateEnum = S.String;
+const AdUnitStateEnum = S.String;
 
 /** Representation of an ad unit. An ad unit represents a saved ad unit with a specific set of ad settings that have been customized within an account. */
 export interface AdUnit {
@@ -114,7 +114,7 @@ export interface AdUnit {
   /** Required. State of the ad unit. */
   state?: AdUnitStateEnum | (string & {});
 }
-export const AdUnit = /*@__PURE__*/ S.suspend(() =>
+const AdUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentAdsSettings: S.optional(ContentAdsSettings),
     reportingDimensionId: S.optional(S.String),
@@ -130,7 +130,7 @@ export interface CreateAccountsAdclientsAdunitsRequest {
   /** Request body */
   body?: AdUnit;
 }
-export const CreateAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AdUnit.pipe(T.HttpBody())),
@@ -156,7 +156,7 @@ export interface CustomChannel {
   /** Output only. Unique ID of the custom channel as used in the `CUSTOM_CHANNEL_ID` reporting dimension. */
   reportingDimensionId?: string;
 }
-export const CustomChannel = /*@__PURE__*/ S.suspend(() =>
+const CustomChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -171,7 +171,7 @@ export interface CreateAccountsAdclientsCustomchannelsRequest {
   /** Request body */
   body?: CustomChannel;
 }
-export const CreateAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CustomChannel.pipe(T.HttpBody())),
@@ -190,7 +190,7 @@ export interface DeleteAccountsAdclientsCustomchannelsRequest {
   /** Required. Name of the custom channel to delete. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   name: string;
 }
-export const DeleteAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -202,7 +202,7 @@ export const DeleteAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.susp
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -244,12 +244,12 @@ export type GenerateAccountsReportsMetricsEnum =
   | "FUNNEL_IMPRESSIONS"
   | "FUNNEL_CLICKS"
   | "FUNNEL_RPM";
-export const GenerateAccountsReportsMetricsEnum = S.String;
+const GenerateAccountsReportsMetricsEnum = S.String;
 
 export type GenerateAccountsReportsMetricsEnumList = Array<
   GenerateAccountsReportsMetricsEnum | (string & {})
 >;
-export const GenerateAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
+const GenerateAccountsReportsMetricsEnumList = /*@__PURE__*/ S.Array(
   GenerateAccountsReportsMetricsEnum,
 ) as any as S.Schema<GenerateAccountsReportsMetricsEnumList>;
 
@@ -311,16 +311,14 @@ export type GenerateAccountsReportsDimensionsEnum =
   | "BROWSER_TYPE_CODE"
   | "WEBVIEW_TYPE_NAME"
   | "WEBVIEW_TYPE_CODE";
-export const GenerateAccountsReportsDimensionsEnum = S.String;
-
 export type GenerateAccountsReportsDimensionsEnumList = Array<
   GenerateAccountsReportsDimensionsEnum | (string & {})
 >;
-export const GenerateAccountsReportsDimensionsEnumList =
+const GenerateAccountsReportsDimensionsEnumList =
   GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateAccountsReportsDimensionsEnumList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GenerateAccountsReportsDateRangeEnum =
   | "REPORTING_DATE_RANGE_UNSPECIFIED"
@@ -331,13 +329,13 @@ export type GenerateAccountsReportsDateRangeEnum =
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
   | "LAST_30_DAYS";
-export const GenerateAccountsReportsDateRangeEnum = S.String;
+const GenerateAccountsReportsDateRangeEnum = S.String;
 
 export type GenerateAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
   | "GOOGLE_TIME_ZONE";
-export const GenerateAccountsReportsReportingTimeZoneEnum = S.String;
+const GenerateAccountsReportsReportingTimeZoneEnum = S.String;
 
 export interface GenerateAccountsReportsRequest {
   /** The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set. */
@@ -373,7 +371,7 @@ export interface GenerateAccountsReportsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "startDate.day"?: number;
 }
-export const GenerateAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String.pipe(T.Query())),
     account: S.String.pipe(T.Label()),
@@ -411,7 +409,7 @@ export interface Adsense_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Adsense_Date = /*@__PURE__*/ S.suspend(() =>
+const Adsense_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -427,7 +425,7 @@ export type HeaderTypeEnum =
   | "METRIC_CURRENCY"
   | "METRIC_MILLISECONDS"
   | "METRIC_DECIMAL";
-export const HeaderTypeEnum = S.String;
+const HeaderTypeEnum = S.String;
 
 /** The header information of the columns requested in the report. */
 export interface Header {
@@ -438,7 +436,7 @@ export interface Header {
   /** Required. Name of the header. */
   name?: string;
 }
-export const Header = /*@__PURE__*/ S.suspend(() =>
+const Header = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     type: S.optional(HeaderTypeEnum),
@@ -447,35 +445,35 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
 export type HeaderList = Array<Header>;
-export const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
+const HeaderList = /*@__PURE__*/ S.Array(Header) as any as S.Schema<HeaderList>;
 
 /** Cell representation. */
 export interface Cell {
   /** Value in the cell. The dimension cells contain strings, and the metric cells contain numbers. */
   value?: string;
 }
-export const Cell = /*@__PURE__*/ S.suspend(() =>
+const Cell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
 ).annotate({ identifier: "Cell" }) as any as S.Schema<Cell>;
 
 export type CellList = Array<Cell>;
-export const CellList = /*@__PURE__*/ S.Array(Cell) as any as S.Schema<CellList>;
+const CellList = /*@__PURE__*/ S.Array(Cell) as any as S.Schema<CellList>;
 
 /** Row representation. */
 export interface Row {
   /** Cells in the row. */
   cells?: CellList;
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cells: S.optional(CellList),
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = Array<Row>;
-export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
+const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Result of a generated report. */
 export interface ReportResult {
@@ -496,7 +494,7 @@ export interface ReportResult {
   /** The total number of rows matched by the report request. */
   totalMatchedRows?: string;
 }
-export const ReportResult = /*@__PURE__*/ S.suspend(() =>
+const ReportResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(Adsense_Date),
     headers: S.optional(HeaderList),
@@ -518,13 +516,13 @@ export type GenerateAccountsReportsSavedDateRangeEnum =
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
   | "LAST_30_DAYS";
-export const GenerateAccountsReportsSavedDateRangeEnum = S.String;
+const GenerateAccountsReportsSavedDateRangeEnum = S.String;
 
 export type GenerateAccountsReportsSavedReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
   | "GOOGLE_TIME_ZONE";
-export const GenerateAccountsReportsSavedReportingTimeZoneEnum = S.String;
+const GenerateAccountsReportsSavedReportingTimeZoneEnum = S.String;
 
 export interface GenerateAccountsReportsSavedRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -550,7 +548,7 @@ export interface GenerateAccountsReportsSavedRequest {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   "endDate.year"?: number;
 }
-export const GenerateAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "startDate.year": S.optional(S.Number.pipe(T.Query())),
     "endDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -614,12 +612,10 @@ export type GenerateCsvAccountsReportsMetricsEnum =
   | "FUNNEL_IMPRESSIONS"
   | "FUNNEL_CLICKS"
   | "FUNNEL_RPM";
-export const GenerateCsvAccountsReportsMetricsEnum = S.String;
-
 export type GenerateCsvAccountsReportsMetricsEnumList = Array<
   GenerateCsvAccountsReportsMetricsEnum | (string & {})
 >;
-export const GenerateCsvAccountsReportsMetricsEnumList =
+const GenerateCsvAccountsReportsMetricsEnumList =
   GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateCsvAccountsReportsMetricsEnumList>;
 
 export type GenerateCsvAccountsReportsDimensionsEnum =
@@ -680,19 +676,17 @@ export type GenerateCsvAccountsReportsDimensionsEnum =
   | "BROWSER_TYPE_CODE"
   | "WEBVIEW_TYPE_NAME"
   | "WEBVIEW_TYPE_CODE";
-export const GenerateCsvAccountsReportsDimensionsEnum = S.String;
-
 export type GenerateCsvAccountsReportsDimensionsEnumList = Array<
   GenerateCsvAccountsReportsDimensionsEnum | (string & {})
 >;
-export const GenerateCsvAccountsReportsDimensionsEnumList =
+const GenerateCsvAccountsReportsDimensionsEnumList =
   GenerateAccountsReportsMetricsEnumList as any as S.Schema<GenerateCsvAccountsReportsDimensionsEnumList>;
 
 export type GenerateCsvAccountsReportsReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
   | "GOOGLE_TIME_ZONE";
-export const GenerateCsvAccountsReportsReportingTimeZoneEnum = S.String;
+const GenerateCsvAccountsReportsReportingTimeZoneEnum = S.String;
 
 export type GenerateCsvAccountsReportsDateRangeEnum =
   | "REPORTING_DATE_RANGE_UNSPECIFIED"
@@ -703,7 +697,7 @@ export type GenerateCsvAccountsReportsDateRangeEnum =
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
   | "LAST_30_DAYS";
-export const GenerateCsvAccountsReportsDateRangeEnum = S.String;
+const GenerateCsvAccountsReportsDateRangeEnum = S.String;
 
 export interface GenerateCsvAccountsReportsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -739,7 +733,7 @@ export interface GenerateCsvAccountsReportsRequest {
   /** The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set. */
   currencyCode?: string;
 }
-export const GenerateCsvAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateCsvAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "endDate.month": S.optional(S.Number.pipe(T.Query())),
     account: S.String.pipe(T.Label()),
@@ -769,15 +763,10 @@ export const GenerateCsvAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateCsvAccountsReportsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
@@ -788,7 +777,7 @@ export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
 }
-export const HttpBody = /*@__PURE__*/ S.suspend(() =>
+const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensions: S.optional(DocumentMapList),
     contentType: S.optional(S.String),
@@ -800,7 +789,7 @@ export type GenerateCsvAccountsReportsSavedReportingTimeZoneEnum =
   | "REPORTING_TIME_ZONE_UNSPECIFIED"
   | "ACCOUNT_TIME_ZONE"
   | "GOOGLE_TIME_ZONE";
-export const GenerateCsvAccountsReportsSavedReportingTimeZoneEnum = S.String;
+const GenerateCsvAccountsReportsSavedReportingTimeZoneEnum = S.String;
 
 export type GenerateCsvAccountsReportsSavedDateRangeEnum =
   | "REPORTING_DATE_RANGE_UNSPECIFIED"
@@ -811,7 +800,7 @@ export type GenerateCsvAccountsReportsSavedDateRangeEnum =
   | "YEAR_TO_DATE"
   | "LAST_7_DAYS"
   | "LAST_30_DAYS";
-export const GenerateCsvAccountsReportsSavedDateRangeEnum = S.String;
+const GenerateCsvAccountsReportsSavedDateRangeEnum = S.String;
 
 export interface GenerateCsvAccountsReportsSavedRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -837,7 +826,7 @@ export interface GenerateCsvAccountsReportsSavedRequest {
   /** Date range of the report, if unset the range will be considered CUSTOM. */
   dateRange?: GenerateCsvAccountsReportsSavedDateRangeEnum | (string & {});
 }
-export const GenerateCsvAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateCsvAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "endDate.day": S.optional(S.Number.pipe(T.Query())),
     currencyCode: S.optional(S.String.pipe(T.Query())),
@@ -867,7 +856,7 @@ export interface GetAccountsRequest {
   /** Required. Account to get information about. Format: accounts/{account} */
   name: string;
 }
-export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://adsense.googleapis.com/" })),
@@ -880,7 +869,7 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-export const TimeZone = /*@__PURE__*/ S.suspend(() =>
+const TimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -888,7 +877,7 @@ export const TimeZone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeZone" }) as any as S.Schema<TimeZone>;
 
 export type AccountStateEnum = "STATE_UNSPECIFIED" | "READY" | "NEEDS_ATTENTION" | "CLOSED";
-export const AccountStateEnum = S.String;
+const AccountStateEnum = S.String;
 
 /** Representation of an account. */
 export interface Account {
@@ -907,7 +896,7 @@ export interface Account {
   /** Output only. State of the account. */
   state?: AccountStateEnum;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     timeZone: S.optional(TimeZone),
@@ -923,7 +912,7 @@ export interface GetAccountsAdclientsRequest {
   /** Required. The name of the ad client to retrieve. Format: accounts/{account}/adclients/{adclient} */
   name: string;
 }
-export const GetAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://adsense.googleapis.com/" })),
@@ -932,7 +921,7 @@ export const GetAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccountsAdclientsRequest>;
 
 export type AdClientStateEnum = "STATE_UNSPECIFIED" | "READY" | "GETTING_READY" | "REQUIRES_REVIEW";
-export const AdClientStateEnum = S.String;
+const AdClientStateEnum = S.String;
 
 /** Representation of an ad client. An ad client represents a user's subscription with a specific AdSense product. */
 export interface AdClient {
@@ -945,7 +934,7 @@ export interface AdClient {
   /** Output only. Reporting product code of the ad client. For example, "AFC" for AdSense for Content. Corresponds to the `PRODUCT_CODE` dimension, and present only if the ad client supports reporting. */
   productCode?: string;
 }
-export const AdClient = /*@__PURE__*/ S.suspend(() =>
+const AdClient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportingDimensionId: S.optional(S.String),
     name: S.optional(S.String),
@@ -958,7 +947,7 @@ export interface GetAccountsAdclientsAdunitsRequest {
   /** Required. AdUnit to get information about. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
   name: string;
 }
-export const GetAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://adsense.googleapis.com/" })),
@@ -970,7 +959,7 @@ export interface GetAccountsAdclientsCustomchannelsRequest {
   /** Required. Name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   name: string;
 }
-export const GetAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://adsense.googleapis.com/" })),
@@ -982,7 +971,7 @@ export interface GetAccountsAdclientsUrlchannelsRequest {
   /** Required. The name of the url channel to retrieve. Format: accounts/{account}/adclients/{adclient}/urlchannels/{urlchannel} */
   name: string;
 }
-export const GetAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://adsense.googleapis.com/" })),
@@ -999,7 +988,7 @@ export interface UrlChannel {
   /** Output only. Unique ID of the custom channel as used in the `URL_CHANNEL_ID` reporting dimension. */
   reportingDimensionId?: string;
 }
-export const UrlChannel = /*@__PURE__*/ S.suspend(() =>
+const UrlChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriPattern: S.optional(S.String),
     name: S.optional(S.String),
@@ -1011,7 +1000,7 @@ export interface GetAccountsPolicyIssuesRequest {
   /** Required. Name of the policy issue. Format: accounts/{account}/policyIssues/{policy_issue} */
   name: string;
 }
-export const GetAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://adsense.googleapis.com/" })),
@@ -1024,7 +1013,7 @@ export type PolicyIssueEntityTypeEnum =
   | "SITE"
   | "SITE_SECTION"
   | "PAGE";
-export const PolicyIssueEntityTypeEnum = S.String;
+const PolicyIssueEntityTypeEnum = S.String;
 
 export type PolicyIssueActionEnum =
   | "ENFORCEMENT_ACTION_UNSPECIFIED"
@@ -1033,14 +1022,14 @@ export type PolicyIssueActionEnum =
   | "AD_SERVING_DISABLED"
   | "AD_SERVED_WITH_CLICK_CONFIRMATION"
   | "AD_PERSONALIZATION_RESTRICTED";
-export const PolicyIssueActionEnum = S.String;
+const PolicyIssueActionEnum = S.String;
 
 export type PolicyTopicTypeEnum =
   | "POLICY_TOPIC_TYPE_UNSPECIFIED"
   | "POLICY"
   | "ADVERTISER_PREFERENCE"
   | "REGULATORY";
-export const PolicyTopicTypeEnum = S.String;
+const PolicyTopicTypeEnum = S.String;
 
 /** Information about a particular policy topic. A policy topic represents a single class of policy issue that can impact ad serving for your site. For example, sexual content or having ads that obscure your content. A single policy issue can have multiple policy topics for a single entity. */
 export interface PolicyTopic {
@@ -1051,7 +1040,7 @@ export interface PolicyTopic {
   /** Optional. The type of policy topic. For example, "POLICY" represents all the policy topics that are related to the Google Publisher Policy (GPP). See https://support.google.com/adsense/answer/15689616. */
   type?: PolicyTopicTypeEnum;
 }
-export const PolicyTopic = /*@__PURE__*/ S.suspend(() =>
+const PolicyTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mustFix: S.optional(S.Boolean),
     topic: S.optional(S.String),
@@ -1060,9 +1049,7 @@ export const PolicyTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyTopic" }) as any as S.Schema<PolicyTopic>;
 
 export type PolicyTopicList = Array<PolicyTopic>;
-export const PolicyTopicList = /*@__PURE__*/ S.Array(
-  PolicyTopic,
-) as any as S.Schema<PolicyTopicList>;
+const PolicyTopicList = /*@__PURE__*/ S.Array(PolicyTopic) as any as S.Schema<PolicyTopicList>;
 
 /** Representation of a policy issue for a single entity (site, site-section, or page). All issues for a single entity are represented by a single PolicyIssue resource, though that PolicyIssue can have multiple causes (or "topics") that can change over time. Policy issues are removed if there are no issues detected recently or if there's a recent successful appeal for the entity. */
 export interface PolicyIssue {
@@ -1091,7 +1078,7 @@ export interface PolicyIssue {
   /** Required. The date (in the America/Los_Angeles timezone) when policy violations were last detected on the entity. */
   lastDetectedDate?: Adsense_Date;
 }
-export const PolicyIssue = /*@__PURE__*/ S.suspend(() =>
+const PolicyIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     site: S.optional(S.String),
     entityType: S.optional(PolicyIssueEntityTypeEnum),
@@ -1112,7 +1099,7 @@ export interface GetAccountsSitesRequest {
   /** Required. Name of the site. Format: accounts/{account}/sites/{site} */
   name: string;
 }
-export const GetAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://adsense.googleapis.com/" })),
@@ -1124,7 +1111,7 @@ export type SiteStateEnum =
   | "GETTING_READY"
   | "READY"
   | "NEEDS_ATTENTION";
-export const SiteStateEnum = S.String;
+const SiteStateEnum = S.String;
 
 /** Representation of a Site. */
 export interface Site {
@@ -1139,7 +1126,7 @@ export interface Site {
   /** Domain (or subdomain) of the site, e.g. "example.com" or "www.example.com". This is used in the `OWNED_SITE_DOMAIN_NAME` reporting dimension. */
   domain?: string;
 }
-export const Site = /*@__PURE__*/ S.suspend(() =>
+const Site = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SiteStateEnum),
     reportingDimensionId: S.optional(S.String),
@@ -1153,7 +1140,7 @@ export interface GetAdBlockingRecoveryTagAccountsRequest {
   /** Required. The name of the account to get the tag for. Format: accounts/{account} */
   name: string;
 }
-export const GetAdBlockingRecoveryTagAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdBlockingRecoveryTagAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1174,7 +1161,7 @@ export interface AdBlockingRecoveryTag {
   /** The ad blocking recovery tag. Note that the message generated by the tag can be blocked by an ad blocking extension. If this is not your desired outcome, then you'll need to use it in conjunction with the error protection code. */
   tag?: string;
 }
-export const AdBlockingRecoveryTag = /*@__PURE__*/ S.suspend(() =>
+const AdBlockingRecoveryTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorProtectionCode: S.optional(S.String),
     tag: S.optional(S.String),
@@ -1185,7 +1172,7 @@ export interface GetAdcodeAccountsAdclientsRequest {
   /** Required. Name of the ad client for which to get the adcode. Format: accounts/{account}/adclients/{adclient} */
   name: string;
 }
-export const GetAdcodeAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdcodeAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1204,7 +1191,7 @@ export interface AdClientAdCode {
   /** Output only. The AdSense code snippet to add to the head of an HTML page. */
   adCode?: string;
 }
-export const AdClientAdCode = /*@__PURE__*/ S.suspend(() =>
+const AdClientAdCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ampHead: S.optional(S.String),
     ampBody: S.optional(S.String),
@@ -1216,7 +1203,7 @@ export interface GetAdcodeAccountsAdclientsAdunitsRequest {
   /** Required. Name of the adunit for which to get the adcode. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
   name: string;
 }
-export const GetAdcodeAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdcodeAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1231,7 +1218,7 @@ export interface AdUnitAdCode {
   /** Output only. The code snippet to add to the body of an HTML page. */
   adCode?: string;
 }
-export const AdUnitAdCode = /*@__PURE__*/ S.suspend(() =>
+const AdUnitAdCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adCode: S.optional(S.String),
   }),
@@ -1241,7 +1228,7 @@ export interface GetSavedAccountsReportsRequest {
   /** Required. The name of the saved report to retrieve. Format: accounts/{account}/reports/{report} */
   name: string;
 }
-export const GetSavedAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavedAccountsReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1258,7 +1245,7 @@ export interface SavedReport {
   /** Report title as specified by publisher. */
   title?: string;
 }
-export const SavedReport = /*@__PURE__*/ S.suspend(() =>
+const SavedReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     title: S.optional(S.String),
@@ -1271,7 +1258,7 @@ export interface ListAccountsRequest {
   /** The maximum number of accounts to include in the response, used for paging. If unspecified, at most 10000 accounts will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1281,7 +1268,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = Array<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Response definition for the account list rpc. */
 export interface ListAccountsResponse {
@@ -1290,7 +1277,7 @@ export interface ListAccountsResponse {
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accounts: S.optional(AccountList),
     nextPageToken: S.optional(S.String),
@@ -1305,7 +1292,7 @@ export interface ListAccountsAdclientsRequest {
   /** The maximum number of ad clients to include in the response, used for paging. If unspecified, at most 10000 ad clients will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
-export const ListAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1322,7 +1309,7 @@ export const ListAccountsAdclientsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsAdclientsRequest>;
 
 export type AdClientList = Array<AdClient>;
-export const AdClientList = /*@__PURE__*/ S.Array(AdClient) as any as S.Schema<AdClientList>;
+const AdClientList = /*@__PURE__*/ S.Array(AdClient) as any as S.Schema<AdClientList>;
 
 /** Response definition for the ad client list rpc. */
 export interface ListAdClientsResponse {
@@ -1331,7 +1318,7 @@ export interface ListAdClientsResponse {
   /** The ad clients returned in this list response. */
   adClients?: AdClientList;
 }
-export const ListAdClientsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdClientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     adClients: S.optional(AdClientList),
@@ -1346,7 +1333,7 @@ export interface ListAccountsAdclientsAdunitsRequest {
   /** The maximum number of ad units to include in the response, used for paging. If unspecified, at most 10000 ad units will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
-export const ListAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1363,7 +1350,7 @@ export const ListAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsAdclientsAdunitsRequest>;
 
 export type AdUnitList = Array<AdUnit>;
-export const AdUnitList = /*@__PURE__*/ S.Array(AdUnit) as any as S.Schema<AdUnitList>;
+const AdUnitList = /*@__PURE__*/ S.Array(AdUnit) as any as S.Schema<AdUnitList>;
 
 /** Response definition for the adunit list rpc. */
 export interface ListAdUnitsResponse {
@@ -1372,7 +1359,7 @@ export interface ListAdUnitsResponse {
   /** The ad units returned in the list response. */
   adUnits?: AdUnitList;
 }
-export const ListAdUnitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdUnitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     adUnits: S.optional(AdUnitList),
@@ -1387,7 +1374,7 @@ export interface ListAccountsAdclientsCustomchannelsRequest {
   /** Required. The ad client which owns the collection of custom channels. Format: accounts/{account}/adclients/{adclient} */
   parent: string;
 }
-export const ListAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1404,7 +1391,7 @@ export const ListAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListAccountsAdclientsCustomchannelsRequest>;
 
 export type CustomChannelList = Array<CustomChannel>;
-export const CustomChannelList = /*@__PURE__*/ S.Array(
+const CustomChannelList = /*@__PURE__*/ S.Array(
   CustomChannel,
 ) as any as S.Schema<CustomChannelList>;
 
@@ -1415,7 +1402,7 @@ export interface ListCustomChannelsResponse {
   /** Continuation token used to page through alerts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListCustomChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customChannels: S.optional(CustomChannelList),
     nextPageToken: S.optional(S.String),
@@ -1432,7 +1419,7 @@ export interface ListAccountsAdclientsUrlchannelsRequest {
   /** The maximum number of url channels to include in the response, used for paging. If unspecified, at most 10000 url channels will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
-export const ListAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1449,7 +1436,7 @@ export const ListAccountsAdclientsUrlchannelsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListAccountsAdclientsUrlchannelsRequest>;
 
 export type UrlChannelList = Array<UrlChannel>;
-export const UrlChannelList = /*@__PURE__*/ S.Array(UrlChannel) as any as S.Schema<UrlChannelList>;
+const UrlChannelList = /*@__PURE__*/ S.Array(UrlChannel) as any as S.Schema<UrlChannelList>;
 
 /** Response definition for the url channels list rpc. */
 export interface ListUrlChannelsResponse {
@@ -1458,7 +1445,7 @@ export interface ListUrlChannelsResponse {
   /** The url channels returned in this list response. */
   urlChannels?: UrlChannelList;
 }
-export const ListUrlChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUrlChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     urlChannels: S.optional(UrlChannelList),
@@ -1471,7 +1458,7 @@ export interface ListAccountsAlertsRequest {
   /** The language to use for translating alert messages. If unspecified, this defaults to the user's display language. If the given language is not supported, alerts will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag). */
   languageCode?: string;
 }
-export const ListAccountsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     languageCode: S.optional(S.String.pipe(T.Query())),
@@ -1487,7 +1474,7 @@ export const ListAccountsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsAlertsRequest>;
 
 export type AlertSeverityEnum = "SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "SEVERE";
-export const AlertSeverityEnum = S.String;
+const AlertSeverityEnum = S.String;
 
 /** Representation of an alert. */
 export interface Alert {
@@ -1500,7 +1487,7 @@ export interface Alert {
   /** Output only. Severity of this alert. */
   severity?: AlertSeverityEnum;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
+const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -1510,14 +1497,14 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 export type AlertList = Array<Alert>;
-export const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
+const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
 
 /** Response definition for the alerts list rpc. */
 export interface ListAlertsResponse {
   /** The alerts returned in this list response. */
   alerts?: AlertList;
 }
-export const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alerts: S.optional(AlertList),
   }),
@@ -1527,7 +1514,7 @@ export interface ListAccountsPaymentsRequest {
   /** Required. The account which owns the collection of payments. Format: accounts/{account} */
   parent: string;
 }
-export const ListAccountsPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -1550,7 +1537,7 @@ export interface Payment {
   /** Output only. The amount of unpaid or paid earnings, as a formatted string, including the currency. E.g. "¥1,235 JPY", "$1,234.57", "£87.65". */
   amount?: string;
 }
-export const Payment = /*@__PURE__*/ S.suspend(() =>
+const Payment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(Adsense_Date),
     name: S.optional(S.String),
@@ -1559,14 +1546,14 @@ export const Payment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Payment" }) as any as S.Schema<Payment>;
 
 export type PaymentList = Array<Payment>;
-export const PaymentList = /*@__PURE__*/ S.Array(Payment) as any as S.Schema<PaymentList>;
+const PaymentList = /*@__PURE__*/ S.Array(Payment) as any as S.Schema<PaymentList>;
 
 /** Response definition for the payments list rpc. */
 export interface ListPaymentsResponse {
   /** The payments returned in this list response. */
   payments?: PaymentList;
 }
-export const ListPaymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPaymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payments: S.optional(PaymentList),
   }),
@@ -1580,7 +1567,7 @@ export interface ListAccountsPolicyIssuesRequest {
   /** The maximum number of policy issues to include in the response, used for paging. If unspecified, at most 10000 policy issues will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
-export const ListAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1597,9 +1584,7 @@ export const ListAccountsPolicyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsPolicyIssuesRequest>;
 
 export type PolicyIssueList = Array<PolicyIssue>;
-export const PolicyIssueList = /*@__PURE__*/ S.Array(
-  PolicyIssue,
-) as any as S.Schema<PolicyIssueList>;
+const PolicyIssueList = /*@__PURE__*/ S.Array(PolicyIssue) as any as S.Schema<PolicyIssueList>;
 
 /** Response definition for the policy issues list rpc. Policy issues are reported only if the publisher has at least one AFC ad client in READY or GETTING_READY state. If the publisher has no such AFC ad client, the response will be an empty list. */
 export interface ListPolicyIssuesResponse {
@@ -1608,7 +1593,7 @@ export interface ListPolicyIssuesResponse {
   /** The policy issues returned in the list response. */
   policyIssues?: PolicyIssueList;
 }
-export const ListPolicyIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPolicyIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     policyIssues: S.optional(PolicyIssueList),
@@ -1623,7 +1608,7 @@ export interface ListAccountsReportsSavedRequest {
   /** A page token, received from a previous `ListSavedReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSavedReports` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1640,9 +1625,7 @@ export const ListAccountsReportsSavedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsReportsSavedRequest>;
 
 export type SavedReportList = Array<SavedReport>;
-export const SavedReportList = /*@__PURE__*/ S.Array(
-  SavedReport,
-) as any as S.Schema<SavedReportList>;
+const SavedReportList = /*@__PURE__*/ S.Array(SavedReport) as any as S.Schema<SavedReportList>;
 
 /** Response definition for the saved reports list rpc. */
 export interface ListSavedReportsResponse {
@@ -1651,7 +1634,7 @@ export interface ListSavedReportsResponse {
   /** Continuation token used to page through reports. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListSavedReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSavedReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savedReports: S.optional(SavedReportList),
     nextPageToken: S.optional(S.String),
@@ -1666,7 +1649,7 @@ export interface ListAccountsSitesRequest {
   /** A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1681,7 +1664,7 @@ export const ListAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsSitesRequest" }) as any as S.Schema<ListAccountsSitesRequest>;
 
 export type SiteList = Array<Site>;
-export const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
+const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
 
 /** Response definition for the sites list rpc. */
 export interface ListSitesResponse {
@@ -1690,7 +1673,7 @@ export interface ListSitesResponse {
   /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sites: S.optional(SiteList),
     nextPageToken: S.optional(S.String),
@@ -1705,7 +1688,7 @@ export interface ListChildAccountsAccountsRequest {
   /** Required. The parent account, which owns the child accounts. Format: accounts/{account} */
   parent: string;
 }
-export const ListChildAccountsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChildAccountsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1728,7 +1711,7 @@ export interface ListChildAccountsResponse {
   /** The accounts returned in this list response. */
   accounts?: AccountList;
 }
-export const ListChildAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChildAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accounts: S.optional(AccountList),
@@ -1745,7 +1728,7 @@ export interface ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest {
   /** Required. The custom channel which owns the collection of ad units. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} */
   parent: string;
 }
-export const ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1768,7 +1751,7 @@ export interface ListLinkedAdUnitsResponse {
   /** Continuation token used to page through ad units. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListLinkedAdUnitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLinkedAdUnitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adUnits: S.optional(AdUnitList),
     nextPageToken: S.optional(S.String),
@@ -1785,7 +1768,7 @@ export interface ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest {
   /** Required. The ad unit which owns the collection of custom channels. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} */
   parent: string;
 }
-export const ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1808,7 +1791,7 @@ export interface ListLinkedCustomChannelsResponse {
   /** Continuation token used to page through alerts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListLinkedCustomChannelsResponse =
+const ListLinkedCustomChannelsResponse =
   ListCustomChannelsResponse as any as S.Schema<ListLinkedCustomChannelsResponse>;
 
 export interface PatchAccountsAdclientsAdunitsRequest {
@@ -1819,7 +1802,7 @@ export interface PatchAccountsAdclientsAdunitsRequest {
   /** Request body */
   body?: AdUnit;
 }
-export const PatchAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsAdclientsAdunitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1839,7 +1822,7 @@ export interface PatchAccountsAdclientsCustomchannelsRequest {
   /** Request body */
   body?: CustomChannel;
 }
-export const PatchAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsAdclientsCustomchannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

@@ -13,7 +13,7 @@ export interface ApprovalPoliciesDestroyRequest {
   /** A UUID string identifying this approval policy. */
   id: string;
 }
-export const ApprovalPoliciesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ApprovalPoliciesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -29,9 +29,9 @@ export const ApprovalPoliciesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApprovalPoliciesDestroyRequest>;
 
 export interface ApprovalPoliciesDestroyResponse {}
-export const ApprovalPoliciesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "ApprovalPoliciesDestroyResponse" },
-) as any as S.Schema<ApprovalPoliciesDestroyResponse>;
+const ApprovalPoliciesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "ApprovalPoliciesDestroyResponse",
+}) as any as S.Schema<ApprovalPoliciesDestroyResponse>;
 
 export interface ChangeRequestsApproveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -41,7 +41,7 @@ export interface ChangeRequestsApproveCreateRequest {
   /** Optional note recorded with the approval vote explaining the decision. */
   reason?: string;
 }
-export const ChangeRequestsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeRequestsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -59,7 +59,7 @@ export const ChangeRequestsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `valid` - Valid * `invalid` - Invalid * `stale` - Stale (resource changed) */
 export type ValidationStatusEnum = "valid" | "invalid" | "stale";
-export const ValidationStatusEnum = S.String;
+const ValidationStatusEnum = S.String;
 
 /** * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
 export type ChangeRequestStateEnum =
@@ -69,10 +69,10 @@ export type ChangeRequestStateEnum =
   | "rejected"
   | "expired"
   | "failed";
-export const ChangeRequestStateEnum = S.String;
+const ChangeRequestStateEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -88,14 +88,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -108,7 +103,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -123,11 +118,11 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type ChangeRequestApprovalsItemMap = { [key: string]: unknown | undefined };
-export const ChangeRequestApprovalsItemMap =
+const ChangeRequestApprovalsItemMap =
   UserBasicHedgehogConfigMap as any as S.Schema<ChangeRequestApprovalsItemMap>;
 
 export type ChangeRequestApprovalsList = Array<ChangeRequestApprovalsItemMap>;
-export const ChangeRequestApprovalsList = /*@__PURE__*/ S.Array(
+const ChangeRequestApprovalsList = /*@__PURE__*/ S.Array(
   ChangeRequestApprovalsItemMap,
 ) as any as S.Schema<ChangeRequestApprovalsList>;
 
@@ -161,7 +156,7 @@ export interface ChangeRequest {
   /** Get the current user's approval decision if they have voted. */
   user_decision?: string | null;
 }
-export const ChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     action_key: S.optional(S.String),
@@ -201,7 +196,7 @@ export interface ChangeRequestDecisionResponse {
   /** Present only when the vote reached quorum and the change was applied immediately: details of the affected resource (e.g. resource_id, resource_version). */
   result?: unknown;
 }
-export const ChangeRequestDecisionResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeRequestDecisionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     message: S.String,
@@ -218,7 +213,7 @@ export interface ChangeRequestsCancelCreateRequest {
   /** A UUID string identifying this change request. */
   id: string;
 }
-export const ChangeRequestsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeRequestsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -241,7 +236,7 @@ export interface ChangeRequestsRejectCreateRequest {
   /** Reason for rejecting the change request. Required -- recorded with the rejection vote and shown to the requester. */
   reason: string;
 }
-export const ChangeRequestsRejectCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeRequestsRejectCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -258,7 +253,7 @@ export const ChangeRequestsRejectCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeRequestsRejectCreateRequest>;
 
 export type CreateApprovalPolicyRequestBypassRolesList = Array<string>;
-export const CreateApprovalPolicyRequestBypassRolesList = /*@__PURE__*/ S.Array(
+const CreateApprovalPolicyRequestBypassRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateApprovalPolicyRequestBypassRolesList>;
 
@@ -275,7 +270,7 @@ export interface CreateApprovalPolicyRequest {
   expires_after?: string;
   enabled?: boolean;
 }
-export const CreateApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     action_key: S.optional(S.String),
@@ -294,7 +289,7 @@ export const CreateApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateApprovalPolicyRequest>;
 
 export type ApprovalPolicyBypassRolesList = Array<string>;
-export const ApprovalPolicyBypassRolesList =
+const ApprovalPolicyBypassRolesList =
   CreateApprovalPolicyRequestBypassRolesList as any as S.Schema<ApprovalPolicyBypassRolesList>;
 
 export interface ApprovalPolicy {
@@ -312,7 +307,7 @@ export interface ApprovalPolicy {
   created_at?: string;
   updated_at?: string | null;
 }
-export const ApprovalPolicy = /*@__PURE__*/ S.suspend(() =>
+const ApprovalPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     action_key: S.optional(S.String),
@@ -335,7 +330,7 @@ export interface GetApprovalPolicyRequest {
   /** A UUID string identifying this approval policy. */
   id: string;
 }
-export const GetApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -350,7 +345,7 @@ export interface GetChangeRequestRequest {
   /** A UUID string identifying this change request. */
   id: string;
 }
-export const GetChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -367,7 +362,7 @@ export interface ListApprovalPoliciesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListApprovalPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApprovalPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -380,7 +375,7 @@ export const ListApprovalPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApprovalPoliciesRequest>;
 
 export type PaginatedApprovalPolicyListResultsList = Array<ApprovalPolicy>;
-export const PaginatedApprovalPolicyListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedApprovalPolicyListResultsList = /*@__PURE__*/ S.Array(
   ApprovalPolicy,
 ) as any as S.Schema<PaginatedApprovalPolicyListResultsList>;
 
@@ -390,7 +385,7 @@ export interface PaginatedApprovalPolicyList {
   previous?: string | null;
   results?: PaginatedApprovalPolicyListResultsList;
 }
-export const PaginatedApprovalPolicyList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedApprovalPolicyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -402,7 +397,7 @@ export const PaginatedApprovalPolicyList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedApprovalPolicyList>;
 
 export type ListChangeRequestsRequestStateList = Array<string>;
-export const ListChangeRequestsRequestStateList =
+const ListChangeRequestsRequestStateList =
   CreateApprovalPolicyRequestBypassRolesList as any as S.Schema<ListChangeRequestsRequestStateList>;
 
 export interface ListChangeRequestsRequest {
@@ -419,7 +414,7 @@ export interface ListChangeRequestsRequest {
   /** Multiple values may be separated by commas. */
   state?: ListChangeRequestsRequestStateList;
 }
-export const ListChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     action_key: S.optional(S.String.pipe(T.Query())),
@@ -435,7 +430,7 @@ export const ListChangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListChangeRequestsRequest>;
 
 export type PaginatedChangeRequestListResultsList = Array<ChangeRequest>;
-export const PaginatedChangeRequestListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedChangeRequestListResultsList = /*@__PURE__*/ S.Array(
   ChangeRequest,
 ) as any as S.Schema<PaginatedChangeRequestListResultsList>;
 
@@ -445,7 +440,7 @@ export interface PaginatedChangeRequestList {
   previous?: string | null;
   results?: PaginatedChangeRequestListResultsList;
 }
-export const PaginatedChangeRequestList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedChangeRequestList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -457,7 +452,7 @@ export const PaginatedChangeRequestList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedChangeRequestList>;
 
 export type UpdateApprovalPoliciesPartialRequestBypassRolesList = Array<string>;
-export const UpdateApprovalPoliciesPartialRequestBypassRolesList =
+const UpdateApprovalPoliciesPartialRequestBypassRolesList =
   CreateApprovalPolicyRequestBypassRolesList as any as S.Schema<UpdateApprovalPoliciesPartialRequestBypassRolesList>;
 
 export interface UpdateApprovalPoliciesPartialRequest {
@@ -475,7 +470,7 @@ export interface UpdateApprovalPoliciesPartialRequest {
   expires_after?: string;
   enabled?: boolean;
 }
-export const UpdateApprovalPoliciesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApprovalPoliciesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -499,7 +494,7 @@ export const UpdateApprovalPoliciesPartialRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateApprovalPoliciesPartialRequest>;
 
 export type UpdateApprovalPolicyRequestBypassRolesList = Array<string>;
-export const UpdateApprovalPolicyRequestBypassRolesList =
+const UpdateApprovalPolicyRequestBypassRolesList =
   CreateApprovalPolicyRequestBypassRolesList as any as S.Schema<UpdateApprovalPolicyRequestBypassRolesList>;
 
 export interface UpdateApprovalPolicyRequest {
@@ -517,7 +512,7 @@ export interface UpdateApprovalPolicyRequest {
   expires_after?: string;
   enabled?: boolean;
 }
-export const UpdateApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApprovalPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

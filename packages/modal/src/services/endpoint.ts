@@ -9,18 +9,18 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** google.protobuf.Empty as a nested field. */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
 export interface EndpointComputeRegionSpecExplicitRegions {
   regions?: StringList;
 }
-export const EndpointComputeRegionSpecExplicitRegions = /*@__PURE__*/ S.suspend(() =>
+const EndpointComputeRegionSpecExplicitRegions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(StringList),
   }),
@@ -33,7 +33,7 @@ export interface EndpointComputeRegionSpec {
   colocated?: GoogleProtobufEmpty;
   explicit?: EndpointComputeRegionSpecExplicitRegions;
 }
-export const EndpointComputeRegionSpec = /*@__PURE__*/ S.suspend(() =>
+const EndpointComputeRegionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto: S.optional(GoogleProtobufEmpty),
     colocated: S.optional(GoogleProtobufEmpty),
@@ -48,7 +48,7 @@ export interface EndpointHuggingFaceModelSource {
   revision?: string;
   huggingfaceToken?: string;
 }
-export const EndpointHuggingFaceModelSource = /*@__PURE__*/ S.suspend(() =>
+const EndpointHuggingFaceModelSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoId: S.optional(S.String),
     revision: S.optional(S.String),
@@ -62,7 +62,7 @@ export interface EndpointModalVolumeModelSource {
   volumeId?: string;
   modelPath?: string;
 }
-export const EndpointModalVolumeModelSource = /*@__PURE__*/ S.suspend(() =>
+const EndpointModalVolumeModelSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     modelPath: S.optional(S.String),
@@ -76,7 +76,7 @@ export interface EndpointCustomModelSource {
   huggingface?: EndpointHuggingFaceModelSource;
   modalVolume?: EndpointModalVolumeModelSource;
 }
-export const EndpointCustomModelSource = /*@__PURE__*/ S.suspend(() =>
+const EndpointCustomModelSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseModelRepoId: S.optional(S.String),
     huggingface: S.optional(EndpointHuggingFaceModelSource),
@@ -90,7 +90,7 @@ export interface EndpointModelSource {
   baseModelRepoId?: string;
   custom?: EndpointCustomModelSource;
 }
-export const EndpointModelSource = /*@__PURE__*/ S.suspend(() =>
+const EndpointModelSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseModelRepoId: S.optional(S.String),
     custom: S.optional(EndpointCustomModelSource),
@@ -102,10 +102,10 @@ export type EndpointApiSurface =
   | "ENDPOINT_API_SURFACE_OPENAI_CHAT_COMPLETIONS"
   | "ENDPOINT_API_SURFACE_OPENAI_RESPONSES"
   | "ENDPOINT_API_SURFACE_ANTHROPIC_MESSAGES";
-export const EndpointApiSurface = S.String;
+const EndpointApiSurface = S.String;
 
 export type EndpointApiSurfaceList = Array<EndpointApiSurface | (string & {})>;
-export const EndpointApiSurfaceList = /*@__PURE__*/ S.Array(
+const EndpointApiSurfaceList = /*@__PURE__*/ S.Array(
   EndpointApiSurface,
 ) as any as S.Schema<EndpointApiSurfaceList>;
 
@@ -114,17 +114,15 @@ export type EndpointInputModality =
   | "ENDPOINT_INPUT_MODALITY_TEXT"
   | "ENDPOINT_INPUT_MODALITY_IMAGE"
   | "ENDPOINT_INPUT_MODALITY_AUDIO";
-export const EndpointInputModality = S.String;
-
 export type EndpointInputModalityList = Array<EndpointInputModality | (string & {})>;
-export const EndpointInputModalityList =
+const EndpointInputModalityList =
   EndpointApiSurfaceList as any as S.Schema<EndpointInputModalityList>;
 
 export type EndpointServingMode =
   | "ENDPOINT_SERVING_MODE_UNSPECIFIED"
   | "ENDPOINT_SERVING_MODE_DEDICATED"
   | "ENDPOINT_SERVING_MODE_SHARED";
-export const EndpointServingMode = S.String;
+const EndpointServingMode = S.String;
 
 export interface CreateEndpointRequest {
   name?: string;
@@ -139,7 +137,7 @@ export interface CreateEndpointRequest {
   servingMode?: EndpointServingMode | (string & {});
   sharedEndpointNoticeAcknowledged?: boolean;
 }
-export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -160,7 +158,7 @@ export interface CreateEndpointResponse {
   endpointPageUrl?: string;
   name?: string;
 }
-export const CreateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
     endpointPageUrl: S.optional(S.String),
@@ -172,7 +170,7 @@ export interface EndpointGetByNameRequest {
   name?: string;
   environmentName?: string;
 }
-export const EndpointGetByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const EndpointGetByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -185,7 +183,7 @@ export interface EndpointGetByNameResponse {
   endpointId?: string;
   environmentName?: string;
 }
-export const EndpointGetByNameResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointGetByNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -197,7 +195,7 @@ export const EndpointGetByNameResponse = /*@__PURE__*/ S.suspend(() =>
 export interface EndpointGetInfoRequest {
   endpointId?: string;
 }
-export const EndpointGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const EndpointGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/EndpointGetInfo", code: 200 })),
@@ -211,13 +209,13 @@ export type EndpointGetInfoResponseEndpointStatus =
   | "ENDPOINT_STATUS_CANCELLING"
   | "ENDPOINT_STATUS_CANCELLED"
   | "ENDPOINT_STATUS_STOPPED";
-export const EndpointGetInfoResponseEndpointStatus = S.String;
+const EndpointGetInfoResponseEndpointStatus = S.String;
 
 export type EndpointLifecycleStatus =
   | "ENDPOINT_LIFECYCLE_STATUS_UNSPECIFIED"
   | "ENDPOINT_LIFECYCLE_STATUS_ACTIVE"
   | "ENDPOINT_LIFECYCLE_STATUS_STOPPED";
-export const EndpointLifecycleStatus = S.String;
+const EndpointLifecycleStatus = S.String;
 
 export interface EndpointLifecycle {
   status?: EndpointLifecycleStatus;
@@ -230,7 +228,7 @@ export interface EndpointLifecycle {
   /** User or service user name */
   environmentName?: string;
 }
-export const EndpointLifecycle = /*@__PURE__*/ S.suspend(() =>
+const EndpointLifecycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(EndpointLifecycleStatus),
     createdAt: S.optional(S.Number),
@@ -254,7 +252,7 @@ export interface EndpointGetInfoResponseEndpointInfoSummary {
   volumeId?: string;
   modelPath?: string;
 }
-export const EndpointGetInfoResponseEndpointInfoSummary = /*@__PURE__*/ S.suspend(() =>
+const EndpointGetInfoResponseEndpointInfoSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     repoId: S.optional(S.String),
@@ -276,7 +274,7 @@ export interface EndpointGetInfoResponseEndpointHandleMetadata {
   serverId?: string;
   environmentName?: string;
 }
-export const EndpointGetInfoResponseEndpointHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const EndpointGetInfoResponseEndpointHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     serverId: S.optional(S.String),
@@ -290,7 +288,7 @@ export interface EndpointGetInfoResponse {
   info?: EndpointGetInfoResponseEndpointInfoSummary;
   metadata?: EndpointGetInfoResponseEndpointHandleMetadata;
 }
-export const EndpointGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(EndpointGetInfoResponseEndpointInfoSummary),
     metadata: S.optional(EndpointGetInfoResponseEndpointHandleMetadata),
@@ -300,7 +298,7 @@ export const EndpointGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
 export interface EndpointGetLifecycleRequest {
   endpointId?: string;
 }
-export const EndpointGetLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
+const EndpointGetLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
   }).pipe(
@@ -313,7 +311,7 @@ export const EndpointGetLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EndpointGetLifecycleResponse {
   lifecycle?: EndpointLifecycle;
 }
-export const EndpointGetLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointGetLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycle: S.optional(EndpointLifecycle),
   }),
@@ -325,7 +323,7 @@ export interface ListPagination {
   maxObjects?: number;
   createdBefore?: number;
 }
-export const ListPagination = /*@__PURE__*/ S.suspend(() =>
+const ListPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxObjects: S.optional(S.Number),
     createdBefore: S.optional(S.Number),
@@ -336,7 +334,7 @@ export interface ListEndpointRequest {
   environmentName?: string;
   pagination?: ListPagination;
 }
-export const ListEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     pagination: S.optional(ListPagination),
@@ -349,7 +347,7 @@ export interface CreationInfo {
   /** Timestamp of resource creation */
   createdBy?: string;
 }
-export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
+const CreationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Number),
     createdBy: S.optional(S.String),
@@ -360,7 +358,7 @@ export interface EndpointMetadata {
   name?: string;
   creationInfo?: CreationInfo;
 }
-export const EndpointMetadata = /*@__PURE__*/ S.suspend(() =>
+const EndpointMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     creationInfo: S.optional(CreationInfo),
@@ -379,7 +377,7 @@ export type AppState =
   | "APP_STATE_DISABLED"
   | "APP_STATE_DETACHED_DISCONNECTED"
   | "APP_STATE_DERIVED";
-export const AppState = S.String;
+const AppState = S.String;
 
 export type EndpointProvisioningStatus =
   | "ENDPOINT_PROVISIONING_STATUS_UNSPECIFIED"
@@ -389,7 +387,7 @@ export type EndpointProvisioningStatus =
   | "ENDPOINT_PROVISIONING_STATUS_FAILED"
   | "ENDPOINT_PROVISIONING_STATUS_CANCELLING"
   | "ENDPOINT_PROVISIONING_STATUS_CANCELLED";
-export const EndpointProvisioningStatus = S.String;
+const EndpointProvisioningStatus = S.String;
 
 export interface EndpointListItem {
   endpointId?: string;
@@ -406,7 +404,7 @@ export interface EndpointListItem {
   servingMode?: EndpointServingMode;
   unauthenticated?: boolean;
 }
-export const EndpointListItem = /*@__PURE__*/ S.suspend(() =>
+const EndpointListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
     name: S.optional(S.String),
@@ -425,7 +423,7 @@ export const EndpointListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointListItem" }) as any as S.Schema<EndpointListItem>;
 
 export type EndpointListItemList = Array<EndpointListItem>;
-export const EndpointListItemList = /*@__PURE__*/ S.Array(
+const EndpointListItemList = /*@__PURE__*/ S.Array(
   EndpointListItem,
 ) as any as S.Schema<EndpointListItemList>;
 
@@ -433,7 +431,7 @@ export interface ListEndpointResponse {
   items?: EndpointListItemList;
   environmentName?: string;
 }
-export const ListEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(EndpointListItemList),
     environmentName: S.optional(S.String),
@@ -444,13 +442,13 @@ export type EndpointStopSource =
   | "ENDPOINT_STOP_SOURCE_UNSPECIFIED"
   | "ENDPOINT_STOP_SOURCE_CLI"
   | "ENDPOINT_STOP_SOURCE_WEB";
-export const EndpointStopSource = S.String;
+const EndpointStopSource = S.String;
 
 export interface StopEndpointRequest {
   endpointId?: string;
   source?: EndpointStopSource | (string & {});
 }
-export const StopEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const StopEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
     source: S.optional(EndpointStopSource),
@@ -458,7 +456,7 @@ export const StopEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopEndpointRequest" }) as any as S.Schema<StopEndpointRequest>;
 
 export interface StopEndpointResponse {}
-export const StopEndpointResponse = GoogleProtobufEmpty as any as S.Schema<StopEndpointResponse>;
+const StopEndpointResponse = GoogleProtobufEmpty as any as S.Schema<StopEndpointResponse>;
 
 export type CreateEndpointError = ModalOpError;
 /** Endpoints */

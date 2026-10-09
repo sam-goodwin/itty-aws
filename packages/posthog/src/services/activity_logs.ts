@@ -36,7 +36,7 @@ export class NotFound
   ) {}
 
 export type ListActivityLogRequestOrdering = "-created_at" | "created_at";
-export const ListActivityLogRequestOrdering = S.String;
+const ListActivityLogRequestOrdering = S.String;
 
 export type ListActivityLogRequestScope =
   | "Cohort"
@@ -126,7 +126,7 @@ export type ListActivityLogRequestScope =
   | "Billing"
   | "Loop"
   | "StamphogRepoConfig";
-export const ListActivityLogRequestScope = S.String;
+const ListActivityLogRequestScope = S.String;
 
 /** * `Cohort` - Cohort * `FeatureFlag` - FeatureFlag * `Person` - Person * `Group` - Group * `Insight` - Insight * `Plugin` - Plugin * `PluginConfig` - PluginConfig * `HogFunction` - HogFunction * `HogFlow` - HogFlow * `DataManagement` - DataManagement * `EventDefinition` - EventDefinition * `PropertyDefinition` - PropertyDefinition * `Notebook` - Notebook * `GeneratedWidget` - GeneratedWidget * `Canvas` - Canvas * `Endpoint` - Endpoint * `EndpointVersion` - EndpointVersion * `Dashboard` - Dashboard * `Replay` - Replay * `Experiment` - Experiment * `ExperimentHoldout` - ExperimentHoldout * `ExperimentSavedMetric` - ExperimentSavedMetric * `Survey` - Survey * `EarlyAccessFeature` - EarlyAccessFeature * `SessionRecordingPlaylist` - SessionRecordingPlaylist * `ReplayScanner` - ReplayScanner * `VisionAlertConfiguration` - VisionAlertConfiguration * `Comment` - Comment * `Team` - Team * `Project` - Project * `ErrorTrackingIssue` - ErrorTrackingIssue * `DataWarehouseExpression` - DataWarehouseExpression * `DataWarehouseSavedQuery` - DataWarehouseSavedQuery * `LegalDocument` - LegalDocument * `Organization` - Organization * `OrganizationDomain` - OrganizationDomain * `IdentityProviderConfig` - IdentityProviderConfig * `OrganizationMembership` - OrganizationMembership * `Role` - Role * `UserGroup` - UserGroup * `BatchExport` - BatchExport * `BatchImport` - BatchImport * `ExportedAsset` - ExportedAsset * `Integration` - Integration * `Annotation` - Annotation * `Tag` - Tag * `TaggedItem` - TaggedItem * `Subscription` - Subscription * `PersonalAPIKey` - PersonalAPIKey * `ProjectSecretAPIKey` - ProjectSecretAPIKey * `OAuthApplication` - OAuthApplication * `User` - User * `Action` - Action * `AccountView` - AccountView * `AlertConfiguration` - AlertConfiguration * `Threshold` - Threshold * `AlertSubscription` - AlertSubscription * `ExternalDataSource` - ExternalDataSource * `ExternalDataSchema` - ExternalDataSchema * `Evaluation` - Evaluation * `EvaluationDirectory` - EvaluationDirectory * `LLMPrompt` - LLMPrompt * `LLMPromptLabel` - LLMPromptLabel * `LLMTrace` - LLMTrace * `AIGatewayCredit` - AIGatewayCredit * `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset * `CustomerProfileConfig` - CustomerProfileConfig * `Log` - Log * `LogsAlertConfiguration` - LogsAlertConfiguration * `LogsExclusionRule` - LogsExclusionRule * `LogsRetentionRule` - LogsRetentionRule * `TracesRetentionRule` - TracesRetentionRule * `DashboardWidget` - DashboardWidget * `ProductTour` - ProductTour * `Ticket` - Ticket * `InstanceSetting` - InstanceSetting * `SignalReport` - SignalReport * `SignalScoutConfig` - SignalScoutConfig * `SignalTeamConfig` - SignalTeamConfig * `StreamlitApp` - StreamlitApp * `Metric` - Metric * `TableCertification` - TableCertification * `DataQualityCheck` - DataQualityCheck * `DataQualityCheckSchedule` - DataQualityCheckSchedule * `Billing` - Billing * `Loop` - Loop * `StamphogRepoConfig` - StamphogRepoConfig */
 export type ListActivityLogRequestScopesItem =
@@ -217,12 +217,12 @@ export type ListActivityLogRequestScopesItem =
   | "Billing"
   | "Loop"
   | "StamphogRepoConfig";
-export const ListActivityLogRequestScopesItem = S.String;
+const ListActivityLogRequestScopesItem = S.String;
 
 export type ListActivityLogRequestScopesList = Array<
   ListActivityLogRequestScopesItem | (string & {})
 >;
-export const ListActivityLogRequestScopesList = /*@__PURE__*/ S.Array(
+const ListActivityLogRequestScopesList = /*@__PURE__*/ S.Array(
   ListActivityLogRequestScopesItem,
 ) as any as S.Schema<ListActivityLogRequestScopesList>;
 
@@ -244,7 +244,7 @@ export interface ListActivityLogRequest {
   /** Filter by user UUID who performed the action. */
   user?: string;
 }
-export const ListActivityLogRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActivityLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     item_id: S.optional(S.String.pipe(T.Query())),
@@ -258,7 +258,7 @@ export const ListActivityLogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListActivityLogRequest" }) as any as S.Schema<ListActivityLogRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -274,14 +274,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -294,7 +289,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -325,7 +320,7 @@ export interface ActivityLog {
   detail?: unknown;
   created_at?: string;
 }
-export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
+const ActivityLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     user: S.optional(S.NullOr(UserBasic)),
@@ -345,7 +340,7 @@ export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityLog" }) as any as S.Schema<ActivityLog>;
 
 export type PaginatedActivityLogListResultsList = Array<ActivityLog>;
-export const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
   ActivityLog,
 ) as any as S.Schema<PaginatedActivityLogListResultsList>;
 
@@ -355,7 +350,7 @@ export interface PaginatedActivityLogList {
   results?: PaginatedActivityLogListResultsList;
   count?: number;
 }
-export const PaginatedActivityLogList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedActivityLogList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),

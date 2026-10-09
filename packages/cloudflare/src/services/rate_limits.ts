@@ -27,7 +27,7 @@ export type CreateRequestActionMode =
   | "challenge"
   | "js_challenge"
   | "managed_challenge";
-export const CreateRequestActionMode = S.String;
+const CreateRequestActionMode = S.String;
 
 export interface CreateRequestActionResponse {
   /** The response body to return. The value must conform to the configured content type. */
@@ -35,7 +35,7 @@ export interface CreateRequestActionResponse {
   /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
   contentType?: string;
 }
-export const CreateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     contentType: S.optional(S.String.pipe(T.Body("content_type"))),
@@ -52,7 +52,7 @@ export interface CreateRequestAction {
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. Notes: If "mode" is "challenge", "managed_challenge", or "js_challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value. */
   timeout?: number;
 }
-export const CreateRequestAction = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(CreateRequestActionMode),
     response: S.optional(CreateRequestActionResponse),
@@ -61,7 +61,7 @@ export const CreateRequestAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRequestAction" }) as any as S.Schema<CreateRequestAction>;
 
 export type CreateRequestMatchHeadersItemOp = "eq" | "ne";
-export const CreateRequestMatchHeadersItemOp = S.String;
+const CreateRequestMatchHeadersItemOp = S.String;
 
 export interface CreateRequestMatchHeadersItem {
   /** The name of the response header to match. */
@@ -71,7 +71,7 @@ export interface CreateRequestMatchHeadersItem {
   /** The value of the response header, which must match exactly. */
   value?: string;
 }
-export const CreateRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     op: S.optional(CreateRequestMatchHeadersItemOp),
@@ -82,7 +82,7 @@ export const CreateRequestMatchHeadersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRequestMatchHeadersItem>;
 
 export type CreateRequestMatchHeadersList = Array<CreateRequestMatchHeadersItem>;
-export const CreateRequestMatchHeadersList = /*@__PURE__*/ S.Array(
+const CreateRequestMatchHeadersList = /*@__PURE__*/ S.Array(
   CreateRequestMatchHeadersItem,
 ) as any as S.Schema<CreateRequestMatchHeadersList>;
 
@@ -94,17 +94,17 @@ export type CreateRequestMatchRequestMethodsItem =
   | "PATCH"
   | "HEAD"
   | "_ALL_";
-export const CreateRequestMatchRequestMethodsItem = S.String;
+const CreateRequestMatchRequestMethodsItem = S.String;
 
 export type CreateRequestMatchRequestMethodsList = Array<
   CreateRequestMatchRequestMethodsItem | (string & {})
 >;
-export const CreateRequestMatchRequestMethodsList = /*@__PURE__*/ S.Array(
+const CreateRequestMatchRequestMethodsList = /*@__PURE__*/ S.Array(
   CreateRequestMatchRequestMethodsItem,
 ) as any as S.Schema<CreateRequestMatchRequestMethodsList>;
 
 export type CreateRequestMatchRequestSchemesList = Array<string>;
-export const CreateRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
+const CreateRequestMatchRequestSchemesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestMatchRequestSchemesList>;
 
@@ -116,7 +116,7 @@ export interface CreateRequestMatchRequest {
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
   url?: string;
 }
-export const CreateRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methods: S.optional(CreateRequestMatchRequestMethodsList),
     schemes: S.optional(CreateRequestMatchRequestSchemesList),
@@ -130,7 +130,7 @@ export interface CreateRequestMatchResponse {
   /** When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional. Notes: This field is deprecated. Instead, use response headers and set "origin_traffic" to "false" to avoid legacy behaviour interacting with the "response_headers" property. */
   originTraffic?: boolean;
 }
-export const CreateRequestMatchResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
   }),
@@ -143,7 +143,7 @@ export interface CreateRequestMatch {
   request?: CreateRequestMatchRequest;
   response?: CreateRequestMatchResponse;
 }
-export const CreateRequestMatch = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(CreateRequestMatchHeadersList),
     request: S.optional(CreateRequestMatchRequest),
@@ -163,7 +163,7 @@ export interface CreateRateLimitRequest {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold: number;
 }
-export const CreateRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     action: CreateRequestAction,
@@ -176,7 +176,7 @@ export const CreateRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRateLimitRequest" }) as any as S.Schema<CreateRateLimitRequest>;
 
 export interface CreateRateLimitResponse {}
-export const CreateRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateRateLimitResponse" }) as any as S.Schema<CreateRateLimitResponse>;
 
@@ -186,7 +186,7 @@ export interface DeleteRateLimitRequest {
   /** Defines the unique identifier of the rate limit. */
   rateLimitId: string;
 }
-export const DeleteRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
@@ -198,8 +198,7 @@ export const DeleteRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRateLimitRequest" }) as any as S.Schema<DeleteRateLimitRequest>;
 
 export interface DeleteRateLimitResponse {}
-export const DeleteRateLimitResponse =
-  CreateRateLimitResponse as any as S.Schema<DeleteRateLimitResponse>;
+const DeleteRateLimitResponse = CreateRateLimitResponse as any as S.Schema<DeleteRateLimitResponse>;
 
 export type EditRequestActionMode =
   | "simulate"
@@ -207,11 +206,7 @@ export type EditRequestActionMode =
   | "challenge"
   | "js_challenge"
   | "managed_challenge";
-export const EditRequestActionMode = S.String;
-
 export type EditRequestActionResponse = CreateRequestActionResponse;
-export const EditRequestActionResponse = CreateRequestActionResponse;
-
 export interface EditRequestAction {
   /** The action to perform. */
   mode?: EditRequestActionMode | (string & {});
@@ -220,11 +215,9 @@ export interface EditRequestAction {
   /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. Notes: If "mode" is "challenge", "managed_challenge", or "js_challenge", Cloudflare will use the zone's Challenge Passage time and you should not provide this value. */
   timeout?: number;
 }
-export const EditRequestAction = CreateRequestAction as any as S.Schema<EditRequestAction>;
+const EditRequestAction = CreateRequestAction as any as S.Schema<EditRequestAction>;
 
 export type EditRequestMatchHeadersItemOp = "eq" | "ne";
-export const EditRequestMatchHeadersItemOp = S.String;
-
 export interface EditRequestMatchHeadersItem {
   /** The name of the response header to match. */
   name?: string;
@@ -233,11 +226,8 @@ export interface EditRequestMatchHeadersItem {
   /** The value of the response header, which must match exactly. */
   value?: string;
 }
-export const EditRequestMatchHeadersItem =
-  CreateRequestMatchHeadersItem as any as S.Schema<EditRequestMatchHeadersItem>;
-
 export type EditRequestMatchHeadersList = Array<EditRequestMatchHeadersItem>;
-export const EditRequestMatchHeadersList =
+const EditRequestMatchHeadersList =
   CreateRequestMatchHeadersList as any as S.Schema<EditRequestMatchHeadersList>;
 
 export type EditRequestMatchRequestMethodsItem =
@@ -248,16 +238,14 @@ export type EditRequestMatchRequestMethodsItem =
   | "PATCH"
   | "HEAD"
   | "_ALL_";
-export const EditRequestMatchRequestMethodsItem = S.String;
-
 export type EditRequestMatchRequestMethodsList = Array<
   EditRequestMatchRequestMethodsItem | (string & {})
 >;
-export const EditRequestMatchRequestMethodsList =
+const EditRequestMatchRequestMethodsList =
   CreateRequestMatchRequestMethodsList as any as S.Schema<EditRequestMatchRequestMethodsList>;
 
 export type EditRequestMatchRequestSchemesList = Array<string>;
-export const EditRequestMatchRequestSchemesList =
+const EditRequestMatchRequestSchemesList =
   CreateRequestMatchRequestSchemesList as any as S.Schema<EditRequestMatchRequestSchemesList>;
 
 export interface EditRequestMatchRequest {
@@ -268,7 +256,7 @@ export interface EditRequestMatchRequest {
   /** The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone. */
   url?: string;
 }
-export const EditRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methods: S.optional(EditRequestMatchRequestMethodsList),
     schemes: S.optional(EditRequestMatchRequestSchemesList),
@@ -277,14 +265,12 @@ export const EditRequestMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRequestMatchRequest" }) as any as S.Schema<EditRequestMatchRequest>;
 
 export type EditRequestMatchResponse = CreateRequestMatchResponse;
-export const EditRequestMatchResponse = CreateRequestMatchResponse;
-
 export interface EditRequestMatch {
   headers?: EditRequestMatchHeadersList;
   request?: EditRequestMatchRequest;
   response?: CreateRequestMatchResponse;
 }
-export const EditRequestMatch = /*@__PURE__*/ S.suspend(() =>
+const EditRequestMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(EditRequestMatchHeadersList),
     request: S.optional(EditRequestMatchRequest),
@@ -306,7 +292,7 @@ export interface EditRateLimitRequest {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold: number;
 }
-export const EditRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
@@ -320,8 +306,7 @@ export const EditRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRateLimitRequest" }) as any as S.Schema<EditRateLimitRequest>;
 
 export interface EditRateLimitResponse {}
-export const EditRateLimitResponse =
-  CreateRateLimitResponse as any as S.Schema<EditRateLimitResponse>;
+const EditRateLimitResponse = CreateRateLimitResponse as any as S.Schema<EditRateLimitResponse>;
 
 export interface GetRateLimitRequest {
   /** Defines an identifier. */
@@ -329,7 +314,7 @@ export interface GetRateLimitRequest {
   /** Defines the unique identifier of the rate limit. */
   rateLimitId: string;
 }
-export const GetRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
@@ -339,8 +324,7 @@ export const GetRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRateLimitRequest" }) as any as S.Schema<GetRateLimitRequest>;
 
 export interface GetRateLimitResponse {}
-export const GetRateLimitResponse =
-  CreateRateLimitResponse as any as S.Schema<GetRateLimitResponse>;
+const GetRateLimitResponse = CreateRateLimitResponse as any as S.Schema<GetRateLimitResponse>;
 
 export interface ListRateLimitsRequest {
   /** Defines an identifier. */
@@ -350,7 +334,7 @@ export interface ListRateLimitsRequest {
   /** Defines the maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`. */
   perPage?: number;
 }
-export const ListRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -361,8 +345,7 @@ export const ListRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRateLimitsRequest" }) as any as S.Schema<ListRateLimitsRequest>;
 
 export interface ListRateLimitsResponse {}
-export const ListRateLimitsResponse =
-  CreateRateLimitResponse as any as S.Schema<ListRateLimitsResponse>;
+const ListRateLimitsResponse = CreateRateLimitResponse as any as S.Schema<ListRateLimitsResponse>;
 
 export type CreateRateLimitError = CloudflareOpError;
 /** **Deprecated**: This endpoint returns 410 Gone. Please use the Rulesets API instead. */

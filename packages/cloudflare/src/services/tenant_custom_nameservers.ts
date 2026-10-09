@@ -30,7 +30,7 @@ export interface CreateTenantCustomNameserverRequest {
   /** The number of the set that this name server belongs to. */
   nsSet?: number;
 }
-export const CreateTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
     nsName: S.String.pipe(T.Body("ns_name")),
@@ -43,7 +43,7 @@ export const CreateTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTenantCustomNameserverRequest>;
 
 export type CreateResponseDnsRecordsItemType = "A" | "AAAA";
-export const CreateResponseDnsRecordsItemType = S.String;
+const CreateResponseDnsRecordsItemType = S.String;
 
 export interface CreateResponseDnsRecordsItem {
   /** DNS record type. */
@@ -51,7 +51,7 @@ export interface CreateResponseDnsRecordsItem {
   /** DNS record contents (an IPv4 or IPv6 address). */
   value?: string | null;
 }
-export const CreateResponseDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.NullOr(CreateResponseDnsRecordsItemType)),
     value: S.optional(S.NullOr(S.String)),
@@ -61,12 +61,12 @@ export const CreateResponseDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseDnsRecordsItem>;
 
 export type CreateResponseDnsRecordsList = Array<CreateResponseDnsRecordsItem>;
-export const CreateResponseDnsRecordsList = /*@__PURE__*/ S.Array(
+const CreateResponseDnsRecordsList = /*@__PURE__*/ S.Array(
   CreateResponseDnsRecordsItem,
 ) as any as S.Schema<CreateResponseDnsRecordsList>;
 
 export type CreateResponseStatus = "moved" | "pending" | "verified";
-export const CreateResponseStatus = S.String;
+const CreateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTenantCustomNameserverResponse {
@@ -81,7 +81,7 @@ export interface CreateTenantCustomNameserverResponse {
   /** The number of the set that this name server belongs to. */
   nsSet?: number | null;
 }
-export const CreateTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsRecords: CreateResponseDnsRecordsList.pipe(T.Body("dns_records")),
     nsName: S.String.pipe(T.Body("ns_name")),
@@ -99,7 +99,7 @@ export interface DeleteTenantCustomNameserverRequest {
   /** The FQDN of the name server. */
   customNsId: string;
 }
-export const DeleteTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
     customNsId: S.String.pipe(T.Label("custom_ns_id")),
@@ -117,9 +117,7 @@ export const DeleteTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTenantCustomNameserverRequest>;
 
 export type DeleteResultList = Array<string>;
-export const DeleteResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DeleteResultList>;
+const DeleteResultList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<DeleteResultList>;
 
 export interface DeleteTenantCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -127,7 +125,7 @@ export interface DeleteTenantCustomNameserverResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const DeleteTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -140,7 +138,7 @@ export interface GetTenantCustomNameserverRequest {
   /** Tenant identifier tag. */
   tenantTag: string;
 }
-export const GetTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
   })
@@ -151,23 +149,18 @@ export const GetTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTenantCustomNameserverRequest>;
 
 export type GetResultItemDnsRecordsItemType = "A" | "AAAA";
-export const GetResultItemDnsRecordsItemType = S.String;
-
 export interface GetResultItemDnsRecordsItem {
   /** DNS record type. */
   type?: GetResultItemDnsRecordsItemType | null;
   /** DNS record contents (an IPv4 or IPv6 address). */
   value?: string | null;
 }
-export const GetResultItemDnsRecordsItem =
-  CreateResponseDnsRecordsItem as any as S.Schema<GetResultItemDnsRecordsItem>;
-
 export type GetResultItemDnsRecordsList = Array<GetResultItemDnsRecordsItem>;
-export const GetResultItemDnsRecordsList =
+const GetResultItemDnsRecordsList =
   CreateResponseDnsRecordsList as any as S.Schema<GetResultItemDnsRecordsList>;
 
 export type GetResultItemStatus = "moved" | "pending" | "verified";
-export const GetResultItemStatus = S.String;
+const GetResultItemStatus = S.String;
 
 export interface GetResultItem {
   /** A and AAAA records associated with the nameserver. */
@@ -181,7 +174,7 @@ export interface GetResultItem {
   /** The number of the set that this name server belongs to. */
   nsSet?: number | null;
 }
-export const GetResultItem = /*@__PURE__*/ S.suspend(() =>
+const GetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsRecords: GetResultItemDnsRecordsList.pipe(T.Body("dns_records")),
     nsName: S.String.pipe(T.Body("ns_name")),
@@ -192,7 +185,7 @@ export const GetResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResultItem" }) as any as S.Schema<GetResultItem>;
 
 export type GetResultList = Array<GetResultItem>;
-export const GetResultList = /*@__PURE__*/ S.Array(GetResultItem) as any as S.Schema<GetResultList>;
+const GetResultList = /*@__PURE__*/ S.Array(GetResultItem) as any as S.Schema<GetResultList>;
 
 export interface GetTenantCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -200,7 +193,7 @@ export interface GetTenantCustomNameserverResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

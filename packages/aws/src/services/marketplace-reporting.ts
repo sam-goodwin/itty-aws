@@ -102,12 +102,12 @@ export class UnauthorizedException
 export type DashboardIdentifier = string;
 export type EmbeddingDomain = string;
 export type EmbeddingDomains = string[];
-export const EmbeddingDomains = /*@__PURE__*/ S.Array(S.String);
+const EmbeddingDomains = /*@__PURE__*/ S.Array(S.String);
 export interface GetBuyerDashboardInput {
   dashboardIdentifier: string;
   embeddingDomains: string[];
 }
-export const GetBuyerDashboardInput = /*@__PURE__*/ S.suspend(() =>
+const GetBuyerDashboardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dashboardIdentifier: S.String, embeddingDomains: EmbeddingDomains }).pipe(
     T.all(T.Http({ method: "POST", uri: "/getBuyerDashboard" }), svc, auth, proto, ver, rules),
   ),
@@ -117,7 +117,7 @@ export interface GetBuyerDashboardOutput {
   dashboardIdentifier: string;
   embeddingDomains: string[];
 }
-export const GetBuyerDashboardOutput = /*@__PURE__*/ S.suspend(() =>
+const GetBuyerDashboardOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     embedUrl: S.String,
     dashboardIdentifier: S.String,

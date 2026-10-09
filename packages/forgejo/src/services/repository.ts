@@ -69,7 +69,7 @@ export interface AcceptRepoTransferRequest {
   /** name of the repo to transfer */
   repo: string;
 }
-export const AcceptRepoTransferRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptRepoTransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -79,7 +79,7 @@ export const AcceptRepoTransferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptRepoTransferRequest>;
 
 export interface AcceptRepoTransferResponse {}
-export const AcceptRepoTransferResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AcceptRepoTransferResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AcceptRepoTransferResponse",
 }) as any as S.Schema<AcceptRepoTransferResponse>;
 
@@ -91,7 +91,7 @@ export interface ActionRunRequest {
   /** id of the action run */
   run_id: number;
 }
-export const ActionRunRequest = /*@__PURE__*/ S.suspend(() =>
+const ActionRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -110,7 +110,7 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
-export const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
+const ExternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_tracker_format: S.optional(S.String),
     external_tracker_regexp_pattern: S.optional(S.String),
@@ -124,7 +124,7 @@ export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
-export const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
+const ExternalWiki = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_wiki_url: S.optional(S.String),
   }),
@@ -139,7 +139,7 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
-export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
+const InternalTracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_only_contributors_to_track_time: S.optional(S.Boolean),
     enable_issue_dependencies: S.optional(S.Boolean),
@@ -149,7 +149,7 @@ export const InternalTracker = /*@__PURE__*/ S.suspend(() =>
 
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
-export const RepositoryObjectFormatName = S.String;
+const RepositoryObjectFormatName = S.String;
 
 /** User represents a user */
 export interface User {
@@ -195,7 +195,7 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     avatar_url: S.optional(S.String),
@@ -229,7 +229,7 @@ export interface Permission {
   pull?: boolean;
   push?: boolean;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     pull: S.optional(S.Boolean),
@@ -253,7 +253,7 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar_url: S.optional(S.String),
     created: S.optional(S.String),
@@ -271,13 +271,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-export const TeamPermission = S.String;
+const TeamPermission = S.String;
 
 export type TeamUnitsList = Array<string>;
-export const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
+const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
 
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-export const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
+const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TeamUnitsMapMap>;
@@ -294,7 +294,7 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_create_org_repo: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -309,9 +309,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type RepoTransferTeamsList = Array<Team>;
-export const RepoTransferTeamsList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<RepoTransferTeamsList>;
+const RepoTransferTeamsList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<RepoTransferTeamsList>;
 
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
@@ -319,7 +317,7 @@ export interface RepoTransfer {
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
-export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
+const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doer: S.optional(User),
     recipient: S.optional(User),
@@ -328,7 +326,7 @@ export const RepoTransfer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTransfer" }) as any as S.Schema<RepoTransfer>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList = /*@__PURE__*/ S.Array(
+const RepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RepositoryTopicsList>;
 
@@ -404,7 +402,7 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_fast_forward_only_merge: S.optional(S.Boolean),
     allow_merge_commits: S.optional(S.Boolean),
@@ -521,7 +519,7 @@ export interface ActionRun {
   /** the name of workflow file */
   workflow_id?: string;
 }
-export const ActionRun = /*@__PURE__*/ S.suspend(() =>
+const ActionRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ScheduleID: S.optional(S.Number),
     approved_by: S.optional(S.Number),
@@ -557,7 +555,7 @@ export interface CancelActionRunRequest {
   /** ID of the workflow run */
   run_id: number;
 }
-export const CancelActionRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelActionRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -572,7 +570,7 @@ export const CancelActionRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelActionRunRequest" }) as any as S.Schema<CancelActionRunRequest>;
 
 export interface CancelActionRunResponse {}
-export const CancelActionRunResponse =
+const CancelActionRunResponse =
   AcceptRepoTransferResponse as any as S.Schema<CancelActionRunResponse>;
 
 export interface ConvertRepoRequest {
@@ -581,7 +579,7 @@ export interface ConvertRepoRequest {
   /** name of the repo to convert */
   repo: string;
 }
-export const ConvertRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ConvertRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -590,7 +588,7 @@ export const ConvertRepoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ObjectFormatName of the underlying git repository */
 export type CreateCurrentUserRepoRequestObjectFormatName = "sha1" | "sha256";
-export const CreateCurrentUserRepoRequestObjectFormatName = S.String;
+const CreateCurrentUserRepoRequestObjectFormatName = S.String;
 
 /** TrustModel of the repository */
 export type CreateCurrentUserRepoRequestTrustModel =
@@ -598,7 +596,7 @@ export type CreateCurrentUserRepoRequestTrustModel =
   | "collaborator"
   | "committer"
   | "collaboratorcommitter";
-export const CreateCurrentUserRepoRequestTrustModel = S.String;
+const CreateCurrentUserRepoRequestTrustModel = S.String;
 
 export interface CreateCurrentUserRepoRequest {
   /** Whether the repository should be auto-initialized? */
@@ -626,7 +624,7 @@ export interface CreateCurrentUserRepoRequest {
   /** TrustModel of the repository */
   trust_model?: CreateCurrentUserRepoRequestTrustModel | (string & {});
 }
-export const CreateCurrentUserRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCurrentUserRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto_init: S.optional(S.Boolean),
     default_branch: S.optional(S.String),
@@ -655,7 +653,7 @@ export interface CreateForkRequest {
   /** organization name, if forking into an organization */
   organization?: string;
 }
-export const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -665,7 +663,7 @@ export const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateForkRequest" }) as any as S.Schema<CreateForkRequest>;
 
 export interface CreateForkResponse {}
-export const CreateForkResponse = AcceptRepoTransferResponse as any as S.Schema<CreateForkResponse>;
+const CreateForkResponse = AcceptRepoTransferResponse as any as S.Schema<CreateForkResponse>;
 
 export interface CreateRepoVariableRequest {
   /** name of the owner */
@@ -677,7 +675,7 @@ export interface CreateRepoVariableRequest {
   /** Value of the variable to create. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   value: string;
 }
-export const CreateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -695,7 +693,7 @@ export const CreateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRepoVariableRequest>;
 
 export interface CreateRepoVariableResponse {}
-export const CreateRepoVariableResponse =
+const CreateRepoVariableResponse =
   AcceptRepoTransferResponse as any as S.Schema<CreateRepoVariableResponse>;
 
 export interface DeleteActionArtifactRequest {
@@ -706,7 +704,7 @@ export interface DeleteActionArtifactRequest {
   /** ID of the artifact */
   artifact_id: number;
 }
-export const DeleteActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -723,7 +721,7 @@ export const DeleteActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteActionArtifactRequest>;
 
 export interface DeleteActionArtifactResponse {}
-export const DeleteActionArtifactResponse =
+const DeleteActionArtifactResponse =
   AcceptRepoTransferResponse as any as S.Schema<DeleteActionArtifactResponse>;
 
 export interface DeleteActionRunRequest {
@@ -734,7 +732,7 @@ export interface DeleteActionRunRequest {
   /** id of the action run */
   run_id: number;
 }
-export const DeleteActionRunRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActionRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -745,7 +743,7 @@ export const DeleteActionRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteActionRunRequest" }) as any as S.Schema<DeleteActionRunRequest>;
 
 export interface DeleteActionRunResponse {}
-export const DeleteActionRunResponse =
+const DeleteActionRunResponse =
   AcceptRepoTransferResponse as any as S.Schema<DeleteActionRunResponse>;
 
 export interface DeleteRepoRequest {
@@ -754,7 +752,7 @@ export interface DeleteRepoRequest {
   /** name of the repo to delete */
   repo: string;
 }
-export const DeleteRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -762,7 +760,7 @@ export const DeleteRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoRequest" }) as any as S.Schema<DeleteRepoRequest>;
 
 export interface DeleteRepoResponse {}
-export const DeleteRepoResponse = AcceptRepoTransferResponse as any as S.Schema<DeleteRepoResponse>;
+const DeleteRepoResponse = AcceptRepoTransferResponse as any as S.Schema<DeleteRepoResponse>;
 
 export interface DeleteRepoRunnerRequest {
   /** owner of the repo */
@@ -772,7 +770,7 @@ export interface DeleteRepoRunnerRequest {
   /** ID of the runner */
   runner_id: string;
 }
-export const DeleteRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -787,7 +785,7 @@ export const DeleteRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoRunnerRequest" }) as any as S.Schema<DeleteRepoRunnerRequest>;
 
 export interface DeleteRepoRunnerResponse {}
-export const DeleteRepoRunnerResponse =
+const DeleteRepoRunnerResponse =
   AcceptRepoTransferResponse as any as S.Schema<DeleteRepoRunnerResponse>;
 
 export interface DeleteRepoSecretRequest {
@@ -798,7 +796,7 @@ export interface DeleteRepoSecretRequest {
   /** name of the secret */
   secretname: string;
 }
-export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -813,7 +811,7 @@ export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoSecretRequest" }) as any as S.Schema<DeleteRepoSecretRequest>;
 
 export interface DeleteRepoSecretResponse {}
-export const DeleteRepoSecretResponse =
+const DeleteRepoSecretResponse =
   AcceptRepoTransferResponse as any as S.Schema<DeleteRepoSecretResponse>;
 
 export interface DeleteRepoVariableRequest {
@@ -824,7 +822,7 @@ export interface DeleteRepoVariableRequest {
   /** name of the variable */
   variablename: string;
 }
-export const DeleteRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -841,12 +839,12 @@ export const DeleteRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRepoVariableRequest>;
 
 export interface DeleteRepoVariableResponse {}
-export const DeleteRepoVariableResponse =
+const DeleteRepoVariableResponse =
   AcceptRepoTransferResponse as any as S.Schema<DeleteRepoVariableResponse>;
 
 /** Input keys and values configured in the workflow file. */
 export type DispatchWorkflowRequestInputsMap = { [key: string]: string | undefined };
-export const DispatchWorkflowRequestInputsMap =
+const DispatchWorkflowRequestInputsMap =
   TeamUnitsMapMap as any as S.Schema<DispatchWorkflowRequestInputsMap>;
 
 export interface DispatchWorkflowRequest {
@@ -863,7 +861,7 @@ export interface DispatchWorkflowRequest {
   /** Flag to return the run info */
   return_run_info?: boolean;
 }
-export const DispatchWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const DispatchWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -882,7 +880,7 @@ export const DispatchWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the jobs name */
 export type DispatchWorkflowRunJobsList = Array<string>;
-export const DispatchWorkflowRunJobsList =
+const DispatchWorkflowRunJobsList =
   RepositoryTopicsList as any as S.Schema<DispatchWorkflowRunJobsList>;
 
 /** DispatchWorkflowRun represents a workflow run */
@@ -894,7 +892,7 @@ export interface DispatchWorkflowRun {
   /** a unique number for each run of a repository */
   run_number?: number;
 }
-export const DispatchWorkflowRun = /*@__PURE__*/ S.suspend(() =>
+const DispatchWorkflowRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     jobs: S.optional(DispatchWorkflowRunJobsList),
@@ -910,7 +908,7 @@ export interface DownloadActionArtifactRequest {
   /** ID of the artifact */
   artifact_id: number;
 }
-export const DownloadActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -927,7 +925,7 @@ export const DownloadActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadActionArtifactRequest>;
 
 export interface DownloadActionArtifactResponse {}
-export const DownloadActionArtifactResponse =
+const DownloadActionArtifactResponse =
   AcceptRepoTransferResponse as any as S.Schema<DownloadActionArtifactResponse>;
 
 export interface EditRepoRequest {
@@ -1001,7 +999,7 @@ export interface EditRepoRequest {
   /** sets the branch used for this repository's wiki. */
   wiki_branch?: string;
 }
-export const EditRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1072,7 +1070,7 @@ export interface GenerateRepoRequest {
   /** include webhooks in template repo */
   webhooks?: boolean;
 }
-export const GenerateRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template_owner: S.String.pipe(T.Label()),
     template_repo: S.String.pipe(T.Label()),
@@ -1101,7 +1099,7 @@ export interface GetActionArtifactRequest {
   /** ID of the artifact */
   artifact_id: number;
 }
-export const GetActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActionArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1133,7 +1131,7 @@ export interface ActionArtifact {
   size_in_bytes?: number;
   updated_at?: string;
 }
-export const ActionArtifact = /*@__PURE__*/ S.suspend(() =>
+const ActionArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archive_download_url: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -1155,7 +1153,7 @@ export interface GetAnnotatedTagRequest {
   /** sha of the tag. The Git tags API only supports annotated tag objects, not lightweight tags. */
   sha: string;
 }
-export const GetAnnotatedTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotatedTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1168,7 +1166,7 @@ export interface TagArchiveDownloadCount {
   tar_gz?: number;
   zip?: number;
 }
-export const TagArchiveDownloadCount = /*@__PURE__*/ S.suspend(() =>
+const TagArchiveDownloadCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tar_gz: S.optional(S.Number),
     zip: S.optional(S.Number),
@@ -1181,7 +1179,7 @@ export interface AnnotatedTagObject {
   type?: string;
   url?: string;
 }
-export const AnnotatedTagObject = /*@__PURE__*/ S.suspend(() =>
+const AnnotatedTagObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.optional(S.String),
     type: S.optional(S.String),
@@ -1194,7 +1192,7 @@ export interface CommitUser {
   email?: string;
   name?: string;
 }
-export const CommitUser = /*@__PURE__*/ S.suspend(() =>
+const CommitUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     email: S.optional(S.String),
@@ -1209,7 +1207,7 @@ export interface PayloadUser {
   name?: string;
   username?: string;
 }
-export const PayloadUser = /*@__PURE__*/ S.suspend(() =>
+const PayloadUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -1225,7 +1223,7 @@ export interface PayloadCommitVerification {
   signer?: PayloadUser;
   verified?: boolean;
 }
-export const PayloadCommitVerification = /*@__PURE__*/ S.suspend(() =>
+const PayloadCommitVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(S.String),
     reason: S.optional(S.String),
@@ -1248,7 +1246,7 @@ export interface AnnotatedTag {
   url?: string;
   verification?: PayloadCommitVerification;
 }
-export const AnnotatedTag = /*@__PURE__*/ S.suspend(() =>
+const AnnotatedTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archive_download_count: S.optional(TagArchiveDownloadCount),
     message: S.optional(S.String),
@@ -1269,7 +1267,7 @@ export interface GetBlobRequest {
   /** sha of the blob to retrieve */
   sha: string;
 }
-export const GetBlobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1285,7 +1283,7 @@ export interface GitBlob {
   size?: number;
   url?: string;
 }
-export const GitBlob = /*@__PURE__*/ S.suspend(() =>
+const GitBlob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     encoding: S.optional(S.String),
@@ -1303,7 +1301,7 @@ export interface GetBlobsRequest {
   /** a comma separated list of blob-sha (mind the overall URL-length limit of ~2,083 chars) */
   shas: string;
 }
-export const GetBlobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1312,12 +1310,12 @@ export const GetBlobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBlobsRequest" }) as any as S.Schema<GetBlobsRequest>;
 
 export type GetBlobsResponseBodyList = Array<GitBlob>;
-export const GetBlobsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetBlobsResponseBodyList = /*@__PURE__*/ S.Array(
   GitBlob,
 ) as any as S.Schema<GetBlobsResponseBodyList>;
 
 export type GetBlobsResponse = GetBlobsResponseBodyList;
-export const GetBlobsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBlobsResponse = /*@__PURE__*/ S.suspend(() =>
   GetBlobsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetBlobsResponse" }) as any as S.Schema<GetBlobsResponse>;
 
@@ -1327,7 +1325,7 @@ export interface GetRepoRequest {
   /** name of the repo */
   repo: string;
 }
-export const GetRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1342,7 +1340,7 @@ export interface GetRepoPermissionsRequest {
   /** username of the collaborator */
   collaborator: string;
 }
-export const GetRepoPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1364,7 +1362,7 @@ export interface RepoCollaboratorPermission {
   role_name?: string;
   user?: User;
 }
-export const RepoCollaboratorPermission = /*@__PURE__*/ S.suspend(() =>
+const RepoCollaboratorPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission: S.optional(S.String),
     role_name: S.optional(S.String),
@@ -1382,7 +1380,7 @@ export interface GetRepoRunnerRequest {
   /** ID of the runner */
   runner_id: string;
 }
-export const GetRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1394,12 +1392,11 @@ export const GetRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels is a list of labels attached to this runner. */
 export type ActionRunnerLabelsList = Array<string>;
-export const ActionRunnerLabelsList =
-  RepositoryTopicsList as any as S.Schema<ActionRunnerLabelsList>;
+const ActionRunnerLabelsList = RepositoryTopicsList as any as S.Schema<ActionRunnerLabelsList>;
 
 /** Status indicates whether this runner is offline, or active, for example. */
 export type ActionRunnerStatus = "offline" | "idle" | "active";
-export const ActionRunnerStatus = S.String;
+const ActionRunnerStatus = S.String;
 
 /** ActionRunner represents a runner */
 export interface ActionRunner {
@@ -1424,7 +1421,7 @@ export interface ActionRunner {
   /** Version is the self-reported version string of Forgejo Runner. */
   version?: string;
 }
-export const ActionRunner = /*@__PURE__*/ S.suspend(() =>
+const ActionRunner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     ephemeral: S.optional(S.Boolean),
@@ -1451,7 +1448,7 @@ export interface GetRepoRunnersRequest {
   /** page size of results */
   limit?: number;
 }
-export const GetRepoRunnersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRunnersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1462,12 +1459,12 @@ export const GetRepoRunnersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRepoRunnersRequest" }) as any as S.Schema<GetRepoRunnersRequest>;
 
 export type GetRepoRunnersResponseBodyList = Array<ActionRunner>;
-export const GetRepoRunnersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetRepoRunnersResponseBodyList = /*@__PURE__*/ S.Array(
   ActionRunner,
 ) as any as S.Schema<GetRepoRunnersResponseBodyList>;
 
 export type GetRepoRunnersResponse = GetRepoRunnersResponseBodyList;
-export const GetRepoRunnersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRepoRunnersResponse = /*@__PURE__*/ S.suspend(() =>
   GetRepoRunnersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetRepoRunnersResponse" }) as any as S.Schema<GetRepoRunnersResponse>;
 
@@ -1479,7 +1476,7 @@ export interface GetRepoVariableRequest {
   /** name of the variable */
   variablename: string;
 }
-export const GetRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1504,7 +1501,7 @@ export interface ActionVariable {
   /** the repository to which the variable belongs */
   repo_id?: number;
 }
-export const ActionVariable = /*@__PURE__*/ S.suspend(() =>
+const ActionVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.String,
     name: S.String,
@@ -1523,7 +1520,7 @@ export interface GetRepoVariablesListRequest {
   /** page size of results */
   limit?: number;
 }
-export const GetRepoVariablesListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoVariablesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1535,12 +1532,12 @@ export const GetRepoVariablesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRepoVariablesListRequest>;
 
 export type GetRepoVariablesListResponseBodyList = Array<ActionVariable>;
-export const GetRepoVariablesListResponseBodyList = /*@__PURE__*/ S.Array(
+const GetRepoVariablesListResponseBodyList = /*@__PURE__*/ S.Array(
   ActionVariable,
 ) as any as S.Schema<GetRepoVariablesListResponseBodyList>;
 
 export type GetRepoVariablesListResponse = GetRepoVariablesListResponseBodyList;
-export const GetRepoVariablesListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRepoVariablesListResponse = /*@__PURE__*/ S.suspend(() =>
   GetRepoVariablesListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetRepoVariablesListResponse",
@@ -1560,7 +1557,7 @@ export interface GetTreeRequest {
   /** number of items per page */
   per_page?: number;
 }
-export const GetTreeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTreeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1580,7 +1577,7 @@ export interface GitEntry {
   type?: string;
   url?: string;
 }
-export const GitEntry = /*@__PURE__*/ S.suspend(() =>
+const GitEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.String),
     path: S.optional(S.String),
@@ -1592,7 +1589,7 @@ export const GitEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitEntry" }) as any as S.Schema<GitEntry>;
 
 export type GitTreeResponseTreeList = Array<GitEntry>;
-export const GitTreeResponseTreeList = /*@__PURE__*/ S.Array(
+const GitTreeResponseTreeList = /*@__PURE__*/ S.Array(
   GitEntry,
 ) as any as S.Schema<GitTreeResponseTreeList>;
 
@@ -1605,7 +1602,7 @@ export interface GitTreeResponse {
   truncated?: boolean;
   url?: string;
 }
-export const GitTreeResponse = /*@__PURE__*/ S.suspend(() =>
+const GitTreeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     sha: S.optional(S.String),
@@ -1628,7 +1625,7 @@ export interface ListActionArtifactsRequest {
   /** page size of results, default maximum page size is 50 */
   limit?: number;
 }
-export const ListActionArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActionArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1641,12 +1638,12 @@ export const ListActionArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListActionArtifactsRequest>;
 
 export type ListActionArtifactsResponseBodyList = Array<ActionArtifact>;
-export const ListActionArtifactsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListActionArtifactsResponseBodyList = /*@__PURE__*/ S.Array(
   ActionArtifact,
 ) as any as S.Schema<ListActionArtifactsResponseBodyList>;
 
 export type ListActionArtifactsResponse = ListActionArtifactsResponseBodyList;
-export const ListActionArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListActionArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
   ListActionArtifactsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListActionArtifactsResponse",
@@ -1666,7 +1663,7 @@ export interface ListActionRunArtifactsRequest {
   /** page size of results, default maximum page size is 50 */
   limit?: number;
 }
-export const ListActionRunArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActionRunArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1686,11 +1683,8 @@ export const ListActionRunArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListActionRunArtifactsRequest>;
 
 export type ListActionRunArtifactsResponseBodyList = Array<ActionArtifact>;
-export const ListActionRunArtifactsResponseBodyList =
-  ListActionArtifactsResponseBodyList as any as S.Schema<ListActionRunArtifactsResponseBodyList>;
-
 export type ListActionRunArtifactsResponse = ListActionRunArtifactsResponseBodyList;
-export const ListActionRunArtifactsResponse =
+const ListActionRunArtifactsResponse =
   ListActionArtifactsResponse as any as S.Schema<ListActionRunArtifactsResponse>;
 
 export interface ListActionRunJobsRequest {
@@ -1701,7 +1695,7 @@ export interface ListActionRunJobsRequest {
   /** ID of the workflow run */
   run_id: number;
 }
-export const ListActionRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActionRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1713,12 +1707,11 @@ export const ListActionRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
-export const ActionRunJobNeedsList = RepositoryTopicsList as any as S.Schema<ActionRunJobNeedsList>;
+const ActionRunJobNeedsList = RepositoryTopicsList as any as S.Schema<ActionRunJobNeedsList>;
 
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
-export const ActionRunJobRunsOnList =
-  RepositoryTopicsList as any as S.Schema<ActionRunJobRunsOnList>;
+const ActionRunJobRunsOnList = RepositoryTopicsList as any as S.Schema<ActionRunJobRunsOnList>;
 
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
@@ -1745,7 +1738,7 @@ export interface ActionRunJob {
   /** the action run job latest task id */
   task_id?: number;
 }
-export const ActionRunJob = /*@__PURE__*/ S.suspend(() =>
+const ActionRunJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attempt: S.optional(S.Number),
     handle: S.optional(S.String),
@@ -1762,19 +1755,19 @@ export const ActionRunJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionRunJob" }) as any as S.Schema<ActionRunJob>;
 
 export type ListActionRunJobsResponseBodyList = Array<ActionRunJob>;
-export const ListActionRunJobsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListActionRunJobsResponseBodyList = /*@__PURE__*/ S.Array(
   ActionRunJob,
 ) as any as S.Schema<ListActionRunJobsResponseBodyList>;
 
 export type ListActionRunJobsResponse = ListActionRunJobsResponseBodyList;
-export const ListActionRunJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListActionRunJobsResponse = /*@__PURE__*/ S.suspend(() =>
   ListActionRunJobsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListActionRunJobsResponse",
 }) as any as S.Schema<ListActionRunJobsResponse>;
 
 export type ListActionRunsRequestEventList = Array<string>;
-export const ListActionRunsRequestEventList =
+const ListActionRunsRequestEventList =
   RepositoryTopicsList as any as S.Schema<ListActionRunsRequestEventList>;
 
 export type ListActionRunsRequestStatusItem =
@@ -1786,12 +1779,12 @@ export type ListActionRunsRequestStatusItem =
   | "cancelled"
   | "skipped"
   | "blocked";
-export const ListActionRunsRequestStatusItem = S.String;
+const ListActionRunsRequestStatusItem = S.String;
 
 export type ListActionRunsRequestStatusList = Array<
   ListActionRunsRequestStatusItem | (string & {})
 >;
-export const ListActionRunsRequestStatusList = /*@__PURE__*/ S.Array(
+const ListActionRunsRequestStatusList = /*@__PURE__*/ S.Array(
   ListActionRunsRequestStatusItem,
 ) as any as S.Schema<ListActionRunsRequestStatusList>;
 
@@ -1817,7 +1810,7 @@ export interface ListActionRunsRequest {
   /** Only return workflow runs that involve the given workflow ID. */
   workflow_id?: string;
 }
-export const ListActionRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActionRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1833,7 +1826,7 @@ export const ListActionRunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListActionRunsRequest" }) as any as S.Schema<ListActionRunsRequest>;
 
 export type ListActionRunResponseWorkflowRunsList = Array<ActionRun>;
-export const ListActionRunResponseWorkflowRunsList = /*@__PURE__*/ S.Array(
+const ListActionRunResponseWorkflowRunsList = /*@__PURE__*/ S.Array(
   ActionRun,
 ) as any as S.Schema<ListActionRunResponseWorkflowRunsList>;
 
@@ -1842,7 +1835,7 @@ export interface ListActionRunResponse {
   total_count?: number;
   workflow_runs?: ListActionRunResponseWorkflowRunsList;
 }
-export const ListActionRunResponse = /*@__PURE__*/ S.suspend(() =>
+const ListActionRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     workflow_runs: S.optional(ListActionRunResponseWorkflowRunsList),
@@ -1858,12 +1851,10 @@ export type ListActionTasksRequestStatusItem =
   | "cancelled"
   | "skipped"
   | "blocked";
-export const ListActionTasksRequestStatusItem = S.String;
-
 export type ListActionTasksRequestStatusList = Array<
   ListActionTasksRequestStatusItem | (string & {})
 >;
-export const ListActionTasksRequestStatusList =
+const ListActionTasksRequestStatusList =
   ListActionRunsRequestStatusList as any as S.Schema<ListActionTasksRequestStatusList>;
 
 export interface ListActionTasksRequest {
@@ -1878,7 +1869,7 @@ export interface ListActionTasksRequest {
   /** Returns workflow tasks with the check run status or conclusion that is specified. For example, a conclusion can be success or a status can be in_progress. */
   status?: ListActionTasksRequestStatusList;
 }
-export const ListActionTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActionTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1904,7 +1895,7 @@ export interface ActionTask {
   url?: string;
   workflow_id?: string;
 }
-export const ActionTask = /*@__PURE__*/ S.suspend(() =>
+const ActionTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     display_title: S.optional(S.String),
@@ -1923,7 +1914,7 @@ export const ActionTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionTask" }) as any as S.Schema<ActionTask>;
 
 export type ActionTaskResponseWorkflowRunsList = Array<ActionTask>;
-export const ActionTaskResponseWorkflowRunsList = /*@__PURE__*/ S.Array(
+const ActionTaskResponseWorkflowRunsList = /*@__PURE__*/ S.Array(
   ActionTask,
 ) as any as S.Schema<ActionTaskResponseWorkflowRunsList>;
 
@@ -1932,7 +1923,7 @@ export interface ActionTaskResponse {
   total_count?: number;
   workflow_runs?: ActionTaskResponseWorkflowRunsList;
 }
-export const ActionTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const ActionTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.optional(S.Number),
     workflow_runs: S.optional(ActionTaskResponseWorkflowRunsList),
@@ -1949,7 +1940,7 @@ export interface ListForksRequest {
   /** page size of results */
   limit?: number;
 }
-export const ListForksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1959,12 +1950,12 @@ export const ListForksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForksRequest" }) as any as S.Schema<ListForksRequest>;
 
 export type ListForksResponseBodyList = Array<Repository>;
-export const ListForksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListForksResponseBodyList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<ListForksResponseBodyList>;
 
 export type ListForksResponse = ListForksResponseBodyList;
-export const ListForksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForksResponse = /*@__PURE__*/ S.suspend(() =>
   ListForksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListForksResponse" }) as any as S.Schema<ListForksResponse>;
 
@@ -1979,7 +1970,7 @@ export type MigrateRepoRequestService =
   | "codebase"
   | "forgejo"
   | "pagure";
-export const MigrateRepoRequestService = S.String;
+const MigrateRepoRequestService = S.String;
 
 export interface MigrateRepoRequest {
   auth_password?: string | Redacted.Redacted<string>;
@@ -2005,7 +1996,7 @@ export interface MigrateRepoRequest {
   uid?: number;
   wiki?: boolean;
 }
-export const MigrateRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auth_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     auth_token: S.optional(S.String),
@@ -2042,7 +2033,7 @@ export interface RegisterRepoRunnerRequest {
   /** Name of the runner to register. The name of the runner does not have to be unique. */
   name: string;
 }
-export const RegisterRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterRepoRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2059,7 +2050,7 @@ export interface RegisterRunnerResponse {
   token?: string;
   uuid?: string;
 }
-export const RegisterRunnerResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterRunnerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     token: S.optional(S.String),
@@ -2073,7 +2064,7 @@ export interface RejectRepoTransferRequest {
   /** name of the repo to transfer */
   repo: string;
 }
-export const RejectRepoTransferRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectRepoTransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2083,7 +2074,7 @@ export const RejectRepoTransferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RejectRepoTransferRequest>;
 
 export type RepoAddCollaboratorRequestPermission = "read" | "write" | "admin";
-export const RepoAddCollaboratorRequestPermission = S.String;
+const RepoAddCollaboratorRequestPermission = S.String;
 
 export interface RepoAddCollaboratorRequest {
   /** owner of the repo */
@@ -2094,7 +2085,7 @@ export interface RepoAddCollaboratorRequest {
   collaborator: string;
   permission?: RepoAddCollaboratorRequestPermission | (string & {});
 }
-export const RepoAddCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoAddCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2108,7 +2099,7 @@ export const RepoAddCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoAddCollaboratorRequest>;
 
 export interface RepoAddCollaboratorResponse {}
-export const RepoAddCollaboratorResponse =
+const RepoAddCollaboratorResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoAddCollaboratorResponse>;
 
 export interface RepoAddFlagRequest {
@@ -2119,7 +2110,7 @@ export interface RepoAddFlagRequest {
   /** name of the flag */
   flag: string;
 }
-export const RepoAddFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoAddFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2128,8 +2119,7 @@ export const RepoAddFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoAddFlagRequest" }) as any as S.Schema<RepoAddFlagRequest>;
 
 export interface RepoAddFlagResponse {}
-export const RepoAddFlagResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoAddFlagResponse>;
+const RepoAddFlagResponse = AcceptRepoTransferResponse as any as S.Schema<RepoAddFlagResponse>;
 
 export interface RepoAddPushMirrorRequest {
   /** owner of the repo */
@@ -2144,7 +2134,7 @@ export interface RepoAddPushMirrorRequest {
   sync_on_commit?: boolean;
   use_ssh?: boolean;
 }
-export const RepoAddPushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoAddPushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2171,7 +2161,7 @@ export interface PushMirror {
   repo_name?: string;
   sync_on_commit?: boolean;
 }
-export const PushMirror = /*@__PURE__*/ S.suspend(() =>
+const PushMirror = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch_filter: S.optional(S.String),
     created: S.optional(S.String),
@@ -2194,7 +2184,7 @@ export interface RepoAddTeamRequest {
   /** team name */
   team: string;
 }
-export const RepoAddTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoAddTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2203,8 +2193,7 @@ export const RepoAddTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoAddTeamRequest" }) as any as S.Schema<RepoAddTeamRequest>;
 
 export interface RepoAddTeamResponse {}
-export const RepoAddTeamResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoAddTeamResponse>;
+const RepoAddTeamResponse = AcceptRepoTransferResponse as any as S.Schema<RepoAddTeamResponse>;
 
 export interface RepoAddTopicRequest {
   /** owner of the repo */
@@ -2214,7 +2203,7 @@ export interface RepoAddTopicRequest {
   /** name of the topic to add */
   topic: string;
 }
-export const RepoAddTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoAddTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2223,15 +2212,14 @@ export const RepoAddTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoAddTopicRequest" }) as any as S.Schema<RepoAddTopicRequest>;
 
 export interface RepoAddTopicResponse {}
-export const RepoAddTopicResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoAddTopicResponse>;
+const RepoAddTopicResponse = AcceptRepoTransferResponse as any as S.Schema<RepoAddTopicResponse>;
 
 /** Identity for a person's identity like an author or committer */
 export interface Identity {
   email?: string;
   name?: string;
 }
-export const Identity = /*@__PURE__*/ S.suspend(() =>
+const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -2243,7 +2231,7 @@ export interface CommitDateOptions {
   author?: string;
   committer?: string;
 }
-export const CommitDateOptions = /*@__PURE__*/ S.suspend(() =>
+const CommitDateOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(S.String),
     committer: S.optional(S.String),
@@ -2275,7 +2263,7 @@ export interface RepoApplyDiffPatchRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-export const RepoApplyDiffPatchRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoApplyDiffPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2300,7 +2288,7 @@ export interface CommitMeta {
   sha?: string;
   url?: string;
 }
-export const CommitMeta = /*@__PURE__*/ S.suspend(() =>
+const CommitMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     sha: S.optional(S.String),
@@ -2309,7 +2297,7 @@ export const CommitMeta = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitMeta" }) as any as S.Schema<CommitMeta>;
 
 export type FileCommitResponseParentsList = Array<CommitMeta>;
-export const FileCommitResponseParentsList = /*@__PURE__*/ S.Array(
+const FileCommitResponseParentsList = /*@__PURE__*/ S.Array(
   CommitMeta,
 ) as any as S.Schema<FileCommitResponseParentsList>;
 
@@ -2324,7 +2312,7 @@ export interface FileCommitResponse {
   tree?: CommitMeta;
   url?: string;
 }
-export const FileCommitResponse = /*@__PURE__*/ S.suspend(() =>
+const FileCommitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(CommitUser),
     committer: S.optional(CommitUser),
@@ -2344,7 +2332,7 @@ export interface FileLinksResponse {
   html?: string;
   self?: string;
 }
-export const FileLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const FileLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     git: S.optional(S.String),
     html: S.optional(S.String),
@@ -2376,7 +2364,7 @@ export interface ContentsResponse {
   type?: string;
   url?: string;
 }
-export const ContentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ContentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(FileLinksResponse),
     content: S.optional(S.String),
@@ -2403,7 +2391,7 @@ export interface FileResponse {
   content?: ContentsResponse;
   verification?: PayloadCommitVerification;
 }
-export const FileResponse = /*@__PURE__*/ S.suspend(() =>
+const FileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commit: S.optional(FileCommitResponse),
     content: S.optional(ContentsResponse),
@@ -2419,7 +2407,7 @@ export interface RepoCancelScheduledAutoMergeRequest {
   /** index of the pull request to merge */
   index: number;
 }
-export const RepoCancelScheduledAutoMergeRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCancelScheduledAutoMergeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2432,15 +2420,13 @@ export const RepoCancelScheduledAutoMergeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCancelScheduledAutoMergeRequest>;
 
 export interface RepoCancelScheduledAutoMergeResponse {}
-export const RepoCancelScheduledAutoMergeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const RepoCancelScheduledAutoMergeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RepoCancelScheduledAutoMergeResponse",
 }) as any as S.Schema<RepoCancelScheduledAutoMergeResponse>;
 
 /** indicates what to do with the file */
 export type ChangeFileOperationOperation = "create" | "update" | "delete";
-export const ChangeFileOperationOperation = S.String;
+const ChangeFileOperationOperation = S.String;
 
 /** ChangeFileOperation for creating, updating or deleting a file */
 export interface ChangeFileOperation {
@@ -2455,7 +2441,7 @@ export interface ChangeFileOperation {
   /** sha is the SHA for the file that already exists, required for update or delete */
   sha?: string;
 }
-export const ChangeFileOperation = /*@__PURE__*/ S.suspend(() =>
+const ChangeFileOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     from_path: S.optional(S.String),
@@ -2467,7 +2453,7 @@ export const ChangeFileOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** list of file operations */
 export type RepoChangeFilesRequestFilesList = Array<ChangeFileOperation>;
-export const RepoChangeFilesRequestFilesList = /*@__PURE__*/ S.Array(
+const RepoChangeFilesRequestFilesList = /*@__PURE__*/ S.Array(
   ChangeFileOperation,
 ) as any as S.Schema<RepoChangeFilesRequestFilesList>;
 
@@ -2492,7 +2478,7 @@ export interface RepoChangeFilesRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-export const RepoChangeFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoChangeFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2509,7 +2495,7 @@ export const RepoChangeFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoChangeFilesRequest" }) as any as S.Schema<RepoChangeFilesRequest>;
 
 export type FilesResponseFilesList = Array<ContentsResponse>;
-export const FilesResponseFilesList = /*@__PURE__*/ S.Array(
+const FilesResponseFilesList = /*@__PURE__*/ S.Array(
   ContentsResponse,
 ) as any as S.Schema<FilesResponseFilesList>;
 
@@ -2519,7 +2505,7 @@ export interface FilesResponse {
   files?: FilesResponseFilesList;
   verification?: PayloadCommitVerification;
 }
-export const FilesResponse = /*@__PURE__*/ S.suspend(() =>
+const FilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commit: S.optional(FileCommitResponse),
     files: S.optional(FilesResponseFilesList),
@@ -2535,7 +2521,7 @@ export interface RepoCheckCollaboratorRequest {
   /** username of the collaborator */
   collaborator: string;
 }
-export const RepoCheckCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCheckCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2548,7 +2534,7 @@ export const RepoCheckCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCheckCollaboratorRequest>;
 
 export interface RepoCheckCollaboratorResponse {}
-export const RepoCheckCollaboratorResponse =
+const RepoCheckCollaboratorResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoCheckCollaboratorResponse>;
 
 export interface RepoCheckFlagRequest {
@@ -2559,7 +2545,7 @@ export interface RepoCheckFlagRequest {
   /** name of the flag */
   flag: string;
 }
-export const RepoCheckFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCheckFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2568,8 +2554,7 @@ export const RepoCheckFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoCheckFlagRequest" }) as any as S.Schema<RepoCheckFlagRequest>;
 
 export interface RepoCheckFlagResponse {}
-export const RepoCheckFlagResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoCheckFlagResponse>;
+const RepoCheckFlagResponse = AcceptRepoTransferResponse as any as S.Schema<RepoCheckFlagResponse>;
 
 export interface RepoCheckTeamRequest {
   /** owner of the repo */
@@ -2579,7 +2564,7 @@ export interface RepoCheckTeamRequest {
   /** team name */
   team: string;
 }
-export const RepoCheckTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCheckTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2595,7 +2580,7 @@ export interface RepoCompareDiffRequest {
   /** compare two branches or commits */
   basehead: string;
 }
-export const RepoCompareDiffRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCompareDiffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2611,7 +2596,7 @@ export interface RepoCommit {
   url?: string;
   verification?: PayloadCommitVerification;
 }
-export const RepoCommit = /*@__PURE__*/ S.suspend(() =>
+const RepoCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(CommitUser),
     committer: S.optional(CommitUser),
@@ -2627,7 +2612,7 @@ export interface CommitAffectedFiles {
   filename?: string;
   status?: string;
 }
-export const CommitAffectedFiles = /*@__PURE__*/ S.suspend(() =>
+const CommitAffectedFiles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     status: S.optional(S.String),
@@ -2635,13 +2620,12 @@ export const CommitAffectedFiles = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitAffectedFiles" }) as any as S.Schema<CommitAffectedFiles>;
 
 export type CommitFilesList = Array<CommitAffectedFiles>;
-export const CommitFilesList = /*@__PURE__*/ S.Array(
+const CommitFilesList = /*@__PURE__*/ S.Array(
   CommitAffectedFiles,
 ) as any as S.Schema<CommitFilesList>;
 
 export type CommitParentsList = Array<CommitMeta>;
-export const CommitParentsList =
-  FileCommitResponseParentsList as any as S.Schema<CommitParentsList>;
+const CommitParentsList = FileCommitResponseParentsList as any as S.Schema<CommitParentsList>;
 
 /** CommitStats is statistics for a RepoCommit */
 export interface CommitStats {
@@ -2649,7 +2633,7 @@ export interface CommitStats {
   deletions?: number;
   total?: number;
 }
-export const CommitStats = /*@__PURE__*/ S.suspend(() =>
+const CommitStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additions: S.optional(S.Number),
     deletions: S.optional(S.Number),
@@ -2669,7 +2653,7 @@ export interface Commit {
   stats?: CommitStats;
   url?: string;
 }
-export const Commit = /*@__PURE__*/ S.suspend(() =>
+const Commit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(User),
     commit: S.optional(RepoCommit),
@@ -2685,19 +2669,17 @@ export const Commit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Commit" }) as any as S.Schema<Commit>;
 
 export type CompareCommitsList = Array<Commit>;
-export const CompareCommitsList = /*@__PURE__*/ S.Array(
-  Commit,
-) as any as S.Schema<CompareCommitsList>;
+const CompareCommitsList = /*@__PURE__*/ S.Array(Commit) as any as S.Schema<CompareCommitsList>;
 
 export type CompareFilesList = Array<CommitAffectedFiles>;
-export const CompareFilesList = CommitFilesList as any as S.Schema<CompareFilesList>;
+const CompareFilesList = CommitFilesList as any as S.Schema<CompareFilesList>;
 
 export interface Compare {
   commits?: CompareCommitsList;
   files?: CompareFilesList;
   total_commits?: number;
 }
-export const Compare = /*@__PURE__*/ S.suspend(() =>
+const Compare = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commits: S.optional(CompareCommitsList),
     files: S.optional(CompareFilesList),
@@ -2717,7 +2699,7 @@ export interface RepoCreateBranchRequest {
   /** Name of the old branch/tag/commit to create from */
   old_ref_name?: string;
 }
-export const RepoCreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2728,16 +2710,14 @@ export const RepoCreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoCreateBranchRequest" }) as any as S.Schema<RepoCreateBranchRequest>;
 
 export type PayloadCommitAddedList = Array<string>;
-export const PayloadCommitAddedList =
-  RepositoryTopicsList as any as S.Schema<PayloadCommitAddedList>;
+const PayloadCommitAddedList = RepositoryTopicsList as any as S.Schema<PayloadCommitAddedList>;
 
 export type PayloadCommitModifiedList = Array<string>;
-export const PayloadCommitModifiedList =
+const PayloadCommitModifiedList =
   RepositoryTopicsList as any as S.Schema<PayloadCommitModifiedList>;
 
 export type PayloadCommitRemovedList = Array<string>;
-export const PayloadCommitRemovedList =
-  RepositoryTopicsList as any as S.Schema<PayloadCommitRemovedList>;
+const PayloadCommitRemovedList = RepositoryTopicsList as any as S.Schema<PayloadCommitRemovedList>;
 
 /** PayloadCommit represents a commit */
 export interface PayloadCommit {
@@ -2753,7 +2733,7 @@ export interface PayloadCommit {
   url?: string;
   verification?: PayloadCommitVerification;
 }
-export const PayloadCommit = /*@__PURE__*/ S.suspend(() =>
+const PayloadCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     added: S.optional(PayloadCommitAddedList),
     author: S.optional(PayloadUser),
@@ -2769,7 +2749,7 @@ export const PayloadCommit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayloadCommit" }) as any as S.Schema<PayloadCommit>;
 
 export type BranchStatusCheckContextsList = Array<string>;
-export const BranchStatusCheckContextsList =
+const BranchStatusCheckContextsList =
   RepositoryTopicsList as any as S.Schema<BranchStatusCheckContextsList>;
 
 /** Branch represents a repository branch */
@@ -2784,7 +2764,7 @@ export interface Branch {
   user_can_merge?: boolean;
   user_can_push?: boolean;
 }
-export const Branch = /*@__PURE__*/ S.suspend(() =>
+const Branch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commit: S.optional(PayloadCommit),
     effective_branch_protection_name: S.optional(S.String),
@@ -2799,33 +2779,32 @@ export const Branch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Branch" }) as any as S.Schema<Branch>;
 
 export type RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList = Array<string>;
-export const RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList =
+const RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList>;
 
 export type RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList = Array<string>;
-export const RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList>;
+const RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList>;
 
 export type RepoCreateBranchProtectionRequestMergeWhitelistTeamsList = Array<string>;
-export const RepoCreateBranchProtectionRequestMergeWhitelistTeamsList =
+const RepoCreateBranchProtectionRequestMergeWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestMergeWhitelistTeamsList>;
 
 export type RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList = Array<string>;
-export const RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList =
+const RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList>;
 
 export type RepoCreateBranchProtectionRequestPushWhitelistTeamsList = Array<string>;
-export const RepoCreateBranchProtectionRequestPushWhitelistTeamsList =
+const RepoCreateBranchProtectionRequestPushWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestPushWhitelistTeamsList>;
 
 export type RepoCreateBranchProtectionRequestPushWhitelistUsernamesList = Array<string>;
-export const RepoCreateBranchProtectionRequestPushWhitelistUsernamesList =
+const RepoCreateBranchProtectionRequestPushWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestPushWhitelistUsernamesList>;
 
 export type RepoCreateBranchProtectionRequestStatusCheckContextsList = Array<string>;
-export const RepoCreateBranchProtectionRequestStatusCheckContextsList =
+const RepoCreateBranchProtectionRequestStatusCheckContextsList =
   RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestStatusCheckContextsList>;
 
 export interface RepoCreateBranchProtectionRequest {
@@ -2860,7 +2839,7 @@ export interface RepoCreateBranchProtectionRequest {
   status_check_contexts?: RepoCreateBranchProtectionRequestStatusCheckContextsList;
   unprotected_file_patterns?: string;
 }
-export const RepoCreateBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2903,31 +2882,31 @@ export const RepoCreateBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCreateBranchProtectionRequest>;
 
 export type BranchProtectionApprovalsWhitelistTeamsList = Array<string>;
-export const BranchProtectionApprovalsWhitelistTeamsList =
+const BranchProtectionApprovalsWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<BranchProtectionApprovalsWhitelistTeamsList>;
 
 export type BranchProtectionApprovalsWhitelistUsernameList = Array<string>;
-export const BranchProtectionApprovalsWhitelistUsernameList =
+const BranchProtectionApprovalsWhitelistUsernameList =
   RepositoryTopicsList as any as S.Schema<BranchProtectionApprovalsWhitelistUsernameList>;
 
 export type BranchProtectionMergeWhitelistTeamsList = Array<string>;
-export const BranchProtectionMergeWhitelistTeamsList =
+const BranchProtectionMergeWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<BranchProtectionMergeWhitelistTeamsList>;
 
 export type BranchProtectionMergeWhitelistUsernamesList = Array<string>;
-export const BranchProtectionMergeWhitelistUsernamesList =
+const BranchProtectionMergeWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<BranchProtectionMergeWhitelistUsernamesList>;
 
 export type BranchProtectionPushWhitelistTeamsList = Array<string>;
-export const BranchProtectionPushWhitelistTeamsList =
+const BranchProtectionPushWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<BranchProtectionPushWhitelistTeamsList>;
 
 export type BranchProtectionPushWhitelistUsernamesList = Array<string>;
-export const BranchProtectionPushWhitelistUsernamesList =
+const BranchProtectionPushWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<BranchProtectionPushWhitelistUsernamesList>;
 
 export type BranchProtectionStatusCheckContextsList = Array<string>;
-export const BranchProtectionStatusCheckContextsList =
+const BranchProtectionStatusCheckContextsList =
   RepositoryTopicsList as any as S.Schema<BranchProtectionStatusCheckContextsList>;
 
 /** BranchProtection represents a branch protection for a repository */
@@ -2961,7 +2940,7 @@ export interface BranchProtection {
   unprotected_file_patterns?: string;
   updated_at: string;
 }
-export const BranchProtection = /*@__PURE__*/ S.suspend(() =>
+const BranchProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apply_to_admins: S.optional(S.Boolean),
     approvals_whitelist_teams: S.optional(BranchProtectionApprovalsWhitelistTeamsList),
@@ -3016,7 +2995,7 @@ export interface RepoCreateFileRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-export const RepoCreateFileRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3035,10 +3014,10 @@ export const RepoCreateFileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** CreateHookOptionConfig has all config options in it required are "content_type" and "url" Required */
 export type CreateHookOptionConfig = { [key: string]: string | undefined };
-export const CreateHookOptionConfig = TeamUnitsMapMap as any as S.Schema<CreateHookOptionConfig>;
+const CreateHookOptionConfig = TeamUnitsMapMap as any as S.Schema<CreateHookOptionConfig>;
 
 export type RepoCreateHookRequestEventsList = Array<string>;
-export const RepoCreateHookRequestEventsList =
+const RepoCreateHookRequestEventsList =
   RepositoryTopicsList as any as S.Schema<RepoCreateHookRequestEventsList>;
 
 export type RepoCreateHookRequestType =
@@ -3053,7 +3032,7 @@ export type RepoCreateHookRequestType =
   | "feishu"
   | "wechatwork"
   | "packagist";
-export const RepoCreateHookRequestType = S.String;
+const RepoCreateHookRequestType = S.String;
 
 export interface RepoCreateHookRequest {
   /** owner of the repo */
@@ -3067,7 +3046,7 @@ export interface RepoCreateHookRequest {
   events?: RepoCreateHookRequestEventsList;
   type: RepoCreateHookRequestType | (string & {});
 }
-export const RepoCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3082,10 +3061,10 @@ export const RepoCreateHookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
-export const HookConfigMap = TeamUnitsMapMap as any as S.Schema<HookConfigMap>;
+const HookConfigMap = TeamUnitsMapMap as any as S.Schema<HookConfigMap>;
 
 export type HookEventsList = Array<string>;
-export const HookEventsList = TeamUnitsList as any as S.Schema<HookEventsList>;
+const HookEventsList = TeamUnitsList as any as S.Schema<HookEventsList>;
 
 /** Hook a hook is a web hook when one repository changed */
 export interface Hook {
@@ -3103,7 +3082,7 @@ export interface Hook {
   updated_at: string;
   url: string;
 }
-export const Hook = /*@__PURE__*/ S.suspend(() =>
+const Hook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Boolean,
     authorization_header: S.optional(S.String),
@@ -3132,7 +3111,7 @@ export interface RepoCreateKeyRequest {
   /** Title of the key to add */
   title: string;
 }
-export const RepoCreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3154,7 +3133,7 @@ export interface DeployKey {
   title?: string;
   url?: string;
 }
-export const DeployKey = /*@__PURE__*/ S.suspend(() =>
+const DeployKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     fingerprint: S.optional(S.String),
@@ -3169,11 +3148,11 @@ export const DeployKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeployKey" }) as any as S.Schema<DeployKey>;
 
 export type RepoCreatePullRequestRequestAssigneesList = Array<string>;
-export const RepoCreatePullRequestRequestAssigneesList =
+const RepoCreatePullRequestRequestAssigneesList =
   RepositoryTopicsList as any as S.Schema<RepoCreatePullRequestRequestAssigneesList>;
 
 export type RepoCreatePullRequestRequestLabelsList = Array<number>;
-export const RepoCreatePullRequestRequestLabelsList = /*@__PURE__*/ S.Array(
+const RepoCreatePullRequestRequestLabelsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RepoCreatePullRequestRequestLabelsList>;
 
@@ -3192,7 +3171,7 @@ export interface RepoCreatePullRequestRequest {
   milestone?: number;
   title?: string;
 }
-export const RepoCreatePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreatePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3211,7 +3190,7 @@ export const RepoCreatePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCreatePullRequestRequest>;
 
 export type PullRequestAssigneesList = Array<User>;
-export const PullRequestAssigneesList = /*@__PURE__*/ S.Array(
+const PullRequestAssigneesList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<PullRequestAssigneesList>;
 
@@ -3223,7 +3202,7 @@ export interface PRBranchInfo {
   repo_id?: number;
   sha?: string;
 }
-export const PRBranchInfo = /*@__PURE__*/ S.suspend(() =>
+const PRBranchInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     ref: S.optional(S.String),
@@ -3243,7 +3222,7 @@ export interface Label {
   name: string;
   url?: string;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.String,
     description: S.optional(S.String),
@@ -3256,7 +3235,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type PullRequestLabelsList = Array<Label>;
-export const PullRequestLabelsList = /*@__PURE__*/ S.Array(
+const PullRequestLabelsList = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<PullRequestLabelsList>;
 
@@ -3273,7 +3252,7 @@ export interface Milestone {
   title?: string;
   updated_at?: string;
 }
-export const Milestone = /*@__PURE__*/ S.suspend(() =>
+const Milestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     closed_at: S.optional(S.String),
     closed_issues: S.optional(S.Number),
@@ -3289,11 +3268,11 @@ export const Milestone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Milestone" }) as any as S.Schema<Milestone>;
 
 export type PullRequestRequestedReviewersList = Array<User>;
-export const PullRequestRequestedReviewersList =
+const PullRequestRequestedReviewersList =
   PullRequestAssigneesList as any as S.Schema<PullRequestRequestedReviewersList>;
 
 export type PullRequestRequestedReviewersTeamsList = Array<Team>;
-export const PullRequestRequestedReviewersTeamsList =
+const PullRequestRequestedReviewersTeamsList =
   RepoTransferTeamsList as any as S.Schema<PullRequestRequestedReviewersTeamsList>;
 
 /** PullRequest represents a pull request */
@@ -3338,7 +3317,7 @@ export interface PullRequest {
   url?: string;
   user?: User;
 }
-export const PullRequest = /*@__PURE__*/ S.suspend(() =>
+const PullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additions: S.optional(S.Number),
     allow_maintainer_edit: S.optional(S.Boolean),
@@ -3393,7 +3372,7 @@ export interface CreatePullReviewComment {
   /** the tree path */
   path?: string;
 }
-export const CreatePullReviewComment = /*@__PURE__*/ S.suspend(() =>
+const CreatePullReviewComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     extra_lines_count: S.optional(S.Number),
@@ -3404,7 +3383,7 @@ export const CreatePullReviewComment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePullReviewComment" }) as any as S.Schema<CreatePullReviewComment>;
 
 export type RepoCreatePullReviewRequestCommentsList = Array<CreatePullReviewComment>;
-export const RepoCreatePullReviewRequestCommentsList = /*@__PURE__*/ S.Array(
+const RepoCreatePullReviewRequestCommentsList = /*@__PURE__*/ S.Array(
   CreatePullReviewComment,
 ) as any as S.Schema<RepoCreatePullReviewRequestCommentsList>;
 
@@ -3420,7 +3399,7 @@ export interface RepoCreatePullReviewRequest {
   commit_id?: string;
   event?: string;
 }
-export const RepoCreatePullReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreatePullReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3453,7 +3432,7 @@ export interface PullReview {
   updated_at?: string;
   user?: User;
 }
-export const PullReview = /*@__PURE__*/ S.suspend(() =>
+const PullReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     comments_count: S.optional(S.Number),
@@ -3491,7 +3470,7 @@ export interface RepoCreatePullReviewCommentRequest {
   /** the tree path */
   path?: string;
 }
-export const RepoCreatePullReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreatePullReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3533,7 +3512,7 @@ export interface PullReviewComment {
   updated_at?: string;
   user?: User;
 }
-export const PullReviewComment = /*@__PURE__*/ S.suspend(() =>
+const PullReviewComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     commit_id: S.optional(S.String),
@@ -3555,11 +3534,11 @@ export const PullReviewComment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullReviewComment" }) as any as S.Schema<PullReviewComment>;
 
 export type RepoCreatePullReviewRequestsRequestReviewersList = Array<string>;
-export const RepoCreatePullReviewRequestsRequestReviewersList =
+const RepoCreatePullReviewRequestsRequestReviewersList =
   RepositoryTopicsList as any as S.Schema<RepoCreatePullReviewRequestsRequestReviewersList>;
 
 export type RepoCreatePullReviewRequestsRequestTeamReviewersList = Array<string>;
-export const RepoCreatePullReviewRequestsRequestTeamReviewersList =
+const RepoCreatePullReviewRequestsRequestTeamReviewersList =
   RepositoryTopicsList as any as S.Schema<RepoCreatePullReviewRequestsRequestTeamReviewersList>;
 
 export interface RepoCreatePullReviewRequestsRequest {
@@ -3572,7 +3551,7 @@ export interface RepoCreatePullReviewRequestsRequest {
   reviewers?: RepoCreatePullReviewRequestsRequestReviewersList;
   team_reviewers?: RepoCreatePullReviewRequestsRequestTeamReviewersList;
 }
-export const RepoCreatePullReviewRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreatePullReviewRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3591,12 +3570,12 @@ export const RepoCreatePullReviewRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCreatePullReviewRequestsRequest>;
 
 export type RepoCreatePullReviewRequestsResponseBodyList = Array<PullReview>;
-export const RepoCreatePullReviewRequestsResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoCreatePullReviewRequestsResponseBodyList = /*@__PURE__*/ S.Array(
   PullReview,
 ) as any as S.Schema<RepoCreatePullReviewRequestsResponseBodyList>;
 
 export type RepoCreatePullReviewRequestsResponse = RepoCreatePullReviewRequestsResponseBodyList;
-export const RepoCreatePullReviewRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoCreatePullReviewRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoCreatePullReviewRequestsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoCreatePullReviewRequestsResponse",
@@ -3615,7 +3594,7 @@ export interface RepoCreateReleaseRequest {
   tag_name: string;
   target_commitish?: string;
 }
-export const RepoCreateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3630,7 +3609,7 @@ export const RepoCreateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoCreateReleaseRequest" }) as any as S.Schema<RepoCreateReleaseRequest>;
 
 export type AttachmentType = "attachment" | "external";
-export const AttachmentType = S.String;
+const AttachmentType = S.String;
 
 /** Attachment a generic attachment */
 export interface Attachment {
@@ -3643,7 +3622,7 @@ export interface Attachment {
   type?: AttachmentType;
   uuid?: string;
 }
-export const Attachment = /*@__PURE__*/ S.suspend(() =>
+const Attachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     browser_download_url: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -3657,9 +3636,7 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export type ReleaseAssetsList = Array<Attachment>;
-export const ReleaseAssetsList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<ReleaseAssetsList>;
+const ReleaseAssetsList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<ReleaseAssetsList>;
 
 /** Release represents a repository release */
 export interface Release {
@@ -3682,7 +3659,7 @@ export interface Release {
   url?: string;
   zipball_url?: string;
 }
-export const Release = /*@__PURE__*/ S.suspend(() =>
+const Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archive_download_count: S.optional(TagArchiveDownloadCount),
     assets: S.optional(ReleaseAssetsList),
@@ -3715,7 +3692,7 @@ export interface RepoCreateReleaseAttachmentRequest {
   /** name of the attachment */
   name?: string;
 }
-export const RepoCreateReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3738,7 +3715,7 @@ export interface RepoCreateStatusRequest {
   state?: string;
   target_url?: string;
 }
-export const RepoCreateStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3762,7 +3739,7 @@ export interface CommitStatus {
   updated_at?: string;
   url?: string;
 }
-export const CommitStatus = /*@__PURE__*/ S.suspend(() =>
+const CommitStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -3785,7 +3762,7 @@ export interface RepoCreateTagRequest {
   tag_name: string;
   target?: string;
 }
-export const RepoCreateTagRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3805,7 +3782,7 @@ export interface Tag {
   tarball_url?: string;
   zipball_url?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archive_download_count: S.optional(TagArchiveDownloadCount),
     commit: S.optional(CommitMeta),
@@ -3818,11 +3795,11 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type RepoCreateTagProtectionRequestWhitelistTeamsList = Array<string>;
-export const RepoCreateTagProtectionRequestWhitelistTeamsList =
+const RepoCreateTagProtectionRequestWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<RepoCreateTagProtectionRequestWhitelistTeamsList>;
 
 export type RepoCreateTagProtectionRequestWhitelistUsernamesList = Array<string>;
-export const RepoCreateTagProtectionRequestWhitelistUsernamesList =
+const RepoCreateTagProtectionRequestWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<RepoCreateTagProtectionRequestWhitelistUsernamesList>;
 
 export interface RepoCreateTagProtectionRequest {
@@ -3834,7 +3811,7 @@ export interface RepoCreateTagProtectionRequest {
   whitelist_teams?: RepoCreateTagProtectionRequestWhitelistTeamsList;
   whitelist_usernames?: RepoCreateTagProtectionRequestWhitelistUsernamesList;
 }
-export const RepoCreateTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3847,11 +3824,11 @@ export const RepoCreateTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoCreateTagProtectionRequest>;
 
 export type TagProtectionWhitelistTeamsList = Array<string>;
-export const TagProtectionWhitelistTeamsList =
+const TagProtectionWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<TagProtectionWhitelistTeamsList>;
 
 export type TagProtectionWhitelistUsernamesList = Array<string>;
-export const TagProtectionWhitelistUsernamesList =
+const TagProtectionWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<TagProtectionWhitelistUsernamesList>;
 
 /** TagProtection represents a tag protection */
@@ -3863,7 +3840,7 @@ export interface TagProtection {
   whitelist_teams?: TagProtectionWhitelistTeamsList;
   whitelist_usernames?: TagProtectionWhitelistUsernamesList;
 }
-export const TagProtection = /*@__PURE__*/ S.suspend(() =>
+const TagProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     id: S.optional(S.Number),
@@ -3886,7 +3863,7 @@ export interface RepoCreateWikiPageRequest {
   /** page title. leave empty to keep unchanged */
   title?: string;
 }
-export const RepoCreateWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoCreateWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3905,7 +3882,7 @@ export interface WikiCommit {
   message?: string;
   sha?: string;
 }
-export const WikiCommit = /*@__PURE__*/ S.suspend(() =>
+const WikiCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(CommitUser),
     commiter: S.optional(CommitUser),
@@ -3926,7 +3903,7 @@ export interface WikiPage {
   sub_url?: string;
   title?: string;
 }
-export const WikiPage = /*@__PURE__*/ S.suspend(() =>
+const WikiPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commit_count: S.optional(S.Number),
     content_base64: S.optional(S.String),
@@ -3945,7 +3922,7 @@ export interface RepoDeleteAllFlagsRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoDeleteAllFlagsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteAllFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3955,7 +3932,7 @@ export const RepoDeleteAllFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteAllFlagsRequest>;
 
 export interface RepoDeleteAllFlagsResponse {}
-export const RepoDeleteAllFlagsResponse =
+const RepoDeleteAllFlagsResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteAllFlagsResponse>;
 
 export interface RepoDeleteAvatarRequest {
@@ -3964,7 +3941,7 @@ export interface RepoDeleteAvatarRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3972,7 +3949,7 @@ export const RepoDeleteAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteAvatarRequest" }) as any as S.Schema<RepoDeleteAvatarRequest>;
 
 export interface RepoDeleteAvatarResponse {}
-export const RepoDeleteAvatarResponse =
+const RepoDeleteAvatarResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteAvatarResponse>;
 
 export interface RepoDeleteBranchRequest {
@@ -3983,7 +3960,7 @@ export interface RepoDeleteBranchRequest {
   /** branch to delete */
   branch: string;
 }
-export const RepoDeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3992,7 +3969,7 @@ export const RepoDeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteBranchRequest" }) as any as S.Schema<RepoDeleteBranchRequest>;
 
 export interface RepoDeleteBranchResponse {}
-export const RepoDeleteBranchResponse =
+const RepoDeleteBranchResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteBranchResponse>;
 
 export interface RepoDeleteBranchProtectionRequest {
@@ -4003,7 +3980,7 @@ export interface RepoDeleteBranchProtectionRequest {
   /** name of protected branch */
   name: string;
 }
-export const RepoDeleteBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4016,7 +3993,7 @@ export const RepoDeleteBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteBranchProtectionRequest>;
 
 export interface RepoDeleteBranchProtectionResponse {}
-export const RepoDeleteBranchProtectionResponse =
+const RepoDeleteBranchProtectionResponse =
   RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeleteBranchProtectionResponse>;
 
 export interface RepoDeleteCollaboratorRequest {
@@ -4027,7 +4004,7 @@ export interface RepoDeleteCollaboratorRequest {
   /** username of the collaborator to delete */
   collaborator: string;
 }
-export const RepoDeleteCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4044,7 +4021,7 @@ export const RepoDeleteCollaboratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteCollaboratorRequest>;
 
 export interface RepoDeleteCollaboratorResponse {}
-export const RepoDeleteCollaboratorResponse =
+const RepoDeleteCollaboratorResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteCollaboratorResponse>;
 
 export interface RepoDeleteFileRequest {
@@ -4070,7 +4047,7 @@ export interface RepoDeleteFileRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-export const RepoDeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4095,7 +4072,7 @@ export interface FileDeleteResponse {
   content?: unknown;
   verification?: PayloadCommitVerification;
 }
-export const FileDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const FileDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commit: S.optional(FileCommitResponse),
     content: S.optional(S.Unknown),
@@ -4111,7 +4088,7 @@ export interface RepoDeleteFlagRequest {
   /** name of the flag */
   flag: string;
 }
-export const RepoDeleteFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4120,7 +4097,7 @@ export const RepoDeleteFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteFlagRequest" }) as any as S.Schema<RepoDeleteFlagRequest>;
 
 export interface RepoDeleteFlagResponse {}
-export const RepoDeleteFlagResponse =
+const RepoDeleteFlagResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteFlagResponse>;
 
 export interface RepoDeleteGitHookRequest {
@@ -4131,7 +4108,7 @@ export interface RepoDeleteGitHookRequest {
   /** id of the hook to get */
   id: string;
 }
-export const RepoDeleteGitHookRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteGitHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4140,7 +4117,7 @@ export const RepoDeleteGitHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteGitHookRequest" }) as any as S.Schema<RepoDeleteGitHookRequest>;
 
 export interface RepoDeleteGitHookResponse {}
-export const RepoDeleteGitHookResponse =
+const RepoDeleteGitHookResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteGitHookResponse>;
 
 export interface RepoDeleteHookRequest {
@@ -4151,7 +4128,7 @@ export interface RepoDeleteHookRequest {
   /** id of the hook to delete */
   id: number;
 }
-export const RepoDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4160,7 +4137,7 @@ export const RepoDeleteHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteHookRequest" }) as any as S.Schema<RepoDeleteHookRequest>;
 
 export interface RepoDeleteHookResponse {}
-export const RepoDeleteHookResponse =
+const RepoDeleteHookResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteHookResponse>;
 
 export interface RepoDeleteKeyRequest {
@@ -4171,7 +4148,7 @@ export interface RepoDeleteKeyRequest {
   /** id of the key to delete */
   id: number;
 }
-export const RepoDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4180,8 +4157,7 @@ export const RepoDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteKeyRequest" }) as any as S.Schema<RepoDeleteKeyRequest>;
 
 export interface RepoDeleteKeyResponse {}
-export const RepoDeleteKeyResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteKeyResponse>;
+const RepoDeleteKeyResponse = AcceptRepoTransferResponse as any as S.Schema<RepoDeleteKeyResponse>;
 
 export interface RepoDeletePullReviewRequest {
   /** owner of the repo */
@@ -4193,7 +4169,7 @@ export interface RepoDeletePullReviewRequest {
   /** id of the review */
   id: number;
 }
-export const RepoDeletePullReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeletePullReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4211,7 +4187,7 @@ export const RepoDeletePullReviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeletePullReviewRequest>;
 
 export interface RepoDeletePullReviewResponse {}
-export const RepoDeletePullReviewResponse =
+const RepoDeletePullReviewResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeletePullReviewResponse>;
 
 export interface RepoDeletePullReviewCommentRequest {
@@ -4226,7 +4202,7 @@ export interface RepoDeletePullReviewCommentRequest {
   /** id of the comment */
   comment: number;
 }
-export const RepoDeletePullReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeletePullReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4245,15 +4221,15 @@ export const RepoDeletePullReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeletePullReviewCommentRequest>;
 
 export interface RepoDeletePullReviewCommentResponse {}
-export const RepoDeletePullReviewCommentResponse =
+const RepoDeletePullReviewCommentResponse =
   RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeletePullReviewCommentResponse>;
 
 export type RepoDeletePullReviewRequestsRequestReviewersList = Array<string>;
-export const RepoDeletePullReviewRequestsRequestReviewersList =
+const RepoDeletePullReviewRequestsRequestReviewersList =
   RepositoryTopicsList as any as S.Schema<RepoDeletePullReviewRequestsRequestReviewersList>;
 
 export type RepoDeletePullReviewRequestsRequestTeamReviewersList = Array<string>;
-export const RepoDeletePullReviewRequestsRequestTeamReviewersList =
+const RepoDeletePullReviewRequestsRequestTeamReviewersList =
   RepositoryTopicsList as any as S.Schema<RepoDeletePullReviewRequestsRequestTeamReviewersList>;
 
 export interface RepoDeletePullReviewRequestsRequest {
@@ -4266,7 +4242,7 @@ export interface RepoDeletePullReviewRequestsRequest {
   reviewers?: RepoDeletePullReviewRequestsRequestReviewersList;
   team_reviewers?: RepoDeletePullReviewRequestsRequestTeamReviewersList;
 }
-export const RepoDeletePullReviewRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeletePullReviewRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4285,7 +4261,7 @@ export const RepoDeletePullReviewRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeletePullReviewRequestsRequest>;
 
 export interface RepoDeletePullReviewRequestsResponse {}
-export const RepoDeletePullReviewRequestsResponse =
+const RepoDeletePullReviewRequestsResponse =
   RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeletePullReviewRequestsResponse>;
 
 export interface RepoDeletePushMirrorRequest {
@@ -4296,7 +4272,7 @@ export interface RepoDeletePushMirrorRequest {
   /** remote name of the pushMirror */
   name: string;
 }
-export const RepoDeletePushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeletePushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4309,7 +4285,7 @@ export const RepoDeletePushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeletePushMirrorRequest>;
 
 export interface RepoDeletePushMirrorResponse {}
-export const RepoDeletePushMirrorResponse =
+const RepoDeletePushMirrorResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeletePushMirrorResponse>;
 
 export interface RepoDeleteReleaseRequest {
@@ -4320,7 +4296,7 @@ export interface RepoDeleteReleaseRequest {
   /** id of the release to delete */
   id: number;
 }
-export const RepoDeleteReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4329,7 +4305,7 @@ export const RepoDeleteReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteReleaseRequest" }) as any as S.Schema<RepoDeleteReleaseRequest>;
 
 export interface RepoDeleteReleaseResponse {}
-export const RepoDeleteReleaseResponse =
+const RepoDeleteReleaseResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteReleaseResponse>;
 
 export interface RepoDeleteReleaseAttachmentRequest {
@@ -4342,7 +4318,7 @@ export interface RepoDeleteReleaseAttachmentRequest {
   /** id of the attachment to delete */
   attachment_id: number;
 }
-export const RepoDeleteReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4360,7 +4336,7 @@ export const RepoDeleteReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteReleaseAttachmentRequest>;
 
 export interface RepoDeleteReleaseAttachmentResponse {}
-export const RepoDeleteReleaseAttachmentResponse =
+const RepoDeleteReleaseAttachmentResponse =
   RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeleteReleaseAttachmentResponse>;
 
 export interface RepoDeleteReleaseByTagRequest {
@@ -4371,7 +4347,7 @@ export interface RepoDeleteReleaseByTagRequest {
   /** tag name of the release to delete */
   tag: string;
 }
-export const RepoDeleteReleaseByTagRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteReleaseByTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4384,7 +4360,7 @@ export const RepoDeleteReleaseByTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteReleaseByTagRequest>;
 
 export interface RepoDeleteReleaseByTagResponse {}
-export const RepoDeleteReleaseByTagResponse =
+const RepoDeleteReleaseByTagResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteReleaseByTagResponse>;
 
 export interface RepoDeleteTagRequest {
@@ -4395,7 +4371,7 @@ export interface RepoDeleteTagRequest {
   /** name of tag to delete */
   tag: string;
 }
-export const RepoDeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4404,8 +4380,7 @@ export const RepoDeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteTagRequest" }) as any as S.Schema<RepoDeleteTagRequest>;
 
 export interface RepoDeleteTagResponse {}
-export const RepoDeleteTagResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTagResponse>;
+const RepoDeleteTagResponse = AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTagResponse>;
 
 export interface RepoDeleteTagProtectionRequest {
   /** owner of the repo */
@@ -4415,7 +4390,7 @@ export interface RepoDeleteTagProtectionRequest {
   /** id of protected tag */
   id: number;
 }
-export const RepoDeleteTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4428,9 +4403,9 @@ export const RepoDeleteTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteTagProtectionRequest>;
 
 export interface RepoDeleteTagProtectionResponse {}
-export const RepoDeleteTagProtectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "RepoDeleteTagProtectionResponse" },
-) as any as S.Schema<RepoDeleteTagProtectionResponse>;
+const RepoDeleteTagProtectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "RepoDeleteTagProtectionResponse",
+}) as any as S.Schema<RepoDeleteTagProtectionResponse>;
 
 export interface RepoDeleteTeamRequest {
   /** owner of the repo */
@@ -4440,7 +4415,7 @@ export interface RepoDeleteTeamRequest {
   /** team name */
   team: string;
 }
-export const RepoDeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4449,7 +4424,7 @@ export const RepoDeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteTeamRequest" }) as any as S.Schema<RepoDeleteTeamRequest>;
 
 export interface RepoDeleteTeamResponse {}
-export const RepoDeleteTeamResponse =
+const RepoDeleteTeamResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTeamResponse>;
 
 export interface RepoDeleteTopicRequest {
@@ -4460,7 +4435,7 @@ export interface RepoDeleteTopicRequest {
   /** name of the topic to delete */
   topic: string;
 }
-export const RepoDeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4469,7 +4444,7 @@ export const RepoDeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoDeleteTopicRequest" }) as any as S.Schema<RepoDeleteTopicRequest>;
 
 export interface RepoDeleteTopicResponse {}
-export const RepoDeleteTopicResponse =
+const RepoDeleteTopicResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTopicResponse>;
 
 export interface RepoDeleteWikiPageRequest {
@@ -4480,7 +4455,7 @@ export interface RepoDeleteWikiPageRequest {
   /** name of the page */
   pageName: string;
 }
-export const RepoDeleteWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDeleteWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4493,11 +4468,11 @@ export const RepoDeleteWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDeleteWikiPageRequest>;
 
 export interface RepoDeleteWikiPageResponse {}
-export const RepoDeleteWikiPageResponse =
+const RepoDeleteWikiPageResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoDeleteWikiPageResponse>;
 
 export type RepoDownloadCommitDiffOrPatchRequestDiffType = "diff" | "patch";
-export const RepoDownloadCommitDiffOrPatchRequestDiffType = S.String;
+const RepoDownloadCommitDiffOrPatchRequestDiffType = S.String;
 
 export interface RepoDownloadCommitDiffOrPatchRequest {
   /** owner of the repo */
@@ -4509,7 +4484,7 @@ export interface RepoDownloadCommitDiffOrPatchRequest {
   /** whether the output is diff or patch */
   diffType: RepoDownloadCommitDiffOrPatchRequestDiffType | (string & {});
 }
-export const RepoDownloadCommitDiffOrPatchRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDownloadCommitDiffOrPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4523,14 +4498,14 @@ export const RepoDownloadCommitDiffOrPatchRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RepoDownloadCommitDiffOrPatchRequest>;
 
 export type RepoDownloadCommitDiffOrPatchResponse = string;
-export const RepoDownloadCommitDiffOrPatchResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoDownloadCommitDiffOrPatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoDownloadCommitDiffOrPatchResponse",
 }) as any as S.Schema<RepoDownloadCommitDiffOrPatchResponse>;
 
 export type RepoDownloadPullDiffOrPatchRequestDiffType = "diff" | "patch";
-export const RepoDownloadPullDiffOrPatchRequestDiffType = S.String;
+const RepoDownloadPullDiffOrPatchRequestDiffType = S.String;
 
 export interface RepoDownloadPullDiffOrPatchRequest {
   /** owner of the repo */
@@ -4544,7 +4519,7 @@ export interface RepoDownloadPullDiffOrPatchRequest {
   /** whether to include binary file changes. if true, the diff is applicable with `git apply` */
   binary?: boolean;
 }
-export const RepoDownloadPullDiffOrPatchRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoDownloadPullDiffOrPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4559,35 +4534,35 @@ export const RepoDownloadPullDiffOrPatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoDownloadPullDiffOrPatchRequest>;
 
 export type RepoDownloadPullDiffOrPatchResponse = string;
-export const RepoDownloadPullDiffOrPatchResponse =
+const RepoDownloadPullDiffOrPatchResponse =
   RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoDownloadPullDiffOrPatchResponse>;
 
 export type RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList = Array<string>;
-export const RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList =
+const RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList>;
 
 export type RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList = Array<string>;
-export const RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList =
+const RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList =
   RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList>;
 
 export type RepoEditBranchProtectionRequestMergeWhitelistTeamsList = Array<string>;
-export const RepoEditBranchProtectionRequestMergeWhitelistTeamsList =
+const RepoEditBranchProtectionRequestMergeWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestMergeWhitelistTeamsList>;
 
 export type RepoEditBranchProtectionRequestMergeWhitelistUsernamesList = Array<string>;
-export const RepoEditBranchProtectionRequestMergeWhitelistUsernamesList =
+const RepoEditBranchProtectionRequestMergeWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestMergeWhitelistUsernamesList>;
 
 export type RepoEditBranchProtectionRequestPushWhitelistTeamsList = Array<string>;
-export const RepoEditBranchProtectionRequestPushWhitelistTeamsList =
+const RepoEditBranchProtectionRequestPushWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestPushWhitelistTeamsList>;
 
 export type RepoEditBranchProtectionRequestPushWhitelistUsernamesList = Array<string>;
-export const RepoEditBranchProtectionRequestPushWhitelistUsernamesList =
+const RepoEditBranchProtectionRequestPushWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestPushWhitelistUsernamesList>;
 
 export type RepoEditBranchProtectionRequestStatusCheckContextsList = Array<string>;
-export const RepoEditBranchProtectionRequestStatusCheckContextsList =
+const RepoEditBranchProtectionRequestStatusCheckContextsList =
   RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestStatusCheckContextsList>;
 
 export interface RepoEditBranchProtectionRequest {
@@ -4621,7 +4596,7 @@ export interface RepoEditBranchProtectionRequest {
   status_check_contexts?: RepoEditBranchProtectionRequestStatusCheckContextsList;
   unprotected_file_patterns?: string;
 }
-export const RepoEditBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoEditBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4671,7 +4646,7 @@ export interface RepoEditGitHookRequest {
   id: string;
   content?: string;
 }
-export const RepoEditGitHookRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoEditGitHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4686,7 +4661,7 @@ export interface GitHook {
   is_active?: boolean;
   name?: string;
 }
-export const GitHook = /*@__PURE__*/ S.suspend(() =>
+const GitHook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     is_active: S.optional(S.Boolean),
@@ -4695,11 +4670,11 @@ export const GitHook = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHook" }) as any as S.Schema<GitHook>;
 
 export type RepoEditHookRequestConfigMap = { [key: string]: string | undefined };
-export const RepoEditHookRequestConfigMap =
+const RepoEditHookRequestConfigMap =
   TeamUnitsMapMap as any as S.Schema<RepoEditHookRequestConfigMap>;
 
 export type RepoEditHookRequestEventsList = Array<string>;
-export const RepoEditHookRequestEventsList =
+const RepoEditHookRequestEventsList =
   RepositoryTopicsList as any as S.Schema<RepoEditHookRequestEventsList>;
 
 export interface RepoEditHookRequest {
@@ -4715,7 +4690,7 @@ export interface RepoEditHookRequest {
   config?: RepoEditHookRequestConfigMap;
   events?: RepoEditHookRequestEventsList;
 }
-export const RepoEditHookRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoEditHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4729,11 +4704,11 @@ export const RepoEditHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoEditHookRequest" }) as any as S.Schema<RepoEditHookRequest>;
 
 export type RepoEditPullRequestRequestAssigneesList = Array<string>;
-export const RepoEditPullRequestRequestAssigneesList =
+const RepoEditPullRequestRequestAssigneesList =
   RepositoryTopicsList as any as S.Schema<RepoEditPullRequestRequestAssigneesList>;
 
 export type RepoEditPullRequestRequestLabelsList = Array<number>;
-export const RepoEditPullRequestRequestLabelsList =
+const RepoEditPullRequestRequestLabelsList =
   RepoCreatePullRequestRequestLabelsList as any as S.Schema<RepoEditPullRequestRequestLabelsList>;
 
 export interface RepoEditPullRequestRequest {
@@ -4755,7 +4730,7 @@ export interface RepoEditPullRequestRequest {
   title?: string;
   unset_due_date?: boolean;
 }
-export const RepoEditPullRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoEditPullRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4791,7 +4766,7 @@ export interface RepoEditReleaseRequest {
   tag_name?: string;
   target_commitish?: string;
 }
-export const RepoEditReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoEditReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4819,7 +4794,7 @@ export interface RepoEditReleaseAttachmentRequest {
   browser_download_url?: string;
   name?: string;
 }
-export const RepoEditReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoEditReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4839,11 +4814,11 @@ export const RepoEditReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoEditReleaseAttachmentRequest>;
 
 export type RepoEditTagProtectionRequestWhitelistTeamsList = Array<string>;
-export const RepoEditTagProtectionRequestWhitelistTeamsList =
+const RepoEditTagProtectionRequestWhitelistTeamsList =
   RepositoryTopicsList as any as S.Schema<RepoEditTagProtectionRequestWhitelistTeamsList>;
 
 export type RepoEditTagProtectionRequestWhitelistUsernamesList = Array<string>;
-export const RepoEditTagProtectionRequestWhitelistUsernamesList =
+const RepoEditTagProtectionRequestWhitelistUsernamesList =
   RepositoryTopicsList as any as S.Schema<RepoEditTagProtectionRequestWhitelistUsernamesList>;
 
 export interface RepoEditTagProtectionRequest {
@@ -4857,7 +4832,7 @@ export interface RepoEditTagProtectionRequest {
   whitelist_teams?: RepoEditTagProtectionRequestWhitelistTeamsList;
   whitelist_usernames?: RepoEditTagProtectionRequestWhitelistUsernamesList;
 }
-export const RepoEditTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoEditTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4886,7 +4861,7 @@ export interface RepoEditWikiPageRequest {
   /** page title. leave empty to keep unchanged */
   title?: string;
 }
-export const RepoEditWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoEditWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4909,7 +4884,7 @@ export interface RepoGetActionJobLogsRequest {
   /** 1-based attempt number matching the value of `attempt` in the job listing; omit to fetch the latest attempt of the job */
   attempt?: number;
 }
-export const RepoGetActionJobLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetActionJobLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4923,7 +4898,7 @@ export const RepoGetActionJobLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetActionJobLogsRequest>;
 
 export type RepoGetActionJobLogsResponse = string;
-export const RepoGetActionJobLogsResponse =
+const RepoGetActionJobLogsResponse =
   RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoGetActionJobLogsResponse>;
 
 export interface RepoGetActionRunLogsRequest {
@@ -4934,7 +4909,7 @@ export interface RepoGetActionRunLogsRequest {
   /** ID of the workflow run. The ZIP contains the latest attempt of each job in the run, with each entry named `{job-name}-{job-id}-attempt-{N}.log` (the job ID prevents collisions when two jobs share a name; the attempt number records which run the log came from). The run itself has no attempt number -- jobs are re-run independently, so use the per-job logs endpoint with `?attempt` to fetch a specific historical attempt of one job. */
   run_id: number;
 }
-export const RepoGetActionRunLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetActionRunLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4947,7 +4922,7 @@ export const RepoGetActionRunLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetActionRunLogsRequest>;
 
 export type RepoGetActionRunLogsResponse = string;
-export const RepoGetActionRunLogsResponse =
+const RepoGetActionRunLogsResponse =
   RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoGetActionRunLogsResponse>;
 
 export interface RepoGetAllCommitsRequest {
@@ -4972,7 +4947,7 @@ export interface RepoGetAllCommitsRequest {
   /** commits that match the given specifier will not be listed. */
   not?: string;
 }
-export const RepoGetAllCommitsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetAllCommitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -4988,11 +4963,11 @@ export const RepoGetAllCommitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetAllCommitsRequest" }) as any as S.Schema<RepoGetAllCommitsRequest>;
 
 export type RepoGetAllCommitsResponseBodyList = Array<Commit>;
-export const RepoGetAllCommitsResponseBodyList =
+const RepoGetAllCommitsResponseBodyList =
   CompareCommitsList as any as S.Schema<RepoGetAllCommitsResponseBodyList>;
 
 export type RepoGetAllCommitsResponse = RepoGetAllCommitsResponseBodyList;
-export const RepoGetAllCommitsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetAllCommitsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetAllCommitsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoGetAllCommitsResponse",
@@ -5006,7 +4981,7 @@ export interface RepoGetArchiveRequest {
   /** the git reference for download with attached archive format (e.g. master.zip) */
   archive: string;
 }
-export const RepoGetArchiveRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5015,7 +4990,7 @@ export const RepoGetArchiveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetArchiveRequest" }) as any as S.Schema<RepoGetArchiveRequest>;
 
 export interface RepoGetArchiveResponse {}
-export const RepoGetArchiveResponse =
+const RepoGetArchiveResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoGetArchiveResponse>;
 
 export interface RepoGetAssigneesRequest {
@@ -5024,7 +4999,7 @@ export interface RepoGetAssigneesRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoGetAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5032,11 +5007,11 @@ export const RepoGetAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetAssigneesRequest" }) as any as S.Schema<RepoGetAssigneesRequest>;
 
 export type RepoGetAssigneesResponseBodyList = Array<User>;
-export const RepoGetAssigneesResponseBodyList =
+const RepoGetAssigneesResponseBodyList =
   PullRequestAssigneesList as any as S.Schema<RepoGetAssigneesResponseBodyList>;
 
 export type RepoGetAssigneesResponse = RepoGetAssigneesResponseBodyList;
-export const RepoGetAssigneesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetAssigneesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetAssigneesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoGetAssigneesResponse" }) as any as S.Schema<RepoGetAssigneesResponse>;
 
@@ -5048,7 +5023,7 @@ export interface RepoGetBranchRequest {
   /** branch to get */
   branch: string;
 }
-export const RepoGetBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5064,7 +5039,7 @@ export interface RepoGetBranchProtectionRequest {
   /** name of protected branch */
   name: string;
 }
-export const RepoGetBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5080,7 +5055,7 @@ export interface RepoGetByIDRequest {
   /** id of the repo to get */
   id: number;
 }
-export const RepoGetByIDRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/repositories/{id}", code: 200 })),
@@ -5098,7 +5073,7 @@ export interface RepoGetCombinedStatusByRefRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoGetCombinedStatusByRefRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetCombinedStatusByRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5111,7 +5086,7 @@ export const RepoGetCombinedStatusByRefRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetCombinedStatusByRefRequest>;
 
 export type CombinedStatusStatusesList = Array<CommitStatus>;
-export const CombinedStatusStatusesList = /*@__PURE__*/ S.Array(
+const CombinedStatusStatusesList = /*@__PURE__*/ S.Array(
   CommitStatus,
 ) as any as S.Schema<CombinedStatusStatusesList>;
 
@@ -5125,7 +5100,7 @@ export interface CombinedStatus {
   total_count?: number;
   url?: string;
 }
-export const CombinedStatus = /*@__PURE__*/ S.suspend(() =>
+const CombinedStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commit_url: S.optional(S.String),
     repository: S.optional(Repository),
@@ -5145,7 +5120,7 @@ export interface RepoGetCommitPullRequestRequest {
   /** SHA of the commit to get */
   sha: string;
 }
-export const RepoGetCommitPullRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetCommitPullRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5165,7 +5140,7 @@ export interface RepoGetContentsRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-export const RepoGetContentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetContentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5182,7 +5157,7 @@ export interface RepoGetContentsListRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-export const RepoGetContentsListRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetContentsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5193,11 +5168,11 @@ export const RepoGetContentsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetContentsListRequest>;
 
 export type RepoGetContentsListResponseBodyList = Array<ContentsResponse>;
-export const RepoGetContentsListResponseBodyList =
+const RepoGetContentsListResponseBodyList =
   FilesResponseFilesList as any as S.Schema<RepoGetContentsListResponseBodyList>;
 
 export type RepoGetContentsListResponse = RepoGetContentsListResponseBodyList;
-export const RepoGetContentsListResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetContentsListResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetContentsListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoGetContentsListResponse",
@@ -5213,7 +5188,7 @@ export interface RepoGetEditorConfigRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-export const RepoGetEditorConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetEditorConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5227,11 +5202,11 @@ export const RepoGetEditorConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetEditorConfigRequest>;
 
 export type RepoGetEditorConfigResponseBodyMap = { [key: string]: string | undefined };
-export const RepoGetEditorConfigResponseBodyMap =
+const RepoGetEditorConfigResponseBodyMap =
   TeamUnitsMapMap as any as S.Schema<RepoGetEditorConfigResponseBodyMap>;
 
 export type RepoGetEditorConfigResponse = RepoGetEditorConfigResponseBodyMap;
-export const RepoGetEditorConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetEditorConfigResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetEditorConfigResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoGetEditorConfigResponse",
@@ -5245,7 +5220,7 @@ export interface RepoGetGitHookRequest {
   /** id of the hook to get */
   id: string;
 }
-export const RepoGetGitHookRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetGitHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5261,7 +5236,7 @@ export interface RepoGetHookRequest {
   /** id of the hook to get */
   id: number;
 }
-export const RepoGetHookRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5275,7 +5250,7 @@ export interface RepoGetIssueConfigRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoGetIssueConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetIssueConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5289,7 +5264,7 @@ export interface IssueConfigContactLink {
   name?: string;
   url?: string;
 }
-export const IssueConfigContactLink = /*@__PURE__*/ S.suspend(() =>
+const IssueConfigContactLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     about: S.optional(S.String),
     name: S.optional(S.String),
@@ -5298,7 +5273,7 @@ export const IssueConfigContactLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueConfigContactLink" }) as any as S.Schema<IssueConfigContactLink>;
 
 export type IssueConfigContactLinksList = Array<IssueConfigContactLink>;
-export const IssueConfigContactLinksList = /*@__PURE__*/ S.Array(
+const IssueConfigContactLinksList = /*@__PURE__*/ S.Array(
   IssueConfigContactLink,
 ) as any as S.Schema<IssueConfigContactLinksList>;
 
@@ -5306,7 +5281,7 @@ export interface IssueConfig {
   blank_issues_enabled?: boolean;
   contact_links?: IssueConfigContactLinksList;
 }
-export const IssueConfig = /*@__PURE__*/ S.suspend(() =>
+const IssueConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blank_issues_enabled: S.optional(S.Boolean),
     contact_links: S.optional(IssueConfigContactLinksList),
@@ -5319,7 +5294,7 @@ export interface RepoGetIssueTemplatesRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoGetIssueTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetIssueTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5329,17 +5304,17 @@ export const RepoGetIssueTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetIssueTemplatesRequest>;
 
 export type IssueFormFieldAttributesMap = { [key: string]: unknown | undefined };
-export const IssueFormFieldAttributesMap = /*@__PURE__*/ S.Record(
+const IssueFormFieldAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<IssueFormFieldAttributesMap>;
 
 export type IssueFormFieldValidationsMap = { [key: string]: unknown | undefined };
-export const IssueFormFieldValidationsMap =
+const IssueFormFieldValidationsMap =
   IssueFormFieldAttributesMap as any as S.Schema<IssueFormFieldValidationsMap>;
 
 export type IssueFormFieldVisibleList = Array<string>;
-export const IssueFormFieldVisibleList =
+const IssueFormFieldVisibleList =
   RepositoryTopicsList as any as S.Schema<IssueFormFieldVisibleList>;
 
 /** IssueFormField represents a form field */
@@ -5350,7 +5325,7 @@ export interface IssueFormField {
   validations?: IssueFormFieldValidationsMap;
   visible?: IssueFormFieldVisibleList;
 }
-export const IssueFormField = /*@__PURE__*/ S.suspend(() =>
+const IssueFormField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(IssueFormFieldAttributesMap),
     id: S.optional(S.String),
@@ -5361,12 +5336,12 @@ export const IssueFormField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueFormField" }) as any as S.Schema<IssueFormField>;
 
 export type IssueTemplateBodyList = Array<IssueFormField>;
-export const IssueTemplateBodyList = /*@__PURE__*/ S.Array(
+const IssueTemplateBodyList = /*@__PURE__*/ S.Array(
   IssueFormField,
 ) as any as S.Schema<IssueTemplateBodyList>;
 
 export type IssueTemplateLabels = Array<string>;
-export const IssueTemplateLabels = RepositoryTopicsList as any as S.Schema<IssueTemplateLabels>;
+const IssueTemplateLabels = RepositoryTopicsList as any as S.Schema<IssueTemplateLabels>;
 
 /** IssueTemplate represents an issue template for a repository */
 export interface IssueTemplate {
@@ -5379,7 +5354,7 @@ export interface IssueTemplate {
   ref?: string;
   title?: string;
 }
-export const IssueTemplate = /*@__PURE__*/ S.suspend(() =>
+const IssueTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     about: S.optional(S.String),
     body: S.optional(IssueTemplateBodyList),
@@ -5393,12 +5368,12 @@ export const IssueTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueTemplate" }) as any as S.Schema<IssueTemplate>;
 
 export type RepoGetIssueTemplatesResponseBodyList = Array<IssueTemplate>;
-export const RepoGetIssueTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoGetIssueTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
   IssueTemplate,
 ) as any as S.Schema<RepoGetIssueTemplatesResponseBodyList>;
 
 export type RepoGetIssueTemplatesResponse = RepoGetIssueTemplatesResponseBodyList;
-export const RepoGetIssueTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetIssueTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetIssueTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoGetIssueTemplatesResponse",
@@ -5412,7 +5387,7 @@ export interface RepoGetKeyRequest {
   /** id of the key to get */
   id: number;
 }
-export const RepoGetKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5426,7 +5401,7 @@ export interface RepoGetLanguagesRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoGetLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5434,13 +5409,13 @@ export const RepoGetLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetLanguagesRequest" }) as any as S.Schema<RepoGetLanguagesRequest>;
 
 export type RepoGetLanguagesResponseBodyMap = { [key: string]: number | undefined };
-export const RepoGetLanguagesResponseBodyMap = /*@__PURE__*/ S.Record(
+const RepoGetLanguagesResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<RepoGetLanguagesResponseBodyMap>;
 
 export type RepoGetLanguagesResponse = RepoGetLanguagesResponseBodyMap;
-export const RepoGetLanguagesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetLanguagesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetLanguagesResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoGetLanguagesResponse" }) as any as S.Schema<RepoGetLanguagesResponse>;
 
@@ -5450,7 +5425,7 @@ export interface RepoGetLatestReleaseRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoGetLatestReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetLatestReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5471,7 +5446,7 @@ export interface RepoGetNoteRequest {
   /** include a list of affected files for every commit (disable for speedup, default 'true') */
   files?: boolean;
 }
-export const RepoGetNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5486,7 +5461,7 @@ export interface Note {
   commit?: Commit;
   message?: string;
 }
-export const Note = /*@__PURE__*/ S.suspend(() =>
+const Note = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commit: S.optional(Commit),
     message: S.optional(S.String),
@@ -5501,7 +5476,7 @@ export interface RepoGetPullRequestRequest {
   /** index of the pull request to get */
   index: number;
 }
-export const RepoGetPullRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5521,7 +5496,7 @@ export interface RepoGetPullRequestByBaseHeadRequest {
   /** head of the pull request to get */
   head: string;
 }
-export const RepoGetPullRequestByBaseHeadRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullRequestByBaseHeadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5548,7 +5523,7 @@ export interface RepoGetPullRequestCommitsRequest {
   /** include a list of affected files for every commit (disable for speedup, default 'true') */
   files?: boolean;
 }
-export const RepoGetPullRequestCommitsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullRequestCommitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5563,11 +5538,8 @@ export const RepoGetPullRequestCommitsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetPullRequestCommitsRequest>;
 
 export type RepoGetPullRequestCommitsResponseBodyList = Array<Commit>;
-export const RepoGetPullRequestCommitsResponseBodyList =
-  CompareCommitsList as any as S.Schema<RepoGetPullRequestCommitsResponseBodyList>;
-
 export type RepoGetPullRequestCommitsResponse = RepoGetPullRequestCommitsResponseBodyList;
-export const RepoGetPullRequestCommitsResponse =
+const RepoGetPullRequestCommitsResponse =
   RepoGetAllCommitsResponse as any as S.Schema<RepoGetPullRequestCommitsResponse>;
 
 export type RepoGetPullRequestFilesRequestWhitespace =
@@ -5575,7 +5547,7 @@ export type RepoGetPullRequestFilesRequestWhitespace =
   | "ignore-change"
   | "ignore-eol"
   | "show-all";
-export const RepoGetPullRequestFilesRequestWhitespace = S.String;
+const RepoGetPullRequestFilesRequestWhitespace = S.String;
 
 export interface RepoGetPullRequestFilesRequest {
   /** owner of the repo */
@@ -5593,7 +5565,7 @@ export interface RepoGetPullRequestFilesRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoGetPullRequestFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullRequestFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5619,7 +5591,7 @@ export interface ChangedFile {
   raw_url?: string;
   status?: string;
 }
-export const ChangedFile = /*@__PURE__*/ S.suspend(() =>
+const ChangedFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additions: S.optional(S.Number),
     changes: S.optional(S.Number),
@@ -5634,12 +5606,12 @@ export const ChangedFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChangedFile" }) as any as S.Schema<ChangedFile>;
 
 export type RepoGetPullRequestFilesResponseBodyList = Array<ChangedFile>;
-export const RepoGetPullRequestFilesResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoGetPullRequestFilesResponseBodyList = /*@__PURE__*/ S.Array(
   ChangedFile,
 ) as any as S.Schema<RepoGetPullRequestFilesResponseBodyList>;
 
 export type RepoGetPullRequestFilesResponse = RepoGetPullRequestFilesResponseBodyList;
-export const RepoGetPullRequestFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullRequestFilesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetPullRequestFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoGetPullRequestFilesResponse",
@@ -5655,7 +5627,7 @@ export interface RepoGetPullReviewRequest {
   /** id of the review */
   id: number;
 }
-export const RepoGetPullReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5678,7 +5650,7 @@ export interface RepoGetPullReviewCommentRequest {
   /** id of the comment */
   comment: number;
 }
-export const RepoGetPullReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5706,7 +5678,7 @@ export interface RepoGetPullReviewCommentsRequest {
   /** id of the review */
   id: number;
 }
-export const RepoGetPullReviewCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullReviewCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5724,12 +5696,12 @@ export const RepoGetPullReviewCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetPullReviewCommentsRequest>;
 
 export type RepoGetPullReviewCommentsResponseBodyList = Array<PullReviewComment>;
-export const RepoGetPullReviewCommentsResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoGetPullReviewCommentsResponseBodyList = /*@__PURE__*/ S.Array(
   PullReviewComment,
 ) as any as S.Schema<RepoGetPullReviewCommentsResponseBodyList>;
 
 export type RepoGetPullReviewCommentsResponse = RepoGetPullReviewCommentsResponseBodyList;
-export const RepoGetPullReviewCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPullReviewCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetPullReviewCommentsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoGetPullReviewCommentsResponse",
@@ -5743,7 +5715,7 @@ export interface RepoGetPushMirrorByRemoteNameRequest {
   /** remote name of push mirror */
   name: string;
 }
-export const RepoGetPushMirrorByRemoteNameRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetPushMirrorByRemoteNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5763,7 +5735,7 @@ export interface RepoGetRawFileRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-export const RepoGetRawFileRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetRawFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5773,7 +5745,7 @@ export const RepoGetRawFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetRawFileRequest" }) as any as S.Schema<RepoGetRawFileRequest>;
 
 export type RepoGetRawFileResponse = unknown;
-export const RepoGetRawFileResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetRawFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoGetRawFileResponse" }) as any as S.Schema<RepoGetRawFileResponse>;
 
@@ -5787,7 +5759,7 @@ export interface RepoGetRawFileOrLFSRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-export const RepoGetRawFileOrLFSRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetRawFileOrLFSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5799,7 +5771,7 @@ export const RepoGetRawFileOrLFSRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetRawFileOrLFSRequest>;
 
 export type RepoGetRawFileOrLFSResponse = unknown;
-export const RepoGetRawFileOrLFSResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetRawFileOrLFSResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoGetRawFileOrLFSResponse",
@@ -5813,7 +5785,7 @@ export interface RepoGetReleaseRequest {
   /** id of the release to get */
   id: number;
 }
-export const RepoGetReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5831,7 +5803,7 @@ export interface RepoGetReleaseAttachmentRequest {
   /** id of the attachment to get */
   attachment_id: number;
 }
-export const RepoGetReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetReleaseAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5856,7 +5828,7 @@ export interface RepoGetReleaseByTagRequest {
   /** tag name of the release to get */
   tag: string;
 }
-export const RepoGetReleaseByTagRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetReleaseByTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5872,7 +5844,7 @@ export interface RepoGetReviewersRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoGetReviewersRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetReviewersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5880,11 +5852,8 @@ export const RepoGetReviewersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoGetReviewersRequest" }) as any as S.Schema<RepoGetReviewersRequest>;
 
 export type RepoGetReviewersResponseBodyList = Array<User>;
-export const RepoGetReviewersResponseBodyList =
-  PullRequestAssigneesList as any as S.Schema<RepoGetReviewersResponseBodyList>;
-
 export type RepoGetReviewersResponse = RepoGetReviewersResponseBodyList;
-export const RepoGetReviewersResponse =
+const RepoGetReviewersResponse =
   RepoGetAssigneesResponse as any as S.Schema<RepoGetReviewersResponse>;
 
 export interface RepoGetSingleCommitRequest {
@@ -5901,7 +5870,7 @@ export interface RepoGetSingleCommitRequest {
   /** include a list of affected files for every commit (disable for speedup, default 'true') */
   files?: boolean;
 }
-export const RepoGetSingleCommitRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetSingleCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5922,7 +5891,7 @@ export interface RepoGetTagRequest {
   /** name of tag */
   tag: string;
 }
-export const RepoGetTagRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5938,7 +5907,7 @@ export interface RepoGetTagProtectionRequest {
   /** id of the tag protect to get */
   id: number;
 }
-export const RepoGetTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5956,7 +5925,7 @@ export interface RepoGetWikiPageRequest {
   /** name of the page */
   pageName: string;
 }
-export const RepoGetWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetWikiPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5974,7 +5943,7 @@ export interface RepoGetWikiPageRevisionsRequest {
   /** page number of results to return (1-based) */
   page?: number;
 }
-export const RepoGetWikiPageRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetWikiPageRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -5988,7 +5957,7 @@ export const RepoGetWikiPageRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoGetWikiPageRevisionsRequest>;
 
 export type WikiCommitListCommitsList = Array<WikiCommit>;
-export const WikiCommitListCommitsList = /*@__PURE__*/ S.Array(
+const WikiCommitListCommitsList = /*@__PURE__*/ S.Array(
   WikiCommit,
 ) as any as S.Schema<WikiCommitListCommitsList>;
 
@@ -5997,7 +5966,7 @@ export interface WikiCommitList {
   commits?: WikiCommitListCommitsList;
   count?: number;
 }
-export const WikiCommitList = /*@__PURE__*/ S.suspend(() =>
+const WikiCommitList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commits: S.optional(WikiCommitListCommitsList),
     count: S.optional(S.Number),
@@ -6014,7 +5983,7 @@ export interface RepoGetWikiPagesRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoGetWikiPagesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoGetWikiPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6030,7 +5999,7 @@ export interface WikiPageMetaData {
   sub_url?: string;
   title?: string;
 }
-export const WikiPageMetaData = /*@__PURE__*/ S.suspend(() =>
+const WikiPageMetaData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     html_url: S.optional(S.String),
     last_commit: S.optional(WikiCommit),
@@ -6040,12 +6009,12 @@ export const WikiPageMetaData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WikiPageMetaData" }) as any as S.Schema<WikiPageMetaData>;
 
 export type RepoGetWikiPagesResponseBodyList = Array<WikiPageMetaData>;
-export const RepoGetWikiPagesResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoGetWikiPagesResponseBodyList = /*@__PURE__*/ S.Array(
   WikiPageMetaData,
 ) as any as S.Schema<RepoGetWikiPagesResponseBodyList>;
 
 export type RepoGetWikiPagesResponse = RepoGetWikiPagesResponseBodyList;
-export const RepoGetWikiPagesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoGetWikiPagesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoGetWikiPagesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoGetWikiPagesResponse" }) as any as S.Schema<RepoGetWikiPagesResponse>;
 
@@ -6059,7 +6028,7 @@ export interface RepoListActionsSecretsRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListActionsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListActionsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6076,7 +6045,7 @@ export interface Secret {
   /** the secret's name */
   name: string;
 }
-export const Secret = /*@__PURE__*/ S.suspend(() =>
+const Secret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     name: S.String,
@@ -6084,12 +6053,12 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
 export type RepoListActionsSecretsResponseBodyList = Array<Secret>;
-export const RepoListActionsSecretsResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListActionsSecretsResponseBodyList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<RepoListActionsSecretsResponseBodyList>;
 
 export type RepoListActionsSecretsResponse = RepoListActionsSecretsResponseBodyList;
-export const RepoListActionsSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListActionsSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListActionsSecretsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListActionsSecretsResponse",
@@ -6107,7 +6076,7 @@ export interface RepoListActivityFeedsRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6121,7 +6090,7 @@ export const RepoListActivityFeedsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
-export const CommentAssetsList = ReleaseAssetsList as any as S.Schema<CommentAssetsList>;
+const CommentAssetsList = ReleaseAssetsList as any as S.Schema<CommentAssetsList>;
 
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
@@ -6147,7 +6116,7 @@ export interface Comment {
   updated_at?: string;
   user?: User;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(CommentAssetsList),
     body: S.optional(S.String),
@@ -6192,7 +6161,7 @@ export type ActivityOpType =
   | "pull_review_dismissed"
   | "pull_request_ready_for_review"
   | "auto_merge_pull_request";
-export const ActivityOpType = S.String;
+const ActivityOpType = S.String;
 
 export interface Activity {
   act_user?: User;
@@ -6210,7 +6179,7 @@ export interface Activity {
   repo_id?: number;
   user_id?: number;
 }
-export const Activity = /*@__PURE__*/ S.suspend(() =>
+const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     act_user: S.optional(User),
     act_user_id: S.optional(S.Number),
@@ -6229,12 +6198,12 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 export type RepoListActivityFeedsResponseBodyList = Array<Activity>;
-export const RepoListActivityFeedsResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListActivityFeedsResponseBodyList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<RepoListActivityFeedsResponseBodyList>;
 
 export type RepoListActivityFeedsResponse = RepoListActivityFeedsResponseBodyList;
-export const RepoListActivityFeedsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListActivityFeedsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListActivityFeedsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListActivityFeedsResponse",
@@ -6246,7 +6215,7 @@ export interface RepoListAllGitRefsRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoListAllGitRefsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListAllGitRefsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6256,14 +6225,12 @@ export const RepoListAllGitRefsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListAllGitRefsRequest>;
 
 export type GitObject = AnnotatedTagObject;
-export const GitObject = AnnotatedTagObject;
-
 export interface Reference {
   object?: AnnotatedTagObject;
   ref?: string;
   url?: string;
 }
-export const Reference = /*@__PURE__*/ S.suspend(() =>
+const Reference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(AnnotatedTagObject),
     ref: S.optional(S.String),
@@ -6272,12 +6239,12 @@ export const Reference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Reference" }) as any as S.Schema<Reference>;
 
 export type RepoListAllGitRefsResponseBodyList = Array<Reference>;
-export const RepoListAllGitRefsResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListAllGitRefsResponseBodyList = /*@__PURE__*/ S.Array(
   Reference,
 ) as any as S.Schema<RepoListAllGitRefsResponseBodyList>;
 
 export type RepoListAllGitRefsResponse = RepoListAllGitRefsResponseBodyList;
-export const RepoListAllGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListAllGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListAllGitRefsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListAllGitRefsResponse",
@@ -6293,7 +6260,7 @@ export interface RepoListBranchesRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6303,12 +6270,12 @@ export const RepoListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListBranchesRequest" }) as any as S.Schema<RepoListBranchesRequest>;
 
 export type RepoListBranchesResponseBodyList = Array<Branch>;
-export const RepoListBranchesResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListBranchesResponseBodyList = /*@__PURE__*/ S.Array(
   Branch,
 ) as any as S.Schema<RepoListBranchesResponseBodyList>;
 
 export type RepoListBranchesResponse = RepoListBranchesResponseBodyList;
-export const RepoListBranchesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListBranchesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListBranchesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListBranchesResponse" }) as any as S.Schema<RepoListBranchesResponse>;
 
@@ -6318,7 +6285,7 @@ export interface RepoListBranchProtectionRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoListBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6328,12 +6295,12 @@ export const RepoListBranchProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListBranchProtectionRequest>;
 
 export type RepoListBranchProtectionResponseBodyList = Array<BranchProtection>;
-export const RepoListBranchProtectionResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListBranchProtectionResponseBodyList = /*@__PURE__*/ S.Array(
   BranchProtection,
 ) as any as S.Schema<RepoListBranchProtectionResponseBodyList>;
 
 export type RepoListBranchProtectionResponse = RepoListBranchProtectionResponseBodyList;
-export const RepoListBranchProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListBranchProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListBranchProtectionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListBranchProtectionResponse",
@@ -6349,7 +6316,7 @@ export interface RepoListCollaboratorsRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6361,11 +6328,11 @@ export const RepoListCollaboratorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListCollaboratorsRequest>;
 
 export type RepoListCollaboratorsResponseBodyList = Array<User>;
-export const RepoListCollaboratorsResponseBodyList =
+const RepoListCollaboratorsResponseBodyList =
   PullRequestAssigneesList as any as S.Schema<RepoListCollaboratorsResponseBodyList>;
 
 export type RepoListCollaboratorsResponse = RepoListCollaboratorsResponseBodyList;
-export const RepoListCollaboratorsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListCollaboratorsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListCollaboratorsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListCollaboratorsResponse",
@@ -6377,7 +6344,7 @@ export interface RepoListFlagsRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoListFlagsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6385,11 +6352,11 @@ export const RepoListFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListFlagsRequest" }) as any as S.Schema<RepoListFlagsRequest>;
 
 export type RepoListFlagsResponseBodyList = Array<string>;
-export const RepoListFlagsResponseBodyList =
+const RepoListFlagsResponseBodyList =
   RepositoryTopicsList as any as S.Schema<RepoListFlagsResponseBodyList>;
 
 export type RepoListFlagsResponse = RepoListFlagsResponseBodyList;
-export const RepoListFlagsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListFlagsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListFlagsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListFlagsResponse" }) as any as S.Schema<RepoListFlagsResponse>;
 
@@ -6399,7 +6366,7 @@ export interface RepoListGitHooksRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoListGitHooksRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListGitHooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6407,12 +6374,12 @@ export const RepoListGitHooksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListGitHooksRequest" }) as any as S.Schema<RepoListGitHooksRequest>;
 
 export type RepoListGitHooksResponseBodyList = Array<GitHook>;
-export const RepoListGitHooksResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListGitHooksResponseBodyList = /*@__PURE__*/ S.Array(
   GitHook,
 ) as any as S.Schema<RepoListGitHooksResponseBodyList>;
 
 export type RepoListGitHooksResponse = RepoListGitHooksResponseBodyList;
-export const RepoListGitHooksResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListGitHooksResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListGitHooksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListGitHooksResponse" }) as any as S.Schema<RepoListGitHooksResponse>;
 
@@ -6424,7 +6391,7 @@ export interface RepoListGitRefsRequest {
   /** part or full name of the ref */
   ref: string;
 }
-export const RepoListGitRefsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListGitRefsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6433,11 +6400,11 @@ export const RepoListGitRefsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListGitRefsRequest" }) as any as S.Schema<RepoListGitRefsRequest>;
 
 export type RepoListGitRefsResponseBodyList = Array<Reference>;
-export const RepoListGitRefsResponseBodyList =
+const RepoListGitRefsResponseBodyList =
   RepoListAllGitRefsResponseBodyList as any as S.Schema<RepoListGitRefsResponseBodyList>;
 
 export type RepoListGitRefsResponse = RepoListGitRefsResponseBodyList;
-export const RepoListGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListGitRefsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListGitRefsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListGitRefsResponse" }) as any as S.Schema<RepoListGitRefsResponse>;
 
@@ -6451,7 +6418,7 @@ export interface RepoListHooksRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListHooksRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListHooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6461,12 +6428,12 @@ export const RepoListHooksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListHooksRequest" }) as any as S.Schema<RepoListHooksRequest>;
 
 export type RepoListHooksResponseBodyList = Array<Hook>;
-export const RepoListHooksResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListHooksResponseBodyList = /*@__PURE__*/ S.Array(
   Hook,
 ) as any as S.Schema<RepoListHooksResponseBodyList>;
 
 export type RepoListHooksResponse = RepoListHooksResponseBodyList;
-export const RepoListHooksResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListHooksResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListHooksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListHooksResponse" }) as any as S.Schema<RepoListHooksResponse>;
 
@@ -6484,7 +6451,7 @@ export interface RepoListKeysRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6496,12 +6463,12 @@ export const RepoListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListKeysRequest" }) as any as S.Schema<RepoListKeysRequest>;
 
 export type RepoListKeysResponseBodyList = Array<DeployKey>;
-export const RepoListKeysResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListKeysResponseBodyList = /*@__PURE__*/ S.Array(
   DeployKey,
 ) as any as S.Schema<RepoListKeysResponseBodyList>;
 
 export type RepoListKeysResponse = RepoListKeysResponseBodyList;
-export const RepoListKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListKeysResponse" }) as any as S.Schema<RepoListKeysResponse>;
 
@@ -6511,7 +6478,7 @@ export interface RepoListPinnedIssuesRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoListPinnedIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListPinnedIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6521,13 +6488,13 @@ export const RepoListPinnedIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListPinnedIssuesRequest>;
 
 export type IssueAssetsList = Array<Attachment>;
-export const IssueAssetsList = ReleaseAssetsList as any as S.Schema<IssueAssetsList>;
+const IssueAssetsList = ReleaseAssetsList as any as S.Schema<IssueAssetsList>;
 
 export type IssueAssigneesList = Array<User>;
-export const IssueAssigneesList = PullRequestAssigneesList as any as S.Schema<IssueAssigneesList>;
+const IssueAssigneesList = PullRequestAssigneesList as any as S.Schema<IssueAssigneesList>;
 
 export type IssueLabelsList = Array<Label>;
-export const IssueLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<IssueLabelsList>;
+const IssueLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<IssueLabelsList>;
 
 /** PullRequestMeta PR info if an issue is a PR */
 export interface PullRequestMeta {
@@ -6536,7 +6503,7 @@ export interface PullRequestMeta {
   merged?: boolean;
   merged_at?: string;
 }
-export const PullRequestMeta = /*@__PURE__*/ S.suspend(() =>
+const PullRequestMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     draft: S.optional(S.Boolean),
     html_url: S.optional(S.String),
@@ -6552,7 +6519,7 @@ export interface RepositoryMeta {
   name?: string;
   owner?: string;
 }
-export const RepositoryMeta = /*@__PURE__*/ S.suspend(() =>
+const RepositoryMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     full_name: S.optional(S.String),
     id: S.optional(S.Number),
@@ -6589,7 +6556,7 @@ export interface Issue {
   url?: string;
   user?: User;
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
+const Issue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(IssueAssetsList),
     assignee: S.optional(User),
@@ -6620,12 +6587,12 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 export type RepoListPinnedIssuesResponseBodyList = Array<Issue>;
-export const RepoListPinnedIssuesResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListPinnedIssuesResponseBodyList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<RepoListPinnedIssuesResponseBodyList>;
 
 export type RepoListPinnedIssuesResponse = RepoListPinnedIssuesResponseBodyList;
-export const RepoListPinnedIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListPinnedIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListPinnedIssuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListPinnedIssuesResponse",
@@ -6637,7 +6604,7 @@ export interface RepoListPinnedPullRequestsRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoListPinnedPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListPinnedPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6647,19 +6614,19 @@ export const RepoListPinnedPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListPinnedPullRequestsRequest>;
 
 export type RepoListPinnedPullRequestsResponseBodyList = Array<PullRequest>;
-export const RepoListPinnedPullRequestsResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListPinnedPullRequestsResponseBodyList = /*@__PURE__*/ S.Array(
   PullRequest,
 ) as any as S.Schema<RepoListPinnedPullRequestsResponseBodyList>;
 
 export type RepoListPinnedPullRequestsResponse = RepoListPinnedPullRequestsResponseBodyList;
-export const RepoListPinnedPullRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListPinnedPullRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListPinnedPullRequestsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListPinnedPullRequestsResponse",
 }) as any as S.Schema<RepoListPinnedPullRequestsResponse>;
 
 export type RepoListPullRequestsRequestState = "open" | "closed" | "all";
-export const RepoListPullRequestsRequestState = S.String;
+const RepoListPullRequestsRequestState = S.String;
 
 export type RepoListPullRequestsRequestSort =
   | "oldest"
@@ -6669,10 +6636,10 @@ export type RepoListPullRequestsRequestSort =
   | "mostcomment"
   | "leastcomment"
   | "priority";
-export const RepoListPullRequestsRequestSort = S.String;
+const RepoListPullRequestsRequestSort = S.String;
 
 export type RepoListPullRequestsRequestLabelsList = Array<number>;
-export const RepoListPullRequestsRequestLabelsList =
+const RepoListPullRequestsRequestLabelsList =
   RepoCreatePullRequestRequestLabelsList as any as S.Schema<RepoListPullRequestsRequestLabelsList>;
 
 export interface RepoListPullRequestsRequest {
@@ -6699,7 +6666,7 @@ export interface RepoListPullRequestsRequest {
   /** Page size of results */
   limit?: number;
 }
-export const RepoListPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6718,11 +6685,8 @@ export const RepoListPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListPullRequestsRequest>;
 
 export type RepoListPullRequestsResponseBodyList = Array<PullRequest>;
-export const RepoListPullRequestsResponseBodyList =
-  RepoListPinnedPullRequestsResponseBodyList as any as S.Schema<RepoListPullRequestsResponseBodyList>;
-
 export type RepoListPullRequestsResponse = RepoListPullRequestsResponseBodyList;
-export const RepoListPullRequestsResponse =
+const RepoListPullRequestsResponse =
   RepoListPinnedPullRequestsResponse as any as S.Schema<RepoListPullRequestsResponse>;
 
 export interface RepoListPullReviewsRequest {
@@ -6737,7 +6701,7 @@ export interface RepoListPullReviewsRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListPullReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListPullReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6750,11 +6714,8 @@ export const RepoListPullReviewsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListPullReviewsRequest>;
 
 export type RepoListPullReviewsResponseBodyList = Array<PullReview>;
-export const RepoListPullReviewsResponseBodyList =
-  RepoCreatePullReviewRequestsResponseBodyList as any as S.Schema<RepoListPullReviewsResponseBodyList>;
-
 export type RepoListPullReviewsResponse = RepoListPullReviewsResponseBodyList;
-export const RepoListPullReviewsResponse =
+const RepoListPullReviewsResponse =
   RepoCreatePullReviewRequestsResponse as any as S.Schema<RepoListPullReviewsResponse>;
 
 export interface RepoListPushMirrorsRequest {
@@ -6767,7 +6728,7 @@ export interface RepoListPushMirrorsRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListPushMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListPushMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6779,12 +6740,12 @@ export const RepoListPushMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListPushMirrorsRequest>;
 
 export type RepoListPushMirrorsResponseBodyList = Array<PushMirror>;
-export const RepoListPushMirrorsResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListPushMirrorsResponseBodyList = /*@__PURE__*/ S.Array(
   PushMirror,
 ) as any as S.Schema<RepoListPushMirrorsResponseBodyList>;
 
 export type RepoListPushMirrorsResponse = RepoListPushMirrorsResponseBodyList;
-export const RepoListPushMirrorsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListPushMirrorsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListPushMirrorsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListPushMirrorsResponse",
@@ -6798,7 +6759,7 @@ export interface RepoListReleaseAttachmentsRequest {
   /** id of the release */
   id: number;
 }
-export const RepoListReleaseAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListReleaseAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6809,11 +6770,11 @@ export const RepoListReleaseAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListReleaseAttachmentsRequest>;
 
 export type RepoListReleaseAttachmentsResponseBodyList = Array<Attachment>;
-export const RepoListReleaseAttachmentsResponseBodyList =
+const RepoListReleaseAttachmentsResponseBodyList =
   ReleaseAssetsList as any as S.Schema<RepoListReleaseAttachmentsResponseBodyList>;
 
 export type RepoListReleaseAttachmentsResponse = RepoListReleaseAttachmentsResponseBodyList;
-export const RepoListReleaseAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListReleaseAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListReleaseAttachmentsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListReleaseAttachmentsResponse",
@@ -6835,7 +6796,7 @@ export interface RepoListReleasesRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6848,12 +6809,12 @@ export const RepoListReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListReleasesRequest" }) as any as S.Schema<RepoListReleasesRequest>;
 
 export type RepoListReleasesResponseBodyList = Array<Release>;
-export const RepoListReleasesResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListReleasesResponseBodyList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<RepoListReleasesResponseBodyList>;
 
 export type RepoListReleasesResponse = RepoListReleasesResponseBodyList;
-export const RepoListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListReleasesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListReleasesResponse" }) as any as S.Schema<RepoListReleasesResponse>;
 
@@ -6867,7 +6828,7 @@ export interface RepoListStargazersRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListStargazersRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListStargazersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6879,11 +6840,8 @@ export const RepoListStargazersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListStargazersRequest>;
 
 export type RepoListStargazersResponseBodyList = Array<User>;
-export const RepoListStargazersResponseBodyList =
-  PullRequestAssigneesList as any as S.Schema<RepoListStargazersResponseBodyList>;
-
 export type RepoListStargazersResponse = RepoListStargazersResponseBodyList;
-export const RepoListStargazersResponse =
+const RepoListStargazersResponse =
   RepoListCollaboratorsResponse as any as S.Schema<RepoListStargazersResponse>;
 
 export type RepoListStatusesRequestSort =
@@ -6892,10 +6850,10 @@ export type RepoListStatusesRequestSort =
   | "leastupdate"
   | "leastindex"
   | "highestindex";
-export const RepoListStatusesRequestSort = S.String;
+const RepoListStatusesRequestSort = S.String;
 
 export type RepoListStatusesRequestState = "pending" | "success" | "error" | "failure" | "warning";
-export const RepoListStatusesRequestState = S.String;
+const RepoListStatusesRequestState = S.String;
 
 export interface RepoListStatusesRequest {
   /** owner of the repo */
@@ -6913,7 +6871,7 @@ export interface RepoListStatusesRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6926,11 +6884,11 @@ export const RepoListStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListStatusesRequest" }) as any as S.Schema<RepoListStatusesRequest>;
 
 export type RepoListStatusesResponseBodyList = Array<CommitStatus>;
-export const RepoListStatusesResponseBodyList =
+const RepoListStatusesResponseBodyList =
   CombinedStatusStatusesList as any as S.Schema<RepoListStatusesResponseBodyList>;
 
 export type RepoListStatusesResponse = RepoListStatusesResponseBodyList;
-export const RepoListStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListStatusesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListStatusesResponse" }) as any as S.Schema<RepoListStatusesResponse>;
 
@@ -6940,7 +6898,7 @@ export type RepoListStatusesByRefRequestSort =
   | "leastupdate"
   | "leastindex"
   | "highestindex";
-export const RepoListStatusesByRefRequestSort = S.String;
+const RepoListStatusesByRefRequestSort = S.String;
 
 export type RepoListStatusesByRefRequestState =
   | "pending"
@@ -6948,7 +6906,7 @@ export type RepoListStatusesByRefRequestState =
   | "error"
   | "failure"
   | "warning";
-export const RepoListStatusesByRefRequestState = S.String;
+const RepoListStatusesByRefRequestState = S.String;
 
 export interface RepoListStatusesByRefRequest {
   /** owner of the repo */
@@ -6966,7 +6924,7 @@ export interface RepoListStatusesByRefRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListStatusesByRefRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListStatusesByRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -6983,11 +6941,11 @@ export const RepoListStatusesByRefRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListStatusesByRefRequest>;
 
 export type RepoListStatusesByRefResponseBodyList = Array<CommitStatus>;
-export const RepoListStatusesByRefResponseBodyList =
+const RepoListStatusesByRefResponseBodyList =
   CombinedStatusStatusesList as any as S.Schema<RepoListStatusesByRefResponseBodyList>;
 
 export type RepoListStatusesByRefResponse = RepoListStatusesByRefResponseBodyList;
-export const RepoListStatusesByRefResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListStatusesByRefResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListStatusesByRefResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListStatusesByRefResponse",
@@ -7003,7 +6961,7 @@ export interface RepoListSubscribersRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7015,11 +6973,8 @@ export const RepoListSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListSubscribersRequest>;
 
 export type RepoListSubscribersResponseBodyList = Array<User>;
-export const RepoListSubscribersResponseBodyList =
-  PullRequestAssigneesList as any as S.Schema<RepoListSubscribersResponseBodyList>;
-
 export type RepoListSubscribersResponse = RepoListSubscribersResponseBodyList;
-export const RepoListSubscribersResponse =
+const RepoListSubscribersResponse =
   RepoListCollaboratorsResponse as any as S.Schema<RepoListSubscribersResponse>;
 
 export interface RepoListTagProtectionRequest {
@@ -7028,7 +6983,7 @@ export interface RepoListTagProtectionRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoListTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7038,12 +6993,12 @@ export const RepoListTagProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoListTagProtectionRequest>;
 
 export type RepoListTagProtectionResponseBodyList = Array<TagProtection>;
-export const RepoListTagProtectionResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListTagProtectionResponseBodyList = /*@__PURE__*/ S.Array(
   TagProtection,
 ) as any as S.Schema<RepoListTagProtectionResponseBodyList>;
 
 export type RepoListTagProtectionResponse = RepoListTagProtectionResponseBodyList;
-export const RepoListTagProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListTagProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListTagProtectionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "RepoListTagProtectionResponse",
@@ -7059,7 +7014,7 @@ export interface RepoListTagsRequest {
   /** page size of results, default maximum page size is 50 */
   limit?: number;
 }
-export const RepoListTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7069,12 +7024,12 @@ export const RepoListTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListTagsRequest" }) as any as S.Schema<RepoListTagsRequest>;
 
 export type RepoListTagsResponseBodyList = Array<Tag>;
-export const RepoListTagsResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoListTagsResponseBodyList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<RepoListTagsResponseBodyList>;
 
 export type RepoListTagsResponse = RepoListTagsResponseBodyList;
-export const RepoListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListTagsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListTagsResponse" }) as any as S.Schema<RepoListTagsResponse>;
 
@@ -7084,7 +7039,7 @@ export interface RepoListTeamsRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7092,11 +7047,11 @@ export const RepoListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListTeamsRequest" }) as any as S.Schema<RepoListTeamsRequest>;
 
 export type RepoListTeamsResponseBodyList = Array<Team>;
-export const RepoListTeamsResponseBodyList =
+const RepoListTeamsResponseBodyList =
   RepoTransferTeamsList as any as S.Schema<RepoListTeamsResponseBodyList>;
 
 export type RepoListTeamsResponse = RepoListTeamsResponseBodyList;
-export const RepoListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   RepoListTeamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoListTeamsResponse" }) as any as S.Schema<RepoListTeamsResponse>;
 
@@ -7110,7 +7065,7 @@ export interface RepoListTopicsRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7120,13 +7075,13 @@ export const RepoListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoListTopicsRequest" }) as any as S.Schema<RepoListTopicsRequest>;
 
 export type TopicNameTopicsList = Array<string>;
-export const TopicNameTopicsList = RepositoryTopicsList as any as S.Schema<TopicNameTopicsList>;
+const TopicNameTopicsList = RepositoryTopicsList as any as S.Schema<TopicNameTopicsList>;
 
 /** TopicName a list of repo topic names */
 export interface TopicName {
   topics?: TopicNameTopicsList;
 }
-export const TopicName = /*@__PURE__*/ S.suspend(() =>
+const TopicName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topics: S.optional(TopicNameTopicsList),
   }),
@@ -7139,7 +7094,7 @@ export type RepoMergePullRequestRequestDo =
   | "squash"
   | "fast-forward-only"
   | "manually-merged";
-export const RepoMergePullRequestRequestDo = S.String;
+const RepoMergePullRequestRequestDo = S.String;
 
 export interface RepoMergePullRequestRequest {
   /** owner of the repo */
@@ -7157,7 +7112,7 @@ export interface RepoMergePullRequestRequest {
   head_commit_id?: string;
   merge_when_checks_succeed?: boolean;
 }
-export const RepoMergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoMergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7176,7 +7131,7 @@ export const RepoMergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoMergePullRequestRequest>;
 
 export interface RepoMergePullRequestResponse {}
-export const RepoMergePullRequestResponse =
+const RepoMergePullRequestResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoMergePullRequestResponse>;
 
 export interface RepoNewPinAllowedRequest {
@@ -7185,7 +7140,7 @@ export interface RepoNewPinAllowedRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoNewPinAllowedRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoNewPinAllowedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7197,7 +7152,7 @@ export interface NewIssuePinsAllowed {
   issues?: boolean;
   pull_requests?: boolean;
 }
-export const NewIssuePinsAllowed = /*@__PURE__*/ S.suspend(() =>
+const NewIssuePinsAllowed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(S.Boolean),
     pull_requests: S.optional(S.Boolean),
@@ -7212,7 +7167,7 @@ export interface RepoPullRequestIsMergedRequest {
   /** index of the pull request */
   index: number;
 }
-export const RepoPullRequestIsMergedRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoPullRequestIsMergedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7223,7 +7178,7 @@ export const RepoPullRequestIsMergedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoPullRequestIsMergedRequest>;
 
 export interface RepoPullRequestIsMergedResponse {}
-export const RepoPullRequestIsMergedResponse =
+const RepoPullRequestIsMergedResponse =
   RepoDeleteTagProtectionResponse as any as S.Schema<RepoPullRequestIsMergedResponse>;
 
 export interface RepoRemoveNoteRequest {
@@ -7234,7 +7189,7 @@ export interface RepoRemoveNoteRequest {
   /** a git ref or commit sha */
   sha: string;
 }
-export const RepoRemoveNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoRemoveNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7243,11 +7198,11 @@ export const RepoRemoveNoteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoRemoveNoteRequest" }) as any as S.Schema<RepoRemoveNoteRequest>;
 
 export interface RepoRemoveNoteResponse {}
-export const RepoRemoveNoteResponse =
+const RepoRemoveNoteResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoRemoveNoteResponse>;
 
 export type RepoReplaceAllFlagsRequestFlagsList = Array<string>;
-export const RepoReplaceAllFlagsRequestFlagsList =
+const RepoReplaceAllFlagsRequestFlagsList =
   RepositoryTopicsList as any as S.Schema<RepoReplaceAllFlagsRequestFlagsList>;
 
 export interface RepoReplaceAllFlagsRequest {
@@ -7257,7 +7212,7 @@ export interface RepoReplaceAllFlagsRequest {
   repo: string;
   flags?: RepoReplaceAllFlagsRequestFlagsList;
 }
-export const RepoReplaceAllFlagsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoReplaceAllFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7268,7 +7223,7 @@ export const RepoReplaceAllFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoReplaceAllFlagsRequest>;
 
 export interface RepoReplaceAllFlagsResponse {}
-export const RepoReplaceAllFlagsResponse =
+const RepoReplaceAllFlagsResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoReplaceAllFlagsResponse>;
 
 export interface RepoSearchRunJobsRequest {
@@ -7279,7 +7234,7 @@ export interface RepoSearchRunJobsRequest {
   /** a comma separated list of run job labels to search for */
   labels?: string;
 }
-export const RepoSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7288,11 +7243,8 @@ export const RepoSearchRunJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoSearchRunJobsRequest" }) as any as S.Schema<RepoSearchRunJobsRequest>;
 
 export type RepoSearchRunJobsResponseBodyList = Array<ActionRunJob>;
-export const RepoSearchRunJobsResponseBodyList =
-  ListActionRunJobsResponseBodyList as any as S.Schema<RepoSearchRunJobsResponseBodyList>;
-
 export type RepoSearchRunJobsResponse = RepoSearchRunJobsResponseBodyList;
-export const RepoSearchRunJobsResponse =
+const RepoSearchRunJobsResponse =
   ListActionRunJobsResponse as any as S.Schema<RepoSearchRunJobsResponse>;
 
 export interface RepoSetNoteRequest {
@@ -7304,7 +7256,7 @@ export interface RepoSetNoteRequest {
   sha: string;
   message?: string;
 }
-export const RepoSetNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoSetNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7319,7 +7271,7 @@ export interface RepoSigningKeyRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7327,7 +7279,7 @@ export const RepoSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoSigningKeyRequest" }) as any as S.Schema<RepoSigningKeyRequest>;
 
 export type RepoSigningKeyResponse = string;
-export const RepoSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoSigningKeyResponse" }) as any as S.Schema<RepoSigningKeyResponse>;
 
@@ -7343,7 +7295,7 @@ export interface RepoSubmitPullReviewRequest {
   body?: string;
   event?: string;
 }
-export const RepoSubmitPullReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoSubmitPullReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7366,7 +7318,7 @@ export interface RepoSyncForkBranchRequest {
   /** The branch */
   branch: string;
 }
-export const RepoSyncForkBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoSyncForkBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7377,7 +7329,7 @@ export const RepoSyncForkBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoSyncForkBranchRequest>;
 
 export interface RepoSyncForkBranchResponse {}
-export const RepoSyncForkBranchResponse =
+const RepoSyncForkBranchResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoSyncForkBranchResponse>;
 
 export interface RepoSyncForkBranchInfoRequest {
@@ -7388,7 +7340,7 @@ export interface RepoSyncForkBranchInfoRequest {
   /** The branch */
   branch: string;
 }
-export const RepoSyncForkBranchInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoSyncForkBranchInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7405,7 +7357,7 @@ export interface SyncForkInfo {
   commits_behind?: number;
   fork_commit?: string;
 }
-export const SyncForkInfo = /*@__PURE__*/ S.suspend(() =>
+const SyncForkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed: S.optional(S.Boolean),
     base_commit: S.optional(S.String),
@@ -7420,7 +7372,7 @@ export interface RepoSyncForkDefaultRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoSyncForkDefaultRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoSyncForkDefaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7430,7 +7382,7 @@ export const RepoSyncForkDefaultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoSyncForkDefaultRequest>;
 
 export interface RepoSyncForkDefaultResponse {}
-export const RepoSyncForkDefaultResponse =
+const RepoSyncForkDefaultResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoSyncForkDefaultResponse>;
 
 export interface RepoSyncForkDefaultInfoRequest {
@@ -7439,7 +7391,7 @@ export interface RepoSyncForkDefaultInfoRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoSyncForkDefaultInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoSyncForkDefaultInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7458,7 +7410,7 @@ export interface RepoTestHookRequest {
   /** The name of the commit/branch/tag, indicates which commit will be loaded to the webhook payload. */
   ref?: string;
 }
-export const RepoTestHookRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoTestHookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7468,8 +7420,7 @@ export const RepoTestHookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoTestHookRequest" }) as any as S.Schema<RepoTestHookRequest>;
 
 export interface RepoTestHookResponse {}
-export const RepoTestHookResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoTestHookResponse>;
+const RepoTestHookResponse = AcceptRepoTransferResponse as any as S.Schema<RepoTestHookResponse>;
 
 export interface RepoTrackedTimesRequest {
   /** owner of the repo */
@@ -7487,7 +7438,7 @@ export interface RepoTrackedTimesRequest {
   /** page size of results */
   limit?: number;
 }
-export const RepoTrackedTimesRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoTrackedTimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7512,7 +7463,7 @@ export interface TrackedTime {
   user_id?: number;
   user_name?: string;
 }
-export const TrackedTime = /*@__PURE__*/ S.suspend(() =>
+const TrackedTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     id: S.optional(S.Number),
@@ -7525,12 +7476,12 @@ export const TrackedTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrackedTime" }) as any as S.Schema<TrackedTime>;
 
 export type RepoTrackedTimesResponseBodyList = Array<TrackedTime>;
-export const RepoTrackedTimesResponseBodyList = /*@__PURE__*/ S.Array(
+const RepoTrackedTimesResponseBodyList = /*@__PURE__*/ S.Array(
   TrackedTime,
 ) as any as S.Schema<RepoTrackedTimesResponseBodyList>;
 
 export type RepoTrackedTimesResponse = RepoTrackedTimesResponseBodyList;
-export const RepoTrackedTimesResponse = /*@__PURE__*/ S.suspend(() =>
+const RepoTrackedTimesResponse = /*@__PURE__*/ S.suspend(() =>
   RepoTrackedTimesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RepoTrackedTimesResponse" }) as any as S.Schema<RepoTrackedTimesResponse>;
 
@@ -7542,7 +7493,7 @@ export interface RepoUpdateAvatarRequest {
   /** image must be base64 encoded */
   image?: string;
 }
-export const RepoUpdateAvatarRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoUpdateAvatarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7551,7 +7502,7 @@ export const RepoUpdateAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoUpdateAvatarRequest" }) as any as S.Schema<RepoUpdateAvatarRequest>;
 
 export interface RepoUpdateAvatarResponse {}
-export const RepoUpdateAvatarResponse =
+const RepoUpdateAvatarResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoUpdateAvatarResponse>;
 
 export interface RepoUpdateBranchRequest {
@@ -7564,7 +7515,7 @@ export interface RepoUpdateBranchRequest {
   /** New branch name */
   name: string;
 }
-export const RepoUpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoUpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7574,7 +7525,7 @@ export const RepoUpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoUpdateBranchRequest" }) as any as S.Schema<RepoUpdateBranchRequest>;
 
 export interface RepoUpdateBranchResponse {}
-export const RepoUpdateBranchResponse =
+const RepoUpdateBranchResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoUpdateBranchResponse>;
 
 export interface RepoUpdateFileRequest {
@@ -7604,7 +7555,7 @@ export interface RepoUpdateFileRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-export const RepoUpdateFileRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoUpdateFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7624,7 +7575,7 @@ export const RepoUpdateFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoUpdateFileRequest" }) as any as S.Schema<RepoUpdateFileRequest>;
 
 export type RepoUpdatePullRequestRequestStyle = "merge" | "rebase";
-export const RepoUpdatePullRequestRequestStyle = S.String;
+const RepoUpdatePullRequestRequestStyle = S.String;
 
 export interface RepoUpdatePullRequestRequest {
   /** owner of the repo */
@@ -7636,7 +7587,7 @@ export interface RepoUpdatePullRequestRequest {
   /** how to update pull request */
   style?: RepoUpdatePullRequestRequestStyle | (string & {});
 }
-export const RepoUpdatePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoUpdatePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7648,12 +7599,12 @@ export const RepoUpdatePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepoUpdatePullRequestRequest>;
 
 export interface RepoUpdatePullRequestResponse {}
-export const RepoUpdatePullRequestResponse =
+const RepoUpdatePullRequestResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoUpdatePullRequestResponse>;
 
 /** list of topic names */
 export type RepoUpdateTopicsRequestTopicsList = Array<string>;
-export const RepoUpdateTopicsRequestTopicsList =
+const RepoUpdateTopicsRequestTopicsList =
   RepositoryTopicsList as any as S.Schema<RepoUpdateTopicsRequestTopicsList>;
 
 export interface RepoUpdateTopicsRequest {
@@ -7664,7 +7615,7 @@ export interface RepoUpdateTopicsRequest {
   /** list of topic names */
   topics?: RepoUpdateTopicsRequestTopicsList;
 }
-export const RepoUpdateTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoUpdateTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7673,7 +7624,7 @@ export const RepoUpdateTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoUpdateTopicsRequest" }) as any as S.Schema<RepoUpdateTopicsRequest>;
 
 export interface RepoUpdateTopicsResponse {}
-export const RepoUpdateTopicsResponse =
+const RepoUpdateTopicsResponse =
   AcceptRepoTransferResponse as any as S.Schema<RepoUpdateTopicsResponse>;
 
 export interface RepoValidateIssueConfigRequest {
@@ -7682,7 +7633,7 @@ export interface RepoValidateIssueConfigRequest {
   /** name of the repo */
   repo: string;
 }
-export const RepoValidateIssueConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const RepoValidateIssueConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7695,7 +7646,7 @@ export interface IssueConfigValidation {
   message?: string;
   valid?: boolean;
 }
-export const IssueConfigValidation = /*@__PURE__*/ S.suspend(() =>
+const IssueConfigValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     valid: S.optional(S.Boolean),
@@ -7714,7 +7665,7 @@ export interface ReviewRepoDismissPullRequest {
   message?: string;
   priors?: boolean;
 }
-export const ReviewRepoDismissPullRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewRepoDismissPullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7743,7 +7694,7 @@ export interface ReviewRepoUnDismissPullRequest {
   /** id of the review */
   id: number;
 }
-export const ReviewRepoUnDismissPullRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewRepoUnDismissPullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7770,10 +7721,10 @@ export type SearchRepoRequestSort =
   | "id"
   | "stars"
   | "forks";
-export const SearchRepoRequestSort = S.String;
+const SearchRepoRequestSort = S.String;
 
 export type SearchRepoRequestOrder = "asc" | "desc";
-export const SearchRepoRequestOrder = S.String;
+const SearchRepoRequestOrder = S.String;
 
 export interface SearchRepoRequest {
   /** keyword */
@@ -7811,7 +7762,7 @@ export interface SearchRepoRequest {
   /** page size of results */
   limit?: number;
 }
-export const SearchRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
     topic: S.optional(S.Boolean.pipe(T.Query())),
@@ -7834,15 +7785,14 @@ export const SearchRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRepoRequest" }) as any as S.Schema<SearchRepoRequest>;
 
 export type SearchResultsDataList = Array<Repository>;
-export const SearchResultsDataList =
-  ListForksResponseBodyList as any as S.Schema<SearchResultsDataList>;
+const SearchResultsDataList = ListForksResponseBodyList as any as S.Schema<SearchResultsDataList>;
 
 /** SearchResults results of a successful search */
 export interface SearchResults {
   data?: SearchResultsDataList;
   ok?: boolean;
 }
-export const SearchResults = /*@__PURE__*/ S.suspend(() =>
+const SearchResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SearchResultsDataList),
     ok: S.optional(S.Boolean),
@@ -7857,7 +7807,7 @@ export interface SearchTopicRequest {
   /** page size of results */
   limit?: number;
 }
-export const SearchTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -7873,7 +7823,7 @@ export interface TopicResponse {
   topic_name?: string;
   updated?: string;
 }
-export const TopicResponse = /*@__PURE__*/ S.suspend(() =>
+const TopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     id: S.optional(S.Number),
@@ -7884,14 +7834,14 @@ export const TopicResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicResponse" }) as any as S.Schema<TopicResponse>;
 
 export type SearchTopicResponseTopicsList = Array<TopicResponse>;
-export const SearchTopicResponseTopicsList = /*@__PURE__*/ S.Array(
+const SearchTopicResponseTopicsList = /*@__PURE__*/ S.Array(
   TopicResponse,
 ) as any as S.Schema<SearchTopicResponseTopicsList>;
 
 export interface SearchTopicResponse {
   topics?: SearchTopicResponseTopicsList;
 }
-export const SearchTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topics: S.optional(SearchTopicResponseTopicsList),
   }),
@@ -7903,7 +7853,7 @@ export interface SyncRepoMirrorRequest {
   /** name of the repo to sync */
   repo: string;
 }
-export const SyncRepoMirrorRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncRepoMirrorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7911,7 +7861,7 @@ export const SyncRepoMirrorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncRepoMirrorRequest" }) as any as S.Schema<SyncRepoMirrorRequest>;
 
 export interface SyncRepoMirrorResponse {}
-export const SyncRepoMirrorResponse =
+const SyncRepoMirrorResponse =
   AcceptRepoTransferResponse as any as S.Schema<SyncRepoMirrorResponse>;
 
 export interface SyncRepoPushMirrorRequest {
@@ -7920,7 +7870,7 @@ export interface SyncRepoPushMirrorRequest {
   /** name of the repo to sync */
   repo: string;
 }
-export const SyncRepoPushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncRepoPushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7930,12 +7880,12 @@ export const SyncRepoPushMirrorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncRepoPushMirrorRequest>;
 
 export interface SyncRepoPushMirrorResponse {}
-export const SyncRepoPushMirrorResponse =
+const SyncRepoPushMirrorResponse =
   AcceptRepoTransferResponse as any as S.Schema<SyncRepoPushMirrorResponse>;
 
 /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
 export type TransferRepoRequestTeamIdsList = Array<number>;
-export const TransferRepoRequestTeamIdsList =
+const TransferRepoRequestTeamIdsList =
   RepoCreatePullRequestRequestLabelsList as any as S.Schema<TransferRepoRequestTeamIdsList>;
 
 export interface TransferRepoRequest {
@@ -7947,7 +7897,7 @@ export interface TransferRepoRequest {
   /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
   team_ids?: TransferRepoRequestTeamIdsList;
 }
-export const TransferRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7957,8 +7907,7 @@ export const TransferRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferRepoRequest" }) as any as S.Schema<TransferRepoRequest>;
 
 export interface TransferRepoResponse {}
-export const TransferRepoResponse =
-  AcceptRepoTransferResponse as any as S.Schema<TransferRepoResponse>;
+const TransferRepoResponse = AcceptRepoTransferResponse as any as S.Schema<TransferRepoResponse>;
 
 export interface UpdateRepoSecretRequest {
   /** owner of the repository */
@@ -7970,7 +7919,7 @@ export interface UpdateRepoSecretRequest {
   /** Data of the secret. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   data: string;
 }
-export const UpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -7982,7 +7931,7 @@ export const UpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRepoSecretRequest" }) as any as S.Schema<UpdateRepoSecretRequest>;
 
 export interface UpdateRepoSecretResponse {}
-export const UpdateRepoSecretResponse =
+const UpdateRepoSecretResponse =
   AcceptRepoTransferResponse as any as S.Schema<UpdateRepoSecretResponse>;
 
 export interface UpdateRepoVariableRequest {
@@ -7997,7 +7946,7 @@ export interface UpdateRepoVariableRequest {
   /** Value of the variable to update. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   value: string;
 }
-export const UpdateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8016,7 +7965,7 @@ export const UpdateRepoVariableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRepoVariableRequest>;
 
 export interface UpdateRepoVariableResponse {}
-export const UpdateRepoVariableResponse =
+const UpdateRepoVariableResponse =
   AcceptRepoTransferResponse as any as S.Schema<UpdateRepoVariableResponse>;
 
 export interface UserCurrentCheckSubscriptionRequest {
@@ -8025,7 +7974,7 @@ export interface UserCurrentCheckSubscriptionRequest {
   /** name of the repo */
   repo: string;
 }
-export const UserCurrentCheckSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentCheckSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8043,7 +7992,7 @@ export interface WatchInfo {
   subscribed?: boolean;
   url?: string;
 }
-export const WatchInfo = /*@__PURE__*/ S.suspend(() =>
+const WatchInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     ignored: S.optional(S.Boolean),
@@ -8060,7 +8009,7 @@ export interface UserCurrentDeleteSubscriptionRequest {
   /** name of the repo */
   repo: string;
 }
-export const UserCurrentDeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentDeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -8070,7 +8019,7 @@ export const UserCurrentDeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UserCurrentDeleteSubscriptionRequest>;
 
 export interface UserCurrentDeleteSubscriptionResponse {}
-export const UserCurrentDeleteSubscriptionResponse =
+const UserCurrentDeleteSubscriptionResponse =
   RepoCancelScheduledAutoMergeResponse as any as S.Schema<UserCurrentDeleteSubscriptionResponse>;
 
 export interface UserCurrentPutSubscriptionRequest {
@@ -8079,7 +8028,7 @@ export interface UserCurrentPutSubscriptionRequest {
   /** name of the repo */
   repo: string;
 }
-export const UserCurrentPutSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UserCurrentPutSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),

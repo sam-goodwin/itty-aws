@@ -30,13 +30,13 @@ export type CreateApiKeyRequestPermissionsItem =
   | "manage:sso"
   | "read:billing"
   | "manage:billing";
-export const CreateApiKeyRequestPermissionsItem = S.String;
+const CreateApiKeyRequestPermissionsItem = S.String;
 
 /** The list of organization resource permissions explicitly assigned to the API key */
 export type CreateApiKeyRequestPermissionsList = Array<
   CreateApiKeyRequestPermissionsItem | (string & {})
 >;
-export const CreateApiKeyRequestPermissionsList = /*@__PURE__*/ S.Array(
+const CreateApiKeyRequestPermissionsList = /*@__PURE__*/ S.Array(
   CreateApiKeyRequestPermissionsItem,
 ) as any as S.Schema<CreateApiKeyRequestPermissionsList>;
 
@@ -50,7 +50,7 @@ export interface CreateApiKeyRequest {
   /** When the API key expires */
   expiresAt?: string | null;
 }
-export const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
     name: S.String,
@@ -81,11 +81,9 @@ export type ApiKeyResponsePermissionsItem =
   | "manage:sso"
   | "read:billing"
   | "manage:billing";
-export const ApiKeyResponsePermissionsItem = S.String;
-
 /** The list of organization resource permissions assigned to the API key */
 export type ApiKeyResponsePermissionsList = Array<ApiKeyResponsePermissionsItem>;
-export const ApiKeyResponsePermissionsList =
+const ApiKeyResponsePermissionsList =
   CreateApiKeyRequestPermissionsList as any as S.Schema<ApiKeyResponsePermissionsList>;
 
 export interface ApiKeyResponse {
@@ -100,7 +98,7 @@ export interface ApiKeyResponse {
   /** When the API key expires */
   expiresAt: string | null;
 }
-export const ApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -115,7 +113,7 @@ export interface DeleteApiKeyRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -123,7 +121,7 @@ export const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApiKeyRequest" }) as any as S.Schema<DeleteApiKeyRequest>;
 
 export interface DeleteApiKeyResponse {}
-export const DeleteApiKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteApiKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteApiKeyResponse",
 }) as any as S.Schema<DeleteApiKeyResponse>;
 
@@ -133,7 +131,7 @@ export interface DeleteApiKeyForUserRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const DeleteApiKeyForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeyForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -144,7 +142,7 @@ export const DeleteApiKeyForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApiKeyForUserRequest>;
 
 export interface DeleteApiKeyForUserResponse {}
-export const DeleteApiKeyForUserResponse =
+const DeleteApiKeyForUserResponse =
   DeleteApiKeyResponse as any as S.Schema<DeleteApiKeyForUserResponse>;
 
 export interface GetApiKeyRequest {
@@ -152,7 +150,7 @@ export interface GetApiKeyRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -181,11 +179,9 @@ export type ApiKeyListPermissionsItem =
   | "manage:sso"
   | "read:billing"
   | "manage:billing";
-export const ApiKeyListPermissionsItem = S.String;
-
 /** The list of organization resource permissions assigned to the API key */
 export type ApiKeyListPermissionsList = Array<ApiKeyListPermissionsItem>;
-export const ApiKeyListPermissionsList =
+const ApiKeyListPermissionsList =
   CreateApiKeyRequestPermissionsList as any as S.Schema<ApiKeyListPermissionsList>;
 
 export interface ApiKeyList {
@@ -206,7 +202,7 @@ export interface ApiKeyList {
   /** The organization ID associated with the API key */
   organizationId?: string;
 }
-export const ApiKeyList = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -223,7 +219,7 @@ export interface GetCurrentApiKeyRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetCurrentApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
   }).pipe(T.Http({ method: "GET", uri: "/api-keys/current", code: 200 })),
@@ -233,19 +229,19 @@ export interface ListApiKeysRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
   }).pipe(T.Http({ method: "GET", uri: "/api-keys", code: 200 })),
 ).annotate({ identifier: "ListApiKeysRequest" }) as any as S.Schema<ListApiKeysRequest>;
 
 export type ListApiKeysResponseBodyList = Array<ApiKeyList>;
-export const ListApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
+const ListApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
   ApiKeyList,
 ) as any as S.Schema<ListApiKeysResponseBodyList>;
 
 export type ListApiKeysResponse = ListApiKeysResponseBodyList;
-export const ListApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   ListApiKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListApiKeysResponse" }) as any as S.Schema<ListApiKeysResponse>;
 

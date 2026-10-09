@@ -118,7 +118,7 @@ export type TaskId = string;
 export interface CancelTaskInput {
   taskId: string;
 }
-export const CancelTaskInput = /*@__PURE__*/ S.suspend(() =>
+const CancelTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taskId: S.String.pipe(T.HttpLabel("taskId")) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/task/{taskId}/cancel" }), svc, auth, proto, ver, rules),
   ),
@@ -126,25 +126,25 @@ export const CancelTaskInput = /*@__PURE__*/ S.suspend(() =>
 export interface CancelTaskOutput {
   taskId?: string;
 }
-export const CancelTaskOutput = /*@__PURE__*/ S.suspend(() =>
+const CancelTaskOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taskId: S.optional(S.String) }),
 ).annotate({ identifier: "CancelTaskOutput" }) as any as S.Schema<CancelTaskOutput>;
 export type TargetList = string[];
-export const TargetList = /*@__PURE__*/ S.Array(S.String);
+const TargetList = /*@__PURE__*/ S.Array(S.String);
 export interface Unlock {}
-export const Unlock = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Unlock = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Unlock",
 }) as any as S.Schema<Unlock>;
 export interface Reboot {}
-export const Reboot = Unlock as any as S.Schema<Reboot>;
+const Reboot = Unlock as any as S.Schema<Reboot>;
 export type Command = { unlock: Unlock; reboot?: never } | { unlock?: never; reboot: Reboot };
-export const Command = /*@__PURE__*/ S.Union([
+const Command = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ unlock: Unlock }),
   /*@__PURE__*/ S.Struct({ reboot: Reboot }),
 ]);
 export type TaskDescriptionString = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type IdempotencyToken = string;
 export interface CreateTaskInput {
   targets: string[];
@@ -153,7 +153,7 @@ export interface CreateTaskInput {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const CreateTaskInput = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targets: TargetList,
     command: Command,
@@ -166,14 +166,14 @@ export interface CreateTaskOutput {
   taskId?: string;
   taskArn?: string;
 }
-export const CreateTaskOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taskId: S.optional(S.String), taskArn: S.optional(S.String) }),
 ).annotate({ identifier: "CreateTaskOutput" }) as any as S.Schema<CreateTaskOutput>;
 export type ManagedDeviceId = string;
 export interface DescribeDeviceInput {
   managedDeviceId: string;
 }
-export const DescribeDeviceInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeDeviceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/managed-device/{managedDeviceId}/describe" }),
@@ -197,7 +197,7 @@ export interface PhysicalNetworkInterface {
   defaultGateway?: string;
   macAddress?: string;
 }
-export const PhysicalNetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const PhysicalNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     physicalNetworkInterfaceId: S.optional(S.String),
     physicalConnectorType: S.optional(S.String),
@@ -209,7 +209,7 @@ export const PhysicalNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PhysicalNetworkInterface" }) as any as S.Schema<PhysicalNetworkInterface>;
 export type PhysicalNetworkInterfaceList = PhysicalNetworkInterface[];
-export const PhysicalNetworkInterfaceList = /*@__PURE__*/ S.Array(PhysicalNetworkInterface);
+const PhysicalNetworkInterfaceList = /*@__PURE__*/ S.Array(PhysicalNetworkInterface);
 export interface Capacity {
   name?: string;
   unit?: string;
@@ -217,7 +217,7 @@ export interface Capacity {
   used?: number;
   available?: number;
 }
-export const Capacity = /*@__PURE__*/ S.suspend(() =>
+const Capacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     unit: S.optional(S.String),
@@ -227,13 +227,13 @@ export const Capacity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Capacity" }) as any as S.Schema<Capacity>;
 export type CapacityList = Capacity[];
-export const CapacityList = /*@__PURE__*/ S.Array(Capacity);
+const CapacityList = /*@__PURE__*/ S.Array(Capacity);
 export interface SoftwareInformation {
   installedVersion?: string;
   installingVersion?: string;
   installState?: string;
 }
-export const SoftwareInformation = /*@__PURE__*/ S.suspend(() =>
+const SoftwareInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installedVersion: S.optional(S.String),
     installingVersion: S.optional(S.String),
@@ -253,7 +253,7 @@ export interface DescribeDeviceOutput {
   deviceCapacities?: Capacity[];
   software?: SoftwareInformation;
 }
-export const DescribeDeviceOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeDeviceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastReachedOutAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -269,12 +269,12 @@ export const DescribeDeviceOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DescribeDeviceOutput" }) as any as S.Schema<DescribeDeviceOutput>;
 export type InstanceIdsList = string[];
-export const InstanceIdsList = TargetList as any as S.Schema<InstanceIdsList>;
+const InstanceIdsList = TargetList as any as S.Schema<InstanceIdsList>;
 export interface DescribeDeviceEc2Input {
   managedDeviceId: string;
   instanceIds: string[];
 }
-export const DescribeDeviceEc2Input = /*@__PURE__*/ S.suspend(() =>
+const DescribeDeviceEc2Input = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
     instanceIds: InstanceIdsList,
@@ -294,7 +294,7 @@ export interface InstanceState {
   code?: number;
   name?: string;
 }
-export const InstanceState = /*@__PURE__*/ S.suspend(() =>
+const InstanceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.Number), name: S.optional(S.String) }),
 ).annotate({ identifier: "InstanceState" }) as any as S.Schema<InstanceState>;
 export type AttachmentStatus = string;
@@ -304,7 +304,7 @@ export interface EbsInstanceBlockDevice {
   status?: string;
   volumeId?: string;
 }
-export const EbsInstanceBlockDevice = /*@__PURE__*/ S.suspend(() =>
+const EbsInstanceBlockDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     deleteOnTermination: S.optional(S.Boolean),
@@ -316,27 +316,27 @@ export interface InstanceBlockDeviceMapping {
   deviceName?: string;
   ebs?: EbsInstanceBlockDevice;
 }
-export const InstanceBlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
+const InstanceBlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ deviceName: S.optional(S.String), ebs: S.optional(EbsInstanceBlockDevice) }),
 ).annotate({
   identifier: "InstanceBlockDeviceMapping",
 }) as any as S.Schema<InstanceBlockDeviceMapping>;
 export type InstanceBlockDeviceMappingList = InstanceBlockDeviceMapping[];
-export const InstanceBlockDeviceMappingList = /*@__PURE__*/ S.Array(InstanceBlockDeviceMapping);
+const InstanceBlockDeviceMappingList = /*@__PURE__*/ S.Array(InstanceBlockDeviceMapping);
 export interface SecurityGroupIdentifier {
   groupId?: string;
   groupName?: string;
 }
-export const SecurityGroupIdentifier = /*@__PURE__*/ S.suspend(() =>
+const SecurityGroupIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ groupId: S.optional(S.String), groupName: S.optional(S.String) }),
 ).annotate({ identifier: "SecurityGroupIdentifier" }) as any as S.Schema<SecurityGroupIdentifier>;
 export type SecurityGroupIdentifierList = SecurityGroupIdentifier[];
-export const SecurityGroupIdentifierList = /*@__PURE__*/ S.Array(SecurityGroupIdentifier);
+const SecurityGroupIdentifierList = /*@__PURE__*/ S.Array(SecurityGroupIdentifier);
 export interface CpuOptions {
   coreCount?: number;
   threadsPerCore?: number;
 }
-export const CpuOptions = /*@__PURE__*/ S.suspend(() =>
+const CpuOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ coreCount: S.optional(S.Number), threadsPerCore: S.optional(S.Number) }),
 ).annotate({ identifier: "CpuOptions" }) as any as S.Schema<CpuOptions>;
 export interface Instance {
@@ -354,7 +354,7 @@ export interface Instance {
   cpuOptions?: CpuOptions;
   rootDeviceName?: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     amiLaunchIndex: S.optional(S.Number),
@@ -375,25 +375,25 @@ export interface InstanceSummary {
   instance?: Instance;
   lastUpdatedAt?: Date;
 }
-export const InstanceSummary = /*@__PURE__*/ S.suspend(() =>
+const InstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.optional(Instance),
     lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "InstanceSummary" }) as any as S.Schema<InstanceSummary>;
 export type InstanceSummaryList = InstanceSummary[];
-export const InstanceSummaryList = /*@__PURE__*/ S.Array(InstanceSummary);
+const InstanceSummaryList = /*@__PURE__*/ S.Array(InstanceSummary);
 export interface DescribeDeviceEc2Output {
   instances?: InstanceSummary[];
 }
-export const DescribeDeviceEc2Output = /*@__PURE__*/ S.suspend(() =>
+const DescribeDeviceEc2Output = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instances: S.optional(InstanceSummaryList) }),
 ).annotate({ identifier: "DescribeDeviceEc2Output" }) as any as S.Schema<DescribeDeviceEc2Output>;
 export interface DescribeExecutionInput {
   taskId: string;
   managedDeviceId: string;
 }
-export const DescribeExecutionInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String.pipe(T.HttpLabel("taskId")),
     managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
@@ -418,7 +418,7 @@ export interface DescribeExecutionOutput {
   startedAt?: Date;
   lastUpdatedAt?: Date;
 }
-export const DescribeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     executionId: S.optional(S.String),
@@ -431,7 +431,7 @@ export const DescribeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeTaskInput {
   taskId: string;
 }
-export const DescribeTaskInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ taskId: S.String.pipe(T.HttpLabel("taskId")) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/task/{taskId}" }), svc, auth, proto, ver, rules),
   ),
@@ -448,7 +448,7 @@ export interface DescribeTaskOutput {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const DescribeTaskOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeTaskOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     taskArn: S.optional(S.String),
@@ -469,7 +469,7 @@ export interface ListDeviceResourcesInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDeviceResourcesInput = /*@__PURE__*/ S.suspend(() =>
+const ListDeviceResourcesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
     type: S.optional(S.String).pipe(T.HttpQuery("type")),
@@ -491,16 +491,16 @@ export interface ResourceSummary {
   arn?: string;
   id?: string;
 }
-export const ResourceSummary = /*@__PURE__*/ S.suspend(() =>
+const ResourceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceType: S.String, arn: S.optional(S.String), id: S.optional(S.String) }),
 ).annotate({ identifier: "ResourceSummary" }) as any as S.Schema<ResourceSummary>;
 export type ResourceSummaryList = ResourceSummary[];
-export const ResourceSummaryList = /*@__PURE__*/ S.Array(ResourceSummary);
+const ResourceSummaryList = /*@__PURE__*/ S.Array(ResourceSummary);
 export interface ListDeviceResourcesOutput {
   resources?: ResourceSummary[];
   nextToken?: string;
 }
-export const ListDeviceResourcesOutput = /*@__PURE__*/ S.suspend(() =>
+const ListDeviceResourcesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resources: S.optional(ResourceSummaryList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDeviceResourcesOutput",
@@ -511,7 +511,7 @@ export interface ListDevicesInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDevicesInput = /*@__PURE__*/ S.suspend(() =>
+const ListDevicesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String).pipe(T.HttpQuery("jobId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -524,7 +524,7 @@ export interface DeviceSummary {
   associatedWithJob?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const DeviceSummary = /*@__PURE__*/ S.suspend(() =>
+const DeviceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedDeviceId: S.optional(S.String),
     managedDeviceArn: S.optional(S.String),
@@ -533,12 +533,12 @@ export const DeviceSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceSummary" }) as any as S.Schema<DeviceSummary>;
 export type DeviceSummaryList = DeviceSummary[];
-export const DeviceSummaryList = /*@__PURE__*/ S.Array(DeviceSummary);
+const DeviceSummaryList = /*@__PURE__*/ S.Array(DeviceSummary);
 export interface ListDevicesOutput {
   devices?: DeviceSummary[];
   nextToken?: string;
 }
-export const ListDevicesOutput = /*@__PURE__*/ S.suspend(() =>
+const ListDevicesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ devices: S.optional(DeviceSummaryList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListDevicesOutput" }) as any as S.Schema<ListDevicesOutput>;
 export interface ListExecutionsInput {
@@ -547,7 +547,7 @@ export interface ListExecutionsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListExecutionsInput = /*@__PURE__*/ S.suspend(() =>
+const ListExecutionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String.pipe(T.HttpQuery("taskId")),
     state: S.optional(S.String).pipe(T.HttpQuery("state")),
@@ -561,7 +561,7 @@ export interface ExecutionSummary {
   managedDeviceId?: string;
   state?: string;
 }
-export const ExecutionSummary = /*@__PURE__*/ S.suspend(() =>
+const ExecutionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     executionId: S.optional(S.String),
@@ -570,18 +570,18 @@ export const ExecutionSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExecutionSummary" }) as any as S.Schema<ExecutionSummary>;
 export type ExecutionSummaryList = ExecutionSummary[];
-export const ExecutionSummaryList = /*@__PURE__*/ S.Array(ExecutionSummary);
+const ExecutionSummaryList = /*@__PURE__*/ S.Array(ExecutionSummary);
 export interface ListExecutionsOutput {
   executions?: ExecutionSummary[];
   nextToken?: string;
 }
-export const ListExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ executions: S.optional(ExecutionSummaryList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListExecutionsOutput" }) as any as S.Schema<ListExecutionsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -589,7 +589,7 @@ export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
@@ -599,7 +599,7 @@ export interface ListTasksInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTasksInput = /*@__PURE__*/ S.suspend(() =>
+const ListTasksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.String).pipe(T.HttpQuery("state")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -612,7 +612,7 @@ export interface TaskSummary {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const TaskSummary = /*@__PURE__*/ S.suspend(() =>
+const TaskSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String,
     taskArn: S.optional(S.String),
@@ -621,32 +621,32 @@ export const TaskSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskSummary" }) as any as S.Schema<TaskSummary>;
 export type TaskSummaryList = TaskSummary[];
-export const TaskSummaryList = /*@__PURE__*/ S.Array(TaskSummary);
+const TaskSummaryList = /*@__PURE__*/ S.Array(TaskSummary);
 export interface ListTasksOutput {
   tasks?: TaskSummary[];
   nextToken?: string;
 }
-export const ListTasksOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTasksOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tasks: S.optional(TaskSummaryList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListTasksOutput" }) as any as S.Schema<ListTasksOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = Unlock as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = Unlock as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = TargetList as any as S.Schema<TagKeys>;
+const TagKeys = TargetList as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -655,7 +655,7 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = Unlock as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = Unlock as any as S.Schema<UntagResourceResponse>;
 export type CancelTaskError =
   | AccessDeniedException
   | InternalServerException

@@ -70,7 +70,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig {
   /** Private key used for signing the client secret JWT. */
   privateKey?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyId: S.optional(S.String),
     teamId: S.optional(S.String),
@@ -81,7 +81,7 @@ export const GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig = /*@__PURE__*/ S.s
 }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Additional config for SignInWithApple. */
 export interface GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig {
@@ -90,7 +90,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig {
   /** A list of Bundle ID's usable by this project */
   bundleIds?: StringList;
 }
-export const GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codeFlowConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig),
     bundleIds: S.optional(StringList),
@@ -112,15 +112,14 @@ export interface GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig {
   /** The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com" */
   name?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientSecret: S.optional(S.String),
-      enabled: S.optional(S.Boolean),
-      clientId: S.optional(S.String),
-      appleSignInConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig),
-      name: S.optional(S.String),
-    }),
+const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientSecret: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    clientId: S.optional(S.String),
+    appleSignInConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig",
 }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>;
@@ -133,7 +132,7 @@ export interface CreateProjectsDefaultSupportedIdpConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 }
-export const CreateProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     idpId: S.optional(S.String.pipe(T.Query())),
@@ -154,7 +153,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2IdpCertificate {
   /** The x509 certificate */
   x509Certificate?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2IdpCertificate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2IdpCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x509Certificate: S.optional(S.String),
   }),
@@ -164,7 +163,7 @@ export const GoogleCloudIdentitytoolkitAdminV2IdpCertificate = /*@__PURE__*/ S.s
 
 export type GoogleCloudIdentitytoolkitAdminV2IdpCertificateList =
   Array<GoogleCloudIdentitytoolkitAdminV2IdpCertificate>;
-export const GoogleCloudIdentitytoolkitAdminV2IdpCertificateList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2IdpCertificateList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2IdpCertificate,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2IdpCertificateList>;
 
@@ -179,7 +178,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2IdpConfig {
   /** URL to send Authentication request to. */
   ssoUrl?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2IdpConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2IdpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idpEntityId: S.optional(S.String),
     signRequest: S.optional(S.Boolean),
@@ -197,7 +196,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2SpCertificate {
   /** Timestamp of the cert expiration instance. */
   expiresAt?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2SpCertificate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2SpCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x509Certificate: S.optional(S.String),
     expiresAt: S.optional(S.String),
@@ -208,7 +207,7 @@ export const GoogleCloudIdentitytoolkitAdminV2SpCertificate = /*@__PURE__*/ S.su
 
 export type GoogleCloudIdentitytoolkitAdminV2SpCertificateList =
   Array<GoogleCloudIdentitytoolkitAdminV2SpCertificate>;
-export const GoogleCloudIdentitytoolkitAdminV2SpCertificateList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2SpCertificateList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2SpCertificate,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2SpCertificateList>;
 
@@ -221,7 +220,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2SpConfig {
   /** Output only. Public certificates generated by the server to verify the signature in SAMLRequest in the SP-initiated flow. */
   spCertificates?: GoogleCloudIdentitytoolkitAdminV2SpCertificateList;
 }
-export const GoogleCloudIdentitytoolkitAdminV2SpConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2SpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callbackUri: S.optional(S.String),
     spEntityId: S.optional(S.String),
@@ -244,7 +243,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig {
   /** The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider. */
   spConfig?: GoogleCloudIdentitytoolkitAdminV2SpConfig;
 }
-export const GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idpConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2IdpConfig),
     name: S.optional(S.String),
@@ -264,7 +263,7 @@ export interface CreateProjectsInboundSamlConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 }
-export const CreateProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inboundSamlConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -289,7 +288,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2OAuthResponseType {
   /** If true, ID token is returned from IdP's authorization endpoint. */
   idToken?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2OAuthResponseType = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2OAuthResponseType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.Boolean),
     code: S.optional(S.Boolean),
@@ -316,7 +315,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig {
   /** The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported. */
   responseType?: GoogleCloudIdentitytoolkitAdminV2OAuthResponseType;
 }
-export const GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -338,7 +337,7 @@ export interface CreateProjectsOauthIdpConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 }
-export const CreateProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthIdpConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -357,7 +356,7 @@ export const CreateProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionEnum =
   | "RECAPTCHA_ACTION_UNSPECIFIED"
   | "BLOCK";
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionEnum = S.String;
 
 /** The config for a reCAPTCHA managed rule. Models a single interval [start_score, end_score]. The start_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping. */
 export interface GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
@@ -366,7 +365,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
   /** The end score (inclusive) of the score range for an action. Must be a value between 0.0 and 1.0, at 11 discrete values; e.g. 0, 0.1, 0.2, 0.3, ... 0.9, 1.0. A score of 0.0 indicates the riskiest request (likely a bot), whereas 1.0 indicates the safest request (likely a human). See https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment. */
   endScore?: number;
 }
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionEnum),
     endScore: S.optional(S.Number),
@@ -377,7 +376,7 @@ export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule = /*@__PURE__
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleList =
   Array<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>;
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleList>;
 
@@ -386,13 +385,12 @@ export type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforce
   | "OFF"
   | "AUDIT"
   | "ENFORCE";
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateEnum =
-  S.String;
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateEnum = S.String;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleActionEnum =
   | "RECAPTCHA_ACTION_UNSPECIFIED"
   | "BLOCK";
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleActionEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleActionEnum = S.String;
 
 /** The config for a reCAPTCHA toll fraud assessment managed rule. Models a single interval [start_score, end_score]. The end_score is implicit. It is either the closest smaller end_score (if one is available) or 0. Intervals in aggregate span [0, 1] without overlapping. */
 export interface GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule {
@@ -401,36 +399,34 @@ export interface GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule 
   /** The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score]. */
   action?: GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleActionEnum | (string & {});
 }
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      startScore: S.optional(S.Number),
-      action: S.optional(GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleActionEnum),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule",
-  }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>;
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startScore: S.optional(S.Number),
+    action: S.optional(GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleActionEnum),
+  }),
+).annotate({
+  identifier: "GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule",
+}) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleList =
   Array<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>;
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule,
-  ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleList>;
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleList = /*@__PURE__*/ S.Array(
+  GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule,
+) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleList>;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPhoneEnforcementStateEnum =
   | "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED"
   | "OFF"
   | "AUDIT"
   | "ENFORCE";
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPhoneEnforcementStateEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPhoneEnforcementStateEnum = S.String;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyTypeEnum =
   | "CLIENT_TYPE_UNSPECIFIED"
   | "WEB"
   | "IOS"
   | "ANDROID";
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyTypeEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyTypeEnum = S.String;
 
 /** The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for different client platforms. */
 export interface GoogleCloudIdentitytoolkitAdminV2RecaptchaKey {
@@ -439,7 +435,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2RecaptchaKey {
   /** The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}" */
   key?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaKey = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyTypeEnum),
     key: S.optional(S.String),
@@ -450,7 +446,7 @@ export const GoogleCloudIdentitytoolkitAdminV2RecaptchaKey = /*@__PURE__*/ S.sus
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyList =
   Array<GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>;
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2RecaptchaKey,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyList>;
 
@@ -477,7 +473,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   /** The reCAPTCHA keys. */
   recaptchaKeys?: GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyList;
 }
-export const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedRules: S.optional(GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleList),
     useSmsTollFraudProtection: S.optional(S.Boolean),
@@ -505,7 +501,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2ClientPermissions {
   /** When true, end users cannot sign up for a new account on the associated project through any of our API methods */
   disabledUserSignup?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ClientPermissions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2ClientPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabledUserDeletion: S.optional(S.Boolean),
     disabledUserSignup: S.optional(S.Boolean),
@@ -519,7 +515,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig {
   /** Configuration related to restricting a user's ability to affect their account. */
   permissions?: GoogleCloudIdentitytoolkitAdminV2ClientPermissions;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(GoogleCloudIdentitytoolkitAdminV2ClientPermissions),
   }),
@@ -530,14 +526,13 @@ export const GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig = /*@__PURE
 export type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum =
   | "PROVIDER_UNSPECIFIED"
   | "PHONE_SMS";
-export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum =
-  S.String;
+const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum = S.String;
 
 export type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnumList =
   Array<
     GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum | (string & {})
   >;
-export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnumList =
+const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnumList>;
@@ -547,14 +542,14 @@ export type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateEnum =
   | "DISABLED"
   | "ENABLED"
   | "MANDATORY";
-export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateEnum = S.String;
 
 /** TotpMFAProviderConfig represents the TOTP based MFA provider. */
 export interface GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig {
   /** The allowed number of adjacent intervals that will be used for verification to avoid clock skew. */
   adjacentIntervals?: number;
 }
-export const GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adjacentIntervals: S.optional(S.Number),
   }),
@@ -567,7 +562,7 @@ export type GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnum =
   | "DISABLED"
   | "ENABLED"
   | "MANDATORY";
-export const GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnum = S.String;
 
 /** ProviderConfig describes the supported MFA providers along with their configurations. */
 export interface GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
@@ -576,7 +571,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2ProviderConfig {
   /** Describes the state of the MultiFactor Authentication type. */
   state?: GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnum | (string & {});
 }
-export const GoogleCloudIdentitytoolkitAdminV2ProviderConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2ProviderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totpProviderConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfig),
     state: S.optional(GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnum),
@@ -587,7 +582,7 @@ export const GoogleCloudIdentitytoolkitAdminV2ProviderConfig = /*@__PURE__*/ S.s
 
 export type GoogleCloudIdentitytoolkitAdminV2ProviderConfigList =
   Array<GoogleCloudIdentitytoolkitAdminV2ProviderConfig>;
-export const GoogleCloudIdentitytoolkitAdminV2ProviderConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2ProviderConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2ProviderConfig,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ProviderConfigList>;
 
@@ -600,7 +595,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
   /** A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field. */
   providerConfigs?: GoogleCloudIdentitytoolkitAdminV2ProviderConfigList;
 }
-export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledProviders: S.optional(
       GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnumList,
@@ -617,7 +612,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2AllowlistOnly {
   /** Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json */
   allowedRegions?: StringList;
 }
-export const GoogleCloudIdentitytoolkitAdminV2AllowlistOnly = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2AllowlistOnly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedRegions: S.optional(StringList),
   }),
@@ -630,7 +625,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2AllowByDefault {
   /** Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json */
   disallowedRegions?: StringList;
 }
-export const GoogleCloudIdentitytoolkitAdminV2AllowByDefault = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2AllowByDefault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disallowedRegions: S.optional(StringList),
   }),
@@ -645,7 +640,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig {
   /** A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list. */
   allowByDefault?: GoogleCloudIdentitytoolkitAdminV2AllowByDefault;
 }
-export const GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowlistOnly: S.optional(GoogleCloudIdentitytoolkitAdminV2AllowlistOnly),
     allowByDefault: S.optional(GoogleCloudIdentitytoolkitAdminV2AllowByDefault),
@@ -659,7 +654,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2RequestLogging {
   /** Whether logging is enabled for this project or not. */
   enabled?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2RequestLogging = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2RequestLogging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -672,7 +667,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2MonitoringConfig {
   /** Configuration for logging requests made to this project to Stackdriver Logging */
   requestLogging?: GoogleCloudIdentitytoolkitAdminV2RequestLogging;
 }
-export const GoogleCloudIdentitytoolkitAdminV2MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestLogging: S.optional(GoogleCloudIdentitytoolkitAdminV2RequestLogging),
   }),
@@ -681,13 +676,13 @@ export const GoogleCloudIdentitytoolkitAdminV2MonitoringConfig = /*@__PURE__*/ S
 }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2MonitoringConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateEnum =
   | "PASSWORD_POLICY_ENFORCEMENT_STATE_UNSPECIFIED"
   | "OFF"
   | "ENFORCE";
-export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateEnum =
+const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateEnum =
   S.String;
 
 /** Custom strength options to enforce on user passwords. */
@@ -705,7 +700,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions {
   /** Maximum password length. No default max length */
   maxPasswordLength?: number;
 }
-export const GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containsNonAlphanumericCharacter: S.optional(S.Boolean),
     minPasswordLength: S.optional(S.Number),
@@ -725,7 +720,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
   /** Output only. schema version number for the password policy */
   schemaVersion?: number;
 }
-export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customStrengthOptions: S.optional(GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions),
     schemaVersion: S.optional(S.Number),
@@ -736,7 +731,7 @@ export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion = /*@__PURE_
 
 export type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionList =
   Array<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>;
-export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionList>;
 
@@ -753,7 +748,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
   /** Must be of length 1. Contains the strength attributes for the password policy. */
   passwordPolicyVersions?: GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionList;
 }
-export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forceUpgradeOnSignin: S.optional(S.Boolean),
     passwordPolicyEnforcementState: S.optional(
@@ -770,14 +765,14 @@ export type GoogleCloudIdentitytoolkitAdminV2MobileLinksConfigDomainEnum =
   | "DOMAIN_UNSPECIFIED"
   | "FIREBASE_DYNAMIC_LINK_DOMAIN"
   | "HOSTING_DOMAIN";
-export const GoogleCloudIdentitytoolkitAdminV2MobileLinksConfigDomainEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2MobileLinksConfigDomainEnum = S.String;
 
 /** Configuration mobile links. */
 export interface GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig {
   /** Open code in app domain to use for app links and universal links. */
   domain?: GoogleCloudIdentitytoolkitAdminV2MobileLinksConfigDomainEnum | (string & {});
 }
-export const GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2MobileLinksConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(GoogleCloudIdentitytoolkitAdminV2MobileLinksConfigDomainEnum),
   }),
@@ -800,7 +795,7 @@ export type GoogleCloudIdentitytoolkitAdminV2HashConfigAlgorithmEnum =
   | "SHA256"
   | "SHA512"
   | "STANDARD_SCRYPT";
-export const GoogleCloudIdentitytoolkitAdminV2HashConfigAlgorithmEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2HashConfigAlgorithmEnum = S.String;
 
 /** History information of the hash algorithm and key. Different accounts' passwords may be generated by different version. */
 export interface GoogleCloudIdentitytoolkitAdminV2HashConfig {
@@ -815,7 +810,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2HashConfig {
   /** Output only. Non-printable character to be inserted between the salt and plain text password in base64. */
   saltSeparator?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2HashConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2HashConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signerKey: S.optional(S.String),
     algorithm: S.optional(GoogleCloudIdentitytoolkitAdminV2HashConfigAlgorithmEnum),
@@ -832,7 +827,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2Inheritance {
   /** Whether to allow the tenant to inherit custom domains, email templates, and custom SMTP settings. If true, email sent from tenant will follow the project level email sending configurations. If false (by default), emails will go with the default settings with no customizations. */
   emailSendingConfig?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2Inheritance = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2Inheritance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailSendingConfig: S.optional(S.Boolean),
   }),
@@ -845,7 +840,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig {
   /** Migrates the project to a state of improved email privacy. For example certain error codes are more generic to avoid giving away information on whether the account exists. In addition, this disables certain features that as a side-effect allow user enumeration. Enabling this toggle disables the fetchSignInMethodsForEmail functionality and changing the user's email to an unverified email. It is recommended to remove dependence on this functionality and enable this toggle to improve user privacy. */
   enableImprovedEmailPrivacy?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableImprovedEmailPrivacy: S.optional(S.Boolean),
   }),
@@ -892,7 +887,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2Tenant {
   /** Configuration for settings related to email privacy and public visibility. */
   emailPrivacyConfig?: GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig;
 }
-export const GoogleCloudIdentitytoolkitAdminV2Tenant = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2Tenant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recaptchaConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig),
     client: S.optional(GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig),
@@ -923,7 +918,7 @@ export interface CreateProjectsTenantsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2Tenant;
 }
-export const CreateProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIdentitytoolkitAdminV2Tenant.pipe(T.HttpBody())),
@@ -946,7 +941,7 @@ export interface CreateProjectsTenantsDefaultSupportedIdpConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 }
-export const CreateProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     idpId: S.optional(S.String.pipe(T.Query())),
@@ -970,7 +965,7 @@ export interface CreateProjectsTenantsInboundSamlConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 }
-export const CreateProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     inboundSamlConfigId: S.optional(S.String.pipe(T.Query())),
@@ -994,7 +989,7 @@ export interface CreateProjectsTenantsOauthIdpConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 }
-export const CreateProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthIdpConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1014,7 +1009,7 @@ export interface DeleteProjectsDefaultSupportedIdpConfigsRequest {
   /** The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com" */
   name: string;
 }
-export const DeleteProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1030,7 +1025,7 @@ export const DeleteProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.s
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -1038,7 +1033,7 @@ export interface DeleteProjectsInboundSamlConfigsRequest {
   /** The resource name of the config to be deleted, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. */
   name: string;
 }
-export const DeleteProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1056,7 +1051,7 @@ export interface DeleteProjectsOauthIdpConfigsRequest {
   /** The resource name of the config to be deleted, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. */
   name: string;
 }
-export const DeleteProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1074,7 +1069,7 @@ export interface DeleteProjectsTenantsRequest {
   /** Resource name of the tenant to delete. */
   name: string;
 }
-export const DeleteProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1092,7 +1087,7 @@ export interface DeleteProjectsTenantsDefaultSupportedIdpConfigsRequest {
   /** The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com" */
   name: string;
 }
-export const DeleteProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1110,7 +1105,7 @@ export interface DeleteProjectsTenantsInboundSamlConfigsRequest {
   /** The resource name of the config to be deleted, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. */
   name: string;
 }
-export const DeleteProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1128,7 +1123,7 @@ export interface DeleteProjectsTenantsOauthIdpConfigsRequest {
   /** The resource name of the config to be deleted, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. */
   name: string;
 }
-export const DeleteProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1153,7 +1148,7 @@ export interface GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo {
   /** Required if Android verification proof is presented. */
   phoneNumber?: string;
 }
-export const GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     androidVerificationProof: S.optional(S.String),
@@ -1171,15 +1166,15 @@ export interface GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInf
   /** User-entered verification code. */
   verificationCode?: string;
 }
-export const GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       sessionInfo: S.optional(S.String),
       verificationCode: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo",
-  }) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo>;
+).annotate({
+  identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo",
+}) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo>;
 
 /** Finishes enrolling a second factor for the user. */
 export interface GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest {
@@ -1194,17 +1189,16 @@ export interface GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest {
   /** The ID of the Identity Platform tenant that the user enrolling MFA belongs to. If not set, the user belongs to the default Identity Platform project. */
   tenantId?: string;
 }
-export const GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      displayName: S.optional(S.String),
-      phoneVerificationInfo: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo),
-      totpVerificationInfo: S.optional(
-        GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo,
-      ),
-      idToken: S.optional(S.String),
-      tenantId: S.optional(S.String),
-    }),
+const GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    phoneVerificationInfo: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo),
+    totpVerificationInfo: S.optional(
+      GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentRequestInfo,
+    ),
+    idToken: S.optional(S.String),
+    tenantId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest",
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest>;
@@ -1213,7 +1207,7 @@ export interface FinalizeAccountsMfaEnrollmentRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest;
 }
-export const FinalizeAccountsMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
+const FinalizeAccountsMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1236,23 +1230,23 @@ export interface GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo {
   /** Android only. Long-lived replacement for valid code tied to android device. */
   androidVerificationProof?: string;
 }
-export const GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      phoneNumber: S.optional(S.String),
-      androidVerificationProofExpireTime: S.optional(S.String),
-      androidVerificationProof: S.optional(S.String),
-    }),
+const GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    phoneNumber: S.optional(S.String),
+    androidVerificationProofExpireTime: S.optional(S.String),
+    androidVerificationProof: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo",
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo>;
 
 /** Mfa response info specific to TOTP auth for FinalizeMfa. */
 export interface GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo {}
-export const GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo",
-  }) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo>;
+const GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo",
+}) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo>;
 
 /** FinalizeMfaEnrollment response. */
 export interface GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse {
@@ -1265,14 +1259,13 @@ export interface GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse {
   /** Auxiliary auth info specific to TOTP auth. */
   totpAuthInfo?: GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo;
 }
-export const GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      phoneAuthInfo: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo),
-      refreshToken: S.optional(S.String),
-      idToken: S.optional(S.String),
-      totpAuthInfo: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo),
-    }),
+const GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    phoneAuthInfo: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo),
+    refreshToken: S.optional(S.String),
+    idToken: S.optional(S.String),
+    totpAuthInfo: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo),
+  }),
 ).annotate({
   identifier: "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse",
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse>;
@@ -1282,7 +1275,7 @@ export interface GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo {
   /** User-entered verification code. */
   verificationCode?: string;
 }
-export const GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verificationCode: S.optional(S.String),
   }),
@@ -1303,7 +1296,7 @@ export interface GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest {
   /** The ID of the Identity Platform tenant the user is signing in to. If not set, the user will sign in to the default Identity Platform project. */
   tenantId?: string;
 }
-export const GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totpVerificationInfo: S.optional(GoogleCloudIdentitytoolkitV2MfaTotpSignInRequestInfo),
     mfaEnrollmentId: S.optional(S.String),
@@ -1319,7 +1312,7 @@ export interface FinalizeAccountsMfaSignInRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest;
 }
-export const FinalizeAccountsMfaSignInRequest = /*@__PURE__*/ S.suspend(() =>
+const FinalizeAccountsMfaSignInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1342,7 +1335,7 @@ export interface GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse {
   /** Refresh token for the authenticated user. */
   refreshToken?: string;
 }
-export const GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneAuthInfo: S.optional(GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo),
     idToken: S.optional(S.String),
@@ -1356,7 +1349,7 @@ export interface GetConfigProjectsRequest {
   /** The resource name of the config, for example: "projects/my-awesome-project/config" */
   name: string;
 }
-export const GetConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1375,7 +1368,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig {
   /** Whether this project can have tenants or not. */
   allowTenants?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultTenantLocation: S.optional(S.String),
     allowTenants: S.optional(S.Boolean),
@@ -1388,7 +1381,7 @@ export type GoogleCloudIdentitytoolkitAdminV2EmailTemplateBodyFormatEnum =
   | "BODY_FORMAT_UNSPECIFIED"
   | "PLAIN_TEXT"
   | "HTML";
-export const GoogleCloudIdentitytoolkitAdminV2EmailTemplateBodyFormatEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2EmailTemplateBodyFormatEnum = S.String;
 
 /** Email template. The subject and body fields can contain the following placeholders which will be replaced with the appropriate values: %LINK% - The link to use to redeem the send OOB code. %EMAIL% - The email where the email is being sent. %NEW_EMAIL% - The new email being set for the account (when applicable). %APP_NAME% - The Google Cloud project's display name. %DISPLAY_NAME% - The user's display name. */
 export interface GoogleCloudIdentitytoolkitAdminV2EmailTemplate {
@@ -1407,7 +1400,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2EmailTemplate {
   /** Sender display name */
   senderDisplayName?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2EmailTemplate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2EmailTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     senderLocalPart: S.optional(S.String),
     replyTo: S.optional(S.String),
@@ -1425,7 +1418,7 @@ export type GoogleCloudIdentitytoolkitAdminV2SmtpSecurityModeEnum =
   | "SECURITY_MODE_UNSPECIFIED"
   | "SSL"
   | "START_TLS";
-export const GoogleCloudIdentitytoolkitAdminV2SmtpSecurityModeEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2SmtpSecurityModeEnum = S.String;
 
 /** Configuration for SMTP relay */
 export interface GoogleCloudIdentitytoolkitAdminV2Smtp {
@@ -1442,7 +1435,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2Smtp {
   /** SMTP relay host */
   host?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2Smtp = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2Smtp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityMode: S.optional(GoogleCloudIdentitytoolkitAdminV2SmtpSecurityModeEnum),
     username: S.optional(S.String),
@@ -1459,7 +1452,7 @@ export type GoogleCloudIdentitytoolkitAdminV2SendEmailMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "DEFAULT"
   | "CUSTOM_SMTP";
-export const GoogleCloudIdentitytoolkitAdminV2SendEmailMethodEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2SendEmailMethodEnum = S.String;
 
 export type GoogleCloudIdentitytoolkitAdminV2DnsInfoCustomDomainStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
@@ -1467,7 +1460,7 @@ export type GoogleCloudIdentitytoolkitAdminV2DnsInfoCustomDomainStateEnum =
   | "IN_PROGRESS"
   | "FAILED"
   | "SUCCEEDED";
-export const GoogleCloudIdentitytoolkitAdminV2DnsInfoCustomDomainStateEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2DnsInfoCustomDomainStateEnum = S.String;
 
 /** Information of custom domain DNS verification. By default, default_domain will be used. A custom domain can be configured using VerifyCustomDomain. */
 export interface GoogleCloudIdentitytoolkitAdminV2DnsInfo {
@@ -1482,7 +1475,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2DnsInfo {
   /** Output only. The timestamp of initial request for the current domain verification. */
   domainVerificationRequestTime?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2DnsInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2DnsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useCustomDomain: S.optional(S.Boolean),
     customDomainState: S.optional(GoogleCloudIdentitytoolkitAdminV2DnsInfoCustomDomainStateEnum),
@@ -1515,7 +1508,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2SendEmail {
   /** Reset password email template for legacy Firebase V1 app. */
   legacyResetPasswordTemplate?: GoogleCloudIdentitytoolkitAdminV2EmailTemplate;
 }
-export const GoogleCloudIdentitytoolkitAdminV2SendEmail = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2SendEmail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revertSecondFactorAdditionTemplate: S.optional(GoogleCloudIdentitytoolkitAdminV2EmailTemplate),
     changeEmailTemplate: S.optional(GoogleCloudIdentitytoolkitAdminV2EmailTemplate),
@@ -1536,7 +1529,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2SmsTemplate {
   /** Output only. The SMS's content. Can contain the following placeholders which will be replaced with the appropriate values: %APP_NAME% - For Android or iOS apps, the app's display name. For web apps, the domain hosting the application. %LOGIN_CODE% - The OOB code being sent in the SMS. */
   content?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2SmsTemplate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2SmsTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
   }),
@@ -1551,7 +1544,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2SendSms {
   /** Whether to use the accept_language header for SMS. */
   useDeviceLocale?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2SendSms = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2SendSms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smsTemplate: S.optional(GoogleCloudIdentitytoolkitAdminV2SmsTemplate),
     useDeviceLocale: S.optional(S.Boolean),
@@ -1569,7 +1562,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2NotificationConfig {
   /** Options for SMS sending. */
   sendSms?: GoogleCloudIdentitytoolkitAdminV2SendSms;
 }
-export const GoogleCloudIdentitytoolkitAdminV2NotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2NotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultLocale: S.optional(S.String),
     sendEmail: S.optional(GoogleCloudIdentitytoolkitAdminV2SendEmail),
@@ -1586,7 +1579,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2Trigger {
   /** When the trigger was changed. */
   updateTime?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2Trigger = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionUri: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -1598,7 +1591,7 @@ export const GoogleCloudIdentitytoolkitAdminV2Trigger = /*@__PURE__*/ S.suspend(
 export type GoogleCloudIdentitytoolkitAdminV2TriggerMap = {
   [key: string]: GoogleCloudIdentitytoolkitAdminV2Trigger | undefined;
 };
-export const GoogleCloudIdentitytoolkitAdminV2TriggerMap = /*@__PURE__*/ S.Record(
+const GoogleCloudIdentitytoolkitAdminV2TriggerMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudIdentitytoolkitAdminV2Trigger,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2TriggerMap>;
@@ -1612,13 +1605,12 @@ export interface GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials {
   /** Whether to pass the user's OIDC identity provider's ID token. */
   idToken?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      refreshToken: S.optional(S.Boolean),
-      accessToken: S.optional(S.Boolean),
-      idToken: S.optional(S.Boolean),
-    }),
+const GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    refreshToken: S.optional(S.Boolean),
+    accessToken: S.optional(S.Boolean),
+    idToken: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials",
 }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials>;
@@ -1630,14 +1622,13 @@ export interface GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig {
   /** The user credentials to include in the JWT payload that is sent to the registered Blocking Functions. */
   forwardInboundCredentials?: GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials;
 }
-export const GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      triggers: S.optional(GoogleCloudIdentitytoolkitAdminV2TriggerMap),
-      forwardInboundCredentials: S.optional(
-        GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials,
-      ),
-    }),
+const GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    triggers: S.optional(GoogleCloudIdentitytoolkitAdminV2TriggerMap),
+    forwardInboundCredentials: S.optional(
+      GoogleCloudIdentitytoolkitAdminV2ForwardInboundCredentials,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig",
 }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig>;
@@ -1646,14 +1637,14 @@ export type GoogleCloudIdentitytoolkitAdminV2ConfigSubtypeEnum =
   | "SUBTYPE_UNSPECIFIED"
   | "IDENTITY_PLATFORM"
   | "FIREBASE_AUTH";
-export const GoogleCloudIdentitytoolkitAdminV2ConfigSubtypeEnum = S.String;
+const GoogleCloudIdentitytoolkitAdminV2ConfigSubtypeEnum = S.String;
 
 /** Configuration options related to authenticating an anonymous user. */
 export interface GoogleCloudIdentitytoolkitAdminV2Anonymous {
   /** Whether anonymous user auth is enabled for the project or not. */
   enabled?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2Anonymous =
+const GoogleCloudIdentitytoolkitAdminV2Anonymous =
   GoogleCloudIdentitytoolkitAdminV2RequestLogging as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2Anonymous>;
 
 /** Configuration options related to authenticating a user by their email address. */
@@ -1663,7 +1654,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2Email {
   /** Whether email auth is enabled for the project or not. */
   enabled?: boolean;
 }
-export const GoogleCloudIdentitytoolkitAdminV2Email = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2Email = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordRequired: S.optional(S.Boolean),
     enabled: S.optional(S.Boolean),
@@ -1679,7 +1670,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2PhoneNumber {
   /** A map of that can be used for phone auth testing. */
   testPhoneNumbers?: StringMap;
 }
-export const GoogleCloudIdentitytoolkitAdminV2PhoneNumber = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     testPhoneNumbers: S.optional(StringMap),
@@ -1701,7 +1692,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2SignInConfig {
   /** Configuration options related to authenticated a user by their phone number. */
   phoneNumber?: GoogleCloudIdentitytoolkitAdminV2PhoneNumber;
 }
-export const GoogleCloudIdentitytoolkitAdminV2SignInConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2SignInConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowDuplicateEmails: S.optional(S.Boolean),
     hashConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2HashConfig),
@@ -1722,7 +1713,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2TemporaryQuota {
   /** How long this quota will be active for */
   quotaDuration?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2TemporaryQuota = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2TemporaryQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quota: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -1737,7 +1728,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2QuotaConfig {
   /** Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. */
   signUpQuotaConfig?: GoogleCloudIdentitytoolkitAdminV2TemporaryQuota;
 }
-export const GoogleCloudIdentitytoolkitAdminV2QuotaConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2QuotaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signUpQuotaConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2TemporaryQuota),
   }),
@@ -1748,9 +1739,6 @@ export const GoogleCloudIdentitytoolkitAdminV2QuotaConfig = /*@__PURE__*/ S.susp
 /** Configuration related to restricting a user's ability to affect their account. */
 export type GoogleCloudIdentitytoolkitAdminV2Permissions =
   GoogleCloudIdentitytoolkitAdminV2ClientPermissions;
-export const GoogleCloudIdentitytoolkitAdminV2Permissions =
-  GoogleCloudIdentitytoolkitAdminV2ClientPermissions;
-
 /** Options related to how clients making requests on behalf of a project should be configured. */
 export interface GoogleCloudIdentitytoolkitAdminV2ClientConfig {
   /** Output only. Firebase subdomain. */
@@ -1760,7 +1748,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2ClientConfig {
   /** Configuration related to restricting a user's ability to affect their account. */
   permissions?: GoogleCloudIdentitytoolkitAdminV2ClientPermissions;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ClientConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2ClientConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firebaseSubdomain: S.optional(S.String),
     apiKey: S.optional(S.String),
@@ -1809,7 +1797,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2Config {
   /** Options related to how clients making requests on behalf of a project should be configured. */
   client?: GoogleCloudIdentitytoolkitAdminV2ClientConfig;
 }
-export const GoogleCloudIdentitytoolkitAdminV2Config = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mfa: S.optional(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig),
     recaptchaConfig: S.optional(GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig),
@@ -1839,7 +1827,7 @@ export interface GoogleIamV1GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GoogleIamV1GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -1852,7 +1840,7 @@ export interface GoogleIamV1GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GoogleIamV1GetPolicyOptions;
 }
-export const GoogleIamV1GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GoogleIamV1GetPolicyOptions),
   }),
@@ -1866,7 +1854,7 @@ export interface GetIamPolicyProjectsTenantsRequest {
   /** Request body */
   body?: GoogleIamV1GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1886,7 +1874,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
+const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
@@ -1895,7 +1883,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -1905,7 +1893,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
 
@@ -1916,7 +1904,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
@@ -1924,7 +1912,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1AuditConfig" }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
 
@@ -1939,7 +1927,7 @@ export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     expression: S.optional(S.String),
@@ -1957,7 +1945,7 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
-export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -1966,7 +1954,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
+const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
 
@@ -1981,7 +1969,7 @@ export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: GoogleIamV1BindingList;
 }
-export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     etag: S.optional(S.String),
@@ -1994,7 +1982,7 @@ export interface GetPasswordPolicyV2Request {
   /** The id of a tenant. */
   tenantId?: string;
 }
-export const GetPasswordPolicyV2Request = /*@__PURE__*/ S.suspend(() =>
+const GetPasswordPolicyV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -2023,7 +2011,7 @@ export interface GoogleCloudIdentitytoolkitV2CustomStrengthOptions {
   /** Maximum password length. No default max length */
   maxPasswordLength?: number;
 }
-export const GoogleCloudIdentitytoolkitV2CustomStrengthOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2CustomStrengthOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containsNonAlphanumericCharacter: S.optional(S.Boolean),
     containsUppercaseCharacter: S.optional(S.Boolean),
@@ -2040,7 +2028,7 @@ export type GoogleCloudIdentitytoolkitV2PasswordPolicyEnforcementStateEnum =
   | "ENFORCEMENT_STATE_UNSPECIFIED"
   | "OFF"
   | "ENFORCE";
-export const GoogleCloudIdentitytoolkitV2PasswordPolicyEnforcementStateEnum = S.String;
+const GoogleCloudIdentitytoolkitV2PasswordPolicyEnforcementStateEnum = S.String;
 
 /** Configuration for password policy. */
 export interface GoogleCloudIdentitytoolkitV2PasswordPolicy {
@@ -2055,7 +2043,7 @@ export interface GoogleCloudIdentitytoolkitV2PasswordPolicy {
   /** Output only. Allowed characters which satisfy the non_alphanumeric requirement. */
   allowedNonAlphanumericCharacters?: StringList;
 }
-export const GoogleCloudIdentitytoolkitV2PasswordPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2PasswordPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customStrengthOptions: S.optional(GoogleCloudIdentitytoolkitV2CustomStrengthOptions),
     forceUpgradeOnSignin: S.optional(S.Boolean),
@@ -2071,7 +2059,7 @@ export interface GetProjectsDefaultSupportedIdpConfigsRequest {
   /** The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com" */
   name: string;
 }
-export const GetProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2089,7 +2077,7 @@ export interface GetProjectsInboundSamlConfigsRequest {
   /** The resource name of the config, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. */
   name: string;
 }
-export const GetProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2107,7 +2095,7 @@ export interface GetProjectsOauthIdpConfigsRequest {
   /** The resource name of the config, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. */
   name: string;
 }
-export const GetProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2125,7 +2113,7 @@ export interface GetProjectsTenantsRequest {
   /** Resource name of the tenant to retrieve. */
   name: string;
 }
-export const GetProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2143,7 +2131,7 @@ export interface GetProjectsTenantsDefaultSupportedIdpConfigsRequest {
   /** The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com" */
   name: string;
 }
-export const GetProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2161,7 +2149,7 @@ export interface GetProjectsTenantsInboundSamlConfigsRequest {
   /** The resource name of the config, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. */
   name: string;
 }
-export const GetProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2179,7 +2167,7 @@ export interface GetProjectsTenantsOauthIdpConfigsRequest {
   /** The resource name of the config, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. */
   name: string;
 }
-export const GetProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2198,12 +2186,12 @@ export type GetRecaptchaConfigV2ClientTypeEnum =
   | "CLIENT_TYPE_WEB"
   | "CLIENT_TYPE_ANDROID"
   | "CLIENT_TYPE_IOS";
-export const GetRecaptchaConfigV2ClientTypeEnum = S.String;
+const GetRecaptchaConfigV2ClientTypeEnum = S.String;
 
 export type GetRecaptchaConfigV2VersionEnum =
   | "RECAPTCHA_VERSION_UNSPECIFIED"
   | "RECAPTCHA_ENTERPRISE";
-export const GetRecaptchaConfigV2VersionEnum = S.String;
+const GetRecaptchaConfigV2VersionEnum = S.String;
 
 export interface GetRecaptchaConfigV2Request {
   /** The id of a tenant. */
@@ -2213,7 +2201,7 @@ export interface GetRecaptchaConfigV2Request {
   /** The reCAPTCHA version. */
   version?: GetRecaptchaConfigV2VersionEnum | (string & {});
 }
-export const GetRecaptchaConfigV2Request = /*@__PURE__*/ S.suspend(() =>
+const GetRecaptchaConfigV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String.pipe(T.Query())),
     clientType: S.optional(GetRecaptchaConfigV2ClientTypeEnum.pipe(T.Query())),
@@ -2234,13 +2222,13 @@ export type GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateEnforcementStat
   | "OFF"
   | "AUDIT"
   | "ENFORCE";
-export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateEnforcementStateEnum = S.String;
+const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateEnforcementStateEnum = S.String;
 
 export type GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateProviderEnum =
   | "RECAPTCHA_PROVIDER_UNSPECIFIED"
   | "EMAIL_PASSWORD_PROVIDER"
   | "PHONE_PROVIDER";
-export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateProviderEnum = S.String;
+const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateProviderEnum = S.String;
 
 /** Enforcement states for reCAPTCHA protection. */
 export interface GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState {
@@ -2249,7 +2237,7 @@ export interface GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState {
   /** The provider that has reCAPTCHA protection. */
   provider?: GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateProviderEnum;
 }
-export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforcementState: S.optional(
       GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateEnforcementStateEnum,
@@ -2262,7 +2250,7 @@ export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState = /*@__PURE__
 
 export type GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateList =
   Array<GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState>;
-export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateList>;
 
@@ -2277,7 +2265,7 @@ export interface GoogleCloudIdentitytoolkitV2RecaptchaConfig {
   /** The reCAPTCHA enforcement state for the providers that GCIP supports reCAPTCHA protection. */
   recaptchaEnforcementState?: GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateList;
 }
-export const GoogleCloudIdentitytoolkitV2RecaptchaConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2RecaptchaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recaptchaKey: S.optional(S.String),
     useSmsBotScore: S.optional(S.Boolean),
@@ -2293,16 +2281,13 @@ export const GoogleCloudIdentitytoolkitV2RecaptchaConfig = /*@__PURE__*/ S.suspe
 /** Request for InitializeIdentityPlatform. */
 export type GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformRequest =
   GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo;
-export const GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformRequest =
-  GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo;
-
 export interface InitializeAuthProjectsIdentityPlatformRequest {
   /** The resource name of the target project the developer wants to enable Identity Platform for. */
   project: string;
   /** Request body */
   body?: GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo;
 }
-export const InitializeAuthProjectsIdentityPlatformRequest = /*@__PURE__*/ S.suspend(() =>
+const InitializeAuthProjectsIdentityPlatformRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Label()),
     body: S.optional(
@@ -2321,7 +2306,7 @@ export const InitializeAuthProjectsIdentityPlatformRequest = /*@__PURE__*/ S.sus
 
 /** Response for InitializeIdentityPlatform. Empty for now. */
 export interface GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse {}
-export const GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse =
+const GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse =
   GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse>;
 
 export interface ListDefaultSupportedIdpsRequest {
@@ -2330,7 +2315,7 @@ export interface ListDefaultSupportedIdpsRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
 }
-export const ListDefaultSupportedIdpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDefaultSupportedIdpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2352,7 +2337,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp {
   /** Description of the Idp */
   description?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idpId: S.optional(S.String),
     description: S.optional(S.String),
@@ -2363,7 +2348,7 @@ export const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp = /*@__PURE__*
 
 export type GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpList =
   Array<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp>;
-export const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpList>;
 
@@ -2374,15 +2359,15 @@ export interface GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsRespon
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       defaultSupportedIdps: S.optional(GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse",
-  }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse>;
+).annotate({
+  identifier: "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse",
+}) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse>;
 
 export interface ListProjectsDefaultSupportedIdpConfigsRequest {
   /** The parent resource name, for example, "projects/my-awesome-project". */
@@ -2392,7 +2377,7 @@ export interface ListProjectsDefaultSupportedIdpConfigsRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
 }
-export const ListProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2410,7 +2395,7 @@ export const ListProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.sus
 
 export type GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfigList =
   Array<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>;
-export const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfigList>;
 
@@ -2421,7 +2406,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigs
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse =
+const GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       defaultSupportedIdpConfigs: S.optional(
@@ -2441,7 +2426,7 @@ export interface ListProjectsInboundSamlConfigsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2459,7 +2444,7 @@ export const ListProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudIdentitytoolkitAdminV2InboundSamlConfigList =
   Array<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>;
-export const GoogleCloudIdentitytoolkitAdminV2InboundSamlConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2InboundSamlConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfigList>;
 
@@ -2470,15 +2455,15 @@ export interface GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse
   /** The set of configs. */
   inboundSamlConfigs?: GoogleCloudIdentitytoolkitAdminV2InboundSamlConfigList;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       nextPageToken: S.optional(S.String),
       inboundSamlConfigs: S.optional(GoogleCloudIdentitytoolkitAdminV2InboundSamlConfigList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse",
-  }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse>;
+).annotate({
+  identifier: "GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse",
+}) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse>;
 
 export interface ListProjectsOauthIdpConfigsRequest {
   /** The maximum number of items to return. */
@@ -2488,7 +2473,7 @@ export interface ListProjectsOauthIdpConfigsRequest {
   /** The parent resource name, for example, "projects/my-awesome-project". */
   parent: string;
 }
-export const ListProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2506,7 +2491,7 @@ export const ListProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfigList =
   Array<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>;
-export const GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfigList>;
 
@@ -2517,12 +2502,11 @@ export interface GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      oauthIdpConfigs: S.optional(GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfigList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    oauthIdpConfigs: S.optional(GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfigList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse",
 }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse>;
@@ -2535,7 +2519,7 @@ export interface ListProjectsTenantsRequest {
   /** The maximum number of results to return, capped at 1000. If not specified, the default value is 20. */
   pageSize?: number;
 }
-export const ListProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2553,7 +2537,7 @@ export const ListProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudIdentitytoolkitAdminV2TenantList =
   Array<GoogleCloudIdentitytoolkitAdminV2Tenant>;
-export const GoogleCloudIdentitytoolkitAdminV2TenantList = /*@__PURE__*/ S.Array(
+const GoogleCloudIdentitytoolkitAdminV2TenantList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitAdminV2Tenant,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2TenantList>;
 
@@ -2564,7 +2548,7 @@ export interface GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse {
   /** The token to get the next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenants: S.optional(GoogleCloudIdentitytoolkitAdminV2TenantList),
     nextPageToken: S.optional(S.String),
@@ -2581,7 +2565,7 @@ export interface ListProjectsTenantsDefaultSupportedIdpConfigsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2605,7 +2589,7 @@ export interface ListProjectsTenantsInboundSamlConfigsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2629,7 +2613,7 @@ export interface ListProjectsTenantsOauthIdpConfigsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2653,7 +2637,7 @@ export interface PatchProjectsDefaultSupportedIdpConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 }
-export const PatchProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2677,7 +2661,7 @@ export interface PatchProjectsInboundSamlConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 }
-export const PatchProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2701,7 +2685,7 @@ export interface PatchProjectsOauthIdpConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 }
-export const PatchProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2725,7 +2709,7 @@ export interface PatchProjectsTenantsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2Tenant;
 }
-export const PatchProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2749,7 +2733,7 @@ export interface PatchProjectsTenantsDefaultSupportedIdpConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 }
-export const PatchProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsTenantsDefaultSupportedIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2773,7 +2757,7 @@ export interface PatchProjectsTenantsInboundSamlConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 }
-export const PatchProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsTenantsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2797,7 +2781,7 @@ export interface PatchProjectsTenantsOauthIdpConfigsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 }
-export const PatchProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2818,7 +2802,7 @@ export type GoogleCloudIdentitytoolkitV2RevokeTokenRequestTokenTypeEnum =
   | "REFRESH_TOKEN"
   | "ACCESS_TOKEN"
   | "CODE";
-export const GoogleCloudIdentitytoolkitV2RevokeTokenRequestTokenTypeEnum = S.String;
+const GoogleCloudIdentitytoolkitV2RevokeTokenRequestTokenTypeEnum = S.String;
 
 /** Request message for RevokeToken. */
 export interface GoogleCloudIdentitytoolkitV2RevokeTokenRequest {
@@ -2835,7 +2819,7 @@ export interface GoogleCloudIdentitytoolkitV2RevokeTokenRequest {
   /** Required. The type of the token to be revoked. */
   tokenType?: GoogleCloudIdentitytoolkitV2RevokeTokenRequestTokenTypeEnum | (string & {});
 }
-export const GoogleCloudIdentitytoolkitV2RevokeTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2RevokeTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     providerId: S.optional(S.String),
     token: S.optional(S.String),
@@ -2852,7 +2836,7 @@ export interface RevokeTokenAccountsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitV2RevokeTokenRequest;
 }
-export const RevokeTokenAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeTokenAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleCloudIdentitytoolkitV2RevokeTokenRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2868,7 +2852,7 @@ export const RevokeTokenAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for RevokeToken. Empty for now. */
 export interface GoogleCloudIdentitytoolkitV2RevokeTokenResponse {}
-export const GoogleCloudIdentitytoolkitV2RevokeTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2RevokeTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleCloudIdentitytoolkitV2RevokeTokenResponse",
@@ -2881,7 +2865,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(GoogleIamV1Policy),
     updateMask: S.optional(S.String),
@@ -2896,7 +2880,7 @@ export interface SetIamPolicyProjectsTenantsRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2914,14 +2898,14 @@ export const SetIamPolicyProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoRecaptchaVersionEnum =
   | "RECAPTCHA_VERSION_UNSPECIFIED"
   | "RECAPTCHA_ENTERPRISE";
-export const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoRecaptchaVersionEnum = S.String;
+const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoRecaptchaVersionEnum = S.String;
 
 /** The information required to auto-retrieve an SMS. */
 export interface GoogleCloudIdentitytoolkitV2AutoRetrievalInfo {
   /** The Android app's signature hash for Google Play Service's SMS Retriever API. */
   appSignatureHash?: string;
 }
-export const GoogleCloudIdentitytoolkitV2AutoRetrievalInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2AutoRetrievalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appSignatureHash: S.optional(S.String),
   }),
@@ -2934,7 +2918,7 @@ export type GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoClientTypeEnum =
   | "CLIENT_TYPE_WEB"
   | "CLIENT_TYPE_ANDROID"
   | "CLIENT_TYPE_IOS";
-export const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoClientTypeEnum = S.String;
+const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoClientTypeEnum = S.String;
 
 /** App Verification info for a StartMfa request. */
 export interface GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
@@ -2961,7 +2945,7 @@ export interface GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo {
   /** The client type, web, android or ios. Required when reCAPTCHA Enterprise is enabled. */
   clientType?: GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoClientTypeEnum | (string & {});
 }
-export const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iosReceipt: S.optional(S.String),
     playIntegrityToken: S.optional(S.String),
@@ -2983,9 +2967,6 @@ export const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo = /*@__PURE__*
 /** Mfa request info specific to TOTP auth for StartMfa. */
 export type GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo =
   GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo;
-export const GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentRequestInfo =
-  GoogleCloudIdentitytoolkitV2FinalizeMfaTotpEnrollmentResponseInfo;
-
 /** Sends MFA enrollment verification SMS for a user. */
 export interface GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest {
   /** Verification info to authorize sending an SMS for phone verification. */
@@ -2997,7 +2978,7 @@ export interface GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest {
   /** The ID of the Identity Platform tenant that the user enrolling MFA belongs to. If not set, the user belongs to the default Identity Platform project. */
   tenantId?: string;
 }
-export const GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneEnrollmentInfo: S.optional(GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo),
     idToken: S.optional(S.String),
@@ -3014,7 +2995,7 @@ export interface StartAccountsMfaEnrollmentRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest;
 }
-export const StartAccountsMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
+const StartAccountsMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3033,7 +3014,7 @@ export interface GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo {
   /** An opaque string that represents the enrollment session. */
   sessionInfo?: string;
 }
-export const GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionInfo: S.optional(S.String),
   }),
@@ -3056,19 +3037,18 @@ export interface GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo 
   /** Duration in seconds at which the verification code will change. */
   periodSec?: number;
 }
-export const GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      verificationCodeLength: S.optional(S.Number),
-      finalizeEnrollmentTime: S.optional(S.String),
-      sharedSecretKey: S.optional(S.String),
-      sessionInfo: S.optional(S.String),
-      hashingAlgorithm: S.optional(S.String),
-      periodSec: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo",
-  }) as any as S.Schema<GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo>;
+const GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    verificationCodeLength: S.optional(S.Number),
+    finalizeEnrollmentTime: S.optional(S.String),
+    sharedSecretKey: S.optional(S.String),
+    sessionInfo: S.optional(S.String),
+    hashingAlgorithm: S.optional(S.String),
+    periodSec: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo",
+}) as any as S.Schema<GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo>;
 
 /** StartMfaEnrollment response. */
 export interface GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse {
@@ -3077,7 +3057,7 @@ export interface GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse {
   /** Enrollment response info specific to TOTP auth. */
   totpSessionInfo?: GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo;
 }
-export const GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneSessionInfo: S.optional(GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo),
     totpSessionInfo: S.optional(GoogleCloudIdentitytoolkitV2StartMfaTotpEnrollmentResponseInfo),
@@ -3097,7 +3077,7 @@ export interface GoogleCloudIdentitytoolkitV2StartMfaSignInRequest {
   /** The ID of the Identity Platform tenant the user is signing in to. If not set, the user will sign in to the default Identity Platform project. */
   tenantId?: string;
 }
-export const GoogleCloudIdentitytoolkitV2StartMfaSignInRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2StartMfaSignInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneSignInInfo: S.optional(GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo),
     mfaPendingCredential: S.optional(S.String),
@@ -3112,7 +3092,7 @@ export interface StartAccountsMfaSignInRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitV2StartMfaSignInRequest;
 }
-export const StartAccountsMfaSignInRequest = /*@__PURE__*/ S.suspend(() =>
+const StartAccountsMfaSignInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleCloudIdentitytoolkitV2StartMfaSignInRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3131,7 +3111,7 @@ export interface GoogleCloudIdentitytoolkitV2StartMfaSignInResponse {
   /** MultiFactor sign-in session information specific to SMS-type second factors. Along with the one-time code retrieved from the sent SMS, the contents of this session information should be passed to FinalizeMfaSignIn to complete the sign in. */
   phoneResponseInfo?: GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo;
 }
-export const GoogleCloudIdentitytoolkitV2StartMfaSignInResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2StartMfaSignInResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneResponseInfo: S.optional(GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo),
   }),
@@ -3144,7 +3124,7 @@ export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -3158,7 +3138,7 @@ export interface TestIamPermissionsProjectsTenantsRequest {
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -3178,7 +3158,7 @@ export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const GoogleIamV1TestIamPermissionsResponse =
+const GoogleIamV1TestIamPermissionsResponse =
   GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
 
 export interface UpdateConfigProjectsRequest {
@@ -3189,7 +3169,7 @@ export interface UpdateConfigProjectsRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitAdminV2Config;
 }
-export const UpdateConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3214,7 +3194,7 @@ export interface GoogleCloudIdentitytoolkitV2WithdrawMfaRequest {
   /** The ID of the Identity Platform tenant that the user unenrolling MFA belongs to. If not set, the user belongs to the default Identity Platform project. */
   tenantId?: string;
 }
-export const GoogleCloudIdentitytoolkitV2WithdrawMfaRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2WithdrawMfaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idToken: S.optional(S.String),
     mfaEnrollmentId: S.optional(S.String),
@@ -3228,7 +3208,7 @@ export interface WithdrawAccountsMfaEnrollmentRequest {
   /** Request body */
   body?: GoogleCloudIdentitytoolkitV2WithdrawMfaRequest;
 }
-export const WithdrawAccountsMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
+const WithdrawAccountsMfaEnrollmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleCloudIdentitytoolkitV2WithdrawMfaRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3249,7 +3229,7 @@ export interface GoogleCloudIdentitytoolkitV2WithdrawMfaResponse {
   /** Refresh token updated to reflect removal of the second factor. */
   refreshToken?: string;
 }
-export const GoogleCloudIdentitytoolkitV2WithdrawMfaResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIdentitytoolkitV2WithdrawMfaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idToken: S.optional(S.String),
     refreshToken: S.optional(S.String),

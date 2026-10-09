@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleLongrunningCancelOperationRequest",
@@ -75,7 +75,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -92,21 +92,19 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 /** Request to cancel a session. */
 export type CancelSessionRequest = GoogleLongrunningCancelOperationRequest;
-export const CancelSessionRequest = GoogleLongrunningCancelOperationRequest;
-
 export interface CancelProjectsLocationsSessionsRequest {
   /** Required. The name of the session. Format: "projects/{project}/locations/{location}/sessions/{session}" */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -125,21 +123,21 @@ export type CancelSessionResponseCancelResultEnum =
   | "CANCEL_RESULT_UNSPECIFIED"
   | "SESSION_MARKED_AS_CANCELLED"
   | "SESSION_FINISHED";
-export const CancelSessionResponseCancelResultEnum = S.String;
+const CancelSessionResponseCancelResultEnum = S.String;
 
 /** Response of the cancel session request. */
 export interface CancelSessionResponse {
   /** The result of the request. */
   cancelResult?: CancelSessionResponseCancelResultEnum;
 }
-export const CancelSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelResult: S.optional(CancelSessionResponseCancelResultEnum),
   }),
 ).annotate({ identifier: "CancelSessionResponse" }) as any as S.Schema<CancelSessionResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type StatusStatusTypeEnum =
   | "STATUS_TYPE_UNSPECIFIED"
@@ -147,7 +145,7 @@ export type StatusStatusTypeEnum =
   | "RUNNING"
   | "DONE"
   | "SUSPENDED";
-export const StatusStatusTypeEnum = S.String;
+const StatusStatusTypeEnum = S.String;
 
 /** The status of a session/job/execution. */
 export interface Status {
@@ -156,7 +154,7 @@ export interface Status {
   /** Output only. The status type of the session/job/execution. */
   statusType?: StatusStatusTypeEnum | (string & {});
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     progressMessages: S.optional(StringList),
     statusType: S.optional(StatusStatusTypeEnum),
@@ -164,7 +162,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type IssueSummaryTypeEnum = "ISSUE_TYPE_UNSPECIFIED" | "INFRA" | "CUSTOMER";
-export const IssueSummaryTypeEnum = S.String;
+const IssueSummaryTypeEnum = S.String;
 
 /** Describes the summary of an issue (error or warning) with structured details. */
 export interface IssueSummary {
@@ -175,7 +173,7 @@ export interface IssueSummary {
   /** Output only. The issue classification based on responsibility. */
   type?: IssueSummaryTypeEnum | (string & {});
 }
-export const IssueSummary = /*@__PURE__*/ S.suspend(() =>
+const IssueSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     reason: S.optional(S.String),
@@ -188,7 +186,7 @@ export interface ResultCause {
   /** Output only. Structured cause detail. */
   summary?: IssueSummary;
 }
-export const ResultCause = /*@__PURE__*/ S.suspend(() =>
+const ResultCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.optional(IssueSummary),
   }),
@@ -201,7 +199,7 @@ export type ResultResultTypeEnum =
   | "ERROR"
   | "TIMED_OUT"
   | "CANCELLED";
-export const ResultResultTypeEnum = S.String;
+const ResultResultTypeEnum = S.String;
 
 /** The result of a session/job/execution. */
 export interface Result {
@@ -210,7 +208,7 @@ export interface Result {
   /** Output only. The result type of the session/job/execution. */
   resultType?: ResultResultTypeEnum | (string & {});
 }
-export const Result = /*@__PURE__*/ S.suspend(() =>
+const Result = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cause: S.optional(ResultCause),
     resultType: S.optional(ResultResultTypeEnum),
@@ -218,24 +216,24 @@ export const Result = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Non-fatal operational anomaly, lint observation, or execution insight. */
 export interface Warning {
   /** Output only. Detailed warning summary. */
   summary?: IssueSummary;
 }
-export const Warning = ResultCause as any as S.Schema<Warning>;
+const Warning = ResultCause as any as S.Schema<Warning>;
 
 export type WarningList = Array<Warning>;
-export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
+const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
 
 /** A path to a file or directory in Google Cloud Storage. */
 export interface GcsPath {
   /** Required. The Google Cloud Storage path of the file or directory. Format: `gs:///`. */
   path?: string;
 }
-export const GcsPath = /*@__PURE__*/ S.suspend(() =>
+const GcsPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
   }),
@@ -246,14 +244,14 @@ export interface OutputFile {
   /** An output file in Google Cloud Storage. */
   gcsOutputFile?: GcsPath;
 }
-export const OutputFile = /*@__PURE__*/ S.suspend(() =>
+const OutputFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsOutputFile: S.optional(GcsPath),
   }),
 ).annotate({ identifier: "OutputFile" }) as any as S.Schema<OutputFile>;
 
 export type OutputFileList = Array<OutputFile>;
-export const OutputFileList = /*@__PURE__*/ S.Array(OutputFile) as any as S.Schema<OutputFileList>;
+const OutputFileList = /*@__PURE__*/ S.Array(OutputFile) as any as S.Schema<OutputFileList>;
 
 /** The runtime information and result report of a single on-device execution attempt. */
 export interface ExecutionReport {
@@ -274,7 +272,7 @@ export interface ExecutionReport {
   /** Output only. The unique identifier of the execution. */
   id?: string;
 }
-export const ExecutionReport = /*@__PURE__*/ S.suspend(() =>
+const ExecutionReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(Status),
     result: S.optional(Result),
@@ -288,7 +286,7 @@ export const ExecutionReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecutionReport" }) as any as S.Schema<ExecutionReport>;
 
 export type ExecutionReportList = Array<ExecutionReport>;
-export const ExecutionReportList = /*@__PURE__*/ S.Array(
+const ExecutionReportList = /*@__PURE__*/ S.Array(
   ExecutionReport,
 ) as any as S.Schema<ExecutionReportList>;
 
@@ -315,7 +313,7 @@ export interface JobReport {
   /** Output only. Reports of the execution attempts of the job. */
   executionReports?: ExecutionReportList;
 }
-export const JobReport = /*@__PURE__*/ S.suspend(() =>
+const JobReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -331,7 +329,7 @@ export const JobReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobReport" }) as any as S.Schema<JobReport>;
 
 export type JobReportList = Array<JobReport>;
-export const JobReportList = /*@__PURE__*/ S.Array(JobReport) as any as S.Schema<JobReportList>;
+const JobReportList = /*@__PURE__*/ S.Array(JobReport) as any as S.Schema<JobReportList>;
 
 /** The runtime information and result report of a session. */
 export interface SessionReport {
@@ -348,7 +346,7 @@ export interface SessionReport {
   /** Output only. Reports of the jobs in the session. */
   jobReports?: JobReportList;
 }
-export const SessionReport = /*@__PURE__*/ S.suspend(() =>
+const SessionReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(Status),
@@ -364,7 +362,7 @@ export interface SessionConfigSessionNotificationConfig {
   /** Optional. The Pub/Sub topics to which session events are published. Format: `projects/{project}/topics/{topic}`. See https://cloud.google.com/pubsub/docs/admin#topic_and_subscription_name_restrictions */
   pubsubTopic?: StringList;
 }
-export const SessionConfigSessionNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const SessionConfigSessionNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(StringList),
   }),
@@ -379,7 +377,7 @@ export interface SessionConfigSessionOutputFileDirectoryConfig {
   /** The Google Cloud Storage path of the output directory (e.g. `gs://my-bucket/output`). The bucket must exist. If the bucket is located in another project or uses fine-grained access controls, ensure the Device Run Service Agent of the project (`service-@gcp-sa-devicerun.iam.gserviceaccount.com`) is granted access to the bucket (such as `roles/storage.objectUser`). */
   gcsOutputDirectory?: GcsPath;
 }
-export const SessionConfigSessionOutputFileDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
+const SessionConfigSessionOutputFileDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flatDirectoryStructure: S.optional(S.Boolean),
     gcsOutputDirectory: S.optional(GcsPath),
@@ -393,7 +391,7 @@ export interface InputFile {
   /** An input file in Google Cloud Storage. */
   gcsInputFile?: GcsPath;
 }
-export const InputFile = /*@__PURE__*/ S.suspend(() =>
+const InputFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsInputFile: S.optional(GcsPath),
   }),
@@ -410,7 +408,7 @@ export interface AndroidNativeBinary {
   /** Optional. A map of environment variables to set for the binary process. The keys are the variable names and the values are the variable values. Limits: - Maximum number of entries: 32 - Maximum key size: 64 bytes (UTF-8) - Key regex: `a-zA-Z_*` - Maximum value size: 1024 bytes (UTF-8) */
   envVars?: StringMap;
 }
-export const AndroidNativeBinary = /*@__PURE__*/ S.suspend(() =>
+const AndroidNativeBinary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(StringList),
     executionTimeout: S.optional(S.String),
@@ -430,7 +428,7 @@ export interface IosXcTest {
   /** Optional. The timeout of the test. Default value: 5 min. Range: [1 min, 3 hours]. */
   xcTestTimeout?: string;
 }
-export const IosXcTest = /*@__PURE__*/ S.suspend(() =>
+const IosXcTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xctestrun: S.optional(InputFile),
     xcodeVersion: S.optional(S.String),
@@ -448,7 +446,7 @@ export interface AndroidInstrumentationTestSmartSharding {
   /** Required. The targeted duration of each shard. Limits: - Must be at least 2 minutes. - Must be at most 3 hours. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. Durations are calculated based on the following inputs: - Timing records from previous runs of the same test case. - For new test cases, the average duration of other known test cases. - A system-chosen, default duration if there are no previous timing records available. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed instrumentation timeout. This approach avoids cancelling the shard before all tests can finish. */
   targetedShardDuration?: string;
 }
-export const AndroidInstrumentationTestSmartSharding = /*@__PURE__*/ S.suspend(() =>
+const AndroidInstrumentationTestSmartSharding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timingRecord: S.optional(InputFile),
     maxShardCount: S.optional(S.Number),
@@ -463,7 +461,7 @@ export interface AndroidInstrumentationTestUniformSharding {
   /** Required. The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. Limits: - For physical devices, the number of shards must be <= 20. - For virtual devices, the number of shards must be <= 200. */
   shardCount?: number;
 }
-export const AndroidInstrumentationTestUniformSharding = /*@__PURE__*/ S.suspend(() =>
+const AndroidInstrumentationTestUniformSharding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shardCount: S.optional(S.Number),
   }),
@@ -472,14 +470,14 @@ export const AndroidInstrumentationTestUniformSharding = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<AndroidInstrumentationTestUniformSharding>;
 
 export type InputFileList = Array<InputFile>;
-export const InputFileList = /*@__PURE__*/ S.Array(InputFile) as any as S.Schema<InputFileList>;
+const InputFileList = /*@__PURE__*/ S.Array(InputFile) as any as S.Schema<InputFileList>;
 
 /** An Android Installable represents the file(s) for installing an Android package on a device. This can be an APK, an Android App Bundle (AAB), or an APK Set. */
 export interface AndroidInstallable {
   /** Required. Files that make up the package. Supported formats are distinguished by their file extension: - APK: One or more files with extension `.apk`. - App Bundle: A single file with extension `.aab`. - APK Set: A single file with extension `.apks`. */
   files?: InputFileList;
 }
-export const AndroidInstallable = /*@__PURE__*/ S.suspend(() =>
+const AndroidInstallable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: S.optional(InputFileList),
   }),
@@ -506,7 +504,7 @@ export interface AndroidInstrumentationTest {
   /** Required. The test package to install and run the test. */
   testInstallable?: AndroidInstallable;
 }
-export const AndroidInstrumentationTest = /*@__PURE__*/ S.suspend(() =>
+const AndroidInstrumentationTest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smartSharding: S.optional(AndroidInstrumentationTestSmartSharding),
     orchestratorVersion: S.optional(S.String),
@@ -531,7 +529,7 @@ export interface JobAction {
   /** Android instrumentation test. */
   androidInstrumentationTest?: AndroidInstrumentationTest;
 }
-export const JobAction = /*@__PURE__*/ S.suspend(() =>
+const JobAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     androidNativeBinary: S.optional(AndroidNativeBinary),
     iosXcTest: S.optional(IosXcTest),
@@ -540,7 +538,7 @@ export const JobAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobAction" }) as any as S.Schema<JobAction>;
 
 export type AndroidInstallableList = Array<AndroidInstallable>;
-export const AndroidInstallableList = /*@__PURE__*/ S.Array(
+const AndroidInstallableList = /*@__PURE__*/ S.Array(
   AndroidInstallable,
 ) as any as S.Schema<AndroidInstallableList>;
 
@@ -555,7 +553,7 @@ export interface AndroidInstallPackagesDeviceAction {
   /** Optional. The Android packages to install on the device after `target_app` (if specified) is installed. The installation will be performed in the order specified. */
   postTargetAppInstallables?: AndroidInstallableList;
 }
-export const AndroidInstallPackagesDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const AndroidInstallPackagesDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installables: S.optional(AndroidInstallableList),
     preTargetAppInstallables: S.optional(AndroidInstallableList),
@@ -571,7 +569,7 @@ export interface AndroidBugreportDeviceAction {
   /** Optional. Whether to deliver the bugreport when the test passes. If false, the bugreport is skipped on pass to save time (default behavior). If true, the bugreport is always delivered. */
   collectOnPass?: boolean;
 }
-export const AndroidBugreportDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const AndroidBugreportDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectOnPass: S.optional(S.Boolean),
   }),
@@ -584,7 +582,7 @@ export interface AndroidPullFilesDeviceAction {
   /** Required. Absolute directory or file paths to pull from the device. Limits: - A maximum of 10 paths are allowed. */
   paths?: StringList;
 }
-export const AndroidPullFilesDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const AndroidPullFilesDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: S.optional(StringList),
   }),
@@ -597,7 +595,7 @@ export interface AndroidDumpsysDeviceAction {
   /** Optional. Whether to deliver the dumpsys when the test passes. If false, the dumpsys is skipped on pass to save time (default behavior). If true, the dumpsys is always delivered. */
   collectOnPass?: boolean;
 }
-export const AndroidDumpsysDeviceAction =
+const AndroidDumpsysDeviceAction =
   AndroidBugreportDeviceAction as any as S.Schema<AndroidDumpsysDeviceAction>;
 
 /** Installs iOS packages on the device. */
@@ -605,7 +603,7 @@ export interface IosInstallPackagesDeviceAction {
   /** Required. Additional iOS packages (IPAs) to install on the device. Limits: - A maximum of 20 IPAs are allowed. */
   ipas?: InputFileList;
 }
-export const IosInstallPackagesDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const IosInstallPackagesDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipas: S.optional(InputFileList),
   }),
@@ -615,12 +613,8 @@ export const IosInstallPackagesDeviceAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Collects the exported iOS App Privacy Report during the test run. When enabled, the iOS device records application activity (such as network access, domain requests, and sensitive resource access like photos, camera, or location) and exports Apple's official App Privacy Report. The report will be written to a file named `AppActivityReport.ndjson` in the execution output directory. */
 export type IosAppPrivacyReportDeviceAction = GoogleLongrunningCancelOperationRequest;
-export const IosAppPrivacyReportDeviceAction = GoogleLongrunningCancelOperationRequest;
-
 /** Collects logcat output from the device. The output will be written to a file named `logcat.txt` in the execution output directory. */
 export type AndroidLogcatDeviceAction = GoogleLongrunningCancelOperationRequest;
-export const AndroidLogcatDeviceAction = GoogleLongrunningCancelOperationRequest;
-
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
@@ -628,7 +622,7 @@ export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longitude: S.optional(S.Number),
     latitude: S.optional(S.Number),
@@ -640,7 +634,7 @@ export interface AndroidMockLocationDeviceAction {
   /** Required. The mock location to set on the device. */
   location?: LatLng;
 }
-export const AndroidMockLocationDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const AndroidMockLocationDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(LatLng),
   }),
@@ -653,7 +647,7 @@ export interface IosSwitchLocaleDeviceAction {
   /** Required. The locale (language and region) to switch the app to. The format is `language-region` or `language`, e.g. "en-US", "zh-CN", "ja", etc. */
   localeCode?: string;
 }
-export const IosSwitchLocaleDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const IosSwitchLocaleDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localeCode: S.optional(S.String),
   }),
@@ -666,7 +660,7 @@ export interface AndroidRecordVideoDeviceAction {
   /** Optional. Whether to discard and not upload the recording when the test passes. Default is false. */
   discardOnPass?: boolean;
 }
-export const AndroidRecordVideoDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const AndroidRecordVideoDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discardOnPass: S.optional(S.Boolean),
   }),
@@ -679,7 +673,7 @@ export interface AndroidOrientationDeviceAction {
   /** Required. The orientation to set the device to. One of `portrait` or `landscape`. */
   orientation?: string;
 }
-export const AndroidOrientationDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const AndroidOrientationDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orientation: S.optional(S.String),
   }),
@@ -692,7 +686,7 @@ export interface IosRecordVideoDeviceAction {
   /** Optional. Whether to discard the video if the test passes. If not specified, the default is false (always keep the video). */
   discardOnPass?: boolean;
 }
-export const IosRecordVideoDeviceAction =
+const IosRecordVideoDeviceAction =
   AndroidRecordVideoDeviceAction as any as S.Schema<IosRecordVideoDeviceAction>;
 
 /** Switches the locale (language and region) of the device. */
@@ -700,7 +694,7 @@ export interface AndroidSwitchLocaleDeviceAction {
   /** Required. The locale (language and region) to switch the device to. The format is `language-region`, e.g. "en-US", "zh-CN", etc. The typical language value is a two or three-letter language code as defined in ISO639. The typical region value is a two-letter ISO 3166 code or a three-digit UN M.49 area code. */
   localeCode?: string;
 }
-export const AndroidSwitchLocaleDeviceAction =
+const AndroidSwitchLocaleDeviceAction =
   IosSwitchLocaleDeviceAction as any as S.Schema<AndroidSwitchLocaleDeviceAction>;
 
 /** The configuration of pushing a file to the iOS device. */
@@ -712,7 +706,7 @@ export interface IosPushFilesDeviceActionFileConfig {
   /** Required. The file to be pushed. */
   sourceFile?: InputFile;
 }
-export const IosPushFilesDeviceActionFileConfig = /*@__PURE__*/ S.suspend(() =>
+const IosPushFilesDeviceActionFileConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationPath: S.optional(S.String),
     bundleId: S.optional(S.String),
@@ -723,7 +717,7 @@ export const IosPushFilesDeviceActionFileConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IosPushFilesDeviceActionFileConfig>;
 
 export type IosPushFilesDeviceActionFileConfigList = Array<IosPushFilesDeviceActionFileConfig>;
-export const IosPushFilesDeviceActionFileConfigList = /*@__PURE__*/ S.Array(
+const IosPushFilesDeviceActionFileConfigList = /*@__PURE__*/ S.Array(
   IosPushFilesDeviceActionFileConfig,
 ) as any as S.Schema<IosPushFilesDeviceActionFileConfigList>;
 
@@ -732,7 +726,7 @@ export interface IosPushFilesDeviceAction {
   /** Required. Configs of pushing files to the device. Limits: - A maximum of 50 files are allowed. */
   fileConfigs?: IosPushFilesDeviceActionFileConfigList;
 }
-export const IosPushFilesDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const IosPushFilesDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileConfigs: S.optional(IosPushFilesDeviceActionFileConfigList),
   }),
@@ -745,7 +739,7 @@ export interface IosPullFilesDeviceActionPathConfig {
   /** Required. The bundle ID of the application sandbox. */
   bundleId?: string;
 }
-export const IosPullFilesDeviceActionPathConfig = /*@__PURE__*/ S.suspend(() =>
+const IosPullFilesDeviceActionPathConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devicePath: S.optional(S.String),
     bundleId: S.optional(S.String),
@@ -755,7 +749,7 @@ export const IosPullFilesDeviceActionPathConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IosPullFilesDeviceActionPathConfig>;
 
 export type IosPullFilesDeviceActionPathConfigList = Array<IosPullFilesDeviceActionPathConfig>;
-export const IosPullFilesDeviceActionPathConfigList = /*@__PURE__*/ S.Array(
+const IosPullFilesDeviceActionPathConfigList = /*@__PURE__*/ S.Array(
   IosPullFilesDeviceActionPathConfig,
 ) as any as S.Schema<IosPullFilesDeviceActionPathConfigList>;
 
@@ -764,7 +758,7 @@ export interface IosPullFilesDeviceAction {
   /** Required. Absolute directory or file paths to pull from the device. Limits: - A maximum of 10 paths are allowed. */
   paths?: IosPullFilesDeviceActionPathConfigList;
 }
-export const IosPullFilesDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const IosPullFilesDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: S.optional(IosPullFilesDeviceActionPathConfigList),
   }),
@@ -777,7 +771,7 @@ export interface AndroidPushFilesDeviceActionFileConfig {
   /** Required. The destination path on the device. */
   destinationPath?: string;
 }
-export const AndroidPushFilesDeviceActionFileConfig = /*@__PURE__*/ S.suspend(() =>
+const AndroidPushFilesDeviceActionFileConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceFile: S.optional(InputFile),
     destinationPath: S.optional(S.String),
@@ -788,7 +782,7 @@ export const AndroidPushFilesDeviceActionFileConfig = /*@__PURE__*/ S.suspend(()
 
 export type AndroidPushFilesDeviceActionFileConfigList =
   Array<AndroidPushFilesDeviceActionFileConfig>;
-export const AndroidPushFilesDeviceActionFileConfigList = /*@__PURE__*/ S.Array(
+const AndroidPushFilesDeviceActionFileConfigList = /*@__PURE__*/ S.Array(
   AndroidPushFilesDeviceActionFileConfig,
 ) as any as S.Schema<AndroidPushFilesDeviceActionFileConfigList>;
 
@@ -797,7 +791,7 @@ export interface AndroidPushFilesDeviceAction {
   /** Required. Configs of pushing files to the device. Limits: - A maximum of 50 files are allowed. */
   fileConfigs?: AndroidPushFilesDeviceActionFileConfigList;
 }
-export const AndroidPushFilesDeviceAction = /*@__PURE__*/ S.suspend(() =>
+const AndroidPushFilesDeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileConfigs: S.optional(AndroidPushFilesDeviceActionFileConfigList),
   }),
@@ -840,7 +834,7 @@ export interface DeviceAction {
   /** Pushes files to the device at the beginning of the run. */
   androidPushFiles?: AndroidPushFilesDeviceAction;
 }
-export const DeviceAction = /*@__PURE__*/ S.suspend(() =>
+const DeviceAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     androidInstallPackages: S.optional(AndroidInstallPackagesDeviceAction),
     androidBugreport: S.optional(AndroidBugreportDeviceAction),
@@ -862,16 +856,14 @@ export const DeviceAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceAction" }) as any as S.Schema<DeviceAction>;
 
 export type DeviceActionList = Array<DeviceAction>;
-export const DeviceActionList = /*@__PURE__*/ S.Array(
-  DeviceAction,
-) as any as S.Schema<DeviceActionList>;
+const DeviceActionList = /*@__PURE__*/ S.Array(DeviceAction) as any as S.Schema<DeviceActionList>;
 
 /** The requirement of a device. */
 export interface DeviceRequirement {
   /** The device ID of a device in the catalog. The device ID is the last part of a device's resource name. */
   deviceId?: string;
 }
-export const DeviceRequirement = /*@__PURE__*/ S.suspend(() =>
+const DeviceRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceId: S.optional(S.String),
   }),
@@ -884,7 +876,7 @@ export interface DeviceConfig {
   /** Required. The requirement of the device. */
   requirement?: DeviceRequirement;
 }
-export const DeviceConfig = /*@__PURE__*/ S.suspend(() =>
+const DeviceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(DeviceActionList),
     requirement: S.optional(DeviceRequirement),
@@ -892,16 +884,14 @@ export const DeviceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceConfig" }) as any as S.Schema<DeviceConfig>;
 
 export type DeviceConfigList = Array<DeviceConfig>;
-export const DeviceConfigList = /*@__PURE__*/ S.Array(
-  DeviceConfig,
-) as any as S.Schema<DeviceConfigList>;
+const DeviceConfigList = /*@__PURE__*/ S.Array(DeviceConfig) as any as S.Schema<DeviceConfigList>;
 
 /** Allocation config. */
 export interface AllocationConfig {
   /** Required. At least one device config is required. If more than one device config is required, the multiple devices are allocated to each shard of the OmniLab job to run multi-device-interaction tests. */
   deviceConfigs?: DeviceConfigList;
 }
-export const AllocationConfig = /*@__PURE__*/ S.suspend(() =>
+const AllocationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceConfigs: S.optional(DeviceConfigList),
   }),
@@ -911,7 +901,7 @@ export type RetrySettingsFlakyTestRetryStrategyTestReductionModeEnum =
   | "TEST_REDUCTION_MODE_UNSPECIFIED"
   | "NO_REDUCTION"
   | "REDUCE_TO_FAILED_TEST_CASES";
-export const RetrySettingsFlakyTestRetryStrategyTestReductionModeEnum = S.String;
+const RetrySettingsFlakyTestRetryStrategyTestReductionModeEnum = S.String;
 
 /** Default retry strategy. It will retry on test failures for up to flaky_test_attempts (including the initial run). It also retries on infra issues for up to 2 attempts (including the initial run). So in total, an execution can run up to flaky_test_attempts * 2 times in the worst case. */
 export interface RetrySettingsFlakyTestRetryStrategy {
@@ -922,7 +912,7 @@ export interface RetrySettingsFlakyTestRetryStrategy {
   /** Optional. The mode of test reduction for retry. If the test runner doesn't support the specified test reduction mode, the request will be rejected with an `INVALID_ARGUMENT` error. */
   testReductionMode?: RetrySettingsFlakyTestRetryStrategyTestReductionModeEnum | (string & {});
 }
-export const RetrySettingsFlakyTestRetryStrategy = /*@__PURE__*/ S.suspend(() =>
+const RetrySettingsFlakyTestRetryStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parallelRetry: S.optional(S.Boolean),
     flakyTestAttempts: S.optional(S.Number),
@@ -937,7 +927,7 @@ export interface RetrySettings {
   /** Optional. The default retry strategy. Allows an Execution to retry on test failures and infrastructure errors. */
   flakyTestRetryStrategy?: RetrySettingsFlakyTestRetryStrategy;
 }
-export const RetrySettings = /*@__PURE__*/ S.suspend(() =>
+const RetrySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flakyTestRetryStrategy: S.optional(RetrySettingsFlakyTestRetryStrategy),
   }),
@@ -948,7 +938,7 @@ export interface JobSettings {
   /** Optional. The retry settings of the job. */
   retrySettings?: RetrySettings;
 }
-export const JobSettings = /*@__PURE__*/ S.suspend(() =>
+const JobSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retrySettings: S.optional(RetrySettings),
   }),
@@ -967,7 +957,7 @@ export interface JobConfig {
   /** Optional. Job settings. */
   settings?: JobSettings;
 }
-export const JobConfig = /*@__PURE__*/ S.suspend(() =>
+const JobConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(JobAction),
     allocationConfig: S.optional(AllocationConfig),
@@ -978,7 +968,7 @@ export const JobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobConfig" }) as any as S.Schema<JobConfig>;
 
 export type JobConfigList = Array<JobConfig>;
-export const JobConfigList = /*@__PURE__*/ S.Array(JobConfig) as any as S.Schema<JobConfigList>;
+const JobConfigList = /*@__PURE__*/ S.Array(JobConfig) as any as S.Schema<JobConfigList>;
 
 /** SessionConfig is used to create a session. */
 export interface SessionConfig {
@@ -991,7 +981,7 @@ export interface SessionConfig {
   /** Required. Configs of the jobs in the session. */
   jobConfigs?: JobConfigList;
 }
-export const SessionConfig = /*@__PURE__*/ S.suspend(() =>
+const SessionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationConfig: S.optional(SessionConfigSessionNotificationConfig),
     outputDirectoryConfig: S.optional(SessionConfigSessionOutputFileDirectoryConfig),
@@ -1009,7 +999,7 @@ export interface Session {
   /** Required. Configuration used to create the session. */
   sessionConfig?: SessionConfig;
 }
-export const Session = /*@__PURE__*/ S.suspend(() =>
+const Session = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionReport: S.optional(SessionReport),
     name: S.optional(S.String),
@@ -1027,7 +1017,7 @@ export interface CreateProjectsLocationsSessionsRequest {
   /** Request body */
   body?: Session;
 }
-export const CreateProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1045,15 +1035,10 @@ export const CreateProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateProjectsLocationsSessionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -1064,7 +1049,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -1085,7 +1070,7 @@ export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(GoogleRpcStatus),
     name: S.optional(S.String),
@@ -1101,7 +1086,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1121,7 +1106,7 @@ export interface DeleteProjectsLocationsSessionsRequest {
   /** Optional. A unique identifier for this request. This request is only idempotent if a `request_id` is provided, i.e. if a request with the same `request_id` is received, then the previous result will be returned. The server will guarantee that for at least 60 minutes after the first request. The value must be a UUID (e.g., 123e4567-e89b-12d3-a456-426655440000). See github.com/google/uuid for more details. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1140,7 +1125,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1163,7 +1148,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     name: S.optional(S.String),
@@ -1177,7 +1162,7 @@ export interface GetProjectsLocationsDevicesRequest {
   /** Required. The name of the device. Format: `projects/{project}/locations/global/devices/{device}`. */
   name: string;
 }
-export const GetProjectsLocationsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1196,7 +1181,7 @@ export interface Devicerun_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-export const Devicerun_Date = /*@__PURE__*/ S.suspend(() =>
+const Devicerun_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -1205,7 +1190,7 @@ export const Devicerun_Date = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Devicerun_Date" }) as any as S.Schema<Devicerun_Date>;
 
 export type CatalogLifecycleStateEnum = "STATE_UNSPECIFIED" | "PREVIEW" | "ACTIVE" | "DEPRECATED";
-export const CatalogLifecycleStateEnum = S.String;
+const CatalogLifecycleStateEnum = S.String;
 
 /** Catalog resource lifecycle: maturity state plus key lifecycle dates. */
 export interface CatalogLifecycle {
@@ -1214,7 +1199,7 @@ export interface CatalogLifecycle {
   /** Output only. Specifies the current maturity state of the resource. */
   state?: CatalogLifecycleStateEnum;
 }
-export const CatalogLifecycle = /*@__PURE__*/ S.suspend(() =>
+const CatalogLifecycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removalDate: S.optional(Devicerun_Date),
     state: S.optional(CatalogLifecycleStateEnum),
@@ -1224,11 +1209,11 @@ export const CatalogLifecycle = /*@__PURE__*/ S.suspend(() =>
 export type CatalogDeviceAccessDeniedReasonsItemEnum =
   | "ACCESS_DENIED_REASON_UNSPECIFIED"
   | "EULA_NOT_ACCEPTED";
-export const CatalogDeviceAccessDeniedReasonsItemEnum = S.String;
+const CatalogDeviceAccessDeniedReasonsItemEnum = S.String;
 
 export type CatalogDeviceAccessDeniedReasonsItemEnumList =
   Array<CatalogDeviceAccessDeniedReasonsItemEnum>;
-export const CatalogDeviceAccessDeniedReasonsItemEnumList = /*@__PURE__*/ S.Array(
+const CatalogDeviceAccessDeniedReasonsItemEnumList = /*@__PURE__*/ S.Array(
   CatalogDeviceAccessDeniedReasonsItemEnum,
 ) as any as S.Schema<CatalogDeviceAccessDeniedReasonsItemEnumList>;
 
@@ -1239,7 +1224,7 @@ export interface CatalogAndroidDeviceDetails {
   /** Output only. Lists ABIs supported by the device (android.os.Build.SUPPORTED_ABIS), most preferred first, e.g. "arm64-v8a". */
   supportedAbis?: StringList;
 }
-export const CatalogAndroidDeviceDetails = /*@__PURE__*/ S.suspend(() =>
+const CatalogAndroidDeviceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildType: S.optional(S.String),
     supportedAbis: S.optional(StringList),
@@ -1250,14 +1235,12 @@ export const CatalogAndroidDeviceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-product metadata for the Automation (DeviceRun) product. */
 export type CatalogAutomationSupport = GoogleLongrunningCancelOperationRequest;
-export const CatalogAutomationSupport = GoogleLongrunningCancelOperationRequest;
-
 /** Per-product metadata for the DeviceStreaming product. */
 export interface CatalogDeviceStreamingSupport {
   /** Output only. Specifies the minimum Android Studio version that supports this device. Optional; only set when the device is known to work only at or above a certain Android Studio version. Expected format "major.minor.micro.patch", e.g. "5921.22.2211.8881706". */
   minimumAndroidStudioVersion?: string;
 }
-export const CatalogDeviceStreamingSupport = /*@__PURE__*/ S.suspend(() =>
+const CatalogDeviceStreamingSupport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumAndroidStudioVersion: S.optional(S.String),
   }),
@@ -1272,7 +1255,7 @@ export interface CatalogSupportedProduct {
   /** Output only. Represents DeviceStreaming, which is interactive remote device streaming. */
   deviceStreaming?: CatalogDeviceStreamingSupport;
 }
-export const CatalogSupportedProduct = /*@__PURE__*/ S.suspend(() =>
+const CatalogSupportedProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automation: S.optional(GoogleLongrunningCancelOperationRequest),
     deviceStreaming: S.optional(CatalogDeviceStreamingSupport),
@@ -1280,14 +1263,12 @@ export const CatalogSupportedProduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CatalogSupportedProduct" }) as any as S.Schema<CatalogSupportedProduct>;
 
 export type CatalogSupportedProductList = Array<CatalogSupportedProduct>;
-export const CatalogSupportedProductList = /*@__PURE__*/ S.Array(
+const CatalogSupportedProductList = /*@__PURE__*/ S.Array(
   CatalogSupportedProduct,
 ) as any as S.Schema<CatalogSupportedProductList>;
 
 /** iOS-specific device attributes. Reserved for future iOS-only fields. */
 export type CatalogIosDeviceDetails = GoogleLongrunningCancelOperationRequest;
-export const CatalogIosDeviceDetails = GoogleLongrunningCancelOperationRequest;
-
 /** Screen measurements of a device. */
 export interface CatalogScreenMetrics {
   /** Output only. Pixel density in dots per inch (dpi). */
@@ -1297,7 +1278,7 @@ export interface CatalogScreenMetrics {
   /** Output only. Width in pixels. */
   widthPx?: number;
 }
-export const CatalogScreenMetrics = /*@__PURE__*/ S.suspend(() =>
+const CatalogScreenMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     densityDpi: S.optional(S.Number),
     heightPx: S.optional(S.Number),
@@ -1306,10 +1287,10 @@ export const CatalogScreenMetrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CatalogScreenMetrics" }) as any as S.Schema<CatalogScreenMetrics>;
 
 export type CatalogDevicePlatformEnum = "PLATFORM_UNSPECIFIED" | "ANDROID" | "IOS";
-export const CatalogDevicePlatformEnum = S.String;
+const CatalogDevicePlatformEnum = S.String;
 
 export type CatalogDeviceHardwareTypeEnum = "HARDWARE_TYPE_UNSPECIFIED" | "PHYSICAL" | "VIRTUAL";
-export const CatalogDeviceHardwareTypeEnum = S.String;
+const CatalogDeviceHardwareTypeEnum = S.String;
 
 export type CatalogDeviceAvailabilityAvailableEnum =
   | "AVAILABILITY_UNSPECIFIED"
@@ -1317,7 +1298,7 @@ export type CatalogDeviceAvailabilityAvailableEnum =
   | "AVAILABILITY_LOW"
   | "AVAILABILITY_MEDIUM"
   | "AVAILABILITY_HIGH";
-export const CatalogDeviceAvailabilityAvailableEnum = S.String;
+const CatalogDeviceAvailabilityAvailableEnum = S.String;
 
 export type CatalogDeviceAvailabilityCapacityEnum =
   | "CAPACITY_UNSPECIFIED"
@@ -1325,7 +1306,7 @@ export type CatalogDeviceAvailabilityCapacityEnum =
   | "CAPACITY_LOW"
   | "CAPACITY_MEDIUM"
   | "CAPACITY_HIGH";
-export const CatalogDeviceAvailabilityCapacityEnum = S.String;
+const CatalogDeviceAvailabilityCapacityEnum = S.String;
 
 /** Fleet availability for a device configuration. */
 export interface CatalogDeviceAvailability {
@@ -1334,7 +1315,7 @@ export interface CatalogDeviceAvailability {
   /** Output only. Specifies the current capacity bucket for this device configuration. Represents the total number of online devices (idle or in use). */
   capacity?: CatalogDeviceAvailabilityCapacityEnum;
 }
-export const CatalogDeviceAvailability = /*@__PURE__*/ S.suspend(() =>
+const CatalogDeviceAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(CatalogDeviceAvailabilityAvailableEnum),
     capacity: S.optional(CatalogDeviceAvailabilityCapacityEnum),
@@ -1349,7 +1330,7 @@ export type CatalogDeviceFormFactorEnum =
   | "TABLET"
   | "WEARABLE"
   | "TV";
-export const CatalogDeviceFormFactorEnum = S.String;
+const CatalogDeviceFormFactorEnum = S.String;
 
 /** The lab hosting a device. */
 export interface CatalogLabInfo {
@@ -1358,7 +1339,7 @@ export interface CatalogLabInfo {
   /** Output only. The Unicode country/region code (CLDR) of the lab where the device is hosted, e.g. "US" for United States, "KR" for South Korea. Empty when the hosting region is not published. */
   regionCode?: string;
 }
-export const CatalogLabInfo = /*@__PURE__*/ S.suspend(() =>
+const CatalogLabInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     regionCode: S.optional(S.String),
@@ -1402,7 +1383,7 @@ export interface CatalogDevice {
   /** Output only. The lab hosting this device. */
   labInfo?: CatalogLabInfo;
 }
-export const CatalogDevice = /*@__PURE__*/ S.suspend(() =>
+const CatalogDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     lifecycle: S.optional(CatalogLifecycle),
@@ -1428,7 +1409,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1442,7 +1423,7 @@ export type GetProjectsLocationsSessionsViewEnum =
   | "SESSION_VIEW_UNSPECIFIED"
   | "SESSION_VIEW_BASIC"
   | "SESSION_VIEW_FULL";
-export const GetProjectsLocationsSessionsViewEnum = S.String;
+const GetProjectsLocationsSessionsViewEnum = S.String;
 
 export interface GetProjectsLocationsSessionsRequest {
   /** Required. The name of the session. Format: `projects/{project}/locations/{location}/sessions/{session}`. */
@@ -1450,7 +1431,7 @@ export interface GetProjectsLocationsSessionsRequest {
   /** Optional. The view of the session to return. If not set, the default BASIC view will be returned. */
   view?: GetProjectsLocationsSessionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsSessionsViewEnum.pipe(T.Query())),
@@ -1465,7 +1446,7 @@ export interface GetProjectsLocationsSoftwareVersionsRequest {
   /** Required. The name of the software version. Format: `projects/{project}/locations/global/softwareVersions/{software_version}`. */
   name: string;
 }
-export const GetProjectsLocationsSoftwareVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSoftwareVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1480,7 +1461,7 @@ export interface CatalogXcodeDetails {
   /** Output only. Lists the iOS versions this Xcode can run tests against, e.g. "16.6". This is a property of the toolchain, so it says nothing about whether a device on that iOS version is available; list the `Device` collection to find out. */
   supportedIosVersions?: StringList;
 }
-export const CatalogXcodeDetails = /*@__PURE__*/ S.suspend(() =>
+const CatalogXcodeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedIosVersions: S.optional(StringList),
   }),
@@ -1490,12 +1471,10 @@ export type CatalogSoftwareVersionSoftwareTypeEnum =
   | "SOFTWARE_TYPE_UNSPECIFIED"
   | "ANDROIDX_TEST_ORCHESTRATOR"
   | "XCODE";
-export const CatalogSoftwareVersionSoftwareTypeEnum = S.String;
+const CatalogSoftwareVersionSoftwareTypeEnum = S.String;
 
 /** AndroidX Test Orchestrator-specific attributes. Reserved for future orchestrator-only fields. */
 export type CatalogAndroidxTestOrchestratorDetails = GoogleLongrunningCancelOperationRequest;
-export const CatalogAndroidxTestOrchestratorDetails = GoogleLongrunningCancelOperationRequest;
-
 /** A single software version in the catalog. */
 export interface CatalogSoftwareVersion {
   /** Output only. Contains Xcode-specific attributes (set when software_type == XCODE). */
@@ -1515,7 +1494,7 @@ export interface CatalogSoftwareVersion {
   /** Output only. Indicates whether the system uses this version when a request does not select one explicitly. Exactly one version per `software_type` is the default, and it may change over time. */
   isDefault?: boolean;
 }
-export const CatalogSoftwareVersion = /*@__PURE__*/ S.suspend(() =>
+const CatalogSoftwareVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xcodeDetails: S.optional(CatalogXcodeDetails),
     softwareType: S.optional(CatalogSoftwareVersionSoftwareTypeEnum),
@@ -1540,7 +1519,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1559,7 +1538,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1568,7 +1547,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1585,7 +1564,7 @@ export interface ListProjectsLocationsDevicesRequest {
   /** Optional. An AIP-160 (https://google.aip.dev/160) filter expression restricting which devices are returned. An empty filter returns all devices. Filtering is supported over the `Device` fields, including nested fields via dot-path. Enum and string values must be double-quoted. Examples: * `platform = "ANDROID"` * `platform = "ANDROID" AND os_version = "34"` * `hardware_type = "PHYSICAL" AND form_factor = "PHONE"` * `android_details.build_type = "userdebug"` * `availability.capacity = "HIGH"` */
   filter?: string;
 }
-export const ListProjectsLocationsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1603,7 +1582,7 @@ export const ListProjectsLocationsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsDevicesRequest>;
 
 export type CatalogDeviceList = Array<CatalogDevice>;
-export const CatalogDeviceList = /*@__PURE__*/ S.Array(
+const CatalogDeviceList = /*@__PURE__*/ S.Array(
   CatalogDevice,
 ) as any as S.Schema<CatalogDeviceList>;
 
@@ -1614,7 +1593,7 @@ export interface CatalogListDevicesResponse {
   /** The list of devices. */
   devices?: CatalogDeviceList;
 }
-export const CatalogListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+const CatalogListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     devices: S.optional(CatalogDeviceList),
@@ -1635,7 +1614,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1654,7 +1633,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -1667,7 +1646,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1681,7 +1660,7 @@ export type ListProjectsLocationsSessionsViewEnum =
   | "SESSION_VIEW_UNSPECIFIED"
   | "SESSION_VIEW_BASIC"
   | "SESSION_VIEW_FULL";
-export const ListProjectsLocationsSessionsViewEnum = S.String;
+const ListProjectsLocationsSessionsViewEnum = S.String;
 
 export interface ListProjectsLocationsSessionsRequest {
   /** Required. Parent value for ListSessionsRequest The parent of the collection of sessions. Format: `projects/{project}/locations/{location}`. */
@@ -1697,7 +1676,7 @@ export interface ListProjectsLocationsSessionsRequest {
   /** Optional. A page token, received from a previous `ListSessions` call. Provide this to receive the subsequent page. When paginating, all other parameters provided to `ListSessions` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     view: S.optional(ListProjectsLocationsSessionsViewEnum.pipe(T.Query())),
@@ -1717,7 +1696,7 @@ export const ListProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsSessionsRequest>;
 
 export type SessionList = Array<Session>;
-export const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
+const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
 
 /** Response including listed sessions. */
 export interface ListSessionsResponse {
@@ -1728,7 +1707,7 @@ export interface ListSessionsResponse {
   /** The list of sessions. */
   sessions?: SessionList;
 }
-export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1746,7 +1725,7 @@ export interface ListProjectsLocationsSoftwareVersionsRequest {
   /** Required. The parent of the collection of software versions. Format: `projects/{project}/locations/global`. */
   parent: string;
 }
-export const ListProjectsLocationsSoftwareVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSoftwareVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1764,7 +1743,7 @@ export const ListProjectsLocationsSoftwareVersionsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsSoftwareVersionsRequest>;
 
 export type CatalogSoftwareVersionList = Array<CatalogSoftwareVersion>;
-export const CatalogSoftwareVersionList = /*@__PURE__*/ S.Array(
+const CatalogSoftwareVersionList = /*@__PURE__*/ S.Array(
   CatalogSoftwareVersion,
 ) as any as S.Schema<CatalogSoftwareVersionList>;
 
@@ -1775,7 +1754,7 @@ export interface CatalogListSoftwareVersionsResponse {
   /** Token to receive the next page of software versions. This will be absent if the end of the response list has been reached. */
   nextPageToken?: string;
 }
-export const CatalogListSoftwareVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const CatalogListSoftwareVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     softwareVersions: S.optional(CatalogSoftwareVersionList),
     nextPageToken: S.optional(S.String),

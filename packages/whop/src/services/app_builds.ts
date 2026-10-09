@@ -52,7 +52,7 @@ export interface CreateAppBuildRequestAttachment {
   /** The tag of an already-uploaded file. */
   id?: string;
 }
-export const CreateAppBuildRequestAttachment = /*@__PURE__*/ S.suspend(() =>
+const CreateAppBuildRequestAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct_upload_id: S.optional(S.String),
     id: S.optional(S.String),
@@ -63,12 +63,10 @@ export const CreateAppBuildRequestAttachment = /*@__PURE__*/ S.suspend(() =>
 
 /** The target platform for the build. */
 export type CreateAppBuildRequestPlatform = "ios" | "android" | "web";
-export const CreateAppBuildRequestPlatform = S.String;
+const CreateAppBuildRequestPlatform = S.String;
 
 /** An optional compressed archive (.zip or .gz) of the source code that produced this build, stored alongside the build so it can be downloaded later. Referenced like `attachment`, and must be a different file. */
 export type CreateAppBuildRequestSourceAttachment = CreateAppBuildRequestAttachment;
-export const CreateAppBuildRequestSourceAttachment = CreateAppBuildRequestAttachment;
-
 export type CreateAppBuildRequestSupportedAppViewTypesItem =
   | "hub"
   | "discover"
@@ -77,13 +75,13 @@ export type CreateAppBuildRequestSupportedAppViewTypesItem =
   | "analytics"
   | "skills"
   | "openapi";
-export const CreateAppBuildRequestSupportedAppViewTypesItem = S.String;
+const CreateAppBuildRequestSupportedAppViewTypesItem = S.String;
 
 /** The view types this build supports. Only list the ones its code implements. */
 export type CreateAppBuildRequestSupportedAppViewTypesList = Array<
   CreateAppBuildRequestSupportedAppViewTypesItem | (string & {})
 >;
-export const CreateAppBuildRequestSupportedAppViewTypesList = /*@__PURE__*/ S.Array(
+const CreateAppBuildRequestSupportedAppViewTypesList = /*@__PURE__*/ S.Array(
   CreateAppBuildRequestSupportedAppViewTypesItem,
 ) as any as S.Schema<CreateAppBuildRequestSupportedAppViewTypesList>;
 
@@ -105,7 +103,7 @@ export interface CreateAppBuildRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateAppBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ai_prompt_id: S.optional(S.String),
     app_id: S.optional(S.String),
@@ -120,11 +118,11 @@ export const CreateAppBuildRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The target platform for this build. */
 export type AppBuildPlatform = "ios" | "android" | "web";
-export const AppBuildPlatform = S.String;
+const AppBuildPlatform = S.String;
 
 /** The build's review status. */
 export type AppBuildStatus = "draft" | "pending" | "approved" | "rejected";
-export const AppBuildStatus = S.String;
+const AppBuildStatus = S.String;
 
 /** The view types this build supports, as declared by the developer. */
 export type AppBuildSupportedAppViewTypesItem =
@@ -135,10 +133,8 @@ export type AppBuildSupportedAppViewTypesItem =
   | "analytics"
   | "skills"
   | "openapi";
-export const AppBuildSupportedAppViewTypesItem = S.String;
-
 export type AppBuildSupportedAppViewTypesList = Array<AppBuildSupportedAppViewTypesItem>;
-export const AppBuildSupportedAppViewTypesList =
+const AppBuildSupportedAppViewTypesList =
   CreateAppBuildRequestSupportedAppViewTypesList as any as S.Schema<AppBuildSupportedAppViewTypesList>;
 
 export interface AppBuild {
@@ -162,7 +158,7 @@ export interface AppBuild {
   status: AppBuildStatus;
   supported_app_view_types: AppBuildSupportedAppViewTypesList;
 }
-export const AppBuild = /*@__PURE__*/ S.suspend(() =>
+const AppBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checksum: S.String,
     created_at: S.String,
@@ -181,17 +177,17 @@ export interface GetAppBuildRequest {
   /** App build ID, prefixed `abld_`. */
   id: string;
 }
-export const GetAppBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/app_builds/{id}", code: 200 })),
 ).annotate({ identifier: "GetAppBuildRequest" }) as any as S.Schema<GetAppBuildRequest>;
 
 export type ListAppBuildsRequestPlatform = "ios" | "android" | "web";
-export const ListAppBuildsRequestPlatform = S.String;
+const ListAppBuildsRequestPlatform = S.String;
 
 export type ListAppBuildsRequestStatus = "draft" | "pending" | "approved" | "rejected";
-export const ListAppBuildsRequestStatus = S.String;
+const ListAppBuildsRequestStatus = S.String;
 
 export interface ListAppBuildsRequest {
   /** The app to list builds for, prefixed `app_`. */
@@ -213,7 +209,7 @@ export interface ListAppBuildsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListAppBuildsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppBuildsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_id: S.String.pipe(T.Query()),
     platform: S.optional(ListAppBuildsRequestPlatform.pipe(T.Query())),
@@ -228,7 +224,7 @@ export const ListAppBuildsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAppBuildsRequest" }) as any as S.Schema<ListAppBuildsRequest>;
 
 export type ListAppBuildsResponseDataList = Array<AppBuild>;
-export const ListAppBuildsResponseDataList = /*@__PURE__*/ S.Array(
+const ListAppBuildsResponseDataList = /*@__PURE__*/ S.Array(
   AppBuild,
 ) as any as S.Schema<ListAppBuildsResponseDataList>;
 
@@ -238,7 +234,7 @@ export interface ListAppBuildsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListAppBuildsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListAppBuildsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -253,7 +249,7 @@ export interface ListAppBuildsResponse {
   data: ListAppBuildsResponseDataList;
   page_info: ListAppBuildsResponsePageInfo;
 }
-export const ListAppBuildsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppBuildsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAppBuildsResponseDataList,
     page_info: ListAppBuildsResponsePageInfo,
@@ -266,7 +262,7 @@ export interface PromoteAppBuildRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const PromoteAppBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const PromoteAppBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),

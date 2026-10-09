@@ -19,7 +19,7 @@ export interface AttachContainerRequest {
   /** The name of the container instance. */
   containerName: string;
 }
-export const AttachContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -42,7 +42,7 @@ export interface ContainerAttachResponse {
   /** The password to the output stream from the attach. Send as an Authorization header value when connecting to the websocketUri. */
   password?: string | Redacted.Redacted<string>;
 }
-export const ContainerAttachResponse = /*@__PURE__*/ S.suspend(() =>
+const ContainerAttachResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webSocketUri: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -51,7 +51,7 @@ export const ContainerAttachResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The container group SKU. */
 export type ContainerGroupSku = "NotSpecified" | "Standard" | "Dedicated" | "Confidential";
-export const ContainerGroupSku = S.String;
+const ContainerGroupSku = S.String;
 
 /** The container group encryption properties. */
 export interface EncryptionProperties {
@@ -64,7 +64,7 @@ export interface EncryptionProperties {
   /** The keyvault managed identity. */
   identity?: string;
 }
-export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
+const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultBaseUrl: S.String,
     keyName: S.String,
@@ -75,13 +75,13 @@ export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The commands to execute within the container instance in exec form. */
 export type ContainerPropertiesInputCommandList = Array<string>;
-export const ContainerPropertiesInputCommandList = /*@__PURE__*/ S.Array(
+const ContainerPropertiesInputCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerPropertiesInputCommandList>;
 
 /** The protocol associated with the port. */
 export type ContainerNetworkProtocol = "TCP" | "UDP";
-export const ContainerNetworkProtocol = S.String;
+const ContainerNetworkProtocol = S.String;
 
 /** The port exposed on the container instance. */
 export interface ContainerPort {
@@ -90,7 +90,7 @@ export interface ContainerPort {
   /** The port number exposed within the container group. */
   port: number;
 }
-export const ContainerPort = /*@__PURE__*/ S.suspend(() =>
+const ContainerPort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocol: S.optional(ContainerNetworkProtocol),
     port: S.Number,
@@ -99,7 +99,7 @@ export const ContainerPort = /*@__PURE__*/ S.suspend(() =>
 
 /** The exposed ports on the container instance. */
 export type ContainerPropertiesInputPortsList = Array<ContainerPort>;
-export const ContainerPropertiesInputPortsList = /*@__PURE__*/ S.Array(
+const ContainerPropertiesInputPortsList = /*@__PURE__*/ S.Array(
   ContainerPort,
 ) as any as S.Schema<ContainerPropertiesInputPortsList>;
 
@@ -114,7 +114,7 @@ export interface EnvironmentVariable {
   /** The reference of the secure environment variable. */
   secureValueReference?: string;
 }
-export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.optional(S.String),
@@ -125,13 +125,13 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** The environment variables to set in the container instance. */
 export type ContainerPropertiesInputEnvironmentVariablesList = Array<EnvironmentVariable>;
-export const ContainerPropertiesInputEnvironmentVariablesList = /*@__PURE__*/ S.Array(
+const ContainerPropertiesInputEnvironmentVariablesList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<ContainerPropertiesInputEnvironmentVariablesList>;
 
 /** The SKU of the GPU resource. */
 export type GpuSku = "K80" | "P100" | "V100";
-export const GpuSku = S.String;
+const GpuSku = S.String;
 
 /** The GPU resource. */
 export interface GpuResource {
@@ -140,7 +140,7 @@ export interface GpuResource {
   /** The SKU of the GPU resource. */
   sku: GpuSku | (string & {});
 }
-export const GpuResource = /*@__PURE__*/ S.suspend(() =>
+const GpuResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     sku: GpuSku,
@@ -156,7 +156,7 @@ export interface ResourceRequests {
   /** The GPU request of this container instance. */
   gpu?: GpuResource;
 }
-export const ResourceRequests = /*@__PURE__*/ S.suspend(() =>
+const ResourceRequests = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryInGB: S.Number,
     cpu: S.Number,
@@ -173,7 +173,7 @@ export interface ResourceLimits {
   /** The GPU limit of this container instance. */
   gpu?: GpuResource;
 }
-export const ResourceLimits = /*@__PURE__*/ S.suspend(() =>
+const ResourceLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryInGB: S.optional(S.Number),
     cpu: S.optional(S.Number),
@@ -188,7 +188,7 @@ export interface ResourceRequirements {
   /** The resource limits of this container instance. */
   limits?: ResourceLimits;
 }
-export const ResourceRequirements = /*@__PURE__*/ S.suspend(() =>
+const ResourceRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: ResourceRequests,
     limits: S.optional(ResourceLimits),
@@ -204,7 +204,7 @@ export interface VolumeMount {
   /** The flag indicating whether the volume mount is read-only. */
   readOnly?: boolean;
 }
-export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
+const VolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     mountPath: S.String,
@@ -214,13 +214,13 @@ export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
 
 /** The volume mounts available to the container instance. */
 export type ContainerPropertiesInputVolumeMountsList = Array<VolumeMount>;
-export const ContainerPropertiesInputVolumeMountsList = /*@__PURE__*/ S.Array(
+const ContainerPropertiesInputVolumeMountsList = /*@__PURE__*/ S.Array(
   VolumeMount,
 ) as any as S.Schema<ContainerPropertiesInputVolumeMountsList>;
 
 /** The commands to execute within the container. */
 export type ContainerExecCommandList = Array<string>;
-export const ContainerExecCommandList =
+const ContainerExecCommandList =
   ContainerPropertiesInputCommandList as any as S.Schema<ContainerExecCommandList>;
 
 /** The container execution command, for liveness or readiness probe */
@@ -228,7 +228,7 @@ export interface ContainerExec {
   /** The commands to execute within the container. */
   command?: ContainerExecCommandList;
 }
-export const ContainerExec = /*@__PURE__*/ S.suspend(() =>
+const ContainerExec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(ContainerExecCommandList),
   }),
@@ -236,7 +236,7 @@ export const ContainerExec = /*@__PURE__*/ S.suspend(() =>
 
 /** The scheme. */
 export type Scheme = "http" | "https";
-export const Scheme = S.String;
+const Scheme = S.String;
 
 /** The HTTP header. */
 export interface HttpHeader {
@@ -245,7 +245,7 @@ export interface HttpHeader {
   /** The header value. */
   value?: string;
 }
-export const HttpHeader = /*@__PURE__*/ S.suspend(() =>
+const HttpHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -254,7 +254,7 @@ export const HttpHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** The HTTP headers. */
 export type ContainerHttpGetHttpHeadersList = Array<HttpHeader>;
-export const ContainerHttpGetHttpHeadersList = /*@__PURE__*/ S.Array(
+const ContainerHttpGetHttpHeadersList = /*@__PURE__*/ S.Array(
   HttpHeader,
 ) as any as S.Schema<ContainerHttpGetHttpHeadersList>;
 
@@ -269,7 +269,7 @@ export interface ContainerHttpGet {
   /** The HTTP headers. */
   httpHeaders?: ContainerHttpGetHttpHeadersList;
 }
-export const ContainerHttpGet = /*@__PURE__*/ S.suspend(() =>
+const ContainerHttpGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     port: S.Number,
@@ -295,7 +295,7 @@ export interface ContainerProbe {
   /** The timeout seconds. */
   timeoutSeconds?: number;
 }
-export const ContainerProbe = /*@__PURE__*/ S.suspend(() =>
+const ContainerProbe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exec: S.optional(ContainerExec),
     httpGet: S.optional(ContainerHttpGet),
@@ -309,12 +309,12 @@ export const ContainerProbe = /*@__PURE__*/ S.suspend(() =>
 
 /** The capabilities to add to the container. */
 export type SecurityContextCapabilitiesDefinitionAddList = Array<string>;
-export const SecurityContextCapabilitiesDefinitionAddList =
+const SecurityContextCapabilitiesDefinitionAddList =
   ContainerPropertiesInputCommandList as any as S.Schema<SecurityContextCapabilitiesDefinitionAddList>;
 
 /** The capabilities to drop from the container. */
 export type SecurityContextCapabilitiesDefinitionDropList = Array<string>;
-export const SecurityContextCapabilitiesDefinitionDropList =
+const SecurityContextCapabilitiesDefinitionDropList =
   ContainerPropertiesInputCommandList as any as S.Schema<SecurityContextCapabilitiesDefinitionDropList>;
 
 /** The capabilities to add or drop from a container. */
@@ -324,7 +324,7 @@ export interface SecurityContextCapabilitiesDefinition {
   /** The capabilities to drop from the container. */
   drop?: SecurityContextCapabilitiesDefinitionDropList;
 }
-export const SecurityContextCapabilitiesDefinition = /*@__PURE__*/ S.suspend(() =>
+const SecurityContextCapabilitiesDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     add: S.optional(SecurityContextCapabilitiesDefinitionAddList),
     drop: S.optional(SecurityContextCapabilitiesDefinitionDropList),
@@ -348,7 +348,7 @@ export interface SecurityContextDefinition {
   /** a base64 encoded string containing the contents of the JSON in the seccomp profile */
   seccompProfile?: string;
 }
-export const SecurityContextDefinition = /*@__PURE__*/ S.suspend(() =>
+const SecurityContextDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privileged: S.optional(S.Boolean),
     allowPrivilegeEscalation: S.optional(S.Boolean),
@@ -363,7 +363,7 @@ export const SecurityContextDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The key value pairs dictionary in the config map. */
 export type ConfigMapKeyValuePairsMap = { [key: string]: string | undefined };
-export const ConfigMapKeyValuePairsMap = /*@__PURE__*/ S.Record(
+const ConfigMapKeyValuePairsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ConfigMapKeyValuePairsMap>;
@@ -373,7 +373,7 @@ export interface ConfigMap {
   /** The key value pairs dictionary in the config map. */
   keyValuePairs?: ConfigMapKeyValuePairsMap;
 }
-export const ConfigMap = /*@__PURE__*/ S.suspend(() =>
+const ConfigMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyValuePairs: S.optional(ConfigMapKeyValuePairsMap),
   }),
@@ -402,7 +402,7 @@ export interface ContainerPropertiesInput {
   /** The config map. */
   configMap?: ConfigMap;
 }
-export const ContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
     command: S.optional(ContainerPropertiesInputCommandList),
@@ -424,7 +424,7 @@ export interface ContainerInput {
   /** The properties of the container instance. */
   properties: ContainerPropertiesInput;
 }
-export const ContainerInput = /*@__PURE__*/ S.suspend(() =>
+const ContainerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: ContainerPropertiesInput,
@@ -433,24 +433,24 @@ export const ContainerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The containers within the container group. */
 export type ContainerGroupProfilePropertiesInputContainersList = Array<ContainerInput>;
-export const ContainerGroupProfilePropertiesInputContainersList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfilePropertiesInputContainersList = /*@__PURE__*/ S.Array(
   ContainerInput,
 ) as any as S.Schema<ContainerGroupProfilePropertiesInputContainersList>;
 
 /** The command to execute within the init container in exec form. */
 export type InitContainerPropertiesDefinitionInputCommandList = Array<string>;
-export const InitContainerPropertiesDefinitionInputCommandList =
+const InitContainerPropertiesDefinitionInputCommandList =
   ContainerPropertiesInputCommandList as any as S.Schema<InitContainerPropertiesDefinitionInputCommandList>;
 
 /** The environment variables to set in the init container. */
 export type InitContainerPropertiesDefinitionInputEnvironmentVariablesList =
   Array<EnvironmentVariable>;
-export const InitContainerPropertiesDefinitionInputEnvironmentVariablesList =
+const InitContainerPropertiesDefinitionInputEnvironmentVariablesList =
   ContainerPropertiesInputEnvironmentVariablesList as any as S.Schema<InitContainerPropertiesDefinitionInputEnvironmentVariablesList>;
 
 /** The volume mounts available to the init container. */
 export type InitContainerPropertiesDefinitionInputVolumeMountsList = Array<VolumeMount>;
-export const InitContainerPropertiesDefinitionInputVolumeMountsList =
+const InitContainerPropertiesDefinitionInputVolumeMountsList =
   ContainerPropertiesInputVolumeMountsList as any as S.Schema<InitContainerPropertiesDefinitionInputVolumeMountsList>;
 
 /** The init container definition properties. */
@@ -466,7 +466,7 @@ export interface InitContainerPropertiesDefinitionInput {
   /** The container security properties. */
   securityContext?: SecurityContextDefinition;
 }
-export const InitContainerPropertiesDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+const InitContainerPropertiesDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
     command: S.optional(InitContainerPropertiesDefinitionInputCommandList),
@@ -487,7 +487,7 @@ export interface InitContainerDefinitionInput {
   /** The properties for the init container. */
   properties: InitContainerPropertiesDefinitionInput;
 }
-export const InitContainerDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+const InitContainerDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: InitContainerPropertiesDefinitionInput,
@@ -499,7 +499,7 @@ export const InitContainerDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 /** The init containers for a container group. */
 export type ContainerGroupProfilePropertiesInputInitContainersList =
   Array<InitContainerDefinitionInput>;
-export const ContainerGroupProfilePropertiesInputInitContainersList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfilePropertiesInputInitContainersList = /*@__PURE__*/ S.Array(
   InitContainerDefinitionInput,
 ) as any as S.Schema<ContainerGroupProfilePropertiesInputInitContainersList>;
 
@@ -514,7 +514,7 @@ export interface DeploymentExtensionSpecProperties {
   /** Protected settings for the extension. */
   protectedSettings?: unknown;
 }
-export const DeploymentExtensionSpecProperties = /*@__PURE__*/ S.suspend(() =>
+const DeploymentExtensionSpecProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensionType: S.String,
     version: S.String,
@@ -532,7 +532,7 @@ export interface DeploymentExtensionSpec {
   /** Extension specific properties */
   properties?: DeploymentExtensionSpecProperties;
 }
-export const DeploymentExtensionSpec = /*@__PURE__*/ S.suspend(() =>
+const DeploymentExtensionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: S.optional(DeploymentExtensionSpecProperties),
@@ -541,7 +541,7 @@ export const DeploymentExtensionSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** extensions used by virtual kubelet */
 export type ContainerGroupProfilePropertiesInputExtensionsList = Array<DeploymentExtensionSpec>;
-export const ContainerGroupProfilePropertiesInputExtensionsList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfilePropertiesInputExtensionsList = /*@__PURE__*/ S.Array(
   DeploymentExtensionSpec,
 ) as any as S.Schema<ContainerGroupProfilePropertiesInputExtensionsList>;
 
@@ -560,7 +560,7 @@ export interface ImageRegistryCredential {
   /** The identity URL for the private registry. */
   identityUrl?: string;
 }
-export const ImageRegistryCredential = /*@__PURE__*/ S.suspend(() =>
+const ImageRegistryCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     server: S.String,
     username: S.optional(S.String),
@@ -574,19 +574,16 @@ export const ImageRegistryCredential = /*@__PURE__*/ S.suspend(() =>
 /** The image registry credentials by which the container group is created from. */
 export type ContainerGroupProfilePropertiesInputImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-export const ContainerGroupProfilePropertiesInputImageRegistryCredentialsList =
-  /*@__PURE__*/ S.Array(
-    ImageRegistryCredential,
-  ) as any as S.Schema<ContainerGroupProfilePropertiesInputImageRegistryCredentialsList>;
+const ContainerGroupProfilePropertiesInputImageRegistryCredentialsList = /*@__PURE__*/ S.Array(
+  ImageRegistryCredential,
+) as any as S.Schema<ContainerGroupProfilePropertiesInputImageRegistryCredentialsList>;
 
 /** Restart policy for all containers within the container group. - `Always` Always restart - `OnFailure` Restart on failure - `Never` Never restart */
 export type ContainerGroupRestartPolicy = "Always" | "OnFailure" | "Never";
-export const ContainerGroupRestartPolicy = S.String;
+const ContainerGroupRestartPolicy = S.String;
 
 /** The protocol associated with the port. */
 export type ContainerGroupNetworkProtocol = "TCP" | "UDP";
-export const ContainerGroupNetworkProtocol = S.String;
-
 /** The port exposed on the container group. */
 export interface Port {
   /** The protocol associated with the port. */
@@ -594,16 +591,14 @@ export interface Port {
   /** The port number. */
   port: number;
 }
-export const Port = ContainerPort as any as S.Schema<Port>;
-
 /** The list of ports exposed on the container group. */
 export type IpAddressInputPortsList = Array<Port>;
-export const IpAddressInputPortsList =
+const IpAddressInputPortsList =
   ContainerPropertiesInputPortsList as any as S.Schema<IpAddressInputPortsList>;
 
 /** Specifies if the IP is exposed to the public internet or private VNET. */
 export type ContainerGroupIpAddressType = "Public" | "Private";
-export const ContainerGroupIpAddressType = S.String;
+const ContainerGroupIpAddressType = S.String;
 
 /** The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant. */
 export type IpAddressInputAutoGeneratedDomainNameLabelScope =
@@ -612,7 +607,7 @@ export type IpAddressInputAutoGeneratedDomainNameLabelScope =
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
   | "Noreuse";
-export const IpAddressInputAutoGeneratedDomainNameLabelScope = S.String;
+const IpAddressInputAutoGeneratedDomainNameLabelScope = S.String;
 
 /** IP address for the container group. */
 export interface IpAddressInput {
@@ -629,7 +624,7 @@ export interface IpAddressInput {
     | IpAddressInputAutoGeneratedDomainNameLabelScope
     | (string & {});
 }
-export const IpAddressInput = /*@__PURE__*/ S.suspend(() =>
+const IpAddressInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: IpAddressInputPortsList,
     type: ContainerGroupIpAddressType,
@@ -641,7 +636,7 @@ export const IpAddressInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The operating system type required by the containers in the container group. */
 export type OperatingSystemTypes = "Windows" | "Linux";
-export const OperatingSystemTypes = S.String;
+const OperatingSystemTypes = S.String;
 
 /** The properties of the Azure File volume. Azure File shares are mounted as volumes. */
 export interface AzureFileVolume {
@@ -658,7 +653,7 @@ export interface AzureFileVolume {
   /** The client id of the user-assigned managed identity that has access to the Azure File share. */
   userAssignedIdentityClientId?: string;
 }
-export const AzureFileVolume = /*@__PURE__*/ S.suspend(() =>
+const AzureFileVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shareName: S.String,
     readOnly: S.optional(S.Boolean),
@@ -671,11 +666,11 @@ export const AzureFileVolume = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines files for a secret volume. Dictionary keys are file names and values are Base64-encoded secret data used as file contents. The values are sensitive, and the service does not return the contents of this property in GET responses. */
 export type VolumeSecretMap = { [key: string]: string | undefined };
-export const VolumeSecretMap = ConfigMapKeyValuePairsMap as any as S.Schema<VolumeSecretMap>;
+const VolumeSecretMap = ConfigMapKeyValuePairsMap as any as S.Schema<VolumeSecretMap>;
 
 /** Defines files for a secret reference volume. Dictionary keys are file names and values identify entries in the container group's secretReferences collection. This property contains reference names rather than secret values. */
 export type VolumeSecretReferenceMap = { [key: string]: string | undefined };
-export const VolumeSecretReferenceMap =
+const VolumeSecretReferenceMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<VolumeSecretReferenceMap>;
 
 /** Represents a volume that is populated with the contents of a git repository */
@@ -687,7 +682,7 @@ export interface GitRepoVolume {
   /** Commit hash for the specified revision. */
   revision?: string;
 }
-export const GitRepoVolume = /*@__PURE__*/ S.suspend(() =>
+const GitRepoVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory: S.optional(S.String),
     repository: S.String,
@@ -710,7 +705,7 @@ export interface Volume {
   /** The git repo volume. */
   gitRepo?: GitRepoVolume;
 }
-export const Volume = /*@__PURE__*/ S.suspend(() =>
+const Volume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     azureFile: S.optional(AzureFileVolume),
@@ -723,17 +718,17 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ContainerGroupProfilePropertiesInputVolumesList = Array<Volume>;
-export const ContainerGroupProfilePropertiesInputVolumesList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfilePropertiesInputVolumesList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<ContainerGroupProfilePropertiesInputVolumesList>;
 
 /** The log type to be used. */
 export type LogAnalyticsLogType = "ContainerInsights" | "ContainerInstanceLogs";
-export const LogAnalyticsLogType = S.String;
+const LogAnalyticsLogType = S.String;
 
 /** Metadata for log analytics. */
 export type LogAnalyticsMetadataMap = { [key: string]: string | undefined };
-export const LogAnalyticsMetadataMap =
+const LogAnalyticsMetadataMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<LogAnalyticsMetadataMap>;
 
 /** Container group log analytics information. */
@@ -749,7 +744,7 @@ export interface LogAnalytics {
   /** The workspace resource id for log analytics */
   workspaceResourceId?: string;
 }
-export const LogAnalytics = /*@__PURE__*/ S.suspend(() =>
+const LogAnalytics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceId: S.String,
     workspaceKey: S.String,
@@ -764,7 +759,7 @@ export interface ContainerGroupDiagnostics {
   /** Container group log analytics information. */
   logAnalytics?: LogAnalytics;
 }
-export const ContainerGroupDiagnostics = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupDiagnostics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logAnalytics: S.optional(LogAnalytics),
   }),
@@ -774,14 +769,14 @@ export const ContainerGroupDiagnostics = /*@__PURE__*/ S.suspend(() =>
 
 /** The priority of the container group. */
 export type ContainerGroupPriority = "Regular" | "Spot";
-export const ContainerGroupPriority = S.String;
+const ContainerGroupPriority = S.String;
 
 /** The properties for confidential container group */
 export interface ConfidentialComputeProperties {
   /** The base64 encoded confidential compute enforcement policy */
   ccePolicy?: string;
 }
-export const ConfidentialComputeProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfidentialComputeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ccePolicy: S.optional(S.String),
   }),
@@ -826,7 +821,7 @@ export interface ContainerGroupProfilePropertiesInput {
   /** Gets or sets Krypton use property. */
   useKrypton?: boolean;
 }
-export const ContainerGroupProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(ContainerGroupSku),
     encryptionProperties: S.optional(EncryptionProperties),
@@ -854,12 +849,12 @@ export const ContainerGroupProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type CGProfileCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const CGProfileCreateOrUpdateRequestTagsMap =
+const CGProfileCreateOrUpdateRequestTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<CGProfileCreateOrUpdateRequestTagsMap>;
 
 /** The availability zones. */
 export type CGProfileCreateOrUpdateRequestZonesList = Array<string>;
-export const CGProfileCreateOrUpdateRequestZonesList =
+const CGProfileCreateOrUpdateRequestZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<CGProfileCreateOrUpdateRequestZonesList>;
 
 export interface CGProfileCreateOrUpdateRequest {
@@ -878,7 +873,7 @@ export interface CGProfileCreateOrUpdateRequest {
   /** The availability zones. */
   zones?: CGProfileCreateOrUpdateRequestZonesList;
 }
-export const CGProfileCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CGProfileCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -901,11 +896,11 @@ export const CGProfileCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -922,7 +917,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -935,17 +930,17 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The commands to execute within the container instance in exec form. */
 export type ContainerPropertiesCommandList = Array<string>;
-export const ContainerPropertiesCommandList =
+const ContainerPropertiesCommandList =
   ContainerPropertiesInputCommandList as any as S.Schema<ContainerPropertiesCommandList>;
 
 /** The exposed ports on the container instance. */
 export type ContainerPropertiesPortsList = Array<ContainerPort>;
-export const ContainerPropertiesPortsList =
+const ContainerPropertiesPortsList =
   ContainerPropertiesInputPortsList as any as S.Schema<ContainerPropertiesPortsList>;
 
 /** The environment variables to set in the container instance. */
 export type ContainerPropertiesEnvironmentVariablesList = Array<EnvironmentVariable>;
-export const ContainerPropertiesEnvironmentVariablesList =
+const ContainerPropertiesEnvironmentVariablesList =
   ContainerPropertiesInputEnvironmentVariablesList as any as S.Schema<ContainerPropertiesEnvironmentVariablesList>;
 
 /** The container instance state. */
@@ -961,7 +956,7 @@ export interface ContainerState {
   /** The human-readable status of the container instance state. */
   detailStatus?: string;
 }
-export const ContainerState = /*@__PURE__*/ S.suspend(() =>
+const ContainerState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -986,7 +981,7 @@ export interface Event {
   /** The event type. */
   type?: string;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     firstTimestamp: S.optional(S.String),
@@ -999,7 +994,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 
 /** The events of the container instance. */
 export type ContainerPropertiesInstanceViewEventsList = Array<Event>;
-export const ContainerPropertiesInstanceViewEventsList = /*@__PURE__*/ S.Array(
+const ContainerPropertiesInstanceViewEventsList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<ContainerPropertiesInstanceViewEventsList>;
 
@@ -1014,7 +1009,7 @@ export interface ContainerPropertiesInstanceView {
   /** The events of the container instance. */
   events?: ContainerPropertiesInstanceViewEventsList;
 }
-export const ContainerPropertiesInstanceView = /*@__PURE__*/ S.suspend(() =>
+const ContainerPropertiesInstanceView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restartCount: S.optional(S.Number),
     currentState: S.optional(ContainerState),
@@ -1027,7 +1022,7 @@ export const ContainerPropertiesInstanceView = /*@__PURE__*/ S.suspend(() =>
 
 /** The volume mounts available to the container instance. */
 export type ContainerPropertiesVolumeMountsList = Array<VolumeMount>;
-export const ContainerPropertiesVolumeMountsList =
+const ContainerPropertiesVolumeMountsList =
   ContainerPropertiesInputVolumeMountsList as any as S.Schema<ContainerPropertiesVolumeMountsList>;
 
 /** The container instance properties. */
@@ -1055,7 +1050,7 @@ export interface ContainerProperties {
   /** The config map. */
   configMap?: ConfigMap;
 }
-export const ContainerProperties = /*@__PURE__*/ S.suspend(() =>
+const ContainerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
     command: S.optional(ContainerPropertiesCommandList),
@@ -1078,7 +1073,7 @@ export interface Container {
   /** The properties of the container instance. */
   properties: ContainerProperties;
 }
-export const Container = /*@__PURE__*/ S.suspend(() =>
+const Container = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: ContainerProperties,
@@ -1087,25 +1082,22 @@ export const Container = /*@__PURE__*/ S.suspend(() =>
 
 /** The containers within the container group. */
 export type ContainerGroupProfilePropertiesContainersList = Array<Container>;
-export const ContainerGroupProfilePropertiesContainersList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfilePropertiesContainersList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<ContainerGroupProfilePropertiesContainersList>;
 
 /** The command to execute within the init container in exec form. */
 export type InitContainerPropertiesDefinitionCommandList = Array<string>;
-export const InitContainerPropertiesDefinitionCommandList =
+const InitContainerPropertiesDefinitionCommandList =
   ContainerPropertiesInputCommandList as any as S.Schema<InitContainerPropertiesDefinitionCommandList>;
 
 /** The environment variables to set in the init container. */
 export type InitContainerPropertiesDefinitionEnvironmentVariablesList = Array<EnvironmentVariable>;
-export const InitContainerPropertiesDefinitionEnvironmentVariablesList =
+const InitContainerPropertiesDefinitionEnvironmentVariablesList =
   ContainerPropertiesInputEnvironmentVariablesList as any as S.Schema<InitContainerPropertiesDefinitionEnvironmentVariablesList>;
 
 /** The events of the init container. */
 export type InitContainerPropertiesDefinitionInstanceViewEventsList = Array<Event>;
-export const InitContainerPropertiesDefinitionInstanceViewEventsList =
-  ContainerPropertiesInstanceViewEventsList as any as S.Schema<InitContainerPropertiesDefinitionInstanceViewEventsList>;
-
 /** The instance view of the init container. Only valid in response. */
 export interface InitContainerPropertiesDefinitionInstanceView {
   /** The number of times that the init container has been restarted. */
@@ -1117,12 +1109,12 @@ export interface InitContainerPropertiesDefinitionInstanceView {
   /** The events of the init container. */
   events?: InitContainerPropertiesDefinitionInstanceViewEventsList;
 }
-export const InitContainerPropertiesDefinitionInstanceView =
+const InitContainerPropertiesDefinitionInstanceView =
   ContainerPropertiesInstanceView as any as S.Schema<InitContainerPropertiesDefinitionInstanceView>;
 
 /** The volume mounts available to the init container. */
 export type InitContainerPropertiesDefinitionVolumeMountsList = Array<VolumeMount>;
-export const InitContainerPropertiesDefinitionVolumeMountsList =
+const InitContainerPropertiesDefinitionVolumeMountsList =
   ContainerPropertiesInputVolumeMountsList as any as S.Schema<InitContainerPropertiesDefinitionVolumeMountsList>;
 
 /** The init container definition properties. */
@@ -1140,7 +1132,7 @@ export interface InitContainerPropertiesDefinition {
   /** The container security properties. */
   securityContext?: SecurityContextDefinition;
 }
-export const InitContainerPropertiesDefinition = /*@__PURE__*/ S.suspend(() =>
+const InitContainerPropertiesDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
     command: S.optional(InitContainerPropertiesDefinitionCommandList),
@@ -1160,7 +1152,7 @@ export interface InitContainerDefinition {
   /** The properties for the init container. */
   properties: InitContainerPropertiesDefinition;
 }
-export const InitContainerDefinition = /*@__PURE__*/ S.suspend(() =>
+const InitContainerDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: InitContainerPropertiesDefinition,
@@ -1169,25 +1161,25 @@ export const InitContainerDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The init containers for a container group. */
 export type ContainerGroupProfilePropertiesInitContainersList = Array<InitContainerDefinition>;
-export const ContainerGroupProfilePropertiesInitContainersList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfilePropertiesInitContainersList = /*@__PURE__*/ S.Array(
   InitContainerDefinition,
 ) as any as S.Schema<ContainerGroupProfilePropertiesInitContainersList>;
 
 /** extensions used by virtual kubelet */
 export type ContainerGroupProfilePropertiesExtensionsList = Array<DeploymentExtensionSpec>;
-export const ContainerGroupProfilePropertiesExtensionsList =
+const ContainerGroupProfilePropertiesExtensionsList =
   ContainerGroupProfilePropertiesInputExtensionsList as any as S.Schema<ContainerGroupProfilePropertiesExtensionsList>;
 
 /** The image registry credentials by which the container group is created from. */
 export type ContainerGroupProfilePropertiesImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-export const ContainerGroupProfilePropertiesImageRegistryCredentialsList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfilePropertiesImageRegistryCredentialsList = /*@__PURE__*/ S.Array(
   ImageRegistryCredential,
 ) as any as S.Schema<ContainerGroupProfilePropertiesImageRegistryCredentialsList>;
 
 /** The list of ports exposed on the container group. */
 export type IpAddressPortsList = Array<Port>;
-export const IpAddressPortsList = IpAddressInputPortsList as any as S.Schema<IpAddressPortsList>;
+const IpAddressPortsList = IpAddressInputPortsList as any as S.Schema<IpAddressPortsList>;
 
 /** The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant. */
 export type IpAddressAutoGeneratedDomainNameLabelScope =
@@ -1196,7 +1188,7 @@ export type IpAddressAutoGeneratedDomainNameLabelScope =
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
   | "Noreuse";
-export const IpAddressAutoGeneratedDomainNameLabelScope = S.String;
+const IpAddressAutoGeneratedDomainNameLabelScope = S.String;
 
 /** IP address for the container group. */
 export interface IpAddress {
@@ -1213,7 +1205,7 @@ export interface IpAddress {
   /** The FQDN for the IP. */
   fqdn?: string;
 }
-export const IpAddress = /*@__PURE__*/ S.suspend(() =>
+const IpAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: IpAddressPortsList,
     type: ContainerGroupIpAddressType,
@@ -1226,12 +1218,12 @@ export const IpAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ContainerGroupProfilePropertiesVolumesList = Array<Volume>;
-export const ContainerGroupProfilePropertiesVolumesList =
+const ContainerGroupProfilePropertiesVolumesList =
   ContainerGroupProfilePropertiesInputVolumesList as any as S.Schema<ContainerGroupProfilePropertiesVolumesList>;
 
 /** Registered revisions are calculated at request time based off the records in the table logs. */
 export type ContainerGroupProfilePropertiesRegisteredRevisionsList = Array<number>;
-export const ContainerGroupProfilePropertiesRegisteredRevisionsList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfilePropertiesRegisteredRevisionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ContainerGroupProfilePropertiesRegisteredRevisionsList>;
 
@@ -1276,7 +1268,7 @@ export interface ContainerGroupProfileProperties {
   /** Gets or sets Krypton use property. */
   useKrypton?: boolean;
 }
-export const ContainerGroupProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(ContainerGroupSku),
     encryptionProperties: S.optional(EncryptionProperties),
@@ -1306,12 +1298,12 @@ export const ContainerGroupProfileProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CGProfileCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const CGProfileCreateOrUpdateResponseTagsMap =
+const CGProfileCreateOrUpdateResponseTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<CGProfileCreateOrUpdateResponseTagsMap>;
 
 /** The availability zones. */
 export type CGProfileCreateOrUpdateResponseZonesList = Array<string>;
-export const CGProfileCreateOrUpdateResponseZonesList =
+const CGProfileCreateOrUpdateResponseZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<CGProfileCreateOrUpdateResponseZonesList>;
 
 export interface CGProfileCreateOrUpdateResponse {
@@ -1332,7 +1324,7 @@ export interface CGProfileCreateOrUpdateResponse {
   /** The availability zones. */
   zones?: CGProfileCreateOrUpdateResponseZonesList;
 }
-export const CGProfileCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CGProfileCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1355,7 +1347,7 @@ export interface ConnectSandboxGroupRequest {
   /** The name of the SandboxGroup. */
   sandboxGroupName: string;
 }
-export const ConnectSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1381,7 +1373,7 @@ export interface SandboxGroupAccessToken {
   /** The UTC date and time at which the access token expires. */
   notAfter: string;
 }
-export const SandboxGroupAccessToken = /*@__PURE__*/ S.suspend(() =>
+const SandboxGroupAccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.String,
     accessToken: S.String.pipe(T.SensitiveValue({})),
@@ -1391,12 +1383,12 @@ export const SandboxGroupAccessToken = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type ContainerGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ContainerGroupsCreateOrUpdateRequestTagsMap =
+const ContainerGroupsCreateOrUpdateRequestTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<ContainerGroupsCreateOrUpdateRequestTagsMap>;
 
 /** The availability zones. */
 export type ContainerGroupsCreateOrUpdateRequestZonesList = Array<string>;
-export const ContainerGroupsCreateOrUpdateRequestZonesList =
+const ContainerGroupsCreateOrUpdateRequestZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<ContainerGroupsCreateOrUpdateRequestZonesList>;
 
 /** The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group. */
@@ -1405,11 +1397,11 @@ export type ResourceIdentityType =
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-export const ResourceIdentityType = S.String;
+const ResourceIdentityType = S.String;
 
 /** The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export interface UserAssignedIdentitiesInput {}
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentitiesInput",
 }) as any as S.Schema<UserAssignedIdentitiesInput>;
 
@@ -1417,7 +1409,7 @@ export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.suspend(() => S.Struc
 export type ContainerGroupIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesInput | undefined;
 };
-export const ContainerGroupIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ContainerGroupIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentitiesInput,
 ) as any as S.Schema<ContainerGroupIdentityInputUserAssignedIdentitiesMap>;
@@ -1429,7 +1421,7 @@ export interface ContainerGroupIdentityInput {
   /** The list of user identities associated with the container group. */
   userAssignedIdentities?: ContainerGroupIdentityInputUserAssignedIdentitiesMap;
 }
-export const ContainerGroupIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ResourceIdentityType),
     userAssignedIdentities: S.optional(ContainerGroupIdentityInputUserAssignedIdentitiesMap),
@@ -1447,7 +1439,7 @@ export interface SecretReference {
   /** The URI to the secret in key vault */
   secretReferenceUri: string;
 }
-export const SecretReference = /*@__PURE__*/ S.suspend(() =>
+const SecretReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     identity: S.String,
@@ -1457,24 +1449,24 @@ export const SecretReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The secret references that will be referenced within the container group. */
 export type ContainerGroupPropertiesPropertiesInputSecretReferencesList = Array<SecretReference>;
-export const ContainerGroupPropertiesPropertiesInputSecretReferencesList = /*@__PURE__*/ S.Array(
+const ContainerGroupPropertiesPropertiesInputSecretReferencesList = /*@__PURE__*/ S.Array(
   SecretReference,
 ) as any as S.Schema<ContainerGroupPropertiesPropertiesInputSecretReferencesList>;
 
 /** The containers within the container group. */
 export type ContainerGroupPropertiesPropertiesInputContainersList = Array<ContainerInput>;
-export const ContainerGroupPropertiesPropertiesInputContainersList =
+const ContainerGroupPropertiesPropertiesInputContainersList =
   ContainerGroupProfilePropertiesInputContainersList as any as S.Schema<ContainerGroupPropertiesPropertiesInputContainersList>;
 
 /** The image registry credentials by which the container group is created from. */
 export type ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-export const ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList =
+const ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList =
   ContainerGroupProfilePropertiesInputImageRegistryCredentialsList as any as S.Schema<ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList>;
 
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ContainerGroupPropertiesPropertiesInputVolumesList = Array<Volume>;
-export const ContainerGroupPropertiesPropertiesInputVolumesList =
+const ContainerGroupPropertiesPropertiesInputVolumesList =
   ContainerGroupProfilePropertiesInputVolumesList as any as S.Schema<ContainerGroupPropertiesPropertiesInputVolumesList>;
 
 /** Container group subnet information. */
@@ -1484,7 +1476,7 @@ export interface ContainerGroupSubnetId {
   /** Friendly name for the subnet. */
   name?: string;
 }
-export const ContainerGroupSubnetId = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupSubnetId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -1493,13 +1485,13 @@ export const ContainerGroupSubnetId = /*@__PURE__*/ S.suspend(() =>
 
 /** The subnet resource IDs for a container group. */
 export type ContainerGroupPropertiesPropertiesInputSubnetIdsList = Array<ContainerGroupSubnetId>;
-export const ContainerGroupPropertiesPropertiesInputSubnetIdsList = /*@__PURE__*/ S.Array(
+const ContainerGroupPropertiesPropertiesInputSubnetIdsList = /*@__PURE__*/ S.Array(
   ContainerGroupSubnetId,
 ) as any as S.Schema<ContainerGroupPropertiesPropertiesInputSubnetIdsList>;
 
 /** The DNS servers for the container group. */
 export type DnsConfigurationNameServersList = Array<string>;
-export const DnsConfigurationNameServersList =
+const DnsConfigurationNameServersList =
   ContainerPropertiesInputCommandList as any as S.Schema<DnsConfigurationNameServersList>;
 
 /** DNS configuration for the container group. */
@@ -1511,7 +1503,7 @@ export interface DnsConfiguration {
   /** The DNS options for the container group. */
   options?: string;
 }
-export const DnsConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DnsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameServers: DnsConfigurationNameServersList,
     searchDomains: S.optional(S.String),
@@ -1522,17 +1514,17 @@ export const DnsConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** The init containers for a container group. */
 export type ContainerGroupPropertiesPropertiesInputInitContainersList =
   Array<InitContainerDefinitionInput>;
-export const ContainerGroupPropertiesPropertiesInputInitContainersList =
+const ContainerGroupPropertiesPropertiesInputInitContainersList =
   ContainerGroupProfilePropertiesInputInitContainersList as any as S.Schema<ContainerGroupPropertiesPropertiesInputInitContainersList>;
 
 /** extensions used by virtual kubelet */
 export type ContainerGroupPropertiesPropertiesInputExtensionsList = Array<DeploymentExtensionSpec>;
-export const ContainerGroupPropertiesPropertiesInputExtensionsList =
+const ContainerGroupPropertiesPropertiesInputExtensionsList =
   ContainerGroupProfilePropertiesInputExtensionsList as any as S.Schema<ContainerGroupPropertiesPropertiesInputExtensionsList>;
 
 /** The access level of an identity. */
 export type IdentityAccessLevel = "All" | "System" | "User";
-export const IdentityAccessLevel = S.String;
+const IdentityAccessLevel = S.String;
 
 /** The access control for an identity */
 export interface IdentityAccessControl {
@@ -1541,7 +1533,7 @@ export interface IdentityAccessControl {
   /** An identity. */
   identity?: string;
 }
-export const IdentityAccessControl = /*@__PURE__*/ S.suspend(() =>
+const IdentityAccessControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(IdentityAccessLevel),
     identity: S.optional(S.String),
@@ -1550,7 +1542,7 @@ export const IdentityAccessControl = /*@__PURE__*/ S.suspend(() =>
 
 /** The access control levels for each identity. */
 export type IdentityAclsAclsList = Array<IdentityAccessControl>;
-export const IdentityAclsAclsList = /*@__PURE__*/ S.Array(
+const IdentityAclsAclsList = /*@__PURE__*/ S.Array(
   IdentityAccessControl,
 ) as any as S.Schema<IdentityAclsAclsList>;
 
@@ -1561,7 +1553,7 @@ export interface IdentityAcls {
   /** The access control levels for each identity. */
   acls?: IdentityAclsAclsList;
 }
-export const IdentityAcls = /*@__PURE__*/ S.suspend(() =>
+const IdentityAcls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultAccess: S.optional(IdentityAccessLevel),
     acls: S.optional(IdentityAclsAclsList),
@@ -1575,7 +1567,7 @@ export interface ContainerGroupProfileReferenceDefinition {
   /** The container group profile reference revision. */
   revision?: number;
 }
-export const ContainerGroupProfileReferenceDefinition = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupProfileReferenceDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     revision: S.optional(S.Number),
@@ -1591,7 +1583,7 @@ export interface StandbyPoolProfileDefinition {
   /** The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool. */
   failContainerGroupCreateOnReuseFailure?: boolean;
 }
-export const StandbyPoolProfileDefinition = /*@__PURE__*/ S.suspend(() =>
+const StandbyPoolProfileDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     failContainerGroupCreateOnReuseFailure: S.optional(S.Boolean),
@@ -1641,7 +1633,7 @@ export interface ContainerGroupPropertiesPropertiesInput {
   /** The reference standby pool profile properties. */
   standbyPoolProfile?: StandbyPoolProfileDefinition;
 }
-export const ContainerGroupPropertiesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupPropertiesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretReferences: S.optional(ContainerGroupPropertiesPropertiesInputSecretReferencesList),
     containers: ContainerGroupPropertiesPropertiesInputContainersList,
@@ -1687,7 +1679,7 @@ export interface ContainerGroupsCreateOrUpdateRequest {
   /** The container group properties */
   properties: ContainerGroupPropertiesPropertiesInput;
 }
-export const ContainerGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1711,12 +1703,12 @@ export const ContainerGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The resource tags. */
 export type ContainerGroupsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ContainerGroupsCreateOrUpdateResponseTagsMap =
+const ContainerGroupsCreateOrUpdateResponseTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<ContainerGroupsCreateOrUpdateResponseTagsMap>;
 
 /** The availability zones. */
 export type ContainerGroupsCreateOrUpdateResponseZonesList = Array<string>;
-export const ContainerGroupsCreateOrUpdateResponseZonesList =
+const ContainerGroupsCreateOrUpdateResponseZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<ContainerGroupsCreateOrUpdateResponseZonesList>;
 
 /** The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
@@ -1726,7 +1718,7 @@ export interface UserAssignedIdentities {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentities = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1737,7 +1729,7 @@ export const UserAssignedIdentities = /*@__PURE__*/ S.suspend(() =>
 export type ContainerGroupIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentities | undefined;
 };
-export const ContainerGroupIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ContainerGroupIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentities,
 ) as any as S.Schema<ContainerGroupIdentityUserAssignedIdentitiesMap>;
@@ -1753,7 +1745,7 @@ export interface ContainerGroupIdentity {
   /** The list of user identities associated with the container group. */
   userAssignedIdentities?: ContainerGroupIdentityUserAssignedIdentitiesMap;
 }
-export const ContainerGroupIdentity = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1764,28 +1756,28 @@ export const ContainerGroupIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The secret references that will be referenced within the container group. */
 export type ContainerGroupPropertiesPropertiesSecretReferencesList = Array<SecretReference>;
-export const ContainerGroupPropertiesPropertiesSecretReferencesList =
+const ContainerGroupPropertiesPropertiesSecretReferencesList =
   ContainerGroupPropertiesPropertiesInputSecretReferencesList as any as S.Schema<ContainerGroupPropertiesPropertiesSecretReferencesList>;
 
 /** The containers within the container group. */
 export type ContainerGroupPropertiesPropertiesContainersList = Array<Container>;
-export const ContainerGroupPropertiesPropertiesContainersList =
+const ContainerGroupPropertiesPropertiesContainersList =
   ContainerGroupProfilePropertiesContainersList as any as S.Schema<ContainerGroupPropertiesPropertiesContainersList>;
 
 /** The image registry credentials by which the container group is created from. */
 export type ContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-export const ContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
+const ContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
   ContainerGroupProfilePropertiesImageRegistryCredentialsList as any as S.Schema<ContainerGroupPropertiesPropertiesImageRegistryCredentialsList>;
 
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ContainerGroupPropertiesPropertiesVolumesList = Array<Volume>;
-export const ContainerGroupPropertiesPropertiesVolumesList =
+const ContainerGroupPropertiesPropertiesVolumesList =
   ContainerGroupProfilePropertiesInputVolumesList as any as S.Schema<ContainerGroupPropertiesPropertiesVolumesList>;
 
 /** The events of this container group. */
 export type ContainerGroupPropertiesPropertiesInstanceViewEventsList = Array<Event>;
-export const ContainerGroupPropertiesPropertiesInstanceViewEventsList =
+const ContainerGroupPropertiesPropertiesInstanceViewEventsList =
   ContainerPropertiesInstanceViewEventsList as any as S.Schema<ContainerGroupPropertiesPropertiesInstanceViewEventsList>;
 
 /** The instance view of the container group. Only valid in response. */
@@ -1795,7 +1787,7 @@ export interface ContainerGroupPropertiesPropertiesInstanceView {
   /** The state of the container group. Only valid in response. */
   state?: string;
 }
-export const ContainerGroupPropertiesPropertiesInstanceView = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupPropertiesPropertiesInstanceView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(ContainerGroupPropertiesPropertiesInstanceViewEventsList),
     state: S.optional(S.String),
@@ -1806,17 +1798,17 @@ export const ContainerGroupPropertiesPropertiesInstanceView = /*@__PURE__*/ S.su
 
 /** The subnet resource IDs for a container group. */
 export type ContainerGroupPropertiesPropertiesSubnetIdsList = Array<ContainerGroupSubnetId>;
-export const ContainerGroupPropertiesPropertiesSubnetIdsList =
+const ContainerGroupPropertiesPropertiesSubnetIdsList =
   ContainerGroupPropertiesPropertiesInputSubnetIdsList as any as S.Schema<ContainerGroupPropertiesPropertiesSubnetIdsList>;
 
 /** The init containers for a container group. */
 export type ContainerGroupPropertiesPropertiesInitContainersList = Array<InitContainerDefinition>;
-export const ContainerGroupPropertiesPropertiesInitContainersList =
+const ContainerGroupPropertiesPropertiesInitContainersList =
   ContainerGroupProfilePropertiesInitContainersList as any as S.Schema<ContainerGroupPropertiesPropertiesInitContainersList>;
 
 /** extensions used by virtual kubelet */
 export type ContainerGroupPropertiesPropertiesExtensionsList = Array<DeploymentExtensionSpec>;
-export const ContainerGroupPropertiesPropertiesExtensionsList =
+const ContainerGroupPropertiesPropertiesExtensionsList =
   ContainerGroupProfilePropertiesInputExtensionsList as any as S.Schema<ContainerGroupPropertiesPropertiesExtensionsList>;
 
 /** The container group properties */
@@ -1866,7 +1858,7 @@ export interface ContainerGroupPropertiesProperties {
   /** The flag to determine whether the container group is created from standby pool. */
   isCreatedFromStandbyPool?: boolean;
 }
-export const ContainerGroupPropertiesProperties = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupPropertiesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     secretReferences: S.optional(ContainerGroupPropertiesPropertiesSecretReferencesList),
@@ -1917,7 +1909,7 @@ export interface ContainerGroupsCreateOrUpdateResponse {
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
 }
-export const ContainerGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1941,7 +1933,7 @@ export interface DeleteCGProfileRequest {
   /** ContainerGroupProfile name. */
   containerGroupProfileName: string;
 }
-export const DeleteCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1957,7 +1949,7 @@ export const DeleteCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCGProfileRequest" }) as any as S.Schema<DeleteCGProfileRequest>;
 
 export interface DeleteCGProfileResponse {}
-export const DeleteCGProfileResponse =
+const DeleteCGProfileResponse =
   UserAssignedIdentitiesInput as any as S.Schema<DeleteCGProfileResponse>;
 
 export interface DeleteContainerGroupRequest {
@@ -1968,7 +1960,7 @@ export interface DeleteContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-export const DeleteContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1987,14 +1979,8 @@ export const DeleteContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type DeleteContainerGroupResponseTagsMap = { [key: string]: string | undefined };
-export const DeleteContainerGroupResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<DeleteContainerGroupResponseTagsMap>;
-
 /** The availability zones. */
 export type DeleteContainerGroupResponseZonesList = Array<string>;
-export const DeleteContainerGroupResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<DeleteContainerGroupResponseZonesList>;
-
 export interface DeleteContainerGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2015,7 +2001,7 @@ export interface DeleteContainerGroupResponse {
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
 }
-export const DeleteContainerGroupResponse =
+const DeleteContainerGroupResponse =
   ContainerGroupsCreateOrUpdateResponse as any as S.Schema<DeleteContainerGroupResponse>;
 
 export interface DeleteNGroupRequest {
@@ -2026,7 +2012,7 @@ export interface DeleteNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-export const DeleteNGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2042,8 +2028,7 @@ export const DeleteNGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteNGroupRequest" }) as any as S.Schema<DeleteNGroupRequest>;
 
 export interface DeleteNGroupResponse {}
-export const DeleteNGroupResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<DeleteNGroupResponse>;
+const DeleteNGroupResponse = UserAssignedIdentitiesInput as any as S.Schema<DeleteNGroupResponse>;
 
 export interface DeleteSandboxGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2053,7 +2038,7 @@ export interface DeleteSandboxGroupRequest {
   /** The name of the SandboxGroup. */
   sandboxGroupName: string;
 }
-export const DeleteSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2071,7 +2056,7 @@ export const DeleteSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSandboxGroupRequest>;
 
 export interface DeleteSandboxGroupResponse {}
-export const DeleteSandboxGroupResponse =
+const DeleteSandboxGroupResponse =
   UserAssignedIdentitiesInput as any as S.Schema<DeleteSandboxGroupResponse>;
 
 export interface DeleteSubnetServiceAssociationLinkRequest {
@@ -2084,7 +2069,7 @@ export interface DeleteSubnetServiceAssociationLinkRequest {
   /** The name of the subnet. */
   subnetName: string;
 }
-export const DeleteSubnetServiceAssociationLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubnetServiceAssociationLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2103,7 +2088,7 @@ export const DeleteSubnetServiceAssociationLinkRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteSubnetServiceAssociationLinkRequest>;
 
 export interface DeleteSubnetServiceAssociationLinkResponse {}
-export const DeleteSubnetServiceAssociationLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubnetServiceAssociationLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSubnetServiceAssociationLinkResponse",
@@ -2116,7 +2101,7 @@ export interface ContainerExecRequestTerminalSize {
   /** The column size of the terminal */
   cols?: number;
 }
-export const ContainerExecRequestTerminalSize = /*@__PURE__*/ S.suspend(() =>
+const ContainerExecRequestTerminalSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: S.optional(S.Number),
     cols: S.optional(S.Number),
@@ -2139,7 +2124,7 @@ export interface ExecuteContainerCommandRequest {
   /** The size of the terminal. */
   terminalSize?: ContainerExecRequestTerminalSize;
 }
-export const ExecuteContainerCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteContainerCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2166,8 +2151,7 @@ export interface ContainerExecResponse {
   /** The password to start the exec command. */
   password?: string | Redacted.Redacted<string>;
 }
-export const ContainerExecResponse =
-  ContainerAttachResponse as any as S.Schema<ContainerExecResponse>;
+const ContainerExecResponse = ContainerAttachResponse as any as S.Schema<ContainerExecResponse>;
 
 export interface GetCGProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2177,7 +2161,7 @@ export interface GetCGProfileRequest {
   /** ContainerGroupProfile name. */
   containerGroupProfileName: string;
 }
-export const GetCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2194,12 +2178,12 @@ export const GetCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCGProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetCGProfileResponseTagsMap =
+const GetCGProfileResponseTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<GetCGProfileResponseTagsMap>;
 
 /** The availability zones. */
 export type GetCGProfileResponseZonesList = Array<string>;
-export const GetCGProfileResponseZonesList =
+const GetCGProfileResponseZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<GetCGProfileResponseZonesList>;
 
 export interface GetCGProfileResponse {
@@ -2220,7 +2204,7 @@ export interface GetCGProfileResponse {
   /** The availability zones. */
   zones?: GetCGProfileResponseZonesList;
 }
-export const GetCGProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCGProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2243,7 +2227,7 @@ export interface GetCGProfileByRevisionNumberRequest {
   /** The revision number of the container group profile. */
   revisionNumber: string;
 }
-export const GetCGProfileByRevisionNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCGProfileByRevisionNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2263,14 +2247,8 @@ export const GetCGProfileByRevisionNumberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCGProfileByRevisionNumberResponseTagsMap = { [key: string]: string | undefined };
-export const GetCGProfileByRevisionNumberResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<GetCGProfileByRevisionNumberResponseTagsMap>;
-
 /** The availability zones. */
 export type GetCGProfileByRevisionNumberResponseZonesList = Array<string>;
-export const GetCGProfileByRevisionNumberResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<GetCGProfileByRevisionNumberResponseZonesList>;
-
 export interface GetCGProfileByRevisionNumberResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2289,7 +2267,7 @@ export interface GetCGProfileByRevisionNumberResponse {
   /** The availability zones. */
   zones?: GetCGProfileByRevisionNumberResponseZonesList;
 }
-export const GetCGProfileByRevisionNumberResponse =
+const GetCGProfileByRevisionNumberResponse =
   CGProfileCreateOrUpdateResponse as any as S.Schema<GetCGProfileByRevisionNumberResponse>;
 
 export interface GetContainerGroupRequest {
@@ -2300,7 +2278,7 @@ export interface GetContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-export const GetContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2317,14 +2295,8 @@ export const GetContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetContainerGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetContainerGroupResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<GetContainerGroupResponseTagsMap>;
-
 /** The availability zones. */
 export type GetContainerGroupResponseZonesList = Array<string>;
-export const GetContainerGroupResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<GetContainerGroupResponseZonesList>;
-
 export interface GetContainerGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2345,7 +2317,7 @@ export interface GetContainerGroupResponse {
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
 }
-export const GetContainerGroupResponse =
+const GetContainerGroupResponse =
   ContainerGroupsCreateOrUpdateResponse as any as S.Schema<GetContainerGroupResponse>;
 
 export interface GetContainerGroupOutboundNetworkDependenciesEndpointsRequest {
@@ -2356,35 +2328,35 @@ export interface GetContainerGroupOutboundNetworkDependenciesEndpointsRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-export const GetContainerGroupOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      containerGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/outboundNetworkDependenciesEndpoints",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
+const GetContainerGroupOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    containerGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/outboundNetworkDependenciesEndpoints",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetContainerGroupOutboundNetworkDependenciesEndpointsRequest",
 }) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsRequest>;
 
 /** Response for network dependencies, always empty list. */
 export type NetworkDependenciesResponse = Array<string>;
-export const NetworkDependenciesResponse =
+const NetworkDependenciesResponse =
   ContainerPropertiesInputCommandList as any as S.Schema<NetworkDependenciesResponse>;
 
 export type GetContainerGroupOutboundNetworkDependenciesEndpointsResponse =
   NetworkDependenciesResponse;
-export const GetContainerGroupOutboundNetworkDependenciesEndpointsResponse =
-  /*@__PURE__*/ S.suspend(() => NetworkDependenciesResponse.pipe(T.RawResponseRoot())).annotate({
-    identifier: "GetContainerGroupOutboundNetworkDependenciesEndpointsResponse",
-  }) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsResponse>;
+const GetContainerGroupOutboundNetworkDependenciesEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  NetworkDependenciesResponse.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "GetContainerGroupOutboundNetworkDependenciesEndpointsResponse",
+}) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsResponse>;
 
 export interface GetNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2394,7 +2366,7 @@ export interface GetNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-export const GetNGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2413,11 +2385,10 @@ export interface ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy {
   /** The prefix can be used when there are tooling limitations (e.g. on the Azure portal where CGs from multiple NGroups exist in the same RG). The prefix with the suffixed resource name must still follow Azure resource naming guidelines. */
   prefix?: string;
 }
-export const ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      prefix: S.optional(S.String),
-    }),
+const ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prefix: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy",
 }) as any as S.Schema<ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy>;
@@ -2426,7 +2397,7 @@ export const ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy = /*@__PUR
 export interface ElasticProfileContainerGroupNamingPolicy {
   guidNamingPolicy?: ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy;
 }
-export const ElasticProfileContainerGroupNamingPolicy = /*@__PURE__*/ S.suspend(() =>
+const ElasticProfileContainerGroupNamingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guidNamingPolicy: S.optional(ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy),
   }),
@@ -2442,7 +2413,7 @@ export interface ElasticProfile {
   /** Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation. */
   containerGroupNamingPolicy?: ElasticProfileContainerGroupNamingPolicy;
 }
-export const ElasticProfile = /*@__PURE__*/ S.suspend(() =>
+const ElasticProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     desiredCount: S.optional(S.Number),
     maintainDesiredCount: S.optional(S.Boolean),
@@ -2455,7 +2426,7 @@ export interface PlacementProfile {
   /** The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that. */
   faultDomainCount?: number;
 }
-export const PlacementProfile = /*@__PURE__*/ S.suspend(() =>
+const PlacementProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     faultDomainCount: S.optional(S.Number),
   }),
@@ -2466,7 +2437,7 @@ export interface ApiEntityReference {
   /** The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/... */
   id?: string;
 }
-export const ApiEntityReference = /*@__PURE__*/ S.suspend(() =>
+const ApiEntityReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -2477,7 +2448,7 @@ export interface LoadBalancerBackendAddressPool {
   /** The Load Balancer backend address pool ARM resource Id. */
   resource?: string;
 }
-export const LoadBalancerBackendAddressPool = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerBackendAddressPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
   }),
@@ -2487,7 +2458,7 @@ export const LoadBalancerBackendAddressPool = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Load Balancer Backend Address Pools. */
 export type LoadBalancerBackendAddressPoolsList = Array<LoadBalancerBackendAddressPool>;
-export const LoadBalancerBackendAddressPoolsList = /*@__PURE__*/ S.Array(
+const LoadBalancerBackendAddressPoolsList = /*@__PURE__*/ S.Array(
   LoadBalancerBackendAddressPool,
 ) as any as S.Schema<LoadBalancerBackendAddressPoolsList>;
 
@@ -2496,7 +2467,7 @@ export interface LoadBalancer {
   /** List of Load Balancer Backend Address Pools. */
   backendAddressPools?: LoadBalancerBackendAddressPoolsList;
 }
-export const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backendAddressPools: S.optional(LoadBalancerBackendAddressPoolsList),
   }),
@@ -2507,12 +2478,9 @@ export interface ApplicationGatewayBackendAddressPool {
   /** The application gateway backend address pool ARM resource Id. */
   resource?: string;
 }
-export const ApplicationGatewayBackendAddressPool =
-  LoadBalancerBackendAddressPool as any as S.Schema<ApplicationGatewayBackendAddressPool>;
-
 /** List of Application Gateway Backend Address Pools. */
 export type ApplicationGatewayBackendAddressPoolsList = Array<ApplicationGatewayBackendAddressPool>;
-export const ApplicationGatewayBackendAddressPoolsList =
+const ApplicationGatewayBackendAddressPoolsList =
   LoadBalancerBackendAddressPoolsList as any as S.Schema<ApplicationGatewayBackendAddressPoolsList>;
 
 /** Application Gateway the CG profile will use to interact with CGs in a backend pool */
@@ -2522,7 +2490,7 @@ export interface ApplicationGateway {
   /** List of Application Gateway Backend Address Pools. */
   backendAddressPools?: ApplicationGatewayBackendAddressPoolsList;
 }
-export const ApplicationGateway = /*@__PURE__*/ S.suspend(() =>
+const ApplicationGateway = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     backendAddressPools: S.optional(ApplicationGatewayBackendAddressPoolsList),
@@ -2536,7 +2504,7 @@ export interface NetworkProfile {
   /** Application Gateway the CG profile will use to interact with CGs in a backend pool */
   applicationGateway?: ApplicationGateway;
 }
-export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loadBalancer: S.optional(LoadBalancer),
     applicationGateway: S.optional(ApplicationGateway),
@@ -2545,7 +2513,7 @@ export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share. */
 export type AzureFileShareAccessType = "Shared" | "Exclusive";
-export const AzureFileShareAccessType = S.String;
+const AzureFileShareAccessType = S.String;
 
 /** Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier */
 export type FileSharePropertiesShareAccessTier =
@@ -2553,7 +2521,7 @@ export type FileSharePropertiesShareAccessTier =
   | "Hot"
   | "Premium"
   | "TransactionOptimized";
-export const FileSharePropertiesShareAccessTier = S.String;
+const FileSharePropertiesShareAccessTier = S.String;
 
 export interface FileShareProperties {
   /** Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share. */
@@ -2561,7 +2529,7 @@ export interface FileShareProperties {
   /** Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier */
   shareAccessTier?: FileSharePropertiesShareAccessTier | (string & {});
 }
-export const FileShareProperties = /*@__PURE__*/ S.suspend(() =>
+const FileShareProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shareAccessType: S.optional(AzureFileShareAccessType),
     shareAccessTier: S.optional(FileSharePropertiesShareAccessTier),
@@ -2575,7 +2543,7 @@ export interface FileShare {
   storageAccountName?: string;
   properties?: FileShareProperties;
 }
-export const FileShare = /*@__PURE__*/ S.suspend(() =>
+const FileShare = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     resourceGroupName: S.optional(S.String),
@@ -2585,7 +2553,7 @@ export const FileShare = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileShare" }) as any as S.Schema<FileShare>;
 
 export type StorageProfileFileSharesList = Array<FileShare>;
-export const StorageProfileFileSharesList = /*@__PURE__*/ S.Array(
+const StorageProfileFileSharesList = /*@__PURE__*/ S.Array(
   FileShare,
 ) as any as S.Schema<StorageProfileFileSharesList>;
 
@@ -2593,7 +2561,7 @@ export const StorageProfileFileSharesList = /*@__PURE__*/ S.Array(
 export interface StorageProfile {
   fileShares?: StorageProfileFileSharesList;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
+const StorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileShares: S.optional(StorageProfileFileSharesList),
   }),
@@ -2601,7 +2569,7 @@ export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains information about Virtual Network Subnet ARM Resource */
 export type NGroupContainerGroupPropertiesSubnetIdsList = Array<ContainerGroupSubnetId>;
-export const NGroupContainerGroupPropertiesSubnetIdsList =
+const NGroupContainerGroupPropertiesSubnetIdsList =
   ContainerGroupPropertiesPropertiesInputSubnetIdsList as any as S.Schema<NGroupContainerGroupPropertiesSubnetIdsList>;
 
 /** Contains information about the volumes that can be mounted by Containers in the Container Groups. */
@@ -2611,7 +2579,7 @@ export interface NGroupCGPropertyVolume {
   /** The Azure File volume. */
   azureFile?: AzureFileVolume;
 }
-export const NGroupCGPropertyVolume = /*@__PURE__*/ S.suspend(() =>
+const NGroupCGPropertyVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     azureFile: S.optional(AzureFileVolume),
@@ -2620,19 +2588,19 @@ export const NGroupCGPropertyVolume = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains information about the volumes that can be mounted by Containers in the Container Groups. */
 export type NGroupContainerGroupPropertiesVolumesList = Array<NGroupCGPropertyVolume>;
-export const NGroupContainerGroupPropertiesVolumesList = /*@__PURE__*/ S.Array(
+const NGroupContainerGroupPropertiesVolumesList = /*@__PURE__*/ S.Array(
   NGroupCGPropertyVolume,
 ) as any as S.Schema<NGroupContainerGroupPropertiesVolumesList>;
 
 export type NGroupCGPropertyContainerPropertiesVolumeMountsList = Array<VolumeMount>;
-export const NGroupCGPropertyContainerPropertiesVolumeMountsList =
+const NGroupCGPropertyContainerPropertiesVolumeMountsList =
   ContainerPropertiesInputVolumeMountsList as any as S.Schema<NGroupCGPropertyContainerPropertiesVolumeMountsList>;
 
 /** container properties */
 export interface NGroupCGPropertyContainerProperties {
   volumeMounts?: NGroupCGPropertyContainerPropertiesVolumeMountsList;
 }
-export const NGroupCGPropertyContainerProperties = /*@__PURE__*/ S.suspend(() =>
+const NGroupCGPropertyContainerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeMounts: S.optional(NGroupCGPropertyContainerPropertiesVolumeMountsList),
   }),
@@ -2647,7 +2615,7 @@ export interface NGroupCGPropertyContainer {
   /** container properties */
   properties?: NGroupCGPropertyContainerProperties;
 }
-export const NGroupCGPropertyContainer = /*@__PURE__*/ S.suspend(() =>
+const NGroupCGPropertyContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(NGroupCGPropertyContainerProperties),
@@ -2658,7 +2626,7 @@ export const NGroupCGPropertyContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains information about Container which can be set while creating or updating the NGroups. */
 export type NGroupContainerGroupPropertiesContainersList = Array<NGroupCGPropertyContainer>;
-export const NGroupContainerGroupPropertiesContainersList = /*@__PURE__*/ S.Array(
+const NGroupContainerGroupPropertiesContainersList = /*@__PURE__*/ S.Array(
   NGroupCGPropertyContainer,
 ) as any as S.Schema<NGroupContainerGroupPropertiesContainersList>;
 
@@ -2671,7 +2639,7 @@ export interface NGroupContainerGroupProperties {
   /** Contains information about Container which can be set while creating or updating the NGroups. */
   containers?: NGroupContainerGroupPropertiesContainersList;
 }
-export const NGroupContainerGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const NGroupContainerGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetIds: S.optional(NGroupContainerGroupPropertiesSubnetIdsList),
     volumes: S.optional(NGroupContainerGroupPropertiesVolumesList),
@@ -2694,7 +2662,7 @@ export interface ContainerGroupProfileStub {
   /** Container Group properties which can be set while creating or updating the NGroups. */
   containerGroupProperties?: NGroupContainerGroupProperties;
 }
-export const ContainerGroupProfileStub = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupProfileStub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(ApiEntityReference),
     revision: S.optional(S.Number),
@@ -2708,7 +2676,7 @@ export const ContainerGroupProfileStub = /*@__PURE__*/ S.suspend(() =>
 
 /** The Container Group Profiles that could be used in the NGroups resource. */
 export type NGroupPropertiesContainerGroupProfilesList = Array<ContainerGroupProfileStub>;
-export const NGroupPropertiesContainerGroupProfilesList = /*@__PURE__*/ S.Array(
+const NGroupPropertiesContainerGroupProfilesList = /*@__PURE__*/ S.Array(
   ContainerGroupProfileStub,
 ) as any as S.Schema<NGroupPropertiesContainerGroupProfilesList>;
 
@@ -2721,10 +2689,10 @@ export type NGroupProvisioningState =
   | "Canceled"
   | "Deleting"
   | "Migrating";
-export const NGroupProvisioningState = S.String;
+const NGroupProvisioningState = S.String;
 
 export type NGroupUpdateMode = "Manual" | "Rolling";
-export const NGroupUpdateMode = S.String;
+const NGroupUpdateMode = S.String;
 
 /** This profile allows the customers to customize the rolling update. */
 export interface UpdateProfileRollingUpdateProfile {
@@ -2737,7 +2705,7 @@ export interface UpdateProfileRollingUpdateProfile {
   /** Default is false. If set to true, the CGs will be updated in-place instead of creating new CG and deleting old ones. */
   inPlaceUpdate?: boolean;
 }
-export const UpdateProfileRollingUpdateProfile = /*@__PURE__*/ S.suspend(() =>
+const UpdateProfileRollingUpdateProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxBatchPercent: S.optional(S.Number),
     maxUnhealthyPercent: S.optional(S.Number),
@@ -2754,7 +2722,7 @@ export interface UpdateProfile {
   /** This profile allows the customers to customize the rolling update. */
   rollingUpdateProfile?: UpdateProfileRollingUpdateProfile;
 }
-export const UpdateProfile = /*@__PURE__*/ S.suspend(() =>
+const UpdateProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMode: S.optional(NGroupUpdateMode),
     rollingUpdateProfile: S.optional(UpdateProfileRollingUpdateProfile),
@@ -2774,7 +2742,7 @@ export interface NGroupProperties {
   /** Used by the customer to specify the way to update the Container Groups in NGroup. */
   updateProfile?: UpdateProfile;
 }
-export const NGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const NGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticProfile: S.optional(ElasticProfile),
     placementProfile: S.optional(PlacementProfile),
@@ -2786,21 +2754,18 @@ export const NGroupProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetNGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetNGroupResponseTagsMap =
+const GetNGroupResponseTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<GetNGroupResponseTagsMap>;
 
 /** The availability zones. */
 export type GetNGroupResponseZonesList = Array<string>;
-export const GetNGroupResponseZonesList =
+const GetNGroupResponseZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<GetNGroupResponseZonesList>;
 
 /** The list of user identities associated with the NGroup. */
 export type NGroupIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentities | undefined;
 };
-export const NGroupIdentityUserAssignedIdentitiesMap =
-  ContainerGroupIdentityUserAssignedIdentitiesMap as any as S.Schema<NGroupIdentityUserAssignedIdentitiesMap>;
-
 /** Identity for the NGroup. */
 export interface NGroupIdentity {
   /** The principal id of the NGroup identity. This property will only be provided for a system assigned identity. */
@@ -2812,7 +2777,7 @@ export interface NGroupIdentity {
   /** The list of user identities associated with the NGroup. */
   userAssignedIdentities?: NGroupIdentityUserAssignedIdentitiesMap;
 }
-export const NGroupIdentity = ContainerGroupIdentity as any as S.Schema<NGroupIdentity>;
+const NGroupIdentity = ContainerGroupIdentity as any as S.Schema<NGroupIdentity>;
 
 export interface GetNGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2834,7 +2799,7 @@ export interface GetNGroupResponse {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
 }
-export const GetNGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2856,7 +2821,7 @@ export interface GetSandboxGroupRequest {
   /** The name of the SandboxGroup. */
   sandboxGroupName: string;
 }
-export const GetSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2873,7 +2838,7 @@ export const GetSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSandboxGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetSandboxGroupResponseTagsMap =
+const GetSandboxGroupResponseTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<GetSandboxGroupResponseTagsMap>;
 
 /** The provisioning state of a SandboxGroup resource. */
@@ -2884,14 +2849,14 @@ export type SandboxGroupProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const SandboxGroupProvisioningState = S.String;
+const SandboxGroupProvisioningState = S.String;
 
 /** A reference to a subnet resource. */
 export interface SubnetReference {
   /** The ARM resource ID of the subnet. The caller must have `Microsoft.Network/virtualNetworks/subnets/join/action` permission on this subnet (enforced via a linked access check at create/update time). */
   id: string;
 }
-export const SubnetReference = /*@__PURE__*/ S.suspend(() =>
+const SubnetReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -2899,7 +2864,7 @@ export const SubnetReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of subnets associated with the SandboxGroup. */
 export type SandboxGroupNetworkProfileSubnetsList = Array<SubnetReference>;
-export const SandboxGroupNetworkProfileSubnetsList = /*@__PURE__*/ S.Array(
+const SandboxGroupNetworkProfileSubnetsList = /*@__PURE__*/ S.Array(
   SubnetReference,
 ) as any as S.Schema<SandboxGroupNetworkProfileSubnetsList>;
 
@@ -2908,7 +2873,7 @@ export interface SandboxGroupNetworkProfile {
   /** The list of subnets associated with the SandboxGroup. */
   subnets?: SandboxGroupNetworkProfileSubnetsList;
 }
-export const SandboxGroupNetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const SandboxGroupNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnets: S.optional(SandboxGroupNetworkProfileSubnetsList),
   }),
@@ -2925,7 +2890,7 @@ export interface SandboxGroupProperties {
   /** The ARM resource ID of the management resource group associated with this SandboxGroup. */
   managementResourceGroupId?: string;
 }
-export const SandboxGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const SandboxGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(SandboxGroupProvisioningState),
     networkProfile: S.optional(SandboxGroupNetworkProfile),
@@ -2939,7 +2904,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetSandboxGroupResponseIdentity {
@@ -2950,7 +2915,7 @@ export interface GetSandboxGroupResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const GetSandboxGroupResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxGroupResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -2979,7 +2944,7 @@ export interface GetSandboxGroupResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
 }
-export const GetSandboxGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3000,7 +2965,7 @@ export interface ListCGProfileAllRevisionsRequest {
   /** ContainerGroupProfile name. */
   containerGroupProfileName: string;
 }
-export const ListCGProfileAllRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCGProfileAllRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3019,14 +2984,8 @@ export const ListCGProfileAllRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ContainerGroupProfileTagsMap = { [key: string]: string | undefined };
-export const ContainerGroupProfileTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<ContainerGroupProfileTagsMap>;
-
 /** The availability zones. */
 export type ContainerGroupProfileZonesList = Array<string>;
-export const ContainerGroupProfileZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<ContainerGroupProfileZonesList>;
-
 /** A container group profile object */
 export interface ContainerGroupProfile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3046,11 +3005,11 @@ export interface ContainerGroupProfile {
   /** The availability zones. */
   zones?: ContainerGroupProfileZonesList;
 }
-export const ContainerGroupProfile = GetCGProfileResponse as any as S.Schema<ContainerGroupProfile>;
+const ContainerGroupProfile = GetCGProfileResponse as any as S.Schema<ContainerGroupProfile>;
 
 /** The ContainerGroupProfile items on this page */
 export type ContainerGroupProfileListResultValueList = Array<ContainerGroupProfile>;
-export const ContainerGroupProfileListResultValueList = /*@__PURE__*/ S.Array(
+const ContainerGroupProfileListResultValueList = /*@__PURE__*/ S.Array(
   ContainerGroupProfile,
 ) as any as S.Schema<ContainerGroupProfileListResultValueList>;
 
@@ -3061,7 +3020,7 @@ export interface ContainerGroupProfileListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ContainerGroupProfileListResult = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupProfileListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ContainerGroupProfileListResultValueList,
     nextLink: S.optional(S.String),
@@ -3076,7 +3035,7 @@ export interface ListCGProfileByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListCGProfileByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCGProfileByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3096,7 +3055,7 @@ export interface ListCGProfileBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListCGProfileBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCGProfileBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3117,7 +3076,7 @@ export interface ListContainerGroupByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListContainerGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContainerGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3135,12 +3094,12 @@ export const ListContainerGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** The resource tags. */
 export type ListResultContainerGroupTagsMap = { [key: string]: string | undefined };
-export const ListResultContainerGroupTagsMap =
+const ListResultContainerGroupTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<ListResultContainerGroupTagsMap>;
 
 /** The zones for the container group. */
 export type ListResultContainerGroupZonesList = Array<string>;
-export const ListResultContainerGroupZonesList =
+const ListResultContainerGroupZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<ListResultContainerGroupZonesList>;
 
 /** The provisioning state of the container group. This only appears in the response. */
@@ -3158,48 +3117,47 @@ export type ContainerGroupProvisioningState =
   | "Deleting"
   | "NotAccessible"
   | "PreProvisioned";
-export const ContainerGroupProvisioningState = S.String;
+const ContainerGroupProvisioningState = S.String;
 
 /** The secret references that will be referenced within the container group. */
 export type ListResultContainerGroupPropertiesPropertiesSecretReferencesList =
   Array<SecretReference>;
-export const ListResultContainerGroupPropertiesPropertiesSecretReferencesList =
-  /*@__PURE__*/ S.Array(
-    SecretReference,
-  ) as any as S.Schema<ListResultContainerGroupPropertiesPropertiesSecretReferencesList>;
+const ListResultContainerGroupPropertiesPropertiesSecretReferencesList = /*@__PURE__*/ S.Array(
+  SecretReference,
+) as any as S.Schema<ListResultContainerGroupPropertiesPropertiesSecretReferencesList>;
 
 /** The containers within the container group. */
 export type ListResultContainerGroupPropertiesPropertiesContainersList = Array<Container>;
-export const ListResultContainerGroupPropertiesPropertiesContainersList =
+const ListResultContainerGroupPropertiesPropertiesContainersList =
   ContainerGroupProfilePropertiesContainersList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesContainersList>;
 
 /** The image registry credentials by which the container group is created from. */
 export type ListResultContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
   Array<ImageRegistryCredential>;
-export const ListResultContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
+const ListResultContainerGroupPropertiesPropertiesImageRegistryCredentialsList =
   ContainerGroupProfilePropertiesInputImageRegistryCredentialsList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesImageRegistryCredentialsList>;
 
 /** The list of volumes that can be mounted by containers in this container group. */
 export type ListResultContainerGroupPropertiesPropertiesVolumesList = Array<Volume>;
-export const ListResultContainerGroupPropertiesPropertiesVolumesList =
+const ListResultContainerGroupPropertiesPropertiesVolumesList =
   ContainerGroupProfilePropertiesInputVolumesList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesVolumesList>;
 
 /** The subnet resource IDs for a container group. */
 export type ListResultContainerGroupPropertiesPropertiesSubnetIdsList =
   Array<ContainerGroupSubnetId>;
-export const ListResultContainerGroupPropertiesPropertiesSubnetIdsList =
+const ListResultContainerGroupPropertiesPropertiesSubnetIdsList =
   ContainerGroupPropertiesPropertiesInputSubnetIdsList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesSubnetIdsList>;
 
 /** The init containers for a container group. */
 export type ListResultContainerGroupPropertiesPropertiesInitContainersList =
   Array<InitContainerDefinition>;
-export const ListResultContainerGroupPropertiesPropertiesInitContainersList =
+const ListResultContainerGroupPropertiesPropertiesInitContainersList =
   ContainerGroupProfilePropertiesInitContainersList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesInitContainersList>;
 
 /** extensions used by virtual kubelet */
 export type ListResultContainerGroupPropertiesPropertiesExtensionsList =
   Array<DeploymentExtensionSpec>;
-export const ListResultContainerGroupPropertiesPropertiesExtensionsList =
+const ListResultContainerGroupPropertiesPropertiesExtensionsList =
   ContainerGroupProfilePropertiesInputExtensionsList as any as S.Schema<ListResultContainerGroupPropertiesPropertiesExtensionsList>;
 
 /** The container group properties */
@@ -3247,7 +3205,7 @@ export interface ListResultContainerGroupPropertiesProperties {
   /** The flag to determine whether the container group is created from standby pool. */
   isCreatedFromStandbyPool?: boolean;
 }
-export const ListResultContainerGroupPropertiesProperties = /*@__PURE__*/ S.suspend(() =>
+const ListResultContainerGroupPropertiesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ContainerGroupProvisioningState),
     secretReferences: S.optional(ListResultContainerGroupPropertiesPropertiesSecretReferencesList),
@@ -3296,7 +3254,7 @@ export interface ListResultContainerGroup {
   /** The container group properties */
   properties: ListResultContainerGroupPropertiesProperties;
 }
-export const ListResultContainerGroup = /*@__PURE__*/ S.suspend(() =>
+const ListResultContainerGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3311,7 +3269,7 @@ export const ListResultContainerGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The ListResultContainerGroup items on this page */
 export type ContainerGroupListResultValueList = Array<ListResultContainerGroup>;
-export const ContainerGroupListResultValueList = /*@__PURE__*/ S.Array(
+const ContainerGroupListResultValueList = /*@__PURE__*/ S.Array(
   ListResultContainerGroup,
 ) as any as S.Schema<ContainerGroupListResultValueList>;
 
@@ -3322,7 +3280,7 @@ export interface ContainerGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ContainerGroupListResult = /*@__PURE__*/ S.suspend(() =>
+const ContainerGroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ContainerGroupListResultValueList,
     nextLink: S.optional(S.String),
@@ -3333,7 +3291,7 @@ export interface ListContainerGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListContainerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContainerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3362,7 +3320,7 @@ export interface ListContainerLogsRequest {
   /** If true, adds a timestamp at the beginning of every line of log output. If not provided, defaults to false. */
   timestamps?: boolean;
 }
-export const ListContainerLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContainerLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3385,7 +3343,7 @@ export interface Logs {
   /** The content of the log. */
   content?: string;
 }
-export const Logs = /*@__PURE__*/ S.suspend(() =>
+const Logs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
   }),
@@ -3397,7 +3355,7 @@ export interface ListLocationCachedImagesRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListLocationCachedImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationCachedImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -3420,7 +3378,7 @@ export interface CachedImages {
   /** The cached image name. */
   image: string;
 }
-export const CachedImages = /*@__PURE__*/ S.suspend(() =>
+const CachedImages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: S.String,
     image: S.String,
@@ -3429,7 +3387,7 @@ export const CachedImages = /*@__PURE__*/ S.suspend(() =>
 
 /** The cached images. */
 export type CachedImagesListResultValueList = Array<CachedImages>;
-export const CachedImagesListResultValueList = /*@__PURE__*/ S.Array(
+const CachedImagesListResultValueList = /*@__PURE__*/ S.Array(
   CachedImages,
 ) as any as S.Schema<CachedImagesListResultValueList>;
 
@@ -3440,7 +3398,7 @@ export interface CachedImagesListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const CachedImagesListResult = /*@__PURE__*/ S.suspend(() =>
+const CachedImagesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CachedImagesListResultValueList),
     nextLink: S.optional(S.String),
@@ -3453,7 +3411,7 @@ export interface ListLocationCapabilitiesRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListLocationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -3478,7 +3436,7 @@ export interface CapabilitiesCapabilities {
   /** The maximum allowed GPU count. */
   maxGpuCount?: number;
 }
-export const CapabilitiesCapabilities = /*@__PURE__*/ S.suspend(() =>
+const CapabilitiesCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxMemoryInGB: S.optional(S.Number),
     maxCpu: S.optional(S.Number),
@@ -3501,7 +3459,7 @@ export interface Capabilities {
   /** The supported capabilities. */
   capabilities?: CapabilitiesCapabilities;
 }
-export const Capabilities = /*@__PURE__*/ S.suspend(() =>
+const Capabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     osType: S.optional(S.String),
@@ -3514,7 +3472,7 @@ export const Capabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of capabilities. */
 export type CapabilitiesListResultValueList = Array<Capabilities>;
-export const CapabilitiesListResultValueList = /*@__PURE__*/ S.Array(
+const CapabilitiesListResultValueList = /*@__PURE__*/ S.Array(
   Capabilities,
 ) as any as S.Schema<CapabilitiesListResultValueList>;
 
@@ -3525,7 +3483,7 @@ export interface CapabilitiesListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const CapabilitiesListResult = /*@__PURE__*/ S.suspend(() =>
+const CapabilitiesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CapabilitiesListResultValueList),
     nextLink: S.optional(S.String),
@@ -3538,7 +3496,7 @@ export interface ListLocationUsageRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListLocationUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -3559,7 +3517,7 @@ export interface UsageName {
   /** The localized name of the resource */
   localizedValue?: string;
 }
-export const UsageName = /*@__PURE__*/ S.suspend(() =>
+const UsageName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -3579,7 +3537,7 @@ export interface Usage {
   /** The name object of the resource */
   name?: UsageName;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     unit: S.optional(S.String),
@@ -3591,7 +3549,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 
 /** The usage data. */
 export type UsageListResultValueList = Array<Usage>;
-export const UsageListResultValueList = /*@__PURE__*/ S.Array(
+const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;
 
@@ -3602,7 +3560,7 @@ export interface UsageListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const UsageListResult = /*@__PURE__*/ S.suspend(() =>
+const UsageListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(UsageListResultValueList),
     nextLink: S.optional(S.String),
@@ -3615,7 +3573,7 @@ export interface ListNGroupByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListNGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3633,11 +3591,11 @@ export const ListNGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NGroupTagsMap = { [key: string]: string | undefined };
-export const NGroupTagsMap = ConfigMapKeyValuePairsMap as any as S.Schema<NGroupTagsMap>;
+const NGroupTagsMap = ConfigMapKeyValuePairsMap as any as S.Schema<NGroupTagsMap>;
 
 /** The availability zones. */
 export type NGroupZonesList = Array<string>;
-export const NGroupZonesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<NGroupZonesList>;
+const NGroupZonesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<NGroupZonesList>;
 
 /** Describes the NGroups resource. */
 export interface NGroup {
@@ -3660,7 +3618,7 @@ export interface NGroup {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
 }
-export const NGroup = /*@__PURE__*/ S.suspend(() =>
+const NGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3676,7 +3634,7 @@ export const NGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The NGroup items on this page */
 export type NGroupsListResultValueList = Array<NGroup>;
-export const NGroupsListResultValueList = /*@__PURE__*/ S.Array(
+const NGroupsListResultValueList = /*@__PURE__*/ S.Array(
   NGroup,
 ) as any as S.Schema<NGroupsListResultValueList>;
 
@@ -3687,7 +3645,7 @@ export interface NGroupsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const NGroupsListResult = /*@__PURE__*/ S.suspend(() =>
+const NGroupsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: NGroupsListResultValueList,
     nextLink: S.optional(S.String),
@@ -3698,7 +3656,7 @@ export interface ListNGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListNGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3712,7 +3670,7 @@ export const ListNGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNGroupsRequest" }) as any as S.Schema<ListNGroupsRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -3734,7 +3692,7 @@ export interface OperationDisplay {
   /** The description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -3745,7 +3703,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation. */
 export type ContainerInstanceOperationsOrigin = "User" | "System";
-export const ContainerInstanceOperationsOrigin = S.String;
+const ContainerInstanceOperationsOrigin = S.String;
 
 /** An operation for Azure Container Instance service. */
 export interface Operation {
@@ -3758,7 +3716,7 @@ export interface Operation {
   /** The intended executor of the operation. */
   origin?: ContainerInstanceOperationsOrigin;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     display: OperationDisplay,
@@ -3769,7 +3727,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -3780,7 +3738,7 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
     nextLink: S.optional(S.String),
@@ -3793,7 +3751,7 @@ export interface ListSandboxGroupByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListSandboxGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3811,13 +3769,8 @@ export const ListSandboxGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type SandboxGroupTagsMap = { [key: string]: string | undefined };
-export const SandboxGroupTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<SandboxGroupTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SandboxGroupIdentity = GetSandboxGroupResponseIdentity;
-export const SandboxGroupIdentity = GetSandboxGroupResponseIdentity;
-
 /** A SandboxGroup tracked resource. */
 export interface SandboxGroup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3837,11 +3790,11 @@ export interface SandboxGroup {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
 }
-export const SandboxGroup = GetSandboxGroupResponse as any as S.Schema<SandboxGroup>;
+const SandboxGroup = GetSandboxGroupResponse as any as S.Schema<SandboxGroup>;
 
 /** The SandboxGroup items on this page */
 export type SandboxGroupListResultValueList = Array<SandboxGroup>;
-export const SandboxGroupListResultValueList = /*@__PURE__*/ S.Array(
+const SandboxGroupListResultValueList = /*@__PURE__*/ S.Array(
   SandboxGroup,
 ) as any as S.Schema<SandboxGroupListResultValueList>;
 
@@ -3852,7 +3805,7 @@ export interface SandboxGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SandboxGroupListResult = /*@__PURE__*/ S.suspend(() =>
+const SandboxGroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SandboxGroupListResultValueList,
     nextLink: S.optional(S.String),
@@ -3863,7 +3816,7 @@ export interface ListSandboxGroupBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListSandboxGroupBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxGroupBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3880,19 +3833,19 @@ export const ListSandboxGroupBySubscriptionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type NGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const NGroupsCreateOrUpdateRequestTagsMap =
+const NGroupsCreateOrUpdateRequestTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<NGroupsCreateOrUpdateRequestTagsMap>;
 
 /** The availability zones. */
 export type NGroupsCreateOrUpdateRequestZonesList = Array<string>;
-export const NGroupsCreateOrUpdateRequestZonesList =
+const NGroupsCreateOrUpdateRequestZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<NGroupsCreateOrUpdateRequestZonesList>;
 
 /** The list of user identities associated with the NGroup. */
 export type NGroupIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesInput | undefined;
 };
-export const NGroupIdentityInputUserAssignedIdentitiesMap =
+const NGroupIdentityInputUserAssignedIdentitiesMap =
   ContainerGroupIdentityInputUserAssignedIdentitiesMap as any as S.Schema<NGroupIdentityInputUserAssignedIdentitiesMap>;
 
 /** Identity for the NGroup. */
@@ -3902,7 +3855,7 @@ export interface NGroupIdentityInput {
   /** The list of user identities associated with the NGroup. */
   userAssignedIdentities?: NGroupIdentityInputUserAssignedIdentitiesMap;
 }
-export const NGroupIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const NGroupIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ResourceIdentityType),
     userAssignedIdentities: S.optional(NGroupIdentityInputUserAssignedIdentitiesMap),
@@ -3927,7 +3880,7 @@ export interface NGroupsCreateOrUpdateRequest {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentityInput;
 }
-export const NGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const NGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3951,12 +3904,12 @@ export const NGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type NGroupsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const NGroupsCreateOrUpdateResponseTagsMap =
+const NGroupsCreateOrUpdateResponseTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<NGroupsCreateOrUpdateResponseTagsMap>;
 
 /** The availability zones. */
 export type NGroupsCreateOrUpdateResponseZonesList = Array<string>;
-export const NGroupsCreateOrUpdateResponseZonesList =
+const NGroupsCreateOrUpdateResponseZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<NGroupsCreateOrUpdateResponseZonesList>;
 
 export interface NGroupsCreateOrUpdateResponse {
@@ -3979,7 +3932,7 @@ export interface NGroupsCreateOrUpdateResponse {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
 }
-export const NGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const NGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4003,7 +3956,7 @@ export interface RestartContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-export const RestartContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4021,7 +3974,7 @@ export const RestartContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartContainerGroupRequest>;
 
 export interface RestartContainerGroupResponse {}
-export const RestartContainerGroupResponse =
+const RestartContainerGroupResponse =
   UserAssignedIdentitiesInput as any as S.Schema<RestartContainerGroupResponse>;
 
 export interface RestartNGroupRequest {
@@ -4032,7 +3985,7 @@ export interface RestartNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-export const RestartNGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartNGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4048,12 +4001,11 @@ export const RestartNGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartNGroupRequest" }) as any as S.Schema<RestartNGroupRequest>;
 
 export interface RestartNGroupResponse {}
-export const RestartNGroupResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<RestartNGroupResponse>;
+const RestartNGroupResponse = UserAssignedIdentitiesInput as any as S.Schema<RestartNGroupResponse>;
 
 /** Resource tags. */
 export type SandboxGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SandboxGroupsCreateOrUpdateRequestTagsMap =
+const SandboxGroupsCreateOrUpdateRequestTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<SandboxGroupsCreateOrUpdateRequestTagsMap>;
 
 /** Properties of a SandboxGroup. */
@@ -4061,7 +4013,7 @@ export interface SandboxGroupPropertiesInput {
   /** The network profile of the SandboxGroup. */
   networkProfile?: SandboxGroupNetworkProfile;
 }
-export const SandboxGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SandboxGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkProfile: S.optional(SandboxGroupNetworkProfile),
   }),
@@ -4074,7 +4026,7 @@ export interface SandboxGroupsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const SandboxGroupsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const SandboxGroupsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -4099,7 +4051,7 @@ export interface SandboxGroupsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: SandboxGroupsCreateOrUpdateRequestIdentity;
 }
-export const SandboxGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4122,13 +4074,11 @@ export const SandboxGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SandboxGroupsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SandboxGroupsCreateOrUpdateResponseTagsMap =
+const SandboxGroupsCreateOrUpdateResponseTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<SandboxGroupsCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type SandboxGroupsCreateOrUpdateResponseIdentity = GetSandboxGroupResponseIdentity;
-export const SandboxGroupsCreateOrUpdateResponseIdentity = GetSandboxGroupResponseIdentity;
-
 export interface SandboxGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4147,7 +4097,7 @@ export interface SandboxGroupsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
 }
-export const SandboxGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4170,7 +4120,7 @@ export interface StartContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-export const StartContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const StartContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4188,7 +4138,7 @@ export const StartContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartContainerGroupRequest>;
 
 export interface StartContainerGroupResponse {}
-export const StartContainerGroupResponse =
+const StartContainerGroupResponse =
   UserAssignedIdentitiesInput as any as S.Schema<StartContainerGroupResponse>;
 
 export interface StartNGroupRequest {
@@ -4199,7 +4149,7 @@ export interface StartNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-export const StartNGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const StartNGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4215,8 +4165,7 @@ export const StartNGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartNGroupRequest" }) as any as S.Schema<StartNGroupRequest>;
 
 export interface StartNGroupResponse {}
-export const StartNGroupResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<StartNGroupResponse>;
+const StartNGroupResponse = UserAssignedIdentitiesInput as any as S.Schema<StartNGroupResponse>;
 
 export interface StopContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4226,7 +4175,7 @@ export interface StopContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-export const StopContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const StopContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4244,7 +4193,7 @@ export const StopContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopContainerGroupRequest>;
 
 export interface StopContainerGroupResponse {}
-export const StopContainerGroupResponse =
+const StopContainerGroupResponse =
   UserAssignedIdentitiesInput as any as S.Schema<StopContainerGroupResponse>;
 
 export interface StopNGroupRequest {
@@ -4255,7 +4204,7 @@ export interface StopNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-export const StopNGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const StopNGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4271,12 +4220,11 @@ export const StopNGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopNGroupRequest" }) as any as S.Schema<StopNGroupRequest>;
 
 export interface StopNGroupResponse {}
-export const StopNGroupResponse =
-  UserAssignedIdentitiesInput as any as S.Schema<StopNGroupResponse>;
+const StopNGroupResponse = UserAssignedIdentitiesInput as any as S.Schema<StopNGroupResponse>;
 
 /** Resource tags. */
 export type UpdateCGProfileRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCGProfileRequestTagsMap =
+const UpdateCGProfileRequestTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<UpdateCGProfileRequestTagsMap>;
 
 export interface UpdateCGProfileRequest {
@@ -4289,7 +4237,7 @@ export interface UpdateCGProfileRequest {
   /** Resource tags. */
   tags?: UpdateCGProfileRequestTagsMap;
 }
-export const UpdateCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4307,14 +4255,8 @@ export const UpdateCGProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCGProfileResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCGProfileResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<UpdateCGProfileResponseTagsMap>;
-
 /** The availability zones. */
 export type UpdateCGProfileResponseZonesList = Array<string>;
-export const UpdateCGProfileResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<UpdateCGProfileResponseZonesList>;
-
 export interface UpdateCGProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4333,17 +4275,16 @@ export interface UpdateCGProfileResponse {
   /** The availability zones. */
   zones?: UpdateCGProfileResponseZonesList;
 }
-export const UpdateCGProfileResponse =
-  GetCGProfileResponse as any as S.Schema<UpdateCGProfileResponse>;
+const UpdateCGProfileResponse = GetCGProfileResponse as any as S.Schema<UpdateCGProfileResponse>;
 
 /** The resource tags. */
 export type UpdateContainerGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateContainerGroupRequestTagsMap =
+const UpdateContainerGroupRequestTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<UpdateContainerGroupRequestTagsMap>;
 
 /** The zones for the container group. */
 export type UpdateContainerGroupRequestZonesList = Array<string>;
-export const UpdateContainerGroupRequestZonesList =
+const UpdateContainerGroupRequestZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<UpdateContainerGroupRequestZonesList>;
 
 export interface UpdateContainerGroupRequest {
@@ -4360,7 +4301,7 @@ export interface UpdateContainerGroupRequest {
   /** The zones for the container group. */
   zones?: UpdateContainerGroupRequestZonesList;
 }
-export const UpdateContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4382,14 +4323,8 @@ export const UpdateContainerGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateContainerGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateContainerGroupResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<UpdateContainerGroupResponseTagsMap>;
-
 /** The availability zones. */
 export type UpdateContainerGroupResponseZonesList = Array<string>;
-export const UpdateContainerGroupResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<UpdateContainerGroupResponseZonesList>;
-
 export interface UpdateContainerGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4410,17 +4345,17 @@ export interface UpdateContainerGroupResponse {
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
 }
-export const UpdateContainerGroupResponse =
+const UpdateContainerGroupResponse =
   ContainerGroupsCreateOrUpdateResponse as any as S.Schema<UpdateContainerGroupResponse>;
 
 /** The resource tags. */
 export type UpdateNGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateNGroupRequestTagsMap =
+const UpdateNGroupRequestTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<UpdateNGroupRequestTagsMap>;
 
 /** The zones for the NGroup. */
 export type UpdateNGroupRequestZonesList = Array<string>;
-export const UpdateNGroupRequestZonesList =
+const UpdateNGroupRequestZonesList =
   ContainerPropertiesInputCommandList as any as S.Schema<UpdateNGroupRequestZonesList>;
 
 export interface UpdateNGroupRequest {
@@ -4439,7 +4374,7 @@ export interface UpdateNGroupRequest {
   /** The zones for the NGroup. */
   zones?: UpdateNGroupRequestZonesList;
 }
-export const UpdateNGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4460,14 +4395,8 @@ export const UpdateNGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateNGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateNGroupResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<UpdateNGroupResponseTagsMap>;
-
 /** The availability zones. */
 export type UpdateNGroupResponseZonesList = Array<string>;
-export const UpdateNGroupResponseZonesList =
-  ContainerPropertiesInputCommandList as any as S.Schema<UpdateNGroupResponseZonesList>;
-
 export interface UpdateNGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4488,17 +4417,15 @@ export interface UpdateNGroupResponse {
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
 }
-export const UpdateNGroupResponse = GetNGroupResponse as any as S.Schema<UpdateNGroupResponse>;
+const UpdateNGroupResponse = GetNGroupResponse as any as S.Schema<UpdateNGroupResponse>;
 
 /** Resource tags. */
 export type UpdateSandboxGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSandboxGroupRequestTagsMap =
+const UpdateSandboxGroupRequestTagsMap =
   ConfigMapKeyValuePairsMap as any as S.Schema<UpdateSandboxGroupRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateSandboxGroupRequestIdentity = SandboxGroupsCreateOrUpdateRequestIdentity;
-export const UpdateSandboxGroupRequestIdentity = SandboxGroupsCreateOrUpdateRequestIdentity;
-
 export interface UpdateSandboxGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4511,7 +4438,7 @@ export interface UpdateSandboxGroupRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: SandboxGroupsCreateOrUpdateRequestIdentity;
 }
-export const UpdateSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4532,13 +4459,8 @@ export const UpdateSandboxGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSandboxGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSandboxGroupResponseTagsMap =
-  ConfigMapKeyValuePairsMap as any as S.Schema<UpdateSandboxGroupResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateSandboxGroupResponseIdentity = GetSandboxGroupResponseIdentity;
-export const UpdateSandboxGroupResponseIdentity = GetSandboxGroupResponseIdentity;
-
 export interface UpdateSandboxGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4557,7 +4479,7 @@ export interface UpdateSandboxGroupResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
 }
-export const UpdateSandboxGroupResponse =
+const UpdateSandboxGroupResponse =
   SandboxGroupsCreateOrUpdateResponse as any as S.Schema<UpdateSandboxGroupResponse>;
 
 export type AttachContainerError = AzureOpError;

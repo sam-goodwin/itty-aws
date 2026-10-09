@@ -68,7 +68,7 @@ export interface AcceptHubSpokeRequest {
   /** Required. The URI of the spoke to accept into the hub. */
   spokeUri?: string;
 }
-export const AcceptHubSpokeRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptHubSpokeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     spokeUri: S.optional(S.String),
@@ -81,7 +81,7 @@ export interface AcceptSpokeProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: AcceptHubSpokeRequest;
 }
-export const AcceptSpokeProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptSpokeProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AcceptHubSpokeRequest.pipe(T.HttpBody())),
@@ -97,15 +97,10 @@ export const AcceptSpokeProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<AcceptSpokeProjectsLocationsGlobalHubsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -116,7 +111,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -137,7 +132,7 @@ export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     done: S.optional(S.Boolean),
@@ -158,7 +153,7 @@ export interface AcceptSpokeUpdateRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const AcceptSpokeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptSpokeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spokeUri: S.optional(S.String),
     spokeEtag: S.optional(S.String),
@@ -172,7 +167,7 @@ export interface AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: AcceptSpokeUpdateRequest;
 }
-export const AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AcceptSpokeUpdateRequest.pipe(T.HttpBody())),
@@ -189,7 +184,7 @@ export const AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleLongrunningCancelOperationRequest",
@@ -201,7 +196,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -218,7 +213,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -226,7 +221,7 @@ export type CheckConsumerConfigRequestRequestedIpVersionEnum =
   | "IP_VERSION_UNSPECIFIED"
   | "IPV4"
   | "IPV6";
-export const CheckConsumerConfigRequestRequestedIpVersionEnum = S.String;
+const CheckConsumerConfigRequestRequestedIpVersionEnum = S.String;
 
 /** Request for CheckConsumerConfig. */
 export interface CheckConsumerConfigRequest {
@@ -239,7 +234,7 @@ export interface CheckConsumerConfigRequest {
   /** Required. The service class identifier of the producer. */
   serviceClass?: string;
 }
-export const CheckConsumerConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckConsumerConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedIpVersion: S.optional(CheckConsumerConfigRequestRequestedIpVersionEnum),
     consumerNetwork: S.optional(S.String),
@@ -256,7 +251,7 @@ export interface CheckConsumerConfigProjectsLocationsRequest {
   /** Request body */
   body?: CheckConsumerConfigRequest;
 }
-export const CheckConsumerConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckConsumerConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(CheckConsumerConfigRequest.pipe(T.HttpBody())),
@@ -282,11 +277,11 @@ export type CheckConsumerConfigResponseErrorsItemEnum =
   | "ENDPOINT_PROJECT_INVALID"
   | "ENDPOINT_PROJECT_API_NOT_ENABLED"
   | "ENDPOINT_PROJECT_IS_NOT_SERVICE_PROJECT";
-export const CheckConsumerConfigResponseErrorsItemEnum = S.String;
+const CheckConsumerConfigResponseErrorsItemEnum = S.String;
 
 export type CheckConsumerConfigResponseErrorsItemEnumList =
   Array<CheckConsumerConfigResponseErrorsItemEnum>;
-export const CheckConsumerConfigResponseErrorsItemEnumList = /*@__PURE__*/ S.Array(
+const CheckConsumerConfigResponseErrorsItemEnumList = /*@__PURE__*/ S.Array(
   CheckConsumerConfigResponseErrorsItemEnum,
 ) as any as S.Schema<CheckConsumerConfigResponseErrorsItemEnumList>;
 
@@ -295,7 +290,7 @@ export interface CheckConsumerConfigResponse {
   /** List of validation errors. If the list is empty, the consumer config is valid. */
   errors?: CheckConsumerConfigResponseErrorsItemEnumList;
 }
-export const CheckConsumerConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckConsumerConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(CheckConsumerConfigResponseErrorsItemEnumList),
   }),
@@ -307,10 +302,10 @@ export type CreateProjectsLocationsAutomatedDnsRecordsInsertModeEnum =
   | "INSERT_MODE_UNSPECIFIED"
   | "FAIL_IF_EXISTS"
   | "OVERWRITE";
-export const CreateProjectsLocationsAutomatedDnsRecordsInsertModeEnum = S.String;
+const CreateProjectsLocationsAutomatedDnsRecordsInsertModeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Defines the configuration of a DNS record. */
 export interface Config {
@@ -319,7 +314,7 @@ export interface Config {
   /** Required. The list of resource record data strings. The content and format of these strings depend on the AutomatedDnsRecord.type. For many common record types, this list may contain multiple strings. As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. Examples: A record: ["192.0.2.1"] or ["192.0.2.1", "192.0.2.2"] TXT record: ["This is a text record"] CNAME record: ["target.example.com."] AAAA record: ["::1"] or ["2001:0db8:85a3:0000:0000:8a2e:0370:7334", "2001:0db8:85a3:0000:0000:8a2e:0370:7335"] */
   rrdatas?: StringList;
 }
-export const Config = /*@__PURE__*/ S.suspend(() =>
+const Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttl: S.optional(S.String),
     rrdatas: S.optional(StringList),
@@ -330,7 +325,7 @@ export type AutomatedDnsRecordCreationModeEnum =
   | "CREATION_MODE_UNSPECIFIED"
   | "CONSUMER_API"
   | "SERVICE_CONNECTION_MAP";
-export const AutomatedDnsRecordCreationModeEnum = S.String;
+const AutomatedDnsRecordCreationModeEnum = S.String;
 
 export type AutomatedDnsRecordStateEnum =
   | "STATE_UNSPECIFIED"
@@ -338,7 +333,7 @@ export type AutomatedDnsRecordStateEnum =
   | "FAILED_DEPROGRAMMING"
   | "CREATING"
   | "DELETING";
-export const AutomatedDnsRecordStateEnum = S.String;
+const AutomatedDnsRecordStateEnum = S.String;
 
 export type AutomatedDnsRecordRecordTypeEnum =
   | "RECORD_TYPE_UNSPECIFIED"
@@ -346,10 +341,10 @@ export type AutomatedDnsRecordRecordTypeEnum =
   | "AAAA"
   | "TXT"
   | "CNAME";
-export const AutomatedDnsRecordRecordTypeEnum = S.String;
+const AutomatedDnsRecordRecordTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Represents a DNS record managed by the AutomatedDnsRecord API. */
 export interface AutomatedDnsRecord {
@@ -390,7 +385,7 @@ export interface AutomatedDnsRecord {
   /** Output only. The timestamp of when the record was created. */
   createTime?: string;
 }
-export const AutomatedDnsRecord = /*@__PURE__*/ S.suspend(() =>
+const AutomatedDnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsSuffix: S.optional(S.String),
     dnsZone: S.optional(S.String),
@@ -425,7 +420,7 @@ export interface CreateProjectsLocationsAutomatedDnsRecordsRequest {
   /** Request body */
   body?: AutomatedDnsRecord;
 }
-export const CreateProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatedDnsRecordId: S.optional(S.String.pipe(T.Query())),
     insertMode: S.optional(
@@ -452,7 +447,7 @@ export interface RoutingVPC {
   /** Output only. If true, indicates that this VPC network is currently associated with spokes that use the data transfer feature (spokes where the site_to_site_data_transfer field is set to true). If you create new spokes that use data transfer, they must be associated with this VPC network. At most, one VPC network will have this field set to true. */
   requiredForNewSiteToSiteDataTransferSpokes?: boolean;
 }
-export const RoutingVPC = /*@__PURE__*/ S.suspend(() =>
+const RoutingVPC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     requiredForNewSiteToSiteDataTransferSpokes: S.optional(S.Boolean),
@@ -460,7 +455,7 @@ export const RoutingVPC = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutingVPC" }) as any as S.Schema<RoutingVPC>;
 
 export type RoutingVPCList = Array<RoutingVPC>;
-export const RoutingVPCList = /*@__PURE__*/ S.Array(RoutingVPC) as any as S.Schema<RoutingVPCList>;
+const RoutingVPCList = /*@__PURE__*/ S.Array(RoutingVPC) as any as S.Schema<RoutingVPCList>;
 
 export type HubStateEnum =
   | "STATE_UNSPECIFIED"
@@ -473,10 +468,10 @@ export type HubStateEnum =
   | "INACTIVE"
   | "OBSOLETE"
   | "FAILED";
-export const HubStateEnum = S.String;
+const HubStateEnum = S.String;
 
 export type HubPolicyModeEnum = "POLICY_MODE_UNSPECIFIED" | "PRESET";
-export const HubPolicyModeEnum = S.String;
+const HubPolicyModeEnum = S.String;
 
 export type SpokeStateReasonCountStateReasonCodeEnum =
   | "CODE_UNSPECIFIED"
@@ -487,7 +482,7 @@ export type SpokeStateReasonCountStateReasonCodeEnum =
   | "UPDATE_PENDING_REVIEW"
   | "UPDATE_REJECTED"
   | "UPDATE_FAILED";
-export const SpokeStateReasonCountStateReasonCodeEnum = S.String;
+const SpokeStateReasonCountStateReasonCodeEnum = S.String;
 
 /** The number of spokes in the hub that are inactive for this reason. */
 export interface SpokeStateReasonCount {
@@ -496,7 +491,7 @@ export interface SpokeStateReasonCount {
   /** Output only. The reason that a spoke is inactive. */
   stateReasonCode?: SpokeStateReasonCountStateReasonCodeEnum | (string & {});
 }
-export const SpokeStateReasonCount = /*@__PURE__*/ S.suspend(() =>
+const SpokeStateReasonCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     stateReasonCode: S.optional(SpokeStateReasonCountStateReasonCodeEnum),
@@ -504,7 +499,7 @@ export const SpokeStateReasonCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpokeStateReasonCount" }) as any as S.Schema<SpokeStateReasonCount>;
 
 export type SpokeStateReasonCountList = Array<SpokeStateReasonCount>;
-export const SpokeStateReasonCountList = /*@__PURE__*/ S.Array(
+const SpokeStateReasonCountList = /*@__PURE__*/ S.Array(
   SpokeStateReasonCount,
 ) as any as S.Schema<SpokeStateReasonCountList>;
 
@@ -516,7 +511,7 @@ export type SpokeTypeCountSpokeTypeEnum =
   | "VPC_NETWORK"
   | "GATEWAY"
   | "PRODUCER_VPC_NETWORK";
-export const SpokeTypeCountSpokeTypeEnum = S.String;
+const SpokeTypeCountSpokeTypeEnum = S.String;
 
 /** The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of resource is associated with the spoke. */
 export interface SpokeTypeCount {
@@ -525,7 +520,7 @@ export interface SpokeTypeCount {
   /** Output only. The total number of spokes of this type that are associated with the hub. */
   count?: string;
 }
-export const SpokeTypeCount = /*@__PURE__*/ S.suspend(() =>
+const SpokeTypeCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spokeType: S.optional(SpokeTypeCountSpokeTypeEnum),
     count: S.optional(S.String),
@@ -533,7 +528,7 @@ export const SpokeTypeCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpokeTypeCount" }) as any as S.Schema<SpokeTypeCount>;
 
 export type SpokeTypeCountList = Array<SpokeTypeCount>;
-export const SpokeTypeCountList = /*@__PURE__*/ S.Array(
+const SpokeTypeCountList = /*@__PURE__*/ S.Array(
   SpokeTypeCount,
 ) as any as S.Schema<SpokeTypeCountList>;
 
@@ -548,7 +543,7 @@ export type SpokeStateCountStateEnum =
   | "INACTIVE"
   | "OBSOLETE"
   | "FAILED";
-export const SpokeStateCountStateEnum = S.String;
+const SpokeStateCountStateEnum = S.String;
 
 /** The number of spokes that are in a particular state and associated with a given hub. */
 export interface SpokeStateCount {
@@ -557,7 +552,7 @@ export interface SpokeStateCount {
   /** Output only. The total number of spokes that are in this state and associated with a given hub. */
   count?: string;
 }
-export const SpokeStateCount = /*@__PURE__*/ S.suspend(() =>
+const SpokeStateCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SpokeStateCountStateEnum),
     count: S.optional(S.String),
@@ -565,7 +560,7 @@ export const SpokeStateCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpokeStateCount" }) as any as S.Schema<SpokeStateCount>;
 
 export type SpokeStateCountList = Array<SpokeStateCount>;
-export const SpokeStateCountList = /*@__PURE__*/ S.Array(
+const SpokeStateCountList = /*@__PURE__*/ S.Array(
   SpokeStateCount,
 ) as any as S.Schema<SpokeStateCountList>;
 
@@ -578,7 +573,7 @@ export interface SpokeSummary {
   /** Output only. Counts the number of spokes that are in each state and associated with a given hub. */
   spokeStateCounts?: SpokeStateCountList;
 }
-export const SpokeSummary = /*@__PURE__*/ S.suspend(() =>
+const SpokeSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spokeStateReasonCounts: S.optional(SpokeStateReasonCountList),
     spokeTypeCounts: S.optional(SpokeTypeCountList),
@@ -591,7 +586,7 @@ export type HubPresetTopologyEnum =
   | "MESH"
   | "STAR"
   | "HYBRID_INSPECTION";
-export const HubPresetTopologyEnum = S.String;
+const HubPresetTopologyEnum = S.String;
 
 /** A Network Connectivity Center hub is a global management resource to which you attach spokes. A single hub can contain spokes from multiple regions. However, if any of a hub's spokes use the site-to-site data transfer feature, the resources associated with those spokes must all be in the same VPC network. Spokes that do not use site-to-site data transfer can be associated with any VPC network in your project. */
 export interface Hub {
@@ -622,7 +617,7 @@ export interface Hub {
   /** Output only. The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub. */
   routeTables?: StringList;
 }
-export const Hub = /*@__PURE__*/ S.suspend(() =>
+const Hub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routingVpcs: S.optional(RoutingVPCList),
     createTime: S.optional(S.String),
@@ -650,7 +645,7 @@ export interface CreateProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: Hub;
 }
-export const CreateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     hubId: S.optional(S.String.pipe(T.Query())),
@@ -671,7 +666,7 @@ export type WarningsCodeEnum =
   | "WARNING_UNSPECIFIED"
   | "RESOURCE_NOT_ACTIVE"
   | "RESOURCE_BEING_MODIFIED";
-export const WarningsCodeEnum = S.String;
+const WarningsCodeEnum = S.String;
 
 /** Informational warning message. */
 export interface Warnings {
@@ -682,7 +677,7 @@ export interface Warnings {
   /** Output only. Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement. */
   data?: StringMap;
 }
-export const Warnings = /*@__PURE__*/ S.suspend(() =>
+const Warnings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warningMessage: S.optional(S.String),
     code: S.optional(WarningsCodeEnum),
@@ -691,35 +686,35 @@ export const Warnings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Warnings" }) as any as S.Schema<Warnings>;
 
 export type WarningsList = Array<Warnings>;
-export const WarningsList = /*@__PURE__*/ S.Array(Warnings) as any as S.Schema<WarningsList>;
+const WarningsList = /*@__PURE__*/ S.Array(Warnings) as any as S.Schema<WarningsList>;
 
 /** VM instances that this policy-based route applies to. */
 export interface VirtualMachine {
   /** Optional. A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here installs this PBR. */
   tags?: StringList;
 }
-export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(StringList),
   }),
 ).annotate({ identifier: "VirtualMachine" }) as any as S.Schema<VirtualMachine>;
 
 export type PolicyBasedRouteNextHopOtherRoutesEnum = "OTHER_ROUTES_UNSPECIFIED" | "DEFAULT_ROUTING";
-export const PolicyBasedRouteNextHopOtherRoutesEnum = S.String;
+const PolicyBasedRouteNextHopOtherRoutesEnum = S.String;
 
 /** InterconnectAttachment that this route applies to. */
 export interface InterconnectAttachment {
   /** Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install it on all interconnect attachments. */
   region?: string;
 }
-export const InterconnectAttachment = /*@__PURE__*/ S.suspend(() =>
+const InterconnectAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
   }),
 ).annotate({ identifier: "InterconnectAttachment" }) as any as S.Schema<InterconnectAttachment>;
 
 export type FilterProtocolVersionEnum = "PROTOCOL_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
-export const FilterProtocolVersionEnum = S.String;
+const FilterProtocolVersionEnum = S.String;
 
 /** Filter matches L4 traffic. */
 export interface Filter {
@@ -732,7 +727,7 @@ export interface Filter {
   /** Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4 and "::/0" if protocol version is IPv6. */
   destRange?: string;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipProtocol: S.optional(S.String),
     protocolVersion: S.optional(FilterProtocolVersionEnum),
@@ -774,7 +769,7 @@ export interface PolicyBasedRoute {
   /** Required. The filter to match L4 traffic. */
   filter?: Filter;
 }
-export const PolicyBasedRoute = /*@__PURE__*/ S.suspend(() =>
+const PolicyBasedRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -804,7 +799,7 @@ export interface CreateProjectsLocationsGlobalPolicyBasedRoutesRequest {
   /** Request body */
   body?: PolicyBasedRoute;
 }
-export const CreateProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     policyBasedRouteId: S.optional(S.String.pipe(T.Query())),
@@ -826,18 +821,16 @@ export type InternalRangeUsageEnum =
   | "FOR_VPC"
   | "EXTERNAL_TO_VPC"
   | "FOR_MIGRATION";
-export const InternalRangeUsageEnum = S.String;
+const InternalRangeUsageEnum = S.String;
 
 export type InternalRangeOverlapsItemEnum =
   | "OVERLAP_UNSPECIFIED"
   | "OVERLAP_ROUTE_RANGE"
   | "OVERLAP_EXISTING_SUBNET_RANGE";
-export const InternalRangeOverlapsItemEnum = S.String;
-
 export type InternalRangeOverlapsItemEnumList = Array<
   InternalRangeOverlapsItemEnum | (string & {})
 >;
-export const InternalRangeOverlapsItemEnumList =
+const InternalRangeOverlapsItemEnumList =
   CheckConsumerConfigResponseErrorsItemEnumList as any as S.Schema<InternalRangeOverlapsItemEnumList>;
 
 export type InternalRangePeeringEnum =
@@ -845,7 +838,7 @@ export type InternalRangePeeringEnum =
   | "FOR_SELF"
   | "FOR_PEER"
   | "NOT_SHARED";
-export const InternalRangePeeringEnum = S.String;
+const InternalRangePeeringEnum = S.String;
 
 export type AllocationOptionsAllocationStrategyEnum =
   | "ALLOCATION_STRATEGY_UNSPECIFIED"
@@ -853,7 +846,7 @@ export type AllocationOptionsAllocationStrategyEnum =
   | "FIRST_AVAILABLE"
   | "RANDOM_FIRST_N_AVAILABLE"
   | "FIRST_SMALLEST_FITTING";
-export const AllocationOptionsAllocationStrategyEnum = S.String;
+const AllocationOptionsAllocationStrategyEnum = S.String;
 
 /** Range auto-allocation options, to be optionally used when CIDR block is not explicitly set. */
 export interface AllocationOptions {
@@ -862,7 +855,7 @@ export interface AllocationOptions {
   /** Optional. Allocation strategy Not setting this field when the allocation is requested means an implementation defined strategy is used. */
   allocationStrategy?: AllocationOptionsAllocationStrategyEnum | (string & {});
 }
-export const AllocationOptions = /*@__PURE__*/ S.suspend(() =>
+const AllocationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstAvailableRangesLookupSize: S.optional(S.Number),
     allocationStrategy: S.optional(AllocationOptionsAllocationStrategyEnum),
@@ -876,7 +869,7 @@ export interface Migration {
   /** Immutable. Resource path of the target resource. The target project can be different, as in the cases when migrating to peer networks. For example: /projects/{project}/regions/{region}/subnetworks/{subnet} */
   target?: string;
 }
-export const Migration = /*@__PURE__*/ S.suspend(() =>
+const Migration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String),
     target: S.optional(S.String),
@@ -889,10 +882,10 @@ export type InternalRangeRangeStatusEnum =
   | "OBSOLETE"
   | "CREATING"
   | "DELETING";
-export const InternalRangeRangeStatusEnum = S.String;
+const InternalRangeRangeStatusEnum = S.String;
 
 export type InternalRangePurposeEnum = "PURPOSE_UNSPECIFIED" | "VPC_SUBNET" | "INTERNAL_ADDRESS";
-export const InternalRangePurposeEnum = S.String;
+const InternalRangePurposeEnum = S.String;
 
 /** The internal range resource for IPAM operations within a VPC network. Used to represent a private address range along with behavioral characteristics of that range (its usage and peering behavior). Networking resources can link to this range if they are created as belonging to it. */
 export interface InternalRange {
@@ -935,7 +928,7 @@ export interface InternalRange {
   /** Output only. Time when the internal range was created. */
   createTime?: string;
 }
-export const InternalRange = /*@__PURE__*/ S.suspend(() =>
+const InternalRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeCidrRanges: S.optional(StringList),
     usage: S.optional(InternalRangeUsageEnum),
@@ -969,7 +962,7 @@ export interface CreateProjectsLocationsInternalRangesRequest {
   /** Request body */
   body?: InternalRange;
 }
-export const CreateProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internalRangeId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -993,7 +986,7 @@ export type StateMetadataStateEnum =
   | "DELETING"
   | "SUSPENDING"
   | "SUSPENDED";
-export const StateMetadataStateEnum = S.String;
+const StateMetadataStateEnum = S.String;
 
 /** The state and activation time details of the resource state. */
 export interface StateMetadata {
@@ -1002,7 +995,7 @@ export interface StateMetadata {
   /** Output only. Accompanies only the transient states, which include `ADDING`, `DELETING`, and `SUSPENDING`, to denote the time until which the transient state of the resource will be effective. For instance, if the state is `ADDING`, this field shows the time when the resource state transitions to `ACTIVE`. */
   effectiveTime?: string;
 }
-export const StateMetadata = /*@__PURE__*/ S.suspend(() =>
+const StateMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(StateMetadataStateEnum),
     effectiveTime: S.optional(S.String),
@@ -1010,7 +1003,7 @@ export const StateMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StateMetadata" }) as any as S.Schema<StateMetadata>;
 
 export type StateMetadataList = Array<StateMetadata>;
-export const StateMetadataList = /*@__PURE__*/ S.Array(
+const StateMetadataList = /*@__PURE__*/ S.Array(
   StateMetadata,
 ) as any as S.Schema<StateMetadataList>;
 
@@ -1019,14 +1012,14 @@ export interface StateTimeline {
   /** Output only. The state and activation time details of the resource state. */
   states?: StateMetadataList;
 }
-export const StateTimeline = /*@__PURE__*/ S.suspend(() =>
+const StateTimeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     states: S.optional(StateMetadataList),
   }),
 ).annotate({ identifier: "StateTimeline" }) as any as S.Schema<StateTimeline>;
 
 export type StateTimelineMap = { [key: string]: StateTimeline | undefined };
-export const StateTimelineMap = /*@__PURE__*/ S.Record(
+const StateTimelineMap = /*@__PURE__*/ S.Record(
   S.String,
   StateTimeline,
 ) as any as S.Schema<StateTimelineMap>;
@@ -1054,7 +1047,7 @@ export interface MulticloudDataTransferConfig {
   /** Output only. The number of `Destination` resources configured for the `MulticloudDataTransferConfig` resource. */
   destinationsCount?: number;
 }
-export const MulticloudDataTransferConfig = /*@__PURE__*/ S.suspend(() =>
+const MulticloudDataTransferConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -1081,26 +1074,25 @@ export interface CreateProjectsLocationsMulticloudDataTransferConfigsRequest {
   /** Request body */
   body?: MulticloudDataTransferConfig;
 }
-export const CreateProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      multicloudDataTransferConfigId: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(MulticloudDataTransferConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/multicloudDataTransferConfigs",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    multicloudDataTransferConfigId: S.optional(S.String.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(MulticloudDataTransferConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/multicloudDataTransferConfigs",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsMulticloudDataTransferConfigsRequest",
 }) as any as S.Schema<CreateProjectsLocationsMulticloudDataTransferConfigsRequest>;
 
 export type DestinationEndpointStateEnum = "STATE_UNSPECIFIED" | "VALID" | "INVALID";
-export const DestinationEndpointStateEnum = S.String;
+const DestinationEndpointStateEnum = S.String;
 
 /** The metadata for a `DestinationEndpoint` resource. */
 export interface DestinationEndpoint {
@@ -1113,7 +1105,7 @@ export interface DestinationEndpoint {
   /** Required. The CSP of the remote IP prefix. */
   csp?: string;
 }
-export const DestinationEndpoint = /*@__PURE__*/ S.suspend(() =>
+const DestinationEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     state: S.optional(DestinationEndpointStateEnum),
@@ -1123,7 +1115,7 @@ export const DestinationEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestinationEndpoint" }) as any as S.Schema<DestinationEndpoint>;
 
 export type DestinationEndpointList = Array<DestinationEndpoint>;
-export const DestinationEndpointList = /*@__PURE__*/ S.Array(
+const DestinationEndpointList = /*@__PURE__*/ S.Array(
   DestinationEndpoint,
 ) as any as S.Schema<DestinationEndpointList>;
 
@@ -1150,7 +1142,7 @@ export interface Destination {
   /** Optional. A description of this resource. */
   description?: string;
 }
-export const Destination = /*@__PURE__*/ S.suspend(() =>
+const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     ipPrefix: S.optional(S.String),
@@ -1175,7 +1167,7 @@ export interface CreateProjectsLocationsMulticloudDataTransferConfigsDestination
   /** Request body */
   body?: Destination;
 }
-export const CreateProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
+const CreateProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       requestId: S.optional(S.String.pipe(T.Query())),
@@ -1196,7 +1188,7 @@ export const CreateProjectsLocationsMulticloudDataTransferConfigsDestinationsReq
 export type PscAuthorizationPolicyAuthorizationModeEnum =
   | "AUTHORIZATION_MODE_UNSPECIFIED"
   | "AUTHORIZATION_MODE_TRANSITIVE_TO_SERVICE_ATTACHMENT";
-export const PscAuthorizationPolicyAuthorizationModeEnum = S.String;
+const PscAuthorizationPolicyAuthorizationModeEnum = S.String;
 
 /** Represents a PSC Authorization Policy. */
 export interface PscAuthorizationPolicy {
@@ -1221,7 +1213,7 @@ export interface PscAuthorizationPolicy {
   /** Required. List of authorized consumer resources allowed to connect. Supported values are: 1. Project resource name (e.g., `projects/{project_id}`) 2. Wildcard `"*"` (grants global ingress authorization to the target). */
   authorizedClientResources?: StringList;
 }
-export const PscAuthorizationPolicy = /*@__PURE__*/ S.suspend(() =>
+const PscAuthorizationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     authorizationMode: S.optional(PscAuthorizationPolicyAuthorizationModeEnum),
@@ -1246,7 +1238,7 @@ export interface CreateProjectsLocationsPscAuthorizationPoliciesRequest {
   /** Request body */
   body?: PscAuthorizationPolicy;
 }
-export const CreateProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     pscAuthorizationPolicyId: S.optional(S.String.pipe(T.Query())),
@@ -1264,7 +1256,7 @@ export const CreateProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE_
 }) as any as S.Schema<CreateProjectsLocationsPscAuthorizationPoliciesRequest>;
 
 export type RegionalEndpointAccessTypeEnum = "ACCESS_TYPE_UNSPECIFIED" | "GLOBAL" | "REGIONAL";
-export const RegionalEndpointAccessTypeEnum = S.String;
+const RegionalEndpointAccessTypeEnum = S.String;
 
 /** The RegionalEndpoint resource. */
 export interface RegionalEndpoint {
@@ -1293,7 +1285,7 @@ export interface RegionalEndpoint {
   /** Required. The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.p.rep.googleapis.com` Example: "cloudkms.us-central1.p.rep.googleapis.com". */
   targetGoogleApi?: string;
 }
-export const RegionalEndpoint = /*@__PURE__*/ S.suspend(() =>
+const RegionalEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     description: S.optional(S.String),
@@ -1320,7 +1312,7 @@ export interface CreateProjectsLocationsRegionalEndpointsRequest {
   /** Request body */
   body?: RegionalEndpoint;
 }
-export const CreateProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalEndpointId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1346,7 +1338,7 @@ export interface AutomatedDnsCreationSpec {
   /** Required. The DNS suffix to use for the DNS record. Must end with a dot. This should be a valid DNS domain name as per RFC 1035. Each label (between dots) can contain letters, digits, and hyphens, and must not start or end with a hyphen. Example: "my-service.example.com.", "internal." */
   dnsSuffix?: string;
 }
-export const AutomatedDnsCreationSpec = /*@__PURE__*/ S.suspend(() =>
+const AutomatedDnsCreationSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostname: S.optional(S.String),
     ttl: S.optional(S.String),
@@ -1361,7 +1353,7 @@ export interface ProducerPscConfig {
   /** Optional. The specification for automatically creating a DNS record for this PSC connection. */
   automatedDnsCreationSpec?: AutomatedDnsCreationSpec;
 }
-export const ProducerPscConfig = /*@__PURE__*/ S.suspend(() =>
+const ProducerPscConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAttachmentUri: S.optional(S.String),
     automatedDnsCreationSpec: S.optional(AutomatedDnsCreationSpec),
@@ -1369,12 +1361,12 @@ export const ProducerPscConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProducerPscConfig" }) as any as S.Schema<ProducerPscConfig>;
 
 export type ProducerPscConfigList = Array<ProducerPscConfig>;
-export const ProducerPscConfigList = /*@__PURE__*/ S.Array(
+const ProducerPscConfigList = /*@__PURE__*/ S.Array(
   ProducerPscConfig,
 ) as any as S.Schema<ProducerPscConfigList>;
 
 export type ConsumerPscConfigIpVersionEnum = "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
-export const ConsumerPscConfigIpVersionEnum = S.String;
+const ConsumerPscConfigIpVersionEnum = S.String;
 
 export type ConsumerPscConfigStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1382,7 +1374,7 @@ export type ConsumerPscConfigStateEnum =
   | "CONNECTION_POLICY_MISSING"
   | "POLICY_LIMIT_REACHED"
   | "CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED";
-export const ConsumerPscConfigStateEnum = S.String;
+const ConsumerPscConfigStateEnum = S.String;
 
 /** Allow the producer to specify which consumers can connect to it. */
 export interface ConsumerPscConfig {
@@ -1405,7 +1397,7 @@ export interface ConsumerPscConfig {
   /** Optional. A map to store mapping between customer vip and target service attachment. This field can be used to specify a static IP address for a PSC connection. */
   serviceAttachmentIpAddressMap?: StringMap;
 }
-export const ConsumerPscConfig = /*@__PURE__*/ S.suspend(() =>
+const ConsumerPscConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     producerInstanceId: S.optional(S.String),
@@ -1420,7 +1412,7 @@ export const ConsumerPscConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConsumerPscConfig" }) as any as S.Schema<ConsumerPscConfig>;
 
 export type ConsumerPscConfigList = Array<ConsumerPscConfig>;
-export const ConsumerPscConfigList = /*@__PURE__*/ S.Array(
+const ConsumerPscConfigList = /*@__PURE__*/ S.Array(
   ConsumerPscConfig,
 ) as any as S.Schema<ConsumerPscConfigList>;
 
@@ -1432,7 +1424,7 @@ export type ConsumerPscConnectionStateEnum =
   | "DELETING"
   | "CREATE_REPAIRING"
   | "DELETE_REPAIRING";
-export const ConsumerPscConnectionStateEnum = S.String;
+const ConsumerPscConnectionStateEnum = S.String;
 
 export type DnsAutomationStatusStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1441,7 +1433,7 @@ export type DnsAutomationStatusStateEnum =
   | "PENDING_DELETE"
   | "CREATE_FAILED"
   | "DELETE_FAILED";
-export const DnsAutomationStatusStateEnum = S.String;
+const DnsAutomationStatusStateEnum = S.String;
 
 /** The status of DNS automation for a PSC connection. */
 export interface DnsAutomationStatus {
@@ -1452,7 +1444,7 @@ export interface DnsAutomationStatus {
   /** Output only. The current state of DNS automation. */
   state?: DnsAutomationStatusStateEnum | (string & {});
 }
-export const DnsAutomationStatus = /*@__PURE__*/ S.suspend(() =>
+const DnsAutomationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(GoogleRpcStatus),
     fqdn: S.optional(S.String),
@@ -1461,14 +1453,14 @@ export const DnsAutomationStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsAutomationStatus" }) as any as S.Schema<DnsAutomationStatus>;
 
 export type ConsumerPscConnectionIpVersionEnum = "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
-export const ConsumerPscConnectionIpVersionEnum = S.String;
+const ConsumerPscConnectionIpVersionEnum = S.String;
 
 export type ConsumerPscConnectionErrorTypeEnum =
   | "CONNECTION_ERROR_TYPE_UNSPECIFIED"
   | "ERROR_INTERNAL"
   | "ERROR_CONSUMER_SIDE"
   | "ERROR_PRODUCER_SIDE";
-export const ConsumerPscConnectionErrorTypeEnum = S.String;
+const ConsumerPscConnectionErrorTypeEnum = S.String;
 
 /** Describes the cause of the error with structured details. Example of an error when contacting the "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com" "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com", "metadata": { "availableRegions": "us-central1,us-east2" } } */
 export interface GoogleRpcErrorInfo {
@@ -1479,7 +1471,7 @@ export interface GoogleRpcErrorInfo {
   /** Additional structured details about this error. Keys must match a regular expression of `a-z+` but should ideally be lowerCamelCase. Also, they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than `{"instanceLimit": "100/request"}`, should be returned as, `{"instanceLimitPerRequest": "100"}`, if the client exceeds the number of instances that can be created in a single (batch) request. */
   metadata?: StringMap;
 }
-export const GoogleRpcErrorInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     reason: S.optional(S.String),
@@ -1522,7 +1514,7 @@ export interface ConsumerPscConnection {
   /** Output only. The error info for the latest error during operating this connection. */
   errorInfo?: GoogleRpcErrorInfo;
 }
-export const ConsumerPscConnection = /*@__PURE__*/ S.suspend(() =>
+const ConsumerPscConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAttachmentUri: S.optional(S.String),
     state: S.optional(ConsumerPscConnectionStateEnum),
@@ -1544,12 +1536,12 @@ export const ConsumerPscConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConsumerPscConnection" }) as any as S.Schema<ConsumerPscConnection>;
 
 export type ConsumerPscConnectionList = Array<ConsumerPscConnection>;
-export const ConsumerPscConnectionList = /*@__PURE__*/ S.Array(
+const ConsumerPscConnectionList = /*@__PURE__*/ S.Array(
   ConsumerPscConnection,
 ) as any as S.Schema<ConsumerPscConnectionList>;
 
 export type ServiceConnectionMapInfrastructureEnum = "INFRASTRUCTURE_UNSPECIFIED" | "PSC";
-export const ServiceConnectionMapInfrastructureEnum = S.String;
+const ServiceConnectionMapInfrastructureEnum = S.String;
 
 /** The ServiceConnectionMap resource. */
 export interface ServiceConnectionMap {
@@ -1580,7 +1572,7 @@ export interface ServiceConnectionMap {
   /** The token provided by the consumer. This token authenticates that the consumer can create a connection within the specified project and network. */
   token?: string;
 }
-export const ServiceConnectionMap = /*@__PURE__*/ S.suspend(() =>
+const ServiceConnectionMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     producerPscConfigs: S.optional(ProducerPscConfigList),
     consumerPscConfigs: S.optional(ConsumerPscConfigList),
@@ -1608,7 +1600,7 @@ export interface CreateProjectsLocationsServiceConnectionMapsRequest {
   /** Request body */
   body?: ServiceConnectionMap;
 }
-export const CreateProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     serviceConnectionMapId: S.optional(S.String.pipe(T.Query())),
@@ -1630,27 +1622,26 @@ export type CreateProjectsLocationsServiceConnectionPoliciesAutoSubnetworkConfig
   | "IPV4_ONLY"
   | "IPV6_ONLY"
   | "IPV4_IPV6";
-export const CreateProjectsLocationsServiceConnectionPoliciesAutoSubnetworkConfig_ipStackEnum =
-  S.String;
+const CreateProjectsLocationsServiceConnectionPoliciesAutoSubnetworkConfig_ipStackEnum = S.String;
 
 export type CreateProjectsLocationsServiceConnectionPoliciesSubnetworkModeEnum =
   | "SUBNETWORK_MODE_UNSPECIFIED"
   | "USER_PROVIDED"
   | "AUTO_CREATED";
-export const CreateProjectsLocationsServiceConnectionPoliciesSubnetworkModeEnum = S.String;
+const CreateProjectsLocationsServiceConnectionPoliciesSubnetworkModeEnum = S.String;
 
 export type ServiceConnectionPolicyInfrastructureEnum = "INFRASTRUCTURE_UNSPECIFIED" | "PSC";
-export const ServiceConnectionPolicyInfrastructureEnum = S.String;
+const ServiceConnectionPolicyInfrastructureEnum = S.String;
 
 export type PscConnectionIpVersionEnum = "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
-export const PscConnectionIpVersionEnum = S.String;
+const PscConnectionIpVersionEnum = S.String;
 
 export type PscConnectionErrorTypeEnum =
   | "CONNECTION_ERROR_TYPE_UNSPECIFIED"
   | "ERROR_INTERNAL"
   | "ERROR_CONSUMER_SIDE"
   | "ERROR_PRODUCER_SIDE";
-export const PscConnectionErrorTypeEnum = S.String;
+const PscConnectionErrorTypeEnum = S.String;
 
 export type PscConnectionStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1660,7 +1651,7 @@ export type PscConnectionStateEnum =
   | "DELETING"
   | "CREATE_REPAIRING"
   | "DELETE_REPAIRING";
-export const PscConnectionStateEnum = S.String;
+const PscConnectionStateEnum = S.String;
 
 /** Information about a specific Private Service Connect connection. */
 export interface PscConnection {
@@ -1693,7 +1684,7 @@ export interface PscConnection {
   /** State of the PSC Connection */
   state?: PscConnectionStateEnum | (string & {});
 }
-export const PscConnection = /*@__PURE__*/ S.suspend(() =>
+const PscConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipVersion: S.optional(PscConnectionIpVersionEnum),
     consumerAddress: S.optional(S.String),
@@ -1713,7 +1704,7 @@ export const PscConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PscConnection" }) as any as S.Schema<PscConnection>;
 
 export type PscConnectionList = Array<PscConnection>;
-export const PscConnectionList = /*@__PURE__*/ S.Array(
+const PscConnectionList = /*@__PURE__*/ S.Array(
   PscConnection,
 ) as any as S.Schema<PscConnectionList>;
 
@@ -1730,7 +1721,7 @@ export interface AutoCreatedSubnetworkInfo {
   /** Output only. URI of the automatically created Internal Range reference. Only set if the subnetwork mode is AUTO_CREATED during creation. */
   internalRangeRef?: string;
 }
-export const AutoCreatedSubnetworkInfo = /*@__PURE__*/ S.suspend(() =>
+const AutoCreatedSubnetworkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internalRange: S.optional(S.String),
     delinked: S.optional(S.Boolean),
@@ -1745,7 +1736,7 @@ export const AutoCreatedSubnetworkInfo = /*@__PURE__*/ S.suspend(() =>
 export type PscConfigProducerInstanceLocationEnum =
   | "PRODUCER_INSTANCE_LOCATION_UNSPECIFIED"
   | "CUSTOM_RESOURCE_HIERARCHY_LEVELS";
-export const PscConfigProducerInstanceLocationEnum = S.String;
+const PscConfigProducerInstanceLocationEnum = S.String;
 
 /** Configuration used for Private Service Connect connections. Used when Infrastructure is PSC. */
 export interface PscConfig {
@@ -1758,7 +1749,7 @@ export interface PscConfig {
   /** Optional. List of Projects, Folders, or Organizations from where the Producer instance can be within. For example, a network administrator can provide both 'organizations/foo' and 'projects/bar' as allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer instance within the 'foo' organization or the 'bar' project. By default, allowed_google_producers_resource_hierarchy_level is empty. The format for each allowed_google_producers_resource_hierarchy_level is / where is one of 'projects', 'folders', or 'organizations' and is either the ID or the number of the resource type. Format for each allowed_google_producers_resource_hierarchy_level value: 'projects/' or 'folders/' or 'organizations/' Eg. [projects/my-project-id, projects/567, folders/891, organizations/123] */
   allowedGoogleProducersResourceHierarchyLevel?: StringList;
 }
-export const PscConfig = /*@__PURE__*/ S.suspend(() =>
+const PscConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.String),
     producerInstanceLocation: S.optional(PscConfigProducerInstanceLocationEnum),
@@ -1794,7 +1785,7 @@ export interface ServiceConnectionPolicy {
   /** Configuration used for Private Service Connect connections. Used when Infrastructure is PSC. */
   pscConfig?: PscConfig;
 }
-export const ServiceConnectionPolicy = /*@__PURE__*/ S.suspend(() =>
+const ServiceConnectionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     name: S.optional(S.String),
@@ -1833,7 +1824,7 @@ export interface CreateProjectsLocationsServiceConnectionPoliciesRequest {
   /** Request body */
   body?: ServiceConnectionPolicy;
 }
-export const CreateProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     "autoSubnetworkConfig.ipStack": S.optional(
@@ -1881,7 +1872,7 @@ export interface ServiceConnectionToken {
   /** Output only. The time to which this token is valid. */
   expireTime?: string;
 }
-export const ServiceConnectionToken = /*@__PURE__*/ S.suspend(() =>
+const ServiceConnectionToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     description: S.optional(S.String),
@@ -1905,7 +1896,7 @@ export interface CreateProjectsLocationsServiceConnectionTokensRequest {
   /** Request body */
   body?: ServiceConnectionToken;
 }
-export const CreateProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1931,7 +1922,7 @@ export type StateReasonCodeEnum =
   | "UPDATE_PENDING_REVIEW"
   | "UPDATE_REJECTED"
   | "UPDATE_FAILED";
-export const StateReasonCodeEnum = S.String;
+const StateReasonCodeEnum = S.String;
 
 /** The reason for the current state of the spoke. */
 export interface StateReason {
@@ -1942,7 +1933,7 @@ export interface StateReason {
   /** Human-readable details about this reason. */
   message?: string;
 }
-export const StateReason = /*@__PURE__*/ S.suspend(() =>
+const StateReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userDetails: S.optional(S.String),
     code: S.optional(StateReasonCodeEnum),
@@ -1951,23 +1942,21 @@ export const StateReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StateReason" }) as any as S.Schema<StateReason>;
 
 export type StateReasonList = Array<StateReason>;
-export const StateReasonList = /*@__PURE__*/ S.Array(
-  StateReason,
-) as any as S.Schema<StateReasonList>;
+const StateReasonList = /*@__PURE__*/ S.Array(StateReason) as any as S.Schema<StateReasonList>;
 
 /** A list of IP ranges that are reserved for this gateway's internal intfrastructure. */
 export interface IpRangeReservation {
   /** Required. A block of IP addresses used to allocate supporting infrastructure for this gateway. This block must not overlap with subnets in any spokes or peer VPC networks that the gateway can communicate with. Example: "10.1.2.0/24" */
   ipRange?: string;
 }
-export const IpRangeReservation = /*@__PURE__*/ S.suspend(() =>
+const IpRangeReservation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipRange: S.optional(S.String),
   }),
 ).annotate({ identifier: "IpRangeReservation" }) as any as S.Schema<IpRangeReservation>;
 
 export type IpRangeReservationList = Array<IpRangeReservation>;
-export const IpRangeReservationList = /*@__PURE__*/ S.Array(
+const IpRangeReservationList = /*@__PURE__*/ S.Array(
   IpRangeReservation,
 ) as any as S.Schema<IpRangeReservationList>;
 
@@ -1975,7 +1964,7 @@ export type GatewayCapacityEnum =
   | "GATEWAY_CAPACITY_UNSPECIFIED"
   | "CAPACITY_1_GBPS"
   | "CAPACITY_10_GBPS";
-export const GatewayCapacityEnum = S.String;
+const GatewayCapacityEnum = S.String;
 
 /** A gateway that can apply specialized traffic processing. */
 export interface Gateway {
@@ -1988,7 +1977,7 @@ export interface Gateway {
   /** Output only. The URI of the connected SACAttachment. Should be in the form: projects/{project}/locations/{location}/sacAttachments/{sac_attachment} */
   sacAttachment?: string;
 }
-export const Gateway = /*@__PURE__*/ S.suspend(() =>
+const Gateway = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipRangeReservations: S.optional(IpRangeReservationList),
     cloudRouters: S.optional(StringList),
@@ -2015,7 +2004,7 @@ export interface LinkedProducerVpcNetwork {
   /** Immutable. The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state. */
   peering?: string;
 }
-export const LinkedProducerVpcNetwork = /*@__PURE__*/ S.suspend(() =>
+const LinkedProducerVpcNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposedIncludeExportRanges: S.optional(StringList),
     producerNetwork: S.optional(S.String),
@@ -2045,7 +2034,7 @@ export interface LinkedInterconnectAttachments {
   /** Optional. Hub routes fully encompassed by include import ranges are included during import from hub. */
   includeImportRanges?: StringList;
 }
-export const LinkedInterconnectAttachments = /*@__PURE__*/ S.suspend(() =>
+const LinkedInterconnectAttachments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uris: S.optional(StringList),
     includeExportRanges: S.optional(StringList),
@@ -2070,7 +2059,7 @@ export type SpokeStateEnum =
   | "INACTIVE"
   | "OBSOLETE"
   | "FAILED";
-export const SpokeStateEnum = S.String;
+const SpokeStateEnum = S.String;
 
 /** A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces. */
 export interface RouterApplianceInstance {
@@ -2079,7 +2068,7 @@ export interface RouterApplianceInstance {
   /** The URI of the VM. */
   virtualMachine?: string;
 }
-export const RouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
+const RouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     virtualMachine: S.optional(S.String),
@@ -2087,7 +2076,7 @@ export const RouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouterApplianceInstance" }) as any as S.Schema<RouterApplianceInstance>;
 
 export type RouterApplianceInstanceList = Array<RouterApplianceInstance>;
-export const RouterApplianceInstanceList = /*@__PURE__*/ S.Array(
+const RouterApplianceInstanceList = /*@__PURE__*/ S.Array(
   RouterApplianceInstance,
 ) as any as S.Schema<RouterApplianceInstanceList>;
 
@@ -2108,7 +2097,7 @@ export interface LinkedRouterApplianceInstances {
   /** Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub. */
   excludeImportRanges?: StringList;
 }
-export const LinkedRouterApplianceInstances = /*@__PURE__*/ S.suspend(() =>
+const LinkedRouterApplianceInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteToSiteDataTransfer: S.optional(S.Boolean),
     includeImportRanges: S.optional(StringList),
@@ -2130,7 +2119,7 @@ export type SpokeSpokeTypeEnum =
   | "VPC_NETWORK"
   | "GATEWAY"
   | "PRODUCER_VPC_NETWORK";
-export const SpokeSpokeTypeEnum = S.String;
+const SpokeSpokeTypeEnum = S.String;
 
 /** A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels should be capable of advertising the same prefixes. */
 export interface LinkedVpnTunnels {
@@ -2149,7 +2138,7 @@ export interface LinkedVpnTunnels {
   /** Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub. */
   excludeImportRanges?: StringList;
 }
-export const LinkedVpnTunnels = /*@__PURE__*/ S.suspend(() =>
+const LinkedVpnTunnels = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteToSiteDataTransfer: S.optional(S.Boolean),
     includeImportRanges: S.optional(StringList),
@@ -2176,7 +2165,7 @@ export interface LinkedVpcNetwork {
   /** Output only. The proposed exclude export IP ranges waiting for hub administrator's approval. */
   proposedExcludeExportRanges?: StringList;
 }
-export const LinkedVpcNetwork = /*@__PURE__*/ S.suspend(() =>
+const LinkedVpcNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposedIncludeExportRanges: S.optional(StringList),
     producerVpcSpokes: S.optional(StringList),
@@ -2228,7 +2217,7 @@ export interface Spoke {
   /** Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`. */
   uniqueId?: string;
 }
-export const Spoke = /*@__PURE__*/ S.suspend(() =>
+const Spoke = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPathsPendingUpdate: S.optional(StringList),
     updateTime: S.optional(S.String),
@@ -2262,7 +2251,7 @@ export interface CreateProjectsLocationsSpokesRequest {
   /** Request body */
   body?: Spoke;
 }
-export const CreateProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2290,10 +2279,10 @@ export type GatewayAdvertisedRouteStateEnum =
   | "INACTIVE"
   | "OBSOLETE"
   | "FAILED";
-export const GatewayAdvertisedRouteStateEnum = S.String;
+const GatewayAdvertisedRouteStateEnum = S.String;
 
 export type GatewayAdvertisedRouteRecipientEnum = "RECIPIENT_UNSPECIFIED" | "ADVERTISE_TO_HUB";
-export const GatewayAdvertisedRouteRecipientEnum = S.String;
+const GatewayAdvertisedRouteRecipientEnum = S.String;
 
 /** A gateway advertised route is a route that a gateway spoke advertises somewhere. */
 export interface GatewayAdvertisedRoute {
@@ -2318,7 +2307,7 @@ export interface GatewayAdvertisedRoute {
   /** Identifier. The name of the gateway advertised route. Route names must be unique and use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke}/gatewayAdvertisedRoutes/{gateway_advertised_route_id}` */
   name?: string;
 }
-export const GatewayAdvertisedRoute = /*@__PURE__*/ S.suspend(() =>
+const GatewayAdvertisedRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueId: S.optional(S.String),
     priority: S.optional(S.Number),
@@ -2343,20 +2332,19 @@ export interface CreateProjectsLocationsSpokesGatewayAdvertisedRoutesRequest {
   /** Request body */
   body?: GatewayAdvertisedRoute;
 }
-export const CreateProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      gatewayAdvertisedRouteId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GatewayAdvertisedRoute.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/gatewayAdvertisedRoutes",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    gatewayAdvertisedRouteId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GatewayAdvertisedRoute.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/gatewayAdvertisedRoutes",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsSpokesGatewayAdvertisedRoutesRequest",
 }) as any as S.Schema<CreateProjectsLocationsSpokesGatewayAdvertisedRoutesRequest>;
@@ -2369,7 +2357,7 @@ export type TransportStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "DEPROVISIONED";
-export const TransportStateEnum = S.String;
+const TransportStateEnum = S.String;
 
 export type TransportBandwidthEnum =
   | "BANDWIDTH_UNSPECIFIED"
@@ -2386,10 +2374,10 @@ export type TransportBandwidthEnum =
   | "BPS_20G"
   | "BPS_50G"
   | "BPS_100G";
-export const TransportBandwidthEnum = S.String;
+const TransportBandwidthEnum = S.String;
 
 export type TransportStackTypeEnum = "STACK_TYPE_UNSPECIFIED" | "IPV4_ONLY" | "IPV4_IPV6";
-export const TransportStackTypeEnum = S.String;
+const TransportStackTypeEnum = S.String;
 
 /** Message describing Transport object. */
 export interface Transport {
@@ -2432,7 +2420,7 @@ export interface Transport {
   /** Optional. Immutable. The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport. Format: `{hub}` or `projects/{project}/locations/global/hubs/{hub}` */
   hub?: string;
 }
-export const Transport = /*@__PURE__*/ S.suspend(() =>
+const Transport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     autoAccept: S.optional(S.Boolean),
@@ -2466,7 +2454,7 @@ export interface CreateProjectsLocationsTransportsRequest {
   /** Request body */
   body?: Transport;
 }
-export const CreateProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transportId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2487,7 +2475,7 @@ export type DeleteProjectsLocationsAutomatedDnsRecordsDeleteModeEnum =
   | "DELETE_MODE_UNSPECIFIED"
   | "DEPROGRAM"
   | "SKIP_DEPROGRAMMING";
-export const DeleteProjectsLocationsAutomatedDnsRecordsDeleteModeEnum = S.String;
+const DeleteProjectsLocationsAutomatedDnsRecordsDeleteModeEnum = S.String;
 
 export interface DeleteProjectsLocationsAutomatedDnsRecordsRequest {
   /** Optional. Delete mode when deleting AutomatedDnsRecord. If set to DEPROGRAM, the record will be deprogrammed in Cloud DNS. If set to SKIP_DEPROGRAMMING, the record will not be deprogrammed in Cloud DNS. */
@@ -2499,7 +2487,7 @@ export interface DeleteProjectsLocationsAutomatedDnsRecordsRequest {
   /** Required. The name of the AutomatedDnsRecord to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteMode: S.optional(
       DeleteProjectsLocationsAutomatedDnsRecordsDeleteModeEnum.pipe(T.Query()),
@@ -2524,7 +2512,7 @@ export interface DeleteProjectsLocationsGlobalHubsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2545,7 +2533,7 @@ export interface DeleteProjectsLocationsGlobalPolicyBasedRoutesRequest {
   /** Required. Name of the policy-based route resource to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2566,7 +2554,7 @@ export interface DeleteProjectsLocationsInternalRangesRequest {
   /** Required. The name of the internal range to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2589,19 +2577,18 @@ export interface DeleteProjectsLocationsMulticloudDataTransferConfigsRequest {
   /** Optional. The etag is computed by the server, and might be sent with update and delete requests so that the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const DeleteProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    etag: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsMulticloudDataTransferConfigsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsMulticloudDataTransferConfigsRequest>;
@@ -2614,7 +2601,7 @@ export interface DeleteProjectsLocationsMulticloudDataTransferConfigsDestination
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server waits for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, can ignore the second request. The request ID must be a valid UUID with the exception that zero UUID (00000000-0000-0000-0000-000000000000) isn't supported. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
+const DeleteProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2635,7 +2622,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2657,7 +2644,7 @@ export interface DeleteProjectsLocationsPscAuthorizationPoliciesRequest {
   /** Required. The name of the PscAuthorizationPolicy to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2679,7 +2666,7 @@ export interface DeleteProjectsLocationsRegionalEndpointsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server knows to ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2702,7 +2689,7 @@ export interface DeleteProjectsLocationsServiceClassesRequest {
   /** Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const DeleteProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2726,7 +2713,7 @@ export interface DeleteProjectsLocationsServiceConnectionMapsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -2750,7 +2737,7 @@ export interface DeleteProjectsLocationsServiceConnectionPoliciesRequest {
   /** Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const DeleteProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2774,7 +2761,7 @@ export interface DeleteProjectsLocationsServiceConnectionTokensRequest {
   /** Required. The name of the ServiceConnectionToken to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2796,7 +2783,7 @@ export interface DeleteProjectsLocationsSpokesRequest {
   /** Required. The name of the spoke to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2817,18 +2804,17 @@ export interface DeleteProjectsLocationsSpokesGatewayAdvertisedRoutesRequest {
   /** Required. The name of the gateway advertised route to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsSpokesGatewayAdvertisedRoutesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsSpokesGatewayAdvertisedRoutesRequest>;
@@ -2839,7 +2825,7 @@ export interface DeleteProjectsLocationsTransportsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2860,7 +2846,7 @@ export interface GetIamPolicyProjectsLocationsGlobalHubsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -2886,7 +2872,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     title: S.optional(S.String),
@@ -2904,7 +2890,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -2913,14 +2899,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -2929,7 +2915,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -2937,7 +2923,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -2948,7 +2934,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -2956,9 +2942,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2971,7 +2955,7 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     version: S.optional(S.Number),
@@ -2986,7 +2970,7 @@ export interface GetIamPolicyProjectsLocationsGlobalHubsGroupsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -3007,18 +2991,17 @@ export interface GetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest>;
@@ -3029,7 +3012,7 @@ export interface GetIamPolicyProjectsLocationsInternalRangesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -3050,7 +3033,7 @@ export interface GetIamPolicyProjectsLocationsSpokesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -3069,7 +3052,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3096,7 +3079,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -3110,7 +3093,7 @@ export interface GetProjectsLocationsAutomatedDnsRecordsRequest {
   /** Required. Name of the AutomatedDnsRecord to get. Format: projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record} */
   name: string;
 }
-export const GetProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3128,7 +3111,7 @@ export interface GetProjectsLocationsGlobalHubsRequest {
   /** Required. The name of the hub resource to get. */
   name: string;
 }
-export const GetProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3146,7 +3129,7 @@ export interface GetProjectsLocationsGlobalHubsGroupsRequest {
   /** Required. The name of the route table resource. */
   name: string;
 }
-export const GetProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3171,14 +3154,14 @@ export type GroupStateEnum =
   | "INACTIVE"
   | "OBSOLETE"
   | "FAILED";
-export const GroupStateEnum = S.String;
+const GroupStateEnum = S.String;
 
 /** The auto-accept setting for a group controls whether proposed spokes are automatically attached to the hub. If auto-accept is enabled, the spoke immediately is attached to the hub and becomes part of the group. In this case, the new spoke is in the ACTIVE state. If auto-accept is disabled, the spoke goes to the INACTIVE state, and it must be reviewed and accepted by a hub administrator. */
 export interface AutoAccept {
   /** Optional. A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects. */
   autoAcceptProjects?: StringList;
 }
-export const AutoAccept = /*@__PURE__*/ S.suspend(() =>
+const AutoAccept = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoAcceptProjects: S.optional(StringList),
   }),
@@ -3205,7 +3188,7 @@ export interface Group {
   /** Output only. The name of the route table that corresponds to this group. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` */
   routeTable?: string;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GroupStateEnum),
     uid: S.optional(S.String),
@@ -3223,7 +3206,7 @@ export interface GetProjectsLocationsGlobalHubsRouteTablesRequest {
   /** Required. The name of the route table resource. */
   name: string;
 }
-export const GetProjectsLocationsGlobalHubsRouteTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalHubsRouteTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3248,7 +3231,7 @@ export type RouteTableStateEnum =
   | "INACTIVE"
   | "OBSOLETE"
   | "FAILED";
-export const RouteTableStateEnum = S.String;
+const RouteTableStateEnum = S.String;
 
 export interface RouteTable {
   /** An optional description of the route table. */
@@ -3266,7 +3249,7 @@ export interface RouteTable {
   /** Output only. The current lifecycle state of this route table. */
   state?: RouteTableStateEnum;
 }
-export const RouteTable = /*@__PURE__*/ S.suspend(() =>
+const RouteTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -3282,7 +3265,7 @@ export interface GetProjectsLocationsGlobalHubsRouteTablesRoutesRequest {
   /** Required. The name of the route resource. */
   name: string;
 }
-export const GetProjectsLocationsGlobalHubsRouteTablesRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalHubsRouteTablesRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3305,7 +3288,7 @@ export interface NextHopRouterApplianceInstance {
   /** The URI of the Router appliance instance. */
   uri?: string;
 }
-export const NextHopRouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
+const NextHopRouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcNetwork: S.optional(S.String),
     siteToSiteDataTransfer: S.optional(S.Boolean),
@@ -3324,7 +3307,7 @@ export interface NextHopVPNTunnel {
   /** The VPC network where this VPN tunnel is located. */
   vpcNetwork?: string;
 }
-export const NextHopVPNTunnel = /*@__PURE__*/ S.suspend(() =>
+const NextHopVPNTunnel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteToSiteDataTransfer: S.optional(S.Boolean),
     uri: S.optional(S.String),
@@ -3343,7 +3326,7 @@ export type RouteStateEnum =
   | "INACTIVE"
   | "OBSOLETE"
   | "FAILED";
-export const RouteStateEnum = S.String;
+const RouteStateEnum = S.String;
 
 /** A route next hop that leads to a spoke resource. */
 export interface NextHopSpoke {
@@ -3352,7 +3335,7 @@ export interface NextHopSpoke {
   /** Indicates whether site-to-site data transfer is allowed for this spoke resource. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations). Whether this route is accessible to other hybrid spokes with site-to-site data transfer enabled. If this is false, the route is only accessible to VPC spokes of the connected Hub. */
   siteToSiteDataTransfer?: boolean;
 }
-export const NextHopSpoke = /*@__PURE__*/ S.suspend(() =>
+const NextHopSpoke = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     siteToSiteDataTransfer: S.optional(S.Boolean),
@@ -3368,7 +3351,7 @@ export interface NextHopInterconnectAttachment {
   /** Indicates whether site-to-site data transfer is allowed for this interconnect attachment resource. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations). */
   siteToSiteDataTransfer?: boolean;
 }
-export const NextHopInterconnectAttachment = /*@__PURE__*/ S.suspend(() =>
+const NextHopInterconnectAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcNetwork: S.optional(S.String),
     uri: S.optional(S.String),
@@ -3383,13 +3366,13 @@ export type RouteTypeEnum =
   | "VPC_PRIMARY_SUBNET"
   | "VPC_SECONDARY_SUBNET"
   | "DYNAMIC_ROUTE";
-export const RouteTypeEnum = S.String;
+const RouteTypeEnum = S.String;
 
 export interface NextHopVpcNetwork {
   /** The URI of the VPC network resource */
   uri?: string;
 }
-export const NextHopVpcNetwork = /*@__PURE__*/ S.suspend(() =>
+const NextHopVpcNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -3432,7 +3415,7 @@ export interface Route {
   /** An optional description of the route. */
   description?: string;
 }
-export const Route = /*@__PURE__*/ S.suspend(() =>
+const Route = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextHopRouterApplianceInstance: S.optional(NextHopRouterApplianceInstance),
     labels: S.optional(StringMap),
@@ -3458,7 +3441,7 @@ export interface GetProjectsLocationsGlobalPolicyBasedRoutesRequest {
   /** Required. Name of the PolicyBasedRoute resource to get. */
   name: string;
 }
-export const GetProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3476,7 +3459,7 @@ export interface GetProjectsLocationsInternalRangesRequest {
   /** Required. Name of the InternalRange to get. */
   name: string;
 }
-export const GetProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3494,17 +3477,16 @@ export interface GetProjectsLocationsMulticloudDataTransferConfigsRequest {
   /** Required. The name of the `MulticloudDataTransferConfig` resource to get. */
   name: string;
 }
-export const GetProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsMulticloudDataTransferConfigsRequest",
 }) as any as S.Schema<GetProjectsLocationsMulticloudDataTransferConfigsRequest>;
@@ -3513,7 +3495,7 @@ export interface GetProjectsLocationsMulticloudDataTransferConfigsDestinationsRe
   /** Required. The name of the `Destination` resource to get. */
   name: string;
 }
-export const GetProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
+const GetProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3532,8 +3514,8 @@ export interface GetProjectsLocationsMulticloudDataTransferSupportedServicesRequ
   /** Required. The name of the service. */
   name: string;
 }
-export const GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -3543,16 +3525,16 @@ export const GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest 
         baseUrl: "https://networkconnectivity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest",
-  }) as any as S.Schema<GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest>;
+).annotate({
+  identifier: "GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest",
+}) as any as S.Schema<GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest>;
 
 export type ServiceConfigEligibilityCriteriaEnum =
   | "ELIGIBILITY_CRITERIA_UNSPECIFIED"
   | "NETWORK_SERVICE_TIER_PREMIUM_ONLY"
   | "NETWORK_SERVICE_TIER_STANDARD_ONLY"
   | "REQUEST_ENDPOINT_REGIONAL_ENDPOINT_ONLY";
-export const ServiceConfigEligibilityCriteriaEnum = S.String;
+const ServiceConfigEligibilityCriteriaEnum = S.String;
 
 /** Specifies eligibility information for the service. */
 export interface ServiceConfig {
@@ -3561,7 +3543,7 @@ export interface ServiceConfig {
   /** Output only. The eligibility criteria for the service. */
   eligibilityCriteria?: ServiceConfigEligibilityCriteriaEnum;
 }
-export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportEndTime: S.optional(S.String),
     eligibilityCriteria: S.optional(ServiceConfigEligibilityCriteriaEnum),
@@ -3569,7 +3551,7 @@ export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceConfig" }) as any as S.Schema<ServiceConfig>;
 
 export type ServiceConfigList = Array<ServiceConfig>;
-export const ServiceConfigList = /*@__PURE__*/ S.Array(
+const ServiceConfigList = /*@__PURE__*/ S.Array(
   ServiceConfig,
 ) as any as S.Schema<ServiceConfigList>;
 
@@ -3580,7 +3562,7 @@ export interface MulticloudDataTransferSupportedService {
   /** Output only. The network service tier or regional endpoint supported for the service. */
   serviceConfigs?: ServiceConfigList;
 }
-export const MulticloudDataTransferSupportedService = /*@__PURE__*/ S.suspend(() =>
+const MulticloudDataTransferSupportedService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     serviceConfigs: S.optional(ServiceConfigList),
@@ -3593,7 +3575,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3611,7 +3593,7 @@ export interface GetProjectsLocationsPscAuthorizationPoliciesRequest {
   /** Required. Name of the PscAuthorizationPolicy to get. */
   name: string;
 }
-export const GetProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3629,7 +3611,7 @@ export interface GetProjectsLocationsRegionalEndpointsRequest {
   /** Required. Name of the RegionalEndpoint resource to get. Format: `projects/{project}/locations/{location}/regionalEndpoints/{regional_endpoint}` */
   name: string;
 }
-export const GetProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3647,7 +3629,7 @@ export interface GetProjectsLocationsRemoteTransportProfilesRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsRemoteTransportProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRemoteTransportProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3662,7 +3644,7 @@ export const GetProjectsLocationsRemoteTransportProfilesRequest = /*@__PURE__*/ 
 }) as any as S.Schema<GetProjectsLocationsRemoteTransportProfilesRequest>;
 
 export type RemoteTransportProfileOrderStateEnum = "STATE_UNSPECIFIED" | "CLOSED" | "OPEN";
-export const RemoteTransportProfileOrderStateEnum = S.String;
+const RemoteTransportProfileOrderStateEnum = S.String;
 
 export type RemoteTransportProfileSupportedBandwidthsItemEnum =
   | "BANDWIDTH_UNSPECIFIED"
@@ -3679,11 +3661,9 @@ export type RemoteTransportProfileSupportedBandwidthsItemEnum =
   | "BPS_20G"
   | "BPS_50G"
   | "BPS_100G";
-export const RemoteTransportProfileSupportedBandwidthsItemEnum = S.String;
-
 export type RemoteTransportProfileSupportedBandwidthsItemEnumList =
   Array<RemoteTransportProfileSupportedBandwidthsItemEnum>;
-export const RemoteTransportProfileSupportedBandwidthsItemEnumList =
+const RemoteTransportProfileSupportedBandwidthsItemEnumList =
   CheckConsumerConfigResponseErrorsItemEnumList as any as S.Schema<RemoteTransportProfileSupportedBandwidthsItemEnumList>;
 
 export type RemoteTransportProfileFlowEnum =
@@ -3691,13 +3671,13 @@ export type RemoteTransportProfileFlowEnum =
   | "INPUT_ONLY"
   | "OUTPUT_ONLY"
   | "INPUT_OR_OUTPUT";
-export const RemoteTransportProfileFlowEnum = S.String;
+const RemoteTransportProfileFlowEnum = S.String;
 
 export type RemoteTransportProfileSlaEnum =
   | "SERVICE_LEVEL_AVAILABILITY_UNSPECIFIED"
   | "HIGH"
   | "MAXIMUM";
-export const RemoteTransportProfileSlaEnum = S.String;
+const RemoteTransportProfileSlaEnum = S.String;
 
 /** Message describing RemoteTransportProfile object. */
 export interface RemoteTransportProfile {
@@ -3722,7 +3702,7 @@ export interface RemoteTransportProfile {
   /** Output only. If the profile is a Cloud Service Provider with compute resources, this is populated with the region where connectivity is being established. If the profile provides facility-level selection, this is an identity of the facility any connections on this profile are going through. */
   providerSite?: string;
 }
-export const RemoteTransportProfile = /*@__PURE__*/ S.suspend(() =>
+const RemoteTransportProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     orderState: S.optional(RemoteTransportProfileOrderStateEnum),
@@ -3741,7 +3721,7 @@ export interface GetProjectsLocationsServiceClassesRequest {
   /** Required. Name of the ServiceClass to get. */
   name: string;
 }
-export const GetProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3772,7 +3752,7 @@ export interface ServiceClass {
   /** Output only. Time when the ServiceClass was updated. */
   updateTime?: string;
 }
-export const ServiceClass = /*@__PURE__*/ S.suspend(() =>
+const ServiceClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -3788,7 +3768,7 @@ export interface GetProjectsLocationsServiceConnectionMapsRequest {
   /** Required. Name of the ServiceConnectionMap to get. */
   name: string;
 }
-export const GetProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3806,7 +3786,7 @@ export interface GetProjectsLocationsServiceConnectionPoliciesRequest {
   /** Required. Name of the ServiceConnectionPolicy to get. */
   name: string;
 }
-export const GetProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3824,7 +3804,7 @@ export interface GetProjectsLocationsServiceConnectionTokensRequest {
   /** Required. Name of the ServiceConnectionToken to get. */
   name: string;
 }
-export const GetProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3842,7 +3822,7 @@ export interface GetProjectsLocationsSpokesRequest {
   /** Required. The name of the spoke resource. */
   name: string;
 }
-export const GetProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3860,17 +3840,16 @@ export interface GetProjectsLocationsSpokesGatewayAdvertisedRoutesRequest {
   /** Required. The name of the gateway advertised route to get. */
   name: string;
 }
-export const GetProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsSpokesGatewayAdvertisedRoutesRequest",
 }) as any as S.Schema<GetProjectsLocationsSpokesGatewayAdvertisedRoutesRequest>;
@@ -3879,7 +3858,7 @@ export interface GetProjectsLocationsTransportsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3905,7 +3884,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -3924,7 +3903,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -3933,7 +3912,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -3952,7 +3931,7 @@ export interface ListProjectsLocationsAutomatedDnsRecordsRequest {
   /** The maximum number of results per page that should be returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3971,7 +3950,7 @@ export const ListProjectsLocationsAutomatedDnsRecordsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsLocationsAutomatedDnsRecordsRequest>;
 
 export type AutomatedDnsRecordList = Array<AutomatedDnsRecord>;
-export const AutomatedDnsRecordList = /*@__PURE__*/ S.Array(
+const AutomatedDnsRecordList = /*@__PURE__*/ S.Array(
   AutomatedDnsRecord,
 ) as any as S.Schema<AutomatedDnsRecordList>;
 
@@ -3984,7 +3963,7 @@ export interface ListAutomatedDnsRecordsResponse {
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
 }
-export const ListAutomatedDnsRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAutomatedDnsRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     automatedDnsRecords: S.optional(AutomatedDnsRecordList),
@@ -4006,7 +3985,7 @@ export interface ListProjectsLocationsGlobalHubsRequest {
   /** Required. The parent resource's name. */
   parent: string;
 }
-export const ListProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4025,7 +4004,7 @@ export const ListProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsGlobalHubsRequest>;
 
 export type HubList = Array<Hub>;
-export const HubList = /*@__PURE__*/ S.Array(Hub) as any as S.Schema<HubList>;
+const HubList = /*@__PURE__*/ S.Array(Hub) as any as S.Schema<HubList>;
 
 /** Response for HubService.ListHubs method. */
 export interface ListHubsResponse {
@@ -4036,7 +4015,7 @@ export interface ListHubsResponse {
   /** The requested hubs. */
   hubs?: HubList;
 }
-export const ListHubsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHubsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -4056,7 +4035,7 @@ export interface ListProjectsLocationsGlobalHubsGroupsRequest {
   /** The page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4075,7 +4054,7 @@ export const ListProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsGlobalHubsGroupsRequest>;
 
 export type GroupList = Array<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
+const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
 
 /** Response for HubService.ListGroups method. */
 export interface ListGroupsResponse {
@@ -4086,7 +4065,7 @@ export interface ListGroupsResponse {
   /** Hubs that could not be reached. */
   unreachable?: StringList;
 }
-export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(GroupList),
     nextPageToken: S.optional(S.String),
@@ -4106,7 +4085,7 @@ export interface ListProjectsLocationsGlobalHubsRouteTablesRequest {
   /** An expression that filters the list of results. */
   filter?: string;
 }
-export const ListProjectsLocationsGlobalHubsRouteTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalHubsRouteTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -4125,7 +4104,7 @@ export const ListProjectsLocationsGlobalHubsRouteTablesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsGlobalHubsRouteTablesRequest>;
 
 export type RouteTableList = Array<RouteTable>;
-export const RouteTableList = /*@__PURE__*/ S.Array(RouteTable) as any as S.Schema<RouteTableList>;
+const RouteTableList = /*@__PURE__*/ S.Array(RouteTable) as any as S.Schema<RouteTableList>;
 
 /** Response for HubService.ListRouteTables method. */
 export interface ListRouteTablesResponse {
@@ -4136,7 +4115,7 @@ export interface ListRouteTablesResponse {
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
 }
-export const ListRouteTablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRouteTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routeTables: S.optional(RouteTableList),
     unreachable: S.optional(StringList),
@@ -4156,7 +4135,7 @@ export interface ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest {
   /** The page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4175,7 +4154,7 @@ export const ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest>;
 
 export type RouteList = Array<Route>;
-export const RouteList = /*@__PURE__*/ S.Array(Route) as any as S.Schema<RouteList>;
+const RouteList = /*@__PURE__*/ S.Array(Route) as any as S.Schema<RouteList>;
 
 /** Response for HubService.ListRoutes method. */
 export interface ListRoutesResponse {
@@ -4186,7 +4165,7 @@ export interface ListRoutesResponse {
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
 }
-export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     routes: S.optional(RouteList),
@@ -4206,7 +4185,7 @@ export interface ListProjectsLocationsGlobalPolicyBasedRoutesRequest {
   /** The maximum number of results per page that should be returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4225,7 +4204,7 @@ export const ListProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/
 }) as any as S.Schema<ListProjectsLocationsGlobalPolicyBasedRoutesRequest>;
 
 export type PolicyBasedRouteList = Array<PolicyBasedRoute>;
-export const PolicyBasedRouteList = /*@__PURE__*/ S.Array(
+const PolicyBasedRouteList = /*@__PURE__*/ S.Array(
   PolicyBasedRoute,
 ) as any as S.Schema<PolicyBasedRouteList>;
 
@@ -4238,7 +4217,7 @@ export interface ListPolicyBasedRoutesResponse {
   /** Policy-based routes to be returned. */
   policyBasedRoutes?: PolicyBasedRouteList;
 }
-export const ListPolicyBasedRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPolicyBasedRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -4260,7 +4239,7 @@ export interface ListProjectsLocationsInternalRangesRequest {
   /** The maximum number of results per page that should be returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -4279,7 +4258,7 @@ export const ListProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsInternalRangesRequest>;
 
 export type InternalRangeList = Array<InternalRange>;
-export const InternalRangeList = /*@__PURE__*/ S.Array(
+const InternalRangeList = /*@__PURE__*/ S.Array(
   InternalRange,
 ) as any as S.Schema<InternalRangeList>;
 
@@ -4292,7 +4271,7 @@ export interface ListInternalRangesResponse {
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
 }
-export const ListInternalRangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInternalRangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     internalRanges: S.optional(InternalRangeList),
@@ -4316,28 +4295,27 @@ export interface ListProjectsLocationsMulticloudDataTransferConfigsRequest {
   /** Optional. The page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/multicloudDataTransferConfigs",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/multicloudDataTransferConfigs",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsMulticloudDataTransferConfigsRequest",
 }) as any as S.Schema<ListProjectsLocationsMulticloudDataTransferConfigsRequest>;
 
 export type MulticloudDataTransferConfigList = Array<MulticloudDataTransferConfig>;
-export const MulticloudDataTransferConfigList = /*@__PURE__*/ S.Array(
+const MulticloudDataTransferConfigList = /*@__PURE__*/ S.Array(
   MulticloudDataTransferConfig,
 ) as any as S.Schema<MulticloudDataTransferConfigList>;
 
@@ -4350,7 +4328,7 @@ export interface ListMulticloudDataTransferConfigsResponse {
   /** The next page token. */
   nextPageToken?: string;
 }
-export const ListMulticloudDataTransferConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMulticloudDataTransferConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     multicloudDataTransferConfigs: S.optional(MulticloudDataTransferConfigList),
@@ -4374,7 +4352,7 @@ export interface ListProjectsLocationsMulticloudDataTransferConfigsDestinationsR
   /** Optional. The sort order of the results. */
   orderBy?: string;
 }
-export const ListProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
+const ListProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -4395,9 +4373,7 @@ export const ListProjectsLocationsMulticloudDataTransferConfigsDestinationsReque
   }) as any as S.Schema<ListProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest>;
 
 export type DestinationList = Array<Destination>;
-export const DestinationList = /*@__PURE__*/ S.Array(
-  Destination,
-) as any as S.Schema<DestinationList>;
+const DestinationList = /*@__PURE__*/ S.Array(Destination) as any as S.Schema<DestinationList>;
 
 /** Response message to list `Destination` resources. */
 export interface ListDestinationsResponse {
@@ -4408,7 +4384,7 @@ export interface ListDestinationsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinations: S.optional(DestinationList),
     nextPageToken: S.optional(S.String),
@@ -4424,8 +4400,8 @@ export interface ListProjectsLocationsMulticloudDataTransferSupportedServicesReq
   /** Required. The name of the parent resource. */
   parent: string;
 }
-export const ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4437,13 +4413,13 @@ export const ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest
         baseUrl: "https://networkconnectivity.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest",
-  }) as any as S.Schema<ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest",
+}) as any as S.Schema<ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest>;
 
 export type MulticloudDataTransferSupportedServiceList =
   Array<MulticloudDataTransferSupportedService>;
-export const MulticloudDataTransferSupportedServiceList = /*@__PURE__*/ S.Array(
+const MulticloudDataTransferSupportedServiceList = /*@__PURE__*/ S.Array(
   MulticloudDataTransferSupportedService,
 ) as any as S.Schema<MulticloudDataTransferSupportedServiceList>;
 
@@ -4454,7 +4430,7 @@ export interface ListMulticloudDataTransferSupportedServicesResponse {
   /** The list of supported services. */
   multicloudDataTransferSupportedServices?: MulticloudDataTransferSupportedServiceList;
 }
-export const ListMulticloudDataTransferSupportedServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMulticloudDataTransferSupportedServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     multicloudDataTransferSupportedServices: S.optional(MulticloudDataTransferSupportedServiceList),
@@ -4475,7 +4451,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4494,7 +4470,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -4507,7 +4483,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(GoogleLongrunningOperationList),
     nextPageToken: S.optional(S.String),
@@ -4529,7 +4505,7 @@ export interface ListProjectsLocationsPscAuthorizationPoliciesRequest {
   /** Optional. The maximum number of PscAuthorizationPolicies to return in a single page. The service may return fewer than this value. If unspecified, at most 50 PscAuthorizationPolicies will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4548,7 +4524,7 @@ export const ListProjectsLocationsPscAuthorizationPoliciesRequest = /*@__PURE__*
 }) as any as S.Schema<ListProjectsLocationsPscAuthorizationPoliciesRequest>;
 
 export type PscAuthorizationPolicyList = Array<PscAuthorizationPolicy>;
-export const PscAuthorizationPolicyList = /*@__PURE__*/ S.Array(
+const PscAuthorizationPolicyList = /*@__PURE__*/ S.Array(
   PscAuthorizationPolicy,
 ) as any as S.Schema<PscAuthorizationPolicyList>;
 
@@ -4561,7 +4537,7 @@ export interface ListPscAuthorizationPoliciesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. */
   nextPageToken?: string;
 }
-export const ListPscAuthorizationPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPscAuthorizationPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     pscAuthorizationPolicies: S.optional(PscAuthorizationPolicyList),
@@ -4583,7 +4559,7 @@ export interface ListProjectsLocationsRegionalEndpointsRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4602,7 +4578,7 @@ export const ListProjectsLocationsRegionalEndpointsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListProjectsLocationsRegionalEndpointsRequest>;
 
 export type RegionalEndpointList = Array<RegionalEndpoint>;
-export const RegionalEndpointList = /*@__PURE__*/ S.Array(
+const RegionalEndpointList = /*@__PURE__*/ S.Array(
   RegionalEndpoint,
 ) as any as S.Schema<RegionalEndpointList>;
 
@@ -4615,7 +4591,7 @@ export interface ListRegionalEndpointsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListRegionalEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalEndpoints: S.optional(RegionalEndpointList),
     nextPageToken: S.optional(S.String),
@@ -4637,7 +4613,7 @@ export interface ListProjectsLocationsRemoteTransportProfilesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRemoteTransportProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRemoteTransportProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4656,7 +4632,7 @@ export const ListProjectsLocationsRemoteTransportProfilesRequest = /*@__PURE__*/
 }) as any as S.Schema<ListProjectsLocationsRemoteTransportProfilesRequest>;
 
 export type RemoteTransportProfileList = Array<RemoteTransportProfile>;
-export const RemoteTransportProfileList = /*@__PURE__*/ S.Array(
+const RemoteTransportProfileList = /*@__PURE__*/ S.Array(
   RemoteTransportProfile,
 ) as any as S.Schema<RemoteTransportProfileList>;
 
@@ -4669,7 +4645,7 @@ export interface ListRemoteTransportProfilesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListRemoteTransportProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRemoteTransportProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteTransportProfiles: S.optional(RemoteTransportProfileList),
     unreachable: S.optional(StringList),
@@ -4691,7 +4667,7 @@ export interface ListProjectsLocationsServiceClassesRequest {
   /** Sort the results by a certain order. */
   orderBy?: string;
 }
-export const ListProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4710,9 +4686,7 @@ export const ListProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsServiceClassesRequest>;
 
 export type ServiceClassList = Array<ServiceClass>;
-export const ServiceClassList = /*@__PURE__*/ S.Array(
-  ServiceClass,
-) as any as S.Schema<ServiceClassList>;
+const ServiceClassList = /*@__PURE__*/ S.Array(ServiceClass) as any as S.Schema<ServiceClassList>;
 
 /** Response for ListServiceClasses. */
 export interface ListServiceClassesResponse {
@@ -4723,7 +4697,7 @@ export interface ListServiceClassesResponse {
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
 }
-export const ListServiceClassesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceClassesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceClasses: S.optional(ServiceClassList),
     unreachable: S.optional(StringList),
@@ -4745,7 +4719,7 @@ export interface ListProjectsLocationsServiceConnectionMapsRequest {
   /** Sort the results by a certain order. */
   orderBy?: string;
 }
-export const ListProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4764,7 +4738,7 @@ export const ListProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsServiceConnectionMapsRequest>;
 
 export type ServiceConnectionMapList = Array<ServiceConnectionMap>;
-export const ServiceConnectionMapList = /*@__PURE__*/ S.Array(
+const ServiceConnectionMapList = /*@__PURE__*/ S.Array(
   ServiceConnectionMap,
 ) as any as S.Schema<ServiceConnectionMapList>;
 
@@ -4777,7 +4751,7 @@ export interface ListServiceConnectionMapsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListServiceConnectionMapsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceConnectionMapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     serviceConnectionMaps: S.optional(ServiceConnectionMapList),
@@ -4799,7 +4773,7 @@ export interface ListProjectsLocationsServiceConnectionPoliciesRequest {
   /** The maximum number of results per page that should be returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4818,7 +4792,7 @@ export const ListProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__
 }) as any as S.Schema<ListProjectsLocationsServiceConnectionPoliciesRequest>;
 
 export type ServiceConnectionPolicyList = Array<ServiceConnectionPolicy>;
-export const ServiceConnectionPolicyList = /*@__PURE__*/ S.Array(
+const ServiceConnectionPolicyList = /*@__PURE__*/ S.Array(
   ServiceConnectionPolicy,
 ) as any as S.Schema<ServiceConnectionPolicyList>;
 
@@ -4831,7 +4805,7 @@ export interface ListServiceConnectionPoliciesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListServiceConnectionPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceConnectionPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceConnectionPolicies: S.optional(ServiceConnectionPolicyList),
     nextPageToken: S.optional(S.String),
@@ -4853,7 +4827,7 @@ export interface ListProjectsLocationsServiceConnectionTokensRequest {
   /** Sort the results by a certain order. */
   orderBy?: string;
 }
-export const ListProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4872,7 +4846,7 @@ export const ListProjectsLocationsServiceConnectionTokensRequest = /*@__PURE__*/
 }) as any as S.Schema<ListProjectsLocationsServiceConnectionTokensRequest>;
 
 export type ServiceConnectionTokenList = Array<ServiceConnectionToken>;
-export const ServiceConnectionTokenList = /*@__PURE__*/ S.Array(
+const ServiceConnectionTokenList = /*@__PURE__*/ S.Array(
   ServiceConnectionToken,
 ) as any as S.Schema<ServiceConnectionTokenList>;
 
@@ -4885,7 +4859,7 @@ export interface ListServiceConnectionTokensResponse {
   /** ServiceConnectionTokens to be returned. */
   serviceConnectionTokens?: ServiceConnectionTokenList;
 }
-export const ListServiceConnectionTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceConnectionTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -4907,7 +4881,7 @@ export interface ListProjectsLocationsSpokesRequest {
   /** An expression that filters the list of results. */
   filter?: string;
 }
-export const ListProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4926,7 +4900,7 @@ export const ListProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsSpokesRequest>;
 
 export type SpokeList = Array<Spoke>;
-export const SpokeList = /*@__PURE__*/ S.Array(Spoke) as any as S.Schema<SpokeList>;
+const SpokeList = /*@__PURE__*/ S.Array(Spoke) as any as S.Schema<SpokeList>;
 
 /** The response for HubService.ListSpokes. */
 export interface ListSpokesResponse {
@@ -4937,7 +4911,7 @@ export interface ListSpokesResponse {
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
 }
-export const ListSpokesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSpokesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spokes: S.optional(SpokeList),
     unreachable: S.optional(StringList),
@@ -4957,27 +4931,26 @@ export interface ListProjectsLocationsSpokesGatewayAdvertisedRoutesRequest {
   /** Required. The parent resource's name. */
   parent: string;
 }
-export const ListProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/gatewayAdvertisedRoutes",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/gatewayAdvertisedRoutes",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSpokesGatewayAdvertisedRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsSpokesGatewayAdvertisedRoutesRequest>;
 
 export type GatewayAdvertisedRouteList = Array<GatewayAdvertisedRoute>;
-export const GatewayAdvertisedRouteList = /*@__PURE__*/ S.Array(
+const GatewayAdvertisedRouteList = /*@__PURE__*/ S.Array(
   GatewayAdvertisedRoute,
 ) as any as S.Schema<GatewayAdvertisedRouteList>;
 
@@ -4990,7 +4963,7 @@ export interface ListGatewayAdvertisedRoutesResponse {
   /** Hubs that could not be reached. */
   unreachable?: StringList;
 }
-export const ListGatewayAdvertisedRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGatewayAdvertisedRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     gatewayAdvertisedRoutes: S.optional(GatewayAdvertisedRouteList),
@@ -5012,7 +4985,7 @@ export interface ListProjectsLocationsTransportsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-export const ListProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5031,7 +5004,7 @@ export const ListProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsTransportsRequest>;
 
 export type TransportList = Array<Transport>;
-export const TransportList = /*@__PURE__*/ S.Array(Transport) as any as S.Schema<TransportList>;
+const TransportList = /*@__PURE__*/ S.Array(Transport) as any as S.Schema<TransportList>;
 
 /** Message for response to listing Transports. */
 export interface ListTransportsResponse {
@@ -5042,7 +5015,7 @@ export interface ListTransportsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListTransportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transports: S.optional(TransportList),
     unreachable: S.optional(StringList),
@@ -5054,7 +5027,7 @@ export type ListSpokesProjectsLocationsGlobalHubsViewEnum =
   | "SPOKE_VIEW_UNSPECIFIED"
   | "BASIC"
   | "DETAILED";
-export const ListSpokesProjectsLocationsGlobalHubsViewEnum = S.String;
+const ListSpokesProjectsLocationsGlobalHubsViewEnum = S.String;
 
 export interface ListSpokesProjectsLocationsGlobalHubsRequest {
   /** The maximum number of results to return per page. */
@@ -5072,7 +5045,7 @@ export interface ListSpokesProjectsLocationsGlobalHubsRequest {
   /** An expression that filters the list of results. */
   filter?: string;
 }
-export const ListSpokesProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpokesProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     spokeLocations: S.optional(StringList.pipe(T.Query())),
@@ -5101,7 +5074,7 @@ export interface ListHubSpokesResponse {
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
 }
-export const ListHubSpokesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHubSpokesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     spokes: S.optional(SpokeList),
@@ -5119,7 +5092,7 @@ export interface PatchProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: Hub;
 }
-export const PatchProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5146,7 +5119,7 @@ export interface PatchProjectsLocationsGlobalHubsGroupsRequest {
   /** Request body */
   body?: Group;
 }
-export const PatchProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5173,7 +5146,7 @@ export interface PatchProjectsLocationsInternalRangesRequest {
   /** Request body */
   body?: InternalRange;
 }
-export const PatchProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5200,20 +5173,19 @@ export interface PatchProjectsLocationsMulticloudDataTransferConfigsRequest {
   /** Request body */
   body?: MulticloudDataTransferConfig;
 }
-export const PatchProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(MulticloudDataTransferConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsMulticloudDataTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(MulticloudDataTransferConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsMulticloudDataTransferConfigsRequest",
 }) as any as S.Schema<PatchProjectsLocationsMulticloudDataTransferConfigsRequest>;
@@ -5228,7 +5200,7 @@ export interface PatchProjectsLocationsMulticloudDataTransferConfigsDestinations
   /** Request body */
   body?: Destination;
 }
-export const PatchProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
+const PatchProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5256,7 +5228,7 @@ export interface PatchProjectsLocationsServiceClassesRequest {
   /** Request body */
   body?: ServiceClass;
 }
-export const PatchProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServiceClassesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -5283,7 +5255,7 @@ export interface PatchProjectsLocationsServiceConnectionMapsRequest {
   /** Request body */
   body?: ServiceConnectionMap;
 }
-export const PatchProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServiceConnectionMapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5310,7 +5282,7 @@ export interface PatchProjectsLocationsServiceConnectionPoliciesRequest {
   /** Request body */
   body?: ServiceConnectionPolicy;
 }
-export const PatchProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServiceConnectionPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -5337,7 +5309,7 @@ export interface PatchProjectsLocationsSpokesRequest {
   /** Request body */
   body?: Spoke;
 }
-export const PatchProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5364,20 +5336,19 @@ export interface PatchProjectsLocationsSpokesGatewayAdvertisedRoutesRequest {
   /** Request body */
   body?: GatewayAdvertisedRoute;
 }
-export const PatchProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GatewayAdvertisedRoute.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsSpokesGatewayAdvertisedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GatewayAdvertisedRoute.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsSpokesGatewayAdvertisedRoutesRequest",
 }) as any as S.Schema<PatchProjectsLocationsSpokesGatewayAdvertisedRoutesRequest>;
@@ -5392,7 +5363,7 @@ export interface PatchProjectsLocationsTransportsRequest {
   /** Request body */
   body?: Transport;
 }
-export const PatchProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTransportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5423,7 +5394,7 @@ export interface QueryStatusProjectsLocationsGlobalHubsRequest {
   /** Optional. Sort the results in ascending order by the specified fields. A comma-separated list of any of these fields: * `psc_propagation_status.source_spoke` * `psc_propagation_status.source_group` * `psc_propagation_status.source_forwarding_rule` * `psc_propagation_status.target_spoke` * `psc_propagation_status.target_group` * `psc_propagation_status.code` If `group_by` is set, the value of the `order_by` field must be the same as or a subset of the `group_by` field. */
   orderBy?: string;
 }
-export const QueryStatusProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryStatusProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     groupBy: S.optional(S.String.pipe(T.Query())),
@@ -5450,7 +5421,7 @@ export type PscPropagationStatusCodeEnum =
   | "ERROR_PRODUCER_NAT_IP_SPACE_EXHAUSTED"
   | "ERROR_PRODUCER_QUOTA_EXCEEDED"
   | "ERROR_CONSUMER_QUOTA_EXCEEDED";
-export const PscPropagationStatusCodeEnum = S.String;
+const PscPropagationStatusCodeEnum = S.String;
 
 /** The status of one or more propagated Private Service Connect connections in a hub. */
 export interface PscPropagationStatus {
@@ -5469,7 +5440,7 @@ export interface PscPropagationStatus {
   /** The propagation status. */
   code?: PscPropagationStatusCodeEnum;
 }
-export const PscPropagationStatus = /*@__PURE__*/ S.suspend(() =>
+const PscPropagationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceSpoke: S.optional(S.String),
     sourceGroup: S.optional(S.String),
@@ -5490,7 +5461,7 @@ export interface HubStatusEntry {
   /** The number of propagated Private Service Connect connections with this status. If the `group_by` field was not set in the request message, the value of this field is 1. */
   count?: number;
 }
-export const HubStatusEntry = /*@__PURE__*/ S.suspend(() =>
+const HubStatusEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pscPropagationStatus: S.optional(PscPropagationStatus),
     groupBy: S.optional(S.String),
@@ -5499,7 +5470,7 @@ export const HubStatusEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HubStatusEntry" }) as any as S.Schema<HubStatusEntry>;
 
 export type HubStatusEntryList = Array<HubStatusEntry>;
-export const HubStatusEntryList = /*@__PURE__*/ S.Array(
+const HubStatusEntryList = /*@__PURE__*/ S.Array(
   HubStatusEntry,
 ) as any as S.Schema<HubStatusEntryList>;
 
@@ -5510,7 +5481,7 @@ export interface QueryHubStatusResponse {
   /** The list of hub status. */
   hubStatusEntries?: HubStatusEntryList;
 }
-export const QueryHubStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryHubStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     hubStatusEntries: S.optional(HubStatusEntryList),
@@ -5526,7 +5497,7 @@ export interface RejectHubSpokeRequest {
   /** Required. The URI of the spoke to reject from the hub. */
   spokeUri?: string;
 }
-export const RejectHubSpokeRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectHubSpokeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     details: S.optional(S.String),
@@ -5540,7 +5511,7 @@ export interface RejectSpokeProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: RejectHubSpokeRequest;
 }
-export const RejectSpokeProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectSpokeProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RejectHubSpokeRequest.pipe(T.HttpBody())),
@@ -5566,7 +5537,7 @@ export interface RejectSpokeUpdateRequest {
   /** Optional. Additional information provided by the hub administrator. */
   details?: string;
 }
-export const RejectSpokeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectSpokeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spokeUri: S.optional(S.String),
     spokeEtag: S.optional(S.String),
@@ -5581,7 +5552,7 @@ export interface RejectSpokeUpdateProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: RejectSpokeUpdateRequest;
 }
-export const RejectSpokeUpdateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectSpokeUpdateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RejectSpokeUpdateRequest.pipe(T.HttpBody())),
@@ -5603,7 +5574,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -5616,7 +5587,7 @@ export interface SetIamPolicyProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5637,7 +5608,7 @@ export interface SetIamPolicyProjectsLocationsGlobalHubsGroupsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5658,18 +5629,17 @@ export interface SetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest>;
@@ -5680,7 +5650,7 @@ export interface SetIamPolicyProjectsLocationsInternalRangesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5701,7 +5671,7 @@ export interface SetIamPolicyProjectsLocationsSpokesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5721,7 +5691,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -5735,7 +5705,7 @@ export interface TestIamPermissionsProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -5755,7 +5725,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsGlobalHubsGroupsRequest {
@@ -5764,18 +5734,17 @@ export interface TestIamPermissionsProjectsLocationsGlobalHubsGroupsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsGlobalHubsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsGlobalHubsGroupsRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalHubsGroupsRequest>;
@@ -5786,29 +5755,7 @@ export interface TestIamPermissionsProjectsLocationsGlobalPolicyBasedRoutesReque
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalPolicyBasedRoutesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsGlobalPolicyBasedRoutesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalPolicyBasedRoutesRequest>;
-
-export interface TestIamPermissionsProjectsLocationsInternalRangesRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-export const TestIamPermissionsProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(
+const TestIamPermissionsProjectsLocationsGlobalPolicyBasedRoutesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -5821,6 +5768,27 @@ export const TestIamPermissionsProjectsLocationsInternalRangesRequest = /*@__PUR
       }),
     ),
 ).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsGlobalPolicyBasedRoutesRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsGlobalPolicyBasedRoutesRequest>;
+
+export interface TestIamPermissionsProjectsLocationsInternalRangesRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+const TestIamPermissionsProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
+).annotate({
   identifier: "TestIamPermissionsProjectsLocationsInternalRangesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsInternalRangesRequest>;
 
@@ -5830,7 +5798,7 @@ export interface TestIamPermissionsProjectsLocationsSpokesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),

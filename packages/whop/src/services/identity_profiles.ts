@@ -49,7 +49,7 @@ export interface GetIdentityProfileRequest {
   /** The unique identifier of the identity profile (idpf_xxx). */
   id: string;
 }
-export const GetIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/identity_profiles/{id}", code: 200 })),
@@ -72,7 +72,7 @@ export interface IdentityProfileBusinessAddress {
   /** The state of the address. */
   state: string | null;
 }
-export const IdentityProfileBusinessAddress = /*@__PURE__*/ S.suspend(() =>
+const IdentityProfileBusinessAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.NullOr(S.String),
     country: S.NullOr(S.String),
@@ -92,7 +92,7 @@ export interface IdentityProfileLinkedCompaniesItem {
   /** The display name of the company shown to customers. */
   title: string;
 }
-export const IdentityProfileLinkedCompaniesItem = /*@__PURE__*/ S.suspend(() =>
+const IdentityProfileLinkedCompaniesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -103,7 +103,7 @@ export const IdentityProfileLinkedCompaniesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The companies this identity profile is currently linked to. Only populated for direct Whop user sessions; always empty when authenticated via API key, app, or OAuth scope (a single identity can be linked to companies the calling platform is not entitled to see). */
 export type IdentityProfileLinkedCompaniesList = Array<IdentityProfileLinkedCompaniesItem>;
-export const IdentityProfileLinkedCompaniesList = /*@__PURE__*/ S.Array(
+const IdentityProfileLinkedCompaniesList = /*@__PURE__*/ S.Array(
   IdentityProfileLinkedCompaniesItem,
 ) as any as S.Schema<IdentityProfileLinkedCompaniesList>;
 
@@ -118,12 +118,10 @@ export type PayoutAccountCalculatedStatuses =
   | "denied"
   | "not_started"
   | "blocked_by_parent";
-export const PayoutAccountCalculatedStatuses = S.String;
+const PayoutAccountCalculatedStatuses = S.String;
 
 /** Residential address reported by the identity provider. Present on `individual` profiles. */
 export type IdentityProfilePersonalAddress = IdentityProfileBusinessAddress;
-export const IdentityProfilePersonalAddress = IdentityProfileBusinessAddress;
-
 /** Derived verification status for an identity profile. */
 export type IdentityProfileStatuses =
   | "not_started"
@@ -132,7 +130,7 @@ export type IdentityProfileStatuses =
   | "approved"
   | "rejected"
   | "action_required";
-export const IdentityProfileStatuses = S.String;
+const IdentityProfileStatuses = S.String;
 
 /** An error code for a verification attempt. */
 export type VerificationErrorCodes =
@@ -155,7 +153,7 @@ export type VerificationErrorCodes =
   | "selfie_manipulated"
   | "selfie_unverified_other"
   | "under_supported_age";
-export const VerificationErrorCodes = S.String;
+const VerificationErrorCodes = S.String;
 
 /** A status for a verification. */
 export type VerificationStatuses =
@@ -174,7 +172,7 @@ export type VerificationStatuses =
   | "review"
   | "action_required"
   | "manual_review";
-export const VerificationStatuses = S.String;
+const VerificationStatuses = S.String;
 
 /** An identity verification session used to confirm a person or entity's identity for payout account eligibility. */
 export interface IdentityProfileVerificationsItem {
@@ -191,7 +189,7 @@ export interface IdentityProfileVerificationsItem {
   /** The current status of this verification session. */
   status: VerificationStatuses;
 }
-export const IdentityProfileVerificationsItem = /*@__PURE__*/ S.suspend(() =>
+const IdentityProfileVerificationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     id: S.String,
@@ -206,7 +204,7 @@ export const IdentityProfileVerificationsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** All verification attempts attached to this identity profile, ordered most-recent first. */
 export type IdentityProfileVerificationsList = Array<IdentityProfileVerificationsItem>;
-export const IdentityProfileVerificationsList = /*@__PURE__*/ S.Array(
+const IdentityProfileVerificationsList = /*@__PURE__*/ S.Array(
   IdentityProfileVerificationsItem,
 ) as any as S.Schema<IdentityProfileVerificationsList>;
 
@@ -251,7 +249,7 @@ export interface IdentityProfile {
   /** All verification attempts attached to this identity profile, ordered most-recent first. */
   verifications: IdentityProfileVerificationsList;
 }
-export const IdentityProfile = /*@__PURE__*/ S.suspend(() =>
+const IdentityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     business_address: S.NullOr(IdentityProfileBusinessAddress),
     business_name: S.NullOr(S.String),
@@ -277,7 +275,7 @@ export const IdentityProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of identity profile (individual vs business). */
 export type IdentityProfileKinds = "individual" | "business";
-export const IdentityProfileKinds = S.String;
+const IdentityProfileKinds = S.String;
 
 export interface ListIdentityProfileRequest {
   after?: string;
@@ -288,7 +286,7 @@ export interface ListIdentityProfileRequest {
   status?: IdentityProfileStatuses | (string & {});
   account_id?: string;
 }
-export const ListIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -304,30 +302,16 @@ export const ListIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Registered business address reported by the identity provider. Present on `business` profiles. */
 export type IdentityProfileListItemBusinessAddress = IdentityProfileBusinessAddress;
-export const IdentityProfileListItemBusinessAddress = IdentityProfileBusinessAddress;
-
 /** A company is a seller on Whop. Companies own products, manage members, and receive payouts. */
 export type IdentityProfileListItemLinkedCompaniesItem = IdentityProfileLinkedCompaniesItem;
-export const IdentityProfileListItemLinkedCompaniesItem = IdentityProfileLinkedCompaniesItem;
-
 /** The companies this identity profile is currently linked to. Only populated for direct Whop user sessions; always empty when authenticated via API key, app, or OAuth scope (a single identity can be linked to companies the calling platform is not entitled to see). */
 export type IdentityProfileListItemLinkedCompaniesList = Array<IdentityProfileLinkedCompaniesItem>;
-export const IdentityProfileListItemLinkedCompaniesList =
-  IdentityProfileLinkedCompaniesList as any as S.Schema<IdentityProfileListItemLinkedCompaniesList>;
-
 /** Residential address reported by the identity provider. Present on `individual` profiles. */
 export type IdentityProfileListItemPersonalAddress = IdentityProfileBusinessAddress;
-export const IdentityProfileListItemPersonalAddress = IdentityProfileBusinessAddress;
-
 /** An identity verification session used to confirm a person or entity's identity for payout account eligibility. */
 export type IdentityProfileListItemVerificationsItem = IdentityProfileVerificationsItem;
-export const IdentityProfileListItemVerificationsItem = IdentityProfileVerificationsItem;
-
 /** All verification attempts attached to this identity profile, ordered most-recent first. */
 export type IdentityProfileListItemVerificationsList = Array<IdentityProfileVerificationsItem>;
-export const IdentityProfileListItemVerificationsList =
-  IdentityProfileVerificationsList as any as S.Schema<IdentityProfileListItemVerificationsList>;
-
 /** A consolidated identity or business profile synced from verification provider data. */
 export interface IdentityProfileListItem {
   /** Registered business address reported by the identity provider. Present on `business` profiles. */
@@ -369,11 +353,11 @@ export interface IdentityProfileListItem {
   /** All verification attempts attached to this identity profile, ordered most-recent first. */
   verifications: IdentityProfileListItemVerificationsList;
 }
-export const IdentityProfileListItem = IdentityProfile as any as S.Schema<IdentityProfileListItem>;
+const IdentityProfileListItem = IdentityProfile as any as S.Schema<IdentityProfileListItem>;
 
 /** A list of nodes. */
 export type ListIdentityProfileResponseDataList = Array<IdentityProfileListItem>;
-export const ListIdentityProfileResponseDataList = /*@__PURE__*/ S.Array(
+const ListIdentityProfileResponseDataList = /*@__PURE__*/ S.Array(
   IdentityProfileListItem,
 ) as any as S.Schema<ListIdentityProfileResponseDataList>;
 
@@ -388,7 +372,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -403,7 +387,7 @@ export interface ListIdentityProfileResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListIdentityProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIdentityProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListIdentityProfileResponseDataList,
     page_info: PageInfo,
@@ -420,7 +404,7 @@ export interface ListVerificationsIdentityProfileRequest {
   first?: number;
   last?: number;
 }
-export const ListVerificationsIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVerificationsIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     after: S.optional(S.String.pipe(T.Query())),
@@ -434,12 +418,10 @@ export const ListVerificationsIdentityProfileRequest = /*@__PURE__*/ S.suspend((
 
 /** An identity verification session used to confirm a person or entity's identity for payout account eligibility. */
 export type ListVerificationsIdentityProfileResponseDataItem = IdentityProfileVerificationsItem;
-export const ListVerificationsIdentityProfileResponseDataItem = IdentityProfileVerificationsItem;
-
 /** A list of nodes. */
 export type ListVerificationsIdentityProfileResponseDataList =
   Array<IdentityProfileVerificationsItem>;
-export const ListVerificationsIdentityProfileResponseDataList =
+const ListVerificationsIdentityProfileResponseDataList =
   IdentityProfileVerificationsList as any as S.Schema<ListVerificationsIdentityProfileResponseDataList>;
 
 export interface ListVerificationsIdentityProfileResponse {
@@ -448,7 +430,7 @@ export interface ListVerificationsIdentityProfileResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListVerificationsIdentityProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVerificationsIdentityProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListVerificationsIdentityProfileResponseDataList,
     page_info: PageInfo,
@@ -462,7 +444,7 @@ export interface UnlinkIdentityProfileRequest {
   id: string;
   ledger_account_id: string;
 }
-export const UnlinkIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlinkIdentityProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     ledger_account_id: S.String.pipe(T.Query()),

@@ -98,7 +98,7 @@ export interface AddressValidationRequest {
   /** Postal or zip code. */
   zipcode?: string;
 }
-export const AddressValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const AddressValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     address2: S.optional(S.String),
@@ -127,7 +127,7 @@ export interface AddressValidationResponseValidatedAddressesItem {
   /** Validated postal or zip code. */
   zipcode?: string | null;
 }
-export const AddressValidationResponseValidatedAddressesItem = /*@__PURE__*/ S.suspend(() =>
+const AddressValidationResponseValidatedAddressesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     address2: S.optional(S.NullOr(S.String)),
@@ -143,7 +143,7 @@ export const AddressValidationResponseValidatedAddressesItem = /*@__PURE__*/ S.s
 
 export type AddressValidationResponseValidatedAddressesList =
   Array<AddressValidationResponseValidatedAddressesItem>;
-export const AddressValidationResponseValidatedAddressesList = /*@__PURE__*/ S.Array(
+const AddressValidationResponseValidatedAddressesList = /*@__PURE__*/ S.Array(
   AddressValidationResponseValidatedAddressesItem,
 ) as any as S.Schema<AddressValidationResponseValidatedAddressesList>;
 
@@ -152,7 +152,7 @@ export interface AddressValidationResponse {
   /** List of validated address suggestions. */
   validatedAddresses?: AddressValidationResponseValidatedAddressesList | null;
 }
-export const AddressValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const AddressValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validatedAddresses: S.optional(
       S.NullOr(AddressValidationResponseValidatedAddressesList).pipe(T.Body("validated_addresses")),
@@ -204,7 +204,7 @@ export interface CreateProfileRequest {
   /** ZIP or postal code. */
   zipcode?: string;
 }
-export const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     address: S.optional(S.String),
@@ -273,7 +273,7 @@ export interface CreateProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-export const CreateProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     accountType: S.optional(S.NullOr(S.String).pipe(T.Body("account_type"))),
@@ -320,7 +320,7 @@ export interface CreateProfilesPaymentMethodRequest {
   /** Identifier */
   accountId: string;
 }
-export const CreateProfilesPaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProfilesPaymentMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -343,7 +343,7 @@ export interface CreateProfilesPaymentMethodResponse {
   /** The type of Stripe intent created. */
   intentType?: string | null;
 }
-export const CreateProfilesPaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProfilesPaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientSecret: S.optional(S.NullOr(S.String).pipe(T.Body("client_secret"))),
     intentType: S.optional(S.NullOr(S.String).pipe(T.Body("intent_type"))),
@@ -356,7 +356,7 @@ export interface DeleteProfileRequest {
   /** Identifier */
   accountId: string;
 }
-export const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -365,7 +365,7 @@ export const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProfileRequest" }) as any as S.Schema<DeleteProfileRequest>;
 
 export interface DeleteProfileResponse {}
-export const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteProfileResponse" }) as any as S.Schema<DeleteProfileResponse>;
 
@@ -373,7 +373,7 @@ export interface GetBadDebtRequest {
   /** Identifier */
   accountId: string;
 }
-export const GetBadDebtRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBadDebtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -413,7 +413,7 @@ export interface GetBadDebtResponseInvoicesItem {
   /** The billing item type. */
   type?: string | null;
 }
-export const GetBadDebtResponseInvoicesItem = /*@__PURE__*/ S.suspend(() =>
+const GetBadDebtResponseInvoicesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     action: S.optional(S.NullOr(S.String)),
@@ -436,7 +436,7 @@ export const GetBadDebtResponseInvoicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBadDebtResponseInvoicesItem>;
 
 export type GetBadDebtResponseInvoicesList = Array<GetBadDebtResponseInvoicesItem>;
-export const GetBadDebtResponseInvoicesList = /*@__PURE__*/ S.Array(
+const GetBadDebtResponseInvoicesList = /*@__PURE__*/ S.Array(
   GetBadDebtResponseInvoicesItem,
 ) as any as S.Schema<GetBadDebtResponseInvoicesList>;
 
@@ -451,7 +451,7 @@ export interface GetBadDebtResponse {
   /** Total outstanding debt amount. */
   totalDebtAmount?: number | null;
 }
-export const GetBadDebtResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBadDebtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alreadyPaid: S.optional(S.NullOr(S.Number).pipe(T.Body("already_paid"))),
     badDebtStatus: S.optional(S.NullOr(S.String).pipe(T.Body("bad_debt_status"))),
@@ -464,7 +464,7 @@ export interface GetCreditRequest {
   /** Identifier */
   accountId: string;
 }
-export const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -495,7 +495,7 @@ export interface GetCreditResponse {
   /** When the credits expire. */
   validTo?: string | null;
 }
-export const GetCreditResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confirmedBalanceCents: S.optional(S.NullOr(S.Number).pipe(T.Body("confirmed_balance_cents"))),
     currency: S.optional(S.NullOr(S.String)),
@@ -514,7 +514,7 @@ export interface GetProfileRequest {
   /** Identifier */
   accountId: string;
 }
-export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -564,12 +564,12 @@ export interface GetProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-export const GetProfileResponse = CreateProfileResponse as any as S.Schema<GetProfileResponse>;
+const GetProfileResponse = CreateProfileResponse as any as S.Schema<GetProfileResponse>;
 
 export interface GetRatePlanRequest {
   publicKey: string;
 }
-export const GetRatePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRatePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKey: S.String.pipe(T.Label("public_key")),
   })
@@ -578,13 +578,13 @@ export const GetRatePlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRatePlanRequest" }) as any as S.Schema<GetRatePlanRequest>;
 
 export type GetRatePlanResponseComponentsItemMap = { [key: string]: unknown | undefined };
-export const GetRatePlanResponseComponentsItemMap = /*@__PURE__*/ S.Record(
+const GetRatePlanResponseComponentsItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<GetRatePlanResponseComponentsItemMap>;
 
 export type GetRatePlanResponseComponentsList = Array<GetRatePlanResponseComponentsItemMap>;
-export const GetRatePlanResponseComponentsList = /*@__PURE__*/ S.Array(
+const GetRatePlanResponseComponentsList = /*@__PURE__*/ S.Array(
   GetRatePlanResponseComponentsItemMap,
 ) as any as S.Schema<GetRatePlanResponseComponentsList>;
 
@@ -599,7 +599,7 @@ export interface GetRatePlanResponse {
   /** Human-readable description of the rate plan. */
   publicName?: string | null;
 }
-export const GetRatePlanResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRatePlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     components: S.optional(S.NullOr(GetRatePlanResponseComponentsList)),
@@ -612,7 +612,7 @@ export interface GetUnpaidInvoiceRequest {
   /** Identifier */
   accountId: string;
 }
-export const GetUnpaidInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUnpaidInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -623,10 +623,8 @@ export const GetUnpaidInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUnpaidInvoiceRequest" }) as any as S.Schema<GetUnpaidInvoiceRequest>;
 
 export type GetUnpaidInvoiceResponseInvoicesItem = GetBadDebtResponseInvoicesItem;
-export const GetUnpaidInvoiceResponseInvoicesItem = GetBadDebtResponseInvoicesItem;
-
 export type GetUnpaidInvoiceResponseInvoicesList = Array<GetBadDebtResponseInvoicesItem>;
-export const GetUnpaidInvoiceResponseInvoicesList =
+const GetUnpaidInvoiceResponseInvoicesList =
   GetBadDebtResponseInvoicesList as any as S.Schema<GetUnpaidInvoiceResponseInvoicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -634,7 +632,7 @@ export interface GetUnpaidInvoiceResponse {
   /** List of unpaid invoices. */
   invoices?: GetUnpaidInvoiceResponseInvoicesList | null;
 }
-export const GetUnpaidInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUnpaidInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invoices: S.optional(S.NullOr(GetUnpaidInvoiceResponseInvoicesList)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -648,7 +646,7 @@ export interface GetUsageRequest {
   /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
-export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
@@ -659,21 +657,21 @@ export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUsageRequest" }) as any as S.Schema<GetUsageRequest>;
 
 export type UsageGetResultItemChargeCategory = "Usage";
-export const UsageGetResultItemChargeCategory = S.String;
+const UsageGetResultItemChargeCategory = S.String;
 
 export type UsageGetResultItemChargeFrequency = "Usage-Based";
-export const UsageGetResultItemChargeFrequency = S.String;
+const UsageGetResultItemChargeFrequency = S.String;
 
 export type UsageGetResultItemChargeClass = "Correction";
-export const UsageGetResultItemChargeClass = S.String;
+const UsageGetResultItemChargeClass = S.String;
 
 export type UsageGetResultItemTagsValue = string | boolean;
-export const UsageGetResultItemTagsValue = /*@__PURE__*/ S.Unknown.pipe(
+const UsageGetResultItemTagsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type UsageGetResultItemTagsMap = { [key: string]: UsageGetResultItemTagsValue | undefined };
-export const UsageGetResultItemTagsMap = /*@__PURE__*/ S.Record(
+const UsageGetResultItemTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   UsageGetResultItemTagsValue,
 ) as any as S.Schema<UsageGetResultItemTagsMap>;
@@ -752,7 +750,7 @@ export interface UsageGetResultItem {
   /** The display name of the Cloudflare zone. Omitted when zone is not part of the requested grouping, and for usage measured at contract level. Cloudflare extension. */
   xZoneName?: string | null;
 }
-export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chargeCategory: UsageGetResultItemChargeCategory.pipe(T.Body("ChargeCategory")),
     chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
@@ -794,12 +792,12 @@ export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageGetResultItem" }) as any as S.Schema<UsageGetResultItem>;
 
 export type UsageGetResultList = Array<UsageGetResultItem>;
-export const UsageGetResultList = /*@__PURE__*/ S.Array(
+const UsageGetResultList = /*@__PURE__*/ S.Array(
   UsageGetResultItem,
 ) as any as S.Schema<UsageGetResultList>;
 
 export type GetUsageResponse = UsageGetResultList;
-export const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
   UsageGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetUsageResponse" }) as any as S.Schema<GetUsageResponse>;
 
@@ -813,7 +811,7 @@ export interface ListHistoryRequest {
   /** Filter billing history by status. */
   status?: string;
 }
-export const ListHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -825,14 +823,12 @@ export const ListHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListHistoryRequest" }) as any as S.Schema<ListHistoryRequest>;
 
 export type ListHistoryResultItem = GetBadDebtResponseInvoicesItem;
-export const ListHistoryResultItem = GetBadDebtResponseInvoicesItem;
-
 export type ListHistoryResultList = Array<GetBadDebtResponseInvoicesItem>;
-export const ListHistoryResultList =
+const ListHistoryResultList =
   GetBadDebtResponseInvoicesList as any as S.Schema<ListHistoryResultList>;
 
 export type ListHistoryResponse = ListHistoryResultList;
-export const ListHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   ListHistoryResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListHistoryResponse" }) as any as S.Schema<ListHistoryResponse>;
 
@@ -844,7 +840,7 @@ export interface PaygoUsageRequest {
   /** End date for the usage query (ISO 8601). */
   to?: string;
 }
-export const PaygoUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const PaygoUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
@@ -855,7 +851,7 @@ export const PaygoUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaygoUsageRequest" }) as any as S.Schema<PaygoUsageRequest>;
 
 export type UsagePaygoResultItemChargeCategory = "Usage";
-export const UsagePaygoResultItemChargeCategory = S.String;
+const UsagePaygoResultItemChargeCategory = S.String;
 
 export interface UsagePaygoResultItem {
   /** The amount invoiced for this charge. PayGo is billed directly by Cloudflare, so this equals ContractedCost. */
@@ -913,7 +909,7 @@ export interface UsagePaygoResultItem {
   /** The display name of the Cloudflare zone. */
   zoneName?: string | null;
 }
-export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
+const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billedCost: S.Number.pipe(T.Body("BilledCost")),
     billingAccountId: S.String.pipe(T.Body("BillingAccountId")),
@@ -946,12 +942,12 @@ export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsagePaygoResultItem" }) as any as S.Schema<UsagePaygoResultItem>;
 
 export type UsagePaygoResultList = Array<UsagePaygoResultItem>;
-export const UsagePaygoResultList = /*@__PURE__*/ S.Array(
+const UsagePaygoResultList = /*@__PURE__*/ S.Array(
   UsagePaygoResultItem,
 ) as any as S.Schema<UsagePaygoResultList>;
 
 export type PaygoUsageResponse = UsagePaygoResultList;
-export const PaygoUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const PaygoUsageResponse = /*@__PURE__*/ S.suspend(() =>
   UsagePaygoResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PaygoUsageResponse" }) as any as S.Schema<PaygoUsageResponse>;
 
@@ -962,7 +958,7 @@ export interface ProfilesUpdateBillingEmailRequest {
   preferredLocale?: string;
   secondaryBillingEmail?: string;
 }
-export const ProfilesUpdateBillingEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const ProfilesUpdateBillingEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     billingEmail: S.optional(S.String.pipe(T.Body("billing_email"))),
@@ -1017,7 +1013,7 @@ export interface ProfilesUpdateBillingEmailResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-export const ProfilesUpdateBillingEmailResponse = /*@__PURE__*/ S.suspend(() =>
+const ProfilesUpdateBillingEmailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     accountType: S.optional(S.NullOr(S.String).pipe(T.Body("account_type"))),
@@ -1104,7 +1100,7 @@ export interface UpdateProfileRequest {
   /** ZIP or postal code. */
   zipcode?: string;
 }
-export const UpdateProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     address: S.optional(S.String),
@@ -1173,14 +1169,13 @@ export interface UpdateProfileResponse {
   vat?: string | null;
   zipcode?: string | null;
 }
-export const UpdateProfileResponse =
-  CreateProfileResponse as any as S.Schema<UpdateProfileResponse>;
+const UpdateProfileResponse = CreateProfileResponse as any as S.Schema<UpdateProfileResponse>;
 
 export interface UsageGetAccountUsageInfoV1Request {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
 }
-export const UsageGetAccountUsageInfoV1Request = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageInfoV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1200,7 +1195,7 @@ export interface UsageGetAccountUsageInfoV1ResponseSubscriptionsItem {
   /** The subscription end timestamp. Omitted for active subscriptions; present only when the subscription has been cancelled. */
   endTimestamp?: string | null;
 }
-export const UsageGetAccountUsageInfoV1ResponseSubscriptionsItem = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageInfoV1ResponseSubscriptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     billingCycleAnchorTimestamp: S.String.pipe(T.Body("billing_cycle_anchor_timestamp")),
@@ -1213,7 +1208,7 @@ export const UsageGetAccountUsageInfoV1ResponseSubscriptionsItem = /*@__PURE__*/
 
 export type UsageGetAccountUsageInfoV1ResponseSubscriptionsList =
   Array<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
-export const UsageGetAccountUsageInfoV1ResponseSubscriptionsList = /*@__PURE__*/ S.Array(
+const UsageGetAccountUsageInfoV1ResponseSubscriptionsList = /*@__PURE__*/ S.Array(
   UsageGetAccountUsageInfoV1ResponseSubscriptionsItem,
 ) as any as S.Schema<UsageGetAccountUsageInfoV1ResponseSubscriptionsList>;
 
@@ -1224,7 +1219,7 @@ export interface UsageGetAccountUsageInfoV1Response {
   /** List of subscriptions for the account. */
   subscriptions: UsageGetAccountUsageInfoV1ResponseSubscriptionsList;
 }
-export const UsageGetAccountUsageInfoV1Response = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageInfoV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     covered: S.Boolean,
     subscriptions: UsageGetAccountUsageInfoV1ResponseSubscriptionsList,
@@ -1241,7 +1236,7 @@ export interface UsageGetAccountUsageV1Request {
   /** End date for the usage query (ISO 8601). */
   to?: string;
 }
-export const UsageGetAccountUsageV1Request = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
@@ -1254,7 +1249,7 @@ export const UsageGetAccountUsageV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageGetAccountUsageV1Request>;
 
 export type UsageGetAccountUsageV1ResultItemChargeCategory = "Usage";
-export const UsageGetAccountUsageV1ResultItemChargeCategory = S.String;
+const UsageGetAccountUsageV1ResultItemChargeCategory = S.String;
 
 export interface UsageGetAccountUsageV1ResultItem {
   /** The amount invoiced for this charge. PayGo is billed directly by Cloudflare, so this equals ContractedCost. */
@@ -1312,7 +1307,7 @@ export interface UsageGetAccountUsageV1ResultItem {
   /** The display name of the Cloudflare zone. */
   zoneName?: string | null;
 }
-export const UsageGetAccountUsageV1ResultItem = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageV1ResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billedCost: S.Number.pipe(T.Body("BilledCost")),
     billingAccountId: S.String.pipe(T.Body("BillingAccountId")),
@@ -1347,12 +1342,12 @@ export const UsageGetAccountUsageV1ResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageGetAccountUsageV1ResultItem>;
 
 export type UsageGetAccountUsageV1ResultList = Array<UsageGetAccountUsageV1ResultItem>;
-export const UsageGetAccountUsageV1ResultList = /*@__PURE__*/ S.Array(
+const UsageGetAccountUsageV1ResultList = /*@__PURE__*/ S.Array(
   UsageGetAccountUsageV1ResultItem,
 ) as any as S.Schema<UsageGetAccountUsageV1ResultList>;
 
 export type UsageGetAccountUsageV1Response = UsageGetAccountUsageV1ResultList;
-export const UsageGetAccountUsageV1Response = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageV1Response = /*@__PURE__*/ S.suspend(() =>
   UsageGetAccountUsageV1ResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UsageGetAccountUsageV1Response",
@@ -1366,7 +1361,7 @@ export interface UsageGetAccountUsageV2Request {
   /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
-export const UsageGetAccountUsageV2Request = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
@@ -1379,23 +1374,23 @@ export const UsageGetAccountUsageV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageGetAccountUsageV2Request>;
 
 export type UsageGetAccountUsageV2ResultItemChargeCategory = "Usage";
-export const UsageGetAccountUsageV2ResultItemChargeCategory = S.String;
+const UsageGetAccountUsageV2ResultItemChargeCategory = S.String;
 
 export type UsageGetAccountUsageV2ResultItemChargeFrequency = "Usage-Based";
-export const UsageGetAccountUsageV2ResultItemChargeFrequency = S.String;
+const UsageGetAccountUsageV2ResultItemChargeFrequency = S.String;
 
 export type UsageGetAccountUsageV2ResultItemChargeClass = "Correction";
-export const UsageGetAccountUsageV2ResultItemChargeClass = S.String;
+const UsageGetAccountUsageV2ResultItemChargeClass = S.String;
 
 export type UsageGetAccountUsageV2ResultItemTagsValue = string | boolean;
-export const UsageGetAccountUsageV2ResultItemTagsValue = /*@__PURE__*/ S.Unknown.pipe(
+const UsageGetAccountUsageV2ResultItemTagsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type UsageGetAccountUsageV2ResultItemTagsMap = {
   [key: string]: UsageGetAccountUsageV2ResultItemTagsValue | undefined;
 };
-export const UsageGetAccountUsageV2ResultItemTagsMap = /*@__PURE__*/ S.Record(
+const UsageGetAccountUsageV2ResultItemTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   UsageGetAccountUsageV2ResultItemTagsValue,
 ) as any as S.Schema<UsageGetAccountUsageV2ResultItemTagsMap>;
@@ -1474,7 +1469,7 @@ export interface UsageGetAccountUsageV2ResultItem {
   /** The display name of the Cloudflare zone. Omitted when zone is not part of the requested grouping, and for usage measured at contract level. Cloudflare extension. */
   xZoneName?: string | null;
 }
-export const UsageGetAccountUsageV2ResultItem = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageV2ResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chargeCategory: UsageGetAccountUsageV2ResultItemChargeCategory.pipe(T.Body("ChargeCategory")),
     chargeDescription: S.String.pipe(T.Body("ChargeDescription")),
@@ -1522,12 +1517,12 @@ export const UsageGetAccountUsageV2ResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageGetAccountUsageV2ResultItem>;
 
 export type UsageGetAccountUsageV2ResultList = Array<UsageGetAccountUsageV2ResultItem>;
-export const UsageGetAccountUsageV2ResultList = /*@__PURE__*/ S.Array(
+const UsageGetAccountUsageV2ResultList = /*@__PURE__*/ S.Array(
   UsageGetAccountUsageV2ResultItem,
 ) as any as S.Schema<UsageGetAccountUsageV2ResultList>;
 
 export type UsageGetAccountUsageV2Response = UsageGetAccountUsageV2ResultList;
-export const UsageGetAccountUsageV2Response = /*@__PURE__*/ S.suspend(() =>
+const UsageGetAccountUsageV2Response = /*@__PURE__*/ S.suspend(() =>
   UsageGetAccountUsageV2ResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "UsageGetAccountUsageV2Response",
@@ -1537,7 +1532,7 @@ export interface UsagePaygoInfoRequest {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
 }
-export const UsagePaygoInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const UsagePaygoInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1547,12 +1542,9 @@ export const UsagePaygoInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type UsagePaygoInfoResponseSubscriptionsItem =
   UsageGetAccountUsageInfoV1ResponseSubscriptionsItem;
-export const UsagePaygoInfoResponseSubscriptionsItem =
-  UsageGetAccountUsageInfoV1ResponseSubscriptionsItem;
-
 export type UsagePaygoInfoResponseSubscriptionsList =
   Array<UsageGetAccountUsageInfoV1ResponseSubscriptionsItem>;
-export const UsagePaygoInfoResponseSubscriptionsList =
+const UsagePaygoInfoResponseSubscriptionsList =
   UsageGetAccountUsageInfoV1ResponseSubscriptionsList as any as S.Schema<UsagePaygoInfoResponseSubscriptionsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1562,7 +1554,7 @@ export interface UsagePaygoInfoResponse {
   /** List of subscriptions for the account. */
   subscriptions: UsagePaygoInfoResponseSubscriptionsList;
 }
-export const UsagePaygoInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const UsagePaygoInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     covered: S.Boolean,
     subscriptions: UsagePaygoInfoResponseSubscriptionsList,

@@ -291,7 +291,7 @@ export interface DeactivateAuthorizationRequest {
   /** Always `deactivated`. */
   status: string;
 }
-export const DeactivateAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String.pipe(T.Label()),
     status: S.String,
@@ -306,7 +306,7 @@ export interface Identifier {
   /** The identifier itself. */
   value: string;
 }
-export const Identifier = /*@__PURE__*/ S.suspend(() =>
+const Identifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     value: S.String,
@@ -321,7 +321,7 @@ export interface Subproblem {
   /** The identifier this subproblem is about. */
   identifier?: Identifier;
 }
-export const Subproblem = /*@__PURE__*/ S.suspend(() =>
+const Subproblem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     detail: S.optional(S.String),
@@ -330,7 +330,7 @@ export const Subproblem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subproblem" }) as any as S.Schema<Subproblem>;
 
 export type ProblemSubproblemsList = Array<Subproblem>;
-export const ProblemSubproblemsList = /*@__PURE__*/ S.Array(
+const ProblemSubproblemsList = /*@__PURE__*/ S.Array(
   Subproblem,
 ) as any as S.Schema<ProblemSubproblemsList>;
 
@@ -349,7 +349,7 @@ export interface Problem {
   /** Errors for individual identifiers (RFC 8555 §6.7.1). */
   subproblems?: ProblemSubproblemsList;
 }
-export const Problem = /*@__PURE__*/ S.suspend(() =>
+const Problem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     detail: S.optional(S.String),
@@ -375,7 +375,7 @@ export interface Challenge {
   /** Error that occurred while the server was validating the challenge, if any, structured as a problem document [RFC7807]. Multiple errors can be indicated by using subproblems Section 6.7.1. A challenge object with an error MUST have status equal to "invalid". */
   error?: Problem;
 }
-export const Challenge = /*@__PURE__*/ S.suspend(() =>
+const Challenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     url: S.String,
@@ -387,7 +387,7 @@ export const Challenge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Challenge" }) as any as S.Schema<Challenge>;
 
 export type AuthorizationChallengesList = Array<Challenge>;
-export const AuthorizationChallengesList = /*@__PURE__*/ S.Array(
+const AuthorizationChallengesList = /*@__PURE__*/ S.Array(
   Challenge,
 ) as any as S.Schema<AuthorizationChallengesList>;
 
@@ -404,7 +404,7 @@ export interface Authorization {
   /** This field MUST be present and true for authorizations created as a result of a newOrder request containing a DNS identifier with a value that was a wildcard domain name. For other authorizations, it MUST be absent. Wildcard domain names are described in Section 7.1.3. */
   wildcard?: boolean;
 }
-export const Authorization = /*@__PURE__*/ S.suspend(() =>
+const Authorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: Identifier,
     status: S.String,
@@ -418,7 +418,7 @@ export interface DownloadCertificateRequest {
   /** Absolute URL of the resource, as returned by the CA. */
   url: string;
 }
-export const DownloadCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/cert/{url}", code: 200 })),
@@ -428,7 +428,7 @@ export const DownloadCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Alternate chain URLs from `Link: <url>;rel="alternate"` headers. */
 export type CertificateChainAlternatesList = Array<string>;
-export const CertificateChainAlternatesList = /*@__PURE__*/ S.Array(
+const CertificateChainAlternatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CertificateChainAlternatesList>;
 
@@ -438,7 +438,7 @@ export interface CertificateChain {
   /** Alternate chain URLs from `Link: <url>;rel="alternate"` headers. */
   alternates?: CertificateChainAlternatesList;
 }
-export const CertificateChain = /*@__PURE__*/ S.suspend(() =>
+const CertificateChain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chain: S.String,
     alternates: S.optional(CertificateChainAlternatesList),
@@ -451,7 +451,7 @@ export interface FinalizeOrderRequest {
   /** A CSR encoding the parameters for the certificate being requested [RFC2986]. The CSR is sent in the base64url-encoded version of the DER format. (Note: Because this field uses base64url, and does not include headers, it is different from PEM.) */
   csr: string;
 }
-export const FinalizeOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const FinalizeOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String.pipe(T.Label()),
     csr: S.String,
@@ -459,12 +459,12 @@ export const FinalizeOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FinalizeOrderRequest" }) as any as S.Schema<FinalizeOrderRequest>;
 
 export type OrderResponseIdentifiersList = Array<Identifier>;
-export const OrderResponseIdentifiersList = /*@__PURE__*/ S.Array(
+const OrderResponseIdentifiersList = /*@__PURE__*/ S.Array(
   Identifier,
 ) as any as S.Schema<OrderResponseIdentifiersList>;
 
 export type OrderResponseAuthorizationsList = Array<string>;
-export const OrderResponseAuthorizationsList =
+const OrderResponseAuthorizationsList =
   CertificateChainAlternatesList as any as S.Schema<OrderResponseAuthorizationsList>;
 
 /** RFC 8555 §7.1.3, plus the `Location` header as `location`. */
@@ -490,7 +490,7 @@ export interface OrderResponse {
   /** The order URL (`Location` header). */
   location?: string;
 }
-export const OrderResponse = /*@__PURE__*/ S.suspend(() =>
+const OrderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     expires: S.optional(S.String),
@@ -509,19 +509,19 @@ export interface GetAuthorizationRequest {
   /** Absolute URL of the resource, as returned by the CA. */
   url: string;
 }
-export const GetAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/authz/{url}", code: 200 })),
 ).annotate({ identifier: "GetAuthorizationRequest" }) as any as S.Schema<GetAuthorizationRequest>;
 
 export interface GetDirectoryRequest {}
-export const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/directory", code: 200 })),
 ).annotate({ identifier: "GetDirectoryRequest" }) as any as S.Schema<GetDirectoryRequest>;
 
 export type DirectoryMetaCaaIdentitiesList = Array<string>;
-export const DirectoryMetaCaaIdentitiesList =
+const DirectoryMetaCaaIdentitiesList =
   CertificateChainAlternatesList as any as S.Schema<DirectoryMetaCaaIdentitiesList>;
 
 export interface DirectoryMeta {
@@ -534,7 +534,7 @@ export interface DirectoryMeta {
   /** If this field is present and set to "true", then the CA requires that all newAccount requests include an "externalAccountBinding" field associating the new account with an external account. */
   externalAccountRequired?: boolean;
 }
-export const DirectoryMeta = /*@__PURE__*/ S.suspend(() =>
+const DirectoryMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     termsOfService: S.optional(S.String),
     website: S.optional(S.String),
@@ -560,7 +560,7 @@ export interface Directory {
   /** Metadata relating to the service provided by the ACME server. */
   meta?: DirectoryMeta;
 }
-export const Directory = /*@__PURE__*/ S.suspend(() =>
+const Directory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newNonce: S.String,
     newAccount: S.String,
@@ -576,14 +576,14 @@ export interface GetOrderRequest {
   /** Absolute URL of the resource, as returned by the CA. */
   url: string;
 }
-export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/order/{url}", code: 200 })),
 ).annotate({ identifier: "GetOrderRequest" }) as any as S.Schema<GetOrderRequest>;
 
 export type NewAccountRequestContactList = Array<string>;
-export const NewAccountRequestContactList =
+const NewAccountRequestContactList =
   CertificateChainAlternatesList as any as S.Schema<NewAccountRequestContactList>;
 
 /** A JWS binding this account to an existing CA account (RFC 8555 §7.3.4). The protocol builds it from the credentials' EAB key id and HMAC key. */
@@ -592,7 +592,7 @@ export interface ExternalAccountBinding {
   payload: string;
   signature: string;
 }
-export const ExternalAccountBinding = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protected: S.String,
     payload: S.String,
@@ -610,7 +610,7 @@ export interface NewAccountRequest {
   /** Same meaning as the corresponding server field defined in Section 7.1.2 */
   externalAccountBinding?: ExternalAccountBinding;
 }
-export const NewAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const NewAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contact: S.optional(NewAccountRequestContactList),
     termsOfServiceAgreed: S.optional(S.Boolean),
@@ -620,7 +620,7 @@ export const NewAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NewAccountRequest" }) as any as S.Schema<NewAccountRequest>;
 
 export type AccountResponseContactList = Array<string>;
-export const AccountResponseContactList =
+const AccountResponseContactList =
   CertificateChainAlternatesList as any as S.Schema<AccountResponseContactList>;
 
 /** RFC 8555 §7.1.2, plus the `Location` header as `location`. */
@@ -636,7 +636,7 @@ export interface AccountResponse {
   /** The account URL (`Location` header); the `kid` for every later request. */
   location?: string;
 }
-export const AccountResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     contact: S.optional(AccountResponseContactList),
@@ -647,7 +647,7 @@ export const AccountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountResponse" }) as any as S.Schema<AccountResponse>;
 
 export interface NewNonceRequest {}
-export const NewNonceRequest = /*@__PURE__*/ S.suspend(() =>
+const NewNonceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/newNonce", code: 200 })),
 ).annotate({ identifier: "NewNonceRequest" }) as any as S.Schema<NewNonceRequest>;
 
@@ -655,14 +655,14 @@ export interface NonceResponse {
   /** The `Replay-Nonce` header. */
   replayNonce: string;
 }
-export const NonceResponse = /*@__PURE__*/ S.suspend(() =>
+const NonceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replayNonce: S.String,
   }),
 ).annotate({ identifier: "NonceResponse" }) as any as S.Schema<NonceResponse>;
 
 export type NewOrderRequestIdentifiersList = Array<Identifier>;
-export const NewOrderRequestIdentifiersList =
+const NewOrderRequestIdentifiersList =
   OrderResponseIdentifiersList as any as S.Schema<NewOrderRequestIdentifiersList>;
 
 export interface NewOrderRequest {
@@ -673,7 +673,7 @@ export interface NewOrderRequest {
   /** The requested value of the notAfter field in the certificate, in the date format defined in [RFC3339]. */
   notAfter?: string;
 }
-export const NewOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const NewOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifiers: NewOrderRequestIdentifiersList,
     notBefore: S.optional(S.String),
@@ -685,7 +685,7 @@ export interface RespondChallengeRequest {
   /** Absolute URL of the resource, as returned by the CA. */
   url: string;
 }
-export const RespondChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+const RespondChallengeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/challenge/{url}", code: 200 })),
@@ -697,7 +697,7 @@ export interface RevokeCertificateRequest {
   /** One of the revocation reasonCodes defined in Section 5.3.1 of [RFC5280] to be used when generating OCSP responses and CRLs. If this field is not set, the server SHOULD omit the reasonCode CRL entry extension when generating OCSP responses and CRLs. The server MAY disallow a subset of reasonCodes from being used by the user. If a request contains a disallowed reasonCode, then the server MUST reject it with the error type "urn:ietf:params:acme:error:badRevocationReason". The problem document detail SHOULD indicate which reasonCodes are allowed. */
   reason?: number;
 }
-export const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate: S.String,
     reason: S.optional(S.Number),
@@ -705,12 +705,12 @@ export const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeCertificateRequest" }) as any as S.Schema<RevokeCertificateRequest>;
 
 export interface RevokeCertificateResponse {}
-export const RevokeCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const RevokeCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RevokeCertificateResponse",
 }) as any as S.Schema<RevokeCertificateResponse>;
 
 export type UpdateAccountRequestContactList = Array<string>;
-export const UpdateAccountRequestContactList =
+const UpdateAccountRequestContactList =
   CertificateChainAlternatesList as any as S.Schema<UpdateAccountRequestContactList>;
 
 export interface UpdateAccountRequest {
@@ -721,7 +721,7 @@ export interface UpdateAccountRequest {
   /** `deactivated` to deactivate the account (RFC 8555 §7.3.6). */
   status?: string;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String.pipe(T.Label()),
     contact: S.optional(UpdateAccountRequestContactList),

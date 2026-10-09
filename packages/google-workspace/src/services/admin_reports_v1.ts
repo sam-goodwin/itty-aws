@@ -75,7 +75,7 @@ export interface GetCustomerUsageReportsRequest {
   /** Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`. */
   date: string;
 }
-export const GetCustomerUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     parameters: S.optional(S.String.pipe(T.Query())),
@@ -93,15 +93,10 @@ export const GetCustomerUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomerUsageReportsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 export interface UsageReportParametersItem {
   /** The name of the parameter. For the User Usage Report parameter names, see the User Usage parameters reference. */
@@ -117,7 +112,7 @@ export interface UsageReportParametersItem {
   /** Output only. Boolean value of the parameter. */
   boolValue?: boolean;
 }
-export const UsageReportParametersItem = /*@__PURE__*/ S.suspend(() =>
+const UsageReportParametersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     msgValue: S.optional(DocumentMapList),
@@ -131,7 +126,7 @@ export const UsageReportParametersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageReportParametersItem>;
 
 export type UsageReportParametersItemList = Array<UsageReportParametersItem>;
-export const UsageReportParametersItemList = /*@__PURE__*/ S.Array(
+const UsageReportParametersItemList = /*@__PURE__*/ S.Array(
   UsageReportParametersItem,
 ) as any as S.Schema<UsageReportParametersItemList>;
 
@@ -147,7 +142,7 @@ export interface UsageReportEntity {
   /** Output only. The user's immutable Google Workspace profile identifier. */
   profileId?: string;
 }
-export const UsageReportEntity = /*@__PURE__*/ S.suspend(() =>
+const UsageReportEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityId: S.optional(S.String),
     userEmail: S.optional(S.String),
@@ -170,7 +165,7 @@ export interface UsageReport {
   /** Output only. Information about the type of the item. */
   entity?: UsageReportEntity;
 }
-export const UsageReport = /*@__PURE__*/ S.suspend(() =>
+const UsageReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     date: S.optional(S.String),
@@ -181,9 +176,7 @@ export const UsageReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageReport" }) as any as S.Schema<UsageReport>;
 
 export type UsageReportList = Array<UsageReport>;
-export const UsageReportList = /*@__PURE__*/ S.Array(
-  UsageReport,
-) as any as S.Schema<UsageReportList>;
+const UsageReportList = /*@__PURE__*/ S.Array(UsageReport) as any as S.Schema<UsageReportList>;
 
 export interface UsageReportsWarningsItemDataItem {
   /** Value associated with a key-value pair to give detailed information on the warning. */
@@ -191,7 +184,7 @@ export interface UsageReportsWarningsItemDataItem {
   /** Key associated with a key-value pair to give detailed information on the warning. */
   key?: string;
 }
-export const UsageReportsWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
+const UsageReportsWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     key: S.optional(S.String),
@@ -201,7 +194,7 @@ export const UsageReportsWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageReportsWarningsItemDataItem>;
 
 export type UsageReportsWarningsItemDataItemList = Array<UsageReportsWarningsItemDataItem>;
-export const UsageReportsWarningsItemDataItemList = /*@__PURE__*/ S.Array(
+const UsageReportsWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   UsageReportsWarningsItemDataItem,
 ) as any as S.Schema<UsageReportsWarningsItemDataItemList>;
 
@@ -213,7 +206,7 @@ export interface UsageReportsWarningsItem {
   /** The human readable messages for a warning are: - Data is not available warning - Sorry, data for date yyyy-mm-dd for application "`application name`" is not available. - Partial data is available warning - Data for date yyyy-mm-dd for application "`application name`" is not available right now, please try again after a few hours. */
   message?: string;
 }
-export const UsageReportsWarningsItem = /*@__PURE__*/ S.suspend(() =>
+const UsageReportsWarningsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     data: S.optional(UsageReportsWarningsItemDataItemList),
@@ -222,7 +215,7 @@ export const UsageReportsWarningsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageReportsWarningsItem" }) as any as S.Schema<UsageReportsWarningsItem>;
 
 export type UsageReportsWarningsItemList = Array<UsageReportsWarningsItem>;
-export const UsageReportsWarningsItemList = /*@__PURE__*/ S.Array(
+const UsageReportsWarningsItemList = /*@__PURE__*/ S.Array(
   UsageReportsWarningsItem,
 ) as any as S.Schema<UsageReportsWarningsItemList>;
 
@@ -238,7 +231,7 @@ export interface UsageReports {
   /** Warnings, if any. */
   warnings?: UsageReportsWarningsItemList;
 }
-export const UsageReports = /*@__PURE__*/ S.suspend(() =>
+const UsageReports = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     etag: S.optional(S.String),
@@ -249,7 +242,7 @@ export const UsageReports = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageReports" }) as any as S.Schema<UsageReports>;
 
 export type GetEntityUsageReportsEntityTypeEnum = "gplus_communities";
-export const GetEntityUsageReportsEntityTypeEnum = S.String;
+const GetEntityUsageReportsEntityTypeEnum = S.String;
 
 export interface GetEntityUsageReportsRequest {
   /** Represents the type of entity for the report. */
@@ -269,7 +262,7 @@ export interface GetEntityUsageReportsRequest {
   /** Determines how many activity records are shown on each response page. For example, if the request sets `maxResults=1` and the report has two activities, the report has two pages. The response's `nextPageToken` property has the token to the second page. */
   maxResults?: number;
 }
-export const GetEntityUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntityUsageReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityType: GetEntityUsageReportsEntityTypeEnum.pipe(T.Label()),
     date: S.String.pipe(T.Label()),
@@ -310,7 +303,7 @@ export interface GetUserUsageReportRequest {
   /** Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all information, or `userKey` for a user's unique Google Workspace profile ID or their primary email address. Must not be a deleted user. For a deleted user, call `users.list` in Directory API with `showDeleted=true`, then use the returned `ID` as the `userKey`. */
   userKey: string;
 }
-export const GetUserUsageReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserUsageReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(S.String.pipe(T.Query())),
     orgUnitID: S.optional(S.String.pipe(T.Query())),
@@ -375,7 +368,7 @@ export type ListActivitiesApplicationNameEnum =
   | "chrome_sync"
   | "workspace_studio"
   | "gemini_notebook";
-export const ListActivitiesApplicationNameEnum = S.String;
+const ListActivitiesApplicationNameEnum = S.String;
 
 export interface ListActivitiesRequest {
   /** Optional. Used to filter on the `statusCode` field present in [`Status`](#status) message. **Usage** ``` GET...&statusFilter=statusCode="200" GET...&statusFilter=statusCode=%22200%22 ``` */
@@ -417,7 +410,7 @@ export interface ListActivitiesRequest {
   /** The Internet Protocol (IP) Address of host where the event was performed. This is an additional way to filter a report's summary using the IP address of the user whose activity is being reported. This IP address may or may not reflect the user's physical location. For example, the IP address can be the user's proxy server's address or a virtual private network (VPN) address. This parameter supports both IPv4 and IPv6 address versions. */
   actorIpAddress?: string;
 }
-export const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusFilter: S.optional(S.String.pipe(T.Query())),
     userKey: S.String.pipe(T.Label()),
@@ -456,7 +449,7 @@ export interface FieldValueSelectionValue {
   /** Identifier of the selection. */
   id?: string;
 }
-export const FieldValueSelectionValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueSelectionValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     badged: S.optional(S.Boolean),
     displayName: S.optional(S.String),
@@ -473,7 +466,7 @@ export interface Admin_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const Admin_Date = /*@__PURE__*/ S.suspend(() =>
+const Admin_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -486,7 +479,7 @@ export interface Reason {
   /** The type of the reason. */
   reasonType?: string;
 }
-export const Reason = /*@__PURE__*/ S.suspend(() =>
+const Reason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasonType: S.optional(S.String),
   }),
@@ -497,14 +490,14 @@ export interface FieldValueUserValue {
   /** Email of the user. */
   email?: string;
 }
-export const FieldValueUserValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueUserValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
   }),
 ).annotate({ identifier: "FieldValueUserValue" }) as any as S.Schema<FieldValueUserValue>;
 
 export type FieldValueUserValueList = Array<FieldValueUserValue>;
-export const FieldValueUserValueList = /*@__PURE__*/ S.Array(
+const FieldValueUserValueList = /*@__PURE__*/ S.Array(
   FieldValueUserValue,
 ) as any as S.Schema<FieldValueUserValueList>;
 
@@ -513,28 +506,28 @@ export interface FieldValueUserListValue {
   /** List of users. */
   values?: FieldValueUserValueList;
 }
-export const FieldValueUserListValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueUserListValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(FieldValueUserValueList),
   }),
 ).annotate({ identifier: "FieldValueUserListValue" }) as any as S.Schema<FieldValueUserListValue>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Setting a text list value. */
 export interface FieldValueTextListValue {
   /** List of text values. */
   values?: StringList;
 }
-export const FieldValueTextListValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueTextListValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
   }),
 ).annotate({ identifier: "FieldValueTextListValue" }) as any as S.Schema<FieldValueTextListValue>;
 
 export type FieldValueSelectionValueList = Array<FieldValueSelectionValue>;
-export const FieldValueSelectionValueList = /*@__PURE__*/ S.Array(
+const FieldValueSelectionValueList = /*@__PURE__*/ S.Array(
   FieldValueSelectionValue,
 ) as any as S.Schema<FieldValueSelectionValueList>;
 
@@ -543,7 +536,7 @@ export interface FieldValueSelectionListValue {
   /** List of selections. */
   values?: FieldValueSelectionValueList;
 }
-export const FieldValueSelectionListValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValueSelectionListValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(FieldValueSelectionValueList),
   }),
@@ -582,7 +575,7 @@ export interface FieldValue {
   /** Setting a selection list value by selecting multiple values from a dropdown. */
   selectionListValue?: FieldValueSelectionListValue;
 }
-export const FieldValue = /*@__PURE__*/ S.suspend(() =>
+const FieldValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectionValue: S.optional(FieldValueSelectionValue),
     dateValue: S.optional(Admin_Date),
@@ -602,7 +595,7 @@ export const FieldValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldValue" }) as any as S.Schema<FieldValue>;
 
 export type FieldValueList = Array<FieldValue>;
-export const FieldValueList = /*@__PURE__*/ S.Array(FieldValue) as any as S.Schema<FieldValueList>;
+const FieldValueList = /*@__PURE__*/ S.Array(FieldValue) as any as S.Schema<FieldValueList>;
 
 /** Details of the label applied on the resource. */
 export interface AppliedLabel {
@@ -615,7 +608,7 @@ export interface AppliedLabel {
   /** The reason why the label was applied on the resource. */
   reason?: Reason;
 }
-export const AppliedLabel = /*@__PURE__*/ S.suspend(() =>
+const AppliedLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldValues: S.optional(FieldValueList),
     id: S.optional(S.String),
@@ -625,9 +618,7 @@ export const AppliedLabel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppliedLabel" }) as any as S.Schema<AppliedLabel>;
 
 export type AppliedLabelList = Array<AppliedLabel>;
-export const AppliedLabelList = /*@__PURE__*/ S.Array(
-  AppliedLabel,
-) as any as S.Schema<AppliedLabelList>;
+const AppliedLabelList = /*@__PURE__*/ S.Array(AppliedLabel) as any as S.Schema<AppliedLabelList>;
 
 /** Identity of the group who owns the resource. */
 export interface GroupIdentity {
@@ -636,7 +627,7 @@ export interface GroupIdentity {
   /** Group email. */
   groupEmail?: string;
 }
-export const GroupIdentity = /*@__PURE__*/ S.suspend(() =>
+const GroupIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     groupEmail: S.optional(S.String),
@@ -650,7 +641,7 @@ export interface SharedDriveIdentity {
   /** Shared drive gaia id. */
   id?: string;
 }
-export const SharedDriveIdentity = /*@__PURE__*/ S.suspend(() =>
+const SharedDriveIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedDriveName: S.optional(S.String),
     id: S.optional(S.String),
@@ -662,7 +653,7 @@ export interface CustomerIdentity {
   /** Customer id. */
   id?: string;
 }
-export const CustomerIdentity = /*@__PURE__*/ S.suspend(() =>
+const CustomerIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -675,7 +666,7 @@ export interface UserIdentity {
   /** User gaia id. */
   id?: string;
 }
-export const UserIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userEmail: S.optional(S.String),
     id: S.optional(S.String),
@@ -693,7 +684,7 @@ export interface OwnerIdentity {
   /** Identity of the user who owns the resource. */
   userIdentity?: UserIdentity;
 }
-export const OwnerIdentity = /*@__PURE__*/ S.suspend(() =>
+const OwnerIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIdentity: S.optional(GroupIdentity),
     sharedDriveIdentity: S.optional(SharedDriveIdentity),
@@ -703,7 +694,7 @@ export const OwnerIdentity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OwnerIdentity" }) as any as S.Schema<OwnerIdentity>;
 
 export type OwnerIdentityList = Array<OwnerIdentity>;
-export const OwnerIdentityList = /*@__PURE__*/ S.Array(
+const OwnerIdentityList = /*@__PURE__*/ S.Array(
   OwnerIdentity,
 ) as any as S.Schema<OwnerIdentityList>;
 
@@ -714,7 +705,7 @@ export interface OwnerDetails {
   /** Identity details of the owner(s) of the resource. */
   ownerIdentity?: OwnerIdentityList;
 }
-export const OwnerDetails = /*@__PURE__*/ S.suspend(() =>
+const OwnerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerType: S.optional(S.String),
     ownerIdentity: S.optional(OwnerIdentityList),
@@ -736,7 +727,7 @@ export interface ResourceDetails {
   /** Identifier of the resource, such as a doc_id for a Drive document, a conference_id for a Meet conference, or a "gaia_id/rfc2822_message_id" for an email. */
   id?: string;
 }
-export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedLabels: S.optional(AppliedLabelList),
     ownerDetails: S.optional(OwnerDetails),
@@ -748,7 +739,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceDetails" }) as any as S.Schema<ResourceDetails>;
 
 export type ResourceDetailsList = Array<ResourceDetails>;
-export const ResourceDetailsList = /*@__PURE__*/ S.Array(
+const ResourceDetailsList = /*@__PURE__*/ S.Array(
   ResourceDetails,
 ) as any as S.Schema<ResourceDetailsList>;
 
@@ -762,7 +753,7 @@ export interface ActivityId {
   /** Application name to which the event belongs. For possible values see the list of applications above in `applicationName`. */
   applicationName?: string;
 }
-export const ActivityId = /*@__PURE__*/ S.suspend(() =>
+const ActivityId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(S.String),
     customerId: S.optional(S.String),
@@ -779,7 +770,7 @@ export interface ActivityActorApplicationInfo {
   /** Name of the application used to perform the action. */
   applicationName?: string;
 }
-export const ActivityActorApplicationInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityActorApplicationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impersonation: S.optional(S.Boolean),
     oauthClientId: S.optional(S.String),
@@ -794,7 +785,7 @@ export interface AgentAttributionInfoAgentOwner {
   /** The email of the agent owner. */
   email?: string;
 }
-export const AgentAttributionInfoAgentOwner = /*@__PURE__*/ S.suspend(() =>
+const AgentAttributionInfoAgentOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
   }),
@@ -813,7 +804,7 @@ export interface AgentAttributionInfo {
   /** Type of the agent. */
   agentType?: string;
 }
-export const AgentAttributionInfo = /*@__PURE__*/ S.suspend(() =>
+const AgentAttributionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentName: S.optional(S.String),
     agentOwner: S.optional(AgentAttributionInfoAgentOwner),
@@ -836,7 +827,7 @@ export interface ActivityActor {
   /** Only present when `callerType` is `KEY`. Can be the `consumer_key` of the requestor for OAuth 2LO API requests or an identifier for robot accounts. */
   key?: string;
 }
-export const ActivityActor = /*@__PURE__*/ S.suspend(() =>
+const ActivityActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callerType: S.optional(S.String),
     applicationInfo: S.optional(ActivityActorApplicationInfo),
@@ -856,7 +847,7 @@ export interface ActivityUserDeviceInfo {
   /** Output only. Device ID of the user's device. */
   deviceId?: string;
 }
-export const ActivityUserDeviceInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityUserDeviceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceOsVersion: S.optional(S.String),
     deviceType: S.optional(S.String),
@@ -865,7 +856,7 @@ export const ActivityUserDeviceInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityUserDeviceInfo" }) as any as S.Schema<ActivityUserDeviceInfo>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Network information of the user doing the action. */
 export interface ActivityNetworkInfo {
@@ -876,7 +867,7 @@ export interface ActivityNetworkInfo {
   /** IP Address of the user doing the action. */
   ipAsn?: IntegerList;
 }
-export const ActivityNetworkInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityNetworkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subdivisionCode: S.optional(S.String),
     regionCode: S.optional(S.String),
@@ -885,7 +876,7 @@ export const ActivityNetworkInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityNetworkInfo" }) as any as S.Schema<ActivityNetworkInfo>;
 
 export type BooleanList = Array<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
+const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
 
 /** JSON template for a parameter used in various reports. */
 export interface NestedParameter {
@@ -904,7 +895,7 @@ export interface NestedParameter {
   /** Multiple integer values of the parameter. */
   multiIntValue?: StringList;
 }
-export const NestedParameter = /*@__PURE__*/ S.suspend(() =>
+const NestedParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiBoolValue: S.optional(BooleanList),
     boolValue: S.optional(S.Boolean),
@@ -917,7 +908,7 @@ export const NestedParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NestedParameter" }) as any as S.Schema<NestedParameter>;
 
 export type NestedParameterList = Array<NestedParameter>;
-export const NestedParameterList = /*@__PURE__*/ S.Array(
+const NestedParameterList = /*@__PURE__*/ S.Array(
   NestedParameter,
 ) as any as S.Schema<NestedParameterList>;
 
@@ -925,7 +916,7 @@ export interface ActivityEventsItemParametersItemMultiMessageValueItem {
   /** Parameter values */
   parameter?: NestedParameterList;
 }
-export const ActivityEventsItemParametersItemMultiMessageValueItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsItemParametersItemMultiMessageValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameter: S.optional(NestedParameterList),
   }),
@@ -935,15 +926,12 @@ export const ActivityEventsItemParametersItemMultiMessageValueItem = /*@__PURE__
 
 export type ActivityEventsItemParametersItemMultiMessageValueItemList =
   Array<ActivityEventsItemParametersItemMultiMessageValueItem>;
-export const ActivityEventsItemParametersItemMultiMessageValueItemList = /*@__PURE__*/ S.Array(
+const ActivityEventsItemParametersItemMultiMessageValueItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItemParametersItemMultiMessageValueItem,
 ) as any as S.Schema<ActivityEventsItemParametersItemMultiMessageValueItemList>;
 
 export type ActivityEventsItemParametersItemMessageValue =
   ActivityEventsItemParametersItemMultiMessageValueItem;
-export const ActivityEventsItemParametersItemMessageValue =
-  ActivityEventsItemParametersItemMultiMessageValueItem;
-
 export interface ActivityEventsItemParametersItem {
   /** Integer values of the parameter. */
   multiIntValue?: StringList;
@@ -962,7 +950,7 @@ export interface ActivityEventsItemParametersItem {
   /** The name of the parameter. */
   name?: string;
 }
-export const ActivityEventsItemParametersItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsItemParametersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiIntValue: S.optional(StringList),
     multiMessageValue: S.optional(ActivityEventsItemParametersItemMultiMessageValueItemList),
@@ -978,26 +966,19 @@ export const ActivityEventsItemParametersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityEventsItemParametersItem>;
 
 export type ActivityEventsItemParametersItemList = Array<ActivityEventsItemParametersItem>;
-export const ActivityEventsItemParametersItemList = /*@__PURE__*/ S.Array(
+const ActivityEventsItemParametersItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItemParametersItem,
 ) as any as S.Schema<ActivityEventsItemParametersItemList>;
 
 export type ActivityEventsItemSensitiveParametersItemMessageValue =
   ActivityEventsItemParametersItemMultiMessageValueItem;
-export const ActivityEventsItemSensitiveParametersItemMessageValue =
-  ActivityEventsItemParametersItemMultiMessageValueItem;
-
 export type ActivityEventsItemSensitiveParametersItemMultiMessageValueItem =
   ActivityEventsItemParametersItemMultiMessageValueItem;
-export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItem =
-  ActivityEventsItemParametersItemMultiMessageValueItem;
-
 export type ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList =
   Array<ActivityEventsItemParametersItemMultiMessageValueItem>;
-export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList =
-  /*@__PURE__*/ S.Array(
-    ActivityEventsItemParametersItemMultiMessageValueItem,
-  ) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList>;
+const ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList = /*@__PURE__*/ S.Array(
+  ActivityEventsItemParametersItemMultiMessageValueItem,
+) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList>;
 
 export interface ActivityEventsItemSensitiveParametersItem {
   /** Nested parameter value pairs associated with this parameter. Complex value type for a parameter are returned as a list of parameter values. For example, the address parameter may have a value as `[{parameter: [{name: city, value: abc}]}]` */
@@ -1017,7 +998,7 @@ export interface ActivityEventsItemSensitiveParametersItem {
   /** Boolean value of the parameter. */
   boolValue?: boolean;
 }
-export const ActivityEventsItemSensitiveParametersItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsItemSensitiveParametersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageValue: S.optional(ActivityEventsItemParametersItemMultiMessageValueItem),
     intValue: S.optional(S.String),
@@ -1036,7 +1017,7 @@ export const ActivityEventsItemSensitiveParametersItem = /*@__PURE__*/ S.suspend
 
 export type ActivityEventsItemSensitiveParametersItemList =
   Array<ActivityEventsItemSensitiveParametersItem>;
-export const ActivityEventsItemSensitiveParametersItemList = /*@__PURE__*/ S.Array(
+const ActivityEventsItemSensitiveParametersItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItemSensitiveParametersItem,
 ) as any as S.Schema<ActivityEventsItemSensitiveParametersItemList>;
 
@@ -1051,7 +1032,7 @@ export interface ActivityEventsStatus {
   /** Error code of the event. Note: Field can be empty. */
   errorCode?: string;
 }
-export const ActivityEventsStatus = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpStatusCode: S.optional(S.Number),
     eventStatus: S.optional(S.String),
@@ -1074,7 +1055,7 @@ export interface ActivityEventsItem {
   /** Status of the event. Note: Not all events have status. */
   status?: ActivityEventsStatus;
 }
-export const ActivityEventsItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityEventsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     parameters: S.optional(ActivityEventsItemParametersItemList),
@@ -1086,7 +1067,7 @@ export const ActivityEventsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityEventsItem" }) as any as S.Schema<ActivityEventsItem>;
 
 export type ActivityEventsItemList = Array<ActivityEventsItem>;
-export const ActivityEventsItemList = /*@__PURE__*/ S.Array(
+const ActivityEventsItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItem,
 ) as any as S.Schema<ActivityEventsItemList>;
 
@@ -1115,7 +1096,7 @@ export interface Activity {
   /** Whether the activity was performed by an agent. */
   isAgenticAction?: boolean;
 }
-export const Activity = /*@__PURE__*/ S.suspend(() =>
+const Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceDetails: S.optional(ResourceDetailsList),
     id: S.optional(ActivityId),
@@ -1132,7 +1113,7 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 export type ActivityList = Array<Activity>;
-export const ActivityList = /*@__PURE__*/ S.Array(Activity) as any as S.Schema<ActivityList>;
+const ActivityList = /*@__PURE__*/ S.Array(Activity) as any as S.Schema<ActivityList>;
 
 /** JSON template for a collection of activities. */
 export interface Activities {
@@ -1145,7 +1126,7 @@ export interface Activities {
   /** Token for retrieving the follow-on next page of the report. The `nextPageToken` value is used in the request's `pageToken` query string. */
   nextPageToken?: string;
 }
-export const Activities = /*@__PURE__*/ S.suspend(() =>
+const Activities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ActivityList,
     kind: S.optional(S.String),
@@ -1155,7 +1136,7 @@ export const Activities = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activities" }) as any as S.Schema<Activities>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A notification channel used to watch for resource changes. */
 export interface Channel {
@@ -1180,7 +1161,7 @@ export interface Channel {
   /** A Boolean value to indicate whether payload is wanted. A payload is data that is sent in the body of an HTTP POST, PUT, or PATCH message and contains important information about the request. Optional. */
   payload?: boolean;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1199,7 +1180,7 @@ export interface StopChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Channel.pipe(T.HttpBody())),
   }).pipe(
@@ -1212,7 +1193,7 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const StopChannelsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "StopChannelsResponse",
 }) as any as S.Schema<StopChannelsResponse>;
 
@@ -1239,7 +1220,7 @@ export type WatchActivitiesApplicationNameEnum =
   | "data_studio"
   | "keep"
   | "classroom";
-export const WatchActivitiesApplicationNameEnum = S.String;
+const WatchActivitiesApplicationNameEnum = S.String;
 
 export interface WatchActivitiesRequest {
   /** The name of the event being queried by the API. Each `eventName` is related to a specific Google Workspace service or feature which the API organizes into types of events. An example is the Google Calendar events in the Admin console application's reports. The Calendar Settings `type` structure has all of the Calendar `eventName` activities reported by the API. When an administrator changes a Calendar setting, the API reports this activity in the Calendar Settings `type` and `eventName` parameters. For more information about `eventName` query strings and parameters, see the list of event names for various applications above in `applicationName`. */
@@ -1269,7 +1250,7 @@ export interface WatchActivitiesRequest {
   /** Request body */
   body?: Channel;
 }
-export const WatchActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventName: S.optional(S.String.pipe(T.Query())),
     startTime: S.optional(S.String.pipe(T.Query())),

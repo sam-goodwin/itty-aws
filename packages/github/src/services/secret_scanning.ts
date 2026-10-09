@@ -56,13 +56,13 @@ export class UnprocessableEntity
 
 /** List of regexes that the secret must match. */
 export type SecretScanningCustomPatternToCreateMustMatchList = Array<string>;
-export const SecretScanningCustomPatternToCreateMustMatchList = /*@__PURE__*/ S.Array(
+const SecretScanningCustomPatternToCreateMustMatchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SecretScanningCustomPatternToCreateMustMatchList>;
 
 /** List of regexes that the secret must not match. */
 export type SecretScanningCustomPatternToCreateMustNotMatchList = Array<string>;
-export const SecretScanningCustomPatternToCreateMustNotMatchList =
+const SecretScanningCustomPatternToCreateMustNotMatchList =
   SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternToCreateMustNotMatchList>;
 
 /** A custom pattern to create in a bulk operation. */
@@ -80,7 +80,7 @@ export interface SecretScanningCustomPatternToCreate {
   /** List of regexes that the secret must not match. */
   must_not_match?: SecretScanningCustomPatternToCreateMustNotMatchList;
 }
-export const SecretScanningCustomPatternToCreate = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningCustomPatternToCreate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     pattern: S.String,
@@ -96,7 +96,7 @@ export const SecretScanningCustomPatternToCreate = /*@__PURE__*/ S.suspend(() =>
 /** The list of custom patterns to create (maximum 100). */
 export type BulkCreateOrgCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToCreate>;
-export const BulkCreateOrgCustomPatternsRequestPatternsList = /*@__PURE__*/ S.Array(
+const BulkCreateOrgCustomPatternsRequestPatternsList = /*@__PURE__*/ S.Array(
   SecretScanningCustomPatternToCreate,
 ) as any as S.Schema<BulkCreateOrgCustomPatternsRequestPatternsList>;
 
@@ -106,7 +106,7 @@ export interface BulkCreateOrgCustomPatternsRequest {
   /** The list of custom patterns to create (maximum 100). */
   patterns: BulkCreateOrgCustomPatternsRequestPatternsList;
 }
-export const BulkCreateOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     patterns: BulkCreateOrgCustomPatternsRequestPatternsList,
@@ -119,16 +119,16 @@ export const BulkCreateOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the custom pattern. */
 export type SecretScanningCustomPatternState = "published" | "unpublished";
-export const SecretScanningCustomPatternState = S.String;
+const SecretScanningCustomPatternState = S.String;
 
 /** List of regexes that the secret must match. */
 export type SecretScanningCustomPatternMustMatchList = Array<string>;
-export const SecretScanningCustomPatternMustMatchList =
+const SecretScanningCustomPatternMustMatchList =
   SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternMustMatchList>;
 
 /** List of regexes that the secret must not match. */
 export type SecretScanningCustomPatternMustNotMatchList = Array<string>;
-export const SecretScanningCustomPatternMustNotMatchList =
+const SecretScanningCustomPatternMustNotMatchList =
   SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternMustNotMatchList>;
 
 /** A custom pattern for secret scanning. */
@@ -159,7 +159,7 @@ export interface SecretScanningCustomPattern {
   /** The date and time the custom pattern was last updated in ISO 8601 format. */
   updated_at?: string;
 }
-export const SecretScanningCustomPattern = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningCustomPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -182,7 +182,7 @@ export const SecretScanningCustomPattern = /*@__PURE__*/ S.suspend(() =>
 /** The list of successfully created custom patterns. */
 export type BulkCreateOrgCustomPatternsResponseCreatedPatternsList =
   Array<SecretScanningCustomPattern>;
-export const BulkCreateOrgCustomPatternsResponseCreatedPatternsList = /*@__PURE__*/ S.Array(
+const BulkCreateOrgCustomPatternsResponseCreatedPatternsList = /*@__PURE__*/ S.Array(
   SecretScanningCustomPattern,
 ) as any as S.Schema<BulkCreateOrgCustomPatternsResponseCreatedPatternsList>;
 
@@ -190,7 +190,7 @@ export interface BulkCreateOrgCustomPatternsResponse {
   /** The list of successfully created custom patterns. */
   created_patterns?: BulkCreateOrgCustomPatternsResponseCreatedPatternsList;
 }
-export const BulkCreateOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_patterns: S.optional(BulkCreateOrgCustomPatternsResponseCreatedPatternsList),
   }),
@@ -201,7 +201,7 @@ export const BulkCreateOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
 /** The list of custom patterns to create (maximum 100). */
 export type BulkCreateRepoCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToCreate>;
-export const BulkCreateRepoCustomPatternsRequestPatternsList =
+const BulkCreateRepoCustomPatternsRequestPatternsList =
   BulkCreateOrgCustomPatternsRequestPatternsList as any as S.Schema<BulkCreateRepoCustomPatternsRequestPatternsList>;
 
 export interface BulkCreateRepoCustomPatternsRequest {
@@ -212,7 +212,7 @@ export interface BulkCreateRepoCustomPatternsRequest {
   /** The list of custom patterns to create (maximum 100). */
   patterns: BulkCreateRepoCustomPatternsRequestPatternsList;
 }
-export const BulkCreateRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -231,14 +231,11 @@ export const BulkCreateRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 /** The list of successfully created custom patterns. */
 export type BulkCreateRepoCustomPatternsResponseCreatedPatternsList =
   Array<SecretScanningCustomPattern>;
-export const BulkCreateRepoCustomPatternsResponseCreatedPatternsList =
-  BulkCreateOrgCustomPatternsResponseCreatedPatternsList as any as S.Schema<BulkCreateRepoCustomPatternsResponseCreatedPatternsList>;
-
 export interface BulkCreateRepoCustomPatternsResponse {
   /** The list of successfully created custom patterns. */
   created_patterns?: BulkCreateRepoCustomPatternsResponseCreatedPatternsList;
 }
-export const BulkCreateRepoCustomPatternsResponse =
+const BulkCreateRepoCustomPatternsResponse =
   BulkCreateOrgCustomPatternsResponse as any as S.Schema<BulkCreateRepoCustomPatternsResponse>;
 
 /** A custom pattern to delete in a bulk operation. */
@@ -247,7 +244,7 @@ export interface SecretScanningCustomPatternToDelete {
   pattern_id: number;
   custom_pattern_version?: string | null;
 }
-export const SecretScanningCustomPatternToDelete = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningCustomPatternToDelete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pattern_id: S.Number,
     custom_pattern_version: S.optional(S.NullOr(S.String)),
@@ -259,13 +256,13 @@ export const SecretScanningCustomPatternToDelete = /*@__PURE__*/ S.suspend(() =>
 /** The list of custom patterns to delete. */
 export type BulkDeleteOrgCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToDelete>;
-export const BulkDeleteOrgCustomPatternsRequestPatternsList = /*@__PURE__*/ S.Array(
+const BulkDeleteOrgCustomPatternsRequestPatternsList = /*@__PURE__*/ S.Array(
   SecretScanningCustomPatternToDelete,
 ) as any as S.Schema<BulkDeleteOrgCustomPatternsRequestPatternsList>;
 
 /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
 export type BulkDeleteOrgCustomPatternsRequestPostDeleteAction = "delete_alerts" | "resolve_alerts";
-export const BulkDeleteOrgCustomPatternsRequestPostDeleteAction = S.String;
+const BulkDeleteOrgCustomPatternsRequestPostDeleteAction = S.String;
 
 export interface BulkDeleteOrgCustomPatternsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -275,7 +272,7 @@ export interface BulkDeleteOrgCustomPatternsRequest {
   /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
   post_delete_action?: BulkDeleteOrgCustomPatternsRequestPostDeleteAction | (string & {});
 }
-export const BulkDeleteOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     patterns: BulkDeleteOrgCustomPatternsRequestPatternsList,
@@ -288,23 +285,21 @@ export const BulkDeleteOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteOrgCustomPatternsRequest>;
 
 export interface BulkDeleteOrgCustomPatternsResponse {}
-export const BulkDeleteOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const BulkDeleteOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BulkDeleteOrgCustomPatternsResponse",
 }) as any as S.Schema<BulkDeleteOrgCustomPatternsResponse>;
 
 /** The list of custom patterns to delete. */
 export type BulkDeleteRepoCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToDelete>;
-export const BulkDeleteRepoCustomPatternsRequestPatternsList =
+const BulkDeleteRepoCustomPatternsRequestPatternsList =
   BulkDeleteOrgCustomPatternsRequestPatternsList as any as S.Schema<BulkDeleteRepoCustomPatternsRequestPatternsList>;
 
 /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
 export type BulkDeleteRepoCustomPatternsRequestPostDeleteAction =
   | "delete_alerts"
   | "resolve_alerts";
-export const BulkDeleteRepoCustomPatternsRequestPostDeleteAction = S.String;
+const BulkDeleteRepoCustomPatternsRequestPostDeleteAction = S.String;
 
 export interface BulkDeleteRepoCustomPatternsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -316,7 +311,7 @@ export interface BulkDeleteRepoCustomPatternsRequest {
   /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
   post_delete_action?: BulkDeleteRepoCustomPatternsRequestPostDeleteAction | (string & {});
 }
-export const BulkDeleteRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -334,7 +329,7 @@ export const BulkDeleteRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkDeleteRepoCustomPatternsRequest>;
 
 export interface BulkDeleteRepoCustomPatternsResponse {}
-export const BulkDeleteRepoCustomPatternsResponse =
+const BulkDeleteRepoCustomPatternsResponse =
   BulkDeleteOrgCustomPatternsResponse as any as S.Schema<BulkDeleteRepoCustomPatternsResponse>;
 
 /** The reason for bypassing push protection. */
@@ -342,7 +337,7 @@ export type SecretScanningPushProtectionBypassReason =
   | "false_positive"
   | "used_in_tests"
   | "will_fix_later";
-export const SecretScanningPushProtectionBypassReason = S.String;
+const SecretScanningPushProtectionBypassReason = S.String;
 
 export interface CreatePushProtectionBypassRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -352,7 +347,7 @@ export interface CreatePushProtectionBypassRequest {
   reason: SecretScanningPushProtectionBypassReason | (string & {});
   placeholder_id: string;
 }
-export const CreatePushProtectionBypassRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePushProtectionBypassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -376,7 +371,7 @@ export interface SecretScanningPushProtectionBypass {
   /** The token type this bypass is for. */
   token_type?: string;
 }
-export const SecretScanningPushProtectionBypass = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningPushProtectionBypass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(SecretScanningPushProtectionBypassReason),
     expire_at: S.optional(S.NullOr(S.String)),
@@ -396,7 +391,7 @@ export interface GetAlertRequest {
   /** A boolean value representing whether or not to hide literal secrets in the results. */
   hide_secret?: boolean;
 }
-export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -413,7 +408,7 @@ export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`. */
 export type SecretScanningAlertState = "open" | "resolved";
-export const SecretScanningAlertState = S.String;
+const SecretScanningAlertState = S.String;
 
 /** **Required when the `state` is `resolved`.** The reason for resolving the alert. */
 export type SecretScanningAlertResolution =
@@ -421,7 +416,7 @@ export type SecretScanningAlertResolution =
   | "wont_fix"
   | "revoked"
   | "used_in_tests";
-export const SecretScanningAlertResolution = S.String;
+const SecretScanningAlertResolution = S.String;
 
 /** A GitHub user. */
 export interface NullableSimpleUser {
@@ -448,7 +443,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -477,7 +472,7 @@ export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
 
 /** The token status as of the latest validity check. */
 export type SecretScanningAlertWithMetadataValidity = "active" | "inactive" | "unknown";
-export const SecretScanningAlertWithMetadataValidity = S.String;
+const SecretScanningAlertWithMetadataValidity = S.String;
 
 /** Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository. */
 export interface SecretScanningLocationCommit {
@@ -502,23 +497,6 @@ export interface SecretScanningLocationCommit {
   /** The GitHub URL to get the associated commit resource. */
   html_url?: string;
 }
-export const SecretScanningLocationCommit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.String,
-    start_line: S.Number,
-    end_line: S.Number,
-    start_column: S.Number,
-    end_column: S.Number,
-    blob_sha: S.String,
-    blob_url: S.String,
-    commit_sha: S.String,
-    commit_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationCommit",
-}) as any as S.Schema<SecretScanningLocationCommit>;
-
 /** Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki. */
 export interface SecretScanningLocationWikiCommit {
   /** The file path of the wiki page */
@@ -540,22 +518,6 @@ export interface SecretScanningLocationWikiCommit {
   /** The GitHub URL to get the associated wiki commit */
   commit_url: string;
 }
-export const SecretScanningLocationWikiCommit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.String,
-    start_line: S.Number,
-    end_line: S.Number,
-    start_column: S.Number,
-    end_column: S.Number,
-    blob_sha: S.String,
-    page_url: S.String,
-    commit_sha: S.String,
-    commit_url: S.String,
-  }),
-).annotate({
-  identifier: "SecretScanningLocationWikiCommit",
-}) as any as S.Schema<SecretScanningLocationWikiCommit>;
-
 /** Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue. */
 export interface SecretScanningLocationIssueTitle {
   /** The API URL to get the issue where the secret was detected. */
@@ -563,15 +525,6 @@ export interface SecretScanningLocationIssueTitle {
   /** The GitHub URL for the issue where the secret was detected. */
   html_url?: string;
 }
-export const SecretScanningLocationIssueTitle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue_title_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationIssueTitle",
-}) as any as S.Schema<SecretScanningLocationIssueTitle>;
-
 /** Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue. */
 export interface SecretScanningLocationIssueBody {
   /** The API URL to get the issue where the secret was detected. */
@@ -579,15 +532,6 @@ export interface SecretScanningLocationIssueBody {
   /** The GitHub URL for the issue where the secret was detected. */
   html_url?: string;
 }
-export const SecretScanningLocationIssueBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue_body_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationIssueBody",
-}) as any as S.Schema<SecretScanningLocationIssueBody>;
-
 /** Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue. */
 export interface SecretScanningLocationIssueComment {
   /** The API URL to get the issue comment where the secret was detected. */
@@ -595,54 +539,21 @@ export interface SecretScanningLocationIssueComment {
   /** The GitHub URL for the issue comment where the secret was detected. */
   html_url?: string;
 }
-export const SecretScanningLocationIssueComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue_comment_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationIssueComment",
-}) as any as S.Schema<SecretScanningLocationIssueComment>;
-
 /** Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion. */
 export interface SecretScanningLocationDiscussionTitle {
   /** The URL to the discussion where the secret was detected. */
   discussion_title_url: string;
 }
-export const SecretScanningLocationDiscussionTitle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discussion_title_url: S.String,
-  }),
-).annotate({
-  identifier: "SecretScanningLocationDiscussionTitle",
-}) as any as S.Schema<SecretScanningLocationDiscussionTitle>;
-
 /** Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion. */
 export interface SecretScanningLocationDiscussionBody {
   /** The URL to the discussion where the secret was detected. */
   discussion_body_url: string;
 }
-export const SecretScanningLocationDiscussionBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discussion_body_url: S.String,
-  }),
-).annotate({
-  identifier: "SecretScanningLocationDiscussionBody",
-}) as any as S.Schema<SecretScanningLocationDiscussionBody>;
-
 /** Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion. */
 export interface SecretScanningLocationDiscussionComment {
   /** The API URL to get the discussion comment where the secret was detected. */
   discussion_comment_url: string;
 }
-export const SecretScanningLocationDiscussionComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discussion_comment_url: S.String,
-  }),
-).annotate({
-  identifier: "SecretScanningLocationDiscussionComment",
-}) as any as S.Schema<SecretScanningLocationDiscussionComment>;
-
 /** Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request. */
 export interface SecretScanningLocationPullRequestTitle {
   /** The API URL to get the pull request where the secret was detected. */
@@ -650,15 +561,6 @@ export interface SecretScanningLocationPullRequestTitle {
   /** The GitHub URL for the pull request where the secret was detected. */
   html_url?: string;
 }
-export const SecretScanningLocationPullRequestTitle = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull_request_title_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationPullRequestTitle",
-}) as any as S.Schema<SecretScanningLocationPullRequestTitle>;
-
 /** Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request. */
 export interface SecretScanningLocationPullRequestBody {
   /** The API URL to get the pull request where the secret was detected. */
@@ -666,15 +568,6 @@ export interface SecretScanningLocationPullRequestBody {
   /** The GitHub URL for the pull request where the secret was detected. */
   html_url?: string;
 }
-export const SecretScanningLocationPullRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull_request_body_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationPullRequestBody",
-}) as any as S.Schema<SecretScanningLocationPullRequestBody>;
-
 /** Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request. */
 export interface SecretScanningLocationPullRequestComment {
   /** The API URL to get the pull request comment where the secret was detected. */
@@ -682,15 +575,6 @@ export interface SecretScanningLocationPullRequestComment {
   /** The GitHub URL for the pull request comment where the secret was detected. */
   html_url?: string;
 }
-export const SecretScanningLocationPullRequestComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull_request_comment_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationPullRequestComment",
-}) as any as S.Schema<SecretScanningLocationPullRequestComment>;
-
 /** Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request. */
 export interface SecretScanningLocationPullRequestReview {
   /** The API URL to get the pull request review where the secret was detected. */
@@ -698,15 +582,6 @@ export interface SecretScanningLocationPullRequestReview {
   /** The GitHub URL for the pull request review where the secret was detected. */
   html_url?: string;
 }
-export const SecretScanningLocationPullRequestReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull_request_review_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationPullRequestReview",
-}) as any as S.Schema<SecretScanningLocationPullRequestReview>;
-
 /** Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request. */
 export interface SecretScanningLocationPullRequestReviewComment {
   /** The API URL to get the pull request review comment where the secret was detected. */
@@ -714,15 +589,6 @@ export interface SecretScanningLocationPullRequestReviewComment {
   /** The GitHub URL for the pull request review comment where the secret was detected. */
   html_url?: string;
 }
-export const SecretScanningLocationPullRequestReviewComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull_request_review_comment_url: S.String,
-    html_url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretScanningLocationPullRequestReviewComment",
-}) as any as S.Schema<SecretScanningLocationPullRequestReviewComment>;
-
 /** Details on the location where the token was initially detected. This can be a commit, wiki commit, issue, discussion, pull request. */
 export type NullableSecretScanningFirstDetectedLocation =
   | SecretScanningLocationCommit
@@ -738,7 +604,7 @@ export type NullableSecretScanningFirstDetectedLocation =
   | SecretScanningLocationPullRequestComment
   | SecretScanningLocationPullRequestReview
   | SecretScanningLocationPullRequestReviewComment;
-export const NullableSecretScanningFirstDetectedLocation =
+const NullableSecretScanningFirstDetectedLocation =
   S.Unknown as any as S.Schema<NullableSecretScanningFirstDetectedLocation>;
 
 export interface SecretScanningAlertMetadataItem {
@@ -747,7 +613,7 @@ export interface SecretScanningAlertMetadataItem {
   /** The metadata value. */
   value: string;
 }
-export const SecretScanningAlertMetadataItem = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningAlertMetadataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -758,7 +624,7 @@ export const SecretScanningAlertMetadataItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of metadata key/value pairs associated with the secret scanning alert. */
 export type SecretScanningAlertMetadata = Array<SecretScanningAlertMetadataItem>;
-export const SecretScanningAlertMetadata = /*@__PURE__*/ S.Array(
+const SecretScanningAlertMetadata = /*@__PURE__*/ S.Array(
   SecretScanningAlertMetadataItem,
 ) as any as S.Schema<SecretScanningAlertMetadata>;
 
@@ -818,7 +684,7 @@ export interface SecretScanningAlertWithMetadata {
   closure_request_reviewer?: NullableSimpleUser | null;
   metadata?: SecretScanningAlertMetadata;
 }
-export const SecretScanningAlertWithMetadata = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningAlertWithMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.optional(S.Number),
     created_at: S.optional(S.String),
@@ -865,7 +731,7 @@ export interface GetScanHistoryRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetScanHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScanHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -885,7 +751,7 @@ export interface SecretScanningScan {
   /** The time that the scan was started. Empty if the scan is pending */
   started_at?: string | null;
 }
-export const SecretScanningScan = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningScan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     status: S.optional(S.String),
@@ -895,16 +761,16 @@ export const SecretScanningScan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretScanningScan" }) as any as S.Schema<SecretScanningScan>;
 
 export type SecretScanningScanHistoryIncrementalScansList = Array<SecretScanningScan>;
-export const SecretScanningScanHistoryIncrementalScansList = /*@__PURE__*/ S.Array(
+const SecretScanningScanHistoryIncrementalScansList = /*@__PURE__*/ S.Array(
   SecretScanningScan,
 ) as any as S.Schema<SecretScanningScanHistoryIncrementalScansList>;
 
 export type SecretScanningScanHistoryPatternUpdateScansList = Array<SecretScanningScan>;
-export const SecretScanningScanHistoryPatternUpdateScansList =
+const SecretScanningScanHistoryPatternUpdateScansList =
   SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryPatternUpdateScansList>;
 
 export type SecretScanningScanHistoryBackfillScansList = Array<SecretScanningScan>;
-export const SecretScanningScanHistoryBackfillScansList =
+const SecretScanningScanHistoryBackfillScansList =
   SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryBackfillScansList>;
 
 export interface SecretScanningScanHistoryCustomPatternBackfillScansItem {
@@ -921,7 +787,7 @@ export interface SecretScanningScanHistoryCustomPatternBackfillScansItem {
   /** Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise" */
   pattern_scope?: string;
 }
-export const SecretScanningScanHistoryCustomPatternBackfillScansItem = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningScanHistoryCustomPatternBackfillScansItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     status: S.optional(S.String),
@@ -936,12 +802,12 @@ export const SecretScanningScanHistoryCustomPatternBackfillScansItem = /*@__PURE
 
 export type SecretScanningScanHistoryCustomPatternBackfillScansList =
   Array<SecretScanningScanHistoryCustomPatternBackfillScansItem>;
-export const SecretScanningScanHistoryCustomPatternBackfillScansList = /*@__PURE__*/ S.Array(
+const SecretScanningScanHistoryCustomPatternBackfillScansList = /*@__PURE__*/ S.Array(
   SecretScanningScanHistoryCustomPatternBackfillScansItem,
 ) as any as S.Schema<SecretScanningScanHistoryCustomPatternBackfillScansList>;
 
 export type SecretScanningScanHistoryGenericSecretsBackfillScansList = Array<SecretScanningScan>;
-export const SecretScanningScanHistoryGenericSecretsBackfillScansList =
+const SecretScanningScanHistoryGenericSecretsBackfillScansList =
   SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryGenericSecretsBackfillScansList>;
 
 export interface SecretScanningScanHistory {
@@ -951,7 +817,7 @@ export interface SecretScanningScanHistory {
   custom_pattern_backfill_scans?: SecretScanningScanHistoryCustomPatternBackfillScansList;
   generic_secrets_backfill_scans?: SecretScanningScanHistoryGenericSecretsBackfillScansList;
 }
-export const SecretScanningScanHistory = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningScanHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incremental_scans: S.optional(SecretScanningScanHistoryIncrementalScansList),
     pattern_update_scans: S.optional(SecretScanningScanHistoryPatternUpdateScansList),
@@ -968,13 +834,13 @@ export const SecretScanningScanHistory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecretScanningScanHistory>;
 
 export type ListAlertsForOrgRequestState = "open" | "resolved";
-export const ListAlertsForOrgRequestState = S.String;
+const ListAlertsForOrgRequestState = S.String;
 
 export type ListAlertsForOrgRequestSort = "created" | "updated";
-export const ListAlertsForOrgRequestSort = S.String;
+const ListAlertsForOrgRequestSort = S.String;
 
 export type ListAlertsForOrgRequestDirection = "asc" | "desc";
-export const ListAlertsForOrgRequestDirection = S.String;
+const ListAlertsForOrgRequestDirection = S.String;
 
 export interface ListAlertsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1020,7 +886,7 @@ export interface ListAlertsForOrgRequest {
   /** Filters alerts to only those whose attached `owner_email` metadata field matches the provided value. The value must be the lowercase hex-encoded SHA-256 hash of the email address to match (for example, the SHA-256 of `user@example.com`). Only alerts that have an `owner_email` metadata value whose SHA-256 hash equals this parameter are returned. */
   owner_email_hash?: string;
 }
-export const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     state: S.optional(ListAlertsForOrgRequestState.pipe(T.Query())),
@@ -1048,8 +914,6 @@ export const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 /** A GitHub repository. */
 export interface SimpleRepository {
   /** A unique identifier of the repository. */
@@ -1144,7 +1008,7 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
-export const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
+const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1197,7 +1061,7 @@ export const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** The token status as of the latest validity check. */
 export type OrganizationSecretScanningAlertValidity = "active" | "inactive" | "unknown";
-export const OrganizationSecretScanningAlertValidity = S.String;
+const OrganizationSecretScanningAlertValidity = S.String;
 
 export interface OrganizationSecretScanningAlert {
   number?: number;
@@ -1255,7 +1119,7 @@ export interface OrganizationSecretScanningAlert {
   closure_request_reviewer_comment?: string | null;
   closure_request_reviewer?: NullableSimpleUser | null;
 }
-export const OrganizationSecretScanningAlert = /*@__PURE__*/ S.suspend(() =>
+const OrganizationSecretScanningAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.optional(S.Number),
     created_at: S.optional(S.String),
@@ -1297,23 +1161,23 @@ export const OrganizationSecretScanningAlert = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationSecretScanningAlert>;
 
 export type ListAlertsForOrgResponseBodyList = Array<OrganizationSecretScanningAlert>;
-export const ListAlertsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAlertsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationSecretScanningAlert,
 ) as any as S.Schema<ListAlertsForOrgResponseBodyList>;
 
 export type ListAlertsForOrgResponse = ListAlertsForOrgResponseBodyList;
-export const ListAlertsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListAlertsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListAlertsForOrgResponse" }) as any as S.Schema<ListAlertsForOrgResponse>;
 
 export type ListAlertsForRepoRequestState = "open" | "resolved";
-export const ListAlertsForRepoRequestState = S.String;
+const ListAlertsForRepoRequestState = S.String;
 
 export type ListAlertsForRepoRequestSort = "created" | "updated";
-export const ListAlertsForRepoRequestSort = S.String;
+const ListAlertsForRepoRequestSort = S.String;
 
 export type ListAlertsForRepoRequestDirection = "asc" | "desc";
-export const ListAlertsForRepoRequestDirection = S.String;
+const ListAlertsForRepoRequestDirection = S.String;
 
 export interface ListAlertsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1361,7 +1225,7 @@ export interface ListAlertsForRepoRequest {
   /** Filters alerts to only those whose attached `owner_email` metadata field matches the provided value. The value must be the lowercase hex-encoded SHA-256 hash of the email address to match (for example, the SHA-256 of `user@example.com`). Only alerts that have an `owner_email` metadata value whose SHA-256 hash equals this parameter are returned. */
   owner_email_hash?: string;
 }
-export const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1392,7 +1256,7 @@ export const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The token status as of the latest validity check. */
 export type SecretScanningAlertValidity = "active" | "inactive" | "unknown";
-export const SecretScanningAlertValidity = S.String;
+const SecretScanningAlertValidity = S.String;
 
 export interface SecretScanningAlert {
   number?: number;
@@ -1449,7 +1313,7 @@ export interface SecretScanningAlert {
   closure_request_reviewer_comment?: string | null;
   closure_request_reviewer?: NullableSimpleUser | null;
 }
-export const SecretScanningAlert = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.optional(S.Number),
     created_at: S.optional(S.String),
@@ -1488,12 +1352,12 @@ export const SecretScanningAlert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretScanningAlert" }) as any as S.Schema<SecretScanningAlert>;
 
 export type ListAlertsForRepoResponseBodyList = Array<SecretScanningAlert>;
-export const ListAlertsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAlertsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
   SecretScanningAlert,
 ) as any as S.Schema<ListAlertsForRepoResponseBodyList>;
 
 export type ListAlertsForRepoResponse = ListAlertsForRepoResponseBodyList;
-export const ListAlertsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   ListAlertsForRepoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAlertsForRepoResponse",
@@ -1511,7 +1375,7 @@ export interface ListLocationsForAlertRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListLocationsForAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsForAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1544,7 +1408,7 @@ export type SecretScanningLocationType =
   | "pull_request_comment"
   | "pull_request_review"
   | "pull_request_review_comment";
-export const SecretScanningLocationType = S.String;
+const SecretScanningLocationType = S.String;
 
 export type SecretScanningLocationDetails =
   | SecretScanningLocationCommit
@@ -1560,15 +1424,14 @@ export type SecretScanningLocationDetails =
   | SecretScanningLocationPullRequestComment
   | SecretScanningLocationPullRequestReview
   | SecretScanningLocationPullRequestReviewComment;
-export const SecretScanningLocationDetails =
-  S.Unknown as any as S.Schema<SecretScanningLocationDetails>;
+const SecretScanningLocationDetails = S.Unknown as any as S.Schema<SecretScanningLocationDetails>;
 
 export interface SecretScanningLocation {
   /** The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found. */
   type?: SecretScanningLocationType;
   details?: SecretScanningLocationDetails;
 }
-export const SecretScanningLocation = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(SecretScanningLocationType),
     details: S.optional(SecretScanningLocationDetails),
@@ -1577,28 +1440,28 @@ export const SecretScanningLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of locations where the secret was detected */
 export type ListLocationsForAlertResponseBodyList = Array<SecretScanningLocation>;
-export const ListLocationsForAlertResponseBodyList = /*@__PURE__*/ S.Array(
+const ListLocationsForAlertResponseBodyList = /*@__PURE__*/ S.Array(
   SecretScanningLocation,
 ) as any as S.Schema<ListLocationsForAlertResponseBodyList>;
 
 export type ListLocationsForAlertResponse = ListLocationsForAlertResponseBodyList;
-export const ListLocationsForAlertResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsForAlertResponse = /*@__PURE__*/ S.suspend(() =>
   ListLocationsForAlertResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListLocationsForAlertResponse",
 }) as any as S.Schema<ListLocationsForAlertResponse>;
 
 export type ListOrgCustomPatternsRequestState = "published" | "unpublished";
-export const ListOrgCustomPatternsRequestState = S.String;
+const ListOrgCustomPatternsRequestState = S.String;
 
 export type ListOrgCustomPatternsRequestPushProtection = "enabled" | "disabled";
-export const ListOrgCustomPatternsRequestPushProtection = S.String;
+const ListOrgCustomPatternsRequestPushProtection = S.String;
 
 export type ListOrgCustomPatternsRequestSort = "created" | "updated" | "name";
-export const ListOrgCustomPatternsRequestSort = S.String;
+const ListOrgCustomPatternsRequestSort = S.String;
 
 export type ListOrgCustomPatternsRequestDirection = "asc" | "desc";
-export const ListOrgCustomPatternsRequestDirection = S.String;
+const ListOrgCustomPatternsRequestDirection = S.String;
 
 export interface ListOrgCustomPatternsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1616,7 +1479,7 @@ export interface ListOrgCustomPatternsRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-export const ListOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     state: S.optional(ListOrgCustomPatternsRequestState.pipe(T.Query())),
@@ -1631,11 +1494,11 @@ export const ListOrgCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrgCustomPatternsRequest>;
 
 export type ListOrgCustomPatternsResponseBodyList = Array<SecretScanningCustomPattern>;
-export const ListOrgCustomPatternsResponseBodyList =
+const ListOrgCustomPatternsResponseBodyList =
   BulkCreateOrgCustomPatternsResponseCreatedPatternsList as any as S.Schema<ListOrgCustomPatternsResponseBodyList>;
 
 export type ListOrgCustomPatternsResponse = ListOrgCustomPatternsResponseBodyList;
-export const ListOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgCustomPatternsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrgCustomPatternsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrgCustomPatternsResponse",
@@ -1645,7 +1508,7 @@ export interface ListOrgPatternConfigsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const ListOrgPatternConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgPatternConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(
@@ -1657,15 +1520,15 @@ export const ListOrgPatternConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The default push protection setting for this pattern. */
 export type SecretScanningPatternOverrideDefaultSetting = "disabled" | "enabled";
-export const SecretScanningPatternOverrideDefaultSetting = S.String;
+const SecretScanningPatternOverrideDefaultSetting = S.String;
 
 /** The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise. */
 export type SecretScanningPatternOverrideEnterpriseSetting = "not-set" | "disabled" | "enabled";
-export const SecretScanningPatternOverrideEnterpriseSetting = S.String;
+const SecretScanningPatternOverrideEnterpriseSetting = S.String;
 
 /** The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting. */
 export type SecretScanningPatternOverrideSetting = "not-set" | "disabled" | "enabled";
-export const SecretScanningPatternOverrideSetting = S.String;
+const SecretScanningPatternOverrideSetting = S.String;
 
 export interface SecretScanningPatternOverride {
   /** The ID of the pattern. */
@@ -1693,7 +1556,7 @@ export interface SecretScanningPatternOverride {
   /** The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting. */
   setting?: SecretScanningPatternOverrideSetting;
 }
-export const SecretScanningPatternOverride = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningPatternOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_type: S.optional(S.String),
     custom_pattern_version: S.optional(S.NullOr(S.String)),
@@ -1715,14 +1578,14 @@ export const SecretScanningPatternOverride = /*@__PURE__*/ S.suspend(() =>
 /** Overrides for partner patterns. */
 export type SecretScanningPatternConfigurationProviderPatternOverridesList =
   Array<SecretScanningPatternOverride>;
-export const SecretScanningPatternConfigurationProviderPatternOverridesList = /*@__PURE__*/ S.Array(
+const SecretScanningPatternConfigurationProviderPatternOverridesList = /*@__PURE__*/ S.Array(
   SecretScanningPatternOverride,
 ) as any as S.Schema<SecretScanningPatternConfigurationProviderPatternOverridesList>;
 
 /** Overrides for custom patterns defined by the organization. */
 export type SecretScanningPatternConfigurationCustomPatternOverridesList =
   Array<SecretScanningPatternOverride>;
-export const SecretScanningPatternConfigurationCustomPatternOverridesList =
+const SecretScanningPatternConfigurationCustomPatternOverridesList =
   SecretScanningPatternConfigurationProviderPatternOverridesList as any as S.Schema<SecretScanningPatternConfigurationCustomPatternOverridesList>;
 
 /** A collection of secret scanning patterns and their settings related to push protection. */
@@ -1733,7 +1596,7 @@ export interface SecretScanningPatternConfiguration {
   /** Overrides for custom patterns defined by the organization. */
   custom_pattern_overrides?: SecretScanningPatternConfigurationCustomPatternOverridesList;
 }
-export const SecretScanningPatternConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SecretScanningPatternConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pattern_config_version: S.optional(S.NullOr(S.String)),
     provider_pattern_overrides: S.optional(
@@ -1748,16 +1611,16 @@ export const SecretScanningPatternConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecretScanningPatternConfiguration>;
 
 export type ListRepoCustomPatternsRequestState = "published" | "unpublished";
-export const ListRepoCustomPatternsRequestState = S.String;
+const ListRepoCustomPatternsRequestState = S.String;
 
 export type ListRepoCustomPatternsRequestPushProtection = "enabled" | "disabled";
-export const ListRepoCustomPatternsRequestPushProtection = S.String;
+const ListRepoCustomPatternsRequestPushProtection = S.String;
 
 export type ListRepoCustomPatternsRequestSort = "created" | "updated" | "name";
-export const ListRepoCustomPatternsRequestSort = S.String;
+const ListRepoCustomPatternsRequestSort = S.String;
 
 export type ListRepoCustomPatternsRequestDirection = "asc" | "desc";
-export const ListRepoCustomPatternsRequestDirection = S.String;
+const ListRepoCustomPatternsRequestDirection = S.String;
 
 export interface ListRepoCustomPatternsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1777,7 +1640,7 @@ export interface ListRepoCustomPatternsRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-export const ListRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1799,16 +1662,13 @@ export const ListRepoCustomPatternsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRepoCustomPatternsRequest>;
 
 export type ListRepoCustomPatternsResponseBodyList = Array<SecretScanningCustomPattern>;
-export const ListRepoCustomPatternsResponseBodyList =
-  BulkCreateOrgCustomPatternsResponseCreatedPatternsList as any as S.Schema<ListRepoCustomPatternsResponseBodyList>;
-
 export type ListRepoCustomPatternsResponse = ListRepoCustomPatternsResponseBodyList;
-export const ListRepoCustomPatternsResponse =
+const ListRepoCustomPatternsResponse =
   ListOrgCustomPatternsResponse as any as S.Schema<ListRepoCustomPatternsResponse>;
 
 /** Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override. */
 export type UpdateAlertRequestValidity = "active" | "inactive";
-export const UpdateAlertRequestValidity = S.String;
+const UpdateAlertRequestValidity = S.String;
 
 export interface UpdateAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1824,7 +1684,7 @@ export interface UpdateAlertRequest {
   /** Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override. */
   validity?: UpdateAlertRequestValidity | (string & {}) | null;
 }
-export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1845,12 +1705,12 @@ export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated list of regexes that the secret must match. */
 export type UpdateOrgCustomPatternRequestMustMatchList = Array<string>;
-export const UpdateOrgCustomPatternRequestMustMatchList =
+const UpdateOrgCustomPatternRequestMustMatchList =
   SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateOrgCustomPatternRequestMustMatchList>;
 
 /** Updated list of regexes that the secret must not match. */
 export type UpdateOrgCustomPatternRequestMustNotMatchList = Array<string>;
-export const UpdateOrgCustomPatternRequestMustNotMatchList =
+const UpdateOrgCustomPatternRequestMustNotMatchList =
   SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateOrgCustomPatternRequestMustNotMatchList>;
 
 export interface UpdateOrgCustomPatternRequest {
@@ -1870,7 +1730,7 @@ export interface UpdateOrgCustomPatternRequest {
   must_not_match?: UpdateOrgCustomPatternRequestMustNotMatchList;
   custom_pattern_version: string | null;
 }
-export const UpdateOrgCustomPatternRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgCustomPatternRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     pattern_id: S.Number.pipe(T.Label()),
@@ -1896,8 +1756,7 @@ export type UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtect
   | "not-set"
   | "disabled"
   | "enabled";
-export const UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting =
-  S.String;
+const UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting = S.String;
 
 export interface UpdateOrgPatternConfigsRequestProviderPatternSettingsItem {
   /** The ID of the pattern to configure. */
@@ -1907,14 +1766,13 @@ export interface UpdateOrgPatternConfigsRequestProviderPatternSettingsItem {
     | UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting
     | (string & {});
 }
-export const UpdateOrgPatternConfigsRequestProviderPatternSettingsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      token_type: S.optional(S.String),
-      push_protection_setting: S.optional(
-        UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting,
-      ),
-    }),
+const UpdateOrgPatternConfigsRequestProviderPatternSettingsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    token_type: S.optional(S.String),
+    push_protection_setting: S.optional(
+      UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting,
+    ),
+  }),
 ).annotate({
   identifier: "UpdateOrgPatternConfigsRequestProviderPatternSettingsItem",
 }) as any as S.Schema<UpdateOrgPatternConfigsRequestProviderPatternSettingsItem>;
@@ -1922,7 +1780,7 @@ export const UpdateOrgPatternConfigsRequestProviderPatternSettingsItem = /*@__PU
 /** Pattern settings for provider patterns. */
 export type UpdateOrgPatternConfigsRequestProviderPatternSettingsList =
   Array<UpdateOrgPatternConfigsRequestProviderPatternSettingsItem>;
-export const UpdateOrgPatternConfigsRequestProviderPatternSettingsList = /*@__PURE__*/ S.Array(
+const UpdateOrgPatternConfigsRequestProviderPatternSettingsList = /*@__PURE__*/ S.Array(
   UpdateOrgPatternConfigsRequestProviderPatternSettingsItem,
 ) as any as S.Schema<UpdateOrgPatternConfigsRequestProviderPatternSettingsList>;
 
@@ -1930,8 +1788,7 @@ export const UpdateOrgPatternConfigsRequestProviderPatternSettingsList = /*@__PU
 export type UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting =
   | "disabled"
   | "enabled";
-export const UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting =
-  S.String;
+const UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting = S.String;
 
 export interface UpdateOrgPatternConfigsRequestCustomPatternSettingsItem {
   /** The ID of the pattern to configure. */
@@ -1942,7 +1799,7 @@ export interface UpdateOrgPatternConfigsRequestCustomPatternSettingsItem {
     | UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting
     | (string & {});
 }
-export const UpdateOrgPatternConfigsRequestCustomPatternSettingsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgPatternConfigsRequestCustomPatternSettingsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_type: S.optional(S.String),
     custom_pattern_version: S.optional(S.NullOr(S.String)),
@@ -1957,7 +1814,7 @@ export const UpdateOrgPatternConfigsRequestCustomPatternSettingsItem = /*@__PURE
 /** Pattern settings for custom patterns. */
 export type UpdateOrgPatternConfigsRequestCustomPatternSettingsList =
   Array<UpdateOrgPatternConfigsRequestCustomPatternSettingsItem>;
-export const UpdateOrgPatternConfigsRequestCustomPatternSettingsList = /*@__PURE__*/ S.Array(
+const UpdateOrgPatternConfigsRequestCustomPatternSettingsList = /*@__PURE__*/ S.Array(
   UpdateOrgPatternConfigsRequestCustomPatternSettingsItem,
 ) as any as S.Schema<UpdateOrgPatternConfigsRequestCustomPatternSettingsList>;
 
@@ -1970,7 +1827,7 @@ export interface UpdateOrgPatternConfigsRequest {
   /** Pattern settings for custom patterns. */
   custom_pattern_settings?: UpdateOrgPatternConfigsRequestCustomPatternSettingsList;
 }
-export const UpdateOrgPatternConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgPatternConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     pattern_config_version: S.optional(S.NullOr(S.String)),
@@ -1993,7 +1850,7 @@ export interface UpdateOrgPatternConfigsResponse {
   /** The updated pattern configuration version. */
   pattern_config_version?: string;
 }
-export const UpdateOrgPatternConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgPatternConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pattern_config_version: S.optional(S.String),
   }),
@@ -2003,12 +1860,12 @@ export const UpdateOrgPatternConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated list of regexes that the secret must match. */
 export type UpdateRepoCustomPatternRequestMustMatchList = Array<string>;
-export const UpdateRepoCustomPatternRequestMustMatchList =
+const UpdateRepoCustomPatternRequestMustMatchList =
   SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateRepoCustomPatternRequestMustMatchList>;
 
 /** Updated list of regexes that the secret must not match. */
 export type UpdateRepoCustomPatternRequestMustNotMatchList = Array<string>;
-export const UpdateRepoCustomPatternRequestMustNotMatchList =
+const UpdateRepoCustomPatternRequestMustNotMatchList =
   SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateRepoCustomPatternRequestMustNotMatchList>;
 
 export interface UpdateRepoCustomPatternRequest {
@@ -2030,7 +1887,7 @@ export interface UpdateRepoCustomPatternRequest {
   must_not_match?: UpdateRepoCustomPatternRequestMustNotMatchList;
   custom_pattern_version: string | null;
 }
-export const UpdateRepoCustomPatternRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepoCustomPatternRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),

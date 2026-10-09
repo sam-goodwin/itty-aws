@@ -114,7 +114,7 @@ export interface AclEntry {
   /** Required. The operation type. Allowed values are (case insensitive): ALL, READ, WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS, ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols for valid combinations of resource_type and operation for different Kafka API requests. */
   operation?: string;
 }
-export const AclEntry = /*@__PURE__*/ S.suspend(() =>
+const AclEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     principal: S.optional(S.String),
@@ -129,7 +129,7 @@ export interface AddAclEntryProjectsLocationsClustersAclsRequest {
   /** Request body */
   body?: AclEntry;
 }
-export const AddAclEntryProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddAclEntryProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.String.pipe(T.Label()),
     body: S.optional(AclEntry.pipe(T.HttpBody())),
@@ -145,7 +145,7 @@ export const AddAclEntryProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>;
 
 export type AclEntryList = Array<AclEntry>;
-export const AclEntryList = /*@__PURE__*/ S.Array(AclEntry) as any as S.Schema<AclEntryList>;
+const AclEntryList = /*@__PURE__*/ S.Array(AclEntry) as any as S.Schema<AclEntryList>;
 
 /** Represents the set of ACLs for a given Kafka Resource Pattern, which consists of resource_type, resource_name and pattern_type. */
 export interface Acl {
@@ -162,7 +162,7 @@ export interface Acl {
   /** Output only. The ACL resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID. */
   resourceType?: string;
 }
-export const Acl = /*@__PURE__*/ S.suspend(() =>
+const Acl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     patternType: S.optional(S.String),
     aclEntries: S.optional(AclEntryList),
@@ -180,7 +180,7 @@ export interface AddAclEntryResponse {
   /** The updated acl. */
   acl?: Acl;
 }
-export const AddAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
+const AddAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclCreated: S.optional(S.Boolean),
     acl: S.optional(Acl),
@@ -189,7 +189,7 @@ export const AddAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -199,7 +199,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -216,14 +216,14 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type CheckCompatibilityRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
   | "PROTOBUF";
-export const CheckCompatibilityRequestSchemaTypeEnum = S.String;
+const CheckCompatibilityRequestSchemaTypeEnum = S.String;
 
 /** SchemaReference is a reference to a schema. */
 export interface SchemaReference {
@@ -234,7 +234,7 @@ export interface SchemaReference {
   /** Required. The version of the reference. */
   version?: number;
 }
-export const SchemaReference = /*@__PURE__*/ S.suspend(() =>
+const SchemaReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     subject: S.optional(S.String),
@@ -243,7 +243,7 @@ export const SchemaReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaReference" }) as any as S.Schema<SchemaReference>;
 
 export type SchemaReferenceList = Array<SchemaReference>;
-export const SchemaReferenceList = /*@__PURE__*/ S.Array(
+const SchemaReferenceList = /*@__PURE__*/ S.Array(
   SchemaReference,
 ) as any as S.Schema<SchemaReferenceList>;
 
@@ -258,7 +258,7 @@ export interface CheckCompatibilityRequest {
   /** Optional. The schema references used by the schema. */
   references?: SchemaReferenceList;
 }
-export const CheckCompatibilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckCompatibilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verbose: S.optional(S.Boolean),
     schema: S.optional(S.String),
@@ -275,7 +275,7 @@ export interface CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilit
   /** Request body */
   body?: CheckCompatibilityRequest;
 }
-export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest =
+const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -292,7 +292,7 @@ export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityReq
   }) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Response for CheckCompatibility. */
 export interface CheckCompatibilityResponse {
@@ -301,7 +301,7 @@ export interface CheckCompatibilityResponse {
   /** Failure reasons if verbose = true. */
   messages?: StringList;
 }
-export const CheckCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_compatible: S.optional(S.Boolean),
     messages: S.optional(StringList),
@@ -316,7 +316,7 @@ export interface CheckCompatibilityProjectsLocationsSchemaRegistriesContextsComp
   /** Request body */
   body?: CheckCompatibilityRequest;
 }
-export const CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest =
+const CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -336,14 +336,14 @@ export type RebalanceConfigModeEnum =
   | "MODE_UNSPECIFIED"
   | "NO_REBALANCE"
   | "AUTO_REBALANCE_ON_SCALE_UP";
-export const RebalanceConfigModeEnum = S.String;
+const RebalanceConfigModeEnum = S.String;
 
 /** Defines rebalancing behavior of a Kafka cluster. */
 export interface RebalanceConfig {
   /** Optional. The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. */
   mode?: RebalanceConfigModeEnum | (string & {});
 }
-export const RebalanceConfig = /*@__PURE__*/ S.suspend(() =>
+const RebalanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(RebalanceConfigModeEnum),
   }),
@@ -356,7 +356,7 @@ export interface EffectiveCapacityConfig {
   /** Output only. The disk assigned to each broker in Gibibytes. */
   brokerDiskSizeGib?: string;
 }
-export const EffectiveCapacityConfig = /*@__PURE__*/ S.suspend(() =>
+const EffectiveCapacityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brokerCount: S.optional(S.String),
     brokerDiskSizeGib: S.optional(S.String),
@@ -368,7 +368,7 @@ export interface BrokerCapacityConfig {
   /** Optional. The disk to provision for each broker in Gibibytes. Minimum: 100 GiB. */
   diskSizeGib?: string;
 }
-export const BrokerCapacityConfig = /*@__PURE__*/ S.suspend(() =>
+const BrokerCapacityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskSizeGib: S.optional(S.String),
   }),
@@ -381,7 +381,7 @@ export interface CapacityConfig {
   /** Required. The number of vCPUs to provision for the cluster. Minimum: 3. */
   vcpuCount?: string;
 }
-export const CapacityConfig = /*@__PURE__*/ S.suspend(() =>
+const CapacityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryBytes: S.optional(S.String),
     vcpuCount: S.optional(S.String),
@@ -394,14 +394,14 @@ export type ClusterStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "UPDATING";
-export const ClusterStateEnum = S.String;
+const ClusterStateEnum = S.String;
 
 /** A configuration for the Google Certificate Authority Service. */
 export interface CertificateAuthorityServiceConfig {
   /** Required. The name of the CA pool to pull CA certificates from. Structured like: projects/{project}/locations/{location}/caPools/{ca_pool}. The CA pool does not need to be in the same project or location as the Kafka cluster. */
   caPool?: string;
 }
-export const CertificateAuthorityServiceConfig = /*@__PURE__*/ S.suspend(() =>
+const CertificateAuthorityServiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caPool: S.optional(S.String),
   }),
@@ -410,7 +410,7 @@ export const CertificateAuthorityServiceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateAuthorityServiceConfig>;
 
 export type CertificateAuthorityServiceConfigList = Array<CertificateAuthorityServiceConfig>;
-export const CertificateAuthorityServiceConfigList = /*@__PURE__*/ S.Array(
+const CertificateAuthorityServiceConfigList = /*@__PURE__*/ S.Array(
   CertificateAuthorityServiceConfig,
 ) as any as S.Schema<CertificateAuthorityServiceConfigList>;
 
@@ -419,7 +419,7 @@ export interface TrustConfig {
   /** Optional. Configuration for the Google Certificate Authority Service. Maximum 10. */
   casConfigs?: CertificateAuthorityServiceConfigList;
 }
-export const TrustConfig = /*@__PURE__*/ S.suspend(() =>
+const TrustConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     casConfigs: S.optional(CertificateAuthorityServiceConfigList),
   }),
@@ -432,7 +432,7 @@ export interface TlsConfig {
   /** Optional. The configuration of the broker truststore. If specified, clients can use mTLS for authentication. */
   trustConfig?: TrustConfig;
 }
-export const TlsConfig = /*@__PURE__*/ S.suspend(() =>
+const TlsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sslPrincipalMappingRules: S.optional(S.String),
     trustConfig: S.optional(TrustConfig),
@@ -440,21 +440,21 @@ export const TlsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TlsConfig" }) as any as S.Schema<TlsConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The configuration of a Virtual Private Cloud (VPC) network that can access the Kafka cluster. */
 export interface NetworkConfig {
   /** Required. Name of the VPC subnet in which to create Private Service Connect (PSC) endpoints for the Kafka brokers and bootstrap address. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} The subnet must be located in the same region as the Kafka cluster. The project may differ. Multiple subnets from the same parent network must not be specified. */
   subnet?: string;
 }
-export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnet: S.optional(S.String),
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
 export type NetworkConfigList = Array<NetworkConfig>;
-export const NetworkConfigList = /*@__PURE__*/ S.Array(
+const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
 
@@ -463,7 +463,7 @@ export interface PublicClusterConfig {
   /** Required. The list of IPv4 ranges in CIDR notation that are allowed to connect to the public Kafka broker endpoints. The Kafka cluster should only be exposed to trusted external ranges. A maximum of 500 IP ranges can be specified and no single range can be larger than a `/16`. This field is required if PublicClusterConfig is specified. */
   allowedSourceIpRanges?: StringList;
 }
-export const PublicClusterConfig = /*@__PURE__*/ S.suspend(() =>
+const PublicClusterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedSourceIpRanges: S.optional(StringList),
   }),
@@ -476,7 +476,7 @@ export interface AccessConfig {
   /** Optional. The configuration for public connectivity to the Kafka cluster. */
   publicClusterConfig?: PublicClusterConfig;
 }
-export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
+const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkConfigs: S.optional(NetworkConfigList),
     publicClusterConfig: S.optional(PublicClusterConfig),
@@ -490,7 +490,7 @@ export interface GcpConfig {
   /** Required. Access configuration for the Kafka cluster. */
   accessConfig?: AccessConfig;
 }
-export const GcpConfig = /*@__PURE__*/ S.suspend(() =>
+const GcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKey: S.optional(S.String),
     accessConfig: S.optional(AccessConfig),
@@ -506,7 +506,7 @@ export interface BrokerDetails {
   /** Output only. The index of the broker. */
   brokerIndex?: string;
 }
-export const BrokerDetails = /*@__PURE__*/ S.suspend(() =>
+const BrokerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rack: S.optional(S.String),
     nodeId: S.optional(S.String),
@@ -515,7 +515,7 @@ export const BrokerDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BrokerDetails" }) as any as S.Schema<BrokerDetails>;
 
 export type BrokerDetailsList = Array<BrokerDetails>;
-export const BrokerDetailsList = /*@__PURE__*/ S.Array(
+const BrokerDetailsList = /*@__PURE__*/ S.Array(
   BrokerDetails,
 ) as any as S.Schema<BrokerDetailsList>;
 
@@ -524,7 +524,7 @@ export interface UpdateOptions {
   /** Optional. If true, allows an update operation that increases the total vCPU and/or memory allocation of the cluster to significantly decrease the per-broker vCPU and/or memory allocation. This can result in reduced performance and availability. By default, the update operation will fail if an upscale request results in a vCPU or memory allocation for the brokers that is smaller than 90% of the current broker size. */
   allowBrokerDownscaleOnClusterUpscale?: boolean;
 }
-export const UpdateOptions = /*@__PURE__*/ S.suspend(() =>
+const UpdateOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowBrokerDownscaleOnClusterUpscale: S.optional(S.Boolean),
   }),
@@ -537,7 +537,7 @@ export interface PublicClusterDetails {
   /** Output only. All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster. external_ip_address can be added to this list if the cluster is scaled up. */
   externalIpAddresses?: StringList;
 }
-export const PublicClusterDetails = /*@__PURE__*/ S.suspend(() =>
+const PublicClusterDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryDnsRecords: S.optional(StringList),
     externalIpAddresses: S.optional(StringList),
@@ -583,7 +583,7 @@ export interface Cluster {
   /** Output only. Details of the public cluster feature for the Kafka cluster. */
   publicClusterDetails?: PublicClusterDetails;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
+const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     satisfiesPzs: S.optional(S.Boolean),
@@ -616,7 +616,7 @@ export interface CreateProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     clusterId: S.optional(S.String.pipe(T.Query())),
@@ -634,15 +634,10 @@ export const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -653,7 +648,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     message: S.optional(S.String),
@@ -674,7 +669,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     response: S.optional(DocumentMap),
@@ -692,7 +687,7 @@ export interface CreateProjectsLocationsClustersAclsRequest {
   /** Request body */
   body?: Acl;
 }
-export const CreateProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -719,7 +714,7 @@ export interface Topic {
   /** Optional. Configurations for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy`, `compression.type`. */
   configs?: StringMap;
 }
-export const Topic = /*@__PURE__*/ S.suspend(() =>
+const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     partitionCount: S.optional(S.Number),
@@ -736,7 +731,7 @@ export interface CreateProjectsLocationsClustersTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-export const CreateProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     topicId: S.optional(S.String.pipe(T.Query())),
@@ -761,7 +756,7 @@ export interface ConnectNetworkConfig {
   /** Optional. Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog */
   dnsDomainNames?: StringList;
 }
-export const ConnectNetworkConfig = /*@__PURE__*/ S.suspend(() =>
+const ConnectNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primarySubnet: S.optional(S.String),
     additionalSubnets: S.optional(StringList),
@@ -770,7 +765,7 @@ export const ConnectNetworkConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectNetworkConfig" }) as any as S.Schema<ConnectNetworkConfig>;
 
 export type ConnectNetworkConfigList = Array<ConnectNetworkConfig>;
-export const ConnectNetworkConfigList = /*@__PURE__*/ S.Array(
+const ConnectNetworkConfigList = /*@__PURE__*/ S.Array(
   ConnectNetworkConfig,
 ) as any as S.Schema<ConnectNetworkConfigList>;
 
@@ -779,7 +774,7 @@ export interface ConnectAccessConfig {
   /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka Connect cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
   networkConfigs?: ConnectNetworkConfigList;
 }
-export const ConnectAccessConfig = /*@__PURE__*/ S.suspend(() =>
+const ConnectAccessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkConfigs: S.optional(ConnectNetworkConfigList),
   }),
@@ -792,7 +787,7 @@ export interface ConnectGcpConfig {
   /** Required. Access configuration for the Kafka Connect cluster. */
   accessConfig?: ConnectAccessConfig;
 }
-export const ConnectGcpConfig = /*@__PURE__*/ S.suspend(() =>
+const ConnectGcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretPaths: S.optional(StringList),
     accessConfig: S.optional(ConnectAccessConfig),
@@ -805,7 +800,7 @@ export type ConnectClusterStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "DETACHED";
-export const ConnectClusterStateEnum = S.String;
+const ConnectClusterStateEnum = S.String;
 
 /** An Apache Kafka Connect cluster deployed in a location. */
 export interface ConnectCluster {
@@ -832,7 +827,7 @@ export interface ConnectCluster {
   /** Output only. The current state of the Kafka Connect cluster. */
   state?: ConnectClusterStateEnum | (string & {});
 }
-export const ConnectCluster = /*@__PURE__*/ S.suspend(() =>
+const ConnectCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacityConfig: S.optional(CapacityConfig),
     satisfiesPzi: S.optional(S.Boolean),
@@ -858,7 +853,7 @@ export interface CreateProjectsLocationsConnectClustersRequest {
   /** Request body */
   body?: ConnectCluster;
 }
-export const CreateProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     connectClusterId: S.optional(S.String.pipe(T.Query())),
@@ -884,7 +879,7 @@ export interface TaskRetryPolicy {
   /** Optional. If true, task retry is disabled. */
   taskRetryDisabled?: boolean;
 }
-export const TaskRetryPolicy = /*@__PURE__*/ S.suspend(() =>
+const TaskRetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumBackoff: S.optional(S.String),
     maximumBackoff: S.optional(S.String),
@@ -900,7 +895,7 @@ export type ConnectorStateEnum =
   | "FAILED"
   | "RESTARTING"
   | "STOPPED";
-export const ConnectorStateEnum = S.String;
+const ConnectorStateEnum = S.String;
 
 /** A Kafka Connect connector in a given ConnectCluster. */
 export interface Connector {
@@ -913,7 +908,7 @@ export interface Connector {
   /** Optional. Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`. */
   configs?: StringMap;
 }
-export const Connector = /*@__PURE__*/ S.suspend(() =>
+const Connector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskRestartPolicy: S.optional(TaskRetryPolicy),
     name: S.optional(S.String),
@@ -930,7 +925,7 @@ export interface CreateProjectsLocationsConnectClustersConnectorsRequest {
   /** Request body */
   body?: Connector;
 }
-export const CreateProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -953,7 +948,7 @@ export interface SchemaRegistry {
   /** Identifier. The name of the schema registry instance. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` The instance name {schema_registry} can contain the following: * Up to 255 characters. * Letters (uppercase or lowercase), numbers, and underscores. */
   name?: string;
 }
-export const SchemaRegistry = /*@__PURE__*/ S.suspend(() =>
+const SchemaRegistry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contexts: S.optional(StringList),
     name: S.optional(S.String),
@@ -967,7 +962,7 @@ export interface CreateSchemaRegistryRequest {
   /** Required. The schema registry instance to create. The name field is ignored. */
   schemaRegistry?: SchemaRegistry;
 }
-export const CreateSchemaRegistryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSchemaRegistryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaRegistryId: S.optional(S.String),
     schemaRegistry: S.optional(SchemaRegistry),
@@ -982,7 +977,7 @@ export interface CreateProjectsLocationsSchemaRegistriesRequest {
   /** Request body */
   body?: CreateSchemaRegistryRequest;
 }
-export const CreateProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateSchemaRegistryRequest.pipe(T.HttpBody())),
@@ -1002,7 +997,7 @@ export type CreateVersionRequestSchemaTypeEnum =
   | "AVRO"
   | "JSON"
   | "PROTOBUF";
-export const CreateVersionRequestSchemaTypeEnum = S.String;
+const CreateVersionRequestSchemaTypeEnum = S.String;
 
 /** Request for CreateVersion. */
 export interface CreateVersionRequest {
@@ -1019,7 +1014,7 @@ export interface CreateVersionRequest {
   /** Optional. The schema references used by the schema. */
   references?: SchemaReferenceList;
 }
-export const CreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaType: S.optional(CreateVersionRequestSchemaTypeEnum),
     version: S.optional(S.Number),
@@ -1036,7 +1031,7 @@ export interface CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersions
   /** Request body */
   body?: CreateVersionRequest;
 }
-export const CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
+const CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -1057,7 +1052,7 @@ export interface CreateVersionResponse {
   /** The unique identifier of the schema created. */
   id?: number;
 }
-export const CreateVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
   }),
@@ -1069,21 +1064,20 @@ export interface CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest 
   /** Request body */
   body?: CreateVersionRequest;
 }
-export const CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateVersionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/versions",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
+const CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateVersionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/versions",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
+}) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
 
 export interface DeleteProjectsLocationsClustersRequest {
   /** Required. The name of the cluster to delete. */
@@ -1091,7 +1085,7 @@ export interface DeleteProjectsLocationsClustersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1110,7 +1104,7 @@ export interface DeleteProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to delete. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
   name: string;
 }
-export const DeleteProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1128,7 +1122,7 @@ export interface DeleteProjectsLocationsClustersConsumerGroupsRequest {
   /** Required. The name of the consumer group to delete. `projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumerGroup}`. */
   name: string;
 }
-export const DeleteProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1146,7 +1140,7 @@ export interface DeleteProjectsLocationsClustersTopicsRequest {
   /** Required. The name of the topic to delete. `projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic}`. */
   name: string;
 }
-export const DeleteProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1166,7 +1160,7 @@ export interface DeleteProjectsLocationsConnectClustersRequest {
   /** Required. The name of the Kafka Connect cluster to delete. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
   name: string;
 }
-export const DeleteProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1185,7 +1179,7 @@ export interface DeleteProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector to delete. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
 }
-export const DeleteProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1203,7 +1197,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1221,7 +1215,7 @@ export interface DeleteProjectsLocationsSchemaRegistriesRequest {
   /** Required. The name of the schema registry instance to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   name: string;
 }
-export const DeleteProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1239,7 +1233,7 @@ export interface DeleteProjectsLocationsSchemaRegistriesConfigRequest {
   /** Required. The resource name of subject to delete the config for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject} */
   name: string;
 }
-export const DeleteProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1261,7 +1255,7 @@ export type SchemaConfigCompatibilityEnum =
   | "FORWARD_TRANSITIVE"
   | "FULL"
   | "FULL_TRANSITIVE";
-export const SchemaConfigCompatibilityEnum = S.String;
+const SchemaConfigCompatibilityEnum = S.String;
 
 /** SchemaConfig represents configuration for a schema registry or a specific subject. */
 export interface SchemaConfig {
@@ -1272,7 +1266,7 @@ export interface SchemaConfig {
   /** Optional. If true, the schema will be normalized before being stored or looked up. The default is false. If unset in a SchemaSubject-level SchemaConfig, the global value will be used. If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value. */
   normalize?: boolean;
 }
-export const SchemaConfig = /*@__PURE__*/ S.suspend(() =>
+const SchemaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compatibility: S.optional(SchemaConfigCompatibilityEnum),
     alias: S.optional(S.String),
@@ -1284,17 +1278,16 @@ export interface DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest {
   /** Required. The resource name of subject to delete the config for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject} */
   name: string;
 }
-export const DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest",
 }) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest>;
@@ -1303,30 +1296,27 @@ export interface DeleteProjectsLocationsSchemaRegistriesContextsModeRequest {
   /** Required. The resource name of subject to delete the mode for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject} */
   name: string;
 }
-export const DeleteProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsSchemaRegistriesContextsModeRequest",
 }) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsModeRequest>;
 
 export type SchemaModeModeEnum = "NONE" | "READONLY" | "READWRITE" | "IMPORT";
-export const SchemaModeModeEnum = S.String;
-
 /** SchemaMode represents the mode of a schema registry or a specific subject. Four modes are supported: * NONE: deprecated. This was the default mode for a subject, but now the default is unset (which means use the global schema registry setting) * READONLY: The schema registry is in read-only mode. * READWRITE: The schema registry is in read-write mode, which allows limited write operations on the schema. * IMPORT: The schema registry is in import mode, which allows more editing operations on the schema for data importing purposes. */
 export interface SchemaMode {
   /** Required. The mode type of a schema registry (READWRITE by default) or of a subject (unset by default, which means use the global schema registry setting). */
   mode?: SchemaModeModeEnum;
 }
-export const SchemaMode = RebalanceConfig as any as S.Schema<SchemaMode>;
+const SchemaMode = RebalanceConfig as any as S.Schema<SchemaMode>;
 
 export interface DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Optional. If true, the subject and all associated metadata including the schema ID will be deleted permanently. Otherwise, only the subject is soft-deleted. The default is false. Soft-deleted subjects can still be searched in ListSubjects API call with deleted=true query parameter. A soft-delete of a subject must be performed before a hard-delete. */
@@ -1334,21 +1324,20 @@ export interface DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest 
   /** Required. The name of the subject to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   name: string;
 }
-export const DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      permanent: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest>;
+const DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permanent: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
@@ -1359,7 +1348,7 @@ export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
-export const HttpBody = /*@__PURE__*/ S.suspend(() =>
+const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     extensions: S.optional(DocumentMapList),
@@ -1373,7 +1362,7 @@ export interface DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersions
   /** Required. The name of the subject version to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   name: string;
 }
-export const DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
+const DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       permanent: S.optional(S.Boolean.pipe(T.Query())),
@@ -1393,7 +1382,7 @@ export interface DeleteProjectsLocationsSchemaRegistriesModeRequest {
   /** Required. The resource name of subject to delete the mode for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject} */
   name: string;
 }
-export const DeleteProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1413,7 +1402,7 @@ export interface DeleteProjectsLocationsSchemaRegistriesSubjectsRequest {
   /** Optional. If true, the subject and all associated metadata including the schema ID will be deleted permanently. Otherwise, only the subject is soft-deleted. The default is false. Soft-deleted subjects can still be searched in ListSubjects API call with deleted=true query parameter. A soft-delete of a subject must be performed before a hard-delete. */
   permanent?: boolean;
 }
-export const DeleteProjectsLocationsSchemaRegistriesSubjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSchemaRegistriesSubjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     permanent: S.optional(S.Boolean.pipe(T.Query())),
@@ -1434,27 +1423,26 @@ export interface DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest 
   /** Optional. If true, both the version and the referenced schema ID will be permanently deleted. The default is false. If false, the version will be deleted but the schema ID will be retained. Soft-deleted versions can still be searched in ListVersions API call with deleted=true query parameter. A soft-delete of a version must be performed before a hard-delete. */
   permanent?: boolean;
 }
-export const DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      permanent: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
+const DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    permanent: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1477,7 +1465,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -1491,7 +1479,7 @@ export type GetProjectsLocationsClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "CLUSTER_VIEW_BASIC"
   | "CLUSTER_VIEW_FULL";
-export const GetProjectsLocationsClustersViewEnum = S.String;
+const GetProjectsLocationsClustersViewEnum = S.String;
 
 export interface GetProjectsLocationsClustersRequest {
   /** Required. The name of the cluster whose configuration to return. */
@@ -1499,7 +1487,7 @@ export interface GetProjectsLocationsClustersRequest {
   /** Optional. Specifies the view of the Cluster resource to be returned. Defaults to CLUSTER_VIEW_BASIC. See the ClusterView enum for possible values. */
   view?: GetProjectsLocationsClustersViewEnum | (string & {});
 }
-export const GetProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsClustersViewEnum.pipe(T.Query())),
@@ -1514,7 +1502,7 @@ export interface GetProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to return. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
   name: string;
 }
-export const GetProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1528,7 +1516,7 @@ export interface GetProjectsLocationsClustersConsumerGroupsRequest {
   /** Required. The name of the consumer group whose configuration to return. `projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumerGroup}`. */
   name: string;
 }
-export const GetProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1545,7 +1533,7 @@ export interface ConsumerPartitionMetadata {
   /** Optional. The associated metadata for this partition, or empty if it does not exist. */
   metadata?: string;
 }
-export const ConsumerPartitionMetadata = /*@__PURE__*/ S.suspend(() =>
+const ConsumerPartitionMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.String),
     metadata: S.optional(S.String),
@@ -1555,7 +1543,7 @@ export const ConsumerPartitionMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumerPartitionMetadata>;
 
 export type ConsumerPartitionMetadataMap = { [key: string]: ConsumerPartitionMetadata | undefined };
-export const ConsumerPartitionMetadataMap = /*@__PURE__*/ S.Record(
+const ConsumerPartitionMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   ConsumerPartitionMetadata,
 ) as any as S.Schema<ConsumerPartitionMetadataMap>;
@@ -1565,14 +1553,14 @@ export interface ConsumerTopicMetadata {
   /** Optional. Metadata for this consumer group and topic for all partition indexes it has metadata for. */
   partitions?: ConsumerPartitionMetadataMap;
 }
-export const ConsumerTopicMetadata = /*@__PURE__*/ S.suspend(() =>
+const ConsumerTopicMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitions: S.optional(ConsumerPartitionMetadataMap),
   }),
 ).annotate({ identifier: "ConsumerTopicMetadata" }) as any as S.Schema<ConsumerTopicMetadata>;
 
 export type ConsumerTopicMetadataMap = { [key: string]: ConsumerTopicMetadata | undefined };
-export const ConsumerTopicMetadataMap = /*@__PURE__*/ S.Record(
+const ConsumerTopicMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   ConsumerTopicMetadata,
 ) as any as S.Schema<ConsumerTopicMetadataMap>;
@@ -1584,7 +1572,7 @@ export interface ConsumerGroup {
   /** Identifier. The name of the consumer group. The `consumer_group` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumer_group} */
   name?: string;
 }
-export const ConsumerGroup = /*@__PURE__*/ S.suspend(() =>
+const ConsumerGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topics: S.optional(ConsumerTopicMetadataMap),
     name: S.optional(S.String),
@@ -1595,7 +1583,7 @@ export interface GetProjectsLocationsClustersTopicsRequest {
   /** Required. The name of the topic whose configuration to return. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic}. */
   name: string;
 }
-export const GetProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1609,7 +1597,7 @@ export interface GetProjectsLocationsConnectClustersRequest {
   /** Required. The name of the Kafka Connect cluster whose configuration to return. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
   name: string;
 }
-export const GetProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1623,7 +1611,7 @@ export interface GetProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector whose configuration to return. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
 }
-export const GetProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1637,7 +1625,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1651,7 +1639,7 @@ export interface GetProjectsLocationsSchemaRegistriesRequest {
   /** Required. The name of the schema registry instance to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1667,7 +1655,7 @@ export interface GetProjectsLocationsSchemaRegistriesConfigRequest {
   /** Required. The resource name to get the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get config for a specific subject. */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultToGlobal: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1682,7 +1670,7 @@ export interface GetProjectsLocationsSchemaRegistriesContextsRequest {
   /** Required. The name of the context to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSchemaRegistriesContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1699,7 +1687,7 @@ export interface Context {
   /** Identifier. The name of the context. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` The context name {context} can contain the following: * Up to 255 characters. * Allowed characters: letters (uppercase or lowercase), numbers, and the following special characters: `.`, `-`, `_`, `+`, `%`, and `~`. */
   name?: string;
 }
-export const Context = /*@__PURE__*/ S.suspend(() =>
+const Context = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjects: S.optional(StringList),
     name: S.optional(S.String),
@@ -1712,14 +1700,13 @@ export interface GetProjectsLocationsSchemaRegistriesContextsConfigRequest {
   /** Required. The resource name to get the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get config for a specific subject. */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      defaultToGlobal: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
-    ),
+const GetProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultToGlobal: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsSchemaRegistriesContextsConfigRequest",
 }) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsConfigRequest>;
@@ -1728,7 +1715,7 @@ export interface GetProjectsLocationsSchemaRegistriesContextsModeRequest {
   /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1744,14 +1731,13 @@ export interface GetProjectsLocationsSchemaRegistriesContextsSchemasRequest {
   /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesContextsSchemasRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subject: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
-    ),
+const GetProjectsLocationsSchemaRegistriesContextsSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subject: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsSchemaRegistriesContextsSchemasRequest",
 }) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSchemasRequest>;
@@ -1761,7 +1747,7 @@ export type Managedkafka_SchemaSchemaTypeEnum =
   | "AVRO"
   | "JSON"
   | "PROTOBUF";
-export const Managedkafka_SchemaSchemaTypeEnum = S.String;
+const Managedkafka_SchemaSchemaTypeEnum = S.String;
 
 /** Schema for a Kafka message. */
 export interface Managedkafka_Schema {
@@ -1772,7 +1758,7 @@ export interface Managedkafka_Schema {
   /** The schema payload. */
   schema?: string;
 }
-export const Managedkafka_Schema = /*@__PURE__*/ S.suspend(() =>
+const Managedkafka_Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaType: S.optional(Managedkafka_SchemaSchemaTypeEnum),
     references: S.optional(SchemaReferenceList),
@@ -1786,20 +1772,20 @@ export interface GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReq
   /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
   deleted?: boolean;
 }
-export const GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       deleted: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest",
-  }) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
+).annotate({
+  identifier: "GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest",
+}) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
 
 export type SchemaVersionSchemaTypeEnum = "SCHEMA_TYPE_UNSPECIFIED" | "AVRO" | "JSON" | "PROTOBUF";
-export const SchemaVersionSchemaTypeEnum = S.String;
+const SchemaVersionSchemaTypeEnum = S.String;
 
 /** Version of a schema. */
 export interface SchemaVersion {
@@ -1816,7 +1802,7 @@ export interface SchemaVersion {
   /** Required. The schema ID. */
   id?: number;
 }
-export const SchemaVersion = /*@__PURE__*/ S.suspend(() =>
+const SchemaVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaType: S.optional(SchemaVersionSchemaTypeEnum),
     schema: S.optional(S.String),
@@ -1831,7 +1817,7 @@ export interface GetProjectsLocationsSchemaRegistriesModeRequest {
   /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1847,7 +1833,7 @@ export interface GetProjectsLocationsSchemaRegistriesSchemasRequest {
   /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSchemaRegistriesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1864,14 +1850,13 @@ export interface GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
   /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   name: string;
 }
-export const GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deleted: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
-    ),
+const GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
 }) as any as S.Schema<GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
@@ -1882,8 +1867,8 @@ export interface GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasReques
   /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
   subject?: string;
 }
-export const GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       subject: S.optional(S.String.pipe(T.Query())),
@@ -1894,9 +1879,9 @@ export const GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest =
         baseUrl: "https://managedkafka.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest",
-  }) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest>;
+).annotate({
+  identifier: "GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest",
+}) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest>;
 
 export interface GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
   /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
@@ -1904,7 +1889,7 @@ export interface GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersi
   /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
   deleted?: boolean;
 }
-export const GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
+const GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1926,18 +1911,17 @@ export interface GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest {
   /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
   subject?: string;
 }
-export const GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      subject: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/schema",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    subject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/schema",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest",
 }) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest>;
@@ -1948,8 +1932,8 @@ export interface GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsReque
   /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
   deleted?: boolean;
 }
-export const GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -1960,9 +1944,9 @@ export const GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest =
         baseUrl: "https://managedkafka.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
-  }) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
+).annotate({
+  identifier: "GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
+}) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -1976,7 +1960,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1995,7 +1979,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -2004,7 +1988,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -2023,7 +2007,7 @@ export interface ListProjectsLocationsClustersRequest {
   /** Required. The parent location whose clusters are to be listed. Structured like `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2042,7 +2026,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
 export type ClusterList = Array<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
+const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
 
 /** Response for ListClusters. */
 export interface ListClustersResponse {
@@ -2053,7 +2037,7 @@ export interface ListClustersResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     clusters: S.optional(ClusterList),
@@ -2069,7 +2053,7 @@ export interface ListProjectsLocationsClustersAclsRequest {
   /** Optional. The maximum number of acls to return. The service may return fewer than this value. If unset or zero, all acls for the parent is returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2086,7 +2070,7 @@ export const ListProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsClustersAclsRequest>;
 
 export type AclList = Array<Acl>;
-export const AclList = /*@__PURE__*/ S.Array(Acl) as any as S.Schema<AclList>;
+const AclList = /*@__PURE__*/ S.Array(Acl) as any as S.Schema<AclList>;
 
 /** Response for ListAcls. */
 export interface ListAclsResponse {
@@ -2095,7 +2079,7 @@ export interface ListAclsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-export const ListAclsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAclsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acls: S.optional(AclList),
     nextPageToken: S.optional(S.String),
@@ -2106,7 +2090,7 @@ export type ListProjectsLocationsClustersConsumerGroupsViewEnum =
   | "CONSUMER_GROUP_VIEW_UNSPECIFIED"
   | "CONSUMER_GROUP_VIEW_BASIC"
   | "CONSUMER_GROUP_VIEW_FULL";
-export const ListProjectsLocationsClustersConsumerGroupsViewEnum = S.String;
+const ListProjectsLocationsClustersConsumerGroupsViewEnum = S.String;
 
 export interface ListProjectsLocationsClustersConsumerGroupsRequest {
   /** Optional. A page token, received from a previous `ListConsumerGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConsumerGroups` must match the call that provided the page token. */
@@ -2120,7 +2104,7 @@ export interface ListProjectsLocationsClustersConsumerGroupsRequest {
   /** Required. The parent cluster whose consumer groups are to be listed. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
   parent: string;
 }
-export const ListProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     view: S.optional(ListProjectsLocationsClustersConsumerGroupsViewEnum.pipe(T.Query())),
@@ -2139,7 +2123,7 @@ export const ListProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>;
 
 export type ConsumerGroupList = Array<ConsumerGroup>;
-export const ConsumerGroupList = /*@__PURE__*/ S.Array(
+const ConsumerGroupList = /*@__PURE__*/ S.Array(
   ConsumerGroup,
 ) as any as S.Schema<ConsumerGroupList>;
 
@@ -2150,7 +2134,7 @@ export interface ListConsumerGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-export const ListConsumerGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConsumerGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumerGroups: S.optional(ConsumerGroupList),
     nextPageToken: S.optional(S.String),
@@ -2167,7 +2151,7 @@ export interface ListProjectsLocationsClustersTopicsRequest {
   /** Optional. A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2184,7 +2168,7 @@ export const ListProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsClustersTopicsRequest>;
 
 export type TopicList = Array<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
 
 /** Response for ListTopics. */
 export interface ListTopicsResponse {
@@ -2193,7 +2177,7 @@ export interface ListTopicsResponse {
   /** The list of topics in the requested parent. The order of the topics is unspecified. */
   topics?: TopicList;
 }
-export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     topics: S.optional(TopicList),
@@ -2212,7 +2196,7 @@ export interface ListProjectsLocationsConnectClustersRequest {
   /** Optional. The maximum number of Connect clusters to return. The service may return fewer than this value. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2231,7 +2215,7 @@ export const ListProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsConnectClustersRequest>;
 
 export type ConnectClusterList = Array<ConnectCluster>;
-export const ConnectClusterList = /*@__PURE__*/ S.Array(
+const ConnectClusterList = /*@__PURE__*/ S.Array(
   ConnectCluster,
 ) as any as S.Schema<ConnectClusterList>;
 
@@ -2244,7 +2228,7 @@ export interface ListConnectClustersResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-export const ListConnectClustersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectClustersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectClusters: S.optional(ConnectClusterList),
     unreachable: S.optional(StringList),
@@ -2262,7 +2246,7 @@ export interface ListProjectsLocationsConnectClustersConnectorsRequest {
   /** Optional. The maximum number of connectors to return. The service may return fewer than this value. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2279,7 +2263,7 @@ export const ListProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__
 }) as any as S.Schema<ListProjectsLocationsConnectClustersConnectorsRequest>;
 
 export type ConnectorList = Array<Connector>;
-export const ConnectorList = /*@__PURE__*/ S.Array(Connector) as any as S.Schema<ConnectorList>;
+const ConnectorList = /*@__PURE__*/ S.Array(Connector) as any as S.Schema<ConnectorList>;
 
 /** Response for ListConnectors. */
 export interface ListConnectorsResponse {
@@ -2288,7 +2272,7 @@ export interface ListConnectorsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectors: S.optional(ConnectorList),
     nextPageToken: S.optional(S.String),
@@ -2307,7 +2291,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -2326,7 +2310,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2337,7 +2321,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -2349,7 +2333,7 @@ export type ListProjectsLocationsSchemaRegistriesViewEnum =
   | "SCHEMA_REGISTRY_VIEW_UNSPECIFIED"
   | "SCHEMA_REGISTRY_VIEW_BASIC"
   | "SCHEMA_REGISTRY_VIEW_FULL";
-export const ListProjectsLocationsSchemaRegistriesViewEnum = S.String;
+const ListProjectsLocationsSchemaRegistriesViewEnum = S.String;
 
 export interface ListProjectsLocationsSchemaRegistriesRequest {
   /** Optional. Specifies the view to return for the schema registry instances. If not specified, the default view is SCHEMA_REGISTRY_VIEW_BASIC. */
@@ -2357,7 +2341,7 @@ export interface ListProjectsLocationsSchemaRegistriesRequest {
   /** Required. The parent whose schema registry instances are to be listed. Structured like: `projects/{project}/locations/{location}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListProjectsLocationsSchemaRegistriesViewEnum.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2373,7 +2357,7 @@ export const ListProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesRequest>;
 
 export type SchemaRegistryList = Array<SchemaRegistry>;
-export const SchemaRegistryList = /*@__PURE__*/ S.Array(
+const SchemaRegistryList = /*@__PURE__*/ S.Array(
   SchemaRegistry,
 ) as any as S.Schema<SchemaRegistryList>;
 
@@ -2382,7 +2366,7 @@ export interface ListSchemaRegistriesResponse {
   /** The schema registry instances. */
   schemaRegistries?: SchemaRegistryList;
 }
-export const ListSchemaRegistriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSchemaRegistriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaRegistries: S.optional(SchemaRegistryList),
   }),
@@ -2394,7 +2378,7 @@ export interface ListProjectsLocationsSchemaRegistriesContextsRequest {
   /** Required. The parent of the contexts. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSchemaRegistriesContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -2416,8 +2400,8 @@ export interface ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsReq
   /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
   deleted?: boolean;
 }
-export const ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subject: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -2429,16 +2413,16 @@ export const ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest
         baseUrl: "https://managedkafka.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest",
-  }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest",
+}) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest>;
 
 export interface ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest {
   /** Required. The parent schema registry whose schema types are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
     }).pipe(
@@ -2448,9 +2432,9 @@ export const ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest =
         baseUrl: "https://managedkafka.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest",
-  }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest",
+}) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest>;
 
 export interface ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest {
   /** Required. The schema whose schema versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
@@ -2460,8 +2444,8 @@ export interface ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsReq
   /** Optional. If true, the response will include soft-deleted versions of the schema, even if the subject is soft-deleted. The default is false. */
   deleted?: boolean;
 }
-export const ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       subject: S.optional(S.String.pipe(T.Query())),
@@ -2473,9 +2457,9 @@ export const ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest
         baseUrl: "https://managedkafka.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest",
+}) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest>;
 
 export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
@@ -2485,19 +2469,18 @@ export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Required. The parent schema registry/context whose subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deleted: S.optional(S.Boolean.pipe(T.Query())),
-      subjectPrefix: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/subjects",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: S.optional(S.Boolean.pipe(T.Query())),
+    subjectPrefix: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/subjects",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest",
 }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest>;
@@ -2508,7 +2491,7 @@ export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRe
   /** Required. The subject whose versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
+const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       deleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -2528,7 +2511,7 @@ export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRe
   /** Required. The version to list referenced by. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest =
+const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2551,19 +2534,18 @@ export interface ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest {
   /** Optional. The subject to filter the subjects by. */
   subject?: string;
 }
-export const ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      deleted: S.optional(S.Boolean.pipe(T.Query())),
-      subject: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/subjects",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    deleted: S.optional(S.Boolean.pipe(T.Query())),
+    subject: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/subjects",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest",
 }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest>;
@@ -2572,17 +2554,16 @@ export interface ListProjectsLocationsSchemaRegistriesSchemasTypesRequest {
   /** Required. The parent schema registry whose schema types are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesSchemasTypesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/schemas/types",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSchemaRegistriesSchemasTypesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/schemas/types",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSchemaRegistriesSchemasTypesRequest",
 }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasTypesRequest>;
@@ -2595,19 +2576,18 @@ export interface ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest {
   /** Required. The schema whose schema versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      deleted: S.optional(S.Boolean.pipe(T.Query())),
-      subject: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/versions",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: S.optional(S.Boolean.pipe(T.Query())),
+    subject: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/versions",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest>;
@@ -2620,7 +2600,7 @@ export interface ListProjectsLocationsSchemaRegistriesSubjectsRequest {
   /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
   deleted?: boolean;
 }
-export const ListProjectsLocationsSchemaRegistriesSubjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSchemaRegistriesSubjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjectPrefix: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2642,18 +2622,17 @@ export interface ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
   /** Optional. If true, the response will include soft-deleted versions of an active or soft-deleted subject. The default is false. */
   deleted?: boolean;
 }
-export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      deleted: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/versions",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    deleted: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/versions",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
@@ -2662,7 +2641,7 @@ export interface ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferenced
   /** Required. The version to list referenced by. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   parent: string;
 }
-export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest =
+const ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2682,7 +2661,7 @@ export type LookupVersionRequestSchemaTypeEnum =
   | "AVRO"
   | "JSON"
   | "PROTOBUF";
-export const LookupVersionRequestSchemaTypeEnum = S.String;
+const LookupVersionRequestSchemaTypeEnum = S.String;
 
 /** Request for LookupVersion. */
 export interface LookupVersionRequest {
@@ -2697,7 +2676,7 @@ export interface LookupVersionRequest {
   /** Optional. If true, the schema will be normalized before being looked up. The default is false. */
   normalize?: boolean;
 }
-export const LookupVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     references: S.optional(SchemaReferenceList),
     schemaType: S.optional(LookupVersionRequestSchemaTypeEnum),
@@ -2713,7 +2692,7 @@ export interface LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsR
   /** Request body */
   body?: LookupVersionRequest;
 }
-export const LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest =
+const LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2735,21 +2714,20 @@ export interface LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest {
   /** Request body */
   body?: LookupVersionRequest;
 }
-export const LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(LookupVersionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest",
-  }) as any as S.Schema<LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest>;
+const LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(LookupVersionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest",
+}) as any as S.Schema<LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest>;
 
 export interface PatchProjectsLocationsClustersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2761,7 +2739,7 @@ export interface PatchProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-export const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2782,7 +2760,7 @@ export interface PatchProjectsLocationsClustersAclsRequest {
   /** Request body */
   body?: Acl;
 }
-export const PatchProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2802,7 +2780,7 @@ export interface PatchProjectsLocationsClustersConsumerGroupsRequest {
   /** Request body */
   body?: ConsumerGroup;
 }
-export const PatchProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2822,7 +2800,7 @@ export interface PatchProjectsLocationsClustersTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-export const PatchProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2844,7 +2822,7 @@ export interface PatchProjectsLocationsConnectClustersRequest {
   /** Request body */
   body?: ConnectCluster;
 }
-export const PatchProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsConnectClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2865,7 +2843,7 @@ export interface PatchProjectsLocationsConnectClustersConnectorsRequest {
   /** Request body */
   body?: Connector;
 }
-export const PatchProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2879,15 +2857,13 @@ export const PatchProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE_
 
 /** Request for PauseConnector. */
 export type PauseConnectorRequest = CancelOperationRequest;
-export const PauseConnectorRequest = CancelOperationRequest;
-
 export interface PauseProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector to pause. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const PauseProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -2904,8 +2880,7 @@ export const PauseProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE_
 
 /** Response for PauseConnector. */
 export interface PauseConnectorResponse {}
-export const PauseConnectorResponse =
-  CancelOperationRequest as any as S.Schema<PauseConnectorResponse>;
+const PauseConnectorResponse = CancelOperationRequest as any as S.Schema<PauseConnectorResponse>;
 
 export interface RemoveAclEntryProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to remove the acl entry from. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
@@ -2913,7 +2888,7 @@ export interface RemoveAclEntryProjectsLocationsClustersAclsRequest {
   /** Request body */
   body?: AclEntry;
 }
-export const RemoveAclEntryProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAclEntryProjectsLocationsClustersAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.String.pipe(T.Label()),
     body: S.optional(AclEntry.pipe(T.HttpBody())),
@@ -2935,7 +2910,7 @@ export interface RemoveAclEntryResponse {
   /** The updated acl. Returned if the removed acl entry was not the last entry in the acl. */
   acl?: Acl;
 }
-export const RemoveAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclDeleted: S.optional(S.Boolean),
     acl: S.optional(Acl),
@@ -2944,46 +2919,41 @@ export const RemoveAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for RestartConnector. */
 export type RestartConnectorRequest = CancelOperationRequest;
-export const RestartConnectorRequest = CancelOperationRequest;
-
 export interface RestartProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector to restart. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const RestartProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:restart",
-        baseUrl: "https://managedkafka.googleapis.com/",
-      }),
-    ),
+const RestartProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:restart",
+      baseUrl: "https://managedkafka.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "RestartProjectsLocationsConnectClustersConnectorsRequest",
 }) as any as S.Schema<RestartProjectsLocationsConnectClustersConnectorsRequest>;
 
 /** Response for RestartConnector. */
 export interface RestartConnectorResponse {}
-export const RestartConnectorResponse =
+const RestartConnectorResponse =
   CancelOperationRequest as any as S.Schema<RestartConnectorResponse>;
 
 /** Request for ResumeConnector. */
 export type ResumeConnectorRequest = CancelOperationRequest;
-export const ResumeConnectorRequest = CancelOperationRequest;
-
 export interface ResumeProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector to pause. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const ResumeProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -3000,20 +2970,17 @@ export const ResumeProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE
 
 /** Response for ResumeConnector. */
 export interface ResumeConnectorResponse {}
-export const ResumeConnectorResponse =
-  CancelOperationRequest as any as S.Schema<ResumeConnectorResponse>;
+const ResumeConnectorResponse = CancelOperationRequest as any as S.Schema<ResumeConnectorResponse>;
 
 /** Request for StopConnector. */
 export type StopConnectorRequest = CancelOperationRequest;
-export const StopConnectorRequest = CancelOperationRequest;
-
 export interface StopProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector to stop. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const StopProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -3030,8 +2997,7 @@ export const StopProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__
 
 /** Response for StopConnector. */
 export interface StopConnectorResponse {}
-export const StopConnectorResponse =
-  CancelOperationRequest as any as S.Schema<StopConnectorResponse>;
+const StopConnectorResponse = CancelOperationRequest as any as S.Schema<StopConnectorResponse>;
 
 export type UpdateSchemaConfigRequestCompatibilityEnum =
   | "NONE"
@@ -3041,7 +3007,7 @@ export type UpdateSchemaConfigRequestCompatibilityEnum =
   | "FORWARD_TRANSITIVE"
   | "FULL"
   | "FULL_TRANSITIVE";
-export const UpdateSchemaConfigRequestCompatibilityEnum = S.String;
+const UpdateSchemaConfigRequestCompatibilityEnum = S.String;
 
 /** Request for updating schema config. On a SchemaSubject-level SchemaConfig, an unset field will be removed from the SchemaConfig. */
 export interface UpdateSchemaConfigRequest {
@@ -3050,7 +3016,7 @@ export interface UpdateSchemaConfigRequest {
   /** Required. The compatibility type of the schemas. Cannot be unset for a SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level SchemaConfig, removes the compatibility field for the SchemaConfig. */
   compatibility?: UpdateSchemaConfigRequestCompatibilityEnum | (string & {});
 }
-export const UpdateSchemaConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSchemaConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     normalize: S.optional(S.Boolean),
     compatibility: S.optional(UpdateSchemaConfigRequestCompatibilityEnum),
@@ -3065,7 +3031,7 @@ export interface UpdateProjectsLocationsSchemaRegistriesConfigRequest {
   /** Request body */
   body?: UpdateSchemaConfigRequest;
 }
-export const UpdateProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateSchemaConfigRequest.pipe(T.HttpBody())),
@@ -3082,27 +3048,24 @@ export interface UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest {
   /** Request body */
   body?: UpdateSchemaConfigRequest;
 }
-export const UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UpdateSchemaConfigRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
-    ),
+const UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateSchemaConfigRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest",
 }) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest>;
 
 export type UpdateSchemaModeRequestModeEnum = "NONE" | "READONLY" | "READWRITE" | "IMPORT";
-export const UpdateSchemaModeRequestModeEnum = S.String;
-
 /** Request for updating schema registry or subject mode. */
 export interface UpdateSchemaModeRequest {
   /** Required. The mode type. */
   mode?: UpdateSchemaModeRequestModeEnum | (string & {});
 }
-export const UpdateSchemaModeRequest = RebalanceConfig as any as S.Schema<UpdateSchemaModeRequest>;
+const UpdateSchemaModeRequest = RebalanceConfig as any as S.Schema<UpdateSchemaModeRequest>;
 
 export interface UpdateProjectsLocationsSchemaRegistriesContextsModeRequest {
   /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
@@ -3110,14 +3073,13 @@ export interface UpdateProjectsLocationsSchemaRegistriesContextsModeRequest {
   /** Request body */
   body?: UpdateSchemaModeRequest;
 }
-export const UpdateProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UpdateSchemaModeRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
-    ),
+const UpdateProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UpdateSchemaModeRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://managedkafka.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "UpdateProjectsLocationsSchemaRegistriesContextsModeRequest",
 }) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesContextsModeRequest>;
@@ -3128,7 +3090,7 @@ export interface UpdateProjectsLocationsSchemaRegistriesModeRequest {
   /** Request body */
   body?: UpdateSchemaModeRequest;
 }
-export const UpdateProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateSchemaModeRequest.pipe(T.HttpBody())),

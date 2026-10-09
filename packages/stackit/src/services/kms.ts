@@ -46,11 +46,11 @@ export class NotFound
   ) {}
 
 export type CreateKeyRequestRegionId = "eu01";
-export const CreateKeyRequestRegionId = S.String;
+const CreateKeyRequestRegionId = S.String;
 
 /** The access scope of the key. */
 export type AccessScope = "PUBLIC" | "SNA";
-export const AccessScope = S.String;
+const AccessScope = S.String;
 
 /** The algorithm the key material uses. */
 export type Algorithm =
@@ -65,7 +65,7 @@ export type Algorithm =
   | "ecdsa_p256_sha256"
   | "ecdsa_p384_sha384"
   | "ecdsa_p521_sha512";
-export const Algorithm = S.String;
+const Algorithm = S.String;
 
 /** The purpose of the key. */
 export type Purpose =
@@ -73,7 +73,7 @@ export type Purpose =
   | "asymmetric_encrypt_decrypt"
   | "message_authentication_code"
   | "asymmetric_sign_verify";
-export const Purpose = S.String;
+const Purpose = S.String;
 
 export interface CreateKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -93,7 +93,7 @@ export interface CreateKeyRequest {
   protection: string;
   purpose: Purpose | (string & {});
 }
-export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateKeyRequestRegionId.pipe(T.Label()),
@@ -123,7 +123,7 @@ export type KeyState =
   | "errors_exist"
   | "creating"
   | "no_version";
-export const KeyState = S.String;
+const KeyState = S.String;
 
 export interface Key {
   access_scope: AccessScope;
@@ -147,7 +147,7 @@ export interface Key {
   /** The current state of the key. */
   state: KeyState;
 }
-export const Key = /*@__PURE__*/ S.suspend(() =>
+const Key = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_scope: AccessScope,
     algorithm: Algorithm,
@@ -165,7 +165,7 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
 export type CreateKeyRingRequestRegionId = "eu01";
-export const CreateKeyRingRequestRegionId = S.String;
+const CreateKeyRingRequestRegionId = S.String;
 
 export interface CreateKeyRingRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -177,7 +177,7 @@ export interface CreateKeyRingRequest {
   /** The display name to distinguish multiple key rings. Valid characters: letters, digits, underscores and hyphens. */
   displayName: string;
 }
-export const CreateKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateKeyRingRequestRegionId.pipe(T.Label()),
@@ -195,7 +195,7 @@ export const CreateKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of the key ring. */
 export type KeyRingState = "creating" | "active" | "deleted";
-export const KeyRingState = S.String;
+const KeyRingState = S.String;
 
 export interface KeyRing {
   /** The date and time the creation of the key ring was triggered. */
@@ -209,7 +209,7 @@ export interface KeyRing {
   /** The current state of the key ring. */
   state: KeyRingState;
 }
-export const KeyRing = /*@__PURE__*/ S.suspend(() =>
+const KeyRing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     description: S.optional(S.String),
@@ -220,7 +220,7 @@ export const KeyRing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyRing" }) as any as S.Schema<KeyRing>;
 
 export type CreateWrappingKeyRequestRegionId = "eu01";
-export const CreateWrappingKeyRequestRegionId = S.String;
+const CreateWrappingKeyRequestRegionId = S.String;
 
 /** The wrapping algorithm used to wrap the key to import. */
 export type WrappingAlgorithm =
@@ -232,11 +232,11 @@ export type WrappingAlgorithm =
   | "rsa_3072_oaep_sha256_aes_256_key_wrap"
   | "rsa_4096_oaep_sha256_aes_256_key_wrap"
   | "rsa_4096_oaep_sha512_aes_256_key_wrap";
-export const WrappingAlgorithm = S.String;
+const WrappingAlgorithm = S.String;
 
 /** The wrapping purpose for the wrapping key. */
 export type WrappingPurpose = "wrap_symmetric_key" | "wrap_asymmetric_key";
-export const WrappingPurpose = S.String;
+const WrappingPurpose = S.String;
 
 export interface CreateWrappingKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -254,7 +254,7 @@ export interface CreateWrappingKeyRequest {
   protection: string;
   purpose: WrappingPurpose | (string & {});
 }
-export const CreateWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateWrappingKeyRequestRegionId.pipe(T.Label()),
@@ -282,7 +282,7 @@ export type WrappingKeyState =
   | "expired"
   | "deleted"
   | "key_material_unavailable";
-export const WrappingKeyState = S.String;
+const WrappingKeyState = S.String;
 
 export interface WrappingKey {
   access_scope: AccessScope;
@@ -306,7 +306,7 @@ export interface WrappingKey {
   /** The current state of the wrapping key. */
   state: WrappingKeyState;
 }
-export const WrappingKey = /*@__PURE__*/ S.suspend(() =>
+const WrappingKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_scope: AccessScope,
     algorithm: WrappingAlgorithm,
@@ -324,7 +324,7 @@ export const WrappingKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WrappingKey" }) as any as S.Schema<WrappingKey>;
 
 export type DecryptRequestRegionId = "eu01";
-export const DecryptRequestRegionId = S.String;
+const DecryptRequestRegionId = S.String;
 
 export interface DecryptRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -340,7 +340,7 @@ export interface DecryptRequest {
   /** The data that has to be decrypted. Encoded in base64. */
   data: string;
 }
-export const DecryptRequest = /*@__PURE__*/ S.suspend(() =>
+const DecryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DecryptRequestRegionId.pipe(T.Label()),
@@ -362,14 +362,14 @@ export interface DecryptedData {
   /** The decrypted data. Encoded in base64. */
   data: string;
 }
-export const DecryptedData = /*@__PURE__*/ S.suspend(() =>
+const DecryptedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.String,
   }),
 ).annotate({ identifier: "DecryptedData" }) as any as S.Schema<DecryptedData>;
 
 export type DeleteKeyRequestRegionId = "eu01";
-export const DeleteKeyRequestRegionId = S.String;
+const DeleteKeyRequestRegionId = S.String;
 
 export interface DeleteKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -381,7 +381,7 @@ export interface DeleteKeyRequest {
   /** The key UUID. */
   keyId: string;
 }
-export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteKeyRequestRegionId.pipe(T.Label()),
@@ -398,12 +398,12 @@ export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyRequest" }) as any as S.Schema<DeleteKeyRequest>;
 
 export interface DeleteKeyResponse {}
-export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteKeyResponse",
 }) as any as S.Schema<DeleteKeyResponse>;
 
 export type DeleteKeyRingRequestRegionId = "eu01";
-export const DeleteKeyRingRequestRegionId = S.String;
+const DeleteKeyRingRequestRegionId = S.String;
 
 export interface DeleteKeyRingRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -413,7 +413,7 @@ export interface DeleteKeyRingRequest {
   /** The key ring UUID. */
   keyRingId: string;
 }
-export const DeleteKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteKeyRingRequestRegionId.pipe(T.Label()),
@@ -429,10 +429,10 @@ export const DeleteKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKeyRingRequest" }) as any as S.Schema<DeleteKeyRingRequest>;
 
 export interface DeleteKeyRingResponse {}
-export const DeleteKeyRingResponse = DeleteKeyResponse as any as S.Schema<DeleteKeyRingResponse>;
+const DeleteKeyRingResponse = DeleteKeyResponse as any as S.Schema<DeleteKeyRingResponse>;
 
 export type DeleteWrappingKeyRequestRegionId = "eu01";
-export const DeleteWrappingKeyRequestRegionId = S.String;
+const DeleteWrappingKeyRequestRegionId = S.String;
 
 export interface DeleteWrappingKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -444,7 +444,7 @@ export interface DeleteWrappingKeyRequest {
   /** The wrapping key UUID. */
   wrappingKeyId: string;
 }
-export const DeleteWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteWrappingKeyRequestRegionId.pipe(T.Label()),
@@ -461,11 +461,10 @@ export const DeleteWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWrappingKeyRequest" }) as any as S.Schema<DeleteWrappingKeyRequest>;
 
 export interface DeleteWrappingKeyResponse {}
-export const DeleteWrappingKeyResponse =
-  DeleteKeyResponse as any as S.Schema<DeleteWrappingKeyResponse>;
+const DeleteWrappingKeyResponse = DeleteKeyResponse as any as S.Schema<DeleteWrappingKeyResponse>;
 
 export type DestroyVersionRequestRegionId = "eu01";
-export const DestroyVersionRequestRegionId = S.String;
+const DestroyVersionRequestRegionId = S.String;
 
 export interface DestroyVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -479,7 +478,7 @@ export interface DestroyVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-export const DestroyVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DestroyVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DestroyVersionRequestRegionId.pipe(T.Label()),
@@ -497,10 +496,10 @@ export const DestroyVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestroyVersionRequest" }) as any as S.Schema<DestroyVersionRequest>;
 
 export interface DestroyVersionResponse {}
-export const DestroyVersionResponse = DeleteKeyResponse as any as S.Schema<DestroyVersionResponse>;
+const DestroyVersionResponse = DeleteKeyResponse as any as S.Schema<DestroyVersionResponse>;
 
 export type DisableVersionRequestRegionId = "eu01";
-export const DisableVersionRequestRegionId = S.String;
+const DisableVersionRequestRegionId = S.String;
 
 export interface DisableVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -514,7 +513,7 @@ export interface DisableVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-export const DisableVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DisableVersionRequestRegionId.pipe(T.Label()),
@@ -532,10 +531,10 @@ export const DisableVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableVersionRequest" }) as any as S.Schema<DisableVersionRequest>;
 
 export interface DisableVersionResponse {}
-export const DisableVersionResponse = DeleteKeyResponse as any as S.Schema<DisableVersionResponse>;
+const DisableVersionResponse = DeleteKeyResponse as any as S.Schema<DisableVersionResponse>;
 
 export type EnableVersionRequestRegionId = "eu01";
-export const EnableVersionRequestRegionId = S.String;
+const EnableVersionRequestRegionId = S.String;
 
 export interface EnableVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -549,7 +548,7 @@ export interface EnableVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-export const EnableVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: EnableVersionRequestRegionId.pipe(T.Label()),
@@ -567,10 +566,10 @@ export const EnableVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableVersionRequest" }) as any as S.Schema<EnableVersionRequest>;
 
 export interface EnableVersionResponse {}
-export const EnableVersionResponse = DeleteKeyResponse as any as S.Schema<EnableVersionResponse>;
+const EnableVersionResponse = DeleteKeyResponse as any as S.Schema<EnableVersionResponse>;
 
 export type EncryptRequestRegionId = "eu01";
-export const EncryptRequestRegionId = S.String;
+const EncryptRequestRegionId = S.String;
 
 export interface EncryptRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -586,7 +585,7 @@ export interface EncryptRequest {
   /** The data that has to be encrypted. Encoded in base64. */
   data: string;
 }
-export const EncryptRequest = /*@__PURE__*/ S.suspend(() =>
+const EncryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: EncryptRequestRegionId.pipe(T.Label()),
@@ -608,10 +607,10 @@ export interface EncryptedData {
   /** The encrypted data. Encoded in base64. */
   data: string;
 }
-export const EncryptedData = DecryptedData as any as S.Schema<EncryptedData>;
+const EncryptedData = DecryptedData as any as S.Schema<EncryptedData>;
 
 export type GetKeyRequestRegionId = "eu01";
-export const GetKeyRequestRegionId = S.String;
+const GetKeyRequestRegionId = S.String;
 
 export interface GetKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -623,7 +622,7 @@ export interface GetKeyRequest {
   /** The key UUID. */
   keyId: string;
 }
-export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetKeyRequestRegionId.pipe(T.Label()),
@@ -640,7 +639,7 @@ export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
 
 export type GetKeyRingRequestRegionId = "eu01";
-export const GetKeyRingRequestRegionId = S.String;
+const GetKeyRingRequestRegionId = S.String;
 
 export interface GetKeyRingRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -650,7 +649,7 @@ export interface GetKeyRingRequest {
   /** The key ring UUID. */
   keyRingId: string;
 }
-export const GetKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetKeyRingRequestRegionId.pipe(T.Label()),
@@ -666,7 +665,7 @@ export const GetKeyRingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKeyRingRequest" }) as any as S.Schema<GetKeyRingRequest>;
 
 export type GetVersionRequestRegionId = "eu01";
-export const GetVersionRequestRegionId = S.String;
+const GetVersionRequestRegionId = S.String;
 
 export interface GetVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -680,7 +679,7 @@ export interface GetVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetVersionRequestRegionId.pipe(T.Label()),
@@ -705,7 +704,7 @@ export type VersionState =
   | "key_material_unavailable"
   | "disabled"
   | "destroyed";
-export const VersionState = S.String;
+const VersionState = S.String;
 
 export interface Version {
   /** The date and time the creation of the key was triggered. */
@@ -725,7 +724,7 @@ export interface Version {
   /** The current state of the key. */
   state: VersionState;
 }
-export const Version = /*@__PURE__*/ S.suspend(() =>
+const Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     destroyDate: S.optional(S.String),
@@ -739,7 +738,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 export type GetWrappingKeyRequestRegionId = "eu01";
-export const GetWrappingKeyRequestRegionId = S.String;
+const GetWrappingKeyRequestRegionId = S.String;
 
 export interface GetWrappingKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -751,7 +750,7 @@ export interface GetWrappingKeyRequest {
   /** The wrapping key UUID. */
   wrappingKeyId: string;
 }
-export const GetWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetWrappingKeyRequestRegionId.pipe(T.Label()),
@@ -768,7 +767,7 @@ export const GetWrappingKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWrappingKeyRequest" }) as any as S.Schema<GetWrappingKeyRequest>;
 
 export type ImportKeyRequestRegionId = "eu01";
-export const ImportKeyRequestRegionId = S.String;
+const ImportKeyRequestRegionId = S.String;
 
 export interface ImportKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -784,7 +783,7 @@ export interface ImportKeyRequest {
   /** The unique id of the wrapping key the key material has been wrapped with. */
   wrappingKeyId: string;
 }
-export const ImportKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ImportKeyRequestRegionId.pipe(T.Label()),
@@ -803,7 +802,7 @@ export const ImportKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportKeyRequest" }) as any as S.Schema<ImportKeyRequest>;
 
 export type ListKeyRingsRequestRegionId = "eu01";
-export const ListKeyRingsRequestRegionId = S.String;
+const ListKeyRingsRequestRegionId = S.String;
 
 export interface ListKeyRingsRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -811,7 +810,7 @@ export interface ListKeyRingsRequest {
   /** The STACKIT region name the key ring is located in. */
   regionId: ListKeyRingsRequestRegionId | (string & {});
 }
-export const ListKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListKeyRingsRequestRegionId.pipe(T.Label()),
@@ -826,21 +825,21 @@ export const ListKeyRingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListKeyRingsRequest" }) as any as S.Schema<ListKeyRingsRequest>;
 
 export type KeyRingListKeyRingsList = Array<KeyRing>;
-export const KeyRingListKeyRingsList = /*@__PURE__*/ S.Array(
+const KeyRingListKeyRingsList = /*@__PURE__*/ S.Array(
   KeyRing,
 ) as any as S.Schema<KeyRingListKeyRingsList>;
 
 export interface KeyRingList {
   keyRings: KeyRingListKeyRingsList;
 }
-export const KeyRingList = /*@__PURE__*/ S.suspend(() =>
+const KeyRingList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyRings: KeyRingListKeyRingsList,
   }),
 ).annotate({ identifier: "KeyRingList" }) as any as S.Schema<KeyRingList>;
 
 export type ListKeysRequestRegionId = "eu01";
-export const ListKeysRequestRegionId = S.String;
+const ListKeysRequestRegionId = S.String;
 
 export interface ListKeysRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -850,7 +849,7 @@ export interface ListKeysRequest {
   /** The key ring UUID. */
   keyRingId: string;
 }
-export const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListKeysRequestRegionId.pipe(T.Label()),
@@ -866,19 +865,19 @@ export const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListKeysRequest" }) as any as S.Schema<ListKeysRequest>;
 
 export type KeyListKeysList = Array<Key>;
-export const KeyListKeysList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyListKeysList>;
+const KeyListKeysList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyListKeysList>;
 
 export interface KeyList {
   keys: KeyListKeysList;
 }
-export const KeyList = /*@__PURE__*/ S.suspend(() =>
+const KeyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: KeyListKeysList,
   }),
 ).annotate({ identifier: "KeyList" }) as any as S.Schema<KeyList>;
 
 export type ListVersionsRequestRegionId = "eu01";
-export const ListVersionsRequestRegionId = S.String;
+const ListVersionsRequestRegionId = S.String;
 
 export interface ListVersionsRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -890,7 +889,7 @@ export interface ListVersionsRequest {
   /** The key UUID. */
   keyId: string;
 }
-export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListVersionsRequestRegionId.pipe(T.Label()),
@@ -907,21 +906,21 @@ export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVersionsRequest" }) as any as S.Schema<ListVersionsRequest>;
 
 export type VersionListVersionsList = Array<Version>;
-export const VersionListVersionsList = /*@__PURE__*/ S.Array(
+const VersionListVersionsList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionListVersionsList>;
 
 export interface VersionList {
   versions: VersionListVersionsList;
 }
-export const VersionList = /*@__PURE__*/ S.suspend(() =>
+const VersionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versions: VersionListVersionsList,
   }),
 ).annotate({ identifier: "VersionList" }) as any as S.Schema<VersionList>;
 
 export type ListWrappingKeysRequestRegionId = "eu01";
-export const ListWrappingKeysRequestRegionId = S.String;
+const ListWrappingKeysRequestRegionId = S.String;
 
 export interface ListWrappingKeysRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -931,7 +930,7 @@ export interface ListWrappingKeysRequest {
   /** The key ring UUID. */
   keyRingId: string;
 }
-export const ListWrappingKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWrappingKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListWrappingKeysRequestRegionId.pipe(T.Label()),
@@ -947,21 +946,21 @@ export const ListWrappingKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWrappingKeysRequest" }) as any as S.Schema<ListWrappingKeysRequest>;
 
 export type WrappingKeyListWrappingKeysList = Array<WrappingKey>;
-export const WrappingKeyListWrappingKeysList = /*@__PURE__*/ S.Array(
+const WrappingKeyListWrappingKeysList = /*@__PURE__*/ S.Array(
   WrappingKey,
 ) as any as S.Schema<WrappingKeyListWrappingKeysList>;
 
 export interface WrappingKeyList {
   wrappingKeys: WrappingKeyListWrappingKeysList;
 }
-export const WrappingKeyList = /*@__PURE__*/ S.suspend(() =>
+const WrappingKeyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wrappingKeys: WrappingKeyListWrappingKeysList,
   }),
 ).annotate({ identifier: "WrappingKeyList" }) as any as S.Schema<WrappingKeyList>;
 
 export type RestoreKeyRequestRegionId = "eu01";
-export const RestoreKeyRequestRegionId = S.String;
+const RestoreKeyRequestRegionId = S.String;
 
 export interface RestoreKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -973,7 +972,7 @@ export interface RestoreKeyRequest {
   /** The key UUID. */
   keyId: string;
 }
-export const RestoreKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: RestoreKeyRequestRegionId.pipe(T.Label()),
@@ -990,10 +989,10 @@ export const RestoreKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreKeyRequest" }) as any as S.Schema<RestoreKeyRequest>;
 
 export interface RestoreKeyResponse {}
-export const RestoreKeyResponse = DeleteKeyResponse as any as S.Schema<RestoreKeyResponse>;
+const RestoreKeyResponse = DeleteKeyResponse as any as S.Schema<RestoreKeyResponse>;
 
 export type RestoreVersionRequestRegionId = "eu01";
-export const RestoreVersionRequestRegionId = S.String;
+const RestoreVersionRequestRegionId = S.String;
 
 export interface RestoreVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -1007,7 +1006,7 @@ export interface RestoreVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-export const RestoreVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: RestoreVersionRequestRegionId.pipe(T.Label()),
@@ -1025,10 +1024,10 @@ export const RestoreVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreVersionRequest" }) as any as S.Schema<RestoreVersionRequest>;
 
 export interface RestoreVersionResponse {}
-export const RestoreVersionResponse = DeleteKeyResponse as any as S.Schema<RestoreVersionResponse>;
+const RestoreVersionResponse = DeleteKeyResponse as any as S.Schema<RestoreVersionResponse>;
 
 export type RotateKeyRequestRegionId = "eu01";
-export const RotateKeyRequestRegionId = S.String;
+const RotateKeyRequestRegionId = S.String;
 
 export interface RotateKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -1040,7 +1039,7 @@ export interface RotateKeyRequest {
   /** The key UUID. */
   keyId: string;
 }
-export const RotateKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: RotateKeyRequestRegionId.pipe(T.Label()),
@@ -1057,7 +1056,7 @@ export const RotateKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RotateKeyRequest" }) as any as S.Schema<RotateKeyRequest>;
 
 export type SignRequestRegionId = "eu01";
-export const SignRequestRegionId = S.String;
+const SignRequestRegionId = S.String;
 
 export interface SignRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -1073,7 +1072,7 @@ export interface SignRequest {
   /** The data that has to be signed. Encoded in base64. */
   data: string;
 }
-export const SignRequest = /*@__PURE__*/ S.suspend(() =>
+const SignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: SignRequestRegionId.pipe(T.Label()),
@@ -1097,7 +1096,7 @@ export interface SignedData {
   /** The signature of the data. Encoded in base64. */
   signature: string;
 }
-export const SignedData = /*@__PURE__*/ S.suspend(() =>
+const SignedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.String,
     signature: S.String,
@@ -1105,7 +1104,7 @@ export const SignedData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignedData" }) as any as S.Schema<SignedData>;
 
 export type VerifyRequestRegionId = "eu01";
-export const VerifyRequestRegionId = S.String;
+const VerifyRequestRegionId = S.String;
 
 export interface VerifyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
@@ -1123,7 +1122,7 @@ export interface VerifyRequest {
   /** The signature of the data. Encoded in base64. */
   signature: string;
 }
-export const VerifyRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: VerifyRequestRegionId.pipe(T.Label()),
@@ -1146,7 +1145,7 @@ export interface VerifiedData {
   /** Whether or not the data has a valid signature. */
   valid: boolean;
 }
-export const VerifiedData = /*@__PURE__*/ S.suspend(() =>
+const VerifiedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.Boolean,
   }),

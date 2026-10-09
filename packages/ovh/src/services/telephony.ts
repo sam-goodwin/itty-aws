@@ -14,7 +14,7 @@ export interface ActivateTelephonyLineNewPhoneRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ActivateTelephonyLineNewPhoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateTelephonyLineNewPhoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -30,15 +30,13 @@ export const ActivateTelephonyLineNewPhoneRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ActivateTelephonyLineNewPhoneRequest>;
 
 export interface ActivateTelephonyLineNewPhoneResponse {}
-export const ActivateTelephonyLineNewPhoneResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ActivateTelephonyLineNewPhoneResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ActivateTelephonyLineNewPhoneResponse",
 }) as any as S.Schema<ActivateTelephonyLineNewPhoneResponse>;
 
 /** The blocking mode of line calls */
 export type TelephonyLineBlockingMode = "both" | "incoming" | "outgoing";
-export const TelephonyLineBlockingMode = S.String;
+const TelephonyLineBlockingMode = S.String;
 
 export interface BlockTelephonyLineRequest {
   /** The name of your billingAccount */
@@ -47,7 +45,7 @@ export interface BlockTelephonyLineRequest {
   /** The block mode : outgoing, incoming, both (default: both) */
   mode?: TelephonyLineBlockingMode | (string & {});
 }
-export const BlockTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
+const BlockTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -64,7 +62,7 @@ export const BlockTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlockTelephonyLineRequest>;
 
 export interface BlockTelephonyLineResponse {}
-export const BlockTelephonyLineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const BlockTelephonyLineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BlockTelephonyLineResponse",
 }) as any as S.Schema<BlockTelephonyLineResponse>;
 
@@ -73,7 +71,7 @@ export interface CancelTelephonyLineConvertToNumberRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const CancelTelephonyLineConvertToNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTelephonyLineConvertToNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -89,7 +87,7 @@ export const CancelTelephonyLineConvertToNumberRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CancelTelephonyLineConvertToNumberRequest>;
 
 export interface CancelTelephonyLineConvertToNumberResponse {}
-export const CancelTelephonyLineConvertToNumberResponse =
+const CancelTelephonyLineConvertToNumberResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyLineConvertToNumberResponse>;
 
 export interface CancelTelephonyNumberConvertToLineRequest {
@@ -98,7 +96,7 @@ export interface CancelTelephonyNumberConvertToLineRequest {
   /** Name of the service */
   serviceName: string;
 }
-export const CancelTelephonyNumberConvertToLineRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTelephonyNumberConvertToLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -114,7 +112,7 @@ export const CancelTelephonyNumberConvertToLineRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CancelTelephonyNumberConvertToLineRequest>;
 
 export interface CancelTelephonyNumberConvertToLineResponse {}
-export const CancelTelephonyNumberConvertToLineResponse =
+const CancelTelephonyNumberConvertToLineResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyNumberConvertToLineResponse>;
 
 export interface CancelTelephonyPortabilityRequest {
@@ -125,7 +123,7 @@ export interface CancelTelephonyPortabilityRequest {
   /** The cancellation reason */
   reason?: string;
 }
-export const CancelTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -142,14 +140,14 @@ export const CancelTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelTelephonyPortabilityRequest>;
 
 export interface CancelTelephonyPortabilityResponse {}
-export const CancelTelephonyPortabilityResponse =
+const CancelTelephonyPortabilityResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyPortabilityResponse>;
 
 export interface CancelTelephonyProcedureRequest {
   /** Procedure ID */
   id: number;
 }
-export const CancelTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/telephony/procedure/{id}/cancel", code: 200 })),
@@ -158,7 +156,7 @@ export const CancelTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelTelephonyProcedureRequest>;
 
 export interface CancelTelephonyProcedureResponse {}
-export const CancelTelephonyProcedureResponse =
+const CancelTelephonyProcedureResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyProcedureResponse>;
 
 export interface CancelTelephonyRsvaScheduledRateCodeRequest {
@@ -166,7 +164,7 @@ export interface CancelTelephonyRsvaScheduledRateCodeRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const CancelTelephonyRsvaScheduledRateCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTelephonyRsvaScheduledRateCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -182,7 +180,7 @@ export const CancelTelephonyRsvaScheduledRateCodeRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CancelTelephonyRsvaScheduledRateCodeRequest>;
 
 export interface CancelTelephonyRsvaScheduledRateCodeResponse {}
-export const CancelTelephonyRsvaScheduledRateCodeResponse =
+const CancelTelephonyRsvaScheduledRateCodeResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyRsvaScheduledRateCodeResponse>;
 
 export interface CancelTelephonyServiceTerminationRequest {
@@ -190,7 +188,7 @@ export interface CancelTelephonyServiceTerminationRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const CancelTelephonyServiceTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTelephonyServiceTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -206,14 +204,14 @@ export const CancelTelephonyServiceTerminationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CancelTelephonyServiceTerminationRequest>;
 
 export interface CancelTelephonyServiceTerminationResponse {}
-export const CancelTelephonyServiceTerminationResponse =
+const CancelTelephonyServiceTerminationResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyServiceTerminationResponse>;
 
 export interface CancelTelephonyTerminationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const CancelTelephonyTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTelephonyTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -224,7 +222,7 @@ export const CancelTelephonyTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelTelephonyTerminationRequest>;
 
 export interface CancelTelephonyTerminationResponse {}
-export const CancelTelephonyTerminationResponse =
+const CancelTelephonyTerminationResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyTerminationResponse>;
 
 export interface ConvertTelephonyLineToNumberRequest {
@@ -232,7 +230,7 @@ export interface ConvertTelephonyLineToNumberRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ConvertTelephonyLineToNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const ConvertTelephonyLineToNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -257,15 +255,15 @@ export type TelephonyOfferTaskActionEnum =
   | "termination"
   | "updateFirmware"
   | "upgrade";
-export const TelephonyOfferTaskActionEnum = S.String;
+const TelephonyOfferTaskActionEnum = S.String;
 
 /** Task status */
 export type TelephonyTaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo";
-export const TelephonyTaskStatusEnum = S.String;
+const TelephonyTaskStatusEnum = S.String;
 
 /** Offer task types */
 export type TelephonyOfferTaskTypeEnum = "line" | "offer" | "option" | "phone";
-export const TelephonyOfferTaskTypeEnum = S.String;
+const TelephonyOfferTaskTypeEnum = S.String;
 
 /** Operation on a telephony offer */
 export interface TelephonyOfferTask {
@@ -279,7 +277,7 @@ export interface TelephonyOfferTask {
   /** Type of operation that will be executed */
   type?: TelephonyOfferTaskTypeEnum;
 }
-export const TelephonyOfferTask = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOfferTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(TelephonyOfferTaskActionEnum),
     executionDate: S.optional(S.String),
@@ -297,7 +295,7 @@ export interface ConvertTelephonyNumberToLineRequest {
   /** The future offer of the converted number */
   offer: string;
 }
-export const ConvertTelephonyNumberToLineRequest = /*@__PURE__*/ S.suspend(() =>
+const ConvertTelephonyNumberToLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -323,7 +321,7 @@ export interface CreateTelephonyAbbreviatedNumberRequest {
   name: string;
   surname: string;
 }
-export const CreateTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     abbreviatedNumber: S.Number,
@@ -346,7 +344,7 @@ export interface TelephonyAbbreviatedNumberGroup {
   name?: string;
   surname?: string;
 }
-export const TelephonyAbbreviatedNumberGroup = /*@__PURE__*/ S.suspend(() =>
+const TelephonyAbbreviatedNumberGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abbreviatedNumber: S.optional(S.Number),
     destinationNumber: S.optional(S.String),
@@ -367,7 +365,7 @@ export interface CreateTelephonyAliasChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateTelephonyAliasChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyAliasChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -381,13 +379,13 @@ export const CreateTelephonyAliasChangeContactRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateTelephonyAliasChangeContactRequest>;
 
 export type CreateTelephonyAliasChangeContactResponseBodyList = Array<number>;
-export const CreateTelephonyAliasChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateTelephonyAliasChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateTelephonyAliasChangeContactResponseBodyList>;
 
 export type CreateTelephonyAliasChangeContactResponse =
   CreateTelephonyAliasChangeContactResponseBodyList;
-export const CreateTelephonyAliasChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyAliasChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateTelephonyAliasChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateTelephonyAliasChangeContactResponse",
@@ -399,7 +397,7 @@ export interface CreateTelephonyBillingAccountSiteRequest {
   /** Billing account site (master billing account) */
   billingAccountSite: string;
 }
-export const CreateTelephonyBillingAccountSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyBillingAccountSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     billingAccountSite: S.String,
@@ -411,7 +409,7 @@ export const CreateTelephonyBillingAccountSiteRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateTelephonyBillingAccountSiteRequest>;
 
 export interface CreateTelephonyBillingAccountSiteResponse {}
-export const CreateTelephonyBillingAccountSiteResponse =
+const CreateTelephonyBillingAccountSiteResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyBillingAccountSiteResponse>;
 
 export interface CreateTelephonyCanTransferSecurityDepositRequest {
@@ -420,7 +418,7 @@ export interface CreateTelephonyCanTransferSecurityDepositRequest {
   /** The destination billing account */
   billingAccountDestination: string;
 }
-export const CreateTelephonyCanTransferSecurityDepositRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyCanTransferSecurityDepositRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     billingAccountDestination: S.String,
@@ -436,7 +434,7 @@ export const CreateTelephonyCanTransferSecurityDepositRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateTelephonyCanTransferSecurityDepositRequest>;
 
 export type CreateTelephonyCanTransferSecurityDepositResponse = boolean;
-export const CreateTelephonyCanTransferSecurityDepositResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyCanTransferSecurityDepositResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateTelephonyCanTransferSecurityDepositResponse",
@@ -452,7 +450,7 @@ export interface CreateTelephonyChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateTelephonyChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -464,11 +462,8 @@ export const CreateTelephonyChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTelephonyChangeContactRequest>;
 
 export type CreateTelephonyChangeContactResponseBodyList = Array<number>;
-export const CreateTelephonyChangeContactResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<CreateTelephonyChangeContactResponseBodyList>;
-
 export type CreateTelephonyChangeContactResponse = CreateTelephonyChangeContactResponseBodyList;
-export const CreateTelephonyChangeContactResponse =
+const CreateTelephonyChangeContactResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<CreateTelephonyChangeContactResponse>;
 
 export interface CreateTelephonyConferenceAnnounceUploadRequest {
@@ -478,7 +473,7 @@ export interface CreateTelephonyConferenceAnnounceUploadRequest {
   /** ID of the /me/document file you want to import */
   documentId: string;
 }
-export const CreateTelephonyConferenceAnnounceUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceAnnounceUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -507,7 +502,7 @@ export interface TelephonyTask {
   status?: TelephonyTaskStatusEnum;
   taskId?: number;
 }
-export const TelephonyTask = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     message: S.optional(S.NullOr(S.String)),
@@ -525,7 +520,7 @@ export interface CreateTelephonyConferenceParticipantDeafRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyConferenceParticipantDeafRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceParticipantDeafRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -550,7 +545,7 @@ export interface CreateTelephonyConferenceParticipantEnergyRequest {
   /** The value of energy level */
   value: number;
 }
-export const CreateTelephonyConferenceParticipantEnergyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceParticipantEnergyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -574,7 +569,7 @@ export interface CreateTelephonyConferenceParticipantKickRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyConferenceParticipantKickRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceParticipantKickRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -597,7 +592,7 @@ export interface CreateTelephonyConferenceParticipantUndeafRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyConferenceParticipantUndeafRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceParticipantUndeafRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -620,7 +615,7 @@ export interface CreateTelephonyConferenceRoomRequest {
   /** The room number (a random number will be generated if not specified) */
   roomNumber?: number;
 }
-export const CreateTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -638,11 +633,11 @@ export const CreateTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Available language for your conference */
 export type TelephonyConferenceLanguageEnum = "de" | "en" | "es" | "fr" | "it";
-export const TelephonyConferenceLanguageEnum = S.String;
+const TelephonyConferenceLanguageEnum = S.String;
 
 /** Conference report receiver */
 export type TelephonyConferenceReportStatusEnum = "customer" | "none" | "other";
-export const TelephonyConferenceReportStatusEnum = S.String;
+const TelephonyConferenceReportStatusEnum = S.String;
 
 /** Conference room */
 export interface TelephonyConferenceRoom {
@@ -675,7 +670,7 @@ export interface TelephonyConferenceRoom {
   /** True if you want to receive a white-labelled mail report of your conference */
   whiteLabelReport?: boolean;
 }
-export const TelephonyConferenceRoom = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConferenceRoom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     announceFile: S.optional(S.Boolean),
     announceFilename: S.optional(S.NullOr(S.String)),
@@ -703,7 +698,7 @@ export interface CreateTelephonyConferenceRoomParticipantDeafRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyConferenceRoomParticipantDeafRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceRoomParticipantDeafRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -731,7 +726,7 @@ export interface CreateTelephonyConferenceRoomParticipantEnergyRequest {
   /** The value of energy level */
   value: number;
 }
-export const CreateTelephonyConferenceRoomParticipantEnergyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceRoomParticipantEnergyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -758,7 +753,7 @@ export interface CreateTelephonyConferenceRoomParticipantKickRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyConferenceRoomParticipantKickRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceRoomParticipantKickRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -784,7 +779,7 @@ export interface CreateTelephonyConferenceRoomParticipantUndeafRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyConferenceRoomParticipantUndeafRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceRoomParticipantUndeafRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -803,7 +798,7 @@ export const CreateTelephonyConferenceRoomParticipantUndeafRequest = /*@__PURE__
 
 /** Webaccess type for your conference */
 export type TelephonyConferenceWebAccessTypeEnum = "read" | "write";
-export const TelephonyConferenceWebAccessTypeEnum = S.String;
+const TelephonyConferenceWebAccessTypeEnum = S.String;
 
 export interface CreateTelephonyConferenceRoomWebAccessRequest {
   /** The name of your billingAccount */
@@ -814,7 +809,7 @@ export interface CreateTelephonyConferenceRoomWebAccessRequest {
   /** The type of the conference web access : read or write */
   type: TelephonyConferenceWebAccessTypeEnum | (string & {});
 }
-export const CreateTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -840,7 +835,7 @@ export interface TelephonyConferenceWebAccess {
   /** The URL of the conference web access */
   url?: string;
 }
-export const TelephonyConferenceWebAccess = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConferenceWebAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     type: S.optional(TelephonyConferenceWebAccessTypeEnum),
@@ -857,7 +852,7 @@ export interface CreateTelephonyConferenceWebAccessRequest {
   /** The type of the conference web access : read or write */
   type: TelephonyConferenceWebAccessTypeEnum | (string & {});
 }
-export const CreateTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -880,7 +875,7 @@ export interface CreateTelephonyDdiChangeDestinationRequest {
   /** The destination */
   destination: string;
 }
-export const CreateTelephonyDdiChangeDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyDdiChangeDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -898,7 +893,7 @@ export const CreateTelephonyDdiChangeDestinationRequest = /*@__PURE__*/ S.suspen
 
 /** Status of the agent */
 export type TelephonyOvhPabxHuntingAgentStatusEnum = "available" | "loggedOut" | "onBreak";
-export const TelephonyOvhPabxHuntingAgentStatusEnum = S.String;
+const TelephonyOvhPabxHuntingAgentStatusEnum = S.String;
 
 export interface CreateTelephonyEasyHuntingHuntingAgentRequest {
   /** The name of your billingAccount */
@@ -917,7 +912,7 @@ export interface CreateTelephonyEasyHuntingHuntingAgentRequest {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime: number;
 }
-export const CreateTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -940,7 +935,7 @@ export const CreateTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.sus
 
 /** Type of the agent */
 export type TelephonyOvhPabxHuntingAgentTypeEnum = "external" | "internal";
-export const TelephonyOvhPabxHuntingAgentTypeEnum = S.String;
+const TelephonyOvhPabxHuntingAgentTypeEnum = S.String;
 
 /** Calls agent */
 export interface TelephonyOvhPabxHuntingAgent {
@@ -962,7 +957,7 @@ export interface TelephonyOvhPabxHuntingAgent {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime?: number;
 }
-export const TelephonyOvhPabxHuntingAgent = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxHuntingAgent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentId: S.optional(S.Number),
     breakStatus: S.optional(S.NullOr(S.Number)),
@@ -984,19 +979,18 @@ export interface CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest {
   serviceName: string;
   agentId: number;
 }
-export const CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      agentId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    agentId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest",
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest>;
@@ -1009,7 +1003,7 @@ export interface TelephonyBannerAccess {
   /** The url of the web access */
   url?: string;
 }
-export const TelephonyBannerAccess = /*@__PURE__*/ S.suspend(() =>
+const TelephonyBannerAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1027,21 +1021,20 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest {
   /** Phone number that will be called and bridged in the communication */
   number: string;
 }
-export const CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      agentId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    agentId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/eavesdrop",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest",
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest>;
@@ -1054,7 +1047,7 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1079,7 +1072,7 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1106,21 +1099,20 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest {
   /** Phone number that will be called and that will intercept the communication */
   number: string;
 }
-export const CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      agentId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    agentId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/intercept",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest",
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest>;
@@ -1129,7 +1121,7 @@ export const CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest = /*@__P
 export type TelephonyOvhPabxWhisperingModeEnum =
   | "Whisper to agent only"
   | "Whisper to all participants";
-export const TelephonyOvhPabxWhisperingModeEnum = S.String;
+const TelephonyOvhPabxWhisperingModeEnum = S.String;
 
 export interface CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest {
   /** The name of your billingAccount */
@@ -1143,22 +1135,21 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest {
   /** Whispering mode */
   whisperingMode: TelephonyOvhPabxWhisperingModeEnum | (string & {});
 }
-export const CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      agentId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-      whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    agentId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+    whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/calls/{id}/whisper",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest",
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest>;
@@ -1170,7 +1161,7 @@ export type TelephonyTokenExpirationEnum =
   | "30 days"
   | "5 minutes"
   | "unlimited";
-export const TelephonyTokenExpirationEnum = S.String;
+const TelephonyTokenExpirationEnum = S.String;
 
 export interface CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest {
   /** The name of your billingAccount */
@@ -1180,7 +1171,7 @@ export interface CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-export const CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1198,8 +1189,8 @@ export const CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest>;
 
 export type CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse = string;
-export const CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse = /*@__PURE__*/ S.suspend(
-  () => S.String.pipe(T.RawResponseRoot()),
+const CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse",
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse>;
@@ -1214,7 +1205,7 @@ export interface CreateTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The queue where you want to add the agent */
   queueId: number;
 }
-export const CreateTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1239,7 +1230,7 @@ export interface TelephonyOvhPabxHuntingAgentQueue {
   position?: number;
   queueId?: number;
 }
-export const TelephonyOvhPabxHuntingAgentQueue = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxHuntingAgentQueue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentId: S.optional(S.Number),
     position: S.optional(S.Number),
@@ -1260,7 +1251,7 @@ export interface CreateTelephonyEasyHuntingHuntingCustomStatusRequest {
   /** The name of the status (Pause, Mission, etc...) */
   name: string;
 }
-export const CreateTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1288,7 +1279,7 @@ export interface TelephonyOvhPabxCustomStatus {
   /** The name of the status (Pause, Mission, etc...) */
   name?: string;
 }
-export const TelephonyOvhPabxCustomStatus = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxCustomStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -1306,7 +1297,7 @@ export interface CreateTelephonyEasyHuntingHuntingEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-export const CreateTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1323,7 +1314,7 @@ export const CreateTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ 
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingEventTokenRequest>;
 
 export type CreateTelephonyEasyHuntingHuntingEventTokenResponse = string;
-export const CreateTelephonyEasyHuntingHuntingEventTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingEventTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingEventTokenResponse",
@@ -1331,7 +1322,7 @@ export const CreateTelephonyEasyHuntingHuntingEventTokenResponse = /*@__PURE__*/
 
 /** Available actions for overflow and on closure */
 export type TelephonyOvhPabxQueueActionEnum = "playback" | "voicemail";
-export const TelephonyOvhPabxQueueActionEnum = S.String;
+const TelephonyOvhPabxQueueActionEnum = S.String;
 
 /** Digit keys allowed to be pressed to disable call record */
 export type TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum =
@@ -1345,11 +1336,11 @@ export type TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum =
   | 7
   | 8
   | 9;
-export const TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum = S.Number;
+const TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum = S.Number;
 
 /** Possible languages of the sound played to inform caller that he can disable call record */
 export type TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum = "english" | "french";
-export const TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum = S.String;
+const TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum = S.String;
 
 /** Calls dispatching startegy */
 export type TelephonyOvhPabxHuntingQueueStrategyEnum =
@@ -1360,7 +1351,7 @@ export type TelephonyOvhPabxHuntingQueueStrategyEnum =
   | "ringAll"
   | "roundRobin"
   | "sequentiallyByAgentOrder";
-export const TelephonyOvhPabxHuntingQueueStrategyEnum = S.String;
+const TelephonyOvhPabxHuntingQueueStrategyEnum = S.String;
 
 export interface CreateTelephonyEasyHuntingHuntingQueueRequest {
   /** The name of your billingAccount */
@@ -1393,7 +1384,7 @@ export interface CreateTelephonyEasyHuntingHuntingQueueRequest {
   /** The calls dispatching strategy */
   strategy: TelephonyOvhPabxHuntingQueueStrategyEnum | (string & {});
 }
-export const CreateTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1435,7 +1426,7 @@ export type TelephonyOvhPabxIvrMenuKeyEnum =
   | "7"
   | "8"
   | "9";
-export const TelephonyOvhPabxIvrMenuKeyEnum = S.String;
+const TelephonyOvhPabxIvrMenuKeyEnum = S.String;
 
 /** Calls queue */
 export interface TelephonyOvhPabxHuntingQueue {
@@ -1471,7 +1462,7 @@ export interface TelephonyOvhPabxHuntingQueue {
   /** The calls dispatching strategy */
   strategy?: TelephonyOvhPabxHuntingQueueStrategyEnum;
 }
-export const TelephonyOvhPabxHuntingQueue = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxHuntingQueue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionOnClosure: S.optional(S.NullOr(TelephonyOvhPabxQueueActionEnum)),
     actionOnClosureParam: S.optional(S.NullOr(S.String)),
@@ -1506,7 +1497,7 @@ export interface CreateTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The position of the agent in the queue */
   position: number;
 }
-export const CreateTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1533,24 +1524,23 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest 
   /** Phone number that will be called and bridged in the communication */
   number: string;
 }
-export const CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest",
-  }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest>;
+const CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest",
+}) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest>;
 
 export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest {
   /** The name of your billingAccount */
@@ -1560,20 +1550,19 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hangup",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest",
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest>;
@@ -1586,20 +1575,19 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/hold",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest",
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest>;
@@ -1614,24 +1602,23 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest 
   /** Phone number that will be called and that will intercept the communication */
   number: string;
 }
-export const CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest",
-  }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest>;
+const CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest",
+}) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest>;
 
 export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest {
   /** The name of your billingAccount */
@@ -1645,22 +1632,21 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest {
   /** Whispering mode */
   whisperingMode: TelephonyOvhPabxWhisperingModeEnum | (string & {});
 }
-export const CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-      whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+    whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest",
 }) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest>;
@@ -1671,7 +1657,7 @@ export type TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum =
   | "destinationWhiteList"
   | "incomingBlackList"
   | "incomingWhiteList";
-export const TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum = S.String;
+const TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum = S.String;
 
 export interface CreateTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** The name of your billingAccount */
@@ -1684,24 +1670,23 @@ export interface CreateTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** Type of screenlist */
   screenListType: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | (string & {});
 }
-export const CreateTelephonyEasyHuntingScreenListConditionConditionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      callerIdNumber: S.optional(S.String),
-      destinationNumber: S.optional(S.String),
-      screenListType: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateTelephonyEasyHuntingScreenListConditionConditionRequest",
-  }) as any as S.Schema<CreateTelephonyEasyHuntingScreenListConditionConditionRequest>;
+const CreateTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    callerIdNumber: S.optional(S.String),
+    destinationNumber: S.optional(S.String),
+    screenListType: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateTelephonyEasyHuntingScreenListConditionConditionRequest",
+}) as any as S.Schema<CreateTelephonyEasyHuntingScreenListConditionConditionRequest>;
 
 /** Screenlist condition */
 export interface TelephonyEasyHuntingScreenListsConditions {
@@ -1713,7 +1698,7 @@ export interface TelephonyEasyHuntingScreenListsConditions {
   /** Type of screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum;
 }
-export const TelephonyEasyHuntingScreenListsConditions = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEasyHuntingScreenListsConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callerIdNumber: S.optional(S.NullOr(S.String)),
     conditionId: S.optional(S.Number),
@@ -1734,7 +1719,7 @@ export interface CreateTelephonyEasyHuntingSoundUploadRequest {
   /** URL of the file you want to import (instead of /me/document ID) */
   url?: string;
 }
-export const CreateTelephonyEasyHuntingSoundUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingSoundUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1754,7 +1739,7 @@ export const CreateTelephonyEasyHuntingSoundUploadRequest = /*@__PURE__*/ S.susp
 
 /** Policy of the time condition */
 export type TelephonyTimeConditionsPolicyEnum = "available" | "slot1" | "slot2" | "slot3";
-export const TelephonyTimeConditionsPolicyEnum = S.String;
+const TelephonyTimeConditionsPolicyEnum = S.String;
 
 /** Day of the week */
 export type TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum =
@@ -1765,7 +1750,7 @@ export type TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum =
   | "thursday"
   | "tuesday"
   | "wednesday";
-export const TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum = S.String;
+const TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum = S.String;
 
 export interface CreateTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The name of your billingAccount */
@@ -1780,7 +1765,7 @@ export interface CreateTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The day of the week when the extension will be executed */
   weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum | (string & {});
 }
-export const CreateTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1811,7 +1796,7 @@ export interface TelephonyEasyHuntingTimeConditions {
   /** The day of the week when the extension will be executed */
   weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum;
 }
-export const TelephonyEasyHuntingTimeConditions = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEasyHuntingTimeConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditionId: S.optional(S.Number),
     policy: S.optional(TelephonyTimeConditionsPolicyEnum),
@@ -1829,7 +1814,7 @@ export interface CreateTelephonyEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-export const CreateTelephonyEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     expiration: TelephonyTokenExpirationEnum,
@@ -1839,26 +1824,26 @@ export const CreateTelephonyEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTelephonyEventTokenRequest>;
 
 export type CreateTelephonyEventTokenResponse = string;
-export const CreateTelephonyEventTokenResponse =
+const CreateTelephonyEventTokenResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyEventTokenResponse>;
 
 /** Available quality for fax documents */
 export type TelephonyFaxQualityEnum = "best" | "high" | "normal";
-export const TelephonyFaxQualityEnum = S.String;
+const TelephonyFaxQualityEnum = S.String;
 
 /** If recipientsType is set to list, the list of recipients phone numbers */
 export type CreateTelephonyFaxCampaignRequestRecipientsListList = Array<string>;
-export const CreateTelephonyFaxCampaignRequestRecipientsListList = /*@__PURE__*/ S.Array(
+const CreateTelephonyFaxCampaignRequestRecipientsListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateTelephonyFaxCampaignRequestRecipientsListList>;
 
 /** Available recipients method for fax campaign */
 export type TelephonyFaxCampaignRecipientsTypeEnum = "document" | "list";
-export const TelephonyFaxCampaignRecipientsTypeEnum = S.String;
+const TelephonyFaxCampaignRecipientsTypeEnum = S.String;
 
 /** Available sending method for fax campaign */
 export type TelephonyFaxCampaignSendTypeEnum = "automatic" | "manual" | "scheduled";
-export const TelephonyFaxCampaignSendTypeEnum = S.String;
+const TelephonyFaxCampaignSendTypeEnum = S.String;
 
 export interface CreateTelephonyFaxCampaignRequest {
   /** The name of your billingAccount */
@@ -1881,7 +1866,7 @@ export interface CreateTelephonyFaxCampaignRequest {
   /** Sending type of the campaign */
   sendType: TelephonyFaxCampaignSendTypeEnum | (string & {});
 }
-export const CreateTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -1925,7 +1910,7 @@ export interface TelephonyFaxCampaign {
   /** The status of the fax campaign */
   status?: string;
 }
-export const TelephonyFaxCampaign = /*@__PURE__*/ S.suspend(() =>
+const TelephonyFaxCampaign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countFailed: S.optional(S.Number),
     countSuccess: S.optional(S.Number),
@@ -1941,26 +1926,26 @@ export const TelephonyFaxCampaign = /*@__PURE__*/ S.suspend(() =>
 
 /** List of numbers not allowed to send a fax */
 export type CreateTelephonyFaxScreenListRequestBlacklistedNumbersList = Array<string>;
-export const CreateTelephonyFaxScreenListRequestBlacklistedNumbersList =
+const CreateTelephonyFaxScreenListRequestBlacklistedNumbersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<CreateTelephonyFaxScreenListRequestBlacklistedNumbersList>;
 
 /** List of logins (TSI or ID) not allowed to send a fax */
 export type CreateTelephonyFaxScreenListRequestBlacklistedTSIList = Array<string>;
-export const CreateTelephonyFaxScreenListRequestBlacklistedTSIList =
+const CreateTelephonyFaxScreenListRequestBlacklistedTSIList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<CreateTelephonyFaxScreenListRequestBlacklistedTSIList>;
 
 /** Type of screen list */
 export type TelephonyFaxScreenListTypeEnum = "" | "blacklist" | "no" | "whitelist";
-export const TelephonyFaxScreenListTypeEnum = S.String;
+const TelephonyFaxScreenListTypeEnum = S.String;
 
 /** List of numbers allowed to send a fax */
 export type CreateTelephonyFaxScreenListRequestWhitelistedNumbersList = Array<string>;
-export const CreateTelephonyFaxScreenListRequestWhitelistedNumbersList =
+const CreateTelephonyFaxScreenListRequestWhitelistedNumbersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<CreateTelephonyFaxScreenListRequestWhitelistedNumbersList>;
 
 /** List of logins (TSI or ID) allowed to send a fax */
 export type CreateTelephonyFaxScreenListRequestWhitelistedTSIList = Array<string>;
-export const CreateTelephonyFaxScreenListRequestWhitelistedTSIList =
+const CreateTelephonyFaxScreenListRequestWhitelistedTSIList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<CreateTelephonyFaxScreenListRequestWhitelistedTSIList>;
 
 export interface CreateTelephonyFaxScreenListRequest {
@@ -1978,7 +1963,7 @@ export interface CreateTelephonyFaxScreenListRequest {
   /** List of logins (TSI or ID) allowed to send a fax */
   whitelistedTSI?: CreateTelephonyFaxScreenListRequestWhitelistedTSIList;
 }
-export const CreateTelephonyFaxScreenListRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyFaxScreenListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2000,22 +1985,22 @@ export const CreateTelephonyFaxScreenListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of numbers not allowed to send a fax */
 export type TelephonyFaxScreenBlacklistedNumbersList = Array<string>;
-export const TelephonyFaxScreenBlacklistedNumbersList =
+const TelephonyFaxScreenBlacklistedNumbersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxScreenBlacklistedNumbersList>;
 
 /** List of logins (TSI or ID) not allowed to send a fax */
 export type TelephonyFaxScreenBlacklistedTSIList = Array<string>;
-export const TelephonyFaxScreenBlacklistedTSIList =
+const TelephonyFaxScreenBlacklistedTSIList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxScreenBlacklistedTSIList>;
 
 /** List of numbers allowed to send a fax */
 export type TelephonyFaxScreenWhitelistedNumbersList = Array<string>;
-export const TelephonyFaxScreenWhitelistedNumbersList =
+const TelephonyFaxScreenWhitelistedNumbersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxScreenWhitelistedNumbersList>;
 
 /** List of logins (TSI or ID) allowed to send a fax */
 export type TelephonyFaxScreenWhitelistedTSIList = Array<string>;
-export const TelephonyFaxScreenWhitelistedTSIList =
+const TelephonyFaxScreenWhitelistedTSIList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxScreenWhitelistedTSIList>;
 
 /** Fax ScreenLists */
@@ -2036,7 +2021,7 @@ export interface TelephonyFaxScreen {
   /** List of logins (TSI or ID) allowed to send a fax */
   whitelistedTSI?: TelephonyFaxScreenWhitelistedTSIList | null;
 }
-export const TelephonyFaxScreen = /*@__PURE__*/ S.suspend(() =>
+const TelephonyFaxScreen = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blacklistedNumbers: S.optional(S.NullOr(TelephonyFaxScreenBlacklistedNumbersList)),
     blacklistedTSI: S.optional(S.NullOr(TelephonyFaxScreenBlacklistedTSIList)),
@@ -2056,7 +2041,7 @@ export interface CreateTelephonyFaxSettingsChangePasswordRequest {
   /** The password, if not specified, a random password will be generated */
   password?: string | Redacted.Redacted<string>;
 }
-export const CreateTelephonyFaxSettingsChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyFaxSettingsChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2073,7 +2058,7 @@ export const CreateTelephonyFaxSettingsChangePasswordRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateTelephonyFaxSettingsChangePasswordRequest>;
 
 export type CreateTelephonyFaxSettingsChangePasswordResponse = string;
-export const CreateTelephonyFaxSettingsChangePasswordResponse =
+const CreateTelephonyFaxSettingsChangePasswordResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyFaxSettingsChangePasswordResponse>;
 
 export interface CreateTelephonyHistoryRepaymentConsumptionRequest {
@@ -2082,7 +2067,7 @@ export interface CreateTelephonyHistoryRepaymentConsumptionRequest {
   /** The number of the bill */
   billingNumber?: string;
 }
-export const CreateTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     billingNumber: S.optional(S.String),
@@ -2113,7 +2098,7 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-export const OrderCurrencyCodeEnum = S.String;
+const OrderCurrencyCodeEnum = S.String;
 
 /** Price with it's currency and textual representation */
 export interface OrderPrice {
@@ -2121,7 +2106,7 @@ export interface OrderPrice {
   text?: string;
   value?: number;
 }
-export const OrderPrice = /*@__PURE__*/ S.suspend(() =>
+const OrderPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     text: S.optional(S.String),
@@ -2131,7 +2116,7 @@ export const OrderPrice = /*@__PURE__*/ S.suspend(() =>
 
 /** Billing progress status */
 export type TelephonyBillStatusEnum = "doing" | "done" | "error" | "todo";
-export const TelephonyBillStatusEnum = S.String;
+const TelephonyBillStatusEnum = S.String;
 
 /** Previous repayment bill */
 export interface TelephonyHistoryRepaymentConsumption {
@@ -2144,7 +2129,7 @@ export interface TelephonyHistoryRepaymentConsumption {
   /** status of the bill */
   status?: TelephonyBillStatusEnum;
 }
-export const TelephonyHistoryRepaymentConsumption = /*@__PURE__*/ S.suspend(() =>
+const TelephonyHistoryRepaymentConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingNumber: S.optional(S.String),
     date: S.optional(S.String),
@@ -2166,7 +2151,7 @@ export interface CreateTelephonyLineAbbreviatedNumberRequest {
   name: string;
   surname: string;
 }
-export const CreateTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2194,7 +2179,7 @@ export interface TelephonyAbbreviatedNumber {
   name?: string;
   surname?: string;
 }
-export const TelephonyAbbreviatedNumber =
+const TelephonyAbbreviatedNumber =
   TelephonyAbbreviatedNumberGroup as any as S.Schema<TelephonyAbbreviatedNumber>;
 
 /** Action for list antihack */
@@ -2203,7 +2188,7 @@ export type TelephonyAntihackActionEnum =
   | "AUTHORIZE_ONE_NUMBER"
   | "BLOCK_ALL"
   | "BLOCK_ONE_NUMBER";
-export const TelephonyAntihackActionEnum = S.String;
+const TelephonyAntihackActionEnum = S.String;
 
 export interface CreateTelephonyLineAntihackRequest {
   /** The name of your billingAccount */
@@ -2214,7 +2199,7 @@ export interface CreateTelephonyLineAntihackRequest {
   /** Number or short number restricted */
   restricted?: string;
 }
-export const CreateTelephonyLineAntihackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineAntihackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2232,7 +2217,7 @@ export const CreateTelephonyLineAntihackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTelephonyLineAntihackRequest>;
 
 export interface CreateTelephonyLineAntihackResponse {}
-export const CreateTelephonyLineAntihackResponse =
+const CreateTelephonyLineAntihackResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineAntihackResponse>;
 
 export interface CreateTelephonyLineAssociateDeviceRequest {
@@ -2246,7 +2231,7 @@ export interface CreateTelephonyLineAssociateDeviceRequest {
   /** The slot or line position on the device (from 1 to N. N is the maximum number of lines/slots available on the device) */
   slot?: number;
 }
-export const CreateTelephonyLineAssociateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineAssociateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2265,7 +2250,7 @@ export const CreateTelephonyLineAssociateDeviceRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateTelephonyLineAssociateDeviceRequest>;
 
 export interface CreateTelephonyLineAssociateDeviceResponse {}
-export const CreateTelephonyLineAssociateDeviceResponse =
+const CreateTelephonyLineAssociateDeviceResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineAssociateDeviceResponse>;
 
 /** Types of dialplan available for callsGenerator. */
@@ -2273,7 +2258,7 @@ export type TelephonyCallsGeneratorDialplanEnum =
   | "ReadText"
   | "RequestAppointmentConfirmation"
   | "RequestAppointmentConfirmationWithTransfer";
-export const TelephonyCallsGeneratorDialplanEnum = S.String;
+const TelephonyCallsGeneratorDialplanEnum = S.String;
 
 export interface CreateTelephonyLineAutomaticCallRequest {
   /** The name of your billingAccount */
@@ -2296,7 +2281,7 @@ export interface CreateTelephonyLineAutomaticCallRequest {
   /** Text to read if TTS on dialplan selected */
   ttsTextDialplan?: string;
 }
-export const CreateTelephonyLineAutomaticCallRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineAutomaticCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2320,7 +2305,7 @@ export const CreateTelephonyLineAutomaticCallRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateTelephonyLineAutomaticCallRequest>;
 
 export type CreateTelephonyLineAutomaticCallResponse = string;
-export const CreateTelephonyLineAutomaticCallResponse =
+const CreateTelephonyLineAutomaticCallResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyLineAutomaticCallResponse>;
 
 export interface CreateTelephonyLineChangeContactRequest {
@@ -2333,7 +2318,7 @@ export interface CreateTelephonyLineChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateTelephonyLineChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -2347,12 +2332,9 @@ export const CreateTelephonyLineChangeContactRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateTelephonyLineChangeContactRequest>;
 
 export type CreateTelephonyLineChangeContactResponseBodyList = Array<number>;
-export const CreateTelephonyLineChangeContactResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<CreateTelephonyLineChangeContactResponseBodyList>;
-
 export type CreateTelephonyLineChangeContactResponse =
   CreateTelephonyLineChangeContactResponseBodyList;
-export const CreateTelephonyLineChangeContactResponse =
+const CreateTelephonyLineChangeContactResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<CreateTelephonyLineChangeContactResponse>;
 
 export interface CreateTelephonyLineChangePasswordRequest {
@@ -2362,7 +2344,7 @@ export interface CreateTelephonyLineChangePasswordRequest {
   /** The password */
   password?: string | Redacted.Redacted<string>;
 }
-export const CreateTelephonyLineChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2379,7 +2361,7 @@ export const CreateTelephonyLineChangePasswordRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateTelephonyLineChangePasswordRequest>;
 
 export interface CreateTelephonyLineChangePasswordResponse {}
-export const CreateTelephonyLineChangePasswordResponse =
+const CreateTelephonyLineChangePasswordResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineChangePasswordResponse>;
 
 export interface CreateTelephonyLineClick2CallRequest {
@@ -2391,7 +2373,7 @@ export interface CreateTelephonyLineClick2CallRequest {
   /** Activate the calling number in intercom mode automatically (pick up and speaker automatic activation). */
   intercom?: boolean;
 }
-export const CreateTelephonyLineClick2CallRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineClick2CallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2410,7 +2392,7 @@ export const CreateTelephonyLineClick2CallRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateTelephonyLineClick2CallRequest>;
 
 export interface CreateTelephonyLineClick2CallResponse {}
-export const CreateTelephonyLineClick2CallResponse =
+const CreateTelephonyLineClick2CallResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineClick2CallResponse>;
 
 export interface CreateTelephonyLineClick2CallUserRequest {
@@ -2422,7 +2404,7 @@ export interface CreateTelephonyLineClick2CallUserRequest {
   /** The user password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2440,7 +2422,7 @@ export const CreateTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateTelephonyLineClick2CallUserRequest>;
 
 export type CreateTelephonyLineClick2CallUserResponse = number;
-export const CreateTelephonyLineClick2CallUserResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineClick2CallUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Number.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateTelephonyLineClick2CallUserResponse",
@@ -2455,7 +2437,7 @@ export interface CreateTelephonyLineClick2CallUserChangePasswordRequest {
   /** The password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateTelephonyLineClick2CallUserChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineClick2CallUserChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2473,7 +2455,7 @@ export const CreateTelephonyLineClick2CallUserChangePasswordRequest = /*@__PURE_
 }) as any as S.Schema<CreateTelephonyLineClick2CallUserChangePasswordRequest>;
 
 export interface CreateTelephonyLineClick2CallUserChangePasswordResponse {}
-export const CreateTelephonyLineClick2CallUserChangePasswordResponse =
+const CreateTelephonyLineClick2CallUserChangePasswordResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineClick2CallUserChangePasswordResponse>;
 
 export interface CreateTelephonyLineClick2CallUserClick2CallRequest {
@@ -2485,7 +2467,7 @@ export interface CreateTelephonyLineClick2CallUserClick2CallRequest {
   calledNumber: string;
   callingNumber?: string;
 }
-export const CreateTelephonyLineClick2CallUserClick2CallRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineClick2CallUserClick2CallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2504,7 +2486,7 @@ export const CreateTelephonyLineClick2CallUserClick2CallRequest = /*@__PURE__*/ 
 }) as any as S.Schema<CreateTelephonyLineClick2CallUserClick2CallRequest>;
 
 export interface CreateTelephonyLineClick2CallUserClick2CallResponse {}
-export const CreateTelephonyLineClick2CallUserClick2CallResponse =
+const CreateTelephonyLineClick2CallUserClick2CallResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineClick2CallUserClick2CallResponse>;
 
 export interface CreateTelephonyLineDissociateDeviceRequest {
@@ -2516,7 +2498,7 @@ export interface CreateTelephonyLineDissociateDeviceRequest {
   /** The mac address of the device you want to dissociate from the line (format: AABBCCDDEEFF) */
   macAddress: string;
 }
-export const CreateTelephonyLineDissociateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineDissociateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2534,7 +2516,7 @@ export const CreateTelephonyLineDissociateDeviceRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateTelephonyLineDissociateDeviceRequest>;
 
 export interface CreateTelephonyLineDissociateDeviceResponse {}
-export const CreateTelephonyLineDissociateDeviceResponse =
+const CreateTelephonyLineDissociateDeviceResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineDissociateDeviceResponse>;
 
 /** Key and value, with proper key strings */
@@ -2542,7 +2524,7 @@ export interface ComplexTypeSafeKeyValueString {
   key?: string;
   value?: string;
 }
-export const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -2554,7 +2536,7 @@ export const ComplexTypeSafeKeyValueString = /*@__PURE__*/ S.suspend(() =>
 /** Name value pairs of provisioning options */
 export type CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList =
   Array<ComplexTypeSafeKeyValueString>;
-export const CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList =
+const CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList =
   /*@__PURE__*/ S.Array(
     ComplexTypeSafeKeyValueString,
   ) as any as S.Schema<CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList>;
@@ -2568,7 +2550,7 @@ export interface CreateTelephonyLinePhoneChangePhoneConfigurationRequest {
   /** Name value pairs of provisioning options */
   newConfigurations?: CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList;
 }
-export const CreateTelephonyLinePhoneChangePhoneConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLinePhoneChangePhoneConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2588,8 +2570,8 @@ export const CreateTelephonyLinePhoneChangePhoneConfigurationRequest = /*@__PURE
 }) as any as S.Schema<CreateTelephonyLinePhoneChangePhoneConfigurationRequest>;
 
 export interface CreateTelephonyLinePhoneChangePhoneConfigurationResponse {}
-export const CreateTelephonyLinePhoneChangePhoneConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const CreateTelephonyLinePhoneChangePhoneConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CreateTelephonyLinePhoneChangePhoneConfigurationResponse",
 }) as any as S.Schema<CreateTelephonyLinePhoneChangePhoneConfigurationResponse>;
@@ -2601,7 +2583,7 @@ export interface CreateTelephonyLinePhonePhonebookRequest {
   /** Name of the wanted phonebook */
   name: string;
 }
-export const CreateTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2618,7 +2600,7 @@ export const CreateTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateTelephonyLinePhonePhonebookRequest>;
 
 export type CreateTelephonyLinePhonePhonebookResponse = string;
-export const CreateTelephonyLinePhonePhonebookResponse =
+const CreateTelephonyLinePhonePhonebookResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyLinePhonePhonebookResponse>;
 
 export interface CreateTelephonyLinePhonePhonebookPhonebookContactRequest {
@@ -2642,33 +2624,32 @@ export interface CreateTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string;
 }
-export const CreateTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      bookKey: S.String.pipe(T.Label()),
-      group: S.String,
-      homeMobile: S.optional(S.String),
-      homePhone: S.optional(S.String),
-      name: S.String,
-      surname: S.String,
-      workMobile: S.optional(S.String),
-      workPhone: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    bookKey: S.String.pipe(T.Label()),
+    group: S.String,
+    homeMobile: S.optional(S.String),
+    homePhone: S.optional(S.String),
+    name: S.String,
+    surname: S.String,
+    workMobile: S.optional(S.String),
+    workPhone: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyLinePhonePhonebookPhonebookContactRequest",
 }) as any as S.Schema<CreateTelephonyLinePhonePhonebookPhonebookContactRequest>;
 
 export type CreateTelephonyLinePhonePhonebookPhonebookContactResponse = number;
-export const CreateTelephonyLinePhonePhonebookPhonebookContactResponse = /*@__PURE__*/ S.suspend(
-  () => S.Number.pipe(T.RawResponseRoot()),
+const CreateTelephonyLinePhonePhonebookPhonebookContactResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Number.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateTelephonyLinePhonePhonebookPhonebookContactResponse",
 }) as any as S.Schema<CreateTelephonyLinePhonePhonebookPhonebookContactResponse>;
@@ -2677,7 +2658,7 @@ export const CreateTelephonyLinePhonePhonebookPhonebookContactResponse = /*@__PU
 export type TelephonyRmaPublicTypeEnum =
   | "change to another phone/equipment (restitution first and shipping then)"
   | "restitution but keep the service enable";
-export const TelephonyRmaPublicTypeEnum = S.String;
+const TelephonyRmaPublicTypeEnum = S.String;
 
 export interface CreateTelephonyLinePhoneRmaRequest {
   /** The name of your billingAccount */
@@ -2692,7 +2673,7 @@ export interface CreateTelephonyLinePhoneRmaRequest {
   /** Typology process of merchandise return */
   type: TelephonyRmaPublicTypeEnum | (string & {});
 }
-export const CreateTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2716,7 +2697,7 @@ export interface TelephonyRmaReturn {
   /** Voucher reference identifier of the return merchandise authorisation */
   id?: string;
 }
-export const TelephonyRmaReturn = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRmaReturn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -2724,7 +2705,7 @@ export const TelephonyRmaReturn = /*@__PURE__*/ S.suspend(() =>
 
 /** Types of return merchandise authorisation you can change to */
 export type TelephonyRmaChangeTypeEnum = "resiliate" | "toSip";
-export const TelephonyRmaChangeTypeEnum = S.String;
+const TelephonyRmaChangeTypeEnum = S.String;
 
 export interface CreateTelephonyLinePhoneRmaChangeTypeRequest {
   /** The name of your billingAccount */
@@ -2735,7 +2716,7 @@ export interface CreateTelephonyLinePhoneRmaChangeTypeRequest {
   /** new RMA type */
   type: TelephonyRmaChangeTypeEnum | (string & {});
 }
-export const CreateTelephonyLinePhoneRmaChangeTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLinePhoneRmaChangeTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2753,7 +2734,7 @@ export const CreateTelephonyLinePhoneRmaChangeTypeRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateTelephonyLinePhoneRmaChangeTypeRequest>;
 
 export interface CreateTelephonyLinePhoneRmaChangeTypeResponse {}
-export const CreateTelephonyLinePhoneRmaChangeTypeResponse =
+const CreateTelephonyLinePhoneRmaChangeTypeResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLinePhoneRmaChangeTypeResponse>;
 
 export interface CreateTelephonyLineSoftphoneTokenRequest {
@@ -2763,7 +2744,7 @@ export interface CreateTelephonyLineSoftphoneTokenRequest {
   /** Email to receive the generated provisioning token */
   email?: string;
 }
-export const CreateTelephonyLineSoftphoneTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineSoftphoneTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2784,7 +2765,7 @@ export interface TelephonySoftphoneToken {
   /** Provisioning token used to register device */
   token?: string;
 }
-export const TelephonySoftphoneToken = /*@__PURE__*/ S.suspend(() =>
+const TelephonySoftphoneToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),
@@ -2792,7 +2773,7 @@ export const TelephonySoftphoneToken = /*@__PURE__*/ S.suspend(() =>
 
 /** Tones type */
 export type TelephonyTonesTypeEnum = "callWaiting" | "endCall" | "onHold" | "ringback";
-export const TelephonyTonesTypeEnum = S.String;
+const TelephonyTonesTypeEnum = S.String;
 
 export interface CreateTelephonyLineToneToneUploadRequest {
   /** The name of your billingAccount */
@@ -2804,7 +2785,7 @@ export interface CreateTelephonyLineToneToneUploadRequest {
   /** URL of the file you want to import (instead of /me/document ID) */
   url?: string;
 }
-export const CreateTelephonyLineToneToneUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineToneToneUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2831,7 +2812,7 @@ export interface CreateTelephonyLineTrafficExtractRequest {
   /** The start date of the traffic extract */
   dateStart: string;
 }
-export const CreateTelephonyLineTrafficExtractRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyLineTrafficExtractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2863,7 +2844,7 @@ export interface TelephonyTrafficExtract {
   /** The status of the extract */
   status?: TelephonyTaskStatusEnum;
 }
-export const TelephonyTrafficExtract = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTrafficExtract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateEnd: S.optional(S.String),
     dateStart: S.optional(S.String),
@@ -2896,7 +2877,7 @@ export type TelephonyTypeEnum =
   | "voicefax"
   | "voicemail"
   | "vxml";
-export const TelephonyTypeEnum = S.String;
+const TelephonyTypeEnum = S.String;
 
 export interface CreateTelephonyNumberChangeFeatureTypeRequest {
   /** The name of your billingAccount */
@@ -2906,7 +2887,7 @@ export interface CreateTelephonyNumberChangeFeatureTypeRequest {
   /** The new feature of the number */
   featureType: TelephonyTypeEnum | (string & {});
 }
-export const CreateTelephonyNumberChangeFeatureTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyNumberChangeFeatureTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -2928,7 +2909,7 @@ export type TelephonyOutplanNotificationBlockEnum =
   | "blockIncomingCalls"
   | "blockOutgoingCalls"
   | "none";
-export const TelephonyOutplanNotificationBlockEnum = S.String;
+const TelephonyOutplanNotificationBlockEnum = S.String;
 
 export interface CreateTelephonyOutplanNotificationRequest {
   /** The name of your billingAccount */
@@ -2940,7 +2921,7 @@ export interface CreateTelephonyOutplanNotificationRequest {
   /** The notification percentage of maximum outplan */
   percentage: number;
 }
-export const CreateTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     block: TelephonyOutplanNotificationBlockEnum,
@@ -2964,7 +2945,7 @@ export interface TelephonyConsumptionThreshold {
   /** The notification percentage of maximum outplan */
   percentage?: number;
 }
-export const TelephonyConsumptionThreshold = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConsumptionThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     block: S.optional(TelephonyOutplanNotificationBlockEnum),
     id: S.optional(S.Number),
@@ -2977,7 +2958,7 @@ export const TelephonyConsumptionThreshold = /*@__PURE__*/ S.suspend(() =>
 
 /** Displayed number */
 export type TelephonyOvhPabxDialplanNumberPresentationEnum = "alias" | "both" | "caller";
-export const TelephonyOvhPabxDialplanNumberPresentationEnum = S.String;
+const TelephonyOvhPabxDialplanNumberPresentationEnum = S.String;
 
 export interface CreateTelephonyOvhPabxDialplanRequest {
   /** The name of your billingAccount */
@@ -2992,7 +2973,7 @@ export interface CreateTelephonyOvhPabxDialplanRequest {
   /** The timeout (in seconds) when bridging calls */
   transferTimeout: number;
 }
-export const CreateTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3024,7 +3005,7 @@ export interface TelephonyOvhPabxDialplan {
   /** The timeout (in seconds) when bridging calls */
   transferTimeout?: number;
 }
-export const TelephonyOvhPabxDialplan = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxDialplan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anonymousRejection: S.optional(S.Boolean),
     dialplanId: S.optional(S.Number),
@@ -3041,7 +3022,7 @@ export type TelephonySchedulerCategoryEnum =
   | "scheduler1"
   | "scheduler2"
   | "scheduler3";
-export const TelephonySchedulerCategoryEnum = S.String;
+const TelephonySchedulerCategoryEnum = S.String;
 
 export interface CreateTelephonyOvhPabxDialplanExtensionRequest {
   /** The name of your billingAccount */
@@ -3057,7 +3038,7 @@ export interface CreateTelephonyOvhPabxDialplanExtensionRequest {
   /** The type of the screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3089,7 +3070,7 @@ export interface TelephonyOvhPabxDialplanExtension {
   /** The type of the screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | null;
 }
-export const TelephonyOvhPabxDialplanExtension = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxDialplanExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     extensionId: S.optional(S.Number),
@@ -3116,8 +3097,8 @@ export interface CreateTelephonyOvhPabxDialplanExtensionConditionScreenListReque
   /** Type of screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       billingAccount: S.String.pipe(T.Label()),
       serviceName: S.String.pipe(T.Label()),
@@ -3133,9 +3114,9 @@ export const CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
-  }) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
+).annotate({
+  identifier: "CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
+}) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
 
 /** Screenlist condition */
 export interface TelephonyOvhPabxDialplanExtensionConditionScreenList {
@@ -3147,7 +3128,7 @@ export interface TelephonyOvhPabxDialplanExtensionConditionScreenList {
   /** Type of screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | null;
 }
-export const TelephonyOvhPabxDialplanExtensionConditionScreenList = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxDialplanExtensionConditionScreenList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callerIdNumber: S.optional(S.NullOr(S.String)),
     conditionId: S.optional(S.Number),
@@ -3173,23 +3154,22 @@ export interface CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The day of the week when the extension will be executed */
   weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      dialplanId: S.Number.pipe(T.Label()),
-      extensionId: S.Number.pipe(T.Label()),
-      timeFrom: S.String,
-      timeTo: S.String,
-      weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    dialplanId: S.Number.pipe(T.Label()),
+    extensionId: S.Number.pipe(T.Label()),
+    timeFrom: S.String,
+    timeTo: S.String,
+    weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest",
 }) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
@@ -3204,7 +3184,7 @@ export interface TelephonyOvhPabxDialplanExtensionConditionTime {
   /** The day of the week when the extension will be executed */
   weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum;
 }
-export const TelephonyOvhPabxDialplanExtensionConditionTime = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxDialplanExtensionConditionTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditionId: S.optional(S.Number),
     timeFrom: S.optional(S.String),
@@ -3228,7 +3208,7 @@ export type TelephonyOvhPabxDialplanExtensionRuleActionEnum =
   | "sleep"
   | "tts"
   | "voicemail";
-export const TelephonyOvhPabxDialplanExtensionRuleActionEnum = S.String;
+const TelephonyOvhPabxDialplanExtensionRuleActionEnum = S.String;
 
 export interface CreateTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The name of your billingAccount */
@@ -3245,7 +3225,7 @@ export interface CreateTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The position of the rule in the extension (the rules are executed following this order) */
   position: number;
 }
-export const CreateTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3278,7 +3258,7 @@ export interface TelephonyOvhPabxDialplanExtensionRule {
   position?: number;
   ruleId?: number;
 }
-export const TelephonyOvhPabxDialplanExtensionRule = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxDialplanExtensionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(TelephonyOvhPabxDialplanExtensionRuleActionEnum),
     actionParam: S.optional(S.NullOr(S.String)),
@@ -3307,7 +3287,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentRequest {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime: number;
 }
-export const CreateTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3334,7 +3314,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentBannerAccessRequest {
   serviceName: string;
   agentId: number;
 }
-export const CreateTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3360,7 +3340,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest {
   /** Phone number that will be called and bridged in the communication */
   number: string;
 }
-export const CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3386,7 +3366,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallHangupRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyOvhPabxHuntingAgentCallHangupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentCallHangupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3411,7 +3391,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallHoldRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyOvhPabxHuntingAgentCallHoldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentCallHoldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3438,7 +3418,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest {
   /** Phone number that will be called and that will intercept the communication */
   number: string;
 }
-export const CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3468,7 +3448,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest {
   /** Whispering mode */
   whisperingMode: TelephonyOvhPabxWhisperingModeEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3495,7 +3475,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3513,7 +3493,7 @@ export const CreateTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/
 }) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentEventTokenRequest>;
 
 export type CreateTelephonyOvhPabxHuntingAgentEventTokenResponse = string;
-export const CreateTelephonyOvhPabxHuntingAgentEventTokenResponse =
+const CreateTelephonyOvhPabxHuntingAgentEventTokenResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentEventTokenResponse>;
 
 export interface CreateTelephonyOvhPabxHuntingAgentQueueRequest {
@@ -3526,7 +3506,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The queue where you want to add the agent */
   queueId: number;
 }
-export const CreateTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3555,7 +3535,7 @@ export interface CreateTelephonyOvhPabxHuntingCustomStatusRequest {
   /** The name of the status (Pause, Mission, etc...) */
   name: string;
 }
-export const CreateTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3580,7 +3560,7 @@ export interface CreateTelephonyOvhPabxHuntingEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3597,7 +3577,7 @@ export const CreateTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateTelephonyOvhPabxHuntingEventTokenRequest>;
 
 export type CreateTelephonyOvhPabxHuntingEventTokenResponse = string;
-export const CreateTelephonyOvhPabxHuntingEventTokenResponse =
+const CreateTelephonyOvhPabxHuntingEventTokenResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyOvhPabxHuntingEventTokenResponse>;
 
 export interface CreateTelephonyOvhPabxHuntingQueueRequest {
@@ -3631,7 +3611,7 @@ export interface CreateTelephonyOvhPabxHuntingQueueRequest {
   /** The calls dispatching strategy */
   strategy: TelephonyOvhPabxHuntingQueueStrategyEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3667,7 +3647,7 @@ export interface CreateTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The position of the agent in the queue */
   position: number;
 }
-export const CreateTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3694,21 +3674,20 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest {
   /** Phone number that will be called and bridged in the communication */
   number: string;
 }
-export const CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/eavesdrop",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest",
 }) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest>;
@@ -3721,7 +3700,7 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3746,7 +3725,7 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest {
   /** Id of the object */
   id: number;
 }
-export const CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3773,21 +3752,20 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest {
   /** Phone number that will be called and that will intercept the communication */
   number: string;
 }
-export const CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/intercept",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest",
 }) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest>;
@@ -3804,22 +3782,21 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest {
   /** Whispering mode */
   whisperingMode: TelephonyOvhPabxWhisperingModeEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      number: S.String,
-      whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper",
-        code: 200,
-      }),
-    ),
+const CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    number: S.String,
+    whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/hunting/queue/{queueId}/liveCalls/{id}/whisper",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest",
 }) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest>;
@@ -3843,7 +3820,7 @@ export interface CreateTelephonyOvhPabxMenuRequest {
   /** The timeout in milliseconds before ending the menu when no DTMF is received */
   timeout?: number;
 }
-export const CreateTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3883,7 +3860,7 @@ export interface TelephonyOvhPabxMenu {
   /** The timeout in milliseconds before ending the menu when no DTMF is received */
   timeout?: number;
 }
-export const TelephonyOvhPabxMenu = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxMenu = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     greetSound: S.optional(S.NullOr(S.Number)),
     greetSoundTts: S.optional(S.NullOr(S.Number)),
@@ -3907,7 +3884,7 @@ export type TelephonyOvhPabxIvrMenuEntryActionEnum =
   | "playback"
   | "readDtmf"
   | "setCallerName";
-export const TelephonyOvhPabxIvrMenuEntryActionEnum = S.String;
+const TelephonyOvhPabxIvrMenuEntryActionEnum = S.String;
 
 export interface CreateTelephonyOvhPabxMenuEntryRequest {
   /** The name of your billingAccount */
@@ -3923,7 +3900,7 @@ export interface CreateTelephonyOvhPabxMenuEntryRequest {
   /** The position of the entry in the menu */
   position: number;
 }
-export const CreateTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3955,7 +3932,7 @@ export interface TelephonyOvhPabxMenuEntry {
   /** The position of the entry in the menu */
   position?: number;
 }
-export const TelephonyOvhPabxMenuEntry = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxMenuEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(TelephonyOvhPabxIvrMenuEntryActionEnum),
     actionParam: S.optional(S.String),
@@ -3978,7 +3955,7 @@ export interface CreateTelephonyOvhPabxSoundUploadRequest {
   /** URL of the file you want to import (instead of /me/document ID) */
   url?: string;
 }
-export const CreateTelephonyOvhPabxSoundUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxSoundUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -3998,7 +3975,7 @@ export const CreateTelephonyOvhPabxSoundUploadRequest = /*@__PURE__*/ S.suspend(
 
 /** Voice to use for your text to speech */
 export type TelephonyOvhPabxTtsVoiceEnum = "Bruce" | "Helene" | "Jenny" | "Loic";
-export const TelephonyOvhPabxTtsVoiceEnum = S.String;
+const TelephonyOvhPabxTtsVoiceEnum = S.String;
 
 export interface CreateTelephonyOvhPabxTtsRequest {
   /** The name of your billingAccount */
@@ -4007,7 +3984,7 @@ export interface CreateTelephonyOvhPabxTtsRequest {
   text: string;
   voice?: TelephonyOvhPabxTtsVoiceEnum | (string & {});
 }
-export const CreateTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4025,7 +4002,7 @@ export const CreateTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTelephonyOvhPabxTtsRequest>;
 
 export interface CreateTelephonyOvhPabxTtsResponse {}
-export const CreateTelephonyOvhPabxTtsResponse =
+const CreateTelephonyOvhPabxTtsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyOvhPabxTtsResponse>;
 
 export interface CreateTelephonyPhonebookRequest {
@@ -4034,7 +4011,7 @@ export interface CreateTelephonyPhonebookRequest {
   /** Name of the wanted phonebook */
   name: string;
 }
-export const CreateTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     name: S.String,
@@ -4044,7 +4021,7 @@ export const CreateTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTelephonyPhonebookRequest>;
 
 export type CreateTelephonyPhonebookResponse = string;
-export const CreateTelephonyPhonebookResponse =
+const CreateTelephonyPhonebookResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyPhonebookResponse>;
 
 export interface CreateTelephonyPhonebookPhonebookContactRequest {
@@ -4067,7 +4044,7 @@ export interface CreateTelephonyPhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string;
 }
-export const CreateTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -4090,7 +4067,7 @@ export const CreateTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateTelephonyPhonebookPhonebookContactRequest>;
 
 export type CreateTelephonyPhonebookPhonebookContactResponse = number;
-export const CreateTelephonyPhonebookPhonebookContactResponse =
+const CreateTelephonyPhonebookPhonebookContactResponse =
   CreateTelephonyLineClick2CallUserResponse as any as S.Schema<CreateTelephonyPhonebookPhonebookContactResponse>;
 
 export interface CreateTelephonyPortabilityChangeDateRequest {
@@ -4101,7 +4078,7 @@ export interface CreateTelephonyPortabilityChangeDateRequest {
   /** The proposed portability due date */
   date: string;
 }
-export const CreateTelephonyPortabilityChangeDateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyPortabilityChangeDateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4118,7 +4095,7 @@ export const CreateTelephonyPortabilityChangeDateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateTelephonyPortabilityChangeDateRequest>;
 
 export interface CreateTelephonyPortabilityChangeDateResponse {}
-export const CreateTelephonyPortabilityChangeDateResponse =
+const CreateTelephonyPortabilityChangeDateResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyPortabilityChangeDateResponse>;
 
 export interface CreateTelephonyPortabilityDocumentRequest {
@@ -4131,7 +4108,7 @@ export interface CreateTelephonyPortabilityDocumentRequest {
   /** Document's name */
   name: string;
 }
-export const CreateTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4163,7 +4140,7 @@ export interface TelephonyPortabilityDocument {
   /** Document size (in bytes) */
   size?: number;
 }
-export const TelephonyPortabilityDocument = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPortabilityDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     documentId: S.optional(S.Number),
@@ -4179,7 +4156,7 @@ export const TelephonyPortabilityDocument = /*@__PURE__*/ S.suspend(() =>
 /** List of parameters to use to fix error */
 export type CreateTelephonyPortabilityRelaunchRequestParametersList =
   Array<ComplexTypeSafeKeyValueString>;
-export const CreateTelephonyPortabilityRelaunchRequestParametersList = /*@__PURE__*/ S.Array(
+const CreateTelephonyPortabilityRelaunchRequestParametersList = /*@__PURE__*/ S.Array(
   ComplexTypeSafeKeyValueString,
 ) as any as S.Schema<CreateTelephonyPortabilityRelaunchRequestParametersList>;
 
@@ -4191,7 +4168,7 @@ export interface CreateTelephonyPortabilityRelaunchRequest {
   /** List of parameters to use to fix error */
   parameters: CreateTelephonyPortabilityRelaunchRequestParametersList;
 }
-export const CreateTelephonyPortabilityRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyPortabilityRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4208,7 +4185,7 @@ export const CreateTelephonyPortabilityRelaunchRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateTelephonyPortabilityRelaunchRequest>;
 
 export interface CreateTelephonyPortabilityRelaunchResponse {}
-export const CreateTelephonyPortabilityRelaunchResponse =
+const CreateTelephonyPortabilityRelaunchResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyPortabilityRelaunchResponse>;
 
 export interface CreateTelephonyProcedureRequest {
@@ -4223,7 +4200,7 @@ export interface CreateTelephonyProcedureRequest {
   /** The ID of your registered SEPA account payment mean. */
   paymentMeanID?: number;
 }
-export const CreateTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bic: S.optional(S.String),
     iban: S.optional(S.String),
@@ -4242,7 +4219,7 @@ export type TelephonyProcedureStatusEnum =
   | "done"
   | "todo"
   | "waiting_for_customer";
-export const TelephonyProcedureStatusEnum = S.String;
+const TelephonyProcedureStatusEnum = S.String;
 
 /** Procedure linked to your account */
 export interface TelephonyProcedure {
@@ -4257,7 +4234,7 @@ export interface TelephonyProcedure {
   /** The current status of the procedure. */
   status?: TelephonyProcedureStatusEnum;
 }
-export const TelephonyProcedure = /*@__PURE__*/ S.suspend(() =>
+const TelephonyProcedure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finishDate: S.optional(S.NullOr(S.String)),
     id: S.optional(S.Number),
@@ -4274,7 +4251,7 @@ export interface CreateTelephonyRedirectChangeDestinationRequest {
   /** The destination */
   destination: string;
 }
-export const CreateTelephonyRedirectChangeDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyRedirectChangeDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4297,7 +4274,7 @@ export interface CreateTelephonyRsvaScheduleRateCodeRequest {
   /** The specified rate code */
   rateCode: string;
 }
-export const CreateTelephonyRsvaScheduleRateCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyRsvaScheduleRateCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4332,7 +4309,7 @@ export interface TelephonyDetailedRateCodeInformation {
   /** Fees concerning rateCode update */
   updateRateCodePriceWithoutTax?: OrderPrice | null;
 }
-export const TelephonyDetailedRateCodeInformation = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDetailedRateCodeInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelLimitDatetime: S.optional(S.NullOr(S.String)),
     effectiveDatetime: S.optional(S.NullOr(S.String)),
@@ -4364,7 +4341,7 @@ export interface CreateTelephonySchedulerEventRequest {
   /** The unique ICS event identifier */
   uid?: string;
 }
-export const CreateTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4386,7 +4363,7 @@ export const CreateTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateTelephonySchedulerEventRequest>;
 
 export interface CreateTelephonySchedulerEventResponse {}
-export const CreateTelephonySchedulerEventResponse =
+const CreateTelephonySchedulerEventResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonySchedulerEventResponse>;
 
 /** Nature of screen list */
@@ -4396,7 +4373,7 @@ export type TelephonyScreenListNatureEnum =
   | "services"
   | "special"
   | "voicemail";
-export const TelephonyScreenListNatureEnum = S.String;
+const TelephonyScreenListNatureEnum = S.String;
 
 /** Type of screen list */
 export type TelephonyScreenListTypeEnum =
@@ -4404,7 +4381,7 @@ export type TelephonyScreenListTypeEnum =
   | "incomingWhiteList"
   | "outgoingBlackList"
   | "outgoingWhiteList";
-export const TelephonyScreenListTypeEnum = S.String;
+const TelephonyScreenListTypeEnum = S.String;
 
 export interface CreateTelephonyScreenScreenListRequest {
   /** The name of your billingAccount */
@@ -4417,7 +4394,7 @@ export interface CreateTelephonyScreenScreenListRequest {
   /** The type of the generic screen list */
   type: TelephonyScreenListTypeEnum | (string & {});
 }
-export const CreateTelephonyScreenScreenListRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyScreenScreenListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4436,7 +4413,7 @@ export const CreateTelephonyScreenScreenListRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateTelephonyScreenScreenListRequest>;
 
 export interface CreateTelephonyScreenScreenListResponse {}
-export const CreateTelephonyScreenScreenListResponse =
+const CreateTelephonyScreenScreenListResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyScreenScreenListResponse>;
 
 export interface CreateTelephonyServiceChangeOfBillingAccountRequest {
@@ -4446,7 +4423,7 @@ export interface CreateTelephonyServiceChangeOfBillingAccountRequest {
   /** Billing account destination target */
   billingAccountDestination: string;
 }
-export const CreateTelephonyServiceChangeOfBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyServiceChangeOfBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4463,7 +4440,7 @@ export const CreateTelephonyServiceChangeOfBillingAccountRequest = /*@__PURE__*/
 }) as any as S.Schema<CreateTelephonyServiceChangeOfBillingAccountRequest>;
 
 export interface CreateTelephonyServiceChangeOfBillingAccountResponse {}
-export const CreateTelephonyServiceChangeOfBillingAccountResponse =
+const CreateTelephonyServiceChangeOfBillingAccountResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyServiceChangeOfBillingAccountResponse>;
 
 export interface CreateTelephonyServiceEventTokenRequest {
@@ -4473,7 +4450,7 @@ export interface CreateTelephonyServiceEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-export const CreateTelephonyServiceEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyServiceEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4490,7 +4467,7 @@ export const CreateTelephonyServiceEventTokenRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateTelephonyServiceEventTokenRequest>;
 
 export type CreateTelephonyServiceEventTokenResponse = string;
-export const CreateTelephonyServiceEventTokenResponse =
+const CreateTelephonyServiceEventTokenResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyServiceEventTokenResponse>;
 
 export interface CreateTelephonyServiceOfferChangeRequest {
@@ -4500,7 +4477,7 @@ export interface CreateTelephonyServiceOfferChangeRequest {
   /** The future offer */
   offer: string;
 }
-export const CreateTelephonyServiceOfferChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyServiceOfferChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4517,7 +4494,7 @@ export const CreateTelephonyServiceOfferChangeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateTelephonyServiceOfferChangeRequest>;
 
 export interface CreateTelephonyServiceOfferChangeResponse {}
-export const CreateTelephonyServiceOfferChangeResponse =
+const CreateTelephonyServiceOfferChangeResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyServiceOfferChangeResponse>;
 
 export interface CreateTelephonySoundRequest {
@@ -4526,7 +4503,7 @@ export interface CreateTelephonySoundRequest {
   /** Sound filename */
   filename: string;
 }
-export const CreateTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     filename: S.String,
@@ -4552,7 +4529,7 @@ export interface TelephonySound {
   /** Sound file size (in bytes) */
   size?: number;
 }
-export const TelephonySound = /*@__PURE__*/ S.suspend(() =>
+const TelephonySound = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
@@ -4574,7 +4551,7 @@ export type TelephonyTimeConditionsDayEnum =
   | "thursday"
   | "tuesday"
   | "wednesday";
-export const TelephonyTimeConditionsDayEnum = S.String;
+const TelephonyTimeConditionsDayEnum = S.String;
 
 export interface CreateTelephonyTimeConditionConditionRequest {
   /** The name of your billingAccount */
@@ -4589,7 +4566,7 @@ export interface CreateTelephonyTimeConditionConditionRequest {
   /** The policy */
   policy: TelephonyTimeConditionsPolicyEnum | (string & {});
 }
-export const CreateTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4617,7 +4594,7 @@ export interface TelephonyTimeCondition {
   policy?: TelephonyTimeConditionsPolicyEnum;
   status?: string;
 }
-export const TelephonyTimeCondition = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTimeCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(TelephonyTimeConditionsDayEnum),
     hourBegin: S.optional(S.String),
@@ -4638,7 +4615,7 @@ export interface CreateTelephonyTrunkChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateTelephonyTrunkChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyTrunkChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -4652,12 +4629,9 @@ export const CreateTelephonyTrunkChangeContactRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateTelephonyTrunkChangeContactRequest>;
 
 export type CreateTelephonyTrunkChangeContactResponseBodyList = Array<number>;
-export const CreateTelephonyTrunkChangeContactResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<CreateTelephonyTrunkChangeContactResponseBodyList>;
-
 export type CreateTelephonyTrunkChangeContactResponse =
   CreateTelephonyTrunkChangeContactResponseBodyList;
-export const CreateTelephonyTrunkChangeContactResponse =
+const CreateTelephonyTrunkChangeContactResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<CreateTelephonyTrunkChangeContactResponse>;
 
 export interface CreateTelephonyTrunkExternalDisplayedNumberRequest {
@@ -4670,7 +4644,7 @@ export interface CreateTelephonyTrunkExternalDisplayedNumberRequest {
   /** External displayed number to create, in international format */
   number: string;
 }
-export const CreateTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4693,7 +4667,7 @@ export type TelephonyTrunkExternalDisplayedNumberStatusEnum =
   | "refused"
   | "toDelete"
   | "waitingValidation";
-export const TelephonyTrunkExternalDisplayedNumberStatusEnum = S.String;
+const TelephonyTrunkExternalDisplayedNumberStatusEnum = S.String;
 
 /** External displayed number linked to a trunk */
 export interface TelephonyTrunkExternalDisplayedNumber {
@@ -4706,7 +4680,7 @@ export interface TelephonyTrunkExternalDisplayedNumber {
   /** Validation date */
   validatedAt?: string | null;
 }
-export const TelephonyTrunkExternalDisplayedNumber = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTrunkExternalDisplayedNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     number: S.optional(S.String),
@@ -4719,7 +4693,7 @@ export const TelephonyTrunkExternalDisplayedNumber = /*@__PURE__*/ S.suspend(() 
 
 /** Folder type */
 export type TelephonyVoicemailMessageFolderGreetingEnum = "busy" | "greet" | "temp" | "unavail";
-export const TelephonyVoicemailMessageFolderGreetingEnum = S.String;
+const TelephonyVoicemailMessageFolderGreetingEnum = S.String;
 
 export interface CreateTelephonyVoicemailGreetingRequest {
   /** The name of your billingAccount */
@@ -4730,7 +4704,7 @@ export interface CreateTelephonyVoicemailGreetingRequest {
   /** Get the /me/document uuid generated */
   documentId: string;
 }
-export const CreateTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4748,7 +4722,7 @@ export const CreateTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateTelephonyVoicemailGreetingRequest>;
 
 export type CreateTelephonyVoicemailGreetingResponse = number;
-export const CreateTelephonyVoicemailGreetingResponse =
+const CreateTelephonyVoicemailGreetingResponse =
   CreateTelephonyLineClick2CallUserResponse as any as S.Schema<CreateTelephonyVoicemailGreetingResponse>;
 
 export interface CreateTelephonyVoicemailSettingsChangePasswordRequest {
@@ -4758,7 +4732,7 @@ export interface CreateTelephonyVoicemailSettingsChangePasswordRequest {
   /** The password */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateTelephonyVoicemailSettingsChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyVoicemailSettingsChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4775,12 +4749,12 @@ export const CreateTelephonyVoicemailSettingsChangePasswordRequest = /*@__PURE__
 }) as any as S.Schema<CreateTelephonyVoicemailSettingsChangePasswordRequest>;
 
 export interface CreateTelephonyVoicemailSettingsChangePasswordResponse {}
-export const CreateTelephonyVoicemailSettingsChangePasswordResponse =
+const CreateTelephonyVoicemailSettingsChangePasswordResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyVoicemailSettingsChangePasswordResponse>;
 
 /** All existing type of routing for a voicemail */
 export type TelephonyVoicefaxRoutingEnum = "fax" | "voicemail";
-export const TelephonyVoicefaxRoutingEnum = S.String;
+const TelephonyVoicefaxRoutingEnum = S.String;
 
 export interface CreateTelephonyVoicemailSettingsChangeRoutingRequest {
   /** The name of your billingAccount */
@@ -4789,7 +4763,7 @@ export interface CreateTelephonyVoicemailSettingsChangeRoutingRequest {
   /** Activate or Desactivate voicemail on the line */
   routing: TelephonyVoicefaxRoutingEnum | (string & {});
 }
-export const CreateTelephonyVoicemailSettingsChangeRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyVoicemailSettingsChangeRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4806,7 +4780,7 @@ export const CreateTelephonyVoicemailSettingsChangeRoutingRequest = /*@__PURE__*
 }) as any as S.Schema<CreateTelephonyVoicemailSettingsChangeRoutingRequest>;
 
 export interface CreateTelephonyVoicemailSettingsChangeRoutingResponse {}
-export const CreateTelephonyVoicemailSettingsChangeRoutingResponse =
+const CreateTelephonyVoicemailSettingsChangeRoutingResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyVoicemailSettingsChangeRoutingResponse>;
 
 export interface CreateTelephonyVxmlSettingsLogRequest {
@@ -4814,7 +4788,7 @@ export interface CreateTelephonyVxmlSettingsLogRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const CreateTelephonyVxmlSettingsLogRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelephonyVxmlSettingsLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4836,7 +4810,7 @@ export interface TelephonyTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
-export const TelephonyTemporaryLogsLink = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTemporaryLogsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     url: S.optional(S.String),
@@ -4855,7 +4829,7 @@ export type TelephonyTerminationReasonEnum =
   | "other"
   | "plugAndPhoneDifficulties"
   | "technicalDifficulties";
-export const TelephonyTerminationReasonEnum = S.String;
+const TelephonyTerminationReasonEnum = S.String;
 
 export interface DeleteTelephonyRequest {
   /** The name of your billingAccount */
@@ -4865,7 +4839,7 @@ export interface DeleteTelephonyRequest {
   /** Termination reason */
   reason: TelephonyTerminationReasonEnum | (string & {});
 }
-export const DeleteTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     details: S.optional(S.String.pipe(T.Query())),
@@ -4874,7 +4848,7 @@ export const DeleteTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTelephonyRequest" }) as any as S.Schema<DeleteTelephonyRequest>;
 
 export interface DeleteTelephonyResponse {}
-export const DeleteTelephonyResponse =
+const DeleteTelephonyResponse =
   BlockTelephonyLineResponse as any as S.Schema<DeleteTelephonyResponse>;
 
 export interface DeleteTelephonyAbbreviatedNumberRequest {
@@ -4883,7 +4857,7 @@ export interface DeleteTelephonyAbbreviatedNumberRequest {
   /** The abbreviated number which must start with "7" and must have a length of 3 or 4 digits */
   abbreviatedNumber: number;
 }
-export const DeleteTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     abbreviatedNumber: S.Number.pipe(T.Label()),
@@ -4899,7 +4873,7 @@ export const DeleteTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTelephonyAbbreviatedNumberRequest>;
 
 export interface DeleteTelephonyAbbreviatedNumberResponse {}
-export const DeleteTelephonyAbbreviatedNumberResponse =
+const DeleteTelephonyAbbreviatedNumberResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyAbbreviatedNumberResponse>;
 
 export interface DeleteTelephonyConferenceRoomWebAccessRequest {
@@ -4911,7 +4885,7 @@ export interface DeleteTelephonyConferenceRoomWebAccessRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4929,7 +4903,7 @@ export const DeleteTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteTelephonyConferenceRoomWebAccessRequest>;
 
 export interface DeleteTelephonyConferenceRoomWebAccessResponse {}
-export const DeleteTelephonyConferenceRoomWebAccessResponse =
+const DeleteTelephonyConferenceRoomWebAccessResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyConferenceRoomWebAccessResponse>;
 
 export interface DeleteTelephonyConferenceWebAccessRequest {
@@ -4939,7 +4913,7 @@ export interface DeleteTelephonyConferenceWebAccessRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4956,7 +4930,7 @@ export const DeleteTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteTelephonyConferenceWebAccessRequest>;
 
 export interface DeleteTelephonyConferenceWebAccessResponse {}
-export const DeleteTelephonyConferenceWebAccessResponse =
+const DeleteTelephonyConferenceWebAccessResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyConferenceWebAccessResponse>;
 
 export interface DeleteTelephonyEasyHuntingHuntingAgentRequest {
@@ -4965,7 +4939,7 @@ export interface DeleteTelephonyEasyHuntingHuntingAgentRequest {
   serviceName: string;
   agentId: number;
 }
-export const DeleteTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -4982,7 +4956,7 @@ export const DeleteTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentRequest>;
 
 export interface DeleteTelephonyEasyHuntingHuntingAgentResponse {}
-export const DeleteTelephonyEasyHuntingHuntingAgentResponse =
+const DeleteTelephonyEasyHuntingHuntingAgentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentResponse>;
 
 export interface DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest {
@@ -4991,25 +4965,24 @@ export interface DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest {
   serviceName: string;
   agentId: number;
 }
-export const DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      agentId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess",
-        code: 200,
-      }),
-    ),
+const DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    agentId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/bannerAccess",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest",
 }) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest>;
 
 export interface DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse {}
-export const DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse =
+const DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse =
   CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse>;
 
 export interface DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest {
@@ -5018,7 +4991,7 @@ export interface DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest {
   serviceName: string;
   agentId: number;
 }
-export const DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5035,7 +5008,7 @@ export const DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE
 }) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest>;
 
 export interface DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse {}
-export const DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse =
+const DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse =
   CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse>;
 
 export interface DeleteTelephonyEasyHuntingHuntingAgentQueueRequest {
@@ -5045,7 +5018,7 @@ export interface DeleteTelephonyEasyHuntingHuntingAgentQueueRequest {
   agentId: number;
   queueId: number;
 }
-export const DeleteTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5063,7 +5036,7 @@ export const DeleteTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentQueueRequest>;
 
 export interface DeleteTelephonyEasyHuntingHuntingAgentQueueResponse {}
-export const DeleteTelephonyEasyHuntingHuntingAgentQueueResponse =
+const DeleteTelephonyEasyHuntingHuntingAgentQueueResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentQueueResponse>;
 
 export interface DeleteTelephonyEasyHuntingHuntingCustomStatusRequest {
@@ -5072,7 +5045,7 @@ export interface DeleteTelephonyEasyHuntingHuntingCustomStatusRequest {
   serviceName: string;
   id: number;
 }
-export const DeleteTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5089,7 +5062,7 @@ export const DeleteTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingCustomStatusRequest>;
 
 export interface DeleteTelephonyEasyHuntingHuntingCustomStatusResponse {}
-export const DeleteTelephonyEasyHuntingHuntingCustomStatusResponse =
+const DeleteTelephonyEasyHuntingHuntingCustomStatusResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingCustomStatusResponse>;
 
 export interface DeleteTelephonyEasyHuntingHuntingEventTokenRequest {
@@ -5097,7 +5070,7 @@ export interface DeleteTelephonyEasyHuntingHuntingEventTokenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const DeleteTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5113,7 +5086,7 @@ export const DeleteTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingEventTokenRequest>;
 
 export interface DeleteTelephonyEasyHuntingHuntingEventTokenResponse {}
-export const DeleteTelephonyEasyHuntingHuntingEventTokenResponse =
+const DeleteTelephonyEasyHuntingHuntingEventTokenResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingEventTokenResponse>;
 
 export interface DeleteTelephonyEasyHuntingHuntingQueueRequest {
@@ -5122,7 +5095,7 @@ export interface DeleteTelephonyEasyHuntingHuntingQueueRequest {
   serviceName: string;
   queueId: number;
 }
-export const DeleteTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5139,7 +5112,7 @@ export const DeleteTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueRequest>;
 
 export interface DeleteTelephonyEasyHuntingHuntingQueueResponse {}
-export const DeleteTelephonyEasyHuntingHuntingQueueResponse =
+const DeleteTelephonyEasyHuntingHuntingQueueResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueResponse>;
 
 export interface DeleteTelephonyEasyHuntingHuntingQueueAgentRequest {
@@ -5149,7 +5122,7 @@ export interface DeleteTelephonyEasyHuntingHuntingQueueAgentRequest {
   queueId: number;
   agentId: number;
 }
-export const DeleteTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5167,7 +5140,7 @@ export const DeleteTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueAgentRequest>;
 
 export interface DeleteTelephonyEasyHuntingHuntingQueueAgentResponse {}
-export const DeleteTelephonyEasyHuntingHuntingQueueAgentResponse =
+const DeleteTelephonyEasyHuntingHuntingQueueAgentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueAgentResponse>;
 
 export interface DeleteTelephonyEasyHuntingRecordRequest {
@@ -5176,7 +5149,7 @@ export interface DeleteTelephonyEasyHuntingRecordRequest {
   serviceName: string;
   id: number;
 }
-export const DeleteTelephonyEasyHuntingRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5193,7 +5166,7 @@ export const DeleteTelephonyEasyHuntingRecordRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTelephonyEasyHuntingRecordRequest>;
 
 export interface DeleteTelephonyEasyHuntingRecordResponse {}
-export const DeleteTelephonyEasyHuntingRecordResponse =
+const DeleteTelephonyEasyHuntingRecordResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingRecordResponse>;
 
 export interface DeleteTelephonyEasyHuntingScreenListConditionConditionRequest {
@@ -5202,28 +5175,28 @@ export interface DeleteTelephonyEasyHuntingScreenListConditionConditionRequest {
   serviceName: string;
   conditionId: number;
 }
-export const DeleteTelephonyEasyHuntingScreenListConditionConditionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      conditionId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteTelephonyEasyHuntingScreenListConditionConditionRequest",
-  }) as any as S.Schema<DeleteTelephonyEasyHuntingScreenListConditionConditionRequest>;
+const DeleteTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    conditionId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteTelephonyEasyHuntingScreenListConditionConditionRequest",
+}) as any as S.Schema<DeleteTelephonyEasyHuntingScreenListConditionConditionRequest>;
 
 export interface DeleteTelephonyEasyHuntingScreenListConditionConditionResponse {}
-export const DeleteTelephonyEasyHuntingScreenListConditionConditionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTelephonyEasyHuntingScreenListConditionConditionResponse",
-  }) as any as S.Schema<DeleteTelephonyEasyHuntingScreenListConditionConditionResponse>;
+const DeleteTelephonyEasyHuntingScreenListConditionConditionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTelephonyEasyHuntingScreenListConditionConditionResponse",
+}) as any as S.Schema<DeleteTelephonyEasyHuntingScreenListConditionConditionResponse>;
 
 export interface DeleteTelephonyEasyHuntingSoundRequest {
   /** The name of your billingAccount */
@@ -5231,7 +5204,7 @@ export interface DeleteTelephonyEasyHuntingSoundRequest {
   serviceName: string;
   soundId: number;
 }
-export const DeleteTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5248,7 +5221,7 @@ export const DeleteTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteTelephonyEasyHuntingSoundRequest>;
 
 export interface DeleteTelephonyEasyHuntingSoundResponse {}
-export const DeleteTelephonyEasyHuntingSoundResponse =
+const DeleteTelephonyEasyHuntingSoundResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingSoundResponse>;
 
 export interface DeleteTelephonyEasyHuntingTimeConditionConditionRequest {
@@ -5257,7 +5230,7 @@ export interface DeleteTelephonyEasyHuntingTimeConditionConditionRequest {
   serviceName: string;
   conditionId: number;
 }
-export const DeleteTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5274,14 +5247,14 @@ export const DeleteTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE
 }) as any as S.Schema<DeleteTelephonyEasyHuntingTimeConditionConditionRequest>;
 
 export interface DeleteTelephonyEasyHuntingTimeConditionConditionResponse {}
-export const DeleteTelephonyEasyHuntingTimeConditionConditionResponse =
+const DeleteTelephonyEasyHuntingTimeConditionConditionResponse =
   CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyEasyHuntingTimeConditionConditionResponse>;
 
 export interface DeleteTelephonyEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const DeleteTelephonyEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/telephony/{billingAccount}/eventToken", code: 200 })),
@@ -5290,7 +5263,7 @@ export const DeleteTelephonyEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyEventTokenRequest>;
 
 export interface DeleteTelephonyEventTokenResponse {}
-export const DeleteTelephonyEventTokenResponse =
+const DeleteTelephonyEventTokenResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEventTokenResponse>;
 
 export interface DeleteTelephonyFaxCampaignRequest {
@@ -5300,7 +5273,7 @@ export interface DeleteTelephonyFaxCampaignRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5317,7 +5290,7 @@ export const DeleteTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyFaxCampaignRequest>;
 
 export interface DeleteTelephonyFaxCampaignResponse {}
-export const DeleteTelephonyFaxCampaignResponse =
+const DeleteTelephonyFaxCampaignResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyFaxCampaignResponse>;
 
 export interface DeleteTelephonyFaxScreenListsRequest {
@@ -5325,7 +5298,7 @@ export interface DeleteTelephonyFaxScreenListsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const DeleteTelephonyFaxScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyFaxScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5341,7 +5314,7 @@ export const DeleteTelephonyFaxScreenListsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteTelephonyFaxScreenListsRequest>;
 
 export interface DeleteTelephonyFaxScreenListsResponse {}
-export const DeleteTelephonyFaxScreenListsResponse =
+const DeleteTelephonyFaxScreenListsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyFaxScreenListsResponse>;
 
 export interface DeleteTelephonyLineAbbreviatedNumberRequest {
@@ -5351,7 +5324,7 @@ export interface DeleteTelephonyLineAbbreviatedNumberRequest {
   /** The abbreviated number which must start with "2" and must have a length of 3 or 4 digits */
   abbreviatedNumber: number;
 }
-export const DeleteTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5368,7 +5341,7 @@ export const DeleteTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteTelephonyLineAbbreviatedNumberRequest>;
 
 export interface DeleteTelephonyLineAbbreviatedNumberResponse {}
-export const DeleteTelephonyLineAbbreviatedNumberResponse =
+const DeleteTelephonyLineAbbreviatedNumberResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineAbbreviatedNumberResponse>;
 
 export interface DeleteTelephonyLineClick2CallUserRequest {
@@ -5378,7 +5351,7 @@ export interface DeleteTelephonyLineClick2CallUserRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5395,7 +5368,7 @@ export const DeleteTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteTelephonyLineClick2CallUserRequest>;
 
 export interface DeleteTelephonyLineClick2CallUserResponse {}
-export const DeleteTelephonyLineClick2CallUserResponse =
+const DeleteTelephonyLineClick2CallUserResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineClick2CallUserResponse>;
 
 export interface DeleteTelephonyLinePhonePhonebookRequest {
@@ -5405,7 +5378,7 @@ export interface DeleteTelephonyLinePhonePhonebookRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const DeleteTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5422,7 +5395,7 @@ export const DeleteTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteTelephonyLinePhonePhonebookRequest>;
 
 export interface DeleteTelephonyLinePhonePhonebookResponse {}
-export const DeleteTelephonyLinePhonePhonebookResponse =
+const DeleteTelephonyLinePhonePhonebookResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLinePhonePhonebookResponse>;
 
 export interface DeleteTelephonyLinePhonePhonebookPhonebookContactRequest {
@@ -5434,26 +5407,25 @@ export interface DeleteTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-export const DeleteTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      bookKey: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}",
-        code: 200,
-      }),
-    ),
+const DeleteTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    bookKey: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/telephony/{billingAccount}/line/{serviceName}/phone/phonebook/{bookKey}/phonebookContact/{id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteTelephonyLinePhonePhonebookPhonebookContactRequest",
 }) as any as S.Schema<DeleteTelephonyLinePhonePhonebookPhonebookContactRequest>;
 
 export interface DeleteTelephonyLinePhonePhonebookPhonebookContactResponse {}
-export const DeleteTelephonyLinePhonePhonebookPhonebookContactResponse =
+const DeleteTelephonyLinePhonePhonebookPhonebookContactResponse =
   CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyLinePhonePhonebookPhonebookContactResponse>;
 
 export interface DeleteTelephonyLinePhoneRmaRequest {
@@ -5463,7 +5435,7 @@ export interface DeleteTelephonyLinePhoneRmaRequest {
   /** Return merchandise authorisation identifier */
   id: string;
 }
-export const DeleteTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5480,7 +5452,7 @@ export const DeleteTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyLinePhoneRmaRequest>;
 
 export interface DeleteTelephonyLinePhoneRmaResponse {}
-export const DeleteTelephonyLinePhoneRmaResponse =
+const DeleteTelephonyLinePhoneRmaResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLinePhoneRmaResponse>;
 
 export interface DeleteTelephonyLineRecordRequest {
@@ -5490,7 +5462,7 @@ export interface DeleteTelephonyLineRecordRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyLineRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLineRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5507,7 +5479,7 @@ export const DeleteTelephonyLineRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyLineRecordRequest>;
 
 export interface DeleteTelephonyLineRecordResponse {}
-export const DeleteTelephonyLineRecordResponse =
+const DeleteTelephonyLineRecordResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineRecordResponse>;
 
 export interface DeleteTelephonyLineSoftphoneDeviceRequest {
@@ -5517,7 +5489,7 @@ export interface DeleteTelephonyLineSoftphoneDeviceRequest {
   /** Device ID */
   deviceId: string;
 }
-export const DeleteTelephonyLineSoftphoneDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLineSoftphoneDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5534,7 +5506,7 @@ export const DeleteTelephonyLineSoftphoneDeviceRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteTelephonyLineSoftphoneDeviceRequest>;
 
 export interface DeleteTelephonyLineSoftphoneDeviceResponse {}
-export const DeleteTelephonyLineSoftphoneDeviceResponse =
+const DeleteTelephonyLineSoftphoneDeviceResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineSoftphoneDeviceResponse>;
 
 export interface DeleteTelephonyLineSoftphoneLogoRequest {
@@ -5542,7 +5514,7 @@ export interface DeleteTelephonyLineSoftphoneLogoRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const DeleteTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5558,7 +5530,7 @@ export const DeleteTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTelephonyLineSoftphoneLogoRequest>;
 
 export interface DeleteTelephonyLineSoftphoneLogoResponse {}
-export const DeleteTelephonyLineSoftphoneLogoResponse =
+const DeleteTelephonyLineSoftphoneLogoResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineSoftphoneLogoResponse>;
 
 export interface DeleteTelephonyLineSoftphoneThemeRequest {
@@ -5566,7 +5538,7 @@ export interface DeleteTelephonyLineSoftphoneThemeRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const DeleteTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5582,7 +5554,7 @@ export const DeleteTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteTelephonyLineSoftphoneThemeRequest>;
 
 export interface DeleteTelephonyLineSoftphoneThemeResponse {}
-export const DeleteTelephonyLineSoftphoneThemeResponse =
+const DeleteTelephonyLineSoftphoneThemeResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineSoftphoneThemeResponse>;
 
 export interface DeleteTelephonyLineTrafficExtractRequest {
@@ -5592,7 +5564,7 @@ export interface DeleteTelephonyLineTrafficExtractRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyLineTrafficExtractRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyLineTrafficExtractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5609,7 +5581,7 @@ export const DeleteTelephonyLineTrafficExtractRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteTelephonyLineTrafficExtractRequest>;
 
 export interface DeleteTelephonyLineTrafficExtractResponse {}
-export const DeleteTelephonyLineTrafficExtractResponse =
+const DeleteTelephonyLineTrafficExtractResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineTrafficExtractResponse>;
 
 export interface DeleteTelephonyOutplanNotificationRequest {
@@ -5618,7 +5590,7 @@ export interface DeleteTelephonyOutplanNotificationRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -5634,7 +5606,7 @@ export const DeleteTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteTelephonyOutplanNotificationRequest>;
 
 export interface DeleteTelephonyOutplanNotificationResponse {}
-export const DeleteTelephonyOutplanNotificationResponse =
+const DeleteTelephonyOutplanNotificationResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOutplanNotificationResponse>;
 
 export interface DeleteTelephonyOvhPabxDialplanRequest {
@@ -5643,7 +5615,7 @@ export interface DeleteTelephonyOvhPabxDialplanRequest {
   serviceName: string;
   dialplanId: number;
 }
-export const DeleteTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5660,7 +5632,7 @@ export const DeleteTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteTelephonyOvhPabxDialplanRequest>;
 
 export interface DeleteTelephonyOvhPabxDialplanResponse {}
-export const DeleteTelephonyOvhPabxDialplanResponse =
+const DeleteTelephonyOvhPabxDialplanResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanResponse>;
 
 export interface DeleteTelephonyOvhPabxDialplanExtensionRequest {
@@ -5670,7 +5642,7 @@ export interface DeleteTelephonyOvhPabxDialplanExtensionRequest {
   dialplanId: number;
   extensionId: number;
 }
-export const DeleteTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5688,7 +5660,7 @@ export const DeleteTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRequest>;
 
 export interface DeleteTelephonyOvhPabxDialplanExtensionResponse {}
-export const DeleteTelephonyOvhPabxDialplanExtensionResponse =
+const DeleteTelephonyOvhPabxDialplanExtensionResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionResponse>;
 
 export interface DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest {
@@ -5699,8 +5671,8 @@ export interface DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListReque
   extensionId: number;
   conditionId: number;
 }
-export const DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       billingAccount: S.String.pipe(T.Label()),
       serviceName: S.String.pipe(T.Label()),
@@ -5714,12 +5686,12 @@ export const DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
-  }) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
+).annotate({
+  identifier: "DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
+}) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
 
 export interface DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse {}
-export const DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse =
+const DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse =
   DeleteTelephonyEasyHuntingScreenListConditionConditionResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse>;
 
 export interface DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
@@ -5730,27 +5702,26 @@ export interface DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   extensionId: number;
   conditionId: number;
 }
-export const DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      dialplanId: S.Number.pipe(T.Label()),
-      extensionId: S.Number.pipe(T.Label()),
-      conditionId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}",
-        code: 200,
-      }),
-    ),
+const DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    dialplanId: S.Number.pipe(T.Label()),
+    extensionId: S.Number.pipe(T.Label()),
+    conditionId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest",
 }) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
 
 export interface DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse {}
-export const DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse =
+const DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse =
   CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse>;
 
 export interface DeleteTelephonyOvhPabxDialplanExtensionRuleRequest {
@@ -5761,7 +5732,7 @@ export interface DeleteTelephonyOvhPabxDialplanExtensionRuleRequest {
   extensionId: number;
   ruleId: number;
 }
-export const DeleteTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5780,7 +5751,7 @@ export const DeleteTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRuleRequest>;
 
 export interface DeleteTelephonyOvhPabxDialplanExtensionRuleResponse {}
-export const DeleteTelephonyOvhPabxDialplanExtensionRuleResponse =
+const DeleteTelephonyOvhPabxDialplanExtensionRuleResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRuleResponse>;
 
 export interface DeleteTelephonyOvhPabxHuntingAgentRequest {
@@ -5789,7 +5760,7 @@ export interface DeleteTelephonyOvhPabxHuntingAgentRequest {
   serviceName: string;
   agentId: number;
 }
-export const DeleteTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5806,7 +5777,7 @@ export const DeleteTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentRequest>;
 
 export interface DeleteTelephonyOvhPabxHuntingAgentResponse {}
-export const DeleteTelephonyOvhPabxHuntingAgentResponse =
+const DeleteTelephonyOvhPabxHuntingAgentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentResponse>;
 
 export interface DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest {
@@ -5815,7 +5786,7 @@ export interface DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest {
   serviceName: string;
   agentId: number;
 }
-export const DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5832,7 +5803,7 @@ export const DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__
 }) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest>;
 
 export interface DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse {}
-export const DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse =
+const DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse>;
 
 export interface DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest {
@@ -5841,7 +5812,7 @@ export interface DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest {
   serviceName: string;
   agentId: number;
 }
-export const DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5858,7 +5829,7 @@ export const DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/
 }) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest>;
 
 export interface DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse {}
-export const DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse =
+const DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse>;
 
 export interface DeleteTelephonyOvhPabxHuntingAgentQueueRequest {
@@ -5868,7 +5839,7 @@ export interface DeleteTelephonyOvhPabxHuntingAgentQueueRequest {
   agentId: number;
   queueId: number;
 }
-export const DeleteTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5886,7 +5857,7 @@ export const DeleteTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentQueueRequest>;
 
 export interface DeleteTelephonyOvhPabxHuntingAgentQueueResponse {}
-export const DeleteTelephonyOvhPabxHuntingAgentQueueResponse =
+const DeleteTelephonyOvhPabxHuntingAgentQueueResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentQueueResponse>;
 
 export interface DeleteTelephonyOvhPabxHuntingCustomStatusRequest {
@@ -5895,7 +5866,7 @@ export interface DeleteTelephonyOvhPabxHuntingCustomStatusRequest {
   serviceName: string;
   id: number;
 }
-export const DeleteTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5912,7 +5883,7 @@ export const DeleteTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteTelephonyOvhPabxHuntingCustomStatusRequest>;
 
 export interface DeleteTelephonyOvhPabxHuntingCustomStatusResponse {}
-export const DeleteTelephonyOvhPabxHuntingCustomStatusResponse =
+const DeleteTelephonyOvhPabxHuntingCustomStatusResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingCustomStatusResponse>;
 
 export interface DeleteTelephonyOvhPabxHuntingEventTokenRequest {
@@ -5920,7 +5891,7 @@ export interface DeleteTelephonyOvhPabxHuntingEventTokenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const DeleteTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5936,7 +5907,7 @@ export const DeleteTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteTelephonyOvhPabxHuntingEventTokenRequest>;
 
 export interface DeleteTelephonyOvhPabxHuntingEventTokenResponse {}
-export const DeleteTelephonyOvhPabxHuntingEventTokenResponse =
+const DeleteTelephonyOvhPabxHuntingEventTokenResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingEventTokenResponse>;
 
 export interface DeleteTelephonyOvhPabxHuntingQueueRequest {
@@ -5945,7 +5916,7 @@ export interface DeleteTelephonyOvhPabxHuntingQueueRequest {
   serviceName: string;
   queueId: number;
 }
-export const DeleteTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5962,7 +5933,7 @@ export const DeleteTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueRequest>;
 
 export interface DeleteTelephonyOvhPabxHuntingQueueResponse {}
-export const DeleteTelephonyOvhPabxHuntingQueueResponse =
+const DeleteTelephonyOvhPabxHuntingQueueResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueResponse>;
 
 export interface DeleteTelephonyOvhPabxHuntingQueueAgentRequest {
@@ -5972,7 +5943,7 @@ export interface DeleteTelephonyOvhPabxHuntingQueueAgentRequest {
   queueId: number;
   agentId: number;
 }
-export const DeleteTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -5990,7 +5961,7 @@ export const DeleteTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueAgentRequest>;
 
 export interface DeleteTelephonyOvhPabxHuntingQueueAgentResponse {}
-export const DeleteTelephonyOvhPabxHuntingQueueAgentResponse =
+const DeleteTelephonyOvhPabxHuntingQueueAgentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueAgentResponse>;
 
 export interface DeleteTelephonyOvhPabxMenuRequest {
@@ -5999,7 +5970,7 @@ export interface DeleteTelephonyOvhPabxMenuRequest {
   serviceName: string;
   menuId: number;
 }
-export const DeleteTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6016,7 +5987,7 @@ export const DeleteTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyOvhPabxMenuRequest>;
 
 export interface DeleteTelephonyOvhPabxMenuResponse {}
-export const DeleteTelephonyOvhPabxMenuResponse =
+const DeleteTelephonyOvhPabxMenuResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxMenuResponse>;
 
 export interface DeleteTelephonyOvhPabxMenuEntryRequest {
@@ -6026,7 +5997,7 @@ export interface DeleteTelephonyOvhPabxMenuEntryRequest {
   menuId: number;
   entryId: number;
 }
-export const DeleteTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6044,7 +6015,7 @@ export const DeleteTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteTelephonyOvhPabxMenuEntryRequest>;
 
 export interface DeleteTelephonyOvhPabxMenuEntryResponse {}
-export const DeleteTelephonyOvhPabxMenuEntryResponse =
+const DeleteTelephonyOvhPabxMenuEntryResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxMenuEntryResponse>;
 
 export interface DeleteTelephonyOvhPabxRecordRequest {
@@ -6053,7 +6024,7 @@ export interface DeleteTelephonyOvhPabxRecordRequest {
   serviceName: string;
   id: number;
 }
-export const DeleteTelephonyOvhPabxRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6070,7 +6041,7 @@ export const DeleteTelephonyOvhPabxRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyOvhPabxRecordRequest>;
 
 export interface DeleteTelephonyOvhPabxRecordResponse {}
-export const DeleteTelephonyOvhPabxRecordResponse =
+const DeleteTelephonyOvhPabxRecordResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxRecordResponse>;
 
 export interface DeleteTelephonyOvhPabxSoundRequest {
@@ -6079,7 +6050,7 @@ export interface DeleteTelephonyOvhPabxSoundRequest {
   serviceName: string;
   soundId: number;
 }
-export const DeleteTelephonyOvhPabxSoundRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxSoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6096,7 +6067,7 @@ export const DeleteTelephonyOvhPabxSoundRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyOvhPabxSoundRequest>;
 
 export interface DeleteTelephonyOvhPabxSoundResponse {}
-export const DeleteTelephonyOvhPabxSoundResponse =
+const DeleteTelephonyOvhPabxSoundResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxSoundResponse>;
 
 export interface DeleteTelephonyOvhPabxTtsRequest {
@@ -6105,7 +6076,7 @@ export interface DeleteTelephonyOvhPabxTtsRequest {
   serviceName: string;
   id: number;
 }
-export const DeleteTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6122,7 +6093,7 @@ export const DeleteTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyOvhPabxTtsRequest>;
 
 export interface DeleteTelephonyOvhPabxTtsResponse {}
-export const DeleteTelephonyOvhPabxTtsResponse =
+const DeleteTelephonyOvhPabxTtsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxTtsResponse>;
 
 export interface DeleteTelephonyPhonebookRequest {
@@ -6131,7 +6102,7 @@ export interface DeleteTelephonyPhonebookRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const DeleteTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -6143,7 +6114,7 @@ export const DeleteTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyPhonebookRequest>;
 
 export interface DeleteTelephonyPhonebookResponse {}
-export const DeleteTelephonyPhonebookResponse =
+const DeleteTelephonyPhonebookResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyPhonebookResponse>;
 
 export interface DeleteTelephonyPhonebookPhonebookContactRequest {
@@ -6154,7 +6125,7 @@ export interface DeleteTelephonyPhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-export const DeleteTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -6171,7 +6142,7 @@ export const DeleteTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteTelephonyPhonebookPhonebookContactRequest>;
 
 export interface DeleteTelephonyPhonebookPhonebookContactResponse {}
-export const DeleteTelephonyPhonebookPhonebookContactResponse =
+const DeleteTelephonyPhonebookPhonebookContactResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyPhonebookPhonebookContactResponse>;
 
 export interface DeleteTelephonyPortabilityDocumentRequest {
@@ -6182,7 +6153,7 @@ export interface DeleteTelephonyPortabilityDocumentRequest {
   /** Identifier of the document */
   documentId: number;
 }
-export const DeleteTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -6199,7 +6170,7 @@ export const DeleteTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteTelephonyPortabilityDocumentRequest>;
 
 export interface DeleteTelephonyPortabilityDocumentResponse {}
-export const DeleteTelephonyPortabilityDocumentResponse =
+const DeleteTelephonyPortabilityDocumentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyPortabilityDocumentResponse>;
 
 export interface DeleteTelephonySchedulerEventRequest {
@@ -6209,7 +6180,7 @@ export interface DeleteTelephonySchedulerEventRequest {
   /** The unique ICS event identifier */
   uid: string;
 }
-export const DeleteTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6226,7 +6197,7 @@ export const DeleteTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteTelephonySchedulerEventRequest>;
 
 export interface DeleteTelephonySchedulerEventResponse {}
-export const DeleteTelephonySchedulerEventResponse =
+const DeleteTelephonySchedulerEventResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonySchedulerEventResponse>;
 
 export interface DeleteTelephonyScreenScreenListRequest {
@@ -6236,7 +6207,7 @@ export interface DeleteTelephonyScreenScreenListRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyScreenScreenListRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyScreenScreenListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6253,7 +6224,7 @@ export const DeleteTelephonyScreenScreenListRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteTelephonyScreenScreenListRequest>;
 
 export interface DeleteTelephonyScreenScreenListResponse {}
-export const DeleteTelephonyScreenScreenListResponse =
+const DeleteTelephonyScreenScreenListResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyScreenScreenListResponse>;
 
 export interface DeleteTelephonyServiceRequest {
@@ -6265,7 +6236,7 @@ export interface DeleteTelephonyServiceRequest {
   /** Termination reason */
   reason: TelephonyTerminationReasonEnum | (string & {});
 }
-export const DeleteTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6283,7 +6254,7 @@ export const DeleteTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonyServiceRequest>;
 
 export interface DeleteTelephonyServiceResponse {}
-export const DeleteTelephonyServiceResponse =
+const DeleteTelephonyServiceResponse =
   BlockTelephonyLineResponse as any as S.Schema<DeleteTelephonyServiceResponse>;
 
 export interface DeleteTelephonyServiceEventTokenRequest {
@@ -6291,7 +6262,7 @@ export interface DeleteTelephonyServiceEventTokenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const DeleteTelephonyServiceEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyServiceEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6307,7 +6278,7 @@ export const DeleteTelephonyServiceEventTokenRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTelephonyServiceEventTokenRequest>;
 
 export interface DeleteTelephonyServiceEventTokenResponse {}
-export const DeleteTelephonyServiceEventTokenResponse =
+const DeleteTelephonyServiceEventTokenResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyServiceEventTokenResponse>;
 
 export interface DeleteTelephonyServiceOfferChangeRequest {
@@ -6315,7 +6286,7 @@ export interface DeleteTelephonyServiceOfferChangeRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const DeleteTelephonyServiceOfferChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyServiceOfferChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6331,14 +6302,14 @@ export const DeleteTelephonyServiceOfferChangeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteTelephonyServiceOfferChangeRequest>;
 
 export interface DeleteTelephonyServiceOfferChangeResponse {}
-export const DeleteTelephonyServiceOfferChangeResponse =
+const DeleteTelephonyServiceOfferChangeResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyServiceOfferChangeResponse>;
 
 export interface DeleteTelephonySoftphoneLogoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const DeleteTelephonySoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonySoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -6349,14 +6320,14 @@ export const DeleteTelephonySoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonySoftphoneLogoRequest>;
 
 export interface DeleteTelephonySoftphoneLogoResponse {}
-export const DeleteTelephonySoftphoneLogoResponse =
+const DeleteTelephonySoftphoneLogoResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonySoftphoneLogoResponse>;
 
 export interface DeleteTelephonySoundRequest {
   /** Sound ID */
   id: number;
 }
-export const DeleteTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/telephony/sounds/{id}", code: 200 })),
@@ -6365,14 +6336,14 @@ export const DeleteTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonySoundRequest>;
 
 export interface DeleteTelephonySoundResponse {}
-export const DeleteTelephonySoundResponse =
+const DeleteTelephonySoundResponse =
   BlockTelephonyLineResponse as any as S.Schema<DeleteTelephonySoundResponse>;
 
 export interface DeleteTelephonySpareRequest {
   /** The internal name of your spare */
   spare: string;
 }
-export const DeleteTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/telephony/spare/{spare}", code: 200 })),
@@ -6381,7 +6352,7 @@ export const DeleteTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelephonySpareRequest>;
 
 export interface DeleteTelephonySpareResponse {}
-export const DeleteTelephonySpareResponse =
+const DeleteTelephonySpareResponse =
   BlockTelephonyLineResponse as any as S.Schema<DeleteTelephonySpareResponse>;
 
 export interface DeleteTelephonyTimeConditionConditionRequest {
@@ -6391,7 +6362,7 @@ export interface DeleteTelephonyTimeConditionConditionRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6408,7 +6379,7 @@ export const DeleteTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DeleteTelephonyTimeConditionConditionRequest>;
 
 export interface DeleteTelephonyTimeConditionConditionResponse {}
-export const DeleteTelephonyTimeConditionConditionResponse =
+const DeleteTelephonyTimeConditionConditionResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyTimeConditionConditionResponse>;
 
 export interface DeleteTelephonyTrunkExternalDisplayedNumberRequest {
@@ -6419,7 +6390,7 @@ export interface DeleteTelephonyTrunkExternalDisplayedNumberRequest {
   /** External displayed number linked to a trunk */
   number: string;
 }
-export const DeleteTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6436,7 +6407,7 @@ export const DeleteTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ 
 }) as any as S.Schema<DeleteTelephonyTrunkExternalDisplayedNumberRequest>;
 
 export interface DeleteTelephonyTrunkExternalDisplayedNumberResponse {}
-export const DeleteTelephonyTrunkExternalDisplayedNumberResponse =
+const DeleteTelephonyTrunkExternalDisplayedNumberResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyTrunkExternalDisplayedNumberResponse>;
 
 export interface DeleteTelephonyVoicemailDirectoryRequest {
@@ -6446,7 +6417,7 @@ export interface DeleteTelephonyVoicemailDirectoryRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6463,7 +6434,7 @@ export const DeleteTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteTelephonyVoicemailDirectoryRequest>;
 
 export interface DeleteTelephonyVoicemailDirectoryResponse {}
-export const DeleteTelephonyVoicemailDirectoryResponse =
+const DeleteTelephonyVoicemailDirectoryResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyVoicemailDirectoryResponse>;
 
 export interface DeleteTelephonyVoicemailGreetingRequest {
@@ -6473,7 +6444,7 @@ export interface DeleteTelephonyVoicemailGreetingRequest {
   /** Id of the object */
   id: number;
 }
-export const DeleteTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6490,7 +6461,7 @@ export const DeleteTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteTelephonyVoicemailGreetingRequest>;
 
 export interface DeleteTelephonyVoicemailGreetingResponse {}
-export const DeleteTelephonyVoicemailGreetingResponse =
+const DeleteTelephonyVoicemailGreetingResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyVoicemailGreetingResponse>;
 
 export interface DisconnectTelephonyLineSoftphoneDeviceRequest {
@@ -6498,7 +6469,7 @@ export interface DisconnectTelephonyLineSoftphoneDeviceRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const DisconnectTelephonyLineSoftphoneDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const DisconnectTelephonyLineSoftphoneDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6514,7 +6485,7 @@ export const DisconnectTelephonyLineSoftphoneDeviceRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DisconnectTelephonyLineSoftphoneDeviceRequest>;
 
 export interface DisconnectTelephonyLineSoftphoneDeviceResponse {}
-export const DisconnectTelephonyLineSoftphoneDeviceResponse =
+const DisconnectTelephonyLineSoftphoneDeviceResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DisconnectTelephonyLineSoftphoneDeviceResponse>;
 
 export interface ExecuteTelephonyPortabilityRequest {
@@ -6523,7 +6494,7 @@ export interface ExecuteTelephonyPortabilityRequest {
   /** The ID of the portability */
   id: number;
 }
-export const ExecuteTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -6539,7 +6510,7 @@ export const ExecuteTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteTelephonyPortabilityRequest>;
 
 export interface ExecuteTelephonyPortabilityResponse {}
-export const ExecuteTelephonyPortabilityResponse =
+const ExecuteTelephonyPortabilityResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<ExecuteTelephonyPortabilityResponse>;
 
 export interface FetchTelephonyServiceDirectoryEntrepriseInformationsRequest {
@@ -6549,19 +6520,18 @@ export interface FetchTelephonyServiceDirectoryEntrepriseInformationsRequest {
   /** Entreprise number to fetch informations from */
   entrepriseNumber: string;
 }
-export const FetchTelephonyServiceDirectoryEntrepriseInformationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      entrepriseNumber: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations",
-        code: 200,
-      }),
-    ),
+const FetchTelephonyServiceDirectoryEntrepriseInformationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    entrepriseNumber: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/telephony/{billingAccount}/service/{serviceName}/directory/fetchEntrepriseInformations",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "FetchTelephonyServiceDirectoryEntrepriseInformationsRequest",
 }) as any as S.Schema<FetchTelephonyServiceDirectoryEntrepriseInformationsRequest>;
@@ -6583,7 +6553,7 @@ export interface TelephonyEntrepriseNumberInformations {
   /** Short version of the entreprise number (FR only) */
   siren?: string | null;
 }
-export const TelephonyEntrepriseNumberInformations = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEntrepriseNumberInformations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     ape: S.optional(S.NullOr(S.String)),
@@ -6604,7 +6574,7 @@ export interface TelephonyEntrepriseNumberInformationsTask {
   /** Task status */
   status?: TelephonyTaskStatusEnum;
 }
-export const TelephonyEntrepriseNumberInformationsTask = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEntrepriseNumberInformationsTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     informations: S.optional(TelephonyEntrepriseNumberInformations),
     status: S.optional(TelephonyTaskStatusEnum),
@@ -6614,7 +6584,7 @@ export const TelephonyEntrepriseNumberInformationsTask = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<TelephonyEntrepriseNumberInformationsTask>;
 
 export interface GenerateTelephonyResellerPanelPasswordRequest {}
-export const GenerateTelephonyResellerPanelPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateTelephonyResellerPanelPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/telephony/resellerPanel/generatePassword", code: 200 }),
   ),
@@ -6623,14 +6593,14 @@ export const GenerateTelephonyResellerPanelPasswordRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GenerateTelephonyResellerPanelPasswordRequest>;
 
 export interface GenerateTelephonyResellerPanelPasswordResponse {}
-export const GenerateTelephonyResellerPanelPasswordResponse =
+const GenerateTelephonyResellerPanelPasswordResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<GenerateTelephonyResellerPanelPasswordResponse>;
 
 export interface GetTelephonyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const GetTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}", code: 200 })),
@@ -6638,7 +6608,7 @@ export const GetTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -6654,7 +6624,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -6665,7 +6635,7 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of billing account */
 export type TelephonyBillingAccountStatusEnum = "closed" | "deleted" | "enabled" | "expired";
-export const TelephonyBillingAccountStatusEnum = S.String;
+const TelephonyBillingAccountStatusEnum = S.String;
 
 /** Billing Account */
 export interface TelephonyBillingAccountWithIAM {
@@ -6694,7 +6664,7 @@ export interface TelephonyBillingAccountWithIAM {
   /** Is the billing account trusted */
   trusted?: boolean;
 }
-export const TelephonyBillingAccountWithIAM = /*@__PURE__*/ S.suspend(() =>
+const TelephonyBillingAccountWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOutplan: S.optional(OrderPrice),
     billingAccount: S.optional(S.String),
@@ -6719,7 +6689,7 @@ export interface GetTelephonyAbbreviatedNumberRequest {
   /** The abbreviated number which must start with "7" and must have a length of 3 or 4 digits */
   abbreviatedNumber: number;
 }
-export const GetTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     abbreviatedNumber: S.Number.pipe(T.Label()),
@@ -6738,7 +6708,7 @@ export interface GetTelephonyAliasRequest {
   /** Your line number */
   serviceName: string;
 }
-export const GetTelephonyAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/aliases/{serviceName}", code: 200 })),
@@ -6750,7 +6720,7 @@ export interface TelephonyTelephonyGenericServiceWithIAM {
   iam?: IamResourceMetadata | null;
   serviceName?: string;
 }
-export const TelephonyTelephonyGenericServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTelephonyGenericServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iam: S.optional(S.NullOr(IamResourceMetadata)),
     serviceName: S.optional(S.String),
@@ -6763,7 +6733,7 @@ export interface GetTelephonyAliasServiceInfosRequest {
   /** Your line number */
   serviceName: string;
 }
-export const GetTelephonyAliasServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyAliasServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -6775,7 +6745,7 @@ export const GetTelephonyAliasServiceInfosRequest = /*@__PURE__*/ S.suspend(() =
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -6791,7 +6761,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -6811,7 +6781,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -6820,7 +6790,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -6841,7 +6811,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -6863,7 +6833,7 @@ export interface GetTelephonyBillingAccountSiteRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const GetTelephonyBillingAccountSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyBillingAccountSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -6874,7 +6844,7 @@ export const GetTelephonyBillingAccountSiteRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetTelephonyBillingAccountSiteRequest>;
 
 export type GetTelephonyBillingAccountSiteResponse = string;
-export const GetTelephonyBillingAccountSiteResponse =
+const GetTelephonyBillingAccountSiteResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<GetTelephonyBillingAccountSiteResponse>;
 
 export interface GetTelephonyCarrierSipRequest {
@@ -6882,7 +6852,7 @@ export interface GetTelephonyCarrierSipRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyCarrierSipRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyCarrierSipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6899,7 +6869,7 @@ export const GetTelephonyCarrierSipRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All existing types */
 export type TelephonyTypeServiceEnum = "alias" | "line";
-export const TelephonyTypeServiceEnum = S.String;
+const TelephonyTypeServiceEnum = S.String;
 
 /** CarrierSip */
 export interface TelephonyCarrierSip {
@@ -6907,7 +6877,7 @@ export interface TelephonyCarrierSip {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyCarrierSip = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCarrierSip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -6922,7 +6892,7 @@ export interface GetTelephonyCarrierSipCdrsRequest {
   /** The month you want to extract (format: YYYY-MM). Current month if not specified. */
   month?: string;
 }
-export const GetTelephonyCarrierSipCdrsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyCarrierSipCdrsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6953,7 +6923,7 @@ export interface TelephonyDocument {
   /** Document validation date */
   validationDate?: string | null;
 }
-export const TelephonyDocument = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -6971,7 +6941,7 @@ export interface GetTelephonyCarrierSipEndpointRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyCarrierSipEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyCarrierSipEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -6989,7 +6959,7 @@ export const GetTelephonyCarrierSipEndpointRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Protocol of a carrier sip trunk customer endpoint */
 export type TelephonyCarrierSipEndpointProtocolEnum = "tcp" | "tls" | "udp";
-export const TelephonyCarrierSipEndpointProtocolEnum = S.String;
+const TelephonyCarrierSipEndpointProtocolEnum = S.String;
 
 /** Carrier SIP Endpoints */
 export interface TelephonyCarrierSipCustomerEndpoint {
@@ -7008,7 +6978,7 @@ export interface TelephonyCarrierSipCustomerEndpoint {
   /** SIP Endpoint weight (DNS SRV) */
   weight?: number;
 }
-export const TelephonyCarrierSipCustomerEndpoint = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCarrierSipCustomerEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableIncomingCalls: S.optional(S.Boolean),
     id: S.optional(S.Number),
@@ -7027,7 +6997,7 @@ export interface GetTelephonyCarrierSipSettingsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyCarrierSipSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyCarrierSipSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7051,7 +7021,7 @@ export interface TelephonyCarrierSipDetails {
   /** The maximum concurrent calls on your carrier sip service */
   maxConcurrentCalls?: number;
 }
-export const TelephonyCarrierSipDetails = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCarrierSipDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     maxCallsPerSecond: S.optional(S.Number),
@@ -7068,7 +7038,7 @@ export interface GetTelephonyCarrierSipVnoRequest {
   /** The reference written on your VNO contract. */
   contractReference: string;
 }
-export const GetTelephonyCarrierSipVnoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyCarrierSipVnoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7091,7 +7061,7 @@ export interface TelephonyCarrierSipVnoMandate {
   /** The reference written on your VNO contract. */
   contractReference?: string;
 }
-export const TelephonyCarrierSipVnoMandate = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCarrierSipVnoMandate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationDate: S.optional(S.String),
     contractReference: S.optional(S.String),
@@ -7109,7 +7079,7 @@ export interface GetTelephonyCarrierSipVnoRangeRequest {
   /** The phone range prefix. */
   prefix: string;
 }
-export const GetTelephonyCarrierSipVnoRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyCarrierSipVnoRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7133,7 +7103,7 @@ export interface TelephonyCarrierSipVnoRange {
   /** The phone range prefix. */
   prefix?: string;
 }
-export const TelephonyCarrierSipVnoRange = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCarrierSipVnoRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     prefix: S.optional(S.String),
@@ -7147,7 +7117,7 @@ export interface GetTelephonyConferenceRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7163,7 +7133,7 @@ export const GetTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTelephonyConferenceRequest>;
 
 export type TelephonyConferenceOffersList = Array<string>;
-export const TelephonyConferenceOffersList =
+const TelephonyConferenceOffersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyConferenceOffersList>;
 
 /** Conference */
@@ -7173,7 +7143,7 @@ export interface TelephonyConference {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyConference = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     offers: S.optional(TelephonyConferenceOffersList),
@@ -7189,7 +7159,7 @@ export interface GetTelephonyConferenceHistoryRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyConferenceHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7214,7 +7184,7 @@ export interface TelephonyConferenceHistoryEvent {
   /** The nature of the event : left/join */
   type?: string;
 }
-export const TelephonyConferenceHistoryEvent = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConferenceHistoryEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callerid: S.optional(S.String),
     date: S.optional(S.String),
@@ -7226,7 +7196,7 @@ export const TelephonyConferenceHistoryEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** The events of the conference (participants joining/left) */
 export type TelephonyConferenceHistoryEventsList = Array<TelephonyConferenceHistoryEvent>;
-export const TelephonyConferenceHistoryEventsList = /*@__PURE__*/ S.Array(
+const TelephonyConferenceHistoryEventsList = /*@__PURE__*/ S.Array(
   TelephonyConferenceHistoryEvent,
 ) as any as S.Schema<TelephonyConferenceHistoryEventsList>;
 
@@ -7249,7 +7219,7 @@ export interface TelephonyConferenceHistory {
   /** The audio record url if you set recording */
   recordUrl?: string | null;
 }
-export const TelephonyConferenceHistory = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConferenceHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countConnections: S.optional(S.Number),
     countParticipants: S.optional(S.Number),
@@ -7269,7 +7239,7 @@ export interface GetTelephonyConferenceInformationsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyConferenceInformationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceInformationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7293,7 +7263,7 @@ export interface TelephonyConferenceInformations {
   /** The current participants count in your conference room */
   membersCount?: number;
 }
-export const TelephonyConferenceInformations = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConferenceInformations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateStart: S.optional(S.String),
     locked: S.optional(S.Boolean),
@@ -7310,7 +7280,7 @@ export interface GetTelephonyConferenceParticipantRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyConferenceParticipantRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceParticipantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7347,7 +7317,7 @@ export interface TelephonyConferenceParticipants {
   /** Whether the participant is talking */
   talking?: boolean;
 }
-export const TelephonyConferenceParticipants = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConferenceParticipants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arrivalDateTime: S.optional(S.String),
     callerName: S.optional(S.String),
@@ -7370,7 +7340,7 @@ export interface GetTelephonyConferenceRoomRequest {
   /** The conference room number */
   roomNumber: number;
 }
-export const GetTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7395,7 +7365,7 @@ export interface GetTelephonyConferenceRoomHistoryRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyConferenceRoomHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceRoomHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7421,7 +7391,7 @@ export interface GetTelephonyConferenceRoomParticipantRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyConferenceRoomParticipantRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceRoomParticipantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7443,7 +7413,7 @@ export interface GetTelephonyConferenceRoomsStatsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyConferenceRoomsStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceRoomsStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7467,7 +7437,7 @@ export interface TelephonyConferenceRoomsStatistics {
   /** The number of rooms available in the conference number */
   roomsCount?: number;
 }
-export const TelephonyConferenceRoomsStatistics = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConferenceRoomsStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeRoomsCount: S.optional(S.Number),
     participantsCount: S.optional(S.Number),
@@ -7486,7 +7456,7 @@ export interface GetTelephonyConferenceRoomWebAccessRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7508,7 +7478,7 @@ export interface GetTelephonyConferenceSettingsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyConferenceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7552,7 +7522,7 @@ export interface TelephonyConferenceProperties {
   /** True if you want to receive a white-labelled mail report of your conference */
   whiteLabelReport?: boolean;
 }
-export const TelephonyConferenceProperties = /*@__PURE__*/ S.suspend(() =>
+const TelephonyConferenceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     announceFile: S.optional(S.Boolean),
     announceFilename: S.optional(S.NullOr(S.String)),
@@ -7579,7 +7549,7 @@ export interface GetTelephonyConferenceWebAccessRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7600,7 +7570,7 @@ export interface GetTelephonyDdiRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyDdiRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyDdiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7617,7 +7587,7 @@ export interface TelephonyDdi {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyDdi = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDdi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     destination: S.optional(S.NullOr(S.String)),
@@ -7632,7 +7602,7 @@ export interface GetTelephonyEasyHuntingRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyEasyHuntingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7679,7 +7649,7 @@ export interface TelephonyEasyHunting {
   /** The voicemail used by the EasyPABX */
   voicemail?: string | null;
 }
-export const TelephonyEasyHunting = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEasyHunting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anonymousRejection: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -7704,7 +7674,7 @@ export interface GetTelephonyEasyHuntingHuntingRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyEasyHuntingHuntingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7730,7 +7700,7 @@ export interface TelephonyOvhPabxHunting {
   /** Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default. */
   statusIvrEnabled?: boolean;
 }
-export const TelephonyOvhPabxHunting = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxHunting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crmUrlTemplate: S.optional(S.NullOr(S.String)),
     g729: S.optional(S.NullOr(S.Boolean)),
@@ -7745,7 +7715,7 @@ export interface GetTelephonyEasyHuntingHuntingAgentRequest {
   serviceName: string;
   agentId: number;
 }
-export const GetTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7767,7 +7737,7 @@ export interface GetTelephonyEasyHuntingHuntingAgentBannerAccessRequest {
   serviceName: string;
   agentId: number;
 }
-export const GetTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7791,7 +7761,7 @@ export interface GetTelephonyEasyHuntingHuntingAgentCallRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyEasyHuntingHuntingAgentCallRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingAgentCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7810,7 +7780,7 @@ export const GetTelephonyEasyHuntingHuntingAgentCallRequest = /*@__PURE__*/ S.su
 
 /** State of the call */
 export type TelephonyOvhPabxHuntingLiveCallsStateEnum = "Answered" | "Waiting";
-export const TelephonyOvhPabxHuntingLiveCallsStateEnum = S.String;
+const TelephonyOvhPabxHuntingLiveCallsStateEnum = S.String;
 
 /** Live statistics of the queue */
 export interface TelephonyOvhPabxHuntingQueueLiveCalls {
@@ -7836,7 +7806,7 @@ export interface TelephonyOvhPabxHuntingQueueLiveCalls {
   /** Current state of the call */
   state?: TelephonyOvhPabxHuntingLiveCallsStateEnum;
 }
-export const TelephonyOvhPabxHuntingQueueLiveCalls = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxHuntingQueueLiveCalls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent: S.optional(S.String),
     answered: S.optional(S.NullOr(S.String)),
@@ -7860,7 +7830,7 @@ export interface GetTelephonyEasyHuntingHuntingAgentEventTokenRequest {
   serviceName: string;
   agentId: number;
 }
-export const GetTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7880,7 +7850,7 @@ export const GetTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*
 export interface TelephonyEventToken {
   token?: string;
 }
-export const TelephonyEventToken = TelephonySoftphoneToken as any as S.Schema<TelephonyEventToken>;
+const TelephonyEventToken = TelephonySoftphoneToken as any as S.Schema<TelephonyEventToken>;
 
 export interface GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest {
   /** The name of your billingAccount */
@@ -7888,7 +7858,7 @@ export interface GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest {
   serviceName: string;
   agentId: number;
 }
-export const GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7911,7 +7881,7 @@ export type TelephonyOvhPabxHuntingLiveAgentStatusEnum =
   | "onBreak"
   | "receiving"
   | "waiting";
-export const TelephonyOvhPabxHuntingLiveAgentStatusEnum = S.String;
+const TelephonyOvhPabxHuntingLiveAgentStatusEnum = S.String;
 
 /** Live statistics of the queue */
 export interface TelephonyOvhPabxHuntingAgentLiveStatus {
@@ -7924,7 +7894,7 @@ export interface TelephonyOvhPabxHuntingAgentLiveStatus {
   /** The total duration in seconds of the calls this agent took on the current day */
   totalCallDuration?: number;
 }
-export const TelephonyOvhPabxHuntingAgentLiveStatus = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxHuntingAgentLiveStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answeredCalls: S.optional(S.Number),
     lastStatusChange: S.optional(S.String),
@@ -7942,7 +7912,7 @@ export interface GetTelephonyEasyHuntingHuntingAgentQueueRequest {
   agentId: number;
   queueId: number;
 }
-export const GetTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -7966,20 +7936,19 @@ export interface GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest {
   agentId: number;
   queueId: number;
 }
-export const GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      agentId: S.Number.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus",
-        code: 200,
-      }),
-    ),
+const GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    agentId: S.Number.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/agent/{agentId}/queue/{queueId}/liveStatus",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest",
 }) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest>;
@@ -7990,7 +7959,7 @@ export interface GetTelephonyEasyHuntingHuntingCustomStatusRequest {
   serviceName: string;
   id: number;
 }
-export const GetTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8011,7 +7980,7 @@ export interface GetTelephonyEasyHuntingHuntingEventTokenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8032,7 +8001,7 @@ export interface GetTelephonyEasyHuntingHuntingQueueRequest {
   serviceName: string;
   queueId: number;
 }
-export const GetTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8055,7 +8024,7 @@ export interface GetTelephonyEasyHuntingHuntingQueueAgentRequest {
   queueId: number;
   agentId: number;
 }
-export const GetTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8079,20 +8048,19 @@ export interface GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest {
   queueId: number;
   agentId: number;
 }
-export const GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-      agentId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus",
-        code: 200,
-      }),
-    ),
+const GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+    agentId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/agent/{agentId}/liveStatus",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest",
 }) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest>;
@@ -8105,7 +8073,7 @@ export interface GetTelephonyEasyHuntingHuntingQueueLiveCallRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyEasyHuntingHuntingQueueLiveCallRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingHuntingQueueLiveCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8128,19 +8096,18 @@ export interface GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest {
   serviceName: string;
   queueId: number;
 }
-export const GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      queueId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics",
-        code: 200,
-      }),
-    ),
+const GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    queueId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/hunting/queue/{queueId}/liveStatistics",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest",
 }) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest>;
@@ -8160,7 +8127,7 @@ export interface TelephonyOvhPabxHuntingQueueLiveStatistics {
   /** Total waiting duration in seconds */
   totalWaitingDuration?: number;
 }
-export const TelephonyOvhPabxHuntingQueueLiveStatistics = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxHuntingQueueLiveStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callsAnswered: S.optional(S.Number),
     callsLost: S.optional(S.Number),
@@ -8179,7 +8146,7 @@ export interface GetTelephonyEasyHuntingRecordRequest {
   serviceName: string;
   id: number;
 }
-export const GetTelephonyEasyHuntingRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8215,7 +8182,7 @@ export interface TelephonyOvhPabxRecord {
   fileUrl?: string;
   id?: number;
 }
-export const TelephonyOvhPabxRecord = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent: S.optional(S.NullOr(S.String)),
     callEnd: S.optional(S.NullOr(S.String)),
@@ -8235,19 +8202,18 @@ export interface GetTelephonyEasyHuntingScreenListConditionConditionRequest {
   serviceName: string;
   conditionId: number;
 }
-export const GetTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      conditionId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}",
-        code: 200,
-      }),
-    ),
+const GetTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    conditionId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetTelephonyEasyHuntingScreenListConditionConditionRequest",
 }) as any as S.Schema<GetTelephonyEasyHuntingScreenListConditionConditionRequest>;
@@ -8257,7 +8223,7 @@ export interface GetTelephonyEasyHuntingScreenListConditionsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyEasyHuntingScreenListConditionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingScreenListConditionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8277,13 +8243,13 @@ export type TelephonyEasyHuntingScreenListsConditionsStatusEnum =
   | "disabled"
   | "incomingBlackList"
   | "incomingWhiteList";
-export const TelephonyEasyHuntingScreenListsConditionsStatusEnum = S.String;
+const TelephonyEasyHuntingScreenListsConditionsStatusEnum = S.String;
 
 /** Easy hunting screen lists conditions options */
 export interface TelephonyEasyHuntingScreenListsConditionsSettings {
   status?: TelephonyEasyHuntingScreenListsConditionsStatusEnum;
 }
-export const TelephonyEasyHuntingScreenListsConditionsSettings = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEasyHuntingScreenListsConditionsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(TelephonyEasyHuntingScreenListsConditionsStatusEnum),
   }),
@@ -8297,7 +8263,7 @@ export interface GetTelephonyEasyHuntingSoundRequest {
   serviceName: string;
   soundId: number;
 }
-export const GetTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8319,7 +8285,7 @@ export interface TelephonyOvhPabxSound {
   name?: string;
   soundId?: number;
 }
-export const TelephonyOvhPabxSound = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxSound = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     soundId: S.optional(S.Number),
@@ -8332,7 +8298,7 @@ export interface GetTelephonyEasyHuntingTimeConditionConditionRequest {
   serviceName: string;
   conditionId: number;
 }
-export const GetTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8353,7 +8319,7 @@ export interface GetTelephonyEasyHuntingTimeConditionsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyEasyHuntingTimeConditionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEasyHuntingTimeConditionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8370,7 +8336,7 @@ export const GetTelephonyEasyHuntingTimeConditionsRequest = /*@__PURE__*/ S.susp
 
 /** Forward type */
 export type TelephonyTimeConditionsSettingsForwardTypeEnum = "number" | "voicemail";
-export const TelephonyTimeConditionsSettingsForwardTypeEnum = S.String;
+const TelephonyTimeConditionsSettingsForwardTypeEnum = S.String;
 
 /** Easy hunting time conditions options */
 export interface TelephonyEasyHuntingTimeConditionsSettings {
@@ -8393,7 +8359,7 @@ export interface TelephonyEasyHuntingTimeConditionsSettings {
   /** Action type executed when the unavailable slot is used */
   unavailableType?: TelephonyTimeConditionsSettingsForwardTypeEnum | null;
 }
-export const TelephonyEasyHuntingTimeConditionsSettings = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEasyHuntingTimeConditionsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enable: S.optional(S.Boolean),
     slot1Number: S.optional(S.NullOr(S.String)),
@@ -8413,7 +8379,7 @@ export interface GetTelephonyEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const GetTelephonyEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/eventToken", code: 200 })),
@@ -8426,7 +8392,7 @@ export interface GetTelephonyFaxRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyFaxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyFaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8437,7 +8403,7 @@ export const GetTelephonyFaxRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Types of statistics available for a line. */
 export type TelephonyLineNotificationsLogsFrequencyEnum = "Never" | "Once a day" | "Twice a day";
-export const TelephonyLineNotificationsLogsFrequencyEnum = S.String;
+const TelephonyLineNotificationsLogsFrequencyEnum = S.String;
 
 /** Error logging notifications options */
 export interface TelephonyLineNotificationsLogsOptions {
@@ -8448,7 +8414,7 @@ export interface TelephonyLineNotificationsLogsOptions {
   /** Send a blank notification if there is no diagnosticReports entries for the period */
   sendIfNull?: boolean | null;
 }
-export const TelephonyLineNotificationsLogsOptions = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLineNotificationsLogsOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.NullOr(S.String)),
     frequency: S.optional(S.NullOr(TelephonyLineNotificationsLogsFrequencyEnum)),
@@ -8462,7 +8428,7 @@ export interface TelephonyLineNotificationsOptions {
   /** Error logging notifications options */
   logs?: TelephonyLineNotificationsLogsOptions | null;
 }
-export const TelephonyLineNotificationsOptions = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLineNotificationsOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: S.optional(S.NullOr(TelephonyLineNotificationsLogsOptions)),
   }),
@@ -8471,7 +8437,7 @@ export const TelephonyLineNotificationsOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelephonyLineNotificationsOptions>;
 
 export type TelephonyFaxOffersList = Array<string>;
-export const TelephonyFaxOffersList =
+const TelephonyFaxOffersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxOffersList>;
 
 /** Fax service */
@@ -8483,7 +8449,7 @@ export interface TelephonyFax {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyFax = /*@__PURE__*/ S.suspend(() =>
+const TelephonyFax = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     notifications: S.optional(S.NullOr(TelephonyLineNotificationsOptions)),
@@ -8500,7 +8466,7 @@ export interface GetTelephonyFaxCampaignRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8521,7 +8487,7 @@ export interface GetTelephonyFaxScreenListsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyFaxScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyFaxScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8541,7 +8507,7 @@ export interface GetTelephonyFaxSettingsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyFaxSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyFaxSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8558,14 +8524,14 @@ export const GetTelephonyFaxSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Number of tries when sending a fax */
 export type TelephonyFaxSendingTries = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-export const TelephonyFaxSendingTries = S.Number;
+const TelephonyFaxSendingTries = S.Number;
 
 /** Format of the notification mail. "html" will include a preview image of the fax */
 export type TelephonyFaxMailFormatEnum = "html" | "text";
-export const TelephonyFaxMailFormatEnum = S.String;
+const TelephonyFaxMailFormatEnum = S.String;
 
 export type TelephonyFaxPropertiesRedirectionEmailList = Array<string>;
-export const TelephonyFaxPropertiesRedirectionEmailList =
+const TelephonyFaxPropertiesRedirectionEmailList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxPropertiesRedirectionEmailList>;
 
 /** Fax properties */
@@ -8583,7 +8549,7 @@ export interface TelephonyFaxProperties {
   rejectAnonymous?: boolean;
   sender?: string;
 }
-export const TelephonyFaxProperties = /*@__PURE__*/ S.suspend(() =>
+const TelephonyFaxProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callNumber: S.optional(S.String),
     countryCode: S.optional(S.String),
@@ -8604,7 +8570,7 @@ export interface GetTelephonyHasSpecialNumbersRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const GetTelephonyHasSpecialNumbersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyHasSpecialNumbersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -8615,7 +8581,7 @@ export const GetTelephonyHasSpecialNumbersRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetTelephonyHasSpecialNumbersRequest>;
 
 export type GetTelephonyHasSpecialNumbersResponse = boolean;
-export const GetTelephonyHasSpecialNumbersResponse =
+const GetTelephonyHasSpecialNumbersResponse =
   CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyHasSpecialNumbersResponse>;
 
 export interface GetTelephonyHistoryConsumptionRequest {
@@ -8623,7 +8589,7 @@ export interface GetTelephonyHistoryConsumptionRequest {
   billingAccount: string;
   date: string;
 }
-export const GetTelephonyHistoryConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyHistoryConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     date: S.String.pipe(T.Label()),
@@ -8645,7 +8611,7 @@ export interface TelephonyHistoryConsumption {
   priceOutplan?: OrderPrice;
   status?: TelephonyBillStatusEnum;
 }
-export const TelephonyHistoryConsumption = /*@__PURE__*/ S.suspend(() =>
+const TelephonyHistoryConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     price: S.optional(OrderPrice),
@@ -8658,7 +8624,7 @@ export const TelephonyHistoryConsumption = /*@__PURE__*/ S.suspend(() =>
 
 /** Document suffix */
 export type TelephonyBillDocument = "csv" | "pdf" | "received.csv" | "xml";
-export const TelephonyBillDocument = S.String;
+const TelephonyBillDocument = S.String;
 
 export interface GetTelephonyHistoryConsumptionFileRequest {
   /** The name of your billingAccount */
@@ -8667,7 +8633,7 @@ export interface GetTelephonyHistoryConsumptionFileRequest {
   /** Document suffix */
   extension: TelephonyBillDocument | (string & {});
 }
-export const GetTelephonyHistoryConsumptionFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyHistoryConsumptionFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     date: S.String.pipe(T.Label()),
@@ -8685,7 +8651,7 @@ export const GetTelephonyHistoryConsumptionFileRequest = /*@__PURE__*/ S.suspend
 
 /** File providing task status */
 export type TelephonyPcsFileStatusEnum = "doing" | "done" | "error" | "todo";
-export const TelephonyPcsFileStatusEnum = S.String;
+const TelephonyPcsFileStatusEnum = S.String;
 
 /** Telephony API related file hosted */
 export interface TelephonyPcsFile {
@@ -8694,7 +8660,7 @@ export interface TelephonyPcsFile {
   url?: string;
   urlExpirationDatetime?: string;
 }
-export const TelephonyPcsFile = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPcsFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     status: S.optional(TelephonyPcsFileStatusEnum),
@@ -8709,7 +8675,7 @@ export interface GetTelephonyHistoryRepaymentConsumptionRequest {
   /** date of the bill */
   date: string;
 }
-export const GetTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     date: S.String.pipe(T.Label()),
@@ -8730,7 +8696,7 @@ export interface GetTelephonyHistoryRepaymentConsumptionDocumentRequest {
   /** date of the bill */
   date: string;
 }
-export const GetTelephonyHistoryRepaymentConsumptionDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyHistoryRepaymentConsumptionDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     date: S.String.pipe(T.Label()),
@@ -8751,7 +8717,7 @@ export interface GetTelephonyHistoryTollfreeConsumptionRequest {
   /** date of the bill */
   date: string;
 }
-export const GetTelephonyHistoryTollfreeConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyHistoryTollfreeConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     date: S.String.pipe(T.Label()),
@@ -8775,7 +8741,7 @@ export interface TelephonyHistoryTollfreeConsumption {
   /** status of the bill */
   status?: TelephonyBillStatusEnum;
 }
-export const TelephonyHistoryTollfreeConsumption = /*@__PURE__*/ S.suspend(() =>
+const TelephonyHistoryTollfreeConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     price: S.optional(OrderPrice),
@@ -8791,7 +8757,7 @@ export interface GetTelephonyHistoryTollfreeConsumptionDocumentRequest {
   /** date of the bill */
   date: string;
 }
-export const GetTelephonyHistoryTollfreeConsumptionDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyHistoryTollfreeConsumptionDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     date: S.String.pipe(T.Label()),
@@ -8810,7 +8776,7 @@ export interface GetTelephonyLineRequest {
   /** Your line number */
   serviceName: string;
 }
-export const GetTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/lines/{serviceName}", code: 200 })),
@@ -8823,7 +8789,7 @@ export interface GetTelephonyLineAbbreviatedNumberRequest {
   /** The abbreviated number which must start with "2" and must have a length of 3 or 4 digits */
   abbreviatedNumber: number;
 }
-export const GetTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8844,7 +8810,7 @@ export interface GetTelephonyLineActivateNewPhoneRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineActivateNewPhoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineActivateNewPhoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8860,7 +8826,7 @@ export const GetTelephonyLineActivateNewPhoneRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetTelephonyLineActivateNewPhoneRequest>;
 
 export interface GetTelephonyLineActivateNewPhoneResponse {}
-export const GetTelephonyLineActivateNewPhoneResponse =
+const GetTelephonyLineActivateNewPhoneResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<GetTelephonyLineActivateNewPhoneResponse>;
 
 export interface GetTelephonyLineAutomaticCallRequest {
@@ -8870,7 +8836,7 @@ export interface GetTelephonyLineAutomaticCallRequest {
   /** Generated call identifier */
   identifier: string;
 }
-export const GetTelephonyLineAutomaticCallRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineAutomaticCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -8953,7 +8919,7 @@ export type TelephonyCallsGeneratorHangupCauseEnum =
   | "UnspecifiedNoOtherCauseCodesApplicable"
   | "UserChallenge"
   | "UserNotRegistered";
-export const TelephonyCallsGeneratorHangupCauseEnum = S.String;
+const TelephonyCallsGeneratorHangupCauseEnum = S.String;
 
 /** Automatic Call made by Call Generator on this line */
 export interface TelephonyCallsGenerated {
@@ -8986,7 +8952,7 @@ export interface TelephonyCallsGenerated {
   /** unique call id */
   uuid?: string;
 }
-export const TelephonyCallsGenerated = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCallsGenerated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answerDatetime: S.optional(S.NullOr(S.String)),
     application: S.optional(S.NullOr(S.String)),
@@ -9010,7 +8976,7 @@ export interface GetTelephonyLineByServiceNameRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineByServiceNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineByServiceNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9030,7 +8996,7 @@ export interface TelephonyLineOffer {
   /** Offer price per month */
   price?: OrderPrice | null;
 }
-export const TelephonyLineOffer = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLineOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -9040,7 +9006,7 @@ export const TelephonyLineOffer = /*@__PURE__*/ S.suspend(() =>
 
 /** The line offers (Deprecated, prefer "name" in getPublicOffer) */
 export type TelephonyLineOffersList = Array<string>;
-export const TelephonyLineOffersList =
+const TelephonyLineOffersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyLineOffersList>;
 
 /** Line service */
@@ -9064,7 +9030,7 @@ export interface TelephonyLine {
   serviceType?: TelephonyTypeServiceEnum;
   simultaneousLines?: number;
 }
-export const TelephonyLine = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canChangePassword: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -9087,7 +9053,7 @@ export interface GetTelephonyLineClick2CallUserRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9112,7 +9078,7 @@ export interface TelephonyClick2CallUser {
   /** login of the click 2 call user */
   login?: string;
 }
-export const TelephonyClick2CallUser = /*@__PURE__*/ S.suspend(() =>
+const TelephonyClick2CallUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDateTime: S.optional(S.String),
     id: S.optional(S.Number),
@@ -9127,7 +9093,7 @@ export interface GetTelephonyLineEventRequest {
   /** Id of the object */
   id: string;
 }
-export const GetTelephonyLineEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9145,7 +9111,7 @@ export const GetTelephonyLineEventRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The call direction for a given event */
 export type TelephonyRealtimeEventDirection = "incoming" | "outgoing";
-export const TelephonyRealtimeEventDirection = S.String;
+const TelephonyRealtimeEventDirection = S.String;
 
 /** The event type */
 export type TelephonyRealtimeEventType =
@@ -9155,11 +9121,11 @@ export type TelephonyRealtimeEventType =
   | "start_calling"
   | "start_hold"
   | "start_ringing";
-export const TelephonyRealtimeEventType = S.String;
+const TelephonyRealtimeEventType = S.String;
 
 /** The event protocol */
 export type TelephonyRealtimeEventProtocol = "mgcp" | "sip";
-export const TelephonyRealtimeEventProtocol = S.String;
+const TelephonyRealtimeEventProtocol = S.String;
 
 /** Events triggered by the line */
 export interface TelephonyEvent {
@@ -9180,7 +9146,7 @@ export interface TelephonyEvent {
   /** Protocol (mgcp or sip) */
   protocol?: TelephonyRealtimeEventProtocol;
 }
-export const TelephonyEvent = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calledIdentifier: S.optional(S.String),
     callingIdentifier: S.optional(S.String),
@@ -9198,24 +9164,23 @@ export interface GetTelephonyLineMaximumAvailableSimultaneousLinesRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineMaximumAvailableSimultaneousLinesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines",
-        code: 200,
-      }),
-    ),
+const GetTelephonyLineMaximumAvailableSimultaneousLinesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/line/{serviceName}/maximumAvailableSimultaneousLines",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetTelephonyLineMaximumAvailableSimultaneousLinesRequest",
 }) as any as S.Schema<GetTelephonyLineMaximumAvailableSimultaneousLinesRequest>;
 
 export type GetTelephonyLineMaximumAvailableSimultaneousLinesResponse = number;
-export const GetTelephonyLineMaximumAvailableSimultaneousLinesResponse =
+const GetTelephonyLineMaximumAvailableSimultaneousLinesResponse =
   CreateTelephonyLinePhonePhonebookPhonebookContactResponse as any as S.Schema<GetTelephonyLineMaximumAvailableSimultaneousLinesResponse>;
 
 export interface GetTelephonyLineOfferRequest {
@@ -9223,7 +9188,7 @@ export interface GetTelephonyLineOfferRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9243,7 +9208,7 @@ export interface GetTelephonyLineOptionDefaultCodecsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineOptionDefaultCodecsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineOptionDefaultCodecsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9259,7 +9224,7 @@ export const GetTelephonyLineOptionDefaultCodecsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetTelephonyLineOptionDefaultCodecsRequest>;
 
 export type GetTelephonyLineOptionDefaultCodecsResponse = string;
-export const GetTelephonyLineOptionDefaultCodecsResponse =
+const GetTelephonyLineOptionDefaultCodecsResponse =
   CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<GetTelephonyLineOptionDefaultCodecsResponse>;
 
 export interface GetTelephonyLineOptionsRequest {
@@ -9267,7 +9232,7 @@ export interface GetTelephonyLineOptionsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9284,15 +9249,15 @@ export const GetTelephonyLineOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The nature of the call forward */
 export type TelephonyLineOptionForwardNatureTypeEnum = "fax" | "number" | "voicemail";
-export const TelephonyLineOptionForwardNatureTypeEnum = S.String;
+const TelephonyLineOptionForwardNatureTypeEnum = S.String;
 
 /** Intercom configuration */
 export type TelephonyLineOptionIntercomEnum = "no" | "prefixed" | "yes";
-export const TelephonyLineOptionIntercomEnum = S.String;
+const TelephonyLineOptionIntercomEnum = S.String;
 
 /** The ip restrictions of your line */
 export type TelephonyLineOptionsIpRestrictionsList = Array<string>;
-export const TelephonyLineOptionsIpRestrictionsList =
+const TelephonyLineOptionsIpRestrictionsList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyLineOptionsIpRestrictionsList>;
 
 /** The language of the line */
@@ -9304,7 +9269,7 @@ export type TelephonyLineOptionLanguageEnum =
   | "German"
   | "Italian"
   | "Spanish";
-export const TelephonyLineOptionLanguageEnum = S.String;
+const TelephonyLineOptionLanguageEnum = S.String;
 
 /** Line options */
 export interface TelephonyLineOptions {
@@ -9378,7 +9343,7 @@ export interface TelephonyLineOptions {
   /** Voicemail short number to dial from the line */
   voicemailInternalNumber?: string;
 }
-export const TelephonyLineOptions = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLineOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     absentSubscriber: S.optional(S.Boolean),
     anonymousCallRejection: S.optional(S.Boolean),
@@ -9424,7 +9389,7 @@ export interface GetTelephonyLinePhoneRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLinePhoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLinePhoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9441,19 +9406,19 @@ export const GetTelephonyLinePhoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Property value possibilities */
 export type TelephonyPhoneConfigurationPropertyEnumList = Array<string>;
-export const TelephonyPhoneConfigurationPropertyEnumList =
+const TelephonyPhoneConfigurationPropertyEnumList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyPhoneConfigurationPropertyEnumList>;
 
 /** Phone Configuration level enum */
 export type TelephonyPhoneConfigurationLevelEnum = "admin" | "expert";
-export const TelephonyPhoneConfigurationLevelEnum = S.String;
+const TelephonyPhoneConfigurationLevelEnum = S.String;
 
 /** Start and end points (inclusive) of a range */
 export interface ComplexTypeRangeLong {
   from?: number;
   to?: number;
 }
-export const ComplexTypeRangeLong = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeRangeLong = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.Number),
     to: S.optional(S.Number),
@@ -9468,7 +9433,7 @@ export type TelephonyPhoneConfigurationTypeEnum =
   | "ipv4"
   | "numeric"
   | "string";
-export const TelephonyPhoneConfigurationTypeEnum = S.String;
+const TelephonyPhoneConfigurationTypeEnum = S.String;
 
 /** Phone configuration property */
 export interface TelephonyPhoneConfigurationProperty {
@@ -9493,7 +9458,7 @@ export interface TelephonyPhoneConfigurationProperty {
   /** Current property value */
   value?: string | null;
 }
-export const TelephonyPhoneConfigurationProperty = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPhoneConfigurationProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -9512,13 +9477,13 @@ export const TelephonyPhoneConfigurationProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Current phone properties */
 export type TelephonyPhonePhoneConfigurationList = Array<TelephonyPhoneConfigurationProperty>;
-export const TelephonyPhonePhoneConfigurationList = /*@__PURE__*/ S.Array(
+const TelephonyPhonePhoneConfigurationList = /*@__PURE__*/ S.Array(
   TelephonyPhoneConfigurationProperty,
 ) as any as S.Schema<TelephonyPhonePhoneConfigurationList>;
 
 /** Phone protocol */
 export type TelephonyProtocolEnum = "mgcp" | "sip";
-export const TelephonyProtocolEnum = S.String;
+const TelephonyProtocolEnum = S.String;
 
 /** Plug & Phone */
 export interface TelephonyPhone {
@@ -9541,7 +9506,7 @@ export interface TelephonyPhone {
   /** The phone user password */
   userPassword?: string | Redacted.Redacted<string> | null;
 }
-export const TelephonyPhone = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPhone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String),
     description: S.optional(S.String),
@@ -9560,7 +9525,7 @@ export interface GetTelephonyLinePhoneAdminCredentialsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLinePhoneAdminCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLinePhoneAdminCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9582,7 +9547,7 @@ export interface TelephonyPhoneCredentials {
   /** Password to access the web interface of the phone */
   password?: string | Redacted.Redacted<string>;
 }
-export const TelephonyPhoneCredentials = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPhoneCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.optional(S.NullOr(S.String)),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -9598,7 +9563,7 @@ export interface GetTelephonyLinePhoneFunctionKeyRequest {
   /** The number of the function key */
   keyNum: number;
 }
-export const GetTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9629,7 +9594,7 @@ export interface TelephonyFunctionKey {
   /** The key type */
   type?: string;
 }
-export const TelephonyFunctionKey = /*@__PURE__*/ S.suspend(() =>
+const TelephonyFunctionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.NullOr(S.String)),
     function: S.optional(S.NullOr(S.String)),
@@ -9647,7 +9612,7 @@ export interface GetTelephonyLinePhonePhonebookRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const GetTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9674,7 +9639,7 @@ export interface TelephonyPhonebook {
   /** Phone key identifier between the phone and phonebooks */
   phoneKey?: string;
 }
-export const TelephonyPhonebook = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPhonebook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookKey: S.optional(S.String),
     isReadonly: S.optional(S.Boolean),
@@ -9685,7 +9650,7 @@ export const TelephonyPhonebook = /*@__PURE__*/ S.suspend(() =>
 
 /** Export file format */
 export type TelephonyContactsExportFormatsEnum = "csv";
-export const TelephonyContactsExportFormatsEnum = S.String;
+const TelephonyContactsExportFormatsEnum = S.String;
 
 export interface GetTelephonyLinePhonePhonebookExportRequest {
   /** The name of your billingAccount */
@@ -9696,7 +9661,7 @@ export interface GetTelephonyLinePhonePhonebookExportRequest {
   /** Format of the file */
   format: TelephonyContactsExportFormatsEnum | (string & {});
 }
-export const GetTelephonyLinePhonePhonebookExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLinePhonePhonebookExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9722,7 +9687,7 @@ export interface GetTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-export const GetTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9758,7 +9723,7 @@ export interface TelephonyPhonebookContact {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-export const TelephonyPhonebookContact = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPhonebookContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     homeMobile: S.optional(S.NullOr(S.String)),
@@ -9780,7 +9745,7 @@ export interface GetTelephonyLinePhoneRmaRequest {
   /** Return merchandise authorisation identifier */
   id: string;
 }
-export const GetTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -9798,11 +9763,11 @@ export const GetTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Return merchandise authorisation offer type */
 export type TelephonyRmaOfferTypeEnum = "deposit" | "loan" | "purchase";
-export const TelephonyRmaOfferTypeEnum = S.String;
+const TelephonyRmaOfferTypeEnum = S.String;
 
 /** Return merchandise authorisation type */
 export type TelephonyRmaReplaceTypeEnum = "changePhone" | "phoneRestitution" | "undefined";
-export const TelephonyRmaReplaceTypeEnum = S.String;
+const TelephonyRmaReplaceTypeEnum = S.String;
 
 /** ISO country codes */
 export type CoreTypesCountryEnum =
@@ -10066,7 +10031,7 @@ export type CoreTypesCountryEnum =
   | "za"
   | "zm"
   | "zw";
-export const CoreTypesCountryEnum = S.String;
+const CoreTypesCountryEnum = S.String;
 
 /** Contact informations structure */
 export interface TelephonyContact {
@@ -10088,7 +10053,7 @@ export interface TelephonyContact {
   /** Contact zip */
   zip?: string | null;
 }
-export const TelephonyContact = /*@__PURE__*/ S.suspend(() =>
+const TelephonyContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     city: S.optional(S.NullOr(S.String)),
@@ -10104,7 +10069,7 @@ export const TelephonyContact = /*@__PURE__*/ S.suspend(() =>
 
 /** Return merchandise authorisation step */
 export type TelephonyRmaStatusEnum = "closed" | "open" | "received";
-export const TelephonyRmaStatusEnum = S.String;
+const TelephonyRmaStatusEnum = S.String;
 
 /** RMA step names */
 export type TelephonyRmaStepNameEnum =
@@ -10115,11 +10080,11 @@ export type TelephonyRmaStepNameEnum =
   | "parcelReception"
   | "parcelValidation"
   | "validation";
-export const TelephonyRmaStepNameEnum = S.String;
+const TelephonyRmaStepNameEnum = S.String;
 
 /** Status of the RMA step */
 export type TelephonyRmaStepStatusEnum = "done" | "todo";
-export const TelephonyRmaStepStatusEnum = S.String;
+const TelephonyRmaStepStatusEnum = S.String;
 
 /** Informations related to the current RMA step status */
 export interface TelephonyRmaStep {
@@ -10134,7 +10099,7 @@ export interface TelephonyRmaStep {
   /** Status of the step */
   status?: TelephonyRmaStepStatusEnum;
 }
-export const TelephonyRmaStep = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRmaStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -10146,7 +10111,7 @@ export const TelephonyRmaStep = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates the current status of the RMA with a list of steps */
 export type TelephonyRmaStepsList = Array<TelephonyRmaStep>;
-export const TelephonyRmaStepsList = /*@__PURE__*/ S.Array(
+const TelephonyRmaStepsList = /*@__PURE__*/ S.Array(
   TelephonyRmaStep,
 ) as any as S.Schema<TelephonyRmaStepsList>;
 
@@ -10163,7 +10128,7 @@ export type TelephonyRmaTypeEnum =
   | "specific return merchandise authorisation"
   | "termination"
   | "unknown";
-export const TelephonyRmaTypeEnum = S.String;
+const TelephonyRmaTypeEnum = S.String;
 
 /** Current Return Merchandise Authorisation */
 export interface TelephonyRma {
@@ -10196,7 +10161,7 @@ export interface TelephonyRma {
   /** Typology process of merchandise return */
   type?: TelephonyRmaTypeEnum;
 }
-export const TelephonyRma = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRma = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancellable: S.optional(S.Boolean),
     creationDatetime: S.optional(S.String),
@@ -10220,7 +10185,7 @@ export interface GetTelephonyLinePhoneSupportsPhonebookRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLinePhoneSupportsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLinePhoneSupportsPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10236,7 +10201,7 @@ export const GetTelephonyLinePhoneSupportsPhonebookRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetTelephonyLinePhoneSupportsPhonebookRequest>;
 
 export type GetTelephonyLinePhoneSupportsPhonebookResponse = boolean;
-export const GetTelephonyLinePhoneSupportsPhonebookResponse =
+const GetTelephonyLinePhoneSupportsPhonebookResponse =
   CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyLinePhoneSupportsPhonebookResponse>;
 
 export interface GetTelephonyLineRecordRequest {
@@ -10246,7 +10211,7 @@ export interface GetTelephonyLineRecordRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyLineRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10266,7 +10231,7 @@ export interface GetTelephonyLineServiceInfosRequest {
   /** Your line number */
   serviceName: string;
 }
-export const GetTelephonyLineServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/lines/{serviceName}/serviceInfos", code: 200 })),
@@ -10279,7 +10244,7 @@ export interface GetTelephonyLineSimultaneousChannelsDetailsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineSimultaneousChannelsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineSimultaneousChannelsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10307,7 +10272,7 @@ export interface TelephonySimultaneousChannelsDetails {
   /** Quantity of simultaneous channels going to be deleted at the end of the billing cycle. */
   toBeDeleted?: number;
 }
-export const TelephonySimultaneousChannelsDetails = /*@__PURE__*/ S.suspend(() =>
+const TelephonySimultaneousChannelsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basic: S.optional(S.Number),
     current: S.optional(S.Number),
@@ -10324,7 +10289,7 @@ export interface GetTelephonyLineSoftphoneBetaRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineSoftphoneBetaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineSoftphoneBetaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10344,7 +10309,7 @@ export interface TelephonySoftphoneBetaStatus {
   /** Whether Softphone beta is enabled or disabled */
   enabled: boolean;
 }
-export const TelephonySoftphoneBetaStatus = /*@__PURE__*/ S.suspend(() =>
+const TelephonySoftphoneBetaStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
   }),
@@ -10357,7 +10322,7 @@ export interface GetTelephonyLineSoftphoneLogoRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10379,7 +10344,7 @@ export interface TelephonySoftphoneLogo {
   /** URL used to download logo */
   url: string;
 }
-export const TelephonySoftphoneLogo = /*@__PURE__*/ S.suspend(() =>
+const TelephonySoftphoneLogo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.String,
     url: S.String,
@@ -10391,7 +10356,7 @@ export interface GetTelephonyLineSoftphoneStatusRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineSoftphoneStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineSoftphoneStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10408,7 +10373,7 @@ export const GetTelephonyLineSoftphoneStatusRequest = /*@__PURE__*/ S.suspend(()
 
 /** Softphone infrastructure */
 export type TelephonySoftphoneInfrastructureEnum = "LEGACY" | "NOWI";
-export const TelephonySoftphoneInfrastructureEnum = S.String;
+const TelephonySoftphoneInfrastructureEnum = S.String;
 
 /** Softphone status */
 export interface TelephonySoftphoneStatus {
@@ -10419,7 +10384,7 @@ export interface TelephonySoftphoneStatus {
   /** Line infrastructure */
   infrastructure?: TelephonySoftphoneInfrastructureEnum;
 }
-export const TelephonySoftphoneStatus = /*@__PURE__*/ S.suspend(() =>
+const TelephonySoftphoneStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activation: S.optional(S.Boolean),
     eligibility: S.optional(S.Boolean),
@@ -10432,7 +10397,7 @@ export interface GetTelephonyLineSoftphoneThemeRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10454,7 +10419,7 @@ export interface TelephonySoftphoneTheme {
   /** Theme ID */
   themeId?: number;
 }
-export const TelephonySoftphoneTheme = /*@__PURE__*/ S.suspend(() =>
+const TelephonySoftphoneTheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(S.String),
     themeId: S.optional(S.Number),
@@ -10466,7 +10431,7 @@ export interface GetTelephonyLineTonesRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyLineTonesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineTonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10483,11 +10448,11 @@ export const GetTelephonyLineTonesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tones type */
 export type TelephonyTonesEnum = "Custom sound" | "None";
-export const TelephonyTonesEnum = S.String;
+const TelephonyTonesEnum = S.String;
 
 /** Tones type */
 export type TelephonyTonesOnHoldEnum = "Custom sound" | "None" | "Predefined 1" | "Predefined 2";
-export const TelephonyTonesOnHoldEnum = S.String;
+const TelephonyTonesOnHoldEnum = S.String;
 
 /** Line tones */
 export interface TelephonyTones {
@@ -10500,7 +10465,7 @@ export interface TelephonyTones {
   /** Ringback tone */
   ringback?: TelephonyTonesEnum;
 }
-export const TelephonyTones = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTones = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callWaiting: S.optional(TelephonyTonesEnum),
     endCall: S.optional(TelephonyTonesEnum),
@@ -10516,7 +10481,7 @@ export interface GetTelephonyLineTrafficExtractRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyLineTrafficExtractRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyLineTrafficExtractRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10538,7 +10503,7 @@ export interface GetTelephonyNumberRequest {
   /** Name of the service */
   serviceName: string;
 }
-export const GetTelephonyNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10561,7 +10526,7 @@ export interface TelephonyNumber {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyNumber = /*@__PURE__*/ S.suspend(() =>
+const TelephonyNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     featureType: S.optional(TelephonyTypeEnum),
@@ -10576,7 +10541,7 @@ export interface GetTelephonyOfferTaskRequest {
   billingAccount: string;
   taskId: number;
 }
-export const GetTelephonyOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -10593,7 +10558,7 @@ export interface GetTelephonyOutplanNotificationRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -10613,7 +10578,7 @@ export interface GetTelephonyOvhPabxRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyOvhPabxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10636,7 +10601,7 @@ export interface TelephonyOvhPabx {
   /** General type of the service */
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyOvhPabx = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabx = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     featureType: S.optional(TelephonyTypeEnum),
@@ -10652,7 +10617,7 @@ export interface GetTelephonyOvhPabxDialplanRequest {
   serviceName: string;
   dialplanId: number;
 }
-export const GetTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10675,7 +10640,7 @@ export interface GetTelephonyOvhPabxDialplanExtensionRequest {
   dialplanId: number;
   extensionId: number;
 }
-export const GetTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10700,24 +10665,23 @@ export interface GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest 
   extensionId: number;
   conditionId: number;
 }
-export const GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      dialplanId: S.Number.pipe(T.Label()),
-      extensionId: S.Number.pipe(T.Label()),
-      conditionId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
-  }) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
+const GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    dialplanId: S.Number.pipe(T.Label()),
+    extensionId: S.Number.pipe(T.Label()),
+    conditionId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionScreenList/{conditionId}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
+}) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
 
 export interface GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The name of your billingAccount */
@@ -10727,21 +10691,20 @@ export interface GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   extensionId: number;
   conditionId: number;
 }
-export const GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      dialplanId: S.Number.pipe(T.Label()),
-      extensionId: S.Number.pipe(T.Label()),
-      conditionId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}",
-        code: 200,
-      }),
-    ),
+const GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    dialplanId: S.Number.pipe(T.Label()),
+    extensionId: S.Number.pipe(T.Label()),
+    conditionId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest",
 }) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
@@ -10754,7 +10717,7 @@ export interface GetTelephonyOvhPabxDialplanExtensionRuleRequest {
   extensionId: number;
   ruleId: number;
 }
-export const GetTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10777,7 +10740,7 @@ export interface GetTelephonyOvhPabxHuntingRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyOvhPabxHuntingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10798,7 +10761,7 @@ export interface GetTelephonyOvhPabxHuntingAgentRequest {
   serviceName: string;
   agentId: number;
 }
-export const GetTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10820,7 +10783,7 @@ export interface GetTelephonyOvhPabxHuntingAgentBannerAccessRequest {
   serviceName: string;
   agentId: number;
 }
-export const GetTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10844,7 +10807,7 @@ export interface GetTelephonyOvhPabxHuntingAgentCallRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyOvhPabxHuntingAgentCallRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingAgentCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10867,7 +10830,7 @@ export interface GetTelephonyOvhPabxHuntingAgentEventTokenRequest {
   serviceName: string;
   agentId: number;
 }
-export const GetTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10889,7 +10852,7 @@ export interface GetTelephonyOvhPabxHuntingAgentLiveStatusRequest {
   serviceName: string;
   agentId: number;
 }
-export const GetTelephonyOvhPabxHuntingAgentLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingAgentLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10912,7 +10875,7 @@ export interface GetTelephonyOvhPabxHuntingAgentQueueRequest {
   agentId: number;
   queueId: number;
 }
-export const GetTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10936,7 +10899,7 @@ export interface GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest {
   agentId: number;
   queueId: number;
 }
-export const GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10959,7 +10922,7 @@ export interface GetTelephonyOvhPabxHuntingCustomStatusRequest {
   serviceName: string;
   id: number;
 }
-export const GetTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -10980,7 +10943,7 @@ export interface GetTelephonyOvhPabxHuntingEventTokenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11001,7 +10964,7 @@ export interface GetTelephonyOvhPabxHuntingQueueRequest {
   serviceName: string;
   queueId: number;
 }
-export const GetTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11024,7 +10987,7 @@ export interface GetTelephonyOvhPabxHuntingQueueAgentRequest {
   queueId: number;
   agentId: number;
 }
-export const GetTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11048,7 +11011,7 @@ export interface GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest {
   queueId: number;
   agentId: number;
 }
-export const GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11073,7 +11036,7 @@ export interface GetTelephonyOvhPabxHuntingQueueLiveCallRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyOvhPabxHuntingQueueLiveCallRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingQueueLiveCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11096,7 +11059,7 @@ export interface GetTelephonyOvhPabxHuntingQueueLiveStatisticsRequest {
   serviceName: string;
   queueId: number;
 }
-export const GetTelephonyOvhPabxHuntingQueueLiveStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxHuntingQueueLiveStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11118,7 +11081,7 @@ export interface GetTelephonyOvhPabxMenuRequest {
   serviceName: string;
   menuId: number;
 }
-export const GetTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11141,7 +11104,7 @@ export interface GetTelephonyOvhPabxMenuEntryRequest {
   menuId: number;
   entryId: number;
 }
-export const GetTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11164,7 +11127,7 @@ export interface GetTelephonyOvhPabxRecordRequest {
   serviceName: string;
   id: number;
 }
-export const GetTelephonyOvhPabxRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11186,7 +11149,7 @@ export interface GetTelephonyOvhPabxSoundRequest {
   serviceName: string;
   soundId: number;
 }
-export const GetTelephonyOvhPabxSoundRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxSoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11208,7 +11171,7 @@ export interface GetTelephonyOvhPabxTtsRequest {
   serviceName: string;
   id: number;
 }
-export const GetTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11232,7 +11195,7 @@ export interface TelephonyOvhPabxTts {
   /** The voice used to say text */
   voice?: TelephonyOvhPabxTtsVoiceEnum;
 }
-export const TelephonyOvhPabxTts = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOvhPabxTts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     text: S.optional(S.String),
@@ -11246,7 +11209,7 @@ export interface GetTelephonyPhonebookRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const GetTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -11264,7 +11227,7 @@ export interface TelephonyPhonebookMaster {
   /** Phone book name */
   name?: string;
 }
-export const TelephonyPhonebookMaster = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPhonebookMaster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookKey: S.optional(S.String),
     name: S.optional(S.String),
@@ -11279,7 +11242,7 @@ export interface GetTelephonyPhonebookExportRequest {
   /** Format of the file */
   format: TelephonyContactsExportFormatsEnum | (string & {});
 }
-export const GetTelephonyPhonebookExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyPhonebookExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -11303,7 +11266,7 @@ export interface GetTelephonyPhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-export const GetTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -11325,7 +11288,7 @@ export interface GetTelephonyPortabilityRequest {
   /** The ID of the portability */
   id: number;
 }
-export const GetTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -11359,7 +11322,7 @@ export interface TelephonyPortabilityCustomerInfos {
   /** ZIP code of the customer's address */
   zip?: string;
 }
-export const TelephonyPortabilityCustomerInfos = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPortabilityCustomerInfos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     building: S.optional(S.NullOr(S.String)),
     city: S.optional(S.String),
@@ -11378,17 +11341,17 @@ export const TelephonyPortabilityCustomerInfos = /*@__PURE__*/ S.suspend(() =>
 
 /** Codes representing the error in current portability */
 export type TelephonyPortabilityErrorCodesList = Array<string>;
-export const TelephonyPortabilityErrorCodesList =
+const TelephonyPortabilityErrorCodesList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyPortabilityErrorCodesList>;
 
 /** The list of numbers that is going to be ported */
 export type TelephonyPortabilityNumbersListList = Array<string>;
-export const TelephonyPortabilityNumbersListList =
+const TelephonyPortabilityNumbersListList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyPortabilityNumbersListList>;
 
 /** Country that defines the portability kind */
 export type TelephonyPortabilityCountryEnum = "belgium" | "france" | "switzerland";
-export const TelephonyPortabilityCountryEnum = S.String;
+const TelephonyPortabilityCountryEnum = S.String;
 
 /** Portability informations */
 export interface TelephonyPortability {
@@ -11419,7 +11382,7 @@ export interface TelephonyPortability {
   /** RIO of the portability (France only) */
   rio?: string | null;
 }
-export const TelephonyPortability = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPortability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.optional(S.String),
     creationDate: S.optional(S.String),
@@ -11443,7 +11406,7 @@ export interface GetTelephonyPortabilityCanBeCancelledRequest {
   /** The ID of the portability */
   id: number;
 }
-export const GetTelephonyPortabilityCanBeCancelledRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyPortabilityCanBeCancelledRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -11459,7 +11422,7 @@ export const GetTelephonyPortabilityCanBeCancelledRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetTelephonyPortabilityCanBeCancelledRequest>;
 
 export type GetTelephonyPortabilityCanBeCancelledResponse = boolean;
-export const GetTelephonyPortabilityCanBeCancelledResponse =
+const GetTelephonyPortabilityCanBeCancelledResponse =
   CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyPortabilityCanBeCancelledResponse>;
 
 export interface GetTelephonyPortabilityCanBeExecutedRequest {
@@ -11468,7 +11431,7 @@ export interface GetTelephonyPortabilityCanBeExecutedRequest {
   /** The ID of the portability */
   id: number;
 }
-export const GetTelephonyPortabilityCanBeExecutedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyPortabilityCanBeExecutedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -11484,7 +11447,7 @@ export const GetTelephonyPortabilityCanBeExecutedRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetTelephonyPortabilityCanBeExecutedRequest>;
 
 export type GetTelephonyPortabilityCanBeExecutedResponse = boolean;
-export const GetTelephonyPortabilityCanBeExecutedResponse =
+const GetTelephonyPortabilityCanBeExecutedResponse =
   CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyPortabilityCanBeExecutedResponse>;
 
 export interface GetTelephonyPortabilityDateCanBeChangedRequest {
@@ -11493,7 +11456,7 @@ export interface GetTelephonyPortabilityDateCanBeChangedRequest {
   /** The ID of the portability */
   id: number;
 }
-export const GetTelephonyPortabilityDateCanBeChangedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyPortabilityDateCanBeChangedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -11509,7 +11472,7 @@ export const GetTelephonyPortabilityDateCanBeChangedRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<GetTelephonyPortabilityDateCanBeChangedRequest>;
 
 export type GetTelephonyPortabilityDateCanBeChangedResponse = boolean;
-export const GetTelephonyPortabilityDateCanBeChangedResponse =
+const GetTelephonyPortabilityDateCanBeChangedResponse =
   CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyPortabilityDateCanBeChangedResponse>;
 
 export interface GetTelephonyPortabilityDocumentRequest {
@@ -11520,7 +11483,7 @@ export interface GetTelephonyPortabilityDocumentRequest {
   /** Identifier of the document */
   documentId: number;
 }
-export const GetTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -11540,7 +11503,7 @@ export interface GetTelephonyProcedureRequest {
   /** Procedure ID */
   id: number;
 }
-export const GetTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/procedure/{id}", code: 200 })),
@@ -11549,14 +11512,14 @@ export const GetTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTelephonyProcedureRequest>;
 
 export interface GetTelephonyProcedureRequiredRequest {}
-export const GetTelephonyProcedureRequiredRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyProcedureRequiredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telephony/procedure/required", code: 200 })),
 ).annotate({
   identifier: "GetTelephonyProcedureRequiredRequest",
 }) as any as S.Schema<GetTelephonyProcedureRequiredRequest>;
 
 export type GetTelephonyProcedureRequiredResponse = boolean;
-export const GetTelephonyProcedureRequiredResponse =
+const GetTelephonyProcedureRequiredResponse =
   CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyProcedureRequiredResponse>;
 
 export interface GetTelephonyRedirectRequest {
@@ -11564,7 +11527,7 @@ export interface GetTelephonyRedirectRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyRedirectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyRedirectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11583,10 +11546,10 @@ export interface TelephonyRedirect {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyRedirect = TelephonyDdi as any as S.Schema<TelephonyRedirect>;
+const TelephonyRedirect = TelephonyDdi as any as S.Schema<TelephonyRedirect>;
 
 export interface GetTelephonyResellerPanelStatusRequest {}
-export const GetTelephonyResellerPanelStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyResellerPanelStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telephony/resellerPanel/status", code: 200 })),
 ).annotate({
   identifier: "GetTelephonyResellerPanelStatusRequest",
@@ -11594,7 +11557,7 @@ export const GetTelephonyResellerPanelStatusRequest = /*@__PURE__*/ S.suspend(()
 
 /** Status of password update */
 export type TelephonyResellerPanelPasswordUpdateStatusEnum = "doing" | "done" | "error" | "todo";
-export const TelephonyResellerPanelPasswordUpdateStatusEnum = S.String;
+const TelephonyResellerPanelPasswordUpdateStatusEnum = S.String;
 
 /** Describe the status of the reseller panel, if it is activated and if there is a password update ongoing */
 export interface TelephonyResellerPanelStatus {
@@ -11603,7 +11566,7 @@ export interface TelephonyResellerPanelStatus {
   /** Password update task status */
   passwordUpdateStatus?: TelephonyResellerPanelPasswordUpdateStatusEnum | null;
 }
-export const TelephonyResellerPanelStatus = /*@__PURE__*/ S.suspend(() =>
+const TelephonyResellerPanelStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     passwordUpdateStatus: S.optional(S.NullOr(TelephonyResellerPanelPasswordUpdateStatusEnum)),
@@ -11617,7 +11580,7 @@ export interface GetTelephonyRsvaRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyRsvaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyRsvaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11638,14 +11601,14 @@ export type TelephonyPortabilitySpecialNumberCategoryEnum =
   | "linking"
   | "m2m"
   | "relationship";
-export const TelephonyPortabilitySpecialNumberCategoryEnum = S.String;
+const TelephonyPortabilitySpecialNumberCategoryEnum = S.String;
 
 /** French value added services subject to the RSVA reform (Référentiel des numéros SVA) */
 export interface TelephonyRsva {
   serviceName?: string;
   typology?: TelephonyPortabilitySpecialNumberCategoryEnum | null;
 }
-export const TelephonyRsva = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRsva = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
     typology: S.optional(S.NullOr(TelephonyPortabilitySpecialNumberCategoryEnum)),
@@ -11657,7 +11620,7 @@ export interface GetTelephonyRsvaCurrentRateCodeRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyRsvaCurrentRateCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyRsvaCurrentRateCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11677,7 +11640,7 @@ export interface GetTelephonyRsvaScheduledRateCodeRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyRsvaScheduledRateCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyRsvaScheduledRateCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11697,7 +11660,7 @@ export interface GetTelephonySchedulerRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11720,14 +11683,14 @@ export type TelephonyTimeZone =
   | "Europe/Madrid"
   | "Europe/Paris"
   | "Europe/Zurich";
-export const TelephonyTimeZone = S.String;
+const TelephonyTimeZone = S.String;
 
 /** Scheduler capable services */
 export interface TelephonyScheduler {
   serviceName?: string;
   timeZone?: TelephonyTimeZone;
 }
-export const TelephonyScheduler = /*@__PURE__*/ S.suspend(() =>
+const TelephonyScheduler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
     timeZone: S.optional(TelephonyTimeZone),
@@ -11741,7 +11704,7 @@ export interface GetTelephonySchedulerEventRequest {
   /** The unique ICS event identifier */
   uid: string;
 }
-export const GetTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11770,7 +11733,7 @@ export interface TelephonySchedulerEvent {
   /** The unique ICS event identifier */
   uid?: string;
 }
-export const TelephonySchedulerEvent = /*@__PURE__*/ S.suspend(() =>
+const TelephonySchedulerEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(TelephonySchedulerCategoryEnum),
     dateEnd: S.optional(S.String),
@@ -11786,7 +11749,7 @@ export interface GetTelephonyScreenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11799,7 +11762,7 @@ export const GetTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of screen list */
 export type TelephonyScreenListChoosingEnum = "blacklist" | "disabled" | "whitelist";
-export const TelephonyScreenListChoosingEnum = S.String;
+const TelephonyScreenListChoosingEnum = S.String;
 
 /** ScreenList capable services */
 export interface TelephonyScreen {
@@ -11807,7 +11770,7 @@ export interface TelephonyScreen {
   outgoingScreenList?: TelephonyScreenListChoosingEnum;
   serviceName?: string;
 }
-export const TelephonyScreen = /*@__PURE__*/ S.suspend(() =>
+const TelephonyScreen = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incomingScreenList: S.optional(TelephonyScreenListChoosingEnum),
     outgoingScreenList: S.optional(TelephonyScreenListChoosingEnum),
@@ -11822,7 +11785,7 @@ export interface GetTelephonyScreenScreenListRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyScreenScreenListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyScreenScreenListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11846,7 +11809,7 @@ export interface TelephonyScreenList {
   status?: string;
   type?: TelephonyScreenListTypeEnum;
 }
-export const TelephonyScreenList = /*@__PURE__*/ S.suspend(() =>
+const TelephonyScreenList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callNumber: S.optional(S.String),
     id: S.optional(S.Number),
@@ -11861,7 +11824,7 @@ export interface GetTelephonyServiceRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11874,22 +11837,22 @@ export const GetTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Number country */
 export type TelephonyServiceNumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "uk";
-export const TelephonyServiceNumberCountryEnum = S.String;
+const TelephonyServiceNumberCountryEnum = S.String;
 
 /** Number country code */
 export type TelephonyNumberCountryCodeEnum = 32 | 33 | 34 | 41 | 44 | 49;
-export const TelephonyNumberCountryCodeEnum = S.Number;
+const TelephonyNumberCountryCodeEnum = S.Number;
 
 export type TelephonyTelephonyServiceOffersList = Array<string>;
-export const TelephonyTelephonyServiceOffersList =
+const TelephonyTelephonyServiceOffersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyTelephonyServiceOffersList>;
 
 /** All existing properties of line or alias offer */
 export type TelephonyPropertyEnum = "xdsl";
-export const TelephonyPropertyEnum = S.String;
+const TelephonyPropertyEnum = S.String;
 
 export type TelephonyTelephonyServicePropertiesList = Array<TelephonyPropertyEnum>;
-export const TelephonyTelephonyServicePropertiesList = /*@__PURE__*/ S.Array(
+const TelephonyTelephonyServicePropertiesList = /*@__PURE__*/ S.Array(
   TelephonyPropertyEnum,
 ) as any as S.Schema<TelephonyTelephonyServicePropertiesList>;
 
@@ -11917,7 +11880,7 @@ export interface TelephonyTelephonyService {
   serviceType?: TelephonyTypeServiceEnum;
   simultaneousLines?: number;
 }
-export const TelephonyTelephonyService = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTelephonyService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associatedDeviceMac: S.optional(S.NullOr(S.String)),
     country: S.optional(TelephonyServiceNumberCountryEnum),
@@ -11943,7 +11906,7 @@ export interface GetTelephonyServiceDirectoryRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyServiceDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -11960,7 +11923,7 @@ export const GetTelephonyServiceDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All genders a person can choose */
 export type NichandleGenderEnum = "female" | "male";
-export const NichandleGenderEnum = S.String;
+const NichandleGenderEnum = S.String;
 
 /** Directory Informations */
 export interface TelephonyDirectoryInfo {
@@ -12003,7 +11966,7 @@ export interface TelephonyDirectoryInfo {
   wayNumberExtra?: string;
   wayType?: string;
 }
-export const TelephonyDirectoryInfo = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDirectoryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PJSocialNomination: S.optional(S.String),
     address: S.optional(S.String),
@@ -12051,7 +12014,7 @@ export interface GetTelephonyServiceEventCallbackRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyServiceEventCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceEventCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12073,7 +12036,7 @@ export interface TelephonyEventCallback {
   /** Url called for each event */
   url?: string | null;
 }
-export const TelephonyEventCallback = /*@__PURE__*/ S.suspend(() =>
+const TelephonyEventCallback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailError: S.optional(S.NullOr(S.String)),
     url: S.optional(S.NullOr(S.String)),
@@ -12085,7 +12048,7 @@ export interface GetTelephonyServiceEventTokenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyServiceEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceEventTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12106,7 +12069,7 @@ export interface GetTelephonyServiceFaxConsumptionRequest {
   serviceName: string;
   consumptionId: number;
 }
-export const GetTelephonyServiceFaxConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceFaxConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12124,7 +12087,7 @@ export const GetTelephonyServiceFaxConsumptionRequest = /*@__PURE__*/ S.suspend(
 
 /** Consumption way type */
 export type TelephonyFaxConsumptionWayTypeEnum = "received" | "sent";
-export const TelephonyFaxConsumptionWayTypeEnum = S.String;
+const TelephonyFaxConsumptionWayTypeEnum = S.String;
 
 /** Fax delivery record */
 export interface TelephonyFaxConsumption {
@@ -12136,7 +12099,7 @@ export interface TelephonyFaxConsumption {
   priceWithoutTax?: OrderPrice;
   wayType?: TelephonyFaxConsumptionWayTypeEnum;
 }
-export const TelephonyFaxConsumption = /*@__PURE__*/ S.suspend(() =>
+const TelephonyFaxConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     called: S.optional(S.NullOr(S.String)),
     calling: S.optional(S.NullOr(S.String)),
@@ -12152,7 +12115,7 @@ export interface GetTelephonyServiceInfosRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const GetTelephonyServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/serviceInfos", code: 200 })),
@@ -12165,7 +12128,7 @@ export interface GetTelephonyServiceOfferChangeRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyServiceOfferChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceOfferChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12185,7 +12148,7 @@ export interface TelephonyOfferChange {
   /** The current offer will be replace by this one on the next renew. */
   offer?: string;
 }
-export const TelephonyOfferChange = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOfferChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offer: S.optional(S.String),
   }),
@@ -12197,7 +12160,7 @@ export interface GetTelephonyServiceOfferTaskRequest {
   serviceName: string;
   taskId: number;
 }
-export const GetTelephonyServiceOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12219,7 +12182,7 @@ export interface GetTelephonyServicePreviousVoiceConsumptionRequest {
   serviceName: string;
   consumptionId: number;
 }
-export const GetTelephonyServicePreviousVoiceConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServicePreviousVoiceConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12237,15 +12200,15 @@ export const GetTelephonyServicePreviousVoiceConsumptionRequest = /*@__PURE__*/ 
 
 /** Consumption destination type */
 export type TelephonyVoiceConsumptionDestinationTypeEnum = "landline" | "mobile" | "special";
-export const TelephonyVoiceConsumptionDestinationTypeEnum = S.String;
+const TelephonyVoiceConsumptionDestinationTypeEnum = S.String;
 
 /** Consumption plan type */
 export type TelephonyVoiceConsumptionPlanTypeEnum = "outplan" | "priceplan";
-export const TelephonyVoiceConsumptionPlanTypeEnum = S.String;
+const TelephonyVoiceConsumptionPlanTypeEnum = S.String;
 
 /** Consumption way type */
 export type TelephonyVoiceConsumptionWayTypeEnum = "incoming" | "outgoing" | "transfer";
-export const TelephonyVoiceConsumptionWayTypeEnum = S.String;
+const TelephonyVoiceConsumptionWayTypeEnum = S.String;
 
 /** Call delivery record of the previous month */
 export interface TelephonyPreviousVoiceConsumption {
@@ -12265,7 +12228,7 @@ export interface TelephonyPreviousVoiceConsumption {
   priceWithoutTax?: OrderPrice;
   wayType?: TelephonyVoiceConsumptionWayTypeEnum;
 }
-export const TelephonyPreviousVoiceConsumption = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPreviousVoiceConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     called: S.optional(S.NullOr(S.String)),
     calling: S.optional(S.NullOr(S.String)),
@@ -12290,7 +12253,7 @@ export interface GetTelephonyServiceRepaymentConsumptionRequest {
   serviceName: string;
   consumptionId: number;
 }
-export const GetTelephonyServiceRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12325,7 +12288,7 @@ export interface TelephonyRepaymentConsumption {
   /** Is the call repayable right now */
   repayable?: boolean | null;
 }
-export const TelephonyRepaymentConsumption = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRepaymentConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     called: S.optional(S.NullOr(S.String)),
     calling: S.optional(S.NullOr(S.String)),
@@ -12347,7 +12310,7 @@ export interface GetTelephonyServiceTaskRequest {
   serviceName: string;
   taskId: number;
 }
-export const GetTelephonyServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12369,7 +12332,7 @@ export interface GetTelephonyServiceVoiceConsumptionRequest {
   serviceName: string;
   consumptionId: number;
 }
-export const GetTelephonyServiceVoiceConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyServiceVoiceConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12404,7 +12367,7 @@ export interface TelephonyVoiceConsumption {
   priceWithoutTax?: OrderPrice;
   wayType?: TelephonyVoiceConsumptionWayTypeEnum;
 }
-export const TelephonyVoiceConsumption = /*@__PURE__*/ S.suspend(() =>
+const TelephonyVoiceConsumption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     called: S.optional(S.NullOr(S.String)),
     calling: S.optional(S.NullOr(S.String)),
@@ -12425,7 +12388,7 @@ export const TelephonyVoiceConsumption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelephonyVoiceConsumption>;
 
 export interface GetTelephonySoftphoneBetaEligibilityRequest {}
-export const GetTelephonySoftphoneBetaEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySoftphoneBetaEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/telephony/softphoneBetaEligibility", code: 200 }),
   ),
@@ -12438,7 +12401,7 @@ export interface TelephonySoftphoneBetaEligibility {
   /** Whether the account is eligible to the Softphone beta offer */
   eligibility?: boolean;
 }
-export const TelephonySoftphoneBetaEligibility = /*@__PURE__*/ S.suspend(() =>
+const TelephonySoftphoneBetaEligibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eligibility: S.optional(S.Boolean),
   }),
@@ -12450,7 +12413,7 @@ export interface GetTelephonySoftphoneLogoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const GetTelephonySoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/softphone/logo", code: 200 })),
@@ -12459,7 +12422,7 @@ export const GetTelephonySoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTelephonySoftphoneLogoRequest>;
 
 export interface GetTelephonySoftphoneStoreLinksRequest {}
-export const GetTelephonySoftphoneStoreLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySoftphoneStoreLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telephony/softphone/storeLinks", code: 200 })),
 ).annotate({
   identifier: "GetTelephonySoftphoneStoreLinksRequest",
@@ -12476,7 +12439,7 @@ export interface TelephonySoftphoneStoreLinks {
   /** Windows application store link */
   windows?: string;
 }
-export const TelephonySoftphoneStoreLinks = /*@__PURE__*/ S.suspend(() =>
+const TelephonySoftphoneStoreLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     android: S.optional(S.String),
     ios: S.optional(S.String),
@@ -12491,7 +12454,7 @@ export interface GetTelephonySoftphoneThemeRequest {
   /** Theme ID */
   themeId: number;
 }
-export const GetTelephonySoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     themeId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/softphone/themes/{themeId}", code: 200 })),
@@ -12503,7 +12466,7 @@ export interface GetTelephonySoftphoneThemeRequest2 {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const GetTelephonySoftphoneThemeRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySoftphoneThemeRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/softphone/theme", code: 200 })),
@@ -12515,7 +12478,7 @@ export interface GetTelephonySoundRequest {
   /** Sound ID */
   id: number;
 }
-export const GetTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/sounds/{id}", code: 200 })),
@@ -12525,7 +12488,7 @@ export interface GetTelephonySpareRequest {
   /** The internal name of your spare */
   spare: string;
 }
-export const GetTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/spare/{spare}", code: 200 })),
@@ -12542,7 +12505,7 @@ export interface SpareTelephonyTelephonySpareWithIAM {
   /** Phone protocol */
   protocol?: TelephonyProtocolEnum;
 }
-export const SpareTelephonyTelephonySpareWithIAM = /*@__PURE__*/ S.suspend(() =>
+const SpareTelephonyTelephonySpareWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String),
     iam: S.optional(S.NullOr(IamResourceMetadata)),
@@ -12557,7 +12520,7 @@ export interface GetTelephonySpareServiceInfosRequest {
   /** The internal name of your spare */
   spare: string;
 }
-export const GetTelephonySpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonySpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/spare/{spare}/serviceInfos", code: 200 })),
@@ -12570,7 +12533,7 @@ export interface GetTelephonyTaskRequest {
   billingAccount: string;
   taskId: number;
 }
-export const GetTelephonyTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -12582,7 +12545,7 @@ export interface GetTelephonyTimeConditionRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyTimeConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyTimeConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12601,7 +12564,7 @@ export const GetTelephonyTimeConditionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TelephonyGenericScreen {
   serviceName?: string;
 }
-export const TelephonyGenericScreen = /*@__PURE__*/ S.suspend(() =>
+const TelephonyGenericScreen = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
   }),
@@ -12614,7 +12577,7 @@ export interface GetTelephonyTimeConditionConditionRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12635,7 +12598,7 @@ export interface GetTelephonyTimeConditionOptionsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyTimeConditionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyTimeConditionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12652,11 +12615,11 @@ export const GetTelephonyTimeConditionOptionsRequest = /*@__PURE__*/ S.suspend((
 
 /** Type of slot */
 export type TelephonyTimeConditionsSlotTypeEnum = "number" | "voicemail";
-export const TelephonyTimeConditionsSlotTypeEnum = S.String;
+const TelephonyTimeConditionsSlotTypeEnum = S.String;
 
 /** Time conditions global status */
 export type TelephonyTimeConditionsGlobalStatusEnum = "deleted" | "disabled" | "enabled";
-export const TelephonyTimeConditionsGlobalStatusEnum = S.String;
+const TelephonyTimeConditionsGlobalStatusEnum = S.String;
 
 /** Timeout before unavailable action is triggered */
 export type TelephonyTimeConditionsTimeoutEnum =
@@ -12678,7 +12641,7 @@ export type TelephonyTimeConditionsTimeoutEnum =
   | 80
   | 85
   | 90;
-export const TelephonyTimeConditionsTimeoutEnum = S.Number;
+const TelephonyTimeConditionsTimeoutEnum = S.Number;
 
 /** Time conditions options */
 export interface TelephonyTimeConditionOptions {
@@ -12703,7 +12666,7 @@ export interface TelephonyTimeConditionOptions {
   /** Action type executed when the unavailable slot is used */
   unavailableType?: TelephonyTimeConditionsSlotTypeEnum;
 }
-export const TelephonyTimeConditionOptions = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTimeConditionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slot1Number: S.optional(S.String),
     slot1Type: S.optional(TelephonyTimeConditionsSlotTypeEnum),
@@ -12724,7 +12687,7 @@ export interface GetTelephonyTrunkRequest {
   /** Your trunk number */
   serviceName: string;
 }
-export const GetTelephonyTrunkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyTrunkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/trunks/{serviceName}", code: 200 })),
@@ -12736,7 +12699,7 @@ export interface GetTelephonyTrunkByServiceNameRequest {
   /** Name of the service */
   serviceName: string;
 }
-export const GetTelephonyTrunkByServiceNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyTrunkByServiceNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12756,7 +12719,7 @@ export interface TelephonyTrunk {
   /** Type of the service */
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyTrunk = TelephonyCarrierSip as any as S.Schema<TelephonyTrunk>;
+const TelephonyTrunk = TelephonyCarrierSip as any as S.Schema<TelephonyTrunk>;
 
 export interface GetTelephonyTrunkExternalDisplayedNumberRequest {
   /** The name of your billingAccount */
@@ -12766,7 +12729,7 @@ export interface GetTelephonyTrunkExternalDisplayedNumberRequest {
   /** External displayed number linked to a trunk */
   number: string;
 }
-export const GetTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12786,7 +12749,7 @@ export interface GetTelephonyTrunkServiceInfosRequest {
   /** Your trunk number */
   serviceName: string;
 }
-export const GetTelephonyTrunkServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyTrunkServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -12801,7 +12764,7 @@ export interface GetTelephonyVoicemailRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12817,9 +12780,6 @@ export const GetTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTelephonyVoicemailRequest>;
 
 export type TelephonyVoicemailOffersList = Array<string>;
-export const TelephonyVoicemailOffersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyVoicemailOffersList>;
-
 /** Voicemail service */
 export interface TelephonyVoicemail {
   description?: string;
@@ -12827,7 +12787,7 @@ export interface TelephonyVoicemail {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyVoicemail = TelephonyConference as any as S.Schema<TelephonyVoicemail>;
+const TelephonyVoicemail = TelephonyConference as any as S.Schema<TelephonyVoicemail>;
 
 export interface GetTelephonyVoicemailDirectoryRequest {
   /** The name of your billingAccount */
@@ -12836,7 +12796,7 @@ export interface GetTelephonyVoicemailDirectoryRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12860,7 +12820,7 @@ export type TelephonyVoicemailMessageFolderDirectoryEnum =
   | "old"
   | "urgent"
   | "work";
-export const TelephonyVoicemailMessageFolderDirectoryEnum = S.String;
+const TelephonyVoicemailMessageFolderDirectoryEnum = S.String;
 
 /** Voicemail message */
 export interface TelephonyVoicemailMessages {
@@ -12877,7 +12837,7 @@ export interface TelephonyVoicemailMessages {
   /** Uniq voicemail message identifier */
   id?: number;
 }
-export const TelephonyVoicemailMessages = /*@__PURE__*/ S.suspend(() =>
+const TelephonyVoicemailMessages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callee: S.optional(S.String),
     caller: S.optional(S.String),
@@ -12898,7 +12858,7 @@ export type TelephonyServiceVoicemailAudioFormatEnum =
   | "mp3"
   | "ogg"
   | "wav";
-export const TelephonyServiceVoicemailAudioFormatEnum = S.String;
+const TelephonyServiceVoicemailAudioFormatEnum = S.String;
 
 export interface GetTelephonyVoicemailDirectoryDownloadRequest {
   /** The name of your billingAccount */
@@ -12909,7 +12869,7 @@ export interface GetTelephonyVoicemailDirectoryDownloadRequest {
   /** File format wanted */
   format?: TelephonyServiceVoicemailAudioFormatEnum | (string & {});
 }
-export const GetTelephonyVoicemailDirectoryDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailDirectoryDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12933,7 +12893,7 @@ export interface GetTelephonyVoicemailGreetingRequest {
   /** Id of the object */
   id: number;
 }
-export const GetTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12958,7 +12918,7 @@ export interface TelephonyVoicemailGreetings {
   /** Uniq customized greeting identifier */
   id?: number;
 }
-export const TelephonyVoicemailGreetings = /*@__PURE__*/ S.suspend(() =>
+const TelephonyVoicemailGreetings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callee: S.optional(S.String),
     dir: S.optional(TelephonyVoicemailMessageFolderGreetingEnum),
@@ -12977,7 +12937,7 @@ export interface GetTelephonyVoicemailGreetingDownloadRequest {
   /** File format wanted */
   format?: TelephonyServiceVoicemailAudioFormatEnum | (string & {});
 }
-export const GetTelephonyVoicemailGreetingDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailGreetingDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -12999,7 +12959,7 @@ export interface GetTelephonyVoicemailSettingsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyVoicemailSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13016,18 +12976,18 @@ export const GetTelephonyVoicemailSettingsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Greeting type */
 export type TelephonyVoicemailGreetingEnum = "default" | "full" | "short";
-export const TelephonyVoicemailGreetingEnum = S.String;
+const TelephonyVoicemailGreetingEnum = S.String;
 
 /** Voicemail configuration */
 export type TelephonyServiceVoicemailMailOptionEnum = "attachment" | "simple";
-export const TelephonyServiceVoicemailMailOptionEnum = S.String;
+const TelephonyServiceVoicemailMailOptionEnum = S.String;
 
 /** Voicemail configuration */
 export interface TelephonyServiceVoicemailNotifications {
   email?: string;
   type?: TelephonyServiceVoicemailMailOptionEnum | (string & {});
 }
-export const TelephonyServiceVoicemailNotifications = /*@__PURE__*/ S.suspend(() =>
+const TelephonyServiceVoicemailNotifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     type: S.optional(TelephonyServiceVoicemailMailOptionEnum),
@@ -13039,7 +12999,7 @@ export const TelephonyServiceVoicemailNotifications = /*@__PURE__*/ S.suspend(()
 /** Email addresses to notify when a new voicemail is left */
 export type TelephonyVoicemailPropertiesRedirectionEmailsList =
   Array<TelephonyServiceVoicemailNotifications>;
-export const TelephonyVoicemailPropertiesRedirectionEmailsList = /*@__PURE__*/ S.Array(
+const TelephonyVoicemailPropertiesRedirectionEmailsList = /*@__PURE__*/ S.Array(
   TelephonyServiceVoicemailNotifications,
 ) as any as S.Schema<TelephonyVoicemailPropertiesRedirectionEmailsList>;
 
@@ -13076,7 +13036,7 @@ export interface TelephonyVoicemailProperties {
   /** Quantity of unread voicemails */
   unreadMessages?: number;
 }
-export const TelephonyVoicemailProperties = /*@__PURE__*/ S.suspend(() =>
+const TelephonyVoicemailProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annouceMessage: S.optional(S.String),
     audioFormat: S.optional(TelephonyServiceVoicemailAudioFormatEnum),
@@ -13103,7 +13063,7 @@ export interface GetTelephonyVoicemailSettingsRoutingRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyVoicemailSettingsRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailSettingsRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13119,7 +13079,7 @@ export const GetTelephonyVoicemailSettingsRoutingRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<GetTelephonyVoicemailSettingsRoutingRequest>;
 
 export type GetTelephonyVoicemailSettingsRoutingResponse = TelephonyVoicefaxRoutingEnum;
-export const GetTelephonyVoicemailSettingsRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailSettingsRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   TelephonyVoicefaxRoutingEnum.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetTelephonyVoicemailSettingsRoutingResponse",
@@ -13130,7 +13090,7 @@ export interface GetTelephonyVoicemailSettingsVoicemailNumbersRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyVoicemailSettingsVoicemailNumbersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVoicemailSettingsVoicemailNumbersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13152,7 +13112,7 @@ export interface TelephonyVoicemailNumbers {
   /** The internal voicemail number */
   internal?: string;
 }
-export const TelephonyVoicemailNumbers = /*@__PURE__*/ S.suspend(() =>
+const TelephonyVoicemailNumbers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external: S.optional(S.String),
     internal: S.optional(S.String),
@@ -13166,7 +13126,7 @@ export interface GetTelephonyVxmlRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyVxmlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVxmlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13176,9 +13136,6 @@ export const GetTelephonyVxmlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTelephonyVxmlRequest" }) as any as S.Schema<GetTelephonyVxmlRequest>;
 
 export type TelephonyVxmlOffersList = Array<string>;
-export const TelephonyVxmlOffersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyVxmlOffersList>;
-
 /** Vxml services */
 export interface TelephonyVxml {
   description?: string;
@@ -13186,14 +13143,14 @@ export interface TelephonyVxml {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-export const TelephonyVxml = TelephonyConference as any as S.Schema<TelephonyVxml>;
+const TelephonyVxml = TelephonyConference as any as S.Schema<TelephonyVxml>;
 
 export interface GetTelephonyVxmlSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-export const GetTelephonyVxmlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelephonyVxmlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13213,7 +13170,7 @@ export interface TelephonyVxmlProperties {
   url?: string;
   urlRecord?: string;
 }
-export const TelephonyVxmlProperties = /*@__PURE__*/ S.suspend(() =>
+const TelephonyVxmlProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     urlRecord: S.optional(S.String),
@@ -13229,7 +13186,7 @@ export interface ImportTelephonyLinePhonePhonebookRequest {
   /** ID of the /me/document file you want to import */
   documentId: string;
 }
-export const ImportTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13254,7 +13211,7 @@ export interface ImportTelephonyPhonebookRequest {
   /** ID of the /me/document file you want to import */
   documentId: string;
 }
-export const ImportTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -13277,7 +13234,7 @@ export interface ImportTelephonySchedulerIcsCalendarRequest {
   /** The URL of your ICS formated calendar */
   url: string;
 }
-export const ImportTelephonySchedulerIcsCalendarRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportTelephonySchedulerIcsCalendarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13295,18 +13252,18 @@ export const ImportTelephonySchedulerIcsCalendarRequest = /*@__PURE__*/ S.suspen
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput =
+const IamResourceTagFilterInput =
   BlockTelephonyLineResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListTelephonyRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListTelephonyRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListTelephonyRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListTelephonyRequestIamTagsValueList>;
 
 export type ListTelephonyRequestIamTagsMap = {
   [key: string]: ListTelephonyRequestIamTagsValueList | undefined;
 };
-export const ListTelephonyRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListTelephonyRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListTelephonyRequestIamTagsValueList,
 ) as any as S.Schema<ListTelephonyRequestIamTagsMap>;
@@ -13315,18 +13272,18 @@ export interface ListTelephonyRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonyRequestIamTagsMap;
 }
-export const ListTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListTelephonyRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/telephony", code: 200 })),
 ).annotate({ identifier: "ListTelephonyRequest" }) as any as S.Schema<ListTelephonyRequest>;
 
 export type ListTelephonyResponseBodyList = Array<string>;
-export const ListTelephonyResponseBodyList =
+const ListTelephonyResponseBodyList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyResponseBodyList>;
 
 export type ListTelephonyResponse = ListTelephonyResponseBodyList;
-export const ListTelephonyResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListTelephonyResponse" }) as any as S.Schema<ListTelephonyResponse>;
 
@@ -13334,7 +13291,7 @@ export interface ListTelephonyAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -13345,11 +13302,8 @@ export const ListTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListTelephonyAbbreviatedNumberRequest>;
 
 export type ListTelephonyAbbreviatedNumberResponseBodyList = Array<number>;
-export const ListTelephonyAbbreviatedNumberResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyAbbreviatedNumberResponseBodyList>;
-
 export type ListTelephonyAbbreviatedNumberResponse = ListTelephonyAbbreviatedNumberResponseBodyList;
-export const ListTelephonyAbbreviatedNumberResponse =
+const ListTelephonyAbbreviatedNumberResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyAbbreviatedNumberResponse>;
 
 export interface ListTelephonyAccessoriesRequest {
@@ -13358,7 +13312,7 @@ export interface ListTelephonyAccessoriesRequest {
   /** The country */
   country: TelephonyServiceNumberCountryEnum | (string & {});
 }
-export const ListTelephonyAccessoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAccessoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String.pipe(T.Query())),
     country: TelephonyServiceNumberCountryEnum.pipe(T.Query()),
@@ -13378,7 +13332,7 @@ export interface TelephonyAccessoryOffer {
   /** An URL to accessory details */
   url?: string | null;
 }
-export const TelephonyAccessoryOffer = /*@__PURE__*/ S.suspend(() =>
+const TelephonyAccessoryOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -13388,32 +13342,29 @@ export const TelephonyAccessoryOffer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelephonyAccessoryOffer" }) as any as S.Schema<TelephonyAccessoryOffer>;
 
 export type ListTelephonyAccessoriesResponseBodyList = Array<TelephonyAccessoryOffer>;
-export const ListTelephonyAccessoriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyAccessoriesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyAccessoryOffer,
 ) as any as S.Schema<ListTelephonyAccessoriesResponseBodyList>;
 
 export type ListTelephonyAccessoriesResponse = ListTelephonyAccessoriesResponseBodyList;
-export const ListTelephonyAccessoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAccessoriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyAccessoriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyAccessoriesResponse",
 }) as any as S.Schema<ListTelephonyAccessoriesResponse>;
 
 export type ListTelephonyAliasesRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListTelephonyAliasesRequestIamTagsValueList =
-  ListTelephonyRequestIamTagsValueList as any as S.Schema<ListTelephonyAliasesRequestIamTagsValueList>;
-
 export type ListTelephonyAliasesRequestIamTagsMap = {
   [key: string]: ListTelephonyAliasesRequestIamTagsValueList | undefined;
 };
-export const ListTelephonyAliasesRequestIamTagsMap =
+const ListTelephonyAliasesRequestIamTagsMap =
   ListTelephonyRequestIamTagsMap as any as S.Schema<ListTelephonyAliasesRequestIamTagsMap>;
 
 export interface ListTelephonyAliasesRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonyAliasesRequestIamTagsMap;
 }
-export const ListTelephonyAliasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListTelephonyAliasesRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/aliases", code: 200 })),
@@ -13422,11 +13373,11 @@ export const ListTelephonyAliasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyAliasesRequest>;
 
 export type ListTelephonyAliasesResponseBodyList = Array<string>;
-export const ListTelephonyAliasesResponseBodyList =
+const ListTelephonyAliasesResponseBodyList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyAliasesResponseBodyList>;
 
 export type ListTelephonyAliasesResponse = ListTelephonyAliasesResponseBodyList;
-export const ListTelephonyAliasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAliasesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyAliasesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyAliasesResponse",
@@ -13436,7 +13387,7 @@ export interface ListTelephonyAllowedCreditThresholdRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyAllowedCreditThresholdRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAllowedCreditThresholdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -13447,13 +13398,13 @@ export const ListTelephonyAllowedCreditThresholdRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListTelephonyAllowedCreditThresholdRequest>;
 
 export type ListTelephonyAllowedCreditThresholdResponseBodyList = Array<OrderPrice>;
-export const ListTelephonyAllowedCreditThresholdResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyAllowedCreditThresholdResponseBodyList = /*@__PURE__*/ S.Array(
   OrderPrice,
 ) as any as S.Schema<ListTelephonyAllowedCreditThresholdResponseBodyList>;
 
 export type ListTelephonyAllowedCreditThresholdResponse =
   ListTelephonyAllowedCreditThresholdResponseBodyList;
-export const ListTelephonyAllowedCreditThresholdResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAllowedCreditThresholdResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyAllowedCreditThresholdResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyAllowedCreditThresholdResponse",
@@ -13463,7 +13414,7 @@ export interface ListTelephonyAmountSecurityDepositRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyAmountSecurityDepositRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAmountSecurityDepositRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -13474,23 +13425,20 @@ export const ListTelephonyAmountSecurityDepositRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListTelephonyAmountSecurityDepositRequest>;
 
 export type ListTelephonyAmountSecurityDepositResponseBodyList = Array<OrderPrice>;
-export const ListTelephonyAmountSecurityDepositResponseBodyList =
-  ListTelephonyAllowedCreditThresholdResponseBodyList as any as S.Schema<ListTelephonyAmountSecurityDepositResponseBodyList>;
-
 export type ListTelephonyAmountSecurityDepositResponse =
   ListTelephonyAmountSecurityDepositResponseBodyList;
-export const ListTelephonyAmountSecurityDepositResponse =
+const ListTelephonyAmountSecurityDepositResponse =
   ListTelephonyAllowedCreditThresholdResponse as any as S.Schema<ListTelephonyAmountSecurityDepositResponse>;
 
 /** Product type */
 export type TelephonySipDomainProductTypeEnum = "sip" | "trunk";
-export const TelephonySipDomainProductTypeEnum = S.String;
+const TelephonySipDomainProductTypeEnum = S.String;
 
 export interface ListTelephonyAvailableDefaultSipDomainsRequest {
   /** Product type */
   type: TelephonySipDomainProductTypeEnum | (string & {});
 }
-export const ListTelephonyAvailableDefaultSipDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAvailableDefaultSipDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: TelephonySipDomainProductTypeEnum.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/availableDefaultSipDomains", code: 200 })),
@@ -13500,7 +13448,7 @@ export const ListTelephonyAvailableDefaultSipDomainsRequest = /*@__PURE__*/ S.su
 
 /** List of available SIP domains */
 export type TelephonyDefaultSipDomainsListList = Array<string>;
-export const TelephonyDefaultSipDomainsListList =
+const TelephonyDefaultSipDomainsListList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyDefaultSipDomainsListList>;
 
 export interface TelephonyDefaultSipDomains {
@@ -13513,7 +13461,7 @@ export interface TelephonyDefaultSipDomains {
   /** Type of the VoIP product concerned */
   productType?: TelephonySipDomainProductTypeEnum;
 }
-export const TelephonyDefaultSipDomains = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDefaultSipDomains = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(TelephonyServiceNumberCountryEnum),
     currentDomain: S.optional(S.String),
@@ -13526,13 +13474,13 @@ export const TelephonyDefaultSipDomains = /*@__PURE__*/ S.suspend(() =>
 
 export type ListTelephonyAvailableDefaultSipDomainsResponseBodyList =
   Array<TelephonyDefaultSipDomains>;
-export const ListTelephonyAvailableDefaultSipDomainsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyAvailableDefaultSipDomainsResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyDefaultSipDomains,
 ) as any as S.Schema<ListTelephonyAvailableDefaultSipDomainsResponseBodyList>;
 
 export type ListTelephonyAvailableDefaultSipDomainsResponse =
   ListTelephonyAvailableDefaultSipDomainsResponseBodyList;
-export const ListTelephonyAvailableDefaultSipDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyAvailableDefaultSipDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyAvailableDefaultSipDomainsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyAvailableDefaultSipDomainsResponse",
@@ -13542,7 +13490,7 @@ export interface ListTelephonyCarrierSipRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyCarrierSipRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyCarrierSipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/carrierSip", code: 200 })),
@@ -13551,11 +13499,8 @@ export const ListTelephonyCarrierSipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyCarrierSipRequest>;
 
 export type ListTelephonyCarrierSipResponseBodyList = Array<string>;
-export const ListTelephonyCarrierSipResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyCarrierSipResponseBodyList>;
-
 export type ListTelephonyCarrierSipResponse = ListTelephonyCarrierSipResponseBodyList;
-export const ListTelephonyCarrierSipResponse =
+const ListTelephonyCarrierSipResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyCarrierSipResponse>;
 
 export interface ListTelephonyCarrierSipClusterDetailsRequest {
@@ -13563,7 +13508,7 @@ export interface ListTelephonyCarrierSipClusterDetailsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyCarrierSipClusterDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyCarrierSipClusterDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13580,12 +13525,12 @@ export const ListTelephonyCarrierSipClusterDetailsRequest = /*@__PURE__*/ S.susp
 
 /** The list of media (RTP) ips of this zone */
 export type TelephonyCarrierSipClusterZoneMediaIpsList = Array<string>;
-export const TelephonyCarrierSipClusterZoneMediaIpsList =
+const TelephonyCarrierSipClusterZoneMediaIpsList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyCarrierSipClusterZoneMediaIpsList>;
 
 /** Carrier SIP Zone Regions */
 export type TelephonyCarrierSipClusterZoneRegionEnum = "rbx" | "sbg";
-export const TelephonyCarrierSipClusterZoneRegionEnum = S.String;
+const TelephonyCarrierSipClusterZoneRegionEnum = S.String;
 
 /** The information about a carrier sip cluster zone */
 export interface TelephonyCarrierSipClusterZone {
@@ -13594,7 +13539,7 @@ export interface TelephonyCarrierSipClusterZone {
   /** The region of the cluster (rbx, sbg,...) */
   region?: TelephonyCarrierSipClusterZoneRegionEnum;
 }
-export const TelephonyCarrierSipClusterZone = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCarrierSipClusterZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaIps: S.optional(TelephonyCarrierSipClusterZoneMediaIpsList),
     region: S.optional(TelephonyCarrierSipClusterZoneRegionEnum),
@@ -13605,7 +13550,7 @@ export const TelephonyCarrierSipClusterZone = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones of the cluster */
 export type TelephonyCarrierSipClusterInfoZonesList = Array<TelephonyCarrierSipClusterZone>;
-export const TelephonyCarrierSipClusterInfoZonesList = /*@__PURE__*/ S.Array(
+const TelephonyCarrierSipClusterInfoZonesList = /*@__PURE__*/ S.Array(
   TelephonyCarrierSipClusterZone,
 ) as any as S.Schema<TelephonyCarrierSipClusterInfoZonesList>;
 
@@ -13616,7 +13561,7 @@ export interface TelephonyCarrierSipClusterInfo {
   /** The availability zones of the cluster */
   zones?: TelephonyCarrierSipClusterInfoZonesList;
 }
-export const TelephonyCarrierSipClusterInfo = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCarrierSipClusterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     zones: S.optional(TelephonyCarrierSipClusterInfoZonesList),
@@ -13630,7 +13575,7 @@ export interface ListTelephonyCarrierSipEndpointsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyCarrierSipEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyCarrierSipEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13646,12 +13591,9 @@ export const ListTelephonyCarrierSipEndpointsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyCarrierSipEndpointsRequest>;
 
 export type ListTelephonyCarrierSipEndpointsResponseBodyList = Array<number>;
-export const ListTelephonyCarrierSipEndpointsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyCarrierSipEndpointsResponseBodyList>;
-
 export type ListTelephonyCarrierSipEndpointsResponse =
   ListTelephonyCarrierSipEndpointsResponseBodyList;
-export const ListTelephonyCarrierSipEndpointsResponse =
+const ListTelephonyCarrierSipEndpointsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyCarrierSipEndpointsResponse>;
 
 export interface ListTelephonyCarrierSipVnoRequest {
@@ -13659,7 +13601,7 @@ export interface ListTelephonyCarrierSipVnoRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyCarrierSipVnoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyCarrierSipVnoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13675,11 +13617,8 @@ export const ListTelephonyCarrierSipVnoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyCarrierSipVnoRequest>;
 
 export type ListTelephonyCarrierSipVnoResponseBodyList = Array<string>;
-export const ListTelephonyCarrierSipVnoResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyCarrierSipVnoResponseBodyList>;
-
 export type ListTelephonyCarrierSipVnoResponse = ListTelephonyCarrierSipVnoResponseBodyList;
-export const ListTelephonyCarrierSipVnoResponse =
+const ListTelephonyCarrierSipVnoResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyCarrierSipVnoResponse>;
 
 export interface ListTelephonyCarrierSipVnoRangesRequest {
@@ -13689,7 +13628,7 @@ export interface ListTelephonyCarrierSipVnoRangesRequest {
   /** The reference written on your VNO contract. */
   contractReference: string;
 }
-export const ListTelephonyCarrierSipVnoRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyCarrierSipVnoRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13706,19 +13645,16 @@ export const ListTelephonyCarrierSipVnoRangesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyCarrierSipVnoRangesRequest>;
 
 export type ListTelephonyCarrierSipVnoRangesResponseBodyList = Array<string>;
-export const ListTelephonyCarrierSipVnoRangesResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyCarrierSipVnoRangesResponseBodyList>;
-
 export type ListTelephonyCarrierSipVnoRangesResponse =
   ListTelephonyCarrierSipVnoRangesResponseBodyList;
-export const ListTelephonyCarrierSipVnoRangesResponse =
+const ListTelephonyCarrierSipVnoRangesResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyCarrierSipVnoRangesResponse>;
 
 export interface ListTelephonyConferenceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/conference", code: 200 })),
@@ -13727,11 +13663,8 @@ export const ListTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyConferenceRequest>;
 
 export type ListTelephonyConferenceResponseBodyList = Array<string>;
-export const ListTelephonyConferenceResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyConferenceResponseBodyList>;
-
 export type ListTelephonyConferenceResponse = ListTelephonyConferenceResponseBodyList;
-export const ListTelephonyConferenceResponse =
+const ListTelephonyConferenceResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyConferenceResponse>;
 
 export interface ListTelephonyConferenceHistoriesRequest {
@@ -13743,7 +13676,7 @@ export interface ListTelephonyConferenceHistoriesRequest {
   /** Filter the value of dateBegin property (<=) */
   dateBegin_to?: string;
 }
-export const ListTelephonyConferenceHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyConferenceHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13761,12 +13694,9 @@ export const ListTelephonyConferenceHistoriesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyConferenceHistoriesRequest>;
 
 export type ListTelephonyConferenceHistoriesResponseBodyList = Array<number>;
-export const ListTelephonyConferenceHistoriesResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyConferenceHistoriesResponseBodyList>;
-
 export type ListTelephonyConferenceHistoriesResponse =
   ListTelephonyConferenceHistoriesResponseBodyList;
-export const ListTelephonyConferenceHistoriesResponse =
+const ListTelephonyConferenceHistoriesResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceHistoriesResponse>;
 
 export interface ListTelephonyConferenceParticipantsRequest {
@@ -13774,7 +13704,7 @@ export interface ListTelephonyConferenceParticipantsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyConferenceParticipantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyConferenceParticipantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13790,12 +13720,9 @@ export const ListTelephonyConferenceParticipantsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListTelephonyConferenceParticipantsRequest>;
 
 export type ListTelephonyConferenceParticipantsResponseBodyList = Array<number>;
-export const ListTelephonyConferenceParticipantsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyConferenceParticipantsResponseBodyList>;
-
 export type ListTelephonyConferenceParticipantsResponse =
   ListTelephonyConferenceParticipantsResponseBodyList;
-export const ListTelephonyConferenceParticipantsResponse =
+const ListTelephonyConferenceParticipantsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceParticipantsResponse>;
 
 export interface ListTelephonyConferenceRoomHistoriesRequest {
@@ -13809,7 +13736,7 @@ export interface ListTelephonyConferenceRoomHistoriesRequest {
   /** Filter the value of dateBegin property (<=) */
   dateBegin_to?: string;
 }
-export const ListTelephonyConferenceRoomHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyConferenceRoomHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13828,12 +13755,9 @@ export const ListTelephonyConferenceRoomHistoriesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListTelephonyConferenceRoomHistoriesRequest>;
 
 export type ListTelephonyConferenceRoomHistoriesResponseBodyList = Array<number>;
-export const ListTelephonyConferenceRoomHistoriesResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyConferenceRoomHistoriesResponseBodyList>;
-
 export type ListTelephonyConferenceRoomHistoriesResponse =
   ListTelephonyConferenceRoomHistoriesResponseBodyList;
-export const ListTelephonyConferenceRoomHistoriesResponse =
+const ListTelephonyConferenceRoomHistoriesResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceRoomHistoriesResponse>;
 
 export interface ListTelephonyConferenceRoomParticipantsRequest {
@@ -13843,7 +13767,7 @@ export interface ListTelephonyConferenceRoomParticipantsRequest {
   /** The conference room number */
   roomNumber: number;
 }
-export const ListTelephonyConferenceRoomParticipantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyConferenceRoomParticipantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13860,12 +13784,9 @@ export const ListTelephonyConferenceRoomParticipantsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListTelephonyConferenceRoomParticipantsRequest>;
 
 export type ListTelephonyConferenceRoomParticipantsResponseBodyList = Array<number>;
-export const ListTelephonyConferenceRoomParticipantsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyConferenceRoomParticipantsResponseBodyList>;
-
 export type ListTelephonyConferenceRoomParticipantsResponse =
   ListTelephonyConferenceRoomParticipantsResponseBodyList;
-export const ListTelephonyConferenceRoomParticipantsResponse =
+const ListTelephonyConferenceRoomParticipantsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceRoomParticipantsResponse>;
 
 export interface ListTelephonyConferenceRoomsRequest {
@@ -13873,7 +13794,7 @@ export interface ListTelephonyConferenceRoomsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyConferenceRoomsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyConferenceRoomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13889,11 +13810,8 @@ export const ListTelephonyConferenceRoomsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyConferenceRoomsRequest>;
 
 export type ListTelephonyConferenceRoomsResponseBodyList = Array<number>;
-export const ListTelephonyConferenceRoomsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyConferenceRoomsResponseBodyList>;
-
 export type ListTelephonyConferenceRoomsResponse = ListTelephonyConferenceRoomsResponseBodyList;
-export const ListTelephonyConferenceRoomsResponse =
+const ListTelephonyConferenceRoomsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceRoomsResponse>;
 
 export interface ListTelephonyConferenceRoomWebAccessRequest {
@@ -13903,7 +13821,7 @@ export interface ListTelephonyConferenceRoomWebAccessRequest {
   /** The conference room number */
   roomNumber: number;
 }
-export const ListTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13920,12 +13838,9 @@ export const ListTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListTelephonyConferenceRoomWebAccessRequest>;
 
 export type ListTelephonyConferenceRoomWebAccessResponseBodyList = Array<number>;
-export const ListTelephonyConferenceRoomWebAccessResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyConferenceRoomWebAccessResponseBodyList>;
-
 export type ListTelephonyConferenceRoomWebAccessResponse =
   ListTelephonyConferenceRoomWebAccessResponseBodyList;
-export const ListTelephonyConferenceRoomWebAccessResponse =
+const ListTelephonyConferenceRoomWebAccessResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceRoomWebAccessResponse>;
 
 export interface ListTelephonyConferenceWebAccessRequest {
@@ -13933,7 +13848,7 @@ export interface ListTelephonyConferenceWebAccessRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -13949,46 +13864,36 @@ export const ListTelephonyConferenceWebAccessRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyConferenceWebAccessRequest>;
 
 export type ListTelephonyConferenceWebAccessResponseBodyList = Array<number>;
-export const ListTelephonyConferenceWebAccessResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyConferenceWebAccessResponseBodyList>;
-
 export type ListTelephonyConferenceWebAccessResponse =
   ListTelephonyConferenceWebAccessResponseBodyList;
-export const ListTelephonyConferenceWebAccessResponse =
+const ListTelephonyConferenceWebAccessResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceWebAccessResponse>;
 
 export interface ListTelephonyCurrentOrderIdsRequest {}
-export const ListTelephonyCurrentOrderIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyCurrentOrderIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telephony/currentOrderIds", code: 200 })),
 ).annotate({
   identifier: "ListTelephonyCurrentOrderIdsRequest",
 }) as any as S.Schema<ListTelephonyCurrentOrderIdsRequest>;
 
 export type ListTelephonyCurrentOrderIdsResponseBodyList = Array<number>;
-export const ListTelephonyCurrentOrderIdsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyCurrentOrderIdsResponseBodyList>;
-
 export type ListTelephonyCurrentOrderIdsResponse = ListTelephonyCurrentOrderIdsResponseBodyList;
-export const ListTelephonyCurrentOrderIdsResponse =
+const ListTelephonyCurrentOrderIdsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyCurrentOrderIdsResponse>;
 
 export interface ListTelephonyDdiRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyDdiRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyDdiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/ddi", code: 200 })),
 ).annotate({ identifier: "ListTelephonyDdiRequest" }) as any as S.Schema<ListTelephonyDdiRequest>;
 
 export type ListTelephonyDdiResponseBodyList = Array<string>;
-export const ListTelephonyDdiResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyDdiResponseBodyList>;
-
 export type ListTelephonyDdiResponse = ListTelephonyDdiResponseBodyList;
-export const ListTelephonyDdiResponse =
-  ListTelephonyResponse as any as S.Schema<ListTelephonyDdiResponse>;
+const ListTelephonyDdiResponse = ListTelephonyResponse as any as S.Schema<ListTelephonyDdiResponse>;
 
 export interface ListTelephonyDirectoryAvailableZipCodesRequest {
   /** The country of the city */
@@ -13996,7 +13901,7 @@ export interface ListTelephonyDirectoryAvailableZipCodesRequest {
   /** The number (can be a range terminated by XXXX) */
   number: string;
 }
-export const ListTelephonyDirectoryAvailableZipCodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyDirectoryAvailableZipCodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: TelephonyServiceNumberCountryEnum.pipe(T.Query()),
     number: S.String.pipe(T.Query()),
@@ -14006,12 +13911,9 @@ export const ListTelephonyDirectoryAvailableZipCodesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListTelephonyDirectoryAvailableZipCodesRequest>;
 
 export type ListTelephonyDirectoryAvailableZipCodesResponseBodyList = Array<string>;
-export const ListTelephonyDirectoryAvailableZipCodesResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyDirectoryAvailableZipCodesResponseBodyList>;
-
 export type ListTelephonyDirectoryAvailableZipCodesResponse =
   ListTelephonyDirectoryAvailableZipCodesResponseBodyList;
-export const ListTelephonyDirectoryAvailableZipCodesResponse =
+const ListTelephonyDirectoryAvailableZipCodesResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyDirectoryAvailableZipCodesResponse>;
 
 export interface ListTelephonyDirectoryCitiesRequest {
@@ -14020,7 +13922,7 @@ export interface ListTelephonyDirectoryCitiesRequest {
   /** The zip code of the city */
   zipCode: string;
 }
-export const ListTelephonyDirectoryCitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyDirectoryCitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: TelephonyServiceNumberCountryEnum.pipe(T.Query()),
     zipCode: S.String.pipe(T.Query()),
@@ -14038,7 +13940,7 @@ export interface TelephonyCity {
   /** The zip code of the city */
   zipCode?: string;
 }
-export const TelephonyCity = /*@__PURE__*/ S.suspend(() =>
+const TelephonyCity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administrationCode: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -14047,12 +13949,12 @@ export const TelephonyCity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelephonyCity" }) as any as S.Schema<TelephonyCity>;
 
 export type ListTelephonyDirectoryCitiesResponseBodyList = Array<TelephonyCity>;
-export const ListTelephonyDirectoryCitiesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyDirectoryCitiesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyCity,
 ) as any as S.Schema<ListTelephonyDirectoryCitiesResponseBodyList>;
 
 export type ListTelephonyDirectoryCitiesResponse = ListTelephonyDirectoryCitiesResponseBodyList;
-export const ListTelephonyDirectoryCitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyDirectoryCitiesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyDirectoryCitiesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyDirectoryCitiesResponse",
@@ -14062,7 +13964,7 @@ export interface ListTelephonyEasyHuntingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyEasyHuntingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/easyHunting", code: 200 })),
@@ -14071,11 +13973,8 @@ export const ListTelephonyEasyHuntingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyEasyHuntingRequest>;
 
 export type ListTelephonyEasyHuntingResponseBodyList = Array<string>;
-export const ListTelephonyEasyHuntingResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyEasyHuntingResponseBodyList>;
-
 export type ListTelephonyEasyHuntingResponse = ListTelephonyEasyHuntingResponseBodyList;
-export const ListTelephonyEasyHuntingResponse =
+const ListTelephonyEasyHuntingResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyEasyHuntingResponse>;
 
 export interface ListTelephonyEasyHuntingHuntingAgentRequest {
@@ -14083,7 +13982,7 @@ export interface ListTelephonyEasyHuntingHuntingAgentRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14099,12 +13998,9 @@ export const ListTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentRequest>;
 
 export type ListTelephonyEasyHuntingHuntingAgentResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingHuntingAgentResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentResponseBodyList>;
-
 export type ListTelephonyEasyHuntingHuntingAgentResponse =
   ListTelephonyEasyHuntingHuntingAgentResponseBodyList;
-export const ListTelephonyEasyHuntingHuntingAgentResponse =
+const ListTelephonyEasyHuntingHuntingAgentResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentResponse>;
 
 export interface ListTelephonyEasyHuntingHuntingAgentCallsRequest {
@@ -14113,7 +14009,7 @@ export interface ListTelephonyEasyHuntingHuntingAgentCallsRequest {
   serviceName: string;
   agentId: number;
 }
-export const ListTelephonyEasyHuntingHuntingAgentCallsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingHuntingAgentCallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14130,12 +14026,9 @@ export const ListTelephonyEasyHuntingHuntingAgentCallsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentCallsRequest>;
 
 export type ListTelephonyEasyHuntingHuntingAgentCallsResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingHuntingAgentCallsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentCallsResponseBodyList>;
-
 export type ListTelephonyEasyHuntingHuntingAgentCallsResponse =
   ListTelephonyEasyHuntingHuntingAgentCallsResponseBodyList;
-export const ListTelephonyEasyHuntingHuntingAgentCallsResponse =
+const ListTelephonyEasyHuntingHuntingAgentCallsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentCallsResponse>;
 
 export interface ListTelephonyEasyHuntingHuntingAgentQueueRequest {
@@ -14144,7 +14037,7 @@ export interface ListTelephonyEasyHuntingHuntingAgentQueueRequest {
   serviceName: string;
   agentId: number;
 }
-export const ListTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14161,12 +14054,9 @@ export const ListTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentQueueRequest>;
 
 export type ListTelephonyEasyHuntingHuntingAgentQueueResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingHuntingAgentQueueResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentQueueResponseBodyList>;
-
 export type ListTelephonyEasyHuntingHuntingAgentQueueResponse =
   ListTelephonyEasyHuntingHuntingAgentQueueResponseBodyList;
-export const ListTelephonyEasyHuntingHuntingAgentQueueResponse =
+const ListTelephonyEasyHuntingHuntingAgentQueueResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentQueueResponse>;
 
 export interface ListTelephonyEasyHuntingHuntingCustomStatusRequest {
@@ -14174,7 +14064,7 @@ export interface ListTelephonyEasyHuntingHuntingCustomStatusRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14190,12 +14080,9 @@ export const ListTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListTelephonyEasyHuntingHuntingCustomStatusRequest>;
 
 export type ListTelephonyEasyHuntingHuntingCustomStatusResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingHuntingCustomStatusResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingHuntingCustomStatusResponseBodyList>;
-
 export type ListTelephonyEasyHuntingHuntingCustomStatusResponse =
   ListTelephonyEasyHuntingHuntingCustomStatusResponseBodyList;
-export const ListTelephonyEasyHuntingHuntingCustomStatusResponse =
+const ListTelephonyEasyHuntingHuntingCustomStatusResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingCustomStatusResponse>;
 
 export interface ListTelephonyEasyHuntingHuntingQueueRequest {
@@ -14203,7 +14090,7 @@ export interface ListTelephonyEasyHuntingHuntingQueueRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14219,12 +14106,9 @@ export const ListTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueRequest>;
 
 export type ListTelephonyEasyHuntingHuntingQueueResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingHuntingQueueResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueResponseBodyList>;
-
 export type ListTelephonyEasyHuntingHuntingQueueResponse =
   ListTelephonyEasyHuntingHuntingQueueResponseBodyList;
-export const ListTelephonyEasyHuntingHuntingQueueResponse =
+const ListTelephonyEasyHuntingHuntingQueueResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueResponse>;
 
 export interface ListTelephonyEasyHuntingHuntingQueueAgentRequest {
@@ -14233,7 +14117,7 @@ export interface ListTelephonyEasyHuntingHuntingQueueAgentRequest {
   serviceName: string;
   queueId: number;
 }
-export const ListTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14250,12 +14134,9 @@ export const ListTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueAgentRequest>;
 
 export type ListTelephonyEasyHuntingHuntingQueueAgentResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingHuntingQueueAgentResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueAgentResponseBodyList>;
-
 export type ListTelephonyEasyHuntingHuntingQueueAgentResponse =
   ListTelephonyEasyHuntingHuntingQueueAgentResponseBodyList;
-export const ListTelephonyEasyHuntingHuntingQueueAgentResponse =
+const ListTelephonyEasyHuntingHuntingQueueAgentResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueAgentResponse>;
 
 export interface ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest {
@@ -14264,7 +14145,7 @@ export interface ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest {
   serviceName: string;
   queueId: number;
 }
-export const ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14281,12 +14162,9 @@ export const ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest = /*@__PURE__*
 }) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest>;
 
 export type ListTelephonyEasyHuntingHuntingQueueLiveCallsResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingHuntingQueueLiveCallsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueLiveCallsResponseBodyList>;
-
 export type ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse =
   ListTelephonyEasyHuntingHuntingQueueLiveCallsResponseBodyList;
-export const ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse =
+const ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse>;
 
 export interface ListTelephonyEasyHuntingRecordsRequest {
@@ -14294,7 +14172,7 @@ export interface ListTelephonyEasyHuntingRecordsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyEasyHuntingRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14310,12 +14188,9 @@ export const ListTelephonyEasyHuntingRecordsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListTelephonyEasyHuntingRecordsRequest>;
 
 export type ListTelephonyEasyHuntingRecordsResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingRecordsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingRecordsResponseBodyList>;
-
 export type ListTelephonyEasyHuntingRecordsResponse =
   ListTelephonyEasyHuntingRecordsResponseBodyList;
-export const ListTelephonyEasyHuntingRecordsResponse =
+const ListTelephonyEasyHuntingRecordsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingRecordsResponse>;
 
 export interface ListTelephonyEasyHuntingScreenListConditionConditionsRequest {
@@ -14325,46 +14200,43 @@ export interface ListTelephonyEasyHuntingScreenListConditionConditionsRequest {
   /** Filter the value of screenListType property (=) */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | (string & {});
 }
-export const ListTelephonyEasyHuntingScreenListConditionConditionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      screenListType: S.optional(
-        TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions",
-        code: 200,
-      }),
+const ListTelephonyEasyHuntingScreenListConditionConditionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    screenListType: S.optional(
+      TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum.pipe(T.Query()),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListTelephonyEasyHuntingScreenListConditionConditionsRequest",
 }) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsRequest>;
 
 export type ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList>;
+const ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList>;
 
 export type ListTelephonyEasyHuntingScreenListConditionConditionsResponse =
   ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList;
-export const ListTelephonyEasyHuntingScreenListConditionConditionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "ListTelephonyEasyHuntingScreenListConditionConditionsResponse",
-  }) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsResponse>;
+const ListTelephonyEasyHuntingScreenListConditionConditionsResponse = /*@__PURE__*/ S.suspend(() =>
+  ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListTelephonyEasyHuntingScreenListConditionConditionsResponse",
+}) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsResponse>;
 
 export interface ListTelephonyEasyHuntingSoundRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14380,11 +14252,8 @@ export const ListTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListTelephonyEasyHuntingSoundRequest>;
 
 export type ListTelephonyEasyHuntingSoundResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingSoundResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingSoundResponseBodyList>;
-
 export type ListTelephonyEasyHuntingSoundResponse = ListTelephonyEasyHuntingSoundResponseBodyList;
-export const ListTelephonyEasyHuntingSoundResponse =
+const ListTelephonyEasyHuntingSoundResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingSoundResponse>;
 
 export interface ListTelephonyEasyHuntingTimeConditionConditionsRequest {
@@ -14394,7 +14263,7 @@ export interface ListTelephonyEasyHuntingTimeConditionConditionsRequest {
   /** Filter the value of policy property (=) */
   policy?: TelephonyTimeConditionsPolicyEnum | (string & {});
 }
-export const ListTelephonyEasyHuntingTimeConditionConditionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingTimeConditionConditionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14411,12 +14280,12 @@ export const ListTelephonyEasyHuntingTimeConditionConditionsRequest = /*@__PURE_
 }) as any as S.Schema<ListTelephonyEasyHuntingTimeConditionConditionsRequest>;
 
 export type ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList = Array<number>;
-export const ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList =
+const ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList =
   ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList>;
 
 export type ListTelephonyEasyHuntingTimeConditionConditionsResponse =
   ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList;
-export const ListTelephonyEasyHuntingTimeConditionConditionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyEasyHuntingTimeConditionConditionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyEasyHuntingTimeConditionConditionsResponse",
@@ -14426,19 +14295,15 @@ export interface ListTelephonyFaxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyFaxRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyFaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/fax", code: 200 })),
 ).annotate({ identifier: "ListTelephonyFaxRequest" }) as any as S.Schema<ListTelephonyFaxRequest>;
 
 export type ListTelephonyFaxResponseBodyList = Array<string>;
-export const ListTelephonyFaxResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyFaxResponseBodyList>;
-
 export type ListTelephonyFaxResponse = ListTelephonyFaxResponseBodyList;
-export const ListTelephonyFaxResponse =
-  ListTelephonyResponse as any as S.Schema<ListTelephonyFaxResponse>;
+const ListTelephonyFaxResponse = ListTelephonyResponse as any as S.Schema<ListTelephonyFaxResponse>;
 
 export interface ListTelephonyFaxCampaignDetailRequest {
   /** The name of your billingAccount */
@@ -14447,7 +14312,7 @@ export interface ListTelephonyFaxCampaignDetailRequest {
   /** Id of the object */
   id: number;
 }
-export const ListTelephonyFaxCampaignDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyFaxCampaignDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14464,15 +14329,15 @@ export const ListTelephonyFaxCampaignDetailRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListTelephonyFaxCampaignDetailRequest>;
 
 export type TelephonyFaxCampaignDetailFailedList = Array<string>;
-export const TelephonyFaxCampaignDetailFailedList =
+const TelephonyFaxCampaignDetailFailedList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxCampaignDetailFailedList>;
 
 export type TelephonyFaxCampaignDetailSuccessList = Array<string>;
-export const TelephonyFaxCampaignDetailSuccessList =
+const TelephonyFaxCampaignDetailSuccessList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxCampaignDetailSuccessList>;
 
 export type TelephonyFaxCampaignDetailTodoList = Array<string>;
-export const TelephonyFaxCampaignDetailTodoList =
+const TelephonyFaxCampaignDetailTodoList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxCampaignDetailTodoList>;
 
 /** Detail of a fax campaign */
@@ -14481,7 +14346,7 @@ export interface TelephonyFaxCampaignDetail {
   success?: TelephonyFaxCampaignDetailSuccessList;
   todo?: TelephonyFaxCampaignDetailTodoList;
 }
-export const TelephonyFaxCampaignDetail = /*@__PURE__*/ S.suspend(() =>
+const TelephonyFaxCampaignDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failed: S.optional(TelephonyFaxCampaignDetailFailedList),
     success: S.optional(TelephonyFaxCampaignDetailSuccessList),
@@ -14496,7 +14361,7 @@ export interface ListTelephonyFaxCampaignsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyFaxCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyFaxCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14512,22 +14377,19 @@ export const ListTelephonyFaxCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyFaxCampaignsRequest>;
 
 export type ListTelephonyFaxCampaignsResponseBodyList = Array<number>;
-export const ListTelephonyFaxCampaignsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyFaxCampaignsResponseBodyList>;
-
 export type ListTelephonyFaxCampaignsResponse = ListTelephonyFaxCampaignsResponseBodyList;
-export const ListTelephonyFaxCampaignsResponse =
+const ListTelephonyFaxCampaignsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyFaxCampaignsResponse>;
 
 /** Number country */
 export type TelephonyNumberCountryEnum = "be" | "ch" | "fr" | "gb" | "uk";
-export const TelephonyNumberCountryEnum = S.String;
+const TelephonyNumberCountryEnum = S.String;
 
 export interface ListTelephonyFaxOffersRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-export const ListTelephonyFaxOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyFaxOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: TelephonyNumberCountryEnum.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/fax/offers", code: 200 })),
@@ -14536,12 +14398,12 @@ export const ListTelephonyFaxOffersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyFaxOffersRequest>;
 
 export type ListTelephonyFaxOffersResponseBodyList = Array<TelephonyLineOffer>;
-export const ListTelephonyFaxOffersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyFaxOffersResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyLineOffer,
 ) as any as S.Schema<ListTelephonyFaxOffersResponseBodyList>;
 
 export type ListTelephonyFaxOffersResponse = ListTelephonyFaxOffersResponseBodyList;
-export const ListTelephonyFaxOffersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyFaxOffersResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyFaxOffersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyFaxOffersResponse",
@@ -14551,7 +14413,7 @@ export interface ListTelephonyHistoryConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyHistoryConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyHistoryConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -14562,19 +14424,16 @@ export const ListTelephonyHistoryConsumptionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListTelephonyHistoryConsumptionRequest>;
 
 export type ListTelephonyHistoryConsumptionResponseBodyList = Array<string>;
-export const ListTelephonyHistoryConsumptionResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyHistoryConsumptionResponseBodyList>;
-
 export type ListTelephonyHistoryConsumptionResponse =
   ListTelephonyHistoryConsumptionResponseBodyList;
-export const ListTelephonyHistoryConsumptionResponse =
+const ListTelephonyHistoryConsumptionResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyHistoryConsumptionResponse>;
 
 export interface ListTelephonyHistoryRepaymentConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -14589,19 +14448,16 @@ export const ListTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListTelephonyHistoryRepaymentConsumptionRequest>;
 
 export type ListTelephonyHistoryRepaymentConsumptionResponseBodyList = Array<string>;
-export const ListTelephonyHistoryRepaymentConsumptionResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyHistoryRepaymentConsumptionResponseBodyList>;
-
 export type ListTelephonyHistoryRepaymentConsumptionResponse =
   ListTelephonyHistoryRepaymentConsumptionResponseBodyList;
-export const ListTelephonyHistoryRepaymentConsumptionResponse =
+const ListTelephonyHistoryRepaymentConsumptionResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyHistoryRepaymentConsumptionResponse>;
 
 export interface ListTelephonyHistoryTollfreeConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyHistoryTollfreeConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyHistoryTollfreeConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -14616,30 +14472,24 @@ export const ListTelephonyHistoryTollfreeConsumptionRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListTelephonyHistoryTollfreeConsumptionRequest>;
 
 export type ListTelephonyHistoryTollfreeConsumptionResponseBodyList = Array<string>;
-export const ListTelephonyHistoryTollfreeConsumptionResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyHistoryTollfreeConsumptionResponseBodyList>;
-
 export type ListTelephonyHistoryTollfreeConsumptionResponse =
   ListTelephonyHistoryTollfreeConsumptionResponseBodyList;
-export const ListTelephonyHistoryTollfreeConsumptionResponse =
+const ListTelephonyHistoryTollfreeConsumptionResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyHistoryTollfreeConsumptionResponse>;
 
 export interface ListTelephonyLineRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/line", code: 200 })),
 ).annotate({ identifier: "ListTelephonyLineRequest" }) as any as S.Schema<ListTelephonyLineRequest>;
 
 export type ListTelephonyLineResponseBodyList = Array<string>;
-export const ListTelephonyLineResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLineResponseBodyList>;
-
 export type ListTelephonyLineResponse = ListTelephonyLineResponseBodyList;
-export const ListTelephonyLineResponse =
+const ListTelephonyLineResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineResponse>;
 
 export interface ListTelephonyLineAbbreviatedNumberRequest {
@@ -14647,7 +14497,7 @@ export interface ListTelephonyLineAbbreviatedNumberRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14663,12 +14513,9 @@ export const ListTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListTelephonyLineAbbreviatedNumberRequest>;
 
 export type ListTelephonyLineAbbreviatedNumberResponseBodyList = Array<number>;
-export const ListTelephonyLineAbbreviatedNumberResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyLineAbbreviatedNumberResponseBodyList>;
-
 export type ListTelephonyLineAbbreviatedNumberResponse =
   ListTelephonyLineAbbreviatedNumberResponseBodyList;
-export const ListTelephonyLineAbbreviatedNumberResponse =
+const ListTelephonyLineAbbreviatedNumberResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLineAbbreviatedNumberResponse>;
 
 export interface ListTelephonyLineAntihackRequest {
@@ -14676,7 +14523,7 @@ export interface ListTelephonyLineAntihackRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineAntihackRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineAntihackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14692,11 +14539,8 @@ export const ListTelephonyLineAntihackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyLineAntihackRequest>;
 
 export type ListTelephonyLineAntihackResponseBodyList = Array<string>;
-export const ListTelephonyLineAntihackResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLineAntihackResponseBodyList>;
-
 export type ListTelephonyLineAntihackResponse = ListTelephonyLineAntihackResponseBodyList;
-export const ListTelephonyLineAntihackResponse =
+const ListTelephonyLineAntihackResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineAntihackResponse>;
 
 export interface ListTelephonyLineAutomaticCallRequest {
@@ -14704,7 +14548,7 @@ export interface ListTelephonyLineAutomaticCallRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineAutomaticCallRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineAutomaticCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14720,11 +14564,8 @@ export const ListTelephonyLineAutomaticCallRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListTelephonyLineAutomaticCallRequest>;
 
 export type ListTelephonyLineAutomaticCallResponseBodyList = Array<string>;
-export const ListTelephonyLineAutomaticCallResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLineAutomaticCallResponseBodyList>;
-
 export type ListTelephonyLineAutomaticCallResponse = ListTelephonyLineAutomaticCallResponseBodyList;
-export const ListTelephonyLineAutomaticCallResponse =
+const ListTelephonyLineAutomaticCallResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineAutomaticCallResponse>;
 
 export interface ListTelephonyLineAvailableSipDomainsRequest {
@@ -14732,7 +14573,7 @@ export interface ListTelephonyLineAvailableSipDomainsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineAvailableSipDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineAvailableSipDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14748,12 +14589,9 @@ export const ListTelephonyLineAvailableSipDomainsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListTelephonyLineAvailableSipDomainsRequest>;
 
 export type ListTelephonyLineAvailableSipDomainsResponseBodyList = Array<string>;
-export const ListTelephonyLineAvailableSipDomainsResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLineAvailableSipDomainsResponseBodyList>;
-
 export type ListTelephonyLineAvailableSipDomainsResponse =
   ListTelephonyLineAvailableSipDomainsResponseBodyList;
-export const ListTelephonyLineAvailableSipDomainsResponse =
+const ListTelephonyLineAvailableSipDomainsResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineAvailableSipDomainsResponse>;
 
 export interface ListTelephonyLineClick2CallUserRequest {
@@ -14761,7 +14599,7 @@ export interface ListTelephonyLineClick2CallUserRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14777,12 +14615,9 @@ export const ListTelephonyLineClick2CallUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListTelephonyLineClick2CallUserRequest>;
 
 export type ListTelephonyLineClick2CallUserResponseBodyList = Array<number>;
-export const ListTelephonyLineClick2CallUserResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyLineClick2CallUserResponseBodyList>;
-
 export type ListTelephonyLineClick2CallUserResponse =
   ListTelephonyLineClick2CallUserResponseBodyList;
-export const ListTelephonyLineClick2CallUserResponse =
+const ListTelephonyLineClick2CallUserResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLineClick2CallUserResponse>;
 
 export interface ListTelephonyLineEventsRequest {
@@ -14790,7 +14625,7 @@ export interface ListTelephonyLineEventsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14806,11 +14641,8 @@ export const ListTelephonyLineEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyLineEventsRequest>;
 
 export type ListTelephonyLineEventsResponseBodyList = Array<string>;
-export const ListTelephonyLineEventsResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLineEventsResponseBodyList>;
-
 export type ListTelephonyLineEventsResponse = ListTelephonyLineEventsResponseBodyList;
-export const ListTelephonyLineEventsResponse =
+const ListTelephonyLineEventsResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineEventsResponse>;
 
 export interface ListTelephonyLineIpsRequest {
@@ -14818,7 +14650,7 @@ export interface ListTelephonyLineIpsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14834,7 +14666,7 @@ export interface TelephonyDatetimeAndIpvalue {
   datetime?: string;
   ip?: string | null;
 }
-export const TelephonyDatetimeAndIpvalue = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDatetimeAndIpvalue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datetime: S.optional(S.String),
     ip: S.optional(S.NullOr(S.String)),
@@ -14844,12 +14676,12 @@ export const TelephonyDatetimeAndIpvalue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelephonyDatetimeAndIpvalue>;
 
 export type ListTelephonyLineIpsResponseBodyList = Array<TelephonyDatetimeAndIpvalue>;
-export const ListTelephonyLineIpsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyLineIpsResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyDatetimeAndIpvalue,
 ) as any as S.Schema<ListTelephonyLineIpsResponseBodyList>;
 
 export type ListTelephonyLineIpsResponse = ListTelephonyLineIpsResponseBodyList;
-export const ListTelephonyLineIpsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineIpsResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyLineIpsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyLineIpsResponse",
@@ -14860,7 +14692,7 @@ export interface ListTelephonyLineLastRegistrationsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineLastRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineLastRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14892,7 +14724,7 @@ export interface TelephonyRegistrationInformations {
   /** SIP registration's User-Agent */
   userAgent?: string | null;
 }
-export const TelephonyRegistrationInformations = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRegistrationInformations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datetime: S.optional(S.String),
     domain: S.optional(S.NullOr(S.String)),
@@ -14908,13 +14740,13 @@ export const TelephonyRegistrationInformations = /*@__PURE__*/ S.suspend(() =>
 
 export type ListTelephonyLineLastRegistrationsResponseBodyList =
   Array<TelephonyRegistrationInformations>;
-export const ListTelephonyLineLastRegistrationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyLineLastRegistrationsResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyRegistrationInformations,
 ) as any as S.Schema<ListTelephonyLineLastRegistrationsResponseBodyList>;
 
 export type ListTelephonyLineLastRegistrationsResponse =
   ListTelephonyLineLastRegistrationsResponseBodyList;
-export const ListTelephonyLineLastRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineLastRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyLineLastRegistrationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyLineLastRegistrationsResponse",
@@ -14925,7 +14757,7 @@ export interface ListTelephonyLineListAssociablePhonesRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineListAssociablePhonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineListAssociablePhonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -14947,7 +14779,7 @@ export interface TelephonyLinePhoneAssociableConfiguredLines {
   /** Service name of the line */
   serviceName?: string;
 }
-export const TelephonyLinePhoneAssociableConfiguredLines = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLinePhoneAssociableConfiguredLines = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -14959,7 +14791,7 @@ export const TelephonyLinePhoneAssociableConfiguredLines = /*@__PURE__*/ S.suspe
 /** Current lines configured on the phone */
 export type TelephonyLinePhoneAssociableAssociatedLinesList =
   Array<TelephonyLinePhoneAssociableConfiguredLines>;
-export const TelephonyLinePhoneAssociableAssociatedLinesList = /*@__PURE__*/ S.Array(
+const TelephonyLinePhoneAssociableAssociatedLinesList = /*@__PURE__*/ S.Array(
   TelephonyLinePhoneAssociableConfiguredLines,
 ) as any as S.Schema<TelephonyLinePhoneAssociableAssociatedLinesList>;
 
@@ -14974,7 +14806,7 @@ export interface TelephonyLinePhoneAssociable {
   /** Phone protocol */
   protocol?: TelephonyProtocolEnum;
 }
-export const TelephonyLinePhoneAssociable = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLinePhoneAssociable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associatedLines: S.optional(TelephonyLinePhoneAssociableAssociatedLinesList),
     brand: S.optional(S.String),
@@ -14987,13 +14819,13 @@ export const TelephonyLinePhoneAssociable = /*@__PURE__*/ S.suspend(() =>
 
 export type ListTelephonyLineListAssociablePhonesResponseBodyList =
   Array<TelephonyLinePhoneAssociable>;
-export const ListTelephonyLineListAssociablePhonesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyLineListAssociablePhonesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyLinePhoneAssociable,
 ) as any as S.Schema<ListTelephonyLineListAssociablePhonesResponseBodyList>;
 
 export type ListTelephonyLineListAssociablePhonesResponse =
   ListTelephonyLineListAssociablePhonesResponseBodyList;
-export const ListTelephonyLineListAssociablePhonesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineListAssociablePhonesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyLineListAssociablePhonesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyLineListAssociablePhonesResponse",
@@ -15005,7 +14837,7 @@ export interface ListTelephonyLineOfferPhonesRequest {
   /** The selected offer */
   offer: string;
 }
-export const ListTelephonyLineOfferPhonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineOfferPhonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: TelephonyServiceNumberCountryEnum.pipe(T.Query()),
     offer: S.String.pipe(T.Query()),
@@ -15031,7 +14863,7 @@ export interface TelephonyLinePhone {
   /** Phone protocol */
   protocol?: TelephonyProtocolEnum;
 }
-export const TelephonyLinePhone = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLinePhone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String),
     description: S.optional(S.String),
@@ -15044,12 +14876,12 @@ export const TelephonyLinePhone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelephonyLinePhone" }) as any as S.Schema<TelephonyLinePhone>;
 
 export type ListTelephonyLineOfferPhonesResponseBodyList = Array<TelephonyLinePhone>;
-export const ListTelephonyLineOfferPhonesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyLineOfferPhonesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyLinePhone,
 ) as any as S.Schema<ListTelephonyLineOfferPhonesResponseBodyList>;
 
 export type ListTelephonyLineOfferPhonesResponse = ListTelephonyLineOfferPhonesResponseBodyList;
-export const ListTelephonyLineOfferPhonesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineOfferPhonesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyLineOfferPhonesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyLineOfferPhonesResponse",
@@ -15059,7 +14891,7 @@ export interface ListTelephonyLineOffersRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-export const ListTelephonyLineOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: TelephonyNumberCountryEnum.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/line/offers", code: 200 })),
@@ -15068,11 +14900,8 @@ export const ListTelephonyLineOffersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyLineOffersRequest>;
 
 export type ListTelephonyLineOffersResponseBodyList = Array<TelephonyLineOffer>;
-export const ListTelephonyLineOffersResponseBodyList =
-  ListTelephonyFaxOffersResponseBodyList as any as S.Schema<ListTelephonyLineOffersResponseBodyList>;
-
 export type ListTelephonyLineOffersResponse = ListTelephonyLineOffersResponseBodyList;
-export const ListTelephonyLineOffersResponse =
+const ListTelephonyLineOffersResponse =
   ListTelephonyFaxOffersResponse as any as S.Schema<ListTelephonyLineOffersResponse>;
 
 export interface ListTelephonyLineOptionAvailableCodecsRequest {
@@ -15080,7 +14909,7 @@ export interface ListTelephonyLineOptionAvailableCodecsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineOptionAvailableCodecsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineOptionAvailableCodecsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15096,12 +14925,9 @@ export const ListTelephonyLineOptionAvailableCodecsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListTelephonyLineOptionAvailableCodecsRequest>;
 
 export type ListTelephonyLineOptionAvailableCodecsResponseBodyList = Array<string>;
-export const ListTelephonyLineOptionAvailableCodecsResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLineOptionAvailableCodecsResponseBodyList>;
-
 export type ListTelephonyLineOptionAvailableCodecsResponse =
   ListTelephonyLineOptionAvailableCodecsResponseBodyList;
-export const ListTelephonyLineOptionAvailableCodecsResponse =
+const ListTelephonyLineOptionAvailableCodecsResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineOptionAvailableCodecsResponse>;
 
 export interface ListTelephonyLinePhoneFunctionKeyRequest {
@@ -15109,7 +14935,7 @@ export interface ListTelephonyLinePhoneFunctionKeyRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15125,12 +14951,9 @@ export const ListTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyRequest>;
 
 export type ListTelephonyLinePhoneFunctionKeyResponseBodyList = Array<number>;
-export const ListTelephonyLinePhoneFunctionKeyResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyLinePhoneFunctionKeyResponseBodyList>;
-
 export type ListTelephonyLinePhoneFunctionKeyResponse =
   ListTelephonyLinePhoneFunctionKeyResponseBodyList;
-export const ListTelephonyLinePhoneFunctionKeyResponse =
+const ListTelephonyLinePhoneFunctionKeyResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLinePhoneFunctionKeyResponse>;
 
 export interface ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest {
@@ -15140,34 +14963,31 @@ export interface ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest {
   /** The number of the function key */
   keyNum: number;
 }
-export const ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      keyNum: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction",
-        code: 200,
-      }),
-    ),
+const ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    keyNum: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/line/{serviceName}/phone/functionKey/{keyNum}/availableFunction",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest",
 }) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest>;
 
 export type ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList = Array<string>;
-export const ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList>;
+const ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList>;
 
 export type ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse =
   ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList;
-export const ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList.pipe(T.RawResponseRoot()),
+const ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+  ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse",
 }) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse>;
@@ -15177,7 +14997,7 @@ export interface ListTelephonyLinePhoneMerchandiseAvailableRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLinePhoneMerchandiseAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLinePhoneMerchandiseAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15203,17 +15023,11 @@ export interface TelephonyHardwareOffer {
   /** An URL to telephony details */
   url?: string | null;
 }
-export const TelephonyHardwareOffer =
-  TelephonyAccessoryOffer as any as S.Schema<TelephonyHardwareOffer>;
-
 export type ListTelephonyLinePhoneMerchandiseAvailableResponseBodyList =
   Array<TelephonyHardwareOffer>;
-export const ListTelephonyLinePhoneMerchandiseAvailableResponseBodyList =
-  ListTelephonyAccessoriesResponseBodyList as any as S.Schema<ListTelephonyLinePhoneMerchandiseAvailableResponseBodyList>;
-
 export type ListTelephonyLinePhoneMerchandiseAvailableResponse =
   ListTelephonyLinePhoneMerchandiseAvailableResponseBodyList;
-export const ListTelephonyLinePhoneMerchandiseAvailableResponse =
+const ListTelephonyLinePhoneMerchandiseAvailableResponse =
   ListTelephonyAccessoriesResponse as any as S.Schema<ListTelephonyLinePhoneMerchandiseAvailableResponse>;
 
 export interface ListTelephonyLinePhonePhonebookRequest {
@@ -15221,7 +15035,7 @@ export interface ListTelephonyLinePhonePhonebookRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15237,12 +15051,9 @@ export const ListTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListTelephonyLinePhonePhonebookRequest>;
 
 export type ListTelephonyLinePhonePhonebookResponseBodyList = Array<string>;
-export const ListTelephonyLinePhonePhonebookResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLinePhonePhonebookResponseBodyList>;
-
 export type ListTelephonyLinePhonePhonebookResponse =
   ListTelephonyLinePhonePhonebookResponseBodyList;
-export const ListTelephonyLinePhonePhonebookResponse =
+const ListTelephonyLinePhonePhonebookResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLinePhonePhonebookResponse>;
 
 export interface ListTelephonyLinePhonePhonebookPhonebookContactRequest {
@@ -15252,7 +15063,7 @@ export interface ListTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const ListTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15269,12 +15080,9 @@ export const ListTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE_
 }) as any as S.Schema<ListTelephonyLinePhonePhonebookPhonebookContactRequest>;
 
 export type ListTelephonyLinePhonePhonebookPhonebookContactResponseBodyList = Array<number>;
-export const ListTelephonyLinePhonePhonebookPhonebookContactResponseBodyList =
-  ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList as any as S.Schema<ListTelephonyLinePhonePhonebookPhonebookContactResponseBodyList>;
-
 export type ListTelephonyLinePhonePhonebookPhonebookContactResponse =
   ListTelephonyLinePhonePhonebookPhonebookContactResponseBodyList;
-export const ListTelephonyLinePhonePhonebookPhonebookContactResponse =
+const ListTelephonyLinePhonePhonebookPhonebookContactResponse =
   ListTelephonyEasyHuntingTimeConditionConditionsResponse as any as S.Schema<ListTelephonyLinePhonePhonebookPhonebookContactResponse>;
 
 export interface ListTelephonyLinePhoneRmaRequest {
@@ -15282,7 +15090,7 @@ export interface ListTelephonyLinePhoneRmaRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15298,11 +15106,8 @@ export const ListTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyLinePhoneRmaRequest>;
 
 export type ListTelephonyLinePhoneRmaResponseBodyList = Array<string>;
-export const ListTelephonyLinePhoneRmaResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLinePhoneRmaResponseBodyList>;
-
 export type ListTelephonyLinePhoneRmaResponse = ListTelephonyLinePhoneRmaResponseBodyList;
-export const ListTelephonyLinePhoneRmaResponse =
+const ListTelephonyLinePhoneRmaResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLinePhoneRmaResponse>;
 
 export interface ListTelephonyLineRecordsRequest {
@@ -15310,7 +15115,7 @@ export interface ListTelephonyLineRecordsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15326,28 +15131,22 @@ export const ListTelephonyLineRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyLineRecordsRequest>;
 
 export type ListTelephonyLineRecordsResponseBodyList = Array<number>;
-export const ListTelephonyLineRecordsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyLineRecordsResponseBodyList>;
-
 export type ListTelephonyLineRecordsResponse = ListTelephonyLineRecordsResponseBodyList;
-export const ListTelephonyLineRecordsResponse =
+const ListTelephonyLineRecordsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLineRecordsResponse>;
 
 export type ListTelephonyLinesRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListTelephonyLinesRequestIamTagsValueList =
-  ListTelephonyRequestIamTagsValueList as any as S.Schema<ListTelephonyLinesRequestIamTagsValueList>;
-
 export type ListTelephonyLinesRequestIamTagsMap = {
   [key: string]: ListTelephonyLinesRequestIamTagsValueList | undefined;
 };
-export const ListTelephonyLinesRequestIamTagsMap =
+const ListTelephonyLinesRequestIamTagsMap =
   ListTelephonyRequestIamTagsMap as any as S.Schema<ListTelephonyLinesRequestIamTagsMap>;
 
 export interface ListTelephonyLinesRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonyLinesRequestIamTagsMap;
 }
-export const ListTelephonyLinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListTelephonyLinesRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/lines", code: 200 })),
@@ -15356,11 +15155,8 @@ export const ListTelephonyLinesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyLinesRequest>;
 
 export type ListTelephonyLinesResponseBodyList = Array<string>;
-export const ListTelephonyLinesResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyLinesResponseBodyList>;
-
 export type ListTelephonyLinesResponse = ListTelephonyLinesResponseBodyList;
-export const ListTelephonyLinesResponse =
+const ListTelephonyLinesResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLinesResponse>;
 
 export interface ListTelephonyLineSoftphoneDevicesRequest {
@@ -15368,7 +15164,7 @@ export interface ListTelephonyLineSoftphoneDevicesRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineSoftphoneDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineSoftphoneDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15396,7 +15192,7 @@ export interface TelephonySoftphoneDevices {
   /** Device user agent */
   userAgent?: string;
 }
-export const TelephonySoftphoneDevices = /*@__PURE__*/ S.suspend(() =>
+const TelephonySoftphoneDevices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -15409,13 +15205,13 @@ export const TelephonySoftphoneDevices = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelephonySoftphoneDevices>;
 
 export type ListTelephonyLineSoftphoneDevicesResponseBodyList = Array<TelephonySoftphoneDevices>;
-export const ListTelephonyLineSoftphoneDevicesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyLineSoftphoneDevicesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonySoftphoneDevices,
 ) as any as S.Schema<ListTelephonyLineSoftphoneDevicesResponseBodyList>;
 
 export type ListTelephonyLineSoftphoneDevicesResponse =
   ListTelephonyLineSoftphoneDevicesResponseBodyList;
-export const ListTelephonyLineSoftphoneDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineSoftphoneDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyLineSoftphoneDevicesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyLineSoftphoneDevicesResponse",
@@ -15426,7 +15222,7 @@ export interface ListTelephonyLineTrafficExtractsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyLineTrafficExtractsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyLineTrafficExtractsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15442,19 +15238,16 @@ export const ListTelephonyLineTrafficExtractsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyLineTrafficExtractsRequest>;
 
 export type ListTelephonyLineTrafficExtractsResponseBodyList = Array<number>;
-export const ListTelephonyLineTrafficExtractsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyLineTrafficExtractsResponseBodyList>;
-
 export type ListTelephonyLineTrafficExtractsResponse =
   ListTelephonyLineTrafficExtractsResponseBodyList;
-export const ListTelephonyLineTrafficExtractsResponse =
+const ListTelephonyLineTrafficExtractsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLineTrafficExtractsResponse>;
 
 export interface ListTelephonyNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/number", code: 200 })),
@@ -15463,11 +15256,8 @@ export const ListTelephonyNumberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyNumberRequest>;
 
 export type ListTelephonyNumberResponseBodyList = Array<string>;
-export const ListTelephonyNumberResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyNumberResponseBodyList>;
-
 export type ListTelephonyNumberResponse = ListTelephonyNumberResponseBodyList;
-export const ListTelephonyNumberResponse =
+const ListTelephonyNumberResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyNumberResponse>;
 
 export interface ListTelephonyNumberConvertToLineAvailableOffersRequest {
@@ -15476,7 +15266,7 @@ export interface ListTelephonyNumberConvertToLineAvailableOffersRequest {
   /** Name of the service */
   serviceName: string;
 }
-export const ListTelephonyNumberConvertToLineAvailableOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyNumberConvertToLineAvailableOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15497,7 +15287,7 @@ export interface OrderContract {
   name?: string;
   url?: string;
 }
-export const OrderContract = /*@__PURE__*/ S.suspend(() =>
+const OrderContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     name: S.optional(S.String),
@@ -15507,13 +15297,13 @@ export const OrderContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Informations related to a line contracts */
 export type TelephonyLineOffersAndContractsContractsList = Array<OrderContract>;
-export const TelephonyLineOffersAndContractsContractsList = /*@__PURE__*/ S.Array(
+const TelephonyLineOffersAndContractsContractsList = /*@__PURE__*/ S.Array(
   OrderContract,
 ) as any as S.Schema<TelephonyLineOffersAndContractsContractsList>;
 
 /** Informations related to a line offer */
 export type TelephonyLineOffersAndContractsOffersList = Array<TelephonyLineOffer>;
-export const TelephonyLineOffersAndContractsOffersList =
+const TelephonyLineOffersAndContractsOffersList =
   ListTelephonyFaxOffersResponseBodyList as any as S.Schema<TelephonyLineOffersAndContractsOffersList>;
 
 /** Informations related to a line offer */
@@ -15523,7 +15313,7 @@ export interface TelephonyLineOffersAndContracts {
   /** Informations related to a line offer */
   offers?: TelephonyLineOffersAndContractsOffersList;
 }
-export const TelephonyLineOffersAndContracts = /*@__PURE__*/ S.suspend(() =>
+const TelephonyLineOffersAndContracts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contracts: S.optional(TelephonyLineOffersAndContractsContractsList),
     offers: S.optional(TelephonyLineOffersAndContractsOffersList),
@@ -15538,7 +15328,7 @@ export interface ListTelephonyNumberDetailedZonesRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-export const ListTelephonyNumberDetailedZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyNumberDetailedZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     axiom: S.optional(S.String.pipe(T.Query())),
     country: TelephonyNumberCountryEnum.pipe(T.Query()),
@@ -15553,15 +15343,15 @@ export type TelephonyNumberDetailedZoneMatchingCriteriaEnum =
   | "internationalNumber"
   | "number"
   | "zne";
-export const TelephonyNumberDetailedZoneMatchingCriteriaEnum = S.String;
+const TelephonyNumberDetailedZoneMatchingCriteriaEnum = S.String;
 
 /** A zone type */
 export type TelephonyNumberDetailedZoneTypeEnum = "geographic" | "non-geographic" | "special";
-export const TelephonyNumberDetailedZoneTypeEnum = S.String;
+const TelephonyNumberDetailedZoneTypeEnum = S.String;
 
 /** The list of ZNE of this zone */
 export type TelephonyNumberDetailedZoneZneListList = Array<string>;
-export const TelephonyNumberDetailedZoneZneListList =
+const TelephonyNumberDetailedZoneZneListList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyNumberDetailedZoneZneListList>;
 
 /** A geographic zone from a country */
@@ -15587,7 +15377,7 @@ export interface TelephonyNumberDetailedZone {
   /** The list of ZNE of this zone */
   zneList?: TelephonyNumberDetailedZoneZneListList;
 }
-export const TelephonyNumberDetailedZone = /*@__PURE__*/ S.suspend(() =>
+const TelephonyNumberDetailedZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     askedCity: S.optional(S.NullOr(S.String)),
     city: S.optional(S.String),
@@ -15605,13 +15395,13 @@ export const TelephonyNumberDetailedZone = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelephonyNumberDetailedZone>;
 
 export type ListTelephonyNumberDetailedZonesResponseBodyList = Array<TelephonyNumberDetailedZone>;
-export const ListTelephonyNumberDetailedZonesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyNumberDetailedZonesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyNumberDetailedZone,
 ) as any as S.Schema<ListTelephonyNumberDetailedZonesResponseBodyList>;
 
 export type ListTelephonyNumberDetailedZonesResponse =
   ListTelephonyNumberDetailedZonesResponseBodyList;
-export const ListTelephonyNumberDetailedZonesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyNumberDetailedZonesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyNumberDetailedZonesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyNumberDetailedZonesResponse",
@@ -15621,7 +15411,7 @@ export interface ListTelephonyNumberRangesRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-export const ListTelephonyNumberRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyNumberRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: TelephonyNumberCountryEnum.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/number/ranges", code: 200 })),
@@ -15630,16 +15420,13 @@ export const ListTelephonyNumberRangesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyNumberRangesRequest>;
 
 export type ListTelephonyNumberRangesResponseBodyList = Array<string>;
-export const ListTelephonyNumberRangesResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyNumberRangesResponseBodyList>;
-
 export type ListTelephonyNumberRangesResponse = ListTelephonyNumberRangesResponseBodyList;
-export const ListTelephonyNumberRangesResponse =
+const ListTelephonyNumberRangesResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyNumberRangesResponse>;
 
 /** Typology of number */
 export type TelephonyNumberTypeEnum = "geographic" | "nogeographic" | "special";
-export const TelephonyNumberTypeEnum = S.String;
+const TelephonyNumberTypeEnum = S.String;
 
 export interface ListTelephonyNumberSpecificNumbersRequest {
   /** The country */
@@ -15651,7 +15438,7 @@ export interface ListTelephonyNumberSpecificNumbersRequest {
   /** The zone (geographic number) */
   zone?: string;
 }
-export const ListTelephonyNumberSpecificNumbersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyNumberSpecificNumbersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: TelephonyNumberCountryEnum.pipe(T.Query()),
     range: S.optional(S.String.pipe(T.Query())),
@@ -15669,7 +15456,7 @@ export interface TelephonySpecificNumber {
   /** The number */
   number?: string;
 }
-export const TelephonySpecificNumber = /*@__PURE__*/ S.suspend(() =>
+const TelephonySpecificNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPremium: S.optional(S.Boolean),
     number: S.optional(S.String),
@@ -15677,13 +15464,13 @@ export const TelephonySpecificNumber = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelephonySpecificNumber" }) as any as S.Schema<TelephonySpecificNumber>;
 
 export type ListTelephonyNumberSpecificNumbersResponseBodyList = Array<TelephonySpecificNumber>;
-export const ListTelephonyNumberSpecificNumbersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyNumberSpecificNumbersResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonySpecificNumber,
 ) as any as S.Schema<ListTelephonyNumberSpecificNumbersResponseBodyList>;
 
 export type ListTelephonyNumberSpecificNumbersResponse =
   ListTelephonyNumberSpecificNumbersResponseBodyList;
-export const ListTelephonyNumberSpecificNumbersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyNumberSpecificNumbersResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyNumberSpecificNumbersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyNumberSpecificNumbersResponse",
@@ -15695,7 +15482,7 @@ export interface ListTelephonyNumberZonesRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-export const ListTelephonyNumberZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyNumberZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     axiom: S.optional(S.String.pipe(T.Query())),
     country: TelephonyNumberCountryEnum.pipe(T.Query()),
@@ -15705,11 +15492,8 @@ export const ListTelephonyNumberZonesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyNumberZonesRequest>;
 
 export type ListTelephonyNumberZonesResponseBodyList = Array<string>;
-export const ListTelephonyNumberZonesResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyNumberZonesResponseBodyList>;
-
 export type ListTelephonyNumberZonesResponse = ListTelephonyNumberZonesResponseBodyList;
-export const ListTelephonyNumberZonesResponse =
+const ListTelephonyNumberZonesResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyNumberZonesResponse>;
 
 export interface ListTelephonyOfferTaskRequest {
@@ -15722,7 +15506,7 @@ export interface ListTelephonyOfferTaskRequest {
   /** Filter the value of type property (=) */
   type?: TelephonyOfferTaskTypeEnum | (string & {});
 }
-export const ListTelephonyOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     action: S.optional(TelephonyOfferTaskActionEnum.pipe(T.Query())),
@@ -15734,18 +15518,15 @@ export const ListTelephonyOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyOfferTaskRequest>;
 
 export type ListTelephonyOfferTaskResponseBodyList = Array<number>;
-export const ListTelephonyOfferTaskResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOfferTaskResponseBodyList>;
-
 export type ListTelephonyOfferTaskResponse = ListTelephonyOfferTaskResponseBodyList;
-export const ListTelephonyOfferTaskResponse =
+const ListTelephonyOfferTaskResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOfferTaskResponse>;
 
 export interface ListTelephonyOldPhoneRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyOldPhoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOldPhoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/oldPhone", code: 200 })),
@@ -15760,7 +15541,7 @@ export interface TelephonyOldPhone {
   /** Model of the phone */
   model?: string;
 }
-export const TelephonyOldPhone = /*@__PURE__*/ S.suspend(() =>
+const TelephonyOldPhone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mac: S.optional(S.String),
     model: S.optional(S.String),
@@ -15768,12 +15549,12 @@ export const TelephonyOldPhone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelephonyOldPhone" }) as any as S.Schema<TelephonyOldPhone>;
 
 export type ListTelephonyOldPhoneResponseBodyList = Array<TelephonyOldPhone>;
-export const ListTelephonyOldPhoneResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyOldPhoneResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyOldPhone,
 ) as any as S.Schema<ListTelephonyOldPhoneResponseBodyList>;
 
 export type ListTelephonyOldPhoneResponse = ListTelephonyOldPhoneResponseBodyList;
-export const ListTelephonyOldPhoneResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOldPhoneResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyOldPhoneResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyOldPhoneResponse",
@@ -15783,7 +15564,7 @@ export interface ListTelephonyOutplanNotificationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(
@@ -15794,19 +15575,16 @@ export const ListTelephonyOutplanNotificationRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyOutplanNotificationRequest>;
 
 export type ListTelephonyOutplanNotificationResponseBodyList = Array<number>;
-export const ListTelephonyOutplanNotificationResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOutplanNotificationResponseBodyList>;
-
 export type ListTelephonyOutplanNotificationResponse =
   ListTelephonyOutplanNotificationResponseBodyList;
-export const ListTelephonyOutplanNotificationResponse =
+const ListTelephonyOutplanNotificationResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOutplanNotificationResponse>;
 
 export interface ListTelephonyOvhPabxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyOvhPabxRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/ovhPabx", code: 200 })),
@@ -15815,11 +15593,8 @@ export const ListTelephonyOvhPabxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyOvhPabxRequest>;
 
 export type ListTelephonyOvhPabxResponseBodyList = Array<string>;
-export const ListTelephonyOvhPabxResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyOvhPabxResponseBodyList>;
-
 export type ListTelephonyOvhPabxResponse = ListTelephonyOvhPabxResponseBodyList;
-export const ListTelephonyOvhPabxResponse =
+const ListTelephonyOvhPabxResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyOvhPabxResponse>;
 
 export interface ListTelephonyOvhPabxDialplanRequest {
@@ -15827,7 +15602,7 @@ export interface ListTelephonyOvhPabxDialplanRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15843,11 +15618,8 @@ export const ListTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyOvhPabxDialplanRequest>;
 
 export type ListTelephonyOvhPabxDialplanResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxDialplanResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxDialplanResponseBodyList>;
-
 export type ListTelephonyOvhPabxDialplanResponse = ListTelephonyOvhPabxDialplanResponseBodyList;
-export const ListTelephonyOvhPabxDialplanResponse =
+const ListTelephonyOvhPabxDialplanResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxDialplanResponse>;
 
 export interface ListTelephonyOvhPabxDialplanExtensionRequest {
@@ -15856,7 +15628,7 @@ export interface ListTelephonyOvhPabxDialplanExtensionRequest {
   serviceName: string;
   dialplanId: number;
 }
-export const ListTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15873,12 +15645,9 @@ export const ListTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRequest>;
 
 export type ListTelephonyOvhPabxDialplanExtensionResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxDialplanExtensionResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionResponseBodyList>;
-
 export type ListTelephonyOvhPabxDialplanExtensionResponse =
   ListTelephonyOvhPabxDialplanExtensionResponseBodyList;
-export const ListTelephonyOvhPabxDialplanExtensionResponse =
+const ListTelephonyOvhPabxDialplanExtensionResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionResponse>;
 
 export interface ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest {
@@ -15888,8 +15657,8 @@ export interface ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest
   dialplanId: number;
   extensionId: number;
 }
-export const ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       billingAccount: S.String.pipe(T.Label()),
       serviceName: S.String.pipe(T.Label()),
@@ -15902,25 +15671,25 @@ export const ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
-  }) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
+).annotate({
+  identifier: "ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
+}) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
 
 export type ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList =
   Array<number>;
-export const ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList =
+const ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList =
   ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList>;
 
 export type ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse =
   ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList;
-export const ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse = /*@__PURE__*/ S.suspend(
+  () =>
     ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList.pipe(
       T.RawResponseRoot(),
     ),
-  ).annotate({
-    identifier: "ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse",
-  }) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse>;
+).annotate({
+  identifier: "ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse",
+}) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse>;
 
 export interface ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The name of your billingAccount */
@@ -15929,33 +15698,31 @@ export interface ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   dialplanId: number;
   extensionId: number;
 }
-export const ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      dialplanId: S.Number.pipe(T.Label()),
-      extensionId: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime",
-        code: 200,
-      }),
-    ),
+const ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    dialplanId: S.Number.pipe(T.Label()),
+    extensionId: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest",
 }) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
 
 export type ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList =
+const ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList =
   ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList>;
 
 export type ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse =
   ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList;
-export const ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList.pipe(T.RawResponseRoot()),
+const ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse = /*@__PURE__*/ S.suspend(() =>
+  ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse",
 }) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse>;
@@ -15967,7 +15734,7 @@ export interface ListTelephonyOvhPabxDialplanExtensionRuleRequest {
   dialplanId: number;
   extensionId: number;
 }
-export const ListTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -15985,12 +15752,9 @@ export const ListTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRuleRequest>;
 
 export type ListTelephonyOvhPabxDialplanExtensionRuleResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxDialplanExtensionRuleResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRuleResponseBodyList>;
-
 export type ListTelephonyOvhPabxDialplanExtensionRuleResponse =
   ListTelephonyOvhPabxDialplanExtensionRuleResponseBodyList;
-export const ListTelephonyOvhPabxDialplanExtensionRuleResponse =
+const ListTelephonyOvhPabxDialplanExtensionRuleResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRuleResponse>;
 
 export interface ListTelephonyOvhPabxHuntingAgentRequest {
@@ -15998,7 +15762,7 @@ export interface ListTelephonyOvhPabxHuntingAgentRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16014,12 +15778,9 @@ export const ListTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentRequest>;
 
 export type ListTelephonyOvhPabxHuntingAgentResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxHuntingAgentResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxHuntingAgentResponseBodyList>;
-
 export type ListTelephonyOvhPabxHuntingAgentResponse =
   ListTelephonyOvhPabxHuntingAgentResponseBodyList;
-export const ListTelephonyOvhPabxHuntingAgentResponse =
+const ListTelephonyOvhPabxHuntingAgentResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingAgentResponse>;
 
 export interface ListTelephonyOvhPabxHuntingAgentCallsRequest {
@@ -16028,7 +15789,7 @@ export interface ListTelephonyOvhPabxHuntingAgentCallsRequest {
   serviceName: string;
   agentId: number;
 }
-export const ListTelephonyOvhPabxHuntingAgentCallsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxHuntingAgentCallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16045,12 +15806,9 @@ export const ListTelephonyOvhPabxHuntingAgentCallsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentCallsRequest>;
 
 export type ListTelephonyOvhPabxHuntingAgentCallsResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxHuntingAgentCallsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxHuntingAgentCallsResponseBodyList>;
-
 export type ListTelephonyOvhPabxHuntingAgentCallsResponse =
   ListTelephonyOvhPabxHuntingAgentCallsResponseBodyList;
-export const ListTelephonyOvhPabxHuntingAgentCallsResponse =
+const ListTelephonyOvhPabxHuntingAgentCallsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingAgentCallsResponse>;
 
 export interface ListTelephonyOvhPabxHuntingAgentQueueRequest {
@@ -16059,7 +15817,7 @@ export interface ListTelephonyOvhPabxHuntingAgentQueueRequest {
   serviceName: string;
   agentId: number;
 }
-export const ListTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16076,12 +15834,9 @@ export const ListTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentQueueRequest>;
 
 export type ListTelephonyOvhPabxHuntingAgentQueueResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxHuntingAgentQueueResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxHuntingAgentQueueResponseBodyList>;
-
 export type ListTelephonyOvhPabxHuntingAgentQueueResponse =
   ListTelephonyOvhPabxHuntingAgentQueueResponseBodyList;
-export const ListTelephonyOvhPabxHuntingAgentQueueResponse =
+const ListTelephonyOvhPabxHuntingAgentQueueResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingAgentQueueResponse>;
 
 export interface ListTelephonyOvhPabxHuntingCustomStatusRequest {
@@ -16089,7 +15844,7 @@ export interface ListTelephonyOvhPabxHuntingCustomStatusRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16105,12 +15860,9 @@ export const ListTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListTelephonyOvhPabxHuntingCustomStatusRequest>;
 
 export type ListTelephonyOvhPabxHuntingCustomStatusResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxHuntingCustomStatusResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxHuntingCustomStatusResponseBodyList>;
-
 export type ListTelephonyOvhPabxHuntingCustomStatusResponse =
   ListTelephonyOvhPabxHuntingCustomStatusResponseBodyList;
-export const ListTelephonyOvhPabxHuntingCustomStatusResponse =
+const ListTelephonyOvhPabxHuntingCustomStatusResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingCustomStatusResponse>;
 
 export interface ListTelephonyOvhPabxHuntingQueueRequest {
@@ -16118,7 +15870,7 @@ export interface ListTelephonyOvhPabxHuntingQueueRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16134,12 +15886,9 @@ export const ListTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueRequest>;
 
 export type ListTelephonyOvhPabxHuntingQueueResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxHuntingQueueResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxHuntingQueueResponseBodyList>;
-
 export type ListTelephonyOvhPabxHuntingQueueResponse =
   ListTelephonyOvhPabxHuntingQueueResponseBodyList;
-export const ListTelephonyOvhPabxHuntingQueueResponse =
+const ListTelephonyOvhPabxHuntingQueueResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingQueueResponse>;
 
 export interface ListTelephonyOvhPabxHuntingQueueAgentRequest {
@@ -16148,7 +15897,7 @@ export interface ListTelephonyOvhPabxHuntingQueueAgentRequest {
   serviceName: string;
   queueId: number;
 }
-export const ListTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16165,12 +15914,9 @@ export const ListTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueAgentRequest>;
 
 export type ListTelephonyOvhPabxHuntingQueueAgentResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxHuntingQueueAgentResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxHuntingQueueAgentResponseBodyList>;
-
 export type ListTelephonyOvhPabxHuntingQueueAgentResponse =
   ListTelephonyOvhPabxHuntingQueueAgentResponseBodyList;
-export const ListTelephonyOvhPabxHuntingQueueAgentResponse =
+const ListTelephonyOvhPabxHuntingQueueAgentResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingQueueAgentResponse>;
 
 export interface ListTelephonyOvhPabxHuntingQueueLiveCallsRequest {
@@ -16179,7 +15925,7 @@ export interface ListTelephonyOvhPabxHuntingQueueLiveCallsRequest {
   serviceName: string;
   queueId: number;
 }
-export const ListTelephonyOvhPabxHuntingQueueLiveCallsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxHuntingQueueLiveCallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16196,12 +15942,9 @@ export const ListTelephonyOvhPabxHuntingQueueLiveCallsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueLiveCallsRequest>;
 
 export type ListTelephonyOvhPabxHuntingQueueLiveCallsResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxHuntingQueueLiveCallsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxHuntingQueueLiveCallsResponseBodyList>;
-
 export type ListTelephonyOvhPabxHuntingQueueLiveCallsResponse =
   ListTelephonyOvhPabxHuntingQueueLiveCallsResponseBodyList;
-export const ListTelephonyOvhPabxHuntingQueueLiveCallsResponse =
+const ListTelephonyOvhPabxHuntingQueueLiveCallsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingQueueLiveCallsResponse>;
 
 export interface ListTelephonyOvhPabxMenuRequest {
@@ -16209,7 +15952,7 @@ export interface ListTelephonyOvhPabxMenuRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16225,11 +15968,8 @@ export const ListTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyOvhPabxMenuRequest>;
 
 export type ListTelephonyOvhPabxMenuResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxMenuResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxMenuResponseBodyList>;
-
 export type ListTelephonyOvhPabxMenuResponse = ListTelephonyOvhPabxMenuResponseBodyList;
-export const ListTelephonyOvhPabxMenuResponse =
+const ListTelephonyOvhPabxMenuResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxMenuResponse>;
 
 export interface ListTelephonyOvhPabxMenuEntryRequest {
@@ -16238,7 +15978,7 @@ export interface ListTelephonyOvhPabxMenuEntryRequest {
   serviceName: string;
   menuId: number;
 }
-export const ListTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16255,11 +15995,8 @@ export const ListTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListTelephonyOvhPabxMenuEntryRequest>;
 
 export type ListTelephonyOvhPabxMenuEntryResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxMenuEntryResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxMenuEntryResponseBodyList>;
-
 export type ListTelephonyOvhPabxMenuEntryResponse = ListTelephonyOvhPabxMenuEntryResponseBodyList;
-export const ListTelephonyOvhPabxMenuEntryResponse =
+const ListTelephonyOvhPabxMenuEntryResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxMenuEntryResponse>;
 
 export interface ListTelephonyOvhPabxRecordsRequest {
@@ -16267,7 +16004,7 @@ export interface ListTelephonyOvhPabxRecordsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyOvhPabxRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16283,11 +16020,8 @@ export const ListTelephonyOvhPabxRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyOvhPabxRecordsRequest>;
 
 export type ListTelephonyOvhPabxRecordsResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxRecordsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxRecordsResponseBodyList>;
-
 export type ListTelephonyOvhPabxRecordsResponse = ListTelephonyOvhPabxRecordsResponseBodyList;
-export const ListTelephonyOvhPabxRecordsResponse =
+const ListTelephonyOvhPabxRecordsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxRecordsResponse>;
 
 export interface ListTelephonyOvhPabxSoundRequest {
@@ -16295,7 +16029,7 @@ export interface ListTelephonyOvhPabxSoundRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyOvhPabxSoundRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxSoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16311,11 +16045,8 @@ export const ListTelephonyOvhPabxSoundRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyOvhPabxSoundRequest>;
 
 export type ListTelephonyOvhPabxSoundResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxSoundResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxSoundResponseBodyList>;
-
 export type ListTelephonyOvhPabxSoundResponse = ListTelephonyOvhPabxSoundResponseBodyList;
-export const ListTelephonyOvhPabxSoundResponse =
+const ListTelephonyOvhPabxSoundResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxSoundResponse>;
 
 export interface ListTelephonyOvhPabxTtsRequest {
@@ -16323,7 +16054,7 @@ export interface ListTelephonyOvhPabxTtsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16339,18 +16070,15 @@ export const ListTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyOvhPabxTtsRequest>;
 
 export type ListTelephonyOvhPabxTtsResponseBodyList = Array<number>;
-export const ListTelephonyOvhPabxTtsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyOvhPabxTtsResponseBodyList>;
-
 export type ListTelephonyOvhPabxTtsResponse = ListTelephonyOvhPabxTtsResponseBodyList;
-export const ListTelephonyOvhPabxTtsResponse =
+const ListTelephonyOvhPabxTtsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxTtsResponse>;
 
 export interface ListTelephonyPhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/phonebook", code: 200 })),
@@ -16359,11 +16087,8 @@ export const ListTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyPhonebookRequest>;
 
 export type ListTelephonyPhonebookResponseBodyList = Array<string>;
-export const ListTelephonyPhonebookResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyPhonebookResponseBodyList>;
-
 export type ListTelephonyPhonebookResponse = ListTelephonyPhonebookResponseBodyList;
-export const ListTelephonyPhonebookResponse =
+const ListTelephonyPhonebookResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyPhonebookResponse>;
 
 export interface ListTelephonyPhonebookPhonebookContactRequest {
@@ -16372,7 +16097,7 @@ export interface ListTelephonyPhonebookPhonebookContactRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-export const ListTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -16388,19 +16113,16 @@ export const ListTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListTelephonyPhonebookPhonebookContactRequest>;
 
 export type ListTelephonyPhonebookPhonebookContactResponseBodyList = Array<number>;
-export const ListTelephonyPhonebookPhonebookContactResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyPhonebookPhonebookContactResponseBodyList>;
-
 export type ListTelephonyPhonebookPhonebookContactResponse =
   ListTelephonyPhonebookPhonebookContactResponseBodyList;
-export const ListTelephonyPhonebookPhonebookContactResponse =
+const ListTelephonyPhonebookPhonebookContactResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyPhonebookPhonebookContactResponse>;
 
 export interface ListTelephonyPortabilityRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/portability", code: 200 })),
@@ -16409,11 +16131,8 @@ export const ListTelephonyPortabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyPortabilityRequest>;
 
 export type ListTelephonyPortabilityResponseBodyList = Array<number>;
-export const ListTelephonyPortabilityResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyPortabilityResponseBodyList>;
-
 export type ListTelephonyPortabilityResponse = ListTelephonyPortabilityResponseBodyList;
-export const ListTelephonyPortabilityResponse =
+const ListTelephonyPortabilityResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyPortabilityResponse>;
 
 export interface ListTelephonyPortabilityDocumentRequest {
@@ -16422,7 +16141,7 @@ export interface ListTelephonyPortabilityDocumentRequest {
   /** The ID of the portability */
   id: number;
 }
-export const ListTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -16438,12 +16157,9 @@ export const ListTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyPortabilityDocumentRequest>;
 
 export type ListTelephonyPortabilityDocumentResponseBodyList = Array<number>;
-export const ListTelephonyPortabilityDocumentResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyPortabilityDocumentResponseBodyList>;
-
 export type ListTelephonyPortabilityDocumentResponse =
   ListTelephonyPortabilityDocumentResponseBodyList;
-export const ListTelephonyPortabilityDocumentResponse =
+const ListTelephonyPortabilityDocumentResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyPortabilityDocumentResponse>;
 
 export interface ListTelephonyPortabilityRelaunchRequest {
@@ -16452,7 +16168,7 @@ export interface ListTelephonyPortabilityRelaunchRequest {
   /** The ID of the portability */
   id: number;
 }
-export const ListTelephonyPortabilityRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyPortabilityRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -16469,12 +16185,12 @@ export const ListTelephonyPortabilityRelaunchRequest = /*@__PURE__*/ S.suspend((
 
 /** Mandatory parameter list */
 export type TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList = Array<string>;
-export const TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList =
+const TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList =
   ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList as any as S.Schema<TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList>;
 
 /** Optional parameter list */
 export type TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList = Array<string>;
-export const TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList =
+const TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList =
   ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList as any as S.Schema<TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList>;
 
 /** Possible parameters to provide to fix portability errors */
@@ -16484,7 +16200,7 @@ export interface TelephonyPortabilityFixErrorPossibleParameters {
   /** Optional parameter list */
   optionalParameters?: TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList;
 }
-export const TelephonyPortabilityFixErrorPossibleParameters = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPortabilityFixErrorPossibleParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mandatoryParameters: S.optional(
       TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList,
@@ -16503,7 +16219,7 @@ export interface ListTelephonyPortabilityStatusRequest {
   /** The ID of the portability */
   id: number;
 }
-export const ListTelephonyPortabilityStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyPortabilityStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -16520,7 +16236,7 @@ export const ListTelephonyPortabilityStatusRequest = /*@__PURE__*/ S.suspend(() 
 
 /** List of possible duration unit. "NA" means that there is no defined duration */
 export type TelephonyPortabilityStepDurationUnitEnum = "NA" | "day" | "hour" | "openday";
-export const TelephonyPortabilityStepDurationUnitEnum = S.String;
+const TelephonyPortabilityStepDurationUnitEnum = S.String;
 
 /** Represent the delay between two portability steps */
 export interface TelephonyPortabilityStepDuration {
@@ -16529,7 +16245,7 @@ export interface TelephonyPortabilityStepDuration {
   /** The delay's unit */
   unit?: TelephonyPortabilityStepDurationUnitEnum;
 }
-export const TelephonyPortabilityStepDuration = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPortabilityStepDuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.Number),
     unit: S.optional(TelephonyPortabilityStepDurationUnitEnum),
@@ -16547,7 +16263,7 @@ export interface TelephonyPortabilityStepInfos {
   /** A code representing the reason */
   reasonType?: string | null;
 }
-export const TelephonyPortabilityStepInfos = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPortabilityStepInfos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastProposedDate: S.optional(S.NullOr(S.String)),
     reason: S.optional(S.NullOr(S.String)),
@@ -16574,7 +16290,7 @@ export type TelephonyPortabilityStepNameEnum =
   | "numberActivation"
   | "requestSentToOperator"
   | "sDASequenceReceivedFromOperator";
-export const TelephonyPortabilityStepNameEnum = S.String;
+const TelephonyPortabilityStepNameEnum = S.String;
 
 /** List of possible status of a step */
 export type TelephonyPortabilityStepStatusEnum =
@@ -16584,7 +16300,7 @@ export type TelephonyPortabilityStepStatusEnum =
   | "error"
   | "hold"
   | "todo";
-export const TelephonyPortabilityStepStatusEnum = S.String;
+const TelephonyPortabilityStepStatusEnum = S.String;
 
 /** A step in the portability process */
 export interface TelephonyPortabilityStep {
@@ -16601,7 +16317,7 @@ export interface TelephonyPortabilityStep {
   /** Indicates if the step is to do, currently doing or done */
   status?: TelephonyPortabilityStepStatusEnum;
 }
-export const TelephonyPortabilityStep = /*@__PURE__*/ S.suspend(() =>
+const TelephonyPortabilityStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -16613,37 +16329,34 @@ export const TelephonyPortabilityStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelephonyPortabilityStep" }) as any as S.Schema<TelephonyPortabilityStep>;
 
 export type ListTelephonyPortabilityStatusResponseBodyList = Array<TelephonyPortabilityStep>;
-export const ListTelephonyPortabilityStatusResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyPortabilityStatusResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyPortabilityStep,
 ) as any as S.Schema<ListTelephonyPortabilityStatusResponseBodyList>;
 
 export type ListTelephonyPortabilityStatusResponse = ListTelephonyPortabilityStatusResponseBodyList;
-export const ListTelephonyPortabilityStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyPortabilityStatusResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyPortabilityStatusResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyPortabilityStatusResponse",
 }) as any as S.Schema<ListTelephonyPortabilityStatusResponse>;
 
 export interface ListTelephonyProcedureRequest {}
-export const ListTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyProcedureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telephony/procedure", code: 200 })),
 ).annotate({
   identifier: "ListTelephonyProcedureRequest",
 }) as any as S.Schema<ListTelephonyProcedureRequest>;
 
 export type ListTelephonyProcedureResponseBodyList = Array<number>;
-export const ListTelephonyProcedureResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyProcedureResponseBodyList>;
-
 export type ListTelephonyProcedureResponse = ListTelephonyProcedureResponseBodyList;
-export const ListTelephonyProcedureResponse =
+const ListTelephonyProcedureResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyProcedureResponse>;
 
 export interface ListTelephonyRedirectRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyRedirectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyRedirectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/redirect", code: 200 })),
@@ -16652,29 +16365,23 @@ export const ListTelephonyRedirectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyRedirectRequest>;
 
 export type ListTelephonyRedirectResponseBodyList = Array<string>;
-export const ListTelephonyRedirectResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyRedirectResponseBodyList>;
-
 export type ListTelephonyRedirectResponse = ListTelephonyRedirectResponseBodyList;
-export const ListTelephonyRedirectResponse =
+const ListTelephonyRedirectResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyRedirectResponse>;
 
 export interface ListTelephonyRsvaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyRsvaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyRsvaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/rsva", code: 200 })),
 ).annotate({ identifier: "ListTelephonyRsvaRequest" }) as any as S.Schema<ListTelephonyRsvaRequest>;
 
 export type ListTelephonyRsvaResponseBodyList = Array<string>;
-export const ListTelephonyRsvaResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyRsvaResponseBodyList>;
-
 export type ListTelephonyRsvaResponse = ListTelephonyRsvaResponseBodyList;
-export const ListTelephonyRsvaResponse =
+const ListTelephonyRsvaResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyRsvaResponse>;
 
 export interface ListTelephonyRsvaAllowedRateCodesRequest {
@@ -16682,7 +16389,7 @@ export interface ListTelephonyRsvaAllowedRateCodesRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyRsvaAllowedRateCodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyRsvaAllowedRateCodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16706,7 +16413,7 @@ export interface TelephonyRateCodeInformation {
   /** Price per minute */
   pricePerMinuteWithoutTax?: OrderPrice;
 }
-export const TelephonyRateCodeInformation = /*@__PURE__*/ S.suspend(() =>
+const TelephonyRateCodeInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     pricePerCallWithoutTax: S.optional(OrderPrice),
@@ -16717,13 +16424,13 @@ export const TelephonyRateCodeInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelephonyRateCodeInformation>;
 
 export type ListTelephonyRsvaAllowedRateCodesResponseBodyList = Array<TelephonyRateCodeInformation>;
-export const ListTelephonyRsvaAllowedRateCodesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyRsvaAllowedRateCodesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyRateCodeInformation,
 ) as any as S.Schema<ListTelephonyRsvaAllowedRateCodesResponseBodyList>;
 
 export type ListTelephonyRsvaAllowedRateCodesResponse =
   ListTelephonyRsvaAllowedRateCodesResponseBodyList;
-export const ListTelephonyRsvaAllowedRateCodesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyRsvaAllowedRateCodesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyRsvaAllowedRateCodesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyRsvaAllowedRateCodesResponse",
@@ -16733,7 +16440,7 @@ export interface ListTelephonySchedulerRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/scheduler", code: 200 })),
@@ -16742,11 +16449,8 @@ export const ListTelephonySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonySchedulerRequest>;
 
 export type ListTelephonySchedulerResponseBodyList = Array<string>;
-export const ListTelephonySchedulerResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonySchedulerResponseBodyList>;
-
 export type ListTelephonySchedulerResponse = ListTelephonySchedulerResponseBodyList;
-export const ListTelephonySchedulerResponse =
+const ListTelephonySchedulerResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySchedulerResponse>;
 
 export interface ListTelephonySchedulerEventsRequest {
@@ -16764,7 +16468,7 @@ export interface ListTelephonySchedulerEventsRequest {
   /** Filter the value of dateStart property (<=) */
   dateStart_to?: string;
 }
-export const ListTelephonySchedulerEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySchedulerEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16785,18 +16489,15 @@ export const ListTelephonySchedulerEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonySchedulerEventsRequest>;
 
 export type ListTelephonySchedulerEventsResponseBodyList = Array<string>;
-export const ListTelephonySchedulerEventsResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonySchedulerEventsResponseBodyList>;
-
 export type ListTelephonySchedulerEventsResponse = ListTelephonySchedulerEventsResponseBodyList;
-export const ListTelephonySchedulerEventsResponse =
+const ListTelephonySchedulerEventsResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySchedulerEventsResponse>;
 
 export interface ListTelephonyScreenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/screen", code: 200 })),
@@ -16805,11 +16506,8 @@ export const ListTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyScreenRequest>;
 
 export type ListTelephonyScreenResponseBodyList = Array<string>;
-export const ListTelephonyScreenResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyScreenResponseBodyList>;
-
 export type ListTelephonyScreenResponse = ListTelephonyScreenResponseBodyList;
-export const ListTelephonyScreenResponse =
+const ListTelephonyScreenResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyScreenResponse>;
 
 export interface ListTelephonyScreenScreenListsRequest {
@@ -16817,7 +16515,7 @@ export interface ListTelephonyScreenScreenListsRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyScreenScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyScreenScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16833,18 +16531,15 @@ export const ListTelephonyScreenScreenListsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListTelephonyScreenScreenListsRequest>;
 
 export type ListTelephonyScreenScreenListsResponseBodyList = Array<number>;
-export const ListTelephonyScreenScreenListsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyScreenScreenListsResponseBodyList>;
-
 export type ListTelephonyScreenScreenListsResponse = ListTelephonyScreenScreenListsResponseBodyList;
-export const ListTelephonyScreenScreenListsResponse =
+const ListTelephonyScreenScreenListsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyScreenScreenListsResponse>;
 
 export interface ListTelephonySearchServicesRequest {
   /** Filter the value of property (like) */
   axiom: string;
 }
-export const ListTelephonySearchServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySearchServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     axiom: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/searchServices", code: 200 })),
@@ -16854,7 +16549,7 @@ export const ListTelephonySearchServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of possible type of a telephony service */
 export type TelephonyTelephonySearchServiceTypeEnum = "alias" | "line" | "trunk";
-export const TelephonyTelephonySearchServiceTypeEnum = S.String;
+const TelephonyTelephonySearchServiceTypeEnum = S.String;
 
 /** Informations related to a telephony service */
 export interface TelephonyTelephonySearchService {
@@ -16865,7 +16560,7 @@ export interface TelephonyTelephonySearchService {
   /** The offer description */
   type?: TelephonyTelephonySearchServiceTypeEnum;
 }
-export const TelephonyTelephonySearchService = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTelephonySearchService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.optional(S.NullOr(S.String)),
     domain: S.optional(S.String),
@@ -16876,12 +16571,12 @@ export const TelephonyTelephonySearchService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelephonyTelephonySearchService>;
 
 export type ListTelephonySearchServicesResponseBodyList = Array<TelephonyTelephonySearchService>;
-export const ListTelephonySearchServicesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonySearchServicesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyTelephonySearchService,
 ) as any as S.Schema<ListTelephonySearchServicesResponseBodyList>;
 
 export type ListTelephonySearchServicesResponse = ListTelephonySearchServicesResponseBodyList;
-export const ListTelephonySearchServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySearchServicesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonySearchServicesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonySearchServicesResponse",
@@ -16891,7 +16586,7 @@ export interface ListTelephonyServiceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/service", code: 200 })),
@@ -16900,11 +16595,8 @@ export const ListTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyServiceRequest>;
 
 export type ListTelephonyServiceResponseBodyList = Array<string>;
-export const ListTelephonyServiceResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyServiceResponseBodyList>;
-
 export type ListTelephonyServiceResponse = ListTelephonyServiceResponseBodyList;
-export const ListTelephonyServiceResponse =
+const ListTelephonyServiceResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyServiceResponse>;
 
 export interface ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest {
@@ -16913,19 +16605,18 @@ export interface ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest {
   serviceName: string;
   apeCode: string;
 }
-export const ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      apeCode: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode",
-        code: 200,
-      }),
-    ),
+const ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    apeCode: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/telephony/{billingAccount}/service/{serviceName}/directory/getDirectoryServiceCode",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest",
 }) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest>;
@@ -16938,7 +16629,7 @@ export interface TelephonyDirectoryHeadingPJ {
   directoryServiceDescription?: string;
   notification?: string;
 }
-export const TelephonyDirectoryHeadingPJ = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDirectoryHeadingPJ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apeCode: S.optional(S.String),
     apeDescription: S.optional(S.String),
@@ -16952,16 +16643,14 @@ export const TelephonyDirectoryHeadingPJ = /*@__PURE__*/ S.suspend(() =>
 
 export type ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList =
   Array<TelephonyDirectoryHeadingPJ>;
-export const ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    TelephonyDirectoryHeadingPJ,
-  ) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList>;
+const ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList = /*@__PURE__*/ S.Array(
+  TelephonyDirectoryHeadingPJ,
+) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList>;
 
 export type ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse =
   ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList;
-export const ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList.pipe(T.RawResponseRoot()),
+const ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse = /*@__PURE__*/ S.suspend(() =>
+  ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse",
 }) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse>;
@@ -16971,7 +16660,7 @@ export interface ListTelephonyServiceDirectoryGetWayTypesRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyServiceDirectoryGetWayTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceDirectoryGetWayTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -16991,7 +16680,7 @@ export interface TelephonyDirectoryWayType {
   abbreviatedName?: string;
   wayName?: string;
 }
-export const TelephonyDirectoryWayType = /*@__PURE__*/ S.suspend(() =>
+const TelephonyDirectoryWayType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abbreviatedName: S.optional(S.String),
     wayName: S.optional(S.String),
@@ -17002,13 +16691,13 @@ export const TelephonyDirectoryWayType = /*@__PURE__*/ S.suspend(() =>
 
 export type ListTelephonyServiceDirectoryGetWayTypesResponseBodyList =
   Array<TelephonyDirectoryWayType>;
-export const ListTelephonyServiceDirectoryGetWayTypesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTelephonyServiceDirectoryGetWayTypesResponseBodyList = /*@__PURE__*/ S.Array(
   TelephonyDirectoryWayType,
 ) as any as S.Schema<ListTelephonyServiceDirectoryGetWayTypesResponseBodyList>;
 
 export type ListTelephonyServiceDirectoryGetWayTypesResponse =
   ListTelephonyServiceDirectoryGetWayTypesResponseBodyList;
-export const ListTelephonyServiceDirectoryGetWayTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceDirectoryGetWayTypesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTelephonyServiceDirectoryGetWayTypesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTelephonyServiceDirectoryGetWayTypesResponse",
@@ -17025,7 +16714,7 @@ export interface ListTelephonyServiceFaxConsumptionRequest {
   /** Filter the value of wayType property (=) */
   wayType?: TelephonyFaxConsumptionWayTypeEnum | (string & {});
 }
-export const ListTelephonyServiceFaxConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceFaxConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17044,12 +16733,9 @@ export const ListTelephonyServiceFaxConsumptionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListTelephonyServiceFaxConsumptionRequest>;
 
 export type ListTelephonyServiceFaxConsumptionResponseBodyList = Array<number>;
-export const ListTelephonyServiceFaxConsumptionResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyServiceFaxConsumptionResponseBodyList>;
-
 export type ListTelephonyServiceFaxConsumptionResponse =
   ListTelephonyServiceFaxConsumptionResponseBodyList;
-export const ListTelephonyServiceFaxConsumptionResponse =
+const ListTelephonyServiceFaxConsumptionResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceFaxConsumptionResponse>;
 
 export interface ListTelephonyServiceOfferChangesRequest {
@@ -17057,7 +16743,7 @@ export interface ListTelephonyServiceOfferChangesRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyServiceOfferChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceOfferChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17073,12 +16759,9 @@ export const ListTelephonyServiceOfferChangesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTelephonyServiceOfferChangesRequest>;
 
 export type ListTelephonyServiceOfferChangesResponseBodyList = Array<TelephonyLineOffer>;
-export const ListTelephonyServiceOfferChangesResponseBodyList =
-  ListTelephonyFaxOffersResponseBodyList as any as S.Schema<ListTelephonyServiceOfferChangesResponseBodyList>;
-
 export type ListTelephonyServiceOfferChangesResponse =
   ListTelephonyServiceOfferChangesResponseBodyList;
-export const ListTelephonyServiceOfferChangesResponse =
+const ListTelephonyServiceOfferChangesResponse =
   ListTelephonyFaxOffersResponse as any as S.Schema<ListTelephonyServiceOfferChangesResponse>;
 
 export interface ListTelephonyServiceOfferTaskRequest {
@@ -17092,7 +16775,7 @@ export interface ListTelephonyServiceOfferTaskRequest {
   /** Filter the value of type property (=) */
   type?: TelephonyOfferTaskTypeEnum | (string & {});
 }
-export const ListTelephonyServiceOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17111,11 +16794,8 @@ export const ListTelephonyServiceOfferTaskRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListTelephonyServiceOfferTaskRequest>;
 
 export type ListTelephonyServiceOfferTaskResponseBodyList = Array<number>;
-export const ListTelephonyServiceOfferTaskResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyServiceOfferTaskResponseBodyList>;
-
 export type ListTelephonyServiceOfferTaskResponse = ListTelephonyServiceOfferTaskResponseBodyList;
-export const ListTelephonyServiceOfferTaskResponse =
+const ListTelephonyServiceOfferTaskResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceOfferTaskResponse>;
 
 export interface ListTelephonyServicePreviousVoiceConsumptionRequest {
@@ -17133,7 +16813,7 @@ export interface ListTelephonyServicePreviousVoiceConsumptionRequest {
   /** Filter the value of wayType property (=) */
   wayType?: TelephonyVoiceConsumptionWayTypeEnum | (string & {});
 }
-export const ListTelephonyServicePreviousVoiceConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServicePreviousVoiceConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17154,12 +16834,9 @@ export const ListTelephonyServicePreviousVoiceConsumptionRequest = /*@__PURE__*/
 }) as any as S.Schema<ListTelephonyServicePreviousVoiceConsumptionRequest>;
 
 export type ListTelephonyServicePreviousVoiceConsumptionResponseBodyList = Array<number>;
-export const ListTelephonyServicePreviousVoiceConsumptionResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyServicePreviousVoiceConsumptionResponseBodyList>;
-
 export type ListTelephonyServicePreviousVoiceConsumptionResponse =
   ListTelephonyServicePreviousVoiceConsumptionResponseBodyList;
-export const ListTelephonyServicePreviousVoiceConsumptionResponse =
+const ListTelephonyServicePreviousVoiceConsumptionResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServicePreviousVoiceConsumptionResponse>;
 
 export interface ListTelephonyServiceRepaymentConsumptionRequest {
@@ -17171,7 +16848,7 @@ export interface ListTelephonyServiceRepaymentConsumptionRequest {
   /** Filter the value of creationDatetime property (<=) */
   creationDatetime_to?: string;
 }
-export const ListTelephonyServiceRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceRepaymentConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17189,12 +16866,9 @@ export const ListTelephonyServiceRepaymentConsumptionRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListTelephonyServiceRepaymentConsumptionRequest>;
 
 export type ListTelephonyServiceRepaymentConsumptionResponseBodyList = Array<number>;
-export const ListTelephonyServiceRepaymentConsumptionResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyServiceRepaymentConsumptionResponseBodyList>;
-
 export type ListTelephonyServiceRepaymentConsumptionResponse =
   ListTelephonyServiceRepaymentConsumptionResponseBodyList;
-export const ListTelephonyServiceRepaymentConsumptionResponse =
+const ListTelephonyServiceRepaymentConsumptionResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceRepaymentConsumptionResponse>;
 
 export interface ListTelephonyServiceTaskRequest {
@@ -17208,7 +16882,7 @@ export interface ListTelephonyServiceTaskRequest {
   /** Filter the value of status property (=) */
   status?: TelephonyTaskStatusEnum | (string & {});
 }
-export const ListTelephonyServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17227,11 +16901,8 @@ export const ListTelephonyServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyServiceTaskRequest>;
 
 export type ListTelephonyServiceTaskResponseBodyList = Array<number>;
-export const ListTelephonyServiceTaskResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyServiceTaskResponseBodyList>;
-
 export type ListTelephonyServiceTaskResponse = ListTelephonyServiceTaskResponseBodyList;
-export const ListTelephonyServiceTaskResponse =
+const ListTelephonyServiceTaskResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceTaskResponse>;
 
 export interface ListTelephonyServiceVoiceConsumptionRequest {
@@ -17249,7 +16920,7 @@ export interface ListTelephonyServiceVoiceConsumptionRequest {
   /** Filter the value of wayType property (=) */
   wayType?: TelephonyVoiceConsumptionWayTypeEnum | (string & {});
 }
-export const ListTelephonyServiceVoiceConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyServiceVoiceConsumptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17270,59 +16941,47 @@ export const ListTelephonyServiceVoiceConsumptionRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListTelephonyServiceVoiceConsumptionRequest>;
 
 export type ListTelephonyServiceVoiceConsumptionResponseBodyList = Array<number>;
-export const ListTelephonyServiceVoiceConsumptionResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyServiceVoiceConsumptionResponseBodyList>;
-
 export type ListTelephonyServiceVoiceConsumptionResponse =
   ListTelephonyServiceVoiceConsumptionResponseBodyList;
-export const ListTelephonyServiceVoiceConsumptionResponse =
+const ListTelephonyServiceVoiceConsumptionResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceVoiceConsumptionResponse>;
 
 export interface ListTelephonySoftphoneThemesRequest {}
-export const ListTelephonySoftphoneThemesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySoftphoneThemesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telephony/softphone/themes", code: 200 })),
 ).annotate({
   identifier: "ListTelephonySoftphoneThemesRequest",
 }) as any as S.Schema<ListTelephonySoftphoneThemesRequest>;
 
 export type ListTelephonySoftphoneThemesResponseBodyList = Array<number>;
-export const ListTelephonySoftphoneThemesResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonySoftphoneThemesResponseBodyList>;
-
 export type ListTelephonySoftphoneThemesResponse = ListTelephonySoftphoneThemesResponseBodyList;
-export const ListTelephonySoftphoneThemesResponse =
+const ListTelephonySoftphoneThemesResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonySoftphoneThemesResponse>;
 
 export interface ListTelephonySoundsRequest {}
-export const ListTelephonySoundsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySoundsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telephony/sounds", code: 200 })),
 ).annotate({
   identifier: "ListTelephonySoundsRequest",
 }) as any as S.Schema<ListTelephonySoundsRequest>;
 
 export type ListTelephonySoundsResponseBodyList = Array<number>;
-export const ListTelephonySoundsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonySoundsResponseBodyList>;
-
 export type ListTelephonySoundsResponse = ListTelephonySoundsResponseBodyList;
-export const ListTelephonySoundsResponse =
+const ListTelephonySoundsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonySoundsResponse>;
 
 export type ListTelephonySpareRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListTelephonySpareRequestIamTagsValueList =
-  ListTelephonyRequestIamTagsValueList as any as S.Schema<ListTelephonySpareRequestIamTagsValueList>;
-
 export type ListTelephonySpareRequestIamTagsMap = {
   [key: string]: ListTelephonySpareRequestIamTagsValueList | undefined;
 };
-export const ListTelephonySpareRequestIamTagsMap =
+const ListTelephonySpareRequestIamTagsMap =
   ListTelephonyRequestIamTagsMap as any as S.Schema<ListTelephonySpareRequestIamTagsMap>;
 
 export interface ListTelephonySpareRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonySpareRequestIamTagsMap;
 }
-export const ListTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListTelephonySpareRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/spare", code: 200 })),
@@ -17331,33 +16990,27 @@ export const ListTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonySpareRequest>;
 
 export type ListTelephonySpareResponseBodyList = Array<string>;
-export const ListTelephonySpareResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonySpareResponseBodyList>;
-
 export type ListTelephonySpareResponse = ListTelephonySpareResponseBodyList;
-export const ListTelephonySpareResponse =
+const ListTelephonySpareResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySpareResponse>;
 
 export interface ListTelephonySpareBrandsRequest {}
-export const ListTelephonySpareBrandsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySpareBrandsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telephony/spare/brands", code: 200 })),
 ).annotate({
   identifier: "ListTelephonySpareBrandsRequest",
 }) as any as S.Schema<ListTelephonySpareBrandsRequest>;
 
 export type ListTelephonySpareBrandsResponseBodyList = Array<string>;
-export const ListTelephonySpareBrandsResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonySpareBrandsResponseBodyList>;
-
 export type ListTelephonySpareBrandsResponse = ListTelephonySpareBrandsResponseBodyList;
-export const ListTelephonySpareBrandsResponse =
+const ListTelephonySpareBrandsResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySpareBrandsResponse>;
 
 export interface ListTelephonySpareCompatibleReplacementRequest {
   /** The internal name of your spare */
   spare: string;
 }
-export const ListTelephonySpareCompatibleReplacementRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonySpareCompatibleReplacementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
   }).pipe(
@@ -17368,12 +17021,9 @@ export const ListTelephonySpareCompatibleReplacementRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListTelephonySpareCompatibleReplacementRequest>;
 
 export type ListTelephonySpareCompatibleReplacementResponseBodyList = Array<string>;
-export const ListTelephonySpareCompatibleReplacementResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonySpareCompatibleReplacementResponseBodyList>;
-
 export type ListTelephonySpareCompatibleReplacementResponse =
   ListTelephonySpareCompatibleReplacementResponseBodyList;
-export const ListTelephonySpareCompatibleReplacementResponse =
+const ListTelephonySpareCompatibleReplacementResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySpareCompatibleReplacementResponse>;
 
 export interface ListTelephonyTaskRequest {
@@ -17386,7 +17036,7 @@ export interface ListTelephonyTaskRequest {
   /** Filter the value of status property (=) */
   status?: TelephonyTaskStatusEnum | (string & {});
 }
-export const ListTelephonyTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     action: S.optional(S.String.pipe(T.Query())),
@@ -17396,18 +17046,15 @@ export const ListTelephonyTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTelephonyTaskRequest" }) as any as S.Schema<ListTelephonyTaskRequest>;
 
 export type ListTelephonyTaskResponseBodyList = Array<number>;
-export const ListTelephonyTaskResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyTaskResponseBodyList>;
-
 export type ListTelephonyTaskResponse = ListTelephonyTaskResponseBodyList;
-export const ListTelephonyTaskResponse =
+const ListTelephonyTaskResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyTaskResponse>;
 
 export interface ListTelephonyTimeConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyTimeConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyTimeConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/timeCondition", code: 200 })),
@@ -17416,11 +17063,8 @@ export const ListTelephonyTimeConditionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyTimeConditionRequest>;
 
 export type ListTelephonyTimeConditionResponseBodyList = Array<string>;
-export const ListTelephonyTimeConditionResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyTimeConditionResponseBodyList>;
-
 export type ListTelephonyTimeConditionResponse = ListTelephonyTimeConditionResponseBodyList;
-export const ListTelephonyTimeConditionResponse =
+const ListTelephonyTimeConditionResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyTimeConditionResponse>;
 
 export interface ListTelephonyTimeConditionConditionRequest {
@@ -17428,7 +17072,7 @@ export interface ListTelephonyTimeConditionConditionRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const ListTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17444,19 +17088,16 @@ export const ListTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListTelephonyTimeConditionConditionRequest>;
 
 export type ListTelephonyTimeConditionConditionResponseBodyList = Array<number>;
-export const ListTelephonyTimeConditionConditionResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyTimeConditionConditionResponseBodyList>;
-
 export type ListTelephonyTimeConditionConditionResponse =
   ListTelephonyTimeConditionConditionResponseBodyList;
-export const ListTelephonyTimeConditionConditionResponse =
+const ListTelephonyTimeConditionConditionResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyTimeConditionConditionResponse>;
 
 export interface ListTelephonyTrunkRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyTrunkRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyTrunkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/trunk", code: 200 })),
@@ -17465,11 +17106,8 @@ export const ListTelephonyTrunkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyTrunkRequest>;
 
 export type ListTelephonyTrunkResponseBodyList = Array<string>;
-export const ListTelephonyTrunkResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyTrunkResponseBodyList>;
-
 export type ListTelephonyTrunkResponse = ListTelephonyTrunkResponseBodyList;
-export const ListTelephonyTrunkResponse =
+const ListTelephonyTrunkResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyTrunkResponse>;
 
 export interface ListTelephonyTrunkChannelsPacksRepartitionRequest {
@@ -17480,7 +17118,7 @@ export interface ListTelephonyTrunkChannelsPacksRepartitionRequest {
   /** Channels quantity to get the best repartition on */
   quantity: number;
 }
-export const ListTelephonyTrunkChannelsPacksRepartitionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyTrunkChannelsPacksRepartitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17505,7 +17143,7 @@ export interface TelephonyTrunkSimultaneousPack {
   /** The unit price of the channels pack */
   unitPrice?: OrderPrice;
 }
-export const TelephonyTrunkSimultaneousPack = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTrunkSimultaneousPack = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.optional(S.Number),
     quantity: S.optional(S.Number),
@@ -17518,7 +17156,7 @@ export const TelephonyTrunkSimultaneousPack = /*@__PURE__*/ S.suspend(() =>
 /** The repartition of the packs */
 export type TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList =
   Array<TelephonyTrunkSimultaneousPack>;
-export const TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList = /*@__PURE__*/ S.Array(
+const TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList = /*@__PURE__*/ S.Array(
   TelephonyTrunkSimultaneousPack,
 ) as any as S.Schema<TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList>;
 
@@ -17531,7 +17169,7 @@ export interface TelephonyTrunkSimultaneousPacksRepartition {
   /** The total price of the channels packs combination */
   totalPrice?: OrderPrice;
 }
-export const TelephonyTrunkSimultaneousPacksRepartition = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTrunkSimultaneousPacksRepartition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optimizedChannelsQuantity: S.optional(S.Number),
     packsRepartition: S.optional(TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList),
@@ -17547,7 +17185,7 @@ export interface ListTelephonyTrunkExternalDisplayedNumberRequest {
   /** Name of the service */
   serviceName: string;
 }
-export const ListTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17563,29 +17201,23 @@ export const ListTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListTelephonyTrunkExternalDisplayedNumberRequest>;
 
 export type ListTelephonyTrunkExternalDisplayedNumberResponseBodyList = Array<string>;
-export const ListTelephonyTrunkExternalDisplayedNumberResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyTrunkExternalDisplayedNumberResponseBodyList>;
-
 export type ListTelephonyTrunkExternalDisplayedNumberResponse =
   ListTelephonyTrunkExternalDisplayedNumberResponseBodyList;
-export const ListTelephonyTrunkExternalDisplayedNumberResponse =
+const ListTelephonyTrunkExternalDisplayedNumberResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyTrunkExternalDisplayedNumberResponse>;
 
 export type ListTelephonyTrunksRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListTelephonyTrunksRequestIamTagsValueList =
-  ListTelephonyRequestIamTagsValueList as any as S.Schema<ListTelephonyTrunksRequestIamTagsValueList>;
-
 export type ListTelephonyTrunksRequestIamTagsMap = {
   [key: string]: ListTelephonyTrunksRequestIamTagsValueList | undefined;
 };
-export const ListTelephonyTrunksRequestIamTagsMap =
+const ListTelephonyTrunksRequestIamTagsMap =
   ListTelephonyRequestIamTagsMap as any as S.Schema<ListTelephonyTrunksRequestIamTagsMap>;
 
 export interface ListTelephonyTrunksRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonyTrunksRequestIamTagsMap;
 }
-export const ListTelephonyTrunksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyTrunksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListTelephonyTrunksRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/trunks", code: 200 })),
@@ -17594,18 +17226,15 @@ export const ListTelephonyTrunksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyTrunksRequest>;
 
 export type ListTelephonyTrunksResponseBodyList = Array<string>;
-export const ListTelephonyTrunksResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyTrunksResponseBodyList>;
-
 export type ListTelephonyTrunksResponse = ListTelephonyTrunksResponseBodyList;
-export const ListTelephonyTrunksResponse =
+const ListTelephonyTrunksResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyTrunksResponse>;
 
 export interface ListTelephonyVoicemailRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/voicemail", code: 200 })),
@@ -17614,11 +17243,8 @@ export const ListTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelephonyVoicemailRequest>;
 
 export type ListTelephonyVoicemailResponseBodyList = Array<string>;
-export const ListTelephonyVoicemailResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyVoicemailResponseBodyList>;
-
 export type ListTelephonyVoicemailResponse = ListTelephonyVoicemailResponseBodyList;
-export const ListTelephonyVoicemailResponse =
+const ListTelephonyVoicemailResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyVoicemailResponse>;
 
 export interface ListTelephonyVoicemailDirectoriesRequest {
@@ -17628,7 +17254,7 @@ export interface ListTelephonyVoicemailDirectoriesRequest {
   /** Filter the value of dir property (=) */
   dir?: TelephonyVoicemailMessageFolderDirectoryEnum | (string & {});
 }
-export const ListTelephonyVoicemailDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyVoicemailDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17645,12 +17271,9 @@ export const ListTelephonyVoicemailDirectoriesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListTelephonyVoicemailDirectoriesRequest>;
 
 export type ListTelephonyVoicemailDirectoriesResponseBodyList = Array<number>;
-export const ListTelephonyVoicemailDirectoriesResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyVoicemailDirectoriesResponseBodyList>;
-
 export type ListTelephonyVoicemailDirectoriesResponse =
   ListTelephonyVoicemailDirectoriesResponseBodyList;
-export const ListTelephonyVoicemailDirectoriesResponse =
+const ListTelephonyVoicemailDirectoriesResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyVoicemailDirectoriesResponse>;
 
 export interface ListTelephonyVoicemailGreetingsRequest {
@@ -17660,7 +17283,7 @@ export interface ListTelephonyVoicemailGreetingsRequest {
   /** Filter the value of dir property (=) */
   dir?: TelephonyVoicemailMessageFolderGreetingEnum | (string & {});
 }
-export const ListTelephonyVoicemailGreetingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyVoicemailGreetingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17677,30 +17300,24 @@ export const ListTelephonyVoicemailGreetingsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListTelephonyVoicemailGreetingsRequest>;
 
 export type ListTelephonyVoicemailGreetingsResponseBodyList = Array<number>;
-export const ListTelephonyVoicemailGreetingsResponseBodyList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ListTelephonyVoicemailGreetingsResponseBodyList>;
-
 export type ListTelephonyVoicemailGreetingsResponse =
   ListTelephonyVoicemailGreetingsResponseBodyList;
-export const ListTelephonyVoicemailGreetingsResponse =
+const ListTelephonyVoicemailGreetingsResponse =
   CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyVoicemailGreetingsResponse>;
 
 export interface ListTelephonyVxmlRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-export const ListTelephonyVxmlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelephonyVxmlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/vxml", code: 200 })),
 ).annotate({ identifier: "ListTelephonyVxmlRequest" }) as any as S.Schema<ListTelephonyVxmlRequest>;
 
 export type ListTelephonyVxmlResponseBodyList = Array<string>;
-export const ListTelephonyVxmlResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyVxmlResponseBodyList>;
-
 export type ListTelephonyVxmlResponse = ListTelephonyVxmlResponseBodyList;
-export const ListTelephonyVxmlResponse =
+const ListTelephonyVxmlResponse =
   ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyVxmlResponse>;
 
 export interface LockTelephonyConferenceRequest {
@@ -17708,7 +17325,7 @@ export interface LockTelephonyConferenceRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const LockTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const LockTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17730,7 +17347,7 @@ export interface LockTelephonyConferenceRoomRequest {
   /** The conference room number */
   roomNumber: number;
 }
-export const LockTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const LockTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17751,7 +17368,7 @@ export interface MigrateTelephonyVoicemailOnNewVersionRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const MigrateTelephonyVoicemailOnNewVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateTelephonyVoicemailOnNewVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17767,7 +17384,7 @@ export const MigrateTelephonyVoicemailOnNewVersionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<MigrateTelephonyVoicemailOnNewVersionRequest>;
 
 export interface MigrateTelephonyVoicemailOnNewVersionResponse {}
-export const MigrateTelephonyVoicemailOnNewVersionResponse =
+const MigrateTelephonyVoicemailOnNewVersionResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<MigrateTelephonyVoicemailOnNewVersionResponse>;
 
 export interface MoveTelephonyVoicemailDirectoryRequest {
@@ -17779,7 +17396,7 @@ export interface MoveTelephonyVoicemailDirectoryRequest {
   /** Greeting voicemail directory */
   dir: TelephonyVoicemailMessageFolderDirectoryEnum | (string & {});
 }
-export const MoveTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17797,7 +17414,7 @@ export const MoveTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<MoveTelephonyVoicemailDirectoryRequest>;
 
 export interface MoveTelephonyVoicemailDirectoryResponse {}
-export const MoveTelephonyVoicemailDirectoryResponse =
+const MoveTelephonyVoicemailDirectoryResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<MoveTelephonyVoicemailDirectoryResponse>;
 
 export interface MoveTelephonyVoicemailGreetingRequest {
@@ -17809,7 +17426,7 @@ export interface MoveTelephonyVoicemailGreetingRequest {
   /** Greeting voicemail directory */
   dir: TelephonyVoicemailMessageFolderGreetingEnum | (string & {});
 }
-export const MoveTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17827,7 +17444,7 @@ export const MoveTelephonyVoicemailGreetingRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<MoveTelephonyVoicemailGreetingRequest>;
 
 export interface MoveTelephonyVoicemailGreetingResponse {}
-export const MoveTelephonyVoicemailGreetingResponse =
+const MoveTelephonyVoicemailGreetingResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<MoveTelephonyVoicemailGreetingResponse>;
 
 export interface MuteTelephonyConferenceParticipantRequest {
@@ -17837,7 +17454,7 @@ export interface MuteTelephonyConferenceParticipantRequest {
   /** Id of the object */
   id: number;
 }
-export const MuteTelephonyConferenceParticipantRequest = /*@__PURE__*/ S.suspend(() =>
+const MuteTelephonyConferenceParticipantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17862,7 +17479,7 @@ export interface MuteTelephonyConferenceRoomsParticipantRequest {
   /** Id of the object */
   id: number;
 }
-export const MuteTelephonyConferenceRoomsParticipantRequest = /*@__PURE__*/ S.suspend(() =>
+const MuteTelephonyConferenceRoomsParticipantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17891,7 +17508,7 @@ export interface PutTelephonyRequest {
   /** Override number display for calls between services of your billing account */
   overrideDisplayedNumber?: boolean;
 }
-export const PutTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     creditThreshold: S.optional(OrderPrice),
@@ -17902,8 +17519,7 @@ export const PutTelephonyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTelephonyRequest" }) as any as S.Schema<PutTelephonyRequest>;
 
 export interface PutTelephonyResponse {}
-export const PutTelephonyResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyResponse>;
+const PutTelephonyResponse = BlockTelephonyLineResponse as any as S.Schema<PutTelephonyResponse>;
 
 export interface PutTelephonyAbbreviatedNumberRequest {
   /** The name of your billingAccount */
@@ -17915,7 +17531,7 @@ export interface PutTelephonyAbbreviatedNumberRequest {
   name?: string;
   surname?: string;
 }
-export const PutTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     abbreviatedNumber: S.Number.pipe(T.Label()),
@@ -17934,7 +17550,7 @@ export const PutTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutTelephonyAbbreviatedNumberRequest>;
 
 export interface PutTelephonyAbbreviatedNumberResponse {}
-export const PutTelephonyAbbreviatedNumberResponse =
+const PutTelephonyAbbreviatedNumberResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyAbbreviatedNumberResponse>;
 
 export interface PutTelephonyAliasServiceInfosRequest {
@@ -17943,7 +17559,7 @@ export interface PutTelephonyAliasServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutTelephonyAliasServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyAliasServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -17955,7 +17571,7 @@ export const PutTelephonyAliasServiceInfosRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutTelephonyAliasServiceInfosRequest>;
 
 export interface PutTelephonyAliasServiceInfosResponse {}
-export const PutTelephonyAliasServiceInfosResponse =
+const PutTelephonyAliasServiceInfosResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyAliasServiceInfosResponse>;
 
 export interface PutTelephonyCarrierSipSettingsRequest {
@@ -17965,7 +17581,7 @@ export interface PutTelephonyCarrierSipSettingsRequest {
   /** The carrier SIP trunk description */
   description?: string;
 }
-export const PutTelephonyCarrierSipSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyCarrierSipSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -17982,7 +17598,7 @@ export const PutTelephonyCarrierSipSettingsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutTelephonyCarrierSipSettingsRequest>;
 
 export interface PutTelephonyCarrierSipSettingsResponse {}
-export const PutTelephonyCarrierSipSettingsResponse =
+const PutTelephonyCarrierSipSettingsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyCarrierSipSettingsResponse>;
 
 export interface PutTelephonyCarrierSipVnoRangeRequest {
@@ -17996,7 +17612,7 @@ export interface PutTelephonyCarrierSipVnoRangeRequest {
   /** The carrier SIP trunk description. */
   description?: string;
 }
-export const PutTelephonyCarrierSipVnoRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyCarrierSipVnoRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18015,7 +17631,7 @@ export const PutTelephonyCarrierSipVnoRangeRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutTelephonyCarrierSipVnoRangeRequest>;
 
 export interface PutTelephonyCarrierSipVnoRangeResponse {}
-export const PutTelephonyCarrierSipVnoRangeResponse =
+const PutTelephonyCarrierSipVnoRangeResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyCarrierSipVnoRangeResponse>;
 
 export interface PutTelephonyConferenceRoomRequest {
@@ -18047,7 +17663,7 @@ export interface PutTelephonyConferenceRoomRequest {
   /** True if you want to receive a white-labelled mail report of your conference */
   whiteLabelReport?: boolean;
 }
-export const PutTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18075,7 +17691,7 @@ export const PutTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyConferenceRoomRequest>;
 
 export interface PutTelephonyConferenceRoomResponse {}
-export const PutTelephonyConferenceRoomResponse =
+const PutTelephonyConferenceRoomResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyConferenceRoomResponse>;
 
 export interface PutTelephonyConferenceSettingsRequest {
@@ -18103,7 +17719,7 @@ export interface PutTelephonyConferenceSettingsRequest {
   /** True if you want to receive a white-labelled mail report of your conference */
   whiteLabelReport?: boolean;
 }
-export const PutTelephonyConferenceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyConferenceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18129,7 +17745,7 @@ export const PutTelephonyConferenceSettingsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutTelephonyConferenceSettingsRequest>;
 
 export interface PutTelephonyConferenceSettingsResponse {}
-export const PutTelephonyConferenceSettingsResponse =
+const PutTelephonyConferenceSettingsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyConferenceSettingsResponse>;
 
 export interface PutTelephonyDdiRequest {
@@ -18138,7 +17754,7 @@ export interface PutTelephonyDdiRequest {
   serviceName: string;
   description?: string;
 }
-export const PutTelephonyDdiRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyDdiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18149,7 +17765,7 @@ export const PutTelephonyDdiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTelephonyDdiRequest" }) as any as S.Schema<PutTelephonyDdiRequest>;
 
 export interface PutTelephonyDdiResponse {}
-export const PutTelephonyDdiResponse =
+const PutTelephonyDdiResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyDdiResponse>;
 
 export interface PutTelephonyEasyHuntingRequest {
@@ -18179,7 +17795,7 @@ export interface PutTelephonyEasyHuntingRequest {
   /** The voicemail used by the EasyPABX */
   voicemail?: string | null;
 }
-export const PutTelephonyEasyHuntingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18206,9 +17822,9 @@ export const PutTelephonyEasyHuntingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyEasyHuntingRequest>;
 
 export interface PutTelephonyEasyHuntingResponse {}
-export const PutTelephonyEasyHuntingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutTelephonyEasyHuntingResponse" },
-) as any as S.Schema<PutTelephonyEasyHuntingResponse>;
+const PutTelephonyEasyHuntingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "PutTelephonyEasyHuntingResponse",
+}) as any as S.Schema<PutTelephonyEasyHuntingResponse>;
 
 export interface PutTelephonyEasyHuntingHuntingRequest {
   /** The name of your billingAccount */
@@ -18221,7 +17837,7 @@ export interface PutTelephonyEasyHuntingHuntingRequest {
   /** Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default. */
   statusIvrEnabled?: boolean;
 }
-export const PutTelephonyEasyHuntingHuntingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingHuntingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18240,7 +17856,7 @@ export const PutTelephonyEasyHuntingHuntingRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutTelephonyEasyHuntingHuntingRequest>;
 
 export interface PutTelephonyEasyHuntingHuntingResponse {}
-export const PutTelephonyEasyHuntingHuntingResponse =
+const PutTelephonyEasyHuntingHuntingResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingResponse>;
 
 export interface PutTelephonyEasyHuntingHuntingAgentRequest {
@@ -18263,7 +17879,7 @@ export interface PutTelephonyEasyHuntingHuntingAgentRequest {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime?: number;
 }
-export const PutTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18287,7 +17903,7 @@ export const PutTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentRequest>;
 
 export interface PutTelephonyEasyHuntingHuntingAgentResponse {}
-export const PutTelephonyEasyHuntingHuntingAgentResponse =
+const PutTelephonyEasyHuntingHuntingAgentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentResponse>;
 
 export interface PutTelephonyEasyHuntingHuntingAgentQueueRequest {
@@ -18299,7 +17915,7 @@ export interface PutTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The position in the queue */
   position?: number;
 }
-export const PutTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18318,7 +17934,7 @@ export const PutTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentQueueRequest>;
 
 export interface PutTelephonyEasyHuntingHuntingAgentQueueResponse {}
-export const PutTelephonyEasyHuntingHuntingAgentQueueResponse =
+const PutTelephonyEasyHuntingHuntingAgentQueueResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentQueueResponse>;
 
 export interface PutTelephonyEasyHuntingHuntingQueueRequest {
@@ -18363,7 +17979,7 @@ export interface PutTelephonyEasyHuntingHuntingQueueRequest {
   /** The calls dispatching strategy */
   strategy?: TelephonyOvhPabxHuntingQueueStrategyEnum | (string & {});
 }
-export const PutTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18399,7 +18015,7 @@ export const PutTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueRequest>;
 
 export interface PutTelephonyEasyHuntingHuntingQueueResponse {}
-export const PutTelephonyEasyHuntingHuntingQueueResponse =
+const PutTelephonyEasyHuntingHuntingQueueResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueResponse>;
 
 export interface PutTelephonyEasyHuntingHuntingQueueAgentRequest {
@@ -18411,7 +18027,7 @@ export interface PutTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The position in the queue */
   position?: number;
 }
-export const PutTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18430,7 +18046,7 @@ export const PutTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueAgentRequest>;
 
 export interface PutTelephonyEasyHuntingHuntingQueueAgentResponse {}
-export const PutTelephonyEasyHuntingHuntingQueueAgentResponse =
+const PutTelephonyEasyHuntingHuntingQueueAgentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueAgentResponse>;
 
 export interface PutTelephonyEasyHuntingScreenListConditionConditionRequest {
@@ -18443,27 +18059,26 @@ export interface PutTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** Screenlist based on the destination number */
   destinationNumber?: string | null;
 }
-export const PutTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      conditionId: S.Number.pipe(T.Label()),
-      callerIdNumber: S.optional(S.NullOr(S.String)),
-      destinationNumber: S.optional(S.NullOr(S.String)),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}",
-        code: 200,
-      }),
-    ),
+const PutTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    conditionId: S.Number.pipe(T.Label()),
+    callerIdNumber: S.optional(S.NullOr(S.String)),
+    destinationNumber: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/telephony/{billingAccount}/easyHunting/{serviceName}/screenListConditions/conditions/{conditionId}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PutTelephonyEasyHuntingScreenListConditionConditionRequest",
 }) as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionConditionRequest>;
 
 export interface PutTelephonyEasyHuntingScreenListConditionConditionResponse {}
-export const PutTelephonyEasyHuntingScreenListConditionConditionResponse =
+const PutTelephonyEasyHuntingScreenListConditionConditionResponse =
   CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionConditionResponse>;
 
 export interface PutTelephonyEasyHuntingScreenListConditionsRequest {
@@ -18472,7 +18087,7 @@ export interface PutTelephonyEasyHuntingScreenListConditionsRequest {
   serviceName: string;
   status?: TelephonyEasyHuntingScreenListsConditionsStatusEnum | (string & {});
 }
-export const PutTelephonyEasyHuntingScreenListConditionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingScreenListConditionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18489,7 +18104,7 @@ export const PutTelephonyEasyHuntingScreenListConditionsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionsRequest>;
 
 export interface PutTelephonyEasyHuntingScreenListConditionsResponse {}
-export const PutTelephonyEasyHuntingScreenListConditionsResponse =
+const PutTelephonyEasyHuntingScreenListConditionsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionsResponse>;
 
 export interface PutTelephonyEasyHuntingTimeConditionConditionRequest {
@@ -18506,7 +18121,7 @@ export interface PutTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The day of the week when the extension will be executed */
   weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum | (string & {});
 }
-export const PutTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18527,7 +18142,7 @@ export const PutTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*
 }) as any as S.Schema<PutTelephonyEasyHuntingTimeConditionConditionRequest>;
 
 export interface PutTelephonyEasyHuntingTimeConditionConditionResponse {}
-export const PutTelephonyEasyHuntingTimeConditionConditionResponse =
+const PutTelephonyEasyHuntingTimeConditionConditionResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingTimeConditionConditionResponse>;
 
 export interface PutTelephonyEasyHuntingTimeConditionsRequest {
@@ -18553,7 +18168,7 @@ export interface PutTelephonyEasyHuntingTimeConditionsRequest {
   /** Action type executed when the unavailable slot is used */
   unavailableType?: TelephonyTimeConditionsSettingsForwardTypeEnum | (string & {}) | null;
 }
-export const PutTelephonyEasyHuntingTimeConditionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyEasyHuntingTimeConditionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18578,7 +18193,7 @@ export const PutTelephonyEasyHuntingTimeConditionsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<PutTelephonyEasyHuntingTimeConditionsRequest>;
 
 export interface PutTelephonyEasyHuntingTimeConditionsResponse {}
-export const PutTelephonyEasyHuntingTimeConditionsResponse =
+const PutTelephonyEasyHuntingTimeConditionsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingTimeConditionsResponse>;
 
 export interface PutTelephonyFaxRequest {
@@ -18589,7 +18204,7 @@ export interface PutTelephonyFaxRequest {
   /** Send notifications about Line's diagnosticReports */
   notifications?: TelephonyLineNotificationsOptions | null;
 }
-export const PutTelephonyFaxRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyFaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18601,27 +18216,27 @@ export const PutTelephonyFaxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTelephonyFaxRequest" }) as any as S.Schema<PutTelephonyFaxRequest>;
 
 export interface PutTelephonyFaxResponse {}
-export const PutTelephonyFaxResponse =
+const PutTelephonyFaxResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyFaxResponse>;
 
 /** List of numbers not allowed to send a fax */
 export type PutTelephonyFaxScreenListsRequestBlacklistedNumbersList = Array<string>;
-export const PutTelephonyFaxScreenListsRequestBlacklistedNumbersList =
+const PutTelephonyFaxScreenListsRequestBlacklistedNumbersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxScreenListsRequestBlacklistedNumbersList>;
 
 /** List of logins (TSI or ID) not allowed to send a fax */
 export type PutTelephonyFaxScreenListsRequestBlacklistedTSIList = Array<string>;
-export const PutTelephonyFaxScreenListsRequestBlacklistedTSIList =
+const PutTelephonyFaxScreenListsRequestBlacklistedTSIList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxScreenListsRequestBlacklistedTSIList>;
 
 /** List of numbers allowed to send a fax */
 export type PutTelephonyFaxScreenListsRequestWhitelistedNumbersList = Array<string>;
-export const PutTelephonyFaxScreenListsRequestWhitelistedNumbersList =
+const PutTelephonyFaxScreenListsRequestWhitelistedNumbersList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxScreenListsRequestWhitelistedNumbersList>;
 
 /** List of logins (TSI or ID) allowed to send a fax */
 export type PutTelephonyFaxScreenListsRequestWhitelistedTSIList = Array<string>;
-export const PutTelephonyFaxScreenListsRequestWhitelistedTSIList =
+const PutTelephonyFaxScreenListsRequestWhitelistedTSIList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxScreenListsRequestWhitelistedTSIList>;
 
 export interface PutTelephonyFaxScreenListsRequest {
@@ -18637,7 +18252,7 @@ export interface PutTelephonyFaxScreenListsRequest {
   /** List of logins (TSI or ID) allowed to send a fax */
   whitelistedTSI?: PutTelephonyFaxScreenListsRequestWhitelistedTSIList | null;
 }
-export const PutTelephonyFaxScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyFaxScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18661,11 +18276,11 @@ export const PutTelephonyFaxScreenListsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyFaxScreenListsRequest>;
 
 export interface PutTelephonyFaxScreenListsResponse {}
-export const PutTelephonyFaxScreenListsResponse =
+const PutTelephonyFaxScreenListsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyFaxScreenListsResponse>;
 
 export type PutTelephonyFaxSettingsRequestRedirectionEmailList = Array<string>;
-export const PutTelephonyFaxSettingsRequestRedirectionEmailList =
+const PutTelephonyFaxSettingsRequestRedirectionEmailList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxSettingsRequestRedirectionEmailList>;
 
 export interface PutTelephonyFaxSettingsRequest {
@@ -18683,7 +18298,7 @@ export interface PutTelephonyFaxSettingsRequest {
   rejectAnonymous?: boolean;
   sender?: string;
 }
-export const PutTelephonyFaxSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyFaxSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18709,7 +18324,7 @@ export const PutTelephonyFaxSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyFaxSettingsRequest>;
 
 export interface PutTelephonyFaxSettingsResponse {}
-export const PutTelephonyFaxSettingsResponse =
+const PutTelephonyFaxSettingsResponse =
   PutTelephonyEasyHuntingResponse as any as S.Schema<PutTelephonyFaxSettingsResponse>;
 
 export interface PutTelephonyLineRequest {
@@ -18720,7 +18335,7 @@ export interface PutTelephonyLineRequest {
   /** Send notifications about Line's diagnosticReports */
   notifications?: TelephonyLineNotificationsOptions | null;
 }
-export const PutTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18732,7 +18347,7 @@ export const PutTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTelephonyLineRequest" }) as any as S.Schema<PutTelephonyLineRequest>;
 
 export interface PutTelephonyLineResponse {}
-export const PutTelephonyLineResponse =
+const PutTelephonyLineResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyLineResponse>;
 
 export interface PutTelephonyLineAbbreviatedNumberRequest {
@@ -18746,7 +18361,7 @@ export interface PutTelephonyLineAbbreviatedNumberRequest {
   name?: string;
   surname?: string;
 }
-export const PutTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18766,12 +18381,12 @@ export const PutTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutTelephonyLineAbbreviatedNumberRequest>;
 
 export interface PutTelephonyLineAbbreviatedNumberResponse {}
-export const PutTelephonyLineAbbreviatedNumberResponse =
+const PutTelephonyLineAbbreviatedNumberResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLineAbbreviatedNumberResponse>;
 
 /** The ip restrictions of your line */
 export type PutTelephonyLineOptionsRequestIpRestrictionsList = Array<string>;
-export const PutTelephonyLineOptionsRequestIpRestrictionsList =
+const PutTelephonyLineOptionsRequestIpRestrictionsList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyLineOptionsRequestIpRestrictionsList>;
 
 export interface PutTelephonyLineOptionsRequest {
@@ -18842,7 +18457,7 @@ export interface PutTelephonyLineOptionsRequest {
   /** Sound ID of ringback tone */
   toneRingbackSoundId?: number | null;
 }
-export const PutTelephonyLineOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLineOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18891,7 +18506,7 @@ export const PutTelephonyLineOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyLineOptionsRequest>;
 
 export interface PutTelephonyLineOptionsResponse {}
-export const PutTelephonyLineOptionsResponse =
+const PutTelephonyLineOptionsResponse =
   PutTelephonyEasyHuntingResponse as any as S.Schema<PutTelephonyLineOptionsResponse>;
 
 export interface PutTelephonyLinePhoneRequest {
@@ -18901,7 +18516,7 @@ export interface PutTelephonyLinePhoneRequest {
   /** The ip restriction of your MGCP phone */
   mgcpIpRestriction?: string | null;
 }
-export const PutTelephonyLinePhoneRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLinePhoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18918,7 +18533,7 @@ export const PutTelephonyLinePhoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyLinePhoneRequest>;
 
 export interface PutTelephonyLinePhoneResponse {}
-export const PutTelephonyLinePhoneResponse =
+const PutTelephonyLinePhoneResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyLinePhoneResponse>;
 
 export interface PutTelephonyLinePhoneFunctionKeyRequest {
@@ -18932,7 +18547,7 @@ export interface PutTelephonyLinePhoneFunctionKeyRequest {
   /** The function parameter */
   parameter?: string | null;
 }
-export const PutTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18951,7 +18566,7 @@ export const PutTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutTelephonyLinePhoneFunctionKeyRequest>;
 
 export interface PutTelephonyLinePhoneFunctionKeyResponse {}
-export const PutTelephonyLinePhoneFunctionKeyResponse =
+const PutTelephonyLinePhoneFunctionKeyResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLinePhoneFunctionKeyResponse>;
 
 export interface PutTelephonyLinePhonePhonebookRequest {
@@ -18965,7 +18580,7 @@ export interface PutTelephonyLinePhonePhonebookRequest {
   /** Phonebook name */
   name?: string;
 }
-export const PutTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -18984,7 +18599,7 @@ export const PutTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PutTelephonyLinePhonePhonebookRequest>;
 
 export interface PutTelephonyLinePhonePhonebookResponse {}
-export const PutTelephonyLinePhonePhonebookResponse =
+const PutTelephonyLinePhonePhonebookResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLinePhonePhonebookResponse>;
 
 export interface PutTelephonyLinePhonePhonebookPhonebookContactRequest {
@@ -19010,7 +18625,7 @@ export interface PutTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-export const PutTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19035,7 +18650,7 @@ export const PutTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__
 }) as any as S.Schema<PutTelephonyLinePhonePhonebookPhonebookContactRequest>;
 
 export interface PutTelephonyLinePhonePhonebookPhonebookContactResponse {}
-export const PutTelephonyLinePhonePhonebookPhonebookContactResponse =
+const PutTelephonyLinePhonePhonebookPhonebookContactResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLinePhonePhonebookPhonebookContactResponse>;
 
 export interface PutTelephonyLinePhoneRmaRequest {
@@ -19049,7 +18664,7 @@ export interface PutTelephonyLinePhoneRmaRequest {
   /** Contact information related to the delivery shipping in case of exchange */
   shippingContact?: TelephonyContact;
 }
-export const PutTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19068,7 +18683,7 @@ export const PutTelephonyLinePhoneRmaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyLinePhoneRmaRequest>;
 
 export interface PutTelephonyLinePhoneRmaResponse {}
-export const PutTelephonyLinePhoneRmaResponse =
+const PutTelephonyLinePhoneRmaResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLinePhoneRmaResponse>;
 
 export interface PutTelephonyLineServiceInfosRequest {
@@ -19077,7 +18692,7 @@ export interface PutTelephonyLineServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutTelephonyLineServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLineServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -19087,7 +18702,7 @@ export const PutTelephonyLineServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyLineServiceInfosRequest>;
 
 export interface PutTelephonyLineServiceInfosResponse {}
-export const PutTelephonyLineServiceInfosResponse =
+const PutTelephonyLineServiceInfosResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLineServiceInfosResponse>;
 
 export interface PutTelephonyLineSoftphoneBetaRequest {
@@ -19097,7 +18712,7 @@ export interface PutTelephonyLineSoftphoneBetaRequest {
   /** Whether Softphone beta is enabled or disabled */
   enabled: boolean;
 }
-export const PutTelephonyLineSoftphoneBetaRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLineSoftphoneBetaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19122,7 +18737,7 @@ export interface PutTelephonyLineSoftphoneLogoRequest {
   /** URL used to download logo */
   url: string;
 }
-export const PutTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19146,7 +18761,7 @@ export interface PutTelephonyLineSoftphoneThemeRequest {
   /** Theme ID */
   themeId: number;
 }
-export const PutTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19175,7 +18790,7 @@ export interface PutTelephonyLineTonesRequest {
   /** Ringback tone */
   ringback?: TelephonyTonesEnum | (string & {});
 }
-export const PutTelephonyLineTonesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyLineTonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19195,7 +18810,7 @@ export const PutTelephonyLineTonesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyLineTonesRequest>;
 
 export interface PutTelephonyLineTonesResponse {}
-export const PutTelephonyLineTonesResponse =
+const PutTelephonyLineTonesResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyLineTonesResponse>;
 
 export interface PutTelephonyNumberRequest {
@@ -19206,7 +18821,7 @@ export interface PutTelephonyNumberRequest {
   /** Description of the service */
   description?: string;
 }
-export const PutTelephonyNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19219,7 +18834,7 @@ export const PutTelephonyNumberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyNumberRequest>;
 
 export interface PutTelephonyNumberResponse {}
-export const PutTelephonyNumberResponse =
+const PutTelephonyNumberResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyNumberResponse>;
 
 export interface PutTelephonyOfferTaskRequest {
@@ -19229,7 +18844,7 @@ export interface PutTelephonyOfferTaskRequest {
   /** Planned execution date */
   executionDate?: string;
 }
-export const PutTelephonyOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -19242,7 +18857,7 @@ export const PutTelephonyOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyOfferTaskRequest>;
 
 export interface PutTelephonyOfferTaskResponse {}
-export const PutTelephonyOfferTaskResponse =
+const PutTelephonyOfferTaskResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyOfferTaskResponse>;
 
 export interface PutTelephonyOvhPabxRequest {
@@ -19252,7 +18867,7 @@ export interface PutTelephonyOvhPabxRequest {
   /** Description of the service */
   description?: string;
 }
-export const PutTelephonyOvhPabxRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19265,7 +18880,7 @@ export const PutTelephonyOvhPabxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyOvhPabxRequest>;
 
 export interface PutTelephonyOvhPabxResponse {}
-export const PutTelephonyOvhPabxResponse =
+const PutTelephonyOvhPabxResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyOvhPabxResponse>;
 
 export interface PutTelephonyOvhPabxDialplanRequest {
@@ -19282,7 +18897,7 @@ export interface PutTelephonyOvhPabxDialplanRequest {
   /** The timeout (in seconds) when bridging calls */
   transferTimeout?: number;
 }
-export const PutTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19303,7 +18918,7 @@ export const PutTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyOvhPabxDialplanRequest>;
 
 export interface PutTelephonyOvhPabxDialplanResponse {}
-export const PutTelephonyOvhPabxDialplanResponse =
+const PutTelephonyOvhPabxDialplanResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxDialplanResponse>;
 
 export interface PutTelephonyOvhPabxDialplanExtensionRequest {
@@ -19324,7 +18939,7 @@ export interface PutTelephonyOvhPabxDialplanExtensionRequest {
     | (string & {})
     | null;
 }
-export const PutTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19348,7 +18963,7 @@ export const PutTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRequest>;
 
 export interface PutTelephonyOvhPabxDialplanExtensionResponse {}
-export const PutTelephonyOvhPabxDialplanExtensionResponse =
+const PutTelephonyOvhPabxDialplanExtensionResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionResponse>;
 
 export interface PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
@@ -19365,30 +18980,29 @@ export interface PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The day of the week when the extension will be executed */
   weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum | (string & {});
 }
-export const PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccount: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      dialplanId: S.Number.pipe(T.Label()),
-      extensionId: S.Number.pipe(T.Label()),
-      conditionId: S.Number.pipe(T.Label()),
-      timeFrom: S.optional(S.String),
-      timeTo: S.optional(S.String),
-      weekDay: S.optional(TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}",
-        code: 200,
-      }),
-    ),
+const PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccount: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    dialplanId: S.Number.pipe(T.Label()),
+    extensionId: S.Number.pipe(T.Label()),
+    conditionId: S.Number.pipe(T.Label()),
+    timeFrom: S.optional(S.String),
+    timeTo: S.optional(S.String),
+    weekDay: S.optional(TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/telephony/{billingAccount}/ovhPabx/{serviceName}/dialplan/{dialplanId}/extension/{extensionId}/conditionTime/{conditionId}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest",
 }) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
 
 export interface PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse {}
-export const PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse =
+const PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse =
   CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse>;
 
 export interface PutTelephonyOvhPabxDialplanExtensionRuleRequest {
@@ -19407,7 +19021,7 @@ export interface PutTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The position of the rule in the extension (the rules are executed following this order) */
   position?: number;
 }
-export const PutTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19430,7 +19044,7 @@ export const PutTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRuleRequest>;
 
 export interface PutTelephonyOvhPabxDialplanExtensionRuleResponse {}
-export const PutTelephonyOvhPabxDialplanExtensionRuleResponse =
+const PutTelephonyOvhPabxDialplanExtensionRuleResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRuleResponse>;
 
 export interface PutTelephonyOvhPabxHuntingRequest {
@@ -19444,7 +19058,7 @@ export interface PutTelephonyOvhPabxHuntingRequest {
   /** Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default. */
   statusIvrEnabled?: boolean;
 }
-export const PutTelephonyOvhPabxHuntingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxHuntingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19463,7 +19077,7 @@ export const PutTelephonyOvhPabxHuntingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyOvhPabxHuntingRequest>;
 
 export interface PutTelephonyOvhPabxHuntingResponse {}
-export const PutTelephonyOvhPabxHuntingResponse =
+const PutTelephonyOvhPabxHuntingResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingResponse>;
 
 export interface PutTelephonyOvhPabxHuntingAgentRequest {
@@ -19486,7 +19100,7 @@ export interface PutTelephonyOvhPabxHuntingAgentRequest {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime?: number;
 }
-export const PutTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19510,7 +19124,7 @@ export const PutTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutTelephonyOvhPabxHuntingAgentRequest>;
 
 export interface PutTelephonyOvhPabxHuntingAgentResponse {}
-export const PutTelephonyOvhPabxHuntingAgentResponse =
+const PutTelephonyOvhPabxHuntingAgentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingAgentResponse>;
 
 export interface PutTelephonyOvhPabxHuntingAgentQueueRequest {
@@ -19522,7 +19136,7 @@ export interface PutTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The position in the queue */
   position?: number;
 }
-export const PutTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19541,7 +19155,7 @@ export const PutTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PutTelephonyOvhPabxHuntingAgentQueueRequest>;
 
 export interface PutTelephonyOvhPabxHuntingAgentQueueResponse {}
-export const PutTelephonyOvhPabxHuntingAgentQueueResponse =
+const PutTelephonyOvhPabxHuntingAgentQueueResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingAgentQueueResponse>;
 
 export interface PutTelephonyOvhPabxHuntingQueueRequest {
@@ -19586,7 +19200,7 @@ export interface PutTelephonyOvhPabxHuntingQueueRequest {
   /** The calls dispatching strategy */
   strategy?: TelephonyOvhPabxHuntingQueueStrategyEnum | (string & {});
 }
-export const PutTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19622,7 +19236,7 @@ export const PutTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutTelephonyOvhPabxHuntingQueueRequest>;
 
 export interface PutTelephonyOvhPabxHuntingQueueResponse {}
-export const PutTelephonyOvhPabxHuntingQueueResponse =
+const PutTelephonyOvhPabxHuntingQueueResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingQueueResponse>;
 
 export interface PutTelephonyOvhPabxHuntingQueueAgentRequest {
@@ -19634,7 +19248,7 @@ export interface PutTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The position in the queue */
   position?: number;
 }
-export const PutTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19653,7 +19267,7 @@ export const PutTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PutTelephonyOvhPabxHuntingQueueAgentRequest>;
 
 export interface PutTelephonyOvhPabxHuntingQueueAgentResponse {}
-export const PutTelephonyOvhPabxHuntingQueueAgentResponse =
+const PutTelephonyOvhPabxHuntingQueueAgentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingQueueAgentResponse>;
 
 export interface PutTelephonyOvhPabxMenuRequest {
@@ -19676,7 +19290,7 @@ export interface PutTelephonyOvhPabxMenuRequest {
   /** The timeout in milliseconds before ending the menu when no DTMF is received */
   timeout?: number;
 }
-export const PutTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19700,7 +19314,7 @@ export const PutTelephonyOvhPabxMenuRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyOvhPabxMenuRequest>;
 
 export interface PutTelephonyOvhPabxMenuResponse {}
-export const PutTelephonyOvhPabxMenuResponse =
+const PutTelephonyOvhPabxMenuResponse =
   PutTelephonyEasyHuntingResponse as any as S.Schema<PutTelephonyOvhPabxMenuResponse>;
 
 export interface PutTelephonyOvhPabxMenuEntryRequest {
@@ -19716,7 +19330,7 @@ export interface PutTelephonyOvhPabxMenuEntryRequest {
   /** The DTMF that triggers the action */
   dtmf?: string;
 }
-export const PutTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19737,7 +19351,7 @@ export const PutTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyOvhPabxMenuEntryRequest>;
 
 export interface PutTelephonyOvhPabxMenuEntryResponse {}
-export const PutTelephonyOvhPabxMenuEntryResponse =
+const PutTelephonyOvhPabxMenuEntryResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxMenuEntryResponse>;
 
 export interface PutTelephonyOvhPabxTtsRequest {
@@ -19750,7 +19364,7 @@ export interface PutTelephonyOvhPabxTtsRequest {
   /** The voice used to say text */
   voice?: TelephonyOvhPabxTtsVoiceEnum | (string & {});
 }
-export const PutTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19769,7 +19383,7 @@ export const PutTelephonyOvhPabxTtsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyOvhPabxTtsRequest>;
 
 export interface PutTelephonyOvhPabxTtsResponse {}
-export const PutTelephonyOvhPabxTtsResponse =
+const PutTelephonyOvhPabxTtsResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyOvhPabxTtsResponse>;
 
 export interface PutTelephonyPhonebookRequest {
@@ -19780,7 +19394,7 @@ export interface PutTelephonyPhonebookRequest {
   /** Phone book name */
   name?: string;
 }
-export const PutTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -19793,7 +19407,7 @@ export const PutTelephonyPhonebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyPhonebookRequest>;
 
 export interface PutTelephonyPhonebookResponse {}
-export const PutTelephonyPhonebookResponse =
+const PutTelephonyPhonebookResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyPhonebookResponse>;
 
 export interface PutTelephonyPhonebookPhonebookContactRequest {
@@ -19818,7 +19432,7 @@ export interface PutTelephonyPhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-export const PutTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     bookKey: S.String.pipe(T.Label()),
@@ -19842,7 +19456,7 @@ export const PutTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<PutTelephonyPhonebookPhonebookContactRequest>;
 
 export interface PutTelephonyPhonebookPhonebookContactResponse {}
-export const PutTelephonyPhonebookPhonebookContactResponse =
+const PutTelephonyPhonebookPhonebookContactResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyPhonebookPhonebookContactResponse>;
 
 export interface PutTelephonyPortabilityDocumentRequest {
@@ -19857,7 +19471,7 @@ export interface PutTelephonyPortabilityDocumentRequest {
   /** Name of the document */
   name?: string;
 }
-export const PutTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -19876,7 +19490,7 @@ export const PutTelephonyPortabilityDocumentRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutTelephonyPortabilityDocumentRequest>;
 
 export interface PutTelephonyPortabilityDocumentResponse {}
-export const PutTelephonyPortabilityDocumentResponse =
+const PutTelephonyPortabilityDocumentResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyPortabilityDocumentResponse>;
 
 export interface PutTelephonyRedirectRequest {
@@ -19885,7 +19499,7 @@ export interface PutTelephonyRedirectRequest {
   serviceName: string;
   description?: string;
 }
-export const PutTelephonyRedirectRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyRedirectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19898,7 +19512,7 @@ export const PutTelephonyRedirectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyRedirectRequest>;
 
 export interface PutTelephonyRedirectResponse {}
-export const PutTelephonyRedirectResponse =
+const PutTelephonyRedirectResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyRedirectResponse>;
 
 export interface PutTelephonyRsvaRequest {
@@ -19907,7 +19521,7 @@ export interface PutTelephonyRsvaRequest {
   serviceName: string;
   typology?: TelephonyPortabilitySpecialNumberCategoryEnum | (string & {}) | null;
 }
-export const PutTelephonyRsvaRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyRsvaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19918,7 +19532,7 @@ export const PutTelephonyRsvaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTelephonyRsvaRequest" }) as any as S.Schema<PutTelephonyRsvaRequest>;
 
 export interface PutTelephonyRsvaResponse {}
-export const PutTelephonyRsvaResponse =
+const PutTelephonyRsvaResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyRsvaResponse>;
 
 export interface PutTelephonySchedulerRequest {
@@ -19927,7 +19541,7 @@ export interface PutTelephonySchedulerRequest {
   serviceName: string;
   timeZone?: TelephonyTimeZone | (string & {});
 }
-export const PutTelephonySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19944,7 +19558,7 @@ export const PutTelephonySchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonySchedulerRequest>;
 
 export interface PutTelephonySchedulerResponse {}
-export const PutTelephonySchedulerResponse =
+const PutTelephonySchedulerResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonySchedulerResponse>;
 
 export interface PutTelephonySchedulerEventRequest {
@@ -19962,7 +19576,7 @@ export interface PutTelephonySchedulerEventRequest {
   description?: string | null;
   title?: string;
 }
-export const PutTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -19984,7 +19598,7 @@ export const PutTelephonySchedulerEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonySchedulerEventRequest>;
 
 export interface PutTelephonySchedulerEventResponse {}
-export const PutTelephonySchedulerEventResponse =
+const PutTelephonySchedulerEventResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonySchedulerEventResponse>;
 
 export interface PutTelephonyScreenRequest {
@@ -19994,7 +19608,7 @@ export interface PutTelephonyScreenRequest {
   incomingScreenList?: TelephonyScreenListChoosingEnum | (string & {});
   outgoingScreenList?: TelephonyScreenListChoosingEnum | (string & {});
 }
-export const PutTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20008,7 +19622,7 @@ export const PutTelephonyScreenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyScreenRequest>;
 
 export interface PutTelephonyScreenResponse {}
-export const PutTelephonyScreenResponse =
+const PutTelephonyScreenResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyScreenResponse>;
 
 export interface PutTelephonyServiceRequest {
@@ -20017,7 +19631,7 @@ export interface PutTelephonyServiceRequest {
   serviceName: string;
   description?: string;
 }
-export const PutTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20030,7 +19644,7 @@ export const PutTelephonyServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyServiceRequest>;
 
 export interface PutTelephonyServiceResponse {}
-export const PutTelephonyServiceResponse =
+const PutTelephonyServiceResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyServiceResponse>;
 
 export interface PutTelephonyServiceDirectoryRequest {
@@ -20070,7 +19684,7 @@ export interface PutTelephonyServiceDirectoryRequest {
   wayNumberExtra?: string;
   wayType?: string;
 }
-export const PutTelephonyServiceDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyServiceDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20118,7 +19732,7 @@ export const PutTelephonyServiceDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyServiceDirectoryRequest>;
 
 export interface PutTelephonyServiceDirectoryResponse {}
-export const PutTelephonyServiceDirectoryResponse =
+const PutTelephonyServiceDirectoryResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyServiceDirectoryResponse>;
 
 export interface PutTelephonyServiceEventCallbackRequest {
@@ -20130,7 +19744,7 @@ export interface PutTelephonyServiceEventCallbackRequest {
   /** Url called for each event */
   url?: string | null;
 }
-export const PutTelephonyServiceEventCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyServiceEventCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20148,7 +19762,7 @@ export const PutTelephonyServiceEventCallbackRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutTelephonyServiceEventCallbackRequest>;
 
 export interface PutTelephonyServiceEventCallbackResponse {}
-export const PutTelephonyServiceEventCallbackResponse =
+const PutTelephonyServiceEventCallbackResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyServiceEventCallbackResponse>;
 
 export interface PutTelephonyServiceInfosRequest {
@@ -20157,7 +19771,7 @@ export interface PutTelephonyServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutTelephonyServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -20167,7 +19781,7 @@ export const PutTelephonyServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyServiceInfosRequest>;
 
 export interface PutTelephonyServiceInfosResponse {}
-export const PutTelephonyServiceInfosResponse =
+const PutTelephonyServiceInfosResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyServiceInfosResponse>;
 
 export interface PutTelephonyServiceOfferTaskRequest {
@@ -20178,7 +19792,7 @@ export interface PutTelephonyServiceOfferTaskRequest {
   /** Planned execution date */
   executionDate?: string;
 }
-export const PutTelephonyServiceOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyServiceOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20196,7 +19810,7 @@ export const PutTelephonyServiceOfferTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyServiceOfferTaskRequest>;
 
 export interface PutTelephonyServiceOfferTaskResponse {}
-export const PutTelephonyServiceOfferTaskResponse =
+const PutTelephonyServiceOfferTaskResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyServiceOfferTaskResponse>;
 
 export interface PutTelephonySoftphoneLogoRequest {
@@ -20207,7 +19821,7 @@ export interface PutTelephonySoftphoneLogoRequest {
   /** URL used to download logo */
   url: string;
 }
-export const PutTelephonySoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonySoftphoneLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     filename: S.String,
@@ -20223,7 +19837,7 @@ export interface PutTelephonySoftphoneThemeRequest {
   /** Theme ID */
   themeId: number;
 }
-export const PutTelephonySoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonySoftphoneThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     themeId: S.Number,
@@ -20240,7 +19854,7 @@ export interface PutTelephonySoundRequest {
   /** Sound filename */
   filename?: string;
 }
-export const PutTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -20249,7 +19863,7 @@ export const PutTelephonySoundRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTelephonySoundRequest" }) as any as S.Schema<PutTelephonySoundRequest>;
 
 export interface PutTelephonySoundResponse {}
-export const PutTelephonySoundResponse =
+const PutTelephonySoundResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonySoundResponse>;
 
 export interface PutTelephonySpareServiceInfosRequest {
@@ -20258,7 +19872,7 @@ export interface PutTelephonySpareServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutTelephonySpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonySpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -20268,7 +19882,7 @@ export const PutTelephonySpareServiceInfosRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutTelephonySpareServiceInfosRequest>;
 
 export interface PutTelephonySpareServiceInfosResponse {}
-export const PutTelephonySpareServiceInfosResponse =
+const PutTelephonySpareServiceInfosResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonySpareServiceInfosResponse>;
 
 export interface PutTelephonyTimeConditionConditionRequest {
@@ -20283,7 +19897,7 @@ export interface PutTelephonyTimeConditionConditionRequest {
   policy?: TelephonyTimeConditionsPolicyEnum | (string & {});
   status?: string;
 }
-export const PutTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20305,7 +19919,7 @@ export const PutTelephonyTimeConditionConditionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PutTelephonyTimeConditionConditionRequest>;
 
 export interface PutTelephonyTimeConditionConditionResponse {}
-export const PutTelephonyTimeConditionConditionResponse =
+const PutTelephonyTimeConditionConditionResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyTimeConditionConditionResponse>;
 
 export interface PutTelephonyTimeConditionOptionsRequest {
@@ -20333,7 +19947,7 @@ export interface PutTelephonyTimeConditionOptionsRequest {
   /** Action type executed when the unavailable slot is used */
   unavailableType?: TelephonyTimeConditionsSlotTypeEnum | (string & {});
 }
-export const PutTelephonyTimeConditionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyTimeConditionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20359,7 +19973,7 @@ export const PutTelephonyTimeConditionOptionsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutTelephonyTimeConditionOptionsRequest>;
 
 export interface PutTelephonyTimeConditionOptionsResponse {}
-export const PutTelephonyTimeConditionOptionsResponse =
+const PutTelephonyTimeConditionOptionsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyTimeConditionOptionsResponse>;
 
 export interface PutTelephonyTrunkServiceInfosRequest {
@@ -20368,7 +19982,7 @@ export interface PutTelephonyTrunkServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutTelephonyTrunkServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyTrunkServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -20380,7 +19994,7 @@ export const PutTelephonyTrunkServiceInfosRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutTelephonyTrunkServiceInfosRequest>;
 
 export interface PutTelephonyTrunkServiceInfosResponse {}
-export const PutTelephonyTrunkServiceInfosResponse =
+const PutTelephonyTrunkServiceInfosResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyTrunkServiceInfosResponse>;
 
 export interface PutTelephonyVoicemailRequest {
@@ -20389,7 +20003,7 @@ export interface PutTelephonyVoicemailRequest {
   serviceName: string;
   description?: string;
 }
-export const PutTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20406,13 +20020,13 @@ export const PutTelephonyVoicemailRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyVoicemailRequest>;
 
 export interface PutTelephonyVoicemailResponse {}
-export const PutTelephonyVoicemailResponse =
+const PutTelephonyVoicemailResponse =
   BlockTelephonyLineResponse as any as S.Schema<PutTelephonyVoicemailResponse>;
 
 /** Email addresses to notify when a new voicemail is left */
 export type PutTelephonyVoicemailSettingsRequestRedirectionEmailsList =
   Array<TelephonyServiceVoicemailNotifications>;
-export const PutTelephonyVoicemailSettingsRequestRedirectionEmailsList =
+const PutTelephonyVoicemailSettingsRequestRedirectionEmailsList =
   TelephonyVoicemailPropertiesRedirectionEmailsList as any as S.Schema<PutTelephonyVoicemailSettingsRequestRedirectionEmailsList>;
 
 export interface PutTelephonyVoicemailSettingsRequest {
@@ -20444,7 +20058,7 @@ export interface PutTelephonyVoicemailSettingsRequest {
   /** Sound ID of the temporary greeeting */
   temporaryGreetingSoundId?: number | null;
 }
-export const PutTelephonyVoicemailSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyVoicemailSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20472,7 +20086,7 @@ export const PutTelephonyVoicemailSettingsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutTelephonyVoicemailSettingsRequest>;
 
 export interface PutTelephonyVoicemailSettingsResponse {}
-export const PutTelephonyVoicemailSettingsResponse =
+const PutTelephonyVoicemailSettingsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyVoicemailSettingsResponse>;
 
 export interface PutTelephonyVxmlSettingsRequest {
@@ -20482,7 +20096,7 @@ export interface PutTelephonyVxmlSettingsRequest {
   url?: string;
   urlRecord?: string;
 }
-export const PutTelephonyVxmlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTelephonyVxmlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20500,7 +20114,7 @@ export const PutTelephonyVxmlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutTelephonyVxmlSettingsRequest>;
 
 export interface PutTelephonyVxmlSettingsResponse {}
-export const PutTelephonyVxmlSettingsResponse =
+const PutTelephonyVxmlSettingsResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyVxmlSettingsResponse>;
 
 export interface RebootTelephonyLinePhoneRequest {
@@ -20508,7 +20122,7 @@ export interface RebootTelephonyLinePhoneRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const RebootTelephonyLinePhoneRequest = /*@__PURE__*/ S.suspend(() =>
+const RebootTelephonyLinePhoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20528,7 +20142,7 @@ export interface RefreshTelephonyLinePhoneScreenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const RefreshTelephonyLinePhoneScreenRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshTelephonyLinePhoneScreenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20548,7 +20162,7 @@ export interface RegenerateTelephonyLineSoftphoneBetaTokenRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const RegenerateTelephonyLineSoftphoneBetaTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateTelephonyLineSoftphoneBetaTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20564,7 +20178,7 @@ export const RegenerateTelephonyLineSoftphoneBetaTokenRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<RegenerateTelephonyLineSoftphoneBetaTokenRequest>;
 
 export interface RegenerateTelephonyLineSoftphoneBetaTokenResponse {}
-export const RegenerateTelephonyLineSoftphoneBetaTokenResponse =
+const RegenerateTelephonyLineSoftphoneBetaTokenResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<RegenerateTelephonyLineSoftphoneBetaTokenResponse>;
 
 export interface RemoveTelephonyLineSimultaneousLinesRequest {
@@ -20574,7 +20188,7 @@ export interface RemoveTelephonyLineSimultaneousLinesRequest {
   /** The quantity of extra simultaneous lines to remove */
   quantityRemove: number;
 }
-export const RemoveTelephonyLineSimultaneousLinesRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTelephonyLineSimultaneousLinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20591,7 +20205,7 @@ export const RemoveTelephonyLineSimultaneousLinesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<RemoveTelephonyLineSimultaneousLinesRequest>;
 
 export interface RemoveTelephonyLineSimultaneousLinesResponse {}
-export const RemoveTelephonyLineSimultaneousLinesResponse =
+const RemoveTelephonyLineSimultaneousLinesResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<RemoveTelephonyLineSimultaneousLinesResponse>;
 
 export interface ReplaceTelephonySpareRequest {
@@ -20602,7 +20216,7 @@ export interface ReplaceTelephonySpareRequest {
   /** Public ip of the phone */
   ip: string;
 }
-export const ReplaceTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spare: S.String.pipe(T.Label()),
     domain: S.String,
@@ -20613,7 +20227,7 @@ export const ReplaceTelephonySpareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceTelephonySpareRequest>;
 
 export interface ReplaceTelephonySpareResponse {}
-export const ReplaceTelephonySpareResponse =
+const ReplaceTelephonySpareResponse =
   BlockTelephonyLineResponse as any as S.Schema<ReplaceTelephonySpareResponse>;
 
 export interface ResetTelephonyFaxScreenListRequest {
@@ -20629,7 +20243,7 @@ export interface ResetTelephonyFaxScreenListRequest {
   /** List of white login (TSI or ID) */
   whitelistedTSI?: boolean;
 }
-export const ResetTelephonyFaxScreenListRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetTelephonyFaxScreenListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20649,7 +20263,7 @@ export const ResetTelephonyFaxScreenListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetTelephonyFaxScreenListRequest>;
 
 export interface ResetTelephonyFaxScreenListResponse {}
-export const ResetTelephonyFaxScreenListResponse =
+const ResetTelephonyFaxScreenListResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<ResetTelephonyFaxScreenListResponse>;
 
 export interface ResetTelephonyLinePhoneConfigRequest {
@@ -20659,7 +20273,7 @@ export interface ResetTelephonyLinePhoneConfigRequest {
   /** The public ip phone allowed for reset */
   ip: string;
 }
-export const ResetTelephonyLinePhoneConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetTelephonyLinePhoneConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20684,7 +20298,7 @@ export interface TelephonyResetPhoneCodeInfo {
   /** Server url */
   serverURL?: string | null;
 }
-export const TelephonyResetPhoneCodeInfo = /*@__PURE__*/ S.suspend(() =>
+const TelephonyResetPhoneCodeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activationCode: S.optional(S.NullOr(S.String)),
     keyBook: S.optional(S.NullOr(S.String)),
@@ -20696,7 +20310,7 @@ export const TelephonyResetPhoneCodeInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** How the phone had been reset */
 export type TelephonyResetPhoneMethodEnum = "code" | "http";
-export const TelephonyResetPhoneMethodEnum = S.String;
+const TelephonyResetPhoneMethodEnum = S.String;
 
 /** Relevant informations of the phone reset */
 export interface TelephonyResetPhoneInfo {
@@ -20705,7 +20319,7 @@ export interface TelephonyResetPhoneInfo {
   /** Which way had been used to reset the phone */
   resetPhoneMethod?: TelephonyResetPhoneMethodEnum;
 }
-export const TelephonyResetPhoneInfo = /*@__PURE__*/ S.suspend(() =>
+const TelephonyResetPhoneInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resetCodeInfo: S.optional(S.NullOr(TelephonyResetPhoneCodeInfo)),
     resetPhoneMethod: S.optional(TelephonyResetPhoneMethodEnum),
@@ -20714,7 +20328,7 @@ export const TelephonyResetPhoneInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of recipients of your fax */
 export type SendTelephonyFaxSettingsFaxRequestRecipientsList = Array<string>;
-export const SendTelephonyFaxSettingsFaxRequestRecipientsList =
+const SendTelephonyFaxSettingsFaxRequestRecipientsList =
   CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<SendTelephonyFaxSettingsFaxRequestRecipientsList>;
 
 export interface SendTelephonyFaxSettingsFaxRequest {
@@ -20728,7 +20342,7 @@ export interface SendTelephonyFaxSettingsFaxRequest {
   /** List of recipients of your fax */
   recipients: SendTelephonyFaxSettingsFaxRequestRecipientsList;
 }
-export const SendTelephonyFaxSettingsFaxRequest = /*@__PURE__*/ S.suspend(() =>
+const SendTelephonyFaxSettingsFaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20754,7 +20368,7 @@ export interface SetTelephonyDefaultSipDomainRequest {
   /** Product type */
   type: TelephonySipDomainProductTypeEnum | (string & {});
 }
-export const SetTelephonyDefaultSipDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const SetTelephonyDefaultSipDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: TelephonyServiceNumberCountryEnum,
     domain: S.String,
@@ -20765,7 +20379,7 @@ export const SetTelephonyDefaultSipDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetTelephonyDefaultSipDomainRequest>;
 
 export interface SetTelephonyDefaultSipDomainResponse {}
-export const SetTelephonyDefaultSipDomainResponse =
+const SetTelephonyDefaultSipDomainResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<SetTelephonyDefaultSipDomainResponse>;
 
 export interface StartTelephonyFaxCampaignRequest {
@@ -20775,7 +20389,7 @@ export interface StartTelephonyFaxCampaignRequest {
   /** Id of the object */
   id: number;
 }
-export const StartTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const StartTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20792,7 +20406,7 @@ export const StartTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartTelephonyFaxCampaignRequest>;
 
 export interface StartTelephonyFaxCampaignResponse {}
-export const StartTelephonyFaxCampaignResponse =
+const StartTelephonyFaxCampaignResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<StartTelephonyFaxCampaignResponse>;
 
 export interface StopTelephonyFaxCampaignRequest {
@@ -20802,7 +20416,7 @@ export interface StopTelephonyFaxCampaignRequest {
   /** Id of the object */
   id: number;
 }
-export const StopTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const StopTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20819,7 +20433,7 @@ export const StopTelephonyFaxCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopTelephonyFaxCampaignRequest>;
 
 export interface StopTelephonyFaxCampaignResponse {}
-export const StopTelephonyFaxCampaignResponse =
+const StopTelephonyFaxCampaignResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<StopTelephonyFaxCampaignResponse>;
 
 export interface TransferTelephonyEasyHuntingHuntingAgentCallRequest {
@@ -20832,7 +20446,7 @@ export interface TransferTelephonyEasyHuntingHuntingAgentCallRequest {
   /** Phone number to whom the communication will be transfered */
   number: string;
 }
-export const TransferTelephonyEasyHuntingHuntingAgentCallRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferTelephonyEasyHuntingHuntingAgentCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20860,7 +20474,7 @@ export interface TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest {
   /** Phone number to whom the communication will be transfered */
   number: string;
 }
-export const TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20888,7 +20502,7 @@ export interface TransferTelephonyOvhPabxHuntingAgentCallRequest {
   /** Phone number to whom the communication will be transfered */
   number: string;
 }
-export const TransferTelephonyOvhPabxHuntingAgentCallRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferTelephonyOvhPabxHuntingAgentCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20916,7 +20530,7 @@ export interface TransferTelephonyOvhPabxHuntingQueueLiveCallRequest {
   /** Phone number to whom the communication will be transfered */
   number: string;
 }
-export const TransferTelephonyOvhPabxHuntingQueueLiveCallRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferTelephonyOvhPabxHuntingQueueLiveCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20942,7 +20556,7 @@ export interface TransferTelephonySecurityDepositRequest {
   /** The destination billing account */
   billingAccountDestination: string;
 }
-export const TransferTelephonySecurityDepositRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferTelephonySecurityDepositRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     amount: S.Number,
@@ -20959,7 +20573,7 @@ export const TransferTelephonySecurityDepositRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<TransferTelephonySecurityDepositRequest>;
 
 export interface TransferTelephonySecurityDepositResponse {}
-export const TransferTelephonySecurityDepositResponse =
+const TransferTelephonySecurityDepositResponse =
   ActivateTelephonyLineNewPhoneResponse as any as S.Schema<TransferTelephonySecurityDepositResponse>;
 
 export interface UnblockTelephonyLineRequest {
@@ -20967,7 +20581,7 @@ export interface UnblockTelephonyLineRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const UnblockTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
+const UnblockTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -20983,7 +20597,7 @@ export const UnblockTelephonyLineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnblockTelephonyLineRequest>;
 
 export interface UnblockTelephonyLineResponse {}
-export const UnblockTelephonyLineResponse =
+const UnblockTelephonyLineResponse =
   BlockTelephonyLineResponse as any as S.Schema<UnblockTelephonyLineResponse>;
 
 export interface UnlockTelephonyConferenceRequest {
@@ -20991,7 +20605,7 @@ export interface UnlockTelephonyConferenceRequest {
   billingAccount: string;
   serviceName: string;
 }
-export const UnlockTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlockTelephonyConferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -21013,7 +20627,7 @@ export interface UnlockTelephonyConferenceRoomRequest {
   /** The conference room number */
   roomNumber: number;
 }
-export const UnlockTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlockTelephonyConferenceRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -21036,7 +20650,7 @@ export interface UnmuteTelephonyConferenceParticipantRequest {
   /** Id of the object */
   id: number;
 }
-export const UnmuteTelephonyConferenceParticipantRequest = /*@__PURE__*/ S.suspend(() =>
+const UnmuteTelephonyConferenceParticipantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -21061,7 +20675,7 @@ export interface UnmuteTelephonyConferenceRoomsParticipantRequest {
   /** Id of the object */
   id: number;
 }
-export const UnmuteTelephonyConferenceRoomsParticipantRequest = /*@__PURE__*/ S.suspend(() =>
+const UnmuteTelephonyConferenceRoomsParticipantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -21086,7 +20700,7 @@ export interface ValidateTelephonyTrunkExternalDisplayedNumberRequest {
   /** External displayed number linked to a trunk */
   number: string;
 }
-export const ValidateTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
@@ -21109,7 +20723,7 @@ export interface TelephonyTrunkExternalDisplayedNumberValidation {
   /** Validation code to type during phone call */
   validationCode?: string;
 }
-export const TelephonyTrunkExternalDisplayedNumberValidation = /*@__PURE__*/ S.suspend(() =>
+const TelephonyTrunkExternalDisplayedNumberValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneCallTaskId: S.optional(S.Number),
     validationCode: S.optional(S.String),

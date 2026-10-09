@@ -98,20 +98,20 @@ export type IdentityCenterInstanceArn = string;
 export interface IdentityCenter {
   instanceArn: string;
 }
-export const IdentityCenter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ instanceArn: S.String }),
-).annotate({ identifier: "IdentityCenter" }) as any as S.Schema<IdentityCenter>;
+const IdentityCenter = /*@__PURE__*/ S.suspend(() => S.Struct({ instanceArn: S.String })).annotate({
+  identifier: "IdentityCenter",
+}) as any as S.Schema<IdentityCenter>;
 export type IdentitySource = { identityCenter: IdentityCenter };
-export const IdentitySource = /*@__PURE__*/ S.Union([
+const IdentitySource = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ identityCenter: IdentityCenter }),
 ]);
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateApplicationRequest {
   identitySource: IdentitySource;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identitySource: IdentitySource, tags: S.optional(TagsMap) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
   ),
@@ -120,7 +120,7 @@ export type ApplicationArn = string;
 export interface CreateApplicationResponse {
   applicationArn: string;
 }
-export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applicationArn: S.String }),
 ).annotate({
   identifier: "CreateApplicationResponse",
@@ -130,12 +130,12 @@ export type GroupId = string;
 export type IdentityCenterPrincipal =
   | { userId: string; groupId?: never }
   | { userId?: never; groupId: string };
-export const IdentityCenterPrincipal = /*@__PURE__*/ S.Union([
+const IdentityCenterPrincipal = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ userId: S.String }),
   /*@__PURE__*/ S.Struct({ groupId: S.String }),
 ]);
 export type Principal = { identityCenter: IdentityCenterPrincipal };
-export const Principal = /*@__PURE__*/ S.Union([
+const Principal = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ identityCenter: IdentityCenterPrincipal }),
 ]);
 export type RoleArn = string;
@@ -143,18 +143,18 @@ export interface PrincipalRoleEntitlement {
   principal: Principal;
   roleArn: string;
 }
-export const PrincipalRoleEntitlement = /*@__PURE__*/ S.suspend(() =>
+const PrincipalRoleEntitlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ principal: Principal, roleArn: S.String }),
 ).annotate({ identifier: "PrincipalRoleEntitlement" }) as any as S.Schema<PrincipalRoleEntitlement>;
 export type Entitlement = { principalRole: PrincipalRoleEntitlement };
-export const Entitlement = /*@__PURE__*/ S.Union([
+const Entitlement = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ principalRole: PrincipalRoleEntitlement }),
 ]);
 export interface CreateEntitlementRequest {
   applicationArn: string;
   entitlement: Entitlement;
 }
-export const CreateEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applicationArn: S.String, entitlement: Entitlement }).pipe(
     T.all(T.Http({ method: "POST", uri: "/entitlements" }), svc, auth, proto, ver, rules),
   ),
@@ -162,7 +162,7 @@ export const CreateEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEntitlementResponse {
   entitlementId: string;
 }
-export const CreateEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entitlementId: S.String }),
 ).annotate({
   identifier: "CreateEntitlementResponse",
@@ -170,7 +170,7 @@ export const CreateEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteApplicationRequest {
   applicationArn: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applicationArn: S.String.pipe(T.HttpLabel("applicationArn")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/applications/{applicationArn}" }),
@@ -183,14 +183,14 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteEntitlementRequest {
   applicationArn: string;
   entitlementId: string;
 }
-export const DeleteEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationArn: S.String.pipe(T.HttpQuery("applicationArn")),
     entitlementId: S.String.pipe(T.HttpLabel("entitlementId")),
@@ -206,12 +206,12 @@ export const DeleteEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEntitlementRequest" }) as any as S.Schema<DeleteEntitlementRequest>;
 export interface DeleteEntitlementResponse {}
-export const DeleteEntitlementResponse =
+const DeleteEntitlementResponse =
   DeleteApplicationResponse as any as S.Schema<DeleteEntitlementResponse>;
 export interface GetApplicationRequest {
   applicationArn: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applicationArn: S.String.pipe(T.HttpLabel("applicationArn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/applications/{applicationArn}" }),
@@ -228,11 +228,11 @@ export interface IdentityCenterDetails {
   instanceArn: string;
   applicationArn?: string;
 }
-export const IdentityCenterDetails = /*@__PURE__*/ S.suspend(() =>
+const IdentityCenterDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceArn: S.String, applicationArn: S.optional(S.String) }),
 ).annotate({ identifier: "IdentityCenterDetails" }) as any as S.Schema<IdentityCenterDetails>;
 export type IdentitySourceDetails = { identityCenter: IdentityCenterDetails };
-export const IdentitySourceDetails = /*@__PURE__*/ S.Union([
+const IdentitySourceDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ identityCenter: IdentityCenterDetails }),
 ]);
 export type Status =
@@ -242,7 +242,7 @@ export type Status =
   | "CREATE_FAILED"
   | "DELETE_FAILED"
   | (string & {});
-export const Status = S.String;
+const Status = S.String;
 
 export type ErrorCode =
   | "AUTHORIZATION_ERROR"
@@ -250,13 +250,13 @@ export type ErrorCode =
   | "SERVICE_QUOTA_EXCEEDED_ERROR"
   | "INTERNAL_SERVICE_ERROR"
   | (string & {});
-export const ErrorCode = S.String;
+const ErrorCode = S.String;
 
 export interface ErrorDetails {
   code: ErrorCode;
   message: string;
 }
-export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: ErrorCode, message: S.String }),
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
 export interface GetApplicationResponse {
@@ -268,7 +268,7 @@ export interface GetApplicationResponse {
   tags?: { [key: string]: string | undefined };
   error?: ErrorDetails;
 }
-export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identitySource: IdentitySourceDetails,
     status: Status,
@@ -283,7 +283,7 @@ export interface GetEntitlementRequest {
   applicationArn: string;
   entitlementId: string;
 }
-export const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationArn: S.String.pipe(T.HttpQuery("applicationArn")),
     entitlementId: S.String.pipe(T.HttpLabel("entitlementId")),
@@ -305,7 +305,7 @@ export interface PrincipalRoleEntitlementDetails {
   account: string;
   accountName?: string;
 }
-export const PrincipalRoleEntitlementDetails = /*@__PURE__*/ S.suspend(() =>
+const PrincipalRoleEntitlementDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principal: Principal,
     roleArn: S.String,
@@ -316,7 +316,7 @@ export const PrincipalRoleEntitlementDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrincipalRoleEntitlementDetails",
 }) as any as S.Schema<PrincipalRoleEntitlementDetails>;
 export type EntitlementDetails = { principalRole: PrincipalRoleEntitlementDetails };
-export const EntitlementDetails = /*@__PURE__*/ S.Union([
+const EntitlementDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ principalRole: PrincipalRoleEntitlementDetails }),
 ]);
 export interface GetEntitlementResponse {
@@ -325,7 +325,7 @@ export interface GetEntitlementResponse {
   entitlement: EntitlementDetails;
   createdAt: Date;
 }
-export const GetEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEntitlementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationArn: S.String,
     entitlementId: S.String,
@@ -337,7 +337,7 @@ export interface ListApplicationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/applications-list" }), svc, auth, proto, ver, rules),
   ),
@@ -348,7 +348,7 @@ export interface ApplicationSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
+const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationArn: S.String,
     tenantId: S.optional(S.String),
@@ -357,27 +357,25 @@ export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApplicationSummary" }) as any as S.Schema<ApplicationSummary>;
 export type ApplicationList = ApplicationSummary[];
-export const ApplicationList = /*@__PURE__*/ S.Array(ApplicationSummary);
+const ApplicationList = /*@__PURE__*/ S.Array(ApplicationSummary);
 export interface ListApplicationsResponse {
   applications: ApplicationSummary[];
   nextToken?: string;
 }
-export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applications: ApplicationList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListApplicationsResponse" }) as any as S.Schema<ListApplicationsResponse>;
 export type IdentityCenterPrincipalFilter =
   | { userId: string; groupId?: never }
   | { userId?: never; groupId: string };
-export const IdentityCenterPrincipalFilter =
-  IdentityCenterPrincipal as any as S.Schema<IdentityCenterPrincipalFilter>;
 export type PrincipalFilter = { identityCenter: IdentityCenterPrincipalFilter };
-export const PrincipalFilter = Principal as any as S.Schema<PrincipalFilter>;
+const PrincipalFilter = Principal as any as S.Schema<PrincipalFilter>;
 export interface PrincipalRoleEntitlementFilter {
   principal?: PrincipalFilter;
   roleArn?: string;
   account?: string;
 }
-export const PrincipalRoleEntitlementFilter = /*@__PURE__*/ S.suspend(() =>
+const PrincipalRoleEntitlementFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principal: S.optional(PrincipalFilter),
     roleArn: S.optional(S.String),
@@ -389,7 +387,7 @@ export const PrincipalRoleEntitlementFilter = /*@__PURE__*/ S.suspend(() =>
 export interface EntitlementFilter {
   principalRole?: PrincipalRoleEntitlementFilter;
 }
-export const EntitlementFilter = /*@__PURE__*/ S.suspend(() =>
+const EntitlementFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ principalRole: S.optional(PrincipalRoleEntitlementFilter) }),
 ).annotate({ identifier: "EntitlementFilter" }) as any as S.Schema<EntitlementFilter>;
 export interface ListEntitlementsRequest {
@@ -398,7 +396,7 @@ export interface ListEntitlementsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationArn: S.String,
     filter: EntitlementFilter,
@@ -414,16 +412,14 @@ export interface PrincipalRoleEntitlementSummary {
   account: string;
   accountName?: string;
 }
-export const PrincipalRoleEntitlementSummary =
-  PrincipalRoleEntitlementDetails as any as S.Schema<PrincipalRoleEntitlementSummary>;
 export type EntitlementSummary = { principalRole: PrincipalRoleEntitlementSummary };
-export const EntitlementSummary = EntitlementDetails as any as S.Schema<EntitlementSummary>;
+const EntitlementSummary = EntitlementDetails as any as S.Schema<EntitlementSummary>;
 export interface EntitlementsListMember {
   entitlementId: string;
   entitlement: EntitlementSummary;
   createdAt: Date;
 }
-export const EntitlementsListMember = /*@__PURE__*/ S.suspend(() =>
+const EntitlementsListMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entitlementId: S.String,
     entitlement: EntitlementSummary,
@@ -431,18 +427,18 @@ export const EntitlementsListMember = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntitlementsListMember" }) as any as S.Schema<EntitlementsListMember>;
 export type EntitlementsList = EntitlementsListMember[];
-export const EntitlementsList = /*@__PURE__*/ S.Array(EntitlementsListMember);
+const EntitlementsList = /*@__PURE__*/ S.Array(EntitlementsListMember);
 export interface ListEntitlementsResponse {
   entitlements: EntitlementsListMember[];
   nextToken?: string;
 }
-export const ListEntitlementsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEntitlementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entitlements: EntitlementsList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListEntitlementsResponse" }) as any as S.Schema<ListEntitlementsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -452,7 +448,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -461,21 +457,20 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -484,8 +479,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
-  DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export type CreateApplicationError =
   | AccessDeniedException
   | AlreadyCreatedException

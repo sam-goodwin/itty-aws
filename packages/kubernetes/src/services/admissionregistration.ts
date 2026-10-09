@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -196,7 +196,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1MatchCondition {
   /** name is an identifier for this match condition, used for strategic merging of MatchConditions, as well as providing an identifier for logging purposes. A good name should be descriptive of the associated expression. Name must be a qualified name consisting of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyName', or 'my.name', or '123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]') with an optional DNS subdomain prefix and '/' (e.g. 'example.com/MyName') Required. */
   name: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1MatchCondition = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1MatchCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
     name: S.String,
@@ -208,7 +208,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1MatchCondition = /*@__PURE__*/
 /** matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the matchConstraints. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the policy is skipped. 2. If ALL matchConditions evaluate to TRUE, the policy is evaluated. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the policy is skipped */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList =
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1MatchCondition,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList>;
@@ -216,7 +216,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMat
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList =
+const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList>;
@@ -224,25 +224,25 @@ export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGrou
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList =
+const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList>;
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList =
+const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList =
+const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList =
+const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList>;
 
 /** NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames. */
@@ -260,26 +260,25 @@ export interface IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations {
   /** scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*". */
   scope?: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiGroups: S.optional(
-        IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList,
-      ),
-      apiVersions: S.optional(
-        IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList,
-      ),
-      operations: S.optional(
-        IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList,
-      ),
-      resourceNames: S.optional(
-        IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList,
-      ),
-      resources: S.optional(
-        IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList,
-      ),
-      scope: S.optional(S.String),
-    }),
+const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiGroups: S.optional(
+      IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList,
+    ),
+    apiVersions: S.optional(
+      IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiVersionsList,
+    ),
+    operations: S.optional(
+      IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsOperationsList,
+    ),
+    resourceNames: S.optional(
+      IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourceNamesList,
+    ),
+    resources: S.optional(
+      IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsResourcesList,
+    ),
+    scope: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations",
 }) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations>;
@@ -287,14 +286,14 @@ export const IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations = /*@_
 /** excludeResourceRules describes what operations on what resources/subresources the policy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export type IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList =
+const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList>;
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
 
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
@@ -306,7 +305,7 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     operator: S.String,
@@ -319,16 +318,15 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE_
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
 
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
 
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
@@ -338,7 +336,7 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchExpressions: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList),
     matchLabels: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap),
@@ -350,7 +348,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspe
 /** resourceRules describes what operations on what resources/subresources the admission policy matches. The policy cares about an operation if it matches _any_ Rule. */
 export type IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList =
+const IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList =
   IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList>;
 
 /** MatchResources decides whether to run the admission control policy on an object based on whether it meets the match criteria. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
@@ -366,7 +364,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1MatchResources {
   /** resourceRules describes what operations on what resources/subresources the admission policy matches. The policy cares about an operation if it matches _any_ Rule. */
   resourceRules?: IoK8sApiAdmissionregistrationV1alpha1MatchResourcesResourceRulesList;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1MatchResources = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1MatchResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeResourceRules: S.optional(
       IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList,
@@ -385,7 +383,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration {
   /** expression will be evaluated by CEL to create an apply configuration. ref: https://github.com/google/cel-spec Apply configurations are declared in CEL using object initialization. For example, this CEL expression returns an apply configuration to set a single field: Object{ spec: Object.spec{ serviceAccountName: "example" } } Apply configurations may not modify atomic structs, maps or arrays due to the risk of accidental deletion of values not included in the apply configuration. CEL expressions have access to the object types needed to create apply configurations: - 'Object' - CEL type of the resource object. - 'Object.<fieldName>' - CEL type of object field (such as 'Object.spec') - 'Object.<fieldName1>.<fieldName2>...<fieldNameN>` - CEL type of nested field (such as 'Object.spec.containers') CEL expressions have access to the contents of the API request, organized into CEL variables as well as some other useful variables: - 'object' - The object from the incoming request. The value is null for DELETE requests. - 'oldObject' - The existing object. The value is null for CREATE requests. - 'request' - Attributes of the API request([ref](/pkg/apis/admission/types.go#AdmissionRequest)). - 'params' - Parameter resource referred to by the policy binding being evaluated. Only populated if the policy has a ParamKind. - 'namespaceObject' - The namespace object that the incoming object belongs to. The value is null for cluster-scoped resources. - 'variables' - Map of composited variables, from its name to its lazily evaluated value. For example, a variable named 'foo' can be accessed as 'variables.foo'. - 'authorizer' - A CEL Authorizer. May be used to perform authorization checks for the principal (user or service account) of the request. See https://pkg.go.dev/k8s.io/apiserver/pkg/cel/library#Authz - 'authorizer.requestResource' - A CEL ResourceCheck constructed from the 'authorizer' and configured with the request resource. The `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the object. No other metadata properties are accessible. Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Required. */
   expression?: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
   }),
@@ -398,7 +396,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1JSONPatch {
   /** expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec expression must return an array of JSONPatch values. For example, this CEL expression returns a JSON patch to conditionally modify a value: [ JSONPatch{op: "test", path: "/spec/example", value: "Red"}, JSONPatch{op: "replace", path: "/spec/example", value: "Green"} ] To define an object for the patch value, use Object types. For example: [ JSONPatch{ op: "add", path: "/spec/selector", value: Object.spec.selector{matchLabels: {"environment": "test"}} } ] To use strings containing '/' and '~' as JSONPatch path keys, use "jsonpatch.escapeKey". For example: [ JSONPatch{ op: "add", path: "/metadata/labels/" + jsonpatch.escapeKey("example.com/environment"), value: "test" }, ] CEL expressions have access to the types needed to create JSON patches and objects: - 'JSONPatch' - CEL type of JSON Patch operations. JSONPatch has the fields 'op', 'from', 'path' and 'value'. See [JSON patch](https://jsonpatch.com/) for more details. The 'value' field may be set to any of: string, integer, array, map or object. If set, the 'path' and 'from' fields must be set to a [JSON pointer](https://datatracker.ietf.org/doc/html/rfc6901/) string, where the 'jsonpatch.escapeKey()' CEL function may be used to escape path keys containing '/' and '~'. - 'Object' - CEL type of the resource object. - 'Object.<fieldName>' - CEL type of object field (such as 'Object.spec') - 'Object.<fieldName1>.<fieldName2>...<fieldNameN>` - CEL type of nested field (such as 'Object.spec.containers') CEL expressions have access to the contents of the API request, organized into CEL variables as well as some other useful variables: - 'object' - The object from the incoming request. The value is null for DELETE requests. - 'oldObject' - The existing object. The value is null for CREATE requests. - 'request' - Attributes of the API request([ref](/pkg/apis/admission/types.go#AdmissionRequest)). - 'params' - Parameter resource referred to by the policy binding being evaluated. Only populated if the policy has a ParamKind. - 'namespaceObject' - The namespace object that the incoming object belongs to. The value is null for cluster-scoped resources. - 'variables' - Map of composited variables, from its name to its lazily evaluated value. For example, a variable named 'foo' can be accessed as 'variables.foo'. - 'authorizer' - A CEL Authorizer. May be used to perform authorization checks for the principal (user or service account) of the request. See https://pkg.go.dev/k8s.io/apiserver/pkg/cel/library#Authz - 'authorizer.requestResource' - A CEL ResourceCheck constructed from the 'authorizer' and configured with the request resource. CEL expressions have access to [Kubernetes CEL function libraries](https://kubernetes.io/docs/reference/using-api/cel/#cel-options-language-features-and-libraries) as well as: - 'jsonpatch.escapeKey' - Performs JSONPatch key escaping. '~' and '/' are escaped as '~0' and `~1' respectively). Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Required. */
   expression?: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1JSONPatch =
+const IoK8sApiAdmissionregistrationV1alpha1JSONPatch =
   IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1JSONPatch>;
 
 /** Mutation specifies the CEL expression which is used to apply the Mutation. */
@@ -410,7 +408,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1Mutation {
   /** patchType indicates the patch strategy used. Allowed values are "ApplyConfiguration" and "JSONPatch". Required. */
   patchType: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1Mutation = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1Mutation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyConfiguration: S.optional(IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration),
     jsonPatch: S.optional(IoK8sApiAdmissionregistrationV1alpha1JSONPatch),
@@ -423,7 +421,7 @@ export const IoK8sApiAdmissionregistrationV1alpha1Mutation = /*@__PURE__*/ S.sus
 /** mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Mutation>;
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList =
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1Mutation,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList>;
@@ -435,7 +433,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1ParamKind {
   /** kind is the API kind the resources belong to. Required. */
   kind?: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1ParamKind = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1ParamKind = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -451,13 +449,10 @@ export interface IoK8sApiAdmissionregistrationV1alpha1Variable {
   /** name is the name of the variable. The name must be a valid CEL identifier and unique among all variables. The variable can be accessed in other expressions through `variables` For example, if name is "foo", the variable will be available as `variables.foo` */
   name: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1Variable =
-  IoK8sApiAdmissionregistrationV1alpha1MatchCondition as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1Variable>;
-
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList =
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList>;
 
 /** MutatingAdmissionPolicySpec is the specification of the desired behavior of the admission policy. */
@@ -477,8 +472,8 @@ export interface IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpe
   /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
   variables?: IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       failurePolicy: S.optional(S.String),
       matchConditions: S.optional(
@@ -494,9 +489,9 @@ export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec =
         IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecVariablesList,
       ),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec>;
 
 export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -516,8 +511,8 @@ export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyReque
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec;
 }
-export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       dryRun: S.optional(S.String.pipe(T.Query())),
@@ -534,9 +529,9 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
 
 /** MutatingAdmissionPolicy describes the definition of an admission mutation policy that mutates the object coming into admission chain. */
 export interface IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy {
@@ -549,14 +544,13 @@ export interface IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy {
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec),
-    }),
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec),
+  }),
 ).annotate({
   identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy",
 }) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy>;
@@ -572,7 +566,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1ParamRef {
   /** selector can be used to match multiple param objects based on their labels. Supply selector: {} to match all resources of the ParamKind. If multiple params are found, they are all evaluated with the policy expressions and the results are ANDed together. One of `name` or `selector` must be set, but `name` and `selector` are mutually exclusive properties. If one is set, the other must be unset. */
   selector?: IoK8sApimachineryPkgApisMetaV1LabelSelector;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1ParamRef = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1ParamRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -592,7 +586,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBin
   /** policyName references a MutatingAdmissionPolicy name which the MutatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required. */
   policyName?: string;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingSpec =
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       matchResources: S.optional(IoK8sApiAdmissionregistrationV1alpha1MatchResources),
@@ -621,7 +615,7 @@ export interface CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindi
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingSpec;
 }
-export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
+const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -654,60 +648,39 @@ export interface IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBin
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingSpec;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
       spec: S.optional(IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingSpec),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>;
 
 /** MatchCondition represents a condition which must be fulfilled for a request to be sent to a webhook. */
 export type IoK8sApiAdmissionregistrationV1beta1MatchCondition =
   IoK8sApiAdmissionregistrationV1alpha1MatchCondition;
-export const IoK8sApiAdmissionregistrationV1beta1MatchCondition =
-  IoK8sApiAdmissionregistrationV1alpha1MatchCondition;
-
 /** matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the matchConstraints. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the policy is skipped. 2. If ALL matchConditions evaluate to TRUE, the policy is evaluated. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the policy is skipped */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList =
-  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMatchConditionsList>;
-
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList =
-  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiGroupsList>;
-
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList =
-  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsApiVersionsList>;
-
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList =
-  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsOperationsList>;
-
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList =
-  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourceNamesList>;
-
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList =
-  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperationsResourcesList>;
-
 /** NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames. */
 export interface IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations {
   /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
@@ -723,21 +696,12 @@ export interface IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations {
   /** scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*". */
   scope?: string;
 }
-export const IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations =
-  IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
-
 /** excludeResourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export type IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList =
-  IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResourcesExcludeResourceRulesList>;
-
 /** resourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy matches. The policy cares about an operation if it matches _any_ Rule. */
 export type IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1beta1NamedRuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList =
-  IoK8sApiAdmissionregistrationV1alpha1MatchResourcesExcludeResourceRulesList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList>;
-
 /** MatchResources decides whether to run the admission control policy on an object based on whether it meets the match criteria. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export interface IoK8sApiAdmissionregistrationV1beta1MatchResources {
   /** excludeResourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
@@ -751,51 +715,30 @@ export interface IoK8sApiAdmissionregistrationV1beta1MatchResources {
   /** resourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy matches. The policy cares about an operation if it matches _any_ Rule. */
   resourceRules?: IoK8sApiAdmissionregistrationV1beta1MatchResourcesResourceRulesList;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MatchResources =
+const IoK8sApiAdmissionregistrationV1beta1MatchResources =
   IoK8sApiAdmissionregistrationV1alpha1MatchResources as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MatchResources>;
 
 /** ApplyConfiguration defines the desired configuration values of an object. */
 export type IoK8sApiAdmissionregistrationV1beta1ApplyConfiguration =
   IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration;
-export const IoK8sApiAdmissionregistrationV1beta1ApplyConfiguration =
-  IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration;
-
 /** JSONPatch defines a JSON Patch. */
 export type IoK8sApiAdmissionregistrationV1beta1JSONPatch =
   IoK8sApiAdmissionregistrationV1alpha1JSONPatch;
-export const IoK8sApiAdmissionregistrationV1beta1JSONPatch =
-  IoK8sApiAdmissionregistrationV1alpha1JSONPatch;
-
 /** Mutation specifies the CEL expression which is used to apply the Mutation. */
 export type IoK8sApiAdmissionregistrationV1beta1Mutation =
   IoK8sApiAdmissionregistrationV1alpha1Mutation;
-export const IoK8sApiAdmissionregistrationV1beta1Mutation =
-  IoK8sApiAdmissionregistrationV1alpha1Mutation;
-
 /** mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis. */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Mutation>;
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList =
-  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecMutationsList>;
-
 /** ParamKind is a tuple of Group Kind and Version. */
 export type IoK8sApiAdmissionregistrationV1beta1ParamKind =
   IoK8sApiAdmissionregistrationV1alpha1ParamKind;
-export const IoK8sApiAdmissionregistrationV1beta1ParamKind =
-  IoK8sApiAdmissionregistrationV1alpha1ParamKind;
-
 /** Variable is the definition of a variable that is used for composition. A variable is defined as a named expression. */
 export type IoK8sApiAdmissionregistrationV1beta1Variable =
   IoK8sApiAdmissionregistrationV1alpha1Variable;
-export const IoK8sApiAdmissionregistrationV1beta1Variable =
-  IoK8sApiAdmissionregistrationV1alpha1Variable;
-
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList =
-  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList>;
-
 /** MutatingAdmissionPolicySpec is the specification of the desired behavior of the admission policy. */
 export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec {
   /** failurePolicy defines how to handle failures for the admission policy. Failures can occur from CEL expression parse errors, type check errors, runtime errors and invalid or mis-configured policy definitions or bindings. A policy is invalid if paramKind refers to a non-existent Kind. A binding is invalid if paramRef.name refers to a non-existent resource. failurePolicy does not define how validations that evaluate to false are handled. Allowed values are Ignore or Fail. Defaults to Fail. */
@@ -813,7 +756,7 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec
   /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
   variables?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpecVariablesList;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec =
+const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec>;
 
 export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest {
@@ -834,8 +777,8 @@ export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyReques
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec;
 }
-export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       dryRun: S.optional(S.String.pipe(T.Query())),
@@ -852,9 +795,9 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
 
 /** MutatingAdmissionPolicy describes the definition of an admission mutation policy that mutates the object coming into admission chain. */
 export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy {
@@ -867,7 +810,7 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy {
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy =
+const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>;
 
 /** ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding. */
@@ -881,7 +824,7 @@ export interface IoK8sApiAdmissionregistrationV1beta1ParamRef {
   /** selector can be used to match multiple param objects based on their labels. Supply selector: {} to match all resources of the ParamKind. If multiple params are found, they are all evaluated with the policy expressions and the results are ANDed together. One of `name` or `selector` must be set, but `name` and `selector` are mutually exclusive properties. If one is set, the other must be unset. */
   selector?: IoK8sApimachineryPkgApisMetaV1LabelSelector;
 }
-export const IoK8sApiAdmissionregistrationV1beta1ParamRef = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1beta1ParamRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -901,7 +844,7 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBind
   /** policyName references a MutatingAdmissionPolicy name which the MutatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required. */
   policyName?: string;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingSpec =
+const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       matchResources: S.optional(IoK8sApiAdmissionregistrationV1beta1MatchResources),
@@ -930,7 +873,7 @@ export interface CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindin
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingSpec;
 }
-export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
+const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -963,53 +906,50 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBind
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingSpec;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
       spec: S.optional(IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingSpec),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>;
 
 /** MatchCondition represents a condition which must by fulfilled for a request to be sent to a webhook. */
 export type IoK8sApiAdmissionregistrationV1MatchCondition =
   IoK8sApiAdmissionregistrationV1alpha1MatchCondition;
-export const IoK8sApiAdmissionregistrationV1MatchCondition =
-  IoK8sApiAdmissionregistrationV1alpha1MatchCondition;
-
 /** matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the matchConstraints. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the policy is skipped. 2. If ALL matchConditions evaluate to TRUE, the policy is evaluated. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the policy is skipped */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList =
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList>;
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList =
+const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList>;
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList =
+const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList>;
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList =
+const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsOperationsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList =
+const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList =
+const IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsResourcesList>;
 
 /** NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames. */
@@ -1027,7 +967,7 @@ export interface IoK8sApiAdmissionregistrationV1NamedRuleWithOperations {
   /** scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*". */
   scope?: string;
 }
-export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperations = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1NamedRuleWithOperations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroups: S.optional(IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiGroupsList),
     apiVersions: S.optional(IoK8sApiAdmissionregistrationV1NamedRuleWithOperationsApiVersionsList),
@@ -1045,15 +985,14 @@ export const IoK8sApiAdmissionregistrationV1NamedRuleWithOperations = /*@__PURE_
 /** excludeResourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded) */
 export type IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1NamedRuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1NamedRuleWithOperations,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesList>;
+const IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesList = /*@__PURE__*/ S.Array(
+  IoK8sApiAdmissionregistrationV1NamedRuleWithOperations,
+) as any as S.Schema<IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesList>;
 
 /** resourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy matches. The policy cares about an operation if it matches _any_ Rule. */
 export type IoK8sApiAdmissionregistrationV1MatchResourcesResourceRulesList =
   Array<IoK8sApiAdmissionregistrationV1NamedRuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1MatchResourcesResourceRulesList = /*@__PURE__*/ S.Array(
+const IoK8sApiAdmissionregistrationV1MatchResourcesResourceRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiAdmissionregistrationV1NamedRuleWithOperations,
 ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MatchResourcesResourceRulesList>;
 
@@ -1070,7 +1009,7 @@ export interface IoK8sApiAdmissionregistrationV1MatchResources {
   /** resourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy matches. The policy cares about an operation if it matches _any_ Rule. */
   resourceRules?: IoK8sApiAdmissionregistrationV1MatchResourcesResourceRulesList;
 }
-export const IoK8sApiAdmissionregistrationV1MatchResources = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1MatchResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeResourceRules: S.optional(
       IoK8sApiAdmissionregistrationV1MatchResourcesExcludeResourceRulesList,
@@ -1087,41 +1026,26 @@ export const IoK8sApiAdmissionregistrationV1MatchResources = /*@__PURE__*/ S.sus
 /** ApplyConfiguration defines the desired configuration values of an object. */
 export type IoK8sApiAdmissionregistrationV1ApplyConfiguration =
   IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration;
-export const IoK8sApiAdmissionregistrationV1ApplyConfiguration =
-  IoK8sApiAdmissionregistrationV1alpha1ApplyConfiguration;
-
 /** JSONPatch defines a JSON Patch. */
 export type IoK8sApiAdmissionregistrationV1JSONPatch =
   IoK8sApiAdmissionregistrationV1alpha1JSONPatch;
-export const IoK8sApiAdmissionregistrationV1JSONPatch =
-  IoK8sApiAdmissionregistrationV1alpha1JSONPatch;
-
 /** Mutation specifies the CEL expression which is used to apply the Mutation. */
 export type IoK8sApiAdmissionregistrationV1Mutation = IoK8sApiAdmissionregistrationV1alpha1Mutation;
-export const IoK8sApiAdmissionregistrationV1Mutation =
-  IoK8sApiAdmissionregistrationV1alpha1Mutation;
-
 /** mutations contain operations to perform on matching objects. mutations may not be empty; a minimum of one mutation is required. mutations are evaluated in order, and are reinvoked according to the reinvocationPolicy. The mutations of a policy are invoked for each binding of this policy and reinvocation of mutations occurs on a per binding basis. */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Mutation>;
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList =
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMutationsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList>;
 
 /** ParamKind is a tuple of Group Kind and Version. */
 export type IoK8sApiAdmissionregistrationV1ParamKind =
   IoK8sApiAdmissionregistrationV1alpha1ParamKind;
-export const IoK8sApiAdmissionregistrationV1ParamKind =
-  IoK8sApiAdmissionregistrationV1alpha1ParamKind;
-
 /** Variable is the definition of a variable that is used for composition. A variable is defined as a named expression. */
 export type IoK8sApiAdmissionregistrationV1Variable = IoK8sApiAdmissionregistrationV1alpha1Variable;
-export const IoK8sApiAdmissionregistrationV1Variable =
-  IoK8sApiAdmissionregistrationV1alpha1Variable;
-
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList =
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList>;
 
 /** MutatingAdmissionPolicySpec defines the desired behavior of the admission policy. */
@@ -1141,23 +1065,18 @@ export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec {
   /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, variables must be sorted by the order of first appearance and acyclic. */
   variables?: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      failurePolicy: S.optional(S.String),
-      matchConditions: S.optional(
-        IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList,
-      ),
-      matchConstraints: S.optional(IoK8sApiAdmissionregistrationV1MatchResources),
-      mutations: S.optional(
-        IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList,
-      ),
-      paramKind: S.optional(IoK8sApiAdmissionregistrationV1alpha1ParamKind),
-      reinvocationPolicy: S.optional(S.String),
-      variables: S.optional(
-        IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList,
-      ),
-    }),
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failurePolicy: S.optional(S.String),
+    matchConditions: S.optional(
+      IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMatchConditionsList,
+    ),
+    matchConstraints: S.optional(IoK8sApiAdmissionregistrationV1MatchResources),
+    mutations: S.optional(IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecMutationsList),
+    paramKind: S.optional(IoK8sApiAdmissionregistrationV1alpha1ParamKind),
+    reinvocationPolicy: S.optional(S.String),
+    variables: S.optional(IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpecVariablesList),
+  }),
 ).annotate({
   identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec",
 }) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec>;
@@ -1180,24 +1099,23 @@ export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyRequest {
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec;
 }
-export const CreateAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
-        code: 200,
-      }),
-    ),
+const CreateAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateAdmissionregistrationV1MutatingAdmissionPolicyRequest",
 }) as any as S.Schema<CreateAdmissionregistrationV1MutatingAdmissionPolicyRequest>;
@@ -1213,7 +1131,7 @@ export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy {
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1226,8 +1144,6 @@ export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy = /*@__PURE_
 
 /** ParamRef describes how to locate the params to be used as input to expressions of rules applied by a policy binding. */
 export type IoK8sApiAdmissionregistrationV1ParamRef = IoK8sApiAdmissionregistrationV1beta1ParamRef;
-export const IoK8sApiAdmissionregistrationV1ParamRef = IoK8sApiAdmissionregistrationV1beta1ParamRef;
-
 /** MutatingAdmissionPolicyBindingSpec defines the specification of the MutatingAdmissionPolicyBinding. */
 export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec {
   /** matchResources limits what resources match this binding and may be mutated by it. Note that if matchResources matches a resource, the resource must also match a policy's matchConstraints and matchConditions before the resource may be mutated. When matchResources is unset, it does not constrain resource matching, and only the policy's matchConstraints and matchConditions must match for the resource to be mutated. Additionally, matchResources.resourceRules are optional and do not constraint matching when unset. Note that this is differs from MutatingAdmissionPolicy matchConstraints, where resourceRules are required. The CREATE, UPDATE and CONNECT operations are allowed. The DELETE operation may not be matched. '*' matches CREATE, UPDATE and CONNECT. */
@@ -1237,16 +1153,16 @@ export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSp
   /** policyName references a MutatingAdmissionPolicy name which the MutatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required. */
   policyName?: string;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       matchResources: S.optional(IoK8sApiAdmissionregistrationV1MatchResources),
       paramRef: S.optional(IoK8sApiAdmissionregistrationV1beta1ParamRef),
       policyName: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec>;
 
 export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -1266,8 +1182,8 @@ export interface CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequ
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec;
 }
-export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       dryRun: S.optional(S.String.pipe(T.Query())),
@@ -1284,9 +1200,9 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
 
 /** MutatingAdmissionPolicyBinding binds the MutatingAdmissionPolicy with parametrized resources. MutatingAdmissionPolicyBinding and the optional parameter resource together define how cluster administrators configure policies for clusters. For a given admission request, each binding will cause its policy to be evaluated N times, where N is 1 for policies/bindings that don't use params, otherwise N is the number of parameters selected by the binding. Each evaluation is constrained by a [runtime cost budget](https://kubernetes.io/docs/reference/using-api/cel/#runtime-cost-budget). Adding/removing policies, bindings, or params can not affect whether a given (policy, binding, param) combination is within its own CEL budget. */
 export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding {
@@ -1299,22 +1215,21 @@ export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding {
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec),
-    }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>;
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec),
+  }),
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>;
 
 /** admissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList =
+const IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList>;
 
 /** ServiceReference holds a reference to Service.legacy.k8s.io */
@@ -1328,7 +1243,7 @@ export interface IoK8sApiAdmissionregistrationV1ServiceReference {
   /** port is the port on the service that hosts the webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive). */
   port?: number;
 }
-export const IoK8sApiAdmissionregistrationV1ServiceReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1ServiceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     namespace: S.String,
@@ -1348,7 +1263,7 @@ export interface IoK8sApiAdmissionregistrationV1WebhookClientConfig {
   /** url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified. The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address. Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster. The scheme must be "https"; the URL must begin with "https://". A path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier. Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and query parameters ("?...") are not allowed, either. */
   url?: string;
 }
-export const IoK8sApiAdmissionregistrationV1WebhookClientConfig = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1WebhookClientConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caBundle: S.optional(S.String),
     service: S.optional(IoK8sApiAdmissionregistrationV1ServiceReference),
@@ -1361,27 +1276,27 @@ export const IoK8sApiAdmissionregistrationV1WebhookClientConfig = /*@__PURE__*/ 
 /** matchConditions is a list of conditions that must be met for a request to be sent to this webhook. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the webhook is skipped. 2. If ALL matchConditions evaluate to TRUE, the webhook is called. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the error is ignored and the webhook is skipped */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
-export const IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList =
+const IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookMatchConditionsList>;
 
 /** apiGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList =
+const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList>;
 
 /** apiVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList =
+const IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList>;
 
 /** operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList =
+const IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsOperationsList>;
 
 /** resources is a list of resources this rule applies to. For example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*\/scale' means all scale subresources. '*\/*' means all resources and their subresources. If wildcard is present, the validation rule will ensure resources do not overlap with each other. Depending on the enclosing object, subresources might not be allowed. Required. */
 export type IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList = Array<string>;
-export const IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList =
+const IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAdmissionregistrationV1RuleWithOperationsResourcesList>;
 
 /** RuleWithOperations is a tuple of Operations and Resources. It is recommended to make sure that all the tuple expansions are valid. */
@@ -1397,7 +1312,7 @@ export interface IoK8sApiAdmissionregistrationV1RuleWithOperations {
   /** scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*". */
   scope?: string;
 }
-export const IoK8sApiAdmissionregistrationV1RuleWithOperations = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1RuleWithOperations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroups: S.optional(IoK8sApiAdmissionregistrationV1RuleWithOperationsApiGroupsList),
     apiVersions: S.optional(IoK8sApiAdmissionregistrationV1RuleWithOperationsApiVersionsList),
@@ -1412,7 +1327,7 @@ export const IoK8sApiAdmissionregistrationV1RuleWithOperations = /*@__PURE__*/ S
 /** rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects. */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookRulesList =
   Array<IoK8sApiAdmissionregistrationV1RuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1MutatingWebhookRulesList = /*@__PURE__*/ S.Array(
+const IoK8sApiAdmissionregistrationV1MutatingWebhookRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiAdmissionregistrationV1RuleWithOperations,
 ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookRulesList>;
 
@@ -1443,7 +1358,7 @@ export interface IoK8sApiAdmissionregistrationV1MutatingWebhook {
   /** timeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 10 seconds. */
   timeoutSeconds?: number;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingWebhook = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1MutatingWebhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admissionReviewVersions:
       IoK8sApiAdmissionregistrationV1MutatingWebhookAdmissionReviewVersionsList,
@@ -1466,7 +1381,7 @@ export const IoK8sApiAdmissionregistrationV1MutatingWebhook = /*@__PURE__*/ S.su
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
-export const CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
+const CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingWebhook,
   ) as any as S.Schema<CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList>;
@@ -1489,8 +1404,8 @@ export interface CreateAdmissionregistrationV1MutatingWebhookConfigurationReques
   /** webhooks is a list of webhooks and the affected resources and operations. */
   webhooks?: CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList;
 }
-export const CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       dryRun: S.optional(S.String.pipe(T.Query())),
@@ -1509,14 +1424,14 @@ export const CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest",
-  }) as any as S.Schema<CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest",
+}) as any as S.Schema<CreateAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
-export const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList =
+const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList =
   CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList>;
 
 /** MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object. */
@@ -1530,14 +1445,13 @@ export interface IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration {
   /** webhooks is a list of webhooks and the affected resources and operations. */
   webhooks?: IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      webhooks: S.optional(IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList),
-    }),
+const IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    webhooks: S.optional(IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationWebhooksList),
+  }),
 ).annotate({
   identifier: "IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration",
 }) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration>;
@@ -1549,7 +1463,7 @@ export interface IoK8sApiAdmissionregistrationV1AuditAnnotation {
   /** valueExpression represents the expression which is evaluated by CEL to produce an audit annotation value. The expression must evaluate to either a string or null value. If the expression evaluates to a string, the audit annotation is included with the string value. If the expression evaluates to null or empty string the audit annotation will be omitted. The valueExpression may be no longer than 5kb in length. If the result of the valueExpression is more than 10kb in length, it will be truncated to 10kb. If multiple ValidatingAdmissionPolicyBinding resources match an API request, then the valueExpression will be evaluated for each binding. All unique values produced by the valueExpressions will be joined together in a comma-separated list. Required. */
   valueExpression: string;
 }
-export const IoK8sApiAdmissionregistrationV1AuditAnnotation = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1AuditAnnotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     valueExpression: S.String,
@@ -1561,7 +1475,7 @@ export const IoK8sApiAdmissionregistrationV1AuditAnnotation = /*@__PURE__*/ S.su
 /** auditAnnotations contains CEL expressions which are used to produce audit annotations for the audit event of the API request. validations and auditAnnotations may not both be empty; a least one of validations or auditAnnotations is required. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAnnotationsList =
   Array<IoK8sApiAdmissionregistrationV1AuditAnnotation>;
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAnnotationsList =
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAnnotationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1AuditAnnotation,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAnnotationsList>;
@@ -1569,7 +1483,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAn
 /** matchConditions is a list of conditions that must be met for a request to be validated. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. If a parameter object is provided, it can be accessed via the `params` handle in the same manner as validation expressions. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the policy is skipped. 2. If ALL matchConditions evaluate to TRUE, the policy is evaluated. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the policy is skipped */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList =
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList>;
 
 /** Validation specifies the CEL expression which is used to apply the validation. */
@@ -1583,7 +1497,7 @@ export interface IoK8sApiAdmissionregistrationV1Validation {
   /** reason represents a machine-readable description of why this validation failed. If this is the first validation in the list to fail, this reason, as well as the corresponding HTTP response code, are used in the HTTP response to the client. The currently supported reasons are: "Unauthorized", "Forbidden", "Invalid", "RequestEntityTooLarge". If not set, StatusReasonInvalid is used in the response to the client. */
   reason?: string;
 }
-export const IoK8sApiAdmissionregistrationV1Validation = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1Validation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
     message: S.optional(S.String),
@@ -1597,7 +1511,7 @@ export const IoK8sApiAdmissionregistrationV1Validation = /*@__PURE__*/ S.suspend
 /** validations contain CEL expressions which is used to apply the validation. Validations and AuditAnnotations may not both be empty; a minimum of one Validations or AuditAnnotations is required. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidationsList =
   Array<IoK8sApiAdmissionregistrationV1Validation>;
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidationsList =
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1Validation,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidationsList>;
@@ -1605,7 +1519,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidat
 /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except MatchConditions because MatchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, Variables must be sorted by the order of first appearance and acyclic. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList =
   Array<IoK8sApiAdmissionregistrationV1alpha1Variable>;
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList =
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList>;
 
 /** ValidatingAdmissionPolicySpec is the specification of the desired behavior of the AdmissionPolicy. */
@@ -1625,25 +1539,24 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec {
   /** variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except MatchConditions because MatchConditions are evaluated before the rest of the policy. The expression of a variable can refer to other variables defined earlier in the list but not those after. Thus, Variables must be sorted by the order of first appearance and acyclic. */
   variables?: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      auditAnnotations: S.optional(
-        IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAnnotationsList,
-      ),
-      failurePolicy: S.optional(S.String),
-      matchConditions: S.optional(
-        IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList,
-      ),
-      matchConstraints: S.optional(IoK8sApiAdmissionregistrationV1MatchResources),
-      paramKind: S.optional(IoK8sApiAdmissionregistrationV1alpha1ParamKind),
-      validations: S.optional(
-        IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidationsList,
-      ),
-      variables: S.optional(
-        IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList,
-      ),
-    }),
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    auditAnnotations: S.optional(
+      IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecAuditAnnotationsList,
+    ),
+    failurePolicy: S.optional(S.String),
+    matchConditions: S.optional(
+      IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecMatchConditionsList,
+    ),
+    matchConstraints: S.optional(IoK8sApiAdmissionregistrationV1MatchResources),
+    paramKind: S.optional(IoK8sApiAdmissionregistrationV1alpha1ParamKind),
+    validations: S.optional(
+      IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecValidationsList,
+    ),
+    variables: S.optional(
+      IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpecVariablesList,
+    ),
+  }),
 ).annotate({
   identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec",
 }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec>;
@@ -1663,7 +1576,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Condition {
   /** type of condition in CamelCase or in foo.example.com/CamelCase. */
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastTransitionTime: S.String,
     message: S.optional(S.String),
@@ -1679,7 +1592,7 @@ export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend((
 /** conditions represent the latest available observations of a policy's current state. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatusConditionsList =
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1Condition,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatusConditionsList>;
@@ -1691,7 +1604,7 @@ export interface IoK8sApiAdmissionregistrationV1ExpressionWarning {
   /** warning contains the content of type checking information in a human-readable form. Each line of the warning contains the type that the expression is checked against, followed by the type check error from the compiler. */
   warning: string;
 }
-export const IoK8sApiAdmissionregistrationV1ExpressionWarning = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1ExpressionWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldRef: S.String,
     warning: S.String,
@@ -1703,17 +1616,16 @@ export const IoK8sApiAdmissionregistrationV1ExpressionWarning = /*@__PURE__*/ S.
 /** expressionWarnings contains the type checking warnings for each expression. */
 export type IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList =
   Array<IoK8sApiAdmissionregistrationV1ExpressionWarning>;
-export const IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1ExpressionWarning,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList>;
+const IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList = /*@__PURE__*/ S.Array(
+  IoK8sApiAdmissionregistrationV1ExpressionWarning,
+) as any as S.Schema<IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList>;
 
 /** TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy */
 export interface IoK8sApiAdmissionregistrationV1TypeChecking {
   /** expressionWarnings contains the type checking warnings for each expression. */
   expressionWarnings?: IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList;
 }
-export const IoK8sApiAdmissionregistrationV1TypeChecking = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1TypeChecking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expressionWarnings: S.optional(
       IoK8sApiAdmissionregistrationV1TypeCheckingExpressionWarningsList,
@@ -1732,18 +1644,17 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus 
   /** typeChecking contains the results of type checking for each expression. Presence of this field indicates the completion of the type checking. */
   typeChecking?: IoK8sApiAdmissionregistrationV1TypeChecking;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      conditions: S.optional(
-        IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatusConditionsList,
-      ),
-      observedGeneration: S.optional(S.Number),
-      typeChecking: S.optional(IoK8sApiAdmissionregistrationV1TypeChecking),
-    }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus>;
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conditions: S.optional(
+      IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatusConditionsList,
+    ),
+    observedGeneration: S.optional(S.Number),
+    typeChecking: S.optional(IoK8sApiAdmissionregistrationV1TypeChecking),
+  }),
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus>;
 
 export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -1765,28 +1676,27 @@ export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** status represents the current status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only. */
   status?: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus;
 }
-export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec),
-      status: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
-  }) as any as S.Schema<CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
+const CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec),
+    status: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
+}) as any as S.Schema<CreateAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
 
 /** ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object without changing it. */
 export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy {
@@ -1801,15 +1711,14 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy {
   /** status represents the current status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only. */
   status?: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec),
-      status: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus),
-    }),
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec),
+    status: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus),
+  }),
 ).annotate({
   identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy",
 }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>;
@@ -1817,7 +1726,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy = /*@__PUR
 /** validationActions declares how Validations of the referenced ValidatingAdmissionPolicy are enforced. If a validation evaluates to false it is always enforced according to these actions. Failures defined by the ValidatingAdmissionPolicy's FailurePolicy are enforced according to these actions only if the FailurePolicy is set to Fail, otherwise the failures are ignored. This includes compilation errors, runtime errors and misconfigurations of the policy. validationActions is declared as a set of action values. Order does not matter. validationActions may not contain duplicates of the same action. The supported actions values are: "Deny" specifies that a validation failure results in a denied request. "Warn" specifies that a validation failure is reported to the request client in HTTP Warning headers, with a warning code of 299. Warnings can be sent both for allowed or denied admission responses. "Audit" specifies that a validation failure is included in the published audit event for the request. The audit event will contain a `validation.policy.admission.k8s.io/validation_failure` audit annotation with a value containing the details of the validation failures, formatted as a JSON list of objects, each with the following fields: - message: The validation failure message string - policy: The resource name of the ValidatingAdmissionPolicy - binding: The resource name of the ValidatingAdmissionPolicyBinding - expressionIndex: The index of the failed validations in the ValidatingAdmissionPolicy - validationActions: The enforcement actions enacted for the validation failure Example audit annotation: `"validation.policy.admission.k8s.io/validation_failure": "[{\"message\": \"Invalid value\", {\"policy\": \"policy.example.com\", {\"binding\": \"policybinding.example.com\", {\"expressionIndex\": \"1\", {\"validationActions\": [\"Audit\"]}]"` Clients should expect to handle additional values by ignoring any values not recognized. "Deny" and "Warn" may not be used together since this combination needlessly duplicates the validation failure both in the API response body and the HTTP warning headers. Required. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList =
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList>;
 
 /** ValidatingAdmissionPolicyBindingSpec is the specification of the ValidatingAdmissionPolicyBinding. */
@@ -1831,8 +1740,8 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding
   /** validationActions declares how Validations of the referenced ValidatingAdmissionPolicy are enforced. If a validation evaluates to false it is always enforced according to these actions. Failures defined by the ValidatingAdmissionPolicy's FailurePolicy are enforced according to these actions only if the FailurePolicy is set to Fail, otherwise the failures are ignored. This includes compilation errors, runtime errors and misconfigurations of the policy. validationActions is declared as a set of action values. Order does not matter. validationActions may not contain duplicates of the same action. The supported actions values are: "Deny" specifies that a validation failure results in a denied request. "Warn" specifies that a validation failure is reported to the request client in HTTP Warning headers, with a warning code of 299. Warnings can be sent both for allowed or denied admission responses. "Audit" specifies that a validation failure is included in the published audit event for the request. The audit event will contain a `validation.policy.admission.k8s.io/validation_failure` audit annotation with a value containing the details of the validation failures, formatted as a JSON list of objects, each with the following fields: - message: The validation failure message string - policy: The resource name of the ValidatingAdmissionPolicy - binding: The resource name of the ValidatingAdmissionPolicyBinding - expressionIndex: The index of the failed validations in the ValidatingAdmissionPolicy - validationActions: The enforcement actions enacted for the validation failure Example audit annotation: `"validation.policy.admission.k8s.io/validation_failure": "[{\"message\": \"Invalid value\", {\"policy\": \"policy.example.com\", {\"binding\": \"policybinding.example.com\", {\"expressionIndex\": \"1\", {\"validationActions\": [\"Audit\"]}]"` Clients should expect to handle additional values by ignoring any values not recognized. "Deny" and "Warn" may not be used together since this combination needlessly duplicates the validation failure both in the API response body and the HTTP warning headers. Required. */
   validationActions: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       matchResources: S.optional(IoK8sApiAdmissionregistrationV1MatchResources),
       paramRef: S.optional(IoK8sApiAdmissionregistrationV1beta1ParamRef),
@@ -1840,9 +1749,9 @@ export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec
       validationActions:
         IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpecValidationActionsList,
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec>;
 
 export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -1862,7 +1771,7 @@ export interface CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingRe
   /** spec defines the desired behavior of the ValidatingAdmissionPolicyBinding. */
   spec: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec;
 }
-export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
+const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -1895,34 +1804,34 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding
   /** spec defines the desired behavior of the ValidatingAdmissionPolicyBinding. */
   spec: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apiVersion: S.optional(S.String),
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
       spec: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec,
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>;
 
 /** admissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList =
   Array<string>;
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList =
+const IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList =
   IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperationsApiGroupsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList>;
 
 /** matchConditions is a list of conditions that must be met for a request to be sent to this webhook. Match conditions filter requests that have already been matched by the rules, namespaceSelector, and objectSelector. An empty list of matchConditions matches all requests. There are a maximum of 64 match conditions allowed. The exact matching logic is (in order): 1. If ANY matchCondition evaluates to FALSE, the webhook is skipped. 2. If ALL matchConditions evaluate to TRUE, the webhook is called. 3. If any matchCondition evaluates to an error (but none are FALSE): - If failurePolicy=Fail, reject the request - If failurePolicy=Ignore, the error is ignored and the webhook is skipped */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MatchCondition>;
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList =
+const IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpecMatchConditionsList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookMatchConditionsList>;
 
 /** rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList =
   Array<IoK8sApiAdmissionregistrationV1RuleWithOperations>;
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList =
+const IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList =
   IoK8sApiAdmissionregistrationV1MutatingWebhookRulesList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookRulesList>;
 
 /** ValidatingWebhook describes an admission webhook and the resources and operations it applies to. */
@@ -1950,7 +1859,7 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingWebhook {
   /** timeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 10 seconds. */
   timeoutSeconds?: number;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhook = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1ValidatingWebhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admissionReviewVersions:
       IoK8sApiAdmissionregistrationV1ValidatingWebhookAdmissionReviewVersionsList,
@@ -1974,7 +1883,7 @@ export const IoK8sApiAdmissionregistrationV1ValidatingWebhook = /*@__PURE__*/ S.
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
-export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
+const CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingWebhook,
   ) as any as S.Schema<CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList>;
@@ -1997,8 +1906,8 @@ export interface CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequ
   /** webhooks is a list of webhooks and the affected resources and operations. */
   webhooks?: CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList;
 }
-export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       dryRun: S.optional(S.String.pipe(T.Query())),
@@ -2017,14 +1926,14 @@ export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
-  }) as any as S.Schema<CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
+}) as any as S.Schema<CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList =
+const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList =
   CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList>;
 
 /** ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it. */
@@ -2038,19 +1947,16 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration {
   /** webhooks is a list of webhooks and the affected resources and operations. */
   webhooks?: IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      webhooks: S.optional(
-        IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList,
-      ),
-    }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>;
+const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    webhooks: S.optional(IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationWebhooksList),
+  }),
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>;
 
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
@@ -2059,7 +1965,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -2106,7 +2012,7 @@ export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionP
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyRequest =
+const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2147,7 +2053,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -2160,7 +2066,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -2179,7 +2085,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -2197,7 +2103,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -2218,7 +2124,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -2249,7 +2155,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -2302,7 +2208,7 @@ export interface DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionP
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingRequest =
+const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2357,8 +2263,8 @@ export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyReque
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2377,9 +2283,9 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
 
 export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -2403,7 +2309,7 @@ export interface DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindi
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
+const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2465,7 +2371,7 @@ export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPo
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyRequest =
+const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2535,7 +2441,7 @@ export interface DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPo
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingRequest =
+const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2589,8 +2495,8 @@ export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyReques
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2609,9 +2515,9 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
 
 export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -2635,7 +2541,7 @@ export interface DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindin
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
+const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2697,7 +2603,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyR
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyRequest =
+const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2767,7 +2673,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyB
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingRequest =
+const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2837,7 +2743,7 @@ export interface DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigura
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest =
+const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2907,7 +2813,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolic
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyRequest =
+const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -2977,7 +2883,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolic
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingRequest =
+const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -3047,7 +2953,7 @@ export interface DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigu
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest =
+const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -3101,26 +3007,25 @@ export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
+const DeleteAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteAdmissionregistrationV1MutatingAdmissionPolicyRequest",
 }) as any as S.Schema<DeleteAdmissionregistrationV1MutatingAdmissionPolicyRequest>;
@@ -3147,8 +3052,8 @@ export interface DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequ
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -3167,9 +3072,9 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
 
 export interface DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest {
   /** name of the MutatingWebhookConfiguration */
@@ -3193,8 +3098,8 @@ export interface DeleteAdmissionregistrationV1MutatingWebhookConfigurationReques
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -3213,9 +3118,9 @@ export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest",
-  }) as any as S.Schema<DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest",
+}) as any as S.Schema<DeleteAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
 
 export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** name of the ValidatingAdmissionPolicy */
@@ -3239,29 +3144,28 @@ export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
-  }) as any as S.Schema<DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
+const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
+}) as any as S.Schema<DeleteAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
 
 export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest {
   /** name of the ValidatingAdmissionPolicyBinding */
@@ -3285,7 +3189,7 @@ export interface DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingRe
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
+const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3331,8 +3235,8 @@ export interface DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequ
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -3351,12 +3255,12 @@ export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
-  }) as any as S.Schema<DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
+}) as any as S.Schema<DeleteAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
 
 export interface GetAdmissionregistrationAPIGroupRequest {}
-export const GetAdmissionregistrationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdmissionregistrationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/admissionregistration.k8s.io/", code: 200 }),
   ),
@@ -3371,7 +3275,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -3387,7 +3291,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -3399,15 +3303,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -3426,7 +3329,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -3442,7 +3345,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetAdmissionregistrationV1alpha1APIResourcesRequest {}
-export const GetAdmissionregistrationV1alpha1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdmissionregistrationV1alpha1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/admissionregistration.k8s.io/v1alpha1/", code: 200 }),
   ),
@@ -3452,17 +3355,17 @@ export const GetAdmissionregistrationV1alpha1APIResourcesRequest = /*@__PURE__*/
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -3488,7 +3391,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -3508,7 +3411,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -3523,7 +3426,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -3535,7 +3438,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.sus
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
 
 export interface GetAdmissionregistrationV1APIResourcesRequest {}
-export const GetAdmissionregistrationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdmissionregistrationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/admissionregistration.k8s.io/v1/", code: 200 }),
   ),
@@ -3544,7 +3447,7 @@ export const GetAdmissionregistrationV1APIResourcesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetAdmissionregistrationV1APIResourcesRequest>;
 
 export interface GetAdmissionregistrationV1beta1APIResourcesRequest {}
-export const GetAdmissionregistrationV1beta1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdmissionregistrationV1beta1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/admissionregistration.k8s.io/v1beta1/", code: 200 }),
   ),
@@ -3578,8 +3481,8 @@ export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3600,14 +3503,14 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
 
 /** List of ValidatingAdmissionPolicy. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy>;
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList =
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicy,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList>;
@@ -3623,17 +3526,17 @@ export interface IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyLis
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apiVersion: S.optional(S.String),
       items: IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList,
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList>;
 
 export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -3661,7 +3564,7 @@ export interface ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
+const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -3690,7 +3593,7 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequ
 /** List of PolicyBinding. */
 export type IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListItemsList =
   Array<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding>;
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListItemsList =
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListItemsList>;
@@ -3706,7 +3609,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBin
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList =
+const IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiVersion: S.optional(S.String),
@@ -3744,38 +3647,34 @@ export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
+const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<ListAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
 
 /** List of ValidatingAdmissionPolicy. */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList =
   Array<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicy>;
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList =
-  IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyListItemsList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyListItemsList>;
-
 /** MutatingAdmissionPolicyList is a list of MutatingAdmissionPolicy. */
 export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -3787,7 +3686,7 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList =
+const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList =
   IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyList as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyList>;
 
 export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest {
@@ -3816,7 +3715,7 @@ export interface ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingR
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
+const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -3845,7 +3744,7 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingReque
 /** List of PolicyBinding. */
 export type IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListItemsList =
   Array<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding>;
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListItemsList =
+const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListItemsList>;
@@ -3861,7 +3760,7 @@ export interface IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBind
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList =
+const IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingList =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiVersion: S.optional(S.String),
@@ -3899,28 +3798,27 @@ export interface ListAdmissionregistrationV1MutatingAdmissionPolicyRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
-        code: 200,
-      }),
-    ),
+const ListAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAdmissionregistrationV1MutatingAdmissionPolicyRequest",
 }) as any as S.Schema<ListAdmissionregistrationV1MutatingAdmissionPolicyRequest>;
@@ -3928,10 +3826,9 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PU
 /** List of ValidatingAdmissionPolicy. */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList =
   Array<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy>;
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList>;
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList = /*@__PURE__*/ S.Array(
+  IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicy,
+) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList>;
 
 /** MutatingAdmissionPolicyList is a list of MutatingAdmissionPolicy. */
 export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyList {
@@ -3944,14 +3841,13 @@ export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyList {
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyList = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      items: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList,
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-    }),
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.optional(S.String),
+    items: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyListItemsList,
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+  }),
 ).annotate({
   identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyList",
 }) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyList>;
@@ -3982,8 +3878,8 @@ export interface ListAdmissionregistrationV1MutatingAdmissionPolicyBindingReques
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4004,14 +3900,14 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<ListAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
 
 /** List of PolicyBinding. */
 export type IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingListItemsList =
   Array<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding>;
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingListItemsList =
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBinding,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingListItemsList>;
@@ -4027,17 +3923,17 @@ export interface IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingLi
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingList = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apiVersion: S.optional(S.String),
       items: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingListItemsList,
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingList",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingList>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingList",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingList>;
 
 export interface ListAdmissionregistrationV1MutatingWebhookConfigurationRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -4065,36 +3961,35 @@ export interface ListAdmissionregistrationV1MutatingWebhookConfigurationRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1MutatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ListAdmissionregistrationV1MutatingWebhookConfigurationRequest",
-  }) as any as S.Schema<ListAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
+const ListAdmissionregistrationV1MutatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListAdmissionregistrationV1MutatingWebhookConfigurationRequest",
+}) as any as S.Schema<ListAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
 
 /** List of MutatingWebhookConfiguration. */
 export type IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationListItemsList =
   Array<IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration>;
-export const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationListItemsList =
+const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1MutatingWebhookConfiguration,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationListItemsList>;
@@ -4110,17 +4005,17 @@ export interface IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apiVersion: S.optional(S.String),
       items: IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationListItemsList,
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1MutatingWebhookConfigurationList>;
 
 export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -4148,28 +4043,27 @@ export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
-        code: 200,
-      }),
-    ),
+const ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
 }) as any as S.Schema<ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
@@ -4177,10 +4071,9 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__
 /** List of ValidatingAdmissionPolicy. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList =
   Array<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy>;
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy,
-  ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList>;
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList = /*@__PURE__*/ S.Array(
+  IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicy,
+) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList>;
 
 /** ValidatingAdmissionPolicyList is a list of ValidatingAdmissionPolicy. */
 export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyList {
@@ -4193,14 +4086,13 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyList {
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyList = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiVersion: S.optional(S.String),
-      items: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList,
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
-    }),
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.optional(S.String),
+    items: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyListItemsList,
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+  }),
 ).annotate({
   identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyList",
 }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyList>;
@@ -4231,8 +4123,8 @@ export interface ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequ
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4253,14 +4145,14 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>;
 
 /** List of PolicyBinding. */
 export type IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingListItemsList =
   Array<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding>;
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingListItemsList =
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingListItemsList>;
@@ -4276,17 +4168,17 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBinding
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingList =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingList = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apiVersion: S.optional(S.String),
       items: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingListItemsList,
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingList",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingList>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingList",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingList>;
 
 export interface ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
@@ -4314,8 +4206,8 @@ export interface ListAdmissionregistrationV1ValidatingWebhookConfigurationReques
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pretty: S.optional(S.String.pipe(T.Query())),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4336,14 +4228,14 @@ export const ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
-  }) as any as S.Schema<ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
+}) as any as S.Schema<ListAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
 
 /** List of ValidatingWebhookConfiguration. */
 export type IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationListItemsList =
   Array<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>;
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationListItemsList =
+const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration,
   ) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationListItemsList>;
@@ -4359,17 +4251,17 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationLi
   /** metadata is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       apiVersion: S.optional(S.String),
       items: IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationListItemsList,
       kind: S.optional(S.String),
       metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
     }),
-  ).annotate({
-    identifier: "IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList",
-  }) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList>;
+).annotate({
+  identifier: "IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList",
+}) as any as S.Schema<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList>;
 
 export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest {
   /** name of the MutatingAdmissionPolicy */
@@ -4385,8 +4277,8 @@ export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyReques
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4401,9 +4293,9 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
 
 export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -4419,7 +4311,7 @@ export interface PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
+const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -4453,8 +4345,8 @@ export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4469,9 +4361,9 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
 
 export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -4487,7 +4379,7 @@ export interface PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
+const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -4521,22 +4413,21 @@ export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
+const PatchAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchAdmissionregistrationV1MutatingAdmissionPolicyRequest",
 }) as any as S.Schema<PatchAdmissionregistrationV1MutatingAdmissionPolicyRequest>;
@@ -4555,8 +4446,8 @@ export interface PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingReque
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4571,9 +4462,9 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
 
 export interface PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest {
   /** name of the MutatingWebhookConfiguration */
@@ -4589,8 +4480,8 @@ export interface PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4605,9 +4496,9 @@ export const PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest",
-  }) as any as S.Schema<PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest",
+}) as any as S.Schema<PatchAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
 
 export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** name of the ValidatingAdmissionPolicy */
@@ -4623,22 +4514,21 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
+const PatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
 }) as any as S.Schema<PatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
@@ -4657,8 +4547,8 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingReq
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4673,9 +4563,9 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>;
 
 export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest {
   /** name of the ValidatingAdmissionPolicy */
@@ -4691,8 +4581,8 @@ export interface PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequ
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4707,9 +4597,9 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest",
-  }) as any as S.Schema<PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest>;
+).annotate({
+  identifier: "PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest",
+}) as any as S.Schema<PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest>;
 
 export interface PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest {
   /** name of the ValidatingWebhookConfiguration */
@@ -4725,8 +4615,8 @@ export interface PatchAdmissionregistrationV1ValidatingWebhookConfigurationReque
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4741,9 +4631,9 @@ export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
-  }) as any as S.Schema<PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
+}) as any as S.Schema<PatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
 
 export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest {
   /** name of the MutatingAdmissionPolicy */
@@ -4751,8 +4641,8 @@ export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4763,9 +4653,9 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
 
 export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -4773,7 +4663,7 @@ export interface ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBinding
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
+const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -4795,21 +4685,20 @@ export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest 
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
+const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1beta1/mutatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
 
 export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -4817,7 +4706,7 @@ export interface ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingR
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
+const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -4839,18 +4728,17 @@ export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
+const ReadAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadAdmissionregistrationV1MutatingAdmissionPolicyRequest",
 }) as any as S.Schema<ReadAdmissionregistrationV1MutatingAdmissionPolicyRequest>;
@@ -4861,8 +4749,8 @@ export interface ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingReques
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4873,9 +4761,9 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
 
 export interface ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest {
   /** name of the MutatingWebhookConfiguration */
@@ -4883,21 +4771,20 @@ export interface ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest 
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest",
-  }) as any as S.Schema<ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
+const ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest",
+}) as any as S.Schema<ReadAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
 
 export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** name of the ValidatingAdmissionPolicy */
@@ -4905,18 +4792,17 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
+const ReadAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
 }) as any as S.Schema<ReadAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
@@ -4927,8 +4813,8 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequ
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4939,9 +4825,9 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>;
 
 export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest {
   /** name of the ValidatingAdmissionPolicy */
@@ -4949,8 +4835,8 @@ export interface ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusReque
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4961,9 +4847,9 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest",
-  }) as any as S.Schema<ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest>;
+).annotate({
+  identifier: "ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest",
+}) as any as S.Schema<ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest>;
 
 export interface ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest {
   /** name of the ValidatingWebhookConfiguration */
@@ -4971,8 +4857,8 @@ export interface ReadAdmissionregistrationV1ValidatingWebhookConfigurationReques
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -4983,9 +4869,9 @@ export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
-  }) as any as S.Schema<ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
+}) as any as S.Schema<ReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
 
 export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest {
   /** name of the MutatingAdmissionPolicy */
@@ -5007,8 +4893,8 @@ export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequ
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicySpec;
 }
-export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -5026,9 +4912,9 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
 
 export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -5050,7 +4936,7 @@ export interface ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBind
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingSpec;
 }
-export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
+const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5093,8 +4979,8 @@ export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyReque
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicySpec;
 }
-export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -5112,9 +4998,9 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
 
 export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -5136,7 +5022,7 @@ export interface ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindi
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingSpec;
 }
-export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
+const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5179,25 +5065,24 @@ export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyRequest {
   /** spec defines the desired behavior of the MutatingAdmissionPolicy. */
   spec?: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec;
 }
-export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
+const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicySpec),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/admissionregistration.k8s.io/v1/mutatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceAdmissionregistrationV1MutatingAdmissionPolicyRequest",
 }) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyRequest>;
@@ -5222,8 +5107,8 @@ export interface ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingReq
   /** spec defines the desired behavior of the MutatingAdmissionPolicyBinding. */
   spec?: IoK8sApiAdmissionregistrationV1MutatingAdmissionPolicyBindingSpec;
 }
-export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -5241,14 +5126,14 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
 
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1MutatingWebhook>;
-export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
+const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList =
   CreateAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList as any as S.Schema<ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList>;
 
 export interface ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest {
@@ -5271,8 +5156,8 @@ export interface ReplaceAdmissionregistrationV1MutatingWebhookConfigurationReque
   /** webhooks is a list of webhooks and the affected resources and operations. */
   webhooks?: ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequestWebhooksList;
 }
-export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -5292,9 +5177,9 @@ export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest",
-  }) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest",
+}) as any as S.Schema<ReplaceAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
 
 export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** name of the ValidatingAdmissionPolicy */
@@ -5318,29 +5203,28 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest 
   /** status represents the current status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only. */
   status?: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus;
 }
-export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec),
-      status: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
-  }) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
+const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicySpec),
+    status: S.optional(IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/admissionregistration.k8s.io/v1/validatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
+}) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
 
 export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest {
   /** name of the ValidatingAdmissionPolicyBinding */
@@ -5362,7 +5246,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingR
   /** spec defines the desired behavior of the ValidatingAdmissionPolicyBinding. */
   spec: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyBindingSpec;
 }
-export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
+const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5407,7 +5291,7 @@ export interface ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusRe
   /** status represents the current status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only. */
   status?: IoK8sApiAdmissionregistrationV1ValidatingAdmissionPolicyStatus;
 }
-export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest =
+const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5434,7 +5318,7 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusReques
 /** webhooks is a list of webhooks and the affected resources and operations. */
 export type ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
   Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>;
-export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
+const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList =
   CreateAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList>;
 
 export interface ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest {
@@ -5457,8 +5341,8 @@ export interface ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationReq
   /** webhooks is a list of webhooks and the affected resources and operations. */
   webhooks?: ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequestWebhooksList;
 }
-export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -5478,9 +5362,9 @@ export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
-  }) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
+}) as any as S.Schema<ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
 
 export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest {
   /** name of the MutatingAdmissionPolicy */
@@ -5510,8 +5394,8 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyReques
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5533,9 +5417,9 @@ export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyRequest>;
 
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
@@ -5543,7 +5427,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -5580,7 +5464,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
+const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5633,7 +5517,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindin
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListRequest =
+const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5685,7 +5569,7 @@ export interface WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListRe
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListRequest =
+const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5739,8 +5623,8 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5762,9 +5646,9 @@ export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyRequest>;
 
 export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest {
   /** name of the MutatingAdmissionPolicyBinding */
@@ -5794,7 +5678,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
+const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5847,7 +5731,7 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBinding
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListRequest =
+const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5899,8 +5783,8 @@ export interface WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListReq
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -5921,9 +5805,9 @@ export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListRequest>;
 
 export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyRequest {
   /** name of the MutatingAdmissionPolicy */
@@ -5953,29 +5837,28 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
+const WatchAdmissionregistrationV1MutatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyRequest",
 }) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyRequest>;
@@ -6008,8 +5891,8 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingReque
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6031,9 +5914,9 @@ export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingRequest>;
 
 export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -6061,7 +5944,7 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListR
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListRequest =
+const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6113,31 +5996,30 @@ export interface WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicies",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest>;
+const WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/watch/mutatingadmissionpolicies",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1MutatingAdmissionPolicyListRequest>;
 
 export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest {
   /** name of the MutatingWebhookConfiguration */
@@ -6167,8 +6049,8 @@ export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6190,9 +6072,9 @@ export const WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1MutatingWebhookConfigurationRequest>;
 
 export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -6220,8 +6102,8 @@ export interface WatchAdmissionregistrationV1MutatingWebhookConfigurationListReq
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -6242,9 +6124,9 @@ export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest>;
 
 export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** name of the ValidatingAdmissionPolicy */
@@ -6274,29 +6156,28 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicies/{name}",
-        code: 200,
-      }),
-    ),
+const WatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/admissionregistration.k8s.io/v1/watch/validatingadmissionpolicies/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest",
 }) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyRequest>;
@@ -6329,8 +6210,8 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingReq
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6352,9 +6233,9 @@ export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingRequest>;
 
 export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -6382,7 +6263,7 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingLis
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListRequest =
+const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6434,8 +6315,8 @@ export interface WatchAdmissionregistrationV1ValidatingAdmissionPolicyListReques
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -6456,9 +6337,9 @@ export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1ValidatingAdmissionPolicyListRequest>;
 
 export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest {
   /** name of the ValidatingWebhookConfiguration */
@@ -6488,8 +6369,8 @@ export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationReque
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -6511,9 +6392,9 @@ export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
-  }) as any as S.Schema<WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
+).annotate({
+  identifier: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest",
+}) as any as S.Schema<WatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest>;
 
 export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -6541,7 +6422,7 @@ export interface WatchAdmissionregistrationV1ValidatingWebhookConfigurationListR
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest =
+const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),

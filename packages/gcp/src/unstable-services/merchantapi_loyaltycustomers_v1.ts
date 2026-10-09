@@ -71,7 +71,7 @@ export type LoyaltyCustomerLoyaltyTierEnum =
   | "TIER6"
   | "TIER7"
   | "NON_MEMBER";
-export const LoyaltyCustomerLoyaltyTierEnum = S.String;
+const LoyaltyCustomerLoyaltyTierEnum = S.String;
 
 /** Represents a customer's physical address. */
 export interface AddressInfo {
@@ -88,7 +88,7 @@ export interface AddressInfo {
   /** Optional. The postal code (zip code) of the customer. **Format Rules:** * **United States:** 5-digit zip codes (e.g., "94108"). */
   postalCode?: string;
 }
-export const AddressInfo = /*@__PURE__*/ S.suspend(() =>
+const AddressInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     state: S.optional(S.String),
@@ -108,7 +108,7 @@ export interface UserIdentifier {
   /** Optional. The customer's phone number, in [E.164 format](https://support.google.com/google-ads/answer/16355235) (e.g., "+16502530000"). */
   phoneNumber?: string;
 }
-export const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
+const UserIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(AddressInfo),
     emailAddress: S.optional(S.String),
@@ -125,7 +125,7 @@ export interface LoyaltyCustomer {
   /** Required. The identifiers for the customer. */
   userIdentifier?: UserIdentifier;
 }
-export const LoyaltyCustomer = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loyaltyTier: S.optional(LoyaltyCustomerLoyaltyTierEnum),
     pointBalance: S.optional(S.String),
@@ -138,7 +138,7 @@ export interface ManageLoyaltyCustomerMatchRequest {
   /** Required. The loyalty customer to insert, update, or remove. */
   loyaltyCustomer?: LoyaltyCustomer;
 }
-export const ManageLoyaltyCustomerMatchRequest = /*@__PURE__*/ S.suspend(() =>
+const ManageLoyaltyCustomerMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loyaltyCustomer: S.optional(LoyaltyCustomer),
   }),
@@ -152,7 +152,7 @@ export interface ManageAccountsLoyaltyCustomersRequest {
   /** Request body */
   body?: ManageLoyaltyCustomerMatchRequest;
 }
-export const ManageAccountsLoyaltyCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const ManageAccountsLoyaltyCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ManageLoyaltyCustomerMatchRequest.pipe(T.HttpBody())),
@@ -172,7 +172,7 @@ export interface ManageLoyaltyCustomerMatchResponse {
   /** The loyalty customer that was inserted, updated, or removed. If the customer's identifier cannot be matched to a Google account or if the user has not opted into loyalty personalization, this field will contain a default `LoyaltyCustomer` instance. */
   loyaltyCustomer?: LoyaltyCustomer;
 }
-export const ManageLoyaltyCustomerMatchResponse =
+const ManageLoyaltyCustomerMatchResponse =
   ManageLoyaltyCustomerMatchRequest as any as S.Schema<ManageLoyaltyCustomerMatchResponse>;
 
 export type ManageAccountsLoyaltyCustomersError =

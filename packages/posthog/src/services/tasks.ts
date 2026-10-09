@@ -61,21 +61,21 @@ export type TaskOriginProductEnum =
   | "workflow"
   | "space_setup"
   | "business_knowledge";
-export const TaskOriginProductEnum = S.String;
+const TaskOriginProductEnum = S.String;
 
 /** GitHub repositories available to this task, each in `organization/repo` format. */
 export type CreateTaskRequestRepositoriesList = Array<string>;
-export const CreateTaskRequestRepositoriesList = /*@__PURE__*/ S.Array(
+const CreateTaskRequestRepositoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateTaskRequestRepositoriesList>;
 
 /** * `claude` - claude * `codex` - codex */
 export type RuntimeAdapterEnum = "claude" | "codex";
-export const RuntimeAdapterEnum = S.String;
+const RuntimeAdapterEnum = S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
 export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max" | "ultracode";
-export const ReasoningEffortEnum = S.String;
+const ReasoningEffortEnum = S.String;
 
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
 export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
@@ -86,16 +86,16 @@ export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "auto"
   | "read-only"
   | "full-access";
-export const TaskRunBootstrapCreateRequestInitialPermissionModeEnum = S.String;
+const TaskRunBootstrapCreateRequestInitialPermissionModeEnum = S.String;
 
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true. */
 export type CreateTaskRequestPendingUserArtifactIdsList = Array<string>;
-export const CreateTaskRequestPendingUserArtifactIdsList =
+const CreateTaskRequestPendingUserArtifactIdsList =
   CreateTaskRequestRepositoriesList as any as S.Schema<CreateTaskRequestPendingUserArtifactIdsList>;
 
 /** * `acp` - ACP * `pi` - Pi */
 export type TaskRuntimeEnum = "acp" | "pi";
-export const TaskRuntimeEnum = S.String;
+const TaskRuntimeEnum = S.String;
 
 export interface CreateTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -162,7 +162,7 @@ export interface CreateTaskRequest {
   /** Agent protocol and harness used for this task's runs. Defaults to ACP when omitted. * `acp` - ACP * `pi` - Pi */
   runtime?: TaskRuntimeEnum | (string & {});
 }
-export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     title: S.optional(S.String),
@@ -200,18 +200,18 @@ export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTaskRequest" }) as any as S.Schema<CreateTaskRequest>;
 
 export type TaskCreateResponseDTORepositoriesList = Array<string>;
-export const TaskCreateResponseDTORepositoriesList =
+const TaskCreateResponseDTORepositoriesList =
   CreateTaskRequestRepositoriesList as any as S.Schema<TaskCreateResponseDTORepositoriesList>;
 
 export type TaskCreateResponseDTOJsonSchemaMap = { [key: string]: unknown | undefined };
-export const TaskCreateResponseDTOJsonSchemaMap = /*@__PURE__*/ S.Record(
+const TaskCreateResponseDTOJsonSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TaskCreateResponseDTOJsonSchemaMap>;
 
 /** * `anthropic` - anthropic * `openai` - openai */
 export type TaskRunDetailDTOProviderEnum = "anthropic" | "openai";
-export const TaskRunDetailDTOProviderEnum = S.String;
+const TaskRunDetailDTOProviderEnum = S.String;
 
 /** * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
 export type TaskRunReasoningEffortEnum =
@@ -223,28 +223,28 @@ export type TaskRunReasoningEffortEnum =
   | "xhigh"
   | "max"
   | "ultracode";
-export const TaskRunReasoningEffortEnum = S.String;
+const TaskRunReasoningEffortEnum = S.String;
 
 export type TaskRunDetailDTOOutputMap = { [key: string]: unknown | undefined };
-export const TaskRunDetailDTOOutputMap =
+const TaskRunDetailDTOOutputMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunDetailDTOOutputMap>;
 
 /** Latest slug tags for this task, including tags inherited from an earlier run. */
 export type TaskRunDetailDTOTaskTagsList = Array<string>;
-export const TaskRunDetailDTOTaskTagsList =
+const TaskRunDetailDTOTaskTagsList =
   CreateTaskRequestRepositoriesList as any as S.Schema<TaskRunDetailDTOTaskTagsList>;
 
 export type TaskRunDetailDTOStateMap = { [key: string]: unknown | undefined };
-export const TaskRunDetailDTOStateMap =
+const TaskRunDetailDTOStateMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunDetailDTOStateMap>;
 
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
 export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
-export const SkillSourceEnum = S.String;
+const SkillSourceEnum = S.String;
 
 /** * `zip` - zip */
 export type BundleFormatEnum = "zip";
-export const BundleFormatEnum = S.String;
+const BundleFormatEnum = S.String;
 
 export interface TaskRunSkillBundleMetadata {
   /** Name of the local skill included in a skill_bundle artifact. */
@@ -258,7 +258,7 @@ export interface TaskRunSkillBundleMetadata {
   /** Version of the local skill bundle metadata schema. */
   schema_version: number;
 }
-export const TaskRunSkillBundleMetadata = /*@__PURE__*/ S.suspend(() =>
+const TaskRunSkillBundleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skill_name: S.String,
     skill_source: SkillSourceEnum,
@@ -272,8 +272,6 @@ export const TaskRunSkillBundleMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** * `posthog_object` - posthog_object */
 export type ReferenceTypeEnum = "posthog_object";
-export const ReferenceTypeEnum = S.String;
-
 /** * `insight` - insight * `hogql` - hogql * `dashboard` - dashboard * `error` - error * `replay` - replay * `flag` - flag * `experiment` - experiment * `survey` - survey * `ticket` - ticket * `report` - report * `trace` - trace * `eval` - eval * `event` - event * `cohort` - cohort * `action` - action * `person` - person */
 export type ObjectKindEnum =
   | "insight"
@@ -292,13 +290,8 @@ export type ObjectKindEnum =
   | "cohort"
   | "action"
   | "person";
-export const ObjectKindEnum = S.String;
-
 /** Completed assistant message identifiers that referenced the object. */
 export type TaskRunPostHogReferenceMetadataSourceMessageIdsList = Array<string>;
-export const TaskRunPostHogReferenceMetadataSourceMessageIdsList =
-  CreateTaskRequestRepositoriesList as any as S.Schema<TaskRunPostHogReferenceMetadataSourceMessageIdsList>;
-
 export interface TaskRunPostHogReferenceMetadata {
   /** Reference metadata type. posthog_object identifies a live PostHog object. * `posthog_object` - posthog_object */
   reference_type: ReferenceTypeEnum;
@@ -311,24 +304,12 @@ export interface TaskRunPostHogReferenceMetadata {
   /** Number of distinct completed assistant messages that referenced the object. */
   occurrence_count: number;
 }
-export const TaskRunPostHogReferenceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reference_type: ReferenceTypeEnum,
-    object_kind: ObjectKindEnum,
-    object_id: S.String,
-    source_message_ids: TaskRunPostHogReferenceMetadataSourceMessageIdsList,
-    occurrence_count: S.Number,
-  }),
-).annotate({
-  identifier: "TaskRunPostHogReferenceMetadata",
-}) as any as S.Schema<TaskRunPostHogReferenceMetadata>;
-
 export type TaskRunArtifactMetadata = TaskRunSkillBundleMetadata | TaskRunPostHogReferenceMetadata;
-export const TaskRunArtifactMetadata = S.Unknown as any as S.Schema<TaskRunArtifactMetadata>;
+const TaskRunArtifactMetadata = S.Unknown as any as S.Schema<TaskRunArtifactMetadata>;
 
 /** * `agent` - agent * `user` - user */
 export type UploadedByEnum = "agent" | "user";
-export const UploadedByEnum = S.String;
+const UploadedByEnum = S.String;
 
 export interface TaskRunArtifactResponse {
   /** Stable identifier for the artifact within this run */
@@ -358,7 +339,7 @@ export interface TaskRunArtifactResponse {
   /** Stable download URL for the artifact. Populated on the finalize-upload response so the caller can link to the file; it redirects to a fresh presigned URL on each request and is not persisted on the manifest. */
   url?: string;
 }
-export const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -377,7 +358,7 @@ export const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskRunArtifactResponse" }) as any as S.Schema<TaskRunArtifactResponse>;
 
 export type TaskRunDetailDTOArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ S.Array(
+const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactResponse,
 ) as any as S.Schema<TaskRunDetailDTOArtifactsList>;
 
@@ -416,7 +397,7 @@ export interface TaskRunDetailDTO {
   /** True when this run's sandbox serves a dev stack preview, so clients can offer the preview link. Open it through the run's `preview/` endpoint, which mints a fresh access token on every request. */
   preview_available?: boolean;
 }
-export const TaskRunDetailDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskRunDetailDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task: S.String,
@@ -444,7 +425,7 @@ export const TaskRunDetailDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskRunDetailDTO" }) as any as S.Schema<TaskRunDetailDTO>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap =
+const TaskUserBasicInfoHedgehogConfigMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
 
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
@@ -459,7 +440,7 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -478,7 +459,7 @@ export interface SlackThreadReferenceDTO {
   channel: string;
   created_at?: string | null;
 }
-export const SlackThreadReferenceDTO = /*@__PURE__*/ S.suspend(() =>
+const SlackThreadReferenceDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     channel: S.String,
@@ -487,7 +468,7 @@ export const SlackThreadReferenceDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SlackThreadReferenceDTO" }) as any as S.Schema<SlackThreadReferenceDTO>;
 
 export type TaskCreateResponseDTOSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
-export const TaskCreateResponseDTOSlackThreadReferencesList = /*@__PURE__*/ S.Array(
+const TaskCreateResponseDTOSlackThreadReferencesList = /*@__PURE__*/ S.Array(
   SlackThreadReferenceDTO,
 ) as any as S.Schema<TaskCreateResponseDTOSlackThreadReferencesList>;
 
@@ -525,7 +506,7 @@ export interface TaskCreateResponseDTO {
   /** Error returned when the task was created but its first run could not start. */
   run_error?: string;
 }
-export const TaskCreateResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskCreateResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_number: S.NullOr(S.Number),
@@ -569,7 +550,7 @@ export interface CreateTasksConfigRequest {
   /** Default reasoning effort for models that expose an effort control. A Pi default stores a Pi thinking level here, which also allows 'off' and 'minimal'. * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
   reasoning_effort?: TaskRunReasoningEffortEnum | (string & {}) | null;
 }
-export const CreateTasksConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     runtime: S.optional(S.NullOr(TaskRuntimeEnum)),
@@ -590,7 +571,7 @@ export interface TasksAIRunPreferences {
   /** Default reasoning effort for models that expose an effort control. A Pi default stores a Pi thinking level here, which also allows 'off' and 'minimal'. * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
   reasoning_effort?: TaskRunReasoningEffortEnum | null;
 }
-export const TasksAIRunPreferences = /*@__PURE__*/ S.suspend(() =>
+const TasksAIRunPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtime: S.optional(S.NullOr(TaskRuntimeEnum)),
     runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
@@ -606,7 +587,7 @@ export interface TasksTeamConfigResponse {
   /** Project instructions that PostHog cloud agents read in every eligible Tasks run, including autonomous runs such as scouts and loops. Empty when unset. */
   agent_instructions: string;
 }
-export const TasksTeamConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const TasksTeamConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ai_run_preferences: TasksAIRunPreferences,
     agent_instructions: S.String,
@@ -619,7 +600,7 @@ export interface CreateTasksConfigAgentInstructionRequest {
   /** Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear. */
   agent_instructions: string;
 }
-export const CreateTasksConfigAgentInstructionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksConfigAgentInstructionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     agent_instructions: S.String,
@@ -639,7 +620,7 @@ export interface TasksAgentInstructions {
   /** Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear. */
   agent_instructions: string;
 }
-export const TasksAgentInstructions = /*@__PURE__*/ S.suspend(() =>
+const TasksAgentInstructions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_instructions: S.String,
   }),
@@ -652,7 +633,7 @@ export interface CreateTasksHandoffRequest {
   /** ID of the user taking over the task. Must have access to this project and not be the task's current owner. */
   user: number;
 }
-export const CreateTasksHandoffRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksHandoffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -665,15 +646,15 @@ export const CreateTasksHandoffRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTasksHandoffRequest>;
 
 export type TaskDetailDTORepositoriesList = Array<string>;
-export const TaskDetailDTORepositoriesList =
+const TaskDetailDTORepositoriesList =
   CreateTaskRequestRepositoriesList as any as S.Schema<TaskDetailDTORepositoriesList>;
 
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };
-export const TaskDetailDTOJsonSchemaMap =
+const TaskDetailDTOJsonSchemaMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskDetailDTOJsonSchemaMap>;
 
 export type TaskDetailDTOSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
-export const TaskDetailDTOSlackThreadReferencesList =
+const TaskDetailDTOSlackThreadReferencesList =
   TaskCreateResponseDTOSlackThreadReferencesList as any as S.Schema<TaskDetailDTOSlackThreadReferencesList>;
 
 /** Detail response for a task. Reads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` / ``github_user_integration`` are integration ids, ``signal_report`` is the report id, and ``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``. */
@@ -708,7 +689,7 @@ export interface TaskDetailDTO {
   /** Stable key of the server-side flow that created this task, e.g. `desktop_onboarding_session:<user_id>`. Null for tasks people create themselves. */
   origin_key?: string | null;
 }
-export const TaskDetailDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskDetailDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_number: S.NullOr(S.Number),
@@ -751,7 +732,7 @@ export interface CreateTasksMeConfigRequest {
   /** Default reasoning effort for models that expose an effort control. A Pi default stores a Pi thinking level here, which also allows 'off' and 'minimal'. * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
   reasoning_effort?: TaskRunReasoningEffortEnum | (string & {}) | null;
 }
-export const CreateTasksMeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksMeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     runtime: S.optional(S.NullOr(TaskRuntimeEnum)),
@@ -767,7 +748,7 @@ export const CreateTasksMeConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `user` - user * `team` - team * `none` - none */
 export type TasksResolvedAIRunDefaultsSourceEnum = "user" | "team" | "none";
-export const TasksResolvedAIRunDefaultsSourceEnum = S.String;
+const TasksResolvedAIRunDefaultsSourceEnum = S.String;
 
 /** The AI run selection a new run will effectively use when the caller pins nothing, plus which preference level supplied it. */
 export interface TasksResolvedAIRunDefaults {
@@ -782,7 +763,7 @@ export interface TasksResolvedAIRunDefaults {
   /** Preference level that supplied the default: the caller's own per-project preference ('user'), the project default ('team'), or 'none'. * `user` - user * `team` - team * `none` - none */
   source: TasksResolvedAIRunDefaultsSourceEnum;
 }
-export const TasksResolvedAIRunDefaults = /*@__PURE__*/ S.suspend(() =>
+const TasksResolvedAIRunDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtime: S.String,
     runtime_adapter: S.NullOr(S.String),
@@ -801,7 +782,7 @@ export interface TasksTaskDefaults {
   /** When true, a cloud run that changes code always opens a draft pull request. Null when you never set it. */
   auto_publish_cloud_runs: boolean | null;
 }
-export const TasksTaskDefaults = /*@__PURE__*/ S.suspend(() =>
+const TasksTaskDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_in_plan_mode: S.NullOr(S.Boolean),
     auto_publish_cloud_runs: S.NullOr(S.Boolean),
@@ -819,7 +800,7 @@ export interface TasksUserConfigResponse {
   /** Your per-project defaults for new tasks. Unset defaults are false. */
   task_defaults: TasksTaskDefaults;
 }
-export const TasksUserConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const TasksUserConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ai_run_preferences: TasksAIRunPreferences,
     resolved_ai_run_defaults: TasksResolvedAIRunDefaults,
@@ -834,7 +815,7 @@ export interface CreateTasksMeConfigAgentInstructionRequest {
   /** Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear. */
   agent_instructions: string;
 }
-export const CreateTasksMeConfigAgentInstructionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksMeConfigAgentInstructionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     agent_instructions: S.String,
@@ -857,7 +838,7 @@ export interface CreateTasksMeConfigTaskDefaultRequest {
   /** When true, a cloud run that changes code always opens a draft pull request. Null when you never set it. */
   auto_publish_cloud_runs?: boolean;
 }
-export const CreateTasksMeConfigTaskDefaultRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksMeConfigTaskDefaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     start_in_plan_mode: S.optional(S.Boolean),
@@ -880,7 +861,7 @@ export interface CreateTasksPinRequest {
   /** Whether the task should be pinned for the requester. */
   pinned: boolean;
 }
-export const CreateTasksPinRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksPinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -894,7 +875,7 @@ export interface TaskPinResponse {
   /** Current pin state for the requester. */
   pinned: boolean;
 }
-export const TaskPinResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskPinResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     pinned: S.Boolean,
@@ -908,7 +889,7 @@ export interface CreateTasksPresenceRequest {
   /** UUID of the caller's UserPushToken (returned by `/api/users/@me/push_tokens/` on register). */
   device_id: string;
 }
-export const CreateTasksPresenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksPresenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -921,13 +902,13 @@ export const CreateTasksPresenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTasksPresenceRequest>;
 
 export interface CreateTasksPresenceResponse {}
-export const CreateTasksPresenceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateTasksPresenceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateTasksPresenceResponse",
 }) as any as S.Schema<CreateTasksPresenceResponse>;
 
 /** Task IDs whose latest run's pull request titles to fetch (max 30). */
 export type CreateTasksPullRequestTitleRequestIdsList = Array<string>;
-export const CreateTasksPullRequestTitleRequestIdsList =
+const CreateTasksPullRequestTitleRequestIdsList =
   CreateTaskRequestRepositoriesList as any as S.Schema<CreateTasksPullRequestTitleRequestIdsList>;
 
 export interface CreateTasksPullRequestTitleRequest {
@@ -936,7 +917,7 @@ export interface CreateTasksPullRequestTitleRequest {
   /** Task IDs whose latest run's pull request titles to fetch (max 30). */
   ids: CreateTasksPullRequestTitleRequestIdsList;
 }
-export const CreateTasksPullRequestTitleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksPullRequestTitleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ids: CreateTasksPullRequestTitleRequestIdsList,
@@ -953,7 +934,7 @@ export const CreateTasksPullRequestTitleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Pull request titles keyed by normalized GitHub URL. A pull request is missing when GitHub could not return its title. */
 export type TaskPullRequestTitlesTitlesMap = { [key: string]: string | undefined };
-export const TaskPullRequestTitlesTitlesMap = /*@__PURE__*/ S.Record(
+const TaskPullRequestTitlesTitlesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TaskPullRequestTitlesTitlesMap>;
@@ -962,7 +943,7 @@ export interface TaskPullRequestTitles {
   /** Pull request titles keyed by normalized GitHub URL. A pull request is missing when GitHub could not return its title. */
   titles: TaskPullRequestTitlesTitlesMap;
 }
-export const TaskPullRequestTitles = /*@__PURE__*/ S.suspend(() =>
+const TaskPullRequestTitles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     titles: TaskPullRequestTitlesTitlesMap,
   }),
@@ -976,7 +957,7 @@ export interface CreateTasksRepoRoutingRuleRequest {
   /** Target repository as owner/repo, e.g. 'posthog/posthog.com'. */
   repository: string;
 }
-export const CreateTasksRepoRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRepoRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     rule_text: S.String,
@@ -993,7 +974,7 @@ export const CreateTasksRepoRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTasksRepoRoutingRuleRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -1007,14 +988,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -1027,7 +1003,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -1053,7 +1029,7 @@ export interface RepoRoutingRule {
   created_at: string;
   updated_at: string;
 }
-export const RepoRoutingRule = /*@__PURE__*/ S.suspend(() =>
+const RepoRoutingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     rule_text: S.String,
@@ -1067,24 +1043,11 @@ export const RepoRoutingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** * `http` - http * `sse` - sse */
 export type ImportedMcpServerTypeEnum = "http" | "sse";
-export const ImportedMcpServerTypeEnum = S.String;
-
 export interface ImportedMcpServerHeader {
   name: string;
   value: string;
 }
-export const ImportedMcpServerHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "ImportedMcpServerHeader" }) as any as S.Schema<ImportedMcpServerHeader>;
-
 export type ImportedMcpServerHeadersList = Array<ImportedMcpServerHeader>;
-export const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
-  ImportedMcpServerHeader,
-) as any as S.Schema<ImportedMcpServerHeadersList>;
-
 /** One client-imported MCP server, in the agent server's --mcpServers entry shape. */
 export interface ImportedMcpServer {
   type: ImportedMcpServerTypeEnum | (string & {});
@@ -1092,66 +1055,30 @@ export interface ImportedMcpServer {
   url: string;
   headers?: ImportedMcpServerHeadersList;
 }
-export const ImportedMcpServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ImportedMcpServerTypeEnum,
-    name: S.String,
-    url: S.String,
-    headers: S.optional(ImportedMcpServerHeadersList),
-  }),
-).annotate({ identifier: "ImportedMcpServer" }) as any as S.Schema<ImportedMcpServer>;
-
 /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
 export type ClaudeTaskRunCreateSchemaImportedMcpServersList = Array<ImportedMcpServer>;
-export const ClaudeTaskRunCreateSchemaImportedMcpServersList = /*@__PURE__*/ S.Array(
-  ImportedMcpServer,
-) as any as S.Schema<ClaudeTaskRunCreateSchemaImportedMcpServersList>;
-
 /** One desktop-only MCP server relayed into the run -- a name only, never configuration. */
 export interface RelayedMcpServer {
   name: string;
 }
-export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({ identifier: "RelayedMcpServer" }) as any as S.Schema<RelayedMcpServer>;
-
 /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
 export type ClaudeTaskRunCreateSchemaRelayedMcpServersList = Array<RelayedMcpServer>;
-export const ClaudeTaskRunCreateSchemaRelayedMcpServersList = /*@__PURE__*/ S.Array(
-  RelayedMcpServer,
-) as any as S.Schema<ClaudeTaskRunCreateSchemaRelayedMcpServersList>;
-
 /** * `posthog-gateway` - posthog-gateway * `own-subscription` - own-subscription */
 export type ModelAccessEnum = "posthog-gateway" | "own-subscription";
-export const ModelAccessEnum = S.String;
-
 /** * `interactive` - interactive * `background` - background */
 export type TaskExecutionModeEnum = "interactive" | "background";
-export const TaskExecutionModeEnum = S.String;
+const TaskExecutionModeEnum = S.String;
 
 /** Identifiers for staged task artifacts that should be attached to the initial run prompt. */
 export type ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList = Array<string>;
-export const ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList =
-  CreateTaskRequestRepositoriesList as any as S.Schema<ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList>;
-
 /** * `user` - user * `bot` - bot */
 export type PrAuthorshipModeEnum = "user" | "bot";
-export const PrAuthorshipModeEnum = S.String;
-
 /** * `manual` - manual * `signal_report` - signal_report * `agent` - agent */
 export type RunSourceEnum = "manual" | "signal_report" | "agent";
-export const RunSourceEnum = S.String;
-
 /** * `claude` - claude */
 export type ClaudeRuntimeAdapterEnum = "claude";
-export const ClaudeRuntimeAdapterEnum = S.String;
-
 /** * `200k` - 200k * `1m` - 1m */
 export type ContextWindowEnum = "200k" | "1m";
-export const ContextWindowEnum = S.String;
-
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto */
 export type InitialPermissionModeEnum =
   | "default"
@@ -1159,8 +1086,6 @@ export type InitialPermissionModeEnum =
   | "plan"
   | "bypassPermissions"
   | "auto";
-export const InitialPermissionModeEnum = S.String;
-
 /** Request body for creating a new task run */
 export interface ClaudeTaskRunCreateSchema {
   /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
@@ -1214,65 +1139,20 @@ export interface ClaudeTaskRunCreateSchema {
   /** Initial permission mode for Claude runtimes. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto */
   initial_permission_mode?: InitialPermissionModeEnum | (string & {});
 }
-export const ClaudeTaskRunCreateSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imported_mcp_servers: S.optional(S.NullOr(ClaudeTaskRunCreateSchemaImportedMcpServersList)),
-    relayed_mcp_servers: S.optional(S.NullOr(ClaudeTaskRunCreateSchemaRelayedMcpServersList)),
-    rtk_enabled: S.optional(S.NullOr(S.Boolean)),
-    benjamin_enabled: S.optional(S.NullOr(S.Boolean)),
-    claude_model_access: S.optional(S.NullOr(ModelAccessEnum)),
-    codex_model_access: S.optional(S.NullOr(ModelAccessEnum)),
-    scheduled_at: S.optional(S.NullOr(S.String)),
-    mode: S.optional(TaskExecutionModeEnum),
-    branch: S.optional(S.NullOr(S.String)),
-    resume_from_run_id: S.optional(S.String),
-    pending_user_message: S.optional(S.String),
-    pending_user_artifact_ids: S.optional(ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList),
-    sandbox_environment_id: S.optional(S.String),
-    custom_image_id: S.optional(S.String),
-    pr_authorship_mode: S.optional(PrAuthorshipModeEnum),
-    auto_publish: S.optional(S.NullOr(S.Boolean)),
-    run_source: S.optional(RunSourceEnum),
-    signal_report_id: S.optional(S.String),
-    runtime_adapter: S.optional(ClaudeRuntimeAdapterEnum),
-    model: S.optional(S.String),
-    reasoning_effort: S.optional(ReasoningEffortEnum),
-    context_window: S.optional(ContextWindowEnum),
-    fast_mode: S.optional(S.NullOr(S.Boolean)),
-    github_user_token: S.optional(S.String),
-    initial_permission_mode: S.optional(InitialPermissionModeEnum),
-  }),
-).annotate({
-  identifier: "ClaudeTaskRunCreateSchema",
-}) as any as S.Schema<ClaudeTaskRunCreateSchema>;
-
 /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
 export type CodexTaskRunCreateSchemaImportedMcpServersList = Array<ImportedMcpServer>;
-export const CodexTaskRunCreateSchemaImportedMcpServersList =
-  ClaudeTaskRunCreateSchemaImportedMcpServersList as any as S.Schema<CodexTaskRunCreateSchemaImportedMcpServersList>;
-
 /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
 export type CodexTaskRunCreateSchemaRelayedMcpServersList = Array<RelayedMcpServer>;
-export const CodexTaskRunCreateSchemaRelayedMcpServersList =
-  ClaudeTaskRunCreateSchemaRelayedMcpServersList as any as S.Schema<CodexTaskRunCreateSchemaRelayedMcpServersList>;
-
 /** Identifiers for staged task artifacts that should be attached to the initial run prompt. */
 export type CodexTaskRunCreateSchemaPendingUserArtifactIdsList = Array<string>;
-export const CodexTaskRunCreateSchemaPendingUserArtifactIdsList =
-  CreateTaskRequestRepositoriesList as any as S.Schema<CodexTaskRunCreateSchemaPendingUserArtifactIdsList>;
-
 /** * `codex` - codex */
 export type CodexRuntimeAdapterEnum = "codex";
-export const CodexRuntimeAdapterEnum = S.String;
-
 /** * `plan` - plan * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
 export type CodexTaskRunCreateSchemaInitialPermissionModeEnum =
   | "plan"
   | "auto"
   | "read-only"
   | "full-access";
-export const CodexTaskRunCreateSchemaInitialPermissionModeEnum = S.String;
-
 /** Request body for creating a new task run */
 export interface CodexTaskRunCreateSchema {
   /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
@@ -1326,36 +1206,6 @@ export interface CodexTaskRunCreateSchema {
   /** Initial permission mode for Codex runtimes. * `plan` - plan * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
   initial_permission_mode?: CodexTaskRunCreateSchemaInitialPermissionModeEnum | (string & {});
 }
-export const CodexTaskRunCreateSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imported_mcp_servers: S.optional(S.NullOr(CodexTaskRunCreateSchemaImportedMcpServersList)),
-    relayed_mcp_servers: S.optional(S.NullOr(CodexTaskRunCreateSchemaRelayedMcpServersList)),
-    rtk_enabled: S.optional(S.NullOr(S.Boolean)),
-    benjamin_enabled: S.optional(S.NullOr(S.Boolean)),
-    claude_model_access: S.optional(S.NullOr(ModelAccessEnum)),
-    codex_model_access: S.optional(S.NullOr(ModelAccessEnum)),
-    scheduled_at: S.optional(S.NullOr(S.String)),
-    mode: S.optional(TaskExecutionModeEnum),
-    branch: S.optional(S.NullOr(S.String)),
-    resume_from_run_id: S.optional(S.String),
-    pending_user_message: S.optional(S.String),
-    pending_user_artifact_ids: S.optional(CodexTaskRunCreateSchemaPendingUserArtifactIdsList),
-    sandbox_environment_id: S.optional(S.String),
-    custom_image_id: S.optional(S.String),
-    pr_authorship_mode: S.optional(PrAuthorshipModeEnum),
-    auto_publish: S.optional(S.NullOr(S.Boolean)),
-    run_source: S.optional(RunSourceEnum),
-    signal_report_id: S.optional(S.String),
-    runtime_adapter: S.optional(CodexRuntimeAdapterEnum),
-    model: S.optional(S.String),
-    reasoning_effort: S.optional(ReasoningEffortEnum),
-    context_window: S.optional(ContextWindowEnum),
-    fast_mode: S.optional(S.NullOr(S.Boolean)),
-    github_user_token: S.optional(S.String),
-    initial_permission_mode: S.optional(CodexTaskRunCreateSchemaInitialPermissionModeEnum),
-  }),
-).annotate({ identifier: "CodexTaskRunCreateSchema" }) as any as S.Schema<CodexTaskRunCreateSchema>;
-
 export interface TaskRunResumeRequestSchema {
   /** Earliest start time for a one-off cloud run, in ISO 8601 format. Must be in the future and within 30 days. Times without an offset use UTC. Omit or send null to start immediately. */
   scheduled_at?: string | null;
@@ -1382,31 +1232,11 @@ export interface TaskRunResumeRequestSchema {
   /** Optional GitHub user token from PostHog Desktop for user-authored cloud pull requests. Prefer linking GitHub from Settings -> Linked accounts so the server can manage tokens; this field remains supported for callers that still manage their own tokens. */
   github_user_token?: string;
 }
-export const TaskRunResumeRequestSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scheduled_at: S.optional(S.NullOr(S.String)),
-    model: S.optional(S.String),
-    reasoning_effort: S.optional(ReasoningEffortEnum),
-    mode: S.optional(TaskExecutionModeEnum),
-    branch: S.optional(S.NullOr(S.String)),
-    resume_from_run_id: S.optional(S.String),
-    pending_user_message: S.optional(S.String),
-    sandbox_environment_id: S.optional(S.String),
-    custom_image_id: S.optional(S.String),
-    pr_authorship_mode: S.optional(PrAuthorshipModeEnum),
-    run_source: S.optional(RunSourceEnum),
-    signal_report_id: S.optional(S.String),
-    github_user_token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TaskRunResumeRequestSchema",
-}) as any as S.Schema<TaskRunResumeRequestSchema>;
-
 export type TaskRunCreateRequestSchema =
   | ClaudeTaskRunCreateSchema
   | CodexTaskRunCreateSchema
   | TaskRunResumeRequestSchema;
-export const TaskRunCreateRequestSchema = S.Unknown as any as S.Schema<TaskRunCreateRequestSchema>;
+const TaskRunCreateRequestSchema = S.Unknown as any as S.Schema<TaskRunCreateRequestSchema>;
 
 export interface CreateTasksRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1414,7 +1244,7 @@ export interface CreateTasksRunRequest {
   id: string;
   body?: TaskRunCreateRequestSchema;
 }
-export const CreateTasksRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1423,15 +1253,15 @@ export const CreateTasksRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTasksRunRequest" }) as any as S.Schema<CreateTasksRunRequest>;
 
 export type TaskRunResponseRepositoriesList = Array<string>;
-export const TaskRunResponseRepositoriesList =
+const TaskRunResponseRepositoriesList =
   CreateTaskRequestRepositoriesList as any as S.Schema<TaskRunResponseRepositoriesList>;
 
 export type TaskRunResponseJsonSchemaMap = { [key: string]: unknown | undefined };
-export const TaskRunResponseJsonSchemaMap =
+const TaskRunResponseJsonSchemaMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunResponseJsonSchemaMap>;
 
 export type TaskRunResponseSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
-export const TaskRunResponseSlackThreadReferencesList =
+const TaskRunResponseSlackThreadReferencesList =
   TaskCreateResponseDTOSlackThreadReferencesList as any as S.Schema<TaskRunResponseSlackThreadReferencesList>;
 
 /** The task ``run`` action's response: the refreshed task detail plus the run this call made. ``run`` is the run the call created or activated -- the payload a caller reads run-scoped ids from, instead of inferring them from ``latest_run`` (or, worse, the top-level task ``id``). */
@@ -1470,7 +1300,7 @@ export interface TaskRunResponse {
   /** The run this call created or activated. Read run-scoped ids from here -- `run.id` is the id the run's stream and command endpoints take, while the top-level `id` is the task's. Set on every 200; when `run_error` is also set, the run exists but its workflow did not start. */
   run?: TaskRunDetailDTO | null;
 }
-export const TaskRunResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_number: S.NullOr(S.Number),
@@ -1512,7 +1342,7 @@ export type ArtifactType2f0Enum =
   | "dashboard"
   | "file"
   | "github_pr";
-export const ArtifactType2f0Enum = S.String;
+const ArtifactType2f0Enum = S.String;
 
 /** * `slack_message` - slack_message * `slack_canvas` - slack_canvas * `slack_file` - slack_file * `document_connector` - document_connector * `github_pr` - github_pr */
 export type AdapterEnum =
@@ -1521,13 +1351,13 @@ export type AdapterEnum =
   | "slack_file"
   | "document_connector"
   | "github_pr";
-export const AdapterEnum = S.String;
+const AdapterEnum = S.String;
 
 /** Optional metadata to persist with the living artifact. */
 export type CreateTasksRunsLivingArtifactRequestMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateTasksRunsLivingArtifactRequestMetadataMap =
+const CreateTasksRunsLivingArtifactRequestMetadataMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<CreateTasksRunsLivingArtifactRequestMetadataMap>;
 
 export interface CreateTasksRunsLivingArtifactRequest {
@@ -1554,7 +1384,7 @@ export interface CreateTasksRunsLivingArtifactRequest {
   /** Optional metadata to persist with the living artifact. */
   metadata?: CreateTasksRunsLivingArtifactRequestMetadataMap;
 }
-export const CreateTasksRunsLivingArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsLivingArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1581,16 +1411,16 @@ export const CreateTasksRunsLivingArtifactRequest = /*@__PURE__*/ S.suspend(() =
 
 /** * `active` - active * `failed` - failed */
 export type TaskArtifactStatusEnum = "active" | "failed";
-export const TaskArtifactStatusEnum = S.String;
+const TaskArtifactStatusEnum = S.String;
 
 export type TaskRunLivingArtifactResponseVersionsItemMap = { [key: string]: unknown | undefined };
-export const TaskRunLivingArtifactResponseVersionsItemMap =
+const TaskRunLivingArtifactResponseVersionsItemMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunLivingArtifactResponseVersionsItemMap>;
 
 /** Chronological version records for this artifact. */
 export type TaskRunLivingArtifactResponseVersionsList =
   Array<TaskRunLivingArtifactResponseVersionsItemMap>;
-export const TaskRunLivingArtifactResponseVersionsList = /*@__PURE__*/ S.Array(
+const TaskRunLivingArtifactResponseVersionsList = /*@__PURE__*/ S.Array(
   TaskRunLivingArtifactResponseVersionsItemMap,
 ) as any as S.Schema<TaskRunLivingArtifactResponseVersionsList>;
 
@@ -1624,7 +1454,7 @@ export interface TaskRunLivingArtifactResponse {
   /** ISO timestamp when last updated. */
   updated_at?: string | null;
 }
-export const TaskRunLivingArtifactResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunLivingArtifactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_id: S.String,
@@ -1647,7 +1477,7 @@ export const TaskRunLivingArtifactResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Task IDs to fetch summaries for (max 5000). Response is paginated; follow the `next` cursor to retrieve all results. */
 export type CreateTasksSummaryRequestIdsList = Array<string>;
-export const CreateTasksSummaryRequestIdsList =
+const CreateTasksSummaryRequestIdsList =
   CreateTaskRequestRepositoriesList as any as S.Schema<CreateTasksSummaryRequestIdsList>;
 
 export interface CreateTasksSummaryRequest {
@@ -1660,7 +1490,7 @@ export interface CreateTasksSummaryRequest {
   /** Task IDs to fetch summaries for (max 5000). Response is paginated; follow the `next` cursor to retrieve all results. */
   ids: CreateTasksSummaryRequestIdsList;
 }
-export const CreateTasksSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1681,15 +1511,15 @@ export type TaskRunStatusEnum =
   | "completed"
   | "failed"
   | "cancelled";
-export const TaskRunStatusEnum = S.String;
+const TaskRunStatusEnum = S.String;
 
 /** * `local` - Local * `cloud` - Cloud */
 export type TaskRunEnvironmentEnum = "local" | "cloud";
-export const TaskRunEnvironmentEnum = S.String;
+const TaskRunEnvironmentEnum = S.String;
 
 /** * `open` - open * `draft` - draft * `merged` - merged * `closed` - closed * `unknown` - unknown */
 export type PrStateEnum = "open" | "draft" | "merged" | "closed" | "unknown";
-export const PrStateEnum = S.String;
+const PrStateEnum = S.String;
 
 export interface TaskRunSummary {
   /** ID of the latest run. */
@@ -1705,7 +1535,7 @@ export interface TaskRunSummary {
   /** Latest summary for this task, including a summary inherited from an earlier run. */
   task_summary?: string | null;
 }
-export const TaskRunSummary = /*@__PURE__*/ S.suspend(() =>
+const TaskRunSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: S.NullOr(TaskRunStatusEnum),
@@ -1729,7 +1559,7 @@ export interface TaskSummaryDTO {
   origin_product?: string;
   latest_run?: TaskRunSummary | null;
 }
-export const TaskSummaryDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskSummaryDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -1743,7 +1573,7 @@ export const TaskSummaryDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskSummaryDTO" }) as any as S.Schema<TaskSummaryDTO>;
 
 export type PaginatedTaskSummaryDTOListResultsList = Array<TaskSummaryDTO>;
-export const PaginatedTaskSummaryDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedTaskSummaryDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskSummaryDTO,
 ) as any as S.Schema<PaginatedTaskSummaryDTOListResultsList>;
 
@@ -1753,7 +1583,7 @@ export interface PaginatedTaskSummaryDTOList {
   previous?: string | null;
   results: PaginatedTaskSummaryDTOListResultsList;
 }
-export const PaginatedTaskSummaryDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTaskSummaryDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1771,7 +1601,7 @@ export interface CreateTasksThreadMessageRequest {
   /** Message text. */
   content: string;
 }
-export const CreateTasksThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1788,7 +1618,7 @@ export const CreateTasksThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTasksThreadMessageRequest>;
 
 export type TaskThreadMessageDTOPayloadMap = { [key: string]: unknown | undefined };
-export const TaskThreadMessageDTOPayloadMap =
+const TaskThreadMessageDTOPayloadMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskThreadMessageDTOPayloadMap>;
 
 /** Response shape for one message in a task's thread. */
@@ -1804,7 +1634,7 @@ export interface TaskThreadMessageDTO {
   forwarded_to_agent_at?: string | null;
   forwarded_by?: TaskUserBasicInfo | null;
 }
-export const TaskThreadMessageDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskThreadMessageDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task: S.String,
@@ -1821,12 +1651,12 @@ export const TaskThreadMessageDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** GitHub repositories to clone into the warm sandbox, each in `organization/repo` format. */
 export type CreateTasksWarmRequestRepositoriesList = Array<string>;
-export const CreateTasksWarmRequestRepositoriesList =
+const CreateTasksWarmRequestRepositoriesList =
   CreateTaskRequestRepositoriesList as any as S.Schema<CreateTasksWarmRequestRepositoriesList>;
 
 /** * `user_created` - user_created * `posthog_ai` - posthog_ai * `signal_report` - signal_report */
 export type WarmTaskRequestOriginProductEnum = "user_created" | "posthog_ai" | "signal_report";
-export const WarmTaskRequestOriginProductEnum = S.String;
+const WarmTaskRequestOriginProductEnum = S.String;
 
 export interface CreateTasksWarmRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1859,7 +1689,7 @@ export interface CreateTasksWarmRequest {
   /** Inbox report the warm discussion is about. Required with origin_product `signal_report`, where the warm Run boots repo-less and the submit that creates the report's discussion task activates it. */
   signal_report?: string | null;
 }
-export const CreateTasksWarmRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksWarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     repository: S.optional(S.NullOr(S.String)),
@@ -1886,7 +1716,7 @@ export interface WarmTaskResponse {
   /** Id of the idling warm Run. The normal create+run path reuses and activates it on submit. */
   run_id: string;
 }
-export const WarmTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const WarmTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     run_id: S.String,
@@ -1895,7 +1725,7 @@ export const WarmTaskResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional metadata to merge into the artifact registry record. */
 export type EditTasksRunsLivingArtifactRequestMetadataMap = { [key: string]: unknown | undefined };
-export const EditTasksRunsLivingArtifactRequestMetadataMap =
+const EditTasksRunsLivingArtifactRequestMetadataMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<EditTasksRunsLivingArtifactRequestMetadataMap>;
 
 export interface EditTasksRunsLivingArtifactRequest {
@@ -1919,7 +1749,7 @@ export interface EditTasksRunsLivingArtifactRequest {
   /** Optional metadata to merge into the artifact registry record. */
   metadata?: EditTasksRunsLivingArtifactRequestMetadataMap;
 }
-export const EditTasksRunsLivingArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const EditTasksRunsLivingArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1944,7 +1774,7 @@ export const EditTasksRunsLivingArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditTasksRunsLivingArtifactRequest>;
 
 export interface GetCodeInvitesCheckAccessRequest {}
-export const GetCodeInvitesCheckAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCodeInvitesCheckAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/code/invites/check-access/", code: 200 })),
 ).annotate({
   identifier: "GetCodeInvitesCheckAccessRequest",
@@ -1956,7 +1786,7 @@ export interface LegacyDesktopAccessResponse {
   /** Whether the independent Loops feature is enabled. */
   has_loops_access: boolean;
 }
-export const LegacyDesktopAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const LegacyDesktopAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     has_access: S.Boolean,
     has_loops_access: S.Boolean,
@@ -1969,7 +1799,7 @@ export interface GetDesktopAccessRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetDesktopAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDesktopAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/desktop/access/", code: 200 })),
@@ -1977,7 +1807,7 @@ export const GetDesktopAccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `startup_plan` - startup_plan * `prepaid_credits` - prepaid_credits */
 export type DesktopAccessReasonEnum = "startup_plan" | "prepaid_credits";
-export const DesktopAccessReasonEnum = S.String;
+const DesktopAccessReasonEnum = S.String;
 
 export interface DesktopAccessResponse {
   /** Whether the selected project can use PostHog Desktop. */
@@ -1985,7 +1815,7 @@ export interface DesktopAccessResponse {
   /** Why Desktop access is blocked, or null when access is allowed. * `startup_plan` - startup_plan * `prepaid_credits` - prepaid_credits */
   reason: DesktopAccessReasonEnum | null;
 }
-export const DesktopAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const DesktopAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed: S.Boolean,
     reason: S.NullOr(DesktopAccessReasonEnum),
@@ -1997,7 +1827,7 @@ export interface GetTaskRequest {
   project_id: string;
   id: string;
 }
-export const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2008,7 +1838,7 @@ export interface GetTasksActiveWizardRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetTasksActiveWizardRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksActiveWizardRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2033,7 +1863,7 @@ export interface WizardCloudRunDTO {
   /** When the run was created, for the FAB's elapsed timer. */
   started_at?: string | null;
 }
-export const WizardCloudRunDTO = /*@__PURE__*/ S.suspend(() =>
+const WizardCloudRunDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     run_id: S.String,
@@ -2056,7 +1886,7 @@ export interface GetTasksCommentRequest {
   /** Maximum number of comments in the thread to return. */
   limit?: number;
 }
-export const GetTasksCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2082,7 +1912,7 @@ export interface TaskCommentTarget {
   /** Display name of the comment target. */
   name: string;
 }
-export const TaskCommentTarget = /*@__PURE__*/ S.suspend(() =>
+const TaskCommentTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.String,
@@ -2112,7 +1942,7 @@ export interface TaskCommentAnchor {
   /** Region height. */
   height?: number;
 }
-export const TaskCommentAnchor = /*@__PURE__*/ S.suspend(() =>
+const TaskCommentAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     quote: S.optional(S.String),
@@ -2145,7 +1975,7 @@ export interface TaskCommentEntry {
   /** Canvas version receiving the comment. */
   canvas_version_id: string | null;
 }
-export const TaskCommentEntry = /*@__PURE__*/ S.suspend(() =>
+const TaskCommentEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     content: S.String,
@@ -2160,7 +1990,7 @@ export const TaskCommentEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Comments in this page, oldest first. */
 export type TaskCommentDetailCommentsList = Array<TaskCommentEntry>;
-export const TaskCommentDetailCommentsList = /*@__PURE__*/ S.Array(
+const TaskCommentDetailCommentsList = /*@__PURE__*/ S.Array(
   TaskCommentEntry,
 ) as any as S.Schema<TaskCommentDetailCommentsList>;
 
@@ -2176,7 +2006,7 @@ export interface TaskCommentDetail {
   /** Opaque cursor for the next page, or null. */
   next: string | null;
 }
-export const TaskCommentDetail = /*@__PURE__*/ S.suspend(() =>
+const TaskCommentDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     target: TaskCommentTarget,
@@ -2190,7 +2020,7 @@ export interface GetTasksModelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetTasksModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/tasks/models/", code: 200 })),
@@ -2198,7 +2028,7 @@ export const GetTasksModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Reasoning efforts this model accepts, in ascending order. Empty for a model with no effort control. */
 export type ModelChoiceSupportedEffortsList = Array<ReasoningEffortEnum>;
-export const ModelChoiceSupportedEffortsList = /*@__PURE__*/ S.Array(
+const ModelChoiceSupportedEffortsList = /*@__PURE__*/ S.Array(
   ReasoningEffortEnum,
 ) as any as S.Schema<ModelChoiceSupportedEffortsList>;
 
@@ -2214,7 +2044,7 @@ export interface ModelChoice {
   /** Per-token cost against the catalogue baseline, ready to display, such as '2.5x' or '~0.55x'. Prefixed when the input and output rates diverge enough that one number flatters either. Null for a model the catalogue quotes no rate for. */
   cost_multiplier?: string | null;
 }
-export const ModelChoice = /*@__PURE__*/ S.suspend(() =>
+const ModelChoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtime_adapter: RuntimeAdapterEnum,
     model: S.String,
@@ -2226,7 +2056,7 @@ export const ModelChoice = /*@__PURE__*/ S.suspend(() =>
 
 /** Every model a run may use, newest catalogue from the LLM gateway. Empty when the gateway is unreachable. */
 export type ModelCatalogueResponseModelsList = Array<ModelChoice>;
-export const ModelCatalogueResponseModelsList = /*@__PURE__*/ S.Array(
+const ModelCatalogueResponseModelsList = /*@__PURE__*/ S.Array(
   ModelChoice,
 ) as any as S.Schema<ModelCatalogueResponseModelsList>;
 
@@ -2234,7 +2064,7 @@ export interface ModelCatalogueResponse {
   /** Every model a run may use, newest catalogue from the LLM gateway. Empty when the gateway is unreachable. */
   models: ModelCatalogueResponseModelsList;
 }
-export const ModelCatalogueResponse = /*@__PURE__*/ S.suspend(() =>
+const ModelCatalogueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     models: ModelCatalogueResponseModelsList,
   }),
@@ -2244,7 +2074,7 @@ export interface GetTasksPinnedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetTasksPinnedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksPinnedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/tasks/pinned/", code: 200 })),
@@ -2252,14 +2082,14 @@ export const GetTasksPinnedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Visible task IDs pinned by the requester, newest pin first. */
 export type PinnedTaskIdsResponseTaskIdsList = Array<string>;
-export const PinnedTaskIdsResponseTaskIdsList =
+const PinnedTaskIdsResponseTaskIdsList =
   CreateTaskRequestRepositoriesList as any as S.Schema<PinnedTaskIdsResponseTaskIdsList>;
 
 export interface PinnedTaskIdsResponse {
   /** Visible task IDs pinned by the requester, newest pin first. */
   task_ids: PinnedTaskIdsResponseTaskIdsList;
 }
-export const PinnedTaskIdsResponse = /*@__PURE__*/ S.suspend(() =>
+const PinnedTaskIdsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_ids: PinnedTaskIdsResponseTaskIdsList,
   }),
@@ -2271,7 +2101,7 @@ export interface GetTasksRepoRoutingRuleRequest {
   /** A UUID string identifying this repo routing rule. */
   id: string;
 }
-export const GetTasksRepoRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRepoRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2290,7 +2120,7 @@ export interface GetTasksRepositoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetTasksRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2302,14 +2132,14 @@ export const GetTasksRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Distinct repositories in use by non-deleted, non-internal tasks for the current team. */
 export type TaskRepositoriesResponseRepositoriesList = Array<string>;
-export const TaskRepositoriesResponseRepositoriesList =
+const TaskRepositoriesResponseRepositoriesList =
   CreateTaskRequestRepositoriesList as any as S.Schema<TaskRepositoriesResponseRepositoriesList>;
 
 export interface TaskRepositoriesResponse {
   /** Distinct repositories in use by non-deleted, non-internal tasks for the current team. */
   repositories?: TaskRepositoriesResponseRepositoriesList;
 }
-export const TaskRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositories: S.optional(TaskRepositoriesResponseRepositoriesList),
   }),
@@ -2323,7 +2153,7 @@ export interface GetTasksRepositoryReadinessRequest {
   repository: string;
   window_days?: number;
 }
-export const GetTasksRepositoryReadinessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRepositoryReadinessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     refresh: S.optional(S.Boolean.pipe(T.Query())),
@@ -2348,11 +2178,11 @@ export type CapabilityStateStateEnum =
   | "ready"
   | "not_applicable"
   | "unknown";
-export const CapabilityStateStateEnum = S.String;
+const CapabilityStateStateEnum = S.String;
 
 /** Supporting evidence */
 export type CapabilityStateEvidenceMap = { [key: string]: unknown | undefined };
-export const CapabilityStateEvidenceMap =
+const CapabilityStateEvidenceMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<CapabilityStateEvidenceMap>;
 
 export interface CapabilityState {
@@ -2365,7 +2195,7 @@ export interface CapabilityState {
   /** Supporting evidence */
   evidence?: CapabilityStateEvidenceMap;
 }
-export const CapabilityState = /*@__PURE__*/ S.suspend(() =>
+const CapabilityState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(CapabilityStateStateEnum),
     estimated: S.optional(S.Boolean),
@@ -2388,7 +2218,7 @@ export interface ScanEvidence {
   /** Whether error tracking signals were found in scanned files */
   foundErrorSignal?: boolean;
 }
-export const ScanEvidence = /*@__PURE__*/ S.suspend(() =>
+const ScanEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filesScanned: S.optional(S.Number),
     detectedFilesCount: S.optional(S.Number),
@@ -2425,7 +2255,7 @@ export interface RepositoryReadinessResponse {
   /** Scan evidence details */
   scan?: ScanEvidence;
 }
-export const RepositoryReadinessResponse = /*@__PURE__*/ S.suspend(() =>
+const RepositoryReadinessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository: S.optional(S.String),
     classification: S.optional(S.String),
@@ -2451,7 +2281,7 @@ export interface GetTasksReviewRequest {
   /** Page of changed files. */
   page?: number;
 }
-export const GetTasksReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2475,7 +2305,7 @@ export interface TaskReviewFile {
   /** Open GitHub to read the complete or binary change. */
   truncated: boolean;
 }
-export const TaskReviewFile = /*@__PURE__*/ S.suspend(() =>
+const TaskReviewFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.String,
     status: S.String,
@@ -2488,7 +2318,7 @@ export const TaskReviewFile = /*@__PURE__*/ S.suspend(() =>
 
 /** Changed files on this page. */
 export type TaskReviewFilesList = Array<TaskReviewFile>;
-export const TaskReviewFilesList = /*@__PURE__*/ S.Array(
+const TaskReviewFilesList = /*@__PURE__*/ S.Array(
   TaskReviewFile,
 ) as any as S.Schema<TaskReviewFilesList>;
 
@@ -2508,7 +2338,7 @@ export interface TaskReview {
   /** Whether another file page is available. */
   has_more: boolean;
 }
-export const TaskReview = /*@__PURE__*/ S.suspend(() =>
+const TaskReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     title: S.String,
@@ -2526,7 +2356,7 @@ export interface GetTasksSlackThreadContextRequest {
   /** Full Slack permalink to any message in the thread (e.g. https://posthog.slack.com/archives/C.../p1779956938619299). Replies inside the thread are accepted too -- the `thread_ts` query param (when present) takes precedence over the in-path message ts. */
   url: string;
 }
-export const GetTasksSlackThreadContextRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksSlackThreadContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     url: S.String.pipe(T.Query()),
@@ -2560,7 +2390,7 @@ export interface SlackThreadContextThread {
   /** Absolute URL to the SlackThreadTaskMapping row in Django admin. Null when no mapping exists. */
   mapping_admin_url: string | null;
 }
-export const SlackThreadContextThread = /*@__PURE__*/ S.suspend(() =>
+const SlackThreadContextThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     channel: S.String,
@@ -2592,7 +2422,7 @@ export interface SlackThreadContextTask {
   /** Absolute URL to the Task row in Django admin. */
   admin_url: string;
 }
-export const SlackThreadContextTask = /*@__PURE__*/ S.suspend(() =>
+const SlackThreadContextTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     team_id: S.Number,
@@ -2624,7 +2454,7 @@ export interface SlackThreadContextRepoResearch {
   /** Presigned S3 URL for the research run's JSONL log transcript (valid ~1 hour). */
   log_url: string | null;
 }
-export const SlackThreadContextRepoResearch = /*@__PURE__*/ S.suspend(() =>
+const SlackThreadContextRepoResearch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     run_id: S.String,
@@ -2672,7 +2502,7 @@ export interface SlackThreadContextRun {
   /** Absolute URL to the TaskRun row in Django admin (includes a log download action). */
   admin_url: string;
 }
-export const SlackThreadContextRun = /*@__PURE__*/ S.suspend(() =>
+const SlackThreadContextRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: S.String,
@@ -2694,7 +2524,7 @@ export const SlackThreadContextRun = /*@__PURE__*/ S.suspend(() =>
 
 /** All runs on the task, oldest first. Empty when no mapping was found. */
 export type SlackThreadContextResponseRunsList = Array<SlackThreadContextRun>;
-export const SlackThreadContextResponseRunsList = /*@__PURE__*/ S.Array(
+const SlackThreadContextResponseRunsList = /*@__PURE__*/ S.Array(
   SlackThreadContextRun,
 ) as any as S.Schema<SlackThreadContextResponseRunsList>;
 
@@ -2707,7 +2537,7 @@ export interface SlackThreadContextResponse {
   /** All runs on the task, oldest first. Empty when no mapping was found. */
   runs: SlackThreadContextResponseRunsList;
 }
-export const SlackThreadContextResponse = /*@__PURE__*/ S.suspend(() =>
+const SlackThreadContextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thread: SlackThreadContextThread,
     task: S.NullOr(SlackThreadContextTask),
@@ -2722,7 +2552,7 @@ export interface GetTasksUsageRequest {
   project_id: string;
   id: string;
 }
-export const GetTasksUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2739,7 +2569,7 @@ export interface TaskUsageResponse {
   /** Estimated total cost attributed to this task in US dollars. */
   total_cost_usd: number;
 }
-export const TaskUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_cost_usd: S.Number,
     compute_cost_usd: S.Number,
@@ -2748,13 +2578,13 @@ export const TaskUsageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskUsageResponse" }) as any as S.Schema<TaskUsageResponse>;
 
 export type ListTasksRequestArchived = "true" | "false" | "all";
-export const ListTasksRequestArchived = S.String;
+const ListTasksRequestArchived = S.String;
 
 export type ListTasksRequestCiStatus = "passing" | "failing" | "pending" | "none";
-export const ListTasksRequestCiStatus = S.String;
+const ListTasksRequestCiStatus = S.String;
 
 export type ListTasksRequestClientProvenance = "posthog_desktop";
-export const ListTasksRequestClientProvenance = S.String;
+const ListTasksRequestClientProvenance = S.String;
 
 export type ListTasksRequestExcludeOriginProduct =
   | "onboarding"
@@ -2781,16 +2611,16 @@ export type ListTasksRequestExcludeOriginProduct =
   | "workflow"
   | "space_setup"
   | "business_knowledge";
-export const ListTasksRequestExcludeOriginProduct = S.String;
+const ListTasksRequestExcludeOriginProduct = S.String;
 
 export type ListTasksRequestInternal = "true" | "false" | "all";
-export const ListTasksRequestInternal = S.String;
+const ListTasksRequestInternal = S.String;
 
 export type ListTasksRequestOrdering = "-created_at" | "-last_activity_at";
-export const ListTasksRequestOrdering = S.String;
+const ListTasksRequestOrdering = S.String;
 
 export type ListTasksRequestPrState = "open" | "draft" | "merged" | "closed";
-export const ListTasksRequestPrState = S.String;
+const ListTasksRequestPrState = S.String;
 
 export type ListTasksRequestStatus =
   | "not_started"
@@ -2799,7 +2629,7 @@ export type ListTasksRequestStatus =
   | "completed"
   | "failed"
   | "cancelled";
-export const ListTasksRequestStatus = S.String;
+const ListTasksRequestStatus = S.String;
 
 export interface ListTasksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2851,7 +2681,7 @@ export interface ListTasksRequest {
   /** Filter tasks by the status of their most recent run. * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
   status?: ListTasksRequestStatus | (string & {});
 }
-export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     all_team_tasks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2881,17 +2711,8 @@ export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTasksRequest" }) as any as S.Schema<ListTasksRequest>;
 
 export type TaskBasicRepositoriesList = Array<string>;
-export const TaskBasicRepositoriesList =
-  CreateTaskRequestRepositoriesList as any as S.Schema<TaskBasicRepositoriesList>;
-
 export type TaskBasicJsonSchemaMap = { [key: string]: unknown | undefined };
-export const TaskBasicJsonSchemaMap =
-  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskBasicJsonSchemaMap>;
-
 export type TaskBasicSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
-export const TaskBasicSlackThreadReferencesList =
-  TaskCreateResponseDTOSlackThreadReferencesList as any as S.Schema<TaskBasicSlackThreadReferencesList>;
-
 /** Basic list response for a task, returned when the list is asked for ``basic=true``. A surface that renders only a summary of each task asks for the basic payload and gets this smaller shape. It drops the full ``description`` body, which dominates the list payload, and replaces it with ``description_preview`` (the first characters) so a feed can still show a prompt snippet. The default list response keeps the full ``description``, and ``retrieve`` always returns it. A client uses the ``search`` query parameter to match description text server-side. */
 export interface TaskBasic {
   id: string;
@@ -2925,42 +2746,11 @@ export interface TaskBasic {
   /** First 1000 characters of the description, so a summary surface can show a prompt snippet without the full body. Open the task for the complete text. */
   description_preview: string;
 }
-export const TaskBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    task_number: S.NullOr(S.Number),
-    slug: S.String,
-    title: S.String,
-    title_manually_set: S.Boolean,
-    origin_product: S.String,
-    runtime: TaskRuntimeEnum,
-    repository: S.NullOr(S.String),
-    repositories: TaskBasicRepositoriesList,
-    github_integration: S.NullOr(S.Number),
-    github_user_integration: S.NullOr(S.String),
-    signal_report: S.NullOr(S.String),
-    json_schema: S.NullOr(TaskBasicJsonSchemaMap),
-    internal: S.Boolean,
-    archived: S.Boolean,
-    archived_at: S.NullOr(S.String),
-    latest_run: S.optional(S.NullOr(TaskRunDetailDTO)),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.NullOr(S.String)),
-    last_activity_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
-    ci_prompt: S.NullOr(S.String),
-    channel: S.optional(S.NullOr(S.String)),
-    slack_thread_references: TaskBasicSlackThreadReferencesList,
-    origin_key: S.optional(S.NullOr(S.String)),
-    description_preview: S.String,
-  }),
-).annotate({ identifier: "TaskBasic" }) as any as S.Schema<TaskBasic>;
-
 export type TaskListItem = TaskDetailDTO | TaskBasic;
-export const TaskListItem = S.Unknown as any as S.Schema<TaskListItem>;
+const TaskListItem = S.Unknown as any as S.Schema<TaskListItem>;
 
 export type PaginatedTaskListItemListResultsList = Array<TaskListItem>;
-export const PaginatedTaskListItemListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedTaskListItemListResultsList = /*@__PURE__*/ S.Array(
   TaskListItem,
 ) as any as S.Schema<PaginatedTaskListItemListResultsList>;
 
@@ -2970,7 +2760,7 @@ export interface PaginatedTaskListItemList {
   previous?: string | null;
   results: PaginatedTaskListItemListResultsList;
 }
-export const PaginatedTaskListItemList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTaskListItemList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2986,7 +2776,7 @@ export interface ListTasksArtifactsRequest {
   project_id: string;
   id: string;
 }
-export const ListTasksArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3005,11 +2795,11 @@ export interface TaskArtifact {
   /** Display name of the artifact. */
   name: string;
 }
-export const TaskArtifact = TaskCommentTarget as any as S.Schema<TaskArtifact>;
+const TaskArtifact = TaskCommentTarget as any as S.Schema<TaskArtifact>;
 
 /** Artifacts and canvases linked to this task. */
 export type TaskArtifactsResponseArtifactsList = Array<TaskArtifact>;
-export const TaskArtifactsResponseArtifactsList = /*@__PURE__*/ S.Array(
+const TaskArtifactsResponseArtifactsList = /*@__PURE__*/ S.Array(
   TaskArtifact,
 ) as any as S.Schema<TaskArtifactsResponseArtifactsList>;
 
@@ -3017,7 +2807,7 @@ export interface TaskArtifactsResponse {
   /** Artifacts and canvases linked to this task. */
   artifacts: TaskArtifactsResponseArtifactsList;
 }
-export const TaskArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: TaskArtifactsResponseArtifactsList,
   }),
@@ -3036,7 +2826,7 @@ export interface ListTasksCommentsRequest {
   /** Maximum number of root comments to return. */
   limit?: number;
 }
-export const ListTasksCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3067,7 +2857,7 @@ export interface TaskCommentSummary {
   /** Whether the comment is resolved. */
   resolved: boolean;
 }
-export const TaskCommentSummary = /*@__PURE__*/ S.suspend(() =>
+const TaskCommentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     target: TaskCommentTarget,
@@ -3082,7 +2872,7 @@ export const TaskCommentSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Root comments, newest first. */
 export type TaskCommentsResponseCommentsList = Array<TaskCommentSummary>;
-export const TaskCommentsResponseCommentsList = /*@__PURE__*/ S.Array(
+const TaskCommentsResponseCommentsList = /*@__PURE__*/ S.Array(
   TaskCommentSummary,
 ) as any as S.Schema<TaskCommentsResponseCommentsList>;
 
@@ -3092,7 +2882,7 @@ export interface TaskCommentsResponse {
   /** Opaque cursor for the next page, or null. */
   next: string | null;
 }
-export const TaskCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: TaskCommentsResponseCommentsList,
     next: S.NullOr(S.String),
@@ -3107,7 +2897,7 @@ export interface ListTasksConfigRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListTasksConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3119,7 +2909,7 @@ export interface ListTasksMeConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListTasksMeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksMeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -3131,7 +2921,7 @@ export interface ListTasksRepoRoutingRulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListTasksRepoRoutingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksRepoRoutingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -3146,12 +2936,12 @@ export const ListTasksRepoRoutingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTasksRepoRoutingRulesRequest>;
 
 export type ListTasksRepoRoutingRulesResponseBodyList = Array<RepoRoutingRule>;
-export const ListTasksRepoRoutingRulesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTasksRepoRoutingRulesResponseBodyList = /*@__PURE__*/ S.Array(
   RepoRoutingRule,
 ) as any as S.Schema<ListTasksRepoRoutingRulesResponseBodyList>;
 
 export type ListTasksRepoRoutingRulesResponse = ListTasksRepoRoutingRulesResponseBodyList;
-export const ListTasksRepoRoutingRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTasksRepoRoutingRulesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTasksRepoRoutingRulesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListTasksRepoRoutingRulesResponse",
@@ -3163,7 +2953,7 @@ export interface ListTasksRunsLivingArtifactsRequest {
   task_id: string;
   run_id: string;
 }
-export const ListTasksRunsLivingArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksRunsLivingArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -3181,7 +2971,7 @@ export const ListTasksRunsLivingArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Living artifacts for this task run. */
 export type TaskRunLivingArtifactsResponseArtifactsList = Array<TaskRunLivingArtifactResponse>;
-export const TaskRunLivingArtifactsResponseArtifactsList = /*@__PURE__*/ S.Array(
+const TaskRunLivingArtifactsResponseArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunLivingArtifactResponse,
 ) as any as S.Schema<TaskRunLivingArtifactsResponseArtifactsList>;
 
@@ -3189,7 +2979,7 @@ export interface TaskRunLivingArtifactsResponse {
   /** Living artifacts for this task run. */
   artifacts: TaskRunLivingArtifactsResponseArtifactsList;
 }
-export const TaskRunLivingArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunLivingArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: TaskRunLivingArtifactsResponseArtifactsList,
   }),
@@ -3206,7 +2996,7 @@ export interface ListTasksThreadMessagesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListTasksThreadMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksThreadMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -3224,7 +3014,7 @@ export const ListTasksThreadMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTasksThreadMessagesRequest>;
 
 export type PaginatedTaskThreadMessageDTOListResultsList = Array<TaskThreadMessageDTO>;
-export const PaginatedTaskThreadMessageDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedTaskThreadMessageDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskThreadMessageDTO,
 ) as any as S.Schema<PaginatedTaskThreadMessageDTOListResultsList>;
 
@@ -3234,7 +3024,7 @@ export interface PaginatedTaskThreadMessageDTOList {
   previous?: string | null;
   results: PaginatedTaskThreadMessageDTOListResultsList;
 }
-export const PaginatedTaskThreadMessageDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTaskThreadMessageDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -3250,7 +3040,7 @@ export interface TasksDestroyRequest {
   project_id: string;
   id: string;
 }
-export const TasksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3258,15 +3048,14 @@ export const TasksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TasksDestroyRequest" }) as any as S.Schema<TasksDestroyRequest>;
 
 export interface TasksDestroyResponse {}
-export const TasksDestroyResponse =
-  CreateTasksPresenceResponse as any as S.Schema<TasksDestroyResponse>;
+const TasksDestroyResponse = CreateTasksPresenceResponse as any as S.Schema<TasksDestroyResponse>;
 
 export interface TasksPresenceDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-export const TasksPresenceDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksPresenceDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3278,7 +3067,7 @@ export const TasksPresenceDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksPresenceDestroyRequest>;
 
 export interface TasksPresenceDestroyResponse {}
-export const TasksPresenceDestroyResponse =
+const TasksPresenceDestroyResponse =
   CreateTasksPresenceResponse as any as S.Schema<TasksPresenceDestroyResponse>;
 
 export interface TasksRepoRoutingRulesDestroyRequest {
@@ -3287,7 +3076,7 @@ export interface TasksRepoRoutingRulesDestroyRequest {
   /** A UUID string identifying this repo routing rule. */
   id: string;
 }
-export const TasksRepoRoutingRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRepoRoutingRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3303,15 +3092,13 @@ export const TasksRepoRoutingRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRepoRoutingRulesDestroyRequest>;
 
 export interface TasksRepoRoutingRulesDestroyResponse {}
-export const TasksRepoRoutingRulesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const TasksRepoRoutingRulesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TasksRepoRoutingRulesDestroyResponse",
 }) as any as S.Schema<TasksRepoRoutingRulesDestroyResponse>;
 
 /** Insight query JSON to render ad hoc, e.g. {"kind": "InsightVizNode", "source": {"kind": "TrendsQuery", ...}}. SQL queries (DataVisualizationNode, HogQLQuery) are not supported yet. Provide exactly one of query or insight_id. */
 export type TasksRunsLivingArtifactsChartRequestQueryMap = { [key: string]: unknown | undefined };
-export const TasksRunsLivingArtifactsChartRequestQueryMap =
+const TasksRunsLivingArtifactsChartRequestQueryMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TasksRunsLivingArtifactsChartRequestQueryMap>;
 
 export interface TasksRunsLivingArtifactsChartRequest {
@@ -3326,7 +3113,7 @@ export interface TasksRunsLivingArtifactsChartRequest {
   /** Numeric id of a saved insight to render. Provide exactly one of query or insight_id. */
   insight_id?: number;
 }
-export const TasksRunsLivingArtifactsChartRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsLivingArtifactsChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -3353,7 +3140,7 @@ export interface TaskRunLivingArtifactChartResponse {
   /** Link to explore this chart interactively in PostHog. */
   url?: string | null;
 }
-export const TaskRunLivingArtifactChartResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunLivingArtifactChartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifact: TaskRunLivingArtifactResponse,
     export_asset_id: S.Number,
@@ -3370,7 +3157,7 @@ export interface TasksRunsLivingArtifactsOpenRequest {
   run_id: string;
   id: string;
 }
-export const TasksRunsLivingArtifactsOpenRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsLivingArtifactsOpenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -3390,13 +3177,10 @@ export const TasksRunsLivingArtifactsOpenRequest = /*@__PURE__*/ S.suspend(() =>
 export type TaskRunLivingArtifactOpenResponseVersionsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const TaskRunLivingArtifactOpenResponseVersionsItemMap =
-  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunLivingArtifactOpenResponseVersionsItemMap>;
-
 /** Chronological version records for this artifact. */
 export type TaskRunLivingArtifactOpenResponseVersionsList =
   Array<TaskRunLivingArtifactOpenResponseVersionsItemMap>;
-export const TaskRunLivingArtifactOpenResponseVersionsList =
+const TaskRunLivingArtifactOpenResponseVersionsList =
   TaskRunLivingArtifactResponseVersionsList as any as S.Schema<TaskRunLivingArtifactOpenResponseVersionsList>;
 
 export interface TaskRunLivingArtifactOpenResponse {
@@ -3431,7 +3215,7 @@ export interface TaskRunLivingArtifactOpenResponse {
   /** Current artifact content when the adapter can read it directly. */
   content?: string | null;
 }
-export const TaskRunLivingArtifactOpenResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunLivingArtifactOpenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_id: S.String,
@@ -3464,7 +3248,7 @@ export interface TasksRunsLivingArtifactsVersionContentRequest {
   /** Set to true to save the version. A stored file then redirects to a short-lived presigned URL, so a large file never passes through the app. Leave unset for an inline preview. */
   download?: boolean;
 }
-export const TasksRunsLivingArtifactsVersionContentRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsLivingArtifactsVersionContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -3484,7 +3268,7 @@ export const TasksRunsLivingArtifactsVersionContentRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<TasksRunsLivingArtifactsVersionContentRequest>;
 
 export interface TasksRunsLivingArtifactsVersionContentResponse {}
-export const TasksRunsLivingArtifactsVersionContentResponse =
+const TasksRunsLivingArtifactsVersionContentResponse =
   TasksRepoRoutingRulesDestroyResponse as any as S.Schema<TasksRunsLivingArtifactsVersionContentResponse>;
 
 export interface TasksSearchRetrieveRequest {
@@ -3495,7 +3279,7 @@ export interface TasksSearchRetrieveRequest {
   /** Text or exact identifier to search for. */
   q: string;
 }
-export const TasksSearchRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksSearchRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3507,7 +3291,7 @@ export const TasksSearchRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `task` - task * `pull_request` - pull_request * `artifact` - artifact * `channel` - channel * `canvas` - canvas */
 export type TaskSearchResultKindEnum = "task" | "pull_request" | "artifact" | "channel" | "canvas";
-export const TaskSearchResultKindEnum = S.String;
+const TaskSearchResultKindEnum = S.String;
 
 export interface TaskSearchResult {
   /** Search document identifier. */
@@ -3535,7 +3319,7 @@ export interface TaskSearchResult {
   /** Resource-specific navigation metadata. */
   metadata: unknown;
 }
-export const TaskSearchResult = /*@__PURE__*/ S.suspend(() =>
+const TaskSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: TaskSearchResultKindEnum,
@@ -3553,12 +3337,12 @@ export const TaskSearchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskSearchResult" }) as any as S.Schema<TaskSearchResult>;
 
 export type TasksSearchRetrieveResponseBodyList = Array<TaskSearchResult>;
-export const TasksSearchRetrieveResponseBodyList = /*@__PURE__*/ S.Array(
+const TasksSearchRetrieveResponseBodyList = /*@__PURE__*/ S.Array(
   TaskSearchResult,
 ) as any as S.Schema<TasksSearchRetrieveResponseBodyList>;
 
 export type TasksSearchRetrieveResponse = TasksSearchRetrieveResponseBodyList;
-export const TasksSearchRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+const TasksSearchRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   TasksSearchRetrieveResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "TasksSearchRetrieveResponse",
@@ -3574,7 +3358,7 @@ export type TaskRunArtifactTypeEnum =
   | "tree_snapshot"
   | "user_attachment"
   | "skill_bundle";
-export const TaskRunArtifactTypeEnum = S.String;
+const TaskRunArtifactTypeEnum = S.String;
 
 export interface TaskStagedArtifactFinalizeUpload {
   /** Stable identifier returned by the staged prepare upload endpoint */
@@ -3592,7 +3376,7 @@ export interface TaskStagedArtifactFinalizeUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
-export const TaskStagedArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
+const TaskStagedArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3609,7 +3393,7 @@ export const TaskStagedArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
 /** Array of staged artifacts to finalize after upload */
 export type TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList =
   Array<TaskStagedArtifactFinalizeUpload>;
-export const TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList = /*@__PURE__*/ S.Array(
+const TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList = /*@__PURE__*/ S.Array(
   TaskStagedArtifactFinalizeUpload,
 ) as any as S.Schema<TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList>;
 
@@ -3620,7 +3404,7 @@ export interface TasksStagedArtifactsFinalizeUploadCreateRequest {
   /** Array of staged artifacts to finalize after upload */
   artifacts?: TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList;
 }
-export const TasksStagedArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksStagedArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3638,14 +3422,14 @@ export const TasksStagedArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ S.s
 
 /** Finalized staged artifacts available for attachment to a new run */
 export type TaskStagedArtifactsFinalizeUploadResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskStagedArtifactsFinalizeUploadResponseArtifactsList =
+const TaskStagedArtifactsFinalizeUploadResponseArtifactsList =
   TaskRunDetailDTOArtifactsList as any as S.Schema<TaskStagedArtifactsFinalizeUploadResponseArtifactsList>;
 
 export interface TaskStagedArtifactsFinalizeUploadResponse {
   /** Finalized staged artifacts available for attachment to a new run */
   artifacts?: TaskStagedArtifactsFinalizeUploadResponseArtifactsList;
 }
-export const TaskStagedArtifactsFinalizeUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskStagedArtifactsFinalizeUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: S.optional(TaskStagedArtifactsFinalizeUploadResponseArtifactsList),
   }),
@@ -3667,7 +3451,7 @@ export interface TaskStagedArtifactPrepareUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
-export const TaskStagedArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
+const TaskStagedArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(TaskRunArtifactTypeEnum),
@@ -3683,7 +3467,7 @@ export const TaskStagedArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
 /** Array of staged artifacts to prepare before creating a run */
 export type TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList =
   Array<TaskStagedArtifactPrepareUpload>;
-export const TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList = /*@__PURE__*/ S.Array(
+const TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList = /*@__PURE__*/ S.Array(
   TaskStagedArtifactPrepareUpload,
 ) as any as S.Schema<TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList>;
 
@@ -3694,7 +3478,7 @@ export interface TasksStagedArtifactsPrepareUploadCreateRequest {
   /** Array of staged artifacts to prepare before creating a run */
   artifacts?: TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList;
 }
-export const TasksStagedArtifactsPrepareUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksStagedArtifactsPrepareUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3712,7 +3496,7 @@ export const TasksStagedArtifactsPrepareUploadCreateRequest = /*@__PURE__*/ S.su
 
 /** Form fields that must be submitted verbatim with the file upload */
 export type S3PresignedPostFieldsMap = { [key: string]: string | undefined };
-export const S3PresignedPostFieldsMap =
+const S3PresignedPostFieldsMap =
   TaskPullRequestTitlesTitlesMap as any as S.Schema<S3PresignedPostFieldsMap>;
 
 export interface S3PresignedPost {
@@ -3721,7 +3505,7 @@ export interface S3PresignedPost {
   /** Form fields that must be submitted verbatim with the file upload */
   fields?: S3PresignedPostFieldsMap;
 }
-export const S3PresignedPost = /*@__PURE__*/ S.suspend(() =>
+const S3PresignedPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     fields: S.optional(S3PresignedPostFieldsMap),
@@ -3750,7 +3534,7 @@ export interface TaskStagedArtifactPrepareUploadResponse {
   /** Presigned S3 POST configuration for uploading the file */
   presigned_post?: S3PresignedPost;
 }
-export const TaskStagedArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskStagedArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3770,7 +3554,7 @@ export const TaskStagedArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend((
 /** Prepared staged uploads for the requested artifacts */
 export type TaskStagedArtifactsPrepareUploadResponseArtifactsList =
   Array<TaskStagedArtifactPrepareUploadResponse>;
-export const TaskStagedArtifactsPrepareUploadResponseArtifactsList = /*@__PURE__*/ S.Array(
+const TaskStagedArtifactsPrepareUploadResponseArtifactsList = /*@__PURE__*/ S.Array(
   TaskStagedArtifactPrepareUploadResponse,
 ) as any as S.Schema<TaskStagedArtifactsPrepareUploadResponseArtifactsList>;
 
@@ -3778,7 +3562,7 @@ export interface TaskStagedArtifactsPrepareUploadResponse {
   /** Prepared staged uploads for the requested artifacts */
   artifacts?: TaskStagedArtifactsPrepareUploadResponseArtifactsList;
 }
-export const TaskStagedArtifactsPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskStagedArtifactsPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: S.optional(TaskStagedArtifactsPrepareUploadResponseArtifactsList),
   }),
@@ -3792,7 +3576,7 @@ export interface TasksThreadMessagesDestroyRequest {
   task_id: string;
   id: string;
 }
-export const TasksThreadMessagesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksThreadMessagesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -3809,13 +3593,13 @@ export const TasksThreadMessagesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksThreadMessagesDestroyRequest>;
 
 export interface TasksThreadMessagesDestroyResponse {}
-export const TasksThreadMessagesDestroyResponse =
+const TasksThreadMessagesDestroyResponse =
   TasksRepoRoutingRulesDestroyResponse as any as S.Schema<TasksThreadMessagesDestroyResponse>;
 
 export type TasksThreadMessagesSendToAgentCreateRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
-export const TasksThreadMessagesSendToAgentCreateRequestPayloadMap =
+const TasksThreadMessagesSendToAgentCreateRequestPayloadMap =
   TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TasksThreadMessagesSendToAgentCreateRequestPayloadMap>;
 
 export interface TasksThreadMessagesSendToAgentCreateRequest {
@@ -3833,7 +3617,7 @@ export interface TasksThreadMessagesSendToAgentCreateRequest {
   forwarded_to_agent_at?: string | null;
   forwarded_by?: TaskUserBasicInfo | null;
 }
-export const TasksThreadMessagesSendToAgentCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksThreadMessagesSendToAgentCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -3873,7 +3657,7 @@ export interface TasksWarmResumeCreateRequest {
   /** Initial permission mode for the warmed successor's agent session. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
   initial_permission_mode?: TaskRunBootstrapCreateRequestInitialPermissionModeEnum | (string & {});
 }
-export const TasksWarmResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksWarmResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3896,16 +3680,16 @@ export interface WarmTaskResumeResponse {
   /** ID of the idling successor run that submit will activate. */
   run_id: string;
 }
-export const WarmTaskResumeResponse = WarmTaskResponse as any as S.Schema<WarmTaskResumeResponse>;
+const WarmTaskResumeResponse = WarmTaskResponse as any as S.Schema<WarmTaskResumeResponse>;
 
 /** GitHub repositories available to this task, each in `organization/repo` format. */
 export type UpdateTaskRequestRepositoriesList = Array<string>;
-export const UpdateTaskRequestRepositoriesList =
+const UpdateTaskRequestRepositoriesList =
   CreateTaskRequestRepositoriesList as any as S.Schema<UpdateTaskRequestRepositoriesList>;
 
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true. */
 export type UpdateTaskRequestPendingUserArtifactIdsList = Array<string>;
-export const UpdateTaskRequestPendingUserArtifactIdsList =
+const UpdateTaskRequestPendingUserArtifactIdsList =
   CreateTaskRequestRepositoriesList as any as S.Schema<UpdateTaskRequestPendingUserArtifactIdsList>;
 
 export interface UpdateTaskRequest {
@@ -3960,7 +3744,7 @@ export interface UpdateTaskRequest {
   /** Channel this task is owned by (the channel it was kicked off in). */
   channel?: string | null;
 }
-export const UpdateTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3993,12 +3777,12 @@ export const UpdateTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** GitHub repositories available to this task, each in `organization/repo` format. */
 export type UpdateTasksPartialRequestRepositoriesList = Array<string>;
-export const UpdateTasksPartialRequestRepositoriesList =
+const UpdateTasksPartialRequestRepositoriesList =
   CreateTaskRequestRepositoriesList as any as S.Schema<UpdateTasksPartialRequestRepositoriesList>;
 
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true. */
 export type UpdateTasksPartialRequestPendingUserArtifactIdsList = Array<string>;
-export const UpdateTasksPartialRequestPendingUserArtifactIdsList =
+const UpdateTasksPartialRequestPendingUserArtifactIdsList =
   CreateTaskRequestRepositoriesList as any as S.Schema<UpdateTasksPartialRequestPendingUserArtifactIdsList>;
 
 export interface UpdateTasksPartialRequest {
@@ -4053,7 +3837,7 @@ export interface UpdateTasksPartialRequest {
   /** Channel this task is owned by (the channel it was kicked off in). */
   channel?: string | null;
 }
-export const UpdateTasksPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTasksPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4096,7 +3880,7 @@ export interface UpdateTasksRepoRoutingRuleRequest {
   /** Target repository as owner/repo, e.g. 'posthog/posthog.com'. */
   repository: string;
 }
-export const UpdateTasksRepoRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTasksRepoRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4123,7 +3907,7 @@ export interface UpdateTasksRepoRoutingRulesPartialRequest {
   /** Target repository as owner/repo, e.g. 'posthog/posthog.com'. */
   repository?: string;
 }
-export const UpdateTasksRepoRoutingRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTasksRepoRoutingRulesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

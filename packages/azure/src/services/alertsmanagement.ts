@@ -12,14 +12,14 @@ export type { AzureOpError, AzureOpContext };
 export type AlertProcessingRulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const AlertProcessingRulesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const AlertProcessingRulesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AlertProcessingRulesCreateOrUpdateRequestTagsMap>;
 
 /** Scopes on which alert processing rule will apply. */
 export type AlertProcessingRulePropertiesScopesList = Array<string>;
-export const AlertProcessingRulePropertiesScopesList = /*@__PURE__*/ S.Array(
+const AlertProcessingRulePropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertProcessingRulePropertiesScopesList>;
 
@@ -36,15 +36,15 @@ export type Field =
   | "AlertRuleName"
   | "Description"
   | "AlertContext";
-export const Field = S.String;
+const Field = S.String;
 
 /** Operator for a given condition. */
 export type Operator = "Equals" | "NotEquals" | "Contains" | "DoesNotContain";
-export const Operator = S.String;
+const Operator = S.String;
 
 /** List of values to match for a given condition. */
 export type ConditionValuesList = Array<string>;
-export const ConditionValuesList =
+const ConditionValuesList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<ConditionValuesList>;
 
 /** Condition to trigger an alert processing rule. */
@@ -56,7 +56,7 @@ export interface Condition {
   /** List of values to match for a given condition. */
   values?: ConditionValuesList;
 }
-export const Condition = /*@__PURE__*/ S.suspend(() =>
+const Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(Field),
     operator: S.optional(Operator),
@@ -66,22 +66,22 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 
 /** Conditions on which alerts will be filtered. */
 export type AlertProcessingRulePropertiesConditionsList = Array<Condition>;
-export const AlertProcessingRulePropertiesConditionsList = /*@__PURE__*/ S.Array(
+const AlertProcessingRulePropertiesConditionsList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<AlertProcessingRulePropertiesConditionsList>;
 
 /** Specifies when the recurrence should be applied. */
 export type RecurrenceType = "Daily" | "Weekly" | "Monthly";
-export const RecurrenceType = S.String;
+const RecurrenceType = S.String;
 
 /** Days of the week (only for `Weekly` recurrences). */
 export type RecurrenceDaysOfWeekList = Array<string>;
-export const RecurrenceDaysOfWeekList =
+const RecurrenceDaysOfWeekList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<RecurrenceDaysOfWeekList>;
 
 /** Days of the month (only for `Monthly` recurrences). */
 export type RecurrenceDaysOfMonthList = Array<number>;
-export const RecurrenceDaysOfMonthList = /*@__PURE__*/ S.Array(
+const RecurrenceDaysOfMonthList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceDaysOfMonthList>;
 
@@ -98,7 +98,7 @@ export interface Recurrence {
   /** Days of the month (only for `Monthly` recurrences). */
   daysOfMonth?: RecurrenceDaysOfMonthList;
 }
-export const Recurrence = /*@__PURE__*/ S.suspend(() =>
+const Recurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recurrenceType: RecurrenceType,
     startTime: S.optional(S.String),
@@ -110,7 +110,7 @@ export const Recurrence = /*@__PURE__*/ S.suspend(() =>
 
 /** List of recurrences. */
 export type ScheduleRecurrencesList = Array<Recurrence>;
-export const ScheduleRecurrencesList = /*@__PURE__*/ S.Array(
+const ScheduleRecurrencesList = /*@__PURE__*/ S.Array(
   Recurrence,
 ) as any as S.Schema<ScheduleRecurrencesList>;
 
@@ -125,7 +125,7 @@ export interface Schedule {
   /** List of recurrences. */
   recurrences?: ScheduleRecurrencesList;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveFrom: S.optional(S.String),
     effectiveUntil: S.optional(S.String),
@@ -136,11 +136,11 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 
 /** Action that should be applied. */
 export type ActionType = "AddActionGroups" | "RemoveAllActionGroups";
-export const ActionType = S.String;
+const ActionType = S.String;
 
 /** Action group resource IDs to add (only for `AddActionGroups`). */
 export type ActionActionGroupIdsList = Array<string>;
-export const ActionActionGroupIdsList =
+const ActionActionGroupIdsList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<ActionActionGroupIdsList>;
 
 /** Action to be applied. */
@@ -150,7 +150,7 @@ export interface Action {
   /** Action group resource IDs to add (only for `AddActionGroups`). */
   actionGroupIds?: ActionActionGroupIdsList;
 }
-export const Action = /*@__PURE__*/ S.suspend(() =>
+const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionType: ActionType,
     actionGroupIds: S.optional(ActionActionGroupIdsList),
@@ -159,7 +159,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 
 /** Actions to be applied. */
 export type AlertProcessingRulePropertiesActionsList = Array<Action>;
-export const AlertProcessingRulePropertiesActionsList = /*@__PURE__*/ S.Array(
+const AlertProcessingRulePropertiesActionsList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<AlertProcessingRulePropertiesActionsList>;
 
@@ -178,7 +178,7 @@ export interface AlertProcessingRuleProperties {
   /** Indicates if the given alert processing rule is enabled or disabled. */
   enabled?: boolean;
 }
-export const AlertProcessingRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const AlertProcessingRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: AlertProcessingRulePropertiesScopesList,
     conditions: S.optional(AlertProcessingRulePropertiesConditionsList),
@@ -205,7 +205,7 @@ export interface AlertProcessingRulesCreateOrUpdateRequest {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
-export const AlertProcessingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AlertProcessingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -229,7 +229,7 @@ export const AlertProcessingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 export type AlertProcessingRulesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const AlertProcessingRulesCreateOrUpdateResponseTagsMap =
+const AlertProcessingRulesCreateOrUpdateResponseTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertProcessingRulesCreateOrUpdateResponseTagsMap>;
 
 export interface AlertProcessingRulesCreateOrUpdateResponse {
@@ -246,7 +246,7 @@ export interface AlertProcessingRulesCreateOrUpdateResponse {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
-export const AlertProcessingRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertProcessingRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -260,7 +260,7 @@ export const AlertProcessingRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<AlertProcessingRulesCreateOrUpdateResponse>;
 
 export type AlertsChangeStateRequestNewState = "New" | "Acknowledged" | "Closed";
-export const AlertsChangeStateRequestNewState = S.String;
+const AlertsChangeStateRequestNewState = S.String;
 
 export interface AlertsChangeStateRequest {
   /** scope here is resourceId for which alert is created. */
@@ -271,7 +271,7 @@ export interface AlertsChangeStateRequest {
   newState: AlertsChangeStateRequestNewState | (string & {});
   comments?: string;
 }
-export const AlertsChangeStateRequest = /*@__PURE__*/ S.suspend(() =>
+const AlertsChangeStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     alertId: S.String.pipe(T.Label()),
@@ -289,19 +289,19 @@ export const AlertsChangeStateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Severity of alert Sev0 being highest and Sev4 being lowest. */
 export type EssentialsSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
-export const EssentialsSeverity = S.String;
+const EssentialsSeverity = S.String;
 
 /** The type of signal the alert is based on, which could be metrics, logs or activity logs. */
 export type EssentialsSignalType = "Metric" | "Log" | "Unknown";
-export const EssentialsSignalType = S.String;
+const EssentialsSignalType = S.String;
 
 /** Alert object state, which can be modified by the user. */
 export type EssentialsAlertState = "New" | "Acknowledged" | "Closed";
-export const EssentialsAlertState = S.String;
+const EssentialsAlertState = S.String;
 
 /** Can be 'Fired' or 'Resolved', which represents whether the underlying conditions have crossed the defined alert rule thresholds. */
 export type EssentialsMonitorCondition = "Fired" | "Resolved";
-export const EssentialsMonitorCondition = S.String;
+const EssentialsMonitorCondition = S.String;
 
 /** Monitor service on which the rule(monitor) is set. */
 export type EssentialsMonitorService =
@@ -320,14 +320,14 @@ export type EssentialsMonitorService =
   | "VM Insights"
   | "Zabbix"
   | "Resource Health";
-export const EssentialsMonitorService = S.String;
+const EssentialsMonitorService = S.String;
 
 /** Action status */
 export interface ActionStatus {
   /** Value indicating whether alert is suppressed. */
   isSuppressed?: boolean;
 }
-export const ActionStatus = /*@__PURE__*/ S.suspend(() =>
+const ActionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isSuppressed: S.optional(S.Boolean),
   }),
@@ -373,7 +373,7 @@ export interface Essentials {
   /** Alert description. */
   description?: string;
 }
-export const Essentials = /*@__PURE__*/ S.suspend(() =>
+const Essentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(EssentialsSeverity),
     signalType: S.optional(EssentialsSignalType),
@@ -403,7 +403,7 @@ export interface AlertProperties {
   context?: unknown;
   egressConfig?: unknown;
 }
-export const AlertProperties = /*@__PURE__*/ S.suspend(() =>
+const AlertProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     essentials: S.optional(Essentials),
     context: S.optional(S.Unknown),
@@ -420,7 +420,7 @@ export interface AlertsChangeStateResponse {
   name?: string;
   properties?: AlertProperties;
 }
-export const AlertsChangeStateResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertsChangeStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -432,13 +432,13 @@ export const AlertsChangeStateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsChangeStateResponse>;
 
 export type AlertsMetaDataRequestIdentifier = "MonitorServiceList";
-export const AlertsMetaDataRequestIdentifier = S.String;
+const AlertsMetaDataRequestIdentifier = S.String;
 
 export interface AlertsMetaDataRequest {
   /** Identification of the information to be retrieved by API call. */
   identifier: AlertsMetaDataRequestIdentifier | (string & {});
 }
-export const AlertsMetaDataRequest = /*@__PURE__*/ S.suspend(() =>
+const AlertsMetaDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: AlertsMetaDataRequestIdentifier.pipe(T.Query()),
   }).pipe(
@@ -453,14 +453,14 @@ export const AlertsMetaDataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Identification of the information to be retrieved by API call */
 export type AlertsMetaDataPropertiesMetadataIdentifier = "MonitorServiceList";
-export const AlertsMetaDataPropertiesMetadataIdentifier = S.String;
+const AlertsMetaDataPropertiesMetadataIdentifier = S.String;
 
 /** alert meta data property bag */
 export interface AlertsMetaDataProperties {
   /** Identification of the information to be retrieved by API call */
   metadataIdentifier: AlertsMetaDataPropertiesMetadataIdentifier;
 }
-export const AlertsMetaDataProperties = /*@__PURE__*/ S.suspend(() =>
+const AlertsMetaDataProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadataIdentifier: AlertsMetaDataPropertiesMetadataIdentifier,
   }),
@@ -470,7 +470,7 @@ export const AlertsMetaDataProperties = /*@__PURE__*/ S.suspend(() =>
 export interface AlertsMetaData {
   properties?: AlertsMetaDataProperties;
 }
-export const AlertsMetaData = /*@__PURE__*/ S.suspend(() =>
+const AlertsMetaData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(AlertsMetaDataProperties),
   }),
@@ -484,7 +484,7 @@ export interface DeleteAlertProcessingRuleRequest {
   /** The name of the alert processing rule that needs to be fetched. */
   alertProcessingRuleName: string;
 }
-export const DeleteAlertProcessingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertProcessingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -502,9 +502,7 @@ export const DeleteAlertProcessingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAlertProcessingRuleRequest>;
 
 export interface DeleteAlertProcessingRuleResponse {}
-export const DeleteAlertProcessingRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteAlertProcessingRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAlertProcessingRuleResponse",
 }) as any as S.Schema<DeleteAlertProcessingRuleResponse>;
 
@@ -516,7 +514,7 @@ export interface DeletePrometheusRuleGroupRequest {
   /** The name of the rule group. */
   ruleGroupName: string;
 }
-export const DeletePrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -534,7 +532,7 @@ export const DeletePrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrometheusRuleGroupRequest>;
 
 export interface DeletePrometheusRuleGroupResponse {}
-export const DeletePrometheusRuleGroupResponse =
+const DeletePrometheusRuleGroupResponse =
   DeleteAlertProcessingRuleResponse as any as S.Schema<DeletePrometheusRuleGroupResponse>;
 
 export interface DeleteSmartDetectorAlertRuleRequest {
@@ -545,7 +543,7 @@ export interface DeleteSmartDetectorAlertRuleRequest {
   /** The name of the alert rule. */
   alertRuleName: string;
 }
-export const DeleteSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -563,7 +561,7 @@ export const DeleteSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSmartDetectorAlertRuleRequest>;
 
 export interface DeleteSmartDetectorAlertRuleResponse {}
-export const DeleteSmartDetectorAlertRuleResponse =
+const DeleteSmartDetectorAlertRuleResponse =
   DeleteAlertProcessingRuleResponse as any as S.Schema<DeleteSmartDetectorAlertRuleResponse>;
 
 export type GetAlertAllRequestMonitorService =
@@ -582,16 +580,16 @@ export type GetAlertAllRequestMonitorService =
   | "VM Insights"
   | "Zabbix"
   | "Resource Health";
-export const GetAlertAllRequestMonitorService = S.String;
+const GetAlertAllRequestMonitorService = S.String;
 
 export type GetAlertAllRequestMonitorCondition = "Fired" | "Resolved";
-export const GetAlertAllRequestMonitorCondition = S.String;
+const GetAlertAllRequestMonitorCondition = S.String;
 
 export type GetAlertAllRequestSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
-export const GetAlertAllRequestSeverity = S.String;
+const GetAlertAllRequestSeverity = S.String;
 
 export type GetAlertAllRequestAlertState = "New" | "Acknowledged" | "Closed";
-export const GetAlertAllRequestAlertState = S.String;
+const GetAlertAllRequestAlertState = S.String;
 
 export type GetAlertAllRequestSortBy =
   | "name"
@@ -604,13 +602,13 @@ export type GetAlertAllRequestSortBy =
   | "targetResourceType"
   | "startDateTime"
   | "lastModifiedDateTime";
-export const GetAlertAllRequestSortBy = S.String;
+const GetAlertAllRequestSortBy = S.String;
 
 export type GetAlertAllRequestSortOrder = "asc" | "desc";
-export const GetAlertAllRequestSortOrder = S.String;
+const GetAlertAllRequestSortOrder = S.String;
 
 export type GetAlertAllRequestTimeRange = "1h" | "1d" | "7d" | "30d";
-export const GetAlertAllRequestTimeRange = S.String;
+const GetAlertAllRequestTimeRange = S.String;
 
 export interface GetAlertAllRequest {
   /** scope here is resourceId for which alert is created. */
@@ -650,7 +648,7 @@ export interface GetAlertAllRequest {
   /** Filter by custom time range in the format <start-time>/<end-time> where time is in (ISO-8601 format)'. Permissible values is within 30 days from query time. Either timeRange or customTimeRange could be used but not both. Default is none. */
   customTimeRange?: string;
 }
-export const GetAlertAllRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     targetResource: S.optional(S.String.pipe(T.Query())),
@@ -690,7 +688,7 @@ export interface Alert {
   name?: string;
   properties?: AlertProperties;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
+const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -701,9 +699,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 
 /** List of alerts */
 export type AlertsListValueList = Array<Alert>;
-export const AlertsListValueList = /*@__PURE__*/ S.Array(
-  Alert,
-) as any as S.Schema<AlertsListValueList>;
+const AlertsListValueList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertsListValueList>;
 
 /** List the alerts. */
 export interface AlertsList {
@@ -712,7 +708,7 @@ export interface AlertsList {
   /** List of alerts */
   value?: AlertsListValueList;
 }
-export const AlertsList = /*@__PURE__*/ S.suspend(() =>
+const AlertsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(AlertsListValueList),
@@ -725,7 +721,7 @@ export interface GetAlertByIdRequest {
   /** Unique ID of an alert instance. */
   alertId: string;
 }
-export const GetAlertByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     alertId: S.String.pipe(T.Label()),
@@ -748,7 +744,7 @@ export interface GetAlertByIdResponse {
   name?: string;
   properties?: AlertProperties;
 }
-export const GetAlertByIdResponse = Alert as any as S.Schema<GetAlertByIdResponse>;
+const GetAlertByIdResponse = Alert as any as S.Schema<GetAlertByIdResponse>;
 
 export interface GetAlertHistoryRequest {
   /** scope here is resourceId for which alert is created. */
@@ -756,7 +752,7 @@ export interface GetAlertHistoryRequest {
   /** Unique ID of an alert instance. */
   alertId: string;
 }
-export const GetAlertHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     alertId: S.String.pipe(T.Label()),
@@ -775,7 +771,7 @@ export type AlertModificationItemModificationEvent =
   | "AlertCreated"
   | "StateChange"
   | "MonitorConditionChange";
-export const AlertModificationItemModificationEvent = S.String;
+const AlertModificationItemModificationEvent = S.String;
 
 /** Alert modification item. */
 export interface AlertModificationItem {
@@ -794,7 +790,7 @@ export interface AlertModificationItem {
   /** Description of the modification */
   description?: string;
 }
-export const AlertModificationItem = /*@__PURE__*/ S.suspend(() =>
+const AlertModificationItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modificationEvent: S.optional(AlertModificationItemModificationEvent),
     oldValue: S.optional(S.String),
@@ -808,7 +804,7 @@ export const AlertModificationItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Modification details */
 export type AlertModificationPropertiesModificationsList = Array<AlertModificationItem>;
-export const AlertModificationPropertiesModificationsList = /*@__PURE__*/ S.Array(
+const AlertModificationPropertiesModificationsList = /*@__PURE__*/ S.Array(
   AlertModificationItem,
 ) as any as S.Schema<AlertModificationPropertiesModificationsList>;
 
@@ -819,7 +815,7 @@ export interface AlertModificationProperties {
   /** Modification details */
   modifications?: AlertModificationPropertiesModificationsList;
 }
-export const AlertModificationProperties = /*@__PURE__*/ S.suspend(() =>
+const AlertModificationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(S.String),
     modifications: S.optional(AlertModificationPropertiesModificationsList),
@@ -837,7 +833,7 @@ export interface GetAlertHistoryResponse {
   name?: string;
   properties?: AlertModificationProperties;
 }
-export const GetAlertHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAlertHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -854,7 +850,7 @@ export interface GetAlertProcessingRuleByNameRequest {
   /** The name of the alert processing rule that needs to be fetched. */
   alertProcessingRuleName: string;
 }
-export const GetAlertProcessingRuleByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertProcessingRuleByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -873,9 +869,6 @@ export const GetAlertProcessingRuleByNameRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAlertProcessingRuleByNameResponseTagsMap = { [key: string]: string | undefined };
-export const GetAlertProcessingRuleByNameResponseTagsMap =
-  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<GetAlertProcessingRuleByNameResponseTagsMap>;
-
 export interface GetAlertProcessingRuleByNameResponse {
   /** Azure resource Id */
   id?: string;
@@ -890,7 +883,7 @@ export interface GetAlertProcessingRuleByNameResponse {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
-export const GetAlertProcessingRuleByNameResponse =
+const GetAlertProcessingRuleByNameResponse =
   AlertProcessingRulesCreateOrUpdateResponse as any as S.Schema<GetAlertProcessingRuleByNameResponse>;
 
 export type GetAlertSummaryRequestGroupby =
@@ -900,7 +893,7 @@ export type GetAlertSummaryRequestGroupby =
   | "monitorService"
   | "signalType"
   | "alertRule";
-export const GetAlertSummaryRequestGroupby = S.String;
+const GetAlertSummaryRequestGroupby = S.String;
 
 export type GetAlertSummaryRequestMonitorService =
   | "Application Insights"
@@ -918,19 +911,19 @@ export type GetAlertSummaryRequestMonitorService =
   | "VM Insights"
   | "Zabbix"
   | "Resource Health";
-export const GetAlertSummaryRequestMonitorService = S.String;
+const GetAlertSummaryRequestMonitorService = S.String;
 
 export type GetAlertSummaryRequestMonitorCondition = "Fired" | "Resolved";
-export const GetAlertSummaryRequestMonitorCondition = S.String;
+const GetAlertSummaryRequestMonitorCondition = S.String;
 
 export type GetAlertSummaryRequestSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
-export const GetAlertSummaryRequestSeverity = S.String;
+const GetAlertSummaryRequestSeverity = S.String;
 
 export type GetAlertSummaryRequestAlertState = "New" | "Acknowledged" | "Closed";
-export const GetAlertSummaryRequestAlertState = S.String;
+const GetAlertSummaryRequestAlertState = S.String;
 
 export type GetAlertSummaryRequestTimeRange = "1h" | "1d" | "7d" | "30d";
-export const GetAlertSummaryRequestTimeRange = S.String;
+const GetAlertSummaryRequestTimeRange = S.String;
 
 export interface GetAlertSummaryRequest {
   /** scope here is resourceId for which alert is created. */
@@ -960,7 +953,7 @@ export interface GetAlertSummaryRequest {
   /** Filter by custom time range in the format <start-time>/<end-time> where time is in (ISO-8601 format)'. Permissible values is within 30 days from query time. Either timeRange or customTimeRange could be used but not both. Default is none. */
   customTimeRange?: string;
 }
-export const GetAlertSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     groupby: GetAlertSummaryRequestGroupby.pipe(T.Query()),
@@ -987,7 +980,7 @@ export const GetAlertSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the items */
 export type AlertsSummaryGroupItemValuesList = Array<AlertsSummaryGroupItem>;
-export const AlertsSummaryGroupItemValuesList = /*@__PURE__*/ S.Array(
+const AlertsSummaryGroupItemValuesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => AlertsSummaryGroupItem),
 ) as any as S.Schema<AlertsSummaryGroupItemValuesList>;
 
@@ -1002,7 +995,7 @@ export interface AlertsSummaryGroupItem {
   /** List of the items */
   values?: AlertsSummaryGroupItemValuesList;
 }
-export const AlertsSummaryGroupItem = /*@__PURE__*/ S.suspend(() =>
+const AlertsSummaryGroupItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     count: S.optional(S.Number),
@@ -1013,7 +1006,7 @@ export const AlertsSummaryGroupItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the items */
 export type AlertsSummaryGroupValuesList = Array<AlertsSummaryGroupItem>;
-export const AlertsSummaryGroupValuesList = /*@__PURE__*/ S.Array(
+const AlertsSummaryGroupValuesList = /*@__PURE__*/ S.Array(
   AlertsSummaryGroupItem,
 ) as any as S.Schema<AlertsSummaryGroupValuesList>;
 
@@ -1028,7 +1021,7 @@ export interface AlertsSummaryGroup {
   /** List of the items */
   values?: AlertsSummaryGroupValuesList;
 }
-export const AlertsSummaryGroup = /*@__PURE__*/ S.suspend(() =>
+const AlertsSummaryGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.optional(S.Number),
     smartGroupsCount: S.optional(S.Number),
@@ -1046,7 +1039,7 @@ export interface GetAlertSummaryResponse {
   name?: string;
   properties?: AlertsSummaryGroup;
 }
-export const GetAlertSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAlertSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -1063,7 +1056,7 @@ export interface GetPrometheusRuleGroupRequest {
   /** The name of the rule group. */
   ruleGroupName: string;
 }
-export const GetPrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1082,11 +1075,11 @@ export const GetPrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -1103,7 +1096,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -1116,27 +1109,27 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPrometheusRuleGroupResponseTagsMap = { [key: string]: string | undefined };
-export const GetPrometheusRuleGroupResponseTagsMap =
+const GetPrometheusRuleGroupResponseTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<GetPrometheusRuleGroupResponseTagsMap>;
 
 /** Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future. */
 export type PrometheusRuleGroupPropertiesScopesList = Array<string>;
-export const PrometheusRuleGroupPropertiesScopesList =
+const PrometheusRuleGroupPropertiesScopesList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<PrometheusRuleGroupPropertiesScopesList>;
 
 /** Labels to add or overwrite before storing the result. */
 export type PrometheusRuleLabelsMap = { [key: string]: string | undefined };
-export const PrometheusRuleLabelsMap =
+const PrometheusRuleLabelsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleLabelsMap>;
 
 /** The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated. */
 export type PrometheusRuleAnnotationsMap = { [key: string]: string | undefined };
-export const PrometheusRuleAnnotationsMap =
+const PrometheusRuleAnnotationsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleAnnotationsMap>;
 
 /** The properties of an action group object. */
 export type PrometheusRuleGroupActionActionPropertiesMap = { [key: string]: string | undefined };
-export const PrometheusRuleGroupActionActionPropertiesMap =
+const PrometheusRuleGroupActionActionPropertiesMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleGroupActionActionPropertiesMap>;
 
 /** An alert action. Only relevant for alerts. */
@@ -1146,7 +1139,7 @@ export interface PrometheusRuleGroupAction {
   /** The properties of an action group object. */
   actionProperties?: PrometheusRuleGroupActionActionPropertiesMap;
 }
-export const PrometheusRuleGroupAction = /*@__PURE__*/ S.suspend(() =>
+const PrometheusRuleGroupAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionGroupId: S.optional(S.String),
     actionProperties: S.optional(PrometheusRuleGroupActionActionPropertiesMap),
@@ -1157,7 +1150,7 @@ export const PrometheusRuleGroupAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Actions that are performed when the alert rule becomes active, and when an alert condition is resolved. */
 export type PrometheusRuleActionsList = Array<PrometheusRuleGroupAction>;
-export const PrometheusRuleActionsList = /*@__PURE__*/ S.Array(
+const PrometheusRuleActionsList = /*@__PURE__*/ S.Array(
   PrometheusRuleGroupAction,
 ) as any as S.Schema<PrometheusRuleActionsList>;
 
@@ -1168,7 +1161,7 @@ export interface PrometheusRuleResolveConfiguration {
   /** Alert auto-resolution timeout. */
   timeToResolve?: string;
 }
-export const PrometheusRuleResolveConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PrometheusRuleResolveConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoResolved: S.optional(S.Boolean),
     timeToResolve: S.optional(S.String),
@@ -1200,7 +1193,7 @@ export interface PrometheusRule {
   /** Defines the configuration for resolving fired alerts. Only relevant for alerts. */
   resolveConfiguration?: PrometheusRuleResolveConfiguration;
 }
-export const PrometheusRule = /*@__PURE__*/ S.suspend(() =>
+const PrometheusRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     record: S.optional(S.String),
     alert: S.optional(S.String),
@@ -1217,7 +1210,7 @@ export const PrometheusRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the rules in the Prometheus rule group. */
 export type PrometheusRuleGroupPropertiesRulesList = Array<PrometheusRule>;
-export const PrometheusRuleGroupPropertiesRulesList = /*@__PURE__*/ S.Array(
+const PrometheusRuleGroupPropertiesRulesList = /*@__PURE__*/ S.Array(
   PrometheusRule,
 ) as any as S.Schema<PrometheusRuleGroupPropertiesRulesList>;
 
@@ -1236,7 +1229,7 @@ export interface PrometheusRuleGroupProperties {
   /** Defines the rules in the Prometheus rule group. */
   rules: PrometheusRuleGroupPropertiesRulesList;
 }
-export const PrometheusRuleGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const PrometheusRuleGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -1265,7 +1258,7 @@ export interface GetPrometheusRuleGroupResponse {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
-export const GetPrometheusRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrometheusRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1289,7 +1282,7 @@ export interface GetSmartDetectorAlertRuleRequest {
   /** Indicates if Smart Detector should be expanded. */
   expandDetector?: boolean;
 }
-export const GetSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1309,32 +1302,32 @@ export const GetSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetSmartDetectorAlertRuleResponseTagsMap = { [key: string]: string | undefined };
-export const GetSmartDetectorAlertRuleResponseTagsMap =
+const GetSmartDetectorAlertRuleResponseTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSmartDetectorAlertRuleResponseTagsMap>;
 
 /** The alert rule state. */
 export type AlertRulePropertiesState = "Enabled" | "Disabled";
-export const AlertRulePropertiesState = S.String;
+const AlertRulePropertiesState = S.String;
 
 /** The alert rule severity. */
 export type AlertRulePropertiesSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
-export const AlertRulePropertiesSeverity = S.String;
+const AlertRulePropertiesSeverity = S.String;
 
 /** The detector's parameters.' */
 export type DetectorParametersMap = { [key: string]: unknown | undefined };
-export const DetectorParametersMap = /*@__PURE__*/ S.Record(
+const DetectorParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<DetectorParametersMap>;
 
 /** The Smart Detector supported resource types. */
 export type DetectorSupportedResourceTypesList = Array<string>;
-export const DetectorSupportedResourceTypesList =
+const DetectorSupportedResourceTypesList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<DetectorSupportedResourceTypesList>;
 
 /** The Smart Detector image path. By default this is not populated, unless it's specified in expandDetector */
 export type DetectorImagePathsList = Array<string>;
-export const DetectorImagePathsList =
+const DetectorImagePathsList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<DetectorImagePathsList>;
 
 /** The detector parameter type. */
@@ -1344,7 +1337,7 @@ export type DetectorParameterDefinitionType =
   | "Double"
   | "Boolean"
   | "DateTime";
-export const DetectorParameterDefinitionType = S.String;
+const DetectorParameterDefinitionType = S.String;
 
 /** The detector parameter definition. */
 export interface DetectorParameterDefinition {
@@ -1359,7 +1352,7 @@ export interface DetectorParameterDefinition {
   /** A value indicating whether this detector parameter is mandatory. */
   isMandatory?: boolean;
 }
-export const DetectorParameterDefinition = /*@__PURE__*/ S.suspend(() =>
+const DetectorParameterDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1373,13 +1366,13 @@ export const DetectorParameterDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The Smart Detector parameters definitions.' */
 export type DetectorParameterDefinitionsList = Array<DetectorParameterDefinition>;
-export const DetectorParameterDefinitionsList = /*@__PURE__*/ S.Array(
+const DetectorParameterDefinitionsList = /*@__PURE__*/ S.Array(
   DetectorParameterDefinition,
 ) as any as S.Schema<DetectorParameterDefinitionsList>;
 
 /** The Smart Detector supported cadences. */
 export type DetectorSupportedCadencesList = Array<number>;
-export const DetectorSupportedCadencesList =
+const DetectorSupportedCadencesList =
   RecurrenceDaysOfMonthList as any as S.Schema<DetectorSupportedCadencesList>;
 
 /** The detector information. By default this is not populated, unless it's specified in expandDetector */
@@ -1401,7 +1394,7 @@ export interface Detector {
   /** The Smart Detector supported cadences. */
   supportedCadences?: DetectorSupportedCadencesList;
 }
-export const Detector = /*@__PURE__*/ S.suspend(() =>
+const Detector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     parameters: S.optional(DetectorParametersMap),
@@ -1416,12 +1409,12 @@ export const Detector = /*@__PURE__*/ S.suspend(() =>
 
 /** The alert rule resources scope. */
 export type AlertRulePropertiesScopeList = Array<string>;
-export const AlertRulePropertiesScopeList =
+const AlertRulePropertiesScopeList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<AlertRulePropertiesScopeList>;
 
 /** The Action Group resource IDs. */
 export type ActionGroupsInformationGroupIdsList = Array<string>;
-export const ActionGroupsInformationGroupIdsList =
+const ActionGroupsInformationGroupIdsList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<ActionGroupsInformationGroupIdsList>;
 
 /** The Action Groups information, used by the alert rule. */
@@ -1433,7 +1426,7 @@ export interface ActionGroupsInformation {
   /** The Action Group resource IDs. */
   groupIds: ActionGroupsInformationGroupIdsList;
 }
-export const ActionGroupsInformation = /*@__PURE__*/ S.suspend(() =>
+const ActionGroupsInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customEmailSubject: S.optional(S.String),
     customWebhookPayload: S.optional(S.String),
@@ -1446,7 +1439,7 @@ export interface ThrottlingInformation {
   /** The required duration (in ISO8601 format) to wait before notifying on the alert rule again. The time granularity must be in minutes and minimum value is 0 minutes */
   duration?: string;
 }
-export const ThrottlingInformation = /*@__PURE__*/ S.suspend(() =>
+const ThrottlingInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.String),
   }),
@@ -1471,7 +1464,7 @@ export interface AlertRuleProperties {
   /** The alert rule throttling information. */
   throttling?: ThrottlingInformation;
 }
-export const AlertRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     state: AlertRulePropertiesState,
@@ -1498,7 +1491,7 @@ export interface GetSmartDetectorAlertRuleResponse {
   /** The properties of the alert rule. */
   properties?: AlertRuleProperties;
 }
-export const GetSmartDetectorAlertRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSmartDetectorAlertRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -1517,7 +1510,7 @@ export interface ListAlertProcessingRuleByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAlertProcessingRuleByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertProcessingRuleByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1535,7 +1528,7 @@ export const ListAlertProcessingRuleByResourceGroupRequest = /*@__PURE__*/ S.sus
 
 /** Resource tags. */
 export type AlertProcessingRuleTagsMap = { [key: string]: string | undefined };
-export const AlertProcessingRuleTagsMap =
+const AlertProcessingRuleTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertProcessingRuleTagsMap>;
 
 /** Alert processing rule object containing target scopes, conditions and scheduling logic. */
@@ -1553,7 +1546,7 @@ export interface AlertProcessingRule {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
-export const AlertProcessingRule = /*@__PURE__*/ S.suspend(() =>
+const AlertProcessingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -1566,7 +1559,7 @@ export const AlertProcessingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The AlertProcessingRule items on this page */
 export type AlertProcessingRulesListValueList = Array<AlertProcessingRule>;
-export const AlertProcessingRulesListValueList = /*@__PURE__*/ S.Array(
+const AlertProcessingRulesListValueList = /*@__PURE__*/ S.Array(
   AlertProcessingRule,
 ) as any as S.Schema<AlertProcessingRulesListValueList>;
 
@@ -1577,7 +1570,7 @@ export interface AlertProcessingRulesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AlertProcessingRulesList = /*@__PURE__*/ S.suspend(() =>
+const AlertProcessingRulesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AlertProcessingRulesListValueList,
     nextLink: S.optional(S.String),
@@ -1588,7 +1581,7 @@ export interface ListAlertProcessingRuleBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListAlertProcessingRuleBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertProcessingRuleBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1604,7 +1597,7 @@ export const ListAlertProcessingRuleBySubscriptionRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListAlertProcessingRuleBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1626,7 +1619,7 @@ export interface OperationDisplay {
   /** Description of the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1642,7 +1635,7 @@ export interface Operation {
   /** Properties of the operation */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -1651,7 +1644,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of operations */
 export type OperationsListValueList = Array<Operation>;
-export const OperationsListValueList = /*@__PURE__*/ S.Array(
+const OperationsListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListValueList>;
 
@@ -1662,7 +1655,7 @@ export interface OperationsList {
   /** Array of operations */
   value: OperationsListValueList;
 }
-export const OperationsList = /*@__PURE__*/ S.suspend(() =>
+const OperationsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: OperationsListValueList,
@@ -1675,7 +1668,7 @@ export interface ListPrometheusRuleGroupByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPrometheusRuleGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrometheusRuleGroupByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1693,9 +1686,6 @@ export const ListPrometheusRuleGroupByResourceGroupRequest = /*@__PURE__*/ S.sus
 
 /** Resource tags. */
 export type PrometheusRuleGroupResourceTagsMap = { [key: string]: string | undefined };
-export const PrometheusRuleGroupResourceTagsMap =
-  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleGroupResourceTagsMap>;
-
 /** The Prometheus rule group resource. */
 export interface PrometheusRuleGroupResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1713,12 +1703,12 @@ export interface PrometheusRuleGroupResource {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
-export const PrometheusRuleGroupResource =
+const PrometheusRuleGroupResource =
   GetPrometheusRuleGroupResponse as any as S.Schema<PrometheusRuleGroupResource>;
 
 /** the values for the alert rule resources. */
 export type PrometheusRuleGroupResourceCollectionValueList = Array<PrometheusRuleGroupResource>;
-export const PrometheusRuleGroupResourceCollectionValueList = /*@__PURE__*/ S.Array(
+const PrometheusRuleGroupResourceCollectionValueList = /*@__PURE__*/ S.Array(
   PrometheusRuleGroupResource,
 ) as any as S.Schema<PrometheusRuleGroupResourceCollectionValueList>;
 
@@ -1728,7 +1718,7 @@ export interface PrometheusRuleGroupResourceCollection {
   value?: PrometheusRuleGroupResourceCollectionValueList;
   nextLink?: string;
 }
-export const PrometheusRuleGroupResourceCollection = /*@__PURE__*/ S.suspend(() =>
+const PrometheusRuleGroupResourceCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrometheusRuleGroupResourceCollectionValueList),
     nextLink: S.optional(S.String),
@@ -1741,7 +1731,7 @@ export interface ListPrometheusRuleGroupBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListPrometheusRuleGroupBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrometheusRuleGroupBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1764,7 +1754,7 @@ export interface ListSmartDetectorAlertRuleByResourceGroupRequest {
   /** Indicates if Smart Detector should be expanded. */
   expandDetector?: boolean;
 }
-export const ListSmartDetectorAlertRuleByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmartDetectorAlertRuleByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1783,7 +1773,7 @@ export const ListSmartDetectorAlertRuleByResourceGroupRequest = /*@__PURE__*/ S.
 
 /** The resource tags. */
 export type AlertRuleTagsMap = { [key: string]: string | undefined };
-export const AlertRuleTagsMap =
+const AlertRuleTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertRuleTagsMap>;
 
 /** The alert rule information */
@@ -1801,7 +1791,7 @@ export interface AlertRule {
   /** The properties of the alert rule. */
   properties?: AlertRuleProperties;
 }
-export const AlertRule = /*@__PURE__*/ S.suspend(() =>
+const AlertRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -1814,7 +1804,7 @@ export const AlertRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Smart Detector alert rules. */
 export type AlertRulesListValueList = Array<AlertRule>;
-export const AlertRulesListValueList = /*@__PURE__*/ S.Array(
+const AlertRulesListValueList = /*@__PURE__*/ S.Array(
   AlertRule,
 ) as any as S.Schema<AlertRulesListValueList>;
 
@@ -1825,7 +1815,7 @@ export interface AlertRulesList {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const AlertRulesList = /*@__PURE__*/ S.suspend(() =>
+const AlertRulesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AlertRulesListValueList),
     nextLink: S.optional(S.String),
@@ -1838,7 +1828,7 @@ export interface ListSmartDetectorAlertRulesRequest {
   /** Indicates if Smart Detector should be expanded. */
   expandDetector?: boolean;
 }
-export const ListSmartDetectorAlertRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSmartDetectorAlertRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     expandDetector: S.optional(S.Boolean.pipe(T.Query())),
@@ -1856,16 +1846,16 @@ export const ListSmartDetectorAlertRulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type PatchSmartDetectorAlertRuleRequestTagsMap = { [key: string]: string | undefined };
-export const PatchSmartDetectorAlertRuleRequestTagsMap =
+const PatchSmartDetectorAlertRuleRequestTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PatchSmartDetectorAlertRuleRequestTagsMap>;
 
 /** The alert rule state. */
 export type AlertRulePatchPropertiesState = "Enabled" | "Disabled";
-export const AlertRulePatchPropertiesState = S.String;
+const AlertRulePatchPropertiesState = S.String;
 
 /** The alert rule severity. */
 export type AlertRulePatchPropertiesSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
-export const AlertRulePatchPropertiesSeverity = S.String;
+const AlertRulePatchPropertiesSeverity = S.String;
 
 /** The alert rule properties. */
 export interface AlertRulePatchProperties {
@@ -1882,7 +1872,7 @@ export interface AlertRulePatchProperties {
   /** The alert rule throttling information. */
   throttling?: ThrottlingInformation;
 }
-export const AlertRulePatchProperties = /*@__PURE__*/ S.suspend(() =>
+const AlertRulePatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     state: S.optional(AlertRulePatchPropertiesState),
@@ -1905,7 +1895,7 @@ export interface PatchSmartDetectorAlertRuleRequest {
   /** The properties of the alert rule. */
   properties?: AlertRulePatchProperties;
 }
-export const PatchSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1926,9 +1916,6 @@ export const PatchSmartDetectorAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type PatchSmartDetectorAlertRuleResponseTagsMap = { [key: string]: string | undefined };
-export const PatchSmartDetectorAlertRuleResponseTagsMap =
-  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PatchSmartDetectorAlertRuleResponseTagsMap>;
-
 export interface PatchSmartDetectorAlertRuleResponse {
   /** The resource ID. */
   id?: string;
@@ -1943,14 +1930,14 @@ export interface PatchSmartDetectorAlertRuleResponse {
   /** The properties of the alert rule. */
   properties?: AlertRuleProperties;
 }
-export const PatchSmartDetectorAlertRuleResponse =
+const PatchSmartDetectorAlertRuleResponse =
   GetSmartDetectorAlertRuleResponse as any as S.Schema<PatchSmartDetectorAlertRuleResponse>;
 
 /** Resource tags. */
 export type PrometheusRuleGroupsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrometheusRuleGroupsCreateOrUpdateRequestTagsMap =
+const PrometheusRuleGroupsCreateOrUpdateRequestTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateRequestTagsMap>;
 
 export interface PrometheusRuleGroupsCreateOrUpdateRequest {
@@ -1967,7 +1954,7 @@ export interface PrometheusRuleGroupsCreateOrUpdateRequest {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
-export const PrometheusRuleGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrometheusRuleGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1991,9 +1978,6 @@ export const PrometheusRuleGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend
 export type PrometheusRuleGroupsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const PrometheusRuleGroupsCreateOrUpdateResponseTagsMap =
-  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateResponseTagsMap>;
-
 export interface PrometheusRuleGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2010,27 +1994,27 @@ export interface PrometheusRuleGroupsCreateOrUpdateResponse {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
-export const PrometheusRuleGroupsCreateOrUpdateResponse =
+const PrometheusRuleGroupsCreateOrUpdateResponse =
   GetPrometheusRuleGroupResponse as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateResponse>;
 
 /** The resource tags. */
 export type SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap =
+const SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap>;
 
 /** The alert rule state. */
 export type AlertRulePropertiesInputState = "Enabled" | "Disabled";
-export const AlertRulePropertiesInputState = S.String;
+const AlertRulePropertiesInputState = S.String;
 
 /** The alert rule severity. */
 export type AlertRulePropertiesInputSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
-export const AlertRulePropertiesInputSeverity = S.String;
+const AlertRulePropertiesInputSeverity = S.String;
 
 /** The detector's parameters.' */
 export type DetectorInputParametersMap = { [key: string]: unknown | undefined };
-export const DetectorInputParametersMap =
+const DetectorInputParametersMap =
   DetectorParametersMap as any as S.Schema<DetectorInputParametersMap>;
 
 /** The detector information. By default this is not populated, unless it's specified in expandDetector */
@@ -2040,7 +2024,7 @@ export interface DetectorInput {
   /** The detector's parameters.' */
   parameters?: DetectorInputParametersMap;
 }
-export const DetectorInput = /*@__PURE__*/ S.suspend(() =>
+const DetectorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     parameters: S.optional(DetectorInputParametersMap),
@@ -2049,7 +2033,7 @@ export const DetectorInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The alert rule resources scope. */
 export type AlertRulePropertiesInputScopeList = Array<string>;
-export const AlertRulePropertiesInputScopeList =
+const AlertRulePropertiesInputScopeList =
   AlertProcessingRulePropertiesScopesList as any as S.Schema<AlertRulePropertiesInputScopeList>;
 
 /** The alert rule properties. */
@@ -2071,7 +2055,7 @@ export interface AlertRulePropertiesInput {
   /** The alert rule throttling information. */
   throttling?: ThrottlingInformation;
 }
-export const AlertRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AlertRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     state: AlertRulePropertiesInputState,
@@ -2098,7 +2082,7 @@ export interface SmartDetectorAlertRulesCreateOrUpdateRequest {
   /** The properties of the alert rule. */
   properties?: AlertRulePropertiesInput;
 }
-export const SmartDetectorAlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SmartDetectorAlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2122,9 +2106,6 @@ export const SmartDetectorAlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.susp
 export type SmartDetectorAlertRulesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const SmartDetectorAlertRulesCreateOrUpdateResponseTagsMap =
-  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateResponseTagsMap>;
-
 export interface SmartDetectorAlertRulesCreateOrUpdateResponse {
   /** The resource ID. */
   id?: string;
@@ -2139,7 +2120,7 @@ export interface SmartDetectorAlertRulesCreateOrUpdateResponse {
   /** The properties of the alert rule. */
   properties?: AlertRuleProperties;
 }
-export const SmartDetectorAlertRulesCreateOrUpdateResponse =
+const SmartDetectorAlertRulesCreateOrUpdateResponse =
   GetSmartDetectorAlertRuleResponse as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateResponse>;
 
 /** Alert processing rule properties supported by patch. */
@@ -2147,7 +2128,7 @@ export interface PatchProperties {
   /** Indicates if the given alert processing rule is enabled or disabled. */
   enabled?: boolean;
 }
-export const PatchProperties = /*@__PURE__*/ S.suspend(() =>
+const PatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -2155,7 +2136,7 @@ export const PatchProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to be updated. */
 export type UpdateAlertProcessingRuleRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAlertProcessingRuleRequestTagsMap =
+const UpdateAlertProcessingRuleRequestTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAlertProcessingRuleRequestTagsMap>;
 
 export interface UpdateAlertProcessingRuleRequest {
@@ -2170,7 +2151,7 @@ export interface UpdateAlertProcessingRuleRequest {
   /** Tags to be updated. */
   tags?: UpdateAlertProcessingRuleRequestTagsMap;
 }
-export const UpdateAlertProcessingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertProcessingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2191,9 +2172,6 @@ export const UpdateAlertProcessingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAlertProcessingRuleResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAlertProcessingRuleResponseTagsMap =
-  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAlertProcessingRuleResponseTagsMap>;
-
 export interface UpdateAlertProcessingRuleResponse {
   /** Azure resource Id */
   id?: string;
@@ -2208,19 +2186,19 @@ export interface UpdateAlertProcessingRuleResponse {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
-export const UpdateAlertProcessingRuleResponse =
+const UpdateAlertProcessingRuleResponse =
   AlertProcessingRulesCreateOrUpdateResponse as any as S.Schema<UpdateAlertProcessingRuleResponse>;
 
 /** Resource tags */
 export type UpdatePrometheusRuleGroupRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePrometheusRuleGroupRequestTagsMap =
+const UpdatePrometheusRuleGroupRequestTagsMap =
   AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePrometheusRuleGroupRequestTagsMap>;
 
 export interface PrometheusRuleGroupResourcePatchParametersProperties {
   /** the flag that indicates whether the Prometheus rule group is enabled. */
   enabled?: boolean;
 }
-export const PrometheusRuleGroupResourcePatchParametersProperties = /*@__PURE__*/ S.suspend(() =>
+const PrometheusRuleGroupResourcePatchParametersProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -2239,7 +2217,7 @@ export interface UpdatePrometheusRuleGroupRequest {
   tags?: UpdatePrometheusRuleGroupRequestTagsMap;
   properties?: PrometheusRuleGroupResourcePatchParametersProperties;
 }
-export const UpdatePrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2260,9 +2238,6 @@ export const UpdatePrometheusRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePrometheusRuleGroupResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePrometheusRuleGroupResponseTagsMap =
-  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePrometheusRuleGroupResponseTagsMap>;
-
 export interface UpdatePrometheusRuleGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2279,7 +2254,7 @@ export interface UpdatePrometheusRuleGroupResponse {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
-export const UpdatePrometheusRuleGroupResponse =
+const UpdatePrometheusRuleGroupResponse =
   GetPrometheusRuleGroupResponse as any as S.Schema<UpdatePrometheusRuleGroupResponse>;
 
 export type AlertProcessingRulesCreateOrUpdateError = AzureOpError;

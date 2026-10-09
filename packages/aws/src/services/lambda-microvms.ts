@@ -193,26 +193,26 @@ export interface PortRange {
   startPort: number;
   endPort: number;
 }
-export const PortRange = /*@__PURE__*/ S.suspend(() =>
+const PortRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ startPort: S.Number, endPort: S.Number }),
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 export type PortSpecification =
   | { port: number; range?: never; allPorts?: never }
   | { port?: never; range: PortRange; allPorts?: never }
   | { port?: never; range?: never; allPorts: Record<string, never> };
-export const PortSpecification = /*@__PURE__*/ S.Union([
+const PortSpecification = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ port: S.Number }),
   /*@__PURE__*/ S.Struct({ range: PortRange }),
   /*@__PURE__*/ S.Struct({ allPorts: /*@__PURE__*/ S.Struct({}) }),
 ]);
 export type ListOfPortSpecification = PortSpecification[];
-export const ListOfPortSpecification = /*@__PURE__*/ S.Array(PortSpecification);
+const ListOfPortSpecification = /*@__PURE__*/ S.Array(PortSpecification);
 export interface CreateMicrovmAuthTokenRequest {
   microvmIdentifier: string;
   expirationInMinutes: number;
   allowedPorts: PortSpecification[];
 }
-export const CreateMicrovmAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMicrovmAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
     expirationInMinutes: S.Number,
@@ -233,14 +233,11 @@ export const CreateMicrovmAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export type AuthTokenKey = string;
 export type AuthTokenValue = string | redacted.Redacted<string>;
 export type TokenParts = { [key: string]: string | redacted.Redacted<string> | undefined };
-export const TokenParts = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ SensitiveString.pipe(S.optional),
-);
+const TokenParts = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
 export interface CreateMicrovmAuthTokenResponse {
   authToken: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const CreateMicrovmAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMicrovmAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ authToken: TokenParts }),
 ).annotate({
   identifier: "CreateMicrovmAuthTokenResponse",
@@ -249,54 +246,54 @@ export type NonBlankString = string;
 export type Version = string;
 export type RoleArn = string;
 export type CodeArtifact = { uri: string };
-export const CodeArtifact = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ uri: S.String })]);
+const CodeArtifact = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ uri: S.String })]);
 export interface LoggingDisabled {}
-export const LoggingDisabled = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const LoggingDisabled = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "LoggingDisabled",
 }) as any as S.Schema<LoggingDisabled>;
 export interface CloudWatchLogging {
   logGroup?: string;
   logStream?: string;
 }
-export const CloudWatchLogging = /*@__PURE__*/ S.suspend(() =>
+const CloudWatchLogging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ logGroup: S.optional(S.String), logStream: S.optional(S.String) }),
 ).annotate({ identifier: "CloudWatchLogging" }) as any as S.Schema<CloudWatchLogging>;
 export type Logging =
   | { disabled: LoggingDisabled; cloudWatch?: never }
   | { disabled?: never; cloudWatch: CloudWatchLogging };
-export const Logging = /*@__PURE__*/ S.Union([
+const Logging = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ disabled: LoggingDisabled }),
   /*@__PURE__*/ S.Struct({ cloudWatch: CloudWatchLogging }),
 ]);
 export type NetworkConnector = string;
 export type NetworkConnectorList = string[];
-export const NetworkConnectorList = /*@__PURE__*/ S.Array(S.String);
+const NetworkConnectorList = /*@__PURE__*/ S.Array(S.String);
 export type Architecture = "ARM_64" | (string & {});
-export const Architecture = S.String;
+const Architecture = S.String;
 
 export interface CpuConfiguration {
   architecture: Architecture;
 }
-export const CpuConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CpuConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ architecture: Architecture }),
 ).annotate({ identifier: "CpuConfiguration" }) as any as S.Schema<CpuConfiguration>;
 export type CpuConfigurationList = CpuConfiguration[];
-export const CpuConfigurationList = /*@__PURE__*/ S.Array(CpuConfiguration);
+const CpuConfigurationList = /*@__PURE__*/ S.Array(CpuConfiguration);
 export interface Resources {
   minimumMemoryInMiB: number;
 }
-export const Resources = /*@__PURE__*/ S.suspend(() =>
+const Resources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ minimumMemoryInMiB: S.Number }),
 ).annotate({ identifier: "Resources" }) as any as S.Schema<Resources>;
 export type ResourcesList = Resources[];
-export const ResourcesList = /*@__PURE__*/ S.Array(Resources);
+const ResourcesList = /*@__PURE__*/ S.Array(Resources);
 export type Capability = "ALL" | (string & {});
-export const Capability = S.String;
+const Capability = S.String;
 
 export type CapabilityList = Capability[];
-export const CapabilityList = /*@__PURE__*/ S.Array(Capability);
+const CapabilityList = /*@__PURE__*/ S.Array(Capability);
 export type HookState = "DISABLED" | "ENABLED" | (string & {});
-export const HookState = S.String;
+const HookState = S.String;
 
 export interface MicrovmHooks {
   run?: HookState;
@@ -308,7 +305,7 @@ export interface MicrovmHooks {
   terminate?: HookState;
   terminateTimeoutInSeconds?: number;
 }
-export const MicrovmHooks = /*@__PURE__*/ S.suspend(() =>
+const MicrovmHooks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run: S.optional(HookState),
     runTimeoutInSeconds: S.optional(S.Number),
@@ -326,7 +323,7 @@ export interface MicrovmImageHooks {
   validate?: HookState;
   validateTimeoutInSeconds?: number;
 }
-export const MicrovmImageHooks = /*@__PURE__*/ S.suspend(() =>
+const MicrovmImageHooks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ready: S.optional(HookState),
     readyTimeoutInSeconds: S.optional(S.Number),
@@ -339,7 +336,7 @@ export interface Hooks {
   microvmHooks?: MicrovmHooks;
   microvmImageHooks?: MicrovmImageHooks;
 }
-export const Hooks = /*@__PURE__*/ S.suspend(() =>
+const Hooks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     microvmHooks: S.optional(MicrovmHooks),
@@ -351,12 +348,12 @@ export type EnvironmentVariableValue = string | redacted.Redacted<string>;
 export type EnvironmentVariableMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const EnvironmentVariableMap = TokenParts as any as S.Schema<EnvironmentVariableMap>;
+const EnvironmentVariableMap = TokenParts as any as S.Schema<EnvironmentVariableMap>;
 export type ImageName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateMicrovmImageRequest {
   baseImageArn: string;
   baseImageVersion?: string;
@@ -374,7 +371,7 @@ export interface CreateMicrovmImageRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const CreateMicrovmImageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMicrovmImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseImageArn: S.String,
     baseImageVersion: S.optional(S.String),
@@ -415,7 +412,7 @@ export type MicrovmImageState =
   | "DELETE_FAILED"
   | "DELETED"
   | (string & {});
-export const MicrovmImageState = S.String;
+const MicrovmImageState = S.String;
 
 export interface CreateMicrovmImageResponse {
   imageArn: string;
@@ -440,7 +437,7 @@ export interface CreateMicrovmImageResponse {
   updatedAt?: Date;
   imageVersion: string;
 }
-export const CreateMicrovmImageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMicrovmImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageArn: S.String,
     name: S.String,
@@ -471,7 +468,7 @@ export interface CreateMicrovmShellAuthTokenRequest {
   microvmIdentifier: string;
   expirationInMinutes: number;
 }
-export const CreateMicrovmShellAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMicrovmShellAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")),
     expirationInMinutes: S.Number,
@@ -491,13 +488,13 @@ export const CreateMicrovmShellAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateMicrovmShellAuthTokenResponse {
   authToken: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const CreateMicrovmShellAuthTokenResponse =
+const CreateMicrovmShellAuthTokenResponse =
   CreateMicrovmAuthTokenResponse as any as S.Schema<CreateMicrovmShellAuthTokenResponse>;
 export type MicrovmImageIdentifier = string;
 export interface DeleteMicrovmImageInput {
   imageIdentifier: string;
 }
-export const DeleteMicrovmImageInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteMicrovmImageInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/2025-09-09/microvm-images/{imageIdentifier}" }),
@@ -513,14 +510,14 @@ export interface DeleteMicrovmImageOutput {
   imageIdentifier: string;
   state: MicrovmImageState;
 }
-export const DeleteMicrovmImageOutput = /*@__PURE__*/ S.suspend(() =>
+const DeleteMicrovmImageOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ imageIdentifier: S.String, state: MicrovmImageState }),
 ).annotate({ identifier: "DeleteMicrovmImageOutput" }) as any as S.Schema<DeleteMicrovmImageOutput>;
 export interface DeleteMicrovmImageVersionInput {
   imageIdentifier: string;
   imageVersion: string;
 }
-export const DeleteMicrovmImageVersionInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteMicrovmImageVersionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
     imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
@@ -549,14 +546,14 @@ export type MicrovmImageVersionState =
   | "DELETED"
   | "DELETE_FAILED"
   | (string & {});
-export const MicrovmImageVersionState = S.String;
+const MicrovmImageVersionState = S.String;
 
 export interface DeleteMicrovmImageVersionOutput {
   imageIdentifier: string;
   imageVersion: string;
   state: MicrovmImageVersionState;
 }
-export const DeleteMicrovmImageVersionOutput = /*@__PURE__*/ S.suspend(() =>
+const DeleteMicrovmImageVersionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ imageIdentifier: S.String, imageVersion: S.String, state: MicrovmImageVersionState }),
 ).annotate({
   identifier: "DeleteMicrovmImageVersionOutput",
@@ -564,7 +561,7 @@ export const DeleteMicrovmImageVersionOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetMicrovmRequest {
   microvmIdentifier: string;
 }
-export const GetMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2025-09-09/microvms/{microvmIdentifier}" }),
@@ -584,7 +581,7 @@ export type MicrovmState =
   | "TERMINATING"
   | "TERMINATED"
   | (string & {});
-export const MicrovmState = S.String;
+const MicrovmState = S.String;
 
 export type MicrovmImageArn = string;
 export interface IdlePolicy {
@@ -592,7 +589,7 @@ export interface IdlePolicy {
   suspendedDurationSeconds: number;
   autoResumeEnabled: boolean;
 }
-export const IdlePolicy = /*@__PURE__*/ S.suspend(() =>
+const IdlePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxIdleDurationSeconds: S.Number,
     suspendedDurationSeconds: S.Number,
@@ -614,7 +611,7 @@ export interface GetMicrovmResponse {
   ingressNetworkConnectors?: string[];
   egressNetworkConnectors?: string[];
 }
-export const GetMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     microvmId: S.String,
     state: MicrovmState,
@@ -634,7 +631,7 @@ export const GetMicrovmResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetMicrovmImageInput {
   imageIdentifier: string;
 }
-export const GetMicrovmImageInput = /*@__PURE__*/ S.suspend(() =>
+const GetMicrovmImageInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2025-09-09/microvm-images/{imageIdentifier}" }),
@@ -656,7 +653,7 @@ export interface GetMicrovmImageOutput {
   tags?: { [key: string]: string | undefined };
   updatedAt?: Date;
 }
-export const GetMicrovmImageOutput = /*@__PURE__*/ S.suspend(() =>
+const GetMicrovmImageOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageArn: S.String,
     name: S.String,
@@ -673,7 +670,7 @@ export interface GetMicrovmImageBuildInput {
   imageVersion: string;
   buildId: string;
 }
-export const GetMicrovmImageBuildInput = /*@__PURE__*/ S.suspend(() =>
+const GetMicrovmImageBuildInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
     imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
@@ -695,17 +692,17 @@ export const GetMicrovmImageBuildInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMicrovmImageBuildInput",
 }) as any as S.Schema<GetMicrovmImageBuildInput>;
 export type BuildState = "PENDING" | "IN_PROGRESS" | "SUCCESSFUL" | "FAILED" | (string & {});
-export const BuildState = S.String;
+const BuildState = S.String;
 
 export type Chipset = "GRAVITON" | (string & {});
-export const Chipset = S.String;
+const Chipset = S.String;
 
 export interface SnapshotBuild {
   memorySnapshotSizeInBytes?: number;
   codeInstallSizeInBytes?: number;
   diskSnapshotSizeInBytes?: number;
 }
-export const SnapshotBuild = /*@__PURE__*/ S.suspend(() =>
+const SnapshotBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memorySnapshotSizeInBytes: S.optional(S.Number),
     codeInstallSizeInBytes: S.optional(S.Number),
@@ -724,7 +721,7 @@ export interface GetMicrovmImageBuildOutput {
   createdAt: Date;
   snapshotBuild?: SnapshotBuild;
 }
-export const GetMicrovmImageBuildOutput = /*@__PURE__*/ S.suspend(() =>
+const GetMicrovmImageBuildOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageArn: S.String,
     imageVersion: S.String,
@@ -744,7 +741,7 @@ export interface GetMicrovmImageVersionInput {
   imageIdentifier: string;
   imageVersion: string;
 }
-export const GetMicrovmImageVersionInput = /*@__PURE__*/ S.suspend(() =>
+const GetMicrovmImageVersionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
     imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
@@ -765,7 +762,7 @@ export const GetMicrovmImageVersionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMicrovmImageVersionInput",
 }) as any as S.Schema<GetMicrovmImageVersionInput>;
 export type MicrovmImageVersionStatus = "ACTIVE" | "INACTIVE" | (string & {});
-export const MicrovmImageVersionStatus = S.String;
+const MicrovmImageVersionStatus = S.String;
 
 export interface GetMicrovmImageVersionOutput {
   baseImageArn: string;
@@ -789,7 +786,7 @@ export interface GetMicrovmImageVersionOutput {
   stateReason?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetMicrovmImageVersionOutput = /*@__PURE__*/ S.suspend(() =>
+const GetMicrovmImageVersionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseImageArn: S.String,
     baseImageVersion: S.optional(S.String),
@@ -819,7 +816,7 @@ export interface ListManagedMicrovmImagesInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListManagedMicrovmImagesInput = /*@__PURE__*/ S.suspend(() =>
+const ListManagedMicrovmImagesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -841,7 +838,7 @@ export interface ManagedMicrovmImageSummary {
   createdAt: Date;
   updatedAt?: Date;
 }
-export const ManagedMicrovmImageSummary = /*@__PURE__*/ S.suspend(() =>
+const ManagedMicrovmImageSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageArn: S.String,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -851,12 +848,12 @@ export const ManagedMicrovmImageSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedMicrovmImageSummary",
 }) as any as S.Schema<ManagedMicrovmImageSummary>;
 export type ManagedMicrovmImageSummaryList = ManagedMicrovmImageSummary[];
-export const ManagedMicrovmImageSummaryList = /*@__PURE__*/ S.Array(ManagedMicrovmImageSummary);
+const ManagedMicrovmImageSummaryList = /*@__PURE__*/ S.Array(ManagedMicrovmImageSummary);
 export interface ListManagedMicrovmImagesOutput {
   nextToken?: string;
   items: ManagedMicrovmImageSummary[];
 }
-export const ListManagedMicrovmImagesOutput = /*@__PURE__*/ S.suspend(() =>
+const ListManagedMicrovmImagesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), items: ManagedMicrovmImageSummaryList }),
 ).annotate({
   identifier: "ListManagedMicrovmImagesOutput",
@@ -866,7 +863,7 @@ export interface ListManagedMicrovmImageVersionsInput {
   nextToken?: string;
   imageIdentifier: string;
 }
-export const ListManagedMicrovmImageVersionsInput = /*@__PURE__*/ S.suspend(() =>
+const ListManagedMicrovmImageVersionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -888,7 +885,7 @@ export const ListManagedMicrovmImageVersionsInput = /*@__PURE__*/ S.suspend(() =
   identifier: "ListManagedMicrovmImageVersionsInput",
 }) as any as S.Schema<ListManagedMicrovmImageVersionsInput>;
 export type ManagedMicrovmImageVersionStatus = "AVAILABLE" | "DEPRECATED" | (string & {});
-export const ManagedMicrovmImageVersionStatus = S.String;
+const ManagedMicrovmImageVersionStatus = S.String;
 
 export interface ManagedMicrovmImageVersion {
   imageArn: string;
@@ -897,7 +894,7 @@ export interface ManagedMicrovmImageVersion {
   createdAt: Date;
   updatedAt?: Date;
 }
-export const ManagedMicrovmImageVersion = /*@__PURE__*/ S.suspend(() =>
+const ManagedMicrovmImageVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageArn: S.String,
     imageVersion: S.String,
@@ -909,12 +906,12 @@ export const ManagedMicrovmImageVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedMicrovmImageVersion",
 }) as any as S.Schema<ManagedMicrovmImageVersion>;
 export type ManagedMicrovmImageVersionList = ManagedMicrovmImageVersion[];
-export const ManagedMicrovmImageVersionList = /*@__PURE__*/ S.Array(ManagedMicrovmImageVersion);
+const ManagedMicrovmImageVersionList = /*@__PURE__*/ S.Array(ManagedMicrovmImageVersion);
 export interface ListManagedMicrovmImageVersionsOutput {
   nextToken?: string;
   items: ManagedMicrovmImageVersion[];
 }
-export const ListManagedMicrovmImageVersionsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListManagedMicrovmImageVersionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), items: ManagedMicrovmImageVersionList }),
 ).annotate({
   identifier: "ListManagedMicrovmImageVersionsOutput",
@@ -928,7 +925,7 @@ export interface ListMicrovmImageBuildsInput {
   chipset?: Chipset;
   chipsetGeneration?: string;
 }
-export const ListMicrovmImageBuildsInput = /*@__PURE__*/ S.suspend(() =>
+const ListMicrovmImageBuildsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -964,7 +961,7 @@ export interface MicrovmImageBuildSummary {
   stateReason?: string;
   createdAt: Date;
 }
-export const MicrovmImageBuildSummary = /*@__PURE__*/ S.suspend(() =>
+const MicrovmImageBuildSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageArn: S.String,
     imageVersion: S.String,
@@ -978,12 +975,12 @@ export const MicrovmImageBuildSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MicrovmImageBuildSummary" }) as any as S.Schema<MicrovmImageBuildSummary>;
 export type MicrovmImageBuildSummaries = MicrovmImageBuildSummary[];
-export const MicrovmImageBuildSummaries = /*@__PURE__*/ S.Array(MicrovmImageBuildSummary);
+const MicrovmImageBuildSummaries = /*@__PURE__*/ S.Array(MicrovmImageBuildSummary);
 export interface ListMicrovmImageBuildsOutput {
   nextToken?: string;
   items: MicrovmImageBuildSummary[];
 }
-export const ListMicrovmImageBuildsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListMicrovmImageBuildsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), items: MicrovmImageBuildSummaries }),
 ).annotate({
   identifier: "ListMicrovmImageBuildsOutput",
@@ -993,7 +990,7 @@ export interface ListMicrovmImagesRequest {
   nextToken?: string;
   nameFilter?: string;
 }
-export const ListMicrovmImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMicrovmImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1017,7 +1014,7 @@ export interface MicrovmImageSummary {
   latestFailedImageVersion?: string;
   createdAt: Date;
 }
-export const MicrovmImageSummary = /*@__PURE__*/ S.suspend(() =>
+const MicrovmImageSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageArn: S.String,
     name: S.String,
@@ -1028,12 +1025,12 @@ export const MicrovmImageSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MicrovmImageSummary" }) as any as S.Schema<MicrovmImageSummary>;
 export type MicrovmImageSummaries = MicrovmImageSummary[];
-export const MicrovmImageSummaries = /*@__PURE__*/ S.Array(MicrovmImageSummary);
+const MicrovmImageSummaries = /*@__PURE__*/ S.Array(MicrovmImageSummary);
 export interface ListMicrovmImagesResponse {
   nextToken?: string;
   items: MicrovmImageSummary[];
 }
-export const ListMicrovmImagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMicrovmImagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), items: MicrovmImageSummaries }),
 ).annotate({
   identifier: "ListMicrovmImagesResponse",
@@ -1043,7 +1040,7 @@ export interface ListMicrovmImageVersionsInput {
   nextToken?: string;
   imageIdentifier: string;
 }
-export const ListMicrovmImageVersionsInput = /*@__PURE__*/ S.suspend(() =>
+const ListMicrovmImageVersionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1083,15 +1080,15 @@ export interface MicrovmImageVersionSummary {
   stateReason?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const MicrovmImageVersionSummary =
+const MicrovmImageVersionSummary =
   GetMicrovmImageVersionOutput as any as S.Schema<MicrovmImageVersionSummary>;
 export type MicrovmImageVersionSummaryList = MicrovmImageVersionSummary[];
-export const MicrovmImageVersionSummaryList = /*@__PURE__*/ S.Array(MicrovmImageVersionSummary);
+const MicrovmImageVersionSummaryList = /*@__PURE__*/ S.Array(MicrovmImageVersionSummary);
 export interface ListMicrovmImageVersionsOutput {
   nextToken?: string;
   items: MicrovmImageVersionSummary[];
 }
-export const ListMicrovmImageVersionsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListMicrovmImageVersionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), items: MicrovmImageVersionSummaryList }),
 ).annotate({
   identifier: "ListMicrovmImageVersionsOutput",
@@ -1102,7 +1099,7 @@ export interface ListMicrovmsRequest {
   imageIdentifier?: string;
   imageVersion?: string;
 }
-export const ListMicrovmsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMicrovmsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1119,7 +1116,7 @@ export interface MicrovmItem {
   imageVersion: string;
   startedAt: Date;
 }
-export const MicrovmItem = /*@__PURE__*/ S.suspend(() =>
+const MicrovmItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     microvmId: S.String,
     state: MicrovmState,
@@ -1129,19 +1126,19 @@ export const MicrovmItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MicrovmItem" }) as any as S.Schema<MicrovmItem>;
 export type MicrovmItemList = MicrovmItem[];
-export const MicrovmItemList = /*@__PURE__*/ S.Array(MicrovmItem);
+const MicrovmItemList = /*@__PURE__*/ S.Array(MicrovmItem);
 export interface ListMicrovmsResponse {
   nextToken?: string;
   items: MicrovmItem[];
 }
-export const ListMicrovmsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMicrovmsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), items: MicrovmItemList }),
 ).annotate({ identifier: "ListMicrovmsResponse" }) as any as S.Schema<ListMicrovmsResponse>;
 export type TaggableResource = string;
 export interface ListTagsRequest {
   Resource: string;
 }
-export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Resource: S.String.pipe(T.HttpLabel("Resource")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/2017-03-31/tags/{Resource}" }),
@@ -1156,13 +1153,13 @@ export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(Tags) }),
 ).annotate({ identifier: "ListTagsResponse" }) as any as S.Schema<ListTagsResponse>;
 export interface ResumeMicrovmRequest {
   microvmIdentifier: string;
 }
-export const ResumeMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2025-09-09/microvms/{microvmIdentifier}/resume" }),
@@ -1175,7 +1172,7 @@ export const ResumeMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ResumeMicrovmRequest" }) as any as S.Schema<ResumeMicrovmRequest>;
 export interface ResumeMicrovmResponse {}
-export const ResumeMicrovmResponse = LoggingDisabled as any as S.Schema<ResumeMicrovmResponse>;
+const ResumeMicrovmResponse = LoggingDisabled as any as S.Schema<ResumeMicrovmResponse>;
 export type RunHookPayload = string | redacted.Redacted<string>;
 export interface RunMicrovmRequest {
   ingressNetworkConnectors?: string[];
@@ -1189,7 +1186,7 @@ export interface RunMicrovmRequest {
   maximumDurationInSeconds?: number;
   clientToken?: string;
 }
-export const RunMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+const RunMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingressNetworkConnectors: S.optional(NetworkConnectorList),
     egressNetworkConnectors: S.optional(NetworkConnectorList),
@@ -1220,11 +1217,11 @@ export interface RunMicrovmResponse {
   ingressNetworkConnectors?: string[];
   egressNetworkConnectors?: string[];
 }
-export const RunMicrovmResponse = GetMicrovmResponse as any as S.Schema<RunMicrovmResponse>;
+const RunMicrovmResponse = GetMicrovmResponse as any as S.Schema<RunMicrovmResponse>;
 export interface SuspendMicrovmRequest {
   microvmIdentifier: string;
 }
-export const SuspendMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2025-09-09/microvms/{microvmIdentifier}/suspend" }),
@@ -1237,12 +1234,12 @@ export const SuspendMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SuspendMicrovmRequest" }) as any as S.Schema<SuspendMicrovmRequest>;
 export interface SuspendMicrovmResponse {}
-export const SuspendMicrovmResponse = LoggingDisabled as any as S.Schema<SuspendMicrovmResponse>;
+const SuspendMicrovmResponse = LoggingDisabled as any as S.Schema<SuspendMicrovmResponse>;
 export interface TagResourceRequest {
   Resource: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Resource: S.String.pipe(T.HttpLabel("Resource")), Tags: Tags }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2017-03-31/tags/{Resource}" }),
@@ -1255,11 +1252,11 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = LoggingDisabled as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = LoggingDisabled as any as S.Schema<TagResourceResponse>;
 export interface TerminateMicrovmRequest {
   microvmIdentifier: string;
 }
-export const TerminateMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ microvmIdentifier: S.String.pipe(T.HttpLabel("microvmIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/2025-09-09/microvms/{microvmIdentifier}" }),
@@ -1272,17 +1269,16 @@ export const TerminateMicrovmRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TerminateMicrovmRequest" }) as any as S.Schema<TerminateMicrovmRequest>;
 export interface TerminateMicrovmResponse {}
-export const TerminateMicrovmResponse =
-  LoggingDisabled as any as S.Schema<TerminateMicrovmResponse>;
+const TerminateMicrovmResponse = LoggingDisabled as any as S.Schema<TerminateMicrovmResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(
+const TagKeyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
 );
 export interface UntagResourceRequest {
   Resource: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Resource: S.String.pipe(T.HttpLabel("Resource")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1298,7 +1294,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = LoggingDisabled as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = LoggingDisabled as any as S.Schema<UntagResourceResponse>;
 export interface UpdateMicrovmImageRequest {
   baseImageArn: string;
   baseImageVersion?: string;
@@ -1315,7 +1311,7 @@ export interface UpdateMicrovmImageRequest {
   imageIdentifier: string;
   clientToken?: string;
 }
-export const UpdateMicrovmImageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMicrovmImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseImageArn: S.String,
     baseImageVersion: S.optional(S.String),
@@ -1366,7 +1362,7 @@ export interface UpdateMicrovmImageResponse {
   updatedAt: Date;
   imageVersion: string;
 }
-export const UpdateMicrovmImageResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateMicrovmImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageArn: S.String,
     name: S.String,
@@ -1397,7 +1393,7 @@ export interface UpdateMicrovmImageVersionRequest {
   imageVersion: string;
   status: MicrovmImageVersionStatus;
 }
-export const UpdateMicrovmImageVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMicrovmImageVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageIdentifier: S.String.pipe(T.HttpLabel("imageIdentifier")),
     imageVersion: S.String.pipe(T.HttpLabel("imageVersion")),
@@ -1440,7 +1436,7 @@ export interface UpdateMicrovmImageVersionResponse {
   stateReason?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateMicrovmImageVersionResponse =
+const UpdateMicrovmImageVersionResponse =
   GetMicrovmImageVersionOutput as any as S.Schema<UpdateMicrovmImageVersionResponse>;
 export type CreateMicrovmAuthTokenError =
   | AccessDeniedException

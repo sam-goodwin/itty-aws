@@ -41,7 +41,7 @@ export interface CreateWarehouseSavedQueryFolderRequest {
   /** Display name for the folder used to organize saved queries in the SQL editor sidebar. */
   name?: string;
 }
-export const CreateWarehouseSavedQueryFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueryFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -57,7 +57,7 @@ export const CreateWarehouseSavedQueryFolderRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateWarehouseSavedQueryFolderRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -73,14 +73,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -93,7 +88,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -118,7 +113,7 @@ export interface DataWarehouseSavedQueryFolder {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const DataWarehouseSavedQueryFolder = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseSavedQueryFolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -137,7 +132,7 @@ export interface GetWarehouseSavedQueryFolderRequest {
   /** A UUID string identifying this data warehouse saved query folder. */
   id: string;
 }
-export const GetWarehouseSavedQueryFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseSavedQueryFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -156,7 +151,7 @@ export interface ListWarehouseSavedQueryFoldersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListWarehouseSavedQueryFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWarehouseSavedQueryFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -171,12 +166,12 @@ export const ListWarehouseSavedQueryFoldersRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListWarehouseSavedQueryFoldersRequest>;
 
 export type ListWarehouseSavedQueryFoldersResponseBodyList = Array<DataWarehouseSavedQueryFolder>;
-export const ListWarehouseSavedQueryFoldersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWarehouseSavedQueryFoldersResponseBodyList = /*@__PURE__*/ S.Array(
   DataWarehouseSavedQueryFolder,
 ) as any as S.Schema<ListWarehouseSavedQueryFoldersResponseBodyList>;
 
 export type ListWarehouseSavedQueryFoldersResponse = ListWarehouseSavedQueryFoldersResponseBodyList;
-export const ListWarehouseSavedQueryFoldersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWarehouseSavedQueryFoldersResponse = /*@__PURE__*/ S.suspend(() =>
   ListWarehouseSavedQueryFoldersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWarehouseSavedQueryFoldersResponse",
@@ -190,7 +185,7 @@ export interface UpdateWarehouseSavedQueryFoldersPartialRequest {
   /** Display name for the folder used to organize saved queries in the SQL editor sidebar. */
   name?: string;
 }
-export const UpdateWarehouseSavedQueryFoldersPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseSavedQueryFoldersPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -212,7 +207,7 @@ export interface WarehouseSavedQueryFoldersDestroyRequest {
   /** A UUID string identifying this data warehouse saved query folder. */
   id: string;
 }
-export const WarehouseSavedQueryFoldersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseSavedQueryFoldersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -228,7 +223,7 @@ export const WarehouseSavedQueryFoldersDestroyRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WarehouseSavedQueryFoldersDestroyRequest>;
 
 export interface WarehouseSavedQueryFoldersDestroyResponse {}
-export const WarehouseSavedQueryFoldersDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const WarehouseSavedQueryFoldersDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "WarehouseSavedQueryFoldersDestroyResponse",

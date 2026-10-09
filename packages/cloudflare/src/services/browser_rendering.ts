@@ -33,7 +33,7 @@ export interface ActivateDevtoolBrowserTargetRequest {
   /** Target ID to activate. */
   targetId: string;
 }
-export const ActivateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -56,7 +56,7 @@ export interface ActivateDevtoolBrowserTargetResponse {
   /** Target activated. */
   message: string;
 }
-export const ActivateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -72,7 +72,7 @@ export interface CloseDevtoolBrowserTargetRequest {
   /** Target ID to close. */
   targetId: string;
 }
-export const CloseDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const CloseDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -95,7 +95,7 @@ export interface CloseDevtoolBrowserTargetResponse {
   /** Target is closing. */
   message: string;
 }
-export const CloseDevtoolBrowserTargetResponse =
+const CloseDevtoolBrowserTargetResponse =
   ActivateDevtoolBrowserTargetResponse as any as S.Schema<CloseDevtoolBrowserTargetResponse>;
 
 export interface ConnectDevtoolBrowserRequest {
@@ -111,7 +111,7 @@ export interface ConnectDevtoolBrowserRequest {
   /** Optional base64url-encoded JSON connection guardrails (mode) */
   cfBrapiGuardrails?: string;
 }
-export const ConnectDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -133,14 +133,14 @@ export const ConnectDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectDevtoolBrowserRequest>;
 
 export interface ConnectDevtoolBrowserResponse {}
-export const ConnectDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ConnectDevtoolBrowserResponse",
 }) as any as S.Schema<ConnectDevtoolBrowserResponse>;
 
 export type CreateAccessibilityTreeRequestBrowser = "kitesurf";
-export const CreateAccessibilityTreeRequestBrowser = S.String;
+const CreateAccessibilityTreeRequestBrowser = S.String;
 
 export interface CreateAccessibilityTreeRequestAddScriptTagItem {
   id?: string;
@@ -148,7 +148,7 @@ export interface CreateAccessibilityTreeRequestAddScriptTagItem {
   type?: string;
   url?: string;
 }
-export const CreateAccessibilityTreeRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeRequestAddScriptTagItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     content: S.optional(S.String),
@@ -161,7 +161,7 @@ export const CreateAccessibilityTreeRequestAddScriptTagItem = /*@__PURE__*/ S.su
 
 export type CreateAccessibilityTreeRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const CreateAccessibilityTreeRequestAddScriptTagList = /*@__PURE__*/ S.Array(
+const CreateAccessibilityTreeRequestAddScriptTagList = /*@__PURE__*/ S.Array(
   CreateAccessibilityTreeRequestAddScriptTagItem,
 ) as any as S.Schema<CreateAccessibilityTreeRequestAddScriptTagList>;
 
@@ -169,7 +169,7 @@ export interface CreateAccessibilityTreeRequestAddStyleTagItem {
   content?: string;
   url?: string;
 }
-export const CreateAccessibilityTreeRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeRequestAddStyleTagItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     url: S.optional(S.String),
@@ -180,12 +180,12 @@ export const CreateAccessibilityTreeRequestAddStyleTagItem = /*@__PURE__*/ S.sus
 
 export type CreateAccessibilityTreeRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const CreateAccessibilityTreeRequestAddStyleTagList = /*@__PURE__*/ S.Array(
+const CreateAccessibilityTreeRequestAddStyleTagList = /*@__PURE__*/ S.Array(
   CreateAccessibilityTreeRequestAddStyleTagItem,
 ) as any as S.Schema<CreateAccessibilityTreeRequestAddStyleTagList>;
 
 export type CreateAccessibilityTreeRequestAllowRequestPatternList = Array<string>;
-export const CreateAccessibilityTreeRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
+const CreateAccessibilityTreeRequestAllowRequestPatternList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAccessibilityTreeRequestAllowRequestPatternList>;
 
@@ -208,12 +208,12 @@ export type CreateAccessibilityTreeRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const CreateAccessibilityTreeRequestAllowResourceTypesItem = S.String;
+const CreateAccessibilityTreeRequestAllowResourceTypesItem = S.String;
 
 export type CreateAccessibilityTreeRequestAllowResourceTypesList = Array<
   CreateAccessibilityTreeRequestAllowResourceTypesItem | (string & {})
 >;
-export const CreateAccessibilityTreeRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
+const CreateAccessibilityTreeRequestAllowResourceTypesList = /*@__PURE__*/ S.Array(
   CreateAccessibilityTreeRequestAllowResourceTypesItem,
 ) as any as S.Schema<CreateAccessibilityTreeRequestAllowResourceTypesList>;
 
@@ -221,7 +221,7 @@ export interface CreateAccessibilityTreeRequestAuthenticate {
   password: string;
   username: string;
 }
-export const CreateAccessibilityTreeRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeRequestAuthenticate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.String,
     username: S.String,
@@ -231,16 +231,16 @@ export const CreateAccessibilityTreeRequestAuthenticate = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateAccessibilityTreeRequestAuthenticate>;
 
 export type CreateAccessibilityTreeRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const CreateAccessibilityTreeRequestCookiesItemPriority = S.String;
+const CreateAccessibilityTreeRequestCookiesItemPriority = S.String;
 
 export type CreateAccessibilityTreeRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const CreateAccessibilityTreeRequestCookiesItemSameSite = S.String;
+const CreateAccessibilityTreeRequestCookiesItemSameSite = S.String;
 
 export type CreateAccessibilityTreeRequestCookiesItemSourceScheme =
   | "Unset"
   | "NonSecure"
   | "Secure";
-export const CreateAccessibilityTreeRequestCookiesItemSourceScheme = S.String;
+const CreateAccessibilityTreeRequestCookiesItemSourceScheme = S.String;
 
 export interface CreateAccessibilityTreeRequestCookiesItem {
   /** Cookie name. */
@@ -259,7 +259,7 @@ export interface CreateAccessibilityTreeRequestCookiesItem {
   sourceScheme?: CreateAccessibilityTreeRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const CreateAccessibilityTreeRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeRequestCookiesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -282,7 +282,7 @@ export const CreateAccessibilityTreeRequestCookiesItem = /*@__PURE__*/ S.suspend
 
 export type CreateAccessibilityTreeRequestCookiesList =
   Array<CreateAccessibilityTreeRequestCookiesItem>;
-export const CreateAccessibilityTreeRequestCookiesList = /*@__PURE__*/ S.Array(
+const CreateAccessibilityTreeRequestCookiesList = /*@__PURE__*/ S.Array(
   CreateAccessibilityTreeRequestCookiesItem,
 ) as any as S.Schema<CreateAccessibilityTreeRequestCookiesList>;
 
@@ -291,26 +291,19 @@ export type CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase1List = Array<
   CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase1List>;
-
 export type CreateAccessibilityTreeRequestGotoOptionsWaitUntil =
   | CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | CreateAccessibilityTreeRequestGotoOptionsWaitUntilCase1List;
-export const CreateAccessibilityTreeRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const CreateAccessibilityTreeRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -320,7 +313,7 @@ export interface CreateAccessibilityTreeRequestGotoOptions {
   timeout?: number;
   waitUntil?: CreateAccessibilityTreeRequestGotoOptionsWaitUntil;
 }
-export const CreateAccessibilityTreeRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -332,7 +325,7 @@ export const CreateAccessibilityTreeRequestGotoOptions = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateAccessibilityTreeRequestGotoOptions>;
 
 export type CreateAccessibilityTreeRequestRejectRequestPatternList = Array<string>;
-export const CreateAccessibilityTreeRequestRejectRequestPatternList =
+const CreateAccessibilityTreeRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CreateAccessibilityTreeRequestRejectRequestPatternList>;
 
 export type CreateAccessibilityTreeRequestRejectResourceTypesItem =
@@ -354,18 +347,16 @@ export type CreateAccessibilityTreeRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const CreateAccessibilityTreeRequestRejectResourceTypesItem = S.String;
-
 export type CreateAccessibilityTreeRequestRejectResourceTypesList = Array<
   CreateAccessibilityTreeRequestRejectResourceTypesItem | (string & {})
 >;
-export const CreateAccessibilityTreeRequestRejectResourceTypesList =
+const CreateAccessibilityTreeRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<CreateAccessibilityTreeRequestRejectResourceTypesList>;
 
 export type CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
+const CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap>;
@@ -378,7 +369,7 @@ export interface CreateAccessibilityTreeRequestViewport {
   isLandscape?: boolean;
   isMobile?: boolean;
 }
-export const CreateAccessibilityTreeRequestViewport = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeRequestViewport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.Number,
     width: S.Number,
@@ -397,7 +388,7 @@ export interface CreateAccessibilityTreeRequestWaitForSelector {
   timeout?: number;
   visible?: boolean;
 }
-export const CreateAccessibilityTreeRequestWaitForSelector = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeRequestWaitForSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
     hidden: S.optional(S.Boolean),
@@ -452,7 +443,7 @@ export interface CreateAccessibilityTreeRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateAccessibilityTreeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(CreateAccessibilityTreeRequestBrowser.pipe(T.Query())),
@@ -493,30 +484,28 @@ export const CreateAccessibilityTreeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessibilityTreeRequest>;
 
 export type CreateAccessibilityTreeResponseAccessibilityTreeChecked = "mixed";
-export const CreateAccessibilityTreeResponseAccessibilityTreeChecked = S.String;
-
 export type CreateAccessibilityTreeResponseAccessibilityTreeChecked2 =
   | CreateAccessibilityTreeResponseAccessibilityTreeChecked
   | boolean;
-export const CreateAccessibilityTreeResponseAccessibilityTreeChecked2 =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+const CreateAccessibilityTreeResponseAccessibilityTreeChecked2 = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type CreateAccessibilityTreeResponseAccessibilityTreeChildrenList = Array<unknown>;
-export const CreateAccessibilityTreeResponseAccessibilityTreeChildrenList = /*@__PURE__*/ S.Array(
+const CreateAccessibilityTreeResponseAccessibilityTreeChildrenList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateAccessibilityTreeResponseAccessibilityTreeChildrenList>;
 
 export type CreateAccessibilityTreeResponseAccessibilityTreePressed = "mixed";
-export const CreateAccessibilityTreeResponseAccessibilityTreePressed = S.String;
-
 export type CreateAccessibilityTreeResponseAccessibilityTreePressed2 =
   | CreateAccessibilityTreeResponseAccessibilityTreePressed
   | boolean;
-export const CreateAccessibilityTreeResponseAccessibilityTreePressed2 =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+const CreateAccessibilityTreeResponseAccessibilityTreePressed2 = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type CreateAccessibilityTreeResponseAccessibilityTreeValue = string | number;
-export const CreateAccessibilityTreeResponseAccessibilityTreeValue = /*@__PURE__*/ S.Unknown.pipe(
+const CreateAccessibilityTreeResponseAccessibilityTreeValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -548,7 +537,7 @@ export interface CreateAccessibilityTreeResponseAccessibilityTree {
   valuemin?: number | null;
   valuetext?: string | null;
 }
-export const CreateAccessibilityTreeResponseAccessibilityTree = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeResponseAccessibilityTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String,
     autocomplete: S.optional(S.NullOr(S.String)),
@@ -586,7 +575,7 @@ export interface CreateAccessibilityTreeResponse {
   /** Accessibility tree node */
   accessibilityTree: CreateAccessibilityTreeResponseAccessibilityTree;
 }
-export const CreateAccessibilityTreeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessibilityTreeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessibilityTree: CreateAccessibilityTreeResponseAccessibilityTree,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -595,26 +584,22 @@ export const CreateAccessibilityTreeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessibilityTreeResponse>;
 
 export type ContentCreateRequestBrowser = "kitesurf";
-export const ContentCreateRequestBrowser = S.String;
+const ContentCreateRequestBrowser = S.String;
 
 export type ContentCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-export const ContentCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type ContentCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const ContentCreateRequestAddScriptTagList =
+const ContentCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<ContentCreateRequestAddScriptTagList>;
 
 export type ContentCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const ContentCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type ContentCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const ContentCreateRequestAddStyleTagList =
+const ContentCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<ContentCreateRequestAddStyleTagList>;
 
 export type ContentCreateRequestAllowRequestPatternList = Array<string>;
-export const ContentCreateRequestAllowRequestPatternList =
+const ContentCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ContentCreateRequestAllowRequestPatternList>;
 
 export type ContentCreateRequestAllowResourceTypesItem =
@@ -636,26 +621,16 @@ export type ContentCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const ContentCreateRequestAllowResourceTypesItem = S.String;
-
 export type ContentCreateRequestAllowResourceTypesList = Array<
   ContentCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const ContentCreateRequestAllowResourceTypesList =
+const ContentCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ContentCreateRequestAllowResourceTypesList>;
 
 export type ContentCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const ContentCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type ContentCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const ContentCreateRequestCookiesItemPriority = S.String;
-
 export type ContentCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const ContentCreateRequestCookiesItemSameSite = S.String;
-
 export type ContentCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const ContentCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface ContentCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -673,11 +648,8 @@ export interface ContentCreateRequestCookiesItem {
   sourceScheme?: ContentCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const ContentCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<ContentCreateRequestCookiesItem>;
-
 export type ContentCreateRequestCookiesList = Array<ContentCreateRequestCookiesItem>;
-export const ContentCreateRequestCookiesList =
+const ContentCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<ContentCreateRequestCookiesList>;
 
 export type ContentCreateRequestGotoOptionsWaitUntilCase0 =
@@ -685,26 +657,19 @@ export type ContentCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const ContentCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type ContentCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const ContentCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type ContentCreateRequestGotoOptionsWaitUntilCase1List = Array<
   ContentCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const ContentCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ContentCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type ContentCreateRequestGotoOptionsWaitUntil =
   | ContentCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | ContentCreateRequestGotoOptionsWaitUntilCase1List;
-export const ContentCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const ContentCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -714,7 +679,7 @@ export interface ContentCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: ContentCreateRequestGotoOptionsWaitUntil;
 }
-export const ContentCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const ContentCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -726,7 +691,7 @@ export const ContentCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContentCreateRequestGotoOptions>;
 
 export type ContentCreateRequestRejectRequestPatternList = Array<string>;
-export const ContentCreateRequestRejectRequestPatternList =
+const ContentCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ContentCreateRequestRejectRequestPatternList>;
 
 export type ContentCreateRequestRejectResourceTypesItem =
@@ -748,24 +713,18 @@ export type ContentCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const ContentCreateRequestRejectResourceTypesItem = S.String;
-
 export type ContentCreateRequestRejectResourceTypesList = Array<
   ContentCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const ContentCreateRequestRejectResourceTypesList =
+const ContentCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ContentCreateRequestRejectResourceTypesList>;
 
 export type ContentCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const ContentCreateRequestSetExtraHTTPHeadersMap =
+const ContentCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<ContentCreateRequestSetExtraHTTPHeadersMap>;
 
 export type ContentCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const ContentCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type ContentCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const ContentCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreateContentRequest {
   /** Account ID. */
   accountId: string;
@@ -808,7 +767,7 @@ export interface CreateContentRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(ContentCreateRequestBrowser.pipe(T.Query())),
@@ -845,28 +804,24 @@ export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateContentRequest" }) as any as S.Schema<CreateContentRequest>;
 
 export type CreateContentResponse = string;
-export const CreateContentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateContentResponse" }) as any as S.Schema<CreateContentResponse>;
 
 export type CrawlCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-export const CrawlCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type CrawlCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const CrawlCreateRequestAddScriptTagList =
+const CrawlCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<CrawlCreateRequestAddScriptTagList>;
 
 export type CrawlCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const CrawlCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type CrawlCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const CrawlCreateRequestAddStyleTagList =
+const CrawlCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<CrawlCreateRequestAddStyleTagList>;
 
 export type CrawlCreateRequestAllowRequestPatternList = Array<string>;
-export const CrawlCreateRequestAllowRequestPatternList =
+const CrawlCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CrawlCreateRequestAllowRequestPatternList>;
 
 export type CrawlCreateRequestAllowResourceTypesItem =
@@ -888,32 +843,22 @@ export type CrawlCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const CrawlCreateRequestAllowResourceTypesItem = S.String;
-
 export type CrawlCreateRequestAllowResourceTypesList = Array<
   CrawlCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const CrawlCreateRequestAllowResourceTypesList =
+const CrawlCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<CrawlCreateRequestAllowResourceTypesList>;
 
 export type CrawlCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const CrawlCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type CrawlCreateRequestBrowser = "kitesurf";
-export const CrawlCreateRequestBrowser = S.String;
+const CrawlCreateRequestBrowser = S.String;
 
 export type CrawlCreateRequestContentUse = "reference" | "full";
-export const CrawlCreateRequestContentUse = S.String;
+const CrawlCreateRequestContentUse = S.String;
 
 export type CrawlCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const CrawlCreateRequestCookiesItemPriority = S.String;
-
 export type CrawlCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const CrawlCreateRequestCookiesItemSameSite = S.String;
-
 export type CrawlCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const CrawlCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface CrawlCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -931,27 +876,20 @@ export interface CrawlCreateRequestCookiesItem {
   sourceScheme?: CrawlCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const CrawlCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<CrawlCreateRequestCookiesItem>;
-
 export type CrawlCreateRequestCookiesList = Array<CrawlCreateRequestCookiesItem>;
-export const CrawlCreateRequestCookiesList =
+const CrawlCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<CrawlCreateRequestCookiesList>;
 
 export type CrawlCreateRequestCrawlPurposesItem = "search" | "ai-input" | "ai-train";
-export const CrawlCreateRequestCrawlPurposesItem = S.String;
-
 export type CrawlCreateRequestCrawlPurposesList = Array<
   CrawlCreateRequestCrawlPurposesItem | (string & {})
 >;
-export const CrawlCreateRequestCrawlPurposesList =
+const CrawlCreateRequestCrawlPurposesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<CrawlCreateRequestCrawlPurposesList>;
 
 export type CrawlCreateRequestFormatsItem = "html" | "markdown" | "json";
-export const CrawlCreateRequestFormatsItem = S.String;
-
 export type CrawlCreateRequestFormatsList = Array<CrawlCreateRequestFormatsItem | (string & {})>;
-export const CrawlCreateRequestFormatsList =
+const CrawlCreateRequestFormatsList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<CrawlCreateRequestFormatsList>;
 
 export type CrawlCreateRequestGotoOptionsWaitUntilCase0 =
@@ -959,26 +897,19 @@ export type CrawlCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const CrawlCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type CrawlCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const CrawlCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type CrawlCreateRequestGotoOptionsWaitUntilCase1List = Array<
   CrawlCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const CrawlCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<CrawlCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type CrawlCreateRequestGotoOptionsWaitUntil =
   | CrawlCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | CrawlCreateRequestGotoOptionsWaitUntilCase1List;
-export const CrawlCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const CrawlCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -988,7 +919,7 @@ export interface CrawlCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: CrawlCreateRequestGotoOptionsWaitUntil;
 }
-export const CrawlCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const CrawlCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -1005,7 +936,7 @@ export interface CrawlCreateRequestJsonOptionsCustomAiItem {
   /** Authorization token for the AI model: `Bearer &lt;token&gt;`. Not needed for workers-ai models. */
   authorization?: string;
 }
-export const CrawlCreateRequestJsonOptionsCustomAiItem = /*@__PURE__*/ S.suspend(() =>
+const CrawlCreateRequestJsonOptionsCustomAiItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.String,
     authorization: S.optional(S.String),
@@ -1016,14 +947,14 @@ export const CrawlCreateRequestJsonOptionsCustomAiItem = /*@__PURE__*/ S.suspend
 
 export type CrawlCreateRequestJsonOptionsCustomAiList =
   Array<CrawlCreateRequestJsonOptionsCustomAiItem>;
-export const CrawlCreateRequestJsonOptionsCustomAiList = /*@__PURE__*/ S.Array(
+const CrawlCreateRequestJsonOptionsCustomAiList = /*@__PURE__*/ S.Array(
   CrawlCreateRequestJsonOptionsCustomAiItem,
 ) as any as S.Schema<CrawlCreateRequestJsonOptionsCustomAiList>;
 
 export type CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap = /*@__PURE__*/ S.Record(
+const CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap>;
@@ -1033,7 +964,7 @@ export interface CrawlCreateRequestJsonOptionsResponseFormat {
   /** Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/ */
   jsonSchema?: CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap;
 }
-export const CrawlCreateRequestJsonOptionsResponseFormat = /*@__PURE__*/ S.suspend(() =>
+const CrawlCreateRequestJsonOptionsResponseFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     jsonSchema: S.optional(
@@ -1050,7 +981,7 @@ export interface CrawlCreateRequestJsonOptions {
   prompt?: string;
   responseFormat?: CrawlCreateRequestJsonOptionsResponseFormat;
 }
-export const CrawlCreateRequestJsonOptions = /*@__PURE__*/ S.suspend(() =>
+const CrawlCreateRequestJsonOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customAi: S.optional(CrawlCreateRequestJsonOptionsCustomAiList.pipe(T.Body("custom_ai"))),
     prompt: S.optional(S.String),
@@ -1063,11 +994,11 @@ export const CrawlCreateRequestJsonOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrawlCreateRequestJsonOptions>;
 
 export type CrawlCreateRequestOptionsExcludePatternsList = Array<string>;
-export const CrawlCreateRequestOptionsExcludePatternsList =
+const CrawlCreateRequestOptionsExcludePatternsList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CrawlCreateRequestOptionsExcludePatternsList>;
 
 export type CrawlCreateRequestOptionsIncludePatternsList = Array<string>;
-export const CrawlCreateRequestOptionsIncludePatternsList =
+const CrawlCreateRequestOptionsIncludePatternsList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CrawlCreateRequestOptionsIncludePatternsList>;
 
 export interface CrawlCreateRequestOptions {
@@ -1080,7 +1011,7 @@ export interface CrawlCreateRequestOptions {
   /** Include links to subdomains in the crawl job. This option is ignored if includeExternalLinks is true. */
   includeSubdomains?: boolean;
 }
-export const CrawlCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
+const CrawlCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludePatterns: S.optional(CrawlCreateRequestOptionsExcludePatternsList),
     includeExternalLinks: S.optional(S.Boolean),
@@ -1092,7 +1023,7 @@ export const CrawlCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrawlCreateRequestOptions>;
 
 export type CrawlCreateRequestRejectRequestPatternList = Array<string>;
-export const CrawlCreateRequestRejectRequestPatternList =
+const CrawlCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<CrawlCreateRequestRejectRequestPatternList>;
 
 export type CrawlCreateRequestRejectResourceTypesItem =
@@ -1114,27 +1045,21 @@ export type CrawlCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const CrawlCreateRequestRejectResourceTypesItem = S.String;
-
 export type CrawlCreateRequestRejectResourceTypesList = Array<
   CrawlCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const CrawlCreateRequestRejectResourceTypesList =
+const CrawlCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<CrawlCreateRequestRejectResourceTypesList>;
 
 export type CrawlCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const CrawlCreateRequestSetExtraHTTPHeadersMap =
+const CrawlCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<CrawlCreateRequestSetExtraHTTPHeadersMap>;
 
 export type CrawlCreateRequestSource = "sitemaps" | "links" | "all";
-export const CrawlCreateRequestSource = S.String;
+const CrawlCreateRequestSource = S.String;
 
 export type CrawlCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const CrawlCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type CrawlCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const CrawlCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreateCrawlRequest {
   /** Account ID. */
   accountId: string;
@@ -1198,7 +1123,7 @@ export interface CreateCrawlRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
@@ -1240,14 +1165,14 @@ export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCrawlRequest" }) as any as S.Schema<CreateCrawlRequest>;
 
 export type CreateCrawlResponse = string;
-export const CreateCrawlResponse = CreateContentResponse as any as S.Schema<CreateCrawlResponse>;
+const CreateCrawlResponse = CreateContentResponse as any as S.Schema<CreateCrawlResponse>;
 
 export type DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList = Array<string>;
-export const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList =
+const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList>;
 
 export type DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList = Array<string>;
-export const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList =
+const DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList>;
 
 export interface DevtoolsBrowserCreateRequestGuardrails {
@@ -1256,7 +1181,7 @@ export interface DevtoolsBrowserCreateRequestGuardrails {
   /** Max 4 entries: curated preset names (common-cdns) and/or https URLs of newline-separated hostname lists. */
   allowedDomainSets?: DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList;
 }
-export const DevtoolsBrowserCreateRequestGuardrails = /*@__PURE__*/ S.suspend(() =>
+const DevtoolsBrowserCreateRequestGuardrails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedDomains: S.optional(DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList),
     allowedDomainSets: S.optional(DevtoolsBrowserCreateRequestGuardrailsAllowedDomainSetsList),
@@ -1279,7 +1204,7 @@ export interface CreateDevtoolBrowserRequest {
   targets?: boolean;
   guardrails?: DevtoolsBrowserCreateRequestGuardrails;
 }
-export const CreateDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
@@ -1308,7 +1233,7 @@ export interface CreateDevtoolBrowserResponse {
   /** WebSocket URL for the session. */
   webSocketDebuggerUrl?: string | null;
 }
-export const CreateDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
@@ -1326,7 +1251,7 @@ export interface CreateDevtoolBrowserTargetRequest {
   liveViewUrlExpiresInMs?: number;
   url?: string;
 }
-export const CreateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -1362,7 +1287,7 @@ export interface CreateDevtoolBrowserTargetResponse {
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
 }
-export const CreateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.String,
@@ -1377,12 +1302,12 @@ export const CreateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDevtoolBrowserTargetResponse>;
 
 export type CreateDevtoolsBrowserLiveViewRequestGuardrailsMode = "readonly";
-export const CreateDevtoolsBrowserLiveViewRequestGuardrailsMode = S.String;
+const CreateDevtoolsBrowserLiveViewRequestGuardrailsMode = S.String;
 
 export interface CreateDevtoolsBrowserLiveViewRequestGuardrails {
   mode: CreateDevtoolsBrowserLiveViewRequestGuardrailsMode | (string & {});
 }
-export const CreateDevtoolsBrowserLiveViewRequestGuardrails = /*@__PURE__*/ S.suspend(() =>
+const CreateDevtoolsBrowserLiveViewRequestGuardrails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: CreateDevtoolsBrowserLiveViewRequestGuardrailsMode,
   }),
@@ -1391,7 +1316,7 @@ export const CreateDevtoolsBrowserLiveViewRequestGuardrails = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateDevtoolsBrowserLiveViewRequestGuardrails>;
 
 export type CreateDevtoolsBrowserLiveViewRequestMode = "devtools" | "tab" | "full";
-export const CreateDevtoolsBrowserLiveViewRequestMode = S.String;
+const CreateDevtoolsBrowserLiveViewRequestMode = S.String;
 
 export interface CreateDevtoolsBrowserLiveViewRequest {
   /** Account ID. */
@@ -1407,7 +1332,7 @@ export interface CreateDevtoolsBrowserLiveViewRequest {
   /** Target ID (page) to connect to. If omitted, auto-resolves to the first active page. */
   targetId?: string;
 }
-export const CreateDevtoolsBrowserLiveViewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDevtoolsBrowserLiveViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -1429,15 +1354,13 @@ export const CreateDevtoolsBrowserLiveViewRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateDevtoolsBrowserLiveViewRequest>;
 
 export type CreateDevtoolsBrowserLiveViewResponseOptionsMode = "devtools" | "tab" | "full";
-export const CreateDevtoolsBrowserLiveViewResponseOptionsMode = S.String;
+const CreateDevtoolsBrowserLiveViewResponseOptionsMode = S.String;
 
 export type CreateDevtoolsBrowserLiveViewResponseOptionsGuardrailsMode = "readonly";
-export const CreateDevtoolsBrowserLiveViewResponseOptionsGuardrailsMode = S.String;
-
 export interface CreateDevtoolsBrowserLiveViewResponseOptionsGuardrails {
   mode: CreateDevtoolsBrowserLiveViewResponseOptionsGuardrailsMode;
 }
-export const CreateDevtoolsBrowserLiveViewResponseOptionsGuardrails =
+const CreateDevtoolsBrowserLiveViewResponseOptionsGuardrails =
   CreateDevtoolsBrowserLiveViewRequestGuardrails as any as S.Schema<CreateDevtoolsBrowserLiveViewResponseOptionsGuardrails>;
 
 export interface CreateDevtoolsBrowserLiveViewResponseOptions {
@@ -1446,7 +1369,7 @@ export interface CreateDevtoolsBrowserLiveViewResponseOptions {
   /** Connection guardrails applied to this link */
   guardrails?: CreateDevtoolsBrowserLiveViewResponseOptionsGuardrails | null;
 }
-export const CreateDevtoolsBrowserLiveViewResponseOptions = /*@__PURE__*/ S.suspend(() =>
+const CreateDevtoolsBrowserLiveViewResponseOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: CreateDevtoolsBrowserLiveViewResponseOptionsMode,
     guardrails: S.optional(S.NullOr(CreateDevtoolsBrowserLiveViewResponseOptionsGuardrails)),
@@ -1465,7 +1388,7 @@ export interface CreateDevtoolsBrowserLiveViewResponse {
   /** WebSocket URL for CDP connection */
   webSocketDebuggerUrl: string;
 }
-export const CreateDevtoolsBrowserLiveViewResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDevtoolsBrowserLiveViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     devtoolsFrontendUrl: S.String,
@@ -1477,25 +1400,21 @@ export const CreateDevtoolsBrowserLiveViewResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateDevtoolsBrowserLiveViewResponse>;
 
 export type JsonCreateRequestBrowser = "kitesurf";
-export const JsonCreateRequestBrowser = S.String;
+const JsonCreateRequestBrowser = S.String;
 
 export type JsonCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-export const JsonCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type JsonCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const JsonCreateRequestAddScriptTagList =
+const JsonCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<JsonCreateRequestAddScriptTagList>;
 
 export type JsonCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const JsonCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type JsonCreateRequestAddStyleTagList = Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const JsonCreateRequestAddStyleTagList =
+const JsonCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<JsonCreateRequestAddStyleTagList>;
 
 export type JsonCreateRequestAllowRequestPatternList = Array<string>;
-export const JsonCreateRequestAllowRequestPatternList =
+const JsonCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<JsonCreateRequestAllowRequestPatternList>;
 
 export type JsonCreateRequestAllowResourceTypesItem =
@@ -1517,26 +1436,16 @@ export type JsonCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const JsonCreateRequestAllowResourceTypesItem = S.String;
-
 export type JsonCreateRequestAllowResourceTypesList = Array<
   JsonCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const JsonCreateRequestAllowResourceTypesList =
+const JsonCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<JsonCreateRequestAllowResourceTypesList>;
 
 export type JsonCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const JsonCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type JsonCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const JsonCreateRequestCookiesItemPriority = S.String;
-
 export type JsonCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const JsonCreateRequestCookiesItemSameSite = S.String;
-
 export type JsonCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const JsonCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface JsonCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -1554,18 +1463,13 @@ export interface JsonCreateRequestCookiesItem {
   sourceScheme?: JsonCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const JsonCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<JsonCreateRequestCookiesItem>;
-
 export type JsonCreateRequestCookiesList = Array<JsonCreateRequestCookiesItem>;
-export const JsonCreateRequestCookiesList =
+const JsonCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<JsonCreateRequestCookiesList>;
 
 export type JsonCreateRequestCustomAiItem = CrawlCreateRequestJsonOptionsCustomAiItem;
-export const JsonCreateRequestCustomAiItem = CrawlCreateRequestJsonOptionsCustomAiItem;
-
 export type JsonCreateRequestCustomAiList = Array<CrawlCreateRequestJsonOptionsCustomAiItem>;
-export const JsonCreateRequestCustomAiList =
+const JsonCreateRequestCustomAiList =
   CrawlCreateRequestJsonOptionsCustomAiList as any as S.Schema<JsonCreateRequestCustomAiList>;
 
 export type JsonCreateRequestGotoOptionsWaitUntilCase0 =
@@ -1573,26 +1477,19 @@ export type JsonCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const JsonCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type JsonCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const JsonCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type JsonCreateRequestGotoOptionsWaitUntilCase1List = Array<
   JsonCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const JsonCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<JsonCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type JsonCreateRequestGotoOptionsWaitUntil =
   | JsonCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | JsonCreateRequestGotoOptionsWaitUntilCase1List;
-export const JsonCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const JsonCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -1602,7 +1499,7 @@ export interface JsonCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: JsonCreateRequestGotoOptionsWaitUntil;
 }
-export const JsonCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const JsonCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -1614,7 +1511,7 @@ export const JsonCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JsonCreateRequestGotoOptions>;
 
 export type JsonCreateRequestRejectRequestPatternList = Array<string>;
-export const JsonCreateRequestRejectRequestPatternList =
+const JsonCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<JsonCreateRequestRejectRequestPatternList>;
 
 export type JsonCreateRequestRejectResourceTypesItem =
@@ -1636,36 +1533,27 @@ export type JsonCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const JsonCreateRequestRejectResourceTypesItem = S.String;
-
 export type JsonCreateRequestRejectResourceTypesList = Array<
   JsonCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const JsonCreateRequestRejectResourceTypesList =
+const JsonCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<JsonCreateRequestRejectResourceTypesList>;
 
 export type JsonCreateRequestResponseFormatJsonSchemaMap = { [key: string]: unknown | undefined };
-export const JsonCreateRequestResponseFormatJsonSchemaMap =
-  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<JsonCreateRequestResponseFormatJsonSchemaMap>;
-
 export interface JsonCreateRequestResponseFormat {
   type: string;
   /** Schema for the response format. More information here: https://developers.cloudflare.com/workers-ai/json-mode/ */
   jsonSchema?: JsonCreateRequestResponseFormatJsonSchemaMap;
 }
-export const JsonCreateRequestResponseFormat =
+const JsonCreateRequestResponseFormat =
   CrawlCreateRequestJsonOptionsResponseFormat as any as S.Schema<JsonCreateRequestResponseFormat>;
 
 export type JsonCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const JsonCreateRequestSetExtraHTTPHeadersMap =
+const JsonCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<JsonCreateRequestSetExtraHTTPHeadersMap>;
 
 export type JsonCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const JsonCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type JsonCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const JsonCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreateJsonRequest {
   /** Account ID. */
   accountId: string;
@@ -1712,7 +1600,7 @@ export interface CreateJsonRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(JsonCreateRequestBrowser.pipe(T.Query())),
@@ -1748,35 +1636,31 @@ export const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateJsonRequest" }) as any as S.Schema<CreateJsonRequest>;
 
 export type JsonCreateResultMap = { [key: string]: unknown | undefined };
-export const JsonCreateResultMap =
+const JsonCreateResultMap =
   CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<JsonCreateResultMap>;
 
 export type CreateJsonResponse = JsonCreateResultMap;
-export const CreateJsonResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateJsonResponse = /*@__PURE__*/ S.suspend(() =>
   JsonCreateResultMap.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateJsonResponse" }) as any as S.Schema<CreateJsonResponse>;
 
 export type LinksCreateRequestBrowser = "kitesurf";
-export const LinksCreateRequestBrowser = S.String;
+const LinksCreateRequestBrowser = S.String;
 
 export type LinksCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-export const LinksCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type LinksCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const LinksCreateRequestAddScriptTagList =
+const LinksCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<LinksCreateRequestAddScriptTagList>;
 
 export type LinksCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const LinksCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type LinksCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const LinksCreateRequestAddStyleTagList =
+const LinksCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<LinksCreateRequestAddStyleTagList>;
 
 export type LinksCreateRequestAllowRequestPatternList = Array<string>;
-export const LinksCreateRequestAllowRequestPatternList =
+const LinksCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<LinksCreateRequestAllowRequestPatternList>;
 
 export type LinksCreateRequestAllowResourceTypesItem =
@@ -1798,26 +1682,16 @@ export type LinksCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const LinksCreateRequestAllowResourceTypesItem = S.String;
-
 export type LinksCreateRequestAllowResourceTypesList = Array<
   LinksCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const LinksCreateRequestAllowResourceTypesList =
+const LinksCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<LinksCreateRequestAllowResourceTypesList>;
 
 export type LinksCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const LinksCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type LinksCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const LinksCreateRequestCookiesItemPriority = S.String;
-
 export type LinksCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const LinksCreateRequestCookiesItemSameSite = S.String;
-
 export type LinksCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const LinksCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface LinksCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -1835,11 +1709,8 @@ export interface LinksCreateRequestCookiesItem {
   sourceScheme?: LinksCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const LinksCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<LinksCreateRequestCookiesItem>;
-
 export type LinksCreateRequestCookiesList = Array<LinksCreateRequestCookiesItem>;
-export const LinksCreateRequestCookiesList =
+const LinksCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<LinksCreateRequestCookiesList>;
 
 export type LinksCreateRequestGotoOptionsWaitUntilCase0 =
@@ -1847,26 +1718,19 @@ export type LinksCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const LinksCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type LinksCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const LinksCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type LinksCreateRequestGotoOptionsWaitUntilCase1List = Array<
   LinksCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const LinksCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<LinksCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type LinksCreateRequestGotoOptionsWaitUntil =
   | LinksCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | LinksCreateRequestGotoOptionsWaitUntilCase1List;
-export const LinksCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const LinksCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -1876,7 +1740,7 @@ export interface LinksCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: LinksCreateRequestGotoOptionsWaitUntil;
 }
-export const LinksCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const LinksCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -1888,7 +1752,7 @@ export const LinksCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinksCreateRequestGotoOptions>;
 
 export type LinksCreateRequestRejectRequestPatternList = Array<string>;
-export const LinksCreateRequestRejectRequestPatternList =
+const LinksCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<LinksCreateRequestRejectRequestPatternList>;
 
 export type LinksCreateRequestRejectResourceTypesItem =
@@ -1910,24 +1774,18 @@ export type LinksCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const LinksCreateRequestRejectResourceTypesItem = S.String;
-
 export type LinksCreateRequestRejectResourceTypesList = Array<
   LinksCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const LinksCreateRequestRejectResourceTypesList =
+const LinksCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<LinksCreateRequestRejectResourceTypesList>;
 
 export type LinksCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const LinksCreateRequestSetExtraHTTPHeadersMap =
+const LinksCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<LinksCreateRequestSetExtraHTTPHeadersMap>;
 
 export type LinksCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const LinksCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type LinksCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const LinksCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreateLinkRequest {
   /** Account ID. */
   accountId: string;
@@ -1972,7 +1830,7 @@ export interface CreateLinkRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(LinksCreateRequestBrowser.pipe(T.Query())),
@@ -2007,35 +1865,31 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateLinkRequest" }) as any as S.Schema<CreateLinkRequest>;
 
 export type LinksCreateResultList = Array<string>;
-export const LinksCreateResultList =
+const LinksCreateResultList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<LinksCreateResultList>;
 
 export type CreateLinkResponse = LinksCreateResultList;
-export const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
   LinksCreateResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateLinkResponse" }) as any as S.Schema<CreateLinkResponse>;
 
 export type MarkdownCreateRequestBrowser = "kitesurf";
-export const MarkdownCreateRequestBrowser = S.String;
+const MarkdownCreateRequestBrowser = S.String;
 
 export type MarkdownCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-export const MarkdownCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type MarkdownCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const MarkdownCreateRequestAddScriptTagList =
+const MarkdownCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<MarkdownCreateRequestAddScriptTagList>;
 
 export type MarkdownCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const MarkdownCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type MarkdownCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const MarkdownCreateRequestAddStyleTagList =
+const MarkdownCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<MarkdownCreateRequestAddStyleTagList>;
 
 export type MarkdownCreateRequestAllowRequestPatternList = Array<string>;
-export const MarkdownCreateRequestAllowRequestPatternList =
+const MarkdownCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<MarkdownCreateRequestAllowRequestPatternList>;
 
 export type MarkdownCreateRequestAllowResourceTypesItem =
@@ -2057,26 +1911,16 @@ export type MarkdownCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const MarkdownCreateRequestAllowResourceTypesItem = S.String;
-
 export type MarkdownCreateRequestAllowResourceTypesList = Array<
   MarkdownCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const MarkdownCreateRequestAllowResourceTypesList =
+const MarkdownCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<MarkdownCreateRequestAllowResourceTypesList>;
 
 export type MarkdownCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const MarkdownCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type MarkdownCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const MarkdownCreateRequestCookiesItemPriority = S.String;
-
 export type MarkdownCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const MarkdownCreateRequestCookiesItemSameSite = S.String;
-
 export type MarkdownCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const MarkdownCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface MarkdownCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -2094,11 +1938,8 @@ export interface MarkdownCreateRequestCookiesItem {
   sourceScheme?: MarkdownCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const MarkdownCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<MarkdownCreateRequestCookiesItem>;
-
 export type MarkdownCreateRequestCookiesList = Array<MarkdownCreateRequestCookiesItem>;
-export const MarkdownCreateRequestCookiesList =
+const MarkdownCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<MarkdownCreateRequestCookiesList>;
 
 export type MarkdownCreateRequestGotoOptionsWaitUntilCase0 =
@@ -2106,26 +1947,19 @@ export type MarkdownCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const MarkdownCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type MarkdownCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const MarkdownCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type MarkdownCreateRequestGotoOptionsWaitUntilCase1List = Array<
   MarkdownCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const MarkdownCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<MarkdownCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type MarkdownCreateRequestGotoOptionsWaitUntil =
   | MarkdownCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | MarkdownCreateRequestGotoOptionsWaitUntilCase1List;
-export const MarkdownCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const MarkdownCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -2135,7 +1969,7 @@ export interface MarkdownCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: MarkdownCreateRequestGotoOptionsWaitUntil;
 }
-export const MarkdownCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const MarkdownCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -2147,7 +1981,7 @@ export const MarkdownCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarkdownCreateRequestGotoOptions>;
 
 export type MarkdownCreateRequestRejectRequestPatternList = Array<string>;
-export const MarkdownCreateRequestRejectRequestPatternList =
+const MarkdownCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<MarkdownCreateRequestRejectRequestPatternList>;
 
 export type MarkdownCreateRequestRejectResourceTypesItem =
@@ -2169,24 +2003,18 @@ export type MarkdownCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const MarkdownCreateRequestRejectResourceTypesItem = S.String;
-
 export type MarkdownCreateRequestRejectResourceTypesList = Array<
   MarkdownCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const MarkdownCreateRequestRejectResourceTypesList =
+const MarkdownCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<MarkdownCreateRequestRejectResourceTypesList>;
 
 export type MarkdownCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const MarkdownCreateRequestSetExtraHTTPHeadersMap =
+const MarkdownCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<MarkdownCreateRequestSetExtraHTTPHeadersMap>;
 
 export type MarkdownCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const MarkdownCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type MarkdownCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const MarkdownCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreateMarkdownRequest {
   /** Account ID. */
   accountId: string;
@@ -2229,7 +2057,7 @@ export interface CreateMarkdownRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(MarkdownCreateRequestBrowser.pipe(T.Query())),
@@ -2266,29 +2094,24 @@ export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMarkdownRequest" }) as any as S.Schema<CreateMarkdownRequest>;
 
 export type CreateMarkdownResponse = string;
-export const CreateMarkdownResponse =
-  CreateContentResponse as any as S.Schema<CreateMarkdownResponse>;
+const CreateMarkdownResponse = CreateContentResponse as any as S.Schema<CreateMarkdownResponse>;
 
 export type PdfCreateRequestBrowser = "kitesurf";
-export const PdfCreateRequestBrowser = S.String;
+const PdfCreateRequestBrowser = S.String;
 
 export type PdfCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-export const PdfCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type PdfCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const PdfCreateRequestAddScriptTagList =
+const PdfCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<PdfCreateRequestAddScriptTagList>;
 
 export type PdfCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const PdfCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type PdfCreateRequestAddStyleTagList = Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const PdfCreateRequestAddStyleTagList =
+const PdfCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<PdfCreateRequestAddStyleTagList>;
 
 export type PdfCreateRequestAllowRequestPatternList = Array<string>;
-export const PdfCreateRequestAllowRequestPatternList =
+const PdfCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<PdfCreateRequestAllowRequestPatternList>;
 
 export type PdfCreateRequestAllowResourceTypesItem =
@@ -2310,26 +2133,16 @@ export type PdfCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const PdfCreateRequestAllowResourceTypesItem = S.String;
-
 export type PdfCreateRequestAllowResourceTypesList = Array<
   PdfCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const PdfCreateRequestAllowResourceTypesList =
+const PdfCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<PdfCreateRequestAllowResourceTypesList>;
 
 export type PdfCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const PdfCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type PdfCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const PdfCreateRequestCookiesItemPriority = S.String;
-
 export type PdfCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const PdfCreateRequestCookiesItemSameSite = S.String;
-
 export type PdfCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const PdfCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface PdfCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -2347,11 +2160,8 @@ export interface PdfCreateRequestCookiesItem {
   sourceScheme?: PdfCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const PdfCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<PdfCreateRequestCookiesItem>;
-
 export type PdfCreateRequestCookiesList = Array<PdfCreateRequestCookiesItem>;
-export const PdfCreateRequestCookiesList =
+const PdfCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<PdfCreateRequestCookiesList>;
 
 export type PdfCreateRequestGotoOptionsWaitUntilCase0 =
@@ -2359,26 +2169,19 @@ export type PdfCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const PdfCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type PdfCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const PdfCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type PdfCreateRequestGotoOptionsWaitUntilCase1List = Array<
   PdfCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const PdfCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<PdfCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type PdfCreateRequestGotoOptionsWaitUntil =
   | PdfCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | PdfCreateRequestGotoOptionsWaitUntilCase1List;
-export const PdfCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const PdfCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -2388,7 +2191,7 @@ export interface PdfCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: PdfCreateRequestGotoOptionsWaitUntil;
 }
-export const PdfCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const PdfCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -2411,30 +2214,30 @@ export type PdfCreateRequestPdfOptionsFormat =
   | "a4"
   | "a5"
   | "a6";
-export const PdfCreateRequestPdfOptionsFormat = S.String;
+const PdfCreateRequestPdfOptionsFormat = S.String;
 
 export type PdfCreateRequestPdfOptionsHeight = string | number;
-export const PdfCreateRequestPdfOptionsHeight = /*@__PURE__*/ S.Unknown.pipe(
+const PdfCreateRequestPdfOptionsHeight = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PdfCreateRequestPdfOptionsMarginBottom = string | number;
-export const PdfCreateRequestPdfOptionsMarginBottom = /*@__PURE__*/ S.Unknown.pipe(
+const PdfCreateRequestPdfOptionsMarginBottom = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PdfCreateRequestPdfOptionsMarginLeft = string | number;
-export const PdfCreateRequestPdfOptionsMarginLeft = /*@__PURE__*/ S.Unknown.pipe(
+const PdfCreateRequestPdfOptionsMarginLeft = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PdfCreateRequestPdfOptionsMarginRight = string | number;
-export const PdfCreateRequestPdfOptionsMarginRight = /*@__PURE__*/ S.Unknown.pipe(
+const PdfCreateRequestPdfOptionsMarginRight = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type PdfCreateRequestPdfOptionsMarginTop = string | number;
-export const PdfCreateRequestPdfOptionsMarginTop = /*@__PURE__*/ S.Unknown.pipe(
+const PdfCreateRequestPdfOptionsMarginTop = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -2444,7 +2247,7 @@ export interface PdfCreateRequestPdfOptionsMargin {
   right?: PdfCreateRequestPdfOptionsMarginRight;
   top?: PdfCreateRequestPdfOptionsMarginTop;
 }
-export const PdfCreateRequestPdfOptionsMargin = /*@__PURE__*/ S.suspend(() =>
+const PdfCreateRequestPdfOptionsMargin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bottom: S.optional(PdfCreateRequestPdfOptionsMarginBottom),
     left: S.optional(PdfCreateRequestPdfOptionsMarginLeft),
@@ -2456,7 +2259,7 @@ export const PdfCreateRequestPdfOptionsMargin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PdfCreateRequestPdfOptionsMargin>;
 
 export type PdfCreateRequestPdfOptionsWidth = string | number;
-export const PdfCreateRequestPdfOptionsWidth = /*@__PURE__*/ S.Unknown.pipe(
+const PdfCreateRequestPdfOptionsWidth = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -2494,7 +2297,7 @@ export interface PdfCreateRequestPdfOptions {
   /** Sets the width of paper. Can be a number or string with unit. */
   width?: PdfCreateRequestPdfOptionsWidth;
 }
-export const PdfCreateRequestPdfOptions = /*@__PURE__*/ S.suspend(() =>
+const PdfCreateRequestPdfOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayHeaderFooter: S.optional(S.Boolean),
     footerTemplate: S.optional(S.String),
@@ -2518,7 +2321,7 @@ export const PdfCreateRequestPdfOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PdfCreateRequestPdfOptions>;
 
 export type PdfCreateRequestRejectRequestPatternList = Array<string>;
-export const PdfCreateRequestRejectRequestPatternList =
+const PdfCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<PdfCreateRequestRejectRequestPatternList>;
 
 export type PdfCreateRequestRejectResourceTypesItem =
@@ -2540,24 +2343,18 @@ export type PdfCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const PdfCreateRequestRejectResourceTypesItem = S.String;
-
 export type PdfCreateRequestRejectResourceTypesList = Array<
   PdfCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const PdfCreateRequestRejectResourceTypesList =
+const PdfCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<PdfCreateRequestRejectResourceTypesList>;
 
 export type PdfCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const PdfCreateRequestSetExtraHTTPHeadersMap =
+const PdfCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<PdfCreateRequestSetExtraHTTPHeadersMap>;
 
 export type PdfCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const PdfCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type PdfCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const PdfCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreatePdfRequest {
   /** Account ID. */
   accountId: string;
@@ -2602,7 +2399,7 @@ export interface CreatePdfRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreatePdfRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(PdfCreateRequestBrowser.pipe(T.Query())),
@@ -2636,31 +2433,27 @@ export const CreatePdfRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePdfRequest" }) as any as S.Schema<CreatePdfRequest>;
 
 export interface CreatePdfResponse {}
-export const CreatePdfResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePdfResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreatePdfResponse" }) as any as S.Schema<CreatePdfResponse>;
 
 export type ScrapeCreateRequestBrowser = "kitesurf";
-export const ScrapeCreateRequestBrowser = S.String;
+const ScrapeCreateRequestBrowser = S.String;
 
 export type ScrapeCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-export const ScrapeCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type ScrapeCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const ScrapeCreateRequestAddScriptTagList =
+const ScrapeCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<ScrapeCreateRequestAddScriptTagList>;
 
 export type ScrapeCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const ScrapeCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type ScrapeCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const ScrapeCreateRequestAddStyleTagList =
+const ScrapeCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<ScrapeCreateRequestAddStyleTagList>;
 
 export type ScrapeCreateRequestAllowRequestPatternList = Array<string>;
-export const ScrapeCreateRequestAllowRequestPatternList =
+const ScrapeCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ScrapeCreateRequestAllowRequestPatternList>;
 
 export type ScrapeCreateRequestAllowResourceTypesItem =
@@ -2682,26 +2475,16 @@ export type ScrapeCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const ScrapeCreateRequestAllowResourceTypesItem = S.String;
-
 export type ScrapeCreateRequestAllowResourceTypesList = Array<
   ScrapeCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const ScrapeCreateRequestAllowResourceTypesList =
+const ScrapeCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ScrapeCreateRequestAllowResourceTypesList>;
 
 export type ScrapeCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const ScrapeCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type ScrapeCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const ScrapeCreateRequestCookiesItemPriority = S.String;
-
 export type ScrapeCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const ScrapeCreateRequestCookiesItemSameSite = S.String;
-
 export type ScrapeCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const ScrapeCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface ScrapeCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -2719,17 +2502,14 @@ export interface ScrapeCreateRequestCookiesItem {
   sourceScheme?: ScrapeCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const ScrapeCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<ScrapeCreateRequestCookiesItem>;
-
 export type ScrapeCreateRequestCookiesList = Array<ScrapeCreateRequestCookiesItem>;
-export const ScrapeCreateRequestCookiesList =
+const ScrapeCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<ScrapeCreateRequestCookiesList>;
 
 export interface ScrapeCreateRequestElementsItem {
   selector: string;
 }
-export const ScrapeCreateRequestElementsItem = /*@__PURE__*/ S.suspend(() =>
+const ScrapeCreateRequestElementsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -2738,7 +2518,7 @@ export const ScrapeCreateRequestElementsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScrapeCreateRequestElementsItem>;
 
 export type ScrapeCreateRequestElementsList = Array<ScrapeCreateRequestElementsItem>;
-export const ScrapeCreateRequestElementsList = /*@__PURE__*/ S.Array(
+const ScrapeCreateRequestElementsList = /*@__PURE__*/ S.Array(
   ScrapeCreateRequestElementsItem,
 ) as any as S.Schema<ScrapeCreateRequestElementsList>;
 
@@ -2747,26 +2527,19 @@ export type ScrapeCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const ScrapeCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type ScrapeCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const ScrapeCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type ScrapeCreateRequestGotoOptionsWaitUntilCase1List = Array<
   ScrapeCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const ScrapeCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ScrapeCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type ScrapeCreateRequestGotoOptionsWaitUntil =
   | ScrapeCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | ScrapeCreateRequestGotoOptionsWaitUntilCase1List;
-export const ScrapeCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const ScrapeCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -2776,7 +2549,7 @@ export interface ScrapeCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: ScrapeCreateRequestGotoOptionsWaitUntil;
 }
-export const ScrapeCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const ScrapeCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -2788,7 +2561,7 @@ export const ScrapeCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScrapeCreateRequestGotoOptions>;
 
 export type ScrapeCreateRequestRejectRequestPatternList = Array<string>;
-export const ScrapeCreateRequestRejectRequestPatternList =
+const ScrapeCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ScrapeCreateRequestRejectRequestPatternList>;
 
 export type ScrapeCreateRequestRejectResourceTypesItem =
@@ -2810,24 +2583,18 @@ export type ScrapeCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const ScrapeCreateRequestRejectResourceTypesItem = S.String;
-
 export type ScrapeCreateRequestRejectResourceTypesList = Array<
   ScrapeCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const ScrapeCreateRequestRejectResourceTypesList =
+const ScrapeCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ScrapeCreateRequestRejectResourceTypesList>;
 
 export type ScrapeCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const ScrapeCreateRequestSetExtraHTTPHeadersMap =
+const ScrapeCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<ScrapeCreateRequestSetExtraHTTPHeadersMap>;
 
 export type ScrapeCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const ScrapeCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type ScrapeCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const ScrapeCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreateScrapeRequest {
   /** Account ID. */
   accountId: string;
@@ -2871,7 +2638,7 @@ export interface CreateScrapeRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateScrapeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScrapeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(ScrapeCreateRequestBrowser.pipe(T.Query())),
@@ -2910,7 +2677,7 @@ export interface ScrapeCreateResultItemResultsAttributesItem {
   /** Attribute value. */
   value: string;
 }
-export const ScrapeCreateResultItemResultsAttributesItem = /*@__PURE__*/ S.suspend(() =>
+const ScrapeCreateResultItemResultsAttributesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -2921,7 +2688,7 @@ export const ScrapeCreateResultItemResultsAttributesItem = /*@__PURE__*/ S.suspe
 
 export type ScrapeCreateResultItemResultsAttributesList =
   Array<ScrapeCreateResultItemResultsAttributesItem>;
-export const ScrapeCreateResultItemResultsAttributesList = /*@__PURE__*/ S.Array(
+const ScrapeCreateResultItemResultsAttributesList = /*@__PURE__*/ S.Array(
   ScrapeCreateResultItemResultsAttributesItem,
 ) as any as S.Schema<ScrapeCreateResultItemResultsAttributesList>;
 
@@ -2940,7 +2707,7 @@ export interface ScrapeCreateResultItemResults {
   /** Element width. */
   width: number;
 }
-export const ScrapeCreateResultItemResults = /*@__PURE__*/ S.suspend(() =>
+const ScrapeCreateResultItemResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: ScrapeCreateResultItemResultsAttributesList,
     height: S.Number,
@@ -2959,7 +2726,7 @@ export interface ScrapeCreateResultItem {
   /** Selector. */
   selector: string;
 }
-export const ScrapeCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+const ScrapeCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ScrapeCreateResultItemResults,
     selector: S.String,
@@ -2967,38 +2734,33 @@ export const ScrapeCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScrapeCreateResultItem" }) as any as S.Schema<ScrapeCreateResultItem>;
 
 export type ScrapeCreateResultList = Array<ScrapeCreateResultItem>;
-export const ScrapeCreateResultList = /*@__PURE__*/ S.Array(
+const ScrapeCreateResultList = /*@__PURE__*/ S.Array(
   ScrapeCreateResultItem,
 ) as any as S.Schema<ScrapeCreateResultList>;
 
 export type CreateScrapeResponse = ScrapeCreateResultList;
-export const CreateScrapeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateScrapeResponse = /*@__PURE__*/ S.suspend(() =>
   ScrapeCreateResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateScrapeResponse" }) as any as S.Schema<CreateScrapeResponse>;
 
 export type ScreenshotCreateRequestBrowser = "kitesurf";
-export const ScreenshotCreateRequestBrowser = S.String;
+const ScreenshotCreateRequestBrowser = S.String;
 
 export type ScreenshotCreateRequestAddScriptTagItem =
   CreateAccessibilityTreeRequestAddScriptTagItem;
-export const ScreenshotCreateRequestAddScriptTagItem =
-  CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type ScreenshotCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const ScreenshotCreateRequestAddScriptTagList =
+const ScreenshotCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<ScreenshotCreateRequestAddScriptTagList>;
 
 export type ScreenshotCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const ScreenshotCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type ScreenshotCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const ScreenshotCreateRequestAddStyleTagList =
+const ScreenshotCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<ScreenshotCreateRequestAddStyleTagList>;
 
 export type ScreenshotCreateRequestAllowRequestPatternList = Array<string>;
-export const ScreenshotCreateRequestAllowRequestPatternList =
+const ScreenshotCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ScreenshotCreateRequestAllowRequestPatternList>;
 
 export type ScreenshotCreateRequestAllowResourceTypesItem =
@@ -3020,26 +2782,16 @@ export type ScreenshotCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const ScreenshotCreateRequestAllowResourceTypesItem = S.String;
-
 export type ScreenshotCreateRequestAllowResourceTypesList = Array<
   ScreenshotCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const ScreenshotCreateRequestAllowResourceTypesList =
+const ScreenshotCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ScreenshotCreateRequestAllowResourceTypesList>;
 
 export type ScreenshotCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const ScreenshotCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type ScreenshotCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const ScreenshotCreateRequestCookiesItemPriority = S.String;
-
 export type ScreenshotCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const ScreenshotCreateRequestCookiesItemSameSite = S.String;
-
 export type ScreenshotCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const ScreenshotCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface ScreenshotCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -3057,11 +2809,8 @@ export interface ScreenshotCreateRequestCookiesItem {
   sourceScheme?: ScreenshotCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const ScreenshotCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<ScreenshotCreateRequestCookiesItem>;
-
 export type ScreenshotCreateRequestCookiesList = Array<ScreenshotCreateRequestCookiesItem>;
-export const ScreenshotCreateRequestCookiesList =
+const ScreenshotCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<ScreenshotCreateRequestCookiesList>;
 
 export type ScreenshotCreateRequestGotoOptionsWaitUntilCase0 =
@@ -3069,26 +2818,19 @@ export type ScreenshotCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const ScreenshotCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type ScreenshotCreateRequestGotoOptionsWaitUntilCase1List = Array<
   ScreenshotCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const ScreenshotCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ScreenshotCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type ScreenshotCreateRequestGotoOptionsWaitUntil =
   | ScreenshotCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | ScreenshotCreateRequestGotoOptionsWaitUntilCase1List;
-export const ScreenshotCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const ScreenshotCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -3098,7 +2840,7 @@ export interface ScreenshotCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: ScreenshotCreateRequestGotoOptionsWaitUntil;
 }
-export const ScreenshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const ScreenshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -3110,7 +2852,7 @@ export const ScreenshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScreenshotCreateRequestGotoOptions>;
 
 export type ScreenshotCreateRequestRejectRequestPatternList = Array<string>;
-export const ScreenshotCreateRequestRejectRequestPatternList =
+const ScreenshotCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<ScreenshotCreateRequestRejectRequestPatternList>;
 
 export type ScreenshotCreateRequestRejectResourceTypesItem =
@@ -3132,12 +2874,10 @@ export type ScreenshotCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const ScreenshotCreateRequestRejectResourceTypesItem = S.String;
-
 export type ScreenshotCreateRequestRejectResourceTypesList = Array<
   ScreenshotCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const ScreenshotCreateRequestRejectResourceTypesList =
+const ScreenshotCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<ScreenshotCreateRequestRejectResourceTypesList>;
 
 export interface ScreenshotCreateRequestScreenshotOptionsClip {
@@ -3147,7 +2887,7 @@ export interface ScreenshotCreateRequestScreenshotOptionsClip {
   y: number;
   scale?: number;
 }
-export const ScreenshotCreateRequestScreenshotOptionsClip = /*@__PURE__*/ S.suspend(() =>
+const ScreenshotCreateRequestScreenshotOptionsClip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.Number,
     width: S.Number,
@@ -3160,10 +2900,10 @@ export const ScreenshotCreateRequestScreenshotOptionsClip = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ScreenshotCreateRequestScreenshotOptionsClip>;
 
 export type ScreenshotCreateRequestScreenshotOptionsEncoding = "binary" | "base64";
-export const ScreenshotCreateRequestScreenshotOptionsEncoding = S.String;
+const ScreenshotCreateRequestScreenshotOptionsEncoding = S.String;
 
 export type ScreenshotCreateRequestScreenshotOptionsType = "png" | "jpeg" | "webp";
-export const ScreenshotCreateRequestScreenshotOptionsType = S.String;
+const ScreenshotCreateRequestScreenshotOptionsType = S.String;
 
 export interface ScreenshotCreateRequestScreenshotOptions {
   captureBeyondViewport?: boolean;
@@ -3176,7 +2916,7 @@ export interface ScreenshotCreateRequestScreenshotOptions {
   quality?: number;
   type?: ScreenshotCreateRequestScreenshotOptionsType | (string & {});
 }
-export const ScreenshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(() =>
+const ScreenshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     captureBeyondViewport: S.optional(S.Boolean),
     clip: S.optional(ScreenshotCreateRequestScreenshotOptionsClip),
@@ -3193,15 +2933,11 @@ export const ScreenshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ScreenshotCreateRequestScreenshotOptions>;
 
 export type ScreenshotCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const ScreenshotCreateRequestSetExtraHTTPHeadersMap =
+const ScreenshotCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<ScreenshotCreateRequestSetExtraHTTPHeadersMap>;
 
 export type ScreenshotCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const ScreenshotCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type ScreenshotCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const ScreenshotCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreateScreenshotRequest {
   /** Account ID. */
   accountId: string;
@@ -3248,7 +2984,7 @@ export interface CreateScreenshotRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(ScreenshotCreateRequestBrowser.pipe(T.Query())),
@@ -3288,30 +3024,25 @@ export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateScreenshotRequest" }) as any as S.Schema<CreateScreenshotRequest>;
 
 export interface CreateScreenshotResponse {}
-export const CreateScreenshotResponse =
-  CreatePdfResponse as any as S.Schema<CreateScreenshotResponse>;
+const CreateScreenshotResponse = CreatePdfResponse as any as S.Schema<CreateScreenshotResponse>;
 
 export type SnapshotCreateRequestBrowser = "kitesurf";
-export const SnapshotCreateRequestBrowser = S.String;
+const SnapshotCreateRequestBrowser = S.String;
 
 export type SnapshotCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-export const SnapshotCreateRequestAddScriptTagItem = CreateAccessibilityTreeRequestAddScriptTagItem;
-
 export type SnapshotCreateRequestAddScriptTagList =
   Array<CreateAccessibilityTreeRequestAddScriptTagItem>;
-export const SnapshotCreateRequestAddScriptTagList =
+const SnapshotCreateRequestAddScriptTagList =
   CreateAccessibilityTreeRequestAddScriptTagList as any as S.Schema<SnapshotCreateRequestAddScriptTagList>;
 
 export type SnapshotCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-export const SnapshotCreateRequestAddStyleTagItem = CreateAccessibilityTreeRequestAddStyleTagItem;
-
 export type SnapshotCreateRequestAddStyleTagList =
   Array<CreateAccessibilityTreeRequestAddStyleTagItem>;
-export const SnapshotCreateRequestAddStyleTagList =
+const SnapshotCreateRequestAddStyleTagList =
   CreateAccessibilityTreeRequestAddStyleTagList as any as S.Schema<SnapshotCreateRequestAddStyleTagList>;
 
 export type SnapshotCreateRequestAllowRequestPatternList = Array<string>;
-export const SnapshotCreateRequestAllowRequestPatternList =
+const SnapshotCreateRequestAllowRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<SnapshotCreateRequestAllowRequestPatternList>;
 
 export type SnapshotCreateRequestAllowResourceTypesItem =
@@ -3333,26 +3064,16 @@ export type SnapshotCreateRequestAllowResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const SnapshotCreateRequestAllowResourceTypesItem = S.String;
-
 export type SnapshotCreateRequestAllowResourceTypesList = Array<
   SnapshotCreateRequestAllowResourceTypesItem | (string & {})
 >;
-export const SnapshotCreateRequestAllowResourceTypesList =
+const SnapshotCreateRequestAllowResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<SnapshotCreateRequestAllowResourceTypesList>;
 
 export type SnapshotCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-export const SnapshotCreateRequestAuthenticate = CreateAccessibilityTreeRequestAuthenticate;
-
 export type SnapshotCreateRequestCookiesItemPriority = "Low" | "Medium" | "High";
-export const SnapshotCreateRequestCookiesItemPriority = S.String;
-
 export type SnapshotCreateRequestCookiesItemSameSite = "Strict" | "Lax" | "None";
-export const SnapshotCreateRequestCookiesItemSameSite = S.String;
-
 export type SnapshotCreateRequestCookiesItemSourceScheme = "Unset" | "NonSecure" | "Secure";
-export const SnapshotCreateRequestCookiesItemSourceScheme = S.String;
-
 export interface SnapshotCreateRequestCookiesItem {
   /** Cookie name. */
   name: string;
@@ -3370,11 +3091,8 @@ export interface SnapshotCreateRequestCookiesItem {
   sourceScheme?: SnapshotCreateRequestCookiesItemSourceScheme | (string & {});
   url?: string;
 }
-export const SnapshotCreateRequestCookiesItem =
-  CreateAccessibilityTreeRequestCookiesItem as any as S.Schema<SnapshotCreateRequestCookiesItem>;
-
 export type SnapshotCreateRequestCookiesList = Array<SnapshotCreateRequestCookiesItem>;
-export const SnapshotCreateRequestCookiesList =
+const SnapshotCreateRequestCookiesList =
   CreateAccessibilityTreeRequestCookiesList as any as S.Schema<SnapshotCreateRequestCookiesList>;
 
 export type SnapshotCreateRequestFormatsItem =
@@ -3382,12 +3100,10 @@ export type SnapshotCreateRequestFormatsItem =
   | "screenshot"
   | "markdown"
   | "accessibilityTree";
-export const SnapshotCreateRequestFormatsItem = S.String;
-
 export type SnapshotCreateRequestFormatsList = Array<
   SnapshotCreateRequestFormatsItem | (string & {})
 >;
-export const SnapshotCreateRequestFormatsList =
+const SnapshotCreateRequestFormatsList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<SnapshotCreateRequestFormatsList>;
 
 export type SnapshotCreateRequestGotoOptionsWaitUntilCase0 =
@@ -3395,26 +3111,19 @@ export type SnapshotCreateRequestGotoOptionsWaitUntilCase0 =
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const SnapshotCreateRequestGotoOptionsWaitUntilCase0 = S.String;
-
 export type SnapshotCreateRequestGotoOptionsWaitUntilCase1Item =
   | "load"
   | "domcontentloaded"
   | "networkidle0"
   | "networkidle2";
-export const SnapshotCreateRequestGotoOptionsWaitUntilCase1Item = S.String;
-
 export type SnapshotCreateRequestGotoOptionsWaitUntilCase1List = Array<
   SnapshotCreateRequestGotoOptionsWaitUntilCase1Item | (string & {})
 >;
-export const SnapshotCreateRequestGotoOptionsWaitUntilCase1List =
-  CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<SnapshotCreateRequestGotoOptionsWaitUntilCase1List>;
-
 export type SnapshotCreateRequestGotoOptionsWaitUntil =
   | SnapshotCreateRequestGotoOptionsWaitUntilCase0
   | (string & {})
   | SnapshotCreateRequestGotoOptionsWaitUntilCase1List;
-export const SnapshotCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
+const SnapshotCreateRequestGotoOptionsWaitUntil = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -3424,7 +3133,7 @@ export interface SnapshotCreateRequestGotoOptions {
   timeout?: number;
   waitUntil?: SnapshotCreateRequestGotoOptionsWaitUntil;
 }
-export const SnapshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
+const SnapshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referer: S.optional(S.String),
     referrerPolicy: S.optional(S.String),
@@ -3436,7 +3145,7 @@ export const SnapshotCreateRequestGotoOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotCreateRequestGotoOptions>;
 
 export type SnapshotCreateRequestRejectRequestPatternList = Array<string>;
-export const SnapshotCreateRequestRejectRequestPatternList =
+const SnapshotCreateRequestRejectRequestPatternList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<SnapshotCreateRequestRejectRequestPatternList>;
 
 export type SnapshotCreateRequestRejectResourceTypesItem =
@@ -3458,21 +3167,16 @@ export type SnapshotCreateRequestRejectResourceTypesItem =
   | "cspviolationreport"
   | "preflight"
   | "other";
-export const SnapshotCreateRequestRejectResourceTypesItem = S.String;
-
 export type SnapshotCreateRequestRejectResourceTypesList = Array<
   SnapshotCreateRequestRejectResourceTypesItem | (string & {})
 >;
-export const SnapshotCreateRequestRejectResourceTypesList =
+const SnapshotCreateRequestRejectResourceTypesList =
   CreateAccessibilityTreeRequestAllowResourceTypesList as any as S.Schema<SnapshotCreateRequestRejectResourceTypesList>;
 
 export type SnapshotCreateRequestScreenshotOptionsClip =
   ScreenshotCreateRequestScreenshotOptionsClip;
-export const SnapshotCreateRequestScreenshotOptionsClip =
-  ScreenshotCreateRequestScreenshotOptionsClip;
-
 export type SnapshotCreateRequestScreenshotOptionsType = "png" | "jpeg" | "webp";
-export const SnapshotCreateRequestScreenshotOptionsType = S.String;
+const SnapshotCreateRequestScreenshotOptionsType = S.String;
 
 export interface SnapshotCreateRequestScreenshotOptions {
   captureBeyondViewport?: boolean;
@@ -3484,7 +3188,7 @@ export interface SnapshotCreateRequestScreenshotOptions {
   quality?: number;
   type?: SnapshotCreateRequestScreenshotOptionsType | (string & {});
 }
-export const SnapshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(() =>
+const SnapshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     captureBeyondViewport: S.optional(S.Boolean),
     clip: S.optional(ScreenshotCreateRequestScreenshotOptionsClip),
@@ -3500,15 +3204,11 @@ export const SnapshotCreateRequestScreenshotOptions = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SnapshotCreateRequestScreenshotOptions>;
 
 export type SnapshotCreateRequestSetExtraHTTPHeadersMap = { [key: string]: string | undefined };
-export const SnapshotCreateRequestSetExtraHTTPHeadersMap =
+const SnapshotCreateRequestSetExtraHTTPHeadersMap =
   CreateAccessibilityTreeRequestSetExtraHTTPHeadersMap as any as S.Schema<SnapshotCreateRequestSetExtraHTTPHeadersMap>;
 
 export type SnapshotCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-export const SnapshotCreateRequestViewport = CreateAccessibilityTreeRequestViewport;
-
 export type SnapshotCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-export const SnapshotCreateRequestWaitForSelector = CreateAccessibilityTreeRequestWaitForSelector;
-
 export interface CreateSnapshotRequest {
   /** Account ID. */
   accountId: string;
@@ -3553,7 +3253,7 @@ export interface CreateSnapshotRequest {
   /** Waits for a specified timeout before continuing. */
   waitForTimeout?: number;
 }
-export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     browser: S.optional(SnapshotCreateRequestBrowser.pipe(T.Query())),
@@ -3592,31 +3292,27 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSnapshotRequest" }) as any as S.Schema<CreateSnapshotRequest>;
 
 export type SnapshotCreateResponseAccessibilityTreeChecked = "mixed";
-export const SnapshotCreateResponseAccessibilityTreeChecked = S.String;
-
 export type SnapshotCreateResponseAccessibilityTreeChecked2 =
   | SnapshotCreateResponseAccessibilityTreeChecked
   | boolean;
-export const SnapshotCreateResponseAccessibilityTreeChecked2 = /*@__PURE__*/ S.Unknown.pipe(
+const SnapshotCreateResponseAccessibilityTreeChecked2 = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type SnapshotCreateResponseAccessibilityTreeChildrenList = Array<unknown>;
-export const SnapshotCreateResponseAccessibilityTreeChildrenList =
+const SnapshotCreateResponseAccessibilityTreeChildrenList =
   CreateAccessibilityTreeResponseAccessibilityTreeChildrenList as any as S.Schema<SnapshotCreateResponseAccessibilityTreeChildrenList>;
 
 export type SnapshotCreateResponseAccessibilityTreePressed = "mixed";
-export const SnapshotCreateResponseAccessibilityTreePressed = S.String;
-
 export type SnapshotCreateResponseAccessibilityTreePressed2 =
   | SnapshotCreateResponseAccessibilityTreePressed
   | boolean;
-export const SnapshotCreateResponseAccessibilityTreePressed2 = /*@__PURE__*/ S.Unknown.pipe(
+const SnapshotCreateResponseAccessibilityTreePressed2 = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type SnapshotCreateResponseAccessibilityTreeValue = string | number;
-export const SnapshotCreateResponseAccessibilityTreeValue = /*@__PURE__*/ S.Unknown.pipe(
+const SnapshotCreateResponseAccessibilityTreeValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -3648,7 +3344,7 @@ export interface SnapshotCreateResponseAccessibilityTree {
   valuemin?: number | null;
   valuetext?: string | null;
 }
-export const SnapshotCreateResponseAccessibilityTree = /*@__PURE__*/ S.suspend(() =>
+const SnapshotCreateResponseAccessibilityTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String,
     autocomplete: S.optional(S.NullOr(S.String)),
@@ -3692,7 +3388,7 @@ export interface CreateSnapshotResponse {
   /** Base64 encoded image. */
   screenshot?: string | null;
 }
-export const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessibilityTree: S.optional(S.NullOr(SnapshotCreateResponseAccessibilityTree)),
     content: S.optional(S.NullOr(S.String)),
@@ -3707,7 +3403,7 @@ export interface DeleteCrawlRequest {
   /** The ID of the crawl job to cancel. */
   jobId: string;
 }
-export const DeleteCrawlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
@@ -3729,7 +3425,7 @@ export interface DeleteCrawlResponse {
   /** Cancellation confirmation message. */
   message: string;
 }
-export const DeleteCrawlResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Body("job_id")),
     message: S.String,
@@ -3742,7 +3438,7 @@ export interface DeleteDevtoolBrowserRequest {
   /** Browser session ID to close. */
   sessionId: string;
 }
-export const DeleteDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -3760,13 +3456,13 @@ export const DeleteDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDevtoolBrowserRequest>;
 
 export type DevtoolsBrowserDeleteResponseStatus = "closing" | "closed";
-export const DevtoolsBrowserDeleteResponseStatus = S.String;
+const DevtoolsBrowserDeleteResponseStatus = S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteDevtoolBrowserResponse {
   status: DevtoolsBrowserDeleteResponseStatus;
 }
-export const DeleteDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: DevtoolsBrowserDeleteResponseStatus,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3781,7 +3477,7 @@ export type CrawlGetRequestStatus =
   | "disallowed"
   | "skipped"
   | "cancelled";
-export const CrawlGetRequestStatus = S.String;
+const CrawlGetRequestStatus = S.String;
 
 export interface GetCrawlRequest {
   /** Account ID. */
@@ -3797,7 +3493,7 @@ export interface GetCrawlRequest {
   /** Filter by URL status. */
   status?: CrawlGetRequestStatus | (string & {});
 }
-export const GetCrawlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
@@ -3823,10 +3519,10 @@ export type CrawlGetResponseRecordsItemStatus =
   | "disallowed"
   | "skipped"
   | "cancelled";
-export const CrawlGetResponseRecordsItemStatus = S.String;
+const CrawlGetResponseRecordsItemStatus = S.String;
 
 export type CrawlGetResponseRecordsItemJsonMap = { [key: string]: unknown | undefined };
-export const CrawlGetResponseRecordsItemJsonMap =
+const CrawlGetResponseRecordsItemJsonMap =
   CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<CrawlGetResponseRecordsItemJsonMap>;
 
 export interface CrawlGetResponseRecordsItemMetadata {
@@ -3837,7 +3533,7 @@ export interface CrawlGetResponseRecordsItemMetadata {
   /** Title of the crawled page. */
   title?: string | null;
 }
-export const CrawlGetResponseRecordsItemMetadata = /*@__PURE__*/ S.suspend(() =>
+const CrawlGetResponseRecordsItemMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.Number,
     url: S.String,
@@ -3861,7 +3557,7 @@ export interface CrawlGetResponseRecordsItem {
   /** Absent for urls that never reached a fetch. */
   metadata?: CrawlGetResponseRecordsItemMetadata | null;
 }
-export const CrawlGetResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
+const CrawlGetResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: CrawlGetResponseRecordsItemStatus,
     url: S.String,
@@ -3875,7 +3571,7 @@ export const CrawlGetResponseRecordsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrawlGetResponseRecordsItem>;
 
 export type CrawlGetResponseRecordsList = Array<CrawlGetResponseRecordsItem>;
-export const CrawlGetResponseRecordsList = /*@__PURE__*/ S.Array(
+const CrawlGetResponseRecordsList = /*@__PURE__*/ S.Array(
   CrawlGetResponseRecordsItem,
 ) as any as S.Schema<CrawlGetResponseRecordsList>;
 
@@ -3898,7 +3594,7 @@ export interface GetCrawlResponse {
   /** Cursor for pagination. */
   cursor?: number | null;
 }
-export const GetCrawlResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     browserSecondsUsed: S.Number,
@@ -3921,7 +3617,7 @@ export interface GetDevtoolBrowserPageRequest {
   /** Optional base64url-encoded JSON connection guardrails (mode) */
   cfBrapiGuardrails?: string;
 }
-export const GetDevtoolBrowserPageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDevtoolBrowserPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -3941,7 +3637,7 @@ export const GetDevtoolBrowserPageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDevtoolBrowserPageRequest>;
 
 export interface GetDevtoolBrowserPageResponse {}
-export const GetDevtoolBrowserPageResponse =
+const GetDevtoolBrowserPageResponse =
   ConnectDevtoolBrowserResponse as any as S.Schema<GetDevtoolBrowserPageResponse>;
 
 export interface GetDevtoolBrowserTargetRequest {
@@ -3952,7 +3648,7 @@ export interface GetDevtoolBrowserTargetRequest {
   /** Target ID. */
   targetId: string;
 }
-export const GetDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -3987,7 +3683,7 @@ export interface GetDevtoolBrowserTargetResponse {
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
 }
-export const GetDevtoolBrowserTargetResponse =
+const GetDevtoolBrowserTargetResponse =
   CreateDevtoolBrowserTargetResponse as any as S.Schema<GetDevtoolBrowserTargetResponse>;
 
 export interface GetDevtoolSessionRequest {
@@ -3996,7 +3692,7 @@ export interface GetDevtoolSessionRequest {
   /** Session ID. */
   sessionId: string;
 }
-export const GetDevtoolSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDevtoolSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -4036,7 +3732,7 @@ export interface GetDevtoolSessionResponse {
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
 }
-export const GetDevtoolSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDevtoolSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     closeReason: S.optional(S.NullOr(S.Number)),
@@ -4065,7 +3761,7 @@ export interface LaunchDevtoolBrowserRequest {
   /** Optional base64url-encoded JSON session guardrails (allowedDomains and allowedDomainSets) */
   cfBrapiGuardrails?: string;
 }
-export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+const LaunchDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
@@ -4086,7 +3782,7 @@ export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LaunchDevtoolBrowserRequest>;
 
 export interface LaunchDevtoolBrowserResponse {}
-export const LaunchDevtoolBrowserResponse =
+const LaunchDevtoolBrowserResponse =
   ConnectDevtoolBrowserResponse as any as S.Schema<LaunchDevtoolBrowserResponse>;
 
 export interface ListDevtoolBrowserTargetsRequest {
@@ -4097,7 +3793,7 @@ export interface ListDevtoolBrowserTargetsRequest {
   /** How long the live view URLs remain valid, in milliseconds (max 60 minutes) */
   liveViewUrlExpiresInMs?: number;
 }
-export const ListDevtoolBrowserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDevtoolBrowserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -4132,7 +3828,7 @@ export interface ListDevtoolBrowserTargetsResponse {
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
 }
-export const ListDevtoolBrowserTargetsResponse =
+const ListDevtoolBrowserTargetsResponse =
   CreateDevtoolBrowserTargetResponse as any as S.Schema<ListDevtoolBrowserTargetsResponse>;
 
 export interface ListDevtoolSessionsRequest {
@@ -4141,7 +3837,7 @@ export interface ListDevtoolSessionsRequest {
   limit?: number;
   offset?: number;
 }
-export const ListDevtoolSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDevtoolSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -4184,7 +3880,7 @@ export interface ListDevtoolSessionsResponse {
   /** WebSocket URL for debugging this target. */
   webSocketDebuggerUrl?: string | null;
 }
-export const ListDevtoolSessionsResponse =
+const ListDevtoolSessionsResponse =
   GetDevtoolSessionResponse as any as S.Schema<ListDevtoolSessionsResponse>;
 
 export interface ProtocolDevtoolBrowserRequest {
@@ -4193,7 +3889,7 @@ export interface ProtocolDevtoolBrowserRequest {
   /** Browser session ID. */
   sessionId: string;
 }
-export const ProtocolDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+const ProtocolDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -4213,39 +3909,33 @@ export const ProtocolDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 export type DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap =
+const DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap =
   CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemCommandsList =
   Array<DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap>;
-export const DevtoolsBrowserProtocolResponseDomainsItemCommandsList = /*@__PURE__*/ S.Array(
+const DevtoolsBrowserProtocolResponseDomainsItemCommandsList = /*@__PURE__*/ S.Array(
   DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap,
 ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemCommandsList>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemDependenciesList = Array<string>;
-export const DevtoolsBrowserProtocolResponseDomainsItemDependenciesList =
+const DevtoolsBrowserProtocolResponseDomainsItemDependenciesList =
   CreateAccessibilityTreeRequestAllowRequestPatternList as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemDependenciesList>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap =
-  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap>;
-
 export type DevtoolsBrowserProtocolResponseDomainsItemEventsList =
   Array<DevtoolsBrowserProtocolResponseDomainsItemEventsItemMap>;
-export const DevtoolsBrowserProtocolResponseDomainsItemEventsList =
+const DevtoolsBrowserProtocolResponseDomainsItemEventsList =
   DevtoolsBrowserProtocolResponseDomainsItemCommandsList as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemEventsList>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap =
-  CrawlCreateRequestJsonOptionsResponseFormatJsonSchemaMap as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap>;
-
 export type DevtoolsBrowserProtocolResponseDomainsItemTypesList =
   Array<DevtoolsBrowserProtocolResponseDomainsItemTypesItemMap>;
-export const DevtoolsBrowserProtocolResponseDomainsItemTypesList =
+const DevtoolsBrowserProtocolResponseDomainsItemTypesList =
   DevtoolsBrowserProtocolResponseDomainsItemCommandsList as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsItemTypesList>;
 
 export interface DevtoolsBrowserProtocolResponseDomainsItem {
@@ -4262,7 +3952,7 @@ export interface DevtoolsBrowserProtocolResponseDomainsItem {
   /** Type definitions. */
   types?: DevtoolsBrowserProtocolResponseDomainsItemTypesList | null;
 }
-export const DevtoolsBrowserProtocolResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const DevtoolsBrowserProtocolResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     commands: S.optional(S.NullOr(DevtoolsBrowserProtocolResponseDomainsItemCommandsList)),
@@ -4277,7 +3967,7 @@ export const DevtoolsBrowserProtocolResponseDomainsItem = /*@__PURE__*/ S.suspen
 
 export type DevtoolsBrowserProtocolResponseDomainsList =
   Array<DevtoolsBrowserProtocolResponseDomainsItem>;
-export const DevtoolsBrowserProtocolResponseDomainsList = /*@__PURE__*/ S.Array(
+const DevtoolsBrowserProtocolResponseDomainsList = /*@__PURE__*/ S.Array(
   DevtoolsBrowserProtocolResponseDomainsItem,
 ) as any as S.Schema<DevtoolsBrowserProtocolResponseDomainsList>;
 
@@ -4287,7 +3977,7 @@ export interface DevtoolsBrowserProtocolResponseVersion {
   /** Minor version. */
   minor: string;
 }
-export const DevtoolsBrowserProtocolResponseVersion = /*@__PURE__*/ S.suspend(() =>
+const DevtoolsBrowserProtocolResponseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     major: S.String,
     minor: S.String,
@@ -4303,7 +3993,7 @@ export interface ProtocolDevtoolBrowserResponse {
   /** Protocol version. */
   version?: DevtoolsBrowserProtocolResponseVersion | null;
 }
-export const ProtocolDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+const ProtocolDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: DevtoolsBrowserProtocolResponseDomainsList,
     version: S.optional(S.NullOr(DevtoolsBrowserProtocolResponseVersion)),
@@ -4318,7 +4008,7 @@ export interface VersionDevtoolBrowserRequest {
   /** Browser session ID. */
   sessionId: string;
 }
-export const VersionDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+const VersionDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -4350,7 +4040,7 @@ export interface VersionDevtoolBrowserResponse {
   /** WebSocket URL for debugging the browser. */
   webSocketDebuggerUrl: string;
 }
-export const VersionDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+const VersionDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     browser: S.String.pipe(T.Body("Browser")),
     protocolVersion: S.String.pipe(T.Body("Protocol-Version")),

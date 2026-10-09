@@ -41,10 +41,10 @@ export type ListAssetsContentTypeEnum =
   | "IAM_POLICY"
   | "ORG_POLICY"
   | "ACCESS_POLICY";
-export const ListAssetsContentTypeEnum = S.String;
+const ListAssetsContentTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListAssetsRequest {
   /** The `next_page_token` returned from the previous `ListAssetsResponse`, or unspecified for the first `ListAssetsRequest`. It is a continuation of a prior `ListAssets` call, and the API should return the next page of assets. */
@@ -60,7 +60,7 @@ export interface ListAssetsRequest {
   /** The maximum number of assets to be returned in a single response. Default is 100, minimum is 1, and maximum is 1000. */
   pageSize?: number;
 }
-export const ListAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -82,7 +82,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -91,7 +91,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -99,7 +99,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -110,7 +110,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -118,9 +118,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -133,7 +131,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     description: S.optional(S.String),
@@ -151,7 +149,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -160,7 +158,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -173,7 +171,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     auditConfigs: S.optional(AuditConfigList),
@@ -187,12 +185,11 @@ export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionSta
   | "ENCRYPTION_UNSUPPORTED"
   | "UNENCRYPTED"
   | "ENCRYPTED";
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum =
-  S.String;
+const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum = S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
   Array<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum>;
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
+const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum,
   ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList>;
@@ -205,7 +202,7 @@ export type GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
   | "DESKTOP_CHROME_OS"
   | "ANDROID"
   | "IOS";
-export const GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum = S.String;
 
 /** A restriction on the OS type and version of devices making requests. */
 export interface GoogleIdentityAccesscontextmanagerV1OsConstraint {
@@ -216,7 +213,7 @@ export interface GoogleIdentityAccesscontextmanagerV1OsConstraint {
   /** Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request. */
   requireVerifiedChromeOs?: boolean;
 }
-export const GoogleIdentityAccesscontextmanagerV1OsConstraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1OsConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumVersion: S.optional(S.String),
     osType: S.optional(GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum),
@@ -228,7 +225,7 @@ export const GoogleIdentityAccesscontextmanagerV1OsConstraint = /*@__PURE__*/ S.
 
 export type GoogleIdentityAccesscontextmanagerV1OsConstraintList =
   Array<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
-export const GoogleIdentityAccesscontextmanagerV1OsConstraintList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1OsConstraintList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1OsConstraint,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1OsConstraintList>;
 
@@ -237,12 +234,9 @@ export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagem
   | "NONE"
   | "BASIC"
   | "COMPLETE";
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
-  S.String;
-
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
   Array<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum>;
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
+const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
   GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList as any as S.Schema<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList>;
 
 /** `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops. */
@@ -260,7 +254,7 @@ export interface GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   /** Allowed device management levels, an empty list allows all management levels. */
   allowedDeviceManagementLevels?: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList;
 }
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1DevicePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedEncryptionStatuses: S.optional(
       GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList,
@@ -284,7 +278,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcSubNetwork {
   /** CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed. */
   vpcIpSubnetworks?: StringList;
 }
-export const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     vpcIpSubnetworks: S.optional(StringList),
@@ -298,7 +292,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcNetworkSource {
   /** Sub-segment ranges of a VPC network. */
   vpcSubnetwork?: GoogleIdentityAccesscontextmanagerV1VpcSubNetwork;
 }
-export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcSubnetwork: S.optional(GoogleIdentityAccesscontextmanagerV1VpcSubNetwork),
   }),
@@ -308,7 +302,7 @@ export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource = /*@__PURE__*
 
 export type GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList =
   Array<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
-export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1VpcNetworkSource,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList>;
 
@@ -329,7 +323,7 @@ export interface GoogleIdentityAccesscontextmanagerV1Condition {
   /** A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"` */
   requiredAccessLevels?: StringList;
 }
-export const GoogleIdentityAccesscontextmanagerV1Condition = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devicePolicy: S.optional(GoogleIdentityAccesscontextmanagerV1DevicePolicy),
     vpcNetworkSources: S.optional(GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList),
@@ -345,12 +339,12 @@ export const GoogleIdentityAccesscontextmanagerV1Condition = /*@__PURE__*/ S.sus
 
 export type GoogleIdentityAccesscontextmanagerV1ConditionList =
   Array<GoogleIdentityAccesscontextmanagerV1Condition>;
-export const GoogleIdentityAccesscontextmanagerV1ConditionList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1ConditionList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1Condition,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ConditionList>;
 
 export type GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum = "AND" | "OR";
-export const GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum = S.String;
 
 /** `BasicLevel` is an `AccessLevel` using a set of recommended features. */
 export interface GoogleIdentityAccesscontextmanagerV1BasicLevel {
@@ -359,7 +353,7 @@ export interface GoogleIdentityAccesscontextmanagerV1BasicLevel {
   /** How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND. */
   combiningFunction?: GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum;
 }
-export const GoogleIdentityAccesscontextmanagerV1BasicLevel = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1BasicLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(GoogleIdentityAccesscontextmanagerV1ConditionList),
     combiningFunction: S.optional(
@@ -375,7 +369,7 @@ export interface GoogleIdentityAccesscontextmanagerV1CustomLevel {
   /** Required. A Cloud CEL expression evaluating to a boolean. */
   expr?: Expr;
 }
-export const GoogleIdentityAccesscontextmanagerV1CustomLevel = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1CustomLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expr: S.optional(Expr),
   }),
@@ -396,7 +390,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessLevel {
   /** A `CustomLevel` written in the Common Expression Language. */
   custom?: GoogleIdentityAccesscontextmanagerV1CustomLevel;
 }
-export const GoogleIdentityAccesscontextmanagerV1AccessLevel = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1AccessLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -413,21 +407,21 @@ export type GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum =
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
   | "ANY_SERVICE_ACCOUNT";
-export const GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum = S.String;
 
 /** Specifies the Private Service Connect endpoint that an API call refers to. */
 export interface GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint {
   /** The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint. Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`. */
   forwardingRule?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       forwardingRule: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint",
-  }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint>;
+).annotate({
+  identifier: "GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint",
+}) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint>;
 
 /** The source that IngressPolicy authorizes access from. */
 export interface GoogleIdentityAccesscontextmanagerV1IngressSource {
@@ -438,7 +432,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressSource {
   /** A PrivateServiceConnectEndpoint that is allowed to access the perimeter. The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in. */
   pscEndpoint?: GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint;
 }
-export const GoogleIdentityAccesscontextmanagerV1IngressSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1IngressSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     accessLevel: S.optional(S.String),
@@ -450,7 +444,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressSource = /*@__PURE__*/ S
 
 export type GoogleIdentityAccesscontextmanagerV1IngressSourceList =
   Array<GoogleIdentityAccesscontextmanagerV1IngressSource>;
-export const GoogleIdentityAccesscontextmanagerV1IngressSourceList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1IngressSourceList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1IngressSource,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1IngressSourceList>;
 
@@ -463,7 +457,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /** Sources that this IngressPolicy authorizes access from. */
   sources?: GoogleIdentityAccesscontextmanagerV1IngressSourceList;
 }
-export const GoogleIdentityAccesscontextmanagerV1IngressFrom = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1IngressFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityType: S.optional(GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum),
     identities: S.optional(StringList),
@@ -480,7 +474,7 @@ export interface GoogleIdentityAccesscontextmanagerV1MethodSelector {
   /** A valid Cloud IAM permission for the corresponding `service_name` in ApiOperation. */
   permission?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1MethodSelector = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1MethodSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     permission: S.optional(S.String),
@@ -491,7 +485,7 @@ export const GoogleIdentityAccesscontextmanagerV1MethodSelector = /*@__PURE__*/ 
 
 export type GoogleIdentityAccesscontextmanagerV1MethodSelectorList =
   Array<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
-export const GoogleIdentityAccesscontextmanagerV1MethodSelectorList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1MethodSelectorList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1MethodSelector,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1MethodSelectorList>;
 
@@ -502,7 +496,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ApiOperation {
   /** API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`. */
   methodSelectors?: GoogleIdentityAccesscontextmanagerV1MethodSelectorList;
 }
-export const GoogleIdentityAccesscontextmanagerV1ApiOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1ApiOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
     methodSelectors: S.optional(GoogleIdentityAccesscontextmanagerV1MethodSelectorList),
@@ -513,7 +507,7 @@ export const GoogleIdentityAccesscontextmanagerV1ApiOperation = /*@__PURE__*/ S.
 
 export type GoogleIdentityAccesscontextmanagerV1ApiOperationList =
   Array<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
-export const GoogleIdentityAccesscontextmanagerV1ApiOperationList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1ApiOperationList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1ApiOperation,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ApiOperationList>;
 
@@ -526,7 +520,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressTo {
   /** IAM roles that represent the set of operations that the sources specified in the corresponding IngressFrom are allowed to perform in this ServicePerimeter. */
   roles?: StringList;
 }
-export const GoogleIdentityAccesscontextmanagerV1IngressTo = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1IngressTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StringList),
     operations: S.optional(GoogleIdentityAccesscontextmanagerV1ApiOperationList),
@@ -545,7 +539,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressPolicy {
   /** Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply. */
   ingressTo?: GoogleIdentityAccesscontextmanagerV1IngressTo;
 }
-export const GoogleIdentityAccesscontextmanagerV1IngressPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1IngressPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingressFrom: S.optional(GoogleIdentityAccesscontextmanagerV1IngressFrom),
     title: S.optional(S.String),
@@ -557,7 +551,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressPolicy = /*@__PURE__*/ S
 
 export type GoogleIdentityAccesscontextmanagerV1IngressPolicyList =
   Array<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
-export const GoogleIdentityAccesscontextmanagerV1IngressPolicyList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1IngressPolicyList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1IngressPolicy,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1IngressPolicyList>;
 
@@ -570,12 +564,9 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressSource {
   /** A PrivateServiceConnectEndpoint that is allowed to access data outside the perimeter. The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in. */
   pscEndpoint?: GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressSource =
-  GoogleIdentityAccesscontextmanagerV1IngressSource as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSource>;
-
 export type GoogleIdentityAccesscontextmanagerV1EgressSourceList =
   Array<GoogleIdentityAccesscontextmanagerV1EgressSource>;
-export const GoogleIdentityAccesscontextmanagerV1EgressSourceList =
+const GoogleIdentityAccesscontextmanagerV1EgressSourceList =
   GoogleIdentityAccesscontextmanagerV1IngressSourceList as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSourceList>;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
@@ -583,13 +574,13 @@ export type GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
   | "ANY_SERVICE_ACCOUNT";
-export const GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum = S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum =
   | "SOURCE_RESTRICTION_UNSPECIFIED"
   | "SOURCE_RESTRICTION_ENABLED"
   | "SOURCE_RESTRICTION_DISABLED";
-export const GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum = S.String;
 
 /** Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. */
 export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
@@ -602,7 +593,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /** Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`. */
   sourceRestriction?: GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressFrom = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1EgressFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identities: S.optional(StringList),
     sources: S.optional(GoogleIdentityAccesscontextmanagerV1EgressSourceList),
@@ -626,7 +617,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressTo {
   /** IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom. are allowed to perform in this ServicePerimeter. */
   roles?: StringList;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressTo = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1EgressTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StringList),
     externalResources: S.optional(StringList),
@@ -646,7 +637,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressPolicy {
   /** Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply. */
   egressTo?: GoogleIdentityAccesscontextmanagerV1EgressTo;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1EgressPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     egressFrom: S.optional(GoogleIdentityAccesscontextmanagerV1EgressFrom),
     title: S.optional(S.String),
@@ -658,7 +649,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressPolicy = /*@__PURE__*/ S.
 
 export type GoogleIdentityAccesscontextmanagerV1EgressPolicyList =
   Array<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
-export const GoogleIdentityAccesscontextmanagerV1EgressPolicyList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1EgressPolicyList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1EgressPolicy,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressPolicyList>;
 
@@ -669,7 +660,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AddRequestHeader {
   /** HTTP header key. */
   key?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1AddRequestHeader = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1AddRequestHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     key: S.optional(S.String),
@@ -683,7 +674,7 @@ export interface GoogleIdentityAccesscontextmanagerV1Modifier {
   /** Adds an additional HTTP request header. */
   addRequestHeader?: GoogleIdentityAccesscontextmanagerV1AddRequestHeader;
 }
-export const GoogleIdentityAccesscontextmanagerV1Modifier = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1Modifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addRequestHeader: S.optional(GoogleIdentityAccesscontextmanagerV1AddRequestHeader),
   }),
@@ -693,7 +684,7 @@ export const GoogleIdentityAccesscontextmanagerV1Modifier = /*@__PURE__*/ S.susp
 
 export type GoogleIdentityAccesscontextmanagerV1ModifierList =
   Array<GoogleIdentityAccesscontextmanagerV1Modifier>;
-export const GoogleIdentityAccesscontextmanagerV1ModifierList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1ModifierList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1Modifier,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ModifierList>;
 
@@ -706,7 +697,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePattern {
   /** Modifiers to apply to the requests that match the URL pattern. */
   modifiers?: GoogleIdentityAccesscontextmanagerV1ModifierList;
 }
-export const GoogleIdentityAccesscontextmanagerV1ServicePattern = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1ServicePattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     pattern: S.optional(S.String),
@@ -718,19 +709,16 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePattern = /*@__PURE__*/ 
 
 export type GoogleIdentityAccesscontextmanagerV1ServicePatternList =
   Array<GoogleIdentityAccesscontextmanagerV1ServicePattern>;
-export const GoogleIdentityAccesscontextmanagerV1ServicePatternList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1ServicePatternList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1ServicePattern,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePatternList>;
 
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   | "SERVICE_PATTERNS_ENFORCEMENT_SCOPE_UNSPECIFIED"
   | "GOOGLE_APIS_VIA_PRIVATE_PATH";
-export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
-  S.String;
-
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
   Array<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum>;
-export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
+const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
   GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList as any as S.Schema<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList>;
 
 /** Specifies how APIs are allowed to communicate within the Service Perimeter. */
@@ -744,16 +732,15 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
   /** Defines the enforcement scopes of service patterns. */
   servicePatternsEnforcementScopes?: GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList;
 }
-export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowedServices: S.optional(StringList),
-      enableRestriction: S.optional(S.Boolean),
-      allowedServicePatterns: S.optional(GoogleIdentityAccesscontextmanagerV1ServicePatternList),
-      servicePatternsEnforcementScopes: S.optional(
-        GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList,
-      ),
-    }),
+const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedServices: S.optional(StringList),
+    enableRestriction: S.optional(S.Boolean),
+    allowedServicePatterns: S.optional(GoogleIdentityAccesscontextmanagerV1ServicePatternList),
+    servicePatternsEnforcementScopes: S.optional(
+      GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices",
 }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices>;
@@ -773,16 +760,15 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /** Configuration for APIs allowed within Perimeter. */
   vpcAccessibleServices?: GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices;
 }
-export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ingressPolicies: S.optional(GoogleIdentityAccesscontextmanagerV1IngressPolicyList),
-      restrictedServices: S.optional(StringList),
-      accessLevels: S.optional(StringList),
-      resources: S.optional(StringList),
-      egressPolicies: S.optional(GoogleIdentityAccesscontextmanagerV1EgressPolicyList),
-      vpcAccessibleServices: S.optional(GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices),
-    }),
+const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ingressPolicies: S.optional(GoogleIdentityAccesscontextmanagerV1IngressPolicyList),
+    restrictedServices: S.optional(StringList),
+    accessLevels: S.optional(StringList),
+    resources: S.optional(StringList),
+    egressPolicies: S.optional(GoogleIdentityAccesscontextmanagerV1EgressPolicyList),
+    vpcAccessibleServices: S.optional(GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices),
+  }),
 ).annotate({
   identifier: "GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig",
 }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig>;
@@ -790,7 +776,7 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig = /*@__P
 export type GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum =
   | "PERIMETER_TYPE_REGULAR"
   | "PERIMETER_TYPE_BRIDGE";
-export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum = S.String;
 
 /** `ServicePerimeter` describes a set of Google Cloud resources which can freely import and export data amongst themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this `ServicePerimeter` has a target outside of the `ServicePerimeter`, the request will be blocked. Otherwise the request is allowed. There are two types of Service Perimeter - Regular and Bridge. Regular Service Perimeters cannot overlap, a single Google Cloud project or VPC network can only belong to a single regular Service Perimeter. Service Perimeter Bridges can contain only Google Cloud projects as members, a single Google Cloud project may belong to multiple Service Perimeter Bridges. */
 export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
@@ -811,7 +797,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /** Human readable title. Must be unique within the Policy. */
   title?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1ServicePerimeter = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1ServicePerimeter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     spec: S.optional(GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig),
@@ -829,10 +815,7 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePerimeter = /*@__PURE__*
 }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeter>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** A representation of a Google Cloud resource. */
 export interface Resource {
@@ -849,7 +832,7 @@ export interface Resource {
   /** The API version. Example: "v1". */
   version?: string;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     discoveryName: S.optional(S.String),
@@ -864,7 +847,7 @@ export type GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum =
   | "ALL_VALUES_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum = S.String;
+const GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum = S.String;
 
 /** Used in `policy_type` to specify how `list_policy` behaves at this resource. `ListPolicy` can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied by setting the `allowed_values` and `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used. You can set `allowed_values` and `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and `denied_values` must be unset. */
 export interface GoogleCloudOrgpolicyV1ListPolicy {
@@ -879,7 +862,7 @@ export interface GoogleCloudOrgpolicyV1ListPolicy {
   /** Optional. The Google Cloud Console will try to default to a configuration that matches the value specified in this `Policy`. If `suggested_value` is not set, it will inherit the value specified higher in the hierarchy, unless `inherit_from_parent` is `false`. */
   suggestedValue?: string;
 }
-export const GoogleCloudOrgpolicyV1ListPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV1ListPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedValues: S.optional(StringList),
     deniedValues: S.optional(StringList),
@@ -896,7 +879,7 @@ export interface GoogleCloudOrgpolicyV1BooleanPolicy {
   /** If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy` at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the behavior is as if the`Policy` were set at this resource. The following examples demonstrate the different possible layerings: Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be enforced. Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced. The constraint at `projects/bar` is enforced. Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`. */
   enforced?: boolean;
 }
-export const GoogleCloudOrgpolicyV1BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV1BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforced: S.optional(S.Boolean),
   }),
@@ -906,9 +889,7 @@ export const GoogleCloudOrgpolicyV1BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. Suppose that `constraint_default` is set to `ALLOW` for the `Constraint` `constraints/serviceuser.services`. Suppose that organization foo.com sets a `Policy` at their Organization resource node that restricts the allowed service activations to deny all service activations. They could then set a `Policy` with the `policy_type` `restore_default` on several experimental projects, restoring the `constraint_default` enforcement of the `Constraint` for only those projects, allowing those projects to have all services activated. */
 export interface GoogleCloudOrgpolicyV1RestoreDefault {}
-export const GoogleCloudOrgpolicyV1RestoreDefault = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GoogleCloudOrgpolicyV1RestoreDefault = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleCloudOrgpolicyV1RestoreDefault",
 }) as any as S.Schema<GoogleCloudOrgpolicyV1RestoreDefault>;
 
@@ -929,7 +910,7 @@ export interface GoogleCloudOrgpolicyV1Policy {
   /** An opaque tag indicating the current version of the `Policy`, used for concurrency control. When the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset. When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value that was returned from a `GetOrgPolicy` request as part of a read-modify-write loop for concurrency control. Not setting the `etag`in a `SetOrgPolicy` request will result in an unconditional write of the `Policy`. */
   etag?: string;
 }
-export const GoogleCloudOrgpolicyV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraint: S.optional(S.String),
     listPolicy: S.optional(GoogleCloudOrgpolicyV1ListPolicy),
@@ -944,7 +925,7 @@ export const GoogleCloudOrgpolicyV1Policy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudOrgpolicyV1Policy>;
 
 export type GoogleCloudOrgpolicyV1PolicyList = Array<GoogleCloudOrgpolicyV1Policy>;
-export const GoogleCloudOrgpolicyV1PolicyList = /*@__PURE__*/ S.Array(
+const GoogleCloudOrgpolicyV1PolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV1Policy,
 ) as any as S.Schema<GoogleCloudOrgpolicyV1PolicyList>;
 
@@ -961,7 +942,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   /** Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}` */
   name?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1AccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1AccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: S.optional(StringList),
     etag: S.optional(S.String),
@@ -994,7 +975,7 @@ export interface Asset {
   /** Please also refer to the [access policy user guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies). */
   accessPolicy?: GoogleIdentityAccesscontextmanagerV1AccessPolicy;
 }
-export const Asset = /*@__PURE__*/ S.suspend(() =>
+const Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamPolicy: S.optional(Policy),
     accessLevel: S.optional(GoogleIdentityAccesscontextmanagerV1AccessLevel),
@@ -1009,7 +990,7 @@ export const Asset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
 
 export type AssetList = Array<Asset>;
-export const AssetList = /*@__PURE__*/ S.Array(Asset) as any as S.Schema<AssetList>;
+const AssetList = /*@__PURE__*/ S.Array(Asset) as any as S.Schema<AssetList>;
 
 /** ListAssets response. */
 export interface ListAssetsResponse {
@@ -1020,7 +1001,7 @@ export interface ListAssetsResponse {
   /** Assets. */
   assets?: AssetList;
 }
-export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     readTime: S.optional(S.String),

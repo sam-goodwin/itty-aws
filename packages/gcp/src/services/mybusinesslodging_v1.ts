@@ -67,7 +67,7 @@ export interface GetGoogleUpdatedLocationsLodgingRequest {
   /** Required. Google identifier for this location in the form: `locations/{location_id}/lodging` */
   name: string;
 }
-export const GetGoogleUpdatedLocationsLodgingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGoogleUpdatedLocationsLodgingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -87,7 +87,7 @@ export interface LodgingMetadata {
   /** Required. The latest time at which the Lodging data is asserted to be true in the real world. This is not necessarily the time at which the request is made. */
   updateTime?: string;
 }
-export const LodgingMetadata = /*@__PURE__*/ S.suspend(() =>
+const LodgingMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
   }),
@@ -98,98 +98,98 @@ export type PoolsPoolsCountExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsPoolsCountExceptionEnum = S.String;
+const PoolsPoolsCountExceptionEnum = S.String;
 
 export type PoolsWaterParkExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsWaterParkExceptionEnum = S.String;
+const PoolsWaterParkExceptionEnum = S.String;
 
 export type PoolsOutdoorPoolsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsOutdoorPoolsCountExceptionEnum = S.String;
+const PoolsOutdoorPoolsCountExceptionEnum = S.String;
 
 export type PoolsWadingPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsWadingPoolExceptionEnum = S.String;
+const PoolsWadingPoolExceptionEnum = S.String;
 
 export type PoolsHotTubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsHotTubExceptionEnum = S.String;
+const PoolsHotTubExceptionEnum = S.String;
 
 export type PoolsWaterslideExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsWaterslideExceptionEnum = S.String;
+const PoolsWaterslideExceptionEnum = S.String;
 
 export type PoolsIndoorPoolsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsIndoorPoolsCountExceptionEnum = S.String;
+const PoolsIndoorPoolsCountExceptionEnum = S.String;
 
 export type PoolsWavePoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsWavePoolExceptionEnum = S.String;
+const PoolsWavePoolExceptionEnum = S.String;
 
 export type PoolsLazyRiverExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsLazyRiverExceptionEnum = S.String;
+const PoolsLazyRiverExceptionEnum = S.String;
 
 export type PoolsAdultPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsAdultPoolExceptionEnum = S.String;
+const PoolsAdultPoolExceptionEnum = S.String;
 
 export type PoolsOutdoorPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsOutdoorPoolExceptionEnum = S.String;
+const PoolsOutdoorPoolExceptionEnum = S.String;
 
 export type PoolsPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsPoolExceptionEnum = S.String;
+const PoolsPoolExceptionEnum = S.String;
 
 export type PoolsLifeguardExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsLifeguardExceptionEnum = S.String;
+const PoolsLifeguardExceptionEnum = S.String;
 
 export type PoolsIndoorPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoolsIndoorPoolExceptionEnum = S.String;
+const PoolsIndoorPoolExceptionEnum = S.String;
 
 /** Swimming pool or recreational water facilities available at the hotel. */
 export interface Pools {
@@ -250,7 +250,7 @@ export interface Pools {
   /** Indoor pool exception. */
   indoorPoolException?: PoolsIndoorPoolExceptionEnum | (string & {});
 }
-export const Pools = /*@__PURE__*/ S.suspend(() =>
+const Pools = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     poolsCountException: S.optional(PoolsPoolsCountExceptionEnum),
     waterParkException: S.optional(PoolsWaterParkExceptionEnum),
@@ -288,42 +288,42 @@ export type LivingAreaLayoutPatioExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaLayoutPatioExceptionEnum = S.String;
+const LivingAreaLayoutPatioExceptionEnum = S.String;
 
 export type LivingAreaLayoutNonSmokingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaLayoutNonSmokingExceptionEnum = S.String;
+const LivingAreaLayoutNonSmokingExceptionEnum = S.String;
 
 export type LivingAreaLayoutStairsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaLayoutStairsExceptionEnum = S.String;
+const LivingAreaLayoutStairsExceptionEnum = S.String;
 
 export type LivingAreaLayoutLoftExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaLayoutLoftExceptionEnum = S.String;
+const LivingAreaLayoutLoftExceptionEnum = S.String;
 
 export type LivingAreaLayoutBalconyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaLayoutBalconyExceptionEnum = S.String;
+const LivingAreaLayoutBalconyExceptionEnum = S.String;
 
 export type LivingAreaLayoutLivingAreaSqMetersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaLayoutLivingAreaSqMetersExceptionEnum = S.String;
+const LivingAreaLayoutLivingAreaSqMetersExceptionEnum = S.String;
 
 /** Information about the layout of the living area. */
 export interface LivingAreaLayout {
@@ -352,7 +352,7 @@ export interface LivingAreaLayout {
   /** Living area sq meters exception. */
   livingAreaSqMetersException?: LivingAreaLayoutLivingAreaSqMetersExceptionEnum | (string & {});
 }
-export const LivingAreaLayout = /*@__PURE__*/ S.suspend(() =>
+const LivingAreaLayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     patioException: S.optional(LivingAreaLayoutPatioExceptionEnum),
     livingAreaSqMeters: S.optional(S.Number),
@@ -374,112 +374,112 @@ export type LivingAreaEatingKitchenAvailableExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingKitchenAvailableExceptionEnum = S.String;
+const LivingAreaEatingKitchenAvailableExceptionEnum = S.String;
 
 export type LivingAreaEatingMicrowaveExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingMicrowaveExceptionEnum = S.String;
+const LivingAreaEatingMicrowaveExceptionEnum = S.String;
 
 export type LivingAreaEatingTeaStationExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingTeaStationExceptionEnum = S.String;
+const LivingAreaEatingTeaStationExceptionEnum = S.String;
 
 export type LivingAreaEatingOutdoorGrillExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingOutdoorGrillExceptionEnum = S.String;
+const LivingAreaEatingOutdoorGrillExceptionEnum = S.String;
 
 export type LivingAreaEatingSinkExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingSinkExceptionEnum = S.String;
+const LivingAreaEatingSinkExceptionEnum = S.String;
 
 export type LivingAreaEatingCookwareExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingCookwareExceptionEnum = S.String;
+const LivingAreaEatingCookwareExceptionEnum = S.String;
 
 export type LivingAreaEatingKettleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingKettleExceptionEnum = S.String;
+const LivingAreaEatingKettleExceptionEnum = S.String;
 
 export type LivingAreaEatingMinibarExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingMinibarExceptionEnum = S.String;
+const LivingAreaEatingMinibarExceptionEnum = S.String;
 
 export type LivingAreaEatingSnackbarExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingSnackbarExceptionEnum = S.String;
+const LivingAreaEatingSnackbarExceptionEnum = S.String;
 
 export type LivingAreaEatingOvenExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingOvenExceptionEnum = S.String;
+const LivingAreaEatingOvenExceptionEnum = S.String;
 
 export type LivingAreaEatingCoffeeMakerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingCoffeeMakerExceptionEnum = S.String;
+const LivingAreaEatingCoffeeMakerExceptionEnum = S.String;
 
 export type LivingAreaEatingToasterExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingToasterExceptionEnum = S.String;
+const LivingAreaEatingToasterExceptionEnum = S.String;
 
 export type LivingAreaEatingStoveExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingStoveExceptionEnum = S.String;
+const LivingAreaEatingStoveExceptionEnum = S.String;
 
 export type LivingAreaEatingDishwasherExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingDishwasherExceptionEnum = S.String;
+const LivingAreaEatingDishwasherExceptionEnum = S.String;
 
 export type LivingAreaEatingRefrigeratorExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingRefrigeratorExceptionEnum = S.String;
+const LivingAreaEatingRefrigeratorExceptionEnum = S.String;
 
 export type LivingAreaEatingIndoorGrillExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaEatingIndoorGrillExceptionEnum = S.String;
+const LivingAreaEatingIndoorGrillExceptionEnum = S.String;
 
 /** Information about eating features in the living area. */
 export interface LivingAreaEating {
@@ -548,7 +548,7 @@ export interface LivingAreaEating {
   /** Indoor grill exception. */
   indoorGrillException?: LivingAreaEatingIndoorGrillExceptionEnum | (string & {});
 }
-export const LivingAreaEating = /*@__PURE__*/ S.suspend(() =>
+const LivingAreaEating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sink: S.optional(S.Boolean),
     snackbar: S.optional(S.Boolean),
@@ -590,98 +590,98 @@ export type LivingAreaSleepingCribsCountExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingCribsCountExceptionEnum = S.String;
+const LivingAreaSleepingCribsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingSofaBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingSofaBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingSofaBedsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingQueenBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingQueenBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingQueenBedsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingFeatherPillowsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingFeatherPillowsExceptionEnum = S.String;
+const LivingAreaSleepingFeatherPillowsExceptionEnum = S.String;
 
 export type LivingAreaSleepingDoubleBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingDoubleBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingDoubleBedsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingOtherBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingOtherBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingOtherBedsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingRollAwayBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingRollAwayBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingRollAwayBedsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingSingleOrTwinBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingSingleOrTwinBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingSingleOrTwinBedsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingHypoallergenicBeddingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingHypoallergenicBeddingExceptionEnum = S.String;
+const LivingAreaSleepingHypoallergenicBeddingExceptionEnum = S.String;
 
 export type LivingAreaSleepingKingBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingKingBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingKingBedsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingBunkBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingBunkBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingBunkBedsCountExceptionEnum = S.String;
 
 export type LivingAreaSleepingSyntheticPillowsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingSyntheticPillowsExceptionEnum = S.String;
+const LivingAreaSleepingSyntheticPillowsExceptionEnum = S.String;
 
 export type LivingAreaSleepingMemoryFoamPillowsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingMemoryFoamPillowsExceptionEnum = S.String;
+const LivingAreaSleepingMemoryFoamPillowsExceptionEnum = S.String;
 
 export type LivingAreaSleepingBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaSleepingBedsCountExceptionEnum = S.String;
+const LivingAreaSleepingBedsCountExceptionEnum = S.String;
 
 /** Information about sleeping features in the living area. */
 export interface LivingAreaSleeping {
@@ -746,7 +746,7 @@ export interface LivingAreaSleeping {
   /** Sofa beds count. The number of specially designed sofas that can be made to serve as a bed by lowering its hinged upholstered back to horizontal position or by pulling out a concealed mattress. */
   sofaBedsCount?: number;
 }
-export const LivingAreaSleeping = /*@__PURE__*/ S.suspend(() =>
+const LivingAreaSleeping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     otherBedsCount: S.optional(S.Number),
     cribsCountException: S.optional(LivingAreaSleepingCribsCountExceptionEnum),
@@ -788,56 +788,56 @@ export type LivingAreaAccessibilityMobilityAccessibleShowerExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaAccessibilityMobilityAccessibleShowerExceptionEnum = S.String;
+const LivingAreaAccessibilityMobilityAccessibleShowerExceptionEnum = S.String;
 
 export type LivingAreaAccessibilityHearingAccessibleFireAlarmExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaAccessibilityHearingAccessibleFireAlarmExceptionEnum = S.String;
+const LivingAreaAccessibilityHearingAccessibleFireAlarmExceptionEnum = S.String;
 
 export type LivingAreaAccessibilityMobilityAccessibleBathtubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaAccessibilityMobilityAccessibleBathtubExceptionEnum = S.String;
+const LivingAreaAccessibilityMobilityAccessibleBathtubExceptionEnum = S.String;
 
 export type LivingAreaAccessibilityAdaCompliantUnitExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaAccessibilityAdaCompliantUnitExceptionEnum = S.String;
+const LivingAreaAccessibilityAdaCompliantUnitExceptionEnum = S.String;
 
 export type LivingAreaAccessibilityMobilityAccessibleToiletExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaAccessibilityMobilityAccessibleToiletExceptionEnum = S.String;
+const LivingAreaAccessibilityMobilityAccessibleToiletExceptionEnum = S.String;
 
 export type LivingAreaAccessibilityHearingAccessibleUnitExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaAccessibilityHearingAccessibleUnitExceptionEnum = S.String;
+const LivingAreaAccessibilityHearingAccessibleUnitExceptionEnum = S.String;
 
 export type LivingAreaAccessibilityHearingAccessibleDoorbellExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaAccessibilityHearingAccessibleDoorbellExceptionEnum = S.String;
+const LivingAreaAccessibilityHearingAccessibleDoorbellExceptionEnum = S.String;
 
 export type LivingAreaAccessibilityMobilityAccessibleUnitExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaAccessibilityMobilityAccessibleUnitExceptionEnum = S.String;
+const LivingAreaAccessibilityMobilityAccessibleUnitExceptionEnum = S.String;
 
 /** Accessibility features of the living area. */
 export interface LivingAreaAccessibility {
@@ -888,7 +888,7 @@ export interface LivingAreaAccessibility {
     | LivingAreaAccessibilityMobilityAccessibleUnitExceptionEnum
     | (string & {});
 }
-export const LivingAreaAccessibility = /*@__PURE__*/ S.suspend(() =>
+const LivingAreaAccessibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hearingAccessibleFireAlarm: S.optional(S.Boolean),
     hearingAccessibleDoorbell: S.optional(S.Boolean),
@@ -928,140 +928,140 @@ export type LivingAreaFeaturesAirConditioningExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesAirConditioningExceptionEnum = S.String;
+const LivingAreaFeaturesAirConditioningExceptionEnum = S.String;
 
 export type LivingAreaFeaturesTvStreamingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesTvStreamingExceptionEnum = S.String;
+const LivingAreaFeaturesTvStreamingExceptionEnum = S.String;
 
 export type LivingAreaFeaturesPayPerViewMoviesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesPayPerViewMoviesExceptionEnum = S.String;
+const LivingAreaFeaturesPayPerViewMoviesExceptionEnum = S.String;
 
 export type LivingAreaFeaturesHairdryerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesHairdryerExceptionEnum = S.String;
+const LivingAreaFeaturesHairdryerExceptionEnum = S.String;
 
 export type LivingAreaFeaturesTvExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesTvExceptionEnum = S.String;
+const LivingAreaFeaturesTvExceptionEnum = S.String;
 
 export type LivingAreaFeaturesToiletExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesToiletExceptionEnum = S.String;
+const LivingAreaFeaturesToiletExceptionEnum = S.String;
 
 export type LivingAreaFeaturesElectronicRoomKeyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesElectronicRoomKeyExceptionEnum = S.String;
+const LivingAreaFeaturesElectronicRoomKeyExceptionEnum = S.String;
 
 export type LivingAreaFeaturesInunitWifiAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesInunitWifiAvailableExceptionEnum = S.String;
+const LivingAreaFeaturesInunitWifiAvailableExceptionEnum = S.String;
 
 export type LivingAreaFeaturesWasherExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesWasherExceptionEnum = S.String;
+const LivingAreaFeaturesWasherExceptionEnum = S.String;
 
 export type LivingAreaFeaturesShowerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesShowerExceptionEnum = S.String;
+const LivingAreaFeaturesShowerExceptionEnum = S.String;
 
 export type LivingAreaFeaturesBidetExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesBidetExceptionEnum = S.String;
+const LivingAreaFeaturesBidetExceptionEnum = S.String;
 
 export type LivingAreaFeaturesUniversalPowerAdaptersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesUniversalPowerAdaptersExceptionEnum = S.String;
+const LivingAreaFeaturesUniversalPowerAdaptersExceptionEnum = S.String;
 
 export type LivingAreaFeaturesIroningEquipmentExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesIroningEquipmentExceptionEnum = S.String;
+const LivingAreaFeaturesIroningEquipmentExceptionEnum = S.String;
 
 export type LivingAreaFeaturesFireplaceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesFireplaceExceptionEnum = S.String;
+const LivingAreaFeaturesFireplaceExceptionEnum = S.String;
 
 export type LivingAreaFeaturesTvCastingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesTvCastingExceptionEnum = S.String;
+const LivingAreaFeaturesTvCastingExceptionEnum = S.String;
 
 export type LivingAreaFeaturesBathtubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesBathtubExceptionEnum = S.String;
+const LivingAreaFeaturesBathtubExceptionEnum = S.String;
 
 export type LivingAreaFeaturesPrivateBathroomExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesPrivateBathroomExceptionEnum = S.String;
+const LivingAreaFeaturesPrivateBathroomExceptionEnum = S.String;
 
 export type LivingAreaFeaturesDryerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesDryerExceptionEnum = S.String;
+const LivingAreaFeaturesDryerExceptionEnum = S.String;
 
 export type LivingAreaFeaturesHeatingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesHeatingExceptionEnum = S.String;
+const LivingAreaFeaturesHeatingExceptionEnum = S.String;
 
 export type LivingAreaFeaturesInunitSafeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LivingAreaFeaturesInunitSafeExceptionEnum = S.String;
+const LivingAreaFeaturesInunitSafeExceptionEnum = S.String;
 
 /** Features in the living area. */
 export interface LivingAreaFeatures {
@@ -1148,7 +1148,7 @@ export interface LivingAreaFeatures {
   /** Fireplace. A framed opening (aka hearth) at the base of a chimney in which logs or an electrical fire feature are burned to provide a relaxing ambiance or to heat the room. Often made of bricks or stone. */
   fireplace?: boolean;
 }
-export const LivingAreaFeatures = /*@__PURE__*/ S.suspend(() =>
+const LivingAreaFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ironingEquipment: S.optional(S.Boolean),
     toilet: S.optional(S.Boolean),
@@ -1208,7 +1208,7 @@ export interface LivingArea {
   /** Features in the living area. */
   features?: LivingAreaFeatures;
 }
-export const LivingArea = /*@__PURE__*/ S.suspend(() =>
+const LivingArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layout: S.optional(LivingAreaLayout),
     eating: S.optional(LivingAreaEating),
@@ -1219,105 +1219,105 @@ export const LivingArea = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LivingArea" }) as any as S.Schema<LivingArea>;
 
 export type GuestUnitFeaturesTierEnum = "UNIT_TIER_UNSPECIFIED" | "STANDARD_UNIT" | "DELUXE_UNIT";
-export const GuestUnitFeaturesTierEnum = S.String;
+const GuestUnitFeaturesTierEnum = S.String;
 
 export type GuestUnitFeaturesMaxOccupantsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesMaxOccupantsCountExceptionEnum = S.String;
+const GuestUnitFeaturesMaxOccupantsCountExceptionEnum = S.String;
 
 export type GuestUnitFeaturesPrivateHomeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesPrivateHomeExceptionEnum = S.String;
+const GuestUnitFeaturesPrivateHomeExceptionEnum = S.String;
 
 export type GuestUnitFeaturesBungalowOrVillaExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesBungalowOrVillaExceptionEnum = S.String;
+const GuestUnitFeaturesBungalowOrVillaExceptionEnum = S.String;
 
 export type GuestUnitFeaturesConnectingUnitAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesConnectingUnitAvailableExceptionEnum = S.String;
+const GuestUnitFeaturesConnectingUnitAvailableExceptionEnum = S.String;
 
 export type GuestUnitFeaturesMaxAdultOccupantsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesMaxAdultOccupantsCountExceptionEnum = S.String;
+const GuestUnitFeaturesMaxAdultOccupantsCountExceptionEnum = S.String;
 
 export type GuestUnitFeaturesTierExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesTierExceptionEnum = S.String;
+const GuestUnitFeaturesTierExceptionEnum = S.String;
 
 export type ViewsFromUnitPoolViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ViewsFromUnitPoolViewExceptionEnum = S.String;
+const ViewsFromUnitPoolViewExceptionEnum = S.String;
 
 export type ViewsFromUnitGardenViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ViewsFromUnitGardenViewExceptionEnum = S.String;
+const ViewsFromUnitGardenViewExceptionEnum = S.String;
 
 export type ViewsFromUnitValleyViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ViewsFromUnitValleyViewExceptionEnum = S.String;
+const ViewsFromUnitValleyViewExceptionEnum = S.String;
 
 export type ViewsFromUnitLakeViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ViewsFromUnitLakeViewExceptionEnum = S.String;
+const ViewsFromUnitLakeViewExceptionEnum = S.String;
 
 export type ViewsFromUnitCityViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ViewsFromUnitCityViewExceptionEnum = S.String;
+const ViewsFromUnitCityViewExceptionEnum = S.String;
 
 export type ViewsFromUnitLandmarkViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ViewsFromUnitLandmarkViewExceptionEnum = S.String;
+const ViewsFromUnitLandmarkViewExceptionEnum = S.String;
 
 export type ViewsFromUnitBeachViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ViewsFromUnitBeachViewExceptionEnum = S.String;
+const ViewsFromUnitBeachViewExceptionEnum = S.String;
 
 export type ViewsFromUnitOceanViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ViewsFromUnitOceanViewExceptionEnum = S.String;
+const ViewsFromUnitOceanViewExceptionEnum = S.String;
 
 /** Views available from the guest unit itself. */
 export interface ViewsFromUnit {
@@ -1354,7 +1354,7 @@ export interface ViewsFromUnit {
   /** Ocean view exception. */
   oceanViewException?: ViewsFromUnitOceanViewExceptionEnum | (string & {});
 }
-export const ViewsFromUnit = /*@__PURE__*/ S.suspend(() =>
+const ViewsFromUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     poolView: S.optional(S.Boolean),
     poolViewException: S.optional(ViewsFromUnitPoolViewExceptionEnum),
@@ -1380,21 +1380,21 @@ export type GuestUnitFeaturesExecutiveFloorExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesExecutiveFloorExceptionEnum = S.String;
+const GuestUnitFeaturesExecutiveFloorExceptionEnum = S.String;
 
 export type GuestUnitFeaturesMaxChildOccupantsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesMaxChildOccupantsCountExceptionEnum = S.String;
+const GuestUnitFeaturesMaxChildOccupantsCountExceptionEnum = S.String;
 
 export type GuestUnitFeaturesSuiteExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const GuestUnitFeaturesSuiteExceptionEnum = S.String;
+const GuestUnitFeaturesSuiteExceptionEnum = S.String;
 
 /** Features and available amenities in the guest unit. */
 export interface GuestUnitFeatures {
@@ -1445,7 +1445,7 @@ export interface GuestUnitFeatures {
   /** Suite exception. */
   suiteException?: GuestUnitFeaturesSuiteExceptionEnum | (string & {});
 }
-export const GuestUnitFeatures = /*@__PURE__*/ S.suspend(() =>
+const GuestUnitFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bungalowOrVilla: S.optional(S.Boolean),
     totalLivingAreas: S.optional(LivingArea),
@@ -1477,7 +1477,7 @@ export const GuestUnitFeatures = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GuestUnitFeatures" }) as any as S.Schema<GuestUnitFeatures>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A specific type of unit primarily defined by its features. */
 export interface GuestUnitType {
@@ -1488,7 +1488,7 @@ export interface GuestUnitType {
   /** Required. Unit or room code identifiers for a single GuestUnitType. Each code must be unique within a Lodging instance. */
   codes?: StringList;
 }
-export const GuestUnitType = /*@__PURE__*/ S.suspend(() =>
+const GuestUnitType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     features: S.optional(GuestUnitFeatures),
@@ -1497,7 +1497,7 @@ export const GuestUnitType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GuestUnitType" }) as any as S.Schema<GuestUnitType>;
 
 export type GuestUnitTypeList = Array<GuestUnitType>;
-export const GuestUnitTypeList = /*@__PURE__*/ S.Array(
+const GuestUnitTypeList = /*@__PURE__*/ S.Array(
   GuestUnitType,
 ) as any as S.Schema<GuestUnitTypeList>;
 
@@ -1506,35 +1506,35 @@ export type IncreasedFoodSafetyDiningAreasAdditionalSanitationExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const IncreasedFoodSafetyDiningAreasAdditionalSanitationExceptionEnum = S.String;
+const IncreasedFoodSafetyDiningAreasAdditionalSanitationExceptionEnum = S.String;
 
 export type IncreasedFoodSafetyIndividualPackagedMealsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const IncreasedFoodSafetyIndividualPackagedMealsExceptionEnum = S.String;
+const IncreasedFoodSafetyIndividualPackagedMealsExceptionEnum = S.String;
 
 export type IncreasedFoodSafetySingleUseFoodMenusExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const IncreasedFoodSafetySingleUseFoodMenusExceptionEnum = S.String;
+const IncreasedFoodSafetySingleUseFoodMenusExceptionEnum = S.String;
 
 export type IncreasedFoodSafetyFoodPreparationAndServingAdditionalSafetyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const IncreasedFoodSafetyFoodPreparationAndServingAdditionalSafetyExceptionEnum = S.String;
+const IncreasedFoodSafetyFoodPreparationAndServingAdditionalSafetyExceptionEnum = S.String;
 
 export type IncreasedFoodSafetyDisposableFlatwareExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const IncreasedFoodSafetyDisposableFlatwareExceptionEnum = S.String;
+const IncreasedFoodSafetyDisposableFlatwareExceptionEnum = S.String;
 
 /** Increased food safety measures implemented by the hotel during COVID-19. */
 export interface IncreasedFoodSafety {
@@ -1565,7 +1565,7 @@ export interface IncreasedFoodSafety {
   /** Disposable flatware exception. */
   disposableFlatwareException?: IncreasedFoodSafetyDisposableFlatwareExceptionEnum | (string & {});
 }
-export const IncreasedFoodSafety = /*@__PURE__*/ S.suspend(() =>
+const IncreasedFoodSafety = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diningAreasAdditionalSanitationException: S.optional(
       IncreasedFoodSafetyDiningAreasAdditionalSanitationExceptionEnum,
@@ -1591,42 +1591,42 @@ export type EnhancedCleaningEmployeesTrainedCleaningProceduresExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnhancedCleaningEmployeesTrainedCleaningProceduresExceptionEnum = S.String;
+const EnhancedCleaningEmployeesTrainedCleaningProceduresExceptionEnum = S.String;
 
 export type EnhancedCleaningEmployeesTrainedThoroughHandWashingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnhancedCleaningEmployeesTrainedThoroughHandWashingExceptionEnum = S.String;
+const EnhancedCleaningEmployeesTrainedThoroughHandWashingExceptionEnum = S.String;
 
 export type EnhancedCleaningCommercialGradeDisinfectantCleaningExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnhancedCleaningCommercialGradeDisinfectantCleaningExceptionEnum = S.String;
+const EnhancedCleaningCommercialGradeDisinfectantCleaningExceptionEnum = S.String;
 
 export type EnhancedCleaningCommonAreasEnhancedCleaningExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnhancedCleaningCommonAreasEnhancedCleaningExceptionEnum = S.String;
+const EnhancedCleaningCommonAreasEnhancedCleaningExceptionEnum = S.String;
 
 export type EnhancedCleaningEmployeesWearProtectiveEquipmentExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnhancedCleaningEmployeesWearProtectiveEquipmentExceptionEnum = S.String;
+const EnhancedCleaningEmployeesWearProtectiveEquipmentExceptionEnum = S.String;
 
 export type EnhancedCleaningGuestRoomsEnhancedCleaningExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnhancedCleaningGuestRoomsEnhancedCleaningExceptionEnum = S.String;
+const EnhancedCleaningGuestRoomsEnhancedCleaningExceptionEnum = S.String;
 
 /** Enhanced cleaning measures implemented by the hotel during COVID-19. */
 export interface EnhancedCleaning {
@@ -1667,7 +1667,7 @@ export interface EnhancedCleaning {
   /** Employees trained in COVID-19 cleaning procedures. */
   employeesTrainedCleaningProcedures?: boolean;
 }
-export const EnhancedCleaning = /*@__PURE__*/ S.suspend(() =>
+const EnhancedCleaning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employeesTrainedCleaningProceduresException: S.optional(
       EnhancedCleaningEmployeesTrainedCleaningProceduresExceptionEnum,
@@ -1701,49 +1701,49 @@ export type MinimizedContactContactlessCheckinCheckoutExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const MinimizedContactContactlessCheckinCheckoutExceptionEnum = S.String;
+const MinimizedContactContactlessCheckinCheckoutExceptionEnum = S.String;
 
 export type MinimizedContactRoomBookingsBufferExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const MinimizedContactRoomBookingsBufferExceptionEnum = S.String;
+const MinimizedContactRoomBookingsBufferExceptionEnum = S.String;
 
 export type MinimizedContactNoHighTouchItemsGuestRoomsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const MinimizedContactNoHighTouchItemsGuestRoomsExceptionEnum = S.String;
+const MinimizedContactNoHighTouchItemsGuestRoomsExceptionEnum = S.String;
 
 export type MinimizedContactNoHighTouchItemsCommonAreasExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const MinimizedContactNoHighTouchItemsCommonAreasExceptionEnum = S.String;
+const MinimizedContactNoHighTouchItemsCommonAreasExceptionEnum = S.String;
 
 export type MinimizedContactHousekeepingScheduledRequestOnlyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const MinimizedContactHousekeepingScheduledRequestOnlyExceptionEnum = S.String;
+const MinimizedContactHousekeepingScheduledRequestOnlyExceptionEnum = S.String;
 
 export type MinimizedContactPlasticKeycardsDisinfectedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const MinimizedContactPlasticKeycardsDisinfectedExceptionEnum = S.String;
+const MinimizedContactPlasticKeycardsDisinfectedExceptionEnum = S.String;
 
 export type MinimizedContactDigitalGuestRoomKeysExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const MinimizedContactDigitalGuestRoomKeysExceptionEnum = S.String;
+const MinimizedContactDigitalGuestRoomKeysExceptionEnum = S.String;
 
 /** Minimized contact measures implemented by the hotel during COVID-19. */
 export interface MinimizedContact {
@@ -1786,7 +1786,7 @@ export interface MinimizedContact {
   /** Digital guest room keys exception. */
   digitalGuestRoomKeysException?: MinimizedContactDigitalGuestRoomKeysExceptionEnum | (string & {});
 }
-export const MinimizedContact = /*@__PURE__*/ S.suspend(() =>
+const MinimizedContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactlessCheckinCheckoutException: S.optional(
       MinimizedContactContactlessCheckinCheckoutExceptionEnum,
@@ -1820,28 +1820,28 @@ export type PersonalProtectionProtectiveEquipmentAvailableExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PersonalProtectionProtectiveEquipmentAvailableExceptionEnum = S.String;
+const PersonalProtectionProtectiveEquipmentAvailableExceptionEnum = S.String;
 
 export type PersonalProtectionCommonAreasOfferSanitizingItemsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PersonalProtectionCommonAreasOfferSanitizingItemsExceptionEnum = S.String;
+const PersonalProtectionCommonAreasOfferSanitizingItemsExceptionEnum = S.String;
 
 export type PersonalProtectionFaceMaskRequiredExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PersonalProtectionFaceMaskRequiredExceptionEnum = S.String;
+const PersonalProtectionFaceMaskRequiredExceptionEnum = S.String;
 
 export type PersonalProtectionGuestRoomHygieneKitsAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PersonalProtectionGuestRoomHygieneKitsAvailableExceptionEnum = S.String;
+const PersonalProtectionGuestRoomHygieneKitsAvailableExceptionEnum = S.String;
 
 /** Personal protection measures implemented by the hotel during COVID-19. */
 export interface PersonalProtection {
@@ -1868,7 +1868,7 @@ export interface PersonalProtection {
   /** Masks required on the property. */
   faceMaskRequired?: boolean;
 }
-export const PersonalProtection = /*@__PURE__*/ S.suspend(() =>
+const PersonalProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protectiveEquipmentAvailableException: S.optional(
       PersonalProtectionProtectiveEquipmentAvailableExceptionEnum,
@@ -1892,35 +1892,35 @@ export type PhysicalDistancingCommonAreasPhysicalDistancingArrangedExceptionEnum
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PhysicalDistancingCommonAreasPhysicalDistancingArrangedExceptionEnum = S.String;
+const PhysicalDistancingCommonAreasPhysicalDistancingArrangedExceptionEnum = S.String;
 
 export type PhysicalDistancingWellnessAreasHavePrivateSpacesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PhysicalDistancingWellnessAreasHavePrivateSpacesExceptionEnum = S.String;
+const PhysicalDistancingWellnessAreasHavePrivateSpacesExceptionEnum = S.String;
 
 export type PhysicalDistancingSafetyDividersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PhysicalDistancingSafetyDividersExceptionEnum = S.String;
+const PhysicalDistancingSafetyDividersExceptionEnum = S.String;
 
 export type PhysicalDistancingPhysicalDistancingRequiredExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PhysicalDistancingPhysicalDistancingRequiredExceptionEnum = S.String;
+const PhysicalDistancingPhysicalDistancingRequiredExceptionEnum = S.String;
 
 export type PhysicalDistancingSharedAreasLimitedOccupancyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PhysicalDistancingSharedAreasLimitedOccupancyExceptionEnum = S.String;
+const PhysicalDistancingSharedAreasLimitedOccupancyExceptionEnum = S.String;
 
 /** Physical distancing measures implemented by the hotel during COVID-19. */
 export interface PhysicalDistancing {
@@ -1953,7 +1953,7 @@ export interface PhysicalDistancing {
   /** Common areas arranged to maintain physical distancing. */
   commonAreasPhysicalDistancingArranged?: boolean;
 }
-export const PhysicalDistancing = /*@__PURE__*/ S.suspend(() =>
+const PhysicalDistancing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sharedAreasLimitedOccupancy: S.optional(S.Boolean),
     wellnessAreasHavePrivateSpaces: S.optional(S.Boolean),
@@ -1989,7 +1989,7 @@ export interface HealthAndSafety {
   /** Physical distancing measures implemented by the hotel during COVID-19. */
   physicalDistancing?: PhysicalDistancing;
 }
-export const HealthAndSafety = /*@__PURE__*/ S.suspend(() =>
+const HealthAndSafety = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     increasedFoodSafety: S.optional(IncreasedFoodSafety),
     enhancedCleaning: S.optional(EnhancedCleaning),
@@ -2004,119 +2004,119 @@ export type ActivitiesBoutiqueStoresExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesBoutiqueStoresExceptionEnum = S.String;
+const ActivitiesBoutiqueStoresExceptionEnum = S.String;
 
 export type ActivitiesBeachFrontExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesBeachFrontExceptionEnum = S.String;
+const ActivitiesBeachFrontExceptionEnum = S.String;
 
 export type ActivitiesPrivateBeachExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesPrivateBeachExceptionEnum = S.String;
+const ActivitiesPrivateBeachExceptionEnum = S.String;
 
 export type ActivitiesGameRoomExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesGameRoomExceptionEnum = S.String;
+const ActivitiesGameRoomExceptionEnum = S.String;
 
 export type ActivitiesHorsebackRidingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesHorsebackRidingExceptionEnum = S.String;
+const ActivitiesHorsebackRidingExceptionEnum = S.String;
 
 export type ActivitiesGolfExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesGolfExceptionEnum = S.String;
+const ActivitiesGolfExceptionEnum = S.String;
 
 export type ActivitiesNightclubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesNightclubExceptionEnum = S.String;
+const ActivitiesNightclubExceptionEnum = S.String;
 
 export type ActivitiesBicycleRentalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesBicycleRentalExceptionEnum = S.String;
+const ActivitiesBicycleRentalExceptionEnum = S.String;
 
 export type ActivitiesFreeWatercraftRentalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesFreeWatercraftRentalExceptionEnum = S.String;
+const ActivitiesFreeWatercraftRentalExceptionEnum = S.String;
 
 export type ActivitiesSnorkelingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesSnorkelingExceptionEnum = S.String;
+const ActivitiesSnorkelingExceptionEnum = S.String;
 
 export type ActivitiesTennisExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesTennisExceptionEnum = S.String;
+const ActivitiesTennisExceptionEnum = S.String;
 
 export type ActivitiesFreeBicycleRentalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesFreeBicycleRentalExceptionEnum = S.String;
+const ActivitiesFreeBicycleRentalExceptionEnum = S.String;
 
 export type ActivitiesScubaExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesScubaExceptionEnum = S.String;
+const ActivitiesScubaExceptionEnum = S.String;
 
 export type ActivitiesWatercraftRentalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesWatercraftRentalExceptionEnum = S.String;
+const ActivitiesWatercraftRentalExceptionEnum = S.String;
 
 export type ActivitiesBeachAccessExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesBeachAccessExceptionEnum = S.String;
+const ActivitiesBeachAccessExceptionEnum = S.String;
 
 export type ActivitiesWaterSkiingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesWaterSkiingExceptionEnum = S.String;
+const ActivitiesWaterSkiingExceptionEnum = S.String;
 
 export type ActivitiesCasinoExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ActivitiesCasinoExceptionEnum = S.String;
+const ActivitiesCasinoExceptionEnum = S.String;
 
 /** Amenities and features related to leisure and play. */
 export interface Activities {
@@ -2189,7 +2189,7 @@ export interface Activities {
   /** Casino exception. */
   casinoException?: ActivitiesCasinoExceptionEnum | (string & {});
 }
-export const Activities = /*@__PURE__*/ S.suspend(() =>
+const Activities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nightclub: S.optional(S.Boolean),
     freeWatercraftRental: S.optional(S.Boolean),
@@ -2233,28 +2233,28 @@ export type FamiliesKidsFriendlyExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FamiliesKidsFriendlyExceptionEnum = S.String;
+const FamiliesKidsFriendlyExceptionEnum = S.String;
 
 export type FamiliesKidsActivitiesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FamiliesKidsActivitiesExceptionEnum = S.String;
+const FamiliesKidsActivitiesExceptionEnum = S.String;
 
 export type FamiliesKidsClubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FamiliesKidsClubExceptionEnum = S.String;
+const FamiliesKidsClubExceptionEnum = S.String;
 
 export type FamiliesBabysittingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FamiliesBabysittingExceptionEnum = S.String;
+const FamiliesBabysittingExceptionEnum = S.String;
 
 /** Services and amenities for families and young guests. */
 export interface Families {
@@ -2275,7 +2275,7 @@ export interface Families {
   /** Babysitting exception. */
   babysittingException?: FamiliesBabysittingExceptionEnum | (string & {});
 }
-export const Families = /*@__PURE__*/ S.suspend(() =>
+const Families = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kidsClub: S.optional(S.Boolean),
     babysitting: S.optional(S.Boolean),
@@ -2293,77 +2293,77 @@ export type WellnessWeightMachineExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessWeightMachineExceptionEnum = S.String;
+const WellnessWeightMachineExceptionEnum = S.String;
 
 export type WellnessFreeFitnessCenterExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessFreeFitnessCenterExceptionEnum = S.String;
+const WellnessFreeFitnessCenterExceptionEnum = S.String;
 
 export type WellnessSaunaExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessSaunaExceptionEnum = S.String;
+const WellnessSaunaExceptionEnum = S.String;
 
 export type WellnessSalonExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessSalonExceptionEnum = S.String;
+const WellnessSalonExceptionEnum = S.String;
 
 export type WellnessDoctorOnCallExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessDoctorOnCallExceptionEnum = S.String;
+const WellnessDoctorOnCallExceptionEnum = S.String;
 
 export type WellnessEllipticalMachineExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessEllipticalMachineExceptionEnum = S.String;
+const WellnessEllipticalMachineExceptionEnum = S.String;
 
 export type WellnessFitnessCenterExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessFitnessCenterExceptionEnum = S.String;
+const WellnessFitnessCenterExceptionEnum = S.String;
 
 export type WellnessSpaExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessSpaExceptionEnum = S.String;
+const WellnessSpaExceptionEnum = S.String;
 
 export type WellnessFreeWeightsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessFreeWeightsExceptionEnum = S.String;
+const WellnessFreeWeightsExceptionEnum = S.String;
 
 export type WellnessTreadmillExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessTreadmillExceptionEnum = S.String;
+const WellnessTreadmillExceptionEnum = S.String;
 
 export type WellnessMassageExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WellnessMassageExceptionEnum = S.String;
+const WellnessMassageExceptionEnum = S.String;
 
 /** Guest facilities at the property to promote or maintain health, beauty, and fitness. */
 export interface Wellness {
@@ -2412,7 +2412,7 @@ export interface Wellness {
   /** Spa. A designated area, room or building at the hotel offering health and beauty treatment through such means as steam baths, exercise equipment, and massage. May also offer facials, nail care, and hair care. Services are usually available by appointment and for an additional fee. Does not apply if hotel only offers a steam room; must offer other beauty and/or health treatments as well. */
   spa?: boolean;
 }
-export const Wellness = /*@__PURE__*/ S.suspend(() =>
+const Wellness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     freeWeights: S.optional(S.Boolean),
     doctorOnCall: S.optional(S.Boolean),
@@ -2444,56 +2444,56 @@ export type SustainableSourcingLocallySourcedFoodAndBeveragesExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainableSourcingLocallySourcedFoodAndBeveragesExceptionEnum = S.String;
+const SustainableSourcingLocallySourcedFoodAndBeveragesExceptionEnum = S.String;
 
 export type SustainableSourcingOrganicFoodAndBeveragesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainableSourcingOrganicFoodAndBeveragesExceptionEnum = S.String;
+const SustainableSourcingOrganicFoodAndBeveragesExceptionEnum = S.String;
 
 export type SustainableSourcingResponsiblePurchasingPolicyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainableSourcingResponsiblePurchasingPolicyExceptionEnum = S.String;
+const SustainableSourcingResponsiblePurchasingPolicyExceptionEnum = S.String;
 
 export type SustainableSourcingVeganMealsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainableSourcingVeganMealsExceptionEnum = S.String;
+const SustainableSourcingVeganMealsExceptionEnum = S.String;
 
 export type SustainableSourcingEcoFriendlyToiletriesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainableSourcingEcoFriendlyToiletriesExceptionEnum = S.String;
+const SustainableSourcingEcoFriendlyToiletriesExceptionEnum = S.String;
 
 export type SustainableSourcingResponsiblySourcesSeafoodExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainableSourcingResponsiblySourcesSeafoodExceptionEnum = S.String;
+const SustainableSourcingResponsiblySourcesSeafoodExceptionEnum = S.String;
 
 export type SustainableSourcingOrganicCageFreeEggsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainableSourcingOrganicCageFreeEggsExceptionEnum = S.String;
+const SustainableSourcingOrganicCageFreeEggsExceptionEnum = S.String;
 
 export type SustainableSourcingVegetarianMealsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainableSourcingVegetarianMealsExceptionEnum = S.String;
+const SustainableSourcingVegetarianMealsExceptionEnum = S.String;
 
 /** Sustainable sourcing practices implemented at the hotel. */
 export interface SustainableSourcing {
@@ -2542,7 +2542,7 @@ export interface SustainableSourcing {
   /** Vegetarian meals exception. */
   vegetarianMealsException?: SustainableSourcingVegetarianMealsExceptionEnum | (string & {});
 }
-export const SustainableSourcing = /*@__PURE__*/ S.suspend(() =>
+const SustainableSourcing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locallySourcedFoodAndBeveragesException: S.optional(
       SustainableSourcingLocallySourcedFoodAndBeveragesExceptionEnum,
@@ -2578,7 +2578,7 @@ export type SustainabilityCertificationsLeedCertificationExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainabilityCertificationsLeedCertificationExceptionEnum = S.String;
+const SustainabilityCertificationsLeedCertificationExceptionEnum = S.String;
 
 export type SustainabilityCertificationsBreeamCertificationEnum =
   | "BREEAM_CERTIFICATION_UNSPECIFIED"
@@ -2588,7 +2588,7 @@ export type SustainabilityCertificationsBreeamCertificationEnum =
   | "BREEAM_VERY_GOOD"
   | "BREEAM_EXCELLENT"
   | "BREEAM_OUTSTANDING";
-export const SustainabilityCertificationsBreeamCertificationEnum = S.String;
+const SustainabilityCertificationsBreeamCertificationEnum = S.String;
 
 export type SustainabilityCertificationsLeedCertificationEnum =
   | "LEED_CERTIFICATION_UNSPECIFIED"
@@ -2597,7 +2597,7 @@ export type SustainabilityCertificationsLeedCertificationEnum =
   | "LEED_SILVER"
   | "LEED_GOLD"
   | "LEED_PLATINUM";
-export const SustainabilityCertificationsLeedCertificationEnum = S.String;
+const SustainabilityCertificationsLeedCertificationEnum = S.String;
 
 export type EcoCertificationEcoCertificateEnum =
   | "ECO_CERTIFICATE_UNSPECIFIED"
@@ -2628,14 +2628,14 @@ export type EcoCertificationEcoCertificateEnum =
   | "TRAVELIFE"
   | "UNITED_CERTIFICATION_SYSTEMS_LIMITED"
   | "VIREO_SRL";
-export const EcoCertificationEcoCertificateEnum = S.String;
+const EcoCertificationEcoCertificateEnum = S.String;
 
 export type EcoCertificationAwardedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EcoCertificationAwardedExceptionEnum = S.String;
+const EcoCertificationAwardedExceptionEnum = S.String;
 
 /** An eco certificate awarded to the hotel. Deprecated: this message is no longer populated. All certification data is now provided by BeCause. */
 export interface EcoCertification {
@@ -2646,7 +2646,7 @@ export interface EcoCertification {
   /** Whether the eco certificate was awarded or not. */
   awarded?: boolean;
 }
-export const EcoCertification = /*@__PURE__*/ S.suspend(() =>
+const EcoCertification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ecoCertificate: S.optional(EcoCertificationEcoCertificateEnum),
     awardedException: S.optional(EcoCertificationAwardedExceptionEnum),
@@ -2655,7 +2655,7 @@ export const EcoCertification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EcoCertification" }) as any as S.Schema<EcoCertification>;
 
 export type EcoCertificationList = Array<EcoCertification>;
-export const EcoCertificationList = /*@__PURE__*/ S.Array(
+const EcoCertificationList = /*@__PURE__*/ S.Array(
   EcoCertification,
 ) as any as S.Schema<EcoCertificationList>;
 
@@ -2664,7 +2664,7 @@ export type SustainabilityCertificationsBreeamCertificationExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const SustainabilityCertificationsBreeamCertificationExceptionEnum = S.String;
+const SustainabilityCertificationsBreeamCertificationExceptionEnum = S.String;
 
 /** Sustainability certifications the hotel has been awarded. Deprecated: this message is no longer populated. All certification data is now provided by BeCause. */
 export interface SustainabilityCertifications {
@@ -2683,7 +2683,7 @@ export interface SustainabilityCertifications {
     | SustainabilityCertificationsBreeamCertificationExceptionEnum
     | (string & {});
 }
-export const SustainabilityCertifications = /*@__PURE__*/ S.suspend(() =>
+const SustainabilityCertifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leedCertificationException: S.optional(
       SustainabilityCertificationsLeedCertificationExceptionEnum,
@@ -2704,112 +2704,112 @@ export type WasteReductionSafelyDisposesLightbulbsExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionSafelyDisposesLightbulbsExceptionEnum = S.String;
+const WasteReductionSafelyDisposesLightbulbsExceptionEnum = S.String;
 
 export type WasteReductionNoSingleUsePlasticStrawsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionNoSingleUsePlasticStrawsExceptionEnum = S.String;
+const WasteReductionNoSingleUsePlasticStrawsExceptionEnum = S.String;
 
 export type WasteReductionCompostableFoodContainersAndCutleryExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionCompostableFoodContainersAndCutleryExceptionEnum = S.String;
+const WasteReductionCompostableFoodContainersAndCutleryExceptionEnum = S.String;
 
 export type WasteReductionFoodWasteReductionProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionFoodWasteReductionProgramExceptionEnum = S.String;
+const WasteReductionFoodWasteReductionProgramExceptionEnum = S.String;
 
 export type WasteReductionNoSingleUsePlasticWaterBottlesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionNoSingleUsePlasticWaterBottlesExceptionEnum = S.String;
+const WasteReductionNoSingleUsePlasticWaterBottlesExceptionEnum = S.String;
 
 export type WasteReductionRefillableToiletryContainersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionRefillableToiletryContainersExceptionEnum = S.String;
+const WasteReductionRefillableToiletryContainersExceptionEnum = S.String;
 
 export type WasteReductionDonatesExcessFoodExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionDonatesExcessFoodExceptionEnum = S.String;
+const WasteReductionDonatesExcessFoodExceptionEnum = S.String;
 
 export type WasteReductionSoapDonationProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionSoapDonationProgramExceptionEnum = S.String;
+const WasteReductionSoapDonationProgramExceptionEnum = S.String;
 
 export type WasteReductionNoStyrofoamFoodContainersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionNoStyrofoamFoodContainersExceptionEnum = S.String;
+const WasteReductionNoStyrofoamFoodContainersExceptionEnum = S.String;
 
 export type WasteReductionToiletryDonationProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionToiletryDonationProgramExceptionEnum = S.String;
+const WasteReductionToiletryDonationProgramExceptionEnum = S.String;
 
 export type WasteReductionRecyclingProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionRecyclingProgramExceptionEnum = S.String;
+const WasteReductionRecyclingProgramExceptionEnum = S.String;
 
 export type WasteReductionWaterBottleFillingStationsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionWaterBottleFillingStationsExceptionEnum = S.String;
+const WasteReductionWaterBottleFillingStationsExceptionEnum = S.String;
 
 export type WasteReductionCompostsExcessFoodExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionCompostsExcessFoodExceptionEnum = S.String;
+const WasteReductionCompostsExcessFoodExceptionEnum = S.String;
 
 export type WasteReductionSafelyDisposesElectronicsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionSafelyDisposesElectronicsExceptionEnum = S.String;
+const WasteReductionSafelyDisposesElectronicsExceptionEnum = S.String;
 
 export type WasteReductionSafelyHandlesHazardousSubstancesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionSafelyHandlesHazardousSubstancesExceptionEnum = S.String;
+const WasteReductionSafelyHandlesHazardousSubstancesExceptionEnum = S.String;
 
 export type WasteReductionSafelyDisposesBatteriesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WasteReductionSafelyDisposesBatteriesExceptionEnum = S.String;
+const WasteReductionSafelyDisposesBatteriesExceptionEnum = S.String;
 
 /** Waste reduction practices implemented at the hotel. */
 export interface WasteReduction {
@@ -2902,7 +2902,7 @@ export interface WasteReduction {
     | WasteReductionSafelyDisposesBatteriesExceptionEnum
     | (string & {});
 }
-export const WasteReduction = /*@__PURE__*/ S.suspend(() =>
+const WasteReduction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     safelyDisposesElectronics: S.optional(S.Boolean),
     safelyDisposesLightbulbsException: S.optional(
@@ -2968,49 +2968,49 @@ export type EnergyEfficiencyEnergyConservationProgramExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnergyEfficiencyEnergyConservationProgramExceptionEnum = S.String;
+const EnergyEfficiencyEnergyConservationProgramExceptionEnum = S.String;
 
 export type EnergyEfficiencyGreenBuildingDesignExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnergyEfficiencyGreenBuildingDesignExceptionEnum = S.String;
+const EnergyEfficiencyGreenBuildingDesignExceptionEnum = S.String;
 
 export type EnergyEfficiencyEnergyEfficientLightingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnergyEfficiencyEnergyEfficientLightingExceptionEnum = S.String;
+const EnergyEfficiencyEnergyEfficientLightingExceptionEnum = S.String;
 
 export type EnergyEfficiencyCarbonFreeEnergySourcesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnergyEfficiencyCarbonFreeEnergySourcesExceptionEnum = S.String;
+const EnergyEfficiencyCarbonFreeEnergySourcesExceptionEnum = S.String;
 
 export type EnergyEfficiencyEnergySavingThermostatsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnergyEfficiencyEnergySavingThermostatsExceptionEnum = S.String;
+const EnergyEfficiencyEnergySavingThermostatsExceptionEnum = S.String;
 
 export type EnergyEfficiencyEnergyEfficientHeatingAndCoolingSystemsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnergyEfficiencyEnergyEfficientHeatingAndCoolingSystemsExceptionEnum = S.String;
+const EnergyEfficiencyEnergyEfficientHeatingAndCoolingSystemsExceptionEnum = S.String;
 
 export type EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum = S.String;
+const EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum = S.String;
 
 /** Energy efficiency practices implemented at the hotel. */
 export interface EnergyEfficiency {
@@ -3055,7 +3055,7 @@ export interface EnergyEfficiency {
     | EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum
     | (string & {});
 }
-export const EnergyEfficiency = /*@__PURE__*/ S.suspend(() =>
+const EnergyEfficiency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     energyEfficientLighting: S.optional(S.Boolean),
     energyEfficientHeatingAndCoolingSystems: S.optional(S.Boolean),
@@ -3091,42 +3091,42 @@ export type WaterConservationTowelReuseProgramExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WaterConservationTowelReuseProgramExceptionEnum = S.String;
+const WaterConservationTowelReuseProgramExceptionEnum = S.String;
 
 export type WaterConservationWaterSavingToiletsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WaterConservationWaterSavingToiletsExceptionEnum = S.String;
+const WaterConservationWaterSavingToiletsExceptionEnum = S.String;
 
 export type WaterConservationIndependentOrganizationAuditsWaterUseExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WaterConservationIndependentOrganizationAuditsWaterUseExceptionEnum = S.String;
+const WaterConservationIndependentOrganizationAuditsWaterUseExceptionEnum = S.String;
 
 export type WaterConservationWaterSavingSinksExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WaterConservationWaterSavingSinksExceptionEnum = S.String;
+const WaterConservationWaterSavingSinksExceptionEnum = S.String;
 
 export type WaterConservationWaterSavingShowersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WaterConservationWaterSavingShowersExceptionEnum = S.String;
+const WaterConservationWaterSavingShowersExceptionEnum = S.String;
 
 export type WaterConservationLinenReuseProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const WaterConservationLinenReuseProgramExceptionEnum = S.String;
+const WaterConservationLinenReuseProgramExceptionEnum = S.String;
 
 /** Water conservation practices implemented at the hotel. */
 export interface WaterConservation {
@@ -3157,7 +3157,7 @@ export interface WaterConservation {
   /** Water saving sinks. All of the property's guest rooms have bathroom faucets that use a maximum of 1.5 gallons per minute (gpm), public restroom faucets do not exceed 0.5 gpm, and kitchen faucets (excluding faucets used exclusively for filling operations) do not exceed 2.2 gpm. */
   waterSavingSinks?: boolean;
 }
-export const WaterConservation = /*@__PURE__*/ S.suspend(() =>
+const WaterConservation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     waterSavingToilets: S.optional(S.Boolean),
     towelReuseProgram: S.optional(S.Boolean),
@@ -3189,7 +3189,7 @@ export interface Sustainability {
   /** Water conservation practices implemented at the hotel. */
   waterConservation?: WaterConservation;
 }
-export const Sustainability = /*@__PURE__*/ S.suspend(() =>
+const Sustainability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sustainableSourcing: S.optional(SustainableSourcing),
     sustainabilityCertifications: S.optional(SustainabilityCertifications),
@@ -3204,49 +3204,49 @@ export type ParkingSelfParkingAvailableExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ParkingSelfParkingAvailableExceptionEnum = S.String;
+const ParkingSelfParkingAvailableExceptionEnum = S.String;
 
 export type ParkingValetParkingAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ParkingValetParkingAvailableExceptionEnum = S.String;
+const ParkingValetParkingAvailableExceptionEnum = S.String;
 
 export type ParkingFreeSelfParkingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ParkingFreeSelfParkingExceptionEnum = S.String;
+const ParkingFreeSelfParkingExceptionEnum = S.String;
 
 export type ParkingFreeParkingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ParkingFreeParkingExceptionEnum = S.String;
+const ParkingFreeParkingExceptionEnum = S.String;
 
 export type ParkingParkingAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ParkingParkingAvailableExceptionEnum = S.String;
+const ParkingParkingAvailableExceptionEnum = S.String;
 
 export type ParkingFreeValetParkingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ParkingFreeValetParkingExceptionEnum = S.String;
+const ParkingFreeValetParkingExceptionEnum = S.String;
 
 export type ParkingElectricCarChargingStationsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ParkingElectricCarChargingStationsExceptionEnum = S.String;
+const ParkingElectricCarChargingStationsExceptionEnum = S.String;
 
 /** Parking options at the property. */
 export interface Parking {
@@ -3281,7 +3281,7 @@ export interface Parking {
     | ParkingElectricCarChargingStationsExceptionEnum
     | (string & {});
 }
-export const Parking = /*@__PURE__*/ S.suspend(() =>
+const Parking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selfParkingAvailableException: S.optional(ParkingSelfParkingAvailableExceptionEnum),
     freeParking: S.optional(S.Boolean),
@@ -3307,70 +3307,70 @@ export type ServicesTwentyFourHourFrontDeskExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesTwentyFourHourFrontDeskExceptionEnum = S.String;
+const ServicesTwentyFourHourFrontDeskExceptionEnum = S.String;
 
 export type ServicesFrontDeskExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesFrontDeskExceptionEnum = S.String;
+const ServicesFrontDeskExceptionEnum = S.String;
 
 export type ServicesConciergeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesConciergeExceptionEnum = S.String;
+const ServicesConciergeExceptionEnum = S.String;
 
 export type ServicesSelfServiceLaundryExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesSelfServiceLaundryExceptionEnum = S.String;
+const ServicesSelfServiceLaundryExceptionEnum = S.String;
 
 export type ServicesConvenienceStoreExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesConvenienceStoreExceptionEnum = S.String;
+const ServicesConvenienceStoreExceptionEnum = S.String;
 
 export type ServicesCurrencyExchangeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesCurrencyExchangeExceptionEnum = S.String;
+const ServicesCurrencyExchangeExceptionEnum = S.String;
 
 export type ServicesElevatorExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesElevatorExceptionEnum = S.String;
+const ServicesElevatorExceptionEnum = S.String;
 
 export type ServicesFullServiceLaundryExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesFullServiceLaundryExceptionEnum = S.String;
+const ServicesFullServiceLaundryExceptionEnum = S.String;
 
 export type ServicesGiftShopExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesGiftShopExceptionEnum = S.String;
+const ServicesGiftShopExceptionEnum = S.String;
 
 export type LanguageSpokenSpokenExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const LanguageSpokenSpokenExceptionEnum = S.String;
+const LanguageSpokenSpokenExceptionEnum = S.String;
 
 /** Language spoken by at least one staff member. */
 export interface LanguageSpoken {
@@ -3381,7 +3381,7 @@ export interface LanguageSpoken {
   /** Required. The BCP-47 language code for the spoken language. Currently accepted codes: ar, de, en, es, fil, fr, hi, id, it, ja, ko, nl, pt, ru, vi, yue, zh. */
   languageCode?: string;
 }
-export const LanguageSpoken = /*@__PURE__*/ S.suspend(() =>
+const LanguageSpoken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spoken: S.optional(S.Boolean),
     spokenException: S.optional(LanguageSpokenSpokenExceptionEnum),
@@ -3390,7 +3390,7 @@ export const LanguageSpoken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LanguageSpoken" }) as any as S.Schema<LanguageSpoken>;
 
 export type LanguageSpokenList = Array<LanguageSpoken>;
-export const LanguageSpokenList = /*@__PURE__*/ S.Array(
+const LanguageSpokenList = /*@__PURE__*/ S.Array(
   LanguageSpoken,
 ) as any as S.Schema<LanguageSpokenList>;
 
@@ -3399,21 +3399,21 @@ export type ServicesSocialHourExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesSocialHourExceptionEnum = S.String;
+const ServicesSocialHourExceptionEnum = S.String;
 
 export type ServicesBaggageStorageExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesBaggageStorageExceptionEnum = S.String;
+const ServicesBaggageStorageExceptionEnum = S.String;
 
 export type ServicesWakeUpCallsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ServicesWakeUpCallsExceptionEnum = S.String;
+const ServicesWakeUpCallsExceptionEnum = S.String;
 
 /** Conveniences or help provided by the property to facilitate an easier, more comfortable stay. */
 export interface Services {
@@ -3468,7 +3468,7 @@ export interface Services {
   /** Wake up calls exception. */
   wakeUpCallsException?: ServicesWakeUpCallsExceptionEnum | (string & {});
 }
-export const Services = /*@__PURE__*/ S.suspend(() =>
+const Services = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baggageStorage: S.optional(S.Boolean),
     selfServiceLaundry: S.optional(S.Boolean),
@@ -3503,21 +3503,21 @@ export type HousekeepingTurndownServiceExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const HousekeepingTurndownServiceExceptionEnum = S.String;
+const HousekeepingTurndownServiceExceptionEnum = S.String;
 
 export type HousekeepingHousekeepingAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const HousekeepingHousekeepingAvailableExceptionEnum = S.String;
+const HousekeepingHousekeepingAvailableExceptionEnum = S.String;
 
 export type HousekeepingDailyHousekeepingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const HousekeepingDailyHousekeepingExceptionEnum = S.String;
+const HousekeepingDailyHousekeepingExceptionEnum = S.String;
 
 /** Conveniences provided in guest units to facilitate an easier, more comfortable stay. */
 export interface Housekeeping {
@@ -3534,7 +3534,7 @@ export interface Housekeeping {
   /** Daily housekeeping exception. */
   dailyHousekeepingException?: HousekeepingDailyHousekeepingExceptionEnum | (string & {});
 }
-export const Housekeeping = /*@__PURE__*/ S.suspend(() =>
+const Housekeeping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     turndownService: S.optional(S.Boolean),
     dailyHousekeeping: S.optional(S.Boolean),
@@ -3556,7 +3556,7 @@ export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minutes: S.optional(S.Number),
     hours: S.optional(S.Number),
@@ -3570,35 +3570,35 @@ export type PaymentOptionsChequeExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PaymentOptionsChequeExceptionEnum = S.String;
+const PaymentOptionsChequeExceptionEnum = S.String;
 
 export type PaymentOptionsDebitCardExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PaymentOptionsDebitCardExceptionEnum = S.String;
+const PaymentOptionsDebitCardExceptionEnum = S.String;
 
 export type PaymentOptionsCashExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PaymentOptionsCashExceptionEnum = S.String;
+const PaymentOptionsCashExceptionEnum = S.String;
 
 export type PaymentOptionsMobileNfcExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PaymentOptionsMobileNfcExceptionEnum = S.String;
+const PaymentOptionsMobileNfcExceptionEnum = S.String;
 
 export type PaymentOptionsCreditCardExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PaymentOptionsCreditCardExceptionEnum = S.String;
+const PaymentOptionsCreditCardExceptionEnum = S.String;
 
 /** Forms of payment accepted at the property. */
 export interface PaymentOptions {
@@ -3623,7 +3623,7 @@ export interface PaymentOptions {
   /** Credit card exception. */
   creditCardException?: PaymentOptionsCreditCardExceptionEnum | (string & {});
 }
-export const PaymentOptions = /*@__PURE__*/ S.suspend(() =>
+const PaymentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chequeException: S.optional(PaymentOptionsChequeExceptionEnum),
     mobileNfc: S.optional(S.Boolean),
@@ -3643,56 +3643,56 @@ export type PoliciesAllInclusiveAvailableExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoliciesAllInclusiveAvailableExceptionEnum = S.String;
+const PoliciesAllInclusiveAvailableExceptionEnum = S.String;
 
 export type PoliciesMaxChildAgeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoliciesMaxChildAgeExceptionEnum = S.String;
+const PoliciesMaxChildAgeExceptionEnum = S.String;
 
 export type PoliciesCheckinTimeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoliciesCheckinTimeExceptionEnum = S.String;
+const PoliciesCheckinTimeExceptionEnum = S.String;
 
 export type PoliciesAllInclusiveOnlyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoliciesAllInclusiveOnlyExceptionEnum = S.String;
+const PoliciesAllInclusiveOnlyExceptionEnum = S.String;
 
 export type PoliciesCheckoutTimeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoliciesCheckoutTimeExceptionEnum = S.String;
+const PoliciesCheckoutTimeExceptionEnum = S.String;
 
 export type PoliciesMaxKidsStayFreeCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoliciesMaxKidsStayFreeCountExceptionEnum = S.String;
+const PoliciesMaxKidsStayFreeCountExceptionEnum = S.String;
 
 export type PoliciesKidsStayFreeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoliciesKidsStayFreeExceptionEnum = S.String;
+const PoliciesKidsStayFreeExceptionEnum = S.String;
 
 export type PoliciesSmokeFreePropertyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PoliciesSmokeFreePropertyExceptionEnum = S.String;
+const PoliciesSmokeFreePropertyExceptionEnum = S.String;
 
 /** Property rules that impact guests. */
 export interface Policies {
@@ -3731,7 +3731,7 @@ export interface Policies {
   /** Kids stay free. The children of guests are allowed to stay in the room/suite of a parent or adult without an additional fee. The policy may or may not stipulate a limit of the child's age or the overall number of children allowed. */
   kidsStayFree?: boolean;
 }
-export const Policies = /*@__PURE__*/ S.suspend(() =>
+const Policies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkinTime: S.optional(TimeOfDay),
     paymentOptions: S.optional(PaymentOptions),
@@ -3758,21 +3758,21 @@ export type BusinessMeetingRoomsCountExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const BusinessMeetingRoomsCountExceptionEnum = S.String;
+const BusinessMeetingRoomsCountExceptionEnum = S.String;
 
 export type BusinessBusinessCenterExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const BusinessBusinessCenterExceptionEnum = S.String;
+const BusinessBusinessCenterExceptionEnum = S.String;
 
 export type BusinessMeetingRoomsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const BusinessMeetingRoomsExceptionEnum = S.String;
+const BusinessMeetingRoomsExceptionEnum = S.String;
 
 /** Features of the property of specific interest to the business traveler. */
 export interface Business {
@@ -3789,7 +3789,7 @@ export interface Business {
   /** Business center. A designated room at the hotel with one or more desks and equipped with guest-use computers, printers, fax machines and/or photocopiers. May or may not be open 24/7. May or may not require a key to access. Not a meeting room or conference room. */
   businessCenter?: boolean;
 }
-export const Business = /*@__PURE__*/ S.suspend(() =>
+const Business = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meetingRoomsCountException: S.optional(BusinessMeetingRoomsCountExceptionEnum),
     meetingRooms: S.optional(S.Boolean),
@@ -3805,49 +3805,49 @@ export type TransportationLocalShuttleExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const TransportationLocalShuttleExceptionEnum = S.String;
+const TransportationLocalShuttleExceptionEnum = S.String;
 
 export type TransportationTransferExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const TransportationTransferExceptionEnum = S.String;
+const TransportationTransferExceptionEnum = S.String;
 
 export type TransportationAirportShuttleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const TransportationAirportShuttleExceptionEnum = S.String;
+const TransportationAirportShuttleExceptionEnum = S.String;
 
 export type TransportationFreeAirportShuttleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const TransportationFreeAirportShuttleExceptionEnum = S.String;
+const TransportationFreeAirportShuttleExceptionEnum = S.String;
 
 export type TransportationFreePrivateCarServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const TransportationFreePrivateCarServiceExceptionEnum = S.String;
+const TransportationFreePrivateCarServiceExceptionEnum = S.String;
 
 export type TransportationCarRentalOnPropertyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const TransportationCarRentalOnPropertyExceptionEnum = S.String;
+const TransportationCarRentalOnPropertyExceptionEnum = S.String;
 
 export type TransportationPrivateCarServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const TransportationPrivateCarServiceExceptionEnum = S.String;
+const TransportationPrivateCarServiceExceptionEnum = S.String;
 
 /** Vehicles or vehicular services facilitated or owned by the property. */
 export interface Transportation {
@@ -3880,7 +3880,7 @@ export interface Transportation {
   /** Airport shuttle. The hotel provides guests with a chauffeured van or bus to and from the airport. Can be free or for a fee. Guests may share the vehicle with other guests unknown to them. Applies if the hotel has a third-party shuttle service (office/desk etc.) within the hotel. As long as hotel provides this service, it doesn't matter if it's directly with them or a third party they work with. Does not apply if guest has to coordinate with an entity outside/other than the hotel. */
   airportShuttle?: boolean;
 }
-export const Transportation = /*@__PURE__*/ S.suspend(() =>
+const Transportation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carRentalOnProperty: S.optional(S.Boolean),
     localShuttleException: S.optional(TransportationLocalShuttleExceptionEnum),
@@ -3904,28 +3904,28 @@ export type PetsPetsAllowedExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PetsPetsAllowedExceptionEnum = S.String;
+const PetsPetsAllowedExceptionEnum = S.String;
 
 export type PetsPetsAllowedFreeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PetsPetsAllowedFreeExceptionEnum = S.String;
+const PetsPetsAllowedFreeExceptionEnum = S.String;
 
 export type PetsDogsAllowedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PetsDogsAllowedExceptionEnum = S.String;
+const PetsDogsAllowedExceptionEnum = S.String;
 
 export type PetsCatsAllowedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PetsCatsAllowedExceptionEnum = S.String;
+const PetsCatsAllowedExceptionEnum = S.String;
 
 /** Policies regarding guest-owned animals. */
 export interface Pets {
@@ -3946,7 +3946,7 @@ export interface Pets {
   /** Cats allowed exception. */
   catsAllowedException?: PetsCatsAllowedExceptionEnum | (string & {});
 }
-export const Pets = /*@__PURE__*/ S.suspend(() =>
+const Pets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catsAllowed: S.optional(S.Boolean),
     petsAllowedFree: S.optional(S.Boolean),
@@ -3964,28 +3964,28 @@ export type AccessibilityMobilityAccessibleElevatorExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const AccessibilityMobilityAccessibleElevatorExceptionEnum = S.String;
+const AccessibilityMobilityAccessibleElevatorExceptionEnum = S.String;
 
 export type AccessibilityMobilityAccessibleParkingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const AccessibilityMobilityAccessibleParkingExceptionEnum = S.String;
+const AccessibilityMobilityAccessibleParkingExceptionEnum = S.String;
 
 export type AccessibilityMobilityAccessibleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const AccessibilityMobilityAccessibleExceptionEnum = S.String;
+const AccessibilityMobilityAccessibleExceptionEnum = S.String;
 
 export type AccessibilityMobilityAccessiblePoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const AccessibilityMobilityAccessiblePoolExceptionEnum = S.String;
+const AccessibilityMobilityAccessiblePoolExceptionEnum = S.String;
 
 /** Physical adaptations made to the property in consideration of varying levels of human physical ability. */
 export interface Accessibility {
@@ -4012,7 +4012,7 @@ export interface Accessibility {
   /** Mobility accessible. Throughout the property there are physical adaptations to ease the stay of a person in a wheelchair, such as auto-opening doors, wide elevators, wide bathrooms or ramps. */
   mobilityAccessible?: boolean;
 }
-export const Accessibility = /*@__PURE__*/ S.suspend(() =>
+const Accessibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mobilityAccessibleElevatorException: S.optional(
       AccessibilityMobilityAccessibleElevatorExceptionEnum,
@@ -4034,28 +4034,28 @@ export type PropertyFloorsCountExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PropertyFloorsCountExceptionEnum = S.String;
+const PropertyFloorsCountExceptionEnum = S.String;
 
 export type PropertyBuiltYearExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PropertyBuiltYearExceptionEnum = S.String;
+const PropertyBuiltYearExceptionEnum = S.String;
 
 export type PropertyLastRenovatedYearExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PropertyLastRenovatedYearExceptionEnum = S.String;
+const PropertyLastRenovatedYearExceptionEnum = S.String;
 
 export type PropertyRoomsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const PropertyRoomsCountExceptionEnum = S.String;
+const PropertyRoomsCountExceptionEnum = S.String;
 
 /** General factual information about the property's physical structure and important dates. */
 export interface Property {
@@ -4076,7 +4076,7 @@ export interface Property {
   /** Rooms count exception. */
   roomsCountException?: PropertyRoomsCountExceptionEnum | (string & {});
 }
-export const Property = /*@__PURE__*/ S.suspend(() =>
+const Property = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     floorsCountException: S.optional(PropertyFloorsCountExceptionEnum),
     builtYearException: S.optional(PropertyBuiltYearExceptionEnum),
@@ -4094,84 +4094,84 @@ export type FoodAndDrinkTableServiceExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkTableServiceExceptionEnum = S.String;
+const FoodAndDrinkTableServiceExceptionEnum = S.String;
 
 export type FoodAndDrinkBreakfastAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkBreakfastAvailableExceptionEnum = S.String;
+const FoodAndDrinkBreakfastAvailableExceptionEnum = S.String;
 
 export type FoodAndDrinkBarExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkBarExceptionEnum = S.String;
+const FoodAndDrinkBarExceptionEnum = S.String;
 
 export type FoodAndDrinkBreakfastBuffetExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkBreakfastBuffetExceptionEnum = S.String;
+const FoodAndDrinkBreakfastBuffetExceptionEnum = S.String;
 
 export type FoodAndDrinkVendingMachineExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkVendingMachineExceptionEnum = S.String;
+const FoodAndDrinkVendingMachineExceptionEnum = S.String;
 
 export type FoodAndDrinkTwentyFourHourRoomServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkTwentyFourHourRoomServiceExceptionEnum = S.String;
+const FoodAndDrinkTwentyFourHourRoomServiceExceptionEnum = S.String;
 
 export type FoodAndDrinkBuffetExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkBuffetExceptionEnum = S.String;
+const FoodAndDrinkBuffetExceptionEnum = S.String;
 
 export type FoodAndDrinkFreeBreakfastExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkFreeBreakfastExceptionEnum = S.String;
+const FoodAndDrinkFreeBreakfastExceptionEnum = S.String;
 
 export type FoodAndDrinkRestaurantExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkRestaurantExceptionEnum = S.String;
+const FoodAndDrinkRestaurantExceptionEnum = S.String;
 
 export type FoodAndDrinkRestaurantsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkRestaurantsCountExceptionEnum = S.String;
+const FoodAndDrinkRestaurantsCountExceptionEnum = S.String;
 
 export type FoodAndDrinkDinnerBuffetExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkDinnerBuffetExceptionEnum = S.String;
+const FoodAndDrinkDinnerBuffetExceptionEnum = S.String;
 
 export type FoodAndDrinkRoomServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const FoodAndDrinkRoomServiceExceptionEnum = S.String;
+const FoodAndDrinkRoomServiceExceptionEnum = S.String;
 
 /** Meals, snacks, and beverages available at the property. */
 export interface FoodAndDrink {
@@ -4226,7 +4226,7 @@ export interface FoodAndDrink {
   /** Room service exception. */
   roomServiceException?: FoodAndDrinkRoomServiceExceptionEnum | (string & {});
 }
-export const FoodAndDrink = /*@__PURE__*/ S.suspend(() =>
+const FoodAndDrink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     breakfastBuffet: S.optional(S.Boolean),
     tableServiceException: S.optional(FoodAndDrinkTableServiceExceptionEnum),
@@ -4262,28 +4262,28 @@ export type ConnectivityWifiAvailableExceptionEnum =
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ConnectivityWifiAvailableExceptionEnum = S.String;
+const ConnectivityWifiAvailableExceptionEnum = S.String;
 
 export type ConnectivityPublicAreaWifiAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ConnectivityPublicAreaWifiAvailableExceptionEnum = S.String;
+const ConnectivityPublicAreaWifiAvailableExceptionEnum = S.String;
 
 export type ConnectivityFreeWifiExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ConnectivityFreeWifiExceptionEnum = S.String;
+const ConnectivityFreeWifiExceptionEnum = S.String;
 
 export type ConnectivityPublicInternetTerminalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
-export const ConnectivityPublicInternetTerminalExceptionEnum = S.String;
+const ConnectivityPublicInternetTerminalExceptionEnum = S.String;
 
 /** The ways in which the property provides guests with the ability to access the internet. */
 export interface Connectivity {
@@ -4306,7 +4306,7 @@ export interface Connectivity {
   /** Public internet terminal exception. */
   publicInternetTerminalException?: ConnectivityPublicInternetTerminalExceptionEnum | (string & {});
 }
-export const Connectivity = /*@__PURE__*/ S.suspend(() =>
+const Connectivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wifiAvailableException: S.optional(ConnectivityWifiAvailableExceptionEnum),
     publicAreaWifiAvailableException: S.optional(ConnectivityPublicAreaWifiAvailableExceptionEnum),
@@ -4368,7 +4368,7 @@ export interface Lodging {
   /** The ways in which the property provides guests with the ability to access the internet. */
   connectivity?: Connectivity;
 }
-export const Lodging = /*@__PURE__*/ S.suspend(() =>
+const Lodging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(LodgingMetadata),
     pools: S.optional(Pools),
@@ -4403,7 +4403,7 @@ export interface GetGoogleUpdatedLodgingResponse {
   /** Required. The Google updated Lodging. */
   lodging?: Lodging;
 }
-export const GetGoogleUpdatedLodgingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGoogleUpdatedLodgingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diffMask: S.optional(S.String),
     lodging: S.optional(Lodging),
@@ -4418,7 +4418,7 @@ export interface GetLodgingLocationsRequest {
   /** Required. The specific fields to return. Use "*" to include all fields. Repeated field items cannot be individually specified. */
   readMask?: string;
 }
-export const GetLodgingLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLodgingLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -4441,7 +4441,7 @@ export interface UpdateLodgingLocationsRequest {
   /** Request body */
   body?: Lodging;
 }
-export const UpdateLodgingLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLodgingLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

@@ -65,8 +65,8 @@ export interface GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest
   /** Required. The name of the pool whose JWKs need to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -76,9 +76,9 @@ export const GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest =
         baseUrl: "https://sts.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest",
-  }) as any as S.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>;
+).annotate({
+  identifier: "GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest",
+}) as any as S.Schema<GetJwksOrganizationsLocationsWorkloadIdentityPoolsOpenidRequest>;
 
 /** A JSON web key set (JWK) See also https://datatracker.ietf.org/doc/html/rfc7517 and https://github.com/spiffe/spiffe/blob/main/standards/JWT-SVID.md#6-representation-in-the-spiffe-bundle. */
 export interface GoogleIdentityStsV1Jwk {
@@ -95,7 +95,7 @@ export interface GoogleIdentityStsV1Jwk {
   /** Key ID. */
   kid?: string;
 }
-export const GoogleIdentityStsV1Jwk = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityStsV1Jwk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kty: S.optional(S.String),
     alg: S.optional(S.String),
@@ -107,7 +107,7 @@ export const GoogleIdentityStsV1Jwk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIdentityStsV1Jwk" }) as any as S.Schema<GoogleIdentityStsV1Jwk>;
 
 export type GoogleIdentityStsV1JwkList = Array<GoogleIdentityStsV1Jwk>;
-export const GoogleIdentityStsV1JwkList = /*@__PURE__*/ S.Array(
+const GoogleIdentityStsV1JwkList = /*@__PURE__*/ S.Array(
   GoogleIdentityStsV1Jwk,
 ) as any as S.Schema<GoogleIdentityStsV1JwkList>;
 
@@ -116,7 +116,7 @@ export interface GoogleIdentityStsV1Jwks {
   /** The JWKs for this OP. */
   keys?: GoogleIdentityStsV1JwkList;
 }
-export const GoogleIdentityStsV1Jwks = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityStsV1Jwks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(GoogleIdentityStsV1JwkList),
   }),
@@ -126,17 +126,16 @@ export interface GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest {
   /** Required. The name of the pool whose JWKs need to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/openid/jwks",
-        baseUrl: "https://sts.googleapis.com/",
-      }),
-    ),
+const GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/openid/jwks",
+      baseUrl: "https://sts.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest",
 }) as any as S.Schema<GetJwksProjectsLocationsWorkloadIdentityPoolsOpenidRequest>;
@@ -145,7 +144,7 @@ export interface GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPo
   /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest =
+const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -162,7 +161,7 @@ export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
   }) as any as S.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Response message for GetOpenIdProviderConfig. Message fields are defined in https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse. */
 export interface GoogleIdentityStsV1OpenIdProviderConfig {
@@ -181,7 +180,7 @@ export interface GoogleIdentityStsV1OpenIdProviderConfig {
   /** URL pointing to a token endpoint under this issuer. Note: Currently this endpoint returns a 404. */
   token_endpoint?: string;
 }
-export const GoogleIdentityStsV1OpenIdProviderConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityStsV1OpenIdProviderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.optional(S.String),
     jwks_uri: S.optional(S.String),
@@ -199,7 +198,7 @@ export interface GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWe
   /** Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog' */
   name: string;
 }
-export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest =
+const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -231,7 +230,7 @@ export interface GoogleIdentityStsV1ExchangeTokenRequest {
   /** Required. An identifier for the type of requested security token. Can be `urn:ietf:params:oauth:token-type:access_token` or `urn:ietf:params:oauth:token-type:access_boundary_intermediary_token`. */
   requestedTokenType?: string;
 }
-export const GoogleIdentityStsV1ExchangeTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityStsV1ExchangeTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(S.String),
     subjectTokenType: S.optional(S.String),
@@ -249,7 +248,7 @@ export interface TokenV1Request {
   /** Request body */
   body?: GoogleIdentityStsV1ExchangeTokenRequest;
 }
-export const TokenV1Request = /*@__PURE__*/ S.suspend(() =>
+const TokenV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GoogleIdentityStsV1ExchangeTokenRequest.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "v1/token", baseUrl: "https://sts.googleapis.com/" })),
@@ -268,7 +267,7 @@ export interface GoogleIdentityStsV1ExchangeTokenResponse {
   /** An OAuth 2.0 security token, issued by Google, in response to the token exchange request. Tokens can vary in size, depending in part on the size of mapped claims, up to a maximum of 12288 bytes (12 KB). Google reserves the right to change the token size and the maximum length at any time. */
   access_token?: string;
 }
-export const GoogleIdentityStsV1ExchangeTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityStsV1ExchangeTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_boundary_session_key: S.optional(S.String),
     expires_in: S.optional(S.Number),

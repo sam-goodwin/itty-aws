@@ -12,7 +12,7 @@ export interface PrivateEndpoint {
   /** Specifies the id of private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -20,7 +20,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the connection. */
 export type ConnectionStateStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
-export const ConnectionStateStatus = S.String;
+const ConnectionStateStatus = S.String;
 
 /** ConnectionState information. */
 export interface ConnectionState {
@@ -31,7 +31,7 @@ export interface ConnectionState {
   /** Actions required (if any). */
   actionsRequired?: string;
 }
-export const ConnectionState = /*@__PURE__*/ S.suspend(() =>
+const ConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ConnectionStateStatus),
     description: S.optional(S.String),
@@ -47,7 +47,7 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-export const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
+const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
 
 export interface PrivateEndpointConnectionProperties {
   /** Specifies the private endpoint. */
@@ -57,7 +57,7 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the Private Endpoint Connection. */
   provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState | (string & {});
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpoint),
     privateLinkServiceConnectionState: S.optional(ConnectionState),
@@ -71,7 +71,7 @@ export interface PrivateEndpointConnectionInput {
   /** Specifies the properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PrivateEndpointConnectionProperties),
   }),
@@ -82,7 +82,7 @@ export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
 /** Specifies the private endpoint connections of the resource. */
 export type TenantPropertiesInputPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
-export const TenantPropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const TenantPropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnectionInput,
 ) as any as S.Schema<TenantPropertiesInputPrivateEndpointConnectionsList>;
 
@@ -92,7 +92,7 @@ export interface TenantPropertiesInput {
   /** Specifies the private endpoint connections of the resource. */
   privateEndpointConnections?: TenantPropertiesInputPrivateEndpointConnectionsList;
 }
-export const TenantPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const TenantPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     privateEndpointConnections: S.optional(TenantPropertiesInputPrivateEndpointConnectionsList),
@@ -101,7 +101,7 @@ export const TenantPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the tags of the resource. */
 export type CreatePowerBIResourceRequestTagsMap = { [key: string]: string | undefined };
-export const CreatePowerBIResourceRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreatePowerBIResourceRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreatePowerBIResourceRequestTagsMap>;
@@ -120,7 +120,7 @@ export interface CreatePowerBIResourceRequest {
   /** Specifies the tags of the resource. */
   tags?: CreatePowerBIResourceRequestTagsMap;
 }
-export const CreatePowerBIResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePowerBIResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -146,7 +146,7 @@ export type TenantResourceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TenantResourceSystemDataCreatedByType = S.String;
+const TenantResourceSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type TenantResourceSystemDataLastModifiedByType =
@@ -154,7 +154,7 @@ export type TenantResourceSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const TenantResourceSystemDataLastModifiedByType = S.String;
+const TenantResourceSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface TenantResourceSystemData {
@@ -171,7 +171,7 @@ export interface TenantResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const TenantResourceSystemData = /*@__PURE__*/ S.suspend(() =>
+const TenantResourceSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(TenantResourceSystemDataCreatedByType),
@@ -188,7 +188,7 @@ export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionSystemDataCreatedByType = S.String;
+const PrivateEndpointConnectionSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type PrivateEndpointConnectionSystemDataLastModifiedByType =
@@ -196,7 +196,7 @@ export type PrivateEndpointConnectionSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionSystemDataLastModifiedByType = S.String;
+const PrivateEndpointConnectionSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PrivateEndpointConnectionSystemData {
@@ -213,7 +213,7 @@ export interface PrivateEndpointConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(PrivateEndpointConnectionSystemDataCreatedByType),
@@ -238,7 +238,7 @@ export interface PrivateEndpointConnection {
   /** Specifies the properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -252,7 +252,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the private endpoint connections of the resource. */
 export type TenantPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const TenantPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const TenantPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<TenantPropertiesPrivateEndpointConnectionsList>;
 
@@ -262,7 +262,7 @@ export interface TenantProperties {
   /** Specifies the private endpoint connections of the resource. */
   privateEndpointConnections?: TenantPropertiesPrivateEndpointConnectionsList;
 }
-export const TenantProperties = /*@__PURE__*/ S.suspend(() =>
+const TenantProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     privateEndpointConnections: S.optional(TenantPropertiesPrivateEndpointConnectionsList),
@@ -271,7 +271,7 @@ export const TenantProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the tags of the resource. */
 export type TenantResourceTagsMap = { [key: string]: string | undefined };
-export const TenantResourceTagsMap =
+const TenantResourceTagsMap =
   CreatePowerBIResourceRequestTagsMap as any as S.Schema<TenantResourceTagsMap>;
 
 export interface TenantResource {
@@ -290,7 +290,7 @@ export interface TenantResource {
   /** Specifies the tags of the resource. */
   tags?: TenantResourceTagsMap;
 }
-export const TenantResource = /*@__PURE__*/ S.suspend(() =>
+const TenantResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -314,7 +314,7 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Specifies the properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -341,7 +341,7 @@ export interface DeletePowerBIResourceRequest {
   /** The name of the Azure resource. */
   azureResourceName: string;
 }
-export const DeletePowerBIResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePowerBIResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -359,7 +359,7 @@ export const DeletePowerBIResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePowerBIResourceRequest>;
 
 export interface DeletePowerBIResourceResponse {}
-export const DeletePowerBIResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePowerBIResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePowerBIResourceResponse",
 }) as any as S.Schema<DeletePowerBIResourceResponse>;
 
@@ -373,7 +373,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint. */
   privateEndpointName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -392,7 +392,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePrivateEndpointConnectionResponse",
@@ -408,7 +408,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint. */
   privateEndpointName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -436,7 +436,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of private link resource. */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -456,13 +456,13 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -474,7 +474,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -495,7 +495,7 @@ export interface PrivateLinkResource {
   /** Type of the resource. */
   type?: string;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PrivateLinkResourceProperties),
     id: S.optional(S.String),
@@ -510,7 +510,7 @@ export interface GetPrivateLinkServiceResourceOperationResultRequest {
   /** The id of Azure async operation. */
   operationId: string;
 }
-export const GetPrivateLinkServiceResourceOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkServiceResourceOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -528,7 +528,7 @@ export const GetPrivateLinkServiceResourceOperationResultRequest = /*@__PURE__*/
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -539,7 +539,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -548,7 +548,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -565,7 +565,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -577,13 +577,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type AsyncOperationDetailErrorDetailsList = Array<ErrorDetail>;
-export const AsyncOperationDetailErrorDetailsList = /*@__PURE__*/ S.Array(
+const AsyncOperationDetailErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<AsyncOperationDetailErrorDetailsList>;
 
 /** The error additional info. */
 export type AsyncOperationDetailErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const AsyncOperationDetailErrorAdditionalInfoList =
+const AsyncOperationDetailErrorAdditionalInfoList =
   ErrorDetailAdditionalInfoList as any as S.Schema<AsyncOperationDetailErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -599,7 +599,7 @@ export interface AsyncOperationDetailError {
   /** The error additional info. */
   additionalInfo?: AsyncOperationDetailErrorAdditionalInfoList;
 }
-export const AsyncOperationDetailError = /*@__PURE__*/ S.suspend(() =>
+const AsyncOperationDetailError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -625,7 +625,7 @@ export interface AsyncOperationDetail {
   /** The error detail. */
   error?: AsyncOperationDetailError;
 }
-export const AsyncOperationDetail = /*@__PURE__*/ S.suspend(() =>
+const AsyncOperationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -637,7 +637,7 @@ export const AsyncOperationDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AsyncOperationDetail" }) as any as S.Schema<AsyncOperationDetail>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -659,7 +659,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -670,11 +670,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -689,7 +689,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -701,7 +701,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -711,7 +711,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -726,7 +726,7 @@ export interface ListPowerBIResourceByResourceNameRequest {
   /** The name of the Azure resource. */
   azureResourceName: string;
 }
-export const ListPowerBIResourceByResourceNameRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPowerBIResourceByResourceNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -744,13 +744,13 @@ export const ListPowerBIResourceByResourceNameRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPowerBIResourceByResourceNameRequest>;
 
 export type ListPowerBIResourceByResourceNameResponseBodyList = Array<TenantResource>;
-export const ListPowerBIResourceByResourceNameResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPowerBIResourceByResourceNameResponseBodyList = /*@__PURE__*/ S.Array(
   TenantResource,
 ) as any as S.Schema<ListPowerBIResourceByResourceNameResponseBodyList>;
 
 export type ListPowerBIResourceByResourceNameResponse =
   ListPowerBIResourceByResourceNameResponseBodyList;
-export const ListPowerBIResourceByResourceNameResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPowerBIResourceByResourceNameResponse = /*@__PURE__*/ S.suspend(() =>
   ListPowerBIResourceByResourceNameResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPowerBIResourceByResourceNameResponse",
@@ -764,7 +764,7 @@ export interface ListPrivateEndpointConnectionByResourceRequest {
   /** The name of the powerbi resource. */
   azureResourceName: string;
 }
-export const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -783,7 +783,7 @@ export const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ S.su
 
 /** Specifies the name of the private endpoint connection. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   TenantPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** List of private endpoint connections. */
@@ -793,7 +793,7 @@ export interface PrivateEndpointConnectionListResult {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -810,7 +810,7 @@ export interface ListPrivateLinkResourceByResourceRequest {
   /** The name of the Azure resource. */
   azureResourceName: string;
 }
-export const ListPrivateLinkResourceByResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -829,7 +829,7 @@ export const ListPrivateLinkResourceByResourceRequest = /*@__PURE__*/ S.suspend(
 
 /** A collection of private endpoint connection resources. */
 export type PrivateLinkResourcesListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
 
@@ -840,7 +840,7 @@ export interface PrivateLinkResourcesListResult {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const PrivateLinkResourcesListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourcesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourcesListResultValueList),
     nextLink: S.optional(S.String),
@@ -855,7 +855,7 @@ export interface ListPrivateLinkServiceByResourceGroupRequest {
   /** The name of the resource group. */
   resourceGroupName: string;
 }
-export const ListPrivateLinkServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -872,52 +872,47 @@ export const ListPrivateLinkServiceByResourceGroupRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListPrivateLinkServiceByResourceGroupRequest>;
 
 export type ListPrivateLinkServiceByResourceGroupResponseBodyList = Array<TenantResource>;
-export const ListPrivateLinkServiceByResourceGroupResponseBodyList =
-  ListPowerBIResourceByResourceNameResponseBodyList as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponseBodyList>;
-
 export type ListPrivateLinkServiceByResourceGroupResponse =
   ListPrivateLinkServiceByResourceGroupResponseBodyList;
-export const ListPrivateLinkServiceByResourceGroupResponse =
+const ListPrivateLinkServiceByResourceGroupResponse =
   ListPowerBIResourceByResourceNameResponse as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponse>;
 
 export interface ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
 }
-export const ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI",
-        code: 200,
-        apiVersion: "2020-06-01",
-      }),
-    ),
+const ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBI/privateLinkServicesForPowerBI",
+      code: 200,
+      apiVersion: "2020-06-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest",
 }) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest>;
 
 export type ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList =
   Array<TenantResource>;
-export const ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    TenantResource,
-  ) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList>;
+const ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList = /*@__PURE__*/ S.Array(
+  TenantResource,
+) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList>;
 
 export type ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse =
   ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList;
-export const ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse = /*@__PURE__*/ S.suspend(
-  () => ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList.pipe(T.RawResponseRoot()),
+const ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse = /*@__PURE__*/ S.suspend(() =>
+  ListPrivateLinkServicesForPowerBIBySubscriptionIdResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse",
 }) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse>;
 
 /** Specifies the tags of the resource. */
 export type UpdatePowerBIResourceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePowerBIResourceRequestTagsMap =
+const UpdatePowerBIResourceRequestTagsMap =
   CreatePowerBIResourceRequestTagsMap as any as S.Schema<UpdatePowerBIResourceRequestTagsMap>;
 
 export interface UpdatePowerBIResourceRequest {
@@ -934,7 +929,7 @@ export interface UpdatePowerBIResourceRequest {
   /** Specifies the tags of the resource. */
   tags?: UpdatePowerBIResourceRequestTagsMap;
 }
-export const UpdatePowerBIResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePowerBIResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),

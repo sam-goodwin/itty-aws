@@ -39,7 +39,7 @@ export interface DeleteArchiveForAuthenticatedUserRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
 }
-export const DeleteArchiveForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteArchiveForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migration_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/migrations/{migration_id}/archive", code: 200 })),
@@ -48,7 +48,7 @@ export const DeleteArchiveForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteArchiveForAuthenticatedUserRequest>;
 
 export interface DeleteArchiveForAuthenticatedUserResponse {}
-export const DeleteArchiveForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteArchiveForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteArchiveForAuthenticatedUserResponse",
@@ -60,7 +60,7 @@ export interface DeleteArchiveForOrgRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
 }
-export const DeleteArchiveForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteArchiveForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     migration_id: S.Number.pipe(T.Label()),
@@ -72,7 +72,7 @@ export const DeleteArchiveForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteArchiveForOrgRequest>;
 
 export interface DeleteArchiveForOrgResponse {}
-export const DeleteArchiveForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteArchiveForOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteArchiveForOrgResponse",
 }) as any as S.Schema<DeleteArchiveForOrgResponse>;
 
@@ -82,7 +82,7 @@ export interface DownloadArchiveForOrgRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
 }
-export const DownloadArchiveForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadArchiveForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     migration_id: S.Number.pipe(T.Label()),
@@ -94,14 +94,14 @@ export const DownloadArchiveForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadArchiveForOrgRequest>;
 
 export interface DownloadArchiveForOrgResponse {}
-export const DownloadArchiveForOrgResponse =
+const DownloadArchiveForOrgResponse =
   DeleteArchiveForOrgResponse as any as S.Schema<DownloadArchiveForOrgResponse>;
 
 export interface GetArchiveForAuthenticatedUserRequest {
   /** The unique identifier of the migration. */
   migration_id: number;
 }
-export const GetArchiveForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetArchiveForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migration_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/migrations/{migration_id}/archive", code: 200 })),
@@ -110,11 +110,11 @@ export const GetArchiveForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetArchiveForAuthenticatedUserRequest>;
 
 export interface GetArchiveForAuthenticatedUserResponse {}
-export const GetArchiveForAuthenticatedUserResponse =
+const GetArchiveForAuthenticatedUserResponse =
   DeleteArchiveForAuthenticatedUserResponse as any as S.Schema<GetArchiveForAuthenticatedUserResponse>;
 
 export type GetStatusForAuthenticatedUserRequestExcludeList = Array<string>;
-export const GetStatusForAuthenticatedUserRequestExcludeList = /*@__PURE__*/ S.Array(
+const GetStatusForAuthenticatedUserRequestExcludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetStatusForAuthenticatedUserRequestExcludeList>;
 
@@ -123,7 +123,7 @@ export interface GetStatusForAuthenticatedUserRequest {
   migration_id: number;
   exclude?: GetStatusForAuthenticatedUserRequestExcludeList;
 }
-export const GetStatusForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatusForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migration_id: S.Number.pipe(T.Label()),
     exclude: S.optional(GetStatusForAuthenticatedUserRequestExcludeList.pipe(T.Query())),
@@ -157,7 +157,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -193,7 +193,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -211,7 +211,7 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -223,38 +223,36 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList =
+const RepositoryTopicsList =
   GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
+const RepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
+const RepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
+const RepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
+const RepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
+const RepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lexical_search_ok: S.optional(S.Boolean),
     lexical_commit_sha: S.optional(S.String),
@@ -395,7 +393,7 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -500,13 +498,13 @@ export const Repository = /*@__PURE__*/ S.suspend(() =>
 
 /** The repositories included in the migration. Only returned for export migrations. */
 export type MigrationRepositoriesList = Array<Repository>;
-export const MigrationRepositoriesList = /*@__PURE__*/ S.Array(
+const MigrationRepositoriesList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<MigrationRepositoriesList>;
 
 /** Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`. */
 export type MigrationExcludeList = Array<string>;
-export const MigrationExcludeList =
+const MigrationExcludeList =
   GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<MigrationExcludeList>;
 
 /** A migration. */
@@ -532,7 +530,7 @@ export interface Migration {
   /** Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`. */
   exclude?: MigrationExcludeList;
 }
-export const Migration = /*@__PURE__*/ S.suspend(() =>
+const Migration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     owner: S.NullOr(NullableSimpleUser),
@@ -557,12 +555,12 @@ export const Migration = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed values that can be passed to the exclude param. */
 export type GetStatusForOrgRequestExcludeItem = "repositories";
-export const GetStatusForOrgRequestExcludeItem = S.String;
+const GetStatusForOrgRequestExcludeItem = S.String;
 
 export type GetStatusForOrgRequestExcludeList = Array<
   GetStatusForOrgRequestExcludeItem | (string & {})
 >;
-export const GetStatusForOrgRequestExcludeList = /*@__PURE__*/ S.Array(
+const GetStatusForOrgRequestExcludeList = /*@__PURE__*/ S.Array(
   GetStatusForOrgRequestExcludeItem,
 ) as any as S.Schema<GetStatusForOrgRequestExcludeList>;
 
@@ -574,7 +572,7 @@ export interface GetStatusForOrgRequest {
   /** Exclude attributes from the API response to improve performance */
   exclude?: GetStatusForOrgRequestExcludeList;
 }
-export const GetStatusForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatusForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     migration_id: S.Number.pipe(T.Label()),
@@ -588,7 +586,7 @@ export interface ListForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -598,12 +596,12 @@ export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForAuthenticatedUserRequest>;
 
 export type ListForAuthenticatedUserResponseBodyList = Array<Migration>;
-export const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   Migration,
 ) as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
 
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
-export const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListForAuthenticatedUserResponse",
@@ -611,10 +609,8 @@ export const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed values that can be passed to the exclude param. */
 export type ListForOrgRequestExcludeItem = "repositories";
-export const ListForOrgRequestExcludeItem = S.String;
-
 export type ListForOrgRequestExcludeList = Array<ListForOrgRequestExcludeItem | (string & {})>;
-export const ListForOrgRequestExcludeList =
+const ListForOrgRequestExcludeList =
   GetStatusForOrgRequestExcludeList as any as S.Schema<ListForOrgRequestExcludeList>;
 
 export interface ListForOrgRequest {
@@ -627,7 +623,7 @@ export interface ListForOrgRequest {
   /** Exclude attributes from the API response to improve performance */
   exclude?: ListForOrgRequestExcludeList;
 }
-export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -637,11 +633,11 @@ export const ListForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForOrgRequest" }) as any as S.Schema<ListForOrgRequest>;
 
 export type ListForOrgResponseBodyList = Array<Migration>;
-export const ListForOrgResponseBodyList =
+const ListForOrgResponseBodyList =
   ListForAuthenticatedUserResponseBodyList as any as S.Schema<ListForOrgResponseBodyList>;
 
 export type ListForOrgResponse = ListForOrgResponseBodyList;
-export const ListForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListForOrgResponse" }) as any as S.Schema<ListForOrgResponse>;
 
@@ -653,7 +649,7 @@ export interface ListReposForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migration_id: S.Number.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -666,12 +662,12 @@ export const ListReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListReposForAuthenticatedUserRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList =
+const MinimalRepositoryTopicsList =
   GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -680,7 +676,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -700,7 +696,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -717,7 +713,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -728,13 +724,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -743,98 +739,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -844,7 +824,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -859,16 +839,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -890,7 +869,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -913,7 +892,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -1014,7 +993,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1110,12 +1089,12 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepository" }) as any as S.Schema<MinimalRepository>;
 
 export type ListReposForAuthenticatedUserResponseBodyList = Array<MinimalRepository>;
-export const ListReposForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListReposForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   MinimalRepository,
 ) as any as S.Schema<ListReposForAuthenticatedUserResponseBodyList>;
 
 export type ListReposForAuthenticatedUserResponse = ListReposForAuthenticatedUserResponseBodyList;
-export const ListReposForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReposForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListReposForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReposForAuthenticatedUserResponse",
@@ -1131,7 +1110,7 @@ export interface ListReposForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReposForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReposForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     migration_id: S.Number.pipe(T.Label()),
@@ -1143,27 +1122,25 @@ export const ListReposForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReposForOrgRequest" }) as any as S.Schema<ListReposForOrgRequest>;
 
 export type ListReposForOrgResponseBodyList = Array<MinimalRepository>;
-export const ListReposForOrgResponseBodyList =
+const ListReposForOrgResponseBodyList =
   ListReposForAuthenticatedUserResponseBodyList as any as S.Schema<ListReposForOrgResponseBodyList>;
 
 export type ListReposForOrgResponse = ListReposForOrgResponseBodyList;
-export const ListReposForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReposForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListReposForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListReposForOrgResponse" }) as any as S.Schema<ListReposForOrgResponse>;
 
 /** Allowed values that can be passed to the exclude param. */
 export type StartForAuthenticatedUserRequestExcludeItem = "repositories";
-export const StartForAuthenticatedUserRequestExcludeItem = S.String;
-
 /** Exclude attributes from the API response to improve performance */
 export type StartForAuthenticatedUserRequestExcludeList = Array<
   StartForAuthenticatedUserRequestExcludeItem | (string & {})
 >;
-export const StartForAuthenticatedUserRequestExcludeList =
+const StartForAuthenticatedUserRequestExcludeList =
   GetStatusForOrgRequestExcludeList as any as S.Schema<StartForAuthenticatedUserRequestExcludeList>;
 
 export type StartForAuthenticatedUserRequestRepositoriesList = Array<string>;
-export const StartForAuthenticatedUserRequestRepositoriesList =
+const StartForAuthenticatedUserRequestRepositoriesList =
   GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<StartForAuthenticatedUserRequestRepositoriesList>;
 
 export interface StartForAuthenticatedUserRequest {
@@ -1185,7 +1162,7 @@ export interface StartForAuthenticatedUserRequest {
   exclude?: StartForAuthenticatedUserRequestExcludeList;
   repositories: StartForAuthenticatedUserRequestRepositoriesList;
 }
-export const StartForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const StartForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lock_repositories: S.optional(S.Boolean),
     exclude_metadata: S.optional(S.Boolean),
@@ -1203,15 +1180,13 @@ export const StartForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of arrays indicating which repositories should be migrated. */
 export type StartForOrgRequestRepositoriesList = Array<string>;
-export const StartForOrgRequestRepositoriesList =
+const StartForOrgRequestRepositoriesList =
   GetStatusForAuthenticatedUserRequestExcludeList as any as S.Schema<StartForOrgRequestRepositoriesList>;
 
 export type StartForOrgRequestExcludeItem = "repositories";
-export const StartForOrgRequestExcludeItem = S.String;
-
 /** Exclude related items from being returned in the response in order to improve performance of the request. */
 export type StartForOrgRequestExcludeList = Array<StartForOrgRequestExcludeItem | (string & {})>;
-export const StartForOrgRequestExcludeList =
+const StartForOrgRequestExcludeList =
   GetStatusForOrgRequestExcludeList as any as S.Schema<StartForOrgRequestExcludeList>;
 
 export interface StartForOrgRequest {
@@ -1236,7 +1211,7 @@ export interface StartForOrgRequest {
   /** Exclude related items from being returned in the response in order to improve performance of the request. */
   exclude?: StartForOrgRequestExcludeList;
 }
-export const StartForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const StartForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     repositories: StartForOrgRequestRepositoriesList,
@@ -1257,7 +1232,7 @@ export interface UnlockRepoForAuthenticatedUserRequest {
   /** repo_name parameter */
   repo_name: string;
 }
-export const UnlockRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlockRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migration_id: S.Number.pipe(T.Label()),
     repo_name: S.String.pipe(T.Label()),
@@ -1273,7 +1248,7 @@ export const UnlockRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UnlockRepoForAuthenticatedUserRequest>;
 
 export interface UnlockRepoForAuthenticatedUserResponse {}
-export const UnlockRepoForAuthenticatedUserResponse =
+const UnlockRepoForAuthenticatedUserResponse =
   DeleteArchiveForAuthenticatedUserResponse as any as S.Schema<UnlockRepoForAuthenticatedUserResponse>;
 
 export interface UnlockRepoForOrgRequest {
@@ -1284,7 +1259,7 @@ export interface UnlockRepoForOrgRequest {
   /** repo_name parameter */
   repo_name: string;
 }
-export const UnlockRepoForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlockRepoForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     migration_id: S.Number.pipe(T.Label()),
@@ -1299,7 +1274,7 @@ export const UnlockRepoForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnlockRepoForOrgRequest" }) as any as S.Schema<UnlockRepoForOrgRequest>;
 
 export interface UnlockRepoForOrgResponse {}
-export const UnlockRepoForOrgResponse =
+const UnlockRepoForOrgResponse =
   DeleteArchiveForOrgResponse as any as S.Schema<UnlockRepoForOrgResponse>;
 
 export type DeleteArchiveForAuthenticatedUserError = Forbidden | NotFound | GithubOpError;

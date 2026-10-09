@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GPUType =
   | "GPU_TYPE_UNSPECIFIED"
@@ -22,7 +22,7 @@ export type GPUType =
   | "GPU_TYPE_H100"
   | "GPU_TYPE_L40S"
   | "GPU_TYPE_H200";
-export const GPUType = S.String;
+const GPUType = S.String;
 
 export interface GPUConfig {
   type?: GPUType | (string & {});
@@ -30,7 +30,7 @@ export interface GPUConfig {
   count?: number;
   gpuType?: string;
 }
-export const GPUConfig = /*@__PURE__*/ S.suspend(() =>
+const GPUConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GPUType),
     count: S.optional(S.Number),
@@ -53,7 +53,7 @@ export interface Resources {
   /** milli CPU cores */
   rdma?: boolean;
 }
-export const Resources = /*@__PURE__*/ S.suspend(() =>
+const Resources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryMb: S.optional(S.Number),
     milliCpu: S.optional(S.Number),
@@ -72,14 +72,14 @@ export type CloudProvider =
   | "CLOUD_PROVIDER_GCP"
   | "CLOUD_PROVIDER_AUTO"
   | "CLOUD_PROVIDER_OCI";
-export const CloudProvider = S.String;
+const CloudProvider = S.String;
 
 export interface SharedVolumeMount {
   mountPath?: string;
   sharedVolumeId?: string;
   cloudProvider?: CloudProvider | (string & {});
 }
-export const SharedVolumeMount = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mountPath: S.optional(S.String),
     sharedVolumeId: S.optional(S.String),
@@ -88,7 +88,7 @@ export const SharedVolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedVolumeMount" }) as any as S.Schema<SharedVolumeMount>;
 
 export type SharedVolumeMountList = Array<SharedVolumeMount>;
-export const SharedVolumeMountList = /*@__PURE__*/ S.Array(
+const SharedVolumeMountList = /*@__PURE__*/ S.Array(
   SharedVolumeMount,
 ) as any as S.Schema<SharedVolumeMountList>;
 
@@ -98,7 +98,7 @@ export interface S3Mount {
   credentialsSecretId?: string;
   readOnly?: boolean;
 }
-export const S3Mount = /*@__PURE__*/ S.suspend(() =>
+const S3Mount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
     mountPath: S.optional(S.String),
@@ -108,16 +108,16 @@ export const S3Mount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Mount" }) as any as S.Schema<S3Mount>;
 
 export type S3MountList = Array<S3Mount>;
-export const S3MountList = /*@__PURE__*/ S.Array(S3Mount) as any as S.Schema<S3MountList>;
+const S3MountList = /*@__PURE__*/ S.Array(S3Mount) as any as S.Schema<S3MountList>;
 
 export type CloudBucketMountBucketType = "UNSPECIFIED" | "S3" | "R2" | "GCP";
-export const CloudBucketMountBucketType = S.String;
+const CloudBucketMountBucketType = S.String;
 
 export type CloudBucketMountMetadataTTLType =
   | "METADATA_TTL_TYPE_UNSPECIFIED"
   | "METADATA_TTL_TYPE_MINIMAL"
   | "METADATA_TTL_TYPE_INDEFINITE";
-export const CloudBucketMountMetadataTTLType = S.String;
+const CloudBucketMountMetadataTTLType = S.String;
 
 export interface CloudBucketMount {
   bucketName?: string;
@@ -133,7 +133,7 @@ export interface CloudBucketMount {
   metadataTtlType?: CloudBucketMountMetadataTTLType | (string & {});
   metadataTtlSeconds?: string;
 }
-export const CloudBucketMount = /*@__PURE__*/ S.suspend(() =>
+const CloudBucketMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
     mountPath: S.optional(S.String),
@@ -151,7 +151,7 @@ export const CloudBucketMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudBucketMount" }) as any as S.Schema<CloudBucketMount>;
 
 export type CloudBucketMountList = Array<CloudBucketMount>;
-export const CloudBucketMountList = /*@__PURE__*/ S.Array(
+const CloudBucketMountList = /*@__PURE__*/ S.Array(
   CloudBucketMount,
 ) as any as S.Schema<CloudBucketMountList>;
 
@@ -162,7 +162,7 @@ export interface VolumeMount {
   readOnly?: boolean;
   subPath?: string;
 }
-export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
+const VolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     mountPath: S.optional(S.String),
@@ -173,12 +173,10 @@ export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeMount" }) as any as S.Schema<VolumeMount>;
 
 export type VolumeMountList = Array<VolumeMount>;
-export const VolumeMountList = /*@__PURE__*/ S.Array(
-  VolumeMount,
-) as any as S.Schema<VolumeMountList>;
+const VolumeMountList = /*@__PURE__*/ S.Array(VolumeMount) as any as S.Schema<VolumeMountList>;
 
 export type PTYInfoPTYType = "PTY_TYPE_UNSPECIFIED" | "PTY_TYPE_FUNCTION" | "PTY_TYPE_SHELL";
-export const PTYInfoPTYType = S.String;
+const PTYInfoPTYType = S.String;
 
 export interface PTYInfo {
   enabled?: boolean;
@@ -192,7 +190,7 @@ export interface PTYInfo {
   ptyType?: PTYInfoPTYType | (string & {});
   noTerminateOnIdleStdin?: boolean;
 }
-export const PTYInfo = /*@__PURE__*/ S.suspend(() =>
+const PTYInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     winszRows: S.optional(S.Number),
@@ -213,7 +211,7 @@ export interface SchedulerPlacement {
   InstanceTypes?: StringList;
   nonpreemptible?: boolean;
 }
-export const SchedulerPlacement = /*@__PURE__*/ S.suspend(() =>
+const SchedulerPlacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(StringList),
     Zone: S.optional(S.String),
@@ -224,14 +222,14 @@ export const SchedulerPlacement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchedulerPlacement" }) as any as S.Schema<SchedulerPlacement>;
 
 export type TunnelType = "TUNNEL_TYPE_UNSPECIFIED" | "TUNNEL_TYPE_H2";
-export const TunnelType = S.String;
+const TunnelType = S.String;
 
 export interface PortSpec {
   port?: number;
   unencrypted?: boolean;
   tunnelType?: TunnelType | (string & {});
 }
-export const PortSpec = /*@__PURE__*/ S.suspend(() =>
+const PortSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     unencrypted: S.optional(S.Boolean),
@@ -240,26 +238,26 @@ export const PortSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PortSpec" }) as any as S.Schema<PortSpec>;
 
 export type PortSpecList = Array<PortSpec>;
-export const PortSpecList = /*@__PURE__*/ S.Array(PortSpec) as any as S.Schema<PortSpecList>;
+const PortSpecList = /*@__PURE__*/ S.Array(PortSpec) as any as S.Schema<PortSpecList>;
 
 export interface PortSpecs {
   ports?: PortSpecList;
 }
-export const PortSpecs = /*@__PURE__*/ S.suspend(() =>
+const PortSpecs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: S.optional(PortSpecList),
   }),
 ).annotate({ identifier: "PortSpecs" }) as any as S.Schema<PortSpecs>;
 
 export type NetworkAccessNetworkAccessType = "UNSPECIFIED" | "OPEN" | "BLOCKED" | "ALLOWLIST";
-export const NetworkAccessNetworkAccessType = S.String;
+const NetworkAccessNetworkAccessType = S.String;
 
 export interface NetworkAccess {
   networkAccessType?: NetworkAccessNetworkAccessType | (string & {});
   allowedCidrs?: StringList;
   allowedDomains?: StringList;
 }
-export const NetworkAccess = /*@__PURE__*/ S.suspend(() =>
+const NetworkAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkAccessType: S.optional(NetworkAccessNetworkAccessType),
     allowedCidrs: S.optional(StringList),
@@ -268,19 +266,16 @@ export const NetworkAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkAccess" }) as any as S.Schema<NetworkAccess>;
 
 export type BooleanMap = { [key: string]: boolean | undefined };
-export const BooleanMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Boolean,
-) as any as S.Schema<BooleanMap>;
+const BooleanMap = /*@__PURE__*/ S.Record(S.String, S.Boolean) as any as S.Schema<BooleanMap>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface ProbeExecCommand {
   /** Command and args to execute directly (argv form, not shell-parsed). */
   argv?: StringList;
 }
-export const ProbeExecCommand = /*@__PURE__*/ S.suspend(() =>
+const ProbeExecCommand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     argv: S.optional(StringList),
   }),
@@ -291,7 +286,7 @@ export interface Probe {
   execCommand?: ProbeExecCommand;
   intervalMs?: number;
 }
-export const Probe = /*@__PURE__*/ S.suspend(() =>
+const Probe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tcpPort: S.optional(S.Number),
     execCommand: S.optional(ProbeExecCommand),
@@ -302,7 +297,7 @@ export const Probe = /*@__PURE__*/ S.suspend(() =>
 export interface StringMap2 {
   contents?: StringMap;
 }
-export const StringMap2 = /*@__PURE__*/ S.suspend(() =>
+const StringMap2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contents: S.optional(StringMap),
   }),
@@ -316,7 +311,7 @@ export interface OutboundPolicyHeaderReplacement {
   /** Header name -> header value. Values support templating with keys in the stanza's secret_id: a $-prefixed key name in the secret will be replaced with the secret value. Literal $ characters can be represented by two dollars: `$$`. */
   headers?: StringMap;
 }
-export const OutboundPolicyHeaderReplacement = /*@__PURE__*/ S.suspend(() =>
+const OutboundPolicyHeaderReplacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     secretId: S.optional(S.String),
@@ -327,7 +322,7 @@ export const OutboundPolicyHeaderReplacement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutboundPolicyHeaderReplacement>;
 
 export type OutboundPolicyHeaderReplacementList = Array<OutboundPolicyHeaderReplacement>;
-export const OutboundPolicyHeaderReplacementList = /*@__PURE__*/ S.Array(
+const OutboundPolicyHeaderReplacementList = /*@__PURE__*/ S.Array(
   OutboundPolicyHeaderReplacement,
 ) as any as S.Schema<OutboundPolicyHeaderReplacementList>;
 
@@ -336,7 +331,7 @@ export interface OutboundPolicy {
   /** Replace headers in outbound HTTPS requests, potentially with secret values. */
   headerReplacements?: OutboundPolicyHeaderReplacementList;
 }
-export const OutboundPolicy = /*@__PURE__*/ S.suspend(() =>
+const OutboundPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerReplacements: S.optional(OutboundPolicyHeaderReplacementList),
   }),
@@ -409,7 +404,7 @@ export interface Sandbox {
   /** If set, the sandbox's main container is served an X.509-SVID over a SPIFFE Workload API socket, addressed by SPIFFE_ENDPOINT_SOCKET. The certificate federates into a cloud account (AWS IAM Roles Anywhere). Sidecars are not served one. */
   includeX509Svid?: boolean;
 }
-export const Sandbox = /*@__PURE__*/ S.suspend(() =>
+const Sandbox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entrypointArgs: S.optional(StringList),
     mountIds: S.optional(StringList),
@@ -459,7 +454,7 @@ export interface SandboxTag {
   tagName?: string;
   tagValue?: string;
 }
-export const SandboxTag = /*@__PURE__*/ S.suspend(() =>
+const SandboxTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagName: S.optional(S.String),
     tagValue: S.optional(S.String),
@@ -467,7 +462,7 @@ export const SandboxTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxTag" }) as any as S.Schema<SandboxTag>;
 
 export type SandboxTagList = Array<SandboxTag>;
-export const SandboxTagList = /*@__PURE__*/ S.Array(SandboxTag) as any as S.Schema<SandboxTagList>;
+const SandboxTagList = /*@__PURE__*/ S.Array(SandboxTag) as any as S.Schema<SandboxTagList>;
 
 export interface CreateSandboxRequest {
   appId?: string;
@@ -476,7 +471,7 @@ export interface CreateSandboxRequest {
   /** *DEPRECATED* 7/16/2025 */
   tags?: SandboxTagList;
 }
-export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     definition: S.optional(Sandbox),
@@ -496,7 +491,7 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-export const GenericResultGenericStatus = S.String;
+const GenericResultGenericStatus = S.String;
 
 /** sub-type for generic types like lists */
 export interface GenericResult {
@@ -518,7 +513,7 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-export const GenericResult = /*@__PURE__*/ S.suspend(() =>
+const GenericResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenericResultGenericStatus),
     exception: S.optional(S.String),
@@ -536,7 +531,7 @@ export interface SandboxHandleMetadata {
   result?: GenericResult;
   appId?: string;
 }
-export const SandboxHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const SandboxHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     appId: S.optional(S.String),
@@ -547,7 +542,7 @@ export interface CreateSandboxResponse {
   sandboxId?: string;
   metadata?: SandboxHandleMetadata;
 }
-export const CreateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     metadata: S.optional(SandboxHandleMetadata),
@@ -557,7 +552,7 @@ export const CreateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSandboxSnapshotRequest {
   snapshotId?: string;
 }
-export const GetSandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
   }).pipe(
@@ -570,7 +565,7 @@ export const GetSandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxSnapshotHandleMetadata {
   isV2?: boolean;
 }
-export const SandboxSnapshotHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const SandboxSnapshotHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isV2: S.optional(S.Boolean),
   }),
@@ -582,7 +577,7 @@ export interface GetSandboxSnapshotResponse {
   snapshotId?: string;
   handleMetadata?: SandboxSnapshotHandleMetadata;
 }
-export const GetSandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
     handleMetadata: S.optional(SandboxSnapshotHandleMetadata),
@@ -595,7 +590,7 @@ export interface GetSandboxSnapshotFsAsyncRequest {
   imageId?: string;
   timeout?: number;
 }
-export const GetSandboxSnapshotFsAsyncRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxSnapshotFsAsyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -622,7 +617,7 @@ export interface ImageMetadata {
   /** The builder version for/with which the image was created. */
   imageBuilderVersion?: string;
 }
-export const ImageMetadata = /*@__PURE__*/ S.suspend(() =>
+const ImageMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pythonVersionInfo: S.optional(S.String),
     pythonPackages: S.optional(StringMap),
@@ -638,7 +633,7 @@ export interface GetSandboxSnapshotFsAsyncResponse {
   /** Metadata may be empty since we may skip it for performance reasons. */
   imageMetadata?: ImageMetadata;
 }
-export const GetSandboxSnapshotFsAsyncResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxSnapshotFsAsyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     result: S.optional(GenericResult),
@@ -651,7 +646,7 @@ export const GetSandboxSnapshotFsAsyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSandboxTagRequest {
   sandboxId?: string;
 }
-export const GetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SandboxTagsGet", code: 200 })),
@@ -660,7 +655,7 @@ export const GetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSandboxTagResponse {
   tags?: SandboxTagList;
 }
-export const GetSandboxTagResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(SandboxTagList),
   }),
@@ -673,7 +668,7 @@ export interface ListSandboxRequest {
   includeFinished?: boolean;
   tags?: SandboxTagList;
 }
-export const ListSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     beforeTimestamp: S.optional(S.Number),
@@ -689,7 +684,7 @@ export type TaskSnapshotBehavior =
   | "TASK_SNAPSHOT_BEHAVIOR_SNAPSHOT"
   | "TASK_SNAPSHOT_BEHAVIOR_RESTORE"
   | "TASK_SNAPSHOT_BEHAVIOR_NONE";
-export const TaskSnapshotBehavior = S.String;
+const TaskSnapshotBehavior = S.String;
 
 export interface TaskInfo {
   id?: string;
@@ -703,7 +698,7 @@ export interface TaskInfo {
   snapshotBehavior?: TaskSnapshotBehavior;
   gpuConfig?: GPUConfig;
 }
-export const TaskInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     startedAt: S.optional(S.Number),
@@ -721,7 +716,7 @@ export interface ResourceInfoResourceValue {
   value?: number;
   isDefault?: boolean;
 }
-export const ResourceInfoResourceValue = /*@__PURE__*/ S.suspend(() =>
+const ResourceInfoResourceValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Number),
     isDefault: S.optional(S.Boolean),
@@ -742,7 +737,7 @@ export interface ResourceInfo {
   /** MiB */
   milliCpuMax?: number;
 }
-export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryMb: S.optional(ResourceInfoResourceValue),
     milliCpu: S.optional(ResourceInfoResourceValue),
@@ -760,7 +755,7 @@ export interface TunnelData {
   unencryptedPort?: number;
   containerPort?: number;
 }
-export const TunnelData = /*@__PURE__*/ S.suspend(() =>
+const TunnelData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     port: S.optional(S.Number),
@@ -771,7 +766,7 @@ export const TunnelData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TunnelData" }) as any as S.Schema<TunnelData>;
 
 export type TunnelDataList = Array<TunnelData>;
-export const TunnelDataList = /*@__PURE__*/ S.Array(TunnelData) as any as S.Schema<TunnelDataList>;
+const TunnelDataList = /*@__PURE__*/ S.Array(TunnelData) as any as S.Schema<TunnelDataList>;
 
 export interface SandboxInfo {
   id?: string;
@@ -792,7 +787,7 @@ export interface SandboxInfo {
   tunnels?: TunnelDataList;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxInfo = /*@__PURE__*/ S.suspend(() =>
+const SandboxInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -813,14 +808,12 @@ export const SandboxInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxInfo" }) as any as S.Schema<SandboxInfo>;
 
 export type SandboxInfoList = Array<SandboxInfo>;
-export const SandboxInfoList = /*@__PURE__*/ S.Array(
-  SandboxInfo,
-) as any as S.Schema<SandboxInfoList>;
+const SandboxInfoList = /*@__PURE__*/ S.Array(SandboxInfo) as any as S.Schema<SandboxInfoList>;
 
 export interface ListSandboxResponse {
   sandboxes?: SandboxInfoList;
 }
-export const ListSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxes: S.optional(SandboxInfoList),
   }),
@@ -830,7 +823,7 @@ export type RestoreSandboxRequestSandboxNameOverrideType =
   | "SANDBOX_NAME_OVERRIDE_TYPE_UNSPECIFIED"
   | "SANDBOX_NAME_OVERRIDE_TYPE_NONE"
   | "SANDBOX_NAME_OVERRIDE_TYPE_STRING";
-export const RestoreSandboxRequestSandboxNameOverrideType = S.String;
+const RestoreSandboxRequestSandboxNameOverrideType = S.String;
 
 export interface RestoreSandboxRequest {
   snapshotId?: string;
@@ -841,7 +834,7 @@ export interface RestoreSandboxRequest {
   replaceVolumeMounts?: boolean;
   volumeMounts?: VolumeMountList;
 }
-export const RestoreSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
     sandboxNameOverride: S.optional(S.String),
@@ -855,14 +848,14 @@ export const RestoreSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreSandboxResponse {
   sandboxId?: string;
 }
-export const RestoreSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const RestoreSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }),
 ).annotate({ identifier: "RestoreSandboxResponse" }) as any as S.Schema<RestoreSandboxResponse>;
 
 export type StringMap2Map = { [key: string]: StringMap2 | undefined };
-export const StringMap2Map = /*@__PURE__*/ S.Record(
+const StringMap2Map = /*@__PURE__*/ S.Record(
   S.String,
   StringMap2,
 ) as any as S.Schema<StringMap2Map>;
@@ -874,7 +867,7 @@ export interface SecretSource {
   /** Plaintext values sent directly to the worker. Must not be persisted. */
   env?: StringMap2;
 }
-export const SecretSource = /*@__PURE__*/ S.suspend(() =>
+const SecretSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.optional(S.String),
     env: S.optional(StringMap2),
@@ -882,9 +875,7 @@ export const SecretSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretSource" }) as any as S.Schema<SecretSource>;
 
 export type SecretSourceList = Array<SecretSource>;
-export const SecretSourceList = /*@__PURE__*/ S.Array(
-  SecretSource,
-) as any as S.Schema<SecretSourceList>;
+const SecretSourceList = /*@__PURE__*/ S.Array(SecretSource) as any as S.Schema<SecretSourceList>;
 
 export interface SandboxContainerCreateV2Request {
   /** Sandbox the container joins; it runs inside that sandbox's task. */
@@ -898,7 +889,7 @@ export interface SandboxContainerCreateV2Request {
   /** Applied in order. Cannot be combined with ephemeral_secrets. If definition.secret_ids is set, it must match the secret_id entries here. */
   secretSources?: SecretSourceList;
 }
-export const SandboxContainerCreateV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxContainerCreateV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     containerName: S.optional(S.String),
@@ -921,7 +912,7 @@ export interface SandboxContainerCreateV2Response {
   containerId?: string;
   containerName?: string;
 }
-export const SandboxContainerCreateV2Response = /*@__PURE__*/ S.suspend(() =>
+const SandboxContainerCreateV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerId: S.optional(S.String),
     containerName: S.optional(S.String),
@@ -936,7 +927,7 @@ export interface SandboxCreateConnectTokenRequest {
   /** Uses port 8080 if unspecified. */
   port?: number;
 }
-export const SandboxCreateConnectTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxCreateConnectTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     userMetadata: S.optional(S.String),
@@ -956,7 +947,7 @@ export interface SandboxCreateConnectTokenResponse {
   url?: string;
   token?: string;
 }
-export const SandboxCreateConnectTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxCreateConnectTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     token: S.optional(S.String),
@@ -971,7 +962,7 @@ export interface SandboxCreateConnectTokenV2Request {
   /** Uses port 8080 if unspecified. */
   port?: number;
 }
-export const SandboxCreateConnectTokenV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxCreateConnectTokenV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     userMetadata: S.optional(S.String),
@@ -991,7 +982,7 @@ export interface SandboxCreateConnectTokenV2Response {
   url?: string;
   token?: string;
 }
-export const SandboxCreateConnectTokenV2Response =
+const SandboxCreateConnectTokenV2Response =
   SandboxCreateConnectTokenResponse as any as S.Schema<SandboxCreateConnectTokenV2Response>;
 
 export interface SandboxCreateV2Request {
@@ -1003,7 +994,7 @@ export interface SandboxCreateV2Request {
   /** Applied in order. Cannot be combined with ephemeral_secrets. If definition.secret_ids is set, it must match the secret_id entries here. */
   secretSources?: SecretSourceList;
 }
-export const SandboxCreateV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxCreateV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     definition: S.optional(Sandbox),
@@ -1019,7 +1010,7 @@ export interface CommandRouterAccess {
   jwt?: string;
   url?: string;
 }
-export const CommandRouterAccess = /*@__PURE__*/ S.suspend(() =>
+const CommandRouterAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwt: S.optional(S.String),
     url: S.optional(S.String),
@@ -1035,7 +1026,7 @@ export interface SandboxCreateV2Response {
   /** Signed app and workspace id of the sandbox. Sent as the x-modal-sandbox-token metadata header. */
   sandboxToken?: string;
 }
-export const SandboxCreateV2Response = /*@__PURE__*/ S.suspend(() =>
+const SandboxCreateV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     tunnels: S.optional(TunnelDataList),
@@ -1050,7 +1041,7 @@ export interface SandboxGetCommandRouterAccessRequest {
   sandboxId?: string;
   taskId?: string;
 }
-export const SandboxGetCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     taskId: S.optional(S.String),
@@ -1071,7 +1062,7 @@ export interface SandboxGetCommandRouterAccessResponse {
   /** Worker's public IPv4 address. When set, clients should connect directly to this IP while still using the URL's hostname for TLS SNI and the HTTP/2 :authority header. */
   workerIpv4Address?: string;
 }
-export const SandboxGetCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwt: S.optional(S.String),
     url: S.optional(S.String),
@@ -1085,7 +1076,7 @@ export interface SandboxGetExitSnapshotRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxGetExitSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetExitSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1099,7 +1090,7 @@ export const SandboxGetExitSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxGetExitSnapshotResponseSuccess {
   imageId?: string;
 }
-export const SandboxGetExitSnapshotResponseSuccess = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetExitSnapshotResponseSuccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
   }),
@@ -1108,9 +1099,7 @@ export const SandboxGetExitSnapshotResponseSuccess = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SandboxGetExitSnapshotResponseSuccess>;
 
 export interface SandboxGetExitSnapshotResponsePending {}
-export const SandboxGetExitSnapshotResponsePending = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const SandboxGetExitSnapshotResponsePending = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SandboxGetExitSnapshotResponsePending",
 }) as any as S.Schema<SandboxGetExitSnapshotResponsePending>;
 
@@ -1119,13 +1108,13 @@ export type SandboxGetExitSnapshotResponseErrorCode =
   | "ERROR_CODE_TIMEOUT"
   | "ERROR_CODE_INTERNAL"
   | "ERROR_CODE_FILESYSTEM_INCONSISTENT";
-export const SandboxGetExitSnapshotResponseErrorCode = S.String;
+const SandboxGetExitSnapshotResponseErrorCode = S.String;
 
 export interface SandboxGetExitSnapshotResponseError {
   errorCode?: SandboxGetExitSnapshotResponseErrorCode;
   message?: string;
 }
-export const SandboxGetExitSnapshotResponseError = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetExitSnapshotResponseError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(SandboxGetExitSnapshotResponseErrorCode),
     message: S.optional(S.String),
@@ -1139,7 +1128,7 @@ export interface SandboxGetExitSnapshotResponse {
   pending?: SandboxGetExitSnapshotResponsePending;
   error?: SandboxGetExitSnapshotResponseError;
 }
-export const SandboxGetExitSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetExitSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(SandboxGetExitSnapshotResponseSuccess),
     pending: S.optional(SandboxGetExitSnapshotResponsePending),
@@ -1153,7 +1142,7 @@ export interface SandboxGetExitSnapshotV2Request {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxGetExitSnapshotV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetExitSnapshotV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1173,7 +1162,7 @@ export interface SandboxGetExitSnapshotV2Response {
   pending?: SandboxGetExitSnapshotResponsePending;
   error?: SandboxGetExitSnapshotResponseError;
 }
-export const SandboxGetExitSnapshotV2Response =
+const SandboxGetExitSnapshotV2Response =
   SandboxGetExitSnapshotResponse as any as S.Schema<SandboxGetExitSnapshotV2Response>;
 
 export interface SandboxGetFromNameRequest {
@@ -1181,7 +1170,7 @@ export interface SandboxGetFromNameRequest {
   environmentName?: string;
   appName?: string;
 }
-export const SandboxGetFromNameRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetFromNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -1197,7 +1186,7 @@ export interface SandboxGetFromNameResponse {
   sandboxId?: string;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxGetFromNameResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetFromNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     metadata: S.optional(SandboxHandleMetadata),
@@ -1211,7 +1200,7 @@ export interface SandboxGetFromNameV2Request {
   environmentName?: string;
   appName?: string;
 }
-export const SandboxGetFromNameV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetFromNameV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -1227,13 +1216,13 @@ export interface SandboxGetFromNameV2Response {
   sandboxId?: string;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxGetFromNameV2Response =
+const SandboxGetFromNameV2Response =
   SandboxGetFromNameResponse as any as S.Schema<SandboxGetFromNameV2Response>;
 
 export interface SandboxGetResourceUsageRequest {
   sandboxId?: string;
 }
-export const SandboxGetResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }).pipe(
@@ -1249,7 +1238,7 @@ export interface SandboxGetResourceUsageResponse {
   gpuNanosecs?: string;
   gpuType?: string;
 }
-export const SandboxGetResourceUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetResourceUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuCoreNanosecs: S.optional(S.String),
     memGibNanosecs: S.optional(S.String),
@@ -1266,7 +1255,7 @@ export interface SandboxGetTaskIdRequest {
   /** Legacy clients do not provide a timeout. New clients must always provide a timeout. */
   waitUntilReady?: boolean;
 }
-export const SandboxGetTaskIdRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetTaskIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1279,7 +1268,7 @@ export interface SandboxGetTaskIdResponse {
   /** This is None if the sandbox was terminated before a task could be scheduled. */
   taskResult?: GenericResult;
 }
-export const SandboxGetTaskIdResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetTaskIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     taskResult: S.optional(GenericResult),
@@ -1292,7 +1281,7 @@ export interface SandboxGetTaskIdV2Request {
   /** Legacy clients do not provide a timeout. New clients must always provide a timeout. */
   waitUntilReady?: boolean;
 }
-export const SandboxGetTaskIdV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetTaskIdV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1309,7 +1298,7 @@ export interface SandboxGetTaskIdV2Response {
   /** This is None if the sandbox was terminated before a task could be scheduled. */
   taskResult?: GenericResult;
 }
-export const SandboxGetTaskIdV2Response = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetTaskIdV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     taskResult: S.optional(GenericResult),
@@ -1322,7 +1311,7 @@ export interface SandboxGetTunnelsRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxGetTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1335,7 +1324,7 @@ export interface SandboxGetTunnelsResponse {
   result?: GenericResult;
   tunnels?: TunnelDataList;
 }
-export const SandboxGetTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     tunnels: S.optional(TunnelDataList),
@@ -1348,7 +1337,7 @@ export interface SandboxGetTunnelsV2Request {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxGetTunnelsV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxGetTunnelsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1363,7 +1352,7 @@ export interface SandboxGetTunnelsV2Response {
   result?: GenericResult;
   tunnels?: TunnelDataList;
 }
-export const SandboxGetTunnelsV2Response =
+const SandboxGetTunnelsV2Response =
   SandboxGetTunnelsResponse as any as S.Schema<SandboxGetTunnelsV2Response>;
 
 export interface SandboxListV2Request {
@@ -1373,7 +1362,7 @@ export interface SandboxListV2Request {
   includeFinished?: boolean;
   tags?: SandboxTagList;
 }
-export const SandboxListV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxListV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     beforeTimestamp: S.optional(S.Number),
@@ -1386,7 +1375,7 @@ export const SandboxListV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxListV2Response {
   sandboxes?: SandboxInfoList;
 }
-export const SandboxListV2Response = ListSandboxResponse as any as S.Schema<SandboxListV2Response>;
+const SandboxListV2Response = ListSandboxResponse as any as S.Schema<SandboxListV2Response>;
 
 export interface SandboxRestoreV2Request {
   snapshotId?: string;
@@ -1394,7 +1383,7 @@ export interface SandboxRestoreV2Request {
   sandboxNameOverrideType?: RestoreSandboxRequestSandboxNameOverrideType | (string & {});
   workerId?: string;
 }
-export const SandboxRestoreV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxRestoreV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
     sandboxNameOverride: S.optional(S.String),
@@ -1410,7 +1399,7 @@ export interface SandboxRestoreV2Response {
   metadata?: SandboxHandleMetadata;
   commandRouterAccess?: CommandRouterAccess;
 }
-export const SandboxRestoreV2Response = /*@__PURE__*/ S.suspend(() =>
+const SandboxRestoreV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     tunnels: S.optional(TunnelDataList),
@@ -1424,7 +1413,7 @@ export interface SandboxSetNameRequest {
   sandboxId?: string;
   name?: string;
 }
-export const SandboxSetNameRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxSetNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1432,14 +1421,14 @@ export const SandboxSetNameRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxSetNameRequest" }) as any as S.Schema<SandboxSetNameRequest>;
 
 export interface SandboxSetNameResponse {}
-export const SandboxSetNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SandboxSetNameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SandboxSetNameResponse",
 }) as any as S.Schema<SandboxSetNameResponse>;
 
 export interface SandboxSnapshotRequest {
   sandboxId?: string;
 }
-export const SandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SandboxSnapshot", code: 200 })),
@@ -1448,7 +1437,7 @@ export const SandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxSnapshotResponse {
   snapshotId?: string;
 }
-export const SandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
   }),
@@ -1458,7 +1447,7 @@ export interface SandboxSnapshotFsRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxSnapshotFsRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxSnapshotFsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1473,13 +1462,13 @@ export interface SandboxSnapshotFsResponse {
   /** Metadata may be empty since we may skip it for performance reasons. */
   imageMetadata?: ImageMetadata;
 }
-export const SandboxSnapshotFsResponse =
+const SandboxSnapshotFsResponse =
   GetSandboxSnapshotFsAsyncResponse as any as S.Schema<SandboxSnapshotFsResponse>;
 
 export interface SandboxSnapshotFsAsyncRequest {
   sandboxId?: string;
 }
-export const SandboxSnapshotFsAsyncRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxSnapshotFsAsyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }).pipe(
@@ -1492,7 +1481,7 @@ export const SandboxSnapshotFsAsyncRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxSnapshotFsAsyncResponse {
   imageId?: string;
 }
-export const SandboxSnapshotFsAsyncResponse =
+const SandboxSnapshotFsAsyncResponse =
   SandboxGetExitSnapshotResponseSuccess as any as S.Schema<SandboxSnapshotFsAsyncResponse>;
 
 export interface SandboxStdinWriteRequest {
@@ -1501,7 +1490,7 @@ export interface SandboxStdinWriteRequest {
   index?: number;
   eof?: boolean;
 }
-export const SandboxStdinWriteRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxStdinWriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     input: S.optional(S.String),
@@ -1513,13 +1502,13 @@ export const SandboxStdinWriteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxStdinWriteRequest" }) as any as S.Schema<SandboxStdinWriteRequest>;
 
 export interface SandboxStdinWriteResponse {}
-export const SandboxStdinWriteResponse =
+const SandboxStdinWriteResponse =
   SandboxSetNameResponse as any as S.Schema<SandboxStdinWriteResponse>;
 
 export interface SandboxTagsGetV2Request {
   sandboxId?: string;
 }
-export const SandboxTagsGetV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxTagsGetV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SandboxTagsGetV2", code: 200 })),
@@ -1528,15 +1517,14 @@ export const SandboxTagsGetV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxTagsGetV2Response {
   tags?: SandboxTagList;
 }
-export const SandboxTagsGetV2Response =
-  GetSandboxTagResponse as any as S.Schema<SandboxTagsGetV2Response>;
+const SandboxTagsGetV2Response = GetSandboxTagResponse as any as S.Schema<SandboxTagsGetV2Response>;
 
 export interface SandboxTagsSetV2Request {
   environmentName?: string;
   sandboxId?: string;
   tags?: SandboxTagList;
 }
-export const SandboxTagsSetV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxTagsSetV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     sandboxId: S.optional(S.String),
@@ -1545,13 +1533,13 @@ export const SandboxTagsSetV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxTagsSetV2Request" }) as any as S.Schema<SandboxTagsSetV2Request>;
 
 export interface SandboxTagsSetV2Response {}
-export const SandboxTagsSetV2Response =
+const SandboxTagsSetV2Response =
   SandboxSetNameResponse as any as S.Schema<SandboxTagsSetV2Response>;
 
 export interface SandboxTerminateV2Request {
   sandboxId?: string;
 }
-export const SandboxTerminateV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxTerminateV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }).pipe(
@@ -1564,7 +1552,7 @@ export const SandboxTerminateV2Request = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxTerminateV2Response {
   existingResult?: GenericResult;
 }
-export const SandboxTerminateV2Response = /*@__PURE__*/ S.suspend(() =>
+const SandboxTerminateV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     existingResult: S.optional(GenericResult),
   }),
@@ -1576,7 +1564,7 @@ export interface SandboxWaitUntilReadyRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxWaitUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxWaitUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1590,7 +1578,7 @@ export const SandboxWaitUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxWaitUntilReadyResponse {
   readyAt?: number;
 }
-export const SandboxWaitUntilReadyResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxWaitUntilReadyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readyAt: S.optional(S.Number),
   }),
@@ -1602,7 +1590,7 @@ export interface SandboxWaitV2Request {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxWaitV2Request = /*@__PURE__*/ S.suspend(() =>
+const SandboxWaitV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1613,7 +1601,7 @@ export interface SandboxWaitV2Response {
   result?: GenericResult;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxWaitV2Response = /*@__PURE__*/ S.suspend(() =>
+const SandboxWaitV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     metadata: S.optional(SandboxHandleMetadata),
@@ -1625,7 +1613,7 @@ export interface SetSandboxTagRequest {
   sandboxId?: string;
   tags?: SandboxTagList;
 }
-export const SetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     sandboxId: S.optional(S.String),
@@ -1634,13 +1622,12 @@ export const SetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetSandboxTagRequest" }) as any as S.Schema<SetSandboxTagRequest>;
 
 export interface SetSandboxTagResponse {}
-export const SetSandboxTagResponse =
-  SandboxSetNameResponse as any as S.Schema<SetSandboxTagResponse>;
+const SetSandboxTagResponse = SandboxSetNameResponse as any as S.Schema<SetSandboxTagResponse>;
 
 export interface TerminateSandboxRequest {
   sandboxId?: string;
 }
-export const TerminateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SandboxTerminate", code: 200 })),
@@ -1649,7 +1636,7 @@ export const TerminateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TerminateSandboxResponse {
   existingResult?: GenericResult;
 }
-export const TerminateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const TerminateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     existingResult: S.optional(GenericResult),
   }),
@@ -1659,7 +1646,7 @@ export interface WaitSandboxRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const WaitSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1670,13 +1657,13 @@ export interface WaitSandboxResponse {
   result?: GenericResult;
   metadata?: SandboxHandleMetadata;
 }
-export const WaitSandboxResponse = SandboxWaitV2Response as any as S.Schema<WaitSandboxResponse>;
+const WaitSandboxResponse = SandboxWaitV2Response as any as S.Schema<WaitSandboxResponse>;
 
 export interface WaitSandboxSnapshotRequest {
   snapshotId?: string;
   timeout?: number;
 }
-export const WaitSandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitSandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1690,7 +1677,7 @@ export const WaitSandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface WaitSandboxSnapshotResponse {
   result?: GenericResult;
 }
-export const WaitSandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const WaitSandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
   }),

@@ -51,7 +51,7 @@ export interface AccountViewsDestroyRequest {
   /** Version returned by the last read. */
   version: number;
 }
-export const AccountViewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountViewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -64,17 +64,17 @@ export const AccountViewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountViewsDestroyRequest>;
 
 export interface AccountViewsDestroyResponse {}
-export const AccountViewsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AccountViewsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AccountViewsDestroyResponse",
 }) as any as S.Schema<AccountViewsDestroyResponse>;
 
 /** * `doc` - doc */
 export type AccountViewContentTypeEnum = "doc";
-export const AccountViewContentTypeEnum = S.String;
+const AccountViewContentTypeEnum = S.String;
 
 /** * `ph-markdown-notebook` - ph-markdown-notebook */
 export type AccountViewMarkdownNodeTypeEnum = "ph-markdown-notebook";
-export const AccountViewMarkdownNodeTypeEnum = S.String;
+const AccountViewMarkdownNodeTypeEnum = S.String;
 
 export interface AccountViewMarkdownAttributes {
   /** Stable identifier for this document. */
@@ -82,7 +82,7 @@ export interface AccountViewMarkdownAttributes {
   /** Component-only Markdown stored by the account view editor. */
   markdown: string;
 }
-export const AccountViewMarkdownAttributes = /*@__PURE__*/ S.suspend(() =>
+const AccountViewMarkdownAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeId: S.String,
     markdown: S.String,
@@ -97,7 +97,7 @@ export interface AccountViewMarkdownNode {
   /** Markdown notebook attributes. */
   attrs: AccountViewMarkdownAttributes;
 }
-export const AccountViewMarkdownNode = /*@__PURE__*/ S.suspend(() =>
+const AccountViewMarkdownNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AccountViewMarkdownNodeTypeEnum,
     attrs: AccountViewMarkdownAttributes,
@@ -106,7 +106,7 @@ export const AccountViewMarkdownNode = /*@__PURE__*/ S.suspend(() =>
 
 /** The single Markdown notebook node containing the account view components. */
 export type AccountViewContentContentList = Array<AccountViewMarkdownNode>;
-export const AccountViewContentContentList = /*@__PURE__*/ S.Array(
+const AccountViewContentContentList = /*@__PURE__*/ S.Array(
   AccountViewMarkdownNode,
 ) as any as S.Schema<AccountViewContentContentList>;
 
@@ -116,7 +116,7 @@ export interface AccountViewContent {
   /** The single Markdown notebook node containing the account view components. */
   content: AccountViewContentContentList;
 }
-export const AccountViewContent = /*@__PURE__*/ S.suspend(() =>
+const AccountViewContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AccountViewContentTypeEnum,
     content: AccountViewContentContentList,
@@ -131,7 +131,7 @@ export interface CreateAccountViewRequest {
   /** Initial account view components. */
   content: AccountViewContent;
 }
-export const CreateAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -141,7 +141,7 @@ export const CreateAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `private` - Personal * `team` - Team */
 export type AccountViewVisibilityEnum = "private" | "team";
-export const AccountViewVisibilityEnum = S.String;
+const AccountViewVisibilityEnum = S.String;
 
 export interface AccountView {
   /** Stable account view identifier. */
@@ -171,7 +171,7 @@ export interface AccountView {
   /** Whether the requesting user can change the view visibility. */
   can_change_visibility: boolean;
 }
-export const AccountView = /*@__PURE__*/ S.suspend(() =>
+const AccountView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -194,7 +194,7 @@ export interface GetAccountViewRequest {
   project_id: string;
   id: string;
 }
-export const GetAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -207,19 +207,19 @@ export interface ListAccountViewsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListAccountViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/account_views/", code: 200 })),
 ).annotate({ identifier: "ListAccountViewsRequest" }) as any as S.Schema<ListAccountViewsRequest>;
 
 export type ListAccountViewsResponseBodyList = Array<AccountView>;
-export const ListAccountViewsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAccountViewsResponseBodyList = /*@__PURE__*/ S.Array(
   AccountView,
 ) as any as S.Schema<ListAccountViewsResponseBodyList>;
 
 export type ListAccountViewsResponse = ListAccountViewsResponseBodyList;
-export const ListAccountViewsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountViewsResponse = /*@__PURE__*/ S.suspend(() =>
   ListAccountViewsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListAccountViewsResponse" }) as any as S.Schema<ListAccountViewsResponse>;
 
@@ -236,7 +236,7 @@ export interface UpdateAccountViewsPartialRequest {
   /** Version returned by the last read. */
   version: number;
 }
-export const UpdateAccountViewsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountViewsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

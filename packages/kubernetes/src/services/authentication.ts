@@ -35,14 +35,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -50,7 +50,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -70,7 +70,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -87,7 +87,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -106,7 +106,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -122,7 +122,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -159,7 +159,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -182,21 +182,21 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
 
 export type IoK8sApiAuthenticationV1UserInfoExtraValueList = Array<string>;
-export const IoK8sApiAuthenticationV1UserInfoExtraValueList =
+const IoK8sApiAuthenticationV1UserInfoExtraValueList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1UserInfoExtraValueList>;
 
 /** extra is any additional information provided by the authenticator. */
 export type IoK8sApiAuthenticationV1UserInfoExtraMap = {
   [key: string]: IoK8sApiAuthenticationV1UserInfoExtraValueList | undefined;
 };
-export const IoK8sApiAuthenticationV1UserInfoExtraMap = /*@__PURE__*/ S.Record(
+const IoK8sApiAuthenticationV1UserInfoExtraMap = /*@__PURE__*/ S.Record(
   S.String,
   IoK8sApiAuthenticationV1UserInfoExtraValueList,
 ) as any as S.Schema<IoK8sApiAuthenticationV1UserInfoExtraMap>;
 
 /** groups is the names of groups this user is a part of. */
 export type IoK8sApiAuthenticationV1UserInfoGroupsList = Array<string>;
-export const IoK8sApiAuthenticationV1UserInfoGroupsList =
+const IoK8sApiAuthenticationV1UserInfoGroupsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1UserInfoGroupsList>;
 
 /** UserInfo holds the information about the user needed to implement the user.Info interface. */
@@ -210,7 +210,7 @@ export interface IoK8sApiAuthenticationV1UserInfo {
   /** username is the name that uniquely identifies this user among all active users. */
   username?: string;
 }
-export const IoK8sApiAuthenticationV1UserInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAuthenticationV1UserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extra: S.optional(IoK8sApiAuthenticationV1UserInfoExtraMap),
     groups: S.optional(IoK8sApiAuthenticationV1UserInfoGroupsList),
@@ -226,7 +226,7 @@ export interface IoK8sApiAuthenticationV1SelfSubjectReviewStatus {
   /** userInfo is a set of attributes belonging to the user making this request. */
   userInfo?: IoK8sApiAuthenticationV1UserInfo;
 }
-export const IoK8sApiAuthenticationV1SelfSubjectReviewStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAuthenticationV1SelfSubjectReviewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userInfo: S.optional(IoK8sApiAuthenticationV1UserInfo),
   }),
@@ -252,7 +252,7 @@ export interface CreateAuthenticationV1SelfSubjectReviewRequest {
   /** status is filled in by the server with the user attributes. */
   status?: IoK8sApiAuthenticationV1SelfSubjectReviewStatus;
 }
-export const CreateAuthenticationV1SelfSubjectReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthenticationV1SelfSubjectReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dryRun: S.optional(S.String.pipe(T.Query())),
     fieldManager: S.optional(S.String.pipe(T.Query())),
@@ -280,7 +280,7 @@ export interface IoK8sApiAuthenticationV1SelfSubjectReview {
   /** status is filled in by the server with the user attributes. */
   status?: IoK8sApiAuthenticationV1SelfSubjectReviewStatus;
 }
-export const IoK8sApiAuthenticationV1SelfSubjectReview = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAuthenticationV1SelfSubjectReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -293,7 +293,7 @@ export const IoK8sApiAuthenticationV1SelfSubjectReview = /*@__PURE__*/ S.suspend
 
 /** audiences is a list of the identifiers that the resource server presented with the token identifies as. Audience-aware token authenticators will verify that the token was intended for at least one of the audiences in this list. If no audiences are provided, the audience will default to the audience of the Kubernetes apiserver. */
 export type IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList = Array<string>;
-export const IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList =
+const IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList>;
 
 /** TokenReviewSpec is a description of the token authentication request. */
@@ -303,7 +303,7 @@ export interface IoK8sApiAuthenticationV1TokenReviewSpec {
   /** token is the opaque bearer token. */
   token: string;
 }
-export const IoK8sApiAuthenticationV1TokenReviewSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAuthenticationV1TokenReviewSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audiences: S.optional(IoK8sApiAuthenticationV1TokenReviewSpecAudiencesList),
     token: S.String,
@@ -314,7 +314,7 @@ export const IoK8sApiAuthenticationV1TokenReviewSpec = /*@__PURE__*/ S.suspend((
 
 /** audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token's audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server. */
 export type IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList = Array<string>;
-export const IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList =
+const IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList>;
 
 /** TokenReviewStatus is the result of the token authentication request. */
@@ -328,7 +328,7 @@ export interface IoK8sApiAuthenticationV1TokenReviewStatus {
   /** user is the UserInfo associated with the provided token. */
   user?: IoK8sApiAuthenticationV1UserInfo;
 }
-export const IoK8sApiAuthenticationV1TokenReviewStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAuthenticationV1TokenReviewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audiences: S.optional(IoK8sApiAuthenticationV1TokenReviewStatusAudiencesList),
     authenticated: S.optional(S.Boolean),
@@ -359,7 +359,7 @@ export interface CreateAuthenticationV1TokenReviewRequest {
   /** status is filled in by the server and indicates whether the request can be authenticated. */
   status?: IoK8sApiAuthenticationV1TokenReviewStatus;
 }
-export const CreateAuthenticationV1TokenReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthenticationV1TokenReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dryRun: S.optional(S.String.pipe(T.Query())),
     fieldManager: S.optional(S.String.pipe(T.Query())),
@@ -390,7 +390,7 @@ export interface IoK8sApiAuthenticationV1TokenReview {
   /** status is filled in by the server and indicates whether the request can be authenticated. */
   status?: IoK8sApiAuthenticationV1TokenReviewStatus;
 }
-export const IoK8sApiAuthenticationV1TokenReview = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiAuthenticationV1TokenReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -403,7 +403,7 @@ export const IoK8sApiAuthenticationV1TokenReview = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiAuthenticationV1TokenReview>;
 
 export interface GetAuthenticationAPIGroupRequest {}
-export const GetAuthenticationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/authentication.k8s.io/", code: 200 })),
 ).annotate({
   identifier: "GetAuthenticationAPIGroupRequest",
@@ -416,7 +416,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -432,7 +432,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -444,15 +444,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -471,7 +470,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -487,7 +486,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetAuthenticationV1APIResourcesRequest {}
-export const GetAuthenticationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/authentication.k8s.io/v1/", code: 200 })),
 ).annotate({
   identifier: "GetAuthenticationV1APIResourcesRequest",
@@ -495,17 +494,17 @@ export const GetAuthenticationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(()
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -531,7 +530,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -551,7 +550,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -566,7 +565,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,

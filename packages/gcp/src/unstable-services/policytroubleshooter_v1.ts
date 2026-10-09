@@ -70,7 +70,7 @@ export interface GoogleCloudPolicytroubleshooterV1AccessTuple {
   /** Required. The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
   fullResourceName?: string;
 }
-export const GoogleCloudPolicytroubleshooterV1AccessTuple = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicytroubleshooterV1AccessTuple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission: S.optional(S.String),
     principal: S.optional(S.String),
@@ -85,20 +85,19 @@ export interface GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
   /** The information to use for checking whether a principal has a permission for a resource. */
   accessTuple?: GoogleCloudPolicytroubleshooterV1AccessTuple;
 }
-export const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessTuple: S.optional(GoogleCloudPolicytroubleshooterV1AccessTuple),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest",
-  }) as any as S.Schema<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest>;
+const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessTuple: S.optional(GoogleCloudPolicytroubleshooterV1AccessTuple),
+  }),
+).annotate({
+  identifier: "GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest",
+}) as any as S.Schema<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest>;
 
 export interface TroubleshootIamRequest {
   /** Request body */
   body?: GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest;
 }
-export const TroubleshootIamRequest = /*@__PURE__*/ S.suspend(() =>
+const TroubleshootIamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(
       GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest.pipe(T.HttpBody()),
@@ -118,26 +117,25 @@ export type GoogleCloudPolicytroubleshooterV1ExplainedPolicyAccessEnum =
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
   | "UNKNOWN_INFO_DENIED";
-export const GoogleCloudPolicytroubleshooterV1ExplainedPolicyAccessEnum = S.String;
+const GoogleCloudPolicytroubleshooterV1ExplainedPolicyAccessEnum = S.String;
 
 export type GoogleCloudPolicytroubleshooterV1ExplainedPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
   | "HIGH";
-export const GoogleCloudPolicytroubleshooterV1ExplainedPolicyRelevanceEnum = S.String;
+const GoogleCloudPolicytroubleshooterV1ExplainedPolicyRelevanceEnum = S.String;
 
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
   | "HIGH";
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionRelevanceEnum =
-  S.String;
+const GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionRelevanceEnum = S.String;
 
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
   | "HIGH";
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationRelevanceEnum = S.String;
+const GoogleCloudPolicytroubleshooterV1BindingExplanationRelevanceEnum = S.String;
 
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipMembershipEnum =
   | "MEMBERSHIP_UNSPECIFIED"
@@ -145,14 +143,14 @@ export type GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembersh
   | "MEMBERSHIP_NOT_INCLUDED"
   | "MEMBERSHIP_UNKNOWN_INFO_DENIED"
   | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipMembershipEnum =
+const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipMembershipEnum =
   S.String;
 
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
   | "HIGH";
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipRelevanceEnum =
+const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipRelevanceEnum =
   S.String;
 
 /** Details about whether the binding includes the principal. */
@@ -162,7 +160,7 @@ export interface GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMem
   /** The relevance of the principal's status to the overall determination for the binding. */
   relevance?: GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipRelevanceEnum;
 }
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership =
+const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       membership: S.optional(
@@ -179,7 +177,7 @@ export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembers
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipMap = {
   [key: string]: GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership | undefined;
 };
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipMap =
+const GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembershipMap =
   /*@__PURE__*/ S.Record(
     S.String,
     GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership,
@@ -190,7 +188,7 @@ export type GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionEnu
   | "ROLE_PERMISSION_INCLUDED"
   | "ROLE_PERMISSION_NOT_INCLUDED"
   | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED";
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionEnum = S.String;
+const GoogleCloudPolicytroubleshooterV1BindingExplanationRolePermissionEnum = S.String;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleTypeExpr {
@@ -203,7 +201,7 @@ export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     title: S.optional(S.String),
@@ -218,7 +216,7 @@ export type GoogleCloudPolicytroubleshooterV1BindingExplanationAccessEnum =
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
   | "UNKNOWN_INFO_DENIED";
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationAccessEnum = S.String;
+const GoogleCloudPolicytroubleshooterV1BindingExplanationAccessEnum = S.String;
 
 /** Details about how a binding in a policy affects a principal's ability to use a permission. */
 export interface GoogleCloudPolicytroubleshooterV1BindingExplanation {
@@ -237,7 +235,7 @@ export interface GoogleCloudPolicytroubleshooterV1BindingExplanation {
   /** Required. Indicates whether _this binding_ provides the specified permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal actually has the permission for the resource. There might be another binding that overrides this binding. To determine whether the principal actually has the permission, use the `access` field in the TroubleshootIamPolicyResponse. */
   access?: GoogleCloudPolicytroubleshooterV1BindingExplanationAccessEnum;
 }
-export const GoogleCloudPolicytroubleshooterV1BindingExplanation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicytroubleshooterV1BindingExplanation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     rolePermissionRelevance: S.optional(
@@ -259,7 +257,7 @@ export const GoogleCloudPolicytroubleshooterV1BindingExplanation = /*@__PURE__*/
 
 export type GoogleCloudPolicytroubleshooterV1BindingExplanationList =
   Array<GoogleCloudPolicytroubleshooterV1BindingExplanation>;
-export const GoogleCloudPolicytroubleshooterV1BindingExplanationList = /*@__PURE__*/ S.Array(
+const GoogleCloudPolicytroubleshooterV1BindingExplanationList = /*@__PURE__*/ S.Array(
   GoogleCloudPolicytroubleshooterV1BindingExplanation,
 ) as any as S.Schema<GoogleCloudPolicytroubleshooterV1BindingExplanationList>;
 
@@ -268,10 +266,10 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
+const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
@@ -280,7 +278,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -290,7 +288,7 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
 
@@ -301,7 +299,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
@@ -309,7 +307,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1AuditConfig" }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
+const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
 
@@ -322,7 +320,7 @@ export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(GoogleTypeExpr),
     role: S.optional(S.String),
@@ -331,7 +329,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
+const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
 
@@ -346,7 +344,7 @@ export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditConfigs: S.optional(GoogleIamV1AuditConfigList),
     etag: S.optional(S.String),
@@ -368,7 +366,7 @@ export interface GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
   /** The IAM policy attached to the resource. If the sender of the request does not have access to the policy, this field is empty. */
   policy?: GoogleIamV1Policy;
 }
-export const GoogleCloudPolicytroubleshooterV1ExplainedPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicytroubleshooterV1ExplainedPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullResourceName: S.optional(S.String),
     access: S.optional(GoogleCloudPolicytroubleshooterV1ExplainedPolicyAccessEnum),
@@ -382,20 +380,15 @@ export const GoogleCloudPolicytroubleshooterV1ExplainedPolicy = /*@__PURE__*/ S.
 
 export type GoogleCloudPolicytroubleshooterV1ExplainedPolicyList =
   Array<GoogleCloudPolicytroubleshooterV1ExplainedPolicy>;
-export const GoogleCloudPolicytroubleshooterV1ExplainedPolicyList = /*@__PURE__*/ S.Array(
+const GoogleCloudPolicytroubleshooterV1ExplainedPolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudPolicytroubleshooterV1ExplainedPolicy,
 ) as any as S.Schema<GoogleCloudPolicytroubleshooterV1ExplainedPolicyList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -406,7 +399,7 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -415,7 +408,7 @@ export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleRpcStatus" }) as any as S.Schema<GoogleRpcStatus>;
 
 export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
-export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
+const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
 
@@ -425,7 +418,7 @@ export type GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponseAccess
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
   | "UNKNOWN_INFO_DENIED";
-export const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponseAccessEnum = S.String;
+const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponseAccessEnum = S.String;
 
 /** Response for TroubleshootIamPolicy. */
 export interface GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
@@ -436,16 +429,15 @@ export interface GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse 
   /** Indicates whether the principal has the specified permission for the specified resource, based on evaluating all of the applicable IAM policies. */
   access?: GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponseAccessEnum;
 }
-export const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      explainedPolicies: S.optional(GoogleCloudPolicytroubleshooterV1ExplainedPolicyList),
-      errors: S.optional(GoogleRpcStatusList),
-      access: S.optional(GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponseAccessEnum),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse",
-  }) as any as S.Schema<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse>;
+const GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    explainedPolicies: S.optional(GoogleCloudPolicytroubleshooterV1ExplainedPolicyList),
+    errors: S.optional(GoogleRpcStatusList),
+    access: S.optional(GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponseAccessEnum),
+  }),
+).annotate({
+  identifier: "GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse",
+}) as any as S.Schema<GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse>;
 
 export type TroubleshootIamError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Checks whether a principal has a specific permission for a specific resource, and explains why the principal does or does not have that permission. */

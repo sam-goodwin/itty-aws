@@ -13,7 +13,7 @@ export interface GetLoadBalancerTypeRequest {
   /** ID of the Load Balancer Type. */
   id: number;
 }
-export const GetLoadBalancerTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/load_balancer_types/{id}", code: 200 })),
@@ -28,7 +28,7 @@ export interface GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
-export const GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unavailable_after: S.String,
     announced: S.String,
@@ -44,28 +44,22 @@ export interface GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourl
   /** Price with VAT added. */
   gross: string;
 }
-export const GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly =
-  /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       net: S.String,
       gross: S.String,
     }),
-  ).annotate({
-    identifier: "GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly",
-  }) as any as S.Schema<GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly>;
+).annotate({
+  identifier: "GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly",
+}) as any as S.Schema<GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly>;
 
 /** Monthly price in this [Location](#tag/locations). */
 export type GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceMonthly =
   GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-export const GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceMonthly =
-  GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-
 /** Additional traffic price per TB in this [Location](#tag/locations). */
 export type GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPricePerTbTraffic =
   GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-export const GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPricePerTbTraffic =
-  GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-
 export interface GetLoadBalancerTypeResponseLoadBalancerTypePricesItem {
   /** Name of the [Location](#tag/locations) the price is for. */
   location: string;
@@ -78,7 +72,7 @@ export interface GetLoadBalancerTypeResponseLoadBalancerTypePricesItem {
   /** Additional traffic price per TB in this [Location](#tag/locations). */
   price_per_tb_traffic: GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
 }
-export const GetLoadBalancerTypeResponseLoadBalancerTypePricesItem = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerTypeResponseLoadBalancerTypePricesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String,
     price_hourly: GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly,
@@ -93,7 +87,7 @@ export const GetLoadBalancerTypeResponseLoadBalancerTypePricesItem = /*@__PURE__
 /** Price per [Location](#tag/locations). */
 export type GetLoadBalancerTypeResponseLoadBalancerTypePricesList =
   Array<GetLoadBalancerTypeResponseLoadBalancerTypePricesItem>;
-export const GetLoadBalancerTypeResponseLoadBalancerTypePricesList = /*@__PURE__*/ S.Array(
+const GetLoadBalancerTypeResponseLoadBalancerTypePricesList = /*@__PURE__*/ S.Array(
   GetLoadBalancerTypeResponseLoadBalancerTypePricesItem,
 ) as any as S.Schema<GetLoadBalancerTypeResponseLoadBalancerTypePricesList>;
 
@@ -119,7 +113,7 @@ export interface GetLoadBalancerTypeResponseLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: GetLoadBalancerTypeResponseLoadBalancerTypePricesList;
 }
-export const GetLoadBalancerTypeResponseLoadBalancerType = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerTypeResponseLoadBalancerType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -139,7 +133,7 @@ export const GetLoadBalancerTypeResponseLoadBalancerType = /*@__PURE__*/ S.suspe
 export interface GetLoadBalancerTypeResponse {
   load_balancer_type: GetLoadBalancerTypeResponseLoadBalancerType;
 }
-export const GetLoadBalancerTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     load_balancer_type: GetLoadBalancerTypeResponseLoadBalancerType,
   }),
@@ -155,7 +149,7 @@ export interface ListLoadBalancerTypesRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListLoadBalancerTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancerTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -168,38 +162,20 @@ export const ListLoadBalancerTypesRequest = /*@__PURE__*/ S.suspend(() =>
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type ListLoadBalancerTypesResponseLoadBalancerTypesItemDeprecation =
   GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation;
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItemDeprecation =
-  GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation;
-
 /** Hourly price in this [Location](#tag/locations). */
 export type ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItemPriceHourly =
   GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItemPriceHourly =
-  GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItemPriceMonthly =
   GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItemPriceMonthly =
-  GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-
 /** Additional traffic price per TB in this [Location](#tag/locations). */
 export type ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItemPricePerTbTraffic =
   GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItemPricePerTbTraffic =
-  GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
-
 export type ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItem =
   GetLoadBalancerTypeResponseLoadBalancerTypePricesItem;
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesItem =
-  GetLoadBalancerTypeResponseLoadBalancerTypePricesItem;
-
 /** Price per [Location](#tag/locations). */
 export type ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList =
   Array<GetLoadBalancerTypeResponseLoadBalancerTypePricesItem>;
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList =
-  GetLoadBalancerTypeResponseLoadBalancerTypePricesList as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList>;
-
 export interface ListLoadBalancerTypesResponseLoadBalancerTypesItem {
   /** ID of the Load Balancer type. */
   id: number;
@@ -222,12 +198,12 @@ export interface ListLoadBalancerTypesResponseLoadBalancerTypesItem {
   /** Price per [Location](#tag/locations). */
   prices: ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList;
 }
-export const ListLoadBalancerTypesResponseLoadBalancerTypesItem =
+const ListLoadBalancerTypesResponseLoadBalancerTypesItem =
   GetLoadBalancerTypeResponseLoadBalancerType as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesItem>;
 
 export type ListLoadBalancerTypesResponseLoadBalancerTypesList =
   Array<ListLoadBalancerTypesResponseLoadBalancerTypesItem>;
-export const ListLoadBalancerTypesResponseLoadBalancerTypesList = /*@__PURE__*/ S.Array(
+const ListLoadBalancerTypesResponseLoadBalancerTypesList = /*@__PURE__*/ S.Array(
   ListLoadBalancerTypesResponseLoadBalancerTypesItem,
 ) as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesList>;
 
@@ -246,7 +222,7 @@ export interface ListLoadBalancerTypesResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListLoadBalancerTypesResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancerTypesResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -263,7 +239,7 @@ export interface ListLoadBalancerTypesResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListLoadBalancerTypesResponseMetaPagination;
 }
-export const ListLoadBalancerTypesResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancerTypesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListLoadBalancerTypesResponseMetaPagination,
   }),
@@ -275,7 +251,7 @@ export interface ListLoadBalancerTypesResponse {
   load_balancer_types: ListLoadBalancerTypesResponseLoadBalancerTypesList;
   meta: ListLoadBalancerTypesResponseMeta;
 }
-export const ListLoadBalancerTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancerTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     load_balancer_types: ListLoadBalancerTypesResponseLoadBalancerTypesList,
     meta: ListLoadBalancerTypesResponseMeta,

@@ -39,7 +39,7 @@ export interface CnisCreateRequestMagic {
   description: string;
   mtu: number;
 }
-export const CnisCreateRequestMagic = /*@__PURE__*/ S.suspend(() =>
+const CnisCreateRequestMagic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conduitName: S.String.pipe(T.Body("conduit_name")),
     description: S.String,
@@ -48,7 +48,7 @@ export const CnisCreateRequestMagic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CnisCreateRequestMagic" }) as any as S.Schema<CnisCreateRequestMagic>;
 
 export type CnisCreateRequestBgpExtraPrefixesList = Array<string>;
-export const CnisCreateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
+const CnisCreateRequestBgpExtraPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CnisCreateRequestBgpExtraPrefixesList>;
 
@@ -60,7 +60,7 @@ export interface CnisCreateRequestBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string;
 }
-export const CnisCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
+const CnisCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAsn: S.Number.pipe(T.Body("customer_asn")),
     extraPrefixes: CnisCreateRequestBgpExtraPrefixesList.pipe(T.Body("extra_prefixes")),
@@ -77,7 +77,7 @@ export interface CreateCniRequest {
   magic: CnisCreateRequestMagic;
   bgp?: CnisCreateRequestBgp;
 }
-export const CreateCniRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCniRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     account: S.String,
@@ -90,10 +90,8 @@ export const CreateCniRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCniRequest" }) as any as S.Schema<CreateCniRequest>;
 
 export type CnisCreateResponseMagic = CnisCreateRequestMagic;
-export const CnisCreateResponseMagic = CnisCreateRequestMagic;
-
 export type CnisCreateResponseBgpExtraPrefixesList = Array<string>;
-export const CnisCreateResponseBgpExtraPrefixesList =
+const CnisCreateResponseBgpExtraPrefixesList =
   CnisCreateRequestBgpExtraPrefixesList as any as S.Schema<CnisCreateResponseBgpExtraPrefixesList>;
 
 export interface CnisCreateResponseBgp {
@@ -104,7 +102,7 @@ export interface CnisCreateResponseBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const CnisCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
+const CnisCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAsn: S.Number.pipe(T.Body("customer_asn")),
     extraPrefixes: CnisCreateResponseBgpExtraPrefixesList.pipe(T.Body("extra_prefixes")),
@@ -113,7 +111,7 @@ export const CnisCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CnisCreateResponseBgp" }) as any as S.Schema<CnisCreateResponseBgp>;
 
 export type CnisCreateResponseBgpMode = "dynamic_route_exchange" | "advertise_only";
-export const CnisCreateResponseBgpMode = S.String;
+const CnisCreateResponseBgpMode = S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateCniResponse {
@@ -131,7 +129,7 @@ export interface CreateCniResponse {
   /** The BGP mode for a CNI. One of the following: */
   bgpMode?: CnisCreateResponseBgpMode | null;
 }
-export const CreateCniResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCniResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.String,
@@ -157,7 +155,7 @@ export type InterconnectsCreateRequestBandwidth =
   | "10G"
   | "20G"
   | "50G";
-export const InterconnectsCreateRequestBandwidth = S.String;
+const InterconnectsCreateRequestBandwidth = S.String;
 
 export interface CreateInterconnectRequest {
   /** Customer account tag */
@@ -171,7 +169,7 @@ export interface CreateInterconnectRequest {
   /** Pairing key provided by GCP */
   pairingKey?: string;
 }
-export const CreateInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     account: S.String,
@@ -189,7 +187,7 @@ export const CreateInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface CreateInterconnectResponse {}
-export const CreateInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateInterconnectResponse",
@@ -200,7 +198,7 @@ export interface DeleteCniRequest {
   accountId: string;
   cni: string;
 }
-export const DeleteCniRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCniRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cni: S.String.pipe(T.Label()),
@@ -210,7 +208,7 @@ export const DeleteCniRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCniRequest" }) as any as S.Schema<DeleteCniRequest>;
 
 export interface DeleteCniResponse {}
-export const DeleteCniResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCniResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteCniResponse" }) as any as S.Schema<DeleteCniResponse>;
 
@@ -219,7 +217,7 @@ export interface DeleteInterconnectRequest {
   accountId: string;
   icon: string;
 }
-export const DeleteInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     icon: S.String.pipe(T.Label()),
@@ -237,7 +235,7 @@ export const DeleteInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInterconnectRequest>;
 
 export interface DeleteInterconnectResponse {}
-export const DeleteInterconnectResponse =
+const DeleteInterconnectResponse =
   CreateInterconnectResponse as any as S.Schema<DeleteInterconnectResponse>;
 
 export interface GetCniRequest {
@@ -245,7 +243,7 @@ export interface GetCniRequest {
   accountId: string;
   cni: string;
 }
-export const GetCniRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCniRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cni: S.String.pipe(T.Label()),
@@ -255,12 +253,7 @@ export const GetCniRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCniRequest" }) as any as S.Schema<GetCniRequest>;
 
 export type CnisGetResponseMagic = CnisCreateRequestMagic;
-export const CnisGetResponseMagic = CnisCreateRequestMagic;
-
 export type CnisGetResponseBgpExtraPrefixesList = Array<string>;
-export const CnisGetResponseBgpExtraPrefixesList =
-  CnisCreateRequestBgpExtraPrefixesList as any as S.Schema<CnisGetResponseBgpExtraPrefixesList>;
-
 export interface CnisGetResponseBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -269,10 +262,10 @@ export interface CnisGetResponseBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const CnisGetResponseBgp = CnisCreateResponseBgp as any as S.Schema<CnisGetResponseBgp>;
+const CnisGetResponseBgp = CnisCreateResponseBgp as any as S.Schema<CnisGetResponseBgp>;
 
 export type CnisGetResponseBgpMode = "dynamic_route_exchange" | "advertise_only";
-export const CnisGetResponseBgpMode = S.String;
+const CnisGetResponseBgpMode = S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetCniResponse {
@@ -290,7 +283,7 @@ export interface GetCniResponse {
   /** The BGP mode for a CNI. One of the following: */
   bgpMode?: CnisGetResponseBgpMode | null;
 }
-export const GetCniResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCniResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.String,
@@ -308,7 +301,7 @@ export interface GetInterconnectRequest {
   accountId: string;
   icon: string;
 }
-export const GetInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     icon: S.String.pipe(T.Label()),
@@ -321,13 +314,12 @@ export const GetInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetInterconnectResponse {}
-export const GetInterconnectResponse =
-  DeleteCniResponse as any as S.Schema<GetInterconnectResponse>;
+const GetInterconnectResponse = DeleteCniResponse as any as S.Schema<GetInterconnectResponse>;
 
 export interface GetSettingRequest {
   accountId: string;
 }
-export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -339,7 +331,7 @@ export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSettingResponse {
   defaultAsn: number;
 }
-export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultAsn: S.Number.pipe(T.Body("default_asn")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -350,7 +342,7 @@ export interface GetSlotRequest {
   accountId: string;
   slot: string;
 }
-export const GetSlotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     slot: S.String.pipe(T.Label()),
@@ -360,14 +352,14 @@ export const GetSlotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSlotRequest" }) as any as S.Schema<GetSlotRequest>;
 
 export type SlotsGetResponseFacilityAddressList = Array<string>;
-export const SlotsGetResponseFacilityAddressList =
+const SlotsGetResponseFacilityAddressList =
   CnisCreateRequestBgpExtraPrefixesList as any as S.Schema<SlotsGetResponseFacilityAddressList>;
 
 export interface SlotsGetResponseFacility {
   address: SlotsGetResponseFacilityAddressList;
   name: string;
 }
-export const SlotsGetResponseFacility = /*@__PURE__*/ S.suspend(() =>
+const SlotsGetResponseFacility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: SlotsGetResponseFacilityAddressList,
     name: S.String,
@@ -387,7 +379,7 @@ export interface GetSlotResponse {
   account?: string | null;
   ccrDeviceName?: string | null;
 }
-export const GetSlotResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSlotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     facility: SlotsGetResponseFacility,
@@ -409,7 +401,7 @@ export interface ListCnisRequest {
   /** If specified, only show cnis associated with the specified tunnel id */
   tunnelId?: string;
 }
-export const ListCnisRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCnisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.Number.pipe(T.Query())),
@@ -422,10 +414,8 @@ export const ListCnisRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCnisRequest" }) as any as S.Schema<ListCnisRequest>;
 
 export type CnisListResponseItemsItemMagic = CnisCreateRequestMagic;
-export const CnisListResponseItemsItemMagic = CnisCreateRequestMagic;
-
 export type CnisListResponseItemsItemBgpExtraPrefixesList = Array<string>;
-export const CnisListResponseItemsItemBgpExtraPrefixesList =
+const CnisListResponseItemsItemBgpExtraPrefixesList =
   CnisCreateRequestBgpExtraPrefixesList as any as S.Schema<CnisListResponseItemsItemBgpExtraPrefixesList>;
 
 export interface CnisListResponseItemsItemBgp {
@@ -436,7 +426,7 @@ export interface CnisListResponseItemsItemBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const CnisListResponseItemsItemBgp = /*@__PURE__*/ S.suspend(() =>
+const CnisListResponseItemsItemBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAsn: S.Number.pipe(T.Body("customer_asn")),
     extraPrefixes: CnisListResponseItemsItemBgpExtraPrefixesList.pipe(T.Body("extra_prefixes")),
@@ -447,7 +437,7 @@ export const CnisListResponseItemsItemBgp = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisListResponseItemsItemBgp>;
 
 export type CnisListResponseItemsItemBgpMode = "dynamic_route_exchange" | "advertise_only";
-export const CnisListResponseItemsItemBgpMode = S.String;
+const CnisListResponseItemsItemBgpMode = S.String;
 
 export interface CnisListResponseItemsItem {
   id: string;
@@ -464,7 +454,7 @@ export interface CnisListResponseItemsItem {
   /** The BGP mode for a CNI. One of the following: */
   bgpMode?: CnisListResponseItemsItemBgpMode | null;
 }
-export const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.String,
@@ -480,7 +470,7 @@ export const CnisListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CnisListResponseItemsItem>;
 
 export type CnisListResponseItemsList = Array<CnisListResponseItemsItem>;
-export const CnisListResponseItemsList = /*@__PURE__*/ S.Array(
+const CnisListResponseItemsList = /*@__PURE__*/ S.Array(
   CnisListResponseItemsItem,
 ) as any as S.Schema<CnisListResponseItemsList>;
 
@@ -489,7 +479,7 @@ export interface ListCnisResponse {
   items: CnisListResponseItemsList;
   next?: number | null;
 }
-export const ListCnisResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCnisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: CnisListResponseItemsList,
     next: S.optional(S.NullOr(S.Number)),
@@ -506,7 +496,7 @@ export interface ListInterconnectsRequest {
   /** If specified, only show interconnects of the given type */
   type?: string;
 }
-export const ListInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.Number.pipe(T.Query())),
@@ -520,25 +510,10 @@ export const ListInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList =
   Array<string>;
-export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList>;
-
 export interface InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility {
   address: InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList;
   name: string;
 }
-export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility",
-  }) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility>;
-
 export interface InterconnectsListResponseItemsItemNscInterconnectPhysicalBody {
   account: string;
   facility: InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility;
@@ -552,24 +527,6 @@ export interface InterconnectsListResponseItemsItemNscInterconnectPhysicalBody {
   ccrDeviceName?: string | null;
   owner?: string | null;
 }
-export const InterconnectsListResponseItemsItemNscInterconnectPhysicalBody =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      account: S.String,
-      facility: InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility,
-      name: S.String,
-      site: S.String,
-      slotId: S.String.pipe(T.Body("slot_id")),
-      speed: S.String,
-      type: S.String,
-      virtualPortReservationId: S.String.pipe(T.Body("virtual_port_reservation_id")),
-      ccrDeviceName: S.optional(S.NullOr(S.String).pipe(T.Body("ccr_device_name"))),
-      owner: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "InterconnectsListResponseItemsItemNscInterconnectPhysicalBody",
-  }) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectPhysicalBody>;
-
 export type InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed =
   | "50M"
   | "100M"
@@ -583,8 +540,6 @@ export type InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed
   | "10G"
   | "20G"
   | "50G";
-export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed = S.String;
-
 export interface InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody {
   account: string;
   name: string;
@@ -595,27 +550,10 @@ export interface InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody
   /** Bandwidth structure as visible through the customer-facing API. */
   speed?: InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed | null;
 }
-export const InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      account: S.String,
-      name: S.String,
-      region: S.String,
-      type: S.String,
-      virtualPortReservationId: S.String.pipe(T.Body("virtual_port_reservation_id")),
-      owner: S.optional(S.NullOr(S.String)),
-      speed: S.optional(
-        S.NullOr(InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed),
-      ),
-    }),
-  ).annotate({
-    identifier: "InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody",
-  }) as any as S.Schema<InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody>;
-
 export type InterconnectsListResponseItemsItem =
   | InterconnectsListResponseItemsItemNscInterconnectPhysicalBody
   | InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody;
-export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
+const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "account",
@@ -634,7 +572,7 @@ export const InterconnectsListResponseItemsItem = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type InterconnectsListResponseItemsList = Array<InterconnectsListResponseItemsItem>;
-export const InterconnectsListResponseItemsList = /*@__PURE__*/ S.Array(
+const InterconnectsListResponseItemsList = /*@__PURE__*/ S.Array(
   InterconnectsListResponseItemsItem,
 ) as any as S.Schema<InterconnectsListResponseItemsList>;
 
@@ -643,7 +581,7 @@ export interface ListInterconnectsResponse {
   items: InterconnectsListResponseItemsList;
   next?: number | null;
 }
-export const ListInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: InterconnectsListResponseItemsList,
     next: S.optional(S.NullOr(S.Number)),
@@ -666,7 +604,7 @@ export interface ListSlotsRequest {
   /** If specified, only show slots that support the given speed */
   speed?: string;
 }
-export const ListSlotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSlotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressContains: S.optional(S.String.pipe(T.Query("address_contains"))),
@@ -681,14 +619,14 @@ export const ListSlotsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSlotsRequest" }) as any as S.Schema<ListSlotsRequest>;
 
 export type SlotsListResponseItemsItemFacilityAddressList = Array<string>;
-export const SlotsListResponseItemsItemFacilityAddressList =
+const SlotsListResponseItemsItemFacilityAddressList =
   CnisCreateRequestBgpExtraPrefixesList as any as S.Schema<SlotsListResponseItemsItemFacilityAddressList>;
 
 export interface SlotsListResponseItemsItemFacility {
   address: SlotsListResponseItemsItemFacilityAddressList;
   name: string;
 }
-export const SlotsListResponseItemsItemFacility = /*@__PURE__*/ S.suspend(() =>
+const SlotsListResponseItemsItemFacility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: SlotsListResponseItemsItemFacilityAddressList,
     name: S.String,
@@ -709,7 +647,7 @@ export interface SlotsListResponseItemsItem {
   account?: string | null;
   ccrDeviceName?: string | null;
 }
-export const SlotsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+const SlotsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     facility: SlotsListResponseItemsItemFacility,
@@ -724,7 +662,7 @@ export const SlotsListResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SlotsListResponseItemsItem>;
 
 export type SlotsListResponseItemsList = Array<SlotsListResponseItemsItem>;
-export const SlotsListResponseItemsList = /*@__PURE__*/ S.Array(
+const SlotsListResponseItemsList = /*@__PURE__*/ S.Array(
   SlotsListResponseItemsItem,
 ) as any as S.Schema<SlotsListResponseItemsList>;
 
@@ -733,7 +671,7 @@ export interface ListSlotsResponse {
   items: SlotsListResponseItemsList;
   next?: number | null;
 }
-export const ListSlotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSlotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: SlotsListResponseItemsList,
     next: S.optional(S.NullOr(S.Number)),
@@ -747,7 +685,7 @@ export interface LoaInterconnectRequest {
   /** Custom name to use in the LOA instead of the account name (200 Character limit) */
   name?: string;
 }
-export const LoaInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
+const LoaInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     icon: S.String.pipe(T.Label()),
@@ -764,14 +702,13 @@ export const LoaInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoaInterconnectRequest" }) as any as S.Schema<LoaInterconnectRequest>;
 
 export interface LoaInterconnectResponse {}
-export const LoaInterconnectResponse =
-  DeleteCniResponse as any as S.Schema<LoaInterconnectResponse>;
+const LoaInterconnectResponse = DeleteCniResponse as any as S.Schema<LoaInterconnectResponse>;
 
 export interface PutSettingRequest {
   accountId: string;
   defaultAsn?: number;
 }
-export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     defaultAsn: S.optional(S.Number.pipe(T.Body("default_asn"))),
@@ -784,14 +721,14 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutSettingResponse {
   defaultAsn: number;
 }
-export const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
+const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
 
 export interface StatusInterconnectRequest {
   /** Customer account tag */
   accountId: string;
   icon: string;
 }
-export const StatusInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
+const StatusInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     icon: S.String.pipe(T.Label()),
@@ -810,16 +747,11 @@ export const StatusInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface StatusInterconnectResponse {}
-export const StatusInterconnectResponse =
+const StatusInterconnectResponse =
   CreateInterconnectResponse as any as S.Schema<StatusInterconnectResponse>;
 
 export type CnisUpdateRequestMagic = CnisCreateRequestMagic;
-export const CnisUpdateRequestMagic = CnisCreateRequestMagic;
-
 export type CnisUpdateRequestBgpExtraPrefixesList = Array<string>;
-export const CnisUpdateRequestBgpExtraPrefixesList =
-  CnisCreateRequestBgpExtraPrefixesList as any as S.Schema<CnisUpdateRequestBgpExtraPrefixesList>;
-
 export interface CnisUpdateRequestBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -828,10 +760,10 @@ export interface CnisUpdateRequestBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string;
 }
-export const CnisUpdateRequestBgp = CnisCreateRequestBgp as any as S.Schema<CnisUpdateRequestBgp>;
+const CnisUpdateRequestBgp = CnisCreateRequestBgp as any as S.Schema<CnisUpdateRequestBgp>;
 
 export type CnisUpdateRequestBgpMode = "dynamic_route_exchange" | "advertise_only";
-export const CnisUpdateRequestBgpMode = S.String;
+const CnisUpdateRequestBgpMode = S.String;
 
 export interface UpdateCniRequest {
   /** Customer account tag */
@@ -851,7 +783,7 @@ export interface UpdateCniRequest {
   /** The BGP mode for a CNI. One of the following: */
   bgpMode?: CnisUpdateRequestBgpMode | (string & {});
 }
-export const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cni: S.String.pipe(T.Label()),
@@ -869,12 +801,7 @@ export const UpdateCniRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateCniRequest" }) as any as S.Schema<UpdateCniRequest>;
 
 export type CnisUpdateResponseMagic = CnisCreateRequestMagic;
-export const CnisUpdateResponseMagic = CnisCreateRequestMagic;
-
 export type CnisUpdateResponseBgpExtraPrefixesList = Array<string>;
-export const CnisUpdateResponseBgpExtraPrefixesList =
-  CnisCreateRequestBgpExtraPrefixesList as any as S.Schema<CnisUpdateResponseBgpExtraPrefixesList>;
-
 export interface CnisUpdateResponseBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
@@ -883,11 +810,10 @@ export interface CnisUpdateResponseBgp {
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
 }
-export const CnisUpdateResponseBgp =
-  CnisCreateResponseBgp as any as S.Schema<CnisUpdateResponseBgp>;
+const CnisUpdateResponseBgp = CnisCreateResponseBgp as any as S.Schema<CnisUpdateResponseBgp>;
 
 export type CnisUpdateResponseBgpMode = "dynamic_route_exchange" | "advertise_only";
-export const CnisUpdateResponseBgpMode = S.String;
+const CnisUpdateResponseBgpMode = S.String;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface UpdateCniResponse {
@@ -905,7 +831,7 @@ export interface UpdateCniResponse {
   /** The BGP mode for a CNI. One of the following: */
   bgpMode?: CnisUpdateResponseBgpMode | null;
 }
-export const UpdateCniResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateCniResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: S.String,

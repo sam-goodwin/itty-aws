@@ -40,7 +40,7 @@ export interface CancelPayoutsItemRequest {
   /** The ID of the payout item to cancel. */
   payout_item_id: string;
 }
-export const CancelPayoutsItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelPayoutsItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payout_item_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -59,7 +59,7 @@ export type TransactionEnum =
   | "BLOCKED"
   | "REFUNDED"
   | "REVERSED";
-export const TransactionEnum = S.String;
+const TransactionEnum = S.String;
 
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Currency {
@@ -68,7 +68,7 @@ export interface Currency {
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency codes - ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). */
   value: string;
 }
-export const Currency = /*@__PURE__*/ S.suspend(() =>
+const Currency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     value: S.String,
@@ -77,7 +77,7 @@ export const Currency = /*@__PURE__*/ S.suspend(() =>
 
 /** The ID type that identifies the payment receiver. */
 export type RecipientEnum = "EMAIL" | "PHONE" | "PAYPAL_ID";
-export const RecipientEnum = S.String;
+const RecipientEnum = S.String;
 
 /** The name of the party. */
 export interface Name {
@@ -96,7 +96,7 @@ export interface Name {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-export const Name = /*@__PURE__*/ S.suspend(() =>
+const Name = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     given_name: S.optional(S.String),
@@ -110,7 +110,7 @@ export const Name = /*@__PURE__*/ S.suspend(() =>
 
 /** The wallet where the recipient receives the payout. Payouts to Venmo recipients require a 'note' string and a US mobile phone number. */
 export type RecipientWalletEnum = "PAYPAL" | "VENMO";
-export const RecipientWalletEnum = S.String;
+const RecipientWalletEnum = S.String;
 
 /** The purpose of the transaction. */
 export type PurposeEnum =
@@ -123,7 +123,7 @@ export type PurposeEnum =
   | "CASHBACK"
   | "DISCOUNTS"
   | "NON_GOODS_OR_SERVICES";
-export const PurposeEnum = S.String;
+const PurposeEnum = S.String;
 
 /** The details for a sender-created payout to a single recipient. */
 export interface PayoutItemDetail {
@@ -143,7 +143,7 @@ export interface PayoutItemDetail {
   /** The purpose of the transaction. */
   purpose?: PurposeEnum;
 }
-export const PayoutItemDetail = /*@__PURE__*/ S.suspend(() =>
+const PayoutItemDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipient_type: S.optional(RecipientEnum),
     amount: Currency,
@@ -165,7 +165,7 @@ export interface PayoutCurrencyConversion {
   /** The exchange rate that is applied for this payout. */
   exchange_rate?: string;
 }
-export const PayoutCurrencyConversion = /*@__PURE__*/ S.suspend(() =>
+const PayoutCurrencyConversion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from_amount: S.optional(Currency),
     to_amount: S.optional(Currency),
@@ -186,7 +186,7 @@ export interface ErrorDetails2 {
   /** The human-readable description for an issue. The description can change over the lifetime of an API, so clients must not depend on this value. */
   description?: string;
 }
-export const ErrorDetails2 = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetails2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     value: S.optional(S.String),
@@ -198,9 +198,7 @@ export const ErrorDetails2 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of additional details about the error. */
 export type ErrorDetailsList = Array<ErrorDetails2>;
-export const ErrorDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetails2,
-) as any as S.Schema<ErrorDetailsList>;
+const ErrorDetailsList = /*@__PURE__*/ S.Array(ErrorDetails2) as any as S.Schema<ErrorDetailsList>;
 
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
@@ -212,7 +210,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -223,7 +221,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -233,7 +231,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList = /*@__PURE__*/ S.Array(
+const LinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<LinkDescriptionList>;
 
@@ -250,7 +248,7 @@ export interface Error {
   details?: ErrorDetailsList;
   links?: LinkDescriptionList;
 }
-export const Error = /*@__PURE__*/ S.suspend(() =>
+const Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     message: S.String,
@@ -263,7 +261,7 @@ export const Error = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutItemDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const PayoutItemDefinitionsLinkDescriptionList =
+const PayoutItemDefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<PayoutItemDefinitionsLinkDescriptionList>;
 
 /** The payout item status and other details. A <code>payout_item_id</code> helps you identify denied payments. If a payment is denied, you can use the <code>payout_item_id</code> to identify the payment even if it lacks a <code>transaction_id</code>. */
@@ -291,7 +289,7 @@ export interface PayoutItem {
   errors?: Error;
   links?: PayoutItemDefinitionsLinkDescriptionList;
 }
-export const PayoutItem = /*@__PURE__*/ S.suspend(() =>
+const PayoutItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payout_item_id: S.String,
     transaction_id: S.optional(S.String),
@@ -320,7 +318,7 @@ export interface GetPayoutRequest {
   /** Indicates whether to show the total items and total pages count in the response. */
   total_required?: boolean;
 }
-export const GetPayoutRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     fields: S.optional(S.String.pipe(T.Query())),
@@ -332,7 +330,7 @@ export const GetPayoutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The payouts status. */
 export type BatchEnum = "DENIED" | "PENDING" | "PROCESSING" | "SUCCESS" | "CANCELED";
-export const BatchEnum = S.String;
+const BatchEnum = S.String;
 
 /** The sender-provided header for a payout request. */
 export interface PayoutSenderBatchHeader {
@@ -344,7 +342,7 @@ export interface PayoutSenderBatchHeader {
   /** The email message that PayPal sends when the payout item completes. The message is the same for all recipients. */
   email_message?: string;
 }
-export const PayoutSenderBatchHeader = /*@__PURE__*/ S.suspend(() =>
+const PayoutSenderBatchHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sender_batch_id: S.optional(S.String),
     recipient_type: S.optional(RecipientEnum),
@@ -355,7 +353,7 @@ export const PayoutSenderBatchHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifies a funding source type. */
 export type FundingSource = "BALANCE";
-export const FundingSource = S.String;
+const FundingSource = S.String;
 
 /** The payout header that is returned in response to a payout header request. Shows details for an entire payout request. */
 export interface PayoutBatchHeader {
@@ -378,7 +376,7 @@ export interface PayoutBatchHeader {
   /** The currency and amount of the total estimate for the applicable payouts fees. Initially, the fee is `0`. The fee is populated after the payout moves to the `PROCESSING` state. */
   fees?: Currency;
 }
-export const PayoutBatchHeader = /*@__PURE__*/ S.suspend(() =>
+const PayoutBatchHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payout_batch_id: S.String,
     batch_status: BatchEnum,
@@ -394,7 +392,7 @@ export const PayoutBatchHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutBatchItemsDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const PayoutBatchItemsDefinitionsLinkDescriptionList =
+const PayoutBatchItemsDefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<PayoutBatchItemsDefinitionsLinkDescriptionList>;
 
 /** The payout item status and other details. */
@@ -419,7 +417,7 @@ export interface PayoutBatchItems {
   errors?: Error;
   links?: PayoutBatchItemsDefinitionsLinkDescriptionList;
 }
-export const PayoutBatchItems = /*@__PURE__*/ S.suspend(() =>
+const PayoutBatchItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payout_item_id: S.String,
     transaction_id: S.optional(S.String),
@@ -437,13 +435,13 @@ export const PayoutBatchItems = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of individual items. */
 export type PayoutBatchItemsList = Array<PayoutBatchItems>;
-export const PayoutBatchItemsList = /*@__PURE__*/ S.Array(
+const PayoutBatchItemsList = /*@__PURE__*/ S.Array(
   PayoutBatchItems,
 ) as any as S.Schema<PayoutBatchItemsList>;
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type PayoutBatchDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const PayoutBatchDefinitionsLinkDescriptionList =
+const PayoutBatchDefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<PayoutBatchDefinitionsLinkDescriptionList>;
 
 /** The PayPal-generated batch status. */
@@ -457,7 +455,7 @@ export interface PayoutBatch {
   items?: PayoutBatchItemsList;
   links?: PayoutBatchDefinitionsLinkDescriptionList;
 }
-export const PayoutBatch = /*@__PURE__*/ S.suspend(() =>
+const PayoutBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_items: S.optional(S.Number),
     total_pages: S.optional(S.Number),
@@ -471,7 +469,7 @@ export interface GetPayoutsItemRequest {
   /** The ID of the payout item to cancel. */
   payout_item_id: string;
 }
-export const GetPayoutsItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayoutsItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payout_item_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/payments/payouts-item/{payout_item_id}", code: 200 })),
@@ -490,7 +488,7 @@ export interface SenderBatchHeader {
   /** The payouts and item-level notes are concatenated in the email. The maximum combined length of the notes is 1000 characters. */
   note?: string;
 }
-export const SenderBatchHeader = /*@__PURE__*/ S.suspend(() =>
+const SenderBatchHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sender_batch_id: S.optional(S.String),
     recipient_type: S.optional(S.String),
@@ -509,7 +507,7 @@ export interface Phone {
   /** The extension number. */
   extension_number?: string;
 }
-export const Phone = /*@__PURE__*/ S.suspend(() =>
+const Phone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String,
     national_number: S.String,
@@ -522,7 +520,7 @@ export interface AlternateNotificationMethod {
   /** The mobile phone number of the receiver. */
   phone?: Phone;
 }
-export const AlternateNotificationMethod = /*@__PURE__*/ S.suspend(() =>
+const AlternateNotificationMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone: S.optional(Phone),
   }),
@@ -539,7 +537,7 @@ export interface ApplicationContext {
   /** Link to a logo that displays as the sender's profile image in the recipient's Venmo feed. Used to add or update the business profile image. Max image size: 1024 x 1024 pixels. The image should be square and maximum URL length is 2000. */
   logo_url?: string;
 }
-export const ApplicationContext = /*@__PURE__*/ S.suspend(() =>
+const ApplicationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     social_feed_privacy: S.optional(S.String),
     holler_url: S.optional(S.String),
@@ -570,7 +568,7 @@ export interface PayoutItemRequest {
   /** The purpose of the transaction. */
   purpose?: PurposeEnum | (string & {});
 }
-export const PayoutItemRequest = /*@__PURE__*/ S.suspend(() =>
+const PayoutItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipient_type: S.optional(S.String),
     amount: Currency,
@@ -587,7 +585,7 @@ export const PayoutItemRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of individual payout items. */
 export type PayoutItemRequestList = Array<PayoutItemRequest>;
-export const PayoutItemRequestList = /*@__PURE__*/ S.Array(
+const PayoutItemRequestList = /*@__PURE__*/ S.Array(
   PayoutItemRequest,
 ) as any as S.Schema<PayoutItemRequestList>;
 
@@ -598,7 +596,7 @@ export interface PostPayoutRequest {
   sender_batch_header: SenderBatchHeader;
   items: PayoutItemRequestList;
 }
-export const PostPayoutRequest = /*@__PURE__*/ S.suspend(() =>
+const PostPayoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
     sender_batch_header: SenderBatchHeader,
@@ -617,7 +615,7 @@ export interface PayoutHeader {
   /** The original payout header, as provided by the payment sender. */
   sender_batch_header: PayoutSenderBatchHeader;
 }
-export const PayoutHeader = /*@__PURE__*/ S.suspend(() =>
+const PayoutHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payout_batch_id: S.String,
     batch_status: BatchEnum,
@@ -628,7 +626,7 @@ export const PayoutHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const DefinitionsLinkDescriptionList =
+const DefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
 
 /** The create payout response. */
@@ -637,7 +635,7 @@ export interface Payout {
   batch_header?: PayoutHeader;
   links?: DefinitionsLinkDescriptionList;
 }
-export const Payout = /*@__PURE__*/ S.suspend(() =>
+const Payout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batch_header: S.optional(PayoutHeader),
     links: S.optional(DefinitionsLinkDescriptionList),

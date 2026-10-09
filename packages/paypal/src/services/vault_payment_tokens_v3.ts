@@ -52,7 +52,7 @@ export interface CreatePaymentTokenRequestCustomer {
   /** Merchants and partners may already have a data-store where their customer information is persisted. Use merchant_customer_id to associate the PayPal-generated customer.id to your representation of a customer. */
   merchant_customer_id?: string;
 }
-export const CreatePaymentTokenRequestCustomer = /*@__PURE__*/ S.suspend(() =>
+const CreatePaymentTokenRequestCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     merchant_customer_id: S.optional(S.String),
@@ -88,7 +88,7 @@ export type CardBrand =
   | "SYNCHRONY"
   | "EFTPOS"
   | "UNKNOWN";
-export const CardBrand = S.String;
+const CardBrand = S.String;
 
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export interface DefinitionsPaymentSourceCardBillingAddress {
@@ -104,7 +104,7 @@ export interface DefinitionsPaymentSourceCardBillingAddress {
   postal_code?: string;
   country_code: string;
 }
-export const DefinitionsPaymentSourceCardBillingAddress = /*@__PURE__*/ S.suspend(() =>
+const DefinitionsPaymentSourceCardBillingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_line_1: S.optional(S.String),
     address_line_2: S.optional(S.String),
@@ -133,7 +133,7 @@ export interface DefinitionsPaymentSourceCard {
   billing_address?: DefinitionsPaymentSourceCardBillingAddress;
   network_transaction_reference?: unknown;
 }
-export const DefinitionsPaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
+const DefinitionsPaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     number: S.optional(S.String),
@@ -149,7 +149,7 @@ export const DefinitionsPaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
 
 /** The tokenization method that generated the ID. */
 export type TokenIdRequestType = "SETUP_TOKEN";
-export const TokenIdRequestType = S.String;
+const TokenIdRequestType = S.String;
 
 /** The Tokenized Payment Source representing a Request to Vault a Token. */
 export interface TokenIdRequest {
@@ -158,7 +158,7 @@ export interface TokenIdRequest {
   /** The tokenization method that generated the ID. */
   type: TokenIdRequestType | (string & {});
 }
-export const TokenIdRequest = /*@__PURE__*/ S.suspend(() =>
+const TokenIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: TokenIdRequestType,
@@ -171,7 +171,7 @@ export interface DefinitionsPaymentSource {
   card?: DefinitionsPaymentSourceCard;
   token?: TokenIdRequest;
 }
-export const DefinitionsPaymentSource = /*@__PURE__*/ S.suspend(() =>
+const DefinitionsPaymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.optional(DefinitionsPaymentSourceCard),
     token: S.optional(TokenIdRequest),
@@ -185,7 +185,7 @@ export interface CreatePaymentTokenRequest {
   customer?: CreatePaymentTokenRequestCustomer;
   payment_source: DefinitionsPaymentSource;
 }
-export const CreatePaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
     customer: S.optional(CreatePaymentTokenRequestCustomer),
@@ -197,8 +197,6 @@ export const CreatePaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. */
 export type Customer = CreatePaymentTokenRequestCustomer;
-export const Customer = CreatePaymentTokenRequestCustomer;
-
 /** Address request details. */
 export interface CardResponseBillingAddress {
   /** The first line of the address, such as number and street, for example, `173 Drury Lane`. Needed for data entry, and Compliance and Risk checks. This field needs to pass the full address. */
@@ -215,7 +213,7 @@ export interface CardResponseBillingAddress {
   /** The resource ID of the address. */
   id?: string;
 }
-export const CardResponseBillingAddress = /*@__PURE__*/ S.suspend(() =>
+const CardResponseBillingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_line_1: S.optional(S.String),
     address_line_2: S.optional(S.String),
@@ -231,7 +229,7 @@ export const CardResponseBillingAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** Verification status of Card. */
 export type CardVerificationStatus = "VERIFIED" | "FAILED";
-export const CardVerificationStatus = S.String;
+const CardVerificationStatus = S.String;
 
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Money {
@@ -239,7 +237,7 @@ export interface Money {
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-codes/). */
   value: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency_code: S.String,
     value: S.String,
@@ -272,7 +270,7 @@ export type CardVerificationDetailsProcessorResponseAvsCode =
   | "2"
   | "3"
   | "4";
-export const CardVerificationDetailsProcessorResponseAvsCode = S.String;
+const CardVerificationDetailsProcessorResponseAvsCode = S.String;
 
 /** The card verification value code for for Visa, Discover, Mastercard, or American Express. */
 export type CardVerificationDetailsProcessorResponseCvvCode =
@@ -290,7 +288,7 @@ export type CardVerificationDetailsProcessorResponseCvvCode =
   | "2"
   | "3"
   | "4";
-export const CardVerificationDetailsProcessorResponseCvvCode = S.String;
+const CardVerificationDetailsProcessorResponseCvvCode = S.String;
 
 /** The processor response information for payment requests, such as direct credit card transactions. */
 export interface CardVerificationDetailsProcessorResponse {
@@ -299,7 +297,7 @@ export interface CardVerificationDetailsProcessorResponse {
   /** The card verification value code for for Visa, Discover, Mastercard, or American Express. */
   cvv_code?: CardVerificationDetailsProcessorResponseCvvCode;
 }
-export const CardVerificationDetailsProcessorResponse = /*@__PURE__*/ S.suspend(() =>
+const CardVerificationDetailsProcessorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avs_code: S.optional(CardVerificationDetailsProcessorResponseAvsCode),
     cvv_code: S.optional(CardVerificationDetailsProcessorResponseCvvCode),
@@ -325,7 +323,7 @@ export interface CardVerificationDetails {
   /** DEPRECATED. This field is DEPRECATED. Please find the 3D secure authentication data in the 'three_d_secure' object under the 'authentication_result' object instead of the 'verification' object. */
   three_d_secure?: unknown;
 }
-export const CardVerificationDetails = /*@__PURE__*/ S.suspend(() =>
+const CardVerificationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network_transaction_id: S.optional(S.String),
     date: S.optional(S.String),
@@ -348,7 +346,7 @@ export interface NetworkTransactionReferenceEntity {
   /** The date and time when the instrument was verified. */
   time?: string;
 }
-export const NetworkTransactionReferenceEntity = /*@__PURE__*/ S.suspend(() =>
+const NetworkTransactionReferenceEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     date: S.optional(S.String),
@@ -361,11 +359,11 @@ export const NetworkTransactionReferenceEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** Transactions status result identifier. The outcome of the issuer's authentication. */
 export type ParesStatus = "Y" | "N" | "U" | "A" | "C" | "R" | "D" | "I";
-export const ParesStatus = S.String;
+const ParesStatus = S.String;
 
 /** Status of Authentication eligibility. */
 export type Enrolled = "Y" | "N" | "U" | "B";
-export const Enrolled = S.String;
+const Enrolled = S.String;
 
 /** Results of 3D Secure Authentication. */
 export interface ThreeDSecureAuthenticationResponse2 {
@@ -376,7 +374,7 @@ export interface ThreeDSecureAuthenticationResponse2 {
   /** The externally received 3ds authentication id, to be returned in card detokenization response. */
   authentication_id?: string;
 }
-export const ThreeDSecureAuthenticationResponse2 = /*@__PURE__*/ S.suspend(() =>
+const ThreeDSecureAuthenticationResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication_status: S.optional(ParesStatus),
     enrollment_status: S.optional(Enrolled),
@@ -390,7 +388,7 @@ export const ThreeDSecureAuthenticationResponse2 = /*@__PURE__*/ S.suspend(() =>
 export interface CardResponseAuthenticationResult {
   three_d_secure?: ThreeDSecureAuthenticationResponse2;
 }
-export const CardResponseAuthenticationResult = /*@__PURE__*/ S.suspend(() =>
+const CardResponseAuthenticationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     three_d_secure: S.optional(ThreeDSecureAuthenticationResponse2),
   }),
@@ -400,7 +398,7 @@ export const CardResponseAuthenticationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
 export type ProductsList = Array<string>;
-export const ProductsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ProductsList>;
+const ProductsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ProductsList>;
 
 /** Bank Identification Number (BIN) details used to fund a payment. */
 export interface BinDetails {
@@ -412,7 +410,7 @@ export interface BinDetails {
   bin_country_code?: string;
   products?: ProductsList;
 }
-export const BinDetails = /*@__PURE__*/ S.suspend(() =>
+const BinDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bin: S.optional(S.String),
     issuing_bank: S.optional(S.String),
@@ -423,7 +421,7 @@ export const BinDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of card. i.e Credit, Debit and so on. */
 export type CardType = "CREDIT" | "DEBIT" | "PREPAID" | "STORE" | "UNKNOWN";
-export const CardType = S.String;
+const CardType = S.String;
 
 /** Full representation of a Card Payment Token including network token. */
 export interface CardResponse {
@@ -449,7 +447,7 @@ export interface CardResponse {
   type?: CardType;
   network_token?: unknown;
 }
-export const CardResponse = /*@__PURE__*/ S.suspend(() =>
+const CardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     last_digits: S.optional(S.String),
@@ -480,14 +478,14 @@ export type PaypalWalletResponseUsagePattern =
   | "SUBSCRIPTION_POSTPAID"
   | "INSTALLMENT_POSTPAID"
   | "INSTALLMENT_PREPAID";
-export const PaypalWalletResponseUsagePattern = S.String;
+const PaypalWalletResponseUsagePattern = S.String;
 
 /** The name of the party. */
 export interface PaypalWalletResponseShippingName {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-export const PaypalWalletResponseShippingName = /*@__PURE__*/ S.suspend(() =>
+const PaypalWalletResponseShippingName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     full_name: S.optional(S.String),
   }),
@@ -502,7 +500,7 @@ export interface PaypalWalletResponseShippingPhoneNumber {
   /** The national number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the country calling code (CC) and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   national_number: string;
 }
-export const PaypalWalletResponseShippingPhoneNumber = /*@__PURE__*/ S.suspend(() =>
+const PaypalWalletResponseShippingPhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String,
     national_number: S.String,
@@ -517,12 +515,10 @@ export type PaypalWalletResponseShippingType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-export const PaypalWalletResponseShippingType = S.String;
+const PaypalWalletResponseShippingType = S.String;
 
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type PaypalWalletResponseShippingAddress = DefinitionsPaymentSourceCardBillingAddress;
-export const PaypalWalletResponseShippingAddress = DefinitionsPaymentSourceCardBillingAddress;
-
 /** The shipping details. */
 export interface PaypalWalletResponseShipping {
   /** The name of the party. */
@@ -534,7 +530,7 @@ export interface PaypalWalletResponseShipping {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   address?: DefinitionsPaymentSourceCardBillingAddress;
 }
-export const PaypalWalletResponseShipping = /*@__PURE__*/ S.suspend(() =>
+const PaypalWalletResponseShipping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(PaypalWalletResponseShippingName),
     phone_number: S.optional(PaypalWalletResponseShippingPhoneNumber),
@@ -547,11 +543,11 @@ export const PaypalWalletResponseShipping = /*@__PURE__*/ S.suspend(() =>
 
 /** The usage type associated with a digital wallet payment token. */
 export type PaypalWalletResponseUsageType = "MERCHANT" | "PLATFORM";
-export const PaypalWalletResponseUsageType = S.String;
+const PaypalWalletResponseUsageType = S.String;
 
 /** The customer type associated with a digital wallet payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer. */
 export type PaypalWalletResponseCustomerType = "CONSUMER" | "BUSINESS";
-export const PaypalWalletResponseCustomerType = S.String;
+const PaypalWalletResponseCustomerType = S.String;
 
 /** The name of the party. */
 export interface PaypalWalletResponseName {
@@ -560,7 +556,7 @@ export interface PaypalWalletResponseName {
   /** When the party is a person, the party's surname or family name. Also known as the last name. Required when the party is a person. Use also to store multiple surnames including the matronymic, or mother's, surname. */
   surname?: string;
 }
-export const PaypalWalletResponseName = /*@__PURE__*/ S.suspend(() =>
+const PaypalWalletResponseName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     given_name: S.optional(S.String),
     surname: S.optional(S.String),
@@ -569,14 +565,14 @@ export const PaypalWalletResponseName = /*@__PURE__*/ S.suspend(() =>
 
 /** The phone type. */
 export type PhoneType = "FAX" | "HOME" | "MOBILE" | "OTHER" | "PAGER";
-export const PhoneType = S.String;
+const PhoneType = S.String;
 
 /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export interface PhoneWithTypePhoneNumber {
   /** The national number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the country calling code (CC) and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   national_number: string;
 }
-export const PhoneWithTypePhoneNumber = /*@__PURE__*/ S.suspend(() =>
+const PhoneWithTypePhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     national_number: S.String,
   }),
@@ -588,7 +584,7 @@ export interface PhoneWithType {
   /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
   phone_number: PhoneWithTypePhoneNumber;
 }
-export const PhoneWithType = /*@__PURE__*/ S.suspend(() =>
+const PhoneWithType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone_type: S.optional(PhoneType),
     phone_number: PhoneWithTypePhoneNumber,
@@ -597,8 +593,6 @@ export const PhoneWithType = /*@__PURE__*/ S.suspend(() =>
 
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type PaypalWalletResponseAddress = DefinitionsPaymentSourceCardBillingAddress;
-export const PaypalWalletResponseAddress = DefinitionsPaymentSourceCardBillingAddress;
-
 /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export interface Phone {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
@@ -608,7 +602,7 @@ export interface Phone {
   /** The extension number. */
   extension_number?: string;
 }
-export const Phone = /*@__PURE__*/ S.suspend(() =>
+const Phone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String,
     national_number: S.String,
@@ -644,7 +638,7 @@ export interface PaypalWalletResponse {
   /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
   phone_number?: Phone;
 }
-export const PaypalWalletResponse = /*@__PURE__*/ S.suspend(() =>
+const PaypalWalletResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     usage_pattern: S.optional(PaypalWalletResponseUsagePattern),
@@ -676,28 +670,22 @@ export type VenmoResponseUsagePattern =
   | "SUBSCRIPTION_POSTPAID"
   | "INSTALLMENT_POSTPAID"
   | "INSTALLMENT_PREPAID";
-export const VenmoResponseUsagePattern = S.String;
+const VenmoResponseUsagePattern = S.String;
 
 /** The name of the party. */
 export type VenmoResponseShippingName = PaypalWalletResponseShippingName;
-export const VenmoResponseShippingName = PaypalWalletResponseShippingName;
-
 /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export type VenmoResponseShippingPhoneNumber = PaypalWalletResponseShippingPhoneNumber;
-export const VenmoResponseShippingPhoneNumber = PaypalWalletResponseShippingPhoneNumber;
-
 /** A classification for the method of purchase fulfillment (e.g shipping, in-store pickup, etc). Either `type` or `options` may be present, but not both. */
 export type VenmoResponseShippingType =
   | "SHIPPING"
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-export const VenmoResponseShippingType = S.String;
+const VenmoResponseShippingType = S.String;
 
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type VenmoResponseShippingAddress = DefinitionsPaymentSourceCardBillingAddress;
-export const VenmoResponseShippingAddress = DefinitionsPaymentSourceCardBillingAddress;
-
 /** The shipping details. */
 export interface VenmoResponseShipping {
   /** The name of the party. */
@@ -709,7 +697,7 @@ export interface VenmoResponseShipping {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   address?: DefinitionsPaymentSourceCardBillingAddress;
 }
-export const VenmoResponseShipping = /*@__PURE__*/ S.suspend(() =>
+const VenmoResponseShipping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(PaypalWalletResponseShippingName),
     phone_number: S.optional(PaypalWalletResponseShippingPhoneNumber),
@@ -720,20 +708,16 @@ export const VenmoResponseShipping = /*@__PURE__*/ S.suspend(() =>
 
 /** The usage type associated with a digital wallet payment token. */
 export type VenmoResponseUsageType = "MERCHANT" | "PLATFORM";
-export const VenmoResponseUsageType = S.String;
+const VenmoResponseUsageType = S.String;
 
 /** The customer type associated with a digital wallet payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer. */
 export type VenmoResponseCustomerType = "CONSUMER" | "BUSINESS";
-export const VenmoResponseCustomerType = S.String;
+const VenmoResponseCustomerType = S.String;
 
 /** The name of the party. */
 export type VenmoResponseName = PaypalWalletResponseName;
-export const VenmoResponseName = PaypalWalletResponseName;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type VenmoResponseAddress = DefinitionsPaymentSourceCardBillingAddress;
-export const VenmoResponseAddress = DefinitionsPaymentSourceCardBillingAddress;
-
 export interface VenmoResponse {
   /** The description displayed to the consumer on the approval flow for a digital wallet, as well as on the merchant view of the payment token management experience. exp: PayPal.com. */
   description?: string;
@@ -760,7 +744,7 @@ export interface VenmoResponse {
   /** The Venmo username, as chosen by the user. */
   user_name?: string;
 }
-export const VenmoResponse = /*@__PURE__*/ S.suspend(() =>
+const VenmoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     usage_pattern: S.optional(VenmoResponseUsagePattern),
@@ -780,9 +764,6 @@ export const VenmoResponse = /*@__PURE__*/ S.suspend(() =>
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type ApplePayPaymentTokenResponseCardBillingAddress =
   DefinitionsPaymentSourceCardBillingAddress;
-export const ApplePayPaymentTokenResponseCardBillingAddress =
-  DefinitionsPaymentSourceCardBillingAddress;
-
 /** The payment card to be used to fund a payment. Can be a credit or debit card. */
 export interface ApplePayPaymentTokenResponseCard {
   /** The card holder's name as it appears on the card. */
@@ -796,7 +777,7 @@ export interface ApplePayPaymentTokenResponseCard {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   billing_address?: DefinitionsPaymentSourceCardBillingAddress;
 }
-export const ApplePayPaymentTokenResponseCard = /*@__PURE__*/ S.suspend(() =>
+const ApplePayPaymentTokenResponseCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     last_digits: S.optional(S.String),
@@ -813,7 +794,7 @@ export interface ApplePayPaymentTokenResponse {
   /** The payment card to be used to fund a payment. Can be a credit or debit card. */
   card?: ApplePayPaymentTokenResponseCard;
 }
-export const ApplePayPaymentTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplePayPaymentTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.optional(ApplePayPaymentTokenResponseCard),
   }),
@@ -828,7 +809,7 @@ export interface PaymentSource {
   venmo?: VenmoResponse;
   apple_pay?: ApplePayPaymentTokenResponse;
 }
-export const PaymentSource = /*@__PURE__*/ S.suspend(() =>
+const PaymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.optional(CardResponse),
     paypal: S.optional(PaypalWalletResponse),
@@ -847,7 +828,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -858,7 +839,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -868,7 +849,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of related [HATEOAS links](/api/rest/responses/#hateoas). */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList = /*@__PURE__*/ S.Array(
+const LinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<LinkDescriptionList>;
 
@@ -881,7 +862,7 @@ export interface PaymentTokenResponse {
   payment_source?: PaymentSource;
   links?: LinkDescriptionList;
 }
-export const PaymentTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const PaymentTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     customer: S.optional(CreatePaymentTokenRequestCustomer),
@@ -892,21 +873,16 @@ export const PaymentTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. */
 export type CreateSetupTokenRequestCustomer = CreatePaymentTokenRequestCustomer;
-export const CreateSetupTokenRequestCustomer = CreatePaymentTokenRequestCustomer;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type CreateSetupTokenRequestPaymentSourceCardBillingAddress =
   DefinitionsPaymentSourceCardBillingAddress;
-export const CreateSetupTokenRequestPaymentSourceCardBillingAddress =
-  DefinitionsPaymentSourceCardBillingAddress;
-
 /** The verification method of the card. */
 export type CardVerificationMethod = "SCA_WHEN_REQUIRED" | "SCA_ALWAYS";
-export const CardVerificationMethod = S.String;
+const CardVerificationMethod = S.String;
 
 /** Vault Instruction on action to be performed after a successful payer approval. */
 export type VaultInstruction = "ON_CREATE_PAYMENT_TOKENS" | "ON_PAYER_APPROVAL";
-export const VaultInstruction = S.String;
+const VaultInstruction = S.String;
 
 /** Customizes the Vault creation flow experience for your customers. */
 export interface CreateSetupTokenRequestPaymentSourceCardExperienceContext {
@@ -921,15 +897,14 @@ export interface CreateSetupTokenRequestPaymentSourceCardExperienceContext {
   /** Vault Instruction on action to be performed after a successful payer approval. */
   vault_instruction?: VaultInstruction | (string & {});
 }
-export const CreateSetupTokenRequestPaymentSourceCardExperienceContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      brand_name: S.optional(S.String),
-      locale: S.optional(S.String),
-      return_url: S.optional(S.String),
-      cancel_url: S.optional(S.String),
-      vault_instruction: S.optional(VaultInstruction),
-    }),
+const CreateSetupTokenRequestPaymentSourceCardExperienceContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    brand_name: S.optional(S.String),
+    locale: S.optional(S.String),
+    return_url: S.optional(S.String),
+    cancel_url: S.optional(S.String),
+    vault_instruction: S.optional(VaultInstruction),
+  }),
 ).annotate({
   identifier: "CreateSetupTokenRequestPaymentSourceCardExperienceContext",
 }) as any as S.Schema<CreateSetupTokenRequestPaymentSourceCardExperienceContext>;
@@ -954,7 +929,7 @@ export interface CreateSetupTokenRequestPaymentSourceCard {
   experience_context?: CreateSetupTokenRequestPaymentSourceCardExperienceContext;
   network_transaction_reference?: unknown;
 }
-export const CreateSetupTokenRequestPaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
+const CreateSetupTokenRequestPaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     number: S.optional(S.String),
@@ -984,28 +959,20 @@ export type PaypalWalletRequestUsagePattern =
   | "SUBSCRIPTION_POSTPAID"
   | "INSTALLMENT_POSTPAID"
   | "INSTALLMENT_PREPAID";
-export const PaypalWalletRequestUsagePattern = S.String;
+const PaypalWalletRequestUsagePattern = S.String;
 
 /** The name of the party. */
 export type PaypalWalletRequestShippingName = PaypalWalletResponseShippingName;
-export const PaypalWalletRequestShippingName = PaypalWalletResponseShippingName;
-
 /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export type PaypalWalletRequestShippingPhoneNumber = PaypalWalletResponseShippingPhoneNumber;
-export const PaypalWalletRequestShippingPhoneNumber = PaypalWalletResponseShippingPhoneNumber;
-
 /** A classification for the method of purchase fulfillment (e.g shipping, in-store pickup, etc). Either `type` or `options` may be present, but not both. */
 export type PaypalWalletRequestShippingType =
   | "SHIPPING"
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-export const PaypalWalletRequestShippingType = S.String;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type PaypalWalletRequestShippingAddress = DefinitionsPaymentSourceCardBillingAddress;
-export const PaypalWalletRequestShippingAddress = DefinitionsPaymentSourceCardBillingAddress;
-
 /** The shipping details. */
 export interface PaypalWalletRequestShipping {
   /** The name of the party. */
@@ -1017,24 +984,24 @@ export interface PaypalWalletRequestShipping {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   address?: DefinitionsPaymentSourceCardBillingAddress;
 }
-export const PaypalWalletRequestShipping =
+const PaypalWalletRequestShipping =
   PaypalWalletResponseShipping as any as S.Schema<PaypalWalletRequestShipping>;
 
 /** The usage type associated with a digital wallet payment token. */
 export type PaypalWalletRequestUsageType = "MERCHANT" | "PLATFORM";
-export const PaypalWalletRequestUsageType = S.String;
+const PaypalWalletRequestUsageType = S.String;
 
 /** The customer type associated with a digital wallet payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer. */
 export type PaypalWalletRequestCustomerType = "CONSUMER" | "BUSINESS";
-export const PaypalWalletRequestCustomerType = S.String;
+const PaypalWalletRequestCustomerType = S.String;
 
 /** The tenure type of the billing cycle identifies if the billing cycle is a trial(free or discounted) or regular billing cycle. */
 export type BillingCycleTenureType = "REGULAR" | "TRIAL";
-export const BillingCycleTenureType = S.String;
+const BillingCycleTenureType = S.String;
 
 /** The pricing model for the billing cycle. */
 export type PricingSchemePricingModel = "FIXED" | "VARIABLE" | "AUTO_RELOAD";
-export const PricingSchemePricingModel = S.String;
+const PricingSchemePricingModel = S.String;
 
 /** The pricing scheme details. */
 export interface PricingScheme {
@@ -1045,7 +1012,7 @@ export interface PricingScheme {
   /** The threshold amount on which the reload charge would be triggered. This will be associated with the account-balance where if the account-balance goes below this amount then customer would incur reload charge. */
   reload_threshold_amount?: Money;
 }
-export const PricingScheme = /*@__PURE__*/ S.suspend(() =>
+const PricingScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     price: S.optional(Money),
     pricing_model: PricingSchemePricingModel,
@@ -1068,7 +1035,7 @@ export interface BillingCycle {
   /** The start date for the billing cycle, in YYYY-MM-DD. This field should be not be provided if the billing cycle starts at the time of checkout. When this field is not provided, the billing cycle amount will be included in any data validations confirming that the total provided by the merchant match the sum of individual items due at the time of checkout. Only one billing cycle (with sequence equal to 1) can have a no start date. */
   start_date?: string;
 }
-export const BillingCycle = /*@__PURE__*/ S.suspend(() =>
+const BillingCycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenure_type: BillingCycleTenureType,
     pricing_scheme: S.optional(PricingScheme),
@@ -1081,9 +1048,7 @@ export const BillingCycle = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle. */
 export type BillingCycleList = Array<BillingCycle>;
-export const BillingCycleList = /*@__PURE__*/ S.Array(
-  BillingCycle,
-) as any as S.Schema<BillingCycleList>;
+const BillingCycleList = /*@__PURE__*/ S.Array(BillingCycle) as any as S.Schema<BillingCycleList>;
 
 /** The one-time charge info at the time of checkout. */
 export interface OneTimeCharges {
@@ -1098,7 +1063,7 @@ export interface OneTimeCharges {
   /** The total amount at the time of checkout. This is calculated by using the formula x + y + z where x is subtotal, y is shipping-amount and z is taxes. */
   total_amount: Money;
 }
-export const OneTimeCharges = /*@__PURE__*/ S.suspend(() =>
+const OneTimeCharges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setup_fee: S.optional(Money),
     shipping_amount: S.optional(Money),
@@ -1118,7 +1083,7 @@ export interface Plan {
   /** Name of the recurring plan. */
   name?: string;
 }
-export const Plan = /*@__PURE__*/ S.suspend(() =>
+const Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_cycles: BillingCycleList,
     product: S.optional(S.Unknown),
@@ -1132,7 +1097,7 @@ export type ExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-export const ExperienceContextShippingPreference = S.String;
+const ExperienceContextShippingPreference = S.String;
 
 /** Customizes the Vault creation flow experience for your customers. */
 export interface ExperienceContext {
@@ -1149,7 +1114,7 @@ export interface ExperienceContext {
   /** Vault Instruction on action to be performed after a successful payer approval. */
   vault_instruction?: VaultInstruction | (string & {});
 }
-export const ExperienceContext = /*@__PURE__*/ S.suspend(() =>
+const ExperienceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand_name: S.optional(S.String),
     locale: S.optional(S.String),
@@ -1177,7 +1142,7 @@ export interface PaypalWalletRequest {
   billing_plan?: Plan;
   experience_context?: ExperienceContext;
 }
-export const PaypalWalletRequest = /*@__PURE__*/ S.suspend(() =>
+const PaypalWalletRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     usage_pattern: S.optional(PaypalWalletRequestUsagePattern),
@@ -1204,28 +1169,20 @@ export type VenmoRequestUsagePattern =
   | "SUBSCRIPTION_POSTPAID"
   | "INSTALLMENT_POSTPAID"
   | "INSTALLMENT_PREPAID";
-export const VenmoRequestUsagePattern = S.String;
+const VenmoRequestUsagePattern = S.String;
 
 /** The name of the party. */
 export type VenmoRequestShippingName = PaypalWalletResponseShippingName;
-export const VenmoRequestShippingName = PaypalWalletResponseShippingName;
-
 /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export type VenmoRequestShippingPhoneNumber = PaypalWalletResponseShippingPhoneNumber;
-export const VenmoRequestShippingPhoneNumber = PaypalWalletResponseShippingPhoneNumber;
-
 /** A classification for the method of purchase fulfillment (e.g shipping, in-store pickup, etc). Either `type` or `options` may be present, but not both. */
 export type VenmoRequestShippingType =
   | "SHIPPING"
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-export const VenmoRequestShippingType = S.String;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type VenmoRequestShippingAddress = DefinitionsPaymentSourceCardBillingAddress;
-export const VenmoRequestShippingAddress = DefinitionsPaymentSourceCardBillingAddress;
-
 /** The shipping details. */
 export interface VenmoRequestShipping {
   /** The name of the party. */
@@ -1237,22 +1194,22 @@ export interface VenmoRequestShipping {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   address?: DefinitionsPaymentSourceCardBillingAddress;
 }
-export const VenmoRequestShipping = VenmoResponseShipping as any as S.Schema<VenmoRequestShipping>;
+const VenmoRequestShipping = VenmoResponseShipping as any as S.Schema<VenmoRequestShipping>;
 
 /** The usage type associated with a digital wallet payment token. */
 export type VenmoRequestUsageType = "MERCHANT" | "PLATFORM";
-export const VenmoRequestUsageType = S.String;
+const VenmoRequestUsageType = S.String;
 
 /** The customer type associated with a digital wallet payment token. This is to indicate whether the customer acting on the merchant / platform is either a business or a consumer. */
 export type VenmoRequestCustomerType = "CONSUMER" | "BUSINESS";
-export const VenmoRequestCustomerType = S.String;
+const VenmoRequestCustomerType = S.String;
 
 /** The shipping preference. This only applies to PayPal payment source. */
 export type VenmoRequestExperienceContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-export const VenmoRequestExperienceContextShippingPreference = S.String;
+const VenmoRequestExperienceContextShippingPreference = S.String;
 
 /** Customizes the Vault creation flow experience for your customers. */
 export interface VenmoRequestExperienceContext {
@@ -1263,7 +1220,7 @@ export interface VenmoRequestExperienceContext {
   /** Vault Instruction on action to be performed after a successful payer approval. */
   vault_instruction?: VaultInstruction | (string & {});
 }
-export const VenmoRequestExperienceContext = /*@__PURE__*/ S.suspend(() =>
+const VenmoRequestExperienceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand_name: S.optional(S.String),
     shipping_preference: S.optional(VenmoRequestExperienceContextShippingPreference),
@@ -1289,7 +1246,7 @@ export interface VenmoRequest {
   /** Customizes the Vault creation flow experience for your customers. */
   experience_context?: VenmoRequestExperienceContext;
 }
-export const VenmoRequest = /*@__PURE__*/ S.suspend(() =>
+const VenmoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     usage_pattern: S.optional(VenmoRequestUsagePattern),
@@ -1309,7 +1266,7 @@ export interface CreateSetupTokenRequestPaymentSource {
   venmo?: VenmoRequest;
   token?: TokenIdRequest;
 }
-export const CreateSetupTokenRequestPaymentSource = /*@__PURE__*/ S.suspend(() =>
+const CreateSetupTokenRequestPaymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.optional(CreateSetupTokenRequestPaymentSourceCard),
     paypal: S.optional(PaypalWalletRequest),
@@ -1328,7 +1285,7 @@ export interface CreateSetupTokenRequest {
   /** The payment method to vault with the instrument details. */
   payment_source: CreateSetupTokenRequestPaymentSource;
 }
-export const CreateSetupTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSetupTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
     customer: S.optional(CreatePaymentTokenRequestCustomer),
@@ -1338,8 +1295,6 @@ export const CreateSetupTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. */
 export type SetupTokenResponseCustomer = CreatePaymentTokenRequestCustomer;
-export const SetupTokenResponseCustomer = CreatePaymentTokenRequestCustomer;
-
 /** The status of the payment token. */
 export type PaymentTokenStatus =
   | "CREATED"
@@ -1347,18 +1302,13 @@ export type PaymentTokenStatus =
   | "APPROVED"
   | "VAULTED"
   | "TOKENIZED";
-export const PaymentTokenStatus = S.String;
+const PaymentTokenStatus = S.String;
 
 /** Address request details. */
 export type SetupTokenResponsePaymentSourceCardBillingAddress = CardResponseBillingAddress;
-export const SetupTokenResponsePaymentSourceCardBillingAddress = CardResponseBillingAddress;
-
 /** Results of Authentication such as 3D Secure. */
 export type SetupTokenResponsePaymentSourceCardAuthenticationResult =
   CardResponseAuthenticationResult;
-export const SetupTokenResponsePaymentSourceCardAuthenticationResult =
-  CardResponseAuthenticationResult;
-
 export interface SetupTokenResponsePaymentSourceCard {
   /** The card holder's name as it appears on the card. */
   name?: string;
@@ -1381,7 +1331,7 @@ export interface SetupTokenResponsePaymentSourceCard {
   /** The payment card type. */
   type?: CardType;
 }
-export const SetupTokenResponsePaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
+const SetupTokenResponsePaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     last_digits: S.optional(S.String),
@@ -1405,7 +1355,7 @@ export interface SetupTokenResponsePaymentSource {
   paypal?: PaypalWalletResponse;
   venmo?: VenmoResponse;
 }
-export const SetupTokenResponsePaymentSource = /*@__PURE__*/ S.suspend(() =>
+const SetupTokenResponsePaymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.optional(SetupTokenResponsePaymentSourceCard),
     paypal: S.optional(PaypalWalletResponse),
@@ -1427,7 +1377,7 @@ export interface SetupTokenResponse {
   payment_source?: SetupTokenResponsePaymentSource;
   links?: LinkDescriptionList;
 }
-export const SetupTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const SetupTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     customer: S.optional(CreatePaymentTokenRequestCustomer),
@@ -1441,7 +1391,7 @@ export interface DeletePaymentTokenRequest {
   /** ID of the setup token. */
   id: string;
 }
-export const DeletePaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v3/vault/payment-tokens/{id}", code: 200 })),
@@ -1450,7 +1400,7 @@ export const DeletePaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePaymentTokenRequest>;
 
 export interface DeletePaymentTokenResponse {}
-export const DeletePaymentTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePaymentTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePaymentTokenResponse",
 }) as any as S.Schema<DeletePaymentTokenResponse>;
 
@@ -1464,7 +1414,7 @@ export interface GetCustomerPaymentTokenRequest {
   /** A boolean indicating total number of items (total_items) and pages (total_pages) are expected to be returned in the response. */
   total_required?: boolean;
 }
-export const GetCustomerPaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerPaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_id: S.String.pipe(T.Query()),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -1477,10 +1427,8 @@ export const GetCustomerPaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** This object defines a customer in your system. Use it to manage customer profiles, save payment methods and contact details. */
 export type CustomerVaultPaymentTokensResponseCustomer = CreatePaymentTokenRequestCustomer;
-export const CustomerVaultPaymentTokensResponseCustomer = CreatePaymentTokenRequestCustomer;
-
 export type PaymentTokenResponseList = Array<PaymentTokenResponse>;
-export const PaymentTokenResponseList = /*@__PURE__*/ S.Array(
+const PaymentTokenResponseList = /*@__PURE__*/ S.Array(
   PaymentTokenResponse,
 ) as any as S.Schema<PaymentTokenResponseList>;
 
@@ -1495,7 +1443,7 @@ export interface CustomerVaultPaymentTokensResponse {
   payment_tokens?: PaymentTokenResponseList;
   links?: LinkDescriptionList;
 }
-export const CustomerVaultPaymentTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const CustomerVaultPaymentTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_items: S.optional(S.Number),
     total_pages: S.optional(S.Number),
@@ -1511,7 +1459,7 @@ export interface GetPaymentTokenRequest {
   /** ID of the setup token. */
   id: string;
 }
-export const GetPaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPaymentTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/vault/payment-tokens/{id}", code: 200 })),
@@ -1521,7 +1469,7 @@ export interface GetSetupTokenRequest {
   /** ID of the setup token. */
   id: string;
 }
-export const GetSetupTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSetupTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/vault/setup-tokens/{id}", code: 200 })),

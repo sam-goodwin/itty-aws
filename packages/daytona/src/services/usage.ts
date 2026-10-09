@@ -16,7 +16,7 @@ export interface GetOrganizationUsageAggregatedRequest {
   /** End time (RFC3339) */
   to: string;
 }
-export const GetOrganizationUsageAggregatedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationUsageAggregatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     from: S.String.pipe(T.Query()),
@@ -38,7 +38,7 @@ export interface ModelsAggregatedUsage {
   totalPrice?: number;
   totalRAMGBSeconds?: number;
 }
-export const ModelsAggregatedUsage = /*@__PURE__*/ S.suspend(() =>
+const ModelsAggregatedUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstStart: S.optional(S.String),
     lastEnd: S.optional(S.String),
@@ -61,7 +61,7 @@ export interface ListOrganizationSandboxUsageRequest {
   /** End time (RFC3339) */
   to: string;
 }
-export const ListOrganizationSandboxUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSandboxUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     sandboxId: S.String.pipe(T.Label()),
@@ -87,7 +87,7 @@ export interface ModelsUsagePeriod {
   ramGB?: number;
   startAt?: string;
 }
-export const ModelsUsagePeriod = /*@__PURE__*/ S.suspend(() =>
+const ModelsUsagePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu: S.optional(S.Number),
     diskGB: S.optional(S.Number),
@@ -100,12 +100,12 @@ export const ModelsUsagePeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelsUsagePeriod" }) as any as S.Schema<ModelsUsagePeriod>;
 
 export type ListOrganizationSandboxUsageResponseBodyList = Array<ModelsUsagePeriod>;
-export const ListOrganizationSandboxUsageResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationSandboxUsageResponseBodyList = /*@__PURE__*/ S.Array(
   ModelsUsagePeriod,
 ) as any as S.Schema<ListOrganizationSandboxUsageResponseBodyList>;
 
 export type ListOrganizationSandboxUsageResponse = ListOrganizationSandboxUsageResponseBodyList;
-export const ListOrganizationSandboxUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSandboxUsageResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationSandboxUsageResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationSandboxUsageResponse",
@@ -121,7 +121,7 @@ export interface ListOrganizationUsageChartRequest {
   /** Region filter */
   region?: string;
 }
-export const ListOrganizationUsageChartRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationUsageChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     from: S.String.pipe(T.Query()),
@@ -141,7 +141,7 @@ export interface ModelsUsageChartPoint {
   ramPrice?: number;
   time?: string;
 }
-export const ModelsUsageChartPoint = /*@__PURE__*/ S.suspend(() =>
+const ModelsUsageChartPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu: S.optional(S.Number),
     cpuPrice: S.optional(S.Number),
@@ -154,12 +154,12 @@ export const ModelsUsageChartPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelsUsageChartPoint" }) as any as S.Schema<ModelsUsageChartPoint>;
 
 export type ListOrganizationUsageChartResponseBodyList = Array<ModelsUsageChartPoint>;
-export const ListOrganizationUsageChartResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationUsageChartResponseBodyList = /*@__PURE__*/ S.Array(
   ModelsUsageChartPoint,
 ) as any as S.Schema<ListOrganizationUsageChartResponseBodyList>;
 
 export type ListOrganizationUsageChartResponse = ListOrganizationUsageChartResponseBodyList;
-export const ListOrganizationUsageChartResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationUsageChartResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationUsageChartResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationUsageChartResponse",
@@ -173,7 +173,7 @@ export interface ListOrganizationUsageSandboxRequest {
   /** End time (RFC3339) */
   to: string;
 }
-export const ListOrganizationUsageSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationUsageSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     from: S.String.pipe(T.Query()),
@@ -195,7 +195,7 @@ export interface ModelsSandboxUsage {
   totalPrice?: number;
   totalRAMGBSeconds?: number;
 }
-export const ModelsSandboxUsage = /*@__PURE__*/ S.suspend(() =>
+const ModelsSandboxUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstStart: S.optional(S.String),
     lastEnd: S.optional(S.String),
@@ -209,12 +209,12 @@ export const ModelsSandboxUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelsSandboxUsage" }) as any as S.Schema<ModelsSandboxUsage>;
 
 export type ListOrganizationUsageSandboxResponseBodyList = Array<ModelsSandboxUsage>;
-export const ListOrganizationUsageSandboxResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationUsageSandboxResponseBodyList = /*@__PURE__*/ S.Array(
   ModelsSandboxUsage,
 ) as any as S.Schema<ListOrganizationUsageSandboxResponseBodyList>;
 
 export type ListOrganizationUsageSandboxResponse = ListOrganizationUsageSandboxResponseBodyList;
-export const ListOrganizationUsageSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationUsageSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationUsageSandboxResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationUsageSandboxResponse",

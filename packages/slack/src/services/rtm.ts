@@ -14,7 +14,7 @@ export interface ConnectRtmRequest {
   /** Only deliver presence events when requested by subscription. See [presence subscriptions](/apis/web-api/user-presence-and-status#subscriptions). */
   presence_sub?: boolean;
 }
-export const ConnectRtmRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectRtmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batch_presence_aware: S.optional(S.Boolean.pipe(T.Query())),
     presence_sub: S.optional(S.Boolean.pipe(T.Query())),
@@ -25,7 +25,7 @@ export interface ConnectRtmResponseSelf {
   id: string;
   name: string;
 }
-export const ConnectRtmResponseSelf = /*@__PURE__*/ S.suspend(() =>
+const ConnectRtmResponseSelf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -39,7 +39,7 @@ export interface ConnectRtmResponseTeam {
   enterprise_id?: string;
   enterprise_name?: string;
 }
-export const ConnectRtmResponseTeam = /*@__PURE__*/ S.suspend(() =>
+const ConnectRtmResponseTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     id: S.String,
@@ -56,7 +56,7 @@ export interface ConnectRtmResponse {
   self: ConnectRtmResponseSelf;
   team: ConnectRtmResponseTeam;
 }
-export const ConnectRtmResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectRtmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     url: S.String,
@@ -81,7 +81,7 @@ export interface StartRtmRequest {
   /** Set this to `true` to receive the locale for users and channels. Defaults to `false` */
   include_locale?: boolean;
 }
-export const StartRtmRequest = /*@__PURE__*/ S.suspend(() =>
+const StartRtmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     simple_latest: S.optional(S.Boolean.pipe(T.Query())),
     no_unreads: S.optional(S.Boolean.pipe(T.Query())),
@@ -94,11 +94,7 @@ export const StartRtmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartRtmRequest" }) as any as S.Schema<StartRtmRequest>;
 
 export type StartRtmResponseSelf = ConnectRtmResponseSelf;
-export const StartRtmResponseSelf = ConnectRtmResponseSelf;
-
 export type StartRtmResponseTeam = ConnectRtmResponseTeam;
-export const StartRtmResponseTeam = ConnectRtmResponseTeam;
-
 export interface StartRtmResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -106,7 +102,7 @@ export interface StartRtmResponse {
   self: ConnectRtmResponseSelf;
   team: ConnectRtmResponseTeam;
 }
-export const StartRtmResponse = ConnectRtmResponse as any as S.Schema<StartRtmResponse>;
+const StartRtmResponse = ConnectRtmResponse as any as S.Schema<StartRtmResponse>;
 
 export type ConnectRtmError = SlackOpError;
 /** Starts a Real Time Messaging session. Rate limit tier: 1 Method-specific errors (the `error` slug on the SlackError): - `migration_in_progress` -- Team is being migrated between servers. See [the `team_migration_started` event documentation](/reference/events/team_migration_started) for details. See https://docs.slack.dev/reference/methods/rtm.connect */

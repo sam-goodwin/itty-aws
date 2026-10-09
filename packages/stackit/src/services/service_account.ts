@@ -54,7 +54,7 @@ export interface CreateFederatedIdentityProviderRequestAssertionsItem {
   /** Value which the item is compared to */
   value?: string;
 }
-export const CreateFederatedIdentityProviderRequestAssertionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateFederatedIdentityProviderRequestAssertionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item: S.optional(S.String),
     operator: S.optional(S.String),
@@ -67,7 +67,7 @@ export const CreateFederatedIdentityProviderRequestAssertionsItem = /*@__PURE__*
 /** list of assertions of the federated identity provider */
 export type CreateFederatedIdentityProviderRequestAssertionsList =
   Array<CreateFederatedIdentityProviderRequestAssertionsItem>;
-export const CreateFederatedIdentityProviderRequestAssertionsList = /*@__PURE__*/ S.Array(
+const CreateFederatedIdentityProviderRequestAssertionsList = /*@__PURE__*/ S.Array(
   CreateFederatedIdentityProviderRequestAssertionsItem,
 ) as any as S.Schema<CreateFederatedIdentityProviderRequestAssertionsList>;
 
@@ -83,7 +83,7 @@ export interface CreateFederatedIdentityProviderRequest {
   /** Unique name used as identifier of the federated identity provider. */
   name: string;
 }
-export const CreateFederatedIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFederatedIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -110,7 +110,7 @@ export interface FederatedIdentityProviderAssertionsItem {
   /** Value which the item is compared to */
   value: string;
 }
-export const FederatedIdentityProviderAssertionsItem = /*@__PURE__*/ S.suspend(() =>
+const FederatedIdentityProviderAssertionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item: S.String,
     operator: S.String,
@@ -123,7 +123,7 @@ export const FederatedIdentityProviderAssertionsItem = /*@__PURE__*/ S.suspend((
 /** list of assertions of the federated identity provider */
 export type FederatedIdentityProviderAssertionsList =
   Array<FederatedIdentityProviderAssertionsItem>;
-export const FederatedIdentityProviderAssertionsList = /*@__PURE__*/ S.Array(
+const FederatedIdentityProviderAssertionsList = /*@__PURE__*/ S.Array(
   FederatedIdentityProviderAssertionsItem,
 ) as any as S.Schema<FederatedIdentityProviderAssertionsList>;
 
@@ -141,7 +141,7 @@ export interface FederatedIdentityProvider {
   /** Last update time of the federated identity provider. */
   updatedAt: string;
 }
-export const FederatedIdentityProvider = /*@__PURE__*/ S.suspend(() =>
+const FederatedIdentityProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assertions: FederatedIdentityProviderAssertionsList,
     createdAt: S.String,
@@ -160,7 +160,7 @@ export interface CreateServiceAccountRequest {
   /** The requested name of the service account. The service will generate a unique email from this name. */
   name: string;
 }
-export const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     name: S.String,
@@ -186,7 +186,7 @@ export interface ServiceAccount2 {
   /** ID of the related project */
   projectId: string;
 }
-export const ServiceAccount2 = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccount2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     id: S.String,
@@ -197,7 +197,7 @@ export const ServiceAccount2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional, key algorithm of the generated key-pair. Used only if publicKey attribute is not specified, otherwise the algorithm is derived from the public key. */
 export type CreateServiceAccountKeyRequestAlgorithm = "RSA_2048" | "RSA_4096";
-export const CreateServiceAccountKeyRequestAlgorithm = S.String;
+const CreateServiceAccountKeyRequestAlgorithm = S.String;
 
 export interface CreateServiceAccountKeyRequest {
   /** The ID of the project. */
@@ -211,7 +211,7 @@ export interface CreateServiceAccountKeyRequest {
   /** Optional, date of key expiration. When omitted, key is valid until deleted */
   validUntil?: string;
 }
-export const CreateServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -244,7 +244,7 @@ export interface CreateServiceAccountKeyResponseCredentials {
   /** Endpoint used to obtain access tokens for the service account. */
   tokenEndpoint?: string;
 }
-export const CreateServiceAccountKeyResponseCredentials = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountKeyResponseCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aud: S.String,
     iss: S.String,
@@ -258,13 +258,13 @@ export const CreateServiceAccountKeyResponseCredentials = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateServiceAccountKeyResponseCredentials>;
 
 export type CreateServiceAccountKeyResponseKeyAlgorithm = "RSA_2048" | "RSA_4096";
-export const CreateServiceAccountKeyResponseKeyAlgorithm = S.String;
+const CreateServiceAccountKeyResponseKeyAlgorithm = S.String;
 
 export type CreateServiceAccountKeyResponseKeyOrigin = "USER_PROVIDED" | "GENERATED";
-export const CreateServiceAccountKeyResponseKeyOrigin = S.String;
+const CreateServiceAccountKeyResponseKeyOrigin = S.String;
 
 export type CreateServiceAccountKeyResponseKeyType = "USER_MANAGED" | "SYSTEM_MANAGED";
-export const CreateServiceAccountKeyResponseKeyType = S.String;
+const CreateServiceAccountKeyResponseKeyType = S.String;
 
 export interface CreateServiceAccountKeyResponse {
   active: boolean;
@@ -281,7 +281,7 @@ export interface CreateServiceAccountKeyResponse {
   /** If specified, the timestamp until the key is active. May be null */
   validUntil?: string;
 }
-export const CreateServiceAccountKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Boolean,
     createdAt: S.String,
@@ -301,7 +301,7 @@ export const CreateServiceAccountKeyResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateShortLivedAccessTokenRequestGrantType =
   | "urn:ietf:params:oauth:grant-type:jwt-bearer"
   | "refresh_token";
-export const CreateShortLivedAccessTokenRequestGrantType = S.String;
+const CreateShortLivedAccessTokenRequestGrantType = S.String;
 
 export interface CreateShortLivedAccessTokenRequest {
   /** The self signed JWT. Must be given when grant_type is urn:ietf:params:oauth:grant-type:jwt-bearer */
@@ -311,7 +311,7 @@ export interface CreateShortLivedAccessTokenRequest {
   /** Refresh token provided by a previous call with a self signed token. Must be given when grant_type is refresh_token */
   refresh_token?: string | Redacted.Redacted<string>;
 }
-export const CreateShortLivedAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateShortLivedAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assertion: S.optional(S.String),
     grant_type: CreateShortLivedAccessTokenRequestGrantType,
@@ -329,7 +329,7 @@ export const CreateShortLivedAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateShortLivedAccessTokenRequest>;
 
 export type CreateShortLivedAccessTokenResponseTokenType = "Bearer";
-export const CreateShortLivedAccessTokenResponseTokenType = S.String;
+const CreateShortLivedAccessTokenResponseTokenType = S.String;
 
 export interface CreateShortLivedAccessTokenResponse {
   /** The short lived token that can be used for API access */
@@ -341,7 +341,7 @@ export interface CreateShortLivedAccessTokenResponse {
   scope: string;
   token_type: CreateShortLivedAccessTokenResponseTokenType;
 }
-export const CreateShortLivedAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateShortLivedAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.String.pipe(T.SensitiveValue({})),
     expires_in: S.Number,
@@ -359,7 +359,7 @@ export interface DeleteServiceAccountRequest {
   /** The email of the Service Account. */
   serviceAccountEmail: string;
 }
-export const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -376,7 +376,7 @@ export const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceAccountRequest>;
 
 export interface DeleteServiceAccountResponse {}
-export const DeleteServiceAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteServiceAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteServiceAccountResponse",
 }) as any as S.Schema<DeleteServiceAccountResponse>;
 
@@ -388,7 +388,7 @@ export interface DeleteServiceAccountKeyRequest {
   /** ID of the key. */
   keyId: string;
 }
-export const DeleteServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -406,9 +406,9 @@ export const DeleteServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceAccountKeyRequest>;
 
 export interface DeleteServiceAccountKeyResponse {}
-export const DeleteServiceAccountKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteServiceAccountKeyResponse" },
-) as any as S.Schema<DeleteServiceAccountKeyResponse>;
+const DeleteServiceAccountKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteServiceAccountKeyResponse",
+}) as any as S.Schema<DeleteServiceAccountKeyResponse>;
 
 export interface DeleteServiceFederatedIdentityProviderRequest {
   /** The ID of the project. */
@@ -418,7 +418,7 @@ export interface DeleteServiceFederatedIdentityProviderRequest {
   /** ID of the Federated Identity Provider. */
   federationId: string;
 }
-export const DeleteServiceFederatedIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceFederatedIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -436,7 +436,7 @@ export const DeleteServiceFederatedIdentityProviderRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteServiceFederatedIdentityProviderRequest>;
 
 export interface DeleteServiceFederatedIdentityProviderResponse {}
-export const DeleteServiceFederatedIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceFederatedIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteServiceFederatedIdentityProviderResponse",
@@ -450,7 +450,7 @@ export interface GetFederatedIdentityProviderRequest {
   /** ID of the Federated Identity Provider. */
   federationId: string;
 }
-export const GetFederatedIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFederatedIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -471,7 +471,7 @@ export interface GetJWKSRequest {
   /** The email of the service account. */
   serviceAccountEmail: string;
 }
-export const GetJWKSRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountEmail: S.String.pipe(T.Label()),
   }).pipe(
@@ -498,7 +498,7 @@ export interface JWK {
   x5t256?: string;
   x5u?: string;
 }
-export const JWK = /*@__PURE__*/ S.suspend(() =>
+const JWK = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alg: S.optional(S.String),
     e: S.String,
@@ -515,19 +515,19 @@ export const JWK = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JWK" }) as any as S.Schema<JWK>;
 
 export type JWKSKeysList = Array<JWK>;
-export const JWKSKeysList = /*@__PURE__*/ S.Array(JWK) as any as S.Schema<JWKSKeysList>;
+const JWKSKeysList = /*@__PURE__*/ S.Array(JWK) as any as S.Schema<JWKSKeysList>;
 
 export interface JWKS {
   keys: JWKSKeysList;
 }
-export const JWKS = /*@__PURE__*/ S.suspend(() =>
+const JWKS = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: JWKSKeysList,
   }),
 ).annotate({ identifier: "JWKS" }) as any as S.Schema<JWKS>;
 
 export type GetServiceAccountKeyRequestFormat = "X509_PEM";
-export const GetServiceAccountKeyRequestFormat = S.String;
+const GetServiceAccountKeyRequestFormat = S.String;
 
 export interface GetServiceAccountKeyRequest {
   /** The ID of the project. */
@@ -539,7 +539,7 @@ export interface GetServiceAccountKeyRequest {
   /** Requested format for the public key */
   format?: GetServiceAccountKeyRequestFormat | (string & {});
 }
-export const GetServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -567,7 +567,7 @@ export interface GetServiceAccountKeyResponseCredentials {
   /** Service account id */
   sub: string;
 }
-export const GetServiceAccountKeyResponseCredentials = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountKeyResponseCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aud: S.String,
     iss: S.String,
@@ -579,13 +579,13 @@ export const GetServiceAccountKeyResponseCredentials = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetServiceAccountKeyResponseCredentials>;
 
 export type GetServiceAccountKeyResponseKeyAlgorithm = "RSA_2048" | "RSA_4096";
-export const GetServiceAccountKeyResponseKeyAlgorithm = S.String;
+const GetServiceAccountKeyResponseKeyAlgorithm = S.String;
 
 export type GetServiceAccountKeyResponseKeyOrigin = "USER_PROVIDED" | "GENERATED";
-export const GetServiceAccountKeyResponseKeyOrigin = S.String;
+const GetServiceAccountKeyResponseKeyOrigin = S.String;
 
 export type GetServiceAccountKeyResponseKeyType = "USER_MANAGED" | "SYSTEM_MANAGED";
-export const GetServiceAccountKeyResponseKeyType = S.String;
+const GetServiceAccountKeyResponseKeyType = S.String;
 
 export interface GetServiceAccountKeyResponse {
   active: boolean;
@@ -602,7 +602,7 @@ export interface GetServiceAccountKeyResponse {
   /** If specified, the timestamp until the key is active. May be null */
   validUntil?: string;
 }
-export const GetServiceAccountKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Boolean,
     createdAt: S.String,
@@ -624,7 +624,7 @@ export interface ListFederatedIdentityProvidersRequest {
   /** The email of the service account. */
   serviceAccountEmail: string;
 }
-export const ListFederatedIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFederatedIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -642,7 +642,7 @@ export const ListFederatedIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() 
 
 export type FederatedListFederatedIdentityProvidersResponseResourcesList =
   Array<FederatedIdentityProvider>;
-export const FederatedListFederatedIdentityProvidersResponseResourcesList = /*@__PURE__*/ S.Array(
+const FederatedListFederatedIdentityProvidersResponseResourcesList = /*@__PURE__*/ S.Array(
   FederatedIdentityProvider,
 ) as any as S.Schema<FederatedListFederatedIdentityProvidersResponseResourcesList>;
 
@@ -652,7 +652,7 @@ export interface FederatedListFederatedIdentityProvidersResponse {
   startIndex: number;
   totalResults: number;
 }
-export const FederatedListFederatedIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const FederatedListFederatedIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemsPerPage: S.Number,
     resources: FederatedListFederatedIdentityProvidersResponseResourcesList,
@@ -669,7 +669,7 @@ export interface ListServiceAccountKeysRequest {
   /** The email of the service account. */
   serviceAccountEmail: string;
 }
-export const ListServiceAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -686,13 +686,13 @@ export const ListServiceAccountKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServiceAccountKeysRequest>;
 
 export type ServiceAccountKeyListResponseKeyAlgorithm = "RSA_2048" | "RSA_4096";
-export const ServiceAccountKeyListResponseKeyAlgorithm = S.String;
+const ServiceAccountKeyListResponseKeyAlgorithm = S.String;
 
 export type ServiceAccountKeyListResponseKeyOrigin = "USER_PROVIDED" | "GENERATED";
-export const ServiceAccountKeyListResponseKeyOrigin = S.String;
+const ServiceAccountKeyListResponseKeyOrigin = S.String;
 
 export type ServiceAccountKeyListResponseKeyType = "USER_MANAGED" | "SYSTEM_MANAGED";
-export const ServiceAccountKeyListResponseKeyType = S.String;
+const ServiceAccountKeyListResponseKeyType = S.String;
 
 export interface ServiceAccountKeyListResponse {
   active: boolean;
@@ -706,7 +706,7 @@ export interface ServiceAccountKeyListResponse {
   /** If specified, the timestamp until the key is active. May be null */
   validUntil?: string;
 }
-export const ServiceAccountKeyListResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountKeyListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Boolean,
     createdAt: S.String,
@@ -721,14 +721,14 @@ export const ServiceAccountKeyListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccountKeyListResponse>;
 
 export type ListServiceAccountKeysResponseItemsList = Array<ServiceAccountKeyListResponse>;
-export const ListServiceAccountKeysResponseItemsList = /*@__PURE__*/ S.Array(
+const ListServiceAccountKeysResponseItemsList = /*@__PURE__*/ S.Array(
   ServiceAccountKeyListResponse,
 ) as any as S.Schema<ListServiceAccountKeysResponseItemsList>;
 
 export interface ListServiceAccountKeysResponse {
   items: ListServiceAccountKeysResponseItemsList;
 }
-export const ListServiceAccountKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAccountKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListServiceAccountKeysResponseItemsList,
   }),
@@ -740,7 +740,7 @@ export interface ListServiceAccountsRequest {
   /** The ID of the project. */
   projectId: string;
 }
-export const ListServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -756,14 +756,14 @@ export const ListServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServiceAccountsRequest>;
 
 export type ListServiceAccountsResponseItemsList = Array<ServiceAccount2>;
-export const ListServiceAccountsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListServiceAccountsResponseItemsList = /*@__PURE__*/ S.Array(
   ServiceAccount2,
 ) as any as S.Schema<ListServiceAccountsResponseItemsList>;
 
 export interface ListServiceAccountsResponse {
   items: ListServiceAccountsResponseItemsList;
 }
-export const ListServiceAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListServiceAccountsResponseItemsList,
   }),
@@ -773,13 +773,10 @@ export const ListServiceAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type PartialUpdateServiceAccountFederatedIdentityProviderRequestAssertionsItem =
   CreateFederatedIdentityProviderRequestAssertionsItem;
-export const PartialUpdateServiceAccountFederatedIdentityProviderRequestAssertionsItem =
-  CreateFederatedIdentityProviderRequestAssertionsItem;
-
 /** list of assertions of the federated identity provider */
 export type PartialUpdateServiceAccountFederatedIdentityProviderRequestAssertionsList =
   Array<CreateFederatedIdentityProviderRequestAssertionsItem>;
-export const PartialUpdateServiceAccountFederatedIdentityProviderRequestAssertionsList =
+const PartialUpdateServiceAccountFederatedIdentityProviderRequestAssertionsList =
   /*@__PURE__*/ S.Array(
     CreateFederatedIdentityProviderRequestAssertionsItem,
   ) as any as S.Schema<PartialUpdateServiceAccountFederatedIdentityProviderRequestAssertionsList>;
@@ -798,25 +795,24 @@ export interface PartialUpdateServiceAccountFederatedIdentityProviderRequest {
   /** Unique name used as identifier of the federated identity provider. */
   name: string;
 }
-export const PartialUpdateServiceAccountFederatedIdentityProviderRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projectId: S.String.pipe(T.Label()),
-      serviceAccountEmail: S.String.pipe(T.Label()),
-      federationId: S.String.pipe(T.Label()),
-      assertions: S.optional(
-        PartialUpdateServiceAccountFederatedIdentityProviderRequestAssertionsList,
-      ),
-      issuer: S.String,
-      name: S.String,
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}/federations/{federationId}",
-        code: 200,
-        baseUrl: "https://service-account.api.stackit.cloud",
-      }),
+const PartialUpdateServiceAccountFederatedIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    projectId: S.String.pipe(T.Label()),
+    serviceAccountEmail: S.String.pipe(T.Label()),
+    federationId: S.String.pipe(T.Label()),
+    assertions: S.optional(
+      PartialUpdateServiceAccountFederatedIdentityProviderRequestAssertionsList,
     ),
+    issuer: S.String,
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/v2/projects/{projectId}/service-accounts/{serviceAccountEmail}/federations/{federationId}",
+      code: 200,
+      baseUrl: "https://service-account.api.stackit.cloud",
+    }),
+  ),
 ).annotate({
   identifier: "PartialUpdateServiceAccountFederatedIdentityProviderRequest",
 }) as any as S.Schema<PartialUpdateServiceAccountFederatedIdentityProviderRequest>;
@@ -833,7 +829,7 @@ export interface PartialUpdateServiceAccountKeyRequest {
   /** Optional, date of key expiration. To disable, set time to "9999-01-01T01:01:01Z" */
   validUntil?: string;
 }
-export const PartialUpdateServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     serviceAccountEmail: S.String.pipe(T.Label()),
@@ -853,14 +849,8 @@ export const PartialUpdateServiceAccountKeyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PartialUpdateServiceAccountKeyRequest>;
 
 export type PartialUpdateServiceAccountKeyResponseKeyAlgorithm = "RSA_2048" | "RSA_4096";
-export const PartialUpdateServiceAccountKeyResponseKeyAlgorithm = S.String;
-
 export type PartialUpdateServiceAccountKeyResponseKeyOrigin = "USER_PROVIDED" | "GENERATED";
-export const PartialUpdateServiceAccountKeyResponseKeyOrigin = S.String;
-
 export type PartialUpdateServiceAccountKeyResponseKeyType = "USER_MANAGED" | "SYSTEM_MANAGED";
-export const PartialUpdateServiceAccountKeyResponseKeyType = S.String;
-
 export interface PartialUpdateServiceAccountKeyResponse {
   active: boolean;
   /** Creation time of the key */
@@ -873,7 +863,7 @@ export interface PartialUpdateServiceAccountKeyResponse {
   /** If specified, the timestamp until the key is active. May be null */
   validUntil?: string;
 }
-export const PartialUpdateServiceAccountKeyResponse =
+const PartialUpdateServiceAccountKeyResponse =
   ServiceAccountKeyListResponse as any as S.Schema<PartialUpdateServiceAccountKeyResponse>;
 
 export type CreateFederatedIdentityProviderError =

@@ -16,7 +16,7 @@ export interface MapAwaitRequest {
   /** Used for waypoints. */
   timeout?: number;
 }
-export const MapAwaitRequest = /*@__PURE__*/ S.suspend(() =>
+const MapAwaitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
     mapToken: S.optional(S.String),
@@ -37,7 +37,7 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-export const GenericResultGenericStatus = S.String;
+const GenericResultGenericStatus = S.String;
 
 /** sub-type for generic types like lists */
 export interface GenericResult {
@@ -59,7 +59,7 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-export const GenericResult = /*@__PURE__*/ S.suspend(() =>
+const GenericResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenericResultGenericStatus),
     exception: S.optional(S.String),
@@ -80,7 +80,7 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
-export const DataFormat = S.String;
+const DataFormat = S.String;
 
 /** How long to sleep before requesting another input. */
 export interface FunctionGetOutputsItem {
@@ -95,7 +95,7 @@ export interface FunctionGetOutputsItem {
   retryCount?: number;
   fcTraceTag?: string;
 }
-export const FunctionGetOutputsItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetOutputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     idx: S.optional(S.Number),
@@ -110,7 +110,7 @@ export const FunctionGetOutputsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionGetOutputsItem" }) as any as S.Schema<FunctionGetOutputsItem>;
 
 export type FunctionGetOutputsItemList = Array<FunctionGetOutputsItem>;
-export const FunctionGetOutputsItemList = /*@__PURE__*/ S.Array(
+const FunctionGetOutputsItemList = /*@__PURE__*/ S.Array(
   FunctionGetOutputsItem,
 ) as any as S.Schema<FunctionGetOutputsItemList>;
 
@@ -118,7 +118,7 @@ export interface MapAwaitResponse {
   outputs?: FunctionGetOutputsItemList;
   lastEntryId?: string;
 }
-export const MapAwaitResponse = /*@__PURE__*/ S.suspend(() =>
+const MapAwaitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputs: S.optional(FunctionGetOutputsItemList),
     lastEntryId: S.optional(S.String),
@@ -126,14 +126,14 @@ export const MapAwaitResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapAwaitResponse" }) as any as S.Schema<MapAwaitResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface MapCheckInputsRequest {
   lastEntryId?: string;
   timeout?: number;
   attemptTokens?: StringList;
 }
-export const MapCheckInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const MapCheckInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastEntryId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -142,12 +142,12 @@ export const MapCheckInputsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapCheckInputsRequest" }) as any as S.Schema<MapCheckInputsRequest>;
 
 export type BooleanList = Array<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
+const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
 
 export interface MapCheckInputsResponse {
   lost?: BooleanList;
 }
-export const MapCheckInputsResponse = /*@__PURE__*/ S.suspend(() =>
+const MapCheckInputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lost: S.optional(BooleanList),
   }),
@@ -162,7 +162,7 @@ export interface FunctionInput {
   /** For args_oneof. */
   methodName?: string;
 }
-export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
+const FunctionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(S.String),
     argsBlobId: S.optional(S.String),
@@ -173,7 +173,7 @@ export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionInput" }) as any as S.Schema<FunctionInput>;
 
 export type BlobUploadResultOutcome = "OUTCOME_UNSPECIFIED" | "OUTCOME_SUCCESS" | "OUTCOME_FAILURE";
-export const BlobUploadResultOutcome = S.String;
+const BlobUploadResultOutcome = S.String;
 
 export interface BlobUploadResult {
   blobId?: string;
@@ -181,7 +181,7 @@ export interface BlobUploadResult {
   outcome?: BlobUploadResultOutcome | (string & {});
   throughputBytesS?: string;
 }
-export const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
+const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobId: S.optional(S.String),
     outcome: S.optional(BlobUploadResultOutcome),
@@ -190,7 +190,7 @@ export const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlobUploadResult" }) as any as S.Schema<BlobUploadResult>;
 
 export type BlobUploadResultList = Array<BlobUploadResult>;
-export const BlobUploadResultList = /*@__PURE__*/ S.Array(
+const BlobUploadResultList = /*@__PURE__*/ S.Array(
   BlobUploadResult,
 ) as any as S.Schema<BlobUploadResultList>;
 
@@ -202,7 +202,7 @@ export interface FunctionPutInputsItem {
   r2ThroughputBytesS?: string;
   blobUploadResults?: BlobUploadResultList;
 }
-export const FunctionPutInputsItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionPutInputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idx: S.optional(S.Number),
     input: S.optional(FunctionInput),
@@ -216,7 +216,7 @@ export interface MapStartOrContinueItem {
   input?: FunctionPutInputsItem;
   attemptToken?: string;
 }
-export const MapStartOrContinueItem = /*@__PURE__*/ S.suspend(() =>
+const MapStartOrContinueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: S.optional(FunctionPutInputsItem),
     attemptToken: S.optional(S.String),
@@ -224,7 +224,7 @@ export const MapStartOrContinueItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapStartOrContinueItem" }) as any as S.Schema<MapStartOrContinueItem>;
 
 export type MapStartOrContinueItemList = Array<MapStartOrContinueItem>;
-export const MapStartOrContinueItemList = /*@__PURE__*/ S.Array(
+const MapStartOrContinueItemList = /*@__PURE__*/ S.Array(
   MapStartOrContinueItem,
 ) as any as S.Schema<MapStartOrContinueItemList>;
 
@@ -237,7 +237,7 @@ export interface MapStartOrContinueRequest {
   items?: MapStartOrContinueItemList;
   proxied?: boolean;
 }
-export const MapStartOrContinueRequest = /*@__PURE__*/ S.suspend(() =>
+const MapStartOrContinueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     parentInputId: S.optional(S.String),
@@ -259,7 +259,7 @@ export interface FunctionRetryPolicy {
   /** NOTE: two-byte field number not used for special reason. copy-paste error. Ref: PR #2542 */
   retries?: number;
 }
-export const FunctionRetryPolicy = /*@__PURE__*/ S.suspend(() =>
+const FunctionRetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backoffCoefficient: S.optional(S.Number),
     initialDelayMs: S.optional(S.Number),
@@ -277,7 +277,7 @@ export interface MapStartOrContinueResponse {
   attemptTokens?: StringList;
   retryPolicy?: FunctionRetryPolicy;
 }
-export const MapStartOrContinueResponse = /*@__PURE__*/ S.suspend(() =>
+const MapStartOrContinueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mapToken: S.optional(S.String),
     functionId: S.optional(S.String),

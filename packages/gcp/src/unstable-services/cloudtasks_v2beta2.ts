@@ -66,7 +66,7 @@ export interface AcknowledgeTaskRequest {
   /** Required. The task's current schedule time, available in the schedule_time returned by LeaseTasks response or RenewLease response. This restriction is to ensure that your worker currently holds the lease. */
   scheduleTime?: string;
 }
-export const AcknowledgeTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleTime: S.optional(S.String),
   }),
@@ -78,7 +78,7 @@ export interface AcknowledgeProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: AcknowledgeTaskRequest;
 }
-export const AcknowledgeProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AcknowledgeTaskRequest.pipe(T.HttpBody())),
@@ -95,12 +95,12 @@ export const AcknowledgeProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.su
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed). */
 export interface AppEngineRouting {
@@ -113,7 +113,7 @@ export interface AppEngineRouting {
   /** Output only. The host that the task is sent to. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the queue's project ID. Some tasks which were created using the App Engine SDK use a custom domain name. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the task will be sent to the service which is the default service when the task is attempted. If version is empty, then the task will be sent to the version which is the default version when the task is attempted. If instance is empty, then the task will be sent to an instance which is available when the task is attempted. If service, version, or instance is invalid, then the task will be sent to the default version of the default service when the task is attempted. */
   host?: string;
 }
-export const AppEngineRouting = /*@__PURE__*/ S.suspend(() =>
+const AppEngineRouting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     instance: S.optional(S.String),
@@ -131,7 +131,7 @@ export type AppEngineHttpRequestHttpMethodEnum =
   | "DELETE"
   | "PATCH"
   | "OPTIONS";
-export const AppEngineHttpRequestHttpMethodEnum = S.String;
+const AppEngineHttpRequestHttpMethodEnum = S.String;
 
 /** App Engine HTTP request. The message defines the HTTP request that is sent to an App Engine app when the task is dispatched. This proto can only be used for tasks in a queue which has app_engine_http_target set. Using AppEngineHttpRequest requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` The task will be delivered to the App Engine app which belongs to the same project as the queue. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and how routing is affected by [dispatch files](https://cloud.google.com/appengine/docs/python/config/dispatchref). Traffic is encrypted during transport and never leaves Google datacenters. Because this traffic is carried over a communication mechanism internal to Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS). The request to the handler, however, will appear to have used the HTTP protocol. The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or task-level: * If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. The `url` that the task will be sent to is: * `url =` host `+` relative_url Tasks can be dispatched to secure app handlers, unsecure app handlers, and URIs restricted with [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref). Because tasks are not run as any user, they cannot be dispatched to URIs restricted with [`login: required`](https://cloud.google.com/appengine/docs/standard/python/config/appref) Task dispatches also do not follow redirects. The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` - `299`]. The task attempt has failed if the app's handler returns a non-2xx response code or Cloud Tasks does not receive response before the deadline. Failed tasks will be retried according to the retry configuration. `503` (Service Unavailable) is considered an App Engine system error instead of an application error and will cause Cloud Tasks' traffic congestion control to temporarily throttle the queue's dispatches. Unlike other types of task targets, a `429` (Too Many Requests) response from an app handler does not cause traffic congestion control to throttle the queue. */
 export interface AppEngineHttpRequest {
@@ -146,7 +146,7 @@ export interface AppEngineHttpRequest {
   /** The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled). */
   httpMethod?: AppEngineHttpRequestHttpMethodEnum | (string & {});
 }
-export const AppEngineHttpRequest = /*@__PURE__*/ S.suspend(() =>
+const AppEngineHttpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relativeUrl: S.optional(S.String),
     headers: S.optional(StringMap),
@@ -157,15 +157,10 @@ export const AppEngineHttpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppEngineHttpRequest" }) as any as S.Schema<AppEngineHttpRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -176,7 +171,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     message: S.optional(S.String),
@@ -195,7 +190,7 @@ export interface AttemptStatus {
   /** Output only. The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond. */
   responseTime?: string;
 }
-export const AttemptStatus = /*@__PURE__*/ S.suspend(() =>
+const AttemptStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responseStatus: S.optional(Status),
     scheduleTime: S.optional(S.String),
@@ -215,7 +210,7 @@ export interface TaskStatus {
   /** Output only. The status of the task's first attempt. Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud Tasks. This field is not calculated for pull tasks. */
   firstAttemptStatus?: AttemptStatus;
 }
-export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
+const TaskStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attemptResponseCount: S.optional(S.Number),
     lastAttemptStatus: S.optional(AttemptStatus),
@@ -231,7 +226,7 @@ export interface PullMessage {
   /** A data payload consumed by the worker to execute the task. */
   payload?: string;
 }
-export const PullMessage = /*@__PURE__*/ S.suspend(() =>
+const PullMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     payload: S.optional(S.String),
@@ -245,7 +240,7 @@ export interface OidcToken {
   /** Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used. */
   audience?: string;
 }
-export const OidcToken = /*@__PURE__*/ S.suspend(() =>
+const OidcToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountEmail: S.optional(S.String),
     audience: S.optional(S.String),
@@ -261,7 +256,7 @@ export type HttpRequestHttpMethodEnum =
   | "DELETE"
   | "PATCH"
   | "OPTIONS";
-export const HttpRequestHttpMethodEnum = S.String;
+const HttpRequestHttpMethodEnum = S.String;
 
 /** Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com. */
 export interface OAuthToken {
@@ -270,7 +265,7 @@ export interface OAuthToken {
   /** OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used. */
   scope?: string;
 }
-export const OAuthToken = /*@__PURE__*/ S.suspend(() =>
+const OAuthToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountEmail: S.optional(S.String),
     scope: S.optional(S.String),
@@ -292,7 +287,7 @@ export interface HttpRequest {
   /** HTTP request headers. This map contains the header field names and values. Headers can be set when running the task is created or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-CloudTasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. */
   headers?: StringMap;
 }
-export const HttpRequest = /*@__PURE__*/ S.suspend(() =>
+const HttpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oidcToken: S.optional(OidcToken),
     body: S.optional(S.String),
@@ -318,7 +313,7 @@ export interface RetryConfig {
   /** The time between retries will double `max_doublings` times. A task's retry interval starts at min_backoff, then doubles `max_doublings` times, then increases linearly, and finally retries at intervals of max_backoff up to max_attempts times. For example, if min_backoff is 10s, max_backoff is 300s, and `max_doublings` is 3, then the a task will first be retried in 10s. The retry interval will double three times, and then increase linearly by 2^3 * 10s. Finally, the task will retry at intervals of max_backoff until the task has been attempted max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... If unspecified when the queue is created, Cloud Tasks will pick the default. This field is output only for pull queues. This field has the same meaning as [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters). */
   maxDoublings?: number;
 }
-export const RetryConfig = /*@__PURE__*/ S.suspend(() =>
+const RetryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxRetryDuration: S.optional(S.String),
     maxAttempts: S.optional(S.Number),
@@ -330,7 +325,7 @@ export const RetryConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RetryConfig" }) as any as S.Schema<RetryConfig>;
 
 export type TaskViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const TaskViewEnum = S.String;
+const TaskViewEnum = S.String;
 
 /** A unit of scheduled work. */
 export interface Task {
@@ -353,7 +348,7 @@ export interface Task {
   /** Output only. The view specifies which subset of the Task has been returned. */
   view?: TaskViewEnum | (string & {});
 }
-export const Task = /*@__PURE__*/ S.suspend(() =>
+const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appEngineHttpRequest: S.optional(AppEngineHttpRequest),
     createTime: S.optional(S.String),
@@ -368,7 +363,7 @@ export const Task = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Task" }) as any as S.Schema<Task>;
 
 export type CreateTaskRequestResponseViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const CreateTaskRequestResponseViewEnum = S.String;
+const CreateTaskRequestResponseViewEnum = S.String;
 
 /** Request message for CreateTask. */
 export interface CreateTaskRequest {
@@ -379,7 +374,7 @@ export interface CreateTaskRequest {
   /** The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource. */
   responseView?: CreateTaskRequestResponseViewEnum | (string & {});
 }
-export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     task: S.optional(Task),
@@ -388,7 +383,7 @@ export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTaskRequest" }) as any as S.Schema<CreateTaskRequest>;
 
 export type CreateTaskRequestList = Array<CreateTaskRequest>;
-export const CreateTaskRequestList = /*@__PURE__*/ S.Array(
+const CreateTaskRequestList = /*@__PURE__*/ S.Array(
   CreateTaskRequest,
 ) as any as S.Schema<CreateTaskRequestList>;
 
@@ -399,7 +394,7 @@ export interface BatchCreateTasksRequest {
   /** Required. The list of requests to create tasks. The queue specified in parent field of each CreateTaskRequest will be the same. This validation happens on the client side as well as in the handler. BatchCreateTasksRequest.parent will also be the same value as the individual CreateTaskRequest.parent . The maximum number of requests is 100. */
   requests?: CreateTaskRequestList;
 }
-export const BatchCreateTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreateTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     requests: S.optional(CreateTaskRequestList),
@@ -412,7 +407,7 @@ export interface BatchCreateProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: BatchCreateTasksRequest;
 }
-export const BatchCreateProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreateProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchCreateTasksRequest.pipe(T.HttpBody())),
@@ -440,7 +435,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     response: S.optional(DocumentMap),
@@ -451,7 +446,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request message for deleting a batch of tasks using BatchDeleteTasks. */
 export interface BatchDeleteTasksRequest {
@@ -460,7 +455,7 @@ export interface BatchDeleteTasksRequest {
   /** Required. The names of the tasks to delete. A maximum of 1000 tasks can be deleted in a batch. For example: Format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` */
   names?: StringList;
 }
-export const BatchDeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     names: S.optional(StringList),
@@ -473,7 +468,7 @@ export interface BatchDeleteProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: BatchDeleteTasksRequest;
 }
-export const BatchDeleteProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchDeleteTasksRequest.pipe(T.HttpBody())),
@@ -497,7 +492,7 @@ export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
-export const HttpBody = /*@__PURE__*/ S.suspend(() =>
+const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     extensions: S.optional(DocumentMapList),
@@ -510,7 +505,7 @@ export interface BufferTaskRequest {
   /** Optional. Body of the HTTP request. The body can take any generic value. The value is written to the HttpRequest of the [Task]. */
   body?: HttpBody;
 }
-export const BufferTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const BufferTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(HttpBody),
   }),
@@ -524,7 +519,7 @@ export interface BufferProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: BufferTaskRequest;
 }
-export const BufferProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const BufferProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queue: S.String.pipe(T.Label()),
     taskId: S.String.pipe(T.Label()),
@@ -545,14 +540,14 @@ export interface BufferTaskResponse {
   /** The created task. */
   task?: Task;
 }
-export const BufferTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const BufferTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task: S.optional(Task),
   }),
 ).annotate({ identifier: "BufferTaskResponse" }) as any as S.Schema<BufferTaskResponse>;
 
 export type CancelLeaseRequestResponseViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const CancelLeaseRequestResponseViewEnum = S.String;
+const CancelLeaseRequestResponseViewEnum = S.String;
 
 /** Request message for canceling a lease using CancelLease. */
 export interface CancelLeaseRequest {
@@ -561,7 +556,7 @@ export interface CancelLeaseRequest {
   /** Required. The task's current schedule time, available in the schedule_time returned by LeaseTasks response or RenewLease response. This restriction is to ensure that your worker currently holds the lease. */
   scheduleTime?: string;
 }
-export const CancelLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responseView: S.optional(CancelLeaseRequestResponseViewEnum),
     scheduleTime: S.optional(S.String),
@@ -574,7 +569,7 @@ export interface CancelLeaseProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: CancelLeaseRequest;
 }
-export const CancelLeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelLeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelLeaseRequest.pipe(T.HttpBody())),
@@ -598,7 +593,7 @@ export type HttpTargetHttpMethodEnum =
   | "DELETE"
   | "PATCH"
   | "OPTIONS";
-export const HttpTargetHttpMethodEnum = S.String;
+const HttpTargetHttpMethodEnum = S.String;
 
 /** Defines a header message. A header can have a key and a value. */
 export interface Header {
@@ -607,7 +602,7 @@ export interface Header {
   /** The value of the header. */
   value?: string;
 }
-export const Header = /*@__PURE__*/ S.suspend(() =>
+const Header = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -619,32 +614,32 @@ export interface HeaderOverride {
   /** Header embodying a key and a value. Do not put business sensitive or personally identifying data in the HTTP Header Override Configuration or other similar fields in accordance with Section 12 (Resource Fields) of the [Service Specific Terms](https://cloud.google.com/terms/service-terms). */
   header?: Header;
 }
-export const HeaderOverride = /*@__PURE__*/ S.suspend(() =>
+const HeaderOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     header: S.optional(Header),
   }),
 ).annotate({ identifier: "HeaderOverride" }) as any as S.Schema<HeaderOverride>;
 
 export type HeaderOverrideList = Array<HeaderOverride>;
-export const HeaderOverrideList = /*@__PURE__*/ S.Array(
+const HeaderOverrideList = /*@__PURE__*/ S.Array(
   HeaderOverride,
 ) as any as S.Schema<HeaderOverrideList>;
 
 export type UriOverrideSchemeEnum = "SCHEME_UNSPECIFIED" | "HTTP" | "HTTPS";
-export const UriOverrideSchemeEnum = S.String;
+const UriOverrideSchemeEnum = S.String;
 
 export type UriOverrideUriOverrideEnforceModeEnum =
   | "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED"
   | "IF_NOT_EXISTS"
   | "ALWAYS";
-export const UriOverrideUriOverrideEnforceModeEnum = S.String;
+const UriOverrideUriOverrideEnforceModeEnum = S.String;
 
 /** QueryOverride. Query message defines query override for HTTP targets. */
 export interface QueryOverride {
   /** The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string. */
   queryParams?: string;
 }
-export const QueryOverride = /*@__PURE__*/ S.suspend(() =>
+const QueryOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryParams: S.optional(S.String),
   }),
@@ -655,7 +650,7 @@ export interface PathOverride {
   /** The URI path (e.g., /users/1234). Default is an empty string. */
   path?: string;
 }
-export const PathOverride = /*@__PURE__*/ S.suspend(() =>
+const PathOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
   }),
@@ -676,7 +671,7 @@ export interface UriOverride {
   /** URI path. When specified, replaces the existing path of the task URL. Setting the path value to an empty string clears the URI path segment. */
   pathOverride?: PathOverride;
 }
-export const UriOverride = /*@__PURE__*/ S.suspend(() =>
+const UriOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheme: S.optional(UriOverrideSchemeEnum),
     uriOverrideEnforceMode: S.optional(UriOverrideUriOverrideEnforceModeEnum),
@@ -700,7 +695,7 @@ export interface HttpTarget {
   /** Uri override. When specified, overrides the execution Uri for all the tasks in the queue. */
   uriOverride?: UriOverride;
 }
-export const HttpTarget = /*@__PURE__*/ S.suspend(() =>
+const HttpTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oidcToken: S.optional(OidcToken),
     httpMethod: S.optional(HttpTargetHttpMethodEnum),
@@ -711,11 +706,11 @@ export const HttpTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HttpTarget" }) as any as S.Schema<HttpTarget>;
 
 export type QueueStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "PAUSED" | "DISABLED";
-export const QueueStateEnum = S.String;
+const QueueStateEnum = S.String;
 
 /** Pull target. */
 export interface PullTarget {}
-export const PullTarget = Empty as any as S.Schema<PullTarget>;
+const PullTarget = Empty as any as S.Schema<PullTarget>;
 
 /** Statistics for a queue. */
 export interface QueueStats {
@@ -730,7 +725,7 @@ export interface QueueStats {
   /** Output only. The current maximum number of tasks per second executed by the queue. The maximum value of this variable is controlled by the RateLimits of the Queue. However, this value could be less to avoid overloading the endpoints tasks in the queue are targeting. */
   effectiveExecutionRate?: number;
 }
-export const QueueStats = /*@__PURE__*/ S.suspend(() =>
+const QueueStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oldestEstimatedArrivalTime: S.optional(S.String),
     concurrentDispatchesCount: S.optional(S.String),
@@ -745,7 +740,7 @@ export interface AppEngineHttpTarget {
   /** Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. */
   appEngineRoutingOverride?: AppEngineRouting;
 }
-export const AppEngineHttpTarget = /*@__PURE__*/ S.suspend(() =>
+const AppEngineHttpTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appEngineRoutingOverride: S.optional(AppEngineRouting),
   }),
@@ -760,7 +755,7 @@ export interface RateLimits {
   /** The maximum rate at which tasks are dispatched from this queue. If unspecified when the queue is created, Cloud Tasks will pick the default. * For App Engine queues, the maximum allowed value is 500. * This field is output only for pull queues. In addition to the `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of LeaseTasks requests are allowed per pull queue. This field has the same meaning as [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate). */
   maxTasksDispatchedPerSecond?: number;
 }
-export const RateLimits = /*@__PURE__*/ S.suspend(() =>
+const RateLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxConcurrentTasks: S.optional(S.Number),
     maxBurstSize: S.optional(S.Number),
@@ -793,7 +788,7 @@ export interface Queue {
   /** Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts however they control how tasks are attempted in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to a particular task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc). */
   rateLimits?: RateLimits;
 }
-export const Queue = /*@__PURE__*/ S.suspend(() =>
+const Queue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpTarget: S.optional(HttpTarget),
     state: S.optional(QueueStateEnum),
@@ -815,7 +810,7 @@ export interface CreateProjectsLocationsQueuesRequest {
   /** Request body */
   body?: Queue;
 }
-export const CreateProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Queue.pipe(T.HttpBody())),
@@ -836,7 +831,7 @@ export interface CreateProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: CreateTaskRequest;
 }
-export const CreateProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateTaskRequest.pipe(T.HttpBody())),
@@ -855,7 +850,7 @@ export interface DeleteProjectsLocationsQueuesRequest {
   /** Required. The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` */
   name: string;
 }
-export const DeleteProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -873,7 +868,7 @@ export interface DeleteProjectsLocationsQueuesTasksRequest {
   /** Required. The task name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` */
   name: string;
 }
-export const DeleteProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -891,7 +886,7 @@ export interface GetCmekConfigProjectsLocationsRequest {
   /** Required. The config. For example: projects/PROJECT_ID/locations/LOCATION_ID/CmekConfig` */
   name: string;
 }
-export const GetCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -912,7 +907,7 @@ export interface CmekConfig {
   /** Resource name of the Cloud KMS key, of the form `projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`, that will be used to encrypt the Queues & Tasks in the region. Setting this as blank will turn off CMEK encryption. */
   kmsKey?: string;
 }
-export const CmekConfig = /*@__PURE__*/ S.suspend(() =>
+const CmekConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     kmsKey: S.optional(S.String),
@@ -924,7 +919,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -935,7 +930,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -947,7 +942,7 @@ export interface GetIamPolicyProjectsLocationsQueuesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -973,7 +968,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -991,7 +986,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -1000,7 +995,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1011,7 +1006,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     etag: S.optional(S.String),
@@ -1023,7 +1018,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1050,7 +1045,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     displayName: S.optional(S.String),
@@ -1064,7 +1059,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1084,7 +1079,7 @@ export interface GetProjectsLocationsQueuesRequest {
   /** Required. The resource name of the queue. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` */
   name: string;
 }
-export const GetProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1100,7 +1095,7 @@ export const GetProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsQueuesRequest>;
 
 export type GetProjectsLocationsQueuesTasksResponseViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetProjectsLocationsQueuesTasksResponseViewEnum = S.String;
+const GetProjectsLocationsQueuesTasksResponseViewEnum = S.String;
 
 export interface GetProjectsLocationsQueuesTasksRequest {
   /** Required. The task name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` */
@@ -1108,7 +1103,7 @@ export interface GetProjectsLocationsQueuesTasksRequest {
   /** The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource. */
   responseView?: GetProjectsLocationsQueuesTasksResponseViewEnum | (string & {});
 }
-export const GetProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     responseView: S.optional(GetProjectsLocationsQueuesTasksResponseViewEnum.pipe(T.Query())),
@@ -1124,7 +1119,7 @@ export const GetProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetProjectsLocationsQueuesTasksRequest>;
 
 export type LeaseTasksRequestResponseViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const LeaseTasksRequestResponseViewEnum = S.String;
+const LeaseTasksRequestResponseViewEnum = S.String;
 
 /** Request message for leasing tasks using LeaseTasks. */
 export interface LeaseTasksRequest {
@@ -1137,7 +1132,7 @@ export interface LeaseTasksRequest {
   /** `filter` can be used to specify a subset of tasks to lease. When `filter` is set to `tag=` then the response will contain only tasks whose tag is equal to ``. `` must be less than 500 characters. When `filter` is set to `tag_function=oldest_tag()`, only tasks which have the same tag as the task with the oldest schedule_time will be returned. Grammar Syntax: * `filter = "tag=" tag | "tag_function=" function` * `tag = string` * `function = "oldest_tag()"` The `oldest_tag()` function returns tasks which have the same tag as the oldest task (ordered by schedule time). SDK compatibility: Although the SDK allows tags to be either string or [bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. Tag which aren't UTF-8 encoded can't be used in the filter and the task's tag will be displayed as empty in Cloud Tasks. */
   filter?: string;
 }
-export const LeaseTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const LeaseTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxTasks: S.optional(S.Number),
     leaseDuration: S.optional(S.String),
@@ -1152,7 +1147,7 @@ export interface LeaseProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: LeaseTasksRequest;
 }
-export const LeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const LeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LeaseTasksRequest.pipe(T.HttpBody())),
@@ -1168,14 +1163,14 @@ export const LeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LeaseProjectsLocationsQueuesTasksRequest>;
 
 export type TaskList = Array<Task>;
-export const TaskList = /*@__PURE__*/ S.Array(Task) as any as S.Schema<TaskList>;
+const TaskList = /*@__PURE__*/ S.Array(Task) as any as S.Schema<TaskList>;
 
 /** Response message for leasing tasks using LeaseTasks. */
 export interface LeaseTasksResponse {
   /** The leased tasks. */
   tasks?: TaskList;
 }
-export const LeaseTasksResponse = /*@__PURE__*/ S.suspend(() =>
+const LeaseTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasks: S.optional(TaskList),
   }),
@@ -1193,7 +1188,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1212,7 +1207,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1221,7 +1216,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1240,7 +1235,7 @@ export interface ListProjectsLocationsQueuesRequest {
   /** `filter` can be used to specify a subset of queues. Any Queue field can be used as a filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter syntax is the same as described in [Stackdriver's Advanced Logs Filters](https://cloud.google.com/logging/docs/view/advanced_filters). Sample filter "app_engine_http_target: *". Note that using filters might cause fewer queues than the requested_page size to be returned. */
   filter?: string;
 }
-export const ListProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1259,7 +1254,7 @@ export const ListProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsQueuesRequest>;
 
 export type QueueList = Array<Queue>;
-export const QueueList = /*@__PURE__*/ S.Array(Queue) as any as S.Schema<QueueList>;
+const QueueList = /*@__PURE__*/ S.Array(Queue) as any as S.Schema<QueueList>;
 
 /** Response message for ListQueues. */
 export interface ListQueuesResponse {
@@ -1268,7 +1263,7 @@ export interface ListQueuesResponse {
   /** A token to retrieve next page of results. To return the next page of results, call ListQueues with this value as the page_token. If the next_page_token is empty, there are no more results. The page token is valid for only 2 hours. */
   nextPageToken?: string;
 }
-export const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queues: S.optional(QueueList),
     nextPageToken: S.optional(S.String),
@@ -1279,7 +1274,7 @@ export type ListProjectsLocationsQueuesTasksResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const ListProjectsLocationsQueuesTasksResponseViewEnum = S.String;
+const ListProjectsLocationsQueuesTasksResponseViewEnum = S.String;
 
 export interface ListProjectsLocationsQueuesTasksRequest {
   /** A token identifying the page of results to return. To request the first page results, page_token must be empty. To request the next page of results, page_token must be the value of next_page_token returned from the previous call to ListTasks method. The page token is valid for only 2 hours. */
@@ -1291,7 +1286,7 @@ export interface ListProjectsLocationsQueuesTasksRequest {
   /** Required. The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` */
   parent: string;
 }
-export const ListProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     responseView: S.optional(ListProjectsLocationsQueuesTasksResponseViewEnum.pipe(T.Query())),
@@ -1315,7 +1310,7 @@ export interface ListTasksResponse {
   /** The list of tasks. */
   tasks?: TaskList;
 }
-export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     tasks: S.optional(TaskList),
@@ -1330,7 +1325,7 @@ export interface PatchProjectsLocationsQueuesRequest {
   /** Request body */
   body?: Queue;
 }
-export const PatchProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1348,15 +1343,13 @@ export const PatchProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for PauseQueue. */
 export type PauseQueueRequest = PullTarget;
-export const PauseQueueRequest = PullTarget;
-
 export interface PauseProjectsLocationsQueuesRequest {
   /** Required. The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID` */
   name: string;
   /** Request body */
   body?: PullTarget;
 }
-export const PauseProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PullTarget.pipe(T.HttpBody())),
@@ -1373,15 +1366,13 @@ export const PauseProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for PurgeQueue. */
 export type PurgeQueueRequest = PullTarget;
-export const PurgeQueueRequest = PullTarget;
-
 export interface PurgeProjectsLocationsQueuesRequest {
   /** Required. The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID` */
   name: string;
   /** Request body */
   body?: PullTarget;
 }
-export const PurgeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PullTarget.pipe(T.HttpBody())),
@@ -1397,7 +1388,7 @@ export const PurgeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PurgeProjectsLocationsQueuesRequest>;
 
 export type RenewLeaseRequestResponseViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const RenewLeaseRequestResponseViewEnum = S.String;
+const RenewLeaseRequestResponseViewEnum = S.String;
 
 /** Request message for renewing a lease using RenewLease. */
 export interface RenewLeaseRequest {
@@ -1408,7 +1399,7 @@ export interface RenewLeaseRequest {
   /** Required. The desired new lease duration, starting from now. The maximum lease duration is 1 week. `lease_duration` will be truncated to the nearest second. */
   leaseDuration?: string;
 }
-export const RenewLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responseView: S.optional(RenewLeaseRequestResponseViewEnum),
     scheduleTime: S.optional(S.String),
@@ -1422,7 +1413,7 @@ export interface RenewLeaseProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: RenewLeaseRequest;
 }
-export const RenewLeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewLeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RenewLeaseRequest.pipe(T.HttpBody())),
@@ -1439,15 +1430,13 @@ export const RenewLeaseProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.sus
 
 /** Request message for ResumeQueue. */
 export type ResumeQueueRequest = PullTarget;
-export const ResumeQueueRequest = PullTarget;
-
 export interface ResumeProjectsLocationsQueuesRequest {
   /** Required. The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID` */
   name: string;
   /** Request body */
   body?: PullTarget;
 }
-export const ResumeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PullTarget.pipe(T.HttpBody())),
@@ -1463,14 +1452,14 @@ export const ResumeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ResumeProjectsLocationsQueuesRequest>;
 
 export type RunTaskRequestResponseViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const RunTaskRequestResponseViewEnum = S.String;
+const RunTaskRequestResponseViewEnum = S.String;
 
 /** Request message for forcing a task to run now using RunTask. */
 export interface RunTaskRequest {
   /** The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource. */
   responseView?: RunTaskRequestResponseViewEnum | (string & {});
 }
-export const RunTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const RunTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responseView: S.optional(RunTaskRequestResponseViewEnum),
   }),
@@ -1482,7 +1471,7 @@ export interface RunProjectsLocationsQueuesTasksRequest {
   /** Request body */
   body?: RunTaskRequest;
 }
-export const RunProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const RunProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RunTaskRequest.pipe(T.HttpBody())),
@@ -1502,7 +1491,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -1514,7 +1503,7 @@ export interface SetIamPolicyProjectsLocationsQueuesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1534,7 +1523,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1548,7 +1537,7 @@ export interface TestIamPermissionsProjectsLocationsQueuesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1568,7 +1557,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateApiQueueRequest {
@@ -1577,7 +1566,7 @@ export interface UpdateApiQueueRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const UpdateApiQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String.pipe(T.Query())),
     body: S.optional(HttpBody.pipe(T.HttpBody())),
@@ -1598,7 +1587,7 @@ export interface UpdateCmekConfigProjectsLocationsRequest {
   /** Request body */
   body?: CmekConfig;
 }
-export const UpdateCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

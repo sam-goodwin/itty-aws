@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -88,13 +88,13 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -110,7 +110,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -121,15 +121,10 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -140,7 +135,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -161,7 +156,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -183,7 +178,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -202,10 +197,10 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -216,7 +211,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
@@ -228,7 +223,7 @@ export interface ListVoicesRequest {
   /** Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API will return all supported voices. If specified, the ListVoices call will only return voices that can be used to synthesize this language_code. For example, if you specify `"en-NZ"`, all `"en-NZ"` voices will be returned. If you specify `"no"`, both `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be returned. */
   languageCode?: string;
 }
-export const ListVoicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVoicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -237,7 +232,7 @@ export const ListVoicesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVoicesRequest" }) as any as S.Schema<ListVoicesRequest>;
 
 export type VoiceSsmlGenderEnum = "SSML_VOICE_GENDER_UNSPECIFIED" | "MALE" | "FEMALE" | "NEUTRAL";
-export const VoiceSsmlGenderEnum = S.String;
+const VoiceSsmlGenderEnum = S.String;
 
 /** Description of a voice supported by the TTS service. */
 export interface Voice {
@@ -250,7 +245,7 @@ export interface Voice {
   /** The gender of this voice. */
   ssmlGender?: VoiceSsmlGenderEnum;
 }
-export const Voice = /*@__PURE__*/ S.suspend(() =>
+const Voice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     naturalSampleRateHertz: S.optional(S.Number),
@@ -260,14 +255,14 @@ export const Voice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Voice" }) as any as S.Schema<Voice>;
 
 export type VoiceList = Array<Voice>;
-export const VoiceList = /*@__PURE__*/ S.Array(Voice) as any as S.Schema<VoiceList>;
+const VoiceList = /*@__PURE__*/ S.Array(Voice) as any as S.Schema<VoiceList>;
 
 /** The message returned to the client by the `ListVoices` method. */
 export interface ListVoicesResponse {
   /** The list of voices. */
   voices?: VoiceList;
 }
-export const ListVoicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVoicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voices: S.optional(VoiceList),
   }),
@@ -278,7 +273,7 @@ export interface VoiceCloneParams {
   /** Required. Created by GenerateVoiceCloningKey. */
   voiceCloningKey?: string;
 }
-export const VoiceCloneParams = /*@__PURE__*/ S.suspend(() =>
+const VoiceCloneParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voiceCloningKey: S.optional(S.String),
   }),
@@ -291,7 +286,7 @@ export interface MultispeakerPrebuiltVoice {
   /** Required. The speaker alias of the voice. This is the user-chosen speaker name that is used in the multispeaker text input, such as "Speaker1". */
   speakerAlias?: string;
 }
-export const MultispeakerPrebuiltVoice = /*@__PURE__*/ S.suspend(() =>
+const MultispeakerPrebuiltVoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     speakerId: S.optional(S.String),
     speakerAlias: S.optional(S.String),
@@ -301,7 +296,7 @@ export const MultispeakerPrebuiltVoice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MultispeakerPrebuiltVoice>;
 
 export type MultispeakerPrebuiltVoiceList = Array<MultispeakerPrebuiltVoice>;
-export const MultispeakerPrebuiltVoiceList = /*@__PURE__*/ S.Array(
+const MultispeakerPrebuiltVoiceList = /*@__PURE__*/ S.Array(
   MultispeakerPrebuiltVoice,
 ) as any as S.Schema<MultispeakerPrebuiltVoiceList>;
 
@@ -310,7 +305,7 @@ export interface MultiSpeakerVoiceConfig {
   /** Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations must be provided. */
   speakerVoiceConfigs?: MultispeakerPrebuiltVoiceList;
 }
-export const MultiSpeakerVoiceConfig = /*@__PURE__*/ S.suspend(() =>
+const MultiSpeakerVoiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     speakerVoiceConfigs: S.optional(MultispeakerPrebuiltVoiceList),
   }),
@@ -321,13 +316,13 @@ export type VoiceSelectionParamsSsmlGenderEnum =
   | "MALE"
   | "FEMALE"
   | "NEUTRAL";
-export const VoiceSelectionParamsSsmlGenderEnum = S.String;
+const VoiceSelectionParamsSsmlGenderEnum = S.String;
 
 export type CustomVoiceParamsReportedUsageEnum =
   | "REPORTED_USAGE_UNSPECIFIED"
   | "REALTIME"
   | "OFFLINE";
-export const CustomVoiceParamsReportedUsageEnum = S.String;
+const CustomVoiceParamsReportedUsageEnum = S.String;
 
 /** Description of the custom voice to be synthesized. */
 export interface CustomVoiceParams {
@@ -336,7 +331,7 @@ export interface CustomVoiceParams {
   /** Optional. Deprecated. The usage of the synthesized audio to be reported. */
   reportedUsage?: CustomVoiceParamsReportedUsageEnum | (string & {});
 }
-export const CustomVoiceParams = /*@__PURE__*/ S.suspend(() =>
+const CustomVoiceParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.optional(S.String),
     reportedUsage: S.optional(CustomVoiceParamsReportedUsageEnum),
@@ -360,7 +355,7 @@ export interface VoiceSelectionParams {
   /** The configuration for a custom voice. If [CustomVoiceParams.model] is set, the service will choose the custom voice matching the specified configuration. */
   customVoice?: CustomVoiceParams;
 }
-export const VoiceSelectionParams = /*@__PURE__*/ S.suspend(() =>
+const VoiceSelectionParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voiceClone: S.optional(VoiceCloneParams),
     name: S.optional(S.String),
@@ -381,7 +376,7 @@ export type AudioConfigAudioEncodingEnum =
   | "ALAW"
   | "PCM"
   | "M4A";
-export const AudioConfigAudioEncodingEnum = S.String;
+const AudioConfigAudioEncodingEnum = S.String;
 
 /** Description of audio data to be synthesized. */
 export interface AudioConfig {
@@ -398,7 +393,7 @@ export interface AudioConfig {
   /** Optional. Input only. Speaking rate/speed, in the range [0.25, 2.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 2.0 will return an error. */
   speakingRate?: number;
 }
-export const AudioConfig = /*@__PURE__*/ S.suspend(() =>
+const AudioConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioEncoding: S.optional(AudioConfigAudioEncodingEnum),
     effectsProfileId: S.optional(StringList),
@@ -415,7 +410,7 @@ export type CustomPronunciationParamsPhoneticEncodingEnum =
   | "PHONETIC_ENCODING_X_SAMPA"
   | "PHONETIC_ENCODING_JAPANESE_YOMIGANA"
   | "PHONETIC_ENCODING_PINYIN";
-export const CustomPronunciationParamsPhoneticEncodingEnum = S.String;
+const CustomPronunciationParamsPhoneticEncodingEnum = S.String;
 
 /** Pronunciation customization for a phrase. */
 export interface CustomPronunciationParams {
@@ -426,7 +421,7 @@ export interface CustomPronunciationParams {
   /** The pronunciation of the phrase. This must be in the phonetic encoding specified above. */
   pronunciation?: string;
 }
-export const CustomPronunciationParams = /*@__PURE__*/ S.suspend(() =>
+const CustomPronunciationParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneticEncoding: S.optional(CustomPronunciationParamsPhoneticEncodingEnum),
     phrase: S.optional(S.String),
@@ -437,7 +432,7 @@ export const CustomPronunciationParams = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomPronunciationParams>;
 
 export type CustomPronunciationParamsList = Array<CustomPronunciationParams>;
-export const CustomPronunciationParamsList = /*@__PURE__*/ S.Array(
+const CustomPronunciationParamsList = /*@__PURE__*/ S.Array(
   CustomPronunciationParams,
 ) as any as S.Schema<CustomPronunciationParamsList>;
 
@@ -446,7 +441,7 @@ export interface CustomPronunciations {
   /** The pronunciation customizations are applied. */
   pronunciations?: CustomPronunciationParamsList;
 }
-export const CustomPronunciations = /*@__PURE__*/ S.suspend(() =>
+const CustomPronunciations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pronunciations: S.optional(CustomPronunciationParamsList),
   }),
@@ -459,7 +454,7 @@ export interface Turn {
   /** Required. The text to speak. */
   text?: string;
 }
-export const Turn = /*@__PURE__*/ S.suspend(() =>
+const Turn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     speaker: S.optional(S.String),
     text: S.optional(S.String),
@@ -467,14 +462,14 @@ export const Turn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Turn" }) as any as S.Schema<Turn>;
 
 export type TurnList = Array<Turn>;
-export const TurnList = /*@__PURE__*/ S.Array(Turn) as any as S.Schema<TurnList>;
+const TurnList = /*@__PURE__*/ S.Array(Turn) as any as S.Schema<TurnList>;
 
 /** A collection of turns for multi-speaker synthesis. */
 export interface MultiSpeakerMarkup {
   /** Required. Speaker turns. */
   turns?: TurnList;
 }
-export const MultiSpeakerMarkup = /*@__PURE__*/ S.suspend(() =>
+const MultiSpeakerMarkup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     turns: S.optional(TurnList),
   }),
@@ -495,7 +490,7 @@ export interface SynthesisInput {
   /** The raw text to be synthesized. */
   text?: string;
 }
-export const SynthesisInput = /*@__PURE__*/ S.suspend(() =>
+const SynthesisInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ssml: S.optional(S.String),
     markup: S.optional(S.String),
@@ -517,7 +512,7 @@ export interface SynthesizeLongAudioRequest {
   /** Required. The Synthesizer requires either plain text or SSML as input. */
   input?: SynthesisInput;
 }
-export const SynthesizeLongAudioRequest = /*@__PURE__*/ S.suspend(() =>
+const SynthesizeLongAudioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voice: S.optional(VoiceSelectionParams),
     outputGcsUri: S.optional(S.String),
@@ -534,7 +529,7 @@ export interface SynthesizeLongAudioProjectsLocationsRequest {
   /** Request body */
   body?: SynthesizeLongAudioRequest;
 }
-export const SynthesizeLongAudioProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SynthesizeLongAudioProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SynthesizeLongAudioRequest.pipe(T.HttpBody())),
@@ -555,7 +550,7 @@ export type SafetySettingCategoryEnum =
   | "HARM_CATEGORY_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_HARASSMENT"
   | "HARM_CATEGORY_SEXUALLY_EXPLICIT";
-export const SafetySettingCategoryEnum = S.String;
+const SafetySettingCategoryEnum = S.String;
 
 export type SafetySettingThresholdEnum =
   | "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
@@ -564,7 +559,7 @@ export type SafetySettingThresholdEnum =
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
   | "OFF";
-export const SafetySettingThresholdEnum = S.String;
+const SafetySettingThresholdEnum = S.String;
 
 /** Safety setting for a single harm category. */
 export interface SafetySetting {
@@ -573,7 +568,7 @@ export interface SafetySetting {
   /** The harm block threshold for the safety setting. */
   threshold?: SafetySettingThresholdEnum | (string & {});
 }
-export const SafetySetting = /*@__PURE__*/ S.suspend(() =>
+const SafetySetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(SafetySettingCategoryEnum),
     threshold: S.optional(SafetySettingThresholdEnum),
@@ -581,7 +576,7 @@ export const SafetySetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SafetySetting" }) as any as S.Schema<SafetySetting>;
 
 export type SafetySettingList = Array<SafetySetting>;
-export const SafetySettingList = /*@__PURE__*/ S.Array(
+const SafetySettingList = /*@__PURE__*/ S.Array(
   SafetySetting,
 ) as any as S.Schema<SafetySettingList>;
 
@@ -590,7 +585,7 @@ export interface SafetySettings {
   /** The safety settings for the request. */
   settings?: SafetySettingList;
 }
-export const SafetySettings = /*@__PURE__*/ S.suspend(() =>
+const SafetySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(SafetySettingList),
   }),
@@ -607,7 +602,7 @@ export interface AdvancedVoiceOptions {
   /** Optional. Input only. Deprecated, use safety_settings instead. If true, relaxes safety filters for Gemini TTS. */
   relaxSafetyFilters?: boolean;
 }
-export const AdvancedVoiceOptions = /*@__PURE__*/ S.suspend(() =>
+const AdvancedVoiceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableTextnorm: S.optional(S.Boolean),
     safetySettings: S.optional(SafetySettings),
@@ -627,7 +622,7 @@ export interface SynthesizeSpeechRequest {
   /** Optional. Advanced voice options. */
   advancedVoiceOptions?: AdvancedVoiceOptions;
 }
-export const SynthesizeSpeechRequest = /*@__PURE__*/ S.suspend(() =>
+const SynthesizeSpeechRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: S.optional(SynthesisInput),
     audioConfig: S.optional(AudioConfig),
@@ -640,7 +635,7 @@ export interface SynthesizeTextRequest {
   /** Request body */
   body?: SynthesizeSpeechRequest;
 }
-export const SynthesizeTextRequest = /*@__PURE__*/ S.suspend(() =>
+const SynthesizeTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SynthesizeSpeechRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -657,7 +652,7 @@ export interface SynthesizeSpeechResponse {
   /** The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64. */
   audioContent?: string;
 }
-export const SynthesizeSpeechResponse = /*@__PURE__*/ S.suspend(() =>
+const SynthesizeSpeechResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioContent: S.optional(S.String),
   }),

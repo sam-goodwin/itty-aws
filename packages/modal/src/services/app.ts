@@ -13,7 +13,7 @@ export type FileDescriptor =
   | "FILE_DESCRIPTOR_STDOUT"
   | "FILE_DESCRIPTOR_STDERR"
   | "FILE_DESCRIPTOR_INFO";
-export const FileDescriptor = S.String;
+const FileDescriptor = S.String;
 
 export interface AppCountLogsRequest {
   appId?: string;
@@ -29,7 +29,7 @@ export interface AppCountLogsRequest {
   /** Restrict logs to this exact Function ID, including when it is the base Function. */
   parametrizedFunctionId?: string;
 }
-export const AppCountLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const AppCountLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     taskId: S.optional(S.String),
@@ -51,7 +51,7 @@ export interface AppCountLogsResponseLogBucket {
   stderrLogs?: string;
   systemLogs?: string;
 }
-export const AppCountLogsResponseLogBucket = /*@__PURE__*/ S.suspend(() =>
+const AppCountLogsResponseLogBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketStartAt: S.optional(S.String),
     stdoutLogs: S.optional(S.String),
@@ -63,7 +63,7 @@ export const AppCountLogsResponseLogBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppCountLogsResponseLogBucket>;
 
 export type AppCountLogsResponseLogBucketList = Array<AppCountLogsResponseLogBucket>;
-export const AppCountLogsResponseLogBucketList = /*@__PURE__*/ S.Array(
+const AppCountLogsResponseLogBucketList = /*@__PURE__*/ S.Array(
   AppCountLogsResponseLogBucket,
 ) as any as S.Schema<AppCountLogsResponseLogBucketList>;
 
@@ -71,7 +71,7 @@ export interface AppCountLogsResponse {
   appId?: string;
   buckets?: AppCountLogsResponseLogBucketList;
 }
-export const AppCountLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const AppCountLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     buckets: S.optional(AppCountLogsResponseLogBucketList),
@@ -81,7 +81,7 @@ export const AppCountLogsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AppDeploymentHistoryRequest {
   appId?: string;
 }
-export const AppDeploymentHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const AppDeploymentHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }).pipe(
@@ -102,7 +102,7 @@ export interface CommitInfo {
   authorEmail?: string;
   repoUrl?: string;
 }
-export const CommitInfo = /*@__PURE__*/ S.suspend(() =>
+const CommitInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vcs: S.optional(S.String),
     branch: S.optional(S.String),
@@ -122,7 +122,7 @@ export type DeploymentType =
   | "DEPLOYMENT_TYPE_ROLLOVER"
   | "DEPLOYMENT_TYPE_PROMOTION"
   | "DEPLOYMENT_TYPE_STAGED";
-export const DeploymentType = S.String;
+const DeploymentType = S.String;
 
 export interface AppDeploymentHistory2 {
   appId?: string;
@@ -137,7 +137,7 @@ export interface AppDeploymentHistory2 {
   commitInfo?: CommitInfo;
   deploymentType?: DeploymentType;
 }
-export const AppDeploymentHistory2 = /*@__PURE__*/ S.suspend(() =>
+const AppDeploymentHistory2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     version: S.optional(S.Number),
@@ -154,7 +154,7 @@ export const AppDeploymentHistory2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppDeploymentHistory2" }) as any as S.Schema<AppDeploymentHistory2>;
 
 export type AppDeploymentHistory2List = Array<AppDeploymentHistory2>;
-export const AppDeploymentHistory2List = /*@__PURE__*/ S.Array(
+const AppDeploymentHistory2List = /*@__PURE__*/ S.Array(
   AppDeploymentHistory2,
 ) as any as S.Schema<AppDeploymentHistory2List>;
 
@@ -162,7 +162,7 @@ export interface AppDeploymentHistoryResponse {
   appDeploymentHistories?: AppDeploymentHistory2List;
   productionAppVersion?: number;
 }
-export const AppDeploymentHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const AppDeploymentHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appDeploymentHistories: S.optional(AppDeploymentHistory2List),
     productionAppVersion: S.optional(S.Number),
@@ -185,7 +185,7 @@ export interface AppFetchLogsRequest {
   /** Restrict logs to this exact Function ID, including when it is the base Function. */
   parametrizedFunctionId?: string;
 }
-export const AppFetchLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const AppFetchLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     since: S.optional(S.String),
@@ -214,10 +214,10 @@ export type TaskState =
   | "TASK_STATE_PREEMPTIBLE"
   | "TASK_STATE_PREEMPTED"
   | "TASK_STATE_LOADING_CHECKPOINT_IMAGE";
-export const TaskState = S.String;
+const TaskState = S.String;
 
 export type ProgressType = "IMAGE_SNAPSHOT_UPLOAD" | "FUNCTION_QUEUED";
-export const ProgressType = S.String;
+const ProgressType = S.String;
 
 export interface TaskProgress {
   len?: string;
@@ -225,7 +225,7 @@ export interface TaskProgress {
   progressType?: ProgressType;
   description?: string;
 }
-export const TaskProgress = /*@__PURE__*/ S.suspend(() =>
+const TaskProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     len: S.optional(S.String),
     pos: S.optional(S.String),
@@ -246,7 +246,7 @@ export interface TaskLogs {
   containerId?: string;
   containerName?: string;
 }
-export const TaskLogs = /*@__PURE__*/ S.suspend(() =>
+const TaskLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     taskState: S.optional(TaskState),
@@ -262,7 +262,7 @@ export const TaskLogs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskLogs" }) as any as S.Schema<TaskLogs>;
 
 export type TaskLogsList = Array<TaskLogs>;
-export const TaskLogsList = /*@__PURE__*/ S.Array(TaskLogs) as any as S.Schema<TaskLogsList>;
+const TaskLogsList = /*@__PURE__*/ S.Array(TaskLogs) as any as S.Schema<TaskLogsList>;
 
 export interface TaskLogsBatch {
   taskId?: string;
@@ -280,7 +280,7 @@ export interface TaskLogsBatch {
   ttlDays?: number;
   sandboxId?: string;
 }
-export const TaskLogsBatch = /*@__PURE__*/ S.suspend(() =>
+const TaskLogsBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     items: S.optional(TaskLogsList),
@@ -298,14 +298,14 @@ export const TaskLogsBatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskLogsBatch" }) as any as S.Schema<TaskLogsBatch>;
 
 export type TaskLogsBatchList = Array<TaskLogsBatch>;
-export const TaskLogsBatchList = /*@__PURE__*/ S.Array(
+const TaskLogsBatchList = /*@__PURE__*/ S.Array(
   TaskLogsBatch,
 ) as any as S.Schema<TaskLogsBatchList>;
 
 export interface AppFetchLogsResponse {
   batches?: TaskLogsBatchList;
 }
-export const AppFetchLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const AppFetchLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batches: S.optional(TaskLogsBatchList),
   }),
@@ -316,7 +316,7 @@ export interface AppGetByDeploymentNameRequest {
   name?: string;
   environmentName?: string;
 }
-export const AppGetByDeploymentNameRequest = /*@__PURE__*/ S.suspend(() =>
+const AppGetByDeploymentNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -339,7 +339,7 @@ export type AppState =
   | "APP_STATE_DISABLED"
   | "APP_STATE_DETACHED_DISCONNECTED"
   | "APP_STATE_DERIVED";
-export const AppState = S.String;
+const AppState = S.String;
 
 /** tag -> class id */
 export interface AppLifecycle {
@@ -357,7 +357,7 @@ export interface AppLifecycle {
   /** Unset when App is still running */
   stoppedBy?: string;
 }
-export const AppLifecycle = /*@__PURE__*/ S.suspend(() =>
+const AppLifecycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appState: S.optional(AppState),
     createdAt: S.optional(S.Number),
@@ -379,7 +379,7 @@ export interface AppGetByDeploymentNameResponse {
   /** Populated because server may resolve default environment */
   lifecycle?: AppLifecycle;
 }
-export const AppGetByDeploymentNameResponse = /*@__PURE__*/ S.suspend(() =>
+const AppGetByDeploymentNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     previousAppId: S.optional(S.String),
@@ -393,14 +393,14 @@ export const AppGetByDeploymentNameResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AppGetInfoRequest {
   appId?: string;
 }
-export const AppGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const AppGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetInfo", code: 200 })),
 ).annotate({ identifier: "AppGetInfoRequest" }) as any as S.Schema<AppGetInfoRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface AppHandleMetadata {
   description?: string;
@@ -411,7 +411,7 @@ export interface AppHandleMetadata {
   /** tag -> function id */
   servers?: StringMap;
 }
-export const AppHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const AppHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     appId: S.optional(S.String),
@@ -433,7 +433,7 @@ export type GPUType =
   | "GPU_TYPE_H100"
   | "GPU_TYPE_L40S"
   | "GPU_TYPE_H200";
-export const GPUType = S.String;
+const GPUType = S.String;
 
 export interface GPUConfig {
   type?: GPUType;
@@ -441,7 +441,7 @@ export interface GPUConfig {
   count?: number;
   gpuType?: string;
 }
-export const GPUConfig = /*@__PURE__*/ S.suspend(() =>
+const GPUConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GPUType),
     count: S.optional(S.Number),
@@ -450,13 +450,13 @@ export const GPUConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GPUConfig" }) as any as S.Schema<GPUConfig>;
 
 export type GPUConfigList = Array<GPUConfig>;
-export const GPUConfigList = /*@__PURE__*/ S.Array(GPUConfig) as any as S.Schema<GPUConfigList>;
+const GPUConfigList = /*@__PURE__*/ S.Array(GPUConfig) as any as S.Schema<GPUConfigList>;
 
 export interface ScheduleCron {
   cronString?: string;
   timezone?: string;
 }
-export const ScheduleCron = /*@__PURE__*/ S.suspend(() =>
+const ScheduleCron = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cronString: S.optional(S.String),
     timezone: S.optional(S.String),
@@ -472,7 +472,7 @@ export interface SchedulePeriod {
   minutes?: number;
   seconds?: number;
 }
-export const SchedulePeriod = /*@__PURE__*/ S.suspend(() =>
+const SchedulePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     years: S.optional(S.Number),
     months: S.optional(S.Number),
@@ -488,7 +488,7 @@ export interface Schedule {
   cron?: ScheduleCron;
   period?: SchedulePeriod;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.optional(ScheduleCron),
     period: S.optional(SchedulePeriod),
@@ -504,7 +504,7 @@ export interface AppGetInfoResponseFunctionInfoSummary {
   /** True for Sessioned Servers. */
   isSessioned?: boolean;
 }
-export const AppGetInfoResponseFunctionInfoSummary = /*@__PURE__*/ S.suspend(() =>
+const AppGetInfoResponseFunctionInfoSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpuConfig: S.optional(GPUConfigList),
     schedule: S.optional(Schedule),
@@ -519,7 +519,7 @@ export const AppGetInfoResponseFunctionInfoSummary = /*@__PURE__*/ S.suspend(() 
 export type AppGetInfoResponseFunctionInfoSummaryMap = {
   [key: string]: AppGetInfoResponseFunctionInfoSummary | undefined;
 };
-export const AppGetInfoResponseFunctionInfoSummaryMap = /*@__PURE__*/ S.Record(
+const AppGetInfoResponseFunctionInfoSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   AppGetInfoResponseFunctionInfoSummary,
 ) as any as S.Schema<AppGetInfoResponseFunctionInfoSummaryMap>;
@@ -528,7 +528,7 @@ export interface AppGetInfoResponse {
   info?: AppHandleMetadata;
   functionInfoSummaries?: AppGetInfoResponseFunctionInfoSummaryMap;
 }
-export const AppGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const AppGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(AppHandleMetadata),
     functionInfoSummaries: S.optional(AppGetInfoResponseFunctionInfoSummaryMap),
@@ -538,7 +538,7 @@ export const AppGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AppGetLayoutRequest {
   appId?: string;
 }
-export const AppGetLayoutRequest = /*@__PURE__*/ S.suspend(() =>
+const AppGetLayoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetLayout", code: 200 })),
@@ -548,13 +548,13 @@ export type FunctionFunctionType =
   | "FUNCTION_TYPE_UNSPECIFIED"
   | "FUNCTION_TYPE_GENERATOR"
   | "FUNCTION_TYPE_FUNCTION";
-export const FunctionFunctionType = S.String;
+const FunctionFunctionType = S.String;
 
 export type ClassParameterInfoParameterSerializationFormat =
   | "PARAM_SERIALIZATION_FORMAT_UNSPECIFIED"
   | "PARAM_SERIALIZATION_FORMAT_PICKLE"
   | "PARAM_SERIALIZATION_FORMAT_PROTO";
-export const ClassParameterInfoParameterSerializationFormat = S.String;
+const ClassParameterInfoParameterSerializationFormat = S.String;
 
 export type ParameterType =
   | "PARAM_TYPE_UNSPECIFIED"
@@ -567,10 +567,10 @@ export type ParameterType =
   | "PARAM_TYPE_DICT"
   | "PARAM_TYPE_NONE"
   | "PARAM_TYPE_BOOL";
-export const ParameterType = S.String;
+const ParameterType = S.String;
 
 export type GenericPayloadTypeList = Array<GenericPayloadType>;
-export const GenericPayloadTypeList = /*@__PURE__*/ S.Array(
+const GenericPayloadTypeList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => GenericPayloadType),
 ) as any as S.Schema<GenericPayloadTypeList>;
 
@@ -578,7 +578,7 @@ export interface GenericPayloadType {
   baseType?: ParameterType;
   subTypes?: GenericPayloadTypeList;
 }
-export const GenericPayloadType = /*@__PURE__*/ S.suspend(() =>
+const GenericPayloadType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseType: S.optional(ParameterType),
     subTypes: S.optional(GenericPayloadTypeList),
@@ -599,7 +599,7 @@ export interface ClassParameterSpec {
   boolDefault?: boolean;
   fullType?: GenericPayloadType;
 }
-export const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
+const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(ParameterType),
@@ -614,7 +614,7 @@ export const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassParameterSpec" }) as any as S.Schema<ClassParameterSpec>;
 
 export type ClassParameterSpecList = Array<ClassParameterSpec>;
-export const ClassParameterSpecList = /*@__PURE__*/ S.Array(
+const ClassParameterSpecList = /*@__PURE__*/ S.Array(
   ClassParameterSpec,
 ) as any as S.Schema<ClassParameterSpecList>;
 
@@ -623,7 +623,7 @@ export interface ClassParameterInfo {
   format?: ClassParameterInfoParameterSerializationFormat;
   schema?: ClassParameterSpecList;
 }
-export const ClassParameterInfo = /*@__PURE__*/ S.suspend(() =>
+const ClassParameterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(ClassParameterInfoParameterSerializationFormat),
     schema: S.optional(ClassParameterSpecList),
@@ -631,13 +631,13 @@ export const ClassParameterInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassParameterInfo" }) as any as S.Schema<ClassParameterInfo>;
 
 export type FunctionHandleMetadataMap = { [key: string]: FunctionHandleMetadata | undefined };
-export const FunctionHandleMetadataMap = /*@__PURE__*/ S.Record(
+const FunctionHandleMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.suspend(() => FunctionHandleMetadata),
 ) as any as S.Schema<FunctionHandleMetadataMap>;
 
 export type FunctionSchemaFunctionSchemaType = "FUNCTION_SCHEMA_UNSPECIFIED" | "FUNCTION_SCHEMA_V1";
-export const FunctionSchemaFunctionSchemaType = S.String;
+const FunctionSchemaFunctionSchemaType = S.String;
 
 export interface FunctionSchema {
   schemaType?: FunctionSchemaFunctionSchemaType;
@@ -645,7 +645,7 @@ export interface FunctionSchema {
   arguments?: ClassParameterSpecList;
   returnType?: GenericPayloadType;
 }
-export const FunctionSchema = /*@__PURE__*/ S.suspend(() =>
+const FunctionSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaType: S.optional(FunctionSchemaFunctionSchemaType),
     arguments: S.optional(ClassParameterSpecList),
@@ -654,7 +654,7 @@ export const FunctionSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionSchema" }) as any as S.Schema<FunctionSchema>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Which data format a binary message is encoded with. */
 export type DataFormat =
@@ -663,10 +663,10 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
-export const DataFormat = S.String;
+const DataFormat = S.String;
 
 export type DataFormatList = Array<DataFormat>;
-export const DataFormatList = /*@__PURE__*/ S.Array(DataFormat) as any as S.Schema<DataFormatList>;
+const DataFormatList = /*@__PURE__*/ S.Array(DataFormat) as any as S.Schema<DataFormatList>;
 
 export interface FunctionHandleMetadata {
   /** contains all the info about a function that is needed to trigger the right behaviour when using a FunctionHandler. Notably excludes things purely used for *executing* the function in a container entrypoint Should be a subset and use IDs/types from `Function` above */
@@ -695,7 +695,7 @@ export interface FunctionHandleMetadata {
   /** The base Function ID for a variant, or the Function's own ID otherwise. */
   baseFunctionId?: string;
 }
-export const FunctionHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const FunctionHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.optional(S.String),
     functionType: S.optional(FunctionFunctionType),
@@ -721,7 +721,7 @@ export const FunctionHandleMetadata = /*@__PURE__*/ S.suspend(() =>
 export interface MountHandleMetadata {
   contentChecksumSha256Hex?: string;
 }
-export const MountHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const MountHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentChecksumSha256Hex: S.optional(S.String),
   }),
@@ -733,7 +733,7 @@ export interface ClassMethod {
   /** Class methods need to hydrate all functions on the class */
   functionHandleMetadata?: FunctionHandleMetadata;
 }
-export const ClassMethod = /*@__PURE__*/ S.suspend(() =>
+const ClassMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.optional(S.String),
     functionId: S.optional(S.String),
@@ -742,16 +742,14 @@ export const ClassMethod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassMethod" }) as any as S.Schema<ClassMethod>;
 
 export type ClassMethodList = Array<ClassMethod>;
-export const ClassMethodList = /*@__PURE__*/ S.Array(
-  ClassMethod,
-) as any as S.Schema<ClassMethodList>;
+const ClassMethodList = /*@__PURE__*/ S.Array(ClassMethod) as any as S.Schema<ClassMethodList>;
 
 export interface ClassHandleMetadata {
   methods?: ClassMethodList;
   classFunctionId?: string;
   classFunctionMetadata?: FunctionHandleMetadata;
 }
-export const ClassHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const ClassHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methods: S.optional(ClassMethodList),
     classFunctionId: S.optional(S.String),
@@ -770,7 +768,7 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-export const GenericResultGenericStatus = S.String;
+const GenericResultGenericStatus = S.String;
 
 /** sub-type for generic types like lists */
 export interface GenericResult {
@@ -792,7 +790,7 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-export const GenericResult = /*@__PURE__*/ S.suspend(() =>
+const GenericResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenericResultGenericStatus),
     exception: S.optional(S.String),
@@ -810,7 +808,7 @@ export interface SandboxHandleMetadata {
   result?: GenericResult;
   appId?: string;
 }
-export const SandboxHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const SandboxHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     appId: S.optional(S.String),
@@ -822,7 +820,7 @@ export type VolumeFsVersion =
   | "VOLUME_FS_VERSION_UNSPECIFIED"
   | "VOLUME_FS_VERSION_V1"
   | "VOLUME_FS_VERSION_V2";
-export const VolumeFsVersion = S.String;
+const VolumeFsVersion = S.String;
 
 export interface CreationInfo {
   /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
@@ -830,7 +828,7 @@ export interface CreationInfo {
   /** Timestamp of resource creation */
   createdBy?: string;
 }
-export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
+const CreationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Number),
     createdBy: S.optional(S.String),
@@ -842,7 +840,7 @@ export interface VolumeMetadata {
   name?: string;
   creationInfo?: CreationInfo;
 }
-export const VolumeMetadata = /*@__PURE__*/ S.suspend(() =>
+const VolumeMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(VolumeFsVersion),
     name: S.optional(S.String),
@@ -858,7 +856,7 @@ export interface Object {
   sandboxHandleMetadata?: SandboxHandleMetadata;
   volumeMetadata?: VolumeMetadata;
 }
-export const Object = /*@__PURE__*/ S.suspend(() =>
+const Object = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
     functionHandleMetadata: S.optional(FunctionHandleMetadata),
@@ -870,7 +868,7 @@ export const Object = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Object" }) as any as S.Schema<Object>;
 
 export type ObjectList = Array<Object>;
-export const ObjectList = /*@__PURE__*/ S.Array(Object) as any as S.Schema<ObjectList>;
+const ObjectList = /*@__PURE__*/ S.Array(Object) as any as S.Schema<ObjectList>;
 
 export interface AppLayout {
   objects?: ObjectList;
@@ -878,7 +876,7 @@ export interface AppLayout {
   /** tag -> function id */
   classIds?: StringMap;
 }
-export const AppLayout = /*@__PURE__*/ S.suspend(() =>
+const AppLayout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objects: S.optional(ObjectList),
     functionIds: S.optional(StringMap),
@@ -889,7 +887,7 @@ export const AppLayout = /*@__PURE__*/ S.suspend(() =>
 export interface AppGetLayoutResponse {
   appLayout?: AppLayout;
 }
-export const AppGetLayoutResponse = /*@__PURE__*/ S.suspend(() =>
+const AppGetLayoutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appLayout: S.optional(AppLayout),
   }),
@@ -898,7 +896,7 @@ export const AppGetLayoutResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AppGetLifecycleRequest {
   appId?: string;
 }
-export const AppGetLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
+const AppGetLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetLifecycle", code: 200 })),
@@ -907,7 +905,7 @@ export const AppGetLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AppGetLifecycleResponse {
   lifecycle?: AppLifecycle;
 }
-export const AppGetLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
+const AppGetLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycle: S.optional(AppLifecycle),
   }),
@@ -918,7 +916,7 @@ export interface AppGetObjectsRequest {
   includeUnindexed?: boolean;
   onlyClassFunction?: boolean;
 }
-export const AppGetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const AppGetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     includeUnindexed: S.optional(S.Boolean),
@@ -930,7 +928,7 @@ export interface AppGetObjectsItem {
   tag?: string;
   object?: Object;
 }
-export const AppGetObjectsItem = /*@__PURE__*/ S.suspend(() =>
+const AppGetObjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     object: S.optional(Object),
@@ -938,14 +936,14 @@ export const AppGetObjectsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppGetObjectsItem" }) as any as S.Schema<AppGetObjectsItem>;
 
 export type AppGetObjectsItemList = Array<AppGetObjectsItem>;
-export const AppGetObjectsItemList = /*@__PURE__*/ S.Array(
+const AppGetObjectsItemList = /*@__PURE__*/ S.Array(
   AppGetObjectsItem,
 ) as any as S.Schema<AppGetObjectsItemList>;
 
 export interface AppGetObjectsResponse {
   items?: AppGetObjectsItemList;
 }
-export const AppGetObjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const AppGetObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(AppGetObjectsItemList),
   }),
@@ -958,14 +956,14 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-export const ObjectCreationType = S.String;
+const ObjectCreationType = S.String;
 
 export interface AppGetOrCreateRequest {
   appName?: string;
   environmentName?: string;
   objectCreationType?: ObjectCreationType | (string & {});
 }
-export const AppGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AppGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -977,7 +975,7 @@ export interface AppGetOrCreateResponse {
   appId?: string;
   handleMetadata?: AppHandleMetadata;
 }
-export const AppGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const AppGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     handleMetadata: S.optional(AppHandleMetadata),
@@ -987,7 +985,7 @@ export const AppGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AppGetTagsRequest {
   appId?: string;
 }
-export const AppGetTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const AppGetTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetTags", code: 200 })),
@@ -996,7 +994,7 @@ export const AppGetTagsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AppGetTagsResponse {
   tags?: StringMap;
 }
-export const AppGetTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const AppGetTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(StringMap),
   }),
@@ -1005,14 +1003,14 @@ export const AppGetTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AppHeartbeatRequest {
   appId?: string;
 }
-export const AppHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const AppHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppHeartbeat", code: 200 })),
 ).annotate({ identifier: "AppHeartbeatRequest" }) as any as S.Schema<AppHeartbeatRequest>;
 
 export interface AppHeartbeatResponse {}
-export const AppHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AppHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AppHeartbeatResponse",
 }) as any as S.Schema<AppHeartbeatResponse>;
 
@@ -1020,7 +1018,7 @@ export interface AppRollbackRequest {
   appId?: string;
   version?: number;
 }
-export const AppRollbackRequest = /*@__PURE__*/ S.suspend(() =>
+const AppRollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     version: S.optional(S.Number),
@@ -1032,13 +1030,13 @@ export type WarningWarningType =
   | "WARNING_TYPE_CLIENT_DEPRECATION"
   | "WARNING_TYPE_RESOURCE_LIMIT"
   | "WARNING_TYPE_FUNCTION_CONFIGURATION";
-export const WarningWarningType = S.String;
+const WarningWarningType = S.String;
 
 export interface Warning {
   type?: WarningWarningType;
   message?: string;
 }
-export const Warning = /*@__PURE__*/ S.suspend(() =>
+const Warning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(WarningWarningType),
     message: S.optional(S.String),
@@ -1046,14 +1044,14 @@ export const Warning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
 export type WarningList = Array<Warning>;
-export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
+const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
 
 export interface AppRollbackResponse {
   url?: string;
   serverWarnings?: WarningList;
   deployedAt?: number;
 }
-export const AppRollbackResponse = /*@__PURE__*/ S.suspend(() =>
+const AppRollbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     serverWarnings: S.optional(WarningList),
@@ -1064,7 +1062,7 @@ export const AppRollbackResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AppRolloverRequest {
   appId?: string;
 }
-export const AppRolloverRequest = /*@__PURE__*/ S.suspend(() =>
+const AppRolloverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppRollover", code: 200 })),
@@ -1075,7 +1073,7 @@ export interface AppRolloverResponse {
   serverWarnings?: WarningList;
   deployedAt?: number;
 }
-export const AppRolloverResponse = AppRollbackResponse as any as S.Schema<AppRolloverResponse>;
+const AppRolloverResponse = AppRollbackResponse as any as S.Schema<AppRolloverResponse>;
 
 export interface AppSetObjectsRequest {
   appId?: string;
@@ -1084,7 +1082,7 @@ export interface AppSetObjectsRequest {
   unindexedObjectIds?: StringList;
   newAppState?: AppState | (string & {});
 }
-export const AppSetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const AppSetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     indexedObjectIds: S.optional(StringMap),
@@ -1095,13 +1093,13 @@ export const AppSetObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppSetObjectsRequest" }) as any as S.Schema<AppSetObjectsRequest>;
 
 export interface AppSetObjectsResponse {}
-export const AppSetObjectsResponse = AppHeartbeatResponse as any as S.Schema<AppSetObjectsResponse>;
+const AppSetObjectsResponse = AppHeartbeatResponse as any as S.Schema<AppSetObjectsResponse>;
 
 export interface AppSetTagsRequest {
   appId?: string;
   tags?: StringMap;
 }
-export const AppSetTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const AppSetTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     tags: S.optional(StringMap),
@@ -1109,7 +1107,7 @@ export const AppSetTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppSetTagsRequest" }) as any as S.Schema<AppSetTagsRequest>;
 
 export interface AppSetTagsResponse {}
-export const AppSetTagsResponse = AppHeartbeatResponse as any as S.Schema<AppSetTagsResponse>;
+const AppSetTagsResponse = AppHeartbeatResponse as any as S.Schema<AppSetTagsResponse>;
 
 export interface CreateAppRequest {
   clientId?: string;
@@ -1119,7 +1117,7 @@ export interface CreateAppRequest {
   appState?: AppState | (string & {});
   tags?: StringMap;
 }
-export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     description: S.optional(S.String),
@@ -1134,7 +1132,7 @@ export interface CreateAppResponse {
   appPageUrl?: string;
   appLogsUrl?: string;
 }
-export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     appPageUrl: S.optional(S.String),
@@ -1147,7 +1145,7 @@ export type AppDeployVisibility =
   | "APP_DEPLOY_VISIBILITY_UNSPECIFIED"
   | "APP_DEPLOY_VISIBILITY_WORKSPACE"
   | "APP_DEPLOY_VISIBILITY_PUBLIC";
-export const AppDeployVisibility = S.String;
+const AppDeployVisibility = S.String;
 
 export interface DeployAppRequest {
   appId?: string;
@@ -1157,7 +1155,7 @@ export interface DeployAppRequest {
   visibility?: AppDeployVisibility | (string & {});
   tag?: string;
 }
-export const DeployAppRequest = /*@__PURE__*/ S.suspend(() =>
+const DeployAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1170,7 +1168,7 @@ export const DeployAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeployAppResponse {
   url?: string;
 }
-export const DeployAppResponse = /*@__PURE__*/ S.suspend(() =>
+const DeployAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -1183,14 +1181,14 @@ export type AppDisconnectReason =
   | "APP_DISCONNECT_REASON_ENTRYPOINT_COMPLETED"
   | "APP_DISCONNECT_REASON_DEPLOYMENT_EXCEPTION"
   | "APP_DISCONNECT_REASON_REMOTE_EXCEPTION";
-export const AppDisconnectReason = S.String;
+const AppDisconnectReason = S.String;
 
 export interface DisconnectAppClientRequest {
   appId?: string;
   reason?: AppDisconnectReason | (string & {});
   exception?: string;
 }
-export const DisconnectAppClientRequest = /*@__PURE__*/ S.suspend(() =>
+const DisconnectAppClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     reason: S.optional(AppDisconnectReason),
@@ -1203,13 +1201,13 @@ export const DisconnectAppClientRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisconnectAppClientRequest>;
 
 export interface DisconnectAppClientResponse {}
-export const DisconnectAppClientResponse =
+const DisconnectAppClientResponse =
   AppHeartbeatResponse as any as S.Schema<DisconnectAppClientResponse>;
 
 export interface ListAppRequest {
   environmentName?: string;
 }
-export const ListAppRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppList", code: 200 })),
@@ -1225,7 +1223,7 @@ export interface ListAppResponseAppListItem {
   name?: string;
   metadata?: AppHandleMetadata;
 }
-export const ListAppResponseAppListItem = /*@__PURE__*/ S.suspend(() =>
+const ListAppResponseAppListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     description: S.optional(S.String),
@@ -1241,14 +1239,14 @@ export const ListAppResponseAppListItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAppResponseAppListItem>;
 
 export type ListAppResponseAppListItemList = Array<ListAppResponseAppListItem>;
-export const ListAppResponseAppListItemList = /*@__PURE__*/ S.Array(
+const ListAppResponseAppListItemList = /*@__PURE__*/ S.Array(
   ListAppResponseAppListItem,
 ) as any as S.Schema<ListAppResponseAppListItemList>;
 
 export interface ListAppResponse {
   apps?: ListAppResponseAppListItemList;
 }
-export const ListAppResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apps: S.optional(ListAppResponseAppListItemList),
   }),
@@ -1258,7 +1256,7 @@ export interface LookupAppRequest {
   appName?: string;
   environmentName?: string;
 }
-export const LookupAppRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -1268,7 +1266,7 @@ export const LookupAppRequest = /*@__PURE__*/ S.suspend(() =>
 export interface LookupAppResponse {
   appId?: string;
 }
-export const LookupAppResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
   }),
@@ -1278,7 +1276,7 @@ export interface PromoteAppRequest {
   appId?: string;
   version?: number;
 }
-export const PromoteAppRequest = /*@__PURE__*/ S.suspend(() =>
+const PromoteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     version: S.optional(S.Number),
@@ -1290,7 +1288,7 @@ export interface PromoteAppResponse {
   serverWarnings?: WarningList;
   deployedAt?: number;
 }
-export const PromoteAppResponse = AppRollbackResponse as any as S.Schema<PromoteAppResponse>;
+const PromoteAppResponse = AppRollbackResponse as any as S.Schema<PromoteAppResponse>;
 
 export interface PublishAppRequest {
   appId?: string;
@@ -1316,7 +1314,7 @@ export interface PublishAppRequest {
   staged?: boolean;
   deploymentType?: DeploymentType | (string & {});
 }
-export const PublishAppRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1339,20 +1337,20 @@ export interface PublishAppResponse {
   serverWarnings?: WarningList;
   deployedAt?: number;
 }
-export const PublishAppResponse = AppRollbackResponse as any as S.Schema<PublishAppResponse>;
+const PublishAppResponse = AppRollbackResponse as any as S.Schema<PublishAppResponse>;
 
 export type AppStopSource =
   | "APP_STOP_SOURCE_UNSPECIFIED"
   | "APP_STOP_SOURCE_CLI"
   | "APP_STOP_SOURCE_PYTHON_CLIENT"
   | "APP_STOP_SOURCE_WEB";
-export const AppStopSource = S.String;
+const AppStopSource = S.String;
 
 export interface StopAppRequest {
   appId?: string;
   source?: AppStopSource | (string & {});
 }
-export const StopAppRequest = /*@__PURE__*/ S.suspend(() =>
+const StopAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     source: S.optional(AppStopSource),
@@ -1360,7 +1358,7 @@ export const StopAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopAppRequest" }) as any as S.Schema<StopAppRequest>;
 
 export interface StopAppResponse {}
-export const StopAppResponse = AppHeartbeatResponse as any as S.Schema<StopAppResponse>;
+const StopAppResponse = AppHeartbeatResponse as any as S.Schema<StopAppResponse>;
 
 export type AppCountLogsError = ModalOpError;
 export const appCountLogs: API.OperationMethod<

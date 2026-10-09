@@ -15,7 +15,7 @@ export interface ListMcpServersRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -25,7 +25,7 @@ export const ListMcpServersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `api_key` - API Key * `oauth` - OAuth */
 export type MCPAuthTypeEnum = "api_key" | "oauth";
-export const MCPAuthTypeEnum = S.String;
+const MCPAuthTypeEnum = S.String;
 
 /** * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
 export type MCPServerCategoryEnum =
@@ -35,7 +35,7 @@ export type MCPServerCategoryEnum =
   | "dev"
   | "infra"
   | "productivity";
-export const MCPServerCategoryEnum = S.String;
+const MCPServerCategoryEnum = S.String;
 
 export interface MCPServerTemplate {
   id?: string;
@@ -50,7 +50,7 @@ export interface MCPServerTemplate {
   icon_domain?: string;
   category?: MCPServerCategoryEnum;
 }
-export const MCPServerTemplate = /*@__PURE__*/ S.suspend(() =>
+const MCPServerTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -65,7 +65,7 @@ export const MCPServerTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MCPServerTemplate" }) as any as S.Schema<MCPServerTemplate>;
 
 export type PaginatedMCPServerTemplateListResultsList = Array<MCPServerTemplate>;
-export const PaginatedMCPServerTemplateListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedMCPServerTemplateListResultsList = /*@__PURE__*/ S.Array(
   MCPServerTemplate,
 ) as any as S.Schema<PaginatedMCPServerTemplateListResultsList>;
 
@@ -75,7 +75,7 @@ export interface PaginatedMCPServerTemplateList {
   previous?: string | null;
   results?: PaginatedMCPServerTemplateListResultsList;
 }
-export const PaginatedMCPServerTemplateList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedMCPServerTemplateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),

@@ -68,7 +68,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstanding
   | "JAIL_BREAKING_QUERY"
   | "NON_ANSWER_SEEKING_QUERY_V2"
   | "USER_DEFINED_CLASSIFICATION_QUERY";
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnum =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnum =
   S.String;
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList =
@@ -76,7 +76,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstanding
     | GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnum
     | (string & {})
   >;
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnum,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList>;
@@ -86,7 +86,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUndersta
   /** Enabled query classification types. */
   types?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       types: S.optional(
@@ -102,7 +102,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstanding
   | "MODEL_TYPE_UNSPECIFIED"
   | "SMALL"
   | "LARGE";
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpecModelTypeEnum =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpecModelTypeEnum =
   S.String;
 
 /** Query Rephraser Model specification. */
@@ -112,7 +112,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUndersta
     | GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpecModelTypeEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelType: S.optional(
@@ -133,7 +133,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUndersta
   /** Optional. Query Rephraser Model specification. */
   modelSpec?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       disable: S.optional(S.Boolean),
@@ -156,7 +156,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUndersta
   /** Optional. Whether to disable spell correction. The default value is `false`. */
   disableSpellCorrection?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       queryClassificationSpec: S.optional(
@@ -176,7 +176,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerat
   /** Customized preamble. */
   preamble?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecPromptSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecPromptSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       preamble: S.optional(S.String),
@@ -190,7 +190,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSp
   | "ALL_AVAILABLE_SOURCES"
   | "CORPUS_IMAGE_ONLY"
   | "FIGURE_GENERATION_ONLY";
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpecImageSourceEnum =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpecImageSourceEnum =
   S.String;
 
 /** Multimodal specification: Will return an image from specified source. If multiple sources are specified, the pick is a quality based decision. */
@@ -200,7 +200,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerat
     | GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpecImageSourceEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       imageSource: S.optional(
@@ -217,7 +217,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerat
   /** Model version. If not set, it will use the default stable model. Allowed values are: stable, preview. */
   modelVersion?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecModelSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecModelSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelVersion: S.optional(S.String),
@@ -247,7 +247,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerat
   /** Optional. Specifies whether to filter out jail-breaking queries. The default value is `false`. Google employs search-query classification to detect jail-breaking queries. No summary is returned if the search query is classified as a jail-breaking query. A user might add instructions to the query to change the tone, style, language, content of the answer, or ask the model to act as a different entity, e.g. "Reply in the tone of a competing company's CEO". If this field is set to `true`, we skip generating summaries for jail-breaking queries and return fallback messages instead. */
   ignoreJailBreakingQuery?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       promptSpec: S.optional(
@@ -274,8 +274,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpecFilte
   | "FILTERING_LEVEL_UNSPECIFIED"
   | "FILTERING_LEVEL_LOW"
   | "FILTERING_LEVEL_HIGH";
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpecFilteringLevelEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpecFilteringLevelEnum = S.String;
 
 /** Grounding specification. */
 export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec {
@@ -286,17 +285,17 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec
   /** Optional. Specifies whether to include grounding_supports in the answer. The default value is `false`. When this field is set to `true`, returned answer will have `grounding_score` and will contain GroundingSupports for each claim. */
   includeGroundingSupports?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       filteringLevel: S.optional(
         GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpecFilteringLevelEnum,
       ),
       includeGroundingSupports: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestGroundingSpec>;
 
 /** Defines a user inputed query. */
 export interface GoogleCloudDiscoveryengineV1betaQuery {
@@ -305,7 +304,7 @@ export interface GoogleCloudDiscoveryengineV1betaQuery {
   /** Output only. Unique Id for the query. */
   queryId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaQuery = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     queryId: S.optional(S.String),
@@ -319,7 +318,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEn
   /** Title of the document. */
   title?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       title: S.optional(S.String),
@@ -336,7 +335,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEn
   /** Chunk textual content. It is limited to 8000 characters. */
   content?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       documentMetadata: S.optional(
@@ -354,7 +353,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEn
   /** Chunk information. */
   chunkInfo?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       chunkInfo: S.optional(
@@ -367,7 +366,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUse
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData>;
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaData,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataList>;
@@ -377,16 +376,15 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec {
   /** Optional. End user metadata. */
   endUserMetadata?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endUserMetadata: S.optional(
-        GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec>;
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endUserMetadata: S.optional(
+      GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpecEndUserMetaDataList,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestEndUserSpec>;
 
 /** The control points used to define the curve. The curve defined through these control points can only be monotonically increasing or decreasing(constant values are acceptable). */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint {
@@ -395,7 +393,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecCondition
   /** Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern for this is: `nDnM]`. */
   attributeValue?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint =
+const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostAmount: S.optional(S.Number),
@@ -408,7 +406,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoos
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   Array<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
+const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPointList>;
@@ -416,14 +414,14 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoos
 export type GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
   | "INTERPOLATION_TYPE_UNSPECIFIED"
   | "LINEAR";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
+const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
   S.String;
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
   | "ATTRIBUTE_TYPE_UNSPECIFIED"
   | "NUMERICAL"
   | "FRESHNESS";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
+const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
   S.String;
 
 /** Specification for custom ranking based on customer specified attribute value. It provides more controls for customized ranking than the simple (condition, boost) combination above. */
@@ -441,7 +439,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecCondition
     | GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fieldName: S.optional(S.String),
@@ -469,7 +467,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecCondition
   /** An expression which specifies a boost condition. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost documents with document ID "doc_1" or "doc_2", and color "Red" or "Blue": `(document_id: ANY("doc_1", "doc_2")) AND (color: ANY("Red", "Blue"))` */
   condition?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boost: S.optional(S.Number),
@@ -484,7 +482,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoos
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecList =
   Array<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec>;
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecList =
+const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecList>;
@@ -494,7 +492,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec {
   /** Condition boost specifications. If a document matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20. */
   conditionBoostSpecs?: GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditionBoostSpecs: S.optional(
       GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecList,
@@ -508,7 +506,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchPa
   | "SEARCH_RESULT_MODE_UNSPECIFIED"
   | "DOCUMENTS"
   | "CHUNKS";
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchParamsSearchResultModeEnum =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchParamsSearchResultModeEnum =
   S.String;
 
 /** A struct to define data stores to filter on in a search call and configurations for those data stores. Otherwise, an `INVALID_ARGUMENT` error is returned. */
@@ -524,22 +522,21 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec {
   /** Optional. Boost specification to boost certain documents. For more information on boosting, see [Boosting](https://cloud.google.com/generative-ai-app-builder/docs/boost-search-results) */
   boostSpec?: GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String),
-      dataStore: S.optional(S.String),
-      customSearchOperators: S.optional(S.String),
-      numResults: S.optional(S.Number),
-      boostSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String),
+    dataStore: S.optional(S.String),
+    customSearchOperators: S.optional(S.String),
+    numResults: S.optional(S.Number),
+    boostSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpecList =
   Array<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>;
-export const GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpecList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpecList>;
 
@@ -547,17 +544,17 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnd
   | "EXTRACTED_FILTER_BEHAVIOR_UNSPECIFIED"
   | "HARD_FILTER"
   | "SOFT_BOOST";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpecExtractedFilterBehaviorEnum =
+const GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpecExtractedFilterBehaviorEnum =
   S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpecFilterExtractionConditionEnum =
   | "CONDITION_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpecFilterExtractionConditionEnum =
+const GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpecFilterExtractionConditionEnum =
   S.String;
 
 /** Specification to enable natural language understanding capabilities for search requests. */
@@ -575,7 +572,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQue
   /** Field names used for location-based filtering, where geolocation filters are detected in natural language search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`. */
   geoSearchQueryDetectionFieldNames?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       extractedFilterBehavior: S.optional(
@@ -611,7 +608,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Optional. Specification to enable natural language understanding capabilities for search requests. */
   naturalLanguageQueryUnderstandingSpec?: GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchParams =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchParams =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       boostSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec),
@@ -637,7 +634,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Uri of the document. */
   uri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       title: S.optional(S.String),
@@ -657,7 +654,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Chunk textual content. */
   content?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       documentMetadata: S.optional(
@@ -678,7 +675,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Extractive answer content. */
   content?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageIdentifier: S.optional(S.String),
@@ -691,7 +688,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchR
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList>;
@@ -703,12 +700,9 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Extractive segment content. */
   content?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment =
-  GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
-
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswerList as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegmentList>;
 
 /** Document context. */
@@ -718,7 +712,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Page identifier. */
   pageIdentifier?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.optional(S.String),
@@ -731,7 +725,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchR
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContextList>;
@@ -751,7 +745,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Document resource name. */
   document?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       title: S.optional(S.String),
@@ -779,7 +773,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Unstructured document information. */
   unstructuredDocumentInfo?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResult =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       chunkInfo: S.optional(
@@ -796,7 +790,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchR
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResult>;
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResult,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultList>;
@@ -806,7 +800,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSea
   /** Search results. */
   searchResults?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultListSearchResultList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultList =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       searchResults: S.optional(
@@ -824,16 +818,15 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpec {
   /** Search result list. */
   searchResultList?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      searchParams: S.optional(
-        GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchParams,
-      ),
-      searchResultList: S.optional(
-        GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultList,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    searchParams: S.optional(
+      GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchParams,
+    ),
+    searchResultList: S.optional(
+      GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpecSearchResultList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSearchSpec>;
@@ -843,7 +836,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestRelatedQuesti
   /** Enable related questions feature if true. */
   enable?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestRelatedQuestionsSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestRelatedQuestionsSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enable: S.optional(S.Boolean),
@@ -853,7 +846,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestRelatedQuestionsS
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestRelatedQuestionsSpec>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingThresholdEnum =
   | "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
@@ -862,7 +855,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySe
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
   | "OFF";
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingThresholdEnum =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingThresholdEnum =
   S.String;
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingCategoryEnum =
@@ -872,7 +865,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySe
   | "HARM_CATEGORY_HARASSMENT"
   | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
   | "HARM_CATEGORY_CIVIC_INTEGRITY";
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingCategoryEnum =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingCategoryEnum =
   S.String;
 
 /** Safety settings. */
@@ -886,7 +879,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSaf
     | GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingCategoryEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySetting =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySetting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       threshold: S.optional(
@@ -902,7 +895,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetyS
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySetting>;
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySetting,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingList>;
@@ -914,14 +907,13 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpec {
   /** Enable the safety filtering on the answer response. It is false by default. */
   enable?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      safetySettings: S.optional(
-        GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingList,
-      ),
-      enable: S.optional(S.Boolean),
-    }),
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    safetySettings: S.optional(
+      GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpecSafetySettingList,
+    ),
+    enable: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpec>;
@@ -953,7 +945,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryRequest {
   /** Model specification. */
   safetySpec?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequestSafetySpec;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryUnderstandingSpec: S.optional(
       GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpec,
@@ -984,8 +976,8 @@ export interface AnswerProjectsLocationsCollectionsDataStoresServingConfigsReque
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequest;
 }
-export const AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       servingConfig: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDiscoveryengineV1betaAnswerQueryRequest.pipe(T.HttpBody())),
@@ -996,15 +988,12 @@ export const AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-  }) as any as S.Schema<AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+).annotate({
+  identifier: "AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+}) as any as S.Schema<AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Document metadata. */
 export interface GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfoDocumentMetadata {
@@ -1019,7 +1008,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfoDocumen
   /** Page identifier. */
   pageIdentifier?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfoDocumentMetadata =
+const GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfoDocumentMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       document: S.optional(S.String),
@@ -1045,17 +1034,16 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo {
   /** Chunk textual content. */
   content?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      relevanceScore: S.optional(S.Number),
-      blobAttachmentIndexes: S.optional(StringList),
-      chunk: S.optional(S.String),
-      documentMetadata: S.optional(
-        GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfoDocumentMetadata,
-      ),
-      content: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relevanceScore: S.optional(S.Number),
+    blobAttachmentIndexes: S.optional(StringList),
+    chunk: S.optional(S.String),
+    documentMetadata: S.optional(
+      GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfoDocumentMetadata,
+    ),
+    content: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo>;
@@ -1071,7 +1059,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocume
   /** Output only. The URI of the document. */
   uri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo =
+const GoogleCloudDiscoveryengineV1betaAnswerReferenceStructuredDocumentInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       title: S.optional(S.String),
@@ -1094,7 +1082,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocu
   /** Output only. Stores indexes of blobattachments linked to this chunk. */
   blobAttachmentIndexes?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContent =
+const GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       relevanceScore: S.optional(S.Number),
@@ -1109,7 +1097,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocument
 
 export type GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContentList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContent>;
-export const GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContentList =
+const GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContent,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContentList>;
@@ -1127,7 +1115,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocu
   /** List of cited chunk contents derived from document content. */
   chunkContents?: GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfoChunkContentList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfo =
+const GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       document: S.optional(S.String),
@@ -1151,7 +1139,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerReference {
   /** Unstructured document information. */
   unstructuredDocumentInfo?: GoogleCloudDiscoveryengineV1betaAnswerReferenceUnstructuredDocumentInfo;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerReference = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunkInfo: S.optional(GoogleCloudDiscoveryengineV1betaAnswerReferenceChunkInfo),
     structuredDocumentInfo: S.optional(
@@ -1167,7 +1155,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerReference = /*@__PURE__*/ S.s
 
 export type GoogleCloudDiscoveryengineV1betaAnswerReferenceList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerReference>;
-export const GoogleCloudDiscoveryengineV1betaAnswerReferenceList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAnswerReferenceList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAnswerReference,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerReferenceList>;
 
@@ -1176,7 +1164,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerCitationSource {
   /** ID of the citation source. */
   referenceId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerCitationSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerCitationSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceId: S.optional(S.String),
   }),
@@ -1186,7 +1174,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerCitationSource = /*@__PURE__*
 
 export type GoogleCloudDiscoveryengineV1betaAnswerCitationSourceList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerCitationSource>;
-export const GoogleCloudDiscoveryengineV1betaAnswerCitationSourceList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAnswerCitationSourceList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAnswerCitationSource,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerCitationSourceList>;
 
@@ -1203,7 +1191,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerGroundingSupport {
   /** A score in the range of [0, 1] describing how grounded is a specific claim by the references. Higher value means that the claim is better supported by the reference chunks. */
   groundingScore?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerGroundingSupport = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerGroundingSupport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sources: S.optional(GoogleCloudDiscoveryengineV1betaAnswerCitationSourceList),
     groundingCheckRequired: S.optional(S.Boolean),
@@ -1217,7 +1205,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerGroundingSupport = /*@__PURE_
 
 export type GoogleCloudDiscoveryengineV1betaAnswerGroundingSupportList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerGroundingSupport>;
-export const GoogleCloudDiscoveryengineV1betaAnswerGroundingSupportList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAnswerGroundingSupportList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAnswerGroundingSupport,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerGroundingSupportList>;
 
@@ -1234,12 +1222,10 @@ export type GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnum =
   | "LOW_GROUNDED_ANSWER"
   | "USER_DEFINED_CLASSIFICATION_QUERY_IGNORED"
   | "UNHELPFUL_ANSWER";
-export const GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnum = S.String;
-
 export type GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnumList = Array<
   GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnum | (string & {})
 >;
-export const GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnumList =
+const GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnumList =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerAnswerSkippedReasonsItemEnumList>;
 
 export type GoogleCloudDiscoveryengineV1betaAnswerStateEnum =
@@ -1248,7 +1234,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerStateEnum =
   | "FAILED"
   | "SUCCEEDED"
   | "STREAMING";
-export const GoogleCloudDiscoveryengineV1betaAnswerStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaAnswerStateEnum = S.String;
 
 /** Citation info for a segment. */
 export interface GoogleCloudDiscoveryengineV1betaAnswerCitation {
@@ -1259,7 +1245,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerCitation {
   /** End of the attributed segment, exclusive. Measured in bytes (UTF-8 unicode). If there are multi-byte characters,such as non-ASCII characters, the index measurement is longer than the string length. */
   endIndex?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerCitation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerCitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sources: S.optional(GoogleCloudDiscoveryengineV1betaAnswerCitationSourceList),
     startIndex: S.optional(S.String),
@@ -1271,7 +1257,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerCitation = /*@__PURE__*/ S.su
 
 export type GoogleCloudDiscoveryengineV1betaAnswerCitationList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerCitation>;
-export const GoogleCloudDiscoveryengineV1betaAnswerCitationList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAnswerCitationList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAnswerCitation,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerCitationList>;
 
@@ -1282,7 +1268,7 @@ export type GoogleCloudDiscoveryengineV1betaSafetyRatingCategoryEnum =
   | "HARM_CATEGORY_HARASSMENT"
   | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
   | "HARM_CATEGORY_CIVIC_INTEGRITY";
-export const GoogleCloudDiscoveryengineV1betaSafetyRatingCategoryEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSafetyRatingCategoryEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaSafetyRatingSeverityEnum =
   | "HARM_SEVERITY_UNSPECIFIED"
@@ -1290,7 +1276,7 @@ export type GoogleCloudDiscoveryengineV1betaSafetyRatingSeverityEnum =
   | "HARM_SEVERITY_LOW"
   | "HARM_SEVERITY_MEDIUM"
   | "HARM_SEVERITY_HIGH";
-export const GoogleCloudDiscoveryengineV1betaSafetyRatingSeverityEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSafetyRatingSeverityEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaSafetyRatingProbabilityEnum =
   | "HARM_PROBABILITY_UNSPECIFIED"
@@ -1298,7 +1284,7 @@ export type GoogleCloudDiscoveryengineV1betaSafetyRatingProbabilityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-export const GoogleCloudDiscoveryengineV1betaSafetyRatingProbabilityEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSafetyRatingProbabilityEnum = S.String;
 
 /** Safety rating corresponding to the generated content. */
 export interface GoogleCloudDiscoveryengineV1betaSafetyRating {
@@ -1315,7 +1301,7 @@ export interface GoogleCloudDiscoveryengineV1betaSafetyRating {
   /** Output only. Harm probability score. */
   probabilityScore?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSafetyRating = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSafetyRating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(GoogleCloudDiscoveryengineV1betaSafetyRatingCategoryEnum),
     severity: S.optional(GoogleCloudDiscoveryengineV1betaSafetyRatingSeverityEnum),
@@ -1330,7 +1316,7 @@ export const GoogleCloudDiscoveryengineV1betaSafetyRating = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDiscoveryengineV1betaSafetyRatingList =
   Array<GoogleCloudDiscoveryengineV1betaSafetyRating>;
-export const GoogleCloudDiscoveryengineV1betaSafetyRatingList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSafetyRatingList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSafetyRating,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSafetyRatingList>;
 
@@ -1341,7 +1327,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryCla
   | "JAIL_BREAKING_QUERY"
   | "NON_ANSWER_SEEKING_QUERY_V2"
   | "USER_DEFINED_CLASSIFICATION_QUERY";
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoTypeEnum =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoTypeEnum =
   S.String;
 
 /** Query classification information. */
@@ -1353,7 +1339,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQue
   /** Classification output. */
   positive?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfo =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
@@ -1368,7 +1354,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryCl
 
 export type GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfo>;
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoList =
+const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfo,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoList>;
@@ -1378,13 +1364,12 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfo {
   /** Query classification information. */
   queryClassificationInfo?: GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      queryClassificationInfo: S.optional(
-        GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoList,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queryClassificationInfo: S.optional(
+      GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfoQueryClassificationInfoList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfo",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerQueryUnderstandingInfo>;
@@ -1394,7 +1379,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerStepStateEnum =
   | "IN_PROGRESS"
   | "FAILED"
   | "SUCCEEDED";
-export const GoogleCloudDiscoveryengineV1betaAnswerStepStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaAnswerStepStateEnum = S.String;
 
 /** Snippet information. */
 export interface GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfo {
@@ -1403,7 +1388,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSear
   /** Status of the snippet defined by the search team. */
   snippetStatus?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfo =
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       snippet: S.optional(S.String),
@@ -1416,7 +1401,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchRe
 
 export type GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfoList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfo>;
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfoList =
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfo,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultSnippetInfoList>;
@@ -1430,7 +1415,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSear
   /** Chunk resource name. */
   chunk?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultChunkInfo =
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultChunkInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.optional(S.String),
@@ -1443,7 +1428,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchRe
 
 export type GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultChunkInfoList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultChunkInfo>;
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultChunkInfoList =
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultChunkInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultChunkInfo,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultChunkInfoList>;
@@ -1462,7 +1447,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSear
   /** Title. */
   title?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResult =
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       snippetInfo: S.optional(
@@ -1482,7 +1467,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchRe
 
 export type GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResult>;
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultList =
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResult,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultList>;
@@ -1492,13 +1477,12 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerStepActionObservation {
   /** Search results observed by the search action, it can be snippets info or chunk info, depending on the citation type set by the user. */
   searchResults?: GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      searchResults: S.optional(
-        GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultList,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionObservation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    searchResults: S.optional(
+      GoogleCloudDiscoveryengineV1betaAnswerStepActionObservationSearchResultList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAnswerStepActionObservation",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerStepActionObservation>;
@@ -1508,11 +1492,10 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerStepActionSearchAction {
   /** The query to search. */
   query?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionSearchAction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      query: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionSearchAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    query: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAnswerStepActionSearchAction",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerStepActionSearchAction>;
@@ -1524,7 +1507,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerStepAction {
   /** Search action. */
   searchAction?: GoogleCloudDiscoveryengineV1betaAnswerStepActionSearchAction;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerStepAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerStepAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observation: S.optional(GoogleCloudDiscoveryengineV1betaAnswerStepActionObservation),
     searchAction: S.optional(GoogleCloudDiscoveryengineV1betaAnswerStepActionSearchAction),
@@ -1535,7 +1518,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerStepAction = /*@__PURE__*/ S.
 
 export type GoogleCloudDiscoveryengineV1betaAnswerStepActionList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerStepAction>;
-export const GoogleCloudDiscoveryengineV1betaAnswerStepActionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAnswerStepActionList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAnswerStepAction,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerStepActionList>;
 
@@ -1550,7 +1533,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerStep {
   /** Actions. */
   actions?: GoogleCloudDiscoveryengineV1betaAnswerStepActionList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerStep = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudDiscoveryengineV1betaAnswerStepStateEnum),
     thought: S.optional(S.String),
@@ -1563,7 +1546,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerStep = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudDiscoveryengineV1betaAnswerStepList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerStep>;
-export const GoogleCloudDiscoveryengineV1betaAnswerStepList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAnswerStepList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAnswerStep,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerStepList>;
 
@@ -1571,7 +1554,7 @@ export type GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentAttributionTypeE
   | "ATTRIBUTION_TYPE_UNSPECIFIED"
   | "CORPUS"
   | "GENERATED";
-export const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentAttributionTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentAttributionTypeEnum = S.String;
 
 /** The media type and data of the blob. */
 export interface GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob {
@@ -1580,12 +1563,11 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob {
   /** Output only. Raw bytes. */
   data?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mimeType: S.optional(S.String),
-      data: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mimeType: S.optional(S.String),
+    data: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob>;
@@ -1599,7 +1581,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment {
   /** Output only. The mime type and data of the blob. */
   data?: GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentBlob;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributionType: S.optional(
       GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentAttributionTypeEnum,
@@ -1612,7 +1594,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment = /*@__PURE__*
 
 export type GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentList =
   Array<GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment>;
-export const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAnswerBlobAttachment,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentList>;
 
@@ -1649,7 +1631,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswer {
   /** Output only. List of blob attachments in the answer. */
   blobAttachments?: GoogleCloudDiscoveryengineV1betaAnswerBlobAttachmentList;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswer = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundingScore: S.optional(S.Number),
     references: S.optional(GoogleCloudDiscoveryengineV1betaAnswerReferenceList),
@@ -1676,9 +1658,7 @@ export const GoogleCloudDiscoveryengineV1betaAnswer = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAnswer>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -1689,7 +1669,7 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -1704,7 +1684,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnfor
   /** The Model Armor violation that was found. */
   modelArmorViolation?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult =
+const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       error: S.optional(GoogleRpcStatus),
@@ -1720,7 +1700,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnfor
   /** The banned phrases that were found in the query or the answer. */
   bannedPhrases?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult =
+const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       bannedPhrases: S.optional(StringList),
@@ -1737,7 +1717,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnfor
   /** The policy enforcement result for the banned phrase policy. */
   bannedPhraseEnforcementResult?: GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult =
+const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelArmorEnforcementResult: S.optional(
@@ -1754,7 +1734,7 @@ export const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforceme
 
 export type GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResultList =
   Array<GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResultList =
+const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResultList>;
@@ -1764,14 +1744,14 @@ export type GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcemen
   | "SYSTEM"
   | "PROMPT"
   | "ATTACHMENT";
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultViolationSourceEnum =
+const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultViolationSourceEnum =
   S.String;
 
 export type GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultVerdictEnum =
   | "UNSPECIFIED"
   | "ALLOW"
   | "BLOCK";
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultVerdictEnum =
+const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultVerdictEnum =
   S.String;
 
 /** Customer policy enforcement results. Contains the results of the various policy checks, like the banned phrases or the Model Armor checks. */
@@ -1787,7 +1767,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnfor
     | GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResultVerdictEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResult =
+const GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       policyResults: S.optional(
@@ -1808,16 +1788,14 @@ export type GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItem
   | "ASSIST_SKIPPED_REASON_UNSPECIFIED"
   | "NON_ASSIST_SEEKING_QUERY_IGNORED"
   | "CUSTOMER_POLICY_VIOLATION";
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnum = S.String;
-
 export type GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnumList = Array<
   GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnum | (string & {})
 >;
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnumList =
+const GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnumList =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistAnswerAssistSkippedReasonsItemEnumList>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Grounding information for a visual segment. */
 export interface GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment {
@@ -1826,7 +1804,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGro
   /** The content id of the visual segment. In order to display the citation of the visual element, this content_id needs to match with the `grounded_content.content_metadata.content_id` field. */
   contentId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       referenceIndices: S.optional(IntegerList),
@@ -1839,7 +1817,7 @@ export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundi
 
 export type GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegmentList =
   Array<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment>;
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegmentList =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegment,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataVisualSegmentList>;
@@ -1857,7 +1835,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGro
   /** Zero-based index indicating the start of the segment, measured in bytes of a UTF-8 string (i.e. characters encoded on multiple bytes have a length of more than one). */
   startIndex?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       groundingScore: S.optional(S.Number),
@@ -1873,7 +1851,7 @@ export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundi
 
 export type GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegmentList =
   Array<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment>;
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegmentList =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegment,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataSegmentList>;
@@ -1882,7 +1860,7 @@ export type GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundin
   | "LANGUAGE_UNSPECIFIED"
   | "PYTHON"
   | "SQL";
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadataLanguageEnum =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadataLanguageEnum =
   S.String;
 
 /** Document metadata. */
@@ -1903,7 +1881,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGro
   /** Page identifier. */
   pageIdentifier?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       domain: S.optional(S.String),
@@ -1932,7 +1910,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGro
   /** Output only. Generic structured chunk metadata from upstream data source connectors. */
   chunkMetadata?: DocumentMap;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.optional(S.String),
@@ -1949,7 +1927,7 @@ export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundi
 
 export type GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceList =
   Array<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference>;
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceList =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReference,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceList>;
@@ -1963,7 +1941,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGro
   /** References for the grounded text. */
   references?: GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadataReferenceList;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadata =
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       visualSegments: S.optional(
@@ -1987,7 +1965,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantContentFile {
   /** Required. The media type (MIME type) of the file. */
   mimeType?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantContentFile = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistantContentFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -2001,8 +1979,7 @@ export type GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResultO
   | "OUTCOME_OK"
   | "OUTCOME_FAILED"
   | "OUTCOME_DEADLINE_EXCEEDED";
-export const GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResultOutcomeEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResultOutcomeEnum = S.String;
 
 /** Result of executing ExecutableCode. */
 export interface GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult {
@@ -2013,17 +1990,17 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionRe
   /** Optional. Contains stdout when code execution is successful, stderr or other description otherwise. */
   output?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       outcome: S.optional(
         GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResultOutcomeEnum,
       ),
       output: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantContentCodeExecutionResult>;
 
 /** Inline blob. */
 export interface GoogleCloudDiscoveryengineV1betaAssistantContentBlob {
@@ -2032,7 +2009,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantContentBlob {
   /** Required. The media type (MIME type) of the generated data. */
   mimeType?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantContentBlob = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistantContentBlob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -2046,14 +2023,13 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode 
   /** Required. The code content. Currently only supports Python. */
   code?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode>;
+const GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantContentExecutableCode>;
 
 /** Multi-modal content. */
 export interface GoogleCloudDiscoveryengineV1betaAssistantContent {
@@ -2072,7 +2048,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantContent {
   /** The producer of the content. Can be "model" or "user". */
   role?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantContent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistantContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     file: S.optional(GoogleCloudDiscoveryengineV1betaAssistantContentFile),
@@ -2097,7 +2073,7 @@ export interface GoogleTypeDate {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.Number),
     month: S.optional(S.Number),
@@ -2120,7 +2096,7 @@ export interface GoogleCloudDiscoveryengineV1betaCitation {
   /** Output only. License of the attribution. */
   license?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaCitation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endIndex: S.optional(S.Number),
     title: S.optional(S.String),
@@ -2135,7 +2111,7 @@ export const GoogleCloudDiscoveryengineV1betaCitation = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDiscoveryengineV1betaCitationList =
   Array<GoogleCloudDiscoveryengineV1betaCitation>;
-export const GoogleCloudDiscoveryengineV1betaCitationList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaCitationList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaCitation,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCitationList>;
 
@@ -2144,7 +2120,7 @@ export interface GoogleCloudDiscoveryengineV1betaCitationMetadata {
   /** Output only. List of citations. */
   citations?: GoogleCloudDiscoveryengineV1betaCitationList;
 }
-export const GoogleCloudDiscoveryengineV1betaCitationMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCitationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     citations: S.optional(GoogleCloudDiscoveryengineV1betaCitationList),
   }),
@@ -2161,15 +2137,14 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantGroundedContent {
   /** Source attribution of the generated content. See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/overview#citation_check */
   citationMetadata?: GoogleCloudDiscoveryengineV1betaCitationMetadata;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantGroundedContent = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      textGroundingMetadata: S.optional(
-        GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadata,
-      ),
-      content: S.optional(GoogleCloudDiscoveryengineV1betaAssistantContent),
-      citationMetadata: S.optional(GoogleCloudDiscoveryengineV1betaCitationMetadata),
-    }),
+const GoogleCloudDiscoveryengineV1betaAssistantGroundedContent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    textGroundingMetadata: S.optional(
+      GoogleCloudDiscoveryengineV1betaAssistantGroundedContentTextGroundingMetadata,
+    ),
+    content: S.optional(GoogleCloudDiscoveryengineV1betaAssistantContent),
+    citationMetadata: S.optional(GoogleCloudDiscoveryengineV1betaCitationMetadata),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAssistantGroundedContent",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantGroundedContent>;
@@ -2181,7 +2156,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistAnswerReply {
   /** The time when the reply was created. */
   createTime?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerReply = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistAnswerReply = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundedContent: S.optional(GoogleCloudDiscoveryengineV1betaAssistantGroundedContent),
     createTime: S.optional(S.String),
@@ -2192,7 +2167,7 @@ export const GoogleCloudDiscoveryengineV1betaAssistAnswerReply = /*@__PURE__*/ S
 
 export type GoogleCloudDiscoveryengineV1betaAssistAnswerReplyList =
   Array<GoogleCloudDiscoveryengineV1betaAssistAnswerReply>;
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerReplyList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAssistAnswerReplyList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAssistAnswerReply,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistAnswerReplyList>;
 
@@ -2203,7 +2178,7 @@ export type GoogleCloudDiscoveryengineV1betaAssistAnswerStateEnum =
   | "SUCCEEDED"
   | "SKIPPED"
   | "CANCELLED";
-export const GoogleCloudDiscoveryengineV1betaAssistAnswerStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaAssistAnswerStateEnum = S.String;
 
 /** AssistAnswer resource, main part of AssistResponse. */
 export interface GoogleCloudDiscoveryengineV1betaAssistAnswer {
@@ -2220,7 +2195,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistAnswer {
   /** State of the answer generation. */
   state?: GoogleCloudDiscoveryengineV1betaAssistAnswerStateEnum | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaAssistAnswer = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistAnswer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerPolicyEnforcementResult: S.optional(
       GoogleCloudDiscoveryengineV1betaAssistAnswerCustomerPolicyEnforcementResult,
@@ -2252,7 +2227,7 @@ export interface GoogleCloudDiscoveryengineV1betaSessionTurn {
   /** Optional. Indicates whether this turn is a live turn. */
   live?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaSessionTurn = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSessionTurn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detailedAnswer: S.optional(GoogleCloudDiscoveryengineV1betaAnswer),
     answer: S.optional(S.String),
@@ -2267,12 +2242,12 @@ export const GoogleCloudDiscoveryengineV1betaSessionTurn = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudDiscoveryengineV1betaSessionTurnList =
   Array<GoogleCloudDiscoveryengineV1betaSessionTurn>;
-export const GoogleCloudDiscoveryengineV1betaSessionTurnList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSessionTurnList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSessionTurn,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSessionTurnList>;
 
 export type GoogleCloudDiscoveryengineV1betaSessionStateEnum = "STATE_UNSPECIFIED" | "IN_PROGRESS";
-export const GoogleCloudDiscoveryengineV1betaSessionStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSessionStateEnum = S.String;
 
 /** External session proto definition. */
 export interface GoogleCloudDiscoveryengineV1betaSession {
@@ -2297,7 +2272,7 @@ export interface GoogleCloudDiscoveryengineV1betaSession {
   /** Output only. The time the session finished. */
   endTime?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSession = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     isPinned: S.optional(S.Boolean),
@@ -2323,7 +2298,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerQueryResponse {
   /** Session resource object. It will be only available when session field is set and valid in the AnswerQueryRequest request. */
   session?: GoogleCloudDiscoveryengineV1betaSession;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer: S.optional(GoogleCloudDiscoveryengineV1betaAnswer),
     answerQueryToken: S.optional(S.String),
@@ -2339,21 +2314,20 @@ export interface AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest 
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequest;
 }
-export const AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfig: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaAnswerQueryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+servingConfig}:answer",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest",
-  }) as any as S.Schema<AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+const AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    servingConfig: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaAnswerQueryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+servingConfig}:answer",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest",
+}) as any as S.Schema<AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export interface AnswerProjectsLocationsDataStoresServingConfigsRequest {
   /** Required. The resource name of the Search serving config, such as `projects/*\/locations/global/collections/default_collection/engines/*\/servingConfigs/default_serving_config`, or `projects/*\/locations/global/collections/default_collection/dataStores/*\/servingConfigs/default_serving_config`. Or the resource name of the agent engine serving config, such as: `projects/*\/locations/global/collections/default_collection/engines/*\/servingConfigs/default_agent_answer`. (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine configured) This field is used to identify the serving configuration name, set of models used to make the search. */
@@ -2361,7 +2335,7 @@ export interface AnswerProjectsLocationsDataStoresServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequest;
 }
-export const AnswerProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const AnswerProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servingConfig: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaAnswerQueryRequest.pipe(T.HttpBody())),
@@ -2380,7 +2354,7 @@ export type GoogleCloudDiscoveryengineV1betaTargetSiteTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "INCLUDE"
   | "EXCLUDE";
-export const GoogleCloudDiscoveryengineV1betaTargetSiteTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaTargetSiteTypeEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaTargetSiteIndexingStatusEnum =
   | "INDEXING_STATUS_UNSPECIFIED"
@@ -2390,15 +2364,14 @@ export type GoogleCloudDiscoveryengineV1betaTargetSiteIndexingStatusEnum =
   | "DELETING"
   | "CANCELLABLE"
   | "CANCELLED";
-export const GoogleCloudDiscoveryengineV1betaTargetSiteIndexingStatusEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaTargetSiteIndexingStatusEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaSiteVerificationInfoSiteVerificationStateEnum =
   | "SITE_VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFIED"
   | "UNVERIFIED"
   | "EXEMPTED";
-export const GoogleCloudDiscoveryengineV1betaSiteVerificationInfoSiteVerificationStateEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaSiteVerificationInfoSiteVerificationStateEnum = S.String;
 
 /** Verification information for target sites in advanced site search. */
 export interface GoogleCloudDiscoveryengineV1betaSiteVerificationInfo {
@@ -2409,7 +2382,7 @@ export interface GoogleCloudDiscoveryengineV1betaSiteVerificationInfo {
   /** Latest site verification time. */
   verifyTime?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSiteVerificationInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSiteVerificationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteVerificationState: S.optional(
       GoogleCloudDiscoveryengineV1betaSiteVerificationInfoSiteVerificationStateEnum,
@@ -2425,21 +2398,21 @@ export interface GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFai
   /** This number is an estimation on how much total quota this project needs to successfully complete indexing. */
   totalRequiredQuota?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       totalRequiredQuota: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure>;
 
 /** Site search indexing failure reasons. */
 export interface GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason {
   /** Failed due to insufficient quota. */
   quotaFailure?: GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure;
 }
-export const GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaFailure: S.optional(GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure),
   }),
@@ -2470,7 +2443,7 @@ export interface GoogleCloudDiscoveryengineV1betaTargetSite {
   /** Immutable. If set to false, a uri_pattern is generated to include all pages whose address contains the provided_uri_pattern. If set to true, an uri_pattern is generated to try to be an exact match of the provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one. provided_uri_pattern is always normalized to generate the URI pattern to be used by the search engine. */
   exactMatch?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaTargetSite = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaTargetSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rootDomainUri: S.optional(S.String),
     type: S.optional(GoogleCloudDiscoveryengineV1betaTargetSiteTypeEnum),
@@ -2494,7 +2467,7 @@ export interface GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequest {
   /** Required. Parent resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. */
   parent?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetSite: S.optional(GoogleCloudDiscoveryengineV1betaTargetSite),
     parent: S.optional(S.String),
@@ -2505,7 +2478,7 @@ export const GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequest = /*@__PURE
 
 export type GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequestList =
   Array<GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequest>;
-export const GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequestList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequestList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequest,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequestList>;
 
@@ -2514,14 +2487,13 @@ export interface GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest {
   /** Required. The request message specifying the resources to create. A maximum of 20 TargetSites can be created in a batch. */
   requests?: GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequestList;
 }
-export const GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequestList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest>;
+const GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requests: S.optional(GoogleCloudDiscoveryengineV1betaCreateTargetSiteRequestList),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest>;
 
 export interface BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest {
   /** Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. */
@@ -2529,7 +2501,7 @@ export interface BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngi
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest;
 }
-export const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
+const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2561,7 +2533,7 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(GoogleRpcStatus),
     done: S.optional(S.Boolean),
@@ -2579,7 +2551,7 @@ export interface BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSit
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesRequest;
 }
-export const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
+const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2605,7 +2577,7 @@ export interface BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStores
   /** Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} */
   "matcher.fhirMatcher.fhirResources"?: StringList;
 }
-export const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest =
+const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2627,7 +2599,7 @@ export type GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDoc
   | "INDEXED"
   | "NOT_IN_TARGET_SITE"
   | "NOT_IN_INDEX";
-export const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataStateEnum =
+const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataStateEnum =
   S.String;
 
 /** The value of the matcher that was used to match the Document. */
@@ -2637,7 +2609,7 @@ export interface GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataRespon
   /** If match by URI, the URI of the Document. */
   uri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue =
+const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fhirResource: S.optional(S.String),
@@ -2659,7 +2631,7 @@ export interface GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataRespon
   /** The value of the matcher that was used to match the Document. */
   matcherValue?: GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue;
 }
-export const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadata =
+const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataIngestionSource: S.optional(S.String),
@@ -2677,7 +2649,7 @@ export const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDo
 
 export type GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataList =
   Array<GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadata>;
-export const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataList =
+const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadata,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataList>;
@@ -2687,16 +2659,16 @@ export interface GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataRespon
   /** The metadata of the Documents. */
   documentsMetadata?: GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataList;
 }
-export const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       documentsMetadata: S.optional(
         GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponseDocumentMetadataList,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse>;
 
 export interface BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest {
   /** Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. */
@@ -2706,8 +2678,8 @@ export interface BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesReq
   /** Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} */
   "matcher.fhirMatcher.fhirResources"?: StringList;
 }
-export const BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       "matcher.urisMatcher.uris": S.optional(StringList.pipe(T.Query())),
@@ -2719,9 +2691,9 @@ export const BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest",
-  }) as any as S.Schema<BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest>;
+).annotate({
+  identifier: "BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest",
+}) as any as S.Schema<BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaUserLicenseLicenseAssignmentStateEnum =
   | "LICENSE_ASSIGNMENT_STATE_UNSPECIFIED"
@@ -2730,7 +2702,7 @@ export type GoogleCloudDiscoveryengineV1betaUserLicenseLicenseAssignmentStateEnu
   | "NO_LICENSE"
   | "NO_LICENSE_ATTEMPTED_LOGIN"
   | "BLOCKED";
-export const GoogleCloudDiscoveryengineV1betaUserLicenseLicenseAssignmentStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaUserLicenseLicenseAssignmentStateEnum = S.String;
 
 /** User License information assigned by the admin. */
 export interface GoogleCloudDiscoveryengineV1betaUserLicense {
@@ -2751,7 +2723,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserLicense {
   /** Optional. The full resource name of the Subscription(LicenseConfig) assigned to the user. */
   licenseConfig?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaUserLicense = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaUserLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     lastLoginTime: S.optional(S.String),
@@ -2769,7 +2741,7 @@ export const GoogleCloudDiscoveryengineV1betaUserLicense = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudDiscoveryengineV1betaUserLicenseList =
   Array<GoogleCloudDiscoveryengineV1betaUserLicense>;
-export const GoogleCloudDiscoveryengineV1betaUserLicenseList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaUserLicenseList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaUserLicense,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaUserLicenseList>;
 
@@ -2780,7 +2752,7 @@ export interface GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestI
   /** Optional. The list of fields to update. */
   updateMask?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestInlineSource =
+const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestInlineSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       userLicenses: S.optional(GoogleCloudDiscoveryengineV1betaUserLicenseList),
@@ -2797,17 +2769,16 @@ export interface GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest 
   /** The inline source for the input content for license assignment. */
   inlineSource?: GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestInlineSource;
 }
-export const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deleteUnassignedUserLicenses: S.optional(S.Boolean),
-      inlineSource: S.optional(
-        GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestInlineSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest>;
+const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleteUnassignedUserLicenses: S.optional(S.Boolean),
+    inlineSource: S.optional(
+      GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequestInlineSource,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest>;
 
 export interface BatchUpdateUserLicensesProjectsLocationsUserStoresRequest {
   /** Required. The parent UserStore resource name, format: `projects/{project}/locations/{location}/userStores/{user_store_id}`. */
@@ -2815,30 +2786,30 @@ export interface BatchUpdateUserLicensesProjectsLocationsUserStoresRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest;
 }
-export const BatchUpdateUserLicensesProjectsLocationsUserStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}:batchUpdateUserLicenses",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
+const BatchUpdateUserLicensesProjectsLocationsUserStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}:batchUpdateUserLicenses",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BatchUpdateUserLicensesProjectsLocationsUserStoresRequest",
 }) as any as S.Schema<BatchUpdateUserLicensesProjectsLocationsUserStoresRequest>;
 
 /** Request message for SiteSearchEngineService.BatchVerifyTargetSites method. */
 export interface GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest {}
-export const GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest>;
+const GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest>;
 
 export interface BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
   /** Required. The parent resource shared by all TargetSites being verified. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. */
@@ -2846,7 +2817,7 @@ export interface BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSit
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
+const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -2868,16 +2839,13 @@ export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
 /** The request message for Operations.CancelOperation. */
 export type GoogleLongrunningCancelOperationRequest =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleLongrunningCancelOperationRequest =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 export interface CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest =
+const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2897,7 +2865,7 @@ export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsReque
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -2907,20 +2875,19 @@ export interface CancelProjectsLocationsDataStoresBranchesOperationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const CancelProjectsLocationsDataStoresBranchesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:cancel",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
+const CancelProjectsLocationsDataStoresBranchesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+name}:cancel",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CancelProjectsLocationsDataStoresBranchesOperationsRequest",
 }) as any as S.Schema<CancelProjectsLocationsDataStoresBranchesOperationsRequest>;
@@ -2932,7 +2899,7 @@ export interface GoogleCloudDiscoveryengineV1betaCheckGroundingSpec {
   /** The control flag that enables claim-level grounding score in the response. */
   enableClaimLevelScore?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaCheckGroundingSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCheckGroundingSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     citationThreshold: S.optional(S.Number),
     enableClaimLevelScore: S.optional(S.Boolean),
@@ -2948,7 +2915,7 @@ export interface GoogleCloudDiscoveryengineV1betaGroundingFact {
   /** Text content of the fact. Can be at most 10K characters long. */
   factText?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaGroundingFact = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaGroundingFact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(StringMap),
     factText: S.optional(S.String),
@@ -2959,7 +2926,7 @@ export const GoogleCloudDiscoveryengineV1betaGroundingFact = /*@__PURE__*/ S.sus
 
 export type GoogleCloudDiscoveryengineV1betaGroundingFactList =
   Array<GoogleCloudDiscoveryengineV1betaGroundingFact>;
-export const GoogleCloudDiscoveryengineV1betaGroundingFactList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaGroundingFactList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaGroundingFact,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaGroundingFactList>;
 
@@ -2974,7 +2941,7 @@ export interface GoogleCloudDiscoveryengineV1betaCheckGroundingRequest {
   /** The user labels applied to a resource must meet the following requirements: * Each resource can have multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. * The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys must start with a lowercase letter or international character. See [Google Cloud Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more details. */
   userLabels?: StringMap;
 }
-export const GoogleCloudDiscoveryengineV1betaCheckGroundingRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCheckGroundingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundingSpec: S.optional(GoogleCloudDiscoveryengineV1betaCheckGroundingSpec),
     facts: S.optional(GoogleCloudDiscoveryengineV1betaGroundingFactList),
@@ -2991,7 +2958,7 @@ export interface CheckProjectsLocationsGroundingConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaCheckGroundingRequest;
 }
-export const CheckProjectsLocationsGroundingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckProjectsLocationsGroundingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundingConfig: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaCheckGroundingRequest.pipe(T.HttpBody())),
@@ -3011,7 +2978,7 @@ export interface GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGrou
   /** Text content of the fact chunk. Can be at most 10K characters long. */
   chunkText?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk =
+const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       chunkText: S.optional(S.String),
@@ -3022,7 +2989,7 @@ export const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundin
 
 export type GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunkList =
   Array<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk>;
-export const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunkList =
+const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunkList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunk,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunkList>;
@@ -3044,7 +3011,7 @@ export interface GoogleCloudDiscoveryengineV1betaFactChunk {
   /** Source from which this fact chunk was retrieved. If it was retrieved from the GroundingFacts provided in the request then this field will contain the index of the specific fact from which this chunk was retrieved. */
   source?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaFactChunk = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaFactChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunkText: S.optional(S.String),
     sourceMetadata: S.optional(StringMap),
@@ -3060,7 +3027,7 @@ export const GoogleCloudDiscoveryengineV1betaFactChunk = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDiscoveryengineV1betaFactChunkList =
   Array<GoogleCloudDiscoveryengineV1betaFactChunk>;
-export const GoogleCloudDiscoveryengineV1betaFactChunkList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaFactChunkList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaFactChunk,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaFactChunkList>;
 
@@ -3079,26 +3046,24 @@ export interface GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim {
   /** Position indicating the start of the claim in the answer candidate, measured in bytes. Note that this is not measured in characters and, therefore, must be rendered in the user interface keeping in mind that some characters may take more than one byte. For example, if the claim text contains non-ASCII characters, the start and end positions vary when measured in characters (programming-language-dependent) and when measured in bytes (programming-language-independent). */
   startPos?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      claimText: S.optional(S.String),
-      citationIndices: S.optional(IntegerList),
-      groundingCheckRequired: S.optional(S.Boolean),
-      endPos: S.optional(S.Number),
-      score: S.optional(S.Number),
-      startPos: S.optional(S.Number),
-    }),
+const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    claimText: S.optional(S.String),
+    citationIndices: S.optional(IntegerList),
+    groundingCheckRequired: S.optional(S.Boolean),
+    endPos: S.optional(S.Number),
+    score: S.optional(S.Number),
+    startPos: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim>;
 
 export type GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaimList =
   Array<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim>;
-export const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaimList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaimList>;
+const GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaimList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaim,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaimList>;
 
 /** Response message for the GroundedGenerationService.CheckGrounding method. */
 export interface GoogleCloudDiscoveryengineV1betaCheckGroundingResponse {
@@ -3111,7 +3076,7 @@ export interface GoogleCloudDiscoveryengineV1betaCheckGroundingResponse {
   /** Claim texts and citation info across all claims in the answer candidate. */
   claims?: GoogleCloudDiscoveryengineV1betaCheckGroundingResponseClaimList;
 }
-export const GoogleCloudDiscoveryengineV1betaCheckGroundingResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCheckGroundingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     citedFacts: S.optional(
       GoogleCloudDiscoveryengineV1betaCheckGroundingResponseCheckGroundingFactChunkList,
@@ -3134,23 +3099,22 @@ export interface CollectProjectsLocationsCollectionsDataStoresUserEventsRequest 
   /** Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters. */
   userEvent?: string;
 }
-export const CollectProjectsLocationsCollectionsDataStoresUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.optional(S.String.pipe(T.Query())),
-      ets: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      userEvent: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/userEvents:collect",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CollectProjectsLocationsCollectionsDataStoresUserEventsRequest",
-  }) as any as S.Schema<CollectProjectsLocationsCollectionsDataStoresUserEventsRequest>;
+const CollectProjectsLocationsCollectionsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.optional(S.String.pipe(T.Query())),
+    ets: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    userEvent: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/userEvents:collect",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CollectProjectsLocationsCollectionsDataStoresUserEventsRequest",
+}) as any as S.Schema<CollectProjectsLocationsCollectionsDataStoresUserEventsRequest>;
 
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface GoogleApiHttpBody {
@@ -3161,7 +3125,7 @@ export interface GoogleApiHttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
 }
-export const GoogleApiHttpBody = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiHttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.optional(S.String),
     extensions: S.optional(DocumentMapList),
@@ -3179,7 +3143,7 @@ export interface CollectProjectsLocationsDataStoresUserEventsRequest {
   /** The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. */
   ets?: string;
 }
-export const CollectProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CollectProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     userEvent: S.optional(S.String.pipe(T.Query())),
@@ -3206,7 +3170,7 @@ export interface CollectProjectsLocationsUserEventsRequest {
   /** Required. The parent resource name. If the collect user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the collect user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. */
   parent: string;
 }
-export const CollectProjectsLocationsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CollectProjectsLocationsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userEvent: S.optional(S.String.pipe(T.Query())),
     uri: S.optional(S.String.pipe(T.Query())),
@@ -3235,21 +3199,20 @@ export interface CompleteQueryProjectsLocationsCollectionsDataStoresRequest {
   /** Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This field should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   userPseudoId?: string;
 }
-export const CompleteQueryProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      query: S.optional(S.String.pipe(T.Query())),
-      includeTailSuggestions: S.optional(S.Boolean.pipe(T.Query())),
-      dataStore: S.String.pipe(T.Label()),
-      queryModel: S.optional(S.String.pipe(T.Query())),
-      userPseudoId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+dataStore}:completeQuery",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CompleteQueryProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    query: S.optional(S.String.pipe(T.Query())),
+    includeTailSuggestions: S.optional(S.Boolean.pipe(T.Query())),
+    dataStore: S.String.pipe(T.Label()),
+    queryModel: S.optional(S.String.pipe(T.Query())),
+    userPseudoId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+dataStore}:completeQuery",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CompleteQueryProjectsLocationsCollectionsDataStoresRequest",
 }) as any as S.Schema<CompleteQueryProjectsLocationsCollectionsDataStoresRequest>;
@@ -3261,7 +3224,7 @@ export interface GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySugge
   /** The suggestion for the query. */
   suggestion?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestion =
+const GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       completableFieldPaths: S.optional(StringList),
@@ -3273,7 +3236,7 @@ export const GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestio
 
 export type GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestionList =
   Array<GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestion>;
-export const GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestionList =
+const GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestion,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestionList>;
@@ -3285,7 +3248,7 @@ export interface GoogleCloudDiscoveryengineV1betaCompleteQueryResponse {
   /** Results of the matched query suggestions. The result list is ordered and the first result is a top suggestion. */
   querySuggestions?: GoogleCloudDiscoveryengineV1betaCompleteQueryResponseQuerySuggestionList;
 }
-export const GoogleCloudDiscoveryengineV1betaCompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tailMatchTriggered: S.optional(S.Boolean),
     querySuggestions: S.optional(
@@ -3303,7 +3266,7 @@ export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggesti
   | "CONTENT"
   | "RECENT_SEARCH"
   | "GOOGLE_WORKSPACE";
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpecSuggestionTypeEnum =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpecSuggestionTypeEnum =
   S.String;
 
 /** Specification of each suggestion type. */
@@ -3315,7 +3278,7 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSug
   /** Optional. Maximum number of suggestions to return for each suggestion type. */
   maxSuggestions?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       suggestionType: S.optional(
@@ -3329,7 +3292,7 @@ export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggest
 
 export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpecList =
   Array<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec>;
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpecList =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpec,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpecList>;
@@ -3341,15 +3304,12 @@ export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggesti
   | "CONTENT"
   | "RECENT_SEARCH"
   | "GOOGLE_WORKSPACE";
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnum =
-  S.String;
-
 export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList =
   Array<
     | GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnum
     | (string & {})
   >;
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList>;
 
 /** Boost applies to suggestions which match a condition. */
@@ -3359,7 +3319,7 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoo
   /** Strength of the boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the suggestions a big promotion. However, it does not necessarily mean that the top result will be a boosted suggestion. Setting to -1.0 gives the suggestions a big demotion. However, other suggestions that are relevant might still be shown. Setting to 0.0 means no boost applied. The boosting condition is ignored. */
   boost?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       condition: S.optional(S.String),
@@ -3372,7 +3332,7 @@ export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSp
 
 export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpecList =
   Array<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec>;
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpecList =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpec,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpecList>;
@@ -3382,7 +3342,7 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoo
   /** Condition boost specifications. If a suggestion matches multiple conditions in the specifications, boost values from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20. Note: Currently only support language condition boost. */
   conditionBoostSpecs?: GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpecConditionBoostSpecList;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       conditionBoostSpecs: S.optional(
@@ -3400,7 +3360,7 @@ export interface GoogleTypeLatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-export const GoogleTypeLatLng = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeLatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -3414,7 +3374,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation {
   /** Location represented by a natural language address. Will later be geocoded and converted to either a point or a polygon. */
   address?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     point: S.optional(GoogleTypeLatLng),
     address: S.optional(S.String),
@@ -3434,7 +3394,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserInfo {
   /** Optional. Input only. Precise location of the user. It is used in Custom Ranking to calculate the distance between the user and the relevant documents. */
   preciseLocation?: GoogleCloudDiscoveryengineV1betaUserInfoPreciseLocation;
 }
-export const GoogleCloudDiscoveryengineV1betaUserInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAgent: S.optional(S.String),
     userId: S.optional(S.String),
@@ -3466,23 +3426,22 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest {
   /** Optional. Information about the end user. This should be the same identifier information as UserEvent.user_info and SearchRequest.user_info. */
   userInfo?: GoogleCloudDiscoveryengineV1betaUserInfo;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      suggestionTypeSpecs: S.optional(
-        GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpecList,
-      ),
-      userPseudoId: S.optional(S.String),
-      suggestionTypes: S.optional(
-        GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList,
-      ),
-      boostSpec: S.optional(GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec),
-      includeTailSuggestions: S.optional(S.Boolean),
-      experimentIds: S.optional(StringList),
-      queryModel: S.optional(S.String),
-      query: S.optional(S.String),
-      userInfo: S.optional(GoogleCloudDiscoveryengineV1betaUserInfo),
-    }),
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    suggestionTypeSpecs: S.optional(
+      GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypeSpecList,
+    ),
+    userPseudoId: S.optional(S.String),
+    suggestionTypes: S.optional(
+      GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestSuggestionTypesItemEnumList,
+    ),
+    boostSpec: S.optional(GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequestBoostSpec),
+    includeTailSuggestions: S.optional(S.Boolean),
+    experimentIds: S.optional(StringList),
+    queryModel: S.optional(S.String),
+    query: S.optional(S.String),
+    userInfo: S.optional(GoogleCloudDiscoveryengineV1betaUserInfo),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest>;
@@ -3493,7 +3452,7 @@ export interface CompleteQueryProjectsLocationsCollectionsDataStoresCompletionCo
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest;
 }
-export const CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest =
+const CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       completionConfig: S.String.pipe(T.Label()),
@@ -3515,7 +3474,7 @@ export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContent
   | "CONTENT_TYPE_UNSPECIFIED"
   | "GOOGLE_WORKSPACE"
   | "THIRD_PARTY";
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestionContentTypeEnum =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestionContentTypeEnum =
   S.String;
 
 /** Principal identifier of a user or a group. */
@@ -3527,7 +3486,7 @@ export interface GoogleCloudDiscoveryengineV1betaPrincipal {
   /** User identifier. For Google Workspace user account, user_id should be the google workspace user email. For non-google identity provider user account, user_id is the mapped user identifier configured during the workforcepool config. */
   userId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaPrincipal = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaPrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalEntityId: S.optional(S.String),
     groupId: S.optional(S.String),
@@ -3539,7 +3498,7 @@ export const GoogleCloudDiscoveryengineV1betaPrincipal = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDiscoveryengineV1betaPrincipalList =
   Array<GoogleCloudDiscoveryengineV1betaPrincipal>;
-export const GoogleCloudDiscoveryengineV1betaPrincipalList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaPrincipalList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaPrincipal,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaPrincipalList>;
 
@@ -3550,29 +3509,28 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestrictio
   /** All users within the Identity Provider. */
   idpWide?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       principals: S.optional(GoogleCloudDiscoveryengineV1betaPrincipalList),
       idpWide: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction>;
 
 export type GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestrictionList =
   Array<GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction>;
-export const GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestrictionList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestrictionList>;
+const GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestrictionList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestriction,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestrictionList>;
 
 /** ACL Information of the Document. */
 export interface GoogleCloudDiscoveryengineV1betaDocumentAclInfo {
   /** Readers of the document. */
   readers?: GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestrictionList;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentAclInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDocumentAclInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readers: S.optional(GoogleCloudDiscoveryengineV1betaDocumentAclInfoAccessRestrictionList),
   }),
@@ -3589,7 +3547,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentContent {
   /** The content represented as a stream of bytes. The maximum length is 1,000,000 bytes (1 MB / ~0.95 MiB). Note: As with all `bytes` fields, this field is represented as pure binary in Protocol Buffers and base64-encoded string in JSON. For example, `abc123!?$*&()'-=@~` should be represented as `YWJjMTIzIT8kKiYoKSctPUB+` in JSON. See https://developers.google.com/protocol-buffers/docs/proto3#json. */
   rawBytes?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentContent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDocumentContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     uri: S.optional(S.String),
@@ -3600,7 +3558,7 @@ export const GoogleCloudDiscoveryengineV1betaDocumentContent = /*@__PURE__*/ S.s
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDocumentContent>;
 
 export type GoogleRpcStatusList = Array<GoogleRpcStatus>;
-export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
+const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
 
@@ -3613,7 +3571,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentIndexStatus {
   /** A sample of errors encountered while indexing the document. If this field is populated, the document is not indexed due to errors. */
   errorSamples?: GoogleRpcStatusList;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDocumentIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexTime: S.optional(S.String),
     pendingMessage: S.optional(S.String),
@@ -3648,7 +3606,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocument {
   /** Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 128 characters. */
   id?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDocument = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexTime: S.optional(S.String),
     parentDocumentId: S.optional(S.String),
@@ -3683,7 +3641,7 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseCo
   /** The icon uri of the content suggestion. */
   iconUri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestion =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataStore: S.optional(S.String),
@@ -3702,7 +3660,7 @@ export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseConten
 
 export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestionList =
   Array<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestion>;
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestionList =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestion,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestionList>;
@@ -3718,7 +3676,7 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQu
   /** The suggestion for the query. */
   suggestion?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestion =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataStore: S.optional(StringList),
@@ -3732,7 +3690,7 @@ export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQueryS
 
 export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestionList =
   Array<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestion>;
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestionList =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestion,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestionList>;
@@ -3742,7 +3700,7 @@ export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonS
   | "CLOUD_IDENTITY"
   | "THIRD_PARTY_IDENTITY"
   | "GOOGLE_GROUP";
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestionPersonTypeEnum =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestionPersonTypeEnum =
   S.String;
 
 /** Suggestions as people. */
@@ -3762,7 +3720,7 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePe
   /** The destination uri of the person suggestion. */
   destinationUri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestion =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       document: S.optional(GoogleCloudDiscoveryengineV1betaDocument),
@@ -3781,7 +3739,7 @@ export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePerson
 
 export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestionList =
   Array<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestion>;
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestionList =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestion,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestionList>;
@@ -3795,7 +3753,7 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRe
   /** The time when this recent rearch happened. */
   recentSearchTime?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestion =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       score: S.optional(S.Number),
@@ -3809,7 +3767,7 @@ export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecent
 
 export type GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestionList =
   Array<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestion>;
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestionList =
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestion,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestionList>;
@@ -3827,26 +3785,25 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse {
   /** Results of the matched "recent search" suggestions. The result list is ordered and the first result is the top suggestion. */
   recentSearchSuggestions?: GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestionList;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      contentSuggestions: S.optional(
-        GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestionList,
-      ),
-      querySuggestions: S.optional(
-        GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestionList,
-      ),
-      peopleSuggestions: S.optional(
-        GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestionList,
-      ),
-      tailMatchTriggered: S.optional(S.Boolean),
-      recentSearchSuggestions: S.optional(
-        GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestionList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse>;
+const GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentSuggestions: S.optional(
+      GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseContentSuggestionList,
+    ),
+    querySuggestions: S.optional(
+      GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseQuerySuggestionList,
+    ),
+    peopleSuggestions: S.optional(
+      GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponsePersonSuggestionList,
+    ),
+    tailMatchTriggered: S.optional(S.Boolean),
+    recentSearchSuggestions: S.optional(
+      GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponseRecentSearchSuggestionList,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse>;
 
 export interface CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest {
   /** Required. The completion_config of the parent dataStore or engine resource name for which the completion is performed, such as `projects/*\/locations/global/collections/default_collection/dataStores/*\/completionConfig` `projects/*\/locations/global/collections/default_collection/engines/*\/completionConfig`. */
@@ -3854,7 +3811,7 @@ export interface CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfi
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest;
 }
-export const CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest =
+const CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       completionConfig: S.String.pipe(T.Label()),
@@ -3884,7 +3841,7 @@ export interface CompleteQueryProjectsLocationsDataStoresRequest {
   /** Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This field should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   userPseudoId?: string;
 }
-export const CompleteQueryProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteQueryProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeTailSuggestions: S.optional(S.Boolean.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -3908,8 +3865,8 @@ export interface CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryRequest;
 }
-export const CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       completionConfig: S.String.pipe(T.Label()),
       body: S.optional(
@@ -3922,16 +3879,16 @@ export const CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest",
-  }) as any as S.Schema<CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest>;
+).annotate({
+  identifier: "CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest",
+}) as any as S.Schema<CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest>;
 
 /** Specification of the model. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec {
   /** The model version used to generate the summary. Supported values are: * `stable`: string. Default value when no value is specified. Uses a generally available, fine-tuned model. For more information, see [Answer generation model versions and lifecycle](https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models). * `preview`: string. (Public preview) Uses a preview model. For more information, see [Answer generation model versions and lifecycle](https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models). */
   version?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       version: S.optional(S.String),
@@ -3946,7 +3903,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
   /** Text at the beginning of the prompt that instructs the assistant. Examples are available in the user guide. */
   preamble?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       preamble: S.optional(S.String),
@@ -3961,9 +3918,6 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummar
   | "ALL_AVAILABLE_SOURCES"
   | "CORPUS_IMAGE_ONLY"
   | "FIGURE_GENERATION_ONLY";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpecImageSourceEnum =
-  S.String;
-
 /** Multimodal specification: Will return an image from specified source. If multiple sources are specified, the pick is a quality based decision. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec {
   /** Optional. Source of image returned in the answer. */
@@ -3971,7 +3925,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
     | GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpecImageSourceEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestAnswerGenerationSpecMultimodalSpec as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecMultiModalSpec>;
 
 /** A specification for configuring a summary returned in a search response. */
@@ -3999,7 +3953,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
   /** Optional. Specifies whether to filter out jail-breaking queries. The default value is `false`. Google employs search-query classification to detect jail-breaking queries. No summary is returned if the search query is classified as a jail-breaking query. A user might add instructions to the query to change the tone, style, language, content of the answer, or ask the model to act as a different entity, e.g. "Reply in the tone of a competing company's CEO". If this field is set to `true`, we skip generating summaries for jail-breaking queries and return fallback messages instead. */
   ignoreJailBreakingQuery?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ignoreLowRelevantContent: S.optional(S.Boolean),
@@ -4031,7 +3985,7 @@ export interface GoogleCloudDiscoveryengineV1betaConversationContext {
   /** The current active document the user opened. It contains the document resource reference. */
   activeDocument?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaConversationContext = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaConversationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextDocuments: S.optional(StringList),
     activeDocument: S.optional(S.String),
@@ -4047,7 +4001,7 @@ export interface GoogleCloudDiscoveryengineV1betaTextInput {
   /** Conversation context of the input. */
   context?: GoogleCloudDiscoveryengineV1betaConversationContext;
 }
-export const GoogleCloudDiscoveryengineV1betaTextInput = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaTextInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: S.optional(S.String),
     context: S.optional(GoogleCloudDiscoveryengineV1betaConversationContext),
@@ -4067,7 +4021,7 @@ export interface GoogleCloudDiscoveryengineV1betaReplyReference {
   /** Anchor text end index. */
   end?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaReplyReference = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaReplyReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.Number),
     uri: S.optional(S.String),
@@ -4080,12 +4034,12 @@ export const GoogleCloudDiscoveryengineV1betaReplyReference = /*@__PURE__*/ S.su
 
 export type GoogleCloudDiscoveryengineV1betaReplyReferenceList =
   Array<GoogleCloudDiscoveryengineV1betaReplyReference>;
-export const GoogleCloudDiscoveryengineV1betaReplyReferenceList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaReplyReferenceList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaReplyReference,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaReplyReferenceList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
+const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** Safety Attribute categories and their associated confidence scores. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes {
@@ -4094,7 +4048,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttr
   /** The display names of Safety Attribute categories associated with the generated content. Order matches the Scores. */
   categories?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributes =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scores: S.optional(DoubleList),
@@ -4116,15 +4070,12 @@ export type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedR
   | "CUSTOMER_POLICY_VIOLATION"
   | "NON_SUMMARY_SEEKING_QUERY_IGNORED_V2"
   | "TIME_OUT";
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnum =
-  S.String;
-
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnumList =
   Array<
     | GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnum
     | (string & {})
   >;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnumList =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnumList =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummarySkippedReasonsItemEnumList>;
 
 /** Stores type and data of the blob. */
@@ -4134,7 +4085,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttach
   /** Output only. The media type (MIME type) of the generated data. */
   mimeType?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentBlob =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentBlob =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(S.String),
@@ -4148,7 +4099,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentA
   | "ATTRIBUTION_TYPE_UNSPECIFIED"
   | "CORPUS"
   | "GENERATED";
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentAttributionTypeEnum =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentAttributionTypeEnum =
   S.String;
 
 /** Stores binarydata attached to text answer, e.g. image, video, audio, etc. */
@@ -4160,21 +4111,21 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttach
     | GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentAttributionTypeEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       data: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentBlob),
       attributionType: S.optional(
         GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentAttributionTypeEnum,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentList =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachment,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryBlobAttachmentList>;
@@ -4188,7 +4139,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceC
   /** Page identifier. */
   pageIdentifier?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       content: S.optional(S.String),
@@ -4201,7 +4152,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunk
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentList =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContent,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentList>;
@@ -4217,44 +4168,42 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference 
   /** List of cited chunk contents derived from document content. */
   chunkContents?: GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      document: S.optional(S.String),
-      uri: S.optional(S.String),
-      title: S.optional(S.String),
-      chunkContents: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference>;
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    document: S.optional(S.String),
+    uri: S.optional(S.String),
+    title: S.optional(S.String),
+    chunkContents: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceChunkContentList,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceList>;
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReference,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryReferenceList>;
 
 /** Citation source. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource {
   /** Document reference index from SummaryWithMetadata.references. It is 0-indexed and the value will be zero if the reference_index is not set explicitly. */
   referenceIndex?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       referenceIndex: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceList =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSource,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceList>;
@@ -4268,30 +4217,28 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation {
   /** Index indicates the start of the segment, measured in bytes/unicode. */
   startIndex?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sources: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceList),
-      endIndex: S.optional(S.String),
-      startIndex: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation>;
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sources: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationSourceList),
+    endIndex: S.optional(S.String),
+    startIndex: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationList>;
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitation,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationList>;
 
 /** Citation metadata. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata {
   /** Citations for segments. */
   citations?: GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       citations: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSummaryCitationList),
@@ -4311,7 +4258,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWit
   /** Summary text with no citation information. */
   summary?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       blobAttachments: S.optional(
@@ -4338,7 +4285,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSummary {
   /** Summary with metadata information. */
   summaryWithMetadata?: GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSummary = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchResponseSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summaryText: S.optional(S.String),
     safetyAttributes: S.optional(
@@ -4364,7 +4311,7 @@ export interface GoogleCloudDiscoveryengineV1betaReply {
   /** Summary based on search results. */
   summary?: GoogleCloudDiscoveryengineV1betaSearchResponseSummary;
 }
-export const GoogleCloudDiscoveryengineV1betaReply = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaReply = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     references: S.optional(GoogleCloudDiscoveryengineV1betaReplyReferenceList),
     reply: S.optional(S.String),
@@ -4383,7 +4330,7 @@ export interface GoogleCloudDiscoveryengineV1betaConversationMessage {
   /** Output only. Message creation timestamp. */
   createTime?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaConversationMessage = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaConversationMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userInput: S.optional(GoogleCloudDiscoveryengineV1betaTextInput),
     reply: S.optional(GoogleCloudDiscoveryengineV1betaReply),
@@ -4395,7 +4342,7 @@ export const GoogleCloudDiscoveryengineV1betaConversationMessage = /*@__PURE__*/
 
 export type GoogleCloudDiscoveryengineV1betaConversationMessageList =
   Array<GoogleCloudDiscoveryengineV1betaConversationMessage>;
-export const GoogleCloudDiscoveryengineV1betaConversationMessageList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaConversationMessageList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaConversationMessage,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaConversationMessageList>;
 
@@ -4403,7 +4350,7 @@ export type GoogleCloudDiscoveryengineV1betaConversationStateEnum =
   | "STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "COMPLETED";
-export const GoogleCloudDiscoveryengineV1betaConversationStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaConversationStateEnum = S.String;
 
 /** External conversation proto definition. */
 export interface GoogleCloudDiscoveryengineV1betaConversation {
@@ -4420,7 +4367,7 @@ export interface GoogleCloudDiscoveryengineV1betaConversation {
   /** Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/dataStore/*\/conversations/*` or `projects/{project}/locations/global/collections/{collection}/engines/*\/conversations/*`. */
   name?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaConversation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaConversation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(GoogleCloudDiscoveryengineV1betaConversationMessageList),
     startTime: S.optional(S.String),
@@ -4452,20 +4399,19 @@ export interface GoogleCloudDiscoveryengineV1betaConverseConversationRequest {
   /** The resource name of the Serving Config to use. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}` If this is not set, the default serving config will be used. */
   servingConfig?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaConverseConversationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      userLabels: S.optional(StringMap),
-      summarySpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec,
-      ),
-      safeSearch: S.optional(S.Boolean),
-      conversation: S.optional(GoogleCloudDiscoveryengineV1betaConversation),
-      filter: S.optional(S.String),
-      query: S.optional(GoogleCloudDiscoveryengineV1betaTextInput),
-      boostSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec),
-      servingConfig: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaConverseConversationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userLabels: S.optional(StringMap),
+    summarySpec: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec,
+    ),
+    safeSearch: S.optional(S.Boolean),
+    conversation: S.optional(GoogleCloudDiscoveryengineV1betaConversation),
+    filter: S.optional(S.String),
+    query: S.optional(GoogleCloudDiscoveryengineV1betaTextInput),
+    boostSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec),
+    servingConfig: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaConverseConversationRequest",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaConverseConversationRequest>;
@@ -4476,8 +4422,8 @@ export interface ConverseProjectsLocationsCollectionsDataStoresConversationsRequ
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConverseConversationRequest;
 }
-export const ConverseProjectsLocationsCollectionsDataStoresConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ConverseProjectsLocationsCollectionsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
@@ -4490,13 +4436,13 @@ export const ConverseProjectsLocationsCollectionsDataStoresConversationsRequest 
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ConverseProjectsLocationsCollectionsDataStoresConversationsRequest",
-  }) as any as S.Schema<ConverseProjectsLocationsCollectionsDataStoresConversationsRequest>;
+).annotate({
+  identifier: "ConverseProjectsLocationsCollectionsDataStoresConversationsRequest",
+}) as any as S.Schema<ConverseProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaChunkList =
   Array<GoogleCloudDiscoveryengineV1betaChunk>;
-export const GoogleCloudDiscoveryengineV1betaChunkList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaChunkList = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleCloudDiscoveryengineV1betaChunk),
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaChunkList>;
 
@@ -4507,7 +4453,7 @@ export interface GoogleCloudDiscoveryengineV1betaChunkChunkMetadata {
   /** The next chunks of the current chunk. The number is controlled by SearchRequest.ContentSearchSpec.ChunkSpec.num_next_chunks. This field is only populated on SearchService.Search API. */
   nextChunks?: GoogleCloudDiscoveryengineV1betaChunkList;
 }
-export const GoogleCloudDiscoveryengineV1betaChunkChunkMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaChunkChunkMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previousChunks: S.optional(GoogleCloudDiscoveryengineV1betaChunkList),
     nextChunks: S.optional(GoogleCloudDiscoveryengineV1betaChunkList),
@@ -4527,7 +4473,7 @@ export interface GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata {
   /** Uri of the document. */
   uri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     title: S.optional(S.String),
@@ -4543,7 +4489,7 @@ export type GoogleCloudDiscoveryengineV1betaChunkStructuredContentStructureTypeE
   | "SHAREHOLDER_STRUCTURE"
   | "SIGNATURE_STRUCTURE"
   | "CHECKBOX_STRUCTURE";
-export const GoogleCloudDiscoveryengineV1betaChunkStructuredContentStructureTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaChunkStructuredContentStructureTypeEnum = S.String;
 
 /** The structured content information. */
 export interface GoogleCloudDiscoveryengineV1betaChunkStructuredContent {
@@ -4552,7 +4498,7 @@ export interface GoogleCloudDiscoveryengineV1betaChunkStructuredContent {
   /** Output only. The content of the structured content. */
   content?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaChunkStructuredContent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaChunkStructuredContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structureType: S.optional(
       GoogleCloudDiscoveryengineV1betaChunkStructuredContentStructureTypeEnum,
@@ -4570,7 +4516,7 @@ export interface GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadata {
   /** Output only. The structured content information. */
   structuredContent?: GoogleCloudDiscoveryengineV1betaChunkStructuredContent;
 }
-export const GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     structuredContent: S.optional(GoogleCloudDiscoveryengineV1betaChunkStructuredContent),
@@ -4581,7 +4527,7 @@ export const GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadata = /*@__PURE
 
 export type GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadataList =
   Array<GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadata>;
-export const GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadataList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadataList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadata,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaChunkAnnotationMetadataList>;
 
@@ -4592,7 +4538,7 @@ export interface GoogleCloudDiscoveryengineV1betaChunkPageSpan {
   /** The end page of the chunk. */
   pageEnd?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaChunkPageSpan = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaChunkPageSpan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageStart: S.optional(S.Number),
     pageEnd: S.optional(S.Number),
@@ -4626,7 +4572,7 @@ export interface GoogleCloudDiscoveryengineV1betaChunk {
   /** Page span of the chunk. */
   pageSpan?: GoogleCloudDiscoveryengineV1betaChunkPageSpan;
 }
-export const GoogleCloudDiscoveryengineV1betaChunk = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     derivedStructData: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -4648,12 +4594,9 @@ export type GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalS
   | "RETRIEVAL_SOURCE_UNSPECIFIED"
   | "KEYWORD_SEARCH"
   | "SEMANTIC_SEARCH";
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnum =
-  S.String;
-
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnum>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignalsRetrievalSourcesItemEnumList>;
 
 /** Contains a set of signals used by the relevance filter. */
@@ -4663,7 +4606,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetri
   /** Optional. Relevance score used by the filter when semantic_relevance_threshold is set. */
   semanticRelevanceScore?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       retrievalSources: S.optional(
@@ -4680,7 +4623,7 @@ export interface GoogleCloudDiscoveryengineV1betaDoubleList {
   /** Double values. */
   values?: DoubleList;
 }
-export const GoogleCloudDiscoveryengineV1betaDoubleList = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDoubleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(DoubleList),
   }),
@@ -4691,7 +4634,7 @@ export const GoogleCloudDiscoveryengineV1betaDoubleList = /*@__PURE__*/ S.suspen
 export type GoogleCloudDiscoveryengineV1betaDoubleListMap = {
   [key: string]: GoogleCloudDiscoveryengineV1betaDoubleList | undefined;
 };
-export const GoogleCloudDiscoveryengineV1betaDoubleListMap = /*@__PURE__*/ S.Record(
+const GoogleCloudDiscoveryengineV1betaDoubleListMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudDiscoveryengineV1betaDoubleList,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDoubleListMap>;
@@ -4703,7 +4646,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankS
   /** Optional. Float value representing the ranking signal (e.g. 1.25 for BM25). */
   value?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignal =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignal =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
@@ -4715,7 +4658,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSigna
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignalList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignal>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignalList =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignalList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignal,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignalsCustomSignalList>;
@@ -4743,7 +4686,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankS
   /** Optional. A list of precomputed expression results for a given document, in the same order as requested in `SearchRequest.custom_ranking_params.expressions_to_precompute`. */
   precomputedExpressionValues?: DoubleList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals =
+const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pctrRank: S.optional(S.Number),
@@ -4778,27 +4721,24 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult {
   /** Optional. A set of ranking signals associated with the result. */
   rankSignals?: GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      chunk: S.optional(GoogleCloudDiscoveryengineV1betaChunk),
-      document: S.optional(GoogleCloudDiscoveryengineV1betaDocument),
-      retrievalSignals: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals,
-      ),
-      modelScores: S.optional(GoogleCloudDiscoveryengineV1betaDoubleListMap),
-      rankSignals: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    chunk: S.optional(GoogleCloudDiscoveryengineV1betaChunk),
+    document: S.optional(GoogleCloudDiscoveryengineV1betaDocument),
+    retrievalSignals: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRetrievalSignals,
+    ),
+    modelScores: S.optional(GoogleCloudDiscoveryengineV1betaDoubleListMap),
+    rankSignals: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultRankSignals),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList>;
 
@@ -4813,14 +4753,13 @@ export interface GoogleCloudDiscoveryengineV1betaConverseConversationResponse {
   /** Search Results. */
   searchResults?: GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList;
 }
-export const GoogleCloudDiscoveryengineV1betaConverseConversationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      reply: S.optional(GoogleCloudDiscoveryengineV1betaReply),
-      conversation: S.optional(GoogleCloudDiscoveryengineV1betaConversation),
-      relatedQuestions: S.optional(StringList),
-      searchResults: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList),
-    }),
+const GoogleCloudDiscoveryengineV1betaConverseConversationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reply: S.optional(GoogleCloudDiscoveryengineV1betaReply),
+    conversation: S.optional(GoogleCloudDiscoveryengineV1betaConversation),
+    relatedQuestions: S.optional(StringList),
+    searchResults: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaConverseConversationResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaConverseConversationResponse>;
@@ -4831,8 +4770,8 @@ export interface ConverseProjectsLocationsCollectionsEnginesConversationsRequest
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConverseConversationRequest;
 }
-export const ConverseProjectsLocationsCollectionsEnginesConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ConverseProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
@@ -4845,9 +4784,9 @@ export const ConverseProjectsLocationsCollectionsEnginesConversationsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ConverseProjectsLocationsCollectionsEnginesConversationsRequest",
-  }) as any as S.Schema<ConverseProjectsLocationsCollectionsEnginesConversationsRequest>;
+).annotate({
+  identifier: "ConverseProjectsLocationsCollectionsEnginesConversationsRequest",
+}) as any as S.Schema<ConverseProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export interface ConverseProjectsLocationsDataStoresConversationsRequest {
   /** Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`. Use `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-` to activate auto session mode, which automatically creates a new conversation inside a ConverseConversation session. */
@@ -4855,7 +4794,7 @@ export interface ConverseProjectsLocationsDataStoresConversationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConverseConversationRequest;
 }
-export const ConverseProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ConverseProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -4876,8 +4815,7 @@ export type GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingCon
   | "MODE_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-export const GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfigModeEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfigModeEnum = S.String;
 
 /** Configuration for Natural Language Query Understanding. */
 export interface GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig {
@@ -4886,7 +4824,7 @@ export interface GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandi
     | GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfigModeEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig =
+const GoogleCloudDiscoveryengineV1betaNaturalLanguageQueryUnderstandingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mode: S.optional(
@@ -4908,7 +4846,7 @@ export type GoogleCloudDiscoveryengineV1betaWorkspaceConfigTypeEnum =
   | "GOOGLE_KEEP"
   | "GOOGLE_PEOPLE"
   | "GOOGLE_WORKSPACE";
-export const GoogleCloudDiscoveryengineV1betaWorkspaceConfigTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaWorkspaceConfigTypeEnum = S.String;
 
 /** Config to store data store type configuration for workspace data */
 export interface GoogleCloudDiscoveryengineV1betaWorkspaceConfig {
@@ -4921,7 +4859,7 @@ export interface GoogleCloudDiscoveryengineV1betaWorkspaceConfig {
   /** Optional. The super admin service account for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion. */
   superAdminServiceAccount?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaWorkspaceConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaWorkspaceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     superAdminEmailAddress: S.optional(S.String),
     type: S.optional(GoogleCloudDiscoveryengineV1betaWorkspaceConfigTypeEnum),
@@ -4941,7 +4879,7 @@ export interface GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig {
   /** Optional. Names of the Group resources to use as a basis for the initial patient filter, in format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`. The filter group must be a FHIR resource name of type Group, and the filter will be constructed from the direct members of the group which are Patient resources. */
   initialFilterGroups?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableConfigurableSchema: S.optional(S.Boolean),
     enableStaticIndexingForBatchIngestion: S.optional(S.Boolean),
@@ -4956,7 +4894,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDa
   /** Optional. Specifies the resource name of the Sensitive Data Protection content policy. */
   policy?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy =
+const GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       policy: S.optional(S.String),
@@ -4970,7 +4908,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataProtectionPolicy {
   /** Optional. Specifies the sensitive data protection policy for the connector source. */
   sensitiveDataProtectionPolicy?: GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy;
 }
-export const GoogleCloudDiscoveryengineV1betaDataProtectionPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDataProtectionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sensitiveDataProtectionPolicy: S.optional(
       GoogleCloudDiscoveryengineV1betaDataProtectionPolicySensitiveDataProtectionPolicy,
@@ -4987,12 +4925,11 @@ export interface GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig {
   /** If set true, initial indexing is disabled for the DataStore. */
   disableInitialIndex?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disableAutomaticRefresh: S.optional(S.Boolean),
-      disableInitialIndex: S.optional(S.Boolean),
-    }),
+const GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disableAutomaticRefresh: S.optional(S.Boolean),
+    disableInitialIndex: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAdvancedSiteSearchConfig>;
@@ -5004,12 +4941,10 @@ export type GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnum =
   | "SOLUTION_TYPE_CHAT"
   | "SOLUTION_TYPE_GENERATIVE_CHAT"
   | "SOLUTION_TYPE_AI_MODE";
-export const GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnum = S.String;
-
 export type GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnumList = Array<
   GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnum | (string & {})
 >;
-export const GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnumList =
+const GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnumList =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreSolutionTypesItemEnumList>;
 
 export type GoogleCloudDiscoveryengineV1betaDataStoreContentConfigEnum =
@@ -5018,7 +4953,7 @@ export type GoogleCloudDiscoveryengineV1betaDataStoreContentConfigEnum =
   | "CONTENT_REQUIRED"
   | "PUBLIC_WEBSITE"
   | "GOOGLE_WORKSPACE";
-export const GoogleCloudDiscoveryengineV1betaDataStoreContentConfigEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaDataStoreContentConfigEnum = S.String;
 
 /** Stores information for third party applicationOAuth. */
 export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig {
@@ -5027,7 +4962,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigT
   /** Optional. The instance name identifying the 3P app, e.g., "vaissptbots-my". This is different from the instance_uri which is the full URL of the 3P app e.g., "https://vaissptbots-my.sharepoint.com". */
   instanceName?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig =
+const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       appName: S.optional(S.String),
@@ -5043,7 +4978,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigN
   /** Required. Search config name. Format: projects/*\/locations/global/notebookLmSearchConfigs/* */
   searchConfig?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig =
+const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       searchConfig: S.optional(S.String),
@@ -5057,7 +4992,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigA
   /** Optional. AlloyDb AI NL config id, i.e. the value that was used for calling `SELECT alloydb_ai_nl.g_create_configuration(...)`. Can be empty. */
   nlConfigId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig =
+const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nlConfigId: S.optional(S.String),
@@ -5071,7 +5006,7 @@ export type GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyD
   | "AUTH_MODE_UNSPECIFIED"
   | "AUTH_MODE_SERVICE_ACCOUNT"
   | "AUTH_MODE_END_USER_ACCOUNT";
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfigAuthModeEnum =
+const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfigAuthModeEnum =
   S.String;
 
 /** Configuration for connecting to AlloyDB. */
@@ -5091,7 +5026,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigA
   /** Optional. If true, enable PSVS for AlloyDB. */
   enablePsvs?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig =
+const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       instance: S.optional(S.String),
@@ -5117,7 +5052,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigA
   /** Required. Configuration for connecting to AlloyDB. */
   alloydbConnectionConfig?: GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig =
+const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       alloydbAiNlConfig: S.optional(
@@ -5141,35 +5076,34 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig 
   /** AlloyDB config. If set, this DataStore is connected to AlloyDB. */
   alloyDbConfig?: GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      thirdPartyOauthConfig: S.optional(
-        GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig,
-      ),
-      notebooklmConfig: S.optional(
-        GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig,
-      ),
-      alloyDbConfig: S.optional(
-        GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig>;
+const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    thirdPartyOauthConfig: S.optional(
+      GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigThirdPartyOauthConfig,
+    ),
+    notebooklmConfig: S.optional(
+      GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigNotebooklmConfig,
+    ),
+    alloyDbConfig: S.optional(
+      GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfig>;
 
 export type GoogleCloudDiscoveryengineV1betaDataStoreConfigurableBillingApproachEnum =
   | "CONFIGURABLE_BILLING_APPROACH_UNSPECIFIED"
   | "CONFIGURABLE_SUBSCRIPTION_INDEXING_CORE"
   | "CONFIGURABLE_CONSUMPTION_EMBEDDING";
-export const GoogleCloudDiscoveryengineV1betaDataStoreConfigurableBillingApproachEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaDataStoreConfigurableBillingApproachEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaDataStoreIndustryVerticalEnum =
   | "INDUSTRY_VERTICAL_UNSPECIFIED"
   | "GENERIC"
   | "MEDIA"
   | "HEALTHCARE_FHIR";
-export const GoogleCloudDiscoveryengineV1betaDataStoreIndustryVerticalEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaDataStoreIndustryVerticalEnum = S.String;
 
 /** Estimation of data size per data store. */
 export interface GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation {
@@ -5186,16 +5120,15 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation {
   /** Data size for websites in terms of bytes. */
   websiteDataSize?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      structuredDataSize: S.optional(S.String),
-      unstructuredDataUpdateTime: S.optional(S.String),
-      unstructuredDataSize: S.optional(S.String),
-      websiteDataUpdateTime: S.optional(S.String),
-      structuredDataUpdateTime: S.optional(S.String),
-      websiteDataSize: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    structuredDataSize: S.optional(S.String),
+    unstructuredDataUpdateTime: S.optional(S.String),
+    unstructuredDataSize: S.optional(S.String),
+    websiteDataUpdateTime: S.optional(S.String),
+    structuredDataUpdateTime: S.optional(S.String),
+    websiteDataSize: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreBillingEstimation>;
@@ -5205,7 +5138,7 @@ export interface GoogleCloudDiscoveryengineV1betaSingleRegionKey {
   /** Required. Single-regional kms key resource name which will be used to encrypt resources `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`. */
   kmsKey?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSingleRegionKey = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSingleRegionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKey: S.optional(S.String),
   }),
@@ -5215,7 +5148,7 @@ export const GoogleCloudDiscoveryengineV1betaSingleRegionKey = /*@__PURE__*/ S.s
 
 export type GoogleCloudDiscoveryengineV1betaSingleRegionKeyList =
   Array<GoogleCloudDiscoveryengineV1betaSingleRegionKey>;
-export const GoogleCloudDiscoveryengineV1betaSingleRegionKeyList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSingleRegionKeyList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSingleRegionKey,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSingleRegionKeyList>;
 
@@ -5224,7 +5157,7 @@ export type GoogleCloudDiscoveryengineV1betaCmekConfigNotebooklmStateEnum =
   | "NOTEBOOK_LM_NOT_READY"
   | "NOTEBOOK_LM_READY"
   | "NOTEBOOK_LM_NOT_ENABLED";
-export const GoogleCloudDiscoveryengineV1betaCmekConfigNotebooklmStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaCmekConfigNotebooklmStateEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaCmekConfigStateEnum =
   | "STATE_UNSPECIFIED"
@@ -5237,7 +5170,7 @@ export type GoogleCloudDiscoveryengineV1betaCmekConfigStateEnum =
   | "ACTIVE_ROTATING"
   | "DELETED"
   | "EXPIRED";
-export const GoogleCloudDiscoveryengineV1betaCmekConfigStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaCmekConfigStateEnum = S.String;
 
 /** Configurations used to enable CMEK data encryption with Cloud KMS keys. */
 export interface GoogleCloudDiscoveryengineV1betaCmekConfig {
@@ -5258,7 +5191,7 @@ export interface GoogleCloudDiscoveryengineV1betaCmekConfig {
   /** Output only. The states of the CmekConfig. */
   state?: GoogleCloudDiscoveryengineV1betaCmekConfigStateEnum | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaCmekConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCmekConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastRotationTimestampMicros: S.optional(S.String),
     kmsKeyVersion: S.optional(S.String),
@@ -5284,7 +5217,7 @@ export interface GoogleCloudDiscoveryengineV1betaLanguageInfo {
   /** Output only. Region part of normalized_language_code, if present. E.g.: `en-US` -> `US`, `zh-Hans-HK` -> `HK`, `en` -> ``. */
   region?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaLanguageInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaLanguageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
     language: S.optional(S.String),
@@ -5302,7 +5235,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsing
   /** If true, will use native text instead of OCR text on pages containing native text. */
   useNativeText?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig =
+const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enhancedDocumentElements: S.optional(StringList),
@@ -5316,9 +5249,6 @@ export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConf
 /** The digital parsing configurations for documents. */
 export type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 /** The layout parsing configurations for documents. */
 export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig {
   /** Optional. List of HTML ids to exclude from the parsed content. */
@@ -5338,7 +5268,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsing
   /** Optional. If true, the processed document will be made available for the GetProcessedDocument API. */
   enableGetProcessedDocument?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig =
+const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       excludeHtmlIds: S.optional(StringList),
@@ -5364,7 +5294,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsing
   /** Configurations applied to layout parser. */
   layoutParsingConfig?: GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig =
+const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       ocrParsingConfig: S.optional(
@@ -5384,7 +5314,7 @@ export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConf
 export type GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigMap = {
   [key: string]: GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig | undefined;
 };
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigMap =
+const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigMap =
   /*@__PURE__*/ S.Record(
     S.String,
     GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig,
@@ -5397,7 +5327,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkin
   /** The token size limit for each chunk. Supported values: 100-500 (inclusive). Default value: 500. */
   chunkSize?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig =
+const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       includeAncestorHeadings: S.optional(S.Boolean),
@@ -5413,7 +5343,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkin
   /** Configuration for the layout based chunking. */
   layoutBasedChunkingConfig?: GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig =
+const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       layoutBasedChunkingConfig: S.optional(
@@ -5435,20 +5365,19 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig {
   /** The full resource name of the Document Processing Config. Format: `projects/*\/locations/*\/collections/*\/dataStores/*\/documentProcessingConfig`. */
   name?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      defaultParsingConfig: S.optional(
-        GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig,
-      ),
-      parsingConfigOverrides: S.optional(
-        GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigMap,
-      ),
-      chunkingConfig: S.optional(
-        GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig,
-      ),
-      name: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultParsingConfig: S.optional(
+      GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig,
+    ),
+    parsingConfigOverrides: S.optional(
+      GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigMap,
+    ),
+    chunkingConfig: S.optional(
+      GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig,
+    ),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig>;
@@ -5462,7 +5391,7 @@ export interface GoogleCloudDiscoveryengineV1betaSchema {
   /** The structured representation of the schema. */
   structSchema?: DocumentMap;
 }
-export const GoogleCloudDiscoveryengineV1betaSchema = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonSchema: S.optional(S.String),
     name: S.optional(S.String),
@@ -5477,14 +5406,14 @@ export interface GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore
   /** Optional. If set true, the DataStore will not be available for serving search requests. */
   disabledForServing?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       disabledForServing: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore>;
 
 /** DataStore captures global settings and configs at the DataStore level. */
 export interface GoogleCloudDiscoveryengineV1betaDataStore {
@@ -5541,7 +5470,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStore {
   /** Optional. Stores serving config at DataStore level. */
   servingConfigDataStore?: GoogleCloudDiscoveryengineV1betaDataStoreServingConfigDataStore;
 }
-export const GoogleCloudDiscoveryengineV1betaDataStore = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDataStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
     isInfobotFaqDataStore: S.optional(S.Boolean),
@@ -5597,7 +5526,7 @@ export interface CreateProjectsLocationsCollectionsDataStoresRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDataStore;
 }
-export const CreateProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skipDefaultSchemaCreation: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5625,7 +5554,7 @@ export interface CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRe
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDocument;
 }
-export const CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
+const CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -5646,12 +5575,12 @@ export type GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnum =
   | "SEARCH_USE_CASE_UNSPECIFIED"
   | "SEARCH_USE_CASE_SEARCH"
   | "SEARCH_USE_CASE_BROWSE";
-export const GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnumList = Array<
   GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnum | (string & {})
 >;
-export const GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnumList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnumList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnum,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnumList>;
 
@@ -5662,7 +5591,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlFilterAction {
   /** Required. Specifies which data store's documents can be filtered by this control. Full data store name e.g. projects/123/locations/global/collections/default_collection/dataStores/default_data_store */
   dataStore?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaControlFilterAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaControlFilterAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     dataStore: S.optional(S.String),
@@ -5678,7 +5607,7 @@ export type GoogleCloudDiscoveryengineV1betaControlSolutionTypeEnum =
   | "SOLUTION_TYPE_CHAT"
   | "SOLUTION_TYPE_GENERATIVE_CHAT"
   | "SOLUTION_TYPE_AI_MODE";
-export const GoogleCloudDiscoveryengineV1betaControlSolutionTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaControlSolutionTypeEnum = S.String;
 
 /** Used for time-dependent conditions. */
 export interface GoogleCloudDiscoveryengineV1betaConditionTimeRange {
@@ -5687,7 +5616,7 @@ export interface GoogleCloudDiscoveryengineV1betaConditionTimeRange {
   /** Start of time range. Range is inclusive. */
   startTime?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaConditionTimeRange = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaConditionTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -5698,7 +5627,7 @@ export const GoogleCloudDiscoveryengineV1betaConditionTimeRange = /*@__PURE__*/ 
 
 export type GoogleCloudDiscoveryengineV1betaConditionTimeRangeList =
   Array<GoogleCloudDiscoveryengineV1betaConditionTimeRange>;
-export const GoogleCloudDiscoveryengineV1betaConditionTimeRangeList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaConditionTimeRangeList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaConditionTimeRange,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaConditionTimeRangeList>;
 
@@ -5709,7 +5638,7 @@ export interface GoogleCloudDiscoveryengineV1betaConditionQueryTerm {
   /** Whether the search query needs to exactly match the query term. */
   fullMatch?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaConditionQueryTerm = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaConditionQueryTerm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     fullMatch: S.optional(S.Boolean),
@@ -5720,7 +5649,7 @@ export const GoogleCloudDiscoveryengineV1betaConditionQueryTerm = /*@__PURE__*/ 
 
 export type GoogleCloudDiscoveryengineV1betaConditionQueryTermList =
   Array<GoogleCloudDiscoveryengineV1betaConditionQueryTerm>;
-export const GoogleCloudDiscoveryengineV1betaConditionQueryTermList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaConditionQueryTermList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaConditionQueryTerm,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaConditionQueryTermList>;
 
@@ -5733,7 +5662,7 @@ export interface GoogleCloudDiscoveryengineV1betaCondition {
   /** Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. Only supported for Basic Site Search promotion serving controls. */
   queryRegex?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaCondition = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeTimeRange: S.optional(GoogleCloudDiscoveryengineV1betaConditionTimeRangeList),
     queryTerms: S.optional(GoogleCloudDiscoveryengineV1betaConditionQueryTermList),
@@ -5745,7 +5674,7 @@ export const GoogleCloudDiscoveryengineV1betaCondition = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDiscoveryengineV1betaConditionList =
   Array<GoogleCloudDiscoveryengineV1betaCondition>;
-export const GoogleCloudDiscoveryengineV1betaConditionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaConditionList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaCondition,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaConditionList>;
 
@@ -5764,7 +5693,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchLinkPromotion {
   /** Optional. The promotion thumbnail image url. */
   imageUri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchLinkPromotion = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchLinkPromotion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     uri: S.optional(S.String),
@@ -5784,7 +5713,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlPromoteAction {
   /** Required. Promotion attached to this action. */
   searchLinkPromotion?: GoogleCloudDiscoveryengineV1betaSearchLinkPromotion;
 }
-export const GoogleCloudDiscoveryengineV1betaControlPromoteAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaControlPromoteAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataStore: S.optional(S.String),
     searchLinkPromotion: S.optional(GoogleCloudDiscoveryengineV1betaSearchLinkPromotion),
@@ -5798,7 +5727,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlRedirectAction {
   /** Required. The URI to which the shopper will be redirected. Required. URI must have length equal or less than 2000 characters. Otherwise an INVALID ARGUMENT error is thrown. */
   redirectUri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaControlRedirectAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaControlRedirectAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirectUri: S.optional(S.String),
   }),
@@ -5811,7 +5740,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlSynonymsAction {
   /** Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms. Otherwise an INVALID ARGUMENT error is thrown. */
   synonyms?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaControlSynonymsAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaControlSynonymsAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     synonyms: S.optional(StringList),
   }),
@@ -5823,13 +5752,13 @@ export type GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoost
   | "ATTRIBUTE_TYPE_UNSPECIFIED"
   | "NUMERICAL"
   | "FRESHNESS";
-export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecAttributeTypeEnum =
+const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecAttributeTypeEnum =
   S.String;
 
 export type GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecInterpolationTypeEnum =
   | "INTERPOLATION_TYPE_UNSPECIFIED"
   | "LINEAR";
-export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecInterpolationTypeEnum =
+const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecInterpolationTypeEnum =
   S.String;
 
 /** The control points used to define the curve. The curve defined through these control points can only be monotonically increasing or decreasing(constant values are acceptable). */
@@ -5839,7 +5768,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolation
   /** Optional. The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the value specified above. */
   boostAmount?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint =
+const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attributeValue: S.optional(S.String),
@@ -5852,7 +5781,7 @@ export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoos
 
 export type GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPointList =
   Array<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint>;
-export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPointList =
+const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPointList>;
@@ -5872,7 +5801,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolation
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
   controlPoints?: GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPointList;
 }
-export const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec =
+const GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attributeType: S.optional(
@@ -5903,7 +5832,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlBoostAction {
   /** Required. Specifies which data store's documents can be boosted by this control. Full data store name e.g. projects/123/locations/global/collections/default_collection/dataStores/default_data_store */
   dataStore?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaControlBoostAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaControlBoostAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interpolationBoostSpec: S.optional(
       GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpec,
@@ -5942,7 +5871,7 @@ export interface GoogleCloudDiscoveryengineV1betaControl {
   /** Defines a boost-type control */
   boostAction?: GoogleCloudDiscoveryengineV1betaControlBoostAction;
 }
-export const GoogleCloudDiscoveryengineV1betaControl = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     useCases: S.optional(GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnumList),
@@ -5968,19 +5897,18 @@ export interface CreateProjectsLocationsCollectionsDataStoresControlsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaControl;
 }
-export const CreateProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      controlId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaControl.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/controls",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    controlId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/controls",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsCollectionsDataStoresControlsRequest",
 }) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresControlsRequest>;
@@ -5991,8 +5919,8 @@ export interface CreateProjectsLocationsCollectionsDataStoresConversationsReques
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConversation;
 }
-export const CreateProjectsLocationsCollectionsDataStoresConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCollectionsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDiscoveryengineV1betaConversation.pipe(T.HttpBody())),
@@ -6003,9 +5931,9 @@ export const CreateProjectsLocationsCollectionsDataStoresConversationsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCollectionsDataStoresConversationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresConversationsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsCollectionsDataStoresConversationsRequest",
+}) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export interface CreateProjectsLocationsCollectionsDataStoresSchemasRequest {
   /** Required. The parent data store resource name, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. */
@@ -6015,19 +5943,18 @@ export interface CreateProjectsLocationsCollectionsDataStoresSchemasRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSchema;
 }
-export const CreateProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      schemaId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSchema.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/schemas",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    schemaId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSchema.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/schemas",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsCollectionsDataStoresSchemasRequest",
 }) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresSchemasRequest>;
@@ -6037,7 +5964,7 @@ export interface GoogleCloudDiscoveryengineV1betaEmbeddingConfig {
   /** Full field path in the schema mapped as embedding field. */
   fieldPath?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEmbeddingConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaEmbeddingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPath: S.optional(S.String),
   }),
@@ -6052,7 +5979,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecC
   /** The number of next chunks to be returned of the current chunk. The maximum allowed value is 3. If not specified, no next chunks will be returned. */
   numNextChunks?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       numPreviousChunks: S.optional(S.Number),
@@ -6066,8 +5993,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSearch
   | "SEARCH_RESULT_MODE_UNSPECIFIED"
   | "DOCUMENTS"
   | "CHUNKS";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSearchResultModeEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSearchResultModeEnum = S.String;
 
 /** A specification for configuring snippets in a search response. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec {
@@ -6078,7 +6004,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecS
   /** If `true`, then return snippet. If no snippet can be generated, we return "No snippet is available for this page." A `snippet_status` with `SUCCESS` or `NO_SNIPPET_AVAILABLE` will also be returned. */
   returnSnippet?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       maxSnippetCount: S.optional(S.Number),
@@ -6102,7 +6028,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecE
   /** Specifies whether to also include the adjacent from each selected segments. Return at most `num_previous_segments` segments before each selected segments. */
   numPreviousSegments?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       maxExtractiveSegmentCount: S.optional(S.Number),
@@ -6131,39 +6057,35 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec 
   /** If there is no extractive_content_spec provided, there will be no extractive answer in the search response. */
   extractiveContentSpec?: GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      chunkSpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec,
-      ),
-      summarySpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec,
-      ),
-      searchResultMode: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSearchResultModeEnum,
-      ),
-      snippetSpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec,
-      ),
-      extractiveContentSpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec>;
+const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    chunkSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec),
+    summarySpec: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec,
+    ),
+    searchResultMode: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSearchResultModeEnum,
+    ),
+    snippetSpec: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec,
+    ),
+    extractiveContentSpec: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec>;
 
 /** Specifies the configurations needed for Generic Discovery.Currently we support: * `content_search_spec`: configuration for generic content search. */
 export interface GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig {
   /** Specifies the expected behavior of content search. Only valid for content-search enabled data store. */
   contentSearchSpec?: GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contentSearchSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec),
-    }),
+const GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentSearchSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig>;
@@ -6187,7 +6109,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerGenerationSpecUserDefined
   /** Optional. The seed value to be used for the user defined classifier. */
   seed?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerGenerationSpecUserDefinedClassifierSpec =
+const GoogleCloudDiscoveryengineV1betaAnswerGenerationSpecUserDefinedClassifierSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       modelId: S.optional(S.String),
@@ -6208,7 +6130,7 @@ export interface GoogleCloudDiscoveryengineV1betaAnswerGenerationSpec {
   /** Optional. The specification for user specified classifier spec. */
   userDefinedClassifierSpec?: GoogleCloudDiscoveryengineV1betaAnswerGenerationSpecUserDefinedClassifierSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaAnswerGenerationSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAnswerGenerationSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userDefinedClassifierSpec: S.optional(
       GoogleCloudDiscoveryengineV1betaAnswerGenerationSpecUserDefinedClassifierSpec,
@@ -6231,15 +6153,14 @@ export interface GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig {
   /** Specifies the content watched percentage threshold for demotion. Threshold value must be between [0, 1.0] inclusive. */
   contentWatchedPercentageThreshold?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      contentFreshnessCutoffDays: S.optional(S.Number),
-      contentWatchedSecondsThreshold: S.optional(S.Number),
-      demoteContentWatchedPastDays: S.optional(S.Number),
-      demotionEventType: S.optional(S.String),
-      contentWatchedPercentageThreshold: S.optional(S.Number),
-    }),
+const GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentFreshnessCutoffDays: S.optional(S.Number),
+    contentWatchedSecondsThreshold: S.optional(S.Number),
+    demoteContentWatchedPastDays: S.optional(S.Number),
+    demotionEventType: S.optional(S.String),
+    contentWatchedPercentageThreshold: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig>;
@@ -6248,21 +6169,21 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpecMode
   | "MODE_UNSPECIFIED"
   | "AUTO"
   | "DISABLED";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpecModeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpecModeEnum = S.String;
 
 /** The specification for personalization. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec {
   /** The personalization mode of the search request. Defaults to Mode.AUTO. */
   mode?: GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpecModeEnum | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       mode: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpecModeEnum),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec>;
 
 export type GoogleCloudDiscoveryengineV1betaServingConfigSolutionTypeEnum =
   | "SOLUTION_TYPE_UNSPECIFIED"
@@ -6271,7 +6192,7 @@ export type GoogleCloudDiscoveryengineV1betaServingConfigSolutionTypeEnum =
   | "SOLUTION_TYPE_CHAT"
   | "SOLUTION_TYPE_GENERATIVE_CHAT"
   | "SOLUTION_TYPE_AI_MODE";
-export const GoogleCloudDiscoveryengineV1betaServingConfigSolutionTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaServingConfigSolutionTypeEnum = S.String;
 
 /** Configures metadata that is used to generate serving time results (e.g. search results or recommendation predictions). The ServingConfig is passed in the search and predict request and generates results. */
 export interface GoogleCloudDiscoveryengineV1betaServingConfig {
@@ -6320,7 +6241,7 @@ export interface GoogleCloudDiscoveryengineV1betaServingConfig {
   /** Condition replacement specifications. Applied according to the order in the list. A previously replaced term can not be re-replaced. Maximum number of specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH. */
   replacementControlIds?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaServingConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaServingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boostControlIds: S.optional(StringList),
     ignoreControlIds: S.optional(StringList),
@@ -6359,8 +6280,8 @@ export interface CreateProjectsLocationsCollectionsDataStoresServingConfigsReque
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaServingConfig;
 }
-export const CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       servingConfigId: S.optional(S.String.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -6372,9 +6293,9 @@ export const CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+}) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export interface CreateProjectsLocationsCollectionsDataStoresSessionsRequest {
   /** Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` */
@@ -6384,19 +6305,18 @@ export interface CreateProjectsLocationsCollectionsDataStoresSessionsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSession;
 }
-export const CreateProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      sessionId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSession.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/sessions",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    sessionId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSession.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/sessions",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsCollectionsDataStoresSessionsRequest",
 }) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresSessionsRequest>;
@@ -6410,7 +6330,7 @@ export interface GoogleCloudDiscoveryengineV1betaSitemap {
   /** Output only. The fully qualified resource name of the sitemap. `projects/*\/locations/*\/collections/*\/dataStores/*\/siteSearchEngine/sitemaps/*` The `sitemap_id` suffix is system-generated. */
   name?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSitemap = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSitemap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     uri: S.optional(S.String),
@@ -6426,7 +6346,7 @@ export interface CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSit
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSitemap;
 }
-export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest =
+const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -6448,7 +6368,7 @@ export interface CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTar
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaTargetSite;
 }
-export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
+const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -6468,14 +6388,14 @@ export type GoogleCloudDiscoveryengineV1betaSessionConfigSessionManagementPolicy
   | "SESSION_MANAGEMENT_POLICY_UNSPECIFIED"
   | "NOT_MANAGED"
   | "VERTEX_AI_MANAGED";
-export const GoogleCloudDiscoveryengineV1betaSessionConfigSessionManagementPolicyEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSessionConfigSessionManagementPolicyEnum = S.String;
 
 /** Defines the TTL for sessions. */
 export interface GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl {
   /** Defines the number of days for session TTL. */
   days?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     days: S.optional(S.Number),
   }),
@@ -6492,7 +6412,7 @@ export interface GoogleCloudDiscoveryengineV1betaSessionConfig {
   /** Optional. The TTL for the session. If unset, the default value is 60 days. */
   sessionTtl?: GoogleCloudDiscoveryengineV1betaSessionConfigSessionTtl;
 }
-export const GoogleCloudDiscoveryengineV1betaSessionConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSessionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionManagementPolicy: S.optional(
       GoogleCloudDiscoveryengineV1betaSessionConfigSessionManagementPolicyEnum,
@@ -6507,7 +6427,7 @@ export type GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnum =
   | "MODEL_STATE_UNSPECIFIED"
   | "MODEL_ENABLED"
   | "MODEL_DISABLED";
-export const GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnumMap = {
   [key: string]:
@@ -6515,30 +6435,29 @@ export type GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnumMap = {
     | (string & {})
     | undefined;
 };
-export const GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnumMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnum,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnumMap>;
+const GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnumMap = /*@__PURE__*/ S.Record(
+  S.String,
+  GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnum,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineModelConfigsValueEnumMap>;
 
 export type GoogleCloudDiscoveryengineV1betaEngineAppTypeEnum =
   | "APP_TYPE_UNSPECIFIED"
   | "APP_TYPE_INTRANET";
-export const GoogleCloudDiscoveryengineV1betaEngineAppTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEngineAppTypeEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaEngineIndustryVerticalEnum =
   | "INDUSTRY_VERTICAL_UNSPECIFIED"
   | "GENERIC"
   | "MEDIA"
   | "HEALTHCARE_FHIR";
-export const GoogleCloudDiscoveryengineV1betaEngineIndustryVerticalEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEngineIndustryVerticalEnum = S.String;
 
 /** Reference to an Agent Gateway resource. */
 export interface GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference {
   /** Required. Immutable. The resource name of the agent gateway. Expected format: `projects/{project_number}/locations/{location}/agentGateways/{agent_gateway}`. */
   name?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference =
+const GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
@@ -6552,7 +6471,7 @@ export interface GoogleCloudDiscoveryengineV1betaAgentGatewaySetting {
   /** Optional. The default egress agent gateway to use, when this setting is applied to a Gemini Enterprise resource. The deployment mode must be GOOGLE_MANAGED, and the governed access path must be AGENT_TO_ANYWHERE. */
   defaultEgressAgentGateway?: GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference;
 }
-export const GoogleCloudDiscoveryengineV1betaAgentGatewaySetting = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAgentGatewaySetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultEgressAgentGateway: S.optional(
       GoogleCloudDiscoveryengineV1betaAgentGatewaySettingAgentGatewayReference,
@@ -6566,7 +6485,7 @@ export type GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnum =
   | "FEATURE_STATE_UNSPECIFIED"
   | "FEATURE_STATE_ON"
   | "FEATURE_STATE_OFF";
-export const GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnumMap = {
   [key: string]:
@@ -6574,7 +6493,7 @@ export type GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnumMap = {
     | (string & {})
     | undefined;
 };
-export const GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnumMap = /*@__PURE__*/ S.Record(
+const GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnumMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnum,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineFeaturesValueEnumMap>;
@@ -6585,25 +6504,22 @@ export type GoogleCloudDiscoveryengineV1betaEngineMarketplaceAgentVisibilityEnum
   | "SHOW_AGENTS_ALREADY_INTEGRATED"
   | "SHOW_AGENTS_ALREADY_PURCHASED"
   | "SHOW_ALL_AGENTS";
-export const GoogleCloudDiscoveryengineV1betaEngineMarketplaceAgentVisibilityEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEngineMarketplaceAgentVisibilityEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierEnum =
   | "SEARCH_TIER_UNSPECIFIED"
   | "SEARCH_TIER_STANDARD"
   | "SEARCH_TIER_ENTERPRISE";
-export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnum =
   | "SEARCH_ADD_ON_UNSPECIFIED"
   | "SEARCH_ADD_ON_LLM";
-export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnum =
-  S.String;
-
 export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList =
   Array<
     GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnum | (string & {})
   >;
-export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList =
+const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList =
   GoogleCloudDiscoveryengineV1betaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpecTypesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList>;
 
 export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigRequiredSubscriptionTierEnum =
@@ -6623,7 +6539,7 @@ export type GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigRequiredSubs
   | "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
   | "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
   | "SUBSCRIPTION_TIER_EDU_GOV_EMERGING";
-export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigRequiredSubscriptionTierEnum =
+const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigRequiredSubscriptionTierEnum =
   S.String;
 
 /** Configurations for a Search Engine. */
@@ -6639,19 +6555,16 @@ export interface GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig {
     | GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigRequiredSubscriptionTierEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      searchTier: S.optional(
-        GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierEnum,
-      ),
-      searchAddOns: S.optional(
-        GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList,
-      ),
-      requiredSubscriptionTier: S.optional(
-        GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigRequiredSubscriptionTierEnum,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    searchTier: S.optional(GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchTierEnum),
+    searchAddOns: S.optional(
+      GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigSearchAddOnsItemEnumList,
+    ),
+    requiredSubscriptionTier: S.optional(
+      GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfigRequiredSubscriptionTierEnum,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig>;
@@ -6661,11 +6574,10 @@ export interface GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata {
   /** The resource name of a Dialogflow agent, that this Chat Engine refers to. Format: `projects//locations//agents/`. */
   dialogflowAgent?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dialogflowAgent: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dialogflowAgent: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata>;
@@ -6681,7 +6593,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatu
   /** Whether to disable the private KG auto complete for the engine. Defaults to false if not specified. */
   disablePrivateKgAutoComplete?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig =
+const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       disablePrivateKgQueryUnderstanding: S.optional(S.Boolean),
@@ -6706,17 +6618,16 @@ export interface GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig {
   /** Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false if not specified. */
   enableCloudKnowledgeGraph?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateKnowledgeGraphTypes: S.optional(StringList),
-      featureConfig: S.optional(
-        GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig,
-      ),
-      enablePrivateKnowledgeGraph: S.optional(S.Boolean),
-      cloudKnowledgeGraphTypes: S.optional(StringList),
-      enableCloudKnowledgeGraph: S.optional(S.Boolean),
-    }),
+const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateKnowledgeGraphTypes: S.optional(StringList),
+    featureConfig: S.optional(
+      GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig,
+    ),
+    enablePrivateKnowledgeGraph: S.optional(S.Boolean),
+    cloudKnowledgeGraphTypes: S.optional(StringList),
+    enableCloudKnowledgeGraph: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig>;
@@ -6724,14 +6635,14 @@ export const GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig = /*@__P
 export type GoogleCloudDiscoveryengineV1betaEngineConfigurableBillingApproachEnum =
   | "CONFIGURABLE_BILLING_APPROACH_UNSPECIFIED"
   | "CONFIGURABLE_BILLING_APPROACH_ENABLED";
-export const GoogleCloudDiscoveryengineV1betaEngineConfigurableBillingApproachEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEngineConfigurableBillingApproachEnum = S.String;
 
 /** Common configurations for an Engine. */
 export interface GoogleCloudDiscoveryengineV1betaEngineCommonConfig {
   /** The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features. */
   companyName?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineCommonConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaEngineCommonConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     companyName: S.optional(S.String),
   }),
@@ -6746,7 +6657,7 @@ export interface GoogleCloudDiscoveryengineV1betaObservabilityConfig {
   /** Optional. Enables sensitive logging. Sensitive logging includes customer core content (e.g. prompts, responses). If `false`, will sanitize all sensitive fields. */
   sensitiveLoggingEnabled?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaObservabilityConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaObservabilityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observabilityEnabled: S.optional(S.Boolean),
     sensitiveLoggingEnabled: S.optional(S.Boolean),
@@ -6766,7 +6677,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCrea
   /** Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search. */
   business?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig =
+const GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       location: S.optional(S.String),
@@ -6787,7 +6698,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig {
   /** The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or EngineService.ListEngines API after engine creation. */
   agentCreationConfig?: GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dialogflowAgentToLink: S.optional(S.String),
     allowCrossRegion: S.optional(S.Boolean),
@@ -6803,7 +6714,7 @@ export type GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfi
   | "TRAINING_STATE_UNSPECIFIED"
   | "PAUSED"
   | "TRAINING";
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigTrainingStateEnum =
+const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigTrainingStateEnum =
   S.String;
 
 /** Feature configurations that are required for creating a Most Popular engine. */
@@ -6811,7 +6722,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   /** The time window of which the engine is queried at training and prediction time. Positive integers only. The value translates to the last X days of events. Currently required for the `most-popular-items` engine. */
   timeWindowDays?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig =
+const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigMostPopularFeatureConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       timeWindowDays: S.optional(S.String),
@@ -6826,7 +6737,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   /** The type of event with which the engine is queried at prediction time. If set to `generic`, only `view-item`, `media-play`,and `media-complete` will be used as `context-event` in engine training. If set to `view-home-page`, `view-home-page` will also be used as `context-events` in addition to `view-item`, `media-play`, and `media-complete`. Currently supported for the `recommended-for-you` engine. Currently supported values: `view-home-page`, `generic`. */
   contextEventType?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig =
+const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       contextEventType: S.optional(S.String),
@@ -6843,7 +6754,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   /** Recommended for you engine feature config. */
   recommendedForYouConfig?: GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig =
+const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigEngineFeaturesConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       mostPopularConfig: S.optional(
@@ -6865,7 +6776,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   /** Required. The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`. */
   targetField?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig =
+const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetFieldValueFloat: S.optional(S.Number),
@@ -6891,7 +6802,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngine
   /** The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not specified, we choose default based on engine type. Default depends on type of recommendation: `recommended-for-you` => `ctr` `others-you-may-like` => `ctr` */
   optimizationObjective?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig =
+const GoogleCloudDiscoveryengineV1betaEngineMediaRecommendationEngineConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       trainingState: S.optional(
@@ -6917,7 +6828,7 @@ export type GoogleCloudDiscoveryengineV1betaEngineSolutionTypeEnum =
   | "SOLUTION_TYPE_CHAT"
   | "SOLUTION_TYPE_GENERATIVE_CHAT"
   | "SOLUTION_TYPE_AI_MODE";
-export const GoogleCloudDiscoveryengineV1betaEngineSolutionTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEngineSolutionTypeEnum = S.String;
 
 /** Metadata that describes the training and serving parameters of an Engine. */
 export interface GoogleCloudDiscoveryengineV1betaEngine {
@@ -6978,7 +6889,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngine {
   /** Required. The solutions of the engine. */
   solutionType?: GoogleCloudDiscoveryengineV1betaEngineSolutionTypeEnum | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaEngine = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaEngine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     sessionConfig: S.optional(GoogleCloudDiscoveryengineV1betaSessionConfig),
@@ -7025,7 +6936,7 @@ export interface CreateProjectsLocationsCollectionsEnginesRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaEngine;
 }
-export const CreateProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     engineId: S.optional(S.String.pipe(T.Query())),
@@ -7046,13 +6957,13 @@ export type GoogleCloudDiscoveryengineV1betaAssistantWebGroundingTypeEnum =
   | "WEB_GROUNDING_TYPE_DISABLED"
   | "WEB_GROUNDING_TYPE_GOOGLE_SEARCH"
   | "WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH";
-export const GoogleCloudDiscoveryengineV1betaAssistantWebGroundingTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaAssistantWebGroundingTypeEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyModelArmorConfigFailureModeEnum =
   | "FAILURE_MODE_UNSPECIFIED"
   | "FAIL_OPEN"
   | "FAIL_CLOSED";
-export const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyModelArmorConfigFailureModeEnum =
+const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyModelArmorConfigFailureModeEnum =
   S.String;
 
 /** Configuration for customer defined Model Armor templates to be used for sanitizing user prompts and assistant responses. */
@@ -7066,7 +6977,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyModelArm
     | GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyModelArmorConfigFailureModeEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyModelArmorConfig =
+const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyModelArmorConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       userPromptTemplate: S.optional(S.String),
@@ -7083,8 +6994,7 @@ export type GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhraseM
   | "BANNED_PHRASE_MATCH_TYPE_UNSPECIFIED"
   | "SIMPLE_STRING_MATCH"
   | "WORD_BOUNDARY_STRING_MATCH";
-export const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhraseMatchTypeEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhraseMatchTypeEnum = S.String;
 
 /** Definition of a customer-defined banned phrase. A banned phrase is not allowed to appear in the user query or the LLM response, or else the answer will be refused. */
 export interface GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase {
@@ -7097,8 +7007,8 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPh
   /** Optional. If true, diacritical marks (e.g., accents, umlauts) are ignored when matching banned phrases. For example, "cafe" would match "café". */
   ignoreDiacritics?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       phrase: S.optional(S.String),
       matchType: S.optional(
@@ -7106,13 +7016,13 @@ export const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase
       ),
       ignoreDiacritics: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase>;
 
 export type GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhraseList =
   Array<GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase>;
-export const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhraseList =
+const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhraseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhrase,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhraseList>;
@@ -7126,7 +7036,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy {
   /** Optional. List of banned phrases. */
   bannedPhrases?: GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicyBannedPhraseList;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistantCustomerPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataProtectionPolicy: S.optional(GoogleCloudDiscoveryengineV1betaDataProtectionPolicy),
     modelArmorConfig: S.optional(
@@ -7147,7 +7057,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantToolInfo {
   /** The display name of the tool. */
   toolDisplayName?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantToolInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistantToolInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolName: S.optional(S.String),
     toolDisplayName: S.optional(S.String),
@@ -7158,7 +7068,7 @@ export const GoogleCloudDiscoveryengineV1betaAssistantToolInfo = /*@__PURE__*/ S
 
 export type GoogleCloudDiscoveryengineV1betaAssistantToolInfoList =
   Array<GoogleCloudDiscoveryengineV1betaAssistantToolInfo>;
-export const GoogleCloudDiscoveryengineV1betaAssistantToolInfoList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAssistantToolInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAssistantToolInfo,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantToolInfoList>;
 
@@ -7167,7 +7077,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantToolList {
   /** The list of tools with corresponding tool information. */
   toolInfo?: GoogleCloudDiscoveryengineV1betaAssistantToolInfoList;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantToolList = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistantToolList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolInfo: S.optional(GoogleCloudDiscoveryengineV1betaAssistantToolInfoList),
   }),
@@ -7178,7 +7088,7 @@ export const GoogleCloudDiscoveryengineV1betaAssistantToolList = /*@__PURE__*/ S
 export type GoogleCloudDiscoveryengineV1betaAssistantToolListMap = {
   [key: string]: GoogleCloudDiscoveryengineV1betaAssistantToolList | undefined;
 };
-export const GoogleCloudDiscoveryengineV1betaAssistantToolListMap = /*@__PURE__*/ S.Record(
+const GoogleCloudDiscoveryengineV1betaAssistantToolListMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudDiscoveryengineV1betaAssistantToolList,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantToolListMap>;
@@ -7188,7 +7098,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystem
   /** Optional. Additional system instruction that will be added to the default system instruction. */
   additionalSystemInstruction?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction =
+const GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       additionalSystemInstruction: S.optional(S.String),
@@ -7208,16 +7118,15 @@ export interface GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig {
   /** Optional. The default model to use for assistant. */
   defaultModelId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowedModelIds: S.optional(StringList),
-      defaultLanguage: S.optional(S.String),
-      systemInstruction: S.optional(
-        GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction,
-      ),
-      defaultModelId: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedModelIds: S.optional(StringList),
+    defaultLanguage: S.optional(S.String),
+    systemInstruction: S.optional(
+      GoogleCloudDiscoveryengineV1betaAssistantGenerationConfigSystemInstruction,
+    ),
+    defaultModelId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantGenerationConfig>;
@@ -7245,7 +7154,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistant {
   /** Optional. This field controls the default web grounding toggle for end users if `web_grounding_type` is set to `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`. By default, this field is set to false. If `web_grounding_type` is `WEB_GROUNDING_TYPE_GOOGLE_SEARCH` or `WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH`, end users will have web grounding enabled by default on UI. If true, grounding toggle will be disabled by default on UI. End users can still enable web grounding in the UI if web grounding is enabled. */
   defaultWebGroundingToggleOff?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistant = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     webGroundingType: S.optional(GoogleCloudDiscoveryengineV1betaAssistantWebGroundingTypeEnum),
@@ -7270,19 +7179,18 @@ export interface CreateProjectsLocationsCollectionsEnginesAssistantsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAssistant;
 }
-export const CreateProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      assistantId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaAssistant.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/assistants",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    assistantId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaAssistant.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/assistants",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsCollectionsEnginesAssistantsRequest",
 }) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesAssistantsRequest>;
@@ -7295,19 +7203,18 @@ export interface CreateProjectsLocationsCollectionsEnginesControlsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaControl;
 }
-export const CreateProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      controlId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaControl.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/controls",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    controlId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/controls",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsCollectionsEnginesControlsRequest",
 }) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesControlsRequest>;
@@ -7318,21 +7225,20 @@ export interface CreateProjectsLocationsCollectionsEnginesConversationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConversation;
 }
-export const CreateProjectsLocationsCollectionsEnginesConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaConversation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/conversations",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCollectionsEnginesConversationsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesConversationsRequest>;
+const CreateProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaConversation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/conversations",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsCollectionsEnginesConversationsRequest",
+}) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export interface CreateProjectsLocationsCollectionsEnginesServingConfigsRequest {
   /** Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. */
@@ -7342,22 +7248,21 @@ export interface CreateProjectsLocationsCollectionsEnginesServingConfigsRequest 
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaServingConfig;
 }
-export const CreateProjectsLocationsCollectionsEnginesServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfigId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaServingConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/servingConfigs",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsCollectionsEnginesServingConfigsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+const CreateProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    servingConfigId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaServingConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/servingConfigs",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProjectsLocationsCollectionsEnginesServingConfigsRequest",
+}) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export interface CreateProjectsLocationsCollectionsEnginesSessionsRequest {
   /** Optional. The ID to use for the session, which will become the final component of the session's resource name. This value should be 1-63 characters, and valid characters are /a-z0-9{0,61}[a-z0-9]/. If not specified, a unique ID will be generated. */
@@ -7367,19 +7272,18 @@ export interface CreateProjectsLocationsCollectionsEnginesSessionsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSession;
 }
-export const CreateProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sessionId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSession.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/sessions",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSession.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/sessions",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsCollectionsEnginesSessionsRequest",
 }) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesSessionsRequest>;
@@ -7400,7 +7304,7 @@ export interface CreateProjectsLocationsDataStoresRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDataStore;
 }
-export const CreateProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmekConfigName: S.optional(S.String.pipe(T.Query())),
     dataStoreId: S.optional(S.String.pipe(T.Query())),
@@ -7428,19 +7332,18 @@ export interface CreateProjectsLocationsDataStoresBranchesDocumentsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDocument;
 }
-export const CreateProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      documentId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaDocument.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/documents",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaDocument.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/documents",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsDataStoresBranchesDocumentsRequest",
 }) as any as S.Schema<CreateProjectsLocationsDataStoresBranchesDocumentsRequest>;
@@ -7453,7 +7356,7 @@ export interface CreateProjectsLocationsDataStoresControlsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaControl;
 }
-export const CreateProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     controlId: S.optional(S.String.pipe(T.Query())),
@@ -7475,7 +7378,7 @@ export interface CreateProjectsLocationsDataStoresConversationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConversation;
 }
-export const CreateProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaConversation.pipe(T.HttpBody())),
@@ -7498,7 +7401,7 @@ export interface CreateProjectsLocationsDataStoresSchemasRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSchema;
 }
-export const CreateProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     schemaId: S.optional(S.String.pipe(T.Query())),
@@ -7522,7 +7425,7 @@ export interface CreateProjectsLocationsDataStoresServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaServingConfig;
 }
-export const CreateProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servingConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -7546,7 +7449,7 @@ export interface CreateProjectsLocationsDataStoresSessionsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSession;
 }
-export const CreateProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     sessionId: S.optional(S.String.pipe(T.Query())),
@@ -7568,8 +7471,8 @@ export interface CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsReques
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSitemap;
 }
-export const CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDiscoveryengineV1betaSitemap.pipe(T.HttpBody())),
@@ -7580,9 +7483,9 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
+}) as any as S.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export interface CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest {
   /** Required. Parent resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. */
@@ -7590,8 +7493,8 @@ export interface CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesReq
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaTargetSite;
 }
-export const CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDiscoveryengineV1betaTargetSite.pipe(T.HttpBody())),
@@ -7602,16 +7505,16 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-  }) as any as S.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
+}) as any as S.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 /** Describes the specification of the query set. */
 export interface GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec {
   /** Optional. The full resource name of the SampleQuerySet used for the evaluation, in the format of `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`. */
   sampleQuerySet?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec =
+const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sampleQuerySet: S.optional(S.String),
@@ -7624,7 +7527,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "DROP_CROWDED_RESULTS"
   | "DEMOTE_CROWDED_RESULTS_TO_END";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecModeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecModeEnum = S.String;
 
 /** Specification for crowding. Crowding improves the diversity of search results by limiting the number of results that share the same field value. For example, crowding on the color field with a max_count of 3 and mode DROP_CROWDED_RESULTS will return at most 3 results with the same color across all pages. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec {
@@ -7635,20 +7538,19 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec {
   /** The maximum number of documents to keep per value of the field. Once there are at least max_count previous results which contain the same value for the given field (according to the order specified in `order_by`), later results with the same value are "crowded away". If not specified, the default value is 1. */
   maxCount?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      field: S.optional(S.String),
-      mode: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecModeEnum),
-      maxCount: S.optional(S.Number),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    field: S.optional(S.String),
+    mode: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecModeEnum),
+    maxCount: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecList =
   Array<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec>;
-export const GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecList>;
 
@@ -7656,7 +7558,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpecMatchHighlig
   | "MATCH_HIGHLIGHTING_CONDITION_UNSPECIFIED"
   | "MATCH_HIGHLIGHTING_DISABLED"
   | "MATCH_HIGHLIGHTING_ENABLED";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpecMatchHighlightingConditionEnum =
+const GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpecMatchHighlightingConditionEnum =
   S.String;
 
 /** Specifies features for display, like match highlighting. */
@@ -7666,13 +7568,12 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec {
     | GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpecMatchHighlightingConditionEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      matchHighlightingCondition: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpecMatchHighlightingConditionEnum,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    matchHighlightingCondition: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpecMatchHighlightingConditionEnum,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestDisplaySpec>;
@@ -7682,7 +7583,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery {
   /** Base64 encoded image bytes. Supported image formats: JPEG, PNG, and BMP. */
   imageBytes?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageBytes: S.optional(S.String),
   }),
@@ -7694,14 +7595,12 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpecMode
   | "MODE_UNSPECIFIED"
   | "SUGGESTION_ONLY"
   | "AUTO";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpecModeEnum = S.String;
-
 /** The specification for query spell correction. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec {
   /** The mode under which spell correction replaces the original search query. Defaults to Mode.AUTO. */
   mode?: GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpecModeEnum | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec =
   GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec>;
 
 /** SearchAddonSpec is used to disable add-ons for search as per new repricing model. By default if the SearchAddonSpec is not specified, we consider that the customer wants to enable them wherever applicable. */
@@ -7713,13 +7612,12 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec {
   /** Optional. If true, disables event re-ranking and personalization to optimize KPIs & personalize results. */
   disableKpiPersonalizationAddOn?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disableSemanticAddOn: S.optional(S.Boolean),
-      disableGenerativeAnswerAddOn: S.optional(S.Boolean),
-      disableKpiPersonalizationAddOn: S.optional(S.Boolean),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disableSemanticAddOn: S.optional(S.Boolean),
+    disableGenerativeAnswerAddOn: S.optional(S.Boolean),
+    disableKpiPersonalizationAddOn: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAddonSpec>;
@@ -7729,21 +7627,20 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParam
   /** Optional. A list of ranking expressions (see `ranking_expression` for the syntax documentation) to evaluate. The evaluation results will be returned in `SearchResponse.SearchResult.rank_signals.precomputed_expression_values` field. */
   expressionsToPrecompute?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       expressionsToPrecompute: S.optional(StringList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpecConditionEnum =
   | "CONDITION_UNSPECIFIED"
   | "DISABLED"
   | "AUTO";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpecConditionEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpecConditionEnum = S.String;
 
 /** Specification to determine under which conditions query expansion should occur. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec {
@@ -7754,17 +7651,17 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec
   /** Whether to pin unexpanded results. If this field is set to true, unexpanded products are always at the top of the search results, followed by the expanded results. */
   pinUnexpandedResults?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       condition: S.optional(
         GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpecConditionEnum,
       ),
       pinUnexpandedResults: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec>;
 
 /** Session specification. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec {
@@ -7773,12 +7670,11 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec {
   /** The number of top search results to persist. The persisted search results can be used for the subsequent /answer api call. This field is similar to the `summary_result_count` field in SearchRequest.ContentSearchSpec.SummarySpec.summary_result_count. At most 10 results for documents mode, or 50 for chunks mode. */
   searchResultPersistenceCount?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      queryId: S.optional(S.String),
-      searchResultPersistenceCount: S.optional(S.Number),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queryId: S.optional(S.String),
+    searchResultPersistenceCount: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec>;
@@ -7788,8 +7684,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecCond
   | "DISABLED"
   | "ENABLED"
   | "AUTO";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecConditionEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecConditionEnum = S.String;
 
 /** A schema field to be used for Search As You Type scoring on this request. Overrides any data-store-level Search As You Type field configuration for the duration of the request. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField {
@@ -7798,7 +7693,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpe
   /** Required. A field key that has been indexed for Search As You Type. */
   key?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField =
+const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       weight: S.optional(S.Number),
@@ -7810,7 +7705,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecFie
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecFieldList =
   Array<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField>;
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecFieldList =
+const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecFieldList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecField,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecFieldList>;
@@ -7826,8 +7721,8 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpe
   /** Optional. The list of fields to be used for Search As You Type scoring. */
   fields?: GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecFieldList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       condition: S.optional(
         GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecConditionEnum,
@@ -7835,9 +7730,9 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec =
       scoreThreshold: S.optional(S.Number),
       fields: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpecFieldList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceThresholdEnum =
   | "RELEVANCE_THRESHOLD_UNSPECIFIED"
@@ -7845,7 +7740,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceThresholdEnum 
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceThresholdEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceThresholdEnum = S.String;
 
 /** Embedding vector. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector {
@@ -7854,7 +7749,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbed
   /** Embedding field path in schema. */
   fieldPath?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector =
+const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       vector: S.optional(DoubleList),
@@ -7866,7 +7761,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbedding
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVectorList =
   Array<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector>;
-export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVectorList =
+const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVectorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVectorList>;
@@ -7876,13 +7771,12 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec {
   /** The embedding vector used for retrieval. Limit to 1. */
   embeddingVectors?: GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVectorList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      embeddingVectors: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVectorList,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    embeddingVectors: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVectorList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec>;
@@ -7898,7 +7792,7 @@ export interface GoogleCloudDiscoveryengineV1betaInterval {
   /** Exclusive lower bound. */
   exclusiveMinimum?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaInterval = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclusiveMaximum: S.optional(S.Number),
     minimum: S.optional(S.Number),
@@ -7911,7 +7805,7 @@ export const GoogleCloudDiscoveryengineV1betaInterval = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudDiscoveryengineV1betaIntervalList =
   Array<GoogleCloudDiscoveryengineV1betaInterval>;
-export const GoogleCloudDiscoveryengineV1betaIntervalList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaIntervalList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaInterval,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaIntervalList>;
 
@@ -7932,20 +7826,19 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey 
   /** Only get facet for the given restricted values. Only supported on textual fields. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "restricted_values" to "Action > 2022", the "category" facet only contains "Action > 2022". Only supported on textual fields. Maximum is 10. */
   restrictedValues?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prefixes: S.optional(StringList),
-      caseInsensitive: S.optional(S.Boolean),
-      intervals: S.optional(GoogleCloudDiscoveryengineV1betaIntervalList),
-      key: S.optional(S.String),
-      contains: S.optional(StringList),
-      orderBy: S.optional(S.String),
-      restrictedValues: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey>;
+const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prefixes: S.optional(StringList),
+    caseInsensitive: S.optional(S.Boolean),
+    intervals: S.optional(GoogleCloudDiscoveryengineV1betaIntervalList),
+    key: S.optional(S.String),
+    contains: S.optional(StringList),
+    orderBy: S.optional(S.String),
+    restrictedValues: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey>;
 
 /** A facet specification to perform faceted search. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec {
@@ -7958,7 +7851,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec {
   /** Required. The facet key specification. */
   facetKey?: GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableDynamicPosition: S.optional(S.Boolean),
     excludedFilterKeys: S.optional(StringList),
@@ -7971,7 +7864,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec = /*@__PURE_
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecList =
   Array<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec>;
-export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecList>;
 
@@ -7981,7 +7874,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRele
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpecRelevanceThresholdEnum =
+const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpecRelevanceThresholdEnum =
   S.String;
 
 /** Specification for relevance filtering on a specific sub-search. */
@@ -7993,7 +7886,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpe
   /** Custom relevance threshold for the sub-search. The value must be in [0.0, 1.0]. */
   semanticRelevanceThreshold?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec =
+const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       relevanceThreshold: S.optional(
@@ -8013,8 +7906,8 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpe
   /** Optional. Relevance filtering threshold specification for keyword search. */
   keywordSearchThreshold?: GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       semanticSearchThreshold: S.optional(
         GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec,
@@ -8023,9 +7916,9 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec =
         GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpecRelevanceThresholdSpec,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchRequestRankingExpressionBackendEnum =
   | "RANKING_EXPRESSION_BACKEND_UNSPECIFIED"
@@ -8033,21 +7926,21 @@ export type GoogleCloudDiscoveryengineV1betaSearchRequestRankingExpressionBacken
   | "CLEARBOX"
   | "RANK_BY_EMBEDDING"
   | "RANK_BY_FORMULA";
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRankingExpressionBackendEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSearchRequestRankingExpressionBackendEnum = S.String;
 
 /** The specification for returning the document relevance score. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec {
   /** Optional. Whether to return the relevance score for search results. The higher the score, the more relevant the document is to the query. */
   returnRelevanceScore?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       returnRelevanceScore: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceScoreSpec>;
 
 /** Request message for SearchService.Search method. */
 export interface GoogleCloudDiscoveryengineV1betaSearchRequest {
@@ -8140,7 +8033,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequest {
   /** Optional. The entity for customers that may run multiple different entities, domains, sites or regions, for example, "Google US", "Google Ads", "Waymo", "google.com", "youtube.com", etc. If this is set, it should be exactly matched with UserEvent.entity to get search results boosted by entity. */
   entity?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crowdingSpecs: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpecList),
     boostSpec: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec),
@@ -8212,14 +8105,11 @@ export interface GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec {
   /** Required. The search request that is used to perform the evaluation. Only the following fields within SearchRequest are supported; if any other fields are provided, an UNSUPPORTED error will be returned: * SearchRequest.serving_config * SearchRequest.branch * SearchRequest.canonical_filter * SearchRequest.query_expansion_spec * SearchRequest.spell_correction_spec * SearchRequest.content_search_spec * SearchRequest.user_pseudo_id */
   searchRequest?: GoogleCloudDiscoveryengineV1betaSearchRequest;
 }
-export const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      querySetSpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec,
-      ),
-      searchRequest: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequest),
-    }),
+const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    querySetSpec: S.optional(GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec),
+    searchRequest: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequest),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec>;
@@ -8230,7 +8120,7 @@ export type GoogleCloudDiscoveryengineV1betaEvaluationStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED";
-export const GoogleCloudDiscoveryengineV1betaEvaluationStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaEvaluationStateEnum = S.String;
 
 /** Stores the metric values at specific top-k levels. */
 export interface GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics {
@@ -8243,14 +8133,13 @@ export interface GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics {
   /** The top-1 value. */
   top1?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      top5: S.optional(S.Number),
-      top10: S.optional(S.Number),
-      top3: S.optional(S.Number),
-      top1: S.optional(S.Number),
-    }),
+const GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    top5: S.optional(S.Number),
+    top10: S.optional(S.Number),
+    top3: S.optional(S.Number),
+    top1: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics>;
@@ -8268,7 +8157,7 @@ export interface GoogleCloudDiscoveryengineV1betaQualityMetrics {
   /** Precision per document, at various top-k cutoff levels. Precision is the fraction of retrieved documents that are relevant. Example (top-5): * For a single SampleQuery, If 4 out of 5 retrieved documents in the top-5 are relevant, precision@5 = 4/5 = 0.8 */
   docPrecision?: GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics;
 }
-export const GoogleCloudDiscoveryengineV1betaQualityMetrics = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaQualityMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     docNdcg: S.optional(GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics),
     pageNdcg: S.optional(GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics),
@@ -8299,7 +8188,7 @@ export interface GoogleCloudDiscoveryengineV1betaEvaluation {
   /** Output only. Timestamp the Evaluation was created at. */
   createTime?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaEvaluation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     evaluationSpec: S.optional(GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec),
@@ -8320,7 +8209,7 @@ export interface CreateProjectsLocationsEvaluationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaEvaluation;
 }
-export const CreateProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaEvaluation.pipe(T.HttpBody())),
@@ -8344,7 +8233,7 @@ export interface GoogleCloudDiscoveryengineV1betaIdentityMappingStore {
   /** Output only. CMEK-related information for the Identity Mapping Store. */
   cmekConfig?: GoogleCloudDiscoveryengineV1betaCmekConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaIdentityMappingStore = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaIdentityMappingStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     kmsKeyName: S.optional(S.String),
@@ -8366,7 +8255,7 @@ export interface CreateProjectsLocationsIdentityMappingStoresRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaIdentityMappingStore;
 }
-export const CreateProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityMappingStoreId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8390,7 +8279,7 @@ export type GoogleCloudDiscoveryengineV1betaLicenseConfigSubscriptionTermEnum =
   | "SUBSCRIPTION_TERM_ONE_YEAR"
   | "SUBSCRIPTION_TERM_THREE_YEARS"
   | "SUBSCRIPTION_TERM_CUSTOM";
-export const GoogleCloudDiscoveryengineV1betaLicenseConfigSubscriptionTermEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaLicenseConfigSubscriptionTermEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaLicenseConfigSubscriptionTierEnum =
   | "SUBSCRIPTION_TIER_UNSPECIFIED"
@@ -8409,7 +8298,7 @@ export type GoogleCloudDiscoveryengineV1betaLicenseConfigSubscriptionTierEnum =
   | "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
   | "SUBSCRIPTION_TIER_CONSUMPTION_ONLY"
   | "SUBSCRIPTION_TIER_EDU_GOV_EMERGING";
-export const GoogleCloudDiscoveryengineV1betaLicenseConfigSubscriptionTierEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaLicenseConfigSubscriptionTierEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaLicenseConfigStateEnum =
   | "STATE_UNSPECIFIED"
@@ -8418,7 +8307,7 @@ export type GoogleCloudDiscoveryengineV1betaLicenseConfigStateEnum =
   | "NOT_STARTED"
   | "WITHDRAWN"
   | "DEACTIVATING";
-export const GoogleCloudDiscoveryengineV1betaLicenseConfigStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaLicenseConfigStateEnum = S.String;
 
 /** Information about users' licenses. */
 export interface GoogleCloudDiscoveryengineV1betaLicenseConfig {
@@ -8453,7 +8342,7 @@ export interface GoogleCloudDiscoveryengineV1betaLicenseConfig {
   /** Required. Number of licenses purchased. */
   licenseCount?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaLicenseConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaLicenseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRenew: S.optional(S.Boolean),
     freeTrial: S.optional(S.Boolean),
@@ -8481,7 +8370,7 @@ export interface CreateProjectsLocationsLicenseConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaLicenseConfig;
 }
-export const CreateProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     licenseConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8508,7 +8397,7 @@ export interface GoogleCloudDiscoveryengineV1betaSampleQuerySet {
   /** Required. The sample query set display name. This field must be a UTF-8 encoded string with a length limit of 128 characters. */
   displayName?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSampleQuerySet = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSampleQuerySet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -8527,7 +8416,7 @@ export interface CreateProjectsLocationsSampleQuerySetsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSampleQuerySet;
 }
-export const CreateProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sampleQuerySetId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -8552,23 +8441,21 @@ export interface GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTarget {
   /** Expected uri of the target. This field must be a UTF-8 encoded string with a length limit of 2048 characters. Example of valid uris: `https://example.com/abc`, `gcs://example/example.pdf`. */
   uri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTarget = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageNumbers: S.optional(IntegerList),
-      score: S.optional(S.Number),
-      uri: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageNumbers: S.optional(IntegerList),
+    score: S.optional(S.Number),
+    uri: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTarget",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTarget>;
 
 export type GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTargetList =
   Array<GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTarget>;
-export const GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTargetList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTarget,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTargetList>;
+const GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTargetList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTarget,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTargetList>;
 
 /** Query Entry captures metadata to be used for search evaluation. */
 export interface GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntry {
@@ -8577,7 +8464,7 @@ export interface GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntry {
   /** List of targets for the query. */
   targets?: GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTargetList;
 }
-export const GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntry = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     targets: S.optional(GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntryTargetList),
@@ -8595,7 +8482,7 @@ export interface GoogleCloudDiscoveryengineV1betaSampleQuery {
   /** The query entry. */
   queryEntry?: GoogleCloudDiscoveryengineV1betaSampleQueryQueryEntry;
 }
-export const GoogleCloudDiscoveryengineV1betaSampleQuery = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSampleQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -8613,19 +8500,18 @@ export interface CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSampleQuery;
 }
-export const CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      sampleQueryId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSampleQuery.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/sampleQueries",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    sampleQueryId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSampleQuery.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/sampleQueries",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest",
 }) as any as S.Schema<CreateProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
@@ -8634,7 +8520,7 @@ export interface DeleteProjectsLocationsCmekConfigsRequest {
   /** Required. The resource name of the CmekConfig to delete, such as `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`. */
   name: string;
 }
-export const DeleteProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -8652,7 +8538,7 @@ export interface DeleteProjectsLocationsCollectionsDataStoresRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to delete the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -8670,7 +8556,7 @@ export interface DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRe
   /** Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to delete the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete does not exist, a `NOT_FOUND` error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
+const DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -8689,17 +8575,16 @@ export interface DeleteProjectsLocationsCollectionsDataStoresControlsRequest {
   /** Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsCollectionsDataStoresControlsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresControlsRequest>;
@@ -8708,26 +8593,7 @@ export interface DeleteProjectsLocationsCollectionsDataStoresConversationsReques
   /** Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsDataStoresConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCollectionsDataStoresConversationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresConversationsRequest>;
-
-export interface DeleteProjectsLocationsCollectionsDataStoresSchemasRequest {
-  /** Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. */
-  name: string;
-}
-export const DeleteProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(
+const DeleteProjectsLocationsCollectionsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -8738,6 +8604,24 @@ export const DeleteProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__P
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
+).annotate({
+  identifier: "DeleteProjectsLocationsCollectionsDataStoresConversationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresConversationsRequest>;
+
+export interface DeleteProjectsLocationsCollectionsDataStoresSchemasRequest {
+  /** Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. */
+  name: string;
+}
+const DeleteProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsCollectionsDataStoresSchemasRequest",
 }) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresSchemasRequest>;
@@ -8746,26 +8630,7 @@ export interface DeleteProjectsLocationsCollectionsDataStoresServingConfigsReque
   /** Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
-
-export interface DeleteProjectsLocationsCollectionsDataStoresSessionsRequest {
-  /** Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` */
-  name: string;
-}
-export const DeleteProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(
+const DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -8777,6 +8642,24 @@ export const DeleteProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__
       }),
     ),
 ).annotate({
+  identifier: "DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+
+export interface DeleteProjectsLocationsCollectionsDataStoresSessionsRequest {
+  /** Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` */
+  name: string;
+}
+const DeleteProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
   identifier: "DeleteProjectsLocationsCollectionsDataStoresSessionsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -8784,7 +8667,7 @@ export interface DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSit
   /** Required. Full resource name of Sitemap, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`. If the caller does not have permission to access the Sitemap, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest =
+const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -8803,7 +8686,7 @@ export interface DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTar
   /** Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
+const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -8822,7 +8705,7 @@ export interface DeleteProjectsLocationsCollectionsEnginesRequest {
   /** Required. Full resource name of Engine, such as `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. If the caller does not have permission to delete the Engine, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Engine to delete does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -8840,17 +8723,16 @@ export interface DeleteProjectsLocationsCollectionsEnginesAssistantsRequest {
   /** Required. Resource name of Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` If the caller does not have permission to delete the Assistant, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Assistant to delete does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsCollectionsEnginesAssistantsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsRequest>;
@@ -8859,17 +8741,16 @@ export interface DeleteProjectsLocationsCollectionsEnginesControlsRequest {
   /** Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsCollectionsEnginesControlsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesControlsRequest>;
@@ -8878,55 +8759,52 @@ export interface DeleteProjectsLocationsCollectionsEnginesConversationsRequest {
   /** Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsEnginesConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCollectionsEnginesConversationsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesConversationsRequest>;
+const DeleteProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsCollectionsEnginesConversationsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesConversationsRequest>;
 
 export interface DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest {
   /** Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+const DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export interface DeleteProjectsLocationsCollectionsEnginesSessionsRequest {
   /** Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsCollectionsEnginesSessionsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesSessionsRequest>;
@@ -8935,7 +8813,7 @@ export interface DeleteProjectsLocationsDataStoresRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to delete the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -8953,17 +8831,16 @@ export interface DeleteProjectsLocationsDataStoresBranchesDocumentsRequest {
   /** Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to delete the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete does not exist, a `NOT_FOUND` error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsDataStoresBranchesDocumentsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsDataStoresBranchesDocumentsRequest>;
@@ -8972,7 +8849,7 @@ export interface DeleteProjectsLocationsDataStoresControlsRequest {
   /** Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -8990,7 +8867,7 @@ export interface DeleteProjectsLocationsDataStoresConversationsRequest {
   /** Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9008,7 +8885,7 @@ export interface DeleteProjectsLocationsDataStoresSchemasRequest {
   /** Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9026,7 +8903,7 @@ export interface DeleteProjectsLocationsDataStoresServingConfigsRequest {
   /** Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9044,7 +8921,7 @@ export interface DeleteProjectsLocationsDataStoresSessionsRequest {
   /** Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9062,8 +8939,8 @@ export interface DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsReques
   /** Required. Full resource name of Sitemap, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`. If the caller does not have permission to access the Sitemap, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -9073,16 +8950,16 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export interface DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest {
   /** Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -9092,15 +8969,15 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export interface DeleteProjectsLocationsIdentityMappingStoresRequest {
   /** Required. The name of the Identity Mapping Store to delete. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` */
   name: string;
 }
-export const DeleteProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9118,7 +8995,7 @@ export interface DeleteProjectsLocationsSampleQuerySetsRequest {
   /** Required. Full resource name of SampleQuerySet, such as `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. If the caller does not have permission to delete the SampleQuerySet, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the SampleQuerySet to delete does not exist, a `NOT_FOUND` error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9136,17 +9013,16 @@ export interface DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest {
   /** Required. Full resource name of SampleQuery, such as `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`. If the caller does not have permission to delete the SampleQuery, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the SampleQuery to delete does not exist, a `NOT_FOUND` error is returned. */
   name: string;
 }
-export const DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
@@ -9154,16 +9030,13 @@ export const DeleteProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__P
 /** Request message for SiteSearchEngineService.DisableAdvancedSiteSearch method. */
 export type GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchRequest =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchRequest =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 export interface DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
   /** Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. */
   siteSearchEngine: string;
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
+const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
@@ -9188,7 +9061,7 @@ export interface DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchE
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest =
+const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
@@ -9217,17 +9090,16 @@ export interface GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest 
   /** Optional. Distribute seats to this license config instead of creating a new one. If not specified, a new license config will be created from the billing account license config. */
   licenseConfigId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      licenseCount: S.optional(S.String),
-      location: S.optional(S.String),
-      projectNumber: S.optional(S.String),
-      licenseConfigId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest>;
+const GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    licenseCount: S.optional(S.String),
+    location: S.optional(S.String),
+    projectNumber: S.optional(S.String),
+    licenseConfigId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest>;
 
 export interface DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest {
   /** Required. Full resource name of BillingAccountLicenseConfig. Format: `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`. */
@@ -9235,7 +9107,7 @@ export interface DistributeLicenseConfigBillingAccountsBillingAccountLicenseConf
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigRequest;
 }
-export const DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest =
+const DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountLicenseConfig: S.String.pipe(T.Label()),
@@ -9258,28 +9130,25 @@ export interface GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse
   /** The updated or created LicenseConfig. */
   licenseConfig?: GoogleCloudDiscoveryengineV1betaLicenseConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       licenseConfig: S.optional(GoogleCloudDiscoveryengineV1betaLicenseConfig),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse>;
 
 /** Request message for SiteSearchEngineService.EnableAdvancedSiteSearch method. */
 export type GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchRequest =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchRequest =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 export interface EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
   /** Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. */
   siteSearchEngine: string;
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
+const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
@@ -9304,7 +9173,7 @@ export interface EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEn
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest =
+const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
@@ -9330,7 +9199,7 @@ export interface FetchDomainVerificationStatusProjectsLocationsCollectionsDataSt
   /** Required. The site search engine resource under which we fetch all the domain verification status. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. */
   siteSearchEngine: string;
 }
-export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
+const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9350,7 +9219,7 @@ export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
 
 export type GoogleCloudDiscoveryengineV1betaTargetSiteList =
   Array<GoogleCloudDiscoveryengineV1betaTargetSite>;
-export const GoogleCloudDiscoveryengineV1betaTargetSiteList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaTargetSiteList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaTargetSite,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaTargetSiteList>;
 
@@ -9363,7 +9232,7 @@ export interface GoogleCloudDiscoveryengineV1betaFetchDomainVerificationStatusRe
   /** The total number of items matching the request. This will always be populated in the response. */
   totalSize?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaFetchDomainVerificationStatusResponse =
+const GoogleCloudDiscoveryengineV1betaFetchDomainVerificationStatusResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetSites: S.optional(GoogleCloudDiscoveryengineV1betaTargetSiteList),
@@ -9380,7 +9249,7 @@ export interface FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSite
   /** The Sitemap uris. */
   "matcher.urisMatcher.uris"?: StringList;
 }
-export const FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest =
+const FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -9401,7 +9270,7 @@ export interface GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMet
   /** The Sitemap. */
   sitemap?: GoogleCloudDiscoveryengineV1betaSitemap;
 }
-export const GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata =
+const GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sitemap: S.optional(GoogleCloudDiscoveryengineV1betaSitemap),
@@ -9412,7 +9281,7 @@ export const GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadat
 
 export type GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadataList =
   Array<GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata>;
-export const GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadataList =
+const GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadata,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadataList>;
@@ -9422,7 +9291,7 @@ export interface GoogleCloudDiscoveryengineV1betaFetchSitemapsResponse {
   /** List of Sitemaps fetched. */
   sitemapsMetadata?: GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadataList;
 }
-export const GoogleCloudDiscoveryengineV1betaFetchSitemapsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaFetchSitemapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sitemapsMetadata: S.optional(
       GoogleCloudDiscoveryengineV1betaFetchSitemapsResponseSitemapMetadataList,
@@ -9438,8 +9307,8 @@ export interface FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest
   /** The Sitemap uris. */
   "matcher.urisMatcher.uris"?: StringList;
 }
-export const FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       "matcher.urisMatcher.uris": S.optional(StringList.pipe(T.Query())),
@@ -9450,15 +9319,15 @@ export const FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
-  }) as any as S.Schema<FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
+).annotate({
+  identifier: "FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
+}) as any as S.Schema<FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
 export interface GetAclConfigProjectsLocationsRequest {
   /** Required. Resource name of AclConfig, such as `projects/*\/locations/*\/aclConfig`. If the caller does not have permission to access the AclConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   name: string;
 }
-export const GetAclConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAclConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9476,18 +9345,17 @@ export type GoogleCloudDiscoveryengineV1betaIdpConfigIdpTypeEnum =
   | "IDP_TYPE_UNSPECIFIED"
   | "GSUITE"
   | "THIRD_PARTY";
-export const GoogleCloudDiscoveryengineV1betaIdpConfigIdpTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaIdpConfigIdpTypeEnum = S.String;
 
 /** Third party IDP Config. */
 export interface GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig {
   /** Workforce pool name. Example: "locations/global/workforcePools/pool_id" */
   workforcePoolName?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      workforcePoolName: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workforcePoolName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig>;
@@ -9499,7 +9367,7 @@ export interface GoogleCloudDiscoveryengineV1betaIdpConfig {
   /** External Identity provider config. */
   externalIdpConfig?: GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaIdpConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaIdpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idpType: S.optional(GoogleCloudDiscoveryengineV1betaIdpConfigIdpTypeEnum),
     externalIdpConfig: S.optional(GoogleCloudDiscoveryengineV1betaIdpConfigExternalIdpConfig),
@@ -9515,7 +9383,7 @@ export interface GoogleCloudDiscoveryengineV1betaAclConfig {
   /** Immutable. The full resource name of the acl configuration. Format: `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. */
   name?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAclConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAclConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idpConfig: S.optional(GoogleCloudDiscoveryengineV1betaIdpConfig),
     name: S.optional(S.String),
@@ -9528,7 +9396,7 @@ export interface GetCmekConfigProjectsLocationsRequest {
   /** Required. Resource name of CmekConfig, such as `projects/*\/locations/*\/cmekConfig` or `projects/*\/locations/*\/cmekConfigs/*`. If the caller does not have permission to access the CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   name: string;
 }
-export const GetCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9548,18 +9416,17 @@ export interface GetIamPolicyProjectsLocationsCollectionsDataStoresRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+resource}:getIamPolicy",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+resource}:getIamPolicy",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsCollectionsDataStoresRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsCollectionsDataStoresRequest>;
@@ -9575,7 +9442,7 @@ export interface GoogleTypeExpr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     title: S.optional(S.String),
@@ -9593,7 +9460,7 @@ export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     condition: S.optional(GoogleTypeExpr),
@@ -9602,7 +9469,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleIamV1Binding" }) as any as S.Schema<GoogleIamV1Binding>;
 
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
+const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
 
@@ -9615,7 +9482,7 @@ export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: GoogleIamV1BindingList;
 }
-export const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     version: S.optional(S.Number),
@@ -9629,7 +9496,7 @@ export interface GetIamPolicyProjectsLocationsCollectionsEnginesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -9650,7 +9517,7 @@ export interface GetIamPolicyProjectsLocationsDataStoresRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -9669,7 +9536,7 @@ export interface GetProjectsLocationsCmekConfigsRequest {
   /** Required. Resource name of CmekConfig, such as `projects/*\/locations/*\/cmekConfig` or `projects/*\/locations/*\/cmekConfigs/*`. If the caller does not have permission to access the CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   name: string;
 }
-export const GetProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9687,26 +9554,25 @@ export interface GetProjectsLocationsCollectionsDataConnectorOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataConnectorOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCollectionsDataConnectorOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsDataConnectorOperationsRequest>;
+const GetProjectsLocationsCollectionsDataConnectorOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsCollectionsDataConnectorOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
 export interface GetProjectsLocationsCollectionsDataStoresRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9724,45 +9590,7 @@ export interface GetProjectsLocationsCollectionsDataStoresBranchesDocumentsReque
   /** Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to access the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does not exist, a `NOT_FOUND` error is returned. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
-
-export interface GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-export const GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
-
-export interface GetProjectsLocationsCollectionsDataStoresControlsRequest {
-  /** Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` */
-  name: string;
-}
-export const GetProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(
+const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -9773,6 +9601,43 @@ export const GetProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PUR
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
+).annotate({
+  identifier: "GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
+}) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+
+export interface GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+const GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1beta/{+name}",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
+
+export interface GetProjectsLocationsCollectionsDataStoresControlsRequest {
+  /** Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` */
+  name: string;
+}
+const GetProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsCollectionsDataStoresControlsRequest",
 }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresControlsRequest>;
@@ -9781,45 +9646,25 @@ export interface GetProjectsLocationsCollectionsDataStoresConversationsRequest {
   /** Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCollectionsDataStoresConversationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresConversationsRequest>;
+const GetProjectsLocationsCollectionsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsCollectionsDataStoresConversationsRequest",
+}) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export interface GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
-
-export interface GetProjectsLocationsCollectionsDataStoresOperationsRequest {
-  /** The name of the operation resource. */
-  name: string;
-}
-export const GetProjectsLocationsCollectionsDataStoresOperationsRequest = /*@__PURE__*/ S.suspend(
+const GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -9831,6 +9676,24 @@ export const GetProjectsLocationsCollectionsDataStoresOperationsRequest = /*@__P
       }),
     ),
 ).annotate({
+  identifier: "GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
+
+export interface GetProjectsLocationsCollectionsDataStoresOperationsRequest {
+  /** The name of the operation resource. */
+  name: string;
+}
+const GetProjectsLocationsCollectionsDataStoresOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
   identifier: "GetProjectsLocationsCollectionsDataStoresOperationsRequest",
 }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresOperationsRequest>;
 
@@ -9838,7 +9701,7 @@ export interface GetProjectsLocationsCollectionsDataStoresSchemasRequest {
   /** Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -9856,50 +9719,9 @@ export interface GetProjectsLocationsCollectionsDataStoresSchemasOperationsReque
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
-
-export interface GetProjectsLocationsCollectionsDataStoresServingConfigsRequest {
-  /** Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` */
-  name: string;
-}
-export const GetProjectsLocationsCollectionsDataStoresServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
-
-export interface GetProjectsLocationsCollectionsDataStoresSessionsRequest {
-  /** Optional. If set to true, the full session including all answer details will be returned. */
-  includeAnswerDetails?: boolean;
-  /** Required. The resource name of the Session to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` */
-  name: string;
-}
-export const GetProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(
+const GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      includeAnswerDetails: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
@@ -9909,6 +9731,45 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PUR
       }),
     ),
 ).annotate({
+  identifier: "GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest",
+}) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
+
+export interface GetProjectsLocationsCollectionsDataStoresServingConfigsRequest {
+  /** Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` */
+  name: string;
+}
+const GetProjectsLocationsCollectionsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+}) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+
+export interface GetProjectsLocationsCollectionsDataStoresSessionsRequest {
+  /** Optional. If set to true, the full session including all answer details will be returned. */
+  includeAnswerDetails?: boolean;
+  /** Required. The resource name of the Session to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` */
+  name: string;
+}
+const GetProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    includeAnswerDetails: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
   identifier: "GetProjectsLocationsCollectionsDataStoresSessionsRequest",
 }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -9916,8 +9777,8 @@ export interface GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest
   /** Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -9927,15 +9788,15 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest",
-  }) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest>;
+).annotate({
+  identifier: "GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest",
+}) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest>;
 
 export interface GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest =
+const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -9954,7 +9815,7 @@ export interface GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTarget
   /** Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
+const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -9973,7 +9834,7 @@ export interface GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTarget
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest =
+const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -9993,7 +9854,7 @@ export interface GetProjectsLocationsCollectionsEnginesRequest {
   /** Required. Full resource name of Engine, such as `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10011,7 +9872,7 @@ export interface GetProjectsLocationsCollectionsEnginesAssistantsRequest {
   /** Required. Resource name of Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` */
   name: string;
 }
-export const GetProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10029,7 +9890,7 @@ export interface GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperation
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest =
+const GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -10048,7 +9909,7 @@ export interface GetProjectsLocationsCollectionsEnginesControlsRequest {
   /** Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` */
   name: string;
 }
-export const GetProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10066,17 +9927,16 @@ export interface GetProjectsLocationsCollectionsEnginesConversationsRequest {
   /** Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` */
   name: string;
 }
-export const GetProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsCollectionsEnginesConversationsRequest",
 }) as any as S.Schema<GetProjectsLocationsCollectionsEnginesConversationsRequest>;
@@ -10085,7 +9945,7 @@ export interface GetProjectsLocationsCollectionsEnginesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsEnginesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsEnginesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10103,17 +9963,16 @@ export interface GetProjectsLocationsCollectionsEnginesServingConfigsRequest {
   /** Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-export const GetProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsCollectionsEnginesServingConfigsRequest",
 }) as any as S.Schema<GetProjectsLocationsCollectionsEnginesServingConfigsRequest>;
@@ -10124,7 +9983,7 @@ export interface GetProjectsLocationsCollectionsEnginesSessionsRequest {
   /** Optional. If set to true, the full session including all answer details will be returned. */
   includeAnswerDetails?: boolean;
 }
-export const GetProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     includeAnswerDetails: S.optional(S.Boolean.pipe(T.Query())),
@@ -10143,17 +10002,16 @@ export interface GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest {
   /** Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` */
   name: string;
 }
-export const GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest",
 }) as any as S.Schema<GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest>;
@@ -10162,7 +10020,7 @@ export interface GetProjectsLocationsCollectionsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10180,7 +10038,7 @@ export interface GetProjectsLocationsDataStoresRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10198,7 +10056,7 @@ export interface GetProjectsLocationsDataStoresBranchesDocumentsRequest {
   /** Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to access the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does not exist, a `NOT_FOUND` error is returned. */
   name: string;
 }
-export const GetProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10216,7 +10074,7 @@ export interface GetProjectsLocationsDataStoresBranchesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsDataStoresBranchesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresBranchesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10234,7 +10092,7 @@ export interface GetProjectsLocationsDataStoresControlsRequest {
   /** Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` */
   name: string;
 }
-export const GetProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10252,7 +10110,7 @@ export interface GetProjectsLocationsDataStoresConversationsRequest {
   /** Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` */
   name: string;
 }
-export const GetProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10270,7 +10128,7 @@ export interface GetProjectsLocationsDataStoresModelsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsDataStoresModelsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresModelsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10288,7 +10146,7 @@ export interface GetProjectsLocationsDataStoresOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsDataStoresOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10306,7 +10164,7 @@ export interface GetProjectsLocationsDataStoresSchemasRequest {
   /** Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. */
   name: string;
 }
-export const GetProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10324,7 +10182,7 @@ export interface GetProjectsLocationsDataStoresServingConfigsRequest {
   /** Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` */
   name: string;
 }
-export const GetProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10344,7 +10202,7 @@ export interface GetProjectsLocationsDataStoresSessionsRequest {
   /** Optional. If set to true, the full session including all answer details will be returned. */
   includeAnswerDetails?: boolean;
 }
-export const GetProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     includeAnswerDetails: S.optional(S.Boolean.pipe(T.Query())),
@@ -10363,7 +10221,7 @@ export interface GetProjectsLocationsDataStoresSessionsAnswersRequest {
   /** Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` */
   name: string;
 }
-export const GetProjectsLocationsDataStoresSessionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresSessionsAnswersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10381,8 +10239,8 @@ export interface GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesReques
   /** Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -10392,15 +10250,15 @@ export const GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-  }) as any as S.Schema<GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+).annotate({
+  identifier: "GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
+}) as any as S.Schema<GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export interface GetProjectsLocationsEvaluationsRequest {
   /** Required. Full resource name of Evaluation, such as `projects/{project}/locations/{location}/evaluations/{evaluation}`. If the caller does not have permission to access the Evaluation, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Evaluation does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10418,7 +10276,7 @@ export interface GetProjectsLocationsEvaluationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsEvaluationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsEvaluationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10436,7 +10294,7 @@ export interface GetProjectsLocationsIdentityMappingStoresRequest {
   /** Required. The name of the Identity Mapping Store to get. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` */
   name: string;
 }
-export const GetProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10454,17 +10312,16 @@ export interface GetProjectsLocationsIdentityMappingStoresOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsIdentityMappingStoresOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsIdentityMappingStoresOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsIdentityMappingStoresOperationsRequest",
 }) as any as S.Schema<GetProjectsLocationsIdentityMappingStoresOperationsRequest>;
@@ -10473,7 +10330,7 @@ export interface GetProjectsLocationsLicenseConfigsRequest {
   /** Required. Full resource name of LicenseConfig, such as `projects/{project}/locations/{location}/licenseConfigs/*`. If the caller does not have permission to access the LicenseConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested LicenseConfig does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10491,7 +10348,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10509,7 +10366,7 @@ export interface GetProjectsLocationsPodcastsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsPodcastsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsPodcastsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10527,7 +10384,7 @@ export interface GetProjectsLocationsSampleQuerySetsRequest {
   /** Required. Full resource name of SampleQuerySet, such as `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. If the caller does not have permission to access the SampleQuerySet, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested SampleQuerySet does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10545,7 +10402,7 @@ export interface GetProjectsLocationsSampleQuerySetsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsSampleQuerySetsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSampleQuerySetsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10563,7 +10420,7 @@ export interface GetProjectsLocationsSampleQuerySetsSampleQueriesRequest {
   /** Required. Full resource name of SampleQuery, such as `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`. If the caller does not have permission to access the SampleQuery, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested SampleQuery does not exist, a NOT_FOUND error is returned. */
   name: string;
 }
-export const GetProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10581,7 +10438,7 @@ export interface GetProjectsLocationsUserStoresRequest {
   /** Required. The name of the User Store to get. Format: `projects/{project}/locations/{location}/userStores/{user_store_id}` */
   name: string;
 }
-export const GetProjectsLocationsUserStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsUserStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10608,7 +10465,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserStore {
   /** Optional. The default subscription LicenseConfig for the UserStore, if UserStore.enable_license_auto_register is true, new users will automatically register under the default subscription. If default LicenseConfig doesn't have remaining license seats left, new users will not be assigned with license and will be blocked for Vertex AI Search features. This is used if `license_assignment_tier_rules` is not configured. */
   defaultLicenseConfig?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaUserStore = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaUserStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableExpiredLicenseAutoUpdate: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -10624,7 +10481,7 @@ export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10642,8 +10499,8 @@ export interface GetSiteSearchEngineProjectsLocationsCollectionsDataStoresReques
   /** Required. Resource name of SiteSearchEngine, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to access the [SiteSearchEngine], regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   name: string;
 }
-export const GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -10653,16 +10510,16 @@ export const GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest",
-  }) as any as S.Schema<GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest>;
+).annotate({
+  identifier: "GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest",
+}) as any as S.Schema<GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest>;
 
 /** SiteSearchEngine captures DataStore level site search persisting configurations. It is a singleton value per data store. */
 export interface GoogleCloudDiscoveryengineV1betaSiteSearchEngine {
   /** The fully qualified resource name of the site search engine. Format: `projects/*\/locations/*\/dataStores/*\/siteSearchEngine` */
   name?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSiteSearchEngine = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSiteSearchEngine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -10674,7 +10531,7 @@ export interface GetSiteSearchEngineProjectsLocationsDataStoresRequest {
   /** Required. Resource name of SiteSearchEngine, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to access the [SiteSearchEngine], regardless of whether or not it exists, a PERMISSION_DENIED error is returned. */
   name: string;
 }
-export const GetSiteSearchEngineProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSiteSearchEngineProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -10699,7 +10556,7 @@ export interface GoogleCloudDiscoveryengineV1betaIdentityMappingEntry {
   /** Group identifier. For Google Workspace user account, group_id should be the google workspace group email. For non-google identity provider, group_id is the mapped group identifier configured during the workforcepool config. */
   groupId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaIdentityMappingEntry = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaIdentityMappingEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     externalIdentityName: S.optional(S.String),
@@ -10712,7 +10569,7 @@ export const GoogleCloudDiscoveryengineV1betaIdentityMappingEntry = /*@__PURE__*
 
 export type GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList =
   Array<GoogleCloudDiscoveryengineV1betaIdentityMappingEntry>;
-export const GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaIdentityMappingEntry,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList>;
 
@@ -10721,7 +10578,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestIn
   /** A maximum of 10000 entries can be imported at one time */
   identityMappingEntries?: GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList;
 }
-export const GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource =
+const GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identityMappingEntries: S.optional(GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList),
@@ -10735,16 +10592,15 @@ export interface GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest {
   /** The inline source to import identity mapping entries from. */
   inlineSource?: GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource;
 }
-export const GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      inlineSource: S.optional(
-        GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest>;
+const GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inlineSource: S.optional(
+      GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest>;
 
 export interface ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest {
   /** Required. The name of the Identity Mapping Store to import Identity Mapping Entries to. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` */
@@ -10752,8 +10608,8 @@ export interface ImportIdentityMappingsProjectsLocationsIdentityMappingStoresReq
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequest;
 }
-export const ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       identityMappingStore: S.String.pipe(T.Label()),
       body: S.optional(
@@ -10766,9 +10622,9 @@ export const ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
-  }) as any as S.Schema<ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
+).annotate({
+  identifier: "ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
+}) as any as S.Schema<ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -10779,20 +10635,19 @@ export type GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyT
   | "BIG_NUMERIC"
   | "BOOLEAN"
   | "JSON";
-export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyTypeEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyEncodingEnum =
   | "ENCODING_UNSPECIFIED"
   | "TEXT"
   | "BINARY";
-export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyEncodingEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyEncodingEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnEncodingEnum =
   | "ENCODING_UNSPECIFIED"
   | "TEXT"
   | "BINARY";
-export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnEncodingEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnEncodingEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -10803,7 +10658,7 @@ export type GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnTypeEnu
   | "BIG_NUMERIC"
   | "BOOLEAN"
   | "JSON";
-export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnTypeEnum = S.String;
 
 /** The column of the Bigtable. */
 export interface GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn {
@@ -10818,26 +10673,22 @@ export interface GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn {
   /** The field name to use for this column in the document. The name has to match the pattern `a-zA-Z0-9*`. If not set, it is parsed from the qualifier bytes with best effort. However, due to different naming patterns, field name collisions could happen, where parsing behavior is undefined. */
   fieldName?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      encoding: S.optional(
-        GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnEncodingEnum,
-      ),
-      qualifier: S.optional(S.String),
-      type: S.optional(GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnTypeEnum),
-      fieldName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn>;
+const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encoding: S.optional(GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnEncodingEnum),
+    qualifier: S.optional(S.String),
+    type: S.optional(GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnTypeEnum),
+    fieldName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn>;
 
 export type GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnList =
   Array<GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn>;
-export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnList>;
+const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumn,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnList>;
 
 /** The column family of the Bigtable. */
 export interface GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily {
@@ -10854,8 +10705,8 @@ export interface GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFa
   /** The field name to use for this column family in the document. The name has to match the pattern `a-zA-Z0-9*`. If not set, it is parsed from the family name with best effort. However, due to different naming patterns, field name collisions could happen, where parsing behavior is undefined. */
   fieldName?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       type: S.optional(GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyTypeEnum),
       encoding: S.optional(
@@ -10864,14 +10715,14 @@ export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily
       columns: S.optional(GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnList),
       fieldName: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily>;
 
 export type GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyMap = {
   [key: string]: GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily | undefined;
 };
-export const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyMap =
+const GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyMap =
   /*@__PURE__*/ S.Record(
     S.String,
     GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamily,
@@ -10884,7 +10735,7 @@ export interface GoogleCloudDiscoveryengineV1betaBigtableOptions {
   /** The mapping from family names to an object that contains column families level information for the given column family. If a family is not present in this map it will be ignored. */
   families?: GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyMap;
 }
-export const GoogleCloudDiscoveryengineV1betaBigtableOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaBigtableOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyFieldName: S.optional(S.String),
     families: S.optional(GoogleCloudDiscoveryengineV1betaBigtableOptionsBigtableColumnFamilyMap),
@@ -10904,7 +10755,7 @@ export interface GoogleCloudDiscoveryengineV1betaBigtableSource {
   /** The project ID that contains the Bigtable source. Has a length limit of 128 characters. If not specified, inherits the project ID from the parent request. */
   projectId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaBigtableSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaBigtableSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigtableOptions: S.optional(GoogleCloudDiscoveryengineV1betaBigtableOptions),
     tableId: S.optional(S.String),
@@ -10926,7 +10777,7 @@ export interface GoogleCloudDiscoveryengineV1betaFhirStoreSource {
   /** Optional. Whether to update the DataStore schema to the latest predefined schema. If true, the DataStore schema will be updated to include any FHIR fields or resource types that have been added since the last import and corresponding FHIR resources will be imported from the FHIR store. Note this field cannot be used in conjunction with `resource_types`. It should be used after initial import. */
   updateFromLatestPredefinedSchema?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaFhirStoreSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaFhirStoreSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceTypes: S.optional(StringList),
     gcsStagingDir: S.optional(S.String),
@@ -10950,7 +10801,7 @@ export interface GoogleCloudDiscoveryengineV1betaSpannerSource {
   /** Required. The table name of the Spanner database that needs to be imported. */
   tableId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSpannerSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSpannerSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseId: S.optional(S.String),
     enableDataBoost: S.optional(S.Boolean),
@@ -10977,7 +10828,7 @@ export interface GoogleCloudDiscoveryengineV1betaBigQuerySource {
   /** BigQuery time partitioned table's _PARTITIONDATE in YYYY-MM-DD format. */
   partitionDate?: GoogleTypeDate;
 }
-export const GoogleCloudDiscoveryengineV1betaBigQuerySource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaBigQuerySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableId: S.optional(S.String),
     datasetId: S.optional(S.String),
@@ -10997,7 +10848,7 @@ export interface GoogleCloudDiscoveryengineV1betaGcsSource {
   /** Required. Cloud Storage URIs to input files. Each URI can be up to 2000 characters long. URIs can match the full object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files, such as `gs://bucket/directory/*.json`. A request can contain at most 100 files (or 100,000 files if `data_schema` is `content`). Each file can be up to 2 GB (or 100 MB if `data_schema` is `content`). */
   inputUris?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaGcsSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaGcsSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSchema: S.optional(S.String),
     inputUris: S.optional(StringList),
@@ -11021,7 +10872,7 @@ export interface GoogleCloudDiscoveryengineV1betaCloudSqlSource {
   /** Option for serverless export. Enabling this option will incur additional cost. More info can be found [here](https://cloud.google.com/sql/pricing#serverless). */
   offload?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaCloudSqlSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCloudSqlSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     databaseId: S.optional(S.String),
@@ -11045,7 +10896,7 @@ export interface GoogleCloudDiscoveryengineV1betaFirestoreSource {
   /** Required. The Firestore database to copy the data from with a length limit of 256 characters. */
   databaseId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaFirestoreSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaFirestoreSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     gcsStagingDir: S.optional(S.String),
@@ -11058,7 +10909,7 @@ export const GoogleCloudDiscoveryengineV1betaFirestoreSource = /*@__PURE__*/ S.s
 
 export type GoogleCloudDiscoveryengineV1betaDocumentList =
   Array<GoogleCloudDiscoveryengineV1betaDocument>;
-export const GoogleCloudDiscoveryengineV1betaDocumentList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaDocumentList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaDocument,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDocumentList>;
 
@@ -11067,21 +10918,21 @@ export interface GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSou
   /** Required. A list of documents to update/create. Each document must have a valid Document.id. Recommended max of 100 items. */
   documents?: GoogleCloudDiscoveryengineV1betaDocumentList;
 }
-export const GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSource = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       documents: S.optional(GoogleCloudDiscoveryengineV1betaDocumentList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSource>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSource",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportDocumentsRequestInlineSource>;
 
 /** Configuration of destination for Import related errors. */
 export interface GoogleCloudDiscoveryengineV1betaImportErrorConfig {
   /** Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory. Import errors are written to sharded files in this directory, one per line, as a JSON-encoded `google.rpc.Status` message. */
   gcsPrefix?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaImportErrorConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaImportErrorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsPrefix: S.optional(S.String),
   }),
@@ -11093,8 +10944,7 @@ export type GoogleCloudDiscoveryengineV1betaImportDocumentsRequestReconciliation
   | "RECONCILIATION_MODE_UNSPECIFIED"
   | "INCREMENTAL"
   | "FULL";
-export const GoogleCloudDiscoveryengineV1betaImportDocumentsRequestReconciliationModeEnum =
-  S.String;
+const GoogleCloudDiscoveryengineV1betaImportDocumentsRequestReconciliationModeEnum = S.String;
 
 /** AlloyDB source import data from. */
 export interface GoogleCloudDiscoveryengineV1betaAlloyDbSource {
@@ -11111,7 +10961,7 @@ export interface GoogleCloudDiscoveryengineV1betaAlloyDbSource {
   /** The project ID that contains the AlloyDB source. Has a length limit of 128 characters. If not specified, inherits the project ID from the parent request. */
   projectId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAlloyDbSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAlloyDbSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsStagingDir: S.optional(S.String),
     locationId: S.optional(S.String),
@@ -11159,7 +11009,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportDocumentsRequest {
   /** Indicates which fields in the provided imported documents to update. If not set, the default is to update all fields. */
   updateMask?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigtableSource: S.optional(GoogleCloudDiscoveryengineV1betaBigtableSource),
     fhirStoreSource: S.optional(GoogleCloudDiscoveryengineV1betaFhirStoreSource),
@@ -11189,7 +11039,7 @@ export interface ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRe
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportDocumentsRequest;
 }
-export const ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
+const ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -11222,7 +11072,7 @@ export interface GoogleCloudDiscoveryengineV1betaCompletionSuggestion {
   /** Frequency of this suggestion. Will be used to rank suggestions when score is not available. */
   frequency?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaCompletionSuggestion = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCompletionSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestion: S.optional(S.String),
     groupScore: S.optional(S.Number),
@@ -11238,7 +11088,7 @@ export const GoogleCloudDiscoveryengineV1betaCompletionSuggestion = /*@__PURE__*
 
 export type GoogleCloudDiscoveryengineV1betaCompletionSuggestionList =
   Array<GoogleCloudDiscoveryengineV1betaCompletionSuggestion>;
-export const GoogleCloudDiscoveryengineV1betaCompletionSuggestionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaCompletionSuggestionList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaCompletionSuggestion,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCompletionSuggestionList>;
 
@@ -11247,7 +11097,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequ
   /** Required. A list of all denylist entries to import. Max of 1000 items. */
   suggestions?: GoogleCloudDiscoveryengineV1betaCompletionSuggestionList;
 }
-export const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequestInlineSource =
+const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequestInlineSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       suggestions: S.optional(GoogleCloudDiscoveryengineV1betaCompletionSuggestionList),
@@ -11267,8 +11117,8 @@ export interface GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequ
   /** BigQuery input source. */
   bigquerySource?: GoogleCloudDiscoveryengineV1betaBigQuerySource;
 }
-export const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       gcsSource: S.optional(GoogleCloudDiscoveryengineV1betaGcsSource),
       errorConfig: S.optional(GoogleCloudDiscoveryengineV1betaImportErrorConfig),
@@ -11277,9 +11127,9 @@ export const GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest 
       ),
       bigquerySource: S.optional(GoogleCloudDiscoveryengineV1betaBigQuerySource),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest>;
 
 export interface ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest {
   /** Required. The parent data store resource name for which to import customer autocomplete suggestions. Follows pattern `projects/*\/locations/*\/collections/*\/dataStores/*` */
@@ -11287,7 +11137,7 @@ export interface ImportProjectsLocationsCollectionsDataStoresCompletionSuggestio
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest;
 }
-export const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest =
+const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -11309,7 +11159,7 @@ export type GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryMatchOperator
   | "MATCH_OPERATOR_UNSPECIFIED"
   | "EXACT_MATCH"
   | "CONTAINS";
-export const GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryMatchOperatorEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryMatchOperatorEnum = S.String;
 
 /** Suggestion deny list entry identifying the phrase to block from suggestions and the applied operation for the phrase. */
 export interface GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry {
@@ -11320,7 +11170,7 @@ export interface GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry {
     | GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryMatchOperatorEnum
     | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockPhrase: S.optional(S.String),
     matchOperator: S.optional(
@@ -11333,7 +11183,7 @@ export const GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry = /*@__PURE
 
 export type GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryList =
   Array<GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry>;
-export const GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryList>;
 
@@ -11342,7 +11192,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntries
   /** Required. A list of all denylist entries to import. Max of 1000 items. */
   entries?: GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryList;
 }
-export const GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequestInlineSource =
+const GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequestInlineSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       entries: S.optional(GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntryList),
@@ -11359,7 +11209,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntries
   /** The Inline source for the input content for suggestion deny list entries. */
   inlineSource?: GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequestInlineSource;
 }
-export const GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest =
+const GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       gcsSource: S.optional(GoogleCloudDiscoveryengineV1betaGcsSource),
@@ -11377,7 +11227,7 @@ export interface ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListE
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest;
 }
-export const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest =
+const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -11406,12 +11256,10 @@ export type GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnum =
   | "CANVAS_NOT_GENERATED"
   | "CANVAS_QUALITY_BAD"
   | "CANVAS_EXPORT_FAILED";
-export const GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnum = S.String;
-
 export type GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList = Array<
   GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnum | (string & {})
 >;
-export const GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList =
+const GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList =
   GoogleCloudDiscoveryengineV1betaControlUseCasesItemEnumList as any as S.Schema<GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList>;
 
 /** The conversation information such as the question index and session name. */
@@ -11427,15 +11275,14 @@ export interface GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo {
   /** Required. The user's search query. */
   query?: GoogleCloudDiscoveryengineV1betaQuery;
 }
-export const GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      session: S.optional(S.String),
-      assistToken: S.optional(S.String),
-      answerQueryToken: S.optional(S.String),
-      questionIndex: S.optional(S.Number),
-      query: S.optional(GoogleCloudDiscoveryengineV1betaQuery),
-    }),
+const GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session: S.optional(S.String),
+    assistToken: S.optional(S.String),
+    answerQueryToken: S.optional(S.String),
+    questionIndex: S.optional(S.Number),
+    query: S.optional(GoogleCloudDiscoveryengineV1betaQuery),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaFeedbackConversationInfo>;
@@ -11446,13 +11293,13 @@ export type GoogleCloudDiscoveryengineV1betaFeedbackFeedbackSourceEnum =
   | "GOOGLE_WIDGET"
   | "GOOGLE_WEBAPP"
   | "GOOGLE_AGENTSPACE_MOBILE";
-export const GoogleCloudDiscoveryengineV1betaFeedbackFeedbackSourceEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaFeedbackFeedbackSourceEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaFeedbackFeedbackTypeEnum =
   | "FEEDBACK_TYPE_UNSPECIFIED"
   | "LIKE"
   | "DISLIKE";
-export const GoogleCloudDiscoveryengineV1betaFeedbackFeedbackTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaFeedbackFeedbackTypeEnum = S.String;
 
 /** Information about the user feedback. This information will be used for logging and metrics purpose. */
 export interface GoogleCloudDiscoveryengineV1betaFeedback {
@@ -11473,7 +11320,7 @@ export interface GoogleCloudDiscoveryengineV1betaFeedback {
   /** Required. Indicate whether the user gives a positive or negative feedback. If the user gives a negative feedback, there might be more feedback details. */
   feedbackType?: GoogleCloudDiscoveryengineV1betaFeedbackFeedbackTypeEnum | (string & {});
 }
-export const GoogleCloudDiscoveryengineV1betaFeedback = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasons: S.optional(GoogleCloudDiscoveryengineV1betaFeedbackReasonsItemEnumList),
     dataTermsAccepted: S.optional(S.Boolean),
@@ -11503,7 +11350,7 @@ export interface GoogleCloudDiscoveryengineV1betaTransactionInfo {
   /** Required. Currency code. Use three-character ISO-4217 code. */
   currency?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaTransactionInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaTransactionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discountValue: S.optional(S.Number),
     cost: S.optional(S.Number),
@@ -11533,7 +11380,7 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentInfo {
   /** Quantity of the Document associated with the user event. Defaults to 1. For example, this field is 2 if two quantities of the same Document are involved in a `add-to-cart` event. Required for events of the following event types: * `add-to-cart` * `purchase` */
   quantity?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaDocumentInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaDocumentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promotionIds: S.optional(StringList),
     joined: S.optional(S.Boolean),
@@ -11549,7 +11396,7 @@ export const GoogleCloudDiscoveryengineV1betaDocumentInfo = /*@__PURE__*/ S.susp
 
 export type GoogleCloudDiscoveryengineV1betaDocumentInfoList =
   Array<GoogleCloudDiscoveryengineV1betaDocumentInfo>;
-export const GoogleCloudDiscoveryengineV1betaDocumentInfoList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaDocumentInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaDocumentInfo,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDocumentInfoList>;
 
@@ -11566,7 +11413,7 @@ export interface GoogleCloudDiscoveryengineV1betaPanelInfo {
   /** The ordered position of the panel, if shown to the user with other panels. If set, then total_panels must also be set. */
   panelPosition?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaPanelInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaPanelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     panelId: S.optional(S.String),
     documents: S.optional(GoogleCloudDiscoveryengineV1betaDocumentInfoList),
@@ -11580,7 +11427,7 @@ export const GoogleCloudDiscoveryengineV1betaPanelInfo = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDiscoveryengineV1betaPanelInfoList =
   Array<GoogleCloudDiscoveryengineV1betaPanelInfo>;
-export const GoogleCloudDiscoveryengineV1betaPanelInfoList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaPanelInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaPanelInfo,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaPanelInfoList>;
 
@@ -11591,7 +11438,7 @@ export interface GoogleCloudDiscoveryengineV1betaMediaInfo {
   /** Media progress should be computed using only the media_progress_duration relative to the media total length. This value must be between `[0, 1.0]` inclusive. If this is not a playback or the progress cannot be computed (e.g. ongoing livestream), this field should be unset. */
   mediaProgressPercentage?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaMediaInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaMediaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaProgressDuration: S.optional(S.String),
     mediaProgressPercentage: S.optional(S.Number),
@@ -11611,7 +11458,7 @@ export interface GoogleCloudDiscoveryengineV1betaPageInfo {
   /** Complete URL (window.location.href) of the user's current page. When using the client side event reporting with JavaScript pixel and Google Tag Manager, this value is filled in automatically. Maximum length 5,000 characters. */
   uri?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaPageInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaPageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referrerUri: S.optional(S.String),
     pageCategory: S.optional(S.String),
@@ -11629,7 +11476,7 @@ export interface GoogleCloudDiscoveryengineV1betaCustomAttribute {
   /** The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of CustomAttribute.text or CustomAttribute.numbers should be set. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   numbers?: DoubleList;
 }
-export const GoogleCloudDiscoveryengineV1betaCustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(StringList),
     numbers: S.optional(DoubleList),
@@ -11641,7 +11488,7 @@ export const GoogleCloudDiscoveryengineV1betaCustomAttribute = /*@__PURE__*/ S.s
 export type GoogleCloudDiscoveryengineV1betaCustomAttributeMap = {
   [key: string]: GoogleCloudDiscoveryengineV1betaCustomAttribute | undefined;
 };
-export const GoogleCloudDiscoveryengineV1betaCustomAttributeMap = /*@__PURE__*/ S.Record(
+const GoogleCloudDiscoveryengineV1betaCustomAttributeMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudDiscoveryengineV1betaCustomAttribute,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCustomAttributeMap>;
@@ -11653,7 +11500,7 @@ export interface GoogleCloudDiscoveryengineV1betaCompletionInfo {
   /** Optional. End user selected CompleteQueryResponse.QuerySuggestion.suggestion. */
   selectedSuggestion?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaCompletionInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCompletionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectedPosition: S.optional(S.Number),
     selectedSuggestion: S.optional(S.String),
@@ -11671,7 +11518,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchInfo {
   /** An integer that specifies the current offset for pagination (the 0-indexed starting location, amongst the products deemed by the API as relevant). See SearchRequest.offset for definition. If this field is negative, an `INVALID_ARGUMENT` is returned. This can only be set for `search` events. Other event types should not set this field. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   offset?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String),
     searchQuery: S.optional(S.String),
@@ -11732,7 +11579,7 @@ export interface GoogleCloudDiscoveryengineV1betaUserEvent {
   /** SearchService.Search details related to the event. This field should be set for `search` event. */
   searchInfo?: GoogleCloudDiscoveryengineV1betaSearchInfo;
 }
-export const GoogleCloudDiscoveryengineV1betaUserEvent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaUserEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedback: S.optional(GoogleCloudDiscoveryengineV1betaFeedback),
     promotionIds: S.optional(StringList),
@@ -11765,7 +11612,7 @@ export const GoogleCloudDiscoveryengineV1betaUserEvent = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudDiscoveryengineV1betaUserEventList =
   Array<GoogleCloudDiscoveryengineV1betaUserEvent>;
-export const GoogleCloudDiscoveryengineV1betaUserEventList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaUserEventList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaUserEvent,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaUserEventList>;
 
@@ -11774,14 +11621,14 @@ export interface GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSo
   /** Required. A list of user events to import. Recommended max of 10k items. */
   userEvents?: GoogleCloudDiscoveryengineV1betaUserEventList;
 }
-export const GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSource = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       userEvents: S.optional(GoogleCloudDiscoveryengineV1betaUserEventList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSource>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSource",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSource>;
 
 /** Request message for the ImportUserEvents request. */
 export interface GoogleCloudDiscoveryengineV1betaImportUserEventsRequest {
@@ -11794,7 +11641,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportUserEventsRequest {
   /** The Inline source for the input content for UserEvents. */
   inlineSource?: GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSource;
 }
-export const GoogleCloudDiscoveryengineV1betaImportUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaImportUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorConfig: S.optional(GoogleCloudDiscoveryengineV1betaImportErrorConfig),
     bigquerySource: S.optional(GoogleCloudDiscoveryengineV1betaBigQuerySource),
@@ -11811,21 +11658,20 @@ export interface ImportProjectsLocationsCollectionsDataStoresUserEventsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportUserEventsRequest;
 }
-export const ImportProjectsLocationsCollectionsDataStoresUserEventsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaImportUserEventsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/userEvents:import",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsCollectionsDataStoresUserEventsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsCollectionsDataStoresUserEventsRequest>;
+const ImportProjectsLocationsCollectionsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaImportUserEventsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/userEvents:import",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ImportProjectsLocationsCollectionsDataStoresUserEventsRequest",
+}) as any as S.Schema<ImportProjectsLocationsCollectionsDataStoresUserEventsRequest>;
 
 export interface ImportProjectsLocationsDataStoresBranchesDocumentsRequest {
   /** Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Requires create/update permission. */
@@ -11833,18 +11679,17 @@ export interface ImportProjectsLocationsDataStoresBranchesDocumentsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportDocumentsRequest;
 }
-export const ImportProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaImportDocumentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/documents:import",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ImportProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaImportDocumentsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/documents:import",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ImportProjectsLocationsDataStoresBranchesDocumentsRequest",
 }) as any as S.Schema<ImportProjectsLocationsDataStoresBranchesDocumentsRequest>;
@@ -11855,23 +11700,22 @@ export interface ImportProjectsLocationsDataStoresCompletionSuggestionsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest;
 }
-export const ImportProjectsLocationsDataStoresCompletionSuggestionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/completionSuggestions:import",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
+const ImportProjectsLocationsDataStoresCompletionSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsRequest.pipe(T.HttpBody()),
     ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsDataStoresCompletionSuggestionsRequest",
-  }) as any as S.Schema<ImportProjectsLocationsDataStoresCompletionSuggestionsRequest>;
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/completionSuggestions:import",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ImportProjectsLocationsDataStoresCompletionSuggestionsRequest",
+}) as any as S.Schema<ImportProjectsLocationsDataStoresCompletionSuggestionsRequest>;
 
 export interface ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest {
   /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
@@ -11879,8 +11723,8 @@ export interface ImportProjectsLocationsDataStoresSuggestionDenyListEntriesReque
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest;
 }
-export const ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(
@@ -11893,9 +11737,9 @@ export const ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest",
-  }) as any as S.Schema<ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
+).annotate({
+  identifier: "ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest",
+}) as any as S.Schema<ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
 
 export interface ImportProjectsLocationsDataStoresUserEventsRequest {
   /** Required. Parent DataStore resource name, of the form `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` */
@@ -11903,7 +11747,7 @@ export interface ImportProjectsLocationsDataStoresUserEventsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportUserEventsRequest;
 }
-export const ImportProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaImportUserEventsRequest.pipe(T.HttpBody())),
@@ -11920,7 +11764,7 @@ export const ImportProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ 
 
 export type GoogleCloudDiscoveryengineV1betaSampleQueryList =
   Array<GoogleCloudDiscoveryengineV1betaSampleQuery>;
-export const GoogleCloudDiscoveryengineV1betaSampleQueryList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSampleQueryList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSampleQuery,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSampleQueryList>;
 
@@ -11929,7 +11773,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequestInlin
   /** Required. A list of SampleQuerys to import. Max of 1000 items. */
   sampleQueries?: GoogleCloudDiscoveryengineV1betaSampleQueryList;
 }
-export const GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequestInlineSource =
+const GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequestInlineSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sampleQueries: S.optional(GoogleCloudDiscoveryengineV1betaSampleQueryList),
@@ -11949,16 +11793,15 @@ export interface GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest {
   /** Cloud Storage location for the input content. */
   gcsSource?: GoogleCloudDiscoveryengineV1betaGcsSource;
 }
-export const GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      inlineSource: S.optional(
-        GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequestInlineSource,
-      ),
-      bigquerySource: S.optional(GoogleCloudDiscoveryengineV1betaBigQuerySource),
-      errorConfig: S.optional(GoogleCloudDiscoveryengineV1betaImportErrorConfig),
-      gcsSource: S.optional(GoogleCloudDiscoveryengineV1betaGcsSource),
-    }),
+const GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inlineSource: S.optional(
+      GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequestInlineSource,
+    ),
+    bigquerySource: S.optional(GoogleCloudDiscoveryengineV1betaBigQuerySource),
+    errorConfig: S.optional(GoogleCloudDiscoveryengineV1betaImportErrorConfig),
+    gcsSource: S.optional(GoogleCloudDiscoveryengineV1betaGcsSource),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest>;
@@ -11969,20 +11812,17 @@ export interface ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest;
 }
-export const ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/sampleQueries:import",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaImportSampleQueriesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/sampleQueries:import",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest",
 }) as any as S.Schema<ImportProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
@@ -11993,7 +11833,7 @@ export interface ImportProjectsLocationsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaImportUserEventsRequest;
 }
-export const ImportProjectsLocationsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaImportUserEventsRequest.pipe(T.HttpBody())),
@@ -12016,8 +11856,8 @@ export interface ListIdentityMappingsProjectsLocationsIdentityMappingStoresReque
   /** A page token, received from a previous `ListIdentityMappings` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListIdentityMappings` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       identityMappingStore: S.String.pipe(T.Label()),
@@ -12029,9 +11869,9 @@ export const ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
-  }) as any as S.Schema<ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
+).annotate({
+  identifier: "ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
+}) as any as S.Schema<ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
 
 /** Response message for IdentityMappingStoreService.ListIdentityMappings */
 export interface GoogleCloudDiscoveryengineV1betaListIdentityMappingsResponse {
@@ -12040,12 +11880,11 @@ export interface GoogleCloudDiscoveryengineV1betaListIdentityMappingsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListIdentityMappingsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      identityMappingEntries: S.optional(GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaListIdentityMappingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identityMappingEntries: S.optional(GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaListIdentityMappingsResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListIdentityMappingsResponse>;
@@ -12054,7 +11893,7 @@ export interface ListProjectsLocationsCmekConfigsRequest {
   /** Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If the caller does not have permission to list CmekConfigs under this location, regardless of whether or not a CmekConfig exists, a PERMISSION_DENIED error is returned. */
   parent: string;
 }
-export const ListProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -12070,7 +11909,7 @@ export const ListProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudDiscoveryengineV1betaCmekConfigList =
   Array<GoogleCloudDiscoveryengineV1betaCmekConfig>;
-export const GoogleCloudDiscoveryengineV1betaCmekConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaCmekConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaCmekConfig,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCmekConfigList>;
 
@@ -12079,7 +11918,7 @@ export interface GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse {
   /** All the customer's CmekConfigs. */
   cmekConfigs?: GoogleCloudDiscoveryengineV1betaCmekConfigList;
 }
-export const GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListCmekConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmekConfigs: S.optional(GoogleCloudDiscoveryengineV1betaCmekConfigList),
   }),
@@ -12099,27 +11938,26 @@ export interface ListProjectsLocationsCollectionsDataConnectorOperationsRequest 
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCollectionsDataConnectorOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}/operations",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCollectionsDataConnectorOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCollectionsDataConnectorOperationsRequest>;
+const ListProjectsLocationsCollectionsDataConnectorOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}/operations",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsCollectionsDataConnectorOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -12132,7 +11970,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(GoogleLongrunningOperationList),
@@ -12152,7 +11990,7 @@ export interface ListProjectsLocationsCollectionsDataStoresRequest {
   /** A page token ListDataStoresResponse.next_page_token, received from a previous DataStoreService.ListDataStores call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DataStoreService.ListDataStores must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -12171,7 +12009,7 @@ export const ListProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S
 
 export type GoogleCloudDiscoveryengineV1betaDataStoreList =
   Array<GoogleCloudDiscoveryengineV1betaDataStore>;
-export const GoogleCloudDiscoveryengineV1betaDataStoreList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaDataStoreList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaDataStore,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDataStoreList>;
 
@@ -12182,7 +12020,7 @@ export interface GoogleCloudDiscoveryengineV1betaListDataStoresResponse {
   /** All the customer's DataStores. */
   dataStores?: GoogleCloudDiscoveryengineV1betaDataStoreList;
 }
-export const GoogleCloudDiscoveryengineV1betaListDataStoresResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListDataStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     dataStores: S.optional(GoogleCloudDiscoveryengineV1betaDataStoreList),
@@ -12199,8 +12037,8 @@ export interface ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequ
   /** Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Use `default_branch` as the branch ID, to list documents under the default branch. If the caller does not have permission to list Documents under this branch, regardless of whether or not this branch exists, a `PERMISSION_DENIED` error is returned. */
   parent: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -12212,9 +12050,9 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest 
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
+}) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 /** Response message for DocumentService.ListDocuments method. */
 export interface GoogleCloudDiscoveryengineV1betaListDocumentsResponse {
@@ -12223,7 +12061,7 @@ export interface GoogleCloudDiscoveryengineV1betaListDocumentsResponse {
   /** The Documents. */
   documents?: GoogleCloudDiscoveryengineV1betaDocumentList;
 }
-export const GoogleCloudDiscoveryengineV1betaListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     documents: S.optional(GoogleCloudDiscoveryengineV1betaDocumentList),
@@ -12244,8 +12082,8 @@ export interface ListProjectsLocationsCollectionsDataStoresBranchesOperationsReq
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -12259,9 +12097,9 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
 export interface ListProjectsLocationsCollectionsDataStoresControlsRequest {
   /** Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page. */
@@ -12273,27 +12111,26 @@ export interface ListProjectsLocationsCollectionsDataStoresControlsRequest {
   /** Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/controls",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/controls",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsCollectionsDataStoresControlsRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresControlsRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaControlList =
   Array<GoogleCloudDiscoveryengineV1betaControl>;
-export const GoogleCloudDiscoveryengineV1betaControlList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaControlList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaControl,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaControlList>;
 
@@ -12304,7 +12141,7 @@ export interface GoogleCloudDiscoveryengineV1betaListControlsResponse {
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListControlsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListControlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controls: S.optional(GoogleCloudDiscoveryengineV1betaControlList),
     nextPageToken: S.optional(S.String),
@@ -12325,28 +12162,27 @@ export interface ListProjectsLocationsCollectionsDataStoresConversationsRequest 
   /** A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example: "user_pseudo_id = some_id" */
   filter?: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/conversations",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCollectionsDataStoresConversationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresConversationsRequest>;
+const ListProjectsLocationsCollectionsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/conversations",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsCollectionsDataStoresConversationsRequest",
+}) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaConversationList =
   Array<GoogleCloudDiscoveryengineV1betaConversation>;
-export const GoogleCloudDiscoveryengineV1betaConversationList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaConversationList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaConversation,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaConversationList>;
 
@@ -12357,12 +12193,11 @@ export interface GoogleCloudDiscoveryengineV1betaListConversationsResponse {
   /** All the Conversations for a given data store. */
   conversations?: GoogleCloudDiscoveryengineV1betaConversationList;
 }
-export const GoogleCloudDiscoveryengineV1betaListConversationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      conversations: S.optional(GoogleCloudDiscoveryengineV1betaConversationList),
-    }),
+const GoogleCloudDiscoveryengineV1betaListConversationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    conversations: S.optional(GoogleCloudDiscoveryengineV1betaConversationList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaListConversationsResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListConversationsResponse>;
@@ -12371,20 +12206,19 @@ export interface ListProjectsLocationsCollectionsDataStoresCustomModelsRequest {
   /** Required. The resource name of the parent Data Store, such as `projects/*\/locations/global/collections/default_collection/dataStores/default_data_store`. This field is used to identify the data store where to fetch the models from. */
   dataStore: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresCustomModelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataStore: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+dataStore}/customModels",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCollectionsDataStoresCustomModelsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresCustomModelsRequest>;
+const ListProjectsLocationsCollectionsDataStoresCustomModelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataStore: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+dataStore}/customModels",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsCollectionsDataStoresCustomModelsRequest",
+}) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresCustomModelsRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaCustomTuningModelModelStateEnum =
   | "MODEL_STATE_UNSPECIFIED"
@@ -12395,10 +12229,10 @@ export type GoogleCloudDiscoveryengineV1betaCustomTuningModelModelStateEnum =
   | "TRAINING_FAILED"
   | "NO_IMPROVEMENT"
   | "INPUT_VALIDATION_FAILED";
-export const GoogleCloudDiscoveryengineV1betaCustomTuningModelModelStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaCustomTuningModelModelStateEnum = S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
-export const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
+const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
 
 /** Metadata that describes a custom tuned model. */
 export interface GoogleCloudDiscoveryengineV1betaCustomTuningModel {
@@ -12419,7 +12253,7 @@ export interface GoogleCloudDiscoveryengineV1betaCustomTuningModel {
   /** Currently this is only populated if the model state is `INPUT_VALIDATION_FAILED`. */
   errorMessage?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaCustomTuningModel = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCustomTuningModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -12436,7 +12270,7 @@ export const GoogleCloudDiscoveryengineV1betaCustomTuningModel = /*@__PURE__*/ S
 
 export type GoogleCloudDiscoveryengineV1betaCustomTuningModelList =
   Array<GoogleCloudDiscoveryengineV1betaCustomTuningModel>;
-export const GoogleCloudDiscoveryengineV1betaCustomTuningModelList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaCustomTuningModelList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaCustomTuningModel,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaCustomTuningModelList>;
 
@@ -12445,11 +12279,10 @@ export interface GoogleCloudDiscoveryengineV1betaListCustomModelsResponse {
   /** List of custom tuning models. */
   models?: GoogleCloudDiscoveryengineV1betaCustomTuningModelList;
 }
-export const GoogleCloudDiscoveryengineV1betaListCustomModelsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      models: S.optional(GoogleCloudDiscoveryengineV1betaCustomTuningModelList),
-    }),
+const GoogleCloudDiscoveryengineV1betaListCustomModelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    models: S.optional(GoogleCloudDiscoveryengineV1betaCustomTuningModelList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaListCustomModelsResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListCustomModelsResponse>;
@@ -12466,8 +12299,8 @@ export interface ListProjectsLocationsCollectionsDataStoresModelsOperationsReque
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
       filter: S.optional(S.String.pipe(T.Query())),
@@ -12481,9 +12314,9 @@ export const ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
 
 export interface ListProjectsLocationsCollectionsDataStoresOperationsRequest {
   /** The standard list filter. */
@@ -12497,21 +12330,20 @@ export interface ListProjectsLocationsCollectionsDataStoresOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}/operations",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsCollectionsDataStoresOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}/operations",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsCollectionsDataStoresOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresOperationsRequest>;
@@ -12524,26 +12356,25 @@ export interface ListProjectsLocationsCollectionsDataStoresSchemasRequest {
   /** Required. The parent data store resource name, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. */
   parent: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/schemas",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/schemas",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsCollectionsDataStoresSchemasRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaSchemaList =
   Array<GoogleCloudDiscoveryengineV1betaSchema>;
-export const GoogleCloudDiscoveryengineV1betaSchemaList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSchemaList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSchema,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSchemaList>;
 
@@ -12554,7 +12385,7 @@ export interface GoogleCloudDiscoveryengineV1betaListSchemasResponse {
   /** The Schemas. */
   schemas?: GoogleCloudDiscoveryengineV1betaSchemaList;
 }
-export const GoogleCloudDiscoveryengineV1betaListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     schemas: S.optional(GoogleCloudDiscoveryengineV1betaSchemaList),
@@ -12575,8 +12406,8 @@ export interface ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequ
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       filter: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -12590,9 +12421,9 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest 
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest",
+}) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
 
 export interface ListProjectsLocationsCollectionsDataStoresServingConfigsRequest {
   /** Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. */
@@ -12602,8 +12433,8 @@ export interface ListProjectsLocationsCollectionsDataStoresServingConfigsRequest
   /** Required. Full resource name of the parent resource. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
   parent: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -12615,13 +12446,13 @@ export const ListProjectsLocationsCollectionsDataStoresServingConfigsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-  }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+}) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaServingConfigList =
   Array<GoogleCloudDiscoveryengineV1betaServingConfig>;
-export const GoogleCloudDiscoveryengineV1betaServingConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaServingConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaServingConfig,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaServingConfigList>;
 
@@ -12632,12 +12463,11 @@ export interface GoogleCloudDiscoveryengineV1betaListServingConfigsResponse {
   /** All the ServingConfigs for a given dataStore. */
   servingConfigs?: GoogleCloudDiscoveryengineV1betaServingConfigList;
 }
-export const GoogleCloudDiscoveryengineV1betaListServingConfigsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      servingConfigs: S.optional(GoogleCloudDiscoveryengineV1betaServingConfigList),
-    }),
+const GoogleCloudDiscoveryengineV1betaListServingConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    servingConfigs: S.optional(GoogleCloudDiscoveryengineV1betaServingConfigList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaListServingConfigsResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListServingConfigsResponse>;
@@ -12654,28 +12484,27 @@ export interface ListProjectsLocationsCollectionsDataStoresSessionsRequest {
   /** A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/sessions",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/sessions",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsCollectionsDataStoresSessionsRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaSessionList =
   Array<GoogleCloudDiscoveryengineV1betaSession>;
-export const GoogleCloudDiscoveryengineV1betaSessionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSessionList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSession,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSessionList>;
 
@@ -12686,7 +12515,7 @@ export interface GoogleCloudDiscoveryengineV1betaListSessionsResponse {
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessions: S.optional(GoogleCloudDiscoveryengineV1betaSessionList),
     nextPageToken: S.optional(S.String),
@@ -12707,7 +12536,7 @@ export interface ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOpera
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest =
+const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -12734,7 +12563,7 @@ export interface ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTarge
   /** A page token, received from a previous `ListTargetSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargetSites` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
+const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -12760,7 +12589,7 @@ export interface GoogleCloudDiscoveryengineV1betaListTargetSitesResponse {
   /** List of TargetSites. */
   targetSites?: GoogleCloudDiscoveryengineV1betaTargetSiteList;
 }
-export const GoogleCloudDiscoveryengineV1betaListTargetSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListTargetSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.Number),
     nextPageToken: S.optional(S.String),
@@ -12782,7 +12611,7 @@ export interface ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTarge
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest =
+const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -12812,7 +12641,7 @@ export interface ListProjectsLocationsCollectionsEnginesRequest {
   /** Optional. Not supported. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -12831,7 +12660,7 @@ export const ListProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.su
 
 export type GoogleCloudDiscoveryengineV1betaEngineList =
   Array<GoogleCloudDiscoveryengineV1betaEngine>;
-export const GoogleCloudDiscoveryengineV1betaEngineList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaEngineList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaEngine,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEngineList>;
 
@@ -12842,7 +12671,7 @@ export interface GoogleCloudDiscoveryengineV1betaListEnginesResponse {
   /** Not supported. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListEnginesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListEnginesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engines: S.optional(GoogleCloudDiscoveryengineV1betaEngineList),
     nextPageToken: S.optional(S.String),
@@ -12859,26 +12688,25 @@ export interface ListProjectsLocationsCollectionsEnginesAssistantsRequest {
   /** Required. The parent resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
   parent: string;
 }
-export const ListProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/assistants",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/assistants",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsCollectionsEnginesAssistantsRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 export type GoogleCloudDiscoveryengineV1betaAssistantList =
   Array<GoogleCloudDiscoveryengineV1betaAssistant>;
-export const GoogleCloudDiscoveryengineV1betaAssistantList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaAssistantList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaAssistant,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaAssistantList>;
 
@@ -12889,7 +12717,7 @@ export interface GoogleCloudDiscoveryengineV1betaListAssistantsResponse {
   /** A token that can be sent as ListAssistantsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListAssistantsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListAssistantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assistants: S.optional(GoogleCloudDiscoveryengineV1betaAssistantList),
     nextPageToken: S.optional(S.String),
@@ -12908,7 +12736,7 @@ export interface ListProjectsLocationsCollectionsEnginesControlsRequest {
   /** Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -12937,21 +12765,20 @@ export interface ListProjectsLocationsCollectionsEnginesConversationsRequest {
   /** A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `conversation_name` Example: "update_time desc" "create_time" */
   orderBy?: string;
 }
-export const ListProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/conversations",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/conversations",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsCollectionsEnginesConversationsRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectionsEnginesConversationsRequest>;
@@ -12968,21 +12795,20 @@ export interface ListProjectsLocationsCollectionsEnginesOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsCollectionsEnginesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}/operations",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsCollectionsEnginesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}/operations",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsCollectionsEnginesOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectionsEnginesOperationsRequest>;
@@ -12995,19 +12821,18 @@ export interface ListProjectsLocationsCollectionsEnginesServingConfigsRequest {
   /** Required. Full resource name of the parent resource. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
   parent: string;
 }
-export const ListProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/servingConfigs",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/servingConfigs",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsCollectionsEnginesServingConfigsRequest",
 }) as any as S.Schema<ListProjectsLocationsCollectionsEnginesServingConfigsRequest>;
@@ -13024,7 +12849,7 @@ export interface ListProjectsLocationsCollectionsEnginesSessionsRequest {
   /** A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -13054,7 +12879,7 @@ export interface ListProjectsLocationsCollectionsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCollectionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -13082,7 +12907,7 @@ export interface ListProjectsLocationsDataStoresRequest {
   /** Filter by solution type . For example: `filter = 'solution_type:SOLUTION_TYPE_SEARCH'` */
   filter?: string;
 }
-export const ListProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -13107,7 +12932,7 @@ export interface ListProjectsLocationsDataStoresBranchesDocumentsRequest {
   /** A page token ListDocumentsResponse.next_page_token, received from a previous DocumentService.ListDocuments call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DocumentService.ListDocuments must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -13135,21 +12960,20 @@ export interface ListProjectsLocationsDataStoresBranchesOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsDataStoresBranchesOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}/operations",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsDataStoresBranchesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}/operations",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsDataStoresBranchesOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsDataStoresBranchesOperationsRequest>;
@@ -13164,7 +12988,7 @@ export interface ListProjectsLocationsDataStoresControlsRequest {
   /** Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. Currently this field is unsupported. */
   filter?: string;
 }
-export const ListProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -13193,7 +13017,7 @@ export interface ListProjectsLocationsDataStoresConversationsRequest {
   /** A page token, received from a previous `ListConversations` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -13223,7 +13047,7 @@ export interface ListProjectsLocationsDataStoresModelsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataStoresModelsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresModelsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -13253,7 +13077,7 @@ export interface ListProjectsLocationsDataStoresOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataStoresOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -13279,7 +13103,7 @@ export interface ListProjectsLocationsDataStoresSchemasRequest {
   /** Required. The parent data store resource name, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. */
   parent: string;
 }
-export const ListProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -13303,7 +13127,7 @@ export interface ListProjectsLocationsDataStoresServingConfigsRequest {
   /** Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -13331,7 +13155,7 @@ export interface ListProjectsLocationsDataStoresSessionsRequest {
   /** Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -13357,8 +13181,8 @@ export interface ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesReque
   /** A page token, received from a previous `ListTargetSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargetSites` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -13370,9 +13194,9 @@ export const ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-  }) as any as S.Schema<ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
+}) as any as S.Schema<ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export interface ListProjectsLocationsEvaluationsRequest {
   /** Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If the caller does not have permission to list Evaluations under this location, regardless of whether or not this location exists, a `PERMISSION_DENIED` error is returned. */
@@ -13382,7 +13206,7 @@ export interface ListProjectsLocationsEvaluationsRequest {
   /** Optional. A page token ListEvaluationsResponse.next_page_token, received from a previous EvaluationService.ListEvaluations call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluations must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   pageToken?: string;
 }
-export const ListProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -13400,7 +13224,7 @@ export const ListProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudDiscoveryengineV1betaEvaluationList =
   Array<GoogleCloudDiscoveryengineV1betaEvaluation>;
-export const GoogleCloudDiscoveryengineV1betaEvaluationList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaEvaluationList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaEvaluation,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaEvaluationList>;
 
@@ -13411,7 +13235,7 @@ export interface GoogleCloudDiscoveryengineV1betaListEvaluationsResponse {
   /** A token that can be sent as ListEvaluationsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluations: S.optional(GoogleCloudDiscoveryengineV1betaEvaluationList),
     nextPageToken: S.optional(S.String),
@@ -13428,7 +13252,7 @@ export interface ListProjectsLocationsIdentityMappingStoresRequest {
   /** Maximum number of IdentityMappingStores to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -13446,7 +13270,7 @@ export const ListProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S
 
 export type GoogleCloudDiscoveryengineV1betaIdentityMappingStoreList =
   Array<GoogleCloudDiscoveryengineV1betaIdentityMappingStore>;
-export const GoogleCloudDiscoveryengineV1betaIdentityMappingStoreList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaIdentityMappingStoreList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaIdentityMappingStore,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaIdentityMappingStoreList>;
 
@@ -13457,15 +13281,15 @@ export interface GoogleCloudDiscoveryengineV1betaListIdentityMappingStoresRespon
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListIdentityMappingStoresResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaListIdentityMappingStoresResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       identityMappingStores: S.optional(GoogleCloudDiscoveryengineV1betaIdentityMappingStoreList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaListIdentityMappingStoresResponse",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListIdentityMappingStoresResponse>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaListIdentityMappingStoresResponse",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListIdentityMappingStoresResponse>;
 
 export interface ListProjectsLocationsIdentityMappingStoresOperationsRequest {
   /** The name of the operation's parent resource. */
@@ -13479,21 +13303,20 @@ export interface ListProjectsLocationsIdentityMappingStoresOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsIdentityMappingStoresOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}/operations",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsIdentityMappingStoresOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}/operations",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsIdentityMappingStoresOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsIdentityMappingStoresOperationsRequest>;
@@ -13508,7 +13331,7 @@ export interface ListProjectsLocationsLicenseConfigsRequest {
   /** Optional. The filter to apply to the list results. The supported fields are: * `subscription_tier` * `state` Examples: * `subscription_tier=SUBSCRIPTION_TIER_SEARCH,state=ACTIVE` - Lists all active search license configs. * `state=ACTIVE` - Lists all active license configs. The filter string should be a comma-separated list of field=value pairs. */
   filter?: string;
 }
-export const ListProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -13527,7 +13350,7 @@ export const ListProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudDiscoveryengineV1betaLicenseConfigList =
   Array<GoogleCloudDiscoveryengineV1betaLicenseConfig>;
-export const GoogleCloudDiscoveryengineV1betaLicenseConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaLicenseConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaLicenseConfig,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaLicenseConfigList>;
 
@@ -13538,12 +13361,11 @@ export interface GoogleCloudDiscoveryengineV1betaListLicenseConfigsResponse {
   /** All the customer's LicenseConfigs. */
   licenseConfigs?: GoogleCloudDiscoveryengineV1betaLicenseConfigList;
 }
-export const GoogleCloudDiscoveryengineV1betaListLicenseConfigsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      licenseConfigs: S.optional(GoogleCloudDiscoveryengineV1betaLicenseConfigList),
-    }),
+const GoogleCloudDiscoveryengineV1betaListLicenseConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    licenseConfigs: S.optional(GoogleCloudDiscoveryengineV1betaLicenseConfigList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaListLicenseConfigsResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListLicenseConfigsResponse>;
@@ -13560,7 +13382,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -13586,7 +13408,7 @@ export interface ListProjectsLocationsSampleQuerySetsRequest {
   /** Maximum number of SampleQuerySets to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -13604,7 +13426,7 @@ export const ListProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudDiscoveryengineV1betaSampleQuerySetList =
   Array<GoogleCloudDiscoveryengineV1betaSampleQuerySet>;
-export const GoogleCloudDiscoveryengineV1betaSampleQuerySetList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSampleQuerySetList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSampleQuerySet,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSampleQuerySetList>;
 
@@ -13615,12 +13437,11 @@ export interface GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse {
   /** A token that can be sent as ListSampleQuerySetsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sampleQuerySets: S.optional(GoogleCloudDiscoveryengineV1betaSampleQuerySetList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sampleQuerySets: S.optional(GoogleCloudDiscoveryengineV1betaSampleQuerySetList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListSampleQuerySetsResponse>;
@@ -13633,19 +13454,18 @@ export interface ListProjectsLocationsSampleQuerySetsSampleQueriesRequest {
   /** Maximum number of SampleQuerys to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/sampleQueries",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/sampleQueries",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsSampleQuerySetsSampleQueriesRequest",
 }) as any as S.Schema<ListProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
@@ -13657,12 +13477,11 @@ export interface GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse {
   /** The SampleQuerys. */
   sampleQueries?: GoogleCloudDiscoveryengineV1betaSampleQueryList;
 }
-export const GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      sampleQueries: S.optional(GoogleCloudDiscoveryengineV1betaSampleQueryList),
-    }),
+const GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    sampleQueries: S.optional(GoogleCloudDiscoveryengineV1betaSampleQueryList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListSampleQueriesResponse>;
@@ -13671,20 +13490,19 @@ export interface ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest 
   /** Required. The parent branch resource name, such as `projects/{project}/locations/{location}/userStores/{user_store_id}`. */
   parent: string;
 }
-export const ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+parent}/licenseConfigsUsageStats",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest",
-  }) as any as S.Schema<ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest>;
+const ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+parent}/licenseConfigsUsageStats",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest",
+}) as any as S.Schema<ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest>;
 
 /** Stats about users' licenses. */
 export interface GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats {
@@ -13693,7 +13511,7 @@ export interface GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats {
   /** Required. The number of licenses used. */
   usedLicenseCount?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     licenseConfig: S.optional(S.String),
     usedLicenseCount: S.optional(S.String),
@@ -13704,7 +13522,7 @@ export const GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats = /*@__PURE
 
 export type GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStatsList =
   Array<GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats>;
-export const GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStatsList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStatsList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStats,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStatsList>;
 
@@ -13713,7 +13531,7 @@ export interface GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsRes
   /** All the customer's LicenseConfigUsageStats. */
   licenseConfigUsageStats?: GoogleCloudDiscoveryengineV1betaLicenseConfigUsageStatsList;
 }
-export const GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsResponse =
+const GoogleCloudDiscoveryengineV1betaListLicenseConfigsUsageStatsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       licenseConfigUsageStats: S.optional(
@@ -13736,7 +13554,7 @@ export interface ListProjectsLocationsUserStoresUserLicensesRequest {
   /** Optional. The order in which the UserLicenses are listed. The value must be a comma-separated list of fields. Default sorting order is ascending. To specify descending order for a field, append a " desc" suffix. Redundant space characters in the syntax are insignificant. Supported fields (only `user_principal` is supported for now): * `user_principal` If not set, the default ordering is by `user_principal`. Examples: * `user_principal` to order by `user_principal` in ascending order. * `user_principal desc` to order by `user_principal` in descending order. */
   orderBy?: string;
 }
-export const ListProjectsLocationsUserStoresUserLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsUserStoresUserLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -13761,12 +13579,11 @@ export interface GoogleCloudDiscoveryengineV1betaListUserLicensesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaListUserLicensesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      userLicenses: S.optional(GoogleCloudDiscoveryengineV1betaUserLicenseList),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaListUserLicensesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userLicenses: S.optional(GoogleCloudDiscoveryengineV1betaUserLicenseList),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaListUserLicensesResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListUserLicensesResponse>;
@@ -13783,7 +13600,7 @@ export interface ListProjectsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -13809,7 +13626,7 @@ export interface ListResultsProjectsLocationsEvaluationsRequest {
   /** Optional. Maximum number of ListEvaluationResultsResponse.EvaluationResult to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. */
   pageSize?: number;
 }
-export const ListResultsProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResultsProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluation: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -13832,7 +13649,7 @@ export interface GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEv
   /** Output only. The metrics produced by the evaluation, for a given SampleQuery. */
   qualityMetrics?: GoogleCloudDiscoveryengineV1betaQualityMetrics;
 }
-export const GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResult =
+const GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       sampleQuery: S.optional(GoogleCloudDiscoveryengineV1betaSampleQuery),
@@ -13844,7 +13661,7 @@ export const GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvalua
 
 export type GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResultList =
   Array<GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResult>;
-export const GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResultList =
+const GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResult,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResultList>;
@@ -13856,24 +13673,23 @@ export interface GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse {
   /** The evaluation results for the SampleQuerys. */
   evaluationResults?: GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResultList;
 }
-export const GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      evaluationResults: S.optional(
-        GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResultList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse>;
+const GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    evaluationResults: S.optional(
+      GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponseEvaluationResultList,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaListEvaluationResultsResponse>;
 
 /** Request message for CrawlRateManagementService.ObtainCrawlRate method. */
 export interface GoogleCloudDiscoveryengineV1betaObtainCrawlRateRequest {
   /** Required. The scope of the crawl rate that the user wants to monitor. Currently, only domain and host name are supported. A domain name example: `example.com`. A host name example: `www.example.com`. Please do not include `/` in the domain or host name. */
   crawlRateScope?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaObtainCrawlRateRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaObtainCrawlRateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crawlRateScope: S.optional(S.String),
   }),
@@ -13887,7 +13703,7 @@ export interface ObtainCrawlRateProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaObtainCrawlRateRequest;
 }
-export const ObtainCrawlRateProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ObtainCrawlRateProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaObtainCrawlRateRequest.pipe(T.HttpBody())),
@@ -13906,14 +13722,14 @@ export type GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED";
-export const GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponseStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponseStateEnum = S.String;
 
 export type GoogleMonitoringV3TimeSeriesMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
   | "CUMULATIVE";
-export const GoogleMonitoringV3TimeSeriesMetricKindEnum = S.String;
+const GoogleMonitoringV3TimeSeriesMetricKindEnum = S.String;
 
 /** Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata. Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store the metadata in this message. */
 export interface GoogleApiMonitoredResourceMetadata {
@@ -13922,7 +13738,7 @@ export interface GoogleApiMonitoredResourceMetadata {
   /** Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } */
   systemLabels?: DocumentMap;
 }
-export const GoogleApiMonitoredResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiMonitoredResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userLabels: S.optional(StringMap),
     systemLabels: S.optional(DocumentMap),
@@ -13938,7 +13754,7 @@ export interface GoogleApiMonitoredResource {
   /** Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `"project_id"`, `"instance_id"`, and `"zone"`. */
   labels?: StringMap;
 }
-export const GoogleApiMonitoredResource = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiMonitoredResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -13954,7 +13770,7 @@ export interface GoogleApiMetric {
   /** The set of label values that uniquely identify this metric. All labels listed in the `MetricDescriptor` must be assigned values. */
   labels?: StringMap;
 }
-export const GoogleApiMetric = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -13970,7 +13786,7 @@ export interface GoogleApiDistributionExemplar {
   /** Value of the exemplar point. This value determines to which bucket the exemplar belongs. */
   value?: number;
 }
-export const GoogleApiDistributionExemplar = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiDistributionExemplar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     attachments: S.optional(DocumentMapList),
@@ -13981,7 +13797,7 @@ export const GoogleApiDistributionExemplar = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleApiDistributionExemplar>;
 
 export type GoogleApiDistributionExemplarList = Array<GoogleApiDistributionExemplar>;
-export const GoogleApiDistributionExemplarList = /*@__PURE__*/ S.Array(
+const GoogleApiDistributionExemplarList = /*@__PURE__*/ S.Array(
   GoogleApiDistributionExemplar,
 ) as any as S.Schema<GoogleApiDistributionExemplarList>;
 
@@ -13992,7 +13808,7 @@ export interface GoogleApiDistributionRange {
   /** The maximum of the population values. */
   max?: number;
 }
-export const GoogleApiDistributionRange = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiDistributionRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.optional(S.Number),
     max: S.optional(S.Number),
@@ -14006,7 +13822,7 @@ export interface GoogleApiDistributionBucketOptionsExplicit {
   /** The values must be monotonically increasing. */
   bounds?: DoubleList;
 }
-export const GoogleApiDistributionBucketOptionsExplicit = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiDistributionBucketOptionsExplicit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounds: S.optional(DoubleList),
   }),
@@ -14023,7 +13839,7 @@ export interface GoogleApiDistributionBucketOptionsExponential {
   /** Must be greater than 0. */
   scale?: number;
 }
-export const GoogleApiDistributionBucketOptionsExponential = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiDistributionBucketOptionsExponential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numFiniteBuckets: S.optional(S.Number),
     growthFactor: S.optional(S.Number),
@@ -14042,7 +13858,7 @@ export interface GoogleApiDistributionBucketOptionsLinear {
   /** Lower bound of the first bucket. */
   offset?: number;
 }
-export const GoogleApiDistributionBucketOptionsLinear = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiDistributionBucketOptionsLinear = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(S.Number),
     numFiniteBuckets: S.optional(S.Number),
@@ -14061,7 +13877,7 @@ export interface GoogleApiDistributionBucketOptions {
   /** The linear bucket. */
   linearBuckets?: GoogleApiDistributionBucketOptionsLinear;
 }
-export const GoogleApiDistributionBucketOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiDistributionBucketOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     explicitBuckets: S.optional(GoogleApiDistributionBucketOptionsExplicit),
     exponentialBuckets: S.optional(GoogleApiDistributionBucketOptionsExponential),
@@ -14088,7 +13904,7 @@ export interface GoogleApiDistribution {
   /** Defines the histogram bucket boundaries. If the distribution does not contain a histogram, then omit this field. */
   bucketOptions?: GoogleApiDistributionBucketOptions;
 }
-export const GoogleApiDistribution = /*@__PURE__*/ S.suspend(() =>
+const GoogleApiDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     sumOfSquaredDeviation: S.optional(S.Number),
@@ -14113,7 +13929,7 @@ export interface GoogleMonitoringV3TypedValue {
   /** A Boolean value: `true` or `false`. */
   boolValue?: boolean;
 }
-export const GoogleMonitoringV3TypedValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleMonitoringV3TypedValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distributionValue: S.optional(GoogleApiDistribution),
     stringValue: S.optional(S.String),
@@ -14132,7 +13948,7 @@ export interface GoogleMonitoringV3TimeInterval {
   /** Required. The end of the time interval. */
   endTime?: string;
 }
-export const GoogleMonitoringV3TimeInterval = /*@__PURE__*/ S.suspend(() =>
+const GoogleMonitoringV3TimeInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -14148,7 +13964,7 @@ export interface GoogleMonitoringV3Point {
   /** The time interval to which the data point applies. For `GAUGE` metrics, the start time is optional, but if it is supplied, it must equal the end time. For `DELTA` metrics, the start and end time should specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For `CUMULATIVE` metrics, the start and end time should specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. */
   interval?: GoogleMonitoringV3TimeInterval;
 }
-export const GoogleMonitoringV3Point = /*@__PURE__*/ S.suspend(() =>
+const GoogleMonitoringV3Point = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GoogleMonitoringV3TypedValue),
     interval: S.optional(GoogleMonitoringV3TimeInterval),
@@ -14156,7 +13972,7 @@ export const GoogleMonitoringV3Point = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleMonitoringV3Point" }) as any as S.Schema<GoogleMonitoringV3Point>;
 
 export type GoogleMonitoringV3PointList = Array<GoogleMonitoringV3Point>;
-export const GoogleMonitoringV3PointList = /*@__PURE__*/ S.Array(
+const GoogleMonitoringV3PointList = /*@__PURE__*/ S.Array(
   GoogleMonitoringV3Point,
 ) as any as S.Schema<GoogleMonitoringV3PointList>;
 
@@ -14168,7 +13984,7 @@ export type GoogleMonitoringV3TimeSeriesValueTypeEnum =
   | "STRING"
   | "DISTRIBUTION"
   | "MONEY";
-export const GoogleMonitoringV3TimeSeriesValueTypeEnum = S.String;
+const GoogleMonitoringV3TimeSeriesValueTypeEnum = S.String;
 
 /** A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series. */
 export interface GoogleMonitoringV3TimeSeries {
@@ -14189,7 +14005,7 @@ export interface GoogleMonitoringV3TimeSeries {
   /** The value type of the time series. When listing time series, this value type might be different from the value type of the associated metric if this time series is an alignment or reduction of other time series. When creating a time series, this field is optional. If present, it must be the same as the type of the data in the `points` field. */
   valueType?: GoogleMonitoringV3TimeSeriesValueTypeEnum;
 }
-export const GoogleMonitoringV3TimeSeries = /*@__PURE__*/ S.suspend(() =>
+const GoogleMonitoringV3TimeSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     metricKind: S.optional(GoogleMonitoringV3TimeSeriesMetricKindEnum),
@@ -14209,7 +14025,7 @@ export interface GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries {
   /** The QPS of the crawl rate. */
   qpsTimeSeries?: GoogleMonitoringV3TimeSeries;
 }
-export const GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     qpsTimeSeries: S.optional(GoogleMonitoringV3TimeSeries),
   }),
@@ -14228,14 +14044,13 @@ export interface GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries {
   /** Vertex AI's error rate time series of auto-refresh dedicated crawl. */
   autoRefreshCrawlErrorRate?: GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries;
 }
-export const GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      userTriggeredCrawlErrorRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
-      userTriggeredCrawlRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
-      autoRefreshCrawlRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
-      autoRefreshCrawlErrorRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
-    }),
+const GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userTriggeredCrawlErrorRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
+    userTriggeredCrawlRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
+    autoRefreshCrawlRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
+    autoRefreshCrawlErrorRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries>;
@@ -14247,12 +14062,11 @@ export interface GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries {
   /** Google's organic crawl rate time series, which is the sum of all googlebots' crawl rate. Please refer to https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers for more details about googlebots. */
   googleOrganicCrawlRate?: GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries;
 }
-export const GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      vertexAiOrganicCrawlRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
-      googleOrganicCrawlRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
-    }),
+const GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vertexAiOrganicCrawlRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
+    googleOrganicCrawlRate: S.optional(GoogleCloudDiscoveryengineV1betaCrawlRateTimeSeries),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries>;
@@ -14268,7 +14082,7 @@ export interface GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse {
   /** The historical organic crawl rate timeseries data, used for monitoring. */
   organicCrawlRateTimeSeries?: GoogleCloudDiscoveryengineV1betaOrganicCrawlRateTimeSeries;
 }
-export const GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudDiscoveryengineV1betaObtainCrawlRateResponseStateEnum),
     error: S.optional(GoogleRpcStatus),
@@ -14291,7 +14105,7 @@ export interface PatchProjectsLocationsCmekConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaCmekConfig;
 }
-export const PatchProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCmekConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     setDefault: S.optional(S.Boolean.pipe(T.Query())),
@@ -14315,7 +14129,7 @@ export interface PatchProjectsLocationsCollectionsDataStoresRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDataStore;
 }
-export const PatchProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14341,8 +14155,8 @@ export interface PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsReq
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDocument;
 }
-export const PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -14355,9 +14169,9 @@ export const PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
+}) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 export interface PatchProjectsLocationsCollectionsDataStoresControlsRequest {
   /** Immutable. Fully qualified name `projects/*\/locations/global/dataStore/*\/controls/*` */
@@ -14367,19 +14181,18 @@ export interface PatchProjectsLocationsCollectionsDataStoresControlsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaControl;
 }
-export const PatchProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaControl.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsCollectionsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaControl.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsCollectionsDataStoresControlsRequest",
 }) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresControlsRequest>;
@@ -14392,8 +14205,8 @@ export interface PatchProjectsLocationsCollectionsDataStoresConversationsRequest
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConversation;
 }
-export const PatchProjectsLocationsCollectionsDataStoresConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCollectionsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14405,9 +14218,9 @@ export const PatchProjectsLocationsCollectionsDataStoresConversationsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCollectionsDataStoresConversationsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresConversationsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsCollectionsDataStoresConversationsRequest",
+}) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
 export interface PatchProjectsLocationsCollectionsDataStoresSchemasRequest {
   /** Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. */
@@ -14417,19 +14230,18 @@ export interface PatchProjectsLocationsCollectionsDataStoresSchemasRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSchema;
 }
-export const PatchProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSchema.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsCollectionsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSchema.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsCollectionsDataStoresSchemasRequest",
 }) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresSchemasRequest>;
@@ -14442,8 +14254,8 @@ export interface PatchProjectsLocationsCollectionsDataStoresServingConfigsReques
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaServingConfig;
 }
-export const PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14455,9 +14267,9 @@ export const PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+}) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export interface PatchProjectsLocationsCollectionsDataStoresSessionsRequest {
   /** Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*` */
@@ -14467,19 +14279,18 @@ export interface PatchProjectsLocationsCollectionsDataStoresSessionsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSession;
 }
-export const PatchProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSession.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsCollectionsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSession.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsCollectionsDataStoresSessionsRequest",
 }) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresSessionsRequest>;
@@ -14490,7 +14301,7 @@ export interface PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTarg
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaTargetSite;
 }
-export const PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
+const PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -14514,7 +14325,7 @@ export interface PatchProjectsLocationsCollectionsEnginesRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaEngine;
 }
-export const PatchProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14538,19 +14349,18 @@ export interface PatchProjectsLocationsCollectionsEnginesAssistantsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAssistant;
 }
-export const PatchProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaAssistant.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaAssistant.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsCollectionsEnginesAssistantsRequest",
 }) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsRequest>;
@@ -14563,7 +14373,7 @@ export interface PatchProjectsLocationsCollectionsEnginesControlsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaControl;
 }
-export const PatchProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCollectionsEnginesControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -14587,19 +14397,18 @@ export interface PatchProjectsLocationsCollectionsEnginesConversationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConversation;
 }
-export const PatchProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaConversation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsCollectionsEnginesConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaConversation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsCollectionsEnginesConversationsRequest",
 }) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesConversationsRequest>;
@@ -14612,22 +14421,21 @@ export interface PatchProjectsLocationsCollectionsEnginesServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaServingConfig;
 }
-export const PatchProjectsLocationsCollectionsEnginesServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaServingConfig.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsCollectionsEnginesServingConfigsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+const PatchProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaServingConfig.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsCollectionsEnginesServingConfigsRequest",
+}) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export interface PatchProjectsLocationsCollectionsEnginesSessionsRequest {
   /** Indicates which fields in the provided Session to update. The following are NOT supported: * Session.name If not set or empty, all supported fields are updated. */
@@ -14637,7 +14445,7 @@ export interface PatchProjectsLocationsCollectionsEnginesSessionsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSession;
 }
-export const PatchProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCollectionsEnginesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14661,7 +14469,7 @@ export interface PatchProjectsLocationsDataStoresRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDataStore;
 }
-export const PatchProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14687,20 +14495,19 @@ export interface PatchProjectsLocationsDataStoresBranchesDocumentsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaDocument;
 }
-export const PatchProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaDocument.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaDocument.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsDataStoresBranchesDocumentsRequest",
 }) as any as S.Schema<PatchProjectsLocationsDataStoresBranchesDocumentsRequest>;
@@ -14713,7 +14520,7 @@ export interface PatchProjectsLocationsDataStoresControlsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaControl;
 }
-export const PatchProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataStoresControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14737,7 +14544,7 @@ export interface PatchProjectsLocationsDataStoresConversationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaConversation;
 }
-export const PatchProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataStoresConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14761,7 +14568,7 @@ export interface PatchProjectsLocationsDataStoresSchemasRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSchema;
 }
-export const PatchProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataStoresSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -14785,7 +14592,7 @@ export interface PatchProjectsLocationsDataStoresServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaServingConfig;
 }
-export const PatchProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14809,7 +14616,7 @@ export interface PatchProjectsLocationsDataStoresSessionsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSession;
 }
-export const PatchProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataStoresSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14831,8 +14638,8 @@ export interface PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequ
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaTargetSite;
 }
-export const PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDiscoveryengineV1betaTargetSite.pipe(T.HttpBody())),
@@ -14843,9 +14650,9 @@ export const PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest 
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-  }) as any as S.Schema<PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
+}) as any as S.Schema<PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
 export interface PatchProjectsLocationsLicenseConfigsRequest {
   /** Optional. Indicates which fields in the provided LicenseConfig to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. */
@@ -14855,7 +14662,7 @@ export interface PatchProjectsLocationsLicenseConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaLicenseConfig;
 }
-export const PatchProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsLicenseConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14879,7 +14686,7 @@ export interface PatchProjectsLocationsSampleQuerySetsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSampleQuerySet;
 }
-export const PatchProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSampleQuerySetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14903,19 +14710,18 @@ export interface PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSampleQuery;
 }
-export const PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSampleQuery.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSampleQuery.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest",
 }) as any as S.Schema<PatchProjectsLocationsSampleQuerySetsSampleQueriesRequest>;
@@ -14928,7 +14734,7 @@ export interface PatchProjectsLocationsUserStoresRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaUserStore;
 }
-export const PatchProjectsLocationsUserStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsUserStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -14947,16 +14753,13 @@ export const PatchProjectsLocationsUserStoresRequest = /*@__PURE__*/ S.suspend((
 /** Request for pausing training of an engine. */
 export type GoogleCloudDiscoveryengineV1betaPauseEngineRequest =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaPauseEngineRequest =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 export interface PauseProjectsLocationsCollectionsEnginesRequest {
   /** Required. The name of the engine to pause. Format: `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}` */
   name: string;
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const PauseProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -14980,15 +14783,15 @@ export interface GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasPara
   /** Optional. Set to `true` to specify that caller has read and would like to give consent to the [Terms for Agent Space quality of service]. */
   acceptBizQos?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       isBiz: S.optional(S.Boolean),
       acceptBizQos: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams>;
 
 /** Request for ProjectService.ProvisionProject method. */
 export interface GoogleCloudDiscoveryengineV1betaProvisionProjectRequest {
@@ -14999,7 +14802,7 @@ export interface GoogleCloudDiscoveryengineV1betaProvisionProjectRequest {
   /** Required. Set to `true` to specify that caller has read and would like to give consent to the [Terms for data use](https://cloud.google.com/retail/data-use-terms). */
   acceptDataUseTerms?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaProvisionProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaProvisionProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     saasParams: S.optional(GoogleCloudDiscoveryengineV1betaProvisionProjectRequestSaasParams),
     dataUseTermsVersion: S.optional(S.String),
@@ -15015,7 +14818,7 @@ export interface ProvisionProjectsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaProvisionProjectRequest;
 }
-export const ProvisionProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaProvisionProjectRequest.pipe(T.HttpBody())),
@@ -15034,7 +14837,7 @@ export interface ProvisionProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaProvisionProjectRequest;
 }
-export const ProvisionProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaProvisionProjectRequest.pipe(T.HttpBody())),
@@ -15054,7 +14857,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInl
   /** A maximum of 10000 entries can be purged at one time */
   identityMappingEntries?: GoogleCloudDiscoveryengineV1betaIdentityMappingEntryList;
 }
-export const GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource =
+const GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource =
   GoogleCloudDiscoveryengineV1betaImportIdentityMappingsRequestInlineSource as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource>;
 
 /** Request message for IdentityMappingStoreService.PurgeIdentityMappings */
@@ -15066,15 +14869,14 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequest {
   /** The inline source to purge identity mapping entries from. */
   inlineSource?: GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource;
 }
-export const GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      force: S.optional(S.Boolean),
-      filter: S.optional(S.String),
-      inlineSource: S.optional(
-        GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    force: S.optional(S.Boolean),
+    filter: S.optional(S.String),
+    inlineSource: S.optional(
+      GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequestInlineSource,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequest",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequest>;
@@ -15085,8 +14887,8 @@ export interface PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequ
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaPurgeIdentityMappingsRequest;
 }
-export const PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       identityMappingStore: S.String.pipe(T.Label()),
       body: S.optional(
@@ -15099,16 +14901,16 @@ export const PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest 
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
-  }) as any as S.Schema<PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
+).annotate({
+  identifier: "PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
+}) as any as S.Schema<PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
 
 /** Configuration of destination for Purge related errors. */
 export interface GoogleCloudDiscoveryengineV1betaPurgeErrorConfig {
   /** Cloud Storage prefix for purge errors. This must be an empty, existing Cloud Storage directory. Purge errors are written to sharded files in this directory, one per line, as a JSON-encoded `google.rpc.Status` message. */
   gcsPrefix?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaPurgeErrorConfig =
+const GoogleCloudDiscoveryengineV1betaPurgeErrorConfig =
   GoogleCloudDiscoveryengineV1betaImportErrorConfig as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeErrorConfig>;
 
 /** The inline source for the input config for DocumentService.PurgeDocuments method. */
@@ -15116,14 +14918,14 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSour
   /** Required. A list of full resource name of documents to purge. In the format `projects/*\/locations/*\/collections/*\/dataStores/*\/branches/*\/documents/*`. Recommended max of 100 items. */
   documents?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       documents: S.optional(StringList),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequestInlineSource>;
 
 /** Request message for DocumentService.PurgeDocuments method. */
 export interface GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest {
@@ -15138,7 +14940,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest {
   /** Cloud Storage location for the input content. Supported `data_schema`: * `document_id`: One valid Document.id per line. */
   gcsSource?: GoogleCloudDiscoveryengineV1betaGcsSource;
 }
-export const GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean),
     errorConfig: S.optional(GoogleCloudDiscoveryengineV1betaPurgeErrorConfig),
@@ -15156,8 +14958,8 @@ export interface PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsReq
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest;
 }
-export const PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest.pipe(T.HttpBody())),
@@ -15168,23 +14970,20 @@ export const PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
-  }) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
+).annotate({
+  identifier: "PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
+}) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
 /** Request message for CompletionService.PurgeCompletionSuggestions method. */
 export type GoogleCloudDiscoveryengineV1betaPurgeCompletionSuggestionsRequest =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaPurgeCompletionSuggestionsRequest =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 export interface PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest {
   /** Required. The parent data store resource name for which to purge completion suggestions. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest =
+const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -15205,16 +15004,13 @@ export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsReq
 /** Request message for CompletionService.PurgeSuggestionDenyListEntries method. */
 export type GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 export interface PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest {
   /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest =
+const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -15239,7 +15035,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest {
   /** The `force` field is currently not supported. Purge user event requests will permanently delete all purgeable events. Once the development is complete: If `force` is set to false, the method will return the expected purge count without deleting any user events. This field will default to false if not included in the request. */
   force?: boolean;
 }
-export const GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     force: S.optional(S.Boolean),
@@ -15254,18 +15050,17 @@ export interface PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest;
 }
-export const PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/userEvents:purge",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/userEvents:purge",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest",
 }) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest>;
@@ -15276,18 +15071,17 @@ export interface PurgeProjectsLocationsDataStoresBranchesDocumentsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest;
 }
-export const PurgeProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/documents:purge",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const PurgeProjectsLocationsDataStoresBranchesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/documents:purge",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PurgeProjectsLocationsDataStoresBranchesDocumentsRequest",
 }) as any as S.Schema<PurgeProjectsLocationsDataStoresBranchesDocumentsRequest>;
@@ -15298,20 +15092,19 @@ export interface PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/completionSuggestions:purge",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
+const PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/completionSuggestions:purge",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest",
 }) as any as S.Schema<PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest>;
@@ -15322,8 +15115,8 @@ export interface PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesReques
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(
@@ -15336,9 +15129,9 @@ export const PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest",
-  }) as any as S.Schema<PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
+).annotate({
+  identifier: "PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest",
+}) as any as S.Schema<PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
 
 export interface PurgeProjectsLocationsDataStoresUserEventsRequest {
   /** Required. The resource name of the catalog under which the events are created. The format is `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`. */
@@ -15346,7 +15139,7 @@ export interface PurgeProjectsLocationsDataStoresUserEventsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest;
 }
-export const PurgeProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaPurgeUserEventsRequest.pipe(T.HttpBody())),
@@ -15372,7 +15165,7 @@ export interface GoogleCloudDiscoveryengineV1betaRankingRecord {
   /** The title of the record. Empty by default. At least one of title or content should be set otherwise an INVALID_ARGUMENT error is thrown. */
   title?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaRankingRecord = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaRankingRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     score: S.optional(S.Number),
@@ -15385,7 +15178,7 @@ export const GoogleCloudDiscoveryengineV1betaRankingRecord = /*@__PURE__*/ S.sus
 
 export type GoogleCloudDiscoveryengineV1betaRankingRecordList =
   Array<GoogleCloudDiscoveryengineV1betaRankingRecord>;
-export const GoogleCloudDiscoveryengineV1betaRankingRecordList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaRankingRecordList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaRankingRecord,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaRankingRecordList>;
 
@@ -15404,7 +15197,7 @@ export interface GoogleCloudDiscoveryengineV1betaRankRequest {
   /** The query to use. */
   query?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaRankRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaRankRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topN: S.optional(S.Number),
     userLabels: S.optional(StringMap),
@@ -15423,7 +15216,7 @@ export interface RankProjectsLocationsRankingConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaRankRequest;
 }
-export const RankProjectsLocationsRankingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const RankProjectsLocationsRankingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rankingConfig: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaRankRequest.pipe(T.HttpBody())),
@@ -15443,7 +15236,7 @@ export interface GoogleCloudDiscoveryengineV1betaRankResponse {
   /** A list of records sorted by descending score. */
   records?: GoogleCloudDiscoveryengineV1betaRankingRecordList;
 }
-export const GoogleCloudDiscoveryengineV1betaRankResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaRankResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     records: S.optional(GoogleCloudDiscoveryengineV1betaRankingRecordList),
   }),
@@ -15466,7 +15259,7 @@ export interface GoogleCloudDiscoveryengineV1betaRecommendRequest {
   /** Maximum number of results to return. Set this property to the number of recommendation results needed. If zero, the service chooses a reasonable default. The maximum allowed value is 100. Values above 100 are set to 100. */
   pageSize?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaRecommendRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaRecommendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     validateOnly: S.optional(S.Boolean),
@@ -15485,7 +15278,7 @@ export interface RecommendProjectsLocationsCollectionsDataStoresServingConfigsRe
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaRecommendRequest;
 }
-export const RecommendProjectsLocationsCollectionsDataStoresServingConfigsRequest =
+const RecommendProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       servingConfig: S.String.pipe(T.Label()),
@@ -15510,7 +15303,7 @@ export interface GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendation
   /** Resource ID of the recommended Document. */
   id?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResult =
+const GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       document: S.optional(GoogleCloudDiscoveryengineV1betaDocument),
@@ -15523,7 +15316,7 @@ export const GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResu
 
 export type GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResultList =
   Array<GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResult>;
-export const GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResultList =
+const GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResult,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaRecommendResponseRecommendationResultList>;
@@ -15539,7 +15332,7 @@ export interface GoogleCloudDiscoveryengineV1betaRecommendResponse {
   /** IDs of documents in the request that were missing from the default Branch associated with the requested ServingConfig. */
   missingIds?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaRecommendResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaRecommendResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributionToken: S.optional(S.String),
     validateOnly: S.optional(S.Boolean),
@@ -15556,29 +15349,7 @@ export interface RecommendProjectsLocationsCollectionsEnginesServingConfigsReque
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaRecommendRequest;
 }
-export const RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfig: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaRecommendRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+servingConfig}:recommend",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest",
-  }) as any as S.Schema<RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest>;
-
-export interface RecommendProjectsLocationsDataStoresServingConfigsRequest {
-  /** Required. Full resource name of a ServingConfig: `projects/*\/locations/global/collections/*\/engines/*\/servingConfigs/*`, or `projects/*\/locations/global/collections/*\/dataStores/*\/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*\/locations/global/collections/*\/engines/my-engine`, you can use `projects/*\/locations/global/collections/*\/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. */
-  servingConfig: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1betaRecommendRequest;
-}
-export const RecommendProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
+const RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       servingConfig: S.String.pipe(T.Label()),
@@ -15591,6 +15362,27 @@ export const RecommendProjectsLocationsDataStoresServingConfigsRequest = /*@__PU
       }),
     ),
 ).annotate({
+  identifier: "RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest",
+}) as any as S.Schema<RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+
+export interface RecommendProjectsLocationsDataStoresServingConfigsRequest {
+  /** Required. Full resource name of a ServingConfig: `projects/*\/locations/global/collections/*\/engines/*\/servingConfigs/*`, or `projects/*\/locations/global/collections/*\/dataStores/*\/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*\/locations/global/collections/*\/engines/my-engine`, you can use `projects/*\/locations/global/collections/*\/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. */
+  servingConfig: string;
+  /** Request body */
+  body?: GoogleCloudDiscoveryengineV1betaRecommendRequest;
+}
+const RecommendProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    servingConfig: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaRecommendRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+servingConfig}:recommend",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
   identifier: "RecommendProjectsLocationsDataStoresServingConfigsRequest",
 }) as any as S.Schema<RecommendProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -15601,7 +15393,7 @@ export interface GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest {
   /** Required. List of URIs to crawl. At most 10K URIs are supported, otherwise an INVALID_ARGUMENT error is thrown. Each URI should match at least one TargetSite in `site_search_engine`. */
   uris?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteCredential: S.optional(S.String),
     uris: S.optional(StringList),
@@ -15616,7 +15408,7 @@ export interface RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngi
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest;
 }
-export const RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
+const RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
@@ -15638,35 +15430,34 @@ export interface RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest;
 }
-export const RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      siteSearchEngine: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+siteSearchEngine}:recrawlUris",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest",
-  }) as any as S.Schema<RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest>;
+const RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    siteSearchEngine: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaRecrawlUrisRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+siteSearchEngine}:recrawlUris",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest",
+}) as any as S.Schema<RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest>;
 
 /** Request message for CrawlRateManagementService.RemoveDedicatedCrawlRate method. The user can remove the dedicated crawl rate for a crawl_rate_scope they own, and Google will fall back to organic crawl, and the crawl rate will be determined by Google. */
 export interface GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRequest {
   /** Required. The scope of the crawl rate change. Currently, only domain and host name are supported. A domain name example: `example.com`. A host name example: `www.example.com`. Please do not include `/` in the domain or host name. */
   crawlRateScope?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       crawlRateScope: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRequest>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRequest",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRequest>;
 
 export interface RemoveDedicatedCrawlRateProjectsLocationsRequest {
   /** Required. The location resource where crawl rate management will be performed. Format: `projects/{project}/locations/{location}` */
@@ -15674,7 +15465,7 @@ export interface RemoveDedicatedCrawlRateProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaRemoveDedicatedCrawlRateRequest;
 }
-export const RemoveDedicatedCrawlRateProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveDedicatedCrawlRateProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(
@@ -15704,7 +15495,7 @@ export interface GoogleCloudDiscoveryengineV1betaRemoveSuggestionRequest {
   /** Optional. Information about the end user. This should be the same identifier information as UserEvent.user_info and SearchRequest.user_info. */
   userInfo?: GoogleCloudDiscoveryengineV1betaUserInfo;
 }
-export const GoogleCloudDiscoveryengineV1betaRemoveSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaRemoveSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userPseudoId: S.optional(S.String),
     searchHistorySuggestion: S.optional(S.String),
@@ -15722,7 +15513,7 @@ export interface RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionCo
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaRemoveSuggestionRequest;
 }
-export const RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfigRequest =
+const RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       completionConfig: S.String.pipe(T.Label()),
@@ -15740,8 +15531,8 @@ export const RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfig
 
 /** Response message for CompletionService.RemoveSuggestion method. */
 export interface GoogleCloudDiscoveryengineV1betaRemoveSuggestionResponse {}
-export const GoogleCloudDiscoveryengineV1betaRemoveSuggestionResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const GoogleCloudDiscoveryengineV1betaRemoveSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaRemoveSuggestionResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaRemoveSuggestionResponse>;
@@ -15749,16 +15540,13 @@ export const GoogleCloudDiscoveryengineV1betaRemoveSuggestionResponse = /*@__PUR
 /** Request for resuming training of an engine. */
 export type GoogleCloudDiscoveryengineV1betaResumeEngineRequest =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaResumeEngineRequest =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 export interface ResumeProjectsLocationsCollectionsEnginesRequest {
   /** Required. The name of the engine to resume. Format: `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}` */
   name: string;
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const ResumeProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -15784,13 +15572,12 @@ export interface GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest {
   /** Required. Full resource name of LicenseConfig. Format: `projects/{project}/locations/{location}/licenseConfigs/{license_config_id}`. */
   licenseConfig?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fullRetract: S.optional(S.Boolean),
-      licenseCount: S.optional(S.String),
-      licenseConfig: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fullRetract: S.optional(S.Boolean),
+    licenseCount: S.optional(S.String),
+    licenseConfig: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest>;
@@ -15801,7 +15588,7 @@ export interface RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigs
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaRetractLicenseConfigRequest;
 }
-export const RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest =
+const RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountLicenseConfig: S.String.pipe(T.Label()),
@@ -15824,11 +15611,10 @@ export interface GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse {
   /** The updated LicenseConfig. */
   licenseConfig?: GoogleCloudDiscoveryengineV1betaLicenseConfig;
 }
-export const GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      licenseConfig: S.optional(GoogleCloudDiscoveryengineV1betaLicenseConfig),
-    }),
+const GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    licenseConfig: S.optional(GoogleCloudDiscoveryengineV1betaLicenseConfig),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse>;
@@ -15839,7 +15625,7 @@ export interface SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsR
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSearchRequest;
 }
-export const SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest =
+const SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       servingConfig: S.String.pipe(T.Label()),
@@ -15864,23 +15650,21 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue {
   /** Interval value for a facet, such as 10, 20) for facet "price". It matches [SearchRequest.FacetSpec.FacetKey.intervals. */
   interval?: GoogleCloudDiscoveryengineV1betaInterval;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      count: S.optional(S.String),
-      value: S.optional(S.String),
-      interval: S.optional(GoogleCloudDiscoveryengineV1betaInterval),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue>;
+const GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.String),
+    value: S.optional(S.String),
+    interval: S.optional(GoogleCloudDiscoveryengineV1betaInterval),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValueList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValueList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValueList>;
+const GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValueList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValue,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValueList>;
 
 /** A facet result. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseFacet {
@@ -15891,7 +15675,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseFacet {
   /** The facet values for this field. */
   values?: GoogleCloudDiscoveryengineV1betaSearchResponseFacetFacetValueList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseFacet = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchResponseFacet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     dynamicFacet: S.optional(S.Boolean),
@@ -15903,7 +15687,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchResponseFacet = /*@__PURE__*/
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseFacetList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseFacet>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseFacetList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSearchResponseFacetList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSearchResponseFacet,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseFacetList>;
 
@@ -15914,12 +15698,11 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo {
   /** Query ID that corresponds to this search API call. One session can have multiple turns, each with a unique query ID. By specifying the session name and this query ID in the Answer API call, the answer generation happens in the context of the search results from this search call. */
   queryId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      queryId: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    queryId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo>;
@@ -15928,7 +15711,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchResponseSemanticStateEnum =
   | "SEMANTIC_STATE_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-export const GoogleCloudDiscoveryengineV1betaSearchResponseSemanticStateEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSearchResponseSemanticStateEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultOneBoxTypeEnum =
   | "ONE_BOX_TYPE_UNSPECIFIED"
@@ -15936,7 +15719,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultOneBoxType
   | "ORGANIZATION"
   | "SLACK"
   | "KNOWLEDGE_GRAPH";
-export const GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultOneBoxTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultOneBoxTypeEnum = S.String;
 
 /** OneBoxResult is a holder for all results of specific type that we want to display in UI differently. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult {
@@ -15945,21 +15728,20 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult {
   /** The search results for this One Box. */
   searchResults?: GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      oneBoxType: S.optional(
-        GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultOneBoxTypeEnum,
-      ),
-      searchResults: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList),
-    }),
+const GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    oneBoxType: S.optional(
+      GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultOneBoxTypeEnum,
+    ),
+    searchResults: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSearchResultList),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResult,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseOneBoxResultList>;
 
@@ -15972,7 +15754,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   /** Values of the string field. The record will only be returned if the field value matches one of the values specified here. */
   values?: StringList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fieldName: S.optional(S.String),
@@ -15986,7 +15768,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryU
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList =
   /*@__PURE__*/ S.Array(
     S.suspend(
       () =>
@@ -15999,7 +15781,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   /** The expressions that were ANDed together. */
   expressions?: GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expressions: S.optional(
@@ -16016,7 +15798,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   /** The expressions that were ORed together. */
   expressions?: GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpressionList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression =
   GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression>;
 
 /** Constraint of a geolocation field. Name of the geolocation field as defined in the schema. */
@@ -16032,7 +15814,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   /** The latitude of the geolocation inferred from the input query. */
   latitude?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       fieldName: S.optional(S.String),
@@ -16053,7 +15835,7 @@ export type GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUn
   | "LESS_THAN"
   | "GREATER_THAN_EQUALS"
   | "GREATER_THAN";
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraintComparisonEnum =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraintComparisonEnum =
   S.String;
 
 /** Constraint expression of a number field. Example: price < 100. */
@@ -16067,7 +15849,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   /** The value specified in the numerical constraint. */
   value?: number;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       comparison: S.optional(
@@ -16095,7 +15877,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   /** Numerical constraint expression. */
   numberConstraint?: GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       stringConstraint: S.optional(
@@ -16124,7 +15906,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   /** The expression denoting the filter that was extracted from the input query in a structured form. It can be a simple expression denoting a single string, numerical or geolocation constraint or a compound expression which is a combination of multiple expressions connected using logical (OR and AND) operators. */
   expression?: GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       expression: S.optional(
@@ -16147,7 +15929,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQu
   /** Rewritten input query minus the extracted filters. */
   rewrittenQuery?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfo =
+const GoogleCloudDiscoveryengineV1betaSearchResponseNaturalLanguageQueryUnderstandingInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       extractedFilters: S.optional(S.String),
@@ -16169,19 +15951,19 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInf
   /** Number of pinned results. This field will only be set when expansion happens and SearchRequest.QueryExpansionSpec.pin_unexpanded_results is set to true. */
   pinnedResultCount?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInfo =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       expandedQuery: S.optional(S.Boolean),
       pinnedResultCount: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInfo",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInfo>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInfo",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseQueryExpansionInfo>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchLinkPromotionList =
   Array<GoogleCloudDiscoveryengineV1betaSearchLinkPromotion>;
-export const GoogleCloudDiscoveryengineV1betaSearchLinkPromotionList = /*@__PURE__*/ S.Array(
+const GoogleCloudDiscoveryengineV1betaSearchLinkPromotionList = /*@__PURE__*/ S.Array(
   GoogleCloudDiscoveryengineV1betaSearchLinkPromotion,
 ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchLinkPromotionList>;
 
@@ -16192,22 +15974,21 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInf
   /** The address from which forward geocoding ingestion produced issues. */
   originalAddressQuery?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       errorMessage: S.optional(S.String),
       originalAddressQuery: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo>;
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfoList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfoList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfoList>;
+const GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfoList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfoList>;
 
 /** Useful attribute for search result refinements. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttribute {
@@ -16216,7 +15997,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResul
   /** Attribute value used to refine the results. For example, `"drama"`. */
   attributeValue?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttribute =
+const GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttribute =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attributeKey: S.optional(S.String),
@@ -16229,7 +16010,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRef
 
 export type GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttributeList =
   Array<GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttribute>;
-export const GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttributeList =
+const GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttributeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttribute,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttributeList>;
@@ -16241,17 +16022,17 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResul
   /** A list of ranked refinement attributes. */
   refinementAttributes?: GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttributeList;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       followUpQuestions: S.optional(StringList),
       refinementAttributes: S.optional(
         GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttributeList,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult>;
 
 /** Response message for SearchService.Search method. */
 export interface GoogleCloudDiscoveryengineV1betaSearchResponse {
@@ -16291,7 +16072,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchResponse {
   /** Guided search result. */
   guidedSearchResult?: GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult;
 }
-export const GoogleCloudDiscoveryengineV1betaSearchResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     facets: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseFacetList),
     sessionInfo: S.optional(GoogleCloudDiscoveryengineV1betaSearchResponseSessionInfo),
@@ -16330,29 +16111,7 @@ export interface SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequ
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSearchRequest;
 }
-export const SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfig: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+servingConfig}:searchLite",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest",
-  }) as any as S.Schema<SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
-
-export interface SearchLiteProjectsLocationsDataStoresServingConfigsRequest {
-  /** Required. The resource name of the Search serving config, such as `projects/*\/locations/global/collections/default_collection/engines/*\/servingConfigs/default_serving_config`, or `projects/*\/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. */
-  servingConfig: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1betaSearchRequest;
-}
-export const SearchLiteProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
+const SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       servingConfig: S.String.pipe(T.Label()),
@@ -16365,6 +16124,27 @@ export const SearchLiteProjectsLocationsDataStoresServingConfigsRequest = /*@__P
       }),
     ),
 ).annotate({
+  identifier: "SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest",
+}) as any as S.Schema<SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+
+export interface SearchLiteProjectsLocationsDataStoresServingConfigsRequest {
+  /** Required. The resource name of the Search serving config, such as `projects/*\/locations/global/collections/default_collection/engines/*\/servingConfigs/default_serving_config`, or `projects/*\/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. */
+  servingConfig: string;
+  /** Request body */
+  body?: GoogleCloudDiscoveryengineV1betaSearchRequest;
+}
+const SearchLiteProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    servingConfig: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+servingConfig}:searchLite",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
   identifier: "SearchLiteProjectsLocationsDataStoresServingConfigsRequest",
 }) as any as S.Schema<SearchLiteProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -16374,8 +16154,8 @@ export interface SearchProjectsLocationsCollectionsDataStoresServingConfigsReque
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSearchRequest;
 }
-export const SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       servingConfig: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequest.pipe(T.HttpBody())),
@@ -16386,9 +16166,9 @@ export const SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-  }) as any as S.Schema<SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
+).annotate({
+  identifier: "SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+}) as any as S.Schema<SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
 export interface SearchProjectsLocationsCollectionsEnginesServingConfigsRequest {
   /** Required. The resource name of the Search serving config, such as `projects/*\/locations/global/collections/default_collection/engines/*\/servingConfigs/default_serving_config`, or `projects/*\/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. */
@@ -16396,21 +16176,20 @@ export interface SearchProjectsLocationsCollectionsEnginesServingConfigsRequest 
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSearchRequest;
 }
-export const SearchProjectsLocationsCollectionsEnginesServingConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      servingConfig: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+servingConfig}:search",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchProjectsLocationsCollectionsEnginesServingConfigsRequest",
-  }) as any as S.Schema<SearchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
+const SearchProjectsLocationsCollectionsEnginesServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    servingConfig: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+servingConfig}:search",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchProjectsLocationsCollectionsEnginesServingConfigsRequest",
+}) as any as S.Schema<SearchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
 export interface SearchProjectsLocationsDataStoresServingConfigsRequest {
   /** Required. The resource name of the Search serving config, such as `projects/*\/locations/global/collections/default_collection/engines/*\/servingConfigs/default_serving_config`, or `projects/*\/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. */
@@ -16418,7 +16197,7 @@ export interface SearchProjectsLocationsDataStoresServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSearchRequest;
 }
-export const SearchProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servingConfig: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequest.pipe(T.HttpBody())),
@@ -16437,13 +16216,13 @@ export type GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestModeEnum
   | "MODE_UNSPECIFIED"
   | "AUTOMATIC"
   | "EXPLICIT";
-export const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestModeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestModeEnum = S.String;
 
 export type GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestCrawlTypeEnum =
   | "CRAWL_TYPE_UNSPECIFIED"
   | "USER_TRIGGERED"
   | "AUTO_REFRESH";
-export const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestCrawlTypeEnum = S.String;
+const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestCrawlTypeEnum = S.String;
 
 /** Request message for CrawlRateManagementService.SetDedicatedCrawlRate method. The user can set the crawl rate for a crawl_rate_scope they own. They can set up an overall crawl rate, or set up a user-triggered crawl rate and a auto-refresh crawl rate separately. If an overall crawl rate is set, Vertex AI will automatically splits crawl_rate into user-triggered and auto-refresh. */
 export interface GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequest {
@@ -16458,16 +16237,15 @@ export interface GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequest {
   /** Required. The scope of the crawl rate that the user wants to config. Currently, only domain and host name are supported. A domain name example: `example.com`. A host name example: `www.example.com`. Please do not include `/` in the domain or host name. */
   crawlRateScope?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      crawlRate: S.optional(S.Number),
-      mode: S.optional(GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestModeEnum),
-      crawlType: S.optional(
-        GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestCrawlTypeEnum,
-      ),
-      crawlRateScope: S.optional(S.String),
-    }),
+const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    crawlRate: S.optional(S.Number),
+    mode: S.optional(GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestModeEnum),
+    crawlType: S.optional(
+      GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequestCrawlTypeEnum,
+    ),
+    crawlRateScope: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequest",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequest>;
@@ -16478,7 +16256,7 @@ export interface SetDedicatedCrawlRateProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateRequest;
 }
-export const SetDedicatedCrawlRateProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetDedicatedCrawlRateProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(
@@ -16500,7 +16278,7 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: GoogleIamV1Policy;
 }
-export const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(GoogleIamV1Policy),
   }),
@@ -16514,18 +16292,17 @@ export interface SetIamPolicyProjectsLocationsCollectionsDataStoresRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+resource}:setIamPolicy",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+resource}:setIamPolicy",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsCollectionsDataStoresRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsCollectionsDataStoresRequest>;
@@ -16536,7 +16313,7 @@ export interface SetIamPolicyProjectsLocationsCollectionsEnginesRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -16557,7 +16334,7 @@ export interface SetIamPolicyProjectsLocationsDataStoresRequest {
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -16578,7 +16355,7 @@ export interface StreamAnswerProjectsLocationsCollectionsDataStoresServingConfig
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequest;
 }
-export const StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest =
+const StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       servingConfig: S.String.pipe(T.Label()),
@@ -16600,7 +16377,7 @@ export interface StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRe
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequest;
 }
-export const StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRequest =
+const StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       servingConfig: S.String.pipe(T.Label()),
@@ -16622,18 +16399,17 @@ export interface StreamAnswerProjectsLocationsDataStoresServingConfigsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAnswerQueryRequest;
 }
-export const StreamAnswerProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      servingConfig: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaAnswerQueryRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+servingConfig}:streamAnswer",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const StreamAnswerProjectsLocationsDataStoresServingConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    servingConfig: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaAnswerQueryRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+servingConfig}:streamAnswer",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "StreamAnswerProjectsLocationsDataStoresServingConfigsRequest",
 }) as any as S.Schema<StreamAnswerProjectsLocationsDataStoresServingConfigsRequest>;
@@ -16645,7 +16421,7 @@ export interface GoogleCloudDiscoveryengineV1betaAssistUserMetadata {
   /** Optional. Preferred language to be used for answering if language detection fails. Also used as the language of error messages created by actions, regardless of language detection results. */
   preferredLanguageCode?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaAssistUserMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaAssistUserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String),
     preferredLanguageCode: S.optional(S.String),
@@ -16657,21 +16433,12 @@ export const GoogleCloudDiscoveryengineV1betaAssistUserMetadata = /*@__PURE__*/ 
 /** Specification of the image generation tool. */
 export type GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecImageGenerationSpec =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecImageGenerationSpec =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 /** Specification of the web grounding tool. */
 export type GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecWebGroundingSpec =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecWebGroundingSpec =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 /** Specification of the video generation tool. */
 export type GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVideoGenerationSpec =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVideoGenerationSpec =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 /** Specification of the Vertex AI Search tool. */
 export interface GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec {
   /** Optional. Specs defining DataStores to filter on in a search call and configurations for those data stores. This is only considered for Engines with multiple data stores. */
@@ -16679,7 +16446,7 @@ export interface GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVer
   /** Optional. The filter syntax consists of an expression language for constructing a predicate from one or more fields of the documents being filtered. Filter expression is case-sensitive. If this field is unrecognizable, an `INVALID_ARGUMENT` is returned. Filtering in Vertex AI Search is done by mapping the LHS filter key to a key property defined in the Vertex AI Search backend -- this mapping is defined by the customer in their schema. For example a media customer might have a field 'name' in their schema. In this case the filter would look like this: filter --> name:'ANY("king kong")' For more information about filtering including syntax and filter operators, see [Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata) */
   filter?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec =
+const GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataStoreSpecs: S.optional(GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpecList),
@@ -16700,20 +16467,15 @@ export interface GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpec {
   /** Optional. Specification of the Vertex AI Search tool. */
   vertexAiSearchSpec?: GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      imageGenerationSpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest,
-      ),
-      webGroundingSpec: S.optional(GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest),
-      videoGenerationSpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest,
-      ),
-      vertexAiSearchSpec: S.optional(
-        GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec,
-      ),
-    }),
+const GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageGenerationSpec: S.optional(GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest),
+    webGroundingSpec: S.optional(GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest),
+    videoGenerationSpec: S.optional(GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest),
+    vertexAiSearchSpec: S.optional(
+      GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpecVertexAiSearchSpec,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpec",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistRequestToolsSpec>;
@@ -16723,21 +16485,21 @@ export interface GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSp
   /** Optional. The Vertex AI model_id used for the generative model. If not set, the default Assistant model will be used. */
   modelId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       modelId: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistRequestGenerationSpec>;
 
 /** Specification of an agent. */
 export interface GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec {
   /** Required. ID to identify the agent resource serving the request. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length limit of 63 characters. */
   agentId?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec =
+const GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       agentId: S.optional(S.String),
@@ -16748,7 +16510,7 @@ export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentS
 
 export type GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpecList =
   Array<GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec>;
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpecList =
+const GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpec,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpecList>;
@@ -16758,16 +16520,15 @@ export interface GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec {
   /** Optional. Specification of agents that are used to serve the request. */
   agentSpecs?: GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpecList;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      agentSpecs: S.optional(
-        GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpecList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec>;
+const GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpecs: S.optional(
+      GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpecAgentSpecList,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec>;
 
 /** Request for the AssistantService.StreamAssist method. */
 export interface GoogleCloudDiscoveryengineV1betaStreamAssistRequest {
@@ -16784,7 +16545,7 @@ export interface GoogleCloudDiscoveryengineV1betaStreamAssistRequest {
   /** Optional. Specification of agents that are used to serve the request. */
   agentsSpec?: GoogleCloudDiscoveryengineV1betaStreamAssistRequestAgentsSpec;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaStreamAssistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.optional(S.String),
     userMetadata: S.optional(GoogleCloudDiscoveryengineV1betaAssistUserMetadata),
@@ -16803,8 +16564,8 @@ export interface StreamAssistProjectsLocationsCollectionsEnginesAssistantsReques
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaStreamAssistRequest;
 }
-export const StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudDiscoveryengineV1betaStreamAssistRequest.pipe(T.HttpBody())),
@@ -16815,9 +16576,9 @@ export const StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest =
         baseUrl: "https://discoveryengine.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest",
-  }) as any as S.Schema<StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest>;
+).annotate({
+  identifier: "StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest",
+}) as any as S.Schema<StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
 /** Describes an authentication error for a specific data connector. */
 export interface GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError {
@@ -16826,7 +16587,7 @@ export interface GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAu
   /** Human-readable error message describing the auth failure. */
   errorMessage?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError =
+const GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dataConnector: S.optional(S.String),
@@ -16838,7 +16599,7 @@ export const GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthEr
 
 export type GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthErrorList =
   Array<GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError>;
-export const GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthErrorList =
+const GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthErrorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthError,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistResponseConnectorAuthErrorList>;
@@ -16850,36 +16611,35 @@ export interface GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkil
   /** The resource name of the skill. */
   name?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       displayName: S.optional(S.String),
       name: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill>;
 
 export type GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkillList =
   Array<GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill>;
-export const GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkillList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkillList>;
+const GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkillList = /*@__PURE__*/ S.Array(
+  GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkill,
+) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistResponseInvokedSkillList>;
 
 /** Information about the session. */
 export interface GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo {
   /** Name of the newly generated or continued session. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`. */
   session?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       session: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo>;
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo>;
 
 /** Response for the AssistantService.StreamAssist method. */
 export interface GoogleCloudDiscoveryengineV1betaStreamAssistResponse {
@@ -16896,7 +16656,7 @@ export interface GoogleCloudDiscoveryengineV1betaStreamAssistResponse {
   /** Session information. Only included in the final StreamAssistResponse of the response stream. */
   sessionInfo?: GoogleCloudDiscoveryengineV1betaStreamAssistResponseSessionInfo;
 }
-export const GoogleCloudDiscoveryengineV1betaStreamAssistResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaStreamAssistResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invocationTools: S.optional(StringList),
     connectorAuthErrors: S.optional(
@@ -16922,7 +16682,7 @@ export interface GoogleCloudDiscoveryengineV1betaTrainCustomModelRequestGcsTrain
   /** Cloud Storage test data. Same format as train_data_path. If not provided, a random 80/20 train/test split will be performed on train_data_path. */
   testDataPath?: string;
 }
-export const GoogleCloudDiscoveryengineV1betaTrainCustomModelRequestGcsTrainingInput =
+const GoogleCloudDiscoveryengineV1betaTrainCustomModelRequestGcsTrainingInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       queryDataPath: S.optional(S.String),
@@ -16945,7 +16705,7 @@ export interface GoogleCloudDiscoveryengineV1betaTrainCustomModelRequest {
   /** Cloud Storage training input. */
   gcsTrainingInput?: GoogleCloudDiscoveryengineV1betaTrainCustomModelRequestGcsTrainingInput;
 }
-export const GoogleCloudDiscoveryengineV1betaTrainCustomModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudDiscoveryengineV1betaTrainCustomModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelType: S.optional(S.String),
     errorConfig: S.optional(GoogleCloudDiscoveryengineV1betaImportErrorConfig),
@@ -16964,35 +16724,31 @@ export interface TrainCustomModelProjectsLocationsCollectionsDataStoresRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaTrainCustomModelRequest;
 }
-export const TrainCustomModelProjectsLocationsCollectionsDataStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataStore: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaTrainCustomModelRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+dataStore}:trainCustomModel",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TrainCustomModelProjectsLocationsCollectionsDataStoresRequest",
-  }) as any as S.Schema<TrainCustomModelProjectsLocationsCollectionsDataStoresRequest>;
+const TrainCustomModelProjectsLocationsCollectionsDataStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataStore: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaTrainCustomModelRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+dataStore}:trainCustomModel",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TrainCustomModelProjectsLocationsCollectionsDataStoresRequest",
+}) as any as S.Schema<TrainCustomModelProjectsLocationsCollectionsDataStoresRequest>;
 
 /** Request to manually start a tuning process now (instead of waiting for the periodically scheduled tuning to happen). */
 export type GoogleCloudDiscoveryengineV1betaTuneEngineRequest =
   GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1betaTuneEngineRequest =
-  GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
-
 export interface TuneProjectsLocationsCollectionsEnginesRequest {
   /** Required. The resource name of the engine to tune. Format: `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}` */
   name: string;
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaBatchVerifyTargetSitesRequest;
 }
-export const TuneProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+const TuneProjectsLocationsCollectionsEnginesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -17015,7 +16771,7 @@ export interface UpdateAclConfigProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaAclConfig;
 }
-export const UpdateAclConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAclConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudDiscoveryengineV1betaAclConfig.pipe(T.HttpBody())),
@@ -17038,7 +16794,7 @@ export interface UpdateCmekConfigProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaCmekConfig;
 }
-export const UpdateCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCmekConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setDefault: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -17062,19 +16818,18 @@ export interface WriteProjectsLocationsCollectionsDataStoresUserEventsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaUserEvent;
 }
-export const WriteProjectsLocationsCollectionsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      writeAsync: S.optional(S.Boolean.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudDiscoveryengineV1betaUserEvent.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/userEvents:write",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
+const WriteProjectsLocationsCollectionsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    writeAsync: S.optional(S.Boolean.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudDiscoveryengineV1betaUserEvent.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/userEvents:write",
+      baseUrl: "https://discoveryengine.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "WriteProjectsLocationsCollectionsDataStoresUserEventsRequest",
 }) as any as S.Schema<WriteProjectsLocationsCollectionsDataStoresUserEventsRequest>;
@@ -17087,7 +16842,7 @@ export interface WriteProjectsLocationsDataStoresUserEventsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaUserEvent;
 }
-export const WriteProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteProjectsLocationsDataStoresUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     writeAsync: S.optional(S.Boolean.pipe(T.Query())),
@@ -17111,7 +16866,7 @@ export interface WriteProjectsLocationsUserEventsRequest {
   /** Request body */
   body?: GoogleCloudDiscoveryengineV1betaUserEvent;
 }
-export const WriteProjectsLocationsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteProjectsLocationsUserEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     writeAsync: S.optional(S.Boolean.pipe(T.Query())),

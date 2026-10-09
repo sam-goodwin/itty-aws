@@ -67,7 +67,7 @@ export interface DeleteAccountsProductInputsRequest {
   /** Required. The primary or supplemental data source from which the product input should be deleted. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`. */
   dataSource?: string;
 }
-export const DeleteAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     dataSource: S.optional(S.String.pipe(T.Query())),
@@ -84,7 +84,7 @@ export const DeleteAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -92,7 +92,7 @@ export interface GetAccountsProductsRequest {
   /** Required. The name of the product. Format: `accounts/{account}/products/{product}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. Note: For calls to the v1beta version, the plain format is `channel~content_language~feed_label~offer_id`, for example: `accounts/123/products/online~en~US~sku123`. */
   name: string;
 }
-export const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -113,7 +113,7 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -129,7 +129,7 @@ export interface AutomatedDiscounts {
   /** The price prior to the application of the first price reduction. Absent if the information about the prior price of the product is not available. */
   priorPrice?: Price;
 }
-export const AutomatedDiscounts = /*@__PURE__*/ S.suspend(() =>
+const AutomatedDiscounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priorPriceProgressive: S.optional(Price),
     gadPrice: S.optional(Price),
@@ -144,7 +144,7 @@ export interface ProductDimension {
   /** Required. The dimension value represented as a number. The value can have a maximum precision of four decimal places. */
   value?: number;
 }
-export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
+const ProductDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -152,10 +152,10 @@ export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductDimension" }) as any as S.Schema<ProductDimension>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution" or "Screen-Size". */
 export interface CloudExportAdditionalProperties {
@@ -176,7 +176,7 @@ export interface CloudExportAdditionalProperties {
   /** Name of the given property. For example, "Screen-Resolution" for a TV product. Maximum string size is 256 characters. */
   propertyName?: string;
 }
-export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
+const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     floatValue: S.optional(DoubleList),
     textValue: S.optional(StringList),
@@ -192,7 +192,7 @@ export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudExportAdditionalProperties>;
 
 export type CloudExportAdditionalPropertiesList = Array<CloudExportAdditionalProperties>;
-export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
+const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   CloudExportAdditionalProperties,
 ) as any as S.Schema<CloudExportAdditionalPropertiesList>;
 
@@ -203,7 +203,7 @@ export interface ShippingWeight {
   /** The unit of value. */
   unit?: string;
 }
-export const ShippingWeight = /*@__PURE__*/ S.suspend(() =>
+const ShippingWeight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Number),
     unit: S.optional(S.String),
@@ -217,14 +217,14 @@ export interface UnitPricingMeasure {
   /** The unit of the measure. */
   unit?: string;
 }
-export const UnitPricingMeasure = ShippingWeight as any as S.Schema<UnitPricingMeasure>;
+const UnitPricingMeasure = ShippingWeight as any as S.Schema<UnitPricingMeasure>;
 
 export type SubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "YEAR"
   | "WEEK";
-export const SubscriptionCostPeriodEnum = S.String;
+const SubscriptionCostPeriodEnum = S.String;
 
 /** The SubscriptionCost of the product. */
 export interface SubscriptionCost {
@@ -235,7 +235,7 @@ export interface SubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
   amount?: Price;
 }
-export const SubscriptionCost = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period: S.optional(SubscriptionCostPeriodEnum),
     periodLength: S.optional(S.String),
@@ -276,7 +276,7 @@ export interface Shipping {
   /** The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country to which an item will ship. */
   country?: string;
 }
-export const Shipping = /*@__PURE__*/ S.suspend(() =>
+const Shipping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loyaltyProgramLabel: S.optional(S.String),
     region: S.optional(S.String),
@@ -297,7 +297,7 @@ export const Shipping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Shipping" }) as any as S.Schema<Shipping>;
 
 export type ShippingList = Array<Shipping>;
-export const ShippingList = /*@__PURE__*/ S.Array(Shipping) as any as S.Schema<ShippingList>;
+const ShippingList = /*@__PURE__*/ S.Array(Shipping) as any as S.Schema<ShippingList>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -306,7 +306,7 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -320,7 +320,7 @@ export interface UnitPricingBaseMeasure {
   /** The denominator of the unit price. */
   value?: string;
 }
-export const UnitPricingBaseMeasure = /*@__PURE__*/ S.suspend(() =>
+const UnitPricingBaseMeasure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.String),
@@ -331,7 +331,7 @@ export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
   | "EV_PRICE_DISCOUNT";
-export const ProductSustainabilityIncentiveTypeEnum = S.String;
+const ProductSustainabilityIncentiveTypeEnum = S.String;
 
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
 export interface ProductSustainabilityIncentive {
@@ -342,7 +342,7 @@ export interface ProductSustainabilityIncentive {
   /** The fixed amount of the incentive. */
   amount?: Price;
 }
-export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
+const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentage: S.optional(S.Number),
     type: S.optional(ProductSustainabilityIncentiveTypeEnum),
@@ -353,7 +353,7 @@ export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSustainabilityIncentive>;
 
 export type ProductSustainabilityIncentiveList = Array<ProductSustainabilityIncentive>;
-export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
+const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
   ProductSustainabilityIncentive,
 ) as any as S.Schema<ProductSustainabilityIncentiveList>;
 
@@ -364,7 +364,7 @@ export interface ProductStructuredDescription {
   /** The description text Maximum length is 5000 characters */
   content?: string;
 }
-export const ProductStructuredDescription = /*@__PURE__*/ S.suspend(() =>
+const ProductStructuredDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     digitalSourceType: S.optional(S.String),
     content: S.optional(S.String),
@@ -384,7 +384,7 @@ export interface Installment {
   /** Type of installment payments. Supported values are: * "`finance`" * "`lease`" */
   creditType?: string;
 }
-export const Installment = /*@__PURE__*/ S.suspend(() =>
+const Installment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downpayment: S.optional(Price),
     amount: S.optional(Price),
@@ -402,7 +402,7 @@ export interface ProductDetail {
   /** The section header used to group a set of product details. */
   sectionName?: string;
 }
-export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
+const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributeValue: S.optional(S.String),
     attributeName: S.optional(S.String),
@@ -411,7 +411,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
 export type ProductDetailList = Array<ProductDetail>;
-export const ProductDetailList = /*@__PURE__*/ S.Array(
+const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
 
@@ -422,7 +422,7 @@ export interface ProductWeight {
   /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
   value?: number;
 }
-export const ProductWeight = ProductDimension as any as S.Schema<ProductWeight>;
+const ProductWeight = ProductDimension as any as S.Schema<ProductWeight>;
 
 /** A message that represents loyalty program. For more information on loyalty programs, see [Overview of loyalty programs](/merchant/api/guides/loyalty/loyalty-programs). */
 export interface LoyaltyProgram {
@@ -441,7 +441,7 @@ export interface LoyaltyProgram {
   /** The price for members of the given tier, that is, the instant discount price. Must be smaller or equal to the regular price. */
   price?: Price;
 }
-export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shippingLabel: S.optional(S.String),
     memberPriceEffectiveDate: S.optional(Interval),
@@ -454,7 +454,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
 export type LoyaltyProgramList = Array<LoyaltyProgram>;
-export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
+const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
 
@@ -467,7 +467,7 @@ export interface LoyaltyPoints {
   /** The ratio of a point when converted to currency. Google assumes currency based on Merchant Center settings. If ratio is left out, it defaults to 1.0. */
   ratio?: number;
 }
-export const LoyaltyPoints = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyPoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     pointsValue: S.optional(S.String),
@@ -482,7 +482,7 @@ export interface ShippingDimension {
   /** The dimension of the product used to calculate the shipping cost of the item. */
   value?: number;
 }
-export const ShippingDimension = ProductDimension as any as S.Schema<ShippingDimension>;
+const ShippingDimension = ProductDimension as any as S.Schema<ShippingDimension>;
 
 /** Product [certification](https://support.google.com/merchants/answer/13528839), initially introduced for EU energy efficiency labeling compliance using the EU EPREL database. */
 export interface Certification {
@@ -499,7 +499,7 @@ export interface Certification {
   /** The name of the certification, for example "EPREL". Maximum length is 2000 characters. */
   certificationName?: string;
 }
-export const Certification = /*@__PURE__*/ S.suspend(() =>
+const Certification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificationAuthority: S.optional(S.String),
     certificationValue: S.optional(S.String),
@@ -511,7 +511,7 @@ export const Certification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certification" }) as any as S.Schema<Certification>;
 
 export type CertificationList = Array<Certification>;
-export const CertificationList = /*@__PURE__*/ S.Array(
+const CertificationList = /*@__PURE__*/ S.Array(
   Certification,
 ) as any as S.Schema<CertificationList>;
 
@@ -530,7 +530,7 @@ export interface Tax {
   /** The geographic region to which the tax rate applies. */
   region?: string;
 }
-export const Tax = /*@__PURE__*/ S.suspend(() =>
+const Tax = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     postalCode: S.optional(S.String),
@@ -542,7 +542,7 @@ export const Tax = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tax" }) as any as S.Schema<Tax>;
 
 export type TaxList = Array<Tax>;
-export const TaxList = /*@__PURE__*/ S.Array(Tax) as any as S.Schema<TaxList>;
+const TaxList = /*@__PURE__*/ S.Array(Tax) as any as S.Schema<TaxList>;
 
 /** Structured title, for algorithmically (AI)-generated titles. */
 export interface ProductStructuredTitle {
@@ -551,7 +551,7 @@ export interface ProductStructuredTitle {
   /** The digital source type, for example "trained_algorithmic_media". Following [IPTC](https://cv.iptc.org/newscodes/digitalsourcetype). Maximum length is 40 characters. */
   digitalSourceType?: string;
 }
-export const ProductStructuredTitle = /*@__PURE__*/ S.suspend(() =>
+const ProductStructuredTitle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     digitalSourceType: S.optional(S.String),
@@ -565,7 +565,7 @@ export interface FreeShippingThreshold {
   /** The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country to which an item will ship. */
   country?: string;
 }
-export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
+const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priceThreshold: S.optional(Price),
     country: S.optional(S.String),
@@ -573,7 +573,7 @@ export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FreeShippingThreshold" }) as any as S.Schema<FreeShippingThreshold>;
 
 export type FreeShippingThresholdList = Array<FreeShippingThreshold>;
-export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
+const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
   FreeShippingThreshold,
 ) as any as S.Schema<FreeShippingThresholdList>;
 
@@ -770,7 +770,7 @@ export interface Attributes {
   /** Similar to ads_grouping, but only works on CPC. */
   adsLabels?: StringList;
 }
-export const Attributes = /*@__PURE__*/ S.suspend(() =>
+const Attributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productWidth: S.optional(ProductDimension),
     ageGroup: S.optional(S.String),
@@ -871,14 +871,14 @@ export const Attributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
 
 export type ProductChannelEnum = "CHANNEL_ENUM_UNSPECIFIED" | "ONLINE" | "LOCAL";
-export const ProductChannelEnum = S.String;
+const ProductChannelEnum = S.String;
 
 export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
   | "DISAPPROVED";
-export const ItemLevelIssueSeverityEnum = S.String;
+const ItemLevelIssueSeverityEnum = S.String;
 
 export type ItemLevelIssueReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
@@ -902,7 +902,7 @@ export type ItemLevelIssueReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const ItemLevelIssueReportingContextEnum = S.String;
+const ItemLevelIssueReportingContextEnum = S.String;
 
 /** The ItemLevelIssue of the product status. */
 export interface ItemLevelIssue {
@@ -925,7 +925,7 @@ export interface ItemLevelIssue {
   /** The error code of the issue. */
   code?: string;
 }
-export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     severity: S.optional(ItemLevelIssueSeverityEnum),
@@ -940,7 +940,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
 export type ItemLevelIssueList = Array<ItemLevelIssue>;
-export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
+const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
 
@@ -966,7 +966,7 @@ export type DestinationStatusReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const DestinationStatusReportingContextEnum = S.String;
+const DestinationStatusReportingContextEnum = S.String;
 
 /** The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API. */
 export interface DestinationStatus {
@@ -979,7 +979,7 @@ export interface DestinationStatus {
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval. */
   pendingCountries?: StringList;
 }
-export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
+const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportingContext: S.optional(DestinationStatusReportingContextEnum),
     disapprovedCountries: S.optional(StringList),
@@ -989,7 +989,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestinationStatus" }) as any as S.Schema<DestinationStatus>;
 
 export type DestinationStatusList = Array<DestinationStatus>;
-export const DestinationStatusList = /*@__PURE__*/ S.Array(
+const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
 
@@ -1006,7 +1006,7 @@ export interface ProductStatus {
   /** Date on which the item expires, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   googleExpirationDate?: string;
 }
-export const ProductStatus = /*@__PURE__*/ S.suspend(() =>
+const ProductStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     itemLevelIssues: S.optional(ItemLevelIssueList),
@@ -1025,7 +1025,7 @@ export interface CustomAttribute {
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
   value?: string;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     groupValues: S.optional(S.suspend(() => CustomAttributeList)),
@@ -1034,7 +1034,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = Array<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
+const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
 
@@ -1067,7 +1067,7 @@ export interface Product {
   /** Output only. Determines whether the product is [archived](https://support.google.com/merchants/answer/11909930). To archive or restore your product, visit Merchant Center products page. Learn also more about [offer visibility](https://support.google.com/merchants/answer/12488713). */
   archived?: boolean;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatedDiscounts: S.optional(AutomatedDiscounts),
     attributes: S.optional(Attributes),
@@ -1086,7 +1086,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 export type ProductInputChannelEnum = "CHANNEL_ENUM_UNSPECIFIED" | "ONLINE" | "LOCAL";
-export const ProductInputChannelEnum = S.String;
+const ProductInputChannelEnum = S.String;
 
 /** This resource represents input data you submit for a product, not the processed product that you see in Merchant Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are combined to create the processed Product. For more information, see [Manage products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation checks are primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. All fields in the product input and its sub-messages match the English name of their corresponding attribute in the [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style. */
 export interface ProductInput {
@@ -1113,7 +1113,7 @@ export interface ProductInput {
   /** Identifier. The name of the product. Format: `accounts/{account}/productInputs/{productinput}` The {productinput} segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the {productinput} segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{productinput}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{productinput}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/productInputs/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{productinput}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{productinput}` segment is used to differentiate between the two formats. */
   name?: string;
 }
-export const ProductInput = /*@__PURE__*/ S.suspend(() =>
+const ProductInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(Attributes),
     feedLabel: S.optional(S.String),
@@ -1137,7 +1137,7 @@ export interface InsertAccountsProductInputsRequest {
   /** Request body */
   body?: ProductInput;
 }
-export const InsertAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     dataSource: S.optional(S.String.pipe(T.Query())),
@@ -1161,7 +1161,7 @@ export interface ListAccountsProductsRequest {
   /** A page token, received from a previous `ListProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProducts` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1178,7 +1178,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
 export type ProductList = Array<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
+const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 /** Response message for the ListProducts method. */
 export interface ListProductsResponse {
@@ -1187,7 +1187,7 @@ export interface ListProductsResponse {
   /** The processed products from the specified account. These are your processed products after applying rules and supplemental data sources. */
   products?: ProductList;
 }
-export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     products: S.optional(ProductList),
@@ -1204,7 +1204,7 @@ export interface PatchAccountsProductInputsRequest {
   /** Request body */
   body?: ProductInput;
 }
-export const PatchAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsProductInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

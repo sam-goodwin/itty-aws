@@ -50,7 +50,7 @@ export type AIObservabilityInstrumentationCheckEnum =
   | "tool_calls"
   | "user_identity"
   | "trace_structure";
-export const AIObservabilityInstrumentationCheckEnum = S.String;
+const AIObservabilityInstrumentationCheckEnum = S.String;
 
 export interface AiObservabilityInstrumentationChecklistRestoreCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -58,29 +58,28 @@ export interface AiObservabilityInstrumentationChecklistRestoreCreateRequest {
   /** Key of the check to dismiss or restore. * `sessions` - sessions * `tool_calls` - tool_calls * `user_identity` - user_identity * `trace_structure` - trace_structure */
   check: AIObservabilityInstrumentationCheckEnum | (string & {});
 }
-export const AiObservabilityInstrumentationChecklistRestoreCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      check: AIObservabilityInstrumentationCheckEnum,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/ai_observability/instrumentation_checklist/restore/",
-        code: 200,
-      }),
-    ),
+const AiObservabilityInstrumentationChecklistRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    check: AIObservabilityInstrumentationCheckEnum,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/ai_observability/instrumentation_checklist/restore/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "AiObservabilityInstrumentationChecklistRestoreCreateRequest",
 }) as any as S.Schema<AiObservabilityInstrumentationChecklistRestoreCreateRequest>;
 
 /** * `ok` - ok * `warning` - warning * `pending` - pending * `dismissed` - dismissed */
 export type InstrumentationCheckStatusEnum = "ok" | "warning" | "pending" | "dismissed";
-export const InstrumentationCheckStatusEnum = S.String;
+const InstrumentationCheckStatusEnum = S.String;
 
 /** Counts this check was graded from, over the same window. Which counts appear depends on the check. */
 export type InstrumentationCheckStatsMap = { [key: string]: number | undefined };
-export const InstrumentationCheckStatsMap = /*@__PURE__*/ S.Record(
+const InstrumentationCheckStatsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<InstrumentationCheckStatsMap>;
@@ -99,7 +98,7 @@ export interface InstrumentationCheck {
   /** Counts this check was graded from, over the same window. Which counts appear depends on the check. */
   stats: InstrumentationCheckStatsMap;
 }
-export const InstrumentationCheck = /*@__PURE__*/ S.suspend(() =>
+const InstrumentationCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: AIObservabilityInstrumentationCheckEnum,
     status: InstrumentationCheckStatusEnum,
@@ -112,7 +111,7 @@ export const InstrumentationCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Every check, graded. Checks are always all returned, including the ones that pass. */
 export type InstrumentationChecklistChecksList = Array<InstrumentationCheck>;
-export const InstrumentationChecklistChecksList = /*@__PURE__*/ S.Array(
+const InstrumentationChecklistChecksList = /*@__PURE__*/ S.Array(
   InstrumentationCheck,
 ) as any as S.Schema<InstrumentationChecklistChecksList>;
 
@@ -122,7 +121,7 @@ export interface InstrumentationChecklist {
   /** Every check, graded. Checks are always all returned, including the ones that pass. */
   checks: InstrumentationChecklistChecksList;
 }
-export const InstrumentationChecklist = /*@__PURE__*/ S.suspend(() =>
+const InstrumentationChecklist = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_days: S.Number,
     checks: InstrumentationChecklistChecksList,
@@ -130,13 +129,13 @@ export const InstrumentationChecklist = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstrumentationChecklist" }) as any as S.Schema<InstrumentationChecklist>;
 
 export type OfflineExperimentItemPayloadInputInputCase0Map = { [key: string]: unknown | undefined };
-export const OfflineExperimentItemPayloadInputInputCase0Map = /*@__PURE__*/ S.Record(
+const OfflineExperimentItemPayloadInputInputCase0Map = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<OfflineExperimentItemPayloadInputInputCase0Map>;
 
 export type OfflineExperimentItemPayloadInputInputCase1List = Array<unknown>;
-export const OfflineExperimentItemPayloadInputInputCase1List = /*@__PURE__*/ S.Array(
+const OfflineExperimentItemPayloadInputInputCase1List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OfflineExperimentItemPayloadInputInputCase1List>;
 
@@ -146,49 +145,37 @@ export type OfflineExperimentItemPayloadInputInput =
   | string
   | number
   | boolean;
-export const OfflineExperimentItemPayloadInputInput =
+const OfflineExperimentItemPayloadInputInput =
   S.Unknown as any as S.Schema<OfflineExperimentItemPayloadInputInput>;
 
 export type OfflineExperimentItemPayloadInputOutputCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const OfflineExperimentItemPayloadInputOutputCase0Map =
-  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<OfflineExperimentItemPayloadInputOutputCase0Map>;
-
 export type OfflineExperimentItemPayloadInputOutputCase1List = Array<unknown>;
-export const OfflineExperimentItemPayloadInputOutputCase1List =
-  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<OfflineExperimentItemPayloadInputOutputCase1List>;
-
 export type OfflineExperimentItemPayloadInputOutput =
   | OfflineExperimentItemPayloadInputOutputCase0Map
   | OfflineExperimentItemPayloadInputOutputCase1List
   | string
   | number
   | boolean;
-export const OfflineExperimentItemPayloadInputOutput =
+const OfflineExperimentItemPayloadInputOutput =
   S.Unknown as any as S.Schema<OfflineExperimentItemPayloadInputOutput>;
 
 export type OfflineExperimentItemPayloadInputExpectedOutputCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const OfflineExperimentItemPayloadInputExpectedOutputCase0Map =
-  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<OfflineExperimentItemPayloadInputExpectedOutputCase0Map>;
-
 export type OfflineExperimentItemPayloadInputExpectedOutputCase1List = Array<unknown>;
-export const OfflineExperimentItemPayloadInputExpectedOutputCase1List =
-  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<OfflineExperimentItemPayloadInputExpectedOutputCase1List>;
-
 export type OfflineExperimentItemPayloadInputExpectedOutput =
   | OfflineExperimentItemPayloadInputExpectedOutputCase0Map
   | OfflineExperimentItemPayloadInputExpectedOutputCase1List
   | string
   | number
   | boolean;
-export const OfflineExperimentItemPayloadInputExpectedOutput =
+const OfflineExperimentItemPayloadInputExpectedOutput =
   S.Unknown as any as S.Schema<OfflineExperimentItemPayloadInputExpectedOutput>;
 
 export type OfflineExperimentItemPayloadInputMetadataMap = { [key: string]: unknown | undefined };
-export const OfflineExperimentItemPayloadInputMetadataMap =
+const OfflineExperimentItemPayloadInputMetadataMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<OfflineExperimentItemPayloadInputMetadataMap>;
 
 export interface OfflineExperimentItemPayloadInput {
@@ -197,7 +184,7 @@ export interface OfflineExperimentItemPayloadInput {
   expected_output?: OfflineExperimentItemPayloadInputExpectedOutput | null;
   metadata?: OfflineExperimentItemPayloadInputMetadataMap | null;
 }
-export const OfflineExperimentItemPayloadInput = /*@__PURE__*/ S.suspend(() =>
+const OfflineExperimentItemPayloadInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: S.optional(S.NullOr(OfflineExperimentItemPayloadInputInput)),
     output: S.optional(S.NullOr(OfflineExperimentItemPayloadInputOutput)),
@@ -226,7 +213,7 @@ export interface ItemSubmission {
   /** Optional input/output payload, up to 1 MiB and 32 JSON levels. Omission, {} and null properties differ. */
   payload?: OfflineExperimentItemPayloadInput;
 }
-export const ItemSubmission = /*@__PURE__*/ S.suspend(() =>
+const ItemSubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     case_key: S.optional(S.NullOr(S.String)),
@@ -241,25 +228,25 @@ export const ItemSubmission = /*@__PURE__*/ S.suspend(() =>
 
 /** Complete immutable declarations for referenced items. Omit existing items to reuse them without a payload. */
 export type AiObservabilityOfflineExperimentsUploadCreateRequestItemsList = Array<ItemSubmission>;
-export const AiObservabilityOfflineExperimentsUploadCreateRequestItemsList = /*@__PURE__*/ S.Array(
+const AiObservabilityOfflineExperimentsUploadCreateRequestItemsList = /*@__PURE__*/ S.Array(
   ItemSubmission,
 ) as any as S.Schema<AiObservabilityOfflineExperimentsUploadCreateRequestItemsList>;
 
 /** * `ok` - OK * `error` - Error * `skipped` - Skipped * `not_applicable` - Not applicable */
 export type OfflineEvaluationResultStatusEnum = "ok" | "error" | "skipped" | "not_applicable";
-export const OfflineEvaluationResultStatusEnum = S.String;
+const OfflineEvaluationResultStatusEnum = S.String;
 
 export type ResultSubmissionValueCase2List = Array<string>;
-export const ResultSubmissionValueCase2List = /*@__PURE__*/ S.Array(
+const ResultSubmissionValueCase2List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResultSubmissionValueCase2List>;
 
 /** Required for ok: finite number, boolean, or distinct category keys matching the scorer version. */
 export type ResultSubmissionValue = number | boolean | ResultSubmissionValueCase2List;
-export const ResultSubmissionValue = S.Unknown as any as S.Schema<ResultSubmissionValue>;
+const ResultSubmissionValue = S.Unknown as any as S.Schema<ResultSubmissionValue>;
 
 export type OfflineEvaluationResultPayloadInputMetadataMap = { [key: string]: unknown | undefined };
-export const OfflineEvaluationResultPayloadInputMetadataMap =
+const OfflineEvaluationResultPayloadInputMetadataMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<OfflineEvaluationResultPayloadInputMetadataMap>;
 
 export interface OfflineEvaluationResultPayloadInput {
@@ -267,7 +254,7 @@ export interface OfflineEvaluationResultPayloadInput {
   error_message?: string | null;
   metadata?: OfflineEvaluationResultPayloadInputMetadataMap | null;
 }
-export const OfflineEvaluationResultPayloadInput = /*@__PURE__*/ S.suspend(() =>
+const OfflineEvaluationResultPayloadInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasoning: S.optional(S.NullOr(S.String)),
     error_message: S.optional(S.NullOr(S.String)),
@@ -295,7 +282,7 @@ export interface ResultSubmission {
   /** Optional reasoning, error message, and metadata, up to 256 KiB and 32 JSON levels. */
   payload?: OfflineEvaluationResultPayloadInput;
 }
-export const ResultSubmission = /*@__PURE__*/ S.suspend(() =>
+const ResultSubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item_id: S.String,
     scorer_version_id: S.String,
@@ -311,10 +298,9 @@ export const ResultSubmission = /*@__PURE__*/ S.suspend(() =>
 /** One to 1,000 unique item/scorer-version results. The entire request commits atomically. */
 export type AiObservabilityOfflineExperimentsUploadCreateRequestResultsList =
   Array<ResultSubmission>;
-export const AiObservabilityOfflineExperimentsUploadCreateRequestResultsList =
-  /*@__PURE__*/ S.Array(
-    ResultSubmission,
-  ) as any as S.Schema<AiObservabilityOfflineExperimentsUploadCreateRequestResultsList>;
+const AiObservabilityOfflineExperimentsUploadCreateRequestResultsList = /*@__PURE__*/ S.Array(
+  ResultSubmission,
+) as any as S.Schema<AiObservabilityOfflineExperimentsUploadCreateRequestResultsList>;
 
 export interface AiObservabilityOfflineExperimentsUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -326,7 +312,7 @@ export interface AiObservabilityOfflineExperimentsUploadCreateRequest {
   /** One to 1,000 unique item/scorer-version results. The entire request commits atomically. */
   results: AiObservabilityOfflineExperimentsUploadCreateRequestResultsList;
 }
-export const AiObservabilityOfflineExperimentsUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AiObservabilityOfflineExperimentsUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -351,7 +337,7 @@ export interface ItemReceipt {
   /** Original server acceptance time, unchanged on retry. */
   accepted_at: string;
 }
-export const ItemReceipt = /*@__PURE__*/ S.suspend(() =>
+const ItemReceipt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.Boolean,
@@ -361,7 +347,7 @@ export const ItemReceipt = /*@__PURE__*/ S.suspend(() =>
 
 /** One acknowledgment per referenced item. */
 export type UploadReceiptItemsList = Array<ItemReceipt>;
-export const UploadReceiptItemsList = /*@__PURE__*/ S.Array(
+const UploadReceiptItemsList = /*@__PURE__*/ S.Array(
   ItemReceipt,
 ) as any as S.Schema<UploadReceiptItemsList>;
 
@@ -377,7 +363,7 @@ export interface ResultReceipt {
   /** Pinned scorer version used by this result. */
   scorer_version_id: string;
 }
-export const ResultReceipt = /*@__PURE__*/ S.suspend(() =>
+const ResultReceipt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.Boolean,
@@ -389,7 +375,7 @@ export const ResultReceipt = /*@__PURE__*/ S.suspend(() =>
 
 /** Acknowledgments in the submitted result order. */
 export type UploadReceiptResultsList = Array<ResultReceipt>;
-export const UploadReceiptResultsList = /*@__PURE__*/ S.Array(
+const UploadReceiptResultsList = /*@__PURE__*/ S.Array(
   ResultReceipt,
 ) as any as S.Schema<UploadReceiptResultsList>;
 
@@ -399,7 +385,7 @@ export interface UploadReceipt {
   /** Acknowledgments in the submitted result order. */
   results: UploadReceiptResultsList;
 }
-export const UploadReceipt = /*@__PURE__*/ S.suspend(() =>
+const UploadReceipt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: UploadReceiptItemsList,
     results: UploadReceiptResultsList,
@@ -412,7 +398,7 @@ export interface ArchiveDatasetRequest {
   /** A UUID string identifying this dataset. */
   id: string;
 }
-export const ArchiveDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchiveDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -423,11 +409,11 @@ export const ArchiveDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON object with descriptive dataset metadata. */
 export type DatasetReadMetadataMap = { [key: string]: unknown | undefined };
-export const DatasetReadMetadataMap =
+const DatasetReadMetadataMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<DatasetReadMetadataMap>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -441,14 +427,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -461,7 +442,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -495,7 +476,7 @@ export interface DatasetRead {
   /** The effective access level the user has for this object */
   user_access_level: string | null;
 }
-export const DatasetRead = /*@__PURE__*/ S.suspend(() =>
+const DatasetRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -519,7 +500,7 @@ export interface ArchiveDatasetItemRequest {
   /** Current item version observed by the caller. */
   base_version: number;
 }
-export const ArchiveDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchiveDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     dataset_item_id: S.String.pipe(T.Label()),
@@ -536,24 +517,18 @@ export const ArchiveDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArchiveDatasetItemRequest>;
 
 export type DatasetJSONValueCase0Map = { [key: string]: unknown | undefined };
-export const DatasetJSONValueCase0Map =
-  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<DatasetJSONValueCase0Map>;
-
 export type DatasetJSONValueCase1List = Array<unknown>;
-export const DatasetJSONValueCase1List =
-  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<DatasetJSONValueCase1List>;
-
 export type DatasetJSONValue =
   | DatasetJSONValueCase0Map
   | DatasetJSONValueCase1List
   | string
   | number
   | boolean;
-export const DatasetJSONValue = S.Unknown as any as S.Schema<DatasetJSONValue>;
+const DatasetJSONValue = S.Unknown as any as S.Schema<DatasetJSONValue>;
 
 /** JSON object with item metadata. */
 export type DatasetItemReadMetadataMap = { [key: string]: unknown | undefined };
-export const DatasetItemReadMetadataMap =
+const DatasetItemReadMetadataMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<DatasetItemReadMetadataMap>;
 
 export interface DatasetItemRead {
@@ -593,7 +568,7 @@ export interface DatasetItemRead {
   /** Project that owns the item. */
   team_id: number;
 }
-export const DatasetItemRead = /*@__PURE__*/ S.suspend(() =>
+const DatasetItemRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     dataset: S.String,
@@ -625,25 +600,24 @@ export interface CreateAiObservabilityInstrumentationChecklistDismissRequest {
   /** Key of the check to dismiss or restore. * `sessions` - sessions * `tool_calls` - tool_calls * `user_identity` - user_identity * `trace_structure` - trace_structure */
   check: AIObservabilityInstrumentationCheckEnum | (string & {});
 }
-export const CreateAiObservabilityInstrumentationChecklistDismissRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      check: AIObservabilityInstrumentationCheckEnum,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/ai_observability/instrumentation_checklist/dismiss/",
-        code: 200,
-      }),
-    ),
+const CreateAiObservabilityInstrumentationChecklistDismissRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    check: AIObservabilityInstrumentationCheckEnum,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/ai_observability/instrumentation_checklist/dismiss/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateAiObservabilityInstrumentationChecklistDismissRequest",
 }) as any as S.Schema<CreateAiObservabilityInstrumentationChecklistDismissRequest>;
 
 /** * `ci` - CI * `local` - Local * `scheduled` - Scheduled */
 export type OfflineExperimentRunSourceEnum = "ci" | "local" | "scheduled";
-export const OfflineExperimentRunSourceEnum = S.String;
+const OfflineExperimentRunSourceEnum = S.String;
 
 export interface CreateAiObservabilityOfflineExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -677,7 +651,7 @@ export interface CreateAiObservabilityOfflineExperimentRequest {
   /** Version of the prompt under evaluation. */
   prompt_version?: string | null;
 }
-export const CreateAiObservabilityOfflineExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAiObservabilityOfflineExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String,
@@ -707,7 +681,7 @@ export const CreateAiObservabilityOfflineExperimentRequest = /*@__PURE__*/ S.sus
 
 /** * `uploading` - Uploading * `completed` - Completed * `failed` - Failed */
 export type OfflineExperimentStatusEnum = "uploading" | "completed" | "failed";
-export const OfflineExperimentStatusEnum = S.String;
+const OfflineExperimentStatusEnum = S.String;
 
 export interface ExperimentReceipt {
   /** Stable experiment UUID supplied at creation. */
@@ -731,7 +705,7 @@ export interface ExperimentReceipt {
   /** Number of unique accepted results across all statuses. */
   accepted_result_count: number;
 }
-export const ExperimentReceipt = /*@__PURE__*/ S.suspend(() =>
+const ExperimentReceipt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: OfflineExperimentStatusEnum,
@@ -752,7 +726,7 @@ export interface CreateAiObservabilityOfflineExperimentsCompleteRequest {
   /** Experiment UUID. */
   id: string;
 }
-export const CreateAiObservabilityOfflineExperimentsCompleteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAiObservabilityOfflineExperimentsCompleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -773,7 +747,7 @@ export interface CreateAiObservabilityOfflineExperimentsFailRequest {
   /** Experiment UUID. */
   id: string;
 }
-export const CreateAiObservabilityOfflineExperimentsFailRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAiObservabilityOfflineExperimentsFailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -790,7 +764,7 @@ export const CreateAiObservabilityOfflineExperimentsFailRequest = /*@__PURE__*/ 
 
 /** Optional JSON object with descriptive dataset metadata. */
 export type CreateDatasetRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateDatasetRequestMetadataMap =
+const CreateDatasetRequestMetadataMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<CreateDatasetRequestMetadataMap>;
 
 export interface CreateDatasetRequest {
@@ -803,7 +777,7 @@ export interface CreateDatasetRequest {
   /** Optional JSON object with descriptive dataset metadata. */
   metadata?: CreateDatasetRequestMetadataMap;
 }
-export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -814,7 +788,7 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional JSON object with item metadata. */
 export type CreateDatasetItemRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateDatasetItemRequestMetadataMap =
+const CreateDatasetItemRequestMetadataMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<CreateDatasetItemRequestMetadataMap>;
 
 export interface CreateDatasetItemRequest {
@@ -839,7 +813,7 @@ export interface CreateDatasetItemRequest {
   /** Timestamp needed to retrieve the event-backed source trace. */
   source_timestamp?: string | null;
 }
-export const CreateDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     dataset: S.String,
@@ -862,7 +836,7 @@ export interface CreateDatasetsExportRequest {
   /** Dataset revision to export. Defaults to the latest revision when the export is created. */
   revision?: number;
 }
-export const CreateDatasetsExportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatasetsExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -875,7 +849,7 @@ export const CreateDatasetsExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetsExportRequest>;
 
 export type DatasetExportReadStatusEnum = "pending" | "complete" | "failed";
-export const DatasetExportReadStatusEnum = S.String;
+const DatasetExportReadStatusEnum = S.String;
 
 export interface DatasetExportRead {
   /** Export ID used to check status and download the file. */
@@ -893,7 +867,7 @@ export interface DatasetExportRead {
   /** Reason the export failed, or null while it is pending or complete. */
   exception: string | null;
 }
-export const DatasetExportRead = /*@__PURE__*/ S.suspend(() =>
+const DatasetExportRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     status: DatasetExportReadStatusEnum,
@@ -915,32 +889,31 @@ export interface CreateLlmAnalyticsOfflineEvaluationsExperimentItemRequest {
   /** Upper bound on `timestamp` (ISO-8601). Omit to leave the upper bound open. */
   date_to?: string | null;
 }
-export const CreateLlmAnalyticsOfflineEvaluationsExperimentItemRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      experiment_id: S.String,
-      date_from: S.optional(S.NullOr(S.String)),
-      date_to: S.optional(S.NullOr(S.String)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/llm_analytics/offline_evaluations/experiment_items/",
-        code: 200,
-      }),
-    ),
+const CreateLlmAnalyticsOfflineEvaluationsExperimentItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    experiment_id: S.String,
+    date_from: S.optional(S.NullOr(S.String)),
+    date_to: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/llm_analytics/offline_evaluations/experiment_items/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateLlmAnalyticsOfflineEvaluationsExperimentItemRequest",
 }) as any as S.Schema<CreateLlmAnalyticsOfflineEvaluationsExperimentItemRequest>;
 
 export type OfflineExperimentItemsResponseResultsItemList = Array<unknown>;
-export const OfflineExperimentItemsResponseResultsItemList =
+const OfflineExperimentItemsResponseResultsItemList =
   OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<OfflineExperimentItemsResponseResultsItemList>;
 
 /** Tuple-positional rows; positions match `RawOfflineExperimentMetricRow` in the frontend. */
 export type OfflineExperimentItemsResponseResultsList =
   Array<OfflineExperimentItemsResponseResultsItemList>;
-export const OfflineExperimentItemsResponseResultsList = /*@__PURE__*/ S.Array(
+const OfflineExperimentItemsResponseResultsList = /*@__PURE__*/ S.Array(
   OfflineExperimentItemsResponseResultsItemList,
 ) as any as S.Schema<OfflineExperimentItemsResponseResultsList>;
 
@@ -948,7 +921,7 @@ export interface OfflineExperimentItemsResponse {
   /** Tuple-positional rows; positions match `RawOfflineExperimentMetricRow` in the frontend. */
   results: OfflineExperimentItemsResponseResultsList;
 }
-export const OfflineExperimentItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const OfflineExperimentItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: OfflineExperimentItemsResponseResultsList,
   }),
@@ -958,11 +931,11 @@ export const OfflineExperimentItemsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** * `trace` - trace * `event` - event */
 export type SummarizeTypeEnum = "trace" | "event";
-export const SummarizeTypeEnum = S.String;
+const SummarizeTypeEnum = S.String;
 
 /** * `minimal` - minimal * `detailed` - detailed */
 export type DetailModeValueEnum = "minimal" | "detailed";
-export const DetailModeValueEnum = S.String;
+const DetailModeValueEnum = S.String;
 
 export interface CreateLlmAnalyticsSummarizationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -988,7 +961,7 @@ export interface CreateLlmAnalyticsSummarizationRequest {
   /** End of date range for ID-based lookup. Defaults to now. */
   date_to?: string | null;
 }
-export const CreateLlmAnalyticsSummarizationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsSummarizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     summarize_type: S.optional(SummarizeTypeEnum),
@@ -1016,7 +989,7 @@ export interface SummaryBullet {
   text?: string;
   line_refs?: string;
 }
-export const SummaryBullet = /*@__PURE__*/ S.suspend(() =>
+const SummaryBullet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     line_refs: S.optional(S.String),
@@ -1025,16 +998,14 @@ export const SummaryBullet = /*@__PURE__*/ S.suspend(() =>
 
 /** Main summary bullets */
 export type StructuredSummarySummaryBulletsList = Array<SummaryBullet>;
-export const StructuredSummarySummaryBulletsList = /*@__PURE__*/ S.Array(
+const StructuredSummarySummaryBulletsList = /*@__PURE__*/ S.Array(
   SummaryBullet,
 ) as any as S.Schema<StructuredSummarySummaryBulletsList>;
 
 export type InterestingNote = SummaryBullet;
-export const InterestingNote = SummaryBullet;
-
 /** Interesting notes (0-2 for minimal, more for detailed) */
 export type StructuredSummaryInterestingNotesList = Array<SummaryBullet>;
-export const StructuredSummaryInterestingNotesList =
+const StructuredSummaryInterestingNotesList =
   StructuredSummarySummaryBulletsList as any as S.Schema<StructuredSummaryInterestingNotesList>;
 
 export interface StructuredSummary {
@@ -1047,7 +1018,7 @@ export interface StructuredSummary {
   /** Interesting notes (0-2 for minimal, more for detailed) */
   interesting_notes?: StructuredSummaryInterestingNotesList;
 }
-export const StructuredSummary = /*@__PURE__*/ S.suspend(() =>
+const StructuredSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     flow_diagram: S.optional(S.String),
@@ -1064,7 +1035,7 @@ export interface SummarizeResponse {
   /** Metadata about the summarization */
   metadata?: unknown;
 }
-export const SummarizeResponse = /*@__PURE__*/ S.suspend(() =>
+const SummarizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.optional(StructuredSummary),
     text_repr: S.optional(S.String),
@@ -1074,7 +1045,7 @@ export const SummarizeResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of trace IDs to check for cached summaries */
 export type CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList = Array<string>;
-export const CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList =
+const CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList =
   ResultSubmissionValueCase2List as any as S.Schema<CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList>;
 
 export interface CreateLlmAnalyticsSummarizationBatchCheckRequest {
@@ -1087,7 +1058,7 @@ export interface CreateLlmAnalyticsSummarizationBatchCheckRequest {
   /** LLM model used for cached summaries */
   model?: string | null;
 }
-export const CreateLlmAnalyticsSummarizationBatchCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsSummarizationBatchCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     trace_ids: S.optional(CreateLlmAnalyticsSummarizationBatchCheckRequestTraceIdsList),
@@ -1109,7 +1080,7 @@ export interface CachedSummary {
   title?: string;
   cached?: boolean;
 }
-export const CachedSummary = /*@__PURE__*/ S.suspend(() =>
+const CachedSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trace_id: S.optional(S.String),
     title: S.optional(S.String),
@@ -1118,14 +1089,14 @@ export const CachedSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CachedSummary" }) as any as S.Schema<CachedSummary>;
 
 export type BatchCheckResponseSummariesList = Array<CachedSummary>;
-export const BatchCheckResponseSummariesList = /*@__PURE__*/ S.Array(
+const BatchCheckResponseSummariesList = /*@__PURE__*/ S.Array(
   CachedSummary,
 ) as any as S.Schema<BatchCheckResponseSummariesList>;
 
 export interface BatchCheckResponse {
   summaries?: BatchCheckResponseSummariesList;
 }
-export const BatchCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summaries: S.optional(BatchCheckResponseSummariesList),
   }),
@@ -1133,7 +1104,7 @@ export const BatchCheckResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** * `$ai_generation` - $ai_generation * `$ai_span` - $ai_span * `$ai_embedding` - $ai_embedding * `$ai_trace` - $ai_trace */
 export type EventTypeEnum = "$ai_generation" | "$ai_span" | "$ai_embedding" | "$ai_trace";
-export const EventTypeEnum = S.String;
+const EventTypeEnum = S.String;
 
 export interface TextReprOptions {
   /** Maximum length of generated text (default: 2000000) */
@@ -1157,7 +1128,7 @@ export interface TextReprOptions {
   /** Prefix each line with line number (default: false) */
   include_line_numbers?: boolean;
 }
-export const TextReprOptions = /*@__PURE__*/ S.suspend(() =>
+const TextReprOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max_length: S.optional(S.Number),
     truncated: S.optional(S.Boolean),
@@ -1182,7 +1153,7 @@ export interface CreateLlmAnalyticsTextReprRequest {
   /** Optional configuration for text generation */
   options?: TextReprOptions;
 }
-export const CreateLlmAnalyticsTextReprRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsTextReprRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event_type: S.optional(EventTypeEnum),
@@ -1208,7 +1179,7 @@ export interface TextReprMetadata {
   truncated?: boolean;
   error?: string;
 }
-export const TextReprMetadata = /*@__PURE__*/ S.suspend(() =>
+const TextReprMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_type: S.optional(S.String),
     event_id: S.optional(S.String),
@@ -1226,7 +1197,7 @@ export interface TextReprResponse {
   /** Metadata about the text representation */
   metadata?: TextReprMetadata;
 }
-export const TextReprResponse = /*@__PURE__*/ S.suspend(() =>
+const TextReprResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     metadata: S.optional(TextReprMetadata),
@@ -1239,7 +1210,7 @@ export interface GetAiObservabilityInstrumentationChecklistRequest {
   /** Grade the checks against a fresh read instead of a recent cached one. Use it after changing instrumentation, when a cached verdict would still describe the old code. */
   refresh?: boolean;
 }
-export const GetAiObservabilityInstrumentationChecklistRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiObservabilityInstrumentationChecklistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     refresh: S.optional(S.Boolean.pipe(T.Query())),
@@ -1260,7 +1231,7 @@ export interface GetAiObservabilityOfflineExperimentRequest {
   /** Experiment UUID. */
   id: string;
 }
-export const GetAiObservabilityOfflineExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiObservabilityOfflineExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1321,7 +1292,7 @@ export interface OfflineExperimentRead {
   /** Prompt revision under evaluation. */
   prompt_version: string | null;
 }
-export const OfflineExperimentRead = /*@__PURE__*/ S.suspend(() =>
+const OfflineExperimentRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1356,7 +1327,7 @@ export interface GetAiObservabilityOfflineExperimentsItemRequest {
   /** Item UUID within the experiment. */
   item_id: string;
 }
-export const GetAiObservabilityOfflineExperimentsItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiObservabilityOfflineExperimentsItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1374,15 +1345,12 @@ export const GetAiObservabilityOfflineExperimentsItemRequest = /*@__PURE__*/ S.s
 
 /** * `not_provided` - Not provided * `available` - Available * `expired` - Expired */
 export type PayloadStateEnum = "not_provided" | "available" | "expired";
-export const PayloadStateEnum = S.String;
+const PayloadStateEnum = S.String;
 
 export type OfflineResultCellValueCase2List = Array<string>;
-export const OfflineResultCellValueCase2List =
-  ResultSubmissionValueCase2List as any as S.Schema<OfflineResultCellValueCase2List>;
-
 /** Typed score for ok outcomes; null for other outcomes. */
 export type OfflineResultCellValue = number | boolean | OfflineResultCellValueCase2List;
-export const OfflineResultCellValue = S.Unknown as any as S.Schema<OfflineResultCellValue>;
+const OfflineResultCellValue = S.Unknown as any as S.Schema<OfflineResultCellValue>;
 
 export interface OfflineResultCell {
   /** Stable result UUID. */
@@ -1408,7 +1376,7 @@ export interface OfflineResultCell {
   /** Exact scorer-version UUID in the item page's scorer_versions list. */
   scorer_version_id: string;
 }
-export const OfflineResultCell = /*@__PURE__*/ S.suspend(() =>
+const OfflineResultCell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     item_id: S.String,
@@ -1426,7 +1394,7 @@ export const OfflineResultCell = /*@__PURE__*/ S.suspend(() =>
 
 /** Cells for explicitly selected scorer versions; empty when none selected. */
 export type OfflineItemReadResultsList = Array<OfflineResultCell>;
-export const OfflineItemReadResultsList = /*@__PURE__*/ S.Array(
+const OfflineItemReadResultsList = /*@__PURE__*/ S.Array(
   OfflineResultCell,
 ) as any as S.Schema<OfflineItemReadResultsList>;
 
@@ -1456,7 +1424,7 @@ export interface OfflineItemRead {
   /** Cells for explicitly selected scorer versions; empty when none selected. */
   results: OfflineItemReadResultsList;
 }
-export const OfflineItemRead = /*@__PURE__*/ S.suspend(() =>
+const OfflineItemRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     experiment_id: S.String,
@@ -1481,7 +1449,7 @@ export interface GetAiObservabilityOfflineExperimentsItemsPayloadRequest {
   /** Item UUID within the experiment. */
   item_id: string;
 }
-export const GetAiObservabilityOfflineExperimentsItemsPayloadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiObservabilityOfflineExperimentsItemsPayloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1509,7 +1477,7 @@ export interface OfflineItemPayloadRead {
   /** Stored item payload, preserving omitted properties and JSON null; null if unavailable. */
   data: OfflineExperimentItemPayloadInput | null;
 }
-export const OfflineItemPayloadRead = /*@__PURE__*/ S.suspend(() =>
+const OfflineItemPayloadRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     payload_state: PayloadStateEnum,
@@ -1529,7 +1497,7 @@ export interface GetAiObservabilityOfflineExperimentsResultCellRequest {
   /** Comma-separated list of 1 to 20 distinct authorized scorer-version UUIDs. */
   scorer_version_ids: string;
 }
-export const GetAiObservabilityOfflineExperimentsResultCellRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiObservabilityOfflineExperimentsResultCellRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1548,7 +1516,7 @@ export const GetAiObservabilityOfflineExperimentsResultCellRequest = /*@__PURE__
 
 /** * `categorical` - categorical * `numeric` - numeric * `boolean` - boolean */
 export type ScoreDefinitionKindEnum = "categorical" | "numeric" | "boolean";
-export const ScoreDefinitionKindEnum = S.String;
+const ScoreDefinitionKindEnum = S.String;
 
 export interface CategoricalScoreOption {
   /** Stable option key. Use lowercase letters, numbers, underscores, or hyphens. */
@@ -1556,40 +1524,16 @@ export interface CategoricalScoreOption {
   /** Human-readable option label. */
   label?: string;
 }
-export const CategoricalScoreOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.String),
-  }),
-).annotate({ identifier: "CategoricalScoreOption" }) as any as S.Schema<CategoricalScoreOption>;
-
 /** Ordered categorical options available to the scorer. */
 export type CategoricalScoreDefinitionConfigOptionsList = Array<CategoricalScoreOption>;
-export const CategoricalScoreDefinitionConfigOptionsList = /*@__PURE__*/ S.Array(
-  CategoricalScoreOption,
-) as any as S.Schema<CategoricalScoreDefinitionConfigOptionsList>;
-
 /** * `single` - single * `multiple` - multiple */
 export type SelectionModeEnum = "single" | "multiple";
-export const SelectionModeEnum = S.String;
-
 /** Passing category keys. Every returned category must be included. An empty list makes all accepted offline results fail. */
 export type CategoricalScorePassingRuleCategoriesList = Array<string>;
-export const CategoricalScorePassingRuleCategoriesList =
-  ResultSubmissionValueCase2List as any as S.Schema<CategoricalScorePassingRuleCategoriesList>;
-
 export interface CategoricalScorePassingRule {
   /** Passing category keys. Every returned category must be included. An empty list makes all accepted offline results fail. */
   categories: CategoricalScorePassingRuleCategoriesList;
 }
-export const CategoricalScorePassingRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: CategoricalScorePassingRuleCategoriesList,
-  }),
-).annotate({
-  identifier: "CategoricalScorePassingRule",
-}) as any as S.Schema<CategoricalScorePassingRule>;
-
 export interface CategoricalScoreDefinitionConfig {
   /** Ordered categorical options available to the scorer. */
   options?: CategoricalScoreDefinitionConfigOptionsList;
@@ -1602,35 +1546,14 @@ export interface CategoricalScoreDefinitionConfig {
   /** Optional passing categories. Omit or set null for neutral scores. Each scorer version keeps its own rule. */
   passing_rule?: CategoricalScorePassingRule | null;
 }
-export const CategoricalScoreDefinitionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(CategoricalScoreDefinitionConfigOptionsList),
-    selection_mode: S.optional(SelectionModeEnum),
-    min_selections: S.optional(S.NullOr(S.Number)),
-    max_selections: S.optional(S.NullOr(S.Number)),
-    passing_rule: S.optional(S.NullOr(CategoricalScorePassingRule)),
-  }),
-).annotate({
-  identifier: "CategoricalScoreDefinitionConfig",
-}) as any as S.Schema<CategoricalScoreDefinitionConfig>;
-
 /** * `gte` - At or above * `lte` - At or below */
 export type NumericScorePassingRuleSerializerOperatorEnum = "gte" | "lte";
-export const NumericScorePassingRuleSerializerOperatorEnum = S.String;
-
 export interface NumericScorePassingRule {
   /** Pass at or above (gte), or at or below (lte), the threshold. * `gte` - At or above * `lte` - At or below */
   operator: NumericScorePassingRuleSerializerOperatorEnum;
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const NumericScorePassingRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: NumericScorePassingRuleSerializerOperatorEnum,
-    threshold: S.Number,
-  }),
-).annotate({ identifier: "NumericScorePassingRule" }) as any as S.Schema<NumericScorePassingRule>;
-
 export interface NumericScoreDefinitionConfig {
   /** Optional inclusive minimum score. */
   min?: number | null;
@@ -1641,17 +1564,6 @@ export interface NumericScoreDefinitionConfig {
   /** Optional passing rule. Omit or set null for neutral scores. Each scorer version keeps its own rule. */
   passing_rule?: NumericScorePassingRule | null;
 }
-export const NumericScoreDefinitionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    min: S.optional(S.NullOr(S.Number)),
-    max: S.optional(S.NullOr(S.Number)),
-    step: S.optional(S.NullOr(S.Number)),
-    passing_rule: S.optional(S.NullOr(NumericScorePassingRule)),
-  }),
-).annotate({
-  identifier: "NumericScoreDefinitionConfig",
-}) as any as S.Schema<NumericScoreDefinitionConfig>;
-
 export interface BooleanScoreDefinitionConfig {
   /** Whether true means failure. False, omitted, or null means true passes in offline evaluations. */
   true_is_failure?: boolean | null;
@@ -1660,21 +1572,11 @@ export interface BooleanScoreDefinitionConfig {
   /** Optional label for a false value. */
   false_label?: string;
 }
-export const BooleanScoreDefinitionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true_is_failure: S.optional(S.NullOr(S.Boolean)),
-    true_label: S.optional(S.String),
-    false_label: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BooleanScoreDefinitionConfig",
-}) as any as S.Schema<BooleanScoreDefinitionConfig>;
-
 export type ScoreDefinitionConfig =
   | CategoricalScoreDefinitionConfig
   | NumericScoreDefinitionConfig
   | BooleanScoreDefinitionConfig;
-export const ScoreDefinitionConfig = S.Unknown as any as S.Schema<ScoreDefinitionConfig>;
+const ScoreDefinitionConfig = S.Unknown as any as S.Schema<ScoreDefinitionConfig>;
 
 export interface OfflineScorerVersionRead {
   /** Exact immutable scorer-version UUID. */
@@ -1694,7 +1596,7 @@ export interface OfflineScorerVersionRead {
   /** Pinned immutable configuration used to interpret these results. */
   config: ScoreDefinitionConfig;
 }
-export const OfflineScorerVersionRead = /*@__PURE__*/ S.suspend(() =>
+const OfflineScorerVersionRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     definition_id: S.String,
@@ -1709,13 +1611,13 @@ export const OfflineScorerVersionRead = /*@__PURE__*/ S.suspend(() =>
 
 /** Selected authorized versions, including versions with no results for these items. */
 export type OfflineResultCellsScorerVersionsList = Array<OfflineScorerVersionRead>;
-export const OfflineResultCellsScorerVersionsList = /*@__PURE__*/ S.Array(
+const OfflineResultCellsScorerVersionsList = /*@__PURE__*/ S.Array(
   OfflineScorerVersionRead,
 ) as any as S.Schema<OfflineResultCellsScorerVersionsList>;
 
 /** Submitted results for the exact selected items and versions; at most 1,000 cells. */
 export type OfflineResultCellsResultsList = Array<OfflineResultCell>;
-export const OfflineResultCellsResultsList =
+const OfflineResultCellsResultsList =
   OfflineItemReadResultsList as any as S.Schema<OfflineResultCellsResultsList>;
 
 export interface OfflineResultCells {
@@ -1724,7 +1626,7 @@ export interface OfflineResultCells {
   /** Submitted results for the exact selected items and versions; at most 1,000 cells. */
   results: OfflineResultCellsResultsList;
 }
-export const OfflineResultCells = /*@__PURE__*/ S.suspend(() =>
+const OfflineResultCells = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scorer_versions: OfflineResultCellsScorerVersionsList,
     results: OfflineResultCellsResultsList,
@@ -1739,19 +1641,18 @@ export interface GetAiObservabilityOfflineExperimentsResultsPayloadRequest {
   /** Result UUID within the experiment. */
   result_id: string;
 }
-export const GetAiObservabilityOfflineExperimentsResultsPayloadRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      result_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/ai_observability/offline_experiments/{id}/results/{result_id}/payload/",
-        code: 200,
-      }),
-    ),
+const GetAiObservabilityOfflineExperimentsResultsPayloadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    result_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/ai_observability/offline_experiments/{id}/results/{result_id}/payload/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "GetAiObservabilityOfflineExperimentsResultsPayloadRequest",
 }) as any as S.Schema<GetAiObservabilityOfflineExperimentsResultsPayloadRequest>;
@@ -1768,7 +1669,7 @@ export interface OfflineResultPayloadRead {
   /** Stored reasoning/error payload; null if unavailable. */
   data: OfflineEvaluationResultPayloadInput | null;
 }
-export const OfflineResultPayloadRead = /*@__PURE__*/ S.suspend(() =>
+const OfflineResultPayloadRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     payload_state: PayloadStateEnum,
@@ -1786,7 +1687,7 @@ export interface GetAiObservabilityTraceRequest {
   /** When the trace happened, as carried by links into it. Lets a trace older than the AI events retention load from the shared events table. */
   timestamp_hint?: string;
 }
-export const GetAiObservabilityTraceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiObservabilityTraceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1806,7 +1707,7 @@ export interface TracePerson {
   distinctId: string;
   label: string;
 }
-export const TracePerson = /*@__PURE__*/ S.suspend(() =>
+const TracePerson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distinctId: S.String,
     label: S.String,
@@ -1821,7 +1722,7 @@ export interface TraceNodeStats {
   cacheWriteTokens: number | null;
   latencyMs: number | null;
 }
-export const TraceNodeStats = /*@__PURE__*/ S.suspend(() =>
+const TraceNodeStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     costUsd: S.NullOr(S.Number),
     inputTokens: S.NullOr(S.Number),
@@ -1833,10 +1734,10 @@ export const TraceNodeStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TraceNodeStats" }) as any as S.Schema<TraceNodeStats>;
 
 export type TraceNodeKindEnum = "trace" | "span" | "generation" | "embedding";
-export const TraceNodeKindEnum = S.String;
+const TraceNodeKindEnum = S.String;
 
 export type TraceNodeChildrenList = Array<TraceNode>;
-export const TraceNodeChildrenList = /*@__PURE__*/ S.Array(
+const TraceNodeChildrenList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => TraceNode),
 ) as any as S.Schema<TraceNodeChildrenList>;
 
@@ -1849,7 +1750,7 @@ export interface TraceNode {
   hasError: boolean;
   children: TraceNodeChildrenList;
 }
-export const TraceNode = /*@__PURE__*/ S.suspend(() =>
+const TraceNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: TraceNodeKindEnum,
@@ -1862,7 +1763,7 @@ export const TraceNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TraceNode" }) as any as S.Schema<TraceNode>;
 
 export type TraceTreeList = Array<TraceNode>;
-export const TraceTreeList = /*@__PURE__*/ S.Array(TraceNode) as any as S.Schema<TraceTreeList>;
+const TraceTreeList = /*@__PURE__*/ S.Array(TraceNode) as any as S.Schema<TraceTreeList>;
 
 export interface TraceTimelineRow {
   id: string;
@@ -1873,7 +1774,7 @@ export interface TraceTimelineRow {
   durationMs: number | null;
   hasError: boolean;
 }
-export const TraceTimelineRow = /*@__PURE__*/ S.suspend(() =>
+const TraceTimelineRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: TraceNodeKindEnum,
@@ -1886,12 +1787,12 @@ export const TraceTimelineRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TraceTimelineRow" }) as any as S.Schema<TraceTimelineRow>;
 
 export type TraceTimelineList = Array<TraceTimelineRow>;
-export const TraceTimelineList = /*@__PURE__*/ S.Array(
+const TraceTimelineList = /*@__PURE__*/ S.Array(
   TraceTimelineRow,
 ) as any as S.Schema<TraceTimelineList>;
 
 export type TraceThreadNodeIdsList = Array<string>;
-export const TraceThreadNodeIdsList =
+const TraceThreadNodeIdsList =
   ResultSubmissionValueCase2List as any as S.Schema<TraceThreadNodeIdsList>;
 
 export interface Trace {
@@ -1908,7 +1809,7 @@ export interface Trace {
   totalMs: number;
   threadNodeIds: TraceThreadNodeIdsList;
 }
-export const Trace = /*@__PURE__*/ S.suspend(() =>
+const Trace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -1931,7 +1832,7 @@ export interface GetDatasetRequest {
   /** A UUID string identifying this dataset. */
   id: string;
 }
-export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1945,7 +1846,7 @@ export interface GetDatasetItemRequest {
   /** Return the item as it appeared at this exact dataset revision. */
   revision?: number;
 }
-export const GetDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     dataset_item_id: S.String.pipe(T.Label()),
@@ -1966,7 +1867,7 @@ export interface GetDatasetsExportRequest {
   id: string;
   export_id: string;
 }
-export const GetDatasetsExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetsExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1987,7 +1888,7 @@ export interface GetDatasetsExportsContentRequest {
   id: string;
   export_id: string;
 }
-export const GetDatasetsExportsContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetsExportsContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2004,9 +1905,7 @@ export const GetDatasetsExportsContentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatasetsExportsContentRequest>;
 
 export interface GetDatasetsExportsContentResponse {}
-export const GetDatasetsExportsContentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GetDatasetsExportsContentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetDatasetsExportsContentResponse",
 }) as any as S.Schema<GetDatasetsExportsContentResponse>;
 
@@ -2046,7 +1945,7 @@ export interface ListAiObservabilityOfflineExperimentsRequest {
   /** Exact evaluation suite identifier. */
   suite_key?: string;
 }
-export const ListAiObservabilityOfflineExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAiObservabilityOfflineExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     application_version: S.optional(S.String.pipe(T.Query())),
@@ -2078,7 +1977,7 @@ export const ListAiObservabilityOfflineExperimentsRequest = /*@__PURE__*/ S.susp
 
 /** Experiment page. */
 export type OfflineExperimentPageResultsList = Array<OfflineExperimentRead>;
-export const OfflineExperimentPageResultsList = /*@__PURE__*/ S.Array(
+const OfflineExperimentPageResultsList = /*@__PURE__*/ S.Array(
   OfflineExperimentRead,
 ) as any as S.Schema<OfflineExperimentPageResultsList>;
 
@@ -2090,7 +1989,7 @@ export interface OfflineExperimentPage {
   /** Experiment page. */
   results: OfflineExperimentPageResultsList;
 }
-export const OfflineExperimentPage = /*@__PURE__*/ S.suspend(() =>
+const OfflineExperimentPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next_cursor: S.NullOr(S.String),
@@ -2110,7 +2009,7 @@ export interface ListAiObservabilityOfflineExperimentsItemsRequest {
   /** Comma-separated list of at most 20 distinct scorer-version UUIDs. */
   scorer_version_ids?: string;
 }
-export const ListAiObservabilityOfflineExperimentsItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAiObservabilityOfflineExperimentsItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2130,13 +2029,13 @@ export const ListAiObservabilityOfflineExperimentsItemsRequest = /*@__PURE__*/ S
 
 /** Item page. */
 export type OfflineItemPageResultsList = Array<OfflineItemRead>;
-export const OfflineItemPageResultsList = /*@__PURE__*/ S.Array(
+const OfflineItemPageResultsList = /*@__PURE__*/ S.Array(
   OfflineItemRead,
 ) as any as S.Schema<OfflineItemPageResultsList>;
 
 /** Selected scorer versions, each returned once, including versions with no results. */
 export type OfflineItemPageScorerVersionsList = Array<OfflineScorerVersionRead>;
-export const OfflineItemPageScorerVersionsList =
+const OfflineItemPageScorerVersionsList =
   OfflineResultCellsScorerVersionsList as any as S.Schema<OfflineItemPageScorerVersionsList>;
 
 export interface OfflineItemPage {
@@ -2149,7 +2048,7 @@ export interface OfflineItemPage {
   /** Selected scorer versions, each returned once, including versions with no results. */
   scorer_versions: OfflineItemPageScorerVersionsList;
 }
-export const OfflineItemPage = /*@__PURE__*/ S.suspend(() =>
+const OfflineItemPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next_cursor: S.NullOr(S.String),
@@ -2174,34 +2073,30 @@ export interface ListAiObservabilityOfflineExperimentsItemsResultsRequest {
   /** Comma-separated list of at most 20 distinct scorer-version UUIDs. */
   scorer_version_ids?: string;
 }
-export const ListAiObservabilityOfflineExperimentsItemsResultsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      item_id: S.String.pipe(T.Label()),
-      cursor: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      scorer_definition_id: S.optional(S.String.pipe(T.Query())),
-      scorer_version_ids: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/ai_observability/offline_experiments/{id}/items/{item_id}/results/",
-        code: 200,
-      }),
-    ),
+const ListAiObservabilityOfflineExperimentsItemsResultsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    item_id: S.String.pipe(T.Label()),
+    cursor: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    scorer_definition_id: S.optional(S.String.pipe(T.Query())),
+    scorer_version_ids: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/ai_observability/offline_experiments/{id}/items/{item_id}/results/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAiObservabilityOfflineExperimentsItemsResultsRequest",
 }) as any as S.Schema<ListAiObservabilityOfflineExperimentsItemsResultsRequest>;
 
 export type OfflineResultReadValueCase2List = Array<string>;
-export const OfflineResultReadValueCase2List =
-  ResultSubmissionValueCase2List as any as S.Schema<OfflineResultReadValueCase2List>;
-
 /** Typed score for ok outcomes; null for other outcomes. */
 export type OfflineResultReadValue = number | boolean | OfflineResultReadValueCase2List;
-export const OfflineResultReadValue = S.Unknown as any as S.Schema<OfflineResultReadValue>;
+const OfflineResultReadValue = S.Unknown as any as S.Schema<OfflineResultReadValue>;
 
 export interface OfflineResultRead {
   /** Stable result UUID. */
@@ -2227,7 +2122,7 @@ export interface OfflineResultRead {
   /** Pinned scorer version. */
   scorer: OfflineScorerVersionRead;
 }
-export const OfflineResultRead = /*@__PURE__*/ S.suspend(() =>
+const OfflineResultRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     item_id: S.String,
@@ -2245,7 +2140,7 @@ export const OfflineResultRead = /*@__PURE__*/ S.suspend(() =>
 
 /** Result page. */
 export type OfflineResultPageResultsList = Array<OfflineResultRead>;
-export const OfflineResultPageResultsList = /*@__PURE__*/ S.Array(
+const OfflineResultPageResultsList = /*@__PURE__*/ S.Array(
   OfflineResultRead,
 ) as any as S.Schema<OfflineResultPageResultsList>;
 
@@ -2257,7 +2152,7 @@ export interface OfflineResultPage {
   /** Result page. */
   results: OfflineResultPageResultsList;
 }
-export const OfflineResultPage = /*@__PURE__*/ S.suspend(() =>
+const OfflineResultPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next_cursor: S.NullOr(S.String),
@@ -2279,22 +2174,21 @@ export interface ListAiObservabilityOfflineExperimentsScorerSummariesRequest {
   /** Comma-separated list of at most 20 distinct scorer-version UUIDs. */
   scorer_version_ids?: string;
 }
-export const ListAiObservabilityOfflineExperimentsScorerSummariesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      cursor: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      scorer_definition_id: S.optional(S.String.pipe(T.Query())),
-      scorer_version_ids: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/ai_observability/offline_experiments/{id}/scorer_summaries/",
-        code: 200,
-      }),
-    ),
+const ListAiObservabilityOfflineExperimentsScorerSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    cursor: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    scorer_definition_id: S.optional(S.String.pipe(T.Query())),
+    scorer_version_ids: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/ai_observability/offline_experiments/{id}/scorer_summaries/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAiObservabilityOfflineExperimentsScorerSummariesRequest",
 }) as any as S.Schema<ListAiObservabilityOfflineExperimentsScorerSummariesRequest>;
@@ -2309,7 +2203,7 @@ export interface OfflineStatusCounts {
   /** Not-applicable evaluations. */
   not_applicable: number;
 }
-export const OfflineStatusCounts = /*@__PURE__*/ S.suspend(() =>
+const OfflineStatusCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Number,
     error: S.Number,
@@ -2328,7 +2222,7 @@ export interface OfflineCategorySummary {
   /** Category label from the pinned configuration. */
   label: string;
 }
-export const OfflineCategorySummary = /*@__PURE__*/ S.suspend(() =>
+const OfflineCategorySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     count: S.Number,
@@ -2339,7 +2233,7 @@ export const OfflineCategorySummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Pinned categorical distribution; multiselect rates may sum above one. */
 export type OfflineScorerSummaryCategoriesList = Array<OfflineCategorySummary>;
-export const OfflineScorerSummaryCategoriesList = /*@__PURE__*/ S.Array(
+const OfflineScorerSummaryCategoriesList = /*@__PURE__*/ S.Array(
   OfflineCategorySummary,
 ) as any as S.Schema<OfflineScorerSummaryCategoriesList>;
 
@@ -2381,7 +2275,7 @@ export interface OfflineScorerSummary {
   /** Pinned categorical distribution; multiselect rates may sum above one. */
   categories: OfflineScorerSummaryCategoriesList;
 }
-export const OfflineScorerSummary = /*@__PURE__*/ S.suspend(() =>
+const OfflineScorerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scorer: OfflineScorerVersionRead,
     observed_item_count: S.Number,
@@ -2406,7 +2300,7 @@ export const OfflineScorerSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Scorer-version summary page; each group includes all matching results. */
 export type OfflineSummaryPageResultsList = Array<OfflineScorerSummary>;
-export const OfflineSummaryPageResultsList = /*@__PURE__*/ S.Array(
+const OfflineSummaryPageResultsList = /*@__PURE__*/ S.Array(
   OfflineScorerSummary,
 ) as any as S.Schema<OfflineSummaryPageResultsList>;
 
@@ -2418,7 +2312,7 @@ export interface OfflineSummaryPage {
   /** Scorer-version summary page; each group includes all matching results. */
   results: OfflineSummaryPageResultsList;
 }
-export const OfflineSummaryPage = /*@__PURE__*/ S.suspend(() =>
+const OfflineSummaryPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next_cursor: S.NullOr(S.String),
@@ -2462,7 +2356,7 @@ export interface ListAiObservabilityOfflineScorersHistoryRequest {
   /** Exact evaluation suite identifier. */
   suite_key?: string;
 }
-export const ListAiObservabilityOfflineScorersHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAiObservabilityOfflineScorersHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2498,7 +2392,7 @@ export interface OfflineHistoryPoint {
   /** Complete summary for one experiment and scorer version. */
   summary: OfflineScorerSummary;
 }
-export const OfflineHistoryPoint = /*@__PURE__*/ S.suspend(() =>
+const OfflineHistoryPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experiment: OfflineExperimentRead,
     summary: OfflineScorerSummary,
@@ -2507,7 +2401,7 @@ export const OfflineHistoryPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Experiment/scorer-version history page. */
 export type OfflineHistoryPageResultsList = Array<OfflineHistoryPoint>;
-export const OfflineHistoryPageResultsList = /*@__PURE__*/ S.Array(
+const OfflineHistoryPageResultsList = /*@__PURE__*/ S.Array(
   OfflineHistoryPoint,
 ) as any as S.Schema<OfflineHistoryPageResultsList>;
 
@@ -2519,7 +2413,7 @@ export interface OfflineHistoryPage {
   /** Experiment/scorer-version history page. */
   results: OfflineHistoryPageResultsList;
 }
-export const OfflineHistoryPage = /*@__PURE__*/ S.suspend(() =>
+const OfflineHistoryPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next_cursor: S.NullOr(S.String),
@@ -2541,7 +2435,7 @@ export interface ListDatasetItemsRequest {
   /** Return the exact dataset snapshot at this revision. */
   revision?: number;
 }
-export const ListDatasetItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -2553,7 +2447,7 @@ export const ListDatasetItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDatasetItemsRequest" }) as any as S.Schema<ListDatasetItemsRequest>;
 
 export type PaginatedDatasetItemReadListResultsList = Array<DatasetItemRead>;
-export const PaginatedDatasetItemReadListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDatasetItemReadListResultsList = /*@__PURE__*/ S.Array(
   DatasetItemRead,
 ) as any as S.Schema<PaginatedDatasetItemReadListResultsList>;
 
@@ -2563,7 +2457,7 @@ export interface PaginatedDatasetItemReadList {
   previous?: string | null;
   results: PaginatedDatasetItemReadListResultsList;
 }
-export const PaginatedDatasetItemReadList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDatasetItemReadList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2583,7 +2477,7 @@ export interface ListDatasetItemsVersionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListDatasetItemsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetItemsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     dataset_item_id: S.String.pipe(T.Label()),
@@ -2601,7 +2495,7 @@ export const ListDatasetItemsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetItemsVersionsRequest>;
 
 export type ListDatasetsRequestIdInList = Array<string>;
-export const ListDatasetsRequestIdInList =
+const ListDatasetsRequestIdInList =
   ResultSubmissionValueCase2List as any as S.Schema<ListDatasetsRequestIdInList>;
 
 export type ListDatasetsRequestOrderBy =
@@ -2609,7 +2503,7 @@ export type ListDatasetsRequestOrderBy =
   | "-created_at"
   | "updated_at"
   | "-updated_at";
-export const ListDatasetsRequestOrderBy = S.String;
+const ListDatasetsRequestOrderBy = S.String;
 
 export interface ListDatasetsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2627,7 +2521,7 @@ export interface ListDatasetsRequest {
   /** Search dataset names, descriptions, and metadata. */
   search?: string;
 }
-export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -2640,7 +2534,7 @@ export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDatasetsRequest" }) as any as S.Schema<ListDatasetsRequest>;
 
 export type PaginatedDatasetReadListResultsList = Array<DatasetRead>;
-export const PaginatedDatasetReadListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDatasetReadListResultsList = /*@__PURE__*/ S.Array(
   DatasetRead,
 ) as any as S.Schema<PaginatedDatasetReadListResultsList>;
 
@@ -2650,7 +2544,7 @@ export interface PaginatedDatasetReadList {
   previous?: string | null;
   results: PaginatedDatasetReadListResultsList;
 }
-export const PaginatedDatasetReadList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDatasetReadList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2669,7 +2563,7 @@ export interface ListDatasetsRevisionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListDatasetsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2696,7 +2590,7 @@ export interface DatasetRevisionRead {
   /** Project that owns the revision. */
   team_id: number;
 }
-export const DatasetRevisionRead = /*@__PURE__*/ S.suspend(() =>
+const DatasetRevisionRead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     dataset_id: S.String,
@@ -2708,7 +2602,7 @@ export const DatasetRevisionRead = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetRevisionRead" }) as any as S.Schema<DatasetRevisionRead>;
 
 export type PaginatedDatasetRevisionReadListResultsList = Array<DatasetRevisionRead>;
-export const PaginatedDatasetRevisionReadListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDatasetRevisionReadListResultsList = /*@__PURE__*/ S.Array(
   DatasetRevisionRead,
 ) as any as S.Schema<PaginatedDatasetRevisionReadListResultsList>;
 
@@ -2718,7 +2612,7 @@ export interface PaginatedDatasetRevisionReadList {
   previous?: string | null;
   results: PaginatedDatasetRevisionReadListResultsList;
 }
-export const PaginatedDatasetRevisionReadList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDatasetRevisionReadList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2730,7 +2624,7 @@ export const PaginatedDatasetRevisionReadList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDatasetRevisionReadList>;
 
 export type ListLlmAnalyticsPersonalSpendRequestBucketMinutes = 5 | 15 | 30 | 60;
-export const ListLlmAnalyticsPersonalSpendRequestBucketMinutes = S.Number;
+const ListLlmAnalyticsPersonalSpendRequestBucketMinutes = S.Number;
 
 export interface ListLlmAnalyticsPersonalSpendRequest {
   /** When set, additionally return a `by_bucket` breakdown: a time-ascending UTC cost series for the scoped product at this bucket size in minutes, with per-bucket cost split into uncached input / output / cache read / cache creation components plus the matching token sums. Supported bucket sizes: 5, 15, 30, 60. The window may span at most 600 buckets of the chosen size (e.g. 50 hours at 5-minute buckets). * `5` - 5 * `15` - 15 * `30` - 30 * `60` - 60 */
@@ -2746,7 +2640,7 @@ export interface ListLlmAnalyticsPersonalSpendRequest {
   /** If true, bypass the result cache and re-run the underlying queries against ClickHouse. */
   refresh?: boolean;
 }
-export const ListLlmAnalyticsPersonalSpendRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsPersonalSpendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_minutes: S.optional(ListLlmAnalyticsPersonalSpendRequestBucketMinutes.pipe(T.Query())),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -2775,7 +2669,7 @@ export interface Summary {
   /** Total $ai_generation + $ai_embedding events for the scoped slice. */
   scoped_event_count: number;
 }
-export const Summary = /*@__PURE__*/ S.suspend(() =>
+const Summary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_from: S.String,
     date_to: S.String,
@@ -2795,7 +2689,7 @@ export interface ProductBreakdownRow {
   /** Total cost in USD for this product over the lookback window. */
   cost_usd: number;
 }
-export const ProductBreakdownRow = /*@__PURE__*/ S.suspend(() =>
+const ProductBreakdownRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.NullOr(S.String),
     event_count: S.Number,
@@ -2805,7 +2699,7 @@ export const ProductBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 
 /** Rows of spend by product, ordered by cost descending. */
 export type ProductBreakdownItemsList = Array<ProductBreakdownRow>;
-export const ProductBreakdownItemsList = /*@__PURE__*/ S.Array(
+const ProductBreakdownItemsList = /*@__PURE__*/ S.Array(
   ProductBreakdownRow,
 ) as any as S.Schema<ProductBreakdownItemsList>;
 
@@ -2815,7 +2709,7 @@ export interface ProductBreakdown {
   /** True when more rows exist beyond the requested `limit`. Re-request with a larger `limit` to retrieve them. */
   truncated: boolean;
 }
-export const ProductBreakdown = /*@__PURE__*/ S.suspend(() =>
+const ProductBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ProductBreakdownItemsList,
     truncated: S.Boolean,
@@ -2834,7 +2728,7 @@ export interface ToolBreakdownRow {
   /** Average `$ai_input_tokens` across these generations -- high values signal context bloat per call. */
   avg_input_tokens: number;
 }
-export const ToolBreakdownRow = /*@__PURE__*/ S.suspend(() =>
+const ToolBreakdownRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: S.NullOr(S.String),
     generation_count: S.Number,
@@ -2846,7 +2740,7 @@ export const ToolBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 
 /** Rows of spend by tool, ordered by cost descending. */
 export type ToolBreakdownItemsList = Array<ToolBreakdownRow>;
-export const ToolBreakdownItemsList = /*@__PURE__*/ S.Array(
+const ToolBreakdownItemsList = /*@__PURE__*/ S.Array(
   ToolBreakdownRow,
 ) as any as S.Schema<ToolBreakdownItemsList>;
 
@@ -2856,7 +2750,7 @@ export interface ToolBreakdown {
   /** True when more rows exist beyond the requested `limit`. Re-request with a larger `limit` to retrieve them. */
   truncated: boolean;
 }
-export const ToolBreakdown = /*@__PURE__*/ S.suspend(() =>
+const ToolBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ToolBreakdownItemsList,
     truncated: S.Boolean,
@@ -2875,7 +2769,7 @@ export interface ModelBreakdownRow {
   /** Sum of `$ai_output_tokens` for this model. */
   output_tokens: number;
 }
-export const ModelBreakdownRow = /*@__PURE__*/ S.suspend(() =>
+const ModelBreakdownRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.NullOr(S.String),
     generation_count: S.Number,
@@ -2887,7 +2781,7 @@ export const ModelBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 
 /** Rows of spend by model, ordered by cost descending. */
 export type ModelBreakdownItemsList = Array<ModelBreakdownRow>;
-export const ModelBreakdownItemsList = /*@__PURE__*/ S.Array(
+const ModelBreakdownItemsList = /*@__PURE__*/ S.Array(
   ModelBreakdownRow,
 ) as any as S.Schema<ModelBreakdownItemsList>;
 
@@ -2897,7 +2791,7 @@ export interface ModelBreakdown {
   /** True when more rows exist beyond the requested `limit`. Re-request with a larger `limit` to retrieve them. */
   truncated: boolean;
 }
-export const ModelBreakdown = /*@__PURE__*/ S.suspend(() =>
+const ModelBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ModelBreakdownItemsList,
     truncated: S.Boolean,
@@ -2916,7 +2810,7 @@ export interface DayBreakdownRow {
   /** Sum of `$ai_output_tokens` on this day for the scoped product. */
   output_tokens: number;
 }
-export const DayBreakdownRow = /*@__PURE__*/ S.suspend(() =>
+const DayBreakdownRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.String,
     event_count: S.Number,
@@ -2928,7 +2822,7 @@ export const DayBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 
 /** One row per UTC day that has events, ordered by day ascending. Days with no events are omitted -- zero-fill client-side when rendering a continuous series. */
 export type DayBreakdownItemsList = Array<DayBreakdownRow>;
-export const DayBreakdownItemsList = /*@__PURE__*/ S.Array(
+const DayBreakdownItemsList = /*@__PURE__*/ S.Array(
   DayBreakdownRow,
 ) as any as S.Schema<DayBreakdownItemsList>;
 
@@ -2938,7 +2832,7 @@ export interface DayBreakdown {
   /** Effectively always false: `by_day` ignores `limit` because truncating a time series by cost would be meaningless, and the 90-day window cap already bounds the series length. */
   truncated: boolean;
 }
-export const DayBreakdown = /*@__PURE__*/ S.suspend(() =>
+const DayBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: DayBreakdownItemsList,
     truncated: S.Boolean,
@@ -2959,7 +2853,7 @@ export interface DayModelBreakdownRow {
   /** Number of $ai_generation + $ai_embedding events for this model on this day. */
   generation_count: number;
 }
-export const DayModelBreakdownRow = /*@__PURE__*/ S.suspend(() =>
+const DayModelBreakdownRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.String,
     model: S.NullOr(S.String),
@@ -2972,7 +2866,7 @@ export const DayModelBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 
 /** Daily model spend for the scoped product, ordered by day and cost. Includes the six highest-cost models in the selected window plus a null-model row for the remaining models. */
 export type PersonalSpendAnalysisResponseByDayModelList = Array<DayModelBreakdownRow>;
-export const PersonalSpendAnalysisResponseByDayModelList = /*@__PURE__*/ S.Array(
+const PersonalSpendAnalysisResponseByDayModelList = /*@__PURE__*/ S.Array(
   DayModelBreakdownRow,
 ) as any as S.Schema<PersonalSpendAnalysisResponseByDayModelList>;
 
@@ -3000,7 +2894,7 @@ export interface BucketBreakdownRow {
   /** Sum of `$ai_cache_creation_input_tokens` (prompt tokens written to cache) in this bucket. */
   cache_creation_input_tokens: number;
 }
-export const BucketBreakdownRow = /*@__PURE__*/ S.suspend(() =>
+const BucketBreakdownRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket_start: S.String,
     event_count: S.Number,
@@ -3018,7 +2912,7 @@ export const BucketBreakdownRow = /*@__PURE__*/ S.suspend(() =>
 
 /** One row per UTC time bucket that has events, ordered by bucket start ascending. Buckets with no events are omitted; zero-fill client-side when rendering a continuous series. */
 export type BucketBreakdownItemsList = Array<BucketBreakdownRow>;
-export const BucketBreakdownItemsList = /*@__PURE__*/ S.Array(
+const BucketBreakdownItemsList = /*@__PURE__*/ S.Array(
   BucketBreakdownRow,
 ) as any as S.Schema<BucketBreakdownItemsList>;
 
@@ -3030,7 +2924,7 @@ export interface BucketBreakdown {
   /** Effectively always false: `by_bucket` ignores `limit` because truncating a time series by cost would be meaningless, and the 600-bucket window cap already bounds the series length. */
   truncated: boolean;
 }
-export const BucketBreakdown = /*@__PURE__*/ S.suspend(() =>
+const BucketBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: BucketBreakdownItemsList,
     bucket_minutes: S.Number,
@@ -3048,7 +2942,7 @@ export interface TopTraceRow {
   /** Timestamp of the earliest event in this trace. */
   started_at: string | null;
 }
-export const TopTraceRow = /*@__PURE__*/ S.suspend(() =>
+const TopTraceRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trace_id: S.NullOr(S.String),
     generation_count: S.Number,
@@ -3059,7 +2953,7 @@ export const TopTraceRow = /*@__PURE__*/ S.suspend(() =>
 
 /** Rows of top traces by cost, ordered by cost descending. */
 export type TopTracesItemsList = Array<TopTraceRow>;
-export const TopTracesItemsList = /*@__PURE__*/ S.Array(
+const TopTracesItemsList = /*@__PURE__*/ S.Array(
   TopTraceRow,
 ) as any as S.Schema<TopTracesItemsList>;
 
@@ -3069,7 +2963,7 @@ export interface TopTraces {
   /** True when more rows exist beyond the requested `limit`. Re-request with a larger `limit` to retrieve them. */
   truncated: boolean;
 }
-export const TopTraces = /*@__PURE__*/ S.suspend(() =>
+const TopTraces = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: TopTracesItemsList,
     truncated: S.Boolean,
@@ -3095,7 +2989,7 @@ export interface PersonalSpendAnalysisResponse {
   /** Deprecated -- always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren't actionable in the UI. Kept in the response shape so existing consumers don't crash; remove your rendering of this field and we'll drop it from the response entirely in a follow-up. */
   top_traces: TopTraces;
 }
-export const PersonalSpendAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
+const PersonalSpendAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: Summary,
     by_product: ProductBreakdown,
@@ -3111,12 +3005,12 @@ export const PersonalSpendAnalysisResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersonalSpendAnalysisResponse>;
 
 export type ListLlmAnalyticsPersonalSpendResponseBodyList = Array<PersonalSpendAnalysisResponse>;
-export const ListLlmAnalyticsPersonalSpendResponseBodyList = /*@__PURE__*/ S.Array(
+const ListLlmAnalyticsPersonalSpendResponseBodyList = /*@__PURE__*/ S.Array(
   PersonalSpendAnalysisResponse,
 ) as any as S.Schema<ListLlmAnalyticsPersonalSpendResponseBodyList>;
 
 export type ListLlmAnalyticsPersonalSpendResponse = ListLlmAnalyticsPersonalSpendResponseBodyList;
-export const ListLlmAnalyticsPersonalSpendResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsPersonalSpendResponse = /*@__PURE__*/ S.suspend(() =>
   ListLlmAnalyticsPersonalSpendResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListLlmAnalyticsPersonalSpendResponse",
@@ -3128,7 +3022,7 @@ export interface RestoreDatasetRequest {
   /** A UUID string identifying this dataset. */
   id: string;
 }
-export const RestoreDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3146,7 +3040,7 @@ export interface RestoreDatasetItemRequest {
   /** Historical version to copy. Omit to restore the archived version's content. */
   source_version?: number | null;
 }
-export const RestoreDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     dataset_item_id: S.String.pipe(T.Label()),
@@ -3164,13 +3058,7 @@ export const RestoreDatasetItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreDatasetItemRequest>;
 
 export type UpdateDatasetItemsPartialRequestInputCase0Map = { [key: string]: unknown | undefined };
-export const UpdateDatasetItemsPartialRequestInputCase0Map =
-  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UpdateDatasetItemsPartialRequestInputCase0Map>;
-
 export type UpdateDatasetItemsPartialRequestInputCase1List = Array<unknown>;
-export const UpdateDatasetItemsPartialRequestInputCase1List =
-  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<UpdateDatasetItemsPartialRequestInputCase1List>;
-
 /** Replacement input. Omit to keep the current value. */
 export type UpdateDatasetItemsPartialRequestInput =
   | UpdateDatasetItemsPartialRequestInputCase0Map
@@ -3178,19 +3066,13 @@ export type UpdateDatasetItemsPartialRequestInput =
   | string
   | number
   | boolean;
-export const UpdateDatasetItemsPartialRequestInput =
+const UpdateDatasetItemsPartialRequestInput =
   S.Unknown as any as S.Schema<UpdateDatasetItemsPartialRequestInput>;
 
 export type UpdateDatasetItemsPartialRequestExpectedOutputCase0Map = {
   [key: string]: unknown | undefined;
 };
-export const UpdateDatasetItemsPartialRequestExpectedOutputCase0Map =
-  OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UpdateDatasetItemsPartialRequestExpectedOutputCase0Map>;
-
 export type UpdateDatasetItemsPartialRequestExpectedOutputCase1List = Array<unknown>;
-export const UpdateDatasetItemsPartialRequestExpectedOutputCase1List =
-  OfflineExperimentItemPayloadInputInputCase1List as any as S.Schema<UpdateDatasetItemsPartialRequestExpectedOutputCase1List>;
-
 /** Replacement expected output. Send null to clear it. */
 export type UpdateDatasetItemsPartialRequestExpectedOutput =
   | UpdateDatasetItemsPartialRequestExpectedOutputCase0Map
@@ -3198,12 +3080,12 @@ export type UpdateDatasetItemsPartialRequestExpectedOutput =
   | string
   | number
   | boolean;
-export const UpdateDatasetItemsPartialRequestExpectedOutput =
+const UpdateDatasetItemsPartialRequestExpectedOutput =
   S.Unknown as any as S.Schema<UpdateDatasetItemsPartialRequestExpectedOutput>;
 
 /** Replacement metadata object. Send an empty object to clear it. */
 export type UpdateDatasetItemsPartialRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateDatasetItemsPartialRequestMetadataMap =
+const UpdateDatasetItemsPartialRequestMetadataMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UpdateDatasetItemsPartialRequestMetadataMap>;
 
 export interface UpdateDatasetItemsPartialRequest {
@@ -3219,7 +3101,7 @@ export interface UpdateDatasetItemsPartialRequest {
   /** Replacement metadata object. Send an empty object to clear it. */
   metadata?: UpdateDatasetItemsPartialRequestMetadataMap;
 }
-export const UpdateDatasetItemsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatasetItemsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     dataset_item_id: S.String.pipe(T.Label()),
@@ -3240,7 +3122,7 @@ export const UpdateDatasetItemsPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Replacement JSON object for descriptive dataset metadata. */
 export type UpdateDatasetsPartialRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateDatasetsPartialRequestMetadataMap =
+const UpdateDatasetsPartialRequestMetadataMap =
   OfflineExperimentItemPayloadInputInputCase0Map as any as S.Schema<UpdateDatasetsPartialRequestMetadataMap>;
 
 export interface UpdateDatasetsPartialRequest {
@@ -3255,7 +3137,7 @@ export interface UpdateDatasetsPartialRequest {
   /** Replacement JSON object for descriptive dataset metadata. */
   metadata?: UpdateDatasetsPartialRequestMetadataMap;
 }
-export const UpdateDatasetsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatasetsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

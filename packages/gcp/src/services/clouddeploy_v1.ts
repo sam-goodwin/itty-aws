@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request object used by `AbandonRelease`. */
 export interface AbandonReleaseRequest {}
-export const AbandonReleaseRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AbandonReleaseRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AbandonReleaseRequest",
 }) as any as S.Schema<AbandonReleaseRequest>;
 
@@ -73,29 +73,27 @@ export interface AbandonProjectsLocationsDeliveryPipelinesReleasesRequest {
   /** Request body */
   body?: AbandonReleaseRequest;
 }
-export const AbandonProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AbandonReleaseRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:abandon",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
+const AbandonProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(AbandonReleaseRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:abandon",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "AbandonProjectsLocationsDeliveryPipelinesReleasesRequest",
 }) as any as S.Schema<AbandonProjectsLocationsDeliveryPipelinesReleasesRequest>;
 
 /** The response object for `AbandonRelease`. */
 export interface AbandonReleaseResponse {}
-export const AbandonReleaseResponse =
-  AbandonReleaseRequest as any as S.Schema<AbandonReleaseResponse>;
+const AbandonReleaseResponse = AbandonReleaseRequest as any as S.Schema<AbandonReleaseResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The request object used by `AdvanceRollout`. */
 export interface AdvanceRolloutRequest {
@@ -104,7 +102,7 @@ export interface AdvanceRolloutRequest {
   /** Required. The phase ID to advance the `Rollout` to. */
   phaseId?: string;
 }
-export const AdvanceRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+const AdvanceRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overrideDeployPolicy: S.optional(StringList),
     phaseId: S.optional(S.String),
@@ -117,8 +115,8 @@ export interface AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsReques
   /** Request body */
   body?: AdvanceRolloutRequest;
 }
-export const AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(AdvanceRolloutRequest.pipe(T.HttpBody())),
@@ -129,14 +127,13 @@ export const AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
         baseUrl: "https://clouddeploy.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-  }) as any as S.Schema<AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
+).annotate({
+  identifier: "AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+}) as any as S.Schema<AdvanceProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
 
 /** The response object from `AdvanceRollout`. */
 export interface AdvanceRolloutResponse {}
-export const AdvanceRolloutResponse =
-  AbandonReleaseRequest as any as S.Schema<AdvanceRolloutResponse>;
+const AdvanceRolloutResponse = AbandonReleaseRequest as any as S.Schema<AdvanceRolloutResponse>;
 
 /** The request object used by `ApproveRollout`. */
 export interface ApproveRolloutRequest {
@@ -145,7 +142,7 @@ export interface ApproveRolloutRequest {
   /** Required. True = approve; false = reject */
   approved?: boolean;
 }
-export const ApproveRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overrideDeployPolicy: S.optional(StringList),
     approved: S.optional(S.Boolean),
@@ -158,8 +155,8 @@ export interface ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsReques
   /** Request body */
   body?: ApproveRolloutRequest;
 }
-export const ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(ApproveRolloutRequest.pipe(T.HttpBody())),
@@ -170,44 +167,40 @@ export const ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
         baseUrl: "https://clouddeploy.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-  }) as any as S.Schema<ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
+).annotate({
+  identifier: "ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+}) as any as S.Schema<ApproveProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
 
 /** The response object from `ApproveRollout`. */
 export interface ApproveRolloutResponse {}
-export const ApproveRolloutResponse =
-  AbandonReleaseRequest as any as S.Schema<ApproveRolloutResponse>;
+const ApproveRolloutResponse = AbandonReleaseRequest as any as S.Schema<ApproveRolloutResponse>;
 
 /** The request object used by `CancelAutomationRun`. */
 export type CancelAutomationRunRequest = AbandonReleaseRequest;
-export const CancelAutomationRunRequest = AbandonReleaseRequest;
-
 export interface CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest {
   /** Required. Name of the `AutomationRun`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`. */
   name: string;
   /** Request body */
   body?: AbandonReleaseRequest;
 }
-export const CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AbandonReleaseRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
-  }) as any as S.Schema<CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest>;
+const CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(AbandonReleaseRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
+}) as any as S.Schema<CancelProjectsLocationsDeliveryPipelinesAutomationRunsRequest>;
 
 /** The response object from `CancelAutomationRun`. */
 export interface CancelAutomationRunResponse {}
-export const CancelAutomationRunResponse =
+const CancelAutomationRunResponse =
   AbandonReleaseRequest as any as S.Schema<CancelAutomationRunResponse>;
 
 /** The request object used by `CancelRollout`. */
@@ -215,7 +208,7 @@ export interface CancelRolloutRequest {
   /** Optional. Deploy policies to override. Format is `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. */
   overrideDeployPolicy?: StringList;
 }
-export const CancelRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overrideDeployPolicy: S.optional(StringList),
   }),
@@ -227,8 +220,8 @@ export interface CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest
   /** Request body */
   body?: CancelRolloutRequest;
 }
-export const CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(CancelRolloutRequest.pipe(T.HttpBody())),
@@ -239,26 +232,23 @@ export const CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
         baseUrl: "https://clouddeploy.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-  }) as any as S.Schema<CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
+).annotate({
+  identifier: "CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+}) as any as S.Schema<CancelProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
 
 /** The response object from `CancelRollout`. */
 export interface CancelRolloutResponse {}
-export const CancelRolloutResponse =
-  AbandonReleaseRequest as any as S.Schema<CancelRolloutResponse>;
+const CancelRolloutResponse = AbandonReleaseRequest as any as S.Schema<CancelRolloutResponse>;
 
 /** The request message for Operations.CancelOperation. */
 export type CancelOperationRequest = AbandonReleaseRequest;
-export const CancelOperationRequest = AbandonReleaseRequest;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: AbandonReleaseRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AbandonReleaseRequest.pipe(T.HttpBody())),
@@ -275,7 +265,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = AbandonReleaseRequest as any as S.Schema<Empty>;
+const Empty = AbandonReleaseRequest as any as S.Schema<Empty>;
 
 /** Cloud Storage bucket containing Skaffold Config modules. */
 export interface SkaffoldGCSSource {
@@ -284,7 +274,7 @@ export interface SkaffoldGCSSource {
   /** Optional. Relative path from the source to the Skaffold file. */
   path?: string;
 }
-export const SkaffoldGCSSource = /*@__PURE__*/ S.suspend(() =>
+const SkaffoldGCSSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String),
     path: S.optional(S.String),
@@ -300,7 +290,7 @@ export interface SkaffoldGitSource {
   /** Required. Git repository the package should be cloned from. */
   repo?: string;
 }
-export const SkaffoldGitSource = /*@__PURE__*/ S.suspend(() =>
+const SkaffoldGitSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     ref: S.optional(S.String),
@@ -317,7 +307,7 @@ export interface SkaffoldGCBRepoSource {
   /** Required. Name of the Cloud Build V2 Repository. Format is projects/{project}/locations/{location}/connections/{connection}/repositories/{repository}. */
   repository?: string;
 }
-export const SkaffoldGCBRepoSource = /*@__PURE__*/ S.suspend(() =>
+const SkaffoldGCBRepoSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.optional(S.String),
     path: S.optional(S.String),
@@ -336,7 +326,7 @@ export interface SkaffoldModules {
   /** Optional. Cloud Build V2 repository containing the Skaffold Config modules. */
   googleCloudBuildRepo?: SkaffoldGCBRepoSource;
 }
-export const SkaffoldModules = /*@__PURE__*/ S.suspend(() =>
+const SkaffoldModules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleCloudStorage: S.optional(SkaffoldGCSSource),
     git: S.optional(SkaffoldGitSource),
@@ -346,7 +336,7 @@ export const SkaffoldModules = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkaffoldModules" }) as any as S.Schema<SkaffoldModules>;
 
 export type SkaffoldModulesList = Array<SkaffoldModules>;
-export const SkaffoldModulesList = /*@__PURE__*/ S.Array(
+const SkaffoldModulesList = /*@__PURE__*/ S.Array(
   SkaffoldModules,
 ) as any as S.Schema<SkaffoldModulesList>;
 
@@ -359,7 +349,7 @@ export interface CustomTargetSkaffoldActions {
   /** Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`. */
   renderAction?: string;
 }
-export const CustomTargetSkaffoldActions = /*@__PURE__*/ S.suspend(() =>
+const CustomTargetSkaffoldActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployAction: S.optional(S.String),
     includeSkaffoldModules: S.optional(SkaffoldModulesList),
@@ -370,7 +360,7 @@ export const CustomTargetSkaffoldActions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomTargetSkaffoldActions>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** This task is represented by a container that is executed in the Cloud Build execution environment. */
 export interface ContainerTask {
@@ -383,7 +373,7 @@ export interface ContainerTask {
   /** Optional. Environment variables that are set in the container. */
   env?: StringMap;
 }
-export const ContainerTask = /*@__PURE__*/ S.suspend(() =>
+const ContainerTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(StringList),
     args: S.optional(StringList),
@@ -397,7 +387,7 @@ export interface Task {
   /** Optional. This task is represented by a container that is executed in the Cloud Build execution environment. */
   container?: ContainerTask;
 }
-export const Task = /*@__PURE__*/ S.suspend(() =>
+const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     container: S.optional(ContainerTask),
   }),
@@ -410,7 +400,7 @@ export interface CustomTargetTasks {
   /** Required. The task responsible for deploy operations. */
   deploy?: Task;
 }
-export const CustomTargetTasks = /*@__PURE__*/ S.suspend(() =>
+const CustomTargetTasks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     render: S.optional(Task),
     deploy: S.optional(Task),
@@ -442,7 +432,7 @@ export interface CustomTargetType {
   /** Identifier. Name of the `CustomTargetType`. Format is `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The `customTargetType` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?` */
   name?: string;
 }
-export const CustomTargetType = /*@__PURE__*/ S.suspend(() =>
+const CustomTargetType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customActions: S.optional(CustomTargetSkaffoldActions),
     annotations: S.optional(StringMap),
@@ -470,7 +460,7 @@ export interface CreateProjectsLocationsCustomTargetTypesRequest {
   /** Request body */
   body?: CustomTargetType;
 }
-export const CreateProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -489,15 +479,10 @@ export const CreateProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateProjectsLocationsCustomTargetTypesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -508,7 +493,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -529,7 +514,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -546,7 +531,7 @@ export interface DeployParameters {
   /** Required. Values are deploy parameters in key-value pairs. */
   values?: StringMap;
 }
-export const DeployParameters = /*@__PURE__*/ S.suspend(() =>
+const DeployParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchTargetLabels: S.optional(StringMap),
     values: S.optional(StringMap),
@@ -554,7 +539,7 @@ export const DeployParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeployParameters" }) as any as S.Schema<DeployParameters>;
 
 export type DeployParametersList = Array<DeployParameters>;
-export const DeployParametersList = /*@__PURE__*/ S.Array(
+const DeployParametersList = /*@__PURE__*/ S.Array(
   DeployParameters,
 ) as any as S.Schema<DeployParametersList>;
 
@@ -567,7 +552,7 @@ export interface CustomCheck {
   /** Required. The Task to be run for this custom check. */
   task?: Task;
 }
-export const CustomCheck = /*@__PURE__*/ S.suspend(() =>
+const CustomCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     frequency: S.optional(S.String),
@@ -576,9 +561,7 @@ export const CustomCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomCheck" }) as any as S.Schema<CustomCheck>;
 
 export type CustomCheckList = Array<CustomCheck>;
-export const CustomCheckList = /*@__PURE__*/ S.Array(
-  CustomCheck,
-) as any as S.Schema<CustomCheckList>;
+const CustomCheckList = /*@__PURE__*/ S.Array(CustomCheck) as any as S.Schema<CustomCheckList>;
 
 /** AlertPolicyCheck configures a set of Cloud Monitoring alerting policies that will be periodically polled for alerts. If any of the listed policies have an active alert, the analysis check will fail. */
 export interface AlertPolicyCheck {
@@ -589,7 +572,7 @@ export interface AlertPolicyCheck {
   /** Optional. A set of labels to filter active alerts. If set, only alerts having all of the specified labels will be considered. Otherwise, all active alerts will be considered. */
   labels?: StringMap;
 }
-export const AlertPolicyCheck = /*@__PURE__*/ S.suspend(() =>
+const AlertPolicyCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     alertPolicies: S.optional(StringList),
@@ -598,7 +581,7 @@ export const AlertPolicyCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertPolicyCheck" }) as any as S.Schema<AlertPolicyCheck>;
 
 export type AlertPolicyCheckList = Array<AlertPolicyCheck>;
-export const AlertPolicyCheckList = /*@__PURE__*/ S.Array(
+const AlertPolicyCheckList = /*@__PURE__*/ S.Array(
   AlertPolicyCheck,
 ) as any as S.Schema<AlertPolicyCheckList>;
 
@@ -607,7 +590,7 @@ export interface GoogleCloudAnalysis {
   /** Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis. */
   alertPolicyChecks?: AlertPolicyCheckList;
 }
-export const GoogleCloudAnalysis = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertPolicyChecks: S.optional(AlertPolicyCheckList),
   }),
@@ -622,7 +605,7 @@ export interface Analysis {
   /** Optional. Google Cloud - based analysis checks. */
   googleCloud?: GoogleCloudAnalysis;
 }
-export const Analysis = /*@__PURE__*/ S.suspend(() =>
+const Analysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customChecks: S.optional(CustomCheckList),
     duration: S.optional(S.String),
@@ -631,7 +614,7 @@ export const Analysis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Analysis" }) as any as S.Schema<Analysis>;
 
 export type TaskList = Array<Task>;
-export const TaskList = /*@__PURE__*/ S.Array(Task) as any as S.Schema<TaskList>;
+const TaskList = /*@__PURE__*/ S.Array(Task) as any as S.Schema<TaskList>;
 
 /** Postdeploy contains the postdeploy job configuration information. */
 export interface Postdeploy {
@@ -640,7 +623,7 @@ export interface Postdeploy {
   /** Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job. */
   actions?: StringList;
 }
-export const Postdeploy = /*@__PURE__*/ S.suspend(() =>
+const Postdeploy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasks: S.optional(TaskList),
     actions: S.optional(StringList),
@@ -652,7 +635,7 @@ export interface Verify {
   /** Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified. */
   tasks?: TaskList;
 }
-export const Verify = /*@__PURE__*/ S.suspend(() =>
+const Verify = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasks: S.optional(TaskList),
   }),
@@ -665,7 +648,7 @@ export interface Predeploy {
   /** Optional. The tasks that will run as a part of the predeploy job. The tasks are executed sequentially in the order specified. Only one of `actions` or `tasks` can be specified. */
   tasks?: TaskList;
 }
-export const Predeploy = /*@__PURE__*/ S.suspend(() =>
+const Predeploy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(StringList),
     tasks: S.optional(TaskList),
@@ -685,7 +668,7 @@ export interface Standard {
   /** Optional. Whether to verify a deployment via `skaffold verify`. */
   verify?: boolean;
 }
-export const Standard = /*@__PURE__*/ S.suspend(() =>
+const Standard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analysis: S.optional(Analysis),
     postdeploy: S.optional(Postdeploy),
@@ -696,7 +679,7 @@ export const Standard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Standard" }) as any as S.Schema<Standard>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** CanaryDeployment represents the canary deployment configuration */
 export interface CanaryDeployment {
@@ -713,7 +696,7 @@ export interface CanaryDeployment {
   /** Optional. Configuration for the verify job. Cannot be set if `verify` is set to true. */
   verifyConfig?: Verify;
 }
-export const CanaryDeployment = /*@__PURE__*/ S.suspend(() =>
+const CanaryDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predeploy: S.optional(Predeploy),
     analysis: S.optional(Analysis),
@@ -735,7 +718,7 @@ export interface CloudRunConfig {
   /** Optional. A list of tags that are added to the canary revision while the canary phase is in progress. */
   canaryRevisionTags?: StringList;
 }
-export const CloudRunConfig = /*@__PURE__*/ S.suspend(() =>
+const CloudRunConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priorRevisionTags: S.optional(StringList),
     stableRevisionTags: S.optional(StringList),
@@ -755,7 +738,7 @@ export interface ServiceNetworking {
   /** Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster. */
   disablePodOverprovisioning?: boolean;
 }
-export const ServiceNetworking = /*@__PURE__*/ S.suspend(() =>
+const ServiceNetworking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment: S.optional(S.String),
     service: S.optional(S.String),
@@ -771,7 +754,7 @@ export interface RouteDestinations {
   /** Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster. */
   destinationIds?: StringList;
 }
-export const RouteDestinations = /*@__PURE__*/ S.suspend(() =>
+const RouteDestinations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propagateService: S.optional(S.Boolean),
     destinationIds: S.optional(StringList),
@@ -795,7 +778,7 @@ export interface GatewayServiceMesh {
   /** Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service. */
   deployment?: string;
 }
-export const GatewayServiceMesh = /*@__PURE__*/ S.suspend(() =>
+const GatewayServiceMesh = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     stableCutbackDuration: S.optional(S.String),
@@ -814,7 +797,7 @@ export interface KubernetesConfig {
   /** Optional. Kubernetes Gateway API service mesh configuration. */
   gatewayServiceMesh?: GatewayServiceMesh;
 }
-export const KubernetesConfig = /*@__PURE__*/ S.suspend(() =>
+const KubernetesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceNetworking: S.optional(ServiceNetworking),
     gatewayServiceMesh: S.optional(GatewayServiceMesh),
@@ -828,7 +811,7 @@ export interface RuntimeConfig {
   /** Optional. Kubernetes runtime configuration. */
   kubernetes?: KubernetesConfig;
 }
-export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
+const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudRun: S.optional(CloudRunConfig),
     kubernetes: S.optional(KubernetesConfig),
@@ -854,7 +837,7 @@ export interface PhaseConfig {
   /** Optional. Configuration for the verify job. Cannot be set if `verify` is set to true. */
   verifyConfig?: Verify;
 }
-export const PhaseConfig = /*@__PURE__*/ S.suspend(() =>
+const PhaseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verify: S.optional(S.Boolean),
     analysis: S.optional(Analysis),
@@ -868,16 +851,14 @@ export const PhaseConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhaseConfig" }) as any as S.Schema<PhaseConfig>;
 
 export type PhaseConfigList = Array<PhaseConfig>;
-export const PhaseConfigList = /*@__PURE__*/ S.Array(
-  PhaseConfig,
-) as any as S.Schema<PhaseConfigList>;
+const PhaseConfigList = /*@__PURE__*/ S.Array(PhaseConfig) as any as S.Schema<PhaseConfigList>;
 
 /** CustomCanaryDeployment represents the custom canary deployment configuration. */
 export interface CustomCanaryDeployment {
   /** Required. Configuration for each phase in the canary deployment in the order executed. */
   phaseConfigs?: PhaseConfigList;
 }
-export const CustomCanaryDeployment = /*@__PURE__*/ S.suspend(() =>
+const CustomCanaryDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phaseConfigs: S.optional(PhaseConfigList),
   }),
@@ -892,7 +873,7 @@ export interface Canary {
   /** Optional. Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments. */
   customCanaryDeployment?: CustomCanaryDeployment;
 }
-export const Canary = /*@__PURE__*/ S.suspend(() =>
+const Canary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canaryDeployment: S.optional(CanaryDeployment),
     runtimeConfig: S.optional(RuntimeConfig),
@@ -907,7 +888,7 @@ export interface Strategy {
   /** Optional. Canary deployment strategy provides progressive percentage based deployments to a Target. */
   canary?: Canary;
 }
-export const Strategy = /*@__PURE__*/ S.suspend(() =>
+const Strategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     standard: S.optional(Standard),
     canary: S.optional(Canary),
@@ -925,7 +906,7 @@ export interface Stage {
   /** Optional. The strategy to use for a `Rollout` to this stage. */
   strategy?: Strategy;
 }
-export const Stage = /*@__PURE__*/ S.suspend(() =>
+const Stage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.optional(S.String),
     profiles: S.optional(StringList),
@@ -935,14 +916,14 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
 export type StageList = Array<Stage>;
-export const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
+const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
 
 /** SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`. */
 export interface SerialPipeline {
   /** Optional. Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow. */
   stages?: StageList;
 }
-export const SerialPipeline = /*@__PURE__*/ S.suspend(() =>
+const SerialPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stages: S.optional(StageList),
   }),
@@ -955,7 +936,7 @@ export interface PipelineReadyCondition {
   /** Last time the condition was updated. */
   updateTime?: string;
 }
-export const PipelineReadyCondition = /*@__PURE__*/ S.suspend(() =>
+const PipelineReadyCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.Boolean),
     updateTime: S.optional(S.String),
@@ -971,7 +952,7 @@ export interface TargetsPresentCondition {
   /** Last time the condition was updated. */
   updateTime?: string;
 }
-export const TargetsPresentCondition = /*@__PURE__*/ S.suspend(() =>
+const TargetsPresentCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.Boolean),
     missingTargets: S.optional(StringList),
@@ -986,7 +967,7 @@ export interface TargetsTypeCondition {
   /** Human readable error message. */
   errorDetails?: string;
 }
-export const TargetsTypeCondition = /*@__PURE__*/ S.suspend(() =>
+const TargetsTypeCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.Boolean),
     errorDetails: S.optional(S.String),
@@ -1002,7 +983,7 @@ export interface PipelineCondition {
   /** Details on the whether the targets enumerated in the pipeline are of the same type. */
   targetsTypeCondition?: TargetsTypeCondition;
 }
-export const PipelineCondition = /*@__PURE__*/ S.suspend(() =>
+const PipelineCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineReadyCondition: S.optional(PipelineReadyCondition),
     targetsPresentCondition: S.optional(TargetsPresentCondition),
@@ -1035,7 +1016,7 @@ export interface DeliveryPipeline {
   /** Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. */
   annotations?: StringMap;
 }
-export const DeliveryPipeline = /*@__PURE__*/ S.suspend(() =>
+const DeliveryPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serialPipeline: S.optional(SerialPipeline),
     createTime: S.optional(S.String),
@@ -1063,7 +1044,7 @@ export interface CreateProjectsLocationsDeliveryPipelinesRequest {
   /** Request body */
   body?: DeliveryPipeline;
 }
-export const CreateProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deliveryPipelineId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1088,7 +1069,7 @@ export interface TargetAttribute {
   /** Target labels. */
   labels?: StringMap;
 }
-export const TargetAttribute = /*@__PURE__*/ S.suspend(() =>
+const TargetAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -1096,7 +1077,7 @@ export const TargetAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetAttribute" }) as any as S.Schema<TargetAttribute>;
 
 export type TargetAttributeList = Array<TargetAttribute>;
-export const TargetAttributeList = /*@__PURE__*/ S.Array(
+const TargetAttributeList = /*@__PURE__*/ S.Array(
   TargetAttribute,
 ) as any as S.Schema<TargetAttributeList>;
 
@@ -1105,7 +1086,7 @@ export interface AutomationResourceSelector {
   /** Optional. Contains attributes about a target. */
   targets?: TargetAttributeList;
 }
-export const AutomationResourceSelector = /*@__PURE__*/ S.suspend(() =>
+const AutomationResourceSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targets: S.optional(TargetAttributeList),
   }),
@@ -1120,7 +1101,7 @@ export interface Targets {
   /** Optional. The source target ID. */
   sourceTargetId?: string;
 }
-export const Targets = /*@__PURE__*/ S.suspend(() =>
+const Targets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationTargetId: S.optional(S.String),
     sourceTargetId: S.optional(S.String),
@@ -1128,7 +1109,7 @@ export const Targets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Targets" }) as any as S.Schema<Targets>;
 
 export type TargetsList = Array<Targets>;
-export const TargetsList = /*@__PURE__*/ S.Array(Targets) as any as S.Schema<TargetsList>;
+const TargetsList = /*@__PURE__*/ S.Array(Targets) as any as S.Schema<TargetsList>;
 
 /** `TimedPromoteReleaseCondition` contains conditions specific to an Automation with a Timed Promote Release rule defined. */
 export interface TimedPromoteReleaseCondition {
@@ -1137,7 +1118,7 @@ export interface TimedPromoteReleaseCondition {
   /** Output only. A list of targets involved in the upcoming timed promotion(s). */
   targetsList?: TargetsList;
 }
-export const TimedPromoteReleaseCondition = /*@__PURE__*/ S.suspend(() =>
+const TimedPromoteReleaseCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPromotionTime: S.optional(S.String),
     targetsList: S.optional(TargetsList),
@@ -1153,7 +1134,7 @@ export interface AutomationRuleCondition {
   /** Optional. TimedPromoteReleaseCondition contains rule conditions specific to a an Automation with a timed promote release rule defined. */
   timedPromoteReleaseCondition?: TimedPromoteReleaseCondition;
 }
-export const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
+const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetsPresentCondition: S.optional(TargetsPresentCondition),
     timedPromoteReleaseCondition: S.optional(TimedPromoteReleaseCondition),
@@ -1164,7 +1145,7 @@ export type Clouddeploy_RetryBackoffModeEnum =
   | "BACKOFF_MODE_UNSPECIFIED"
   | "BACKOFF_MODE_LINEAR"
   | "BACKOFF_MODE_EXPONENTIAL";
-export const Clouddeploy_RetryBackoffModeEnum = S.String;
+const Clouddeploy_RetryBackoffModeEnum = S.String;
 
 /** Retries the failed job. */
 export interface Clouddeploy_Retry {
@@ -1175,7 +1156,7 @@ export interface Clouddeploy_Retry {
   /** Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10. */
   attempts?: string;
 }
-export const Clouddeploy_Retry = /*@__PURE__*/ S.suspend(() =>
+const Clouddeploy_Retry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wait: S.optional(S.String),
     backoffMode: S.optional(Clouddeploy_RetryBackoffModeEnum),
@@ -1190,7 +1171,7 @@ export interface Rollback {
   /** Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase. */
   destinationPhase?: string;
 }
-export const Rollback = /*@__PURE__*/ S.suspend(() =>
+const Rollback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableRollbackIfRolloutPending: S.optional(S.Boolean),
     destinationPhase: S.optional(S.String),
@@ -1204,7 +1185,7 @@ export interface RepairPhaseConfig {
   /** Optional. Rolls back a `Rollout`. */
   rollback?: Rollback;
 }
-export const RepairPhaseConfig = /*@__PURE__*/ S.suspend(() =>
+const RepairPhaseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retry: S.optional(Clouddeploy_Retry),
     rollback: S.optional(Rollback),
@@ -1212,7 +1193,7 @@ export const RepairPhaseConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepairPhaseConfig" }) as any as S.Schema<RepairPhaseConfig>;
 
 export type RepairPhaseConfigList = Array<RepairPhaseConfig>;
-export const RepairPhaseConfigList = /*@__PURE__*/ S.Array(
+const RepairPhaseConfigList = /*@__PURE__*/ S.Array(
   RepairPhaseConfig,
 ) as any as S.Schema<RepairPhaseConfigList>;
 
@@ -1229,7 +1210,7 @@ export interface RepairRolloutRule {
   /** Required. Defines the types of automatic repair phases for failed jobs. */
   repairPhases?: RepairPhaseConfigList;
 }
-export const RepairRolloutRule = /*@__PURE__*/ S.suspend(() =>
+const RepairRolloutRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(AutomationRuleCondition),
     jobs: S.optional(StringList),
@@ -1250,7 +1231,7 @@ export interface AdvanceRolloutRule {
   /** Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. */
   sourcePhases?: StringList;
 }
-export const AdvanceRolloutRule = /*@__PURE__*/ S.suspend(() =>
+const AdvanceRolloutRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     wait: S.optional(S.String),
@@ -1272,7 +1253,7 @@ export interface PromoteReleaseRule {
   /** Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name * "@next", the next target in the promotion sequence */
   destinationTargetId?: string;
 }
-export const PromoteReleaseRule = /*@__PURE__*/ S.suspend(() =>
+const PromoteReleaseRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wait: S.optional(S.String),
     destinationPhase: S.optional(S.String),
@@ -1297,7 +1278,7 @@ export interface TimedPromoteReleaseRule {
   /** Required. The time zone in IANA format [IANA Time Zone Database](https://www.iana.org/time-zones) (e.g. America/New_York). */
   timeZone?: string;
 }
-export const TimedPromoteReleaseRule = /*@__PURE__*/ S.suspend(() =>
+const TimedPromoteReleaseRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationPhase: S.optional(S.String),
     destinationTargetId: S.optional(S.String),
@@ -1319,7 +1300,7 @@ export interface AutomationRule {
   /** Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule. */
   timedPromoteReleaseRule?: TimedPromoteReleaseRule;
 }
-export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
+const AutomationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repairRolloutRule: S.optional(RepairRolloutRule),
     advanceRolloutRule: S.optional(AdvanceRolloutRule),
@@ -1329,7 +1310,7 @@ export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutomationRule" }) as any as S.Schema<AutomationRule>;
 
 export type AutomationRuleList = Array<AutomationRule>;
-export const AutomationRuleList = /*@__PURE__*/ S.Array(
+const AutomationRuleList = /*@__PURE__*/ S.Array(
   AutomationRule,
 ) as any as S.Schema<AutomationRuleList>;
 
@@ -1360,7 +1341,7 @@ export interface Automation {
   /** Output only. Unique identifier of the `Automation`. */
   uid?: string;
 }
-export const Automation = /*@__PURE__*/ S.suspend(() =>
+const Automation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.optional(AutomationResourceSelector),
     rules: S.optional(AutomationRuleList),
@@ -1389,21 +1370,20 @@ export interface CreateProjectsLocationsDeliveryPipelinesAutomationsRequest {
   /** Request body */
   body?: Automation;
 }
-export const CreateProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      requestId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      automationId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Automation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/automations",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    automationId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Automation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/automations",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsDeliveryPipelinesAutomationsRequest",
 }) as any as S.Schema<CreateProjectsLocationsDeliveryPipelinesAutomationsRequest>;
@@ -1415,7 +1395,7 @@ export interface BuildArtifact {
   /** Optional. Image tag to use. This will generally be the full path to an image, such as "gcr.io/my-project/busybox:1.2.3" or "gcr.io/my-project/busybox@sha256:abc123". */
   tag?: string;
 }
-export const BuildArtifact = /*@__PURE__*/ S.suspend(() =>
+const BuildArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
     tag: S.optional(S.String),
@@ -1423,7 +1403,7 @@ export const BuildArtifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuildArtifact" }) as any as S.Schema<BuildArtifact>;
 
 export type BuildArtifactList = Array<BuildArtifact>;
-export const BuildArtifactList = /*@__PURE__*/ S.Array(
+const BuildArtifactList = /*@__PURE__*/ S.Array(
   BuildArtifact,
 ) as any as S.Schema<BuildArtifactList>;
 
@@ -1442,7 +1422,7 @@ export interface ToolVersions {
   /** Optional. The Kustomize version to use for Cloud Deploy operations. */
   kustomize?: string;
 }
-export const ToolVersions = /*@__PURE__*/ S.suspend(() =>
+const ToolVersions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     docker: S.optional(S.String),
     skaffold: S.optional(S.String),
@@ -1462,7 +1442,7 @@ export interface PhaseArtifact {
   /** Output only. File path of the resolved Skaffold configuration relative to the URI. */
   skaffoldConfigPath?: string;
 }
-export const PhaseArtifact = /*@__PURE__*/ S.suspend(() =>
+const PhaseArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobManifestsPath: S.optional(S.String),
     manifestPath: S.optional(S.String),
@@ -1471,7 +1451,7 @@ export const PhaseArtifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhaseArtifact" }) as any as S.Schema<PhaseArtifact>;
 
 export type PhaseArtifactMap = { [key: string]: PhaseArtifact | undefined };
-export const PhaseArtifactMap = /*@__PURE__*/ S.Record(
+const PhaseArtifactMap = /*@__PURE__*/ S.Record(
   S.String,
   PhaseArtifact,
 ) as any as S.Schema<PhaseArtifactMap>;
@@ -1487,7 +1467,7 @@ export interface TargetArtifact {
   /** Output only. File path of the rendered manifest relative to the URI for the stable phase. */
   manifestPath?: string;
 }
-export const TargetArtifact = /*@__PURE__*/ S.suspend(() =>
+const TargetArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skaffoldConfigPath: S.optional(S.String),
     artifactUri: S.optional(S.String),
@@ -1497,7 +1477,7 @@ export const TargetArtifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetArtifact" }) as any as S.Schema<TargetArtifact>;
 
 export type TargetArtifactMap = { [key: string]: TargetArtifact | undefined };
-export const TargetArtifactMap = /*@__PURE__*/ S.Record(
+const TargetArtifactMap = /*@__PURE__*/ S.Record(
   S.String,
   TargetArtifact,
 ) as any as S.Schema<TargetArtifactMap>;
@@ -1507,7 +1487,7 @@ export interface CustomTarget {
   /** Required. The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`. */
   customTargetType?: string;
 }
-export const CustomTarget = /*@__PURE__*/ S.suspend(() =>
+const CustomTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customTargetType: S.optional(S.String),
   }),
@@ -1524,7 +1504,7 @@ export interface GkeCluster {
   /** Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`. */
   cluster?: string;
 }
-export const GkeCluster = /*@__PURE__*/ S.suspend(() =>
+const GkeCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsEndpoint: S.optional(S.Boolean),
     internalIp: S.optional(S.Boolean),
@@ -1541,12 +1521,12 @@ export type ExecutionConfigUsagesItemEnum =
   | "PREDEPLOY"
   | "POSTDEPLOY"
   | "ANALYSIS";
-export const ExecutionConfigUsagesItemEnum = S.String;
+const ExecutionConfigUsagesItemEnum = S.String;
 
 export type ExecutionConfigUsagesItemEnumList = Array<
   ExecutionConfigUsagesItemEnum | (string & {})
 >;
-export const ExecutionConfigUsagesItemEnumList = /*@__PURE__*/ S.Array(
+const ExecutionConfigUsagesItemEnumList = /*@__PURE__*/ S.Array(
   ExecutionConfigUsagesItemEnum,
 ) as any as S.Schema<ExecutionConfigUsagesItemEnumList>;
 
@@ -1559,7 +1539,7 @@ export interface PrivatePool {
   /** Required. Resource name of the Cloud Build worker pool to use. The format is `projects/{project}/locations/{location}/workerPools/{pool}`. */
   workerPool?: string;
 }
-export const PrivatePool = /*@__PURE__*/ S.suspend(() =>
+const PrivatePool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccount: S.optional(S.String),
     artifactStorage: S.optional(S.String),
@@ -1574,7 +1554,7 @@ export interface DefaultPool {
   /** Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used. */
   serviceAccount?: string;
 }
-export const DefaultPool = /*@__PURE__*/ S.suspend(() =>
+const DefaultPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactStorage: S.optional(S.String),
     serviceAccount: S.optional(S.String),
@@ -1600,7 +1580,7 @@ export interface ExecutionConfig {
   /** Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used. */
   serviceAccount?: string;
 }
-export const ExecutionConfig = /*@__PURE__*/ S.suspend(() =>
+const ExecutionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactStorage: S.optional(S.String),
     verbose: S.optional(S.Boolean),
@@ -1614,7 +1594,7 @@ export const ExecutionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecutionConfig" }) as any as S.Schema<ExecutionConfig>;
 
 export type ExecutionConfigList = Array<ExecutionConfig>;
-export const ExecutionConfigList = /*@__PURE__*/ S.Array(
+const ExecutionConfigList = /*@__PURE__*/ S.Array(
   ExecutionConfig,
 ) as any as S.Schema<ExecutionConfigList>;
 
@@ -1623,19 +1603,19 @@ export interface AnthosCluster {
   /** Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`. */
   membership?: string;
 }
-export const AnthosCluster = /*@__PURE__*/ S.suspend(() =>
+const AnthosCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membership: S.optional(S.String),
   }),
 ).annotate({ identifier: "AnthosCluster" }) as any as S.Schema<AnthosCluster>;
 
 export type AnthosClusterList = Array<AnthosCluster>;
-export const AnthosClusterList = /*@__PURE__*/ S.Array(
+const AnthosClusterList = /*@__PURE__*/ S.Array(
   AnthosCluster,
 ) as any as S.Schema<AnthosClusterList>;
 
 export type GkeClusterList = Array<GkeCluster>;
-export const GkeClusterList = /*@__PURE__*/ S.Array(GkeCluster) as any as S.Schema<GkeClusterList>;
+const GkeClusterList = /*@__PURE__*/ S.Array(GkeCluster) as any as S.Schema<GkeClusterList>;
 
 /** Information about entities associated with a `Target`. */
 export interface AssociatedEntities {
@@ -1644,7 +1624,7 @@ export interface AssociatedEntities {
   /** Optional. Information specifying GKE clusters as associated entities. */
   gkeClusters?: GkeClusterList;
 }
-export const AssociatedEntities = /*@__PURE__*/ S.suspend(() =>
+const AssociatedEntities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anthosClusters: S.optional(AnthosClusterList),
     gkeClusters: S.optional(GkeClusterList),
@@ -1652,7 +1632,7 @@ export const AssociatedEntities = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssociatedEntities" }) as any as S.Schema<AssociatedEntities>;
 
 export type AssociatedEntitiesMap = { [key: string]: AssociatedEntities | undefined };
-export const AssociatedEntitiesMap = /*@__PURE__*/ S.Record(
+const AssociatedEntitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   AssociatedEntities,
 ) as any as S.Schema<AssociatedEntitiesMap>;
@@ -1662,7 +1642,7 @@ export interface CloudRunLocation {
   /** Required. The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`. */
   location?: string;
 }
-export const CloudRunLocation = /*@__PURE__*/ S.suspend(() =>
+const CloudRunLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
   }),
@@ -1673,7 +1653,7 @@ export interface MultiTarget {
   /** Required. The target_ids of this multiTarget. */
   targetIds?: StringList;
 }
-export const MultiTarget = /*@__PURE__*/ S.suspend(() =>
+const MultiTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetIds: S.optional(StringList),
   }),
@@ -1718,7 +1698,7 @@ export interface Target {
   /** Optional. Information specifying a multiTarget. */
   multiTarget?: MultiTarget;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
+const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     targetId: S.optional(S.String),
@@ -1742,10 +1722,10 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 export type TargetList = Array<Target>;
-export const TargetList = /*@__PURE__*/ S.Array(Target) as any as S.Schema<TargetList>;
+const TargetList = /*@__PURE__*/ S.Array(Target) as any as S.Schema<TargetList>;
 
 export type CustomTargetTypeList = Array<CustomTargetType>;
-export const CustomTargetTypeList = /*@__PURE__*/ S.Array(
+const CustomTargetTypeList = /*@__PURE__*/ S.Array(
   CustomTargetType,
 ) as any as S.Schema<CustomTargetTypeList>;
 
@@ -1758,7 +1738,7 @@ export interface KubernetesRenderMetadata {
   /** Output only. Namespace the Kubernetes resources will be applied to in the GKE cluster. Only set if applying resources to a single namespace. */
   kubernetesNamespace?: string;
 }
-export const KubernetesRenderMetadata = /*@__PURE__*/ S.suspend(() =>
+const KubernetesRenderMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canaryDeployment: S.optional(S.String),
     deployment: S.optional(S.String),
@@ -1777,7 +1757,7 @@ export interface CloudRunRenderMetadata {
   /** Output only. The name of the Cloud Run Service in the rendered manifest. Format is `projects/{project}/locations/{location}/services/{service}`. */
   service?: string;
 }
-export const CloudRunRenderMetadata = /*@__PURE__*/ S.suspend(() =>
+const CloudRunRenderMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: S.optional(S.String),
     workerPool: S.optional(S.String),
@@ -1791,7 +1771,7 @@ export interface CustomMetadata {
   /** Output only. Key-value pairs provided by the user-defined operation. */
   values?: StringMap;
 }
-export const CustomMetadata = /*@__PURE__*/ S.suspend(() =>
+const CustomMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringMap),
   }),
@@ -1806,7 +1786,7 @@ export interface RenderMetadata {
   /** Output only. Custom metadata provided by user-defined render operation. */
   custom?: CustomMetadata;
 }
-export const RenderMetadata = /*@__PURE__*/ S.suspend(() =>
+const RenderMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kubernetes: S.optional(KubernetesRenderMetadata),
     cloudRun: S.optional(CloudRunRenderMetadata),
@@ -1819,7 +1799,7 @@ export type TargetRenderRenderingStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "IN_PROGRESS";
-export const TargetRenderRenderingStateEnum = S.String;
+const TargetRenderRenderingStateEnum = S.String;
 
 export type TargetRenderFailureCauseEnum =
   | "FAILURE_CAUSE_UNSPECIFIED"
@@ -1830,7 +1810,7 @@ export type TargetRenderFailureCauseEnum =
   | "CUSTOM_ACTION_NOT_FOUND"
   | "DEPLOYMENT_STRATEGY_NOT_SUPPORTED"
   | "RENDER_FEATURE_NOT_SUPPORTED";
-export const TargetRenderFailureCauseEnum = S.String;
+const TargetRenderFailureCauseEnum = S.String;
 
 /** Details of rendering for a single target. */
 export interface TargetRender {
@@ -1845,7 +1825,7 @@ export interface TargetRender {
   /** Output only. Reason this render failed. This will always be unspecified while the render in progress. */
   failureCause?: TargetRenderFailureCauseEnum | (string & {});
 }
-export const TargetRender = /*@__PURE__*/ S.suspend(() =>
+const TargetRender = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renderingBuild: S.optional(S.String),
     metadata: S.optional(RenderMetadata),
@@ -1856,7 +1836,7 @@ export const TargetRender = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetRender" }) as any as S.Schema<TargetRender>;
 
 export type TargetRenderMap = { [key: string]: TargetRender | undefined };
-export const TargetRenderMap = /*@__PURE__*/ S.Record(
+const TargetRenderMap = /*@__PURE__*/ S.Record(
   S.String,
   TargetRender,
 ) as any as S.Schema<TargetRenderMap>;
@@ -1866,7 +1846,7 @@ export type ToolVersionSupportedConditionToolVersionSupportStateEnum =
   | "TOOL_VERSION_SUPPORT_STATE_SUPPORTED"
   | "TOOL_VERSION_SUPPORT_STATE_MAINTENANCE_MODE"
   | "TOOL_VERSION_SUPPORT_STATE_UNSUPPORTED";
-export const ToolVersionSupportedConditionToolVersionSupportStateEnum = S.String;
+const ToolVersionSupportedConditionToolVersionSupportStateEnum = S.String;
 
 /** ToolVersionSupportedCondition contains information about when support for the release's version of a tool ends. */
 export interface ToolVersionSupportedCondition {
@@ -1881,7 +1861,7 @@ export interface ToolVersionSupportedCondition {
   /** Output only. The time at which this release's version of the tool will no longer be supported. */
   supportExpirationTime?: string;
 }
-export const ToolVersionSupportedCondition = /*@__PURE__*/ S.suspend(() =>
+const ToolVersionSupportedCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolVersionSupportState: S.optional(ToolVersionSupportedConditionToolVersionSupportStateEnum),
     status: S.optional(S.Boolean),
@@ -1897,7 +1877,7 @@ export type SkaffoldSupportedConditionSkaffoldSupportStateEnum =
   | "SKAFFOLD_SUPPORT_STATE_SUPPORTED"
   | "SKAFFOLD_SUPPORT_STATE_MAINTENANCE_MODE"
   | "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED";
-export const SkaffoldSupportedConditionSkaffoldSupportStateEnum = S.String;
+const SkaffoldSupportedConditionSkaffoldSupportStateEnum = S.String;
 
 /** SkaffoldSupportedCondition contains information about when support for the release's version of Skaffold ends. */
 export interface SkaffoldSupportedCondition {
@@ -1910,7 +1890,7 @@ export interface SkaffoldSupportedCondition {
   /** True if the version of Skaffold used by this release is supported. */
   status?: boolean;
 }
-export const SkaffoldSupportedCondition = /*@__PURE__*/ S.suspend(() =>
+const SkaffoldSupportedCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skaffoldSupportState: S.optional(SkaffoldSupportedConditionSkaffoldSupportStateEnum),
     supportExpirationTime: S.optional(S.String),
@@ -1926,7 +1906,7 @@ export interface ReleaseReadyCondition {
   /** True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release. */
   status?: boolean;
 }
-export const ReleaseReadyCondition = /*@__PURE__*/ S.suspend(() =>
+const ReleaseReadyCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.Boolean),
   }),
@@ -1951,7 +1931,7 @@ export interface ReleaseCondition {
   /** Output only. Details around the support state of the release's Kubectl version. */
   kubectlVersionSupportedCondition?: ToolVersionSupportedCondition;
 }
-export const ReleaseCondition = /*@__PURE__*/ S.suspend(() =>
+const ReleaseCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kptVersionSupportedCondition: S.optional(ToolVersionSupportedCondition),
     dockerVersionSupportedCondition: S.optional(ToolVersionSupportedCondition),
@@ -1969,7 +1949,7 @@ export type ReleaseRenderStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "IN_PROGRESS";
-export const ReleaseRenderStateEnum = S.String;
+const ReleaseRenderStateEnum = S.String;
 
 /** A `Release` resource in the Cloud Deploy API. A `Release` defines a specific Skaffold configuration instance that can be deployed. */
 export interface Release {
@@ -2020,7 +2000,7 @@ export interface Release {
   /** Identifier. Name of the `Release`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`. The `release` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?` */
   name?: string;
 }
-export const Release = /*@__PURE__*/ S.suspend(() =>
+const Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renderStartTime: S.optional(S.String),
     abandoned: S.optional(S.Boolean),
@@ -2062,7 +2042,7 @@ export interface CreateProjectsLocationsDeliveryPipelinesReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const CreateProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     overrideDeployPolicy: S.optional(StringList.pipe(T.Query())),
@@ -2093,7 +2073,7 @@ export type RolloutStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "HALTED";
-export const RolloutStateEnum = S.String;
+const RolloutStateEnum = S.String;
 
 export type RolloutDeployFailureCauseEnum =
   | "FAILURE_CAUSE_UNSPECIFIED"
@@ -2105,7 +2085,7 @@ export type RolloutDeployFailureCauseEnum =
   | "VERIFICATION_CONFIG_NOT_FOUND"
   | "CLOUD_BUILD_REQUEST_FAILED"
   | "OPERATION_FEATURE_NOT_SUPPORTED";
-export const RolloutDeployFailureCauseEnum = S.String;
+const RolloutDeployFailureCauseEnum = S.String;
 
 /** A postdeploy Job. */
 export interface PostdeployJob {
@@ -2114,7 +2094,7 @@ export interface PostdeployJob {
   /** Output only. The tasks that are executed as part of the postdeploy Job. */
   tasks?: TaskList;
 }
-export const PostdeployJob = Predeploy as any as S.Schema<PostdeployJob>;
+const PostdeployJob = Predeploy as any as S.Schema<PostdeployJob>;
 
 /** A predeploy Job. */
 export interface PredeployJob {
@@ -2123,7 +2103,7 @@ export interface PredeployJob {
   /** Output only. The tasks that are executed as part of the predeploy Job. */
   tasks?: TaskList;
 }
-export const PredeployJob = Predeploy as any as S.Schema<PredeployJob>;
+const PredeployJob = Predeploy as any as S.Schema<PredeployJob>;
 
 /** An analysis Job. */
 export interface AnalysisJob {
@@ -2134,12 +2114,10 @@ export interface AnalysisJob {
   /** Output only. Google Cloud - based analysis checks that are run as part of the analysis Job. */
   googleCloud?: GoogleCloudAnalysis;
 }
-export const AnalysisJob = Analysis as any as S.Schema<AnalysisJob>;
+const AnalysisJob = Analysis as any as S.Schema<AnalysisJob>;
 
 /** A createChildRollout Job. */
 export type CreateChildRolloutJob = AbandonReleaseRequest;
-export const CreateChildRolloutJob = AbandonReleaseRequest;
-
 export type JobStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -2150,22 +2128,18 @@ export type JobStateEnum =
   | "ABORTED"
   | "SKIPPED"
   | "IGNORED";
-export const JobStateEnum = S.String;
+const JobStateEnum = S.String;
 
 /** A deploy Job. */
 export type DeployJob = AbandonReleaseRequest;
-export const DeployJob = AbandonReleaseRequest;
-
 /** An advanceChildRollout Job. */
 export type AdvanceChildRolloutJob = AbandonReleaseRequest;
-export const AdvanceChildRolloutJob = AbandonReleaseRequest;
-
 /** A verify Job. */
 export interface VerifyJob {
   /** Output only. The tasks that are executed as part of the verify Job. */
   tasks?: TaskList;
 }
-export const VerifyJob = Verify as any as S.Schema<VerifyJob>;
+const VerifyJob = Verify as any as S.Schema<VerifyJob>;
 
 /** Job represents an operation for a `Rollout`. */
 export interface Job {
@@ -2192,7 +2166,7 @@ export interface Job {
   /** Output only. A verify Job. */
   verifyJob?: VerifyJob;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postdeployJob: S.optional(PostdeployJob),
     predeployJob: S.optional(PredeployJob),
@@ -2209,7 +2183,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export type JobList = Array<Job>;
-export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
+const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** ChildRollouts job composition */
 export interface ChildRolloutJobs {
@@ -2218,7 +2192,7 @@ export interface ChildRolloutJobs {
   /** Output only. List of AdvanceChildRolloutJobs */
   advanceRolloutJobs?: JobList;
 }
-export const ChildRolloutJobs = /*@__PURE__*/ S.suspend(() =>
+const ChildRolloutJobs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createRolloutJobs: S.optional(JobList),
     advanceRolloutJobs: S.optional(JobList),
@@ -2233,7 +2207,7 @@ export type PhaseStateEnum =
   | "FAILED"
   | "ABORTED"
   | "SKIPPED";
-export const PhaseStateEnum = S.String;
+const PhaseStateEnum = S.String;
 
 /** Deployment job composition. */
 export interface DeploymentJobs {
@@ -2248,7 +2222,7 @@ export interface DeploymentJobs {
   /** Output only. The analysis Job. Runs after a verify if there is a verify job and the verify job succeeds. */
   analysisJob?: Job;
 }
-export const DeploymentJobs = /*@__PURE__*/ S.suspend(() =>
+const DeploymentJobs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifyJob: S.optional(Job),
     deployJob: S.optional(Job),
@@ -2271,7 +2245,7 @@ export interface Phase {
   /** Output only. Deployment job composition. */
   deploymentJobs?: DeploymentJobs;
 }
-export const Phase = /*@__PURE__*/ S.suspend(() =>
+const Phase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     childRolloutJobs: S.optional(ChildRolloutJobs),
     skipMessage: S.optional(S.String),
@@ -2282,7 +2256,7 @@ export const Phase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Phase" }) as any as S.Schema<Phase>;
 
 export type PhaseList = Array<Phase>;
-export const PhaseList = /*@__PURE__*/ S.Array(Phase) as any as S.Schema<PhaseList>;
+const PhaseList = /*@__PURE__*/ S.Array(Phase) as any as S.Schema<PhaseList>;
 
 export type RolloutApprovalStateEnum =
   | "APPROVAL_STATE_UNSPECIFIED"
@@ -2290,7 +2264,7 @@ export type RolloutApprovalStateEnum =
   | "DOES_NOT_NEED_APPROVAL"
   | "APPROVED"
   | "REJECTED";
-export const RolloutApprovalStateEnum = S.String;
+const RolloutApprovalStateEnum = S.String;
 
 /** CloudRunMetadata contains information from a Cloud Run deployment. */
 export interface CloudRunMetadata {
@@ -2307,7 +2281,7 @@ export interface CloudRunMetadata {
   /** Output only. The Cloud Run worker pool associated with a `Rollout`. Format is `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
   workerPool?: string;
 }
-export const CloudRunMetadata = /*@__PURE__*/ S.suspend(() =>
+const CloudRunMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     previousRevision: S.optional(S.String),
@@ -2327,7 +2301,7 @@ export interface AutomationRolloutMetadata {
   /** Output only. The names of the AutomationRuns initiated by an advance rollout rule. */
   advanceAutomationRuns?: StringList;
 }
-export const AutomationRolloutMetadata = /*@__PURE__*/ S.suspend(() =>
+const AutomationRolloutMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promoteAutomationRun: S.optional(S.String),
     repairAutomationRuns: S.optional(StringList),
@@ -2346,7 +2320,7 @@ export interface Metadata {
   /** Output only. Custom metadata provided by user-defined `Rollout` operations. */
   custom?: CustomMetadata;
 }
-export const Metadata = /*@__PURE__*/ S.suspend(() =>
+const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudRun: S.optional(CloudRunMetadata),
     automation: S.optional(AutomationRolloutMetadata),
@@ -2403,7 +2377,7 @@ export interface Rollout {
   /** Output only. The resource name of the Cloud Build `Build` object that is used to deploy the Rollout. Format is `projects/{project}/locations/{location}/builds/{build}`. */
   deployingBuild?: string;
 }
-export const Rollout = /*@__PURE__*/ S.suspend(() =>
+const Rollout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     state: S.optional(RolloutStateEnum),
@@ -2447,8 +2421,8 @@ export interface CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest
   /** Request body */
   body?: Rollout;
 }
-export const CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       validateOnly: S.optional(S.Boolean.pipe(T.Query())),
       overrideDeployPolicy: S.optional(StringList.pipe(T.Query())),
@@ -2464,9 +2438,9 @@ export const CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
         baseUrl: "https://clouddeploy.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+}) as any as S.Schema<CreateProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
 
 export type WeeklyWindowDaysOfWeekItemEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -2477,12 +2451,10 @@ export type WeeklyWindowDaysOfWeekItemEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const WeeklyWindowDaysOfWeekItemEnum = S.String;
-
 export type WeeklyWindowDaysOfWeekItemEnumList = Array<
   WeeklyWindowDaysOfWeekItemEnum | (string & {})
 >;
-export const WeeklyWindowDaysOfWeekItemEnumList =
+const WeeklyWindowDaysOfWeekItemEnumList =
   ExecutionConfigUsagesItemEnumList as any as S.Schema<WeeklyWindowDaysOfWeekItemEnumList>;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -2496,7 +2468,7 @@ export interface TimeOfDay {
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
   nanos?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minutes: S.optional(S.Number),
     seconds: S.optional(S.Number),
@@ -2514,7 +2486,7 @@ export interface WeeklyWindow {
   /** Optional. Start time (inclusive). Use 00:00 for the beginning of the day. If you specify start_time you must also specify end_time. If left empty, this will block for the entire day for the days specified in days_of_week. */
   startTime?: TimeOfDay;
 }
-export const WeeklyWindow = /*@__PURE__*/ S.suspend(() =>
+const WeeklyWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     daysOfWeek: S.optional(WeeklyWindowDaysOfWeekItemEnumList),
     endTime: S.optional(TimeOfDay),
@@ -2523,9 +2495,7 @@ export const WeeklyWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WeeklyWindow" }) as any as S.Schema<WeeklyWindow>;
 
 export type WeeklyWindowList = Array<WeeklyWindow>;
-export const WeeklyWindowList = /*@__PURE__*/ S.Array(
-  WeeklyWindow,
-) as any as S.Schema<WeeklyWindowList>;
+const WeeklyWindowList = /*@__PURE__*/ S.Array(WeeklyWindow) as any as S.Schema<WeeklyWindowList>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Clouddeploy_Date {
@@ -2536,7 +2506,7 @@ export interface Clouddeploy_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Clouddeploy_Date = /*@__PURE__*/ S.suspend(() =>
+const Clouddeploy_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     month: S.optional(S.Number),
@@ -2555,7 +2525,7 @@ export interface OneTimeWindow {
   /** Required. Start date. */
   startDate?: Clouddeploy_Date;
 }
-export const OneTimeWindow = /*@__PURE__*/ S.suspend(() =>
+const OneTimeWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(TimeOfDay),
     endTime: S.optional(TimeOfDay),
@@ -2565,7 +2535,7 @@ export const OneTimeWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OneTimeWindow" }) as any as S.Schema<OneTimeWindow>;
 
 export type OneTimeWindowList = Array<OneTimeWindow>;
-export const OneTimeWindowList = /*@__PURE__*/ S.Array(
+const OneTimeWindowList = /*@__PURE__*/ S.Array(
   OneTimeWindow,
 ) as any as S.Schema<OneTimeWindowList>;
 
@@ -2578,7 +2548,7 @@ export interface TimeWindows {
   /** Required. The time zone in IANA format [IANA Time Zone Database](https://www.iana.org/time-zones) (e.g. America/New_York). */
   timeZone?: string;
 }
-export const TimeWindows = /*@__PURE__*/ S.suspend(() =>
+const TimeWindows = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weeklyWindows: S.optional(WeeklyWindowList),
     oneTimeWindows: S.optional(OneTimeWindowList),
@@ -2596,24 +2566,20 @@ export type RolloutRestrictionActionsItemEnum =
   | "RETRY_JOB"
   | "ROLLBACK"
   | "TERMINATE_JOBRUN";
-export const RolloutRestrictionActionsItemEnum = S.String;
-
 export type RolloutRestrictionActionsItemEnumList = Array<
   RolloutRestrictionActionsItemEnum | (string & {})
 >;
-export const RolloutRestrictionActionsItemEnumList =
+const RolloutRestrictionActionsItemEnumList =
   ExecutionConfigUsagesItemEnumList as any as S.Schema<RolloutRestrictionActionsItemEnumList>;
 
 export type RolloutRestrictionInvokersItemEnum =
   | "INVOKER_UNSPECIFIED"
   | "USER"
   | "DEPLOY_AUTOMATION";
-export const RolloutRestrictionInvokersItemEnum = S.String;
-
 export type RolloutRestrictionInvokersItemEnumList = Array<
   RolloutRestrictionInvokersItemEnum | (string & {})
 >;
-export const RolloutRestrictionInvokersItemEnumList =
+const RolloutRestrictionInvokersItemEnumList =
   ExecutionConfigUsagesItemEnumList as any as S.Schema<RolloutRestrictionInvokersItemEnumList>;
 
 /** Rollout restrictions. */
@@ -2627,7 +2593,7 @@ export interface RolloutRestriction {
   /** Optional. What invoked the action. If left empty, all invoker types will be restricted. */
   invokers?: RolloutRestrictionInvokersItemEnumList;
 }
-export const RolloutRestriction = /*@__PURE__*/ S.suspend(() =>
+const RolloutRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeWindows: S.optional(TimeWindows),
     id: S.optional(S.String),
@@ -2641,14 +2607,14 @@ export interface PolicyRule {
   /** Optional. Rollout restrictions. */
   rolloutRestriction?: RolloutRestriction;
 }
-export const PolicyRule = /*@__PURE__*/ S.suspend(() =>
+const PolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutRestriction: S.optional(RolloutRestriction),
   }),
 ).annotate({ identifier: "PolicyRule" }) as any as S.Schema<PolicyRule>;
 
 export type PolicyRuleList = Array<PolicyRule>;
-export const PolicyRuleList = /*@__PURE__*/ S.Array(PolicyRule) as any as S.Schema<PolicyRuleList>;
+const PolicyRuleList = /*@__PURE__*/ S.Array(PolicyRule) as any as S.Schema<PolicyRuleList>;
 
 /** Contains criteria for selecting DeliveryPipelines. */
 export interface DeliveryPipelineAttribute {
@@ -2657,7 +2623,7 @@ export interface DeliveryPipelineAttribute {
   /** DeliveryPipeline labels. */
   labels?: StringMap;
 }
-export const DeliveryPipelineAttribute = /*@__PURE__*/ S.suspend(() =>
+const DeliveryPipelineAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -2673,7 +2639,7 @@ export interface DeployPolicyResourceSelector {
   /** Optional. Contains attributes about a target. */
   target?: TargetAttribute;
 }
-export const DeployPolicyResourceSelector = /*@__PURE__*/ S.suspend(() =>
+const DeployPolicyResourceSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deliveryPipeline: S.optional(DeliveryPipelineAttribute),
     target: S.optional(TargetAttribute),
@@ -2683,7 +2649,7 @@ export const DeployPolicyResourceSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeployPolicyResourceSelector>;
 
 export type DeployPolicyResourceSelectorList = Array<DeployPolicyResourceSelector>;
-export const DeployPolicyResourceSelectorList = /*@__PURE__*/ S.Array(
+const DeployPolicyResourceSelectorList = /*@__PURE__*/ S.Array(
   DeployPolicyResourceSelector,
 ) as any as S.Schema<DeployPolicyResourceSelectorList>;
 
@@ -2712,7 +2678,7 @@ export interface DeployPolicy {
   /** Output only. Most recent time at which the deploy policy was updated. */
   updateTime?: string;
 }
-export const DeployPolicy = /*@__PURE__*/ S.suspend(() =>
+const DeployPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -2740,7 +2706,7 @@ export interface CreateProjectsLocationsDeployPoliciesRequest {
   /** Request body */
   body?: DeployPolicy;
 }
-export const CreateProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     deployPolicyId: S.optional(S.String.pipe(T.Query())),
@@ -2770,7 +2736,7 @@ export interface CreateProjectsLocationsTargetsRequest {
   /** Request body */
   body?: Target;
 }
-export const CreateProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2800,7 +2766,7 @@ export interface DeleteProjectsLocationsCustomTargetTypesRequest {
   /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const DeleteProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2828,7 +2794,7 @@ export interface DeleteProjectsLocationsDeliveryPipelinesRequest {
   /** Required. The name of the `DeliveryPipeline` to delete. The format is `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`. */
   name: string;
 }
-export const DeleteProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2855,21 +2821,20 @@ export interface DeleteProjectsLocationsDeliveryPipelinesAutomationsRequest {
   /** Optional. The weak etag of the request. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
 }
-export const DeleteProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    etag: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsDeliveryPipelinesAutomationsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsDeliveryPipelinesAutomationsRequest>;
@@ -2886,7 +2851,7 @@ export interface DeleteProjectsLocationsDeployPoliciesRequest {
   /** Optional. If set to true, then deleting an already deleted or non-existing `DeployPolicy` will succeed. */
   allowMissing?: boolean;
 }
-export const DeleteProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2904,7 +2869,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2926,7 +2891,7 @@ export interface DeleteProjectsLocationsTargetsRequest {
   /** Optional. If set, validate the request and preview the review, but do not actually post it. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -2944,7 +2909,7 @@ export interface GetConfigProjectsLocationsRequest {
   /** Required. Name of requested configuration. */
   name: string;
 }
-export const GetConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2965,7 +2930,7 @@ export interface SkaffoldVersion {
   /** The time at which this version of Skaffold will enter maintenance mode. */
   maintenanceModeTime?: string;
 }
-export const SkaffoldVersion = /*@__PURE__*/ S.suspend(() =>
+const SkaffoldVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportExpirationTime: S.optional(S.String),
     supportEndDate: S.optional(Clouddeploy_Date),
@@ -2975,7 +2940,7 @@ export const SkaffoldVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkaffoldVersion" }) as any as S.Schema<SkaffoldVersion>;
 
 export type SkaffoldVersionList = Array<SkaffoldVersion>;
-export const SkaffoldVersionList = /*@__PURE__*/ S.Array(
+const SkaffoldVersionList = /*@__PURE__*/ S.Array(
   SkaffoldVersion,
 ) as any as S.Schema<SkaffoldVersionList>;
 
@@ -2990,7 +2955,7 @@ export interface Config {
   /** Name of the configuration. */
   name?: string;
 }
-export const Config = /*@__PURE__*/ S.suspend(() =>
+const Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultToolVersions: S.optional(ToolVersions),
     defaultSkaffoldVersion: S.optional(S.String),
@@ -3005,7 +2970,7 @@ export interface GetIamPolicyProjectsLocationsCustomTargetTypesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -3025,7 +2990,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -3034,7 +2999,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -3042,7 +3007,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -3053,7 +3018,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -3061,9 +3026,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -3076,7 +3039,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     location: S.optional(S.String),
@@ -3094,7 +3057,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     role: S.optional(S.String),
@@ -3103,7 +3066,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -3116,7 +3079,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     version: S.optional(S.Number),
@@ -3131,7 +3094,7 @@ export interface GetIamPolicyProjectsLocationsDeliveryPipelinesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -3152,7 +3115,7 @@ export interface GetIamPolicyProjectsLocationsDeployPoliciesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -3173,7 +3136,7 @@ export interface GetIamPolicyProjectsLocationsTargetsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -3192,7 +3155,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3215,7 +3178,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     name: S.optional(S.String),
@@ -3229,7 +3192,7 @@ export interface GetProjectsLocationsCustomTargetTypesRequest {
   /** Required. Name of the `CustomTargetType`. Format must be `projects/{project_id}/locations/{location_name}/customTargetTypes/{custom_target_type}`. */
   name: string;
 }
-export const GetProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3243,7 +3206,7 @@ export interface GetProjectsLocationsDeliveryPipelinesRequest {
   /** Required. Name of the `DeliveryPipeline`. Format must be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`. */
   name: string;
 }
-export const GetProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3257,13 +3220,12 @@ export interface GetProjectsLocationsDeliveryPipelinesAutomationRunsRequest {
   /** Required. Name of the `AutomationRun`. Format must be `projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}`. */
   name: string;
 }
-export const GetProjectsLocationsDeliveryPipelinesAutomationRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://clouddeploy.googleapis.com/" }),
-    ),
+const GetProjectsLocationsDeliveryPipelinesAutomationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://clouddeploy.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
 }) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesAutomationRunsRequest>;
@@ -3279,7 +3241,7 @@ export interface PromoteReleaseOperation {
   /** Output only. How long the operation will be paused. */
   wait?: string;
 }
-export const PromoteReleaseOperation = /*@__PURE__*/ S.suspend(() =>
+const PromoteReleaseOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phase: S.optional(S.String),
     targetId: S.optional(S.String),
@@ -3292,7 +3254,7 @@ export type RetryPhaseBackoffModeEnum =
   | "BACKOFF_MODE_UNSPECIFIED"
   | "BACKOFF_MODE_LINEAR"
   | "BACKOFF_MODE_EXPONENTIAL";
-export const RetryPhaseBackoffModeEnum = S.String;
+const RetryPhaseBackoffModeEnum = S.String;
 
 export type RetryAttemptStateEnum =
   | "REPAIR_STATE_UNSPECIFIED"
@@ -3302,7 +3264,7 @@ export type RetryAttemptStateEnum =
   | "REPAIR_STATE_IN_PROGRESS"
   | "REPAIR_STATE_PENDING"
   | "REPAIR_STATE_ABORTED";
-export const RetryAttemptStateEnum = S.String;
+const RetryAttemptStateEnum = S.String;
 
 /** RetryAttempt represents an action of retrying the failed Cloud Deploy job. */
 export interface RetryAttempt {
@@ -3315,7 +3277,7 @@ export interface RetryAttempt {
   /** Output only. How long the operation will be paused. */
   wait?: string;
 }
-export const RetryAttempt = /*@__PURE__*/ S.suspend(() =>
+const RetryAttempt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateDesc: S.optional(S.String),
     attempt: S.optional(S.String),
@@ -3325,9 +3287,7 @@ export const RetryAttempt = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RetryAttempt" }) as any as S.Schema<RetryAttempt>;
 
 export type RetryAttemptList = Array<RetryAttempt>;
-export const RetryAttemptList = /*@__PURE__*/ S.Array(
-  RetryAttempt,
-) as any as S.Schema<RetryAttemptList>;
+const RetryAttemptList = /*@__PURE__*/ S.Array(RetryAttempt) as any as S.Schema<RetryAttemptList>;
 
 /** RetryPhase contains the retry attempts and the metadata for initiating a new attempt. */
 export interface RetryPhase {
@@ -3338,7 +3298,7 @@ export interface RetryPhase {
   /** Output only. Detail of a retry action. */
   attempts?: RetryAttemptList;
 }
-export const RetryPhase = /*@__PURE__*/ S.suspend(() =>
+const RetryPhase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalAttempts: S.optional(S.String),
     backoffMode: S.optional(RetryPhaseBackoffModeEnum),
@@ -3354,7 +3314,7 @@ export type RollbackAttemptStateEnum =
   | "REPAIR_STATE_IN_PROGRESS"
   | "REPAIR_STATE_PENDING"
   | "REPAIR_STATE_ABORTED";
-export const RollbackAttemptStateEnum = S.String;
+const RollbackAttemptStateEnum = S.String;
 
 /** RollbackAttempt represents an action of rolling back a Cloud Deploy 'Target'. */
 export interface RollbackAttempt {
@@ -3369,7 +3329,7 @@ export interface RollbackAttempt {
   /** Output only. Valid state of this rollback action. */
   state?: RollbackAttemptStateEnum;
 }
-export const RollbackAttempt = /*@__PURE__*/ S.suspend(() =>
+const RollbackAttempt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableRollbackIfRolloutPending: S.optional(S.Boolean),
     destinationPhase: S.optional(S.String),
@@ -3386,7 +3346,7 @@ export interface RepairPhase {
   /** Output only. Rollback attempt for rollback repair mode . */
   rollback?: RollbackAttempt;
 }
-export const RepairPhase = /*@__PURE__*/ S.suspend(() =>
+const RepairPhase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retry: S.optional(RetryPhase),
     rollback: S.optional(RollbackAttempt),
@@ -3394,9 +3354,7 @@ export const RepairPhase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepairPhase" }) as any as S.Schema<RepairPhase>;
 
 export type RepairPhaseList = Array<RepairPhase>;
-export const RepairPhaseList = /*@__PURE__*/ S.Array(
-  RepairPhase,
-) as any as S.Schema<RepairPhaseList>;
+const RepairPhaseList = /*@__PURE__*/ S.Array(RepairPhase) as any as S.Schema<RepairPhaseList>;
 
 /** Contains the information for an automated `repair rollout` operation. */
 export interface RepairRolloutOperation {
@@ -3411,7 +3369,7 @@ export interface RepairRolloutOperation {
   /** Output only. The name of the rollout that initiates the `AutomationRun`. */
   rollout?: string;
 }
-export const RepairRolloutOperation = /*@__PURE__*/ S.suspend(() =>
+const RepairRolloutOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repairPhases: S.optional(RepairPhaseList),
     currentRepairPhaseIndex: S.optional(S.String),
@@ -3430,7 +3388,7 @@ export interface TimedPromoteReleaseOperation {
   /** Output only. The starting phase of the rollout created by this operation. */
   phase?: string;
 }
-export const TimedPromoteReleaseOperation = /*@__PURE__*/ S.suspend(() =>
+const TimedPromoteReleaseOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     release: S.optional(S.String),
     targetId: S.optional(S.String),
@@ -3448,7 +3406,7 @@ export type AutomationRunStateEnum =
   | "IN_PROGRESS"
   | "PENDING"
   | "ABORTED";
-export const AutomationRunStateEnum = S.String;
+const AutomationRunStateEnum = S.String;
 
 /** Contains the information of an automated advance-rollout operation. */
 export interface AdvanceRolloutOperation {
@@ -3461,7 +3419,7 @@ export interface AdvanceRolloutOperation {
   /** Output only. The name of the rollout that initiates the `AutomationRun`. */
   rollout?: string;
 }
-export const AdvanceRolloutOperation = /*@__PURE__*/ S.suspend(() =>
+const AdvanceRolloutOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wait: S.optional(S.String),
     sourcePhase: S.optional(S.String),
@@ -3479,7 +3437,7 @@ export interface PolicyViolationDetails {
   /** User readable message about why the request violated a policy. This is not intended for machine parsing. */
   failureMessage?: string;
 }
-export const PolicyViolationDetails = /*@__PURE__*/ S.suspend(() =>
+const PolicyViolationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.optional(S.String),
     policy: S.optional(S.String),
@@ -3488,7 +3446,7 @@ export const PolicyViolationDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyViolationDetails" }) as any as S.Schema<PolicyViolationDetails>;
 
 export type PolicyViolationDetailsList = Array<PolicyViolationDetails>;
-export const PolicyViolationDetailsList = /*@__PURE__*/ S.Array(
+const PolicyViolationDetailsList = /*@__PURE__*/ S.Array(
   PolicyViolationDetails,
 ) as any as S.Schema<PolicyViolationDetailsList>;
 
@@ -3497,7 +3455,7 @@ export interface PolicyViolation {
   /** Policy violation details. */
   policyViolationDetails?: PolicyViolationDetailsList;
 }
-export const PolicyViolation = /*@__PURE__*/ S.suspend(() =>
+const PolicyViolation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyViolationDetails: S.optional(PolicyViolationDetailsList),
   }),
@@ -3544,7 +3502,7 @@ export interface AutomationRun {
   /** Output only. Snapshot of the Automation taken at AutomationRun creation time. */
   automationSnapshot?: Automation;
 }
-export const AutomationRun = /*@__PURE__*/ S.suspend(() =>
+const AutomationRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -3572,7 +3530,7 @@ export interface GetProjectsLocationsDeliveryPipelinesAutomationsRequest {
   /** Required. Name of the `Automation`. Format must be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`. */
   name: string;
 }
-export const GetProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3586,7 +3544,7 @@ export interface GetProjectsLocationsDeliveryPipelinesReleasesRequest {
   /** Required. Name of the `Release`. Format must be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`. */
   name: string;
 }
-export const GetProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3600,13 +3558,12 @@ export interface GetProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest {
   /** Required. Name of the `Rollout`. Format must be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}`. */
   name: string;
 }
-export const GetProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://clouddeploy.googleapis.com/" }),
-    ),
+const GetProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://clouddeploy.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
 }) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
@@ -3615,16 +3572,16 @@ export interface GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsReq
   /** Required. Name of the `JobRun`. Format must be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}`. */
   name: string;
 }
-export const GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://clouddeploy.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest",
-  }) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest>;
+).annotate({
+  identifier: "GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest",
+}) as any as S.Schema<GetProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest>;
 
 export type PredeployJobRunFailureCauseEnum =
   | "FAILURE_CAUSE_UNSPECIFIED"
@@ -3632,14 +3589,14 @@ export type PredeployJobRunFailureCauseEnum =
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
   | "CLOUD_BUILD_REQUEST_FAILED";
-export const PredeployJobRunFailureCauseEnum = S.String;
+const PredeployJobRunFailureCauseEnum = S.String;
 
 /** PredeployJobRunMetadata contains metadata about the predeploy `JobRun`. */
 export interface PredeployJobRunMetadata {
   /** Output only. Custom metadata provided by user-defined predeploy operation. */
   custom?: CustomMetadata;
 }
-export const PredeployJobRunMetadata = /*@__PURE__*/ S.suspend(() =>
+const PredeployJobRunMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom: S.optional(CustomMetadata),
   }),
@@ -3656,7 +3613,7 @@ export interface PredeployJobRun {
   /** Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions associated with the predeploy Job. Format is `projects/{project}/locations/{location}/builds/{build}`. */
   build?: string;
 }
-export const PredeployJobRun = /*@__PURE__*/ S.suspend(() =>
+const PredeployJobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureCause: S.optional(PredeployJobRunFailureCauseEnum),
     metadata: S.optional(PredeployJobRunMetadata),
@@ -3671,14 +3628,14 @@ export type PostdeployJobRunFailureCauseEnum =
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
   | "CLOUD_BUILD_REQUEST_FAILED";
-export const PostdeployJobRunFailureCauseEnum = S.String;
+const PostdeployJobRunFailureCauseEnum = S.String;
 
 /** PostdeployJobRunMetadata contains metadata about the postdeploy `JobRun`. */
 export interface PostdeployJobRunMetadata {
   /** Output only. Custom metadata provided by user-defined postdeploy operation. */
   custom?: CustomMetadata;
 }
-export const PostdeployJobRunMetadata =
+const PostdeployJobRunMetadata =
   PredeployJobRunMetadata as any as S.Schema<PostdeployJobRunMetadata>;
 
 /** PostdeployJobRun contains information specific to a postdeploy `JobRun`. */
@@ -3692,7 +3649,7 @@ export interface PostdeployJobRun {
   /** Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions associated with the postdeploy Job. Format is `projects/{project}/locations/{location}/builds/{build}`. */
   build?: string;
 }
-export const PostdeployJobRun = /*@__PURE__*/ S.suspend(() =>
+const PostdeployJobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureCause: S.optional(PostdeployJobRunFailureCauseEnum),
     metadata: S.optional(PostdeployJobRunMetadata),
@@ -3709,14 +3666,14 @@ export type DeployJobRunFailureCauseEnum =
   | "MISSING_RESOURCES_FOR_CANARY"
   | "CLOUD_BUILD_REQUEST_FAILED"
   | "DEPLOY_FEATURE_NOT_SUPPORTED";
-export const DeployJobRunFailureCauseEnum = S.String;
+const DeployJobRunFailureCauseEnum = S.String;
 
 /** CustomTargetDeployMetadata contains information from a Custom Target deploy operation. */
 export interface CustomTargetDeployMetadata {
   /** Output only. Skip message provided in the results of a custom deploy operation. */
   skipMessage?: string;
 }
-export const CustomTargetDeployMetadata = /*@__PURE__*/ S.suspend(() =>
+const CustomTargetDeployMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skipMessage: S.optional(S.String),
   }),
@@ -3733,7 +3690,7 @@ export interface DeployJobRunMetadata {
   /** Output only. Custom Target metadata associated with a `DeployJobRun`. */
   customTarget?: CustomTargetDeployMetadata;
 }
-export const DeployJobRunMetadata = /*@__PURE__*/ S.suspend(() =>
+const DeployJobRunMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudRun: S.optional(CloudRunMetadata),
     custom: S.optional(CustomMetadata),
@@ -3748,7 +3705,7 @@ export interface DeployArtifact {
   /** Output only. URI of a directory containing the artifacts. All paths are relative to this location. */
   artifactUri?: string;
 }
-export const DeployArtifact = /*@__PURE__*/ S.suspend(() =>
+const DeployArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manifestPaths: S.optional(StringList),
     artifactUri: S.optional(S.String),
@@ -3768,7 +3725,7 @@ export interface DeployJobRun {
   /** Output only. The artifact of a deploy job run, if available. */
   artifact?: DeployArtifact;
 }
-export const DeployJobRun = /*@__PURE__*/ S.suspend(() =>
+const DeployJobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureCause: S.optional(DeployJobRunFailureCauseEnum),
     failureMessage: S.optional(S.String),
@@ -3785,7 +3742,7 @@ export interface FailedAlertPolicy {
   /** Output only. Open alerts for the alerting policies that matched the alert policy check configuration. */
   alerts?: StringList;
 }
-export const FailedAlertPolicy = /*@__PURE__*/ S.suspend(() =>
+const FailedAlertPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertPolicy: S.optional(S.String),
     alerts: S.optional(StringList),
@@ -3793,7 +3750,7 @@ export const FailedAlertPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FailedAlertPolicy" }) as any as S.Schema<FailedAlertPolicy>;
 
 export type FailedAlertPolicyList = Array<FailedAlertPolicy>;
-export const FailedAlertPolicyList = /*@__PURE__*/ S.Array(
+const FailedAlertPolicyList = /*@__PURE__*/ S.Array(
   FailedAlertPolicy,
 ) as any as S.Schema<FailedAlertPolicyList>;
 
@@ -3810,7 +3767,7 @@ export interface AlertPolicyCheckStatus {
   /** Output only. The ID of this analysis. */
   id?: string;
 }
-export const AlertPolicyCheckStatus = /*@__PURE__*/ S.suspend(() =>
+const AlertPolicyCheckStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failedAlertPolicies: S.optional(FailedAlertPolicyList),
     failureMessage: S.optional(S.String),
@@ -3821,7 +3778,7 @@ export const AlertPolicyCheckStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertPolicyCheckStatus" }) as any as S.Schema<AlertPolicyCheckStatus>;
 
 export type AlertPolicyCheckStatusList = Array<AlertPolicyCheckStatus>;
-export const AlertPolicyCheckStatusList = /*@__PURE__*/ S.Array(
+const AlertPolicyCheckStatusList = /*@__PURE__*/ S.Array(
   AlertPolicyCheckStatus,
 ) as any as S.Schema<AlertPolicyCheckStatusList>;
 
@@ -3831,7 +3788,7 @@ export type CustomCheckStatusFailureCauseEnum =
   | "EXECUTION_FAILED"
   | "DEADLINE_EXCEEDED"
   | "CLOUD_BUILD_REQUEST_FAILED";
-export const CustomCheckStatusFailureCauseEnum = S.String;
+const CustomCheckStatusFailureCauseEnum = S.String;
 
 /** CustomCheckStatus contains information specific to a single iteration of a custom analysis job. */
 export interface CustomCheckStatus {
@@ -3850,7 +3807,7 @@ export interface CustomCheckStatus {
   /** Output only. The frequency in minutes at which the custom check is run. */
   frequency?: string;
 }
-export const CustomCheckStatus = /*@__PURE__*/ S.suspend(() =>
+const CustomCheckStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureCause: S.optional(CustomCheckStatusFailureCauseEnum),
     failureMessage: S.optional(S.String),
@@ -3863,7 +3820,7 @@ export const CustomCheckStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomCheckStatus" }) as any as S.Schema<CustomCheckStatus>;
 
 export type CustomCheckStatusList = Array<CustomCheckStatus>;
-export const CustomCheckStatusList = /*@__PURE__*/ S.Array(
+const CustomCheckStatusList = /*@__PURE__*/ S.Array(
   CustomCheckStatus,
 ) as any as S.Schema<CustomCheckStatusList>;
 
@@ -3876,7 +3833,7 @@ export interface AnalysisJobRun {
   /** Output only. The ID of the configured check that failed. This will always be blank while the analysis is in progress or if it succeeded. */
   failedCheckId?: string;
 }
-export const AnalysisJobRun = /*@__PURE__*/ S.suspend(() =>
+const AnalysisJobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertPolicyAnalyses: S.optional(AlertPolicyCheckStatusList),
     customCheckAnalyses: S.optional(CustomCheckStatusList),
@@ -3891,7 +3848,7 @@ export interface CreateChildRolloutJobRun {
   /** Output only. The ID of the childRollout Phase initiated by this JobRun. */
   rolloutPhaseId?: string;
 }
-export const CreateChildRolloutJobRun = /*@__PURE__*/ S.suspend(() =>
+const CreateChildRolloutJobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollout: S.optional(S.String),
     rolloutPhaseId: S.optional(S.String),
@@ -3903,8 +3860,7 @@ export interface VerifyJobRunMetadata {
   /** Output only. Custom metadata provided by user-defined verify operation. */
   custom?: CustomMetadata;
 }
-export const VerifyJobRunMetadata =
-  PredeployJobRunMetadata as any as S.Schema<VerifyJobRunMetadata>;
+const VerifyJobRunMetadata = PredeployJobRunMetadata as any as S.Schema<VerifyJobRunMetadata>;
 
 export type VerifyJobRunFailureCauseEnum =
   | "FAILURE_CAUSE_UNSPECIFIED"
@@ -3913,7 +3869,7 @@ export type VerifyJobRunFailureCauseEnum =
   | "DEADLINE_EXCEEDED"
   | "VERIFICATION_CONFIG_NOT_FOUND"
   | "CLOUD_BUILD_REQUEST_FAILED";
-export const VerifyJobRunFailureCauseEnum = S.String;
+const VerifyJobRunFailureCauseEnum = S.String;
 
 /** VerifyJobRun contains information specific to a verify `JobRun`. */
 export interface VerifyJobRun {
@@ -3930,7 +3886,7 @@ export interface VerifyJobRun {
   /** Output only. The reason the verify failed. This will always be unspecified while the verify is in progress or if it succeeded. */
   failureCause?: VerifyJobRunFailureCauseEnum;
 }
-export const VerifyJobRun = /*@__PURE__*/ S.suspend(() =>
+const VerifyJobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(VerifyJobRunMetadata),
     artifactUri: S.optional(S.String),
@@ -3948,7 +3904,7 @@ export interface AdvanceChildRolloutJobRun {
   /** Output only. Name of the `ChildRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`. */
   rollout?: string;
 }
-export const AdvanceChildRolloutJobRun = /*@__PURE__*/ S.suspend(() =>
+const AdvanceChildRolloutJobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutPhaseId: S.optional(S.String),
     rollout: S.optional(S.String),
@@ -3964,7 +3920,7 @@ export type JobRunStateEnum =
   | "FAILED"
   | "TERMINATING"
   | "TERMINATED";
-export const JobRunStateEnum = S.String;
+const JobRunStateEnum = S.String;
 
 /** A `JobRun` resource in the Cloud Deploy API. A `JobRun` contains information of a single `Rollout` job evaluation. */
 export interface JobRun {
@@ -4001,7 +3957,7 @@ export interface JobRun {
   /** Output only. ID of the `Rollout` job this `JobRun` corresponds to. */
   jobId?: string;
 }
-export const JobRun = /*@__PURE__*/ S.suspend(() =>
+const JobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     predeployJobRun: S.optional(PredeployJobRun),
@@ -4026,7 +3982,7 @@ export interface GetProjectsLocationsDeployPoliciesRequest {
   /** Required. Name of the `DeployPolicy`. Format must be `projects/{project_id}/locations/{location_name}/deployPolicies/{deploy_policy_name}`. */
   name: string;
 }
-export const GetProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4040,7 +3996,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4054,7 +4010,7 @@ export interface GetProjectsLocationsTargetsRequest {
   /** Required. Name of the `Target`. Format must be `projects/{project_id}/locations/{location_name}/targets/{target_name}`. */
   name: string;
 }
-export const GetProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4073,7 +4029,7 @@ export interface IgnoreJobRequest {
   /** Optional. Deploy policies to override. Format is `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. */
   overrideDeployPolicy?: StringList;
 }
-export const IgnoreJobRequest = /*@__PURE__*/ S.suspend(() =>
+const IgnoreJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
     phaseId: S.optional(S.String),
@@ -4087,8 +4043,8 @@ export interface IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequ
   /** Request body */
   body?: IgnoreJobRequest;
 }
-export const IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       rollout: S.String.pipe(T.Label()),
       body: S.optional(IgnoreJobRequest.pipe(T.HttpBody())),
@@ -4099,13 +4055,13 @@ export const IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest 
         baseUrl: "https://clouddeploy.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-  }) as any as S.Schema<IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
+).annotate({
+  identifier: "IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+}) as any as S.Schema<IgnoreJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
 
 /** The response object from `IgnoreJob`. */
 export interface IgnoreJobResponse {}
-export const IgnoreJobResponse = AbandonReleaseRequest as any as S.Schema<IgnoreJobResponse>;
+const IgnoreJobResponse = AbandonReleaseRequest as any as S.Schema<IgnoreJobResponse>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -4119,7 +4075,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4138,7 +4094,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -4147,7 +4103,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -4166,7 +4122,7 @@ export interface ListProjectsLocationsCustomTargetTypesRequest {
   /** Optional. The maximum number of `CustomTargetType` objects to return. The service may return fewer than this value. If unspecified, at most 50 `CustomTargetType` objects will be returned. The maximum value is 1000; values above 1000 will be set to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4193,7 +4149,7 @@ export interface ListCustomTargetTypesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListCustomTargetTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomTargetTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     customTargetTypes: S.optional(CustomTargetTypeList),
@@ -4215,7 +4171,7 @@ export interface ListProjectsLocationsDeliveryPipelinesRequest {
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4234,7 +4190,7 @@ export const ListProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesRequest>;
 
 export type DeliveryPipelineList = Array<DeliveryPipeline>;
-export const DeliveryPipelineList = /*@__PURE__*/ S.Array(
+const DeliveryPipelineList = /*@__PURE__*/ S.Array(
   DeliveryPipeline,
 ) as any as S.Schema<DeliveryPipelineList>;
 
@@ -4247,7 +4203,7 @@ export interface ListDeliveryPipelinesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListDeliveryPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeliveryPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deliveryPipelines: S.optional(DeliveryPipelineList),
     nextPageToken: S.optional(S.String),
@@ -4269,27 +4225,26 @@ export interface ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest {
   /** The maximum number of automationRuns to return. The service may return fewer than this value. If unspecified, at most 50 automationRuns will be returned. The maximum value is 1000; values above 1000 will be set to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/automationRuns",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/automationRuns",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest",
 }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesAutomationRunsRequest>;
 
 export type AutomationRunList = Array<AutomationRun>;
-export const AutomationRunList = /*@__PURE__*/ S.Array(
+const AutomationRunList = /*@__PURE__*/ S.Array(
   AutomationRun,
 ) as any as S.Schema<AutomationRunList>;
 
@@ -4302,7 +4257,7 @@ export interface ListAutomationRunsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAutomationRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAutomationRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     automationRuns: S.optional(AutomationRunList),
@@ -4324,27 +4279,26 @@ export interface ListProjectsLocationsDeliveryPipelinesAutomationsRequest {
   /** Required. The parent `Delivery Pipeline`, which owns this collection of automations. Format must be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`. */
   parent: string;
 }
-export const ListProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/automations",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/automations",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsDeliveryPipelinesAutomationsRequest",
 }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesAutomationsRequest>;
 
 export type AutomationList = Array<Automation>;
-export const AutomationList = /*@__PURE__*/ S.Array(Automation) as any as S.Schema<AutomationList>;
+const AutomationList = /*@__PURE__*/ S.Array(Automation) as any as S.Schema<AutomationList>;
 
 /** The response object from `ListAutomations`. */
 export interface ListAutomationsResponse {
@@ -4355,7 +4309,7 @@ export interface ListAutomationsResponse {
   /** The `Automation` objects. */
   automations?: AutomationList;
 }
-export const ListAutomationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAutomationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -4375,7 +4329,7 @@ export interface ListProjectsLocationsDeliveryPipelinesReleasesRequest {
   /** Required. The `DeliveryPipeline` which owns this collection of `Release` objects. */
   parent: string;
 }
-export const ListProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4394,7 +4348,7 @@ export const ListProjectsLocationsDeliveryPipelinesReleasesRequest = /*@__PURE__
 }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRequest>;
 
 export type ReleaseList = Array<Release>;
-export const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
+const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
 
 /** The response object from `ListReleases`. */
 export interface ListReleasesResponse {
@@ -4405,7 +4359,7 @@ export interface ListReleasesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     releases: S.optional(ReleaseList),
@@ -4425,27 +4379,26 @@ export interface ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest {
   /** Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/rollouts",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-  }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
+const ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/rollouts",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+}) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
 
 export type RolloutList = Array<Rollout>;
-export const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
+const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
 
 /** ListRolloutsResponse is the response object returned by `ListRollouts`. */
 export interface ListRolloutsResponse {
@@ -4456,7 +4409,7 @@ export interface ListRolloutsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     rollouts: S.optional(RolloutList),
@@ -4476,7 +4429,7 @@ export interface ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRe
   /** Optional. A page token, received from a previous `ListJobRuns` call. Provide this to retrieve the subsequent page. When paginating, all other provided parameters match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest =
+const ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       orderBy: S.optional(S.String.pipe(T.Query())),
@@ -4496,7 +4449,7 @@ export const ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsReques
   }) as any as S.Schema<ListProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest>;
 
 export type JobRunList = Array<JobRun>;
-export const JobRunList = /*@__PURE__*/ S.Array(JobRun) as any as S.Schema<JobRunList>;
+const JobRunList = /*@__PURE__*/ S.Array(JobRun) as any as S.Schema<JobRunList>;
 
 /** ListJobRunsResponse is the response object returned by `ListJobRuns`. */
 export interface ListJobRunsResponse {
@@ -4507,7 +4460,7 @@ export interface ListJobRunsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListJobRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobRuns: S.optional(JobRunList),
     unreachable: S.optional(StringList),
@@ -4527,7 +4480,7 @@ export interface ListProjectsLocationsDeployPoliciesRequest {
   /** Required. The parent, which owns this collection of deploy policies. Format must be `projects/{project_id}/locations/{location_name}`. */
   parent: string;
 }
-export const ListProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4546,9 +4499,7 @@ export const ListProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsDeployPoliciesRequest>;
 
 export type DeployPolicyList = Array<DeployPolicy>;
-export const DeployPolicyList = /*@__PURE__*/ S.Array(
-  DeployPolicy,
-) as any as S.Schema<DeployPolicyList>;
+const DeployPolicyList = /*@__PURE__*/ S.Array(DeployPolicy) as any as S.Schema<DeployPolicyList>;
 
 /** The response object from `ListDeployPolicies`. */
 export interface ListDeployPoliciesResponse {
@@ -4559,7 +4510,7 @@ export interface ListDeployPoliciesResponse {
   /** The `DeployPolicy` objects. */
   deployPolicies?: DeployPolicyList;
 }
-export const ListDeployPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeployPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -4581,7 +4532,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4600,7 +4551,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -4611,7 +4562,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -4631,7 +4582,7 @@ export interface ListProjectsLocationsTargetsRequest {
   /** Optional. Filter targets to be returned. See https://google.aip.dev/160 for more details. */
   filter?: string;
 }
-export const ListProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4658,7 +4609,7 @@ export interface ListTargetsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTargetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     targets: S.optional(TargetList),
@@ -4680,7 +4631,7 @@ export interface PatchProjectsLocationsCustomTargetTypesRequest {
   /** Request body */
   body?: CustomTargetType;
 }
-export const PatchProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4709,7 +4660,7 @@ export interface PatchProjectsLocationsDeliveryPipelinesRequest {
   /** Request body */
   body?: DeliveryPipeline;
 }
-export const PatchProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4738,22 +4689,21 @@ export interface PatchProjectsLocationsDeliveryPipelinesAutomationsRequest {
   /** Request body */
   body?: Automation;
 }
-export const PatchProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-      requestId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Automation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsDeliveryPipelinesAutomationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    allowMissing: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+    requestId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Automation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsDeliveryPipelinesAutomationsRequest",
 }) as any as S.Schema<PatchProjectsLocationsDeliveryPipelinesAutomationsRequest>;
@@ -4772,7 +4722,7 @@ export interface PatchProjectsLocationsDeployPoliciesRequest {
   /** Request body */
   body?: DeployPolicy;
 }
-export const PatchProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4801,7 +4751,7 @@ export interface PatchProjectsLocationsTargetsRequest {
   /** Request body */
   body?: Target;
 }
-export const PatchProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4825,7 +4775,7 @@ export interface RetryJobRequest {
   /** Optional. Deploy policies to override. Format is `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. */
   overrideDeployPolicy?: StringList;
 }
-export const RetryJobRequest = IgnoreJobRequest as any as S.Schema<RetryJobRequest>;
+const RetryJobRequest = IgnoreJobRequest as any as S.Schema<RetryJobRequest>;
 
 export interface RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest {
   /** Required. Name of the Rollout. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`. */
@@ -4833,8 +4783,8 @@ export interface RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsReque
   /** Request body */
   body?: RetryJobRequest;
 }
-export const RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       rollout: S.String.pipe(T.Label()),
       body: S.optional(RetryJobRequest.pipe(T.HttpBody())),
@@ -4845,13 +4795,13 @@ export const RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest =
         baseUrl: "https://clouddeploy.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
-  }) as any as S.Schema<RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
+).annotate({
+  identifier: "RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest",
+}) as any as S.Schema<RetryJobProjectsLocationsDeliveryPipelinesReleasesRolloutsRequest>;
 
 /** The response object from 'RetryJob'. */
 export interface RetryJobResponse {}
-export const RetryJobResponse = AbandonReleaseRequest as any as S.Schema<RetryJobResponse>;
+const RetryJobResponse = AbandonReleaseRequest as any as S.Schema<RetryJobResponse>;
 
 /** Configs for the Rollback rollout. */
 export interface RollbackTargetConfig {
@@ -4860,7 +4810,7 @@ export interface RollbackTargetConfig {
   /** Optional. The rollback `Rollout` to create. */
   rollout?: Rollout;
 }
-export const RollbackTargetConfig = /*@__PURE__*/ S.suspend(() =>
+const RollbackTargetConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startingPhaseId: S.optional(S.String),
     rollout: S.optional(Rollout),
@@ -4884,7 +4834,7 @@ export interface RollbackTargetRequest {
   /** Optional. If set to true, the request is validated and the user is provided with a `RollbackTargetResponse`. */
   validateOnly?: boolean;
 }
-export const RollbackTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollbackConfig: S.optional(RollbackTargetConfig),
     rolloutId: S.optional(S.String),
@@ -4902,7 +4852,7 @@ export interface RollbackTargetProjectsLocationsDeliveryPipelinesRequest {
   /** Request body */
   body?: RollbackTargetRequest;
 }
-export const RollbackTargetProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackTargetProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RollbackTargetRequest.pipe(T.HttpBody())),
@@ -4922,7 +4872,7 @@ export interface RollbackTargetResponse {
   /** The config of the rollback `Rollout` created or will be created. */
   rollbackConfig?: RollbackTargetConfig;
 }
-export const RollbackTargetResponse = /*@__PURE__*/ S.suspend(() =>
+const RollbackTargetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollbackConfig: S.optional(RollbackTargetConfig),
   }),
@@ -4935,7 +4885,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -4948,7 +4898,7 @@ export interface SetIamPolicyProjectsLocationsCustomTargetTypesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsCustomTargetTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4969,7 +4919,7 @@ export interface SetIamPolicyProjectsLocationsDeliveryPipelinesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4990,7 +4940,7 @@ export interface SetIamPolicyProjectsLocationsDeployPoliciesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDeployPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5011,7 +4961,7 @@ export interface SetIamPolicyProjectsLocationsTargetsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5028,15 +4978,13 @@ export const SetIamPolicyProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspe
 
 /** The request object used by `TerminateJobRun`. */
 export type TerminateJobRunRequest = CancelRolloutRequest;
-export const TerminateJobRunRequest = CancelRolloutRequest;
-
 export interface TerminateProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest {
   /** Required. Name of the `JobRun`. Format must be `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}`. */
   name: string;
   /** Request body */
   body?: CancelRolloutRequest;
 }
-export const TerminateProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest =
+const TerminateProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -5054,15 +5002,14 @@ export const TerminateProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsR
 
 /** The response object from `TerminateJobRun`. */
 export interface TerminateJobRunResponse {}
-export const TerminateJobRunResponse =
-  AbandonReleaseRequest as any as S.Schema<TerminateJobRunResponse>;
+const TerminateJobRunResponse = AbandonReleaseRequest as any as S.Schema<TerminateJobRunResponse>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -5076,18 +5023,17 @@ export interface TestIamPermissionsProjectsLocationsDeliveryPipelinesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://clouddeploy.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsDeliveryPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://clouddeploy.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsDeliveryPipelinesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsDeliveryPipelinesRequest>;
@@ -5097,7 +5043,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsTargetsRequest {
@@ -5106,7 +5052,7 @@ export interface TestIamPermissionsProjectsLocationsTargetsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),

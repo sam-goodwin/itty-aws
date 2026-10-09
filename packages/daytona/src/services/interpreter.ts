@@ -12,7 +12,7 @@ export interface CreateInterpreterContextRequest {
   cwd?: string;
   language?: string;
 }
-export const CreateInterpreterContextRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInterpreterContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cwd: S.optional(S.String),
     language: S.optional(S.String),
@@ -28,7 +28,7 @@ export interface InterpreterContext {
   id: string;
   language: string;
 }
-export const InterpreterContext = /*@__PURE__*/ S.suspend(() =>
+const InterpreterContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Boolean,
     createdAt: S.String,
@@ -42,7 +42,7 @@ export interface DeleteInterpreterContextRequest {
   /** Context ID */
   id: string;
 }
-export const DeleteInterpreterContextRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInterpreterContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/process/interpreter/context/{id}", code: 200 })),
@@ -51,46 +51,46 @@ export const DeleteInterpreterContextRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInterpreterContextRequest>;
 
 export type DeleteInterpreterContextResponseBodyMap = { [key: string]: string | undefined };
-export const DeleteInterpreterContextResponseBodyMap = /*@__PURE__*/ S.Record(
+const DeleteInterpreterContextResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DeleteInterpreterContextResponseBodyMap>;
 
 export type DeleteInterpreterContextResponse = DeleteInterpreterContextResponseBodyMap;
-export const DeleteInterpreterContextResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteInterpreterContextResponse = /*@__PURE__*/ S.suspend(() =>
   DeleteInterpreterContextResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteInterpreterContextResponse",
 }) as any as S.Schema<DeleteInterpreterContextResponse>;
 
 export interface ExecuteInterpreterCodeRequest {}
-export const ExecuteInterpreterCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteInterpreterCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/process/interpreter/execute", code: 200 })),
 ).annotate({
   identifier: "ExecuteInterpreterCodeRequest",
 }) as any as S.Schema<ExecuteInterpreterCodeRequest>;
 
 export interface ExecuteInterpreterCodeResponse {}
-export const ExecuteInterpreterCodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ExecuteInterpreterCodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ExecuteInterpreterCodeResponse",
 }) as any as S.Schema<ExecuteInterpreterCodeResponse>;
 
 export interface ListInterpreterContextsRequest {}
-export const ListInterpreterContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInterpreterContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/process/interpreter/context", code: 200 })),
 ).annotate({
   identifier: "ListInterpreterContextsRequest",
 }) as any as S.Schema<ListInterpreterContextsRequest>;
 
 export type ListContextsResponseContextsList = Array<InterpreterContext>;
-export const ListContextsResponseContextsList = /*@__PURE__*/ S.Array(
+const ListContextsResponseContextsList = /*@__PURE__*/ S.Array(
   InterpreterContext,
 ) as any as S.Schema<ListContextsResponseContextsList>;
 
 export interface ListContextsResponse {
   contexts: ListContextsResponseContextsList;
 }
-export const ListContextsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContextsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contexts: ListContextsResponseContextsList,
   }),

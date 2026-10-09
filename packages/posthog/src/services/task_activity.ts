@@ -17,7 +17,7 @@ export interface ListTaskActivityRequest {
   /** Maximum number of tasks to return (most recent activity first). */
   limit?: number;
 }
-export const ListTaskActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaskActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     before: S.optional(S.String.pipe(T.Query())),
@@ -35,10 +35,10 @@ export type ActivityKindEnum =
   | "owned_item_comment"
   | "message"
   | "created";
-export const ActivityKindEnum = S.String;
+const ActivityKindEnum = S.String;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
@@ -55,7 +55,7 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -90,7 +90,7 @@ export interface TaskActivityDTO {
   /** Whether the requester has yet to see this activity. Activity they caused themselves is never unread. */
   is_unread: boolean;
 }
-export const TaskActivityDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskActivityDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_id: S.NullOr(S.String),
@@ -111,7 +111,7 @@ export const TaskActivityDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Tasks with activity, most recent first. */
 export type TaskActivityPageDTOResultsList = Array<TaskActivityDTO>;
-export const TaskActivityPageDTOResultsList = /*@__PURE__*/ S.Array(
+const TaskActivityPageDTOResultsList = /*@__PURE__*/ S.Array(
   TaskActivityDTO,
 ) as any as S.Schema<TaskActivityPageDTOResultsList>;
 
@@ -126,7 +126,7 @@ export interface TaskActivityPageDTO {
   /** Activity ID to pass as before_id for the next page, or null on the final page. */
   next_before_id?: string | null;
 }
-export const TaskActivityPageDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskActivityPageDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: TaskActivityPageDTOResultsList,
     unread_count: S.Number,
@@ -143,7 +143,7 @@ export interface TaskActivityReadMarker {
   /** Mark activity at or before this timestamp read without clearing newer activity. */
   seen_before: string;
 }
-export const TaskActivityReadMarker = /*@__PURE__*/ S.suspend(() =>
+const TaskActivityReadMarker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.optional(S.NullOr(S.String)),
     activity_id: S.optional(S.NullOr(S.String)),
@@ -153,7 +153,7 @@ export const TaskActivityReadMarker = /*@__PURE__*/ S.suspend(() =>
 
 /** Displayed task activities to mark read if they have not changed. */
 export type TaskActivityMarkReadCreateRequestActivitiesList = Array<TaskActivityReadMarker>;
-export const TaskActivityMarkReadCreateRequestActivitiesList = /*@__PURE__*/ S.Array(
+const TaskActivityMarkReadCreateRequestActivitiesList = /*@__PURE__*/ S.Array(
   TaskActivityReadMarker,
 ) as any as S.Schema<TaskActivityMarkReadCreateRequestActivitiesList>;
 
@@ -163,7 +163,7 @@ export interface TaskActivityMarkReadCreateRequest {
   /** Displayed task activities to mark read if they have not changed. */
   activities: TaskActivityMarkReadCreateRequestActivitiesList;
 }
-export const TaskActivityMarkReadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskActivityMarkReadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     activities: TaskActivityMarkReadCreateRequestActivitiesList,
@@ -184,7 +184,7 @@ export interface TaskActivityMarkReadResponse {
   /** The requester's remaining unread total after the update. */
   unread_count: number;
 }
-export const TaskActivityMarkReadResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskActivityMarkReadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marked_read: S.Number,
     unread_count: S.Number,

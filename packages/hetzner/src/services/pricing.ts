@@ -9,13 +9,13 @@ import * as T from "../traits.ts";
 export type { HetznerOpError, HetznerOpContext };
 
 export interface GetPricingRequest {}
-export const GetPricingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPricingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/pricing", code: 200 })),
 ).annotate({ identifier: "GetPricingRequest" }) as any as S.Schema<GetPricingRequest>;
 
 /** Type of [Primary IP](#tag/primary-ips) the price is for. */
 export type GetPricingResponsePricingPrimaryIpsItemType = "ipv4" | "ipv6";
-export const GetPricingResponsePricingPrimaryIpsItemType = S.String;
+const GetPricingResponsePricingPrimaryIpsItemType = S.String;
 
 /** Hourly price in this [Location](#tag/locations). */
 export interface GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly {
@@ -24,12 +24,11 @@ export interface GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly {
   /** Price with VAT added. */
   gross: string;
 }
-export const GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      net: S.String,
-      gross: S.String,
-    }),
+const GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    net: S.String,
+    gross: S.String,
+  }),
 ).annotate({
   identifier: "GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly",
 }) as any as S.Schema<GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly>;
@@ -37,9 +36,6 @@ export const GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly = /*@_
 /** Monthly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingPrimaryIpsItemPricesItemPriceMonthly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingPrimaryIpsItemPricesItemPriceMonthly =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 export interface GetPricingResponsePricingPrimaryIpsItemPricesItem {
   /** Name of the [Location](#tag/locations) the price is for. */
   location: string;
@@ -48,7 +44,7 @@ export interface GetPricingResponsePricingPrimaryIpsItemPricesItem {
   /** Monthly price in this [Location](#tag/locations). */
   price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-export const GetPricingResponsePricingPrimaryIpsItemPricesItem = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingPrimaryIpsItemPricesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String,
     price_hourly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
@@ -61,7 +57,7 @@ export const GetPricingResponsePricingPrimaryIpsItemPricesItem = /*@__PURE__*/ S
 /** Price of the [Primary IP](#tag/primary-ips) type per [Location](#tag/locations). */
 export type GetPricingResponsePricingPrimaryIpsItemPricesList =
   Array<GetPricingResponsePricingPrimaryIpsItemPricesItem>;
-export const GetPricingResponsePricingPrimaryIpsItemPricesList = /*@__PURE__*/ S.Array(
+const GetPricingResponsePricingPrimaryIpsItemPricesList = /*@__PURE__*/ S.Array(
   GetPricingResponsePricingPrimaryIpsItemPricesItem,
 ) as any as S.Schema<GetPricingResponsePricingPrimaryIpsItemPricesList>;
 
@@ -71,7 +67,7 @@ export interface GetPricingResponsePricingPrimaryIpsItem {
   /** Price of the [Primary IP](#tag/primary-ips) type per [Location](#tag/locations). */
   prices: GetPricingResponsePricingPrimaryIpsItemPricesList;
 }
-export const GetPricingResponsePricingPrimaryIpsItem = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingPrimaryIpsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: GetPricingResponsePricingPrimaryIpsItemType,
     prices: GetPricingResponsePricingPrimaryIpsItemPricesList,
@@ -83,27 +79,24 @@ export const GetPricingResponsePricingPrimaryIpsItem = /*@__PURE__*/ S.suspend((
 /** Price of [Primary IPs](#tag/primary-ips) per type and per [Location](#tag/locations). */
 export type GetPricingResponsePricingPrimaryIpsList =
   Array<GetPricingResponsePricingPrimaryIpsItem>;
-export const GetPricingResponsePricingPrimaryIpsList = /*@__PURE__*/ S.Array(
+const GetPricingResponsePricingPrimaryIpsList = /*@__PURE__*/ S.Array(
   GetPricingResponsePricingPrimaryIpsItem,
 ) as any as S.Schema<GetPricingResponsePricingPrimaryIpsList>;
 
 /** Type of [Floating IP](#tag/floating-ips) the price is for. */
 export type GetPricingResponsePricingFloatingIpsItemType = "ipv4" | "ipv6";
-export const GetPricingResponsePricingFloatingIpsItemType = S.String;
+const GetPricingResponsePricingFloatingIpsItemType = S.String;
 
 /** Monthly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingFloatingIpsItemPricesItemPriceMonthly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingFloatingIpsItemPricesItemPriceMonthly =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 export interface GetPricingResponsePricingFloatingIpsItemPricesItem {
   /** Name of the [Location](#tag/locations) the price is for. */
   location: string;
   /** Monthly price in this [Location](#tag/locations). */
   price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-export const GetPricingResponsePricingFloatingIpsItemPricesItem = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingFloatingIpsItemPricesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String,
     price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
@@ -115,7 +108,7 @@ export const GetPricingResponsePricingFloatingIpsItemPricesItem = /*@__PURE__*/ 
 /** Price of the [Floating IP](#tag/floating-ips) type per [Location](#tag/locations). */
 export type GetPricingResponsePricingFloatingIpsItemPricesList =
   Array<GetPricingResponsePricingFloatingIpsItemPricesItem>;
-export const GetPricingResponsePricingFloatingIpsItemPricesList = /*@__PURE__*/ S.Array(
+const GetPricingResponsePricingFloatingIpsItemPricesList = /*@__PURE__*/ S.Array(
   GetPricingResponsePricingFloatingIpsItemPricesItem,
 ) as any as S.Schema<GetPricingResponsePricingFloatingIpsItemPricesList>;
 
@@ -125,7 +118,7 @@ export interface GetPricingResponsePricingFloatingIpsItem {
   /** Price of the [Floating IP](#tag/floating-ips) type per [Location](#tag/locations). */
   prices: GetPricingResponsePricingFloatingIpsItemPricesList;
 }
-export const GetPricingResponsePricingFloatingIpsItem = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingFloatingIpsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: GetPricingResponsePricingFloatingIpsItemType,
     prices: GetPricingResponsePricingFloatingIpsItemPricesList,
@@ -137,22 +130,19 @@ export const GetPricingResponsePricingFloatingIpsItem = /*@__PURE__*/ S.suspend(
 /** Price of [Floating IPs](#tag/floating-ips) per type and per [Location](#tag/locations). */
 export type GetPricingResponsePricingFloatingIpsList =
   Array<GetPricingResponsePricingFloatingIpsItem>;
-export const GetPricingResponsePricingFloatingIpsList = /*@__PURE__*/ S.Array(
+const GetPricingResponsePricingFloatingIpsList = /*@__PURE__*/ S.Array(
   GetPricingResponsePricingFloatingIpsItem,
 ) as any as S.Schema<GetPricingResponsePricingFloatingIpsList>;
 
 /** Price of [Images](#tag/images) per GB/month. */
 export type GetPricingResponsePricingImagePricePerGbMonth =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingImagePricePerGbMonth =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 /** Price of [Images](#tag/images). */
 export interface GetPricingResponsePricingImage {
   /** Price of [Images](#tag/images) per GB/month. */
   price_per_gb_month: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-export const GetPricingResponsePricingImage = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     price_per_gb_month: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
   }),
@@ -163,15 +153,12 @@ export const GetPricingResponsePricingImage = /*@__PURE__*/ S.suspend(() =>
 /** Price of [Volumes](#tag/volumes) per GB/month. */
 export type GetPricingResponsePricingVolumePricePerGbMonth =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingVolumePricePerGbMonth =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 /** Price of [Volumes](#tag/volumes). */
 export interface GetPricingResponsePricingVolume {
   /** Price of [Volumes](#tag/volumes) per GB/month. */
   price_per_gb_month: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-export const GetPricingResponsePricingVolume =
+const GetPricingResponsePricingVolume =
   GetPricingResponsePricingImage as any as S.Schema<GetPricingResponsePricingVolume>;
 
 /** Price of [Server](#tag/servers) backups. */
@@ -179,7 +166,7 @@ export interface GetPricingResponsePricingServerBackup {
   /** Price increase of the [Server](#tag/servers) base price in percentage. */
   percentage: string;
 }
-export const GetPricingResponsePricingServerBackup = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingServerBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentage: S.String,
   }),
@@ -190,21 +177,12 @@ export const GetPricingResponsePricingServerBackup = /*@__PURE__*/ S.suspend(() 
 /** Hourly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingServerTypesItemPricesItemPriceHourly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingServerTypesItemPricesItemPriceHourly =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingServerTypesItemPricesItemPriceMonthly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingServerTypesItemPricesItemPriceMonthly =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 /** Additional traffic price per TB in this [Location](#tag/locations). */
 export type GetPricingResponsePricingServerTypesItemPricesItemPricePerTbTraffic =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingServerTypesItemPricesItemPricePerTbTraffic =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 export interface GetPricingResponsePricingServerTypesItemPricesItem {
   /** Name of the [Location](#tag/locations) the price is for. */
   location: string;
@@ -217,7 +195,7 @@ export interface GetPricingResponsePricingServerTypesItemPricesItem {
   /** Additional traffic price per TB in this [Location](#tag/locations). */
   price_per_tb_traffic: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-export const GetPricingResponsePricingServerTypesItemPricesItem = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingServerTypesItemPricesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String,
     price_hourly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
@@ -232,7 +210,7 @@ export const GetPricingResponsePricingServerTypesItemPricesItem = /*@__PURE__*/ 
 /** Price of the [Server Types](#tag/server-types) per [Location](#tag/locations). */
 export type GetPricingResponsePricingServerTypesItemPricesList =
   Array<GetPricingResponsePricingServerTypesItemPricesItem>;
-export const GetPricingResponsePricingServerTypesItemPricesList = /*@__PURE__*/ S.Array(
+const GetPricingResponsePricingServerTypesItemPricesList = /*@__PURE__*/ S.Array(
   GetPricingResponsePricingServerTypesItemPricesItem,
 ) as any as S.Schema<GetPricingResponsePricingServerTypesItemPricesList>;
 
@@ -244,7 +222,7 @@ export interface GetPricingResponsePricingServerTypesItem {
   /** Price of the [Server Types](#tag/server-types) per [Location](#tag/locations). */
   prices: GetPricingResponsePricingServerTypesItemPricesList;
 }
-export const GetPricingResponsePricingServerTypesItem = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingServerTypesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -257,39 +235,24 @@ export const GetPricingResponsePricingServerTypesItem = /*@__PURE__*/ S.suspend(
 /** Price of Server per [type](#tag/server-types) and per [Location](#tag/locations). */
 export type GetPricingResponsePricingServerTypesList =
   Array<GetPricingResponsePricingServerTypesItem>;
-export const GetPricingResponsePricingServerTypesList = /*@__PURE__*/ S.Array(
+const GetPricingResponsePricingServerTypesList = /*@__PURE__*/ S.Array(
   GetPricingResponsePricingServerTypesItem,
 ) as any as S.Schema<GetPricingResponsePricingServerTypesList>;
 
 /** Hourly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesItemPricesItemPriceHourly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingLoadBalancerTypesItemPricesItemPriceHourly =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesItemPricesItemPriceMonthly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingLoadBalancerTypesItemPricesItemPriceMonthly =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 /** Additional traffic price per TB in this [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesItemPricesItemPricePerTbTraffic =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingLoadBalancerTypesItemPricesItemPricePerTbTraffic =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 export type GetPricingResponsePricingLoadBalancerTypesItemPricesItem =
   GetPricingResponsePricingServerTypesItemPricesItem;
-export const GetPricingResponsePricingLoadBalancerTypesItemPricesItem =
-  GetPricingResponsePricingServerTypesItemPricesItem;
-
 /** Price of the [Load Balancer Types](#tag/load-balancer-types) per [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesItemPricesList =
   Array<GetPricingResponsePricingServerTypesItemPricesItem>;
-export const GetPricingResponsePricingLoadBalancerTypesItemPricesList =
-  GetPricingResponsePricingServerTypesItemPricesList as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesItemPricesList>;
-
 export interface GetPricingResponsePricingLoadBalancerTypesItem {
   /** ID of the [Load Balancer Types](#tag/load-balancer-types) the price is for. */
   id: number;
@@ -298,27 +261,21 @@ export interface GetPricingResponsePricingLoadBalancerTypesItem {
   /** Price of the [Load Balancer Types](#tag/load-balancer-types) per [Location](#tag/locations). */
   prices: GetPricingResponsePricingLoadBalancerTypesItemPricesList;
 }
-export const GetPricingResponsePricingLoadBalancerTypesItem =
-  GetPricingResponsePricingServerTypesItem as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesItem>;
-
 /** Price of Load Balancer per [type](#tag/load-balancer-types) and per [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesList =
   Array<GetPricingResponsePricingLoadBalancerTypesItem>;
-export const GetPricingResponsePricingLoadBalancerTypesList =
+const GetPricingResponsePricingLoadBalancerTypesList =
   GetPricingResponsePricingServerTypesList as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesList>;
 
 /** Price of one [Floating IP](#tag/floating-ips) per month. */
 export type GetPricingResponsePricingFloatingIpPriceMonthly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-export const GetPricingResponsePricingFloatingIpPriceMonthly =
-  GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
-
 /** Price of [Floating IPs](#tag/floating-ips). **Deprecated**: This field is deprecated, please refer to the `floating_ips` field instead. See the [Changelog](https://docs.hetzner.cloud/changelog#2024-08-29-field-floating_ip-in-pricing-response-is-now-deprecated) for more details. */
 export interface GetPricingResponsePricingFloatingIp {
   /** Price of one [Floating IP](#tag/floating-ips) per month. */
   price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-export const GetPricingResponsePricingFloatingIp = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricingFloatingIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
   }),
@@ -348,7 +305,7 @@ export interface GetPricingResponsePricing {
   /** Price of [Floating IPs](#tag/floating-ips). **Deprecated**: This field is deprecated, please refer to the `floating_ips` field instead. See the [Changelog](https://docs.hetzner.cloud/changelog#2024-08-29-field-floating_ip-in-pricing-response-is-now-deprecated) for more details. */
   floating_ip: GetPricingResponsePricingFloatingIp;
 }
-export const GetPricingResponsePricing = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponsePricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     vat_rate: S.String,
@@ -368,7 +325,7 @@ export const GetPricingResponsePricing = /*@__PURE__*/ S.suspend(() =>
 export interface GetPricingResponse {
   pricing: GetPricingResponsePricing;
 }
-export const GetPricingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPricingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing: GetPricingResponsePricing,
   }),

@@ -24,7 +24,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 };
 
 export type ScansBulkCreateRequestBodyItemCustomHeadersMap = { [key: string]: string | undefined };
-export const ScansBulkCreateRequestBodyItemCustomHeadersMap = /*@__PURE__*/ S.Record(
+const ScansBulkCreateRequestBodyItemCustomHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ScansBulkCreateRequestBodyItemCustomHeadersMap>;
@@ -33,17 +33,17 @@ export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem =
   | "desktop"
   | "mobile"
   | "tablet";
-export const ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem = S.String;
+const ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem = S.String;
 
 export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsList = Array<
   ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem | (string & {})
 >;
-export const ScansBulkCreateRequestBodyItemScreenshotsResolutionsList = /*@__PURE__*/ S.Array(
+const ScansBulkCreateRequestBodyItemScreenshotsResolutionsList = /*@__PURE__*/ S.Array(
   ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem,
 ) as any as S.Schema<ScansBulkCreateRequestBodyItemScreenshotsResolutionsList>;
 
 export type ScansBulkCreateRequestBodyItemVisibility = "Public" | "Unlisted";
-export const ScansBulkCreateRequestBodyItemVisibility = S.String;
+const ScansBulkCreateRequestBodyItemVisibility = S.String;
 
 export interface ScansBulkCreateRequestBodyItem {
   url: string;
@@ -58,7 +58,7 @@ export interface ScansBulkCreateRequestBodyItem {
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
   visibility?: ScansBulkCreateRequestBodyItemVisibility | (string & {});
 }
-export const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     agentReadiness: S.optional(S.Boolean),
@@ -73,7 +73,7 @@ export const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansBulkCreateRequestBodyItem>;
 
 export type ScansBulkCreateRequestBodyList = Array<ScansBulkCreateRequestBodyItem>;
-export const ScansBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
+const ScansBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   ScansBulkCreateRequestBodyItem,
 ) as any as S.Schema<ScansBulkCreateRequestBodyList>;
 
@@ -83,7 +83,7 @@ export interface BulkCreateScansRequest {
   /** List of urls to scan (up to a 100). */
   body?: ScansBulkCreateRequestBodyList;
 }
-export const BulkCreateScansRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: S.optional(ScansBulkCreateRequestBodyList.pipe(T.HttpBody())),
@@ -93,7 +93,7 @@ export const BulkCreateScansRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkCreateScansRequest" }) as any as S.Schema<BulkCreateScansRequest>;
 
 export type BulkCreateScansResponse = string;
-export const BulkCreateScansResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "BulkCreateScansResponse" }) as any as S.Schema<BulkCreateScansResponse>;
 
@@ -293,23 +293,21 @@ export type ScansCreateRequestCountry =
   | "YE"
   | "ZM"
   | "ZW";
-export const ScansCreateRequestCountry = S.String;
+const ScansCreateRequestCountry = S.String;
 
 export type ScansCreateRequestCustomHeadersMap = { [key: string]: string | undefined };
-export const ScansCreateRequestCustomHeadersMap =
+const ScansCreateRequestCustomHeadersMap =
   ScansBulkCreateRequestBodyItemCustomHeadersMap as any as S.Schema<ScansCreateRequestCustomHeadersMap>;
 
 export type ScansCreateRequestScreenshotsResolutionsItem = "desktop" | "mobile" | "tablet";
-export const ScansCreateRequestScreenshotsResolutionsItem = S.String;
-
 export type ScansCreateRequestScreenshotsResolutionsList = Array<
   ScansCreateRequestScreenshotsResolutionsItem | (string & {})
 >;
-export const ScansCreateRequestScreenshotsResolutionsList =
+const ScansCreateRequestScreenshotsResolutionsList =
   ScansBulkCreateRequestBodyItemScreenshotsResolutionsList as any as S.Schema<ScansCreateRequestScreenshotsResolutionsList>;
 
 export type ScansCreateRequestVisibility = "Public" | "Unlisted";
-export const ScansCreateRequestVisibility = S.String;
+const ScansCreateRequestVisibility = S.String;
 
 export interface CreateScanRequest {
   /** Account ID. */
@@ -328,7 +326,7 @@ export interface CreateScanRequest {
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
   visibility?: ScansCreateRequestVisibility | (string & {});
 }
-export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     url: S.String,
@@ -345,7 +343,7 @@ export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateScanRequest" }) as any as S.Schema<CreateScanRequest>;
 
 export type CreateScanResponse = string;
-export const CreateScanResponse = BulkCreateScansResponse as any as S.Schema<CreateScanResponse>;
+const CreateScanResponse = BulkCreateScansResponse as any as S.Schema<CreateScanResponse>;
 
 export interface DomScanRequest {
   /** Account ID. */
@@ -353,7 +351,7 @@ export interface DomScanRequest {
   /** Scan UUID. */
   scanId: string;
 }
-export const DomScanRequest = /*@__PURE__*/ S.suspend(() =>
+const DomScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scanId: S.String.pipe(T.Label("scan_id")),
@@ -369,7 +367,7 @@ export const DomScanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomScanRequest" }) as any as S.Schema<DomScanRequest>;
 
 export interface DomScanResponse {}
-export const DomScanResponse = /*@__PURE__*/ S.suspend(() =>
+const DomScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DomScanResponse" }) as any as S.Schema<DomScanResponse>;
 
@@ -379,7 +377,7 @@ export interface GetResponsRequest {
   /** Response hash. */
   responseId: string;
 }
-export const GetResponsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResponsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     responseId: S.String.pipe(T.Label("response_id")),
@@ -395,7 +393,7 @@ export const GetResponsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponsRequest" }) as any as S.Schema<GetResponsRequest>;
 
 export interface GetResponsResponse {}
-export const GetResponsResponse = DomScanResponse as any as S.Schema<GetResponsResponse>;
+const GetResponsResponse = DomScanResponse as any as S.Schema<GetResponsResponse>;
 
 export interface GetScanRequest {
   /** Account ID. */
@@ -403,7 +401,7 @@ export interface GetScanRequest {
   /** Scan UUID. */
   scanId: string;
 }
-export const GetScanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scanId: S.String.pipe(T.Label("scan_id")),
@@ -424,7 +422,7 @@ export interface ScansGetResponseDataConsoleItemMessage {
   text: string;
   url: string;
 }
-export const ScansGetResponseDataConsoleItemMessage = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataConsoleItemMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.String,
     source: S.String,
@@ -438,7 +436,7 @@ export const ScansGetResponseDataConsoleItemMessage = /*@__PURE__*/ S.suspend(()
 export interface ScansGetResponseDataConsoleItem {
   message: ScansGetResponseDataConsoleItemMessage;
 }
-export const ScansGetResponseDataConsoleItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataConsoleItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: ScansGetResponseDataConsoleItemMessage,
   }),
@@ -447,7 +445,7 @@ export const ScansGetResponseDataConsoleItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataConsoleItem>;
 
 export type ScansGetResponseDataConsoleList = Array<ScansGetResponseDataConsoleItem>;
-export const ScansGetResponseDataConsoleList = /*@__PURE__*/ S.Array(
+const ScansGetResponseDataConsoleList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataConsoleItem,
 ) as any as S.Schema<ScansGetResponseDataConsoleList>;
 
@@ -466,7 +464,7 @@ export interface ScansGetResponseDataCookiesItem {
   sourceScheme: string;
   value: string;
 }
-export const ScansGetResponseDataCookiesItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataCookiesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     expires: S.Number,
@@ -487,7 +485,7 @@ export const ScansGetResponseDataCookiesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataCookiesItem>;
 
 export type ScansGetResponseDataCookiesList = Array<ScansGetResponseDataCookiesItem>;
-export const ScansGetResponseDataCookiesList = /*@__PURE__*/ S.Array(
+const ScansGetResponseDataCookiesList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataCookiesItem,
 ) as any as S.Schema<ScansGetResponseDataCookiesList>;
 
@@ -495,7 +493,7 @@ export interface ScansGetResponseDataGlobalsItem {
   prop: string;
   type: string;
 }
-export const ScansGetResponseDataGlobalsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataGlobalsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prop: S.String,
     type: S.String,
@@ -505,7 +503,7 @@ export const ScansGetResponseDataGlobalsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataGlobalsItem>;
 
 export type ScansGetResponseDataGlobalsList = Array<ScansGetResponseDataGlobalsItem>;
-export const ScansGetResponseDataGlobalsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseDataGlobalsList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataGlobalsItem,
 ) as any as S.Schema<ScansGetResponseDataGlobalsList>;
 
@@ -513,7 +511,7 @@ export interface ScansGetResponseDataLinksItem {
   href: string;
   text: string;
 }
-export const ScansGetResponseDataLinksItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataLinksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     text: S.String,
@@ -523,7 +521,7 @@ export const ScansGetResponseDataLinksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataLinksItem>;
 
 export type ScansGetResponseDataLinksList = Array<ScansGetResponseDataLinksItem>;
-export const ScansGetResponseDataLinksList = /*@__PURE__*/ S.Array(
+const ScansGetResponseDataLinksList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataLinksItem,
 ) as any as S.Schema<ScansGetResponseDataLinksList>;
 
@@ -533,7 +531,7 @@ export interface ScansGetResponseDataPerformanceItem {
   name: string;
   startTime: number;
 }
-export const ScansGetResponseDataPerformanceItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataPerformanceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.Number,
     entryType: S.String,
@@ -545,7 +543,7 @@ export const ScansGetResponseDataPerformanceItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataPerformanceItem>;
 
 export type ScansGetResponseDataPerformanceList = Array<ScansGetResponseDataPerformanceItem>;
-export const ScansGetResponseDataPerformanceList = /*@__PURE__*/ S.Array(
+const ScansGetResponseDataPerformanceList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataPerformanceItem,
 ) as any as S.Schema<ScansGetResponseDataPerformanceList>;
 
@@ -554,7 +552,7 @@ export interface ScansGetResponseDataRequestsItemRequestInitiator {
   type: string;
   url: string;
 }
-export const ScansGetResponseDataRequestsItemRequestInitiator = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemRequestInitiator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.String,
     type: S.String,
@@ -573,7 +571,7 @@ export interface ScansGetResponseDataRequestsItemRequestRequest {
   url: string;
   headers?: unknown | null;
 }
-export const ScansGetResponseDataRequestsItemRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialPriority: S.String,
     isSameSite: S.Boolean,
@@ -591,7 +589,7 @@ export interface ScansGetResponseDataRequestsItemRequestRedirectResponseSecurity
   name: string;
   value: string;
 }
-export const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem =
+const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
@@ -603,7 +601,7 @@ export const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHead
 
 export type ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList =
   Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-export const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList =
+const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
   ) as any as S.Schema<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList>;
@@ -621,7 +619,7 @@ export interface ScansGetResponseDataRequestsItemRequestRedirectResponse {
   url: string;
   headers?: unknown | null;
 }
-export const ScansGetResponseDataRequestsItemRequestRedirectResponse = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemRequestRedirectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charset: S.String,
     mimeType: S.String,
@@ -653,7 +651,7 @@ export interface ScansGetResponseDataRequestsItemRequest {
   primaryRequest?: boolean | null;
   redirectResponse?: ScansGetResponseDataRequestsItemRequestRedirectResponse | null;
 }
-export const ScansGetResponseDataRequestsItemRequest = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentURL: S.String,
     hasUserGesture: S.Boolean,
@@ -680,7 +678,7 @@ export interface ScansGetResponseDataRequestsItemResponseAsn {
   name: string;
   org: string;
 }
-export const ScansGetResponseDataRequestsItemResponseAsn = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemResponseAsn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.String,
     country: S.String,
@@ -694,7 +692,7 @@ export const ScansGetResponseDataRequestsItemResponseAsn = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ScansGetResponseDataRequestsItemResponseAsn>;
 
 export type ScansGetResponseDataRequestsItemResponseGeoipLlList = Array<number>;
-export const ScansGetResponseDataRequestsItemResponseGeoipLlList = /*@__PURE__*/ S.Array(
+const ScansGetResponseDataRequestsItemResponseGeoipLlList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ScansGetResponseDataRequestsItemResponseGeoipLlList>;
 
@@ -706,7 +704,7 @@ export interface ScansGetResponseDataRequestsItemResponseGeoip {
   ll: ScansGetResponseDataRequestsItemResponseGeoipLlList;
   region: string;
 }
-export const ScansGetResponseDataRequestsItemResponseGeoip = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemResponseGeoip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.String,
     country: S.String,
@@ -721,7 +719,7 @@ export const ScansGetResponseDataRequestsItemResponseGeoip = /*@__PURE__*/ S.sus
 
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList =
   Array<string>;
-export const ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList =
+const ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList>;
@@ -741,8 +739,8 @@ export interface ScansGetResponseDataRequestsItemResponseResponseSecurityDetails
   validFrom: number;
   validTo: number;
 }
-export const ScansGetResponseDataRequestsItemResponseResponseSecurityDetails =
-  /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemResponseResponseSecurityDetails = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       certificateId: S.Number,
       certificateTransparencyCompliance: S.String,
@@ -758,18 +756,15 @@ export const ScansGetResponseDataRequestsItemResponseResponseSecurityDetails =
       validFrom: S.Number,
       validTo: S.Number,
     }),
-  ).annotate({
-    identifier: "ScansGetResponseDataRequestsItemResponseResponseSecurityDetails",
-  }) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityDetails>;
+).annotate({
+  identifier: "ScansGetResponseDataRequestsItemResponseResponseSecurityDetails",
+}) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityDetails>;
 
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem =
   ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
-export const ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem =
-  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
-
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
   Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-export const ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
+const ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
   ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList>;
 
 export interface ScansGetResponseDataRequestsItemResponseResponse {
@@ -786,7 +781,7 @@ export interface ScansGetResponseDataRequestsItemResponseResponse {
   url: string;
   headers?: unknown | null;
 }
-export const ScansGetResponseDataRequestsItemResponseResponse = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemResponseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charset: S.String,
     mimeType: S.String,
@@ -818,7 +813,7 @@ export interface ScansGetResponseDataRequestsItemResponse {
   contentAvailable?: boolean | null;
   hash?: string | null;
 }
-export const ScansGetResponseDataRequestsItemResponse = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: ScansGetResponseDataRequestsItemResponseAsn,
     dataLength: S.Number,
@@ -839,7 +834,7 @@ export const ScansGetResponseDataRequestsItemResponse = /*@__PURE__*/ S.suspend(
 export interface ScansGetResponseDataRequestsItemRequestsItemInitiator {
   type: string;
 }
-export const ScansGetResponseDataRequestsItemRequestsItemInitiator = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemRequestsItemInitiator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
   }),
@@ -850,11 +845,10 @@ export const ScansGetResponseDataRequestsItemRequestsItemInitiator = /*@__PURE__
 export interface ScansGetResponseDataRequestsItemRequestsItemRequestHeaders {
   name: string;
 }
-export const ScansGetResponseDataRequestsItemRequestsItemRequestHeaders = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-    }),
+const ScansGetResponseDataRequestsItemRequestsItemRequestHeaders = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+  }),
 ).annotate({
   identifier: "ScansGetResponseDataRequestsItemRequestsItemRequestHeaders",
 }) as any as S.Schema<ScansGetResponseDataRequestsItemRequestsItemRequestHeaders>;
@@ -868,7 +862,7 @@ export interface ScansGetResponseDataRequestsItemRequestsItemRequest {
   referrerPolicy: string;
   url: string;
 }
-export const ScansGetResponseDataRequestsItemRequestsItemRequest = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemRequestsItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: ScansGetResponseDataRequestsItemRequestsItemRequestHeaders,
     initialPriority: S.String,
@@ -894,7 +888,7 @@ export interface ScansGetResponseDataRequestsItemRequestsItem {
   type: string;
   wallTime: number;
 }
-export const ScansGetResponseDataRequestsItemRequestsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItemRequestsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentURL: S.String,
     frameId: S.String,
@@ -913,7 +907,7 @@ export const ScansGetResponseDataRequestsItemRequestsItem = /*@__PURE__*/ S.susp
 
 export type ScansGetResponseDataRequestsItemRequestsList =
   Array<ScansGetResponseDataRequestsItemRequestsItem>;
-export const ScansGetResponseDataRequestsItemRequestsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseDataRequestsItemRequestsList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataRequestsItemRequestsItem,
 ) as any as S.Schema<ScansGetResponseDataRequestsItemRequestsList>;
 
@@ -922,7 +916,7 @@ export interface ScansGetResponseDataRequestsItem {
   response: ScansGetResponseDataRequestsItemResponse;
   requests?: ScansGetResponseDataRequestsItemRequestsList | null;
 }
-export const ScansGetResponseDataRequestsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseDataRequestsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     request: ScansGetResponseDataRequestsItemRequest,
     response: ScansGetResponseDataRequestsItemResponse,
@@ -933,7 +927,7 @@ export const ScansGetResponseDataRequestsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseDataRequestsItem>;
 
 export type ScansGetResponseDataRequestsList = Array<ScansGetResponseDataRequestsItem>;
-export const ScansGetResponseDataRequestsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseDataRequestsList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataRequestsItem,
 ) as any as S.Schema<ScansGetResponseDataRequestsList>;
 
@@ -945,7 +939,7 @@ export interface ScansGetResponseData {
   performance: ScansGetResponseDataPerformanceList;
   requests: ScansGetResponseDataRequestsList;
 }
-export const ScansGetResponseData = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     console: ScansGetResponseDataConsoleList,
     cookies: ScansGetResponseDataCookiesList,
@@ -957,7 +951,7 @@ export const ScansGetResponseData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScansGetResponseData" }) as any as S.Schema<ScansGetResponseData>;
 
 export type ScansGetResponseListsAsnsList = Array<string>;
-export const ScansGetResponseListsAsnsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseListsAsnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScansGetResponseListsAsnsList>;
 
@@ -967,7 +961,7 @@ export interface ScansGetResponseListsCertificatesItem {
   validFrom: number;
   validTo: number;
 }
-export const ScansGetResponseListsCertificatesItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseListsCertificatesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.String,
     subjectName: S.String,
@@ -979,40 +973,40 @@ export const ScansGetResponseListsCertificatesItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ScansGetResponseListsCertificatesItem>;
 
 export type ScansGetResponseListsCertificatesList = Array<ScansGetResponseListsCertificatesItem>;
-export const ScansGetResponseListsCertificatesList = /*@__PURE__*/ S.Array(
+const ScansGetResponseListsCertificatesList = /*@__PURE__*/ S.Array(
   ScansGetResponseListsCertificatesItem,
 ) as any as S.Schema<ScansGetResponseListsCertificatesList>;
 
 export type ScansGetResponseListsContinentsList = Array<string>;
-export const ScansGetResponseListsContinentsList =
+const ScansGetResponseListsContinentsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsContinentsList>;
 
 export type ScansGetResponseListsCountriesList = Array<string>;
-export const ScansGetResponseListsCountriesList =
+const ScansGetResponseListsCountriesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsCountriesList>;
 
 export type ScansGetResponseListsDomainsList = Array<string>;
-export const ScansGetResponseListsDomainsList =
+const ScansGetResponseListsDomainsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsDomainsList>;
 
 export type ScansGetResponseListsHashesList = Array<string>;
-export const ScansGetResponseListsHashesList =
+const ScansGetResponseListsHashesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsHashesList>;
 
 export type ScansGetResponseListsIpsList = Array<string>;
-export const ScansGetResponseListsIpsList =
+const ScansGetResponseListsIpsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsIpsList>;
 
 export type ScansGetResponseListsLinkDomainsList = Array<string>;
-export const ScansGetResponseListsLinkDomainsList =
+const ScansGetResponseListsLinkDomainsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsLinkDomainsList>;
 
 export type ScansGetResponseListsServersList = Array<string>;
-export const ScansGetResponseListsServersList =
+const ScansGetResponseListsServersList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsServersList>;
 
 export type ScansGetResponseListsUrlsList = Array<string>;
-export const ScansGetResponseListsUrlsList =
+const ScansGetResponseListsUrlsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsUrlsList>;
 
 export interface ScansGetResponseLists {
@@ -1027,7 +1021,7 @@ export interface ScansGetResponseLists {
   servers: ScansGetResponseListsServersList;
   urls: ScansGetResponseListsUrlsList;
 }
-export const ScansGetResponseLists = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseLists = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asns: ScansGetResponseListsAsnsList,
     certificates: ScansGetResponseListsCertificatesList,
@@ -1049,7 +1043,7 @@ export interface ScansGetResponseMetaProcessorsAsnDataItem {
   ip: string;
   name: string;
 }
-export const ScansGetResponseMetaProcessorsAsnDataItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsAsnDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.String,
     country: S.String,
@@ -1063,14 +1057,14 @@ export const ScansGetResponseMetaProcessorsAsnDataItem = /*@__PURE__*/ S.suspend
 
 export type ScansGetResponseMetaProcessorsAsnDataList =
   Array<ScansGetResponseMetaProcessorsAsnDataItem>;
-export const ScansGetResponseMetaProcessorsAsnDataList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsAsnDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsAsnDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsAsnDataList>;
 
 export interface ScansGetResponseMetaProcessorsAsn {
   data: ScansGetResponseMetaProcessorsAsnDataList;
 }
-export const ScansGetResponseMetaProcessorsAsn = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsAsn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsAsnDataList,
   }),
@@ -1084,7 +1078,7 @@ export interface ScansGetResponseMetaProcessorsDnsDataItem {
   name: string;
   type: string;
 }
-export const ScansGetResponseMetaProcessorsDnsDataItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsDnsDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.String,
     dnssecValid: S.Boolean.pipe(T.Body("dnssec_valid")),
@@ -1097,14 +1091,14 @@ export const ScansGetResponseMetaProcessorsDnsDataItem = /*@__PURE__*/ S.suspend
 
 export type ScansGetResponseMetaProcessorsDnsDataList =
   Array<ScansGetResponseMetaProcessorsDnsDataItem>;
-export const ScansGetResponseMetaProcessorsDnsDataList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsDnsDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsDnsDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsDnsDataList>;
 
 export interface ScansGetResponseMetaProcessorsDns {
   data: ScansGetResponseMetaProcessorsDnsDataList;
 }
-export const ScansGetResponseMetaProcessorsDns = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsDnsDataList,
   }),
@@ -1117,7 +1111,7 @@ export interface ScansGetResponseMetaProcessorsDomainCategoriesDataItem {
   isPrimary: boolean;
   name: string;
 }
-export const ScansGetResponseMetaProcessorsDomainCategoriesDataItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsDomainCategoriesDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inherited: S.Unknown,
     isPrimary: S.Boolean,
@@ -1129,14 +1123,14 @@ export const ScansGetResponseMetaProcessorsDomainCategoriesDataItem = /*@__PURE_
 
 export type ScansGetResponseMetaProcessorsDomainCategoriesDataList =
   Array<ScansGetResponseMetaProcessorsDomainCategoriesDataItem>;
-export const ScansGetResponseMetaProcessorsDomainCategoriesDataList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsDomainCategoriesDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsDomainCategoriesDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsDomainCategoriesDataList>;
 
 export interface ScansGetResponseMetaProcessorsDomainCategories {
   data: ScansGetResponseMetaProcessorsDomainCategoriesDataList;
 }
-export const ScansGetResponseMetaProcessorsDomainCategories = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsDomainCategories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsDomainCategoriesDataList,
   }),
@@ -1145,7 +1139,7 @@ export const ScansGetResponseMetaProcessorsDomainCategories = /*@__PURE__*/ S.su
 }) as any as S.Schema<ScansGetResponseMetaProcessorsDomainCategories>;
 
 export type ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList = Array<number>;
-export const ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList =
+const ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList =
   ScansGetResponseDataRequestsItemResponseGeoipLlList as any as S.Schema<ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList>;
 
 export interface ScansGetResponseMetaProcessorsGeoipDataItemGeoip {
@@ -1155,7 +1149,7 @@ export interface ScansGetResponseMetaProcessorsGeoipDataItemGeoip {
   ll: ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList;
   region: string;
 }
-export const ScansGetResponseMetaProcessorsGeoipDataItemGeoip = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsGeoipDataItemGeoip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.String,
     country: S.String,
@@ -1171,7 +1165,7 @@ export interface ScansGetResponseMetaProcessorsGeoipDataItem {
   geoip: ScansGetResponseMetaProcessorsGeoipDataItemGeoip;
   ip: string;
 }
-export const ScansGetResponseMetaProcessorsGeoipDataItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsGeoipDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoip: ScansGetResponseMetaProcessorsGeoipDataItemGeoip,
     ip: S.String,
@@ -1182,14 +1176,14 @@ export const ScansGetResponseMetaProcessorsGeoipDataItem = /*@__PURE__*/ S.suspe
 
 export type ScansGetResponseMetaProcessorsGeoipDataList =
   Array<ScansGetResponseMetaProcessorsGeoipDataItem>;
-export const ScansGetResponseMetaProcessorsGeoipDataList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsGeoipDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsGeoipDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsGeoipDataList>;
 
 export interface ScansGetResponseMetaProcessorsGeoip {
   data: ScansGetResponseMetaProcessorsGeoipDataList;
 }
-export const ScansGetResponseMetaProcessorsGeoip = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsGeoip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsGeoipDataList,
   }),
@@ -1198,13 +1192,13 @@ export const ScansGetResponseMetaProcessorsGeoip = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseMetaProcessorsGeoip>;
 
 export type ScansGetResponseMetaProcessorsPhishingDataList = Array<string>;
-export const ScansGetResponseMetaProcessorsPhishingDataList =
+const ScansGetResponseMetaProcessorsPhishingDataList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseMetaProcessorsPhishingDataList>;
 
 export interface ScansGetResponseMetaProcessorsPhishing {
   data: ScansGetResponseMetaProcessorsPhishingDataList;
 }
-export const ScansGetResponseMetaProcessorsPhishing = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsPhishing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsPhishingDataList,
   }),
@@ -1217,7 +1211,7 @@ export interface ScansGetResponseMetaProcessorsRadarRankDataItem {
   hostname: string;
   rank?: number | null;
 }
-export const ScansGetResponseMetaProcessorsRadarRankDataItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsRadarRankDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
     hostname: S.String,
@@ -1229,14 +1223,14 @@ export const ScansGetResponseMetaProcessorsRadarRankDataItem = /*@__PURE__*/ S.s
 
 export type ScansGetResponseMetaProcessorsRadarRankDataList =
   Array<ScansGetResponseMetaProcessorsRadarRankDataItem>;
-export const ScansGetResponseMetaProcessorsRadarRankDataList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsRadarRankDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsRadarRankDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsRadarRankDataList>;
 
 export interface ScansGetResponseMetaProcessorsRadarRank {
   data: ScansGetResponseMetaProcessorsRadarRankDataList;
 }
-export const ScansGetResponseMetaProcessorsRadarRank = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsRadarRank = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsRadarRankDataList,
   }),
@@ -1248,19 +1242,18 @@ export interface ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem {
   name: string;
   priority: number;
 }
-export const ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      priority: S.Number,
-    }),
+const ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    priority: S.Number,
+  }),
 ).annotate({
   identifier: "ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem",
 }) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem>;
 
 export type ScansGetResponseMetaProcessorsWappaDataItemCategoriesList =
   Array<ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem>;
-export const ScansGetResponseMetaProcessorsWappaDataItemCategoriesList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsWappaDataItemCategoriesList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemCategoriesList>;
 
@@ -1270,21 +1263,20 @@ export interface ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem {
   pattern: string;
   patternType: string;
 }
-export const ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      confidence: S.Number,
-      name: S.String,
-      pattern: S.String,
-      patternType: S.String,
-    }),
+const ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    confidence: S.Number,
+    name: S.String,
+    pattern: S.String,
+    patternType: S.String,
+  }),
 ).annotate({
   identifier: "ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem",
 }) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem>;
 
 export type ScansGetResponseMetaProcessorsWappaDataItemConfidenceList =
   Array<ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem>;
-export const ScansGetResponseMetaProcessorsWappaDataItemConfidenceList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsWappaDataItemConfidenceList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemConfidenceList>;
 
@@ -1296,7 +1288,7 @@ export interface ScansGetResponseMetaProcessorsWappaDataItem {
   icon: string;
   website: string;
 }
-export const ScansGetResponseMetaProcessorsWappaDataItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsWappaDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.String,
     categories: ScansGetResponseMetaProcessorsWappaDataItemCategoriesList,
@@ -1311,14 +1303,14 @@ export const ScansGetResponseMetaProcessorsWappaDataItem = /*@__PURE__*/ S.suspe
 
 export type ScansGetResponseMetaProcessorsWappaDataList =
   Array<ScansGetResponseMetaProcessorsWappaDataItem>;
-export const ScansGetResponseMetaProcessorsWappaDataList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsWappaDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsWappaDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataList>;
 
 export interface ScansGetResponseMetaProcessorsWappa {
   data: ScansGetResponseMetaProcessorsWappaDataList;
 }
-export const ScansGetResponseMetaProcessorsWappa = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsWappa = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsWappaDataList,
   }),
@@ -1330,7 +1322,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   outcome: string;
   summary: string;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       outcome: S.String,
@@ -1346,7 +1338,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   url: string;
   headers?: unknown | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.String,
@@ -1366,7 +1358,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   headers?: unknown | null;
   redirectedTo?: string | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.Number,
@@ -1388,7 +1380,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest | null;
   response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       action: S.String,
@@ -1416,7 +1408,7 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList>;
@@ -1426,7 +1418,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   code: string;
   params?: unknown | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       code: S.String,
@@ -1445,7 +1437,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
@@ -1469,34 +1461,19 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlC
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules {
   status: string;
   details?: unknown | null;
@@ -1505,7 +1482,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.String,
@@ -1530,34 +1507,16 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlR
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth {
   status: string;
   details?: unknown | null;
@@ -1566,7 +1525,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl {
@@ -1574,8 +1533,8 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   robotsTxtAiRules: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules;
   webBotAuth: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl =
-  /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       contentSignals:
         ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals,
@@ -1583,40 +1542,25 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl 
         ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules,
       webBotAuth: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth,
     }),
-  ).annotate({
-    identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl>;
+).annotate({
+  identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl",
+}) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp {
   status: string;
   details?: unknown | null;
@@ -1625,56 +1569,37 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp {
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.String,
-      details: S.optional(S.NullOr(S.Unknown)),
-      durationMs: S.optional(S.NullOr(S.Number)),
-      evidence: S.optional(
-        S.NullOr(ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList),
+const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.String,
+    details: S.optional(S.NullOr(S.Unknown)),
+    durationMs: S.optional(S.NullOr(S.Number)),
+    evidence: S.optional(
+      S.NullOr(ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList),
+    ),
+    message: S.optional(S.NullOr(S.String)),
+    messageRef: S.optional(
+      S.NullOr(
+        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef,
       ),
-      message: S.optional(S.NullOr(S.String)),
-      messageRef: S.optional(
-        S.NullOr(
-          ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp>;
+    ),
+  }),
+).annotate({
+  identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp",
+}) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2MessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2MessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 {
   status: string;
   details?: unknown | null;
@@ -1683,39 +1608,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 {
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 =
   ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp {
   status: string;
   details?: unknown | null;
@@ -1724,39 +1631,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp {
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp =
   ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp {
   status: string;
   details?: unknown | null;
@@ -1765,39 +1654,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp {
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp =
   ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402MessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402MessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 {
   status: string;
   details?: unknown | null;
@@ -1806,7 +1677,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 =
   ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce {
@@ -1816,49 +1687,30 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce {
   ucp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp;
   x402: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      acp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp,
-      ap2: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2,
-      mpp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp,
-      ucp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp,
-      x402: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402,
-    }),
+const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    acp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp,
+    ap2: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2,
+    mpp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp,
+    ucp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp,
+    x402: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402,
+  }),
 ).annotate({
   identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce",
 }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation {
   status: string;
   details?: unknown | null;
@@ -1867,13 +1719,13 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccess
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility {
   markdownNegotiation: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       markdownNegotiation:
@@ -1885,34 +1737,16 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibil
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid {
   status: string;
   details?: unknown | null;
@@ -1921,39 +1755,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders {
   status: string;
   details?: unknown | null;
@@ -1962,39 +1778,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt {
   status: string;
   details?: unknown | null;
@@ -2003,39 +1801,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap {
   status: string;
   details?: unknown | null;
@@ -2044,7 +1824,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability {
@@ -2053,48 +1833,30 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   robotsTxt: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt;
   sitemap: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability =
-  /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       dnsAid: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid,
       linkHeaders: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders,
       robotsTxt: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt,
       sitemap: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap,
     }),
-  ).annotate({
-    identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability>;
+).annotate({
+  identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability",
+}) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard {
   status: string;
   details?: unknown | null;
@@ -2103,39 +1865,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aA
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills {
   status: string;
   details?: unknown | null;
@@ -2144,39 +1888,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgen
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog {
   status: string;
   details?: unknown | null;
@@ -2185,39 +1911,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiC
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog =
   ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd {
   status: string;
   details?: unknown | null;
@@ -2226,39 +1934,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd 
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd =
   ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd {
   status: string;
   details?: unknown | null;
@@ -2267,39 +1957,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuth
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd =
   ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard {
   status: string;
   details?: unknown | null;
@@ -2308,39 +1980,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpS
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery {
   status: string;
   details?: unknown | null;
@@ -2349,39 +2003,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOaut
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource {
   status: string;
   details?: unknown | null;
@@ -2390,39 +2026,21 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOaut
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemResponse =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItem =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpMessageRef =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp {
   status: string;
   details?: unknown | null;
@@ -2431,7 +2049,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebM
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp =
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp =
   ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery {
@@ -2445,20 +2063,19 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery {
   oauthProtectedResource: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource;
   webMcp: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      a2aAgentCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard,
-      agentSkills: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills,
-      apiCatalog: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog,
-      ard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd,
-      authMd: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd,
-      mcpServerCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard,
-      oauthDiscovery: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery,
-      oauthProtectedResource:
-        ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource,
-      webMcp: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp,
-    }),
+const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    a2aAgentCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard,
+    agentSkills: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills,
+    apiCatalog: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog,
+    ard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd,
+    authMd: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd,
+    mcpServerCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard,
+    oauthDiscovery: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery,
+    oauthProtectedResource:
+      ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource,
+    webMcp: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp,
+  }),
 ).annotate({
   identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery",
 }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery>;
@@ -2470,7 +2087,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecks {
   discoverability: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability;
   discovery: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessChecks = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsAgentReadinessChecks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botAccessControl: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl,
     commerce: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce,
@@ -2483,12 +2100,12 @@ export const ScansGetResponseMetaProcessorsAgentReadinessChecks = /*@__PURE__*/ 
 }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecks>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList = Array<string>;
-export const ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList =
+const ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList =
   ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList>;
 
 export type ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList =
   Array<string>;
-export const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList =
+const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList =
   ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem {
@@ -2498,7 +2115,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequiremen
   skillUrl: string;
   specUrls: ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem =
+const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       check: S.String,
@@ -2513,17 +2130,16 @@ export const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsIt
 
 export type ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem>;
-export const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList =
-  /*@__PURE__*/ S.Array(
-    ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList>;
+const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList = /*@__PURE__*/ S.Array(
+  ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem,
+) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList>;
 
 export interface ScansGetResponseMetaProcessorsAgentReadinessNextLevel {
   name: string;
   requirements: ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList;
   target: number;
 }
-export const ScansGetResponseMetaProcessorsAgentReadinessNextLevel = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsAgentReadinessNextLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     requirements: ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList,
@@ -2541,7 +2157,7 @@ export interface ScansGetResponseMetaProcessorsAgentReadiness {
   isCommerce?: boolean | null;
   nextLevel?: ScansGetResponseMetaProcessorsAgentReadinessNextLevel | null;
 }
-export const ScansGetResponseMetaProcessorsAgentReadiness = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsAgentReadiness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checks: ScansGetResponseMetaProcessorsAgentReadinessChecks,
     level: S.Number,
@@ -2557,21 +2173,18 @@ export const ScansGetResponseMetaProcessorsAgentReadiness = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadiness>;
 
 export type ScansGetResponseMetaProcessorsPhishingV2DataList = Array<string>;
-export const ScansGetResponseMetaProcessorsPhishingV2DataList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseMetaProcessorsPhishingV2DataList>;
-
 export interface ScansGetResponseMetaProcessorsPhishingV2 {
   data: ScansGetResponseMetaProcessorsPhishingV2DataList;
 }
-export const ScansGetResponseMetaProcessorsPhishingV2 =
+const ScansGetResponseMetaProcessorsPhishingV2 =
   ScansGetResponseMetaProcessorsPhishing as any as S.Schema<ScansGetResponseMetaProcessorsPhishingV2>;
 
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList = Array<string>;
-export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList =
+const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList =
   ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList>;
 
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList = Array<string>;
-export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList =
+const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList =
   ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList>;
 
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal {
@@ -2579,7 +2192,7 @@ export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueConten
   aiTrain?: string | null;
   search?: string | null;
 }
-export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal =
+const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       aiInput: S.optional(S.NullOr(S.String).pipe(T.Body("ai-input"))),
@@ -2596,16 +2209,15 @@ export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue {
   contentSignal?: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal | null;
   crawlDelay?: number | null;
 }
-export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList,
-      disallow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList,
-      contentSignal: S.optional(
-        S.NullOr(ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal),
-      ),
-      crawlDelay: S.optional(S.NullOr(S.Number)),
-    }),
+const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList,
+    disallow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList,
+    contentSignal: S.optional(
+      S.NullOr(ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal),
+    ),
+    crawlDelay: S.optional(S.NullOr(S.Number)),
+  }),
 ).annotate({
   identifier: "ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue",
 }) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue>;
@@ -2613,13 +2225,13 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue = /*@__PU
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap = {
   [key: string]: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue | undefined;
 };
-export const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap = /*@__PURE__*/ S.Record(
+const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap = /*@__PURE__*/ S.Record(
   S.String,
   ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap>;
 
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList = Array<string>;
-export const ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList =
+const ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList>;
 
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItem {
@@ -2627,7 +2239,7 @@ export interface ScansGetResponseMetaProcessorsRobotsTxtDataItem {
   sitemaps: ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList;
   hash?: string | null;
 }
-export const ScansGetResponseMetaProcessorsRobotsTxtDataItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsRobotsTxtDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap,
     sitemaps: ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList,
@@ -2639,14 +2251,14 @@ export const ScansGetResponseMetaProcessorsRobotsTxtDataItem = /*@__PURE__*/ S.s
 
 export type ScansGetResponseMetaProcessorsRobotsTxtDataList =
   Array<ScansGetResponseMetaProcessorsRobotsTxtDataItem>;
-export const ScansGetResponseMetaProcessorsRobotsTxtDataList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsRobotsTxtDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsRobotsTxtDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataList>;
 
 export interface ScansGetResponseMetaProcessorsRobotsTxt {
   data: ScansGetResponseMetaProcessorsRobotsTxtDataList;
 }
-export const ScansGetResponseMetaProcessorsRobotsTxt = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsRobotsTxt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsRobotsTxtDataList,
   }),
@@ -2659,43 +2271,36 @@ export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem 
   name: string;
   superCategoryId: number;
 }
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      name: S.String,
-      superCategoryId: S.Number.pipe(T.Body("super_category_id")),
-    }),
-  ).annotate({
-    identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem",
-  }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
+const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    name: S.String,
+    superCategoryId: S.Number.pipe(T.Body("super_category_id")),
+  }),
+).annotate({
+  identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem",
+}) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem =
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem =
-  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
-
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
+const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
   /*@__PURE__*/ S.Array(
     ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem,
   ) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem =
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem =
-  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
-
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
+const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList>;
 
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited {
@@ -2703,25 +2308,21 @@ export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited {
   from: string;
   risks: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList;
 }
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      content: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList,
-      from: S.String,
-      risks: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList,
-    }),
+const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList,
+    from: S.String,
+    risks: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList,
+  }),
 ).annotate({
   identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited",
 }) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited>;
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem =
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem =
-  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
-
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
+const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList>;
 
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItem {
@@ -2730,7 +2331,7 @@ export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItem {
   name: string;
   risks: ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList;
 }
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsUrlCategoriesDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList,
     inherited: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited,
@@ -2743,14 +2344,14 @@ export const ScansGetResponseMetaProcessorsUrlCategoriesDataItem = /*@__PURE__*/
 
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItem>;
-export const ScansGetResponseMetaProcessorsUrlCategoriesDataList = /*@__PURE__*/ S.Array(
+const ScansGetResponseMetaProcessorsUrlCategoriesDataList = /*@__PURE__*/ S.Array(
   ScansGetResponseMetaProcessorsUrlCategoriesDataItem,
 ) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataList>;
 
 export interface ScansGetResponseMetaProcessorsUrlCategories {
   data: ScansGetResponseMetaProcessorsUrlCategoriesDataList;
 }
-export const ScansGetResponseMetaProcessorsUrlCategories = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessorsUrlCategories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseMetaProcessorsUrlCategoriesDataList,
   }),
@@ -2771,7 +2372,7 @@ export interface ScansGetResponseMetaProcessors {
   robotsTxt?: ScansGetResponseMetaProcessorsRobotsTxt | null;
   urlCategories?: ScansGetResponseMetaProcessorsUrlCategories | null;
 }
-export const ScansGetResponseMetaProcessors = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMetaProcessors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: ScansGetResponseMetaProcessorsAsn,
     dns: ScansGetResponseMetaProcessorsDns,
@@ -2794,7 +2395,7 @@ export const ScansGetResponseMetaProcessors = /*@__PURE__*/ S.suspend(() =>
 export interface ScansGetResponseMeta {
   processors: ScansGetResponseMetaProcessors;
 }
-export const ScansGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processors: ScansGetResponseMetaProcessors,
   }),
@@ -2806,7 +2407,7 @@ export interface ScansGetResponsePageScreenshot {
   name: string;
   phash: string;
 }
-export const ScansGetResponsePageScreenshot = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponsePageScreenshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dhash: S.String,
     mm3Hash: S.Number,
@@ -2836,7 +2437,7 @@ export interface ScansGetResponsePage {
   url: string;
   screenshot?: ScansGetResponsePageScreenshot | null;
 }
-export const ScansGetResponsePage = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponsePage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apexDomain: S.String,
     asn: S.String,
@@ -2862,7 +2463,7 @@ export interface ScansGetResponseScanner {
   colo: string;
   country: string;
 }
-export const ScansGetResponseScanner = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseScanner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colo: S.String,
     country: S.String,
@@ -2870,15 +2471,15 @@ export const ScansGetResponseScanner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScansGetResponseScanner" }) as any as S.Schema<ScansGetResponseScanner>;
 
 export type ScansGetResponseStatsDomainStatsItemCountriesList = Array<string>;
-export const ScansGetResponseStatsDomainStatsItemCountriesList =
+const ScansGetResponseStatsDomainStatsItemCountriesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsDomainStatsItemCountriesList>;
 
 export type ScansGetResponseStatsDomainStatsItemInitiatorsList = Array<string>;
-export const ScansGetResponseStatsDomainStatsItemInitiatorsList =
+const ScansGetResponseStatsDomainStatsItemInitiatorsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsDomainStatsItemInitiatorsList>;
 
 export type ScansGetResponseStatsDomainStatsItemIpsList = Array<string>;
-export const ScansGetResponseStatsDomainStatsItemIpsList =
+const ScansGetResponseStatsDomainStatsItemIpsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsDomainStatsItemIpsList>;
 
 export interface ScansGetResponseStatsDomainStatsItem {
@@ -2892,7 +2493,7 @@ export interface ScansGetResponseStatsDomainStatsItem {
   redirects: number;
   size: number;
 }
-export const ScansGetResponseStatsDomainStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseStatsDomainStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     countries: ScansGetResponseStatsDomainStatsItemCountriesList,
@@ -2909,25 +2510,20 @@ export const ScansGetResponseStatsDomainStatsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ScansGetResponseStatsDomainStatsItem>;
 
 export type ScansGetResponseStatsDomainStatsList = Array<ScansGetResponseStatsDomainStatsItem>;
-export const ScansGetResponseStatsDomainStatsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseStatsDomainStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsDomainStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsDomainStatsList>;
 
 export type ScansGetResponseStatsIpStatsItemAsn = ScansGetResponseDataRequestsItemResponseAsn;
-export const ScansGetResponseStatsIpStatsItemAsn = ScansGetResponseDataRequestsItemResponseAsn;
-
 export type ScansGetResponseStatsIpStatsItemCountriesList = Array<string>;
-export const ScansGetResponseStatsIpStatsItemCountriesList =
+const ScansGetResponseStatsIpStatsItemCountriesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsIpStatsItemCountriesList>;
 
 export type ScansGetResponseStatsIpStatsItemDomainsList = Array<string>;
-export const ScansGetResponseStatsIpStatsItemDomainsList =
+const ScansGetResponseStatsIpStatsItemDomainsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsIpStatsItemDomainsList>;
 
 export type ScansGetResponseStatsIpStatsItemGeoipLlList = Array<number>;
-export const ScansGetResponseStatsIpStatsItemGeoipLlList =
-  ScansGetResponseDataRequestsItemResponseGeoipLlList as any as S.Schema<ScansGetResponseStatsIpStatsItemGeoipLlList>;
-
 export interface ScansGetResponseStatsIpStatsItemGeoip {
   city: string;
   country: string;
@@ -2935,7 +2531,7 @@ export interface ScansGetResponseStatsIpStatsItemGeoip {
   ll: ScansGetResponseStatsIpStatsItemGeoipLlList;
   region: string;
 }
-export const ScansGetResponseStatsIpStatsItemGeoip =
+const ScansGetResponseStatsIpStatsItemGeoip =
   ScansGetResponseMetaProcessorsGeoipDataItemGeoip as any as S.Schema<ScansGetResponseStatsIpStatsItemGeoip>;
 
 export interface ScansGetResponseStatsIpStatsItem {
@@ -2952,7 +2548,7 @@ export interface ScansGetResponseStatsIpStatsItem {
   size: number;
   count?: number | null;
 }
-export const ScansGetResponseStatsIpStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseStatsIpStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: ScansGetResponseDataRequestsItemResponseAsn,
     countries: ScansGetResponseStatsIpStatsItemCountriesList,
@@ -2972,16 +2568,16 @@ export const ScansGetResponseStatsIpStatsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseStatsIpStatsItem>;
 
 export type ScansGetResponseStatsIpStatsList = Array<ScansGetResponseStatsIpStatsItem>;
-export const ScansGetResponseStatsIpStatsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseStatsIpStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsIpStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsIpStatsList>;
 
 export type ScansGetResponseStatsProtocolStatsItemCountriesList = Array<string>;
-export const ScansGetResponseStatsProtocolStatsItemCountriesList =
+const ScansGetResponseStatsProtocolStatsItemCountriesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsProtocolStatsItemCountriesList>;
 
 export type ScansGetResponseStatsProtocolStatsItemIpsList = Array<string>;
-export const ScansGetResponseStatsProtocolStatsItemIpsList =
+const ScansGetResponseStatsProtocolStatsItemIpsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsProtocolStatsItemIpsList>;
 
 export interface ScansGetResponseStatsProtocolStatsItem {
@@ -2992,7 +2588,7 @@ export interface ScansGetResponseStatsProtocolStatsItem {
   protocol: string;
   size: number;
 }
-export const ScansGetResponseStatsProtocolStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseStatsProtocolStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     countries: ScansGetResponseStatsProtocolStatsItemCountriesList,
@@ -3006,16 +2602,16 @@ export const ScansGetResponseStatsProtocolStatsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ScansGetResponseStatsProtocolStatsItem>;
 
 export type ScansGetResponseStatsProtocolStatsList = Array<ScansGetResponseStatsProtocolStatsItem>;
-export const ScansGetResponseStatsProtocolStatsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseStatsProtocolStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsProtocolStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsProtocolStatsList>;
 
 export type ScansGetResponseStatsResourceStatsItemCountriesList = Array<string>;
-export const ScansGetResponseStatsResourceStatsItemCountriesList =
+const ScansGetResponseStatsResourceStatsItemCountriesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsResourceStatsItemCountriesList>;
 
 export type ScansGetResponseStatsResourceStatsItemIpsList = Array<string>;
-export const ScansGetResponseStatsResourceStatsItemIpsList =
+const ScansGetResponseStatsResourceStatsItemIpsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsResourceStatsItemIpsList>;
 
 export interface ScansGetResponseStatsResourceStatsItem {
@@ -3028,7 +2624,7 @@ export interface ScansGetResponseStatsResourceStatsItem {
   size: number;
   type: string;
 }
-export const ScansGetResponseStatsResourceStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseStatsResourceStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compression: S.Number,
     count: S.Number,
@@ -3044,16 +2640,16 @@ export const ScansGetResponseStatsResourceStatsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ScansGetResponseStatsResourceStatsItem>;
 
 export type ScansGetResponseStatsResourceStatsList = Array<ScansGetResponseStatsResourceStatsItem>;
-export const ScansGetResponseStatsResourceStatsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseStatsResourceStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsResourceStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsResourceStatsList>;
 
 export type ScansGetResponseStatsServerStatsItemCountriesList = Array<string>;
-export const ScansGetResponseStatsServerStatsItemCountriesList =
+const ScansGetResponseStatsServerStatsItemCountriesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsServerStatsItemCountriesList>;
 
 export type ScansGetResponseStatsServerStatsItemIpsList = Array<string>;
-export const ScansGetResponseStatsServerStatsItemIpsList =
+const ScansGetResponseStatsServerStatsItemIpsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsServerStatsItemIpsList>;
 
 export interface ScansGetResponseStatsServerStatsItem {
@@ -3064,7 +2660,7 @@ export interface ScansGetResponseStatsServerStatsItem {
   server: string;
   size: number;
 }
-export const ScansGetResponseStatsServerStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseStatsServerStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     countries: ScansGetResponseStatsServerStatsItemCountriesList,
@@ -3078,22 +2674,22 @@ export const ScansGetResponseStatsServerStatsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ScansGetResponseStatsServerStatsItem>;
 
 export type ScansGetResponseStatsServerStatsList = Array<ScansGetResponseStatsServerStatsItem>;
-export const ScansGetResponseStatsServerStatsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseStatsServerStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsServerStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsServerStatsList>;
 
 export type ScansGetResponseStatsTlsStatsItemCountriesList = Array<string>;
-export const ScansGetResponseStatsTlsStatsItemCountriesList =
+const ScansGetResponseStatsTlsStatsItemCountriesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsTlsStatsItemCountriesList>;
 
 export type ScansGetResponseStatsTlsStatsItemIpsList = Array<string>;
-export const ScansGetResponseStatsTlsStatsItemIpsList =
+const ScansGetResponseStatsTlsStatsItemIpsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsTlsStatsItemIpsList>;
 
 export interface ScansGetResponseStatsTlsStatsItemProtocols {
   TLS_1_3___AES_128_GCM: number;
 }
-export const ScansGetResponseStatsTlsStatsItemProtocols = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseStatsTlsStatsItemProtocols = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TLS_1_3___AES_128_GCM: S.Number.pipe(T.Body("TLS 1.3 / AES_128_GCM")),
   }),
@@ -3110,7 +2706,7 @@ export interface ScansGetResponseStatsTlsStatsItem {
   securityState: string;
   size: number;
 }
-export const ScansGetResponseStatsTlsStatsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseStatsTlsStatsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     countries: ScansGetResponseStatsTlsStatsItemCountriesList,
@@ -3125,7 +2721,7 @@ export const ScansGetResponseStatsTlsStatsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansGetResponseStatsTlsStatsItem>;
 
 export type ScansGetResponseStatsTlsStatsList = Array<ScansGetResponseStatsTlsStatsItem>;
-export const ScansGetResponseStatsTlsStatsList = /*@__PURE__*/ S.Array(
+const ScansGetResponseStatsTlsStatsList = /*@__PURE__*/ S.Array(
   ScansGetResponseStatsTlsStatsItem,
 ) as any as S.Schema<ScansGetResponseStatsTlsStatsList>;
 
@@ -3144,7 +2740,7 @@ export interface ScansGetResponseStats {
   uniqASNs: number;
   uniqCountries: number;
 }
-export const ScansGetResponseStats = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainStats: ScansGetResponseStatsDomainStatsList,
     ipStats: ScansGetResponseStatsIpStatsList,
@@ -3163,7 +2759,7 @@ export const ScansGetResponseStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScansGetResponseStats" }) as any as S.Schema<ScansGetResponseStats>;
 
 export type ScansGetResponseTaskOptionsScreenshotsResolutionsList = Array<string>;
-export const ScansGetResponseTaskOptionsScreenshotsResolutionsList =
+const ScansGetResponseTaskOptionsScreenshotsResolutionsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseTaskOptionsScreenshotsResolutionsList>;
 
 export interface ScansGetResponseTaskOptions {
@@ -3171,7 +2767,7 @@ export interface ScansGetResponseTaskOptions {
   customHeaders?: unknown | null;
   screenshotsResolutions?: ScansGetResponseTaskOptionsScreenshotsResolutionsList | null;
 }
-export const ScansGetResponseTaskOptions = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseTaskOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customHeaders: S.optional(S.NullOr(S.Unknown)),
     screenshotsResolutions: S.optional(
@@ -3197,7 +2793,7 @@ export interface ScansGetResponseTask {
   uuid: string;
   visibility: string;
 }
-export const ScansGetResponseTask = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apexDomain: S.String,
     domain: S.String,
@@ -3216,11 +2812,11 @@ export const ScansGetResponseTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScansGetResponseTask" }) as any as S.Schema<ScansGetResponseTask>;
 
 export type ScansGetResponseVerdictsOverallCategoriesList = Array<string>;
-export const ScansGetResponseVerdictsOverallCategoriesList =
+const ScansGetResponseVerdictsOverallCategoriesList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseVerdictsOverallCategoriesList>;
 
 export type ScansGetResponseVerdictsOverallTagsList = Array<string>;
-export const ScansGetResponseVerdictsOverallTagsList =
+const ScansGetResponseVerdictsOverallTagsList =
   ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseVerdictsOverallTagsList>;
 
 export interface ScansGetResponseVerdictsOverall {
@@ -3229,7 +2825,7 @@ export interface ScansGetResponseVerdictsOverall {
   malicious: boolean;
   tags: ScansGetResponseVerdictsOverallTagsList;
 }
-export const ScansGetResponseVerdictsOverall = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseVerdictsOverall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: ScansGetResponseVerdictsOverallCategoriesList,
     hasVerdicts: S.Boolean,
@@ -3243,7 +2839,7 @@ export const ScansGetResponseVerdictsOverall = /*@__PURE__*/ S.suspend(() =>
 export interface ScansGetResponseVerdicts {
   overall: ScansGetResponseVerdictsOverall;
 }
-export const ScansGetResponseVerdicts = /*@__PURE__*/ S.suspend(() =>
+const ScansGetResponseVerdicts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overall: ScansGetResponseVerdictsOverall,
   }),
@@ -3260,7 +2856,7 @@ export interface GetScanResponse {
   task: ScansGetResponseTask;
   verdicts: ScansGetResponseVerdicts;
 }
-export const GetScanResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ScansGetResponseData,
     lists: ScansGetResponseLists,
@@ -3279,7 +2875,7 @@ export interface HarScanRequest {
   /** Scan UUID. */
   scanId: string;
 }
-export const HarScanRequest = /*@__PURE__*/ S.suspend(() =>
+const HarScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scanId: S.String.pipe(T.Label("scan_id")),
@@ -3299,7 +2895,7 @@ export interface ScansHarResponseLogCreator {
   name: string;
   version: string;
 }
-export const ScansHarResponseLogCreator = /*@__PURE__*/ S.suspend(() =>
+const ScansHarResponseLogCreator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.String,
     name: S.String,
@@ -3311,12 +2907,9 @@ export const ScansHarResponseLogCreator = /*@__PURE__*/ S.suspend(() =>
 
 export type ScansHarResponseLogEntriesItemRequestHeadersItem =
   ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
-export const ScansHarResponseLogEntriesItemRequestHeadersItem =
-  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
-
 export type ScansHarResponseLogEntriesItemRequestHeadersList =
   Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-export const ScansHarResponseLogEntriesItemRequestHeadersList = /*@__PURE__*/ S.Array(
+const ScansHarResponseLogEntriesItemRequestHeadersList = /*@__PURE__*/ S.Array(
   ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem,
 ) as any as S.Schema<ScansHarResponseLogEntriesItemRequestHeadersList>;
 
@@ -3328,7 +2921,7 @@ export interface ScansHarResponseLogEntriesItemRequest {
   method: string;
   url: string;
 }
-export const ScansHarResponseLogEntriesItemRequest = /*@__PURE__*/ S.suspend(() =>
+const ScansHarResponseLogEntriesItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bodySize: S.Number,
     headers: ScansHarResponseLogEntriesItemRequestHeadersList,
@@ -3346,7 +2939,7 @@ export interface ScansHarResponseLogEntriesItemResponseContent {
   size: number;
   compression?: number | null;
 }
-export const ScansHarResponseLogEntriesItemResponseContent = /*@__PURE__*/ S.suspend(() =>
+const ScansHarResponseLogEntriesItemResponseContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.String,
     size: S.Number,
@@ -3358,12 +2951,9 @@ export const ScansHarResponseLogEntriesItemResponseContent = /*@__PURE__*/ S.sus
 
 export type ScansHarResponseLogEntriesItemResponseHeadersItem =
   ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
-export const ScansHarResponseLogEntriesItemResponseHeadersItem =
-  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
-
 export type ScansHarResponseLogEntriesItemResponseHeadersList =
   Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-export const ScansHarResponseLogEntriesItemResponseHeadersList =
+const ScansHarResponseLogEntriesItemResponseHeadersList =
   ScansHarResponseLogEntriesItemRequestHeadersList as any as S.Schema<ScansHarResponseLogEntriesItemResponseHeadersList>;
 
 export interface ScansHarResponseLogEntriesItemResponse {
@@ -3377,7 +2967,7 @@ export interface ScansHarResponseLogEntriesItemResponse {
   status: number;
   statusText: string;
 }
-export const ScansHarResponseLogEntriesItemResponse = /*@__PURE__*/ S.suspend(() =>
+const ScansHarResponseLogEntriesItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferSize: S.Number.pipe(T.Body("_transferSize")),
     bodySize: S.Number,
@@ -3409,7 +2999,7 @@ export interface ScansHarResponseLogEntriesItem {
   startedDateTime: string;
   time: number;
 }
-export const ScansHarResponseLogEntriesItem = /*@__PURE__*/ S.suspend(() =>
+const ScansHarResponseLogEntriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialPriority: S.String.pipe(T.Body("_initialPriority")),
     initiatorType: S.String.pipe(T.Body("_initiator_type")),
@@ -3431,7 +3021,7 @@ export const ScansHarResponseLogEntriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansHarResponseLogEntriesItem>;
 
 export type ScansHarResponseLogEntriesList = Array<ScansHarResponseLogEntriesItem>;
-export const ScansHarResponseLogEntriesList = /*@__PURE__*/ S.Array(
+const ScansHarResponseLogEntriesList = /*@__PURE__*/ S.Array(
   ScansHarResponseLogEntriesItem,
 ) as any as S.Schema<ScansHarResponseLogEntriesList>;
 
@@ -3439,7 +3029,7 @@ export interface ScansHarResponseLogPagesItemPageTimings {
   onContentLoad: number;
   onLoad: number;
 }
-export const ScansHarResponseLogPagesItemPageTimings = /*@__PURE__*/ S.suspend(() =>
+const ScansHarResponseLogPagesItemPageTimings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onContentLoad: S.Number,
     onLoad: S.Number,
@@ -3454,7 +3044,7 @@ export interface ScansHarResponseLogPagesItem {
   startedDateTime: string;
   title: string;
 }
-export const ScansHarResponseLogPagesItem = /*@__PURE__*/ S.suspend(() =>
+const ScansHarResponseLogPagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     pageTimings: ScansHarResponseLogPagesItemPageTimings,
@@ -3466,7 +3056,7 @@ export const ScansHarResponseLogPagesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansHarResponseLogPagesItem>;
 
 export type ScansHarResponseLogPagesList = Array<ScansHarResponseLogPagesItem>;
-export const ScansHarResponseLogPagesList = /*@__PURE__*/ S.Array(
+const ScansHarResponseLogPagesList = /*@__PURE__*/ S.Array(
   ScansHarResponseLogPagesItem,
 ) as any as S.Schema<ScansHarResponseLogPagesList>;
 
@@ -3476,7 +3066,7 @@ export interface ScansHarResponseLog {
   pages: ScansHarResponseLogPagesList;
   version: string;
 }
-export const ScansHarResponseLog = /*@__PURE__*/ S.suspend(() =>
+const ScansHarResponseLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creator: ScansHarResponseLogCreator,
     entries: ScansHarResponseLogEntriesList,
@@ -3489,7 +3079,7 @@ export const ScansHarResponseLog = /*@__PURE__*/ S.suspend(() =>
 export interface HarScanResponse {
   log: ScansHarResponseLog;
 }
-export const HarScanResponse = /*@__PURE__*/ S.suspend(() =>
+const HarScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     log: ScansHarResponseLog,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3503,7 +3093,7 @@ export interface ListScansRequest {
   /** Limit the number of objects in the response. */
   size?: number;
 }
-export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     q: S.optional(S.String.pipe(T.Query())),
@@ -3519,7 +3109,7 @@ export interface ScansListResponseResultsItemPage {
   ip: string;
   url: string;
 }
-export const ScansListResponseResultsItemPage = /*@__PURE__*/ S.suspend(() =>
+const ScansListResponseResultsItemPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.String,
     country: S.String,
@@ -3536,7 +3126,7 @@ export interface ScansListResponseResultsItemStats {
   uniqCountries: number;
   uniqIPs: number;
 }
-export const ScansListResponseResultsItemStats = /*@__PURE__*/ S.suspend(() =>
+const ScansListResponseResultsItemStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataLength: S.Number,
     requests: S.Number,
@@ -3553,7 +3143,7 @@ export interface ScansListResponseResultsItemTask {
   uuid: string;
   visibility: string;
 }
-export const ScansListResponseResultsItemTask = /*@__PURE__*/ S.suspend(() =>
+const ScansListResponseResultsItemTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.String,
     url: S.String,
@@ -3567,7 +3157,7 @@ export const ScansListResponseResultsItemTask = /*@__PURE__*/ S.suspend(() =>
 export interface ScansListResponseResultsItemVerdicts {
   malicious: boolean;
 }
-export const ScansListResponseResultsItemVerdicts = /*@__PURE__*/ S.suspend(() =>
+const ScansListResponseResultsItemVerdicts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     malicious: S.Boolean,
   }),
@@ -3583,7 +3173,7 @@ export interface ScansListResponseResultsItem {
   task: ScansListResponseResultsItemTask;
   verdicts: ScansListResponseResultsItemVerdicts;
 }
-export const ScansListResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
+const ScansListResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Body("_id")),
     page: ScansListResponseResultsItemPage,
@@ -3597,7 +3187,7 @@ export const ScansListResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScansListResponseResultsItem>;
 
 export type ScansListResponseResultsList = Array<ScansListResponseResultsItem>;
-export const ScansListResponseResultsList = /*@__PURE__*/ S.Array(
+const ScansListResponseResultsList = /*@__PURE__*/ S.Array(
   ScansListResponseResultsItem,
 ) as any as S.Schema<ScansListResponseResultsList>;
 
@@ -3605,14 +3195,14 @@ export const ScansListResponseResultsList = /*@__PURE__*/ S.Array(
 export interface ListScansResponse {
   results: ScansListResponseResultsList;
 }
-export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ScansListResponseResultsList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListScansResponse" }) as any as S.Schema<ListScansResponse>;
 
 export type ScansScreenshotRequestResolution = "desktop" | "mobile" | "tablet";
-export const ScansScreenshotRequestResolution = S.String;
+const ScansScreenshotRequestResolution = S.String;
 
 export interface ScreenshotScanRequest {
   /** Account ID. */
@@ -3622,7 +3212,7 @@ export interface ScreenshotScanRequest {
   /** Target device type. */
   resolution?: ScansScreenshotRequestResolution | (string & {});
 }
-export const ScreenshotScanRequest = /*@__PURE__*/ S.suspend(() =>
+const ScreenshotScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     scanId: S.String.pipe(T.Label("scan_id")),
@@ -3639,7 +3229,7 @@ export const ScreenshotScanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScreenshotScanRequest" }) as any as S.Schema<ScreenshotScanRequest>;
 
 export interface ScreenshotScanResponse {}
-export const ScreenshotScanResponse = DomScanResponse as any as S.Schema<ScreenshotScanResponse>;
+const ScreenshotScanResponse = DomScanResponse as any as S.Schema<ScreenshotScanResponse>;
 
 export type BulkCreateScansError = CloudflareOpError;
 /** Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish. */

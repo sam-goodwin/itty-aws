@@ -37,7 +37,7 @@ export class NotFound
 
 /** The redirects to delete. The source of the redirect is used to match the redirect to delete. */
 export type DeleteRedirectsRequestRedirectsList = Array<string>;
-export const DeleteRedirectsRequestRedirectsList = /*@__PURE__*/ S.Array(
+const DeleteRedirectsRequestRedirectsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteRedirectsRequestRedirectsList>;
 
@@ -51,7 +51,7 @@ export interface DeleteRedirectsRequest {
   /** The redirects to delete. The source of the redirect is used to match the redirect to delete. */
   redirects: DeleteRedirectsRequestRedirectsList;
 }
-export const DeleteRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -79,7 +79,7 @@ export interface DeleteRedirectsResponseBodyCase0Version {
   /** The number of redirects in this version. */
   redirectCount?: number;
 }
-export const DeleteRedirectsResponseBodyCase0Version = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedirectsResponseBodyCase0Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
     createdBy: S.String,
@@ -99,56 +99,24 @@ export interface DeleteRedirectsResponseBodyCase0 {
   alias?: string;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const DeleteRedirectsResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(S.String),
-    version: DeleteRedirectsResponseBodyCase0Version,
-  }),
-).annotate({
-  identifier: "DeleteRedirectsResponseBodyCase0",
-}) as any as S.Schema<DeleteRedirectsResponseBodyCase0>;
-
 export type DeleteRedirectsResponseBodyCase1Version = DeleteRedirectsResponseBodyCase0Version;
-export const DeleteRedirectsResponseBodyCase1Version = DeleteRedirectsResponseBodyCase0Version;
-
 export interface DeleteRedirectsResponseBodyCase1 {
   alias: unknown | null;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const DeleteRedirectsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.NullOr(S.Unknown),
-    version: DeleteRedirectsResponseBodyCase0Version,
-  }),
-).annotate({
-  identifier: "DeleteRedirectsResponseBodyCase1",
-}) as any as S.Schema<DeleteRedirectsResponseBodyCase1>;
-
 export type DeleteRedirectsResponseBodyCase2Version = DeleteRedirectsResponseBodyCase0Version;
-export const DeleteRedirectsResponseBodyCase2Version = DeleteRedirectsResponseBodyCase0Version;
-
 export interface DeleteRedirectsResponseBodyCase2 {
   alias: string | null;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const DeleteRedirectsResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.NullOr(S.String),
-    version: DeleteRedirectsResponseBodyCase0Version,
-  }),
-).annotate({
-  identifier: "DeleteRedirectsResponseBodyCase2",
-}) as any as S.Schema<DeleteRedirectsResponseBodyCase2>;
-
 export type DeleteRedirectsResponseBody =
   | DeleteRedirectsResponseBodyCase0
   | DeleteRedirectsResponseBodyCase1
   | DeleteRedirectsResponseBodyCase2;
-export const DeleteRedirectsResponseBody =
-  S.Unknown as any as S.Schema<DeleteRedirectsResponseBody>;
+const DeleteRedirectsResponseBody = S.Unknown as any as S.Schema<DeleteRedirectsResponseBody>;
 
 export type DeleteRedirectsResponse = DeleteRedirectsResponseBody;
-export const DeleteRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
   DeleteRedirectsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteRedirectsResponse" }) as any as S.Schema<DeleteRedirectsResponse>;
 
@@ -162,7 +130,7 @@ export interface EditRedirectRequestRedirect {
   query?: boolean;
   preserveQueryParams?: boolean;
 }
-export const EditRedirectRequestRedirect = /*@__PURE__*/ S.suspend(() =>
+const EditRedirectRequestRedirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String,
     destination: S.optional(S.String),
@@ -188,7 +156,7 @@ export interface EditRedirectRequest {
   /** If true, restores the redirect from the latest production version to staging. */
   restore?: boolean;
 }
-export const EditRedirectRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRedirectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -200,13 +168,11 @@ export const EditRedirectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRedirectRequest" }) as any as S.Schema<EditRedirectRequest>;
 
 export type EditRedirectResponseVersion = DeleteRedirectsResponseBodyCase0Version;
-export const EditRedirectResponseVersion = DeleteRedirectsResponseBodyCase0Version;
-
 export interface EditRedirectResponse {
   alias: string | null;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const EditRedirectResponse = /*@__PURE__*/ S.suspend(() =>
+const EditRedirectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.NullOr(S.String),
     version: DeleteRedirectsResponseBodyCase0Version,
@@ -214,16 +180,14 @@ export const EditRedirectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRedirectResponse" }) as any as S.Schema<EditRedirectResponse>;
 
 export type GetRedirectsRequestDiffCase1 = "only";
-export const GetRedirectsRequestDiffCase1 = S.String;
-
 export type GetRedirectsRequestDiff = boolean | GetRedirectsRequestDiffCase1;
-export const GetRedirectsRequestDiff = S.Unknown as any as S.Schema<GetRedirectsRequestDiff>;
+const GetRedirectsRequestDiff = S.Unknown as any as S.Schema<GetRedirectsRequestDiff>;
 
 export type GetRedirectsRequestSortBy = "source" | "destination" | "statusCode";
-export const GetRedirectsRequestSortBy = S.String;
+const GetRedirectsRequestSortBy = S.String;
 
 export type GetRedirectsRequestSortOrder = "asc" | "desc";
-export const GetRedirectsRequestSortOrder = S.String;
+const GetRedirectsRequestSortOrder = S.String;
 
 export interface GetRedirectsRequest {
   projectId: string;
@@ -239,7 +203,7 @@ export interface GetRedirectsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     versionId: S.optional(S.String.pipe(T.Query())),
@@ -255,26 +219,11 @@ export const GetRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRedirectsRequest" }) as any as S.Schema<GetRedirectsRequest>;
 
 export type GetRedirectsResponseBodyCase0Map = { [key: string]: unknown | undefined };
-export const GetRedirectsResponseBodyCase0Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<GetRedirectsResponseBodyCase0Map>;
-
 export interface GetRedirectsResponseBodyCase1Pagination {
   numPages: number;
   page: number;
   per_page: number;
 }
-export const GetRedirectsResponseBodyCase1Pagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numPages: S.Number,
-    page: S.Number,
-    per_page: S.Number,
-  }),
-).annotate({
-  identifier: "GetRedirectsResponseBodyCase1Pagination",
-}) as any as S.Schema<GetRedirectsResponseBodyCase1Pagination>;
-
 export interface GetRedirectsResponseBodyCase1RedirectsItem {
   caseSensitive?: boolean;
   destination: string;
@@ -285,83 +234,32 @@ export interface GetRedirectsResponseBodyCase1RedirectsItem {
   source: string;
   statusCode?: number;
 }
-export const GetRedirectsResponseBodyCase1RedirectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseSensitive: S.optional(S.Boolean),
-    destination: S.String,
-    permanent: S.optional(S.Boolean),
-    preserveQueryParams: S.optional(S.Boolean),
-    query: S.optional(S.Boolean),
-    sensitive: S.optional(S.Boolean),
-    source: S.String,
-    statusCode: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetRedirectsResponseBodyCase1RedirectsItem",
-}) as any as S.Schema<GetRedirectsResponseBodyCase1RedirectsItem>;
-
 export type GetRedirectsResponseBodyCase1RedirectsList =
   Array<GetRedirectsResponseBodyCase1RedirectsItem>;
-export const GetRedirectsResponseBodyCase1RedirectsList = /*@__PURE__*/ S.Array(
-  GetRedirectsResponseBodyCase1RedirectsItem,
-) as any as S.Schema<GetRedirectsResponseBodyCase1RedirectsList>;
-
 export type GetRedirectsResponseBodyCase1Version = DeleteRedirectsResponseBodyCase0Version;
-export const GetRedirectsResponseBodyCase1Version = DeleteRedirectsResponseBodyCase0Version;
-
 export interface GetRedirectsResponseBodyCase1 {
   pagination: GetRedirectsResponseBodyCase1Pagination;
   redirects: GetRedirectsResponseBodyCase1RedirectsList;
   version?: DeleteRedirectsResponseBodyCase0Version;
 }
-export const GetRedirectsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pagination: GetRedirectsResponseBodyCase1Pagination,
-    redirects: GetRedirectsResponseBodyCase1RedirectsList,
-    version: S.optional(DeleteRedirectsResponseBodyCase0Version),
-  }),
-).annotate({
-  identifier: "GetRedirectsResponseBodyCase1",
-}) as any as S.Schema<GetRedirectsResponseBodyCase1>;
-
 export type GetRedirectsResponseBodyCase2Pagination = GetRedirectsResponseBodyCase1Pagination;
-export const GetRedirectsResponseBodyCase2Pagination = GetRedirectsResponseBodyCase1Pagination;
-
 export type GetRedirectsResponseBodyCase2RedirectsItem = GetRedirectsResponseBodyCase1RedirectsItem;
-export const GetRedirectsResponseBodyCase2RedirectsItem =
-  GetRedirectsResponseBodyCase1RedirectsItem;
-
 export type GetRedirectsResponseBodyCase2RedirectsList =
   Array<GetRedirectsResponseBodyCase1RedirectsItem>;
-export const GetRedirectsResponseBodyCase2RedirectsList =
-  GetRedirectsResponseBodyCase1RedirectsList as any as S.Schema<GetRedirectsResponseBodyCase2RedirectsList>;
-
 export type GetRedirectsResponseBodyCase2Version = DeleteRedirectsResponseBodyCase0Version;
-export const GetRedirectsResponseBodyCase2Version = DeleteRedirectsResponseBodyCase0Version;
-
 export interface GetRedirectsResponseBodyCase2 {
   pagination: GetRedirectsResponseBodyCase1Pagination;
   redirects: GetRedirectsResponseBodyCase2RedirectsList;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const GetRedirectsResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pagination: GetRedirectsResponseBodyCase1Pagination,
-    redirects: GetRedirectsResponseBodyCase2RedirectsList,
-    version: DeleteRedirectsResponseBodyCase0Version,
-  }),
-).annotate({
-  identifier: "GetRedirectsResponseBodyCase2",
-}) as any as S.Schema<GetRedirectsResponseBodyCase2>;
-
 export type GetRedirectsResponseBody =
   | GetRedirectsResponseBodyCase0Map
   | GetRedirectsResponseBodyCase1
   | GetRedirectsResponseBodyCase2;
-export const GetRedirectsResponseBody = S.Unknown as any as S.Schema<GetRedirectsResponseBody>;
+const GetRedirectsResponseBody = S.Unknown as any as S.Schema<GetRedirectsResponseBody>;
 
 export type GetRedirectsResponse = GetRedirectsResponseBody;
-export const GetRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
   GetRedirectsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetRedirectsResponse" }) as any as S.Schema<GetRedirectsResponse>;
 
@@ -372,7 +270,7 @@ export interface GetVersionsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -381,17 +279,15 @@ export const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVersionsRequest" }) as any as S.Schema<GetVersionsRequest>;
 
 export type GetVersionsResponseVersionsItem = DeleteRedirectsResponseBodyCase0Version;
-export const GetVersionsResponseVersionsItem = DeleteRedirectsResponseBodyCase0Version;
-
 export type GetVersionsResponseVersionsList = Array<DeleteRedirectsResponseBodyCase0Version>;
-export const GetVersionsResponseVersionsList = /*@__PURE__*/ S.Array(
+const GetVersionsResponseVersionsList = /*@__PURE__*/ S.Array(
   DeleteRedirectsResponseBodyCase0Version,
 ) as any as S.Schema<GetVersionsResponseVersionsList>;
 
 export interface GetVersionsResponse {
   versions: GetVersionsResponseVersionsList;
 }
-export const GetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versions: GetVersionsResponseVersionsList,
   }),
@@ -399,7 +295,7 @@ export const GetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The redirects to restore. The source of the redirect is used to match the redirect to restore. */
 export type RestoreRedirectsRequestRedirectsList = Array<string>;
-export const RestoreRedirectsRequestRedirectsList =
+const RestoreRedirectsRequestRedirectsList =
   DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsRequestRedirectsList>;
 
 export interface RestoreRedirectsRequest {
@@ -412,7 +308,7 @@ export interface RestoreRedirectsRequest {
   /** The redirects to restore. The source of the redirect is used to match the redirect to restore. */
   redirects: RestoreRedirectsRequestRedirectsList;
 }
-export const RestoreRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -423,22 +319,20 @@ export const RestoreRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreRedirectsRequest" }) as any as S.Schema<RestoreRedirectsRequest>;
 
 export type RestoreRedirectsResponseFailedToRestoreList = Array<string>;
-export const RestoreRedirectsResponseFailedToRestoreList =
+const RestoreRedirectsResponseFailedToRestoreList =
   DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsResponseFailedToRestoreList>;
 
 export type RestoreRedirectsResponseRestoredList = Array<string>;
-export const RestoreRedirectsResponseRestoredList =
+const RestoreRedirectsResponseRestoredList =
   DeleteRedirectsRequestRedirectsList as any as S.Schema<RestoreRedirectsResponseRestoredList>;
 
 export type RestoreRedirectsResponseVersion = DeleteRedirectsResponseBodyCase0Version;
-export const RestoreRedirectsResponseVersion = DeleteRedirectsResponseBodyCase0Version;
-
 export interface RestoreRedirectsResponse {
   failedToRestore: RestoreRedirectsResponseFailedToRestoreList;
   restored: RestoreRedirectsResponseRestoredList;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const RestoreRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
+const RestoreRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failedToRestore: RestoreRedirectsResponseFailedToRestoreList,
     restored: RestoreRedirectsResponseRestoredList,
@@ -447,7 +341,7 @@ export const RestoreRedirectsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreRedirectsResponse" }) as any as S.Schema<RestoreRedirectsResponse>;
 
 export type StageRedirectsRequestRedirectsItemStatusCode = number | string;
-export const StageRedirectsRequestRedirectsItemStatusCode =
+const StageRedirectsRequestRedirectsItemStatusCode =
   S.Unknown as any as S.Schema<StageRedirectsRequestRedirectsItemStatusCode>;
 
 export interface StageRedirectsRequestRedirectsItem {
@@ -459,7 +353,7 @@ export interface StageRedirectsRequestRedirectsItem {
   query?: boolean;
   preserveQueryParams?: boolean;
 }
-export const StageRedirectsRequestRedirectsItem = /*@__PURE__*/ S.suspend(() =>
+const StageRedirectsRequestRedirectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String,
     destination: S.String,
@@ -474,7 +368,7 @@ export const StageRedirectsRequestRedirectsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StageRedirectsRequestRedirectsItem>;
 
 export type StageRedirectsRequestRedirectsList = Array<StageRedirectsRequestRedirectsItem>;
-export const StageRedirectsRequestRedirectsList = /*@__PURE__*/ S.Array(
+const StageRedirectsRequestRedirectsList = /*@__PURE__*/ S.Array(
   StageRedirectsRequestRedirectsItem,
 ) as any as S.Schema<StageRedirectsRequestRedirectsList>;
 
@@ -488,7 +382,7 @@ export interface StageRedirectsRequest {
   name?: string;
   redirects?: StageRedirectsRequestRedirectsList;
 }
-export const StageRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
+const StageRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -500,17 +394,14 @@ export const StageRedirectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageRedirectsRequest" }) as any as S.Schema<StageRedirectsRequest>;
 
 export type StageRedirectsResponseVersion = DeleteRedirectsResponseBodyCase0Version;
-export const StageRedirectsResponseVersion = DeleteRedirectsResponseBodyCase0Version;
-
 export interface StageRedirectsResponse {
   alias: string | null;
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const StageRedirectsResponse =
-  EditRedirectResponse as any as S.Schema<StageRedirectsResponse>;
+const StageRedirectsResponse = EditRedirectResponse as any as S.Schema<StageRedirectsResponse>;
 
 export type UpdateVersionRequestAction = "promote" | "restore" | "discard";
-export const UpdateVersionRequestAction = S.String;
+const UpdateVersionRequestAction = S.String;
 
 export interface UpdateVersionRequest {
   projectId: string;
@@ -522,7 +413,7 @@ export interface UpdateVersionRequest {
   action: UpdateVersionRequestAction | (string & {});
   name?: string;
 }
-export const UpdateVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -534,12 +425,10 @@ export const UpdateVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateVersionRequest" }) as any as S.Schema<UpdateVersionRequest>;
 
 export type UpdateVersionResponseVersion = DeleteRedirectsResponseBodyCase0Version;
-export const UpdateVersionResponseVersion = DeleteRedirectsResponseBodyCase0Version;
-
 export interface UpdateVersionResponse {
   version: DeleteRedirectsResponseBodyCase0Version;
 }
-export const UpdateVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: DeleteRedirectsResponseBodyCase0Version,
   }),

@@ -9,13 +9,13 @@ import * as T from "../traits.ts";
 export type { AxiomOpError, AxiomOpContext };
 
 export type QueryAplRequestFormat = "legacy" | "tabular" | "tabular-rows";
-export const QueryAplRequestFormat = S.String;
+const QueryAplRequestFormat = S.String;
 
 export interface QueryAplRequestDefaultOrderItem {
   desc?: boolean;
   field?: string;
 }
-export const QueryAplRequestDefaultOrderItem = /*@__PURE__*/ S.suspend(() =>
+const QueryAplRequestDefaultOrderItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     desc: S.optional(S.Boolean),
     field: S.optional(S.String),
@@ -26,12 +26,12 @@ export const QueryAplRequestDefaultOrderItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The default order to use when no order is specified in the query. */
 export type QueryAplRequestDefaultOrderList = Array<QueryAplRequestDefaultOrderItem>;
-export const QueryAplRequestDefaultOrderList = /*@__PURE__*/ S.Array(
+const QueryAplRequestDefaultOrderList = /*@__PURE__*/ S.Array(
   QueryAplRequestDefaultOrderItem,
 ) as any as S.Schema<QueryAplRequestDefaultOrderList>;
 
 export type QueryAplRequestLibrariesList = Array<string>;
-export const QueryAplRequestLibrariesList = /*@__PURE__*/ S.Array(
+const QueryAplRequestLibrariesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryAplRequestLibrariesList>;
 
@@ -64,7 +64,7 @@ export interface QueryOptions {
   timeSeriesVariant?: string;
   timeSeriesView?: string;
 }
-export const QueryOptions = /*@__PURE__*/ S.suspend(() =>
+const QueryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     against: S.optional(S.String),
     againstStart: S.optional(S.String),
@@ -98,7 +98,7 @@ export const QueryOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Variables is an optional set of additional variables that are inserted into the APL */
 export type QueryAplRequestVariablesMap = { [key: string]: unknown | undefined };
-export const QueryAplRequestVariablesMap = /*@__PURE__*/ S.Record(
+const QueryAplRequestVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<QueryAplRequestVariablesMap>;
@@ -139,7 +139,7 @@ export interface QueryAplRequest {
   /** Variables is an optional set of additional variables that are inserted into the APL */
   variables?: QueryAplRequestVariablesMap;
 }
-export const QueryAplRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryAplRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: QueryAplRequestFormat.pipe(T.Query()),
     nocache: S.optional(S.Boolean.pipe(T.Query())),
@@ -165,7 +165,7 @@ export const QueryAplRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryAplRequest" }) as any as S.Schema<QueryAplRequest>;
 
 export type QueryAplResponse = unknown;
-export const QueryAplResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryAplResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "QueryAplResponse" }) as any as S.Schema<QueryAplResponse>;
 

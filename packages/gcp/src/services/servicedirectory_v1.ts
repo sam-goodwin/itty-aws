@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A container for services. Namespaces allow administrators to group services together and define permissions for a collection of services. */
 export interface Namespace {
@@ -73,7 +73,7 @@ export interface Namespace {
   /** Identifier. The resource name for the namespace in the format `projects/*\/locations/*\/namespaces/*`. */
   name?: string;
 }
-export const Namespace = /*@__PURE__*/ S.suspend(() =>
+const Namespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     uid: S.optional(S.String),
@@ -89,7 +89,7 @@ export interface CreateProjectsLocationsNamespacesRequest {
   /** Request body */
   body?: Namespace;
 }
-export const CreateProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     namespaceId: S.optional(S.String.pipe(T.Query())),
@@ -120,7 +120,7 @@ export interface Endpoint {
   /** Output only. The globally unique identifier of the endpoint in the UUID4 format. */
   uid?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     address: S.optional(S.String),
@@ -132,7 +132,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 export type EndpointList = Array<Endpoint>;
-export const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
+const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
 
 /** An individual service. A service contains a name and optional metadata. A service must exist before endpoints can be added to it. */
 export interface Service {
@@ -145,7 +145,7 @@ export interface Service {
   /** Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory. */
   annotations?: StringMap;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(EndpointList),
     uid: S.optional(S.String),
@@ -162,7 +162,7 @@ export interface CreateProjectsLocationsNamespacesServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const CreateProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     serviceId: S.optional(S.String.pipe(T.Query())),
@@ -186,19 +186,18 @@ export interface CreateProjectsLocationsNamespacesServicesEndpointsRequest {
   /** Request body */
   body?: Endpoint;
 }
-export const CreateProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      endpointId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Endpoint.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/endpoints",
-        baseUrl: "https://servicedirectory.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    endpointId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(Endpoint.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/endpoints",
+      baseUrl: "https://servicedirectory.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsNamespacesServicesEndpointsRequest",
 }) as any as S.Schema<CreateProjectsLocationsNamespacesServicesEndpointsRequest>;
@@ -207,7 +206,7 @@ export interface DeleteProjectsLocationsNamespacesRequest {
   /** Required. The name of the namespace to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -223,7 +222,7 @@ export const DeleteProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -231,7 +230,7 @@ export interface DeleteProjectsLocationsNamespacesServicesRequest {
   /** Required. The name of the service to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -249,17 +248,16 @@ export interface DeleteProjectsLocationsNamespacesServicesEndpointsRequest {
   /** Required. The name of the endpoint to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://servicedirectory.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://servicedirectory.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsNamespacesServicesEndpointsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsNamespacesServicesEndpointsRequest>;
@@ -269,7 +267,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -280,7 +278,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -292,7 +290,7 @@ export interface GetIamPolicyProjectsLocationsNamespacesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -318,7 +316,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     title: S.optional(S.String),
@@ -328,7 +326,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -339,7 +337,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     members: S.optional(StringList),
@@ -348,7 +346,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -359,7 +357,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     bindings: S.optional(BindingList),
@@ -373,7 +371,7 @@ export interface GetIamPolicyProjectsLocationsNamespacesServicesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -392,7 +390,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -407,10 +405,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -425,7 +420,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     locationId: S.optional(S.String),
@@ -439,7 +434,7 @@ export interface GetProjectsLocationsNamespacesRequest {
   /** Required. The name of the namespace to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -457,7 +452,7 @@ export interface GetProjectsLocationsNamespacesServicesRequest {
   /** Required. The name of the service to get. */
   name: string;
 }
-export const GetProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -475,7 +470,7 @@ export interface GetProjectsLocationsNamespacesServicesEndpointsRequest {
   /** Required. The name of the endpoint to get. */
   name: string;
 }
-export const GetProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -501,7 +496,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -520,7 +515,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -529,7 +524,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -548,7 +543,7 @@ export interface ListProjectsLocationsNamespacesRequest {
   /** Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can be `name` or `labels.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `labels.owner` returns namespaces that have a label with the key `owner`, this is the same as `labels:owner` * `labels.owner=sd` returns namespaces that have key/value `owner=sd` * `name>projects/my-project/locations/us-east1/namespaces/namespace-c` returns namespaces that have name that is alphabetically later than the string, so "namespace-e" is returned but "namespace-a" is not * `labels.owner!=sd AND labels.foo=bar` returns namespaces that have `owner` in label key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that namespace doesn't have a field called "doesnotexist". Since the filter does not match any namespaces, it returns no results For more information about filtering, see [API Filtering](https://aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -567,7 +562,7 @@ export const ListProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsNamespacesRequest>;
 
 export type NamespaceList = Array<Namespace>;
-export const NamespaceList = /*@__PURE__*/ S.Array(Namespace) as any as S.Schema<NamespaceList>;
+const NamespaceList = /*@__PURE__*/ S.Array(Namespace) as any as S.Schema<NamespaceList>;
 
 /** The response message for RegistrationService.ListNamespaces. */
 export interface ListNamespacesResponse {
@@ -576,7 +571,7 @@ export interface ListNamespacesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespaces: S.optional(NamespaceList),
     nextPageToken: S.optional(S.String),
@@ -595,7 +590,7 @@ export interface ListProjectsLocationsNamespacesServicesRequest {
   /** Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * `` allows value: `name` * `` ascending or descending order by ``. If this is left blank, `asc` is used Note that an empty `order_by` string results in default order, which is order by `name` in ascending order. */
   orderBy?: string;
 }
-export const ListProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -614,7 +609,7 @@ export const ListProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsNamespacesServicesRequest>;
 
 export type ServiceList = Array<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** The response message for RegistrationService.ListServices. */
 export interface ListServicesResponse {
@@ -623,7 +618,7 @@ export interface ListServicesResponse {
   /** The list of services. */
   services?: ServiceList;
 }
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     services: S.optional(ServiceList),
@@ -642,7 +637,7 @@ export interface ListProjectsLocationsNamespacesServicesEndpointsRequest {
   /** Required. The resource name of the service whose endpoints you'd like to list. */
   parent: string;
 }
-export const ListProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -667,7 +662,7 @@ export interface ListEndpointsResponse {
   /** The list of endpoints. */
   endpoints?: EndpointList;
 }
-export const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     endpoints: S.optional(EndpointList),
@@ -682,7 +677,7 @@ export interface PatchProjectsLocationsNamespacesRequest {
   /** Request body */
   body?: Namespace;
 }
-export const PatchProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -706,7 +701,7 @@ export interface PatchProjectsLocationsNamespacesServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const PatchProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -730,19 +725,18 @@ export interface PatchProjectsLocationsNamespacesServicesEndpointsRequest {
   /** Request body */
   body?: Endpoint;
 }
-export const PatchProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Endpoint.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://servicedirectory.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsNamespacesServicesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Endpoint.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://servicedirectory.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsNamespacesServicesEndpointsRequest",
 }) as any as S.Schema<PatchProjectsLocationsNamespacesServicesEndpointsRequest>;
@@ -754,7 +748,7 @@ export interface ResolveServiceRequest {
   /** Optional. The filter applied to the endpoints of the resolved service. General `filter` string syntax: ` ()` * `` can be `name`, `address`, `port`, or `annotations.` for map field * `` can be `<`, `>`, `<=`, `>=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `annotations.owner` returns endpoints that have a annotation with the key `owner`, this is the same as `annotations:owner` * `annotations.protocol=gRPC` returns endpoints that have key/value `protocol=gRPC` * `address=192.108.1.105` returns endpoints that have this address * `port>8080` returns endpoints that have port number larger than 8080 * `name>projects/my-project/locations/us-east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c` returns endpoints that have name that is alphabetically later than the string, so "endpoint-e" is returned but "endpoint-a" is not * `name=projects/my-project/locations/us-central1/namespaces/my-namespace/services/my-service/endpoints/ep-1` returns the endpoint that has an endpoint_id equal to `ep-1` * `annotations.owner!=sd AND annotations.foo=bar` returns endpoints that have `owner` in annotation key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that endpoint doesn't have a field called "doesnotexist". Since the filter does not match any endpoint, it returns no results For more information about filtering, see [API Filtering](https://aip.dev/160). */
   endpointFilter?: string;
 }
-export const ResolveServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxEndpoints: S.optional(S.Number),
     endpointFilter: S.optional(S.String),
@@ -767,7 +761,7 @@ export interface ResolveProjectsLocationsNamespacesServicesRequest {
   /** Request body */
   body?: ResolveServiceRequest;
 }
-export const ResolveProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ResolveServiceRequest.pipe(T.HttpBody())),
@@ -786,7 +780,7 @@ export const ResolveProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S
 export interface ResolveServiceResponse {
   service?: Service;
 }
-export const ResolveServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const ResolveServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(Service),
   }),
@@ -797,7 +791,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -809,7 +803,7 @@ export interface SetIamPolicyProjectsLocationsNamespacesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -830,7 +824,7 @@ export interface SetIamPolicyProjectsLocationsNamespacesServicesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -850,7 +844,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -864,7 +858,7 @@ export interface TestIamPermissionsProjectsLocationsNamespacesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -884,7 +878,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsNamespacesServicesRequest {
@@ -893,18 +887,17 @@ export interface TestIamPermissionsProjectsLocationsNamespacesServicesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://servicedirectory.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://servicedirectory.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsNamespacesServicesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsNamespacesServicesRequest>;

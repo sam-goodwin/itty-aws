@@ -9,10 +9,10 @@ import * as T from "../traits.ts";
 export type { S2OpError, S2OpContext };
 
 export type AccountMetricSet = "active-basins" | "account-ops";
-export const AccountMetricSet = S.String;
+const AccountMetricSet = S.String;
 
 export type TimeseriesInterval = "minute" | "hour" | "day";
-export const TimeseriesInterval = S.String;
+const TimeseriesInterval = S.String;
 
 export interface AccountMetricsRequest {
   /** Metric set to return. */
@@ -24,7 +24,7 @@ export interface AccountMetricsRequest {
   /** Interval to aggregate over for timeseries metric sets. */
   interval?: TimeseriesInterval | (string & {});
 }
-export const AccountMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     set: AccountMetricSet.pipe(T.Query()),
     start: S.optional(S.Number.pipe(T.Query())),
@@ -34,8 +34,6 @@ export const AccountMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountMetricsRequest" }) as any as S.Schema<AccountMetricsRequest>;
 
 export type MetricUnit = "bytes" | "operations";
-export const MetricUnit = S.String;
-
 export interface ScalarMetric {
   /** Metric name. */
   name: string;
@@ -44,36 +42,14 @@ export interface ScalarMetric {
   /** Metric value. */
   value: number;
 }
-export const ScalarMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit: MetricUnit,
-    value: S.Number,
-  }),
-).annotate({ identifier: "ScalarMetric" }) as any as S.Schema<ScalarMetric>;
-
 /** Single named value. */
 export interface MetricCase0 {
   /** Single named value. */
   scalar: ScalarMetric;
 }
-export const MetricCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scalar: ScalarMetric,
-  }),
-).annotate({ identifier: "MetricCase0" }) as any as S.Schema<MetricCase0>;
-
 export type AccumulationMetricValuesItemList = Array<unknown>;
-export const AccumulationMetricValuesItemList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AccumulationMetricValuesItemList>;
-
 /** Timeseries values. Each element is a tuple of a timestamp in Unix epoch seconds and a data point. The data point represents the accumulated value for the time period starting at the timestamp, spanning one `interval`. */
 export type AccumulationMetricValuesList = Array<AccumulationMetricValuesItemList>;
-export const AccumulationMetricValuesList = /*@__PURE__*/ S.Array(
-  AccumulationMetricValuesItemList,
-) as any as S.Schema<AccumulationMetricValuesList>;
-
 export interface AccumulationMetric {
   /** The interval at which data points are accumulated. */
   interval: TimeseriesInterval;
@@ -84,35 +60,14 @@ export interface AccumulationMetric {
   /** Timeseries values. Each element is a tuple of a timestamp in Unix epoch seconds and a data point. The data point represents the accumulated value for the time period starting at the timestamp, spanning one `interval`. */
   values: AccumulationMetricValuesList;
 }
-export const AccumulationMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interval: TimeseriesInterval,
-    name: S.String,
-    unit: MetricUnit,
-    values: AccumulationMetricValuesList,
-  }),
-).annotate({ identifier: "AccumulationMetric" }) as any as S.Schema<AccumulationMetric>;
-
 /** Named series of `(timestamp, value)` points representing an accumulation over a specified interval. */
 export interface MetricCase1 {
   /** Named series of `(timestamp, value)` points representing an accumulation over a specified interval. */
   accumulation: AccumulationMetric;
 }
-export const MetricCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accumulation: AccumulationMetric,
-  }),
-).annotate({ identifier: "MetricCase1" }) as any as S.Schema<MetricCase1>;
-
 export type GaugeMetricValuesItemList = Array<unknown>;
-export const GaugeMetricValuesItemList =
-  AccumulationMetricValuesItemList as any as S.Schema<GaugeMetricValuesItemList>;
-
 /** Timeseries values. Each element is a tuple of a timestamp in Unix epoch seconds and a data point. The data point represents the value at the instant of the timestamp. */
 export type GaugeMetricValuesList = Array<GaugeMetricValuesItemList>;
-export const GaugeMetricValuesList =
-  AccumulationMetricValuesList as any as S.Schema<GaugeMetricValuesList>;
-
 export interface GaugeMetric {
   /** Timeseries name. */
   name: string;
@@ -121,61 +76,30 @@ export interface GaugeMetric {
   /** Timeseries values. Each element is a tuple of a timestamp in Unix epoch seconds and a data point. The data point represents the value at the instant of the timestamp. */
   values: GaugeMetricValuesList;
 }
-export const GaugeMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    unit: MetricUnit,
-    values: GaugeMetricValuesList,
-  }),
-).annotate({ identifier: "GaugeMetric" }) as any as S.Schema<GaugeMetric>;
-
 /** Named series of `(timestamp, value)` points each representing an instantaneous value. */
 export interface MetricCase2 {
   /** Named series of `(timestamp, value)` points each representing an instantaneous value. */
   gauge: GaugeMetric;
 }
-export const MetricCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gauge: GaugeMetric,
-  }),
-).annotate({ identifier: "MetricCase2" }) as any as S.Schema<MetricCase2>;
-
 /** Label values. */
 export type LabelMetricValuesList = Array<string>;
-export const LabelMetricValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LabelMetricValuesList>;
-
 export interface LabelMetric {
   /** Label name. */
   name: string;
   /** Label values. */
   values: LabelMetricValuesList;
 }
-export const LabelMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    values: LabelMetricValuesList,
-  }),
-).annotate({ identifier: "LabelMetric" }) as any as S.Schema<LabelMetric>;
-
 /** Set of string labels. */
 export interface MetricCase3 {
   /** Set of string labels. */
   label: LabelMetric;
 }
-export const MetricCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: LabelMetric,
-  }),
-).annotate({ identifier: "MetricCase3" }) as any as S.Schema<MetricCase3>;
-
 export type Metric = MetricCase0 | MetricCase1 | MetricCase2 | MetricCase3;
-export const Metric = /*@__PURE__*/ S.Unknown as any as S.Schema<Metric>;
+const Metric = /*@__PURE__*/ S.Unknown as any as S.Schema<Metric>;
 
 /** Metrics comprising the set. */
 export type MetricSetResponseValuesList = Array<Metric>;
-export const MetricSetResponseValuesList = /*@__PURE__*/ S.Array(
+const MetricSetResponseValuesList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricSetResponseValuesList>;
 
@@ -183,7 +107,7 @@ export interface MetricSetResponse {
   /** Metrics comprising the set. */
   values: MetricSetResponseValuesList;
 }
-export const MetricSetResponse = /*@__PURE__*/ S.suspend(() =>
+const MetricSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: MetricSetResponseValuesList,
   }),
@@ -196,7 +120,7 @@ export type BasinMetricSet =
   | "read-throughput"
   | "append-throughput"
   | "basin-ops";
-export const BasinMetricSet = S.String;
+const BasinMetricSet = S.String;
 
 export interface BasinMetricsRequest {
   /** Basin name. */
@@ -210,7 +134,7 @@ export interface BasinMetricsRequest {
   /** Interval to aggregate over for timeseries metric sets. */
   interval?: TimeseriesInterval | (string & {});
 }
-export const BasinMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const BasinMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basin: S.String.pipe(T.Label()),
     set: BasinMetricSet.pipe(T.Query()),
@@ -221,7 +145,7 @@ export const BasinMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BasinMetricsRequest" }) as any as S.Schema<BasinMetricsRequest>;
 
 export type StreamMetricSet = "storage";
-export const StreamMetricSet = S.String;
+const StreamMetricSet = S.String;
 
 export interface StreamMetricsRequest {
   /** Basin name. */
@@ -237,7 +161,7 @@ export interface StreamMetricsRequest {
   /** Interval to aggregate over for timeseries metric sets. */
   interval?: TimeseriesInterval | (string & {});
 }
-export const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basin: S.String.pipe(T.Label()),
     stream: S.String.pipe(T.Label()),

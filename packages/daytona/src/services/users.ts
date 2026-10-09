@@ -9,21 +9,21 @@ import * as T from "../traits.ts";
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface AcceptPrivacyPoliciesRequest {}
-export const AcceptPrivacyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptPrivacyPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/users/privacy-policies/accept", code: 200 })),
 ).annotate({
   identifier: "AcceptPrivacyPoliciesRequest",
 }) as any as S.Schema<AcceptPrivacyPoliciesRequest>;
 
 export interface AcceptPrivacyPoliciesResponse {}
-export const AcceptPrivacyPoliciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AcceptPrivacyPoliciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AcceptPrivacyPoliciesResponse",
 }) as any as S.Schema<AcceptPrivacyPoliciesResponse>;
 
 export interface ConfirmPendingSsoLinkRequest {
   id: string;
 }
-export const ConfirmPendingSsoLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmPendingSsoLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/users/me/pending-sso-links/{id}/confirm", code: 200 })),
@@ -32,13 +32,13 @@ export const ConfirmPendingSsoLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfirmPendingSsoLinkRequest>;
 
 export interface ConfirmPendingSsoLinkResponse {}
-export const ConfirmPendingSsoLinkResponse =
+const ConfirmPendingSsoLinkResponse =
   AcceptPrivacyPoliciesResponse as any as S.Schema<ConfirmPendingSsoLinkResponse>;
 
 export interface DismissPendingSsoLinkRequest {
   id: string;
 }
-export const DismissPendingSsoLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DismissPendingSsoLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/users/me/pending-sso-links/{id}", code: 200 })),
@@ -47,11 +47,11 @@ export const DismissPendingSsoLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DismissPendingSsoLinkRequest>;
 
 export interface DismissPendingSsoLinkResponse {}
-export const DismissPendingSsoLinkResponse =
+const DismissPendingSsoLinkResponse =
   AcceptPrivacyPoliciesResponse as any as S.Schema<DismissPendingSsoLinkResponse>;
 
 export interface GetAccountProvidersRequest {}
-export const GetAccountProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/account-providers", code: 200 })),
 ).annotate({
   identifier: "GetAccountProvidersRequest",
@@ -65,7 +65,7 @@ export interface AccountProvider {
   /** Whether the authenticated user has an identity from this provider */
   linked: boolean;
 }
-export const AccountProvider = /*@__PURE__*/ S.suspend(() =>
+const AccountProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String,
     displayName: S.String,
@@ -74,19 +74,19 @@ export const AccountProvider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountProvider" }) as any as S.Schema<AccountProvider>;
 
 export type GetAccountProvidersResponseBodyList = Array<AccountProvider>;
-export const GetAccountProvidersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAccountProvidersResponseBodyList = /*@__PURE__*/ S.Array(
   AccountProvider,
 ) as any as S.Schema<GetAccountProvidersResponseBodyList>;
 
 export type GetAccountProvidersResponse = GetAccountProvidersResponseBodyList;
-export const GetAccountProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   GetAccountProvidersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetAccountProvidersResponse",
 }) as any as S.Schema<GetAccountProvidersResponse>;
 
 export interface GetAuthenticatedUserRequest {}
-export const GetAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/me", code: 200 })),
 ).annotate({
   identifier: "GetAuthenticatedUserRequest",
@@ -98,7 +98,7 @@ export interface UserPublicKey {
   /** Key name */
   name: string;
 }
-export const UserPublicKey = /*@__PURE__*/ S.suspend(() =>
+const UserPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -107,7 +107,7 @@ export const UserPublicKey = /*@__PURE__*/ S.suspend(() =>
 
 /** User public keys */
 export type UserPublicKeysList = Array<UserPublicKey>;
-export const UserPublicKeysList = /*@__PURE__*/ S.Array(
+const UserPublicKeysList = /*@__PURE__*/ S.Array(
   UserPublicKey,
 ) as any as S.Schema<UserPublicKeysList>;
 
@@ -129,7 +129,7 @@ export interface User {
   /** Creation timestamp */
   createdAt: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -143,7 +143,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export interface ListPendingSsoLinksRequest {}
-export const ListPendingSsoLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPendingSsoLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/me/pending-sso-links", code: 200 })),
 ).annotate({
   identifier: "ListPendingSsoLinksRequest",
@@ -160,7 +160,7 @@ export interface PendingSsoLink {
   createdAt: string;
   expiresAt: string;
 }
-export const PendingSsoLink = /*@__PURE__*/ S.suspend(() =>
+const PendingSsoLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     idpName: S.String,
@@ -172,25 +172,24 @@ export const PendingSsoLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PendingSsoLink" }) as any as S.Schema<PendingSsoLink>;
 
 export type ListPendingSsoLinksResponseBodyList = Array<PendingSsoLink>;
-export const ListPendingSsoLinksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPendingSsoLinksResponseBodyList = /*@__PURE__*/ S.Array(
   PendingSsoLink,
 ) as any as S.Schema<ListPendingSsoLinksResponseBodyList>;
 
 export type ListPendingSsoLinksResponse = ListPendingSsoLinksResponseBodyList;
-export const ListPendingSsoLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPendingSsoLinksResponse = /*@__PURE__*/ S.suspend(() =>
   ListPendingSsoLinksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPendingSsoLinksResponse",
 }) as any as S.Schema<ListPendingSsoLinksResponse>;
 
 export interface LoginRecordRequest {}
-export const LoginRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const LoginRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/users/me/logins", code: 200 })),
 ).annotate({ identifier: "LoginRecordRequest" }) as any as S.Schema<LoginRecordRequest>;
 
 export interface LoginRecordResponse {}
-export const LoginRecordResponse =
-  AcceptPrivacyPoliciesResponse as any as S.Schema<LoginRecordResponse>;
+const LoginRecordResponse = AcceptPrivacyPoliciesResponse as any as S.Schema<LoginRecordResponse>;
 
 export type AcceptPrivacyPoliciesError = DaytonaOpError;
 /** Accept the current privacy policies */

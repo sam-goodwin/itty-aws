@@ -18,7 +18,7 @@ export interface CheckServerNameAvailabilityRequest {
   /** The resource type of azure analysis services. */
   type?: string;
 }
-export const CheckServerNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckServerNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -45,7 +45,7 @@ export interface CheckServerNameAvailabilityResult {
   /** The detailed message of the request unavailability. */
   message?: string;
 }
-export const CheckServerNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckServerNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(S.String),
@@ -57,7 +57,7 @@ export const CheckServerNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the Azure pricing tier to which the SKU applies. */
 export type ResourceSkuTier = "Development" | "Basic" | "Standard";
-export const ResourceSkuTier = S.String;
+const ResourceSkuTier = S.String;
 
 /** Represents the SKU name and Azure pricing tier for Analysis Services resource. */
 export interface ResourceSku {
@@ -68,7 +68,7 @@ export interface ResourceSku {
   /** The number of instances in the read only query pool. */
   capacity?: number;
 }
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+const ResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(ResourceSkuTier),
@@ -78,14 +78,14 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type CreateServerRequestTagsMap = { [key: string]: string | undefined };
-export const CreateServerRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateServerRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateServerRequestTagsMap>;
 
 /** An array of administrator user identities. */
 export type ServerAdministratorsMembersList = Array<string>;
-export const ServerAdministratorsMembersList = /*@__PURE__*/ S.Array(
+const ServerAdministratorsMembersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServerAdministratorsMembersList>;
 
@@ -94,7 +94,7 @@ export interface ServerAdministrators {
   /** An array of administrator user identities. */
   members?: ServerAdministratorsMembersList;
 }
-export const ServerAdministrators = /*@__PURE__*/ S.suspend(() =>
+const ServerAdministrators = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(ServerAdministratorsMembersList),
   }),
@@ -105,7 +105,7 @@ export interface GatewayDetailsInput {
   /** Gateway resource to be associated with the server. */
   gatewayResourceId?: string;
 }
-export const GatewayDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const GatewayDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayResourceId: S.optional(S.String),
   }),
@@ -120,7 +120,7 @@ export interface IPv4FirewallRule {
   /** The end range of IPv4. */
   rangeEnd?: string;
 }
-export const IPv4FirewallRule = /*@__PURE__*/ S.suspend(() =>
+const IPv4FirewallRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallRuleName: S.optional(S.String),
     rangeStart: S.optional(S.String),
@@ -130,7 +130,7 @@ export const IPv4FirewallRule = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of firewall rules. */
 export type IPv4FirewallSettingsFirewallRulesList = Array<IPv4FirewallRule>;
-export const IPv4FirewallSettingsFirewallRulesList = /*@__PURE__*/ S.Array(
+const IPv4FirewallSettingsFirewallRulesList = /*@__PURE__*/ S.Array(
   IPv4FirewallRule,
 ) as any as S.Schema<IPv4FirewallSettingsFirewallRulesList>;
 
@@ -141,7 +141,7 @@ export interface IPv4FirewallSettings {
   /** The indicator of enabling PBI service. */
   enablePowerBIService?: boolean;
 }
-export const IPv4FirewallSettings = /*@__PURE__*/ S.suspend(() =>
+const IPv4FirewallSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallRules: S.optional(IPv4FirewallSettingsFirewallRulesList),
     enablePowerBIService: S.optional(S.Boolean),
@@ -150,15 +150,15 @@ export const IPv4FirewallSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerPropertiesInputQuerypoolConnectionMode = "All" | "ReadOnly";
-export const AnalysisServicesServerPropertiesInputQuerypoolConnectionMode = S.String;
+const AnalysisServicesServerPropertiesInputQuerypoolConnectionMode = S.String;
 
 /** The managed mode of the server (0 = not managed, 1 = managed). */
 export type AnalysisServicesServerPropertiesInputManagedMode = 0 | 1;
-export const AnalysisServicesServerPropertiesInputManagedMode = S.Number;
+const AnalysisServicesServerPropertiesInputManagedMode = S.Number;
 
 /** The server monitor mode for AS server */
 export type AnalysisServicesServerPropertiesInputServerMonitorMode = 0 | 1;
-export const AnalysisServicesServerPropertiesInputServerMonitorMode = S.Number;
+const AnalysisServicesServerPropertiesInputServerMonitorMode = S.Number;
 
 /** Properties of Analysis Services resource. */
 export interface AnalysisServicesServerPropertiesInput {
@@ -181,7 +181,7 @@ export interface AnalysisServicesServerPropertiesInput {
   /** The SKU of the Analysis Services resource. */
   sku?: ResourceSku;
 }
-export const AnalysisServicesServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AnalysisServicesServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asAdministrators: S.optional(ServerAdministrators),
     backupBlobContainerUri: S.optional(S.String),
@@ -214,7 +214,7 @@ export interface CreateServerRequest {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerPropertiesInput;
 }
-export const CreateServerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -235,7 +235,7 @@ export const CreateServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type CreateServerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateServerResponseTagsMap =
+const CreateServerResponseTagsMap =
   CreateServerRequestTagsMap as any as S.Schema<CreateServerResponseTagsMap>;
 
 /** The gateway details. */
@@ -247,7 +247,7 @@ export interface GatewayDetails {
   /** Uri of the DMTS cluster. */
   dmtsClusterUri?: string;
 }
-export const GatewayDetails = /*@__PURE__*/ S.suspend(() =>
+const GatewayDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayResourceId: S.optional(S.String),
     gatewayObjectId: S.optional(S.String),
@@ -257,15 +257,15 @@ export const GatewayDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerPropertiesQuerypoolConnectionMode = "All" | "ReadOnly";
-export const AnalysisServicesServerPropertiesQuerypoolConnectionMode = S.String;
+const AnalysisServicesServerPropertiesQuerypoolConnectionMode = S.String;
 
 /** The managed mode of the server (0 = not managed, 1 = managed). */
 export type AnalysisServicesServerPropertiesManagedMode = 0 | 1;
-export const AnalysisServicesServerPropertiesManagedMode = S.Number;
+const AnalysisServicesServerPropertiesManagedMode = S.Number;
 
 /** The server monitor mode for AS server */
 export type AnalysisServicesServerPropertiesServerMonitorMode = 0 | 1;
-export const AnalysisServicesServerPropertiesServerMonitorMode = S.Number;
+const AnalysisServicesServerPropertiesServerMonitorMode = S.Number;
 
 /** The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning. */
 export type AnalysisServicesServerPropertiesState =
@@ -281,7 +281,7 @@ export type AnalysisServicesServerPropertiesState =
   | "Resuming"
   | "Preparing"
   | "Scaling";
-export const AnalysisServicesServerPropertiesState = S.String;
+const AnalysisServicesServerPropertiesState = S.String;
 
 /** The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning. */
 export type AnalysisServicesServerPropertiesProvisioningState =
@@ -297,7 +297,7 @@ export type AnalysisServicesServerPropertiesProvisioningState =
   | "Resuming"
   | "Preparing"
   | "Scaling";
-export const AnalysisServicesServerPropertiesProvisioningState = S.String;
+const AnalysisServicesServerPropertiesProvisioningState = S.String;
 
 /** Properties of Analysis Services resource. */
 export interface AnalysisServicesServerProperties {
@@ -324,7 +324,7 @@ export interface AnalysisServicesServerProperties {
   /** The SKU of the Analysis Services resource. */
   sku?: ResourceSku;
 }
-export const AnalysisServicesServerProperties = /*@__PURE__*/ S.suspend(() =>
+const AnalysisServicesServerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asAdministrators: S.optional(ServerAdministrators),
     backupBlobContainerUri: S.optional(S.String),
@@ -358,7 +358,7 @@ export interface CreateServerResponse {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-export const CreateServerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -378,7 +378,7 @@ export interface DeleteServerRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -394,7 +394,7 @@ export const DeleteServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServerRequest" }) as any as S.Schema<DeleteServerRequest>;
 
 export interface DeleteServerResponse {}
-export const DeleteServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteServerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteServerResponse",
 }) as any as S.Schema<DeleteServerResponse>;
 
@@ -406,7 +406,7 @@ export interface GetServerDetailsRequest {
   /** The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63. */
   serverName: string;
 }
-export const GetServerDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServerDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -423,9 +423,6 @@ export const GetServerDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type GetServerDetailsResponseTagsMap = { [key: string]: string | undefined };
-export const GetServerDetailsResponseTagsMap =
-  CreateServerRequestTagsMap as any as S.Schema<GetServerDetailsResponseTagsMap>;
-
 export interface GetServerDetailsResponse {
   /** An identifier that represents the Analysis Services resource. */
   id?: string;
@@ -442,11 +439,10 @@ export interface GetServerDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-export const GetServerDetailsResponse =
-  CreateServerResponse as any as S.Schema<GetServerDetailsResponse>;
+const GetServerDetailsResponse = CreateServerResponse as any as S.Schema<GetServerDetailsResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -468,7 +464,7 @@ export interface OperationDisplay {
   /** Description of the operation object. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -484,7 +480,7 @@ export interface MetricDimensions {
   /** Dimension display name. */
   displayName?: string;
 }
-export const MetricDimensions = /*@__PURE__*/ S.suspend(() =>
+const MetricDimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -493,7 +489,7 @@ export const MetricDimensions = /*@__PURE__*/ S.suspend(() =>
 
 /** The dimensions of metric. */
 export type MetricSpecificationsDimensionsList = Array<MetricDimensions>;
-export const MetricSpecificationsDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationsDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimensions,
 ) as any as S.Schema<MetricSpecificationsDimensionsList>;
 
@@ -512,7 +508,7 @@ export interface MetricSpecifications {
   /** The dimensions of metric. */
   dimensions?: MetricSpecificationsDimensionsList;
 }
-export const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -526,10 +522,9 @@ export const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
 /** The metric specifications. */
 export type OperationPropertiesServiceSpecificationMetricSpecificationsList =
   Array<MetricSpecifications>;
-export const OperationPropertiesServiceSpecificationMetricSpecificationsList =
-  /*@__PURE__*/ S.Array(
-    MetricSpecifications,
-  ) as any as S.Schema<OperationPropertiesServiceSpecificationMetricSpecificationsList>;
+const OperationPropertiesServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+  MetricSpecifications,
+) as any as S.Schema<OperationPropertiesServiceSpecificationMetricSpecificationsList>;
 
 /** The log metric specification for exposing performance metrics to shoebox. */
 export interface LogSpecifications {
@@ -540,7 +535,7 @@ export interface LogSpecifications {
   /** The blob duration for the log. */
   blobDuration?: string;
 }
-export const LogSpecifications = /*@__PURE__*/ S.suspend(() =>
+const LogSpecifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -550,7 +545,7 @@ export const LogSpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The log specifications. */
 export type OperationPropertiesServiceSpecificationLogSpecificationsList = Array<LogSpecifications>;
-export const OperationPropertiesServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
+const OperationPropertiesServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecifications,
 ) as any as S.Schema<OperationPropertiesServiceSpecificationLogSpecificationsList>;
 
@@ -561,7 +556,7 @@ export interface OperationPropertiesServiceSpecification {
   /** The log specifications. */
   logSpecifications?: OperationPropertiesServiceSpecificationLogSpecificationsList;
 }
-export const OperationPropertiesServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const OperationPropertiesServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(
       OperationPropertiesServiceSpecificationMetricSpecificationsList,
@@ -577,7 +572,7 @@ export interface OperationProperties {
   /** Performance metrics to shoebox. */
   serviceSpecification?: OperationPropertiesServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(OperationPropertiesServiceSpecification),
   }),
@@ -594,7 +589,7 @@ export interface Operation {
   /** Additional properties to expose performance metrics to shoebox. */
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -605,7 +600,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of analysis services operations supported by the Microsoft.AnalysisServices resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -616,7 +611,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -629,7 +624,7 @@ export interface ListServerByResourceGroupRequest {
   /** The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90. */
   resourceGroupName: string;
 }
-export const ListServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -647,9 +642,6 @@ export const ListServerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type AnalysisServicesServerTagsMap = { [key: string]: string | undefined };
-export const AnalysisServicesServerTagsMap =
-  CreateServerRequestTagsMap as any as S.Schema<AnalysisServicesServerTagsMap>;
-
 /** Represents an instance of an Analysis Services resource. */
 export interface AnalysisServicesServer {
   /** An identifier that represents the Analysis Services resource. */
@@ -667,12 +659,11 @@ export interface AnalysisServicesServer {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-export const AnalysisServicesServer =
-  CreateServerResponse as any as S.Schema<AnalysisServicesServer>;
+const AnalysisServicesServer = CreateServerResponse as any as S.Schema<AnalysisServicesServer>;
 
 /** An array of Analysis Services resources. */
 export type AnalysisServicesServersValueList = Array<AnalysisServicesServer>;
-export const AnalysisServicesServersValueList = /*@__PURE__*/ S.Array(
+const AnalysisServicesServersValueList = /*@__PURE__*/ S.Array(
   AnalysisServicesServer,
 ) as any as S.Schema<AnalysisServicesServersValueList>;
 
@@ -681,7 +672,7 @@ export interface AnalysisServicesServers {
   /** An array of Analysis Services resources. */
   value: AnalysisServicesServersValueList;
 }
-export const AnalysisServicesServers = /*@__PURE__*/ S.suspend(() =>
+const AnalysisServicesServers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AnalysisServicesServersValueList,
   }),
@@ -695,7 +686,7 @@ export interface ListServerGatewayStatusRequest {
   /** The name of the Analysis Services server. */
   serverName: string;
 }
-export const ListServerGatewayStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerGatewayStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -714,14 +705,14 @@ export const ListServerGatewayStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Live message of list gateway. Status: 0 - Live */
 export type GatewayListStatusLiveStatus = 0;
-export const GatewayListStatusLiveStatus = S.Number;
+const GatewayListStatusLiveStatus = S.Number;
 
 /** Status of gateway is live. */
 export interface GatewayListStatusLive {
   /** Live message of list gateway. Status: 0 - Live */
   status?: GatewayListStatusLiveStatus;
 }
-export const GatewayListStatusLive = /*@__PURE__*/ S.suspend(() =>
+const GatewayListStatusLive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GatewayListStatusLiveStatus),
   }),
@@ -735,7 +726,7 @@ export interface ListServerOperationResultsRequest {
   /** The target operation Id. */
   operationId: string;
 }
-export const ListServerOperationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerOperationResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -753,9 +744,7 @@ export const ListServerOperationResultsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServerOperationResultsRequest>;
 
 export interface ListServerOperationResultsResponse {}
-export const ListServerOperationResultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ListServerOperationResultsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ListServerOperationResultsResponse",
 }) as any as S.Schema<ListServerOperationResultsResponse>;
 
@@ -767,7 +756,7 @@ export interface ListServerOperationStatusesRequest {
   /** The target operation Id. */
   operationId: string;
 }
-export const ListServerOperationStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerOperationStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -786,7 +775,7 @@ export const ListServerOperationStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -797,7 +786,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -806,7 +795,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -829,7 +818,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -857,7 +846,7 @@ export interface OperationStatus {
   /** The error detail of the operation if any. */
   error?: ErrorDetail;
 }
-export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
+const OperationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -872,7 +861,7 @@ export interface ListServersRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListServersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -893,7 +882,7 @@ export interface ListServerSkusForExistingRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-export const ListServerSkusForExistingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerSkusForExistingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -917,7 +906,7 @@ export interface SkuDetailsForExistingResource {
   /** The resource type. */
   resourceType?: string;
 }
-export const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
+const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(ResourceSku),
     resourceType: S.optional(S.String),
@@ -928,7 +917,7 @@ export const SkuDetailsForExistingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for existing resources. */
 export type SkuEnumerationForExistingResourceResultValueList = Array<SkuDetailsForExistingResource>;
-export const SkuEnumerationForExistingResourceResultValueList = /*@__PURE__*/ S.Array(
+const SkuEnumerationForExistingResourceResultValueList = /*@__PURE__*/ S.Array(
   SkuDetailsForExistingResource,
 ) as any as S.Schema<SkuEnumerationForExistingResourceResultValueList>;
 
@@ -937,7 +926,7 @@ export interface SkuEnumerationForExistingResourceResult {
   /** The collection of available SKUs for existing resources. */
   value?: SkuEnumerationForExistingResourceResultValueList;
 }
-export const SkuEnumerationForExistingResourceResult = /*@__PURE__*/ S.suspend(() =>
+const SkuEnumerationForExistingResourceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SkuEnumerationForExistingResourceResultValueList),
   }),
@@ -949,7 +938,7 @@ export interface ListServerSkusForNewRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListServerSkusForNewRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServerSkusForNewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -966,7 +955,7 @@ export const ListServerSkusForNewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for new resources. */
 export type SkuEnumerationForNewResourceResultValueList = Array<ResourceSku>;
-export const SkuEnumerationForNewResourceResultValueList = /*@__PURE__*/ S.Array(
+const SkuEnumerationForNewResourceResultValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<SkuEnumerationForNewResourceResultValueList>;
 
@@ -975,7 +964,7 @@ export interface SkuEnumerationForNewResourceResult {
   /** The collection of available SKUs for new resources. */
   value?: SkuEnumerationForNewResourceResultValueList;
 }
-export const SkuEnumerationForNewResourceResult = /*@__PURE__*/ S.suspend(() =>
+const SkuEnumerationForNewResourceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SkuEnumerationForNewResourceResultValueList),
   }),
@@ -991,7 +980,7 @@ export interface ResumeServerRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-export const ResumeServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1007,7 +996,7 @@ export const ResumeServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeServerRequest" }) as any as S.Schema<ResumeServerRequest>;
 
 export interface ResumeServerResponse {}
-export const ResumeServerResponse = DeleteServerResponse as any as S.Schema<ResumeServerResponse>;
+const ResumeServerResponse = DeleteServerResponse as any as S.Schema<ResumeServerResponse>;
 
 export interface ServersDissociateGatewayRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1017,7 +1006,7 @@ export interface ServersDissociateGatewayRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-export const ServersDissociateGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const ServersDissociateGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1035,7 +1024,7 @@ export const ServersDissociateGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersDissociateGatewayRequest>;
 
 export interface ServersDissociateGatewayResponse {}
-export const ServersDissociateGatewayResponse =
+const ServersDissociateGatewayResponse =
   ListServerOperationResultsResponse as any as S.Schema<ServersDissociateGatewayResponse>;
 
 export interface SuspendServerRequest {
@@ -1046,7 +1035,7 @@ export interface SuspendServerRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-export const SuspendServerRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1062,26 +1051,26 @@ export const SuspendServerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuspendServerRequest" }) as any as S.Schema<SuspendServerRequest>;
 
 export interface SuspendServerResponse {}
-export const SuspendServerResponse = DeleteServerResponse as any as S.Schema<SuspendServerResponse>;
+const SuspendServerResponse = DeleteServerResponse as any as S.Schema<SuspendServerResponse>;
 
 /** Key-value pairs of additional provisioning properties. */
 export type UpdateServerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServerRequestTagsMap =
+const UpdateServerRequestTagsMap =
   CreateServerRequestTagsMap as any as S.Schema<UpdateServerRequestTagsMap>;
 
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
   | "All"
   | "ReadOnly";
-export const AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode = S.String;
+const AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode = S.String;
 
 /** The managed mode of the server (0 = not managed, 1 = managed). */
 export type AnalysisServicesServerMutablePropertiesInputManagedMode = 0 | 1;
-export const AnalysisServicesServerMutablePropertiesInputManagedMode = S.Number;
+const AnalysisServicesServerMutablePropertiesInputManagedMode = S.Number;
 
 /** The server monitor mode for AS server */
 export type AnalysisServicesServerMutablePropertiesInputServerMonitorMode = 0 | 1;
-export const AnalysisServicesServerMutablePropertiesInputServerMonitorMode = S.Number;
+const AnalysisServicesServerMutablePropertiesInputServerMonitorMode = S.Number;
 
 /** An object that represents a set of mutable Analysis Services resource properties. */
 export interface AnalysisServicesServerMutablePropertiesInput {
@@ -1102,7 +1091,7 @@ export interface AnalysisServicesServerMutablePropertiesInput {
   /** The server monitor mode for AS server */
   serverMonitorMode?: AnalysisServicesServerMutablePropertiesInputServerMonitorMode | (number & {});
 }
-export const AnalysisServicesServerMutablePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AnalysisServicesServerMutablePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asAdministrators: S.optional(ServerAdministrators),
     backupBlobContainerUri: S.optional(S.String),
@@ -1132,7 +1121,7 @@ export interface UpdateServerRequest {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerMutablePropertiesInput;
 }
-export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1152,9 +1141,6 @@ export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type UpdateServerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServerResponseTagsMap =
-  CreateServerRequestTagsMap as any as S.Schema<UpdateServerResponseTagsMap>;
-
 export interface UpdateServerResponse {
   /** An identifier that represents the Analysis Services resource. */
   id?: string;
@@ -1171,7 +1157,7 @@ export interface UpdateServerResponse {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-export const UpdateServerResponse = CreateServerResponse as any as S.Schema<UpdateServerResponse>;
+const UpdateServerResponse = CreateServerResponse as any as S.Schema<UpdateServerResponse>;
 
 export type CheckServerNameAvailabilityError = AzureOpError;
 /** Check the name availability in the target location. */

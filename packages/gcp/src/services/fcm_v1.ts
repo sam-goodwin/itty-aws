@@ -70,7 +70,7 @@ export interface TopicSubscription {
   /** Output only. Time when the subscription was created. */
   createTime?: string;
 }
-export const TopicSubscription = /*@__PURE__*/ S.suspend(() =>
+const TopicSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     topicName: S.optional(S.String),
@@ -86,7 +86,7 @@ export interface CreateProjectsRegistrationsTopicSubscriptionsRequest {
   /** Request body */
   body?: TopicSubscription;
 }
-export const CreateProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -108,7 +108,7 @@ export interface DeleteProjectsRegistrationsTopicSubscriptionsRequest {
   /** Required. The name of the topic subscription to delete. Format: projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription} */
   name: string;
 }
-export const DeleteProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -119,7 +119,7 @@ export const DeleteProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -127,7 +127,7 @@ export interface GetProjectsRegistrationsTopicSubscriptionsRequest {
   /** Required. The name of the topic subscription to retrieve. Format: projects/{project}/registrations/{registration}/topicSubscriptions/{topicSubscription} */
   name: string;
 }
-export const GetProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://fcm.googleapis.com/" })),
@@ -143,7 +143,7 @@ export interface ListProjectsRegistrationsTopicSubscriptionsRequest {
   /** Required. The parent resource, which owns this collection of subscriptions. Format: projects/{project}/registrations/{registration} The {registration} part can be an FID or an FCM Token. */
   parent: string;
 }
-export const ListProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -160,7 +160,7 @@ export const ListProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsRegistrationsTopicSubscriptionsRequest>;
 
 export type TopicSubscriptionList = Array<TopicSubscription>;
-export const TopicSubscriptionList = /*@__PURE__*/ S.Array(
+const TopicSubscriptionList = /*@__PURE__*/ S.Array(
   TopicSubscription,
 ) as any as S.Schema<TopicSubscriptionList>;
 
@@ -171,7 +171,7 @@ export interface ListTopicSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListTopicSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTopicSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicSubscriptions: S.optional(TopicSubscriptionList),
     nextPageToken: S.optional(S.String),
@@ -188,7 +188,7 @@ export interface PatchProjectsRegistrationsTopicSubscriptionsRequest {
   /** Request body */
   body?: TopicSubscription;
 }
-export const PatchProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsRegistrationsTopicSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -207,7 +207,7 @@ export interface Notification {
   /** Contains the URL of an image that is going to be downloaded on the device and displayed in a notification. JPEG, PNG, BMP have full support across platforms. Animated GIF and video only work on iOS. WebP and HEIF have varying levels of support across platforms and platform versions. Android has 1MB image size limit. Quota usage and implications/costs for hosting image on Firebase Storage: https://firebase.google.com/pricing */
   image?: string;
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     title: S.optional(S.String),
@@ -220,20 +220,17 @@ export interface FcmOptions {
   /** Label associated with the message's analytics data. */
   analyticsLabel?: string;
 }
-export const FcmOptions = /*@__PURE__*/ S.suspend(() =>
+const FcmOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyticsLabel: S.optional(S.String),
   }),
 ).annotate({ identifier: "FcmOptions" }) as any as S.Schema<FcmOptions>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Options for features provided by the FCM SDK for iOS. */
 export interface ApnsFcmOptions {
@@ -242,7 +239,7 @@ export interface ApnsFcmOptions {
   /** Label associated with the message's analytics data. */
   analyticsLabel?: string;
 }
-export const ApnsFcmOptions = /*@__PURE__*/ S.suspend(() =>
+const ApnsFcmOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
     analyticsLabel: S.optional(S.String),
@@ -260,7 +257,7 @@ export interface ApnsConfig {
   /** Options for features provided by the FCM SDK for iOS. */
   fcmOptions?: ApnsFcmOptions;
 }
-export const ApnsConfig = /*@__PURE__*/ S.suspend(() =>
+const ApnsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(DocumentMap),
     liveActivityToken: S.optional(S.String),
@@ -276,7 +273,7 @@ export interface WebpushFcmOptions {
   /** Label associated with the message's analytics data. */
   analyticsLabel?: string;
 }
-export const WebpushFcmOptions = /*@__PURE__*/ S.suspend(() =>
+const WebpushFcmOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(S.String),
     analyticsLabel: S.optional(S.String),
@@ -294,7 +291,7 @@ export interface WebpushConfig {
   /** Options for features provided by the FCM SDK for Web. */
   fcmOptions?: WebpushFcmOptions;
 }
-export const WebpushConfig = /*@__PURE__*/ S.suspend(() =>
+const WebpushConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(StringMap),
     notification: S.optional(DocumentMap),
@@ -305,10 +302,8 @@ export const WebpushConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Options for features provided by the FCM SDK for Android. */
 export type AndroidFcmOptions = FcmOptions;
-export const AndroidFcmOptions = FcmOptions;
-
 export type AndroidConfigPriorityEnum = "NORMAL" | "HIGH";
-export const AndroidConfigPriorityEnum = S.String;
+const AndroidConfigPriorityEnum = S.String;
 
 export type AndroidNotificationNotificationPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
@@ -317,24 +312,24 @@ export type AndroidNotificationNotificationPriorityEnum =
   | "PRIORITY_DEFAULT"
   | "PRIORITY_HIGH"
   | "PRIORITY_MAX";
-export const AndroidNotificationNotificationPriorityEnum = S.String;
+const AndroidNotificationNotificationPriorityEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type AndroidNotificationProxyEnum =
   | "PROXY_UNSPECIFIED"
   | "ALLOW"
   | "DENY"
   | "IF_PRIORITY_LOWERED";
-export const AndroidNotificationProxyEnum = S.String;
+const AndroidNotificationProxyEnum = S.String;
 
 export type AndroidNotificationVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "PRIVATE"
   | "PUBLIC"
   | "SECRET";
-export const AndroidNotificationVisibilityEnum = S.String;
+const AndroidNotificationVisibilityEnum = S.String;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value--for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
 export interface Color {
@@ -347,7 +342,7 @@ export interface Color {
   /** The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish between a default value and the value being unset. If omitted, this color object is rendered as a solid color (as if the alpha value had been explicitly given a value of 1.0). */
   alpha?: number;
 }
-export const Color = /*@__PURE__*/ S.suspend(() =>
+const Color = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     green: S.optional(S.Number),
     blue: S.optional(S.Number),
@@ -365,7 +360,7 @@ export interface LightSettings {
   /** Required. Set `color` of the LED with [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto). */
   color?: Color;
 }
-export const LightSettings = /*@__PURE__*/ S.suspend(() =>
+const LightSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lightOffDuration: S.optional(S.String),
     lightOnDuration: S.optional(S.String),
@@ -430,7 +425,7 @@ export interface AndroidNotification {
   /** The action associated with a user click on the notification. If specified, an activity with a matching intent filter is launched when a user clicks on the notification. */
   clickAction?: string;
 }
-export const AndroidNotification = /*@__PURE__*/ S.suspend(() =>
+const AndroidNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelId: S.optional(S.String),
     notificationCount: S.optional(S.Number),
@@ -485,7 +480,7 @@ export interface AndroidConfig {
   /** Optional. If set to true, messages will be allowed to be delivered to the app while the device is connected over a restricted satellite network. This should only be enabled for messages that can be handled over a restricted satellite network and only for apps that are enabled to work over a restricted satellite network. Note that the ability of the app to connect to a restricted satellite network is dependent on the carrier's settings and the device model. */
   restrictedSatelliteOk?: boolean;
 }
-export const AndroidConfig = /*@__PURE__*/ S.suspend(() =>
+const AndroidConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(StringMap),
     fcmOptions: S.optional(FcmOptions),
@@ -525,7 +520,7 @@ export interface Message {
   /** Input only. Android specific options for messages sent through [FCM connection server](https://goo.gl/4GLdUl). */
   android?: AndroidConfig;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fid: S.optional(S.String),
     notification: S.optional(Notification),
@@ -548,7 +543,7 @@ export interface SendMessageRequest {
   /** Flag for testing the request without actually delivering the message. */
   validateOnly?: boolean;
 }
-export const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
     validateOnly: S.optional(S.Boolean),
@@ -561,7 +556,7 @@ export interface SendProjectsMessagesRequest {
   /** Request body */
   body?: SendMessageRequest;
 }
-export const SendProjectsMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const SendProjectsMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SendMessageRequest.pipe(T.HttpBody())),

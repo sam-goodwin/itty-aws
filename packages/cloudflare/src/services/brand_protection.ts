@@ -46,13 +46,13 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 };
 
 export type QueriesBulkRequestQueriesItemMap = { [key: string]: unknown | undefined };
-export const QueriesBulkRequestQueriesItemMap = /*@__PURE__*/ S.Record(
+const QueriesBulkRequestQueriesItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<QueriesBulkRequestQueriesItemMap>;
 
 export type QueriesBulkRequestQueriesList = Array<QueriesBulkRequestQueriesItemMap>;
-export const QueriesBulkRequestQueriesList = /*@__PURE__*/ S.Array(
+const QueriesBulkRequestQueriesList = /*@__PURE__*/ S.Array(
   QueriesBulkRequestQueriesItemMap,
 ) as any as S.Schema<QueriesBulkRequestQueriesList>;
 
@@ -60,7 +60,7 @@ export interface BulkQueryRequest {
   accountId: string;
   queries?: QueriesBulkRequestQueriesList;
 }
-export const BulkQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queries: S.optional(QueriesBulkRequestQueriesList),
@@ -76,7 +76,7 @@ export const BulkQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkQueryRequest" }) as any as S.Schema<BulkQueryRequest>;
 
 export interface BulkQueryResponse {}
-export const BulkQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "BulkQueryResponse" }) as any as S.Schema<BulkQueryResponse>;
 
@@ -87,7 +87,7 @@ export interface CreateLogoRequest {
   threshold?: number;
   image?: unknown;
 }
-export const CreateLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     matchType: S.optional(S.String.pipe(T.Query("match_type"))),
@@ -107,7 +107,7 @@ export interface CreateLogoResponse {
   tag?: string | null;
   uploadPath?: string | null;
 }
-export const CreateLogoResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     tag: S.optional(S.NullOr(S.String)),
@@ -126,7 +126,7 @@ export interface CreateQueryRequest {
   bodyScan?: boolean;
   bodyTag?: string;
 }
-export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -145,7 +145,7 @@ export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateQueryRequest" }) as any as S.Schema<CreateQueryRequest>;
 
 export interface CreateQueryResponse {}
-export const CreateQueryResponse = BulkQueryResponse as any as S.Schema<CreateQueryResponse>;
+const CreateQueryResponse = BulkQueryResponse as any as S.Schema<CreateQueryResponse>;
 
 export interface CreateV2LogoRequest {
   accountId: string;
@@ -158,7 +158,7 @@ export interface CreateV2LogoRequest {
   /** If true, search historic scanned images for matches above the similarity threshold */
   searchLookback?: boolean;
 }
-export const CreateV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     imageData: S.String.pipe(T.Body("image_data")),
@@ -181,7 +181,7 @@ export interface CreateV2LogoResponse {
   message: string;
   queryId?: number | null;
 }
-export const CreateV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     queryId: S.optional(S.NullOr(S.Number).pipe(T.Body("query_id"))),
@@ -192,7 +192,7 @@ export interface DeleteLogoRequest {
   accountId: string;
   logoId: string;
 }
-export const DeleteLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     logoId: S.String.pipe(T.Label("logo_id")),
@@ -208,7 +208,7 @@ export const DeleteLogoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLogoRequest" }) as any as S.Schema<DeleteLogoRequest>;
 
 export interface DeleteLogoResponse {}
-export const DeleteLogoResponse = BulkQueryResponse as any as S.Schema<DeleteLogoResponse>;
+const DeleteLogoResponse = BulkQueryResponse as any as S.Schema<DeleteLogoResponse>;
 
 export interface DeleteQueryRequest {
   accountId: string;
@@ -216,7 +216,7 @@ export interface DeleteQueryRequest {
   scan?: boolean;
   tag?: string;
 }
-export const DeleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -234,13 +234,13 @@ export const DeleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteQueryRequest" }) as any as S.Schema<DeleteQueryRequest>;
 
 export interface DeleteQueryResponse {}
-export const DeleteQueryResponse = BulkQueryResponse as any as S.Schema<DeleteQueryResponse>;
+const DeleteQueryResponse = BulkQueryResponse as any as S.Schema<DeleteQueryResponse>;
 
 export interface DeleteV2LogoRequest {
   accountId: string;
   queryId: string;
 }
-export const DeleteV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queryId: S.String.pipe(T.Label("query_id")),
@@ -259,14 +259,14 @@ export const DeleteV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteV2LogoResponse {
   message: string;
 }
-export const DeleteV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteV2LogoResponse" }) as any as S.Schema<DeleteV2LogoResponse>;
 
 export type LogoMatchesDownloadRequestLogoIdList = Array<string>;
-export const LogoMatchesDownloadRequestLogoIdList = /*@__PURE__*/ S.Array(
+const LogoMatchesDownloadRequestLogoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogoMatchesDownloadRequestLogoIdList>;
 
@@ -276,7 +276,7 @@ export interface DownloadLogoMatchRequest {
   logoId?: LogoMatchesDownloadRequestLogoIdList;
   offset?: string;
 }
-export const DownloadLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     limit: S.optional(S.String.pipe(T.Query())),
@@ -294,12 +294,9 @@ export const DownloadLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadLogoMatchRequest" }) as any as S.Schema<DownloadLogoMatchRequest>;
 
 export type LogoMatchesDownloadResponseMatchesItemMap = { [key: string]: unknown | undefined };
-export const LogoMatchesDownloadResponseMatchesItemMap =
-  QueriesBulkRequestQueriesItemMap as any as S.Schema<LogoMatchesDownloadResponseMatchesItemMap>;
-
 export type LogoMatchesDownloadResponseMatchesList =
   Array<LogoMatchesDownloadResponseMatchesItemMap>;
-export const LogoMatchesDownloadResponseMatchesList =
+const LogoMatchesDownloadResponseMatchesList =
   QueriesBulkRequestQueriesList as any as S.Schema<LogoMatchesDownloadResponseMatchesList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -307,7 +304,7 @@ export interface DownloadLogoMatchResponse {
   matches?: LogoMatchesDownloadResponseMatchesList | null;
   total?: number | null;
 }
-export const DownloadLogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadLogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: S.optional(S.NullOr(LogoMatchesDownloadResponseMatchesList)),
     total: S.optional(S.NullOr(S.Number)),
@@ -324,7 +321,7 @@ export interface DownloadMatchRequest {
   limit?: number;
   offset?: number;
 }
-export const DownloadMatchRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -344,11 +341,8 @@ export const DownloadMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadMatchRequest" }) as any as S.Schema<DownloadMatchRequest>;
 
 export type MatchesDownloadResponseMatchesItemMap = { [key: string]: unknown | undefined };
-export const MatchesDownloadResponseMatchesItemMap =
-  QueriesBulkRequestQueriesItemMap as any as S.Schema<MatchesDownloadResponseMatchesItemMap>;
-
 export type MatchesDownloadResponseMatchesList = Array<MatchesDownloadResponseMatchesItemMap>;
-export const MatchesDownloadResponseMatchesList =
+const MatchesDownloadResponseMatchesList =
   QueriesBulkRequestQueriesList as any as S.Schema<MatchesDownloadResponseMatchesList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -356,7 +350,7 @@ export interface DownloadMatchResponse {
   matches?: MatchesDownloadResponseMatchesList | null;
   total?: number | null;
 }
-export const DownloadMatchResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: S.optional(S.NullOr(MatchesDownloadResponseMatchesList)),
     total: S.optional(S.NullOr(S.Number)),
@@ -364,7 +358,7 @@ export const DownloadMatchResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadMatchResponse" }) as any as S.Schema<DownloadMatchResponse>;
 
 export type LogoMatchesGetRequestLogoIdList = Array<string>;
-export const LogoMatchesGetRequestLogoIdList =
+const LogoMatchesGetRequestLogoIdList =
   LogoMatchesDownloadRequestLogoIdList as any as S.Schema<LogoMatchesGetRequestLogoIdList>;
 
 export interface GetLogoMatchRequest {
@@ -373,7 +367,7 @@ export interface GetLogoMatchRequest {
   logoId?: LogoMatchesGetRequestLogoIdList;
   offset?: string;
 }
-export const GetLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     limit: S.optional(S.String.pipe(T.Query())),
@@ -391,19 +385,13 @@ export const GetLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogoMatchRequest" }) as any as S.Schema<GetLogoMatchRequest>;
 
 export type LogoMatchesGetResponseMatchesItemMap = { [key: string]: unknown | undefined };
-export const LogoMatchesGetResponseMatchesItemMap =
-  QueriesBulkRequestQueriesItemMap as any as S.Schema<LogoMatchesGetResponseMatchesItemMap>;
-
 export type LogoMatchesGetResponseMatchesList = Array<LogoMatchesGetResponseMatchesItemMap>;
-export const LogoMatchesGetResponseMatchesList =
-  QueriesBulkRequestQueriesList as any as S.Schema<LogoMatchesGetResponseMatchesList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetLogoMatchResponse {
   matches?: LogoMatchesGetResponseMatchesList | null;
   total?: number | null;
 }
-export const GetLogoMatchResponse = DownloadMatchResponse as any as S.Schema<GetLogoMatchResponse>;
+const GetLogoMatchResponse = DownloadMatchResponse as any as S.Schema<GetLogoMatchResponse>;
 
 export interface GetMatchRequest {
   accountId: string;
@@ -413,7 +401,7 @@ export interface GetMatchRequest {
   limit?: number;
   offset?: number;
 }
-export const GetMatchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -429,19 +417,13 @@ export const GetMatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMatchRequest" }) as any as S.Schema<GetMatchRequest>;
 
 export type MatchesGetResponseMatchesItemMap = { [key: string]: unknown | undefined };
-export const MatchesGetResponseMatchesItemMap =
-  QueriesBulkRequestQueriesItemMap as any as S.Schema<MatchesGetResponseMatchesItemMap>;
-
 export type MatchesGetResponseMatchesList = Array<MatchesGetResponseMatchesItemMap>;
-export const MatchesGetResponseMatchesList =
-  QueriesBulkRequestQueriesList as any as S.Schema<MatchesGetResponseMatchesList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetMatchResponse {
   matches?: MatchesGetResponseMatchesList | null;
   total?: number | null;
 }
-export const GetMatchResponse = DownloadMatchResponse as any as S.Schema<GetMatchResponse>;
+const GetMatchResponse = DownloadMatchResponse as any as S.Schema<GetMatchResponse>;
 
 export interface GetV2LogoRequest {
   accountId: string;
@@ -450,7 +432,7 @@ export interface GetV2LogoRequest {
   /** If true, include base64-encoded image data in the response */
   download?: string;
 }
-export const GetV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -478,7 +460,7 @@ export interface GetV2LogoResponse {
   /** Base64-encoded image data (only present when download=true) */
   imageData?: string | null;
 }
-export const GetV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     r2Path: S.String.pipe(T.Body("r2_path")),
@@ -491,14 +473,14 @@ export const GetV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetV2LogoResponse" }) as any as S.Schema<GetV2LogoResponse>;
 
 export type V2LogoMatchesGetRequestOrder = "asc" | "desc";
-export const V2LogoMatchesGetRequestOrder = S.String;
+const V2LogoMatchesGetRequestOrder = S.String;
 
 export type V2LogoMatchesGetRequestOrderBy =
   | "matchedAt"
   | "domain"
   | "similarityScore"
   | "registrar";
-export const V2LogoMatchesGetRequestOrderBy = S.String;
+const V2LogoMatchesGetRequestOrderBy = S.String;
 
 export interface GetV2LogoMatchRequest {
   accountId: string;
@@ -511,7 +493,7 @@ export interface GetV2LogoMatchRequest {
   /** Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar' */
   orderBy?: V2LogoMatchesGetRequestOrderBy | (string & {});
 }
-export const GetV2LogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2LogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queryId: S.String.pipe(T.Query("query_id")),
@@ -542,7 +524,7 @@ export interface V2LogoMatchesGetResponseMatchesItem {
   contentType?: string | null;
   imageData?: string | null;
 }
-export const V2LogoMatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
+const V2LogoMatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     domain: S.String,
@@ -559,7 +541,7 @@ export const V2LogoMatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2LogoMatchesGetResponseMatchesItem>;
 
 export type V2LogoMatchesGetResponseMatchesList = Array<V2LogoMatchesGetResponseMatchesItem>;
-export const V2LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
+const V2LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
   V2LogoMatchesGetResponseMatchesItem,
 ) as any as S.Schema<V2LogoMatchesGetResponseMatchesList>;
 
@@ -568,7 +550,7 @@ export interface GetV2LogoMatchResponse {
   matches: V2LogoMatchesGetResponseMatchesList;
   total: number;
 }
-export const GetV2LogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
+const GetV2LogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: V2LogoMatchesGetResponseMatchesList,
     total: S.Number,
@@ -576,14 +558,14 @@ export const GetV2LogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetV2LogoMatchResponse" }) as any as S.Schema<GetV2LogoMatchResponse>;
 
 export type V2MatchesGetRequestQueryIdList = Array<string>;
-export const V2MatchesGetRequestQueryIdList =
+const V2MatchesGetRequestQueryIdList =
   LogoMatchesDownloadRequestLogoIdList as any as S.Schema<V2MatchesGetRequestQueryIdList>;
 
 export type V2MatchesGetRequestOrder = "asc" | "desc";
-export const V2MatchesGetRequestOrder = S.String;
+const V2MatchesGetRequestOrder = S.String;
 
 export type V2MatchesGetRequestOrderBy = "domain" | "first_seen" | "registrar";
-export const V2MatchesGetRequestOrderBy = S.String;
+const V2MatchesGetRequestOrderBy = S.String;
 
 export interface GetV2MatchRequest {
   accountId: string;
@@ -600,7 +582,7 @@ export interface GetV2MatchRequest {
   /** Column to sort by. Options: 'domain', 'first_seen', or 'registrar' */
   orderBy?: V2MatchesGetRequestOrderBy | (string & {});
 }
-export const GetV2MatchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2MatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queryId: V2MatchesGetRequestQueryIdList.pipe(T.Query("query_id")),
@@ -625,7 +607,7 @@ export const GetV2MatchRequest = /*@__PURE__*/ S.suspend(() =>
 export interface V2MatchesGetResponseMatchesItemPublicScans {
   submissionId: string;
 }
-export const V2MatchesGetResponseMatchesItemPublicScans = /*@__PURE__*/ S.suspend(() =>
+const V2MatchesGetResponseMatchesItemPublicScans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     submissionId: S.String.pipe(T.Body("submission_id")),
   }),
@@ -641,7 +623,7 @@ export interface V2MatchesGetResponseMatchesItemMatchDetailsItem {
   /** Tag associated with the query, if one exists. */
   queryTag: string;
 }
-export const V2MatchesGetResponseMatchesItemMatchDetailsItem = /*@__PURE__*/ S.suspend(() =>
+const V2MatchesGetResponseMatchesItemMatchDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dismissed: S.Boolean,
     matchId: S.Number.pipe(T.Body("match_id")),
@@ -654,7 +636,7 @@ export const V2MatchesGetResponseMatchesItemMatchDetailsItem = /*@__PURE__*/ S.s
 
 export type V2MatchesGetResponseMatchesItemMatchDetailsList =
   Array<V2MatchesGetResponseMatchesItemMatchDetailsItem>;
-export const V2MatchesGetResponseMatchesItemMatchDetailsList = /*@__PURE__*/ S.Array(
+const V2MatchesGetResponseMatchesItemMatchDetailsList = /*@__PURE__*/ S.Array(
   V2MatchesGetResponseMatchesItemMatchDetailsItem,
 ) as any as S.Schema<V2MatchesGetResponseMatchesItemMatchDetailsList>;
 
@@ -671,7 +653,7 @@ export interface V2MatchesGetResponseMatchesItem {
   /** Per-match detail objects with query metadata and individual dismissed state. Only present when multiple query_ids are requested. */
   matchDetails?: V2MatchesGetResponseMatchesItemMatchDetailsList | null;
 }
-export const V2MatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
+const V2MatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     firstSeen: S.String.pipe(T.Body("first_seen")),
@@ -690,7 +672,7 @@ export const V2MatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2MatchesGetResponseMatchesItem>;
 
 export type V2MatchesGetResponseMatchesList = Array<V2MatchesGetResponseMatchesItem>;
-export const V2MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
+const V2MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
   V2MatchesGetResponseMatchesItem,
 ) as any as S.Schema<V2MatchesGetResponseMatchesList>;
 
@@ -699,7 +681,7 @@ export interface GetV2MatchResponse {
   matches: V2MatchesGetResponseMatchesList;
   total: number;
 }
-export const GetV2MatchResponse = /*@__PURE__*/ S.suspend(() =>
+const GetV2MatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: V2MatchesGetResponseMatchesList,
     total: S.Number,
@@ -714,7 +696,7 @@ export interface GetV2QueryRequest {
   /** Optional number of queries per page for paginated list requests. Defaults to 100 when only page is supplied. Maximum 100. Omit page and per_page to preserve the legacy full-list response. */
   perPage?: number;
 }
-export const GetV2QueryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2QueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -734,37 +716,13 @@ export const GetV2QueryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface V2QueriesGetResultCase0ItemParametersStringMatchesItem {
   pattern: string;
 }
-export const V2QueriesGetResultCase0ItemParametersStringMatchesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pattern: S.String,
-  }),
-).annotate({
-  identifier: "V2QueriesGetResultCase0ItemParametersStringMatchesItem",
-}) as any as S.Schema<V2QueriesGetResultCase0ItemParametersStringMatchesItem>;
-
 export type V2QueriesGetResultCase0ItemParametersStringMatchesList =
   Array<V2QueriesGetResultCase0ItemParametersStringMatchesItem>;
-export const V2QueriesGetResultCase0ItemParametersStringMatchesList = /*@__PURE__*/ S.Array(
-  V2QueriesGetResultCase0ItemParametersStringMatchesItem,
-) as any as S.Schema<V2QueriesGetResultCase0ItemParametersStringMatchesList>;
-
 export interface V2QueriesGetResultCase0ItemParameters {
   stringMatches: V2QueriesGetResultCase0ItemParametersStringMatchesList;
   maxTime?: string | null;
   minTime?: string | null;
 }
-export const V2QueriesGetResultCase0ItemParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stringMatches: V2QueriesGetResultCase0ItemParametersStringMatchesList.pipe(
-      T.Body("string_matches"),
-    ),
-    maxTime: S.optional(S.NullOr(S.String).pipe(T.Body("max_time"))),
-    minTime: S.optional(S.NullOr(S.String).pipe(T.Body("min_time"))),
-  }),
-).annotate({
-  identifier: "V2QueriesGetResultCase0ItemParameters",
-}) as any as S.Schema<V2QueriesGetResultCase0ItemParameters>;
-
 export interface V2QueriesGetResultCase0Item {
   created: string;
   parameters: V2QueriesGetResultCase0ItemParameters;
@@ -773,42 +731,16 @@ export interface V2QueriesGetResultCase0Item {
   scan: boolean;
   updated: string;
 }
-export const V2QueriesGetResultCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.String,
-    parameters: V2QueriesGetResultCase0ItemParameters,
-    queryId: S.Number.pipe(T.Body("query_id")),
-    queryTag: S.String.pipe(T.Body("query_tag")),
-    scan: S.Boolean,
-    updated: S.String,
-  }),
-).annotate({
-  identifier: "V2QueriesGetResultCase0Item",
-}) as any as S.Schema<V2QueriesGetResultCase0Item>;
-
 export type V2QueriesGetResultCase0List = Array<V2QueriesGetResultCase0Item>;
-export const V2QueriesGetResultCase0List = /*@__PURE__*/ S.Array(
-  V2QueriesGetResultCase0Item,
-) as any as S.Schema<V2QueriesGetResultCase0List>;
-
 export type V2QueriesGetResultCase1ParametersStringMatchesItem =
   V2QueriesGetResultCase0ItemParametersStringMatchesItem;
-export const V2QueriesGetResultCase1ParametersStringMatchesItem =
-  V2QueriesGetResultCase0ItemParametersStringMatchesItem;
-
 export type V2QueriesGetResultCase1ParametersStringMatchesList =
   Array<V2QueriesGetResultCase0ItemParametersStringMatchesItem>;
-export const V2QueriesGetResultCase1ParametersStringMatchesList =
-  V2QueriesGetResultCase0ItemParametersStringMatchesList as any as S.Schema<V2QueriesGetResultCase1ParametersStringMatchesList>;
-
 export interface V2QueriesGetResultCase1Parameters {
   stringMatches: V2QueriesGetResultCase1ParametersStringMatchesList;
   maxTime?: string | null;
   minTime?: string | null;
 }
-export const V2QueriesGetResultCase1Parameters =
-  V2QueriesGetResultCase0ItemParameters as any as S.Schema<V2QueriesGetResultCase1Parameters>;
-
 export interface V2QueriesGetResultCase1 {
   created: string;
   parameters: V2QueriesGetResultCase1Parameters;
@@ -817,19 +749,8 @@ export interface V2QueriesGetResultCase1 {
   scan: boolean;
   updated: string;
 }
-export const V2QueriesGetResultCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.String,
-    parameters: V2QueriesGetResultCase1Parameters,
-    queryId: S.Number.pipe(T.Body("query_id")),
-    queryTag: S.String.pipe(T.Body("query_tag")),
-    scan: S.Boolean,
-    updated: S.String,
-  }),
-).annotate({ identifier: "V2QueriesGetResultCase1" }) as any as S.Schema<V2QueriesGetResultCase1>;
-
 export type V2QueriesGetResult = V2QueriesGetResultCase0List | V2QueriesGetResultCase1;
-export const V2QueriesGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const V2QueriesGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [],
     ["created", "parameters", "queryId", "queryTag", "scan", "updated"],
@@ -837,14 +758,14 @@ export const V2QueriesGetResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type GetV2QueryResponse = V2QueriesGetResult;
-export const GetV2QueryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetV2QueryResponse = /*@__PURE__*/ S.suspend(() =>
   V2QueriesGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetV2QueryResponse" }) as any as S.Schema<GetV2QueryResponse>;
 
 export interface SubmitBrandProtectionRequest {
   accountId: string;
 }
-export const SubmitBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -857,19 +778,13 @@ export const SubmitBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubmitBrandProtectionRequest>;
 
 export type SubmitResponseSkippedUrlsItemMap = { [key: string]: unknown | undefined };
-export const SubmitResponseSkippedUrlsItemMap =
-  QueriesBulkRequestQueriesItemMap as any as S.Schema<SubmitResponseSkippedUrlsItemMap>;
-
 export type SubmitResponseSkippedUrlsList = Array<SubmitResponseSkippedUrlsItemMap>;
-export const SubmitResponseSkippedUrlsList =
+const SubmitResponseSkippedUrlsList =
   QueriesBulkRequestQueriesList as any as S.Schema<SubmitResponseSkippedUrlsList>;
 
 export type SubmitResponseSubmittedUrlsItemMap = { [key: string]: unknown | undefined };
-export const SubmitResponseSubmittedUrlsItemMap =
-  QueriesBulkRequestQueriesItemMap as any as S.Schema<SubmitResponseSubmittedUrlsItemMap>;
-
 export type SubmitResponseSubmittedUrlsList = Array<SubmitResponseSubmittedUrlsItemMap>;
-export const SubmitResponseSubmittedUrlsList =
+const SubmitResponseSubmittedUrlsList =
   QueriesBulkRequestQueriesList as any as S.Schema<SubmitResponseSubmittedUrlsList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -877,7 +792,7 @@ export interface SubmitBrandProtectionResponse {
   skippedUrls?: SubmitResponseSkippedUrlsList | null;
   submittedUrls?: SubmitResponseSubmittedUrlsList | null;
 }
-export const SubmitBrandProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const SubmitBrandProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skippedUrls: S.optional(S.NullOr(SubmitResponseSkippedUrlsList).pipe(T.Body("skipped_urls"))),
     submittedUrls: S.optional(
@@ -891,7 +806,7 @@ export const SubmitBrandProtectionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UrlInfoBrandProtectionRequest {
   accountId: string;
 }
-export const UrlInfoBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UrlInfoBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -904,12 +819,8 @@ export const UrlInfoBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UrlInfoBrandProtectionRequest>;
 
 export type UrlInfoResultItemMap = { [key: string]: unknown | undefined };
-export const UrlInfoResultItemMap =
-  QueriesBulkRequestQueriesItemMap as any as S.Schema<UrlInfoResultItemMap>;
-
 export type UrlInfoResultList = Array<UrlInfoResultItemMap>;
-export const UrlInfoResultList =
-  QueriesBulkRequestQueriesList as any as S.Schema<UrlInfoResultList>;
+const UrlInfoResultList = QueriesBulkRequestQueriesList as any as S.Schema<UrlInfoResultList>;
 
 export interface UrlInfoBrandProtectionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -917,7 +828,7 @@ export interface UrlInfoBrandProtectionResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const UrlInfoBrandProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const UrlInfoBrandProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: UrlInfoResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

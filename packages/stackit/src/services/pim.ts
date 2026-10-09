@@ -37,7 +37,7 @@ export class NotFound
   ) {}
 
 export type GetCategoryRequestLanguage = "en" | "de";
-export const GetCategoryRequestLanguage = S.String;
+const GetCategoryRequestLanguage = S.String;
 
 export interface GetCategoryRequest {
   /** The unique identifier for a category. */
@@ -45,7 +45,7 @@ export interface GetCategoryRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: GetCategoryRequestLanguage | (string & {});
 }
-export const GetCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.String.pipe(T.Label()),
     language: S.optional(GetCategoryRequestLanguage.pipe(T.Query())),
@@ -75,7 +75,7 @@ export interface PublicCategory {
   /** Number of the revision from PIM */
   version?: string;
 }
-export const PublicCategory = /*@__PURE__*/ S.suspend(() =>
+const PublicCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     id: S.optional(S.NullOr(S.String)),
@@ -88,7 +88,7 @@ export const PublicCategory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicCategory" }) as any as S.Schema<PublicCategory>;
 
 export type GetProductRequestLanguage = "en" | "de";
-export const GetProductRequestLanguage = S.String;
+const GetProductRequestLanguage = S.String;
 
 export interface GetProductRequest {
   /** The unique identifier for a product. */
@@ -96,7 +96,7 @@ export interface GetProductRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: GetProductRequestLanguage | (string & {});
 }
-export const GetProductRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     language: S.optional(GetProductRequestLanguage.pipe(T.Query())),
@@ -112,7 +112,7 @@ export const GetProductRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Api identifier */
 export type PublicProductApiIdentifierList = Array<string>;
-export const PublicProductApiIdentifierList = /*@__PURE__*/ S.Array(
+const PublicProductApiIdentifierList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PublicProductApiIdentifierList>;
 
@@ -140,7 +140,7 @@ export interface PublicProduct {
   /** Number of the revision from PIM */
   version?: string;
 }
-export const PublicProduct = /*@__PURE__*/ S.suspend(() =>
+const PublicProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiIdentifier: S.optional(PublicProductApiIdentifierList),
     categoryId: S.optional(S.NullOr(S.String)),
@@ -157,7 +157,7 @@ export const PublicProduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicProduct" }) as any as S.Schema<PublicProduct>;
 
 export type GetProductMarketingDataRequestLanguage = "en" | "de";
-export const GetProductMarketingDataRequestLanguage = S.String;
+const GetProductMarketingDataRequestLanguage = S.String;
 
 export interface GetProductMarketingDataRequest {
   /** The unique identifier for a product. */
@@ -165,7 +165,7 @@ export interface GetProductMarketingDataRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: GetProductMarketingDataRequestLanguage | (string & {});
 }
-export const GetProductMarketingDataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductMarketingDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     language: S.optional(GetProductMarketingDataRequestLanguage.pipe(T.Query())),
@@ -187,7 +187,7 @@ export interface MarketingAdvantage {
   /** Description of the advantage */
   position?: number;
 }
-export const MarketingAdvantage = /*@__PURE__*/ S.suspend(() =>
+const MarketingAdvantage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advantage: S.optional(S.String),
     position: S.optional(S.Number),
@@ -196,7 +196,7 @@ export const MarketingAdvantage = /*@__PURE__*/ S.suspend(() =>
 
 /** List of advantages of the product */
 export type PublicMarketingDataAdvantagesList = Array<MarketingAdvantage>;
-export const PublicMarketingDataAdvantagesList = /*@__PURE__*/ S.Array(
+const PublicMarketingDataAdvantagesList = /*@__PURE__*/ S.Array(
   MarketingAdvantage,
 ) as any as S.Schema<PublicMarketingDataAdvantagesList>;
 
@@ -208,7 +208,7 @@ export interface MarketingApplication {
   /** Position of the application */
   position?: number;
 }
-export const MarketingApplication = /*@__PURE__*/ S.suspend(() =>
+const MarketingApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     application: S.optional(S.String),
     applicationTitle: S.optional(S.String),
@@ -218,7 +218,7 @@ export const MarketingApplication = /*@__PURE__*/ S.suspend(() =>
 
 /** List of applications provided by the product */
 export type PublicMarketingDataApplicationsList = Array<MarketingApplication>;
-export const PublicMarketingDataApplicationsList = /*@__PURE__*/ S.Array(
+const PublicMarketingDataApplicationsList = /*@__PURE__*/ S.Array(
   MarketingApplication,
 ) as any as S.Schema<PublicMarketingDataApplicationsList>;
 
@@ -228,7 +228,7 @@ export interface MarketingFunction {
   /** Position of the function */
   position?: number;
 }
-export const MarketingFunction = /*@__PURE__*/ S.suspend(() =>
+const MarketingFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(S.String),
     position: S.optional(S.Number),
@@ -237,7 +237,7 @@ export const MarketingFunction = /*@__PURE__*/ S.suspend(() =>
 
 /** List of functions provided by the product */
 export type PublicMarketingDataFunctionsList = Array<MarketingFunction>;
-export const PublicMarketingDataFunctionsList = /*@__PURE__*/ S.Array(
+const PublicMarketingDataFunctionsList = /*@__PURE__*/ S.Array(
   MarketingFunction,
 ) as any as S.Schema<PublicMarketingDataFunctionsList>;
 
@@ -267,7 +267,7 @@ export interface PublicMarketingData {
   /** Number of the revision from PIM */
   version?: string;
 }
-export const PublicMarketingData = /*@__PURE__*/ S.suspend(() =>
+const PublicMarketingData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advantages: S.optional(PublicMarketingDataAdvantagesList),
     applications: S.optional(PublicMarketingDataApplicationsList),
@@ -285,7 +285,7 @@ export const PublicMarketingData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicMarketingData" }) as any as S.Schema<PublicMarketingData>;
 
 export type GetSKURequestLanguage = "en" | "de";
-export const GetSKURequestLanguage = S.String;
+const GetSKURequestLanguage = S.String;
 
 export interface GetSKURequest {
   /** The unique identifier for a SKU. */
@@ -293,7 +293,7 @@ export interface GetSKURequest {
   /** The language to retrieve the data in, available for en and de */
   language?: GetSKURequestLanguage | (string & {});
 }
-export const GetSKURequest = /*@__PURE__*/ S.suspend(() =>
+const GetSKURequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuId: S.String.pipe(T.Label()),
     language: S.optional(GetSKURequestLanguage.pipe(T.Query())),
@@ -313,7 +313,7 @@ export interface FinOpsFocus {
   /** FinOps Focus service subcategory */
   serviceSubCategory?: string;
 }
-export const FinOpsFocus = /*@__PURE__*/ S.suspend(() =>
+const FinOpsFocus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceCategory: S.optional(S.String),
     serviceSubCategory: S.optional(S.String),
@@ -322,11 +322,11 @@ export const FinOpsFocus = /*@__PURE__*/ S.suspend(() =>
 
 /** Prices' currency code regarding ISO4217 */
 export type CurrencyCodes = "EUR" | "USD" | "GBP";
-export const CurrencyCodes = S.String;
+const CurrencyCodes = S.String;
 
 /** Prices' currency symbol */
 export type CurrencySymbols = "\u20ac" | "$";
-export const CurrencySymbols = S.String;
+const CurrencySymbols = S.String;
 
 export interface Price {
   currencyCode?: CurrencyCodes;
@@ -343,7 +343,7 @@ export interface Price {
   /** Price as integer representation 1e11 */
   valueAsInt?: number;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(CurrencyCodes),
     currencySymbol: S.optional(S.NullOr(CurrencySymbols)),
@@ -358,20 +358,17 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
 
 /** List of prices */
 export type GetSKUResponsePricesList = Array<Price>;
-export const GetSKUResponsePricesList = /*@__PURE__*/ S.Array(
+const GetSKUResponsePricesList = /*@__PURE__*/ S.Array(
   Price,
 ) as any as S.Schema<GetSKUResponsePricesList>;
 
 /** List of unique service look up ids (ASCII ordered, ascending) */
 export type GetSKUResponseServiceIdList = Array<string>;
-export const GetSKUResponseServiceIdList =
+const GetSKUResponseServiceIdList =
   PublicProductApiIdentifierList as any as S.Schema<GetSKUResponseServiceIdList>;
 
 /** Performance Classes */
 export type PublicDatabaseSpecificAttributesPerformanceClassesList = Array<string>;
-export const PublicDatabaseSpecificAttributesPerformanceClassesList =
-  PublicProductApiIdentifierList as any as S.Schema<PublicDatabaseSpecificAttributesPerformanceClassesList>;
-
 export interface PublicDatabaseSpecificAttributes {
   discriminator: string;
   /** diskStoragePerNode */
@@ -393,37 +390,11 @@ export interface PublicDatabaseSpecificAttributes {
   /** Number of vCPU */
   vCPU?: number | null;
 }
-export const PublicDatabaseSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminator: S.String,
-    diskStoragePerNode: S.optional(S.NullOr(S.String)),
-    flavor: S.optional(S.NullOr(S.String)),
-    nodes: S.optional(S.NullOr(S.Number)),
-    performanceClasses: S.optional(PublicDatabaseSpecificAttributesPerformanceClassesList),
-    ram: S.optional(S.NullOr(S.Number)),
-    storageMaxGb: S.optional(S.NullOr(S.Number)),
-    storageMinGb: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
-    vCPU: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PublicDatabaseSpecificAttributes",
-}) as any as S.Schema<PublicDatabaseSpecificAttributes>;
-
 export interface ArchivingSpecificAttributes {
   discriminator: string;
   /** metro */
   metro?: boolean | null;
 }
-export const ArchivingSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminator: S.String,
-    metro: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ArchivingSpecificAttributes",
-}) as any as S.Schema<ArchivingSpecificAttributes>;
-
 export interface ComputeEngineSpecificAttributes {
   discriminator: string;
   /** Flavor */
@@ -439,23 +410,7 @@ export interface ComputeEngineSpecificAttributes {
   /** Number of vCPU */
   vCPU?: number | null;
 }
-export const ComputeEngineSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminator: S.String,
-    flavor: S.optional(S.NullOr(S.String)),
-    hardware: S.optional(S.NullOr(S.String)),
-    metro: S.optional(S.NullOr(S.Boolean)),
-    os: S.optional(S.NullOr(S.String)),
-    ram: S.optional(S.NullOr(S.Number)),
-    vCPU: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ComputeEngineSpecificAttributes",
-}) as any as S.Schema<ComputeEngineSpecificAttributes>;
-
 export type ComputeEngineGPUSpecificAttributes = ComputeEngineSpecificAttributes;
-export const ComputeEngineGPUSpecificAttributes = ComputeEngineSpecificAttributes;
-
 export interface NetworkSpecificAttributes {
   /** Connection limit per Load Balancer */
   connectionLimitPerLoadBalancer?: number | null;
@@ -471,20 +426,6 @@ export interface NetworkSpecificAttributes {
   /** Type (e.g. `single`, `replica`) */
   type?: string | null;
 }
-export const NetworkSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionLimitPerLoadBalancer: S.optional(S.NullOr(S.Number)),
-    discriminator: S.String,
-    maxBandWidth: S.optional(S.NullOr(S.Number)),
-    maxConnections: S.optional(S.NullOr(S.Number)),
-    planId: S.optional(S.NullOr(S.String)),
-    recordLimitPerZone: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "NetworkSpecificAttributes",
-}) as any as S.Schema<NetworkSpecificAttributes>;
-
 export interface MessagingSpecificAttributes {
   discriminator: string;
   /** diskStoragePerNode */
@@ -498,19 +439,6 @@ export interface MessagingSpecificAttributes {
   /** Number of vCPU */
   vCPU?: number | null;
 }
-export const MessagingSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminator: S.String,
-    diskStoragePerNode: S.optional(S.NullOr(S.String)),
-    nodes: S.optional(S.NullOr(S.Number)),
-    ram: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
-    vCPU: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "MessagingSpecificAttributes",
-}) as any as S.Schema<MessagingSpecificAttributes>;
-
 export interface LoggingAndMonitoringSpecificAttributes {
   discriminator: string;
   /** diskStoragePerNode */
@@ -524,22 +452,7 @@ export interface LoggingAndMonitoringSpecificAttributes {
   /** Type (e.g. `single`, `replica`) */
   type?: string | null;
 }
-export const LoggingAndMonitoringSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminator: S.String,
-    diskStoragePerNode: S.optional(S.NullOr(S.String)),
-    metricPerMin: S.optional(S.NullOr(S.Number)),
-    nodes: S.optional(S.NullOr(S.Number)),
-    targets: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "LoggingAndMonitoringSpecificAttributes",
-}) as any as S.Schema<LoggingAndMonitoringSpecificAttributes>;
-
 export type ConfidentialComputingSpecificAttributes = ComputeEngineSpecificAttributes;
-export const ConfidentialComputingSpecificAttributes = ComputeEngineSpecificAttributes;
-
 export interface StorageSpecificAttributes {
   /** Storage Class type */
   class?: string | null;
@@ -555,32 +468,11 @@ export interface StorageSpecificAttributes {
   /** Type (e.g. 'capacity', 'input') */
   type?: string | null;
 }
-export const StorageSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    class: S.optional(S.NullOr(S.String)),
-    discriminator: S.String,
-    maxIOPerSec: S.optional(S.NullOr(S.Number)),
-    maxTroughInMB: S.optional(S.NullOr(S.Number)),
-    metro: S.optional(S.NullOr(S.Boolean)),
-    storage: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "StorageSpecificAttributes",
-}) as any as S.Schema<StorageSpecificAttributes>;
-
 export interface DataAndAI {
   discriminator: string;
   /** Type (e.g. `capacity`, `performance`) */
   type?: string | null;
 }
-export const DataAndAI = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminator: S.String,
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "DataAndAI" }) as any as S.Schema<DataAndAI>;
-
 export interface RuntimeSpecificAttributes {
   discriminator: string;
   /** Plan ID */
@@ -588,21 +480,8 @@ export interface RuntimeSpecificAttributes {
   /** Type (e.g. `single`, `replica`) */
   type?: string | null;
 }
-export const RuntimeSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminator: S.String,
-    planId: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RuntimeSpecificAttributes",
-}) as any as S.Schema<RuntimeSpecificAttributes>;
-
 /** Communication Channel */
 export type SupportSpecificAttributesCommunicationChannelList = Array<string>;
-export const SupportSpecificAttributesCommunicationChannelList =
-  PublicProductApiIdentifierList as any as S.Schema<SupportSpecificAttributesCommunicationChannelList>;
-
 export interface SupportSpecificAttributes {
   /** Communication Channel */
   communicationChannel?: SupportSpecificAttributesCommunicationChannelList;
@@ -652,39 +531,6 @@ export interface SupportSpecificAttributes {
   /** SLA goal in percentage */
   slaGoalInPercentage?: number | null;
 }
-export const SupportSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    communicationChannel: S.optional(SupportSpecificAttributesCommunicationChannelList),
-    contractNoticePeriodInDays: S.optional(S.NullOr(S.Number)),
-    discriminator: S.String,
-    escalationAvailabilityBCINC: S.optional(S.NullOr(S.String)),
-    escalationAvailabilityINC: S.optional(S.NullOr(S.String)),
-    escalationAvailabilitySR: S.optional(S.NullOr(S.String)),
-    escalationThresholdBCINCInMins: S.optional(S.NullOr(S.Number)),
-    escalationThresholdINCInMins: S.optional(S.NullOr(S.Number)),
-    escalationThresholdSRInMins: S.optional(S.NullOr(S.Number)),
-    finPenaltySLAVio80Pct: S.optional(S.NullOr(S.Number)),
-    finPenaltySLAVio90_80Pct: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("finPenaltySLAVio90-80Pct")),
-    ),
-    initialRuntimeInMonths: S.optional(S.NullOr(S.Number)),
-    leadTimeInWorkDays: S.optional(S.NullOr(S.Number)),
-    location: S.optional(S.NullOr(S.String)),
-    projectNoticePeriodInWorkDays: S.optional(S.NullOr(S.Number)),
-    reactionTimeInMins: S.optional(S.NullOr(S.Number)),
-    repeatedRuntimeInMonths: S.optional(S.NullOr(S.Number)),
-    responseTimeBCINCInMins: S.optional(S.NullOr(S.Number)),
-    responseTimeINCInMins: S.optional(S.NullOr(S.Number)),
-    responseTimeSRInMins: S.optional(S.NullOr(S.Number)),
-    serviceHoursBCINC: S.optional(S.NullOr(S.String)),
-    serviceHoursINC: S.optional(S.NullOr(S.String)),
-    serviceHoursSR: S.optional(S.NullOr(S.String)),
-    slaGoalInPercentage: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "SupportSpecificAttributes",
-}) as any as S.Schema<SupportSpecificAttributes>;
-
 export interface DeveloperPlatformSpecificAttributes {
   discriminator: string;
   /** diskStoragePerNode */
@@ -694,17 +540,6 @@ export interface DeveloperPlatformSpecificAttributes {
   /** Type (e.g. `single`, `replica`) */
   type?: string | null;
 }
-export const DeveloperPlatformSpecificAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discriminator: S.String,
-    diskStoragePerNode: S.optional(S.NullOr(S.String)),
-    storage: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DeveloperPlatformSpecificAttributes",
-}) as any as S.Schema<DeveloperPlatformSpecificAttributes>;
-
 export type GetSKUResponseProductSpecificAttributes =
   | PublicDatabaseSpecificAttributes
   | ArchivingSpecificAttributes
@@ -719,7 +554,7 @@ export type GetSKUResponseProductSpecificAttributes =
   | RuntimeSpecificAttributes
   | SupportSpecificAttributes
   | DeveloperPlatformSpecificAttributes;
-export const GetSKUResponseProductSpecificAttributes =
+const GetSKUResponseProductSpecificAttributes =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetSKUResponseProductSpecificAttributes>;
 
 export interface PublicSavingsPlan {
@@ -728,7 +563,7 @@ export interface PublicSavingsPlan {
   /** Number of years the savings plan is valid */
   validityPeriodInYears?: number;
 }
-export const PublicSavingsPlan = /*@__PURE__*/ S.suspend(() =>
+const PublicSavingsPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discount: S.optional(S.Number),
     validityPeriodInYears: S.optional(S.Number),
@@ -736,7 +571,7 @@ export const PublicSavingsPlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicSavingsPlan" }) as any as S.Schema<PublicSavingsPlan>;
 
 export type GetSKUResponseSavingsPlansList = Array<PublicSavingsPlan>;
-export const GetSKUResponseSavingsPlansList = /*@__PURE__*/ S.Array(
+const GetSKUResponseSavingsPlansList = /*@__PURE__*/ S.Array(
   PublicSavingsPlan,
 ) as any as S.Schema<GetSKUResponseSavingsPlansList>;
 
@@ -799,7 +634,7 @@ export interface GetSKUResponse {
   productSpecificAttributes?: GetSKUResponseProductSpecificAttributes;
   savingsPlans?: GetSKUResponseSavingsPlansList;
 }
-export const GetSKUResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSKUResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.NullOr(S.String),
     categoryName: S.NullOr(S.String),
@@ -835,7 +670,7 @@ export const GetSKUResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSKUResponse" }) as any as S.Schema<GetSKUResponse>;
 
 export type GetSTAXSKURequestLanguage = "en" | "de";
-export const GetSTAXSKURequestLanguage = S.String;
+const GetSTAXSKURequestLanguage = S.String;
 
 export interface GetSTAXSKURequest {
   /** The unique identifier for a SKU. */
@@ -843,7 +678,7 @@ export interface GetSTAXSKURequest {
   /** The language to retrieve the data in, available for en and de */
   language?: GetSTAXSKURequestLanguage | (string & {});
 }
-export const GetSTAXSKURequest = /*@__PURE__*/ S.suspend(() =>
+const GetSTAXSKURequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuId: S.String.pipe(T.Label()),
     language: S.optional(GetSTAXSKURequestLanguage.pipe(T.Query())),
@@ -859,12 +694,12 @@ export const GetSTAXSKURequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of prices */
 export type GetSTAXSKUResponsePricesList = Array<Price>;
-export const GetSTAXSKUResponsePricesList =
+const GetSTAXSKUResponsePricesList =
   GetSKUResponsePricesList as any as S.Schema<GetSTAXSKUResponsePricesList>;
 
 /** List of unique service look up ids (ASCII ordered, ascending) */
 export type GetSTAXSKUResponseServiceIdList = Array<string>;
-export const GetSTAXSKUResponseServiceIdList =
+const GetSTAXSKUResponseServiceIdList =
   PublicProductApiIdentifierList as any as S.Schema<GetSTAXSKUResponseServiceIdList>;
 
 export type GetSTAXSKUResponseProductSpecificAttributes =
@@ -881,11 +716,11 @@ export type GetSTAXSKUResponseProductSpecificAttributes =
   | RuntimeSpecificAttributes
   | SupportSpecificAttributes
   | DeveloperPlatformSpecificAttributes;
-export const GetSTAXSKUResponseProductSpecificAttributes =
+const GetSTAXSKUResponseProductSpecificAttributes =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GetSTAXSKUResponseProductSpecificAttributes>;
 
 export type GetSTAXSKUResponseSavingsPlansList = Array<PublicSavingsPlan>;
-export const GetSTAXSKUResponseSavingsPlansList =
+const GetSTAXSKUResponseSavingsPlansList =
   GetSKUResponseSavingsPlansList as any as S.Schema<GetSTAXSKUResponseSavingsPlansList>;
 
 export interface GetSTAXSKUResponse {
@@ -947,7 +782,7 @@ export interface GetSTAXSKUResponse {
   productSpecificAttributes?: GetSTAXSKUResponseProductSpecificAttributes;
   savingsPlans?: GetSTAXSKUResponseSavingsPlansList;
 }
-export const GetSTAXSKUResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSTAXSKUResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.NullOr(S.String),
     categoryName: S.NullOr(S.String),
@@ -983,7 +818,7 @@ export const GetSTAXSKUResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSTAXSKUResponse" }) as any as S.Schema<GetSTAXSKUResponse>;
 
 export type ListCategoriesRequestLanguage = "en" | "de";
-export const ListCategoriesRequestLanguage = S.String;
+const ListCategoriesRequestLanguage = S.String;
 
 export interface ListCategoriesRequest {
   /** The number of items to retrieve per page */
@@ -995,7 +830,7 @@ export interface ListCategoriesRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: ListCategoriesRequestLanguage | (string & {});
 }
-export const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1012,7 +847,7 @@ export const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCategoriesRequest" }) as any as S.Schema<ListCategoriesRequest>;
 
 export type ListCategoriesResponseDataList = Array<PublicCategory>;
-export const ListCategoriesResponseDataList = /*@__PURE__*/ S.Array(
+const ListCategoriesResponseDataList = /*@__PURE__*/ S.Array(
   PublicCategory,
 ) as any as S.Schema<ListCategoriesResponseDataList>;
 
@@ -1022,7 +857,7 @@ export interface MetaInformation {
   /** The number of items per page */
   pageSize?: number;
 }
-export const MetaInformation = /*@__PURE__*/ S.suspend(() =>
+const MetaInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextCursor: S.optional(S.String),
     pageSize: S.optional(S.Number),
@@ -1033,7 +868,7 @@ export interface ListCategoriesResponse {
   data?: ListCategoriesResponseDataList;
   meta?: MetaInformation;
 }
-export const ListCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListCategoriesResponseDataList),
     meta: S.optional(MetaInformation),
@@ -1041,7 +876,7 @@ export const ListCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCategoriesResponse" }) as any as S.Schema<ListCategoriesResponse>;
 
 export type ListCategoryProductsRequestLanguage = "en" | "de";
-export const ListCategoryProductsRequestLanguage = S.String;
+const ListCategoryProductsRequestLanguage = S.String;
 
 export interface ListCategoryProductsRequest {
   /** The unique identifier for a category. */
@@ -1055,7 +890,7 @@ export interface ListCategoryProductsRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: ListCategoryProductsRequestLanguage | (string & {});
 }
-export const ListCategoryProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCategoryProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1075,7 +910,7 @@ export const ListCategoryProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCategoryProductsRequest>;
 
 export type ListCategoryProductsResponseDataList = Array<PublicProduct>;
-export const ListCategoryProductsResponseDataList = /*@__PURE__*/ S.Array(
+const ListCategoryProductsResponseDataList = /*@__PURE__*/ S.Array(
   PublicProduct,
 ) as any as S.Schema<ListCategoryProductsResponseDataList>;
 
@@ -1083,7 +918,7 @@ export interface ListCategoryProductsResponse {
   data?: ListCategoryProductsResponseDataList;
   meta?: MetaInformation;
 }
-export const ListCategoryProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCategoryProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListCategoryProductsResponseDataList),
     meta: S.optional(MetaInformation),
@@ -1093,7 +928,7 @@ export const ListCategoryProductsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCategoryProductsResponse>;
 
 export type ListMarketingDataRequestLanguage = "en" | "de";
-export const ListMarketingDataRequestLanguage = S.String;
+const ListMarketingDataRequestLanguage = S.String;
 
 export interface ListMarketingDataRequest {
   /** The number of items to retrieve per page */
@@ -1105,7 +940,7 @@ export interface ListMarketingDataRequest {
   /** The product's name to retrieve the data for */
   productName?: string;
 }
-export const ListMarketingDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketingDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1122,7 +957,7 @@ export const ListMarketingDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMarketingDataRequest" }) as any as S.Schema<ListMarketingDataRequest>;
 
 export type ListMarketingDataResponseDataList = Array<PublicMarketingData>;
-export const ListMarketingDataResponseDataList = /*@__PURE__*/ S.Array(
+const ListMarketingDataResponseDataList = /*@__PURE__*/ S.Array(
   PublicMarketingData,
 ) as any as S.Schema<ListMarketingDataResponseDataList>;
 
@@ -1130,7 +965,7 @@ export interface ListMarketingDataResponse {
   data?: ListMarketingDataResponseDataList;
   meta?: MetaInformation;
 }
-export const ListMarketingDataResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMarketingDataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListMarketingDataResponseDataList),
     meta: S.optional(MetaInformation),
@@ -1140,7 +975,7 @@ export const ListMarketingDataResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMarketingDataResponse>;
 
 export type ListProductsRequestLanguage = "en" | "de";
-export const ListProductsRequestLanguage = S.String;
+const ListProductsRequestLanguage = S.String;
 
 export interface ListProductsRequest {
   /** The number of items to retrieve per page */
@@ -1154,7 +989,7 @@ export interface ListProductsRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: ListProductsRequestLanguage | (string & {});
 }
-export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1172,14 +1007,14 @@ export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProductsRequest" }) as any as S.Schema<ListProductsRequest>;
 
 export type ListProductsResponseDataList = Array<PublicProduct>;
-export const ListProductsResponseDataList =
+const ListProductsResponseDataList =
   ListCategoryProductsResponseDataList as any as S.Schema<ListProductsResponseDataList>;
 
 export interface ListProductsResponse {
   data?: ListProductsResponseDataList;
   meta?: MetaInformation;
 }
-export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListProductsResponseDataList),
     meta: S.optional(MetaInformation),
@@ -1187,10 +1022,10 @@ export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProductsResponse" }) as any as S.Schema<ListProductsResponse>;
 
 export type ListProductSKUsRequestLanguage = "en" | "de";
-export const ListProductSKUsRequestLanguage = S.String;
+const ListProductSKUsRequestLanguage = S.String;
 
 export type ListProductSKUsRequestRegionList = Array<string>;
-export const ListProductSKUsRequestRegionList =
+const ListProductSKUsRequestRegionList =
   PublicProductApiIdentifierList as any as S.Schema<ListProductSKUsRequestRegionList>;
 
 export interface ListProductSKUsRequest {
@@ -1207,7 +1042,7 @@ export interface ListProductSKUsRequest {
   /** The region to retrieve the data in */
   region?: ListProductSKUsRequestRegionList;
 }
-export const ListProductSKUsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductSKUsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1227,11 +1062,11 @@ export const ListProductSKUsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of prices */
 export type PublicSKUPricesList = Array<Price>;
-export const PublicSKUPricesList = GetSKUResponsePricesList as any as S.Schema<PublicSKUPricesList>;
+const PublicSKUPricesList = GetSKUResponsePricesList as any as S.Schema<PublicSKUPricesList>;
 
 /** List of unique service look up ids (ASCII ordered, ascending) */
 export type PublicSKUServiceIdList = Array<string>;
-export const PublicSKUServiceIdList =
+const PublicSKUServiceIdList =
   PublicProductApiIdentifierList as any as S.Schema<PublicSKUServiceIdList>;
 
 export type PublicSKUProductSpecificAttributes =
@@ -1248,11 +1083,11 @@ export type PublicSKUProductSpecificAttributes =
   | RuntimeSpecificAttributes
   | SupportSpecificAttributes
   | DeveloperPlatformSpecificAttributes;
-export const PublicSKUProductSpecificAttributes =
+const PublicSKUProductSpecificAttributes =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PublicSKUProductSpecificAttributes>;
 
 export type PublicSKUSavingsPlansList = Array<PublicSavingsPlan>;
-export const PublicSKUSavingsPlansList =
+const PublicSKUSavingsPlansList =
   GetSKUResponseSavingsPlansList as any as S.Schema<PublicSKUSavingsPlansList>;
 
 export interface PublicSKU {
@@ -1314,7 +1149,7 @@ export interface PublicSKU {
   productSpecificAttributes?: PublicSKUProductSpecificAttributes;
   savingsPlans?: PublicSKUSavingsPlansList;
 }
-export const PublicSKU = /*@__PURE__*/ S.suspend(() =>
+const PublicSKU = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.NullOr(S.String),
     categoryName: S.NullOr(S.String),
@@ -1350,7 +1185,7 @@ export const PublicSKU = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicSKU" }) as any as S.Schema<PublicSKU>;
 
 export type ListProductSKUsResponseDataList = Array<PublicSKU>;
-export const ListProductSKUsResponseDataList = /*@__PURE__*/ S.Array(
+const ListProductSKUsResponseDataList = /*@__PURE__*/ S.Array(
   PublicSKU,
 ) as any as S.Schema<ListProductSKUsResponseDataList>;
 
@@ -1358,7 +1193,7 @@ export interface ListProductSKUsResponse {
   data?: ListProductSKUsResponseDataList;
   meta?: MetaInformation;
 }
-export const ListProductSKUsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductSKUsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListProductSKUsResponseDataList),
     meta: S.optional(MetaInformation),
@@ -1366,10 +1201,10 @@ export const ListProductSKUsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProductSKUsResponse" }) as any as S.Schema<ListProductSKUsResponse>;
 
 export type ListProductSTAXSKUsRequestLanguage = "en" | "de";
-export const ListProductSTAXSKUsRequestLanguage = S.String;
+const ListProductSTAXSKUsRequestLanguage = S.String;
 
 export type ListProductSTAXSKUsRequestRegionList = Array<string>;
-export const ListProductSTAXSKUsRequestRegionList =
+const ListProductSTAXSKUsRequestRegionList =
   PublicProductApiIdentifierList as any as S.Schema<ListProductSTAXSKUsRequestRegionList>;
 
 export interface ListProductSTAXSKUsRequest {
@@ -1386,7 +1221,7 @@ export interface ListProductSTAXSKUsRequest {
   /** The region to retrieve the data in */
   region?: ListProductSTAXSKUsRequestRegionList;
 }
-export const ListProductSTAXSKUsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductSTAXSKUsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1407,14 +1242,14 @@ export const ListProductSTAXSKUsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProductSTAXSKUsRequest>;
 
 export type ListProductSTAXSKUsResponseDataList = Array<PublicSKU>;
-export const ListProductSTAXSKUsResponseDataList =
+const ListProductSTAXSKUsResponseDataList =
   ListProductSKUsResponseDataList as any as S.Schema<ListProductSTAXSKUsResponseDataList>;
 
 export interface ListProductSTAXSKUsResponse {
   data?: ListProductSTAXSKUsResponseDataList;
   meta?: MetaInformation;
 }
-export const ListProductSTAXSKUsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductSTAXSKUsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListProductSTAXSKUsResponseDataList),
     meta: S.optional(MetaInformation),
@@ -1424,10 +1259,10 @@ export const ListProductSTAXSKUsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProductSTAXSKUsResponse>;
 
 export type ListSKUsRequestLanguage = "en" | "de";
-export const ListSKUsRequestLanguage = S.String;
+const ListSKUsRequestLanguage = S.String;
 
 export type ListSKUsRequestRegionList = Array<string>;
-export const ListSKUsRequestRegionList =
+const ListSKUsRequestRegionList =
   PublicProductApiIdentifierList as any as S.Schema<ListSKUsRequestRegionList>;
 
 export interface ListSKUsRequest {
@@ -1446,7 +1281,7 @@ export interface ListSKUsRequest {
   /** The region to retrieve the data in */
   region?: ListSKUsRequestRegionList;
 }
-export const ListSKUsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSKUsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1461,20 +1296,17 @@ export const ListSKUsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSKUsRequest" }) as any as S.Schema<ListSKUsRequest>;
 
 export type ListSKUsResponseDataList = Array<PublicSKU>;
-export const ListSKUsResponseDataList =
-  ListProductSKUsResponseDataList as any as S.Schema<ListSKUsResponseDataList>;
-
 export interface ListSKUsResponse {
   data?: ListSKUsResponseDataList;
   meta?: MetaInformation;
 }
-export const ListSKUsResponse = ListProductSKUsResponse as any as S.Schema<ListSKUsResponse>;
+const ListSKUsResponse = ListProductSKUsResponse as any as S.Schema<ListSKUsResponse>;
 
 export type ListSTAXSKUsRequestLanguage = "en" | "de";
-export const ListSTAXSKUsRequestLanguage = S.String;
+const ListSTAXSKUsRequestLanguage = S.String;
 
 export type ListSTAXSKUsRequestRegionList = Array<string>;
-export const ListSTAXSKUsRequestRegionList =
+const ListSTAXSKUsRequestRegionList =
   PublicProductApiIdentifierList as any as S.Schema<ListSTAXSKUsRequestRegionList>;
 
 export interface ListSTAXSKUsRequest {
@@ -1493,7 +1325,7 @@ export interface ListSTAXSKUsRequest {
   /** The region to retrieve the data in */
   region?: ListSTAXSKUsRequestRegionList;
 }
-export const ListSTAXSKUsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSTAXSKUsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1513,18 +1345,14 @@ export const ListSTAXSKUsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSTAXSKUsRequest" }) as any as S.Schema<ListSTAXSKUsRequest>;
 
 export type ListSTAXSKUsResponseDataList = Array<PublicSKU>;
-export const ListSTAXSKUsResponseDataList =
-  ListProductSKUsResponseDataList as any as S.Schema<ListSTAXSKUsResponseDataList>;
-
 export interface ListSTAXSKUsResponse {
   data?: ListSTAXSKUsResponseDataList;
   meta?: MetaInformation;
 }
-export const ListSTAXSKUsResponse =
-  ListProductSKUsResponse as any as S.Schema<ListSTAXSKUsResponse>;
+const ListSTAXSKUsResponse = ListProductSKUsResponse as any as S.Schema<ListSTAXSKUsResponse>;
 
 export type SearchSKUsRequestLanguage = "en" | "de";
-export const SearchSKUsRequestLanguage = S.String;
+const SearchSKUsRequestLanguage = S.String;
 
 export interface SearchSKUsRequest {
   /** The language to retrieve the data in, available for en and de */
@@ -1654,7 +1482,7 @@ export interface SearchSKUsRequest {
   /** Price value that is valid at request time, shown with full precision with 11 decimals */
   value?: string;
 }
-export const SearchSKUsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchSKUsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.optional(SearchSKUsRequestLanguage.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1732,14 +1560,11 @@ export const SearchSKUsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchSKUsRequest" }) as any as S.Schema<SearchSKUsRequest>;
 
 export type SearchSKUsResponseDataList = Array<PublicSKU>;
-export const SearchSKUsResponseDataList =
-  ListProductSKUsResponseDataList as any as S.Schema<SearchSKUsResponseDataList>;
-
 export interface SearchSKUsResponse {
   data?: SearchSKUsResponseDataList;
   meta?: MetaInformation;
 }
-export const SearchSKUsResponse = ListProductSKUsResponse as any as S.Schema<SearchSKUsResponse>;
+const SearchSKUsResponse = ListProductSKUsResponse as any as S.Schema<SearchSKUsResponse>;
 
 export type GetCategoryError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Get category by ID Retrieves a specific category by its ID, available for general public. */

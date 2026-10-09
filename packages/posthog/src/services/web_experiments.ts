@@ -43,7 +43,7 @@ export interface CreateWebExperimentRequest {
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
-export const CreateWebExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -65,7 +65,7 @@ export interface WebExperimentsAPI {
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
-export const WebExperimentsAPI = /*@__PURE__*/ S.suspend(() =>
+const WebExperimentsAPI = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -81,7 +81,7 @@ export interface GetWebExperimentRequest {
   /** A unique integer value identifying this web experiment. */
   id: number;
 }
-export const GetWebExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -98,7 +98,7 @@ export interface ListWebExperimentsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListWebExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -109,7 +109,7 @@ export const ListWebExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebExperimentsRequest>;
 
 export type PaginatedWebExperimentsAPIListResultsList = Array<WebExperimentsAPI>;
-export const PaginatedWebExperimentsAPIListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedWebExperimentsAPIListResultsList = /*@__PURE__*/ S.Array(
   WebExperimentsAPI,
 ) as any as S.Schema<PaginatedWebExperimentsAPIListResultsList>;
 
@@ -119,7 +119,7 @@ export interface PaginatedWebExperimentsAPIList {
   previous?: string | null;
   results?: PaginatedWebExperimentsAPIListResultsList;
 }
-export const PaginatedWebExperimentsAPIList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedWebExperimentsAPIList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -140,7 +140,7 @@ export interface UpdateWebExperimentRequest {
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
-export const UpdateWebExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -164,7 +164,7 @@ export interface UpdateWebExperimentsPartialRequest {
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
-export const UpdateWebExperimentsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebExperimentsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -184,7 +184,7 @@ export interface WebExperimentsDestroyRequest {
   /** A unique integer value identifying this web experiment. */
   id: number;
 }
-export const WebExperimentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const WebExperimentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -200,7 +200,7 @@ export const WebExperimentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebExperimentsDestroyRequest>;
 
 export interface WebExperimentsDestroyResponse {}
-export const WebExperimentsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const WebExperimentsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "WebExperimentsDestroyResponse",
 }) as any as S.Schema<WebExperimentsDestroyResponse>;
 

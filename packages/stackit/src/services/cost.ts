@@ -37,7 +37,7 @@ export class NotFound
   ) {}
 
 export type GetCostsForProjectRequestDepth = "project" | "service" | "auto";
-export const GetCostsForProjectRequestDepth = S.String;
+const GetCostsForProjectRequestDepth = S.String;
 
 export type GetCostsForProjectRequestGranularity =
   | "daily"
@@ -45,7 +45,7 @@ export type GetCostsForProjectRequestGranularity =
   | "monthly"
   | "yearly"
   | "none";
-export const GetCostsForProjectRequestGranularity = S.String;
+const GetCostsForProjectRequestGranularity = S.String;
 
 export interface GetCostsForProjectRequest {
   /** ID of a customer account */
@@ -63,7 +63,7 @@ export interface GetCostsForProjectRequest {
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;
 }
-export const GetCostsForProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCostsForProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAccountId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -94,28 +94,11 @@ export interface SummarizedProjectCost {
   /** Total discount for all services and the whole requested date range (value in cents) */
   totalDiscount: number;
 }
-export const SummarizedProjectCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAccountId: S.String,
-    projectId: S.String,
-    projectName: S.String,
-    totalCharge: S.Number,
-    totalDiscount: S.Number,
-  }),
-).annotate({ identifier: "SummarizedProjectCost" }) as any as S.Schema<SummarizedProjectCost>;
-
 /** Time period according to desired granularity */
 export interface ReportDataTimePeriod {
   end?: string;
   start?: string;
 }
-export const ReportDataTimePeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.optional(S.String),
-    start: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReportDataTimePeriod" }) as any as S.Schema<ReportDataTimePeriod>;
-
 /** Costs report for a certain period of time */
 export interface ReportData {
   /** Charge, value in cents */
@@ -129,22 +112,8 @@ export interface ReportData {
   /** Time period according to desired granularity */
   timePeriod: ReportDataTimePeriod;
 }
-export const ReportData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    charge: S.Number,
-    discount: S.Number,
-    quantity: S.Number,
-    quantityDecimal: S.String,
-    timePeriod: ReportDataTimePeriod,
-  }),
-).annotate({ identifier: "ReportData" }) as any as S.Schema<ReportData>;
-
 /** Detailed project costs which are ONLY included if granularity is provided AND depth is "project" */
 export type ProjectCostWithReportsReportDataList = Array<ReportData>;
-export const ProjectCostWithReportsReportDataList = /*@__PURE__*/ S.Array(
-  ReportData,
-) as any as S.Schema<ProjectCostWithReportsReportDataList>;
-
 /** Detailed costs for a project */
 export interface ProjectCostWithReports {
   customerAccountId: string;
@@ -157,27 +126,10 @@ export interface ProjectCostWithReports {
   /** Total discount for all services and the whole requested date range (value in cents) */
   totalDiscount: number;
 }
-export const ProjectCostWithReports = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAccountId: S.String,
-    projectId: S.String,
-    projectName: S.String,
-    reportData: S.optional(ProjectCostWithReportsReportDataList),
-    totalCharge: S.Number,
-    totalDiscount: S.Number,
-  }),
-).annotate({ identifier: "ProjectCostWithReports" }) as any as S.Schema<ProjectCostWithReports>;
-
 /** Summarized costs for a project */
 export type SummarizedServiceCost = SummarizedProjectCost;
-export const SummarizedServiceCost = SummarizedProjectCost;
-
 /** Summarized service costs */
 export type ProjectCostWithSummarizedServicesServicesList = Array<SummarizedProjectCost>;
-export const ProjectCostWithSummarizedServicesServicesList = /*@__PURE__*/ S.Array(
-  SummarizedProjectCost,
-) as any as S.Schema<ProjectCostWithSummarizedServicesServicesList>;
-
 /** Costs for a project including summarized service costs */
 export interface ProjectCostWithSummarizedServices {
   customerAccountId: string;
@@ -190,24 +142,8 @@ export interface ProjectCostWithSummarizedServices {
   /** Total discount for all services and the whole requested date range (value in cents) */
   totalDiscount: number;
 }
-export const ProjectCostWithSummarizedServices = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAccountId: S.String,
-    projectId: S.String,
-    projectName: S.String,
-    services: S.optional(ProjectCostWithSummarizedServicesServicesList),
-    totalCharge: S.Number,
-    totalDiscount: S.Number,
-  }),
-).annotate({
-  identifier: "ProjectCostWithSummarizedServices",
-}) as any as S.Schema<ProjectCostWithSummarizedServices>;
-
 /** Detailed service costs which are ONLY included if granularity is provided */
 export type DetailedServiceCostReportDataList = Array<ReportData>;
-export const DetailedServiceCostReportDataList =
-  ProjectCostWithReportsReportDataList as any as S.Schema<DetailedServiceCostReportDataList>;
-
 /** Costs for a single service */
 export interface DetailedServiceCost {
   /** Detailed service costs which are ONLY included if granularity is provided */
@@ -229,26 +165,8 @@ export interface DetailedServiceCost {
   /** Label for unit */
   unitLabel: string;
 }
-export const DetailedServiceCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportData: S.optional(DetailedServiceCostReportDataList),
-    serviceCategoryName: S.String,
-    serviceName: S.String,
-    sku: S.String,
-    totalCharge: S.Number,
-    totalDiscount: S.Number,
-    totalQuantity: S.Number,
-    totalQuantityDecimal: S.String,
-    unitLabel: S.String,
-  }),
-).annotate({ identifier: "DetailedServiceCost" }) as any as S.Schema<DetailedServiceCost>;
-
 /** Total discount for all services and the whole requested date range (value in cents). Please see "depth" parameter for more details. */
 export type ProjectCostWithDetailedServicesServicesList = Array<DetailedServiceCost>;
-export const ProjectCostWithDetailedServicesServicesList = /*@__PURE__*/ S.Array(
-  DetailedServiceCost,
-) as any as S.Schema<ProjectCostWithDetailedServicesServicesList>;
-
 /** Detailed costs for a project including service costs */
 export interface ProjectCostWithDetailedServices {
   customerAccountId: string;
@@ -261,35 +179,22 @@ export interface ProjectCostWithDetailedServices {
   /** Total discount for all services and the whole requested date range (value in cents) */
   totalDiscount: number;
 }
-export const ProjectCostWithDetailedServices = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAccountId: S.String,
-    projectId: S.String,
-    projectName: S.String,
-    services: S.optional(ProjectCostWithDetailedServicesServicesList),
-    totalCharge: S.Number,
-    totalDiscount: S.Number,
-  }),
-).annotate({
-  identifier: "ProjectCostWithDetailedServices",
-}) as any as S.Schema<ProjectCostWithDetailedServices>;
-
 export type ProjectCost =
   | SummarizedProjectCost
   | ProjectCostWithReports
   | ProjectCostWithSummarizedServices
   | ProjectCostWithDetailedServices;
-export const ProjectCost = /*@__PURE__*/ S.Unknown as any as S.Schema<ProjectCost>;
+const ProjectCost = /*@__PURE__*/ S.Unknown as any as S.Schema<ProjectCost>;
 
 export type GetCostsForProjectResponse = ProjectCost;
-export const GetCostsForProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCostsForProjectResponse = /*@__PURE__*/ S.suspend(() =>
   ProjectCost.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetCostsForProjectResponse",
 }) as any as S.Schema<GetCostsForProjectResponse>;
 
 export type ListCostsForCustomerRequestDepth = "project" | "service" | "auto";
-export const ListCostsForCustomerRequestDepth = S.String;
+const ListCostsForCustomerRequestDepth = S.String;
 
 export type ListCostsForCustomerRequestGranularity =
   | "daily"
@@ -297,7 +202,7 @@ export type ListCostsForCustomerRequestGranularity =
   | "monthly"
   | "yearly"
   | "none";
-export const ListCostsForCustomerRequestGranularity = S.String;
+const ListCostsForCustomerRequestGranularity = S.String;
 
 export interface ListCostsForCustomerRequest {
   /** ID of a customer account */
@@ -313,7 +218,7 @@ export interface ListCostsForCustomerRequest {
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;
 }
-export const ListCostsForCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCostsForCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAccountId: S.String.pipe(T.Label()),
     from: S.String.pipe(T.Query()),
@@ -334,19 +239,19 @@ export const ListCostsForCustomerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCostsForCustomerRequest>;
 
 export type ListCostsForCustomerResponseBodyList = Array<ProjectCost>;
-export const ListCostsForCustomerResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCostsForCustomerResponseBodyList = /*@__PURE__*/ S.Array(
   ProjectCost,
 ) as any as S.Schema<ListCostsForCustomerResponseBodyList>;
 
 export type ListCostsForCustomerResponse = ListCostsForCustomerResponseBodyList;
-export const ListCostsForCustomerResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCostsForCustomerResponse = /*@__PURE__*/ S.suspend(() =>
   ListCostsForCustomerResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListCostsForCustomerResponse",
 }) as any as S.Schema<ListCostsForCustomerResponse>;
 
 export type ListCostsForResellerRequestDepth = "project" | "service" | "auto";
-export const ListCostsForResellerRequestDepth = S.String;
+const ListCostsForResellerRequestDepth = S.String;
 
 export type ListCostsForResellerRequestGranularity =
   | "daily"
@@ -354,7 +259,7 @@ export type ListCostsForResellerRequestGranularity =
   | "monthly"
   | "yearly"
   | "none";
-export const ListCostsForResellerRequestGranularity = S.String;
+const ListCostsForResellerRequestGranularity = S.String;
 
 export interface ListCostsForResellerRequest {
   /** ID of a customer account */
@@ -370,7 +275,7 @@ export interface ListCostsForResellerRequest {
   /** Whether costs of 0 should be included in the response */
   includeZeroCosts?: boolean;
 }
-export const ListCostsForResellerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCostsForResellerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAccountId: S.String.pipe(T.Label()),
     from: S.String.pipe(T.Query()),
@@ -391,11 +296,8 @@ export const ListCostsForResellerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCostsForResellerRequest>;
 
 export type ListCostsForResellerResponseBodyList = Array<ProjectCost>;
-export const ListCostsForResellerResponseBodyList =
-  ListCostsForCustomerResponseBodyList as any as S.Schema<ListCostsForResellerResponseBodyList>;
-
 export type ListCostsForResellerResponse = ListCostsForResellerResponseBodyList;
-export const ListCostsForResellerResponse =
+const ListCostsForResellerResponse =
   ListCostsForCustomerResponse as any as S.Schema<ListCostsForResellerResponse>;
 
 export type GetCostsForProjectError = BadRequest | Forbidden | NotFound | StackitOpError;

@@ -89,7 +89,7 @@ export class PolicyQuotaExceeded
   ) {}
 
 export type PoliciesCreateRequestAction = "allow" | "log" | "add_reporting_directives";
-export const PoliciesCreateRequestAction = S.String;
+const PoliciesCreateRequestAction = S.String;
 
 export interface CreatePolicyRequest {
   /** Identifier */
@@ -105,7 +105,7 @@ export interface CreatePolicyRequest {
   /** The policy which will be applied */
   value: string;
 }
-export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     action: PoliciesCreateRequestAction,
@@ -119,7 +119,7 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePolicyRequest" }) as any as S.Schema<CreatePolicyRequest>;
 
 export type PoliciesCreateResponseAction = "allow" | "log" | "add_reporting_directives";
-export const PoliciesCreateResponseAction = S.String;
+const PoliciesCreateResponseAction = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreatePolicyResponse {
@@ -136,7 +136,7 @@ export interface CreatePolicyResponse {
   /** The policy which will be applied */
   value: string;
 }
-export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     action: PoliciesCreateResponseAction,
@@ -153,7 +153,7 @@ export interface DeletePolicyRequest {
   /** Identifier */
   policyId: string;
 }
-export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -169,7 +169,7 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePolicyRequest" }) as any as S.Schema<DeletePolicyRequest>;
 
 export interface DeletePolicyResponse {}
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeletePolicyResponse" }) as any as S.Schema<DeletePolicyResponse>;
 
@@ -179,7 +179,7 @@ export interface GetConnectionRequest {
   /** Identifier */
   connectionId: string;
 }
-export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     connectionId: S.String.pipe(T.Label("connection_id")),
@@ -195,16 +195,16 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConnectionRequest" }) as any as S.Schema<GetConnectionRequest>;
 
 export type ConnectionsGetResponseMaliciousDomainCategoriesList = Array<string>;
-export const ConnectionsGetResponseMaliciousDomainCategoriesList = /*@__PURE__*/ S.Array(
+const ConnectionsGetResponseMaliciousDomainCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionsGetResponseMaliciousDomainCategoriesList>;
 
 export type ConnectionsGetResponseMaliciousUrlCategoriesList = Array<string>;
-export const ConnectionsGetResponseMaliciousUrlCategoriesList =
+const ConnectionsGetResponseMaliciousUrlCategoriesList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsGetResponseMaliciousUrlCategoriesList>;
 
 export type ConnectionsGetResponsePageUrlsList = Array<string>;
-export const ConnectionsGetResponsePageUrlsList =
+const ConnectionsGetResponsePageUrlsList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsGetResponsePageUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -224,7 +224,7 @@ export interface GetConnectionResponse {
   pageUrls?: ConnectionsGetResponsePageUrlsList | null;
   urlReportedMalicious?: boolean | null;
 }
-export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     addedAt: S.String.pipe(T.Body("added_at")),
@@ -258,7 +258,7 @@ export interface GetCookyRequest {
   /** Identifier */
   cookieId: string;
 }
-export const GetCookyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCookyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     cookieId: S.String.pipe(T.Label("cookie_id")),
@@ -270,14 +270,14 @@ export const GetCookyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCookyRequest" }) as any as S.Schema<GetCookyRequest>;
 
 export type CookiesGetResponseType = "first_party" | "unknown";
-export const CookiesGetResponseType = S.String;
+const CookiesGetResponseType = S.String;
 
 export type CookiesGetResponsePageUrlsList = Array<string>;
-export const CookiesGetResponsePageUrlsList =
+const CookiesGetResponsePageUrlsList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<CookiesGetResponsePageUrlsList>;
 
 export type CookiesGetResponseSameSiteAttribute = "lax" | "strict" | "none";
-export const CookiesGetResponseSameSiteAttribute = S.String;
+const CookiesGetResponseSameSiteAttribute = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCookyResponse {
@@ -297,7 +297,7 @@ export interface GetCookyResponse {
   sameSiteAttribute?: CookiesGetResponseSameSiteAttribute | null;
   secureAttribute?: boolean | null;
 }
-export const GetCookyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCookyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
@@ -322,7 +322,7 @@ export interface GetPageShieldRequest {
   /** Identifier */
   zoneId: string;
 }
-export const GetPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -341,7 +341,7 @@ export interface GetPageShieldResponse {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath: boolean;
 }
-export const GetPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     updatedAt: S.String.pipe(T.Body("updated_at")),
@@ -356,7 +356,7 @@ export interface GetPolicyRequest {
   /** Identifier */
   policyId: string;
 }
-export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -372,8 +372,6 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPolicyRequest" }) as any as S.Schema<GetPolicyRequest>;
 
 export type PoliciesGetResponseAction = "allow" | "log" | "add_reporting_directives";
-export const PoliciesGetResponseAction = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPolicyResponse {
   /** Identifier */
@@ -389,7 +387,7 @@ export interface GetPolicyResponse {
   /** The policy which will be applied */
   value: string;
 }
-export const GetPolicyResponse = CreatePolicyResponse as any as S.Schema<GetPolicyResponse>;
+const GetPolicyResponse = CreatePolicyResponse as any as S.Schema<GetPolicyResponse>;
 
 export interface GetScriptRequest {
   /** Identifier */
@@ -397,7 +395,7 @@ export interface GetScriptRequest {
   /** Identifier */
   scriptId: string;
 }
-export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     scriptId: S.String.pipe(T.Label("script_id")),
@@ -409,15 +407,15 @@ export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScriptRequest" }) as any as S.Schema<GetScriptRequest>;
 
 export type ScriptsGetResponseMaliciousDomainCategoriesList = Array<string>;
-export const ScriptsGetResponseMaliciousDomainCategoriesList =
+const ScriptsGetResponseMaliciousDomainCategoriesList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponseMaliciousDomainCategoriesList>;
 
 export type ScriptsGetResponseMaliciousUrlCategoriesList = Array<string>;
-export const ScriptsGetResponseMaliciousUrlCategoriesList =
+const ScriptsGetResponseMaliciousUrlCategoriesList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponseMaliciousUrlCategoriesList>;
 
 export type ScriptsGetResponsePageUrlsList = Array<string>;
-export const ScriptsGetResponsePageUrlsList =
+const ScriptsGetResponsePageUrlsList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsGetResponsePageUrlsList>;
 
 export interface ScriptsGetResponseVersionsItem {
@@ -438,7 +436,7 @@ export interface ScriptsGetResponseVersionsItem {
   /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
   obfuscationScore?: number | null;
 }
-export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
+const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptominingScore: S.optional(S.NullOr(S.Number).pipe(T.Body("cryptomining_score"))),
     dataflowScore: S.optional(S.NullOr(S.Number).pipe(T.Body("dataflow_score"))),
@@ -454,7 +452,7 @@ export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScriptsGetResponseVersionsItem>;
 
 export type ScriptsGetResponseVersionsList = Array<ScriptsGetResponseVersionsItem>;
-export const ScriptsGetResponseVersionsList = /*@__PURE__*/ S.Array(
+const ScriptsGetResponseVersionsList = /*@__PURE__*/ S.Array(
   ScriptsGetResponseVersionsItem,
 ) as any as S.Schema<ScriptsGetResponseVersionsList>;
 
@@ -492,7 +490,7 @@ export interface GetScriptResponse {
   urlReportedMalicious?: boolean | null;
   versions?: ScriptsGetResponseVersionsList | null;
 }
-export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     addedAt: S.String.pipe(T.Body("added_at")),
@@ -530,13 +528,13 @@ export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetScriptResponse" }) as any as S.Schema<GetScriptResponse>;
 
 export type ConnectionsListRequestDirection = "asc" | "desc";
-export const ConnectionsListRequestDirection = S.String;
+const ConnectionsListRequestDirection = S.String;
 
 export type ConnectionsListRequestExport = "csv";
-export const ConnectionsListRequestExport = S.String;
+const ConnectionsListRequestExport = S.String;
 
 export type ConnectionsListRequestOrderBy = "first_seen_at" | "last_seen_at";
-export const ConnectionsListRequestOrderBy = S.String;
+const ConnectionsListRequestOrderBy = S.String;
 
 export interface ListConnectionsRequest {
   /** Identifier */
@@ -566,7 +564,7 @@ export interface ListConnectionsRequest {
   /** Includes connections whose URL contain one or more URL-encoded URLs separated by commas. */
   urls?: string;
 }
-export const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(ConnectionsListRequestDirection.pipe(T.Query())),
@@ -587,15 +585,15 @@ export const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListConnectionsRequest" }) as any as S.Schema<ListConnectionsRequest>;
 
 export type ConnectionsListResultItemMaliciousDomainCategoriesList = Array<string>;
-export const ConnectionsListResultItemMaliciousDomainCategoriesList =
+const ConnectionsListResultItemMaliciousDomainCategoriesList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemMaliciousDomainCategoriesList>;
 
 export type ConnectionsListResultItemMaliciousUrlCategoriesList = Array<string>;
-export const ConnectionsListResultItemMaliciousUrlCategoriesList =
+const ConnectionsListResultItemMaliciousUrlCategoriesList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemMaliciousUrlCategoriesList>;
 
 export type ConnectionsListResultItemPageUrlsList = Array<string>;
-export const ConnectionsListResultItemPageUrlsList =
+const ConnectionsListResultItemPageUrlsList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ConnectionsListResultItemPageUrlsList>;
 
 export interface ConnectionsListResultItem {
@@ -614,7 +612,7 @@ export interface ConnectionsListResultItem {
   pageUrls?: ConnectionsListResultItemPageUrlsList | null;
   urlReportedMalicious?: boolean | null;
 }
-export const ConnectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ConnectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     addedAt: S.String.pipe(T.Body("added_at")),
@@ -645,7 +643,7 @@ export const ConnectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionsListResultItem>;
 
 export type ConnectionsListResultList = Array<ConnectionsListResultItem>;
-export const ConnectionsListResultList = /*@__PURE__*/ S.Array(
+const ConnectionsListResultList = /*@__PURE__*/ S.Array(
   ConnectionsListResultItem,
 ) as any as S.Schema<ConnectionsListResultList>;
 
@@ -655,7 +653,7 @@ export interface ListConnectionsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ConnectionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -663,19 +661,19 @@ export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListConnectionsResponse" }) as any as S.Schema<ListConnectionsResponse>;
 
 export type CookiesListRequestDirection = "asc" | "desc";
-export const CookiesListRequestDirection = S.String;
+const CookiesListRequestDirection = S.String;
 
 export type CookiesListRequestExport = "csv";
-export const CookiesListRequestExport = S.String;
+const CookiesListRequestExport = S.String;
 
 export type CookiesListRequestOrderBy = "first_seen_at" | "last_seen_at";
-export const CookiesListRequestOrderBy = S.String;
+const CookiesListRequestOrderBy = S.String;
 
 export type CookiesListRequestSameSite = "lax" | "strict" | "none";
-export const CookiesListRequestSameSite = S.String;
+const CookiesListRequestSameSite = S.String;
 
 export type CookiesListRequestType = "first_party" | "unknown";
-export const CookiesListRequestType = S.String;
+const CookiesListRequestType = S.String;
 
 export interface ListCookiesRequest {
   /** Identifier */
@@ -709,7 +707,7 @@ export interface ListCookiesRequest {
   /** Filters the returned cookies that match the specified type attribute */
   type?: CookiesListRequestType | (string & {});
 }
-export const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(CookiesListRequestDirection.pipe(T.Query())),
@@ -732,14 +730,14 @@ export const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCookiesRequest" }) as any as S.Schema<ListCookiesRequest>;
 
 export type CookiesListResultItemType = "first_party" | "unknown";
-export const CookiesListResultItemType = S.String;
+const CookiesListResultItemType = S.String;
 
 export type CookiesListResultItemPageUrlsList = Array<string>;
-export const CookiesListResultItemPageUrlsList =
+const CookiesListResultItemPageUrlsList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<CookiesListResultItemPageUrlsList>;
 
 export type CookiesListResultItemSameSiteAttribute = "lax" | "strict" | "none";
-export const CookiesListResultItemSameSiteAttribute = S.String;
+const CookiesListResultItemSameSiteAttribute = S.String;
 
 export interface CookiesListResultItem {
   /** Identifier */
@@ -758,7 +756,7 @@ export interface CookiesListResultItem {
   sameSiteAttribute?: CookiesListResultItemSameSiteAttribute | null;
   secureAttribute?: boolean | null;
 }
-export const CookiesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const CookiesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
@@ -780,7 +778,7 @@ export const CookiesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CookiesListResultItem" }) as any as S.Schema<CookiesListResultItem>;
 
 export type CookiesListResultList = Array<CookiesListResultItem>;
-export const CookiesListResultList = /*@__PURE__*/ S.Array(
+const CookiesListResultList = /*@__PURE__*/ S.Array(
   CookiesListResultItem,
 ) as any as S.Schema<CookiesListResultList>;
 
@@ -790,7 +788,7 @@ export interface ListCookiesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListCookiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCookiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: CookiesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -801,7 +799,7 @@ export interface ListPoliciesRequest {
   /** Identifier */
   zoneId: string;
 }
-export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -810,7 +808,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPoliciesRequest" }) as any as S.Schema<ListPoliciesRequest>;
 
 export type PoliciesListResultItemAction = "allow" | "log" | "add_reporting_directives";
-export const PoliciesListResultItemAction = S.String;
+const PoliciesListResultItemAction = S.String;
 
 export interface PoliciesListResultItem {
   /** Identifier */
@@ -826,7 +824,7 @@ export interface PoliciesListResultItem {
   /** The policy which will be applied */
   value: string;
 }
-export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     action: PoliciesListResultItemAction,
@@ -838,7 +836,7 @@ export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PoliciesListResultItem" }) as any as S.Schema<PoliciesListResultItem>;
 
 export type PoliciesListResultList = Array<PoliciesListResultItem>;
-export const PoliciesListResultList = /*@__PURE__*/ S.Array(
+const PoliciesListResultList = /*@__PURE__*/ S.Array(
   PoliciesListResultItem,
 ) as any as S.Schema<PoliciesListResultList>;
 
@@ -848,7 +846,7 @@ export interface ListPoliciesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -856,13 +854,13 @@ export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPoliciesResponse" }) as any as S.Schema<ListPoliciesResponse>;
 
 export type ScriptsListRequestDirection = "asc" | "desc";
-export const ScriptsListRequestDirection = S.String;
+const ScriptsListRequestDirection = S.String;
 
 export type ScriptsListRequestExport = "csv";
-export const ScriptsListRequestExport = S.String;
+const ScriptsListRequestExport = S.String;
 
 export type ScriptsListRequestOrderBy = "first_seen_at" | "last_seen_at";
-export const ScriptsListRequestOrderBy = S.String;
+const ScriptsListRequestOrderBy = S.String;
 
 export interface ListScriptsRequest {
   /** Identifier */
@@ -894,7 +892,7 @@ export interface ListScriptsRequest {
   /** Includes scripts whose URL contain one or more URL-encoded URLs separated by commas. */
   urls?: string;
 }
-export const ListScriptsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(ScriptsListRequestDirection.pipe(T.Query())),
@@ -916,15 +914,15 @@ export const ListScriptsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListScriptsRequest" }) as any as S.Schema<ListScriptsRequest>;
 
 export type ScriptsListResultItemMaliciousDomainCategoriesList = Array<string>;
-export const ScriptsListResultItemMaliciousDomainCategoriesList =
+const ScriptsListResultItemMaliciousDomainCategoriesList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemMaliciousDomainCategoriesList>;
 
 export type ScriptsListResultItemMaliciousUrlCategoriesList = Array<string>;
-export const ScriptsListResultItemMaliciousUrlCategoriesList =
+const ScriptsListResultItemMaliciousUrlCategoriesList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemMaliciousUrlCategoriesList>;
 
 export type ScriptsListResultItemPageUrlsList = Array<string>;
-export const ScriptsListResultItemPageUrlsList =
+const ScriptsListResultItemPageUrlsList =
   ConnectionsGetResponseMaliciousDomainCategoriesList as any as S.Schema<ScriptsListResultItemPageUrlsList>;
 
 export interface ScriptsListResultItem {
@@ -959,7 +957,7 @@ export interface ScriptsListResultItem {
   pageUrls?: ScriptsListResultItemPageUrlsList | null;
   urlReportedMalicious?: boolean | null;
 }
-export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     addedAt: S.String.pipe(T.Body("added_at")),
@@ -996,7 +994,7 @@ export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScriptsListResultItem" }) as any as S.Schema<ScriptsListResultItem>;
 
 export type ScriptsListResultList = Array<ScriptsListResultItem>;
-export const ScriptsListResultList = /*@__PURE__*/ S.Array(
+const ScriptsListResultList = /*@__PURE__*/ S.Array(
   ScriptsListResultItem,
 ) as any as S.Schema<ScriptsListResultList>;
 
@@ -1006,7 +1004,7 @@ export interface ListScriptsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ScriptsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1023,7 +1021,7 @@ export interface PutPageShieldRequest {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath?: boolean;
 }
-export const PutPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
+const PutPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
@@ -1047,11 +1045,10 @@ export interface PutPageShieldResponse {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath: boolean;
 }
-export const PutPageShieldResponse =
-  GetPageShieldResponse as any as S.Schema<PutPageShieldResponse>;
+const PutPageShieldResponse = GetPageShieldResponse as any as S.Schema<PutPageShieldResponse>;
 
 export type PoliciesUpdateRequestAction = "allow" | "log" | "add_reporting_directives";
-export const PoliciesUpdateRequestAction = S.String;
+const PoliciesUpdateRequestAction = S.String;
 
 export interface UpdatePolicyRequest {
   /** Identifier */
@@ -1069,7 +1066,7 @@ export interface UpdatePolicyRequest {
   /** The policy which will be applied */
   value?: string;
 }
-export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -1090,8 +1087,6 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePolicyRequest" }) as any as S.Schema<UpdatePolicyRequest>;
 
 export type PoliciesUpdateResponseAction = "allow" | "log" | "add_reporting_directives";
-export const PoliciesUpdateResponseAction = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdatePolicyResponse {
   /** Identifier */
@@ -1107,7 +1102,7 @@ export interface UpdatePolicyResponse {
   /** The policy which will be applied */
   value: string;
 }
-export const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
+const UpdatePolicyResponse = CreatePolicyResponse as any as S.Schema<UpdatePolicyResponse>;
 
 export type CreatePolicyError = PolicyQuotaExceeded | Forbidden | CloudflareOpError;
 /** Creates a rule that applies a client-side security action when its filter expression matches. */

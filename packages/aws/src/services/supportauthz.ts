@@ -122,28 +122,28 @@ export class ValidationException
   }) {}
 export type Action = string;
 export type Actions = string[];
-export const Actions = /*@__PURE__*/ S.Array(S.String);
+const Actions = /*@__PURE__*/ S.Array(S.String);
 export type ActionSet =
   | { allActions: Record<string, never>; actions?: never }
   | { allActions?: never; actions: string[] };
-export const ActionSet = /*@__PURE__*/ S.Union([
+const ActionSet = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ allActions: /*@__PURE__*/ S.Struct({}) }),
   /*@__PURE__*/ S.Struct({ actions: Actions }),
 ]);
 export type Resource = string;
 export type Resources = string[];
-export const Resources = Actions as any as S.Schema<Resources>;
+const Resources = Actions as any as S.Schema<Resources>;
 export type ResourceSet =
   | { allResourcesInRegion: Record<string, never>; resources?: never }
   | { allResourcesInRegion?: never; resources: string[] };
-export const ResourceSet = /*@__PURE__*/ S.Union([
+const ResourceSet = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ allResourcesInRegion: /*@__PURE__*/ S.Struct({}) }),
   /*@__PURE__*/ S.Struct({ resources: Resources }),
 ]);
 export type Condition =
   | { allowAfter: Date; allowBefore?: never }
   | { allowAfter?: never; allowBefore: Date };
-export const Condition = /*@__PURE__*/ S.Union([
+const Condition = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({
     allowAfter: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
   }),
@@ -152,26 +152,26 @@ export const Condition = /*@__PURE__*/ S.Union([
   }),
 ]);
 export type Conditions = Condition[];
-export const Conditions = /*@__PURE__*/ S.Array(Condition);
+const Conditions = /*@__PURE__*/ S.Array(Condition);
 export interface Permit {
   actions: ActionSet;
   resources: ResourceSet;
   conditions?: Condition[];
 }
-export const Permit = /*@__PURE__*/ S.suspend(() =>
+const Permit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ actions: ActionSet, resources: ResourceSet, conditions: S.optional(Conditions) }),
 ).annotate({ identifier: "Permit" }) as any as S.Schema<Permit>;
 export type Name = string;
 export type Description = string;
 export type KmsKeyArn = string;
 export type SigningKeyInfo = { kmsKey: string };
-export const SigningKeyInfo = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ kmsKey: S.String })]);
+const SigningKeyInfo = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ kmsKey: S.String })]);
 export type SupportCaseDisplayId = string;
 export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateSupportPermitInput {
   permit: Permit;
   name: string;
@@ -181,7 +181,7 @@ export interface CreateSupportPermitInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permit: Permit,
     name: S.String,
@@ -194,7 +194,7 @@ export const CreateSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSupportPermitInput" }) as any as S.Schema<CreateSupportPermitInput>;
 export type Arn = string;
 export type SupportPermitStatus = "ACTIVE" | "INACTIVE" | "DELETING" | (string & {});
-export const SupportPermitStatus = S.String;
+const SupportPermitStatus = S.String;
 
 export interface CreateSupportPermitOutput {
   name: string;
@@ -207,7 +207,7 @@ export interface CreateSupportPermitOutput {
   supportCaseDisplayId?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     arn: S.String,
@@ -225,7 +225,7 @@ export const CreateSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSupportPermitInput {
   supportPermitIdentifier: string;
 }
-export const DeleteSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/support-permits/{supportPermitIdentifier}" }),
@@ -247,7 +247,7 @@ export interface DeleteSupportPermitOutput {
   createdAt: Date;
   supportCaseDisplayId?: string;
 }
-export const DeleteSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
+const DeleteSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     arn: S.String,
@@ -264,7 +264,7 @@ export const DeleteSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetActionInput {
   action: string;
 }
-export const GetActionInput = /*@__PURE__*/ S.suspend(() =>
+const GetActionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ action: S.String.pipe(T.HttpLabel("action")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/actions/{action}" }), svc, auth, proto, ver, rules),
   ),
@@ -276,14 +276,14 @@ export interface GetActionOutput {
   service: string;
   description: string;
 }
-export const GetActionOutput = /*@__PURE__*/ S.suspend(() =>
+const GetActionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ action: S.String, service: S.String, description: S.String }),
 ).annotate({ identifier: "GetActionOutput" }) as any as S.Schema<GetActionOutput>;
 export type SupportPermitIdentifier = string;
 export interface GetSupportPermitInput {
   supportPermitIdentifier: string;
 }
-export const GetSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
+const GetSupportPermitInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/support-permits/{supportPermitIdentifier}" }),
@@ -306,7 +306,7 @@ export interface GetSupportPermitOutput {
   supportCaseDisplayId?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
+const GetSupportPermitOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     arn: S.String,
@@ -326,7 +326,7 @@ export interface ListActionsInput {
   maxResults?: number;
   service: string;
 }
-export const ListActionsInput = /*@__PURE__*/ S.suspend(() =>
+const ListActionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -338,14 +338,14 @@ export interface ActionSummary {
   service: string;
   description: string;
 }
-export const ActionSummary = GetActionOutput as any as S.Schema<ActionSummary>;
+const ActionSummary = GetActionOutput as any as S.Schema<ActionSummary>;
 export type ActionSummaries = ActionSummary[];
-export const ActionSummaries = /*@__PURE__*/ S.Array(ActionSummary);
+const ActionSummaries = /*@__PURE__*/ S.Array(ActionSummary);
 export interface ListActionsOutput {
   actionSummaries: ActionSummary[];
   nextToken?: string;
 }
-export const ListActionsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListActionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ actionSummaries: ActionSummaries, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListActionsOutput" }) as any as S.Schema<ListActionsOutput>;
 export interface ListSupportPermitRequestsInput {
@@ -353,7 +353,7 @@ export interface ListSupportPermitRequestsInput {
   maxResults?: number;
   supportCaseDisplayId?: string;
 }
-export const ListSupportPermitRequestsInput = /*@__PURE__*/ S.suspend(() =>
+const ListSupportPermitRequestsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -371,7 +371,7 @@ export type SupportPermitRequestStatus =
   | "REJECTED"
   | "CANCELLED"
   | (string & {});
-export const SupportPermitRequestStatus = S.String;
+const SupportPermitRequestStatus = S.String;
 
 export interface SupportPermitRequest {
   requestArn: string;
@@ -381,7 +381,7 @@ export interface SupportPermitRequest {
   createdAt: Date;
   updatedAt: Date;
 }
-export const SupportPermitRequest = /*@__PURE__*/ S.suspend(() =>
+const SupportPermitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestArn: S.String,
     permit: Permit,
@@ -392,24 +392,24 @@ export const SupportPermitRequest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SupportPermitRequest" }) as any as S.Schema<SupportPermitRequest>;
 export type SupportPermitRequests = SupportPermitRequest[];
-export const SupportPermitRequests = /*@__PURE__*/ S.Array(SupportPermitRequest);
+const SupportPermitRequests = /*@__PURE__*/ S.Array(SupportPermitRequest);
 export interface ListSupportPermitRequestsOutput {
   supportPermitRequests: SupportPermitRequest[];
   nextToken?: string;
 }
-export const ListSupportPermitRequestsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListSupportPermitRequestsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ supportPermitRequests: SupportPermitRequests, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListSupportPermitRequestsOutput",
 }) as any as S.Schema<ListSupportPermitRequestsOutput>;
 export type SupportPermitStatuses = SupportPermitStatus[];
-export const SupportPermitStatuses = /*@__PURE__*/ S.Array(SupportPermitStatus);
+const SupportPermitStatuses = /*@__PURE__*/ S.Array(SupportPermitStatus);
 export interface ListSupportPermitsInput {
   nextToken?: string;
   maxResults?: number;
   supportPermitStatuses?: SupportPermitStatus[];
 }
-export const ListSupportPermitsInput = /*@__PURE__*/ S.suspend(() =>
+const ListSupportPermitsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -427,7 +427,7 @@ export interface SupportPermitSummary {
   createdAt: Date;
   supportCaseDisplayId?: string;
 }
-export const SupportPermitSummary = /*@__PURE__*/ S.suspend(() =>
+const SupportPermitSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     arn: S.String,
@@ -439,18 +439,18 @@ export const SupportPermitSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SupportPermitSummary" }) as any as S.Schema<SupportPermitSummary>;
 export type SupportPermitSummaries = SupportPermitSummary[];
-export const SupportPermitSummaries = /*@__PURE__*/ S.Array(SupportPermitSummary);
+const SupportPermitSummaries = /*@__PURE__*/ S.Array(SupportPermitSummary);
 export interface ListSupportPermitsOutput {
   supportPermits: SupportPermitSummary[];
   nextToken?: string;
 }
-export const ListSupportPermitsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListSupportPermitsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ supportPermits: SupportPermitSummaries, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListSupportPermitsOutput" }) as any as S.Schema<ListSupportPermitsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -458,7 +458,7 @@ export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(Tags) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
@@ -466,7 +466,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 export interface RejectSupportPermitRequestInput {
   requestArn: string;
 }
-export const RejectSupportPermitRequestInput = /*@__PURE__*/ S.suspend(() =>
+const RejectSupportPermitRequestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ requestArn: S.String.pipe(T.HttpLabel("requestArn")) }).pipe(
     T.all(
       T.Http({ method: "PUT", uri: "/support-permit-requests/{requestArn}/reject" }),
@@ -483,7 +483,7 @@ export const RejectSupportPermitRequestInput = /*@__PURE__*/ S.suspend(() =>
 export interface RejectSupportPermitRequestOutput {
   requestArn: string;
 }
-export const RejectSupportPermitRequestOutput = /*@__PURE__*/ S.suspend(() =>
+const RejectSupportPermitRequestOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ requestArn: S.String }),
 ).annotate({
   identifier: "RejectSupportPermitRequestOutput",
@@ -492,22 +492,22 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceOutput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = Actions as any as S.Schema<TagKeyList>;
+const TagKeyList = Actions as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -516,16 +516,16 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
+const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ path: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type CreateSupportPermitError =
   | AccessDeniedException
   | ConflictException

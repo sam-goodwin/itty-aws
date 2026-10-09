@@ -139,7 +139,7 @@ export interface ActivateEmailContactRequest {
   arn: string;
   code: string | redacted.Redacted<string>;
 }
-export const ActivateEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String.pipe(T.HttpLabel("arn")),
     code: SensitiveString.pipe(T.HttpLabel("code")),
@@ -157,7 +157,7 @@ export const ActivateEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivateEmailContactRequest",
 }) as any as S.Schema<ActivateEmailContactRequest>;
 export interface ActivateEmailContactResponse {}
-export const ActivateEmailContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ActivateEmailContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ActivateEmailContactResponse",
 }) as any as S.Schema<ActivateEmailContactResponse>;
 export type EmailContactName = string | redacted.Redacted<string>;
@@ -165,13 +165,13 @@ export type EmailContactAddress = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateEmailContactRequest {
   name: string | redacted.Redacted<string>;
   emailAddress: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: SensitiveString, emailAddress: S.String, tags: S.optional(TagMap) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2022-09-19/emailcontacts" }),
@@ -188,7 +188,7 @@ export const CreateEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEmailContactResponse {
   arn: string;
 }
-export const CreateEmailContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailContactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String }),
 ).annotate({
   identifier: "CreateEmailContactResponse",
@@ -196,7 +196,7 @@ export const CreateEmailContactResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEmailContactRequest {
   arn: string;
 }
-export const DeleteEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
     T.all(T.Http({ method: "DELETE", uri: "/emailcontacts/{arn}" }), svc, auth, proto, ver, rules),
   ),
@@ -204,12 +204,12 @@ export const DeleteEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteEmailContactRequest",
 }) as any as S.Schema<DeleteEmailContactRequest>;
 export interface DeleteEmailContactResponse {}
-export const DeleteEmailContactResponse =
+const DeleteEmailContactResponse =
   ActivateEmailContactResponse as any as S.Schema<DeleteEmailContactResponse>;
 export interface GetEmailContactRequest {
   arn: string;
 }
-export const GetEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/emailcontacts/{arn}" }), svc, auth, proto, ver, rules),
   ),
@@ -226,7 +226,7 @@ export interface EmailContact {
   creationTime: Date;
   updateTime: Date;
 }
-export const EmailContact = /*@__PURE__*/ S.suspend(() =>
+const EmailContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: SensitiveString,
@@ -239,26 +239,26 @@ export const EmailContact = /*@__PURE__*/ S.suspend(() =>
 export interface GetEmailContactResponse {
   emailContact: EmailContact;
 }
-export const GetEmailContactResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEmailContactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ emailContact: EmailContact }),
 ).annotate({ identifier: "GetEmailContactResponse" }) as any as S.Schema<GetEmailContactResponse>;
 export interface ListEmailContactsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListEmailContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmailContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
   }).pipe(T.all(T.Http({ method: "GET", uri: "/emailcontacts" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListEmailContactsRequest" }) as any as S.Schema<ListEmailContactsRequest>;
 export type EmailContacts = EmailContact[];
-export const EmailContacts = /*@__PURE__*/ S.Array(EmailContact);
+const EmailContacts = /*@__PURE__*/ S.Array(EmailContact);
 export interface ListEmailContactsResponse {
   nextToken?: string;
   emailContacts: EmailContact[];
 }
-export const ListEmailContactsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmailContactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), emailContacts: EmailContacts }),
 ).annotate({
   identifier: "ListEmailContactsResponse",
@@ -266,7 +266,7 @@ export const ListEmailContactsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   arn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
   ),
@@ -276,7 +276,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -284,7 +284,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SendActivationCodeRequest {
   arn: string;
 }
-export const SendActivationCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const SendActivationCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/2022-10-31/emailcontacts/{arn}/activate/send" }),
@@ -299,34 +299,33 @@ export const SendActivationCodeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SendActivationCodeRequest",
 }) as any as S.Schema<SendActivationCodeRequest>;
 export interface SendActivationCodeResponse {}
-export const SendActivationCodeResponse =
+const SendActivationCodeResponse =
   ActivateEmailContactResponse as any as S.Schema<SendActivationCodeResponse>;
 export interface TagResourceRequest {
   arn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String.pipe(T.HttpLabel("arn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  ActivateEmailContactResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = ActivateEmailContactResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   arn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String.pipe(T.HttpLabel("arn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags/{arn}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
+const UntagResourceResponse =
   ActivateEmailContactResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
@@ -334,17 +333,17 @@ export type ResourceType = string;
 export type ServiceCode = string;
 export type QuotaCode = string;
 export type ValidationExceptionReason = "fieldValidationFailed" | "other" | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type ActivateEmailContactError =
   | AccessDeniedException
   | ConflictException

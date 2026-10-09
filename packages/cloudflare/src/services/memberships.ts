@@ -37,7 +37,7 @@ export interface DeleteMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
 }
-export const DeleteMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
   })
@@ -50,7 +50,7 @@ export interface DeleteMembershipResponse {
   /** Membership identifier tag. */
   id?: string | null;
 }
-export const DeleteMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -60,7 +60,7 @@ export interface GetMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
 }
-export const GetMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
   })
@@ -69,7 +69,7 @@ export const GetMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMembershipRequest" }) as any as S.Schema<GetMembershipRequest>;
 
 export type GetResponseAccountType = "standard" | "enterprise";
-export const GetResponseAccountType = S.String;
+const GetResponseAccountType = S.String;
 
 export interface GetResponseAccountManagedBy {
   /** ID of the parent Organization, if one exists */
@@ -77,7 +77,7 @@ export interface GetResponseAccountManagedBy {
   /** Name of the parent Organization, if one exists */
   parentOrgName?: string | null;
 }
-export const GetResponseAccountManagedBy = /*@__PURE__*/ S.suspend(() =>
+const GetResponseAccountManagedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentOrgId: S.optional(S.NullOr(S.String).pipe(T.Body("parent_org_id"))),
     parentOrgName: S.optional(S.NullOr(S.String).pipe(T.Body("parent_org_name"))),
@@ -92,7 +92,7 @@ export interface GetResponseAccountSettings {
   /** Indicates whether membership in this account requires that Two-Factor Authentication is enabled */
   enforceTwofactor?: boolean | null;
 }
-export const GetResponseAccountSettings = /*@__PURE__*/ S.suspend(() =>
+const GetResponseAccountSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abuseContactEmail: S.optional(S.NullOr(S.String).pipe(T.Body("abuse_contact_email"))),
     enforceTwofactor: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enforce_twofactor"))),
@@ -114,7 +114,7 @@ export interface GetResponseAccount {
   /** Account settings */
   settings?: GetResponseAccountSettings | null;
 }
-export const GetResponseAccount = /*@__PURE__*/ S.suspend(() =>
+const GetResponseAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -129,7 +129,7 @@ export interface GetResponsePermissionsAnalytics {
   read?: boolean | null;
   write?: boolean | null;
 }
-export const GetResponsePermissionsAnalytics = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePermissionsAnalytics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     read: S.optional(S.NullOr(S.Boolean)),
     write: S.optional(S.NullOr(S.Boolean)),
@@ -139,38 +139,16 @@ export const GetResponsePermissionsAnalytics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponsePermissionsAnalytics>;
 
 export type GetResponsePermissionsBilling = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsBilling = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsCachePurge = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsCachePurge = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsDns = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsDns = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsDnsRecords = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsDnsRecords = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsLb = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsLb = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsLogs = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsLogs = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsOrganization = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsOrganization = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsSsl = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsSsl = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsWaf = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsWaf = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsZoneSettings = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsZoneSettings = GetResponsePermissionsAnalytics;
-
 export type GetResponsePermissionsZones = GetResponsePermissionsAnalytics;
-export const GetResponsePermissionsZones = GetResponsePermissionsAnalytics;
-
 export interface GetResponsePermissions {
   analytics?: GetResponsePermissionsAnalytics | null;
   billing?: GetResponsePermissionsAnalytics | null;
@@ -185,7 +163,7 @@ export interface GetResponsePermissions {
   zoneSettings?: GetResponsePermissionsAnalytics | null;
   zones?: GetResponsePermissionsAnalytics | null;
 }
-export const GetResponsePermissions = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analytics: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
     billing: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
@@ -205,7 +183,7 @@ export const GetResponsePermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponsePermissions" }) as any as S.Schema<GetResponsePermissions>;
 
 export type GetResponsePoliciesItemAccess = "allow" | "deny";
-export const GetResponsePoliciesItemAccess = S.String;
+const GetResponsePoliciesItemAccess = S.String;
 
 export interface GetResponsePoliciesItemPermissionGroupsItemMeta {
   /** A category used to group permission groups. */
@@ -225,7 +203,7 @@ export interface GetResponsePoliciesItemPermissionGroupsItemMeta {
   /** Indicates the permission group's availability or visibility. */
   visibility?: string | null;
 }
-export const GetResponsePoliciesItemPermissionGroupsItemMeta = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePoliciesItemPermissionGroupsItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.NullOr(S.String)),
     deprecated: S.optional(S.NullOr(S.String)),
@@ -248,7 +226,7 @@ export interface GetResponsePoliciesItemPermissionGroupsItem {
   /** Name of the permission group. */
   name?: string | null;
 }
-export const GetResponsePoliciesItemPermissionGroupsItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePoliciesItemPermissionGroupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     meta: S.optional(S.NullOr(GetResponsePoliciesItemPermissionGroupsItemMeta)),
@@ -260,7 +238,7 @@ export const GetResponsePoliciesItemPermissionGroupsItem = /*@__PURE__*/ S.suspe
 
 export type GetResponsePoliciesItemPermissionGroupsList =
   Array<GetResponsePoliciesItemPermissionGroupsItem>;
-export const GetResponsePoliciesItemPermissionGroupsList = /*@__PURE__*/ S.Array(
+const GetResponsePoliciesItemPermissionGroupsList = /*@__PURE__*/ S.Array(
   GetResponsePoliciesItemPermissionGroupsItem,
 ) as any as S.Schema<GetResponsePoliciesItemPermissionGroupsList>;
 
@@ -268,18 +246,17 @@ export interface GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem {
   /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
-export const GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.String,
-    }),
+const GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+  }),
 ).annotate({
   identifier: "GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem",
 }) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
 
 export type GetResponsePoliciesItemResourceGroupsItemScopeObjectsList =
   Array<GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
-export const GetResponsePoliciesItemResourceGroupsItemScopeObjectsList = /*@__PURE__*/ S.Array(
+const GetResponsePoliciesItemResourceGroupsItemScopeObjectsList = /*@__PURE__*/ S.Array(
   GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem,
 ) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemScopeObjectsList>;
 
@@ -289,7 +266,7 @@ export interface GetResponsePoliciesItemResourceGroupsItemScope {
   /** A list of scope objects for additional context. */
   objects: GetResponsePoliciesItemResourceGroupsItemScopeObjectsList;
 }
-export const GetResponsePoliciesItemResourceGroupsItemScope = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePoliciesItemResourceGroupsItemScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     objects: GetResponsePoliciesItemResourceGroupsItemScopeObjectsList,
@@ -302,7 +279,7 @@ export interface GetResponsePoliciesItemResourceGroupsItemMeta {
   key?: string | null;
   value?: string | null;
 }
-export const GetResponsePoliciesItemResourceGroupsItemMeta = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePoliciesItemResourceGroupsItemMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.NullOr(S.String)),
     value: S.optional(S.NullOr(S.String)),
@@ -321,7 +298,7 @@ export interface GetResponsePoliciesItemResourceGroupsItem {
   /** Name of the resource group. */
   name?: string | null;
 }
-export const GetResponsePoliciesItemResourceGroupsItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePoliciesItemResourceGroupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scope: GetResponsePoliciesItemResourceGroupsItemScope,
@@ -334,7 +311,7 @@ export const GetResponsePoliciesItemResourceGroupsItem = /*@__PURE__*/ S.suspend
 
 export type GetResponsePoliciesItemResourceGroupsList =
   Array<GetResponsePoliciesItemResourceGroupsItem>;
-export const GetResponsePoliciesItemResourceGroupsList = /*@__PURE__*/ S.Array(
+const GetResponsePoliciesItemResourceGroupsList = /*@__PURE__*/ S.Array(
   GetResponsePoliciesItemResourceGroupsItem,
 ) as any as S.Schema<GetResponsePoliciesItemResourceGroupsList>;
 
@@ -348,7 +325,7 @@ export interface GetResponsePoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: GetResponsePoliciesItemResourceGroupsList | null;
 }
-export const GetResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     access: S.optional(S.NullOr(GetResponsePoliciesItemAccess)),
@@ -362,17 +339,17 @@ export const GetResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponsePoliciesItem" }) as any as S.Schema<GetResponsePoliciesItem>;
 
 export type GetResponsePoliciesList = Array<GetResponsePoliciesItem>;
-export const GetResponsePoliciesList = /*@__PURE__*/ S.Array(
+const GetResponsePoliciesList = /*@__PURE__*/ S.Array(
   GetResponsePoliciesItem,
 ) as any as S.Schema<GetResponsePoliciesList>;
 
 export type GetResponseRolesList = Array<string>;
-export const GetResponseRolesList = /*@__PURE__*/ S.Array(
+const GetResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseRolesList>;
 
 export type GetResponseStatus = "accepted" | "pending" | "rejected";
-export const GetResponseStatus = S.String;
+const GetResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMembershipResponse {
@@ -390,7 +367,7 @@ export interface GetMembershipResponse {
   /** Status of this membership. */
   status?: GetResponseStatus | null;
 }
-export const GetMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     account: S.optional(S.NullOr(GetResponseAccount)),
@@ -406,20 +383,20 @@ export interface ListRequestAccount {
   /** Account name */
   name?: string;
 }
-export const ListRequestAccount = /*@__PURE__*/ S.suspend(() =>
+const ListRequestAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "ListRequestAccount" }) as any as S.Schema<ListRequestAccount>;
 
 export type ListRequestDirection = "asc" | "desc";
-export const ListRequestDirection = S.String;
+const ListRequestDirection = S.String;
 
 export type ListRequestOrder = "id" | "account.name" | "status";
-export const ListRequestOrder = S.String;
+const ListRequestOrder = S.String;
 
 export type ListRequestStatus = "accepted" | "pending" | "rejected";
-export const ListRequestStatus = S.String;
+const ListRequestStatus = S.String;
 
 export interface ListMembershipsRequest {
   account?: ListRequestAccount;
@@ -436,7 +413,7 @@ export interface ListMembershipsRequest {
   /** Status of this membership. */
   status?: ListRequestStatus | (string & {});
 }
-export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(ListRequestAccount.pipe(T.DeepQuery("account"))),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
@@ -451,14 +428,8 @@ export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembershipsRequest" }) as any as S.Schema<ListMembershipsRequest>;
 
 export type ListResultItemAccountType = "standard" | "enterprise";
-export const ListResultItemAccountType = S.String;
-
 export type ListResultItemAccountManagedBy = GetResponseAccountManagedBy;
-export const ListResultItemAccountManagedBy = GetResponseAccountManagedBy;
-
 export type ListResultItemAccountSettings = GetResponseAccountSettings;
-export const ListResultItemAccountSettings = GetResponseAccountSettings;
-
 export interface ListResultItemAccount {
   /** Identifier */
   id: string;
@@ -472,53 +443,26 @@ export interface ListResultItemAccount {
   /** Account settings */
   settings?: GetResponseAccountSettings | null;
 }
-export const ListResultItemAccount = GetResponseAccount as any as S.Schema<ListResultItemAccount>;
+const ListResultItemAccount = GetResponseAccount as any as S.Schema<ListResultItemAccount>;
 
 export type ListResultItemPermissionsAnalytics = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsAnalytics = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsBilling = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsBilling = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsCachePurge = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsCachePurge = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsDns = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsDns = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsDnsRecords = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsDnsRecords = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsLb = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsLb = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsLogs = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsLogs = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsOrganization = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsOrganization = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsSsl = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsSsl = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsWaf = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsWaf = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsZoneSettings = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsZoneSettings = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissionsZones = GetResponsePermissionsAnalytics;
-export const ListResultItemPermissionsZones = GetResponsePermissionsAnalytics;
-
 export type ListResultItemPermissions = GetResponsePermissions;
-export const ListResultItemPermissions = GetResponsePermissions;
-
 export type ListResultItemRolesList = Array<string>;
-export const ListResultItemRolesList =
-  GetResponseRolesList as any as S.Schema<ListResultItemRolesList>;
+const ListResultItemRolesList = GetResponseRolesList as any as S.Schema<ListResultItemRolesList>;
 
 export type ListResultItemStatus = "accepted" | "pending" | "rejected";
-export const ListResultItemStatus = S.String;
+const ListResultItemStatus = S.String;
 
 export interface ListResultItem {
   /** Membership identifier tag. */
@@ -533,7 +477,7 @@ export interface ListResultItem {
   /** Status of this membership. */
   status?: ListResultItemStatus | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     account: S.optional(S.NullOr(ListResultItemAccount)),
@@ -545,9 +489,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListMembershipsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -555,7 +497,7 @@ export interface ListMembershipsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -563,7 +505,7 @@ export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMembershipsResponse" }) as any as S.Schema<ListMembershipsResponse>;
 
 export type UpdateRequestStatus = "accepted" | "rejected";
-export const UpdateRequestStatus = S.String;
+const UpdateRequestStatus = S.String;
 
 export interface PutMembershipRequest {
   /** Membership identifier tag. */
@@ -571,7 +513,7 @@ export interface PutMembershipRequest {
   /** Whether to accept or reject this account invitation. */
   status: UpdateRequestStatus | (string & {});
 }
-export const PutMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+const PutMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
     status: UpdateRequestStatus,
@@ -581,14 +523,8 @@ export const PutMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutMembershipRequest" }) as any as S.Schema<PutMembershipRequest>;
 
 export type UpdateResponseAccountType = "standard" | "enterprise";
-export const UpdateResponseAccountType = S.String;
-
 export type UpdateResponseAccountManagedBy = GetResponseAccountManagedBy;
-export const UpdateResponseAccountManagedBy = GetResponseAccountManagedBy;
-
 export type UpdateResponseAccountSettings = GetResponseAccountSettings;
-export const UpdateResponseAccountSettings = GetResponseAccountSettings;
-
 export interface UpdateResponseAccount {
   /** Identifier */
   id: string;
@@ -602,89 +538,45 @@ export interface UpdateResponseAccount {
   /** Account settings */
   settings?: GetResponseAccountSettings | null;
 }
-export const UpdateResponseAccount = GetResponseAccount as any as S.Schema<UpdateResponseAccount>;
+const UpdateResponseAccount = GetResponseAccount as any as S.Schema<UpdateResponseAccount>;
 
 export type UpdateResponsePermissionsAnalytics = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsAnalytics = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsBilling = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsBilling = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsCachePurge = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsCachePurge = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsDns = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsDns = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsDnsRecords = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsDnsRecords = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsLb = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsLb = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsLogs = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsLogs = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsOrganization = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsOrganization = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsSsl = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsSsl = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsWaf = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsWaf = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsZoneSettings = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsZoneSettings = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissionsZones = GetResponsePermissionsAnalytics;
-export const UpdateResponsePermissionsZones = GetResponsePermissionsAnalytics;
-
 export type UpdateResponsePermissions = GetResponsePermissions;
-export const UpdateResponsePermissions = GetResponsePermissions;
-
 export type UpdateResponsePoliciesItemAccess = "allow" | "deny";
-export const UpdateResponsePoliciesItemAccess = S.String;
+const UpdateResponsePoliciesItemAccess = S.String;
 
 export type UpdateResponsePoliciesItemPermissionGroupsItemMeta =
   GetResponsePoliciesItemPermissionGroupsItemMeta;
-export const UpdateResponsePoliciesItemPermissionGroupsItemMeta =
-  GetResponsePoliciesItemPermissionGroupsItemMeta;
-
 export type UpdateResponsePoliciesItemPermissionGroupsItem =
   GetResponsePoliciesItemPermissionGroupsItem;
-export const UpdateResponsePoliciesItemPermissionGroupsItem =
-  GetResponsePoliciesItemPermissionGroupsItem;
-
 export type UpdateResponsePoliciesItemPermissionGroupsList =
   Array<GetResponsePoliciesItemPermissionGroupsItem>;
-export const UpdateResponsePoliciesItemPermissionGroupsList =
+const UpdateResponsePoliciesItemPermissionGroupsList =
   GetResponsePoliciesItemPermissionGroupsList as any as S.Schema<UpdateResponsePoliciesItemPermissionGroupsList>;
 
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsItem =
   GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem;
-export const UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsItem =
-  GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem;
-
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList =
   Array<GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
-export const UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList =
-  GetResponsePoliciesItemResourceGroupsItemScopeObjectsList as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList>;
-
 export interface UpdateResponsePoliciesItemResourceGroupsItemScope {
   /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
   /** A list of scope objects for additional context. */
   objects: UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList;
 }
-export const UpdateResponsePoliciesItemResourceGroupsItemScope =
-  GetResponsePoliciesItemResourceGroupsItemScope as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItemScope>;
-
 export type UpdateResponsePoliciesItemResourceGroupsItemMeta =
   GetResponsePoliciesItemResourceGroupsItemMeta;
-export const UpdateResponsePoliciesItemResourceGroupsItemMeta =
-  GetResponsePoliciesItemResourceGroupsItemMeta;
-
 export interface UpdateResponsePoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
   id: string;
@@ -695,12 +587,9 @@ export interface UpdateResponsePoliciesItemResourceGroupsItem {
   /** Name of the resource group. */
   name?: string | null;
 }
-export const UpdateResponsePoliciesItemResourceGroupsItem =
-  GetResponsePoliciesItemResourceGroupsItem as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsItem>;
-
 export type UpdateResponsePoliciesItemResourceGroupsList =
   Array<UpdateResponsePoliciesItemResourceGroupsItem>;
-export const UpdateResponsePoliciesItemResourceGroupsList =
+const UpdateResponsePoliciesItemResourceGroupsList =
   GetResponsePoliciesItemResourceGroupsList as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsList>;
 
 export interface UpdateResponsePoliciesItem {
@@ -713,7 +602,7 @@ export interface UpdateResponsePoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: UpdateResponsePoliciesItemResourceGroupsList | null;
 }
-export const UpdateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     access: S.optional(S.NullOr(UpdateResponsePoliciesItemAccess)),
@@ -729,16 +618,15 @@ export const UpdateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponsePoliciesItem>;
 
 export type UpdateResponsePoliciesList = Array<UpdateResponsePoliciesItem>;
-export const UpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
+const UpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
   UpdateResponsePoliciesItem,
 ) as any as S.Schema<UpdateResponsePoliciesList>;
 
 export type UpdateResponseRolesList = Array<string>;
-export const UpdateResponseRolesList =
-  GetResponseRolesList as any as S.Schema<UpdateResponseRolesList>;
+const UpdateResponseRolesList = GetResponseRolesList as any as S.Schema<UpdateResponseRolesList>;
 
 export type UpdateResponseStatus = "accepted" | "pending" | "rejected";
-export const UpdateResponseStatus = S.String;
+const UpdateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutMembershipResponse {
@@ -756,7 +644,7 @@ export interface PutMembershipResponse {
   /** Status of this membership. */
   status?: UpdateResponseStatus | null;
 }
-export const PutMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+const PutMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     account: S.optional(S.NullOr(UpdateResponseAccount)),

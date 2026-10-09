@@ -13,7 +13,7 @@ export interface GetWebhookControllerAppPortalAccessRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetWebhookControllerAppPortalAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookControllerAppPortalAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -34,7 +34,7 @@ export interface WebhookAppPortalAccess {
   /** The URL to the webhook app portal */
   url: string;
 }
-export const WebhookAppPortalAccess = /*@__PURE__*/ S.suspend(() =>
+const WebhookAppPortalAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     url: S.String,
@@ -46,7 +46,7 @@ export interface GetWebhookControllerInitializationStatusRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetWebhookControllerInitializationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookControllerInitializationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -75,7 +75,7 @@ export interface WebhookInitializationStatus {
   /** When the webhook initialization was last updated */
   updatedAt: string;
 }
-export const WebhookInitializationStatus = /*@__PURE__*/ S.suspend(() =>
+const WebhookInitializationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String,
     svixApplicationId: S.NullOr(S.String),
@@ -93,7 +93,7 @@ export interface RefreshWebhookControllerEndpointsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const RefreshWebhookControllerEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshWebhookControllerEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -109,7 +109,7 @@ export const RefreshWebhookControllerEndpointsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RefreshWebhookControllerEndpointsRequest>;
 
 export interface RefreshWebhookControllerEndpointsResponse {}
-export const RefreshWebhookControllerEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const RefreshWebhookControllerEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "RefreshWebhookControllerEndpointsResponse",
@@ -121,7 +121,7 @@ export interface WebhookControllerInitializeWebhooksRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const WebhookControllerInitializeWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const WebhookControllerInitializeWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),

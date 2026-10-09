@@ -37,7 +37,7 @@ export class UnprocessableEntity
 
 /** The role that this user should have in the team. */
 export type AddOrUpdateMembershipForUserInOrgRequestRole = "member" | "maintainer";
-export const AddOrUpdateMembershipForUserInOrgRequestRole = S.String;
+const AddOrUpdateMembershipForUserInOrgRequestRole = S.String;
 
 export interface AddOrUpdateMembershipForUserInOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -49,7 +49,7 @@ export interface AddOrUpdateMembershipForUserInOrgRequest {
   /** The role that this user should have in the team. */
   role?: AddOrUpdateMembershipForUserInOrgRequestRole | (string & {});
 }
-export const AddOrUpdateMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOrUpdateMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -68,11 +68,11 @@ export const AddOrUpdateMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(
 
 /** The role of the user in the team. */
 export type TeamMembershipRole = "member" | "maintainer";
-export const TeamMembershipRole = S.String;
+const TeamMembershipRole = S.String;
 
 /** The state of the user's membership in the team. */
 export type TeamMembershipState = "active" | "pending";
-export const TeamMembershipState = S.String;
+const TeamMembershipState = S.String;
 
 /** Team Membership */
 export interface TeamMembership {
@@ -82,7 +82,7 @@ export interface TeamMembership {
   /** The state of the user's membership in the team. */
   state: TeamMembershipState;
 }
-export const TeamMembership = /*@__PURE__*/ S.suspend(() =>
+const TeamMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     role: TeamMembershipRole,
@@ -102,7 +102,7 @@ export interface AddOrUpdateRepoPermissionsInOrgRequest {
   /** The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository. */
   permission?: string;
 }
-export const AddOrUpdateRepoPermissionsInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOrUpdateRepoPermissionsInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -117,7 +117,7 @@ export const AddOrUpdateRepoPermissionsInOrgRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<AddOrUpdateRepoPermissionsInOrgRequest>;
 
 export interface AddOrUpdateRepoPermissionsInOrgResponse {}
-export const AddOrUpdateRepoPermissionsInOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const AddOrUpdateRepoPermissionsInOrgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AddOrUpdateRepoPermissionsInOrgResponse",
@@ -133,7 +133,7 @@ export interface CheckPermissionsForRepoInOrgRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const CheckPermissionsForRepoInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckPermissionsForRepoInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -155,7 +155,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -173,7 +173,7 @@ export interface TeamRepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const TeamRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const TeamRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -210,7 +210,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -238,7 +238,7 @@ export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NullableSimpleUser" }) as any as S.Schema<NullableSimpleUser>;
 
 export type TeamRepositoryTopicsList = Array<string>;
-export const TeamRepositoryTopicsList = /*@__PURE__*/ S.Array(
+const TeamRepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TeamRepositoryTopicsList>;
 
@@ -353,7 +353,7 @@ export interface TeamRepository {
   watchers: number;
   master_branch?: string;
 }
-export const TeamRepository = /*@__PURE__*/ S.suspend(() =>
+const TeamRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -449,25 +449,25 @@ export const TeamRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** List GitHub usernames for organization members who will become team maintainers. */
 export type CreateRequestMaintainersList = Array<string>;
-export const CreateRequestMaintainersList =
+const CreateRequestMaintainersList =
   TeamRepositoryTopicsList as any as S.Schema<CreateRequestMaintainersList>;
 
 /** The full name (e.g., "organization-name/repository-name") of repositories to add the team to. */
 export type CreateRequestRepoNamesList = Array<string>;
-export const CreateRequestRepoNamesList =
+const CreateRequestRepoNamesList =
   TeamRepositoryTopicsList as any as S.Schema<CreateRequestRepoNamesList>;
 
 /** The level of privacy this team should have. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. Default: `secret` **For a parent or child team:** * `closed` - visible to all members of this organization. Default for child team: `closed` */
 export type CreateRequestPrivacy = "secret" | "closed";
-export const CreateRequestPrivacy = S.String;
+const CreateRequestPrivacy = S.String;
 
 /** The notification setting the team has chosen. The options are: * `notifications_enabled` - team members receive notifications when the team is @mentioned. * `notifications_disabled` - no one receives notifications. Default: `notifications_enabled` */
 export type CreateRequestNotificationSetting = "notifications_enabled" | "notifications_disabled";
-export const CreateRequestNotificationSetting = S.String;
+const CreateRequestNotificationSetting = S.String;
 
 /** **Closing down notice**. The permission that new repositories will be added to the team with when none is specified. */
 export type CreateRequestPermission = "pull" | "push";
-export const CreateRequestPermission = S.String;
+const CreateRequestPermission = S.String;
 
 export interface CreateRequest {
   /** The organization name. The name is not case sensitive. */
@@ -491,7 +491,7 @@ export interface CreateRequest {
   /** The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided. */
   parent_team_slug?: string;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -508,15 +508,15 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The level of privacy this team should have */
 export type TeamFullPrivacy = "closed" | "secret";
-export const TeamFullPrivacy = S.String;
+const TeamFullPrivacy = S.String;
 
 /** The notification setting the team has set */
 export type TeamFullNotificationSetting = "notifications_enabled" | "notifications_disabled";
-export const TeamFullNotificationSetting = S.String;
+const TeamFullNotificationSetting = S.String;
 
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
+const NullableTeamSimpleType = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
@@ -548,7 +548,7 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -576,7 +576,7 @@ export interface TeamOrganizationPlan {
   filled_seats?: number;
   seats?: number;
 }
-export const TeamOrganizationPlan = /*@__PURE__*/ S.suspend(() =>
+const TeamOrganizationPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     space: S.Number,
@@ -638,7 +638,7 @@ export interface TeamOrganization {
   updated_at: string;
   archived_at: string | null;
 }
-export const TeamOrganization = /*@__PURE__*/ S.suspend(() =>
+const TeamOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.String,
     id: S.Number,
@@ -694,7 +694,7 @@ export const TeamOrganization = /*@__PURE__*/ S.suspend(() =>
 
 /** The ownership type of the team */
 export type TeamFullType = "enterprise" | "organization";
-export const TeamFullType = S.String;
+const TeamFullType = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface TeamFull {
@@ -730,7 +730,7 @@ export interface TeamFull {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const TeamFull = /*@__PURE__*/ S.suspend(() =>
+const TeamFull = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -763,7 +763,7 @@ export interface DeleteInOrgRequest {
   /** The slug of the team name. */
   team_slug: string;
 }
-export const DeleteInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -771,7 +771,7 @@ export const DeleteInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInOrgRequest" }) as any as S.Schema<DeleteInOrgRequest>;
 
 export interface DeleteInOrgResponse {}
-export const DeleteInOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteInOrgResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteInOrgResponse",
 }) as any as S.Schema<DeleteInOrgResponse>;
 
@@ -781,7 +781,7 @@ export interface GetByNameRequest {
   /** The slug of the team name. */
   team_slug: string;
 }
-export const GetByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -796,7 +796,7 @@ export interface GetMembershipForUserInOrgRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const GetMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -813,7 +813,7 @@ export const GetMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMembershipForUserInOrgRequest>;
 
 export type ListRequestTeamType = "all" | "enterprise" | "organization";
-export const ListRequestTeamType = S.String;
+const ListRequestTeamType = S.String;
 
 export interface ListRequest {
   /** The organization name. The name is not case sensitive. */
@@ -825,7 +825,7 @@ export interface ListRequest {
   /** Filter team results by their type. For more information, see "[What kind of team should I use?](https://docs.github.com/enterprise-cloud@latest/admin/concepts/enterprise-fundamentals/teams-in-an-enterprise#what-kind-of-team-should-i-use)" */
   team_type?: ListRequestTeamType | (string & {});
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -841,7 +841,7 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
+const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull: S.Boolean,
     triage: S.Boolean,
@@ -853,11 +853,11 @@ export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
+const TeamType = S.String;
 
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
+const TeamAccessSource = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
@@ -884,7 +884,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -908,12 +908,10 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type ListResponseBodyList = Array<Team>;
-export const ListResponseBodyList = /*@__PURE__*/ S.Array(
-  Team,
-) as any as S.Schema<ListResponseBodyList>;
+const ListResponseBodyList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<ListResponseBodyList>;
 
 export type ListResponse = ListResponseBodyList;
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResponse = /*@__PURE__*/ S.suspend(() =>
   ListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
 
@@ -927,7 +925,7 @@ export interface ListChildInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListChildInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChildInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -937,11 +935,8 @@ export const ListChildInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListChildInOrgRequest" }) as any as S.Schema<ListChildInOrgRequest>;
 
 export type ListChildInOrgResponseBodyList = Array<Team>;
-export const ListChildInOrgResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListChildInOrgResponseBodyList>;
-
 export type ListChildInOrgResponse = ListChildInOrgResponseBodyList;
-export const ListChildInOrgResponse = ListResponse as any as S.Schema<ListChildInOrgResponse>;
+const ListChildInOrgResponse = ListResponse as any as S.Schema<ListChildInOrgResponse>;
 
 export interface ListForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
@@ -949,7 +944,7 @@ export interface ListForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -959,19 +954,19 @@ export const ListForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForAuthenticatedUserRequest>;
 
 export type ListForAuthenticatedUserResponseBodyList = Array<TeamFull>;
-export const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   TeamFull,
 ) as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
 
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
-export const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListForAuthenticatedUserResponse",
 }) as any as S.Schema<ListForAuthenticatedUserResponse>;
 
 export type ListMembersInOrgRequestRole = "member" | "maintainer" | "all";
-export const ListMembersInOrgRequestRole = S.String;
+const ListMembersInOrgRequestRole = S.String;
 
 export interface ListMembersInOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -985,7 +980,7 @@ export interface ListMembersInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListMembersInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembersInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -997,7 +992,7 @@ export const ListMembersInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization. */
 export type TeamMemberRole = "member" | "maintainer";
-export const TeamMemberRole = S.String;
+const TeamMemberRole = S.String;
 
 /** A user that is a member of a team, including their role on the team and whether the membership is inherited from a child team. */
 export interface TeamMember {
@@ -1028,7 +1023,7 @@ export interface TeamMember {
   /** Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization. */
   inherited?: boolean;
 }
-export const TeamMember = /*@__PURE__*/ S.suspend(() =>
+const TeamMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -1058,12 +1053,12 @@ export const TeamMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamMember" }) as any as S.Schema<TeamMember>;
 
 export type ListMembersInOrgResponseBodyList = Array<TeamMember>;
-export const ListMembersInOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMembersInOrgResponseBodyList = /*@__PURE__*/ S.Array(
   TeamMember,
 ) as any as S.Schema<ListMembersInOrgResponseBodyList>;
 
 export type ListMembersInOrgResponse = ListMembersInOrgResponseBodyList;
-export const ListMembersInOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembersInOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListMembersInOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMembersInOrgResponse" }) as any as S.Schema<ListMembersInOrgResponse>;
 
@@ -1077,7 +1072,7 @@ export interface ListPendingInvitationsInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPendingInvitationsInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPendingInvitationsInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -1090,8 +1085,6 @@ export const ListPendingInvitationsInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 /** Organization Invitation */
 export interface OrganizationInvitation {
   id: number;
@@ -1107,7 +1100,7 @@ export interface OrganizationInvitation {
   invitation_teams_url: string;
   invitation_source?: string;
 }
-export const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     login: S.NullOr(S.String),
@@ -1125,12 +1118,12 @@ export const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrganizationInvitation" }) as any as S.Schema<OrganizationInvitation>;
 
 export type ListPendingInvitationsInOrgResponseBodyList = Array<OrganizationInvitation>;
-export const ListPendingInvitationsInOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPendingInvitationsInOrgResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationInvitation,
 ) as any as S.Schema<ListPendingInvitationsInOrgResponseBodyList>;
 
 export type ListPendingInvitationsInOrgResponse = ListPendingInvitationsInOrgResponseBodyList;
-export const ListPendingInvitationsInOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPendingInvitationsInOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListPendingInvitationsInOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPendingInvitationsInOrgResponse",
@@ -1146,7 +1139,7 @@ export interface ListReposInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReposInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReposInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -1156,12 +1149,12 @@ export const ListReposInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReposInOrgRequest" }) as any as S.Schema<ListReposInOrgRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList =
+const MinimalRepositoryTopicsList =
   TeamRepositoryTopicsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -1170,7 +1163,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -1190,7 +1183,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -1207,7 +1200,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -1218,13 +1211,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -1233,98 +1226,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -1334,7 +1311,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -1349,16 +1326,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -1380,7 +1356,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -1403,7 +1379,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -1504,7 +1480,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1600,12 +1576,12 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepository" }) as any as S.Schema<MinimalRepository>;
 
 export type ListReposInOrgResponseBodyList = Array<MinimalRepository>;
-export const ListReposInOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const ListReposInOrgResponseBodyList = /*@__PURE__*/ S.Array(
   MinimalRepository,
 ) as any as S.Schema<ListReposInOrgResponseBodyList>;
 
 export type ListReposInOrgResponse = ListReposInOrgResponseBodyList;
-export const ListReposInOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReposInOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListReposInOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListReposInOrgResponse" }) as any as S.Schema<ListReposInOrgResponse>;
 
@@ -1617,7 +1593,7 @@ export interface RemoveMembershipForUserInOrgRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const RemoveMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -1634,7 +1610,7 @@ export const RemoveMembershipForUserInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveMembershipForUserInOrgRequest>;
 
 export interface RemoveMembershipForUserInOrgResponse {}
-export const RemoveMembershipForUserInOrgResponse =
+const RemoveMembershipForUserInOrgResponse =
   AddOrUpdateRepoPermissionsInOrgResponse as any as S.Schema<RemoveMembershipForUserInOrgResponse>;
 
 export interface RemoveRepoInOrgRequest {
@@ -1647,7 +1623,7 @@ export interface RemoveRepoInOrgRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const RemoveRepoInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveRepoInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),
@@ -1663,22 +1639,21 @@ export const RemoveRepoInOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveRepoInOrgRequest" }) as any as S.Schema<RemoveRepoInOrgRequest>;
 
 export interface RemoveRepoInOrgResponse {}
-export const RemoveRepoInOrgResponse =
-  DeleteInOrgResponse as any as S.Schema<RemoveRepoInOrgResponse>;
+const RemoveRepoInOrgResponse = DeleteInOrgResponse as any as S.Schema<RemoveRepoInOrgResponse>;
 
 /** The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are: **For a non-nested team:** * `secret` - only visible to organization owners and members of this team. * `closed` - visible to all members of this organization. **For a parent or child team:** * `closed` - visible to all members of this organization. */
 export type UpdateInOrgRequestPrivacy = "secret" | "closed";
-export const UpdateInOrgRequestPrivacy = S.String;
+const UpdateInOrgRequestPrivacy = S.String;
 
 /** The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: * `notifications_enabled` - team members receive notifications when the team is @mentioned. * `notifications_disabled` - no one receives notifications. */
 export type UpdateInOrgRequestNotificationSetting =
   | "notifications_enabled"
   | "notifications_disabled";
-export const UpdateInOrgRequestNotificationSetting = S.String;
+const UpdateInOrgRequestNotificationSetting = S.String;
 
 /** **Closing down notice**. The permission that new repositories will be added to the team with when none is specified. */
 export type UpdateInOrgRequestPermission = "pull" | "push" | "admin";
-export const UpdateInOrgRequestPermission = S.String;
+const UpdateInOrgRequestPermission = S.String;
 
 export interface UpdateInOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1700,7 +1675,7 @@ export interface UpdateInOrgRequest {
   /** The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided. */
   parent_team_slug?: string | null;
 }
-export const UpdateInOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     team_slug: S.String.pipe(T.Label()),

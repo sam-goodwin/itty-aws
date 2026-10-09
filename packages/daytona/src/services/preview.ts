@@ -14,7 +14,7 @@ export interface GetSandboxIdFromSignedPreviewUrlTokenRequest {
   /** Port number to get sandbox ID from signed preview URL token */
   port: number;
 }
-export const GetSandboxIdFromSignedPreviewUrlTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxIdFromSignedPreviewUrlTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signedPreviewToken: S.String.pipe(T.Label()),
     port: S.Number.pipe(T.Label()),
@@ -26,7 +26,7 @@ export const GetSandboxIdFromSignedPreviewUrlTokenRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetSandboxIdFromSignedPreviewUrlTokenRequest>;
 
 export type GetSandboxIdFromSignedPreviewUrlTokenResponse = string;
-export const GetSandboxIdFromSignedPreviewUrlTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxIdFromSignedPreviewUrlTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSandboxIdFromSignedPreviewUrlTokenResponse",
@@ -36,28 +36,28 @@ export interface GetSigningKeyRequest {
   /** ID of the sandbox */
   sandboxId: string;
 }
-export const GetSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/signing-key", code: 200 })),
 ).annotate({ identifier: "GetSigningKeyRequest" }) as any as S.Schema<GetSigningKeyRequest>;
 
 export type GetSigningKeyResponse = string;
-export const GetSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetSigningKeyResponse" }) as any as S.Schema<GetSigningKeyResponse>;
 
 export interface HasSandboxAccessRequest {
   sandboxId: string;
 }
-export const HasSandboxAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const HasSandboxAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/access", code: 200 })),
 ).annotate({ identifier: "HasSandboxAccessRequest" }) as any as S.Schema<HasSandboxAccessRequest>;
 
 export type HasSandboxAccessResponse = boolean;
-export const HasSandboxAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const HasSandboxAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "HasSandboxAccessResponse" }) as any as S.Schema<HasSandboxAccessResponse>;
 
@@ -67,7 +67,7 @@ export interface IsPreviewWarningEnabledRequest {
   /** Port the signed preview URL token was issued for. Required when sandboxId is a signed token. */
   port?: number;
 }
-export const IsPreviewWarningEnabledRequest = /*@__PURE__*/ S.suspend(() =>
+const IsPreviewWarningEnabledRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     port: S.optional(S.Number.pipe(T.Query())),
@@ -80,7 +80,7 @@ export interface PreviewWarning {
   /** Whether the preview warning page is enabled for the sandbox */
   enabled: boolean;
 }
-export const PreviewWarning = /*@__PURE__*/ S.suspend(() =>
+const PreviewWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
   }),
@@ -90,14 +90,14 @@ export interface IsSandboxPublicRequest {
   /** ID of the sandbox */
   sandboxId: string;
 }
-export const IsSandboxPublicRequest = /*@__PURE__*/ S.suspend(() =>
+const IsSandboxPublicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/preview/{sandboxId}/public", code: 200 })),
 ).annotate({ identifier: "IsSandboxPublicRequest" }) as any as S.Schema<IsSandboxPublicRequest>;
 
 export type IsSandboxPublicResponse = boolean;
-export const IsSandboxPublicResponse =
+const IsSandboxPublicResponse =
   HasSandboxAccessResponse as any as S.Schema<IsSandboxPublicResponse>;
 
 export interface IsValidAuthTokenRequest {
@@ -106,7 +106,7 @@ export interface IsValidAuthTokenRequest {
   /** Auth token of the sandbox */
   authToken: string;
 }
-export const IsValidAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const IsValidAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     authToken: S.String.pipe(T.Label()),
@@ -114,7 +114,7 @@ export const IsValidAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IsValidAuthTokenRequest" }) as any as S.Schema<IsValidAuthTokenRequest>;
 
 export type IsValidAuthTokenResponse = boolean;
-export const IsValidAuthTokenResponse =
+const IsValidAuthTokenResponse =
   HasSandboxAccessResponse as any as S.Schema<IsValidAuthTokenResponse>;
 
 export type GetSandboxIdFromSignedPreviewUrlTokenError = DaytonaOpError;

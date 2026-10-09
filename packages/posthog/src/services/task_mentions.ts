@@ -17,7 +17,7 @@ export interface ListTaskMentionsRequest {
   /** Only return mentions created after this ISO 8601 timestamp. */
   since?: string;
 }
-export const ListTaskMentionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaskMentionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -27,7 +27,7 @@ export const ListTaskMentionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTaskMentionsRequest" }) as any as S.Schema<ListTaskMentionsRequest>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
@@ -44,7 +44,7 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -70,7 +70,7 @@ export interface TaskMentionDTO {
   content: string;
   created_at: string;
 }
-export const TaskMentionDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskMentionDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     message_id: S.String,
@@ -85,7 +85,7 @@ export const TaskMentionDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskMentionDTO" }) as any as S.Schema<TaskMentionDTO>;
 
 export type PaginatedTaskMentionDTOListResultsList = Array<TaskMentionDTO>;
-export const PaginatedTaskMentionDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedTaskMentionDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskMentionDTO,
 ) as any as S.Schema<PaginatedTaskMentionDTOListResultsList>;
 
@@ -95,7 +95,7 @@ export interface PaginatedTaskMentionDTOList {
   previous?: string | null;
   results: PaginatedTaskMentionDTOListResultsList;
 }
-export const PaginatedTaskMentionDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTaskMentionDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),

@@ -92,7 +92,7 @@ export class MnmRuleNotFound
   ) {}
 
 export type ConfigsCreateRequestRouterIpsList = Array<string>;
-export const ConfigsCreateRequestRouterIpsList = /*@__PURE__*/ S.Array(
+const ConfigsCreateRequestRouterIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigsCreateRequestRouterIpsList>;
 
@@ -104,7 +104,7 @@ export interface ConfigsCreateRequestWarpDevicesItem {
   /** IPv4 CIDR of the router sourcing flow data associated with this warp device. Only /32 addresses are currently supported. */
   routerIp: string;
 }
-export const ConfigsCreateRequestWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
+const ConfigsCreateRequestWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -115,7 +115,7 @@ export const ConfigsCreateRequestWarpDevicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsCreateRequestWarpDevicesItem>;
 
 export type ConfigsCreateRequestWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsCreateRequestWarpDevicesList = /*@__PURE__*/ S.Array(
+const ConfigsCreateRequestWarpDevicesList = /*@__PURE__*/ S.Array(
   ConfigsCreateRequestWarpDevicesItem,
 ) as any as S.Schema<ConfigsCreateRequestWarpDevicesList>;
 
@@ -128,7 +128,7 @@ export interface CreateConfigRequest {
   routerIps?: ConfigsCreateRequestRouterIpsList;
   warpDevices?: ConfigsCreateRequestWarpDevicesList;
 }
-export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     defaultSampling: S.Number.pipe(T.Body("default_sampling")),
@@ -141,14 +141,12 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateConfigRequest" }) as any as S.Schema<CreateConfigRequest>;
 
 export type ConfigsCreateResponseRouterIpsList = Array<string>;
-export const ConfigsCreateResponseRouterIpsList =
+const ConfigsCreateResponseRouterIpsList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsCreateResponseRouterIpsList>;
 
 export type ConfigsCreateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-export const ConfigsCreateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-
 export type ConfigsCreateResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsCreateResponseWarpDevicesList =
+const ConfigsCreateResponseWarpDevicesList =
   ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsCreateResponseWarpDevicesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -160,7 +158,7 @@ export interface CreateConfigResponse {
   routerIps: ConfigsCreateResponseRouterIpsList;
   warpDevices: ConfigsCreateResponseWarpDevicesList;
 }
-export const CreateConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultSampling: S.Number.pipe(T.Body("default_sampling")),
     name: S.String,
@@ -170,11 +168,11 @@ export const CreateConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateConfigResponse" }) as any as S.Schema<CreateConfigResponse>;
 
 export type RulesCreateRequestPrefixesList = Array<string>;
-export const RulesCreateRequestPrefixesList =
+const RulesCreateRequestPrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesCreateRequestPrefixesList>;
 
 export type RulesCreateRequestType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesCreateRequestType = S.String;
+const RulesCreateRequestType = S.String;
 
 export type RulesCreateRequestDuration =
   | "1m"
@@ -185,16 +183,16 @@ export type RulesCreateRequestDuration =
   | "30m"
   | "45m"
   | "60m";
-export const RulesCreateRequestDuration = S.String;
+const RulesCreateRequestDuration = S.String;
 
 export type RulesCreateRequestPrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesCreateRequestPrefixMatch = S.String;
+const RulesCreateRequestPrefixMatch = S.String;
 
 export type RulesCreateRequestZscoreSensitivity = "low" | "medium" | "high";
-export const RulesCreateRequestZscoreSensitivity = S.String;
+const RulesCreateRequestZscoreSensitivity = S.String;
 
 export type RulesCreateRequestZscoreTarget = "bits" | "packets";
-export const RulesCreateRequestZscoreTarget = S.String;
+const RulesCreateRequestZscoreTarget = S.String;
 
 export interface CreateRuleRequest {
   accountId: string;
@@ -218,7 +216,7 @@ export interface CreateRuleRequest {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesCreateRequestZscoreTarget | (string & {});
 }
-export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
@@ -239,11 +237,11 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRuleRequest" }) as any as S.Schema<CreateRuleRequest>;
 
 export type RulesCreateResponsePrefixesList = Array<string>;
-export const RulesCreateResponsePrefixesList =
+const RulesCreateResponsePrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesCreateResponsePrefixesList>;
 
 export type RulesCreateResponseType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesCreateResponseType = S.String;
+const RulesCreateResponseType = S.String;
 
 export type RulesCreateResponseDuration =
   | "1m"
@@ -254,16 +252,16 @@ export type RulesCreateResponseDuration =
   | "30m"
   | "45m"
   | "60m";
-export const RulesCreateResponseDuration = S.String;
+const RulesCreateResponseDuration = S.String;
 
 export type RulesCreateResponsePrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesCreateResponsePrefixMatch = S.String;
+const RulesCreateResponsePrefixMatch = S.String;
 
 export type RulesCreateResponseZscoreSensitivity = "low" | "medium" | "high";
-export const RulesCreateResponseZscoreSensitivity = S.String;
+const RulesCreateResponseZscoreSensitivity = S.String;
 
 export type RulesCreateResponseZscoreTarget = "bits" | "packets";
-export const RulesCreateResponseZscoreTarget = S.String;
+const RulesCreateResponseZscoreTarget = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
@@ -289,7 +287,7 @@ export interface CreateRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesCreateResponseZscoreTarget | null;
 }
-export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
@@ -312,7 +310,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVpcFlowTokenRequest {
   accountId: string;
 }
-export const CreateVpcFlowTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcFlowTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -323,7 +321,7 @@ export const CreateVpcFlowTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVpcFlowTokenRequest>;
 
 export type CreateVpcFlowTokenResponse = string;
-export const CreateVpcFlowTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcFlowTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateVpcFlowTokenResponse",
@@ -332,7 +330,7 @@ export const CreateVpcFlowTokenResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConfigRequest {
   accountId: string;
 }
-export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -341,16 +339,8 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConfigRequest" }) as any as S.Schema<DeleteConfigRequest>;
 
 export type ConfigsDeleteResponseRouterIpsList = Array<string>;
-export const ConfigsDeleteResponseRouterIpsList =
-  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsDeleteResponseRouterIpsList>;
-
 export type ConfigsDeleteResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-export const ConfigsDeleteResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-
 export type ConfigsDeleteResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsDeleteResponseWarpDevicesList =
-  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsDeleteResponseWarpDevicesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteConfigResponse {
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -360,14 +350,14 @@ export interface DeleteConfigResponse {
   routerIps: ConfigsDeleteResponseRouterIpsList;
   warpDevices: ConfigsDeleteResponseWarpDevicesList;
 }
-export const DeleteConfigResponse = CreateConfigResponse as any as S.Schema<DeleteConfigResponse>;
+const DeleteConfigResponse = CreateConfigResponse as any as S.Schema<DeleteConfigResponse>;
 
 export interface DeleteRuleRequest {
   accountId: string;
   /** The id of the rule. Must be unique. */
   ruleId: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -379,11 +369,11 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 
 export type RulesDeleteResponsePrefixesList = Array<string>;
-export const RulesDeleteResponsePrefixesList =
+const RulesDeleteResponsePrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesDeleteResponsePrefixesList>;
 
 export type RulesDeleteResponseType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesDeleteResponseType = S.String;
+const RulesDeleteResponseType = S.String;
 
 export type RulesDeleteResponseDuration =
   | "1m"
@@ -394,16 +384,16 @@ export type RulesDeleteResponseDuration =
   | "30m"
   | "45m"
   | "60m";
-export const RulesDeleteResponseDuration = S.String;
+const RulesDeleteResponseDuration = S.String;
 
 export type RulesDeleteResponsePrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesDeleteResponsePrefixMatch = S.String;
+const RulesDeleteResponsePrefixMatch = S.String;
 
 export type RulesDeleteResponseZscoreSensitivity = "low" | "medium" | "high";
-export const RulesDeleteResponseZscoreSensitivity = S.String;
+const RulesDeleteResponseZscoreSensitivity = S.String;
 
 export type RulesDeleteResponseZscoreTarget = "bits" | "packets";
-export const RulesDeleteResponseZscoreTarget = S.String;
+const RulesDeleteResponseZscoreTarget = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
@@ -429,7 +419,7 @@ export interface DeleteRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesDeleteResponseZscoreTarget | null;
 }
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
@@ -452,7 +442,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigRequest {
   accountId: string;
 }
-export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -461,16 +451,8 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConfigRequest" }) as any as S.Schema<GetConfigRequest>;
 
 export type ConfigsGetResponseRouterIpsList = Array<string>;
-export const ConfigsGetResponseRouterIpsList =
-  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsGetResponseRouterIpsList>;
-
 export type ConfigsGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-export const ConfigsGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-
 export type ConfigsGetResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsGetResponseWarpDevicesList =
-  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsGetResponseWarpDevicesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigResponse {
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -480,12 +462,12 @@ export interface GetConfigResponse {
   routerIps: ConfigsGetResponseRouterIpsList;
   warpDevices: ConfigsGetResponseWarpDevicesList;
 }
-export const GetConfigResponse = CreateConfigResponse as any as S.Schema<GetConfigResponse>;
+const GetConfigResponse = CreateConfigResponse as any as S.Schema<GetConfigResponse>;
 
 export interface GetConfigFullRequest {
   accountId: string;
 }
-export const GetConfigFullRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigFullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -494,16 +476,8 @@ export const GetConfigFullRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConfigFullRequest" }) as any as S.Schema<GetConfigFullRequest>;
 
 export type ConfigsFullGetResponseRouterIpsList = Array<string>;
-export const ConfigsFullGetResponseRouterIpsList =
-  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsFullGetResponseRouterIpsList>;
-
 export type ConfigsFullGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-export const ConfigsFullGetResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-
 export type ConfigsFullGetResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsFullGetResponseWarpDevicesList =
-  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsFullGetResponseWarpDevicesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigFullResponse {
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -513,14 +487,14 @@ export interface GetConfigFullResponse {
   routerIps: ConfigsFullGetResponseRouterIpsList;
   warpDevices: ConfigsFullGetResponseWarpDevicesList;
 }
-export const GetConfigFullResponse = CreateConfigResponse as any as S.Schema<GetConfigFullResponse>;
+const GetConfigFullResponse = CreateConfigResponse as any as S.Schema<GetConfigFullResponse>;
 
 export interface GetRuleRequest {
   accountId: string;
   /** The id of the rule. Must be unique. */
   ruleId: string;
 }
-export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -530,23 +504,23 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResponsePrefixesList = Array<string>;
-export const RulesGetResponsePrefixesList =
+const RulesGetResponsePrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesGetResponsePrefixesList>;
 
 export type RulesGetResponseType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesGetResponseType = S.String;
+const RulesGetResponseType = S.String;
 
 export type RulesGetResponseDuration = "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
-export const RulesGetResponseDuration = S.String;
+const RulesGetResponseDuration = S.String;
 
 export type RulesGetResponsePrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesGetResponsePrefixMatch = S.String;
+const RulesGetResponsePrefixMatch = S.String;
 
 export type RulesGetResponseZscoreSensitivity = "low" | "medium" | "high";
-export const RulesGetResponseZscoreSensitivity = S.String;
+const RulesGetResponseZscoreSensitivity = S.String;
 
 export type RulesGetResponseZscoreTarget = "bits" | "packets";
-export const RulesGetResponseZscoreTarget = S.String;
+const RulesGetResponseZscoreTarget = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleResponse {
@@ -572,7 +546,7 @@ export interface GetRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesGetResponseZscoreTarget | null;
 }
-export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
@@ -593,7 +567,7 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListRulesRequest {
   accountId: string;
 }
-export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -602,11 +576,11 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
 
 export type RulesListResultItemPrefixesList = Array<string>;
-export const RulesListResultItemPrefixesList =
+const RulesListResultItemPrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesListResultItemPrefixesList>;
 
 export type RulesListResultItemType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesListResultItemType = S.String;
+const RulesListResultItemType = S.String;
 
 export type RulesListResultItemDuration =
   | "1m"
@@ -617,16 +591,16 @@ export type RulesListResultItemDuration =
   | "30m"
   | "45m"
   | "60m";
-export const RulesListResultItemDuration = S.String;
+const RulesListResultItemDuration = S.String;
 
 export type RulesListResultItemPrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesListResultItemPrefixMatch = S.String;
+const RulesListResultItemPrefixMatch = S.String;
 
 export type RulesListResultItemZscoreSensitivity = "low" | "medium" | "high";
-export const RulesListResultItemZscoreSensitivity = S.String;
+const RulesListResultItemZscoreSensitivity = S.String;
 
 export type RulesListResultItemZscoreTarget = "bits" | "packets";
-export const RulesListResultItemZscoreTarget = S.String;
+const RulesListResultItemZscoreTarget = S.String;
 
 export interface RulesListResultItem {
   /** The id of the rule. Must be unique. */
@@ -651,7 +625,7 @@ export interface RulesListResultItem {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesListResultItemZscoreTarget | null;
 }
-export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
@@ -672,7 +646,7 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesListResultItem" }) as any as S.Schema<RulesListResultItem>;
 
 export type RulesListResultList = Array<RulesListResultItem>;
-export const RulesListResultList = /*@__PURE__*/ S.Array(
+const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
 
@@ -682,7 +656,7 @@ export interface ListRulesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -690,14 +664,12 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
 
 export type ConfigsEditRequestRouterIpsList = Array<string>;
-export const ConfigsEditRequestRouterIpsList =
+const ConfigsEditRequestRouterIpsList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsEditRequestRouterIpsList>;
 
 export type ConfigsEditRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-export const ConfigsEditRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-
 export type ConfigsEditRequestWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsEditRequestWarpDevicesList =
+const ConfigsEditRequestWarpDevicesList =
   ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsEditRequestWarpDevicesList>;
 
 export interface PatchConfigRequest {
@@ -709,7 +681,7 @@ export interface PatchConfigRequest {
   routerIps?: ConfigsEditRequestRouterIpsList;
   warpDevices?: ConfigsEditRequestWarpDevicesList;
 }
-export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     defaultSampling: S.optional(S.Number.pipe(T.Body("default_sampling"))),
@@ -722,16 +694,8 @@ export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchConfigRequest" }) as any as S.Schema<PatchConfigRequest>;
 
 export type ConfigsEditResponseRouterIpsList = Array<string>;
-export const ConfigsEditResponseRouterIpsList =
-  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsEditResponseRouterIpsList>;
-
 export type ConfigsEditResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-export const ConfigsEditResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-
 export type ConfigsEditResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsEditResponseWarpDevicesList =
-  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsEditResponseWarpDevicesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchConfigResponse {
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -741,26 +705,26 @@ export interface PatchConfigResponse {
   routerIps: ConfigsEditResponseRouterIpsList;
   warpDevices: ConfigsEditResponseWarpDevicesList;
 }
-export const PatchConfigResponse = CreateConfigResponse as any as S.Schema<PatchConfigResponse>;
+const PatchConfigResponse = CreateConfigResponse as any as S.Schema<PatchConfigResponse>;
 
 export type RulesEditRequestPrefixesList = Array<string>;
-export const RulesEditRequestPrefixesList =
+const RulesEditRequestPrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesEditRequestPrefixesList>;
 
 export type RulesEditRequestType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesEditRequestType = S.String;
+const RulesEditRequestType = S.String;
 
 export type RulesEditRequestDuration = "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
-export const RulesEditRequestDuration = S.String;
+const RulesEditRequestDuration = S.String;
 
 export type RulesEditRequestPrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesEditRequestPrefixMatch = S.String;
+const RulesEditRequestPrefixMatch = S.String;
 
 export type RulesEditRequestZscoreSensitivity = "low" | "medium" | "high";
-export const RulesEditRequestZscoreSensitivity = S.String;
+const RulesEditRequestZscoreSensitivity = S.String;
 
 export type RulesEditRequestZscoreTarget = "bits" | "packets";
-export const RulesEditRequestZscoreTarget = S.String;
+const RulesEditRequestZscoreTarget = S.String;
 
 export interface PatchRuleRequest {
   accountId: string;
@@ -786,7 +750,7 @@ export interface PatchRuleRequest {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesEditRequestZscoreTarget | (string & {});
 }
-export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -808,23 +772,23 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchRuleRequest" }) as any as S.Schema<PatchRuleRequest>;
 
 export type RulesEditResponsePrefixesList = Array<string>;
-export const RulesEditResponsePrefixesList =
+const RulesEditResponsePrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesEditResponsePrefixesList>;
 
 export type RulesEditResponseType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesEditResponseType = S.String;
+const RulesEditResponseType = S.String;
 
 export type RulesEditResponseDuration = "1m" | "5m" | "10m" | "15m" | "20m" | "30m" | "45m" | "60m";
-export const RulesEditResponseDuration = S.String;
+const RulesEditResponseDuration = S.String;
 
 export type RulesEditResponsePrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesEditResponsePrefixMatch = S.String;
+const RulesEditResponsePrefixMatch = S.String;
 
 export type RulesEditResponseZscoreSensitivity = "low" | "medium" | "high";
-export const RulesEditResponseZscoreSensitivity = S.String;
+const RulesEditResponseZscoreSensitivity = S.String;
 
 export type RulesEditResponseZscoreTarget = "bits" | "packets";
-export const RulesEditResponseZscoreTarget = S.String;
+const RulesEditResponseZscoreTarget = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchRuleResponse {
@@ -850,7 +814,7 @@ export interface PatchRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesEditResponseZscoreTarget | null;
 }
-export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
@@ -873,7 +837,7 @@ export interface PatchRuleAdvertisementRequest {
   /** The id of the rule. Must be unique. */
   ruleId: string;
 }
-export const PatchRuleAdvertisementRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRuleAdvertisementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -895,7 +859,7 @@ export interface PatchRuleAdvertisementResponse {
   /** Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit. */
   automaticAdvertisement: boolean;
 }
-export const PatchRuleAdvertisementResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchRuleAdvertisementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -904,14 +868,12 @@ export const PatchRuleAdvertisementResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchRuleAdvertisementResponse>;
 
 export type ConfigsUpdateRequestRouterIpsList = Array<string>;
-export const ConfigsUpdateRequestRouterIpsList =
+const ConfigsUpdateRequestRouterIpsList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsUpdateRequestRouterIpsList>;
 
 export type ConfigsUpdateRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-export const ConfigsUpdateRequestWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-
 export type ConfigsUpdateRequestWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsUpdateRequestWarpDevicesList =
+const ConfigsUpdateRequestWarpDevicesList =
   ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsUpdateRequestWarpDevicesList>;
 
 export interface UpdateConfigRequest {
@@ -923,7 +885,7 @@ export interface UpdateConfigRequest {
   routerIps?: ConfigsUpdateRequestRouterIpsList;
   warpDevices?: ConfigsUpdateRequestWarpDevicesList;
 }
-export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     defaultSampling: S.Number.pipe(T.Body("default_sampling")),
@@ -936,16 +898,8 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateConfigRequest" }) as any as S.Schema<UpdateConfigRequest>;
 
 export type ConfigsUpdateResponseRouterIpsList = Array<string>;
-export const ConfigsUpdateResponseRouterIpsList =
-  ConfigsCreateRequestRouterIpsList as any as S.Schema<ConfigsUpdateResponseRouterIpsList>;
-
 export type ConfigsUpdateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-export const ConfigsUpdateResponseWarpDevicesItem = ConfigsCreateRequestWarpDevicesItem;
-
 export type ConfigsUpdateResponseWarpDevicesList = Array<ConfigsCreateRequestWarpDevicesItem>;
-export const ConfigsUpdateResponseWarpDevicesList =
-  ConfigsCreateRequestWarpDevicesList as any as S.Schema<ConfigsUpdateResponseWarpDevicesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateConfigResponse {
   /** Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router. */
@@ -955,14 +909,14 @@ export interface UpdateConfigResponse {
   routerIps: ConfigsUpdateResponseRouterIpsList;
   warpDevices: ConfigsUpdateResponseWarpDevicesList;
 }
-export const UpdateConfigResponse = CreateConfigResponse as any as S.Schema<UpdateConfigResponse>;
+const UpdateConfigResponse = CreateConfigResponse as any as S.Schema<UpdateConfigResponse>;
 
 export type RulesUpdateRequestPrefixesList = Array<string>;
-export const RulesUpdateRequestPrefixesList =
+const RulesUpdateRequestPrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesUpdateRequestPrefixesList>;
 
 export type RulesUpdateRequestType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesUpdateRequestType = S.String;
+const RulesUpdateRequestType = S.String;
 
 export type RulesUpdateRequestDuration =
   | "1m"
@@ -973,16 +927,16 @@ export type RulesUpdateRequestDuration =
   | "30m"
   | "45m"
   | "60m";
-export const RulesUpdateRequestDuration = S.String;
+const RulesUpdateRequestDuration = S.String;
 
 export type RulesUpdateRequestPrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesUpdateRequestPrefixMatch = S.String;
+const RulesUpdateRequestPrefixMatch = S.String;
 
 export type RulesUpdateRequestZscoreSensitivity = "low" | "medium" | "high";
-export const RulesUpdateRequestZscoreSensitivity = S.String;
+const RulesUpdateRequestZscoreSensitivity = S.String;
 
 export type RulesUpdateRequestZscoreTarget = "bits" | "packets";
-export const RulesUpdateRequestZscoreTarget = S.String;
+const RulesUpdateRequestZscoreTarget = S.String;
 
 export interface UpdateRuleRequest {
   accountId: string;
@@ -1006,7 +960,7 @@ export interface UpdateRuleRequest {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesUpdateRequestZscoreTarget | (string & {});
 }
-export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),
@@ -1027,11 +981,11 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRuleRequest" }) as any as S.Schema<UpdateRuleRequest>;
 
 export type RulesUpdateResponsePrefixesList = Array<string>;
-export const RulesUpdateResponsePrefixesList =
+const RulesUpdateResponsePrefixesList =
   ConfigsCreateRequestRouterIpsList as any as S.Schema<RulesUpdateResponsePrefixesList>;
 
 export type RulesUpdateResponseType = "threshold" | "zscore" | "advanced_ddos";
-export const RulesUpdateResponseType = S.String;
+const RulesUpdateResponseType = S.String;
 
 export type RulesUpdateResponseDuration =
   | "1m"
@@ -1042,16 +996,16 @@ export type RulesUpdateResponseDuration =
   | "30m"
   | "45m"
   | "60m";
-export const RulesUpdateResponseDuration = S.String;
+const RulesUpdateResponseDuration = S.String;
 
 export type RulesUpdateResponsePrefixMatch = "exact" | "subnet" | "supernet";
-export const RulesUpdateResponsePrefixMatch = S.String;
+const RulesUpdateResponsePrefixMatch = S.String;
 
 export type RulesUpdateResponseZscoreSensitivity = "low" | "medium" | "high";
-export const RulesUpdateResponseZscoreSensitivity = S.String;
+const RulesUpdateResponseZscoreSensitivity = S.String;
 
 export type RulesUpdateResponseZscoreTarget = "bits" | "packets";
-export const RulesUpdateResponseZscoreTarget = S.String;
+const RulesUpdateResponseZscoreTarget = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
@@ -1077,7 +1031,7 @@ export interface UpdateRuleResponse {
   /** Target of the zscore rule analysis. */
   zscoreTarget?: RulesUpdateResponseZscoreTarget | null;
 }
-export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     automaticAdvertisement: S.Boolean.pipe(T.Body("automatic_advertisement")),

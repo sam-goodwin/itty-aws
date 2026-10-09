@@ -16,7 +16,7 @@ export interface FullTextSearchDocsRequest {
   limit?: number;
   domain?: string;
 }
-export const FullTextSearchDocsRequest = /*@__PURE__*/ S.suspend(() =>
+const FullTextSearchDocsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -38,7 +38,7 @@ export interface FullTextSearchDocsResponseHitsItemFormatted {
   content?: string;
   anchor?: string;
 }
-export const FullTextSearchDocsResponseHitsItemFormatted = /*@__PURE__*/ S.suspend(() =>
+const FullTextSearchDocsResponseHitsItemFormatted = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     hierarchy_lvl0: S.optional(S.String),
@@ -68,7 +68,7 @@ export interface FullTextSearchDocsResponseHitsItem {
   anchor?: string;
   _formatted?: FullTextSearchDocsResponseHitsItemFormatted;
 }
-export const FullTextSearchDocsResponseHitsItem = /*@__PURE__*/ S.suspend(() =>
+const FullTextSearchDocsResponseHitsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     hierarchy_lvl0: S.optional(S.String),
@@ -87,14 +87,14 @@ export const FullTextSearchDocsResponseHitsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FullTextSearchDocsResponseHitsItem>;
 
 export type FullTextSearchDocsResponseHitsList = Array<FullTextSearchDocsResponseHitsItem>;
-export const FullTextSearchDocsResponseHitsList = /*@__PURE__*/ S.Array(
+const FullTextSearchDocsResponseHitsList = /*@__PURE__*/ S.Array(
   FullTextSearchDocsResponseHitsItem,
 ) as any as S.Schema<FullTextSearchDocsResponseHitsList>;
 
 export interface FullTextSearchDocsResponse {
   hits: FullTextSearchDocsResponseHitsList;
 }
-export const FullTextSearchDocsResponse = /*@__PURE__*/ S.suspend(() =>
+const FullTextSearchDocsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hits: FullTextSearchDocsResponseHitsList,
   }),
@@ -103,7 +103,7 @@ export const FullTextSearchDocsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FullTextSearchDocsResponse>;
 
 export interface ListDocsRequest {}
-export const ListDocsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDocsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/docs", code: 200 })),
 ).annotate({ identifier: "ListDocsRequest" }) as any as S.Schema<ListDocsRequest>;
 
@@ -112,7 +112,7 @@ export interface ListDocsResponseBodyItem {
   url: string;
   category?: string;
 }
-export const ListDocsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListDocsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     url: S.String,
@@ -121,12 +121,12 @@ export const ListDocsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDocsResponseBodyItem" }) as any as S.Schema<ListDocsResponseBodyItem>;
 
 export type ListDocsResponseBodyList = Array<ListDocsResponseBodyItem>;
-export const ListDocsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDocsResponseBodyList = /*@__PURE__*/ S.Array(
   ListDocsResponseBodyItem,
 ) as any as S.Schema<ListDocsResponseBodyList>;
 
 export type ListDocsResponse = ListDocsResponseBodyList;
-export const ListDocsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDocsResponse = /*@__PURE__*/ S.suspend(() =>
   ListDocsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDocsResponse" }) as any as S.Schema<ListDocsResponse>;
 
@@ -192,14 +192,14 @@ export type SearchDocsRequestProduct =
   | "kernels"
   | "google-cloud"
   | "xet";
-export const SearchDocsRequestProduct = S.String;
+const SearchDocsRequestProduct = S.String;
 
 export interface SearchDocsRequest {
   q: string;
   product?: SearchDocsRequestProduct | (string & {});
   limit?: number;
 }
-export const SearchDocsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDocsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     product: S.optional(SearchDocsRequestProduct.pipe(T.Query())),
@@ -208,14 +208,14 @@ export const SearchDocsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchDocsRequest" }) as any as S.Schema<SearchDocsRequest>;
 
 export type SearchDocsResponseBodyItemVectorsEmbeddingsList = Array<number>;
-export const SearchDocsResponseBodyItemVectorsEmbeddingsList = /*@__PURE__*/ S.Array(
+const SearchDocsResponseBodyItemVectorsEmbeddingsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SearchDocsResponseBodyItemVectorsEmbeddingsList>;
 
 export interface SearchDocsResponseBodyItemVectors {
   embeddings: SearchDocsResponseBodyItemVectorsEmbeddingsList;
 }
-export const SearchDocsResponseBodyItemVectors = /*@__PURE__*/ S.suspend(() =>
+const SearchDocsResponseBodyItemVectors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     embeddings: SearchDocsResponseBodyItemVectorsEmbeddingsList,
   }),
@@ -236,7 +236,7 @@ export interface SearchDocsResponseBodyItem {
   heading4?: string;
   heading5?: string;
 }
-export const SearchDocsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const SearchDocsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     _vectors: SearchDocsResponseBodyItemVectors,
@@ -255,12 +255,12 @@ export const SearchDocsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchDocsResponseBodyItem>;
 
 export type SearchDocsResponseBodyList = Array<SearchDocsResponseBodyItem>;
-export const SearchDocsResponseBodyList = /*@__PURE__*/ S.Array(
+const SearchDocsResponseBodyList = /*@__PURE__*/ S.Array(
   SearchDocsResponseBodyItem,
 ) as any as S.Schema<SearchDocsResponseBodyList>;
 
 export type SearchDocsResponse = SearchDocsResponseBodyList;
-export const SearchDocsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchDocsResponse = /*@__PURE__*/ S.suspend(() =>
   SearchDocsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "SearchDocsResponse" }) as any as S.Schema<SearchDocsResponse>;
 

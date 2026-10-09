@@ -9,20 +9,19 @@ export type { GithubOpError, GithubOpContext };
 
 /** The hosted compute service to use for the network configuration. */
 export type CreateNetworkConfigurationForOrgRequestComputeService = "none" | "actions";
-export const CreateNetworkConfigurationForOrgRequestComputeService = S.String;
+const CreateNetworkConfigurationForOrgRequestComputeService = S.String;
 
 /** A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = Array<string>;
-export const CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = /*@__PURE__*/ S.Array(
+const CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList>;
 
 /** A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList = Array<string>;
-export const CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList>;
+const CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList>;
 
 export interface CreateNetworkConfigurationForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -38,7 +37,7 @@ export interface CreateNetworkConfigurationForOrgRequest {
   /** Indicates whether the failover network resource is enabled. */
   failover_network_enabled?: boolean;
 }
-export const CreateNetworkConfigurationForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNetworkConfigurationForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -57,16 +56,16 @@ export const CreateNetworkConfigurationForOrgRequest = /*@__PURE__*/ S.suspend((
 
 /** The hosted compute service the network configuration supports. */
 export type NetworkConfigurationComputeService = "none" | "actions" | "codespaces";
-export const NetworkConfigurationComputeService = S.String;
+const NetworkConfigurationComputeService = S.String;
 
 /** The unique identifier of each network settings in the configuration. */
 export type NetworkConfigurationNetworkSettingsIdsList = Array<string>;
-export const NetworkConfigurationNetworkSettingsIdsList =
+const NetworkConfigurationNetworkSettingsIdsList =
   CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<NetworkConfigurationNetworkSettingsIdsList>;
 
 /** The unique identifier of each failover network settings in the configuration. */
 export type NetworkConfigurationFailoverNetworkSettingsIdsList = Array<string>;
-export const NetworkConfigurationFailoverNetworkSettingsIdsList =
+const NetworkConfigurationFailoverNetworkSettingsIdsList =
   CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<NetworkConfigurationFailoverNetworkSettingsIdsList>;
 
 /** A hosted compute network configuration. */
@@ -86,7 +85,7 @@ export interface NetworkConfiguration {
   /** The time at which the network configuration was created, in ISO 8601 format. */
   created_on: string | null;
 }
-export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
+const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -104,7 +103,7 @@ export interface DeleteNetworkConfigurationFromOrgRequest {
   /** Unique identifier of the hosted compute network configuration. */
   network_configuration_id: string;
 }
-export const DeleteNetworkConfigurationFromOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkConfigurationFromOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     network_configuration_id: S.String.pipe(T.Label()),
@@ -120,7 +119,7 @@ export const DeleteNetworkConfigurationFromOrgRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteNetworkConfigurationFromOrgRequest>;
 
 export interface DeleteNetworkConfigurationFromOrgResponse {}
-export const DeleteNetworkConfigurationFromOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkConfigurationFromOrgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteNetworkConfigurationFromOrgResponse",
@@ -132,7 +131,7 @@ export interface GetNetworkConfigurationForOrgRequest {
   /** Unique identifier of the hosted compute network configuration. */
   network_configuration_id: string;
 }
-export const GetNetworkConfigurationForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkConfigurationForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     network_configuration_id: S.String.pipe(T.Label()),
@@ -153,7 +152,7 @@ export interface GetNetworkSettingsForOrgRequest {
   /** Unique identifier of the hosted compute network settings. */
   network_settings_id: string;
 }
-export const GetNetworkSettingsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkSettingsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     network_settings_id: S.String.pipe(T.Label()),
@@ -181,7 +180,7 @@ export interface NetworkSettings {
   /** The location of the subnet this network settings resource is configured for. */
   region: string;
 }
-export const NetworkSettings = /*@__PURE__*/ S.suspend(() =>
+const NetworkSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     network_configuration_id: S.optional(S.String),
@@ -199,7 +198,7 @@ export interface ListNetworkConfigurationsForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListNetworkConfigurationsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkConfigurationsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -211,16 +210,15 @@ export const ListNetworkConfigurationsForOrgRequest = /*@__PURE__*/ S.suspend(()
 
 export type ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList =
   Array<NetworkConfiguration>;
-export const ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList =
-  /*@__PURE__*/ S.Array(
-    NetworkConfiguration,
-  ) as any as S.Schema<ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList>;
+const ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList = /*@__PURE__*/ S.Array(
+  NetworkConfiguration,
+) as any as S.Schema<ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList>;
 
 export interface ListNetworkConfigurationsForOrgResponse {
   total_count: number;
   network_configurations: ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList;
 }
-export const ListNetworkConfigurationsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkConfigurationsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     network_configurations: ListNetworkConfigurationsForOrgResponseNetworkConfigurationsList,
@@ -231,16 +229,16 @@ export const ListNetworkConfigurationsForOrgResponse = /*@__PURE__*/ S.suspend((
 
 /** The hosted compute service to use for the network configuration. */
 export type UpdateNetworkConfigurationForOrgRequestComputeService = "none" | "actions";
-export const UpdateNetworkConfigurationForOrgRequestComputeService = S.String;
+const UpdateNetworkConfigurationForOrgRequestComputeService = S.String;
 
 /** A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList = Array<string>;
-export const UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList =
+const UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList =
   CreateNetworkConfigurationForOrgRequestNetworkSettingsIdsList as any as S.Schema<UpdateNetworkConfigurationForOrgRequestNetworkSettingsIdsList>;
 
 /** A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list. */
 export type UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList = Array<string>;
-export const UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList =
+const UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList =
   CreateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList as any as S.Schema<UpdateNetworkConfigurationForOrgRequestFailoverNetworkSettingsIdsList>;
 
 export interface UpdateNetworkConfigurationForOrgRequest {
@@ -259,7 +257,7 @@ export interface UpdateNetworkConfigurationForOrgRequest {
   /** Indicates whether the failover network resource is enabled. */
   failover_network_enabled?: boolean;
 }
-export const UpdateNetworkConfigurationForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkConfigurationForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     network_configuration_id: S.String.pipe(T.Label()),

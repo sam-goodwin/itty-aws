@@ -70,7 +70,7 @@ export interface CancelDeploymentRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const CancelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -80,12 +80,12 @@ export const CancelDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
 export type CancelDeploymentResponseAliasList = Array<string>;
-export const CancelDeploymentResponseAliasList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseAliasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CancelDeploymentResponseAliasList>;
 
 export type CancelDeploymentResponseAliasAssignedAt = number | boolean;
-export const CancelDeploymentResponseAliasAssignedAt =
+const CancelDeploymentResponseAliasAssignedAt =
   S.Unknown as any as S.Schema<CancelDeploymentResponseAliasAssignedAt>;
 
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
@@ -93,7 +93,7 @@ export interface CancelDeploymentResponseAliasError {
   code: string;
   message: string;
 }
-export const CancelDeploymentResponseAliasError = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseAliasError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -108,7 +108,7 @@ export interface CancelDeploymentResponseAliasWarning {
   link?: string;
   message: string;
 }
-export const CancelDeploymentResponseAliasWarning = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseAliasWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     code: S.String,
@@ -122,34 +122,22 @@ export const CancelDeploymentResponseAliasWarning = /*@__PURE__*/ S.suspend(() =
 export interface CancelDeploymentResponseAtprotoCase0 {
   enabled: boolean;
 }
-export const CancelDeploymentResponseAtprotoCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseAtprotoCase0",
-}) as any as S.Schema<CancelDeploymentResponseAtprotoCase0>;
-
 export type CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList = Array<string>;
-export const CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList>;
+const CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList>;
 
 export type CancelDeploymentResponseAtprotoCase1SubscriptionDidsList = Array<string>;
-export const CancelDeploymentResponseAtprotoCase1SubscriptionDidsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionDidsList>;
-
 export type CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem =
   | "account"
   | "commit"
   | "identity"
   | "sync";
-export const CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem = S.String;
+const CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem = S.String;
 
 export type CancelDeploymentResponseAtprotoCase1SubscriptionKindsList =
   Array<CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem>;
-export const CancelDeploymentResponseAtprotoCase1SubscriptionKindsList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseAtprotoCase1SubscriptionKindsList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseAtprotoCase1SubscriptionKindsItem,
 ) as any as S.Schema<CancelDeploymentResponseAtprotoCase1SubscriptionKindsList>;
 
@@ -159,34 +147,14 @@ export interface CancelDeploymentResponseAtprotoCase1Subscription {
   kinds?: CancelDeploymentResponseAtprotoCase1SubscriptionKindsList;
   path: string;
 }
-export const CancelDeploymentResponseAtprotoCase1Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collections: CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList,
-    dids: S.optional(CancelDeploymentResponseAtprotoCase1SubscriptionDidsList),
-    kinds: S.optional(CancelDeploymentResponseAtprotoCase1SubscriptionKindsList),
-    path: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseAtprotoCase1Subscription",
-}) as any as S.Schema<CancelDeploymentResponseAtprotoCase1Subscription>;
-
 export interface CancelDeploymentResponseAtprotoCase1 {
   enabled: boolean;
   subscription: CancelDeploymentResponseAtprotoCase1Subscription;
 }
-export const CancelDeploymentResponseAtprotoCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    subscription: CancelDeploymentResponseAtprotoCase1Subscription,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseAtprotoCase1",
-}) as any as S.Schema<CancelDeploymentResponseAtprotoCase1>;
-
 export type CancelDeploymentResponseAtproto =
   | CancelDeploymentResponseAtprotoCase0
   | CancelDeploymentResponseAtprotoCase1;
-export const CancelDeploymentResponseAtproto =
+const CancelDeploymentResponseAtproto =
   S.Unknown as any as S.Schema<CancelDeploymentResponseAtproto>;
 
 /** Commit metadata from the git commit author */
@@ -198,7 +166,7 @@ export interface CancelDeploymentResponseAttributionCommitMeta {
   /** Name from git commit author */
   name?: string;
 }
-export const CancelDeploymentResponseAttributionCommitMeta = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseAttributionCommitMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     isVerified: S.optional(S.Boolean),
@@ -209,7 +177,7 @@ export const CancelDeploymentResponseAttributionCommitMeta = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CancelDeploymentResponseAttributionCommitMeta>;
 
 export type CancelDeploymentResponseAttributionGitUserId = string | number;
-export const CancelDeploymentResponseAttributionGitUserId =
+const CancelDeploymentResponseAttributionGitUserId =
   S.Unknown as any as S.Schema<CancelDeploymentResponseAttributionGitUserId>;
 
 /** Git provider user associated with the commit author email (only set if resolved) */
@@ -222,7 +190,7 @@ export interface CancelDeploymentResponseAttributionGitUser {
   /** User type */
   type?: string;
 }
-export const CancelDeploymentResponseAttributionGitUser = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseAttributionGitUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: CancelDeploymentResponseAttributionGitUserId,
     login: S.String,
@@ -235,7 +203,7 @@ export const CancelDeploymentResponseAttributionGitUser = /*@__PURE__*/ S.suspen
 
 /** Team roles at time of deployment */
 export type CancelDeploymentResponseAttributionVercelUserTeamRolesList = Array<string>;
-export const CancelDeploymentResponseAttributionVercelUserTeamRolesList =
+const CancelDeploymentResponseAttributionVercelUserTeamRolesList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseAttributionVercelUserTeamRolesList>;
 
 /** Vercel user linked to the git provider account (only set if resolved) */
@@ -247,7 +215,7 @@ export interface CancelDeploymentResponseAttributionVercelUser {
   /** Vercel username */
   username: string;
 }
-export const CancelDeploymentResponseAttributionVercelUser = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseAttributionVercelUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     teamRoles: S.optional(CancelDeploymentResponseAttributionVercelUserTeamRolesList),
@@ -266,7 +234,7 @@ export interface CancelDeploymentResponseAttribution {
   /** Vercel user linked to the git provider account (only set if resolved) */
   vercelUser?: CancelDeploymentResponseAttributionVercelUser;
 }
-export const CancelDeploymentResponseAttribution = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseAttribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitMeta: S.optional(CancelDeploymentResponseAttributionCommitMeta),
     gitUser: S.optional(CancelDeploymentResponseAttributionGitUser),
@@ -277,17 +245,17 @@ export const CancelDeploymentResponseAttribution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseAttribution>;
 
 export type CancelDeploymentResponseAutomaticAliasesList = Array<string>;
-export const CancelDeploymentResponseAutomaticAliasesList =
+const CancelDeploymentResponseAutomaticAliasesList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseAutomaticAliasesList>;
 
 export type CancelDeploymentResponseBuildEnvList = Array<string>;
-export const CancelDeploymentResponseBuildEnvList =
+const CancelDeploymentResponseBuildEnvList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseBuildEnvList>;
 
 export interface CancelDeploymentResponseBuild {
   env: CancelDeploymentResponseBuildEnvList;
 }
-export const CancelDeploymentResponseBuild = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     env: CancelDeploymentResponseBuildEnvList,
   }),
@@ -296,11 +264,11 @@ export const CancelDeploymentResponseBuild = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseBuild>;
 
 export type CancelDeploymentResponseBuildArtifactUrlsList = Array<string>;
-export const CancelDeploymentResponseBuildArtifactUrlsList =
+const CancelDeploymentResponseBuildArtifactUrlsList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseBuildArtifactUrlsList>;
 
 export type CancelDeploymentResponseBuildsItemConfigMap = { [key: string]: unknown | undefined };
-export const CancelDeploymentResponseBuildsItemConfigMap = /*@__PURE__*/ S.Record(
+const CancelDeploymentResponseBuildsItemConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CancelDeploymentResponseBuildsItemConfigMap>;
@@ -310,7 +278,7 @@ export interface CancelDeploymentResponseBuildsItem {
   src?: string;
   use: string;
 }
-export const CancelDeploymentResponseBuildsItem = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseBuildsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(CancelDeploymentResponseBuildsItemConfigMap),
     src: S.optional(S.String),
@@ -321,12 +289,12 @@ export const CancelDeploymentResponseBuildsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseBuildsItem>;
 
 export type CancelDeploymentResponseBuildsList = Array<CancelDeploymentResponseBuildsItem>;
-export const CancelDeploymentResponseBuildsList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseBuildsList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseBuildsItem,
 ) as any as S.Schema<CancelDeploymentResponseBuildsList>;
 
 export type CancelDeploymentResponseChecksDeploymentAliasState = "failed" | "pending" | "succeeded";
-export const CancelDeploymentResponseChecksDeploymentAliasState = S.String;
+const CancelDeploymentResponseChecksDeploymentAliasState = S.String;
 
 /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
 export interface CancelDeploymentResponseChecksDeploymentAlias {
@@ -334,7 +302,7 @@ export interface CancelDeploymentResponseChecksDeploymentAlias {
   startedAt: number;
   state: CancelDeploymentResponseChecksDeploymentAliasState;
 }
-export const CancelDeploymentResponseChecksDeploymentAlias = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseChecksDeploymentAlias = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completedAt: S.optional(S.Number),
     startedAt: S.Number,
@@ -348,7 +316,7 @@ export interface CancelDeploymentResponseChecks {
   /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
   deployment_alias: CancelDeploymentResponseChecksDeploymentAlias;
 }
-export const CancelDeploymentResponseChecks = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseChecks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment_alias: CancelDeploymentResponseChecksDeploymentAlias.pipe(
       T.Body("deployment-alias"),
@@ -363,33 +331,33 @@ export type CancelDeploymentResponseChecksConclusion =
   | "failed"
   | "skipped"
   | "succeeded";
-export const CancelDeploymentResponseChecksConclusion = S.String;
+const CancelDeploymentResponseChecksConclusion = S.String;
 
 export type CancelDeploymentResponseChecksState = "completed" | "registered" | "running";
-export const CancelDeploymentResponseChecksState = S.String;
+const CancelDeploymentResponseChecksState = S.String;
 
 export type CancelDeploymentResponseConfigFunctionMemoryType =
   | "performance"
   | "performance_xl"
   | "standard"
   | "standard_legacy";
-export const CancelDeploymentResponseConfigFunctionMemoryType = S.String;
+const CancelDeploymentResponseConfigFunctionMemoryType = S.String;
 
 export type CancelDeploymentResponseConfigFunctionType = "fluid" | "standard";
-export const CancelDeploymentResponseConfigFunctionType = S.String;
+const CancelDeploymentResponseConfigFunctionType = S.String;
 
 /** Build resource configuration snapshot for this deployment. */
 export type CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration =
   | "SKIP_NAMESPACE_QUEUE"
   | "WAIT_FOR_NAMESPACE_QUEUE";
-export const CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration = S.String;
+const CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration = S.String;
 
 /** Build resource configuration snapshot for this deployment. */
 export interface CancelDeploymentResponseConfigResourceConfigBuildQueue {
   /** Build resource configuration snapshot for this deployment. */
   configuration?: CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration;
 }
-export const CancelDeploymentResponseConfigResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseConfigResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(CancelDeploymentResponseConfigResourceConfigBuildQueueConfiguration),
   }),
@@ -402,7 +370,7 @@ export type CancelDeploymentResponseConfigResourceConfigElasticConcurrency =
   | "PROJECT_SETTING"
   | "SKIP_QUEUE"
   | "TEAM_SETTING";
-export const CancelDeploymentResponseConfigResourceConfigElasticConcurrency = S.String;
+const CancelDeploymentResponseConfigResourceConfigElasticConcurrency = S.String;
 
 /** Machine type that was used for the build. */
 export type CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType =
@@ -410,19 +378,18 @@ export type CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType
   | "enhanced"
   | "standard"
   | "turbo";
-export const CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType = S.String;
+const CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType = S.String;
 
 export interface CancelDeploymentResponseConfigResourceConfigBuildMachine {
   /** Machine type that was used for the build. */
   purchaseType?: CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType | null;
 }
-export const CancelDeploymentResponseConfigResourceConfigBuildMachine = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      purchaseType: S.optional(
-        S.NullOr(CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType),
-      ),
-    }),
+const CancelDeploymentResponseConfigResourceConfigBuildMachine = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    purchaseType: S.optional(
+      S.NullOr(CancelDeploymentResponseConfigResourceConfigBuildMachinePurchaseType),
+    ),
+  }),
 ).annotate({
   identifier: "CancelDeploymentResponseConfigResourceConfigBuildMachine",
 }) as any as S.Schema<CancelDeploymentResponseConfigResourceConfigBuildMachine>;
@@ -435,7 +402,7 @@ export interface CancelDeploymentResponseConfigResourceConfig {
   elasticConcurrency?: CancelDeploymentResponseConfigResourceConfigElasticConcurrency;
   buildMachine?: CancelDeploymentResponseConfigResourceConfigBuildMachine;
 }
-export const CancelDeploymentResponseConfigResourceConfig = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseConfigResourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildQueue: S.optional(CancelDeploymentResponseConfigResourceConfigBuildQueue),
     elasticConcurrency: S.optional(CancelDeploymentResponseConfigResourceConfigElasticConcurrency),
@@ -457,7 +424,7 @@ export interface CancelDeploymentResponseConfig {
   secureComputePrimaryRegion: string | null;
   version?: number;
 }
-export const CancelDeploymentResponseConfig = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionMemoryType: CancelDeploymentResponseConfigFunctionMemoryType,
     functionTimeout: S.NullOr(S.Number),
@@ -474,7 +441,7 @@ export const CancelDeploymentResponseConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Principal type of the deployment creator. */
 export type CancelDeploymentResponseCreatorType = "app" | "integration" | "system" | "user";
-export const CancelDeploymentResponseCreatorType = S.String;
+const CancelDeploymentResponseCreatorType = S.String;
 
 /** Information about the deployment creator */
 export interface CancelDeploymentResponseCreator {
@@ -487,7 +454,7 @@ export interface CancelDeploymentResponseCreator {
   /** The username of the user that created the deployment */
   username?: string;
 }
-export const CancelDeploymentResponseCreator = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseCreator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar: S.optional(S.String),
     type: S.optional(CancelDeploymentResponseCreatorType),
@@ -502,7 +469,7 @@ export interface CancelDeploymentResponseCronsItem {
   path: string;
   schedule: string;
 }
-export const CancelDeploymentResponseCronsItem = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseCronsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     schedule: S.String,
@@ -512,7 +479,7 @@ export const CancelDeploymentResponseCronsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseCronsItem>;
 
 export type CancelDeploymentResponseCronsList = Array<CancelDeploymentResponseCronsItem>;
-export const CancelDeploymentResponseCronsList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseCronsList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseCronsItem,
 ) as any as S.Schema<CancelDeploymentResponseCronsList>;
 
@@ -521,8 +488,6 @@ export type CancelDeploymentResponseCustomEnvironmentCase0BranchMatcherType =
   | "endsWith"
   | "equals"
   | "startsWith";
-export const CancelDeploymentResponseCustomEnvironmentCase0BranchMatcherType = S.String;
-
 /** Configuration for matching git branches to this environment */
 export interface CancelDeploymentResponseCustomEnvironmentCase0BranchMatcher {
   /** The pattern to match against branch names */
@@ -530,29 +495,14 @@ export interface CancelDeploymentResponseCustomEnvironmentCase0BranchMatcher {
   /** The type of matching to perform */
   type: CancelDeploymentResponseCustomEnvironmentCase0BranchMatcherType;
 }
-export const CancelDeploymentResponseCustomEnvironmentCase0BranchMatcher = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pattern: S.String,
-      type: CancelDeploymentResponseCustomEnvironmentCase0BranchMatcherType,
-    }),
-).annotate({
-  identifier: "CancelDeploymentResponseCustomEnvironmentCase0BranchMatcher",
-}) as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0BranchMatcher>;
-
 /** List of aliases for the current deployment */
 export type CancelDeploymentResponseCustomEnvironmentCase0CurrentDeploymentAliasesList =
   Array<string>;
-export const CancelDeploymentResponseCustomEnvironmentCase0CurrentDeploymentAliasesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0CurrentDeploymentAliasesList>;
-
 export type CancelDeploymentResponseCustomEnvironmentCase0DomainsItemRedirectStatusCode =
   | 301
   | 302
   | 307
   | 308;
-export const CancelDeploymentResponseCustomEnvironmentCase0DomainsItemRedirectStatusCode = S.Number;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export interface CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem {
   domain: string;
@@ -560,26 +510,9 @@ export interface CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerifi
   type: string;
   value: string;
 }
-export const CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domain: S.String,
-      reason: S.String,
-      type: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem",
-  }) as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem>;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList =
   Array<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem>;
-export const CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem,
-  ) as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList>;
-
 /** List of domains associated with this environment */
 export interface CancelDeploymentResponseCustomEnvironmentCase0DomainsItem {
   apexName: string;
@@ -596,43 +529,14 @@ export interface CancelDeploymentResponseCustomEnvironmentCase0DomainsItem {
   /** `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed. */
   verified: boolean;
 }
-export const CancelDeploymentResponseCustomEnvironmentCase0DomainsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apexName: S.String,
-      createdAt: S.optional(S.Number),
-      customEnvironmentId: S.optional(S.NullOr(S.String)),
-      gitBranch: S.optional(S.NullOr(S.String)),
-      name: S.String,
-      projectId: S.String,
-      redirect: S.optional(S.NullOr(S.String)),
-      redirectStatusCode: S.optional(
-        S.NullOr(CancelDeploymentResponseCustomEnvironmentCase0DomainsItemRedirectStatusCode),
-      ),
-      updatedAt: S.optional(S.Number),
-      verification: S.optional(
-        CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList,
-      ),
-      verified: S.Boolean,
-    }),
-).annotate({
-  identifier: "CancelDeploymentResponseCustomEnvironmentCase0DomainsItem",
-}) as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0DomainsItem>;
-
 /** List of domains associated with this environment */
 export type CancelDeploymentResponseCustomEnvironmentCase0DomainsList =
   Array<CancelDeploymentResponseCustomEnvironmentCase0DomainsItem>;
-export const CancelDeploymentResponseCustomEnvironmentCase0DomainsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseCustomEnvironmentCase0DomainsItem,
-) as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0DomainsList>;
-
 /** The type of environment (production, preview, or development) */
 export type CancelDeploymentResponseCustomEnvironmentCase0Type =
   | "development"
   | "preview"
   | "production";
-export const CancelDeploymentResponseCustomEnvironmentCase0Type = S.String;
-
 /** If the deployment was created using a Custom Environment, then this property contains information regarding the environment used. */
 export interface CancelDeploymentResponseCustomEnvironmentCase0 {
   /** Configuration for matching git branches to this environment */
@@ -654,40 +558,14 @@ export interface CancelDeploymentResponseCustomEnvironmentCase0 {
   /** Timestamp when the environment was last updated */
   updatedAt: number;
 }
-export const CancelDeploymentResponseCustomEnvironmentCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchMatcher: S.optional(CancelDeploymentResponseCustomEnvironmentCase0BranchMatcher),
-    createdAt: S.Number,
-    currentDeploymentAliases: S.optional(
-      CancelDeploymentResponseCustomEnvironmentCase0CurrentDeploymentAliasesList,
-    ),
-    description: S.optional(S.String),
-    domains: S.optional(CancelDeploymentResponseCustomEnvironmentCase0DomainsList),
-    id: S.String,
-    slug: S.String,
-    type: CancelDeploymentResponseCustomEnvironmentCase0Type,
-    updatedAt: S.Number,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseCustomEnvironmentCase0",
-}) as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase0>;
-
 /** If the deployment was created using a Custom Environment, then this property contains information regarding the environment used. */
 export interface CancelDeploymentResponseCustomEnvironmentCase1 {
   id: string;
 }
-export const CancelDeploymentResponseCustomEnvironmentCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseCustomEnvironmentCase1",
-}) as any as S.Schema<CancelDeploymentResponseCustomEnvironmentCase1>;
-
 export type CancelDeploymentResponseCustomEnvironment =
   | CancelDeploymentResponseCustomEnvironmentCase0
   | CancelDeploymentResponseCustomEnvironmentCase1;
-export const CancelDeploymentResponseCustomEnvironment =
+const CancelDeploymentResponseCustomEnvironment =
   S.Unknown as any as S.Schema<CancelDeploymentResponseCustomEnvironment>;
 
 export interface CancelDeploymentResponseDuration {
@@ -706,7 +584,7 @@ export interface CancelDeploymentResponseDuration {
   /** Milliseconds from entering BUILDING until the deployment reached its current ready state. */
   timeToReady?: number;
 }
-export const CancelDeploymentResponseDuration = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseDuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.Number),
     endTimeCapped: S.optional(S.Number),
@@ -721,103 +599,50 @@ export const CancelDeploymentResponseDuration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseDuration>;
 
 export type CancelDeploymentResponseEnvList = Array<string>;
-export const CancelDeploymentResponseEnvList =
+const CancelDeploymentResponseEnvList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseEnvList>;
 
 /** TODO: The following types will eventually be exported by a more relevant package. */
 export type FlagJSONValueCase2List = Array<FlagJSONValue>;
-export const FlagJSONValueCase2List = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => FlagJSONValue),
-) as any as S.Schema<FlagJSONValueCase2List>;
-
 export type FlagJSONValueCase3Map = { [key: string]: FlagJSONValue | undefined };
-export const FlagJSONValueCase3Map = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.suspend(() => FlagJSONValue),
-) as any as S.Schema<FlagJSONValueCase3Map>;
-
 export type FlagJSONValue =
   | string
   | number
   | FlagJSONValueCase2List
   | FlagJSONValueCase3Map
   | boolean;
-export const FlagJSONValue = S.Unknown as any as S.Schema<FlagJSONValue>;
-
 export interface CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem {
   label?: string;
   value: FlagJSONValue | null;
 }
-export const CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      label: S.optional(S.String),
-      value: S.NullOr(FlagJSONValue),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem",
-  }) as any as S.Schema<CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem>;
-
 export type CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsList =
   Array<CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem>;
-export const CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem,
-) as any as S.Schema<CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsList>;
-
 export interface CancelDeploymentResponseFlagsCase0DefinitionsValue {
   description?: string;
   options?: CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsList;
   url?: string;
 }
-export const CancelDeploymentResponseFlagsCase0DefinitionsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    options: S.optional(CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsList),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseFlagsCase0DefinitionsValue",
-}) as any as S.Schema<CancelDeploymentResponseFlagsCase0DefinitionsValue>;
-
 export type CancelDeploymentResponseFlagsCase0DefinitionsMap = {
   [key: string]: CancelDeploymentResponseFlagsCase0DefinitionsValue | undefined;
 };
-export const CancelDeploymentResponseFlagsCase0DefinitionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CancelDeploymentResponseFlagsCase0DefinitionsValue,
-) as any as S.Schema<CancelDeploymentResponseFlagsCase0DefinitionsMap>;
-
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export interface CancelDeploymentResponseFlagsCase0 {
   definitions: CancelDeploymentResponseFlagsCase0DefinitionsMap;
 }
-export const CancelDeploymentResponseFlagsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definitions: CancelDeploymentResponseFlagsCase0DefinitionsMap,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseFlagsCase0",
-}) as any as S.Schema<CancelDeploymentResponseFlagsCase0>;
-
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export type CancelDeploymentResponseFlagsCase1List = Array<unknown>;
-export const CancelDeploymentResponseFlagsCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CancelDeploymentResponseFlagsCase1List>;
-
 export type CancelDeploymentResponseFlags =
   | CancelDeploymentResponseFlagsCase0
   | CancelDeploymentResponseFlagsCase1List;
-export const CancelDeploymentResponseFlags =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseFlags>;
+const CancelDeploymentResponseFlags = S.Unknown as any as S.Schema<CancelDeploymentResponseFlags>;
 
 export type CancelDeploymentResponseFunctionsValueAffinityMode = "strict";
-export const CancelDeploymentResponseFunctionsValueAffinityMode = S.String;
+const CancelDeploymentResponseFunctionsValueAffinityMode = S.String;
 
 export interface CancelDeploymentResponseFunctionsValueAffinity {
   mode: CancelDeploymentResponseFunctionsValueAffinityMode;
 }
-export const CancelDeploymentResponseFunctionsValueAffinity = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseFunctionsValueAffinity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: CancelDeploymentResponseFunctionsValueAffinityMode,
   }),
@@ -826,13 +651,11 @@ export const CancelDeploymentResponseFunctionsValueAffinity = /*@__PURE__*/ S.su
 }) as any as S.Schema<CancelDeploymentResponseFunctionsValueAffinity>;
 
 export type CancelDeploymentResponseFunctionsValueArchitecture = "arm64" | "x86_64";
-export const CancelDeploymentResponseFunctionsValueArchitecture = S.String;
+const CancelDeploymentResponseFunctionsValueArchitecture = S.String;
 
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0Type = S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -850,26 +673,9 @@ export interface CancelDeploymentResponseFunctionsValueExperimentalTriggersItemC
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1Type = S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -885,66 +691,39 @@ export interface CancelDeploymentResponseFunctionsValueExperimentalTriggersItemC
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2Type = S.String;
-
 export interface CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2>;
-
 export type CancelDeploymentResponseFunctionsValueExperimentalTriggersItem =
   | CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0
   | CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1
   | CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2;
-export const CancelDeploymentResponseFunctionsValueExperimentalTriggersItem =
+const CancelDeploymentResponseFunctionsValueExperimentalTriggersItem =
   S.Unknown as any as S.Schema<CancelDeploymentResponseFunctionsValueExperimentalTriggersItem>;
 
 export type CancelDeploymentResponseFunctionsValueExperimentalTriggersList =
   Array<CancelDeploymentResponseFunctionsValueExperimentalTriggersItem>;
-export const CancelDeploymentResponseFunctionsValueExperimentalTriggersList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseFunctionsValueExperimentalTriggersList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseFunctionsValueExperimentalTriggersItem,
 ) as any as S.Schema<CancelDeploymentResponseFunctionsValueExperimentalTriggersList>;
 
 export type CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList = Array<string>;
-export const CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList =
+const CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList =
   CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseFunctionsValueFunctionFailoverRegionsList>;
 
 export type CancelDeploymentResponseFunctionsValueMaxDurationCase1 = "max";
-export const CancelDeploymentResponseFunctionsValueMaxDurationCase1 = S.String;
-
 export type CancelDeploymentResponseFunctionsValueMaxDuration =
   | number
   | CancelDeploymentResponseFunctionsValueMaxDurationCase1;
-export const CancelDeploymentResponseFunctionsValueMaxDuration =
+const CancelDeploymentResponseFunctionsValueMaxDuration =
   S.Unknown as any as S.Schema<CancelDeploymentResponseFunctionsValueMaxDuration>;
 
 export type CancelDeploymentResponseFunctionsValueRegionsList = Array<string>;
-export const CancelDeploymentResponseFunctionsValueRegionsList =
+const CancelDeploymentResponseFunctionsValueRegionsList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseFunctionsValueRegionsList>;
 
 export interface CancelDeploymentResponseFunctionsValue {
@@ -961,7 +740,7 @@ export interface CancelDeploymentResponseFunctionsValue {
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const CancelDeploymentResponseFunctionsValue = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseFunctionsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affinity: S.optional(CancelDeploymentResponseFunctionsValueAffinity),
     architecture: S.optional(CancelDeploymentResponseFunctionsValueArchitecture),
@@ -987,17 +766,13 @@ export const CancelDeploymentResponseFunctionsValue = /*@__PURE__*/ S.suspend(()
 export type CancelDeploymentResponseFunctionsMap = {
   [key: string]: CancelDeploymentResponseFunctionsValue | undefined;
 };
-export const CancelDeploymentResponseFunctionsMap = /*@__PURE__*/ S.Record(
+const CancelDeploymentResponseFunctionsMap = /*@__PURE__*/ S.Record(
   S.String,
   CancelDeploymentResponseFunctionsValue,
 ) as any as S.Schema<CancelDeploymentResponseFunctionsMap>;
 
 export type CancelDeploymentResponseGitRepoCase0OwnerType = "team" | "user";
-export const CancelDeploymentResponseGitRepoCase0OwnerType = S.String;
-
 export type CancelDeploymentResponseGitRepoCase0Type = "gitlab";
-export const CancelDeploymentResponseGitRepoCase0Type = S.String;
-
 export interface CancelDeploymentResponseGitRepoCase0 {
   defaultBranch: string;
   name: string;
@@ -1009,28 +784,8 @@ export interface CancelDeploymentResponseGitRepoCase0 {
   type: CancelDeploymentResponseGitRepoCase0Type;
   url: string;
 }
-export const CancelDeploymentResponseGitRepoCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    namespace: S.String,
-    ownerType: CancelDeploymentResponseGitRepoCase0OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    projectId: S.Number,
-    type: CancelDeploymentResponseGitRepoCase0Type,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitRepoCase0",
-}) as any as S.Schema<CancelDeploymentResponseGitRepoCase0>;
-
 export type CancelDeploymentResponseGitRepoCase1OwnerType = "team" | "user";
-export const CancelDeploymentResponseGitRepoCase1OwnerType = S.String;
-
 export type CancelDeploymentResponseGitRepoCase1Type = "github";
-export const CancelDeploymentResponseGitRepoCase1Type = S.String;
-
 export interface CancelDeploymentResponseGitRepoCase1 {
   defaultBranch: string;
   name: string;
@@ -1043,29 +798,8 @@ export interface CancelDeploymentResponseGitRepoCase1 {
   repoOwnerId: number;
   type: CancelDeploymentResponseGitRepoCase1Type;
 }
-export const CancelDeploymentResponseGitRepoCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    org: S.String,
-    ownerType: CancelDeploymentResponseGitRepoCase1OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    repoId: S.Number,
-    repoOwnerId: S.Number,
-    type: CancelDeploymentResponseGitRepoCase1Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitRepoCase1",
-}) as any as S.Schema<CancelDeploymentResponseGitRepoCase1>;
-
 export type CancelDeploymentResponseGitRepoCase2OwnerType = "team" | "user";
-export const CancelDeploymentResponseGitRepoCase2OwnerType = S.String;
-
 export type CancelDeploymentResponseGitRepoCase2Type = "bitbucket";
-export const CancelDeploymentResponseGitRepoCase2Type = S.String;
-
 export interface CancelDeploymentResponseGitRepoCase2 {
   defaultBranch: string;
   name: string;
@@ -1078,29 +812,8 @@ export interface CancelDeploymentResponseGitRepoCase2 {
   type: CancelDeploymentResponseGitRepoCase2Type;
   workspaceUuid: string;
 }
-export const CancelDeploymentResponseGitRepoCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    owner: S.String,
-    ownerType: CancelDeploymentResponseGitRepoCase2OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repoUuid: S.String,
-    slug: S.String,
-    type: CancelDeploymentResponseGitRepoCase2Type,
-    workspaceUuid: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitRepoCase2",
-}) as any as S.Schema<CancelDeploymentResponseGitRepoCase2>;
-
 export type CancelDeploymentResponseGitRepoCase3OwnerType = "team" | "user";
-export const CancelDeploymentResponseGitRepoCase3OwnerType = S.String;
-
 export type CancelDeploymentResponseGitRepoCase3Type = "vercel";
-export const CancelDeploymentResponseGitRepoCase3Type = S.String;
-
 export interface CancelDeploymentResponseGitRepoCase3 {
   defaultBranch: string;
   name: string;
@@ -1111,27 +824,8 @@ export interface CancelDeploymentResponseGitRepoCase3 {
   repo: string;
   type: CancelDeploymentResponseGitRepoCase3Type;
 }
-export const CancelDeploymentResponseGitRepoCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    org: S.String,
-    ownerType: CancelDeploymentResponseGitRepoCase3OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    type: CancelDeploymentResponseGitRepoCase3Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitRepoCase3",
-}) as any as S.Schema<CancelDeploymentResponseGitRepoCase3>;
-
 export type CancelDeploymentResponseGitRepoCase4OwnerType = "team" | "user";
-export const CancelDeploymentResponseGitRepoCase4OwnerType = S.String;
-
 export type CancelDeploymentResponseGitRepoCase4Type = "cursor-origin";
-export const CancelDeploymentResponseGitRepoCase4Type = S.String;
-
 export interface CancelDeploymentResponseGitRepoCase4 {
   defaultBranch: string;
   name: string;
@@ -1145,38 +839,17 @@ export interface CancelDeploymentResponseGitRepoCase4 {
   repoId: string;
   type: CancelDeploymentResponseGitRepoCase4Type;
 }
-export const CancelDeploymentResponseGitRepoCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    name: S.String,
-    owner: S.String,
-    ownerType: CancelDeploymentResponseGitRepoCase4OwnerType,
-    path: S.String,
-    private: S.Boolean,
-    repo: S.String,
-    repoId: S.String,
-    type: CancelDeploymentResponseGitRepoCase4Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitRepoCase4",
-}) as any as S.Schema<CancelDeploymentResponseGitRepoCase4>;
-
 export type CancelDeploymentResponseGitRepo =
   | CancelDeploymentResponseGitRepoCase0
   | CancelDeploymentResponseGitRepoCase1
   | CancelDeploymentResponseGitRepoCase2
   | CancelDeploymentResponseGitRepoCase3
   | CancelDeploymentResponseGitRepoCase4;
-export const CancelDeploymentResponseGitRepo =
+const CancelDeploymentResponseGitRepo =
   S.Unknown as any as S.Schema<CancelDeploymentResponseGitRepo>;
 
 export type CancelDeploymentResponseGitSourceCase0RepoId = string | number;
-export const CancelDeploymentResponseGitSourceCase0RepoId =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseGitSourceCase0RepoId>;
-
 export type CancelDeploymentResponseGitSourceCase0Type = "github";
-export const CancelDeploymentResponseGitSourceCase0Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase0 {
   prId?: number | null;
   ref?: string | null;
@@ -1184,21 +857,7 @@ export interface CancelDeploymentResponseGitSourceCase0 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase0Type;
 }
-export const CancelDeploymentResponseGitSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: CancelDeploymentResponseGitSourceCase0RepoId,
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase0Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase0",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase0>;
-
 export type CancelDeploymentResponseGitSourceCase1Type = "github";
-export const CancelDeploymentResponseGitSourceCase1Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase1 {
   org: string;
   prId?: number | null;
@@ -1207,26 +866,8 @@ export interface CancelDeploymentResponseGitSourceCase1 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase1Type;
 }
-export const CancelDeploymentResponseGitSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase1Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase1",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase1>;
-
 export type CancelDeploymentResponseGitSourceCase2RepoId = string | number;
-export const CancelDeploymentResponseGitSourceCase2RepoId =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseGitSourceCase2RepoId>;
-
 export type CancelDeploymentResponseGitSourceCase2Type = "github-custom-host";
-export const CancelDeploymentResponseGitSourceCase2Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase2 {
   host: string;
   prId?: number | null;
@@ -1235,22 +876,7 @@ export interface CancelDeploymentResponseGitSourceCase2 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase2Type;
 }
-export const CancelDeploymentResponseGitSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: CancelDeploymentResponseGitSourceCase2RepoId,
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase2Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase2",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase2>;
-
 export type CancelDeploymentResponseGitSourceCase3Type = "github-custom-host";
-export const CancelDeploymentResponseGitSourceCase3Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase3 {
   host: string;
   org: string;
@@ -1260,27 +886,8 @@ export interface CancelDeploymentResponseGitSourceCase3 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase3Type;
 }
-export const CancelDeploymentResponseGitSourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    org: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase3Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase3",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase3>;
-
 export type CancelDeploymentResponseGitSourceCase4RepoId = string | number;
-export const CancelDeploymentResponseGitSourceCase4RepoId =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseGitSourceCase4RepoId>;
-
 export type CancelDeploymentResponseGitSourceCase4Type = "github-limited";
-export const CancelDeploymentResponseGitSourceCase4Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase4 {
   prId?: number | null;
   ref?: string | null;
@@ -1288,21 +895,7 @@ export interface CancelDeploymentResponseGitSourceCase4 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase4Type;
 }
-export const CancelDeploymentResponseGitSourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: CancelDeploymentResponseGitSourceCase4RepoId,
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase4Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase4",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase4>;
-
 export type CancelDeploymentResponseGitSourceCase5Type = "github-limited";
-export const CancelDeploymentResponseGitSourceCase5Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase5 {
   org: string;
   prId?: number | null;
@@ -1311,16 +904,8 @@ export interface CancelDeploymentResponseGitSourceCase5 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase5Type;
 }
-export const CancelDeploymentResponseGitSourceCase5 =
-  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<CancelDeploymentResponseGitSourceCase5>;
-
 export type CancelDeploymentResponseGitSourceCase6ProjectId = string | number;
-export const CancelDeploymentResponseGitSourceCase6ProjectId =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseGitSourceCase6ProjectId>;
-
 export type CancelDeploymentResponseGitSourceCase6Type = "gitlab";
-export const CancelDeploymentResponseGitSourceCase6Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase6 {
   prId?: number | null;
   projectId: CancelDeploymentResponseGitSourceCase6ProjectId;
@@ -1328,21 +913,7 @@ export interface CancelDeploymentResponseGitSourceCase6 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase6Type;
 }
-export const CancelDeploymentResponseGitSourceCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    projectId: CancelDeploymentResponseGitSourceCase6ProjectId,
-    ref: S.optional(S.NullOr(S.String)),
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase6Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase6",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase6>;
-
 export type CancelDeploymentResponseGitSourceCase7Type = "bitbucket";
-export const CancelDeploymentResponseGitSourceCase7Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase7 {
   prId?: number | null;
   ref?: string | null;
@@ -1351,22 +922,7 @@ export interface CancelDeploymentResponseGitSourceCase7 {
   type: CancelDeploymentResponseGitSourceCase7Type;
   workspaceUuid?: string;
 }
-export const CancelDeploymentResponseGitSourceCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoUuid: S.String,
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase7Type,
-    workspaceUuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase7",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase7>;
-
 export type CancelDeploymentResponseGitSourceCase8Type = "bitbucket";
-export const CancelDeploymentResponseGitSourceCase8Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase8 {
   owner: string;
   prId?: number | null;
@@ -1375,58 +931,19 @@ export interface CancelDeploymentResponseGitSourceCase8 {
   slug: string;
   type: CancelDeploymentResponseGitSourceCase8Type;
 }
-export const CancelDeploymentResponseGitSourceCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    sha: S.optional(S.String),
-    slug: S.String,
-    type: CancelDeploymentResponseGitSourceCase8Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase8",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase8>;
-
 export interface CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor {
   date: string;
   email: string;
   name: string;
 }
-export const CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      date: S.String,
-      email: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor>;
-
 export type CancelDeploymentResponseGitSourceCase9CommitMetadataCommitter =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const CancelDeploymentResponseGitSourceCase9CommitMetadataCommitter =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export interface CancelDeploymentResponseGitSourceCase9CommitMetadata {
   author: CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
   committer: CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
   message: string;
 }
-export const CancelDeploymentResponseGitSourceCase9CommitMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    author: CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor,
-    committer: CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase9CommitMetadata",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase9CommitMetadata>;
-
 export type CancelDeploymentResponseGitSourceCase9Type = "vercel";
-export const CancelDeploymentResponseGitSourceCase9Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase9 {
   commitMetadata?: CancelDeploymentResponseGitSourceCase9CommitMetadata;
   org?: string;
@@ -1438,25 +955,7 @@ export interface CancelDeploymentResponseGitSourceCase9 {
   sha: string;
   type: CancelDeploymentResponseGitSourceCase9Type;
 }
-export const CancelDeploymentResponseGitSourceCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CancelDeploymentResponseGitSourceCase9CommitMetadata),
-    org: S.optional(S.String),
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.String),
-    repoId: S.String,
-    repoPushedAt: S.optional(S.Number),
-    sha: S.String,
-    type: CancelDeploymentResponseGitSourceCase9Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase9",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase9>;
-
 export type CancelDeploymentResponseGitSourceCase10Type = "cursor-origin";
-export const CancelDeploymentResponseGitSourceCase10Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase10 {
   /** Owner (namespace) slug. */
   owner?: string;
@@ -1468,23 +967,7 @@ export interface CancelDeploymentResponseGitSourceCase10 {
   sha?: string;
   type: CancelDeploymentResponseGitSourceCase10Type;
 }
-export const CancelDeploymentResponseGitSourceCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.String),
-    repoId: S.String,
-    sha: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase10Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase10",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase10>;
-
 export type CancelDeploymentResponseGitSourceCase11Type = "custom";
-export const CancelDeploymentResponseGitSourceCase11Type = S.String;
-
 /** Allows custom git sources (local folder mounted to the container) in test mode */
 export interface CancelDeploymentResponseGitSourceCase11 {
   gitUrl: string;
@@ -1492,20 +975,7 @@ export interface CancelDeploymentResponseGitSourceCase11 {
   sha: string;
   type: CancelDeploymentResponseGitSourceCase11Type;
 }
-export const CancelDeploymentResponseGitSourceCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitUrl: S.String,
-    ref: S.String,
-    sha: S.String,
-    type: CancelDeploymentResponseGitSourceCase11Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase11",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase11>;
-
 export type CancelDeploymentResponseGitSourceCase12Type = "github";
-export const CancelDeploymentResponseGitSourceCase12Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase12 {
   org?: string;
   ref: string;
@@ -1514,22 +984,7 @@ export interface CancelDeploymentResponseGitSourceCase12 {
   sha: string;
   type: CancelDeploymentResponseGitSourceCase12Type;
 }
-export const CancelDeploymentResponseGitSourceCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: CancelDeploymentResponseGitSourceCase12Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase12",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase12>;
-
 export type CancelDeploymentResponseGitSourceCase13Type = "github-custom-host";
-export const CancelDeploymentResponseGitSourceCase13Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase13 {
   host: string;
   org?: string;
@@ -1539,23 +994,7 @@ export interface CancelDeploymentResponseGitSourceCase13 {
   sha: string;
   type: CancelDeploymentResponseGitSourceCase13Type;
 }
-export const CancelDeploymentResponseGitSourceCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    org: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.Number,
-    sha: S.String,
-    type: CancelDeploymentResponseGitSourceCase13Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase13",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase13>;
-
 export type CancelDeploymentResponseGitSourceCase14Type = "github-limited";
-export const CancelDeploymentResponseGitSourceCase14Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase14 {
   org?: string;
   ref: string;
@@ -1564,32 +1003,14 @@ export interface CancelDeploymentResponseGitSourceCase14 {
   sha: string;
   type: CancelDeploymentResponseGitSourceCase14Type;
 }
-export const CancelDeploymentResponseGitSourceCase14 =
-  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<CancelDeploymentResponseGitSourceCase14>;
-
 export type CancelDeploymentResponseGitSourceCase15Type = "gitlab";
-export const CancelDeploymentResponseGitSourceCase15Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase15 {
   projectId: number;
   ref: string;
   sha: string;
   type: CancelDeploymentResponseGitSourceCase15Type;
 }
-export const CancelDeploymentResponseGitSourceCase15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: S.Number,
-    ref: S.String,
-    sha: S.String,
-    type: CancelDeploymentResponseGitSourceCase15Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase15",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase15>;
-
 export type CancelDeploymentResponseGitSourceCase16Type = "bitbucket";
-export const CancelDeploymentResponseGitSourceCase16Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase16 {
   owner?: string;
   ref: string;
@@ -1599,38 +1020,13 @@ export interface CancelDeploymentResponseGitSourceCase16 {
   type: CancelDeploymentResponseGitSourceCase16Type;
   workspaceUuid: string;
 }
-export const CancelDeploymentResponseGitSourceCase16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    ref: S.String,
-    repoUuid: S.String,
-    sha: S.String,
-    slug: S.optional(S.String),
-    type: CancelDeploymentResponseGitSourceCase16Type,
-    workspaceUuid: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase16",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase16>;
-
 export type CancelDeploymentResponseGitSourceCase17CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const CancelDeploymentResponseGitSourceCase17CommitMetadataAuthor =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type CancelDeploymentResponseGitSourceCase17CommitMetadataCommitter =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const CancelDeploymentResponseGitSourceCase17CommitMetadataCommitter =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type CancelDeploymentResponseGitSourceCase17CommitMetadata =
   CancelDeploymentResponseGitSourceCase9CommitMetadata;
-export const CancelDeploymentResponseGitSourceCase17CommitMetadata =
-  CancelDeploymentResponseGitSourceCase9CommitMetadata;
-
 export type CancelDeploymentResponseGitSourceCase17Type = "vercel";
-export const CancelDeploymentResponseGitSourceCase17Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase17 {
   commitMetadata?: CancelDeploymentResponseGitSourceCase9CommitMetadata;
   org: string;
@@ -1641,24 +1037,7 @@ export interface CancelDeploymentResponseGitSourceCase17 {
   sha: string;
   type: CancelDeploymentResponseGitSourceCase17Type;
 }
-export const CancelDeploymentResponseGitSourceCase17 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMetadata: S.optional(CancelDeploymentResponseGitSourceCase9CommitMetadata),
-    org: S.String,
-    ref: S.String,
-    repo: S.String,
-    repoId: S.optional(S.String),
-    repoPushedAt: S.optional(S.Number),
-    sha: S.String,
-    type: CancelDeploymentResponseGitSourceCase17Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase17",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase17>;
-
 export type CancelDeploymentResponseGitSourceCase18Type = "cursor-origin";
-export const CancelDeploymentResponseGitSourceCase18Type = S.String;
-
 export interface CancelDeploymentResponseGitSourceCase18 {
   owner: string;
   ref: string;
@@ -1667,19 +1046,6 @@ export interface CancelDeploymentResponseGitSourceCase18 {
   sha: string;
   type: CancelDeploymentResponseGitSourceCase18Type;
 }
-export const CancelDeploymentResponseGitSourceCase18 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    ref: S.String,
-    repo: S.String,
-    repoId: S.String,
-    sha: S.String,
-    type: CancelDeploymentResponseGitSourceCase18Type,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseGitSourceCase18",
-}) as any as S.Schema<CancelDeploymentResponseGitSourceCase18>;
-
 export type CancelDeploymentResponseGitSource =
   | CancelDeploymentResponseGitSourceCase0
   | CancelDeploymentResponseGitSourceCase1
@@ -1700,22 +1066,20 @@ export type CancelDeploymentResponseGitSource =
   | CancelDeploymentResponseGitSourceCase16
   | CancelDeploymentResponseGitSourceCase17
   | CancelDeploymentResponseGitSourceCase18;
-export const CancelDeploymentResponseGitSource =
+const CancelDeploymentResponseGitSource =
   S.Unknown as any as S.Schema<CancelDeploymentResponseGitSource>;
 
 export type CancelDeploymentResponseImagesContentDispositionType = "attachment" | "inline";
-export const CancelDeploymentResponseImagesContentDispositionType = S.String;
+const CancelDeploymentResponseImagesContentDispositionType = S.String;
 
 export type CancelDeploymentResponseImagesDomainsList = Array<string>;
-export const CancelDeploymentResponseImagesDomainsList =
+const CancelDeploymentResponseImagesDomainsList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseImagesDomainsList>;
 
 export type CancelDeploymentResponseImagesFormatsItem = "image/avif" | "image/webp";
-export const CancelDeploymentResponseImagesFormatsItem = S.String;
-
 export type CancelDeploymentResponseImagesFormatsList =
   Array<CancelDeploymentResponseImagesFormatsItem>;
-export const CancelDeploymentResponseImagesFormatsList =
+const CancelDeploymentResponseImagesFormatsList =
   CancelDeploymentResponseAtprotoCase1SubscriptionKindsList as any as S.Schema<CancelDeploymentResponseImagesFormatsList>;
 
 export interface CancelDeploymentResponseImagesLocalPatternsItem {
@@ -1724,7 +1088,7 @@ export interface CancelDeploymentResponseImagesLocalPatternsItem {
   /** Can be literal query string such as `?v=1` or empty string meaning no query string. */
   search?: string;
 }
-export const CancelDeploymentResponseImagesLocalPatternsItem = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseImagesLocalPatternsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pathname: S.optional(S.String),
     search: S.optional(S.String),
@@ -1735,18 +1099,18 @@ export const CancelDeploymentResponseImagesLocalPatternsItem = /*@__PURE__*/ S.s
 
 export type CancelDeploymentResponseImagesLocalPatternsList =
   Array<CancelDeploymentResponseImagesLocalPatternsItem>;
-export const CancelDeploymentResponseImagesLocalPatternsList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseImagesLocalPatternsList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseImagesLocalPatternsItem,
 ) as any as S.Schema<CancelDeploymentResponseImagesLocalPatternsList>;
 
 export type CancelDeploymentResponseImagesQualitiesList = Array<number>;
-export const CancelDeploymentResponseImagesQualitiesList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseImagesQualitiesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CancelDeploymentResponseImagesQualitiesList>;
 
 /** Must be `http` or `https`. */
 export type CancelDeploymentResponseImagesRemotePatternsItemProtocol = "http" | "https";
-export const CancelDeploymentResponseImagesRemotePatternsItemProtocol = S.String;
+const CancelDeploymentResponseImagesRemotePatternsItemProtocol = S.String;
 
 export interface CancelDeploymentResponseImagesRemotePatternsItem {
   /** Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains. */
@@ -1760,7 +1124,7 @@ export interface CancelDeploymentResponseImagesRemotePatternsItem {
   /** Can be literal query string such as `?v=1` or empty string meaning no query string. */
   search?: string;
 }
-export const CancelDeploymentResponseImagesRemotePatternsItem = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseImagesRemotePatternsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostname: S.String,
     pathname: S.optional(S.String),
@@ -1774,12 +1138,12 @@ export const CancelDeploymentResponseImagesRemotePatternsItem = /*@__PURE__*/ S.
 
 export type CancelDeploymentResponseImagesRemotePatternsList =
   Array<CancelDeploymentResponseImagesRemotePatternsItem>;
-export const CancelDeploymentResponseImagesRemotePatternsList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseImagesRemotePatternsList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseImagesRemotePatternsItem,
 ) as any as S.Schema<CancelDeploymentResponseImagesRemotePatternsList>;
 
 export type CancelDeploymentResponseImagesSizesList = Array<number>;
-export const CancelDeploymentResponseImagesSizesList =
+const CancelDeploymentResponseImagesSizesList =
   CancelDeploymentResponseImagesQualitiesList as any as S.Schema<CancelDeploymentResponseImagesSizesList>;
 
 export interface CancelDeploymentResponseImages {
@@ -1794,7 +1158,7 @@ export interface CancelDeploymentResponseImages {
   remotePatterns?: CancelDeploymentResponseImagesRemotePatternsList;
   sizes?: CancelDeploymentResponseImagesSizesList;
 }
-export const CancelDeploymentResponseImages = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseImages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentDispositionType: S.optional(CancelDeploymentResponseImagesContentDispositionType),
     contentSecurityPolicy: S.optional(S.String),
@@ -1817,7 +1181,7 @@ export type CancelDeploymentResponseIntegrationsStatus =
   | "ready"
   | "skipped"
   | "timeout";
-export const CancelDeploymentResponseIntegrationsStatus = S.String;
+const CancelDeploymentResponseIntegrationsStatus = S.String;
 
 export interface CancelDeploymentResponseIntegrations {
   claimedAt?: number;
@@ -1827,7 +1191,7 @@ export interface CancelDeploymentResponseIntegrations {
   startedAt: number;
   status: CancelDeploymentResponseIntegrationsStatus;
 }
-export const CancelDeploymentResponseIntegrations = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseIntegrations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claimedAt: S.optional(S.Number),
     completedAt: S.optional(S.Number),
@@ -1845,13 +1209,13 @@ export type CancelDeploymentResponseLambdasItemReadyState =
   | "ERROR"
   | "INITIALIZING"
   | "READY";
-export const CancelDeploymentResponseLambdasItemReadyState = S.String;
+const CancelDeploymentResponseLambdasItemReadyState = S.String;
 
 export interface CancelDeploymentResponseLambdasItemOutputItem {
   functionName: string;
   path: string;
 }
-export const CancelDeploymentResponseLambdasItemOutputItem = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseLambdasItemOutputItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.String,
     path: S.String,
@@ -1862,7 +1226,7 @@ export const CancelDeploymentResponseLambdasItemOutputItem = /*@__PURE__*/ S.sus
 
 export type CancelDeploymentResponseLambdasItemOutputList =
   Array<CancelDeploymentResponseLambdasItemOutputItem>;
-export const CancelDeploymentResponseLambdasItemOutputList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseLambdasItemOutputList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseLambdasItemOutputItem,
 ) as any as S.Schema<CancelDeploymentResponseLambdasItemOutputList>;
 
@@ -1875,7 +1239,7 @@ export interface CancelDeploymentResponseLambdasItem {
   readyStateAt?: number;
   output: CancelDeploymentResponseLambdasItemOutputList;
 }
-export const CancelDeploymentResponseLambdasItem = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseLambdasItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Number),
     entrypoint: S.optional(S.NullOr(S.String)),
@@ -1889,13 +1253,13 @@ export const CancelDeploymentResponseLambdasItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseLambdasItem>;
 
 export type CancelDeploymentResponseLambdasList = Array<CancelDeploymentResponseLambdasItem>;
-export const CancelDeploymentResponseLambdasList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseLambdasList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseLambdasItem,
 ) as any as S.Schema<CancelDeploymentResponseLambdasList>;
 
 /** Current provisioning state */
 export type CancelDeploymentResponseManualProvisioningState = "COMPLETE" | "PENDING" | "TIMEOUT";
-export const CancelDeploymentResponseManualProvisioningState = S.String;
+const CancelDeploymentResponseManualProvisioningState = S.String;
 
 /** Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called. */
 export interface CancelDeploymentResponseManualProvisioning {
@@ -1904,7 +1268,7 @@ export interface CancelDeploymentResponseManualProvisioning {
   /** Current provisioning state */
   state: CancelDeploymentResponseManualProvisioningState;
 }
-export const CancelDeploymentResponseManualProvisioning = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseManualProvisioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completedAt: S.optional(S.Number),
     state: CancelDeploymentResponseManualProvisioningState,
@@ -1914,16 +1278,13 @@ export const CancelDeploymentResponseManualProvisioning = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CancelDeploymentResponseManualProvisioning>;
 
 export type CancelDeploymentResponseMetaMap = { [key: string]: string | undefined };
-export const CancelDeploymentResponseMetaMap = /*@__PURE__*/ S.Record(
+const CancelDeploymentResponseMetaMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CancelDeploymentResponseMetaMap>;
 
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CancelDeploymentResponseMicrofrontendsCase0GroupIdsList = Array<string>;
-export const CancelDeploymentResponseMicrofrontendsCase0GroupIdsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseMicrofrontendsCase0GroupIdsList>;
-
 export interface CancelDeploymentResponseMicrofrontendsCase0 {
   /** The project name of the default app of this deployment's microfrontends group. */
   defaultAppProjectName: string;
@@ -1933,29 +1294,13 @@ export interface CancelDeploymentResponseMicrofrontendsCase0 {
   groupIds: CancelDeploymentResponseMicrofrontendsCase0GroupIdsList;
   isDefaultApp?: boolean;
 }
-export const CancelDeploymentResponseMicrofrontendsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultAppProjectName: S.String,
-    defaultRoute: S.optional(S.String),
-    groupIds: CancelDeploymentResponseMicrofrontendsCase0GroupIdsList,
-    isDefaultApp: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseMicrofrontendsCase0",
-}) as any as S.Schema<CancelDeploymentResponseMicrofrontendsCase0>;
-
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CancelDeploymentResponseMicrofrontendsCase1GroupIdsList = Array<string>;
-export const CancelDeploymentResponseMicrofrontendsCase1GroupIdsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseMicrofrontendsCase1GroupIdsList>;
-
 /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
 export type CancelDeploymentResponseMicrofrontendsCase1MfeConfigUploadState =
   | "no_config"
   | "success"
   | "waiting_on_build";
-export const CancelDeploymentResponseMicrofrontendsCase1MfeConfigUploadState = S.String;
-
 export interface CancelDeploymentResponseMicrofrontendsCase1 {
   /** The project name of the default app of this deployment's microfrontends group. */
   defaultAppProjectName: string;
@@ -1967,24 +1312,10 @@ export interface CancelDeploymentResponseMicrofrontendsCase1 {
   /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
   mfeConfigUploadState?: CancelDeploymentResponseMicrofrontendsCase1MfeConfigUploadState;
 }
-export const CancelDeploymentResponseMicrofrontendsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultAppProjectName: S.String,
-    defaultRoute: S.optional(S.String),
-    groupIds: CancelDeploymentResponseMicrofrontendsCase1GroupIdsList,
-    isDefaultApp: S.Boolean,
-    mfeConfigUploadState: S.optional(
-      CancelDeploymentResponseMicrofrontendsCase1MfeConfigUploadState,
-    ),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseMicrofrontendsCase1",
-}) as any as S.Schema<CancelDeploymentResponseMicrofrontendsCase1>;
-
 export type CancelDeploymentResponseMicrofrontends =
   | CancelDeploymentResponseMicrofrontendsCase0
   | CancelDeploymentResponseMicrofrontendsCase1;
-export const CancelDeploymentResponseMicrofrontends =
+const CancelDeploymentResponseMicrofrontends =
   S.Unknown as any as S.Schema<CancelDeploymentResponseMicrofrontends>;
 
 /** If set it overrides the `projectSettings.nodeVersion` for this deployment. */
@@ -1998,10 +1329,10 @@ export type CancelDeploymentResponseNodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-export const CancelDeploymentResponseNodeVersion = S.String;
+const CancelDeploymentResponseNodeVersion = S.String;
 
 export type CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList = Array<string>;
-export const CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList =
+const CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseOidcTokenClaimsMfeGroupIdsList>;
 
 export interface CancelDeploymentResponseOidcTokenClaims {
@@ -2019,7 +1350,7 @@ export interface CancelDeploymentResponseOidcTokenClaims {
   scope: string;
   sub: string;
 }
-export const CancelDeploymentResponseOidcTokenClaims = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseOidcTokenClaims = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aud: S.String,
     custom_environment_id: S.optional(S.String),
@@ -2040,15 +1371,15 @@ export const CancelDeploymentResponseOidcTokenClaims = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CancelDeploymentResponseOidcTokenClaims>;
 
 export type CancelDeploymentResponseOomReport = "out-of-memory";
-export const CancelDeploymentResponseOomReport = S.String;
+const CancelDeploymentResponseOomReport = S.String;
 
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type CancelDeploymentResponsePassiveRegionsList = Array<string>;
-export const CancelDeploymentResponsePassiveRegionsList =
+const CancelDeploymentResponsePassiveRegionsList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponsePassiveRegionsList>;
 
 export type CancelDeploymentResponsePlan = "enterprise" | "hobby" | "pro";
-export const CancelDeploymentResponsePlan = S.String;
+const CancelDeploymentResponsePlan = S.String;
 
 /** The user on the external platform who triggered the deployment. */
 export interface CancelDeploymentResponsePlatformCreator {
@@ -2057,7 +1388,7 @@ export interface CancelDeploymentResponsePlatformCreator {
   /** Display name of the platform user. */
   name: string;
 }
-export const CancelDeploymentResponsePlatformCreator = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponsePlatformCreator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar: S.optional(S.String),
     name: S.String,
@@ -2068,12 +1399,12 @@ export const CancelDeploymentResponsePlatformCreator = /*@__PURE__*/ S.suspend((
 
 /** Arbitrary key-value metadata provided by the platform. */
 export type CancelDeploymentResponsePlatformMetaMap = { [key: string]: string | undefined };
-export const CancelDeploymentResponsePlatformMetaMap =
+const CancelDeploymentResponsePlatformMetaMap =
   CancelDeploymentResponseMetaMap as any as S.Schema<CancelDeploymentResponsePlatformMetaMap>;
 
 /** Whether the value is an opaque identifier or a URL. */
 export type CancelDeploymentResponsePlatformOriginType = "id" | "url";
-export const CancelDeploymentResponsePlatformOriginType = S.String;
+const CancelDeploymentResponsePlatformOriginType = S.String;
 
 /** Reference back to the entity on the platform that initiated the deployment. */
 export interface CancelDeploymentResponsePlatformOrigin {
@@ -2082,7 +1413,7 @@ export interface CancelDeploymentResponsePlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-export const CancelDeploymentResponsePlatformOrigin = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponsePlatformOrigin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CancelDeploymentResponsePlatformOriginType,
     value: S.String,
@@ -2096,7 +1427,7 @@ export interface CancelDeploymentResponsePlatformSource {
   /** Display name of the platform. */
   name: string;
 }
-export const CancelDeploymentResponsePlatformSource = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponsePlatformSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -2115,7 +1446,7 @@ export interface CancelDeploymentResponsePlatform {
   /** The external platform that created the deployment (e.g. its display name). */
   source: CancelDeploymentResponsePlatformSource;
 }
-export const CancelDeploymentResponsePlatform = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponsePlatform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creator: CancelDeploymentResponsePlatformCreator,
     meta: S.optional(CancelDeploymentResponsePlatformMetaMap),
@@ -2132,7 +1463,7 @@ export interface CancelDeploymentResponseProject {
   id: string;
   name: string;
 }
-export const CancelDeploymentResponseProject = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     framework: S.optional(S.NullOr(S.String)),
     id: S.String,
@@ -2217,7 +1548,7 @@ export type CancelDeploymentResponseProjectSettingsFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-export const CancelDeploymentResponseProjectSettingsFramework = S.String;
+const CancelDeploymentResponseProjectSettingsFramework = S.String;
 
 export type CancelDeploymentResponseProjectSettingsNodeVersion =
   | "10.x"
@@ -2229,7 +1560,7 @@ export type CancelDeploymentResponseProjectSettingsNodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-export const CancelDeploymentResponseProjectSettingsNodeVersion = S.String;
+const CancelDeploymentResponseProjectSettingsNodeVersion = S.String;
 
 export interface CancelDeploymentResponseProjectSettingsSpeedInsights {
   canceledAt?: number;
@@ -2241,7 +1572,7 @@ export interface CancelDeploymentResponseProjectSettingsSpeedInsights {
   id: string;
   paidAt?: number;
 }
-export const CancelDeploymentResponseProjectSettingsSpeedInsights = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseProjectSettingsSpeedInsights = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canceledAt: S.optional(S.Number),
     dataReceivedAt: S.optional(S.Number),
@@ -2262,7 +1593,7 @@ export interface CancelDeploymentResponseProjectSettingsWebAnalytics {
   hasData?: boolean;
   id: string;
 }
-export const CancelDeploymentResponseProjectSettingsWebAnalytics = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseProjectSettingsWebAnalytics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canceledAt: S.optional(S.Number),
     disabledAt: S.optional(S.Number),
@@ -2285,7 +1616,7 @@ export interface CancelDeploymentResponseProjectSettings {
   speedInsights?: CancelDeploymentResponseProjectSettingsSpeedInsights;
   webAnalytics?: CancelDeploymentResponseProjectSettingsWebAnalytics;
 }
-export const CancelDeploymentResponseProjectSettings = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseProjectSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildCommand: S.optional(S.NullOr(S.String)),
     commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
@@ -2310,15 +1641,15 @@ export type CancelDeploymentResponseReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const CancelDeploymentResponseReadyState = S.String;
+const CancelDeploymentResponseReadyState = S.String;
 
 /** Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic */
 export type CancelDeploymentResponseReadySubstate = "PROMOTED" | "ROLLING" | "STAGED";
-export const CancelDeploymentResponseReadySubstate = S.String;
+const CancelDeploymentResponseReadySubstate = S.String;
 
 /** The regions the deployment exists in */
 export type CancelDeploymentResponseRegionsList = Array<string>;
-export const CancelDeploymentResponseRegionsList =
+const CancelDeploymentResponseRegionsList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRegionsList>;
 
 /** The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type. */
@@ -2327,13 +1658,13 @@ export type CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseTyp
   | "enhanced"
   | "none"
   | "standard";
-export const CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseType = S.String;
+const CancelDeploymentResponseResourceConfigBuildMachineDefaultPurchaseType = S.String;
 
 /** Whether the build ran on a fixed or elastic machine. Used to drive billing for the build. */
 export type CancelDeploymentResponseResourceConfigBuildMachineMachineSelectionType =
   | "elastic"
   | "fixed";
-export const CancelDeploymentResponseResourceConfigBuildMachineMachineSelectionType = S.String;
+const CancelDeploymentResponseResourceConfigBuildMachineMachineSelectionType = S.String;
 
 /** Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project. */
 export type CancelDeploymentResponseResourceConfigBuildMachinePurchaseType =
@@ -2341,7 +1672,7 @@ export type CancelDeploymentResponseResourceConfigBuildMachinePurchaseType =
   | "enhanced"
   | "standard"
   | "turbo";
-export const CancelDeploymentResponseResourceConfigBuildMachinePurchaseType = S.String;
+const CancelDeploymentResponseResourceConfigBuildMachinePurchaseType = S.String;
 
 /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
 export type CancelDeploymentResponseResourceConfigBuildMachineSelectionSource =
@@ -2351,7 +1682,7 @@ export type CancelDeploymentResponseResourceConfigBuildMachineSelectionSource =
   | "project-setting"
   | "team-entitlement"
   | "team-setting";
-export const CancelDeploymentResponseResourceConfigBuildMachineSelectionSource = S.String;
+const CancelDeploymentResponseResourceConfigBuildMachineSelectionSource = S.String;
 
 /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
 export interface CancelDeploymentResponseResourceConfigBuildMachine {
@@ -2368,7 +1699,7 @@ export interface CancelDeploymentResponseResourceConfigBuildMachine {
   /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
   selectionSource?: CancelDeploymentResponseResourceConfigBuildMachineSelectionSource;
 }
-export const CancelDeploymentResponseResourceConfigBuildMachine = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseResourceConfigBuildMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cores: S.optional(S.Number),
     defaultPurchaseType: S.optional(
@@ -2389,7 +1720,7 @@ export interface CancelDeploymentResponseResourceConfig {
   /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
   buildMachine?: CancelDeploymentResponseResourceConfigBuildMachine;
 }
-export const CancelDeploymentResponseResourceConfig = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseResourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildMachine: S.optional(CancelDeploymentResponseResourceConfigBuildMachine),
   }),
@@ -2399,8 +1730,6 @@ export const CancelDeploymentResponseResourceConfig = /*@__PURE__*/ S.suspend(()
 
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type CancelDeploymentResponseRoutesItemCase0DestinationCase1Type = "service";
-export const CancelDeploymentResponseRoutesItemCase0DestinationCase1Type = S.String;
-
 export interface CancelDeploymentResponseRoutesItemCase0DestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -2408,41 +1737,14 @@ export interface CancelDeploymentResponseRoutesItemCase0DestinationCase1 {
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: CancelDeploymentResponseRoutesItemCase0DestinationCase1Type;
 }
-export const CancelDeploymentResponseRoutesItemCase0DestinationCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    service: S.String,
-    type: S.optional(CancelDeploymentResponseRoutesItemCase0DestinationCase1Type),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0DestinationCase1",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0DestinationCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0Destination =
   | string
   | CancelDeploymentResponseRoutesItemCase0DestinationCase1;
-export const CancelDeploymentResponseRoutesItemCase0Destination =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0Destination>;
-
 export type CancelDeploymentResponseRoutesItemCase0EnvList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0EnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0EnvList>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase0Type = "host";
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase0Type = S.String;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1Eq = string | number;
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1IncList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1NincList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1Eq;
   gt?: number;
@@ -2456,59 +1758,17 @@ export interface CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1 {
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1IncList),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1NincList),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase0Value =
   | string
   | CancelDeploymentResponseRoutesItemCase0HasItemCase0ValueCase1;
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0Value>;
-
 export interface CancelDeploymentResponseRoutesItemCase0HasItemCase0 {
   type: CancelDeploymentResponseRoutesItemCase0HasItemCase0Type;
   value: CancelDeploymentResponseRoutesItemCase0HasItemCase0Value;
 }
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CancelDeploymentResponseRoutesItemCase0HasItemCase0Type,
-    value: CancelDeploymentResponseRoutesItemCase0HasItemCase0Value,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0HasItemCase0",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase0>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase1Type = "cookie" | "header" | "query";
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase1Type = S.String;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1Eq = string | number;
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1IncList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1NincList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1Eq;
   gt?: number;
@@ -2522,109 +1782,38 @@ export interface CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1 {
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1IncList),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1NincList),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItemCase1Value =
   | string
   | CancelDeploymentResponseRoutesItemCase0HasItemCase1ValueCase1;
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1Value>;
-
 export interface CancelDeploymentResponseRoutesItemCase0HasItemCase1 {
   key: string;
   type: CancelDeploymentResponseRoutesItemCase0HasItemCase1Type;
   value?: CancelDeploymentResponseRoutesItemCase0HasItemCase1Value;
 }
-export const CancelDeploymentResponseRoutesItemCase0HasItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    type: CancelDeploymentResponseRoutesItemCase0HasItemCase1Type,
-    value: S.optional(CancelDeploymentResponseRoutesItemCase0HasItemCase1Value),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0HasItemCase1",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItemCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasItem =
   | CancelDeploymentResponseRoutesItemCase0HasItemCase0
   | CancelDeploymentResponseRoutesItemCase0HasItemCase1;
-export const CancelDeploymentResponseRoutesItemCase0HasItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasItem>;
-
 export type CancelDeploymentResponseRoutesItemCase0HasList =
   Array<CancelDeploymentResponseRoutesItemCase0HasItem>;
-export const CancelDeploymentResponseRoutesItemCase0HasList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseRoutesItemCase0HasItem,
-) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HasList>;
-
 export type CancelDeploymentResponseRoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CancelDeploymentResponseRoutesItemCase0HeadersMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<CancelDeploymentResponseRoutesItemCase0HeadersMap>;
-
 export type CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap>;
-
 export interface CancelDeploymentResponseRoutesItemCase0Locale {
   cookie?: string;
   redirect?: CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap;
 }
-export const CancelDeploymentResponseRoutesItemCase0Locale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie: S.optional(S.String),
-    redirect: S.optional(CancelDeploymentResponseRoutesItemCase0LocaleRedirectMap),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0Locale",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0Locale>;
-
 export type CancelDeploymentResponseRoutesItemCase0MethodsList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0MethodsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MethodsList>;
-
 /** The original middleware matchers. */
 export type CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase0Type = "host";
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0Type = S.String;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1Eq = string | number;
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -2638,64 +1827,22 @@ export interface CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCas
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1IncList),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1NincList),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase0Value =
   | string
   | CancelDeploymentResponseRoutesItemCase0MissingItemCase0ValueCase1;
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0Value>;
-
 export interface CancelDeploymentResponseRoutesItemCase0MissingItemCase0 {
   type: CancelDeploymentResponseRoutesItemCase0MissingItemCase0Type;
   value: CancelDeploymentResponseRoutesItemCase0MissingItemCase0Value;
 }
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CancelDeploymentResponseRoutesItemCase0MissingItemCase0Type,
-    value: CancelDeploymentResponseRoutesItemCase0MissingItemCase0Value,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0MissingItemCase0",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase0>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1Type = S.String;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1Eq = string | number;
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -2709,108 +1856,39 @@ export interface CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCas
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1IncList),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1NincList),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItemCase1Value =
   | string
   | CancelDeploymentResponseRoutesItemCase0MissingItemCase1ValueCase1;
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1Value>;
-
 export interface CancelDeploymentResponseRoutesItemCase0MissingItemCase1 {
   key: string;
   type: CancelDeploymentResponseRoutesItemCase0MissingItemCase1Type;
   value?: CancelDeploymentResponseRoutesItemCase0MissingItemCase1Value;
 }
-export const CancelDeploymentResponseRoutesItemCase0MissingItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    type: CancelDeploymentResponseRoutesItemCase0MissingItemCase1Type,
-    value: S.optional(CancelDeploymentResponseRoutesItemCase0MissingItemCase1Value),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0MissingItemCase1",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItemCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingItem =
   | CancelDeploymentResponseRoutesItemCase0MissingItemCase0
   | CancelDeploymentResponseRoutesItemCase0MissingItemCase1;
-export const CancelDeploymentResponseRoutesItemCase0MissingItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingItem>;
-
 export type CancelDeploymentResponseRoutesItemCase0MissingList =
   Array<CancelDeploymentResponseRoutesItemCase0MissingItem>;
-export const CancelDeploymentResponseRoutesItemCase0MissingList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseRoutesItemCase0MissingItem,
-) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0MissingList>;
-
 export type CancelDeploymentResponseRoutesItemCase0MitigateAction = "challenge" | "deny";
-export const CancelDeploymentResponseRoutesItemCase0MitigateAction = S.String;
-
 export interface CancelDeploymentResponseRoutesItemCase0Mitigate {
   action: CancelDeploymentResponseRoutesItemCase0MitigateAction;
 }
-export const CancelDeploymentResponseRoutesItemCase0Mitigate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: CancelDeploymentResponseRoutesItemCase0MitigateAction,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0Mitigate",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0Mitigate>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0ArgsCase1List = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0ArgsCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0ArgsCase1List>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Args =
   | string
   | CancelDeploymentResponseRoutesItemCase0TransformsItemCase0ArgsCase1List;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Args =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Args>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Op =
   | "append"
   | "delete"
   | "set";
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Op = S.String;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1Eq>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
-
 export interface CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
   gt?: number;
@@ -2823,52 +1901,16 @@ export interface CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Targe
   pre?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1",
-  }) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKey =
   | string
   | CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKeyCase1;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKey =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKey>;
-
 export interface CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Target {
   key: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKey;
 }
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Target =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0TargetKey,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Target",
-  }) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Target>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Type =
   | "request.headers"
   | "request.query"
   | "response.headers";
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Type = S.String;
-
 export interface CancelDeploymentResponseRoutesItemCase0TransformsItemCase0 {
   args?: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Args;
   env?: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList;
@@ -2876,59 +1918,20 @@ export interface CancelDeploymentResponseRoutesItemCase0TransformsItemCase0 {
   target: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Target;
   type: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Type;
 }
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      args: S.optional(CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Args),
-      env: S.optional(CancelDeploymentResponseRoutesItemCase0TransformsItemCase0EnvList),
-      op: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Op,
-      target: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Target,
-      type: CancelDeploymentResponseRoutesItemCase0TransformsItemCase0Type,
-    }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0TransformsItemCase0",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase0>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList = Array<string>;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Op = "set";
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Op = S.String;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Type = "request.path";
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Type = S.String;
-
 export interface CancelDeploymentResponseRoutesItemCase0TransformsItemCase1 {
   args: string;
   env?: CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList;
   op: CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Op;
   type: CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Type;
 }
-export const CancelDeploymentResponseRoutesItemCase0TransformsItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(CancelDeploymentResponseRoutesItemCase0TransformsItemCase1EnvList),
-      op: CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Op,
-      type: CancelDeploymentResponseRoutesItemCase0TransformsItemCase1Type,
-    }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0TransformsItemCase1",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItemCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsItem =
   | CancelDeploymentResponseRoutesItemCase0TransformsItemCase0
   | CancelDeploymentResponseRoutesItemCase0TransformsItemCase1;
-export const CancelDeploymentResponseRoutesItemCase0TransformsItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsItem>;
-
 export type CancelDeploymentResponseRoutesItemCase0TransformsList =
   Array<CancelDeploymentResponseRoutesItemCase0TransformsItem>;
-export const CancelDeploymentResponseRoutesItemCase0TransformsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseRoutesItemCase0TransformsItem,
-) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0TransformsList>;
-
 export interface CancelDeploymentResponseRoutesItemCase0 {
   caseSensitive?: boolean;
   check?: boolean;
@@ -2958,36 +1961,6 @@ export interface CancelDeploymentResponseRoutesItemCase0 {
   statusCode?: number;
   transforms?: CancelDeploymentResponseRoutesItemCase0TransformsList;
 }
-export const CancelDeploymentResponseRoutesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseSensitive: S.optional(S.Boolean),
-    check: S.optional(S.Boolean),
-    continue: S.optional(S.Boolean),
-    dest: S.optional(S.String),
-    destination: S.optional(CancelDeploymentResponseRoutesItemCase0Destination),
-    env: S.optional(CancelDeploymentResponseRoutesItemCase0EnvList),
-    has: S.optional(CancelDeploymentResponseRoutesItemCase0HasList),
-    headers: S.optional(CancelDeploymentResponseRoutesItemCase0HeadersMap),
-    important: S.optional(S.Boolean),
-    locale: S.optional(CancelDeploymentResponseRoutesItemCase0Locale),
-    methods: S.optional(CancelDeploymentResponseRoutesItemCase0MethodsList),
-    middleware: S.optional(S.Number),
-    middlewarePath: S.optional(S.String),
-    middlewareRawSrc: S.optional(CancelDeploymentResponseRoutesItemCase0MiddlewareRawSrcList),
-    missing: S.optional(CancelDeploymentResponseRoutesItemCase0MissingList),
-    mitigate: S.optional(CancelDeploymentResponseRoutesItemCase0Mitigate),
-    override: S.optional(S.Boolean),
-    respectOriginCacheControl: S.optional(S.Boolean),
-    source: S.optional(S.String),
-    src: S.String,
-    status: S.optional(S.Number),
-    statusCode: S.optional(S.Number),
-    transforms: S.optional(CancelDeploymentResponseRoutesItemCase0TransformsList),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase0",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase0>;
-
 export type CancelDeploymentResponseRoutesItemCase1Handle =
   | "error"
   | "filesystem"
@@ -2995,52 +1968,27 @@ export type CancelDeploymentResponseRoutesItemCase1Handle =
   | "miss"
   | "resource"
   | "rewrite";
-export const CancelDeploymentResponseRoutesItemCase1Handle = S.String;
-
 export interface CancelDeploymentResponseRoutesItemCase1 {
   dest?: string;
   handle: CancelDeploymentResponseRoutesItemCase1Handle;
   src?: string;
   status?: number;
 }
-export const CancelDeploymentResponseRoutesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dest: S.optional(S.String),
-    handle: CancelDeploymentResponseRoutesItemCase1Handle,
-    src: S.optional(S.String),
-    status: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase1",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase1>;
-
 export type CancelDeploymentResponseRoutesItemCase2Middleware = 0;
-export const CancelDeploymentResponseRoutesItemCase2Middleware = S.Number;
-
 export interface CancelDeploymentResponseRoutesItemCase2 {
   continue: boolean;
   middleware: CancelDeploymentResponseRoutesItemCase2Middleware;
   src: string;
 }
-export const CancelDeploymentResponseRoutesItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    continue: S.Boolean,
-    middleware: CancelDeploymentResponseRoutesItemCase2Middleware,
-    src: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseRoutesItemCase2",
-}) as any as S.Schema<CancelDeploymentResponseRoutesItemCase2>;
-
 export type CancelDeploymentResponseRoutesItem =
   | CancelDeploymentResponseRoutesItemCase0
   | CancelDeploymentResponseRoutesItemCase1
   | CancelDeploymentResponseRoutesItemCase2;
-export const CancelDeploymentResponseRoutesItem =
+const CancelDeploymentResponseRoutesItem =
   S.Unknown as any as S.Schema<CancelDeploymentResponseRoutesItem>;
 
 export type CancelDeploymentResponseRoutesList = Array<CancelDeploymentResponseRoutesItem>;
-export const CancelDeploymentResponseRoutesList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseRoutesList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseRoutesItem,
 ) as any as S.Schema<CancelDeploymentResponseRoutesList>;
 
@@ -3048,14 +1996,14 @@ export const CancelDeploymentResponseRoutesList = /*@__PURE__*/ S.Array(
 export type CancelDeploymentResponseSeatBlockBlockCode =
   | "COMMIT_AUTHOR_REQUIRED"
   | "TEAM_ACCESS_REQUIRED";
-export const CancelDeploymentResponseSeatBlockBlockCode = S.String;
+const CancelDeploymentResponseSeatBlockBlockCode = S.String;
 
 /** The git provider type associated with gitUserId. */
 export type CancelDeploymentResponseSeatBlockGitProvider = "bitbucket" | "github" | "gitlab";
-export const CancelDeploymentResponseSeatBlockGitProvider = S.String;
+const CancelDeploymentResponseSeatBlockGitProvider = S.String;
 
 export type CancelDeploymentResponseSeatBlockGitUserId = string | number;
-export const CancelDeploymentResponseSeatBlockGitUserId =
+const CancelDeploymentResponseSeatBlockGitUserId =
   S.Unknown as any as S.Schema<CancelDeploymentResponseSeatBlockGitUserId>;
 
 /** NSNB Blocked metadata */
@@ -3070,7 +2018,7 @@ export interface CancelDeploymentResponseSeatBlock {
   /** The blocked vercel user ID. */
   userId?: string;
 }
-export const CancelDeploymentResponseSeatBlock = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseSeatBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockCode: CancelDeploymentResponseSeatBlockBlockCode,
     gitProvider: S.optional(CancelDeploymentResponseSeatBlockGitProvider),
@@ -3084,44 +2032,20 @@ export const CancelDeploymentResponseSeatBlock = /*@__PURE__*/ S.suspend(() =>
 
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFiles =
   | string
   | CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFilesCase1List;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFiles =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFiles>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinityMode =
   "strict";
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinityMode =
-  S.String;
-
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity {
   mode: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinityMode;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueArchitecture =
-  S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -3139,28 +2063,9 @@ export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctions
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      consumer: S.String,
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -3176,76 +2081,28 @@ export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctions
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      maxConcurrency: S.optional(S.Number),
-      maxDeliveries: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-      type: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem =
   | CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0
   | CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1
   | CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList =
   Array<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem>;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
-  S.String;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueMaxDuration =
   | number
   | CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueMaxDuration>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueRegionsList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
-
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValue {
   affinity?: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity;
   architecture?: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueArchitecture;
@@ -3260,83 +2117,25 @@ export interface CancelDeploymentResponseServicesItemCase0BuilderConfigFunctions
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      affinity: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity,
-      ),
-      architecture: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueArchitecture,
-      ),
-      excludeFiles: S.optional(S.String),
-      experimentalTriggers: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList,
-      ),
-      functionFailoverRegions: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList,
-      ),
-      includeFiles: S.optional(S.String),
-      maxConcurrency: S.optional(S.Number),
-      maxDuration: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueMaxDuration,
-      ),
-      memory: S.optional(S.Number),
-      regions: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueRegionsList,
-      ),
-      runtime: S.optional(S.String),
-      supportsCancellation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValue",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValue>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsMap = {
   [key: string]: CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValue | undefined;
 };
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValue,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsMap>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap = {
   [key: string]: string | undefined;
 };
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFilesCase1List =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFilesCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFiles =
   | string
   | CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFilesCase1List;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFiles =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFiles>;
-
 /** Matcher supplied outside of the middleware source module. */
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcher =
   | string
   | CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcherCase1List;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcher =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcher>;
-
 /** Enforced runtime for explicitly configured Routing Middleware. */
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareRuntime = "nodejs";
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareRuntime = S.String;
-
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings {
   autoExposeSystemEnvs?: boolean;
   buildCommand?: string | null;
@@ -3353,34 +2152,9 @@ export interface CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSe
   rootDirectory?: string | null;
   sourceFilesOutsideRootDirectory?: boolean;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      autoExposeSystemEnvs: S.optional(S.Boolean),
-      buildCommand: S.optional(S.NullOr(S.String)),
-      commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
-      createdAt: S.optional(S.Number),
-      devCommand: S.optional(S.NullOr(S.String)),
-      directoryListing: S.optional(S.Boolean),
-      framework: S.optional(S.NullOr(S.String)),
-      gitForkProtection: S.optional(S.Boolean),
-      installCommand: S.optional(S.NullOr(S.String)),
-      monorepoManager: S.optional(S.NullOr(S.String)),
-      nodeVersion: S.optional(S.String),
-      outputDirectory: S.optional(S.NullOr(S.String)),
-      rootDirectory: S.optional(S.NullOr(S.String)),
-      sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings>;
-
 /** Names of the schedules that dispatch to this entrypoint, in config order. */
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
-
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
   entrypoint: string;
@@ -3389,43 +2163,14 @@ export interface CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleF
   /** Project-relative source file that contains the entrypoint. */
   sourceFile: string;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.String,
-      scheduleNames:
-        CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList,
-      sourceFile: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
-
 export type CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
   Array<CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList>;
-
 /** Set when this build produces a function for schedule entrypoints. */
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction {
   entrypoints: CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList;
   /** Function output path every schedule in this build targets. */
   outputPath: string;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoints:
-        CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList,
-      outputPath: S.String,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction>;
-
 export interface CancelDeploymentResponseServicesItemCase0BuilderConfig {
   buildCommand?: string;
   /** Buildpack runtime slug (e.g. "ruby"). */
@@ -3457,139 +2202,38 @@ export interface CancelDeploymentResponseServicesItemCase0BuilderConfig {
   serviceName?: string;
   zeroConfig?: boolean;
 }
-export const CancelDeploymentResponseServicesItemCase0BuilderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.String),
-    buildpack: S.optional(S.String),
-    bundle: S.optional(S.Boolean),
-    bunVersion: S.optional(S.String),
-    debug: S.optional(S.Boolean),
-    devCommand: S.optional(S.String),
-    excludeFiles: S.optional(CancelDeploymentResponseServicesItemCase0BuilderConfigExcludeFiles),
-    framework: S.optional(S.NullOr(S.String)),
-    functions: S.optional(CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsMap),
-    helpers: S.optional(S.Boolean),
-    import: S.optional(CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap),
-    includeFiles: S.optional(CancelDeploymentResponseServicesItemCase0BuilderConfigIncludeFiles),
-    installCommand: S.optional(S.String),
-    ldsflags: S.optional(S.String),
-    maxLambdaSize: S.optional(S.String),
-    middleware: S.optional(S.Boolean),
-    middlewareMatcher: S.optional(
-      CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareMatcher,
-    ),
-    middlewareRuntime: S.optional(
-      CancelDeploymentResponseServicesItemCase0BuilderConfigMiddlewareRuntime,
-    ),
-    nodeVersion: S.optional(S.String),
-    outputDirectory: S.optional(S.String),
-    projectSettings: S.optional(
-      CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings,
-    ),
-    rust: S.optional(S.String),
-    scheduleFunction: S.optional(
-      CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction,
-    ),
-    serviceName: S.optional(S.String),
-    zeroConfig: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase0BuilderConfig",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase0BuilderConfig>;
-
 export interface CancelDeploymentResponseServicesItemCase0Builder {
   config?: CancelDeploymentResponseServicesItemCase0BuilderConfig;
   src?: string;
   use: string;
 }
-export const CancelDeploymentResponseServicesItemCase0Builder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(CancelDeploymentResponseServicesItemCase0BuilderConfig),
-    src: S.optional(S.String),
-    use: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase0Builder",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase0Builder>;
-
 export type CancelDeploymentResponseServicesItemCase0EnvValueType = "service-ref";
-export const CancelDeploymentResponseServicesItemCase0EnvValueType = S.String;
-
 export interface CancelDeploymentResponseServicesItemCase0EnvValue {
   service: string;
   type: CancelDeploymentResponseServicesItemCase0EnvValueType;
 }
-export const CancelDeploymentResponseServicesItemCase0EnvValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.String,
-    type: CancelDeploymentResponseServicesItemCase0EnvValueType,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase0EnvValue",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase0EnvValue>;
-
 export type CancelDeploymentResponseServicesItemCase0EnvMap = {
   [key: string]: CancelDeploymentResponseServicesItemCase0EnvValue | undefined;
 };
-export const CancelDeploymentResponseServicesItemCase0EnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CancelDeploymentResponseServicesItemCase0EnvValue,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase0EnvMap>;
-
 export type CancelDeploymentResponseServicesItemCase0RoutePrefixSource = "configured" | "generated";
-export const CancelDeploymentResponseServicesItemCase0RoutePrefixSource = S.String;
-
 export type CancelDeploymentResponseServicesItemCase0ScheduleCase1List = Array<string>;
-export const CancelDeploymentResponseServicesItemCase0ScheduleCase1List =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase0ScheduleCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase0Schedule =
   | string
   | CancelDeploymentResponseServicesItemCase0ScheduleCase1List;
-export const CancelDeploymentResponseServicesItemCase0Schedule =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase0Schedule>;
-
 export type CancelDeploymentResponseServicesItemCase0Schema = "experimentalServices";
-export const CancelDeploymentResponseServicesItemCase0Schema = S.String;
-
 export type CancelDeploymentResponseServicesItemCase0TopicsCase0List = Array<string>;
-export const CancelDeploymentResponseServicesItemCase0TopicsCase0List =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase0TopicsCase0List>;
-
 export interface CancelDeploymentResponseServicesItemCase0TopicsCase1Item {
   initialDelaySeconds?: number;
   retryAfterSeconds?: number;
   topic: string;
 }
-export const CancelDeploymentResponseServicesItemCase0TopicsCase1Item = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      initialDelaySeconds: S.optional(S.Number),
-      retryAfterSeconds: S.optional(S.Number),
-      topic: S.String,
-    }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase0TopicsCase1Item",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase0TopicsCase1Item>;
-
 export type CancelDeploymentResponseServicesItemCase0TopicsCase1List =
   Array<CancelDeploymentResponseServicesItemCase0TopicsCase1Item>;
-export const CancelDeploymentResponseServicesItemCase0TopicsCase1List = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase0TopicsCase1Item,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase0TopicsCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase0Topics =
   | CancelDeploymentResponseServicesItemCase0TopicsCase0List
   | CancelDeploymentResponseServicesItemCase0TopicsCase1List;
-export const CancelDeploymentResponseServicesItemCase0Topics =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase0Topics>;
-
 export type CancelDeploymentResponseServicesItemCase0Trigger = "queue" | "schedule" | "workflow";
-export const CancelDeploymentResponseServicesItemCase0Trigger = S.String;
-
 export type CancelDeploymentResponseServicesItemCase0Type = "cron" | "job" | "web" | "worker";
-export const CancelDeploymentResponseServicesItemCase0Type = S.String;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export interface CancelDeploymentResponseServicesItemCase0 {
   buildCommand?: string;
@@ -3613,41 +2257,10 @@ export interface CancelDeploymentResponseServicesItemCase0 {
   type: CancelDeploymentResponseServicesItemCase0Type;
   workspace: string;
 }
-export const CancelDeploymentResponseServicesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.String),
-    builder: CancelDeploymentResponseServicesItemCase0Builder,
-    entrypoint: S.optional(S.String),
-    env: S.optional(CancelDeploymentResponseServicesItemCase0EnvMap),
-    framework: S.optional(S.String),
-    group: S.optional(S.String),
-    handlerFunction: S.optional(S.String),
-    installCommand: S.optional(S.String),
-    name: S.String,
-    preDeployCommand: S.optional(S.String),
-    routePrefix: S.optional(S.String),
-    routePrefixSource: S.optional(CancelDeploymentResponseServicesItemCase0RoutePrefixSource),
-    runtime: S.optional(S.String),
-    schedule: S.optional(CancelDeploymentResponseServicesItemCase0Schedule),
-    schema: CancelDeploymentResponseServicesItemCase0Schema,
-    subdomain: S.optional(S.String),
-    topics: S.optional(CancelDeploymentResponseServicesItemCase0Topics),
-    trigger: S.optional(CancelDeploymentResponseServicesItemCase0Trigger),
-    type: CancelDeploymentResponseServicesItemCase0Type,
-    workspace: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase0",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase0>;
-
 /** Generated value shape, must be `"url"`. */
 export type CancelDeploymentResponseServicesItemCase1BindingsItemFormat = "url";
-export const CancelDeploymentResponseServicesItemCase1BindingsItemFormat = S.String;
-
 /** If present, must be `"service"` for Service-to-Service HTTP bindings. */
 export type CancelDeploymentResponseServicesItemCase1BindingsItemType = "service";
-export const CancelDeploymentResponseServicesItemCase1BindingsItemType = S.String;
-
 /** Caller-side bindings to other services. */
 export interface CancelDeploymentResponseServicesItemCase1BindingsItem {
   /** Environment variable name that will store the generated value */
@@ -3659,58 +2272,25 @@ export interface CancelDeploymentResponseServicesItemCase1BindingsItem {
   /** If present, must be `"service"` for Service-to-Service HTTP bindings. */
   type?: CancelDeploymentResponseServicesItemCase1BindingsItemType;
 }
-export const CancelDeploymentResponseServicesItemCase1BindingsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: S.String,
-    format: CancelDeploymentResponseServicesItemCase1BindingsItemFormat,
-    service: S.String,
-    type: S.optional(CancelDeploymentResponseServicesItemCase1BindingsItemType),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1BindingsItem",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BindingsItem>;
-
 /** Caller-side bindings to other services. */
 export type CancelDeploymentResponseServicesItemCase1BindingsList =
   Array<CancelDeploymentResponseServicesItemCase1BindingsItem>;
-export const CancelDeploymentResponseServicesItemCase1BindingsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase1BindingsItem,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BindingsList>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFilesCase1List =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFilesCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFiles =
   | string
   | CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFilesCase1List;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFiles =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFiles>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinityMode =
   "strict";
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinityMode =
-  S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity {
   mode: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinityMode;
 }
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueArchitecture =
-  S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -3728,15 +2308,9 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctions
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -3752,57 +2326,28 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctions
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
   | CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0
   | CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1
   | CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList =
   Array<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem>;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
-  S.String;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueMaxDuration =
   | number
   | CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueMaxDuration>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueRegionsList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
-
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValue {
   affinity?: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity;
   architecture?: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueArchitecture;
@@ -3817,91 +2362,30 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigFunctions
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      affinity: S.optional(
-        CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueAffinity,
-      ),
-      architecture: S.optional(
-        CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueArchitecture,
-      ),
-      excludeFiles: S.optional(S.String),
-      experimentalTriggers: S.optional(
-        CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList,
-      ),
-      functionFailoverRegions: S.optional(
-        CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList,
-      ),
-      includeFiles: S.optional(S.String),
-      maxConcurrency: S.optional(S.Number),
-      maxDuration: S.optional(
-        CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueMaxDuration,
-      ),
-      memory: S.optional(S.Number),
-      regions: S.optional(
-        CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValueRegionsList,
-      ),
-      runtime: S.optional(S.String),
-      supportsCancellation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValue",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValue>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsMap = {
   [key: string]: CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValue | undefined;
 };
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsValue,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsMap>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigImportMap = {
   [key: string]: string | undefined;
 };
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigImportMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigImportMap>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFilesCase1List =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFilesCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFiles =
   | string
   | CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFilesCase1List;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFiles =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFiles>;
-
 /** Matcher supplied outside of the middleware source module. */
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcher =
   | string
   | CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcherCase1List;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcher =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcher>;
-
 /** Enforced runtime for explicitly configured Routing Middleware. */
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareRuntime = "nodejs";
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareRuntime = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigProjectSettings =
   CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigProjectSettings =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-
 /** Names of the schedules that dispatch to this entrypoint, in config order. */
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
-
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
   entrypoint: string;
@@ -3910,23 +2394,14 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleF
   /** Project-relative source file that contains the entrypoint. */
   sourceFile: string;
 }
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
-
 export type CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
   Array<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
-
 /** Set when this build produces a function for schedule entrypoints. */
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction {
   entrypoints: CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList;
   /** Function output path every schedule in this build targets. */
   outputPath: string;
 }
-export const CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction>;
-
 export interface CancelDeploymentResponseServicesItemCase1BuilderConfig {
   buildCommand?: string;
   /** Buildpack runtime slug (e.g. "ruby"). */
@@ -3958,87 +2433,24 @@ export interface CancelDeploymentResponseServicesItemCase1BuilderConfig {
   serviceName?: string;
   zeroConfig?: boolean;
 }
-export const CancelDeploymentResponseServicesItemCase1BuilderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.String),
-    buildpack: S.optional(S.String),
-    bundle: S.optional(S.Boolean),
-    bunVersion: S.optional(S.String),
-    debug: S.optional(S.Boolean),
-    devCommand: S.optional(S.String),
-    excludeFiles: S.optional(CancelDeploymentResponseServicesItemCase1BuilderConfigExcludeFiles),
-    framework: S.optional(S.NullOr(S.String)),
-    functions: S.optional(CancelDeploymentResponseServicesItemCase1BuilderConfigFunctionsMap),
-    helpers: S.optional(S.Boolean),
-    import: S.optional(CancelDeploymentResponseServicesItemCase1BuilderConfigImportMap),
-    includeFiles: S.optional(CancelDeploymentResponseServicesItemCase1BuilderConfigIncludeFiles),
-    installCommand: S.optional(S.String),
-    ldsflags: S.optional(S.String),
-    maxLambdaSize: S.optional(S.String),
-    middleware: S.optional(S.Boolean),
-    middlewareMatcher: S.optional(
-      CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareMatcher,
-    ),
-    middlewareRuntime: S.optional(
-      CancelDeploymentResponseServicesItemCase1BuilderConfigMiddlewareRuntime,
-    ),
-    nodeVersion: S.optional(S.String),
-    outputDirectory: S.optional(S.String),
-    projectSettings: S.optional(
-      CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings,
-    ),
-    rust: S.optional(S.String),
-    scheduleFunction: S.optional(
-      CancelDeploymentResponseServicesItemCase1BuilderConfigScheduleFunction,
-    ),
-    serviceName: S.optional(S.String),
-    zeroConfig: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1BuilderConfig",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1BuilderConfig>;
-
 /** Builder selected by the resolver. */
 export interface CancelDeploymentResponseServicesItemCase1Builder {
   config?: CancelDeploymentResponseServicesItemCase1BuilderConfig;
   src?: string;
   use: string;
 }
-export const CancelDeploymentResponseServicesItemCase1Builder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(CancelDeploymentResponseServicesItemCase1BuilderConfig),
-    src: S.optional(S.String),
-    use: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1Builder",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1Builder>;
-
 /** Command override for `runtime: "container"` services. */
 export type CancelDeploymentResponseServicesItemCase1CommandList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1CommandList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase1CommandList>;
-
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueAffinityMode = "strict";
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueAffinityMode = S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity {
   mode: CancelDeploymentResponseServicesItemCase1FunctionsValueAffinityMode;
 }
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity>;
-
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueArchitecture = S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -4056,15 +2468,9 @@ export interface CancelDeploymentResponseServicesItemCase1FunctionsValueExperime
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -4080,54 +2486,26 @@ export interface CancelDeploymentResponseServicesItemCase1FunctionsValueExperime
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
-
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItem =
   | CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase0
   | CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase1
   | CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItemCase2;
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItem>;
-
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersList =
   Array<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItem>;
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersList>;
-
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
-
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDurationCase1 = "max";
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDurationCase1 = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDuration =
   | number
   | CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDurationCase1;
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDuration>;
-
 export type CancelDeploymentResponseServicesItemCase1FunctionsValueRegionsList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1FunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValueRegionsList>;
-
 /** Function configuration scoped to this service. */
 export interface CancelDeploymentResponseServicesItemCase1FunctionsValue {
   affinity?: CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity;
@@ -4143,57 +2521,18 @@ export interface CancelDeploymentResponseServicesItemCase1FunctionsValue {
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const CancelDeploymentResponseServicesItemCase1FunctionsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    affinity: S.optional(CancelDeploymentResponseServicesItemCase1FunctionsValueAffinity),
-    architecture: S.optional(CancelDeploymentResponseServicesItemCase1FunctionsValueArchitecture),
-    excludeFiles: S.optional(S.String),
-    experimentalTriggers: S.optional(
-      CancelDeploymentResponseServicesItemCase1FunctionsValueExperimentalTriggersList,
-    ),
-    functionFailoverRegions: S.optional(
-      CancelDeploymentResponseServicesItemCase1FunctionsValueFunctionFailoverRegionsList,
-    ),
-    includeFiles: S.optional(S.String),
-    maxConcurrency: S.optional(S.Number),
-    maxDuration: S.optional(CancelDeploymentResponseServicesItemCase1FunctionsValueMaxDuration),
-    memory: S.optional(S.Number),
-    regions: S.optional(CancelDeploymentResponseServicesItemCase1FunctionsValueRegionsList),
-    runtime: S.optional(S.String),
-    supportsCancellation: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1FunctionsValue",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsValue>;
-
 /** Function configuration scoped to this service. */
 export type CancelDeploymentResponseServicesItemCase1FunctionsMap = {
   [key: string]: CancelDeploymentResponseServicesItemCase1FunctionsValue | undefined;
 };
-export const CancelDeploymentResponseServicesItemCase1FunctionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CancelDeploymentResponseServicesItemCase1FunctionsValue,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1FunctionsMap>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Type = "host";
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -4207,71 +2546,24 @@ export interface CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Value =
   | string
   | CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0 {
   type: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Type;
   value: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Value;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Type,
-      value: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -4285,103 +2577,33 @@ export interface CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Value =
   | string
   | CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1 {
   key: string;
   type: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Type;
   value?: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Value;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Type,
-      value: S.optional(CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1Value),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasItem =
   | CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase0
   | CancelDeploymentResponseServicesItemCase1HeadersItemHasItemCase1;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasItem>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHasList =
   Array<CancelDeploymentResponseServicesItemCase1HeadersItemHasItem>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHasList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase1HeadersItemHasItem,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHasList>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem {
   key: string;
   value: string;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList =
   Array<CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Type = "host";
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -4395,73 +2617,24 @@ export interface CancelDeploymentResponseServicesItemCase1HeadersItemMissingItem
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Value =
   | string
   | CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0 {
   type: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Type;
   value: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Value;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Type,
-      value: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -4475,112 +2648,36 @@ export interface CancelDeploymentResponseServicesItemCase1HeadersItemMissingItem
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Value =
   | string
   | CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1 {
   key: string;
   type: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Type;
   value?: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Value;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Type,
-      value: S.optional(CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1Value),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingItem =
   | CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase0
   | CancelDeploymentResponseServicesItemCase1HeadersItemMissingItemCase1;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItem>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersItemMissingList =
   Array<CancelDeploymentResponseServicesItemCase1HeadersItemMissingItem>;
-export const CancelDeploymentResponseServicesItemCase1HeadersItemMissingList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1HeadersItemMissingItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItemMissingList>;
-
 export interface CancelDeploymentResponseServicesItemCase1HeadersItem {
   has?: CancelDeploymentResponseServicesItemCase1HeadersItemHasList;
   headers: CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList;
   missing?: CancelDeploymentResponseServicesItemCase1HeadersItemMissingList;
   source: string;
 }
-export const CancelDeploymentResponseServicesItemCase1HeadersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    has: S.optional(CancelDeploymentResponseServicesItemCase1HeadersItemHasList),
-    headers: CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList,
-    missing: S.optional(CancelDeploymentResponseServicesItemCase1HeadersItemMissingList),
-    source: S.String,
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1HeadersItem",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersItem>;
-
 export type CancelDeploymentResponseServicesItemCase1HeadersList =
   Array<CancelDeploymentResponseServicesItemCase1HeadersItem>;
-export const CancelDeploymentResponseServicesItemCase1HeadersList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase1HeadersItem,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1HeadersList>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Type = "host";
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -4594,73 +2691,24 @@ export interface CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCa
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0 {
   type: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Type;
   value: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Type,
-      value: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -4674,84 +2722,27 @@ export interface CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCa
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1 {
   key: string;
   type: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Type;
   value?: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Type,
-      value: S.optional(CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1Value),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasItem =
   | CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase0
   | CancelDeploymentResponseServicesItemCase1RedirectsItemHasItemCase1;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemHasList =
   Array<CancelDeploymentResponseServicesItemCase1RedirectsItemHasItem>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemHasList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase1RedirectsItemHasItem,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemHasList>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Type = "host";
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -4765,73 +2756,24 @@ export interface CancelDeploymentResponseServicesItemCase1RedirectsItemMissingIt
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0 {
   type: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Type;
   value: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Type,
-      value: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -4845,68 +2787,19 @@ export interface CancelDeploymentResponseServicesItemCase1RedirectsItemMissingIt
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1 {
   key: string;
   type: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Type;
   value?: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Type,
-      value: S.optional(
-        CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItem =
   | CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase0
   | CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItemCase1;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsItemMissingList =
   Array<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItem>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsItemMissingList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1RedirectsItemMissingItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItemMissingList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RedirectsItem {
   destination: string;
   env?: CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList;
@@ -4916,30 +2809,10 @@ export interface CancelDeploymentResponseServicesItemCase1RedirectsItem {
   source: string;
   statusCode?: number;
 }
-export const CancelDeploymentResponseServicesItemCase1RedirectsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: S.String,
-    env: S.optional(CancelDeploymentResponseServicesItemCase1RedirectsItemEnvList),
-    has: S.optional(CancelDeploymentResponseServicesItemCase1RedirectsItemHasList),
-    missing: S.optional(CancelDeploymentResponseServicesItemCase1RedirectsItemMissingList),
-    permanent: S.optional(S.Boolean),
-    source: S.String,
-    statusCode: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1RedirectsItem",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RedirectsList =
   Array<CancelDeploymentResponseServicesItemCase1RedirectsItem>;
-export const CancelDeploymentResponseServicesItemCase1RedirectsList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase1RedirectsItem,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RedirectsList>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1Type = "service";
-export const CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1Type = S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -4947,46 +2820,18 @@ export interface CancelDeploymentResponseServicesItemCase1RewritesItemDestinatio
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1Type;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1Type),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemDestination =
   | string
   | CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemDestination =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemDestination>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemEnvList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemEnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemEnvList>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Type = "host";
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -5000,71 +2845,24 @@ export interface CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCas
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0 {
   type: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Type;
   value: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Type,
-      value: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -5078,82 +2876,27 @@ export interface CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCas
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1 {
   key: string;
   type: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Type;
   value?: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Type,
-      value: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1Value),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasItem =
   | CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase0
   | CancelDeploymentResponseServicesItemCase1RewritesItemHasItemCase1;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemHasList =
   Array<CancelDeploymentResponseServicesItemCase1RewritesItemHasItem>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemHasList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase1RewritesItemHasItem,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemHasList>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Type = "host";
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -5167,73 +2910,24 @@ export interface CancelDeploymentResponseServicesItemCase1RewritesItemMissingIte
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0 {
   type: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Type;
   value: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Type,
-      value: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -5247,103 +2941,32 @@ export interface CancelDeploymentResponseServicesItemCase1RewritesItemMissingIte
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1 {
   key: string;
   type: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Type;
   value?: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Type,
-      value: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1Value),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingItem =
   | CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase0
   | CancelDeploymentResponseServicesItemCase1RewritesItemMissingItemCase1;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemMissingList =
   Array<CancelDeploymentResponseServicesItemCase1RewritesItemMissingItem>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemMissingList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1RewritesItemMissingItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemMissingList>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemOp = "set";
-export const CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemOp = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemType =
   "request.path";
-export const CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemType = S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItem {
   args: string;
   env?: CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList;
   op: CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemOp;
   type: CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemType;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemEnvList),
-      op: CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemOp,
-      type: CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItemType,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItem",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesItemTransformsList =
   Array<CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItem>;
-export const CancelDeploymentResponseServicesItemCase1RewritesItemTransformsList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1RewritesItemTransformsItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItemTransformsList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RewritesItem {
   destination: CancelDeploymentResponseServicesItemCase1RewritesItemDestination;
   env?: CancelDeploymentResponseServicesItemCase1RewritesItemEnvList;
@@ -5354,33 +2977,11 @@ export interface CancelDeploymentResponseServicesItemCase1RewritesItem {
   statusCode?: number;
   transforms?: CancelDeploymentResponseServicesItemCase1RewritesItemTransformsList;
 }
-export const CancelDeploymentResponseServicesItemCase1RewritesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destination: CancelDeploymentResponseServicesItemCase1RewritesItemDestination,
-    env: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemEnvList),
-    has: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemHasList),
-    missing: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemMissingList),
-    respectOriginCacheControl: S.optional(S.Boolean),
-    source: S.String,
-    statusCode: S.optional(S.Number),
-    transforms: S.optional(CancelDeploymentResponseServicesItemCase1RewritesItemTransformsList),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1RewritesItem",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RewritesList =
   Array<CancelDeploymentResponseServicesItemCase1RewritesItem>;
-export const CancelDeploymentResponseServicesItemCase1RewritesList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase1RewritesItem,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RewritesList>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1Type =
   "service";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1Type =
-  S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -5388,48 +2989,18 @@ export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0Destina
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1Type;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(S.String),
-      service: S.String,
-      type: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1Type,
-      ),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0Destination =
   | string
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0Destination =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0Destination>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0EnvList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0EnvList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Type = "host";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
   gt?: number;
@@ -5443,73 +3014,24 @@ export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItem
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0 {
   type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Type;
   value: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Type,
-      value: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Type = S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
   gt?: number;
@@ -5523,124 +3045,41 @@ export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItem
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1 {
   key: string;
   type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Type;
   value?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Type,
-      value: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1Value),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItem =
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase0
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItemCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasList =
   Array<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItem>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0HeadersMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0HeadersMap>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale {
   cookie?: string;
   redirect?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cookie: S.optional(S.String),
-      redirect: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0LocaleRedirectMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MethodsList = Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MethodsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MethodsList>;
-
 /** The original middleware matchers. */
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Type = "host";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Type =
-  S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -5654,75 +3093,24 @@ export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0Missing
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0 {
   type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Type;
   value: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Type,
-      value: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Type =
-  S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -5736,125 +3124,43 @@ export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0Missing
   re?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Value =
   | string
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Value =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Value>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1 {
   key: string;
   type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Type;
   value?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Value;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Type,
-      value: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItem =
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase0
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItemCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingList =
   Array<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItem>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0MitigateAction =
   | "challenge"
   | "deny";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0MitigateAction = S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate {
   action: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MitigateAction;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: CancelDeploymentResponseServicesItemCase1RoutesItemCase0MitigateAction,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
   | string
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Args>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
   | "delete"
   | "set";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
-  S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
   | string
   | number;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
   gt?: number;
@@ -5867,56 +3173,16 @@ export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0Transfo
   pre?: string;
   suf?: string;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey =
   | string
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Target {
   key: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Target =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Target",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Target>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Type =
   | "request.headers"
   | "request.query"
   | "response.headers";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Type =
-  S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0 {
   args?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Args;
   env?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList;
@@ -5924,70 +3190,22 @@ export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0Transfo
   target: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Target;
   type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Type;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Args,
-      ),
-      env: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList,
-      ),
-      op: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Op,
-      target: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Target,
-      type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
   Array<string>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Op = "set";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Op =
-  S.String;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Type =
   "request.path";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Type =
-  S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1 {
   args: string;
   env?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList;
   op: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Op;
   type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Type;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList,
-      ),
-      op: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Op,
-      type: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1",
-  }) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItem =
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase0
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItemCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsList =
   Array<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItem>;
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsItem,
-  ) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsList>;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0 {
   caseSensitive?: boolean;
   check?: boolean;
@@ -6017,41 +3235,6 @@ export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase0 {
   statusCode?: number;
   transforms?: CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsList;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      caseSensitive: S.optional(S.Boolean),
-      check: S.optional(S.Boolean),
-      continue: S.optional(S.Boolean),
-      dest: S.optional(S.String),
-      destination: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0Destination),
-      env: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0EnvList),
-      has: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0HasList),
-      headers: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0HeadersMap),
-      important: S.optional(S.Boolean),
-      locale: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale),
-      methods: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0MethodsList),
-      middleware: S.optional(S.Number),
-      middlewarePath: S.optional(S.String),
-      middlewareRawSrc: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0MiddlewareRawSrcList,
-      ),
-      missing: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0MissingList),
-      mitigate: S.optional(CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate),
-      override: S.optional(S.Boolean),
-      respectOriginCacheControl: S.optional(S.Boolean),
-      source: S.optional(S.String),
-      src: S.String,
-      status: S.optional(S.Number),
-      statusCode: S.optional(S.Number),
-      transforms: S.optional(
-        CancelDeploymentResponseServicesItemCase1RoutesItemCase0TransformsList,
-      ),
-    }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase0",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase0>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItemCase1Handle =
   | "error"
   | "filesystem"
@@ -6059,41 +3242,18 @@ export type CancelDeploymentResponseServicesItemCase1RoutesItemCase1Handle =
   | "miss"
   | "resource"
   | "rewrite";
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase1Handle = S.String;
-
 export interface CancelDeploymentResponseServicesItemCase1RoutesItemCase1 {
   dest?: string;
   handle: CancelDeploymentResponseServicesItemCase1RoutesItemCase1Handle;
   src?: string;
   status?: number;
 }
-export const CancelDeploymentResponseServicesItemCase1RoutesItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dest: S.optional(S.String),
-      handle: CancelDeploymentResponseServicesItemCase1RoutesItemCase1Handle,
-      src: S.optional(S.String),
-      status: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1RoutesItemCase1",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItemCase1>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesItem =
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase0
   | CancelDeploymentResponseServicesItemCase1RoutesItemCase1;
-export const CancelDeploymentResponseServicesItemCase1RoutesItem =
-  S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesItem>;
-
 export type CancelDeploymentResponseServicesItemCase1RoutesList =
   Array<CancelDeploymentResponseServicesItemCase1RoutesItem>;
-export const CancelDeploymentResponseServicesItemCase1RoutesList = /*@__PURE__*/ S.Array(
-  CancelDeploymentResponseServicesItemCase1RoutesItem,
-) as any as S.Schema<CancelDeploymentResponseServicesItemCase1RoutesList>;
-
 export type CancelDeploymentResponseServicesItemCase1Schema = "experimentalServicesV2";
-export const CancelDeploymentResponseServicesItemCase1Schema = S.String;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export interface CancelDeploymentResponseServicesItemCase1 {
   /** Caller-side bindings to other services. */
@@ -6124,43 +3284,15 @@ export interface CancelDeploymentResponseServicesItemCase1 {
   schema: CancelDeploymentResponseServicesItemCase1Schema;
   trailingSlash?: boolean;
 }
-export const CancelDeploymentResponseServicesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(CancelDeploymentResponseServicesItemCase1BindingsList),
-    buildCommand: S.optional(S.String),
-    builder: CancelDeploymentResponseServicesItemCase1Builder,
-    cleanUrls: S.optional(S.Boolean),
-    command: S.optional(CancelDeploymentResponseServicesItemCase1CommandList),
-    devCommand: S.optional(S.String),
-    entrypoint: S.optional(S.String),
-    framework: S.optional(S.String),
-    functions: S.optional(CancelDeploymentResponseServicesItemCase1FunctionsMap),
-    headers: S.optional(CancelDeploymentResponseServicesItemCase1HeadersList),
-    ignoreCommand: S.optional(S.String),
-    installCommand: S.optional(S.String),
-    name: S.String,
-    outputDirectory: S.optional(S.String),
-    redirects: S.optional(CancelDeploymentResponseServicesItemCase1RedirectsList),
-    rewrites: S.optional(CancelDeploymentResponseServicesItemCase1RewritesList),
-    root: S.String,
-    routes: S.optional(CancelDeploymentResponseServicesItemCase1RoutesList),
-    runtime: S.optional(S.String),
-    schema: CancelDeploymentResponseServicesItemCase1Schema,
-    trailingSlash: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CancelDeploymentResponseServicesItemCase1",
-}) as any as S.Schema<CancelDeploymentResponseServicesItemCase1>;
-
 export type CancelDeploymentResponseServicesItem =
   | CancelDeploymentResponseServicesItemCase0
   | CancelDeploymentResponseServicesItemCase1;
-export const CancelDeploymentResponseServicesItem =
+const CancelDeploymentResponseServicesItem =
   S.Unknown as any as S.Schema<CancelDeploymentResponseServicesItem>;
 
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export type CancelDeploymentResponseServicesList = Array<CancelDeploymentResponseServicesItem>;
-export const CancelDeploymentResponseServicesList = /*@__PURE__*/ S.Array(
+const CancelDeploymentResponseServicesList = /*@__PURE__*/ S.Array(
   CancelDeploymentResponseServicesItem,
 ) as any as S.Schema<CancelDeploymentResponseServicesList>;
 
@@ -6176,7 +3308,7 @@ export type CancelDeploymentResponseSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const CancelDeploymentResponseSource = S.String;
+const CancelDeploymentResponseSource = S.String;
 
 export type CancelDeploymentResponseStatus =
   | "BLOCKED"
@@ -6186,11 +3318,11 @@ export type CancelDeploymentResponseStatus =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const CancelDeploymentResponseStatus = S.String;
+const CancelDeploymentResponseStatus = S.String;
 
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type CancelDeploymentResponseTarget = "production" | "staging";
-export const CancelDeploymentResponseTarget = S.String;
+const CancelDeploymentResponseTarget = S.String;
 
 /** The team that owns the deployment if any */
 export interface CancelDeploymentResponseTeam {
@@ -6199,7 +3331,7 @@ export interface CancelDeploymentResponseTeam {
   name: string;
   slug: string;
 }
-export const CancelDeploymentResponseTeam = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponseTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar: S.optional(S.String),
     id: S.String,
@@ -6211,16 +3343,16 @@ export const CancelDeploymentResponseTeam = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDeploymentResponseTeam>;
 
 export type CancelDeploymentResponseType = "LAMBDAS";
-export const CancelDeploymentResponseType = S.String;
+const CancelDeploymentResponseType = S.String;
 
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type CancelDeploymentResponseUserAliasesList = Array<string>;
-export const CancelDeploymentResponseUserAliasesList =
+const CancelDeploymentResponseUserAliasesList =
   CancelDeploymentResponseAliasList as any as S.Schema<CancelDeploymentResponseUserAliasesList>;
 
 /** The platform version that was used to create the deployment. */
 export type CancelDeploymentResponseVersion = 2;
-export const CancelDeploymentResponseVersion = S.Number;
+const CancelDeploymentResponseVersion = S.Number;
 
 export interface CancelDeploymentResponse {
   /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
@@ -6354,7 +3486,7 @@ export interface CancelDeploymentResponse {
   /** The platform version that was used to create the deployment. */
   version: CancelDeploymentResponseVersion;
 }
-export const CancelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(CancelDeploymentResponseAliasList),
     aliasAssigned: S.Boolean,
@@ -6455,20 +3587,18 @@ export const CancelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Forces a new deployment even if there is a previous similar deployment. Set to `1` to bypass deployment deduplication and always trigger a fresh build. */
 export type CreateDeploymentRequestForceNew = "0" | "1";
-export const CreateDeploymentRequestForceNew = S.String;
+const CreateDeploymentRequestForceNew = S.String;
 
 /** Set to `1` to skip framework auto-detection and proceed without confirmation. By default, if Vercel detects a framework that differs from the project setting, the API returns a `400` asking you to confirm. Use this to suppress that check in automated pipelines. */
 export type CreateDeploymentRequestSkipAutoDetectionConfirmation = "0" | "1";
-export const CreateDeploymentRequestSkipAutoDetectionConfirmation = S.String;
+const CreateDeploymentRequestSkipAutoDetectionConfirmation = S.String;
 
 /** Selects a custom build machine for this deployment without changing project settings. */
 export type CreateDeploymentRequestBuildMachine = "turbo";
-export const CreateDeploymentRequestBuildMachine = S.String;
+const CreateDeploymentRequestBuildMachine = S.String;
 
 /** The file content encoding, it could be either a base64 (useful for images, etc.) of the files or the plain text for source code. */
 export type CreateDeploymentRequestFilesItemCase0Encoding = "base64" | "utf-8";
-export const CreateDeploymentRequestFilesItemCase0Encoding = S.String;
-
 /** Used in the case you want to inline a file inside the request */
 export interface CreateDeploymentRequestFilesItemCase0 {
   /** The file content, it could be either a `base64` (useful for images, etc.) of the files or the plain content for source code */
@@ -6478,16 +3608,6 @@ export interface CreateDeploymentRequestFilesItemCase0 {
   /** The file name including the whole path */
   file: string;
 }
-export const CreateDeploymentRequestFilesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.String,
-    encoding: S.optional(CreateDeploymentRequestFilesItemCase0Encoding),
-    file: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestFilesItemCase0",
-}) as any as S.Schema<CreateDeploymentRequestFilesItemCase0>;
-
 /** Used in the case you want to reference a file that was already uploaded */
 export interface CreateDeploymentRequestFilesItemCase1 {
   /** The file path relative to the project root */
@@ -6497,25 +3617,15 @@ export interface CreateDeploymentRequestFilesItemCase1 {
   /** The file size in bytes */
   size?: number;
 }
-export const CreateDeploymentRequestFilesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: S.String,
-    sha: S.optional(S.String),
-    size: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestFilesItemCase1",
-}) as any as S.Schema<CreateDeploymentRequestFilesItemCase1>;
-
 export type CreateDeploymentRequestFilesItem =
   | CreateDeploymentRequestFilesItemCase0
   | CreateDeploymentRequestFilesItemCase1;
-export const CreateDeploymentRequestFilesItem =
+const CreateDeploymentRequestFilesItem =
   S.Unknown as any as S.Schema<CreateDeploymentRequestFilesItem>;
 
 /** The files to include in the deployment. Each entry is either an inlined file (with `data` and `encoding`) or a reference to a previously uploaded file (with `sha` and `size`). Required for non-git deployments. Cannot be used together with `gitSource`. */
 export type CreateDeploymentRequestFilesList = Array<CreateDeploymentRequestFilesItem>;
-export const CreateDeploymentRequestFilesList = /*@__PURE__*/ S.Array(
+const CreateDeploymentRequestFilesList = /*@__PURE__*/ S.Array(
   CreateDeploymentRequestFilesItem,
 ) as any as S.Schema<CreateDeploymentRequestFilesList>;
 
@@ -6546,7 +3656,7 @@ export interface CreateDeploymentRequestGitMetadata {
   /** Path of the deployed directory relative to the detected git repository root. Empty string when deploying from the repository root. */
   rootDirectory?: string;
 }
-export const CreateDeploymentRequestGitMetadata = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentRequestGitMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteUrl: S.optional(S.String),
     commitAuthorName: S.optional(S.String),
@@ -6566,51 +3676,21 @@ export const CreateDeploymentRequestGitMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDeploymentRequestGitMetadata>;
 
 export type CreateDeploymentRequestGitSourceCase0Type = "vercel";
-export const CreateDeploymentRequestGitSourceCase0Type = S.String;
-
 export interface CreateDeploymentRequestGitSourceCase0 {
   type: CreateDeploymentRequestGitSourceCase0Type;
   /** The stable Vercel Git repository ID. */
   repoId: string;
   sha: string;
 }
-export const CreateDeploymentRequestGitSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: CreateDeploymentRequestGitSourceCase0Type,
-    repoId: S.String,
-    sha: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase0",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase0>;
-
 export type CreateDeploymentRequestGitSourceCase1RepoId = number | string;
-export const CreateDeploymentRequestGitSourceCase1RepoId =
-  S.Unknown as any as S.Schema<CreateDeploymentRequestGitSourceCase1RepoId>;
-
 export type CreateDeploymentRequestGitSourceCase1Type = "github";
-export const CreateDeploymentRequestGitSourceCase1Type = S.String;
-
 export interface CreateDeploymentRequestGitSourceCase1 {
   ref: string;
   repoId: CreateDeploymentRequestGitSourceCase1RepoId;
   sha?: string;
   type: CreateDeploymentRequestGitSourceCase1Type;
 }
-export const CreateDeploymentRequestGitSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.String,
-    repoId: CreateDeploymentRequestGitSourceCase1RepoId,
-    sha: S.optional(S.String),
-    type: CreateDeploymentRequestGitSourceCase1Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase1",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase1>;
-
 export type CreateDeploymentRequestGitSourceCase2Type = "github";
-export const CreateDeploymentRequestGitSourceCase2Type = S.String;
-
 export interface CreateDeploymentRequestGitSourceCase2 {
   org: string;
   ref: string;
@@ -6618,45 +3698,15 @@ export interface CreateDeploymentRequestGitSourceCase2 {
   sha?: string;
   type: CreateDeploymentRequestGitSourceCase2Type;
 }
-export const CreateDeploymentRequestGitSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    org: S.String,
-    ref: S.String,
-    repo: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentRequestGitSourceCase2Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase2",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase2>;
-
 export type CreateDeploymentRequestGitSourceCase3RepoId = number | string;
-export const CreateDeploymentRequestGitSourceCase3RepoId =
-  S.Unknown as any as S.Schema<CreateDeploymentRequestGitSourceCase3RepoId>;
-
 export type CreateDeploymentRequestGitSourceCase3Type = "github-limited";
-export const CreateDeploymentRequestGitSourceCase3Type = S.String;
-
 export interface CreateDeploymentRequestGitSourceCase3 {
   ref: string;
   repoId: CreateDeploymentRequestGitSourceCase3RepoId;
   sha?: string;
   type: CreateDeploymentRequestGitSourceCase3Type;
 }
-export const CreateDeploymentRequestGitSourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.String,
-    repoId: CreateDeploymentRequestGitSourceCase3RepoId,
-    sha: S.optional(S.String),
-    type: CreateDeploymentRequestGitSourceCase3Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase3",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase3>;
-
 export type CreateDeploymentRequestGitSourceCase4Type = "github-limited";
-export const CreateDeploymentRequestGitSourceCase4Type = S.String;
-
 export interface CreateDeploymentRequestGitSourceCase4 {
   org: string;
   ref: string;
@@ -6664,36 +3714,15 @@ export interface CreateDeploymentRequestGitSourceCase4 {
   sha?: string;
   type: CreateDeploymentRequestGitSourceCase4Type;
 }
-export const CreateDeploymentRequestGitSourceCase4 =
-  CreateDeploymentRequestGitSourceCase2 as any as S.Schema<CreateDeploymentRequestGitSourceCase4>;
-
 export type CreateDeploymentRequestGitSourceCase5ProjectId = number | string;
-export const CreateDeploymentRequestGitSourceCase5ProjectId =
-  S.Unknown as any as S.Schema<CreateDeploymentRequestGitSourceCase5ProjectId>;
-
 export type CreateDeploymentRequestGitSourceCase5Type = "gitlab";
-export const CreateDeploymentRequestGitSourceCase5Type = S.String;
-
 export interface CreateDeploymentRequestGitSourceCase5 {
   projectId: CreateDeploymentRequestGitSourceCase5ProjectId;
   ref: string;
   sha?: string;
   type: CreateDeploymentRequestGitSourceCase5Type;
 }
-export const CreateDeploymentRequestGitSourceCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    projectId: CreateDeploymentRequestGitSourceCase5ProjectId,
-    ref: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentRequestGitSourceCase5Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase5",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase5>;
-
 export type CreateDeploymentRequestGitSourceCase6Type = "bitbucket";
-export const CreateDeploymentRequestGitSourceCase6Type = S.String;
-
 export interface CreateDeploymentRequestGitSourceCase6 {
   ref: string;
   repoUuid: string;
@@ -6701,21 +3730,7 @@ export interface CreateDeploymentRequestGitSourceCase6 {
   type: CreateDeploymentRequestGitSourceCase6Type;
   workspaceUuid?: string;
 }
-export const CreateDeploymentRequestGitSourceCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.String,
-    repoUuid: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentRequestGitSourceCase6Type,
-    workspaceUuid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase6",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase6>;
-
 export type CreateDeploymentRequestGitSourceCase7Type = "bitbucket";
-export const CreateDeploymentRequestGitSourceCase7Type = S.String;
-
 export interface CreateDeploymentRequestGitSourceCase7 {
   owner: string;
   ref: string;
@@ -6723,21 +3738,7 @@ export interface CreateDeploymentRequestGitSourceCase7 {
   slug: string;
   type: CreateDeploymentRequestGitSourceCase7Type;
 }
-export const CreateDeploymentRequestGitSourceCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String,
-    ref: S.String,
-    sha: S.optional(S.String),
-    slug: S.String,
-    type: CreateDeploymentRequestGitSourceCase7Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase7",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase7>;
-
 export type CreateDeploymentRequestGitSourceCase8Type = "cursor-origin";
-export const CreateDeploymentRequestGitSourceCase8Type = S.String;
-
 /** Deploys from the Cursor Origin repository linked to the target project. The repository ID must match the linked repository; Vercel resolves the owner and repository name from the project link. */
 export interface CreateDeploymentRequestGitSourceCase8 {
   /** The Origin workspace slug. Optional because Vercel resolves it from the linked project. */
@@ -6752,19 +3753,6 @@ export interface CreateDeploymentRequestGitSourceCase8 {
   sha?: string;
   type: CreateDeploymentRequestGitSourceCase8Type;
 }
-export const CreateDeploymentRequestGitSourceCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.optional(S.String),
-    ref: S.String,
-    repo: S.optional(S.String),
-    repoId: S.String,
-    sha: S.optional(S.String),
-    type: CreateDeploymentRequestGitSourceCase8Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentRequestGitSourceCase8",
-}) as any as S.Schema<CreateDeploymentRequestGitSourceCase8>;
-
 /** Defines the Git Repository source to be deployed. This property can not be used in combination with `files`. */
 export type CreateDeploymentRequestGitSource =
   | CreateDeploymentRequestGitSourceCase0
@@ -6776,12 +3764,12 @@ export type CreateDeploymentRequestGitSource =
   | CreateDeploymentRequestGitSourceCase6
   | CreateDeploymentRequestGitSourceCase7
   | CreateDeploymentRequestGitSourceCase8;
-export const CreateDeploymentRequestGitSource =
+const CreateDeploymentRequestGitSource =
   S.Unknown as any as S.Schema<CreateDeploymentRequestGitSource>;
 
 /** An object containing the deployment's metadata. Multiple key-value pairs can be attached to a deployment. For deployments created with a Cursor Origin `gitSource`, Vercel automatically adds `cursorOriginDeployment`, `cursorOriginCommitSha`, `cursorOriginCommitRef`, `cursorOriginCommitMessage`, `cursorOriginCommitAuthorName`, `cursorOriginCommitAuthorEmail` when available, `cursorOriginOwner`, `cursorOriginRepo`, `cursorOriginRepoId`, and `cursorOriginPrId` for pull request deployments. */
 export type CreateDeploymentRequestMetaMap = { [key: string]: string | undefined };
-export const CreateDeploymentRequestMetaMap =
+const CreateDeploymentRequestMetaMap =
   CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentRequestMetaMap>;
 
 /** The framework that is being used for this project. When `null` is used no framework is selected */
@@ -6860,7 +3848,7 @@ export type CreateDeploymentRequestProjectSettingsFramework =
   | "node"
   | "go"
   | "mastra";
-export const CreateDeploymentRequestProjectSettingsFramework = S.String;
+const CreateDeploymentRequestProjectSettingsFramework = S.String;
 
 /** Override the Node.js version that should be used for this deployment */
 export type CreateDeploymentRequestProjectSettingsNodeVersion =
@@ -6873,7 +3861,7 @@ export type CreateDeploymentRequestProjectSettingsNodeVersion =
   | "12.x"
   | "10.x"
   | "8.10.x";
-export const CreateDeploymentRequestProjectSettingsNodeVersion = S.String;
+const CreateDeploymentRequestProjectSettingsNodeVersion = S.String;
 
 /** Project settings that will be applied to the deployment. It is required for the first deployment of a project and will be saved for any following deployments */
 export interface CreateDeploymentRequestProjectSettings {
@@ -6899,7 +3887,7 @@ export interface CreateDeploymentRequestProjectSettings {
   /** Indicates if there are source files outside of the root directory, typically used for monorepos */
   sourceFilesOutsideRootDirectory?: boolean;
 }
-export const CreateDeploymentRequestProjectSettings = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentRequestProjectSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildCommand: S.optional(S.NullOr(S.String)),
     commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
@@ -6957,7 +3945,7 @@ export interface CreateDeploymentRequest {
   /** When `true` and `deploymentId` is passed in, the sha from the previous deployment's `gitSource` is removed forcing the latest commit to be used. */
   withLatestCommit?: boolean;
 }
-export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forceNew: S.optional(CreateDeploymentRequestForceNew.pipe(T.Query())),
     skipAutoDetectionConfirmation: S.optional(
@@ -6983,19 +3971,10 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDeploymentRequest" }) as any as S.Schema<CreateDeploymentRequest>;
 
 export type CreateDeploymentResponseBodyCase0AliasList = Array<string>;
-export const CreateDeploymentResponseBodyCase0AliasList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase0AliasList>;
-
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type CreateDeploymentResponseBodyCase0AliasError = CancelDeploymentResponseAliasError;
-export const CreateDeploymentResponseBodyCase0AliasError = CancelDeploymentResponseAliasError;
-
 export type CreateDeploymentResponseBodyCase0AliasWarning = CancelDeploymentResponseAliasWarning;
-export const CreateDeploymentResponseBodyCase0AliasWarning = CancelDeploymentResponseAliasWarning;
-
 export type CreateDeploymentResponseBodyCase0Duration = CancelDeploymentResponseDuration;
-export const CreateDeploymentResponseBodyCase0Duration = CancelDeploymentResponseDuration;
-
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type CreateDeploymentResponseBodyCase0ReadyState =
   | "BLOCKED"
@@ -7005,12 +3984,8 @@ export type CreateDeploymentResponseBodyCase0ReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const CreateDeploymentResponseBodyCase0ReadyState = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type CreateDeploymentResponseBodyCase0Target = "production" | "staging";
-export const CreateDeploymentResponseBodyCase0Target = S.String;
-
 /** Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld. */
 export interface CreateDeploymentResponseBodyCase0 {
   alias?: CreateDeploymentResponseBodyCase0AliasList;
@@ -7028,112 +4003,40 @@ export interface CreateDeploymentResponseBodyCase0 {
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: CreateDeploymentResponseBodyCase0Target | null;
 }
-export const CreateDeploymentResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(CreateDeploymentResponseBodyCase0AliasList),
-    aliasAssigned: S.Boolean,
-    aliasError: S.optional(S.NullOr(CancelDeploymentResponseAliasError)),
-    aliasWarning: S.optional(S.NullOr(CancelDeploymentResponseAliasWarning)),
-    duration: CancelDeploymentResponseDuration,
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    readyState: CreateDeploymentResponseBodyCase0ReadyState,
-    target: S.optional(S.NullOr(CreateDeploymentResponseBodyCase0Target)),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase0>;
-
 /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
 export type CreateDeploymentResponseBodyCase1AliasList = Array<string>;
-export const CreateDeploymentResponseBodyCase1AliasList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1AliasList>;
-
 export type CreateDeploymentResponseBodyCase1AliasAssignedAt = number | boolean;
-export const CreateDeploymentResponseBodyCase1AliasAssignedAt =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1AliasAssignedAt>;
-
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type CreateDeploymentResponseBodyCase1AliasError = CancelDeploymentResponseAliasError;
-export const CreateDeploymentResponseBodyCase1AliasError = CancelDeploymentResponseAliasError;
-
 export type CreateDeploymentResponseBodyCase1AliasWarning = CancelDeploymentResponseAliasWarning;
-export const CreateDeploymentResponseBodyCase1AliasWarning = CancelDeploymentResponseAliasWarning;
-
 export type CreateDeploymentResponseBodyCase1AtprotoCase0 = CancelDeploymentResponseAtprotoCase0;
-export const CreateDeploymentResponseBodyCase1AtprotoCase0 = CancelDeploymentResponseAtprotoCase0;
-
 export type CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList>;
-
 export type CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList>;
-
 export type CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem =
   | "account"
   | "commit"
   | "identity"
   | "sync";
-export const CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem = S.String;
-
 export type CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList =
   Array<CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem>;
-export const CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList>;
-
 export interface CreateDeploymentResponseBodyCase1AtprotoCase1Subscription {
   collections: CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList;
   dids?: CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList;
   kinds?: CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList;
   path: string;
 }
-export const CreateDeploymentResponseBodyCase1AtprotoCase1Subscription = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      collections: CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList,
-      dids: S.optional(CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList),
-      kinds: S.optional(CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList),
-      path: S.String,
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1AtprotoCase1Subscription",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1Subscription>;
-
 export interface CreateDeploymentResponseBodyCase1AtprotoCase1 {
   enabled: boolean;
   subscription: CreateDeploymentResponseBodyCase1AtprotoCase1Subscription;
 }
-export const CreateDeploymentResponseBodyCase1AtprotoCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    subscription: CreateDeploymentResponseBodyCase1AtprotoCase1Subscription,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1AtprotoCase1",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1AtprotoCase1>;
-
 export type CreateDeploymentResponseBodyCase1Atproto =
   | CancelDeploymentResponseAtprotoCase0
   | CreateDeploymentResponseBodyCase1AtprotoCase1;
-export const CreateDeploymentResponseBodyCase1Atproto =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1Atproto>;
-
 /** Commit metadata from the git commit author */
 export type CreateDeploymentResponseBodyCase1AttributionCommitMeta =
   CancelDeploymentResponseAttributionCommitMeta;
-export const CreateDeploymentResponseBodyCase1AttributionCommitMeta =
-  CancelDeploymentResponseAttributionCommitMeta;
-
 export type CreateDeploymentResponseBodyCase1AttributionGitUserId = string | number;
-export const CreateDeploymentResponseBodyCase1AttributionGitUserId =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1AttributionGitUserId>;
-
 /** Git provider user associated with the commit author email (only set if resolved) */
 export interface CreateDeploymentResponseBodyCase1AttributionGitUser {
   id: CreateDeploymentResponseBodyCase1AttributionGitUserId;
@@ -7144,22 +4047,8 @@ export interface CreateDeploymentResponseBodyCase1AttributionGitUser {
   /** User type */
   type?: string;
 }
-export const CreateDeploymentResponseBodyCase1AttributionGitUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: CreateDeploymentResponseBodyCase1AttributionGitUserId,
-    login: S.String,
-    provider: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1AttributionGitUser",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1AttributionGitUser>;
-
 /** Team roles at time of deployment */
 export type CreateDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList = Array<string>;
-export const CreateDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList>;
-
 /** Vercel user linked to the git provider account (only set if resolved) */
 export interface CreateDeploymentResponseBodyCase1AttributionVercelUser {
   /** Vercel user ID */
@@ -7169,16 +4058,6 @@ export interface CreateDeploymentResponseBodyCase1AttributionVercelUser {
   /** Vercel username */
   username: string;
 }
-export const CreateDeploymentResponseBodyCase1AttributionVercelUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    teamRoles: S.optional(CreateDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList),
-    username: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1AttributionVercelUser",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1AttributionVercelUser>;
-
 /** Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled. */
 export interface CreateDeploymentResponseBodyCase1Attribution {
   /** Commit metadata from the git commit author */
@@ -7188,149 +4067,72 @@ export interface CreateDeploymentResponseBodyCase1Attribution {
   /** Vercel user linked to the git provider account (only set if resolved) */
   vercelUser?: CreateDeploymentResponseBodyCase1AttributionVercelUser;
 }
-export const CreateDeploymentResponseBodyCase1Attribution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMeta: S.optional(CancelDeploymentResponseAttributionCommitMeta),
-    gitUser: S.optional(CreateDeploymentResponseBodyCase1AttributionGitUser),
-    vercelUser: S.optional(CreateDeploymentResponseBodyCase1AttributionVercelUser),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1Attribution",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1Attribution>;
-
 export type CreateDeploymentResponseBodyCase1AutomaticAliasesList = Array<string>;
-export const CreateDeploymentResponseBodyCase1AutomaticAliasesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1AutomaticAliasesList>;
-
 export type CreateDeploymentResponseBodyCase1BuildEnvList = Array<string>;
-export const CreateDeploymentResponseBodyCase1BuildEnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1BuildEnvList>;
-
 export interface CreateDeploymentResponseBodyCase1Build {
   env: CreateDeploymentResponseBodyCase1BuildEnvList;
 }
-export const CreateDeploymentResponseBodyCase1Build =
-  CancelDeploymentResponseBuild as any as S.Schema<CreateDeploymentResponseBodyCase1Build>;
-
 export type CreateDeploymentResponseBodyCase1BuildArtifactUrlsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1BuildArtifactUrlsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1BuildArtifactUrlsList>;
-
 export type CreateDeploymentResponseBodyCase1BuildsItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateDeploymentResponseBodyCase1BuildsItemConfigMap =
-  CancelDeploymentResponseBuildsItemConfigMap as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsItemConfigMap>;
-
 export interface CreateDeploymentResponseBodyCase1BuildsItem {
   config?: CreateDeploymentResponseBodyCase1BuildsItemConfigMap;
   src?: string;
   use: string;
 }
-export const CreateDeploymentResponseBodyCase1BuildsItem =
-  CancelDeploymentResponseBuildsItem as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsItem>;
-
 export type CreateDeploymentResponseBodyCase1BuildsList =
   Array<CreateDeploymentResponseBodyCase1BuildsItem>;
-export const CreateDeploymentResponseBodyCase1BuildsList =
-  CancelDeploymentResponseBuildsList as any as S.Schema<CreateDeploymentResponseBodyCase1BuildsList>;
-
 export type CreateDeploymentResponseBodyCase1ChecksDeploymentAliasState =
   | "failed"
   | "pending"
   | "succeeded";
-export const CreateDeploymentResponseBodyCase1ChecksDeploymentAliasState = S.String;
-
 /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
 export interface CreateDeploymentResponseBodyCase1ChecksDeploymentAlias {
   completedAt?: number;
   startedAt: number;
   state: CreateDeploymentResponseBodyCase1ChecksDeploymentAliasState;
 }
-export const CreateDeploymentResponseBodyCase1ChecksDeploymentAlias =
-  CancelDeploymentResponseChecksDeploymentAlias as any as S.Schema<CreateDeploymentResponseBodyCase1ChecksDeploymentAlias>;
-
 export interface CreateDeploymentResponseBodyCase1Checks {
   /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
   deployment_alias: CreateDeploymentResponseBodyCase1ChecksDeploymentAlias;
 }
-export const CreateDeploymentResponseBodyCase1Checks =
-  CancelDeploymentResponseChecks as any as S.Schema<CreateDeploymentResponseBodyCase1Checks>;
-
 export type CreateDeploymentResponseBodyCase1ChecksConclusion =
   | "canceled"
   | "failed"
   | "skipped"
   | "succeeded";
-export const CreateDeploymentResponseBodyCase1ChecksConclusion = S.String;
-
 export type CreateDeploymentResponseBodyCase1ChecksState = "completed" | "registered" | "running";
-export const CreateDeploymentResponseBodyCase1ChecksState = S.String;
-
 export type CreateDeploymentResponseBodyCase1ConfigFunctionMemoryType =
   | "performance"
   | "performance_xl"
   | "standard"
   | "standard_legacy";
-export const CreateDeploymentResponseBodyCase1ConfigFunctionMemoryType = S.String;
-
 export type CreateDeploymentResponseBodyCase1ConfigFunctionType = "fluid" | "standard";
-export const CreateDeploymentResponseBodyCase1ConfigFunctionType = S.String;
-
 /** Build resource configuration snapshot for this deployment. */
 export type CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueueConfiguration =
   | "SKIP_NAMESPACE_QUEUE"
   | "WAIT_FOR_NAMESPACE_QUEUE";
-export const CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueueConfiguration =
-  S.String;
-
 /** Build resource configuration snapshot for this deployment. */
 export interface CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue {
   /** Build resource configuration snapshot for this deployment. */
   configuration?: CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueueConfiguration;
 }
-export const CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configuration: S.optional(
-        CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueueConfiguration,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue>;
-
 /** When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues */
 export type CreateDeploymentResponseBodyCase1ConfigResourceConfigElasticConcurrency =
   | "PROJECT_SETTING"
   | "SKIP_QUEUE"
   | "TEAM_SETTING";
-export const CreateDeploymentResponseBodyCase1ConfigResourceConfigElasticConcurrency = S.String;
-
 /** Machine type that was used for the build. */
 export type CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType =
   | "basic"
   | "enhanced"
   | "standard"
   | "turbo";
-export const CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine {
   /** Machine type that was used for the build. */
   purchaseType?: CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType | null;
 }
-export const CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      purchaseType: S.optional(
-        S.NullOr(CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine>;
-
 /** Build resource configuration snapshot for this deployment. */
 export interface CreateDeploymentResponseBodyCase1ConfigResourceConfig {
   /** Build resource configuration snapshot for this deployment. */
@@ -7339,18 +4141,6 @@ export interface CreateDeploymentResponseBodyCase1ConfigResourceConfig {
   elasticConcurrency?: CreateDeploymentResponseBodyCase1ConfigResourceConfigElasticConcurrency;
   buildMachine?: CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine;
 }
-export const CreateDeploymentResponseBodyCase1ConfigResourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildQueue: S.optional(CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue),
-    elasticConcurrency: S.optional(
-      CreateDeploymentResponseBodyCase1ConfigResourceConfigElasticConcurrency,
-    ),
-    buildMachine: S.optional(CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ConfigResourceConfig",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ConfigResourceConfig>;
-
 /** Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured */
 export interface CreateDeploymentResponseBodyCase1Config {
   functionMemoryType: CreateDeploymentResponseBodyCase1ConfigFunctionMemoryType;
@@ -7363,29 +4153,12 @@ export interface CreateDeploymentResponseBodyCase1Config {
   secureComputePrimaryRegion: string | null;
   version?: number;
 }
-export const CreateDeploymentResponseBodyCase1Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functionMemoryType: CreateDeploymentResponseBodyCase1ConfigFunctionMemoryType,
-    functionTimeout: S.NullOr(S.Number),
-    functionType: CreateDeploymentResponseBodyCase1ConfigFunctionType,
-    isUsingActiveCPU: S.optional(S.Boolean),
-    resourceConfig: S.optional(CreateDeploymentResponseBodyCase1ConfigResourceConfig),
-    secureComputeFallbackRegion: S.NullOr(S.String),
-    secureComputePrimaryRegion: S.NullOr(S.String),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1Config",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1Config>;
-
 /** Principal type of the deployment creator. */
 export type CreateDeploymentResponseBodyCase1CreatorType =
   | "app"
   | "integration"
   | "system"
   | "user";
-export const CreateDeploymentResponseBodyCase1CreatorType = S.String;
-
 /** Information about the deployment creator */
 export interface CreateDeploymentResponseBodyCase1Creator {
   /** The avatar of the user that created the deployment */
@@ -7397,23 +4170,13 @@ export interface CreateDeploymentResponseBodyCase1Creator {
   /** The username of the user that created the deployment */
   username?: string;
 }
-export const CreateDeploymentResponseBodyCase1Creator =
-  CancelDeploymentResponseCreator as any as S.Schema<CreateDeploymentResponseBodyCase1Creator>;
-
 export type CreateDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
-export const CreateDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
-
 export type CreateDeploymentResponseBodyCase1CronsList = Array<CancelDeploymentResponseCronsItem>;
-export const CreateDeploymentResponseBodyCase1CronsList =
-  CancelDeploymentResponseCronsList as any as S.Schema<CreateDeploymentResponseBodyCase1CronsList>;
-
 /** The type of matching to perform */
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType =
   | "endsWith"
   | "equals"
   | "startsWith";
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType = S.String;
-
 /** Configuration for matching git branches to this environment */
 export interface CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher {
   /** The pattern to match against branch names */
@@ -7421,42 +4184,20 @@ export interface CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMa
   /** The type of matching to perform */
   type: CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType;
 }
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pattern: S.String,
-      type: CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher>;
-
 /** List of aliases for the current deployment */
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList>;
-
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemRedirectStatusCode =
   | 301
   | 302
   | 307
   | 308;
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemRedirectStatusCode =
-  S.Number;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationItem =
   CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem;
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationItem =
-  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList =
   Array<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem>;
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList =
-  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList>;
-
 /** List of domains associated with this environment */
 export interface CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem {
   apexName: string;
@@ -7473,46 +4214,14 @@ export interface CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsI
   /** `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed. */
   verified: boolean;
 }
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apexName: S.String,
-      createdAt: S.optional(S.Number),
-      customEnvironmentId: S.optional(S.NullOr(S.String)),
-      gitBranch: S.optional(S.NullOr(S.String)),
-      name: S.String,
-      projectId: S.String,
-      redirect: S.optional(S.NullOr(S.String)),
-      redirectStatusCode: S.optional(
-        S.NullOr(
-          CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemRedirectStatusCode,
-        ),
-      ),
-      updatedAt: S.optional(S.Number),
-      verification: S.optional(
-        CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList,
-      ),
-      verified: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem>;
-
 /** List of domains associated with this environment */
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsList =
   Array<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem>;
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsList>;
-
 /** The type of environment (production, preview, or development) */
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase0Type =
   | "development"
   | "preview"
   | "production";
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0Type = S.String;
-
 /** If the deployment was created using a Custom Environment, then this property contains information regarding the environment used. */
 export interface CreateDeploymentResponseBodyCase1CustomEnvironmentCase0 {
   /** Configuration for matching git branches to this environment */
@@ -7534,120 +4243,43 @@ export interface CreateDeploymentResponseBodyCase1CustomEnvironmentCase0 {
   /** Timestamp when the environment was last updated */
   updatedAt: number;
 }
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchMatcher: S.optional(CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher),
-    createdAt: S.Number,
-    currentDeploymentAliases: S.optional(
-      CreateDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList,
-    ),
-    description: S.optional(S.String),
-    domains: S.optional(CreateDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsList),
-    id: S.String,
-    slug: S.String,
-    type: CreateDeploymentResponseBodyCase1CustomEnvironmentCase0Type,
-    updatedAt: S.Number,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1CustomEnvironmentCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironmentCase0>;
-
 /** If the deployment was created using a Custom Environment, then this property contains information regarding the environment used. */
 export type CreateDeploymentResponseBodyCase1CustomEnvironmentCase1 =
   CancelDeploymentResponseCustomEnvironmentCase1;
-export const CreateDeploymentResponseBodyCase1CustomEnvironmentCase1 =
-  CancelDeploymentResponseCustomEnvironmentCase1;
-
 export type CreateDeploymentResponseBodyCase1CustomEnvironment =
   | CreateDeploymentResponseBodyCase1CustomEnvironmentCase0
   | CancelDeploymentResponseCustomEnvironmentCase1;
-export const CreateDeploymentResponseBodyCase1CustomEnvironment =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1CustomEnvironment>;
-
 export type CreateDeploymentResponseBodyCase1Duration = CancelDeploymentResponseDuration;
-export const CreateDeploymentResponseBodyCase1Duration = CancelDeploymentResponseDuration;
-
 export type CreateDeploymentResponseBodyCase1EnvList = Array<string>;
-export const CreateDeploymentResponseBodyCase1EnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1EnvList>;
-
 export type CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsItem =
   CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem;
-export const CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsItem =
-  CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem;
-
 export type CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList =
   Array<CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem>;
-export const CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList>;
-
 export interface CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValue {
   description?: string;
   options?: CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList;
   url?: string;
 }
-export const CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      description: S.optional(S.String),
-      options: S.optional(CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList),
-      url: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValue",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValue>;
-
 export type CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsMap = {
   [key: string]: CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValue | undefined;
 };
-export const CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValue,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsMap>;
-
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export interface CreateDeploymentResponseBodyCase1FlagsCase0 {
   definitions: CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsMap;
 }
-export const CreateDeploymentResponseBodyCase1FlagsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    definitions: CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsMap,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1FlagsCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1FlagsCase0>;
-
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export type CreateDeploymentResponseBodyCase1FlagsCase1List = Array<unknown>;
-export const CreateDeploymentResponseBodyCase1FlagsCase1List =
-  CancelDeploymentResponseFlagsCase1List as any as S.Schema<CreateDeploymentResponseBodyCase1FlagsCase1List>;
-
 export type CreateDeploymentResponseBodyCase1Flags =
   | CreateDeploymentResponseBodyCase1FlagsCase0
   | CreateDeploymentResponseBodyCase1FlagsCase1List;
-export const CreateDeploymentResponseBodyCase1Flags =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1Flags>;
-
 export type CreateDeploymentResponseBodyCase1FunctionsValueAffinityMode = "strict";
-export const CreateDeploymentResponseBodyCase1FunctionsValueAffinityMode = S.String;
-
 export interface CreateDeploymentResponseBodyCase1FunctionsValueAffinity {
   mode: CreateDeploymentResponseBodyCase1FunctionsValueAffinityMode;
 }
-export const CreateDeploymentResponseBodyCase1FunctionsValueAffinity =
-  CancelDeploymentResponseFunctionsValueAffinity as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueAffinity>;
-
 export type CreateDeploymentResponseBodyCase1FunctionsValueArchitecture = "arm64" | "x86_64";
-export const CreateDeploymentResponseBodyCase1FunctionsValueArchitecture = S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -7665,15 +4297,9 @@ export interface CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTrig
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -7689,54 +4315,26 @@ export interface CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTrig
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2>;
-
 export type CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem =
   | CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0
   | CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1
   | CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2;
-export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem>;
-
 export type CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersList =
   Array<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem>;
-export const CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersList>;
-
 export type CreateDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList>;
-
 export type CreateDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1 = "max";
-export const CreateDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1 = S.String;
-
 export type CreateDeploymentResponseBodyCase1FunctionsValueMaxDuration =
   | number
   | CreateDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1;
-export const CreateDeploymentResponseBodyCase1FunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueMaxDuration>;
-
 export type CreateDeploymentResponseBodyCase1FunctionsValueRegionsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1FunctionsValueRegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValueRegionsList>;
-
 export interface CreateDeploymentResponseBodyCase1FunctionsValue {
   affinity?: CreateDeploymentResponseBodyCase1FunctionsValueAffinity;
   architecture?: CreateDeploymentResponseBodyCase1FunctionsValueArchitecture;
@@ -7751,43 +4349,11 @@ export interface CreateDeploymentResponseBodyCase1FunctionsValue {
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const CreateDeploymentResponseBodyCase1FunctionsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    affinity: S.optional(CreateDeploymentResponseBodyCase1FunctionsValueAffinity),
-    architecture: S.optional(CreateDeploymentResponseBodyCase1FunctionsValueArchitecture),
-    excludeFiles: S.optional(S.String),
-    experimentalTriggers: S.optional(
-      CreateDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersList,
-    ),
-    functionFailoverRegions: S.optional(
-      CreateDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList,
-    ),
-    includeFiles: S.optional(S.String),
-    maxConcurrency: S.optional(S.Number),
-    maxDuration: S.optional(CreateDeploymentResponseBodyCase1FunctionsValueMaxDuration),
-    memory: S.optional(S.Number),
-    regions: S.optional(CreateDeploymentResponseBodyCase1FunctionsValueRegionsList),
-    runtime: S.optional(S.String),
-    supportsCancellation: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1FunctionsValue",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsValue>;
-
 export type CreateDeploymentResponseBodyCase1FunctionsMap = {
   [key: string]: CreateDeploymentResponseBodyCase1FunctionsValue | undefined;
 };
-export const CreateDeploymentResponseBodyCase1FunctionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateDeploymentResponseBodyCase1FunctionsValue,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1FunctionsMap>;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase0OwnerType = "team" | "user";
-export const CreateDeploymentResponseBodyCase1GitRepoCase0OwnerType = S.String;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase0Type = "gitlab";
-export const CreateDeploymentResponseBodyCase1GitRepoCase0Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitRepoCase0 {
   defaultBranch: string;
   name: string;
@@ -7799,15 +4365,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase0 {
   type: CreateDeploymentResponseBodyCase1GitRepoCase0Type;
   url: string;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase0 =
-  CancelDeploymentResponseGitRepoCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase0>;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase1OwnerType = "team" | "user";
-export const CreateDeploymentResponseBodyCase1GitRepoCase1OwnerType = S.String;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase1Type = "github";
-export const CreateDeploymentResponseBodyCase1GitRepoCase1Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitRepoCase1 {
   defaultBranch: string;
   name: string;
@@ -7820,15 +4379,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase1 {
   repoOwnerId: number;
   type: CreateDeploymentResponseBodyCase1GitRepoCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase1 =
-  CancelDeploymentResponseGitRepoCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase1>;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase2OwnerType = "team" | "user";
-export const CreateDeploymentResponseBodyCase1GitRepoCase2OwnerType = S.String;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase2Type = "bitbucket";
-export const CreateDeploymentResponseBodyCase1GitRepoCase2Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitRepoCase2 {
   defaultBranch: string;
   name: string;
@@ -7841,15 +4393,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase2 {
   type: CreateDeploymentResponseBodyCase1GitRepoCase2Type;
   workspaceUuid: string;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase2 =
-  CancelDeploymentResponseGitRepoCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase2>;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase3OwnerType = "team" | "user";
-export const CreateDeploymentResponseBodyCase1GitRepoCase3OwnerType = S.String;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase3Type = "vercel";
-export const CreateDeploymentResponseBodyCase1GitRepoCase3Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitRepoCase3 {
   defaultBranch: string;
   name: string;
@@ -7860,15 +4405,8 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase3 {
   repo: string;
   type: CreateDeploymentResponseBodyCase1GitRepoCase3Type;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase3 =
-  CancelDeploymentResponseGitRepoCase3 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase3>;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase4OwnerType = "team" | "user";
-export const CreateDeploymentResponseBodyCase1GitRepoCase4OwnerType = S.String;
-
 export type CreateDeploymentResponseBodyCase1GitRepoCase4Type = "cursor-origin";
-export const CreateDeploymentResponseBodyCase1GitRepoCase4Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitRepoCase4 {
   defaultBranch: string;
   name: string;
@@ -7882,25 +4420,14 @@ export interface CreateDeploymentResponseBodyCase1GitRepoCase4 {
   repoId: string;
   type: CreateDeploymentResponseBodyCase1GitRepoCase4Type;
 }
-export const CreateDeploymentResponseBodyCase1GitRepoCase4 =
-  CancelDeploymentResponseGitRepoCase4 as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepoCase4>;
-
 export type CreateDeploymentResponseBodyCase1GitRepo =
   | CreateDeploymentResponseBodyCase1GitRepoCase0
   | CreateDeploymentResponseBodyCase1GitRepoCase1
   | CreateDeploymentResponseBodyCase1GitRepoCase2
   | CreateDeploymentResponseBodyCase1GitRepoCase3
   | CreateDeploymentResponseBodyCase1GitRepoCase4;
-export const CreateDeploymentResponseBodyCase1GitRepo =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1GitRepo>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase0RepoId = string | number;
-export const CreateDeploymentResponseBodyCase1GitSourceCase0RepoId =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase0RepoId>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase0Type = "github";
-export const CreateDeploymentResponseBodyCase1GitSourceCase0Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase0 {
   prId?: number | null;
   ref?: string | null;
@@ -7908,21 +4435,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase0 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase0Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: CreateDeploymentResponseBodyCase1GitSourceCase0RepoId,
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase0Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase0>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase1Type = "github";
-export const CreateDeploymentResponseBodyCase1GitSourceCase1Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase1 {
   org: string;
   prId?: number | null;
@@ -7931,16 +4444,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase1 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase1 =
-  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase1>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase2RepoId = string | number;
-export const CreateDeploymentResponseBodyCase1GitSourceCase2RepoId =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase2RepoId>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase2Type = "github-custom-host";
-export const CreateDeploymentResponseBodyCase1GitSourceCase2Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase2 {
   host: string;
   prId?: number | null;
@@ -7949,22 +4454,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase2 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase2Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: CreateDeploymentResponseBodyCase1GitSourceCase2RepoId,
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase2Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase2",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase2>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase3Type = "github-custom-host";
-export const CreateDeploymentResponseBodyCase1GitSourceCase3Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase3 {
   host: string;
   org: string;
@@ -7974,16 +4464,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase3 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase3Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase3 =
-  CancelDeploymentResponseGitSourceCase3 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase3>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase4RepoId = string | number;
-export const CreateDeploymentResponseBodyCase1GitSourceCase4RepoId =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase4RepoId>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase4Type = "github-limited";
-export const CreateDeploymentResponseBodyCase1GitSourceCase4Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase4 {
   prId?: number | null;
   ref?: string | null;
@@ -7991,21 +4473,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase4 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase4Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: CreateDeploymentResponseBodyCase1GitSourceCase4RepoId,
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase4Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase4",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase4>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase5Type = "github-limited";
-export const CreateDeploymentResponseBodyCase1GitSourceCase5Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase5 {
   org: string;
   prId?: number | null;
@@ -8014,16 +4482,8 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase5 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase5Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase5 =
-  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase5>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase6ProjectId = string | number;
-export const CreateDeploymentResponseBodyCase1GitSourceCase6ProjectId =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase6ProjectId>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase6Type = "gitlab";
-export const CreateDeploymentResponseBodyCase1GitSourceCase6Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase6 {
   prId?: number | null;
   projectId: CreateDeploymentResponseBodyCase1GitSourceCase6ProjectId;
@@ -8031,21 +4491,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase6 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase6Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    projectId: CreateDeploymentResponseBodyCase1GitSourceCase6ProjectId,
-    ref: S.optional(S.NullOr(S.String)),
-    sha: S.optional(S.String),
-    type: CreateDeploymentResponseBodyCase1GitSourceCase6Type,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1GitSourceCase6",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase6>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase7Type = "bitbucket";
-export const CreateDeploymentResponseBodyCase1GitSourceCase7Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase7 {
   prId?: number | null;
   ref?: string | null;
@@ -8054,12 +4500,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase7 {
   type: CreateDeploymentResponseBodyCase1GitSourceCase7Type;
   workspaceUuid?: string;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase7 =
-  CancelDeploymentResponseGitSourceCase7 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase7>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase8Type = "bitbucket";
-export const CreateDeploymentResponseBodyCase1GitSourceCase8Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase8 {
   owner: string;
   prId?: number | null;
@@ -8068,27 +4509,13 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase8 {
   slug: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase8Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase8 =
-  CancelDeploymentResponseGitSourceCase8 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase8>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase9CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const CreateDeploymentResponseBodyCase1GitSourceCase9CommitMetadataAuthor =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase9CommitMetadataCommitter =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const CreateDeploymentResponseBodyCase1GitSourceCase9CommitMetadataCommitter =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase9CommitMetadata =
   CancelDeploymentResponseGitSourceCase9CommitMetadata;
-export const CreateDeploymentResponseBodyCase1GitSourceCase9CommitMetadata =
-  CancelDeploymentResponseGitSourceCase9CommitMetadata;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase9Type = "vercel";
-export const CreateDeploymentResponseBodyCase1GitSourceCase9Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase9 {
   commitMetadata?: CancelDeploymentResponseGitSourceCase9CommitMetadata;
   org?: string;
@@ -8100,12 +4527,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase9 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase9Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase9 =
-  CancelDeploymentResponseGitSourceCase9 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase9>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase10Type = "cursor-origin";
-export const CreateDeploymentResponseBodyCase1GitSourceCase10Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase10 {
   /** Owner (namespace) slug. */
   owner?: string;
@@ -8117,12 +4539,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase10 {
   sha?: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase10Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase10 =
-  CancelDeploymentResponseGitSourceCase10 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase10>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase11Type = "custom";
-export const CreateDeploymentResponseBodyCase1GitSourceCase11Type = S.String;
-
 /** Allows custom git sources (local folder mounted to the container) in test mode */
 export interface CreateDeploymentResponseBodyCase1GitSourceCase11 {
   gitUrl: string;
@@ -8130,12 +4547,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase11 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase11Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase11 =
-  CancelDeploymentResponseGitSourceCase11 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase11>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase12Type = "github";
-export const CreateDeploymentResponseBodyCase1GitSourceCase12Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase12 {
   org?: string;
   ref: string;
@@ -8144,12 +4556,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase12 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase12Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase12 =
-  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase12>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase13Type = "github-custom-host";
-export const CreateDeploymentResponseBodyCase1GitSourceCase13Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase13 {
   host: string;
   org?: string;
@@ -8159,12 +4566,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase13 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase13Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase13 =
-  CancelDeploymentResponseGitSourceCase13 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase13>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase14Type = "github-limited";
-export const CreateDeploymentResponseBodyCase1GitSourceCase14Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase14 {
   org?: string;
   ref: string;
@@ -8173,24 +4575,14 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase14 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase14Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase14 =
-  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase14>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase15Type = "gitlab";
-export const CreateDeploymentResponseBodyCase1GitSourceCase15Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase15 {
   projectId: number;
   ref: string;
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase15Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase15 =
-  CancelDeploymentResponseGitSourceCase15 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase15>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase16Type = "bitbucket";
-export const CreateDeploymentResponseBodyCase1GitSourceCase16Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase16 {
   owner?: string;
   ref: string;
@@ -8200,27 +4592,13 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase16 {
   type: CreateDeploymentResponseBodyCase1GitSourceCase16Type;
   workspaceUuid: string;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase16 =
-  CancelDeploymentResponseGitSourceCase16 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase16>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase17CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const CreateDeploymentResponseBodyCase1GitSourceCase17CommitMetadataAuthor =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase17CommitMetadataCommitter =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const CreateDeploymentResponseBodyCase1GitSourceCase17CommitMetadataCommitter =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase17CommitMetadata =
   CancelDeploymentResponseGitSourceCase9CommitMetadata;
-export const CreateDeploymentResponseBodyCase1GitSourceCase17CommitMetadata =
-  CancelDeploymentResponseGitSourceCase9CommitMetadata;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase17Type = "vercel";
-export const CreateDeploymentResponseBodyCase1GitSourceCase17Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase17 {
   commitMetadata?: CancelDeploymentResponseGitSourceCase9CommitMetadata;
   org: string;
@@ -8231,12 +4609,7 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase17 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase17Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase17 =
-  CancelDeploymentResponseGitSourceCase17 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase17>;
-
 export type CreateDeploymentResponseBodyCase1GitSourceCase18Type = "cursor-origin";
-export const CreateDeploymentResponseBodyCase1GitSourceCase18Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1GitSourceCase18 {
   owner: string;
   ref: string;
@@ -8245,9 +4618,6 @@ export interface CreateDeploymentResponseBodyCase1GitSourceCase18 {
   sha: string;
   type: CreateDeploymentResponseBodyCase1GitSourceCase18Type;
 }
-export const CreateDeploymentResponseBodyCase1GitSourceCase18 =
-  CancelDeploymentResponseGitSourceCase18 as any as S.Schema<CreateDeploymentResponseBodyCase1GitSourceCase18>;
-
 export type CreateDeploymentResponseBodyCase1GitSource =
   | CreateDeploymentResponseBodyCase1GitSourceCase0
   | CreateDeploymentResponseBodyCase1GitSourceCase1
@@ -8268,42 +4638,18 @@ export type CreateDeploymentResponseBodyCase1GitSource =
   | CreateDeploymentResponseBodyCase1GitSourceCase16
   | CreateDeploymentResponseBodyCase1GitSourceCase17
   | CreateDeploymentResponseBodyCase1GitSourceCase18;
-export const CreateDeploymentResponseBodyCase1GitSource =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1GitSource>;
-
 export type CreateDeploymentResponseBodyCase1ImagesContentDispositionType = "attachment" | "inline";
-export const CreateDeploymentResponseBodyCase1ImagesContentDispositionType = S.String;
-
 export type CreateDeploymentResponseBodyCase1ImagesDomainsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1ImagesDomainsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesDomainsList>;
-
 export type CreateDeploymentResponseBodyCase1ImagesFormatsItem = "image/avif" | "image/webp";
-export const CreateDeploymentResponseBodyCase1ImagesFormatsItem = S.String;
-
 export type CreateDeploymentResponseBodyCase1ImagesFormatsList =
   Array<CreateDeploymentResponseBodyCase1ImagesFormatsItem>;
-export const CreateDeploymentResponseBodyCase1ImagesFormatsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionKindsList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesFormatsList>;
-
 export type CreateDeploymentResponseBodyCase1ImagesLocalPatternsItem =
   CancelDeploymentResponseImagesLocalPatternsItem;
-export const CreateDeploymentResponseBodyCase1ImagesLocalPatternsItem =
-  CancelDeploymentResponseImagesLocalPatternsItem;
-
 export type CreateDeploymentResponseBodyCase1ImagesLocalPatternsList =
   Array<CancelDeploymentResponseImagesLocalPatternsItem>;
-export const CreateDeploymentResponseBodyCase1ImagesLocalPatternsList =
-  CancelDeploymentResponseImagesLocalPatternsList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesLocalPatternsList>;
-
 export type CreateDeploymentResponseBodyCase1ImagesQualitiesList = Array<number>;
-export const CreateDeploymentResponseBodyCase1ImagesQualitiesList =
-  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesQualitiesList>;
-
 /** Must be `http` or `https`. */
 export type CreateDeploymentResponseBodyCase1ImagesRemotePatternsItemProtocol = "http" | "https";
-export const CreateDeploymentResponseBodyCase1ImagesRemotePatternsItemProtocol = S.String;
-
 export interface CreateDeploymentResponseBodyCase1ImagesRemotePatternsItem {
   /** Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains. */
   hostname: string;
@@ -8316,29 +4662,9 @@ export interface CreateDeploymentResponseBodyCase1ImagesRemotePatternsItem {
   /** Can be literal query string such as `?v=1` or empty string meaning no query string. */
   search?: string;
 }
-export const CreateDeploymentResponseBodyCase1ImagesRemotePatternsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      pathname: S.optional(S.String),
-      port: S.optional(S.String),
-      protocol: S.optional(CreateDeploymentResponseBodyCase1ImagesRemotePatternsItemProtocol),
-      search: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ImagesRemotePatternsItem",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesRemotePatternsItem>;
-
 export type CreateDeploymentResponseBodyCase1ImagesRemotePatternsList =
   Array<CreateDeploymentResponseBodyCase1ImagesRemotePatternsItem>;
-export const CreateDeploymentResponseBodyCase1ImagesRemotePatternsList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1ImagesRemotePatternsItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesRemotePatternsList>;
-
 export type CreateDeploymentResponseBodyCase1ImagesSizesList = Array<number>;
-export const CreateDeploymentResponseBodyCase1ImagesSizesList =
-  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<CreateDeploymentResponseBodyCase1ImagesSizesList>;
-
 export interface CreateDeploymentResponseBodyCase1Images {
   contentDispositionType?: CreateDeploymentResponseBodyCase1ImagesContentDispositionType;
   contentSecurityPolicy?: string;
@@ -8351,33 +4677,12 @@ export interface CreateDeploymentResponseBodyCase1Images {
   remotePatterns?: CreateDeploymentResponseBodyCase1ImagesRemotePatternsList;
   sizes?: CreateDeploymentResponseBodyCase1ImagesSizesList;
 }
-export const CreateDeploymentResponseBodyCase1Images = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentDispositionType: S.optional(
-      CreateDeploymentResponseBodyCase1ImagesContentDispositionType,
-    ),
-    contentSecurityPolicy: S.optional(S.String),
-    dangerouslyAllowSVG: S.optional(S.Boolean),
-    domains: S.optional(CreateDeploymentResponseBodyCase1ImagesDomainsList),
-    formats: S.optional(CreateDeploymentResponseBodyCase1ImagesFormatsList),
-    localPatterns: S.optional(CreateDeploymentResponseBodyCase1ImagesLocalPatternsList),
-    minimumCacheTTL: S.optional(S.Number),
-    qualities: S.optional(CreateDeploymentResponseBodyCase1ImagesQualitiesList),
-    remotePatterns: S.optional(CreateDeploymentResponseBodyCase1ImagesRemotePatternsList),
-    sizes: S.optional(CreateDeploymentResponseBodyCase1ImagesSizesList),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1Images",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1Images>;
-
 export type CreateDeploymentResponseBodyCase1IntegrationsStatus =
   | "error"
   | "pending"
   | "ready"
   | "skipped"
   | "timeout";
-export const CreateDeploymentResponseBodyCase1IntegrationsStatus = S.String;
-
 export interface CreateDeploymentResponseBodyCase1Integrations {
   claimedAt?: number;
   completedAt?: number;
@@ -8386,26 +4691,15 @@ export interface CreateDeploymentResponseBodyCase1Integrations {
   startedAt: number;
   status: CreateDeploymentResponseBodyCase1IntegrationsStatus;
 }
-export const CreateDeploymentResponseBodyCase1Integrations =
-  CancelDeploymentResponseIntegrations as any as S.Schema<CreateDeploymentResponseBodyCase1Integrations>;
-
 export type CreateDeploymentResponseBodyCase1LambdasItemReadyState =
   | "BUILDING"
   | "ERROR"
   | "INITIALIZING"
   | "READY";
-export const CreateDeploymentResponseBodyCase1LambdasItemReadyState = S.String;
-
 export type CreateDeploymentResponseBodyCase1LambdasItemOutputItem =
   CancelDeploymentResponseLambdasItemOutputItem;
-export const CreateDeploymentResponseBodyCase1LambdasItemOutputItem =
-  CancelDeploymentResponseLambdasItemOutputItem;
-
 export type CreateDeploymentResponseBodyCase1LambdasItemOutputList =
   Array<CancelDeploymentResponseLambdasItemOutputItem>;
-export const CreateDeploymentResponseBodyCase1LambdasItemOutputList =
-  CancelDeploymentResponseLambdasItemOutputList as any as S.Schema<CreateDeploymentResponseBodyCase1LambdasItemOutputList>;
-
 /** A partial representation of a Build used by the deployment endpoint. */
 export interface CreateDeploymentResponseBodyCase1LambdasItem {
   createdAt?: number;
@@ -8415,32 +4709,13 @@ export interface CreateDeploymentResponseBodyCase1LambdasItem {
   readyStateAt?: number;
   output: CreateDeploymentResponseBodyCase1LambdasItemOutputList;
 }
-export const CreateDeploymentResponseBodyCase1LambdasItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.Number),
-    entrypoint: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    readyState: S.optional(CreateDeploymentResponseBodyCase1LambdasItemReadyState),
-    readyStateAt: S.optional(S.Number),
-    output: CreateDeploymentResponseBodyCase1LambdasItemOutputList,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1LambdasItem",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1LambdasItem>;
-
 export type CreateDeploymentResponseBodyCase1LambdasList =
   Array<CreateDeploymentResponseBodyCase1LambdasItem>;
-export const CreateDeploymentResponseBodyCase1LambdasList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1LambdasItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1LambdasList>;
-
 /** Current provisioning state */
 export type CreateDeploymentResponseBodyCase1ManualProvisioningState =
   | "COMPLETE"
   | "PENDING"
   | "TIMEOUT";
-export const CreateDeploymentResponseBodyCase1ManualProvisioningState = S.String;
-
 /** Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called. */
 export interface CreateDeploymentResponseBodyCase1ManualProvisioning {
   /** Timestamp when manual provisioning completed */
@@ -8448,18 +4723,9 @@ export interface CreateDeploymentResponseBodyCase1ManualProvisioning {
   /** Current provisioning state */
   state: CreateDeploymentResponseBodyCase1ManualProvisioningState;
 }
-export const CreateDeploymentResponseBodyCase1ManualProvisioning =
-  CancelDeploymentResponseManualProvisioning as any as S.Schema<CreateDeploymentResponseBodyCase1ManualProvisioning>;
-
 export type CreateDeploymentResponseBodyCase1MetaMap = { [key: string]: string | undefined };
-export const CreateDeploymentResponseBodyCase1MetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentResponseBodyCase1MetaMap>;
-
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList>;
-
 export interface CreateDeploymentResponseBodyCase1MicrofrontendsCase0 {
   /** The project name of the default app of this deployment's microfrontends group. */
   defaultAppProjectName: string;
@@ -8469,29 +4735,13 @@ export interface CreateDeploymentResponseBodyCase1MicrofrontendsCase0 {
   groupIds: CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList;
   isDefaultApp?: boolean;
 }
-export const CreateDeploymentResponseBodyCase1MicrofrontendsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultAppProjectName: S.String,
-    defaultRoute: S.optional(S.String),
-    groupIds: CreateDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList,
-    isDefaultApp: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1MicrofrontendsCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1MicrofrontendsCase0>;
-
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type CreateDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList>;
-
 /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
 export type CreateDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState =
   | "no_config"
   | "success"
   | "waiting_on_build";
-export const CreateDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState = S.String;
-
 export interface CreateDeploymentResponseBodyCase1MicrofrontendsCase1 {
   /** The project name of the default app of this deployment's microfrontends group. */
   defaultAppProjectName: string;
@@ -8503,26 +4753,9 @@ export interface CreateDeploymentResponseBodyCase1MicrofrontendsCase1 {
   /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
   mfeConfigUploadState?: CreateDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState;
 }
-export const CreateDeploymentResponseBodyCase1MicrofrontendsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultAppProjectName: S.String,
-    defaultRoute: S.optional(S.String),
-    groupIds: CreateDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList,
-    isDefaultApp: S.Boolean,
-    mfeConfigUploadState: S.optional(
-      CreateDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState,
-    ),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1MicrofrontendsCase1",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1MicrofrontendsCase1>;
-
 export type CreateDeploymentResponseBodyCase1Microfrontends =
   | CreateDeploymentResponseBodyCase1MicrofrontendsCase0
   | CreateDeploymentResponseBodyCase1MicrofrontendsCase1;
-export const CreateDeploymentResponseBodyCase1Microfrontends =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1Microfrontends>;
-
 /** If set it overrides the `projectSettings.nodeVersion` for this deployment. */
 export type CreateDeploymentResponseBodyCase1NodeVersion =
   | "10.x"
@@ -8534,12 +4767,7 @@ export type CreateDeploymentResponseBodyCase1NodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-export const CreateDeploymentResponseBodyCase1NodeVersion = S.String;
-
 export type CreateDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList>;
-
 export interface CreateDeploymentResponseBodyCase1OidcTokenClaims {
   aud: string;
   custom_environment_id?: string;
@@ -8555,54 +4783,19 @@ export interface CreateDeploymentResponseBodyCase1OidcTokenClaims {
   scope: string;
   sub: string;
 }
-export const CreateDeploymentResponseBodyCase1OidcTokenClaims = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aud: S.String,
-    custom_environment_id: S.optional(S.String),
-    deployment_id: S.optional(S.String),
-    environment: S.String,
-    iss: S.String,
-    mfe_group_ids: S.optional(CreateDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList),
-    owner: S.String,
-    owner_id: S.String,
-    plan: S.optional(S.String),
-    project: S.String,
-    project_id: S.String,
-    scope: S.String,
-    sub: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1OidcTokenClaims",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1OidcTokenClaims>;
-
 export type CreateDeploymentResponseBodyCase1OomReport = "out-of-memory";
-export const CreateDeploymentResponseBodyCase1OomReport = S.String;
-
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type CreateDeploymentResponseBodyCase1PassiveRegionsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1PassiveRegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1PassiveRegionsList>;
-
 export type CreateDeploymentResponseBodyCase1Plan = "enterprise" | "hobby" | "pro";
-export const CreateDeploymentResponseBodyCase1Plan = S.String;
-
 /** The user on the external platform who triggered the deployment. */
 export type CreateDeploymentResponseBodyCase1PlatformCreator =
   CancelDeploymentResponsePlatformCreator;
-export const CreateDeploymentResponseBodyCase1PlatformCreator =
-  CancelDeploymentResponsePlatformCreator;
-
 /** Arbitrary key-value metadata provided by the platform. */
 export type CreateDeploymentResponseBodyCase1PlatformMetaMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1PlatformMetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentResponseBodyCase1PlatformMetaMap>;
-
 /** Whether the value is an opaque identifier or a URL. */
 export type CreateDeploymentResponseBodyCase1PlatformOriginType = "id" | "url";
-export const CreateDeploymentResponseBodyCase1PlatformOriginType = S.String;
-
 /** Reference back to the entity on the platform that initiated the deployment. */
 export interface CreateDeploymentResponseBodyCase1PlatformOrigin {
   /** Whether the value is an opaque identifier or a URL. */
@@ -8610,15 +4803,9 @@ export interface CreateDeploymentResponseBodyCase1PlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-export const CreateDeploymentResponseBodyCase1PlatformOrigin =
-  CancelDeploymentResponsePlatformOrigin as any as S.Schema<CreateDeploymentResponseBodyCase1PlatformOrigin>;
-
 /** The external platform that created the deployment (e.g. its display name). */
 export type CreateDeploymentResponseBodyCase1PlatformSource =
   CancelDeploymentResponsePlatformSource;
-export const CreateDeploymentResponseBodyCase1PlatformSource =
-  CancelDeploymentResponsePlatformSource;
-
 /** Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it) */
 export interface CreateDeploymentResponseBodyCase1Platform {
   /** The user on the external platform who triggered the deployment. */
@@ -8630,21 +4817,8 @@ export interface CreateDeploymentResponseBodyCase1Platform {
   /** The external platform that created the deployment (e.g. its display name). */
   source: CancelDeploymentResponsePlatformSource;
 }
-export const CreateDeploymentResponseBodyCase1Platform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creator: CancelDeploymentResponsePlatformCreator,
-    meta: S.optional(CreateDeploymentResponseBodyCase1PlatformMetaMap),
-    origin: CreateDeploymentResponseBodyCase1PlatformOrigin,
-    source: CancelDeploymentResponsePlatformSource,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1Platform",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1Platform>;
-
 /** The public project information associated with the deployment. */
 export type CreateDeploymentResponseBodyCase1Project = CancelDeploymentResponseProject;
-export const CreateDeploymentResponseBodyCase1Project = CancelDeploymentResponseProject;
-
 export type CreateDeploymentResponseBodyCase1ProjectSettingsFramework =
   | "actix-web"
   | "angular"
@@ -8720,8 +4894,6 @@ export type CreateDeploymentResponseBodyCase1ProjectSettingsFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-export const CreateDeploymentResponseBodyCase1ProjectSettingsFramework = S.String;
-
 export type CreateDeploymentResponseBodyCase1ProjectSettingsNodeVersion =
   | "10.x"
   | "12.x"
@@ -8732,18 +4904,10 @@ export type CreateDeploymentResponseBodyCase1ProjectSettingsNodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-export const CreateDeploymentResponseBodyCase1ProjectSettingsNodeVersion = S.String;
-
 export type CreateDeploymentResponseBodyCase1ProjectSettingsSpeedInsights =
   CancelDeploymentResponseProjectSettingsSpeedInsights;
-export const CreateDeploymentResponseBodyCase1ProjectSettingsSpeedInsights =
-  CancelDeploymentResponseProjectSettingsSpeedInsights;
-
 export type CreateDeploymentResponseBodyCase1ProjectSettingsWebAnalytics =
   CancelDeploymentResponseProjectSettingsWebAnalytics;
-export const CreateDeploymentResponseBodyCase1ProjectSettingsWebAnalytics =
-  CancelDeploymentResponseProjectSettingsWebAnalytics;
-
 export interface CreateDeploymentResponseBodyCase1ProjectSettings {
   buildCommand?: string | null;
   commandForIgnoringBuildStep?: string | null;
@@ -8755,9 +4919,6 @@ export interface CreateDeploymentResponseBodyCase1ProjectSettings {
   speedInsights?: CancelDeploymentResponseProjectSettingsSpeedInsights;
   webAnalytics?: CancelDeploymentResponseProjectSettingsWebAnalytics;
 }
-export const CreateDeploymentResponseBodyCase1ProjectSettings =
-  CancelDeploymentResponseProjectSettings as any as S.Schema<CreateDeploymentResponseBodyCase1ProjectSettings>;
-
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type CreateDeploymentResponseBodyCase1ReadyState =
   | "BLOCKED"
@@ -8767,41 +4928,26 @@ export type CreateDeploymentResponseBodyCase1ReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const CreateDeploymentResponseBodyCase1ReadyState = S.String;
-
 /** Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic */
 export type CreateDeploymentResponseBodyCase1ReadySubstate = "PROMOTED" | "ROLLING" | "STAGED";
-export const CreateDeploymentResponseBodyCase1ReadySubstate = S.String;
-
 /** The regions the deployment exists in */
 export type CreateDeploymentResponseBodyCase1RegionsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1RegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1RegionsList>;
-
 /** The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type. */
 export type CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineDefaultPurchaseType =
   | "basic"
   | "enhanced"
   | "none"
   | "standard";
-export const CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineDefaultPurchaseType =
-  S.String;
-
 /** Whether the build ran on a fixed or elastic machine. Used to drive billing for the build. */
 export type CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineMachineSelectionType =
   | "elastic"
   | "fixed";
-export const CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineMachineSelectionType =
-  S.String;
-
 /** Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project. */
 export type CreateDeploymentResponseBodyCase1ResourceConfigBuildMachinePurchaseType =
   | "basic"
   | "enhanced"
   | "standard"
   | "turbo";
-export const CreateDeploymentResponseBodyCase1ResourceConfigBuildMachinePurchaseType = S.String;
-
 /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
 export type CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource =
   | "deployment-override"
@@ -8810,8 +4956,6 @@ export type CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineSelection
   | "project-setting"
   | "team-entitlement"
   | "team-setting";
-export const CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource = S.String;
-
 /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
 export interface CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine {
   /** Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive. */
@@ -8827,44 +4971,12 @@ export interface CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine {
   /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
   selectionSource?: CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource;
 }
-export const CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cores: S.optional(S.Number),
-      defaultPurchaseType: S.optional(
-        CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineDefaultPurchaseType,
-      ),
-      machineSelectionType: S.optional(
-        CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineMachineSelectionType,
-      ),
-      memory: S.optional(S.Number),
-      purchaseType: S.optional(
-        CreateDeploymentResponseBodyCase1ResourceConfigBuildMachinePurchaseType,
-      ),
-      selectionSource: S.optional(
-        CreateDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource,
-      ),
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine>;
-
 export interface CreateDeploymentResponseBodyCase1ResourceConfig {
   /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
   buildMachine?: CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine;
 }
-export const CreateDeploymentResponseBodyCase1ResourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildMachine: S.optional(CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ResourceConfig",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ResourceConfig>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type = "service";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -8872,38 +4984,18 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1 =
-  CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0Destination =
   | string
   | CreateDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0Destination =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0Destination>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList = Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type = "host";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type = S.String;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
   gt?: number;
@@ -8917,71 +5009,24 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Val
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0 {
   type: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type;
   value: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value,
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Type = S.String;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
   gt?: number;
@@ -8995,116 +5040,40 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Val
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Type,
-      value: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value),
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasItem =
   | CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0
   | CreateDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItem>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HasList =
   Array<CreateDeploymentResponseBodyCase1RoutesItemCase0HasItem>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HasList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1RoutesItemCase0HasItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HasList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0Locale {
   cookie?: string;
   redirect?: CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0Locale = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie: S.optional(S.String),
-    redirect: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0Locale",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0Locale>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList = Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList>;
-
 /** The original middleware matchers. */
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList = Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type = "host";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type = S.String;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -9118,71 +5087,24 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0 {
   type: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type;
   value: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Type = S.String;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -9196,116 +5118,41 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Type,
-      value: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItem =
   | CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0
   | CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItem>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MissingList =
   Array<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItem>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MissingList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1RoutesItemCase0MissingItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0MissingList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0MitigateAction = "challenge" | "deny";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0MitigateAction = S.String;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0Mitigate {
   action: CreateDeploymentResponseBodyCase1RoutesItemCase0MitigateAction;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0Mitigate = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      action: CreateDeploymentResponseBodyCase1RoutesItemCase0MitigateAction,
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0Mitigate",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0Mitigate>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args =
   | string
   | CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
   | "delete"
   | "set";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Op = S.String;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
   gt?: number;
@@ -9318,54 +5165,16 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemC
   pre?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey =
   | string
   | CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target {
   key: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Type =
   | "request.headers"
   | "request.query"
   | "response.headers";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0 {
   args?: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args;
   env?: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList;
@@ -9373,61 +5182,22 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemC
   target: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target;
   type: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Type;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args),
-      env: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList),
-      op: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Op,
-      target: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target,
-      type: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op = "set";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op = S.String;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Type =
   "request.path";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Type = S.String;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1 {
   args: string;
   env?: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList;
   op: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op;
   type: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList),
-      op: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op,
-      type: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItem =
   | CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0
   | CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItem>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsList =
   Array<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItem>;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsList>;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase0 {
   caseSensitive?: boolean;
   check?: boolean;
@@ -9457,38 +5227,6 @@ export interface CreateDeploymentResponseBodyCase1RoutesItemCase0 {
   statusCode?: number;
   transforms?: CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsList;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseSensitive: S.optional(S.Boolean),
-    check: S.optional(S.Boolean),
-    continue: S.optional(S.Boolean),
-    dest: S.optional(S.String),
-    destination: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0Destination),
-    env: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0EnvList),
-    has: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0HasList),
-    headers: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0HeadersMap),
-    important: S.optional(S.Boolean),
-    locale: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0Locale),
-    methods: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0MethodsList),
-    middleware: S.optional(S.Number),
-    middlewarePath: S.optional(S.String),
-    middlewareRawSrc: S.optional(
-      CreateDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList,
-    ),
-    missing: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0MissingList),
-    mitigate: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0Mitigate),
-    override: S.optional(S.Boolean),
-    respectOriginCacheControl: S.optional(S.Boolean),
-    source: S.optional(S.String),
-    src: S.String,
-    status: S.optional(S.Number),
-    statusCode: S.optional(S.Number),
-    transforms: S.optional(CreateDeploymentResponseBodyCase1RoutesItemCase0TransformsList),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1RoutesItemCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase1Handle =
   | "error"
   | "filesystem"
@@ -9496,58 +5234,34 @@ export type CreateDeploymentResponseBodyCase1RoutesItemCase1Handle =
   | "miss"
   | "resource"
   | "rewrite";
-export const CreateDeploymentResponseBodyCase1RoutesItemCase1Handle = S.String;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase1 {
   dest?: string;
   handle: CreateDeploymentResponseBodyCase1RoutesItemCase1Handle;
   src?: string;
   status?: number;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase1 =
-  CancelDeploymentResponseRoutesItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItemCase2Middleware = 0;
-export const CreateDeploymentResponseBodyCase1RoutesItemCase2Middleware = S.Number;
-
 export interface CreateDeploymentResponseBodyCase1RoutesItemCase2 {
   continue: boolean;
   middleware: CreateDeploymentResponseBodyCase1RoutesItemCase2Middleware;
   src: string;
 }
-export const CreateDeploymentResponseBodyCase1RoutesItemCase2 =
-  CancelDeploymentResponseRoutesItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItemCase2>;
-
 export type CreateDeploymentResponseBodyCase1RoutesItem =
   | CreateDeploymentResponseBodyCase1RoutesItemCase0
   | CreateDeploymentResponseBodyCase1RoutesItemCase1
   | CreateDeploymentResponseBodyCase1RoutesItemCase2;
-export const CreateDeploymentResponseBodyCase1RoutesItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesItem>;
-
 export type CreateDeploymentResponseBodyCase1RoutesList =
   Array<CreateDeploymentResponseBodyCase1RoutesItem>;
-export const CreateDeploymentResponseBodyCase1RoutesList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1RoutesItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1RoutesList>;
-
 /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
 export type CreateDeploymentResponseBodyCase1SeatBlockBlockCode =
   | "COMMIT_AUTHOR_REQUIRED"
   | "TEAM_ACCESS_REQUIRED";
-export const CreateDeploymentResponseBodyCase1SeatBlockBlockCode = S.String;
-
 /** The git provider type associated with gitUserId. */
 export type CreateDeploymentResponseBodyCase1SeatBlockGitProvider =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const CreateDeploymentResponseBodyCase1SeatBlockGitProvider = S.String;
-
 export type CreateDeploymentResponseBodyCase1SeatBlockGitUserId = string | number;
-export const CreateDeploymentResponseBodyCase1SeatBlockGitUserId =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1SeatBlockGitUserId>;
-
 /** NSNB Blocked metadata */
 export interface CreateDeploymentResponseBodyCase1SeatBlock {
   /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
@@ -9560,59 +5274,22 @@ export interface CreateDeploymentResponseBodyCase1SeatBlock {
   /** The blocked vercel user ID. */
   userId?: string;
 }
-export const CreateDeploymentResponseBodyCase1SeatBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blockCode: CreateDeploymentResponseBodyCase1SeatBlockBlockCode,
-    gitProvider: S.optional(CreateDeploymentResponseBodyCase1SeatBlockGitProvider),
-    gitUserId: S.optional(CreateDeploymentResponseBodyCase1SeatBlockGitUserId),
-    isVerified: S.optional(S.Boolean),
-    userId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1SeatBlock",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1SeatBlock>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode =
   "strict";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity {
   mode: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture =
-  S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -9630,15 +5307,9 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -9654,57 +5325,28 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1
   | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDuration =
   | number
   | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDuration>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue {
   affinity?: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity;
   architecture?: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture;
@@ -9719,95 +5361,33 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      affinity: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity,
-      ),
-      architecture: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture,
-      ),
-      excludeFiles: S.optional(S.String),
-      experimentalTriggers: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList,
-      ),
-      functionFailoverRegions: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList,
-      ),
-      includeFiles: S.optional(S.String),
-      maxConcurrency: S.optional(S.Number),
-      maxDuration: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDuration,
-      ),
-      memory: S.optional(S.Number),
-      regions: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList,
-      ),
-      runtime: S.optional(S.String),
-      supportsCancellation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsMap = {
   [key: string]:
     | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue
     | undefined;
 };
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsMap>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles>;
-
 /** Matcher supplied outside of the middleware source module. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher>;
-
 /** Enforced runtime for explicitly configured Routing Middleware. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareRuntime =
   "nodejs";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareRuntime =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigProjectSettings =
   CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigProjectSettings =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-
 /** Names of the schedules that dispatch to this entrypoint, in config order. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
   entrypoint: string;
@@ -9816,23 +5396,14 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   /** Project-relative source file that contains the entrypoint. */
   sourceFile: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList>;
-
 /** Set when this build produces a function for schedule entrypoints. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction {
   entrypoints: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList;
   /** Function output path every schedule in this build targets. */
   outputPath: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig {
   buildCommand?: string;
   /** Buildpack runtime slug (e.g. "ruby"). */
@@ -9864,147 +5435,44 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig
   serviceName?: string;
   zeroConfig?: boolean;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      buildCommand: S.optional(S.String),
-      buildpack: S.optional(S.String),
-      bundle: S.optional(S.Boolean),
-      bunVersion: S.optional(S.String),
-      debug: S.optional(S.Boolean),
-      devCommand: S.optional(S.String),
-      excludeFiles: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles,
-      ),
-      framework: S.optional(S.NullOr(S.String)),
-      functions: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsMap,
-      ),
-      helpers: S.optional(S.Boolean),
-      import: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap),
-      includeFiles: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles,
-      ),
-      installCommand: S.optional(S.String),
-      ldsflags: S.optional(S.String),
-      maxLambdaSize: S.optional(S.String),
-      middleware: S.optional(S.Boolean),
-      middlewareMatcher: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher,
-      ),
-      middlewareRuntime: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareRuntime,
-      ),
-      nodeVersion: S.optional(S.String),
-      outputDirectory: S.optional(S.String),
-      projectSettings: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings,
-      ),
-      rust: S.optional(S.String),
-      scheduleFunction: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction,
-      ),
-      serviceName: S.optional(S.String),
-      zeroConfig: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0Builder {
   config?: CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig;
   src?: string;
   use: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0Builder = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      config: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig),
-      src: S.optional(S.String),
-      use: S.String,
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase0Builder",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0Builder>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValueType = "service-ref";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValueType = S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValue {
   service: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValueType;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      service: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValueType,
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValue",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValue>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0EnvMap = {
   [key: string]: CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValue | undefined;
 };
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0EnvMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateDeploymentResponseBodyCase1ServicesItemCase0EnvValue,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0EnvMap>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource =
   | "configured"
   | "generated";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource = S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List = Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0Schedule =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0Schedule =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0Schedule>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0Schema = "experimentalServices";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0Schema = S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List = Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1Item =
   CancelDeploymentResponseServicesItemCase0TopicsCase1Item;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1Item =
-  CancelDeploymentResponseServicesItemCase0TopicsCase1Item;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List =
   Array<CancelDeploymentResponseServicesItemCase0TopicsCase1Item>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List =
-  /*@__PURE__*/ S.Array(
-    CancelDeploymentResponseServicesItemCase0TopicsCase1Item,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0Topics =
   | CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List
   | CreateDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0Topics =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0Topics>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0Trigger =
   | "queue"
   | "schedule"
   | "workflow";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0Trigger = S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase0Type =
   | "cron"
   | "job"
   | "web"
   | "worker";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0Type = S.String;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase0 {
   buildCommand?: string;
@@ -10028,43 +5496,10 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase0Type;
   workspace: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.String),
-    builder: CreateDeploymentResponseBodyCase1ServicesItemCase0Builder,
-    entrypoint: S.optional(S.String),
-    env: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase0EnvMap),
-    framework: S.optional(S.String),
-    group: S.optional(S.String),
-    handlerFunction: S.optional(S.String),
-    installCommand: S.optional(S.String),
-    name: S.String,
-    preDeployCommand: S.optional(S.String),
-    routePrefix: S.optional(S.String),
-    routePrefixSource: S.optional(
-      CreateDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource,
-    ),
-    runtime: S.optional(S.String),
-    schedule: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase0Schedule),
-    schema: CreateDeploymentResponseBodyCase1ServicesItemCase0Schema,
-    subdomain: S.optional(S.String),
-    topics: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase0Topics),
-    trigger: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase0Trigger),
-    type: CreateDeploymentResponseBodyCase1ServicesItemCase0Type,
-    workspace: S.String,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase0",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase0>;
-
 /** Generated value shape, must be `"url"`. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItemFormat = "url";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItemFormat = S.String;
-
 /** If present, must be `"service"` for Service-to-Service HTTP bindings. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItemType = "service";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItemType = S.String;
-
 /** Caller-side bindings to other services. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItem {
   /** Environment variable name that will store the generated value */
@@ -10076,59 +5511,25 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItem 
   /** If present, must be `"service"` for Service-to-Service HTTP bindings. */
   type?: CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItemType;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      env: S.String,
-      format: CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItemFormat,
-      service: S.String,
-      type: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItemType),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItem",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItem>;
-
 /** Caller-side bindings to other services. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode =
   "strict";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity {
   mode: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity =
-  CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture =
-  S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -10146,15 +5547,9 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -10170,57 +5565,28 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1
   | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDuration =
   | number
   | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDuration>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue {
   affinity?: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity;
   architecture?: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture;
@@ -10235,95 +5601,33 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      affinity: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity,
-      ),
-      architecture: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture,
-      ),
-      excludeFiles: S.optional(S.String),
-      experimentalTriggers: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList,
-      ),
-      functionFailoverRegions: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList,
-      ),
-      includeFiles: S.optional(S.String),
-      maxConcurrency: S.optional(S.Number),
-      maxDuration: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDuration,
-      ),
-      memory: S.optional(S.Number),
-      regions: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList,
-      ),
-      runtime: S.optional(S.String),
-      supportsCancellation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsMap = {
   [key: string]:
     | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue
     | undefined;
 };
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsMap>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles>;
-
 /** Matcher supplied outside of the middleware source module. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher>;
-
 /** Enforced runtime for explicitly configured Routing Middleware. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareRuntime =
   "nodejs";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareRuntime =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigProjectSettings =
   CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigProjectSettings =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-
 /** Names of the schedules that dispatch to this entrypoint, in config order. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
   entrypoint: string;
@@ -10332,23 +5636,14 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   /** Project-relative source file that contains the entrypoint. */
   sourceFile: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
-
 /** Set when this build produces a function for schedule entrypoints. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction {
   entrypoints: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList;
   /** Function output path every schedule in this build targets. */
   outputPath: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig {
   buildCommand?: string;
   /** Buildpack runtime slug (e.g. "ruby"). */
@@ -10380,97 +5675,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig
   serviceName?: string;
   zeroConfig?: boolean;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      buildCommand: S.optional(S.String),
-      buildpack: S.optional(S.String),
-      bundle: S.optional(S.Boolean),
-      bunVersion: S.optional(S.String),
-      debug: S.optional(S.Boolean),
-      devCommand: S.optional(S.String),
-      excludeFiles: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles,
-      ),
-      framework: S.optional(S.NullOr(S.String)),
-      functions: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsMap,
-      ),
-      helpers: S.optional(S.Boolean),
-      import: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap),
-      includeFiles: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles,
-      ),
-      installCommand: S.optional(S.String),
-      ldsflags: S.optional(S.String),
-      maxLambdaSize: S.optional(S.String),
-      middleware: S.optional(S.Boolean),
-      middlewareMatcher: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher,
-      ),
-      middlewareRuntime: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareRuntime,
-      ),
-      nodeVersion: S.optional(S.String),
-      outputDirectory: S.optional(S.String),
-      projectSettings: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings,
-      ),
-      rust: S.optional(S.String),
-      scheduleFunction: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction,
-      ),
-      serviceName: S.optional(S.String),
-      zeroConfig: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig>;
-
 /** Builder selected by the resolver. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1Builder {
   config?: CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig;
   src?: string;
   use: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1Builder = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      config: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig),
-      src: S.optional(S.String),
-      use: S.String,
-    }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1Builder",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1Builder>;
-
 /** Command override for `runtime: "container"` services. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList = Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode = "strict";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity {
   mode: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueArchitecture =
-  S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -10488,15 +5710,9 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValu
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -10512,57 +5728,28 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValu
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1
   | CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1 =
   "max";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1 =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDuration =
   | number
   | CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDuration>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList>;
-
 /** Function configuration scoped to this service. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue {
   affinity?: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity;
@@ -10578,68 +5765,18 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValu
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      affinity: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity,
-      ),
-      architecture: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueArchitecture,
-      ),
-      excludeFiles: S.optional(S.String),
-      experimentalTriggers: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersList,
-      ),
-      functionFailoverRegions: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList,
-      ),
-      includeFiles: S.optional(S.String),
-      maxConcurrency: S.optional(S.Number),
-      maxDuration: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDuration,
-      ),
-      memory: S.optional(S.Number),
-      regions: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList,
-      ),
-      runtime: S.optional(S.String),
-      supportsCancellation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue>;
-
 /** Function configuration scoped to this service. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsMap = {
   [key: string]: CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue | undefined;
 };
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsMap>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Type = "host";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -10653,75 +5790,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHa
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Type;
   value: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -10735,100 +5821,32 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHa
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Type,
-      value: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersItem =
   CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersItem =
-  CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList =
   Array<CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList =
-  CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type =
   "host";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -10842,75 +5860,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMi
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type;
   value: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -10924,118 +5891,37 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMi
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Type,
-      value: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItem {
   has?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList;
   headers: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList;
   missing?: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList;
   source: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      has: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList),
-      headers: CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList,
-      missing: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList),
-      source: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItem",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList = Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type =
   "host";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -11049,75 +5935,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type;
   value: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -11131,90 +5966,28 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Type,
-      value: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Type =
   "host";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -11228,75 +6001,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Type;
   value: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -11310,69 +6032,19 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Type,
-      value: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem {
   destination: string;
   env?: CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList;
@@ -11382,36 +6054,11 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem
   source: string;
   statusCode?: number;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: S.String,
-      env: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList),
-      has: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasList),
-      missing: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingList,
-      ),
-      permanent: S.optional(S.Boolean),
-      source: S.String,
-      statusCode: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsList>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type =
   "service";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -11419,39 +6066,18 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemD
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1 =
-  CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList = Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type = "host";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -11465,75 +6091,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemH
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type;
   value: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -11547,90 +6122,28 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemH
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Type,
-      value: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Type =
   "host";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -11644,75 +6157,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemM
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Type;
   value: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -11726,110 +6188,32 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemM
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Type,
-      value: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp = "set";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemType =
   "request.path";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemType =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem {
   args: string;
   env?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList;
   op: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemType;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList,
-      ),
-      op: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemType,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItem {
   destination: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination;
   env?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList;
@@ -11840,38 +6224,11 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItem 
   statusCode?: number;
   transforms?: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destination: CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination,
-      env: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList),
-      has: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasList),
-      missing: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingList,
-      ),
-      respectOriginCacheControl: S.optional(S.Boolean),
-      source: S.String,
-      statusCode: S.optional(S.Number),
-      transforms: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItem",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesList>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type =
   "service";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -11879,41 +6236,20 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1 =
-  CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type =
   "host";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
   gt?: number;
@@ -11927,75 +6263,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type;
   value: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
   gt?: number;
@@ -12009,120 +6294,43 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Type,
-      value: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale {
   cookie?: string;
   redirect?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale =
-  CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList>;
-
 /** The original middleware matchers. */
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type =
   "host";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -12136,75 +6344,24 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0 {
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type;
   value: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type,
-      value: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Type =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -12218,120 +6375,43 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   re?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1 {
   key: string;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Type;
   value?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Type,
-      value: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction =
   | "challenge"
   | "deny";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate {
   action: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate =
-  CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
   | "delete"
   | "set";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
   | string
   | number;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
   gt?: number;
@@ -12344,57 +6424,16 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   pre?: string;
   suf?: string;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey =
   | string
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target {
   key: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Type =
   | "request.headers"
   | "request.query"
   | "response.headers";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Type =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0 {
   args?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args;
   env?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList;
@@ -12402,74 +6441,23 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   target: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args,
-      ),
-      env: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList,
-      ),
-      op: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Op,
-      target:
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
   Array<string>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op =
   "set";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op =
-  S.String;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Type =
   "request.path";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Type =
-  S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1 {
   args: string;
   env?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList;
   op: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op;
   type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Type;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList,
-      ),
-      op: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op,
-      type: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Type,
-    }),
-  ).annotate({
-    identifier:
-      "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList =
-  /*@__PURE__*/ S.Array(
-    CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem,
-  ) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList>;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0 {
   caseSensitive?: boolean;
   check?: boolean;
@@ -12499,51 +6487,6 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCas
   statusCode?: number;
   transforms?: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      caseSensitive: S.optional(S.Boolean),
-      check: S.optional(S.Boolean),
-      continue: S.optional(S.Boolean),
-      dest: S.optional(S.String),
-      destination: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination,
-      ),
-      env: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList),
-      has: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasList),
-      headers: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap,
-      ),
-      important: S.optional(S.Boolean),
-      locale: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale),
-      methods: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList,
-      ),
-      middleware: S.optional(S.Number),
-      middlewarePath: S.optional(S.String),
-      middlewareRawSrc: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList,
-      ),
-      missing: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingList,
-      ),
-      mitigate: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate,
-      ),
-      override: S.optional(S.Boolean),
-      respectOriginCacheControl: S.optional(S.Boolean),
-      source: S.optional(S.String),
-      src: S.String,
-      status: S.optional(S.Number),
-      statusCode: S.optional(S.Number),
-      transforms: S.optional(
-        CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle =
   | "error"
   | "filesystem"
@@ -12551,41 +6494,18 @@ export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Han
   | "miss"
   | "resource"
   | "rewrite";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle = S.String;
-
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1 {
   dest?: string;
   handle: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle;
   src?: string;
   status?: number;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dest: S.optional(S.String),
-      handle: CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle,
-      src: S.optional(S.String),
-      status: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1",
-  }) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItem>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesList =
   Array<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItem>;
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesList>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItemCase1Schema = "experimentalServicesV2";
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1Schema = S.String;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export interface CreateDeploymentResponseBodyCase1ServicesItemCase1 {
   /** Caller-side bindings to other services. */
@@ -12616,47 +6536,12 @@ export interface CreateDeploymentResponseBodyCase1ServicesItemCase1 {
   schema: CreateDeploymentResponseBodyCase1ServicesItemCase1Schema;
   trailingSlash?: boolean;
 }
-export const CreateDeploymentResponseBodyCase1ServicesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1BindingsList),
-    buildCommand: S.optional(S.String),
-    builder: CreateDeploymentResponseBodyCase1ServicesItemCase1Builder,
-    cleanUrls: S.optional(S.Boolean),
-    command: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1CommandList),
-    devCommand: S.optional(S.String),
-    entrypoint: S.optional(S.String),
-    framework: S.optional(S.String),
-    functions: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1FunctionsMap),
-    headers: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1HeadersList),
-    ignoreCommand: S.optional(S.String),
-    installCommand: S.optional(S.String),
-    name: S.String,
-    outputDirectory: S.optional(S.String),
-    redirects: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RedirectsList),
-    rewrites: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RewritesList),
-    root: S.String,
-    routes: S.optional(CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesList),
-    runtime: S.optional(S.String),
-    schema: CreateDeploymentResponseBodyCase1ServicesItemCase1Schema,
-    trailingSlash: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1ServicesItemCase1",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItemCase1>;
-
 export type CreateDeploymentResponseBodyCase1ServicesItem =
   | CreateDeploymentResponseBodyCase1ServicesItemCase0
   | CreateDeploymentResponseBodyCase1ServicesItemCase1;
-export const CreateDeploymentResponseBodyCase1ServicesItem =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesItem>;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export type CreateDeploymentResponseBodyCase1ServicesList =
   Array<CreateDeploymentResponseBodyCase1ServicesItem>;
-export const CreateDeploymentResponseBodyCase1ServicesList = /*@__PURE__*/ S.Array(
-  CreateDeploymentResponseBodyCase1ServicesItem,
-) as any as S.Schema<CreateDeploymentResponseBodyCase1ServicesList>;
-
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type CreateDeploymentResponseBodyCase1Source =
   | "api-trigger-git-deploy"
@@ -12669,8 +6554,6 @@ export type CreateDeploymentResponseBodyCase1Source =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const CreateDeploymentResponseBodyCase1Source = S.String;
-
 export type CreateDeploymentResponseBodyCase1Status =
   | "BLOCKED"
   | "BUILDING"
@@ -12679,28 +6562,15 @@ export type CreateDeploymentResponseBodyCase1Status =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const CreateDeploymentResponseBodyCase1Status = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type CreateDeploymentResponseBodyCase1Target = "production" | "staging";
-export const CreateDeploymentResponseBodyCase1Target = S.String;
-
 /** The team that owns the deployment if any */
 export type CreateDeploymentResponseBodyCase1Team = CancelDeploymentResponseTeam;
-export const CreateDeploymentResponseBodyCase1Team = CancelDeploymentResponseTeam;
-
 export type CreateDeploymentResponseBodyCase1Type = "LAMBDAS";
-export const CreateDeploymentResponseBodyCase1Type = S.String;
-
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type CreateDeploymentResponseBodyCase1UserAliasesList = Array<string>;
-export const CreateDeploymentResponseBodyCase1UserAliasesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<CreateDeploymentResponseBodyCase1UserAliasesList>;
-
 /** The platform version that was used to create the deployment. */
 export type CreateDeploymentResponseBodyCase1Version = 2;
-export const CreateDeploymentResponseBodyCase1Version = S.Number;
-
 /** Returns the newly created deployment object. Poll `readyState` to track build progress. See https://vercel.com/docs/deployments/deployment-states for possible states. */
 export interface CreateDeploymentResponseBodyCase1 {
   /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
@@ -12834,115 +6704,13 @@ export interface CreateDeploymentResponseBodyCase1 {
   /** The platform version that was used to create the deployment. */
   version: CreateDeploymentResponseBodyCase1Version;
 }
-export const CreateDeploymentResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(CreateDeploymentResponseBodyCase1AliasList),
-    aliasAssigned: S.Boolean,
-    aliasAssignedAt: S.optional(S.NullOr(CreateDeploymentResponseBodyCase1AliasAssignedAt)),
-    aliasError: S.optional(S.NullOr(CancelDeploymentResponseAliasError)),
-    aliasFinal: S.optional(S.NullOr(S.String)),
-    aliasWarning: S.optional(S.NullOr(CancelDeploymentResponseAliasWarning)),
-    alwaysRefuseToBuild: S.optional(S.Boolean),
-    atproto: S.optional(CreateDeploymentResponseBodyCase1Atproto),
-    attribution: S.optional(CreateDeploymentResponseBodyCase1Attribution),
-    autoAssignCustomDomains: S.optional(S.Boolean),
-    automaticAliases: S.optional(CreateDeploymentResponseBodyCase1AutomaticAliasesList),
-    bootedAt: S.Number,
-    build: CreateDeploymentResponseBodyCase1Build,
-    buildArtifactUrls: S.optional(CreateDeploymentResponseBodyCase1BuildArtifactUrlsList),
-    buildContainerFinishedAt: S.optional(S.Number),
-    buildErrorAt: S.optional(S.Number),
-    buildingAt: S.Number,
-    builds: S.optional(CreateDeploymentResponseBodyCase1BuildsList),
-    buildSkipped: S.Boolean,
-    canceledAt: S.optional(S.Number),
-    checks: S.optional(CreateDeploymentResponseBodyCase1Checks),
-    checksConclusion: S.optional(CreateDeploymentResponseBodyCase1ChecksConclusion),
-    checksState: S.optional(CreateDeploymentResponseBodyCase1ChecksState),
-    config: S.optional(CreateDeploymentResponseBodyCase1Config),
-    connectBuildsEnabled: S.optional(S.Boolean),
-    connectConfigurationId: S.optional(S.String),
-    createdAt: S.Number,
-    createdIn: S.String,
-    creator: CreateDeploymentResponseBodyCase1Creator,
-    crons: S.optional(CreateDeploymentResponseBodyCase1CronsList),
-    customEnvironment: S.optional(CreateDeploymentResponseBodyCase1CustomEnvironment),
-    defaultRoute: S.optional(S.String),
-    deletedAt: S.optional(S.NullOr(S.Number)),
-    duration: CancelDeploymentResponseDuration,
-    env: CreateDeploymentResponseBodyCase1EnvList,
-    errorCode: S.optional(S.String),
-    errorLink: S.optional(S.String),
-    errorMessage: S.optional(S.NullOr(S.String)),
-    errorStep: S.optional(S.String),
-    flags: S.optional(CreateDeploymentResponseBodyCase1Flags),
-    functions: S.optional(S.NullOr(CreateDeploymentResponseBodyCase1FunctionsMap)),
-    gitRepo: S.optional(S.NullOr(CreateDeploymentResponseBodyCase1GitRepo)),
-    gitSource: S.optional(CreateDeploymentResponseBodyCase1GitSource),
-    id: S.String,
-    images: S.optional(CreateDeploymentResponseBodyCase1Images),
-    initReadyAt: S.optional(S.Number),
-    inspectorUrl: S.NullOr(S.String),
-    integrations: S.optional(CreateDeploymentResponseBodyCase1Integrations),
-    isFirstBranchDeployment: S.optional(S.Boolean),
-    isInConcurrentBuildsQueue: S.Boolean,
-    isInstantStatic: S.optional(S.Boolean),
-    isInSystemBuildsQueue: S.Boolean,
-    lambdas: S.optional(CreateDeploymentResponseBodyCase1LambdasList),
-    manualProvisioning: S.optional(CreateDeploymentResponseBodyCase1ManualProvisioning),
-    meta: CreateDeploymentResponseBodyCase1MetaMap,
-    microfrontends: S.optional(CreateDeploymentResponseBodyCase1Microfrontends),
-    monorepoManager: S.optional(S.NullOr(S.String)),
-    name: S.String,
-    nodeVersion: S.optional(CreateDeploymentResponseBodyCase1NodeVersion),
-    oidcTokenClaims: S.optional(CreateDeploymentResponseBodyCase1OidcTokenClaims),
-    oomReport: S.optional(CreateDeploymentResponseBodyCase1OomReport),
-    originCacheRegion: S.optional(S.String),
-    ownerId: S.String,
-    passiveConnectConfigurationId: S.optional(S.String),
-    passiveRegions: S.optional(CreateDeploymentResponseBodyCase1PassiveRegionsList),
-    plan: CreateDeploymentResponseBodyCase1Plan,
-    platform: S.optional(CreateDeploymentResponseBodyCase1Platform),
-    prebuilt: S.optional(S.Boolean),
-    previewCommentsEnabled: S.optional(S.Boolean),
-    project: S.optional(CancelDeploymentResponseProject),
-    projectId: S.String,
-    projectSettings: CreateDeploymentResponseBodyCase1ProjectSettings,
-    public: S.Boolean,
-    ready: S.optional(S.Number),
-    readyState: CreateDeploymentResponseBodyCase1ReadyState,
-    readyStateReason: S.optional(S.String),
-    readySubstate: S.optional(CreateDeploymentResponseBodyCase1ReadySubstate),
-    regions: CreateDeploymentResponseBodyCase1RegionsList,
-    resourceConfig: S.optional(CreateDeploymentResponseBodyCase1ResourceConfig),
-    routes: S.NullOr(CreateDeploymentResponseBodyCase1RoutesList),
-    seatBlock: S.optional(CreateDeploymentResponseBodyCase1SeatBlock),
-    services: S.optional(CreateDeploymentResponseBodyCase1ServicesList),
-    softDeletedByRetention: S.optional(S.Boolean),
-    source: S.optional(CreateDeploymentResponseBodyCase1Source),
-    status: CreateDeploymentResponseBodyCase1Status,
-    target: S.optional(S.NullOr(CreateDeploymentResponseBodyCase1Target)),
-    team: S.optional(CancelDeploymentResponseTeam),
-    ttyBuildLogs: S.optional(S.Boolean),
-    type: CreateDeploymentResponseBodyCase1Type,
-    undeletedAt: S.optional(S.Number),
-    url: S.String,
-    userAliases: S.optional(CreateDeploymentResponseBodyCase1UserAliasesList),
-    userConfiguredDeploymentId: S.optional(S.String),
-    version: CreateDeploymentResponseBodyCase1Version,
-  }),
-).annotate({
-  identifier: "CreateDeploymentResponseBodyCase1",
-}) as any as S.Schema<CreateDeploymentResponseBodyCase1>;
-
 export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBodyCase0
   | CreateDeploymentResponseBodyCase1;
-export const CreateDeploymentResponseBody =
-  S.Unknown as any as S.Schema<CreateDeploymentResponseBody>;
+const CreateDeploymentResponseBody = S.Unknown as any as S.Schema<CreateDeploymentResponseBody>;
 
 export type CreateDeploymentResponse = CreateDeploymentResponseBody;
-export const CreateDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   CreateDeploymentResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "CreateDeploymentResponse" }) as any as S.Schema<CreateDeploymentResponse>;
 
@@ -12956,7 +6724,7 @@ export interface DeleteDeploymentRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     url: S.optional(S.String.pipe(T.Query())),
@@ -12967,7 +6735,7 @@ export const DeleteDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A constant with the final state of the deployment. */
 export type DeleteDeploymentResponseState = "DELETED";
-export const DeleteDeploymentResponseState = S.String;
+const DeleteDeploymentResponseState = S.String;
 
 export interface DeleteDeploymentResponse {
   /** A constant with the final state of the deployment. */
@@ -12975,7 +6743,7 @@ export interface DeleteDeploymentResponse {
   /** The removed deployment ID. */
   uid: string;
 }
-export const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: DeleteDeploymentResponseState,
     uid: S.String,
@@ -12992,7 +6760,7 @@ export interface GetDeploymentRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrUrl: S.String.pipe(T.Label()),
     withGitRepoInfo: S.optional(S.String.pipe(T.Query())),
@@ -13002,19 +6770,10 @@ export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDeploymentRequest" }) as any as S.Schema<GetDeploymentRequest>;
 
 export type GetDeploymentResponseBodyCase0AliasList = Array<string>;
-export const GetDeploymentResponseBodyCase0AliasList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase0AliasList>;
-
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type GetDeploymentResponseBodyCase0AliasError = CancelDeploymentResponseAliasError;
-export const GetDeploymentResponseBodyCase0AliasError = CancelDeploymentResponseAliasError;
-
 export type GetDeploymentResponseBodyCase0AliasWarning = CancelDeploymentResponseAliasWarning;
-export const GetDeploymentResponseBodyCase0AliasWarning = CancelDeploymentResponseAliasWarning;
-
 export type GetDeploymentResponseBodyCase0Duration = CancelDeploymentResponseDuration;
-export const GetDeploymentResponseBodyCase0Duration = CancelDeploymentResponseDuration;
-
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type GetDeploymentResponseBodyCase0ReadyState =
   | "BLOCKED"
@@ -13024,12 +6783,8 @@ export type GetDeploymentResponseBodyCase0ReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetDeploymentResponseBodyCase0ReadyState = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type GetDeploymentResponseBodyCase0Target = "production" | "staging";
-export const GetDeploymentResponseBodyCase0Target = S.String;
-
 /** Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld. */
 export interface GetDeploymentResponseBodyCase0 {
   alias?: GetDeploymentResponseBodyCase0AliasList;
@@ -13047,108 +6802,39 @@ export interface GetDeploymentResponseBodyCase0 {
   /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
   target?: GetDeploymentResponseBodyCase0Target | null;
 }
-export const GetDeploymentResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(GetDeploymentResponseBodyCase0AliasList),
-    aliasAssigned: S.Boolean,
-    aliasError: S.optional(S.NullOr(CancelDeploymentResponseAliasError)),
-    aliasWarning: S.optional(S.NullOr(CancelDeploymentResponseAliasWarning)),
-    duration: CancelDeploymentResponseDuration,
-    errorCode: S.optional(S.String),
-    errorMessage: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    readyState: GetDeploymentResponseBodyCase0ReadyState,
-    target: S.optional(S.NullOr(GetDeploymentResponseBodyCase0Target)),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase0>;
-
 /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
 export type GetDeploymentResponseBodyCase1AliasList = Array<string>;
-export const GetDeploymentResponseBodyCase1AliasList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1AliasList>;
-
 export type GetDeploymentResponseBodyCase1AliasAssignedAt = number | boolean;
-export const GetDeploymentResponseBodyCase1AliasAssignedAt =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1AliasAssignedAt>;
-
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type GetDeploymentResponseBodyCase1AliasError = CancelDeploymentResponseAliasError;
-export const GetDeploymentResponseBodyCase1AliasError = CancelDeploymentResponseAliasError;
-
 export type GetDeploymentResponseBodyCase1AliasWarning = CancelDeploymentResponseAliasWarning;
-export const GetDeploymentResponseBodyCase1AliasWarning = CancelDeploymentResponseAliasWarning;
-
 export type GetDeploymentResponseBodyCase1AtprotoCase0 = CancelDeploymentResponseAtprotoCase0;
-export const GetDeploymentResponseBodyCase1AtprotoCase0 = CancelDeploymentResponseAtprotoCase0;
-
 export type GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList = Array<string>;
-export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList>;
-
 export type GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList = Array<string>;
-export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList>;
-
 export type GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem =
   | "account"
   | "commit"
   | "identity"
   | "sync";
-export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem = S.String;
-
 export type GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList =
   Array<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsItem>;
-export const GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList =
-  CreateDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList>;
-
 export interface GetDeploymentResponseBodyCase1AtprotoCase1Subscription {
   collections: GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList;
   dids?: GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList;
   kinds?: GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList;
   path: string;
 }
-export const GetDeploymentResponseBodyCase1AtprotoCase1Subscription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    collections: GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionCollectionsList,
-    dids: S.optional(GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionDidsList),
-    kinds: S.optional(GetDeploymentResponseBodyCase1AtprotoCase1SubscriptionKindsList),
-    path: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1AtprotoCase1Subscription",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1Subscription>;
-
 export interface GetDeploymentResponseBodyCase1AtprotoCase1 {
   enabled: boolean;
   subscription: GetDeploymentResponseBodyCase1AtprotoCase1Subscription;
 }
-export const GetDeploymentResponseBodyCase1AtprotoCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    subscription: GetDeploymentResponseBodyCase1AtprotoCase1Subscription,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1AtprotoCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1AtprotoCase1>;
-
 export type GetDeploymentResponseBodyCase1Atproto =
   | CancelDeploymentResponseAtprotoCase0
   | GetDeploymentResponseBodyCase1AtprotoCase1;
-export const GetDeploymentResponseBodyCase1Atproto =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1Atproto>;
-
 /** Commit metadata from the git commit author */
 export type GetDeploymentResponseBodyCase1AttributionCommitMeta =
   CancelDeploymentResponseAttributionCommitMeta;
-export const GetDeploymentResponseBodyCase1AttributionCommitMeta =
-  CancelDeploymentResponseAttributionCommitMeta;
-
 export type GetDeploymentResponseBodyCase1AttributionGitUserId = string | number;
-export const GetDeploymentResponseBodyCase1AttributionGitUserId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1AttributionGitUserId>;
-
 /** Git provider user associated with the commit author email (only set if resolved) */
 export interface GetDeploymentResponseBodyCase1AttributionGitUser {
   id: GetDeploymentResponseBodyCase1AttributionGitUserId;
@@ -13159,22 +6845,8 @@ export interface GetDeploymentResponseBodyCase1AttributionGitUser {
   /** User type */
   type?: string;
 }
-export const GetDeploymentResponseBodyCase1AttributionGitUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: GetDeploymentResponseBodyCase1AttributionGitUserId,
-    login: S.String,
-    provider: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1AttributionGitUser",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1AttributionGitUser>;
-
 /** Team roles at time of deployment */
 export type GetDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList = Array<string>;
-export const GetDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1AttributionVercelUserTeamRolesList>;
-
 /** Vercel user linked to the git provider account (only set if resolved) */
 export interface GetDeploymentResponseBodyCase1AttributionVercelUser {
   /** Vercel user ID */
@@ -13184,9 +6856,6 @@ export interface GetDeploymentResponseBodyCase1AttributionVercelUser {
   /** Vercel username */
   username: string;
 }
-export const GetDeploymentResponseBodyCase1AttributionVercelUser =
-  CreateDeploymentResponseBodyCase1AttributionVercelUser as any as S.Schema<GetDeploymentResponseBodyCase1AttributionVercelUser>;
-
 /** Attribution metadata for the deployment, linking commit author to git and Vercel users. Only populated when the `enable-deployment-attribution` flag is enabled. */
 export interface GetDeploymentResponseBodyCase1Attribution {
   /** Commit metadata from the git commit author */
@@ -13196,139 +6865,72 @@ export interface GetDeploymentResponseBodyCase1Attribution {
   /** Vercel user linked to the git provider account (only set if resolved) */
   vercelUser?: GetDeploymentResponseBodyCase1AttributionVercelUser;
 }
-export const GetDeploymentResponseBodyCase1Attribution = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    commitMeta: S.optional(CancelDeploymentResponseAttributionCommitMeta),
-    gitUser: S.optional(GetDeploymentResponseBodyCase1AttributionGitUser),
-    vercelUser: S.optional(GetDeploymentResponseBodyCase1AttributionVercelUser),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1Attribution",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1Attribution>;
-
 export type GetDeploymentResponseBodyCase1AutomaticAliasesList = Array<string>;
-export const GetDeploymentResponseBodyCase1AutomaticAliasesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1AutomaticAliasesList>;
-
 export type GetDeploymentResponseBodyCase1BuildEnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1BuildEnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1BuildEnvList>;
-
 export interface GetDeploymentResponseBodyCase1Build {
   env: GetDeploymentResponseBodyCase1BuildEnvList;
 }
-export const GetDeploymentResponseBodyCase1Build =
-  CancelDeploymentResponseBuild as any as S.Schema<GetDeploymentResponseBodyCase1Build>;
-
 export type GetDeploymentResponseBodyCase1BuildArtifactUrlsList = Array<string>;
-export const GetDeploymentResponseBodyCase1BuildArtifactUrlsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1BuildArtifactUrlsList>;
-
 export type GetDeploymentResponseBodyCase1BuildsItemConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const GetDeploymentResponseBodyCase1BuildsItemConfigMap =
-  CancelDeploymentResponseBuildsItemConfigMap as any as S.Schema<GetDeploymentResponseBodyCase1BuildsItemConfigMap>;
-
 export interface GetDeploymentResponseBodyCase1BuildsItem {
   config?: GetDeploymentResponseBodyCase1BuildsItemConfigMap;
   src?: string;
   use: string;
 }
-export const GetDeploymentResponseBodyCase1BuildsItem =
-  CancelDeploymentResponseBuildsItem as any as S.Schema<GetDeploymentResponseBodyCase1BuildsItem>;
-
 export type GetDeploymentResponseBodyCase1BuildsList =
   Array<GetDeploymentResponseBodyCase1BuildsItem>;
-export const GetDeploymentResponseBodyCase1BuildsList =
-  CancelDeploymentResponseBuildsList as any as S.Schema<GetDeploymentResponseBodyCase1BuildsList>;
-
 export type GetDeploymentResponseBodyCase1ChecksDeploymentAliasState =
   | "failed"
   | "pending"
   | "succeeded";
-export const GetDeploymentResponseBodyCase1ChecksDeploymentAliasState = S.String;
-
 /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
 export interface GetDeploymentResponseBodyCase1ChecksDeploymentAlias {
   completedAt?: number;
   startedAt: number;
   state: GetDeploymentResponseBodyCase1ChecksDeploymentAliasState;
 }
-export const GetDeploymentResponseBodyCase1ChecksDeploymentAlias =
-  CancelDeploymentResponseChecksDeploymentAlias as any as S.Schema<GetDeploymentResponseBodyCase1ChecksDeploymentAlias>;
-
 export interface GetDeploymentResponseBodyCase1Checks {
   /** Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. */
   deployment_alias: GetDeploymentResponseBodyCase1ChecksDeploymentAlias;
 }
-export const GetDeploymentResponseBodyCase1Checks =
-  CancelDeploymentResponseChecks as any as S.Schema<GetDeploymentResponseBodyCase1Checks>;
-
 export type GetDeploymentResponseBodyCase1ChecksConclusion =
   | "canceled"
   | "failed"
   | "skipped"
   | "succeeded";
-export const GetDeploymentResponseBodyCase1ChecksConclusion = S.String;
-
 export type GetDeploymentResponseBodyCase1ChecksState = "completed" | "registered" | "running";
-export const GetDeploymentResponseBodyCase1ChecksState = S.String;
-
 export type GetDeploymentResponseBodyCase1ConfigFunctionMemoryType =
   | "performance"
   | "performance_xl"
   | "standard"
   | "standard_legacy";
-export const GetDeploymentResponseBodyCase1ConfigFunctionMemoryType = S.String;
-
 export type GetDeploymentResponseBodyCase1ConfigFunctionType = "fluid" | "standard";
-export const GetDeploymentResponseBodyCase1ConfigFunctionType = S.String;
-
 /** Build resource configuration snapshot for this deployment. */
 export type GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueueConfiguration =
   | "SKIP_NAMESPACE_QUEUE"
   | "WAIT_FOR_NAMESPACE_QUEUE";
-export const GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueueConfiguration = S.String;
-
 /** Build resource configuration snapshot for this deployment. */
 export interface GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue {
   /** Build resource configuration snapshot for this deployment. */
   configuration?: GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueueConfiguration;
 }
-export const GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      configuration: S.optional(
-        GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueueConfiguration,
-      ),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue>;
-
 /** When elastic concurrency is used for this deployment, a value is set. The value tells the reason where the setting was coming from. - TEAM_SETTING: Inherited from team settings - PROJECT_SETTING: Inherited from project settings - SKIP_QUEUE: Manually triggered by user to skip the queues */
 export type GetDeploymentResponseBodyCase1ConfigResourceConfigElasticConcurrency =
   | "PROJECT_SETTING"
   | "SKIP_QUEUE"
   | "TEAM_SETTING";
-export const GetDeploymentResponseBodyCase1ConfigResourceConfigElasticConcurrency = S.String;
-
 /** Machine type that was used for the build. */
 export type GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType =
   | "basic"
   | "enhanced"
   | "standard"
   | "turbo";
-export const GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType = S.String;
-
 export interface GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine {
   /** Machine type that was used for the build. */
   purchaseType?: GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachinePurchaseType | null;
 }
-export const GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine =
-  CreateDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine as any as S.Schema<GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine>;
-
 /** Build resource configuration snapshot for this deployment. */
 export interface GetDeploymentResponseBodyCase1ConfigResourceConfig {
   /** Build resource configuration snapshot for this deployment. */
@@ -13337,18 +6939,6 @@ export interface GetDeploymentResponseBodyCase1ConfigResourceConfig {
   elasticConcurrency?: GetDeploymentResponseBodyCase1ConfigResourceConfigElasticConcurrency;
   buildMachine?: GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine;
 }
-export const GetDeploymentResponseBodyCase1ConfigResourceConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildQueue: S.optional(GetDeploymentResponseBodyCase1ConfigResourceConfigBuildQueue),
-    elasticConcurrency: S.optional(
-      GetDeploymentResponseBodyCase1ConfigResourceConfigElasticConcurrency,
-    ),
-    buildMachine: S.optional(GetDeploymentResponseBodyCase1ConfigResourceConfigBuildMachine),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ConfigResourceConfig",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ConfigResourceConfig>;
-
 /** Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured */
 export interface GetDeploymentResponseBodyCase1Config {
   functionMemoryType: GetDeploymentResponseBodyCase1ConfigFunctionMemoryType;
@@ -13361,25 +6951,8 @@ export interface GetDeploymentResponseBodyCase1Config {
   secureComputePrimaryRegion: string | null;
   version?: number;
 }
-export const GetDeploymentResponseBodyCase1Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    functionMemoryType: GetDeploymentResponseBodyCase1ConfigFunctionMemoryType,
-    functionTimeout: S.NullOr(S.Number),
-    functionType: GetDeploymentResponseBodyCase1ConfigFunctionType,
-    isUsingActiveCPU: S.optional(S.Boolean),
-    resourceConfig: S.optional(GetDeploymentResponseBodyCase1ConfigResourceConfig),
-    secureComputeFallbackRegion: S.NullOr(S.String),
-    secureComputePrimaryRegion: S.NullOr(S.String),
-    version: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1Config",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1Config>;
-
 /** Principal type of the deployment creator. */
 export type GetDeploymentResponseBodyCase1CreatorType = "app" | "integration" | "system" | "user";
-export const GetDeploymentResponseBodyCase1CreatorType = S.String;
-
 /** Information about the deployment creator */
 export interface GetDeploymentResponseBodyCase1Creator {
   /** The avatar of the user that created the deployment */
@@ -13391,23 +6964,13 @@ export interface GetDeploymentResponseBodyCase1Creator {
   /** The username of the user that created the deployment */
   username?: string;
 }
-export const GetDeploymentResponseBodyCase1Creator =
-  CancelDeploymentResponseCreator as any as S.Schema<GetDeploymentResponseBodyCase1Creator>;
-
 export type GetDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
-export const GetDeploymentResponseBodyCase1CronsItem = CancelDeploymentResponseCronsItem;
-
 export type GetDeploymentResponseBodyCase1CronsList = Array<CancelDeploymentResponseCronsItem>;
-export const GetDeploymentResponseBodyCase1CronsList =
-  CancelDeploymentResponseCronsList as any as S.Schema<GetDeploymentResponseBodyCase1CronsList>;
-
 /** The type of matching to perform */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType =
   | "endsWith"
   | "equals"
   | "startsWith";
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType = S.String;
-
 /** Configuration for matching git branches to this environment */
 export interface GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher {
   /** The pattern to match against branch names */
@@ -13415,35 +6978,20 @@ export interface GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatch
   /** The type of matching to perform */
   type: GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcherType;
 }
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher =
-  CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher>;
-
 /** List of aliases for the current deployment */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList>;
-
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemRedirectStatusCode =
   | 301
   | 302
   | 307
   | 308;
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemRedirectStatusCode =
-  S.Number;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationItem =
   CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem;
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationItem =
-  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList =
   Array<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem>;
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList =
-  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList>;
-
 /** List of domains associated with this environment */
 export interface GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem {
   apexName: string;
@@ -13460,44 +7008,14 @@ export interface GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem
   /** `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed. */
   verified: boolean;
 }
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apexName: S.String,
-      createdAt: S.optional(S.Number),
-      customEnvironmentId: S.optional(S.NullOr(S.String)),
-      gitBranch: S.optional(S.NullOr(S.String)),
-      name: S.String,
-      projectId: S.String,
-      redirect: S.optional(S.NullOr(S.String)),
-      redirectStatusCode: S.optional(
-        S.NullOr(GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemRedirectStatusCode),
-      ),
-      updatedAt: S.optional(S.Number),
-      verification: S.optional(
-        GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItemVerificationList,
-      ),
-      verified: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem>;
-
 /** List of domains associated with this environment */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsList =
   Array<GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem>;
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsList>;
-
 /** The type of environment (production, preview, or development) */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase0Type =
   | "development"
   | "preview"
   | "production";
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0Type = S.String;
-
 /** If the deployment was created using a Custom Environment, then this property contains information regarding the environment used. */
 export interface GetDeploymentResponseBodyCase1CustomEnvironmentCase0 {
   /** Configuration for matching git branches to this environment */
@@ -13519,103 +7037,43 @@ export interface GetDeploymentResponseBodyCase1CustomEnvironmentCase0 {
   /** Timestamp when the environment was last updated */
   updatedAt: number;
 }
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchMatcher: S.optional(GetDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher),
-    createdAt: S.Number,
-    currentDeploymentAliases: S.optional(
-      GetDeploymentResponseBodyCase1CustomEnvironmentCase0CurrentDeploymentAliasesList,
-    ),
-    description: S.optional(S.String),
-    domains: S.optional(GetDeploymentResponseBodyCase1CustomEnvironmentCase0DomainsList),
-    id: S.String,
-    slug: S.String,
-    type: GetDeploymentResponseBodyCase1CustomEnvironmentCase0Type,
-    updatedAt: S.Number,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1CustomEnvironmentCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironmentCase0>;
-
 /** If the deployment was created using a Custom Environment, then this property contains information regarding the environment used. */
 export type GetDeploymentResponseBodyCase1CustomEnvironmentCase1 =
   CancelDeploymentResponseCustomEnvironmentCase1;
-export const GetDeploymentResponseBodyCase1CustomEnvironmentCase1 =
-  CancelDeploymentResponseCustomEnvironmentCase1;
-
 export type GetDeploymentResponseBodyCase1CustomEnvironment =
   | GetDeploymentResponseBodyCase1CustomEnvironmentCase0
   | CancelDeploymentResponseCustomEnvironmentCase1;
-export const GetDeploymentResponseBodyCase1CustomEnvironment =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1CustomEnvironment>;
-
 export type GetDeploymentResponseBodyCase1Duration = CancelDeploymentResponseDuration;
-export const GetDeploymentResponseBodyCase1Duration = CancelDeploymentResponseDuration;
-
 export type GetDeploymentResponseBodyCase1EnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1EnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1EnvList>;
-
 export type GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsItem =
   CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem;
-export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsItem =
-  CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem;
-
 export type GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList =
   Array<CancelDeploymentResponseFlagsCase0DefinitionsValueOptionsItem>;
-export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList =
-  CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList>;
-
 export interface GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue {
   description?: string;
   options?: GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValueOptionsList;
   url?: string;
 }
-export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue =
-  CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsValue as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue>;
-
 export type GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap = {
   [key: string]: GetDeploymentResponseBodyCase1FlagsCase0DefinitionsValue | undefined;
 };
-export const GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap =
-  CreateDeploymentResponseBodyCase1FlagsCase0DefinitionsMap as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap>;
-
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export interface GetDeploymentResponseBodyCase1FlagsCase0 {
   definitions: GetDeploymentResponseBodyCase1FlagsCase0DefinitionsMap;
 }
-export const GetDeploymentResponseBodyCase1FlagsCase0 =
-  CreateDeploymentResponseBodyCase1FlagsCase0 as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase0>;
-
 /** Flags defined in the Build Output API, used by this deployment. Primarily used by the Toolbar to know about the used flags. */
 export type GetDeploymentResponseBodyCase1FlagsCase1List = Array<unknown>;
-export const GetDeploymentResponseBodyCase1FlagsCase1List =
-  CancelDeploymentResponseFlagsCase1List as any as S.Schema<GetDeploymentResponseBodyCase1FlagsCase1List>;
-
 export type GetDeploymentResponseBodyCase1Flags =
   | GetDeploymentResponseBodyCase1FlagsCase0
   | GetDeploymentResponseBodyCase1FlagsCase1List;
-export const GetDeploymentResponseBodyCase1Flags =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1Flags>;
-
 export type GetDeploymentResponseBodyCase1FunctionsValueAffinityMode = "strict";
-export const GetDeploymentResponseBodyCase1FunctionsValueAffinityMode = S.String;
-
 export interface GetDeploymentResponseBodyCase1FunctionsValueAffinity {
   mode: GetDeploymentResponseBodyCase1FunctionsValueAffinityMode;
 }
-export const GetDeploymentResponseBodyCase1FunctionsValueAffinity =
-  CancelDeploymentResponseFunctionsValueAffinity as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueAffinity>;
-
 export type GetDeploymentResponseBodyCase1FunctionsValueArchitecture = "arm64" | "x86_64";
-export const GetDeploymentResponseBodyCase1FunctionsValueArchitecture = S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -13633,15 +7091,9 @@ export interface GetDeploymentResponseBodyCase1FunctionsValueExperimentalTrigger
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -13657,53 +7109,25 @@ export interface GetDeploymentResponseBodyCase1FunctionsValueExperimentalTrigger
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2>;
-
 export type GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem =
   | GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase0
   | GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase1
   | GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItemCase2;
-export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem>;
-
 export type GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersList =
   Array<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem>;
-export const GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersList>;
-
 export type GetDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList>;
-
 export type GetDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1 = "max";
-export const GetDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1 = S.String;
-
 export type GetDeploymentResponseBodyCase1FunctionsValueMaxDuration =
   | number
   | GetDeploymentResponseBodyCase1FunctionsValueMaxDurationCase1;
-export const GetDeploymentResponseBodyCase1FunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueMaxDuration>;
-
 export type GetDeploymentResponseBodyCase1FunctionsValueRegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase1FunctionsValueRegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValueRegionsList>;
-
 export interface GetDeploymentResponseBodyCase1FunctionsValue {
   affinity?: GetDeploymentResponseBodyCase1FunctionsValueAffinity;
   architecture?: GetDeploymentResponseBodyCase1FunctionsValueArchitecture;
@@ -13718,43 +7142,11 @@ export interface GetDeploymentResponseBodyCase1FunctionsValue {
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const GetDeploymentResponseBodyCase1FunctionsValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    affinity: S.optional(GetDeploymentResponseBodyCase1FunctionsValueAffinity),
-    architecture: S.optional(GetDeploymentResponseBodyCase1FunctionsValueArchitecture),
-    excludeFiles: S.optional(S.String),
-    experimentalTriggers: S.optional(
-      GetDeploymentResponseBodyCase1FunctionsValueExperimentalTriggersList,
-    ),
-    functionFailoverRegions: S.optional(
-      GetDeploymentResponseBodyCase1FunctionsValueFunctionFailoverRegionsList,
-    ),
-    includeFiles: S.optional(S.String),
-    maxConcurrency: S.optional(S.Number),
-    maxDuration: S.optional(GetDeploymentResponseBodyCase1FunctionsValueMaxDuration),
-    memory: S.optional(S.Number),
-    regions: S.optional(GetDeploymentResponseBodyCase1FunctionsValueRegionsList),
-    runtime: S.optional(S.String),
-    supportsCancellation: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1FunctionsValue",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsValue>;
-
 export type GetDeploymentResponseBodyCase1FunctionsMap = {
   [key: string]: GetDeploymentResponseBodyCase1FunctionsValue | undefined;
 };
-export const GetDeploymentResponseBodyCase1FunctionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetDeploymentResponseBodyCase1FunctionsValue,
-) as any as S.Schema<GetDeploymentResponseBodyCase1FunctionsMap>;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase0OwnerType = "team" | "user";
-export const GetDeploymentResponseBodyCase1GitRepoCase0OwnerType = S.String;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase0Type = "gitlab";
-export const GetDeploymentResponseBodyCase1GitRepoCase0Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitRepoCase0 {
   defaultBranch: string;
   name: string;
@@ -13766,15 +7158,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase0 {
   type: GetDeploymentResponseBodyCase1GitRepoCase0Type;
   url: string;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase0 =
-  CancelDeploymentResponseGitRepoCase0 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase0>;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase1OwnerType = "team" | "user";
-export const GetDeploymentResponseBodyCase1GitRepoCase1OwnerType = S.String;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase1Type = "github";
-export const GetDeploymentResponseBodyCase1GitRepoCase1Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitRepoCase1 {
   defaultBranch: string;
   name: string;
@@ -13787,15 +7172,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase1 {
   repoOwnerId: number;
   type: GetDeploymentResponseBodyCase1GitRepoCase1Type;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase1 =
-  CancelDeploymentResponseGitRepoCase1 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase1>;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase2OwnerType = "team" | "user";
-export const GetDeploymentResponseBodyCase1GitRepoCase2OwnerType = S.String;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase2Type = "bitbucket";
-export const GetDeploymentResponseBodyCase1GitRepoCase2Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitRepoCase2 {
   defaultBranch: string;
   name: string;
@@ -13808,15 +7186,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase2 {
   type: GetDeploymentResponseBodyCase1GitRepoCase2Type;
   workspaceUuid: string;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase2 =
-  CancelDeploymentResponseGitRepoCase2 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase2>;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase3OwnerType = "team" | "user";
-export const GetDeploymentResponseBodyCase1GitRepoCase3OwnerType = S.String;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase3Type = "vercel";
-export const GetDeploymentResponseBodyCase1GitRepoCase3Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitRepoCase3 {
   defaultBranch: string;
   name: string;
@@ -13827,15 +7198,8 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase3 {
   repo: string;
   type: GetDeploymentResponseBodyCase1GitRepoCase3Type;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase3 =
-  CancelDeploymentResponseGitRepoCase3 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase3>;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase4OwnerType = "team" | "user";
-export const GetDeploymentResponseBodyCase1GitRepoCase4OwnerType = S.String;
-
 export type GetDeploymentResponseBodyCase1GitRepoCase4Type = "cursor-origin";
-export const GetDeploymentResponseBodyCase1GitRepoCase4Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitRepoCase4 {
   defaultBranch: string;
   name: string;
@@ -13849,25 +7213,14 @@ export interface GetDeploymentResponseBodyCase1GitRepoCase4 {
   repoId: string;
   type: GetDeploymentResponseBodyCase1GitRepoCase4Type;
 }
-export const GetDeploymentResponseBodyCase1GitRepoCase4 =
-  CancelDeploymentResponseGitRepoCase4 as any as S.Schema<GetDeploymentResponseBodyCase1GitRepoCase4>;
-
 export type GetDeploymentResponseBodyCase1GitRepo =
   | GetDeploymentResponseBodyCase1GitRepoCase0
   | GetDeploymentResponseBodyCase1GitRepoCase1
   | GetDeploymentResponseBodyCase1GitRepoCase2
   | GetDeploymentResponseBodyCase1GitRepoCase3
   | GetDeploymentResponseBodyCase1GitRepoCase4;
-export const GetDeploymentResponseBodyCase1GitRepo =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1GitRepo>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase0RepoId = string | number;
-export const GetDeploymentResponseBodyCase1GitSourceCase0RepoId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase0RepoId>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase0Type = "github";
-export const GetDeploymentResponseBodyCase1GitSourceCase0Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase0 {
   prId?: number | null;
   ref?: string | null;
@@ -13875,21 +7228,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase0 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase0Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: GetDeploymentResponseBodyCase1GitSourceCase0RepoId,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase0Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase0>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase1Type = "github";
-export const GetDeploymentResponseBodyCase1GitSourceCase1Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase1 {
   org: string;
   prId?: number | null;
@@ -13898,16 +7237,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase1 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase1Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase1 =
-  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase1>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase2RepoId = string | number;
-export const GetDeploymentResponseBodyCase1GitSourceCase2RepoId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase2RepoId>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase2Type = "github-custom-host";
-export const GetDeploymentResponseBodyCase1GitSourceCase2Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase2 {
   host: string;
   prId?: number | null;
@@ -13916,22 +7247,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase2 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase2Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: GetDeploymentResponseBodyCase1GitSourceCase2RepoId,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase2Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase2",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase2>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase3Type = "github-custom-host";
-export const GetDeploymentResponseBodyCase1GitSourceCase3Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase3 {
   host: string;
   org: string;
@@ -13941,16 +7257,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase3 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase3Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase3 =
-  CancelDeploymentResponseGitSourceCase3 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase3>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase4RepoId = string | number;
-export const GetDeploymentResponseBodyCase1GitSourceCase4RepoId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase4RepoId>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase4Type = "github-limited";
-export const GetDeploymentResponseBodyCase1GitSourceCase4Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase4 {
   prId?: number | null;
   ref?: string | null;
@@ -13958,21 +7266,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase4 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase4Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: GetDeploymentResponseBodyCase1GitSourceCase4RepoId,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase4Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase4",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase4>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase5Type = "github-limited";
-export const GetDeploymentResponseBodyCase1GitSourceCase5Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase5 {
   org: string;
   prId?: number | null;
@@ -13981,16 +7275,8 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase5 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase5Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase5 =
-  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase5>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase6ProjectId = string | number;
-export const GetDeploymentResponseBodyCase1GitSourceCase6ProjectId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase6ProjectId>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase6Type = "gitlab";
-export const GetDeploymentResponseBodyCase1GitSourceCase6Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase6 {
   prId?: number | null;
   projectId: GetDeploymentResponseBodyCase1GitSourceCase6ProjectId;
@@ -13998,21 +7284,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase6 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase6Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    projectId: GetDeploymentResponseBodyCase1GitSourceCase6ProjectId,
-    ref: S.optional(S.NullOr(S.String)),
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase1GitSourceCase6Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1GitSourceCase6",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase6>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase7Type = "bitbucket";
-export const GetDeploymentResponseBodyCase1GitSourceCase7Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase7 {
   prId?: number | null;
   ref?: string | null;
@@ -14021,12 +7293,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase7 {
   type: GetDeploymentResponseBodyCase1GitSourceCase7Type;
   workspaceUuid?: string;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase7 =
-  CancelDeploymentResponseGitSourceCase7 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase7>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase8Type = "bitbucket";
-export const GetDeploymentResponseBodyCase1GitSourceCase8Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase8 {
   owner: string;
   prId?: number | null;
@@ -14035,27 +7302,13 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase8 {
   slug: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase8Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase8 =
-  CancelDeploymentResponseGitSourceCase8 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase8>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase9CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const GetDeploymentResponseBodyCase1GitSourceCase9CommitMetadataAuthor =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase9CommitMetadataCommitter =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const GetDeploymentResponseBodyCase1GitSourceCase9CommitMetadataCommitter =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase9CommitMetadata =
   CancelDeploymentResponseGitSourceCase9CommitMetadata;
-export const GetDeploymentResponseBodyCase1GitSourceCase9CommitMetadata =
-  CancelDeploymentResponseGitSourceCase9CommitMetadata;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase9Type = "vercel";
-export const GetDeploymentResponseBodyCase1GitSourceCase9Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase9 {
   commitMetadata?: CancelDeploymentResponseGitSourceCase9CommitMetadata;
   org?: string;
@@ -14067,12 +7320,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase9 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase9Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase9 =
-  CancelDeploymentResponseGitSourceCase9 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase9>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase10Type = "cursor-origin";
-export const GetDeploymentResponseBodyCase1GitSourceCase10Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase10 {
   /** Owner (namespace) slug. */
   owner?: string;
@@ -14084,12 +7332,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase10 {
   sha?: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase10Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase10 =
-  CancelDeploymentResponseGitSourceCase10 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase10>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase11Type = "custom";
-export const GetDeploymentResponseBodyCase1GitSourceCase11Type = S.String;
-
 /** Allows custom git sources (local folder mounted to the container) in test mode */
 export interface GetDeploymentResponseBodyCase1GitSourceCase11 {
   gitUrl: string;
@@ -14097,12 +7340,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase11 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase11Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase11 =
-  CancelDeploymentResponseGitSourceCase11 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase11>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase12Type = "github";
-export const GetDeploymentResponseBodyCase1GitSourceCase12Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase12 {
   org?: string;
   ref: string;
@@ -14111,12 +7349,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase12 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase12Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase12 =
-  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase12>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase13Type = "github-custom-host";
-export const GetDeploymentResponseBodyCase1GitSourceCase13Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase13 {
   host: string;
   org?: string;
@@ -14126,12 +7359,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase13 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase13Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase13 =
-  CancelDeploymentResponseGitSourceCase13 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase13>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase14Type = "github-limited";
-export const GetDeploymentResponseBodyCase1GitSourceCase14Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase14 {
   org?: string;
   ref: string;
@@ -14140,24 +7368,14 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase14 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase14Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase14 =
-  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase14>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase15Type = "gitlab";
-export const GetDeploymentResponseBodyCase1GitSourceCase15Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase15 {
   projectId: number;
   ref: string;
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase15Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase15 =
-  CancelDeploymentResponseGitSourceCase15 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase15>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase16Type = "bitbucket";
-export const GetDeploymentResponseBodyCase1GitSourceCase16Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase16 {
   owner?: string;
   ref: string;
@@ -14167,27 +7385,13 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase16 {
   type: GetDeploymentResponseBodyCase1GitSourceCase16Type;
   workspaceUuid: string;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase16 =
-  CancelDeploymentResponseGitSourceCase16 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase16>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase17CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const GetDeploymentResponseBodyCase1GitSourceCase17CommitMetadataAuthor =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase17CommitMetadataCommitter =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const GetDeploymentResponseBodyCase1GitSourceCase17CommitMetadataCommitter =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase17CommitMetadata =
   CancelDeploymentResponseGitSourceCase9CommitMetadata;
-export const GetDeploymentResponseBodyCase1GitSourceCase17CommitMetadata =
-  CancelDeploymentResponseGitSourceCase9CommitMetadata;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase17Type = "vercel";
-export const GetDeploymentResponseBodyCase1GitSourceCase17Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase17 {
   commitMetadata?: CancelDeploymentResponseGitSourceCase9CommitMetadata;
   org: string;
@@ -14198,12 +7402,7 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase17 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase17Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase17 =
-  CancelDeploymentResponseGitSourceCase17 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase17>;
-
 export type GetDeploymentResponseBodyCase1GitSourceCase18Type = "cursor-origin";
-export const GetDeploymentResponseBodyCase1GitSourceCase18Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1GitSourceCase18 {
   owner: string;
   ref: string;
@@ -14212,9 +7411,6 @@ export interface GetDeploymentResponseBodyCase1GitSourceCase18 {
   sha: string;
   type: GetDeploymentResponseBodyCase1GitSourceCase18Type;
 }
-export const GetDeploymentResponseBodyCase1GitSourceCase18 =
-  CancelDeploymentResponseGitSourceCase18 as any as S.Schema<GetDeploymentResponseBodyCase1GitSourceCase18>;
-
 export type GetDeploymentResponseBodyCase1GitSource =
   | GetDeploymentResponseBodyCase1GitSourceCase0
   | GetDeploymentResponseBodyCase1GitSourceCase1
@@ -14235,42 +7431,18 @@ export type GetDeploymentResponseBodyCase1GitSource =
   | GetDeploymentResponseBodyCase1GitSourceCase16
   | GetDeploymentResponseBodyCase1GitSourceCase17
   | GetDeploymentResponseBodyCase1GitSourceCase18;
-export const GetDeploymentResponseBodyCase1GitSource =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1GitSource>;
-
 export type GetDeploymentResponseBodyCase1ImagesContentDispositionType = "attachment" | "inline";
-export const GetDeploymentResponseBodyCase1ImagesContentDispositionType = S.String;
-
 export type GetDeploymentResponseBodyCase1ImagesDomainsList = Array<string>;
-export const GetDeploymentResponseBodyCase1ImagesDomainsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesDomainsList>;
-
 export type GetDeploymentResponseBodyCase1ImagesFormatsItem = "image/avif" | "image/webp";
-export const GetDeploymentResponseBodyCase1ImagesFormatsItem = S.String;
-
 export type GetDeploymentResponseBodyCase1ImagesFormatsList =
   Array<GetDeploymentResponseBodyCase1ImagesFormatsItem>;
-export const GetDeploymentResponseBodyCase1ImagesFormatsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionKindsList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesFormatsList>;
-
 export type GetDeploymentResponseBodyCase1ImagesLocalPatternsItem =
   CancelDeploymentResponseImagesLocalPatternsItem;
-export const GetDeploymentResponseBodyCase1ImagesLocalPatternsItem =
-  CancelDeploymentResponseImagesLocalPatternsItem;
-
 export type GetDeploymentResponseBodyCase1ImagesLocalPatternsList =
   Array<CancelDeploymentResponseImagesLocalPatternsItem>;
-export const GetDeploymentResponseBodyCase1ImagesLocalPatternsList =
-  CancelDeploymentResponseImagesLocalPatternsList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesLocalPatternsList>;
-
 export type GetDeploymentResponseBodyCase1ImagesQualitiesList = Array<number>;
-export const GetDeploymentResponseBodyCase1ImagesQualitiesList =
-  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesQualitiesList>;
-
 /** Must be `http` or `https`. */
 export type GetDeploymentResponseBodyCase1ImagesRemotePatternsItemProtocol = "http" | "https";
-export const GetDeploymentResponseBodyCase1ImagesRemotePatternsItemProtocol = S.String;
-
 export interface GetDeploymentResponseBodyCase1ImagesRemotePatternsItem {
   /** Can be literal or wildcard. Single `*` matches a single subdomain. Double `**` matches any number of subdomains. */
   hostname: string;
@@ -14283,18 +7455,9 @@ export interface GetDeploymentResponseBodyCase1ImagesRemotePatternsItem {
   /** Can be literal query string such as `?v=1` or empty string meaning no query string. */
   search?: string;
 }
-export const GetDeploymentResponseBodyCase1ImagesRemotePatternsItem =
-  CancelDeploymentResponseImagesRemotePatternsItem as any as S.Schema<GetDeploymentResponseBodyCase1ImagesRemotePatternsItem>;
-
 export type GetDeploymentResponseBodyCase1ImagesRemotePatternsList =
   Array<GetDeploymentResponseBodyCase1ImagesRemotePatternsItem>;
-export const GetDeploymentResponseBodyCase1ImagesRemotePatternsList =
-  CancelDeploymentResponseImagesRemotePatternsList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesRemotePatternsList>;
-
 export type GetDeploymentResponseBodyCase1ImagesSizesList = Array<number>;
-export const GetDeploymentResponseBodyCase1ImagesSizesList =
-  CancelDeploymentResponseImagesQualitiesList as any as S.Schema<GetDeploymentResponseBodyCase1ImagesSizesList>;
-
 export interface GetDeploymentResponseBodyCase1Images {
   contentDispositionType?: GetDeploymentResponseBodyCase1ImagesContentDispositionType;
   contentSecurityPolicy?: string;
@@ -14307,31 +7470,12 @@ export interface GetDeploymentResponseBodyCase1Images {
   remotePatterns?: GetDeploymentResponseBodyCase1ImagesRemotePatternsList;
   sizes?: GetDeploymentResponseBodyCase1ImagesSizesList;
 }
-export const GetDeploymentResponseBodyCase1Images = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentDispositionType: S.optional(GetDeploymentResponseBodyCase1ImagesContentDispositionType),
-    contentSecurityPolicy: S.optional(S.String),
-    dangerouslyAllowSVG: S.optional(S.Boolean),
-    domains: S.optional(GetDeploymentResponseBodyCase1ImagesDomainsList),
-    formats: S.optional(GetDeploymentResponseBodyCase1ImagesFormatsList),
-    localPatterns: S.optional(GetDeploymentResponseBodyCase1ImagesLocalPatternsList),
-    minimumCacheTTL: S.optional(S.Number),
-    qualities: S.optional(GetDeploymentResponseBodyCase1ImagesQualitiesList),
-    remotePatterns: S.optional(GetDeploymentResponseBodyCase1ImagesRemotePatternsList),
-    sizes: S.optional(GetDeploymentResponseBodyCase1ImagesSizesList),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1Images",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1Images>;
-
 export type GetDeploymentResponseBodyCase1IntegrationsStatus =
   | "error"
   | "pending"
   | "ready"
   | "skipped"
   | "timeout";
-export const GetDeploymentResponseBodyCase1IntegrationsStatus = S.String;
-
 export interface GetDeploymentResponseBodyCase1Integrations {
   claimedAt?: number;
   completedAt?: number;
@@ -14340,26 +7484,15 @@ export interface GetDeploymentResponseBodyCase1Integrations {
   startedAt: number;
   status: GetDeploymentResponseBodyCase1IntegrationsStatus;
 }
-export const GetDeploymentResponseBodyCase1Integrations =
-  CancelDeploymentResponseIntegrations as any as S.Schema<GetDeploymentResponseBodyCase1Integrations>;
-
 export type GetDeploymentResponseBodyCase1LambdasItemReadyState =
   | "BUILDING"
   | "ERROR"
   | "INITIALIZING"
   | "READY";
-export const GetDeploymentResponseBodyCase1LambdasItemReadyState = S.String;
-
 export type GetDeploymentResponseBodyCase1LambdasItemOutputItem =
   CancelDeploymentResponseLambdasItemOutputItem;
-export const GetDeploymentResponseBodyCase1LambdasItemOutputItem =
-  CancelDeploymentResponseLambdasItemOutputItem;
-
 export type GetDeploymentResponseBodyCase1LambdasItemOutputList =
   Array<CancelDeploymentResponseLambdasItemOutputItem>;
-export const GetDeploymentResponseBodyCase1LambdasItemOutputList =
-  CancelDeploymentResponseLambdasItemOutputList as any as S.Schema<GetDeploymentResponseBodyCase1LambdasItemOutputList>;
-
 /** A partial representation of a Build used by the deployment endpoint. */
 export interface GetDeploymentResponseBodyCase1LambdasItem {
   createdAt?: number;
@@ -14369,32 +7502,13 @@ export interface GetDeploymentResponseBodyCase1LambdasItem {
   readyStateAt?: number;
   output: GetDeploymentResponseBodyCase1LambdasItemOutputList;
 }
-export const GetDeploymentResponseBodyCase1LambdasItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.Number),
-    entrypoint: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    readyState: S.optional(GetDeploymentResponseBodyCase1LambdasItemReadyState),
-    readyStateAt: S.optional(S.Number),
-    output: GetDeploymentResponseBodyCase1LambdasItemOutputList,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1LambdasItem",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1LambdasItem>;
-
 export type GetDeploymentResponseBodyCase1LambdasList =
   Array<GetDeploymentResponseBodyCase1LambdasItem>;
-export const GetDeploymentResponseBodyCase1LambdasList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1LambdasItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1LambdasList>;
-
 /** Current provisioning state */
 export type GetDeploymentResponseBodyCase1ManualProvisioningState =
   | "COMPLETE"
   | "PENDING"
   | "TIMEOUT";
-export const GetDeploymentResponseBodyCase1ManualProvisioningState = S.String;
-
 /** Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called. */
 export interface GetDeploymentResponseBodyCase1ManualProvisioning {
   /** Timestamp when manual provisioning completed */
@@ -14402,18 +7516,9 @@ export interface GetDeploymentResponseBodyCase1ManualProvisioning {
   /** Current provisioning state */
   state: GetDeploymentResponseBodyCase1ManualProvisioningState;
 }
-export const GetDeploymentResponseBodyCase1ManualProvisioning =
-  CancelDeploymentResponseManualProvisioning as any as S.Schema<GetDeploymentResponseBodyCase1ManualProvisioning>;
-
 export type GetDeploymentResponseBodyCase1MetaMap = { [key: string]: string | undefined };
-export const GetDeploymentResponseBodyCase1MetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentResponseBodyCase1MetaMap>;
-
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList = Array<string>;
-export const GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList>;
-
 export interface GetDeploymentResponseBodyCase1MicrofrontendsCase0 {
   /** The project name of the default app of this deployment's microfrontends group. */
   defaultAppProjectName: string;
@@ -14423,21 +7528,13 @@ export interface GetDeploymentResponseBodyCase1MicrofrontendsCase0 {
   groupIds: GetDeploymentResponseBodyCase1MicrofrontendsCase0GroupIdsList;
   isDefaultApp?: boolean;
 }
-export const GetDeploymentResponseBodyCase1MicrofrontendsCase0 =
-  CancelDeploymentResponseMicrofrontendsCase0 as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase0>;
-
 /** The group of microfrontends that this project belongs to. Each microfrontend project must belong to a microfrontends group that is the set of microfrontends that are used together. */
 export type GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList = Array<string>;
-export const GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList>;
-
 /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
 export type GetDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState =
   | "no_config"
   | "success"
   | "waiting_on_build";
-export const GetDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState = S.String;
-
 export interface GetDeploymentResponseBodyCase1MicrofrontendsCase1 {
   /** The project name of the default app of this deployment's microfrontends group. */
   defaultAppProjectName: string;
@@ -14449,26 +7546,9 @@ export interface GetDeploymentResponseBodyCase1MicrofrontendsCase1 {
   /** The result of the microfrontends config upload during deployment creation / build. Only set for default app deployments. The config upload is attempted during deployment create, and then again during the build. If the config is not in the root directory, or the deployment is prebuilt, the config cannot be uploaded during deployment create. The upload during deployment build finds the config even if it's not in the root directory, as it has access to all files. Uploading the config during create is ideal, as then all child deployments are guaranteed to have access to the default app deployment config even if the default app has not yet started building. If the config is not uploaded, the child app will show as building until the config has been uploaded during the default app build. - `success` - The config was uploaded successfully, either when the deployment was created or during the build. - `waiting_on_build` - The config could not be uploaded during deployment create, will be attempted again during the build. - `no_config` - No config was found. Only set once the build has not found the config in any of the deployment's files. - `undefined` - Legacy deployments, or there was an error uploading the config during deployment create. */
   mfeConfigUploadState?: GetDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState;
 }
-export const GetDeploymentResponseBodyCase1MicrofrontendsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultAppProjectName: S.String,
-    defaultRoute: S.optional(S.String),
-    groupIds: GetDeploymentResponseBodyCase1MicrofrontendsCase1GroupIdsList,
-    isDefaultApp: S.Boolean,
-    mfeConfigUploadState: S.optional(
-      GetDeploymentResponseBodyCase1MicrofrontendsCase1MfeConfigUploadState,
-    ),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1MicrofrontendsCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1MicrofrontendsCase1>;
-
 export type GetDeploymentResponseBodyCase1Microfrontends =
   | GetDeploymentResponseBodyCase1MicrofrontendsCase0
   | GetDeploymentResponseBodyCase1MicrofrontendsCase1;
-export const GetDeploymentResponseBodyCase1Microfrontends =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1Microfrontends>;
-
 /** If set it overrides the `projectSettings.nodeVersion` for this deployment. */
 export type GetDeploymentResponseBodyCase1NodeVersion =
   | "10.x"
@@ -14480,12 +7560,7 @@ export type GetDeploymentResponseBodyCase1NodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-export const GetDeploymentResponseBodyCase1NodeVersion = S.String;
-
 export type GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList = Array<string>;
-export const GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1OidcTokenClaimsMfeGroupIdsList>;
-
 export interface GetDeploymentResponseBodyCase1OidcTokenClaims {
   aud: string;
   custom_environment_id?: string;
@@ -14501,34 +7576,16 @@ export interface GetDeploymentResponseBodyCase1OidcTokenClaims {
   scope: string;
   sub: string;
 }
-export const GetDeploymentResponseBodyCase1OidcTokenClaims =
-  CancelDeploymentResponseOidcTokenClaims as any as S.Schema<GetDeploymentResponseBodyCase1OidcTokenClaims>;
-
 export type GetDeploymentResponseBodyCase1OomReport = "out-of-memory";
-export const GetDeploymentResponseBodyCase1OomReport = S.String;
-
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type GetDeploymentResponseBodyCase1PassiveRegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase1PassiveRegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1PassiveRegionsList>;
-
 export type GetDeploymentResponseBodyCase1Plan = "enterprise" | "hobby" | "pro";
-export const GetDeploymentResponseBodyCase1Plan = S.String;
-
 /** The user on the external platform who triggered the deployment. */
 export type GetDeploymentResponseBodyCase1PlatformCreator = CancelDeploymentResponsePlatformCreator;
-export const GetDeploymentResponseBodyCase1PlatformCreator =
-  CancelDeploymentResponsePlatformCreator;
-
 /** Arbitrary key-value metadata provided by the platform. */
 export type GetDeploymentResponseBodyCase1PlatformMetaMap = { [key: string]: string | undefined };
-export const GetDeploymentResponseBodyCase1PlatformMetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentResponseBodyCase1PlatformMetaMap>;
-
 /** Whether the value is an opaque identifier or a URL. */
 export type GetDeploymentResponseBodyCase1PlatformOriginType = "id" | "url";
-export const GetDeploymentResponseBodyCase1PlatformOriginType = S.String;
-
 /** Reference back to the entity on the platform that initiated the deployment. */
 export interface GetDeploymentResponseBodyCase1PlatformOrigin {
   /** Whether the value is an opaque identifier or a URL. */
@@ -14536,13 +7593,8 @@ export interface GetDeploymentResponseBodyCase1PlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-export const GetDeploymentResponseBodyCase1PlatformOrigin =
-  CancelDeploymentResponsePlatformOrigin as any as S.Schema<GetDeploymentResponseBodyCase1PlatformOrigin>;
-
 /** The external platform that created the deployment (e.g. its display name). */
 export type GetDeploymentResponseBodyCase1PlatformSource = CancelDeploymentResponsePlatformSource;
-export const GetDeploymentResponseBodyCase1PlatformSource = CancelDeploymentResponsePlatformSource;
-
 /** Metadata about the source platform that triggered the deployment. Allows us to map a deployment back to a platform (e.g. the chat that created it) */
 export interface GetDeploymentResponseBodyCase1Platform {
   /** The user on the external platform who triggered the deployment. */
@@ -14554,21 +7606,8 @@ export interface GetDeploymentResponseBodyCase1Platform {
   /** The external platform that created the deployment (e.g. its display name). */
   source: CancelDeploymentResponsePlatformSource;
 }
-export const GetDeploymentResponseBodyCase1Platform = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creator: CancelDeploymentResponsePlatformCreator,
-    meta: S.optional(GetDeploymentResponseBodyCase1PlatformMetaMap),
-    origin: GetDeploymentResponseBodyCase1PlatformOrigin,
-    source: CancelDeploymentResponsePlatformSource,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1Platform",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1Platform>;
-
 /** The public project information associated with the deployment. */
 export type GetDeploymentResponseBodyCase1Project = CancelDeploymentResponseProject;
-export const GetDeploymentResponseBodyCase1Project = CancelDeploymentResponseProject;
-
 export type GetDeploymentResponseBodyCase1ProjectSettingsFramework =
   | "actix-web"
   | "angular"
@@ -14644,8 +7683,6 @@ export type GetDeploymentResponseBodyCase1ProjectSettingsFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-export const GetDeploymentResponseBodyCase1ProjectSettingsFramework = S.String;
-
 export type GetDeploymentResponseBodyCase1ProjectSettingsNodeVersion =
   | "10.x"
   | "12.x"
@@ -14656,18 +7693,10 @@ export type GetDeploymentResponseBodyCase1ProjectSettingsNodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-export const GetDeploymentResponseBodyCase1ProjectSettingsNodeVersion = S.String;
-
 export type GetDeploymentResponseBodyCase1ProjectSettingsSpeedInsights =
   CancelDeploymentResponseProjectSettingsSpeedInsights;
-export const GetDeploymentResponseBodyCase1ProjectSettingsSpeedInsights =
-  CancelDeploymentResponseProjectSettingsSpeedInsights;
-
 export type GetDeploymentResponseBodyCase1ProjectSettingsWebAnalytics =
   CancelDeploymentResponseProjectSettingsWebAnalytics;
-export const GetDeploymentResponseBodyCase1ProjectSettingsWebAnalytics =
-  CancelDeploymentResponseProjectSettingsWebAnalytics;
-
 export interface GetDeploymentResponseBodyCase1ProjectSettings {
   buildCommand?: string | null;
   commandForIgnoringBuildStep?: string | null;
@@ -14679,9 +7708,6 @@ export interface GetDeploymentResponseBodyCase1ProjectSettings {
   speedInsights?: CancelDeploymentResponseProjectSettingsSpeedInsights;
   webAnalytics?: CancelDeploymentResponseProjectSettingsWebAnalytics;
 }
-export const GetDeploymentResponseBodyCase1ProjectSettings =
-  CancelDeploymentResponseProjectSettings as any as S.Schema<GetDeploymentResponseBodyCase1ProjectSettings>;
-
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type GetDeploymentResponseBodyCase1ReadyState =
   | "BLOCKED"
@@ -14691,40 +7717,26 @@ export type GetDeploymentResponseBodyCase1ReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetDeploymentResponseBodyCase1ReadyState = S.String;
-
 /** Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic */
 export type GetDeploymentResponseBodyCase1ReadySubstate = "PROMOTED" | "ROLLING" | "STAGED";
-export const GetDeploymentResponseBodyCase1ReadySubstate = S.String;
-
 /** The regions the deployment exists in */
 export type GetDeploymentResponseBodyCase1RegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase1RegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1RegionsList>;
-
 /** The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type. */
 export type GetDeploymentResponseBodyCase1ResourceConfigBuildMachineDefaultPurchaseType =
   | "basic"
   | "enhanced"
   | "none"
   | "standard";
-export const GetDeploymentResponseBodyCase1ResourceConfigBuildMachineDefaultPurchaseType = S.String;
-
 /** Whether the build ran on a fixed or elastic machine. Used to drive billing for the build. */
 export type GetDeploymentResponseBodyCase1ResourceConfigBuildMachineMachineSelectionType =
   | "elastic"
   | "fixed";
-export const GetDeploymentResponseBodyCase1ResourceConfigBuildMachineMachineSelectionType =
-  S.String;
-
 /** Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project. */
 export type GetDeploymentResponseBodyCase1ResourceConfigBuildMachinePurchaseType =
   | "basic"
   | "enhanced"
   | "standard"
   | "turbo";
-export const GetDeploymentResponseBodyCase1ResourceConfigBuildMachinePurchaseType = S.String;
-
 /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
 export type GetDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource =
   | "deployment-override"
@@ -14733,8 +7745,6 @@ export type GetDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSou
   | "project-setting"
   | "team-entitlement"
   | "team-setting";
-export const GetDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource = S.String;
-
 /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
 export interface GetDeploymentResponseBodyCase1ResourceConfigBuildMachine {
   /** Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive. */
@@ -14750,20 +7760,12 @@ export interface GetDeploymentResponseBodyCase1ResourceConfigBuildMachine {
   /** The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history. */
   selectionSource?: GetDeploymentResponseBodyCase1ResourceConfigBuildMachineSelectionSource;
 }
-export const GetDeploymentResponseBodyCase1ResourceConfigBuildMachine =
-  CreateDeploymentResponseBodyCase1ResourceConfigBuildMachine as any as S.Schema<GetDeploymentResponseBodyCase1ResourceConfigBuildMachine>;
-
 export interface GetDeploymentResponseBodyCase1ResourceConfig {
   /** Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`. */
   buildMachine?: GetDeploymentResponseBodyCase1ResourceConfigBuildMachine;
 }
-export const GetDeploymentResponseBodyCase1ResourceConfig =
-  CreateDeploymentResponseBodyCase1ResourceConfig as any as S.Schema<GetDeploymentResponseBodyCase1ResourceConfig>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type = "service";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -14771,36 +7773,16 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1 {
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1Type;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1 =
-  CancelDeploymentResponseServicesItemCase1RewritesItemDestinationCase1 as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0Destination =
   | string
   | GetDeploymentResponseBodyCase1RoutesItemCase0DestinationCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0Destination =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0Destination>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0EnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0EnvList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0EnvList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type = "host";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type = S.String;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq = string | number;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
   gt?: number;
@@ -14814,65 +7796,22 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueC
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1IncList),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1NincList),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0 {
   type: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type;
   value: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Type,
-      value: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0Value,
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Type = S.String;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq = string | number;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
   gt?: number;
@@ -14886,106 +7825,40 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueC
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1IncList),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1NincList),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Type;
   value?: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Type,
-      value: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1Value),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasItem =
   | GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase0
   | GetDeploymentResponseBodyCase1RoutesItemCase0HasItemCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasItem>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HasList =
   Array<GetDeploymentResponseBodyCase1RoutesItemCase0HasItem>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HasList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1RoutesItemCase0HasItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HasList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0Locale {
   cookie?: string;
   redirect?: GetDeploymentResponseBodyCase1RoutesItemCase0LocaleRedirectMap;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0Locale =
-  CreateDeploymentResponseBodyCase1RoutesItemCase0Locale as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0Locale>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList = Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList>;
-
 /** The original middleware matchers. */
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList = Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type = "host";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type = S.String;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -14999,71 +7872,24 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Va
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0 {
   type: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type;
   value: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Type,
-      value: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Type = S.String;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -15077,109 +7903,40 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Va
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1Eq),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Type;
   value?: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Type,
-      value: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1Value),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingItem =
   | GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase0
   | GetDeploymentResponseBodyCase1RoutesItemCase0MissingItemCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItem>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MissingList =
   Array<GetDeploymentResponseBodyCase1RoutesItemCase0MissingItem>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MissingList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1RoutesItemCase0MissingItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0MissingList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0MitigateAction = "challenge" | "deny";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0MitigateAction = S.String;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate {
   action: GetDeploymentResponseBodyCase1RoutesItemCase0MitigateAction;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate =
-  CancelDeploymentResponseRoutesItemCase0Mitigate as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args =
   | string
   | GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0ArgsCase1List;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
   | "delete"
   | "set";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Op = S.String;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
   gt?: number;
@@ -15192,54 +7949,16 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase
   pre?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey =
   | string
   | GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target {
   key: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0TargetKey,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Type =
   | "request.headers"
   | "request.query"
   | "response.headers";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0 {
   args?: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args;
   env?: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList;
@@ -15247,59 +7966,20 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase
   target: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target;
   type: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Type;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Args),
-      env: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0EnvList),
-      op: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Op,
-      target: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Target,
-      type: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op = "set";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op = S.String;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Type = "request.path";
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Type = S.String;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1 {
   args: string;
   env?: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList;
   op: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op;
   type: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Type;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1EnvList),
-      op: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Op,
-      type: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItem =
   | GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase0
   | GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItemCase1;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItem>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase0TransformsList =
   Array<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItem>;
-export const GetDeploymentResponseBodyCase1RoutesItemCase0TransformsList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1RoutesItemCase0TransformsItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0TransformsList>;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase0 {
   caseSensitive?: boolean;
   check?: boolean;
@@ -15329,36 +8009,6 @@ export interface GetDeploymentResponseBodyCase1RoutesItemCase0 {
   statusCode?: number;
   transforms?: GetDeploymentResponseBodyCase1RoutesItemCase0TransformsList;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    caseSensitive: S.optional(S.Boolean),
-    check: S.optional(S.Boolean),
-    continue: S.optional(S.Boolean),
-    dest: S.optional(S.String),
-    destination: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0Destination),
-    env: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0EnvList),
-    has: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HasList),
-    headers: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0HeadersMap),
-    important: S.optional(S.Boolean),
-    locale: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0Locale),
-    methods: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0MethodsList),
-    middleware: S.optional(S.Number),
-    middlewarePath: S.optional(S.String),
-    middlewareRawSrc: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0MiddlewareRawSrcList),
-    missing: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0MissingList),
-    mitigate: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0Mitigate),
-    override: S.optional(S.Boolean),
-    respectOriginCacheControl: S.optional(S.Boolean),
-    source: S.optional(S.String),
-    src: S.String,
-    status: S.optional(S.Number),
-    statusCode: S.optional(S.Number),
-    transforms: S.optional(GetDeploymentResponseBodyCase1RoutesItemCase0TransformsList),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1RoutesItemCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase0>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase1Handle =
   | "error"
   | "filesystem"
@@ -15366,55 +8016,31 @@ export type GetDeploymentResponseBodyCase1RoutesItemCase1Handle =
   | "miss"
   | "resource"
   | "rewrite";
-export const GetDeploymentResponseBodyCase1RoutesItemCase1Handle = S.String;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase1 {
   dest?: string;
   handle: GetDeploymentResponseBodyCase1RoutesItemCase1Handle;
   src?: string;
   status?: number;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase1 =
-  CancelDeploymentResponseRoutesItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase1>;
-
 export type GetDeploymentResponseBodyCase1RoutesItemCase2Middleware = 0;
-export const GetDeploymentResponseBodyCase1RoutesItemCase2Middleware = S.Number;
-
 export interface GetDeploymentResponseBodyCase1RoutesItemCase2 {
   continue: boolean;
   middleware: GetDeploymentResponseBodyCase1RoutesItemCase2Middleware;
   src: string;
 }
-export const GetDeploymentResponseBodyCase1RoutesItemCase2 =
-  CancelDeploymentResponseRoutesItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItemCase2>;
-
 export type GetDeploymentResponseBodyCase1RoutesItem =
   | GetDeploymentResponseBodyCase1RoutesItemCase0
   | GetDeploymentResponseBodyCase1RoutesItemCase1
   | GetDeploymentResponseBodyCase1RoutesItemCase2;
-export const GetDeploymentResponseBodyCase1RoutesItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1RoutesItem>;
-
 export type GetDeploymentResponseBodyCase1RoutesList =
   Array<GetDeploymentResponseBodyCase1RoutesItem>;
-export const GetDeploymentResponseBodyCase1RoutesList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1RoutesItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1RoutesList>;
-
 /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
 export type GetDeploymentResponseBodyCase1SeatBlockBlockCode =
   | "COMMIT_AUTHOR_REQUIRED"
   | "TEAM_ACCESS_REQUIRED";
-export const GetDeploymentResponseBodyCase1SeatBlockBlockCode = S.String;
-
 /** The git provider type associated with gitUserId. */
 export type GetDeploymentResponseBodyCase1SeatBlockGitProvider = "bitbucket" | "github" | "gitlab";
-export const GetDeploymentResponseBodyCase1SeatBlockGitProvider = S.String;
-
 export type GetDeploymentResponseBodyCase1SeatBlockGitUserId = string | number;
-export const GetDeploymentResponseBodyCase1SeatBlockGitUserId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1SeatBlockGitUserId>;
-
 /** NSNB Blocked metadata */
 export interface GetDeploymentResponseBodyCase1SeatBlock {
   /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
@@ -15427,52 +8053,22 @@ export interface GetDeploymentResponseBodyCase1SeatBlock {
   /** The blocked vercel user ID. */
   userId?: string;
 }
-export const GetDeploymentResponseBodyCase1SeatBlock = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blockCode: GetDeploymentResponseBodyCase1SeatBlockBlockCode,
-    gitProvider: S.optional(GetDeploymentResponseBodyCase1SeatBlockGitProvider),
-    gitUserId: S.optional(GetDeploymentResponseBodyCase1SeatBlockGitUserId),
-    isVerified: S.optional(S.Boolean),
-    userId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1SeatBlock",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1SeatBlock>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFilesCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode =
   "strict";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity {
   mode: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinityMode;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity =
-  CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture =
-  S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -15490,15 +8086,9 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFun
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -15514,57 +8104,28 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFun
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1
   | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1 =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDuration =
   | number
   | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDurationCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDuration>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue {
   affinity?: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity;
   architecture?: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture;
@@ -15579,95 +8140,33 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFun
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      affinity: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity,
-      ),
-      architecture: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueArchitecture,
-      ),
-      excludeFiles: S.optional(S.String),
-      experimentalTriggers: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersList,
-      ),
-      functionFailoverRegions: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueFunctionFailoverRegionsList,
-      ),
-      includeFiles: S.optional(S.String),
-      maxConcurrency: S.optional(S.Number),
-      maxDuration: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueMaxDuration,
-      ),
-      memory: S.optional(S.Number),
-      regions: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueRegionsList,
-      ),
-      runtime: S.optional(S.String),
-      supportsCancellation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsMap = {
   [key: string]:
     | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue
     | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValue,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsMap>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFilesCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles>;
-
 /** Matcher supplied outside of the middleware source module. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcherCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher>;
-
 /** Enforced runtime for explicitly configured Routing Middleware. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareRuntime =
   "nodejs";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareRuntime =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigProjectSettings =
   CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigProjectSettings =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-
 /** Names of the schedules that dispatch to this entrypoint, in config order. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
   entrypoint: string;
@@ -15676,23 +8175,14 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigSch
   /** Project-relative source file that contains the entrypoint. */
   sourceFile: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList>;
-
 /** Set when this build produces a function for schedule entrypoints. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction {
   entrypoints: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList;
   /** Function output path every schedule in this build targets. */
   outputPath: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig {
   buildCommand?: string;
   /** Buildpack runtime slug (e.g. "ruby"). */
@@ -15724,131 +8214,40 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig {
   serviceName?: string;
   zeroConfig?: boolean;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      buildCommand: S.optional(S.String),
-      buildpack: S.optional(S.String),
-      bundle: S.optional(S.Boolean),
-      bunVersion: S.optional(S.String),
-      debug: S.optional(S.Boolean),
-      devCommand: S.optional(S.String),
-      excludeFiles: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigExcludeFiles,
-      ),
-      framework: S.optional(S.NullOr(S.String)),
-      functions: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsMap,
-      ),
-      helpers: S.optional(S.Boolean),
-      import: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigImportMap),
-      includeFiles: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigIncludeFiles,
-      ),
-      installCommand: S.optional(S.String),
-      ldsflags: S.optional(S.String),
-      maxLambdaSize: S.optional(S.String),
-      middleware: S.optional(S.Boolean),
-      middlewareMatcher: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareMatcher,
-      ),
-      middlewareRuntime: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigMiddlewareRuntime,
-      ),
-      nodeVersion: S.optional(S.String),
-      outputDirectory: S.optional(S.String),
-      projectSettings: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings,
-      ),
-      rust: S.optional(S.String),
-      scheduleFunction: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigScheduleFunction,
-      ),
-      serviceName: S.optional(S.String),
-      zeroConfig: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0Builder {
   config?: GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig;
   src?: string;
   use: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0Builder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase0BuilderConfig),
-    src: S.optional(S.String),
-    use: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase0Builder",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0Builder>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0EnvValueType = "service-ref";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0EnvValueType = S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue {
   service: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase0EnvValueType;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue =
-  CancelDeploymentResponseServicesItemCase0EnvValue as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap = {
   [key: string]: GetDeploymentResponseBodyCase1ServicesItemCase0EnvValue | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap =
-  CancelDeploymentResponseServicesItemCase0EnvMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource =
   | "configured"
   | "generated";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource = S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List = Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0Schedule =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase0ScheduleCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0Schedule =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0Schedule>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0Schema = "experimentalServices";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0Schema = S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List = Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1Item =
   CancelDeploymentResponseServicesItemCase0TopicsCase1Item;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1Item =
-  CancelDeploymentResponseServicesItemCase0TopicsCase1Item;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List =
   Array<CancelDeploymentResponseServicesItemCase0TopicsCase1Item>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List =
-  CancelDeploymentResponseServicesItemCase0TopicsCase1List as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0Topics =
   | GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase0List
   | GetDeploymentResponseBodyCase1ServicesItemCase0TopicsCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase0Topics =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0Topics>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0Trigger =
   | "queue"
   | "schedule"
   | "workflow";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0Trigger = S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase0Type = "cron" | "job" | "web" | "worker";
-export const GetDeploymentResponseBodyCase1ServicesItemCase0Type = S.String;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase0 {
   buildCommand?: string;
@@ -15872,41 +8271,10 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase0Type;
   workspace: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.String),
-    builder: GetDeploymentResponseBodyCase1ServicesItemCase0Builder,
-    entrypoint: S.optional(S.String),
-    env: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase0EnvMap),
-    framework: S.optional(S.String),
-    group: S.optional(S.String),
-    handlerFunction: S.optional(S.String),
-    installCommand: S.optional(S.String),
-    name: S.String,
-    preDeployCommand: S.optional(S.String),
-    routePrefix: S.optional(S.String),
-    routePrefixSource: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase0RoutePrefixSource),
-    runtime: S.optional(S.String),
-    schedule: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase0Schedule),
-    schema: GetDeploymentResponseBodyCase1ServicesItemCase0Schema,
-    subdomain: S.optional(S.String),
-    topics: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase0Topics),
-    trigger: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase0Trigger),
-    type: GetDeploymentResponseBodyCase1ServicesItemCase0Type,
-    workspace: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase0>;
-
 /** Generated value shape, must be `"url"`. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItemFormat = "url";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItemFormat = S.String;
-
 /** If present, must be `"service"` for Service-to-Service HTTP bindings. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItemType = "service";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItemType = S.String;
-
 /** Caller-side bindings to other services. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItem {
   /** Environment variable name that will store the generated value */
@@ -15918,59 +8286,25 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItem {
   /** If present, must be `"service"` for Service-to-Service HTTP bindings. */
   type?: GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItemType;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      env: S.String,
-      format: GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItemFormat,
-      service: S.String,
-      type: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItemType),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItem",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItem>;
-
 /** Caller-side bindings to other services. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BindingsList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BindingsList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1ServicesItemCase1BindingsItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BindingsList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFilesCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode =
   "strict";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity {
   mode: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinityMode;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity =
-  CreateDeploymentResponseBodyCase1ServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture =
-  S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -15988,15 +8322,9 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFun
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -16012,57 +8340,28 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFun
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase1
   | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItemCase2;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
   "max";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1 =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDuration =
   | number
   | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDurationCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDuration>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue {
   affinity?: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity;
   architecture?: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture;
@@ -16077,95 +8376,33 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFun
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      affinity: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueAffinity,
-      ),
-      architecture: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueArchitecture,
-      ),
-      excludeFiles: S.optional(S.String),
-      experimentalTriggers: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueExperimentalTriggersList,
-      ),
-      functionFailoverRegions: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueFunctionFailoverRegionsList,
-      ),
-      includeFiles: S.optional(S.String),
-      maxConcurrency: S.optional(S.Number),
-      maxDuration: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueMaxDuration,
-      ),
-      memory: S.optional(S.Number),
-      regions: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValueRegionsList,
-      ),
-      runtime: S.optional(S.String),
-      supportsCancellation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsMap = {
   [key: string]:
     | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue
     | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsValue,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsMap>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFilesCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles>;
-
 /** Matcher supplied outside of the middleware source module. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcherCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher>;
-
 /** Enforced runtime for explicitly configured Routing Middleware. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareRuntime =
   "nodejs";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareRuntime =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigProjectSettings =
   CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigProjectSettings =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings;
-
 /** Names of the schedules that dispatch to this entrypoint, in config order. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItemScheduleNamesList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem {
   /** Runtime-specific entrypoint locator from `vercel.json`. */
   entrypoint: string;
@@ -16174,23 +8411,14 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigSch
   /** Project-relative source file that contains the entrypoint. */
   sourceFile: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsItem as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunctionEntrypointsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList>;
-
 /** Set when this build produces a function for schedule entrypoints. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction {
   entrypoints: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunctionEntrypointsList;
   /** Function output path every schedule in this build targets. */
   outputPath: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigScheduleFunction as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig {
   buildCommand?: string;
   /** Buildpack runtime slug (e.g. "ruby"). */
@@ -16222,94 +8450,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig {
   serviceName?: string;
   zeroConfig?: boolean;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      buildCommand: S.optional(S.String),
-      buildpack: S.optional(S.String),
-      bundle: S.optional(S.Boolean),
-      bunVersion: S.optional(S.String),
-      debug: S.optional(S.Boolean),
-      devCommand: S.optional(S.String),
-      excludeFiles: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigExcludeFiles,
-      ),
-      framework: S.optional(S.NullOr(S.String)),
-      functions: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigFunctionsMap,
-      ),
-      helpers: S.optional(S.Boolean),
-      import: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigImportMap),
-      includeFiles: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigIncludeFiles,
-      ),
-      installCommand: S.optional(S.String),
-      ldsflags: S.optional(S.String),
-      maxLambdaSize: S.optional(S.String),
-      middleware: S.optional(S.Boolean),
-      middlewareMatcher: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareMatcher,
-      ),
-      middlewareRuntime: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigMiddlewareRuntime,
-      ),
-      nodeVersion: S.optional(S.String),
-      outputDirectory: S.optional(S.String),
-      projectSettings: S.optional(
-        CancelDeploymentResponseServicesItemCase0BuilderConfigProjectSettings,
-      ),
-      rust: S.optional(S.String),
-      scheduleFunction: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfigScheduleFunction,
-      ),
-      serviceName: S.optional(S.String),
-      zeroConfig: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig>;
-
 /** Builder selected by the resolver. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1Builder {
   config?: GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig;
   src?: string;
   use: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1Builder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1BuilderConfig),
-    src: S.optional(S.String),
-    use: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1Builder",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1Builder>;
-
 /** Command override for `runtime: "container"` services. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1CommandList = Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1CommandList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1CommandList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode = "strict";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode = S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity {
   mode: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinityMode;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueAffinity as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueArchitecture =
   | "arm64"
   | "x86_64";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueArchitecture = S.String;
-
 /** Event type - must be "queue/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type =
   "queue/v1beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type =
-  S.String;
-
 /** Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 {
   /** Name of the consumer group for this trigger (REQUIRED) */
@@ -16327,15 +8485,9 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueEx
   /** Event type - must be "queue/v1beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase0 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0>;
-
 /** Event type - must be "queue/v2beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
   "queue/v2beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type =
-  S.String;
-
 /** Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 {
   /** Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration. */
@@ -16351,56 +8503,27 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueEx
   /** Event type - must be "queue/v2beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1>;
-
 /** Event type - must be "schedule/v1beta" (REQUIRED) */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
   "schedule/v1beta";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 {
   /** Event type - must be "schedule/v1beta" (REQUIRED) */
   type: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2 =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigFunctionsValueExperimentalTriggersItemCase2 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase1
   | GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItemCase2;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1 = "max";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1 =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDuration =
   | number
   | GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDurationCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDuration =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDuration>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList>;
-
 /** Function configuration scoped to this service. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue {
   affinity?: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity;
@@ -16416,62 +8539,18 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue {
   runtime?: string;
   supportsCancellation?: boolean;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      affinity: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueAffinity),
-      architecture: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueArchitecture,
-      ),
-      excludeFiles: S.optional(S.String),
-      experimentalTriggers: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueExperimentalTriggersList,
-      ),
-      functionFailoverRegions: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueFunctionFailoverRegionsList,
-      ),
-      includeFiles: S.optional(S.String),
-      maxConcurrency: S.optional(S.Number),
-      maxDuration: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueMaxDuration,
-      ),
-      memory: S.optional(S.Number),
-      regions: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValueRegionsList),
-      runtime: S.optional(S.String),
-      supportsCancellation: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue>;
-
 /** Function configuration scoped to this service. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsMap = {
   [key: string]: GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsValue,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsMap>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Type = "host";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Type = S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -16485,73 +8564,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasIt
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Type;
   value: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Type,
-      value: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Type = S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -16565,98 +8595,31 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasIt
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Type;
   value?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Type,
-      value: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersItem =
   CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersItem =
-  CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList =
   Array<CancelDeploymentResponseServicesItemCase1HeadersItemHeadersItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList =
-  CancelDeploymentResponseServicesItemCase1HeadersItemHeadersList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type = "host";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -16670,75 +8633,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissi
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type;
   value: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Type,
-      value: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -16752,117 +8664,36 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissi
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Type;
   value?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Type,
-      value: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItem {
   has?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList;
   headers: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList;
   missing?: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList;
   source: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      has: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHasList),
-      headers: GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemHeadersList,
-      missing: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItemMissingList),
-      source: S.String,
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItem",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1HeadersList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1HeadersList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1ServicesItemCase1HeadersItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1HeadersList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type = "host";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -16876,75 +8707,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHas
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type;
   value: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Type,
-      value: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -16958,90 +8738,28 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHas
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Type;
   value?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Type,
-      value: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Type =
   "host";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -17055,75 +8773,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMis
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Type;
   value: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Type,
-      value: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -17137,69 +8804,19 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMis
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Type;
   value?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Type,
-      value: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem {
   destination: string;
   env?: GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList;
@@ -17209,33 +8826,11 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem {
   source: string;
   statusCode?: number;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destination: S.String,
-      env: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemEnvList),
-      has: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemHasList),
-      missing: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItemMissingList),
-      permanent: S.optional(S.Boolean),
-      source: S.String,
-      statusCode: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsList>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type =
   "service";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -17243,38 +8838,18 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDest
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1 =
-  CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestinationCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type = "host";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type = S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq;
   gt?: number;
@@ -17288,73 +8863,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasI
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type;
   value: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Type,
-      value: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Type = S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq;
   gt?: number;
@@ -17368,89 +8894,28 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasI
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Type;
   value?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Type,
-      value: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Type =
   "host";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -17464,75 +8929,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMiss
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Type;
   value: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Type,
-      value: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -17546,109 +8960,32 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMiss
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Type;
   value?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Type,
-      value: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp = "set";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp = S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemType =
   "request.path";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemType =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem {
   args: string;
   env?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList;
   op: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemType;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemEnvList,
-      ),
-      op: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemOp,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItemType,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItem {
   destination: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination;
   env?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList;
@@ -17659,36 +8996,11 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItem {
   statusCode?: number;
   transforms?: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destination: GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemDestination,
-      env: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemEnvList),
-      has: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemHasList),
-      missing: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemMissingList),
-      respectOriginCacheControl: S.optional(S.Boolean),
-      source: S.String,
-      statusCode: S.optional(S.Number),
-      transforms: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItemTransformsList,
-      ),
-    }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItem",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RewritesList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RewritesList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1ServicesItemCase1RewritesItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RewritesList>;
-
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type =
   "service";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1 {
   /** Routing-only path used to select a route inside the target service. */
   path?: string;
@@ -17696,39 +9008,18 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0D
   /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
   type?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1 =
-  CancelDeploymentResponseServicesItemCase1RoutesItemCase0DestinationCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0DestinationCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList = Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type = "host";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq;
   gt?: number;
@@ -17742,75 +9033,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0H
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type;
   value: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Type,
-      value: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq;
   gt?: number;
@@ -17824,120 +9064,43 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0H
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Type;
   value?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Type,
-      value: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap =
-  CancelDeploymentResponseServicesItemCase0BuilderConfigImportMap as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale {
   cookie?: string;
   redirect?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0LocaleRedirectMap;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale =
-  CancelDeploymentResponseServicesItemCase1RoutesItemCase0Locale as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList>;
-
 /** The original middleware matchers. */
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type =
   "host";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq;
   gt?: number;
@@ -17951,75 +9114,24 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0M
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0 {
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type;
   value: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Type,
-      value: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0Value,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Type =
   | "cookie"
   | "header"
   | "query";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Type =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq;
   gt?: number;
@@ -18033,120 +9145,43 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0M
   re?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      re: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1ValueCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1 {
   key: string;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Type;
   value?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Type,
-      value: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1Value,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction =
   | "challenge"
   | "deny";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate {
   action: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MitigateAction;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate =
-  CancelDeploymentResponseServicesItemCase1RoutesItemCase0Mitigate as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0ArgsCase1List;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
   | "append"
   | "delete"
   | "set";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Op =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
   | string
   | number;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 {
   eq?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq;
   gt?: number;
@@ -18159,57 +9194,16 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0T
   pre?: string;
   suf?: string;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eq: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1Eq,
-      ),
-      gt: S.optional(S.Number),
-      gte: S.optional(S.Number),
-      inc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1IncList,
-      ),
-      lt: S.optional(S.Number),
-      lte: S.optional(S.Number),
-      neq: S.optional(S.String),
-      ninc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1NincList,
-      ),
-      pre: S.optional(S.String),
-      suf: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey =
   | string
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKeyCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target {
   key: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0TargetKey,
-    }),
-  ).annotate({
-    identifier:
-      "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Type =
   | "request.headers"
   | "request.query"
   | "response.headers";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Type =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0 {
   args?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args;
   env?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList;
@@ -18217,72 +9211,23 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0T
   target: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Args,
-      ),
-      env: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0EnvList,
-      ),
-      op: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Op,
-      target:
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Target,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0Type,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
   Array<string>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op =
   "set";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op =
-  S.String;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Type =
   "request.path";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Type =
-  S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1 {
   args: string;
   env?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList;
   op: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op;
   type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Type;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      args: S.String,
-      env: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1EnvList,
-      ),
-      op: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Op,
-      type: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1Type,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList>;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0 {
   caseSensitive?: boolean;
   check?: boolean;
@@ -18312,47 +9257,6 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0 
   statusCode?: number;
   transforms?: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      caseSensitive: S.optional(S.Boolean),
-      check: S.optional(S.Boolean),
-      continue: S.optional(S.Boolean),
-      dest: S.optional(S.String),
-      destination: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Destination,
-      ),
-      env: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0EnvList),
-      has: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HasList),
-      headers: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0HeadersMap),
-      important: S.optional(S.Boolean),
-      locale: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Locale),
-      methods: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MethodsList,
-      ),
-      middleware: S.optional(S.Number),
-      middlewarePath: S.optional(S.String),
-      middlewareRawSrc: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MiddlewareRawSrcList,
-      ),
-      missing: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0MissingList,
-      ),
-      mitigate: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0Mitigate),
-      override: S.optional(S.Boolean),
-      respectOriginCacheControl: S.optional(S.Boolean),
-      source: S.optional(S.String),
-      src: S.String,
-      status: S.optional(S.Number),
-      statusCode: S.optional(S.Number),
-      transforms: S.optional(
-        GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0TransformsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle =
   | "error"
   | "filesystem"
@@ -18360,32 +9264,18 @@ export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle
   | "miss"
   | "resource"
   | "rewrite";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle = S.String;
-
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1 {
   dest?: string;
   handle: GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1Handle;
   src?: string;
   status?: number;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1 =
-  CreateDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1 as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItem>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1RoutesList =
   Array<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItem>;
-export const GetDeploymentResponseBodyCase1ServicesItemCase1RoutesList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1ServicesItemCase1RoutesItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1RoutesList>;
-
 export type GetDeploymentResponseBodyCase1ServicesItemCase1Schema = "experimentalServicesV2";
-export const GetDeploymentResponseBodyCase1ServicesItemCase1Schema = S.String;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export interface GetDeploymentResponseBodyCase1ServicesItemCase1 {
   /** Caller-side bindings to other services. */
@@ -18416,47 +9306,12 @@ export interface GetDeploymentResponseBodyCase1ServicesItemCase1 {
   schema: GetDeploymentResponseBodyCase1ServicesItemCase1Schema;
   trailingSlash?: boolean;
 }
-export const GetDeploymentResponseBodyCase1ServicesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bindings: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1BindingsList),
-    buildCommand: S.optional(S.String),
-    builder: GetDeploymentResponseBodyCase1ServicesItemCase1Builder,
-    cleanUrls: S.optional(S.Boolean),
-    command: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1CommandList),
-    devCommand: S.optional(S.String),
-    entrypoint: S.optional(S.String),
-    framework: S.optional(S.String),
-    functions: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1FunctionsMap),
-    headers: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1HeadersList),
-    ignoreCommand: S.optional(S.String),
-    installCommand: S.optional(S.String),
-    name: S.String,
-    outputDirectory: S.optional(S.String),
-    redirects: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RedirectsList),
-    rewrites: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RewritesList),
-    root: S.String,
-    routes: S.optional(GetDeploymentResponseBodyCase1ServicesItemCase1RoutesList),
-    runtime: S.optional(S.String),
-    schema: GetDeploymentResponseBodyCase1ServicesItemCase1Schema,
-    trailingSlash: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1ServicesItemCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItemCase1>;
-
 export type GetDeploymentResponseBodyCase1ServicesItem =
   | GetDeploymentResponseBodyCase1ServicesItemCase0
   | GetDeploymentResponseBodyCase1ServicesItemCase1;
-export const GetDeploymentResponseBodyCase1ServicesItem =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase1ServicesItem>;
-
 /** Services detected during build from vercel.json experimentalServices or auto-detected from project structure. Used to inject service URLs as environment variables at runtime. */
 export type GetDeploymentResponseBodyCase1ServicesList =
   Array<GetDeploymentResponseBodyCase1ServicesItem>;
-export const GetDeploymentResponseBodyCase1ServicesList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase1ServicesItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase1ServicesList>;
-
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetDeploymentResponseBodyCase1Source =
   | "api-trigger-git-deploy"
@@ -18469,8 +9324,6 @@ export type GetDeploymentResponseBodyCase1Source =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const GetDeploymentResponseBodyCase1Source = S.String;
-
 export type GetDeploymentResponseBodyCase1Status =
   | "BLOCKED"
   | "BUILDING"
@@ -18479,28 +9332,15 @@ export type GetDeploymentResponseBodyCase1Status =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetDeploymentResponseBodyCase1Status = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type GetDeploymentResponseBodyCase1Target = "production" | "staging";
-export const GetDeploymentResponseBodyCase1Target = S.String;
-
 /** The team that owns the deployment if any */
 export type GetDeploymentResponseBodyCase1Team = CancelDeploymentResponseTeam;
-export const GetDeploymentResponseBodyCase1Team = CancelDeploymentResponseTeam;
-
 export type GetDeploymentResponseBodyCase1Type = "LAMBDAS";
-export const GetDeploymentResponseBodyCase1Type = S.String;
-
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type GetDeploymentResponseBodyCase1UserAliasesList = Array<string>;
-export const GetDeploymentResponseBodyCase1UserAliasesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase1UserAliasesList>;
-
 /** The platform version that was used to create the deployment. */
 export type GetDeploymentResponseBodyCase1Version = 2;
-export const GetDeploymentResponseBodyCase1Version = S.Number;
-
 /** Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata. */
 export interface GetDeploymentResponseBodyCase1 {
   /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
@@ -18634,137 +9474,20 @@ export interface GetDeploymentResponseBodyCase1 {
   /** The platform version that was used to create the deployment. */
   version: GetDeploymentResponseBodyCase1Version;
 }
-export const GetDeploymentResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(GetDeploymentResponseBodyCase1AliasList),
-    aliasAssigned: S.Boolean,
-    aliasAssignedAt: S.optional(S.NullOr(GetDeploymentResponseBodyCase1AliasAssignedAt)),
-    aliasError: S.optional(S.NullOr(CancelDeploymentResponseAliasError)),
-    aliasFinal: S.optional(S.NullOr(S.String)),
-    aliasWarning: S.optional(S.NullOr(CancelDeploymentResponseAliasWarning)),
-    alwaysRefuseToBuild: S.optional(S.Boolean),
-    atproto: S.optional(GetDeploymentResponseBodyCase1Atproto),
-    attribution: S.optional(GetDeploymentResponseBodyCase1Attribution),
-    autoAssignCustomDomains: S.optional(S.Boolean),
-    automaticAliases: S.optional(GetDeploymentResponseBodyCase1AutomaticAliasesList),
-    bootedAt: S.Number,
-    build: GetDeploymentResponseBodyCase1Build,
-    buildArtifactUrls: S.optional(GetDeploymentResponseBodyCase1BuildArtifactUrlsList),
-    buildContainerFinishedAt: S.optional(S.Number),
-    buildErrorAt: S.optional(S.Number),
-    buildingAt: S.Number,
-    builds: S.optional(GetDeploymentResponseBodyCase1BuildsList),
-    buildSkipped: S.Boolean,
-    canceledAt: S.optional(S.Number),
-    checks: S.optional(GetDeploymentResponseBodyCase1Checks),
-    checksConclusion: S.optional(GetDeploymentResponseBodyCase1ChecksConclusion),
-    checksState: S.optional(GetDeploymentResponseBodyCase1ChecksState),
-    config: S.optional(GetDeploymentResponseBodyCase1Config),
-    connectBuildsEnabled: S.optional(S.Boolean),
-    connectConfigurationId: S.optional(S.String),
-    createdAt: S.Number,
-    createdIn: S.String,
-    creator: GetDeploymentResponseBodyCase1Creator,
-    crons: S.optional(GetDeploymentResponseBodyCase1CronsList),
-    customEnvironment: S.optional(GetDeploymentResponseBodyCase1CustomEnvironment),
-    defaultRoute: S.optional(S.String),
-    deletedAt: S.optional(S.NullOr(S.Number)),
-    duration: CancelDeploymentResponseDuration,
-    env: GetDeploymentResponseBodyCase1EnvList,
-    errorCode: S.optional(S.String),
-    errorLink: S.optional(S.String),
-    errorMessage: S.optional(S.NullOr(S.String)),
-    errorStep: S.optional(S.String),
-    flags: S.optional(GetDeploymentResponseBodyCase1Flags),
-    functions: S.optional(S.NullOr(GetDeploymentResponseBodyCase1FunctionsMap)),
-    gitRepo: S.optional(S.NullOr(GetDeploymentResponseBodyCase1GitRepo)),
-    gitSource: S.optional(GetDeploymentResponseBodyCase1GitSource),
-    id: S.String,
-    images: S.optional(GetDeploymentResponseBodyCase1Images),
-    initReadyAt: S.optional(S.Number),
-    inspectorUrl: S.NullOr(S.String),
-    integrations: S.optional(GetDeploymentResponseBodyCase1Integrations),
-    isFirstBranchDeployment: S.optional(S.Boolean),
-    isInConcurrentBuildsQueue: S.Boolean,
-    isInstantStatic: S.optional(S.Boolean),
-    isInSystemBuildsQueue: S.Boolean,
-    lambdas: S.optional(GetDeploymentResponseBodyCase1LambdasList),
-    manualProvisioning: S.optional(GetDeploymentResponseBodyCase1ManualProvisioning),
-    meta: GetDeploymentResponseBodyCase1MetaMap,
-    microfrontends: S.optional(GetDeploymentResponseBodyCase1Microfrontends),
-    monorepoManager: S.optional(S.NullOr(S.String)),
-    name: S.String,
-    nodeVersion: S.optional(GetDeploymentResponseBodyCase1NodeVersion),
-    oidcTokenClaims: S.optional(GetDeploymentResponseBodyCase1OidcTokenClaims),
-    oomReport: S.optional(GetDeploymentResponseBodyCase1OomReport),
-    originCacheRegion: S.optional(S.String),
-    ownerId: S.String,
-    passiveConnectConfigurationId: S.optional(S.String),
-    passiveRegions: S.optional(GetDeploymentResponseBodyCase1PassiveRegionsList),
-    plan: GetDeploymentResponseBodyCase1Plan,
-    platform: S.optional(GetDeploymentResponseBodyCase1Platform),
-    prebuilt: S.optional(S.Boolean),
-    previewCommentsEnabled: S.optional(S.Boolean),
-    project: S.optional(CancelDeploymentResponseProject),
-    projectId: S.String,
-    projectSettings: GetDeploymentResponseBodyCase1ProjectSettings,
-    public: S.Boolean,
-    ready: S.optional(S.Number),
-    readyState: GetDeploymentResponseBodyCase1ReadyState,
-    readyStateReason: S.optional(S.String),
-    readySubstate: S.optional(GetDeploymentResponseBodyCase1ReadySubstate),
-    regions: GetDeploymentResponseBodyCase1RegionsList,
-    resourceConfig: S.optional(GetDeploymentResponseBodyCase1ResourceConfig),
-    routes: S.NullOr(GetDeploymentResponseBodyCase1RoutesList),
-    seatBlock: S.optional(GetDeploymentResponseBodyCase1SeatBlock),
-    services: S.optional(GetDeploymentResponseBodyCase1ServicesList),
-    softDeletedByRetention: S.optional(S.Boolean),
-    source: S.optional(GetDeploymentResponseBodyCase1Source),
-    status: GetDeploymentResponseBodyCase1Status,
-    target: S.optional(S.NullOr(GetDeploymentResponseBodyCase1Target)),
-    team: S.optional(CancelDeploymentResponseTeam),
-    ttyBuildLogs: S.optional(S.Boolean),
-    type: GetDeploymentResponseBodyCase1Type,
-    undeletedAt: S.optional(S.Number),
-    url: S.String,
-    userAliases: S.optional(GetDeploymentResponseBodyCase1UserAliasesList),
-    userConfiguredDeploymentId: S.optional(S.String),
-    version: GetDeploymentResponseBodyCase1Version,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase1",
-}) as any as S.Schema<GetDeploymentResponseBodyCase1>;
-
 /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
 export type GetDeploymentResponseBodyCase2AliasList = Array<string>;
-export const GetDeploymentResponseBodyCase2AliasList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2AliasList>;
-
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
 export type GetDeploymentResponseBodyCase2AliasError = CancelDeploymentResponseAliasError;
-export const GetDeploymentResponseBodyCase2AliasError = CancelDeploymentResponseAliasError;
-
 export type GetDeploymentResponseBodyCase2AliasWarning = CancelDeploymentResponseAliasWarning;
-export const GetDeploymentResponseBodyCase2AliasWarning = CancelDeploymentResponseAliasWarning;
-
 export type GetDeploymentResponseBodyCase2AutomaticAliasesList = Array<string>;
-export const GetDeploymentResponseBodyCase2AutomaticAliasesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2AutomaticAliasesList>;
-
 export type GetDeploymentResponseBodyCase2ChecksConclusion =
   | "canceled"
   | "failed"
   | "skipped"
   | "succeeded";
-export const GetDeploymentResponseBodyCase2ChecksConclusion = S.String;
-
 export type GetDeploymentResponseBodyCase2ChecksState = "completed" | "registered" | "running";
-export const GetDeploymentResponseBodyCase2ChecksState = S.String;
-
 /** Principal type of the deployment creator. */
 export type GetDeploymentResponseBodyCase2CreatorType = "app" | "integration" | "system" | "user";
-export const GetDeploymentResponseBodyCase2CreatorType = S.String;
-
 /** Information about the deployment creator */
 export interface GetDeploymentResponseBodyCase2Creator {
   /** The avatar of the user that created the deployment */
@@ -18776,16 +9499,11 @@ export interface GetDeploymentResponseBodyCase2Creator {
   /** The username of the user that created the deployment */
   username?: string;
 }
-export const GetDeploymentResponseBodyCase2Creator =
-  CancelDeploymentResponseCreator as any as S.Schema<GetDeploymentResponseBodyCase2Creator>;
-
 /** The type of matching to perform */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcherType =
   | "endsWith"
   | "equals"
   | "startsWith";
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcherType = S.String;
-
 /** Configuration for matching git branches to this environment */
 export interface GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher {
   /** The pattern to match against branch names */
@@ -18793,35 +9511,20 @@ export interface GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatch
   /** The type of matching to perform */
   type: GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcherType;
 }
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher =
-  CreateDeploymentResponseBodyCase1CustomEnvironmentCase0BranchMatcher as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher>;
-
 /** List of aliases for the current deployment */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList =
   Array<string>;
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList>;
-
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemRedirectStatusCode =
   | 301
   | 302
   | 307
   | 308;
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemRedirectStatusCode =
-  S.Number;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationItem =
   CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem;
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationItem =
-  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationList =
   Array<CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationItem>;
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationList =
-  CancelDeploymentResponseCustomEnvironmentCase0DomainsItemVerificationList as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationList>;
-
 /** List of domains associated with this environment */
 export interface GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItem {
   apexName: string;
@@ -18838,44 +9541,14 @@ export interface GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItem
   /** `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed. */
   verified: boolean;
 }
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      apexName: S.String,
-      createdAt: S.optional(S.Number),
-      customEnvironmentId: S.optional(S.NullOr(S.String)),
-      gitBranch: S.optional(S.NullOr(S.String)),
-      name: S.String,
-      projectId: S.String,
-      redirect: S.optional(S.NullOr(S.String)),
-      redirectStatusCode: S.optional(
-        S.NullOr(GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemRedirectStatusCode),
-      ),
-      updatedAt: S.optional(S.Number),
-      verification: S.optional(
-        GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItemVerificationList,
-      ),
-      verified: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItem",
-  }) as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItem>;
-
 /** List of domains associated with this environment */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsList =
   Array<GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItem>;
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsList =
-  /*@__PURE__*/ S.Array(
-    GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsItem,
-  ) as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsList>;
-
 /** The type of environment (production, preview, or development) */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase0Type =
   | "development"
   | "preview"
   | "production";
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0Type = S.String;
-
 /** If the deployment was created using a Custom Environment, then this property contains information regarding the environment used. */
 export interface GetDeploymentResponseBodyCase2CustomEnvironmentCase0 {
   /** Configuration for matching git branches to this environment */
@@ -18897,47 +9570,16 @@ export interface GetDeploymentResponseBodyCase2CustomEnvironmentCase0 {
   /** Timestamp when the environment was last updated */
   updatedAt: number;
 }
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchMatcher: S.optional(GetDeploymentResponseBodyCase2CustomEnvironmentCase0BranchMatcher),
-    createdAt: S.Number,
-    currentDeploymentAliases: S.optional(
-      GetDeploymentResponseBodyCase2CustomEnvironmentCase0CurrentDeploymentAliasesList,
-    ),
-    description: S.optional(S.String),
-    domains: S.optional(GetDeploymentResponseBodyCase2CustomEnvironmentCase0DomainsList),
-    id: S.String,
-    slug: S.String,
-    type: GetDeploymentResponseBodyCase2CustomEnvironmentCase0Type,
-    updatedAt: S.Number,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2CustomEnvironmentCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironmentCase0>;
-
 /** If the deployment was created using a Custom Environment, then this property contains information regarding the environment used. */
 export type GetDeploymentResponseBodyCase2CustomEnvironmentCase1 =
   CancelDeploymentResponseCustomEnvironmentCase1;
-export const GetDeploymentResponseBodyCase2CustomEnvironmentCase1 =
-  CancelDeploymentResponseCustomEnvironmentCase1;
-
 export type GetDeploymentResponseBodyCase2CustomEnvironment =
   | GetDeploymentResponseBodyCase2CustomEnvironmentCase0
   | CancelDeploymentResponseCustomEnvironmentCase1;
-export const GetDeploymentResponseBodyCase2CustomEnvironment =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase2CustomEnvironment>;
-
 /** Build timestamps, elapsed durations, and billing measurements. The object is always present, but fields are omitted when their source timestamps are unavailable, such as for running or legacy deployments. */
 export type GetDeploymentResponseBodyCase2Duration = CancelDeploymentResponseDuration;
-export const GetDeploymentResponseBodyCase2Duration = CancelDeploymentResponseDuration;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase0RepoId = string | number;
-export const GetDeploymentResponseBodyCase2GitSourceCase0RepoId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase0RepoId>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase0Type = "github";
-export const GetDeploymentResponseBodyCase2GitSourceCase0Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase0 {
   prId?: number | null;
   ref?: string | null;
@@ -18945,21 +9587,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase0 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase0Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: GetDeploymentResponseBodyCase2GitSourceCase0RepoId,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase0Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase0",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase0>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase1Type = "github";
-export const GetDeploymentResponseBodyCase2GitSourceCase1Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase1 {
   org: string;
   prId?: number | null;
@@ -18968,16 +9596,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase1 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase1Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase1 =
-  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase1>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase2RepoId = string | number;
-export const GetDeploymentResponseBodyCase2GitSourceCase2RepoId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase2RepoId>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase2Type = "github-custom-host";
-export const GetDeploymentResponseBodyCase2GitSourceCase2Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase2 {
   host: string;
   prId?: number | null;
@@ -18986,22 +9606,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase2 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase2Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: GetDeploymentResponseBodyCase2GitSourceCase2RepoId,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase2Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase2",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase2>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase3Type = "github-custom-host";
-export const GetDeploymentResponseBodyCase2GitSourceCase3Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase3 {
   host: string;
   org: string;
@@ -19011,16 +9616,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase3 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase3Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase3 =
-  CancelDeploymentResponseGitSourceCase3 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase3>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase4RepoId = string | number;
-export const GetDeploymentResponseBodyCase2GitSourceCase4RepoId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase4RepoId>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase4Type = "github-limited";
-export const GetDeploymentResponseBodyCase2GitSourceCase4Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase4 {
   prId?: number | null;
   ref?: string | null;
@@ -19028,21 +9625,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase4 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase4Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    ref: S.optional(S.NullOr(S.String)),
-    repoId: GetDeploymentResponseBodyCase2GitSourceCase4RepoId,
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase4Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase4",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase4>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase5Type = "github-limited";
-export const GetDeploymentResponseBodyCase2GitSourceCase5Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase5 {
   org: string;
   prId?: number | null;
@@ -19051,16 +9634,8 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase5 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase5Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase5 =
-  CancelDeploymentResponseGitSourceCase1 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase5>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase6ProjectId = string | number;
-export const GetDeploymentResponseBodyCase2GitSourceCase6ProjectId =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase6ProjectId>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase6Type = "gitlab";
-export const GetDeploymentResponseBodyCase2GitSourceCase6Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase6 {
   prId?: number | null;
   projectId: GetDeploymentResponseBodyCase2GitSourceCase6ProjectId;
@@ -19068,21 +9643,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase6 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase6Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prId: S.optional(S.NullOr(S.Number)),
-    projectId: GetDeploymentResponseBodyCase2GitSourceCase6ProjectId,
-    ref: S.optional(S.NullOr(S.String)),
-    sha: S.optional(S.String),
-    type: GetDeploymentResponseBodyCase2GitSourceCase6Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2GitSourceCase6",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase6>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase7Type = "bitbucket";
-export const GetDeploymentResponseBodyCase2GitSourceCase7Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase7 {
   prId?: number | null;
   ref?: string | null;
@@ -19091,12 +9652,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase7 {
   type: GetDeploymentResponseBodyCase2GitSourceCase7Type;
   workspaceUuid?: string;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase7 =
-  CancelDeploymentResponseGitSourceCase7 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase7>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase8Type = "bitbucket";
-export const GetDeploymentResponseBodyCase2GitSourceCase8Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase8 {
   owner: string;
   prId?: number | null;
@@ -19105,27 +9661,13 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase8 {
   slug: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase8Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase8 =
-  CancelDeploymentResponseGitSourceCase8 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase8>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase9CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const GetDeploymentResponseBodyCase2GitSourceCase9CommitMetadataAuthor =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase9CommitMetadataCommitter =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const GetDeploymentResponseBodyCase2GitSourceCase9CommitMetadataCommitter =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase9CommitMetadata =
   CancelDeploymentResponseGitSourceCase9CommitMetadata;
-export const GetDeploymentResponseBodyCase2GitSourceCase9CommitMetadata =
-  CancelDeploymentResponseGitSourceCase9CommitMetadata;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase9Type = "vercel";
-export const GetDeploymentResponseBodyCase2GitSourceCase9Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase9 {
   commitMetadata?: CancelDeploymentResponseGitSourceCase9CommitMetadata;
   org?: string;
@@ -19137,12 +9679,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase9 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase9Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase9 =
-  CancelDeploymentResponseGitSourceCase9 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase9>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase10Type = "cursor-origin";
-export const GetDeploymentResponseBodyCase2GitSourceCase10Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase10 {
   /** Owner (namespace) slug. */
   owner?: string;
@@ -19154,12 +9691,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase10 {
   sha?: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase10Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase10 =
-  CancelDeploymentResponseGitSourceCase10 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase10>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase11Type = "custom";
-export const GetDeploymentResponseBodyCase2GitSourceCase11Type = S.String;
-
 /** Allows custom git sources (local folder mounted to the container) in test mode */
 export interface GetDeploymentResponseBodyCase2GitSourceCase11 {
   gitUrl: string;
@@ -19167,12 +9699,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase11 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase11Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase11 =
-  CancelDeploymentResponseGitSourceCase11 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase11>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase12Type = "github";
-export const GetDeploymentResponseBodyCase2GitSourceCase12Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase12 {
   org?: string;
   ref: string;
@@ -19181,12 +9708,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase12 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase12Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase12 =
-  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase12>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase13Type = "github-custom-host";
-export const GetDeploymentResponseBodyCase2GitSourceCase13Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase13 {
   host: string;
   org?: string;
@@ -19196,12 +9718,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase13 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase13Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase13 =
-  CancelDeploymentResponseGitSourceCase13 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase13>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase14Type = "github-limited";
-export const GetDeploymentResponseBodyCase2GitSourceCase14Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase14 {
   org?: string;
   ref: string;
@@ -19210,24 +9727,14 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase14 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase14Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase14 =
-  CancelDeploymentResponseGitSourceCase12 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase14>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase15Type = "gitlab";
-export const GetDeploymentResponseBodyCase2GitSourceCase15Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase15 {
   projectId: number;
   ref: string;
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase15Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase15 =
-  CancelDeploymentResponseGitSourceCase15 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase15>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase16Type = "bitbucket";
-export const GetDeploymentResponseBodyCase2GitSourceCase16Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase16 {
   owner?: string;
   ref: string;
@@ -19237,27 +9744,13 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase16 {
   type: GetDeploymentResponseBodyCase2GitSourceCase16Type;
   workspaceUuid: string;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase16 =
-  CancelDeploymentResponseGitSourceCase16 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase16>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase17CommitMetadataAuthor =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const GetDeploymentResponseBodyCase2GitSourceCase17CommitMetadataAuthor =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase17CommitMetadataCommitter =
   CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-export const GetDeploymentResponseBodyCase2GitSourceCase17CommitMetadataCommitter =
-  CancelDeploymentResponseGitSourceCase9CommitMetadataAuthor;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase17CommitMetadata =
   CancelDeploymentResponseGitSourceCase9CommitMetadata;
-export const GetDeploymentResponseBodyCase2GitSourceCase17CommitMetadata =
-  CancelDeploymentResponseGitSourceCase9CommitMetadata;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase17Type = "vercel";
-export const GetDeploymentResponseBodyCase2GitSourceCase17Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase17 {
   commitMetadata?: CancelDeploymentResponseGitSourceCase9CommitMetadata;
   org: string;
@@ -19268,12 +9761,7 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase17 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase17Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase17 =
-  CancelDeploymentResponseGitSourceCase17 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase17>;
-
 export type GetDeploymentResponseBodyCase2GitSourceCase18Type = "cursor-origin";
-export const GetDeploymentResponseBodyCase2GitSourceCase18Type = S.String;
-
 export interface GetDeploymentResponseBodyCase2GitSourceCase18 {
   owner: string;
   ref: string;
@@ -19282,9 +9770,6 @@ export interface GetDeploymentResponseBodyCase2GitSourceCase18 {
   sha: string;
   type: GetDeploymentResponseBodyCase2GitSourceCase18Type;
 }
-export const GetDeploymentResponseBodyCase2GitSourceCase18 =
-  CancelDeploymentResponseGitSourceCase18 as any as S.Schema<GetDeploymentResponseBodyCase2GitSourceCase18>;
-
 export type GetDeploymentResponseBodyCase2GitSource =
   | GetDeploymentResponseBodyCase2GitSourceCase0
   | GetDeploymentResponseBodyCase2GitSourceCase1
@@ -19305,26 +9790,15 @@ export type GetDeploymentResponseBodyCase2GitSource =
   | GetDeploymentResponseBodyCase2GitSourceCase16
   | GetDeploymentResponseBodyCase2GitSourceCase17
   | GetDeploymentResponseBodyCase2GitSourceCase18;
-export const GetDeploymentResponseBodyCase2GitSource =
-  S.Unknown as any as S.Schema<GetDeploymentResponseBodyCase2GitSource>;
-
 export type GetDeploymentResponseBodyCase2LambdasItemReadyState =
   | "BUILDING"
   | "ERROR"
   | "INITIALIZING"
   | "READY";
-export const GetDeploymentResponseBodyCase2LambdasItemReadyState = S.String;
-
 export type GetDeploymentResponseBodyCase2LambdasItemOutputItem =
   CancelDeploymentResponseLambdasItemOutputItem;
-export const GetDeploymentResponseBodyCase2LambdasItemOutputItem =
-  CancelDeploymentResponseLambdasItemOutputItem;
-
 export type GetDeploymentResponseBodyCase2LambdasItemOutputList =
   Array<CancelDeploymentResponseLambdasItemOutputItem>;
-export const GetDeploymentResponseBodyCase2LambdasItemOutputList =
-  CancelDeploymentResponseLambdasItemOutputList as any as S.Schema<GetDeploymentResponseBodyCase2LambdasItemOutputList>;
-
 /** A partial representation of a Build used by the deployment endpoint. */
 export interface GetDeploymentResponseBodyCase2LambdasItem {
   createdAt?: number;
@@ -19334,32 +9808,13 @@ export interface GetDeploymentResponseBodyCase2LambdasItem {
   readyStateAt?: number;
   output: GetDeploymentResponseBodyCase2LambdasItemOutputList;
 }
-export const GetDeploymentResponseBodyCase2LambdasItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.Number),
-    entrypoint: S.optional(S.NullOr(S.String)),
-    id: S.String,
-    readyState: S.optional(GetDeploymentResponseBodyCase2LambdasItemReadyState),
-    readyStateAt: S.optional(S.Number),
-    output: GetDeploymentResponseBodyCase2LambdasItemOutputList,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2LambdasItem",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2LambdasItem>;
-
 export type GetDeploymentResponseBodyCase2LambdasList =
   Array<GetDeploymentResponseBodyCase2LambdasItem>;
-export const GetDeploymentResponseBodyCase2LambdasList = /*@__PURE__*/ S.Array(
-  GetDeploymentResponseBodyCase2LambdasItem,
-) as any as S.Schema<GetDeploymentResponseBodyCase2LambdasList>;
-
 /** Current provisioning state */
 export type GetDeploymentResponseBodyCase2ManualProvisioningState =
   | "COMPLETE"
   | "PENDING"
   | "TIMEOUT";
-export const GetDeploymentResponseBodyCase2ManualProvisioningState = S.String;
-
 /** Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called. */
 export interface GetDeploymentResponseBodyCase2ManualProvisioning {
   /** Timestamp when manual provisioning completed */
@@ -19367,13 +9822,7 @@ export interface GetDeploymentResponseBodyCase2ManualProvisioning {
   /** Current provisioning state */
   state: GetDeploymentResponseBodyCase2ManualProvisioningState;
 }
-export const GetDeploymentResponseBodyCase2ManualProvisioning =
-  CancelDeploymentResponseManualProvisioning as any as S.Schema<GetDeploymentResponseBodyCase2ManualProvisioning>;
-
 export type GetDeploymentResponseBodyCase2MetaMap = { [key: string]: string | undefined };
-export const GetDeploymentResponseBodyCase2MetaMap =
-  CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentResponseBodyCase2MetaMap>;
-
 /** If set it overrides the `projectSettings.nodeVersion` for this deployment. */
 export type GetDeploymentResponseBodyCase2NodeVersion =
   | "10.x"
@@ -19385,12 +9834,7 @@ export type GetDeploymentResponseBodyCase2NodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-export const GetDeploymentResponseBodyCase2NodeVersion = S.String;
-
 export type GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList = Array<string>;
-export const GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2OidcTokenClaimsMfeGroupIdsList>;
-
 export interface GetDeploymentResponseBodyCase2OidcTokenClaims {
   aud: string;
   custom_environment_id?: string;
@@ -19406,21 +9850,11 @@ export interface GetDeploymentResponseBodyCase2OidcTokenClaims {
   scope: string;
   sub: string;
 }
-export const GetDeploymentResponseBodyCase2OidcTokenClaims =
-  CancelDeploymentResponseOidcTokenClaims as any as S.Schema<GetDeploymentResponseBodyCase2OidcTokenClaims>;
-
 export type GetDeploymentResponseBodyCase2OomReport = "out-of-memory";
-export const GetDeploymentResponseBodyCase2OomReport = S.String;
-
 /** Since November 2023 this field defines a set of regions that we will deploy the lambda to passively Lambdas will be deployed to these regions but only invoked if all of the primary `regions` are marked as out of service */
 export type GetDeploymentResponseBodyCase2PassiveRegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase2PassiveRegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2PassiveRegionsList>;
-
 /** The public project information associated with the deployment. */
 export type GetDeploymentResponseBodyCase2Project = CancelDeploymentResponseProject;
-export const GetDeploymentResponseBodyCase2Project = CancelDeploymentResponseProject;
-
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type GetDeploymentResponseBodyCase2ReadyState =
   | "BLOCKED"
@@ -19430,17 +9864,10 @@ export type GetDeploymentResponseBodyCase2ReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetDeploymentResponseBodyCase2ReadyState = S.String;
-
 /** Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic */
 export type GetDeploymentResponseBodyCase2ReadySubstate = "PROMOTED" | "ROLLING" | "STAGED";
-export const GetDeploymentResponseBodyCase2ReadySubstate = S.String;
-
 /** The regions the deployment exists in */
 export type GetDeploymentResponseBodyCase2RegionsList = Array<string>;
-export const GetDeploymentResponseBodyCase2RegionsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2RegionsList>;
-
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetDeploymentResponseBodyCase2Source =
   | "api-trigger-git-deploy"
@@ -19453,8 +9880,6 @@ export type GetDeploymentResponseBodyCase2Source =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const GetDeploymentResponseBodyCase2Source = S.String;
-
 export type GetDeploymentResponseBodyCase2Status =
   | "BLOCKED"
   | "BUILDING"
@@ -19463,28 +9888,15 @@ export type GetDeploymentResponseBodyCase2Status =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetDeploymentResponseBodyCase2Status = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type GetDeploymentResponseBodyCase2Target = "production" | "staging";
-export const GetDeploymentResponseBodyCase2Target = S.String;
-
 /** The team that owns the deployment if any */
 export type GetDeploymentResponseBodyCase2Team = CancelDeploymentResponseTeam;
-export const GetDeploymentResponseBodyCase2Team = CancelDeploymentResponseTeam;
-
 export type GetDeploymentResponseBodyCase2Type = "LAMBDAS";
-export const GetDeploymentResponseBodyCase2Type = S.String;
-
 /** An array of domains that were provided by the user when creating the Deployment. */
 export type GetDeploymentResponseBodyCase2UserAliasesList = Array<string>;
-export const GetDeploymentResponseBodyCase2UserAliasesList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentResponseBodyCase2UserAliasesList>;
-
 /** The platform version that was used to create the deployment. */
 export type GetDeploymentResponseBodyCase2Version = 2;
-export const GetDeploymentResponseBodyCase2Version = S.Number;
-
 /** Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner. */
 export interface GetDeploymentResponseBodyCase2 {
   /** A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation */
@@ -19577,101 +9989,35 @@ export interface GetDeploymentResponseBodyCase2 {
   /** The platform version that was used to create the deployment. */
   version: GetDeploymentResponseBodyCase2Version;
 }
-export const GetDeploymentResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alias: S.optional(GetDeploymentResponseBodyCase2AliasList),
-    aliasAssigned: S.Boolean,
-    aliasError: S.optional(S.NullOr(CancelDeploymentResponseAliasError)),
-    aliasFinal: S.optional(S.NullOr(S.String)),
-    aliasWarning: S.optional(S.NullOr(CancelDeploymentResponseAliasWarning)),
-    autoAssignCustomDomains: S.optional(S.Boolean),
-    automaticAliases: S.optional(GetDeploymentResponseBodyCase2AutomaticAliasesList),
-    bootedAt: S.Number,
-    buildContainerFinishedAt: S.optional(S.Number),
-    buildErrorAt: S.optional(S.Number),
-    buildingAt: S.Number,
-    buildSkipped: S.Boolean,
-    canceledAt: S.optional(S.Number),
-    checksConclusion: S.optional(GetDeploymentResponseBodyCase2ChecksConclusion),
-    checksState: S.optional(GetDeploymentResponseBodyCase2ChecksState),
-    createdAt: S.Number,
-    creator: GetDeploymentResponseBodyCase2Creator,
-    customEnvironment: S.optional(GetDeploymentResponseBodyCase2CustomEnvironment),
-    defaultRoute: S.optional(S.String),
-    deletedAt: S.optional(S.NullOr(S.Number)),
-    duration: CancelDeploymentResponseDuration,
-    errorCode: S.optional(S.String),
-    errorLink: S.optional(S.String),
-    errorMessage: S.optional(S.NullOr(S.String)),
-    errorStep: S.optional(S.String),
-    gitSource: S.optional(GetDeploymentResponseBodyCase2GitSource),
-    id: S.String,
-    initReadyAt: S.optional(S.Number),
-    isFirstBranchDeployment: S.optional(S.Boolean),
-    lambdas: S.optional(GetDeploymentResponseBodyCase2LambdasList),
-    manualProvisioning: S.optional(GetDeploymentResponseBodyCase2ManualProvisioning),
-    meta: GetDeploymentResponseBodyCase2MetaMap,
-    name: S.String,
-    nodeVersion: S.optional(GetDeploymentResponseBodyCase2NodeVersion),
-    oidcTokenClaims: S.optional(GetDeploymentResponseBodyCase2OidcTokenClaims),
-    oomReport: S.optional(GetDeploymentResponseBodyCase2OomReport),
-    originCacheRegion: S.optional(S.String),
-    passiveRegions: S.optional(GetDeploymentResponseBodyCase2PassiveRegionsList),
-    prebuilt: S.optional(S.Boolean),
-    previewCommentsEnabled: S.optional(S.Boolean),
-    project: S.optional(CancelDeploymentResponseProject),
-    public: S.Boolean,
-    ready: S.optional(S.Number),
-    readyState: GetDeploymentResponseBodyCase2ReadyState,
-    readyStateReason: S.optional(S.String),
-    readySubstate: S.optional(GetDeploymentResponseBodyCase2ReadySubstate),
-    regions: GetDeploymentResponseBodyCase2RegionsList,
-    softDeletedByRetention: S.optional(S.Boolean),
-    source: S.optional(GetDeploymentResponseBodyCase2Source),
-    status: GetDeploymentResponseBodyCase2Status,
-    target: S.optional(S.NullOr(GetDeploymentResponseBodyCase2Target)),
-    team: S.optional(CancelDeploymentResponseTeam),
-    ttyBuildLogs: S.optional(S.Boolean),
-    type: GetDeploymentResponseBodyCase2Type,
-    undeletedAt: S.optional(S.Number),
-    url: S.String,
-    userAliases: S.optional(GetDeploymentResponseBodyCase2UserAliasesList),
-    userConfiguredDeploymentId: S.optional(S.String),
-    version: GetDeploymentResponseBodyCase2Version,
-  }),
-).annotate({
-  identifier: "GetDeploymentResponseBodyCase2",
-}) as any as S.Schema<GetDeploymentResponseBodyCase2>;
-
 export type GetDeploymentResponseBody =
   | GetDeploymentResponseBodyCase0
   | GetDeploymentResponseBodyCase1
   | GetDeploymentResponseBodyCase2;
-export const GetDeploymentResponseBody = S.Unknown as any as S.Schema<GetDeploymentResponseBody>;
+const GetDeploymentResponseBody = S.Unknown as any as S.Schema<GetDeploymentResponseBody>;
 
 export type GetDeploymentResponse = GetDeploymentResponseBody;
-export const GetDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   GetDeploymentResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetDeploymentResponse" }) as any as S.Schema<GetDeploymentResponse>;
 
 /** Order of the returned events based on the timestamp. */
 export type GetDeploymentEventsRequestDirection = "backward" | "forward";
-export const GetDeploymentEventsRequestDirection = S.String;
+const GetDeploymentEventsRequestDirection = S.String;
 
 /** When enabled, this endpoint will return live events as they happen. */
 export type GetDeploymentEventsRequestFollow = 0 | 1;
-export const GetDeploymentEventsRequestFollow = S.Number;
+const GetDeploymentEventsRequestFollow = S.Number;
 
 /** HTTP status code range to filter events by. */
 export type GetDeploymentEventsRequestStatusCode = number | string;
-export const GetDeploymentEventsRequestStatusCode =
+const GetDeploymentEventsRequestStatusCode =
   S.Unknown as any as S.Schema<GetDeploymentEventsRequestStatusCode>;
 
 export type GetDeploymentEventsRequestDelimiter = 0 | 1;
-export const GetDeploymentEventsRequestDelimiter = S.Number;
+const GetDeploymentEventsRequestDelimiter = S.Number;
 
 export type GetDeploymentEventsRequestBuilds = 0 | 1;
-export const GetDeploymentEventsRequestBuilds = S.Number;
+const GetDeploymentEventsRequestBuilds = S.Number;
 
 export interface GetDeploymentEventsRequest {
   /** The unique identifier or hostname of the deployment. */
@@ -19697,7 +10043,7 @@ export interface GetDeploymentEventsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetDeploymentEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrUrl: S.String.pipe(T.Label()),
     direction: S.optional(GetDeploymentEventsRequestDirection.pipe(T.Query())),
@@ -19725,24 +10071,7 @@ export interface GetDeploymentEventsResponseBodyItemCase0PayloadInfo {
   step?: string;
   type: string;
 }
-export const GetDeploymentEventsResponseBodyItemCase0PayloadInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entrypoint: S.optional(S.String),
-    name: S.String,
-    path: S.optional(S.String),
-    readyState: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    step: S.optional(S.String),
-    type: S.String,
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase0PayloadInfo",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase0PayloadInfo>;
-
 export type GetDeploymentEventsResponseBodyItemCase0PayloadProxyUserAgentList = Array<string>;
-export const GetDeploymentEventsResponseBodyItemCase0PayloadProxyUserAgentList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentEventsResponseBodyItemCase0PayloadProxyUserAgentList>;
-
 export type GetDeploymentEventsResponseBodyItemCase0PayloadProxyVercelCache =
   | "BYPASS"
   | "HIT"
@@ -19750,16 +10079,12 @@ export type GetDeploymentEventsResponseBodyItemCase0PayloadProxyVercelCache =
   | "PRERENDER"
   | "REVALIDATED"
   | "STALE";
-export const GetDeploymentEventsResponseBodyItemCase0PayloadProxyVercelCache = S.String;
-
 export type GetDeploymentEventsResponseBodyItemCase0PayloadProxyWafAction =
   | "bypass"
   | "challenge"
   | "deny"
   | "log"
   | "rate_limit";
-export const GetDeploymentEventsResponseBodyItemCase0PayloadProxyWafAction = S.String;
-
 export interface GetDeploymentEventsResponseBodyItemCase0PayloadProxy {
   cacheId?: string;
   clientIp?: string;
@@ -19781,32 +10106,6 @@ export interface GetDeploymentEventsResponseBodyItemCase0PayloadProxy {
   wafAction?: GetDeploymentEventsResponseBodyItemCase0PayloadProxyWafAction;
   wafRuleId?: string;
 }
-export const GetDeploymentEventsResponseBodyItemCase0PayloadProxy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cacheId: S.optional(S.String),
-    clientIp: S.optional(S.String),
-    host: S.String,
-    lambdaRegion: S.optional(S.String),
-    method: S.String,
-    path: S.optional(S.String),
-    pathType: S.optional(S.String),
-    pathTypeVariant: S.optional(S.String),
-    referer: S.optional(S.String),
-    region: S.optional(S.String),
-    responseByteSize: S.optional(S.Number),
-    scheme: S.optional(S.String),
-    statusCode: S.optional(S.Number),
-    timestamp: S.Number,
-    userAgent: S.optional(GetDeploymentEventsResponseBodyItemCase0PayloadProxyUserAgentList),
-    vercelCache: S.optional(GetDeploymentEventsResponseBodyItemCase0PayloadProxyVercelCache),
-    vercelId: S.optional(S.String),
-    wafAction: S.optional(GetDeploymentEventsResponseBodyItemCase0PayloadProxyWafAction),
-    wafRuleId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase0PayloadProxy",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase0PayloadProxy>;
-
 export interface GetDeploymentEventsResponseBodyItemCase0Payload {
   created?: number;
   date: number;
@@ -19819,23 +10118,6 @@ export interface GetDeploymentEventsResponseBodyItemCase0Payload {
   statusCode?: number;
   text?: string;
 }
-export const GetDeploymentEventsResponseBodyItemCase0Payload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.Number),
-    date: S.Number,
-    deploymentId: S.String,
-    id: S.String,
-    info: S.optional(GetDeploymentEventsResponseBodyItemCase0PayloadInfo),
-    proxy: S.optional(GetDeploymentEventsResponseBodyItemCase0PayloadProxy),
-    requestId: S.optional(S.String),
-    serial: S.String,
-    statusCode: S.optional(S.Number),
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase0Payload",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase0Payload>;
-
 export type GetDeploymentEventsResponseBodyItemCase0Type =
   | "command"
   | "delimiter"
@@ -19849,31 +10131,14 @@ export type GetDeploymentEventsResponseBodyItemCase0Type =
   | "report"
   | "stderr"
   | "stdout";
-export const GetDeploymentEventsResponseBodyItemCase0Type = S.String;
-
 export interface GetDeploymentEventsResponseBodyItemCase0 {
   created: number;
   payload: GetDeploymentEventsResponseBodyItemCase0Payload;
   type: GetDeploymentEventsResponseBodyItemCase0Type;
 }
-export const GetDeploymentEventsResponseBodyItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.Number,
-    payload: GetDeploymentEventsResponseBodyItemCase0Payload,
-    type: GetDeploymentEventsResponseBodyItemCase0Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase0",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase0>;
-
 export type GetDeploymentEventsResponseBodyItemCase1Info =
   GetDeploymentEventsResponseBodyItemCase0PayloadInfo;
-export const GetDeploymentEventsResponseBodyItemCase1Info =
-  GetDeploymentEventsResponseBodyItemCase0PayloadInfo;
-
 export type GetDeploymentEventsResponseBodyItemCase1Level = "error" | "warning";
-export const GetDeploymentEventsResponseBodyItemCase1Level = S.String;
-
 export type GetDeploymentEventsResponseBodyItemCase1Type =
   | "command"
   | "delimiter"
@@ -19887,8 +10152,6 @@ export type GetDeploymentEventsResponseBodyItemCase1Type =
   | "report"
   | "stderr"
   | "stdout";
-export const GetDeploymentEventsResponseBodyItemCase1Type = S.String;
-
 export interface GetDeploymentEventsResponseBodyItemCase1 {
   created: number;
   date: number;
@@ -19900,31 +10163,9 @@ export interface GetDeploymentEventsResponseBodyItemCase1 {
   text?: string;
   type: GetDeploymentEventsResponseBodyItemCase1Type;
 }
-export const GetDeploymentEventsResponseBodyItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.Number,
-    date: S.Number,
-    deploymentId: S.String,
-    id: S.String,
-    info: GetDeploymentEventsResponseBodyItemCase0PayloadInfo,
-    level: S.optional(GetDeploymentEventsResponseBodyItemCase1Level),
-    serial: S.String,
-    text: S.optional(S.String),
-    type: GetDeploymentEventsResponseBodyItemCase1Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase1",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase1>;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case0PayloadInfo =
   GetDeploymentEventsResponseBodyItemCase0PayloadInfo;
-export const GetDeploymentEventsResponseBodyItemCase2Case0PayloadInfo =
-  GetDeploymentEventsResponseBodyItemCase0PayloadInfo;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyUserAgentList = Array<string>;
-export const GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyUserAgentList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyUserAgentList>;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyVercelCache =
   | "BYPASS"
   | "HIT"
@@ -19932,16 +10173,12 @@ export type GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyVercelCache
   | "PRERENDER"
   | "REVALIDATED"
   | "STALE";
-export const GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyVercelCache = S.String;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyWafAction =
   | "bypass"
   | "challenge"
   | "deny"
   | "log"
   | "rate_limit";
-export const GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyWafAction = S.String;
-
 export interface GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxy {
   cacheId?: string;
   clientIp?: string;
@@ -19963,33 +10200,6 @@ export interface GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxy {
   wafAction?: GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyWafAction;
   wafRuleId?: string;
 }
-export const GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cacheId: S.optional(S.String),
-      clientIp: S.optional(S.String),
-      host: S.String,
-      lambdaRegion: S.optional(S.String),
-      method: S.String,
-      path: S.optional(S.String),
-      pathType: S.optional(S.String),
-      pathTypeVariant: S.optional(S.String),
-      referer: S.optional(S.String),
-      region: S.optional(S.String),
-      responseByteSize: S.optional(S.Number),
-      scheme: S.optional(S.String),
-      statusCode: S.optional(S.Number),
-      timestamp: S.Number,
-      userAgent: S.optional(GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyUserAgentList),
-      vercelCache: S.optional(GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyVercelCache),
-      vercelId: S.optional(S.String),
-      wafAction: S.optional(GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxyWafAction),
-      wafRuleId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxy",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxy>;
-
 export interface GetDeploymentEventsResponseBodyItemCase2Case0Payload {
   created?: number;
   date: number;
@@ -20002,23 +10212,6 @@ export interface GetDeploymentEventsResponseBodyItemCase2Case0Payload {
   statusCode?: number;
   text?: string;
 }
-export const GetDeploymentEventsResponseBodyItemCase2Case0Payload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.Number),
-    date: S.Number,
-    deploymentId: S.String,
-    id: S.String,
-    info: S.optional(GetDeploymentEventsResponseBodyItemCase0PayloadInfo),
-    proxy: S.optional(GetDeploymentEventsResponseBodyItemCase2Case0PayloadProxy),
-    requestId: S.optional(S.String),
-    serial: S.String,
-    statusCode: S.optional(S.Number),
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase2Case0Payload",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case0Payload>;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case0Type =
   | "command"
   | "delimiter"
@@ -20032,31 +10225,14 @@ export type GetDeploymentEventsResponseBodyItemCase2Case0Type =
   | "report"
   | "stderr"
   | "stdout";
-export const GetDeploymentEventsResponseBodyItemCase2Case0Type = S.String;
-
 export interface GetDeploymentEventsResponseBodyItemCase2Case0 {
   created: number;
   payload: GetDeploymentEventsResponseBodyItemCase2Case0Payload;
   type: GetDeploymentEventsResponseBodyItemCase2Case0Type;
 }
-export const GetDeploymentEventsResponseBodyItemCase2Case0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.Number,
-    payload: GetDeploymentEventsResponseBodyItemCase2Case0Payload,
-    type: GetDeploymentEventsResponseBodyItemCase2Case0Type,
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase2Case0",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case0>;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case1Info =
   GetDeploymentEventsResponseBodyItemCase0PayloadInfo;
-export const GetDeploymentEventsResponseBodyItemCase2Case1Info =
-  GetDeploymentEventsResponseBodyItemCase0PayloadInfo;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case1Level = "error" | "warning";
-export const GetDeploymentEventsResponseBodyItemCase2Case1Level = S.String;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case1Type =
   | "command"
   | "delimiter"
@@ -20070,8 +10246,6 @@ export type GetDeploymentEventsResponseBodyItemCase2Case1Type =
   | "report"
   | "stderr"
   | "stdout";
-export const GetDeploymentEventsResponseBodyItemCase2Case1Type = S.String;
-
 export interface GetDeploymentEventsResponseBodyItemCase2Case1 {
   created: number;
   date: number;
@@ -20083,26 +10257,12 @@ export interface GetDeploymentEventsResponseBodyItemCase2Case1 {
   text?: string;
   type: GetDeploymentEventsResponseBodyItemCase2Case1Type;
 }
-export const GetDeploymentEventsResponseBodyItemCase2Case1 =
-  GetDeploymentEventsResponseBodyItemCase1 as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case1>;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case2Type = "alias-assigned";
-export const GetDeploymentEventsResponseBodyItemCase2Case2Type = S.String;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case2AliasList = Array<string>;
-export const GetDeploymentEventsResponseBodyItemCase2Case2AliasList =
-  CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case2AliasList>;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case2AliasError =
   CancelDeploymentResponseAliasError;
-export const GetDeploymentEventsResponseBodyItemCase2Case2AliasError =
-  CancelDeploymentResponseAliasError;
-
 export type GetDeploymentEventsResponseBodyItemCase2Case2AliasWarning =
   CancelDeploymentResponseAliasWarning;
-export const GetDeploymentEventsResponseBodyItemCase2Case2AliasWarning =
-  CancelDeploymentResponseAliasWarning;
-
 export interface GetDeploymentEventsResponseBodyItemCase2Case2 {
   date: number;
   deploymentId: string;
@@ -20111,40 +10271,24 @@ export interface GetDeploymentEventsResponseBodyItemCase2Case2 {
   aliasError: CancelDeploymentResponseAliasError | null;
   aliasWarning: CancelDeploymentResponseAliasWarning | null;
 }
-export const GetDeploymentEventsResponseBodyItemCase2Case2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.Number,
-    deploymentId: S.String,
-    type: GetDeploymentEventsResponseBodyItemCase2Case2Type,
-    alias: GetDeploymentEventsResponseBodyItemCase2Case2AliasList,
-    aliasError: S.NullOr(CancelDeploymentResponseAliasError),
-    aliasWarning: S.NullOr(CancelDeploymentResponseAliasWarning),
-  }),
-).annotate({
-  identifier: "GetDeploymentEventsResponseBodyItemCase2Case2",
-}) as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2Case2>;
-
 export type GetDeploymentEventsResponseBodyItemCase2 =
   | GetDeploymentEventsResponseBodyItemCase2Case0
   | GetDeploymentEventsResponseBodyItemCase2Case1
   | GetDeploymentEventsResponseBodyItemCase2Case2;
-export const GetDeploymentEventsResponseBodyItemCase2 =
-  S.Unknown as any as S.Schema<GetDeploymentEventsResponseBodyItemCase2>;
-
 export type GetDeploymentEventsResponseBodyItem =
   | GetDeploymentEventsResponseBodyItemCase0
   | GetDeploymentEventsResponseBodyItemCase1
   | GetDeploymentEventsResponseBodyItemCase2;
-export const GetDeploymentEventsResponseBodyItem =
+const GetDeploymentEventsResponseBodyItem =
   S.Unknown as any as S.Schema<GetDeploymentEventsResponseBodyItem>;
 
 export type GetDeploymentEventsResponseBodyList = Array<GetDeploymentEventsResponseBodyItem | null>;
-export const GetDeploymentEventsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetDeploymentEventsResponseBodyList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(GetDeploymentEventsResponseBodyItem),
 ) as any as S.Schema<GetDeploymentEventsResponseBodyList>;
 
 export type GetDeploymentEventsResponse = GetDeploymentEventsResponseBodyList;
-export const GetDeploymentEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentEventsResponse = /*@__PURE__*/ S.suspend(() =>
   GetDeploymentEventsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDeploymentEventsResponse",
@@ -20162,7 +10306,7 @@ export interface GetDeploymentFileContentsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetDeploymentFileContentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentFileContentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -20175,15 +10319,13 @@ export const GetDeploymentFileContentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDeploymentFileContentsRequest>;
 
 export interface GetDeploymentFileContentsResponse {}
-export const GetDeploymentFileContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GetDeploymentFileContentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetDeploymentFileContentsResponse",
 }) as any as S.Schema<GetDeploymentFileContentsResponse>;
 
 /** Filter deployments from the given project IDs. Cannot be used when projectId is specified. */
 export type GetDeploymentsRequestProjectIdsList = Array<string>;
-export const GetDeploymentsRequestProjectIdsList =
+const GetDeploymentsRequestProjectIdsList =
   CancelDeploymentResponseAliasList as any as S.Schema<GetDeploymentsRequestProjectIdsList>;
 
 export interface GetDeploymentsRequest {
@@ -20220,7 +10362,7 @@ export interface GetDeploymentsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.optional(S.String.pipe(T.Query())),
     from: S.optional(S.Number.pipe(T.Query())),
@@ -20242,21 +10384,16 @@ export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDeploymentsRequest" }) as any as S.Schema<GetDeploymentsRequest>;
 
 export type GetDeploymentsResponseDeploymentsItemAliasAssigned = number | boolean;
-export const GetDeploymentsResponseDeploymentsItemAliasAssigned =
+const GetDeploymentsResponseDeploymentsItemAliasAssigned =
   S.Unknown as any as S.Schema<GetDeploymentsResponseDeploymentsItemAliasAssigned>;
 
 /** An error object in case aliasing of the deployment failed. */
 export type GetDeploymentsResponseDeploymentsItemAliasError = CancelDeploymentResponseAliasError;
-export const GetDeploymentsResponseDeploymentsItemAliasError = CancelDeploymentResponseAliasError;
-
 /** Commit metadata from the git commit author */
 export type GetDeploymentsResponseDeploymentsItemAttributionCommitMeta =
   CancelDeploymentResponseAttributionCommitMeta;
-export const GetDeploymentsResponseDeploymentsItemAttributionCommitMeta =
-  CancelDeploymentResponseAttributionCommitMeta;
-
 export type GetDeploymentsResponseDeploymentsItemAttributionGitUserId = string | number;
-export const GetDeploymentsResponseDeploymentsItemAttributionGitUserId =
+const GetDeploymentsResponseDeploymentsItemAttributionGitUserId =
   S.Unknown as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionGitUserId>;
 
 /** Git provider user associated with the commit author email (only set if resolved) */
@@ -20269,7 +10406,7 @@ export interface GetDeploymentsResponseDeploymentsItemAttributionGitUser {
   /** User type */
   type?: string;
 }
-export const GetDeploymentsResponseDeploymentsItemAttributionGitUser = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemAttributionGitUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: GetDeploymentsResponseDeploymentsItemAttributionGitUserId,
     login: S.String,
@@ -20282,7 +10419,7 @@ export const GetDeploymentsResponseDeploymentsItemAttributionGitUser = /*@__PURE
 
 /** Team roles at time of deployment */
 export type GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList = Array<string>;
-export const GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList =
+const GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList =
   CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList>;
 
 /** Vercel user linked to the git provider account (only set if resolved) */
@@ -20294,15 +10431,12 @@ export interface GetDeploymentsResponseDeploymentsItemAttributionVercelUser {
   /** Vercel username */
   username: string;
 }
-export const GetDeploymentsResponseDeploymentsItemAttributionVercelUser = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      teamRoles: S.optional(
-        GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList,
-      ),
-      username: S.String,
-    }),
+const GetDeploymentsResponseDeploymentsItemAttributionVercelUser = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    teamRoles: S.optional(GetDeploymentsResponseDeploymentsItemAttributionVercelUserTeamRolesList),
+    username: S.String,
+  }),
 ).annotate({
   identifier: "GetDeploymentsResponseDeploymentsItemAttributionVercelUser",
 }) as any as S.Schema<GetDeploymentsResponseDeploymentsItemAttributionVercelUser>;
@@ -20316,7 +10450,7 @@ export interface GetDeploymentsResponseDeploymentsItemAttribution {
   /** Vercel user linked to the git provider account (only set if resolved) */
   vercelUser?: GetDeploymentsResponseDeploymentsItemAttributionVercelUser;
 }
-export const GetDeploymentsResponseDeploymentsItemAttribution = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemAttribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitMeta: S.optional(CancelDeploymentResponseAttributionCommitMeta),
     gitUser: S.optional(GetDeploymentsResponseDeploymentsItemAttributionGitUser),
@@ -20330,7 +10464,7 @@ export type GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState =
   | "failed"
   | "pending"
   | "succeeded";
-export const GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState = S.String;
+const GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState = S.String;
 
 /** Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle. */
 export interface GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias {
@@ -20338,13 +10472,12 @@ export interface GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias {
   startedAt: number;
   state: GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState;
 }
-export const GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      completedAt: S.optional(S.Number),
-      startedAt: S.Number,
-      state: GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState,
-    }),
+const GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    completedAt: S.optional(S.Number),
+    startedAt: S.Number,
+    state: GetDeploymentsResponseDeploymentsItemChecksDeploymentAliasState,
+  }),
 ).annotate({
   identifier: "GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias",
 }) as any as S.Schema<GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias>;
@@ -20354,7 +10487,7 @@ export interface GetDeploymentsResponseDeploymentsItemChecks {
   /** Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle. */
   deployment_alias: GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias;
 }
-export const GetDeploymentsResponseDeploymentsItemChecks = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemChecks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment_alias: GetDeploymentsResponseDeploymentsItemChecksDeploymentAlias.pipe(
       T.Body("deployment-alias"),
@@ -20370,14 +10503,14 @@ export type GetDeploymentsResponseDeploymentsItemChecksConclusion =
   | "failed"
   | "skipped"
   | "succeeded";
-export const GetDeploymentsResponseDeploymentsItemChecksConclusion = S.String;
+const GetDeploymentsResponseDeploymentsItemChecksConclusion = S.String;
 
 /** State of all registered checks */
 export type GetDeploymentsResponseDeploymentsItemChecksState =
   | "completed"
   | "registered"
   | "running";
-export const GetDeploymentsResponseDeploymentsItemChecksState = S.String;
+const GetDeploymentsResponseDeploymentsItemChecksState = S.String;
 
 /** Principal type of the deployment creator. Defaults to `"user"` if absent (legacy deployments created before principal attribution was recorded). */
 export type GetDeploymentsResponseDeploymentsItemCreatorType =
@@ -20385,7 +10518,7 @@ export type GetDeploymentsResponseDeploymentsItemCreatorType =
   | "integration"
   | "system"
   | "user";
-export const GetDeploymentsResponseDeploymentsItemCreatorType = S.String;
+const GetDeploymentsResponseDeploymentsItemCreatorType = S.String;
 
 /** Metadata information of the deployment creator. */
 export interface GetDeploymentsResponseDeploymentsItemCreator {
@@ -20402,7 +10535,7 @@ export interface GetDeploymentsResponseDeploymentsItemCreator {
   /** The username of the user. */
   username?: string;
 }
-export const GetDeploymentsResponseDeploymentsItemCreator = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemCreator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     githubLogin: S.optional(S.String),
@@ -20420,7 +10553,7 @@ export interface GetDeploymentsResponseDeploymentsItemCustomEnvironment {
   id: string;
   slug?: string;
 }
-export const GetDeploymentsResponseDeploymentsItemCustomEnvironment = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemCustomEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     slug: S.optional(S.String),
@@ -20434,43 +10567,36 @@ export type GetDeploymentsResponseDeploymentsItemManualProvisioningState =
   | "COMPLETE"
   | "PENDING"
   | "TIMEOUT";
-export const GetDeploymentsResponseDeploymentsItemManualProvisioningState = S.String;
-
 export interface GetDeploymentsResponseDeploymentsItemManualProvisioning {
   /** Timestamp when manual provisioning completed */
   completedAt?: number;
   /** Current provisioning state */
   state: GetDeploymentsResponseDeploymentsItemManualProvisioningState;
 }
-export const GetDeploymentsResponseDeploymentsItemManualProvisioning =
+const GetDeploymentsResponseDeploymentsItemManualProvisioning =
   CancelDeploymentResponseManualProvisioning as any as S.Schema<GetDeploymentsResponseDeploymentsItemManualProvisioning>;
 
 /** Metadata information from the Git provider. */
 export type GetDeploymentsResponseDeploymentsItemMetaMap = { [key: string]: string | undefined };
-export const GetDeploymentsResponseDeploymentsItemMetaMap =
+const GetDeploymentsResponseDeploymentsItemMetaMap =
   CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentsResponseDeploymentsItemMetaMap>;
 
 /** Indicates if the deployment encountered an out-of-memory error. */
 export type GetDeploymentsResponseDeploymentsItemOomReport = "out-of-memory";
-export const GetDeploymentsResponseDeploymentsItemOomReport = S.String;
+const GetDeploymentsResponseDeploymentsItemOomReport = S.String;
 
 /** The user on the external platform who triggered the deployment. */
 export type GetDeploymentsResponseDeploymentsItemPlatformCreator =
   CancelDeploymentResponsePlatformCreator;
-export const GetDeploymentsResponseDeploymentsItemPlatformCreator =
-  CancelDeploymentResponsePlatformCreator;
-
 /** Arbitrary key-value metadata provided by the platform. */
 export type GetDeploymentsResponseDeploymentsItemPlatformMetaMap = {
   [key: string]: string | undefined;
 };
-export const GetDeploymentsResponseDeploymentsItemPlatformMetaMap =
+const GetDeploymentsResponseDeploymentsItemPlatformMetaMap =
   CancelDeploymentResponseMetaMap as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatformMetaMap>;
 
 /** Whether the value is an opaque identifier or a URL. */
 export type GetDeploymentsResponseDeploymentsItemPlatformOriginType = "id" | "url";
-export const GetDeploymentsResponseDeploymentsItemPlatformOriginType = S.String;
-
 /** Reference back to the entity on the platform that initiated the deployment. */
 export interface GetDeploymentsResponseDeploymentsItemPlatformOrigin {
   /** Whether the value is an opaque identifier or a URL. */
@@ -20478,15 +10604,12 @@ export interface GetDeploymentsResponseDeploymentsItemPlatformOrigin {
   /** The identifier or URL pointing to the originating entity. */
   value: string;
 }
-export const GetDeploymentsResponseDeploymentsItemPlatformOrigin =
+const GetDeploymentsResponseDeploymentsItemPlatformOrigin =
   CancelDeploymentResponsePlatformOrigin as any as S.Schema<GetDeploymentsResponseDeploymentsItemPlatformOrigin>;
 
 /** The external platform that created the deployment (e.g. its display name). */
 export type GetDeploymentsResponseDeploymentsItemPlatformSource =
   CancelDeploymentResponsePlatformSource;
-export const GetDeploymentsResponseDeploymentsItemPlatformSource =
-  CancelDeploymentResponsePlatformSource;
-
 /** Metadata about the source platform that triggered the deployment. */
 export interface GetDeploymentsResponseDeploymentsItemPlatform {
   /** The user on the external platform who triggered the deployment. */
@@ -20498,7 +10621,7 @@ export interface GetDeploymentsResponseDeploymentsItemPlatform {
   /** The external platform that created the deployment (e.g. its display name). */
   source: CancelDeploymentResponsePlatformSource;
 }
-export const GetDeploymentsResponseDeploymentsItemPlatform = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemPlatform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creator: CancelDeploymentResponsePlatformCreator,
     meta: S.optional(GetDeploymentsResponseDeploymentsItemPlatformMetaMap),
@@ -20584,7 +10707,7 @@ export type GetDeploymentsResponseDeploymentsItemProjectSettingsFramework =
   | "vuepress"
   | "xmcp"
   | "zola";
-export const GetDeploymentsResponseDeploymentsItemProjectSettingsFramework = S.String;
+const GetDeploymentsResponseDeploymentsItemProjectSettingsFramework = S.String;
 
 /** Since June '23 */
 export interface GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments {
@@ -20593,15 +10716,15 @@ export interface GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments
   /** Whether the Vercel bot should comment on PRs */
   onPullRequest: boolean;
 }
-export const GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments =
-  /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       onCommit: S.Boolean,
       onPullRequest: S.Boolean,
     }),
-  ).annotate({
-    identifier: "GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments",
-  }) as any as S.Schema<GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments>;
+).annotate({
+  identifier: "GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments",
+}) as any as S.Schema<GetDeploymentsResponseDeploymentsItemProjectSettingsGitComments>;
 
 export type GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion =
   | "10.x"
@@ -20613,18 +10736,12 @@ export type GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion =
   | "22.x"
   | "24.x"
   | "8.10.x";
-export const GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion = S.String;
+const GetDeploymentsResponseDeploymentsItemProjectSettingsNodeVersion = S.String;
 
 export type GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights =
   CancelDeploymentResponseProjectSettingsSpeedInsights;
-export const GetDeploymentsResponseDeploymentsItemProjectSettingsSpeedInsights =
-  CancelDeploymentResponseProjectSettingsSpeedInsights;
-
 export type GetDeploymentsResponseDeploymentsItemProjectSettingsWebAnalytics =
   CancelDeploymentResponseProjectSettingsWebAnalytics;
-export const GetDeploymentsResponseDeploymentsItemProjectSettingsWebAnalytics =
-  CancelDeploymentResponseProjectSettingsWebAnalytics;
-
 /** The project settings which was used for this deployment */
 export interface GetDeploymentsResponseDeploymentsItemProjectSettings {
   buildCommand?: string | null;
@@ -20646,7 +10763,7 @@ export interface GetDeploymentsResponseDeploymentsItemProjectSettings {
   speedInsights?: CancelDeploymentResponseProjectSettingsSpeedInsights;
   webAnalytics?: CancelDeploymentResponseProjectSettingsWebAnalytics;
 }
-export const GetDeploymentsResponseDeploymentsItemProjectSettings = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemProjectSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildCommand: S.optional(S.NullOr(S.String)),
     commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
@@ -20679,27 +10796,27 @@ export type GetDeploymentsResponseDeploymentsItemReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetDeploymentsResponseDeploymentsItemReadyState = S.String;
+const GetDeploymentsResponseDeploymentsItemReadyState = S.String;
 
 /** Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of gradually transitioning production traffic - PROMOTED: has seen production traffic */
 export type GetDeploymentsResponseDeploymentsItemReadySubstate = "PROMOTED" | "ROLLING" | "STAGED";
-export const GetDeploymentsResponseDeploymentsItemReadySubstate = S.String;
+const GetDeploymentsResponseDeploymentsItemReadySubstate = S.String;
 
 /** The NSNB decision code for the seat block. TODO: We should consolidate block types. */
 export type GetDeploymentsResponseDeploymentsItemSeatBlockBlockCode =
   | "COMMIT_AUTHOR_REQUIRED"
   | "TEAM_ACCESS_REQUIRED";
-export const GetDeploymentsResponseDeploymentsItemSeatBlockBlockCode = S.String;
+const GetDeploymentsResponseDeploymentsItemSeatBlockBlockCode = S.String;
 
 /** The git provider type associated with gitUserId. */
 export type GetDeploymentsResponseDeploymentsItemSeatBlockGitProvider =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const GetDeploymentsResponseDeploymentsItemSeatBlockGitProvider = S.String;
+const GetDeploymentsResponseDeploymentsItemSeatBlockGitProvider = S.String;
 
 export type GetDeploymentsResponseDeploymentsItemSeatBlockGitUserId = string | number;
-export const GetDeploymentsResponseDeploymentsItemSeatBlockGitUserId =
+const GetDeploymentsResponseDeploymentsItemSeatBlockGitUserId =
   S.Unknown as any as S.Schema<GetDeploymentsResponseDeploymentsItemSeatBlockGitUserId>;
 
 /** NSNB Blocked metadata */
@@ -20714,7 +10831,7 @@ export interface GetDeploymentsResponseDeploymentsItemSeatBlock {
   /** The blocked vercel user ID. */
   userId?: string;
 }
-export const GetDeploymentsResponseDeploymentsItemSeatBlock = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItemSeatBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockCode: GetDeploymentsResponseDeploymentsItemSeatBlockBlockCode,
     gitProvider: S.optional(GetDeploymentsResponseDeploymentsItemSeatBlockGitProvider),
@@ -20738,7 +10855,7 @@ export type GetDeploymentsResponseDeploymentsItemSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const GetDeploymentsResponseDeploymentsItemSource = S.String;
+const GetDeploymentsResponseDeploymentsItemSource = S.String;
 
 /** In which state is the deployment. */
 export type GetDeploymentsResponseDeploymentsItemState =
@@ -20750,15 +10867,15 @@ export type GetDeploymentsResponseDeploymentsItemState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetDeploymentsResponseDeploymentsItemState = S.String;
+const GetDeploymentsResponseDeploymentsItemState = S.String;
 
 /** On which environment has the deployment been deployed to. */
 export type GetDeploymentsResponseDeploymentsItemTarget = "production" | "staging";
-export const GetDeploymentsResponseDeploymentsItemTarget = S.String;
+const GetDeploymentsResponseDeploymentsItemTarget = S.String;
 
 /** The type of the deployment. */
 export type GetDeploymentsResponseDeploymentsItemType = "LAMBDAS";
-export const GetDeploymentsResponseDeploymentsItemType = S.String;
+const GetDeploymentsResponseDeploymentsItemType = S.String;
 
 export interface GetDeploymentsResponseDeploymentsItem {
   aliasAssigned?: GetDeploymentsResponseDeploymentsItemAliasAssigned | null;
@@ -20841,7 +10958,7 @@ export interface GetDeploymentsResponseDeploymentsItem {
   /** The URL of the deployment. */
   url: string;
 }
-export const GetDeploymentsResponseDeploymentsItem = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponseDeploymentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasAssigned: S.optional(S.NullOr(GetDeploymentsResponseDeploymentsItemAliasAssigned)),
     aliasError: S.optional(S.NullOr(CancelDeploymentResponseAliasError)),
@@ -20891,7 +11008,7 @@ export const GetDeploymentsResponseDeploymentsItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetDeploymentsResponseDeploymentsItem>;
 
 export type GetDeploymentsResponseDeploymentsList = Array<GetDeploymentsResponseDeploymentsItem>;
-export const GetDeploymentsResponseDeploymentsList = /*@__PURE__*/ S.Array(
+const GetDeploymentsResponseDeploymentsList = /*@__PURE__*/ S.Array(
   GetDeploymentsResponseDeploymentsItem,
 ) as any as S.Schema<GetDeploymentsResponseDeploymentsList>;
 
@@ -20904,7 +11021,7 @@ export interface Pagination {
   /** Timestamp that must be used to request the previous page. */
   prev: number | null;
 }
-export const Pagination = /*@__PURE__*/ S.suspend(() =>
+const Pagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.NullOr(S.Number),
@@ -20916,7 +11033,7 @@ export interface GetDeploymentsResponse {
   deployments: GetDeploymentsResponseDeploymentsList;
   pagination: Pagination;
 }
-export const GetDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployments: GetDeploymentsResponseDeploymentsList,
     pagination: Pagination,
@@ -20931,7 +11048,7 @@ export interface ListDeploymentFilesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListDeploymentFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -20943,13 +11060,13 @@ export const ListDeploymentFilesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of children files of the directory (only valid for the `directory` type) */
 export type FileTreeChildrenList = Array<FileTree>;
-export const FileTreeChildrenList = /*@__PURE__*/ S.Array(
+const FileTreeChildrenList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => FileTree),
 ) as any as S.Schema<FileTreeChildrenList>;
 
 /** String indicating the type of file tree entry. */
 export type FileTreeType = "directory" | "file" | "invalid" | "lambda" | "middleware" | "symlink";
-export const FileTreeType = S.String;
+const FileTreeType = S.String;
 
 /** A deployment file tree entry */
 export interface FileTree {
@@ -20966,7 +11083,7 @@ export interface FileTree {
   /** The unique identifier of the file (only valid for the `file` type) */
   uid?: string;
 }
-export const FileTree = /*@__PURE__*/ S.suspend(() =>
+const FileTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     children: S.optional(FileTreeChildrenList),
     contentType: S.optional(S.String),
@@ -20978,94 +11095,46 @@ export const FileTree = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileTree" }) as any as S.Schema<FileTree>;
 
 export type ListDeploymentFilesResponseBodyList = Array<FileTree>;
-export const ListDeploymentFilesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDeploymentFilesResponseBodyList = /*@__PURE__*/ S.Array(
   FileTree,
 ) as any as S.Schema<ListDeploymentFilesResponseBodyList>;
 
 export type ListDeploymentFilesResponse = ListDeploymentFilesResponseBodyList;
-export const ListDeploymentFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentFilesResponse = /*@__PURE__*/ S.suspend(() =>
   ListDeploymentFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDeploymentFilesResponse",
 }) as any as S.Schema<ListDeploymentFilesResponse>;
 
 export type UpdateIntegrationDeploymentActionRequestStatus = "running" | "succeeded" | "failed";
-export const UpdateIntegrationDeploymentActionRequestStatus = S.String;
+const UpdateIntegrationDeploymentActionRequestStatus = S.String;
 
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsItem {
   name: string;
   value: string;
 }
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsItem",
-  }) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsItem>;
-
 export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsList =
   Array<UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsItem>;
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsList =
-  /*@__PURE__*/ S.Array(
-    UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsItem,
-  ) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsList>;
-
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase0 {
   kind: string;
   secrets: UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsList;
 }
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: S.String,
-      secrets: UpdateIntegrationDeploymentActionRequestOutcomesItemCase0SecretsList,
-    }),
-).annotate({
-  identifier: "UpdateIntegrationDeploymentActionRequestOutcomesItemCase0",
-}) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase0>;
-
 /** Applies only when the token is minted for one of these roles. */
 export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList =
   Array<string>;
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList>;
-
 /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
 export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList =
   Array<string>;
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList =
-  CancelDeploymentResponseAtprotoCase1SubscriptionCollectionsList as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList>;
-
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these roles. */
   role?: UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList;
   /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
   environment?: UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList;
 }
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhen =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      role: S.optional(
-        UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenRoleList,
-      ),
-      environment: S.optional(
-        UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhenEnvironmentList,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhen",
-  }) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhen>;
-
 export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsValue =
   | string
   | number
   | boolean;
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsValue =
-  S.Unknown as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsValue>;
-
 /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
 export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsMap = {
   [key: string]:
@@ -21073,62 +11142,29 @@ export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesI
     | null
     | undefined;
 };
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(
-      UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsValue,
-    ),
-  ) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsMap>;
-
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItem {
   when?: UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhen;
   /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
   claims: UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsMap;
 }
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      when: S.optional(UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemWhen),
-      claims: UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItemClaimsMap,
-    }),
-  ).annotate({
-    identifier: "UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItem",
-  }) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItem>;
-
 /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
 export type UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesList =
   Array<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItem>;
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesList =
-  /*@__PURE__*/ S.Array(
-    UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesItem,
-  ) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesList>;
-
 /** Claim rules applied after the resource's own rules when this deployment mints a resource token. Reserved claims cannot be set. */
 export interface UpdateIntegrationDeploymentActionRequestOutcomesItemCase1 {
   kind: string;
   /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
   claimRules: UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesList;
 }
-export const UpdateIntegrationDeploymentActionRequestOutcomesItemCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: S.String,
-      claimRules: UpdateIntegrationDeploymentActionRequestOutcomesItemCase1ClaimRulesList,
-    }),
-).annotate({
-  identifier: "UpdateIntegrationDeploymentActionRequestOutcomesItemCase1",
-}) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItemCase1>;
-
 export type UpdateIntegrationDeploymentActionRequestOutcomesItem =
   | UpdateIntegrationDeploymentActionRequestOutcomesItemCase0
   | UpdateIntegrationDeploymentActionRequestOutcomesItemCase1;
-export const UpdateIntegrationDeploymentActionRequestOutcomesItem =
+const UpdateIntegrationDeploymentActionRequestOutcomesItem =
   S.Unknown as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesItem>;
 
 export type UpdateIntegrationDeploymentActionRequestOutcomesList =
   Array<UpdateIntegrationDeploymentActionRequestOutcomesItem>;
-export const UpdateIntegrationDeploymentActionRequestOutcomesList = /*@__PURE__*/ S.Array(
+const UpdateIntegrationDeploymentActionRequestOutcomesList = /*@__PURE__*/ S.Array(
   UpdateIntegrationDeploymentActionRequestOutcomesItem,
 ) as any as S.Schema<UpdateIntegrationDeploymentActionRequestOutcomesList>;
 
@@ -21142,7 +11178,7 @@ export interface UpdateIntegrationDeploymentActionRequest {
   statusUrl?: string;
   outcomes?: UpdateIntegrationDeploymentActionRequestOutcomesList;
 }
-export const UpdateIntegrationDeploymentActionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationDeploymentActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String.pipe(T.Label()),
     integrationConfigurationId: S.String.pipe(T.Label()),
@@ -21164,7 +11200,7 @@ export const UpdateIntegrationDeploymentActionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateIntegrationDeploymentActionRequest>;
 
 export interface UpdateIntegrationDeploymentActionResponse {}
-export const UpdateIntegrationDeploymentActionResponse =
+const UpdateIntegrationDeploymentActionResponse =
   GetDeploymentFileContentsResponse as any as S.Schema<UpdateIntegrationDeploymentActionResponse>;
 
 export interface UploadFileRequest {
@@ -21181,7 +11217,7 @@ export interface UploadFileRequest {
   /** The file size as an alternative to `Content-Length` */
   xNowSize?: number;
 }
-export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -21194,26 +11230,15 @@ export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of URLs where the file was updated */
 export type UploadFileResponseBodyCase0UrlsList = Array<string>;
-export const UploadFileResponseBodyCase0UrlsList =
-  CancelDeploymentResponseAliasList as any as S.Schema<UploadFileResponseBodyCase0UrlsList>;
-
 export interface UploadFileResponseBodyCase0 {
   /** Array of URLs where the file was updated */
   urls: UploadFileResponseBodyCase0UrlsList;
 }
-export const UploadFileResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    urls: UploadFileResponseBodyCase0UrlsList,
-  }),
-).annotate({
-  identifier: "UploadFileResponseBodyCase0",
-}) as any as S.Schema<UploadFileResponseBodyCase0>;
-
 export type UploadFileResponseBody = UploadFileResponseBodyCase0 | unknown;
-export const UploadFileResponseBody = S.Unknown as any as S.Schema<UploadFileResponseBody>;
+const UploadFileResponseBody = S.Unknown as any as S.Schema<UploadFileResponseBody>;
 
 export type UploadFileResponse = UploadFileResponseBody;
-export const UploadFileResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadFileResponse = /*@__PURE__*/ S.suspend(() =>
   UploadFileResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UploadFileResponse" }) as any as S.Schema<UploadFileResponse>;
 

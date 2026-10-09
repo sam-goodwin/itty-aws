@@ -80,7 +80,7 @@ export interface AcceptProposalRequest {
   /** The last known client revision number of the proposal. */
   proposalRevision?: string;
 }
-export const AcceptProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalRevision: S.optional(S.String),
   }),
@@ -94,7 +94,7 @@ export interface AcceptAccountsProposalsRequest {
   /** Request body */
   body?: AcceptProposalRequest;
 }
-export const AcceptAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     proposalId: S.String.pipe(T.Label()),
@@ -114,10 +114,10 @@ export type ProposalLastUpdaterOrCommentorRoleEnum =
   | "BUYER_SELLER_ROLE_UNSPECIFIED"
   | "BUYER"
   | "SELLER";
-export const ProposalLastUpdaterOrCommentorRoleEnum = S.String;
+const ProposalLastUpdaterOrCommentorRoleEnum = S.String;
 
 export type NoteCreatorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
-export const NoteCreatorRoleEnum = S.String;
+const NoteCreatorRoleEnum = S.String;
 
 /** A proposal may be associated to several notes. */
 export interface Note {
@@ -132,7 +132,7 @@ export interface Note {
   /** Output only. The revision number of the proposal when the note is created. */
   proposalRevision?: string;
 }
-export const Note = /*@__PURE__*/ S.suspend(() =>
+const Note = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     note: S.optional(S.String),
     creatorRole: S.optional(NoteCreatorRoleEnum),
@@ -143,10 +143,10 @@ export const Note = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
 
 export type NoteList = Array<Note>;
-export const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
+const NoteList = /*@__PURE__*/ S.Array(Note) as any as S.Schema<NoteList>;
 
 export type ProposalOriginatorRoleEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
-export const ProposalOriginatorRoleEnum = S.String;
+const ProposalOriginatorRoleEnum = S.String;
 
 /** Contains information on how a buyer or seller can be reached. */
 export interface ContactInformation {
@@ -155,7 +155,7 @@ export interface ContactInformation {
   /** The name of the contact. */
   name?: string;
 }
-export const ContactInformation = /*@__PURE__*/ S.suspend(() =>
+const ContactInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -163,7 +163,7 @@ export const ContactInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContactInformation" }) as any as S.Schema<ContactInformation>;
 
 export type ContactInformationList = Array<ContactInformation>;
-export const ContactInformationList = /*@__PURE__*/ S.Array(
+const ContactInformationList = /*@__PURE__*/ S.Array(
   ContactInformation,
 ) as any as S.Schema<ContactInformationList>;
 
@@ -172,7 +172,7 @@ export interface PrivateData {
   /** A buyer or seller specified reference ID. This can be queried in the list operations (max-length: 1024 unicode code units). */
   referenceId?: string;
 }
-export const PrivateData = /*@__PURE__*/ S.suspend(() =>
+const PrivateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceId: S.optional(S.String),
   }),
@@ -183,7 +183,7 @@ export interface Buyer {
   /** Authorized Buyers account ID of the buyer. */
   accountId?: string;
 }
-export const Buyer = /*@__PURE__*/ S.suspend(() =>
+const Buyer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
   }),
@@ -196,7 +196,7 @@ export interface Seller {
   /** Output only. Ad manager network code for the seller. */
   subAccountId?: string;
 }
-export const Seller = /*@__PURE__*/ S.suspend(() =>
+const Seller = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     subAccountId: S.optional(S.String),
@@ -207,14 +207,14 @@ export type DeliveryControlCreativeBlockingLevelEnum =
   | "CREATIVE_BLOCKING_LEVEL_UNSPECIFIED"
   | "PUBLISHER_BLOCKING_RULES"
   | "ADX_POLICY_BLOCKING_ONLY";
-export const DeliveryControlCreativeBlockingLevelEnum = S.String;
+const DeliveryControlCreativeBlockingLevelEnum = S.String;
 
 export type DeliveryControlDeliveryRateTypeEnum =
   | "DELIVERY_RATE_TYPE_UNSPECIFIED"
   | "EVENLY"
   | "FRONT_LOADED"
   | "AS_FAST_AS_POSSIBLE";
-export const DeliveryControlDeliveryRateTypeEnum = S.String;
+const DeliveryControlDeliveryRateTypeEnum = S.String;
 
 export type FrequencyCapTimeUnitTypeEnum =
   | "TIME_UNIT_TYPE_UNSPECIFIED"
@@ -226,7 +226,7 @@ export type FrequencyCapTimeUnitTypeEnum =
   | "LIFETIME"
   | "POD"
   | "STREAM";
-export const FrequencyCapTimeUnitTypeEnum = S.String;
+const FrequencyCapTimeUnitTypeEnum = S.String;
 
 /** Frequency cap. */
 export interface FrequencyCap {
@@ -237,7 +237,7 @@ export interface FrequencyCap {
   /** The maximum number of impressions that can be served to a user within the specified time period. */
   maxImpressions?: number;
 }
-export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
+const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numTimeUnits: S.optional(S.Number),
     timeUnitType: S.optional(FrequencyCapTimeUnitTypeEnum),
@@ -246,9 +246,7 @@ export const FrequencyCap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FrequencyCap" }) as any as S.Schema<FrequencyCap>;
 
 export type FrequencyCapList = Array<FrequencyCap>;
-export const FrequencyCapList = /*@__PURE__*/ S.Array(
-  FrequencyCap,
-) as any as S.Schema<FrequencyCapList>;
+const FrequencyCapList = /*@__PURE__*/ S.Array(FrequencyCap) as any as S.Schema<FrequencyCapList>;
 
 /** Message contains details about how the deals will be paced. */
 export interface DeliveryControl {
@@ -259,7 +257,7 @@ export interface DeliveryControl {
   /** Output only. Specifies any frequency caps. */
   frequencyCaps?: FrequencyCapList;
 }
-export const DeliveryControl = /*@__PURE__*/ S.suspend(() =>
+const DeliveryControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeBlockingLevel: S.optional(DeliveryControlCreativeBlockingLevelEnum),
     deliveryRateType: S.optional(DeliveryControlDeliveryRateTypeEnum),
@@ -271,10 +269,10 @@ export type DealProgrammaticCreativeSourceEnum =
   | "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED"
   | "ADVERTISER"
   | "PUBLISHER";
-export const DealProgrammaticCreativeSourceEnum = S.String;
+const DealProgrammaticCreativeSourceEnum = S.String;
 
 export type DealPauseStatusFirstPausedByEnum = "BUYER_SELLER_ROLE_UNSPECIFIED" | "BUYER" | "SELLER";
-export const DealPauseStatusFirstPausedByEnum = S.String;
+const DealPauseStatusFirstPausedByEnum = S.String;
 
 /** Tracks which parties (if any) have paused a deal. The deal is considered paused if either hasBuyerPaused or hasSellPaused is true. */
 export interface DealPauseStatus {
@@ -289,7 +287,7 @@ export interface DealPauseStatus {
   /** True, if the seller has paused the deal unilaterally. */
   hasSellerPaused?: boolean;
 }
-export const DealPauseStatus = /*@__PURE__*/ S.suspend(() =>
+const DealPauseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasBuyerPaused: S.optional(S.Boolean),
     firstPausedBy: S.optional(DealPauseStatusFirstPausedByEnum),
@@ -304,7 +302,7 @@ export interface DealServingMetadata {
   /** Output only. Tracks which parties (if any) have paused a deal. */
   dealPauseStatus?: DealPauseStatus;
 }
-export const DealServingMetadata = /*@__PURE__*/ S.suspend(() =>
+const DealServingMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dealPauseStatus: S.optional(DealPauseStatus),
   }),
@@ -315,7 +313,7 @@ export type CreativeRestrictionsSkippableAdTypeEnum =
   | "SKIPPABLE"
   | "INSTREAM_SELECT"
   | "NOT_SKIPPABLE";
-export const CreativeRestrictionsSkippableAdTypeEnum = S.String;
+const CreativeRestrictionsSkippableAdTypeEnum = S.String;
 
 export type AdSizeSizeTypeEnum =
   | "SIZE_TYPE_UNSPECIFIED"
@@ -323,7 +321,7 @@ export type AdSizeSizeTypeEnum =
   | "INTERSTITIAL"
   | "NATIVE"
   | "FLUID";
-export const AdSizeSizeTypeEnum = S.String;
+const AdSizeSizeTypeEnum = S.String;
 
 /** Represents size of a single ad slot, or a creative. */
 export interface AdSize {
@@ -334,7 +332,7 @@ export interface AdSize {
   /** The width of the ad slot in pixels. This field will be present only when size type is `PIXEL`. */
   width?: string;
 }
-export const AdSize = /*@__PURE__*/ S.suspend(() =>
+const AdSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeType: S.optional(AdSizeSizeTypeEnum),
     height: S.optional(S.String),
@@ -343,7 +341,7 @@ export const AdSize = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdSize" }) as any as S.Schema<AdSize>;
 
 export type AdSizeList = Array<AdSize>;
-export const AdSizeList = /*@__PURE__*/ S.Array(AdSize) as any as S.Schema<AdSizeList>;
+const AdSizeList = /*@__PURE__*/ S.Array(AdSize) as any as S.Schema<AdSizeList>;
 
 /** Represents information for a creative that is associated with a Programmatic Guaranteed/Preferred Deal in Ad Manager. */
 export interface CreativeSpecification {
@@ -352,7 +350,7 @@ export interface CreativeSpecification {
   /** Companion sizes may be filled in only when this is a video creative. */
   creativeCompanionSizes?: AdSizeList;
 }
-export const CreativeSpecification = /*@__PURE__*/ S.suspend(() =>
+const CreativeSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeSize: S.optional(AdSize),
     creativeCompanionSizes: S.optional(AdSizeList),
@@ -360,7 +358,7 @@ export const CreativeSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreativeSpecification" }) as any as S.Schema<CreativeSpecification>;
 
 export type CreativeSpecificationList = Array<CreativeSpecification>;
-export const CreativeSpecificationList = /*@__PURE__*/ S.Array(
+const CreativeSpecificationList = /*@__PURE__*/ S.Array(
   CreativeSpecification,
 ) as any as S.Schema<CreativeSpecificationList>;
 
@@ -368,7 +366,7 @@ export type CreativeRestrictionsCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "DISPLAY"
   | "VIDEO";
-export const CreativeRestrictionsCreativeFormatEnum = S.String;
+const CreativeRestrictionsCreativeFormatEnum = S.String;
 
 /** Represents creative restrictions associated to Programmatic Guaranteed/ Preferred Deal in Ad Manager. This doesn't apply to Private Auction and AdX Preferred Deals. */
 export interface CreativeRestrictions {
@@ -378,7 +376,7 @@ export interface CreativeRestrictions {
   /** The format of the environment that the creatives will be displayed in. */
   creativeFormat?: CreativeRestrictionsCreativeFormatEnum | (string & {});
 }
-export const CreativeRestrictions = /*@__PURE__*/ S.suspend(() =>
+const CreativeRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skippableAdType: S.optional(CreativeRestrictionsSkippableAdTypeEnum),
     creativeSpecifications: S.optional(CreativeSpecificationList),
@@ -390,13 +388,13 @@ export type DealCreativePreApprovalPolicyEnum =
   | "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED"
   | "SELLER_PRE_APPROVAL_REQUIRED"
   | "SELLER_PRE_APPROVAL_NOT_REQUIRED";
-export const DealCreativePreApprovalPolicyEnum = S.String;
+const DealCreativePreApprovalPolicyEnum = S.String;
 
 export type DayPartTargetingTimeZoneTypeEnum =
   | "TIME_ZONE_SOURCE_UNSPECIFIED"
   | "PUBLISHER"
   | "USER";
-export const DayPartTargetingTimeZoneTypeEnum = S.String;
+const DayPartTargetingTimeZoneTypeEnum = S.String;
 
 export type DayPartDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -407,7 +405,7 @@ export type DayPartDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const DayPartDayOfWeekEnum = S.String;
+const DayPartDayOfWeekEnum = S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -420,7 +418,7 @@ export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hours: S.optional(S.Number),
     nanos: S.optional(S.Number),
@@ -438,7 +436,7 @@ export interface DayPart {
   /** The ending time of the day for the ad to show (minute level granularity). The end time is exclusive. This field is not available for filtering in PQL queries. */
   endTime?: TimeOfDay;
 }
-export const DayPart = /*@__PURE__*/ S.suspend(() =>
+const DayPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dayOfWeek: S.optional(DayPartDayOfWeekEnum),
     startTime: S.optional(TimeOfDay),
@@ -447,7 +445,7 @@ export const DayPart = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DayPart" }) as any as S.Schema<DayPart>;
 
 export type DayPartList = Array<DayPart>;
-export const DayPartList = /*@__PURE__*/ S.Array(DayPart) as any as S.Schema<DayPartList>;
+const DayPartList = /*@__PURE__*/ S.Array(DayPart) as any as S.Schema<DayPartList>;
 
 /** Specifies the day part targeting criteria. */
 export interface DayPartTargeting {
@@ -456,7 +454,7 @@ export interface DayPartTargeting {
   /** A list of day part targeting criterion. */
   dayParts?: DayPartList;
 }
-export const DayPartTargeting = /*@__PURE__*/ S.suspend(() =>
+const DayPartTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZoneType: S.optional(DayPartTargetingTimeZoneTypeEnum),
     dayParts: S.optional(DayPartList),
@@ -470,7 +468,7 @@ export interface Size {
   /** The width of the creative */
   width?: number;
 }
-export const Size = /*@__PURE__*/ S.suspend(() =>
+const Size = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     width: S.optional(S.Number),
@@ -478,7 +476,7 @@ export const Size = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
 export type SizeList = Array<Size>;
-export const SizeList = /*@__PURE__*/ S.Array(Size) as any as S.Schema<SizeList>;
+const SizeList = /*@__PURE__*/ S.Array(Size) as any as S.Schema<SizeList>;
 
 export type CreativeSizeNativeTemplateEnum =
   | "UNKNOWN_NATIVE_TEMPLATE"
@@ -486,15 +484,15 @@ export type CreativeSizeNativeTemplateEnum =
   | "NATIVE_APP_INSTALL_AD"
   | "NATIVE_VIDEO_CONTENT_AD"
   | "NATIVE_VIDEO_APP_INSTALL_AD";
-export const CreativeSizeNativeTemplateEnum = S.String;
+const CreativeSizeNativeTemplateEnum = S.String;
 
 export type CreativeSizeAllowedFormatsItemEnum = "UNKNOWN" | "AUDIO";
-export const CreativeSizeAllowedFormatsItemEnum = S.String;
+const CreativeSizeAllowedFormatsItemEnum = S.String;
 
 export type CreativeSizeAllowedFormatsItemEnumList = Array<
   CreativeSizeAllowedFormatsItemEnum | (string & {})
 >;
-export const CreativeSizeAllowedFormatsItemEnumList = /*@__PURE__*/ S.Array(
+const CreativeSizeAllowedFormatsItemEnumList = /*@__PURE__*/ S.Array(
   CreativeSizeAllowedFormatsItemEnum,
 ) as any as S.Schema<CreativeSizeAllowedFormatsItemEnumList>;
 
@@ -503,7 +501,7 @@ export type CreativeSizeSkippableAdTypeEnum =
   | "GENERIC"
   | "INSTREAM_SELECT"
   | "NOT_SKIPPABLE";
-export const CreativeSizeSkippableAdTypeEnum = S.String;
+const CreativeSizeSkippableAdTypeEnum = S.String;
 
 export type CreativeSizeCreativeSizeTypeEnum =
   | "CREATIVE_SIZE_TYPE_UNSPECIFIED"
@@ -511,7 +509,7 @@ export type CreativeSizeCreativeSizeTypeEnum =
   | "INTERSTITIAL"
   | "VIDEO"
   | "NATIVE";
-export const CreativeSizeCreativeSizeTypeEnum = S.String;
+const CreativeSizeCreativeSizeTypeEnum = S.String;
 
 /** Specifies the size of the creative. */
 export interface CreativeSize {
@@ -528,7 +526,7 @@ export interface CreativeSize {
   /** The creative size type. */
   creativeSizeType?: CreativeSizeCreativeSizeTypeEnum | (string & {});
 }
-export const CreativeSize = /*@__PURE__*/ S.suspend(() =>
+const CreativeSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     companionSizes: S.optional(SizeList),
     nativeTemplate: S.optional(CreativeSizeNativeTemplateEnum),
@@ -550,7 +548,7 @@ export interface TargetingValue {
   /** The long value to include/exclude. */
   longValue?: string;
 }
-export const TargetingValue = /*@__PURE__*/ S.suspend(() =>
+const TargetingValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dayPartTargetingValue: S.optional(DayPartTargeting),
     stringValue: S.optional(S.String),
@@ -560,7 +558,7 @@ export const TargetingValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetingValue" }) as any as S.Schema<TargetingValue>;
 
 export type TargetingValueList = Array<TargetingValue>;
-export const TargetingValueList = /*@__PURE__*/ S.Array(
+const TargetingValueList = /*@__PURE__*/ S.Array(
   TargetingValue,
 ) as any as S.Schema<TargetingValueList>;
 
@@ -573,7 +571,7 @@ export interface TargetingCriteria {
   /** The list of values to exclude from targeting. Each value is AND'd together. */
   exclusions?: TargetingValueList;
 }
-export const TargetingCriteria = /*@__PURE__*/ S.suspend(() =>
+const TargetingCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     inclusions: S.optional(TargetingValueList),
@@ -582,7 +580,7 @@ export const TargetingCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetingCriteria" }) as any as S.Schema<TargetingCriteria>;
 
 export type TargetingCriteriaList = Array<TargetingCriteria>;
-export const TargetingCriteriaList = /*@__PURE__*/ S.Array(
+const TargetingCriteriaList = /*@__PURE__*/ S.Array(
   TargetingCriteria,
 ) as any as S.Schema<TargetingCriteriaList>;
 
@@ -593,7 +591,7 @@ export interface InventorySizeTargeting {
   /** A list of inventory sizes to be excluded. */
   excludedInventorySizes?: AdSizeList;
 }
-export const InventorySizeTargeting = /*@__PURE__*/ S.suspend(() =>
+const InventorySizeTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedInventorySizes: S.optional(AdSizeList),
     excludedInventorySizes: S.optional(AdSizeList),
@@ -601,7 +599,7 @@ export const InventorySizeTargeting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InventorySizeTargeting" }) as any as S.Schema<InventorySizeTargeting>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a list of targeted and excluded URLs (for example, google.com). For Private Auction and AdX Preferred Deals, URLs are either included or excluded. For Programmatic Guaranteed and Preferred Deals, this doesn't apply. */
 export interface UrlTargeting {
@@ -610,7 +608,7 @@ export interface UrlTargeting {
   /** A list of URLs to be excluded. */
   excludedUrls?: StringList;
 }
-export const UrlTargeting = /*@__PURE__*/ S.suspend(() =>
+const UrlTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedUrls: S.optional(StringList),
     excludedUrls: S.optional(StringList),
@@ -624,7 +622,7 @@ export interface FirstPartyMobileApplicationTargeting {
   /** A list of application IDs to be included. */
   targetedAppIds?: StringList;
 }
-export const FirstPartyMobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
+const FirstPartyMobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedAppIds: S.optional(StringList),
     targetedAppIds: S.optional(StringList),
@@ -638,7 +636,7 @@ export interface MobileApplicationTargeting {
   /** Publisher owned apps to be targeted or excluded by the publisher to display the ads in. */
   firstPartyTargeting?: FirstPartyMobileApplicationTargeting;
 }
-export const MobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
+const MobileApplicationTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstPartyTargeting: S.optional(FirstPartyMobileApplicationTargeting),
   }),
@@ -653,7 +651,7 @@ export interface PlacementTargeting {
   /** Mobile application targeting information in a deal. This doesn't apply to Auction Packages. */
   mobileApplicationTargeting?: MobileApplicationTargeting;
 }
-export const PlacementTargeting = /*@__PURE__*/ S.suspend(() =>
+const PlacementTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urlTargeting: S.optional(UrlTargeting),
     mobileApplicationTargeting: S.optional(MobileApplicationTargeting),
@@ -665,12 +663,10 @@ export type VideoTargetingTargetedPositionTypesItemEnum =
   | "PREROLL"
   | "MIDROLL"
   | "POSTROLL";
-export const VideoTargetingTargetedPositionTypesItemEnum = S.String;
-
 export type VideoTargetingTargetedPositionTypesItemEnumList = Array<
   VideoTargetingTargetedPositionTypesItemEnum | (string & {})
 >;
-export const VideoTargetingTargetedPositionTypesItemEnumList =
+const VideoTargetingTargetedPositionTypesItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<VideoTargetingTargetedPositionTypesItemEnumList>;
 
 export type VideoTargetingExcludedPositionTypesItemEnum =
@@ -678,12 +674,10 @@ export type VideoTargetingExcludedPositionTypesItemEnum =
   | "PREROLL"
   | "MIDROLL"
   | "POSTROLL";
-export const VideoTargetingExcludedPositionTypesItemEnum = S.String;
-
 export type VideoTargetingExcludedPositionTypesItemEnumList = Array<
   VideoTargetingExcludedPositionTypesItemEnum | (string & {})
 >;
-export const VideoTargetingExcludedPositionTypesItemEnumList =
+const VideoTargetingExcludedPositionTypesItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<VideoTargetingExcludedPositionTypesItemEnumList>;
 
 /** Represents targeting information about video. */
@@ -693,7 +687,7 @@ export interface VideoTargeting {
   /** A list of video positions to be excluded. Position types can either be included or excluded (XOR). */
   excludedPositionTypes?: VideoTargetingExcludedPositionTypesItemEnumList;
 }
-export const VideoTargeting = /*@__PURE__*/ S.suspend(() =>
+const VideoTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedPositionTypes: S.optional(VideoTargetingTargetedPositionTypesItemEnumList),
     excludedPositionTypes: S.optional(VideoTargetingExcludedPositionTypesItemEnumList),
@@ -707,7 +701,7 @@ export interface CriteriaTargeting {
   /** A list of numeric IDs to be excluded. */
   excludedCriteriaIds?: StringList;
 }
-export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
+const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetedCriteriaIds: S.optional(StringList),
     excludedCriteriaIds: S.optional(StringList),
@@ -721,7 +715,7 @@ export interface OperatingSystemTargeting {
   /** IDs of operating systems to be included/excluded. */
   operatingSystemCriteria?: CriteriaTargeting;
 }
-export const OperatingSystemTargeting = /*@__PURE__*/ S.suspend(() =>
+const OperatingSystemTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatingSystemVersionCriteria: S.optional(CriteriaTargeting),
     operatingSystemCriteria: S.optional(CriteriaTargeting),
@@ -737,7 +731,7 @@ export interface TechnologyTargeting {
   /** IDs of device categories to be included/excluded. */
   deviceCategoryTargeting?: CriteriaTargeting;
 }
-export const TechnologyTargeting = /*@__PURE__*/ S.suspend(() =>
+const TechnologyTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceCapabilityTargeting: S.optional(CriteriaTargeting),
     operatingSystemTargeting: S.optional(OperatingSystemTargeting),
@@ -758,7 +752,7 @@ export interface MarketplaceTargeting {
   /** Geo criteria IDs to be included/excluded. */
   geoTargeting?: CriteriaTargeting;
 }
-export const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventorySizeTargeting: S.optional(InventorySizeTargeting),
     placementTargeting: S.optional(PlacementTargeting),
@@ -769,7 +763,7 @@ export const MarketplaceTargeting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarketplaceTargeting" }) as any as S.Schema<MarketplaceTargeting>;
 
 export type PricePricingTypeEnum = "PRICING_TYPE_UNSPECIFIED" | "COST_PER_MILLE" | "COST_PER_DAY";
-export const PricePricingTypeEnum = S.String;
+const PricePricingTypeEnum = S.String;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -780,7 +774,7 @@ export interface Money {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
   units?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     nanos: S.optional(S.Number),
@@ -795,7 +789,7 @@ export interface Price {
   /** The actual price with currency specified. */
   amount?: Money;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricingType: S.optional(PricePricingTypeEnum),
     amount: S.optional(Money),
@@ -811,7 +805,7 @@ export interface PricePerBuyer {
   /** The buyer who will pay this price. If unset, all buyers can pay this price (if the advertisers match, and there's no more specific rule matching the buyer). */
   buyer?: Buyer;
 }
-export const PricePerBuyer = /*@__PURE__*/ S.suspend(() =>
+const PricePerBuyer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     price: S.optional(Price),
     advertiserIds: S.optional(StringList),
@@ -820,7 +814,7 @@ export const PricePerBuyer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PricePerBuyer" }) as any as S.Schema<PricePerBuyer>;
 
 export type PricePerBuyerList = Array<PricePerBuyer>;
-export const PricePerBuyerList = /*@__PURE__*/ S.Array(
+const PricePerBuyerList = /*@__PURE__*/ S.Array(
   PricePerBuyer,
 ) as any as S.Schema<PricePerBuyerList>;
 
@@ -829,7 +823,7 @@ export interface NonGuaranteedFixedPriceTerms {
   /** Fixed price for the specified buyer. */
   fixedPrices?: PricePerBuyerList;
 }
-export const NonGuaranteedFixedPriceTerms = /*@__PURE__*/ S.suspend(() =>
+const NonGuaranteedFixedPriceTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixedPrices: S.optional(PricePerBuyerList),
   }),
@@ -844,7 +838,7 @@ export interface NonGuaranteedAuctionTerms {
   /** Reserve price for the specified buyer. */
   reservePricesPerBuyer?: PricePerBuyerList;
 }
-export const NonGuaranteedAuctionTerms = /*@__PURE__*/ S.suspend(() =>
+const NonGuaranteedAuctionTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoOptimizePrivateAuction: S.optional(S.Boolean),
     reservePricesPerBuyer: S.optional(PricePerBuyerList),
@@ -857,13 +851,13 @@ export type DealTermsBrandingTypeEnum =
   | "BRANDING_TYPE_UNSPECIFIED"
   | "BRANDED"
   | "SEMI_TRANSPARENT";
-export const DealTermsBrandingTypeEnum = S.String;
+const DealTermsBrandingTypeEnum = S.String;
 
 export type GuaranteedFixedPriceTermsReservationTypeEnum =
   | "RESERVATION_TYPE_UNSPECIFIED"
   | "STANDARD"
   | "SPONSORSHIP";
-export const GuaranteedFixedPriceTermsReservationTypeEnum = S.String;
+const GuaranteedFixedPriceTermsReservationTypeEnum = S.String;
 
 /** Terms for Programmatic Guaranteed Deals. */
 export interface GuaranteedFixedPriceTerms {
@@ -882,7 +876,7 @@ export interface GuaranteedFixedPriceTerms {
   /** The reservation type for a Programmatic Guaranteed deal. This indicates whether the number of impressions is fixed, or a percent of available impressions. If not specified, the default reservation type is STANDARD. */
   reservationType?: GuaranteedFixedPriceTermsReservationTypeEnum | (string & {});
 }
-export const GuaranteedFixedPriceTerms = /*@__PURE__*/ S.suspend(() =>
+const GuaranteedFixedPriceTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentShareOfVoice: S.optional(S.String),
     guaranteedImpressions: S.optional(S.String),
@@ -915,7 +909,7 @@ export interface DealTerms {
   /** The terms for guaranteed fixed price deals. */
   guaranteedFixedPriceTerms?: GuaranteedFixedPriceTerms;
 }
-export const DealTerms = /*@__PURE__*/ S.suspend(() =>
+const DealTerms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sellerTimeZone: S.optional(S.String),
     nonGuaranteedFixedPriceTerms: S.optional(NonGuaranteedFixedPriceTerms),
@@ -934,13 +928,13 @@ export type DealSyndicationProductEnum =
   | "MOBILE"
   | "VIDEO"
   | "GAMES";
-export const DealSyndicationProductEnum = S.String;
+const DealSyndicationProductEnum = S.String;
 
 export type DealCreativeSafeFrameCompatibilityEnum =
   | "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED"
   | "COMPATIBLE"
   | "INCOMPATIBLE";
-export const DealCreativeSafeFrameCompatibilityEnum = S.String;
+const DealCreativeSafeFrameCompatibilityEnum = S.String;
 
 /** A deal represents a segment of inventory for displaying ads on. A proposal can contain multiple deals. A deal contains the terms and targeting information that is used for serving. */
 export interface Deal {
@@ -995,7 +989,7 @@ export interface Deal {
   /** The web property code for the seller copied over from the product. */
   webPropertyCode?: string;
 }
-export const Deal = /*@__PURE__*/ S.suspend(() =>
+const Deal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deliveryControl: S.optional(DeliveryControl),
     description: S.optional(S.String),
@@ -1026,7 +1020,7 @@ export const Deal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deal" }) as any as S.Schema<Deal>;
 
 export type DealList = Array<Deal>;
-export const DealList = /*@__PURE__*/ S.Array(Deal) as any as S.Schema<DealList>;
+const DealList = /*@__PURE__*/ S.Array(Deal) as any as S.Schema<DealList>;
 
 export type ProposalProposalStateEnum =
   | "PROPOSAL_STATE_UNSPECIFIED"
@@ -1035,7 +1029,7 @@ export type ProposalProposalStateEnum =
   | "SELLER_ACCEPTED"
   | "CANCELED"
   | "FINALIZED";
-export const ProposalProposalStateEnum = S.String;
+const ProposalProposalStateEnum = S.String;
 
 /** Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer and contains deals which are served. Note: You can't update, create, or otherwise modify Private Auction deals through the API. Fields are updatable unless noted otherwise. */
 export interface Proposal {
@@ -1078,7 +1072,7 @@ export interface Proposal {
   /** Output only. The current state of the proposal. */
   proposalState?: ProposalProposalStateEnum | (string & {});
 }
-export const Proposal = /*@__PURE__*/ S.suspend(() =>
+const Proposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdaterOrCommentorRole: S.optional(ProposalLastUpdaterOrCommentorRoleEnum),
     isRenegotiating: S.optional(S.Boolean),
@@ -1111,7 +1105,7 @@ export interface CreativeDealAssociation {
   /** The ID of the creative associated with the deal. */
   creativeId?: string;
 }
-export const CreativeDealAssociation = /*@__PURE__*/ S.suspend(() =>
+const CreativeDealAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dealsId: S.optional(S.String),
     accountId: S.optional(S.String),
@@ -1124,7 +1118,7 @@ export interface AddDealAssociationRequest {
   /** The association between a creative and a deal that should be added. */
   association?: CreativeDealAssociation;
 }
-export const AddDealAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDealAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     association: S.optional(CreativeDealAssociation),
   }),
@@ -1140,7 +1134,7 @@ export interface AddAccountsCreativesDealAssociationsRequest {
   /** Request body */
   body?: AddDealAssociationRequest;
 }
-export const AddAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     creativeId: S.String.pipe(T.Label()),
@@ -1158,7 +1152,7 @@ export const AddAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspe
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -1167,7 +1161,7 @@ export interface AddNoteRequest {
   /** Details of the note to add. */
   note?: Note;
 }
-export const AddNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const AddNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     note: S.optional(Note),
   }),
@@ -1181,7 +1175,7 @@ export interface AddNoteAccountsProposalsRequest {
   /** Request body */
   body?: AddNoteRequest;
 }
-export const AddNoteAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddNoteAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -1199,7 +1193,7 @@ export const AddNoteAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to cancel an ongoing negotiation. */
 export interface CancelNegotiationRequest {}
-export const CancelNegotiationRequest = Empty as any as S.Schema<CancelNegotiationRequest>;
+const CancelNegotiationRequest = Empty as any as S.Schema<CancelNegotiationRequest>;
 
 export interface CancelNegotiationAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -1209,7 +1203,7 @@ export interface CancelNegotiationAccountsProposalsRequest {
   /** Request body */
   body?: CancelNegotiationRequest;
 }
-export const CancelNegotiationAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelNegotiationAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     proposalId: S.String.pipe(T.Label()),
@@ -1230,7 +1224,7 @@ export interface CompleteSetupRequest {
   /** The external deal ids of the deals to mark as setup completed. If empty, all the deals in the proposal will be marked as setup completed. */
   externalDealIds?: StringList;
 }
-export const CompleteSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalDealIds: S.optional(StringList),
   }),
@@ -1244,7 +1238,7 @@ export interface CompleteSetupAccountsProposalsRequest {
   /** Request body */
   body?: CompleteSetupRequest;
 }
-export const CompleteSetupAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteSetupAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -1265,10 +1259,10 @@ export type ClientRoleEnum =
   | "CLIENT_DEAL_VIEWER"
   | "CLIENT_DEAL_NEGOTIATOR"
   | "CLIENT_DEAL_APPROVER";
-export const ClientRoleEnum = S.String;
+const ClientRoleEnum = S.String;
 
 export type ClientStatusEnum = "CLIENT_STATUS_UNSPECIFIED" | "DISABLED" | "ACTIVE";
-export const ClientStatusEnum = S.String;
+const ClientStatusEnum = S.String;
 
 export type ClientEntityTypeEnum =
   | "ENTITY_TYPE_UNSPECIFIED"
@@ -1276,7 +1270,7 @@ export type ClientEntityTypeEnum =
   | "BRAND"
   | "AGENCY"
   | "ENTITY_TYPE_UNCLASSIFIED";
-export const ClientEntityTypeEnum = S.String;
+const ClientEntityTypeEnum = S.String;
 
 /** A client resource represents a client buyer--an agency, a brand, or an advertiser customer of the sponsor buyer. Users associated with the client buyer have restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the client buyer. All fields are required unless otherwise specified. */
 export interface Client {
@@ -1299,7 +1293,7 @@ export interface Client {
   /** An optional field for specifying the type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`. */
   entityType?: ClientEntityTypeEnum | (string & {});
 }
-export const Client = /*@__PURE__*/ S.suspend(() =>
+const Client = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerClientId: S.optional(S.String),
     entityId: S.optional(S.String),
@@ -1319,7 +1313,7 @@ export interface CreateAccountsClientsRequest {
   /** Request body */
   body?: Client;
 }
-export const CreateAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     body: S.optional(Client.pipe(T.HttpBody())),
@@ -1343,7 +1337,7 @@ export interface ClientUserInvitation {
   /** The email address to which the invitation is sent. Email addresses should be unique among all client users under each sponsor buyer. */
   email?: string;
 }
-export const ClientUserInvitation = /*@__PURE__*/ S.suspend(() =>
+const ClientUserInvitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitationId: S.optional(S.String),
     clientAccountId: S.optional(S.String),
@@ -1359,7 +1353,7 @@ export interface CreateAccountsClientsInvitationsRequest {
   /** Request body */
   body?: ClientUserInvitation;
 }
-export const CreateAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     clientAccountId: S.String.pipe(T.Label()),
@@ -1378,7 +1372,7 @@ export const CreateAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend((
 export type CreateAccountsCreativesDuplicateIdModeEnum =
   | "NO_DUPLICATES"
   | "FORCE_ENABLE_DUPLICATE_IDS";
-export const CreateAccountsCreativesDuplicateIdModeEnum = S.String;
+const CreateAccountsCreativesDuplicateIdModeEnum = S.String;
 
 /** HTML content for a creative. */
 export interface HtmlContent {
@@ -1389,7 +1383,7 @@ export interface HtmlContent {
   /** The width of the HTML snippet in pixels. */
   width?: number;
 }
-export const HtmlContent = /*@__PURE__*/ S.suspend(() =>
+const HtmlContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snippet: S.optional(S.String),
     height: S.optional(S.Number),
@@ -1404,7 +1398,7 @@ export interface AdTechnologyProviders {
   /** Whether the creative contains an unidentified ad technology provider. If true for a given creative, any bid submitted with that creative for an impression that will serve to an EEA user will be filtered before the auction. */
   hasUnidentifiedProvider?: boolean;
 }
-export const AdTechnologyProviders = /*@__PURE__*/ S.suspend(() =>
+const AdTechnologyProviders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectedProviderIds: S.optional(StringList),
     hasUnidentifiedProvider: S.optional(S.Boolean),
@@ -1412,7 +1406,7 @@ export const AdTechnologyProviders = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdTechnologyProviders" }) as any as S.Schema<AdTechnologyProviders>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export type CreativeOpenAuctionStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -1422,7 +1416,7 @@ export type CreativeOpenAuctionStatusEnum =
   | "DISAPPROVED"
   | "PENDING_REVIEW"
   | "STATUS_TYPE_UNSPECIFIED";
-export const CreativeOpenAuctionStatusEnum = S.String;
+const CreativeOpenAuctionStatusEnum = S.String;
 
 /** Video content for a creative. */
 export interface VideoContent {
@@ -1431,7 +1425,7 @@ export interface VideoContent {
   /** The contents of a VAST document for a video ad. This document should conform to the VAST 2.0 or 3.0 standard. */
   videoVastXml?: string;
 }
-export const VideoContent = /*@__PURE__*/ S.suspend(() =>
+const VideoContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoUrl: S.optional(S.String),
     videoVastXml: S.optional(S.String),
@@ -1451,15 +1445,13 @@ export type CorrectionTypeEnum =
   | "MRAID_ATTRIBUTE_ADDED"
   | "FLASH_ATTRIBUTE_REMOVED"
   | "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED";
-export const CorrectionTypeEnum = S.String;
+const CorrectionTypeEnum = S.String;
 
 export type AuctionContextAuctionTypesItemEnum = "OPEN_AUCTION" | "DIRECT_DEALS";
-export const AuctionContextAuctionTypesItemEnum = S.String;
-
 export type AuctionContextAuctionTypesItemEnumList = Array<
   AuctionContextAuctionTypesItemEnum | (string & {})
 >;
-export const AuctionContextAuctionTypesItemEnumList =
+const AuctionContextAuctionTypesItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<AuctionContextAuctionTypesItemEnumList>;
 
 /** Output only. The auction type the restriction applies to. */
@@ -1467,7 +1459,7 @@ export interface AuctionContext {
   /** The auction types this restriction applies to. */
   auctionTypes?: AuctionContextAuctionTypesItemEnumList;
 }
-export const AuctionContext = /*@__PURE__*/ S.suspend(() =>
+const AuctionContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auctionTypes: S.optional(AuctionContextAuctionTypesItemEnumList),
   }),
@@ -1478,20 +1470,18 @@ export interface LocationContext {
   /** IDs representing the geo location for this context. Refer to the [geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv) file for different geo criteria IDs. */
   geoCriteriaIds?: IntegerList;
 }
-export const LocationContext = /*@__PURE__*/ S.suspend(() =>
+const LocationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoCriteriaIds: S.optional(IntegerList),
   }),
 ).annotate({ identifier: "LocationContext" }) as any as S.Schema<LocationContext>;
 
 export type ServingContextAllEnum = "SIMPLE_CONTEXT";
-export const ServingContextAllEnum = S.String;
+const ServingContextAllEnum = S.String;
 
 export type AppContextAppTypesItemEnum = "NATIVE" | "WEB";
-export const AppContextAppTypesItemEnum = S.String;
-
 export type AppContextAppTypesItemEnumList = Array<AppContextAppTypesItemEnum | (string & {})>;
-export const AppContextAppTypesItemEnumList =
+const AppContextAppTypesItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<AppContextAppTypesItemEnumList>;
 
 /** Output only. The app type the restriction applies to for mobile device. */
@@ -1499,19 +1489,17 @@ export interface AppContext {
   /** The app types this restriction applies to. */
   appTypes?: AppContextAppTypesItemEnumList;
 }
-export const AppContext = /*@__PURE__*/ S.suspend(() =>
+const AppContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appTypes: S.optional(AppContextAppTypesItemEnumList),
   }),
 ).annotate({ identifier: "AppContext" }) as any as S.Schema<AppContext>;
 
 export type PlatformContextPlatformsItemEnum = "DESKTOP" | "ANDROID" | "IOS";
-export const PlatformContextPlatformsItemEnum = S.String;
-
 export type PlatformContextPlatformsItemEnumList = Array<
   PlatformContextPlatformsItemEnum | (string & {})
 >;
-export const PlatformContextPlatformsItemEnumList =
+const PlatformContextPlatformsItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<PlatformContextPlatformsItemEnumList>;
 
 /** Output only. The type of platform the restriction applies to. */
@@ -1519,19 +1507,17 @@ export interface PlatformContext {
   /** The platforms this restriction applies to. */
   platforms?: PlatformContextPlatformsItemEnumList;
 }
-export const PlatformContext = /*@__PURE__*/ S.suspend(() =>
+const PlatformContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     platforms: S.optional(PlatformContextPlatformsItemEnumList),
   }),
 ).annotate({ identifier: "PlatformContext" }) as any as S.Schema<PlatformContext>;
 
 export type SecurityContextSecuritiesItemEnum = "INSECURE" | "SSL";
-export const SecurityContextSecuritiesItemEnum = S.String;
-
 export type SecurityContextSecuritiesItemEnumList = Array<
   SecurityContextSecuritiesItemEnum | (string & {})
 >;
-export const SecurityContextSecuritiesItemEnumList =
+const SecurityContextSecuritiesItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<SecurityContextSecuritiesItemEnumList>;
 
 /** Output only. A security context. */
@@ -1539,7 +1525,7 @@ export interface SecurityContext {
   /** The security types in this context. */
   securities?: SecurityContextSecuritiesItemEnumList;
 }
-export const SecurityContext = /*@__PURE__*/ S.suspend(() =>
+const SecurityContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securities: S.optional(SecurityContextSecuritiesItemEnumList),
   }),
@@ -1560,7 +1546,7 @@ export interface ServingContext {
   /** Matches impressions for a particular security type. */
   securityType?: SecurityContext;
 }
-export const ServingContext = /*@__PURE__*/ S.suspend(() =>
+const ServingContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auctionType: S.optional(AuctionContext),
     location: S.optional(LocationContext),
@@ -1572,7 +1558,7 @@ export const ServingContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServingContext" }) as any as S.Schema<ServingContext>;
 
 export type ServingContextList = Array<ServingContext>;
-export const ServingContextList = /*@__PURE__*/ S.Array(
+const ServingContextList = /*@__PURE__*/ S.Array(
   ServingContext,
 ) as any as S.Schema<ServingContextList>;
 
@@ -1585,7 +1571,7 @@ export interface Correction {
   /** Additional details about what was corrected. */
   details?: StringList;
 }
-export const Correction = /*@__PURE__*/ S.suspend(() =>
+const Correction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CorrectionTypeEnum),
     contexts: S.optional(ServingContextList),
@@ -1594,7 +1580,7 @@ export const Correction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Correction" }) as any as S.Schema<Correction>;
 
 export type CorrectionList = Array<Correction>;
-export const CorrectionList = /*@__PURE__*/ S.Array(Correction) as any as S.Schema<CorrectionList>;
+const CorrectionList = /*@__PURE__*/ S.Array(Correction) as any as S.Schema<CorrectionList>;
 
 /** An image resource. You may provide a larger image than was requested, so long as the aspect ratio is preserved. */
 export interface Image {
@@ -1605,7 +1591,7 @@ export interface Image {
   /** Image width in pixels. */
   width?: number;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     url: S.optional(S.String),
@@ -1642,7 +1628,7 @@ export interface NativeContent {
   /** The URL to the app store to purchase/download the promoted app. */
   storeUrl?: string;
 }
-export const NativeContent = /*@__PURE__*/ S.suspend(() =>
+const NativeContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callToAction: S.optional(S.String),
     body: S.optional(S.String),
@@ -1668,7 +1654,7 @@ export type CreativeDealsStatusEnum =
   | "DISAPPROVED"
   | "PENDING_REVIEW"
   | "STATUS_TYPE_UNSPECIFIED";
-export const CreativeDealsStatusEnum = S.String;
+const CreativeDealsStatusEnum = S.String;
 
 export type CreativeAttributesItemEnum =
   | "ATTRIBUTE_UNSPECIFIED"
@@ -1710,10 +1696,8 @@ export type CreativeAttributesItemEnum =
   | "RENDERING_SIZELESS_ADX"
   | "OMSDK_1_0"
   | "RENDERING_PLAYABLE";
-export const CreativeAttributesItemEnum = S.String;
-
 export type CreativeAttributesItemEnumList = Array<CreativeAttributesItemEnum | (string & {})>;
-export const CreativeAttributesItemEnumList =
+const CreativeAttributesItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<CreativeAttributesItemEnumList>;
 
 export type DisapprovalReasonEnum =
@@ -1819,7 +1803,7 @@ export type DisapprovalReasonEnum =
   | "TEMPORARY_PAUSE"
   | "BAIL_BONDS"
   | "EXPERIMENTAL_MEDICAL_TREATMENT";
-export const DisapprovalReasonEnum = S.String;
+const DisapprovalReasonEnum = S.String;
 
 /** Output only. The reason and details for a disapproval. */
 export interface Disapproval {
@@ -1828,7 +1812,7 @@ export interface Disapproval {
   /** Additional details about the reason for disapproval. */
   details?: StringList;
 }
-export const Disapproval = /*@__PURE__*/ S.suspend(() =>
+const Disapproval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(DisapprovalReasonEnum),
     details: S.optional(StringList),
@@ -1836,12 +1820,10 @@ export const Disapproval = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disapproval" }) as any as S.Schema<Disapproval>;
 
 export type ServingRestrictionStatusEnum = "STATUS_UNSPECIFIED" | "DISAPPROVAL" | "PENDING_REVIEW";
-export const ServingRestrictionStatusEnum = S.String;
+const ServingRestrictionStatusEnum = S.String;
 
 export type DisapprovalList = Array<Disapproval>;
-export const DisapprovalList = /*@__PURE__*/ S.Array(
-  Disapproval,
-) as any as S.Schema<DisapprovalList>;
+const DisapprovalList = /*@__PURE__*/ S.Array(Disapproval) as any as S.Schema<DisapprovalList>;
 
 /** Output only. A representation of the status of an ad in a specific context. A context here relates to where something ultimately serves (for example, a user or publisher geo, a platform, an HTTPS versus HTTP request, or the type of auction). */
 export interface ServingRestriction {
@@ -1854,7 +1836,7 @@ export interface ServingRestriction {
   /** The contexts for the restriction. */
   contexts?: ServingContextList;
 }
-export const ServingRestriction = /*@__PURE__*/ S.suspend(() =>
+const ServingRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disapproval: S.optional(Disapproval),
     status: S.optional(ServingRestrictionStatusEnum),
@@ -1864,17 +1846,15 @@ export const ServingRestriction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServingRestriction" }) as any as S.Schema<ServingRestriction>;
 
 export type ServingRestrictionList = Array<ServingRestriction>;
-export const ServingRestrictionList = /*@__PURE__*/ S.Array(
+const ServingRestrictionList = /*@__PURE__*/ S.Array(
   ServingRestriction,
 ) as any as S.Schema<ServingRestrictionList>;
 
 export type CreativeRestrictedCategoriesItemEnum = "NO_RESTRICTED_CATEGORIES" | "ALCOHOL";
-export const CreativeRestrictedCategoriesItemEnum = S.String;
-
 export type CreativeRestrictedCategoriesItemEnumList = Array<
   CreativeRestrictedCategoriesItemEnum | (string & {})
 >;
-export const CreativeRestrictedCategoriesItemEnumList =
+const CreativeRestrictedCategoriesItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<CreativeRestrictedCategoriesItemEnumList>;
 
 /** A creative and its classification data. */
@@ -1932,7 +1912,7 @@ export interface Creative {
   /** All restricted categories for the ads that may be shown from this creative. */
   restrictedCategories?: CreativeRestrictedCategoriesItemEnumList;
 }
-export const Creative = /*@__PURE__*/ S.suspend(() =>
+const Creative = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     declaredClickThroughUrls: S.optional(StringList),
     html: S.optional(HtmlContent),
@@ -1971,7 +1951,7 @@ export interface CreateAccountsCreativesRequest {
   /** Request body */
   body?: Creative;
 }
-export const CreateAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duplicateIdMode: S.optional(CreateAccountsCreativesDuplicateIdModeEnum.pipe(T.Query())),
     accountId: S.String.pipe(T.Label()),
@@ -1993,7 +1973,7 @@ export interface CreateAccountsProposalsRequest {
   /** Request body */
   body?: Proposal;
 }
-export const CreateAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     body: S.optional(Proposal.pipe(T.HttpBody())),
@@ -2013,7 +1993,7 @@ export interface RealtimeTimeRange {
   /** The start timestamp of the real-time RTB metrics aggregation. */
   startTimestamp?: string;
 }
-export const RealtimeTimeRange = /*@__PURE__*/ S.suspend(() =>
+const RealtimeTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTimestamp: S.optional(S.String),
   }),
@@ -2023,7 +2003,7 @@ export type FilterSetTimeSeriesGranularityEnum =
   | "TIME_SERIES_GRANULARITY_UNSPECIFIED"
   | "HOURLY"
   | "DAILY";
-export const FilterSetTimeSeriesGranularityEnum = S.String;
+const FilterSetTimeSeriesGranularityEnum = S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Adexchangebuyer2_Date {
@@ -2034,7 +2014,7 @@ export interface Adexchangebuyer2_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Adexchangebuyer2_Date = /*@__PURE__*/ S.suspend(() =>
+const Adexchangebuyer2_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -2049,7 +2029,7 @@ export interface AbsoluteDateRange {
   /** The start date of the range (inclusive). Must be within the 30 days leading up to current date, and must be equal to or before end_date. */
   startDate?: Adexchangebuyer2_Date;
 }
-export const AbsoluteDateRange = /*@__PURE__*/ S.suspend(() =>
+const AbsoluteDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(Adexchangebuyer2_Date),
     startDate: S.optional(Adexchangebuyer2_Date),
@@ -2063,7 +2043,7 @@ export interface RelativeDateRange {
   /** The number of days in the requested date range, for example, for a range spanning today: 1. For a range spanning the last 7 days: 7. */
   durationDays?: number;
 }
-export const RelativeDateRange = /*@__PURE__*/ S.suspend(() =>
+const RelativeDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offsetDays: S.optional(S.Number),
     durationDays: S.optional(S.Number),
@@ -2073,12 +2053,10 @@ export const RelativeDateRange = /*@__PURE__*/ S.suspend(() =>
 export type FilterSetBreakdownDimensionsItemEnum =
   | "BREAKDOWN_DIMENSION_UNSPECIFIED"
   | "PUBLISHER_IDENTIFIER";
-export const FilterSetBreakdownDimensionsItemEnum = S.String;
-
 export type FilterSetBreakdownDimensionsItemEnumList = Array<
   FilterSetBreakdownDimensionsItemEnum | (string & {})
 >;
-export const FilterSetBreakdownDimensionsItemEnumList =
+const FilterSetBreakdownDimensionsItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<FilterSetBreakdownDimensionsItemEnumList>;
 
 export type FilterSetFormatsItemEnum =
@@ -2087,17 +2065,13 @@ export type FilterSetFormatsItemEnum =
   | "NATIVE_VIDEO"
   | "NON_NATIVE_DISPLAY"
   | "NON_NATIVE_VIDEO";
-export const FilterSetFormatsItemEnum = S.String;
-
 export type FilterSetFormatsItemEnumList = Array<FilterSetFormatsItemEnum | (string & {})>;
-export const FilterSetFormatsItemEnumList =
+const FilterSetFormatsItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<FilterSetFormatsItemEnumList>;
 
 export type FilterSetPlatformsItemEnum = "PLATFORM_UNSPECIFIED" | "DESKTOP" | "TABLET" | "MOBILE";
-export const FilterSetPlatformsItemEnum = S.String;
-
 export type FilterSetPlatformsItemEnumList = Array<FilterSetPlatformsItemEnum | (string & {})>;
-export const FilterSetPlatformsItemEnumList =
+const FilterSetPlatformsItemEnumList =
   CreativeSizeAllowedFormatsItemEnumList as any as S.Schema<FilterSetPlatformsItemEnumList>;
 
 export type FilterSetFormatEnum =
@@ -2106,10 +2080,10 @@ export type FilterSetFormatEnum =
   | "NATIVE_VIDEO"
   | "NON_NATIVE_DISPLAY"
   | "NON_NATIVE_VIDEO";
-export const FilterSetFormatEnum = S.String;
+const FilterSetFormatEnum = S.String;
 
 export type FilterSetEnvironmentEnum = "ENVIRONMENT_UNSPECIFIED" | "WEB" | "APP";
-export const FilterSetEnvironmentEnum = S.String;
+const FilterSetEnvironmentEnum = S.String;
 
 /** A set of filters that is applied to a request for data. Within a filter set, an AND operation is performed across the filters represented by each field. An OR operation is performed across the filters represented by the multiple values of a repeated field, for example, "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR seller_network_id=56)". */
 export interface FilterSet {
@@ -2142,7 +2116,7 @@ export interface FilterSet {
   /** The environment on which to filter; optional. */
   environment?: FilterSetEnvironmentEnum | (string & {});
 }
-export const FilterSet = /*@__PURE__*/ S.suspend(() =>
+const FilterSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sellerNetworkIds: S.optional(IntegerList),
     dealId: S.optional(S.String),
@@ -2169,7 +2143,7 @@ export interface CreateBiddersAccountsFilterSetsRequest {
   /** Request body */
   body?: FilterSet;
 }
-export const CreateBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isTransient: S.optional(S.Boolean.pipe(T.Query())),
     ownerName: S.String.pipe(T.Label()),
@@ -2193,7 +2167,7 @@ export interface CreateBiddersFilterSetsRequest {
   /** Request body */
   body?: FilterSet;
 }
-export const CreateBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerName: S.String.pipe(T.Label()),
     isTransient: S.optional(S.Boolean.pipe(T.Query())),
@@ -2217,7 +2191,7 @@ export interface CreateBuyersFilterSetsRequest {
   /** Request body */
   body?: FilterSet;
 }
-export const CreateBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerName: S.String.pipe(T.Label()),
     isTransient: S.optional(S.Boolean.pipe(T.Query())),
@@ -2237,7 +2211,7 @@ export interface DeleteBiddersAccountsFilterSetsRequest {
   /** Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
-export const DeleteBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2255,7 +2229,7 @@ export interface DeleteBiddersFilterSetsRequest {
   /** Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
-export const DeleteBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2273,7 +2247,7 @@ export interface DeleteBuyersFilterSetsRequest {
   /** Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
-export const DeleteBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2293,7 +2267,7 @@ export interface GetAccountsClientsRequest {
   /** Numerical account ID of the client buyer to retrieve. (required) */
   clientAccountId: string;
 }
-export const GetAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     clientAccountId: S.String.pipe(T.Label()),
@@ -2316,7 +2290,7 @@ export interface GetAccountsClientsInvitationsRequest {
   /** Numerical account ID of the client's sponsor buyer. (required) */
   accountId: string;
 }
-export const GetAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitationId: S.String.pipe(T.Label()),
     clientAccountId: S.String.pipe(T.Label()),
@@ -2340,7 +2314,7 @@ export interface GetAccountsClientsUsersRequest {
   /** Numerical account ID of the client buyer that the user to be retrieved is associated with. (required) */
   clientAccountId: string;
 }
-export const GetAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -2357,7 +2331,7 @@ export const GetAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccountsClientsUsersRequest>;
 
 export type ClientUserStatusEnum = "USER_STATUS_UNSPECIFIED" | "PENDING" | "ACTIVE" | "DISABLED";
-export const ClientUserStatusEnum = S.String;
+const ClientUserStatusEnum = S.String;
 
 /** A client user is created under a client buyer and has restricted access to the Marketplace and certain other sections of the Authorized Buyers UI based on the role granted to the associated client buyer. The only way a new client user can be created is through accepting an email invitation (see the accounts.clients.invitations.create method). All fields are required unless otherwise specified. */
 export interface ClientUser {
@@ -2370,7 +2344,7 @@ export interface ClientUser {
   /** Numerical account ID of the client buyer with which the user is associated; the buyer must be a client of the current sponsor buyer. The value of this field is ignored in an update operation. */
   clientAccountId?: string;
 }
-export const ClientUser = /*@__PURE__*/ S.suspend(() =>
+const ClientUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     userId: S.optional(S.String),
@@ -2385,7 +2359,7 @@ export interface GetAccountsCreativesRequest {
   /** The ID of the creative to retrieve. */
   creativeId: string;
 }
-export const GetAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     creativeId: S.String.pipe(T.Label()),
@@ -2406,7 +2380,7 @@ export interface GetAccountsProductsRequest {
   /** The ID for the product to get the head revision for. */
   productId: string;
 }
-export const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -2427,7 +2401,7 @@ export type ProductSyndicationProductEnum =
   | "MOBILE"
   | "VIDEO"
   | "GAMES";
-export const ProductSyndicationProductEnum = S.String;
+const ProductSyndicationProductEnum = S.String;
 
 /** A product is a segment of inventory that a seller wants to sell. It is associated with certain terms and targeting information which helps the buyer know more about the inventory. */
 export interface Product {
@@ -2462,7 +2436,7 @@ export interface Product {
   /** The display name for this product as set by the seller. */
   displayName?: string;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasCreatorSignedOff: S.optional(S.Boolean),
     productId: S.optional(S.String),
@@ -2488,7 +2462,7 @@ export interface GetAccountsProposalsRequest {
   /** Account ID of the buyer. */
   accountId: string;
 }
-export const GetAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -2509,7 +2483,7 @@ export interface GetAccountsPublisherProfilesRequest {
   /** The id for the publisher profile to get. */
   publisherProfileId: string;
 }
-export const GetAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     publisherProfileId: S.String.pipe(T.Label()),
@@ -2539,7 +2513,7 @@ export type PublisherProfileMobileApplicationAppStoreEnum =
   | "VIVO"
   | "XIAOMI"
   | "LG_TV";
-export const PublisherProfileMobileApplicationAppStoreEnum = S.String;
+const PublisherProfileMobileApplicationAppStoreEnum = S.String;
 
 /** A mobile application that contains a external app ID, name, and app store. */
 export interface PublisherProfileMobileApplication {
@@ -2550,7 +2524,7 @@ export interface PublisherProfileMobileApplication {
   /** The external ID for the app from its app store. */
   externalAppId?: string;
 }
-export const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
+const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appStore: S.optional(PublisherProfileMobileApplicationAppStoreEnum),
     name: S.optional(S.String),
@@ -2561,7 +2535,7 @@ export const PublisherProfileMobileApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublisherProfileMobileApplication>;
 
 export type PublisherProfileMobileApplicationList = Array<PublisherProfileMobileApplication>;
-export const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(
+const PublisherProfileMobileApplicationList = /*@__PURE__*/ S.Array(
   PublisherProfileMobileApplication,
 ) as any as S.Schema<PublisherProfileMobileApplicationList>;
 
@@ -2602,7 +2576,7 @@ export interface PublisherProfile {
   /** Name of the publisher profile. */
   displayName?: string;
 }
-export const PublisherProfile = /*@__PURE__*/ S.suspend(() =>
+const PublisherProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topHeadlines: S.optional(StringList),
     overview: S.optional(S.String),
@@ -2628,7 +2602,7 @@ export interface GetBiddersAccountsFilterSetsRequest {
   /** Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
-export const GetBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2646,7 +2620,7 @@ export interface GetBiddersFilterSetsRequest {
   /** Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
-export const GetBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2664,7 +2638,7 @@ export interface GetBuyersFilterSetsRequest {
   /** Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   name: string;
 }
-export const GetBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2688,7 +2662,7 @@ export interface ListAccountsClientsRequest {
   /** Optional unique identifier (from the standpoint of an Ad Exchange sponsor buyer partner) of the client to return. If specified, at most one client will be returned in the response. */
   partnerClientId?: string;
 }
-export const ListAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2706,7 +2680,7 @@ export const ListAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsClientsRequest>;
 
 export type ClientList = Array<Client>;
-export const ClientList = /*@__PURE__*/ S.Array(Client) as any as S.Schema<ClientList>;
+const ClientList = /*@__PURE__*/ S.Array(Client) as any as S.Schema<ClientList>;
 
 export interface ListClientsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListClientsRequest.pageToken field in the subsequent call to the accounts.clients.list method to retrieve the next page of results. */
@@ -2714,7 +2688,7 @@ export interface ListClientsResponse {
   /** The returned list of clients. */
   clients?: ClientList;
 }
-export const ListClientsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     clients: S.optional(ClientList),
@@ -2731,7 +2705,7 @@ export interface ListAccountsClientsInvitationsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListClientUserInvitationsResponse.nextPageToken returned from the previous call to the clients.invitations.list method. */
   pageToken?: string;
 }
-export const ListAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientAccountId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -2749,7 +2723,7 @@ export const ListAccountsClientsInvitationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListAccountsClientsInvitationsRequest>;
 
 export type ClientUserInvitationList = Array<ClientUserInvitation>;
-export const ClientUserInvitationList = /*@__PURE__*/ S.Array(
+const ClientUserInvitationList = /*@__PURE__*/ S.Array(
   ClientUserInvitation,
 ) as any as S.Schema<ClientUserInvitationList>;
 
@@ -2759,7 +2733,7 @@ export interface ListClientUserInvitationsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListClientUserInvitationsRequest.pageToken field in the subsequent call to the clients.invitations.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListClientUserInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClientUserInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitations: S.optional(ClientUserInvitationList),
     nextPageToken: S.optional(S.String),
@@ -2778,7 +2752,7 @@ export interface ListAccountsClientsUsersRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListClientUsersResponse.nextPageToken returned from the previous call to the accounts.clients.users.list method. */
   pageToken?: string;
 }
-export const ListAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     accountId: S.String.pipe(T.Label()),
@@ -2796,7 +2770,7 @@ export const ListAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsClientsUsersRequest>;
 
 export type ClientUserList = Array<ClientUser>;
-export const ClientUserList = /*@__PURE__*/ S.Array(ClientUser) as any as S.Schema<ClientUserList>;
+const ClientUserList = /*@__PURE__*/ S.Array(ClientUser) as any as S.Schema<ClientUserList>;
 
 export interface ListClientUsersResponse {
   /** The returned list of client users. */
@@ -2804,7 +2778,7 @@ export interface ListClientUsersResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListClientUsersRequest.pageToken field in the subsequent call to the clients.invitations.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListClientUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClientUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(ClientUserList),
     nextPageToken: S.optional(S.String),
@@ -2821,7 +2795,7 @@ export interface ListAccountsCreativesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives' method. */
   pageToken?: string;
 }
-export const ListAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     accountId: S.String.pipe(T.Label()),
@@ -2839,7 +2813,7 @@ export const ListAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsCreativesRequest>;
 
 export type CreativeList = Array<Creative>;
-export const CreativeList = /*@__PURE__*/ S.Array(Creative) as any as S.Schema<CreativeList>;
+const CreativeList = /*@__PURE__*/ S.Array(Creative) as any as S.Schema<CreativeList>;
 
 /** A response for listing creatives. */
 export interface ListCreativesResponse {
@@ -2848,7 +2822,7 @@ export interface ListCreativesResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListCreativesRequest.page_token field in the subsequent call to `ListCreatives` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListCreativesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCreativesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creatives: S.optional(CreativeList),
     nextPageToken: S.optional(S.String),
@@ -2867,7 +2841,7 @@ export interface ListAccountsCreativesDealAssociationsRequest {
   /** The creative ID to list the associations from. Specify "-" to list all creatives under the above account. */
   creativeId: string;
 }
-export const ListAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -2886,7 +2860,7 @@ export const ListAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListAccountsCreativesDealAssociationsRequest>;
 
 export type CreativeDealAssociationList = Array<CreativeDealAssociation>;
-export const CreativeDealAssociationList = /*@__PURE__*/ S.Array(
+const CreativeDealAssociationList = /*@__PURE__*/ S.Array(
   CreativeDealAssociation,
 ) as any as S.Schema<CreativeDealAssociationList>;
 
@@ -2897,7 +2871,7 @@ export interface ListDealAssociationsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListDealAssociationsRequest.page_token field in the subsequent call to 'ListDealAssociation' method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListDealAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDealAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associations: S.optional(CreativeDealAssociationList),
     nextPageToken: S.optional(S.String),
@@ -2910,7 +2884,7 @@ export type ListAccountsFinalizedProposalsFilterSyntaxEnum =
   | "FILTER_SYNTAX_UNSPECIFIED"
   | "PQL"
   | "LIST_FILTER";
-export const ListAccountsFinalizedProposalsFilterSyntaxEnum = S.String;
+const ListAccountsFinalizedProposalsFilterSyntaxEnum = S.String;
 
 export interface ListAccountsFinalizedProposalsRequest {
   /** Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER. */
@@ -2924,7 +2898,7 @@ export interface ListAccountsFinalizedProposalsRequest {
   /** Account ID of the buyer. */
   accountId: string;
 }
-export const ListAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSyntax: S.optional(ListAccountsFinalizedProposalsFilterSyntaxEnum.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2943,7 +2917,7 @@ export const ListAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListAccountsFinalizedProposalsRequest>;
 
 export type ProposalList = Array<Proposal>;
-export const ProposalList = /*@__PURE__*/ S.Array(Proposal) as any as S.Schema<ProposalList>;
+const ProposalList = /*@__PURE__*/ S.Array(Proposal) as any as S.Schema<ProposalList>;
 
 /** Response message for listing proposals. */
 export interface ListProposalsResponse {
@@ -2952,7 +2926,7 @@ export interface ListProposalsResponse {
   /** The list of proposals. */
   proposals?: ProposalList;
 }
-export const ListProposalsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProposalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     proposals: S.optional(ProposalList),
@@ -2969,7 +2943,7 @@ export interface ListAccountsProductsRequest {
   /** An optional PQL query used to query for products. See https://developers.google.com/ad-manager/docs/pqlreference for documentation about PQL and examples. Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered. */
   filter?: string;
 }
-export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2987,7 +2961,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
 export type ProductList = Array<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
+const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 /** Response message for listing products visible to the buyer. */
 export interface ListProductsResponse {
@@ -2996,7 +2970,7 @@ export interface ListProductsResponse {
   /** List pagination support. */
   nextPageToken?: string;
 }
-export const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     products: S.optional(ProductList),
     nextPageToken: S.optional(S.String),
@@ -3007,7 +2981,7 @@ export type ListAccountsProposalsFilterSyntaxEnum =
   | "FILTER_SYNTAX_UNSPECIFIED"
   | "PQL"
   | "LIST_FILTER";
-export const ListAccountsProposalsFilterSyntaxEnum = S.String;
+const ListAccountsProposalsFilterSyntaxEnum = S.String;
 
 export interface ListAccountsProposalsRequest {
   /** Account ID of the buyer. */
@@ -3021,7 +2995,7 @@ export interface ListAccountsProposalsRequest {
   /** An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered. */
   filter?: string;
 }
-export const ListAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     filterSyntax: S.optional(ListAccountsProposalsFilterSyntaxEnum.pipe(T.Query())),
@@ -3047,7 +3021,7 @@ export interface ListAccountsPublisherProfilesRequest {
   /** Account ID of the buyer. */
   accountId: string;
 }
-export const ListAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3064,7 +3038,7 @@ export const ListAccountsPublisherProfilesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListAccountsPublisherProfilesRequest>;
 
 export type PublisherProfileList = Array<PublisherProfile>;
-export const PublisherProfileList = /*@__PURE__*/ S.Array(
+const PublisherProfileList = /*@__PURE__*/ S.Array(
   PublisherProfile,
 ) as any as S.Schema<PublisherProfileList>;
 
@@ -3075,7 +3049,7 @@ export interface ListPublisherProfilesResponse {
   /** List pagination support */
   nextPageToken?: string;
 }
-export const ListPublisherProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublisherProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherProfiles: S.optional(PublisherProfileList),
     nextPageToken: S.optional(S.String),
@@ -3092,7 +3066,7 @@ export interface ListBiddersAccountsFilterSetsRequest {
   /** Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` */
   ownerName: string;
 }
-export const ListBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3109,7 +3083,7 @@ export const ListBiddersAccountsFilterSetsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListBiddersAccountsFilterSetsRequest>;
 
 export type FilterSetList = Array<FilterSet>;
-export const FilterSetList = /*@__PURE__*/ S.Array(FilterSet) as any as S.Schema<FilterSetList>;
+const FilterSetList = /*@__PURE__*/ S.Array(FilterSet) as any as S.Schema<FilterSetList>;
 
 /** Response message for listing filter sets. */
 export interface ListFilterSetsResponse {
@@ -3118,7 +3092,7 @@ export interface ListFilterSetsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListFilterSetsRequest.pageToken field in the subsequent call to the accounts.filterSets.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListFilterSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilterSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSets: S.optional(FilterSetList),
     nextPageToken: S.optional(S.String),
@@ -3133,7 +3107,7 @@ export interface ListBiddersAccountsFilterSetsBidMetricsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAccountsFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3156,7 +3130,7 @@ export interface MetricValue {
   /** The variance (for example, square of the standard deviation) of the metric value. If value is exact, variance is 0. Can be used to calculate margin of error as a percentage of value, using the following formula, where Z is the standard constant that depends on the preferred size of the confidence interval (for example, for 90% confidence interval, use Z = 1.645): marginOfError = 100 * Z * sqrt(variance) / value */
   variance?: string;
 }
-export const MetricValue = /*@__PURE__*/ S.suspend(() =>
+const MetricValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     variance: S.optional(S.String),
@@ -3170,7 +3144,7 @@ export interface TimeInterval {
   /** The timestamp marking the start of the range (inclusive) for which data is included. */
   startTime?: string;
 }
-export const TimeInterval = /*@__PURE__*/ S.suspend(() =>
+const TimeInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -3184,7 +3158,7 @@ export interface RowDimensions {
   /** The publisher identifier for this row, if a breakdown by [BreakdownDimension.PUBLISHER_IDENTIFIER](https://developers.google.com/authorized-buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#FilterSet.BreakdownDimension) was requested. */
   publisherIdentifier?: string;
 }
-export const RowDimensions = /*@__PURE__*/ S.suspend(() =>
+const RowDimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeInterval: S.optional(TimeInterval),
     publisherIdentifier: S.optional(S.String),
@@ -3210,7 +3184,7 @@ export interface BidMetricsRow {
   /** The number of bids for which the corresponding impression was viewable (as defined by Active View). */
   viewableImpressions?: MetricValue;
 }
-export const BidMetricsRow = /*@__PURE__*/ S.suspend(() =>
+const BidMetricsRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billedImpressions: S.optional(MetricValue),
     rowDimensions: S.optional(RowDimensions),
@@ -3224,7 +3198,7 @@ export const BidMetricsRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BidMetricsRow" }) as any as S.Schema<BidMetricsRow>;
 
 export type BidMetricsRowList = Array<BidMetricsRow>;
-export const BidMetricsRowList = /*@__PURE__*/ S.Array(
+const BidMetricsRowList = /*@__PURE__*/ S.Array(
   BidMetricsRow,
 ) as any as S.Schema<BidMetricsRowList>;
 
@@ -3235,7 +3209,7 @@ export interface ListBidMetricsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListBidMetricsRequest.pageToken field in the subsequent call to the bidMetrics.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListBidMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBidMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bidMetricsRows: S.optional(BidMetricsRowList),
     nextPageToken: S.optional(S.String),
@@ -3250,7 +3224,7 @@ export interface ListBiddersAccountsFilterSetsBidResponseErrorsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. */
   pageToken?: string;
 }
-export const ListBiddersAccountsFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAccountsFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSetName: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3275,7 +3249,7 @@ export interface CalloutStatusRow {
   /** The ID of the callout status. See [callout-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes). */
   calloutStatusId?: number;
 }
-export const CalloutStatusRow = /*@__PURE__*/ S.suspend(() =>
+const CalloutStatusRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impressionCount: S.optional(MetricValue),
     rowDimensions: S.optional(RowDimensions),
@@ -3284,7 +3258,7 @@ export const CalloutStatusRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CalloutStatusRow" }) as any as S.Schema<CalloutStatusRow>;
 
 export type CalloutStatusRowList = Array<CalloutStatusRow>;
-export const CalloutStatusRowList = /*@__PURE__*/ S.Array(
+const CalloutStatusRowList = /*@__PURE__*/ S.Array(
   CalloutStatusRow,
 ) as any as S.Schema<CalloutStatusRowList>;
 
@@ -3295,7 +3269,7 @@ export interface ListBidResponseErrorsResponse {
   /** List of rows, with counts of bid responses aggregated by callout status. */
   calloutStatusRows?: CalloutStatusRowList;
 }
-export const ListBidResponseErrorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBidResponseErrorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     calloutStatusRows: S.optional(CalloutStatusRowList),
@@ -3312,19 +3286,18 @@ export interface ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
+const ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filterSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta1/{+filterSetName}/bidResponsesWithoutBids",
+      baseUrl: "https://adexchangebuyer.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest",
 }) as any as S.Schema<ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest>;
@@ -3334,7 +3307,7 @@ export type BidResponseWithoutBidsStatusRowStatusEnum =
   | "RESPONSES_WITHOUT_BIDS"
   | "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT"
   | "RESPONSES_WITHOUT_BIDS_FOR_DEAL";
-export const BidResponseWithoutBidsStatusRowStatusEnum = S.String;
+const BidResponseWithoutBidsStatusRowStatusEnum = S.String;
 
 /** The number of impressions with the specified dimension values that were considered to have no applicable bids, as described by the specified status. */
 export interface BidResponseWithoutBidsStatusRow {
@@ -3345,7 +3318,7 @@ export interface BidResponseWithoutBidsStatusRow {
   /** The values of all dimensions associated with metric values in this row. */
   rowDimensions?: RowDimensions;
 }
-export const BidResponseWithoutBidsStatusRow = /*@__PURE__*/ S.suspend(() =>
+const BidResponseWithoutBidsStatusRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impressionCount: S.optional(MetricValue),
     status: S.optional(BidResponseWithoutBidsStatusRowStatusEnum),
@@ -3356,7 +3329,7 @@ export const BidResponseWithoutBidsStatusRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BidResponseWithoutBidsStatusRow>;
 
 export type BidResponseWithoutBidsStatusRowList = Array<BidResponseWithoutBidsStatusRow>;
-export const BidResponseWithoutBidsStatusRowList = /*@__PURE__*/ S.Array(
+const BidResponseWithoutBidsStatusRowList = /*@__PURE__*/ S.Array(
   BidResponseWithoutBidsStatusRow,
 ) as any as S.Schema<BidResponseWithoutBidsStatusRowList>;
 
@@ -3367,7 +3340,7 @@ export interface ListBidResponsesWithoutBidsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListBidResponsesWithoutBidsRequest.pageToken field in the subsequent call to the bidResponsesWithoutBids.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListBidResponsesWithoutBidsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBidResponsesWithoutBidsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bidResponseWithoutBidsStatusRows: S.optional(BidResponseWithoutBidsStatusRowList),
     nextPageToken: S.optional(S.String),
@@ -3384,7 +3357,7 @@ export interface ListBiddersAccountsFilterSetsFilteredBidRequestsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAccountsFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3407,7 +3380,7 @@ export interface ListFilteredBidRequestsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListFilteredBidRequestsRequest.pageToken field in the subsequent call to the filteredBidRequests.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListFilteredBidRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilteredBidRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calloutStatusRows: S.optional(CalloutStatusRowList),
     nextPageToken: S.optional(S.String),
@@ -3424,7 +3397,7 @@ export interface ListBiddersAccountsFilterSetsFilteredBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. */
   pageToken?: string;
 }
-export const ListBiddersAccountsFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAccountsFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -3449,7 +3422,7 @@ export interface CreativeStatusRow {
   /** The values of all dimensions associated with metric values in this row. */
   rowDimensions?: RowDimensions;
 }
-export const CreativeStatusRow = /*@__PURE__*/ S.suspend(() =>
+const CreativeStatusRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bidCount: S.optional(MetricValue),
     creativeStatusId: S.optional(S.Number),
@@ -3458,7 +3431,7 @@ export const CreativeStatusRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreativeStatusRow" }) as any as S.Schema<CreativeStatusRow>;
 
 export type CreativeStatusRowList = Array<CreativeStatusRow>;
-export const CreativeStatusRowList = /*@__PURE__*/ S.Array(
+const CreativeStatusRowList = /*@__PURE__*/ S.Array(
   CreativeStatusRow,
 ) as any as S.Schema<CreativeStatusRowList>;
 
@@ -3469,7 +3442,7 @@ export interface ListFilteredBidsResponse {
   /** List of rows, with counts of filtered bids aggregated by filtering reason (for example, creative status). */
   creativeStatusRows?: CreativeStatusRowList;
 }
-export const ListFilteredBidsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilteredBidsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     creativeStatusRows: S.optional(CreativeStatusRowList),
@@ -3486,20 +3459,19 @@ export interface ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      creativeStatusId: S.Number.pipe(T.Label()),
-      filterSetName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
+const ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    creativeStatusId: S.Number.pipe(T.Label()),
+    filterSetName: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives",
+      baseUrl: "https://adexchangebuyer.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest",
 }) as any as S.Schema<ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest>;
@@ -3513,7 +3485,7 @@ export interface FilteredBidCreativeRow {
   /** The number of bids with the specified creative. */
   bidCount?: MetricValue;
 }
-export const FilteredBidCreativeRow = /*@__PURE__*/ S.suspend(() =>
+const FilteredBidCreativeRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeId: S.optional(S.String),
     rowDimensions: S.optional(RowDimensions),
@@ -3522,7 +3494,7 @@ export const FilteredBidCreativeRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilteredBidCreativeRow" }) as any as S.Schema<FilteredBidCreativeRow>;
 
 export type FilteredBidCreativeRowList = Array<FilteredBidCreativeRow>;
-export const FilteredBidCreativeRowList = /*@__PURE__*/ S.Array(
+const FilteredBidCreativeRowList = /*@__PURE__*/ S.Array(
   FilteredBidCreativeRow,
 ) as any as S.Schema<FilteredBidCreativeRowList>;
 
@@ -3533,7 +3505,7 @@ export interface ListCreativeStatusBreakdownByCreativeResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListCreativeStatusBreakdownByCreativeRequest.pageToken field in the subsequent call to the filteredBids.creatives.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListCreativeStatusBreakdownByCreativeResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCreativeStatusBreakdownByCreativeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filteredBidCreativeRows: S.optional(FilteredBidCreativeRowList),
     nextPageToken: S.optional(S.String),
@@ -3552,7 +3524,7 @@ export interface ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest {
   /** The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87. */
   creativeStatusId: number;
 }
-export const ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -3580,7 +3552,7 @@ export type ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum =
   | "ATP_VENDOR"
   | "VENDOR_DOMAIN"
   | "GVL_ID";
-export const ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum = S.String;
+const ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum = S.String;
 
 /** The number of filtered bids with the specified dimension values, among those filtered due to the requested filtering reason (for example, creative status), that have the specified detail. */
 export interface FilteredBidDetailRow {
@@ -3593,7 +3565,7 @@ export interface FilteredBidDetailRow {
   /** Note: this field will be deprecated, use "detail" field instead. When "detail" field represents an integer value, this field is populated as the same integer value "detail" field represents, otherwise this field will be 0. The ID of the detail. The associated value can be looked up in the dictionary file corresponding to the DetailType in the response message. */
   detailId?: number;
 }
-export const FilteredBidDetailRow = /*@__PURE__*/ S.suspend(() =>
+const FilteredBidDetailRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowDimensions: S.optional(RowDimensions),
     bidCount: S.optional(MetricValue),
@@ -3603,7 +3575,7 @@ export const FilteredBidDetailRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilteredBidDetailRow" }) as any as S.Schema<FilteredBidDetailRow>;
 
 export type FilteredBidDetailRowList = Array<FilteredBidDetailRow>;
-export const FilteredBidDetailRowList = /*@__PURE__*/ S.Array(
+const FilteredBidDetailRowList = /*@__PURE__*/ S.Array(
   FilteredBidDetailRow,
 ) as any as S.Schema<FilteredBidDetailRowList>;
 
@@ -3616,7 +3588,7 @@ export interface ListCreativeStatusBreakdownByDetailResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListCreativeStatusBreakdownByDetailRequest.pageToken field in the subsequent call to the filteredBids.details.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListCreativeStatusBreakdownByDetailResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCreativeStatusBreakdownByDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detailType: S.optional(ListCreativeStatusBreakdownByDetailResponseDetailTypeEnum),
     filteredBidDetailRows: S.optional(FilteredBidDetailRowList),
@@ -3634,7 +3606,7 @@ export interface ListBiddersAccountsFilterSetsImpressionMetricsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. */
   pageToken?: string;
 }
-export const ListBiddersAccountsFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAccountsFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -3665,7 +3637,7 @@ export interface ImpressionMetricsRow {
   /** The number of impressions for which Ad Exchange sent the buyer a bid request. */
   bidRequests?: MetricValue;
 }
-export const ImpressionMetricsRow = /*@__PURE__*/ S.suspend(() =>
+const ImpressionMetricsRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowDimensions: S.optional(RowDimensions),
     availableImpressions: S.optional(MetricValue),
@@ -3677,7 +3649,7 @@ export const ImpressionMetricsRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImpressionMetricsRow" }) as any as S.Schema<ImpressionMetricsRow>;
 
 export type ImpressionMetricsRowList = Array<ImpressionMetricsRow>;
-export const ImpressionMetricsRowList = /*@__PURE__*/ S.Array(
+const ImpressionMetricsRowList = /*@__PURE__*/ S.Array(
   ImpressionMetricsRow,
 ) as any as S.Schema<ImpressionMetricsRowList>;
 
@@ -3688,7 +3660,7 @@ export interface ListImpressionMetricsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListImpressionMetricsRequest.pageToken field in the subsequent call to the impressionMetrics.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListImpressionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListImpressionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impressionMetricsRows: S.optional(ImpressionMetricsRowList),
     nextPageToken: S.optional(S.String),
@@ -3705,7 +3677,7 @@ export interface ListBiddersAccountsFilterSetsLosingBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersAccountsFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3728,7 +3700,7 @@ export interface ListLosingBidsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListLosingBidsRequest.pageToken field in the subsequent call to the losingBids.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListLosingBidsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLosingBidsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeStatusRows: S.optional(CreativeStatusRowList),
     nextPageToken: S.optional(S.String),
@@ -3743,19 +3715,18 @@ export interface ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filterSetName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2beta1/{+filterSetName}/nonBillableWinningBids",
-        baseUrl: "https://adexchangebuyer.googleapis.com/",
-      }),
-    ),
+const ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filterSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2beta1/{+filterSetName}/nonBillableWinningBids",
+      baseUrl: "https://adexchangebuyer.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest",
 }) as any as S.Schema<ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest>;
@@ -3767,7 +3738,7 @@ export type NonBillableWinningBidStatusRowStatusEnum =
   | "FATAL_VAST_ERROR"
   | "LOST_IN_MEDIATION"
   | "OVERDELIVERED_IMPRESSION";
-export const NonBillableWinningBidStatusRowStatusEnum = S.String;
+const NonBillableWinningBidStatusRowStatusEnum = S.String;
 
 /** The number of winning bids with the specified dimension values for which the buyer was not billed, as described by the specified status. */
 export interface NonBillableWinningBidStatusRow {
@@ -3778,7 +3749,7 @@ export interface NonBillableWinningBidStatusRow {
   /** The number of bids with the specified status. */
   bidCount?: MetricValue;
 }
-export const NonBillableWinningBidStatusRow = /*@__PURE__*/ S.suspend(() =>
+const NonBillableWinningBidStatusRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(NonBillableWinningBidStatusRowStatusEnum),
     rowDimensions: S.optional(RowDimensions),
@@ -3789,7 +3760,7 @@ export const NonBillableWinningBidStatusRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NonBillableWinningBidStatusRow>;
 
 export type NonBillableWinningBidStatusRowList = Array<NonBillableWinningBidStatusRow>;
-export const NonBillableWinningBidStatusRowList = /*@__PURE__*/ S.Array(
+const NonBillableWinningBidStatusRowList = /*@__PURE__*/ S.Array(
   NonBillableWinningBidStatusRow,
 ) as any as S.Schema<NonBillableWinningBidStatusRowList>;
 
@@ -3800,7 +3771,7 @@ export interface ListNonBillableWinningBidsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListNonBillableWinningBidsRequest.pageToken field in the subsequent call to the nonBillableWinningBids.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListNonBillableWinningBidsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNonBillableWinningBidsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonBillableWinningBidStatusRows: S.optional(NonBillableWinningBidStatusRowList),
     nextPageToken: S.optional(S.String),
@@ -3817,7 +3788,7 @@ export interface ListBiddersFilterSetsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerName: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3841,7 +3812,7 @@ export interface ListBiddersFilterSetsBidMetricsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSetName: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3865,7 +3836,7 @@ export interface ListBiddersFilterSetsBidResponseErrorsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSetName: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3889,7 +3860,7 @@ export interface ListBiddersFilterSetsBidResponsesWithoutBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -3913,7 +3884,7 @@ export interface ListBiddersFilterSetsFilteredBidRequestsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSetName: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3937,7 +3908,7 @@ export interface ListBiddersFilterSetsFilteredBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3963,7 +3934,7 @@ export interface ListBiddersFilterSetsFilteredBidsCreativesRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSetName: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3990,7 +3961,7 @@ export interface ListBiddersFilterSetsFilteredBidsDetailsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     creativeStatusId: S.Number.pipe(T.Label()),
@@ -4015,7 +3986,7 @@ export interface ListBiddersFilterSetsImpressionMetricsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBiddersFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4039,7 +4010,7 @@ export interface ListBiddersFilterSetsLosingBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. */
   pageToken?: string;
 }
-export const ListBiddersFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -4063,7 +4034,7 @@ export interface ListBiddersFilterSetsNonBillableWinningBidsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBiddersFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBiddersFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSetName: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4087,7 +4058,7 @@ export interface ListBuyersFilterSetsRequest {
   /** Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` */
   ownerName: string;
 }
-export const ListBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4111,7 +4082,7 @@ export interface ListBuyersFilterSetsBidMetricsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsBidMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSetName: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4135,7 +4106,7 @@ export interface ListBuyersFilterSetsBidResponseErrorsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBuyersFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsBidResponseErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4159,7 +4130,7 @@ export interface ListBuyersFilterSetsBidResponsesWithoutBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBuyersFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsBidResponsesWithoutBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4183,7 +4154,7 @@ export interface ListBuyersFilterSetsFilteredBidRequestsRequest {
   /** Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListBuyersFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsFilteredBidRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -4207,7 +4178,7 @@ export interface ListBuyersFilterSetsFilteredBidsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBuyersFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsFilteredBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4233,7 +4204,7 @@ export interface ListBuyersFilterSetsFilteredBidsCreativesRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBuyersFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsFilteredBidsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeStatusId: S.Number.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4260,7 +4231,7 @@ export interface ListBuyersFilterSetsFilteredBidsDetailsRequest {
   /** The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87. */
   creativeStatusId: number;
 }
-export const ListBuyersFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsFilteredBidsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -4285,7 +4256,7 @@ export interface ListBuyersFilterSetsImpressionMetricsRequest {
   /** Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` */
   filterSetName: string;
 }
-export const ListBuyersFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsImpressionMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4309,7 +4280,7 @@ export interface ListBuyersFilterSetsLosingBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsLosingBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -4333,7 +4304,7 @@ export interface ListBuyersFilterSetsNonBillableWinningBidsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. */
   pageToken?: string;
 }
-export const ListBuyersFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuyersFilterSetsNonBillableWinningBidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filterSetName: S.String.pipe(T.Label()),
@@ -4356,7 +4327,7 @@ export interface PauseProposalDealsRequest {
   /** The external_deal_id's of the deals to be paused. If empty, all the deals in the proposal will be paused. */
   externalDealIds?: StringList;
 }
-export const PauseProposalDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseProposalDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     externalDealIds: S.optional(StringList),
@@ -4373,7 +4344,7 @@ export interface PauseAccountsFinalizedProposalsRequest {
   /** Request body */
   body?: PauseProposalDealsRequest;
 }
-export const PauseAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -4394,7 +4365,7 @@ export interface PauseProposalRequest {
   /** The reason why the proposal is being paused. This human readable message will be displayed in the seller's UI. (Max length: 1000 unicode code units.) */
   reason?: string;
 }
-export const PauseProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
   }),
@@ -4408,7 +4379,7 @@ export interface PauseAccountsProposalsRequest {
   /** Request body */
   body?: PauseProposalRequest;
 }
-export const PauseAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     proposalId: S.String.pipe(T.Label()),
@@ -4429,7 +4400,7 @@ export interface RemoveDealAssociationRequest {
   /** The association between a creative and a deal that should be removed. */
   association?: CreativeDealAssociation;
 }
-export const RemoveDealAssociationRequest =
+const RemoveDealAssociationRequest =
   AddDealAssociationRequest as any as S.Schema<RemoveDealAssociationRequest>;
 
 export interface RemoveAccountsCreativesDealAssociationsRequest {
@@ -4440,7 +4411,7 @@ export interface RemoveAccountsCreativesDealAssociationsRequest {
   /** Request body */
   body?: RemoveDealAssociationRequest;
 }
-export const RemoveAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveAccountsCreativesDealAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     creativeId: S.String.pipe(T.Label()),
@@ -4461,7 +4432,7 @@ export interface ResumeProposalDealsRequest {
   /** The external_deal_id's of the deals to resume. If empty, all the deals in the proposal will be resumed. */
   externalDealIds?: StringList;
 }
-export const ResumeProposalDealsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeProposalDealsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalDealIds: S.optional(StringList),
   }),
@@ -4477,7 +4448,7 @@ export interface ResumeAccountsFinalizedProposalsRequest {
   /** Request body */
   body?: ResumeProposalDealsRequest;
 }
-export const ResumeAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -4495,8 +4466,6 @@ export const ResumeAccountsFinalizedProposalsRequest = /*@__PURE__*/ S.suspend((
 
 /** Request message to resume (unpause) serving for an already-finalized proposal. */
 export type ResumeProposalRequest = CancelNegotiationRequest;
-export const ResumeProposalRequest = CancelNegotiationRequest;
-
 export interface ResumeAccountsProposalsRequest {
   /** Account ID of the buyer. */
   accountId: string;
@@ -4505,7 +4474,7 @@ export interface ResumeAccountsProposalsRequest {
   /** Request body */
   body?: CancelNegotiationRequest;
 }
-export const ResumeAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     proposalId: S.String.pipe(T.Label()),
@@ -4523,8 +4492,6 @@ export const ResumeAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A request for stopping notifications for changes to creative Status. */
 export type StopWatchingCreativeRequest = CancelNegotiationRequest;
-export const StopWatchingCreativeRequest = CancelNegotiationRequest;
-
 export interface StopWatchingAccountsCreativesRequest {
   /** The creative ID of the creative to stop notifications for. Specify "-" to specify stopping account level notifications. */
   creativeId: string;
@@ -4533,7 +4500,7 @@ export interface StopWatchingAccountsCreativesRequest {
   /** Request body */
   body?: CancelNegotiationRequest;
 }
-export const StopWatchingAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const StopWatchingAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -4557,7 +4524,7 @@ export interface UpdateAccountsClientsRequest {
   /** Request body */
   body?: Client;
 }
-export const UpdateAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     clientAccountId: S.String.pipe(T.Label()),
@@ -4583,7 +4550,7 @@ export interface UpdateAccountsClientsUsersRequest {
   /** Request body */
   body?: ClientUser;
 }
-export const UpdateAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountsClientsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientAccountId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -4608,7 +4575,7 @@ export interface UpdateAccountsCreativesRequest {
   /** Request body */
   body?: Creative;
 }
-export const UpdateAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -4632,7 +4599,7 @@ export interface UpdateAccountsProposalsRequest {
   /** Request body */
   body?: Proposal;
 }
-export const UpdateAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountsProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -4653,7 +4620,7 @@ export interface WatchCreativeRequest {
   /** The Pub/Sub topic to publish notifications to. This topic must already exist and must give permission to ad-exchange-buyside-reports@google.com to write to the topic. This should be the full resource name in "projects/{project_id}/topics/{topic_id}" format. */
   topic?: string;
 }
-export const WatchCreativeRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchCreativeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(S.String),
   }),
@@ -4667,7 +4634,7 @@ export interface WatchAccountsCreativesRequest {
   /** Request body */
   body?: WatchCreativeRequest;
 }
-export const WatchAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchAccountsCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creativeId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),

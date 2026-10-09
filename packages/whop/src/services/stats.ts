@@ -44,26 +44,26 @@ export type GetMetricRequestInterval =
   | "week"
   | "month"
   | "year";
-export const GetMetricRequestInterval = S.String;
+const GetMetricRequestInterval = S.String;
 
 export type GetMetricRequestEventType = "page_view" | "checkout_start" | "other";
-export const GetMetricRequestEventType = S.String;
+const GetMetricRequestEventType = S.String;
 
 export type GetMetricRequestAdCampaignIdsList = Array<string>;
-export const GetMetricRequestAdCampaignIdsList = /*@__PURE__*/ S.Array(
+const GetMetricRequestAdCampaignIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetMetricRequestAdCampaignIdsList>;
 
 export type GetMetricRequestAdGroupIdsList = Array<string>;
-export const GetMetricRequestAdGroupIdsList =
+const GetMetricRequestAdGroupIdsList =
   GetMetricRequestAdCampaignIdsList as any as S.Schema<GetMetricRequestAdGroupIdsList>;
 
 export type GetMetricRequestAdIdsList = Array<string>;
-export const GetMetricRequestAdIdsList =
+const GetMetricRequestAdIdsList =
   GetMetricRequestAdCampaignIdsList as any as S.Schema<GetMetricRequestAdIdsList>;
 
 export type GetMetricRequestSnapshotWindow = "7d" | "28d" | "30d";
-export const GetMetricRequestSnapshotWindow = S.String;
+const GetMetricRequestSnapshotWindow = S.String;
 
 export interface FunnelStep {
   /** The Whop app build ID attached to the event. Comma-separated alternatives are ORed; different filters are ANDed. */
@@ -101,7 +101,7 @@ export interface FunnelStep {
   /** The exposed variant name. Requires event=experiment.exposure. Comma-separated alternatives are ORed; different filters are ANDed. */
   variant?: string;
 }
-export const FunnelStep = /*@__PURE__*/ S.suspend(() =>
+const FunnelStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_build_id: S.optional(S.String),
     app_id: S.optional(S.String),
@@ -135,7 +135,7 @@ export interface GetMetricRequestSteps {
   _9?: FunnelStep;
   _10?: FunnelStep;
 }
-export const GetMetricRequestSteps = /*@__PURE__*/ S.suspend(() =>
+const GetMetricRequestSteps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _1: FunnelStep.pipe(T.Body("1")),
     _2: FunnelStep.pipe(T.Body("2")),
@@ -286,7 +286,7 @@ export interface GetMetricRequest {
   /** People metric only: event_count less than or equal this value. Applies to the current person profile for every time bucket. LTV and AOV are in USD. Not accepted by the Events metric. */
   event_count_lte?: number;
 }
-export const GetMetricRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -366,7 +366,7 @@ export interface FunnelStepResult {
   /** The one-based step number. */
   step: number;
 }
-export const FunnelStepResult = /*@__PURE__*/ S.suspend(() =>
+const FunnelStepResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversion_rate: S.NullOr(S.Number),
     count: S.Number,
@@ -376,7 +376,7 @@ export const FunnelStepResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Present for the funnel metric. People reaching each step in order, starting with the entry step. */
 export type GetMetricResponseDataPointsItemBreakdownItemStepsList = Array<FunnelStepResult>;
-export const GetMetricResponseDataPointsItemBreakdownItemStepsList = /*@__PURE__*/ S.Array(
+const GetMetricResponseDataPointsItemBreakdownItemStepsList = /*@__PURE__*/ S.Array(
   FunnelStepResult,
 ) as any as S.Schema<GetMetricResponseDataPointsItemBreakdownItemStepsList>;
 
@@ -388,7 +388,7 @@ export interface GetMetricResponseDataPointsItemBreakdownItem {
   /** The metric's value for this entry. */
   value: number | null;
 }
-export const GetMetricResponseDataPointsItemBreakdownItem = /*@__PURE__*/ S.suspend(() =>
+const GetMetricResponseDataPointsItemBreakdownItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     steps: S.optional(GetMetricResponseDataPointsItemBreakdownItemStepsList),
@@ -401,13 +401,13 @@ export const GetMetricResponseDataPointsItemBreakdownItem = /*@__PURE__*/ S.susp
 /** Present only when broken down: one entry per property value in this period. */
 export type GetMetricResponseDataPointsItemBreakdownList =
   Array<GetMetricResponseDataPointsItemBreakdownItem>;
-export const GetMetricResponseDataPointsItemBreakdownList = /*@__PURE__*/ S.Array(
+const GetMetricResponseDataPointsItemBreakdownList = /*@__PURE__*/ S.Array(
   GetMetricResponseDataPointsItemBreakdownItem,
 ) as any as S.Schema<GetMetricResponseDataPointsItemBreakdownList>;
 
 /** Present for the funnel metric. People reaching each step in order, starting with the entry step. */
 export type GetMetricResponseDataPointsItemStepsList = Array<FunnelStepResult>;
-export const GetMetricResponseDataPointsItemStepsList =
+const GetMetricResponseDataPointsItemStepsList =
   GetMetricResponseDataPointsItemBreakdownItemStepsList as any as S.Schema<GetMetricResponseDataPointsItemStepsList>;
 
 export interface GetMetricResponseDataPointsItem {
@@ -420,7 +420,7 @@ export interface GetMetricResponseDataPointsItem {
   /** The metric's value for this period, in the metric's unit. */
   value: number | null;
 }
-export const GetMetricResponseDataPointsItem = /*@__PURE__*/ S.suspend(() =>
+const GetMetricResponseDataPointsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     breakdown: S.optional(GetMetricResponseDataPointsItemBreakdownList),
     steps: S.optional(GetMetricResponseDataPointsItemStepsList),
@@ -433,7 +433,7 @@ export const GetMetricResponseDataPointsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per period, oldest first. */
 export type GetMetricResponseDataPointsList = Array<GetMetricResponseDataPointsItem>;
-export const GetMetricResponseDataPointsList = /*@__PURE__*/ S.Array(
+const GetMetricResponseDataPointsList = /*@__PURE__*/ S.Array(
   GetMetricResponseDataPointsItem,
 ) as any as S.Schema<GetMetricResponseDataPointsList>;
 
@@ -443,7 +443,7 @@ export interface FunnelConfidenceInterval {
   /** The upper confidence bound, in percent or percentage points for a difference. */
   upper: number;
 }
-export const FunnelConfidenceInterval = /*@__PURE__*/ S.suspend(() =>
+const FunnelConfidenceInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lower: S.Number,
     upper: S.Number,
@@ -460,7 +460,7 @@ export interface FunnelComparison {
   /** Relative conversion improvement in percent; null if baseline conversion is zero. */
   relative_lift_percent: number | null;
 }
-export const FunnelComparison = /*@__PURE__*/ S.suspend(() =>
+const FunnelComparison = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseline: S.String,
     difference_confidence_interval: S.NullOr(FunnelConfidenceInterval),
@@ -471,7 +471,7 @@ export const FunnelComparison = /*@__PURE__*/ S.suspend(() =>
 
 /** Present for the funnel metric. People reaching each step in order, starting with the entry step. */
 export type GetMetricResponseDataTotalsItemStepsList = Array<FunnelStepResult>;
-export const GetMetricResponseDataTotalsItemStepsList =
+const GetMetricResponseDataTotalsItemStepsList =
   GetMetricResponseDataPointsItemBreakdownItemStepsList as any as S.Schema<GetMetricResponseDataTotalsItemStepsList>;
 
 export interface GetMetricResponseDataTotalsItem {
@@ -485,7 +485,7 @@ export interface GetMetricResponseDataTotalsItem {
   /** The metric's whole-window value for this entry. */
   value: number | null;
 }
-export const GetMetricResponseDataTotalsItem = /*@__PURE__*/ S.suspend(() =>
+const GetMetricResponseDataTotalsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comparison: S.optional(S.NullOr(FunnelComparison)),
     confidence_interval: S.optional(S.NullOr(FunnelConfidenceInterval)),
@@ -499,7 +499,7 @@ export const GetMetricResponseDataTotalsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Whole-window aggregates, present when the metric computes them. Don't derive these from `points`: a rate is measured across the whole window, not averaged across its points, and whole-window unique people are distinct across every bucket. */
 export type GetMetricResponseDataTotalsList = Array<GetMetricResponseDataTotalsItem>;
-export const GetMetricResponseDataTotalsList = /*@__PURE__*/ S.Array(
+const GetMetricResponseDataTotalsList = /*@__PURE__*/ S.Array(
   GetMetricResponseDataTotalsItem,
 ) as any as S.Schema<GetMetricResponseDataTotalsList>;
 
@@ -511,7 +511,7 @@ export interface GetMetricResponseData {
   /** Whole-window aggregates, present when the metric computes them. Don't derive these from `points`: a rate is measured across the whole window, not averaged across its points, and whole-window unique people are distinct across every bucket. */
   totals?: GetMetricResponseDataTotalsList | null;
 }
-export const GetMetricResponseData = /*@__PURE__*/ S.suspend(() =>
+const GetMetricResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.NullOr(S.String)),
     points: GetMetricResponseDataPointsList,
@@ -522,34 +522,34 @@ export const GetMetricResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface GetMetricResponse {
   data: GetMetricResponseData;
 }
-export const GetMetricResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMetricResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetMetricResponseData,
   }),
 ).annotate({ identifier: "GetMetricResponse" }) as any as S.Schema<GetMetricResponse>;
 
 export interface ListMetricsRequest {}
-export const ListMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stats", code: 200 })),
 ).annotate({ identifier: "ListMetricsRequest" }) as any as S.Schema<ListMetricsRequest>;
 
 /** Supported breakdown_by values when they differ from the filter properties. */
 export type ListMetricsResponseDataItemBreakdownsList = Array<string>;
-export const ListMetricsResponseDataItemBreakdownsList =
+const ListMetricsResponseDataItemBreakdownsList =
   GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemBreakdownsList>;
 
 /** The properties you can use with this metric -- pass one as a filter (property=value) to narrow the series, or as breakdown_by=property to split it. */
 export type ListMetricsResponseDataItemPropertiesList = Array<string>;
-export const ListMetricsResponseDataItemPropertiesList =
+const ListMetricsResponseDataItemPropertiesList =
   GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemPropertiesList>;
 
 /** How to read the metric's values: count is an integer, currency is a decimal amount, and percent is a number where 1.6 means 1.6%. */
 export type ListMetricsResponseDataItemUnit = "count" | "currency" | "percent";
-export const ListMetricsResponseDataItemUnit = S.String;
+const ListMetricsResponseDataItemUnit = S.String;
 
 /** Snapshot metrics only: the trailing windows you can pass as snapshot_window, for example 30d. Absent on live metrics, which use from/to instead. */
 export type ListMetricsResponseDataItemWindowsList = Array<string>;
-export const ListMetricsResponseDataItemWindowsList =
+const ListMetricsResponseDataItemWindowsList =
   GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemWindowsList>;
 
 export interface ListMetricsResponseDataItem {
@@ -568,7 +568,7 @@ export interface ListMetricsResponseDataItem {
   /** Snapshot metrics only: the trailing windows you can pass as snapshot_window, for example 30d. Absent on live metrics, which use from/to instead. */
   windows?: ListMetricsResponseDataItemWindowsList;
 }
-export const ListMetricsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListMetricsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     breakdowns: S.optional(ListMetricsResponseDataItemBreakdownsList),
     description: S.String,
@@ -584,7 +584,7 @@ export const ListMetricsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The available metrics. */
 export type ListMetricsResponseDataList = Array<ListMetricsResponseDataItem>;
-export const ListMetricsResponseDataList = /*@__PURE__*/ S.Array(
+const ListMetricsResponseDataList = /*@__PURE__*/ S.Array(
   ListMetricsResponseDataItem,
 ) as any as S.Schema<ListMetricsResponseDataList>;
 
@@ -592,7 +592,7 @@ export interface ListMetricsResponse {
   /** The available metrics. */
   data: ListMetricsResponseDataList;
 }
-export const ListMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListMetricsResponseDataList,
   }),

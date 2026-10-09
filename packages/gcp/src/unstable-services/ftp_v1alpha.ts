@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,27 +90,27 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type ServerAccessTypeEnum = "ACCESS_TYPE_UNSPECIFIED" | "EXTERNAL" | "INTERNAL";
-export const ServerAccessTypeEnum = S.String;
+const ServerAccessTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A consumer project or network that is denied to connect to the server via PSC. */
 export interface DeniedConsumer {
   /** The project ID or number of the consumer project. Must be in the format: `projects/{project}`. */
   project?: string;
 }
-export const DeniedConsumer = /*@__PURE__*/ S.suspend(() =>
+const DeniedConsumer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
   }),
 ).annotate({ identifier: "DeniedConsumer" }) as any as S.Schema<DeniedConsumer>;
 
 export type DeniedConsumerList = Array<DeniedConsumer>;
-export const DeniedConsumerList = /*@__PURE__*/ S.Array(
+const DeniedConsumerList = /*@__PURE__*/ S.Array(
   DeniedConsumer,
 ) as any as S.Schema<DeniedConsumerList>;
 
@@ -123,7 +123,7 @@ export interface PscEndpoint {
   /** Output only. The status of the connected endpoint. */
   status?: string;
 }
-export const PscEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PscEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     network: S.optional(S.String),
@@ -132,9 +132,7 @@ export const PscEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PscEndpoint" }) as any as S.Schema<PscEndpoint>;
 
 export type PscEndpointList = Array<PscEndpoint>;
-export const PscEndpointList = /*@__PURE__*/ S.Array(
-  PscEndpoint,
-) as any as S.Schema<PscEndpointList>;
+const PscEndpointList = /*@__PURE__*/ S.Array(PscEndpoint) as any as S.Schema<PscEndpointList>;
 
 /** A consumer project or network that is permitted to connect to the server via PSC. */
 export interface AllowedConsumer {
@@ -143,7 +141,7 @@ export interface AllowedConsumer {
   /** Required. The connection limit for the consumer. Value must be greater than 0. */
   connectionLimit?: string;
 }
-export const AllowedConsumer = /*@__PURE__*/ S.suspend(() =>
+const AllowedConsumer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
     connectionLimit: S.optional(S.String),
@@ -151,7 +149,7 @@ export const AllowedConsumer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllowedConsumer" }) as any as S.Schema<AllowedConsumer>;
 
 export type AllowedConsumerList = Array<AllowedConsumer>;
-export const AllowedConsumerList = /*@__PURE__*/ S.Array(
+const AllowedConsumerList = /*@__PURE__*/ S.Array(
   AllowedConsumer,
 ) as any as S.Schema<AllowedConsumerList>;
 
@@ -166,7 +164,7 @@ export interface InternalServerConfig {
   /** Required. A list of projects that are permitted to connect. At least one project is required in the allow list. */
   consumerAcceptList?: AllowedConsumerList;
 }
-export const InternalServerConfig = /*@__PURE__*/ S.suspend(() =>
+const InternalServerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumerRejectList: S.optional(DeniedConsumerList),
     serviceAttachment: S.optional(S.String),
@@ -182,7 +180,7 @@ export interface ServerCredential {
   /** Output only. Asymmetric algorithm used by the public key. Possible values (can be expanded in future): - ssh-ed25519 */
   asymmetricAlgorithm?: string;
 }
-export const ServerCredential = /*@__PURE__*/ S.suspend(() =>
+const ServerCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fingerprint: S.optional(S.String),
     asymmetricAlgorithm: S.optional(S.String),
@@ -190,7 +188,7 @@ export const ServerCredential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerCredential" }) as any as S.Schema<ServerCredential>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Configuration for external server. */
 export interface ExternalServerConfig {
@@ -199,7 +197,7 @@ export interface ExternalServerConfig {
   /** Output only. IP address of the LB via which clients will connect. */
   ipAddress?: string;
 }
-export const ExternalServerConfig = /*@__PURE__*/ S.suspend(() =>
+const ExternalServerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedCidrBlocks: S.optional(StringList),
     ipAddress: S.optional(S.String),
@@ -216,7 +214,7 @@ export type ServerStateEnum =
   | "DELETING"
   | "ERROR"
   | "UPDATING";
-export const ServerStateEnum = S.String;
+const ServerStateEnum = S.String;
 
 /** Message describing Server object */
 export interface Server {
@@ -247,7 +245,7 @@ export interface Server {
   /** Output only. The state of the server. */
   state?: ServerStateEnum | (string & {});
 }
-export const Server = /*@__PURE__*/ S.suspend(() =>
+const Server = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satisfiesPzs: S.optional(S.Boolean),
     displayName: S.optional(S.String),
@@ -275,7 +273,7 @@ export interface CreateProjectsLocationsServersRequest {
   /** Request body */
   body?: Server;
 }
-export const CreateProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -293,15 +291,10 @@ export const CreateProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateProjectsLocationsServersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -312,7 +305,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -333,7 +326,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     error: S.optional(Status),
@@ -344,7 +337,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type UserCredentialCredentialTypeEnum = "TYPE_UNSPECIFIED" | "PUBLIC_KEY";
-export const UserCredentialCredentialTypeEnum = S.String;
+const UserCredentialCredentialTypeEnum = S.String;
 
 /** Message describing UserCredential object */
 export interface UserCredential {
@@ -355,7 +348,7 @@ export interface UserCredential {
   /** Required. Type of credential. */
   credentialType?: UserCredentialCredentialTypeEnum | (string & {});
 }
-export const UserCredential = /*@__PURE__*/ S.suspend(() =>
+const UserCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshPublicKeyBody: S.optional(S.String),
     credentialName: S.optional(S.String),
@@ -364,7 +357,7 @@ export const UserCredential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserCredential" }) as any as S.Schema<UserCredential>;
 
 export type UserCredentialList = Array<UserCredential>;
-export const UserCredentialList = /*@__PURE__*/ S.Array(
+const UserCredentialList = /*@__PURE__*/ S.Array(
   UserCredential,
 ) as any as S.Schema<UserCredentialList>;
 
@@ -372,7 +365,7 @@ export type StorageDirectoryMappingPermissionEnum =
   | "PERMISSION_UNSPECIFIED"
   | "READ_ONLY"
   | "READ_WRITE";
-export const StorageDirectoryMappingPermissionEnum = S.String;
+const StorageDirectoryMappingPermissionEnum = S.String;
 
 /** Mapping of backing Cloud Storage path to the directory where the user lands in the SFTP server. If directory is not specified, it'll default to '/'. Eg 1 - (bucket_name: bucket, bucket_prefix: path1/path2, directory: /abc/def/username) The user will land at /abcd/def/username, and the view there will match that of /bucket/path1/path2. The user will not be aware of Cloud Storage prefix '/bucket/path1' and there will be no such directory in the view. Eg 2 - (bucket_name: bucket, bucket_prefix: path1/path2, directory: '') The user will land at '/', and the view there will match that of /bucket/path1/path2. The user will not be aware of Cloud Storage prefix '/bucket/path1/path2' and there will be no such directory in the view. */
 export interface StorageDirectoryMapping {
@@ -385,7 +378,7 @@ export interface StorageDirectoryMapping {
   /** Optional. Prefix inside the bucket. */
   bucketPrefix?: string;
 }
-export const StorageDirectoryMapping = /*@__PURE__*/ S.suspend(() =>
+const StorageDirectoryMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory: S.optional(S.String),
     permission: S.optional(StorageDirectoryMappingPermissionEnum),
@@ -395,7 +388,7 @@ export const StorageDirectoryMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageDirectoryMapping" }) as any as S.Schema<StorageDirectoryMapping>;
 
 export type StorageDirectoryMappingList = Array<StorageDirectoryMapping>;
-export const StorageDirectoryMappingList = /*@__PURE__*/ S.Array(
+const StorageDirectoryMappingList = /*@__PURE__*/ S.Array(
   StorageDirectoryMapping,
 ) as any as S.Schema<StorageDirectoryMappingList>;
 
@@ -406,7 +399,7 @@ export type UserStateEnum =
   | "ERROR"
   | "UPDATING"
   | "DELETING";
-export const UserStateEnum = S.String;
+const UserStateEnum = S.String;
 
 /** Message describing User object */
 export interface User {
@@ -429,7 +422,7 @@ export interface User {
   /** Output only. [Output only] Update time stamp */
   updateTime?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     userCredentials: S.optional(UserCredentialList),
@@ -453,7 +446,7 @@ export interface CreateProjectsLocationsServersUsersRequest {
   /** Request body */
   body?: User;
 }
-export const CreateProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -474,7 +467,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -488,7 +481,7 @@ export interface DeleteProjectsLocationsServersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-export const DeleteProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -504,7 +497,7 @@ export interface DeleteProjectsLocationsServersUsersRequest {
   /** Optional. If set to true, the request will force the deletion of the User. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -519,7 +512,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -542,7 +535,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     name: S.optional(S.String),
@@ -556,7 +549,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -570,7 +563,7 @@ export type GetProjectsLocationsServersViewEnum =
   | "SERVER_VIEW_UNSPECIFIED"
   | "SERVER_VIEW_BASIC"
   | "SERVER_VIEW_FULL";
-export const GetProjectsLocationsServersViewEnum = S.String;
+const GetProjectsLocationsServersViewEnum = S.String;
 
 export interface GetProjectsLocationsServersRequest {
   /** Required. Name of the resource */
@@ -578,7 +571,7 @@ export interface GetProjectsLocationsServersRequest {
   /** Optional. The view of the Server resource to return. */
   view?: GetProjectsLocationsServersViewEnum | (string & {});
 }
-export const GetProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsServersViewEnum.pipe(T.Query())),
@@ -593,7 +586,7 @@ export type GetProjectsLocationsServersUsersViewEnum =
   | "USER_VIEW_UNSPECIFIED"
   | "USER_VIEW_BASIC"
   | "USER_VIEW_FULL";
-export const GetProjectsLocationsServersUsersViewEnum = S.String;
+const GetProjectsLocationsServersUsersViewEnum = S.String;
 
 export interface GetProjectsLocationsServersUsersRequest {
   /** Required. Name of the resource */
@@ -601,7 +594,7 @@ export interface GetProjectsLocationsServersUsersRequest {
   /** Optional. The view of the User resource to return. */
   view?: GetProjectsLocationsServersUsersViewEnum | (string & {});
 }
-export const GetProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsServersUsersViewEnum.pipe(T.Query())),
@@ -624,7 +617,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -643,7 +636,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -652,7 +645,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -671,7 +664,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -690,7 +683,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -701,7 +694,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     unreachable: S.optional(StringList),
@@ -713,7 +706,7 @@ export type ListProjectsLocationsServersViewEnum =
   | "SERVER_VIEW_UNSPECIFIED"
   | "SERVER_VIEW_BASIC"
   | "SERVER_VIEW_FULL";
-export const ListProjectsLocationsServersViewEnum = S.String;
+const ListProjectsLocationsServersViewEnum = S.String;
 
 export interface ListProjectsLocationsServersRequest {
   /** Optional. A token identifying a page of results the server should return. */
@@ -729,7 +722,7 @@ export interface ListProjectsLocationsServersRequest {
   /** Optional. Hint for how to order the results */
   orderBy?: string;
 }
-export const ListProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -749,7 +742,7 @@ export const ListProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsServersRequest>;
 
 export type ServerList = Array<Server>;
-export const ServerList = /*@__PURE__*/ S.Array(Server) as any as S.Schema<ServerList>;
+const ServerList = /*@__PURE__*/ S.Array(Server) as any as S.Schema<ServerList>;
 
 /** Message for response to listing Servers */
 export interface ListServersResponse {
@@ -760,7 +753,7 @@ export interface ListServersResponse {
   /** The list of Server */
   servers?: ServerList;
 }
-export const ListServersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -772,7 +765,7 @@ export type ListProjectsLocationsServersUsersViewEnum =
   | "USER_VIEW_UNSPECIFIED"
   | "USER_VIEW_BASIC"
   | "USER_VIEW_FULL";
-export const ListProjectsLocationsServersUsersViewEnum = S.String;
+const ListProjectsLocationsServersUsersViewEnum = S.String;
 
 export interface ListProjectsLocationsServersUsersRequest {
   /** Optional. Requested page size. User may return fewer items than requested. The maximum value is 1000; The default value is 50 if the field is omitted (or set to 0). */
@@ -788,7 +781,7 @@ export interface ListProjectsLocationsServersUsersRequest {
   /** Optional. The view of the User resource to return. */
   view?: ListProjectsLocationsServersUsersViewEnum | (string & {});
 }
-export const ListProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -808,7 +801,7 @@ export const ListProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsServersUsersRequest>;
 
 export type UserList = Array<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 /** Message for response to listing Users */
 export interface ListUsersResponse {
@@ -819,7 +812,7 @@ export interface ListUsersResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(UserList),
     nextPageToken: S.optional(S.String),
@@ -837,7 +830,7 @@ export interface PatchProjectsLocationsServersRequest {
   /** Request body */
   body?: Server;
 }
-export const PatchProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -858,7 +851,7 @@ export interface PatchProjectsLocationsServersUsersRequest {
   /** Request body */
   body?: User;
 }
-export const PatchProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -872,15 +865,13 @@ export const PatchProjectsLocationsServersUsersRequest = /*@__PURE__*/ S.suspend
 
 /** Request message for starting a Server. */
 export type StartServerRequest = CancelOperationRequest;
-export const StartServerRequest = CancelOperationRequest;
-
 export interface StartProjectsLocationsServersRequest {
   /** Required. Name of the resource Format: `projects/{project}/locations/{location}/servers/{server}` */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const StartProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
+const StartProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -897,15 +888,13 @@ export const StartProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Request message for stopping a Server. */
 export type StopServerRequest = CancelOperationRequest;
-export const StopServerRequest = CancelOperationRequest;
-
 export interface StopProjectsLocationsServersRequest {
   /** Required. Name of the resource. Format: `projects/{project}/locations/{location}/servers/{server}` */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const StopProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
+const StopProjectsLocationsServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),

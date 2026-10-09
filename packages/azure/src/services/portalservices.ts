@@ -13,7 +13,7 @@ export interface CopilotSettingsPropertiesInput {
   /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
   accessControlEnabled: boolean;
 }
-export const CopilotSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CopilotSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControlEnabled: S.Boolean,
   }),
@@ -25,7 +25,7 @@ export interface CopilotSettingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsPropertiesInput;
 }
-export const CopilotSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(CopilotSettingsPropertiesInput),
   }).pipe(
@@ -42,11 +42,11 @@ export const CopilotSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -63,7 +63,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -76,7 +76,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const AzureResourceManagerResourceProvisioningState = S.String;
+const AzureResourceManagerResourceProvisioningState = S.String;
 
 /** The Copilot Settings properties. */
 export interface CopilotSettingsProperties {
@@ -85,7 +85,7 @@ export interface CopilotSettingsProperties {
   /** The status of the last provisioning operation performed on the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const CopilotSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const CopilotSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControlEnabled: S.Boolean,
     provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
@@ -106,7 +106,7 @@ export interface CopilotSettingsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-export const CopilotSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CopilotSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -119,7 +119,7 @@ export const CopilotSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CopilotSettingsCreateOrUpdateResponse>;
 
 export interface DeleteCopilotSettingsRequest {}
-export const DeleteCopilotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCopilotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "DELETE",
@@ -133,12 +133,12 @@ export const DeleteCopilotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCopilotSettingsRequest>;
 
 export interface DeleteCopilotSettingsResponse {}
-export const DeleteCopilotSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCopilotSettingsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCopilotSettingsResponse",
 }) as any as S.Schema<DeleteCopilotSettingsResponse>;
 
 export interface GetCopilotSettingsRequest {}
-export const GetCopilotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCopilotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -163,11 +163,11 @@ export interface GetCopilotSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-export const GetCopilotSettingsResponse =
+const GetCopilotSettingsResponse =
   CopilotSettingsCreateOrUpdateResponse as any as S.Schema<GetCopilotSettingsResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -189,7 +189,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -200,11 +200,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -219,7 +219,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -231,7 +231,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -241,7 +241,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -250,19 +250,19 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The contents of the file. */
 export type PortalTenantCompilefileRequestContentsMap = { [key: string]: unknown | undefined };
-export const PortalTenantCompilefileRequestContentsMap = /*@__PURE__*/ S.Record(
+const PortalTenantCompilefileRequestContentsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<PortalTenantCompilefileRequestContentsMap>;
 
 /** The contents of the string source. */
 export type PortalTenantCompilefileRequestStringSourceMap = { [key: string]: unknown | undefined };
-export const PortalTenantCompilefileRequestStringSourceMap =
+const PortalTenantCompilefileRequestStringSourceMap =
   PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompilefileRequestStringSourceMap>;
 
 /** The contents of referenced files. The property name is the relative file path and the value is its contents. */
 export type PortalTenantCompilefileRequestFilesMap = { [key: string]: unknown | undefined };
-export const PortalTenantCompilefileRequestFilesMap =
+const PortalTenantCompilefileRequestFilesMap =
   PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompilefileRequestFilesMap>;
 
 export interface PortalTenantCompilefileRequest {
@@ -273,7 +273,7 @@ export interface PortalTenantCompilefileRequest {
   /** The contents of referenced files. The property name is the relative file path and the value is its contents. */
   files?: PortalTenantCompilefileRequestFilesMap;
 }
-export const PortalTenantCompilefileRequest = /*@__PURE__*/ S.suspend(() =>
+const PortalTenantCompilefileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contents: PortalTenantCompilefileRequestContentsMap,
     stringSource: S.optional(PortalTenantCompilefileRequestStringSourceMap),
@@ -292,11 +292,11 @@ export const PortalTenantCompilefileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The contents of the file to compile. */
 export type PortalTenantCompileFileResult = { [key: string]: unknown | undefined };
-export const PortalTenantCompileFileResult =
+const PortalTenantCompileFileResult =
   PortalTenantCompilefileRequestContentsMap as any as S.Schema<PortalTenantCompileFileResult>;
 
 export type PortalTenantCompilefileResponse = PortalTenantCompileFileResult;
-export const PortalTenantCompilefileResponse = /*@__PURE__*/ S.suspend(() =>
+const PortalTenantCompilefileResponse = /*@__PURE__*/ S.suspend(() =>
   PortalTenantCompileFileResult.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "PortalTenantCompilefileResponse",
@@ -307,7 +307,7 @@ export interface CopilotSettingsResourceUpdateProperties {
   /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
   accessControlEnabled?: boolean;
 }
-export const CopilotSettingsResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const CopilotSettingsResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControlEnabled: S.optional(S.Boolean),
   }),
@@ -319,7 +319,7 @@ export interface UpdateCopilotSettingsRequest {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsResourceUpdateProperties;
 }
-export const UpdateCopilotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCopilotSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(CopilotSettingsResourceUpdateProperties),
   }).pipe(
@@ -346,7 +346,7 @@ export interface UpdateCopilotSettingsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-export const UpdateCopilotSettingsResponse =
+const UpdateCopilotSettingsResponse =
   CopilotSettingsCreateOrUpdateResponse as any as S.Schema<UpdateCopilotSettingsResponse>;
 
 export type CopilotSettingsCreateOrUpdateError = AzureOpError;

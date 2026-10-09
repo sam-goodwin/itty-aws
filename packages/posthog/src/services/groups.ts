@@ -42,7 +42,7 @@ export interface CreateGroupRequest {
   group_key?: string;
   group_properties?: unknown;
 }
-export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.optional(S.Number),
@@ -53,7 +53,7 @@ export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The group's properties. */
 export type GroupGroupPropertiesMap = { [key: string]: unknown | undefined };
-export const GroupGroupPropertiesMap = /*@__PURE__*/ S.Record(
+const GroupGroupPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<GroupGroupPropertiesMap>;
@@ -65,7 +65,7 @@ export interface Group {
   group_properties?: GroupGroupPropertiesMap;
   created_at?: string;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_type_index: S.optional(S.Number),
     group_key: S.optional(S.String),
@@ -82,7 +82,7 @@ export interface GetGroupsActivityRequest {
   /** Specify the id of the user to find groups for */
   id: string;
 }
-export const GetGroupsActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupsActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Query()),
@@ -91,7 +91,7 @@ export const GetGroupsActivityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetGroupsActivityRequest" }) as any as S.Schema<GetGroupsActivityRequest>;
 
 export interface GetGroupsActivityResponse {}
-export const GetGroupsActivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetGroupsActivityResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetGroupsActivityResponse",
 }) as any as S.Schema<GetGroupsActivityResponse>;
 
@@ -105,7 +105,7 @@ export interface GetGroupsFindRequest {
   /** When true, do not lazily create the group's CRM notebook. Use for read-only lookups (e.g. resolving a group's display name) that should not have side effects. */
   skip_create_notebook?: boolean;
 }
-export const GetGroupsFindRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupsFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_key: S.String.pipe(T.Query()),
@@ -116,7 +116,7 @@ export const GetGroupsFindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The group's properties. */
 export type FindGroupGroupPropertiesMap = { [key: string]: unknown | undefined };
-export const FindGroupGroupPropertiesMap =
+const FindGroupGroupPropertiesMap =
   GroupGroupPropertiesMap as any as S.Schema<FindGroupGroupPropertiesMap>;
 
 export interface FindGroup {
@@ -127,7 +127,7 @@ export interface FindGroup {
   created_at: string;
   notebook: string | null;
 }
-export const FindGroup = /*@__PURE__*/ S.suspend(() =>
+const FindGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_type_index: S.Number,
     group_key: S.String,
@@ -141,7 +141,7 @@ export interface GetGroupsPropertyValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetGroupsPropertyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupsPropertyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -152,7 +152,7 @@ export const GetGroupsPropertyValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGroupsPropertyValueRequest>;
 
 export interface GetGroupsPropertyValueResponse {}
-export const GetGroupsPropertyValueResponse =
+const GetGroupsPropertyValueResponse =
   GetGroupsActivityResponse as any as S.Schema<GetGroupsPropertyValueResponse>;
 
 export interface GroupsDeletePropertyCreateRequest {
@@ -165,7 +165,7 @@ export interface GroupsDeletePropertyCreateRequest {
   /** Name of the property to delete. */
   _unset: string;
 }
-export const GroupsDeletePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupsDeletePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_key: S.String.pipe(T.Query()),
@@ -183,10 +183,6 @@ export const GroupsDeletePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsDeletePropertyCreateRequest>;
 
 export type GroupsUpdatePropertyCreateRequestValueCase4List = Array<unknown>;
-export const GroupsUpdatePropertyCreateRequestValueCase4List = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<GroupsUpdatePropertyCreateRequestValueCase4List>;
-
 /** Value to set. Any JSON value other than null. */
 export type GroupsUpdatePropertyCreateRequestValue =
   | string
@@ -194,7 +190,7 @@ export type GroupsUpdatePropertyCreateRequestValue =
   | boolean
   | unknown
   | GroupsUpdatePropertyCreateRequestValueCase4List;
-export const GroupsUpdatePropertyCreateRequestValue =
+const GroupsUpdatePropertyCreateRequestValue =
   S.Unknown as any as S.Schema<GroupsUpdatePropertyCreateRequestValue>;
 
 export interface GroupsUpdatePropertyCreateRequest {
@@ -209,7 +205,7 @@ export interface GroupsUpdatePropertyCreateRequest {
   /** Value to set. Any JSON value other than null. */
   value: GroupsUpdatePropertyCreateRequestValue;
 }
-export const GroupsUpdatePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupsUpdatePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_key: S.String.pipe(T.Query()),
@@ -239,7 +235,7 @@ export interface ListGroupsRequest {
   /** Search the group name */
   search?: string;
 }
-export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -250,12 +246,12 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListGroupsRequest" }) as any as S.Schema<ListGroupsRequest>;
 
 export type ListGroupsResponseBodyList = Array<Group>;
-export const ListGroupsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListGroupsResponseBodyList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<ListGroupsResponseBodyList>;
 
 export type ListGroupsResponse = ListGroupsResponseBodyList;
-export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   ListGroupsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListGroupsResponse" }) as any as S.Schema<ListGroupsResponse>;
 
@@ -267,7 +263,7 @@ export interface ListGroupsRelatedRequest {
   /** Specify the id of the user to find groups for */
   id: string;
 }
-export const ListGroupsRelatedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsRelatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.optional(S.Number.pipe(T.Query())),
@@ -277,26 +273,12 @@ export const ListGroupsRelatedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The actor's properties. */
 export type SerializedPersonActorPropertiesMap = { [key: string]: unknown | undefined };
-export const SerializedPersonActorPropertiesMap =
-  GroupGroupPropertiesMap as any as S.Schema<SerializedPersonActorPropertiesMap>;
-
 export type SerializedPersonActorMatchedRecordingsItemMap = { [key: string]: unknown | undefined };
-export const SerializedPersonActorMatchedRecordingsItemMap =
-  GroupGroupPropertiesMap as any as S.Schema<SerializedPersonActorMatchedRecordingsItemMap>;
-
 /** Recordings that matched the query. Empty unless the endpoint asks for them. */
 export type SerializedPersonActorMatchedRecordingsList =
   Array<SerializedPersonActorMatchedRecordingsItemMap>;
-export const SerializedPersonActorMatchedRecordingsList = /*@__PURE__*/ S.Array(
-  SerializedPersonActorMatchedRecordingsItemMap,
-) as any as S.Schema<SerializedPersonActorMatchedRecordingsList>;
-
 /** The person's distinct IDs, newest first. */
 export type SerializedPersonActorDistinctIdsList = Array<string>;
-export const SerializedPersonActorDistinctIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SerializedPersonActorDistinctIdsList>;
-
 export interface SerializedPersonActor {
   /** The person's UUID, or the group's key. */
   id: string;
@@ -321,37 +303,12 @@ export interface SerializedPersonActor {
   /** Whether the person has been identified. */
   is_identified: boolean | null;
 }
-export const SerializedPersonActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    properties: SerializedPersonActorPropertiesMap,
-    created_at: S.NullOr(S.String),
-    matched_recordings: SerializedPersonActorMatchedRecordingsList,
-    value_at_data_point: S.NullOr(S.Number),
-    type: S.String,
-    uuid: S.String,
-    name: S.String,
-    distinct_ids: SerializedPersonActorDistinctIdsList,
-    last_seen_at: S.NullOr(S.String),
-    is_identified: S.NullOr(S.Boolean),
-  }),
-).annotate({ identifier: "SerializedPersonActor" }) as any as S.Schema<SerializedPersonActor>;
-
 /** The actor's properties. */
 export type SerializedGroupActorPropertiesMap = { [key: string]: unknown | undefined };
-export const SerializedGroupActorPropertiesMap =
-  GroupGroupPropertiesMap as any as S.Schema<SerializedGroupActorPropertiesMap>;
-
 export type SerializedGroupActorMatchedRecordingsItemMap = { [key: string]: unknown | undefined };
-export const SerializedGroupActorMatchedRecordingsItemMap =
-  GroupGroupPropertiesMap as any as S.Schema<SerializedGroupActorMatchedRecordingsItemMap>;
-
 /** Recordings that matched the query. Empty unless the endpoint asks for them. */
 export type SerializedGroupActorMatchedRecordingsList =
   Array<SerializedGroupActorMatchedRecordingsItemMap>;
-export const SerializedGroupActorMatchedRecordingsList =
-  SerializedPersonActorMatchedRecordingsList as any as S.Schema<SerializedGroupActorMatchedRecordingsList>;
-
 export interface SerializedGroupActor {
   /** The person's UUID, or the group's key. */
   id: string;
@@ -370,29 +327,16 @@ export interface SerializedGroupActor {
   /** Index of the group type this group belongs to. */
   group_type_index: number;
 }
-export const SerializedGroupActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    properties: SerializedGroupActorPropertiesMap,
-    created_at: S.NullOr(S.String),
-    matched_recordings: SerializedGroupActorMatchedRecordingsList,
-    value_at_data_point: S.NullOr(S.Number),
-    type: S.String,
-    group_key: S.String,
-    group_type_index: S.Number,
-  }),
-).annotate({ identifier: "SerializedGroupActor" }) as any as S.Schema<SerializedGroupActor>;
-
 export type RelatedActor = SerializedPersonActor | SerializedGroupActor;
-export const RelatedActor = S.Unknown as any as S.Schema<RelatedActor>;
+const RelatedActor = S.Unknown as any as S.Schema<RelatedActor>;
 
 export type ListGroupsRelatedResponseBodyList = Array<RelatedActor>;
-export const ListGroupsRelatedResponseBodyList = /*@__PURE__*/ S.Array(
+const ListGroupsRelatedResponseBodyList = /*@__PURE__*/ S.Array(
   RelatedActor,
 ) as any as S.Schema<ListGroupsRelatedResponseBodyList>;
 
 export type ListGroupsRelatedResponse = ListGroupsRelatedResponseBodyList;
-export const ListGroupsRelatedResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsRelatedResponse = /*@__PURE__*/ S.suspend(() =>
   ListGroupsRelatedResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListGroupsRelatedResponse",

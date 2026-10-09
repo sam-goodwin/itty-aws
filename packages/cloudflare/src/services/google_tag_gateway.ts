@@ -25,7 +25,7 @@ export interface GetConfigRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -50,7 +50,7 @@ export interface GetConfigResponse {
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean | null;
 }
-export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     endpoint: S.String,
@@ -74,7 +74,7 @@ export interface PutConfigRequest {
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean;
 }
-export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
@@ -104,7 +104,7 @@ export interface PutConfigResponse {
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean | null;
 }
-export const PutConfigResponse = GetConfigResponse as any as S.Schema<PutConfigResponse>;
+const PutConfigResponse = GetConfigResponse as any as S.Schema<PutConfigResponse>;
 
 export type GetConfigError = Forbidden | CloudflareOpError;
 /** Gets the Google Tag Gateway configuration for a zone. */

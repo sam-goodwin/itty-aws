@@ -43,7 +43,7 @@ export class NotFound
 export interface CreateVaultItemRequestVault {
   id: string;
 }
-export const CreateVaultItemRequestVault = /*@__PURE__*/ S.suspend(() =>
+const CreateVaultItemRequestVault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -74,14 +74,14 @@ export type CreateVaultItemRequestCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-export const CreateVaultItemRequestCategory = S.String;
+const CreateVaultItemRequestCategory = S.String;
 
 export interface CreateVaultItemRequestUrlsItem {
   label?: string;
   primary?: boolean;
   href: string;
 }
-export const CreateVaultItemRequestUrlsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateVaultItemRequestUrlsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     primary: S.optional(S.Boolean),
@@ -92,12 +92,12 @@ export const CreateVaultItemRequestUrlsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVaultItemRequestUrlsItem>;
 
 export type CreateVaultItemRequestUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const CreateVaultItemRequestUrlsList = /*@__PURE__*/ S.Array(
+const CreateVaultItemRequestUrlsList = /*@__PURE__*/ S.Array(
   CreateVaultItemRequestUrlsItem,
 ) as any as S.Schema<CreateVaultItemRequestUrlsList>;
 
 export type CreateVaultItemRequestTagsList = Array<string>;
-export const CreateVaultItemRequestTagsList = /*@__PURE__*/ S.Array(
+const CreateVaultItemRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateVaultItemRequestTagsList>;
 
@@ -105,7 +105,7 @@ export interface CreateVaultItemRequestSectionsItem {
   id?: string;
   label?: string;
 }
-export const CreateVaultItemRequestSectionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateVaultItemRequestSectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     label: S.optional(S.String),
@@ -115,14 +115,14 @@ export const CreateVaultItemRequestSectionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVaultItemRequestSectionsItem>;
 
 export type CreateVaultItemRequestSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const CreateVaultItemRequestSectionsList = /*@__PURE__*/ S.Array(
+const CreateVaultItemRequestSectionsList = /*@__PURE__*/ S.Array(
   CreateVaultItemRequestSectionsItem,
 ) as any as S.Schema<CreateVaultItemRequestSectionsList>;
 
 export interface FieldInputSection {
   id?: string;
 }
-export const FieldInputSection = /*@__PURE__*/ S.suspend(() =>
+const FieldInputSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -137,19 +137,19 @@ export type FieldInputType =
   | "DATE"
   | "MONTH_YEAR"
   | "MENU";
-export const FieldInputType = S.String;
+const FieldInputType = S.String;
 
 /** Some item types, Login and Password, have fields used for autofill. This property indicates that purpose and is required for some item types. */
 export type FieldInputPurpose = "" | "USERNAME" | "PASSWORD" | "NOTES";
-export const FieldInputPurpose = S.String;
+const FieldInputPurpose = S.String;
 
 export type GeneratorRecipeCharacterSetsItem = "LETTERS" | "DIGITS" | "SYMBOLS";
-export const GeneratorRecipeCharacterSetsItem = S.String;
+const GeneratorRecipeCharacterSetsItem = S.String;
 
 export type GeneratorRecipeCharacterSetsList = Array<
   GeneratorRecipeCharacterSetsItem | (string & {})
 >;
-export const GeneratorRecipeCharacterSetsList = /*@__PURE__*/ S.Array(
+const GeneratorRecipeCharacterSetsList = /*@__PURE__*/ S.Array(
   GeneratorRecipeCharacterSetsItem,
 ) as any as S.Schema<GeneratorRecipeCharacterSetsList>;
 
@@ -161,7 +161,7 @@ export interface GeneratorRecipe {
   /** List of all characters that should be excluded from generated passwords. */
   excludeCharacters?: string;
 }
-export const GeneratorRecipe = /*@__PURE__*/ S.suspend(() =>
+const GeneratorRecipe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     length: S.optional(S.Number),
     characterSets: S.optional(GeneratorRecipeCharacterSetsList),
@@ -181,7 +181,7 @@ export interface FieldInput {
   generate?: boolean;
   recipe?: GeneratorRecipe;
 }
-export const FieldInput = /*@__PURE__*/ S.suspend(() =>
+const FieldInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     section: S.optional(FieldInputSection),
@@ -195,14 +195,12 @@ export const FieldInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldInput" }) as any as S.Schema<FieldInput>;
 
 export type CreateVaultItemRequestFieldsList = Array<FieldInput>;
-export const CreateVaultItemRequestFieldsList = /*@__PURE__*/ S.Array(
+const CreateVaultItemRequestFieldsList = /*@__PURE__*/ S.Array(
   FieldInput,
 ) as any as S.Schema<CreateVaultItemRequestFieldsList>;
 
 /** For files that are in a section, this field describes the section. */
 export type FileInputSection = FieldInputSection;
-export const FileInputSection = FieldInputSection;
-
 export interface FileInput {
   /** ID of the file */
   id?: string;
@@ -215,7 +213,7 @@ export interface FileInput {
   /** Base64-encoded contents of the file. Only set if size <= OP_MAX_INLINE_FILE_SIZE_KB kb and `inline_files` is set to `true`. */
   content?: string;
 }
-export const FileInput = /*@__PURE__*/ S.suspend(() =>
+const FileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -226,7 +224,7 @@ export const FileInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileInput" }) as any as S.Schema<FileInput>;
 
 export type CreateVaultItemRequestFilesList = Array<FileInput>;
-export const CreateVaultItemRequestFilesList = /*@__PURE__*/ S.Array(
+const CreateVaultItemRequestFilesList = /*@__PURE__*/ S.Array(
   FileInput,
 ) as any as S.Schema<CreateVaultItemRequestFilesList>;
 
@@ -245,7 +243,7 @@ export interface CreateVaultItemRequest {
   fields?: CreateVaultItemRequestFieldsList;
   files?: CreateVaultItemRequestFilesList;
 }
-export const CreateVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -263,8 +261,6 @@ export const CreateVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateVaultItemRequest" }) as any as S.Schema<CreateVaultItemRequest>;
 
 export type CreateVaultItemResponseVault = CreateVaultItemRequestVault;
-export const CreateVaultItemResponseVault = CreateVaultItemRequestVault;
-
 export type CreateVaultItemResponseCategory =
   | "LOGIN"
   | "PASSWORD"
@@ -288,32 +284,26 @@ export type CreateVaultItemResponseCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-export const CreateVaultItemResponseCategory = S.String;
+const CreateVaultItemResponseCategory = S.String;
 
 export type CreateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
-export const CreateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
-
 export type CreateVaultItemResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const CreateVaultItemResponseUrlsList =
+const CreateVaultItemResponseUrlsList =
   CreateVaultItemRequestUrlsList as any as S.Schema<CreateVaultItemResponseUrlsList>;
 
 export type CreateVaultItemResponseTagsList = Array<string>;
-export const CreateVaultItemResponseTagsList =
+const CreateVaultItemResponseTagsList =
   CreateVaultItemRequestTagsList as any as S.Schema<CreateVaultItemResponseTagsList>;
 
 export type CreateVaultItemResponseState = "ARCHIVED" | "DELETED";
-export const CreateVaultItemResponseState = S.String;
+const CreateVaultItemResponseState = S.String;
 
 export type CreateVaultItemResponseSectionsItem = CreateVaultItemRequestSectionsItem;
-export const CreateVaultItemResponseSectionsItem = CreateVaultItemRequestSectionsItem;
-
 export type CreateVaultItemResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const CreateVaultItemResponseSectionsList =
+const CreateVaultItemResponseSectionsList =
   CreateVaultItemRequestSectionsList as any as S.Schema<CreateVaultItemResponseSectionsList>;
 
 export type FieldSection = FieldInputSection;
-export const FieldSection = FieldInputSection;
-
 export type FieldType =
   | "STRING"
   | "EMAIL"
@@ -323,11 +313,11 @@ export type FieldType =
   | "DATE"
   | "MONTH_YEAR"
   | "MENU";
-export const FieldType = S.String;
+const FieldType = S.String;
 
 /** Some item types, Login and Password, have fields used for autofill. This property indicates that purpose and is required for some item types. */
 export type FieldPurpose = "" | "USERNAME" | "PASSWORD" | "NOTES";
-export const FieldPurpose = S.String;
+const FieldPurpose = S.String;
 
 export interface Field {
   id: string;
@@ -343,7 +333,7 @@ export interface Field {
   /** For fields with a purpose of `PASSWORD` this is the entropy of the value */
   entropy?: number;
 }
-export const Field = /*@__PURE__*/ S.suspend(() =>
+const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     section: S.optional(FieldInputSection),
@@ -358,14 +348,12 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type CreateVaultItemResponseFieldsList = Array<Field>;
-export const CreateVaultItemResponseFieldsList = /*@__PURE__*/ S.Array(
+const CreateVaultItemResponseFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<CreateVaultItemResponseFieldsList>;
 
 /** For files that are in a section, this field describes the section. */
 export type FileSection = FieldInputSection;
-export const FileSection = FieldInputSection;
-
 export interface File {
   /** ID of the file */
   id?: string;
@@ -380,7 +368,7 @@ export interface File {
   /** Base64-encoded contents of the file. Only set if size <= OP_MAX_INLINE_FILE_SIZE_KB kb and `inline_files` is set to `true`. */
   content?: string;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
+const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -392,7 +380,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
 export type CreateVaultItemResponseFilesList = Array<File>;
-export const CreateVaultItemResponseFilesList = /*@__PURE__*/ S.Array(
+const CreateVaultItemResponseFilesList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<CreateVaultItemResponseFilesList>;
 
@@ -413,7 +401,7 @@ export interface CreateVaultItemResponse {
   fields?: CreateVaultItemResponseFieldsList;
   files?: CreateVaultItemResponseFilesList;
 }
-export const CreateVaultItemResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVaultItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -439,7 +427,7 @@ export interface DeleteVaultItemRequest {
   /** The UUID of the Item to update */
   itemUuid: string;
 }
-export const DeleteVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     itemUuid: S.String.pipe(T.Label()),
@@ -447,7 +435,7 @@ export const DeleteVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVaultItemRequest" }) as any as S.Schema<DeleteVaultItemRequest>;
 
 export interface DeleteVaultItemResponse {}
-export const DeleteVaultItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteVaultItemResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteVaultItemResponse",
 }) as any as S.Schema<DeleteVaultItemResponse>;
 
@@ -459,7 +447,7 @@ export interface DownloadFileByIDRequest {
   /** UUID of the file to get content from */
   fileUuid: string;
 }
-export const DownloadFileByIDRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadFileByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     itemUuid: S.String.pipe(T.Label()),
@@ -474,7 +462,7 @@ export const DownloadFileByIDRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadFileByIDRequest" }) as any as S.Schema<DownloadFileByIDRequest>;
 
 export interface DownloadFileByIDResponse {}
-export const DownloadFileByIDResponse =
+const DownloadFileByIDResponse =
   DeleteVaultItemResponse as any as S.Schema<DownloadFileByIDResponse>;
 
 export interface GetApiActivityRequest {
@@ -483,7 +471,7 @@ export interface GetApiActivityRequest {
   /** How far into the collection of API Events should the response start */
   offset?: number;
 }
-export const GetApiActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -491,10 +479,10 @@ export const GetApiActivityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApiActivityRequest" }) as any as S.Schema<GetApiActivityRequest>;
 
 export type APIRequestAction = "READ" | "CREATE" | "UPDATE" | "DELETE";
-export const APIRequestAction = S.String;
+const APIRequestAction = S.String;
 
 export type APIRequestResult = "SUCCESS" | "DENY";
-export const APIRequestResult = S.String;
+const APIRequestResult = S.String;
 
 export interface APIRequestActor {
   id?: string;
@@ -503,7 +491,7 @@ export interface APIRequestActor {
   userAgent?: string;
   requestIp?: string;
 }
-export const APIRequestActor = /*@__PURE__*/ S.suspend(() =>
+const APIRequestActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     account: S.optional(S.String),
@@ -514,21 +502,17 @@ export const APIRequestActor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "APIRequestActor" }) as any as S.Schema<APIRequestActor>;
 
 export type APIRequestResourceType = "ITEM" | "VAULT";
-export const APIRequestResourceType = S.String;
+const APIRequestResourceType = S.String;
 
 export type APIRequestResourceVault = FieldInputSection;
-export const APIRequestResourceVault = FieldInputSection;
-
 export type APIRequestResourceItem = FieldInputSection;
-export const APIRequestResourceItem = FieldInputSection;
-
 export interface APIRequestResource {
   type?: APIRequestResourceType;
   vault?: FieldInputSection;
   item?: FieldInputSection;
   itemVersion?: number;
 }
-export const APIRequestResource = /*@__PURE__*/ S.suspend(() =>
+const APIRequestResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(APIRequestResourceType),
     vault: S.optional(FieldInputSection),
@@ -548,7 +532,7 @@ export interface APIRequest {
   actor?: APIRequestActor;
   resource?: APIRequestResource;
 }
-export const APIRequest = /*@__PURE__*/ S.suspend(() =>
+const APIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -560,12 +544,12 @@ export const APIRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "APIRequest" }) as any as S.Schema<APIRequest>;
 
 export type GetApiActivityResponseBodyList = Array<APIRequest>;
-export const GetApiActivityResponseBodyList = /*@__PURE__*/ S.Array(
+const GetApiActivityResponseBodyList = /*@__PURE__*/ S.Array(
   APIRequest,
 ) as any as S.Schema<GetApiActivityResponseBodyList>;
 
 export type GetApiActivityResponse = GetApiActivityResponseBodyList;
-export const GetApiActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiActivityResponse = /*@__PURE__*/ S.suspend(() =>
   GetApiActivityResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetApiActivityResponse" }) as any as S.Schema<GetApiActivityResponse>;
 
@@ -579,7 +563,7 @@ export interface GetDetailsOfFileByIdRequest {
   /** Tells server to return the base64-encoded file contents in the response. */
   inline_files?: boolean;
 }
-export const GetDetailsOfFileByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDetailsOfFileByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     itemUuid: S.String.pipe(T.Label()),
@@ -597,13 +581,12 @@ export const GetDetailsOfFileByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDetailsOfFileByIdRequest>;
 
 export interface GetHeartbeatRequest {}
-export const GetHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/heartbeat", code: 200 })),
 ).annotate({ identifier: "GetHeartbeatRequest" }) as any as S.Schema<GetHeartbeatRequest>;
 
 export interface GetHeartbeatResponse {}
-export const GetHeartbeatResponse =
-  DeleteVaultItemResponse as any as S.Schema<GetHeartbeatResponse>;
+const GetHeartbeatResponse = DeleteVaultItemResponse as any as S.Schema<GetHeartbeatResponse>;
 
 export interface GetItemFilesRequest {
   /** The UUID of the Vault to fetch Items from */
@@ -613,7 +596,7 @@ export interface GetItemFilesRequest {
   /** Tells server to return the base64-encoded file contents in the response. */
   inline_files?: boolean;
 }
-export const GetItemFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetItemFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     itemUuid: S.String.pipe(T.Label()),
@@ -622,27 +605,27 @@ export const GetItemFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetItemFilesRequest" }) as any as S.Schema<GetItemFilesRequest>;
 
 export type GetItemFilesResponseBodyList = Array<File>;
-export const GetItemFilesResponseBodyList =
+const GetItemFilesResponseBodyList =
   CreateVaultItemResponseFilesList as any as S.Schema<GetItemFilesResponseBodyList>;
 
 export type GetItemFilesResponse = GetItemFilesResponseBodyList;
-export const GetItemFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetItemFilesResponse = /*@__PURE__*/ S.suspend(() =>
   GetItemFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetItemFilesResponse" }) as any as S.Schema<GetItemFilesResponse>;
 
 export interface GetPrometheusMetricsRequest {}
-export const GetPrometheusMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrometheusMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/metrics", code: 200 })),
 ).annotate({
   identifier: "GetPrometheusMetricsRequest",
 }) as any as S.Schema<GetPrometheusMetricsRequest>;
 
 export interface GetPrometheusMetricsResponse {}
-export const GetPrometheusMetricsResponse =
+const GetPrometheusMetricsResponse =
   DeleteVaultItemResponse as any as S.Schema<GetPrometheusMetricsResponse>;
 
 export interface GetServerHealthRequest {}
-export const GetServerHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServerHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
 ).annotate({ identifier: "GetServerHealthRequest" }) as any as S.Schema<GetServerHealthRequest>;
 
@@ -653,7 +636,7 @@ export interface ServiceDependency {
   /** Human-readable message for explaining the current state. */
   message?: string;
 }
-export const ServiceDependency = /*@__PURE__*/ S.suspend(() =>
+const ServiceDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     status: S.optional(S.String),
@@ -662,7 +645,7 @@ export const ServiceDependency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceDependency" }) as any as S.Schema<ServiceDependency>;
 
 export type GetServerHealthResponseDependenciesList = Array<ServiceDependency>;
-export const GetServerHealthResponseDependenciesList = /*@__PURE__*/ S.Array(
+const GetServerHealthResponseDependenciesList = /*@__PURE__*/ S.Array(
   ServiceDependency,
 ) as any as S.Schema<GetServerHealthResponseDependenciesList>;
 
@@ -672,7 +655,7 @@ export interface GetServerHealthResponse {
   version: string;
   dependencies?: GetServerHealthResponseDependenciesList;
 }
-export const GetServerHealthResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServerHealthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version: S.String,
@@ -684,14 +667,14 @@ export interface GetVaultByIdRequest {
   /** The UUID of the Vault to fetch Items from */
   vaultUuid: string;
 }
-export const GetVaultByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVaultByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vaults/{vaultUuid}", code: 200 })),
 ).annotate({ identifier: "GetVaultByIdRequest" }) as any as S.Schema<GetVaultByIdRequest>;
 
 export type VaultType = "USER_CREATED" | "PERSONAL" | "EVERYONE" | "TRANSFER";
-export const VaultType = S.String;
+const VaultType = S.String;
 
 export interface Vault {
   id?: string;
@@ -707,7 +690,7 @@ export interface Vault {
   createdAt?: string;
   updatedAt?: string;
 }
-export const Vault = /*@__PURE__*/ S.suspend(() =>
+const Vault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -727,7 +710,7 @@ export interface GetVaultItemByIdRequest {
   /** The UUID of the Item to fetch */
   itemUuid: string;
 }
-export const GetVaultItemByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVaultItemByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     itemUuid: S.String.pipe(T.Label()),
@@ -735,8 +718,6 @@ export const GetVaultItemByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVaultItemByIdRequest" }) as any as S.Schema<GetVaultItemByIdRequest>;
 
 export type GetVaultItemByIdResponseVault = CreateVaultItemRequestVault;
-export const GetVaultItemByIdResponseVault = CreateVaultItemRequestVault;
-
 export type GetVaultItemByIdResponseCategory =
   | "LOGIN"
   | "PASSWORD"
@@ -760,35 +741,31 @@ export type GetVaultItemByIdResponseCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-export const GetVaultItemByIdResponseCategory = S.String;
+const GetVaultItemByIdResponseCategory = S.String;
 
 export type GetVaultItemByIdResponseUrlsItem = CreateVaultItemRequestUrlsItem;
-export const GetVaultItemByIdResponseUrlsItem = CreateVaultItemRequestUrlsItem;
-
 export type GetVaultItemByIdResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const GetVaultItemByIdResponseUrlsList =
+const GetVaultItemByIdResponseUrlsList =
   CreateVaultItemRequestUrlsList as any as S.Schema<GetVaultItemByIdResponseUrlsList>;
 
 export type GetVaultItemByIdResponseTagsList = Array<string>;
-export const GetVaultItemByIdResponseTagsList =
+const GetVaultItemByIdResponseTagsList =
   CreateVaultItemRequestTagsList as any as S.Schema<GetVaultItemByIdResponseTagsList>;
 
 export type GetVaultItemByIdResponseState = "ARCHIVED" | "DELETED";
-export const GetVaultItemByIdResponseState = S.String;
+const GetVaultItemByIdResponseState = S.String;
 
 export type GetVaultItemByIdResponseSectionsItem = CreateVaultItemRequestSectionsItem;
-export const GetVaultItemByIdResponseSectionsItem = CreateVaultItemRequestSectionsItem;
-
 export type GetVaultItemByIdResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const GetVaultItemByIdResponseSectionsList =
+const GetVaultItemByIdResponseSectionsList =
   CreateVaultItemRequestSectionsList as any as S.Schema<GetVaultItemByIdResponseSectionsList>;
 
 export type GetVaultItemByIdResponseFieldsList = Array<Field>;
-export const GetVaultItemByIdResponseFieldsList =
+const GetVaultItemByIdResponseFieldsList =
   CreateVaultItemResponseFieldsList as any as S.Schema<GetVaultItemByIdResponseFieldsList>;
 
 export type GetVaultItemByIdResponseFilesList = Array<File>;
-export const GetVaultItemByIdResponseFilesList =
+const GetVaultItemByIdResponseFilesList =
   CreateVaultItemResponseFilesList as any as S.Schema<GetVaultItemByIdResponseFilesList>;
 
 export interface GetVaultItemByIdResponse {
@@ -808,7 +785,7 @@ export interface GetVaultItemByIdResponse {
   fields?: GetVaultItemByIdResponseFieldsList;
   files?: GetVaultItemByIdResponseFilesList;
 }
-export const GetVaultItemByIdResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVaultItemByIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -834,7 +811,7 @@ export interface GetVaultItemsRequest {
   /** Filter the Item collection based on Item name using SCIM eq filter */
   filter?: string;
 }
-export const GetVaultItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVaultItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -842,8 +819,6 @@ export const GetVaultItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVaultItemsRequest" }) as any as S.Schema<GetVaultItemsRequest>;
 
 export type ItemVault = CreateVaultItemRequestVault;
-export const ItemVault = CreateVaultItemRequestVault;
-
 export type ItemCategory =
   | "LOGIN"
   | "PASSWORD"
@@ -867,19 +842,17 @@ export type ItemCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-export const ItemCategory = S.String;
+const ItemCategory = S.String;
 
 export type ItemUrlsItem = CreateVaultItemRequestUrlsItem;
-export const ItemUrlsItem = CreateVaultItemRequestUrlsItem;
-
 export type ItemUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const ItemUrlsList = CreateVaultItemRequestUrlsList as any as S.Schema<ItemUrlsList>;
+const ItemUrlsList = CreateVaultItemRequestUrlsList as any as S.Schema<ItemUrlsList>;
 
 export type ItemTagsList = Array<string>;
-export const ItemTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ItemTagsList>;
+const ItemTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ItemTagsList>;
 
 export type ItemState = "ARCHIVED" | "DELETED";
-export const ItemState = S.String;
+const ItemState = S.String;
 
 export interface Item {
   id?: string;
@@ -895,7 +868,7 @@ export interface Item {
   updatedAt?: string;
   lastEditedBy?: string;
 }
-export const Item = /*@__PURE__*/ S.suspend(() =>
+const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -913,12 +886,12 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 export type GetVaultItemsResponseBodyList = Array<Item>;
-export const GetVaultItemsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetVaultItemsResponseBodyList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<GetVaultItemsResponseBodyList>;
 
 export type GetVaultItemsResponse = GetVaultItemsResponseBodyList;
-export const GetVaultItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVaultItemsResponse = /*@__PURE__*/ S.suspend(() =>
   GetVaultItemsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetVaultItemsResponse" }) as any as S.Schema<GetVaultItemsResponse>;
 
@@ -926,25 +899,23 @@ export interface GetVaultsRequest {
   /** Filter the Vault collection based on Vault name using SCIM eq filter */
   filter?: string;
 }
-export const GetVaultsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVaultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/vaults", code: 200 })),
 ).annotate({ identifier: "GetVaultsRequest" }) as any as S.Schema<GetVaultsRequest>;
 
 export type GetVaultsResponseBodyList = Array<Vault>;
-export const GetVaultsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetVaultsResponseBodyList = /*@__PURE__*/ S.Array(
   Vault,
 ) as any as S.Schema<GetVaultsResponseBodyList>;
 
 export type GetVaultsResponse = GetVaultsResponseBodyList;
-export const GetVaultsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVaultsResponse = /*@__PURE__*/ S.suspend(() =>
   GetVaultsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetVaultsResponse" }) as any as S.Schema<GetVaultsResponse>;
 
 export type UpdateVaultItemRequestVault = CreateVaultItemRequestVault;
-export const UpdateVaultItemRequestVault = CreateVaultItemRequestVault;
-
 export type UpdateVaultItemRequestCategory =
   | "LOGIN"
   | "PASSWORD"
@@ -968,32 +939,28 @@ export type UpdateVaultItemRequestCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-export const UpdateVaultItemRequestCategory = S.String;
+const UpdateVaultItemRequestCategory = S.String;
 
 export type UpdateVaultItemRequestUrlsItem = CreateVaultItemRequestUrlsItem;
-export const UpdateVaultItemRequestUrlsItem = CreateVaultItemRequestUrlsItem;
-
 export type UpdateVaultItemRequestUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const UpdateVaultItemRequestUrlsList =
+const UpdateVaultItemRequestUrlsList =
   CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemRequestUrlsList>;
 
 export type UpdateVaultItemRequestTagsList = Array<string>;
-export const UpdateVaultItemRequestTagsList =
+const UpdateVaultItemRequestTagsList =
   CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemRequestTagsList>;
 
 export type UpdateVaultItemRequestSectionsItem = CreateVaultItemRequestSectionsItem;
-export const UpdateVaultItemRequestSectionsItem = CreateVaultItemRequestSectionsItem;
-
 export type UpdateVaultItemRequestSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const UpdateVaultItemRequestSectionsList =
+const UpdateVaultItemRequestSectionsList =
   CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemRequestSectionsList>;
 
 export type UpdateVaultItemRequestFieldsList = Array<FieldInput>;
-export const UpdateVaultItemRequestFieldsList =
+const UpdateVaultItemRequestFieldsList =
   CreateVaultItemRequestFieldsList as any as S.Schema<UpdateVaultItemRequestFieldsList>;
 
 export type UpdateVaultItemRequestFilesList = Array<FileInput>;
-export const UpdateVaultItemRequestFilesList =
+const UpdateVaultItemRequestFilesList =
   CreateVaultItemRequestFilesList as any as S.Schema<UpdateVaultItemRequestFilesList>;
 
 export interface UpdateVaultItemRequest {
@@ -1013,7 +980,7 @@ export interface UpdateVaultItemRequest {
   fields?: UpdateVaultItemRequestFieldsList;
   files?: UpdateVaultItemRequestFilesList;
 }
-export const UpdateVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     itemUuid: S.String.pipe(T.Label()),
@@ -1032,8 +999,6 @@ export const UpdateVaultItemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateVaultItemRequest" }) as any as S.Schema<UpdateVaultItemRequest>;
 
 export type UpdateVaultItemResponseVault = CreateVaultItemRequestVault;
-export const UpdateVaultItemResponseVault = CreateVaultItemRequestVault;
-
 export type UpdateVaultItemResponseCategory =
   | "LOGIN"
   | "PASSWORD"
@@ -1057,35 +1022,31 @@ export type UpdateVaultItemResponseCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-export const UpdateVaultItemResponseCategory = S.String;
+const UpdateVaultItemResponseCategory = S.String;
 
 export type UpdateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
-export const UpdateVaultItemResponseUrlsItem = CreateVaultItemRequestUrlsItem;
-
 export type UpdateVaultItemResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const UpdateVaultItemResponseUrlsList =
+const UpdateVaultItemResponseUrlsList =
   CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemResponseUrlsList>;
 
 export type UpdateVaultItemResponseTagsList = Array<string>;
-export const UpdateVaultItemResponseTagsList =
+const UpdateVaultItemResponseTagsList =
   CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemResponseTagsList>;
 
 export type UpdateVaultItemResponseState = "ARCHIVED" | "DELETED";
-export const UpdateVaultItemResponseState = S.String;
+const UpdateVaultItemResponseState = S.String;
 
 export type UpdateVaultItemResponseSectionsItem = CreateVaultItemRequestSectionsItem;
-export const UpdateVaultItemResponseSectionsItem = CreateVaultItemRequestSectionsItem;
-
 export type UpdateVaultItemResponseSectionsList = Array<CreateVaultItemRequestSectionsItem>;
-export const UpdateVaultItemResponseSectionsList =
+const UpdateVaultItemResponseSectionsList =
   CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemResponseSectionsList>;
 
 export type UpdateVaultItemResponseFieldsList = Array<Field>;
-export const UpdateVaultItemResponseFieldsList =
+const UpdateVaultItemResponseFieldsList =
   CreateVaultItemResponseFieldsList as any as S.Schema<UpdateVaultItemResponseFieldsList>;
 
 export type UpdateVaultItemResponseFilesList = Array<File>;
-export const UpdateVaultItemResponseFilesList =
+const UpdateVaultItemResponseFilesList =
   CreateVaultItemResponseFilesList as any as S.Schema<UpdateVaultItemResponseFilesList>;
 
 export interface UpdateVaultItemResponse {
@@ -1105,7 +1066,7 @@ export interface UpdateVaultItemResponse {
   fields?: UpdateVaultItemResponseFieldsList;
   files?: UpdateVaultItemResponseFilesList;
 }
-export const UpdateVaultItemResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateVaultItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -1126,7 +1087,7 @@ export const UpdateVaultItemResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateVaultItemResponse" }) as any as S.Schema<UpdateVaultItemResponse>;
 
 export type PatchItemOp = "add" | "remove" | "replace";
-export const PatchItemOp = S.String;
+const PatchItemOp = S.String;
 
 export interface PatchItem {
   op: PatchItemOp | (string & {});
@@ -1134,7 +1095,7 @@ export interface PatchItem {
   path: string;
   value?: unknown;
 }
-export const PatchItem = /*@__PURE__*/ S.suspend(() =>
+const PatchItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: PatchItemOp,
     path: S.String,
@@ -1143,7 +1104,7 @@ export const PatchItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchItem" }) as any as S.Schema<PatchItem>;
 
 export type Patch = Array<PatchItem>;
-export const Patch = /*@__PURE__*/ S.Array(PatchItem) as any as S.Schema<Patch>;
+const Patch = /*@__PURE__*/ S.Array(PatchItem) as any as S.Schema<Patch>;
 
 export interface UpdateVaultItemByItemUuidRequest {
   /** The UUID of the Vault the item is in */
@@ -1152,7 +1113,7 @@ export interface UpdateVaultItemByItemUuidRequest {
   itemUuid: string;
   body?: Patch;
 }
-export const UpdateVaultItemByItemUuidRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVaultItemByItemUuidRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUuid: S.String.pipe(T.Label()),
     itemUuid: S.String.pipe(T.Label()),
@@ -1163,8 +1124,6 @@ export const UpdateVaultItemByItemUuidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateVaultItemByItemUuidRequest>;
 
 export type UpdateVaultItemByItemUuidResponseVault = CreateVaultItemRequestVault;
-export const UpdateVaultItemByItemUuidResponseVault = CreateVaultItemRequestVault;
-
 export type UpdateVaultItemByItemUuidResponseCategory =
   | "LOGIN"
   | "PASSWORD"
@@ -1188,36 +1147,32 @@ export type UpdateVaultItemByItemUuidResponseCategory =
   | "MEDICAL_RECORD"
   | "SSH_KEY"
   | "CUSTOM";
-export const UpdateVaultItemByItemUuidResponseCategory = S.String;
+const UpdateVaultItemByItemUuidResponseCategory = S.String;
 
 export type UpdateVaultItemByItemUuidResponseUrlsItem = CreateVaultItemRequestUrlsItem;
-export const UpdateVaultItemByItemUuidResponseUrlsItem = CreateVaultItemRequestUrlsItem;
-
 export type UpdateVaultItemByItemUuidResponseUrlsList = Array<CreateVaultItemRequestUrlsItem>;
-export const UpdateVaultItemByItemUuidResponseUrlsList =
+const UpdateVaultItemByItemUuidResponseUrlsList =
   CreateVaultItemRequestUrlsList as any as S.Schema<UpdateVaultItemByItemUuidResponseUrlsList>;
 
 export type UpdateVaultItemByItemUuidResponseTagsList = Array<string>;
-export const UpdateVaultItemByItemUuidResponseTagsList =
+const UpdateVaultItemByItemUuidResponseTagsList =
   CreateVaultItemRequestTagsList as any as S.Schema<UpdateVaultItemByItemUuidResponseTagsList>;
 
 export type UpdateVaultItemByItemUuidResponseState = "ARCHIVED" | "DELETED";
-export const UpdateVaultItemByItemUuidResponseState = S.String;
+const UpdateVaultItemByItemUuidResponseState = S.String;
 
 export type UpdateVaultItemByItemUuidResponseSectionsItem = CreateVaultItemRequestSectionsItem;
-export const UpdateVaultItemByItemUuidResponseSectionsItem = CreateVaultItemRequestSectionsItem;
-
 export type UpdateVaultItemByItemUuidResponseSectionsList =
   Array<CreateVaultItemRequestSectionsItem>;
-export const UpdateVaultItemByItemUuidResponseSectionsList =
+const UpdateVaultItemByItemUuidResponseSectionsList =
   CreateVaultItemRequestSectionsList as any as S.Schema<UpdateVaultItemByItemUuidResponseSectionsList>;
 
 export type UpdateVaultItemByItemUuidResponseFieldsList = Array<Field>;
-export const UpdateVaultItemByItemUuidResponseFieldsList =
+const UpdateVaultItemByItemUuidResponseFieldsList =
   CreateVaultItemResponseFieldsList as any as S.Schema<UpdateVaultItemByItemUuidResponseFieldsList>;
 
 export type UpdateVaultItemByItemUuidResponseFilesList = Array<File>;
-export const UpdateVaultItemByItemUuidResponseFilesList =
+const UpdateVaultItemByItemUuidResponseFilesList =
   CreateVaultItemResponseFilesList as any as S.Schema<UpdateVaultItemByItemUuidResponseFilesList>;
 
 export interface UpdateVaultItemByItemUuidResponse {
@@ -1237,7 +1192,7 @@ export interface UpdateVaultItemByItemUuidResponse {
   fields?: UpdateVaultItemByItemUuidResponseFieldsList;
   files?: UpdateVaultItemByItemUuidResponseFilesList;
 }
-export const UpdateVaultItemByItemUuidResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateVaultItemByItemUuidResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),

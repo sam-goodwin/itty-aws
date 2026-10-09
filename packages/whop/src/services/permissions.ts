@@ -23,7 +23,7 @@ export interface ListPermissionsRequest {
   /** Comma-separated permission actions to check, for example `stats:read,payment:basic:read`. Every action is returned when omitted. */
   actions?: string;
 }
-export const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource_id: S.String.pipe(T.Query()),
     actions: S.optional(S.String.pipe(T.Query())),
@@ -304,14 +304,14 @@ export type PermissionAction =
   | "user:notifications:read"
   | "user:notifications:update"
   | "user:profile:update";
-export const PermissionAction = S.String;
+const PermissionAction = S.String;
 
 export interface ListPermissionsResponseDataItem {
   action: PermissionAction;
   /** Whether the credential is granted the action for the resource. */
   granted: boolean;
 }
-export const ListPermissionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: PermissionAction,
     granted: S.Boolean,
@@ -321,14 +321,14 @@ export const ListPermissionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPermissionsResponseDataItem>;
 
 export type ListPermissionsResponseDataList = Array<ListPermissionsResponseDataItem>;
-export const ListPermissionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListPermissionsResponseDataList = /*@__PURE__*/ S.Array(
   ListPermissionsResponseDataItem,
 ) as any as S.Schema<ListPermissionsResponseDataList>;
 
 export interface ListPermissionsResponse {
   data: ListPermissionsResponseDataList;
 }
-export const ListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPermissionsResponseDataList,
   }),

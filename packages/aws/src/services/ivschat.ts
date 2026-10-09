@@ -151,10 +151,10 @@ export type RoomIdentifier = string;
 export type UserID = string | redacted.Redacted<string>;
 export type ChatTokenCapability = string;
 export type ChatTokenCapabilities = string[];
-export const ChatTokenCapabilities = /*@__PURE__*/ S.Array(S.String);
+const ChatTokenCapabilities = /*@__PURE__*/ S.Array(S.String);
 export type SessionDurationInMinutes = number;
 export type ChatTokenAttributes = { [key: string]: string | undefined };
-export const ChatTokenAttributes = /*@__PURE__*/ S.Record(
+const ChatTokenAttributes = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -165,7 +165,7 @@ export interface CreateChatTokenRequest {
   sessionDurationInMinutes?: number;
   attributes?: { [key: string]: string | undefined };
 }
-export const CreateChatTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChatTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roomIdentifier: S.String,
     userId: SensitiveString,
@@ -180,7 +180,7 @@ export interface CreateChatTokenResponse {
   tokenExpirationTime?: Date;
   sessionExpirationTime?: Date;
 }
-export const CreateChatTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateChatTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(SensitiveString),
     tokenExpirationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -192,7 +192,7 @@ export type BucketName = string;
 export interface S3DestinationConfiguration {
   bucketName: string;
 }
-export const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketName: S.String }),
 ).annotate({
   identifier: "S3DestinationConfiguration",
@@ -201,7 +201,7 @@ export type LogGroupName = string;
 export interface CloudWatchLogsDestinationConfiguration {
   logGroupName: string;
 }
-export const CloudWatchLogsDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CloudWatchLogsDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ logGroupName: S.String }),
 ).annotate({
   identifier: "CloudWatchLogsDestinationConfiguration",
@@ -210,7 +210,7 @@ export type DeliveryStreamName = string;
 export interface FirehoseDestinationConfiguration {
   deliveryStreamName: string;
 }
-export const FirehoseDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FirehoseDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ deliveryStreamName: S.String }),
 ).annotate({
   identifier: "FirehoseDestinationConfiguration",
@@ -219,7 +219,7 @@ export type DestinationConfiguration =
   | { s3: S3DestinationConfiguration; cloudWatchLogs?: never; firehose?: never }
   | { s3?: never; cloudWatchLogs: CloudWatchLogsDestinationConfiguration; firehose?: never }
   | { s3?: never; cloudWatchLogs?: never; firehose: FirehoseDestinationConfiguration };
-export const DestinationConfiguration = /*@__PURE__*/ S.Union([
+const DestinationConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ s3: S3DestinationConfiguration }),
   /*@__PURE__*/ S.Struct({ cloudWatchLogs: CloudWatchLogsDestinationConfiguration }),
   /*@__PURE__*/ S.Struct({ firehose: FirehoseDestinationConfiguration }),
@@ -227,13 +227,13 @@ export const DestinationConfiguration = /*@__PURE__*/ S.Union([
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateLoggingConfigurationRequest {
   name?: string;
   destinationConfiguration: DestinationConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     destinationConfiguration: DestinationConfiguration,
@@ -264,7 +264,7 @@ export interface CreateLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -287,12 +287,12 @@ export interface MessageReviewHandler {
   uri?: string;
   fallbackResult?: string;
 }
-export const MessageReviewHandler = /*@__PURE__*/ S.suspend(() =>
+const MessageReviewHandler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.optional(S.String), fallbackResult: S.optional(S.String) }),
 ).annotate({ identifier: "MessageReviewHandler" }) as any as S.Schema<MessageReviewHandler>;
 export type LoggingConfigurationIdentifier = string;
 export type LoggingConfigurationIdentifierList = string[];
-export const LoggingConfigurationIdentifierList =
+const LoggingConfigurationIdentifierList =
   ChatTokenCapabilities as any as S.Schema<LoggingConfigurationIdentifierList>;
 export interface CreateRoomRequest {
   name?: string;
@@ -302,7 +302,7 @@ export interface CreateRoomRequest {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const CreateRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     maximumMessageRatePerSecond: S.optional(S.Number),
@@ -326,7 +326,7 @@ export interface CreateRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const CreateRoomResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -343,7 +343,7 @@ export const CreateRoomResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLoggingConfigurationRequest {
   identifier: string;
 }
-export const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteLoggingConfiguration" }),
@@ -358,9 +358,7 @@ export const DeleteLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLoggingConfigurationRequest",
 }) as any as S.Schema<DeleteLoggingConfigurationRequest>;
 export interface DeleteLoggingConfigurationResponse {}
-export const DeleteLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteLoggingConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteLoggingConfigurationResponse",
 }) as any as S.Schema<DeleteLoggingConfigurationResponse>;
 export type MessageID = string;
@@ -370,7 +368,7 @@ export interface DeleteMessageRequest {
   id: string;
   reason?: string;
 }
-export const DeleteMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ roomIdentifier: S.String, id: S.String, reason: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/DeleteMessage" }), svc, auth, proto, ver, rules),
   ),
@@ -379,19 +377,19 @@ export type ID = string;
 export interface DeleteMessageResponse {
   id?: string;
 }
-export const DeleteMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.optional(S.String) }),
 ).annotate({ identifier: "DeleteMessageResponse" }) as any as S.Schema<DeleteMessageResponse>;
 export interface DeleteRoomRequest {
   identifier: string;
 }
-export const DeleteRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/DeleteRoom" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteRoomRequest" }) as any as S.Schema<DeleteRoomRequest>;
 export interface DeleteRoomResponse {}
-export const DeleteRoomResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteRoomResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteRoomResponse",
 }) as any as S.Schema<DeleteRoomResponse>;
 export interface DisconnectUserRequest {
@@ -399,7 +397,7 @@ export interface DisconnectUserRequest {
   userId: string | redacted.Redacted<string>;
   reason?: string;
 }
-export const DisconnectUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DisconnectUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roomIdentifier: S.String,
     userId: SensitiveString,
@@ -407,11 +405,11 @@ export const DisconnectUserRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/DisconnectUser" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DisconnectUserRequest" }) as any as S.Schema<DisconnectUserRequest>;
 export interface DisconnectUserResponse {}
-export const DisconnectUserResponse = DeleteRoomResponse as any as S.Schema<DisconnectUserResponse>;
+const DisconnectUserResponse = DeleteRoomResponse as any as S.Schema<DisconnectUserResponse>;
 export interface GetLoggingConfigurationRequest {
   identifier: string;
 }
-export const GetLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetLoggingConfiguration" }),
@@ -436,12 +434,12 @@ export interface GetLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const GetLoggingConfigurationResponse =
+const GetLoggingConfigurationResponse =
   CreateLoggingConfigurationResponse as any as S.Schema<GetLoggingConfigurationResponse>;
 export interface GetRoomRequest {
   identifier: string;
 }
-export const GetRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/GetRoom" }), svc, auth, proto, ver, rules),
   ),
@@ -458,14 +456,14 @@ export interface GetRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const GetRoomResponse = CreateRoomResponse as any as S.Schema<GetRoomResponse>;
+const GetRoomResponse = CreateRoomResponse as any as S.Schema<GetRoomResponse>;
 export type PaginationToken = string;
 export type MaxLoggingConfigurationResults = number;
 export interface ListLoggingConfigurationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListLoggingConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLoggingConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/ListLoggingConfigurations" }),
@@ -489,15 +487,15 @@ export interface LoggingConfigurationSummary {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const LoggingConfigurationSummary =
+const LoggingConfigurationSummary =
   CreateLoggingConfigurationResponse as any as S.Schema<LoggingConfigurationSummary>;
 export type LoggingConfigurationList = LoggingConfigurationSummary[];
-export const LoggingConfigurationList = /*@__PURE__*/ S.Array(LoggingConfigurationSummary);
+const LoggingConfigurationList = /*@__PURE__*/ S.Array(LoggingConfigurationSummary);
 export interface ListLoggingConfigurationsResponse {
   loggingConfigurations: LoggingConfigurationSummary[];
   nextToken?: string;
 }
-export const ListLoggingConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLoggingConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ loggingConfigurations: LoggingConfigurationList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListLoggingConfigurationsResponse",
@@ -510,7 +508,7 @@ export interface ListRoomsRequest {
   messageReviewHandlerUri?: string;
   loggingConfigurationIdentifier?: string;
 }
-export const ListRoomsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     nextToken: S.optional(S.String),
@@ -529,7 +527,7 @@ export interface RoomSummary {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const RoomSummary = /*@__PURE__*/ S.suspend(() =>
+const RoomSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.optional(S.String),
     id: S.optional(S.String),
@@ -542,19 +540,19 @@ export const RoomSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoomSummary" }) as any as S.Schema<RoomSummary>;
 export type RoomList = RoomSummary[];
-export const RoomList = /*@__PURE__*/ S.Array(RoomSummary);
+const RoomList = /*@__PURE__*/ S.Array(RoomSummary);
 export interface ListRoomsResponse {
   rooms: RoomSummary[];
   nextToken?: string;
 }
-export const ListRoomsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRoomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ rooms: RoomList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListRoomsResponse" }) as any as S.Schema<ListRoomsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -564,20 +562,20 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: Tags }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type EventName = string;
 export type EventAttributes = { [key: string]: string | undefined };
-export const EventAttributes = ChatTokenAttributes as any as S.Schema<EventAttributes>;
+const EventAttributes = ChatTokenAttributes as any as S.Schema<EventAttributes>;
 export interface SendEventRequest {
   roomIdentifier: string;
   eventName: string;
   attributes?: { [key: string]: string | undefined };
 }
-export const SendEventRequest = /*@__PURE__*/ S.suspend(() =>
+const SendEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roomIdentifier: S.String,
     eventName: S.String,
@@ -587,25 +585,25 @@ export const SendEventRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SendEventResponse {
   id?: string;
 }
-export const SendEventResponse = DeleteMessageResponse as any as S.Schema<SendEventResponse>;
+const SendEventResponse = DeleteMessageResponse as any as S.Schema<SendEventResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = DeleteRoomResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteRoomResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = ChatTokenCapabilities as any as S.Schema<TagKeyList>;
+const TagKeyList = ChatTokenCapabilities as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -614,13 +612,13 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = DeleteRoomResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteRoomResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLoggingConfigurationRequest {
   identifier: string;
   name?: string;
   destinationConfiguration?: DestinationConfiguration;
 }
-export const UpdateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     name: S.optional(S.String),
@@ -649,7 +647,7 @@ export interface UpdateLoggingConfigurationResponse {
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateLoggingConfigurationResponse =
+const UpdateLoggingConfigurationResponse =
   CreateLoggingConfigurationResponse as any as S.Schema<UpdateLoggingConfigurationResponse>;
 export interface UpdateRoomRequest {
   identifier: string;
@@ -659,7 +657,7 @@ export interface UpdateRoomRequest {
   messageReviewHandler?: MessageReviewHandler;
   loggingConfigurationIdentifiers?: string[];
 }
-export const UpdateRoomRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     name: S.optional(S.String),
@@ -681,7 +679,7 @@ export interface UpdateRoomResponse {
   tags?: { [key: string]: string | undefined };
   loggingConfigurationIdentifiers?: string[];
 }
-export const UpdateRoomResponse = CreateRoomResponse as any as S.Schema<UpdateRoomResponse>;
+const UpdateRoomResponse = CreateRoomResponse as any as S.Schema<UpdateRoomResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;
@@ -691,11 +689,11 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type Limit = number;
 export type CreateChatTokenError =
   | AccessDeniedException

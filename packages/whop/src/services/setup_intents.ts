@@ -48,14 +48,14 @@ export class NotFound
 
 /** Custom metadata to attach to the setup intent. Returned on the setup intent and its webhooks. */
 export type CreateSetupIntentRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateSetupIntentRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateSetupIntentRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateSetupIntentRequestMetadataMap>;
 
 /** What the saved payment method will pay for. Set to `ads_billing` when saving a card to pay for Whop Ads on `account_id`: the card is verified by Whop Ads, the merchant that charges it, which helps minimize security declines on ad payments, and it requires `ad_campaign:create` on `account_id`. Omit it for any other payment method. */
 export type CreateSetupIntentRequestPurpose = "ads_billing";
-export const CreateSetupIntentRequestPurpose = S.String;
+const CreateSetupIntentRequestPurpose = S.String;
 
 export interface CreateSetupIntentRequest {
   /** The account to save the payment method for, prefixed `biz_`. */
@@ -77,7 +77,7 @@ export interface CreateSetupIntentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     confirmation_token: S.optional(S.NullOr(S.String)),
@@ -97,7 +97,7 @@ export interface SetupLastSetupError {
   /** A human-readable explanation of the failure. */
   message: string | null;
 }
-export const SetupLastSetupError = /*@__PURE__*/ S.suspend(() =>
+const SetupLastSetupError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.NullOr(S.String),
     message: S.NullOr(S.String),
@@ -116,7 +116,7 @@ export interface PaymentInstrumentCard {
   /** The card's last four digits, when captured. */
   last4: string | null;
 }
-export const PaymentInstrumentCard = /*@__PURE__*/ S.suspend(() =>
+const PaymentInstrumentCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.NullOr(S.String),
     exp_month: S.NullOr(S.Number),
@@ -136,7 +136,7 @@ export interface PaymentMethodIconFiles {
   /** The vector file. Prefer this everywhere SVG renders. */
   svg: string;
 }
-export const PaymentMethodIconFiles = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIconFiles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     png_1x: S.String,
     png_2x: S.String,
@@ -151,7 +151,7 @@ export interface PaymentMethodIconVariants {
   /** The colorway for light surfaces. */
   light: PaymentMethodIconFiles;
 }
-export const PaymentMethodIconVariants = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIconVariants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dark: PaymentMethodIconFiles,
     light: PaymentMethodIconFiles,
@@ -166,7 +166,7 @@ export interface PaymentMethodIcons {
   /** The square tile (32x32). */
   square: PaymentMethodIconVariants;
 }
-export const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethodIcons = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: PaymentMethodIconVariants,
     square: PaymentMethodIconVariants,
@@ -185,7 +185,7 @@ export interface PaymentInstrument {
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
 }
-export const PaymentInstrument = /*@__PURE__*/ S.suspend(() =>
+const PaymentInstrument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.NullOr(PaymentInstrumentCard),
     display_name: S.String,
@@ -326,17 +326,17 @@ export type PaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
-export const PaymentMethodTypes = S.String;
+const PaymentMethodTypes = S.String;
 
 /** How far the setup has got. **A 201 or 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; hand `client_secret` to the elements or poll Retrieve setup status. `processing` -- the processor is deciding. `succeeded` -- the method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error`. */
 export type SetupIntentStatus = "processing" | "succeeded" | "canceled" | "requires_action";
-export const SetupIntentStatus = S.String;
+const SetupIntentStatus = S.String;
 
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
+const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -352,7 +352,7 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-export const UserSummary = /*@__PURE__*/ S.suspend(() =>
+const UserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -395,7 +395,7 @@ export interface SetupIntent {
   /** The user saving the payment method. Null when the buyer is a company rather than a user. */
   user: UserSummary | null;
 }
-export const SetupIntent = /*@__PURE__*/ S.suspend(() =>
+const SetupIntent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     checkout_configuration_id: S.NullOr(S.String),
@@ -420,7 +420,7 @@ export interface GetSetupIntentRequest {
   /** The setup intent to retrieve, prefixed `sint_`. */
   id: string;
 }
-export const GetSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/setup_intents/{id}", code: 200 })),
@@ -430,7 +430,7 @@ export interface GetStatusSetupIntentRequest {
   /** The unique identifier of the setup intent. */
   setup_intent_id: string;
 }
-export const GetStatusSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatusSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setup_intent_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/setup_intents/{setup_intent_id}/status", code: 200 })),
@@ -444,28 +444,11 @@ export interface PaymentNextActionRedirectData {
   /** The provider's page for this payment, as an absolute URL -- take the buyer there. */
   url: string;
 }
-export const PaymentNextActionRedirectData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    frame_max_width: S.NullOr(S.Number),
-    url: S.String,
-  }),
-).annotate({
-  identifier: "PaymentNextActionRedirectData",
-}) as any as S.Schema<PaymentNextActionRedirectData>;
-
 /** Where this step can be presented: `inline` inside your own page, `full_page` as a top-level navigation. Pick whichever listed mode suits your surface. */
 export type PaymentNextActionRedirectRenderItem = "inline" | "full_page";
-export const PaymentNextActionRedirectRenderItem = S.String;
-
 export type PaymentNextActionRedirectRenderList = Array<PaymentNextActionRedirectRenderItem>;
-export const PaymentNextActionRedirectRenderList = /*@__PURE__*/ S.Array(
-  PaymentNextActionRedirectRenderItem,
-) as any as S.Schema<PaymentNextActionRedirectRenderList>;
-
 /** Always `redirect`: send the buyer to `data.url`. The provider hands them back to `return_url` when they are done. */
 export type PaymentNextActionRedirectType = "redirect";
-export const PaymentNextActionRedirectType = S.String;
-
 export interface PaymentNextActionRedirect {
   /** Where to send the buyer. */
   data: PaymentNextActionRedirectData;
@@ -473,20 +456,8 @@ export interface PaymentNextActionRedirect {
   /** Always `redirect`: send the buyer to `data.url`. The provider hands them back to `return_url` when they are done. */
   type: PaymentNextActionRedirectType;
 }
-export const PaymentNextActionRedirect = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: PaymentNextActionRedirectData,
-    render: PaymentNextActionRedirectRenderList,
-    type: PaymentNextActionRedirectType,
-  }),
-).annotate({
-  identifier: "PaymentNextActionRedirect",
-}) as any as S.Schema<PaymentNextActionRedirect>;
-
 /** Always `voucher`: a code the buyer pays in person, at a convenience store or bank counter. */
 export type PaymentVoucherInstructionsKind = "voucher";
-export const PaymentVoucherInstructionsKind = S.String;
-
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -497,15 +468,6 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.String,
-    currency: S.String,
-    decimals: S.Number,
-    display_decimals: S.Number,
-  }),
-).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
-
 export interface PaymentVoucher {
   /** Exactly what the buyer must pay, in the charged currency. */
   amount?: Money;
@@ -526,39 +488,14 @@ export interface PaymentVoucher {
   /** The voucher's number -- what the buyer reads out or types at the counter to pay. */
   reference?: string;
 }
-export const PaymentVoucher = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(Money),
-    barcode: S.optional(S.String),
-    barcode_format: S.optional(S.String),
-    company_name: S.optional(S.String),
-    document_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    provider_logo: S.optional(S.String),
-    provider_name: S.optional(S.String),
-    reference: S.optional(S.String),
-  }),
-).annotate({ identifier: "PaymentVoucher" }) as any as S.Schema<PaymentVoucher>;
-
 export interface PaymentVoucherInstructions {
   /** Always `voucher`: a code the buyer pays in person, at a convenience store or bank counter. */
   kind: PaymentVoucherInstructionsKind;
   /** The voucher to show. */
   voucher: PaymentVoucher;
 }
-export const PaymentVoucherInstructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: PaymentVoucherInstructionsKind,
-    voucher: PaymentVoucher,
-  }),
-).annotate({
-  identifier: "PaymentVoucherInstructions",
-}) as any as S.Schema<PaymentVoucherInstructions>;
-
 /** Always `qr`: a code the buyer scans with their banking app. */
 export type PaymentQrInstructionsKind = "qr";
-export const PaymentQrInstructionsKind = S.String;
-
 export interface PaymentQr {
   /** Exactly what the buyer must pay, in the charged currency. */
   amount?: Money;
@@ -573,30 +510,12 @@ export interface PaymentQr {
   /** How `qr_code` is encoded. */
   qr_format?: string;
 }
-export const PaymentQr = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(Money),
-    document_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    key: S.optional(S.String),
-    qr_code: S.optional(S.String),
-    qr_format: S.optional(S.String),
-  }),
-).annotate({ identifier: "PaymentQr" }) as any as S.Schema<PaymentQr>;
-
 export interface PaymentQrInstructions {
   /** Always `qr`: a code the buyer scans with their banking app. */
   kind: PaymentQrInstructionsKind;
   /** The code to show. */
   qr: PaymentQr;
 }
-export const PaymentQrInstructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: PaymentQrInstructionsKind,
-    qr: PaymentQr,
-  }),
-).annotate({ identifier: "PaymentQrInstructions" }) as any as S.Schema<PaymentQrInstructions>;
-
 export interface PaymentBankTransfer {
   /** The account to send to, in the local scheme's format -- `account_number_label` says what to call it. */
   account_number?: string;
@@ -637,69 +556,25 @@ export interface PaymentBankTransfer {
   /** What to call `secondary_account_number` when showing it. */
   secondary_account_number_label?: string;
 }
-export const PaymentBankTransfer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_number: S.optional(S.String),
-    account_number_label: S.optional(S.String),
-    amount: S.optional(Money),
-    bank_account_type: S.optional(S.String),
-    bank_address: S.optional(S.String),
-    bank_branch: S.optional(S.String),
-    bank_code: S.optional(S.String),
-    bank_code_label: S.optional(S.String),
-    bank_name: S.optional(S.String),
-    beneficiary_document: S.optional(S.String),
-    beneficiary_document_type: S.optional(S.String),
-    beneficiary_name: S.optional(S.String),
-    document_url: S.optional(S.String),
-    expires_at: S.optional(S.String),
-    instructions: S.optional(S.String),
-    reference: S.optional(S.String),
-    routing_number: S.optional(S.String),
-    secondary_account_number: S.optional(S.String),
-    secondary_account_number_label: S.optional(S.String),
-  }),
-).annotate({ identifier: "PaymentBankTransfer" }) as any as S.Schema<PaymentBankTransfer>;
-
 /** Always `bank_transfer`: account details the buyer sends money to from their own bank. */
 export type PaymentBankTransferInstructionsKind = "bank_transfer";
-export const PaymentBankTransferInstructionsKind = S.String;
-
 export interface PaymentBankTransferInstructions {
   /** The account details to show. */
   bank_transfer: PaymentBankTransfer;
   /** Always `bank_transfer`: account details the buyer sends money to from their own bank. */
   kind: PaymentBankTransferInstructionsKind;
 }
-export const PaymentBankTransferInstructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bank_transfer: PaymentBankTransfer,
-    kind: PaymentBankTransferInstructionsKind,
-  }),
-).annotate({
-  identifier: "PaymentBankTransferInstructions",
-}) as any as S.Schema<PaymentBankTransferInstructions>;
-
 /** What to show the buyer so they can pay. `kind` picks the shape and the details sit under the key named for it, so switching on `kind` gives you exactly that kind's payload. Every detail field is optional -- the rails behind these methods publish them unevenly -- but a kind that arrives with `document_url` can always fall back to sending the buyer to that hosted copy of the instructions. */
 export type PaymentInstructions =
   | PaymentVoucherInstructions
   | PaymentQrInstructions
   | PaymentBankTransferInstructions;
-export const PaymentInstructions = S.Unknown as any as S.Schema<PaymentInstructions>;
-
 /** Where this step can be presented: `inline` inside your own page, `full_page` as a top-level navigation. Pick whichever listed mode suits your surface. */
 export type PaymentNextActionDisplayInstructionsRenderItem = "inline" | "full_page";
-export const PaymentNextActionDisplayInstructionsRenderItem = S.String;
-
 export type PaymentNextActionDisplayInstructionsRenderList =
   Array<PaymentNextActionDisplayInstructionsRenderItem>;
-export const PaymentNextActionDisplayInstructionsRenderList =
-  PaymentNextActionRedirectRenderList as any as S.Schema<PaymentNextActionDisplayInstructionsRenderList>;
-
 /** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
 export type PaymentNextActionDisplayInstructionsType = "display_instructions";
-export const PaymentNextActionDisplayInstructionsType = S.String;
-
 export interface PaymentNextActionDisplayInstructions {
   /** The instructions. `kind` picks the shape, and the details sit under the key named for it: `voucher`, `qr`, or `bank_transfer`. */
   data: PaymentInstructions;
@@ -707,41 +582,16 @@ export interface PaymentNextActionDisplayInstructions {
   /** Always `display_instructions`: show the buyer `data` -- what to pay, where, and by when. The payment completes once they pay and the rail confirms it, so keep polling `status`. */
   type: PaymentNextActionDisplayInstructionsType;
 }
-export const PaymentNextActionDisplayInstructions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: PaymentInstructions,
-    render: PaymentNextActionDisplayInstructionsRenderList,
-    type: PaymentNextActionDisplayInstructionsType,
-  }),
-).annotate({
-  identifier: "PaymentNextActionDisplayInstructions",
-}) as any as S.Schema<PaymentNextActionDisplayInstructions>;
-
 export interface PaymentNextActionAwaitConfirmationData {
   /** When the confirmation window closes, as an ISO 8601 timestamp. A payment still unconfirmed by then will not succeed -- watch `status` for the failed attempt. */
   expires_at: string;
 }
-export const PaymentNextActionAwaitConfirmationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expires_at: S.String,
-  }),
-).annotate({
-  identifier: "PaymentNextActionAwaitConfirmationData",
-}) as any as S.Schema<PaymentNextActionAwaitConfirmationData>;
-
 /** Where this step can be presented: `inline` inside your own page, `full_page` as a top-level navigation. Pick whichever listed mode suits your surface. */
 export type PaymentNextActionAwaitConfirmationRenderItem = "inline" | "full_page";
-export const PaymentNextActionAwaitConfirmationRenderItem = S.String;
-
 export type PaymentNextActionAwaitConfirmationRenderList =
   Array<PaymentNextActionAwaitConfirmationRenderItem>;
-export const PaymentNextActionAwaitConfirmationRenderList =
-  PaymentNextActionRedirectRenderList as any as S.Schema<PaymentNextActionAwaitConfirmationRenderList>;
-
 /** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
 export type PaymentNextActionAwaitConfirmationType = "await_confirmation";
-export const PaymentNextActionAwaitConfirmationType = S.String;
-
 export interface PaymentNextActionAwaitConfirmation {
   /** How long the wait can last. */
   data: PaymentNextActionAwaitConfirmationData;
@@ -749,26 +599,16 @@ export interface PaymentNextActionAwaitConfirmation {
   /** Always `await_confirmation`: nothing to show -- the buyer has done their part and the rail settles out of band. Poll `status` until it moves. */
   type: PaymentNextActionAwaitConfirmationType;
 }
-export const PaymentNextActionAwaitConfirmation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: PaymentNextActionAwaitConfirmationData,
-    render: PaymentNextActionAwaitConfirmationRenderList,
-    type: PaymentNextActionAwaitConfirmationType,
-  }),
-).annotate({
-  identifier: "PaymentNextActionAwaitConfirmation",
-}) as any as S.Schema<PaymentNextActionAwaitConfirmation>;
-
 /** What the buyer must do to finish. `type` picks the shape and each type carries only its own `data`, so switching on `type` gives you exactly that step's payload. */
 export type PaymentNextAction =
   | PaymentNextActionRedirect
   | PaymentNextActionDisplayInstructions
   | PaymentNextActionAwaitConfirmation;
-export const PaymentNextAction = S.Unknown as any as S.Schema<PaymentNextAction>;
+const PaymentNextAction = S.Unknown as any as S.Schema<PaymentNextAction>;
 
 /** How far the setup has got. **A 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; see `next_action`. `processing` -- the buyer has done their part and the processor is deciding. `succeeded` -- the payment method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error` to tell which. */
 export type SetupStatusStatus = "processing" | "succeeded" | "canceled" | "requires_action";
-export const SetupStatusStatus = S.String;
+const SetupStatusStatus = S.String;
 
 export interface SetupStatus {
   /** The setup this status describes, prefixed `sint_`. */
@@ -784,7 +624,7 @@ export interface SetupStatus {
   /** How far the setup has got. **A 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; see `next_action`. `processing` -- the buyer has done their part and the processor is deciding. `succeeded` -- the payment method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error` to tell which. */
   status: SetupStatusStatus;
 }
-export const SetupStatus = /*@__PURE__*/ S.suspend(() =>
+const SetupStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     last_setup_error: S.NullOr(SetupLastSetupError),
@@ -800,13 +640,13 @@ export type ListSetupIntentsRequestStatus =
   | "succeeded"
   | "canceled"
   | "requires_action";
-export const ListSetupIntentsRequestStatus = S.String;
+const ListSetupIntentsRequestStatus = S.String;
 
 export type ListSetupIntentsRequestOrder = "created_at";
-export const ListSetupIntentsRequestOrder = S.String;
+const ListSetupIntentsRequestOrder = S.String;
 
 export type ListSetupIntentsRequestDirection = "asc" | "desc";
-export const ListSetupIntentsRequestDirection = S.String;
+const ListSetupIntentsRequestDirection = S.String;
 
 export interface ListSetupIntentsRequest {
   /** Only setup intents for this account, prefixed `biz_`. */
@@ -830,7 +670,7 @@ export interface ListSetupIntentsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListSetupIntentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSetupIntentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListSetupIntentsRequestStatus.pipe(T.Query())),
@@ -846,7 +686,7 @@ export const ListSetupIntentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSetupIntentsRequest" }) as any as S.Schema<ListSetupIntentsRequest>;
 
 export type ListSetupIntentsResponseDataList = Array<SetupIntent>;
-export const ListSetupIntentsResponseDataList = /*@__PURE__*/ S.Array(
+const ListSetupIntentsResponseDataList = /*@__PURE__*/ S.Array(
   SetupIntent,
 ) as any as S.Schema<ListSetupIntentsResponseDataList>;
 
@@ -856,7 +696,7 @@ export interface ListSetupIntentsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListSetupIntentsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListSetupIntentsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -871,7 +711,7 @@ export interface ListSetupIntentsResponse {
   data: ListSetupIntentsResponseDataList;
   page_info: ListSetupIntentsResponsePageInfo;
 }
-export const ListSetupIntentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSetupIntentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListSetupIntentsResponseDataList,
     page_info: ListSetupIntentsResponsePageInfo,
@@ -884,7 +724,7 @@ export interface UpdateReturnUrlSetupIntentRequest {
   /** Where the buyer continues after completing an off-site step. Must be an absolute https URL without credentials (http is allowed for localhost), at most 2,048 characters. */
   return_url: string;
 }
-export const UpdateReturnUrlSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReturnUrlSetupIntentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setup_intent_id: S.String.pipe(T.Label()),
     return_url: S.String,

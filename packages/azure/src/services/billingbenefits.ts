@@ -16,7 +16,7 @@ export interface CancelConditionalCreditRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
-export const CancelConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -35,11 +35,11 @@ export const CancelConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -56,7 +56,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -69,18 +69,18 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CancelConditionalCreditResponseTagsMap = { [key: string]: string | undefined };
-export const CancelConditionalCreditResponseTagsMap = /*@__PURE__*/ S.Record(
+const CancelConditionalCreditResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CancelConditionalCreditResponseTagsMap>;
 
 /** Type of conditional credit entity */
 export type ConditionalCreditEntityType = "Primary" | "Contributor";
-export const ConditionalCreditEntityType = S.String;
+const ConditionalCreditEntityType = S.String;
 
 /** Provisioning state for billing benefit resources. Includes the standard terminal states (Succeeded, Failed, Canceled) plus benefit-specific transition states. */
 export type BenefitProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Pending";
-export const BenefitProvisioningState = S.String;
+const BenefitProvisioningState = S.String;
 
 /** The status of the conditional credit */
 export type ConditionalCreditStatus =
@@ -93,7 +93,7 @@ export type ConditionalCreditStatus =
   | "Completed"
   | "Stopped"
   | "PendingSettlement";
-export const ConditionalCreditStatus = S.String;
+const ConditionalCreditStatus = S.String;
 
 /** Common product detail properties shared across all benefit resources */
 export interface ProductDetailsBase {
@@ -104,7 +104,7 @@ export interface ProductDetailsBase {
   /** The type of the product. */
   productType?: string;
 }
-export const ProductDetailsBase = /*@__PURE__*/ S.suspend(() =>
+const ProductDetailsBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuTitle: S.optional(S.String),
     productFamily: S.optional(S.String),
@@ -114,14 +114,14 @@ export const ProductDetailsBase = /*@__PURE__*/ S.suspend(() =>
 
 /** List of applied scope types supported for benefit resources. */
 export type BenefitAppliedScopeType = "BillingAccount" | "BillingProfile" | "Customer";
-export const BenefitAppliedScopeType = S.String;
+const BenefitAppliedScopeType = S.String;
 
 export interface Price {
   /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
   currencyCode?: string;
   amount?: number;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     amount: S.optional(S.Number),
@@ -159,7 +159,7 @@ export interface ConditionalCreditProperties {
   /** Amount of benefit that has been consumed */
   consumed?: Price;
 }
-export const ConditionalCreditProperties = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityType: ConditionalCreditEntityType,
     displayName: S.optional(S.String),
@@ -186,7 +186,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -195,7 +195,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -206,11 +206,10 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 export type CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
-  ) as any as S.Schema<CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
+const CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
+) as any as S.Schema<CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CancelConditionalCreditResponseIdentity {
@@ -222,7 +221,7 @@ export interface CancelConditionalCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CancelConditionalCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CancelConditionalCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -237,7 +236,7 @@ export const CancelConditionalCreditResponseIdentity = /*@__PURE__*/ S.suspend((
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
-export const SkuTier = S.String;
+const SkuTier = S.String;
 
 /** The resource model definition representing SKU */
 export interface Sku {
@@ -252,7 +251,7 @@ export interface Sku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(SkuTier),
@@ -275,7 +274,7 @@ export interface Plan {
   /** The version of the desired product/artifact. */
   version?: string;
 }
-export const Plan = /*@__PURE__*/ S.suspend(() =>
+const Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     publisher: S.String,
@@ -313,7 +312,7 @@ export interface CancelConditionalCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CancelConditionalCreditResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelConditionalCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -341,7 +340,7 @@ export interface CancelCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
-export const CancelCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -358,7 +357,7 @@ export const CancelCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CancelCreditResponseTagsMap = { [key: string]: string | undefined };
-export const CancelCreditResponseTagsMap =
+const CancelCreditResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelCreditResponseTagsMap>;
 
 /** Status of the credit */
@@ -372,7 +371,7 @@ export type CreditStatus =
   | "Expired"
   | "Exhausted"
   | "NotStarted";
-export const CreditStatus = S.String;
+const CreditStatus = S.String;
 
 /** The reason for the credit. Not required if not applicable. */
 export interface CreditReason {
@@ -381,7 +380,7 @@ export interface CreditReason {
   /** The free string description of the credit. */
   description?: string;
 }
-export const CreditReason = /*@__PURE__*/ S.suspend(() =>
+const CreditReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     description: S.optional(S.String),
@@ -390,7 +389,7 @@ export const CreditReason = /*@__PURE__*/ S.suspend(() =>
 
 /** Grain. */
 export type CommitmentGrain = "Hourly" | "FullTerm" | "Unknown";
-export const CommitmentGrain = S.String;
+const CommitmentGrain = S.String;
 
 /** Commitment towards the benefit. */
 export interface Commitment {
@@ -400,7 +399,7 @@ export interface Commitment {
   /** The grain of the commitment. */
   grain?: CommitmentGrain | (string & {});
 }
-export const Commitment = /*@__PURE__*/ S.suspend(() =>
+const Commitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     amount: S.optional(S.Number),
@@ -410,11 +409,11 @@ export const Commitment = /*@__PURE__*/ S.suspend(() =>
 
 /** Redemption policy of the Credit */
 export type CreditRedemptionPolicy = "NotApplicable" | "AutoRedeem" | "ManualRedeem";
-export const CreditRedemptionPolicy = S.String;
+const CreditRedemptionPolicy = S.String;
 
 /** Expiration policy of the Credit */
 export type CreditExpirationPolicy = "None" | "SuspendBillingProfile";
-export const CreditExpirationPolicy = S.String;
+const CreditExpirationPolicy = S.String;
 
 /** Credit breakdown item representing a milestone, line-item, or no-charge service */
 export interface CreditPolicies {
@@ -423,7 +422,7 @@ export interface CreditPolicies {
   /** Expiration policy of the Credit */
   expiration?: CreditExpirationPolicy | (string & {});
 }
-export const CreditPolicies = /*@__PURE__*/ S.suspend(() =>
+const CreditPolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redemption: S.optional(CreditRedemptionPolicy),
     expiration: S.optional(CreditExpirationPolicy),
@@ -437,7 +436,7 @@ export interface CreditDimension {
   /** The dimension value */
   value: string;
 }
-export const CreditDimension = /*@__PURE__*/ S.suspend(() =>
+const CreditDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -446,7 +445,7 @@ export const CreditDimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs for additional parameters and metadata */
 export type CreditBreakdownItemDimensionsList = Array<CreditDimension>;
-export const CreditBreakdownItemDimensionsList = /*@__PURE__*/ S.Array(
+const CreditBreakdownItemDimensionsList = /*@__PURE__*/ S.Array(
   CreditDimension,
 ) as any as S.Schema<CreditBreakdownItemDimensionsList>;
 
@@ -461,7 +460,7 @@ export interface CreditBreakdownItem {
   /** Key-value pairs for additional parameters and metadata */
   dimensions?: CreditBreakdownItemDimensionsList;
 }
-export const CreditBreakdownItem = /*@__PURE__*/ S.suspend(() =>
+const CreditBreakdownItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocation: S.optional(Commitment),
     startAt: S.optional(S.String),
@@ -472,17 +471,17 @@ export const CreditBreakdownItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Credit line-items/milestones/no-charge services breakdown */
 export type CreditPropertiesBreakdownList = Array<CreditBreakdownItem>;
-export const CreditPropertiesBreakdownList = /*@__PURE__*/ S.Array(
+const CreditPropertiesBreakdownList = /*@__PURE__*/ S.Array(
   CreditBreakdownItem,
 ) as any as S.Schema<CreditPropertiesBreakdownList>;
 
 /** Indicates where the credit benefit is applied */
 export type AppliedOn = "Consumption" | "Invoice" | "External";
-export const AppliedOn = S.String;
+const AppliedOn = S.String;
 
 /** Indicates where the credit benefit is applied (e.g., consume, invoice, or external application). */
 export type CreditProductDetailsAppliedOnList = Array<AppliedOn>;
-export const CreditProductDetailsAppliedOnList = /*@__PURE__*/ S.Array(
+const CreditProductDetailsAppliedOnList = /*@__PURE__*/ S.Array(
   AppliedOn,
 ) as any as S.Schema<CreditProductDetailsAppliedOnList>;
 
@@ -499,7 +498,7 @@ export interface CreditProductDetails {
   /** Specifies which price point is used when applying the credit. Known values include "MarketPrice", "UnitPrice", and "BenefitGroupPrice:<groupId>" where <groupId> identifies the benefit group. */
   appliedPrice?: string;
 }
-export const CreditProductDetails = /*@__PURE__*/ S.suspend(() =>
+const CreditProductDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuTitle: S.optional(S.String),
     productFamily: S.optional(S.String),
@@ -554,7 +553,7 @@ export interface CreditProperties {
   /** Type of the applied scope for the credit. */
   appliedScopeType?: BenefitAppliedScopeType;
 }
-export const CreditProperties = /*@__PURE__*/ S.suspend(() =>
+const CreditProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CreditStatus),
     productCode: S.optional(S.String),
@@ -584,7 +583,7 @@ export const CreditProperties = /*@__PURE__*/ S.suspend(() =>
 export type CancelCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CancelCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const CancelCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<CancelCreditResponseIdentityUserAssignedIdentitiesMap>;
@@ -599,7 +598,7 @@ export interface CancelCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CancelCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CancelCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CancelCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -638,7 +637,7 @@ export interface CancelCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CancelCreditResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -664,7 +663,7 @@ export interface CancelDiscountRequest {
   /** Name of the discount */
   discountName: string;
 }
-export const CancelDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -681,16 +680,16 @@ export const CancelDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CancelDiscountResponseTagsMap = { [key: string]: string | undefined };
-export const CancelDiscountResponseTagsMap =
+const CancelDiscountResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelDiscountResponseTagsMap>;
 
 /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
 export type DiscountEntityType = "Primary" | "Affiliate";
-export const DiscountEntityType = S.String;
+const DiscountEntityType = S.String;
 
 /** Represents the current status of the discount. */
 export type DiscountStatus = "Active" | "Pending" | "Failed" | "Canceled" | "Expired";
-export const DiscountStatus = S.String;
+const DiscountStatus = S.String;
 
 /** Properties belonging to discounts. */
 export interface DiscountProperties {
@@ -725,7 +724,7 @@ export interface DiscountProperties {
   /** Product details including SKU title, product family, and product type. */
   productDetails?: ProductDetailsBase;
 }
-export const DiscountProperties = /*@__PURE__*/ S.suspend(() =>
+const DiscountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityType: DiscountEntityType,
     productCode: S.String,
@@ -747,13 +746,11 @@ export const DiscountProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export type ManagedServiceIdentityUserAssignedIdentitiesValue = UserAssignedIdentity;
-export const ManagedServiceIdentityUserAssignedIdentitiesValue = UserAssignedIdentity;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ManagedServiceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-export const ManagedServiceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ManagedServiceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<ManagedServiceIdentityUserAssignedIdentitiesMap>;
@@ -769,7 +766,7 @@ export interface ManagedServiceIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ManagedServiceIdentityUserAssignedIdentitiesMap;
 }
-export const ManagedServiceIdentity = /*@__PURE__*/ S.suspend(() =>
+const ManagedServiceIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -806,7 +803,7 @@ export interface CancelDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CancelDiscountResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelDiscountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -832,7 +829,7 @@ export interface CancelMaccRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
-export const CancelMaccRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelMaccRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -849,7 +846,7 @@ export const CancelMaccRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CancelMaccResponseTagsMap = { [key: string]: string | undefined };
-export const CancelMaccResponseTagsMap =
+const CancelMaccResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelMaccResponseTagsMap>;
 
 /** Represents the current status of the MACC. */
@@ -865,15 +862,15 @@ export type MaccStatus =
   | "PendingSettlement"
   | "ShortfallCharged"
   | "ShortfallWaived";
-export const MaccStatus = S.String;
+const MaccStatus = S.String;
 
 /** Represents type of the object being operated on. Possible values are primary or contributor. */
 export type MaccEntityType = "Primary" | "Contributor";
-export const MaccEntityType = S.String;
+const MaccEntityType = S.String;
 
 /** Represents the enablement status of a feature or settings. */
 export type EnablementMode = "Unknown" | "Enabled" | "Disabled";
-export const EnablementMode = S.String;
+const EnablementMode = S.String;
 
 /** Optional field to record suppression reason for automatic shortfall. */
 export interface AutomaticShortfallSuppressReason {
@@ -882,7 +879,7 @@ export interface AutomaticShortfallSuppressReason {
   /** Message for suppression reason. */
   message?: string;
 }
-export const AutomaticShortfallSuppressReason = /*@__PURE__*/ S.suspend(() =>
+const AutomaticShortfallSuppressReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -908,7 +905,7 @@ export interface Shortfall {
   /** This is an identifier of the shortfall which will not change for its lifetime. */
   systemId?: string;
 }
-export const Shortfall = /*@__PURE__*/ S.suspend(() =>
+const Shortfall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productCode: S.optional(S.String),
     charge: S.optional(Commitment),
@@ -933,7 +930,7 @@ export type MaccMilestoneStatus =
   | "PendingSettlement"
   | "ShortfallCharged"
   | "ShortfallWaived";
-export const MaccMilestoneStatus = S.String;
+const MaccMilestoneStatus = S.String;
 
 /** MACC milestone represents interim targets within the period of MACC. */
 export interface MaccMilestone {
@@ -952,7 +949,7 @@ export interface MaccMilestone {
   /** Details of the shortfall associated with this milestone. */
   shortfall?: Shortfall;
 }
-export const MaccMilestone = /*@__PURE__*/ S.suspend(() =>
+const MaccMilestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     milestoneId: S.optional(S.String),
     commitment: S.optional(Price),
@@ -966,7 +963,7 @@ export const MaccMilestone = /*@__PURE__*/ S.suspend(() =>
 
 /** List of milestones associated with this MACC. */
 export type MaccModelPropertiesMilestonesList = Array<MaccMilestone>;
-export const MaccModelPropertiesMilestonesList = /*@__PURE__*/ S.Array(
+const MaccModelPropertiesMilestonesList = /*@__PURE__*/ S.Array(
   MaccMilestone,
 ) as any as S.Schema<MaccModelPropertiesMilestonesList>;
 
@@ -1017,7 +1014,7 @@ export interface MaccModelProperties {
   /** Amount of benefit that has been consumed */
   consumed?: Price;
 }
-export const MaccModelProperties = /*@__PURE__*/ S.suspend(() =>
+const MaccModelProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(BenefitProvisioningState),
     status: S.optional(MaccStatus),
@@ -1048,9 +1045,6 @@ export const MaccModelProperties = /*@__PURE__*/ S.suspend(() =>
 export type CancelMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CancelMaccResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CancelMaccResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CancelMaccResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1061,7 +1055,7 @@ export interface CancelMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CancelMaccResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CancelMaccResponseIdentity =
+const CancelMaccResponseIdentity =
   CancelCreditResponseIdentity as any as S.Schema<CancelMaccResponseIdentity>;
 
 export interface CancelMaccResponse {
@@ -1092,7 +1086,7 @@ export interface CancelMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CancelMaccResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelMaccResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1112,7 +1106,7 @@ export const CancelMaccResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConditionalCreditsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ConditionalCreditsCreateOrUpdateRequestTagsMap =
+const ConditionalCreditsCreateOrUpdateRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<ConditionalCreditsCreateOrUpdateRequestTagsMap>;
 
 /** Properties belonging to conditional credits. */
@@ -1138,7 +1132,7 @@ export interface ConditionalCreditPropertiesInput {
   /** Invitation identifier */
   invitationId?: string;
 }
-export const ConditionalCreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityType: ConditionalCreditEntityType,
     displayName: S.optional(S.String),
@@ -1157,7 +1151,7 @@ export const ConditionalCreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentityInput",
 }) as any as S.Schema<UserAssignedIdentityInput>;
 
@@ -1165,7 +1159,7 @@ export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct(
 export type ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
+const ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
@@ -1177,7 +1171,7 @@ export interface ConditionalCreditsCreateOrUpdateRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
-export const ConditionalCreditsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(
@@ -1212,7 +1206,7 @@ export interface ConditionalCreditsCreateOrUpdateRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const ConditionalCreditsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1239,16 +1233,10 @@ export const ConditionalCreditsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type ConditionalCreditsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ConditionalCreditsCreateOrUpdateResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap =
-  CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ConditionalCreditsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1259,9 +1247,6 @@ export interface ConditionalCreditsCreateOrUpdateResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ConditionalCreditsCreateOrUpdateResponseIdentityUserAssignedIdentitiesMap;
 }
-export const ConditionalCreditsCreateOrUpdateResponseIdentity =
-  CancelConditionalCreditResponseIdentity as any as S.Schema<ConditionalCreditsCreateOrUpdateResponseIdentity>;
-
 export interface ConditionalCreditsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1290,17 +1275,17 @@ export interface ConditionalCreditsCreateOrUpdateResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const ConditionalCreditsCreateOrUpdateResponse =
+const ConditionalCreditsCreateOrUpdateResponse =
   CancelConditionalCreditResponse as any as S.Schema<ConditionalCreditsCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type CreateCreditRequestTagsMap = { [key: string]: string | undefined };
-export const CreateCreditRequestTagsMap =
+const CreateCreditRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateCreditRequestTagsMap>;
 
 /** Credit line-items/milestones/no-charge services breakdown */
 export type CreditPropertiesInputBreakdownList = Array<CreditBreakdownItem>;
-export const CreditPropertiesInputBreakdownList =
+const CreditPropertiesInputBreakdownList =
   CreditPropertiesBreakdownList as any as S.Schema<CreditPropertiesInputBreakdownList>;
 
 /** Properties of a credit */
@@ -1334,7 +1319,7 @@ export interface CreditPropertiesInput {
   /** Type of the applied scope for the credit. */
   appliedScopeType?: BenefitAppliedScopeType | (string & {});
 }
-export const CreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productCode: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1357,7 +1342,7 @@ export const CreditPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type CreateCreditRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const CreateCreditRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const CreateCreditRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<CreateCreditRequestIdentityUserAssignedIdentitiesMap>;
@@ -1368,7 +1353,7 @@ export interface CreateCreditRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateCreditRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateCreditRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateCreditRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(CreateCreditRequestIdentityUserAssignedIdentitiesMap),
@@ -1401,7 +1386,7 @@ export interface CreateCreditRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1426,16 +1411,10 @@ export const CreateCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCreditResponseTagsMap = { [key: string]: string | undefined };
-export const CreateCreditResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateCreditResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateCreditResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateCreditResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateCreditResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1446,9 +1425,6 @@ export interface CreateCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateCreditResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<CreateCreditResponseIdentity>;
-
 export interface CreateCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1477,11 +1453,11 @@ export interface CreateCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateCreditResponse = CancelCreditResponse as any as S.Schema<CreateCreditResponse>;
+const CreateCreditResponse = CancelCreditResponse as any as S.Schema<CreateCreditResponse>;
 
 /** Resource tags. */
 export type CreateDiscountRequestTagsMap = { [key: string]: string | undefined };
-export const CreateDiscountRequestTagsMap =
+const CreateDiscountRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateDiscountRequestTagsMap>;
 
 /** Properties belonging to discounts. */
@@ -1503,7 +1479,7 @@ export interface DiscountPropertiesInput {
   /** List of applied scopes supported for discounts. */
   appliedScopeType?: BenefitAppliedScopeType | (string & {});
 }
-export const DiscountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DiscountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityType: DiscountEntityType,
     productCode: S.String,
@@ -1518,13 +1494,11 @@ export const DiscountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export type ManagedServiceIdentityInputUserAssignedIdentitiesValue = UserAssignedIdentityInput;
-export const ManagedServiceIdentityInputUserAssignedIdentitiesValue = UserAssignedIdentityInput;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-export const ManagedServiceIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ManagedServiceIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
@@ -1536,7 +1510,7 @@ export interface ManagedServiceIdentityInput {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
 }
-export const ManagedServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ManagedServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(ManagedServiceIdentityInputUserAssignedIdentitiesMap),
@@ -1569,7 +1543,7 @@ export interface CreateDiscountRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1594,9 +1568,6 @@ export const CreateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateDiscountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateDiscountResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateDiscountResponseTagsMap>;
-
 export interface CreateDiscountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1625,17 +1596,16 @@ export interface CreateDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateDiscountResponse =
-  CancelDiscountResponse as any as S.Schema<CreateDiscountResponse>;
+const CreateDiscountResponse = CancelDiscountResponse as any as S.Schema<CreateDiscountResponse>;
 
 /** Resource tags. */
 export type CreateFreeServiceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateFreeServiceRequestTagsMap =
+const CreateFreeServiceRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateFreeServiceRequestTagsMap>;
 
 /** Status of the free services */
 export type FreeServicesStatus = "Unknown" | "Pending" | "Active" | "Canceled" | "Completed";
-export const FreeServicesStatus = S.String;
+const FreeServicesStatus = S.String;
 
 /** Properties of free services */
 export interface FreeServicesPropertiesInput {
@@ -1654,7 +1624,7 @@ export interface FreeServicesPropertiesInput {
   /** This is the globally unique identifier of the free services which will not change for its lifetime. Generated by the benefit publisher. */
   systemId?: string;
 }
-export const FreeServicesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FreeServicesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productCode: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1672,16 +1642,13 @@ export const FreeServicesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap =
-  CreateCreditRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateFreeServiceRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateFreeServiceRequestIdentity =
+const CreateFreeServiceRequestIdentity =
   CreateCreditRequestIdentity as any as S.Schema<CreateFreeServiceRequestIdentity>;
 
 export interface CreateFreeServiceRequest {
@@ -1708,7 +1675,7 @@ export interface CreateFreeServiceRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1733,7 +1700,7 @@ export const CreateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateFreeServiceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateFreeServiceResponseTagsMap =
+const CreateFreeServiceResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateFreeServiceResponseTagsMap>;
 
 /** Properties of free services */
@@ -1763,7 +1730,7 @@ export interface FreeServicesProperties {
   /** Product details including SKU title, product family, and product type. */
   productDetails?: ProductDetailsBase;
 }
-export const FreeServicesProperties = /*@__PURE__*/ S.suspend(() =>
+const FreeServicesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productCode: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1784,9 +1751,6 @@ export const FreeServicesProperties = /*@__PURE__*/ S.suspend(() =>
 export type CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateFreeServiceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1797,7 +1761,7 @@ export interface CreateFreeServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateFreeServiceResponseIdentity =
+const CreateFreeServiceResponseIdentity =
   CancelCreditResponseIdentity as any as S.Schema<CreateFreeServiceResponseIdentity>;
 
 export interface CreateFreeServiceResponse {
@@ -1828,7 +1792,7 @@ export interface CreateFreeServiceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1850,12 +1814,12 @@ export const CreateFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMaccRequestTagsMap = { [key: string]: string | undefined };
-export const CreateMaccRequestTagsMap =
+const CreateMaccRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateMaccRequestTagsMap>;
 
 /** List of milestones associated with this MACC. */
 export type MaccModelPropertiesInputMilestonesList = Array<MaccMilestone>;
-export const MaccModelPropertiesInputMilestonesList =
+const MaccModelPropertiesInputMilestonesList =
   MaccModelPropertiesMilestonesList as any as S.Schema<MaccModelPropertiesInputMilestonesList>;
 
 /** MACC properties */
@@ -1899,7 +1863,7 @@ export interface MaccModelPropertiesInput {
   /** Invitation identifier */
   invitationId?: string;
 }
-export const MaccModelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MaccModelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(MaccStatus),
     entityType: MaccEntityType,
@@ -1927,16 +1891,13 @@ export const MaccModelPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type CreateMaccRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const CreateMaccRequestIdentityUserAssignedIdentitiesMap =
-  CreateCreditRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateMaccRequestIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateMaccRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateMaccRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateMaccRequestIdentity =
+const CreateMaccRequestIdentity =
   CreateCreditRequestIdentity as any as S.Schema<CreateMaccRequestIdentity>;
 
 export interface CreateMaccRequest {
@@ -1963,7 +1924,7 @@ export interface CreateMaccRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateMaccRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMaccRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1988,16 +1949,10 @@ export const CreateMaccRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMaccResponseTagsMap = { [key: string]: string | undefined };
-export const CreateMaccResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateMaccResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateMaccResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateMaccResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateMaccResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2008,9 +1963,6 @@ export interface CreateMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateMaccResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateMaccResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<CreateMaccResponseIdentity>;
-
 export interface CreateMaccResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2039,12 +1991,12 @@ export interface CreateMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateMaccResponse = CancelMaccResponse as any as S.Schema<CreateMaccResponse>;
+const CreateMaccResponse = CancelMaccResponse as any as S.Schema<CreateMaccResponse>;
 
 export interface ResourceSku {
   name?: string;
 }
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+const ResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -2052,15 +2004,15 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Represent benefit term in ISO 8601 format. */
 export type Term = "P1M" | "P1Y" | "P3Y" | "P5Y";
-export const Term = S.String;
+const Term = S.String;
 
 /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
 export type BillingPlan = "P1M";
-export const BillingPlan = S.String;
+const BillingPlan = S.String;
 
 /** Type of the Applied Scope. */
 export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
-export const AppliedScopeType = S.String;
+const AppliedScopeType = S.String;
 
 /** Properties specific to applied scope type. Not required if not applicable. */
 export interface AppliedScopeProperties {
@@ -2077,7 +2029,7 @@ export interface AppliedScopeProperties {
   /** A filter string passed to downstream services to categorize and apply usage benefits to specific resource models. Expected format: "key/value" (e.g., "contractId/2025 H2CPU"). The value is not validated by BillingBenefits and is forwarded as-is. */
   benefitFilter?: string;
 }
-export const AppliedScopeProperties = /*@__PURE__*/ S.suspend(() =>
+const AppliedScopeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     managementGroupId: S.optional(S.String),
@@ -2090,7 +2042,7 @@ export const AppliedScopeProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
 export type RenewAction = "CreateNew" | "RenewExisting";
-export const RenewAction = S.String;
+const RenewAction = S.String;
 
 /** The type of the resource that is being reserved. */
 export type ReservedResourceType =
@@ -2120,25 +2072,25 @@ export type ReservedResourceType =
   | "AzureFiles"
   | "SqlEdge"
   | "VirtualMachineSoftware";
-export const ReservedResourceType = S.String;
+const ReservedResourceType = S.String;
 
 /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
 export type InstanceFlexibility = "On" | "Off";
-export const InstanceFlexibility = S.String;
+const InstanceFlexibility = S.String;
 
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface ReservationOrderAliasRequestPropertiesReservedResourceProperties {
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
   instanceFlexibility?: InstanceFlexibility | (string & {});
 }
-export const ReservationOrderAliasRequestPropertiesReservedResourceProperties =
-  /*@__PURE__*/ S.suspend(() =>
+const ReservationOrderAliasRequestPropertiesReservedResourceProperties = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       instanceFlexibility: S.optional(InstanceFlexibility),
     }),
-  ).annotate({
-    identifier: "ReservationOrderAliasRequestPropertiesReservedResourceProperties",
-  }) as any as S.Schema<ReservationOrderAliasRequestPropertiesReservedResourceProperties>;
+).annotate({
+  identifier: "ReservationOrderAliasRequestPropertiesReservedResourceProperties",
+}) as any as S.Schema<ReservationOrderAliasRequestPropertiesReservedResourceProperties>;
 
 /** Reservation properties */
 export interface ReservationOrderAliasRequestProperties {
@@ -2169,7 +2121,7 @@ export interface ReservationOrderAliasRequestProperties {
   /** Properties specific to each reserved resource type. Not required if not applicable. */
   reservedResourceProperties?: ReservationOrderAliasRequestPropertiesReservedResourceProperties;
 }
-export const ReservationOrderAliasRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const ReservationOrderAliasRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     billingScopeId: S.optional(S.String),
@@ -2201,7 +2153,7 @@ export interface CreateReservationOrderAliasRequest {
   /** Reservation order alias request properties */
   properties?: ReservationOrderAliasRequestProperties;
 }
-export const CreateReservationOrderAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReservationOrderAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservationOrderAliasName: S.String.pipe(T.Label()),
     sku: ResourceSku,
@@ -2229,14 +2181,14 @@ export type ProvisioningState =
   | "Cancelled"
   | "Expired"
   | "Failed";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface ReservationOrderAliasResponsePropertiesReservedResourceProperties {
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
   instanceFlexibility?: InstanceFlexibility;
 }
-export const ReservationOrderAliasResponsePropertiesReservedResourceProperties =
+const ReservationOrderAliasResponsePropertiesReservedResourceProperties =
   ReservationOrderAliasRequestPropertiesReservedResourceProperties as any as S.Schema<ReservationOrderAliasResponsePropertiesReservedResourceProperties>;
 
 /** Reservation properties */
@@ -2274,7 +2226,7 @@ export interface ReservationOrderAliasResponseProperties {
   /** Properties specific to each reserved resource type. Not required if not applicable. */
   reservedResourceProperties?: ReservationOrderAliasResponsePropertiesReservedResourceProperties;
 }
-export const ReservationOrderAliasResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const ReservationOrderAliasResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     reservationOrderId: S.optional(S.String),
@@ -2315,7 +2267,7 @@ export interface CreateReservationOrderAliasResponse {
   /** The Azure Region where the reserved resource lives. */
   location?: string;
 }
-export const CreateReservationOrderAliasResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateReservationOrderAliasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2348,7 +2300,7 @@ export interface SavingsPlanOrderAliasPropertiesInput {
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
   renew?: boolean;
 }
-export const SavingsPlanOrderAliasPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOrderAliasPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     billingScopeId: S.optional(S.String),
@@ -2373,7 +2325,7 @@ export interface CreateSavingsPlanOrderAliasRequest {
   /** Resource provider kind */
   kind?: string;
 }
-export const CreateSavingsPlanOrderAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSavingsPlanOrderAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderAliasName: S.String.pipe(T.Label()),
     properties: S.optional(SavingsPlanOrderAliasPropertiesInput),
@@ -2414,7 +2366,7 @@ export interface SavingsPlanOrderAliasProperties {
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
   renew?: boolean;
 }
-export const SavingsPlanOrderAliasProperties = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOrderAliasProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     savingsPlanOrderId: S.optional(S.String),
@@ -2447,7 +2399,7 @@ export interface CreateSavingsPlanOrderAliasResponse {
   /** Resource provider kind */
   kind?: string;
 }
-export const CreateSavingsPlanOrderAliasResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSavingsPlanOrderAliasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2463,7 +2415,7 @@ export const CreateSavingsPlanOrderAliasResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSourceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateSourceRequestTagsMap =
+const CreateSourceRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateSourceRequestTagsMap>;
 
 /** Properties of a credit source */
@@ -2475,7 +2427,7 @@ export interface CreditSourcePropertiesInput {
   /** Commitment towards the benefit. */
   credit?: Commitment;
 }
-export const CreditSourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CreditSourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceResourceId: S.optional(S.String),
     impactedBillingPeriod: S.optional(S.String),
@@ -2489,16 +2441,13 @@ export const CreditSourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type CreateSourceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const CreateSourceRequestIdentityUserAssignedIdentitiesMap =
-  CreateCreditRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateSourceRequestIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateSourceRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateSourceRequestIdentityUserAssignedIdentitiesMap;
 }
-export const CreateSourceRequestIdentity =
+const CreateSourceRequestIdentity =
   CreateCreditRequestIdentity as any as S.Schema<CreateSourceRequestIdentity>;
 
 export interface CreateSourceRequest {
@@ -2527,7 +2476,7 @@ export interface CreateSourceRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2553,7 +2502,7 @@ export const CreateSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateSourceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateSourceResponseTagsMap =
+const CreateSourceResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateSourceResponseTagsMap>;
 
 /** Properties of a credit source */
@@ -2567,7 +2516,7 @@ export interface CreditSourceProperties {
   /** Commitment towards the benefit. */
   credit?: Commitment;
 }
-export const CreditSourceProperties = /*@__PURE__*/ S.suspend(() =>
+const CreditSourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CreditStatus),
     sourceResourceId: S.optional(S.String),
@@ -2580,9 +2529,6 @@ export const CreditSourceProperties = /*@__PURE__*/ S.suspend(() =>
 export type CreateSourceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreateSourceResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreateSourceResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateSourceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2593,7 +2539,7 @@ export interface CreateSourceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateSourceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const CreateSourceResponseIdentity =
+const CreateSourceResponseIdentity =
   CancelCreditResponseIdentity as any as S.Schema<CreateSourceResponseIdentity>;
 
 export interface CreateSourceResponse {
@@ -2624,7 +2570,7 @@ export interface CreateSourceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreateSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2652,7 +2598,7 @@ export interface CreditsChangeSponsorRequest {
   /** Financial code identifying the new sponsor. This is an alphanumeric identifier assigned by the billing system, for example P20567384. */
   sponsorId?: string;
 }
-export const CreditsChangeSponsorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreditsChangeSponsorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2671,7 +2617,7 @@ export const CreditsChangeSponsorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditsChangeSponsorRequest>;
 
 export interface CreditsChangeSponsorResponse {}
-export const CreditsChangeSponsorResponse =
+const CreditsChangeSponsorResponse =
   UserAssignedIdentityInput as any as S.Schema<CreditsChangeSponsorResponse>;
 
 export interface DeleteConditionalCreditRequest {
@@ -2682,7 +2628,7 @@ export interface DeleteConditionalCreditRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
-export const DeleteConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2700,9 +2646,9 @@ export const DeleteConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConditionalCreditRequest>;
 
 export interface DeleteConditionalCreditResponse {}
-export const DeleteConditionalCreditResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteConditionalCreditResponse" },
-) as any as S.Schema<DeleteConditionalCreditResponse>;
+const DeleteConditionalCreditResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteConditionalCreditResponse",
+}) as any as S.Schema<DeleteConditionalCreditResponse>;
 
 export interface DeleteCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2712,7 +2658,7 @@ export interface DeleteCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
-export const DeleteCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2728,8 +2674,7 @@ export const DeleteCreditRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCreditRequest" }) as any as S.Schema<DeleteCreditRequest>;
 
 export interface DeleteCreditResponse {}
-export const DeleteCreditResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteCreditResponse>;
+const DeleteCreditResponse = UserAssignedIdentityInput as any as S.Schema<DeleteCreditResponse>;
 
 export interface DeleteDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2739,7 +2684,7 @@ export interface DeleteDiscountRequest {
   /** Name of the discount */
   discountName: string;
 }
-export const DeleteDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2755,8 +2700,7 @@ export const DeleteDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDiscountRequest" }) as any as S.Schema<DeleteDiscountRequest>;
 
 export interface DeleteDiscountResponse {}
-export const DeleteDiscountResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteDiscountResponse>;
+const DeleteDiscountResponse = UserAssignedIdentityInput as any as S.Schema<DeleteDiscountResponse>;
 
 export interface DeleteFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2766,7 +2710,7 @@ export interface DeleteFreeServiceRequest {
   /** Name of the free service */
   freeServiceName: string;
 }
-export const DeleteFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2782,7 +2726,7 @@ export const DeleteFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFreeServiceRequest" }) as any as S.Schema<DeleteFreeServiceRequest>;
 
 export interface DeleteFreeServiceResponse {}
-export const DeleteFreeServiceResponse =
+const DeleteFreeServiceResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteFreeServiceResponse>;
 
 export interface DeleteMaccRequest {
@@ -2793,7 +2737,7 @@ export interface DeleteMaccRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
-export const DeleteMaccRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMaccRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2809,7 +2753,7 @@ export const DeleteMaccRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMaccRequest" }) as any as S.Schema<DeleteMaccRequest>;
 
 export interface DeleteMaccResponse {}
-export const DeleteMaccResponse = UserAssignedIdentityInput as any as S.Schema<DeleteMaccResponse>;
+const DeleteMaccResponse = UserAssignedIdentityInput as any as S.Schema<DeleteMaccResponse>;
 
 export interface DeleteSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2821,7 +2765,7 @@ export interface DeleteSourceRequest {
   /** Name of the credit source */
   sourceName: string;
 }
-export const DeleteSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2838,8 +2782,7 @@ export const DeleteSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSourceRequest" }) as any as S.Schema<DeleteSourceRequest>;
 
 export interface DeleteSourceResponse {}
-export const DeleteSourceResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteSourceResponse>;
+const DeleteSourceResponse = UserAssignedIdentityInput as any as S.Schema<DeleteSourceResponse>;
 
 export interface GetBillingAccountCatalogGroupsOpsRequest {
   /** The name of the billing account. */
@@ -2847,7 +2790,7 @@ export interface GetBillingAccountCatalogGroupsOpsRequest {
   /** The name of the CatalogGroup */
   catalogGroupName: string;
 }
-export const GetBillingAccountCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     catalogGroupName: S.String.pipe(T.Label()),
@@ -2872,11 +2815,11 @@ export type ResourceType =
   | "FreeServices"
   | "SavingsPlans"
   | "Reservations";
-export const ResourceType = S.String;
+const ResourceType = S.String;
 
 /** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
 export type CatalogGroupPropertiesKeywordsList = Array<string>;
-export const CatalogGroupPropertiesKeywordsList = /*@__PURE__*/ S.Array(
+const CatalogGroupPropertiesKeywordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CatalogGroupPropertiesKeywordsList>;
 
@@ -2887,7 +2830,7 @@ export interface CatalogGroupCapability {
   /** The capability value (e.g., Supported, Not Supported). */
   value: string;
 }
-export const CatalogGroupCapability = /*@__PURE__*/ S.suspend(() =>
+const CatalogGroupCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -2896,13 +2839,13 @@ export const CatalogGroupCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** Capabilities of the catalog group as key-value pairs. Omitted when a benefit type has no defined capabilities. */
 export type CatalogGroupPropertiesCapabilitiesList = Array<CatalogGroupCapability>;
-export const CatalogGroupPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
+const CatalogGroupPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   CatalogGroupCapability,
 ) as any as S.Schema<CatalogGroupPropertiesCapabilitiesList>;
 
 /** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
 export type CatalogGroupPropertiesDisclaimersList = Array<string>;
-export const CatalogGroupPropertiesDisclaimersList =
+const CatalogGroupPropertiesDisclaimersList =
   CatalogGroupPropertiesKeywordsList as any as S.Schema<CatalogGroupPropertiesDisclaimersList>;
 
 /** Properties of a catalog group. */
@@ -2926,7 +2869,7 @@ export interface CatalogGroupProperties {
   /** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
   disclaimers?: CatalogGroupPropertiesDisclaimersList;
 }
-export const CatalogGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const CatalogGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefitResourceType: ResourceType,
     displayName: S.optional(S.String),
@@ -2952,7 +2895,7 @@ export interface GetBillingAccountCatalogGroupsOpsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
-export const GetBillingAccountCatalogGroupsOpsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountCatalogGroupsOpsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2972,7 +2915,7 @@ export interface GetBillingProfileCatalogGroupsOpsRequest {
   /** The name of the CatalogGroup */
   catalogGroupName: string;
 }
-export const GetBillingProfileCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingProfileCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     billingProfileName: S.String.pipe(T.Label()),
@@ -3001,7 +2944,7 @@ export interface GetBillingProfileCatalogGroupsOpsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
-export const GetBillingProfileCatalogGroupsOpsResponse =
+const GetBillingProfileCatalogGroupsOpsResponse =
   GetBillingAccountCatalogGroupsOpsResponse as any as S.Schema<GetBillingProfileCatalogGroupsOpsResponse>;
 
 export interface GetConditionalCreditRequest {
@@ -3012,7 +2955,7 @@ export interface GetConditionalCreditRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
-export const GetConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3031,14 +2974,14 @@ export const GetConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetConditionalCreditResponseTagsMap = { [key: string]: string | undefined };
-export const GetConditionalCreditResponseTagsMap =
+const GetConditionalCreditResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<GetConditionalCreditResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
+const GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
   CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3051,7 +2994,7 @@ export interface GetConditionalCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetConditionalCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetConditionalCreditResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -3092,7 +3035,7 @@ export interface GetConditionalCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetConditionalCreditResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConditionalCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3122,7 +3065,7 @@ export interface GetConditionalCreditContributorFromPrimaryRequest {
   /** Unique name of contributor in the format {contributorCloudSubId}_{resourceGroupName}_{nameInContributorTenant}. */
   contributorName: string;
 }
-export const GetConditionalCreditContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConditionalCreditContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3152,7 +3095,7 @@ export type MilestoneStatus =
   | "Removed"
   | "PendingSettlement"
   | "Missed";
-export const MilestoneStatus = S.String;
+const MilestoneStatus = S.String;
 
 /** Award details for milestone completion */
 export interface Award {
@@ -3171,7 +3114,7 @@ export interface Award {
   /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
   duration?: Term;
 }
-export const Award = /*@__PURE__*/ S.suspend(() =>
+const Award = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credit: S.optional(Commitment),
     startAt: S.optional(S.String),
@@ -3198,7 +3141,7 @@ export interface ConditionalCreditMilestoneBase {
   /** Award details for this milestone (only present for primary conditional credits) */
   award?: Award;
 }
-export const ConditionalCreditMilestoneBase = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditMilestoneBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     milestoneId: S.optional(S.String),
     name: S.optional(S.String),
@@ -3214,7 +3157,7 @@ export const ConditionalCreditMilestoneBase = /*@__PURE__*/ S.suspend(() =>
 /** List of milestones copied from primary conditional credit (excludes award details) */
 export type ContributorConditionalCreditPropertiesMilestonesList =
   Array<ConditionalCreditMilestoneBase>;
-export const ContributorConditionalCreditPropertiesMilestonesList = /*@__PURE__*/ S.Array(
+const ContributorConditionalCreditPropertiesMilestonesList = /*@__PURE__*/ S.Array(
   ConditionalCreditMilestoneBase,
 ) as any as S.Schema<ContributorConditionalCreditPropertiesMilestonesList>;
 
@@ -3257,7 +3200,7 @@ export interface ContributorConditionalCreditProperties {
   /** Fully-qualified billing account resource identifier of the primary CACO. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
   primaryBillingAccountResourceId?: string;
 }
-export const ContributorConditionalCreditProperties = /*@__PURE__*/ S.suspend(() =>
+const ContributorConditionalCreditProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityType: ConditionalCreditEntityType,
     displayName: S.optional(S.String),
@@ -3294,7 +3237,7 @@ export interface GetConditionalCreditContributorFromPrimaryResponse {
   /** Conditional credit contributor properties */
   properties?: ContributorConditionalCreditProperties;
 }
-export const GetConditionalCreditContributorFromPrimaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConditionalCreditContributorFromPrimaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3316,7 +3259,7 @@ export interface GetConditionalCreditTransactionRequest {
   /** Name of the transaction */
   transactionName: string;
 }
-export const GetConditionalCreditTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConditionalCreditTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3336,11 +3279,11 @@ export const GetConditionalCreditTransactionRequest = /*@__PURE__*/ S.suspend(()
 
 /** The type of charge for a transaction. */
 export type TransactionChargeType = "Usage" | "Purchase" | "Refund";
-export const TransactionChargeType = S.String;
+const TransactionChargeType = S.String;
 
 /** Billing lifecycle status of a transaction. */
 export type TransactionBillingStatus = "Open" | "Closed";
-export const TransactionBillingStatus = S.String;
+const TransactionBillingStatus = S.String;
 
 /** Product details for a transaction */
 export interface TransactionProductDetails {
@@ -3355,7 +3298,7 @@ export interface TransactionProductDetails {
   /** The publisher type of the product, for example "Microsoft" for first-party or a third-party publisher name. Additional values may be introduced in the future. */
   publisherType?: string;
 }
-export const TransactionProductDetails = /*@__PURE__*/ S.suspend(() =>
+const TransactionProductDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuTitle: S.optional(S.String),
     productFamily: S.optional(S.String),
@@ -3388,7 +3331,7 @@ export interface TransactionProperties {
   /** Product details including SKU title, SKU properties, product family, type, and publisher type. */
   productDetails?: TransactionProductDetails;
 }
-export const TransactionProperties = /*@__PURE__*/ S.suspend(() =>
+const TransactionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(BenefitProvisioningState),
     date: S.optional(S.String),
@@ -3414,7 +3357,7 @@ export interface GetConditionalCreditTransactionResponse {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
-export const GetConditionalCreditTransactionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConditionalCreditTransactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3436,7 +3379,7 @@ export interface GetContributorFromPrimaryRequest {
   /** Unique name of contributor in the format {contributorCloudSubId}_{resourceGroupName}_{nameInContributorTenant}. */
   contributorName: string;
 }
-export const GetContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3466,7 +3409,7 @@ export interface GetContributorFromPrimaryResponse {
   /** MACC contributor properties */
   properties?: MaccModelProperties;
 }
-export const GetContributorFromPrimaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContributorFromPrimaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3486,7 +3429,7 @@ export interface GetCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
-export const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3503,16 +3446,10 @@ export const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCreditResponseTagsMap = { [key: string]: string | undefined };
-export const GetCreditResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetCreditResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetCreditResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetCreditResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetCreditResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -3523,9 +3460,6 @@ export interface GetCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetCreditResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<GetCreditResponseIdentity>;
-
 export interface GetCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3554,7 +3488,7 @@ export interface GetCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetCreditResponse = CancelCreditResponse as any as S.Schema<GetCreditResponse>;
+const GetCreditResponse = CancelCreditResponse as any as S.Schema<GetCreditResponse>;
 
 export interface GetCreditTransactionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3566,7 +3500,7 @@ export interface GetCreditTransactionRequest {
   /** Name of the transaction */
   transactionName: string;
 }
-export const GetCreditTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCreditTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3596,7 +3530,7 @@ export interface GetCreditTransactionResponse {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
-export const GetCreditTransactionResponse =
+const GetCreditTransactionResponse =
   GetConditionalCreditTransactionResponse as any as S.Schema<GetCreditTransactionResponse>;
 
 export interface GetDiscountRequest {
@@ -3607,7 +3541,7 @@ export interface GetDiscountRequest {
   /** Name of the discount */
   discountName: string;
 }
-export const GetDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3624,9 +3558,6 @@ export const GetDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDiscountResponseTagsMap = { [key: string]: string | undefined };
-export const GetDiscountResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetDiscountResponseTagsMap>;
-
 export interface GetDiscountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3655,7 +3586,7 @@ export interface GetDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetDiscountResponse = CancelDiscountResponse as any as S.Schema<GetDiscountResponse>;
+const GetDiscountResponse = CancelDiscountResponse as any as S.Schema<GetDiscountResponse>;
 
 export interface GetFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3665,7 +3596,7 @@ export interface GetFreeServiceRequest {
   /** Name of the free service */
   freeServiceName: string;
 }
-export const GetFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3682,16 +3613,13 @@ export const GetFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetFreeServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetFreeServiceResponseTagsMap =
+const GetFreeServiceResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<GetFreeServiceResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetFreeServiceResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetFreeServiceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -3702,7 +3630,7 @@ export interface GetFreeServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetFreeServiceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetFreeServiceResponseIdentity =
+const GetFreeServiceResponseIdentity =
   CancelCreditResponseIdentity as any as S.Schema<GetFreeServiceResponseIdentity>;
 
 export interface GetFreeServiceResponse {
@@ -3733,7 +3661,7 @@ export interface GetFreeServiceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFreeServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3759,7 +3687,7 @@ export interface GetMaccRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
-export const GetMaccRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMaccRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3776,14 +3704,14 @@ export const GetMaccRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMaccResponseTagsMap = { [key: string]: string | undefined };
-export const GetMaccResponseTagsMap =
+const GetMaccResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<GetMaccResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetMaccResponseIdentityUserAssignedIdentitiesMap =
+const GetMaccResponseIdentityUserAssignedIdentitiesMap =
   CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetMaccResponseIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3796,7 +3724,7 @@ export interface GetMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetMaccResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetMaccResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetMaccResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -3833,7 +3761,7 @@ export interface GetMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetMaccResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMaccResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3861,7 +3789,7 @@ export interface GetMaccTransactionRequest {
   /** Name of the transaction */
   transactionName: string;
 }
-export const GetMaccTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMaccTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3891,14 +3819,14 @@ export interface GetMaccTransactionResponse {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
-export const GetMaccTransactionResponse =
+const GetMaccTransactionResponse =
   GetConditionalCreditTransactionResponse as any as S.Schema<GetMaccTransactionResponse>;
 
 export interface GetReservationOrderAliasRequest {
   /** Name of the reservation order alias */
   reservationOrderAliasName: string;
 }
-export const GetReservationOrderAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReservationOrderAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservationOrderAliasName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3929,7 +3857,7 @@ export interface GetReservationOrderAliasResponse {
   /** The Azure Region where the reserved resource lives. */
   location?: string;
 }
-export const GetReservationOrderAliasResponse =
+const GetReservationOrderAliasResponse =
   CreateReservationOrderAliasResponse as any as S.Schema<GetReservationOrderAliasResponse>;
 
 export interface GetSavingsPlanRequest {
@@ -3940,7 +3868,7 @@ export interface GetSavingsPlanRequest {
   /** May be used to expand the detail information of some properties. */
   _expand?: string;
 }
-export const GetSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderId: S.String.pipe(T.Label()),
     savingsPlanId: S.String.pipe(T.Label()),
@@ -3961,7 +3889,7 @@ export interface ExtendedStatusInfo {
   /** The message giving detailed information about the status code. */
   message?: string;
 }
-export const ExtendedStatusInfo = /*@__PURE__*/ S.suspend(() =>
+const ExtendedStatusInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.String),
     message: S.optional(S.String),
@@ -3979,7 +3907,7 @@ export interface UtilizationAggregates {
   /** The aggregate value unit */
   valueUnit?: string;
 }
-export const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
+const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grain: S.optional(S.Number),
     grainUnit: S.optional(S.String),
@@ -3990,7 +3918,7 @@ export const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of aggregates of a savings plan's utilization */
 export type UtilizationAggregatesList = Array<UtilizationAggregates>;
-export const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
+const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
   UtilizationAggregates,
 ) as any as S.Schema<UtilizationAggregatesList>;
 
@@ -4001,7 +3929,7 @@ export interface Utilization {
   /** The array of aggregates of a savings plan's utilization */
   aggregates?: UtilizationAggregatesList;
 }
-export const Utilization = /*@__PURE__*/ S.suspend(() =>
+const Utilization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trend: S.optional(S.String),
     aggregates: S.optional(UtilizationAggregatesList),
@@ -4030,7 +3958,7 @@ export interface PurchaseRequestProperties {
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
 }
-export const PurchaseRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const PurchaseRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     billingScopeId: S.optional(S.String),
@@ -4052,7 +3980,7 @@ export interface PurchaseRequest {
   sku?: ResourceSku;
   properties?: PurchaseRequestProperties;
 }
-export const PurchaseRequest = /*@__PURE__*/ S.suspend(() =>
+const PurchaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(ResourceSku),
     properties: S.optional(PurchaseRequestProperties),
@@ -4062,7 +3990,7 @@ export const PurchaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RenewProperties {
   purchaseProperties?: PurchaseRequest;
 }
-export const RenewProperties = /*@__PURE__*/ S.suspend(() =>
+const RenewProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseProperties: S.optional(PurchaseRequest),
   }),
@@ -4115,7 +4043,7 @@ export interface SavingsPlanModelProperties {
   renewDestination?: string;
   renewProperties?: RenewProperties;
 }
-export const SavingsPlanModelProperties = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanModelProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     provisioningState: S.optional(ProvisioningState),
@@ -4159,7 +4087,7 @@ export interface GetSavingsPlanResponse {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
-export const GetSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4176,7 +4104,7 @@ export interface GetSavingsPlanOrderRequest {
   /** May be used to expand the detail information of some properties. */
   _expand?: string;
 }
-export const GetSavingsPlanOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavingsPlanOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderId: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -4194,7 +4122,7 @@ export const GetSavingsPlanOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
 export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
-export const PaymentStatus = S.String;
+const PaymentStatus = S.String;
 
 /** Information about payment related to a savings plan order. */
 export interface PaymentDetail {
@@ -4212,7 +4140,7 @@ export interface PaymentDetail {
   /** Billing account */
   billingAccount?: string;
 }
-export const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
+const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dueDate: S.optional(S.String),
     paymentDate: S.optional(S.String),
@@ -4225,7 +4153,7 @@ export const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentDetail" }) as any as S.Schema<PaymentDetail>;
 
 export type BillingPlanInformationTransactionsList = Array<PaymentDetail>;
-export const BillingPlanInformationTransactionsList = /*@__PURE__*/ S.Array(
+const BillingPlanInformationTransactionsList = /*@__PURE__*/ S.Array(
   PaymentDetail,
 ) as any as S.Schema<BillingPlanInformationTransactionsList>;
 
@@ -4239,7 +4167,7 @@ export interface BillingPlanInformation {
   nextPaymentDueDate?: string;
   transactions?: BillingPlanInformationTransactionsList;
 }
-export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
+const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricingCurrencyTotal: S.optional(Price),
     startDate: S.optional(S.String),
@@ -4249,7 +4177,7 @@ export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingPlanInformation" }) as any as S.Schema<BillingPlanInformation>;
 
 export type SavingsPlanOrderModelPropertiesSavingsPlansList = Array<string>;
-export const SavingsPlanOrderModelPropertiesSavingsPlansList =
+const SavingsPlanOrderModelPropertiesSavingsPlansList =
   CatalogGroupPropertiesKeywordsList as any as S.Schema<SavingsPlanOrderModelPropertiesSavingsPlansList>;
 
 /** Savings plan order properties */
@@ -4279,7 +4207,7 @@ export interface SavingsPlanOrderModelProperties {
   savingsPlans?: SavingsPlanOrderModelPropertiesSavingsPlansList;
   extendedStatusInfo?: ExtendedStatusInfo;
 }
-export const SavingsPlanOrderModelProperties = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOrderModelProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     provisioningState: S.optional(ProvisioningState),
@@ -4313,7 +4241,7 @@ export interface GetSavingsPlanOrderResponse {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
-export const GetSavingsPlanOrderResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSavingsPlanOrderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4330,7 +4258,7 @@ export interface GetSavingsPlanOrderAliasRequest {
   /** Name of the savings plan order alias */
   savingsPlanOrderAliasName: string;
 }
-export const GetSavingsPlanOrderAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavingsPlanOrderAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderAliasName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4361,7 +4289,7 @@ export interface GetSavingsPlanOrderAliasResponse {
   /** Resource provider kind */
   kind?: string;
 }
-export const GetSavingsPlanOrderAliasResponse =
+const GetSavingsPlanOrderAliasResponse =
   CreateSavingsPlanOrderAliasResponse as any as S.Schema<GetSavingsPlanOrderAliasResponse>;
 
 export interface GetSourceRequest {
@@ -4374,7 +4302,7 @@ export interface GetSourceRequest {
   /** Name of the credit source */
   sourceName: string;
 }
-export const GetSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4392,16 +4320,10 @@ export const GetSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSourceResponseTagsMap = { [key: string]: string | undefined };
-export const GetSourceResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetSourceResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetSourceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const GetSourceResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetSourceResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetSourceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -4412,9 +4334,6 @@ export interface GetSourceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetSourceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const GetSourceResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<GetSourceResponseIdentity>;
-
 export interface GetSourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4443,7 +4362,7 @@ export interface GetSourceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const GetSourceResponse = CreateSourceResponse as any as S.Schema<GetSourceResponse>;
+const GetSourceResponse = CreateSourceResponse as any as S.Schema<GetSourceResponse>;
 
 export interface GetSubscriptionCatalogGroupsOpsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4451,7 +4370,7 @@ export interface GetSubscriptionCatalogGroupsOpsRequest {
   /** The name of the CatalogGroup */
   catalogGroupName: string;
 }
-export const GetSubscriptionCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     catalogGroupName: S.String.pipe(T.Label()),
@@ -4479,14 +4398,14 @@ export interface GetSubscriptionCatalogGroupsOpsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
-export const GetSubscriptionCatalogGroupsOpsResponse =
+const GetSubscriptionCatalogGroupsOpsResponse =
   GetBillingAccountCatalogGroupsOpsResponse as any as S.Schema<GetSubscriptionCatalogGroupsOpsResponse>;
 
 export interface ListApplicableMaccsRequest {
   /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
   billingAccountId: string;
 }
-export const ListApplicableMaccsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicableMaccsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4514,7 +4433,7 @@ export interface ApplicableMacc {
   /** Applicable MACC properties */
   properties?: MaccModelProperties;
 }
-export const ApplicableMacc = /*@__PURE__*/ S.suspend(() =>
+const ApplicableMacc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4526,7 +4445,7 @@ export const ApplicableMacc = /*@__PURE__*/ S.suspend(() =>
 
 /** List Applicable MACCs. */
 export type ApplicableMaccListValueList = Array<ApplicableMacc>;
-export const ApplicableMaccListValueList = /*@__PURE__*/ S.Array(
+const ApplicableMaccListValueList = /*@__PURE__*/ S.Array(
   ApplicableMacc,
 ) as any as S.Schema<ApplicableMaccListValueList>;
 
@@ -4537,7 +4456,7 @@ export interface ApplicableMaccList {
   /** Url to get the next page. */
   nextLink?: string;
 }
-export const ApplicableMaccList = /*@__PURE__*/ S.suspend(() =>
+const ApplicableMaccList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ApplicableMaccListValueList),
     nextLink: S.optional(S.String),
@@ -4550,7 +4469,7 @@ export interface ListBillingAccountCatalogGroupsOpsRequest {
   /** OData filter expression to narrow the list of catalog groups. */
   _filter?: string;
 }
-export const ListBillingAccountCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -4579,7 +4498,7 @@ export interface CatalogGroup {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
-export const CatalogGroup = /*@__PURE__*/ S.suspend(() =>
+const CatalogGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4591,7 +4510,7 @@ export const CatalogGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The CatalogGroup items on this page */
 export type CatalogGroupListResultValueList = Array<CatalogGroup>;
-export const CatalogGroupListResultValueList = /*@__PURE__*/ S.Array(
+const CatalogGroupListResultValueList = /*@__PURE__*/ S.Array(
   CatalogGroup,
 ) as any as S.Schema<CatalogGroupListResultValueList>;
 
@@ -4602,7 +4521,7 @@ export interface CatalogGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CatalogGroupListResult = /*@__PURE__*/ S.suspend(() =>
+const CatalogGroupListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CatalogGroupListResultValueList,
     nextLink: S.optional(S.String),
@@ -4617,7 +4536,7 @@ export interface ListBillingProfileCatalogGroupsOpsRequest {
   /** OData filter expression to narrow the list of catalog groups. */
   _filter?: string;
 }
-export const ListBillingProfileCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingProfileCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     billingProfileName: S.String.pipe(T.Label()),
@@ -4640,7 +4559,7 @@ export interface ListConditionalCreditByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListConditionalCreditByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConditionalCreditByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4658,16 +4577,13 @@ export const ListConditionalCreditByResourceGroupRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tags. */
 export type ConditionalCreditTagsMap = { [key: string]: string | undefined };
-export const ConditionalCreditTagsMap =
+const ConditionalCreditTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<ConditionalCreditTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ConditionalCreditIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const ConditionalCreditIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<ConditionalCreditIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ConditionalCreditIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -4678,7 +4594,7 @@ export interface ConditionalCreditIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ConditionalCreditIdentityUserAssignedIdentitiesMap;
 }
-export const ConditionalCreditIdentity =
+const ConditionalCreditIdentity =
   CancelCreditResponseIdentity as any as S.Schema<ConditionalCreditIdentity>;
 
 /** Resource definition for Conditional Credits. */
@@ -4710,7 +4626,7 @@ export interface ConditionalCredit {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const ConditionalCredit = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCredit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4730,7 +4646,7 @@ export const ConditionalCredit = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConditionalCredit items on this page */
 export type ConditionalCreditListValueList = Array<ConditionalCredit>;
-export const ConditionalCreditListValueList = /*@__PURE__*/ S.Array(
+const ConditionalCreditListValueList = /*@__PURE__*/ S.Array(
   ConditionalCredit,
 ) as any as S.Schema<ConditionalCreditListValueList>;
 
@@ -4741,7 +4657,7 @@ export interface ConditionalCreditList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConditionalCreditList = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConditionalCreditListValueList,
     nextLink: S.optional(S.String),
@@ -4752,7 +4668,7 @@ export interface ListConditionalCreditBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListConditionalCreditBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConditionalCreditBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4773,7 +4689,7 @@ export interface ListConditionalCreditContributorFromApplicableConditionalCredit
   /** System ID of the primary MACC. */
   systemId: string;
 }
-export const ListConditionalCreditContributorFromApplicableConditionalCreditRequest =
+const ListConditionalCreditContributorFromApplicableConditionalCreditRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountId: S.String.pipe(T.Label()),
@@ -4803,12 +4719,12 @@ export interface ConditionalCreditContributor {
   /** Conditional credit contributor properties */
   properties?: ContributorConditionalCreditProperties;
 }
-export const ConditionalCreditContributor =
+const ConditionalCreditContributor =
   GetConditionalCreditContributorFromPrimaryResponse as any as S.Schema<ConditionalCreditContributor>;
 
 /** The ConditionalCreditContributor items on this page */
 export type ConditionalCreditContributorListValueList = Array<ConditionalCreditContributor>;
-export const ConditionalCreditContributorListValueList = /*@__PURE__*/ S.Array(
+const ConditionalCreditContributorListValueList = /*@__PURE__*/ S.Array(
   ConditionalCreditContributor,
 ) as any as S.Schema<ConditionalCreditContributorListValueList>;
 
@@ -4819,7 +4735,7 @@ export interface ConditionalCreditContributorList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConditionalCreditContributorList = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditContributorList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConditionalCreditContributorListValueList,
     nextLink: S.optional(S.String),
@@ -4836,7 +4752,7 @@ export interface ListConditionalCreditContributorFromPrimaryRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
-export const ListConditionalCreditContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConditionalCreditContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4857,7 +4773,7 @@ export interface ListConditionalCreditsScopeRequest {
   /** The scope at which the benefits are listed. */
   scope: string;
 }
-export const ListConditionalCreditsScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConditionalCreditsScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -4880,7 +4796,7 @@ export interface ListConditionalCreditTransactionByParentRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
-export const ListConditionalCreditTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConditionalCreditTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4910,12 +4826,12 @@ export interface ConditionalCreditTransaction {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
-export const ConditionalCreditTransaction =
+const ConditionalCreditTransaction =
   GetConditionalCreditTransactionResponse as any as S.Schema<ConditionalCreditTransaction>;
 
 /** The ConditionalCreditTransaction items on this page */
 export type ConditionalCreditTransactionsListValueList = Array<ConditionalCreditTransaction>;
-export const ConditionalCreditTransactionsListValueList = /*@__PURE__*/ S.Array(
+const ConditionalCreditTransactionsListValueList = /*@__PURE__*/ S.Array(
   ConditionalCreditTransaction,
 ) as any as S.Schema<ConditionalCreditTransactionsListValueList>;
 
@@ -4926,7 +4842,7 @@ export interface ConditionalCreditTransactionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConditionalCreditTransactionsList = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditTransactionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConditionalCreditTransactionsListValueList,
     nextLink: S.optional(S.String),
@@ -4941,7 +4857,7 @@ export interface ListContributorFromApplicableMaccRequest {
   /** System ID of the primary MACC. */
   systemId: string;
 }
-export const ListContributorFromApplicableMaccRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContributorFromApplicableMaccRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     systemId: S.String.pipe(T.Label()),
@@ -4970,11 +4886,9 @@ export interface Contributor {
   /** MACC contributor properties */
   properties?: MaccModelProperties;
 }
-export const Contributor = ApplicableMacc as any as S.Schema<Contributor>;
-
 /** The Contributor items on this page */
 export type ContributorListValueList = Array<Contributor>;
-export const ContributorListValueList =
+const ContributorListValueList =
   ApplicableMaccListValueList as any as S.Schema<ContributorListValueList>;
 
 /** Contributor list */
@@ -4984,7 +4898,7 @@ export interface ContributorList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ContributorList = /*@__PURE__*/ S.suspend(() =>
+const ContributorList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ContributorListValueList,
     nextLink: S.optional(S.String),
@@ -4999,7 +4913,7 @@ export interface ListContributorFromPrimaryRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
-export const ListContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContributorFromPrimaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5020,7 +4934,7 @@ export interface ListCreditApplicableRequest {
   /** The scope at which the benefits are listed. */
   scope: string;
 }
-export const ListCreditApplicableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCreditApplicableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -5037,16 +4951,12 @@ export const ListCreditApplicableRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreditTagsMap = { [key: string]: string | undefined };
-export const CreditTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreditTagsMap>;
+const CreditTagsMap = CancelConditionalCreditResponseTagsMap as any as S.Schema<CreditTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreditIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreditIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreditIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreditIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -5057,7 +4967,7 @@ export interface CreditIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreditIdentityUserAssignedIdentitiesMap;
 }
-export const CreditIdentity = GetMaccResponseIdentity as any as S.Schema<CreditIdentity>;
+const CreditIdentity = GetMaccResponseIdentity as any as S.Schema<CreditIdentity>;
 
 /** Credit resource definition */
 export interface Credit {
@@ -5088,7 +4998,7 @@ export interface Credit {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const Credit = /*@__PURE__*/ S.suspend(() =>
+const Credit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5108,9 +5018,7 @@ export const Credit = /*@__PURE__*/ S.suspend(() =>
 
 /** The Credit items on this page */
 export type CreditsListValueList = Array<Credit>;
-export const CreditsListValueList = /*@__PURE__*/ S.Array(
-  Credit,
-) as any as S.Schema<CreditsListValueList>;
+const CreditsListValueList = /*@__PURE__*/ S.Array(Credit) as any as S.Schema<CreditsListValueList>;
 
 /** List of credits */
 export interface CreditsList {
@@ -5119,7 +5027,7 @@ export interface CreditsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CreditsList = /*@__PURE__*/ S.suspend(() =>
+const CreditsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CreditsListValueList,
     nextLink: S.optional(S.String),
@@ -5132,7 +5040,7 @@ export interface ListCreditByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListCreditByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCreditByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5152,7 +5060,7 @@ export interface ListCreditBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListCreditBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCreditBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5175,7 +5083,7 @@ export interface ListCreditTransactionByParentRequest {
   /** Name of the credit */
   creditName: string;
 }
-export const ListCreditTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCreditTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5194,11 +5102,9 @@ export const ListCreditTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Transaction resource definition for Credits */
 export type CreditTransaction = ConditionalCreditTransaction;
-export const CreditTransaction = ConditionalCreditTransaction;
-
 /** The CreditTransaction items on this page */
 export type TransactionsListValueList = Array<ConditionalCreditTransaction>;
-export const TransactionsListValueList =
+const TransactionsListValueList =
   ConditionalCreditTransactionsListValueList as any as S.Schema<TransactionsListValueList>;
 
 /** List of transactions */
@@ -5208,7 +5114,7 @@ export interface TransactionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TransactionsList = /*@__PURE__*/ S.suspend(() =>
+const TransactionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TransactionsListValueList,
     nextLink: S.optional(S.String),
@@ -5221,7 +5127,7 @@ export interface ListDiscountsResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListDiscountsResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDiscountsResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5239,9 +5145,6 @@ export const ListDiscountsResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DiscountTagsMap = { [key: string]: string | undefined };
-export const DiscountTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<DiscountTagsMap>;
-
 /** Resource definition for Discounts. */
 export interface Discount {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5271,11 +5174,11 @@ export interface Discount {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const Discount = CancelDiscountResponse as any as S.Schema<Discount>;
+const Discount = CancelDiscountResponse as any as S.Schema<Discount>;
 
 /** The Discount items on this page */
 export type DiscountListValueList = Array<Discount>;
-export const DiscountListValueList = /*@__PURE__*/ S.Array(
+const DiscountListValueList = /*@__PURE__*/ S.Array(
   Discount,
 ) as any as S.Schema<DiscountListValueList>;
 
@@ -5286,7 +5189,7 @@ export interface DiscountList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DiscountList = /*@__PURE__*/ S.suspend(() =>
+const DiscountList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DiscountListValueList,
     nextLink: S.optional(S.String),
@@ -5297,7 +5200,7 @@ export interface ListDiscountsScopeRequest {
   /** The scope at which the benefits are listed. */
   scope: string;
 }
-export const ListDiscountsScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDiscountsScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -5316,7 +5219,7 @@ export interface ListDiscountsSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListDiscountsSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDiscountsSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5337,7 +5240,7 @@ export interface ListFreeServiceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListFreeServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFreeServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5355,16 +5258,13 @@ export const ListFreeServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type FreeServicesTagsMap = { [key: string]: string | undefined };
-export const FreeServicesTagsMap =
+const FreeServicesTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<FreeServicesTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type FreeServicesIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const FreeServicesIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<FreeServicesIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface FreeServicesIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -5375,8 +5275,7 @@ export interface FreeServicesIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: FreeServicesIdentityUserAssignedIdentitiesMap;
 }
-export const FreeServicesIdentity =
-  GetMaccResponseIdentity as any as S.Schema<FreeServicesIdentity>;
+const FreeServicesIdentity = GetMaccResponseIdentity as any as S.Schema<FreeServicesIdentity>;
 
 /** Free Services resource definition */
 export interface FreeServices {
@@ -5407,7 +5306,7 @@ export interface FreeServices {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const FreeServices = /*@__PURE__*/ S.suspend(() =>
+const FreeServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5427,7 +5326,7 @@ export const FreeServices = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of free services */
 export type FreeServicesListValueList = Array<FreeServices>;
-export const FreeServicesListValueList = /*@__PURE__*/ S.Array(
+const FreeServicesListValueList = /*@__PURE__*/ S.Array(
   FreeServices,
 ) as any as S.Schema<FreeServicesListValueList>;
 
@@ -5438,7 +5337,7 @@ export interface FreeServicesList {
   /** The URL to get the next set of results */
   nextLink?: string;
 }
-export const FreeServicesList = /*@__PURE__*/ S.suspend(() =>
+const FreeServicesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(FreeServicesListValueList),
     nextLink: S.optional(S.String),
@@ -5449,7 +5348,7 @@ export interface ListFreeServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListFreeServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFreeServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5470,7 +5369,7 @@ export interface ListMaccByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListMaccByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMaccByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5488,15 +5387,10 @@ export const ListMaccByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MaccTagsMap = { [key: string]: string | undefined };
-export const MaccTagsMap = CancelConditionalCreditResponseTagsMap as any as S.Schema<MaccTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type MaccIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const MaccIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<MaccIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface MaccIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -5507,8 +5401,6 @@ export interface MaccIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MaccIdentityUserAssignedIdentitiesMap;
 }
-export const MaccIdentity = GetMaccResponseIdentity as any as S.Schema<MaccIdentity>;
-
 /** Microsoft Azure Consumption Commitment. */
 export interface Macc {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5538,11 +5430,11 @@ export interface Macc {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const Macc = GetMaccResponse as any as S.Schema<Macc>;
+const Macc = GetMaccResponse as any as S.Schema<Macc>;
 
 /** The Macc items on this page */
 export type MaccListValueList = Array<Macc>;
-export const MaccListValueList = /*@__PURE__*/ S.Array(Macc) as any as S.Schema<MaccListValueList>;
+const MaccListValueList = /*@__PURE__*/ S.Array(Macc) as any as S.Schema<MaccListValueList>;
 
 /** MACC list */
 export interface MaccList {
@@ -5551,7 +5443,7 @@ export interface MaccList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MaccList = /*@__PURE__*/ S.suspend(() =>
+const MaccList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MaccListValueList,
     nextLink: S.optional(S.String),
@@ -5562,7 +5454,7 @@ export interface ListMaccBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListMaccBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMaccBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5585,7 +5477,7 @@ export interface ListMaccTransactionByParentRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
-export const ListMaccTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMaccTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5604,13 +5496,8 @@ export const ListMaccTransactionByParentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Transaction resource definition for Maccs */
 export type MaccTransaction = ConditionalCreditTransaction;
-export const MaccTransaction = ConditionalCreditTransaction;
-
 /** The MaccTransaction items on this page */
 export type MaccTransactionsListValueList = Array<ConditionalCreditTransaction>;
-export const MaccTransactionsListValueList =
-  ConditionalCreditTransactionsListValueList as any as S.Schema<MaccTransactionsListValueList>;
-
 /** List of Macc transactions */
 export interface MaccTransactionsList {
   /** The MaccTransaction items on this page */
@@ -5618,10 +5505,10 @@ export interface MaccTransactionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MaccTransactionsList = TransactionsList as any as S.Schema<MaccTransactionsList>;
+const MaccTransactionsList = TransactionsList as any as S.Schema<MaccTransactionsList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -5643,7 +5530,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -5654,11 +5541,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -5673,7 +5560,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -5685,7 +5572,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -5695,7 +5582,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -5706,7 +5593,7 @@ export interface ListSavingsPlanRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
 }
-export const ListSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5734,11 +5621,11 @@ export interface SavingsPlanModel {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
-export const SavingsPlanModel = GetSavingsPlanResponse as any as S.Schema<SavingsPlanModel>;
+const SavingsPlanModel = GetSavingsPlanResponse as any as S.Schema<SavingsPlanModel>;
 
 /** The SavingsPlanModel items on this page */
 export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
-export const SavingsPlanModelListValueList = /*@__PURE__*/ S.Array(
+const SavingsPlanModelListValueList = /*@__PURE__*/ S.Array(
   SavingsPlanModel,
 ) as any as S.Schema<SavingsPlanModelListValueList>;
 
@@ -5749,7 +5636,7 @@ export interface SavingsPlanModelList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SavingsPlanModelList = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanModelList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SavingsPlanModelListValueList,
     nextLink: S.optional(S.String),
@@ -5770,7 +5657,7 @@ export interface ListSavingsPlanAllRequest {
   /** To number of savings plans to return */
   take?: number;
 }
-export const ListSavingsPlanAllRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSavingsPlanAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
     _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
@@ -5792,7 +5679,7 @@ export const ListSavingsPlanAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of savings plans. */
 export type SavingsPlanModelListResultValueList = Array<SavingsPlanModel>;
-export const SavingsPlanModelListResultValueList =
+const SavingsPlanModelListResultValueList =
   SavingsPlanModelListValueList as any as S.Schema<SavingsPlanModelListResultValueList>;
 
 /** The roll up count summary of savings plans in each state */
@@ -5816,7 +5703,7 @@ export interface SavingsPlanSummaryCount {
   /** The number of savings plans in Warning state */
   warningCount?: number;
 }
-export const SavingsPlanSummaryCount = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanSummaryCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     succeededCount: S.optional(S.Number),
     failedCount: S.optional(S.Number),
@@ -5837,7 +5724,7 @@ export interface SavingsPlanSummary {
   /** The roll up count summary of savings plans in each state */
   value?: SavingsPlanSummaryCount;
 }
-export const SavingsPlanSummary = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(SavingsPlanSummaryCount),
@@ -5846,7 +5733,7 @@ export const SavingsPlanSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The roll out count summary of the savings plans */
 export type SavingsPlanModelListResultAdditionalPropertiesList = Array<SavingsPlanSummary>;
-export const SavingsPlanModelListResultAdditionalPropertiesList = /*@__PURE__*/ S.Array(
+const SavingsPlanModelListResultAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   SavingsPlanSummary,
 ) as any as S.Schema<SavingsPlanModelListResultAdditionalPropertiesList>;
 
@@ -5859,7 +5746,7 @@ export interface SavingsPlanModelListResult {
   /** The roll out count summary of the savings plans */
   additionalProperties?: SavingsPlanModelListResultAdditionalPropertiesList;
 }
-export const SavingsPlanModelListResult = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanModelListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SavingsPlanModelListResultValueList),
     nextLink: S.optional(S.String),
@@ -5870,7 +5757,7 @@ export const SavingsPlanModelListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanModelListResult>;
 
 export interface ListSavingsPlanOrderRequest {}
-export const ListSavingsPlanOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSavingsPlanOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -5898,7 +5785,7 @@ export interface SavingsPlanOrderModel {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
-export const SavingsPlanOrderModel = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOrderModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5911,7 +5798,7 @@ export const SavingsPlanOrderModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The SavingsPlanOrderModel items on this page */
 export type SavingsPlanOrderModelListValueList = Array<SavingsPlanOrderModel>;
-export const SavingsPlanOrderModelListValueList = /*@__PURE__*/ S.Array(
+const SavingsPlanOrderModelListValueList = /*@__PURE__*/ S.Array(
   SavingsPlanOrderModel,
 ) as any as S.Schema<SavingsPlanOrderModelListValueList>;
 
@@ -5922,7 +5809,7 @@ export interface SavingsPlanOrderModelList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SavingsPlanOrderModelList = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOrderModelList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SavingsPlanOrderModelListValueList,
     nextLink: S.optional(S.String),
@@ -5944,7 +5831,7 @@ export interface SellerResourceListRequestProperties {
   /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
   primaryResourceId?: string;
 }
-export const SellerResourceListRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const SellerResourceListRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountResourceId: S.String,
     _filter: S.optional(S.String.pipe(T.Body("$filter"))),
@@ -5960,7 +5847,7 @@ export interface ListSellerResourceRequest {
   /** Request properties to list maccs under a billing account */
   properties?: SellerResourceListRequestProperties;
 }
-export const ListSellerResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSellerResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(SellerResourceListRequestProperties),
   }).pipe(
@@ -5976,12 +5863,12 @@ export const ListSellerResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSellerResourceRequest>;
 
 export type ListSellerResourceResponseBodyList = Array<Macc>;
-export const ListSellerResourceResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSellerResourceResponseBodyList = /*@__PURE__*/ S.Array(
   Macc,
 ) as any as S.Schema<ListSellerResourceResponseBodyList>;
 
 export type ListSellerResourceResponse = ListSellerResourceResponseBodyList;
-export const ListSellerResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSellerResourceResponse = /*@__PURE__*/ S.suspend(() =>
   ListSellerResourceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSellerResourceResponse",
@@ -5995,7 +5882,7 @@ export interface ListSourceByCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
-export const ListSourceByCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSourceByCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6014,16 +5901,13 @@ export const ListSourceByCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreditSourceTagsMap = { [key: string]: string | undefined };
-export const CreditSourceTagsMap =
+const CreditSourceTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<CreditSourceTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreditSourceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const CreditSourceIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<CreditSourceIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreditSourceIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -6034,8 +5918,7 @@ export interface CreditSourceIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreditSourceIdentityUserAssignedIdentitiesMap;
 }
-export const CreditSourceIdentity =
-  GetMaccResponseIdentity as any as S.Schema<CreditSourceIdentity>;
+const CreditSourceIdentity = GetMaccResponseIdentity as any as S.Schema<CreditSourceIdentity>;
 
 /** Credit source resource definition */
 export interface CreditSource {
@@ -6066,7 +5949,7 @@ export interface CreditSource {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const CreditSource = /*@__PURE__*/ S.suspend(() =>
+const CreditSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6086,7 +5969,7 @@ export const CreditSource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CreditSource items on this page */
 export type CreditSourcesListValueList = Array<CreditSource>;
-export const CreditSourcesListValueList = /*@__PURE__*/ S.Array(
+const CreditSourcesListValueList = /*@__PURE__*/ S.Array(
   CreditSource,
 ) as any as S.Schema<CreditSourcesListValueList>;
 
@@ -6097,7 +5980,7 @@ export interface CreditSourcesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CreditSourcesList = /*@__PURE__*/ S.suspend(() =>
+const CreditSourcesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CreditSourcesListValueList,
     nextLink: S.optional(S.String),
@@ -6110,7 +5993,7 @@ export interface ListSubscriptionCatalogGroupsOpsRequest {
   /** OData filter expression to narrow the list of catalog groups. */
   _filter?: string;
 }
-export const ListSubscriptionCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionCatalogGroupsOpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -6136,7 +6019,7 @@ export interface MaccsChargeShortfallRequest {
   /** Charge shortfall request properties */
   properties?: Shortfall;
 }
-export const MaccsChargeShortfallRequest = /*@__PURE__*/ S.suspend(() =>
+const MaccsChargeShortfallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6156,16 +6039,13 @@ export const MaccsChargeShortfallRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MaccsChargeShortfallResponseTagsMap = { [key: string]: string | undefined };
-export const MaccsChargeShortfallResponseTagsMap =
+const MaccsChargeShortfallResponseTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<MaccsChargeShortfallResponseTagsMap>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface MaccsChargeShortfallResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -6176,7 +6056,7 @@ export interface MaccsChargeShortfallResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap;
 }
-export const MaccsChargeShortfallResponseIdentity =
+const MaccsChargeShortfallResponseIdentity =
   GetConditionalCreditResponseIdentity as any as S.Schema<MaccsChargeShortfallResponseIdentity>;
 
 export interface MaccsChargeShortfallResponse {
@@ -6207,7 +6087,7 @@ export interface MaccsChargeShortfallResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const MaccsChargeShortfallResponse = /*@__PURE__*/ S.suspend(() =>
+const MaccsChargeShortfallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6235,7 +6115,7 @@ export interface MaccsWriteOffRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
-export const MaccsWriteOffRequest = /*@__PURE__*/ S.suspend(() =>
+const MaccsWriteOffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6252,16 +6132,10 @@ export const MaccsWriteOffRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MaccsWriteOffResponseTagsMap = { [key: string]: string | undefined };
-export const MaccsWriteOffResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<MaccsWriteOffResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface MaccsWriteOffResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -6272,9 +6146,6 @@ export interface MaccsWriteOffResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MaccsWriteOffResponseIdentityUserAssignedIdentitiesMap;
 }
-export const MaccsWriteOffResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<MaccsWriteOffResponseIdentity>;
-
 export interface MaccsWriteOffResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6303,13 +6174,13 @@ export interface MaccsWriteOffResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const MaccsWriteOffResponse = CancelMaccResponse as any as S.Schema<MaccsWriteOffResponse>;
+const MaccsWriteOffResponse = CancelMaccResponse as any as S.Schema<MaccsWriteOffResponse>;
 
 export interface SavingsPlanOrderElevateRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
 }
-export const SavingsPlanOrderElevateRequest = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOrderElevateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6333,7 +6204,7 @@ export interface RoleAssignmentEntityProperties {
   /** Scope of the role assignment entity */
   scope?: string;
 }
-export const RoleAssignmentEntityProperties = /*@__PURE__*/ S.suspend(() =>
+const RoleAssignmentEntityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     roleDefinitionId: S.optional(S.String),
@@ -6352,7 +6223,7 @@ export interface RoleAssignmentEntity {
   /** Role assignment entity properties */
   properties?: RoleAssignmentEntityProperties;
 }
-export const RoleAssignmentEntity = /*@__PURE__*/ S.suspend(() =>
+const RoleAssignmentEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6380,7 +6251,7 @@ export interface PurchaseRequestPropertiesInput {
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
 }
-export const PurchaseRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PurchaseRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     billingScopeId: S.optional(S.String),
@@ -6401,7 +6272,7 @@ export interface PurchaseRequestInput {
   sku?: ResourceSku;
   properties?: PurchaseRequestPropertiesInput;
 }
-export const PurchaseRequestInput = /*@__PURE__*/ S.suspend(() =>
+const PurchaseRequestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(ResourceSku),
     properties: S.optional(PurchaseRequestPropertiesInput),
@@ -6411,7 +6282,7 @@ export const PurchaseRequestInput = /*@__PURE__*/ S.suspend(() =>
 export interface RenewPropertiesInput {
   purchaseProperties?: PurchaseRequestInput;
 }
-export const RenewPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RenewPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseProperties: S.optional(PurchaseRequestInput),
   }),
@@ -6429,7 +6300,7 @@ export interface SavingsPlanUpdateRequestPropertiesInput {
   renew?: boolean;
   renewProperties?: RenewPropertiesInput;
 }
-export const SavingsPlanUpdateRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanUpdateRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     appliedScopeType: S.optional(AppliedScopeType),
@@ -6443,7 +6314,7 @@ export const SavingsPlanUpdateRequestPropertiesInput = /*@__PURE__*/ S.suspend((
 
 export type SavingsPlanValidateUpdateRequestBenefitsList =
   Array<SavingsPlanUpdateRequestPropertiesInput>;
-export const SavingsPlanValidateUpdateRequestBenefitsList = /*@__PURE__*/ S.Array(
+const SavingsPlanValidateUpdateRequestBenefitsList = /*@__PURE__*/ S.Array(
   SavingsPlanUpdateRequestPropertiesInput,
 ) as any as S.Schema<SavingsPlanValidateUpdateRequestBenefitsList>;
 
@@ -6454,7 +6325,7 @@ export interface SavingsPlanValidateUpdateRequest {
   savingsPlanId: string;
   benefits?: SavingsPlanValidateUpdateRequestBenefitsList;
 }
-export const SavingsPlanValidateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanValidateUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderId: S.String.pipe(T.Label()),
     savingsPlanId: S.String.pipe(T.Label()),
@@ -6480,7 +6351,7 @@ export interface SavingsPlanValidResponseProperty {
   /** Failure reason if the provided input was invalid */
   reason?: string;
 }
-export const SavingsPlanValidResponseProperty = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanValidResponseProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.optional(S.Boolean),
     reasonCode: S.optional(S.String),
@@ -6491,7 +6362,7 @@ export const SavingsPlanValidResponseProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanValidResponseProperty>;
 
 export type SavingsPlanValidateResponseBenefitsList = Array<SavingsPlanValidResponseProperty>;
-export const SavingsPlanValidateResponseBenefitsList = /*@__PURE__*/ S.Array(
+const SavingsPlanValidateResponseBenefitsList = /*@__PURE__*/ S.Array(
   SavingsPlanValidResponseProperty,
 ) as any as S.Schema<SavingsPlanValidateResponseBenefitsList>;
 
@@ -6500,7 +6371,7 @@ export interface SavingsPlanValidateResponse {
   /** Url to get the next page. */
   nextLink?: string;
 }
-export const SavingsPlanValidateResponse = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanValidateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefits: S.optional(SavingsPlanValidateResponseBenefitsList),
     nextLink: S.optional(S.String),
@@ -6520,7 +6391,7 @@ export interface AwardInput {
   /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
   duration?: Term | (string & {});
 }
-export const AwardInput = /*@__PURE__*/ S.suspend(() =>
+const AwardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credit: S.optional(Commitment),
     startAt: S.optional(S.String),
@@ -6544,7 +6415,7 @@ export interface ConditionalCreditMilestoneInput {
   /** Award details for this milestone (only present for primary conditional credits) */
   award?: AwardInput;
 }
-export const ConditionalCreditMilestoneInput = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditMilestoneInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     milestoneId: S.optional(S.String),
     name: S.optional(S.String),
@@ -6560,7 +6431,7 @@ export const ConditionalCreditMilestoneInput = /*@__PURE__*/ S.suspend(() =>
 /** Updated milestones list (only applicable for primary conditional credits) */
 export type ConditionalCreditPatchRequestPropertiesInputMilestonesList =
   Array<ConditionalCreditMilestoneInput>;
-export const ConditionalCreditPatchRequestPropertiesInputMilestonesList = /*@__PURE__*/ S.Array(
+const ConditionalCreditPatchRequestPropertiesInputMilestonesList = /*@__PURE__*/ S.Array(
   ConditionalCreditMilestoneInput,
 ) as any as S.Schema<ConditionalCreditPatchRequestPropertiesInputMilestonesList>;
 
@@ -6575,7 +6446,7 @@ export interface ConditionalCreditPatchRequestPropertiesInput {
   /** Updated milestones list (only applicable for primary conditional credits) */
   milestones?: ConditionalCreditPatchRequestPropertiesInputMilestonesList;
 }
-export const ConditionalCreditPatchRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConditionalCreditPatchRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     endAt: S.optional(S.String),
@@ -6588,7 +6459,7 @@ export const ConditionalCreditPatchRequestPropertiesInput = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type UpdateConditionalCreditRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateConditionalCreditRequestTagsMap =
+const UpdateConditionalCreditRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateConditionalCreditRequestTagsMap>;
 
 export interface UpdateConditionalCreditRequest {
@@ -6603,7 +6474,7 @@ export interface UpdateConditionalCreditRequest {
   /** Resource tags. */
   tags?: UpdateConditionalCreditRequestTagsMap;
 }
-export const UpdateConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6624,16 +6495,10 @@ export const UpdateConditionalCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateConditionalCreditResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateConditionalCreditResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateConditionalCreditResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
-  CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateConditionalCreditResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -6644,9 +6509,6 @@ export interface UpdateConditionalCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateConditionalCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateConditionalCreditResponseIdentity =
-  CancelConditionalCreditResponseIdentity as any as S.Schema<UpdateConditionalCreditResponseIdentity>;
-
 export interface UpdateConditionalCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6675,17 +6537,17 @@ export interface UpdateConditionalCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateConditionalCreditResponse =
+const UpdateConditionalCreditResponse =
   CancelConditionalCreditResponse as any as S.Schema<UpdateConditionalCreditResponse>;
 
 /** Resource tags */
 export type UpdateCreditRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCreditRequestTagsMap =
+const UpdateCreditRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateCreditRequestTagsMap>;
 
 /** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
 export type CreditPatchPropertiesBreakdownList = Array<CreditBreakdownItem>;
-export const CreditPatchPropertiesBreakdownList =
+const CreditPatchPropertiesBreakdownList =
   CreditPropertiesBreakdownList as any as S.Schema<CreditPatchPropertiesBreakdownList>;
 
 /** Credit patch properties */
@@ -6697,7 +6559,7 @@ export interface CreditPatchProperties {
   /** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
   breakdown?: CreditPatchPropertiesBreakdownList;
 }
-export const CreditPatchProperties = /*@__PURE__*/ S.suspend(() =>
+const CreditPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credit: S.optional(Commitment),
     endAt: S.optional(S.String),
@@ -6717,7 +6579,7 @@ export interface UpdateCreditRequest {
   /** Credit patch properties */
   properties?: CreditPatchProperties;
 }
-export const UpdateCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6736,16 +6598,10 @@ export const UpdateCreditRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCreditResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCreditResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateCreditResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateCreditResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateCreditResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateCreditResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -6756,9 +6612,6 @@ export interface UpdateCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateCreditResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateCreditResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<UpdateCreditResponseIdentity>;
-
 export interface UpdateCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6787,7 +6640,7 @@ export interface UpdateCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateCreditResponse = CancelCreditResponse as any as S.Schema<UpdateCreditResponse>;
+const UpdateCreditResponse = CancelCreditResponse as any as S.Schema<UpdateCreditResponse>;
 
 /** Discounts patch request properties */
 export interface DiscountPatchRequestProperties {
@@ -6796,7 +6649,7 @@ export interface DiscountPatchRequestProperties {
   /** End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate. */
   endAt?: string;
 }
-export const DiscountPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const DiscountPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     endAt: S.optional(S.String),
@@ -6807,7 +6660,7 @@ export const DiscountPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDiscountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDiscountRequestTagsMap =
+const UpdateDiscountRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateDiscountRequestTagsMap>;
 
 export interface UpdateDiscountRequest {
@@ -6822,7 +6675,7 @@ export interface UpdateDiscountRequest {
   /** Resource tags. */
   tags?: UpdateDiscountRequestTagsMap;
 }
-export const UpdateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6841,9 +6694,6 @@ export const UpdateDiscountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDiscountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDiscountResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateDiscountResponseTagsMap>;
-
 export interface UpdateDiscountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6872,15 +6722,14 @@ export interface UpdateDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateDiscountResponse =
-  CancelDiscountResponse as any as S.Schema<UpdateDiscountResponse>;
+const UpdateDiscountResponse = CancelDiscountResponse as any as S.Schema<UpdateDiscountResponse>;
 
 /** Free services patch request properties */
 export interface FreeServicesPatchRequestProperties {
   /** Updated expiration date and time of the free services */
   endAt?: string;
 }
-export const FreeServicesPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const FreeServicesPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endAt: S.optional(S.String),
   }),
@@ -6890,7 +6739,7 @@ export const FreeServicesPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFreeServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateFreeServiceRequestTagsMap =
+const UpdateFreeServiceRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateFreeServiceRequestTagsMap>;
 
 export interface UpdateFreeServiceRequest {
@@ -6905,7 +6754,7 @@ export interface UpdateFreeServiceRequest {
   /** Resource tags. */
   tags?: UpdateFreeServiceRequestTagsMap;
 }
-export const UpdateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6924,16 +6773,10 @@ export const UpdateFreeServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateFreeServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateFreeServiceResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateFreeServiceResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateFreeServiceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -6944,9 +6787,6 @@ export interface UpdateFreeServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateFreeServiceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateFreeServiceResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<UpdateFreeServiceResponseIdentity>;
-
 export interface UpdateFreeServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6975,12 +6815,12 @@ export interface UpdateFreeServiceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateFreeServiceResponse =
+const UpdateFreeServiceResponse =
   CreateFreeServiceResponse as any as S.Schema<UpdateFreeServiceResponse>;
 
 /** List of milestones to update or add. */
 export type MaccPatchRequestPropertiesMilestonesList = Array<MaccMilestone>;
-export const MaccPatchRequestPropertiesMilestonesList =
+const MaccPatchRequestPropertiesMilestonesList =
   MaccModelPropertiesMilestonesList as any as S.Schema<MaccPatchRequestPropertiesMilestonesList>;
 
 /** Macc patch request properties */
@@ -7006,7 +6846,7 @@ export interface MaccPatchRequestProperties {
   /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
   primaryBillingAccountResourceId?: string;
 }
-export const MaccPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const MaccPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitment: S.optional(Commitment),
     endAt: S.optional(S.String),
@@ -7025,7 +6865,7 @@ export const MaccPatchRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMaccRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMaccRequestTagsMap =
+const UpdateMaccRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateMaccRequestTagsMap>;
 
 export interface UpdateMaccRequest {
@@ -7040,7 +6880,7 @@ export interface UpdateMaccRequest {
   /** Resource tags. */
   tags?: UpdateMaccRequestTagsMap;
 }
-export const UpdateMaccRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMaccRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7059,16 +6899,10 @@ export const UpdateMaccRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMaccResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMaccResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateMaccResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateMaccResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateMaccResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateMaccResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -7079,9 +6913,6 @@ export interface UpdateMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateMaccResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateMaccResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<UpdateMaccResponseIdentity>;
-
 export interface UpdateMaccResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7110,7 +6941,7 @@ export interface UpdateMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateMaccResponse = CancelMaccResponse as any as S.Schema<UpdateMaccResponse>;
+const UpdateMaccResponse = CancelMaccResponse as any as S.Schema<UpdateMaccResponse>;
 
 export interface UpdateSavingsPlanRequest {
   /** Order ID of the savings plan */
@@ -7120,7 +6951,7 @@ export interface UpdateSavingsPlanRequest {
   /** Savings plan patch request */
   properties?: SavingsPlanUpdateRequestPropertiesInput;
 }
-export const UpdateSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOrderId: S.String.pipe(T.Label()),
     savingsPlanId: S.String.pipe(T.Label()),
@@ -7149,7 +6980,7 @@ export interface UpdateSavingsPlanResponse {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
-export const UpdateSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7164,7 +6995,7 @@ export const UpdateSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource Tags */
 export type UpdateSourceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSourceRequestTagsMap =
+const UpdateSourceRequestTagsMap =
   CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateSourceRequestTagsMap>;
 
 export interface UpdateSourceRequest {
@@ -7179,7 +7010,7 @@ export interface UpdateSourceRequest {
   /** Resource Tags */
   tags?: UpdateSourceRequestTagsMap;
 }
-export const UpdateSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7198,16 +7029,10 @@ export const UpdateSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSourceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSourceResponseTagsMap =
-  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateSourceResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateSourceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
-export const UpdateSourceResponseIdentityUserAssignedIdentitiesMap =
-  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<UpdateSourceResponseIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface UpdateSourceResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -7218,9 +7043,6 @@ export interface UpdateSourceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateSourceResponseIdentityUserAssignedIdentitiesMap;
 }
-export const UpdateSourceResponseIdentity =
-  CancelCreditResponseIdentity as any as S.Schema<UpdateSourceResponseIdentity>;
-
 export interface UpdateSourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7249,7 +7071,7 @@ export interface UpdateSourceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
-export const UpdateSourceResponse = CreateSourceResponse as any as S.Schema<UpdateSourceResponse>;
+const UpdateSourceResponse = CreateSourceResponse as any as S.Schema<UpdateSourceResponse>;
 
 /** Represents benefit model type for validation. Includes all resource types plus legacy singular-form values used by the validate API. */
 export type BenefitType =
@@ -7262,14 +7084,14 @@ export type BenefitType =
   | "Reservations"
   | "SavingsPlan"
   | "MACC";
-export const BenefitType = S.String;
+const BenefitType = S.String;
 
 /** Abstract benefit model to validate. */
 export interface BenefitValidateModel {
   /** Type of benefit to validate. This is used to determine the model type for validation. */
   benefitType: BenefitType | (string & {});
 }
-export const BenefitValidateModel = /*@__PURE__*/ S.suspend(() =>
+const BenefitValidateModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefitType: BenefitType,
   }),
@@ -7277,7 +7099,7 @@ export const BenefitValidateModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines benefits for validation. */
 export type ValidateBenefitRequestBenefitsList = Array<BenefitValidateModel>;
-export const ValidateBenefitRequestBenefitsList = /*@__PURE__*/ S.Array(
+const ValidateBenefitRequestBenefitsList = /*@__PURE__*/ S.Array(
   BenefitValidateModel,
 ) as any as S.Schema<ValidateBenefitRequestBenefitsList>;
 
@@ -7285,7 +7107,7 @@ export interface ValidateBenefitRequest {
   /** Defines benefits for validation. */
   benefits?: ValidateBenefitRequestBenefitsList;
 }
-export const ValidateBenefitRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateBenefitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefits: S.optional(ValidateBenefitRequestBenefitsList),
   }).pipe(
@@ -7309,7 +7131,7 @@ export interface BenefitValidateResponseProperty {
   /** Resource identifier of the benefit that was validated. */
   resourceId?: string;
 }
-export const BenefitValidateResponseProperty = /*@__PURE__*/ S.suspend(() =>
+const BenefitValidateResponseProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.optional(S.Boolean),
     reasonCode: S.optional(S.String),
@@ -7322,7 +7144,7 @@ export const BenefitValidateResponseProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines benefit validation response for benefits. */
 export type BenefitValidateResponseBenefitsList = Array<BenefitValidateResponseProperty>;
-export const BenefitValidateResponseBenefitsList = /*@__PURE__*/ S.Array(
+const BenefitValidateResponseBenefitsList = /*@__PURE__*/ S.Array(
   BenefitValidateResponseProperty,
 ) as any as S.Schema<BenefitValidateResponseBenefitsList>;
 
@@ -7333,7 +7155,7 @@ export interface BenefitValidateResponse {
   /** Url to get the next page. */
   nextLink?: string;
 }
-export const BenefitValidateResponse = /*@__PURE__*/ S.suspend(() =>
+const BenefitValidateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefits: S.optional(BenefitValidateResponseBenefitsList),
     nextLink: S.optional(S.String),

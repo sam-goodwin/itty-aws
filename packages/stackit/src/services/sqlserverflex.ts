@@ -47,7 +47,7 @@ export class UnprocessableEntity
   ) {}
 
 export type CreateDatabaseRequestRegion = "eu01";
-export const CreateDatabaseRequestRegion = S.String;
+const CreateDatabaseRequestRegion = S.String;
 
 export interface CreateDatabaseRequest {
   /** The STACKIT project ID. */
@@ -61,7 +61,7 @@ export interface CreateDatabaseRequest {
   name: string;
   owner: string;
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: CreateDatabaseRequestRegion.pipe(T.Label()),
@@ -83,14 +83,14 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDatabaseResponse {
   id: number;
 }
-export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
   }),
 ).annotate({ identifier: "CreateDatabaseResponse" }) as any as S.Schema<CreateDatabaseResponse>;
 
 export type CreateInstanceRequestRegion = "eu01";
-export const CreateInstanceRequestRegion = S.String;
+const CreateInstanceRequestRegion = S.String;
 
 /** this defines which key to use for storage encryption */
 export interface InstanceEncryption {
@@ -102,7 +102,7 @@ export interface InstanceEncryption {
   kekKeyVersion: string;
   serviceAccount: string;
 }
-export const InstanceEncryption = /*@__PURE__*/ S.suspend(() =>
+const InstanceEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kekKeyId: S.String,
     kekKeyRingId: S.String,
@@ -113,25 +113,25 @@ export const InstanceEncryption = /*@__PURE__*/ S.suspend(() =>
 
 /** A dictionary of user-defined key-value pairs used to categorize or organize the resource. **Rules for Keys:** * Must be between 1 and 63 characters long. * Must begin and end with an alphanumeric character (`[a-z0-9A-Z]`). * May contain dashes (`-`), underscores (`_`), and dots (`.`). * **Regex:** `^(?=.{1,63}$)([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$` * **Restriction:** The prefix `stackit-` is strictly reserved and cannot be used. **Rules for Values:** * Must be between 0 (empty string) and 63 characters long. * If not empty, must begin and end with an alphanumeric character. * May contain dashes (`-`), underscores (`_`), and dots (`.`). * **Regex:** `^(?=.{0,63}$)(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])*$` */
 export type Labels = { [key: string]: string | null | undefined };
-export const Labels = /*@__PURE__*/ S.Record(
+const Labels = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<Labels>;
 
 /** The network access scope of the instance U+26A0 **Note:** This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. */
 export type InstanceNetworkAccessScope = "PUBLIC" | "SNA";
-export const InstanceNetworkAccessScope = S.String;
+const InstanceNetworkAccessScope = S.String;
 
 /** List of IPV4 cidr. */
 export type Acl = Array<string>;
-export const Acl = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Acl>;
+const Acl = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Acl>;
 
 /** the network configuration of the instance. */
 export interface CreateInstanceRequestNetwork {
   accessScope?: InstanceNetworkAccessScope | (string & {});
   acl: Acl;
 }
-export const CreateInstanceRequestNetwork = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequestNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessScope: S.optional(InstanceNetworkAccessScope),
     acl: Acl,
@@ -145,7 +145,7 @@ export interface StorageCreate {
   class: string;
   size: number;
 }
-export const StorageCreate = /*@__PURE__*/ S.suspend(() =>
+const StorageCreate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     class: S.String,
     size: S.Number,
@@ -154,7 +154,7 @@ export const StorageCreate = /*@__PURE__*/ S.suspend(() =>
 
 /** The sqlserver version used for the instance. */
 export type InstanceVersion = "2022";
-export const InstanceVersion = S.String;
+const InstanceVersion = S.String;
 
 export interface CreateInstanceRequest {
   /** The STACKIT project ID. */
@@ -172,7 +172,7 @@ export interface CreateInstanceRequest {
   storage: StorageCreate;
   version: InstanceVersion | (string & {});
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: CreateInstanceRequestRegion.pipe(T.Label()),
@@ -198,18 +198,18 @@ export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInstanceResponse {
   id: string;
 }
-export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
 ).annotate({ identifier: "CreateInstanceResponse" }) as any as S.Schema<CreateInstanceResponse>;
 
 export type CreateUserRequestRegion = "eu01";
-export const CreateUserRequestRegion = S.String;
+const CreateUserRequestRegion = S.String;
 
 /** A list containing the user roles for the instance. A list with the valid user roles can be retrieved using the List Roles endpoint. */
 export type CreateUserRequestRolesList = Array<string>;
-export const CreateUserRequestRolesList = /*@__PURE__*/ S.Array(
+const CreateUserRequestRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateUserRequestRolesList>;
 
@@ -225,7 +225,7 @@ export interface CreateUserRequest {
   roles: CreateUserRequestRolesList;
   username: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: CreateUserRequestRegion.pipe(T.Label()),
@@ -244,7 +244,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 
 export type CreateUserResponseRolesList = Array<string>;
-export const CreateUserResponseRolesList =
+const CreateUserResponseRolesList =
   CreateUserRequestRolesList as any as S.Schema<CreateUserResponseRolesList>;
 
 export interface CreateUserResponse {
@@ -258,7 +258,7 @@ export interface CreateUserResponse {
   uri: string;
   username: string;
 }
-export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_database: S.String,
     host: S.String,
@@ -273,7 +273,7 @@ export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUserResponse" }) as any as S.Schema<CreateUserResponse>;
 
 export type DeleteDatabaseRequestRegion = "eu01";
-export const DeleteDatabaseRequestRegion = S.String;
+const DeleteDatabaseRequestRegion = S.String;
 
 export interface DeleteDatabaseRequest {
   /** The STACKIT project ID. */
@@ -285,7 +285,7 @@ export interface DeleteDatabaseRequest {
   /** The name of the database. */
   databaseName: string;
 }
-export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: DeleteDatabaseRequestRegion.pipe(T.Label()),
@@ -302,12 +302,12 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDatabaseResponse",
 }) as any as S.Schema<DeleteDatabaseResponse>;
 
 export type DeleteInstanceRequestRegion = "eu01";
-export const DeleteInstanceRequestRegion = S.String;
+const DeleteInstanceRequestRegion = S.String;
 
 export interface DeleteInstanceRequest {
   /** The STACKIT project ID. */
@@ -317,7 +317,7 @@ export interface DeleteInstanceRequest {
   /** The ID of the instance. */
   instanceId: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: DeleteInstanceRequestRegion.pipe(T.Label()),
@@ -333,11 +333,10 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse =
-  DeleteDatabaseResponse as any as S.Schema<DeleteInstanceResponse>;
+const DeleteInstanceResponse = DeleteDatabaseResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export type DeleteUserRequestRegion = "eu01";
-export const DeleteUserRequestRegion = S.String;
+const DeleteUserRequestRegion = S.String;
 
 export interface DeleteUserRequest {
   /** The STACKIT project ID. */
@@ -349,7 +348,7 @@ export interface DeleteUserRequest {
   /** The ID of the user. */
   userId: number;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: DeleteUserRequestRegion.pipe(T.Label()),
@@ -366,10 +365,10 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = DeleteDatabaseResponse as any as S.Schema<DeleteUserResponse>;
+const DeleteUserResponse = DeleteDatabaseResponse as any as S.Schema<DeleteUserResponse>;
 
 export type GetBackupRequestRegion = "eu01";
-export const GetBackupRequestRegion = S.String;
+const GetBackupRequestRegion = S.String;
 
 export interface GetBackupRequest {
   /** The STACKIT project ID. */
@@ -381,7 +380,7 @@ export interface GetBackupRequest {
   /** The ID of the backup. */
   backupId: number;
 }
-export const GetBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: GetBackupRequestRegion.pipe(T.Label()),
@@ -405,7 +404,7 @@ export interface GetBackupResponse {
   size: number;
   type: string;
 }
-export const GetBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completionTime: S.String,
     id: S.Number,
@@ -417,7 +416,7 @@ export const GetBackupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBackupResponse" }) as any as S.Schema<GetBackupResponse>;
 
 export type GetDatabaseRequestRegion = "eu01";
-export const GetDatabaseRequestRegion = S.String;
+const GetDatabaseRequestRegion = S.String;
 
 export interface GetDatabaseRequest {
   /** The STACKIT project ID. */
@@ -429,7 +428,7 @@ export interface GetDatabaseRequest {
   /** The name of the database. */
   databaseName: string;
 }
-export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: GetDatabaseRequestRegion.pipe(T.Label()),
@@ -452,7 +451,7 @@ export interface GetDatabaseResponse {
   name: string;
   owner: string;
 }
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collationName: S.String,
     compatibilityLevel: S.Number,
@@ -463,7 +462,7 @@ export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatabaseResponse" }) as any as S.Schema<GetDatabaseResponse>;
 
 export type GetInstanceRequestRegion = "eu01";
-export const GetInstanceRequestRegion = S.String;
+const GetInstanceRequestRegion = S.String;
 
 export interface GetInstanceRequest {
   /** The STACKIT project ID. */
@@ -473,7 +472,7 @@ export interface GetInstanceRequest {
   /** The ID of the instance. */
   instanceId: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: GetInstanceRequestRegion.pipe(T.Label()),
@@ -490,7 +489,7 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Edition of the MSSQL server instance */
 export type InstanceEdition = "Standard" | "EnterpriseCore" | "developer";
-export const InstanceEdition = S.String;
+const InstanceEdition = S.String;
 
 /** The access configuration of the instance */
 export interface InstanceNetwork {
@@ -499,7 +498,7 @@ export interface InstanceNetwork {
   instanceAddress?: string;
   routerAddress?: string;
 }
-export const InstanceNetwork = /*@__PURE__*/ S.suspend(() =>
+const InstanceNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessScope: S.optional(InstanceNetworkAccessScope),
     acl: S.optional(Acl),
@@ -510,17 +509,17 @@ export const InstanceNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** How many replicas the instance should have. */
 export type Replicas = 1 | 3;
-export const Replicas = S.Number;
+const Replicas = S.Number;
 
 export type State = "READY" | "PENDING" | "PROGRESSING" | "FAILURE" | "UNKNOWN" | "TERMINATING";
-export const State = S.String;
+const State = S.String;
 
 /** The object containing information about the storage size and class. */
 export interface Storage {
   class?: string;
   size?: number;
 }
-export const Storage = /*@__PURE__*/ S.suspend(() =>
+const Storage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     class: S.optional(S.String),
     size: S.optional(S.Number),
@@ -543,7 +542,7 @@ export interface GetInstanceResponse {
   storage: Storage;
   version: InstanceVersion;
 }
-export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupSchedule: S.String,
     edition: InstanceEdition,
@@ -563,7 +562,7 @@ export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetInstanceResponse" }) as any as S.Schema<GetInstanceResponse>;
 
 export type GetUserRequestRegion = "eu01";
-export const GetUserRequestRegion = S.String;
+const GetUserRequestRegion = S.String;
 
 export interface GetUserRequest {
   /** The STACKIT project ID. */
@@ -575,7 +574,7 @@ export interface GetUserRequest {
   /** The ID of the user. */
   userId: number;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: GetUserRequestRegion.pipe(T.Label()),
@@ -593,7 +592,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of user roles. */
 export type GetUserResponseRolesList = Array<string>;
-export const GetUserResponseRolesList =
+const GetUserResponseRolesList =
   CreateUserRequestRolesList as any as S.Schema<GetUserResponseRolesList>;
 
 export interface GetUserResponse {
@@ -606,7 +605,7 @@ export interface GetUserResponse {
   status: string;
   username: string;
 }
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_database: S.String,
     host: S.String,
@@ -619,7 +618,7 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserResponse" }) as any as S.Schema<GetUserResponse>;
 
 export type ListBackupsRequestRegion = "eu01";
-export const ListBackupsRequestRegion = S.String;
+const ListBackupsRequestRegion = S.String;
 
 export type BackupSort =
   | "end_time.desc"
@@ -634,7 +633,7 @@ export type BackupSort =
   | "size.asc"
   | "type.desc"
   | "type.asc";
-export const BackupSort = S.String;
+const BackupSort = S.String;
 
 export interface ListBackupsRequest {
   /** The STACKIT project ID. */
@@ -650,7 +649,7 @@ export interface ListBackupsRequest {
   /** Sorting of the backups to be returned on each page. */
   sort?: BackupSort | (string & {});
 }
-export const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListBackupsRequestRegion.pipe(T.Label()),
@@ -676,11 +675,11 @@ export interface ListBackup {
   size: number;
   type: string;
 }
-export const ListBackup = GetBackupResponse as any as S.Schema<ListBackup>;
+const ListBackup = GetBackupResponse as any as S.Schema<ListBackup>;
 
 /** List of the backups beloning to that database */
 export type ListBackupsResponseBackupsList = Array<ListBackup>;
-export const ListBackupsResponseBackupsList = /*@__PURE__*/ S.Array(
+const ListBackupsResponseBackupsList = /*@__PURE__*/ S.Array(
   ListBackup,
 ) as any as S.Schema<ListBackupsResponseBackupsList>;
 
@@ -690,7 +689,7 @@ export interface ListBackupsResponse {
   /** Name of the database the backups belong to */
   databaseName: string;
 }
-export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backups: ListBackupsResponseBackupsList,
     databaseName: S.String,
@@ -699,7 +698,7 @@ export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list containing the information about the backups. */
 export type ListBackupResponseBackupsList = Array<ListBackupsResponse>;
-export const ListBackupResponseBackupsList = /*@__PURE__*/ S.Array(
+const ListBackupResponseBackupsList = /*@__PURE__*/ S.Array(
   ListBackupsResponse,
 ) as any as S.Schema<ListBackupResponseBackupsList>;
 
@@ -710,7 +709,7 @@ export interface Pagination {
   totalPages: number;
   totalRows: number;
 }
-export const Pagination = /*@__PURE__*/ S.suspend(() =>
+const Pagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     size: S.Number,
@@ -725,7 +724,7 @@ export interface ListBackupResponse {
   backups: ListBackupResponseBackupsList;
   pagination: Pagination;
 }
-export const ListBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backups: ListBackupResponseBackupsList,
     pagination: Pagination,
@@ -733,7 +732,7 @@ export const ListBackupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBackupResponse" }) as any as S.Schema<ListBackupResponse>;
 
 export type ListCollationsRequestRegion = "eu01";
-export const ListCollationsRequestRegion = S.String;
+const ListCollationsRequestRegion = S.String;
 
 export interface ListCollationsRequest {
   /** The STACKIT project ID. */
@@ -743,7 +742,7 @@ export interface ListCollationsRequest {
   /** The ID of the instance. */
   instanceId: string;
 }
-export const ListCollationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListCollationsRequestRegion.pipe(T.Label()),
@@ -762,7 +761,7 @@ export interface DatabaseGetcollation {
   collation_name?: string;
   description?: string;
 }
-export const DatabaseGetcollation = /*@__PURE__*/ S.suspend(() =>
+const DatabaseGetcollation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collation_name: S.optional(S.String),
     description: S.optional(S.String),
@@ -771,7 +770,7 @@ export const DatabaseGetcollation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of collations available for the instance. */
 export type ListCollationsResponseCollationsList = Array<DatabaseGetcollation>;
-export const ListCollationsResponseCollationsList = /*@__PURE__*/ S.Array(
+const ListCollationsResponseCollationsList = /*@__PURE__*/ S.Array(
   DatabaseGetcollation,
 ) as any as S.Schema<ListCollationsResponseCollationsList>;
 
@@ -779,14 +778,14 @@ export interface ListCollationsResponse {
   /** List of collations available for the instance. */
   collations: ListCollationsResponseCollationsList;
 }
-export const ListCollationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collations: ListCollationsResponseCollationsList,
   }),
 ).annotate({ identifier: "ListCollationsResponse" }) as any as S.Schema<ListCollationsResponse>;
 
 export type ListCompatibilitiesRequestRegion = "eu01";
-export const ListCompatibilitiesRequestRegion = S.String;
+const ListCompatibilitiesRequestRegion = S.String;
 
 export interface ListCompatibilitiesRequest {
   /** The STACKIT project ID. */
@@ -796,7 +795,7 @@ export interface ListCompatibilitiesRequest {
   /** The ID of the instance. */
   instanceId: string;
 }
-export const ListCompatibilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCompatibilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListCompatibilitiesRequestRegion.pipe(T.Label()),
@@ -817,7 +816,7 @@ export interface DatabaseGetcompatibility {
   compatibility_level?: number;
   description?: string;
 }
-export const DatabaseGetcompatibility = /*@__PURE__*/ S.suspend(() =>
+const DatabaseGetcompatibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compatibility_level: S.optional(S.Number),
     description: S.optional(S.String),
@@ -826,7 +825,7 @@ export const DatabaseGetcompatibility = /*@__PURE__*/ S.suspend(() =>
 
 /** List of compatibilities available for a d */
 export type ListCompatibilityResponseCompatibilitiesList = Array<DatabaseGetcompatibility>;
-export const ListCompatibilityResponseCompatibilitiesList = /*@__PURE__*/ S.Array(
+const ListCompatibilityResponseCompatibilitiesList = /*@__PURE__*/ S.Array(
   DatabaseGetcompatibility,
 ) as any as S.Schema<ListCompatibilityResponseCompatibilitiesList>;
 
@@ -834,7 +833,7 @@ export interface ListCompatibilityResponse {
   /** List of compatibilities available for a d */
   compatibilities: ListCompatibilityResponseCompatibilitiesList;
 }
-export const ListCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compatibilities: ListCompatibilityResponseCompatibilitiesList,
   }),
@@ -843,7 +842,7 @@ export const ListCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCompatibilityResponse>;
 
 export type ListCurrentRunningRestoreJobsRequestRegion = "eu01";
-export const ListCurrentRunningRestoreJobsRequestRegion = S.String;
+const ListCurrentRunningRestoreJobsRequestRegion = S.String;
 
 export interface ListCurrentRunningRestoreJobsRequest {
   /** The STACKIT project ID. */
@@ -853,7 +852,7 @@ export interface ListCurrentRunningRestoreJobsRequest {
   /** The ID of the instance. */
   instanceId: string;
 }
-export const ListCurrentRunningRestoreJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCurrentRunningRestoreJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListCurrentRunningRestoreJobsRequestRegion.pipe(T.Label()),
@@ -882,7 +881,7 @@ export interface BackupRunningRestore {
   /** the start time of the current running restore job */
   start_time: string;
 }
-export const BackupRunningRestore = /*@__PURE__*/ S.suspend(() =>
+const BackupRunningRestore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.String,
     database_name: S.String,
@@ -894,7 +893,7 @@ export const BackupRunningRestore = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the currently running Restore jobs */
 export type ListCurrentRunningRestoreJobsRunningRestoresList = Array<BackupRunningRestore>;
-export const ListCurrentRunningRestoreJobsRunningRestoresList = /*@__PURE__*/ S.Array(
+const ListCurrentRunningRestoreJobsRunningRestoresList = /*@__PURE__*/ S.Array(
   BackupRunningRestore,
 ) as any as S.Schema<ListCurrentRunningRestoreJobsRunningRestoresList>;
 
@@ -902,7 +901,7 @@ export interface ListCurrentRunningRestoreJobs {
   /** List of the currently running Restore jobs */
   runningRestores: ListCurrentRunningRestoreJobsRunningRestoresList;
 }
-export const ListCurrentRunningRestoreJobs = /*@__PURE__*/ S.suspend(() =>
+const ListCurrentRunningRestoreJobs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runningRestores: ListCurrentRunningRestoreJobsRunningRestoresList,
   }),
@@ -911,7 +910,7 @@ export const ListCurrentRunningRestoreJobs = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCurrentRunningRestoreJobs>;
 
 export type ListDatabasesRequestRegion = "eu01";
-export const ListDatabasesRequestRegion = S.String;
+const ListDatabasesRequestRegion = S.String;
 
 export type DatabaseSort =
   | "created_at.desc"
@@ -924,7 +923,7 @@ export type DatabaseSort =
   | "database_owner.asc"
   | "index.asc"
   | "index.desc";
-export const DatabaseSort = S.String;
+const DatabaseSort = S.String;
 
 export interface ListDatabasesRequest {
   /** The STACKIT project ID. */
@@ -940,7 +939,7 @@ export interface ListDatabasesRequest {
   /** Sorting of the databases to be returned on each page. */
   sort?: DatabaseSort | (string & {});
 }
-export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListDatabasesRequestRegion.pipe(T.Label()),
@@ -964,7 +963,7 @@ export interface ListDatabase {
   name: string;
   owner: string;
 }
-export const ListDatabase = /*@__PURE__*/ S.suspend(() =>
+const ListDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     id: S.Number,
@@ -975,7 +974,7 @@ export const ListDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** A list containing all databases for the instance. */
 export type ListDatabasesResponseDatabasesList = Array<ListDatabase>;
-export const ListDatabasesResponseDatabasesList = /*@__PURE__*/ S.Array(
+const ListDatabasesResponseDatabasesList = /*@__PURE__*/ S.Array(
   ListDatabase,
 ) as any as S.Schema<ListDatabasesResponseDatabasesList>;
 
@@ -984,7 +983,7 @@ export interface ListDatabasesResponse {
   databases: ListDatabasesResponseDatabasesList;
   pagination: Pagination;
 }
-export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databases: ListDatabasesResponseDatabasesList,
     pagination: Pagination,
@@ -992,7 +991,7 @@ export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDatabasesResponse" }) as any as S.Schema<ListDatabasesResponse>;
 
 export type ListFlavorsRequestRegion = "eu01";
-export const ListFlavorsRequestRegion = S.String;
+const ListFlavorsRequestRegion = S.String;
 
 export type FlavorSort =
   | "index.desc"
@@ -1013,7 +1012,7 @@ export type FlavorSort =
   | "storage_class.desc"
   | "node_type.asc"
   | "node_type.desc";
-export const FlavorSort = S.String;
+const FlavorSort = S.String;
 
 export interface ListFlavorsRequest {
   /** The STACKIT project ID. */
@@ -1027,7 +1026,7 @@ export interface ListFlavorsRequest {
   /** Sorting of the flavors to be returned on each page. */
   sort?: FlavorSort | (string & {});
 }
-export const ListFlavorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlavorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListFlavorsRequestRegion.pipe(T.Label()),
@@ -1050,7 +1049,7 @@ export interface FlavorStorageClassesStorageClass {
   maxIoPerSec: number;
   maxThroughInMb: number;
 }
-export const FlavorStorageClassesStorageClass = /*@__PURE__*/ S.suspend(() =>
+const FlavorStorageClassesStorageClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     class: S.String,
     maxIoPerSec: S.Number,
@@ -1062,7 +1061,7 @@ export const FlavorStorageClassesStorageClass = /*@__PURE__*/ S.suspend(() =>
 
 /** maximum storage which can be ordered for the flavor in Gigabyte. */
 export type FlavorStorageClasses = Array<FlavorStorageClassesStorageClass>;
-export const FlavorStorageClasses = /*@__PURE__*/ S.Array(
+const FlavorStorageClasses = /*@__PURE__*/ S.Array(
   FlavorStorageClassesStorageClass,
 ) as any as S.Schema<FlavorStorageClasses>;
 
@@ -1077,7 +1076,7 @@ export interface ListFlavors {
   nodeType: string;
   storageClasses: FlavorStorageClasses;
 }
-export const ListFlavors = /*@__PURE__*/ S.suspend(() =>
+const ListFlavors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu: S.Number,
     description: S.String,
@@ -1092,7 +1091,7 @@ export const ListFlavors = /*@__PURE__*/ S.suspend(() =>
 
 /** List of flavors available for the project. */
 export type ListFlavorsResponseFlavorsList = Array<ListFlavors>;
-export const ListFlavorsResponseFlavorsList = /*@__PURE__*/ S.Array(
+const ListFlavorsResponseFlavorsList = /*@__PURE__*/ S.Array(
   ListFlavors,
 ) as any as S.Schema<ListFlavorsResponseFlavorsList>;
 
@@ -1101,7 +1100,7 @@ export interface ListFlavorsResponse {
   flavors: ListFlavorsResponseFlavorsList;
   pagination: Pagination;
 }
-export const ListFlavorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFlavorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flavors: ListFlavorsResponseFlavorsList,
     pagination: Pagination,
@@ -1109,7 +1108,7 @@ export const ListFlavorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFlavorsResponse" }) as any as S.Schema<ListFlavorsResponse>;
 
 export type ListInstancesRequestRegion = "eu01";
-export const ListInstancesRequestRegion = S.String;
+const ListInstancesRequestRegion = S.String;
 
 export type InstanceSort =
   | "index.desc"
@@ -1122,7 +1121,7 @@ export type InstanceSort =
   | "name.desc"
   | "state.asc"
   | "state.desc";
-export const InstanceSort = S.String;
+const InstanceSort = S.String;
 
 export interface ListInstancesRequest {
   /** The STACKIT project ID. */
@@ -1136,7 +1135,7 @@ export interface ListInstancesRequest {
   /** Sorting of the items to be returned on each page. */
   sort?: InstanceSort | (string & {});
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListInstancesRequestRegion.pipe(T.Label()),
@@ -1159,7 +1158,7 @@ export interface ListInstance {
   name: string;
   state: State;
 }
-export const ListInstance = /*@__PURE__*/ S.suspend(() =>
+const ListInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     isDeletable: S.Boolean,
@@ -1170,7 +1169,7 @@ export const ListInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** List of owned instances and their current status. */
 export type ListInstancesResponseInstancesList = Array<ListInstance>;
-export const ListInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
+const ListInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
   ListInstance,
 ) as any as S.Schema<ListInstancesResponseInstancesList>;
 
@@ -1179,7 +1178,7 @@ export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
   pagination: Pagination;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: ListInstancesResponseInstancesList,
     pagination: Pagination,
@@ -1187,7 +1186,7 @@ export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 
 export type ListRolesRequestRegion = "eu01";
-export const ListRolesRequestRegion = S.String;
+const ListRolesRequestRegion = S.String;
 
 export interface ListRolesRequest {
   /** The STACKIT project ID. */
@@ -1197,7 +1196,7 @@ export interface ListRolesRequest {
   /** The ID of the instance. */
   instanceId: string;
 }
-export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListRolesRequestRegion.pipe(T.Label()),
@@ -1214,21 +1213,21 @@ export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of roles available for an instance. */
 export type ListRolesResponseRolesList = Array<string>;
-export const ListRolesResponseRolesList =
+const ListRolesResponseRolesList =
   CreateUserRequestRolesList as any as S.Schema<ListRolesResponseRolesList>;
 
 export interface ListRolesResponse {
   /** List of roles available for an instance. */
   roles: ListRolesResponseRolesList;
 }
-export const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: ListRolesResponseRolesList,
   }),
 ).annotate({ identifier: "ListRolesResponse" }) as any as S.Schema<ListRolesResponse>;
 
 export type ListStoragesRequestRegion = "eu01";
-export const ListStoragesRequestRegion = S.String;
+const ListStoragesRequestRegion = S.String;
 
 export interface ListStoragesRequest {
   /** The STACKIT project ID. */
@@ -1238,7 +1237,7 @@ export interface ListStoragesRequest {
   /** The id of an instance flavor. */
   flavorId: string;
 }
-export const ListStoragesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStoragesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListStoragesRequestRegion.pipe(T.Label()),
@@ -1258,7 +1257,7 @@ export interface FlavorStorageRange {
   max: number;
   min: number;
 }
-export const FlavorStorageRange = /*@__PURE__*/ S.suspend(() =>
+const FlavorStorageRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max: S.Number,
     min: S.Number,
@@ -1269,7 +1268,7 @@ export interface ListStoragesResponse {
   storageClasses: FlavorStorageClasses;
   storageRange: FlavorStorageRange;
 }
-export const ListStoragesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStoragesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageClasses: FlavorStorageClasses,
     storageRange: FlavorStorageRange,
@@ -1277,7 +1276,7 @@ export const ListStoragesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListStoragesResponse" }) as any as S.Schema<ListStoragesResponse>;
 
 export type ListUsersRequestRegion = "eu01";
-export const ListUsersRequestRegion = S.String;
+const ListUsersRequestRegion = S.String;
 
 export type UserSort =
   | "id.asc"
@@ -1288,7 +1287,7 @@ export type UserSort =
   | "name.asc"
   | "status.desc"
   | "status.asc";
-export const UserSort = S.String;
+const UserSort = S.String;
 
 export interface ListUsersRequest {
   /** The STACKIT project ID. */
@@ -1304,7 +1303,7 @@ export interface ListUsersRequest {
   /** Sorting of the users to be returned on each page. */
   sort?: UserSort | (string & {});
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListUsersRequestRegion.pipe(T.Label()),
@@ -1327,7 +1326,7 @@ export interface ListUser {
   status: string;
   username: string;
 }
-export const ListUser = /*@__PURE__*/ S.suspend(() =>
+const ListUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     status: S.String,
@@ -1337,7 +1336,7 @@ export const ListUser = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all users inside an instance */
 export type ListUserResponseUsersList = Array<ListUser>;
-export const ListUserResponseUsersList = /*@__PURE__*/ S.Array(
+const ListUserResponseUsersList = /*@__PURE__*/ S.Array(
   ListUser,
 ) as any as S.Schema<ListUserResponseUsersList>;
 
@@ -1346,7 +1345,7 @@ export interface ListUserResponse {
   /** List of all users inside an instance */
   users: ListUserResponseUsersList;
 }
-export const ListUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: Pagination,
     users: ListUserResponseUsersList,
@@ -1354,7 +1353,7 @@ export const ListUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUserResponse" }) as any as S.Schema<ListUserResponse>;
 
 export type ListVersionsRequestRegion = "eu01";
-export const ListVersionsRequestRegion = S.String;
+const ListVersionsRequestRegion = S.String;
 
 export interface ListVersionsRequest {
   /** The STACKIT project ID. */
@@ -1362,7 +1361,7 @@ export interface ListVersionsRequest {
   /** The region which should be addressed */
   region: ListVersionsRequestRegion | (string & {});
 }
-export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ListVersionsRequestRegion.pipe(T.Label()),
@@ -1387,7 +1386,7 @@ export interface Version {
   /** The sqlserver version used for the instance. */
   version: string;
 }
-export const Version = /*@__PURE__*/ S.suspend(() =>
+const Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beta: S.Boolean,
     deprecated: S.String,
@@ -1398,7 +1397,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
 
 /** A list containing available sqlserver versions. */
 export type ListVersionsResponseVersionsList = Array<Version>;
-export const ListVersionsResponseVersionsList = /*@__PURE__*/ S.Array(
+const ListVersionsResponseVersionsList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<ListVersionsResponseVersionsList>;
 
@@ -1406,20 +1405,20 @@ export interface ListVersionsResponse {
   /** A list containing available sqlserver versions. */
   versions: ListVersionsResponseVersionsList;
 }
-export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versions: ListVersionsResponseVersionsList,
   }),
 ).annotate({ identifier: "ListVersionsResponse" }) as any as S.Schema<ListVersionsResponse>;
 
 export type PartialUpdateInstanceRequestRegion = "eu01";
-export const PartialUpdateInstanceRequestRegion = S.String;
+const PartialUpdateInstanceRequestRegion = S.String;
 
 /** the network configuration of the instance. */
 export interface PartialUpdateInstanceRequestNetwork {
   acl?: Acl;
 }
-export const PartialUpdateInstanceRequestNetwork = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateInstanceRequestNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.optional(Acl),
   }),
@@ -1431,14 +1430,14 @@ export const PartialUpdateInstanceRequestNetwork = /*@__PURE__*/ S.suspend(() =>
 export interface StorageUpdate {
   size?: number;
 }
-export const StorageUpdate = /*@__PURE__*/ S.suspend(() =>
+const StorageUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(S.Number),
   }),
 ).annotate({ identifier: "StorageUpdate" }) as any as S.Schema<StorageUpdate>;
 
 export type InstanceVersionOpt = "2022";
-export const InstanceVersionOpt = S.String;
+const InstanceVersionOpt = S.String;
 
 export interface PartialUpdateInstanceRequest {
   /** The STACKIT project ID. */
@@ -1457,7 +1456,7 @@ export interface PartialUpdateInstanceRequest {
   storage?: StorageUpdate;
   version?: InstanceVersionOpt | (string & {});
 }
-export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: PartialUpdateInstanceRequestRegion.pipe(T.Label()),
@@ -1483,11 +1482,11 @@ export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialUpdateInstanceRequest>;
 
 export interface PartialUpdateInstanceResponse {}
-export const PartialUpdateInstanceResponse =
+const PartialUpdateInstanceResponse =
   DeleteDatabaseResponse as any as S.Schema<PartialUpdateInstanceResponse>;
 
 export type ResetUserRequestRegion = "eu01";
-export const ResetUserRequestRegion = S.String;
+const ResetUserRequestRegion = S.String;
 
 export interface ResetUserRequest {
   /** The STACKIT project ID. */
@@ -1499,7 +1498,7 @@ export interface ResetUserRequest {
   /** The ID of the user. */
   userId: number;
 }
-export const ResetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: ResetUserRequestRegion.pipe(T.Label()),
@@ -1521,7 +1520,7 @@ export interface ResetUserResponse {
   uri: string;
   username: string;
 }
-export const ResetUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.String.pipe(T.SensitiveValue({})),
     status: S.String,
@@ -1531,40 +1530,21 @@ export const ResetUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetUserResponse" }) as any as S.Schema<ResetUserResponse>;
 
 export type RestoreDatabaseFromBackupRequestRegion = "eu01";
-export const RestoreDatabaseFromBackupRequestRegion = S.String;
+const RestoreDatabaseFromBackupRequestRegion = S.String;
 
 export type SourceBackupType = "BACKUP";
-export const SourceBackupType = S.String;
-
 /** Restore from an existing managed backup. */
 export interface SourceBackup {
   type: SourceBackupType;
 }
-export const SourceBackup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SourceBackupType,
-  }),
-).annotate({ identifier: "SourceBackup" }) as any as S.Schema<SourceBackup>;
-
 export interface S3fileInfo {
   /** The sequence number of the file */
   file_number?: number;
   /** The path to the file on the S3 bucket */
   file_path?: string;
 }
-export const S3fileInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file_number: S.optional(S.Number),
-    file_path: S.optional(S.String),
-  }),
-).annotate({ identifier: "S3fileInfo" }) as any as S.Schema<S3fileInfo>;
-
 /** The backup files from which the database should be restored */
 export type ExternalS3S3FilesList = Array<S3fileInfo>;
-export const ExternalS3S3FilesList = /*@__PURE__*/ S.Array(
-  S3fileInfo,
-) as any as S.Schema<ExternalS3S3FilesList>;
-
 /** The external S3 information */
 export interface ExternalS3 {
   /** The s3 access key id */
@@ -1576,18 +1556,7 @@ export interface ExternalS3 {
   /** The backup files from which the database should be restored */
   s3_files: ExternalS3S3FilesList;
 }
-export const ExternalS3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3_access_key: S.String,
-    s3_access_secret: S.String.pipe(T.SensitiveValue({})),
-    s3_bucket: S.String,
-    s3_files: ExternalS3S3FilesList,
-  }),
-).annotate({ identifier: "ExternalS3" }) as any as S.Schema<ExternalS3>;
-
 export type SourceExternalS3Type = "EXTERNAL_S3";
-export const SourceExternalS3Type = S.String;
-
 /** Restore from an external S3 backup file. */
 export interface SourceExternalS3 {
   database_owner: string;
@@ -1596,18 +1565,9 @@ export interface SourceExternalS3 {
   s3_details: ExternalS3;
   type: SourceExternalS3Type;
 }
-export const SourceExternalS3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database_owner: S.String,
-    logging_guid: S.optional(S.String),
-    s3_details: ExternalS3,
-    type: SourceExternalS3Type,
-  }),
-).annotate({ identifier: "SourceExternalS3" }) as any as S.Schema<SourceExternalS3>;
-
 /** The source of the restore. */
 export type RestoreDatabaseFromBackupRequestSource = SourceBackup | SourceExternalS3;
-export const RestoreDatabaseFromBackupRequestSource =
+const RestoreDatabaseFromBackupRequestSource =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RestoreDatabaseFromBackupRequestSource>;
 
 export interface RestoreDatabaseFromBackupRequest {
@@ -1622,7 +1582,7 @@ export interface RestoreDatabaseFromBackupRequest {
   /** The source of the restore. */
   source: RestoreDatabaseFromBackupRequestSource;
 }
-export const RestoreDatabaseFromBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatabaseFromBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: RestoreDatabaseFromBackupRequestRegion.pipe(T.Label()),
@@ -1642,14 +1602,12 @@ export const RestoreDatabaseFromBackupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreDatabaseFromBackupRequest>;
 
 export interface RestoreDatabaseFromBackupResponse {}
-export const RestoreDatabaseFromBackupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const RestoreDatabaseFromBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RestoreDatabaseFromBackupResponse",
 }) as any as S.Schema<RestoreDatabaseFromBackupResponse>;
 
 export type TriggerBackupRequestRegion = "eu01";
-export const TriggerBackupRequestRegion = S.String;
+const TriggerBackupRequestRegion = S.String;
 
 export interface TriggerBackupRequest {
   /** The STACKIT project ID. */
@@ -1661,7 +1619,7 @@ export interface TriggerBackupRequest {
   /** The name of the database. */
   databaseName: string;
 }
-export const TriggerBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: TriggerBackupRequestRegion.pipe(T.Label()),
@@ -1678,11 +1636,10 @@ export const TriggerBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerBackupRequest" }) as any as S.Schema<TriggerBackupRequest>;
 
 export interface TriggerBackupResponse {}
-export const TriggerBackupResponse =
-  DeleteDatabaseResponse as any as S.Schema<TriggerBackupResponse>;
+const TriggerBackupResponse = DeleteDatabaseResponse as any as S.Schema<TriggerBackupResponse>;
 
 export type TriggerRestoreRequestRegion = "eu01";
-export const TriggerRestoreRequestRegion = S.String;
+const TriggerRestoreRequestRegion = S.String;
 
 export interface TriggerRestoreRequest {
   /** The STACKIT project ID. */
@@ -1696,7 +1653,7 @@ export interface TriggerRestoreRequest {
   name: string;
   restoreDateTime: string;
 }
-export const TriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: TriggerRestoreRequestRegion.pipe(T.Label()),
@@ -1715,17 +1672,16 @@ export const TriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerRestoreRequest" }) as any as S.Schema<TriggerRestoreRequest>;
 
 export interface TriggerRestoreResponse {}
-export const TriggerRestoreResponse =
-  DeleteDatabaseResponse as any as S.Schema<TriggerRestoreResponse>;
+const TriggerRestoreResponse = DeleteDatabaseResponse as any as S.Schema<TriggerRestoreResponse>;
 
 export type UpdateInstanceRequestRegion = "eu01";
-export const UpdateInstanceRequestRegion = S.String;
+const UpdateInstanceRequestRegion = S.String;
 
 /** the network configuration of the instance. */
 export interface UpdateInstanceRequestNetwork {
   acl: Acl;
 }
-export const UpdateInstanceRequestNetwork = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequestNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: Acl,
   }),
@@ -1750,7 +1706,7 @@ export interface UpdateInstanceRequest {
   storage: StorageUpdate;
   version: InstanceVersion | (string & {});
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: UpdateInstanceRequestRegion.pipe(T.Label()),
@@ -1774,11 +1730,10 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse =
-  DeleteDatabaseResponse as any as S.Schema<UpdateInstanceResponse>;
+const UpdateInstanceResponse = DeleteDatabaseResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export type UpdateInstanceProtectionRequestRegion = "eu01";
-export const UpdateInstanceProtectionRequestRegion = S.String;
+const UpdateInstanceProtectionRequestRegion = S.String;
 
 export interface UpdateInstanceProtectionRequest {
   /** The STACKIT project ID. */
@@ -1789,7 +1744,7 @@ export interface UpdateInstanceProtectionRequest {
   instanceId: string;
   isDeletable: boolean;
 }
-export const UpdateInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: UpdateInstanceProtectionRequestRegion.pipe(T.Label()),
@@ -1810,7 +1765,7 @@ export const UpdateInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInstanceProtectionResponse {
   isDeletable: boolean;
 }
-export const UpdateInstanceProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isDeletable: S.Boolean,
   }),

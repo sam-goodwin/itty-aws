@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleLongrunningCancelOperationRequest",
@@ -75,7 +75,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -92,12 +92,12 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type HubStateEnum =
   | "STATE_UNSPECIFIED"
@@ -106,10 +106,10 @@ export type HubStateEnum =
   | "DELETING"
   | "UPDATING"
   | "FAILED";
-export const HubStateEnum = S.String;
+const HubStateEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Network Connectivity Center is a hub-and-spoke abstraction for network connectivity management in Google Cloud. It reduces operational complexity through a simple, centralized connectivity management model. Following is the resource message of a hub. */
 export interface Hub {
@@ -130,7 +130,7 @@ export interface Hub {
   /** Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead. */
   spokes?: StringList;
 }
-export const Hub = /*@__PURE__*/ S.suspend(() =>
+const Hub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     state: S.optional(HubStateEnum),
@@ -153,7 +153,7 @@ export interface CreateProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: Hub;
 }
-export const CreateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hubId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -171,15 +171,10 @@ export const CreateProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProjectsLocationsGlobalHubsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -190,7 +185,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     message: S.optional(S.String),
@@ -211,7 +206,7 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     error: S.optional(GoogleRpcStatus),
@@ -230,7 +225,7 @@ export interface Migration {
   /** Immutable. Resource path of the target resource. The target project can be different, as in the cases when migrating to peer networks. For example: /projects/{project}/regions/{region}/subnetworks/{subnet} */
   target?: string;
 }
-export const Migration = /*@__PURE__*/ S.suspend(() =>
+const Migration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String),
     target: S.optional(S.String),
@@ -241,12 +236,12 @@ export type InternalRangeOverlapsItemEnum =
   | "OVERLAP_UNSPECIFIED"
   | "OVERLAP_ROUTE_RANGE"
   | "OVERLAP_EXISTING_SUBNET_RANGE";
-export const InternalRangeOverlapsItemEnum = S.String;
+const InternalRangeOverlapsItemEnum = S.String;
 
 export type InternalRangeOverlapsItemEnumList = Array<
   InternalRangeOverlapsItemEnum | (string & {})
 >;
-export const InternalRangeOverlapsItemEnumList = /*@__PURE__*/ S.Array(
+const InternalRangeOverlapsItemEnumList = /*@__PURE__*/ S.Array(
   InternalRangeOverlapsItemEnum,
 ) as any as S.Schema<InternalRangeOverlapsItemEnumList>;
 
@@ -255,7 +250,7 @@ export type InternalRangePeeringEnum =
   | "FOR_SELF"
   | "FOR_PEER"
   | "NOT_SHARED";
-export const InternalRangePeeringEnum = S.String;
+const InternalRangePeeringEnum = S.String;
 
 export type InternalRangeRangeStatusEnum =
   | "RANGE_STATUS_UNSPECIFIED"
@@ -263,7 +258,7 @@ export type InternalRangeRangeStatusEnum =
   | "OBSOLETE"
   | "CREATING"
   | "DELETING";
-export const InternalRangeRangeStatusEnum = S.String;
+const InternalRangeRangeStatusEnum = S.String;
 
 export type AllocationOptionsAllocationStrategyEnum =
   | "ALLOCATION_STRATEGY_UNSPECIFIED"
@@ -271,7 +266,7 @@ export type AllocationOptionsAllocationStrategyEnum =
   | "FIRST_AVAILABLE"
   | "RANDOM_FIRST_N_AVAILABLE"
   | "FIRST_SMALLEST_FITTING";
-export const AllocationOptionsAllocationStrategyEnum = S.String;
+const AllocationOptionsAllocationStrategyEnum = S.String;
 
 /** Range auto-allocation options, to be optionally used when CIDR block is not explicitly set. */
 export interface AllocationOptions {
@@ -280,7 +275,7 @@ export interface AllocationOptions {
   /** Optional. Allocation strategy. Not setting this field when the allocation is requested means an implementation defined strategy is used. */
   allocationStrategy?: AllocationOptionsAllocationStrategyEnum | (string & {});
 }
-export const AllocationOptions = /*@__PURE__*/ S.suspend(() =>
+const AllocationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstAvailableRangesLookupSize: S.optional(S.Number),
     allocationStrategy: S.optional(AllocationOptionsAllocationStrategyEnum),
@@ -292,10 +287,10 @@ export type InternalRangeUsageEnum =
   | "FOR_VPC"
   | "EXTERNAL_TO_VPC"
   | "FOR_MIGRATION";
-export const InternalRangeUsageEnum = S.String;
+const InternalRangeUsageEnum = S.String;
 
 export type InternalRangePurposeEnum = "PURPOSE_UNSPECIFIED" | "VPC_SUBNET" | "INTERNAL_ADDRESS";
-export const InternalRangePurposeEnum = S.String;
+const InternalRangePurposeEnum = S.String;
 
 /** The internal range resource for IPAM operations within a VPC network. Used to represent a private address range along with behavioral characteristics of that range (its usage and peering behavior). Networking resources can link to this range if they are created as belonging to it. */
 export interface InternalRange {
@@ -338,7 +333,7 @@ export interface InternalRange {
   /** Optional. The purpose of this internal range. Defines the intended use of the range and any restrictions associated with it. If not specified, it defaults to VPC_SUBNET. */
   purpose?: InternalRangePurposeEnum | (string & {});
 }
-export const InternalRange = /*@__PURE__*/ S.suspend(() =>
+const InternalRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     migration: S.optional(Migration),
     overlaps: S.optional(InternalRangeOverlapsItemEnumList),
@@ -372,7 +367,7 @@ export interface CreateProjectsLocationsInternalRangesRequest {
   /** Request body */
   body?: InternalRange;
 }
-export const CreateProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     internalRangeId: S.optional(S.String.pipe(T.Query())),
@@ -396,7 +391,7 @@ export type SpokeStateEnum =
   | "DELETING"
   | "UPDATING"
   | "FAILED";
-export const SpokeStateEnum = S.String;
+const SpokeStateEnum = S.String;
 
 /** RouterAppliance represents a Router appliance which is specified by a VM URI and a NIC address. */
 export interface RouterApplianceInstance {
@@ -406,7 +401,7 @@ export interface RouterApplianceInstance {
   virtualMachine?: string;
   networkInterface?: string;
 }
-export const RouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
+const RouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     virtualMachine: S.optional(S.String),
@@ -415,7 +410,7 @@ export const RouterApplianceInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouterApplianceInstance" }) as any as S.Schema<RouterApplianceInstance>;
 
 export type RouterApplianceInstanceList = Array<RouterApplianceInstance>;
-export const RouterApplianceInstanceList = /*@__PURE__*/ S.Array(
+const RouterApplianceInstanceList = /*@__PURE__*/ S.Array(
   RouterApplianceInstance,
 ) as any as S.Schema<RouterApplianceInstanceList>;
 
@@ -444,7 +439,7 @@ export interface Spoke {
   /** The URIs of linked Router appliance resources */
   linkedRouterApplianceInstances?: RouterApplianceInstanceList;
 }
-export const Spoke = /*@__PURE__*/ S.suspend(() =>
+const Spoke = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     linkedInterconnectAttachments: S.optional(StringList),
@@ -470,7 +465,7 @@ export interface CreateProjectsLocationsSpokesRequest {
   /** Request body */
   body?: Spoke;
 }
-export const CreateProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -493,7 +488,7 @@ export interface DeleteProjectsLocationsGlobalHubsRequest {
   /** Required. The name of the Hub to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -514,7 +509,7 @@ export interface DeleteProjectsLocationsInternalRangesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -533,7 +528,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -553,7 +548,7 @@ export interface DeleteProjectsLocationsSpokesRequest {
   /** Required. The name of the Spoke to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -574,7 +569,7 @@ export interface GetIamPolicyProjectsLocationsGlobalHubsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -600,7 +595,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     location: S.optional(S.String),
@@ -618,7 +613,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     condition: S.optional(Expr),
@@ -627,14 +622,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -643,7 +638,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -651,7 +646,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -662,7 +657,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -670,9 +665,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -685,7 +678,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     bindings: S.optional(BindingList),
@@ -700,7 +693,7 @@ export interface GetIamPolicyProjectsLocationsInternalRangesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -721,7 +714,7 @@ export interface GetIamPolicyProjectsLocationsSpokesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -740,7 +733,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -767,7 +760,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -781,7 +774,7 @@ export interface GetProjectsLocationsGlobalHubsRequest {
   /** Required. Name of the Hub resource to get. */
   name: string;
 }
-export const GetProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -799,7 +792,7 @@ export interface GetProjectsLocationsInternalRangesRequest {
   /** Required. Name of the InternalRange to get. */
   name: string;
 }
-export const GetProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -817,7 +810,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -835,7 +828,7 @@ export interface GetProjectsLocationsSpokesRequest {
   /** Required. The name of Spoke resource. */
   name: string;
 }
-export const GetProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -861,7 +854,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -880,7 +873,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -889,7 +882,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -908,7 +901,7 @@ export interface ListProjectsLocationsGlobalHubsRequest {
   /** The maximum number of results per page that should be returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -927,7 +920,7 @@ export const ListProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsGlobalHubsRequest>;
 
 export type HubList = Array<Hub>;
-export const HubList = /*@__PURE__*/ S.Array(Hub) as any as S.Schema<HubList>;
+const HubList = /*@__PURE__*/ S.Array(Hub) as any as S.Schema<HubList>;
 
 /** Response for HubService.ListHubs method. */
 export interface ListHubsResponse {
@@ -938,7 +931,7 @@ export interface ListHubsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListHubsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHubsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     hubs: S.optional(HubList),
@@ -958,7 +951,7 @@ export interface ListProjectsLocationsInternalRangesRequest {
   /** The maximum number of results per page that should be returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -977,7 +970,7 @@ export const ListProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsInternalRangesRequest>;
 
 export type InternalRangeList = Array<InternalRange>;
-export const InternalRangeList = /*@__PURE__*/ S.Array(
+const InternalRangeList = /*@__PURE__*/ S.Array(
   InternalRange,
 ) as any as S.Schema<InternalRangeList>;
 
@@ -990,7 +983,7 @@ export interface ListInternalRangesResponse {
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
 }
-export const ListInternalRangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInternalRangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     internalRanges: S.optional(InternalRangeList),
@@ -1012,7 +1005,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1031,7 +1024,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -1044,7 +1037,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(GoogleLongrunningOperationList),
@@ -1066,7 +1059,7 @@ export interface ListProjectsLocationsSpokesRequest {
   /** The page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1085,7 +1078,7 @@ export const ListProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsSpokesRequest>;
 
 export type SpokeList = Array<Spoke>;
-export const SpokeList = /*@__PURE__*/ S.Array(Spoke) as any as S.Schema<SpokeList>;
+const SpokeList = /*@__PURE__*/ S.Array(Spoke) as any as S.Schema<SpokeList>;
 
 /** The response for HubService.ListSpokes. */
 export interface ListSpokesResponse {
@@ -1096,7 +1089,7 @@ export interface ListSpokesResponse {
   /** Spokes to be returned. */
   spokes?: SpokeList;
 }
-export const ListSpokesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSpokesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1114,7 +1107,7 @@ export interface PatchProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: Hub;
 }
-export const PatchProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1141,7 +1134,7 @@ export interface PatchProjectsLocationsInternalRangesRequest {
   /** Request body */
   body?: InternalRange;
 }
-export const PatchProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1168,7 +1161,7 @@ export interface PatchProjectsLocationsSpokesRequest {
   /** Request body */
   body?: Spoke;
 }
-export const PatchProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1192,7 +1185,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -1205,7 +1198,7 @@ export interface SetIamPolicyProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1226,7 +1219,7 @@ export interface SetIamPolicyProjectsLocationsInternalRangesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1247,7 +1240,7 @@ export interface SetIamPolicyProjectsLocationsSpokesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1267,7 +1260,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1281,7 +1274,7 @@ export interface TestIamPermissionsProjectsLocationsGlobalHubsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsGlobalHubsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1301,7 +1294,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsInternalRangesRequest {
@@ -1310,18 +1303,17 @@ export interface TestIamPermissionsProjectsLocationsInternalRangesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha1/{+resource}:testIamPermissions",
-        baseUrl: "https://networkconnectivity.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsInternalRangesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha1/{+resource}:testIamPermissions",
+      baseUrl: "https://networkconnectivity.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsInternalRangesRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsInternalRangesRequest>;
@@ -1332,7 +1324,7 @@ export interface TestIamPermissionsProjectsLocationsSpokesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsSpokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),

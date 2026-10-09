@@ -12,19 +12,19 @@ export interface ConnectPtySessionRequest {
   /** PTY session ID */
   sessionId: string;
 }
-export const ConnectPtySessionRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectPtySessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/process/pty/{sessionId}/connect", code: 200 })),
 ).annotate({ identifier: "ConnectPtySessionRequest" }) as any as S.Schema<ConnectPtySessionRequest>;
 
 export interface ConnectPtySessionResponse {}
-export const ConnectPtySessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ConnectPtySessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ConnectPtySessionResponse",
 }) as any as S.Schema<ConnectPtySessionResponse>;
 
 export type CreatePtySessionRequestEnvsMap = { [key: string]: string | undefined };
-export const CreatePtySessionRequestEnvsMap = /*@__PURE__*/ S.Record(
+const CreatePtySessionRequestEnvsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreatePtySessionRequestEnvsMap>;
@@ -38,7 +38,7 @@ export interface CreatePtySessionRequest {
   lazyStart?: boolean;
   rows?: number;
 }
-export const CreatePtySessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePtySessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cols: S.optional(S.Number),
     cwd: S.optional(S.String),
@@ -52,7 +52,7 @@ export const CreatePtySessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PtyCreateResponse {
   sessionId: string;
 }
-export const PtyCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const PtyCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
   }),
@@ -61,31 +61,30 @@ export const PtyCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSessionRequest {
   sessionId: string;
 }
-export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/process/session", code: 200 })),
 ).annotate({ identifier: "CreateSessionRequest" }) as any as S.Schema<CreateSessionRequest>;
 
 export interface CreateSessionResponse {}
-export const CreateSessionResponse =
-  ConnectPtySessionResponse as any as S.Schema<CreateSessionResponse>;
+const CreateSessionResponse = ConnectPtySessionResponse as any as S.Schema<CreateSessionResponse>;
 
 export interface DeletePtySessionRequest {
   /** PTY session ID */
   sessionId: string;
 }
-export const DeletePtySessionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePtySessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/process/pty/{sessionId}", code: 200 })),
 ).annotate({ identifier: "DeletePtySessionRequest" }) as any as S.Schema<DeletePtySessionRequest>;
 
 export type GinH = { [key: string]: unknown | undefined };
-export const GinH = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<GinH>;
+const GinH = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<GinH>;
 
 export type DeletePtySessionResponse = GinH;
-export const DeletePtySessionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePtySessionResponse = /*@__PURE__*/ S.suspend(() =>
   GinH.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeletePtySessionResponse" }) as any as S.Schema<DeletePtySessionResponse>;
 
@@ -93,19 +92,18 @@ export interface DeleteSessionRequest {
   /** Session ID */
   sessionId: string;
 }
-export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/process/session/{sessionId}", code: 200 })),
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 
 export interface DeleteSessionResponse {}
-export const DeleteSessionResponse =
-  ConnectPtySessionResponse as any as S.Schema<DeleteSessionResponse>;
+const DeleteSessionResponse = ConnectPtySessionResponse as any as S.Schema<DeleteSessionResponse>;
 
 /** Environment variables to set for the command */
 export type ExecuteCommandRequestEnvsMap = { [key: string]: string | undefined };
-export const ExecuteCommandRequestEnvsMap =
+const ExecuteCommandRequestEnvsMap =
   CreatePtySessionRequestEnvsMap as any as S.Schema<ExecuteCommandRequestEnvsMap>;
 
 export interface ExecuteCommandRequest {
@@ -117,7 +115,7 @@ export interface ExecuteCommandRequest {
   /** Timeout in seconds, defaults to 10 seconds */
   timeout?: number;
 }
-export const ExecuteCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.String,
     cwd: S.optional(S.String),
@@ -130,7 +128,7 @@ export interface ExecuteResponse {
   exitCode?: number;
   result: string;
 }
-export const ExecuteResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecuteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exitCode: S.optional(S.Number),
     result: S.String,
@@ -141,7 +139,7 @@ export interface GetEntrypointLogsRequest {
   /** Follow logs in real-time (WebSocket only) */
   follow?: boolean;
 }
-export const GetEntrypointLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntrypointLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     follow: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/process/session/entrypoint/logs", code: 200 })),
@@ -152,7 +150,7 @@ export interface SessionCommandLogsResponse {
   stderr: string;
   stdout: string;
 }
-export const SessionCommandLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const SessionCommandLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     output: S.String,
     stderr: S.String,
@@ -163,7 +161,7 @@ export const SessionCommandLogsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionCommandLogsResponse>;
 
 export interface GetEntrypointSessionRequest {}
-export const GetEntrypointSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntrypointSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/process/session/entrypoint", code: 200 })),
 ).annotate({
   identifier: "GetEntrypointSessionRequest",
@@ -174,7 +172,7 @@ export interface Command {
   exitCode?: number;
   id: string;
 }
-export const Command = /*@__PURE__*/ S.suspend(() =>
+const Command = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.String,
     exitCode: S.optional(S.Number),
@@ -183,15 +181,13 @@ export const Command = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Command" }) as any as S.Schema<Command>;
 
 export type SessionCommandsList = Array<Command>;
-export const SessionCommandsList = /*@__PURE__*/ S.Array(
-  Command,
-) as any as S.Schema<SessionCommandsList>;
+const SessionCommandsList = /*@__PURE__*/ S.Array(Command) as any as S.Schema<SessionCommandsList>;
 
 export interface Session {
   commands: SessionCommandsList;
   sessionId: string;
 }
-export const Session = /*@__PURE__*/ S.suspend(() =>
+const Session = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commands: SessionCommandsList,
     sessionId: S.String,
@@ -202,14 +198,14 @@ export interface GetPtySessionRequest {
   /** PTY session ID */
   sessionId: string;
 }
-export const GetPtySessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPtySessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/process/pty/{sessionId}", code: 200 })),
 ).annotate({ identifier: "GetPtySessionRequest" }) as any as S.Schema<GetPtySessionRequest>;
 
 export type PtySessionInfoEnvsMap = { [key: string]: string | undefined };
-export const PtySessionInfoEnvsMap =
+const PtySessionInfoEnvsMap =
   CreatePtySessionRequestEnvsMap as any as S.Schema<PtySessionInfoEnvsMap>;
 
 export interface PtySessionInfo {
@@ -223,7 +219,7 @@ export interface PtySessionInfo {
   lazyStart: boolean;
   rows: number;
 }
-export const PtySessionInfo = /*@__PURE__*/ S.suspend(() =>
+const PtySessionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Boolean,
     cols: S.Number,
@@ -240,7 +236,7 @@ export interface GetSessionRequest {
   /** Session ID */
   sessionId: string;
 }
-export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/process/session/{sessionId}", code: 200 })),
@@ -252,7 +248,7 @@ export interface GetSessionCommandRequest {
   /** Command ID */
   commandId: string;
 }
-export const GetSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     commandId: S.String.pipe(T.Label()),
@@ -269,7 +265,7 @@ export interface GetSessionCommandLogsRequest {
   /** Follow logs in real-time (WebSocket only) */
   follow?: boolean;
 }
-export const GetSessionCommandLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionCommandLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     commandId: S.String.pipe(T.Label()),
@@ -286,36 +282,36 @@ export const GetSessionCommandLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSessionCommandLogsRequest>;
 
 export interface ListPtySessionsRequest {}
-export const ListPtySessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPtySessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/process/pty", code: 200 })),
 ).annotate({ identifier: "ListPtySessionsRequest" }) as any as S.Schema<ListPtySessionsRequest>;
 
 export type PtyListResponseSessionsList = Array<PtySessionInfo>;
-export const PtyListResponseSessionsList = /*@__PURE__*/ S.Array(
+const PtyListResponseSessionsList = /*@__PURE__*/ S.Array(
   PtySessionInfo,
 ) as any as S.Schema<PtyListResponseSessionsList>;
 
 export interface PtyListResponse {
   sessions: PtyListResponseSessionsList;
 }
-export const PtyListResponse = /*@__PURE__*/ S.suspend(() =>
+const PtyListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessions: PtyListResponseSessionsList,
   }),
 ).annotate({ identifier: "PtyListResponse" }) as any as S.Schema<PtyListResponse>;
 
 export interface ListSessionsRequest {}
-export const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/process/session", code: 200 })),
 ).annotate({ identifier: "ListSessionsRequest" }) as any as S.Schema<ListSessionsRequest>;
 
 export type ListSessionsResponseBodyList = Array<Session>;
-export const ListSessionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSessionsResponseBodyList = /*@__PURE__*/ S.Array(
   Session,
 ) as any as S.Schema<ListSessionsResponseBodyList>;
 
 export type ListSessionsResponse = ListSessionsResponseBodyList;
-export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSessionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSessionsResponse" }) as any as S.Schema<ListSessionsResponse>;
 
@@ -325,7 +321,7 @@ export interface ResizePtySessionRequest {
   cols: number;
   rows: number;
 }
-export const ResizePtySessionRequest = /*@__PURE__*/ S.suspend(() =>
+const ResizePtySessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     cols: S.Number,
@@ -334,12 +330,12 @@ export const ResizePtySessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResizePtySessionRequest" }) as any as S.Schema<ResizePtySessionRequest>;
 
 export type RunCodeRequestArgvList = Array<string>;
-export const RunCodeRequestArgvList = /*@__PURE__*/ S.Array(
+const RunCodeRequestArgvList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RunCodeRequestArgvList>;
 
 export type RunCodeRequestEnvsMap = { [key: string]: string | undefined };
-export const RunCodeRequestEnvsMap =
+const RunCodeRequestEnvsMap =
   CreatePtySessionRequestEnvsMap as any as S.Schema<RunCodeRequestEnvsMap>;
 
 export interface RunCodeRequest {
@@ -350,7 +346,7 @@ export interface RunCodeRequest {
   language: string;
   timeout?: number;
 }
-export const RunCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const RunCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     argv: S.optional(RunCodeRequestArgvList),
     code: S.String,
@@ -361,16 +357,16 @@ export const RunCodeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunCodeRequest" }) as any as S.Schema<RunCodeRequest>;
 
 export type ChartElementOutliersList = Array<number>;
-export const ChartElementOutliersList = /*@__PURE__*/ S.Array(
+const ChartElementOutliersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ChartElementOutliersList>;
 
 export type ChartElementPointsItemList = Array<number>;
-export const ChartElementPointsItemList =
+const ChartElementPointsItemList =
   ChartElementOutliersList as any as S.Schema<ChartElementPointsItemList>;
 
 export type ChartElementPointsList = Array<ChartElementPointsItemList>;
-export const ChartElementPointsList = /*@__PURE__*/ S.Array(
+const ChartElementPointsList = /*@__PURE__*/ S.Array(
   ChartElementPointsItemList,
 ) as any as S.Schema<ChartElementPointsList>;
 
@@ -393,7 +389,7 @@ export interface ChartElement {
   x_label?: string;
   y_label?: string;
 }
-export const ChartElement = /*@__PURE__*/ S.suspend(() =>
+const ChartElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     angle: S.optional(S.Number),
     first_quartile: S.optional(S.Number),
@@ -416,21 +412,19 @@ export const ChartElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChartElement" }) as any as S.Schema<ChartElement>;
 
 export type ChartElementsList = Array<ChartElement>;
-export const ChartElementsList = /*@__PURE__*/ S.Array(
-  ChartElement,
-) as any as S.Schema<ChartElementsList>;
+const ChartElementsList = /*@__PURE__*/ S.Array(ChartElement) as any as S.Schema<ChartElementsList>;
 
 export type ChartXTickLabelsList = Array<string>;
-export const ChartXTickLabelsList = RunCodeRequestArgvList as any as S.Schema<ChartXTickLabelsList>;
+const ChartXTickLabelsList = RunCodeRequestArgvList as any as S.Schema<ChartXTickLabelsList>;
 
 export type ChartXTicksList = Array<number>;
-export const ChartXTicksList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<ChartXTicksList>;
+const ChartXTicksList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<ChartXTicksList>;
 
 export type ChartYTickLabelsList = Array<string>;
-export const ChartYTickLabelsList = RunCodeRequestArgvList as any as S.Schema<ChartYTickLabelsList>;
+const ChartYTickLabelsList = RunCodeRequestArgvList as any as S.Schema<ChartYTickLabelsList>;
 
 export type ChartYTicksList = Array<number>;
-export const ChartYTicksList = ChartXTicksList as any as S.Schema<ChartYTicksList>;
+const ChartYTicksList = ChartXTicksList as any as S.Schema<ChartYTicksList>;
 
 export interface Chart {
   elements?: ChartElementsList;
@@ -446,7 +440,7 @@ export interface Chart {
   y_tick_labels?: ChartYTickLabelsList;
   y_ticks?: ChartYTicksList;
 }
-export const Chart = /*@__PURE__*/ S.suspend(() =>
+const Chart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elements: S.optional(ChartElementsList),
     png: S.optional(S.String),
@@ -464,14 +458,14 @@ export const Chart = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Chart" }) as any as S.Schema<Chart>;
 
 export type CodeRunArtifactsChartsList = Array<Chart>;
-export const CodeRunArtifactsChartsList = /*@__PURE__*/ S.Array(
+const CodeRunArtifactsChartsList = /*@__PURE__*/ S.Array(
   Chart,
 ) as any as S.Schema<CodeRunArtifactsChartsList>;
 
 export interface CodeRunArtifacts {
   charts?: CodeRunArtifactsChartsList;
 }
-export const CodeRunArtifacts = /*@__PURE__*/ S.suspend(() =>
+const CodeRunArtifacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charts: S.optional(CodeRunArtifactsChartsList),
   }),
@@ -482,7 +476,7 @@ export interface CodeRunResponse {
   exitCode?: number;
   result?: string;
 }
-export const CodeRunResponse = /*@__PURE__*/ S.suspend(() =>
+const CodeRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: S.optional(CodeRunArtifacts),
     exitCode: S.optional(S.Number),
@@ -497,7 +491,7 @@ export interface SendInputRequest {
   commandId: string;
   data: string;
 }
-export const SendInputRequest = /*@__PURE__*/ S.suspend(() =>
+const SendInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     commandId: S.String.pipe(T.Label()),
@@ -512,7 +506,7 @@ export const SendInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendInputRequest" }) as any as S.Schema<SendInputRequest>;
 
 export interface SendInputResponse {}
-export const SendInputResponse = ConnectPtySessionResponse as any as S.Schema<SendInputResponse>;
+const SendInputResponse = ConnectPtySessionResponse as any as S.Schema<SendInputResponse>;
 
 export interface SessionExecuteCommandRequest {
   /** Session ID */
@@ -522,7 +516,7 @@ export interface SessionExecuteCommandRequest {
   runAsync?: boolean;
   suppressInputEcho?: boolean;
 }
-export const SessionExecuteCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const SessionExecuteCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     async: S.optional(S.Boolean),
@@ -541,7 +535,7 @@ export interface SessionExecuteResponse {
   stderr?: string;
   stdout?: string;
 }
-export const SessionExecuteResponse = /*@__PURE__*/ S.suspend(() =>
+const SessionExecuteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cmdId: S.String,
     exitCode: S.optional(S.Number),

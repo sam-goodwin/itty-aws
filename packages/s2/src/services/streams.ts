@@ -13,7 +13,7 @@ export interface DeleteOnEmptyConfig {
   /** Minimum age in seconds before an empty stream can be deleted. Set to 0 (default) to disable delete-on-empty (don't delete automatically). */
   min_age_secs?: number;
 }
-export const DeleteOnEmptyConfig = /*@__PURE__*/ S.suspend(() =>
+const DeleteOnEmptyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min_age_secs: S.optional(S.Number),
   }),
@@ -24,35 +24,23 @@ export interface RetentionPolicyCase0 {
   /** Age in seconds for automatic trimming of records older than this threshold. This must be set to a value greater than 0 seconds. */
   age: number;
 }
-export const RetentionPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    age: S.Number,
-  }),
-).annotate({ identifier: "RetentionPolicyCase0" }) as any as S.Schema<RetentionPolicyCase0>;
-
 /** Retain records unless explicitly trimmed. */
 export interface RetentionPolicyCase1 {
   /** Retain records unless explicitly trimmed. */
   infinite: unknown;
 }
-export const RetentionPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infinite: S.Unknown,
-  }),
-).annotate({ identifier: "RetentionPolicyCase1" }) as any as S.Schema<RetentionPolicyCase1>;
-
 export type RetentionPolicy = RetentionPolicyCase0 | RetentionPolicyCase1;
-export const RetentionPolicy = /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionPolicy>;
+const RetentionPolicy = /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionPolicy>;
 
 export type TimestampingMode = "client-prefer" | "client-require" | "arrival";
-export const TimestampingMode = S.String;
+const TimestampingMode = S.String;
 
 export interface TimestampingConfig {
   mode?: TimestampingMode | (string & {}) | null;
   /** Allow client-specified timestamps to exceed the arrival time. If this is `false` or not set, client timestamps will be capped at the arrival time. */
   uncapped?: boolean | null;
 }
-export const TimestampingConfig = /*@__PURE__*/ S.suspend(() =>
+const TimestampingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.NullOr(TimestampingMode)),
     uncapped: S.optional(S.NullOr(S.Boolean)),
@@ -66,7 +54,7 @@ export interface StreamConfig {
   storage_class?: string | null;
   timestamping?: TimestampingConfig | null;
 }
-export const StreamConfig = /*@__PURE__*/ S.suspend(() =>
+const StreamConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete_on_empty: S.optional(S.NullOr(DeleteOnEmptyConfig)),
     retention_policy: S.optional(S.NullOr(RetentionPolicy)),
@@ -82,7 +70,7 @@ export interface CreateStreamRequest {
   /** Stream name that is unique to the basin. It can be between 1 and 512 bytes in length, and must not contain NUL bytes. */
   stream: string;
 }
-export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     s2RequestToken: S.optional(S.String.pipe(T.Header("s2-request-token"))),
     config: S.optional(S.NullOr(StreamConfig)),
@@ -91,7 +79,7 @@ export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateStreamRequest" }) as any as S.Schema<CreateStreamRequest>;
 
 export type EncryptionAlgorithm = "aegis-256" | "aes-256-gcm";
-export const EncryptionAlgorithm = S.String;
+const EncryptionAlgorithm = S.String;
 
 export interface StreamInfo {
   cipher?: EncryptionAlgorithm | null;
@@ -102,7 +90,7 @@ export interface StreamInfo {
   /** Stream name. */
   name: string;
 }
-export const StreamInfo = /*@__PURE__*/ S.suspend(() =>
+const StreamInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cipher: S.optional(S.NullOr(EncryptionAlgorithm)),
     created_at: S.String,
@@ -115,14 +103,14 @@ export interface DeleteStreamRequest {
   /** Stream name. */
   stream: string;
 }
-export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stream: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/streams/{stream}", code: 200 })),
 ).annotate({ identifier: "DeleteStreamRequest" }) as any as S.Schema<DeleteStreamRequest>;
 
 export interface DeleteStreamResponse {}
-export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteStreamResponse",
 }) as any as S.Schema<DeleteStreamResponse>;
 
@@ -131,7 +119,7 @@ export interface EnsureStreamRequest {
   stream: string;
   body?: StreamConfig | null;
 }
-export const EnsureStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const EnsureStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stream: S.String.pipe(T.Label()),
     body: S.optional(S.NullOr(StreamConfig).pipe(T.HttpBody())),
@@ -142,7 +130,7 @@ export interface GetStreamConfigRequest {
   /** Stream name. */
   stream: string;
 }
-export const GetStreamConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stream: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/streams/{stream}", code: 200 })),
@@ -156,7 +144,7 @@ export interface ListStreamsRequest {
   /** Number of results, up to a maximum of 1000. */
   limit?: number;
 }
-export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -166,7 +154,7 @@ export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching streams. */
 export type ListStreamsResponseStreamsList = Array<StreamInfo>;
-export const ListStreamsResponseStreamsList = /*@__PURE__*/ S.Array(
+const ListStreamsResponseStreamsList = /*@__PURE__*/ S.Array(
   StreamInfo,
 ) as any as S.Schema<ListStreamsResponseStreamsList>;
 
@@ -176,7 +164,7 @@ export interface ListStreamsResponse {
   /** Matching streams. */
   streams: ListStreamsResponseStreamsList;
 }
-export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     has_more: S.Boolean,
     streams: ListStreamsResponseStreamsList,
@@ -187,7 +175,7 @@ export interface DeleteOnEmptyReconfiguration {
   /** Minimum age in seconds before an empty stream can be deleted. Set to 0 to disable delete-on-empty (don't delete automatically). */
   min_age_secs?: number | null;
 }
-export const DeleteOnEmptyReconfiguration = /*@__PURE__*/ S.suspend(() =>
+const DeleteOnEmptyReconfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min_age_secs: S.optional(S.NullOr(S.Number)),
   }),
@@ -200,7 +188,7 @@ export interface TimestampingReconfiguration {
   /** Allow client-specified timestamps to exceed the arrival time. */
   uncapped?: boolean | null;
 }
-export const TimestampingReconfiguration = /*@__PURE__*/ S.suspend(() =>
+const TimestampingReconfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.NullOr(TimestampingMode)),
     uncapped: S.optional(S.NullOr(S.Boolean)),
@@ -218,7 +206,7 @@ export interface ReconfigureStreamRequest {
   storage_class?: string | null;
   timestamping?: TimestampingReconfiguration | null;
 }
-export const ReconfigureStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const ReconfigureStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stream: S.String.pipe(T.Label()),
     delete_on_empty: S.optional(S.NullOr(DeleteOnEmptyReconfiguration)),

@@ -16,17 +16,17 @@ export interface GetRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/precursor", code: 200 })),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
 export type GetResponseDefaultMode = "off" | "min-friction" | "max-security";
-export const GetResponseDefaultMode = S.String;
+const GetResponseDefaultMode = S.String;
 
 export type GetResponseEnforcementRulesItemMode = "min-friction" | "max-security";
-export const GetResponseEnforcementRulesItemMode = S.String;
+const GetResponseEnforcementRulesItemMode = S.String;
 
 export interface GetResponseEnforcementRulesItem {
   /** The filter expression that determines which requests the rule matches. */
@@ -40,7 +40,7 @@ export interface GetResponseEnforcementRulesItem {
   /** Whether the rule is active. */
   enabled?: boolean | null;
 }
-export const GetResponseEnforcementRulesItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponseEnforcementRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
     mode: GetResponseEnforcementRulesItemMode,
@@ -53,7 +53,7 @@ export const GetResponseEnforcementRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseEnforcementRulesItem>;
 
 export type GetResponseEnforcementRulesList = Array<GetResponseEnforcementRulesItem>;
-export const GetResponseEnforcementRulesList = /*@__PURE__*/ S.Array(
+const GetResponseEnforcementRulesList = /*@__PURE__*/ S.Array(
   GetResponseEnforcementRulesItem,
 ) as any as S.Schema<GetResponseEnforcementRulesList>;
 
@@ -64,7 +64,7 @@ export interface GetResponse {
   /** The ordered list of enforcement rules for the zone. */
   enforcementRules?: GetResponseEnforcementRulesList | null;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultMode: S.optional(S.NullOr(GetResponseDefaultMode).pipe(T.Body("default_mode"))),
     enforcementRules: S.optional(
@@ -74,10 +74,10 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
 export type UpdateRequestDefaultMode = "off" | "min-friction" | "max-security";
-export const UpdateRequestDefaultMode = S.String;
+const UpdateRequestDefaultMode = S.String;
 
 export type UpdateRequestEnforcementRulesItemMode = "min-friction" | "max-security";
-export const UpdateRequestEnforcementRulesItemMode = S.String;
+const UpdateRequestEnforcementRulesItemMode = S.String;
 
 export interface UpdateRequestEnforcementRulesItem {
   /** The filter expression that determines which requests the rule matches. */
@@ -91,7 +91,7 @@ export interface UpdateRequestEnforcementRulesItem {
   /** Whether the rule is active. */
   enabled?: boolean;
 }
-export const UpdateRequestEnforcementRulesItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestEnforcementRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
     mode: UpdateRequestEnforcementRulesItemMode,
@@ -104,7 +104,7 @@ export const UpdateRequestEnforcementRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestEnforcementRulesItem>;
 
 export type UpdateRequestEnforcementRulesList = Array<UpdateRequestEnforcementRulesItem>;
-export const UpdateRequestEnforcementRulesList = /*@__PURE__*/ S.Array(
+const UpdateRequestEnforcementRulesList = /*@__PURE__*/ S.Array(
   UpdateRequestEnforcementRulesItem,
 ) as any as S.Schema<UpdateRequestEnforcementRulesList>;
 
@@ -116,7 +116,7 @@ export interface UpdateRequest {
   /** The ordered list of enforcement rules for the zone. */
   enforcementRules?: UpdateRequestEnforcementRulesList;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     defaultMode: S.optional(UpdateRequestDefaultMode.pipe(T.Body("default_mode"))),
@@ -127,11 +127,7 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
 export type UpdateResponseDefaultMode = "off" | "min-friction" | "max-security";
-export const UpdateResponseDefaultMode = S.String;
-
 export type UpdateResponseEnforcementRulesItemMode = "min-friction" | "max-security";
-export const UpdateResponseEnforcementRulesItemMode = S.String;
-
 export interface UpdateResponseEnforcementRulesItem {
   /** The filter expression that determines which requests the rule matches. */
   expression: string;
@@ -144,13 +140,7 @@ export interface UpdateResponseEnforcementRulesItem {
   /** Whether the rule is active. */
   enabled?: boolean | null;
 }
-export const UpdateResponseEnforcementRulesItem =
-  GetResponseEnforcementRulesItem as any as S.Schema<UpdateResponseEnforcementRulesItem>;
-
 export type UpdateResponseEnforcementRulesList = Array<UpdateResponseEnforcementRulesItem>;
-export const UpdateResponseEnforcementRulesList =
-  GetResponseEnforcementRulesList as any as S.Schema<UpdateResponseEnforcementRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
   /** The zone-level Precursor enforcement mode applied to requests that do not match a more specific enforcement rule. */
@@ -158,7 +148,7 @@ export interface UpdateResponse {
   /** The ordered list of enforcement rules for the zone. */
   enforcementRules?: UpdateResponseEnforcementRulesList | null;
 }
-export const UpdateResponse = GetResponse as any as S.Schema<UpdateResponse>;
+const UpdateResponse = GetResponse as any as S.Schema<UpdateResponse>;
 
 export type GetError = CloudflareOpError;
 /** Retrieve a zone's Precursor configuration: the zone-level `default_mode` and the ordered list of `enforcement_rules`. */

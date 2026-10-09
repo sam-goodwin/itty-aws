@@ -13,7 +13,7 @@ export interface GetIsoRequest {
   /** ID of the ISO. */
   id: number;
 }
-export const GetIsoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIsoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/isos/{id}", code: 200 })),
@@ -21,7 +21,7 @@ export const GetIsoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the ISO. */
 export type GetIsoResponseIsoType = "public" | "private";
-export const GetIsoResponseIsoType = S.String;
+const GetIsoResponseIsoType = S.String;
 
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export interface GetIsoResponseIsoDeprecation {
@@ -30,7 +30,7 @@ export interface GetIsoResponseIsoDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
-export const GetIsoResponseIsoDeprecation = /*@__PURE__*/ S.suspend(() =>
+const GetIsoResponseIsoDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unavailable_after: S.String,
     announced: S.String,
@@ -41,7 +41,7 @@ export const GetIsoResponseIsoDeprecation = /*@__PURE__*/ S.suspend(() =>
 
 /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
 export type GetIsoResponseIsoArchitecture = "x86" | "arm";
-export const GetIsoResponseIsoArchitecture = S.String;
+const GetIsoResponseIsoArchitecture = S.String;
 
 export interface GetIsoResponseIso {
   /** ID of the [ISO](#tag/isos). */
@@ -57,7 +57,7 @@ export interface GetIsoResponseIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: GetIsoResponseIsoArchitecture | null;
 }
-export const GetIsoResponseIso = /*@__PURE__*/ S.suspend(() =>
+const GetIsoResponseIso = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.NullOr(S.String),
@@ -71,7 +71,7 @@ export const GetIsoResponseIso = /*@__PURE__*/ S.suspend(() =>
 export interface GetIsoResponse {
   iso: GetIsoResponseIso;
 }
-export const GetIsoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIsoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iso: GetIsoResponseIso,
   }),
@@ -79,7 +79,7 @@ export const GetIsoResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** CPU architecture of the Resource. */
 export type ListIsosRequestArchitecture = "x86" | "arm";
-export const ListIsosRequestArchitecture = S.String;
+const ListIsosRequestArchitecture = S.String;
 
 export interface ListIsosRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
@@ -93,7 +93,7 @@ export interface ListIsosRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListIsosRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIsosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     architecture: S.optional(ListIsosRequestArchitecture.pipe(T.Query())),
@@ -105,16 +105,10 @@ export const ListIsosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the ISO. */
 export type ListIsosResponseIsosItemType = "public" | "private";
-export const ListIsosResponseIsosItemType = S.String;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type ListIsosResponseIsosItemDeprecation = GetIsoResponseIsoDeprecation;
-export const ListIsosResponseIsosItemDeprecation = GetIsoResponseIsoDeprecation;
-
 /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
 export type ListIsosResponseIsosItemArchitecture = "x86" | "arm";
-export const ListIsosResponseIsosItemArchitecture = S.String;
-
 export interface ListIsosResponseIsosItem {
   /** ID of the [ISO](#tag/isos). */
   id: number;
@@ -129,11 +123,10 @@ export interface ListIsosResponseIsosItem {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: ListIsosResponseIsosItemArchitecture | null;
 }
-export const ListIsosResponseIsosItem =
-  GetIsoResponseIso as any as S.Schema<ListIsosResponseIsosItem>;
+const ListIsosResponseIsosItem = GetIsoResponseIso as any as S.Schema<ListIsosResponseIsosItem>;
 
 export type ListIsosResponseIsosList = Array<ListIsosResponseIsosItem>;
-export const ListIsosResponseIsosList = /*@__PURE__*/ S.Array(
+const ListIsosResponseIsosList = /*@__PURE__*/ S.Array(
   ListIsosResponseIsosItem,
 ) as any as S.Schema<ListIsosResponseIsosList>;
 
@@ -152,7 +145,7 @@ export interface ListIsosResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListIsosResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListIsosResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -169,7 +162,7 @@ export interface ListIsosResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListIsosResponseMetaPagination;
 }
-export const ListIsosResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListIsosResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListIsosResponseMetaPagination,
   }),
@@ -179,7 +172,7 @@ export interface ListIsosResponse {
   isos: ListIsosResponseIsosList;
   meta: ListIsosResponseMeta;
 }
-export const ListIsosResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIsosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isos: ListIsosResponseIsosList,
     meta: ListIsosResponseMeta,

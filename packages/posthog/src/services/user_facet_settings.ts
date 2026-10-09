@@ -8,14 +8,14 @@ import * as T from "../traits.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 export type GetUserFacetSettingsRequestProduct = "logs" | "tracing";
-export const GetUserFacetSettingsRequestProduct = S.String;
+const GetUserFacetSettingsRequestProduct = S.String;
 
 export interface GetUserFacetSettingsRequest {
   uuid: string;
   /** Which product's custom facets to read or update. */
   product: GetUserFacetSettingsRequestProduct | (string & {});
 }
-export const GetUserFacetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserFacetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     product: GetUserFacetSettingsRequestProduct.pipe(T.Query()),
@@ -26,7 +26,7 @@ export const GetUserFacetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `attribute` - attribute * `resourceAttribute` - resourceAttribute */
 export type UserFacetSettingsEntrySourceTypeEnum = "attribute" | "resourceAttribute";
-export const UserFacetSettingsEntrySourceTypeEnum = S.String;
+const UserFacetSettingsEntrySourceTypeEnum = S.String;
 
 export interface UserFacetSettingsEntry {
   /** The log or span attribute key this facet is based on -- for example `http.status_code` or `k8s.pod.name`. */
@@ -34,7 +34,7 @@ export interface UserFacetSettingsEntry {
   /** Where the key lives: `attribute` for a plain log/span attribute, `resourceAttribute` for an OpenTelemetry resource attribute. * `attribute` - attribute * `resourceAttribute` - resourceAttribute */
   source_type: UserFacetSettingsEntrySourceTypeEnum | (string & {});
 }
-export const UserFacetSettingsEntry = /*@__PURE__*/ S.suspend(() =>
+const UserFacetSettingsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     source_type: UserFacetSettingsEntrySourceTypeEnum,
@@ -43,7 +43,7 @@ export const UserFacetSettingsEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
 export type UserFacetSettingsCustomFacetsList = Array<UserFacetSettingsEntry>;
-export const UserFacetSettingsCustomFacetsList = /*@__PURE__*/ S.Array(
+const UserFacetSettingsCustomFacetsList = /*@__PURE__*/ S.Array(
   UserFacetSettingsEntry,
 ) as any as S.Schema<UserFacetSettingsCustomFacetsList>;
 
@@ -51,18 +51,18 @@ export interface UserFacetSettings2 {
   /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
   custom_facets: UserFacetSettingsCustomFacetsList;
 }
-export const UserFacetSettings2 = /*@__PURE__*/ S.suspend(() =>
+const UserFacetSettings2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_facets: UserFacetSettingsCustomFacetsList,
   }),
 ).annotate({ identifier: "UserFacetSettings2" }) as any as S.Schema<UserFacetSettings2>;
 
 export type UpdateUserFacetSettingsPartialRequestProduct = "logs" | "tracing";
-export const UpdateUserFacetSettingsPartialRequestProduct = S.String;
+const UpdateUserFacetSettingsPartialRequestProduct = S.String;
 
 /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
 export type UpdateUserFacetSettingsPartialRequestCustomFacetsList = Array<UserFacetSettingsEntry>;
-export const UpdateUserFacetSettingsPartialRequestCustomFacetsList =
+const UpdateUserFacetSettingsPartialRequestCustomFacetsList =
   UserFacetSettingsCustomFacetsList as any as S.Schema<UpdateUserFacetSettingsPartialRequestCustomFacetsList>;
 
 export interface UpdateUserFacetSettingsPartialRequest {
@@ -72,7 +72,7 @@ export interface UpdateUserFacetSettingsPartialRequest {
   /** Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set. */
   custom_facets?: UpdateUserFacetSettingsPartialRequestCustomFacetsList;
 }
-export const UpdateUserFacetSettingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserFacetSettingsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     product: UpdateUserFacetSettingsPartialRequestProduct.pipe(T.Query()),

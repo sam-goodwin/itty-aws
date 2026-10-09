@@ -52,7 +52,7 @@ export interface AddDiskRequest {
   mountPath: string;
   serviceId: string;
 }
-export const AddDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     sizeGB: S.Number,
@@ -70,7 +70,7 @@ export interface AddDiskResponse {
   createdAt: string;
   updatedAt: string;
 }
-export const AddDiskResponse = /*@__PURE__*/ S.suspend(() =>
+const AddDiskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -92,7 +92,7 @@ export interface AddHeadersRequest {
   /** Header value */
   value: string;
 }
-export const AddHeadersRequest = /*@__PURE__*/ S.suspend(() =>
+const AddHeadersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     path: S.String,
@@ -107,7 +107,7 @@ export interface Header {
   name: string;
   value: string;
 }
-export const Header = /*@__PURE__*/ S.suspend(() =>
+const Header = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     path: S.String,
@@ -119,7 +119,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
 export interface AddHeadersResponse {
   headers?: Header;
 }
-export const AddHeadersResponse = /*@__PURE__*/ S.suspend(() =>
+const AddHeadersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(Header),
   }),
@@ -131,7 +131,7 @@ export interface AddOrUpdateBuildSourceSecretFileRequest {
   envVarKey: string;
   content?: string;
 }
-export const AddOrUpdateBuildSourceSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOrUpdateBuildSourceSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -151,7 +151,7 @@ export interface SecretFile {
   name: string;
   content: string;
 }
-export const SecretFile = /*@__PURE__*/ S.suspend(() =>
+const SecretFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     content: S.String,
@@ -165,7 +165,7 @@ export interface AddOrUpdateSecretFileRequest {
   envVarKey: string;
   content?: string;
 }
-export const AddOrUpdateSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOrUpdateSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -178,7 +178,7 @@ export const AddOrUpdateSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddOrUpdateSecretFileRequest>;
 
 export type AddResourcesToEnvironmentRequestResourceIdsList = Array<string>;
-export const AddResourcesToEnvironmentRequestResourceIdsList = /*@__PURE__*/ S.Array(
+const AddResourcesToEnvironmentRequestResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddResourcesToEnvironmentRequestResourceIdsList>;
 
@@ -186,7 +186,7 @@ export interface AddResourcesToEnvironmentRequest {
   environmentId: string;
   resourceIds: AddResourcesToEnvironmentRequestResourceIdsList;
 }
-export const AddResourcesToEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const AddResourcesToEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.String.pipe(T.Label()),
     resourceIds: AddResourcesToEnvironmentRequestResourceIdsList,
@@ -196,7 +196,7 @@ export const AddResourcesToEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddResourcesToEnvironmentRequest>;
 
 export type EnvironmentDatabasesIdsList = Array<string>;
-export const EnvironmentDatabasesIdsList =
+const EnvironmentDatabasesIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<EnvironmentDatabasesIdsList>;
 
 export interface CidrBlockAndDescription {
@@ -204,7 +204,7 @@ export interface CidrBlockAndDescription {
   /** User-provided description of the CIDR block */
   description: string;
 }
-export const CidrBlockAndDescription = /*@__PURE__*/ S.suspend(() =>
+const CidrBlockAndDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidrBlock: S.String,
     description: S.String,
@@ -212,25 +212,25 @@ export const CidrBlockAndDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CidrBlockAndDescription" }) as any as S.Schema<CidrBlockAndDescription>;
 
 export type EnvironmentIpAllowListList = Array<CidrBlockAndDescription>;
-export const EnvironmentIpAllowListList = /*@__PURE__*/ S.Array(
+const EnvironmentIpAllowListList = /*@__PURE__*/ S.Array(
   CidrBlockAndDescription,
 ) as any as S.Schema<EnvironmentIpAllowListList>;
 
 export type EnvironmentRedisIdsList = Array<string>;
-export const EnvironmentRedisIdsList =
+const EnvironmentRedisIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<EnvironmentRedisIdsList>;
 
 export type EnvironmentServiceIdsList = Array<string>;
-export const EnvironmentServiceIdsList =
+const EnvironmentServiceIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<EnvironmentServiceIdsList>;
 
 export type EnvironmentEnvGroupIdsList = Array<string>;
-export const EnvironmentEnvGroupIdsList =
+const EnvironmentEnvGroupIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<EnvironmentEnvGroupIdsList>;
 
 /** Indicates whether an environment is `unprotected` or `protected`. Only admin users can perform destructive actions in `protected` environments. */
 export type ProtectedStatus = "unprotected" | "protected";
-export const ProtectedStatus = S.String;
+const ProtectedStatus = S.String;
 
 export interface Environment {
   id: string;
@@ -244,7 +244,7 @@ export interface Environment {
   protectedStatus: ProtectedStatus;
   networkIsolationEnabled: boolean;
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -260,7 +260,7 @@ export const Environment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
 export type RouteType = "redirect" | "rewrite";
-export const RouteType = S.String;
+const RouteType = S.String;
 
 export interface AddRouteRequest {
   /** The ID of the service */
@@ -271,7 +271,7 @@ export interface AddRouteRequest {
   /** Redirect and Rewrite Rules are applied in priority order starting at 0. Defaults to last in the priority list. */
   priority?: number;
 }
-export const AddRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const AddRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     type: RouteType,
@@ -289,7 +289,7 @@ export interface Route {
   /** Redirect and Rewrite Rules are applied in priority order starting at 0 */
   priority: number;
 }
-export const Route = /*@__PURE__*/ S.suspend(() =>
+const Route = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: RouteType,
@@ -304,7 +304,7 @@ export interface AutoscaleServiceRequestCriteriaCpu {
   /** Determines when your service will be scaled. If the average resource utilization is significantly above/below the target, we will increase/decrease the number of instances. */
   percentage: number;
 }
-export const AutoscaleServiceRequestCriteriaCpu = /*@__PURE__*/ S.suspend(() =>
+const AutoscaleServiceRequestCriteriaCpu = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     percentage: S.Number,
@@ -314,13 +314,11 @@ export const AutoscaleServiceRequestCriteriaCpu = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoscaleServiceRequestCriteriaCpu>;
 
 export type Cpu = AutoscaleServiceRequestCriteriaCpu;
-export const Cpu = AutoscaleServiceRequestCriteriaCpu;
-
 export interface AutoscaleServiceRequestCriteria {
   cpu: AutoscaleServiceRequestCriteriaCpu;
   memory: AutoscaleServiceRequestCriteriaCpu;
 }
-export const AutoscaleServiceRequestCriteria = /*@__PURE__*/ S.suspend(() =>
+const AutoscaleServiceRequestCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu: AutoscaleServiceRequestCriteriaCpu,
     memory: AutoscaleServiceRequestCriteriaCpu,
@@ -339,7 +337,7 @@ export interface AutoscaleServiceRequest {
   max: number;
   criteria: AutoscaleServiceRequestCriteria;
 }
-export const AutoscaleServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoscaleServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     enabled: S.Boolean,
@@ -350,11 +348,7 @@ export const AutoscaleServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoscaleServiceRequest" }) as any as S.Schema<AutoscaleServiceRequest>;
 
 export type SchemaCriteriaCpu = AutoscaleServiceRequestCriteriaCpu;
-export const SchemaCriteriaCpu = AutoscaleServiceRequestCriteriaCpu;
-
 export type SchemaCriteria = AutoscaleServiceRequestCriteria;
-export const SchemaCriteria = AutoscaleServiceRequestCriteria;
-
 export interface Schema5 {
   enabled: boolean;
   /** The minimum number of instances for the service */
@@ -363,7 +357,7 @@ export interface Schema5 {
   max: number;
   criteria: AutoscaleServiceRequestCriteria;
 }
-export const Schema5 = /*@__PURE__*/ S.suspend(() =>
+const Schema5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     min: S.Number,
@@ -376,14 +370,14 @@ export interface CancelCronJobRunRequest {
   /** The ID of the cron job */
   cronJobId: string;
 }
-export const CancelCronJobRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelCronJobRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cronJobId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/cron-jobs/{cronJobId}/runs", code: 200 })),
 ).annotate({ identifier: "CancelCronJobRunRequest" }) as any as S.Schema<CancelCronJobRunRequest>;
 
 export interface CancelCronJobRunResponse {}
-export const CancelCronJobRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelCronJobRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelCronJobRunResponse",
 }) as any as S.Schema<CancelCronJobRunResponse>;
 
@@ -393,7 +387,7 @@ export interface CancelDeployRequest {
   /** The ID of the deploy */
   deployId: string;
 }
-export const CancelDeployRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelDeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     deployId: S.String.pipe(T.Label()),
@@ -407,7 +401,7 @@ export interface DeployCommit {
   message?: string;
   createdAt?: string;
 }
-export const DeployCommit = /*@__PURE__*/ S.suspend(() =>
+const DeployCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     message: S.optional(S.String),
@@ -424,7 +418,7 @@ export interface DeployImage {
   /** Name of credential used to pull the image, if provided */
   registryCredential?: string;
 }
-export const DeployImage = /*@__PURE__*/ S.suspend(() =>
+const DeployImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.optional(S.String),
     sha: S.optional(S.String),
@@ -444,7 +438,7 @@ export type DeployStatus =
   | "canceled"
   | "pre_deploy_in_progress"
   | "pre_deploy_failed";
-export const DeployStatus = S.String;
+const DeployStatus = S.String;
 
 export type DeployTrigger =
   | "api"
@@ -457,7 +451,7 @@ export type DeployTrigger =
   | "rollback"
   | "service_resumed"
   | "service_updated";
-export const DeployTrigger = S.String;
+const DeployTrigger = S.String;
 
 export interface Deploy {
   id: string;
@@ -471,7 +465,7 @@ export interface Deploy {
   createdAt?: string;
   updatedAt?: string;
 }
-export const Deploy = /*@__PURE__*/ S.suspend(() =>
+const Deploy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     commit: S.optional(DeployCommit),
@@ -491,7 +485,7 @@ export interface CancelJobRequest {
   /** The ID of the job */
   jobId: string;
 }
-export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -499,7 +493,7 @@ export const CancelJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelJobRequest" }) as any as S.Schema<CancelJobRequest>;
 
 export type Items2 = "pending" | "running" | "succeeded" | "failed" | "canceled";
-export const Items2 = S.String;
+const Items2 = S.String;
 
 export interface Schema7 {
   id: string;
@@ -511,7 +505,7 @@ export interface Schema7 {
   startedAt?: string;
   finishedAt?: string;
 }
-export const Schema7 = /*@__PURE__*/ S.suspend(() =>
+const Schema7 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     serviceId: S.String,
@@ -528,22 +522,21 @@ export interface CancelTaskRunRequest {
   /** The ID of the task run */
   taskRunId: string;
 }
-export const CancelTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskRunId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/task-runs/{taskRunId}", code: 200 })),
 ).annotate({ identifier: "CancelTaskRunRequest" }) as any as S.Schema<CancelTaskRunRequest>;
 
 export interface CancelTaskRunResponse {}
-export const CancelTaskRunResponse =
-  CancelCronJobRunResponse as any as S.Schema<CancelTaskRunResponse>;
+const CancelTaskRunResponse = CancelCronJobRunResponse as any as S.Schema<CancelTaskRunResponse>;
 
 export type BuildFilterPathsList2 = Array<string>;
-export const BuildFilterPathsList2 =
+const BuildFilterPathsList2 =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<BuildFilterPathsList2>;
 
 export type BuildFilterIgnoredPathsList2 = Array<string>;
-export const BuildFilterIgnoredPathsList2 =
+const BuildFilterIgnoredPathsList2 =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<BuildFilterIgnoredPathsList2>;
 
 /** Glob patterns matched against files changed by a commit. When set, a commit only triggers a build when at least one changed file matches `paths` and none match `ignoredPaths`. Useful for monorepos where a single repo backs many services. */
@@ -551,7 +544,7 @@ export interface BuildFilter2 {
   paths: BuildFilterPathsList2;
   ignoredPaths: BuildFilterIgnoredPathsList2;
 }
-export const BuildFilter2 = /*@__PURE__*/ S.suspend(() =>
+const BuildFilter2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: BuildFilterPathsList2,
     ignoredPaths: BuildFilterIgnoredPathsList2,
@@ -567,7 +560,7 @@ export type CreateBuildSourceRequestGitRuntime =
   | "python"
   | "ruby"
   | "rust";
-export const CreateBuildSourceRequestGitRuntime = S.String;
+const CreateBuildSourceRequestGitRuntime = S.String;
 
 /** Defaults to "oregon" */
 export type CreateBuildSourceRequestGitRegion =
@@ -576,7 +569,7 @@ export type CreateBuildSourceRequestGitRegion =
   | "ohio"
   | "singapore"
   | "virginia";
-export const CreateBuildSourceRequestGitRegion = S.String;
+const CreateBuildSourceRequestGitRegion = S.String;
 
 export interface CreateBuildSourceRequestGit {
   baseDir?: string;
@@ -592,7 +585,7 @@ export interface CreateBuildSourceRequestGit {
   repoUrl?: string;
   rootDir?: string;
 }
-export const CreateBuildSourceRequestGit = /*@__PURE__*/ S.suspend(() =>
+const CreateBuildSourceRequestGit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseDir: S.optional(S.String),
     branch: S.optional(S.String),
@@ -614,7 +607,7 @@ export interface CreateBuildSourceRequestImage {
   registryCredentialId?: string;
   imageUrl: string;
 }
-export const CreateBuildSourceRequestImage = /*@__PURE__*/ S.suspend(() =>
+const CreateBuildSourceRequestImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     registryCredentialId: S.optional(S.String),
@@ -625,14 +618,14 @@ export const CreateBuildSourceRequestImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBuildSourceRequestImage>;
 
 export type CreateBuildSourceRequestServiceIdsList = Array<string>;
-export const CreateBuildSourceRequestServiceIdsList =
+const CreateBuildSourceRequestServiceIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<CreateBuildSourceRequestServiceIdsList>;
 
 export interface SchemaItemCase0 {
   key: string;
   value: string;
 }
-export const SchemaItemCase0 = /*@__PURE__*/ S.suspend(() =>
+const SchemaItemCase0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -644,34 +637,27 @@ export interface SchemaItemCase1 {
   /** If true, Render generates a strong random value for this environment variable on creation. Cannot be combined with `value`. */
   generateValue: boolean;
 }
-export const SchemaItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    generateValue: S.Boolean,
-  }),
-).annotate({ identifier: "SchemaItemCase1" }) as any as S.Schema<SchemaItemCase1>;
-
 export type SchemaItem = SchemaItemCase0 | SchemaItemCase1;
-export const SchemaItem = S.Unknown as any as S.Schema<SchemaItem>;
+const SchemaItem = S.Unknown as any as S.Schema<SchemaItem>;
 
 export type Schema6 = Array<SchemaItem>;
-export const Schema6 = /*@__PURE__*/ S.Array(SchemaItem) as any as S.Schema<Schema6>;
+const Schema6 = /*@__PURE__*/ S.Array(SchemaItem) as any as S.Schema<Schema6>;
 
 export interface Items {
   name: string;
   content: string;
 }
-export const Items = SecretFile as any as S.Schema<Items>;
+const Items = SecretFile as any as S.Schema<Items>;
 
 /** Secret files for the build source's build. Only valid for `git` sources. */
 export type CreateBuildSourceRequestSecretFilesList = Array<Items>;
-export const CreateBuildSourceRequestSecretFilesList = /*@__PURE__*/ S.Array(
+const CreateBuildSourceRequestSecretFilesList = /*@__PURE__*/ S.Array(
   Items,
 ) as any as S.Schema<CreateBuildSourceRequestSecretFilesList>;
 
 /** IDs of env groups to link to the build source. Only valid for `git` sources; env groups must belong to the same workspace and must not be scoped to an environment. */
 export type CreateBuildSourceRequestEnvGroupIdsList = Array<string>;
-export const CreateBuildSourceRequestEnvGroupIdsList =
+const CreateBuildSourceRequestEnvGroupIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<CreateBuildSourceRequestEnvGroupIdsList>;
 
 export interface CreateBuildSourceRequest {
@@ -687,7 +673,7 @@ export interface CreateBuildSourceRequest {
   /** IDs of env groups to link to the build source. Only valid for `git` sources; env groups must belong to the same workspace and must not be scoped to an environment. */
   envGroupIds?: CreateBuildSourceRequestEnvGroupIdsList;
 }
-export const CreateBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     name: S.String,
@@ -703,11 +689,11 @@ export const CreateBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Build runtime for the build source. Static sites are not supported for build sources. */
 export type GitRuntime = "docker" | "elixir" | "go" | "node" | "python" | "ruby" | "rust";
-export const GitRuntime = S.String;
+const GitRuntime = S.String;
 
 /** Defaults to "oregon" */
 export type GitRegion = "frankfurt" | "oregon" | "ohio" | "singapore" | "virginia";
-export const GitRegion = S.String;
+const GitRegion = S.String;
 
 export interface Git {
   baseDir?: string;
@@ -723,7 +709,7 @@ export interface Git {
   repoUrl?: string;
   rootDir?: string;
 }
-export const Git = /*@__PURE__*/ S.suspend(() =>
+const Git = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseDir: S.optional(S.String),
     branch: S.optional(S.String),
@@ -739,13 +725,11 @@ export const Git = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Git" }) as any as S.Schema<Git>;
 
 export type Image2 = CreateBuildSourceRequestImage;
-export const Image2 = CreateBuildSourceRequestImage;
-
 export interface CreateBuildSourceResponseServiceLinksItem {
   id: string;
   name: string;
 }
-export const CreateBuildSourceResponseServiceLinksItem = /*@__PURE__*/ S.suspend(() =>
+const CreateBuildSourceResponseServiceLinksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -757,7 +741,7 @@ export const CreateBuildSourceResponseServiceLinksItem = /*@__PURE__*/ S.suspend
 /** Services currently linked to this build source. */
 export type CreateBuildSourceResponseServiceLinksList =
   Array<CreateBuildSourceResponseServiceLinksItem>;
-export const CreateBuildSourceResponseServiceLinksList = /*@__PURE__*/ S.Array(
+const CreateBuildSourceResponseServiceLinksList = /*@__PURE__*/ S.Array(
   CreateBuildSourceResponseServiceLinksItem,
 ) as any as S.Schema<CreateBuildSourceResponseServiceLinksList>;
 
@@ -777,7 +761,7 @@ export interface CreateBuildSourceResponse {
   /** Services currently linked to this build source. */
   serviceLinks: CreateBuildSourceResponseServiceLinksList;
 }
-export const CreateBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -798,7 +782,7 @@ export interface CreateCustomDomainRequest {
   serviceId: string;
   name: string;
 }
-export const CreateCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     name: S.String,
@@ -808,16 +792,16 @@ export const CreateCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomDomainRequest>;
 
 export type CustomDomainDomainType = "apex" | "subdomain";
-export const CustomDomainDomainType = S.String;
+const CustomDomainDomainType = S.String;
 
 export type CustomDomainVerificationStatus = "verified" | "unverified";
-export const CustomDomainVerificationStatus = S.String;
+const CustomDomainVerificationStatus = S.String;
 
 export interface CustomDomainServer {
   id?: string;
   name?: string;
 }
-export const CustomDomainServer = /*@__PURE__*/ S.suspend(() =>
+const CustomDomainServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -834,7 +818,7 @@ export interface CustomDomain {
   createdAt: string;
   server?: CustomDomainServer;
 }
-export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
+const CustomDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -848,12 +832,12 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
 export type CreateCustomDomainResponseBodyList = Array<CustomDomain>;
-export const CreateCustomDomainResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateCustomDomainResponseBodyList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<CreateCustomDomainResponseBodyList>;
 
 export type CreateCustomDomainResponse = CreateCustomDomainResponseBodyList;
-export const CreateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
   CreateCustomDomainResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateCustomDomainResponse",
@@ -861,11 +845,11 @@ export const CreateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Defaults to "oregon" */
 export type Region = "frankfurt" | "oregon" | "ohio" | "singapore" | "virginia";
-export const Region = S.String;
+const Region = S.String;
 
 /** Environments to scope the dedicated IP set to. If omitted or empty, it applies to all services in the workspace within its region. */
 export type CreateDedicatedIpRequestEnvironmentIdsList = Array<string>;
-export const CreateDedicatedIpRequestEnvironmentIdsList =
+const CreateDedicatedIpRequestEnvironmentIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<CreateDedicatedIpRequestEnvironmentIdsList>;
 
 export interface CreateDedicatedIpRequest {
@@ -879,7 +863,7 @@ export interface CreateDedicatedIpRequest {
   /** Environments to scope the dedicated IP set to. If omitted or empty, it applies to all services in the workspace within its region. */
   environmentIds?: CreateDedicatedIpRequestEnvironmentIdsList;
 }
-export const CreateDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -891,12 +875,12 @@ export const CreateDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Environments this dedicated IP set applies to. If empty, it applies to all services in the workspace within its region. */
 export type DedicatedIPEnvironmentIdsList = Array<string>;
-export const DedicatedIPEnvironmentIdsList =
+const DedicatedIPEnvironmentIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<DedicatedIPEnvironmentIdsList>;
 
 /** The IPv4 addresses assigned to this dedicated IP set. */
 export type DedicatedIPIpsList = Array<string>;
-export const DedicatedIPIpsList =
+const DedicatedIPIpsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<DedicatedIPIpsList>;
 
 /** Current status of a dedicated IP set. */
@@ -908,7 +892,7 @@ export type DedicatedIPStatus =
   | "FAILED"
   | "DELETING"
   | "DELETED";
-export const DedicatedIPStatus = S.String;
+const DedicatedIPStatus = S.String;
 
 export interface DedicatedIP {
   /** Unique identifier for this dedicated IP set. */
@@ -930,7 +914,7 @@ export interface DedicatedIP {
   /** Time the dedicated IP set was last updated. */
   updatedAt?: string;
 }
-export const DedicatedIP = /*@__PURE__*/ S.suspend(() =>
+const DedicatedIP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -947,11 +931,11 @@ export const DedicatedIP = /*@__PURE__*/ S.suspend(() =>
 
 /** If `clear`, Render clears the service's build cache before deploying. This can be useful if you're experiencing issues with your build. */
 export type CreateDeployRequestClearCache = "clear" | "do_not_clear";
-export const CreateDeployRequestClearCache = S.String;
+const CreateDeployRequestClearCache = S.String;
 
 /** Controls deployment behavior when triggering a deploy. - `deploy_only`: Deploy the last successful build without rebuilding (minimizes downtime) - `build_and_deploy`: Build new code and deploy it (default behavior when not specified) **Note:** `deployMode` cannot be combined with `buildId`. `deploy_only` cannot be combined with `commitId`, `imageUrl`, or `clearCache`, as those are build related fields. */
 export type DeployMode = "deploy_only" | "build_and_deploy";
-export const DeployMode = S.String;
+const DeployMode = S.String;
 
 export interface CreateDeployRequest {
   /** The ID of the service */
@@ -967,7 +951,7 @@ export interface CreateDeployRequest {
   /** Deployment mode controlling build and deploy behavior. Defaults to `build_and_deploy` when not specified. **Validation:** `deployMode` cannot be combined with `buildId`. `deploy_only` cannot be combined with `commitId`, `imageUrl`, or `clearCache`. */
   deployMode?: DeployMode | (string & {});
 }
-export const CreateDeployRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     buildId: S.optional(S.String),
@@ -979,11 +963,11 @@ export const CreateDeployRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDeployRequest" }) as any as S.Schema<CreateDeployRequest>;
 
 export type CreateEnvGroupRequestSecretFilesList = Array<Items>;
-export const CreateEnvGroupRequestSecretFilesList =
+const CreateEnvGroupRequestSecretFilesList =
   CreateBuildSourceRequestSecretFilesList as any as S.Schema<CreateEnvGroupRequestSecretFilesList>;
 
 export type CreateEnvGroupRequestServiceIdsList = Array<string>;
-export const CreateEnvGroupRequestServiceIdsList =
+const CreateEnvGroupRequestServiceIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<CreateEnvGroupRequestServiceIdsList>;
 
 export interface CreateEnvGroupRequest {
@@ -994,7 +978,7 @@ export interface CreateEnvGroupRequest {
   serviceIds?: CreateEnvGroupRequestServiceIdsList;
   environmentId?: string;
 }
-export const CreateEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     ownerId: S.String,
@@ -1006,14 +990,14 @@ export const CreateEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEnvGroupRequest" }) as any as S.Schema<CreateEnvGroupRequest>;
 
 export type ServiceTypeShort = "static" | "web" | "pserv" | "worker" | "cron";
-export const ServiceTypeShort = S.String;
+const ServiceTypeShort = S.String;
 
 export interface EnvGroupLink {
   id: string;
   name: string;
   type: ServiceTypeShort;
 }
-export const EnvGroupLink = /*@__PURE__*/ S.suspend(() =>
+const EnvGroupLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1023,7 +1007,7 @@ export const EnvGroupLink = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type CreateEnvGroupResponseServiceLinksList = Array<EnvGroupLink>;
-export const CreateEnvGroupResponseServiceLinksList = /*@__PURE__*/ S.Array(
+const CreateEnvGroupResponseServiceLinksList = /*@__PURE__*/ S.Array(
   EnvGroupLink,
 ) as any as S.Schema<CreateEnvGroupResponseServiceLinksList>;
 
@@ -1031,15 +1015,15 @@ export interface EnvVar {
   key: string;
   value: string;
 }
-export const EnvVar = SchemaItemCase0 as any as S.Schema<EnvVar>;
+const EnvVar = SchemaItemCase0 as any as S.Schema<EnvVar>;
 
 export type CreateEnvGroupResponseEnvVarsList = Array<EnvVar>;
-export const CreateEnvGroupResponseEnvVarsList = /*@__PURE__*/ S.Array(
+const CreateEnvGroupResponseEnvVarsList = /*@__PURE__*/ S.Array(
   EnvVar,
 ) as any as S.Schema<CreateEnvGroupResponseEnvVarsList>;
 
 export type CreateEnvGroupResponseSecretFilesList = Array<SecretFile>;
-export const CreateEnvGroupResponseSecretFilesList =
+const CreateEnvGroupResponseSecretFilesList =
   CreateBuildSourceRequestSecretFilesList as any as S.Schema<CreateEnvGroupResponseSecretFilesList>;
 
 export interface CreateEnvGroupResponse {
@@ -1054,7 +1038,7 @@ export interface CreateEnvGroupResponse {
   envVars: CreateEnvGroupResponseEnvVarsList;
   secretFiles: CreateEnvGroupResponseSecretFilesList;
 }
-export const CreateEnvGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1069,7 +1053,7 @@ export const CreateEnvGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEnvGroupResponse" }) as any as S.Schema<CreateEnvGroupResponse>;
 
 export type CreateEnvironmentRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const CreateEnvironmentRequestIpAllowListList =
+const CreateEnvironmentRequestIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<CreateEnvironmentRequestIpAllowListList>;
 
 export interface CreateEnvironmentRequest {
@@ -1079,7 +1063,7 @@ export interface CreateEnvironmentRequest {
   networkIsolationEnabled?: boolean;
   ipAllowList?: CreateEnvironmentRequestIpAllowListList;
 }
-export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     projectId: S.String,
@@ -1102,7 +1086,7 @@ export type KeyValuePlan =
   | "10g"
   | "20g"
   | "40g";
-export const KeyValuePlan = S.String;
+const KeyValuePlan = S.String;
 
 /** The eviction policy for the Key Value instance */
 export type MaxmemoryPolicy =
@@ -1114,14 +1098,14 @@ export type MaxmemoryPolicy =
   | "volatile_lru"
   | "volatile_random"
   | "volatile_ttl";
-export const MaxmemoryPolicy = S.String;
+const MaxmemoryPolicy = S.String;
 
 /** The persistence mode for the Key Value instance. The default for paid instances is journal_snapshot (both journaling and snapshots). Only turn off persistence if you're using this Key Value instance as a cache and are okay with losing data. Free instances do not have persistence. */
 export type PersistenceMode = "journal_snapshot" | "snapshot" | "off";
-export const PersistenceMode = S.String;
+const PersistenceMode = S.String;
 
 export type CreateKeyValueRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const CreateKeyValueRequestIpAllowListList =
+const CreateKeyValueRequestIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<CreateKeyValueRequestIpAllowListList>;
 
 export interface CreateKeyValueRequest {
@@ -1136,7 +1120,7 @@ export interface CreateKeyValueRequest {
   persistenceMode?: PersistenceMode | (string & {});
   ipAllowList?: CreateKeyValueRequestIpAllowListList;
 }
-export const CreateKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     ownerId: S.String,
@@ -1161,14 +1145,13 @@ export type DatabaseStatus =
   | "recovery_in_progress"
   | "unknown"
   | "updating_instance";
-export const DatabaseStatus = S.String;
+const DatabaseStatus = S.String;
 
 export type OwnerIpAllowListList = Array<CidrBlockAndDescription>;
-export const OwnerIpAllowListList =
-  EnvironmentIpAllowListList as any as S.Schema<OwnerIpAllowListList>;
+const OwnerIpAllowListList = EnvironmentIpAllowListList as any as S.Schema<OwnerIpAllowListList>;
 
 export type OwnerType = "user" | "team";
-export const OwnerType = S.String;
+const OwnerType = S.String;
 
 export interface Owner {
   id: string;
@@ -1179,7 +1162,7 @@ export interface Owner {
   twoFactorAuthEnabled?: boolean;
   type: OwnerType;
 }
-export const Owner = /*@__PURE__*/ S.suspend(() =>
+const Owner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1195,7 +1178,7 @@ export interface KeyValueOptions {
   maxmemoryPolicy?: string;
   persistenceMode?: PersistenceMode;
 }
-export const KeyValueOptions = /*@__PURE__*/ S.suspend(() =>
+const KeyValueOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxmemoryPolicy: S.optional(S.String),
     persistenceMode: S.optional(PersistenceMode),
@@ -1204,7 +1187,7 @@ export const KeyValueOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP allow list for the Key Value instance */
 export type KeyValueDetailIpAllowListList = Array<CidrBlockAndDescription>;
-export const KeyValueDetailIpAllowListList =
+const KeyValueDetailIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<KeyValueDetailIpAllowListList>;
 
 export type Items4 =
@@ -1214,7 +1197,7 @@ export type Items4 =
   | "cancelled"
   | "succeeded"
   | "failed";
-export const Items4 = S.String;
+const Items4 = S.String;
 
 export interface Maintenance {
   id: string;
@@ -1224,7 +1207,7 @@ export interface Maintenance {
   pendingMaintenanceBy?: string;
   state: Items4;
 }
-export const Maintenance = /*@__PURE__*/ S.suspend(() =>
+const Maintenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.String,
@@ -1257,7 +1240,7 @@ export interface KeyValueDetail {
   version: string;
   maintenance?: Maintenance;
 }
-export const KeyValueDetail = /*@__PURE__*/ S.suspend(() =>
+const KeyValueDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -1327,30 +1310,30 @@ export type CreatePostgresRequestPlan =
   | "96c-768g"
   | "128c-512g"
   | "128c-1024g";
-export const CreatePostgresRequestPlan = S.String;
+const CreatePostgresRequestPlan = S.String;
 
 export type CreatePostgresRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const CreatePostgresRequestIpAllowListList =
+const CreatePostgresRequestIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<CreatePostgresRequestIpAllowListList>;
 
 export interface ReadReplicaInput {
   /** The display name of the replica instance. */
   name: string;
 }
-export const ReadReplicaInput = /*@__PURE__*/ S.suspend(() =>
+const ReadReplicaInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
 ).annotate({ identifier: "ReadReplicaInput" }) as any as S.Schema<ReadReplicaInput>;
 
 export type ReadReplicasInput = Array<ReadReplicaInput>;
-export const ReadReplicasInput = /*@__PURE__*/ S.Array(
+const ReadReplicasInput = /*@__PURE__*/ S.Array(
   ReadReplicaInput,
 ) as any as S.Schema<ReadReplicasInput>;
 
 /** The PostgreSQL version */
 export type PostgresVersion = "11" | "12" | "13" | "14" | "15" | "16" | "17" | "18";
-export const PostgresVersion = S.String;
+const PostgresVersion = S.String;
 
 export interface CreatePostgresRequest {
   databaseName?: string;
@@ -1376,7 +1359,7 @@ export interface CreatePostgresRequest {
   readReplicas?: ReadReplicasInput;
   version: PostgresVersion | (string & {});
 }
-export const CreatePostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.optional(S.String),
     databaseUser: S.optional(S.String),
@@ -1398,7 +1381,7 @@ export const CreatePostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePostgresRequest" }) as any as S.Schema<CreatePostgresRequest>;
 
 export type PostgresDetailIpAllowListList = Array<CidrBlockAndDescription>;
-export const PostgresDetailIpAllowListList =
+const PostgresDetailIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<PostgresDetailIpAllowListList>;
 
 export type Plan2 =
@@ -1453,7 +1436,7 @@ export type Plan2 =
   | "96c-768g"
   | "128c-512g"
   | "128c-1024g";
-export const Plan2 = S.String;
+const Plan2 = S.String;
 
 export interface ReadReplica {
   /** The replica instance identifier. */
@@ -1461,7 +1444,7 @@ export interface ReadReplica {
   /** The display name of the replica instance. */
   name: string;
 }
-export const ReadReplica = /*@__PURE__*/ S.suspend(() =>
+const ReadReplica = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1469,13 +1452,13 @@ export const ReadReplica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadReplica" }) as any as S.Schema<ReadReplica>;
 
 export type ReadReplicas = Array<ReadReplica>;
-export const ReadReplicas = /*@__PURE__*/ S.Array(ReadReplica) as any as S.Schema<ReadReplicas>;
+const ReadReplicas = /*@__PURE__*/ S.Array(ReadReplica) as any as S.Schema<ReadReplicas>;
 
 export type DatabaseRole = "primary" | "replica";
-export const DatabaseRole = S.String;
+const DatabaseRole = S.String;
 
 export type PostgresDetailSuspended = "suspended" | "not_suspended";
-export const PostgresDetailSuspended = S.String;
+const PostgresDetailSuspended = S.String;
 
 export type SuspenderType =
   | "admin"
@@ -1485,10 +1468,10 @@ export type SuspenderType =
   | "stuck_crashlooping"
   | "hipaa_enablement"
   | "unknown";
-export const SuspenderType = S.String;
+const SuspenderType = S.String;
 
 export type PostgresDetailSuspendersList = Array<SuspenderType>;
-export const PostgresDetailSuspendersList = /*@__PURE__*/ S.Array(
+const PostgresDetailSuspendersList = /*@__PURE__*/ S.Array(
   SuspenderType,
 ) as any as S.Schema<PostgresDetailSuspendersList>;
 
@@ -1522,7 +1505,7 @@ export interface PostgresDetail {
   /** What connection pool to use (if any) out of 'pgbouncer' and 'none' */
   connectionPool: string;
 }
-export const PostgresDetail = /*@__PURE__*/ S.suspend(() =>
+const PostgresDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ipAllowList: PostgresDetailIpAllowListList,
@@ -1555,7 +1538,7 @@ export const PostgresDetail = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePostgresExportRequest {
   postgresId: string;
 }
-export const CreatePostgresExportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/export", code: 200 })),
@@ -1564,7 +1547,7 @@ export const CreatePostgresExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePostgresExportRequest>;
 
 export interface CreatePostgresExportResponse {}
-export const CreatePostgresExportResponse =
+const CreatePostgresExportResponse =
   CancelCronJobRunResponse as any as S.Schema<CreatePostgresExportResponse>;
 
 export interface CreatePostgresUserRequest {
@@ -1572,7 +1555,7 @@ export interface CreatePostgresUserRequest {
   /** Name of the new user. */
   username: string;
 }
-export const CreatePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
     username: S.String,
@@ -1582,11 +1565,11 @@ export const CreatePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePostgresUserRequest>;
 
 export interface CreatePostgresUserResponse {}
-export const CreatePostgresUserResponse =
+const CreatePostgresUserResponse =
   CancelCronJobRunResponse as any as S.Schema<CreatePostgresUserResponse>;
 
 export type ProjectPOSTEnvironmentInputIpAllowListList = Array<CidrBlockAndDescription>;
-export const ProjectPOSTEnvironmentInputIpAllowListList =
+const ProjectPOSTEnvironmentInputIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<ProjectPOSTEnvironmentInputIpAllowListList>;
 
 export interface ProjectPOSTEnvironmentInput {
@@ -1595,7 +1578,7 @@ export interface ProjectPOSTEnvironmentInput {
   networkIsolationEnabled?: boolean;
   ipAllowList?: ProjectPOSTEnvironmentInputIpAllowListList;
 }
-export const ProjectPOSTEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
+const ProjectPOSTEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     protectedStatus: S.optional(ProtectedStatus),
@@ -1608,7 +1591,7 @@ export const ProjectPOSTEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The environments to create when creating the project */
 export type CreateProjectRequestEnvironmentsList = Array<ProjectPOSTEnvironmentInput>;
-export const CreateProjectRequestEnvironmentsList = /*@__PURE__*/ S.Array(
+const CreateProjectRequestEnvironmentsList = /*@__PURE__*/ S.Array(
   ProjectPOSTEnvironmentInput,
 ) as any as S.Schema<CreateProjectRequestEnvironmentsList>;
 
@@ -1620,7 +1603,7 @@ export interface CreateProjectRequest {
   /** The environments to create when creating the project */
   environments: CreateProjectRequestEnvironmentsList;
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     ownerId: S.String,
@@ -1630,7 +1613,7 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The environments associated with the project */
 export type ProjectEnvironmentIdsList = Array<string>;
-export const ProjectEnvironmentIdsList =
+const ProjectEnvironmentIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ProjectEnvironmentIdsList>;
 
 /** A project is a collection of environments */
@@ -1645,7 +1628,7 @@ export interface Project {
   /** The environments associated with the project */
   environmentIds: ProjectEnvironmentIdsList;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -1663,7 +1646,7 @@ export type RegistryCredentialRegistry =
   | "DOCKER"
   | "GOOGLE_ARTIFACT"
   | "AWS_ECR";
-export const RegistryCredentialRegistry = S.String;
+const RegistryCredentialRegistry = S.String;
 
 export interface CreateRegistryCredentialRequest {
   registry: RegistryCredentialRegistry | (string & {});
@@ -1672,7 +1655,7 @@ export interface CreateRegistryCredentialRequest {
   authToken: string;
   ownerId: string;
 }
-export const CreateRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registry: RegistryCredentialRegistry,
     name: S.String,
@@ -1695,7 +1678,7 @@ export interface RegistryCredential {
   /** Last updated time for the credential */
   updatedAt: string;
 }
-export const RegistryCredential = /*@__PURE__*/ S.suspend(() =>
+const RegistryCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1711,15 +1694,15 @@ export type ServiceType =
   | "private_service"
   | "background_worker"
   | "cron_job";
-export const ServiceType = S.String;
+const ServiceType = S.String;
 
 /** Deprecated: use `autoDeployTrigger` instead. You can't set both `autoDeploy` and `autoDeployTrigger` in the same request. - `yes` is equivalent to `autoDeployTrigger: commit`. - `no` is equivalent to `autoDeployTrigger: off`. */
 export type AutoDeploy = "yes" | "no";
-export const AutoDeploy = S.String;
+const AutoDeploy = S.String;
 
 /** Controls autodeploy behavior. - `commit`: Deploy each time a commit is pushed to the service's linked branch. - `checksPass`: Deploy each time a commit is pushed to the linked branch, but only after the commit's CI checks pass. - `off`: Disable autodeploys. */
 export type CreateServiceRequestAutoDeployTrigger = "commit" | "off" | "checksPass";
-export const CreateServiceRequestAutoDeployTrigger = S.String;
+const CreateServiceRequestAutoDeployTrigger = S.String;
 
 export interface Image {
   /** The ID of the owner for this image. This should match the owner of the service as well as the owner of any specified registry credential. */
@@ -1729,7 +1712,7 @@ export interface Image {
   /** Path to the image used for this server (e.g docker.io/library/nginx:latest). */
   imagePath: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     registryCredentialId: S.optional(S.String),
@@ -1738,21 +1721,15 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 export type BuildFilterPathsList = Array<string>;
-export const BuildFilterPathsList =
-  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<BuildFilterPathsList>;
-
 export type BuildFilterIgnoredPathsList = Array<string>;
-export const BuildFilterIgnoredPathsList =
-  AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<BuildFilterIgnoredPathsList>;
-
 export interface BuildFilter {
   paths: BuildFilterPathsList;
   ignoredPaths: BuildFilterIgnoredPathsList;
 }
-export const BuildFilter = BuildFilter2 as any as S.Schema<BuildFilter>;
+const BuildFilter = BuildFilter2 as any as S.Schema<BuildFilter>;
 
 export type CreateServiceRequestSecretFilesList = Array<Items>;
-export const CreateServiceRequestSecretFilesList =
+const CreateServiceRequestSecretFilesList =
   CreateBuildSourceRequestSecretFilesList as any as S.Schema<CreateServiceRequestSecretFilesList>;
 
 export interface HeaderInput {
@@ -1763,7 +1740,7 @@ export interface HeaderInput {
   /** Header value */
   value: string;
 }
-export const HeaderInput = /*@__PURE__*/ S.suspend(() =>
+const HeaderInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     name: S.String,
@@ -1772,28 +1749,18 @@ export const HeaderInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeaderInput" }) as any as S.Schema<HeaderInput>;
 
 export type StaticSiteDetailsPOSTHeadersList = Array<HeaderInput>;
-export const StaticSiteDetailsPOSTHeadersList = /*@__PURE__*/ S.Array(
+const StaticSiteDetailsPOSTHeadersList = /*@__PURE__*/ S.Array(
   HeaderInput,
 ) as any as S.Schema<StaticSiteDetailsPOSTHeadersList>;
 
 /** This field has been deprecated. previews.generation should be used in its place. */
 export type PullRequestPreviewsEnabled = "yes" | "no";
-export const PullRequestPreviewsEnabled = S.String;
-
 /** Defaults to "off" */
 export type PreviewsGeneration = "off" | "manual" | "automatic";
-export const PreviewsGeneration = S.String;
-
 export interface Previews {
   /** Defaults to "off" */
   generation?: PreviewsGeneration | (string & {});
 }
-export const Previews = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generation: S.optional(PreviewsGeneration),
-  }),
-).annotate({ identifier: "Previews" }) as any as S.Schema<Previews>;
-
 export interface RoutePost {
   type: RouteType | (string & {});
   source: string;
@@ -1801,28 +1768,10 @@ export interface RoutePost {
   /** Redirect and Rewrite Rules are applied in priority order starting at 0. Defaults to last in the priority list. */
   priority?: number;
 }
-export const RoutePost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RouteType,
-    source: S.String,
-    destination: S.String,
-    priority: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RoutePost" }) as any as S.Schema<RoutePost>;
-
 export type StaticSiteDetailsPOSTRoutesList = Array<RoutePost>;
-export const StaticSiteDetailsPOSTRoutesList = /*@__PURE__*/ S.Array(
-  RoutePost,
-) as any as S.Schema<StaticSiteDetailsPOSTRoutesList>;
-
 /** Controls whether render.com subdomains are available for the service */
 export type RenderSubdomainPolicy = "enabled" | "disabled";
-export const RenderSubdomainPolicy = S.String;
-
 export type StaticSiteDetailsPOSTIpAllowListList = Array<CidrBlockAndDescription>;
-export const StaticSiteDetailsPOSTIpAllowListList =
-  EnvironmentIpAllowListList as any as S.Schema<StaticSiteDetailsPOSTIpAllowListList>;
-
 export interface StaticSiteDetailsPOST {
   buildCommand?: string;
   headers?: StaticSiteDetailsPOSTHeadersList;
@@ -1834,37 +1783,14 @@ export interface StaticSiteDetailsPOST {
   renderSubdomainPolicy?: RenderSubdomainPolicy | (string & {});
   ipAllowList?: StaticSiteDetailsPOSTIpAllowListList;
 }
-export const StaticSiteDetailsPOST = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.String),
-    headers: S.optional(StaticSiteDetailsPOSTHeadersList),
-    publishPath: S.optional(S.String),
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    routes: S.optional(StaticSiteDetailsPOSTRoutesList),
-    renderSubdomainPolicy: S.optional(RenderSubdomainPolicy),
-    ipAllowList: S.optional(StaticSiteDetailsPOSTIpAllowListList),
-  }),
-).annotate({ identifier: "StaticSiteDetailsPOST" }) as any as S.Schema<StaticSiteDetailsPOST>;
-
 export interface ServiceDisk {
   name: string;
   mountPath: string;
   /** Defaults to 1 */
   sizeGB?: number;
 }
-export const ServiceDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    mountPath: S.String,
-    sizeGB: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ServiceDisk" }) as any as S.Schema<ServiceDisk>;
-
 /** This field has been deprecated, runtime should be used in its place. */
 export type ServiceEnv = "docker" | "elixir" | "go" | "node" | "python" | "ruby" | "rust" | "image";
-export const ServiceEnv = S.String;
-
 /** Runtime */
 export type ServiceRuntime =
   | "docker"
@@ -1875,8 +1801,6 @@ export type ServiceRuntime =
   | "ruby"
   | "rust"
   | "image";
-export const ServiceRuntime = S.String;
-
 export interface DockerDetailsPOST {
   dockerCommand?: string;
   dockerContext?: string;
@@ -1884,44 +1808,17 @@ export interface DockerDetailsPOST {
   dockerfilePath?: string;
   registryCredentialId?: string;
 }
-export const DockerDetailsPOST = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dockerCommand: S.optional(S.String),
-    dockerContext: S.optional(S.String),
-    dockerfilePath: S.optional(S.String),
-    registryCredentialId: S.optional(S.String),
-  }),
-).annotate({ identifier: "DockerDetailsPOST" }) as any as S.Schema<DockerDetailsPOST>;
-
 /** Fields for native environment (runtime) services */
 export interface NativeEnvironmentDetailsPOST {
   buildCommand: string;
   startCommand: string;
 }
-export const NativeEnvironmentDetailsPOST = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.String,
-    startCommand: S.String,
-  }),
-).annotate({
-  identifier: "NativeEnvironmentDetailsPOST",
-}) as any as S.Schema<NativeEnvironmentDetailsPOST>;
-
 export type EnvSpecificDetailsPOST = DockerDetailsPOST | NativeEnvironmentDetailsPOST;
-export const EnvSpecificDetailsPOST = S.Unknown as any as S.Schema<EnvSpecificDetailsPOST>;
-
 export interface MaintenanceMode {
   enabled: boolean;
   /** The page to be served when [maintenance mode](https://render.com/docs/maintenance-mode) is enabled. When empty, the default maintenance mode page is served. */
   uri: string;
 }
-export const MaintenanceMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    uri: S.String,
-  }),
-).annotate({ identifier: "MaintenanceMode" }) as any as S.Schema<MaintenanceMode>;
-
 /** The compute plan to use. Legacy variants (`*_legacy`) identify grandfathered plans no longer offered for new services. Note that base services on any paid compute plan can't create preview instances with the `free` plan. */
 export type Plan =
   | "starter"
@@ -1953,12 +1850,9 @@ export type Plan =
   | "12c-24g"
   | "12c-48g"
   | "12c-96g";
-export const Plan = S.String;
+const Plan = S.String;
 
 export type WebServiceDetailsPOSTIpAllowListList = Array<CidrBlockAndDescription>;
-export const WebServiceDetailsPOSTIpAllowListList =
-  EnvironmentIpAllowListList as any as S.Schema<WebServiceDetailsPOSTIpAllowListList>;
-
 export interface WebServiceDetailsPOST {
   /** The ID of the Build Source to build and deploy from. Provides all source and build configuration: omit `repo`, `branch`, `image`, `buildFilter`, `runtime`, and build-related `envSpecificDetails` fields when set. */
   buildSourceId?: string;
@@ -1981,28 +1875,6 @@ export interface WebServiceDetailsPOST {
   renderSubdomainPolicy?: RenderSubdomainPolicy | (string & {});
   ipAllowList?: WebServiceDetailsPOSTIpAllowListList;
 }
-export const WebServiceDetailsPOST = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildSourceId: S.optional(S.String),
-    autoscaling: S.optional(Schema5),
-    disk: S.optional(ServiceDisk),
-    env: S.optional(ServiceEnv),
-    runtime: ServiceRuntime,
-    envSpecificDetails: S.optional(EnvSpecificDetailsPOST),
-    healthCheckPath: S.optional(S.String),
-    maintenanceMode: S.optional(MaintenanceMode),
-    numInstances: S.optional(S.Number),
-    plan: S.optional(Plan),
-    preDeployCommand: S.optional(S.String),
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    region: S.optional(Region),
-    maxShutdownDelaySeconds: S.optional(S.Number),
-    renderSubdomainPolicy: S.optional(RenderSubdomainPolicy),
-    ipAllowList: S.optional(WebServiceDetailsPOSTIpAllowListList),
-  }),
-).annotate({ identifier: "WebServiceDetailsPOST" }) as any as S.Schema<WebServiceDetailsPOST>;
-
 /** Defaults to `0.5c-512mb` when creating a new service. */
 export type PaidPlan =
   | "starter"
@@ -2025,8 +1897,6 @@ export type PaidPlan =
   | "12c-24g"
   | "12c-48g"
   | "12c-96g";
-export const PaidPlan = S.String;
-
 export interface PrivateServiceDetailsPOST {
   /** The ID of the Build Source to build and deploy from. Provides all source and build configuration: omit `repo`, `branch`, `image`, `buildFilter`, `runtime`, and build-related `envSpecificDetails` fields when set. */
   buildSourceId?: string;
@@ -2044,29 +1914,7 @@ export interface PrivateServiceDetailsPOST {
   region?: Region | (string & {});
   maxShutdownDelaySeconds?: number;
 }
-export const PrivateServiceDetailsPOST = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildSourceId: S.optional(S.String),
-    autoscaling: S.optional(Schema5),
-    disk: S.optional(ServiceDisk),
-    env: S.optional(ServiceEnv),
-    runtime: ServiceRuntime,
-    envSpecificDetails: S.optional(EnvSpecificDetailsPOST),
-    numInstances: S.optional(S.Number),
-    plan: S.optional(PaidPlan),
-    preDeployCommand: S.optional(S.String),
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    region: S.optional(Region),
-    maxShutdownDelaySeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PrivateServiceDetailsPOST",
-}) as any as S.Schema<PrivateServiceDetailsPOST>;
-
 export type BackgroundWorkerDetailsPOST = PrivateServiceDetailsPOST;
-export const BackgroundWorkerDetailsPOST = PrivateServiceDetailsPOST;
-
 export interface DockerDetails {
   dockerCommand: string;
   dockerContext: string;
@@ -2074,32 +1922,12 @@ export interface DockerDetails {
   preDeployCommand?: string;
   registryCredential?: RegistryCredential;
 }
-export const DockerDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dockerCommand: S.String,
-    dockerContext: S.String,
-    dockerfilePath: S.String,
-    preDeployCommand: S.optional(S.String),
-    registryCredential: S.optional(RegistryCredential),
-  }),
-).annotate({ identifier: "DockerDetails" }) as any as S.Schema<DockerDetails>;
-
 export interface NativeEnvironmentDetails {
   buildCommand: string;
   startCommand: string;
   preDeployCommand?: string;
 }
-export const NativeEnvironmentDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.String,
-    startCommand: S.String,
-    preDeployCommand: S.optional(S.String),
-  }),
-).annotate({ identifier: "NativeEnvironmentDetails" }) as any as S.Schema<NativeEnvironmentDetails>;
-
 export type EnvSpecificDetails = DockerDetails | NativeEnvironmentDetails;
-export const EnvSpecificDetails = S.Unknown as any as S.Schema<EnvSpecificDetails>;
-
 export interface CronJobDetailsPOST {
   /** The ID of the Build Source to build and deploy from. Provides all source and build configuration: omit `repo`, `branch`, `image`, `buildFilter`, `runtime`, and build-related `envSpecificDetails` fields when set. */
   buildSourceId?: string;
@@ -2110,25 +1938,13 @@ export interface CronJobDetailsPOST {
   region?: Region | (string & {});
   schedule: string;
 }
-export const CronJobDetailsPOST = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildSourceId: S.optional(S.String),
-    env: S.optional(ServiceEnv),
-    runtime: ServiceRuntime,
-    envSpecificDetails: S.optional(EnvSpecificDetails),
-    plan: S.optional(PaidPlan),
-    region: S.optional(Region),
-    schedule: S.String,
-  }),
-).annotate({ identifier: "CronJobDetailsPOST" }) as any as S.Schema<CronJobDetailsPOST>;
-
 export type CreateServiceRequestServiceDetails =
   | StaticSiteDetailsPOST
   | WebServiceDetailsPOST
   | PrivateServiceDetailsPOST
   | PrivateServiceDetailsPOST
   | CronJobDetailsPOST;
-export const CreateServiceRequestServiceDetails =
+const CreateServiceRequestServiceDetails =
   S.Unknown as any as S.Schema<CreateServiceRequestServiceDetails>;
 
 export interface CreateServiceRequest {
@@ -2153,7 +1969,7 @@ export interface CreateServiceRequest {
   environmentId?: string;
   serviceDetails?: CreateServiceRequestServiceDetails;
 }
-export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ServiceType,
     name: S.String,
@@ -2174,31 +1990,22 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Controls autodeploy behavior. - `commit`: Deploy each time a commit is pushed to the service's linked branch. - `checksPass`: Deploy each time a commit is pushed to the linked branch, but only after the commit's CI checks pass. - `off`: Disable autodeploys. */
 export type AutoDeployTrigger = "commit" | "off" | "checksPass";
-export const AutoDeployTrigger = S.String;
+const AutoDeployTrigger = S.String;
 
 export type NotifySetting = "default" | "notify" | "ignore";
-export const NotifySetting = S.String;
+const NotifySetting = S.String;
 
 export type RegistryCredentialSummary = CreateBuildSourceResponseServiceLinksItem;
-export const RegistryCredentialSummary = CreateBuildSourceResponseServiceLinksItem;
-
 export type ServiceSuspended = "suspended" | "not_suspended";
-export const ServiceSuspended = S.String;
+const ServiceSuspended = S.String;
 
 export type ServiceSuspendersList = Array<SuspenderType>;
-export const ServiceSuspendersList =
+const ServiceSuspendersList =
   PostgresDetailSuspendersList as any as S.Schema<ServiceSuspendersList>;
 
 export type StaticSiteDetailsIpAllowListList = Array<CidrBlockAndDescription>;
-export const StaticSiteDetailsIpAllowListList =
-  EnvironmentIpAllowListList as any as S.Schema<StaticSiteDetailsIpAllowListList>;
-
 export type Resource = CreateBuildSourceResponseServiceLinksItem;
-export const Resource = CreateBuildSourceResponseServiceLinksItem;
-
 export type BuildPlan = "starter" | "performance";
-export const BuildPlan = S.String;
-
 export interface StaticSiteDetails {
   buildCommand: string;
   ipAllowList?: StaticSiteDetailsIpAllowListList;
@@ -2210,70 +2017,23 @@ export interface StaticSiteDetails {
   buildPlan: BuildPlan;
   renderSubdomainPolicy?: RenderSubdomainPolicy;
 }
-export const StaticSiteDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.String,
-    ipAllowList: S.optional(StaticSiteDetailsIpAllowListList),
-    parentServer: S.optional(CreateBuildSourceResponseServiceLinksItem),
-    publishPath: S.String,
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    url: S.String,
-    buildPlan: BuildPlan,
-    renderSubdomainPolicy: S.optional(RenderSubdomainPolicy),
-  }),
-).annotate({ identifier: "StaticSiteDetails" }) as any as S.Schema<StaticSiteDetails>;
-
 export type CacheProfile = "no-cache" | "origin-controlled" | "origin-controlled-all";
-export const CacheProfile = S.String;
-
 export interface Cache {
   profile: CacheProfile | (string & {});
 }
-export const Cache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profile: CacheProfile,
-  }),
-).annotate({ identifier: "Cache" }) as any as S.Schema<Cache>;
-
 export interface WebServiceDetailsDisk {
   id: string;
   name: string;
   sizeGB: number;
   mountPath: string;
 }
-export const WebServiceDetailsDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    sizeGB: S.Number,
-    mountPath: S.String,
-  }),
-).annotate({ identifier: "WebServiceDetailsDisk" }) as any as S.Schema<WebServiceDetailsDisk>;
-
 export type WebServiceDetailsIpAllowListList = Array<CidrBlockAndDescription>;
-export const WebServiceDetailsIpAllowListList =
-  EnvironmentIpAllowListList as any as S.Schema<WebServiceDetailsIpAllowListList>;
-
 export type ServerPortProtocol = "TCP" | "UDP";
-export const ServerPortProtocol = S.String;
-
 export interface ServerPort {
   port: number;
   protocol: ServerPortProtocol;
 }
-export const ServerPort = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    port: S.Number,
-    protocol: ServerPortProtocol,
-  }),
-).annotate({ identifier: "ServerPort" }) as any as S.Schema<ServerPort>;
-
 export type WebServiceDetailsOpenPortsList = Array<ServerPort>;
-export const WebServiceDetailsOpenPortsList = /*@__PURE__*/ S.Array(
-  ServerPort,
-) as any as S.Schema<WebServiceDetailsOpenPortsList>;
-
 export interface WebServiceDetails {
   autoscaling?: Schema5;
   cache?: Cache;
@@ -2298,39 +2058,8 @@ export interface WebServiceDetails {
   maxShutdownDelaySeconds?: number;
   renderSubdomainPolicy?: RenderSubdomainPolicy;
 }
-export const WebServiceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoscaling: S.optional(Schema5),
-    cache: S.optional(Cache),
-    disk: S.optional(WebServiceDetailsDisk),
-    env: ServiceEnv,
-    envSpecificDetails: EnvSpecificDetails,
-    healthCheckPath: S.String,
-    ipAllowList: S.optional(WebServiceDetailsIpAllowListList),
-    maintenanceMode: S.optional(MaintenanceMode),
-    numInstances: S.Number,
-    openPorts: WebServiceDetailsOpenPortsList,
-    parentServer: S.optional(CreateBuildSourceResponseServiceLinksItem),
-    plan: Plan,
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    region: Region,
-    runtime: ServiceRuntime,
-    sshAddress: S.optional(S.String),
-    url: S.String,
-    buildPlan: BuildPlan,
-    maxShutdownDelaySeconds: S.optional(S.Number),
-    renderSubdomainPolicy: S.optional(RenderSubdomainPolicy),
-  }),
-).annotate({ identifier: "WebServiceDetails" }) as any as S.Schema<WebServiceDetails>;
-
 export type Disk = WebServiceDetailsDisk;
-export const Disk = WebServiceDetailsDisk;
-
 export type PrivateServiceDetailsOpenPortsList = Array<ServerPort>;
-export const PrivateServiceDetailsOpenPortsList =
-  WebServiceDetailsOpenPortsList as any as S.Schema<PrivateServiceDetailsOpenPortsList>;
-
 export interface PrivateServiceDetails {
   autoscaling?: Schema5;
   disk?: WebServiceDetailsDisk;
@@ -2350,27 +2079,6 @@ export interface PrivateServiceDetails {
   buildPlan: BuildPlan;
   maxShutdownDelaySeconds?: number;
 }
-export const PrivateServiceDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoscaling: S.optional(Schema5),
-    disk: S.optional(WebServiceDetailsDisk),
-    env: ServiceEnv,
-    envSpecificDetails: EnvSpecificDetails,
-    numInstances: S.Number,
-    openPorts: PrivateServiceDetailsOpenPortsList,
-    parentServer: S.optional(CreateBuildSourceResponseServiceLinksItem),
-    plan: Plan,
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    region: Region,
-    runtime: ServiceRuntime,
-    sshAddress: S.optional(S.String),
-    url: S.String,
-    buildPlan: BuildPlan,
-    maxShutdownDelaySeconds: S.optional(S.Number),
-  }),
-).annotate({ identifier: "PrivateServiceDetails" }) as any as S.Schema<PrivateServiceDetails>;
-
 export interface BackgroundWorkerDetails {
   autoscaling?: Schema5;
   disk?: WebServiceDetailsDisk;
@@ -2388,25 +2096,6 @@ export interface BackgroundWorkerDetails {
   buildPlan: BuildPlan;
   maxShutdownDelaySeconds?: number;
 }
-export const BackgroundWorkerDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoscaling: S.optional(Schema5),
-    disk: S.optional(WebServiceDetailsDisk),
-    env: ServiceEnv,
-    envSpecificDetails: EnvSpecificDetails,
-    numInstances: S.Number,
-    parentServer: S.optional(CreateBuildSourceResponseServiceLinksItem),
-    plan: Plan,
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    region: Region,
-    runtime: ServiceRuntime,
-    sshAddress: S.optional(S.String),
-    buildPlan: BuildPlan,
-    maxShutdownDelaySeconds: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BackgroundWorkerDetails" }) as any as S.Schema<BackgroundWorkerDetails>;
-
 export interface CronJobDetails {
   env: ServiceEnv;
   envSpecificDetails: EnvSpecificDetails;
@@ -2417,26 +2106,13 @@ export interface CronJobDetails {
   schedule: string;
   buildPlan: BuildPlan;
 }
-export const CronJobDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    env: ServiceEnv,
-    envSpecificDetails: EnvSpecificDetails,
-    lastSuccessfulRunAt: S.optional(S.String),
-    plan: Plan,
-    region: Region,
-    runtime: ServiceRuntime,
-    schedule: S.String,
-    buildPlan: BuildPlan,
-  }),
-).annotate({ identifier: "CronJobDetails" }) as any as S.Schema<CronJobDetails>;
-
 export type ServiceServiceDetails =
   | StaticSiteDetails
   | WebServiceDetails
   | PrivateServiceDetails
   | BackgroundWorkerDetails
   | CronJobDetails;
-export const ServiceServiceDetails = S.Unknown as any as S.Schema<ServiceServiceDetails>;
+const ServiceServiceDetails = S.Unknown as any as S.Schema<ServiceServiceDetails>;
 
 export interface Service {
   id: string;
@@ -2463,7 +2139,7 @@ export interface Service {
   updatedAt: string;
   serviceDetails: ServiceServiceDetails;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     buildSourceId: S.optional(S.String),
@@ -2494,7 +2170,7 @@ export interface ServiceAndDeploy {
   service?: Service;
   deployId?: string;
 }
-export const ServiceAndDeploy = /*@__PURE__*/ S.suspend(() =>
+const ServiceAndDeploy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(Service),
     deployId: S.optional(S.String),
@@ -2503,22 +2179,17 @@ export const ServiceAndDeploy = /*@__PURE__*/ S.suspend(() =>
 
 /** Positional arguments passed to the task function */
 export type CreateTaskRequestInputCase0List = Array<unknown>;
-export const CreateTaskRequestInputCase0List = /*@__PURE__*/ S.Array(
+const CreateTaskRequestInputCase0List = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateTaskRequestInputCase0List>;
 
 /** Named parameters passed to the task function as keyword arguments */
 export type CreateTaskRequestInputCase1Map = { [key: string]: unknown | undefined };
-export const CreateTaskRequestInputCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateTaskRequestInputCase1Map>;
-
 /** Input data for a task. Can be either an array (for positional arguments) or an object (for named parameters). */
 export type CreateTaskRequestInput =
   | CreateTaskRequestInputCase0List
   | CreateTaskRequestInputCase1Map;
-export const CreateTaskRequestInput = S.Unknown as any as S.Schema<CreateTaskRequestInput>;
+const CreateTaskRequestInput = S.Unknown as any as S.Schema<CreateTaskRequestInput>;
 
 export interface CreateTaskRequest {
   /** A task slug in the format workflow-slug/task-name. An optional version can be appended (workflow-slug/task-name:version). If no version is provided, the latest version is used. Cannot be blank. */
@@ -2528,7 +2199,7 @@ export interface CreateTaskRequest {
   /** A client-generated key that makes starting a task run safe to retry. Repeating a request with the same key within 24 hours returns the task run that the first request started instead of starting another one; the repeated request's input is ignored. Keys are scoped to a single workflow version, so the same key used against a different version starts a separate run. Omit the key to always start a new run. */
   idempotencyKey?: string;
 }
-export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task: S.String,
     input: CreateTaskRequestInput,
@@ -2544,7 +2215,7 @@ export type Status2 =
   | "failed"
   | "canceled"
   | "paused";
-export const Status2 = S.String;
+const Status2 = S.String;
 
 export interface CreateTaskResponseAttemptsItem {
   /** The ID of the task run this attempt belongs to. */
@@ -2556,7 +2227,7 @@ export interface CreateTaskResponseAttemptsItem {
   startedAt: string;
   completedAt?: string;
 }
-export const CreateTaskResponseAttemptsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskResponseAttemptsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskRunId: S.optional(S.String),
     attempt: S.Number,
@@ -2570,7 +2241,7 @@ export const CreateTaskResponseAttemptsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTaskResponseAttemptsItem>;
 
 export type CreateTaskResponseAttemptsList = Array<CreateTaskResponseAttemptsItem>;
-export const CreateTaskResponseAttemptsList = /*@__PURE__*/ S.Array(
+const CreateTaskResponseAttemptsList = /*@__PURE__*/ S.Array(
   CreateTaskResponseAttemptsItem,
 ) as any as S.Schema<CreateTaskResponseAttemptsList>;
 
@@ -2587,7 +2258,7 @@ export interface CreateTaskResponse {
   retries: number;
   attempts: CreateTaskResponseAttemptsList;
 }
-export const CreateTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     taskId: S.String,
@@ -2670,11 +2341,11 @@ export type Type =
   | "key_value_available"
   | "key_value_config_restart"
   | "key_value_unhealthy";
-export const Type = S.String;
+const Type = S.String;
 
 /** The event types that will trigger the webhook. An empty list means all event types will trigger the webhook. */
 export type CreateWebhookRequestEventFilterList = Array<Type | (string & {})>;
-export const CreateWebhookRequestEventFilterList =
+const CreateWebhookRequestEventFilterList =
   PostgresDetailSuspendersList as any as S.Schema<CreateWebhookRequestEventFilterList>;
 
 export interface CreateWebhookRequest {
@@ -2686,7 +2357,7 @@ export interface CreateWebhookRequest {
   /** The event types that will trigger the webhook. An empty list means all event types will trigger the webhook. */
   eventFilter: CreateWebhookRequestEventFilterList;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     url: S.String,
@@ -2698,7 +2369,7 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The event types that will trigger the webhook. An empty list means all event types will trigger the webhook. */
 export type EventFilter = Array<Type | (string & {})>;
-export const EventFilter = /*@__PURE__*/ S.Array(Type) as any as S.Schema<EventFilter>;
+const EventFilter = /*@__PURE__*/ S.Array(Type) as any as S.Schema<EventFilter>;
 
 export interface CreateWebhookResponse {
   id: string;
@@ -2708,7 +2379,7 @@ export interface CreateWebhookResponse {
   enabled: boolean;
   eventFilter: EventFilter;
 }
-export const CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     url: S.String,
@@ -2721,7 +2392,7 @@ export const CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The runtime environment for the workflow (e.g., node, python, etc.). */
 export type Runtime = "elixir" | "go" | "node" | "python" | "ruby";
-export const Runtime = S.String;
+const Runtime = S.String;
 
 export interface CreateWorkflowRequestBuildConfig {
   /** The branch to use for the build, if applicable. */
@@ -2734,7 +2405,7 @@ export interface CreateWorkflowRequestBuildConfig {
   rootDir?: string;
   runtime: Runtime | (string & {});
 }
-export const CreateWorkflowRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkflowRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: S.optional(S.String),
     buildCommand: S.String,
@@ -2753,11 +2424,11 @@ export type CreateWorkflowRequestRegion =
   | "ohio"
   | "singapore"
   | "virginia";
-export const CreateWorkflowRequestRegion = S.String;
+const CreateWorkflowRequestRegion = S.String;
 
 /** Controls autodeploy behavior. "commit" deploys when a commit is pushed to the branch. "checksPass" waits for CI checks to pass before deploying. "off" disables autodeploy. */
 export type CreateWorkflowRequestAutoDeployTrigger = "commit" | "off" | "checksPass";
-export const CreateWorkflowRequestAutoDeployTrigger = S.String;
+const CreateWorkflowRequestAutoDeployTrigger = S.String;
 
 export interface CreateWorkflowRequest {
   name: string;
@@ -2771,7 +2442,7 @@ export interface CreateWorkflowRequest {
   autoDeployTrigger?: CreateWorkflowRequestAutoDeployTrigger | (string & {});
   envVars?: Schema6;
 }
-export const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     ownerId: S.String,
@@ -2794,7 +2465,7 @@ export interface BuildConfig {
   rootDir?: string;
   runtime: Runtime;
 }
-export const BuildConfig = /*@__PURE__*/ S.suspend(() =>
+const BuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: S.optional(S.String),
     buildCommand: S.String,
@@ -2806,11 +2477,11 @@ export const BuildConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Defaults to "oregon" */
 export type Region2 = "frankfurt" | "oregon" | "ohio" | "singapore" | "virginia";
-export const Region2 = S.String;
+const Region2 = S.String;
 
 /** Controls autodeploy behavior. "commit" deploys when a commit is pushed to the branch. "checksPass" waits for CI checks to pass before deploying. "off" disables autodeploy. */
 export type AutoDeployTrigger2 = "commit" | "off" | "checksPass";
-export const AutoDeployTrigger2 = S.String;
+const AutoDeployTrigger2 = S.String;
 
 export interface CreateWorkflowResponse {
   id: string;
@@ -2826,7 +2497,7 @@ export interface CreateWorkflowResponse {
   slug?: string;
   autoDeployTrigger?: AutoDeployTrigger2;
 }
-export const CreateWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -2846,7 +2517,7 @@ export interface CreateWorkflowVersionRequest {
   workflowId: string;
   commit?: string;
 }
-export const CreateWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowId: S.String,
     commit: S.optional(S.String),
@@ -2856,14 +2527,14 @@ export const CreateWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkflowVersionRequest>;
 
 export interface CreateWorkflowVersionResponse {}
-export const CreateWorkflowVersionResponse =
+const CreateWorkflowVersionResponse =
   CancelCronJobRunResponse as any as S.Schema<CreateWorkflowVersionResponse>;
 
 export interface DeleteAutoscalingConfigRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const DeleteAutoscalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAutoscalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/services/{serviceId}/autoscaling", code: 200 })),
@@ -2872,21 +2543,21 @@ export const DeleteAutoscalingConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAutoscalingConfigRequest>;
 
 export interface DeleteAutoscalingConfigResponse {}
-export const DeleteAutoscalingConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAutoscalingConfigResponse" },
-) as any as S.Schema<DeleteAutoscalingConfigResponse>;
+const DeleteAutoscalingConfigResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteAutoscalingConfigResponse",
+}) as any as S.Schema<DeleteAutoscalingConfigResponse>;
 
 export interface DeleteBuildSourceRequest {
   buildSourceId: string;
 }
-export const DeleteBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/build-sources/{buildSourceId}", code: 200 })),
 ).annotate({ identifier: "DeleteBuildSourceRequest" }) as any as S.Schema<DeleteBuildSourceRequest>;
 
 export interface DeleteBuildSourceResponse {}
-export const DeleteBuildSourceResponse =
+const DeleteBuildSourceResponse =
   CancelCronJobRunResponse as any as S.Schema<DeleteBuildSourceResponse>;
 
 export interface DeleteBuildSourceEnvVarRequest {
@@ -2894,7 +2565,7 @@ export interface DeleteBuildSourceEnvVarRequest {
   /** The name of the environment variable */
   envVarKey: string;
 }
-export const DeleteBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -2910,7 +2581,7 @@ export const DeleteBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBuildSourceEnvVarRequest>;
 
 export interface DeleteBuildSourceEnvVarResponse {}
-export const DeleteBuildSourceEnvVarResponse =
+const DeleteBuildSourceEnvVarResponse =
   DeleteAutoscalingConfigResponse as any as S.Schema<DeleteBuildSourceEnvVarResponse>;
 
 export interface DeleteBuildSourceSecretFileRequest {
@@ -2918,7 +2589,7 @@ export interface DeleteBuildSourceSecretFileRequest {
   /** The file name of the secret file */
   envVarKey: string;
 }
-export const DeleteBuildSourceSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBuildSourceSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -2934,9 +2605,7 @@ export const DeleteBuildSourceSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBuildSourceSecretFileRequest>;
 
 export interface DeleteBuildSourceSecretFileResponse {}
-export const DeleteBuildSourceSecretFileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteBuildSourceSecretFileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteBuildSourceSecretFileResponse",
 }) as any as S.Schema<DeleteBuildSourceSecretFileResponse>;
 
@@ -2946,7 +2615,7 @@ export interface DeleteCustomDomainRequest {
   /** The ID or name of the custom domain */
   customDomainNameOrID: string;
 }
-export const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     customDomainNameOrID: S.String.pipe(T.Label()),
@@ -2962,55 +2631,54 @@ export const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCustomDomainRequest>;
 
 export interface DeleteCustomDomainResponse {}
-export const DeleteCustomDomainResponse =
+const DeleteCustomDomainResponse =
   CancelCronJobRunResponse as any as S.Schema<DeleteCustomDomainResponse>;
 
 export interface DeleteDedicatedIpRequest {
   /** The ID of the dedicated IP set */
   dedicatedIpId: string;
 }
-export const DeleteDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedIpId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/dedicated-ips/{dedicatedIpId}", code: 200 })),
 ).annotate({ identifier: "DeleteDedicatedIpRequest" }) as any as S.Schema<DeleteDedicatedIpRequest>;
 
 export interface DeleteDedicatedIpResponse {}
-export const DeleteDedicatedIpResponse =
+const DeleteDedicatedIpResponse =
   CancelCronJobRunResponse as any as S.Schema<DeleteDedicatedIpResponse>;
 
 export interface DeleteDiskRequest {
   /** The ID of the disk */
   diskId: string;
 }
-export const DeleteDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/disks/{diskId}", code: 200 })),
 ).annotate({ identifier: "DeleteDiskRequest" }) as any as S.Schema<DeleteDiskRequest>;
 
 export interface DeleteDiskResponse {}
-export const DeleteDiskResponse = CancelCronJobRunResponse as any as S.Schema<DeleteDiskResponse>;
+const DeleteDiskResponse = CancelCronJobRunResponse as any as S.Schema<DeleteDiskResponse>;
 
 export interface DeleteEnvGroupRequest {
   envGroupId: string;
 }
-export const DeleteEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/env-groups/{envGroupId}", code: 200 })),
 ).annotate({ identifier: "DeleteEnvGroupRequest" }) as any as S.Schema<DeleteEnvGroupRequest>;
 
 export interface DeleteEnvGroupResponse {}
-export const DeleteEnvGroupResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeleteEnvGroupResponse>;
+const DeleteEnvGroupResponse = CancelCronJobRunResponse as any as S.Schema<DeleteEnvGroupResponse>;
 
 export interface DeleteEnvGroupEnvVarRequest {
   envGroupId: string;
   /** The name of the environment variable */
   envVarKey: string;
 }
-export const DeleteEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -3022,7 +2690,7 @@ export const DeleteEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvGroupEnvVarRequest>;
 
 export interface DeleteEnvGroupEnvVarResponse {}
-export const DeleteEnvGroupEnvVarResponse =
+const DeleteEnvGroupEnvVarResponse =
   CancelCronJobRunResponse as any as S.Schema<DeleteEnvGroupEnvVarResponse>;
 
 export interface DeleteEnvGroupSecretFileRequest {
@@ -3031,7 +2699,7 @@ export interface DeleteEnvGroupSecretFileRequest {
   /** The name of the secret file */
   envVarKey: string;
 }
-export const DeleteEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -3047,20 +2715,20 @@ export const DeleteEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvGroupSecretFileRequest>;
 
 export interface DeleteEnvGroupSecretFileResponse {}
-export const DeleteEnvGroupSecretFileResponse =
+const DeleteEnvGroupSecretFileResponse =
   DeleteBuildSourceSecretFileResponse as any as S.Schema<DeleteEnvGroupSecretFileResponse>;
 
 export interface DeleteEnvironmentRequest {
   environmentId: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/environments/{environmentId}", code: 200 })),
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse =
+const DeleteEnvironmentResponse =
   CancelCronJobRunResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteEnvVarRequest {
@@ -3069,7 +2737,7 @@ export interface DeleteEnvVarRequest {
   /** The name of the environment variable */
   envVarKey: string;
 }
-export const DeleteEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -3079,8 +2747,7 @@ export const DeleteEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvVarRequest" }) as any as S.Schema<DeleteEnvVarRequest>;
 
 export interface DeleteEnvVarResponse {}
-export const DeleteEnvVarResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeleteEnvVarResponse>;
+const DeleteEnvVarResponse = CancelCronJobRunResponse as any as S.Schema<DeleteEnvVarResponse>;
 
 export interface DeleteHeaderRequest {
   /** The ID of the service */
@@ -3088,7 +2755,7 @@ export interface DeleteHeaderRequest {
   /** The id of the header */
   headerId: string;
 }
-export const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     headerId: S.String.pipe(T.Label()),
@@ -3096,27 +2763,25 @@ export const DeleteHeaderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteHeaderRequest" }) as any as S.Schema<DeleteHeaderRequest>;
 
 export interface DeleteHeaderResponse {}
-export const DeleteHeaderResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeleteHeaderResponse>;
+const DeleteHeaderResponse = CancelCronJobRunResponse as any as S.Schema<DeleteHeaderResponse>;
 
 export interface DeleteKeyValueRequest {
   redisId: string;
 }
-export const DeleteKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/key-value/{redisId}", code: 200 })),
 ).annotate({ identifier: "DeleteKeyValueRequest" }) as any as S.Schema<DeleteKeyValueRequest>;
 
 export interface DeleteKeyValueResponse {}
-export const DeleteKeyValueResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeleteKeyValueResponse>;
+const DeleteKeyValueResponse = CancelCronJobRunResponse as any as S.Schema<DeleteKeyValueResponse>;
 
 export interface DeleteOwnerLogStreamRequest {
   /** The ID of the workspace to delete the log stream for */
   ownerId: string;
 }
-export const DeleteOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/logs/streams/owner/{ownerId}", code: 200 })),
@@ -3125,14 +2790,14 @@ export const DeleteOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOwnerLogStreamRequest>;
 
 export interface DeleteOwnerLogStreamResponse {}
-export const DeleteOwnerLogStreamResponse =
+const DeleteOwnerLogStreamResponse =
   CancelCronJobRunResponse as any as S.Schema<DeleteOwnerLogStreamResponse>;
 
 export interface DeleteOwnerMetricsStreamRequest {
   /** The ID of the workspace to return metrics stream information for */
   ownerId: string;
 }
-export const DeleteOwnerMetricsStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOwnerMetricsStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/metrics-stream/{ownerId}", code: 200 })),
@@ -3141,27 +2806,26 @@ export const DeleteOwnerMetricsStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOwnerMetricsStreamRequest>;
 
 export interface DeleteOwnerMetricsStreamResponse {}
-export const DeleteOwnerMetricsStreamResponse =
+const DeleteOwnerMetricsStreamResponse =
   DeleteBuildSourceSecretFileResponse as any as S.Schema<DeleteOwnerMetricsStreamResponse>;
 
 export interface DeletePostgresRequest {
   postgresId: string;
 }
-export const DeletePostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/postgres/{postgresId}", code: 200 })),
 ).annotate({ identifier: "DeletePostgresRequest" }) as any as S.Schema<DeletePostgresRequest>;
 
 export interface DeletePostgresResponse {}
-export const DeletePostgresResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeletePostgresResponse>;
+const DeletePostgresResponse = CancelCronJobRunResponse as any as S.Schema<DeletePostgresResponse>;
 
 export interface DeletePostgresUserRequest {
   postgresId: string;
   username: string;
 }
-export const DeletePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -3173,27 +2837,26 @@ export const DeletePostgresUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePostgresUserRequest>;
 
 export interface DeletePostgresUserResponse {}
-export const DeletePostgresUserResponse =
+const DeletePostgresUserResponse =
   CancelCronJobRunResponse as any as S.Schema<DeletePostgresUserResponse>;
 
 export interface DeleteProjectRequest {
   projectId: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/projects/{projectId}", code: 200 })),
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeleteProjectResponse>;
+const DeleteProjectResponse = CancelCronJobRunResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteRegistryCredentialRequest {
   /** The ID of the registry credential */
   registryCredentialId: string;
 }
-export const DeleteRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registryCredentialId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3204,14 +2867,14 @@ export const DeleteRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegistryCredentialRequest>;
 
 export interface DeleteRegistryCredentialResponse {}
-export const DeleteRegistryCredentialResponse =
+const DeleteRegistryCredentialResponse =
   DeleteBuildSourceSecretFileResponse as any as S.Schema<DeleteRegistryCredentialResponse>;
 
 export interface DeleteResourceLogStreamRequest {
   /** The ID of the resource (server, cron job, postgres, or redis) whose log streams should be returned */
   resourceId: string;
 }
-export const DeleteResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/logs/streams/resource/{resourceId}", code: 200 })),
@@ -3220,7 +2883,7 @@ export const DeleteResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceLogStreamRequest>;
 
 export interface DeleteResourceLogStreamResponse {}
-export const DeleteResourceLogStreamResponse =
+const DeleteResourceLogStreamResponse =
   DeleteAutoscalingConfigResponse as any as S.Schema<DeleteResourceLogStreamResponse>;
 
 export interface DeleteRouteRequest {
@@ -3229,7 +2892,7 @@ export interface DeleteRouteRequest {
   /** The id of the route */
   routeId: string;
 }
-export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     routeId: S.String.pipe(T.Label()),
@@ -3237,7 +2900,7 @@ export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRouteRequest" }) as any as S.Schema<DeleteRouteRequest>;
 
 export interface DeleteRouteResponse {}
-export const DeleteRouteResponse = CancelCronJobRunResponse as any as S.Schema<DeleteRouteResponse>;
+const DeleteRouteResponse = CancelCronJobRunResponse as any as S.Schema<DeleteRouteResponse>;
 
 export interface DeleteSecretFileRequest {
   /** The ID of the service */
@@ -3245,7 +2908,7 @@ export interface DeleteSecretFileRequest {
   /** The file name of the secret file */
   envVarKey: string;
 }
-export const DeleteSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -3255,50 +2918,47 @@ export const DeleteSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretFileRequest" }) as any as S.Schema<DeleteSecretFileRequest>;
 
 export interface DeleteSecretFileResponse {}
-export const DeleteSecretFileResponse =
+const DeleteSecretFileResponse =
   CancelCronJobRunResponse as any as S.Schema<DeleteSecretFileResponse>;
 
 export interface DeleteServiceRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/services/{serviceId}", code: 200 })),
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeleteServiceResponse>;
+const DeleteServiceResponse = CancelCronJobRunResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteWebhookRequest {
   /** Unique identifier for the webhook */
   webhookId: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{webhookId}", code: 200 })),
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeleteWebhookResponse>;
+const DeleteWebhookResponse = CancelCronJobRunResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DeleteWorkflowRequest {
   /** The ID of the workflow */
   workflowId: string;
 }
-export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/workflows/{workflowId}", code: 200 })),
 ).annotate({ identifier: "DeleteWorkflowRequest" }) as any as S.Schema<DeleteWorkflowRequest>;
 
 export interface DeleteWorkflowResponse {}
-export const DeleteWorkflowResponse =
-  CancelCronJobRunResponse as any as S.Schema<DeleteWorkflowResponse>;
+const DeleteWorkflowResponse = CancelCronJobRunResponse as any as S.Schema<DeleteWorkflowResponse>;
 
 export interface DeployRollbackRequest {
   /** The ID of the service */
@@ -3306,7 +2966,7 @@ export interface DeployRollbackRequest {
   /** The ID of the deploy to roll back to */
   deployId: string;
 }
-export const DeployRollbackRequest = /*@__PURE__*/ S.suspend(() =>
+const DeployRollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     deployId: S.String,
@@ -3317,7 +2977,7 @@ export interface DisconnectBlueprintRequest {
   /** The ID of the Blueprint */
   blueprintId: string;
 }
-export const DisconnectBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
+const DisconnectBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blueprintId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/blueprints/{blueprintId}", code: 200 })),
@@ -3326,20 +2986,20 @@ export const DisconnectBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisconnectBlueprintRequest>;
 
 export interface DisconnectBlueprintResponse {}
-export const DisconnectBlueprintResponse =
+const DisconnectBlueprintResponse =
   CancelCronJobRunResponse as any as S.Schema<DisconnectBlueprintResponse>;
 
 export interface FailoverPostgresRequest {
   postgresId: string;
 }
-export const FailoverPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const FailoverPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/failover", code: 200 })),
 ).annotate({ identifier: "FailoverPostgresRequest" }) as any as S.Schema<FailoverPostgresRequest>;
 
 export interface FailoverPostgresResponse {}
-export const FailoverPostgresResponse =
+const FailoverPostgresResponse =
   CancelCronJobRunResponse as any as S.Schema<FailoverPostgresResponse>;
 
 export interface GetActiveConnectionsRequest {
@@ -3352,7 +3012,7 @@ export interface GetActiveConnectionsRequest {
   /** Resource ID to query. When multiple resource query params are provided, they are ORed together. Resources Postgres ids or Redis ids */
   resource?: string;
 }
-export const GetActiveConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -3368,7 +3028,7 @@ export interface GetActiveConnectionsResponseBodyItemLabelsItem {
   field: string;
   value: string;
 }
-export const GetActiveConnectionsResponseBodyItemLabelsItem = /*@__PURE__*/ S.suspend(() =>
+const GetActiveConnectionsResponseBodyItemLabelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.String,
     value: S.String,
@@ -3380,7 +3040,7 @@ export const GetActiveConnectionsResponseBodyItemLabelsItem = /*@__PURE__*/ S.su
 /** List of labels describing the time series */
 export type GetActiveConnectionsResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetActiveConnectionsResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
+const GetActiveConnectionsResponseBodyItemLabelsList = /*@__PURE__*/ S.Array(
   GetActiveConnectionsResponseBodyItemLabelsItem,
 ) as any as S.Schema<GetActiveConnectionsResponseBodyItemLabelsList>;
 
@@ -3389,7 +3049,7 @@ export interface GetActiveConnectionsResponseBodyItemValuesItem {
   timestamp: string;
   value: number;
 }
-export const GetActiveConnectionsResponseBodyItemValuesItem = /*@__PURE__*/ S.suspend(() =>
+const GetActiveConnectionsResponseBodyItemValuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.String,
     value: S.Number,
@@ -3401,7 +3061,7 @@ export const GetActiveConnectionsResponseBodyItemValuesItem = /*@__PURE__*/ S.su
 /** The values of the time series */
 export type GetActiveConnectionsResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetActiveConnectionsResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
+const GetActiveConnectionsResponseBodyItemValuesList = /*@__PURE__*/ S.Array(
   GetActiveConnectionsResponseBodyItemValuesItem,
 ) as any as S.Schema<GetActiveConnectionsResponseBodyItemValuesList>;
 
@@ -3413,7 +3073,7 @@ export interface GetActiveConnectionsResponseBodyItem {
   values: GetActiveConnectionsResponseBodyItemValuesList;
   unit: string;
 }
-export const GetActiveConnectionsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GetActiveConnectionsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: GetActiveConnectionsResponseBodyItemLabelsList,
     values: GetActiveConnectionsResponseBodyItemValuesList,
@@ -3425,12 +3085,12 @@ export const GetActiveConnectionsResponseBodyItem = /*@__PURE__*/ S.suspend(() =
 
 /** A collection of time series */
 export type GetActiveConnectionsResponseBodyList = Array<GetActiveConnectionsResponseBodyItem>;
-export const GetActiveConnectionsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetActiveConnectionsResponseBodyList = /*@__PURE__*/ S.Array(
   GetActiveConnectionsResponseBodyItem,
 ) as any as S.Schema<GetActiveConnectionsResponseBodyList>;
 
 export type GetActiveConnectionsResponse = GetActiveConnectionsResponseBodyList;
-export const GetActiveConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetActiveConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   GetActiveConnectionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetActiveConnectionsResponse",
@@ -3446,7 +3106,7 @@ export interface GetBandwidthRequest {
   /** This parameter is deprecated. Please use `resource` instead */
   service?: string;
 }
-export const GetBandwidthRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBandwidthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -3457,26 +3117,14 @@ export const GetBandwidthRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A time series datapoint label */
 export type GetBandwidthResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetBandwidthResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetBandwidthResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetBandwidthResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetBandwidthResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetBandwidthResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetBandwidthResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetBandwidthResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetBandwidthResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetBandwidthResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetBandwidthResponseBodyItem {
   /** List of labels describing the time series */
@@ -3485,16 +3133,13 @@ export interface GetBandwidthResponseBodyItem {
   values: GetBandwidthResponseBodyItemValuesList;
   unit: string;
 }
-export const GetBandwidthResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetBandwidthResponseBodyItem>;
-
 /** A collection of time series */
 export type GetBandwidthResponseBodyList = Array<GetBandwidthResponseBodyItem>;
-export const GetBandwidthResponseBodyList =
+const GetBandwidthResponseBodyList =
   GetActiveConnectionsResponseBodyList as any as S.Schema<GetBandwidthResponseBodyList>;
 
 export type GetBandwidthResponse = GetBandwidthResponseBodyList;
-export const GetBandwidthResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBandwidthResponse = /*@__PURE__*/ S.suspend(() =>
   GetBandwidthResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetBandwidthResponse" }) as any as S.Schema<GetBandwidthResponse>;
 
@@ -3508,7 +3153,7 @@ export interface GetBandwidthSourcesRequest {
   /** This parameter is deprecated. Please use `resource` instead */
   service?: string;
 }
-export const GetBandwidthSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBandwidthSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -3525,13 +3170,13 @@ export type GetBandwidthSourcesResponseDataItemLabelsTrafficSource =
   | "websocket"
   | "nat"
   | "privatelink";
-export const GetBandwidthSourcesResponseDataItemLabelsTrafficSource = S.String;
+const GetBandwidthSourcesResponseDataItemLabelsTrafficSource = S.String;
 
 export interface GetBandwidthSourcesResponseDataItemLabels {
   resource?: string;
   trafficSource?: GetBandwidthSourcesResponseDataItemLabelsTrafficSource;
 }
-export const GetBandwidthSourcesResponseDataItemLabels = /*@__PURE__*/ S.suspend(() =>
+const GetBandwidthSourcesResponseDataItemLabels = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     trafficSource: S.optional(GetBandwidthSourcesResponseDataItemLabelsTrafficSource),
@@ -3544,7 +3189,7 @@ export interface GetBandwidthSourcesResponseDataItemValuesItem {
   timestamp?: number;
   value?: number;
 }
-export const GetBandwidthSourcesResponseDataItemValuesItem = /*@__PURE__*/ S.suspend(() =>
+const GetBandwidthSourcesResponseDataItemValuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.Number),
     value: S.optional(S.Number),
@@ -3555,7 +3200,7 @@ export const GetBandwidthSourcesResponseDataItemValuesItem = /*@__PURE__*/ S.sus
 
 export type GetBandwidthSourcesResponseDataItemValuesList =
   Array<GetBandwidthSourcesResponseDataItemValuesItem>;
-export const GetBandwidthSourcesResponseDataItemValuesList = /*@__PURE__*/ S.Array(
+const GetBandwidthSourcesResponseDataItemValuesList = /*@__PURE__*/ S.Array(
   GetBandwidthSourcesResponseDataItemValuesItem,
 ) as any as S.Schema<GetBandwidthSourcesResponseDataItemValuesList>;
 
@@ -3563,7 +3208,7 @@ export interface GetBandwidthSourcesResponseDataItem {
   labels?: GetBandwidthSourcesResponseDataItemLabels;
   values?: GetBandwidthSourcesResponseDataItemValuesList;
 }
-export const GetBandwidthSourcesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const GetBandwidthSourcesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(GetBandwidthSourcesResponseDataItemLabels),
     values: S.optional(GetBandwidthSourcesResponseDataItemValuesList),
@@ -3573,14 +3218,14 @@ export const GetBandwidthSourcesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBandwidthSourcesResponseDataItem>;
 
 export type GetBandwidthSourcesResponseDataList = Array<GetBandwidthSourcesResponseDataItem>;
-export const GetBandwidthSourcesResponseDataList = /*@__PURE__*/ S.Array(
+const GetBandwidthSourcesResponseDataList = /*@__PURE__*/ S.Array(
   GetBandwidthSourcesResponseDataItem,
 ) as any as S.Schema<GetBandwidthSourcesResponseDataList>;
 
 export interface GetBandwidthSourcesResponse {
   data?: GetBandwidthSourcesResponseDataList;
 }
-export const GetBandwidthSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBandwidthSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(GetBandwidthSourcesResponseDataList),
   }),
@@ -3592,7 +3237,7 @@ export interface GetBlueprintRequest {
   /** The ID of the Blueprint */
   blueprintId: string;
 }
-export const GetBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blueprintId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/blueprints/{blueprintId}", code: 200 })),
@@ -3600,7 +3245,7 @@ export const GetBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A Blueprint has status `created` until its first Sync is approved. */
 export type GetBlueprintResponseStatus = "created" | "paused" | "in_sync" | "syncing" | "error";
-export const GetBlueprintResponseStatus = S.String;
+const GetBlueprintResponseStatus = S.String;
 
 /** type of the resource (ex. web_service or postgres) */
 export type GetBlueprintResponseResourcesItemType =
@@ -3615,7 +3260,7 @@ export type GetBlueprintResponseResourcesItemType =
   | "environment_group"
   | "build_source"
   | "workflow";
-export const GetBlueprintResponseResourcesItemType = S.String;
+const GetBlueprintResponseResourcesItemType = S.String;
 
 export interface GetBlueprintResponseResourcesItem {
   id: string;
@@ -3623,7 +3268,7 @@ export interface GetBlueprintResponseResourcesItem {
   /** type of the resource (ex. web_service or postgres) */
   type: GetBlueprintResponseResourcesItemType;
 }
-export const GetBlueprintResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const GetBlueprintResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3634,7 +3279,7 @@ export const GetBlueprintResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBlueprintResponseResourcesItem>;
 
 export type GetBlueprintResponseResourcesList = Array<GetBlueprintResponseResourcesItem>;
-export const GetBlueprintResponseResourcesList = /*@__PURE__*/ S.Array(
+const GetBlueprintResponseResourcesList = /*@__PURE__*/ S.Array(
   GetBlueprintResponseResourcesItem,
 ) as any as S.Schema<GetBlueprintResponseResourcesList>;
 
@@ -3650,7 +3295,7 @@ export interface GetBlueprintResponse {
   lastSync?: string;
   resources: GetBlueprintResponseResourcesList;
 }
-export const GetBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3667,18 +3312,16 @@ export const GetBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetBuildSourceRequest {
   buildSourceId: string;
 }
-export const GetBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/build-sources/{buildSourceId}", code: 200 })),
 ).annotate({ identifier: "GetBuildSourceRequest" }) as any as S.Schema<GetBuildSourceRequest>;
 
 export type SchemaServiceLinksItem = CreateBuildSourceResponseServiceLinksItem;
-export const SchemaServiceLinksItem = CreateBuildSourceResponseServiceLinksItem;
-
 /** Services currently linked to this build source. */
 export type SchemaServiceLinksList = Array<CreateBuildSourceResponseServiceLinksItem>;
-export const SchemaServiceLinksList =
+const SchemaServiceLinksList =
   CreateBuildSourceResponseServiceLinksList as any as S.Schema<SchemaServiceLinksList>;
 
 export interface Schema12 {
@@ -3697,7 +3340,7 @@ export interface Schema12 {
   /** Services currently linked to this build source. */
   serviceLinks: SchemaServiceLinksList;
 }
-export const Schema12 = /*@__PURE__*/ S.suspend(() =>
+const Schema12 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3716,7 +3359,7 @@ export interface GetBuildSourceEnvVarRequest {
   /** The name of the environment variable */
   envVarKey: string;
 }
-export const GetBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -3736,7 +3379,7 @@ export interface GetBuildSourceSecretFileRequest {
   /** The file name of the secret file */
   envVarKey: string;
 }
-export const GetBuildSourceSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBuildSourceSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -3752,7 +3395,7 @@ export const GetBuildSourceSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBuildSourceSecretFileRequest>;
 
 export type GetCpuRequestAggregationMethod = "AVG" | "MAX" | "MIN";
-export const GetCpuRequestAggregationMethod = S.String;
+const GetCpuRequestAggregationMethod = S.String;
 
 export interface GetCpuRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -3770,7 +3413,7 @@ export interface GetCpuRequest {
   /** The aggregation method to apply to multiple time series */
   aggregationMethod?: GetCpuRequestAggregationMethod | (string & {});
 }
-export const GetCpuRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCpuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -3784,22 +3427,18 @@ export const GetCpuRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A time series datapoint label */
 export type GetCpuResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetCpuResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetCpuResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetCpuResponseBodyItemLabelsList =
+const GetCpuResponseBodyItemLabelsList =
   GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetCpuResponseBodyItemLabelsList>;
 
 /** A time series datapoint value */
 export type GetCpuResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetCpuResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetCpuResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetCpuResponseBodyItemValuesList =
+const GetCpuResponseBodyItemValuesList =
   GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetCpuResponseBodyItemValuesList>;
 
 /** A time series data point */
@@ -3810,7 +3449,7 @@ export interface GetCpuResponseBodyItem {
   values: GetCpuResponseBodyItemValuesList;
   unit: string;
 }
-export const GetCpuResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GetCpuResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: GetCpuResponseBodyItemLabelsList,
     values: GetCpuResponseBodyItemValuesList,
@@ -3820,12 +3459,12 @@ export const GetCpuResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of time series */
 export type GetCpuResponseBodyList = Array<GetCpuResponseBodyItem>;
-export const GetCpuResponseBodyList = /*@__PURE__*/ S.Array(
+const GetCpuResponseBodyList = /*@__PURE__*/ S.Array(
   GetCpuResponseBodyItem,
 ) as any as S.Schema<GetCpuResponseBodyList>;
 
 export type GetCpuResponse = GetCpuResponseBodyList;
-export const GetCpuResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCpuResponse = /*@__PURE__*/ S.suspend(() =>
   GetCpuResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetCpuResponse" }) as any as S.Schema<GetCpuResponse>;
 
@@ -3843,7 +3482,7 @@ export interface GetCpuLimitRequest {
   /** Instance ID to query. When multiple instance ID query params are provided, they are ORed together */
   instance?: string;
 }
-export const GetCpuLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCpuLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -3856,24 +3495,14 @@ export const GetCpuLimitRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A time series datapoint label */
 export type GetCpuLimitResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetCpuLimitResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetCpuLimitResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetCpuLimitResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetCpuLimitResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetCpuLimitResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetCpuLimitResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetCpuLimitResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetCpuLimitResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetCpuLimitResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetCpuLimitResponseBodyItem {
   /** List of labels describing the time series */
@@ -3882,16 +3511,10 @@ export interface GetCpuLimitResponseBodyItem {
   values: GetCpuLimitResponseBodyItemValuesList;
   unit: string;
 }
-export const GetCpuLimitResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetCpuLimitResponseBodyItem>;
-
 /** A collection of time series */
 export type GetCpuLimitResponseBodyList = Array<GetCpuLimitResponseBodyItem>;
-export const GetCpuLimitResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetCpuLimitResponseBodyList>;
-
 export type GetCpuLimitResponse = GetCpuLimitResponseBodyList;
-export const GetCpuLimitResponse = GetBandwidthResponse as any as S.Schema<GetCpuLimitResponse>;
+const GetCpuLimitResponse = GetBandwidthResponse as any as S.Schema<GetCpuLimitResponse>;
 
 export interface GetCpuTargetRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -3907,7 +3530,7 @@ export interface GetCpuTargetRequest {
   /** Instance ID to query. When multiple instance ID query params are provided, they are ORed together */
   instance?: string;
 }
-export const GetCpuTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCpuTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -3920,26 +3543,14 @@ export const GetCpuTargetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A time series datapoint label */
 export type GetCpuTargetResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetCpuTargetResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetCpuTargetResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetCpuTargetResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetCpuTargetResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetCpuTargetResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetCpuTargetResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetCpuTargetResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetCpuTargetResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetCpuTargetResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetCpuTargetResponseBodyItem {
   /** List of labels describing the time series */
@@ -3948,16 +3559,10 @@ export interface GetCpuTargetResponseBodyItem {
   values: GetCpuTargetResponseBodyItemValuesList;
   unit: string;
 }
-export const GetCpuTargetResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetCpuTargetResponseBodyItem>;
-
 /** A collection of time series */
 export type GetCpuTargetResponseBodyList = Array<GetCpuTargetResponseBodyItem>;
-export const GetCpuTargetResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetCpuTargetResponseBodyList>;
-
 export type GetCpuTargetResponse = GetCpuTargetResponseBodyList;
-export const GetCpuTargetResponse = GetBandwidthResponse as any as S.Schema<GetCpuTargetResponse>;
+const GetCpuTargetResponse = GetBandwidthResponse as any as S.Schema<GetCpuTargetResponse>;
 
 export interface GetCustomDomainRequest {
   /** The ID of the service */
@@ -3965,7 +3570,7 @@ export interface GetCustomDomainRequest {
   /** The ID or name of the custom domain */
   customDomainNameOrID: string;
 }
-export const GetCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     customDomainNameOrID: S.String.pipe(T.Label()),
@@ -3982,7 +3587,7 @@ export interface GetDedicatedIpRequest {
   /** The ID of the dedicated IP set */
   dedicatedIpId: string;
 }
-export const GetDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedIpId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated-ips/{dedicatedIpId}", code: 200 })),
@@ -3994,7 +3599,7 @@ export interface GetDeployRequest {
   /** The ID of the deploy */
   deployId: string;
 }
-export const GetDeployRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     deployId: S.String.pipe(T.Label()),
@@ -4005,7 +3610,7 @@ export interface GetDiskRequest {
   /** The ID of the disk */
   diskId: string;
 }
-export const GetDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/disks/{diskId}", code: 200 })),
@@ -4020,7 +3625,7 @@ export interface Schema2 {
   createdAt: string;
   updatedAt: string;
 }
-export const Schema2 = AddDiskResponse as any as S.Schema<Schema2>;
+const Schema2 = AddDiskResponse as any as S.Schema<Schema2>;
 
 export interface GetDiskCapacityRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -4034,7 +3639,7 @@ export interface GetDiskCapacityRequest {
   /** This parameter is deprecated. Please use `resource` instead */
   service?: string;
 }
-export const GetDiskCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiskCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -4047,27 +3652,15 @@ export const GetDiskCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetDiskCapacityResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetDiskCapacityResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetDiskCapacityResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetDiskCapacityResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetDiskCapacityResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetDiskCapacityResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetDiskCapacityResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetDiskCapacityResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetDiskCapacityResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetDiskCapacityResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetDiskCapacityResponseBodyItem {
   /** List of labels describing the time series */
@@ -4076,17 +3669,10 @@ export interface GetDiskCapacityResponseBodyItem {
   values: GetDiskCapacityResponseBodyItemValuesList;
   unit: string;
 }
-export const GetDiskCapacityResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetDiskCapacityResponseBodyItem>;
-
 /** A collection of time series */
 export type GetDiskCapacityResponseBodyList = Array<GetDiskCapacityResponseBodyItem>;
-export const GetDiskCapacityResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetDiskCapacityResponseBodyList>;
-
 export type GetDiskCapacityResponse = GetDiskCapacityResponseBodyList;
-export const GetDiskCapacityResponse =
-  GetBandwidthResponse as any as S.Schema<GetDiskCapacityResponse>;
+const GetDiskCapacityResponse = GetBandwidthResponse as any as S.Schema<GetDiskCapacityResponse>;
 
 export interface GetDiskUsageRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -4100,7 +3686,7 @@ export interface GetDiskUsageRequest {
   /** This parameter is deprecated. Please use `resource` instead */
   service?: string;
 }
-export const GetDiskUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiskUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -4112,26 +3698,14 @@ export const GetDiskUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A time series datapoint label */
 export type GetDiskUsageResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetDiskUsageResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetDiskUsageResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetDiskUsageResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetDiskUsageResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetDiskUsageResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetDiskUsageResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetDiskUsageResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetDiskUsageResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetDiskUsageResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetDiskUsageResponseBodyItem {
   /** List of labels describing the time series */
@@ -4140,22 +3714,16 @@ export interface GetDiskUsageResponseBodyItem {
   values: GetDiskUsageResponseBodyItemValuesList;
   unit: string;
 }
-export const GetDiskUsageResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetDiskUsageResponseBodyItem>;
-
 /** A collection of time series */
 export type GetDiskUsageResponseBodyList = Array<GetDiskUsageResponseBodyItem>;
-export const GetDiskUsageResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetDiskUsageResponseBodyList>;
-
 export type GetDiskUsageResponse = GetDiskUsageResponseBodyList;
-export const GetDiskUsageResponse = GetBandwidthResponse as any as S.Schema<GetDiskUsageResponse>;
+const GetDiskUsageResponse = GetBandwidthResponse as any as S.Schema<GetDiskUsageResponse>;
 
 export interface GetEnvGroupRequest {
   /** Filter for resources that belong to an environment group */
   envGroupId: string;
 }
-export const GetEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/env-groups/{envGroupId}", code: 200 })),
@@ -4163,17 +3731,8 @@ export const GetEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type GetEnvGroupResponseServiceLinksList = Array<EnvGroupLink>;
-export const GetEnvGroupResponseServiceLinksList =
-  CreateEnvGroupResponseServiceLinksList as any as S.Schema<GetEnvGroupResponseServiceLinksList>;
-
 export type GetEnvGroupResponseEnvVarsList = Array<EnvVar>;
-export const GetEnvGroupResponseEnvVarsList =
-  CreateEnvGroupResponseEnvVarsList as any as S.Schema<GetEnvGroupResponseEnvVarsList>;
-
 export type GetEnvGroupResponseSecretFilesList = Array<SecretFile>;
-export const GetEnvGroupResponseSecretFilesList =
-  CreateBuildSourceRequestSecretFilesList as any as S.Schema<GetEnvGroupResponseSecretFilesList>;
-
 export interface GetEnvGroupResponse {
   id: string;
   name: string;
@@ -4186,7 +3745,7 @@ export interface GetEnvGroupResponse {
   envVars: GetEnvGroupResponseEnvVarsList;
   secretFiles: GetEnvGroupResponseSecretFilesList;
 }
-export const GetEnvGroupResponse = CreateEnvGroupResponse as any as S.Schema<GetEnvGroupResponse>;
+const GetEnvGroupResponse = CreateEnvGroupResponse as any as S.Schema<GetEnvGroupResponse>;
 
 export interface GetEnvGroupEnvVarRequest {
   /** Filter for resources that belong to an environment group */
@@ -4194,7 +3753,7 @@ export interface GetEnvGroupEnvVarRequest {
   /** The name of the environment variable */
   envVarKey: string;
 }
-export const GetEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -4209,7 +3768,7 @@ export interface GetEnvGroupSecretFileRequest {
   /** The name of the secret file */
   envVarKey: string;
 }
-export const GetEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -4223,7 +3782,7 @@ export const GetEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetEnvironmentRequest {
   environmentId: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/environments/{environmentId}", code: 200 })),
@@ -4235,7 +3794,7 @@ export interface GetEnvVarRequest {
   /** The name of the environment variable */
   envVarKey: string;
 }
-export const GetEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -4249,7 +3808,7 @@ export interface GetEnvVarsForBuildSourceRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const GetEnvVarsForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvVarsForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -4263,7 +3822,7 @@ export interface EnvVarWithCursor {
   envVar: EnvVar;
   cursor: string;
 }
-export const EnvVarWithCursor = /*@__PURE__*/ S.suspend(() =>
+const EnvVarWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envVar: EnvVar,
     cursor: S.String,
@@ -4271,12 +3830,12 @@ export const EnvVarWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnvVarWithCursor" }) as any as S.Schema<EnvVarWithCursor>;
 
 export type GetEnvVarsForBuildSourceResponseBodyList = Array<EnvVarWithCursor>;
-export const GetEnvVarsForBuildSourceResponseBodyList = /*@__PURE__*/ S.Array(
+const GetEnvVarsForBuildSourceResponseBodyList = /*@__PURE__*/ S.Array(
   EnvVarWithCursor,
 ) as any as S.Schema<GetEnvVarsForBuildSourceResponseBodyList>;
 
 export type GetEnvVarsForBuildSourceResponse = GetEnvVarsForBuildSourceResponseBodyList;
-export const GetEnvVarsForBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEnvVarsForBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
   GetEnvVarsForBuildSourceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetEnvVarsForBuildSourceResponse",
@@ -4290,7 +3849,7 @@ export interface GetEnvVarsForServiceRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const GetEnvVarsForServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvVarsForServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -4301,18 +3860,15 @@ export const GetEnvVarsForServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEnvVarsForServiceRequest>;
 
 export type GetEnvVarsForServiceResponseBodyList = Array<EnvVarWithCursor>;
-export const GetEnvVarsForServiceResponseBodyList =
-  GetEnvVarsForBuildSourceResponseBodyList as any as S.Schema<GetEnvVarsForServiceResponseBodyList>;
-
 export type GetEnvVarsForServiceResponse = GetEnvVarsForServiceResponseBodyList;
-export const GetEnvVarsForServiceResponse =
+const GetEnvVarsForServiceResponse =
   GetEnvVarsForBuildSourceResponse as any as S.Schema<GetEnvVarsForServiceResponse>;
 
 export interface GetEventRequest {
   /** The ID of the event */
   eventId: string;
 }
-export const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/events/{eventId}", code: 200 })),
@@ -4386,63 +3942,27 @@ export type GetEventResponseType =
   | "key_value_available"
   | "key_value_config_restart"
   | "key_value_unhealthy";
-export const GetEventResponseType = S.String;
+const GetEventResponseType = S.String;
 
 export interface GetEventResponseDetailsCase0Case0 {
   /** The build published by the build source that could not be fetched. */
   buildId: string;
   message: string;
 }
-export const GetEventResponseDetailsCase0Case0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildId: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case0",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case0>;
-
 export interface GetEventResponseDetailsCase0Case1 {
   /** The previously linked build source. Absent when the service was newly attached. */
   fromBuildSourceId?: string;
   /** The newly linked build source. Absent when the service was detached. */
   toBuildSourceId?: string;
 }
-export const GetEventResponseDetailsCase0Case1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromBuildSourceId: S.optional(S.String),
-    toBuildSourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case1",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case1>;
-
 export interface GetEventResponseDetailsCase0Case2 {
   fromConfig?: Schema5;
   toConfig: Schema5;
 }
-export const GetEventResponseDetailsCase0Case2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromConfig: S.optional(Schema5),
-    toConfig: Schema5,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case2",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case2>;
-
 export interface GetEventResponseDetailsCase0Case3 {
   fromInstances: number;
   toInstances: number;
 }
-export const GetEventResponseDetailsCase0Case3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromInstances: S.Number,
-    toInstances: S.Number,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case3",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case3>;
-
 export interface GetEventResponseDetailsCase0Case4 {
   fromInstances: number;
   toInstances: number;
@@ -4451,56 +3971,24 @@ export interface GetEventResponseDetailsCase0Case4 {
   currentMemory?: number;
   targetMemory?: number;
 }
-export const GetEventResponseDetailsCase0Case4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromInstances: S.Number,
-    toInstances: S.Number,
-    currentCPU: S.optional(S.Number),
-    targetCPU: S.optional(S.Number),
-    currentMemory: S.optional(S.Number),
-    targetMemory: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case4",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case4>;
-
 export interface GetEventResponseDetailsCase0Case5 {
   deletedBranch: string;
   newBranch: string;
 }
-export const GetEventResponseDetailsCase0Case5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedBranch: S.String,
-    newBranch: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case5",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case5>;
-
 export type GetEventResponseDetailsCase0Case6BuildStatus = "succeeded" | "failed" | "canceled";
-export const GetEventResponseDetailsCase0Case6BuildStatus = S.String;
-
 export interface NewBuild {
   id: string;
 }
-export const NewBuild = /*@__PURE__*/ S.suspend(() =>
+const NewBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
 ).annotate({ identifier: "NewBuild" }) as any as S.Schema<NewBuild>;
 
 export type GetEventResponseDetailsCase0Case6ReasonNewBuild = NewBuild;
-export const GetEventResponseDetailsCase0Case6ReasonNewBuild = NewBuild;
-
 export interface ReasonOomKilled {
   memoryLimit: string;
 }
-export const ReasonOomKilled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    memoryLimit: S.String,
-  }),
-).annotate({ identifier: "ReasonOomKilled" }) as any as S.Schema<ReasonOomKilled>;
-
 export interface Reason {
   evicted: boolean;
   /** Details about why the application was evicted. */
@@ -4514,65 +4002,23 @@ export interface Reason {
   unhealthy?: string;
   timedOutReason?: string;
 }
-export const Reason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evicted: S.Boolean,
-    evictionReason: S.optional(S.String),
-    nonZeroExit: S.optional(S.Number),
-    earlyExit: S.optional(S.Boolean),
-    oomKilled: S.optional(ReasonOomKilled),
-    timedOutSeconds: S.optional(S.Number),
-    unhealthy: S.optional(S.String),
-    timedOutReason: S.optional(S.String),
-  }),
-).annotate({ identifier: "Reason" }) as any as S.Schema<Reason>;
-
 export interface GetEventResponseDetailsCase0Case6Reason {
   buildFailed?: NewBuild;
   newBuild?: NewBuild;
   newDeploy?: NewBuild;
   failure?: Reason;
 }
-export const GetEventResponseDetailsCase0Case6Reason = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildFailed: S.optional(NewBuild),
-    newBuild: S.optional(NewBuild),
-    newDeploy: S.optional(NewBuild),
-    failure: S.optional(Reason),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case6Reason",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case6Reason>;
-
 export interface GetEventResponseDetailsCase0Case6 {
   buildId: string;
   buildStatus: GetEventResponseDetailsCase0Case6BuildStatus;
   reason: GetEventResponseDetailsCase0Case6Reason;
   status: number;
 }
-export const GetEventResponseDetailsCase0Case6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildId: S.String,
-    buildStatus: GetEventResponseDetailsCase0Case6BuildStatus,
-    reason: GetEventResponseDetailsCase0Case6Reason,
-    status: S.Number,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case6",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case6>;
-
 /** User who triggered the action */
 export interface User2 {
   id: string;
   email: string;
 }
-export const User2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    email: S.String,
-  }),
-).annotate({ identifier: "User2" }) as any as S.Schema<User2>;
-
 export interface GetEventResponseDetailsCase0Case7Trigger {
   /** Deploy was triggered by service creation */
   firstBuild: boolean;
@@ -4594,68 +4040,25 @@ export interface GetEventResponseDetailsCase0Case7Trigger {
   /** Deploy ID that was rolled back to */
   rollbackTargetDeployId?: string;
 }
-export const GetEventResponseDetailsCase0Case7Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    firstBuild: S.Boolean,
-    envUpdated: S.Boolean,
-    manual: S.Boolean,
-    user: S.optional(User2),
-    updatedProperty: S.optional(S.String),
-    newCommit: S.optional(S.String),
-    deployedByRender: S.Boolean,
-    clearCache: S.Boolean,
-    rollback: S.Boolean,
-    rollbackTargetDeployId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case7Trigger",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case7Trigger>;
-
 export interface GetEventResponseDetailsCase0Case7 {
   buildId: string;
   trigger: GetEventResponseDetailsCase0Case7Trigger;
 }
-export const GetEventResponseDetailsCase0Case7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildId: S.String,
-    trigger: GetEventResponseDetailsCase0Case7Trigger,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case7",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case7>;
-
 export interface GetEventResponseDetailsCase0Case8 {
   /** the commit id */
   id: string;
   /** the commit url */
   url: string;
 }
-export const GetEventResponseDetailsCase0Case8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case8",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case8>;
-
 export type GetEventResponseDetailsCase0Case9Status =
   | "canceled"
   | "pending"
   | "successful"
   | "unsuccessful";
-export const GetEventResponseDetailsCase0Case9Status = S.String;
-
 export type GetEventResponseDetailsCase0Case9ReasonOomKilled = ReasonOomKilled;
-export const GetEventResponseDetailsCase0Case9ReasonOomKilled = ReasonOomKilled;
-
 export type GetEventResponseDetailsCase0Case9Reason = Reason;
-export const GetEventResponseDetailsCase0Case9Reason = Reason;
-
 /** User who triggered the action */
 export type GetEventResponseDetailsCase0Case9User = User2;
-export const GetEventResponseDetailsCase0Case9User = User2;
-
 export interface GetEventResponseDetailsCase0Case9 {
   cronJobRunId: string;
   status: GetEventResponseDetailsCase0Case9Status;
@@ -4663,37 +4066,12 @@ export interface GetEventResponseDetailsCase0Case9 {
   /** User who triggered the action */
   user?: User2;
 }
-export const GetEventResponseDetailsCase0Case9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cronJobRunId: S.String,
-    status: GetEventResponseDetailsCase0Case9Status,
-    reason: S.optional(Reason),
-    user: S.optional(User2),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case9",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case9>;
-
 export interface GetEventResponseDetailsCase0Case10 {
   cronJobRunId: string;
 }
-export const GetEventResponseDetailsCase0Case10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cronJobRunId: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case10",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case10>;
-
 export type ReasonNewBuild = NewBuild;
-export const ReasonNewBuild = NewBuild;
-
 export type Reason2 = GetEventResponseDetailsCase0Case6Reason;
-export const Reason2 = GetEventResponseDetailsCase0Case6Reason;
-
 export type BuildStatus = "succeeded" | "failed" | "canceled";
-export const BuildStatus = S.String;
-
 export interface GetEventResponseDetailsCase0Case11 {
   deployId: string;
   reason: GetEventResponseDetailsCase0Case6Reason;
@@ -4702,76 +4080,25 @@ export interface GetEventResponseDetailsCase0Case11 {
   /** Set when the deploy shipped a build published by the service's linked build source. */
   buildId?: string;
 }
-export const GetEventResponseDetailsCase0Case11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployId: S.String,
-    reason: GetEventResponseDetailsCase0Case6Reason,
-    deployStatus: BuildStatus,
-    status: S.Number,
-    buildId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case11",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case11>;
-
 export type Trigger = GetEventResponseDetailsCase0Case7Trigger;
-export const Trigger = GetEventResponseDetailsCase0Case7Trigger;
-
 export interface GetEventResponseDetailsCase0Case12 {
   deployId: string;
   trigger: GetEventResponseDetailsCase0Case7Trigger;
   /** Set when the deploy ships a build published by the service's linked build source. */
   buildId?: string;
 }
-export const GetEventResponseDetailsCase0Case12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployId: S.String,
-    trigger: GetEventResponseDetailsCase0Case7Trigger,
-    buildId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case12",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case12>;
-
 export interface GetEventResponseDetailsCase0Case13 {
   diskId: string;
   sizeGB: number;
 }
-export const GetEventResponseDetailsCase0Case13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskId: S.String,
-    sizeGB: S.Number,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case13",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case13>;
-
 export interface GetEventResponseDetailsCase0Case14 {
   diskId: string;
   fromSizeGB: number;
   toSizeGB: number;
 }
-export const GetEventResponseDetailsCase0Case14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskId: S.String,
-    fromSizeGB: S.Number,
-    toSizeGB: S.Number,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case14",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case14>;
-
 export interface GetEventResponseDetailsCase0Case15 {
   diskId: string;
 }
-export const GetEventResponseDetailsCase0Case15 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskId: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case15",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case15>;
-
 export interface GetEventResponseDetailsCase0Case16 {
   diskId: string;
   diskName: string;
@@ -4779,90 +4106,28 @@ export interface GetEventResponseDetailsCase0Case16 {
   usagePercent: number;
   thresholdPercent: number;
 }
-export const GetEventResponseDetailsCase0Case16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskId: S.String,
-    diskName: S.String,
-    mountPath: S.String,
-    usagePercent: S.Number,
-    thresholdPercent: S.Number,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case16",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case16>;
-
 export type GetEventResponseDetailsCase0Case17 = GetEventResponseDetailsCase0Case16;
-export const GetEventResponseDetailsCase0Case17 = GetEventResponseDetailsCase0Case16;
-
 export interface GetEventResponseDetailsCase0Case18 {
   message: string;
   imageURL: string;
 }
-export const GetEventResponseDetailsCase0Case18 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    imageURL: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case18",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case18>;
-
 export interface GetEventResponseDetailsCase0Case19 {
   deployId: string;
 }
-export const GetEventResponseDetailsCase0Case19 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployId: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case19",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case19>;
-
 export type GetEventResponseDetailsCase0Case20 = GetEventResponseDetailsCase0Case19;
-export const GetEventResponseDetailsCase0Case20 = GetEventResponseDetailsCase0Case19;
-
 export type GetEventResponseDetailsCase0Case21 = GetEventResponseDetailsCase0Case3;
-export const GetEventResponseDetailsCase0Case21 = GetEventResponseDetailsCase0Case3;
-
 export interface GetEventResponseDetailsCase0Case22 {
   jobId: string;
   status: Items2;
   reason?: Reason;
 }
-export const GetEventResponseDetailsCase0Case22 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.String,
-    status: Items2,
-    reason: S.optional(Reason),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case22",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case22>;
-
 export interface GetEventResponseDetailsCase0Case23 {
   enabled: boolean;
 }
-export const GetEventResponseDetailsCase0Case23 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case23",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case23>;
-
 export interface GetEventResponseDetailsCase0Case24 {
   fromURI: string;
   toURI: string;
 }
-export const GetEventResponseDetailsCase0Case24 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromURI: S.String,
-    toURI: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case24",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case24>;
-
 export interface GetEventResponseDetailsCase0Case26Trigger {
   user?: User2;
   /** Maintenance was triggered manually */
@@ -4870,43 +4135,14 @@ export interface GetEventResponseDetailsCase0Case26Trigger {
   /** Maintenance was triggered by Render */
   startedByRender: boolean;
 }
-export const GetEventResponseDetailsCase0Case26Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.optional(User2),
-    manual: S.Boolean,
-    startedByRender: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case26Trigger",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case26Trigger>;
-
 export interface GetEventResponseDetailsCase0Case26 {
   trigger: GetEventResponseDetailsCase0Case26Trigger;
 }
-export const GetEventResponseDetailsCase0Case26 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger: GetEventResponseDetailsCase0Case26Trigger,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case26",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case26>;
-
 export type GetEventResponseDetailsCase0Case27 = GetEventResponseDetailsCase0Case7;
-export const GetEventResponseDetailsCase0Case27 = GetEventResponseDetailsCase0Case7;
-
 export interface GetEventResponseDetailsCase0Case28 {
   from: string;
   to: string;
 }
-export const GetEventResponseDetailsCase0Case28 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.String,
-    to: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case28",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case28>;
-
 export interface GetEventResponseDetailsCase0Case29 {
   deployCommandExecutionId: string;
   deployId: string;
@@ -4914,92 +4150,28 @@ export interface GetEventResponseDetailsCase0Case29 {
   reason: GetEventResponseDetailsCase0Case6Reason;
   status: number;
 }
-export const GetEventResponseDetailsCase0Case29 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployCommandExecutionId: S.String,
-    deployId: S.String,
-    preDeployStatus: BuildStatus,
-    reason: GetEventResponseDetailsCase0Case6Reason,
-    status: S.Number,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case29",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case29>;
-
 export interface GetEventResponseDetailsCase0Case30 {
   deployCommandExecutionId: string;
   deployId: string;
 }
-export const GetEventResponseDetailsCase0Case30 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployCommandExecutionId: S.String,
-    deployId: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case30",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case30>;
-
 export interface GetEventResponseDetailsCase0Case32 {
   instanceID?: string;
   reason?: Reason;
 }
-export const GetEventResponseDetailsCase0Case32 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceID: S.optional(S.String),
-    reason: S.optional(Reason),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case32",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case32>;
-
 export interface GetEventResponseDetailsCase0Case34 {
   triggeredByUser: string | null;
 }
-export const GetEventResponseDetailsCase0Case34 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggeredByUser: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case34",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case34>;
-
 export interface GetEventResponseDetailsCase0Case37 {
   actor: string;
   suspendedByUser?: User2;
 }
-export const GetEventResponseDetailsCase0Case37 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actor: S.String,
-    suspendedByUser: S.optional(User2),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case37",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case37>;
-
 export interface GetEventResponseDetailsCase0Case38 {
   actor: string;
   resumedByUser?: User2;
 }
-export const GetEventResponseDetailsCase0Case38 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actor: S.String,
-    resumedByUser: S.optional(User2),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case38",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case38>;
-
 export interface GetEventResponseDetailsCase0Case40 {
   trigger: string;
 }
-export const GetEventResponseDetailsCase0Case40 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case40",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case40>;
-
 export interface GetEventResponseDetailsCase0Case41Trigger {
   /** Edge Cache change was triggered manually from the dashboard */
   manual: boolean;
@@ -5007,63 +4179,22 @@ export interface GetEventResponseDetailsCase0Case41Trigger {
   /** Edge Cache Change was triggered by Render */
   system: boolean;
 }
-export const GetEventResponseDetailsCase0Case41Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manual: S.Boolean,
-    user: S.optional(User2),
-    system: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case41Trigger",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case41Trigger>;
-
 export interface GetEventResponseDetailsCase0Case41 {
   trigger: GetEventResponseDetailsCase0Case41Trigger;
 }
-export const GetEventResponseDetailsCase0Case41 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger: GetEventResponseDetailsCase0Case41Trigger,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case41",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case41>;
-
 export type Trigger2 = GetEventResponseDetailsCase0Case41Trigger;
-export const Trigger2 = GetEventResponseDetailsCase0Case41Trigger;
-
 export type GetEventResponseDetailsCase0Case42 = GetEventResponseDetailsCase0Case41;
-export const GetEventResponseDetailsCase0Case42 = GetEventResponseDetailsCase0Case41;
-
 export type GetEventResponseDetailsCase0Case43 = GetEventResponseDetailsCase0Case41;
-export const GetEventResponseDetailsCase0Case43 = GetEventResponseDetailsCase0Case41;
-
 export interface GetEventResponseDetailsCase0Case44 {
   /** Why auto-deploy was disabled (manual_deploy, rollback, or setting_change) */
   reason: string;
   /** The auto-deploy trigger value immediately before it was disabled */
   fromTrigger?: AutoDeployTrigger;
 }
-export const GetEventResponseDetailsCase0Case44 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.String,
-    fromTrigger: S.optional(AutoDeployTrigger),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case44",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case44>;
-
 export interface GetEventResponseDetailsCase0Case45 {
   /** The auto-deploy trigger value after it was re-enabled */
   newTrigger?: AutoDeployTrigger;
 }
-export const GetEventResponseDetailsCase0Case45 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newTrigger: S.optional(AutoDeployTrigger),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase0Case45",
-}) as any as S.Schema<GetEventResponseDetailsCase0Case45>;
-
 export type GetEventResponseDetailsCase0 =
   | GetEventResponseDetailsCase0Case0
   | GetEventResponseDetailsCase0Case1
@@ -5106,134 +4237,45 @@ export type GetEventResponseDetailsCase0 =
   | GetEventResponseDetailsCase0Case41
   | GetEventResponseDetailsCase0Case44
   | GetEventResponseDetailsCase0Case45;
-export const GetEventResponseDetailsCase0 =
-  S.Unknown as any as S.Schema<GetEventResponseDetailsCase0>;
-
 export interface GetEventResponseDetailsCase1Case4 {
   leaderId?: string;
 }
-export const GetEventResponseDetailsCase1Case4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    leaderId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case4",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case4>;
-
 export interface GetEventResponseDetailsCase1Case5 {
   user?: User2;
   from: string;
   to: string;
 }
-export const GetEventResponseDetailsCase1Case5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.optional(User2),
-    from: S.String,
-    to: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case5",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case5>;
-
 export interface GetEventResponseDetailsCase1Case6 {
   user?: User2;
   enabled: boolean;
 }
-export const GetEventResponseDetailsCase1Case6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.optional(User2),
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case6",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case6>;
-
 export interface GetEventResponseDetailsCase1Case7 {
   user?: User2;
 }
-export const GetEventResponseDetailsCase1Case7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.optional(User2),
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case7",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case7>;
-
 export interface GetEventResponseDetailsCase1Case8 {
   user?: User2;
   fromDiskSize: number;
   toDiskSize: number;
 }
-export const GetEventResponseDetailsCase1Case8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.optional(User2),
-    fromDiskSize: S.Number,
-    toDiskSize: S.Number,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case8",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case8>;
-
 export interface GetEventResponseDetailsCase1Case9 {
   fromStatus: string;
   toStatus: string;
 }
-export const GetEventResponseDetailsCase1Case9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromStatus: S.String,
-    toStatus: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case9",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case9>;
-
 export interface GetEventResponseDetailsCase1Case10 {
   fromReplicas: number;
   toReplicas: number;
 }
-export const GetEventResponseDetailsCase1Case10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromReplicas: S.Number,
-    toReplicas: S.Number,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case10",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case10>;
-
 export type GetEventResponseDetailsCase1Case11 = GetEventResponseDetailsCase1Case7;
-export const GetEventResponseDetailsCase1Case11 = GetEventResponseDetailsCase1Case7;
-
 export interface GetEventResponseDetailsCase1Case13 {
   fromVersion: string;
   toVersion: string;
 }
-export const GetEventResponseDetailsCase1Case13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fromVersion: S.String,
-    toVersion: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case13",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case13>;
-
 export interface GetEventResponseDetailsCase1Case14 {
   user?: User2;
   fromVersion: string;
   toVersion: string;
 }
-export const GetEventResponseDetailsCase1Case14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user: S.optional(User2),
-    fromVersion: S.String,
-    toVersion: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase1Case14",
-}) as any as S.Schema<GetEventResponseDetailsCase1Case14>;
-
 export type GetEventResponseDetailsCase1Case15 = GetEventResponseDetailsCase1Case13;
-export const GetEventResponseDetailsCase1Case15 = GetEventResponseDetailsCase1Case13;
-
 export type GetEventResponseDetailsCase1 =
   | unknown
   | GetEventResponseDetailsCase1Case4
@@ -5247,31 +4289,16 @@ export type GetEventResponseDetailsCase1 =
   | GetEventResponseDetailsCase1Case13
   | GetEventResponseDetailsCase1Case14
   | GetEventResponseDetailsCase1Case13;
-export const GetEventResponseDetailsCase1 =
-  S.Unknown as any as S.Schema<GetEventResponseDetailsCase1>;
-
 export interface GetEventResponseDetailsCase2Case1 {
   reason: string;
   message: string;
 }
-export const GetEventResponseDetailsCase2Case1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "GetEventResponseDetailsCase2Case1",
-}) as any as S.Schema<GetEventResponseDetailsCase2Case1>;
-
 export type GetEventResponseDetailsCase2 = unknown | GetEventResponseDetailsCase2Case1;
-export const GetEventResponseDetailsCase2 =
-  S.Unknown as any as S.Schema<GetEventResponseDetailsCase2>;
-
 export type GetEventResponseDetails =
   | GetEventResponseDetailsCase0
   | GetEventResponseDetailsCase1
   | GetEventResponseDetailsCase2;
-export const GetEventResponseDetails = S.Unknown as any as S.Schema<GetEventResponseDetails>;
+const GetEventResponseDetails = S.Unknown as any as S.Schema<GetEventResponseDetails>;
 
 export interface GetEventResponse {
   id: string;
@@ -5280,7 +4307,7 @@ export interface GetEventResponse {
   type: GetEventResponseType;
   details: GetEventResponseDetails;
 }
-export const GetEventResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     timestamp: S.String,
@@ -5308,7 +4335,7 @@ export interface GetHttpLatencyRequest {
   /** The quantile of latencies to fetch. When multiple quantile query params are provided, they are ORed together */
   quantile?: number;
 }
-export const GetHttpLatencyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHttpLatencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -5324,27 +4351,15 @@ export const GetHttpLatencyRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetHttpLatencyResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetHttpLatencyResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetHttpLatencyResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetHttpLatencyResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetHttpLatencyResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetHttpLatencyResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetHttpLatencyResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetHttpLatencyResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetHttpLatencyResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetHttpLatencyResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetHttpLatencyResponseBodyItem {
   /** List of labels describing the time series */
@@ -5353,20 +4368,13 @@ export interface GetHttpLatencyResponseBodyItem {
   values: GetHttpLatencyResponseBodyItemValuesList;
   unit: string;
 }
-export const GetHttpLatencyResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetHttpLatencyResponseBodyItem>;
-
 /** A collection of time series */
 export type GetHttpLatencyResponseBodyList = Array<GetHttpLatencyResponseBodyItem>;
-export const GetHttpLatencyResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetHttpLatencyResponseBodyList>;
-
 export type GetHttpLatencyResponse = GetHttpLatencyResponseBodyList;
-export const GetHttpLatencyResponse =
-  GetBandwidthResponse as any as S.Schema<GetHttpLatencyResponse>;
+const GetHttpLatencyResponse = GetBandwidthResponse as any as S.Schema<GetHttpLatencyResponse>;
 
 export type GetHttpRequestsRequestAggregateBy = "statusCode" | "host";
-export const GetHttpRequestsRequestAggregateBy = S.String;
+const GetHttpRequestsRequestAggregateBy = S.String;
 
 export interface GetHttpRequestsRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -5386,7 +4394,7 @@ export interface GetHttpRequestsRequest {
   /** The field to aggregate by */
   aggregateBy?: GetHttpRequestsRequestAggregateBy | (string & {});
 }
-export const GetHttpRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHttpRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -5402,27 +4410,15 @@ export const GetHttpRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetHttpRequestsResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetHttpRequestsResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetHttpRequestsResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetHttpRequestsResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetHttpRequestsResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetHttpRequestsResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetHttpRequestsResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetHttpRequestsResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetHttpRequestsResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetHttpRequestsResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetHttpRequestsResponseBodyItem {
   /** List of labels describing the time series */
@@ -5431,17 +4427,10 @@ export interface GetHttpRequestsResponseBodyItem {
   values: GetHttpRequestsResponseBodyItemValuesList;
   unit: string;
 }
-export const GetHttpRequestsResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetHttpRequestsResponseBodyItem>;
-
 /** A collection of time series */
 export type GetHttpRequestsResponseBodyList = Array<GetHttpRequestsResponseBodyItem>;
-export const GetHttpRequestsResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetHttpRequestsResponseBodyList>;
-
 export type GetHttpRequestsResponse = GetHttpRequestsResponseBodyList;
-export const GetHttpRequestsResponse =
-  GetBandwidthResponse as any as S.Schema<GetHttpRequestsResponse>;
+const GetHttpRequestsResponse = GetBandwidthResponse as any as S.Schema<GetHttpRequestsResponse>;
 
 export interface GetInstanceCountRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -5455,7 +4444,7 @@ export interface GetInstanceCountRequest {
   /** This parameter is deprecated. Please use `resource` instead */
   service?: string;
 }
-export const GetInstanceCountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceCountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -5468,27 +4457,15 @@ export const GetInstanceCountRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetInstanceCountResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetInstanceCountResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetInstanceCountResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetInstanceCountResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetInstanceCountResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetInstanceCountResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetInstanceCountResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetInstanceCountResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetInstanceCountResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetInstanceCountResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetInstanceCountResponseBodyItem {
   /** List of labels describing the time series */
@@ -5497,17 +4474,10 @@ export interface GetInstanceCountResponseBodyItem {
   values: GetInstanceCountResponseBodyItemValuesList;
   unit: string;
 }
-export const GetInstanceCountResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetInstanceCountResponseBodyItem>;
-
 /** A collection of time series */
 export type GetInstanceCountResponseBodyList = Array<GetInstanceCountResponseBodyItem>;
-export const GetInstanceCountResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetInstanceCountResponseBodyList>;
-
 export type GetInstanceCountResponse = GetInstanceCountResponseBodyList;
-export const GetInstanceCountResponse =
-  GetBandwidthResponse as any as S.Schema<GetInstanceCountResponse>;
+const GetInstanceCountResponse = GetBandwidthResponse as any as S.Schema<GetInstanceCountResponse>;
 
 export interface GetJobRequest {
   /** The ID of the service */
@@ -5515,7 +4485,7 @@ export interface GetJobRequest {
   /** The ID of the job */
   jobId: string;
 }
-export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -5525,7 +4495,7 @@ export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetKeyValueRequest {
   redisId: string;
 }
-export const GetKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/key-value/{redisId}", code: 200 })),
@@ -5534,7 +4504,7 @@ export const GetKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetKeyValueConnectionInfoRequest {
   redisId: string;
 }
-export const GetKeyValueConnectionInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKeyValueConnectionInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/key-value/{redisId}/connection-info", code: 200 })),
@@ -5551,7 +4521,7 @@ export interface KeyValueConnectionInfo {
   /** The CLI (redis-cli or valkey-cli) command to connect to the Key Value instance */
   cliCommand: string;
 }
-export const KeyValueConnectionInfo = /*@__PURE__*/ S.suspend(() =>
+const KeyValueConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internalConnectionString: S.String,
     externalConnectionString: S.String,
@@ -5562,7 +4532,7 @@ export const KeyValueConnectionInfo = /*@__PURE__*/ S.suspend(() =>
 export interface GetMaintenanceRequest {
   maintenanceRunID: string;
 }
-export const GetMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceRunID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/maintenance/{maintenanceRunID}", code: 200 })),
@@ -5577,7 +4547,7 @@ export interface GetMaintenanceResponse {
   state: Items4;
   resourceId: string;
 }
-export const GetMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.String,
@@ -5602,7 +4572,7 @@ export interface GetMemoryRequest {
   /** Instance ID to query. When multiple instance ID query params are provided, they are ORed together */
   instance?: string;
 }
-export const GetMemoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -5615,24 +4585,14 @@ export const GetMemoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A time series datapoint label */
 export type GetMemoryResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetMemoryResponseBodyItemLabelsItem = GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetMemoryResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetMemoryResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetMemoryResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetMemoryResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetMemoryResponseBodyItemValuesItem = GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetMemoryResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetMemoryResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetMemoryResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetMemoryResponseBodyItem {
   /** List of labels describing the time series */
@@ -5641,16 +4601,10 @@ export interface GetMemoryResponseBodyItem {
   values: GetMemoryResponseBodyItemValuesList;
   unit: string;
 }
-export const GetMemoryResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetMemoryResponseBodyItem>;
-
 /** A collection of time series */
 export type GetMemoryResponseBodyList = Array<GetMemoryResponseBodyItem>;
-export const GetMemoryResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetMemoryResponseBodyList>;
-
 export type GetMemoryResponse = GetMemoryResponseBodyList;
-export const GetMemoryResponse = GetBandwidthResponse as any as S.Schema<GetMemoryResponse>;
+const GetMemoryResponse = GetBandwidthResponse as any as S.Schema<GetMemoryResponse>;
 
 export interface GetMemoryLimitRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -5666,7 +4620,7 @@ export interface GetMemoryLimitRequest {
   /** Instance ID to query. When multiple instance ID query params are provided, they are ORed together */
   instance?: string;
 }
-export const GetMemoryLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemoryLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -5680,27 +4634,15 @@ export const GetMemoryLimitRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetMemoryLimitResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetMemoryLimitResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetMemoryLimitResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetMemoryLimitResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetMemoryLimitResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetMemoryLimitResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetMemoryLimitResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetMemoryLimitResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetMemoryLimitResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetMemoryLimitResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetMemoryLimitResponseBodyItem {
   /** List of labels describing the time series */
@@ -5709,17 +4651,10 @@ export interface GetMemoryLimitResponseBodyItem {
   values: GetMemoryLimitResponseBodyItemValuesList;
   unit: string;
 }
-export const GetMemoryLimitResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetMemoryLimitResponseBodyItem>;
-
 /** A collection of time series */
 export type GetMemoryLimitResponseBodyList = Array<GetMemoryLimitResponseBodyItem>;
-export const GetMemoryLimitResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetMemoryLimitResponseBodyList>;
-
 export type GetMemoryLimitResponse = GetMemoryLimitResponseBodyList;
-export const GetMemoryLimitResponse =
-  GetBandwidthResponse as any as S.Schema<GetMemoryLimitResponse>;
+const GetMemoryLimitResponse = GetBandwidthResponse as any as S.Schema<GetMemoryLimitResponse>;
 
 export interface GetMemoryTargetRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -5735,7 +4670,7 @@ export interface GetMemoryTargetRequest {
   /** Instance ID to query. When multiple instance ID query params are provided, they are ORed together */
   instance?: string;
 }
-export const GetMemoryTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemoryTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -5749,27 +4684,15 @@ export const GetMemoryTargetRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetMemoryTargetResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetMemoryTargetResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetMemoryTargetResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetMemoryTargetResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetMemoryTargetResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetMemoryTargetResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetMemoryTargetResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetMemoryTargetResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetMemoryTargetResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetMemoryTargetResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetMemoryTargetResponseBodyItem {
   /** List of labels describing the time series */
@@ -5778,23 +4701,16 @@ export interface GetMemoryTargetResponseBodyItem {
   values: GetMemoryTargetResponseBodyItemValuesList;
   unit: string;
 }
-export const GetMemoryTargetResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetMemoryTargetResponseBodyItem>;
-
 /** A collection of time series */
 export type GetMemoryTargetResponseBodyList = Array<GetMemoryTargetResponseBodyItem>;
-export const GetMemoryTargetResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetMemoryTargetResponseBodyList>;
-
 export type GetMemoryTargetResponse = GetMemoryTargetResponseBodyList;
-export const GetMemoryTargetResponse =
-  GetBandwidthResponse as any as S.Schema<GetMemoryTargetResponse>;
+const GetMemoryTargetResponse = GetBandwidthResponse as any as S.Schema<GetMemoryTargetResponse>;
 
 export interface GetOwnerRequest {
   /** The ID of the user or team */
   ownerId: string;
 }
-export const GetOwnerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOwnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/owners/{ownerId}", code: 200 })),
@@ -5804,7 +4720,7 @@ export interface GetOwnerLogStreamRequest {
   /** The ID of the workspace to return log stream information for */
   ownerId: string;
 }
-export const GetOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/logs/streams/owner/{ownerId}", code: 200 })),
@@ -5812,7 +4728,7 @@ export const GetOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether to send logs or drop them. */
 export type Preview = "send" | "drop";
-export const Preview = S.String;
+const Preview = S.String;
 
 export interface GetOwnerLogStreamResponse {
   /** The ID of the owner. */
@@ -5821,7 +4737,7 @@ export interface GetOwnerLogStreamResponse {
   endpoint?: string;
   preview?: Preview;
 }
-export const GetOwnerLogStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOwnerLogStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.optional(S.String),
     endpoint: S.optional(S.String),
@@ -5835,14 +4751,14 @@ export interface GetOwnerMembersRequest {
   /** The ID of the team */
   ownerId: string;
 }
-export const GetOwnerMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOwnerMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/owners/{ownerId}/members", code: 200 })),
 ).annotate({ identifier: "GetOwnerMembersRequest" }) as any as S.Schema<GetOwnerMembersRequest>;
 
 export type TeamMemberStatus = "active" | "inactive";
-export const TeamMemberStatus = S.String;
+const TeamMemberStatus = S.String;
 
 /** The member's workspace role. Values are always returned in uppercase. */
 export type TeamMemberRole =
@@ -5851,7 +4767,7 @@ export type TeamMemberRole =
   | "WORKSPACE_CONTRIBUTOR"
   | "WORKSPACE_BILLING"
   | "WORKSPACE_VIEWER";
-export const TeamMemberRole = S.String;
+const TeamMemberRole = S.String;
 
 export interface TeamMember {
   userId: string;
@@ -5861,7 +4777,7 @@ export interface TeamMember {
   role: TeamMemberRole;
   mfaEnabled: boolean;
 }
-export const TeamMember = /*@__PURE__*/ S.suspend(() =>
+const TeamMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String,
     name: S.String,
@@ -5873,10 +4789,10 @@ export const TeamMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamMember" }) as any as S.Schema<TeamMember>;
 
 export type TeamMembers = Array<TeamMember>;
-export const TeamMembers = /*@__PURE__*/ S.Array(TeamMember) as any as S.Schema<TeamMembers>;
+const TeamMembers = /*@__PURE__*/ S.Array(TeamMember) as any as S.Schema<TeamMembers>;
 
 export type GetOwnerMembersResponse = TeamMembers;
-export const GetOwnerMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOwnerMembersResponse = /*@__PURE__*/ S.suspend(() =>
   TeamMembers.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetOwnerMembersResponse" }) as any as S.Schema<GetOwnerMembersResponse>;
 
@@ -5884,7 +4800,7 @@ export interface GetOwnerMetricsStreamRequest {
   /** The ID of the workspace to return metrics stream information for */
   ownerId: string;
 }
-export const GetOwnerMetricsStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOwnerMetricsStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/metrics-stream/{ownerId}", code: 200 })),
@@ -5903,7 +4819,7 @@ export type Provider =
   | "GROUNDCOVER"
   | "LOGFIRE"
   | "CUSTOM";
-export const Provider = S.String;
+const Provider = S.String;
 
 export interface Schema10 {
   /** The ID of the owner */
@@ -5912,7 +4828,7 @@ export interface Schema10 {
   /** The endpoint URL to stream metrics to */
   url: string;
 }
-export const Schema10 = /*@__PURE__*/ S.suspend(() =>
+const Schema10 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     provider: Provider,
@@ -5924,7 +4840,7 @@ export interface GetOwnerNotificationSettingsRequest {
   /** The ID of the workspace to return resources for */
   ownerId: string;
 }
-export const GetOwnerNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOwnerNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/notification-settings/owners/{ownerId}", code: 200 })),
@@ -5933,7 +4849,7 @@ export const GetOwnerNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOwnerNotificationSettingsRequest>;
 
 export type NotificationsToSend = "none" | "failure" | "all";
-export const NotificationsToSend = S.String;
+const NotificationsToSend = S.String;
 
 export interface GetOwnerNotificationSettingsResponse {
   ownerId: string;
@@ -5942,7 +4858,7 @@ export interface GetOwnerNotificationSettingsResponse {
   previewNotificationsEnabled: boolean;
   notificationsToSend: NotificationsToSend;
 }
-export const GetOwnerNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOwnerNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     slackEnabled: S.Boolean,
@@ -5957,7 +4873,7 @@ export const GetOwnerNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =
 export interface GetPostgresRequest {
   postgresId: string;
 }
-export const GetPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}", code: 200 })),
@@ -5966,7 +4882,7 @@ export const GetPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPostgresConnectionInfoRequest {
   postgresId: string;
 }
-export const GetPostgresConnectionInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPostgresConnectionInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/connection-info", code: 200 })),
@@ -5982,7 +4898,7 @@ export interface PostgresConnectionInfo {
   externalConnectionPoolString?: string;
   psqlCommand: string;
 }
-export const PostgresConnectionInfo = /*@__PURE__*/ S.suspend(() =>
+const PostgresConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.String.pipe(T.SensitiveValue({})),
     internalConnectionString: S.String,
@@ -5996,7 +4912,7 @@ export const PostgresConnectionInfo = /*@__PURE__*/ S.suspend(() =>
 export interface GetPostgresRecoveryInfoRequest {
   postgresId: string;
 }
-export const GetPostgresRecoveryInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPostgresRecoveryInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/recovery", code: 200 })),
@@ -6009,14 +4925,14 @@ export type GetPostgresRecoveryInfoResponseRecoveryStatus =
   | "AVAILABLE"
   | "BACKUP_NOT_READY"
   | "NOT_AVAILABLE";
-export const GetPostgresRecoveryInfoResponseRecoveryStatus = S.String;
+const GetPostgresRecoveryInfoResponseRecoveryStatus = S.String;
 
 export interface GetPostgresRecoveryInfoResponse {
   /** Availability of point-in-time recovery. */
   recoveryStatus: GetPostgresRecoveryInfoResponseRecoveryStatus;
   startsAt?: string;
 }
-export const GetPostgresRecoveryInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPostgresRecoveryInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recoveryStatus: GetPostgresRecoveryInfoResponseRecoveryStatus,
     startsAt: S.optional(S.String),
@@ -6028,7 +4944,7 @@ export const GetPostgresRecoveryInfoResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetProjectRequest {
   projectId: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/projects/{projectId}", code: 200 })),
@@ -6038,7 +4954,7 @@ export interface GetRegistryCredentialRequest {
   /** The ID of the registry credential */
   registryCredentialId: string;
 }
-export const GetRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registryCredentialId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/registrycredentials/{registryCredentialId}", code: 200 })),
@@ -6056,7 +4972,7 @@ export interface GetReplicationLagRequest {
   /** Postgres ID to query. When multiple resource query params are provided, they are ORed together */
   resource?: string;
 }
-export const GetReplicationLagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReplicationLagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -6068,27 +4984,15 @@ export const GetReplicationLagRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetReplicationLagResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetReplicationLagResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetReplicationLagResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetReplicationLagResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetReplicationLagResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetReplicationLagResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetReplicationLagResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetReplicationLagResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetReplicationLagResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetReplicationLagResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetReplicationLagResponseBodyItem {
   /** List of labels describing the time series */
@@ -6097,23 +5001,17 @@ export interface GetReplicationLagResponseBodyItem {
   values: GetReplicationLagResponseBodyItemValuesList;
   unit: string;
 }
-export const GetReplicationLagResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetReplicationLagResponseBodyItem>;
-
 /** A collection of time series */
 export type GetReplicationLagResponseBodyList = Array<GetReplicationLagResponseBodyItem>;
-export const GetReplicationLagResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetReplicationLagResponseBodyList>;
-
 export type GetReplicationLagResponse = GetReplicationLagResponseBodyList;
-export const GetReplicationLagResponse =
+const GetReplicationLagResponse =
   GetActiveConnectionsResponse as any as S.Schema<GetReplicationLagResponse>;
 
 export interface GetResourceLogStreamRequest {
   /** The ID of the resource (server, cron job, postgres, or redis) to return log stream override information for */
   resourceId: string;
 }
-export const GetResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/logs/streams/resource/{resourceId}", code: 200 })),
@@ -6123,7 +5021,7 @@ export const GetResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether to send logs or drop them. */
 export type Items3 = "send" | "drop";
-export const Items3 = S.String;
+const Items3 = S.String;
 
 export interface GetResourceLogStreamResponse {
   /** The ID of the resource. */
@@ -6132,7 +5030,7 @@ export interface GetResourceLogStreamResponse {
   endpoint?: string;
   setting?: Items3;
 }
-export const GetResourceLogStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceLogStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     endpoint: S.optional(S.String),
@@ -6148,7 +5046,7 @@ export interface GetSecretFileRequest {
   /** The file name of the secret file */
   envVarKey: string;
 }
-export const GetSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -6161,7 +5059,7 @@ export interface GetServiceRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}", code: 200 })),
@@ -6171,7 +5069,7 @@ export interface GetServiceNotificationOverridesRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const GetServiceNotificationOverridesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceNotificationOverridesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6186,17 +5084,17 @@ export const GetServiceNotificationOverridesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetServiceNotificationOverridesRequest>;
 
 export type PreviewNotificationsEnabled = "default" | "false" | "true";
-export const PreviewNotificationsEnabled = S.String;
+const PreviewNotificationsEnabled = S.String;
 
 export type NotificationsToSend2 = "default" | "none" | "failure" | "all";
-export const NotificationsToSend2 = S.String;
+const NotificationsToSend2 = S.String;
 
 export interface GetServiceNotificationOverridesResponse {
   serviceId: string;
   previewNotificationsEnabled: PreviewNotificationsEnabled;
   notificationsToSend: NotificationsToSend2;
 }
-export const GetServiceNotificationOverridesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceNotificationOverridesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String,
     previewNotificationsEnabled: PreviewNotificationsEnabled,
@@ -6210,7 +5108,7 @@ export interface GetServiceOutboundIpsRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const GetServiceOutboundIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceOutboundIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/outbound-ips", code: 200 })),
@@ -6220,11 +5118,11 @@ export const GetServiceOutboundIpsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** `dedicated` if a dedicated IP set applies to the resource, `shared` if its traffic originates from the shared Render IPs for its region. */
 export type OutboundIpsType = "shared" | "dedicated";
-export const OutboundIpsType = S.String;
+const OutboundIpsType = S.String;
 
 /** The IP addresses the resource's outbound traffic originates from. */
 export type OutboundIpsIpsList = Array<string>;
-export const OutboundIpsIpsList =
+const OutboundIpsIpsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<OutboundIpsIpsList>;
 
 export interface OutboundIps {
@@ -6235,7 +5133,7 @@ export interface OutboundIps {
   /** The IP addresses the resource's outbound traffic originates from. */
   ips: OutboundIpsIpsList;
 }
-export const OutboundIps = /*@__PURE__*/ S.suspend(() =>
+const OutboundIps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: OutboundIpsType,
     dedicatedIpId: S.optional(S.String),
@@ -6247,7 +5145,7 @@ export interface GetTaskRequest {
   /** The ID of the task */
   taskId: string;
 }
-export const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/tasks/{taskId}", code: 200 })),
@@ -6260,7 +5158,7 @@ export interface GetTaskResponse {
   workflowId?: string;
   workflowVersionId?: string;
 }
-export const GetTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -6274,7 +5172,7 @@ export interface GetTaskRunRequest {
   /** The ID of the task run */
   taskRunId: string;
 }
-export const GetTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskRunId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/task-runs/{taskRunId}", code: 200 })),
@@ -6288,26 +5186,24 @@ export type GetTaskRunResponseStatus =
   | "failed"
   | "canceled"
   | "paused";
-export const GetTaskRunResponseStatus = S.String;
+const GetTaskRunResponseStatus = S.String;
 
 export type GetTaskRunResponseResultsList = Array<unknown>;
-export const GetTaskRunResponseResultsList =
+const GetTaskRunResponseResultsList =
   CreateTaskRequestInputCase0List as any as S.Schema<GetTaskRunResponseResultsList>;
 
 /** Positional arguments passed to the task function */
 export type InputCase0List = Array<unknown>;
-export const InputCase0List = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<InputCase0List>;
+const InputCase0List = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<InputCase0List>;
 
 /** Named parameters passed to the task function as keyword arguments */
 export type InputCase1Map = { [key: string]: unknown | undefined };
-export const InputCase1Map = CreateTaskRequestInputCase1Map as any as S.Schema<InputCase1Map>;
-
 /** Input data for a task. Can be either an array (for positional arguments) or an object (for named parameters). */
 export type Input = InputCase0List | InputCase1Map;
-export const Input = S.Unknown as any as S.Schema<Input>;
+const Input = S.Unknown as any as S.Schema<Input>;
 
 export type Results = Array<unknown>;
-export const Results = InputCase0List as any as S.Schema<Results>;
+const Results = InputCase0List as any as S.Schema<Results>;
 
 export interface GetTaskRunResponseAttemptsItem {
   /** The ID of the task run this attempt belongs to. */
@@ -6322,7 +5218,7 @@ export interface GetTaskRunResponseAttemptsItem {
   error?: string;
   results?: Results;
 }
-export const GetTaskRunResponseAttemptsItem = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRunResponseAttemptsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskRunId: S.optional(S.String),
     attempt: S.Number,
@@ -6338,7 +5234,7 @@ export const GetTaskRunResponseAttemptsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTaskRunResponseAttemptsItem>;
 
 export type GetTaskRunResponseAttemptsList = Array<GetTaskRunResponseAttemptsItem>;
-export const GetTaskRunResponseAttemptsList = /*@__PURE__*/ S.Array(
+const GetTaskRunResponseAttemptsList = /*@__PURE__*/ S.Array(
   GetTaskRunResponseAttemptsItem,
 ) as any as S.Schema<GetTaskRunResponseAttemptsList>;
 
@@ -6359,7 +5255,7 @@ export interface GetTaskRunResponse {
   retries: number;
   attempts: GetTaskRunResponseAttemptsList;
 }
-export const GetTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     taskId: S.String,
@@ -6378,10 +5274,10 @@ export const GetTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTaskRunResponse" }) as any as S.Schema<GetTaskRunResponse>;
 
 export type GetTaskRunsCompletedRequestState = "succeeded" | "failed";
-export const GetTaskRunsCompletedRequestState = S.String;
+const GetTaskRunsCompletedRequestState = S.String;
 
 export type GetTaskRunsCompletedRequestAggregateBy = "state";
-export const GetTaskRunsCompletedRequestAggregateBy = S.String;
+const GetTaskRunsCompletedRequestAggregateBy = S.String;
 
 export interface GetTaskRunsCompletedRequest {
   /** Epoch/Unix timestamp of start of time range to return. Defaults to `now() - 1 hour`. */
@@ -6397,7 +5293,7 @@ export interface GetTaskRunsCompletedRequest {
   /** The field to aggregate by */
   aggregateBy?: GetTaskRunsCompletedRequestAggregateBy | (string & {});
 }
-export const GetTaskRunsCompletedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRunsCompletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -6413,27 +5309,15 @@ export const GetTaskRunsCompletedRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetTaskRunsCompletedResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetTaskRunsCompletedResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetTaskRunsCompletedResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetTaskRunsCompletedResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetTaskRunsCompletedResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetTaskRunsCompletedResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetTaskRunsCompletedResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetTaskRunsCompletedResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetTaskRunsCompletedResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetTaskRunsCompletedResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetTaskRunsCompletedResponseBodyItem {
   /** List of labels describing the time series */
@@ -6442,16 +5326,10 @@ export interface GetTaskRunsCompletedResponseBodyItem {
   values: GetTaskRunsCompletedResponseBodyItemValuesList;
   unit: string;
 }
-export const GetTaskRunsCompletedResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetTaskRunsCompletedResponseBodyItem>;
-
 /** A collection of time series */
 export type GetTaskRunsCompletedResponseBodyList = Array<GetTaskRunsCompletedResponseBodyItem>;
-export const GetTaskRunsCompletedResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetTaskRunsCompletedResponseBodyList>;
-
 export type GetTaskRunsCompletedResponse = GetTaskRunsCompletedResponseBodyList;
-export const GetTaskRunsCompletedResponse =
+const GetTaskRunsCompletedResponse =
   GetActiveConnectionsResponse as any as S.Schema<GetTaskRunsCompletedResponse>;
 
 export interface GetTaskRunsQueuedRequest {
@@ -6464,7 +5342,7 @@ export interface GetTaskRunsQueuedRequest {
   /** Task ID to query. When multiple task IDs are provided, they are ORed together */
   resource?: string;
 }
-export const GetTaskRunsQueuedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRunsQueuedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -6476,27 +5354,15 @@ export const GetTaskRunsQueuedRequest = /*@__PURE__*/ S.suspend(() =>
 /** A time series datapoint label */
 export type GetTaskRunsQueuedResponseBodyItemLabelsItem =
   GetActiveConnectionsResponseBodyItemLabelsItem;
-export const GetTaskRunsQueuedResponseBodyItemLabelsItem =
-  GetActiveConnectionsResponseBodyItemLabelsItem;
-
 /** List of labels describing the time series */
 export type GetTaskRunsQueuedResponseBodyItemLabelsList =
   Array<GetActiveConnectionsResponseBodyItemLabelsItem>;
-export const GetTaskRunsQueuedResponseBodyItemLabelsList =
-  GetActiveConnectionsResponseBodyItemLabelsList as any as S.Schema<GetTaskRunsQueuedResponseBodyItemLabelsList>;
-
 /** A time series datapoint value */
 export type GetTaskRunsQueuedResponseBodyItemValuesItem =
   GetActiveConnectionsResponseBodyItemValuesItem;
-export const GetTaskRunsQueuedResponseBodyItemValuesItem =
-  GetActiveConnectionsResponseBodyItemValuesItem;
-
 /** The values of the time series */
 export type GetTaskRunsQueuedResponseBodyItemValuesList =
   Array<GetActiveConnectionsResponseBodyItemValuesItem>;
-export const GetTaskRunsQueuedResponseBodyItemValuesList =
-  GetActiveConnectionsResponseBodyItemValuesList as any as S.Schema<GetTaskRunsQueuedResponseBodyItemValuesList>;
-
 /** A time series data point */
 export interface GetTaskRunsQueuedResponseBodyItem {
   /** List of labels describing the time series */
@@ -6505,20 +5371,14 @@ export interface GetTaskRunsQueuedResponseBodyItem {
   values: GetTaskRunsQueuedResponseBodyItemValuesList;
   unit: string;
 }
-export const GetTaskRunsQueuedResponseBodyItem =
-  GetActiveConnectionsResponseBodyItem as any as S.Schema<GetTaskRunsQueuedResponseBodyItem>;
-
 /** A collection of time series */
 export type GetTaskRunsQueuedResponseBodyList = Array<GetTaskRunsQueuedResponseBodyItem>;
-export const GetTaskRunsQueuedResponseBodyList =
-  GetActiveConnectionsResponseBodyList as any as S.Schema<GetTaskRunsQueuedResponseBodyList>;
-
 export type GetTaskRunsQueuedResponse = GetTaskRunsQueuedResponseBodyList;
-export const GetTaskRunsQueuedResponse =
+const GetTaskRunsQueuedResponse =
   GetActiveConnectionsResponse as any as S.Schema<GetTaskRunsQueuedResponse>;
 
 export interface GetUserRequest {}
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
@@ -6528,7 +5388,7 @@ export interface User {
   email: string;
   name: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -6540,7 +5400,7 @@ export interface GetWebhookRequest {
   /** Unique identifier for the webhook */
   webhookId: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/webhooks/{webhookId}", code: 200 })),
@@ -6554,13 +5414,13 @@ export interface Schema14 {
   enabled: boolean;
   eventFilter: EventFilter;
 }
-export const Schema14 = CreateWebhookResponse as any as S.Schema<Schema14>;
+const Schema14 = CreateWebhookResponse as any as S.Schema<Schema14>;
 
 export interface GetWorkflowRequest {
   /** The ID of the workflow */
   workflowId: string;
 }
-export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/workflows/{workflowId}", code: 200 })),
@@ -6580,13 +5440,13 @@ export interface Schema15 {
   slug?: string;
   autoDeployTrigger?: AutoDeployTrigger2;
 }
-export const Schema15 = CreateWorkflowResponse as any as S.Schema<Schema15>;
+const Schema15 = CreateWorkflowResponse as any as S.Schema<Schema15>;
 
 export interface GetWorkflowVersionRequest {
   /** The ID of the workflow version */
   workflowVersionId: string;
 }
-export const GetWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowVersionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/workflowversions/{workflowVersionId}", code: 200 })),
@@ -6601,7 +5461,7 @@ export type GetWorkflowVersionResponseStatus =
   | "build_failed"
   | "registration_failed"
   | "ready";
-export const GetWorkflowVersionResponseStatus = S.String;
+const GetWorkflowVersionResponseStatus = S.String;
 
 export interface GetWorkflowVersionResponse {
   id: string;
@@ -6610,7 +5470,7 @@ export interface GetWorkflowVersionResponse {
   createdAt: string;
   status: GetWorkflowVersionResponseStatus;
 }
-export const GetWorkflowVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     workflowId: S.String,
@@ -6627,7 +5487,7 @@ export interface LinkEnvGroupToBuildSourceRequest {
   /** Filter for resources that belong to an environment group */
   envGroupId: string;
 }
-export const LinkEnvGroupToBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkEnvGroupToBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     envGroupId: S.String.pipe(T.Label()),
@@ -6644,15 +5504,15 @@ export const LinkEnvGroupToBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type LinkEnvGroupToBuildSourceResponseServiceLinksList = Array<EnvGroupLink>;
-export const LinkEnvGroupToBuildSourceResponseServiceLinksList =
+const LinkEnvGroupToBuildSourceResponseServiceLinksList =
   CreateEnvGroupResponseServiceLinksList as any as S.Schema<LinkEnvGroupToBuildSourceResponseServiceLinksList>;
 
 export type LinkEnvGroupToBuildSourceResponseEnvVarsList = Array<EnvVar>;
-export const LinkEnvGroupToBuildSourceResponseEnvVarsList =
+const LinkEnvGroupToBuildSourceResponseEnvVarsList =
   CreateEnvGroupResponseEnvVarsList as any as S.Schema<LinkEnvGroupToBuildSourceResponseEnvVarsList>;
 
 export type LinkEnvGroupToBuildSourceResponseSecretFilesList = Array<SecretFile>;
-export const LinkEnvGroupToBuildSourceResponseSecretFilesList =
+const LinkEnvGroupToBuildSourceResponseSecretFilesList =
   CreateBuildSourceRequestSecretFilesList as any as S.Schema<LinkEnvGroupToBuildSourceResponseSecretFilesList>;
 
 export interface LinkEnvGroupToBuildSourceResponse {
@@ -6667,7 +5527,7 @@ export interface LinkEnvGroupToBuildSourceResponse {
   envVars: LinkEnvGroupToBuildSourceResponseEnvVarsList;
   secretFiles: LinkEnvGroupToBuildSourceResponseSecretFilesList;
 }
-export const LinkEnvGroupToBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const LinkEnvGroupToBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -6689,7 +5549,7 @@ export interface LinkServiceToEnvGroupRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const LinkServiceToEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkServiceToEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     serviceId: S.String.pipe(T.Label()),
@@ -6702,17 +5562,8 @@ export const LinkServiceToEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type LinkServiceToEnvGroupResponseServiceLinksList = Array<EnvGroupLink>;
-export const LinkServiceToEnvGroupResponseServiceLinksList =
-  CreateEnvGroupResponseServiceLinksList as any as S.Schema<LinkServiceToEnvGroupResponseServiceLinksList>;
-
 export type LinkServiceToEnvGroupResponseEnvVarsList = Array<EnvVar>;
-export const LinkServiceToEnvGroupResponseEnvVarsList =
-  CreateEnvGroupResponseEnvVarsList as any as S.Schema<LinkServiceToEnvGroupResponseEnvVarsList>;
-
 export type LinkServiceToEnvGroupResponseSecretFilesList = Array<SecretFile>;
-export const LinkServiceToEnvGroupResponseSecretFilesList =
-  CreateBuildSourceRequestSecretFilesList as any as S.Schema<LinkServiceToEnvGroupResponseSecretFilesList>;
-
 export interface LinkServiceToEnvGroupResponse {
   id: string;
   name: string;
@@ -6725,7 +5576,7 @@ export interface LinkServiceToEnvGroupResponse {
   envVars: LinkServiceToEnvGroupResponseEnvVarsList;
   secretFiles: LinkServiceToEnvGroupResponseSecretFilesList;
 }
-export const LinkServiceToEnvGroupResponse =
+const LinkServiceToEnvGroupResponse =
   LinkEnvGroupToBuildSourceResponse as any as S.Schema<LinkServiceToEnvGroupResponse>;
 
 export interface ListApplicationFilterValuesRequest {
@@ -6740,7 +5591,7 @@ export interface ListApplicationFilterValuesRequest {
   /** This parameter is deprecated. Please use `resource` instead */
   service?: string;
 }
-export const ListApplicationFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -6753,17 +5604,17 @@ export const ListApplicationFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApplicationFilterValuesRequest>;
 
 export type ListApplicationFilterValuesResponseBodyItemFilter = "instance";
-export const ListApplicationFilterValuesResponseBodyItemFilter = S.String;
+const ListApplicationFilterValuesResponseBodyItemFilter = S.String;
 
 export type ListApplicationFilterValuesResponseBodyItemValuesList = Array<string>;
-export const ListApplicationFilterValuesResponseBodyItemValuesList =
+const ListApplicationFilterValuesResponseBodyItemValuesList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListApplicationFilterValuesResponseBodyItemValuesList>;
 
 export interface ListApplicationFilterValuesResponseBodyItem {
   filter?: ListApplicationFilterValuesResponseBodyItemFilter;
   values?: ListApplicationFilterValuesResponseBodyItemValuesList;
 }
-export const ListApplicationFilterValuesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationFilterValuesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(ListApplicationFilterValuesResponseBodyItemFilter),
     values: S.optional(ListApplicationFilterValuesResponseBodyItemValuesList),
@@ -6775,19 +5626,19 @@ export const ListApplicationFilterValuesResponseBodyItem = /*@__PURE__*/ S.suspe
 /** A collection of filter values for application metrics */
 export type ListApplicationFilterValuesResponseBodyList =
   Array<ListApplicationFilterValuesResponseBodyItem>;
-export const ListApplicationFilterValuesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListApplicationFilterValuesResponseBodyList = /*@__PURE__*/ S.Array(
   ListApplicationFilterValuesResponseBodyItem,
 ) as any as S.Schema<ListApplicationFilterValuesResponseBodyList>;
 
 export type ListApplicationFilterValuesResponse = ListApplicationFilterValuesResponseBodyList;
-export const ListApplicationFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
   ListApplicationFilterValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListApplicationFilterValuesResponse",
 }) as any as S.Schema<ListApplicationFilterValuesResponse>;
 
 export type ListBlueprintsRequestOwnerIdList = Array<string>;
-export const ListBlueprintsRequestOwnerIdList =
+const ListBlueprintsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListBlueprintsRequestOwnerIdList>;
 
 export interface ListBlueprintsRequest {
@@ -6798,7 +5649,7 @@ export interface ListBlueprintsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.optional(ListBlueprintsRequestOwnerIdList.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -6808,7 +5659,7 @@ export const ListBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A Blueprint has status `created` until its first Sync is approved. */
 export type Status = "created" | "paused" | "in_sync" | "syncing" | "error";
-export const Status = S.String;
+const Status = S.String;
 
 export interface Schema {
   id: string;
@@ -6820,7 +5671,7 @@ export interface Schema {
   path: string;
   lastSync?: string;
 }
-export const Schema = /*@__PURE__*/ S.suspend(() =>
+const Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -6838,7 +5689,7 @@ export interface BlueprintWithCursor {
   blueprint: Schema;
   cursor: string;
 }
-export const BlueprintWithCursor = /*@__PURE__*/ S.suspend(() =>
+const BlueprintWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blueprint: Schema,
     cursor: S.String,
@@ -6846,12 +5697,12 @@ export const BlueprintWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlueprintWithCursor" }) as any as S.Schema<BlueprintWithCursor>;
 
 export type ListBlueprintsResponseBodyList = Array<BlueprintWithCursor>;
-export const ListBlueprintsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBlueprintsResponseBodyList = /*@__PURE__*/ S.Array(
   BlueprintWithCursor,
 ) as any as S.Schema<ListBlueprintsResponseBodyList>;
 
 export type ListBlueprintsResponse = ListBlueprintsResponseBodyList;
-export const ListBlueprintsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBlueprintsResponse = /*@__PURE__*/ S.suspend(() =>
   ListBlueprintsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListBlueprintsResponse" }) as any as S.Schema<ListBlueprintsResponse>;
 
@@ -6863,7 +5714,7 @@ export interface ListBlueprintSyncsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListBlueprintSyncsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlueprintSyncsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blueprintId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -6874,10 +5725,8 @@ export const ListBlueprintSyncsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBlueprintSyncsRequest>;
 
 export type SyncWithCursorSyncCommit = NewBuild;
-export const SyncWithCursorSyncCommit = NewBuild;
-
 export type SyncWithCursorSyncState = "created" | "pending" | "running" | "error" | "success";
-export const SyncWithCursorSyncState = S.String;
+const SyncWithCursorSyncState = S.String;
 
 export interface SyncWithCursorSync {
   id: string;
@@ -6886,7 +5735,7 @@ export interface SyncWithCursorSync {
   completedAt?: string;
   state: SyncWithCursorSyncState;
 }
-export const SyncWithCursorSync = /*@__PURE__*/ S.suspend(() =>
+const SyncWithCursorSync = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     commit: NewBuild,
@@ -6901,7 +5750,7 @@ export interface SyncWithCursor {
   sync: SyncWithCursorSync;
   cursor: string;
 }
-export const SyncWithCursor = /*@__PURE__*/ S.suspend(() =>
+const SyncWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sync: SyncWithCursorSync,
     cursor: S.String,
@@ -6909,12 +5758,12 @@ export const SyncWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncWithCursor" }) as any as S.Schema<SyncWithCursor>;
 
 export type ListBlueprintSyncsResponseBodyList = Array<SyncWithCursor>;
-export const ListBlueprintSyncsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBlueprintSyncsResponseBodyList = /*@__PURE__*/ S.Array(
   SyncWithCursor,
 ) as any as S.Schema<ListBlueprintSyncsResponseBodyList>;
 
 export type ListBlueprintSyncsResponse = ListBlueprintSyncsResponseBodyList;
-export const ListBlueprintSyncsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBlueprintSyncsResponse = /*@__PURE__*/ S.suspend(() =>
   ListBlueprintSyncsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListBlueprintSyncsResponse",
@@ -6927,7 +5776,7 @@ export interface ListBuildsInBuildSourceRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListBuildsInBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuildsInBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -6944,7 +5793,7 @@ export type SchemaBuildRunStatus =
   | "failed"
   | "canceled"
   | "unknown";
-export const SchemaBuildRunStatus = S.String;
+const SchemaBuildRunStatus = S.String;
 
 export type SchemaBuildRunRuntime =
   | "docker"
@@ -6954,7 +5803,7 @@ export type SchemaBuildRunRuntime =
   | "python"
   | "ruby"
   | "rust";
-export const SchemaBuildRunRuntime = S.String;
+const SchemaBuildRunRuntime = S.String;
 
 /** The Render build run that produced this build. Present when the build source is currently build-based. Mutually exclusive with `image`. */
 export interface SchemaBuildRun {
@@ -6966,7 +5815,7 @@ export interface SchemaBuildRun {
   commitId?: string;
   commitUrl?: string;
 }
-export const SchemaBuildRun = /*@__PURE__*/ S.suspend(() =>
+const SchemaBuildRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: S.optional(SchemaBuildRunStatus),
@@ -6986,7 +5835,7 @@ export interface SchemaImage {
   imageUrl?: string;
   registryCredentialId?: string;
 }
-export const SchemaImage = /*@__PURE__*/ S.suspend(() =>
+const SchemaImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageVersionId: S.optional(S.String),
     SHA: S.optional(S.String),
@@ -7007,7 +5856,7 @@ export interface Schema13 {
   updatedAt: string;
   assetsDeletedAt?: string;
 }
-export const Schema13 = /*@__PURE__*/ S.suspend(() =>
+const Schema13 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     buildSourceId: S.String,
@@ -7020,23 +5869,23 @@ export const Schema13 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema13" }) as any as S.Schema<Schema13>;
 
 export type ListBuildsInBuildSourceResponseBodyList = Array<Schema13>;
-export const ListBuildsInBuildSourceResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBuildsInBuildSourceResponseBodyList = /*@__PURE__*/ S.Array(
   Schema13,
 ) as any as S.Schema<ListBuildsInBuildSourceResponseBodyList>;
 
 export type ListBuildsInBuildSourceResponse = ListBuildsInBuildSourceResponseBodyList;
-export const ListBuildsInBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBuildsInBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
   ListBuildsInBuildSourceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListBuildsInBuildSourceResponse",
 }) as any as S.Schema<ListBuildsInBuildSourceResponse>;
 
 export type ListBuildSourcesRequestNameList = Array<string>;
-export const ListBuildSourcesRequestNameList =
+const ListBuildSourcesRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListBuildSourcesRequestNameList>;
 
 export type ListBuildSourcesRequestOwnerIdList = Array<string>;
-export const ListBuildSourcesRequestOwnerIdList =
+const ListBuildSourcesRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListBuildSourcesRequestOwnerIdList>;
 
 export interface ListBuildSourcesRequest {
@@ -7060,7 +5909,7 @@ export interface ListBuildSourcesRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListBuildSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBuildSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListBuildSourcesRequestNameList.pipe(T.Query())),
     ownerId: S.optional(ListBuildSourcesRequestOwnerIdList.pipe(T.Query())),
@@ -7079,7 +5928,7 @@ export interface ListBuildSourcesResponseBodyItem {
   buildSource: Schema12;
   cursor: string;
 }
-export const ListBuildSourcesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListBuildSourcesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSource: Schema12,
     cursor: S.String,
@@ -7089,24 +5938,24 @@ export const ListBuildSourcesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuildSourcesResponseBodyItem>;
 
 export type ListBuildSourcesResponseBodyList = Array<ListBuildSourcesResponseBodyItem>;
-export const ListBuildSourcesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListBuildSourcesResponseBodyList = /*@__PURE__*/ S.Array(
   ListBuildSourcesResponseBodyItem,
 ) as any as S.Schema<ListBuildSourcesResponseBodyList>;
 
 export type ListBuildSourcesResponse = ListBuildSourcesResponseBodyList;
-export const ListBuildSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBuildSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   ListBuildSourcesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListBuildSourcesResponse" }) as any as S.Schema<ListBuildSourcesResponse>;
 
 export type ListCustomDomainsRequestNameList = Array<string>;
-export const ListCustomDomainsRequestNameList =
+const ListCustomDomainsRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListCustomDomainsRequestNameList>;
 
 export type ListCustomDomainsRequestDomainType = "apex" | "subdomain";
-export const ListCustomDomainsRequestDomainType = S.String;
+const ListCustomDomainsRequestDomainType = S.String;
 
 export type ListCustomDomainsRequestVerificationStatus = "verified" | "unverified";
-export const ListCustomDomainsRequestVerificationStatus = S.String;
+const ListCustomDomainsRequestVerificationStatus = S.String;
 
 export interface ListCustomDomainsRequest {
   /** The ID of the service */
@@ -7126,7 +5975,7 @@ export interface ListCustomDomainsRequest {
   /** Filter for custom domains created after a certain time (specified as an ISO 8601 timestamp) */
   createdAfter?: string;
 }
-export const ListCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -7143,7 +5992,7 @@ export interface CustomDomainWithCursor {
   customDomain: CustomDomain;
   cursor: string;
 }
-export const CustomDomainWithCursor = /*@__PURE__*/ S.suspend(() =>
+const CustomDomainWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customDomain: CustomDomain,
     cursor: S.String,
@@ -7151,12 +6000,12 @@ export const CustomDomainWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomainWithCursor" }) as any as S.Schema<CustomDomainWithCursor>;
 
 export type ListCustomDomainsResponseBodyList = Array<CustomDomainWithCursor>;
-export const ListCustomDomainsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCustomDomainsResponseBodyList = /*@__PURE__*/ S.Array(
   CustomDomainWithCursor,
 ) as any as S.Schema<ListCustomDomainsResponseBodyList>;
 
 export type ListCustomDomainsResponse = ListCustomDomainsResponseBodyList;
-export const ListCustomDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   ListCustomDomainsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListCustomDomainsResponse",
@@ -7168,7 +6017,7 @@ export interface ListDedicatedIpsRequest {
   /** Filter dedicated IP sets limited to this environment. Excludes workspace-scoped dedicated IP sets. The environment must belong to the workspace named by `ownerId`. */
   environmentId?: string;
 }
-export const ListDedicatedIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Query()),
     environmentId: S.optional(S.String.pipe(T.Query())),
@@ -7176,17 +6025,17 @@ export const ListDedicatedIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDedicatedIpsRequest" }) as any as S.Schema<ListDedicatedIpsRequest>;
 
 export type ListDedicatedIpsResponseBodyList = Array<DedicatedIP>;
-export const ListDedicatedIpsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedIpsResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedIP,
 ) as any as S.Schema<ListDedicatedIpsResponseBodyList>;
 
 export type ListDedicatedIpsResponse = ListDedicatedIpsResponseBodyList;
-export const ListDedicatedIpsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedIpsResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedIpsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDedicatedIpsResponse" }) as any as S.Schema<ListDedicatedIpsResponse>;
 
 export type ListDeploysRequestStatusList = Array<DeployStatus | (string & {})>;
-export const ListDeploysRequestStatusList =
+const ListDeploysRequestStatusList =
   PostgresDetailSuspendersList as any as S.Schema<ListDeploysRequestStatusList>;
 
 export interface ListDeploysRequest {
@@ -7211,7 +6060,7 @@ export interface ListDeploysRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListDeploysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     status: S.optional(ListDeploysRequestStatusList.pipe(T.Query())),
@@ -7230,7 +6079,7 @@ export interface DeployWithCursor {
   deploy?: Deploy;
   cursor?: string;
 }
-export const DeployWithCursor = /*@__PURE__*/ S.suspend(() =>
+const DeployWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploy: S.optional(Deploy),
     cursor: S.optional(S.String),
@@ -7238,27 +6087,27 @@ export const DeployWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeployWithCursor" }) as any as S.Schema<DeployWithCursor>;
 
 export type DeployList = Array<DeployWithCursor>;
-export const DeployList = /*@__PURE__*/ S.Array(DeployWithCursor) as any as S.Schema<DeployList>;
+const DeployList = /*@__PURE__*/ S.Array(DeployWithCursor) as any as S.Schema<DeployList>;
 
 export type ListDeploysResponse = DeployList;
-export const ListDeploysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploysResponse = /*@__PURE__*/ S.suspend(() =>
   DeployList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDeploysResponse" }) as any as S.Schema<ListDeploysResponse>;
 
 export type ListDisksRequestOwnerIdList = Array<string>;
-export const ListDisksRequestOwnerIdList =
+const ListDisksRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListDisksRequestOwnerIdList>;
 
 export type ListDisksRequestDiskIdList = Array<string>;
-export const ListDisksRequestDiskIdList =
+const ListDisksRequestDiskIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListDisksRequestDiskIdList>;
 
 export type ListDisksRequestNameList = Array<string>;
-export const ListDisksRequestNameList =
+const ListDisksRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListDisksRequestNameList>;
 
 export type ListDisksRequestServiceIdList = Array<string>;
-export const ListDisksRequestServiceIdList =
+const ListDisksRequestServiceIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListDisksRequestServiceIdList>;
 
 export interface ListDisksRequest {
@@ -7283,7 +6132,7 @@ export interface ListDisksRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListDisksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDisksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.optional(ListDisksRequestOwnerIdList.pipe(T.Query())),
     diskId: S.optional(ListDisksRequestDiskIdList.pipe(T.Query())),
@@ -7302,7 +6151,7 @@ export interface DiskWithCursor {
   disk: Schema2;
   cursor: string;
 }
-export const DiskWithCursor = /*@__PURE__*/ S.suspend(() =>
+const DiskWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disk: Schema2,
     cursor: S.String,
@@ -7310,25 +6159,25 @@ export const DiskWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskWithCursor" }) as any as S.Schema<DiskWithCursor>;
 
 export type ListDisksResponseBodyList = Array<DiskWithCursor>;
-export const ListDisksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDisksResponseBodyList = /*@__PURE__*/ S.Array(
   DiskWithCursor,
 ) as any as S.Schema<ListDisksResponseBodyList>;
 
 export type ListDisksResponse = ListDisksResponseBodyList;
-export const ListDisksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDisksResponse = /*@__PURE__*/ S.suspend(() =>
   ListDisksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDisksResponse" }) as any as S.Schema<ListDisksResponse>;
 
 export type ListEnvGroupsRequestNameList = Array<string>;
-export const ListEnvGroupsRequestNameList =
+const ListEnvGroupsRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvGroupsRequestNameList>;
 
 export type ListEnvGroupsRequestOwnerIdList = Array<string>;
-export const ListEnvGroupsRequestOwnerIdList =
+const ListEnvGroupsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvGroupsRequestOwnerIdList>;
 
 export type ListEnvGroupsRequestEnvironmentIdList = Array<string>;
-export const ListEnvGroupsRequestEnvironmentIdList =
+const ListEnvGroupsRequestEnvironmentIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvGroupsRequestEnvironmentIdList>;
 
 export interface ListEnvGroupsRequest {
@@ -7351,7 +6200,7 @@ export interface ListEnvGroupsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListEnvGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListEnvGroupsRequestNameList.pipe(T.Query())),
     createdBefore: S.optional(S.String.pipe(T.Query())),
@@ -7367,7 +6216,7 @@ export const ListEnvGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type EnvGroupMetaServiceLinksList = Array<EnvGroupLink>;
-export const EnvGroupMetaServiceLinksList =
+const EnvGroupMetaServiceLinksList =
   CreateEnvGroupResponseServiceLinksList as any as S.Schema<EnvGroupMetaServiceLinksList>;
 
 export interface EnvGroupMeta {
@@ -7380,7 +6229,7 @@ export interface EnvGroupMeta {
   serviceLinks: EnvGroupMetaServiceLinksList;
   environmentId?: string;
 }
-export const EnvGroupMeta = /*@__PURE__*/ S.suspend(() =>
+const EnvGroupMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -7393,29 +6242,29 @@ export const EnvGroupMeta = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnvGroupMeta" }) as any as S.Schema<EnvGroupMeta>;
 
 export type ListEnvGroupsResponseBodyList = Array<EnvGroupMeta>;
-export const ListEnvGroupsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEnvGroupsResponseBodyList = /*@__PURE__*/ S.Array(
   EnvGroupMeta,
 ) as any as S.Schema<ListEnvGroupsResponseBodyList>;
 
 export type ListEnvGroupsResponse = ListEnvGroupsResponseBodyList;
-export const ListEnvGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnvGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   ListEnvGroupsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListEnvGroupsResponse" }) as any as S.Schema<ListEnvGroupsResponse>;
 
 export type ListEnvironmentsRequestNameList = Array<string>;
-export const ListEnvironmentsRequestNameList =
+const ListEnvironmentsRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvironmentsRequestNameList>;
 
 export type ListEnvironmentsRequestProjectIdList = Array<string>;
-export const ListEnvironmentsRequestProjectIdList =
+const ListEnvironmentsRequestProjectIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvironmentsRequestProjectIdList>;
 
 export type ListEnvironmentsRequestOwnerIdList = Array<string>;
-export const ListEnvironmentsRequestOwnerIdList =
+const ListEnvironmentsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvironmentsRequestOwnerIdList>;
 
 export type ListEnvironmentsRequestEnvironmentIdList = Array<string>;
-export const ListEnvironmentsRequestEnvironmentIdList =
+const ListEnvironmentsRequestEnvironmentIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListEnvironmentsRequestEnvironmentIdList>;
 
 export interface ListEnvironmentsRequest {
@@ -7440,7 +6289,7 @@ export interface ListEnvironmentsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListEnvironmentsRequestNameList.pipe(T.Query())),
     projectId: ListEnvironmentsRequestProjectIdList.pipe(T.Query()),
@@ -7460,7 +6309,7 @@ export interface EnvironmentWithCursor {
   environment: Environment;
   cursor: string;
 }
-export const EnvironmentWithCursor = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: Environment,
     cursor: S.String,
@@ -7468,12 +6317,12 @@ export const EnvironmentWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnvironmentWithCursor" }) as any as S.Schema<EnvironmentWithCursor>;
 
 export type ListEnvironmentsResponseBodyList = Array<EnvironmentWithCursor>;
-export const ListEnvironmentsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEnvironmentsResponseBodyList = /*@__PURE__*/ S.Array(
   EnvironmentWithCursor,
 ) as any as S.Schema<ListEnvironmentsResponseBodyList>;
 
 export type ListEnvironmentsResponse = ListEnvironmentsResponseBodyList;
-export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   ListEnvironmentsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListEnvironmentsResponse" }) as any as S.Schema<ListEnvironmentsResponse>;
 
@@ -7521,7 +6370,7 @@ export type ListEventsRequestType =
   | "zero_downtime_redeploy_started"
   | "auto_deploy_disabled"
   | "auto_deploy_enabled";
-export const ListEventsRequestType = S.String;
+const ListEventsRequestType = S.String;
 
 export interface ListEventsRequest {
   /** The ID of the service */
@@ -7537,7 +6386,7 @@ export interface ListEventsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     type: S.optional(ListEventsRequestType.pipe(T.Query())),
@@ -7592,72 +6441,31 @@ export type _0 =
   | "zero_downtime_redeploy_started"
   | "auto_deploy_disabled"
   | "auto_deploy_enabled";
-export const _0 = S.String;
+const _0 = S.String;
 
 export type _0Case0 = GetEventResponseDetailsCase0Case0;
-export const _0Case0 = GetEventResponseDetailsCase0Case0;
-
 export type _0Case1 = GetEventResponseDetailsCase0Case1;
-export const _0Case1 = GetEventResponseDetailsCase0Case1;
-
 export type _0Case2 = GetEventResponseDetailsCase0Case2;
-export const _0Case2 = GetEventResponseDetailsCase0Case2;
-
 export type _0Case3 = GetEventResponseDetailsCase0Case3;
-export const _0Case3 = GetEventResponseDetailsCase0Case3;
-
 export type _0Case4 = GetEventResponseDetailsCase0Case4;
-export const _0Case4 = GetEventResponseDetailsCase0Case4;
-
 export type _0Case5 = GetEventResponseDetailsCase0Case5;
-export const _0Case5 = GetEventResponseDetailsCase0Case5;
-
 export type _0Case6BuildStatus = "succeeded" | "failed" | "canceled";
-export const _0Case6BuildStatus = S.String;
-
 export type _0Case6ReasonNewBuild = NewBuild;
-export const _0Case6ReasonNewBuild = NewBuild;
-
 export type _0Case6Reason = GetEventResponseDetailsCase0Case6Reason;
-export const _0Case6Reason = GetEventResponseDetailsCase0Case6Reason;
-
 export interface _0Case6 {
   buildId: string;
   buildStatus: _0Case6BuildStatus;
   reason: GetEventResponseDetailsCase0Case6Reason;
   status: number;
 }
-export const _0Case6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildId: S.String,
-    buildStatus: _0Case6BuildStatus,
-    reason: GetEventResponseDetailsCase0Case6Reason,
-    status: S.Number,
-  }),
-).annotate({ identifier: "_0Case6" }) as any as S.Schema<_0Case6>;
-
 export type _0Case7Trigger = GetEventResponseDetailsCase0Case7Trigger;
-export const _0Case7Trigger = GetEventResponseDetailsCase0Case7Trigger;
-
 export type _0Case7 = GetEventResponseDetailsCase0Case7;
-export const _0Case7 = GetEventResponseDetailsCase0Case7;
-
 export type _0Case8 = GetEventResponseDetailsCase0Case8;
-export const _0Case8 = GetEventResponseDetailsCase0Case8;
-
 export type _0Case9Status = "canceled" | "pending" | "successful" | "unsuccessful";
-export const _0Case9Status = S.String;
-
 export type _0Case9ReasonOomKilled = ReasonOomKilled;
-export const _0Case9ReasonOomKilled = ReasonOomKilled;
-
 export type _0Case9Reason = Reason;
-export const _0Case9Reason = Reason;
-
 /** User who triggered the action */
 export type _0Case9User = User2;
-export const _0Case9User = User2;
-
 export interface _0Case9 {
   cronJobRunId: string;
   status: _0Case9Status;
@@ -7665,111 +6473,38 @@ export interface _0Case9 {
   /** User who triggered the action */
   user?: User2;
 }
-export const _0Case9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cronJobRunId: S.String,
-    status: _0Case9Status,
-    reason: S.optional(Reason),
-    user: S.optional(User2),
-  }),
-).annotate({ identifier: "_0Case9" }) as any as S.Schema<_0Case9>;
-
 export type _0Case10 = GetEventResponseDetailsCase0Case10;
-export const _0Case10 = GetEventResponseDetailsCase0Case10;
-
 export type _0Case11 = GetEventResponseDetailsCase0Case11;
-export const _0Case11 = GetEventResponseDetailsCase0Case11;
-
 export type _0Case12 = GetEventResponseDetailsCase0Case12;
-export const _0Case12 = GetEventResponseDetailsCase0Case12;
-
 export type _0Case13 = GetEventResponseDetailsCase0Case13;
-export const _0Case13 = GetEventResponseDetailsCase0Case13;
-
 export type _0Case14 = GetEventResponseDetailsCase0Case14;
-export const _0Case14 = GetEventResponseDetailsCase0Case14;
-
 export type _0Case15 = GetEventResponseDetailsCase0Case15;
-export const _0Case15 = GetEventResponseDetailsCase0Case15;
-
 export type _0Case16 = GetEventResponseDetailsCase0Case16;
-export const _0Case16 = GetEventResponseDetailsCase0Case16;
-
 export type _0Case17 = GetEventResponseDetailsCase0Case16;
-export const _0Case17 = GetEventResponseDetailsCase0Case16;
-
 export type _0Case18 = GetEventResponseDetailsCase0Case18;
-export const _0Case18 = GetEventResponseDetailsCase0Case18;
-
 export type _0Case19 = GetEventResponseDetailsCase0Case19;
-export const _0Case19 = GetEventResponseDetailsCase0Case19;
-
 export type _0Case20 = GetEventResponseDetailsCase0Case19;
-export const _0Case20 = GetEventResponseDetailsCase0Case19;
-
 export type _0Case21 = GetEventResponseDetailsCase0Case3;
-export const _0Case21 = GetEventResponseDetailsCase0Case3;
-
 export type _0Case22 = GetEventResponseDetailsCase0Case22;
-export const _0Case22 = GetEventResponseDetailsCase0Case22;
-
 export type _0Case23 = GetEventResponseDetailsCase0Case23;
-export const _0Case23 = GetEventResponseDetailsCase0Case23;
-
 export type _0Case24 = GetEventResponseDetailsCase0Case24;
-export const _0Case24 = GetEventResponseDetailsCase0Case24;
-
 export type _0Case26Trigger = GetEventResponseDetailsCase0Case26Trigger;
-export const _0Case26Trigger = GetEventResponseDetailsCase0Case26Trigger;
-
 export type _0Case26 = GetEventResponseDetailsCase0Case26;
-export const _0Case26 = GetEventResponseDetailsCase0Case26;
-
 export type _0Case27 = GetEventResponseDetailsCase0Case7;
-export const _0Case27 = GetEventResponseDetailsCase0Case7;
-
 export type _0Case28 = GetEventResponseDetailsCase0Case28;
-export const _0Case28 = GetEventResponseDetailsCase0Case28;
-
 export type _0Case29 = GetEventResponseDetailsCase0Case29;
-export const _0Case29 = GetEventResponseDetailsCase0Case29;
-
 export type _0Case30 = GetEventResponseDetailsCase0Case30;
-export const _0Case30 = GetEventResponseDetailsCase0Case30;
-
 export type _0Case32 = GetEventResponseDetailsCase0Case32;
-export const _0Case32 = GetEventResponseDetailsCase0Case32;
-
 export type _0Case34 = GetEventResponseDetailsCase0Case34;
-export const _0Case34 = GetEventResponseDetailsCase0Case34;
-
 export type _0Case37 = GetEventResponseDetailsCase0Case37;
-export const _0Case37 = GetEventResponseDetailsCase0Case37;
-
 export type _0Case38 = GetEventResponseDetailsCase0Case38;
-export const _0Case38 = GetEventResponseDetailsCase0Case38;
-
 export type _0Case40 = GetEventResponseDetailsCase0Case40;
-export const _0Case40 = GetEventResponseDetailsCase0Case40;
-
 export type _0Case41Trigger = GetEventResponseDetailsCase0Case41Trigger;
-export const _0Case41Trigger = GetEventResponseDetailsCase0Case41Trigger;
-
 export type _0Case41 = GetEventResponseDetailsCase0Case41;
-export const _0Case41 = GetEventResponseDetailsCase0Case41;
-
 export type _0Case42 = GetEventResponseDetailsCase0Case41;
-export const _0Case42 = GetEventResponseDetailsCase0Case41;
-
 export type _0Case43 = GetEventResponseDetailsCase0Case41;
-export const _0Case43 = GetEventResponseDetailsCase0Case41;
-
 export type _0Case44 = GetEventResponseDetailsCase0Case44;
-export const _0Case44 = GetEventResponseDetailsCase0Case44;
-
 export type _0Case45 = GetEventResponseDetailsCase0Case45;
-export const _0Case45 = GetEventResponseDetailsCase0Case45;
-
 export type _02 =
   | GetEventResponseDetailsCase0Case0
   | GetEventResponseDetailsCase0Case1
@@ -7812,7 +6547,7 @@ export type _02 =
   | GetEventResponseDetailsCase0Case41
   | GetEventResponseDetailsCase0Case44
   | GetEventResponseDetailsCase0Case45;
-export const _02 = S.Unknown as any as S.Schema<_02>;
+const _02 = S.Unknown as any as S.Schema<_02>;
 
 export interface ServiceEventWithCursorEvent {
   id: string;
@@ -7821,7 +6556,7 @@ export interface ServiceEventWithCursorEvent {
   type: _0;
   details: _02;
 }
-export const ServiceEventWithCursorEvent = /*@__PURE__*/ S.suspend(() =>
+const ServiceEventWithCursorEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     timestamp: S.String,
@@ -7838,7 +6573,7 @@ export interface ServiceEventWithCursor {
   event: ServiceEventWithCursorEvent;
   cursor: string;
 }
-export const ServiceEventWithCursor = /*@__PURE__*/ S.suspend(() =>
+const ServiceEventWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: ServiceEventWithCursorEvent,
     cursor: S.String,
@@ -7846,25 +6581,25 @@ export const ServiceEventWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceEventWithCursor" }) as any as S.Schema<ServiceEventWithCursor>;
 
 export type ListEventsResponseBodyList = Array<ServiceEventWithCursor>;
-export const ListEventsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEventsResponseBodyList = /*@__PURE__*/ S.Array(
   ServiceEventWithCursor,
 ) as any as S.Schema<ListEventsResponseBodyList>;
 
 export type ListEventsResponse = ListEventsResponseBodyList;
-export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   ListEventsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListEventsResponse" }) as any as S.Schema<ListEventsResponse>;
 
 export type ListHeadersRequestPathList = Array<string>;
-export const ListHeadersRequestPathList =
+const ListHeadersRequestPathList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListHeadersRequestPathList>;
 
 export type ListHeadersRequestNameList = Array<string>;
-export const ListHeadersRequestNameList =
+const ListHeadersRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListHeadersRequestNameList>;
 
 export type ListHeadersRequestValueList = Array<string>;
-export const ListHeadersRequestValueList =
+const ListHeadersRequestValueList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListHeadersRequestValueList>;
 
 export interface ListHeadersRequest {
@@ -7881,7 +6616,7 @@ export interface ListHeadersRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListHeadersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHeadersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     path: S.optional(ListHeadersRequestPathList.pipe(T.Query())),
@@ -7896,7 +6631,7 @@ export interface HeaderWithCursor {
   header: Header;
   cursor: string;
 }
-export const HeaderWithCursor = /*@__PURE__*/ S.suspend(() =>
+const HeaderWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     header: Header,
     cursor: S.String,
@@ -7904,12 +6639,12 @@ export const HeaderWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeaderWithCursor" }) as any as S.Schema<HeaderWithCursor>;
 
 export type ListHeadersResponseBodyList = Array<HeaderWithCursor>;
-export const ListHeadersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHeadersResponseBodyList = /*@__PURE__*/ S.Array(
   HeaderWithCursor,
 ) as any as S.Schema<ListHeadersResponseBodyList>;
 
 export type ListHeadersResponse = ListHeadersResponseBodyList;
-export const ListHeadersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHeadersResponse = /*@__PURE__*/ S.suspend(() =>
   ListHeadersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListHeadersResponse" }) as any as S.Schema<ListHeadersResponse>;
 
@@ -7929,7 +6664,7 @@ export interface ListHttpFilterValuesRequest {
   /** The status codes of HTTP requests to filter to. When multiple status code query params are provided, they are ORed together */
   statusCode?: string;
 }
-export const ListHttpFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHttpFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -7944,17 +6679,17 @@ export const ListHttpFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHttpFilterValuesRequest>;
 
 export type ListHttpFilterValuesResponseBodyItemFilter = "host" | "statusCode";
-export const ListHttpFilterValuesResponseBodyItemFilter = S.String;
+const ListHttpFilterValuesResponseBodyItemFilter = S.String;
 
 export type ListHttpFilterValuesResponseBodyItemValuesList = Array<string>;
-export const ListHttpFilterValuesResponseBodyItemValuesList =
+const ListHttpFilterValuesResponseBodyItemValuesList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListHttpFilterValuesResponseBodyItemValuesList>;
 
 export interface ListHttpFilterValuesResponseBodyItem {
   filter?: ListHttpFilterValuesResponseBodyItemFilter;
   values?: ListHttpFilterValuesResponseBodyItemValuesList;
 }
-export const ListHttpFilterValuesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListHttpFilterValuesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(ListHttpFilterValuesResponseBodyItemFilter),
     values: S.optional(ListHttpFilterValuesResponseBodyItemValuesList),
@@ -7965,12 +6700,12 @@ export const ListHttpFilterValuesResponseBodyItem = /*@__PURE__*/ S.suspend(() =
 
 /** A collection of filter values for HTTP metrics */
 export type ListHttpFilterValuesResponseBodyList = Array<ListHttpFilterValuesResponseBodyItem>;
-export const ListHttpFilterValuesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHttpFilterValuesResponseBodyList = /*@__PURE__*/ S.Array(
   ListHttpFilterValuesResponseBodyItem,
 ) as any as S.Schema<ListHttpFilterValuesResponseBodyList>;
 
 export type ListHttpFilterValuesResponse = ListHttpFilterValuesResponseBodyList;
-export const ListHttpFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHttpFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
   ListHttpFilterValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHttpFilterValuesResponse",
@@ -7980,7 +6715,7 @@ export interface ListInstancesRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/services/{serviceId}/instances", code: 200 })),
@@ -7990,7 +6725,7 @@ export interface ServiceInstance {
   id: string;
   createdAt: string;
 }
-export const ServiceInstance = /*@__PURE__*/ S.suspend(() =>
+const ServiceInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -7998,20 +6733,18 @@ export const ServiceInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceInstance" }) as any as S.Schema<ServiceInstance>;
 
 export type ListInstancesResponseBodyList = Array<ServiceInstance>;
-export const ListInstancesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListInstancesResponseBodyList = /*@__PURE__*/ S.Array(
   ServiceInstance,
 ) as any as S.Schema<ListInstancesResponseBodyList>;
 
 export type ListInstancesResponse = ListInstancesResponseBodyList;
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   ListInstancesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 
 export type ListJobRequestStatusItem = "pending" | "running" | "succeeded" | "failed" | "canceled";
-export const ListJobRequestStatusItem = S.String;
-
 export type ListJobRequestStatusList = Array<ListJobRequestStatusItem | (string & {})>;
-export const ListJobRequestStatusList =
+const ListJobRequestStatusList =
   PostgresDetailSuspendersList as any as S.Schema<ListJobRequestStatusList>;
 
 export interface ListJobRequest {
@@ -8036,7 +6769,7 @@ export interface ListJobRequest {
   /** Filter for jobs finished after a certain time (specified as an ISO 8601 timestamp) */
   finishedAfter?: string;
 }
-export const ListJobRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -8055,7 +6788,7 @@ export interface JobWithCursor {
   job: Schema7;
   cursor: string;
 }
-export const JobWithCursor = /*@__PURE__*/ S.suspend(() =>
+const JobWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: Schema7,
     cursor: S.String,
@@ -8063,29 +6796,29 @@ export const JobWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobWithCursor" }) as any as S.Schema<JobWithCursor>;
 
 export type ListJobResponseBodyList = Array<JobWithCursor>;
-export const ListJobResponseBodyList = /*@__PURE__*/ S.Array(
+const ListJobResponseBodyList = /*@__PURE__*/ S.Array(
   JobWithCursor,
 ) as any as S.Schema<ListJobResponseBodyList>;
 
 export type ListJobResponse = ListJobResponseBodyList;
-export const ListJobResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobResponse = /*@__PURE__*/ S.suspend(() =>
   ListJobResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListJobResponse" }) as any as S.Schema<ListJobResponse>;
 
 export type ListKeyValueRequestNameList = Array<string>;
-export const ListKeyValueRequestNameList =
+const ListKeyValueRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListKeyValueRequestNameList>;
 
 export type ListKeyValueRequestRegionList = Array<Region | (string & {})>;
-export const ListKeyValueRequestRegionList =
+const ListKeyValueRequestRegionList =
   PostgresDetailSuspendersList as any as S.Schema<ListKeyValueRequestRegionList>;
 
 export type ListKeyValueRequestOwnerIdList = Array<string>;
-export const ListKeyValueRequestOwnerIdList =
+const ListKeyValueRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListKeyValueRequestOwnerIdList>;
 
 export type ListKeyValueRequestEnvironmentIdList = Array<string>;
-export const ListKeyValueRequestEnvironmentIdList =
+const ListKeyValueRequestEnvironmentIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListKeyValueRequestEnvironmentIdList>;
 
 export interface ListKeyValueRequest {
@@ -8110,7 +6843,7 @@ export interface ListKeyValueRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListKeyValueRequestNameList.pipe(T.Query())),
     region: S.optional(ListKeyValueRequestRegionList.pipe(T.Query())),
@@ -8127,7 +6860,7 @@ export const ListKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP allow list for the Key Value instance */
 export type KeyValueIpAllowListList = Array<CidrBlockAndDescription>;
-export const KeyValueIpAllowListList =
+const KeyValueIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<KeyValueIpAllowListList>;
 
 /** A Key Value instance */
@@ -8154,7 +6887,7 @@ export interface KeyValue {
   /** The URL to view the Key Value instance in the Render Dashboard */
   dashboardUrl: string;
 }
-export const KeyValue = /*@__PURE__*/ S.suspend(() =>
+const KeyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -8176,7 +6909,7 @@ export interface KeyValueWithCursor {
   keyValue: KeyValue;
   cursor: string;
 }
-export const KeyValueWithCursor = /*@__PURE__*/ S.suspend(() =>
+const KeyValueWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyValue: KeyValue,
     cursor: S.String,
@@ -8184,64 +6917,64 @@ export const KeyValueWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyValueWithCursor" }) as any as S.Schema<KeyValueWithCursor>;
 
 export type ListKeyValueResponseBodyList = Array<KeyValueWithCursor>;
-export const ListKeyValueResponseBodyList = /*@__PURE__*/ S.Array(
+const ListKeyValueResponseBodyList = /*@__PURE__*/ S.Array(
   KeyValueWithCursor,
 ) as any as S.Schema<ListKeyValueResponseBodyList>;
 
 export type ListKeyValueResponse = ListKeyValueResponseBodyList;
-export const ListKeyValueResponse = /*@__PURE__*/ S.suspend(() =>
+const ListKeyValueResponse = /*@__PURE__*/ S.suspend(() =>
   ListKeyValueResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListKeyValueResponse" }) as any as S.Schema<ListKeyValueResponse>;
 
 export type ListLogsRequestDirection = "forward" | "backward";
-export const ListLogsRequestDirection = S.String;
+const ListLogsRequestDirection = S.String;
 
 export type ListLogsRequestResourceList = Array<string>;
-export const ListLogsRequestResourceList =
+const ListLogsRequestResourceList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestResourceList>;
 
 export type ListLogsRequestInstanceList = Array<string>;
-export const ListLogsRequestInstanceList =
+const ListLogsRequestInstanceList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestInstanceList>;
 
 export type ListLogsRequestHostList = Array<string>;
-export const ListLogsRequestHostList =
+const ListLogsRequestHostList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestHostList>;
 
 export type ListLogsRequestStatusCodeList = Array<string>;
-export const ListLogsRequestStatusCodeList =
+const ListLogsRequestStatusCodeList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestStatusCodeList>;
 
 export type ListLogsRequestMethodList = Array<string>;
-export const ListLogsRequestMethodList =
+const ListLogsRequestMethodList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestMethodList>;
 
 export type ListLogsRequestTaskList = Array<string>;
-export const ListLogsRequestTaskList =
+const ListLogsRequestTaskList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestTaskList>;
 
 export type ListLogsRequestTaskRunList = Array<string>;
-export const ListLogsRequestTaskRunList =
+const ListLogsRequestTaskRunList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestTaskRunList>;
 
 export type ListLogsRequestSandboxList = Array<string>;
-export const ListLogsRequestSandboxList =
+const ListLogsRequestSandboxList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestSandboxList>;
 
 export type ListLogsRequestLevelList = Array<string>;
-export const ListLogsRequestLevelList =
+const ListLogsRequestLevelList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestLevelList>;
 
 export type ListLogsRequestTypeList = Array<string>;
-export const ListLogsRequestTypeList =
+const ListLogsRequestTypeList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestTypeList>;
 
 export type ListLogsRequestTextList = Array<string>;
-export const ListLogsRequestTextList =
+const ListLogsRequestTextList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestTextList>;
 
 export type ListLogsRequestPathList = Array<string>;
-export const ListLogsRequestPathList =
+const ListLogsRequestPathList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsRequestPathList>;
 
 export interface ListLogsRequest {
@@ -8280,7 +7013,7 @@ export interface ListLogsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Query()),
     startTime: S.optional(S.String.pipe(T.Query())),
@@ -8319,7 +7052,7 @@ export type SchemaLabelsItemName =
   | "text"
   | "path"
   | "blocked";
-export const SchemaLabelsItemName = S.String;
+const SchemaLabelsItemName = S.String;
 
 /** A log label */
 export interface SchemaLabelsItem {
@@ -8328,7 +7061,7 @@ export interface SchemaLabelsItem {
   /** The value of the log label */
   value: string;
 }
-export const SchemaLabelsItem = /*@__PURE__*/ S.suspend(() =>
+const SchemaLabelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SchemaLabelsItemName,
     value: S.String,
@@ -8336,7 +7069,7 @@ export const SchemaLabelsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaLabelsItem" }) as any as S.Schema<SchemaLabelsItem>;
 
 export type SchemaLabelsList = Array<SchemaLabelsItem>;
-export const SchemaLabelsList = /*@__PURE__*/ S.Array(
+const SchemaLabelsList = /*@__PURE__*/ S.Array(
   SchemaLabelsItem,
 ) as any as S.Schema<SchemaLabelsList>;
 
@@ -8350,7 +7083,7 @@ export interface Schema8 {
   timestamp: string;
   labels: SchemaLabelsList;
 }
-export const Schema8 = /*@__PURE__*/ S.suspend(() =>
+const Schema8 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     message: S.String,
@@ -8360,7 +7093,7 @@ export const Schema8 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema8" }) as any as S.Schema<Schema8>;
 
 export type ListLogsResponseLogsList = Array<Schema8>;
-export const ListLogsResponseLogsList = /*@__PURE__*/ S.Array(
+const ListLogsResponseLogsList = /*@__PURE__*/ S.Array(
   Schema8,
 ) as any as S.Schema<ListLogsResponseLogsList>;
 
@@ -8373,7 +7106,7 @@ export interface ListLogsResponse {
   nextEndTime: string;
   logs: ListLogsResponseLogsList;
 }
-export const ListLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasMore: S.Boolean,
     nextStartTime: S.String,
@@ -8389,57 +7122,57 @@ export type ListLogsValuesRequestLabel =
   | "method"
   | "level"
   | "type";
-export const ListLogsValuesRequestLabel = S.String;
+const ListLogsValuesRequestLabel = S.String;
 
 export type ListLogsValuesRequestDirection = "forward" | "backward";
-export const ListLogsValuesRequestDirection = S.String;
+const ListLogsValuesRequestDirection = S.String;
 
 export type ListLogsValuesRequestResourceList = Array<string>;
-export const ListLogsValuesRequestResourceList =
+const ListLogsValuesRequestResourceList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestResourceList>;
 
 export type ListLogsValuesRequestInstanceList = Array<string>;
-export const ListLogsValuesRequestInstanceList =
+const ListLogsValuesRequestInstanceList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestInstanceList>;
 
 export type ListLogsValuesRequestHostList = Array<string>;
-export const ListLogsValuesRequestHostList =
+const ListLogsValuesRequestHostList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestHostList>;
 
 export type ListLogsValuesRequestStatusCodeList = Array<string>;
-export const ListLogsValuesRequestStatusCodeList =
+const ListLogsValuesRequestStatusCodeList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestStatusCodeList>;
 
 export type ListLogsValuesRequestMethodList = Array<string>;
-export const ListLogsValuesRequestMethodList =
+const ListLogsValuesRequestMethodList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestMethodList>;
 
 export type ListLogsValuesRequestTaskList = Array<string>;
-export const ListLogsValuesRequestTaskList =
+const ListLogsValuesRequestTaskList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestTaskList>;
 
 export type ListLogsValuesRequestTaskRunList = Array<string>;
-export const ListLogsValuesRequestTaskRunList =
+const ListLogsValuesRequestTaskRunList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestTaskRunList>;
 
 export type ListLogsValuesRequestSandboxList = Array<string>;
-export const ListLogsValuesRequestSandboxList =
+const ListLogsValuesRequestSandboxList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestSandboxList>;
 
 export type ListLogsValuesRequestLevelList = Array<string>;
-export const ListLogsValuesRequestLevelList =
+const ListLogsValuesRequestLevelList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestLevelList>;
 
 export type ListLogsValuesRequestTypeList = Array<string>;
-export const ListLogsValuesRequestTypeList =
+const ListLogsValuesRequestTypeList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestTypeList>;
 
 export type ListLogsValuesRequestTextList = Array<string>;
-export const ListLogsValuesRequestTextList =
+const ListLogsValuesRequestTextList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestTextList>;
 
 export type ListLogsValuesRequestPathList = Array<string>;
-export const ListLogsValuesRequestPathList =
+const ListLogsValuesRequestPathList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesRequestPathList>;
 
 export interface ListLogsValuesRequest {
@@ -8480,7 +7213,7 @@ export interface ListLogsValuesRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListLogsValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Query()),
     label: ListLogsValuesRequestLabel.pipe(T.Query()),
@@ -8504,20 +7237,20 @@ export const ListLogsValuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLogsValuesRequest" }) as any as S.Schema<ListLogsValuesRequest>;
 
 export type ListLogsValuesResponseBodyList = Array<string>;
-export const ListLogsValuesResponseBodyList =
+const ListLogsValuesResponseBodyList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListLogsValuesResponseBodyList>;
 
 export type ListLogsValuesResponse = ListLogsValuesResponseBodyList;
-export const ListLogsValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogsValuesResponse = /*@__PURE__*/ S.suspend(() =>
   ListLogsValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListLogsValuesResponse" }) as any as S.Schema<ListLogsValuesResponse>;
 
 export type ListMaintenanceRequestResourceIdList = Array<string>;
-export const ListMaintenanceRequestResourceIdList =
+const ListMaintenanceRequestResourceIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListMaintenanceRequestResourceIdList>;
 
 export type ListMaintenanceRequestOwnerIdList = Array<string>;
-export const ListMaintenanceRequestOwnerIdList =
+const ListMaintenanceRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListMaintenanceRequestOwnerIdList>;
 
 export type ListMaintenanceRequestStateItem =
@@ -8527,12 +7260,10 @@ export type ListMaintenanceRequestStateItem =
   | "cancelled"
   | "succeeded"
   | "failed";
-export const ListMaintenanceRequestStateItem = S.String;
-
 export type ListMaintenanceRequestStateList = Array<
   ListMaintenanceRequestStateItem | (string & {})
 >;
-export const ListMaintenanceRequestStateList =
+const ListMaintenanceRequestStateList =
   PostgresDetailSuspendersList as any as S.Schema<ListMaintenanceRequestStateList>;
 
 export interface ListMaintenanceRequest {
@@ -8541,7 +7272,7 @@ export interface ListMaintenanceRequest {
   ownerId?: ListMaintenanceRequestOwnerIdList;
   state?: ListMaintenanceRequestStateList;
 }
-export const ListMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(ListMaintenanceRequestResourceIdList.pipe(T.Query())),
     ownerId: S.optional(ListMaintenanceRequestOwnerIdList.pipe(T.Query())),
@@ -8558,24 +7289,24 @@ export interface Schema11 {
   state: Items4;
   resourceId: string;
 }
-export const Schema11 = GetMaintenanceResponse as any as S.Schema<Schema11>;
+const Schema11 = GetMaintenanceResponse as any as S.Schema<Schema11>;
 
 export type ListMaintenanceResponseBodyList = Array<Schema11>;
-export const ListMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMaintenanceResponseBodyList = /*@__PURE__*/ S.Array(
   Schema11,
 ) as any as S.Schema<ListMaintenanceResponseBodyList>;
 
 export type ListMaintenanceResponse = ListMaintenanceResponseBodyList;
-export const ListMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
   ListMaintenanceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListMaintenanceResponse" }) as any as S.Schema<ListMaintenanceResponse>;
 
 export type ListNotificationOverridesRequestOwnerIdList = Array<string>;
-export const ListNotificationOverridesRequestOwnerIdList =
+const ListNotificationOverridesRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListNotificationOverridesRequestOwnerIdList>;
 
 export type ListNotificationOverridesRequestServiceIdList = Array<string>;
-export const ListNotificationOverridesRequestServiceIdList =
+const ListNotificationOverridesRequestServiceIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListNotificationOverridesRequestServiceIdList>;
 
 export interface ListNotificationOverridesRequest {
@@ -8588,7 +7319,7 @@ export interface ListNotificationOverridesRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListNotificationOverridesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationOverridesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.optional(ListNotificationOverridesRequestOwnerIdList.pipe(T.Query())),
     serviceId: S.optional(ListNotificationOverridesRequestServiceIdList.pipe(T.Query())),
@@ -8604,14 +7335,14 @@ export interface NotificationOverrideWithCursorOverride {
   previewNotificationsEnabled: PreviewNotificationsEnabled;
   notificationsToSend: NotificationsToSend2;
 }
-export const NotificationOverrideWithCursorOverride =
+const NotificationOverrideWithCursorOverride =
   GetServiceNotificationOverridesResponse as any as S.Schema<NotificationOverrideWithCursorOverride>;
 
 export interface NotificationOverrideWithCursor {
   override: NotificationOverrideWithCursorOverride;
   cursor: string;
 }
-export const NotificationOverrideWithCursor = /*@__PURE__*/ S.suspend(() =>
+const NotificationOverrideWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     override: NotificationOverrideWithCursorOverride,
     cursor: S.String,
@@ -8621,19 +7352,19 @@ export const NotificationOverrideWithCursor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationOverrideWithCursor>;
 
 export type ListNotificationOverridesResponseBodyList = Array<NotificationOverrideWithCursor>;
-export const ListNotificationOverridesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListNotificationOverridesResponseBodyList = /*@__PURE__*/ S.Array(
   NotificationOverrideWithCursor,
 ) as any as S.Schema<ListNotificationOverridesResponseBodyList>;
 
 export type ListNotificationOverridesResponse = ListNotificationOverridesResponseBodyList;
-export const ListNotificationOverridesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationOverridesResponse = /*@__PURE__*/ S.suspend(() =>
   ListNotificationOverridesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListNotificationOverridesResponse",
 }) as any as S.Schema<ListNotificationOverridesResponse>;
 
 export type ListOrganizationAuditLogsRequestDirection = "forward" | "backward";
-export const ListOrganizationAuditLogsRequestDirection = S.String;
+const ListOrganizationAuditLogsRequestDirection = S.String;
 
 export interface ListOrganizationAuditLogsRequest {
   /** The unique identifier of the organization */
@@ -8649,7 +7380,7 @@ export interface ListOrganizationAuditLogsRequest {
   /** The maximum number of audit log items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListOrganizationAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgId: S.String.pipe(T.Label()),
     startTime: S.optional(S.String.pipe(T.Query())),
@@ -8744,15 +7475,15 @@ export type AuditLogEvent =
   | "ViewEnvVarValuesEvent"
   | "GrantOAuthAccessEvent"
   | "RevokeOAuthAccessEvent";
-export const AuditLogEvent = S.String;
+const AuditLogEvent = S.String;
 
 /** The status of the event */
 export type AuditLogStatus = "success" | "error";
-export const AuditLogStatus = S.String;
+const AuditLogStatus = S.String;
 
 /** The type of actor that performed the action */
 export type AuditLogActorType = "user" | "rest_api" | "system";
-export const AuditLogActorType = S.String;
+const AuditLogActorType = S.String;
 
 export interface AuditLogActor {
   /** The type of actor that performed the action */
@@ -8762,7 +7493,7 @@ export interface AuditLogActor {
   /** Unique identifier of the actor (if applicable) */
   id?: string;
 }
-export const AuditLogActor = /*@__PURE__*/ S.suspend(() =>
+const AuditLogActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AuditLogActorType,
     email: S.optional(S.String),
@@ -8772,7 +7503,7 @@ export const AuditLogActor = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional context information about the event */
 export type AuditLogMetadataMap = { [key: string]: string | undefined };
-export const AuditLogMetadataMap = /*@__PURE__*/ S.Record(
+const AuditLogMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AuditLogMetadataMap>;
@@ -8790,7 +7521,7 @@ export interface AuditLog {
   /** Additional context information about the event */
   metadata: AuditLogMetadataMap;
 }
-export const AuditLog = /*@__PURE__*/ S.suspend(() =>
+const AuditLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     timestamp: S.String,
@@ -8805,7 +7536,7 @@ export interface AuditLogWithCursor {
   cursor: string;
   auditLog: AuditLog;
 }
-export const AuditLogWithCursor = /*@__PURE__*/ S.suspend(() =>
+const AuditLogWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.String,
     auditLog: AuditLog,
@@ -8813,19 +7544,19 @@ export const AuditLogWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogWithCursor" }) as any as S.Schema<AuditLogWithCursor>;
 
 export type ListOrganizationAuditLogsResponseBodyList = Array<AuditLogWithCursor>;
-export const ListOrganizationAuditLogsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationAuditLogsResponseBodyList = /*@__PURE__*/ S.Array(
   AuditLogWithCursor,
 ) as any as S.Schema<ListOrganizationAuditLogsResponseBodyList>;
 
 export type ListOrganizationAuditLogsResponse = ListOrganizationAuditLogsResponseBodyList;
-export const ListOrganizationAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationAuditLogsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationAuditLogsResponse",
 }) as any as S.Schema<ListOrganizationAuditLogsResponse>;
 
 export type ListOwnerAuditLogsRequestDirection = "forward" | "backward";
-export const ListOwnerAuditLogsRequestDirection = S.String;
+const ListOwnerAuditLogsRequestDirection = S.String;
 
 export interface ListOwnerAuditLogsRequest {
   /** The ID of the workspace to return resources for */
@@ -8841,7 +7572,7 @@ export interface ListOwnerAuditLogsRequest {
   /** The maximum number of audit log items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListOwnerAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOwnerAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
     startTime: S.optional(S.String.pipe(T.Query())),
@@ -8855,19 +7586,16 @@ export const ListOwnerAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOwnerAuditLogsRequest>;
 
 export type ListOwnerAuditLogsResponseBodyList = Array<AuditLogWithCursor>;
-export const ListOwnerAuditLogsResponseBodyList =
-  ListOrganizationAuditLogsResponseBodyList as any as S.Schema<ListOwnerAuditLogsResponseBodyList>;
-
 export type ListOwnerAuditLogsResponse = ListOwnerAuditLogsResponseBodyList;
-export const ListOwnerAuditLogsResponse =
+const ListOwnerAuditLogsResponse =
   ListOrganizationAuditLogsResponse as any as S.Schema<ListOwnerAuditLogsResponse>;
 
 export type ListOwnersRequestNameList = Array<string>;
-export const ListOwnersRequestNameList =
+const ListOwnersRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListOwnersRequestNameList>;
 
 export type ListOwnersRequestEmailList = Array<string>;
-export const ListOwnersRequestEmailList =
+const ListOwnersRequestEmailList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListOwnersRequestEmailList>;
 
 export interface ListOwnersRequest {
@@ -8880,7 +7608,7 @@ export interface ListOwnersRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListOwnersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOwnersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListOwnersRequestNameList.pipe(T.Query())),
     email: S.optional(ListOwnersRequestEmailList.pipe(T.Query())),
@@ -8893,7 +7621,7 @@ export interface OwnerWithCursor {
   owner?: Owner;
   cursor?: string;
 }
-export const OwnerWithCursor = /*@__PURE__*/ S.suspend(() =>
+const OwnerWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.optional(Owner),
     cursor: S.optional(S.String),
@@ -8901,12 +7629,12 @@ export const OwnerWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OwnerWithCursor" }) as any as S.Schema<OwnerWithCursor>;
 
 export type ListOwnersResponseBodyList = Array<OwnerWithCursor>;
-export const ListOwnersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOwnersResponseBodyList = /*@__PURE__*/ S.Array(
   OwnerWithCursor,
 ) as any as S.Schema<ListOwnersResponseBodyList>;
 
 export type ListOwnersResponse = ListOwnersResponseBodyList;
-export const ListOwnersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOwnersResponse = /*@__PURE__*/ S.suspend(() =>
   ListOwnersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListOwnersResponse" }) as any as S.Schema<ListOwnersResponse>;
 
@@ -8928,7 +7656,7 @@ export interface ListPathFilterValuesRequest {
   /** The paths of HTTP requests to filter to. When multiple path query params are provided, they are ORed together */
   path?: string;
 }
-export const ListPathFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPathFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -8945,39 +7673,37 @@ export const ListPathFilterValuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of suggested paths to filter by */
 export type ListPathFilterValuesResponseBodyList = Array<string>;
-export const ListPathFilterValuesResponseBodyList =
+const ListPathFilterValuesResponseBodyList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListPathFilterValuesResponseBodyList>;
 
 export type ListPathFilterValuesResponse = ListPathFilterValuesResponseBodyList;
-export const ListPathFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPathFilterValuesResponse = /*@__PURE__*/ S.suspend(() =>
   ListPathFilterValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPathFilterValuesResponse",
 }) as any as S.Schema<ListPathFilterValuesResponse>;
 
 export type ListPostgresRequestNameList = Array<string>;
-export const ListPostgresRequestNameList =
+const ListPostgresRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListPostgresRequestNameList>;
 
 export type ListPostgresRequestRegionList = Array<Region | (string & {})>;
-export const ListPostgresRequestRegionList =
+const ListPostgresRequestRegionList =
   ListKeyValueRequestRegionList as any as S.Schema<ListPostgresRequestRegionList>;
 
 export type ListPostgresRequestSuspendedItem = "suspended" | "not_suspended";
-export const ListPostgresRequestSuspendedItem = S.String;
-
 export type ListPostgresRequestSuspendedList = Array<
   ListPostgresRequestSuspendedItem | (string & {})
 >;
-export const ListPostgresRequestSuspendedList =
+const ListPostgresRequestSuspendedList =
   PostgresDetailSuspendersList as any as S.Schema<ListPostgresRequestSuspendedList>;
 
 export type ListPostgresRequestOwnerIdList = Array<string>;
-export const ListPostgresRequestOwnerIdList =
+const ListPostgresRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListPostgresRequestOwnerIdList>;
 
 export type ListPostgresRequestEnvironmentIdList = Array<string>;
-export const ListPostgresRequestEnvironmentIdList =
+const ListPostgresRequestEnvironmentIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListPostgresRequestEnvironmentIdList>;
 
 export interface ListPostgresRequest {
@@ -9006,7 +7732,7 @@ export interface ListPostgresRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListPostgresRequestNameList.pipe(T.Query())),
     region: S.optional(ListPostgresRequestRegionList.pipe(T.Query())),
@@ -9024,14 +7750,14 @@ export const ListPostgresRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPostgresRequest" }) as any as S.Schema<ListPostgresRequest>;
 
 export type PostgresIpAllowListList = Array<CidrBlockAndDescription>;
-export const PostgresIpAllowListList =
+const PostgresIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<PostgresIpAllowListList>;
 
 export type PostgresSuspended = "suspended" | "not_suspended";
-export const PostgresSuspended = S.String;
+const PostgresSuspended = S.String;
 
 export type PostgresSuspendersList = Array<SuspenderType>;
-export const PostgresSuspendersList =
+const PostgresSuspendersList =
   PostgresDetailSuspendersList as any as S.Schema<PostgresSuspendersList>;
 
 export interface Postgres {
@@ -9063,7 +7789,7 @@ export interface Postgres {
   /** What connection pool to use (if any) out of 'pgbouncer' and 'none' */
   connectionPool: string;
 }
-export const Postgres = /*@__PURE__*/ S.suspend(() =>
+const Postgres = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ipAllowList: PostgresIpAllowListList,
@@ -9096,7 +7822,7 @@ export interface PostgresWithCursor {
   postgres: Postgres;
   cursor: string;
 }
-export const PostgresWithCursor = /*@__PURE__*/ S.suspend(() =>
+const PostgresWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgres: Postgres,
     cursor: S.String,
@@ -9104,19 +7830,19 @@ export const PostgresWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostgresWithCursor" }) as any as S.Schema<PostgresWithCursor>;
 
 export type ListPostgresResponseBodyList = Array<PostgresWithCursor>;
-export const ListPostgresResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPostgresResponseBodyList = /*@__PURE__*/ S.Array(
   PostgresWithCursor,
 ) as any as S.Schema<ListPostgresResponseBodyList>;
 
 export type ListPostgresResponse = ListPostgresResponseBodyList;
-export const ListPostgresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresResponse = /*@__PURE__*/ S.suspend(() =>
   ListPostgresResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPostgresResponse" }) as any as S.Schema<ListPostgresResponse>;
 
 export interface ListPostgresExportRequest {
   postgresId: string;
 }
-export const ListPostgresExportRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/export", code: 200 })),
@@ -9130,7 +7856,7 @@ export interface ListPostgresExportResponseBodyItem {
   /** URL to download the Postgres export */
   url?: string;
 }
-export const ListPostgresExportResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresExportResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -9141,12 +7867,12 @@ export const ListPostgresExportResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPostgresExportResponseBodyItem>;
 
 export type ListPostgresExportResponseBodyList = Array<ListPostgresExportResponseBodyItem>;
-export const ListPostgresExportResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPostgresExportResponseBodyList = /*@__PURE__*/ S.Array(
   ListPostgresExportResponseBodyItem,
 ) as any as S.Schema<ListPostgresExportResponseBodyList>;
 
 export type ListPostgresExportResponse = ListPostgresExportResponseBodyList;
-export const ListPostgresExportResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresExportResponse = /*@__PURE__*/ S.suspend(() =>
   ListPostgresExportResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPostgresExportResponse",
@@ -9155,7 +7881,7 @@ export const ListPostgresExportResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPostgresProcessesRequest {
   postgresId: string;
 }
-export const ListPostgresProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresProcessesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/query/processes", code: 200 })),
@@ -9181,7 +7907,7 @@ export interface ListPostgresProcessesResponseProcessesItem {
   /** Whether this process is running against the primary instance of a highly available database. */
   isLeader?: boolean;
 }
-export const ListPostgresProcessesResponseProcessesItem = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresProcessesResponseProcessesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pid: S.optional(S.Number),
     databaseName: S.optional(S.String),
@@ -9203,14 +7929,14 @@ export const ListPostgresProcessesResponseProcessesItem = /*@__PURE__*/ S.suspen
 
 export type ListPostgresProcessesResponseProcessesList =
   Array<ListPostgresProcessesResponseProcessesItem>;
-export const ListPostgresProcessesResponseProcessesList = /*@__PURE__*/ S.Array(
+const ListPostgresProcessesResponseProcessesList = /*@__PURE__*/ S.Array(
   ListPostgresProcessesResponseProcessesItem,
 ) as any as S.Schema<ListPostgresProcessesResponseProcessesList>;
 
 export interface ListPostgresProcessesResponse {
   processes: ListPostgresProcessesResponseProcessesList;
 }
-export const ListPostgresProcessesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresProcessesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processes: ListPostgresProcessesResponseProcessesList,
   }),
@@ -9221,7 +7947,7 @@ export const ListPostgresProcessesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPostgresSizesRequest {
   postgresId: string;
 }
-export const ListPostgresSizesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresSizesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/query/sizes", code: 200 })),
@@ -9235,7 +7961,7 @@ export interface ListPostgresSizesResponseSizesItem {
   Index?: string;
   Bytes?: number;
 }
-export const ListPostgresSizesResponseSizesItem = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresSizesResponseSizesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Database: S.optional(S.String),
     Schema: S.optional(S.String),
@@ -9248,14 +7974,14 @@ export const ListPostgresSizesResponseSizesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPostgresSizesResponseSizesItem>;
 
 export type ListPostgresSizesResponseSizesList = Array<ListPostgresSizesResponseSizesItem>;
-export const ListPostgresSizesResponseSizesList = /*@__PURE__*/ S.Array(
+const ListPostgresSizesResponseSizesList = /*@__PURE__*/ S.Array(
   ListPostgresSizesResponseSizesItem,
 ) as any as S.Schema<ListPostgresSizesResponseSizesList>;
 
 export interface ListPostgresSizesResponse {
   sizes: ListPostgresSizesResponseSizesList;
 }
-export const ListPostgresSizesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresSizesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizes: ListPostgresSizesResponseSizesList,
   }),
@@ -9266,7 +7992,7 @@ export const ListPostgresSizesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPostgresTableScansRequest {
   postgresId: string;
 }
-export const ListPostgresTableScansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresTableScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/query/table-scans", code: 200 })),
@@ -9281,7 +8007,7 @@ export interface ListPostgresTableScansResponseTableScansItem {
   Table?: string;
   Scans?: number;
 }
-export const ListPostgresTableScansResponseTableScansItem = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresTableScansResponseTableScansItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Database: S.optional(S.String),
     Schema: S.optional(S.String),
@@ -9294,14 +8020,14 @@ export const ListPostgresTableScansResponseTableScansItem = /*@__PURE__*/ S.susp
 
 export type ListPostgresTableScansResponseTableScansList =
   Array<ListPostgresTableScansResponseTableScansItem>;
-export const ListPostgresTableScansResponseTableScansList = /*@__PURE__*/ S.Array(
+const ListPostgresTableScansResponseTableScansList = /*@__PURE__*/ S.Array(
   ListPostgresTableScansResponseTableScansItem,
 ) as any as S.Schema<ListPostgresTableScansResponseTableScansList>;
 
 export interface ListPostgresTableScansResponse {
   tableScans: ListPostgresTableScansResponseTableScansList;
 }
-export const ListPostgresTableScansResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresTableScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableScans: ListPostgresTableScansResponseTableScansList,
   }),
@@ -9312,7 +8038,7 @@ export const ListPostgresTableScansResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPostgresTopQueriesRequest {
   postgresId: string;
 }
-export const ListPostgresTopQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresTopQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/query/top-queries", code: 200 })),
@@ -9342,7 +8068,7 @@ export interface ListPostgresTopQueriesResponseTopQueriesItem {
   tempBlocksRead?: number;
   tempBlocksWritten?: number;
 }
-export const ListPostgresTopQueriesResponseTopQueriesItem = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresTopQueriesResponseTopQueriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryId: S.optional(S.String),
     query: S.optional(S.String),
@@ -9370,14 +8096,14 @@ export const ListPostgresTopQueriesResponseTopQueriesItem = /*@__PURE__*/ S.susp
 
 export type ListPostgresTopQueriesResponseTopQueriesList =
   Array<ListPostgresTopQueriesResponseTopQueriesItem>;
-export const ListPostgresTopQueriesResponseTopQueriesList = /*@__PURE__*/ S.Array(
+const ListPostgresTopQueriesResponseTopQueriesList = /*@__PURE__*/ S.Array(
   ListPostgresTopQueriesResponseTopQueriesItem,
 ) as any as S.Schema<ListPostgresTopQueriesResponseTopQueriesList>;
 
 export interface ListPostgresTopQueriesResponse {
   topQueries: ListPostgresTopQueriesResponseTopQueriesList;
 }
-export const ListPostgresTopQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresTopQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topQueries: ListPostgresTopQueriesResponseTopQueriesList,
   }),
@@ -9388,7 +8114,7 @@ export const ListPostgresTopQueriesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPostgresUsersRequest {
   postgresId: string;
 }
-export const ListPostgresUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/postgres/{postgresId}/credentials", code: 200 })),
@@ -9400,7 +8126,7 @@ export interface ListPostgresUsersResponseBodyItem {
   createdAt?: string;
   openConnections?: number;
 }
-export const ListPostgresUsersResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresUsersResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     default: S.optional(S.Boolean),
@@ -9412,23 +8138,23 @@ export const ListPostgresUsersResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPostgresUsersResponseBodyItem>;
 
 export type ListPostgresUsersResponseBodyList = Array<ListPostgresUsersResponseBodyItem>;
-export const ListPostgresUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPostgresUsersResponseBodyList = /*@__PURE__*/ S.Array(
   ListPostgresUsersResponseBodyItem,
 ) as any as S.Schema<ListPostgresUsersResponseBodyList>;
 
 export type ListPostgresUsersResponse = ListPostgresUsersResponseBodyList;
-export const ListPostgresUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPostgresUsersResponse = /*@__PURE__*/ S.suspend(() =>
   ListPostgresUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListPostgresUsersResponse",
 }) as any as S.Schema<ListPostgresUsersResponse>;
 
 export type ListProjectsRequestNameList = Array<string>;
-export const ListProjectsRequestNameList =
+const ListProjectsRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListProjectsRequestNameList>;
 
 export type ListProjectsRequestOwnerIdList = Array<string>;
-export const ListProjectsRequestOwnerIdList =
+const ListProjectsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListProjectsRequestOwnerIdList>;
 
 export interface ListProjectsRequest {
@@ -9449,7 +8175,7 @@ export interface ListProjectsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListProjectsRequestNameList.pipe(T.Query())),
     createdBefore: S.optional(S.String.pipe(T.Query())),
@@ -9466,7 +8192,7 @@ export interface ProjectWithCursor {
   project: Project;
   cursor: string;
 }
-export const ProjectWithCursor = /*@__PURE__*/ S.suspend(() =>
+const ProjectWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: Project,
     cursor: S.String,
@@ -9474,31 +8200,31 @@ export const ProjectWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectWithCursor" }) as any as S.Schema<ProjectWithCursor>;
 
 export type ListProjectsResponseBodyList = Array<ProjectWithCursor>;
-export const ListProjectsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListProjectsResponseBodyList = /*@__PURE__*/ S.Array(
   ProjectWithCursor,
 ) as any as S.Schema<ListProjectsResponseBodyList>;
 
 export type ListProjectsResponse = ListProjectsResponseBodyList;
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   ListProjectsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListProjectsResponse" }) as any as S.Schema<ListProjectsResponse>;
 
 export type ListRegistryCredentialsRequestNameList = Array<string>;
-export const ListRegistryCredentialsRequestNameList =
+const ListRegistryCredentialsRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRegistryCredentialsRequestNameList>;
 
 export type ListRegistryCredentialsRequestUsernameList = Array<string>;
-export const ListRegistryCredentialsRequestUsernameList =
+const ListRegistryCredentialsRequestUsernameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRegistryCredentialsRequestUsernameList>;
 
 export type ListRegistryCredentialsRequestTypeList = Array<
   RegistryCredentialRegistry | (string & {})
 >;
-export const ListRegistryCredentialsRequestTypeList =
+const ListRegistryCredentialsRequestTypeList =
   PostgresDetailSuspendersList as any as S.Schema<ListRegistryCredentialsRequestTypeList>;
 
 export type ListRegistryCredentialsRequestOwnerIdList = Array<string>;
-export const ListRegistryCredentialsRequestOwnerIdList =
+const ListRegistryCredentialsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRegistryCredentialsRequestOwnerIdList>;
 
 export interface ListRegistryCredentialsRequest {
@@ -9523,7 +8249,7 @@ export interface ListRegistryCredentialsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListRegistryCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegistryCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListRegistryCredentialsRequestNameList.pipe(T.Query())),
     username: S.optional(ListRegistryCredentialsRequestUsernameList.pipe(T.Query())),
@@ -9541,37 +8267,35 @@ export const ListRegistryCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRegistryCredentialsRequest>;
 
 export type ListRegistryCredentialsResponseBodyList = Array<RegistryCredential>;
-export const ListRegistryCredentialsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListRegistryCredentialsResponseBodyList = /*@__PURE__*/ S.Array(
   RegistryCredential,
 ) as any as S.Schema<ListRegistryCredentialsResponseBodyList>;
 
 export type ListRegistryCredentialsResponse = ListRegistryCredentialsResponseBodyList;
-export const ListRegistryCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegistryCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   ListRegistryCredentialsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListRegistryCredentialsResponse",
 }) as any as S.Schema<ListRegistryCredentialsResponse>;
 
 export type ListResourceLogStreamsRequestOwnerIdList = Array<string>;
-export const ListResourceLogStreamsRequestOwnerIdList =
+const ListResourceLogStreamsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListResourceLogStreamsRequestOwnerIdList>;
 
 export type ListResourceLogStreamsRequestLogStreamIdList = Array<string>;
-export const ListResourceLogStreamsRequestLogStreamIdList =
+const ListResourceLogStreamsRequestLogStreamIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListResourceLogStreamsRequestLogStreamIdList>;
 
 export type ListResourceLogStreamsRequestResourceIdList = Array<string>;
-export const ListResourceLogStreamsRequestResourceIdList =
+const ListResourceLogStreamsRequestResourceIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListResourceLogStreamsRequestResourceIdList>;
 
 /** Whether to send logs or drop them. */
 export type ListResourceLogStreamsRequestSettingItem = "send" | "drop";
-export const ListResourceLogStreamsRequestSettingItem = S.String;
-
 export type ListResourceLogStreamsRequestSettingList = Array<
   ListResourceLogStreamsRequestSettingItem | (string & {})
 >;
-export const ListResourceLogStreamsRequestSettingList =
+const ListResourceLogStreamsRequestSettingList =
   PostgresDetailSuspendersList as any as S.Schema<ListResourceLogStreamsRequestSettingList>;
 
 export interface ListResourceLogStreamsRequest {
@@ -9588,7 +8312,7 @@ export interface ListResourceLogStreamsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListResourceLogStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceLogStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.optional(ListResourceLogStreamsRequestOwnerIdList.pipe(T.Query())),
     logStreamId: S.optional(ListResourceLogStreamsRequestLogStreamIdList.pipe(T.Query())),
@@ -9609,7 +8333,7 @@ export interface Schema9 {
   endpoint?: string;
   setting?: Items3;
 }
-export const Schema9 = /*@__PURE__*/ S.suspend(() =>
+const Schema9 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     endpoint: S.optional(S.String),
@@ -9618,30 +8342,28 @@ export const Schema9 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema9" }) as any as S.Schema<Schema9>;
 
 export type ListResourceLogStreamsResponseBodyList = Array<Schema9>;
-export const ListResourceLogStreamsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListResourceLogStreamsResponseBodyList = /*@__PURE__*/ S.Array(
   Schema9,
 ) as any as S.Schema<ListResourceLogStreamsResponseBodyList>;
 
 export type ListResourceLogStreamsResponse = ListResourceLogStreamsResponseBodyList;
-export const ListResourceLogStreamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourceLogStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   ListResourceLogStreamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListResourceLogStreamsResponse",
 }) as any as S.Schema<ListResourceLogStreamsResponse>;
 
 export type ListRoutesRequestTypeItem = "redirect" | "rewrite";
-export const ListRoutesRequestTypeItem = S.String;
-
 export type ListRoutesRequestTypeList = Array<ListRoutesRequestTypeItem | (string & {})>;
-export const ListRoutesRequestTypeList =
+const ListRoutesRequestTypeList =
   PostgresDetailSuspendersList as any as S.Schema<ListRoutesRequestTypeList>;
 
 export type ListRoutesRequestSourceList = Array<string>;
-export const ListRoutesRequestSourceList =
+const ListRoutesRequestSourceList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRoutesRequestSourceList>;
 
 export type ListRoutesRequestDestinationList = Array<string>;
-export const ListRoutesRequestDestinationList =
+const ListRoutesRequestDestinationList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListRoutesRequestDestinationList>;
 
 export interface ListRoutesRequest {
@@ -9658,7 +8380,7 @@ export interface ListRoutesRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     type: S.optional(ListRoutesRequestTypeList.pipe(T.Query())),
@@ -9673,7 +8395,7 @@ export interface RouteWithCursor {
   route: Route;
   cursor: string;
 }
-export const RouteWithCursor = /*@__PURE__*/ S.suspend(() =>
+const RouteWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     route: Route,
     cursor: S.String,
@@ -9681,12 +8403,12 @@ export const RouteWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteWithCursor" }) as any as S.Schema<RouteWithCursor>;
 
 export type ListRoutesResponseBodyList = Array<RouteWithCursor>;
-export const ListRoutesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListRoutesResponseBodyList = /*@__PURE__*/ S.Array(
   RouteWithCursor,
 ) as any as S.Schema<ListRoutesResponseBodyList>;
 
 export type ListRoutesResponse = ListRoutesResponseBodyList;
-export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   ListRoutesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListRoutesResponse" }) as any as S.Schema<ListRoutesResponse>;
 
@@ -9697,7 +8419,7 @@ export interface ListSecretFilesForBuildSourceRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListSecretFilesForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretFilesForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -9711,7 +8433,7 @@ export interface SecretFileWithCursor {
   secretFile: SecretFile;
   cursor: string;
 }
-export const SecretFileWithCursor = /*@__PURE__*/ S.suspend(() =>
+const SecretFileWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretFile: SecretFile,
     cursor: S.String,
@@ -9719,12 +8441,12 @@ export const SecretFileWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretFileWithCursor" }) as any as S.Schema<SecretFileWithCursor>;
 
 export type ListSecretFilesForBuildSourceResponseBodyList = Array<SecretFileWithCursor>;
-export const ListSecretFilesForBuildSourceResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSecretFilesForBuildSourceResponseBodyList = /*@__PURE__*/ S.Array(
   SecretFileWithCursor,
 ) as any as S.Schema<ListSecretFilesForBuildSourceResponseBodyList>;
 
 export type ListSecretFilesForBuildSourceResponse = ListSecretFilesForBuildSourceResponseBodyList;
-export const ListSecretFilesForBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretFilesForBuildSourceResponse = /*@__PURE__*/ S.suspend(() =>
   ListSecretFilesForBuildSourceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSecretFilesForBuildSourceResponse",
@@ -9738,7 +8460,7 @@ export interface ListSecretFilesForServiceRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListSecretFilesForServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretFilesForServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -9749,44 +8471,39 @@ export const ListSecretFilesForServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSecretFilesForServiceRequest>;
 
 export type ListSecretFilesForServiceResponseBodyList = Array<SecretFileWithCursor>;
-export const ListSecretFilesForServiceResponseBodyList =
-  ListSecretFilesForBuildSourceResponseBodyList as any as S.Schema<ListSecretFilesForServiceResponseBodyList>;
-
 export type ListSecretFilesForServiceResponse = ListSecretFilesForServiceResponseBodyList;
-export const ListSecretFilesForServiceResponse =
+const ListSecretFilesForServiceResponse =
   ListSecretFilesForBuildSourceResponse as any as S.Schema<ListSecretFilesForServiceResponse>;
 
 export type ListServicesRequestNameList = Array<string>;
-export const ListServicesRequestNameList =
+const ListServicesRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListServicesRequestNameList>;
 
 export type ListServicesRequestTypeList = Array<ServiceType | (string & {})>;
-export const ListServicesRequestTypeList =
+const ListServicesRequestTypeList =
   PostgresDetailSuspendersList as any as S.Schema<ListServicesRequestTypeList>;
 
 export type ListServicesRequestEnvironmentIdList = Array<string>;
-export const ListServicesRequestEnvironmentIdList =
+const ListServicesRequestEnvironmentIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListServicesRequestEnvironmentIdList>;
 
 export type ListServicesRequestEnvList = Array<ServiceRuntime | (string & {})>;
-export const ListServicesRequestEnvList =
+const ListServicesRequestEnvList =
   PostgresDetailSuspendersList as any as S.Schema<ListServicesRequestEnvList>;
 
 export type ListServicesRequestRegionList = Array<Region | (string & {})>;
-export const ListServicesRequestRegionList =
+const ListServicesRequestRegionList =
   ListKeyValueRequestRegionList as any as S.Schema<ListServicesRequestRegionList>;
 
 export type ListServicesRequestSuspendedItem = "suspended" | "not_suspended";
-export const ListServicesRequestSuspendedItem = S.String;
-
 export type ListServicesRequestSuspendedList = Array<
   ListServicesRequestSuspendedItem | (string & {})
 >;
-export const ListServicesRequestSuspendedList =
+const ListServicesRequestSuspendedList =
   PostgresDetailSuspendersList as any as S.Schema<ListServicesRequestSuspendedList>;
 
 export type ListServicesRequestOwnerIdList = Array<string>;
-export const ListServicesRequestOwnerIdList =
+const ListServicesRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListServicesRequestOwnerIdList>;
 
 export interface ListServicesRequest {
@@ -9819,7 +8536,7 @@ export interface ListServicesRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListServicesRequestNameList.pipe(T.Query())),
     type: S.optional(ListServicesRequestTypeList.pipe(T.Query())),
@@ -9842,7 +8559,7 @@ export interface ServiceWithCursor {
   service: Service;
   cursor: string;
 }
-export const ServiceWithCursor = /*@__PURE__*/ S.suspend(() =>
+const ServiceWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: Service,
     cursor: S.String,
@@ -9850,10 +8567,10 @@ export const ServiceWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceWithCursor" }) as any as S.Schema<ServiceWithCursor>;
 
 export type ServiceList = Array<ServiceWithCursor>;
-export const ServiceList = /*@__PURE__*/ S.Array(ServiceWithCursor) as any as S.Schema<ServiceList>;
+const ServiceList = /*@__PURE__*/ S.Array(ServiceWithCursor) as any as S.Schema<ServiceList>;
 
 export type ListServicesResponse = ServiceList;
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   ServiceList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
 
@@ -9861,7 +8578,7 @@ export interface ListSnapshotsRequest {
   /** The ID of the disk */
   diskId: string;
 }
-export const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/disks/{diskId}/snapshots", code: 200 })),
@@ -9872,7 +8589,7 @@ export interface DiskSnapshot {
   snapshotKey?: string;
   instanceId?: string;
 }
-export const DiskSnapshot = /*@__PURE__*/ S.suspend(() =>
+const DiskSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     snapshotKey: S.optional(S.String),
@@ -9881,33 +8598,33 @@ export const DiskSnapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskSnapshot" }) as any as S.Schema<DiskSnapshot>;
 
 export type ListSnapshotsResponseBodyList = Array<DiskSnapshot>;
-export const ListSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(
   DiskSnapshot,
 ) as any as S.Schema<ListSnapshotsResponseBodyList>;
 
 export type ListSnapshotsResponse = ListSnapshotsResponseBodyList;
-export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSnapshotsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSnapshotsResponse" }) as any as S.Schema<ListSnapshotsResponse>;
 
 export type ListTaskRunsRequestTaskSlugList = Array<string>;
-export const ListTaskRunsRequestTaskSlugList =
+const ListTaskRunsRequestTaskSlugList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestTaskSlugList>;
 
 export type ListTaskRunsRequestRootTaskRunIdList = Array<string>;
-export const ListTaskRunsRequestRootTaskRunIdList =
+const ListTaskRunsRequestRootTaskRunIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestRootTaskRunIdList>;
 
 export type ListTaskRunsRequestOwnerIdList = Array<string>;
-export const ListTaskRunsRequestOwnerIdList =
+const ListTaskRunsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestOwnerIdList>;
 
 export type ListTaskRunsRequestWorkflowVersionIdList = Array<string>;
-export const ListTaskRunsRequestWorkflowVersionIdList =
+const ListTaskRunsRequestWorkflowVersionIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestWorkflowVersionIdList>;
 
 export type ListTaskRunsRequestWorkflowIdList = Array<string>;
-export const ListTaskRunsRequestWorkflowIdList =
+const ListTaskRunsRequestWorkflowIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTaskRunsRequestWorkflowIdList>;
 
 export interface ListTaskRunsRequest {
@@ -9926,7 +8643,7 @@ export interface ListTaskRunsRequest {
   /** An array of workflow IDs */
   workflowId?: ListTaskRunsRequestWorkflowIdList;
 }
-export const ListTaskRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaskRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -9939,12 +8656,7 @@ export const ListTaskRunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTaskRunsRequest" }) as any as S.Schema<ListTaskRunsRequest>;
 
 export type SchemaAttemptsItem = CreateTaskResponseAttemptsItem;
-export const SchemaAttemptsItem = CreateTaskResponseAttemptsItem;
-
 export type SchemaAttemptsList = Array<CreateTaskResponseAttemptsItem>;
-export const SchemaAttemptsList =
-  CreateTaskResponseAttemptsList as any as S.Schema<SchemaAttemptsList>;
-
 export interface Schema18 {
   id: string;
   taskId: string;
@@ -9958,13 +8670,13 @@ export interface Schema18 {
   retries: number;
   attempts: SchemaAttemptsList;
 }
-export const Schema18 = CreateTaskResponse as any as S.Schema<Schema18>;
+const Schema18 = CreateTaskResponse as any as S.Schema<Schema18>;
 
 export interface TaskRunWithCursor {
   taskRun: Schema18;
   cursor: string;
 }
-export const TaskRunWithCursor = /*@__PURE__*/ S.suspend(() =>
+const TaskRunWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskRun: Schema18,
     cursor: S.String,
@@ -9972,29 +8684,29 @@ export const TaskRunWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskRunWithCursor" }) as any as S.Schema<TaskRunWithCursor>;
 
 export type ListTaskRunsResponseBodyList = Array<TaskRunWithCursor>;
-export const ListTaskRunsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTaskRunsResponseBodyList = /*@__PURE__*/ S.Array(
   TaskRunWithCursor,
 ) as any as S.Schema<ListTaskRunsResponseBodyList>;
 
 export type ListTaskRunsResponse = ListTaskRunsResponseBodyList;
-export const ListTaskRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTaskRunsResponse = /*@__PURE__*/ S.suspend(() =>
   ListTaskRunsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListTaskRunsResponse" }) as any as S.Schema<ListTaskRunsResponse>;
 
 export type ListTasksRequestOwnerIdList = Array<string>;
-export const ListTasksRequestOwnerIdList =
+const ListTasksRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTasksRequestOwnerIdList>;
 
 export type ListTasksRequestTaskSlugList = Array<string>;
-export const ListTasksRequestTaskSlugList =
+const ListTasksRequestTaskSlugList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTasksRequestTaskSlugList>;
 
 export type ListTasksRequestWorkflowVersionIdList = Array<string>;
-export const ListTasksRequestWorkflowVersionIdList =
+const ListTasksRequestWorkflowVersionIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTasksRequestWorkflowVersionIdList>;
 
 export type ListTasksRequestWorkflowIdList = Array<string>;
-export const ListTasksRequestWorkflowIdList =
+const ListTasksRequestWorkflowIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListTasksRequestWorkflowIdList>;
 
 export interface ListTasksRequest {
@@ -10011,7 +8723,7 @@ export interface ListTasksRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.optional(ListTasksRequestOwnerIdList.pipe(T.Query())),
     taskSlug: S.optional(ListTasksRequestTaskSlugList.pipe(T.Query())),
@@ -10029,13 +8741,13 @@ export interface Schema17 {
   workflowId?: string;
   workflowVersionId?: string;
 }
-export const Schema17 = GetTaskResponse as any as S.Schema<Schema17>;
+const Schema17 = GetTaskResponse as any as S.Schema<Schema17>;
 
 export interface TaskWithCursor {
   task: Schema17;
   cursor: string;
 }
-export const TaskWithCursor = /*@__PURE__*/ S.suspend(() =>
+const TaskWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task: Schema17,
     cursor: S.String,
@@ -10043,12 +8755,12 @@ export const TaskWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskWithCursor" }) as any as S.Schema<TaskWithCursor>;
 
 export type ListTasksResponseBodyList = Array<TaskWithCursor>;
-export const ListTasksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTasksResponseBodyList = /*@__PURE__*/ S.Array(
   TaskWithCursor,
 ) as any as S.Schema<ListTasksResponseBodyList>;
 
 export type ListTasksResponse = ListTasksResponseBodyList;
-export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   ListTasksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListTasksResponse" }) as any as S.Schema<ListTasksResponse>;
 
@@ -10064,7 +8776,7 @@ export interface ListWebhookEventsRequest {
   /** The position in the result list to start from when fetching paginated results. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   cursor?: string;
 }
-export const ListWebhookEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
     sentBefore: S.optional(S.String.pipe(T.Query())),
@@ -10086,7 +8798,7 @@ export interface WebhookEventWithCursorWebhookEvent {
   /** error is populated when an error occurs without a response such as a timeout */
   error?: string;
 }
-export const WebhookEventWithCursorWebhookEvent = /*@__PURE__*/ S.suspend(() =>
+const WebhookEventWithCursorWebhookEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     eventId: S.String,
@@ -10104,7 +8816,7 @@ export interface WebhookEventWithCursor {
   webhookEvent: WebhookEventWithCursorWebhookEvent;
   cursor: string;
 }
-export const WebhookEventWithCursor = /*@__PURE__*/ S.suspend(() =>
+const WebhookEventWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookEvent: WebhookEventWithCursorWebhookEvent,
     cursor: S.String,
@@ -10112,19 +8824,19 @@ export const WebhookEventWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookEventWithCursor" }) as any as S.Schema<WebhookEventWithCursor>;
 
 export type ListWebhookEventsResponseBodyList = Array<WebhookEventWithCursor>;
-export const ListWebhookEventsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWebhookEventsResponseBodyList = /*@__PURE__*/ S.Array(
   WebhookEventWithCursor,
 ) as any as S.Schema<ListWebhookEventsResponseBodyList>;
 
 export type ListWebhookEventsResponse = ListWebhookEventsResponseBodyList;
-export const ListWebhookEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookEventsResponse = /*@__PURE__*/ S.suspend(() =>
   ListWebhookEventsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWebhookEventsResponse",
 }) as any as S.Schema<ListWebhookEventsResponse>;
 
 export type ListWebhooksRequestOwnerIdList = Array<string>;
-export const ListWebhooksRequestOwnerIdList =
+const ListWebhooksRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWebhooksRequestOwnerIdList>;
 
 export interface ListWebhooksRequest {
@@ -10135,7 +8847,7 @@ export interface ListWebhooksRequest {
   /** The ID of the workspaces to return resources for */
   ownerId?: ListWebhooksRequestOwnerIdList;
 }
-export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -10147,7 +8859,7 @@ export interface WebhookWithCursor {
   webhook: Schema14;
   cursor: string;
 }
-export const WebhookWithCursor = /*@__PURE__*/ S.suspend(() =>
+const WebhookWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook: Schema14,
     cursor: S.String,
@@ -10155,29 +8867,29 @@ export const WebhookWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookWithCursor" }) as any as S.Schema<WebhookWithCursor>;
 
 export type ListWebhooksResponseBodyList = Array<WebhookWithCursor>;
-export const ListWebhooksResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWebhooksResponseBodyList = /*@__PURE__*/ S.Array(
   WebhookWithCursor,
 ) as any as S.Schema<ListWebhooksResponseBodyList>;
 
 export type ListWebhooksResponse = ListWebhooksResponseBodyList;
-export const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   ListWebhooksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListWebhooksResponse" }) as any as S.Schema<ListWebhooksResponse>;
 
 export type ListWorkflowsRequestNameList = Array<string>;
-export const ListWorkflowsRequestNameList =
+const ListWorkflowsRequestNameList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowsRequestNameList>;
 
 export type ListWorkflowsRequestOwnerIdList = Array<string>;
-export const ListWorkflowsRequestOwnerIdList =
+const ListWorkflowsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowsRequestOwnerIdList>;
 
 export type ListWorkflowsRequestWorkflowIDList = Array<string>;
-export const ListWorkflowsRequestWorkflowIDList =
+const ListWorkflowsRequestWorkflowIDList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowsRequestWorkflowIDList>;
 
 export type ListWorkflowsRequestEnvironmentIdList = Array<string>;
-export const ListWorkflowsRequestEnvironmentIdList =
+const ListWorkflowsRequestEnvironmentIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowsRequestEnvironmentIdList>;
 
 export interface ListWorkflowsRequest {
@@ -10194,7 +8906,7 @@ export interface ListWorkflowsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ListWorkflowsRequestNameList.pipe(T.Query())),
     ownerId: S.optional(ListWorkflowsRequestOwnerIdList.pipe(T.Query())),
@@ -10209,7 +8921,7 @@ export interface WorkflowWithCursor {
   workflow: Schema15;
   cursor: string;
 }
-export const WorkflowWithCursor = /*@__PURE__*/ S.suspend(() =>
+const WorkflowWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflow: Schema15,
     cursor: S.String,
@@ -10217,25 +8929,25 @@ export const WorkflowWithCursor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowWithCursor" }) as any as S.Schema<WorkflowWithCursor>;
 
 export type ListWorkflowsResponseBodyList = Array<WorkflowWithCursor>;
-export const ListWorkflowsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWorkflowsResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowWithCursor,
 ) as any as S.Schema<ListWorkflowsResponseBodyList>;
 
 export type ListWorkflowsResponse = ListWorkflowsResponseBodyList;
-export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   ListWorkflowsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListWorkflowsResponse" }) as any as S.Schema<ListWorkflowsResponse>;
 
 export type ListWorkflowVersionsRequestOwnerIdList = Array<string>;
-export const ListWorkflowVersionsRequestOwnerIdList =
+const ListWorkflowVersionsRequestOwnerIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowVersionsRequestOwnerIdList>;
 
 export type ListWorkflowVersionsRequestWorkflowIDList = Array<string>;
-export const ListWorkflowVersionsRequestWorkflowIDList =
+const ListWorkflowVersionsRequestWorkflowIDList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowVersionsRequestWorkflowIDList>;
 
 export type ListWorkflowVersionsRequestWorkflowVersionIdList = Array<string>;
-export const ListWorkflowVersionsRequestWorkflowVersionIdList =
+const ListWorkflowVersionsRequestWorkflowVersionIdList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ListWorkflowVersionsRequestWorkflowVersionIdList>;
 
 export interface ListWorkflowVersionsRequest {
@@ -10250,7 +8962,7 @@ export interface ListWorkflowVersionsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const ListWorkflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.optional(ListWorkflowVersionsRequestOwnerIdList.pipe(T.Query())),
     workflowID: S.optional(ListWorkflowVersionsRequestWorkflowIDList.pipe(T.Query())),
@@ -10269,7 +8981,7 @@ export type SchemaStatus =
   | "build_failed"
   | "registration_failed"
   | "ready";
-export const SchemaStatus = S.String;
+const SchemaStatus = S.String;
 
 export interface Schema16 {
   id: string;
@@ -10278,7 +8990,7 @@ export interface Schema16 {
   createdAt: string;
   status: SchemaStatus;
 }
-export const Schema16 = /*@__PURE__*/ S.suspend(() =>
+const Schema16 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     workflowId: S.String,
@@ -10292,7 +9004,7 @@ export interface WorkflowVersionWithCursor {
   workflowVersion: Schema16;
   cursor: string;
 }
-export const WorkflowVersionWithCursor = /*@__PURE__*/ S.suspend(() =>
+const WorkflowVersionWithCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowVersion: Schema16,
     cursor: S.String,
@@ -10302,19 +9014,19 @@ export const WorkflowVersionWithCursor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowVersionWithCursor>;
 
 export type ListWorkflowVersionsResponseBodyList = Array<WorkflowVersionWithCursor>;
-export const ListWorkflowVersionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWorkflowVersionsResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowVersionWithCursor,
 ) as any as S.Schema<ListWorkflowVersionsResponseBodyList>;
 
 export type ListWorkflowVersionsResponse = ListWorkflowVersionsResponseBodyList;
-export const ListWorkflowVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListWorkflowVersionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWorkflowVersionsResponse",
 }) as any as S.Schema<ListWorkflowVersionsResponse>;
 
 export type PatchOwnerNotificationSettingsRequestNotificationsToSend = "none" | "failure" | "all";
-export const PatchOwnerNotificationSettingsRequestNotificationsToSend = S.String;
+const PatchOwnerNotificationSettingsRequestNotificationsToSend = S.String;
 
 export interface PatchOwnerNotificationSettingsRequest {
   /** The ID of the workspace to return resources for */
@@ -10323,7 +9035,7 @@ export interface PatchOwnerNotificationSettingsRequest {
   previewNotificationsEnabled?: boolean;
   notificationsToSend?: PatchOwnerNotificationSettingsRequestNotificationsToSend | (string & {});
 }
-export const PatchOwnerNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOwnerNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
     emailEnabled: S.optional(S.Boolean),
@@ -10341,7 +9053,7 @@ export interface Schema3 {
   previewNotificationsEnabled: boolean;
   notificationsToSend: NotificationsToSend;
 }
-export const Schema3 = /*@__PURE__*/ S.suspend(() =>
+const Schema3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     slackEnabled: S.Boolean,
@@ -10359,7 +9071,7 @@ export interface PatchRouteRequest {
   /** Redirect and Rewrite Rules are applied in priority order starting at 0. Moves this route to the specified priority and adjusts other route priorities accordingly. */
   priority: number;
 }
-export const PatchRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     routeId: S.String.pipe(T.Label()),
@@ -10370,7 +9082,7 @@ export const PatchRouteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PatchRouteResponse {
   headers?: Route;
 }
-export const PatchRouteResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(Route),
   }),
@@ -10380,14 +9092,14 @@ export type PatchServiceNotificationOverridesRequestPreviewNotificationsEnabled 
   | "default"
   | "false"
   | "true";
-export const PatchServiceNotificationOverridesRequestPreviewNotificationsEnabled = S.String;
+const PatchServiceNotificationOverridesRequestPreviewNotificationsEnabled = S.String;
 
 export type PatchServiceNotificationOverridesRequestNotificationsToSend =
   | "default"
   | "none"
   | "failure"
   | "all";
-export const PatchServiceNotificationOverridesRequestNotificationsToSend = S.String;
+const PatchServiceNotificationOverridesRequestNotificationsToSend = S.String;
 
 export interface PatchServiceNotificationOverridesRequest {
   /** The ID of the service */
@@ -10397,7 +9109,7 @@ export interface PatchServiceNotificationOverridesRequest {
     | (string & {});
   notificationsToSend?: PatchServiceNotificationOverridesRequestNotificationsToSend | (string & {});
 }
-export const PatchServiceNotificationOverridesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchServiceNotificationOverridesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     previewNotificationsEnabled: S.optional(
@@ -10420,7 +9132,7 @@ export interface Schema4 {
   previewNotificationsEnabled: PreviewNotificationsEnabled;
   notificationsToSend: NotificationsToSend2;
 }
-export const Schema4 = /*@__PURE__*/ S.suspend(() =>
+const Schema4 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String,
     previewNotificationsEnabled: PreviewNotificationsEnabled,
@@ -10434,7 +9146,7 @@ export interface PostJobRequest {
   startCommand: string;
   planId?: string;
 }
-export const PostJobRequest = /*@__PURE__*/ S.suspend(() =>
+const PostJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     startCommand: S.String,
@@ -10452,7 +9164,7 @@ export interface PostJobResponse {
   startedAt?: string;
   finishedAt?: string;
 }
-export const PostJobResponse = Schema7 as any as S.Schema<PostJobResponse>;
+const PostJobResponse = Schema7 as any as S.Schema<PostJobResponse>;
 
 export interface PreviewServiceRequest {
   /** The ID of the service */
@@ -10463,7 +9175,7 @@ export interface PreviewServiceRequest {
   name?: string;
   plan?: Plan | (string & {});
 }
-export const PreviewServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const PreviewServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     imagePath: S.String,
@@ -10476,21 +9188,21 @@ export interface PurgeCacheRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const PurgeCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const PurgeCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/cache/purge", code: 200 })),
 ).annotate({ identifier: "PurgeCacheRequest" }) as any as S.Schema<PurgeCacheRequest>;
 
 export interface PurgeCacheResponse {}
-export const PurgeCacheResponse = CancelCronJobRunResponse as any as S.Schema<PurgeCacheResponse>;
+const PurgeCacheResponse = CancelCronJobRunResponse as any as S.Schema<PurgeCacheResponse>;
 
 export interface RoutePut {
   type: RouteType | (string & {});
   source: string;
   destination: string;
 }
-export const RoutePut = /*@__PURE__*/ S.suspend(() =>
+const RoutePut = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RouteType,
     source: S.String,
@@ -10499,7 +9211,7 @@ export const RoutePut = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutePut" }) as any as S.Schema<RoutePut>;
 
 export type PutRoutesRequestBodyList = Array<RoutePut>;
-export const PutRoutesRequestBodyList = /*@__PURE__*/ S.Array(
+const PutRoutesRequestBodyList = /*@__PURE__*/ S.Array(
   RoutePut,
 ) as any as S.Schema<PutRoutesRequestBodyList>;
 
@@ -10508,7 +9220,7 @@ export interface PutRoutesRequest {
   serviceId: string;
   body: PutRoutesRequestBodyList;
 }
-export const PutRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     body: PutRoutesRequestBodyList.pipe(T.HttpBody()),
@@ -10516,12 +9228,12 @@ export const PutRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutRoutesRequest" }) as any as S.Schema<PutRoutesRequest>;
 
 export type PutRoutesResponseBodyList = Array<Route>;
-export const PutRoutesResponseBodyList = /*@__PURE__*/ S.Array(
+const PutRoutesResponseBodyList = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<PutRoutesResponseBodyList>;
 
 export type PutRoutesResponse = PutRoutesResponseBodyList;
-export const PutRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+const PutRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   PutRoutesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "PutRoutesResponse" }) as any as S.Schema<PutRoutesResponse>;
 
@@ -10540,7 +9252,7 @@ export interface RecoverPostgresRequest {
   /** The environment to create the new database in. Defaults to the environment of the original database. */
   environmentId?: string;
 }
-export const RecoverPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const RecoverPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
     restoreName: S.optional(S.String),
@@ -10558,7 +9270,7 @@ export interface RefreshCustomDomainRequest {
   /** The ID or name of the custom domain */
   customDomainNameOrID: string;
 }
-export const RefreshCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     customDomainNameOrID: S.String.pipe(T.Label()),
@@ -10574,18 +9286,18 @@ export const RefreshCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RefreshCustomDomainRequest>;
 
 export interface RefreshCustomDomainResponse {}
-export const RefreshCustomDomainResponse =
+const RefreshCustomDomainResponse =
   CancelCronJobRunResponse as any as S.Schema<RefreshCustomDomainResponse>;
 
 export type RemoveResourcesFromEnvironmentRequestResourceIdsList = Array<string>;
-export const RemoveResourcesFromEnvironmentRequestResourceIdsList =
+const RemoveResourcesFromEnvironmentRequestResourceIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<RemoveResourcesFromEnvironmentRequestResourceIdsList>;
 
 export interface RemoveResourcesFromEnvironmentRequest {
   environmentId: string;
   resourceIds: RemoveResourcesFromEnvironmentRequestResourceIdsList;
 }
-export const RemoveResourcesFromEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveResourcesFromEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.String.pipe(T.Label()),
     resourceIds: RemoveResourcesFromEnvironmentRequestResourceIdsList.pipe(T.Query()),
@@ -10595,7 +9307,7 @@ export const RemoveResourcesFromEnvironmentRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RemoveResourcesFromEnvironmentRequest>;
 
 export interface RemoveResourcesFromEnvironmentResponse {}
-export const RemoveResourcesFromEnvironmentResponse =
+const RemoveResourcesFromEnvironmentResponse =
   DeleteBuildSourceSecretFileResponse as any as S.Schema<RemoveResourcesFromEnvironmentResponse>;
 
 export interface RemoveWorkspaceMemberRequest {
@@ -10604,7 +9316,7 @@ export interface RemoveWorkspaceMemberRequest {
   /** The ID of the user (Render object ID with a `usr-` prefix). */
   userId: string;
 }
-export const RemoveWorkspaceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveWorkspaceMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -10614,35 +9326,34 @@ export const RemoveWorkspaceMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveWorkspaceMemberRequest>;
 
 export interface RemoveWorkspaceMemberResponse {}
-export const RemoveWorkspaceMemberResponse =
+const RemoveWorkspaceMemberResponse =
   CancelCronJobRunResponse as any as S.Schema<RemoveWorkspaceMemberResponse>;
 
 export interface RestartPostgresRequest {
   postgresId: string;
 }
-export const RestartPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/restart", code: 200 })),
 ).annotate({ identifier: "RestartPostgresRequest" }) as any as S.Schema<RestartPostgresRequest>;
 
 export interface RestartPostgresResponse {}
-export const RestartPostgresResponse =
+const RestartPostgresResponse =
   CancelCronJobRunResponse as any as S.Schema<RestartPostgresResponse>;
 
 export interface RestartServiceRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const RestartServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/restart", code: 200 })),
 ).annotate({ identifier: "RestartServiceRequest" }) as any as S.Schema<RestartServiceRequest>;
 
 export interface RestartServiceResponse {}
-export const RestartServiceResponse =
-  CancelCronJobRunResponse as any as S.Schema<RestartServiceResponse>;
+const RestartServiceResponse = CancelCronJobRunResponse as any as S.Schema<RestartServiceResponse>;
 
 export interface RestoreSnapshotRequest {
   /** The ID of the disk */
@@ -10650,7 +9361,7 @@ export interface RestoreSnapshotRequest {
   snapshotKey: string;
   instanceId?: string;
 }
-export const RestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskId: S.String.pipe(T.Label()),
     snapshotKey: S.String,
@@ -10661,55 +9372,52 @@ export const RestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResumeKeyValueRequest {
   redisId: string;
 }
-export const ResumeKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/key-value/{redisId}/resume", code: 200 })),
 ).annotate({ identifier: "ResumeKeyValueRequest" }) as any as S.Schema<ResumeKeyValueRequest>;
 
 export interface ResumeKeyValueResponse {}
-export const ResumeKeyValueResponse =
-  CancelCronJobRunResponse as any as S.Schema<ResumeKeyValueResponse>;
+const ResumeKeyValueResponse = CancelCronJobRunResponse as any as S.Schema<ResumeKeyValueResponse>;
 
 export interface ResumePostgresRequest {
   postgresId: string;
 }
-export const ResumePostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumePostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/resume", code: 200 })),
 ).annotate({ identifier: "ResumePostgresRequest" }) as any as S.Schema<ResumePostgresRequest>;
 
 export interface ResumePostgresResponse {}
-export const ResumePostgresResponse =
-  CancelCronJobRunResponse as any as S.Schema<ResumePostgresResponse>;
+const ResumePostgresResponse = CancelCronJobRunResponse as any as S.Schema<ResumePostgresResponse>;
 
 export interface ResumeServiceRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const ResumeServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/resume", code: 200 })),
 ).annotate({ identifier: "ResumeServiceRequest" }) as any as S.Schema<ResumeServiceRequest>;
 
 export interface ResumeServiceResponse {}
-export const ResumeServiceResponse =
-  CancelCronJobRunResponse as any as S.Schema<ResumeServiceResponse>;
+const ResumeServiceResponse = CancelCronJobRunResponse as any as S.Schema<ResumeServiceResponse>;
 
 export interface RunCronJobRequest {
   /** The ID of the cron job */
   cronJobId: string;
 }
-export const RunCronJobRequest = /*@__PURE__*/ S.suspend(() =>
+const RunCronJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cronJobId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/cron-jobs/{cronJobId}/runs", code: 200 })),
 ).annotate({ identifier: "RunCronJobRequest" }) as any as S.Schema<RunCronJobRequest>;
 
 export type CronJobRunStatus = "pending" | "successful" | "unsuccessful" | "canceled";
-export const CronJobRunStatus = S.String;
+const CronJobRunStatus = S.String;
 
 /** A run of a cron job */
 export interface CronJobRun {
@@ -10723,7 +9431,7 @@ export interface CronJobRun {
   /** user who cancelled the cron job run */
   canceledBy?: string;
 }
-export const CronJobRun = /*@__PURE__*/ S.suspend(() =>
+const CronJobRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: CronJobRunStatus,
@@ -10739,7 +9447,7 @@ export interface ScaleServiceRequest {
   serviceId: string;
   numInstances: number;
 }
-export const ScaleServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ScaleServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     numInstances: S.Number,
@@ -10747,18 +9455,17 @@ export const ScaleServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScaleServiceRequest" }) as any as S.Schema<ScaleServiceRequest>;
 
 export interface ScaleServiceResponse {}
-export const ScaleServiceResponse =
-  CancelCronJobRunResponse as any as S.Schema<ScaleServiceResponse>;
+const ScaleServiceResponse = CancelCronJobRunResponse as any as S.Schema<ScaleServiceResponse>;
 
 export type StreamTaskRunsEventsRequestTaskRunIdsList = Array<string>;
-export const StreamTaskRunsEventsRequestTaskRunIdsList =
+const StreamTaskRunsEventsRequestTaskRunIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<StreamTaskRunsEventsRequestTaskRunIdsList>;
 
 export interface StreamTaskRunsEventsRequest {
   /** Filter to a subset of task run IDs. */
   taskRunIds: StreamTaskRunsEventsRequestTaskRunIdsList;
 }
-export const StreamTaskRunsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamTaskRunsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskRunIds: StreamTaskRunsEventsRequestTaskRunIdsList.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/task-runs/events", code: 200 })),
@@ -10767,58 +9474,58 @@ export const StreamTaskRunsEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamTaskRunsEventsRequest>;
 
 export interface StreamTaskRunsEventsResponse {}
-export const StreamTaskRunsEventsResponse =
+const StreamTaskRunsEventsResponse =
   CancelCronJobRunResponse as any as S.Schema<StreamTaskRunsEventsResponse>;
 
 export type SubscribeLogsRequestDirection = "forward" | "backward";
-export const SubscribeLogsRequestDirection = S.String;
+const SubscribeLogsRequestDirection = S.String;
 
 export type SubscribeLogsRequestResourceList = Array<string>;
-export const SubscribeLogsRequestResourceList =
+const SubscribeLogsRequestResourceList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestResourceList>;
 
 export type SubscribeLogsRequestInstanceList = Array<string>;
-export const SubscribeLogsRequestInstanceList =
+const SubscribeLogsRequestInstanceList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestInstanceList>;
 
 export type SubscribeLogsRequestHostList = Array<string>;
-export const SubscribeLogsRequestHostList =
+const SubscribeLogsRequestHostList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestHostList>;
 
 export type SubscribeLogsRequestStatusCodeList = Array<string>;
-export const SubscribeLogsRequestStatusCodeList =
+const SubscribeLogsRequestStatusCodeList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestStatusCodeList>;
 
 export type SubscribeLogsRequestMethodList = Array<string>;
-export const SubscribeLogsRequestMethodList =
+const SubscribeLogsRequestMethodList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestMethodList>;
 
 export type SubscribeLogsRequestTaskList = Array<string>;
-export const SubscribeLogsRequestTaskList =
+const SubscribeLogsRequestTaskList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestTaskList>;
 
 export type SubscribeLogsRequestTaskRunList = Array<string>;
-export const SubscribeLogsRequestTaskRunList =
+const SubscribeLogsRequestTaskRunList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestTaskRunList>;
 
 export type SubscribeLogsRequestSandboxList = Array<string>;
-export const SubscribeLogsRequestSandboxList =
+const SubscribeLogsRequestSandboxList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestSandboxList>;
 
 export type SubscribeLogsRequestLevelList = Array<string>;
-export const SubscribeLogsRequestLevelList =
+const SubscribeLogsRequestLevelList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestLevelList>;
 
 export type SubscribeLogsRequestTypeList = Array<string>;
-export const SubscribeLogsRequestTypeList =
+const SubscribeLogsRequestTypeList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestTypeList>;
 
 export type SubscribeLogsRequestTextList = Array<string>;
-export const SubscribeLogsRequestTextList =
+const SubscribeLogsRequestTextList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestTextList>;
 
 export type SubscribeLogsRequestPathList = Array<string>;
-export const SubscribeLogsRequestPathList =
+const SubscribeLogsRequestPathList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<SubscribeLogsRequestPathList>;
 
 export interface SubscribeLogsRequest {
@@ -10857,7 +9564,7 @@ export interface SubscribeLogsRequest {
   /** The maximum number of items to return. For details, see [Pagination](https://api-docs.render.com/reference/pagination). */
   limit?: number;
 }
-export const SubscribeLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Query()),
     startTime: S.optional(S.String.pipe(T.Query())),
@@ -10880,53 +9587,51 @@ export const SubscribeLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscribeLogsRequest" }) as any as S.Schema<SubscribeLogsRequest>;
 
 export interface SubscribeLogsResponse {}
-export const SubscribeLogsResponse =
-  CancelCronJobRunResponse as any as S.Schema<SubscribeLogsResponse>;
+const SubscribeLogsResponse = CancelCronJobRunResponse as any as S.Schema<SubscribeLogsResponse>;
 
 export interface SuspendKeyValueRequest {
   redisId: string;
 }
-export const SuspendKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/key-value/{redisId}/suspend", code: 200 })),
 ).annotate({ identifier: "SuspendKeyValueRequest" }) as any as S.Schema<SuspendKeyValueRequest>;
 
 export interface SuspendKeyValueResponse {}
-export const SuspendKeyValueResponse =
+const SuspendKeyValueResponse =
   CancelCronJobRunResponse as any as S.Schema<SuspendKeyValueResponse>;
 
 export interface SuspendPostgresRequest {
   postgresId: string;
 }
-export const SuspendPostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendPostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/postgres/{postgresId}/suspend", code: 200 })),
 ).annotate({ identifier: "SuspendPostgresRequest" }) as any as S.Schema<SuspendPostgresRequest>;
 
 export interface SuspendPostgresResponse {}
-export const SuspendPostgresResponse =
+const SuspendPostgresResponse =
   CancelCronJobRunResponse as any as S.Schema<SuspendPostgresResponse>;
 
 export interface SuspendServiceRequest {
   /** The ID of the service */
   serviceId: string;
 }
-export const SuspendServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/services/{serviceId}/suspend", code: 200 })),
 ).annotate({ identifier: "SuspendServiceRequest" }) as any as S.Schema<SuspendServiceRequest>;
 
 export interface SuspendServiceResponse {}
-export const SuspendServiceResponse =
-  CancelCronJobRunResponse as any as S.Schema<SuspendServiceResponse>;
+const SuspendServiceResponse = CancelCronJobRunResponse as any as S.Schema<SuspendServiceResponse>;
 
 export interface TriggerBuildSourceBuildRequest {
   buildSourceId: string;
 }
-export const TriggerBuildSourceBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerBuildSourceBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/build-sources/{buildSourceId}/builds", code: 200 })),
@@ -10941,7 +9646,7 @@ export type TriggerBuildSourceBuildResponseBuildRunStatus =
   | "failed"
   | "canceled"
   | "unknown";
-export const TriggerBuildSourceBuildResponseBuildRunStatus = S.String;
+const TriggerBuildSourceBuildResponseBuildRunStatus = S.String;
 
 export type TriggerBuildSourceBuildResponseBuildRunRuntime =
   | "docker"
@@ -10951,7 +9656,7 @@ export type TriggerBuildSourceBuildResponseBuildRunRuntime =
   | "python"
   | "ruby"
   | "rust";
-export const TriggerBuildSourceBuildResponseBuildRunRuntime = S.String;
+const TriggerBuildSourceBuildResponseBuildRunRuntime = S.String;
 
 /** The Render build run that produced this build. Present when the build source is currently build-based. Mutually exclusive with `image`. */
 export interface TriggerBuildSourceBuildResponseBuildRun {
@@ -10963,7 +9668,7 @@ export interface TriggerBuildSourceBuildResponseBuildRun {
   commitId?: string;
   commitUrl?: string;
 }
-export const TriggerBuildSourceBuildResponseBuildRun = /*@__PURE__*/ S.suspend(() =>
+const TriggerBuildSourceBuildResponseBuildRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: S.optional(TriggerBuildSourceBuildResponseBuildRunStatus),
@@ -10979,8 +9684,6 @@ export const TriggerBuildSourceBuildResponseBuildRun = /*@__PURE__*/ S.suspend((
 
 /** Present when the build source is currently image-based. Mutually exclusive with `buildRun`. */
 export type TriggerBuildSourceBuildResponseImage = SchemaImage;
-export const TriggerBuildSourceBuildResponseImage = SchemaImage;
-
 export interface TriggerBuildSourceBuildResponse {
   id: string;
   buildSourceId: string;
@@ -10992,7 +9695,7 @@ export interface TriggerBuildSourceBuildResponse {
   updatedAt: string;
   assetsDeletedAt?: string;
 }
-export const TriggerBuildSourceBuildResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerBuildSourceBuildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     buildSourceId: S.String,
@@ -11009,7 +9712,7 @@ export const TriggerBuildSourceBuildResponse = /*@__PURE__*/ S.suspend(() =>
 export interface TriggerMaintenanceRequest {
   maintenanceRunID: string;
 }
-export const TriggerMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceRunID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/maintenance/{maintenanceRunID}/trigger", code: 200 })),
@@ -11018,7 +9721,7 @@ export const TriggerMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerMaintenanceRequest>;
 
 export interface TriggerMaintenanceResponse {}
-export const TriggerMaintenanceResponse =
+const TriggerMaintenanceResponse =
   CancelCronJobRunResponse as any as S.Schema<TriggerMaintenanceResponse>;
 
 export interface UnlinkEnvGroupFromBuildSourceRequest {
@@ -11026,7 +9729,7 @@ export interface UnlinkEnvGroupFromBuildSourceRequest {
   /** Filter for resources that belong to an environment group */
   envGroupId: string;
 }
-export const UnlinkEnvGroupFromBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlinkEnvGroupFromBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     envGroupId: S.String.pipe(T.Label()),
@@ -11042,14 +9745,14 @@ export const UnlinkEnvGroupFromBuildSourceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UnlinkEnvGroupFromBuildSourceRequest>;
 
 export interface UnlinkEnvGroupFromBuildSourceResponse {}
-export const UnlinkEnvGroupFromBuildSourceResponse =
+const UnlinkEnvGroupFromBuildSourceResponse =
   DeleteBuildSourceSecretFileResponse as any as S.Schema<UnlinkEnvGroupFromBuildSourceResponse>;
 
 export interface UnlinkServiceFromEnvGroupRequest {
   envGroupId: string;
   serviceId: string;
 }
-export const UnlinkServiceFromEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlinkServiceFromEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     serviceId: S.String.pipe(T.Label()),
@@ -11061,7 +9764,7 @@ export const UnlinkServiceFromEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnlinkServiceFromEnvGroupRequest>;
 
 export interface UnlinkServiceFromEnvGroupResponse {}
-export const UnlinkServiceFromEnvGroupResponse =
+const UnlinkServiceFromEnvGroupResponse =
   DeleteBuildSourceSecretFileResponse as any as S.Schema<UnlinkServiceFromEnvGroupResponse>;
 
 export interface UpdateBlueprintRequest {
@@ -11073,7 +9776,7 @@ export interface UpdateBlueprintRequest {
   /** Path to the Blueprint file in the repository */
   path?: string;
 }
-export const UpdateBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blueprintId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11092,7 +9795,7 @@ export interface UpdateBlueprintResponse {
   path: string;
   lastSync?: string;
 }
-export const UpdateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -11106,11 +9809,11 @@ export const UpdateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateBlueprintResponse" }) as any as S.Schema<UpdateBlueprintResponse>;
 
 export type UpdateBuildSourceRequestGitBuildFilterPathsList = Array<string>;
-export const UpdateBuildSourceRequestGitBuildFilterPathsList =
+const UpdateBuildSourceRequestGitBuildFilterPathsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<UpdateBuildSourceRequestGitBuildFilterPathsList>;
 
 export type UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList = Array<string>;
-export const UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList =
+const UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList>;
 
 /** Glob patterns matched against files changed by a commit. When set, a commit only triggers a build when at least one changed file matches `paths` and none match `ignoredPaths`. Useful for monorepos where a single repo backs many services. */
@@ -11118,7 +9821,7 @@ export interface UpdateBuildSourceRequestGitBuildFilter {
   paths: UpdateBuildSourceRequestGitBuildFilterPathsList;
   ignoredPaths: UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList;
 }
-export const UpdateBuildSourceRequestGitBuildFilter = /*@__PURE__*/ S.suspend(() =>
+const UpdateBuildSourceRequestGitBuildFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: UpdateBuildSourceRequestGitBuildFilterPathsList,
     ignoredPaths: UpdateBuildSourceRequestGitBuildFilterIgnoredPathsList,
@@ -11136,7 +9839,7 @@ export type UpdateBuildSourceRequestGitRuntime =
   | "python"
   | "ruby"
   | "rust";
-export const UpdateBuildSourceRequestGitRuntime = S.String;
+const UpdateBuildSourceRequestGitRuntime = S.String;
 
 /** Region for the build. Honored only when this PATCH performs an image->build transition; rejected on a pure build patch (the cluster is pinned for an existing build), and must match the prior build region when switching back to build after time as an external image. Defaults to "oregon" for first-time builds. */
 export type UpdateBuildSourceRequestGitRegion =
@@ -11145,7 +9848,7 @@ export type UpdateBuildSourceRequestGitRegion =
   | "ohio"
   | "singapore"
   | "virginia";
-export const UpdateBuildSourceRequestGitRegion = S.String;
+const UpdateBuildSourceRequestGitRegion = S.String;
 
 export interface UpdateBuildSourceRequestGit {
   baseDir?: string;
@@ -11163,7 +9866,7 @@ export interface UpdateBuildSourceRequestGit {
   repoUrl?: string;
   rootDir?: string;
 }
-export const UpdateBuildSourceRequestGit = /*@__PURE__*/ S.suspend(() =>
+const UpdateBuildSourceRequestGit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseDir: S.optional(S.String),
     branch: S.optional(S.String),
@@ -11186,7 +9889,7 @@ export interface UpdateBuildSourceRequestImage {
   /** Optional reference to the registry credential passed to the image repository to retrieve this image. Omit the field to leave the stored credential unchanged; send an empty string to clear it. */
   registryCredentialId?: string;
 }
-export const UpdateBuildSourceRequestImage = /*@__PURE__*/ S.suspend(() =>
+const UpdateBuildSourceRequestImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUrl: S.optional(S.String),
     registryCredentialId: S.optional(S.String),
@@ -11202,7 +9905,7 @@ export interface UpdateBuildSourceRequest {
   /** Patch shape for a build source's image identity. Unset fields are left unchanged on the underlying image reference. ownerId is intentionally omitted -- a build source's owner is fixed at creation, and changing the image's owner would amount to a different identity. */
   image?: UpdateBuildSourceRequestImage;
 }
-export const UpdateBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11214,23 +9917,11 @@ export const UpdateBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EnvVarValue {
   value: string;
 }
-export const EnvVarValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-  }),
-).annotate({ identifier: "EnvVarValue" }) as any as S.Schema<EnvVarValue>;
-
 export interface EnvVarGenerateValue {
   generateValue: boolean;
 }
-export const EnvVarGenerateValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generateValue: S.Boolean,
-  }),
-).annotate({ identifier: "EnvVarGenerateValue" }) as any as S.Schema<EnvVarGenerateValue>;
-
 export type AddUpdateEnvVarInput = EnvVarValue | EnvVarGenerateValue;
-export const AddUpdateEnvVarInput = S.Unknown as any as S.Schema<AddUpdateEnvVarInput>;
+const AddUpdateEnvVarInput = S.Unknown as any as S.Schema<AddUpdateEnvVarInput>;
 
 export interface UpdateBuildSourceEnvVarRequest {
   buildSourceId: string;
@@ -11238,7 +9929,7 @@ export interface UpdateBuildSourceEnvVarRequest {
   envVarKey: string;
   body: AddUpdateEnvVarInput;
 }
-export const UpdateBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -11255,7 +9946,7 @@ export const UpdateBuildSourceEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBuildSourceEnvVarRequest>;
 
 export type UpdateDedicatedIpRequestEnvironmentIdsList = Array<string>;
-export const UpdateDedicatedIpRequestEnvironmentIdsList =
+const UpdateDedicatedIpRequestEnvironmentIdsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<UpdateDedicatedIpRequestEnvironmentIdsList>;
 
 export interface UpdateDedicatedIpRequest {
@@ -11265,7 +9956,7 @@ export interface UpdateDedicatedIpRequest {
   description?: string;
   environmentIds?: UpdateDedicatedIpRequestEnvironmentIdsList;
 }
-export const UpdateDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedIpId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11281,7 +9972,7 @@ export interface UpdateDiskRequest {
   sizeGB?: number;
   mountPath?: string;
 }
-export const UpdateDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11294,7 +9985,7 @@ export interface UpdateEnvGroupRequest {
   envGroupId: string;
   name: string;
 }
-export const UpdateEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     name: S.String,
@@ -11303,17 +9994,8 @@ export const UpdateEnvGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type UpdateEnvGroupResponseServiceLinksList = Array<EnvGroupLink>;
-export const UpdateEnvGroupResponseServiceLinksList =
-  CreateEnvGroupResponseServiceLinksList as any as S.Schema<UpdateEnvGroupResponseServiceLinksList>;
-
 export type UpdateEnvGroupResponseEnvVarsList = Array<EnvVar>;
-export const UpdateEnvGroupResponseEnvVarsList =
-  CreateEnvGroupResponseEnvVarsList as any as S.Schema<UpdateEnvGroupResponseEnvVarsList>;
-
 export type UpdateEnvGroupResponseSecretFilesList = Array<SecretFile>;
-export const UpdateEnvGroupResponseSecretFilesList =
-  CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateEnvGroupResponseSecretFilesList>;
-
 export interface UpdateEnvGroupResponse {
   id: string;
   name: string;
@@ -11326,8 +10008,7 @@ export interface UpdateEnvGroupResponse {
   envVars: UpdateEnvGroupResponseEnvVarsList;
   secretFiles: UpdateEnvGroupResponseSecretFilesList;
 }
-export const UpdateEnvGroupResponse =
-  CreateEnvGroupResponse as any as S.Schema<UpdateEnvGroupResponse>;
+const UpdateEnvGroupResponse = CreateEnvGroupResponse as any as S.Schema<UpdateEnvGroupResponse>;
 
 export interface UpdateEnvGroupEnvVarRequest {
   /** Filter for resources that belong to an environment group */
@@ -11336,7 +10017,7 @@ export interface UpdateEnvGroupEnvVarRequest {
   envVarKey: string;
   body: AddUpdateEnvVarInput;
 }
-export const UpdateEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -11350,17 +10031,8 @@ export const UpdateEnvGroupEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type UpdateEnvGroupEnvVarResponseServiceLinksList = Array<EnvGroupLink>;
-export const UpdateEnvGroupEnvVarResponseServiceLinksList =
-  CreateEnvGroupResponseServiceLinksList as any as S.Schema<UpdateEnvGroupEnvVarResponseServiceLinksList>;
-
 export type UpdateEnvGroupEnvVarResponseEnvVarsList = Array<EnvVar>;
-export const UpdateEnvGroupEnvVarResponseEnvVarsList =
-  CreateEnvGroupResponseEnvVarsList as any as S.Schema<UpdateEnvGroupEnvVarResponseEnvVarsList>;
-
 export type UpdateEnvGroupEnvVarResponseSecretFilesList = Array<SecretFile>;
-export const UpdateEnvGroupEnvVarResponseSecretFilesList =
-  CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateEnvGroupEnvVarResponseSecretFilesList>;
-
 export interface UpdateEnvGroupEnvVarResponse {
   id: string;
   name: string;
@@ -11373,7 +10045,7 @@ export interface UpdateEnvGroupEnvVarResponse {
   envVars: UpdateEnvGroupEnvVarResponseEnvVarsList;
   secretFiles: UpdateEnvGroupEnvVarResponseSecretFilesList;
 }
-export const UpdateEnvGroupEnvVarResponse =
+const UpdateEnvGroupEnvVarResponse =
   LinkEnvGroupToBuildSourceResponse as any as S.Schema<UpdateEnvGroupEnvVarResponse>;
 
 export interface UpdateEnvGroupSecretFileRequest {
@@ -11381,7 +10053,7 @@ export interface UpdateEnvGroupSecretFileRequest {
   envVarKey: string;
   content?: string;
 }
-export const UpdateEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envGroupId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -11395,17 +10067,8 @@ export const UpdateEnvGroupSecretFileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of serviceIds linked to the envGroup */
 export type UpdateEnvGroupSecretFileResponseServiceLinksList = Array<EnvGroupLink>;
-export const UpdateEnvGroupSecretFileResponseServiceLinksList =
-  CreateEnvGroupResponseServiceLinksList as any as S.Schema<UpdateEnvGroupSecretFileResponseServiceLinksList>;
-
 export type UpdateEnvGroupSecretFileResponseEnvVarsList = Array<EnvVar>;
-export const UpdateEnvGroupSecretFileResponseEnvVarsList =
-  CreateEnvGroupResponseEnvVarsList as any as S.Schema<UpdateEnvGroupSecretFileResponseEnvVarsList>;
-
 export type UpdateEnvGroupSecretFileResponseSecretFilesList = Array<SecretFile>;
-export const UpdateEnvGroupSecretFileResponseSecretFilesList =
-  CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateEnvGroupSecretFileResponseSecretFilesList>;
-
 export interface UpdateEnvGroupSecretFileResponse {
   id: string;
   name: string;
@@ -11418,11 +10081,11 @@ export interface UpdateEnvGroupSecretFileResponse {
   envVars: UpdateEnvGroupSecretFileResponseEnvVarsList;
   secretFiles: UpdateEnvGroupSecretFileResponseSecretFilesList;
 }
-export const UpdateEnvGroupSecretFileResponse =
+const UpdateEnvGroupSecretFileResponse =
   LinkEnvGroupToBuildSourceResponse as any as S.Schema<UpdateEnvGroupSecretFileResponse>;
 
 export type UpdateEnvironmentRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const UpdateEnvironmentRequestIpAllowListList =
+const UpdateEnvironmentRequestIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<UpdateEnvironmentRequestIpAllowListList>;
 
 export interface UpdateEnvironmentRequest {
@@ -11432,7 +10095,7 @@ export interface UpdateEnvironmentRequest {
   protectedStatus?: ProtectedStatus | (string & {});
   ipAllowList?: UpdateEnvironmentRequestIpAllowListList;
 }
-export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11449,7 +10112,7 @@ export interface UpdateEnvVarRequest {
   envVarKey: string;
   body: AddUpdateEnvVarInput;
 }
-export const UpdateEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvVarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     envVarKey: S.String.pipe(T.Label()),
@@ -11461,7 +10124,7 @@ export interface UpdateEnvVarsForBuildSourceRequest {
   buildSourceId: string;
   body: Schema6;
 }
-export const UpdateEnvVarsForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvVarsForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     body: Schema6.pipe(T.HttpBody()),
@@ -11471,25 +10134,18 @@ export const UpdateEnvVarsForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvVarsForBuildSourceRequest>;
 
 export type UpdateEnvVarsForBuildSourceResponseBodyList = Array<EnvVarWithCursor>;
-export const UpdateEnvVarsForBuildSourceResponseBodyList =
-  GetEnvVarsForBuildSourceResponseBodyList as any as S.Schema<UpdateEnvVarsForBuildSourceResponseBodyList>;
-
 export type UpdateEnvVarsForBuildSourceResponse = UpdateEnvVarsForBuildSourceResponseBodyList;
-export const UpdateEnvVarsForBuildSourceResponse =
+const UpdateEnvVarsForBuildSourceResponse =
   GetEnvVarsForBuildSourceResponse as any as S.Schema<UpdateEnvVarsForBuildSourceResponse>;
 
 export type UpdateEnvVarsForServiceRequestBodyItemCase0 = SchemaItemCase0;
-export const UpdateEnvVarsForServiceRequestBodyItemCase0 = SchemaItemCase0;
-
 export type UpdateEnvVarsForServiceRequestBodyItemCase1 = SchemaItemCase1;
-export const UpdateEnvVarsForServiceRequestBodyItemCase1 = SchemaItemCase1;
-
 export type UpdateEnvVarsForServiceRequestBodyItem = SchemaItemCase0 | SchemaItemCase1;
-export const UpdateEnvVarsForServiceRequestBodyItem =
+const UpdateEnvVarsForServiceRequestBodyItem =
   S.Unknown as any as S.Schema<UpdateEnvVarsForServiceRequestBodyItem>;
 
 export type UpdateEnvVarsForServiceRequestBodyList = Array<UpdateEnvVarsForServiceRequestBodyItem>;
-export const UpdateEnvVarsForServiceRequestBodyList = /*@__PURE__*/ S.Array(
+const UpdateEnvVarsForServiceRequestBodyList = /*@__PURE__*/ S.Array(
   UpdateEnvVarsForServiceRequestBodyItem,
 ) as any as S.Schema<UpdateEnvVarsForServiceRequestBodyList>;
 
@@ -11498,7 +10154,7 @@ export interface UpdateEnvVarsForServiceRequest {
   serviceId: string;
   body: UpdateEnvVarsForServiceRequestBodyList;
 }
-export const UpdateEnvVarsForServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvVarsForServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     body: UpdateEnvVarsForServiceRequestBodyList.pipe(T.HttpBody()),
@@ -11508,15 +10164,12 @@ export const UpdateEnvVarsForServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEnvVarsForServiceRequest>;
 
 export type UpdateEnvVarsForServiceResponseBodyList = Array<EnvVarWithCursor>;
-export const UpdateEnvVarsForServiceResponseBodyList =
-  GetEnvVarsForBuildSourceResponseBodyList as any as S.Schema<UpdateEnvVarsForServiceResponseBodyList>;
-
 export type UpdateEnvVarsForServiceResponse = UpdateEnvVarsForServiceResponseBodyList;
-export const UpdateEnvVarsForServiceResponse =
+const UpdateEnvVarsForServiceResponse =
   GetEnvVarsForBuildSourceResponse as any as S.Schema<UpdateEnvVarsForServiceResponse>;
 
 export type UpdateHeadersRequestBodyList = Array<HeaderInput>;
-export const UpdateHeadersRequestBodyList =
+const UpdateHeadersRequestBodyList =
   StaticSiteDetailsPOSTHeadersList as any as S.Schema<UpdateHeadersRequestBodyList>;
 
 export interface UpdateHeadersRequest {
@@ -11524,7 +10177,7 @@ export interface UpdateHeadersRequest {
   serviceId: string;
   body: UpdateHeadersRequestBodyList;
 }
-export const UpdateHeadersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHeadersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     body: UpdateHeadersRequestBodyList.pipe(T.HttpBody()),
@@ -11532,17 +10185,17 @@ export const UpdateHeadersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateHeadersRequest" }) as any as S.Schema<UpdateHeadersRequest>;
 
 export type UpdateHeadersResponseBodyList = Array<Header>;
-export const UpdateHeadersResponseBodyList = /*@__PURE__*/ S.Array(
+const UpdateHeadersResponseBodyList = /*@__PURE__*/ S.Array(
   Header,
 ) as any as S.Schema<UpdateHeadersResponseBodyList>;
 
 export type UpdateHeadersResponse = UpdateHeadersResponseBodyList;
-export const UpdateHeadersResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateHeadersResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateHeadersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UpdateHeadersResponse" }) as any as S.Schema<UpdateHeadersResponse>;
 
 export type UpdateKeyValueRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const UpdateKeyValueRequestIpAllowListList =
+const UpdateKeyValueRequestIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<UpdateKeyValueRequestIpAllowListList>;
 
 export interface UpdateKeyValueRequest {
@@ -11554,7 +10207,7 @@ export interface UpdateKeyValueRequest {
   persistenceMode?: PersistenceMode | (string & {});
   ipAllowList?: UpdateKeyValueRequestIpAllowListList;
 }
-export const UpdateKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateKeyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11570,7 +10223,7 @@ export interface UpdateMaintenanceRequest {
   /** The date-time at which the maintenance is scheduled to start. This must be before the pendingMaintenanceBy date-time. */
   scheduledAt?: string;
 }
-export const UpdateMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceRunID: S.String.pipe(T.Label()),
     scheduledAt: S.optional(S.String),
@@ -11578,12 +10231,12 @@ export const UpdateMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateMaintenanceRequest" }) as any as S.Schema<UpdateMaintenanceRequest>;
 
 export interface UpdateMaintenanceResponse {}
-export const UpdateMaintenanceResponse =
+const UpdateMaintenanceResponse =
   CancelCronJobRunResponse as any as S.Schema<UpdateMaintenanceResponse>;
 
 /** Whether to send logs or drop them. */
 export type UpdateOwnerLogStreamRequestPreview = "send" | "drop";
-export const UpdateOwnerLogStreamRequestPreview = S.String;
+const UpdateOwnerLogStreamRequestPreview = S.String;
 
 export interface UpdateOwnerLogStreamRequest {
   /** The ID of the workspace to update log stream information for */
@@ -11595,7 +10248,7 @@ export interface UpdateOwnerLogStreamRequest {
   /** Whether to send logs or drop them. */
   preview: UpdateOwnerLogStreamRequestPreview | (string & {});
 }
-export const UpdateOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOwnerLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
     endpoint: S.optional(S.String),
@@ -11613,11 +10266,11 @@ export interface UpdateOwnerLogStreamResponse {
   endpoint?: string;
   preview?: Preview;
 }
-export const UpdateOwnerLogStreamResponse =
+const UpdateOwnerLogStreamResponse =
   GetOwnerLogStreamResponse as any as S.Schema<UpdateOwnerLogStreamResponse>;
 
 export type UpdatePostgresRequestIpAllowListList = Array<CidrBlockAndDescription>;
-export const UpdatePostgresRequestIpAllowListList =
+const UpdatePostgresRequestIpAllowListList =
   EnvironmentIpAllowListList as any as S.Schema<UpdatePostgresRequestIpAllowListList>;
 
 export interface UpdatePostgresRequest {
@@ -11637,7 +10290,7 @@ export interface UpdatePostgresRequest {
   ipAllowList?: UpdatePostgresRequestIpAllowListList;
   readReplicas?: ReadReplicasInput;
 }
-export const UpdatePostgresRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePostgresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11657,7 +10310,7 @@ export interface UpdateProjectRequest {
   projectId: string;
   name?: string;
 }
-export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11672,7 +10325,7 @@ export interface UpdateRegistryCredentialRequest {
   username: string;
   authToken: string;
 }
-export const UpdateRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRegistryCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registryCredentialId: S.String.pipe(T.Label()),
     registry: RegistryCredentialRegistry,
@@ -11693,7 +10346,7 @@ export interface UpdateResourceLogStreamRequest {
   token?: string;
   setting: Items3 | (string & {});
 }
-export const UpdateResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourceLogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     endpoint: S.optional(S.String),
@@ -11711,18 +10364,18 @@ export interface UpdateResourceLogStreamResponse {
   endpoint?: string;
   setting?: Items3;
 }
-export const UpdateResourceLogStreamResponse =
+const UpdateResourceLogStreamResponse =
   GetResourceLogStreamResponse as any as S.Schema<UpdateResourceLogStreamResponse>;
 
 export type UpdateSecretFilesForBuildSourceRequestBodyList = Array<Items>;
-export const UpdateSecretFilesForBuildSourceRequestBodyList =
+const UpdateSecretFilesForBuildSourceRequestBodyList =
   CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateSecretFilesForBuildSourceRequestBodyList>;
 
 export interface UpdateSecretFilesForBuildSourceRequest {
   buildSourceId: string;
   body: UpdateSecretFilesForBuildSourceRequestBodyList;
 }
-export const UpdateSecretFilesForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretFilesForBuildSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSourceId: S.String.pipe(T.Label()),
     body: UpdateSecretFilesForBuildSourceRequestBodyList.pipe(T.HttpBody()),
@@ -11732,19 +10385,14 @@ export const UpdateSecretFilesForBuildSourceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateSecretFilesForBuildSourceRequest>;
 
 export type UpdateSecretFilesForBuildSourceResponseBodyList = Array<SecretFileWithCursor>;
-export const UpdateSecretFilesForBuildSourceResponseBodyList =
-  ListSecretFilesForBuildSourceResponseBodyList as any as S.Schema<UpdateSecretFilesForBuildSourceResponseBodyList>;
-
 export type UpdateSecretFilesForBuildSourceResponse =
   UpdateSecretFilesForBuildSourceResponseBodyList;
-export const UpdateSecretFilesForBuildSourceResponse =
+const UpdateSecretFilesForBuildSourceResponse =
   ListSecretFilesForBuildSourceResponse as any as S.Schema<UpdateSecretFilesForBuildSourceResponse>;
 
 export type UpdateSecretFilesForServiceRequestBodyItem = Items;
-export const UpdateSecretFilesForServiceRequestBodyItem = Items;
-
 export type UpdateSecretFilesForServiceRequestBodyList = Array<Items>;
-export const UpdateSecretFilesForServiceRequestBodyList =
+const UpdateSecretFilesForServiceRequestBodyList =
   CreateBuildSourceRequestSecretFilesList as any as S.Schema<UpdateSecretFilesForServiceRequestBodyList>;
 
 export interface UpdateSecretFilesForServiceRequest {
@@ -11752,7 +10400,7 @@ export interface UpdateSecretFilesForServiceRequest {
   serviceId: string;
   body: UpdateSecretFilesForServiceRequestBodyList;
 }
-export const UpdateSecretFilesForServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretFilesForServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     body: UpdateSecretFilesForServiceRequestBodyList.pipe(T.HttpBody()),
@@ -11762,17 +10410,11 @@ export const UpdateSecretFilesForServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSecretFilesForServiceRequest>;
 
 export type UpdateSecretFilesForServiceResponseBodyList = Array<SecretFileWithCursor>;
-export const UpdateSecretFilesForServiceResponseBodyList =
-  ListSecretFilesForBuildSourceResponseBodyList as any as S.Schema<UpdateSecretFilesForServiceResponseBodyList>;
-
 export type UpdateSecretFilesForServiceResponse = UpdateSecretFilesForServiceResponseBodyList;
-export const UpdateSecretFilesForServiceResponse =
+const UpdateSecretFilesForServiceResponse =
   ListSecretFilesForBuildSourceResponse as any as S.Schema<UpdateSecretFilesForServiceResponse>;
 
 export type StaticSiteDetailsPATCHIpAllowListList = Array<CidrBlockAndDescription>;
-export const StaticSiteDetailsPATCHIpAllowListList =
-  EnvironmentIpAllowListList as any as S.Schema<StaticSiteDetailsPATCHIpAllowListList>;
-
 export interface StaticSiteDetailsPATCH {
   buildCommand?: string;
   publishPath?: string;
@@ -11781,17 +10423,6 @@ export interface StaticSiteDetailsPATCH {
   renderSubdomainPolicy?: RenderSubdomainPolicy | (string & {});
   ipAllowList?: StaticSiteDetailsPATCHIpAllowListList;
 }
-export const StaticSiteDetailsPATCH = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.String),
-    publishPath: S.optional(S.String),
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    renderSubdomainPolicy: S.optional(RenderSubdomainPolicy),
-    ipAllowList: S.optional(StaticSiteDetailsPATCHIpAllowListList),
-  }),
-).annotate({ identifier: "StaticSiteDetailsPATCH" }) as any as S.Schema<StaticSiteDetailsPATCH>;
-
 export interface DockerDetailsPATCH {
   dockerCommand?: string;
   dockerContext?: string;
@@ -11799,28 +10430,12 @@ export interface DockerDetailsPATCH {
   /** Optional reference to the registry credential for this build. Omit the field to leave the stored credential unchanged; send an empty string to clear it. */
   registryCredentialId?: string;
 }
-export const DockerDetailsPATCH = DockerDetailsPOST as any as S.Schema<DockerDetailsPATCH>;
-
 export interface NativeEnvironmentDetailsPATCH {
   buildCommand?: string;
   startCommand?: string;
 }
-export const NativeEnvironmentDetailsPATCH = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.String),
-    startCommand: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NativeEnvironmentDetailsPATCH",
-}) as any as S.Schema<NativeEnvironmentDetailsPATCH>;
-
 export type EnvSpecificDetailsPATCH = DockerDetailsPATCH | NativeEnvironmentDetailsPATCH;
-export const EnvSpecificDetailsPATCH = S.Unknown as any as S.Schema<EnvSpecificDetailsPATCH>;
-
 export type WebServiceDetailsPATCHIpAllowListList = Array<CidrBlockAndDescription>;
-export const WebServiceDetailsPATCHIpAllowListList =
-  EnvironmentIpAllowListList as any as S.Schema<WebServiceDetailsPATCHIpAllowListList>;
-
 export interface WebServiceDetailsPATCH {
   envSpecificDetails?: EnvSpecificDetailsPATCH;
   healthCheckPath?: string;
@@ -11835,23 +10450,6 @@ export interface WebServiceDetailsPATCH {
   ipAllowList?: WebServiceDetailsPATCHIpAllowListList;
   cache?: Cache;
 }
-export const WebServiceDetailsPATCH = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    envSpecificDetails: S.optional(EnvSpecificDetailsPATCH),
-    healthCheckPath: S.optional(S.String),
-    maintenanceMode: S.optional(MaintenanceMode),
-    plan: S.optional(Plan),
-    preDeployCommand: S.optional(S.String),
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    runtime: S.optional(ServiceRuntime),
-    maxShutdownDelaySeconds: S.optional(S.Number),
-    renderSubdomainPolicy: S.optional(RenderSubdomainPolicy),
-    ipAllowList: S.optional(WebServiceDetailsPATCHIpAllowListList),
-    cache: S.optional(Cache),
-  }),
-).annotate({ identifier: "WebServiceDetailsPATCH" }) as any as S.Schema<WebServiceDetailsPATCH>;
-
 export interface PrivateServiceDetailsPATCH {
   envSpecificDetails?: EnvSpecificDetailsPATCH;
   plan?: PaidPlan | (string & {});
@@ -11861,45 +10459,20 @@ export interface PrivateServiceDetailsPATCH {
   runtime?: ServiceRuntime | (string & {});
   maxShutdownDelaySeconds?: number;
 }
-export const PrivateServiceDetailsPATCH = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    envSpecificDetails: S.optional(EnvSpecificDetailsPATCH),
-    plan: S.optional(PaidPlan),
-    preDeployCommand: S.optional(S.String),
-    pullRequestPreviewsEnabled: S.optional(PullRequestPreviewsEnabled),
-    previews: S.optional(Previews),
-    runtime: S.optional(ServiceRuntime),
-    maxShutdownDelaySeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PrivateServiceDetailsPATCH",
-}) as any as S.Schema<PrivateServiceDetailsPATCH>;
-
 export type BackgroundWorkerDetailsPATCH = PrivateServiceDetailsPATCH;
-export const BackgroundWorkerDetailsPATCH = PrivateServiceDetailsPATCH;
-
 export interface CronJobDetailsPATCH {
   envSpecificDetails?: EnvSpecificDetailsPATCH;
   plan?: PaidPlan | (string & {});
   schedule?: string;
   runtime?: ServiceRuntime | (string & {});
 }
-export const CronJobDetailsPATCH = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    envSpecificDetails: S.optional(EnvSpecificDetailsPATCH),
-    plan: S.optional(PaidPlan),
-    schedule: S.optional(S.String),
-    runtime: S.optional(ServiceRuntime),
-  }),
-).annotate({ identifier: "CronJobDetailsPATCH" }) as any as S.Schema<CronJobDetailsPATCH>;
-
 export type UpdateServiceRequestServiceDetails =
   | StaticSiteDetailsPATCH
   | WebServiceDetailsPATCH
   | PrivateServiceDetailsPATCH
   | PrivateServiceDetailsPATCH
   | CronJobDetailsPATCH;
-export const UpdateServiceRequestServiceDetails =
+const UpdateServiceRequestServiceDetails =
   S.Unknown as any as S.Schema<UpdateServiceRequestServiceDetails>;
 
 export interface UpdateServiceRequest {
@@ -11918,7 +10491,7 @@ export interface UpdateServiceRequest {
   rootDir?: string;
   serviceDetails?: UpdateServiceRequestServiceDetails;
 }
-export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceId: S.String.pipe(T.Label()),
     buildSourceId: S.optional(S.String),
@@ -11943,7 +10516,7 @@ export interface UpdateWebhookRequest {
   enabled?: boolean;
   eventFilter?: EventFilter;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11955,7 +10528,7 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The runtime environment for the workflow (e.g., node, python, etc.). */
 export type UpdateWorkflowRequestBuildConfigRuntime = "elixir" | "go" | "node" | "python" | "ruby";
-export const UpdateWorkflowRequestBuildConfigRuntime = S.String;
+const UpdateWorkflowRequestBuildConfigRuntime = S.String;
 
 /** A partial update to a workflow's build config. Every field is optional; omitted fields are left unchanged. */
 export interface UpdateWorkflowRequestBuildConfig {
@@ -11970,7 +10543,7 @@ export interface UpdateWorkflowRequestBuildConfig {
   /** The runtime environment for the workflow (e.g., node, python, etc.). */
   runtime?: UpdateWorkflowRequestBuildConfigRuntime | (string & {});
 }
-export const UpdateWorkflowRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkflowRequestBuildConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: S.optional(S.String),
     buildCommand: S.optional(S.String),
@@ -11992,7 +10565,7 @@ export interface UpdateWorkflowRequest {
   runCommand?: string;
   autoDeployTrigger?: AutoDeployTrigger2 | (string & {});
 }
-export const UpdateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -12009,7 +10582,7 @@ export interface UpdateWorkspaceMemberRequest {
   userId: string;
   role: TeamMemberRole | (string & {});
 }
-export const UpdateWorkspaceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkspaceMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -12030,7 +10603,7 @@ export type UpsertOwnerMetricsStreamRequestProvider =
   | "GROUNDCOVER"
   | "LOGFIRE"
   | "CUSTOM";
-export const UpsertOwnerMetricsStreamRequestProvider = S.String;
+const UpsertOwnerMetricsStreamRequestProvider = S.String;
 
 export interface UpsertOwnerMetricsStreamRequest {
   /** The ID of the workspace to return metrics stream information for */
@@ -12042,7 +10615,7 @@ export interface UpsertOwnerMetricsStreamRequest {
   /** Authentication token for the metrics stream */
   token?: string;
 }
-export const UpsertOwnerMetricsStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertOwnerMetricsStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String.pipe(T.Label()),
     provider: S.optional(UpsertOwnerMetricsStreamRequestProvider),
@@ -12060,7 +10633,7 @@ export interface UpsertOwnerMetricsStreamResponse {
   /** The endpoint URL to stream metrics to */
   url: string;
 }
-export const UpsertOwnerMetricsStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const UpsertOwnerMetricsStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     provider: Provider,
@@ -12076,7 +10649,7 @@ export interface ValidateBlueprintRequest {
   /** The render.yaml file to validate, as a binary file. */
   file: string;
 }
-export const ValidateBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateBlueprintRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerId: S.String,
     file: S.String,
@@ -12095,7 +10668,7 @@ export interface ValidateBlueprintResponseErrorsItem {
   /** The column number in the YAML file (1-indexed) */
   column?: number;
 }
-export const ValidateBlueprintResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
+const ValidateBlueprintResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     error: S.String,
@@ -12108,33 +10681,33 @@ export const ValidateBlueprintResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of validation errors. Only present if `valid` is `false`. */
 export type ValidateBlueprintResponseErrorsList = Array<ValidateBlueprintResponseErrorsItem>;
-export const ValidateBlueprintResponseErrorsList = /*@__PURE__*/ S.Array(
+const ValidateBlueprintResponseErrorsList = /*@__PURE__*/ S.Array(
   ValidateBlueprintResponseErrorsItem,
 ) as any as S.Schema<ValidateBlueprintResponseErrorsList>;
 
 /** The names of services that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanServicesList = Array<string>;
-export const ValidateBlueprintResponsePlanServicesList =
+const ValidateBlueprintResponsePlanServicesList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanServicesList>;
 
 /** The names of Render Postgres databases that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanDatabasesList = Array<string>;
-export const ValidateBlueprintResponsePlanDatabasesList =
+const ValidateBlueprintResponsePlanDatabasesList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanDatabasesList>;
 
 /** The names of Render Key Value instances that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanKeyValueList = Array<string>;
-export const ValidateBlueprintResponsePlanKeyValueList =
+const ValidateBlueprintResponsePlanKeyValueList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanKeyValueList>;
 
 /** The names of environment groups that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanEnvGroupsList = Array<string>;
-export const ValidateBlueprintResponsePlanEnvGroupsList =
+const ValidateBlueprintResponsePlanEnvGroupsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanEnvGroupsList>;
 
 /** The names of workflows that would be created as part of the Blueprint. */
 export type ValidateBlueprintResponsePlanWorkflowsList = Array<string>;
-export const ValidateBlueprintResponsePlanWorkflowsList =
+const ValidateBlueprintResponsePlanWorkflowsList =
   AddResourcesToEnvironmentRequestResourceIdsList as any as S.Schema<ValidateBlueprintResponsePlanWorkflowsList>;
 
 /** A summary of the resources that would be created as part of the Blueprint. Only present if `valid` is `true`. */
@@ -12152,7 +10725,7 @@ export interface ValidateBlueprintResponsePlan {
   /** The total number of actions that would be performed by the Blueprint. In addition to created resources, this includes modifications to individual configuration fields. */
   totalActions?: number;
 }
-export const ValidateBlueprintResponsePlan = /*@__PURE__*/ S.suspend(() =>
+const ValidateBlueprintResponsePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(ValidateBlueprintResponsePlanServicesList),
     databases: S.optional(ValidateBlueprintResponsePlanDatabasesList),
@@ -12173,7 +10746,7 @@ export interface ValidateBlueprintResponse {
   /** A summary of the resources that would be created as part of the Blueprint. Only present if `valid` is `true`. */
   plan?: ValidateBlueprintResponsePlan;
 }
-export const ValidateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.Boolean,
     errors: S.optional(ValidateBlueprintResponseErrorsList),

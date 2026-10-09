@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -201,17 +201,17 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReferen
   /** port is an optional service port at which the webhook will be contacted. `port` should be a valid port number (1-65535, inclusive). Defaults to 443 for backward compatibility. */
   port?: number;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String,
       namespace: S.String,
       path: S.optional(S.String),
       port: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference",
-  }) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference>;
+).annotate({
+  identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference",
+}) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference>;
 
 /** WebhookClientConfig contains the information to make a TLS connection with the webhook. */
 export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
@@ -222,7 +222,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientC
   /** url gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified. The `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address. Please note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster. The scheme must be "https"; the URL must begin with "https://". A path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier. Attempting to use a user or basic auth e.g. "user:password@" is not allowed. Fragments ("#...") and query parameters ("?...") are not allowed, either. */
   url?: string;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       caBundle: S.optional(S.String),
@@ -236,7 +236,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfi
 /** conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList =
   Array<string>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList>;
@@ -248,8 +248,8 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConvers
   /** conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail. */
   conversionReviewVersions: IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       clientConfig: S.optional(
         IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig,
@@ -257,9 +257,9 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion 
       conversionReviewVersions:
         IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList,
     }),
-  ).annotate({
-    identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion",
-  }) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion>;
+).annotate({
+  identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion",
+}) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion>;
 
 /** CustomResourceConversion describes how to convert different versions of a CR. */
 export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion {
@@ -268,7 +268,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** webhook describes how to call the conversion webhook. Required when `strategy` is set to `"Webhook"`. */
   webhook?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       strategy: S.String,
@@ -281,13 +281,13 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConv
 /** categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like `kubectl get all`. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList =
   Array<string>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesCategoriesList>;
 
 /** shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get <shortname>`. It must be all lowercase. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList =
   Array<string>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNamesShortNamesList>;
 
 /** CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition */
@@ -305,7 +305,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased `kind`. */
   singular?: string;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       categories: S.optional(
@@ -338,7 +338,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details. */
   type: string;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       description: S.optional(S.String),
@@ -355,27 +355,27 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColu
 /** additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionAdditionalPrinterColumnsList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionAdditionalPrinterColumnsList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionAdditionalPrinterColumnsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionAdditionalPrinterColumnsList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList =
   /*@__PURE__*/ S.Array(
     /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAnyOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap = {
   [key: string]: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps | undefined;
 };
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     /*@__PURE__*/ S.suspend(() => IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
@@ -384,7 +384,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDef
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependenciesMap = {
   [key: string]: unknown | undefined;
 };
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependenciesMap =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependenciesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -392,7 +392,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDep
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsEnumList =
   Array<unknown>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsEnumList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsEnumList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsEnumList>;
@@ -402,7 +402,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocume
   description?: string;
   url?: string;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       description: S.optional(S.String),
@@ -414,30 +414,30 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentat
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsAllOfList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOneOfList>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap = {
   [key: string]: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps | undefined;
 };
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternPropertiesMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap = {
   [key: string]: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps | undefined;
 };
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitionsMap as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropertiesMap>;
 
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList =
   Array<string>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsRequiredList>;
 
 /** x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type `map` by specifying the keys used as the index of the map. This tag MUST only be used on lists that have the "x-kubernetes-list-type" extension set to "map". Also, the values specified for this attribute must be a scalar typed field of the child structure (no nesting is supported). The properties specified must either be required or have a default value, to ensure those properties are present for all list items. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList =
   Array<string>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesListMapKeysList>;
 
 /** ValidationRule describes a validation rule written in the CEL expression language. */
@@ -455,8 +455,8 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule
   /** Rule represents the expression which will be evaluated by CEL. ref: https://github.com/google/cel-spec The Rule is scoped to the location of the x-kubernetes-validations extension in the schema. The `self` variable in the CEL expression is bound to the scoped value. Example: - Rule scoped to the root of a resource with a status subresource: {"rule": "self.status.actual <= self.spec.maxDesired"} If the Rule is scoped to an object with properties, the accessible properties of the object are field selectable via `self.field` and field presence can be checked via `has(self.field)`. Null valued fields are treated as absent fields in CEL expressions. If the Rule is scoped to an object with additionalProperties (i.e. a map) the value of the map are accessible via `self[mapKey]`, map containment can be checked via `mapKey in self` and all entries of the map are accessible via CEL macros and functions such as `self.all(...)`. If the Rule is scoped to an array, the elements of the array are accessible via `self[i]` and also by macros and functions. If the Rule is scoped to a scalar, `self` is bound to the scalar value. Examples: - Rule scoped to a map of objects: {"rule": "self.components['Widget'].priority < 10"} - Rule scoped to a list of integers: {"rule": "self.values.all(value, value >= 0 && value < 100)"} - Rule scoped to a string value: {"rule": "self.startsWith('kube')"} The `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the object and from any x-kubernetes-embedded-resource annotated objects. No other metadata properties are accessible. Unknown data preserved in custom resources via x-kubernetes-preserve-unknown-fields is not accessible in CEL expressions. This includes: - Unknown field values that are preserved by object schemas with x-kubernetes-preserve-unknown-fields. - Object properties where the property schema is of an "unknown type". An "unknown type" is recursively defined as: - A schema with no type and x-kubernetes-preserve-unknown-fields set to true - An array where the items schema is of an "unknown type" - An object where the additionalProperties schema is of an "unknown type" Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Accessible property names are escaped according to the following rules when accessed in the expression: - '__' escapes to '__underscores__' - '.' escapes to '__dot__' - '-' escapes to '__dash__' - '/' escapes to '__slash__' - Property names that exactly match a CEL RESERVED keyword escape to '__{keyword}__'. The keywords are: "true", "false", "null", "in", "as", "break", "const", "continue", "else", "for", "function", "if", "import", "let", "loop", "package", "namespace", "return". Examples: - Rule accessing a property named "namespace": {"rule": "self.__namespace__ > 0"} - Rule accessing a property named "x-prop": {"rule": "self.x__dash__prop > 0"} - Rule accessing a property named "redact__d": {"rule": "self.redact__underscores__d > 0"} Equality on arrays with x-kubernetes-list-type of 'set' or 'map' ignores element order, i.e. [1, 2] == [2, 1]. Concatenation on arrays with x-kubernetes-list-type use the semantics of the list type: - 'set': `X + Y` performs a union where the array positions of all elements in `X` are preserved and non-intersecting elements in `Y` are appended, retaining their partial order. - 'map': `X + Y` performs a merge where the array positions of all keys in `X` are preserved but the values are overwritten by values in `Y` when the key sets of `X` and `Y` intersect. Elements in `Y` with non-intersecting keys are appended, retaining their partial order. If `rule` makes use of the `oldSelf` variable it is implicitly a `transition rule`. By default, the `oldSelf` variable is the same type as `self`. When `optionalOldSelf` is true, the `oldSelf` variable is a CEL optional variable whose value() is the same type as `self`. See the documentation for the `optionalOldSelf` field for details. Transition rules by default are applied only on UPDATE requests and are skipped if an old value could not be found. You can opt a transition rule into unconditional evaluation by setting `optionalOldSelf` to true. */
   rule: string;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       fieldPath: S.optional(S.String),
       message: S.optional(S.String),
@@ -465,14 +465,14 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule =
       reason: S.optional(S.String),
       rule: S.String,
     }),
-  ).annotate({
-    identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule",
-  }) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule>;
+).annotate({
+  identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule",
+}) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule>;
 
 /** x-kubernetes-validations describes a list of validation rules written in the CEL expression language. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesValidationsList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesValidationsList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesValidationsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesValidationsList>;
@@ -533,8 +533,8 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProp
   /** x-kubernetes-validations describes a list of validation rules written in the CEL expression language. */
   x_kubernetes_validations?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsXKubernetesValidationsList;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       _ref: S.optional(S.String.pipe(T.Body("$ref"))),
       _schema: S.optional(S.String.pipe(T.Body("$schema"))),
@@ -605,16 +605,16 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps =
         ),
       ),
     }),
-  ).annotate({
-    identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps",
-  }) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
+).annotate({
+  identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps",
+}) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps>;
 
 /** CustomResourceValidation is a list of validation methods for CustomResources. */
 export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
   /** openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning. */
   openAPIV3Schema?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       openAPIV3Schema: S.optional(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps),
@@ -628,19 +628,19 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableFiel
   /** jsonPath is a simple JSON path which is evaluated against each custom resource to produce a field selector value. Only JSON paths without the array notation are allowed. Must point to a field of type string, boolean or integer. Types with enum values and strings with formats are allowed. If jsonPath refers to absent field in a resource, the jsonPath evaluates to an empty string. Must not point to metdata fields. Required. */
   jsonPath: string;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       jsonPath: S.String,
     }),
-  ).annotate({
-    identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField",
-  }) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField>;
+).annotate({
+  identifier: "IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField",
+}) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField>;
 
 /** selectableFields specifies paths to fields that may be used as field selectors. A maximum of 8 selectable fields are allowed. See https://kubernetes.io/docs/concepts/overview/working-with-objects/field-selectors */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionSelectableFieldsList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionSelectableFieldsList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionSelectableFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1SelectableField,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersionSelectableFieldsList>;
@@ -654,7 +654,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** statusReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `status.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status`. If there is no value under the given path in the custom resource, the `status.replicas` value in the `/scale` subresource will default to 0. */
   statusReplicasPath: string;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       labelSelectorPath: S.optional(S.String),
@@ -672,7 +672,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object. */
   status?: unknown;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scale: S.optional(
@@ -705,7 +705,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** subresources specify what subresources this version of the defined custom resource have. */
   subresources?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       additionalPrinterColumns: S.optional(
@@ -731,7 +731,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefi
 /** versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpecVersionsList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpecVersionsList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpecVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpecVersionsList>;
@@ -751,7 +751,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** versions is the list of all API versions of the defined custom resource. Version names are used to compute the order in which served versions are listed in API discovery. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10. */
   versions: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpecVersionsList;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       conversion: S.optional(
@@ -783,7 +783,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** type is the type of the condition. Types include Established, NamesAccepted and Terminating. */
   type: string;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastTransitionTime: S.optional(S.String),
@@ -801,7 +801,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefi
 /** conditions indicate state for particular aspects of a CustomResourceDefinition */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusConditionsList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusConditionsList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusConditionsList>;
@@ -809,7 +809,7 @@ export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefi
 /** storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list. */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList =
   Array<string>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList =
   IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversionConversionReviewVersionsList as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList>;
 
 /** CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition */
@@ -823,7 +823,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list. */
   storedVersions?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatusStoredVersionsList;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       acceptedNames: S.optional(
@@ -861,7 +861,7 @@ export interface CreateApiextensionsV1CustomResourceDefinitionRequest {
   /** status indicates the actual state of the CustomResourceDefinition */
   status?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus;
 }
-export const CreateApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -898,7 +898,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** status indicates the actual state of the CustomResourceDefinition */
   status?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiVersion: S.optional(S.String),
@@ -920,7 +920,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -967,37 +967,36 @@ export interface DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest 
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest",
-  }) as any as S.Schema<DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest>;
+const DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest",
+}) as any as S.Schema<DeleteApiextensionsV1CollectionCustomResourceDefinitionRequest>;
 
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
@@ -1008,7 +1007,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -1021,7 +1020,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -1040,7 +1039,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -1058,7 +1057,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -1079,7 +1078,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -1110,7 +1109,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -1147,7 +1146,7 @@ export interface DeleteApiextensionsV1CustomResourceDefinitionRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1171,7 +1170,7 @@ export const DeleteApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*
 }) as any as S.Schema<DeleteApiextensionsV1CustomResourceDefinitionRequest>;
 
 export interface GetApiextensionsAPIGroupRequest {}
-export const GetApiextensionsAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiextensionsAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/apiextensions.k8s.io/", code: 200 })),
 ).annotate({
   identifier: "GetApiextensionsAPIGroupRequest",
@@ -1184,7 +1183,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -1200,7 +1199,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -1212,15 +1211,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -1239,7 +1237,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1255,7 +1253,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetApiextensionsV1APIResourcesRequest {}
-export const GetApiextensionsV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiextensionsV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/apiextensions.k8s.io/v1/", code: 200 })),
 ).annotate({
   identifier: "GetApiextensionsV1APIResourcesRequest",
@@ -1263,17 +1261,17 @@ export const GetApiextensionsV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -1299,7 +1297,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -1319,7 +1317,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -1334,7 +1332,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -1371,7 +1369,7 @@ export interface ListApiextensionsV1CustomResourceDefinitionRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1399,7 +1397,7 @@ export const ListApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ 
 /** items list individual CustomResourceDefinition objects */
 export type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionListItemsList =
   Array<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition>;
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionListItemsList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition,
   ) as any as S.Schema<IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionListItemsList>;
@@ -1415,7 +1413,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /** Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList =
+const IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiVersion: S.optional(S.String),
@@ -1441,7 +1439,7 @@ export interface PatchApiextensionsV1CustomResourceDefinitionRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1474,22 +1472,21 @@ export interface PatchApiextensionsV1CustomResourceDefinitionStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchApiextensionsV1CustomResourceDefinitionStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
-        code: 200,
-      }),
-    ),
+const PatchApiextensionsV1CustomResourceDefinitionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchApiextensionsV1CustomResourceDefinitionStatusRequest",
 }) as any as S.Schema<PatchApiextensionsV1CustomResourceDefinitionStatusRequest>;
@@ -1500,7 +1497,7 @@ export interface ReadApiextensionsV1CustomResourceDefinitionRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1521,18 +1518,17 @@ export interface ReadApiextensionsV1CustomResourceDefinitionStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadApiextensionsV1CustomResourceDefinitionStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
-        code: 200,
-      }),
-    ),
+const ReadApiextensionsV1CustomResourceDefinitionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadApiextensionsV1CustomResourceDefinitionStatusRequest",
 }) as any as S.Schema<ReadApiextensionsV1CustomResourceDefinitionStatusRequest>;
@@ -1559,7 +1555,7 @@ export interface ReplaceApiextensionsV1CustomResourceDefinitionRequest {
   /** status indicates the actual state of the CustomResourceDefinition */
   status?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus;
 }
-export const ReplaceApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1606,28 +1602,27 @@ export interface ReplaceApiextensionsV1CustomResourceDefinitionStatusRequest {
   /** status indicates the actual state of the CustomResourceDefinition */
   status?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus;
 }
-export const ReplaceApiextensionsV1CustomResourceDefinitionStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec,
-      status: S.optional(
-        IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
-        code: 200,
-      }),
+const ReplaceApiextensionsV1CustomResourceDefinitionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec,
+    status: S.optional(
+      IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus,
     ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceApiextensionsV1CustomResourceDefinitionStatusRequest",
 }) as any as S.Schema<ReplaceApiextensionsV1CustomResourceDefinitionStatusRequest>;
@@ -1660,7 +1655,7 @@ export interface WatchApiextensionsV1CustomResourceDefinitionRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchApiextensionsV1CustomResourceDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1692,7 +1687,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -1727,7 +1722,7 @@ export interface WatchApiextensionsV1CustomResourceDefinitionListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchApiextensionsV1CustomResourceDefinitionListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchApiextensionsV1CustomResourceDefinitionListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),

@@ -13,7 +13,7 @@ export interface CreateAttachmentRequest {
   id: string;
   app_name: string;
 }
-export const CreateAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     app_name: S.String,
@@ -26,7 +26,7 @@ export interface CreateAttachmentResponseData {
   managed_service_id?: number;
   attached_at?: string;
 }
-export const CreateAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
+const CreateAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     app_id: S.optional(S.Number),
@@ -40,7 +40,7 @@ export const CreateAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAttachmentResponse {
   data?: CreateAttachmentResponseData;
 }
-export const CreateAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(CreateAttachmentResponseData),
   }),
@@ -50,7 +50,7 @@ export interface CreateBackupRequest {
   id: string;
   type?: string;
 }
-export const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     type: S.optional(S.String),
@@ -58,7 +58,7 @@ export const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateBackupRequest" }) as any as S.Schema<CreateBackupRequest>;
 
 export interface CreateBackupResponse {}
-export const CreateBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateBackupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateBackupResponse",
 }) as any as S.Schema<CreateBackupResponse>;
 
@@ -71,7 +71,7 @@ export interface CreateClusterRequest {
   storage_in_gb?: number;
   postgis_enabled?: boolean;
 }
-export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Label()),
     name: S.String,
@@ -91,7 +91,7 @@ export interface Organization {
   slug?: string;
   raw_slug?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -101,16 +101,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type IpAssignments = { [key: string]: string | undefined };
-export const IpAssignments = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<IpAssignments>;
+const IpAssignments = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<IpAssignments>;
 
 export interface AttachedApp {
   name?: string;
   id?: string;
 }
-export const AttachedApp = /*@__PURE__*/ S.suspend(() =>
+const AttachedApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -118,7 +115,7 @@ export const AttachedApp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttachedApp" }) as any as S.Schema<AttachedApp>;
 
 export type ManagedClusterAttachedAppsList = Array<AttachedApp>;
-export const ManagedClusterAttachedAppsList = /*@__PURE__*/ S.Array(
+const ManagedClusterAttachedAppsList = /*@__PURE__*/ S.Array(
   AttachedApp,
 ) as any as S.Schema<ManagedClusterAttachedAppsList>;
 
@@ -138,7 +135,7 @@ export interface ManagedCluster {
   postgis_enabled?: boolean;
   environment?: string;
 }
-export const ManagedCluster = /*@__PURE__*/ S.suspend(() =>
+const ManagedCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -158,7 +155,7 @@ export const ManagedCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedCluster" }) as any as S.Schema<ManagedCluster>;
 
 export type CreateClusterResponseErrorsMap = { [key: string]: unknown | undefined };
-export const CreateClusterResponseErrorsMap = /*@__PURE__*/ S.Record(
+const CreateClusterResponseErrorsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateClusterResponseErrorsMap>;
@@ -168,7 +165,7 @@ export interface CreateClusterResponse {
   data?: ManagedCluster;
   errors?: CreateClusterResponseErrorsMap;
 }
-export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.optional(S.Boolean),
     data: S.optional(ManagedCluster),
@@ -180,7 +177,7 @@ export interface CreateDatabaseRequest {
   id: string;
   name: string;
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.String,
@@ -188,18 +185,17 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatabaseRequest" }) as any as S.Schema<CreateDatabaseRequest>;
 
 export interface CreateDatabaseResponse {}
-export const CreateDatabaseResponse =
-  CreateBackupResponse as any as S.Schema<CreateDatabaseResponse>;
+const CreateDatabaseResponse = CreateBackupResponse as any as S.Schema<CreateDatabaseResponse>;
 
 export type CreateUserRequestRole = "schema_admin" | "writer" | "reader";
-export const CreateUserRequestRole = S.String;
+const CreateUserRequestRole = S.String;
 
 export interface CreateUserRequest {
   id: string;
   username: string;
   role: CreateUserRequestRole | (string & {});
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     username: S.String,
@@ -212,7 +208,7 @@ export interface User {
   username?: string;
   role?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     username: S.optional(S.String),
@@ -223,7 +219,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 export interface CreateUserResponse {
   data?: User;
 }
-export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(User),
   }),
@@ -233,7 +229,7 @@ export interface DeleteAttachmentRequest {
   id: string;
   app_name: string;
 }
-export const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     app_name: S.String.pipe(T.Label()),
@@ -245,7 +241,7 @@ export const DeleteAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAttachmentResponseData {
   message?: string;
 }
-export const DeleteAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -256,7 +252,7 @@ export const DeleteAttachmentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAttachmentResponse {
   data?: DeleteAttachmentResponseData;
 }
-export const DeleteAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(DeleteAttachmentResponseData),
   }),
@@ -266,7 +262,7 @@ export interface DeleteUserRequest {
   id: string;
   username: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -274,13 +270,13 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = CreateBackupResponse as any as S.Schema<DeleteUserResponse>;
+const DeleteUserResponse = CreateBackupResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface DestroyClusterRequest {
   org_slug: string;
   id: string;
 }
-export const DestroyClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DestroyClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -294,8 +290,7 @@ export const DestroyClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestroyClusterRequest" }) as any as S.Schema<DestroyClusterRequest>;
 
 export interface DestroyClusterResponse {}
-export const DestroyClusterResponse =
-  CreateBackupResponse as any as S.Schema<DestroyClusterResponse>;
+const DestroyClusterResponse = CreateBackupResponse as any as S.Schema<DestroyClusterResponse>;
 
 export interface DisableExtensionRequest {
   id: string;
@@ -303,7 +298,7 @@ export interface DisableExtensionRequest {
   name: string;
   force?: boolean;
 }
-export const DisableExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
@@ -319,8 +314,7 @@ export const DisableExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableExtensionRequest" }) as any as S.Schema<DisableExtensionRequest>;
 
 export interface DisableExtensionResponse {}
-export const DisableExtensionResponse =
-  CreateBackupResponse as any as S.Schema<DisableExtensionResponse>;
+const DisableExtensionResponse = CreateBackupResponse as any as S.Schema<DisableExtensionResponse>;
 
 export interface EnableExtensionRequest {
   id: string;
@@ -329,7 +323,7 @@ export interface EnableExtensionRequest {
   schema?: string;
   create_schema_if_needed?: boolean;
 }
-export const EnableExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
@@ -346,14 +340,13 @@ export const EnableExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableExtensionRequest" }) as any as S.Schema<EnableExtensionRequest>;
 
 export interface EnableExtensionResponse {}
-export const EnableExtensionResponse =
-  CreateBackupResponse as any as S.Schema<EnableExtensionResponse>;
+const EnableExtensionResponse = CreateBackupResponse as any as S.Schema<EnableExtensionResponse>;
 
 export interface GetClusterRequest {
   org_slug: string;
   id: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -369,7 +362,7 @@ export interface ClusterCredentials {
   dbname?: string;
   pgbouncer_uri?: string | Redacted.Redacted<string>;
 }
-export const ClusterCredentials = /*@__PURE__*/ S.suspend(() =>
+const ClusterCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     user: S.optional(S.String),
@@ -383,7 +376,7 @@ export interface GetClusterResponse {
   data?: ManagedCluster;
   credentials?: ClusterCredentials;
 }
-export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ManagedCluster),
     credentials: S.optional(ClusterCredentials),
@@ -393,7 +386,7 @@ export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetClusterByIdRequest {
   id: string;
 }
-export const GetClusterByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}", code: 200 })),
@@ -403,7 +396,7 @@ export interface GetUserCredentialsRequest {
   id: string;
   username: string;
 }
-export const GetUserCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -423,7 +416,7 @@ export interface GetUserCredentialsResponseData {
   user?: string;
   password?: string | Redacted.Redacted<string>;
 }
-export const GetUserCredentialsResponseData = /*@__PURE__*/ S.suspend(() =>
+const GetUserCredentialsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     user: S.optional(S.String),
@@ -436,7 +429,7 @@ export const GetUserCredentialsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserCredentialsResponse {
   data?: GetUserCredentialsResponseData;
 }
-export const GetUserCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(GetUserCredentialsResponseData),
   }),
@@ -447,7 +440,7 @@ export const GetUserCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListBackupsRequest {
   id: string;
 }
-export const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}/backups", code: 200 })),
@@ -460,7 +453,7 @@ export interface ClusterBackup {
   start?: string;
   stop?: string;
 }
-export const ClusterBackup = /*@__PURE__*/ S.suspend(() =>
+const ClusterBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(S.String),
@@ -471,14 +464,14 @@ export const ClusterBackup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterBackup" }) as any as S.Schema<ClusterBackup>;
 
 export type ListBackupsResponseDataList = Array<ClusterBackup>;
-export const ListBackupsResponseDataList = /*@__PURE__*/ S.Array(
+const ListBackupsResponseDataList = /*@__PURE__*/ S.Array(
   ClusterBackup,
 ) as any as S.Schema<ListBackupsResponseDataList>;
 
 export interface ListBackupsResponse {
   data?: ListBackupsResponseDataList;
 }
-export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListBackupsResponseDataList),
   }),
@@ -487,21 +480,21 @@ export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListClustersRequest {
   org_slug: string;
 }
-export const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/organizations/{org_slug}/postgresv2", code: 200 })),
 ).annotate({ identifier: "ListClustersRequest" }) as any as S.Schema<ListClustersRequest>;
 
 export type ListClustersResponseDataList = Array<ManagedCluster>;
-export const ListClustersResponseDataList = /*@__PURE__*/ S.Array(
+const ListClustersResponseDataList = /*@__PURE__*/ S.Array(
   ManagedCluster,
 ) as any as S.Schema<ListClustersResponseDataList>;
 
 export interface ListClustersResponse {
   data?: ListClustersResponseDataList;
 }
-export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListClustersResponseDataList),
   }),
@@ -510,7 +503,7 @@ export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListDatabasesRequest {
   id: string;
 }
-export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}/databases", code: 200 })),
@@ -519,21 +512,21 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Database {
   name?: string;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 export type ListDatabasesResponseDataList = Array<Database>;
-export const ListDatabasesResponseDataList = /*@__PURE__*/ S.Array(
+const ListDatabasesResponseDataList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<ListDatabasesResponseDataList>;
 
 export interface ListDatabasesResponse {
   data?: ListDatabasesResponseDataList;
 }
-export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListDatabasesResponseDataList),
   }),
@@ -543,7 +536,7 @@ export interface ListExtensionsRequest {
   id: string;
   database: string;
 }
-export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
@@ -560,7 +553,7 @@ export interface InstalledExtension {
   version?: string;
   schema?: string;
 }
-export const InstalledExtension = /*@__PURE__*/ S.suspend(() =>
+const InstalledExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     schema: S.optional(S.String),
@@ -575,7 +568,7 @@ export interface Extension {
   is_system?: boolean;
   installed?: InstalledExtension;
 }
-export const Extension = /*@__PURE__*/ S.suspend(() =>
+const Extension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -587,14 +580,14 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Extension" }) as any as S.Schema<Extension>;
 
 export type ListExtensionsResponseDataList = Array<Extension>;
-export const ListExtensionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListExtensionsResponseDataList = /*@__PURE__*/ S.Array(
   Extension,
 ) as any as S.Schema<ListExtensionsResponseDataList>;
 
 export interface ListExtensionsResponse {
   data?: ListExtensionsResponseDataList;
 }
-export const ListExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListExtensionsResponseDataList),
   }),
@@ -603,7 +596,7 @@ export const ListExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListRegionsRequest {
   org_slug: string;
 }
-export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_slug: S.String.pipe(T.Label()),
   }).pipe(
@@ -619,7 +612,7 @@ export interface Region {
   code?: string;
   available?: boolean;
 }
-export const Region = /*@__PURE__*/ S.suspend(() =>
+const Region = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     available: S.optional(S.Boolean),
@@ -627,14 +620,14 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 export type ListRegionsResponseDataList = Array<Region>;
-export const ListRegionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListRegionsResponseDataList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<ListRegionsResponseDataList>;
 
 export interface ListRegionsResponse {
   data?: ListRegionsResponseDataList;
 }
-export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListRegionsResponseDataList),
   }),
@@ -643,21 +636,21 @@ export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListUsersRequest {
   id: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}/users", code: 200 })),
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type ListUsersResponseDataList = Array<User>;
-export const ListUsersResponseDataList = /*@__PURE__*/ S.Array(
+const ListUsersResponseDataList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<ListUsersResponseDataList>;
 
 export interface ListUsersResponse {
   data?: ListUsersResponseDataList;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListUsersResponseDataList),
   }),
@@ -669,7 +662,7 @@ export interface RestoreBackupRequest {
   name?: string;
   pitr_time?: string;
 }
-export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     backup_id: S.optional(S.String),
@@ -681,21 +674,21 @@ export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RestoreBackupResponse {
   data?: ManagedCluster;
 }
-export const RestoreBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const RestoreBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ManagedCluster),
   }),
 ).annotate({ identifier: "RestoreBackupResponse" }) as any as S.Schema<RestoreBackupResponse>;
 
 export type UpdateUserRoleRequestRole = "schema_admin" | "writer" | "reader";
-export const UpdateUserRoleRequestRole = S.String;
+const UpdateUserRoleRequestRole = S.String;
 
 export interface UpdateUserRoleRequest {
   id: string;
   username: string;
   role: UpdateUserRoleRequestRole | (string & {});
 }
-export const UpdateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -704,8 +697,7 @@ export const UpdateUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRoleRequest" }) as any as S.Schema<UpdateUserRoleRequest>;
 
 export interface UpdateUserRoleResponse {}
-export const UpdateUserRoleResponse =
-  CreateBackupResponse as any as S.Schema<UpdateUserRoleResponse>;
+const UpdateUserRoleResponse = CreateBackupResponse as any as S.Schema<UpdateUserRoleResponse>;
 
 export type CreateAttachmentError = NotFound | Conflict | FlyIoOpError;
 /** Attach a cluster to a Machines app */

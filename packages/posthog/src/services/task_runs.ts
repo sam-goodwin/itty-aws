@@ -47,13 +47,13 @@ export class NotFound
 
 /** * `http` - http * `sse` - sse */
 export type ImportedMcpServerTypeEnum = "http" | "sse";
-export const ImportedMcpServerTypeEnum = S.String;
+const ImportedMcpServerTypeEnum = S.String;
 
 export interface ImportedMcpServerHeader {
   name: string;
   value: string;
 }
-export const ImportedMcpServerHeader = /*@__PURE__*/ S.suspend(() =>
+const ImportedMcpServerHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -61,7 +61,7 @@ export const ImportedMcpServerHeader = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportedMcpServerHeader" }) as any as S.Schema<ImportedMcpServerHeader>;
 
 export type ImportedMcpServerHeadersList = Array<ImportedMcpServerHeader>;
-export const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
+const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
   ImportedMcpServerHeader,
 ) as any as S.Schema<ImportedMcpServerHeadersList>;
 
@@ -72,7 +72,7 @@ export interface ImportedMcpServer {
   url: string;
   headers?: ImportedMcpServerHeadersList;
 }
-export const ImportedMcpServer = /*@__PURE__*/ S.suspend(() =>
+const ImportedMcpServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ImportedMcpServerTypeEnum,
     name: S.String,
@@ -83,7 +83,7 @@ export const ImportedMcpServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
 export type CreateTasksRunRequestImportedMcpServersList = Array<ImportedMcpServer>;
-export const CreateTasksRunRequestImportedMcpServersList = /*@__PURE__*/ S.Array(
+const CreateTasksRunRequestImportedMcpServersList = /*@__PURE__*/ S.Array(
   ImportedMcpServer,
 ) as any as S.Schema<CreateTasksRunRequestImportedMcpServersList>;
 
@@ -91,7 +91,7 @@ export const CreateTasksRunRequestImportedMcpServersList = /*@__PURE__*/ S.Array
 export interface RelayedMcpServer {
   name: string;
 }
-export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
+const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -99,33 +99,33 @@ export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
 export type CreateTasksRunRequestRelayedMcpServersList = Array<RelayedMcpServer>;
-export const CreateTasksRunRequestRelayedMcpServersList = /*@__PURE__*/ S.Array(
+const CreateTasksRunRequestRelayedMcpServersList = /*@__PURE__*/ S.Array(
   RelayedMcpServer,
 ) as any as S.Schema<CreateTasksRunRequestRelayedMcpServersList>;
 
 /** * `posthog-gateway` - posthog-gateway * `own-subscription` - own-subscription */
 export type ModelAccessEnum = "posthog-gateway" | "own-subscription";
-export const ModelAccessEnum = S.String;
+const ModelAccessEnum = S.String;
 
 /** * `local` - local * `cloud` - cloud */
 export type RunEnvironmentEnum = "local" | "cloud";
-export const RunEnvironmentEnum = S.String;
+const RunEnvironmentEnum = S.String;
 
 /** * `interactive` - interactive * `background` - background */
 export type TaskExecutionModeEnum = "interactive" | "background";
-export const TaskExecutionModeEnum = S.String;
+const TaskExecutionModeEnum = S.String;
 
 /** * `user` - user * `bot` - bot */
 export type PrAuthorshipModeEnum = "user" | "bot";
-export const PrAuthorshipModeEnum = S.String;
+const PrAuthorshipModeEnum = S.String;
 
 /** * `manual` - manual * `signal_report` - signal_report */
 export type TaskBootstrapRunSourceEnum = "manual" | "signal_report";
-export const TaskBootstrapRunSourceEnum = S.String;
+const TaskBootstrapRunSourceEnum = S.String;
 
 /** * `claude` - claude * `codex` - codex */
 export type RuntimeAdapterEnum = "claude" | "codex";
-export const RuntimeAdapterEnum = S.String;
+const RuntimeAdapterEnum = S.String;
 
 /** * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
 export type TaskRunReasoningEffortEnum =
@@ -137,11 +137,11 @@ export type TaskRunReasoningEffortEnum =
   | "xhigh"
   | "max"
   | "ultracode";
-export const TaskRunReasoningEffortEnum = S.String;
+const TaskRunReasoningEffortEnum = S.String;
 
 /** * `200k` - 200k * `1m` - 1m */
 export type ContextWindowEnum = "200k" | "1m";
-export const ContextWindowEnum = S.String;
+const ContextWindowEnum = S.String;
 
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
 export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
@@ -152,7 +152,7 @@ export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "auto"
   | "read-only"
   | "full-access";
-export const TaskRunBootstrapCreateRequestInitialPermissionModeEnum = S.String;
+const TaskRunBootstrapCreateRequestInitialPermissionModeEnum = S.String;
 
 export interface CreateTasksRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -203,7 +203,7 @@ export interface CreateTasksRunRequest {
   /** Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like 'plan'. Codex runtimes accept native Codex modes like 'plan', 'auto', and 'read-only'. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
   initial_permission_mode?: TaskRunBootstrapCreateRequestInitialPermissionModeEnum | (string & {});
 }
-export const CreateTasksRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -236,31 +236,31 @@ export const CreateTasksRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `anthropic` - anthropic * `openai` - openai */
 export type TaskRunDetailDTOProviderEnum = "anthropic" | "openai";
-export const TaskRunDetailDTOProviderEnum = S.String;
+const TaskRunDetailDTOProviderEnum = S.String;
 
 export type TaskRunDetailDTOOutputMap = { [key: string]: unknown | undefined };
-export const TaskRunDetailDTOOutputMap = /*@__PURE__*/ S.Record(
+const TaskRunDetailDTOOutputMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TaskRunDetailDTOOutputMap>;
 
 /** Latest slug tags for this task, including tags inherited from an earlier run. */
 export type TaskRunDetailDTOTaskTagsList = Array<string>;
-export const TaskRunDetailDTOTaskTagsList = /*@__PURE__*/ S.Array(
+const TaskRunDetailDTOTaskTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TaskRunDetailDTOTaskTagsList>;
 
 export type TaskRunDetailDTOStateMap = { [key: string]: unknown | undefined };
-export const TaskRunDetailDTOStateMap =
+const TaskRunDetailDTOStateMap =
   TaskRunDetailDTOOutputMap as any as S.Schema<TaskRunDetailDTOStateMap>;
 
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
 export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
-export const SkillSourceEnum = S.String;
+const SkillSourceEnum = S.String;
 
 /** * `zip` - zip */
 export type BundleFormatEnum = "zip";
-export const BundleFormatEnum = S.String;
+const BundleFormatEnum = S.String;
 
 export interface TaskRunSkillBundleMetadata {
   /** Name of the local skill included in a skill_bundle artifact. */
@@ -274,7 +274,7 @@ export interface TaskRunSkillBundleMetadata {
   /** Version of the local skill bundle metadata schema. */
   schema_version: number;
 }
-export const TaskRunSkillBundleMetadata = /*@__PURE__*/ S.suspend(() =>
+const TaskRunSkillBundleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skill_name: S.String,
     skill_source: SkillSourceEnum,
@@ -288,8 +288,6 @@ export const TaskRunSkillBundleMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** * `posthog_object` - posthog_object */
 export type ReferenceTypeEnum = "posthog_object";
-export const ReferenceTypeEnum = S.String;
-
 /** * `insight` - insight * `hogql` - hogql * `dashboard` - dashboard * `error` - error * `replay` - replay * `flag` - flag * `experiment` - experiment * `survey` - survey * `ticket` - ticket * `report` - report * `trace` - trace * `eval` - eval * `event` - event * `cohort` - cohort * `action` - action * `person` - person */
 export type ObjectKindEnum =
   | "insight"
@@ -308,13 +306,10 @@ export type ObjectKindEnum =
   | "cohort"
   | "action"
   | "person";
-export const ObjectKindEnum = S.String;
+const ObjectKindEnum = S.String;
 
 /** Completed assistant message identifiers that referenced the object. */
 export type TaskRunPostHogReferenceMetadataSourceMessageIdsList = Array<string>;
-export const TaskRunPostHogReferenceMetadataSourceMessageIdsList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<TaskRunPostHogReferenceMetadataSourceMessageIdsList>;
-
 export interface TaskRunPostHogReferenceMetadata {
   /** Reference metadata type. posthog_object identifies a live PostHog object. * `posthog_object` - posthog_object */
   reference_type: ReferenceTypeEnum;
@@ -327,24 +322,12 @@ export interface TaskRunPostHogReferenceMetadata {
   /** Number of distinct completed assistant messages that referenced the object. */
   occurrence_count: number;
 }
-export const TaskRunPostHogReferenceMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reference_type: ReferenceTypeEnum,
-    object_kind: ObjectKindEnum,
-    object_id: S.String,
-    source_message_ids: TaskRunPostHogReferenceMetadataSourceMessageIdsList,
-    occurrence_count: S.Number,
-  }),
-).annotate({
-  identifier: "TaskRunPostHogReferenceMetadata",
-}) as any as S.Schema<TaskRunPostHogReferenceMetadata>;
-
 export type TaskRunArtifactMetadata = TaskRunSkillBundleMetadata | TaskRunPostHogReferenceMetadata;
-export const TaskRunArtifactMetadata = S.Unknown as any as S.Schema<TaskRunArtifactMetadata>;
+const TaskRunArtifactMetadata = S.Unknown as any as S.Schema<TaskRunArtifactMetadata>;
 
 /** * `agent` - agent * `user` - user */
 export type UploadedByEnum = "agent" | "user";
-export const UploadedByEnum = S.String;
+const UploadedByEnum = S.String;
 
 export interface TaskRunArtifactResponse {
   /** Stable identifier for the artifact within this run */
@@ -374,7 +357,7 @@ export interface TaskRunArtifactResponse {
   /** Stable download URL for the artifact. Populated on the finalize-upload response so the caller can link to the file; it redirects to a fresh presigned URL on each request and is not persisted on the manifest. */
   url?: string;
 }
-export const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -393,7 +376,7 @@ export const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskRunArtifactResponse" }) as any as S.Schema<TaskRunArtifactResponse>;
 
 export type TaskRunDetailDTOArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ S.Array(
+const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactResponse,
 ) as any as S.Schema<TaskRunDetailDTOArtifactsList>;
 
@@ -432,7 +415,7 @@ export interface TaskRunDetailDTO {
   /** True when this run's sandbox serves a dev stack preview, so clients can offer the preview link. Open it through the run's `preview/` endpoint, which mints a fresh access token on every request. */
   preview_available?: boolean;
 }
-export const TaskRunDetailDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskRunDetailDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task: S.String,
@@ -471,11 +454,11 @@ export type TaskAnalysisGoalKindEnum =
   | "wait"
   | "operate"
   | "deliver";
-export const TaskAnalysisGoalKindEnum = S.String;
+const TaskAnalysisGoalKindEnum = S.String;
 
 /** * `worked` - worked * `failed` - failed * `abandoned` - abandoned * `unknown` - unknown */
 export type TaskAnalysisOutcomeEnum = "worked" | "failed" | "abandoned" | "unknown";
-export const TaskAnalysisOutcomeEnum = S.String;
+const TaskAnalysisOutcomeEnum = S.String;
 
 /** * `missing_binary` - missing_binary * `missing_package` - missing_package * `service_down` - service_down * `missing_build_artifact` - missing_build_artifact * `missing_credential` - missing_credential * `memory_limit` - memory_limit * `network` - network * `shallow_git` - shallow_git * `tool_error` - tool_error * `tool_syntax` - tool_syntax * `api_error` - api_error * `missing_flag` - missing_flag * `unclear_instructions` - unclear_instructions * `user_redirect` - user_redirect */
 export type TaskAnalysisBlockerKindEnum =
@@ -493,16 +476,16 @@ export type TaskAnalysisBlockerKindEnum =
   | "missing_flag"
   | "unclear_instructions"
   | "user_redirect";
-export const TaskAnalysisBlockerKindEnum = S.String;
+const TaskAnalysisBlockerKindEnum = S.String;
 
 /** Command heads run in the activity, in order, adjacent duplicates removed. */
 export type CreateTasksRunsAnalysisActivityRequestCommandsList = Array<string>;
-export const CreateTasksRunsAnalysisActivityRequestCommandsList =
+const CreateTasksRunsAnalysisActivityRequestCommandsList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsAnalysisActivityRequestCommandsList>;
 
 /** Skills, AGENTS.md files, templates, and wiki pages the agent read in the activity. */
 export type CreateTasksRunsAnalysisActivityRequestGuidanceReadList = Array<string>;
-export const CreateTasksRunsAnalysisActivityRequestGuidanceReadList =
+const CreateTasksRunsAnalysisActivityRequestGuidanceReadList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsAnalysisActivityRequestGuidanceReadList>;
 
 export interface CreateTasksRunsAnalysisActivityRequest {
@@ -541,7 +524,7 @@ export interface CreateTasksRunsAnalysisActivityRequest {
   /** Skills, AGENTS.md files, templates, and wiki pages the agent read in the activity. */
   guidance_read?: CreateTasksRunsAnalysisActivityRequestGuidanceReadList;
 }
-export const CreateTasksRunsAnalysisActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsAnalysisActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -576,7 +559,7 @@ export interface TaskRunAnalysisActivityResponse {
   /** Zero-based position of the stored activity on the run. */
   activity_index: number;
 }
-export const TaskRunAnalysisActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunAnalysisActivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activity_index: S.Number,
   }),
@@ -590,7 +573,7 @@ export interface CreateTasksRunsAnalyzeRequest {
   task_id: string;
   id: string;
 }
-export const CreateTasksRunsAnalyzeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsAnalyzeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -612,7 +595,7 @@ export interface TaskRunAnalyzeResponse {
   /** True when a new analysis task was created; false when an existing analysis for this run was returned. */
   created: boolean;
 }
-export const TaskRunAnalyzeResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunAnalyzeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analysis_task_id: S.String,
     created: S.Boolean,
@@ -620,13 +603,13 @@ export const TaskRunAnalyzeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskRunAnalyzeResponse" }) as any as S.Schema<TaskRunAnalyzeResponse>;
 
 export type CreateTasksRunsAppendLogRequestEntriesItemMap = { [key: string]: unknown | undefined };
-export const CreateTasksRunsAppendLogRequestEntriesItemMap =
+const CreateTasksRunsAppendLogRequestEntriesItemMap =
   TaskRunDetailDTOOutputMap as any as S.Schema<CreateTasksRunsAppendLogRequestEntriesItemMap>;
 
 /** Array of log entry dictionaries to append */
 export type CreateTasksRunsAppendLogRequestEntriesList =
   Array<CreateTasksRunsAppendLogRequestEntriesItemMap>;
-export const CreateTasksRunsAppendLogRequestEntriesList = /*@__PURE__*/ S.Array(
+const CreateTasksRunsAppendLogRequestEntriesList = /*@__PURE__*/ S.Array(
   CreateTasksRunsAppendLogRequestEntriesItemMap,
 ) as any as S.Schema<CreateTasksRunsAppendLogRequestEntriesList>;
 
@@ -638,7 +621,7 @@ export interface CreateTasksRunsAppendLogRequest {
   /** Array of log entry dictionaries to append */
   entries?: CreateTasksRunsAppendLogRequestEntriesList;
 }
-export const CreateTasksRunsAppendLogRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsAppendLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -665,11 +648,11 @@ export type TaskRunArtifactTypeEnum =
   | "tree_snapshot"
   | "user_attachment"
   | "skill_bundle";
-export const TaskRunArtifactTypeEnum = S.String;
+const TaskRunArtifactTypeEnum = S.String;
 
 /** * `utf-8` - utf-8 * `base64` - base64 */
 export type ContentEncodingEnum = "utf-8" | "base64";
-export const ContentEncodingEnum = S.String;
+const ContentEncodingEnum = S.String;
 
 export interface TaskRunArtifactUpload {
   /** File name to associate with the artifact */
@@ -687,7 +670,7 @@ export interface TaskRunArtifactUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
-export const TaskRunArtifactUpload = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactUpload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(TaskRunArtifactTypeEnum),
@@ -701,7 +684,7 @@ export const TaskRunArtifactUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of artifacts to upload */
 export type CreateTasksRunsArtifactRequestArtifactsList = Array<TaskRunArtifactUpload>;
-export const CreateTasksRunsArtifactRequestArtifactsList = /*@__PURE__*/ S.Array(
+const CreateTasksRunsArtifactRequestArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactUpload,
 ) as any as S.Schema<CreateTasksRunsArtifactRequestArtifactsList>;
 
@@ -713,7 +696,7 @@ export interface CreateTasksRunsArtifactRequest {
   /** Array of artifacts to upload */
   artifacts?: CreateTasksRunsArtifactRequestArtifactsList;
 }
-export const CreateTasksRunsArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -732,14 +715,14 @@ export const CreateTasksRunsArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsUploadResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunArtifactsUploadResponseArtifactsList =
+const TaskRunArtifactsUploadResponseArtifactsList =
   TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunArtifactsUploadResponseArtifactsList>;
 
 export interface TaskRunArtifactsUploadResponse {
   /** Updated list of artifacts on the run */
   artifacts?: TaskRunArtifactsUploadResponseArtifactsList;
 }
-export const TaskRunArtifactsUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactsUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: S.optional(TaskRunArtifactsUploadResponseArtifactsList),
   }),
@@ -749,7 +732,7 @@ export const TaskRunArtifactsUploadResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Manifest ids of the artifacts to update. Pass every version of a file together so the whole file is dismissed rather than a single upload of it. */
 export type CreateTasksRunsArtifactsDismissRequestArtifactIdsList = Array<string>;
-export const CreateTasksRunsArtifactsDismissRequestArtifactIdsList =
+const CreateTasksRunsArtifactsDismissRequestArtifactIdsList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsArtifactsDismissRequestArtifactIdsList>;
 
 export interface CreateTasksRunsArtifactsDismissRequest {
@@ -762,7 +745,7 @@ export interface CreateTasksRunsArtifactsDismissRequest {
   /** True to hide the artifacts from clients, false to show them again. */
   dismissed?: boolean;
 }
-export const CreateTasksRunsArtifactsDismissRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsArtifactsDismissRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -782,14 +765,14 @@ export const CreateTasksRunsArtifactsDismissRequest = /*@__PURE__*/ S.suspend(()
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsDismissResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunArtifactsDismissResponseArtifactsList =
+const TaskRunArtifactsDismissResponseArtifactsList =
   TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunArtifactsDismissResponseArtifactsList>;
 
 export interface TaskRunArtifactsDismissResponse {
   /** Updated list of artifacts on the run */
   artifacts: TaskRunArtifactsDismissResponseArtifactsList;
 }
-export const TaskRunArtifactsDismissResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactsDismissResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: TaskRunArtifactsDismissResponseArtifactsList,
   }),
@@ -805,7 +788,7 @@ export interface CreateTasksRunsArtifactsPresignRequest {
   /** S3 storage path returned in the artifact manifest */
   storage_path?: string;
 }
-export const CreateTasksRunsArtifactsPresignRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsArtifactsPresignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -828,7 +811,7 @@ export interface TaskRunArtifactPresignResponse {
   /** URL expiry in seconds */
   expires_in?: number;
 }
-export const TaskRunArtifactPresignResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactPresignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     expires_in: S.optional(S.Number),
@@ -847,7 +830,7 @@ export interface TaskRunPostHogReference {
   /** Stable identifier of the completed assistant message containing the reference. */
   source_message_id: string;
 }
-export const TaskRunPostHogReference = /*@__PURE__*/ S.suspend(() =>
+const TaskRunPostHogReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     object_kind: ObjectKindEnum,
@@ -858,7 +841,7 @@ export const TaskRunPostHogReference = /*@__PURE__*/ S.suspend(() =>
 
 /** PostHog object references extracted from one completed assistant message. */
 export type CreateTasksRunsArtifactsReferenceRequestReferencesList = Array<TaskRunPostHogReference>;
-export const CreateTasksRunsArtifactsReferenceRequestReferencesList = /*@__PURE__*/ S.Array(
+const CreateTasksRunsArtifactsReferenceRequestReferencesList = /*@__PURE__*/ S.Array(
   TaskRunPostHogReference,
 ) as any as S.Schema<CreateTasksRunsArtifactsReferenceRequestReferencesList>;
 
@@ -870,7 +853,7 @@ export interface CreateTasksRunsArtifactsReferenceRequest {
   /** PostHog object references extracted from one completed assistant message. */
   references: CreateTasksRunsArtifactsReferenceRequestReferencesList;
 }
-export const CreateTasksRunsArtifactsReferenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsArtifactsReferenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -889,14 +872,11 @@ export const CreateTasksRunsArtifactsReferenceRequest = /*@__PURE__*/ S.suspend(
 
 /** Updated list of artifacts on the run. */
 export type TaskRunPostHogReferencesResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunPostHogReferencesResponseArtifactsList =
-  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunPostHogReferencesResponseArtifactsList>;
-
 export interface TaskRunPostHogReferencesResponse {
   /** Updated list of artifacts on the run. */
   artifacts: TaskRunPostHogReferencesResponseArtifactsList;
 }
-export const TaskRunPostHogReferencesResponse =
+const TaskRunPostHogReferencesResponse =
   TaskRunArtifactsDismissResponse as any as S.Schema<TaskRunPostHogReferencesResponse>;
 
 export interface CreateTasksRunsClearConversationRequest {
@@ -905,7 +885,7 @@ export interface CreateTasksRunsClearConversationRequest {
   task_id: string;
   id: string;
 }
-export const CreateTasksRunsClearConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsClearConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -923,7 +903,7 @@ export const CreateTasksRunsClearConversationRequest = /*@__PURE__*/ S.suspend((
 
 /** * `2.0` - 2.0 */
 export type JsonrpcEnum = "2.0";
-export const JsonrpcEnum = S.String;
+const JsonrpcEnum = S.String;
 
 /** * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option * `mcp_response` - mcp_response * `credential_response` - credential_response * `pi/rpc` - pi/rpc * `queue_get` - queue_get * `queue_clear` - queue_clear * `side_question` - side_question */
 export type TaskRunCommandRequestMethodEnum =
@@ -938,11 +918,11 @@ export type TaskRunCommandRequestMethodEnum =
   | "queue_get"
   | "queue_clear"
   | "side_question";
-export const TaskRunCommandRequestMethodEnum = S.String;
+const TaskRunCommandRequestMethodEnum = S.String;
 
 /** Parameters for the command */
 export type CreateTasksRunsCommandRequestParamsMap = { [key: string]: unknown | undefined };
-export const CreateTasksRunsCommandRequestParamsMap =
+const CreateTasksRunsCommandRequestParamsMap =
   TaskRunDetailDTOOutputMap as any as S.Schema<CreateTasksRunsCommandRequestParamsMap>;
 
 export interface CreateTasksRunsCommandRequest {
@@ -957,7 +937,7 @@ export interface CreateTasksRunsCommandRequest {
   /** Parameters for the command */
   params?: CreateTasksRunsCommandRequestParamsMap;
 }
-export const CreateTasksRunsCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -978,7 +958,7 @@ export const CreateTasksRunsCommandRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** JSON-RPC error details, including failures returned with HTTP 200 */
 export type TaskRunCommandResponseErrorMap = { [key: string]: unknown | undefined };
-export const TaskRunCommandResponseErrorMap =
+const TaskRunCommandResponseErrorMap =
   TaskRunDetailDTOOutputMap as any as S.Schema<TaskRunCommandResponseErrorMap>;
 
 /** Response from the agent server command endpoint. */
@@ -992,7 +972,7 @@ export interface TaskRunCommandResponse {
   /** JSON-RPC error details, including failures returned with HTTP 200 */
   error?: TaskRunCommandResponseErrorMap;
 }
-export const TaskRunCommandResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunCommandResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonrpc: S.optional(S.String),
     id: S.optional(S.Unknown),
@@ -1003,7 +983,7 @@ export const TaskRunCommandResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Manifest ids of artifacts on the SENDING run to share (max 10). Each is copied into the target run's own artifact storage; the receiver gets an immutable snapshot. */
 export type CreateTasksRunsPeersMessageRequestArtifactIdsList = Array<string>;
-export const CreateTasksRunsPeersMessageRequestArtifactIdsList =
+const CreateTasksRunsPeersMessageRequestArtifactIdsList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsPeersMessageRequestArtifactIdsList>;
 
 export interface CreateTasksRunsPeersMessageRequest {
@@ -1017,7 +997,7 @@ export interface CreateTasksRunsPeersMessageRequest {
   /** Manifest ids of artifacts on the SENDING run to share (max 10). Each is copied into the target run's own artifact storage; the receiver gets an immutable snapshot. */
   artifact_ids?: CreateTasksRunsPeersMessageRequestArtifactIdsList;
 }
-export const CreateTasksRunsPeersMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsPeersMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1038,7 +1018,7 @@ export const CreateTasksRunsPeersMessageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `accepted` - accepted * `target_finished` - target_finished * `rejected` - rejected */
 export type ResultEnum = "accepted" | "target_finished" | "rejected";
-export const ResultEnum = S.String;
+const ResultEnum = S.String;
 
 export interface TaskRunPeerMessageResponse {
   /** Send outcome: 'accepted' (queued for delivery -- not a delivery confirmation), 'target_finished' (the peer's workflow is gone), or 'rejected' (throttled or invalid). * `accepted` - accepted * `target_finished` - target_finished * `rejected` - rejected */
@@ -1048,7 +1028,7 @@ export interface TaskRunPeerMessageResponse {
   /** Id of the recorded peer message, when one was created for this send. */
   message_id?: string | null;
 }
-export const TaskRunPeerMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunPeerMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ResultEnum,
     detail: S.String,
@@ -1060,7 +1040,7 @@ export const TaskRunPeerMessageResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text. */
 export type CreateTasksRunsRelayMessageRequestTextPartsList = Array<string>;
-export const CreateTasksRunsRelayMessageRequestTextPartsList =
+const CreateTasksRunsRelayMessageRequestTextPartsList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsRelayMessageRequestTextPartsList>;
 
 export interface CreateTasksRunsRelayMessageRequest {
@@ -1077,7 +1057,7 @@ export interface CreateTasksRunsRelayMessageRequest {
   /** AI observability trace id of the turn that wrote this answer, when the sandbox reported one. */
   trace_id?: string | null;
 }
-export const CreateTasksRunsRelayMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsRelayMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1103,7 +1083,7 @@ export interface TaskRunRelayMessageResponse {
   /** Relay workflow ID when accepted */
   relay_id?: string;
 }
-export const TaskRunRelayMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunRelayMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     relay_id: S.optional(S.String),
@@ -1120,7 +1100,7 @@ export interface CreateTasksRunsSubscriptionTokenRequest {
   /** SHA-256 hex digest of the access token Codex rejected. The server refreshes only when this names its current token; otherwise it returns the newer token it already holds. */
   rejected_access_token_sha256?: string | null;
 }
-export const CreateTasksRunsSubscriptionTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsSubscriptionTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1147,7 +1127,7 @@ export interface TaskRunSubscriptionTokenResponse {
   /** When the access token expires. Request a new one before this time. */
   expires_at: string;
 }
-export const TaskRunSubscriptionTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunSubscriptionTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.String.pipe(T.SensitiveValue({})),
     account_id: S.String,
@@ -1164,7 +1144,7 @@ export interface CreateTasksRunsTaskSessionSyncRequest {
   task_id: string;
   id: string;
 }
-export const CreateTasksRunsTaskSessionSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksRunsTaskSessionSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1186,7 +1166,7 @@ export interface TaskSessionSyncResponse {
   /** SHA-256 digest of the uploaded session content */
   content_sha256: string;
 }
-export const TaskSessionSyncResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskSessionSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     content_sha256: S.String,
@@ -1199,7 +1179,7 @@ export interface GetTasksRunRequest {
   task_id: string;
   id: string;
 }
-export const GetTasksRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1219,7 +1199,7 @@ export interface GetTasksRunsConnectionTokenRequest {
   task_id: string;
   id: string;
 }
-export const GetTasksRunsConnectionTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunsConnectionTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1240,7 +1220,7 @@ export interface ConnectionTokenResponse {
   /** JWT token for authenticating with the sandbox */
   token?: string;
 }
-export const ConnectionTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),
@@ -1252,7 +1232,7 @@ export interface GetTasksRunsLogRequest {
   task_id: string;
   id: string;
 }
-export const GetTasksRunsLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunsLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1267,7 +1247,7 @@ export const GetTasksRunsLogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTasksRunsLogRequest" }) as any as S.Schema<GetTasksRunsLogRequest>;
 
 export interface GetTasksRunsLogResponse {}
-export const GetTasksRunsLogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetTasksRunsLogResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetTasksRunsLogResponse",
 }) as any as S.Schema<GetTasksRunsLogResponse>;
 
@@ -1277,7 +1257,7 @@ export interface GetTasksRunsPeerRequest {
   task_id: string;
   id: string;
 }
-export const GetTasksRunsPeerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunsPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1316,7 +1296,7 @@ export interface TaskRunPeer {
   /** ISO-8601 timestamp of the peer run's last update. */
   updated_at: string | null;
 }
-export const TaskRunPeer = /*@__PURE__*/ S.suspend(() =>
+const TaskRunPeer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     task_id: S.String,
@@ -1334,7 +1314,7 @@ export const TaskRunPeer = /*@__PURE__*/ S.suspend(() =>
 
 /** Active agent runs the requesting run may message, most recently updated first. */
 export type TaskRunPeersResponsePeersList = Array<TaskRunPeer>;
-export const TaskRunPeersResponsePeersList = /*@__PURE__*/ S.Array(
+const TaskRunPeersResponsePeersList = /*@__PURE__*/ S.Array(
   TaskRunPeer,
 ) as any as S.Schema<TaskRunPeersResponsePeersList>;
 
@@ -1342,7 +1322,7 @@ export interface TaskRunPeersResponse {
   /** Active agent runs the requesting run may message, most recently updated first. */
   peers: TaskRunPeersResponsePeersList;
 }
-export const TaskRunPeersResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunPeersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     peers: TaskRunPeersResponsePeersList,
   }),
@@ -1354,7 +1334,7 @@ export interface GetTasksRunsPreviewRequest {
   task_id: string;
   id: string;
 }
-export const GetTasksRunsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1371,7 +1351,7 @@ export const GetTasksRunsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTasksRunsPreviewRequest>;
 
 export interface GetTasksRunsPreviewResponse {}
-export const GetTasksRunsPreviewResponse =
+const GetTasksRunsPreviewResponse =
   GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsPreviewResponse>;
 
 export interface GetTasksRunsSessionLogRequest {
@@ -1390,7 +1370,7 @@ export interface GetTasksRunsSessionLogRequest {
   /** Zero-based offset into the filtered log entries */
   offset?: number;
 }
-export const GetTasksRunsSessionLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunsSessionLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1412,7 +1392,7 @@ export const GetTasksRunsSessionLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTasksRunsSessionLogRequest>;
 
 export interface GetTasksRunsSessionLogResponse {}
-export const GetTasksRunsSessionLogResponse =
+const GetTasksRunsSessionLogResponse =
   GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsSessionLogResponse>;
 
 export interface GetTasksRunsStreamRequest {
@@ -1423,7 +1403,7 @@ export interface GetTasksRunsStreamRequest {
   /** Set to `latest` to skip the event backlog and only receive events published after connecting. */
   start?: string;
 }
-export const GetTasksRunsStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunsStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1441,7 +1421,7 @@ export const GetTasksRunsStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTasksRunsStreamRequest>;
 
 export interface GetTasksRunsStreamResponse {}
-export const GetTasksRunsStreamResponse =
+const GetTasksRunsStreamResponse =
   GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsStreamResponse>;
 
 export interface GetTasksRunsStreamTokenRequest {
@@ -1452,7 +1432,7 @@ export interface GetTasksRunsStreamTokenRequest {
   /** Set to true when the client can rebuild the run from its durable log after the agent-proxy reports a trimmed stream cursor. Without it, runs that keep only a short live tail in Redis are read from the Django endpoint, which replays the durable backlog itself. */
   resync?: boolean;
 }
-export const GetTasksRunsStreamTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunsStreamTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1476,7 +1456,7 @@ export interface StreamReadTokenResponse {
   /** Base URL of the agent-proxy to read the stream from when routing via the proxy is enabled for this user. Null means read from the Django endpoint directly (same-origin). The client appends the run's stream path and sends the token as a Bearer header when this is set. */
   stream_base_url: string | null;
 }
-export const StreamReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const StreamReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     stream_base_url: S.NullOr(S.String),
@@ -1489,7 +1469,7 @@ export interface GetTasksRunsTaskSessionRequest {
   task_id: string;
   id: string;
 }
-export const GetTasksRunsTaskSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRunsTaskSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1513,7 +1493,7 @@ export interface TaskSessionResponse {
   /** SHA-256 digest of the current session content */
   content_sha256: string | null;
 }
-export const TaskSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     download_url: S.NullOr(S.String),
@@ -1530,7 +1510,7 @@ export interface ListTasksRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListTasksRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1542,7 +1522,7 @@ export const ListTasksRunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTasksRunsRequest" }) as any as S.Schema<ListTasksRunsRequest>;
 
 export type PaginatedTaskRunDetailDTOListResultsList = Array<TaskRunDetailDTO>;
-export const PaginatedTaskRunDetailDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedTaskRunDetailDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskRunDetailDTO,
 ) as any as S.Schema<PaginatedTaskRunDetailDTOListResultsList>;
 
@@ -1552,7 +1532,7 @@ export interface PaginatedTaskRunDetailDTOList {
   previous?: string | null;
   results: PaginatedTaskRunDetailDTOListResultsList;
 }
-export const PaginatedTaskRunDetailDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTaskRunDetailDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1571,7 +1551,7 @@ export interface TasksRunsArtifactsDownloadCreateRequest {
   /** S3 storage path returned in the artifact manifest */
   storage_path?: string;
 }
-export const TasksRunsArtifactsDownloadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsArtifactsDownloadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1589,7 +1569,7 @@ export const TasksRunsArtifactsDownloadCreateRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<TasksRunsArtifactsDownloadCreateRequest>;
 
 export interface TasksRunsArtifactsDownloadCreateResponse {}
-export const TasksRunsArtifactsDownloadCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsArtifactsDownloadCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TasksRunsArtifactsDownloadCreateResponse",
@@ -1603,7 +1583,7 @@ export interface TasksRunsArtifactsDownloadRetrieveRequest {
   /** Manifest id of the artifact to download */
   artifact_id: string;
 }
-export const TasksRunsArtifactsDownloadRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsArtifactsDownloadRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1621,7 +1601,7 @@ export const TasksRunsArtifactsDownloadRetrieveRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveRequest>;
 
 export interface TasksRunsArtifactsDownloadRetrieveResponse {}
-export const TasksRunsArtifactsDownloadRetrieveResponse =
+const TasksRunsArtifactsDownloadRetrieveResponse =
   TasksRunsArtifactsDownloadCreateResponse as any as S.Schema<TasksRunsArtifactsDownloadRetrieveResponse>;
 
 export interface TaskRunArtifactFinalizeUpload {
@@ -1640,7 +1620,7 @@ export interface TaskRunArtifactFinalizeUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
-export const TaskRunArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1657,7 +1637,7 @@ export const TaskRunArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
 /** Array of uploaded artifacts to finalize */
 export type TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList =
   Array<TaskRunArtifactFinalizeUpload>;
-export const TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList = /*@__PURE__*/ S.Array(
+const TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactFinalizeUpload,
 ) as any as S.Schema<TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList>;
 
@@ -1669,7 +1649,7 @@ export interface TasksRunsArtifactsFinalizeUploadCreateRequest {
   /** Array of uploaded artifacts to finalize */
   artifacts?: TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList;
 }
-export const TasksRunsArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1688,14 +1668,11 @@ export const TasksRunsArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ S.sus
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsFinalizeUploadResponseArtifactsList = Array<TaskRunArtifactResponse>;
-export const TaskRunArtifactsFinalizeUploadResponseArtifactsList =
-  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunArtifactsFinalizeUploadResponseArtifactsList>;
-
 export interface TaskRunArtifactsFinalizeUploadResponse {
   /** Updated list of artifacts on the run */
   artifacts?: TaskRunArtifactsFinalizeUploadResponseArtifactsList;
 }
-export const TaskRunArtifactsFinalizeUploadResponse =
+const TaskRunArtifactsFinalizeUploadResponse =
   TaskRunArtifactsUploadResponse as any as S.Schema<TaskRunArtifactsFinalizeUploadResponse>;
 
 export interface TaskRunArtifactPrepareUpload {
@@ -1712,7 +1689,7 @@ export interface TaskRunArtifactPrepareUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
-export const TaskRunArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(TaskRunArtifactTypeEnum),
@@ -1728,7 +1705,7 @@ export const TaskRunArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
 /** Array of artifacts to prepare */
 export type TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList =
   Array<TaskRunArtifactPrepareUpload>;
-export const TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList = /*@__PURE__*/ S.Array(
+const TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactPrepareUpload,
 ) as any as S.Schema<TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList>;
 
@@ -1740,7 +1717,7 @@ export interface TasksRunsArtifactsPrepareUploadCreateRequest {
   /** Array of artifacts to prepare */
   artifacts?: TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList;
 }
-export const TasksRunsArtifactsPrepareUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsArtifactsPrepareUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1759,7 +1736,7 @@ export const TasksRunsArtifactsPrepareUploadCreateRequest = /*@__PURE__*/ S.susp
 
 /** Form fields that must be submitted verbatim with the file upload */
 export type S3PresignedPostFieldsMap = { [key: string]: string | undefined };
-export const S3PresignedPostFieldsMap = /*@__PURE__*/ S.Record(
+const S3PresignedPostFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<S3PresignedPostFieldsMap>;
@@ -1770,7 +1747,7 @@ export interface S3PresignedPost {
   /** Form fields that must be submitted verbatim with the file upload */
   fields?: S3PresignedPostFieldsMap;
 }
-export const S3PresignedPost = /*@__PURE__*/ S.suspend(() =>
+const S3PresignedPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     fields: S.optional(S3PresignedPostFieldsMap),
@@ -1799,7 +1776,7 @@ export interface TaskRunArtifactPrepareUploadResponse {
   /** Presigned S3 POST configuration for uploading the file */
   presigned_post?: S3PresignedPost;
 }
-export const TaskRunArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1819,7 +1796,7 @@ export const TaskRunArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =
 /** Prepared uploads for the requested artifacts */
 export type TaskRunArtifactsPrepareUploadResponseArtifactsList =
   Array<TaskRunArtifactPrepareUploadResponse>;
-export const TaskRunArtifactsPrepareUploadResponseArtifactsList = /*@__PURE__*/ S.Array(
+const TaskRunArtifactsPrepareUploadResponseArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactPrepareUploadResponse,
 ) as any as S.Schema<TaskRunArtifactsPrepareUploadResponseArtifactsList>;
 
@@ -1827,7 +1804,7 @@ export interface TaskRunArtifactsPrepareUploadResponse {
   /** Prepared uploads for the requested artifacts */
   artifacts?: TaskRunArtifactsPrepareUploadResponseArtifactsList;
 }
-export const TaskRunArtifactsPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskRunArtifactsPrepareUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifacts: S.optional(TaskRunArtifactsPrepareUploadResponseArtifactsList),
   }),
@@ -1845,7 +1822,7 @@ export interface TasksRunsCancelCreateRequest {
   /** Cancel only while the run is still a warm sandbox awaiting its first message. A run that has since received one is left alone and returned unchanged. Set this when handing a warm sandbox back, so a release that races a submit cannot stop the run that submit started. */
   only_if_awaiting_first_message?: boolean;
 }
-export const TasksRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1869,7 +1846,7 @@ export interface TasksRunsResumeInCloudCreateRequest {
   task_id: string;
   id: string;
 }
-export const TasksRunsResumeInCloudCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsResumeInCloudCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1887,7 +1864,7 @@ export const TasksRunsResumeInCloudCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Identifiers for run artifacts that should be attached to the next user message delivered to the sandbox. */
 export type TasksRunsStartCreateRequestPendingUserArtifactIdsList = Array<string>;
-export const TasksRunsStartCreateRequestPendingUserArtifactIdsList =
+const TasksRunsStartCreateRequestPendingUserArtifactIdsList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<TasksRunsStartCreateRequestPendingUserArtifactIdsList>;
 
 export interface TasksRunsStartCreateRequest {
@@ -1900,7 +1877,7 @@ export interface TasksRunsStartCreateRequest {
   /** Identifiers for run artifacts that should be attached to the next user message delivered to the sandbox. */
   pending_user_artifact_ids?: TasksRunsStartCreateRequestPendingUserArtifactIdsList;
 }
-export const TasksRunsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TasksRunsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -1920,18 +1897,18 @@ export const TasksRunsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `acp` - ACP * `pi` - Pi */
 export type TaskRuntimeEnum = "acp" | "pi";
-export const TaskRuntimeEnum = S.String;
+const TaskRuntimeEnum = S.String;
 
 export type TaskDetailDTORepositoriesList = Array<string>;
-export const TaskDetailDTORepositoriesList =
+const TaskDetailDTORepositoriesList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<TaskDetailDTORepositoriesList>;
 
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };
-export const TaskDetailDTOJsonSchemaMap =
+const TaskDetailDTOJsonSchemaMap =
   TaskRunDetailDTOOutputMap as any as S.Schema<TaskDetailDTOJsonSchemaMap>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap =
+const TaskUserBasicInfoHedgehogConfigMap =
   TaskRunDetailDTOOutputMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
 
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
@@ -1946,7 +1923,7 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -1965,7 +1942,7 @@ export interface SlackThreadReferenceDTO {
   channel: string;
   created_at?: string | null;
 }
-export const SlackThreadReferenceDTO = /*@__PURE__*/ S.suspend(() =>
+const SlackThreadReferenceDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     channel: S.String,
@@ -1974,7 +1951,7 @@ export const SlackThreadReferenceDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SlackThreadReferenceDTO" }) as any as S.Schema<SlackThreadReferenceDTO>;
 
 export type TaskDetailDTOSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
-export const TaskDetailDTOSlackThreadReferencesList = /*@__PURE__*/ S.Array(
+const TaskDetailDTOSlackThreadReferencesList = /*@__PURE__*/ S.Array(
   SlackThreadReferenceDTO,
 ) as any as S.Schema<TaskDetailDTOSlackThreadReferencesList>;
 
@@ -2010,7 +1987,7 @@ export interface TaskDetailDTO {
   /** Stable key of the server-side flow that created this task, e.g. `desktop_onboarding_session:<user_id>`. Null for tasks people create themselves. */
   origin_key?: string | null;
 }
-export const TaskDetailDTO = /*@__PURE__*/ S.suspend(() =>
+const TaskDetailDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     task_number: S.NullOr(S.Number),
@@ -2049,21 +2026,21 @@ export type RunStatusEnum =
   | "completed"
   | "failed"
   | "cancelled";
-export const RunStatusEnum = S.String;
+const RunStatusEnum = S.String;
 
 /** State of the run */
 export type UpdateTasksRunsPartialRequestStateMap = { [key: string]: unknown | undefined };
-export const UpdateTasksRunsPartialRequestStateMap =
+const UpdateTasksRunsPartialRequestStateMap =
   TaskRunDetailDTOOutputMap as any as S.Schema<UpdateTasksRunsPartialRequestStateMap>;
 
 /** State keys to remove atomically before applying any state updates. */
 export type UpdateTasksRunsPartialRequestStateRemoveKeysList = Array<string>;
-export const UpdateTasksRunsPartialRequestStateRemoveKeysList =
+const UpdateTasksRunsPartialRequestStateRemoveKeysList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<UpdateTasksRunsPartialRequestStateRemoveKeysList>;
 
 /** State keys whose value to append to the list stored at that key, atomically under the row lock. Use instead of sending the whole list back through `state`, which loses concurrent appends to a read-modify-write race. */
 export type UpdateTasksRunsPartialRequestStateAppendMap = { [key: string]: unknown | undefined };
-export const UpdateTasksRunsPartialRequestStateAppendMap =
+const UpdateTasksRunsPartialRequestStateAppendMap =
   TaskRunDetailDTOOutputMap as any as S.Schema<UpdateTasksRunsPartialRequestStateAppendMap>;
 
 export interface UpdateTasksRunsPartialRequest {
@@ -2088,7 +2065,7 @@ export interface UpdateTasksRunsPartialRequest {
   /** Error message if execution failed */
   error_message?: string | null;
 }
-export const UpdateTasksRunsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTasksRunsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -2120,7 +2097,7 @@ export interface UpdateTasksRunsSetOutputPartialRequest {
   /** Output data from the run. Validated against the task's json_schema if one is set. */
   output?: unknown;
 }
-export const UpdateTasksRunsSetOutputPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTasksRunsSetOutputPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),
@@ -2139,7 +2116,7 @@ export const UpdateTasksRunsSetOutputPartialRequest = /*@__PURE__*/ S.suspend(()
 
 /** Complete set of slug tags that replaces the prior tags. The agent chooses the tags. Omit the field to keep the current tags. Send an empty list to remove them. */
 export type UpdateTasksRunsSetSummaryPartialRequestTagsList = Array<string>;
-export const UpdateTasksRunsSetSummaryPartialRequestTagsList =
+const UpdateTasksRunsSetSummaryPartialRequestTagsList =
   TaskRunDetailDTOTaskTagsList as any as S.Schema<UpdateTasksRunsSetSummaryPartialRequestTagsList>;
 
 export interface UpdateTasksRunsSetSummaryPartialRequest {
@@ -2152,7 +2129,7 @@ export interface UpdateTasksRunsSetSummaryPartialRequest {
   /** Complete set of slug tags that replaces the prior tags. The agent chooses the tags. Omit the field to keep the current tags. Send an empty list to remove them. */
   tags?: UpdateTasksRunsSetSummaryPartialRequestTagsList;
 }
-export const UpdateTasksRunsSetSummaryPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTasksRunsSetSummaryPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     task_id: S.String.pipe(T.Label()),

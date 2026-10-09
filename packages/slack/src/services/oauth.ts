@@ -15,7 +15,7 @@ export interface BeginShortTokenRotationRequest {
   /** Issued when you created your application. */
   client_secret: string | Redacted.Redacted<string>;
 }
-export const BeginShortTokenRotationRequest = /*@__PURE__*/ S.suspend(() =>
+const BeginShortTokenRotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String,
     client_secret: S.String.pipe(T.SensitiveValue({})),
@@ -37,7 +37,7 @@ export interface BeginShortTokenRotationResponse {
   /** A new xoxp access token to replace the token with a shorter secret. Not yet active until completeShortTokenRotation is called. */
   new_token: string;
 }
-export const BeginShortTokenRotationResponse = /*@__PURE__*/ S.suspend(() =>
+const BeginShortTokenRotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     new_token: S.String,
@@ -54,7 +54,7 @@ export interface CompleteShortTokenRotationRequest {
   /** The new xoxp token returned by oauth.v2.beginShortTokenRotation. */
   new_token: string;
 }
-export const CompleteShortTokenRotationRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteShortTokenRotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String,
     client_secret: S.String.pipe(T.SensitiveValue({})),
@@ -77,7 +77,7 @@ export interface CompleteShortTokenRotationResponse {
   /** The new xoxp access token, now active. The previous token is no longer valid. */
   token: string;
 }
-export const CompleteShortTokenRotationResponse = /*@__PURE__*/ S.suspend(() =>
+const CompleteShortTokenRotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     token: S.String,
@@ -98,7 +98,7 @@ export interface OauthAccessRequest {
   /** Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://docs.slack.dev/changelog/2021-03-workspace-apps-to-retire-in-august-2021). */
   single_channel?: boolean;
 }
-export const OauthAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const OauthAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.String),
     client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -114,7 +114,7 @@ export interface OauthAccessResponseAuthorizingUser {
   user_id?: string;
   app_home?: string | null;
 }
-export const OauthAccessResponseAuthorizingUser = /*@__PURE__*/ S.suspend(() =>
+const OauthAccessResponseAuthorizingUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.optional(S.String),
     app_home: S.optional(S.NullOr(S.String)),
@@ -124,31 +124,29 @@ export const OauthAccessResponseAuthorizingUser = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OauthAccessResponseAuthorizingUser>;
 
 export type OauthAccessResponseInstallerUser = OauthAccessResponseAuthorizingUser;
-export const OauthAccessResponseInstallerUser = OauthAccessResponseAuthorizingUser;
-
 export type OauthAccessResponseScopesAppHomeList = Array<string>;
-export const OauthAccessResponseScopesAppHomeList = /*@__PURE__*/ S.Array(
+const OauthAccessResponseScopesAppHomeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OauthAccessResponseScopesAppHomeList>;
 
 export type OauthAccessResponseScopesTeamList = Array<string>;
-export const OauthAccessResponseScopesTeamList =
+const OauthAccessResponseScopesTeamList =
   OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesTeamList>;
 
 export type OauthAccessResponseScopesChannelList = Array<string>;
-export const OauthAccessResponseScopesChannelList =
+const OauthAccessResponseScopesChannelList =
   OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesChannelList>;
 
 export type OauthAccessResponseScopesGroupList = Array<string>;
-export const OauthAccessResponseScopesGroupList =
+const OauthAccessResponseScopesGroupList =
   OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesGroupList>;
 
 export type OauthAccessResponseScopesMpimList = Array<string>;
-export const OauthAccessResponseScopesMpimList =
+const OauthAccessResponseScopesMpimList =
   OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesMpimList>;
 
 export type OauthAccessResponseScopesImList = Array<string>;
-export const OauthAccessResponseScopesImList =
+const OauthAccessResponseScopesImList =
   OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesImList>;
 
 export interface OauthAccessResponseScopes {
@@ -159,7 +157,7 @@ export interface OauthAccessResponseScopes {
   mpim?: OauthAccessResponseScopesMpimList;
   im?: OauthAccessResponseScopesImList;
 }
-export const OauthAccessResponseScopes = /*@__PURE__*/ S.suspend(() =>
+const OauthAccessResponseScopes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_home: S.optional(OauthAccessResponseScopesAppHomeList),
     team: S.optional(OauthAccessResponseScopesTeamList),
@@ -177,7 +175,7 @@ export interface OauthAccessResponseBot {
   bot_access_token?: string;
   scope?: string;
 }
-export const OauthAccessResponseBot = /*@__PURE__*/ S.suspend(() =>
+const OauthAccessResponseBot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bot_user_id: S.optional(S.String),
     bot_access_token: S.optional(S.String),
@@ -199,7 +197,7 @@ export interface OauthAccessResponseUser {
   access_token?: string | Redacted.Redacted<string>;
   token_type?: string;
 }
-export const OauthAccessResponseUser = /*@__PURE__*/ S.suspend(() =>
+const OauthAccessResponseUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -230,7 +228,7 @@ export interface OauthAccessResponseTeam {
   image_default?: boolean;
   image_original?: string;
 }
-export const OauthAccessResponseTeam = /*@__PURE__*/ S.suspend(() =>
+const OauthAccessResponseTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -253,7 +251,7 @@ export interface OauthAccessResponseIncomingWebhook {
   configuration_url?: string;
   url?: string;
 }
-export const OauthAccessResponseIncomingWebhook = /*@__PURE__*/ S.suspend(() =>
+const OauthAccessResponseIncomingWebhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.String),
     channel_id: S.optional(S.String),
@@ -287,7 +285,7 @@ export interface OauthAccessResponse {
   incoming_webhook?: OauthAccessResponseIncomingWebhook;
   single_channel_id?: string;
 }
-export const OauthAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const OauthAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     token_type: S.optional(S.String),
@@ -330,7 +328,7 @@ export interface V2AccessRequest {
   /** Identity assertion JWT authorization grant */
   assertion?: string;
 }
-export const V2AccessRequest = /*@__PURE__*/ S.suspend(() =>
+const V2AccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.String),
     client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -347,7 +345,7 @@ export const V2AccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of access token. Only present if a bot token was requested at the start of the auth flow. */
 export type V2AccessResponseTokenType = "granular_bot";
-export const V2AccessResponseTokenType = S.String;
+const V2AccessResponseTokenType = S.String;
 
 /** Details about the installing user, and the user token if one was requested at the start of the auth flow. */
 export interface V2AccessResponseTeam {
@@ -356,7 +354,7 @@ export interface V2AccessResponseTeam {
   /** Name of the team into which the app is being installed or re-installed. */
   name?: string;
 }
-export const V2AccessResponseTeam = /*@__PURE__*/ S.suspend(() =>
+const V2AccessResponseTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -370,7 +368,7 @@ export interface V2AccessResponseEnterprise {
   /** Name of the enterprise into which the app is being installed or re-installed. */
   name?: string;
 }
-export const V2AccessResponseEnterprise = /*@__PURE__*/ S.suspend(() =>
+const V2AccessResponseEnterprise = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -381,7 +379,7 @@ export const V2AccessResponseEnterprise = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the access token. Only present if a user token was requested at the start of the auth flow. */
 export type V2AccessResponseAuthedUserTokenType = "user";
-export const V2AccessResponseAuthedUserTokenType = S.String;
+const V2AccessResponseAuthedUserTokenType = S.String;
 
 /** Details about the installing user, and the user token if one was requested at the start of the auth flow. */
 export interface V2AccessResponseAuthedUser {
@@ -398,7 +396,7 @@ export interface V2AccessResponseAuthedUser {
   /** Refresh token for this credential. */
   refresh_token?: string | Redacted.Redacted<string>;
 }
-export const V2AccessResponseAuthedUser = /*@__PURE__*/ S.suspend(() =>
+const V2AccessResponseAuthedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -422,7 +420,7 @@ export interface V2AccessResponseIncomingWebhook {
   /** Endpoint for triggering the wehbook. */
   url: string;
 }
-export const V2AccessResponseIncomingWebhook = /*@__PURE__*/ S.suspend(() =>
+const V2AccessResponseIncomingWebhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     channel_id: S.String,
@@ -461,7 +459,7 @@ export interface V2AccessResponse {
   /** Details about a newly-created incoming webhook. Only present if an incoming webhook was requested at the start of the auth flow. */
   incoming_webhook?: V2AccessResponseIncomingWebhook;
 }
-export const V2AccessResponse = /*@__PURE__*/ S.suspend(() =>
+const V2AccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -486,7 +484,7 @@ export interface V2ExchangeRequest {
   /** Issued when you created your application. */
   client_secret: string | Redacted.Redacted<string>;
 }
-export const V2ExchangeRequest = /*@__PURE__*/ S.suspend(() =>
+const V2ExchangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String,
     client_secret: S.String.pipe(T.SensitiveValue({})),
@@ -502,7 +500,7 @@ export const V2ExchangeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of access token. */
 export type V2ExchangeResponseTokenType = "bot" | "user";
-export const V2ExchangeResponseTokenType = S.String;
+const V2ExchangeResponseTokenType = S.String;
 
 export interface V2ExchangeResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -525,7 +523,7 @@ export interface V2ExchangeResponse {
   team?: unknown | null;
   enterprise?: unknown | null;
 }
-export const V2ExchangeResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ExchangeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     app_id: S.String,
@@ -559,7 +557,7 @@ export interface V2UserAccessRequest {
   /** Identity assertion JWT authorization grant. */
   assertion?: string;
 }
-export const V2UserAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const V2UserAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.String),
     client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -581,16 +579,12 @@ export const V2UserAccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of access token. */
 export type V2UserAccessResponseTokenType = "user";
-export const V2UserAccessResponseTokenType = S.String;
+const V2UserAccessResponseTokenType = S.String;
 
 /** Details about the team. */
 export type V2UserAccessResponseTeam = V2AccessResponseTeam;
-export const V2UserAccessResponseTeam = V2AccessResponseTeam;
-
 /** Details about the enterprise. */
 export type V2UserAccessResponseEnterprise = V2AccessResponseEnterprise;
-export const V2UserAccessResponseEnterprise = V2AccessResponseEnterprise;
-
 export interface V2UserAccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -613,7 +607,7 @@ export interface V2UserAccessResponse {
   team: V2AccessResponseTeam | null;
   enterprise: V2AccessResponseEnterprise | null;
 }
-export const V2UserAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const V2UserAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     access_token: S.String.pipe(T.SensitiveValue({})),

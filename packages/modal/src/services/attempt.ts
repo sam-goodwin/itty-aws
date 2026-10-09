@@ -14,7 +14,7 @@ export interface AttemptAwaitRequest {
   /** Used for waypoints. */
   timeoutSecs?: number;
 }
-export const AttemptAwaitRequest = /*@__PURE__*/ S.suspend(() =>
+const AttemptAwaitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attemptToken: S.optional(S.String),
     requestedAt: S.optional(S.Number),
@@ -33,7 +33,7 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-export const GenericResultGenericStatus = S.String;
+const GenericResultGenericStatus = S.String;
 
 /** sub-type for generic types like lists */
 export interface GenericResult {
@@ -55,7 +55,7 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-export const GenericResult = /*@__PURE__*/ S.suspend(() =>
+const GenericResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenericResultGenericStatus),
     exception: S.optional(S.String),
@@ -76,7 +76,7 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
-export const DataFormat = S.String;
+const DataFormat = S.String;
 
 /** How long to sleep before requesting another input. */
 export interface FunctionGetOutputsItem {
@@ -91,7 +91,7 @@ export interface FunctionGetOutputsItem {
   retryCount?: number;
   fcTraceTag?: string;
 }
-export const FunctionGetOutputsItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetOutputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     idx: S.optional(S.Number),
@@ -108,7 +108,7 @@ export const FunctionGetOutputsItem = /*@__PURE__*/ S.suspend(() =>
 export interface AttemptAwaitResponse {
   output?: FunctionGetOutputsItem;
 }
-export const AttemptAwaitResponse = /*@__PURE__*/ S.suspend(() =>
+const AttemptAwaitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     output: S.optional(FunctionGetOutputsItem),
   }),
@@ -123,7 +123,7 @@ export interface FunctionInput {
   /** For args_oneof. */
   methodName?: string;
 }
-export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
+const FunctionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(S.String),
     argsBlobId: S.optional(S.String),
@@ -134,7 +134,7 @@ export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionInput" }) as any as S.Schema<FunctionInput>;
 
 export type BlobUploadResultOutcome = "OUTCOME_UNSPECIFIED" | "OUTCOME_SUCCESS" | "OUTCOME_FAILURE";
-export const BlobUploadResultOutcome = S.String;
+const BlobUploadResultOutcome = S.String;
 
 export interface BlobUploadResult {
   blobId?: string;
@@ -142,7 +142,7 @@ export interface BlobUploadResult {
   outcome?: BlobUploadResultOutcome | (string & {});
   throughputBytesS?: string;
 }
-export const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
+const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobId: S.optional(S.String),
     outcome: S.optional(BlobUploadResultOutcome),
@@ -151,7 +151,7 @@ export const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlobUploadResult" }) as any as S.Schema<BlobUploadResult>;
 
 export type BlobUploadResultList = Array<BlobUploadResult>;
-export const BlobUploadResultList = /*@__PURE__*/ S.Array(
+const BlobUploadResultList = /*@__PURE__*/ S.Array(
   BlobUploadResult,
 ) as any as S.Schema<BlobUploadResultList>;
 
@@ -163,7 +163,7 @@ export interface FunctionPutInputsItem {
   r2ThroughputBytesS?: string;
   blobUploadResults?: BlobUploadResultList;
 }
-export const FunctionPutInputsItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionPutInputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idx: S.optional(S.Number),
     input: S.optional(FunctionInput),
@@ -179,7 +179,7 @@ export interface RetryAttemptRequest {
   input?: FunctionPutInputsItem;
   attemptToken?: string;
 }
-export const RetryAttemptRequest = /*@__PURE__*/ S.suspend(() =>
+const RetryAttemptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     parentInputId: S.optional(S.String),
@@ -191,7 +191,7 @@ export const RetryAttemptRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RetryAttemptResponse {
   attemptToken?: string;
 }
-export const RetryAttemptResponse = /*@__PURE__*/ S.suspend(() =>
+const RetryAttemptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attemptToken: S.optional(S.String),
   }),
@@ -203,7 +203,7 @@ export interface StartAttemptRequest {
   input?: FunctionPutInputsItem;
   proxied?: boolean;
 }
-export const StartAttemptRequest = /*@__PURE__*/ S.suspend(() =>
+const StartAttemptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     parentInputId: S.optional(S.String),
@@ -219,7 +219,7 @@ export interface FunctionRetryPolicy {
   /** NOTE: two-byte field number not used for special reason. copy-paste error. Ref: PR #2542 */
   retries?: number;
 }
-export const FunctionRetryPolicy = /*@__PURE__*/ S.suspend(() =>
+const FunctionRetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backoffCoefficient: S.optional(S.Number),
     initialDelayMs: S.optional(S.Number),
@@ -232,7 +232,7 @@ export interface StartAttemptResponse {
   attemptToken?: string;
   retryPolicy?: FunctionRetryPolicy;
 }
-export const StartAttemptResponse = /*@__PURE__*/ S.suspend(() =>
+const StartAttemptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attemptToken: S.optional(S.String),
     retryPolicy: S.optional(FunctionRetryPolicy),

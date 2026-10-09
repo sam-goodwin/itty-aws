@@ -19,11 +19,11 @@ export class Conflict
 
 /** * `public` - public * `private` - private */
 export type TaskChannelWriteTypeEnum = "public" | "private";
-export const TaskChannelWriteTypeEnum = S.String;
+const TaskChannelWriteTypeEnum = S.String;
 
 /** User IDs to add to a private channel. The requester is always a member. The endpoint ignores this field for public channels and skips users without project access. */
 export type CreateTaskChannelRequestMemberIdsList = Array<number>;
-export const CreateTaskChannelRequestMemberIdsList = /*@__PURE__*/ S.Array(
+const CreateTaskChannelRequestMemberIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateTaskChannelRequestMemberIdsList>;
 
@@ -39,7 +39,7 @@ export interface CreateTaskChannelRequest {
   /** Star a new channel for the requester. This field does not change stars on an existing channel. */
   star?: boolean;
 }
-export const CreateTaskChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -50,12 +50,12 @@ export const CreateTaskChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTaskChannelRequest" }) as any as S.Schema<CreateTaskChannelRequest>;
 
 export type ChannelDTORepositoriesList = Array<string>;
-export const ChannelDTORepositoriesList = /*@__PURE__*/ S.Array(
+const ChannelDTORepositoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChannelDTORepositoriesList>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
@@ -72,7 +72,7 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -88,7 +88,7 @@ export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** * `personal` - Personal * `general` - General */
 export type ChannelSystemRoleEnum = "personal" | "general";
-export const ChannelSystemRoleEnum = S.String;
+const ChannelSystemRoleEnum = S.String;
 
 /** Response shape for a task channel, read from a frozen ``ChannelDTO``. */
 export interface ChannelDTO {
@@ -104,7 +104,7 @@ export interface ChannelDTO {
   /** Identifies this channel as one of the two system-provisioned spaces ('personal' for the user's own #me space, 'general' for the team's shared #general space). Null for an ordinary channel. * `personal` - Personal * `general` - General */
   system_role: ChannelSystemRoleEnum | null;
 }
-export const ChannelDTO = /*@__PURE__*/ S.suspend(() =>
+const ChannelDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -121,7 +121,7 @@ export const ChannelDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** * `context_created` - context_created * `context_md_building` - context_md_building */
 export type EventEnum = "context_created" | "context_md_building";
-export const EventEnum = S.String;
+const EventEnum = S.String;
 
 export interface CreateTaskChannelsFeedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -134,7 +134,7 @@ export interface CreateTaskChannelsFeedRequest {
   /** Optional explicit timestamp (within 10 minutes of now), so a client can order a burst of announcements. */
   created_at?: string;
 }
-export const CreateTaskChannelsFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskChannelsFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     channel_id: S.String.pipe(T.Label()),
@@ -153,7 +153,7 @@ export const CreateTaskChannelsFeedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTaskChannelsFeedRequest>;
 
 export type ChannelFeedMessageDTOPayloadMap = { [key: string]: unknown | undefined };
-export const ChannelFeedMessageDTOPayloadMap =
+const ChannelFeedMessageDTOPayloadMap =
   TaskUserBasicInfoHedgehogConfigMap as any as S.Schema<ChannelFeedMessageDTOPayloadMap>;
 
 /** Response shape for one system announcement in a channel's feed. */
@@ -167,7 +167,7 @@ export interface ChannelFeedMessageDTO {
   content: string;
   created_at: string;
 }
-export const ChannelFeedMessageDTO = /*@__PURE__*/ S.suspend(() =>
+const ChannelFeedMessageDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     channel: S.String,
@@ -184,7 +184,7 @@ export interface CreateTaskChannelsOnboardingSessionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateTaskChannelsOnboardingSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskChannelsOnboardingSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -203,7 +203,7 @@ export interface OnboardingSession {
   /** The agent session opened in the team's #general space. */
   task_id: string;
 }
-export const OnboardingSession = /*@__PURE__*/ S.suspend(() =>
+const OnboardingSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
   }),
@@ -211,19 +211,18 @@ export const OnboardingSession = /*@__PURE__*/ S.suspend(() =>
 
 /** Display names of other Desktop users in the organization. */
 export type CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList = Array<string>;
-export const CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList =
+const CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList =
   ChannelDTORepositoriesList as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList>;
 
 /** Signal sources that were already enabled. */
 export type CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList = Array<string>;
-export const CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList>;
+const CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList>;
 
 /** Signal sources the onboarding flow is watching. */
 export type CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList = Array<string>;
-export const CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList =
+const CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList =
   CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList>;
 
 export interface CreateTaskChannelsOnboardingSessionTestRequest {
@@ -248,7 +247,7 @@ export interface CreateTaskChannelsOnboardingSessionTestRequest {
   /** Whether onboarding enabled any signal sources. */
   sources_newly_enabled?: boolean;
 }
-export const CreateTaskChannelsOnboardingSessionTestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskChannelsOnboardingSessionTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     model: S.optional(S.NullOr(S.String)),
@@ -278,7 +277,7 @@ export interface OnboardingSessionTestResponse {
   /** The requester's personal space containing the session. */
   channel_id: string;
 }
-export const OnboardingSessionTestResponse = /*@__PURE__*/ S.suspend(() =>
+const OnboardingSessionTestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     channel_id: S.String,
@@ -291,7 +290,7 @@ export interface CreateTaskChannelsProvisionDefaultRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateTaskChannelsProvisionDefaultRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskChannelsProvisionDefaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -307,7 +306,7 @@ export const CreateTaskChannelsProvisionDefaultRequest = /*@__PURE__*/ S.suspend
 
 /** The full channel list after provisioning, same shape as the list endpoint. */
 export type ProvisionedChannelsChannelsList = Array<ChannelDTO>;
-export const ProvisionedChannelsChannelsList = /*@__PURE__*/ S.Array(
+const ProvisionedChannelsChannelsList = /*@__PURE__*/ S.Array(
   ChannelDTO,
 ) as any as S.Schema<ProvisionedChannelsChannelsList>;
 
@@ -320,7 +319,7 @@ export interface ProvisionedChannels {
   /** Whether this call created the team's shared #general channel. True only for the first user to provision it, so clients can branch first-user setup on it. */
   general_created: boolean;
 }
-export const ProvisionedChannels = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedChannels = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: ProvisionedChannelsChannelsList,
     personal_created: S.Boolean,
@@ -330,15 +329,15 @@ export const ProvisionedChannels = /*@__PURE__*/ S.suspend(() =>
 
 /** * `goal` - Goal * `feature` - Feature */
 export type SpaceSetupKindEnum = "goal" | "feature";
-export const SpaceSetupKindEnum = S.String;
+const SpaceSetupKindEnum = S.String;
 
 /** * `day` - Day * `week` - Week * `month` - Month */
 export type CalendarUnitEnum = "day" | "week" | "month";
-export const CalendarUnitEnum = S.String;
+const CalendarUnitEnum = S.String;
 
 /** * `at_least` - At least * `at_most` - At most */
 export type SpaceGoalDirectionEnum = "at_least" | "at_most";
-export const SpaceGoalDirectionEnum = S.String;
+const SpaceGoalDirectionEnum = S.String;
 
 /** The metric a goal space should move. */
 export interface SpaceGoalWrite {
@@ -355,7 +354,7 @@ export interface SpaceGoalWrite {
   /** Short id of an existing insight that measures the goal, when there is one. */
   insight_short_id?: string | null;
 }
-export const SpaceGoalWrite = /*@__PURE__*/ S.suspend(() =>
+const SpaceGoalWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statement: S.String,
     period: S.optional(CalendarUnitEnum),
@@ -375,7 +374,7 @@ export interface SpaceFeatureWrite {
   /** Key of the feature flag that gates it, if any. */
   flag_key?: string | null;
 }
-export const SpaceFeatureWrite = /*@__PURE__*/ S.suspend(() =>
+const SpaceFeatureWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -396,7 +395,7 @@ export interface CreateTaskChannelsSetupRequest {
   /** Repository the loops work in, as 'owner/name'. Defaults to the channel's first repository. */
   repository?: string | null;
 }
-export const CreateTaskChannelsSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskChannelsSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -419,7 +418,7 @@ export const CreateTaskChannelsSetupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SpaceSetupStartedDTO {
   task_id: string;
 }
-export const SpaceSetupStartedDTO = OnboardingSession as any as S.Schema<SpaceSetupStartedDTO>;
+const SpaceSetupStartedDTO = OnboardingSession as any as S.Schema<SpaceSetupStartedDTO>;
 
 export interface CreateTaskChannelsStarRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -427,7 +426,7 @@ export interface CreateTaskChannelsStarRequest {
   id: string;
   starred: boolean;
 }
-export const CreateTaskChannelsStarRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskChannelsStarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -444,7 +443,7 @@ export const CreateTaskChannelsStarRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTaskChannelsStarRequest>;
 
 export interface CreateTaskChannelsStarResponse {}
-export const CreateTaskChannelsStarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateTaskChannelsStarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateTaskChannelsStarResponse",
 }) as any as S.Schema<CreateTaskChannelsStarResponse>;
 
@@ -452,7 +451,7 @@ export interface CreateTaskChannelsTeachingCanvasTestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateTaskChannelsTeachingCanvasTestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskChannelsTeachingCanvasTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -472,7 +471,7 @@ export interface TeachingCanvas {
   /** The requester's personal space containing the canvas. */
   channel_id: string;
 }
-export const TeachingCanvas = /*@__PURE__*/ S.suspend(() =>
+const TeachingCanvas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canvas_id: S.String,
     channel_id: S.String,
@@ -484,7 +483,7 @@ export interface GetTaskChannelRequest {
   project_id: string;
   id: string;
 }
-export const GetTaskChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -498,7 +497,7 @@ export interface GetTaskChannelsContextGenerationRequest {
   project_id: string;
   id: string;
 }
-export const GetTaskChannelsContextGenerationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskChannelsContextGenerationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -517,7 +516,7 @@ export const GetTaskChannelsContextGenerationRequest = /*@__PURE__*/ S.suspend((
 export interface ChannelContextGeneration {
   task_id: string | null;
 }
-export const ChannelContextGeneration = /*@__PURE__*/ S.suspend(() =>
+const ChannelContextGeneration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.NullOr(S.String),
   }),
@@ -527,7 +526,7 @@ export interface GetTaskChannelsContributorRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetTaskChannelsContributorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskChannelsContributorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -543,7 +542,7 @@ export const GetTaskChannelsContributorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Everyone who owns at least one task or canvas in the channel, most recently active first. Deleted tasks and canvases do not count. */
 export type ChannelContributorsDTOPeopleList = Array<TaskUserBasicInfo>;
-export const ChannelContributorsDTOPeopleList = /*@__PURE__*/ S.Array(
+const ChannelContributorsDTOPeopleList = /*@__PURE__*/ S.Array(
   TaskUserBasicInfo,
 ) as any as S.Schema<ChannelContributorsDTOPeopleList>;
 
@@ -554,7 +553,7 @@ export interface ChannelContributorsDTO {
   /** Everyone who owns at least one task or canvas in the channel, most recently active first. Deleted tasks and canvases do not count. */
   people: ChannelContributorsDTOPeopleList;
 }
-export const ChannelContributorsDTO = /*@__PURE__*/ S.suspend(() =>
+const ChannelContributorsDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     people: ChannelContributorsDTOPeopleList,
@@ -562,12 +561,12 @@ export const ChannelContributorsDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChannelContributorsDTO" }) as any as S.Schema<ChannelContributorsDTO>;
 
 export type GetTaskChannelsContributorResponseBodyList = Array<ChannelContributorsDTO>;
-export const GetTaskChannelsContributorResponseBodyList = /*@__PURE__*/ S.Array(
+const GetTaskChannelsContributorResponseBodyList = /*@__PURE__*/ S.Array(
   ChannelContributorsDTO,
 ) as any as S.Schema<GetTaskChannelsContributorResponseBodyList>;
 
 export type GetTaskChannelsContributorResponse = GetTaskChannelsContributorResponseBodyList;
-export const GetTaskChannelsContributorResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaskChannelsContributorResponse = /*@__PURE__*/ S.suspend(() =>
   GetTaskChannelsContributorResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetTaskChannelsContributorResponse",
@@ -578,7 +577,7 @@ export interface GetTaskChannelsInstructionRequest {
   project_id: string;
   id: string;
 }
-export const GetTaskChannelsInstructionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskChannelsInstructionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -601,7 +600,7 @@ export interface ChannelInstructionsDTO {
   created_at?: string | null;
   created_by?: TaskUserBasicInfo | null;
 }
-export const ChannelInstructionsDTO = /*@__PURE__*/ S.suspend(() =>
+const ChannelInstructionsDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     content: S.String,
@@ -616,7 +615,7 @@ export interface GetTaskChannelsInstructionsVersionRequest {
   project_id: string;
   id: string;
 }
-export const GetTaskChannelsInstructionsVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskChannelsInstructionsVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -632,7 +631,7 @@ export const GetTaskChannelsInstructionsVersionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetTaskChannelsInstructionsVersionRequest>;
 
 export type PaginatedChannelInstructionsDTOListResultsList = Array<ChannelInstructionsDTO>;
-export const PaginatedChannelInstructionsDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedChannelInstructionsDTOListResultsList = /*@__PURE__*/ S.Array(
   ChannelInstructionsDTO,
 ) as any as S.Schema<PaginatedChannelInstructionsDTOListResultsList>;
 
@@ -642,7 +641,7 @@ export interface PaginatedChannelInstructionsDTOList {
   previous?: string | null;
   results: PaginatedChannelInstructionsDTOListResultsList;
 }
-export const PaginatedChannelInstructionsDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedChannelInstructionsDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -658,7 +657,7 @@ export interface GetTaskChannelsMemberRequest {
   project_id: string;
   id: string;
 }
-export const GetTaskChannelsMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskChannelsMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -674,11 +673,11 @@ export const GetTaskChannelsMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTaskChannelsMemberRequest>;
 
 export type GetTaskChannelsMemberResponseBodyList = Array<TaskUserBasicInfo>;
-export const GetTaskChannelsMemberResponseBodyList =
+const GetTaskChannelsMemberResponseBodyList =
   ChannelContributorsDTOPeopleList as any as S.Schema<GetTaskChannelsMemberResponseBodyList>;
 
 export type GetTaskChannelsMemberResponse = GetTaskChannelsMemberResponseBodyList;
-export const GetTaskChannelsMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTaskChannelsMemberResponse = /*@__PURE__*/ S.suspend(() =>
   GetTaskChannelsMemberResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetTaskChannelsMemberResponse",
@@ -692,7 +691,7 @@ export interface ListTaskChannelsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListTaskChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaskChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -701,7 +700,7 @@ export const ListTaskChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTaskChannelsRequest" }) as any as S.Schema<ListTaskChannelsRequest>;
 
 export type PaginatedChannelDTOListResultsList = Array<ChannelDTO>;
-export const PaginatedChannelDTOListResultsList =
+const PaginatedChannelDTOListResultsList =
   ProvisionedChannelsChannelsList as any as S.Schema<PaginatedChannelDTOListResultsList>;
 
 export interface PaginatedChannelDTOList {
@@ -710,7 +709,7 @@ export interface PaginatedChannelDTOList {
   previous?: string | null;
   results: PaginatedChannelDTOListResultsList;
 }
-export const PaginatedChannelDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedChannelDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -728,7 +727,7 @@ export interface ListTaskChannelsFeedRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListTaskChannelsFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaskChannelsFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     channel_id: S.String.pipe(T.Label()),
@@ -746,7 +745,7 @@ export const ListTaskChannelsFeedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTaskChannelsFeedRequest>;
 
 export type PaginatedChannelFeedMessageDTOListResultsList = Array<ChannelFeedMessageDTO>;
-export const PaginatedChannelFeedMessageDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedChannelFeedMessageDTOListResultsList = /*@__PURE__*/ S.Array(
   ChannelFeedMessageDTO,
 ) as any as S.Schema<PaginatedChannelFeedMessageDTOListResultsList>;
 
@@ -756,7 +755,7 @@ export interface PaginatedChannelFeedMessageDTOList {
   previous?: string | null;
   results: PaginatedChannelFeedMessageDTOListResultsList;
 }
-export const PaginatedChannelFeedMessageDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedChannelFeedMessageDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -772,7 +771,7 @@ export interface TaskChannelsDestroyRequest {
   project_id: string;
   id: string;
 }
-export const TaskChannelsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskChannelsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -784,7 +783,7 @@ export const TaskChannelsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskChannelsDestroyRequest>;
 
 export interface TaskChannelsDestroyResponse {}
-export const TaskChannelsDestroyResponse =
+const TaskChannelsDestroyResponse =
   CreateTaskChannelsStarResponse as any as S.Schema<TaskChannelsDestroyResponse>;
 
 export interface TaskChannelsInstructionsDestroyRequest {
@@ -792,7 +791,7 @@ export interface TaskChannelsInstructionsDestroyRequest {
   project_id: string;
   id: string;
 }
-export const TaskChannelsInstructionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskChannelsInstructionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -808,7 +807,7 @@ export const TaskChannelsInstructionsDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<TaskChannelsInstructionsDestroyRequest>;
 
 export interface TaskChannelsInstructionsDestroyResponse {}
-export const TaskChannelsInstructionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskChannelsInstructionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TaskChannelsInstructionsDestroyResponse",
@@ -820,7 +819,7 @@ export interface UpdateTaskChannelsContextGenerationRequest {
   id: string;
   task_id: string | null;
 }
-export const UpdateTaskChannelsContextGenerationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskChannelsContextGenerationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -845,7 +844,7 @@ export interface UpdateTaskChannelsInstructionRequest {
   /** Optimistic-concurrency guard: the version the edit is based on (0 for a channel with no instructions yet). A stale base is rejected with 409; omit to publish unguarded. */
   base_version?: number | null;
 }
-export const UpdateTaskChannelsInstructionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskChannelsInstructionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -871,7 +870,7 @@ export interface UpdateTaskChannelsInstructionsPartialRequest {
   /** Optimistic-concurrency guard: the version the edit is based on (0 for a channel with no instructions yet). A stale base is rejected with 409; omit to publish unguarded. */
   base_version?: number | null;
 }
-export const UpdateTaskChannelsInstructionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskChannelsInstructionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -890,7 +889,7 @@ export const UpdateTaskChannelsInstructionsPartialRequest = /*@__PURE__*/ S.susp
 
 /** Required list of member user IDs. This list replaces the current members. The creator remains a member. Send an empty list to remove all other members. Each submitted user must have project access. */
 export type UpdateTaskChannelsMemberRequestUserIdsList = Array<number>;
-export const UpdateTaskChannelsMemberRequestUserIdsList =
+const UpdateTaskChannelsMemberRequestUserIdsList =
   CreateTaskChannelRequestMemberIdsList as any as S.Schema<UpdateTaskChannelsMemberRequestUserIdsList>;
 
 export interface UpdateTaskChannelsMemberRequest {
@@ -900,7 +899,7 @@ export interface UpdateTaskChannelsMemberRequest {
   /** Required list of member user IDs. This list replaces the current members. The creator remains a member. Send an empty list to remove all other members. Each submitted user must have project access. */
   user_ids: UpdateTaskChannelsMemberRequestUserIdsList;
 }
-export const UpdateTaskChannelsMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskChannelsMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -917,16 +916,13 @@ export const UpdateTaskChannelsMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTaskChannelsMemberRequest>;
 
 export type UpdateTaskChannelsMemberResponseBodyList = Array<TaskUserBasicInfo>;
-export const UpdateTaskChannelsMemberResponseBodyList =
-  ChannelContributorsDTOPeopleList as any as S.Schema<UpdateTaskChannelsMemberResponseBodyList>;
-
 export type UpdateTaskChannelsMemberResponse = UpdateTaskChannelsMemberResponseBodyList;
-export const UpdateTaskChannelsMemberResponse =
+const UpdateTaskChannelsMemberResponse =
   GetTaskChannelsMemberResponse as any as S.Schema<UpdateTaskChannelsMemberResponse>;
 
 /** GitHub repositories inherited by new tasks in this channel. */
 export type UpdateTaskChannelsPartialRequestRepositoriesList = Array<string>;
-export const UpdateTaskChannelsPartialRequestRepositoriesList =
+const UpdateTaskChannelsPartialRequestRepositoriesList =
   ChannelDTORepositoriesList as any as S.Schema<UpdateTaskChannelsPartialRequestRepositoriesList>;
 
 export interface UpdateTaskChannelsPartialRequest {
@@ -944,7 +940,7 @@ export interface UpdateTaskChannelsPartialRequest {
   /** Switch a shared space between 'public' and 'private'. Making a space private keeps only the creator and the requester as members. Making it public removes its member list. Personal #me spaces cannot change. * `public` - public * `private` - private */
   channel_type?: TaskChannelWriteTypeEnum | (string & {});
 }
-export const UpdateTaskChannelsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskChannelsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

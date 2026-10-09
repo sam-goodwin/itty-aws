@@ -47,7 +47,7 @@ export class NotFound
 
 /** The window the spend limit applies to. */
 export type CreateCardRequestSpendLimitFrequency = "daily" | "weekly" | "monthly" | "one_time";
-export const CreateCardRequestSpendLimitFrequency = S.String;
+const CreateCardRequestSpendLimitFrequency = S.String;
 
 export interface CreateCardRequest {
   /** The owning account ID (a biz_ identifier). Provide this or user_id. */
@@ -67,7 +67,7 @@ export interface CreateCardRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateCardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     assigned_user_id: S.optional(S.String),
@@ -95,7 +95,7 @@ export interface CreateCardResponseBilling {
   /** Billing region or state. */
   region: string | null;
 }
-export const CreateCardResponseBilling = /*@__PURE__*/ S.suspend(() =>
+const CreateCardResponseBilling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.NullOr(S.String),
     country_code: S.NullOr(S.String),
@@ -115,7 +115,7 @@ export type CreateCardResponseLimitFrequency =
   | "monthly"
   | "one_time"
   | "per_transaction";
-export const CreateCardResponseLimitFrequency = S.String;
+const CreateCardResponseLimitFrequency = S.String;
 
 /** The spending limit configuration. */
 export interface CreateCardResponseLimit {
@@ -124,7 +124,7 @@ export interface CreateCardResponseLimit {
   /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
   frequency: CreateCardResponseLimitFrequency;
 }
-export const CreateCardResponseLimit = /*@__PURE__*/ S.suspend(() =>
+const CreateCardResponseLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     frequency: CreateCardResponseLimitFrequency,
@@ -132,7 +132,7 @@ export const CreateCardResponseLimit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCardResponseLimit" }) as any as S.Schema<CreateCardResponseLimit>;
 
 export type CreateCardResponseObject = "card";
-export const CreateCardResponseObject = S.String;
+const CreateCardResponseObject = S.String;
 
 /** Sensitive card details. Present only on `GET /cards/:id` for active cards; `null` when the card is inactive or details cannot be retrieved. */
 export interface CreateCardResponseSecrets {
@@ -145,7 +145,7 @@ export interface CreateCardResponseSecrets {
   /** The card PIN. Only returned when the request is authenticated as the user the card is assigned to; `null` for all other callers, including account API keys. */
   pin: string | null;
 }
-export const CreateCardResponseSecrets = /*@__PURE__*/ S.suspend(() =>
+const CreateCardResponseSecrets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card_number: S.String,
     cvc: S.String,
@@ -158,11 +158,11 @@ export const CreateCardResponseSecrets = /*@__PURE__*/ S.suspend(() =>
 
 /** The card status. `denied` means the issuer declined the cardholder, so the card will never be issued. */
 export type CreateCardResponseStatus = "active" | "frozen" | "canceled" | "invited" | "denied";
-export const CreateCardResponseStatus = S.String;
+const CreateCardResponseStatus = S.String;
 
 /** The card type. */
 export type CreateCardResponseType = "virtual" | "physical";
-export const CreateCardResponseType = S.String;
+const CreateCardResponseType = S.String;
 
 export interface CreateCardResponse {
   /** The billing address. */
@@ -195,7 +195,7 @@ export interface CreateCardResponse {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-export const CreateCardResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing: S.NullOr(CreateCardResponseBilling),
     canceled_at: S.NullOr(S.String),
@@ -223,7 +223,7 @@ export interface GetCardRequest {
   /** The owning user ID (a user_ identifier). Provide this or account_id. */
   user_id?: string;
 }
-export const GetCardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -233,8 +233,6 @@ export const GetCardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing address. */
 export type GetCardResponseBilling = CreateCardResponseBilling;
-export const GetCardResponseBilling = CreateCardResponseBilling;
-
 /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
 export type GetCardResponseLimitFrequency =
   | "daily"
@@ -242,8 +240,6 @@ export type GetCardResponseLimitFrequency =
   | "monthly"
   | "one_time"
   | "per_transaction";
-export const GetCardResponseLimitFrequency = S.String;
-
 /** The spending limit configuration. */
 export interface GetCardResponseLimit {
   /** The limit amount in dollars. */
@@ -251,24 +247,13 @@ export interface GetCardResponseLimit {
   /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
   frequency: GetCardResponseLimitFrequency;
 }
-export const GetCardResponseLimit =
-  CreateCardResponseLimit as any as S.Schema<GetCardResponseLimit>;
-
 export type GetCardResponseObject = "card";
-export const GetCardResponseObject = S.String;
-
 /** Sensitive card details. Present only on `GET /cards/:id` for active cards; `null` when the card is inactive or details cannot be retrieved. */
 export type GetCardResponseSecrets = CreateCardResponseSecrets;
-export const GetCardResponseSecrets = CreateCardResponseSecrets;
-
 /** The card status. `denied` means the issuer declined the cardholder, so the card will never be issued. */
 export type GetCardResponseStatus = "active" | "frozen" | "canceled" | "invited" | "denied";
-export const GetCardResponseStatus = S.String;
-
 /** The card type. */
 export type GetCardResponseType = "virtual" | "physical";
-export const GetCardResponseType = S.String;
-
 export interface GetCardResponse {
   /** The billing address. */
   billing: CreateCardResponseBilling | null;
@@ -300,7 +285,7 @@ export interface GetCardResponse {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-export const GetCardResponse = CreateCardResponse as any as S.Schema<GetCardResponse>;
+const GetCardResponse = CreateCardResponse as any as S.Schema<GetCardResponse>;
 
 export interface GetCardTransactionRequest {
   /** The card transaction ID, prefixed `citx_`. */
@@ -308,7 +293,7 @@ export interface GetCardTransactionRequest {
   /** The account that owns the transaction, prefixed `biz_`. Defaults to the credential's account. */
   account_id?: string;
 }
-export const GetCardTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCardTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -319,11 +304,11 @@ export const GetCardTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current status of the transaction. */
 export type CardTransactionStatus = "pending" | "completed" | "reversed" | "declined";
-export const CardTransactionStatus = S.String;
+const CardTransactionStatus = S.String;
 
 /** The kind of card transaction. Always `spend` today. */
 export type CardTransactionTransactionType = "spend";
-export const CardTransactionTransactionType = S.String;
+const CardTransactionTransactionType = S.String;
 
 export interface CardTransaction {
   /** The card this transaction was charged to, prefixed `icrd_`. */
@@ -361,7 +346,7 @@ export interface CardTransaction {
   /** Amount charged in USD. Negative when the merchant refunded the card. */
   usd_amount: number | null;
 }
-export const CardTransaction = /*@__PURE__*/ S.suspend(() =>
+const CardTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card_id: S.String,
     cardholder_id: S.NullOr(S.String),
@@ -389,7 +374,7 @@ export interface ListCardsRequest {
   /** The owning user ID (a user_ identifier). Provide this or account_id. */
   user_id?: string;
 }
-export const ListCardsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     user_id: S.optional(S.String.pipe(T.Query())),
@@ -398,8 +383,6 @@ export const ListCardsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing address. */
 export type ListCardsResponseDataItemBilling = CreateCardResponseBilling;
-export const ListCardsResponseDataItemBilling = CreateCardResponseBilling;
-
 /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
 export type ListCardsResponseDataItemLimitFrequency =
   | "daily"
@@ -407,7 +390,7 @@ export type ListCardsResponseDataItemLimitFrequency =
   | "monthly"
   | "one_time"
   | "per_transaction";
-export const ListCardsResponseDataItemLimitFrequency = S.String;
+const ListCardsResponseDataItemLimitFrequency = S.String;
 
 /** The spending limit configuration. */
 export interface ListCardsResponseDataItemLimit {
@@ -416,7 +399,7 @@ export interface ListCardsResponseDataItemLimit {
   /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
   frequency: ListCardsResponseDataItemLimitFrequency;
 }
-export const ListCardsResponseDataItemLimit = /*@__PURE__*/ S.suspend(() =>
+const ListCardsResponseDataItemLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     frequency: ListCardsResponseDataItemLimitFrequency,
@@ -426,12 +409,10 @@ export const ListCardsResponseDataItemLimit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCardsResponseDataItemLimit>;
 
 export type ListCardsResponseDataItemObject = "card";
-export const ListCardsResponseDataItemObject = S.String;
+const ListCardsResponseDataItemObject = S.String;
 
 /** Sensitive card details. Present only on `GET /cards/:id` for active cards; `null` when the card is inactive or details cannot be retrieved. */
 export type ListCardsResponseDataItemSecrets = CreateCardResponseSecrets;
-export const ListCardsResponseDataItemSecrets = CreateCardResponseSecrets;
-
 /** The card status. `denied` means the issuer declined the cardholder, so the card will never be issued. */
 export type ListCardsResponseDataItemStatus =
   | "active"
@@ -439,11 +420,11 @@ export type ListCardsResponseDataItemStatus =
   | "canceled"
   | "invited"
   | "denied";
-export const ListCardsResponseDataItemStatus = S.String;
+const ListCardsResponseDataItemStatus = S.String;
 
 /** The card type. */
 export type ListCardsResponseDataItemType = "virtual" | "physical";
-export const ListCardsResponseDataItemType = S.String;
+const ListCardsResponseDataItemType = S.String;
 
 export interface ListCardsResponseDataItem {
   /** The billing address. */
@@ -476,7 +457,7 @@ export interface ListCardsResponseDataItem {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-export const ListCardsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListCardsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing: S.NullOr(CreateCardResponseBilling),
     canceled_at: S.NullOr(S.String),
@@ -499,40 +480,40 @@ export const ListCardsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCardsResponseDataItem>;
 
 export type ListCardsResponseDataList = Array<ListCardsResponseDataItem>;
-export const ListCardsResponseDataList = /*@__PURE__*/ S.Array(
+const ListCardsResponseDataList = /*@__PURE__*/ S.Array(
   ListCardsResponseDataItem,
 ) as any as S.Schema<ListCardsResponseDataList>;
 
 export interface ListCardsResponse {
   data: ListCardsResponseDataList;
 }
-export const ListCardsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCardsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCardsResponseDataList,
   }),
 ).annotate({ identifier: "ListCardsResponse" }) as any as S.Schema<ListCardsResponse>;
 
 export type ListCardTransactionsRequestTransactionIdsList = Array<string>;
-export const ListCardTransactionsRequestTransactionIdsList = /*@__PURE__*/ S.Array(
+const ListCardTransactionsRequestTransactionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListCardTransactionsRequestTransactionIdsList>;
 
 export type ListCardTransactionsRequestCardIdList = Array<string>;
-export const ListCardTransactionsRequestCardIdList =
+const ListCardTransactionsRequestCardIdList =
   ListCardTransactionsRequestTransactionIdsList as any as S.Schema<ListCardTransactionsRequestCardIdList>;
 
 export type ListCardTransactionsRequestCardholderIdList = Array<string>;
-export const ListCardTransactionsRequestCardholderIdList =
+const ListCardTransactionsRequestCardholderIdList =
   ListCardTransactionsRequestTransactionIdsList as any as S.Schema<ListCardTransactionsRequestCardholderIdList>;
 
 export type ListCardTransactionsRequestStatus = "pending" | "completed" | "reversed" | "declined";
-export const ListCardTransactionsRequestStatus = S.String;
+const ListCardTransactionsRequestStatus = S.String;
 
 export type ListCardTransactionsRequestOrder = "created_at";
-export const ListCardTransactionsRequestOrder = S.String;
+const ListCardTransactionsRequestOrder = S.String;
 
 export type ListCardTransactionsRequestDirection = "asc" | "desc";
-export const ListCardTransactionsRequestDirection = S.String;
+const ListCardTransactionsRequestDirection = S.String;
 
 export interface ListCardTransactionsRequest {
   /** The account whose card transactions to list, prefixed `biz_`. Defaults to the credential's account. */
@@ -562,7 +543,7 @@ export interface ListCardTransactionsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListCardTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCardTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     transaction_ids: S.optional(ListCardTransactionsRequestTransactionIdsList.pipe(T.Query())),
@@ -583,7 +564,7 @@ export const ListCardTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCardTransactionsRequest>;
 
 export type ListCardTransactionsResponseDataList = Array<CardTransaction>;
-export const ListCardTransactionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListCardTransactionsResponseDataList = /*@__PURE__*/ S.Array(
   CardTransaction,
 ) as any as S.Schema<ListCardTransactionsResponseDataList>;
 
@@ -593,7 +574,7 @@ export interface ListCardTransactionsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListCardTransactionsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListCardTransactionsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -608,7 +589,7 @@ export interface ListCardTransactionsResponse {
   data: ListCardTransactionsResponseDataList;
   page_info: ListCardTransactionsResponsePageInfo;
 }
-export const ListCardTransactionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCardTransactionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCardTransactionsResponseDataList,
     page_info: ListCardTransactionsResponsePageInfo,
@@ -632,7 +613,7 @@ export interface UpdateCardRequestBilling {
   /** Billing region or state. Required when updating an issued card's billing address. */
   region?: string;
 }
-export const UpdateCardRequestBilling = /*@__PURE__*/ S.suspend(() =>
+const UpdateCardRequestBilling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.String,
     country_code: S.String,
@@ -654,7 +635,7 @@ export interface UpdateCardRequestCardholder {
   /** Phone number for the invited cardholder. */
   phone?: string;
 }
-export const UpdateCardRequestCardholder = /*@__PURE__*/ S.suspend(() =>
+const UpdateCardRequestCardholder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     first_name: S.optional(S.String),
@@ -667,7 +648,7 @@ export const UpdateCardRequestCardholder = /*@__PURE__*/ S.suspend(() =>
 
 /** The window the spend limit applies to. */
 export type UpdateCardRequestSpendLimitFrequency = "daily" | "weekly" | "monthly" | "one_time";
-export const UpdateCardRequestSpendLimitFrequency = S.String;
+const UpdateCardRequestSpendLimitFrequency = S.String;
 
 export interface UpdateCardRequest {
   /** Card ID to retrieve, prefixed `icrd_`. */
@@ -697,7 +678,7 @@ export interface UpdateCardRequest {
   /** The owning user ID (a user_ identifier). Provide this or account_id. */
   user_id?: string;
 }
-export const UpdateCardRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String),
@@ -717,8 +698,6 @@ export const UpdateCardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing address. */
 export type UpdateCardResponseBilling = CreateCardResponseBilling;
-export const UpdateCardResponseBilling = CreateCardResponseBilling;
-
 /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
 export type UpdateCardResponseLimitFrequency =
   | "daily"
@@ -726,8 +705,6 @@ export type UpdateCardResponseLimitFrequency =
   | "monthly"
   | "one_time"
   | "per_transaction";
-export const UpdateCardResponseLimitFrequency = S.String;
-
 /** The spending limit configuration. */
 export interface UpdateCardResponseLimit {
   /** The limit amount in dollars. */
@@ -735,24 +712,13 @@ export interface UpdateCardResponseLimit {
   /** The window the limit amount applies to. `per_transaction` caps each individual authorization and is what a limit set with `transaction_limit` reports. */
   frequency: UpdateCardResponseLimitFrequency;
 }
-export const UpdateCardResponseLimit =
-  CreateCardResponseLimit as any as S.Schema<UpdateCardResponseLimit>;
-
 export type UpdateCardResponseObject = "card";
-export const UpdateCardResponseObject = S.String;
-
 /** Sensitive card details. Present only on `GET /cards/:id` for active cards; `null` when the card is inactive or details cannot be retrieved. */
 export type UpdateCardResponseSecrets = CreateCardResponseSecrets;
-export const UpdateCardResponseSecrets = CreateCardResponseSecrets;
-
 /** The card status. `denied` means the issuer declined the cardholder, so the card will never be issued. */
 export type UpdateCardResponseStatus = "active" | "frozen" | "canceled" | "invited" | "denied";
-export const UpdateCardResponseStatus = S.String;
-
 /** The card type. */
 export type UpdateCardResponseType = "virtual" | "physical";
-export const UpdateCardResponseType = S.String;
-
 export interface UpdateCardResponse {
   /** The billing address. */
   billing: CreateCardResponseBilling | null;
@@ -784,7 +750,7 @@ export interface UpdateCardResponse {
   /** Cardholder user ID, prefixed `user_`, when assigned. */
   user_id: string | null;
 }
-export const UpdateCardResponse = CreateCardResponse as any as S.Schema<UpdateCardResponse>;
+const UpdateCardResponse = CreateCardResponse as any as S.Schema<UpdateCardResponse>;
 
 export type CreateCardError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Create Card Issue a virtual card, or apply for card issuing. An account with no application files one here and gets back a `202`; call again to issue the card once it is approved. */

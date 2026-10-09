@@ -52,7 +52,7 @@ export interface CreateForkRequest {
   /** The GHSA (GitHub Security Advisory) identifier of the advisory. */
   ghsa_id: string;
 }
-export const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -67,7 +67,7 @@ export const CreateForkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateForkRequest" }) as any as S.Schema<CreateForkRequest>;
 
 export interface CreateForkResponse {}
-export const CreateForkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateForkResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateForkResponse",
 }) as any as S.Schema<CreateForkResponse>;
 
@@ -86,7 +86,7 @@ export type SecurityAdvisoryEcosystems =
   | "pub"
   | "other"
   | "swift";
-export const SecurityAdvisoryEcosystems = S.String;
+const SecurityAdvisoryEcosystems = S.String;
 
 /** The name of the package affected by the vulnerability. */
 export interface CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage {
@@ -94,20 +94,20 @@ export interface CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPacka
   /** The unique package name within its ecosystem. */
   name?: string | null;
 }
-export const CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage =
-  /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ecosystem: SecurityAdvisoryEcosystems,
       name: S.optional(S.NullOr(S.String)),
     }),
-  ).annotate({
-    identifier: "CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage",
-  }) as any as S.Schema<CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage>;
+).annotate({
+  identifier: "CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage",
+}) as any as S.Schema<CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage>;
 
 /** The functions in the package that are affected. */
 export type CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList =
   Array<string>;
-export const CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList =
+const CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList>;
@@ -122,16 +122,15 @@ export interface CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem {
   /** The functions in the package that are affected. */
   vulnerable_functions?: CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList | null;
 }
-export const CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      package: CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage,
-      vulnerable_version_range: S.optional(S.NullOr(S.String)),
-      patched_versions: S.optional(S.NullOr(S.String)),
-      vulnerable_functions: S.optional(
-        S.NullOr(CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList),
-      ),
-    }),
+const CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    package: CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage,
+    vulnerable_version_range: S.optional(S.NullOr(S.String)),
+    patched_versions: S.optional(S.NullOr(S.String)),
+    vulnerable_functions: S.optional(
+      S.NullOr(CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList),
+    ),
+  }),
 ).annotate({
   identifier: "CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem",
 }) as any as S.Schema<CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem>;
@@ -139,13 +138,13 @@ export const CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem = /*@__P
 /** An array of products affected by the vulnerability detailed in a repository security advisory. */
 export type CreatePrivateVulnerabilityReportRequestVulnerabilitiesList =
   Array<CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem>;
-export const CreatePrivateVulnerabilityReportRequestVulnerabilitiesList = /*@__PURE__*/ S.Array(
+const CreatePrivateVulnerabilityReportRequestVulnerabilitiesList = /*@__PURE__*/ S.Array(
   CreatePrivateVulnerabilityReportRequestVulnerabilitiesItem,
 ) as any as S.Schema<CreatePrivateVulnerabilityReportRequestVulnerabilitiesList>;
 
 /** A list of Common Weakness Enumeration (CWE) IDs. */
 export type CreatePrivateVulnerabilityReportRequestCweIdsList = Array<string>;
-export const CreatePrivateVulnerabilityReportRequestCweIdsList = /*@__PURE__*/ S.Array(
+const CreatePrivateVulnerabilityReportRequestCweIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreatePrivateVulnerabilityReportRequestCweIdsList>;
 
@@ -155,7 +154,7 @@ export type CreatePrivateVulnerabilityReportRequestSeverity =
   | "high"
   | "medium"
   | "low";
-export const CreatePrivateVulnerabilityReportRequestSeverity = S.String;
+const CreatePrivateVulnerabilityReportRequestSeverity = S.String;
 
 export interface CreatePrivateVulnerabilityReportRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -177,7 +176,7 @@ export interface CreatePrivateVulnerabilityReportRequest {
   /** Whether to create a temporary private fork of the repository to collaborate on a fix. */
   start_private_fork?: boolean;
 }
-export const CreatePrivateVulnerabilityReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateVulnerabilityReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -199,7 +198,7 @@ export const CreatePrivateVulnerabilityReportRequest = /*@__PURE__*/ S.suspend((
 
 /** The severity of the advisory. */
 export type RepositoryAdvisorySeverity = "critical" | "high" | "medium" | "low";
-export const RepositoryAdvisorySeverity = S.String;
+const RepositoryAdvisorySeverity = S.String;
 
 /** A GitHub user. */
 export interface SimpleUser {
@@ -226,7 +225,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -255,7 +254,7 @@ export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identifier. */
 export type RepositoryAdvisoryIdentifiersItemType = "CVE" | "GHSA";
-export const RepositoryAdvisoryIdentifiersItemType = S.String;
+const RepositoryAdvisoryIdentifiersItemType = S.String;
 
 export interface RepositoryAdvisoryIdentifiersItem {
   /** The type of identifier. */
@@ -263,7 +262,7 @@ export interface RepositoryAdvisoryIdentifiersItem {
   /** The identifier value. */
   value: string;
 }
-export const RepositoryAdvisoryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisoryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RepositoryAdvisoryIdentifiersItemType,
     value: S.String,
@@ -273,19 +272,19 @@ export const RepositoryAdvisoryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepositoryAdvisoryIdentifiersItem>;
 
 export type RepositoryAdvisoryIdentifiersList = Array<RepositoryAdvisoryIdentifiersItem>;
-export const RepositoryAdvisoryIdentifiersList = /*@__PURE__*/ S.Array(
+const RepositoryAdvisoryIdentifiersList = /*@__PURE__*/ S.Array(
   RepositoryAdvisoryIdentifiersItem,
 ) as any as S.Schema<RepositoryAdvisoryIdentifiersList>;
 
 /** The state of the advisory. */
 export type RepositoryAdvisoryState = "published" | "closed" | "withdrawn" | "draft" | "triage";
-export const RepositoryAdvisoryState = S.String;
+const RepositoryAdvisoryState = S.String;
 
 export interface RepositoryAdvisorySubmission {
   /** Whether a private vulnerability report was accepted by the repository's administrators. */
   accepted: boolean;
 }
-export const RepositoryAdvisorySubmission = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisorySubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted: S.Boolean,
   }),
@@ -299,7 +298,7 @@ export interface RepositoryAdvisoryVulnerabilityPackage {
   /** The unique package name within its ecosystem. */
   name: string | null;
 }
-export const RepositoryAdvisoryVulnerabilityPackage = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisoryVulnerabilityPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ecosystem: SecurityAdvisoryEcosystems,
     name: S.NullOr(S.String),
@@ -310,7 +309,7 @@ export const RepositoryAdvisoryVulnerabilityPackage = /*@__PURE__*/ S.suspend(()
 
 /** The functions in the package that are affected. */
 export type RepositoryAdvisoryVulnerabilityVulnerableFunctionsList = Array<string>;
-export const RepositoryAdvisoryVulnerabilityVulnerableFunctionsList =
+const RepositoryAdvisoryVulnerabilityVulnerableFunctionsList =
   CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<RepositoryAdvisoryVulnerabilityVulnerableFunctionsList>;
 
 /** A product affected by the vulnerability detailed in a repository security advisory. */
@@ -324,7 +323,7 @@ export interface RepositoryAdvisoryVulnerability {
   /** The functions in the package that are affected. */
   vulnerable_functions: RepositoryAdvisoryVulnerabilityVulnerableFunctionsList | null;
 }
-export const RepositoryAdvisoryVulnerability = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisoryVulnerability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package: S.NullOr(RepositoryAdvisoryVulnerabilityPackage),
     vulnerable_version_range: S.NullOr(S.String),
@@ -336,7 +335,7 @@ export const RepositoryAdvisoryVulnerability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepositoryAdvisoryVulnerability>;
 
 export type RepositoryAdvisoryVulnerabilitiesList = Array<RepositoryAdvisoryVulnerability>;
-export const RepositoryAdvisoryVulnerabilitiesList = /*@__PURE__*/ S.Array(
+const RepositoryAdvisoryVulnerabilitiesList = /*@__PURE__*/ S.Array(
   RepositoryAdvisoryVulnerability,
 ) as any as S.Schema<RepositoryAdvisoryVulnerabilitiesList>;
 
@@ -346,7 +345,7 @@ export interface RepositoryAdvisoryCvss {
   /** The CVSS score. */
   score: number | null;
 }
-export const RepositoryAdvisoryCvss = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisoryCvss = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vector_string: S.NullOr(S.String),
     score: S.NullOr(S.Number),
@@ -359,7 +358,7 @@ export interface CvssSeveritiesCvssV3 {
   /** The CVSS 3 score. */
   score: number | null;
 }
-export const CvssSeveritiesCvssV3 = RepositoryAdvisoryCvss as any as S.Schema<CvssSeveritiesCvssV3>;
+const CvssSeveritiesCvssV3 = RepositoryAdvisoryCvss as any as S.Schema<CvssSeveritiesCvssV3>;
 
 export interface CvssSeveritiesCvssV4 {
   /** The CVSS 4 vector string. */
@@ -367,13 +366,13 @@ export interface CvssSeveritiesCvssV4 {
   /** The CVSS 4 score. */
   score: number | null;
 }
-export const CvssSeveritiesCvssV4 = RepositoryAdvisoryCvss as any as S.Schema<CvssSeveritiesCvssV4>;
+const CvssSeveritiesCvssV4 = RepositoryAdvisoryCvss as any as S.Schema<CvssSeveritiesCvssV4>;
 
 export interface CvssSeverities {
   cvss_v3?: CvssSeveritiesCvssV3 | null;
   cvss_v4?: CvssSeveritiesCvssV4 | null;
 }
-export const CvssSeverities = /*@__PURE__*/ S.suspend(() =>
+const CvssSeverities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cvss_v3: S.optional(S.NullOr(CvssSeveritiesCvssV3)),
     cvss_v4: S.optional(S.NullOr(CvssSeveritiesCvssV4)),
@@ -386,7 +385,7 @@ export interface RepositoryAdvisoryCwesItem {
   /** The name of the CWE. */
   name: string;
 }
-export const RepositoryAdvisoryCwesItem = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisoryCwesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cwe_id: S.String,
     name: S.String,
@@ -396,13 +395,13 @@ export const RepositoryAdvisoryCwesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepositoryAdvisoryCwesItem>;
 
 export type RepositoryAdvisoryCwesList = Array<RepositoryAdvisoryCwesItem>;
-export const RepositoryAdvisoryCwesList = /*@__PURE__*/ S.Array(
+const RepositoryAdvisoryCwesList = /*@__PURE__*/ S.Array(
   RepositoryAdvisoryCwesItem,
 ) as any as S.Schema<RepositoryAdvisoryCwesList>;
 
 /** A list of only the CWE IDs. */
 export type RepositoryAdvisoryCweIdsList = Array<string>;
-export const RepositoryAdvisoryCweIdsList =
+const RepositoryAdvisoryCweIdsList =
   CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<RepositoryAdvisoryCweIdsList>;
 
 /** The type of credit the user is receiving. */
@@ -417,14 +416,14 @@ export type SecurityAdvisoryCreditTypes =
   | "tool"
   | "sponsor"
   | "other";
-export const SecurityAdvisoryCreditTypes = S.String;
+const SecurityAdvisoryCreditTypes = S.String;
 
 export interface RepositoryAdvisoryCreditsItem {
   /** The username of the user credited. */
   login?: string;
   type?: SecurityAdvisoryCreditTypes;
 }
-export const RepositoryAdvisoryCreditsItem = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisoryCreditsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.optional(S.String),
     type: S.optional(SecurityAdvisoryCreditTypes),
@@ -434,13 +433,13 @@ export const RepositoryAdvisoryCreditsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepositoryAdvisoryCreditsItem>;
 
 export type RepositoryAdvisoryCreditsList = Array<RepositoryAdvisoryCreditsItem>;
-export const RepositoryAdvisoryCreditsList = /*@__PURE__*/ S.Array(
+const RepositoryAdvisoryCreditsList = /*@__PURE__*/ S.Array(
   RepositoryAdvisoryCreditsItem,
 ) as any as S.Schema<RepositoryAdvisoryCreditsList>;
 
 /** The state of the user's acceptance of the credit. */
 export type RepositoryAdvisoryCreditState = "accepted" | "declined" | "pending";
-export const RepositoryAdvisoryCreditState = S.String;
+const RepositoryAdvisoryCreditState = S.String;
 
 /** A credit given to a user for a repository security advisory. */
 export interface RepositoryAdvisoryCredit {
@@ -449,7 +448,7 @@ export interface RepositoryAdvisoryCredit {
   /** The state of the user's acceptance of the credit. */
   state: RepositoryAdvisoryCreditState;
 }
-export const RepositoryAdvisoryCredit = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisoryCredit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: SimpleUser,
     type: SecurityAdvisoryCreditTypes,
@@ -458,13 +457,13 @@ export const RepositoryAdvisoryCredit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryAdvisoryCredit" }) as any as S.Schema<RepositoryAdvisoryCredit>;
 
 export type RepositoryAdvisoryCreditsDetailedList = Array<RepositoryAdvisoryCredit>;
-export const RepositoryAdvisoryCreditsDetailedList = /*@__PURE__*/ S.Array(
+const RepositoryAdvisoryCreditsDetailedList = /*@__PURE__*/ S.Array(
   RepositoryAdvisoryCredit,
 ) as any as S.Schema<RepositoryAdvisoryCreditsDetailedList>;
 
 /** A list of users that collaborate on the advisory. */
 export type RepositoryAdvisoryCollaboratingUsersList = Array<SimpleUser>;
-export const RepositoryAdvisoryCollaboratingUsersList = /*@__PURE__*/ S.Array(
+const RepositoryAdvisoryCollaboratingUsersList = /*@__PURE__*/ S.Array(
   SimpleUser,
 ) as any as S.Schema<RepositoryAdvisoryCollaboratingUsersList>;
 
@@ -475,7 +474,7 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
+const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull: S.Boolean,
     triage: S.Boolean,
@@ -487,15 +486,15 @@ export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
+const TeamType = S.String;
 
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
+const TeamAccessSource = S.String;
 
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
+const NullableTeamSimpleType = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
@@ -527,7 +526,7 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -573,7 +572,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -598,7 +597,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of teams that collaborate on the advisory. */
 export type RepositoryAdvisoryCollaboratingTeamsList = Array<Team>;
-export const RepositoryAdvisoryCollaboratingTeamsList = /*@__PURE__*/ S.Array(
+const RepositoryAdvisoryCollaboratingTeamsList = /*@__PURE__*/ S.Array(
   Team,
 ) as any as S.Schema<RepositoryAdvisoryCollaboratingTeamsList>;
 
@@ -696,7 +695,7 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
-export const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
+const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -796,7 +795,7 @@ export interface RepositoryAdvisory {
   /** A temporary private fork of the advisory's repository for collaborating on a fix. */
   private_fork: SimpleRepository | null;
 }
-export const RepositoryAdvisory = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAdvisory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ghsa_id: S.String,
     cve_id: S.NullOr(S.String),
@@ -831,13 +830,10 @@ export const RepositoryAdvisory = /*@__PURE__*/ S.suspend(() =>
 /** The name of the package affected by the vulnerability. */
 export type CreateRepositoryAdvisoryRequestVulnerabilitiesItemPackage =
   CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage;
-export const CreateRepositoryAdvisoryRequestVulnerabilitiesItemPackage =
-  CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage;
-
 /** The functions in the package that are affected. */
 export type CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
   Array<string>;
-export const CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
+const CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
   CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList as any as S.Schema<CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList>;
 
 export interface CreateRepositoryAdvisoryRequestVulnerabilitiesItem {
@@ -850,7 +846,7 @@ export interface CreateRepositoryAdvisoryRequestVulnerabilitiesItem {
   /** The functions in the package that are affected. */
   vulnerable_functions?: CreateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList | null;
 }
-export const CreateRepositoryAdvisoryRequestVulnerabilitiesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryAdvisoryRequestVulnerabilitiesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package: CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage,
     vulnerable_version_range: S.optional(S.NullOr(S.String)),
@@ -866,13 +862,13 @@ export const CreateRepositoryAdvisoryRequestVulnerabilitiesItem = /*@__PURE__*/ 
 /** A product affected by the vulnerability detailed in a repository security advisory. */
 export type CreateRepositoryAdvisoryRequestVulnerabilitiesList =
   Array<CreateRepositoryAdvisoryRequestVulnerabilitiesItem>;
-export const CreateRepositoryAdvisoryRequestVulnerabilitiesList = /*@__PURE__*/ S.Array(
+const CreateRepositoryAdvisoryRequestVulnerabilitiesList = /*@__PURE__*/ S.Array(
   CreateRepositoryAdvisoryRequestVulnerabilitiesItem,
 ) as any as S.Schema<CreateRepositoryAdvisoryRequestVulnerabilitiesList>;
 
 /** A list of Common Weakness Enumeration (CWE) IDs. */
 export type CreateRepositoryAdvisoryRequestCweIdsList = Array<string>;
-export const CreateRepositoryAdvisoryRequestCweIdsList =
+const CreateRepositoryAdvisoryRequestCweIdsList =
   CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<CreateRepositoryAdvisoryRequestCweIdsList>;
 
 export interface CreateRepositoryAdvisoryRequestCreditsItem {
@@ -880,7 +876,7 @@ export interface CreateRepositoryAdvisoryRequestCreditsItem {
   login: string;
   type: SecurityAdvisoryCreditTypes | (string & {});
 }
-export const CreateRepositoryAdvisoryRequestCreditsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryAdvisoryRequestCreditsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.String,
     type: SecurityAdvisoryCreditTypes,
@@ -892,13 +888,13 @@ export const CreateRepositoryAdvisoryRequestCreditsItem = /*@__PURE__*/ S.suspen
 /** A list of users receiving credit for their participation in the security advisory. */
 export type CreateRepositoryAdvisoryRequestCreditsList =
   Array<CreateRepositoryAdvisoryRequestCreditsItem>;
-export const CreateRepositoryAdvisoryRequestCreditsList = /*@__PURE__*/ S.Array(
+const CreateRepositoryAdvisoryRequestCreditsList = /*@__PURE__*/ S.Array(
   CreateRepositoryAdvisoryRequestCreditsItem,
 ) as any as S.Schema<CreateRepositoryAdvisoryRequestCreditsList>;
 
 /** The severity of the advisory. You must choose between setting this field or `cvss_vector_string`. */
 export type CreateRepositoryAdvisoryRequestSeverity = "critical" | "high" | "medium" | "low";
-export const CreateRepositoryAdvisoryRequestSeverity = S.String;
+const CreateRepositoryAdvisoryRequestSeverity = S.String;
 
 export interface CreateRepositoryAdvisoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -924,7 +920,7 @@ export interface CreateRepositoryAdvisoryRequest {
   /** Whether to create a temporary private fork of the repository to collaborate on a fix. */
   start_private_fork?: boolean;
 }
-export const CreateRepositoryAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -950,7 +946,7 @@ export interface CreateRepositoryAdvisoryCveRequestRequest {
   /** The GHSA (GitHub Security Advisory) identifier of the advisory. */
   ghsa_id: string;
 }
-export const CreateRepositoryAdvisoryCveRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryAdvisoryCveRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -967,7 +963,7 @@ export const CreateRepositoryAdvisoryCveRequestRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateRepositoryAdvisoryCveRequestRequest>;
 
 export interface CreateRepositoryAdvisoryCveRequestResponse {}
-export const CreateRepositoryAdvisoryCveRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRepositoryAdvisoryCveRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateRepositoryAdvisoryCveRequestResponse",
@@ -977,7 +973,7 @@ export interface GetGlobalAdvisoryRequest {
   /** The GHSA (GitHub Security Advisory) identifier of the advisory. */
   ghsa_id: string;
 }
-export const GetGlobalAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGlobalAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ghsa_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/advisories/{ghsa_id}", code: 200 })),
@@ -985,40 +981,33 @@ export const GetGlobalAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of advisory. */
 export type GlobalAdvisoryType = "reviewed" | "unreviewed" | "malware";
-export const GlobalAdvisoryType = S.String;
+const GlobalAdvisoryType = S.String;
 
 /** The severity of the advisory. */
 export type GlobalAdvisorySeverity = "critical" | "high" | "medium" | "low" | "unknown";
-export const GlobalAdvisorySeverity = S.String;
+const GlobalAdvisorySeverity = S.String;
 
 /** The type of identifier. */
 export type GlobalAdvisoryIdentifiersItemType = "CVE" | "GHSA";
-export const GlobalAdvisoryIdentifiersItemType = S.String;
-
 export interface GlobalAdvisoryIdentifiersItem {
   /** The type of identifier. */
   type: GlobalAdvisoryIdentifiersItemType;
   /** The identifier value. */
   value: string;
 }
-export const GlobalAdvisoryIdentifiersItem =
-  RepositoryAdvisoryIdentifiersItem as any as S.Schema<GlobalAdvisoryIdentifiersItem>;
-
 export type GlobalAdvisoryIdentifiersList = Array<GlobalAdvisoryIdentifiersItem>;
-export const GlobalAdvisoryIdentifiersList =
+const GlobalAdvisoryIdentifiersList =
   RepositoryAdvisoryIdentifiersList as any as S.Schema<GlobalAdvisoryIdentifiersList>;
 
 export type GlobalAdvisoryReferencesList = Array<string>;
-export const GlobalAdvisoryReferencesList =
+const GlobalAdvisoryReferencesList =
   CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<GlobalAdvisoryReferencesList>;
 
 /** The name of the package affected by the vulnerability. */
 export type VulnerabilityPackage = RepositoryAdvisoryVulnerabilityPackage;
-export const VulnerabilityPackage = RepositoryAdvisoryVulnerabilityPackage;
-
 /** The functions in the package that are affected by the vulnerability. */
 export type VulnerabilityVulnerableFunctionsList = Array<string>;
-export const VulnerabilityVulnerableFunctionsList =
+const VulnerabilityVulnerableFunctionsList =
   CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<VulnerabilityVulnerableFunctionsList>;
 
 /** A vulnerability describing the product and its affected versions within a GitHub Security Advisory. */
@@ -1032,7 +1021,7 @@ export interface Vulnerability {
   /** The functions in the package that are affected by the vulnerability. */
   vulnerable_functions: VulnerabilityVulnerableFunctionsList | null;
 }
-export const Vulnerability = /*@__PURE__*/ S.suspend(() =>
+const Vulnerability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package: S.NullOr(RepositoryAdvisoryVulnerabilityPackage),
     vulnerable_version_range: S.NullOr(S.String),
@@ -1043,19 +1032,17 @@ export const Vulnerability = /*@__PURE__*/ S.suspend(() =>
 
 /** The products and respective version ranges affected by the advisory. */
 export type GlobalAdvisoryVulnerabilitiesList = Array<Vulnerability>;
-export const GlobalAdvisoryVulnerabilitiesList = /*@__PURE__*/ S.Array(
+const GlobalAdvisoryVulnerabilitiesList = /*@__PURE__*/ S.Array(
   Vulnerability,
 ) as any as S.Schema<GlobalAdvisoryVulnerabilitiesList>;
 
 export type GlobalAdvisoryCvss = RepositoryAdvisoryCvss;
-export const GlobalAdvisoryCvss = RepositoryAdvisoryCvss;
-
 /** The EPSS scores as calculated by the [Exploit Prediction Scoring System](https://www.first.org/epss). */
 export interface SecurityAdvisoryEpss {
   percentage?: number;
   percentile?: number;
 }
-export const SecurityAdvisoryEpss = /*@__PURE__*/ S.suspend(() =>
+const SecurityAdvisoryEpss = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentage: S.optional(S.Number),
     percentile: S.optional(S.Number),
@@ -1063,17 +1050,15 @@ export const SecurityAdvisoryEpss = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityAdvisoryEpss" }) as any as S.Schema<SecurityAdvisoryEpss>;
 
 export type GlobalAdvisoryCwesItem = RepositoryAdvisoryCwesItem;
-export const GlobalAdvisoryCwesItem = RepositoryAdvisoryCwesItem;
-
 export type GlobalAdvisoryCwesList = Array<RepositoryAdvisoryCwesItem>;
-export const GlobalAdvisoryCwesList =
+const GlobalAdvisoryCwesList =
   RepositoryAdvisoryCwesList as any as S.Schema<GlobalAdvisoryCwesList>;
 
 export interface GlobalAdvisoryCreditsItem {
   user: SimpleUser;
   type: SecurityAdvisoryCreditTypes;
 }
-export const GlobalAdvisoryCreditsItem = /*@__PURE__*/ S.suspend(() =>
+const GlobalAdvisoryCreditsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: SimpleUser,
     type: SecurityAdvisoryCreditTypes,
@@ -1084,7 +1069,7 @@ export const GlobalAdvisoryCreditsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The users who contributed to the advisory. */
 export type GlobalAdvisoryCreditsList = Array<GlobalAdvisoryCreditsItem>;
-export const GlobalAdvisoryCreditsList = /*@__PURE__*/ S.Array(
+const GlobalAdvisoryCreditsList = /*@__PURE__*/ S.Array(
   GlobalAdvisoryCreditsItem,
 ) as any as S.Schema<GlobalAdvisoryCreditsList>;
 
@@ -1131,7 +1116,7 @@ export interface GlobalAdvisory {
   /** The users who contributed to the advisory. */
   credits: GlobalAdvisoryCreditsList | null;
 }
-export const GlobalAdvisory = /*@__PURE__*/ S.suspend(() =>
+const GlobalAdvisory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ghsa_id: S.String,
     cve_id: S.NullOr(S.String),
@@ -1167,7 +1152,7 @@ export interface GetRepositoryAdvisoryRequest {
   /** The GHSA (GitHub Security Advisory) identifier of the advisory. */
   ghsa_id: string;
 }
-export const GetRepositoryAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepositoryAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1184,7 +1169,7 @@ export const GetRepositoryAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRepositoryAdvisoryRequest>;
 
 export type ListGlobalAdvisoriesRequestType = "reviewed" | "malware" | "unreviewed";
-export const ListGlobalAdvisoriesRequestType = S.String;
+const ListGlobalAdvisoriesRequestType = S.String;
 
 export type ListGlobalAdvisoriesRequestSeverity =
   | "unknown"
@@ -1192,35 +1177,29 @@ export type ListGlobalAdvisoriesRequestSeverity =
   | "medium"
   | "high"
   | "critical";
-export const ListGlobalAdvisoriesRequestSeverity = S.String;
+const ListGlobalAdvisoriesRequestSeverity = S.String;
 
 export type ListGlobalAdvisoriesRequestCwesCase1List = Array<string>;
-export const ListGlobalAdvisoriesRequestCwesCase1List =
-  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<ListGlobalAdvisoriesRequestCwesCase1List>;
-
 export type ListGlobalAdvisoriesRequestCwes = string | ListGlobalAdvisoriesRequestCwesCase1List;
-export const ListGlobalAdvisoriesRequestCwes =
+const ListGlobalAdvisoriesRequestCwes =
   S.Unknown as any as S.Schema<ListGlobalAdvisoriesRequestCwes>;
 
 export type ListGlobalAdvisoriesRequestAffectsCase1List = Array<string>;
-export const ListGlobalAdvisoriesRequestAffectsCase1List =
-  CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<ListGlobalAdvisoriesRequestAffectsCase1List>;
-
 export type ListGlobalAdvisoriesRequestAffects =
   | string
   | ListGlobalAdvisoriesRequestAffectsCase1List;
-export const ListGlobalAdvisoriesRequestAffects =
+const ListGlobalAdvisoriesRequestAffects =
   S.Unknown as any as S.Schema<ListGlobalAdvisoriesRequestAffects>;
 
 export type ListGlobalAdvisoriesRequestDirection = "asc" | "desc";
-export const ListGlobalAdvisoriesRequestDirection = S.String;
+const ListGlobalAdvisoriesRequestDirection = S.String;
 
 export type ListGlobalAdvisoriesRequestSort =
   | "updated"
   | "published"
   | "epss_percentage"
   | "epss_percentile";
-export const ListGlobalAdvisoriesRequestSort = S.String;
+const ListGlobalAdvisoriesRequestSort = S.String;
 
 export interface ListGlobalAdvisoriesRequest {
   /** If specified, only advisories with this GHSA (GitHub Security Advisory) identifier will be returned. */
@@ -1260,7 +1239,7 @@ export interface ListGlobalAdvisoriesRequest {
   /** The property to sort the results by. */
   sort?: ListGlobalAdvisoriesRequestSort | (string & {});
 }
-export const ListGlobalAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGlobalAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ghsa_id: S.optional(S.String.pipe(T.Query())),
     type: S.optional(ListGlobalAdvisoriesRequestType.pipe(T.Query())),
@@ -1286,25 +1265,25 @@ export const ListGlobalAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGlobalAdvisoriesRequest>;
 
 export type ListGlobalAdvisoriesResponseBodyList = Array<GlobalAdvisory>;
-export const ListGlobalAdvisoriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListGlobalAdvisoriesResponseBodyList = /*@__PURE__*/ S.Array(
   GlobalAdvisory,
 ) as any as S.Schema<ListGlobalAdvisoriesResponseBodyList>;
 
 export type ListGlobalAdvisoriesResponse = ListGlobalAdvisoriesResponseBodyList;
-export const ListGlobalAdvisoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGlobalAdvisoriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListGlobalAdvisoriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListGlobalAdvisoriesResponse",
 }) as any as S.Schema<ListGlobalAdvisoriesResponse>;
 
 export type ListOrgRepositoryAdvisoriesRequestDirection = "asc" | "desc";
-export const ListOrgRepositoryAdvisoriesRequestDirection = S.String;
+const ListOrgRepositoryAdvisoriesRequestDirection = S.String;
 
 export type ListOrgRepositoryAdvisoriesRequestSort = "created" | "updated" | "published";
-export const ListOrgRepositoryAdvisoriesRequestSort = S.String;
+const ListOrgRepositoryAdvisoriesRequestSort = S.String;
 
 export type ListOrgRepositoryAdvisoriesRequestState = "triage" | "draft" | "published" | "closed";
-export const ListOrgRepositoryAdvisoriesRequestState = S.String;
+const ListOrgRepositoryAdvisoriesRequestState = S.String;
 
 export interface ListOrgRepositoryAdvisoriesRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1322,7 +1301,7 @@ export interface ListOrgRepositoryAdvisoriesRequest {
   /** Filter by the state of the repository advisories. Only advisories of this state will be returned. */
   state?: ListOrgRepositoryAdvisoriesRequestState | (string & {});
 }
-export const ListOrgRepositoryAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgRepositoryAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     direction: S.optional(ListOrgRepositoryAdvisoriesRequestDirection.pipe(T.Query())),
@@ -1337,25 +1316,25 @@ export const ListOrgRepositoryAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrgRepositoryAdvisoriesRequest>;
 
 export type ListOrgRepositoryAdvisoriesResponseBodyList = Array<RepositoryAdvisory>;
-export const ListOrgRepositoryAdvisoriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrgRepositoryAdvisoriesResponseBodyList = /*@__PURE__*/ S.Array(
   RepositoryAdvisory,
 ) as any as S.Schema<ListOrgRepositoryAdvisoriesResponseBodyList>;
 
 export type ListOrgRepositoryAdvisoriesResponse = ListOrgRepositoryAdvisoriesResponseBodyList;
-export const ListOrgRepositoryAdvisoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgRepositoryAdvisoriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrgRepositoryAdvisoriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrgRepositoryAdvisoriesResponse",
 }) as any as S.Schema<ListOrgRepositoryAdvisoriesResponse>;
 
 export type ListRepositoryAdvisoriesRequestDirection = "asc" | "desc";
-export const ListRepositoryAdvisoriesRequestDirection = S.String;
+const ListRepositoryAdvisoriesRequestDirection = S.String;
 
 export type ListRepositoryAdvisoriesRequestSort = "created" | "updated" | "published";
-export const ListRepositoryAdvisoriesRequestSort = S.String;
+const ListRepositoryAdvisoriesRequestSort = S.String;
 
 export type ListRepositoryAdvisoriesRequestState = "triage" | "draft" | "published" | "closed";
-export const ListRepositoryAdvisoriesRequestState = S.String;
+const ListRepositoryAdvisoriesRequestState = S.String;
 
 export interface ListRepositoryAdvisoriesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1375,7 +1354,7 @@ export interface ListRepositoryAdvisoriesRequest {
   /** Filter by state of the repository advisories. Only advisories of this state will be returned. */
   state?: ListRepositoryAdvisoriesRequestState | (string & {});
 }
-export const ListRepositoryAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepositoryAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1391,25 +1370,16 @@ export const ListRepositoryAdvisoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRepositoryAdvisoriesRequest>;
 
 export type ListRepositoryAdvisoriesResponseBodyList = Array<RepositoryAdvisory>;
-export const ListRepositoryAdvisoriesResponseBodyList =
-  ListOrgRepositoryAdvisoriesResponseBodyList as any as S.Schema<ListRepositoryAdvisoriesResponseBodyList>;
-
 export type ListRepositoryAdvisoriesResponse = ListRepositoryAdvisoriesResponseBodyList;
-export const ListRepositoryAdvisoriesResponse =
+const ListRepositoryAdvisoriesResponse =
   ListOrgRepositoryAdvisoriesResponse as any as S.Schema<ListRepositoryAdvisoriesResponse>;
 
 /** The name of the package affected by the vulnerability. */
 export type UpdateRepositoryAdvisoryRequestVulnerabilitiesItemPackage =
   CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage;
-export const UpdateRepositoryAdvisoryRequestVulnerabilitiesItemPackage =
-  CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage;
-
 /** The functions in the package that are affected. */
 export type UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
   Array<string>;
-export const UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList =
-  CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemVulnerableFunctionsList as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList>;
-
 export interface UpdateRepositoryAdvisoryRequestVulnerabilitiesItem {
   /** The name of the package affected by the vulnerability. */
   package: CreatePrivateVulnerabilityReportRequestVulnerabilitiesItemPackage;
@@ -1420,46 +1390,40 @@ export interface UpdateRepositoryAdvisoryRequestVulnerabilitiesItem {
   /** The functions in the package that are affected. */
   vulnerable_functions?: UpdateRepositoryAdvisoryRequestVulnerabilitiesItemVulnerableFunctionsList | null;
 }
-export const UpdateRepositoryAdvisoryRequestVulnerabilitiesItem =
-  CreateRepositoryAdvisoryRequestVulnerabilitiesItem as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesItem>;
-
 /** A product affected by the vulnerability detailed in a repository security advisory. */
 export type UpdateRepositoryAdvisoryRequestVulnerabilitiesList =
   Array<UpdateRepositoryAdvisoryRequestVulnerabilitiesItem>;
-export const UpdateRepositoryAdvisoryRequestVulnerabilitiesList =
+const UpdateRepositoryAdvisoryRequestVulnerabilitiesList =
   CreateRepositoryAdvisoryRequestVulnerabilitiesList as any as S.Schema<UpdateRepositoryAdvisoryRequestVulnerabilitiesList>;
 
 /** A list of Common Weakness Enumeration (CWE) IDs. */
 export type UpdateRepositoryAdvisoryRequestCweIdsList = Array<string>;
-export const UpdateRepositoryAdvisoryRequestCweIdsList =
+const UpdateRepositoryAdvisoryRequestCweIdsList =
   CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<UpdateRepositoryAdvisoryRequestCweIdsList>;
 
 export type UpdateRepositoryAdvisoryRequestCreditsItem = CreateRepositoryAdvisoryRequestCreditsItem;
-export const UpdateRepositoryAdvisoryRequestCreditsItem =
-  CreateRepositoryAdvisoryRequestCreditsItem;
-
 /** A list of users receiving credit for their participation in the security advisory. */
 export type UpdateRepositoryAdvisoryRequestCreditsList =
   Array<CreateRepositoryAdvisoryRequestCreditsItem>;
-export const UpdateRepositoryAdvisoryRequestCreditsList =
+const UpdateRepositoryAdvisoryRequestCreditsList =
   CreateRepositoryAdvisoryRequestCreditsList as any as S.Schema<UpdateRepositoryAdvisoryRequestCreditsList>;
 
 /** The severity of the advisory. You must choose between setting this field or `cvss_vector_string`. */
 export type UpdateRepositoryAdvisoryRequestSeverity = "critical" | "high" | "medium" | "low";
-export const UpdateRepositoryAdvisoryRequestSeverity = S.String;
+const UpdateRepositoryAdvisoryRequestSeverity = S.String;
 
 /** The state of the advisory. */
 export type UpdateRepositoryAdvisoryRequestState = "published" | "closed" | "draft";
-export const UpdateRepositoryAdvisoryRequestState = S.String;
+const UpdateRepositoryAdvisoryRequestState = S.String;
 
 /** A list of usernames who have been granted write access to the advisory. */
 export type UpdateRepositoryAdvisoryRequestCollaboratingUsersList = Array<string>;
-export const UpdateRepositoryAdvisoryRequestCollaboratingUsersList =
+const UpdateRepositoryAdvisoryRequestCollaboratingUsersList =
   CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<UpdateRepositoryAdvisoryRequestCollaboratingUsersList>;
 
 /** A list of team slugs which have been granted write access to the advisory. */
 export type UpdateRepositoryAdvisoryRequestCollaboratingTeamsList = Array<string>;
-export const UpdateRepositoryAdvisoryRequestCollaboratingTeamsList =
+const UpdateRepositoryAdvisoryRequestCollaboratingTeamsList =
   CreatePrivateVulnerabilityReportRequestCweIdsList as any as S.Schema<UpdateRepositoryAdvisoryRequestCollaboratingTeamsList>;
 
 export interface UpdateRepositoryAdvisoryRequest {
@@ -1492,7 +1456,7 @@ export interface UpdateRepositoryAdvisoryRequest {
   /** A list of team slugs which have been granted write access to the advisory. */
   collaborating_teams?: UpdateRepositoryAdvisoryRequestCollaboratingTeamsList | null;
 }
-export const UpdateRepositoryAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepositoryAdvisoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),

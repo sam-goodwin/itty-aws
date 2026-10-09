@@ -39,7 +39,7 @@ export interface GetLogicalProductsRequest {
   /** Required. The name of the LogicalProduct to retrieve. Format: logicalProducts/{logical_product} */
   name: string;
 }
-export const GetLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -59,10 +59,10 @@ export type LogicalProductLifecycleStateEnum =
   | "LIFECYCLE_STATE_PRIVATE_GA"
   | "LIFECYCLE_STATE_GA"
   | "LIFECYCLE_STATE_DEPRECATED";
-export const LogicalProductLifecycleStateEnum = S.String;
+const LogicalProductLifecycleStateEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents an independent service offering that can be provisioned by a customer. */
 export interface LogicalProduct {
@@ -81,7 +81,7 @@ export interface LogicalProduct {
   /** Output only. Child variant resource references. Format: logicalProducts/{logical_product}/variants/{variant} */
   variants?: StringList;
 }
-export const LogicalProduct = /*@__PURE__*/ S.suspend(() =>
+const LogicalProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     productSuite: S.optional(S.String),
@@ -97,7 +97,7 @@ export interface GetLogicalProductsVariantsRequest {
   /** Required. The name of the LogicalProductVariant to retrieve. Format: logicalProducts/{logical_product}/variants/{variant} */
   name: string;
 }
-export const GetLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -117,7 +117,7 @@ export type LogicalProductVariantLifecycleStateEnum =
   | "LIFECYCLE_STATE_PRIVATE_GA"
   | "LIFECYCLE_STATE_GA"
   | "LIFECYCLE_STATE_DEPRECATED";
-export const LogicalProductVariantLifecycleStateEnum = S.String;
+const LogicalProductVariantLifecycleStateEnum = S.String;
 
 /** Represents a distinct offering derived from a primary product that retains core functionalities but offers specialized features for a specific market segment. */
 export interface LogicalProductVariant {
@@ -132,7 +132,7 @@ export interface LogicalProductVariant {
   /** Output only. The resource name of the Logical Entity that the logical product variant is replaced by. This field is only populated when this logical product variant is replaced by some other type. Eg: logicalProducts/{logical_product}, productSuites/{product_suite}, etc. */
   replacement?: string;
 }
-export const LogicalProductVariant = /*@__PURE__*/ S.suspend(() =>
+const LogicalProductVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     lifecycleState: S.optional(LogicalProductVariantLifecycleStateEnum),
@@ -146,7 +146,7 @@ export interface GetProductSuitesRequest {
   /** Required. The name of the ProductSuite to retrieve. Format: productSuites/{product_suite} */
   name: string;
 }
-export const GetProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -171,7 +171,7 @@ export interface ProductSuite {
   /** Output only. The resource name of the Logical Entity that the product suite is replaced by. This field is only populated when this product suite is replaced by some other type. Eg: logicalProducts/{logical_product}, logicalProducts/{logical_product}/variants/{variant}, etc. */
   replacement?: string;
 }
-export const ProductSuite = /*@__PURE__*/ S.suspend(() =>
+const ProductSuite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     title: S.optional(S.String),
@@ -189,7 +189,7 @@ export interface ListLogicalProductsRequest {
   /** Optional. A page token, received from a previous `ListLogicalProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLogicalProducts` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -206,7 +206,7 @@ export const ListLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLogicalProductsRequest>;
 
 export type LogicalProductList = Array<LogicalProduct>;
-export const LogicalProductList = /*@__PURE__*/ S.Array(
+const LogicalProductList = /*@__PURE__*/ S.Array(
   LogicalProduct,
 ) as any as S.Schema<LogicalProductList>;
 
@@ -217,7 +217,7 @@ export interface ListLogicalProductsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListLogicalProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogicalProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logicalProducts: S.optional(LogicalProductList),
     nextPageToken: S.optional(S.String),
@@ -234,7 +234,7 @@ export interface ListLogicalProductsVariantsRequest {
   /** Optional. The maximum number of logical product variants to return. The service may return fewer than this value. If unspecified, at most 100 logical product variants will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
 }
-export const ListLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -251,7 +251,7 @@ export const ListLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLogicalProductsVariantsRequest>;
 
 export type LogicalProductVariantList = Array<LogicalProductVariant>;
-export const LogicalProductVariantList = /*@__PURE__*/ S.Array(
+const LogicalProductVariantList = /*@__PURE__*/ S.Array(
   LogicalProductVariant,
 ) as any as S.Schema<LogicalProductVariantList>;
 
@@ -262,7 +262,7 @@ export interface ListLogicalProductVariantsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListLogicalProductVariantsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogicalProductVariantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logicalProductVariants: S.optional(LogicalProductVariantList),
     nextPageToken: S.optional(S.String),
@@ -277,7 +277,7 @@ export interface ListProductSuitesRequest {
   /** Optional. A page token, received from a previous `ListProductSuites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProductSuites` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -291,9 +291,7 @@ export const ListProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProductSuitesRequest" }) as any as S.Schema<ListProductSuitesRequest>;
 
 export type ProductSuiteList = Array<ProductSuite>;
-export const ProductSuiteList = /*@__PURE__*/ S.Array(
-  ProductSuite,
-) as any as S.Schema<ProductSuiteList>;
+const ProductSuiteList = /*@__PURE__*/ S.Array(ProductSuite) as any as S.Schema<ProductSuiteList>;
 
 /** Response message for ListProductSuites. */
 export interface ListProductSuitesResponse {
@@ -302,7 +300,7 @@ export interface ListProductSuitesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListProductSuitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductSuitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productSuites: S.optional(ProductSuiteList),
     nextPageToken: S.optional(S.String),
@@ -315,7 +313,7 @@ export interface LookupEntityLogicalProductsRequest {
   /** Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite} */
   lookupUri: string;
 }
-export const LookupEntityLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupEntityLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lookupUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -338,7 +336,7 @@ export interface LookupEntityResponse {
   /** Matched LogicalProduct. */
   logicalProduct?: LogicalProduct;
 }
-export const LookupEntityResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupEntityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productSuite: S.optional(ProductSuite),
     logicalProductVariant: S.optional(LogicalProductVariant),
@@ -350,7 +348,7 @@ export interface LookupEntityLogicalProductsVariantsRequest {
   /** Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite} */
   lookupUri: string;
 }
-export const LookupEntityLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupEntityLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lookupUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -368,7 +366,7 @@ export interface LookupEntityProductSuitesRequest {
   /** Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite} */
   lookupUri: string;
 }
-export const LookupEntityProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupEntityProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lookupUri: S.String.pipe(T.Label()),
   }).pipe(

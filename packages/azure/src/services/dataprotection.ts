@@ -12,7 +12,7 @@ export type { AzureOpError, AzureOpContext };
 export interface AdhocBackupTriggerOption {
   retentionTagOverride?: string;
 }
-export const AdhocBackupTriggerOption = /*@__PURE__*/ S.suspend(() =>
+const AdhocBackupTriggerOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionTagOverride: S.optional(S.String),
   }),
@@ -24,7 +24,7 @@ export interface AdHocBackupRuleOptions {
   /** Adhoc backup trigger option */
   triggerOption: AdhocBackupTriggerOption;
 }
-export const AdHocBackupRuleOptions = /*@__PURE__*/ S.suspend(() =>
+const AdHocBackupRuleOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleName: S.String,
     triggerOption: AdhocBackupTriggerOption,
@@ -43,7 +43,7 @@ export interface BackupInstancesAdhocBackupRequest {
   /** Name for the Rule of the Policy which needs to be applied for this backup */
   backupRuleOptions: AdHocBackupRuleOptions;
 }
-export const BackupInstancesAdhocBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesAdhocBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -68,7 +68,7 @@ export interface BackupInstancesAdhocBackupResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesAdhocBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesAdhocBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.String,
     jobId: S.optional(S.String),
@@ -79,14 +79,14 @@ export const BackupInstancesAdhocBackupResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the specific object - used for deserializing */
 export type ResourcePropertiesObjectType = "DefaultResourceProperties";
-export const ResourcePropertiesObjectType = S.String;
+const ResourcePropertiesObjectType = S.String;
 
 /** Properties which are specific to datasource/datasourceSets */
 export interface BaseResourceProperties {
   /** Type of the specific object - used for deserializing */
   objectType: ResourcePropertiesObjectType | (string & {});
 }
-export const BaseResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const BaseResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: ResourcePropertiesObjectType,
   }),
@@ -111,7 +111,7 @@ export interface Datasource {
   /** Properties specific to data source */
   resourceProperties?: BaseResourceProperties;
 }
-export const Datasource = /*@__PURE__*/ S.suspend(() =>
+const Datasource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasourceType: S.optional(S.String),
     objectType: S.optional(S.String),
@@ -143,11 +143,11 @@ export interface DatasourceSet {
   /** Properties specific to data source set */
   resourceProperties?: BaseResourceProperties;
 }
-export const DatasourceSet = Datasource as any as S.Schema<DatasourceSet>;
+const DatasourceSet = Datasource as any as S.Schema<DatasourceSet>;
 
 /** type of datastore; Operational/Vault/Archive */
 export type DataStoreTypes = "OperationalStore" | "VaultStore" | "ArchiveStore";
-export const DataStoreTypes = S.String;
+const DataStoreTypes = S.String;
 
 /** Parameters for DataStore */
 export interface DataStoreParameters {
@@ -158,7 +158,7 @@ export interface DataStoreParameters {
   /** Snapshot resource group URI (AzureOperationalStoreParameters). */
   resourceGroupId?: string;
 }
-export const DataStoreParameters = /*@__PURE__*/ S.suspend(() =>
+const DataStoreParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.String,
     dataStoreType: DataStoreTypes,
@@ -168,7 +168,7 @@ export const DataStoreParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the DataStore Parameters */
 export type PolicyParametersDataStoreParametersListList = Array<DataStoreParameters>;
-export const PolicyParametersDataStoreParametersListList = /*@__PURE__*/ S.Array(
+const PolicyParametersDataStoreParametersListList = /*@__PURE__*/ S.Array(
   DataStoreParameters,
 ) as any as S.Schema<PolicyParametersDataStoreParametersListList>;
 
@@ -181,7 +181,7 @@ export interface BackupDatasourceParameters {
   /** Secret store resource (SecretStoreBasedAuthCredentials). */
   secretStoreResource?: unknown;
 }
-export const BackupDatasourceParameters = /*@__PURE__*/ S.suspend(() =>
+const BackupDatasourceParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.String,
     containersList: S.optional(S.Unknown),
@@ -193,7 +193,7 @@ export const BackupDatasourceParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the Backup Data Source Parameters */
 export type PolicyParametersBackupDatasourceParametersListList = Array<BackupDatasourceParameters>;
-export const PolicyParametersBackupDatasourceParametersListList = /*@__PURE__*/ S.Array(
+const PolicyParametersBackupDatasourceParametersListList = /*@__PURE__*/ S.Array(
   BackupDatasourceParameters,
 ) as any as S.Schema<PolicyParametersBackupDatasourceParametersListList>;
 
@@ -204,7 +204,7 @@ export interface PolicyParameters {
   /** Gets or sets the Backup Data Source Parameters */
   backupDatasourceParametersList?: PolicyParametersBackupDatasourceParametersListList;
 }
-export const PolicyParameters = /*@__PURE__*/ S.suspend(() =>
+const PolicyParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataStoreParametersList: S.optional(PolicyParametersDataStoreParametersListList),
     backupDatasourceParametersList: S.optional(PolicyParametersBackupDatasourceParametersListList),
@@ -217,7 +217,7 @@ export interface PolicyInfoInput {
   /** Policy parameters for the backup instance */
   policyParameters?: PolicyParameters;
 }
-export const PolicyInfoInput = /*@__PURE__*/ S.suspend(() =>
+const PolicyInfoInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyId: S.String,
     policyParameters: S.optional(PolicyParameters),
@@ -226,7 +226,7 @@ export const PolicyInfoInput = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstanceInputResourceGuardOperationRequestsList = Array<string>;
-export const BackupInstanceInputResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
+const BackupInstanceInputResourceGuardOperationRequestsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BackupInstanceInputResourceGuardOperationRequestsList>;
 
@@ -235,7 +235,7 @@ export interface AuthCredentials {
   /** Type of the specific object - used for deserializing */
   objectType: string;
 }
-export const AuthCredentials = /*@__PURE__*/ S.suspend(() =>
+const AuthCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.String,
   }),
@@ -243,7 +243,7 @@ export const AuthCredentials = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again. */
 export type ValidationType = "ShallowValidation" | "DeepValidation";
-export const ValidationType = S.String;
+const ValidationType = S.String;
 
 export interface IdentityDetails {
   /** Specifies if the BI is protected by System Identity. */
@@ -251,7 +251,7 @@ export interface IdentityDetails {
   /** ARM URL for User Assigned Identity. */
   userAssignedIdentityArmUrl?: string;
 }
-export const IdentityDetails = /*@__PURE__*/ S.suspend(() =>
+const IdentityDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useSystemAssignedIdentity: S.optional(S.Boolean),
     userAssignedIdentityArmUrl: S.optional(S.String),
@@ -278,7 +278,7 @@ export interface BackupInstanceInput {
   identityDetails?: IdentityDetails;
   objectType: string;
 }
-export const BackupInstanceInput = /*@__PURE__*/ S.suspend(() =>
+const BackupInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     friendlyName: S.optional(S.String),
     dataSourceInfo: Datasource,
@@ -296,7 +296,7 @@ export const BackupInstanceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Proxy Resource tags. */
 export type BackupInstancesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BackupInstancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const BackupInstancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<BackupInstancesCreateOrUpdateRequestTagsMap>;
@@ -315,7 +315,7 @@ export interface BackupInstancesCreateOrUpdateRequest {
   /** Proxy Resource tags. */
   tags?: BackupInstancesCreateOrUpdateRequestTagsMap;
 }
-export const BackupInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -337,11 +337,11 @@ export const BackupInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -358,7 +358,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -376,7 +376,7 @@ export interface PolicyInfo {
   /** Policy parameters for the backup instance */
   policyParameters?: PolicyParameters;
 }
-export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
+const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyId: S.String,
     policyVersion: S.optional(S.String),
@@ -386,18 +386,18 @@ export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstanceResourceGuardOperationRequestsList = Array<string>;
-export const BackupInstanceResourceGuardOperationRequestsList =
+const BackupInstanceResourceGuardOperationRequestsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupInstanceResourceGuardOperationRequestsList>;
 
 /** Additional related Errors */
 export type UserFacingErrorDetailsList = Array<UserFacingError>;
-export const UserFacingErrorDetailsList = /*@__PURE__*/ S.Array(
+const UserFacingErrorDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => UserFacingError),
 ) as any as S.Schema<UserFacingErrorDetailsList>;
 
 /** Any Key value pairs that can be provided to the client for additional verbose information. */
 export type InnerErrorAdditionalInfoMap = { [key: string]: string | undefined };
-export const InnerErrorAdditionalInfoMap =
+const InnerErrorAdditionalInfoMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<InnerErrorAdditionalInfoMap>;
 
 /** Inner Error */
@@ -409,7 +409,7 @@ export interface InnerError {
   /** Child Inner Error, to allow Nesting. */
   embeddedInnerError?: InnerError;
 }
-export const InnerError = /*@__PURE__*/ S.suspend(() =>
+const InnerError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalInfo: S.optional(InnerErrorAdditionalInfoMap),
     code: S.optional(S.String),
@@ -419,12 +419,12 @@ export const InnerError = /*@__PURE__*/ S.suspend(() =>
 
 /** Any key value pairs that can be injected inside error object */
 export type UserFacingErrorPropertiesMap = { [key: string]: string | undefined };
-export const UserFacingErrorPropertiesMap =
+const UserFacingErrorPropertiesMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<UserFacingErrorPropertiesMap>;
 
 /** RecommendedAction U+FFFD localized. */
 export type UserFacingErrorRecommendedActionList = Array<string>;
-export const UserFacingErrorRecommendedActionList =
+const UserFacingErrorRecommendedActionList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<UserFacingErrorRecommendedActionList>;
 
 /** Error object used by layers that have access to localized content, and propagate that to user */
@@ -447,7 +447,7 @@ export interface UserFacingError {
   /** Target of the error. */
   target?: string;
 }
-export const UserFacingError = /*@__PURE__*/ S.suspend(() =>
+const UserFacingError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     details: S.optional(UserFacingErrorDetailsList),
@@ -469,7 +469,7 @@ export type Status =
   | "ProtectionStopped"
   | "SoftDeleted"
   | "SoftDeleting";
-export const Status = S.String;
+const Status = S.String;
 
 /** Protection status details */
 export interface ProtectionStatusDetails {
@@ -478,7 +478,7 @@ export interface ProtectionStatusDetails {
   /** Specifies the protection status of the resource */
   status?: Status;
 }
-export const ProtectionStatusDetails = /*@__PURE__*/ S.suspend(() =>
+const ProtectionStatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorDetails: S.optional(UserFacingError),
     status: S.optional(Status),
@@ -499,7 +499,7 @@ export type CurrentProtectionState =
   | "SoftDeleting"
   | "SoftDeleted"
   | "UpdatingProtection";
-export const CurrentProtectionState = S.String;
+const CurrentProtectionState = S.String;
 
 /** Backup Instance */
 export interface BackupInstance {
@@ -529,7 +529,7 @@ export interface BackupInstance {
   identityDetails?: IdentityDetails;
   objectType: string;
 }
-export const BackupInstance = /*@__PURE__*/ S.suspend(() =>
+const BackupInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     friendlyName: S.optional(S.String),
     dataSourceInfo: Datasource,
@@ -549,7 +549,7 @@ export const BackupInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** Proxy Resource tags. */
 export type BackupInstancesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BackupInstancesCreateOrUpdateResponseTagsMap =
+const BackupInstancesCreateOrUpdateResponseTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupInstancesCreateOrUpdateResponseTagsMap>;
 
 export interface BackupInstancesCreateOrUpdateResponse {
@@ -566,7 +566,7 @@ export interface BackupInstancesCreateOrUpdateResponse {
   /** Proxy Resource tags. */
   tags?: BackupInstancesCreateOrUpdateResponseTagsMap;
 }
-export const BackupInstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -581,7 +581,7 @@ export const BackupInstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Recovery Option */
 export type RecoveryOption = "FailIfExists";
-export const RecoveryOption = S.String;
+const RecoveryOption = S.String;
 
 /** Base class common to RestoreTargetInfo and RestoreFilesTargetInfo */
 export interface RestoreTargetInfoBase {
@@ -592,7 +592,7 @@ export interface RestoreTargetInfoBase {
   /** Target Restore region */
   restoreLocation?: string;
 }
-export const RestoreTargetInfoBase = /*@__PURE__*/ S.suspend(() =>
+const RestoreTargetInfoBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.String,
     recoveryOption: RecoveryOption,
@@ -606,11 +606,11 @@ export type SourceDataStoreType =
   | "SnapshotStore"
   | "OperationalStore"
   | "VaultStore";
-export const SourceDataStoreType = S.String;
+const SourceDataStoreType = S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type AzureBackupRestoreRequestResourceGuardOperationRequestsList = Array<string>;
-export const AzureBackupRestoreRequestResourceGuardOperationRequestsList =
+const AzureBackupRestoreRequestResourceGuardOperationRequestsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<AzureBackupRestoreRequestResourceGuardOperationRequestsList>;
 
 /** Azure backup restore request */
@@ -627,7 +627,7 @@ export interface AzureBackupRestoreRequest {
   /** Contains information of the Identity Details for the BI. If it is null, default will be considered as System Assigned. */
   identityDetails?: IdentityDetails;
 }
-export const AzureBackupRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const AzureBackupRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.String,
     restoreTargetInfo: RestoreTargetInfoBase,
@@ -647,7 +647,7 @@ export interface CrossRegionRestoreDetails {
   sourceRegion: string;
   sourceBackupInstanceId: string;
 }
-export const CrossRegionRestoreDetails = /*@__PURE__*/ S.suspend(() =>
+const CrossRegionRestoreDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceRegion: S.String,
     sourceBackupInstanceId: S.String,
@@ -668,7 +668,7 @@ export interface BackupInstancesTriggerCrossRegionRestoreRequest {
   /** Cross region restore details. */
   crossRegionRestoreDetails: CrossRegionRestoreDetails;
 }
-export const BackupInstancesTriggerCrossRegionRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesTriggerCrossRegionRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -693,12 +693,12 @@ export interface BackupInstancesTriggerCrossRegionRestoreResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesTriggerCrossRegionRestoreResponse =
+const BackupInstancesTriggerCrossRegionRestoreResponse =
   BackupInstancesAdhocBackupResponse as any as S.Schema<BackupInstancesTriggerCrossRegionRestoreResponse>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList = Array<string>;
-export const BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList =
+const BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList>;
@@ -724,7 +724,7 @@ export interface BackupInstancesTriggerRestoreRequest {
   /** Contains information of the Identity Details for the BI. If it is null, default will be considered as System Assigned. */
   identityDetails?: IdentityDetails;
 }
-export const BackupInstancesTriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesTriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -756,7 +756,7 @@ export interface BackupInstancesTriggerRestoreResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesTriggerRestoreResponse =
+const BackupInstancesTriggerRestoreResponse =
   BackupInstancesAdhocBackupResponse as any as S.Schema<BackupInstancesTriggerRestoreResponse>;
 
 export interface BackupInstancesValidateCrossRegionRestoreRequest {
@@ -771,7 +771,7 @@ export interface BackupInstancesValidateCrossRegionRestoreRequest {
   /** Cross region restore details. */
   crossRegionRestoreDetails: CrossRegionRestoreDetails;
 }
-export const BackupInstancesValidateCrossRegionRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesValidateCrossRegionRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -796,7 +796,7 @@ export interface BackupInstancesValidateCrossRegionRestoreResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesValidateCrossRegionRestoreResponse =
+const BackupInstancesValidateCrossRegionRestoreResponse =
   BackupInstancesAdhocBackupResponse as any as S.Schema<BackupInstancesValidateCrossRegionRestoreResponse>;
 
 export interface BackupInstancesValidateForModifyBackupRequest {
@@ -811,7 +811,7 @@ export interface BackupInstancesValidateForModifyBackupRequest {
   /** Backup Instance */
   backupInstance: BackupInstanceInput;
 }
-export const BackupInstancesValidateForModifyBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesValidateForModifyBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -831,7 +831,7 @@ export const BackupInstancesValidateForModifyBackupRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<BackupInstancesValidateForModifyBackupRequest>;
 
 export interface BackupInstancesValidateForModifyBackupResponse {}
-export const BackupInstancesValidateForModifyBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesValidateForModifyBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "BackupInstancesValidateForModifyBackupResponse",
@@ -849,7 +849,7 @@ export interface BackupInstancesValidateForRestoreRequest {
   /** Gets or sets the restore request object. */
   restoreRequestObject: AzureBackupRestoreRequest;
 }
-export const BackupInstancesValidateForRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancesValidateForRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -874,12 +874,12 @@ export interface BackupInstancesValidateForRestoreResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const BackupInstancesValidateForRestoreResponse =
+const BackupInstancesValidateForRestoreResponse =
   BackupInstancesAdhocBackupResponse as any as S.Schema<BackupInstancesValidateForRestoreResponse>;
 
 /** Type of datasource for the backup management */
 export type BaseBackupPolicyDatasourceTypesList = Array<string>;
-export const BaseBackupPolicyDatasourceTypesList =
+const BaseBackupPolicyDatasourceTypesList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BaseBackupPolicyDatasourceTypesList>;
 
 /** BackupPolicy base */
@@ -890,7 +890,7 @@ export interface BaseBackupPolicy {
   /** Policy rules (`AzureBackupRule` / `AzureRetentionRule`) of a `BackupPolicy`. */
   policyRules?: unknown;
 }
-export const BaseBackupPolicy = /*@__PURE__*/ S.suspend(() =>
+const BaseBackupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasourceTypes: BaseBackupPolicyDatasourceTypesList,
     objectType: S.String,
@@ -909,7 +909,7 @@ export interface BackupPoliciesCreateOrUpdateRequest {
   /** BaseBackupPolicyResource properties */
   properties?: BaseBackupPolicy;
 }
-export const BackupPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -940,7 +940,7 @@ export interface BackupPoliciesCreateOrUpdateResponse {
   /** BaseBackupPolicyResource properties */
   properties?: BaseBackupPolicy;
 }
-export const BackupPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -954,17 +954,17 @@ export const BackupPoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type BackupVaultsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BackupVaultsCreateOrUpdateRequestTagsMap =
+const BackupVaultsCreateOrUpdateRequestTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultsCreateOrUpdateRequestTagsMap>;
 
 export type AlertsState = "Enabled" | "Disabled";
-export const AlertsState = S.String;
+const AlertsState = S.String;
 
 /** Settings for Azure Monitor based alerts */
 export interface AzureMonitorAlertSettings {
   alertsForAllJobFailures?: AlertsState | (string & {});
 }
-export const AzureMonitorAlertSettings = /*@__PURE__*/ S.suspend(() =>
+const AzureMonitorAlertSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertsForAllJobFailures: S.optional(AlertsState),
   }),
@@ -977,21 +977,21 @@ export interface MonitoringSettings {
   /** Settings for Azure Monitor based alerts */
   azureMonitorAlertSettings?: AzureMonitorAlertSettings;
 }
-export const MonitoringSettings = /*@__PURE__*/ S.suspend(() =>
+const MonitoringSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureMonitorAlertSettings: S.optional(AzureMonitorAlertSettings),
   }),
 ).annotate({ identifier: "MonitoringSettings" }) as any as S.Schema<MonitoringSettings>;
 
 export type GranularityLevel = "VaultLevel" | "ProtectedItemLevel" | "ProtectedItemWithParentTag";
-export const GranularityLevel = S.String;
+const GranularityLevel = S.String;
 
 /** Cost Management Settings of the vault */
 export interface CostManagementSettings {
   /** Settings for granularity level */
   granularityLevel?: GranularityLevel | (string & {});
 }
-export const CostManagementSettings = /*@__PURE__*/ S.suspend(() =>
+const CostManagementSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     granularityLevel: S.optional(GranularityLevel),
   }),
@@ -999,7 +999,7 @@ export const CostManagementSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** State of soft delete */
 export type SoftDeleteState = "Off" | "On" | "AlwaysOn";
-export const SoftDeleteState = S.String;
+const SoftDeleteState = S.String;
 
 /** Soft delete related settings */
 export interface SoftDeleteSettings {
@@ -1008,7 +1008,7 @@ export interface SoftDeleteSettings {
   /** Soft delete retention duration */
   retentionDurationInDays?: number;
 }
-export const SoftDeleteSettings = /*@__PURE__*/ S.suspend(() =>
+const SoftDeleteSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SoftDeleteState),
     retentionDurationInDays: S.optional(S.Number),
@@ -1017,11 +1017,11 @@ export const SoftDeleteSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Immutability state */
 export type ImmutabilityState = "Disabled" | "Unlocked" | "Locked";
-export const ImmutabilityState = S.String;
+const ImmutabilityState = S.String;
 
 /** Type of immutability configuration. */
 export type ImmutabilityType = "AsPerPolicy" | "TimeBased";
-export const ImmutabilityType = S.String;
+const ImmutabilityType = S.String;
 
 /** Immutability configuration containing type and duration. */
 export interface ImmutabilityConfiguration {
@@ -1030,7 +1030,7 @@ export interface ImmutabilityConfiguration {
   /** Duration in days for time-based immutability. Required when type is TimeBased. Must be null when type is AsPerPolicy. */
   durationInDays?: number;
 }
-export const ImmutabilityConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ImmutabilityConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ImmutabilityType),
     durationInDays: S.optional(S.Number),
@@ -1046,7 +1046,7 @@ export interface ImmutabilitySettings {
   /** Immutability configuration containing type and duration. */
   configuration?: ImmutabilityConfiguration;
 }
-export const ImmutabilitySettings = /*@__PURE__*/ S.suspend(() =>
+const ImmutabilitySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ImmutabilityState),
     configuration: S.optional(ImmutabilityConfiguration),
@@ -1055,14 +1055,14 @@ export const ImmutabilitySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Encryption state of the Backup Vault. */
 export type EncryptionState = "Enabled" | "Disabled" | "Inconsistent";
-export const EncryptionState = S.String;
+const EncryptionState = S.String;
 
 /** The properties of the Key Vault which hosts CMK */
 export interface CmkKeyVaultProperties {
   /** The key uri of the Customer Managed Key */
   keyUri?: string;
 }
-export const CmkKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+const CmkKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyUri: S.optional(S.String),
   }),
@@ -1070,7 +1070,7 @@ export const CmkKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity. */
 export type IdentityType = "SystemAssigned" | "UserAssigned";
-export const IdentityType = S.String;
+const IdentityType = S.String;
 
 /** The details of the managed identity used for CMK */
 export interface CmkKekIdentity {
@@ -1079,7 +1079,7 @@ export interface CmkKekIdentity {
   /** The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only. */
   identityId?: string;
 }
-export const CmkKekIdentity = /*@__PURE__*/ S.suspend(() =>
+const CmkKekIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityType: S.optional(IdentityType),
     identityId: S.optional(S.String),
@@ -1088,7 +1088,7 @@ export const CmkKekIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** Enabling/Disabling the Double Encryption state */
 export type InfrastructureEncryptionState = "Enabled" | "Disabled";
-export const InfrastructureEncryptionState = S.String;
+const InfrastructureEncryptionState = S.String;
 
 /** Customer Managed Key details of the resource. */
 export interface EncryptionSettings {
@@ -1101,7 +1101,7 @@ export interface EncryptionSettings {
   /** Enabling/Disabling the Double Encryption state */
   infrastructureEncryption?: InfrastructureEncryptionState | (string & {});
 }
-export const EncryptionSettings = /*@__PURE__*/ S.suspend(() =>
+const EncryptionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(EncryptionState),
     keyVaultProperties: S.optional(CmkKeyVaultProperties),
@@ -1119,7 +1119,7 @@ export interface SecuritySettings {
   /** Customer Managed Key details of the resource. */
   encryptionSettings?: EncryptionSettings;
 }
-export const SecuritySettings = /*@__PURE__*/ S.suspend(() =>
+const SecuritySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     softDeleteSettings: S.optional(SoftDeleteSettings),
     immutabilitySettings: S.optional(ImmutabilitySettings),
@@ -1129,11 +1129,11 @@ export const SecuritySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the type of the datastore. */
 export type StorageSettingStoreTypes = "ArchiveStore" | "OperationalStore" | "VaultStore";
-export const StorageSettingStoreTypes = S.String;
+const StorageSettingStoreTypes = S.String;
 
 /** Gets or sets the type. */
 export type StorageSettingTypes = "GeoRedundant" | "LocallyRedundant" | "ZoneRedundant";
-export const StorageSettingTypes = S.String;
+const StorageSettingTypes = S.String;
 
 /** Storage setting */
 export interface StorageSetting {
@@ -1142,7 +1142,7 @@ export interface StorageSetting {
   /** Gets or sets the type. */
   type?: StorageSettingTypes | (string & {});
 }
-export const StorageSetting = /*@__PURE__*/ S.suspend(() =>
+const StorageSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datastoreType: S.optional(StorageSettingStoreTypes),
     type: S.optional(StorageSettingTypes),
@@ -1151,20 +1151,20 @@ export const StorageSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage Settings */
 export type BackupVaultInputStorageSettingsList = Array<StorageSetting>;
-export const BackupVaultInputStorageSettingsList = /*@__PURE__*/ S.Array(
+const BackupVaultInputStorageSettingsList = /*@__PURE__*/ S.Array(
   StorageSetting,
 ) as any as S.Schema<BackupVaultInputStorageSettingsList>;
 
 /** CrossSubscriptionRestore state */
 export type CrossSubscriptionRestoreState = "Disabled" | "PermanentlyDisabled" | "Enabled";
-export const CrossSubscriptionRestoreState = S.String;
+const CrossSubscriptionRestoreState = S.String;
 
 /** CrossSubscriptionRestore Settings */
 export interface CrossSubscriptionRestoreSettings {
   /** CrossSubscriptionRestore state */
   state?: CrossSubscriptionRestoreState | (string & {});
 }
-export const CrossSubscriptionRestoreSettings = /*@__PURE__*/ S.suspend(() =>
+const CrossSubscriptionRestoreSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(CrossSubscriptionRestoreState),
   }),
@@ -1174,13 +1174,11 @@ export const CrossSubscriptionRestoreSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** CrossRegionRestore state */
 export type CrossRegionRestoreState = "Disabled" | "Enabled";
-export const CrossRegionRestoreState = S.String;
-
 export interface CrossRegionRestoreSettings {
   /** CrossRegionRestore state */
   state?: CrossRegionRestoreState | (string & {});
 }
-export const CrossRegionRestoreSettings =
+const CrossRegionRestoreSettings =
   CrossSubscriptionRestoreSettings as any as S.Schema<CrossRegionRestoreSettings>;
 
 /** Class containing feature settings of vault */
@@ -1189,7 +1187,7 @@ export interface FeatureSettings {
   crossSubscriptionRestoreSettings?: CrossSubscriptionRestoreSettings;
   crossRegionRestoreSettings?: CrossRegionRestoreSettings;
 }
-export const FeatureSettings = /*@__PURE__*/ S.suspend(() =>
+const FeatureSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crossSubscriptionRestoreSettings: S.optional(CrossSubscriptionRestoreSettings),
     crossRegionRestoreSettings: S.optional(CrossRegionRestoreSettings),
@@ -1198,12 +1196,12 @@ export const FeatureSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupVaultInputResourceGuardOperationRequestsList = Array<string>;
-export const BackupVaultInputResourceGuardOperationRequestsList =
+const BackupVaultInputResourceGuardOperationRequestsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupVaultInputResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
 export type BackupVaultInputReplicatedRegionsList = Array<string>;
-export const BackupVaultInputReplicatedRegionsList =
+const BackupVaultInputReplicatedRegionsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupVaultInputReplicatedRegionsList>;
 
 /** Backup Vault */
@@ -1223,7 +1221,7 @@ export interface BackupVaultInput {
   /** List of replicated regions for Backup Vault */
   replicatedRegions?: BackupVaultInputReplicatedRegionsList;
 }
-export const BackupVaultInput = /*@__PURE__*/ S.suspend(() =>
+const BackupVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringSettings: S.optional(MonitoringSettings),
     costManagementSettings: S.optional(CostManagementSettings),
@@ -1237,14 +1235,14 @@ export const BackupVaultInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface DppIdentityDetailsInputUserAssignedIdentitiesValue {}
-export const DppIdentityDetailsInputUserAssignedIdentitiesValue =
+const DppIdentityDetailsInputUserAssignedIdentitiesValue =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<DppIdentityDetailsInputUserAssignedIdentitiesValue>;
 
 /** Gets or sets the user assigned identities. */
 export type DppIdentityDetailsInputUserAssignedIdentitiesMap = {
   [key: string]: DppIdentityDetailsInputUserAssignedIdentitiesValue | undefined;
 };
-export const DppIdentityDetailsInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const DppIdentityDetailsInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   DppIdentityDetailsInputUserAssignedIdentitiesValue,
 ) as any as S.Schema<DppIdentityDetailsInputUserAssignedIdentitiesMap>;
@@ -1256,7 +1254,7 @@ export interface DppIdentityDetailsInput {
   /** Gets or sets the user assigned identities. */
   userAssignedIdentities?: DppIdentityDetailsInputUserAssignedIdentitiesMap;
 }
-export const DppIdentityDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const DppIdentityDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     userAssignedIdentities: S.optional(DppIdentityDetailsInputUserAssignedIdentitiesMap),
@@ -1281,7 +1279,7 @@ export interface BackupVaultsCreateOrUpdateRequest {
   /** Optional ETag. */
   eTag?: string;
 }
-export const BackupVaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupVaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1305,12 +1303,12 @@ export const BackupVaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type BackupVaultsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BackupVaultsCreateOrUpdateResponseTagsMap =
+const BackupVaultsCreateOrUpdateResponseTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultsCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the BackupVault resource */
 export type ProvisioningState = "Failed" | "Provisioning" | "Succeeded" | "Unknown" | "Updating";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Resource move state for backup vault */
 export type ResourceMoveState =
@@ -1324,7 +1322,7 @@ export type ResourceMoveState =
   | "CriticalFailure"
   | "PartialSuccess"
   | "MoveSucceeded";
-export const ResourceMoveState = S.String;
+const ResourceMoveState = S.String;
 
 /** ResourceMoveDetails will be returned in response to GetResource call from ARM */
 export interface ResourceMoveDetails {
@@ -1339,7 +1337,7 @@ export interface ResourceMoveDetails {
   /** ARM resource path of target resource used in latest ResourceMove operation */
   targetResourcePath?: string;
 }
-export const ResourceMoveDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceMoveDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     startTimeUtc: S.optional(S.String),
@@ -1351,25 +1349,25 @@ export const ResourceMoveDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage Settings */
 export type BackupVaultStorageSettingsList = Array<StorageSetting>;
-export const BackupVaultStorageSettingsList =
+const BackupVaultStorageSettingsList =
   BackupVaultInputStorageSettingsList as any as S.Schema<BackupVaultStorageSettingsList>;
 
 /** Secure Score of Backup Vault */
 export type SecureScoreLevel = "None" | "Minimum" | "Adequate" | "Maximum" | "NotSupported";
-export const SecureScoreLevel = S.String;
+const SecureScoreLevel = S.String;
 
 /** Security Level of Backup Vault */
 export type BCDRSecurityLevel = "Poor" | "Fair" | "Good" | "Excellent" | "NotSupported";
-export const BCDRSecurityLevel = S.String;
+const BCDRSecurityLevel = S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type BackupVaultResourceGuardOperationRequestsList = Array<string>;
-export const BackupVaultResourceGuardOperationRequestsList =
+const BackupVaultResourceGuardOperationRequestsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupVaultResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
 export type BackupVaultReplicatedRegionsList = Array<string>;
-export const BackupVaultReplicatedRegionsList =
+const BackupVaultReplicatedRegionsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<BackupVaultReplicatedRegionsList>;
 
 /** Backup Vault */
@@ -1401,7 +1399,7 @@ export interface BackupVault {
   /** List of replicated regions for Backup Vault */
   replicatedRegions?: BackupVaultReplicatedRegionsList;
 }
-export const BackupVault = /*@__PURE__*/ S.suspend(() =>
+const BackupVault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringSettings: S.optional(MonitoringSettings),
     costManagementSettings: S.optional(CostManagementSettings),
@@ -1426,7 +1424,7 @@ export interface DppIdentityDetailsUserAssignedIdentitiesValue {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const DppIdentityDetailsUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
+const DppIdentityDetailsUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1439,7 +1437,7 @@ export const DppIdentityDetailsUserAssignedIdentitiesValue = /*@__PURE__*/ S.sus
 export type DppIdentityDetailsUserAssignedIdentitiesMap = {
   [key: string]: DppIdentityDetailsUserAssignedIdentitiesValue | undefined;
 };
-export const DppIdentityDetailsUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const DppIdentityDetailsUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   DppIdentityDetailsUserAssignedIdentitiesValue,
 ) as any as S.Schema<DppIdentityDetailsUserAssignedIdentitiesMap>;
@@ -1455,7 +1453,7 @@ export interface DppIdentityDetails {
   /** Gets or sets the user assigned identities. */
   userAssignedIdentities?: DppIdentityDetailsUserAssignedIdentitiesMap;
 }
-export const DppIdentityDetails = /*@__PURE__*/ S.suspend(() =>
+const DppIdentityDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1484,7 +1482,7 @@ export interface BackupVaultsCreateOrUpdateResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const BackupVaultsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BackupVaultsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1512,7 +1510,7 @@ export interface CheckBackupVaultNameAvailabilityRequest {
   /** Describes the Resource type: Microsoft.DataProtection/BackupVaults */
   type?: string;
 }
-export const CheckBackupVaultNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckBackupVaultNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1540,7 +1538,7 @@ export interface CheckNameAvailabilityResult {
   /** Gets or sets the reason. */
   reason?: string;
 }
-export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     nameAvailable: S.optional(S.Boolean),
@@ -1558,7 +1556,7 @@ export interface CheckDataProtectionFeatureSupportRequest {
   /** Type of the specific object - used for deserializing */
   objectType: string;
 }
-export const CheckDataProtectionFeatureSupportRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckDataProtectionFeatureSupportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1580,7 +1578,7 @@ export interface FeatureValidationResponseBase {
   /** Type of the specific object - used for deserializing */
   objectType: string;
 }
-export const FeatureValidationResponseBase = /*@__PURE__*/ S.suspend(() =>
+const FeatureValidationResponseBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.String,
   }),
@@ -1598,7 +1596,7 @@ export interface DeleteBackupInstanceRequest {
   /** The name of the BackupInstanceResource */
   backupInstanceName: string;
 }
-export const DeleteBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1617,7 +1615,7 @@ export const DeleteBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBackupInstanceRequest>;
 
 export interface DeleteBackupInstanceResponse {}
-export const DeleteBackupInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteBackupInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteBackupInstanceResponse",
 }) as any as S.Schema<DeleteBackupInstanceResponse>;
 
@@ -1630,7 +1628,7 @@ export interface DeleteBackupPolicyRequest {
   vaultName: string;
   backupPolicyName: string;
 }
-export const DeleteBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1649,7 +1647,7 @@ export const DeleteBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBackupPolicyRequest>;
 
 export interface DeleteBackupPolicyResponse {}
-export const DeleteBackupPolicyResponse =
+const DeleteBackupPolicyResponse =
   DeleteBackupInstanceResponse as any as S.Schema<DeleteBackupPolicyResponse>;
 
 export interface DeleteBackupVaultRequest {
@@ -1660,7 +1658,7 @@ export interface DeleteBackupVaultRequest {
   /** The name of the BackupVaultResource */
   vaultName: string;
 }
-export const DeleteBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1676,7 +1674,7 @@ export const DeleteBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBackupVaultRequest" }) as any as S.Schema<DeleteBackupVaultRequest>;
 
 export interface DeleteBackupVaultResponse {}
-export const DeleteBackupVaultResponse =
+const DeleteBackupVaultResponse =
   DeleteBackupInstanceResponse as any as S.Schema<DeleteBackupVaultResponse>;
 
 export interface DeleteDppResourceGuardProxyRequest {
@@ -1689,7 +1687,7 @@ export interface DeleteDppResourceGuardProxyRequest {
   /** name of the resource guard proxy */
   resourceGuardProxyName: string;
 }
-export const DeleteDppResourceGuardProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDppResourceGuardProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1708,7 +1706,7 @@ export const DeleteDppResourceGuardProxyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDppResourceGuardProxyRequest>;
 
 export interface DeleteDppResourceGuardProxyResponse {}
-export const DeleteDppResourceGuardProxyResponse =
+const DeleteDppResourceGuardProxyResponse =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<DeleteDppResourceGuardProxyResponse>;
 
 export interface DeleteResourceGuardRequest {
@@ -1719,7 +1717,7 @@ export interface DeleteResourceGuardRequest {
   /** The name of ResourceGuard */
   resourceGuardsName: string;
 }
-export const DeleteResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1737,7 +1735,7 @@ export const DeleteResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourceGuardRequest>;
 
 export interface DeleteResourceGuardResponse {}
-export const DeleteResourceGuardResponse =
+const DeleteResourceGuardResponse =
   DeleteBackupInstanceResponse as any as S.Schema<DeleteResourceGuardResponse>;
 
 /** VaultCritical Operation protected by a resource guard */
@@ -1745,7 +1743,7 @@ export interface ResourceGuardOperationDetail {
   vaultCriticalOperation?: string;
   defaultResourceRequest?: string;
 }
-export const ResourceGuardOperationDetail = /*@__PURE__*/ S.suspend(() =>
+const ResourceGuardOperationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultCriticalOperation: S.optional(S.String),
     defaultResourceRequest: S.optional(S.String),
@@ -1756,7 +1754,7 @@ export const ResourceGuardOperationDetail = /*@__PURE__*/ S.suspend(() =>
 
 export type ResourceGuardProxyBaseResourceGuardOperationDetailsList =
   Array<ResourceGuardOperationDetail>;
-export const ResourceGuardProxyBaseResourceGuardOperationDetailsList = /*@__PURE__*/ S.Array(
+const ResourceGuardProxyBaseResourceGuardOperationDetailsList = /*@__PURE__*/ S.Array(
   ResourceGuardOperationDetail,
 ) as any as S.Schema<ResourceGuardProxyBaseResourceGuardOperationDetailsList>;
 
@@ -1767,7 +1765,7 @@ export interface ResourceGuardProxyBase {
   lastUpdatedTime?: string;
   description?: string;
 }
-export const ResourceGuardProxyBase = /*@__PURE__*/ S.suspend(() =>
+const ResourceGuardProxyBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceGuardResourceId: S.optional(S.String),
     resourceGuardOperationDetails: S.optional(
@@ -1790,7 +1788,7 @@ export interface DppResourceGuardProxyCreateOrUpdateRequest {
   /** ResourceGuardProxyBaseResource properties */
   properties?: ResourceGuardProxyBase;
 }
-export const DppResourceGuardProxyCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DppResourceGuardProxyCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1821,7 +1819,7 @@ export interface DppResourceGuardProxyCreateOrUpdateResponse {
   /** ResourceGuardProxyBaseResource properties */
   properties?: ResourceGuardProxyBase;
 }
-export const DppResourceGuardProxyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DppResourceGuardProxyCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1836,7 +1834,7 @@ export const DppResourceGuardProxyCreateOrUpdateResponse = /*@__PURE__*/ S.suspe
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
   Array<string>;
-export const DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
+const DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList =
   BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList as any as S.Schema<DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList>;
 
 export interface DppResourceGuardProxyUnlockDeleteRequest {
@@ -1852,7 +1850,7 @@ export interface DppResourceGuardProxyUnlockDeleteRequest {
   resourceGuardOperationRequests?: DppResourceGuardProxyUnlockDeleteRequestResourceGuardOperationRequestsList;
   resourceToBeDeleted?: string;
 }
-export const DppResourceGuardProxyUnlockDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const DppResourceGuardProxyUnlockDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1879,7 +1877,7 @@ export interface UnlockDeleteResponse {
   /** This is the time when unlock delete privileges will get expired. */
   unlockDeleteExpiryTime?: string;
 }
-export const UnlockDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const UnlockDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unlockDeleteExpiryTime: S.optional(S.String),
   }),
@@ -1895,7 +1893,7 @@ export interface GetBackupInstanceRequest {
   /** The name of the BackupInstanceResource */
   backupInstanceName: string;
 }
-export const GetBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1913,9 +1911,6 @@ export const GetBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Proxy Resource tags. */
 export type GetBackupInstanceResponseTagsMap = { [key: string]: string | undefined };
-export const GetBackupInstanceResponseTagsMap =
-  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupInstanceResponseTagsMap>;
-
 export interface GetBackupInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1930,7 +1925,7 @@ export interface GetBackupInstanceResponse {
   /** Proxy Resource tags. */
   tags?: GetBackupInstanceResponseTagsMap;
 }
-export const GetBackupInstanceResponse =
+const GetBackupInstanceResponse =
   BackupInstancesCreateOrUpdateResponse as any as S.Schema<GetBackupInstanceResponse>;
 
 export interface GetBackupInstanceBackupInstanceOperationResultRequest {
@@ -1945,7 +1940,7 @@ export interface GetBackupInstanceBackupInstanceOperationResultRequest {
   /** The name of the BackupInstanceResource */
   operationId: string;
 }
-export const GetBackupInstanceBackupInstanceOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupInstanceBackupInstanceOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1968,9 +1963,6 @@ export const GetBackupInstanceBackupInstanceOperationResultRequest = /*@__PURE__
 export type GetBackupInstanceBackupInstanceOperationResultResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBackupInstanceBackupInstanceOperationResultResponseTagsMap =
-  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupInstanceBackupInstanceOperationResultResponseTagsMap>;
-
 export interface GetBackupInstanceBackupInstanceOperationResultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1985,7 +1977,7 @@ export interface GetBackupInstanceBackupInstanceOperationResultResponse {
   /** Proxy Resource tags. */
   tags?: GetBackupInstanceBackupInstanceOperationResultResponseTagsMap;
 }
-export const GetBackupInstanceBackupInstanceOperationResultResponse =
+const GetBackupInstanceBackupInstanceOperationResultResponse =
   BackupInstancesCreateOrUpdateResponse as any as S.Schema<GetBackupInstanceBackupInstanceOperationResultResponse>;
 
 export interface GetBackupPolicyRequest {
@@ -1997,7 +1989,7 @@ export interface GetBackupPolicyRequest {
   vaultName: string;
   backupPolicyName: string;
 }
-export const GetBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2025,7 +2017,7 @@ export interface GetBackupPolicyResponse {
   /** BaseBackupPolicyResource properties */
   properties?: BaseBackupPolicy;
 }
-export const GetBackupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2043,7 +2035,7 @@ export interface GetBackupVaultRequest {
   /** The name of the BackupVaultResource */
   vaultName: string;
 }
-export const GetBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2060,7 +2052,7 @@ export const GetBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBackupVaultResponseTagsMap = { [key: string]: string | undefined };
-export const GetBackupVaultResponseTagsMap =
+const GetBackupVaultResponseTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupVaultResponseTagsMap>;
 
 export interface GetBackupVaultResponse {
@@ -2083,7 +2075,7 @@ export interface GetBackupVaultResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const GetBackupVaultResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupVaultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2103,7 +2095,7 @@ export interface GetBackupVaultInResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const GetBackupVaultInResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupVaultInResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2121,9 +2113,6 @@ export const GetBackupVaultInResourceGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type BackupVaultResourceTagsMap = { [key: string]: string | undefined };
-export const BackupVaultResourceTagsMap =
-  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupVaultResourceTagsMap>;
-
 /** Backup Vault Resource */
 export interface BackupVaultResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2145,11 +2134,11 @@ export interface BackupVaultResource {
   /** Optional ETag. */
   eTag?: string;
 }
-export const BackupVaultResource = GetBackupVaultResponse as any as S.Schema<BackupVaultResource>;
+const BackupVaultResource = GetBackupVaultResponse as any as S.Schema<BackupVaultResource>;
 
 /** List of resources. */
 export type GetBackupVaultInResourceGroupResponseValueList = Array<BackupVaultResource>;
-export const GetBackupVaultInResourceGroupResponseValueList = /*@__PURE__*/ S.Array(
+const GetBackupVaultInResourceGroupResponseValueList = /*@__PURE__*/ S.Array(
   BackupVaultResource,
 ) as any as S.Schema<GetBackupVaultInResourceGroupResponseValueList>;
 
@@ -2159,7 +2148,7 @@ export interface GetBackupVaultInResourceGroupResponse {
   /** List of resources. */
   value?: GetBackupVaultInResourceGroupResponseValueList;
 }
-export const GetBackupVaultInResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBackupVaultInResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(GetBackupVaultInResourceGroupResponseValueList),
@@ -2172,7 +2161,7 @@ export interface GetBackupVaultInSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const GetBackupVaultInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupVaultInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2189,16 +2178,13 @@ export const GetBackupVaultInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type GetBackupVaultInSubscriptionResponseValueList = Array<BackupVaultResource>;
-export const GetBackupVaultInSubscriptionResponseValueList =
-  GetBackupVaultInResourceGroupResponseValueList as any as S.Schema<GetBackupVaultInSubscriptionResponseValueList>;
-
 export interface GetBackupVaultInSubscriptionResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
   nextLink?: string;
   /** List of resources. */
   value?: GetBackupVaultInSubscriptionResponseValueList;
 }
-export const GetBackupVaultInSubscriptionResponse =
+const GetBackupVaultInSubscriptionResponse =
   GetBackupVaultInResourceGroupResponse as any as S.Schema<GetBackupVaultInSubscriptionResponse>;
 
 export interface GetBackupVaultOperationResultRequest {
@@ -2211,7 +2197,7 @@ export interface GetBackupVaultOperationResultRequest {
   /** The name of the BackupVaultResource */
   operationId: string;
 }
-export const GetBackupVaultOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBackupVaultOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2231,9 +2217,6 @@ export const GetBackupVaultOperationResultRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type GetBackupVaultOperationResultResponseTagsMap = { [key: string]: string | undefined };
-export const GetBackupVaultOperationResultResponseTagsMap =
-  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetBackupVaultOperationResultResponseTagsMap>;
-
 export interface GetBackupVaultOperationResultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2254,7 +2237,7 @@ export interface GetBackupVaultOperationResultResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const GetBackupVaultOperationResultResponse =
+const GetBackupVaultOperationResultResponse =
   BackupVaultsCreateOrUpdateResponse as any as S.Schema<GetBackupVaultOperationResultResponse>;
 
 export interface GetDeletedBackupInstanceRequest {
@@ -2267,7 +2250,7 @@ export interface GetDeletedBackupInstanceRequest {
   /** The name of the deleted backup instance */
   backupInstanceName: string;
 }
-export const GetDeletedBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeletedBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2287,7 +2270,7 @@ export const GetDeletedBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type DeletedBackupInstanceResourceGuardOperationRequestsList = Array<string>;
-export const DeletedBackupInstanceResourceGuardOperationRequestsList =
+const DeletedBackupInstanceResourceGuardOperationRequestsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<DeletedBackupInstanceResourceGuardOperationRequestsList>;
 
 /** Deletion Info */
@@ -2301,7 +2284,7 @@ export interface DeletionInfo {
   /** Delete activity ID for troubleshooting purpose */
   deleteActivityID?: string;
 }
-export const DeletionInfo = /*@__PURE__*/ S.suspend(() =>
+const DeletionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletionTime: S.optional(S.String),
     billingEndDate: S.optional(S.String),
@@ -2340,7 +2323,7 @@ export interface DeletedBackupInstance {
   /** Deletion info of Backup Instance */
   deletionInfo?: DeletionInfo;
 }
-export const DeletedBackupInstance = /*@__PURE__*/ S.suspend(() =>
+const DeletedBackupInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     friendlyName: S.optional(S.String),
     dataSourceInfo: Datasource,
@@ -2373,7 +2356,7 @@ export interface GetDeletedBackupInstanceResponse {
   /** DeletedBackupInstanceResource properties */
   properties?: DeletedBackupInstance;
 }
-export const GetDeletedBackupInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeletedBackupInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2393,7 +2376,7 @@ export interface GetDeletedBackupVaultRequest {
   /** The name of the DeletedBackupVaultResource */
   deletedVaultName: string;
 }
-export const GetDeletedBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeletedBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2412,17 +2395,17 @@ export const GetDeletedBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage Settings */
 export type DeletedBackupVaultStorageSettingsList = Array<StorageSetting>;
-export const DeletedBackupVaultStorageSettingsList =
+const DeletedBackupVaultStorageSettingsList =
   BackupVaultInputStorageSettingsList as any as S.Schema<DeletedBackupVaultStorageSettingsList>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type DeletedBackupVaultResourceGuardOperationRequestsList = Array<string>;
-export const DeletedBackupVaultResourceGuardOperationRequestsList =
+const DeletedBackupVaultResourceGuardOperationRequestsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<DeletedBackupVaultResourceGuardOperationRequestsList>;
 
 /** List of replicated regions for Backup Vault */
 export type DeletedBackupVaultReplicatedRegionsList = Array<string>;
-export const DeletedBackupVaultReplicatedRegionsList =
+const DeletedBackupVaultReplicatedRegionsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<DeletedBackupVaultReplicatedRegionsList>;
 
 /** Deletion info for a tracked resource (Backup Vault) */
@@ -2434,7 +2417,7 @@ export interface ResourceDeletionInfo {
   /** Delete activity ID for troubleshooting the deletion of the tracked resource */
   deleteActivityId?: string;
 }
-export const ResourceDeletionInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceDeletionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletionTime: S.optional(S.String),
     scheduledPurgeTime: S.optional(S.String),
@@ -2479,7 +2462,7 @@ export interface DeletedBackupVault {
   /** Deletion info for the tracked resource (Backup Vault) */
   resourceDeletionInfo: ResourceDeletionInfo;
 }
-export const DeletedBackupVault = /*@__PURE__*/ S.suspend(() =>
+const DeletedBackupVault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringSettings: S.optional(MonitoringSettings),
     costManagementSettings: S.optional(CostManagementSettings),
@@ -2515,7 +2498,7 @@ export interface GetDeletedBackupVaultResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeletedBackupVault;
 }
-export const GetDeletedBackupVaultResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeletedBackupVaultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2537,7 +2520,7 @@ export interface GetDppResourceGuardProxyRequest {
   /** name of the resource guard proxy */
   resourceGuardProxyName: string;
 }
-export const GetDppResourceGuardProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDppResourceGuardProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2567,7 +2550,7 @@ export interface GetDppResourceGuardProxyResponse {
   /** ResourceGuardProxyBaseResource properties */
   properties?: ResourceGuardProxyBase;
 }
-export const GetDppResourceGuardProxyResponse =
+const GetDppResourceGuardProxyResponse =
   DppResourceGuardProxyCreateOrUpdateResponse as any as S.Schema<GetDppResourceGuardProxyResponse>;
 
 export interface GetExportJobsOperationResultRequest {
@@ -2580,7 +2563,7 @@ export interface GetExportJobsOperationResultRequest {
   /** OperationID which represents the export job. */
   operationId: string;
 }
-export const GetExportJobsOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExportJobsOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2609,7 +2592,7 @@ export interface ExportJobsResult {
   /** SAS key to access the ExcelFile blob. */
   excelFileBlobSasKey?: string;
 }
-export const ExportJobsResult = /*@__PURE__*/ S.suspend(() =>
+const ExportJobsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobUrl: S.optional(S.String),
     blobSasKey: S.optional(S.String),
@@ -2629,7 +2612,7 @@ export interface GetFetchCrossRegionRestoreJobRequest {
   sourceBackupVaultId: string;
   jobId: string;
 }
-export const GetFetchCrossRegionRestoreJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFetchCrossRegionRestoreJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2651,20 +2634,20 @@ export const GetFetchCrossRegionRestoreJobRequest = /*@__PURE__*/ S.suspend(() =
 
 /** A List, detailing the errors related to the job */
 export type AzureBackupJobErrorDetailsList = Array<UserFacingError>;
-export const AzureBackupJobErrorDetailsList = /*@__PURE__*/ S.Array(
+const AzureBackupJobErrorDetailsList = /*@__PURE__*/ S.Array(
   UserFacingError,
 ) as any as S.Schema<AzureBackupJobErrorDetailsList>;
 
 /** Job's Additional Details */
 export type JobExtendedInfoAdditionalDetailsMap = { [key: string]: string | undefined };
-export const JobExtendedInfoAdditionalDetailsMap =
+const JobExtendedInfoAdditionalDetailsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<JobExtendedInfoAdditionalDetailsMap>;
 
 export interface RestoreJobRecoveryPointDetails {
   recoveryPointID?: string;
   recoveryPointTime?: string;
 }
-export const RestoreJobRecoveryPointDetails = /*@__PURE__*/ S.suspend(() =>
+const RestoreJobRecoveryPointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recoveryPointID: S.optional(S.String),
     recoveryPointTime: S.optional(S.String),
@@ -2675,7 +2658,7 @@ export const RestoreJobRecoveryPointDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional details of Sub Tasks */
 export type JobSubTaskAdditionalDetailsMap = { [key: string]: string | undefined };
-export const JobSubTaskAdditionalDetailsMap =
+const JobSubTaskAdditionalDetailsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<JobSubTaskAdditionalDetailsMap>;
 
 /** Details of Job's Sub Task */
@@ -2691,7 +2674,7 @@ export interface JobSubTask {
   /** Status of the Sub Task */
   taskStatus: string;
 }
-export const JobSubTask = /*@__PURE__*/ S.suspend(() =>
+const JobSubTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalDetails: S.optional(JobSubTaskAdditionalDetailsMap),
     taskId: S.Number,
@@ -2703,7 +2686,7 @@ export const JobSubTask = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Sub Tasks of the job */
 export type JobExtendedInfoSubTasksList = Array<JobSubTask>;
-export const JobExtendedInfoSubTasksList = /*@__PURE__*/ S.Array(
+const JobExtendedInfoSubTasksList = /*@__PURE__*/ S.Array(
   JobSubTask,
 ) as any as S.Schema<JobExtendedInfoSubTasksList>;
 
@@ -2714,7 +2697,7 @@ export interface UserFacingWarningDetail {
   /** Error details for the warning. */
   warning: UserFacingError;
 }
-export const UserFacingWarningDetail = /*@__PURE__*/ S.suspend(() =>
+const UserFacingWarningDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     warning: UserFacingError,
@@ -2723,7 +2706,7 @@ export const UserFacingWarningDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** A List, detailing the warnings related to the job */
 export type JobExtendedInfoWarningDetailsList = Array<UserFacingWarningDetail>;
-export const JobExtendedInfoWarningDetailsList = /*@__PURE__*/ S.Array(
+const JobExtendedInfoWarningDetailsList = /*@__PURE__*/ S.Array(
   UserFacingWarningDetail,
 ) as any as S.Schema<JobExtendedInfoWarningDetailsList>;
 
@@ -2746,7 +2729,7 @@ export interface JobExtendedInfo {
   /** A List, detailing the warnings related to the job */
   warningDetails?: JobExtendedInfoWarningDetailsList;
 }
-export const JobExtendedInfo = /*@__PURE__*/ S.suspend(() =>
+const JobExtendedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalDetails: S.optional(JobExtendedInfoAdditionalDetailsMap),
     backupInstanceState: S.optional(S.String),
@@ -2761,7 +2744,7 @@ export const JobExtendedInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported actions */
 export type AzureBackupJobSupportedActionsList = Array<string>;
-export const AzureBackupJobSupportedActionsList =
+const AzureBackupJobSupportedActionsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<AzureBackupJobSupportedActionsList>;
 
 /** AzureBackup Job Class */
@@ -2826,7 +2809,7 @@ export interface AzureBackupJob {
   sourceDataStoreName?: string;
   destinationDataStoreName?: string;
 }
-export const AzureBackupJob = /*@__PURE__*/ S.suspend(() =>
+const AzureBackupJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityID: S.String,
     backupInstanceFriendlyName: S.String,
@@ -2874,7 +2857,7 @@ export interface GetFetchCrossRegionRestoreJobResponse {
   /** AzureBackupJobResource properties */
   properties?: AzureBackupJob;
 }
-export const GetFetchCrossRegionRestoreJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFetchCrossRegionRestoreJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2896,7 +2879,7 @@ export interface GetJobRequest {
   /** The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   jobId: string;
 }
-export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2924,7 +2907,7 @@ export interface GetJobResponse {
   /** AzureBackupJobResource properties */
   properties?: AzureBackupJob;
 }
-export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2941,7 +2924,7 @@ export interface GetOperationResultRequest {
   location: string;
   operationId: string;
 }
-export const GetOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2964,7 +2947,7 @@ export interface GetOperationResultResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const GetOperationResultResponse =
+const GetOperationResultResponse =
   BackupInstancesAdhocBackupResponse as any as S.Schema<GetOperationResultResponse>;
 
 export interface GetOperationStatusRequest {
@@ -2974,7 +2957,7 @@ export interface GetOperationStatusRequest {
   location: string;
   operationId: string;
 }
-export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2998,7 +2981,7 @@ export interface ErrorAdditionalInfoItem {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfoItem = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfoItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -3007,13 +2990,13 @@ export const ErrorAdditionalInfoItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorAdditionalInfoList = Array<ErrorAdditionalInfoItem>;
-export const ErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfoItem,
 ) as any as S.Schema<ErrorAdditionalInfoList>;
 
 /** The error details. */
 export type ErrorDetailsList = Array<Error>;
-export const ErrorDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
 
@@ -3030,7 +3013,7 @@ export interface Error {
   /** The error target. */
   target?: string;
 }
-export const Error = /*@__PURE__*/ S.suspend(() =>
+const Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalInfo: S.optional(ErrorAdditionalInfoList),
     code: S.optional(S.String),
@@ -3045,7 +3028,7 @@ export interface OperationExtendedInfo {
   /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
   objectType: string;
 }
-export const OperationExtendedInfo = AuthCredentials as any as S.Schema<OperationExtendedInfo>;
+const OperationExtendedInfo = AuthCredentials as any as S.Schema<OperationExtendedInfo>;
 
 /** Operation Resource */
 export interface OperationResource {
@@ -3063,7 +3046,7 @@ export interface OperationResource {
   startTime?: string;
   status?: string;
 }
-export const OperationResource = /*@__PURE__*/ S.suspend(() =>
+const OperationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     error: S.optional(Error),
@@ -3084,7 +3067,7 @@ export interface GetOperationStatusBackupVaultContextRequest {
   vaultName: string;
   operationId: string;
 }
-export const GetOperationStatusBackupVaultContextRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationStatusBackupVaultContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3109,7 +3092,7 @@ export interface GetOperationStatusResourceGroupContextRequest {
   resourceGroupName: string;
   operationId: string;
 }
-export const GetOperationStatusResourceGroupContextRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationStatusResourceGroupContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3137,7 +3120,7 @@ export interface GetRecoveryPointRequest {
   backupInstanceName: string;
   recoveryPointId: string;
 }
-export const GetRecoveryPointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecoveryPointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3158,8 +3141,7 @@ export const GetRecoveryPointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AzureBackupRecoveryPoint {
   objectType: string;
 }
-export const AzureBackupRecoveryPoint =
-  AuthCredentials as any as S.Schema<AzureBackupRecoveryPoint>;
+const AzureBackupRecoveryPoint = AuthCredentials as any as S.Schema<AzureBackupRecoveryPoint>;
 
 export interface GetRecoveryPointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3173,7 +3155,7 @@ export interface GetRecoveryPointResponse {
   /** AzureBackupRecoveryPointResource properties */
   properties?: AzureBackupRecoveryPoint;
 }
-export const GetRecoveryPointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRecoveryPointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3191,7 +3173,7 @@ export interface GetResourceGuardRequest {
   /** The name of ResourceGuard */
   resourceGuardsName: string;
 }
-export const GetResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3208,7 +3190,7 @@ export const GetResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetResourceGuardResponseTagsMap = { [key: string]: string | undefined };
-export const GetResourceGuardResponseTagsMap =
+const GetResourceGuardResponseTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<GetResourceGuardResponseTagsMap>;
 
 /** This class contains all the details about a critical operation. */
@@ -3218,7 +3200,7 @@ export interface ResourceGuardOperation {
   /** Type of resource request. */
   requestResourceType?: string;
 }
-export const ResourceGuardOperation = /*@__PURE__*/ S.suspend(() =>
+const ResourceGuardOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultCriticalOperation: S.optional(S.String),
     requestResourceType: S.optional(S.String),
@@ -3227,13 +3209,13 @@ export const ResourceGuardOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** {readonly} List of operation details those are protected by the ResourceGuard resource */
 export type ResourceGuardResourceGuardOperationsList = Array<ResourceGuardOperation>;
-export const ResourceGuardResourceGuardOperationsList = /*@__PURE__*/ S.Array(
+const ResourceGuardResourceGuardOperationsList = /*@__PURE__*/ S.Array(
   ResourceGuardOperation,
 ) as any as S.Schema<ResourceGuardResourceGuardOperationsList>;
 
 /** List of critical operations which are not protected by this resourceGuard */
 export type ResourceGuardVaultCriticalOperationExclusionListList = Array<string>;
-export const ResourceGuardVaultCriticalOperationExclusionListList =
+const ResourceGuardVaultCriticalOperationExclusionListList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<ResourceGuardVaultCriticalOperationExclusionListList>;
 
 export interface ResourceGuard {
@@ -3248,7 +3230,7 @@ export interface ResourceGuard {
   /** Description about the pre-req steps to perform all the critical operations. */
   description?: string;
 }
-export const ResourceGuard = /*@__PURE__*/ S.suspend(() =>
+const ResourceGuard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     allowAutoApprovals: S.optional(S.Boolean),
@@ -3278,7 +3260,7 @@ export interface GetResourceGuardResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const GetResourceGuardResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGuardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3299,7 +3281,7 @@ export interface GetResourceGuardBackupSecurityPINRequestsObjectsRequest {
   /** The name of the ResourceGuardResource */
   resourceGuardsName: string;
 }
-export const GetResourceGuardBackupSecurityPINRequestsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGuardBackupSecurityPINRequestsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3327,7 +3309,7 @@ export interface Resource {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3338,7 +3320,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DppBaseResource items on this page */
 export type DppBaseResourceListValueList = Array<Resource>;
-export const DppBaseResourceListValueList = /*@__PURE__*/ S.Array(
+const DppBaseResourceListValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<DppBaseResourceListValueList>;
 
@@ -3349,7 +3331,7 @@ export interface DppBaseResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DppBaseResourceList = /*@__PURE__*/ S.suspend(() =>
+const DppBaseResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DppBaseResourceListValueList,
     nextLink: S.optional(S.String),
@@ -3366,24 +3348,23 @@ export interface GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest {
   /** The name of the DppBaseResource */
   requestName: string;
 }
-export const GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceGuardsName: S.String.pipe(T.Label()),
-      requestName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests/{requestName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest",
-  }) as any as S.Schema<GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest>;
+const GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceGuardsName: S.String.pipe(T.Label()),
+    requestName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/getBackupSecurityPINRequests/{requestName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest",
+}) as any as S.Schema<GetResourceGuardDefaultBackupSecurityPINRequestsObjectRequest>;
 
 export interface GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3395,17 +3376,16 @@ export interface GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse 
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-    }),
-  ).annotate({
-    identifier: "GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse",
-  }) as any as S.Schema<GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse>;
+const GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+  }),
+).annotate({
+  identifier: "GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse",
+}) as any as S.Schema<GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse>;
 
 export interface GetResourceGuardResourcesInResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3413,7 +3393,7 @@ export interface GetResourceGuardResourcesInResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const GetResourceGuardResourcesInResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGuardResourcesInResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3431,9 +3411,6 @@ export const GetResourceGuardResourcesInResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Resource tags. */
 export type ResourceGuardResourceTagsMap = { [key: string]: string | undefined };
-export const ResourceGuardResourceTagsMap =
-  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<ResourceGuardResourceTagsMap>;
-
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface ResourceGuardResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3453,13 +3430,12 @@ export interface ResourceGuardResource {
   /** Optional ETag. */
   eTag?: string;
 }
-export const ResourceGuardResource =
-  GetResourceGuardResponse as any as S.Schema<ResourceGuardResource>;
+const ResourceGuardResource = GetResourceGuardResponse as any as S.Schema<ResourceGuardResource>;
 
 /** List of resources. */
 export type GetResourceGuardResourcesInResourceGroupResponseValueList =
   Array<ResourceGuardResource>;
-export const GetResourceGuardResourcesInResourceGroupResponseValueList = /*@__PURE__*/ S.Array(
+const GetResourceGuardResourcesInResourceGroupResponseValueList = /*@__PURE__*/ S.Array(
   ResourceGuardResource,
 ) as any as S.Schema<GetResourceGuardResourcesInResourceGroupResponseValueList>;
 
@@ -3469,7 +3445,7 @@ export interface GetResourceGuardResourcesInResourceGroupResponse {
   /** List of resources. */
   value?: GetResourceGuardResourcesInResourceGroupResponseValueList;
 }
-export const GetResourceGuardResourcesInResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGuardResourcesInResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(GetResourceGuardResourcesInResourceGroupResponseValueList),
@@ -3482,7 +3458,7 @@ export interface GetResourceGuardResourcesInSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const GetResourceGuardResourcesInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGuardResourcesInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3499,16 +3475,13 @@ export const GetResourceGuardResourcesInSubscriptionRequest = /*@__PURE__*/ S.su
 
 /** List of resources. */
 export type GetResourceGuardResourcesInSubscriptionResponseValueList = Array<ResourceGuardResource>;
-export const GetResourceGuardResourcesInSubscriptionResponseValueList =
-  GetResourceGuardResourcesInResourceGroupResponseValueList as any as S.Schema<GetResourceGuardResourcesInSubscriptionResponseValueList>;
-
 export interface GetResourceGuardResourcesInSubscriptionResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
   nextLink?: string;
   /** List of resources. */
   value?: GetResourceGuardResourcesInSubscriptionResponseValueList;
 }
-export const GetResourceGuardResourcesInSubscriptionResponse =
+const GetResourceGuardResourcesInSubscriptionResponse =
   GetResourceGuardResourcesInResourceGroupResponse as any as S.Schema<GetResourceGuardResourcesInSubscriptionResponse>;
 
 export interface ListBackupInstancesRequest {
@@ -3519,7 +3492,7 @@ export interface ListBackupInstancesRequest {
   /** The name of the backup vault. */
   vaultName: string;
 }
-export const ListBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3538,7 +3511,7 @@ export const ListBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Proxy Resource tags. */
 export type BackupInstanceResourceTagsMap = { [key: string]: string | undefined };
-export const BackupInstanceResourceTagsMap =
+const BackupInstanceResourceTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<BackupInstanceResourceTagsMap>;
 
 /** BackupInstance Resource */
@@ -3556,7 +3529,7 @@ export interface BackupInstanceResource {
   /** Proxy Resource tags. */
   tags?: BackupInstanceResourceTagsMap;
 }
-export const BackupInstanceResource = /*@__PURE__*/ S.suspend(() =>
+const BackupInstanceResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3569,7 +3542,7 @@ export const BackupInstanceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type ListBackupInstancesResponseValueList = Array<BackupInstanceResource>;
-export const ListBackupInstancesResponseValueList = /*@__PURE__*/ S.Array(
+const ListBackupInstancesResponseValueList = /*@__PURE__*/ S.Array(
   BackupInstanceResource,
 ) as any as S.Schema<ListBackupInstancesResponseValueList>;
 
@@ -3579,7 +3552,7 @@ export interface ListBackupInstancesResponse {
   /** List of resources. */
   value?: ListBackupInstancesResponseValueList;
 }
-export const ListBackupInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ListBackupInstancesResponseValueList),
@@ -3592,7 +3565,7 @@ export interface ListBackupInstancesExtensionRoutingRequest {
   /** ARM path of the resource to be protected using Microsoft.DataProtection */
   resourceId: string;
 }
-export const ListBackupInstancesExtensionRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupInstancesExtensionRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3609,16 +3582,13 @@ export const ListBackupInstancesExtensionRoutingRequest = /*@__PURE__*/ S.suspen
 
 /** List of resources. */
 export type ListBackupInstancesExtensionRoutingResponseValueList = Array<BackupInstanceResource>;
-export const ListBackupInstancesExtensionRoutingResponseValueList =
-  ListBackupInstancesResponseValueList as any as S.Schema<ListBackupInstancesExtensionRoutingResponseValueList>;
-
 export interface ListBackupInstancesExtensionRoutingResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
   nextLink?: string;
   /** List of resources. */
   value?: ListBackupInstancesExtensionRoutingResponseValueList;
 }
-export const ListBackupInstancesExtensionRoutingResponse =
+const ListBackupInstancesExtensionRoutingResponse =
   ListBackupInstancesResponse as any as S.Schema<ListBackupInstancesExtensionRoutingResponse>;
 
 export interface ListBackupPoliciesRequest {
@@ -3629,7 +3599,7 @@ export interface ListBackupPoliciesRequest {
   /** The name of the backup vault. */
   vaultName: string;
 }
-export const ListBackupPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3659,12 +3629,12 @@ export interface BaseBackupPolicyResource {
   /** BaseBackupPolicyResource properties */
   properties?: BaseBackupPolicy;
 }
-export const BaseBackupPolicyResource =
+const BaseBackupPolicyResource =
   GetBackupPolicyResponse as any as S.Schema<BaseBackupPolicyResource>;
 
 /** List of resources. */
 export type ListBackupPoliciesResponseValueList = Array<BaseBackupPolicyResource>;
-export const ListBackupPoliciesResponseValueList = /*@__PURE__*/ S.Array(
+const ListBackupPoliciesResponseValueList = /*@__PURE__*/ S.Array(
   BaseBackupPolicyResource,
 ) as any as S.Schema<ListBackupPoliciesResponseValueList>;
 
@@ -3674,7 +3644,7 @@ export interface ListBackupPoliciesResponse {
   /** List of resources. */
   value?: ListBackupPoliciesResponseValueList;
 }
-export const ListBackupPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ListBackupPoliciesResponseValueList),
@@ -3684,7 +3654,7 @@ export const ListBackupPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBackupPoliciesResponse>;
 
 export interface ListDataProtectionOperationsRequest {}
-export const ListDataProtectionOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataProtectionOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -3708,7 +3678,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -3719,11 +3689,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -3738,7 +3708,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -3750,7 +3720,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListDataProtectionOperationsResponseValueList = Array<Operation>;
-export const ListDataProtectionOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListDataProtectionOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListDataProtectionOperationsResponseValueList>;
 
@@ -3760,7 +3730,7 @@ export interface ListDataProtectionOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListDataProtectionOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataProtectionOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListDataProtectionOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -3777,7 +3747,7 @@ export interface ListDeletedBackupInstancesRequest {
   /** The name of the backup vault. */
   vaultName: string;
 }
-export const ListDeletedBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeletedBackupInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3807,12 +3777,12 @@ export interface DeletedBackupInstanceResource {
   /** DeletedBackupInstanceResource properties */
   properties?: DeletedBackupInstance;
 }
-export const DeletedBackupInstanceResource =
+const DeletedBackupInstanceResource =
   GetDeletedBackupInstanceResponse as any as S.Schema<DeletedBackupInstanceResource>;
 
 /** List of resources. */
 export type ListDeletedBackupInstancesResponseValueList = Array<DeletedBackupInstanceResource>;
-export const ListDeletedBackupInstancesResponseValueList = /*@__PURE__*/ S.Array(
+const ListDeletedBackupInstancesResponseValueList = /*@__PURE__*/ S.Array(
   DeletedBackupInstanceResource,
 ) as any as S.Schema<ListDeletedBackupInstancesResponseValueList>;
 
@@ -3822,7 +3792,7 @@ export interface ListDeletedBackupInstancesResponse {
   /** List of resources. */
   value?: ListDeletedBackupInstancesResponseValueList;
 }
-export const ListDeletedBackupInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeletedBackupInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ListDeletedBackupInstancesResponseValueList),
@@ -3837,7 +3807,7 @@ export interface ListDeletedBackupVaultByLocationRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListDeletedBackupVaultByLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeletedBackupVaultByLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -3866,12 +3836,12 @@ export interface DeletedBackupVaultResource {
   /** The resource-specific properties for this resource. */
   properties?: DeletedBackupVault;
 }
-export const DeletedBackupVaultResource =
+const DeletedBackupVaultResource =
   GetDeletedBackupVaultResponse as any as S.Schema<DeletedBackupVaultResource>;
 
 /** The DeletedBackupVaultResource items on this page */
 export type DeletedBackupVaultResourceListResultValueList = Array<DeletedBackupVaultResource>;
-export const DeletedBackupVaultResourceListResultValueList = /*@__PURE__*/ S.Array(
+const DeletedBackupVaultResourceListResultValueList = /*@__PURE__*/ S.Array(
   DeletedBackupVaultResource,
 ) as any as S.Schema<DeletedBackupVaultResourceListResultValueList>;
 
@@ -3882,7 +3852,7 @@ export interface DeletedBackupVaultResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DeletedBackupVaultResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const DeletedBackupVaultResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DeletedBackupVaultResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -3899,7 +3869,7 @@ export interface ListDppResourceGuardProxyRequest {
   /** The name of the backup vault. */
   vaultName: string;
 }
-export const ListDppResourceGuardProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDppResourceGuardProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3929,12 +3899,12 @@ export interface ResourceGuardProxyBaseResource {
   /** ResourceGuardProxyBaseResource properties */
   properties?: ResourceGuardProxyBase;
 }
-export const ResourceGuardProxyBaseResource =
+const ResourceGuardProxyBaseResource =
   DppResourceGuardProxyCreateOrUpdateResponse as any as S.Schema<ResourceGuardProxyBaseResource>;
 
 /** List of resources. */
 export type ListDppResourceGuardProxyResponseValueList = Array<ResourceGuardProxyBaseResource>;
-export const ListDppResourceGuardProxyResponseValueList = /*@__PURE__*/ S.Array(
+const ListDppResourceGuardProxyResponseValueList = /*@__PURE__*/ S.Array(
   ResourceGuardProxyBaseResource,
 ) as any as S.Schema<ListDppResourceGuardProxyResponseValueList>;
 
@@ -3944,7 +3914,7 @@ export interface ListDppResourceGuardProxyResponse {
   /** List of resources. */
   value?: ListDppResourceGuardProxyResponseValueList;
 }
-export const ListDppResourceGuardProxyResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDppResourceGuardProxyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ListDppResourceGuardProxyResponseValueList),
@@ -3965,7 +3935,7 @@ export interface ListFetchCrossRegionRestoreJobsRequest {
   sourceRegion: string;
   sourceBackupVaultId: string;
 }
-export const ListFetchCrossRegionRestoreJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFetchCrossRegionRestoreJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3998,11 +3968,11 @@ export interface AzureBackupJobResource {
   /** AzureBackupJobResource properties */
   properties?: AzureBackupJob;
 }
-export const AzureBackupJobResource = GetJobResponse as any as S.Schema<AzureBackupJobResource>;
+const AzureBackupJobResource = GetJobResponse as any as S.Schema<AzureBackupJobResource>;
 
 /** List of resources. */
 export type ListFetchCrossRegionRestoreJobsResponseValueList = Array<AzureBackupJobResource>;
-export const ListFetchCrossRegionRestoreJobsResponseValueList = /*@__PURE__*/ S.Array(
+const ListFetchCrossRegionRestoreJobsResponseValueList = /*@__PURE__*/ S.Array(
   AzureBackupJobResource,
 ) as any as S.Schema<ListFetchCrossRegionRestoreJobsResponseValueList>;
 
@@ -4012,7 +3982,7 @@ export interface ListFetchCrossRegionRestoreJobsResponse {
   /** List of resources. */
   value?: ListFetchCrossRegionRestoreJobsResponseValueList;
 }
-export const ListFetchCrossRegionRestoreJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFetchCrossRegionRestoreJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ListFetchCrossRegionRestoreJobsResponseValueList),
@@ -4037,7 +4007,7 @@ export interface ListFetchSecondaryRecoveryPointsRequest {
   /** ARM Path of BackupInstance */
   sourceBackupInstanceId?: string;
 }
-export const ListFetchSecondaryRecoveryPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFetchSecondaryRecoveryPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4071,7 +4041,7 @@ export interface AzureBackupRecoveryPointResource {
   /** AzureBackupRecoveryPointResource properties */
   properties?: AzureBackupRecoveryPoint;
 }
-export const AzureBackupRecoveryPointResource = /*@__PURE__*/ S.suspend(() =>
+const AzureBackupRecoveryPointResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4086,7 +4056,7 @@ export const AzureBackupRecoveryPointResource = /*@__PURE__*/ S.suspend(() =>
 /** List of resources. */
 export type ListFetchSecondaryRecoveryPointsResponseValueList =
   Array<AzureBackupRecoveryPointResource>;
-export const ListFetchSecondaryRecoveryPointsResponseValueList = /*@__PURE__*/ S.Array(
+const ListFetchSecondaryRecoveryPointsResponseValueList = /*@__PURE__*/ S.Array(
   AzureBackupRecoveryPointResource,
 ) as any as S.Schema<ListFetchSecondaryRecoveryPointsResponseValueList>;
 
@@ -4096,7 +4066,7 @@ export interface ListFetchSecondaryRecoveryPointsResponse {
   /** List of resources. */
   value?: ListFetchSecondaryRecoveryPointsResponseValueList;
 }
-export const ListFetchSecondaryRecoveryPointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFetchSecondaryRecoveryPointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ListFetchSecondaryRecoveryPointsResponseValueList),
@@ -4113,7 +4083,7 @@ export interface ListJobsRequest {
   /** The name of the backup vault. */
   vaultName: string;
 }
-export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4130,7 +4100,7 @@ export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type ListJobsResponseValueList = Array<AzureBackupJobResource>;
-export const ListJobsResponseValueList =
+const ListJobsResponseValueList =
   ListFetchCrossRegionRestoreJobsResponseValueList as any as S.Schema<ListJobsResponseValueList>;
 
 export interface ListJobsResponse {
@@ -4139,7 +4109,7 @@ export interface ListJobsResponse {
   /** List of resources. */
   value?: ListJobsResponseValueList;
 }
-export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ListJobsResponseValueList),
@@ -4160,7 +4130,7 @@ export interface ListRecoveryPointsRequest {
   /** skipToken Filter. */
   _skipToken?: string;
 }
-export const ListRecoveryPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecoveryPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4182,21 +4152,18 @@ export const ListRecoveryPointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resources. */
 export type ListRecoveryPointsResponseValueList = Array<AzureBackupRecoveryPointResource>;
-export const ListRecoveryPointsResponseValueList =
-  ListFetchSecondaryRecoveryPointsResponseValueList as any as S.Schema<ListRecoveryPointsResponseValueList>;
-
 export interface ListRecoveryPointsResponse {
   /** The uri to fetch the next page of resources. Call ListNext() fetches next page of resources. */
   nextLink?: string;
   /** List of resources. */
   value?: ListRecoveryPointsResponseValueList;
 }
-export const ListRecoveryPointsResponse =
+const ListRecoveryPointsResponse =
   ListFetchSecondaryRecoveryPointsResponse as any as S.Schema<ListRecoveryPointsResponse>;
 
 /** Resource Guard tags. */
 export type PatchResourceGuardRequestTagsMap = { [key: string]: string | undefined };
-export const PatchResourceGuardRequestTagsMap =
+const PatchResourceGuardRequestTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<PatchResourceGuardRequestTagsMap>;
 
 export interface PatchResourceGuardRequest {
@@ -4209,7 +4176,7 @@ export interface PatchResourceGuardRequest {
   /** Resource Guard tags. */
   tags?: PatchResourceGuardRequestTagsMap;
 }
-export const PatchResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4229,7 +4196,7 @@ export const PatchResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PatchResourceGuardResponseTagsMap = { [key: string]: string | undefined };
-export const PatchResourceGuardResponseTagsMap =
+const PatchResourceGuardResponseTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<PatchResourceGuardResponseTagsMap>;
 
 export interface PatchResourceGuardResponse {
@@ -4250,7 +4217,7 @@ export interface PatchResourceGuardResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const PatchResourceGuardResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchResourceGuardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4267,19 +4234,19 @@ export const PatchResourceGuardResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PutResourceGuardRequestTagsMap = { [key: string]: string | undefined };
-export const PutResourceGuardRequestTagsMap =
+const PutResourceGuardRequestTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<PutResourceGuardRequestTagsMap>;
 
 /** List of critical operations which are not protected by this resourceGuard */
 export type ResourceGuardInputVaultCriticalOperationExclusionListList = Array<string>;
-export const ResourceGuardInputVaultCriticalOperationExclusionListList =
+const ResourceGuardInputVaultCriticalOperationExclusionListList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<ResourceGuardInputVaultCriticalOperationExclusionListList>;
 
 export interface ResourceGuardInput {
   /** List of critical operations which are not protected by this resourceGuard */
   vaultCriticalOperationExclusionList?: ResourceGuardInputVaultCriticalOperationExclusionListList;
 }
-export const ResourceGuardInput = /*@__PURE__*/ S.suspend(() =>
+const ResourceGuardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultCriticalOperationExclusionList: S.optional(
       ResourceGuardInputVaultCriticalOperationExclusionListList,
@@ -4303,7 +4270,7 @@ export interface PutResourceGuardRequest {
   /** Optional ETag. */
   eTag?: string;
 }
-export const PutResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
+const PutResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4324,9 +4291,6 @@ export const PutResourceGuardRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PutResourceGuardResponseTagsMap = { [key: string]: string | undefined };
-export const PutResourceGuardResponseTagsMap =
-  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<PutResourceGuardResponseTagsMap>;
-
 export interface PutResourceGuardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4345,7 +4309,7 @@ export interface PutResourceGuardResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const PutResourceGuardResponse =
+const PutResourceGuardResponse =
   GetResourceGuardResponse as any as S.Schema<PutResourceGuardResponse>;
 
 export interface ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest {
@@ -4358,8 +4322,8 @@ export interface ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectReques
   /** The name of the DppBaseResource */
   requestName: string;
 }
-export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -4373,9 +4337,9 @@ export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest =
         apiVersion: "2026-07-01",
       }),
     ),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest",
-  }) as any as S.Schema<ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest>;
+).annotate({
+  identifier: "ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest",
+}) as any as S.Schema<ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRequest>;
 
 export interface ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4387,7 +4351,7 @@ export interface ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectRespon
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse =
+const ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse =
   GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultDeleteProtectedItemRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectRequest {
@@ -4400,7 +4364,7 @@ export interface ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectR
   /** The name of the DppBaseResource */
   requestName: string;
 }
-export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectRequest =
+const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -4429,7 +4393,7 @@ export interface ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectR
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse =
+const ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse =
   GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultDeleteResourceGuardProxyRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest {
@@ -4442,24 +4406,23 @@ export interface ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest 
   /** The name of the DppBaseResource */
   requestName: string;
 }
-export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceGuardsName: S.String.pipe(T.Label()),
-      requestName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests/{requestName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest",
-  }) as any as S.Schema<ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest>;
+const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceGuardsName: S.String.pipe(T.Label()),
+    requestName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests/{requestName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest",
+}) as any as S.Schema<ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectRequest>;
 
 export interface ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4471,7 +4434,7 @@ export interface ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse =
+const ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse =
   GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultDisableSoftDeleteRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest {
@@ -4484,8 +4447,8 @@ export interface ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectReques
   /** The name of the DppBaseResource */
   requestName: string;
 }
-export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -4499,9 +4462,9 @@ export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest =
         apiVersion: "2026-07-01",
       }),
     ),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest",
-  }) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest>;
+).annotate({
+  identifier: "ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest",
+}) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRequest>;
 
 export interface ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4513,7 +4476,7 @@ export interface ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectRespon
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse =
+const ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse =
   GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectedItemRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest {
@@ -4526,8 +4489,8 @@ export interface ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectReq
   /** The name of the DppBaseResource */
   requestName: string;
 }
-export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -4541,9 +4504,9 @@ export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest
         apiVersion: "2026-07-01",
       }),
     ),
-  ).annotate({
-    identifier: "ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest",
-  }) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest>;
+).annotate({
+  identifier: "ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest",
+}) as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRequest>;
 
 export interface ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4555,7 +4518,7 @@ export interface ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectRes
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse =
+const ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse =
   GetResourceGuardDefaultBackupSecurityPINRequestsObjectResponse as any as S.Schema<ResourceGuardsGetDefaultUpdateProtectionPolicyRequestsObjectResponse>;
 
 export interface ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest {
@@ -4566,20 +4529,19 @@ export interface ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest {
   /** The name of the ResourceGuardResource */
   resourceGuardsName: string;
 }
-export const ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceGuardsName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
+const ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceGuardsName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/deleteProtectedItemRequests",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
 ).annotate({
   identifier: "ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest",
 }) as any as S.Schema<ResourceGuardsGetDeleteProtectedItemRequestsObjectsRequest>;
@@ -4592,8 +4554,8 @@ export interface ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest
   /** The name of the ResourceGuardResource */
   resourceGuardsName: string;
 }
-export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -4606,9 +4568,9 @@ export const ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest =
         apiVersion: "2026-07-01",
       }),
     ),
-  ).annotate({
-    identifier: "ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest",
-  }) as any as S.Schema<ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest>;
+).annotate({
+  identifier: "ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest",
+}) as any as S.Schema<ResourceGuardsGetDeleteResourceGuardProxyRequestsObjectsRequest>;
 
 export interface ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4618,20 +4580,19 @@ export interface ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest {
   /** The name of the ResourceGuardResource */
   resourceGuardsName: string;
 }
-export const ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceGuardsName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
+const ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceGuardsName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/disableSoftDeleteRequests",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
 ).annotate({
   identifier: "ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest",
 }) as any as S.Schema<ResourceGuardsGetDisableSoftDeleteRequestsObjectsRequest>;
@@ -4644,20 +4605,19 @@ export interface ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest {
   /** The name of the ResourceGuardResource */
   resourceGuardsName: string;
 }
-export const ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceGuardsName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
+const ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceGuardsName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectedItemRequests",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
 ).annotate({
   identifier: "ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest",
 }) as any as S.Schema<ResourceGuardsGetUpdateProtectedItemRequestsObjectsRequest>;
@@ -4670,27 +4630,26 @@ export interface ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest {
   /** The name of the ResourceGuardResource */
   resourceGuardsName: string;
 }
-export const ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceGuardsName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest",
-  }) as any as S.Schema<ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest>;
+const ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceGuardsName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/resourceGuards/{resourceGuardsName}/updateProtectionPolicyRequests",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest",
+}) as any as S.Schema<ResourceGuardsGetUpdateProtectionPolicyRequestsObjectsRequest>;
 
 /** Gets or sets the type of the source data store. */
 export type RestoreSourceDataStoreType = "OperationalStore" | "VaultStore" | "ArchiveStore";
-export const RestoreSourceDataStoreType = S.String;
+const RestoreSourceDataStoreType = S.String;
 
 export interface RestorableTimeRangesFindRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4708,7 +4667,7 @@ export interface RestorableTimeRangesFindRequest {
   /** End time for the List Restore Ranges request. ISO 8601 format. */
   endTime?: string;
 }
-export const RestorableTimeRangesFindRequest = /*@__PURE__*/ S.suspend(() =>
+const RestorableTimeRangesFindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4735,7 +4694,7 @@ export type RestorableTimeRangesFindResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const RestorableTimeRangesFindResponseSystemDataCreatedByType = S.String;
+const RestorableTimeRangesFindResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type RestorableTimeRangesFindResponseSystemDataLastModifiedByType =
@@ -4743,7 +4702,7 @@ export type RestorableTimeRangesFindResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const RestorableTimeRangesFindResponseSystemDataLastModifiedByType = S.String;
+const RestorableTimeRangesFindResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface RestorableTimeRangesFindResponseSystemData {
@@ -4760,7 +4719,7 @@ export interface RestorableTimeRangesFindResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const RestorableTimeRangesFindResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const RestorableTimeRangesFindResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(RestorableTimeRangesFindResponseSystemDataCreatedByType),
@@ -4780,7 +4739,7 @@ export interface RestorableTimeRange {
   endTime: string;
   objectType?: string;
 }
-export const RestorableTimeRange = /*@__PURE__*/ S.suspend(() =>
+const RestorableTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.String,
     endTime: S.String,
@@ -4791,10 +4750,9 @@ export const RestorableTimeRange = /*@__PURE__*/ S.suspend(() =>
 /** Returns the Restore Ranges available on the Backup Instance. */
 export type AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList =
   Array<RestorableTimeRange>;
-export const AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList =
-  /*@__PURE__*/ S.Array(
-    RestorableTimeRange,
-  ) as any as S.Schema<AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList>;
+const AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList = /*@__PURE__*/ S.Array(
+  RestorableTimeRange,
+) as any as S.Schema<AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList>;
 
 /** List Restore Ranges Response */
 export interface AzureBackupFindRestorableTimeRangesResponse {
@@ -4802,7 +4760,7 @@ export interface AzureBackupFindRestorableTimeRangesResponse {
   restorableTimeRanges?: AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList;
   objectType?: string;
 }
-export const AzureBackupFindRestorableTimeRangesResponse = /*@__PURE__*/ S.suspend(() =>
+const AzureBackupFindRestorableTimeRangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restorableTimeRanges: S.optional(
       AzureBackupFindRestorableTimeRangesResponseRestorableTimeRangesList,
@@ -4825,7 +4783,7 @@ export interface RestorableTimeRangesFindResponse {
   /** AzureBackupFindRestorableTimeRangesResponseResource properties */
   properties?: AzureBackupFindRestorableTimeRangesResponse;
 }
-export const RestorableTimeRangesFindResponse = /*@__PURE__*/ S.suspend(() =>
+const RestorableTimeRangesFindResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4847,7 +4805,7 @@ export interface ResumeBackupInstanceBackupsRequest {
   /** The name of the BackupInstanceResource */
   backupInstanceName: string;
 }
-export const ResumeBackupInstanceBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeBackupInstanceBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4866,7 +4824,7 @@ export const ResumeBackupInstanceBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResumeBackupInstanceBackupsRequest>;
 
 export interface ResumeBackupInstanceBackupsResponse {}
-export const ResumeBackupInstanceBackupsResponse =
+const ResumeBackupInstanceBackupsResponse =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<ResumeBackupInstanceBackupsResponse>;
 
 export interface ResumeBackupInstanceProtectionRequest {
@@ -4879,7 +4837,7 @@ export interface ResumeBackupInstanceProtectionRequest {
   /** The name of the BackupInstanceResource */
   backupInstanceName: string;
 }
-export const ResumeBackupInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeBackupInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4898,12 +4856,12 @@ export const ResumeBackupInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ResumeBackupInstanceProtectionRequest>;
 
 export interface ResumeBackupInstanceProtectionResponse {}
-export const ResumeBackupInstanceProtectionResponse =
+const ResumeBackupInstanceProtectionResponse =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<ResumeBackupInstanceProtectionResponse>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList = Array<string>;
-export const StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList =
+const StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList =
   BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList as any as S.Schema<StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList>;
 
 export interface StopBackupInstanceProtectionRequest {
@@ -4918,7 +4876,7 @@ export interface StopBackupInstanceProtectionRequest {
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: StopBackupInstanceProtectionRequestResourceGuardOperationRequestsList;
 }
-export const StopBackupInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const StopBackupInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4940,12 +4898,12 @@ export const StopBackupInstanceProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopBackupInstanceProtectionRequest>;
 
 export interface StopBackupInstanceProtectionResponse {}
-export const StopBackupInstanceProtectionResponse =
+const StopBackupInstanceProtectionResponse =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<StopBackupInstanceProtectionResponse>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList = Array<string>;
-export const SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList =
+const SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList =
   BackupInstancesTriggerRestoreRequestResourceGuardOperationRequestsList as any as S.Schema<SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList>;
 
 export interface SuspendBackupInstanceBackupsRequest {
@@ -4960,7 +4918,7 @@ export interface SuspendBackupInstanceBackupsRequest {
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: SuspendBackupInstanceBackupsRequestResourceGuardOperationRequestsList;
 }
-export const SuspendBackupInstanceBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendBackupInstanceBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4982,12 +4940,12 @@ export const SuspendBackupInstanceBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendBackupInstanceBackupsRequest>;
 
 export interface SuspendBackupInstanceBackupsResponse {}
-export const SuspendBackupInstanceBackupsResponse =
+const SuspendBackupInstanceBackupsResponse =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<SuspendBackupInstanceBackupsResponse>;
 
 /** Field indicating sync type e.g. to sync only in case of failure or in all cases */
 export type SyncType = "Default" | "ForceResync";
-export const SyncType = S.String;
+const SyncType = S.String;
 
 export interface SyncBackupInstanceBackupInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5001,7 +4959,7 @@ export interface SyncBackupInstanceBackupInstanceRequest {
   /** Field indicating sync type e.g. to sync only in case of failure or in all cases */
   syncType?: SyncType | (string & {});
 }
-export const SyncBackupInstanceBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncBackupInstanceBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5021,12 +4979,12 @@ export const SyncBackupInstanceBackupInstanceRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SyncBackupInstanceBackupInstanceRequest>;
 
 export interface SyncBackupInstanceBackupInstanceResponse {}
-export const SyncBackupInstanceBackupInstanceResponse =
+const SyncBackupInstanceBackupInstanceResponse =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<SyncBackupInstanceBackupInstanceResponse>;
 
 /** Priority to be used for rehydration. Values High or Standard */
 export type RehydrationPriority = "Invalid" | "High" | "Standard";
-export const RehydrationPriority = S.String;
+const RehydrationPriority = S.String;
 
 export interface TriggerBackupInstanceRehydrateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5044,7 +5002,7 @@ export interface TriggerBackupInstanceRehydrateRequest {
   /** Retention duration in ISO 8601 format i.e P10D . */
   rehydrationRetentionDuration: string;
 }
-export const TriggerBackupInstanceRehydrateRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerBackupInstanceRehydrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5066,7 +5024,7 @@ export const TriggerBackupInstanceRehydrateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<TriggerBackupInstanceRehydrateRequest>;
 
 export interface TriggerBackupInstanceRehydrateResponse {}
-export const TriggerBackupInstanceRehydrateResponse =
+const TriggerBackupInstanceRehydrateResponse =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<TriggerBackupInstanceRehydrateResponse>;
 
 export interface TriggerExportJobRequest {
@@ -5077,7 +5035,7 @@ export interface TriggerExportJobRequest {
   /** The name of the BackupVaultResource */
   vaultName: string;
 }
-export const TriggerExportJobRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerExportJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5093,7 +5051,7 @@ export const TriggerExportJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerExportJobRequest" }) as any as S.Schema<TriggerExportJobRequest>;
 
 export interface TriggerExportJobResponse {}
-export const TriggerExportJobResponse =
+const TriggerExportJobResponse =
   DeleteBackupInstanceResponse as any as S.Schema<TriggerExportJobResponse>;
 
 export interface UndeleteDeletedBackupInstanceRequest {
@@ -5106,7 +5064,7 @@ export interface UndeleteDeletedBackupInstanceRequest {
   /** The name of the deleted backup instance */
   backupInstanceName: string;
 }
-export const UndeleteDeletedBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteDeletedBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5125,12 +5083,12 @@ export const UndeleteDeletedBackupInstanceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UndeleteDeletedBackupInstanceRequest>;
 
 export interface UndeleteDeletedBackupInstanceResponse {}
-export const UndeleteDeletedBackupInstanceResponse =
+const UndeleteDeletedBackupInstanceResponse =
   BackupInstancesValidateForModifyBackupResponse as any as S.Schema<UndeleteDeletedBackupInstanceResponse>;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type PatchBackupVaultInputResourceGuardOperationRequestsList = Array<string>;
-export const PatchBackupVaultInputResourceGuardOperationRequestsList =
+const PatchBackupVaultInputResourceGuardOperationRequestsList =
   BackupInstanceInputResourceGuardOperationRequestsList as any as S.Schema<PatchBackupVaultInputResourceGuardOperationRequestsList>;
 
 /** Backup Vault Contract for Patch Backup Vault API. */
@@ -5146,7 +5104,7 @@ export interface PatchBackupVaultInput {
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: PatchBackupVaultInputResourceGuardOperationRequestsList;
 }
-export const PatchBackupVaultInput = /*@__PURE__*/ S.suspend(() =>
+const PatchBackupVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringSettings: S.optional(MonitoringSettings),
     securitySettings: S.optional(SecuritySettings),
@@ -5160,7 +5118,7 @@ export const PatchBackupVaultInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBackupVaultRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateBackupVaultRequestTagsMap =
+const UpdateBackupVaultRequestTagsMap =
   BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupVaultRequestTagsMap>;
 
 export interface UpdateBackupVaultRequest {
@@ -5177,7 +5135,7 @@ export interface UpdateBackupVaultRequest {
   /** Resource tags. */
   tags?: UpdateBackupVaultRequestTagsMap;
 }
-export const UpdateBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5197,9 +5155,6 @@ export const UpdateBackupVaultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateBackupVaultResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateBackupVaultResponseTagsMap =
-  BackupInstancesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateBackupVaultResponseTagsMap>;
-
 export interface UpdateBackupVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5220,7 +5175,7 @@ export interface UpdateBackupVaultResponse {
   /** Optional ETag. */
   eTag?: string;
 }
-export const UpdateBackupVaultResponse =
+const UpdateBackupVaultResponse =
   BackupVaultsCreateOrUpdateResponse as any as S.Schema<UpdateBackupVaultResponse>;
 
 export interface ValidateBackupInstanceForBackupRequest {
@@ -5233,7 +5188,7 @@ export interface ValidateBackupInstanceForBackupRequest {
   /** Backup Instance */
   backupInstance: BackupInstanceInput;
 }
-export const ValidateBackupInstanceForBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateBackupInstanceForBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5257,7 +5212,7 @@ export interface ValidateBackupInstanceForBackupResponse {
   /** Name or Arm Id of the job created for this operation. */
   jobId?: string;
 }
-export const ValidateBackupInstanceForBackupResponse =
+const ValidateBackupInstanceForBackupResponse =
   BackupInstancesAdhocBackupResponse as any as S.Schema<ValidateBackupInstanceForBackupResponse>;
 
 export type BackupInstancesAdhocBackupError = AzureOpError;

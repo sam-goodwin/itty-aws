@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleLongrunningCancelOperationRequest",
@@ -75,7 +75,7 @@ export interface CancelProjectsOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -92,7 +92,7 @@ export const CancelProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -100,15 +100,14 @@ export type ComputeDiffThreatListsConstraints_supportedCompressionsEnum =
   | "COMPRESSION_TYPE_UNSPECIFIED"
   | "RAW"
   | "RICE";
-export const ComputeDiffThreatListsConstraints_supportedCompressionsEnum = S.String;
+const ComputeDiffThreatListsConstraints_supportedCompressionsEnum = S.String;
 
 export type ComputeDiffThreatListsConstraints_supportedCompressionsEnumList = Array<
   ComputeDiffThreatListsConstraints_supportedCompressionsEnum | (string & {})
 >;
-export const ComputeDiffThreatListsConstraints_supportedCompressionsEnumList =
-  /*@__PURE__*/ S.Array(
-    ComputeDiffThreatListsConstraints_supportedCompressionsEnum,
-  ) as any as S.Schema<ComputeDiffThreatListsConstraints_supportedCompressionsEnumList>;
+const ComputeDiffThreatListsConstraints_supportedCompressionsEnumList = /*@__PURE__*/ S.Array(
+  ComputeDiffThreatListsConstraints_supportedCompressionsEnum,
+) as any as S.Schema<ComputeDiffThreatListsConstraints_supportedCompressionsEnumList>;
 
 export type ComputeDiffThreatListsThreatTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
@@ -116,7 +115,7 @@ export type ComputeDiffThreatListsThreatTypeEnum =
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
-export const ComputeDiffThreatListsThreatTypeEnum = S.String;
+const ComputeDiffThreatListsThreatTypeEnum = S.String;
 
 export interface ComputeDiffThreatListsRequest {
   /** The compression types supported by the client. */
@@ -130,7 +129,7 @@ export interface ComputeDiffThreatListsRequest {
   /** Required. The threat list to update. Only a single ThreatType should be specified per request. If you want to handle multiple ThreatTypes, you must make one request per ThreatType. */
   threatType?: ComputeDiffThreatListsThreatTypeEnum | (string & {});
 }
-export const ComputeDiffThreatListsRequest = /*@__PURE__*/ S.suspend(() =>
+const ComputeDiffThreatListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "constraints.supportedCompressions": S.optional(
       ComputeDiffThreatListsConstraints_supportedCompressionsEnumList.pipe(T.Query()),
@@ -157,7 +156,7 @@ export interface GoogleCloudWebriskV1RawHashes {
   /** The hashes, in binary format, concatenated into one long string. Hashes are sorted in lexicographic order. For JSON API users, hashes are base64-encoded. */
   rawHashes?: string;
 }
-export const GoogleCloudWebriskV1RawHashes = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1RawHashes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixSize: S.optional(S.Number),
     rawHashes: S.optional(S.String),
@@ -167,7 +166,7 @@ export const GoogleCloudWebriskV1RawHashes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudWebriskV1RawHashes>;
 
 export type GoogleCloudWebriskV1RawHashesList = Array<GoogleCloudWebriskV1RawHashes>;
-export const GoogleCloudWebriskV1RawHashesList = /*@__PURE__*/ S.Array(
+const GoogleCloudWebriskV1RawHashesList = /*@__PURE__*/ S.Array(
   GoogleCloudWebriskV1RawHashes,
 ) as any as S.Schema<GoogleCloudWebriskV1RawHashesList>;
 
@@ -182,7 +181,7 @@ export interface GoogleCloudWebriskV1RiceDeltaEncoding {
   /** The encoded deltas that are encoded using the Golomb-Rice coder. */
   encodedData?: string;
 }
-export const GoogleCloudWebriskV1RiceDeltaEncoding = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1RiceDeltaEncoding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryCount: S.optional(S.Number),
     firstValue: S.optional(S.String),
@@ -200,7 +199,7 @@ export interface GoogleCloudWebriskV1ThreatEntryAdditions {
   /** The encoded 4-byte prefixes of SHA256-formatted entries, using a Golomb-Rice encoding. The hashes are converted to uint32, sorted in ascending order, then delta encoded and stored as encoded_data. */
   riceHashes?: GoogleCloudWebriskV1RiceDeltaEncoding;
 }
-export const GoogleCloudWebriskV1ThreatEntryAdditions = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1ThreatEntryAdditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rawHashes: S.optional(GoogleCloudWebriskV1RawHashesList),
     riceHashes: S.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
@@ -213,17 +212,17 @@ export type GoogleCloudWebriskV1ComputeThreatListDiffResponseResponseTypeEnum =
   | "RESPONSE_TYPE_UNSPECIFIED"
   | "DIFF"
   | "RESET";
-export const GoogleCloudWebriskV1ComputeThreatListDiffResponseResponseTypeEnum = S.String;
+const GoogleCloudWebriskV1ComputeThreatListDiffResponseResponseTypeEnum = S.String;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** A set of raw indices to remove from a local list. */
 export interface GoogleCloudWebriskV1RawIndices {
   /** The indices to remove from a lexicographically-sorted local list. */
   indices?: IntegerList;
 }
-export const GoogleCloudWebriskV1RawIndices = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1RawIndices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indices: S.optional(IntegerList),
   }),
@@ -238,7 +237,7 @@ export interface GoogleCloudWebriskV1ThreatEntryRemovals {
   /** The raw removal indices for a local list. */
   rawIndices?: GoogleCloudWebriskV1RawIndices;
 }
-export const GoogleCloudWebriskV1ThreatEntryRemovals = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1ThreatEntryRemovals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riceIndices: S.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
     rawIndices: S.optional(GoogleCloudWebriskV1RawIndices),
@@ -252,11 +251,10 @@ export interface GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
   /** The SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database. */
   sha256?: string;
 }
-export const GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sha256: S.optional(S.String),
-    }),
+const GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sha256: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum",
 }) as any as S.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum>;
@@ -275,7 +273,7 @@ export interface GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   /** The expected SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database after applying the provided diff. If the client state doesn't match the expected state, the client must discard this diff and retry later. */
   checksum?: GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum;
 }
-export const GoogleCloudWebriskV1ComputeThreatListDiffResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1ComputeThreatListDiffResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additions: S.optional(GoogleCloudWebriskV1ThreatEntryAdditions),
     newVersionToken: S.optional(S.String),
@@ -293,7 +291,7 @@ export interface GoogleCloudWebriskV1Submission {
   /** Required. The URI that is being reported for malicious content to be analyzed. */
   uri?: string;
 }
-export const GoogleCloudWebriskV1Submission = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1Submission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -307,7 +305,7 @@ export interface CreateProjectsSubmissionsRequest {
   /** Request body */
   body?: GoogleCloudWebriskV1Submission;
 }
-export const CreateProjectsSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudWebriskV1Submission.pipe(T.HttpBody())),
@@ -326,7 +324,7 @@ export interface DeleteProjectsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -340,7 +338,7 @@ export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://webrisk.googleapis.com/" })),
@@ -349,15 +347,10 @@ export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -368,7 +361,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -389,7 +382,7 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(GoogleRpcStatus),
@@ -413,7 +406,7 @@ export interface ListProjectsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -432,10 +425,10 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsOperationsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -448,7 +441,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -464,10 +457,10 @@ export type SearchHashesThreatTypesEnum =
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
-export const SearchHashesThreatTypesEnum = S.String;
+const SearchHashesThreatTypesEnum = S.String;
 
 export type SearchHashesThreatTypesEnumList = Array<SearchHashesThreatTypesEnum | (string & {})>;
-export const SearchHashesThreatTypesEnumList = /*@__PURE__*/ S.Array(
+const SearchHashesThreatTypesEnumList = /*@__PURE__*/ S.Array(
   SearchHashesThreatTypesEnum,
 ) as any as S.Schema<SearchHashesThreatTypesEnumList>;
 
@@ -477,7 +470,7 @@ export interface SearchHashesRequest {
   /** Required. The ThreatLists to search in. Multiple ThreatLists may be specified. */
   threatTypes?: SearchHashesThreatTypesEnumList;
 }
-export const SearchHashesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchHashesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashPrefix: S.optional(S.String.pipe(T.Query())),
     threatTypes: S.optional(SearchHashesThreatTypesEnumList.pipe(T.Query())),
@@ -492,11 +485,9 @@ export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnu
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
-export const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum = S.String;
-
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
   Array<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum>;
-export const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
+const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
   ComputeDiffThreatListsConstraints_supportedCompressionsEnumList as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList>;
 
 /** Contains threat information on a matching hash. */
@@ -508,7 +499,7 @@ export interface GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   /** The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid false positives. */
   expireTime?: string;
 }
-export const GoogleCloudWebriskV1SearchHashesResponseThreatHash = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1SearchHashesResponseThreatHash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threatTypes: S.optional(
       GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList,
@@ -522,7 +513,7 @@ export const GoogleCloudWebriskV1SearchHashesResponseThreatHash = /*@__PURE__*/ 
 
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashList =
   Array<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
-export const GoogleCloudWebriskV1SearchHashesResponseThreatHashList = /*@__PURE__*/ S.Array(
+const GoogleCloudWebriskV1SearchHashesResponseThreatHashList = /*@__PURE__*/ S.Array(
   GoogleCloudWebriskV1SearchHashesResponseThreatHash,
 ) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHashList>;
 
@@ -532,7 +523,7 @@ export interface GoogleCloudWebriskV1SearchHashesResponse {
   /** For requested entities that did not match the threat list, how long to cache the response until. */
   negativeExpireTime?: string;
 }
-export const GoogleCloudWebriskV1SearchHashesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1SearchHashesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threats: S.optional(GoogleCloudWebriskV1SearchHashesResponseThreatHashList),
     negativeExpireTime: S.optional(S.String),
@@ -547,10 +538,8 @@ export type SearchUrisThreatTypesEnum =
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
-export const SearchUrisThreatTypesEnum = S.String;
-
 export type SearchUrisThreatTypesEnumList = Array<SearchUrisThreatTypesEnum | (string & {})>;
-export const SearchUrisThreatTypesEnumList =
+const SearchUrisThreatTypesEnumList =
   SearchHashesThreatTypesEnumList as any as S.Schema<SearchUrisThreatTypesEnumList>;
 
 export interface SearchUrisRequest {
@@ -559,7 +548,7 @@ export interface SearchUrisRequest {
   /** Required. The URI to be checked for matches. */
   uri?: string;
 }
-export const SearchUrisRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchUrisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threatTypes: S.optional(SearchUrisThreatTypesEnumList.pipe(T.Query())),
     uri: S.optional(S.String.pipe(T.Query())),
@@ -574,11 +563,9 @@ export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum =
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
-export const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum = S.String;
-
 export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
   Array<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum>;
-export const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
+const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
   ComputeDiffThreatListsConstraints_supportedCompressionsEnumList as any as S.Schema<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList>;
 
 /** Contains threat information on a matching uri. */
@@ -588,7 +575,7 @@ export interface GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   /** The ThreatList this threat belongs to. */
   threatTypes?: GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList;
 }
-export const GoogleCloudWebriskV1SearchUrisResponseThreatUri = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1SearchUrisResponseThreatUri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String),
     threatTypes: S.optional(GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList),
@@ -601,7 +588,7 @@ export interface GoogleCloudWebriskV1SearchUrisResponse {
   /** The threat list matches. This might be empty if the URI is on no list. */
   threat?: GoogleCloudWebriskV1SearchUrisResponseThreatUri;
 }
-export const GoogleCloudWebriskV1SearchUrisResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudWebriskV1SearchUrisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threat: S.optional(GoogleCloudWebriskV1SearchUrisResponseThreatUri),
   }),

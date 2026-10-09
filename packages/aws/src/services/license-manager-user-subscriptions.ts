@@ -111,14 +111,14 @@ export class ValidationException
 export type Directory = string;
 export type IpV4 = string;
 export type IpV4List = string[];
-export const IpV4List = /*@__PURE__*/ S.Array(S.String);
+const IpV4List = /*@__PURE__*/ S.Array(S.String);
 export type IpV6 = string;
 export type IpV6List = string[];
-export const IpV6List = IpV4List as any as S.Schema<IpV6List>;
+const IpV6List = IpV4List as any as S.Schema<IpV6List>;
 export interface SecretsManagerCredentialsProvider {
   SecretId?: string;
 }
-export const SecretsManagerCredentialsProvider = /*@__PURE__*/ S.suspend(() =>
+const SecretsManagerCredentialsProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecretId: S.optional(S.String) }),
 ).annotate({
   identifier: "SecretsManagerCredentialsProvider",
@@ -126,16 +126,16 @@ export const SecretsManagerCredentialsProvider = /*@__PURE__*/ S.suspend(() =>
 export type CredentialsProvider = {
   SecretsManagerCredentialsProvider: SecretsManagerCredentialsProvider;
 };
-export const CredentialsProvider = /*@__PURE__*/ S.Union([
+const CredentialsProvider = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ SecretsManagerCredentialsProvider: SecretsManagerCredentialsProvider }),
 ]);
 export type Subnet = string;
 export type Subnets = string[];
-export const Subnets = IpV4List as any as S.Schema<Subnets>;
+const Subnets = IpV4List as any as S.Schema<Subnets>;
 export interface DomainNetworkSettings {
   Subnets: string[];
 }
-export const DomainNetworkSettings = /*@__PURE__*/ S.suspend(() =>
+const DomainNetworkSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Subnets: Subnets }),
 ).annotate({ identifier: "DomainNetworkSettings" }) as any as S.Schema<DomainNetworkSettings>;
 export interface ActiveDirectorySettings {
@@ -145,7 +145,7 @@ export interface ActiveDirectorySettings {
   DomainCredentialsProvider?: CredentialsProvider;
   DomainNetworkSettings?: DomainNetworkSettings;
 }
-export const ActiveDirectorySettings = /*@__PURE__*/ S.suspend(() =>
+const ActiveDirectorySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.optional(S.String),
     DomainIpv4List: S.optional(IpV4List),
@@ -161,7 +161,7 @@ export interface ActiveDirectoryIdentityProvider {
   ActiveDirectoryType?: string;
   IsSharedActiveDirectory?: boolean;
 }
-export const ActiveDirectoryIdentityProvider = /*@__PURE__*/ S.suspend(() =>
+const ActiveDirectoryIdentityProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     ActiveDirectorySettings: S.optional(ActiveDirectorySettings),
@@ -172,11 +172,11 @@ export const ActiveDirectoryIdentityProvider = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActiveDirectoryIdentityProvider",
 }) as any as S.Schema<ActiveDirectoryIdentityProvider>;
 export type IdentityProvider = { ActiveDirectoryIdentityProvider: ActiveDirectoryIdentityProvider };
-export const IdentityProvider = /*@__PURE__*/ S.Union([
+const IdentityProvider = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ ActiveDirectoryIdentityProvider: ActiveDirectoryIdentityProvider }),
 ]);
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Tags = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface AssociateUserRequest {
   Username: string;
   InstanceId: string;
@@ -184,7 +184,7 @@ export interface AssociateUserRequest {
   Domain?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const AssociateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Username: S.String,
     InstanceId: S.String,
@@ -207,7 +207,7 @@ export interface InstanceUserSummary {
   AssociationDate?: string;
   DisassociationDate?: string;
 }
-export const InstanceUserSummary = /*@__PURE__*/ S.suspend(() =>
+const InstanceUserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Username: S.String,
     InstanceId: S.String,
@@ -223,25 +223,25 @@ export const InstanceUserSummary = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateUserResponse {
   InstanceUserSummary: InstanceUserSummary;
 }
-export const AssociateUserResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InstanceUserSummary: InstanceUserSummary }),
 ).annotate({ identifier: "AssociateUserResponse" }) as any as S.Schema<AssociateUserResponse>;
 export type ServerType = string;
 export interface RdsSalSettings {
   RdsSalCredentialsProvider: CredentialsProvider;
 }
-export const RdsSalSettings = /*@__PURE__*/ S.suspend(() =>
+const RdsSalSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RdsSalCredentialsProvider: CredentialsProvider }),
 ).annotate({ identifier: "RdsSalSettings" }) as any as S.Schema<RdsSalSettings>;
 export type ServerSettings = { RdsSalSettings: RdsSalSettings };
-export const ServerSettings = /*@__PURE__*/ S.Union([
+const ServerSettings = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ RdsSalSettings: RdsSalSettings }),
 ]);
 export interface LicenseServerSettings {
   ServerType: string;
   ServerSettings: ServerSettings;
 }
-export const LicenseServerSettings = /*@__PURE__*/ S.suspend(() =>
+const LicenseServerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ServerType: S.String, ServerSettings: ServerSettings }),
 ).annotate({ identifier: "LicenseServerSettings" }) as any as S.Schema<LicenseServerSettings>;
 export interface CreateLicenseServerEndpointRequest {
@@ -249,7 +249,7 @@ export interface CreateLicenseServerEndpointRequest {
   LicenseServerSettings: LicenseServerSettings;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateLicenseServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLicenseServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityProviderArn: S.String,
     LicenseServerSettings: LicenseServerSettings,
@@ -271,7 +271,7 @@ export interface CreateLicenseServerEndpointResponse {
   IdentityProviderArn?: string;
   LicenseServerEndpointArn?: string;
 }
-export const CreateLicenseServerEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLicenseServerEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityProviderArn: S.optional(S.String),
     LicenseServerEndpointArn: S.optional(S.String),
@@ -283,7 +283,7 @@ export interface DeleteLicenseServerEndpointRequest {
   LicenseServerEndpointArn: string;
   ServerType: string;
 }
-export const DeleteLicenseServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLicenseServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LicenseServerEndpointArn: S.String, ServerType: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/license-server/DeleteLicenseServerEndpoint" }),
@@ -300,7 +300,7 @@ export const DeleteLicenseServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ServerEndpoint {
   Endpoint?: string;
 }
-export const ServerEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ServerEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoint: S.optional(S.String) }),
 ).annotate({ identifier: "ServerEndpoint" }) as any as S.Schema<ServerEndpoint>;
 export type LicenseServerEndpointId = string;
@@ -312,7 +312,7 @@ export interface LicenseServer {
   Ipv4Address?: string;
   Ipv6Address?: string;
 }
-export const LicenseServer = /*@__PURE__*/ S.suspend(() =>
+const LicenseServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProvisioningStatus: S.optional(S.String),
     HealthStatus: S.optional(S.String),
@@ -321,7 +321,7 @@ export const LicenseServer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LicenseServer" }) as any as S.Schema<LicenseServer>;
 export type LicenseServerList = LicenseServer[];
-export const LicenseServerList = /*@__PURE__*/ S.Array(LicenseServer);
+const LicenseServerList = /*@__PURE__*/ S.Array(LicenseServer);
 export interface LicenseServerEndpoint {
   IdentityProviderArn?: string;
   ServerType?: string;
@@ -333,7 +333,7 @@ export interface LicenseServerEndpoint {
   LicenseServers?: LicenseServer[];
   CreationTime?: Date;
 }
-export const LicenseServerEndpoint = /*@__PURE__*/ S.suspend(() =>
+const LicenseServerEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityProviderArn: S.optional(S.String),
     ServerType: S.optional(S.String),
@@ -349,7 +349,7 @@ export const LicenseServerEndpoint = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLicenseServerEndpointResponse {
   LicenseServerEndpoint?: LicenseServerEndpoint;
 }
-export const DeleteLicenseServerEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteLicenseServerEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LicenseServerEndpoint: S.optional(LicenseServerEndpoint) }),
 ).annotate({
   identifier: "DeleteLicenseServerEndpointResponse",
@@ -359,7 +359,7 @@ export interface DeregisterIdentityProviderRequest {
   Product?: string;
   IdentityProviderArn?: string;
 }
-export const DeregisterIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeregisterIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityProvider: S.optional(IdentityProvider),
     Product: S.optional(S.String),
@@ -382,7 +382,7 @@ export interface Settings {
   Subnets: string[];
   SecurityGroupId: string;
 }
-export const Settings = /*@__PURE__*/ S.suspend(() =>
+const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Subnets: Subnets, SecurityGroupId: S.String }),
 ).annotate({ identifier: "Settings" }) as any as S.Schema<Settings>;
 export interface IdentityProviderSummary {
@@ -394,7 +394,7 @@ export interface IdentityProviderSummary {
   FailureMessage?: string;
   OwnerAccountId?: string;
 }
-export const IdentityProviderSummary = /*@__PURE__*/ S.suspend(() =>
+const IdentityProviderSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityProvider: IdentityProvider,
     Settings: Settings,
@@ -408,7 +408,7 @@ export const IdentityProviderSummary = /*@__PURE__*/ S.suspend(() =>
 export interface DeregisterIdentityProviderResponse {
   IdentityProviderSummary: IdentityProviderSummary;
 }
-export const DeregisterIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const DeregisterIdentityProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityProviderSummary: IdentityProviderSummary }),
 ).annotate({
   identifier: "DeregisterIdentityProviderResponse",
@@ -420,7 +420,7 @@ export interface DisassociateUserRequest {
   InstanceUserArn?: string;
   Domain?: string;
 }
-export const DisassociateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Username: S.optional(S.String),
     InstanceId: S.optional(S.String),
@@ -434,15 +434,14 @@ export const DisassociateUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateUserResponse {
   InstanceUserSummary: InstanceUserSummary;
 }
-export const DisassociateUserResponse =
-  AssociateUserResponse as any as S.Schema<DisassociateUserResponse>;
+const DisassociateUserResponse = AssociateUserResponse as any as S.Schema<DisassociateUserResponse>;
 export type BoxInteger = number;
 export interface Filter {
   Attribute?: string;
   Operation?: string;
   Value?: string;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Attribute: S.optional(S.String),
     Operation: S.optional(S.String),
@@ -450,13 +449,13 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
+const FilterList = /*@__PURE__*/ S.Array(Filter);
 export interface ListIdentityProvidersRequest {
   MaxResults?: number;
   Filters?: Filter[];
   NextToken?: string;
 }
-export const ListIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     Filters: S.optional(FilterList),
@@ -475,12 +474,12 @@ export const ListIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListIdentityProvidersRequest",
 }) as any as S.Schema<ListIdentityProvidersRequest>;
 export type IdentityProviderSummaryList = IdentityProviderSummary[];
-export const IdentityProviderSummaryList = /*@__PURE__*/ S.Array(IdentityProviderSummary);
+const IdentityProviderSummaryList = /*@__PURE__*/ S.Array(IdentityProviderSummary);
 export interface ListIdentityProvidersResponse {
   IdentityProviderSummaries: IdentityProviderSummary[];
   NextToken?: string;
 }
-export const ListIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityProviderSummaries: IdentityProviderSummaryList,
     NextToken: S.optional(S.String),
@@ -493,7 +492,7 @@ export interface ListInstancesRequest {
   NextToken?: string;
   Filters?: Filter[];
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -503,7 +502,7 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListInstancesRequest" }) as any as S.Schema<ListInstancesRequest>;
 export type StringList = string[];
-export const StringList = IpV4List as any as S.Schema<StringList>;
+const StringList = IpV4List as any as S.Schema<StringList>;
 export interface InstanceSummary {
   InstanceId: string;
   Status: string;
@@ -513,7 +512,7 @@ export interface InstanceSummary {
   OwnerAccountId?: string;
   IdentityProvider?: IdentityProvider;
 }
-export const InstanceSummary = /*@__PURE__*/ S.suspend(() =>
+const InstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InstanceId: S.String,
     Status: S.String,
@@ -525,12 +524,12 @@ export const InstanceSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InstanceSummary" }) as any as S.Schema<InstanceSummary>;
 export type InstanceSummaryList = InstanceSummary[];
-export const InstanceSummaryList = /*@__PURE__*/ S.Array(InstanceSummary);
+const InstanceSummaryList = /*@__PURE__*/ S.Array(InstanceSummary);
 export interface ListInstancesResponse {
   InstanceSummaries?: InstanceSummary[];
   NextToken?: string;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InstanceSummaries: S.optional(InstanceSummaryList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 export interface ListLicenseServerEndpointsRequest {
@@ -538,7 +537,7 @@ export interface ListLicenseServerEndpointsRequest {
   Filters?: Filter[];
   NextToken?: string;
 }
-export const ListLicenseServerEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLicenseServerEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     Filters: S.optional(FilterList),
@@ -557,12 +556,12 @@ export const ListLicenseServerEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLicenseServerEndpointsRequest",
 }) as any as S.Schema<ListLicenseServerEndpointsRequest>;
 export type LicenseServerEndpointList = LicenseServerEndpoint[];
-export const LicenseServerEndpointList = /*@__PURE__*/ S.Array(LicenseServerEndpoint);
+const LicenseServerEndpointList = /*@__PURE__*/ S.Array(LicenseServerEndpoint);
 export interface ListLicenseServerEndpointsResponse {
   LicenseServerEndpoints?: LicenseServerEndpoint[];
   NextToken?: string;
 }
-export const ListLicenseServerEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLicenseServerEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LicenseServerEndpoints: S.optional(LicenseServerEndpointList),
     NextToken: S.optional(S.String),
@@ -577,7 +576,7 @@ export interface ListProductSubscriptionsRequest {
   Filters?: Filter[];
   NextToken?: string;
 }
-export const ListProductSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Product: S.optional(S.String),
     IdentityProvider: IdentityProvider,
@@ -609,7 +608,7 @@ export interface ProductUserSummary {
   SubscriptionEndDate?: string;
   LicenseExpirationDate?: string;
 }
-export const ProductUserSummary = /*@__PURE__*/ S.suspend(() =>
+const ProductUserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Username: S.String,
     Product: S.String,
@@ -624,12 +623,12 @@ export const ProductUserSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductUserSummary" }) as any as S.Schema<ProductUserSummary>;
 export type ProductUserSummaryList = ProductUserSummary[];
-export const ProductUserSummaryList = /*@__PURE__*/ S.Array(ProductUserSummary);
+const ProductUserSummaryList = /*@__PURE__*/ S.Array(ProductUserSummary);
 export interface ListProductSubscriptionsResponse {
   ProductUserSummaries?: ProductUserSummary[];
   NextToken?: string;
 }
-export const ListProductSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProductUserSummaries: S.optional(ProductUserSummaryList),
     NextToken: S.optional(S.String),
@@ -641,7 +640,7 @@ export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -651,7 +650,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(Tags) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -663,7 +662,7 @@ export interface ListUserAssociationsRequest {
   Filters?: Filter[];
   NextToken?: string;
 }
-export const ListUserAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InstanceId: S.String,
     IdentityProvider: IdentityProvider,
@@ -684,12 +683,12 @@ export const ListUserAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserAssociationsRequest",
 }) as any as S.Schema<ListUserAssociationsRequest>;
 export type InstanceUserSummaryList = InstanceUserSummary[];
-export const InstanceUserSummaryList = /*@__PURE__*/ S.Array(InstanceUserSummary);
+const InstanceUserSummaryList = /*@__PURE__*/ S.Array(InstanceUserSummary);
 export interface ListUserAssociationsResponse {
   InstanceUserSummaries?: InstanceUserSummary[];
   NextToken?: string;
 }
-export const ListUserAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InstanceUserSummaries: S.optional(InstanceUserSummaryList),
     NextToken: S.optional(S.String),
@@ -703,7 +702,7 @@ export interface RegisterIdentityProviderRequest {
   Settings?: Settings;
   Tags?: { [key: string]: string | undefined };
 }
-export const RegisterIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityProvider: IdentityProvider,
     Product: S.String,
@@ -725,7 +724,7 @@ export const RegisterIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterIdentityProviderResponse {
   IdentityProviderSummary: IdentityProviderSummary;
 }
-export const RegisterIdentityProviderResponse =
+const RegisterIdentityProviderResponse =
   DeregisterIdentityProviderResponse as any as S.Schema<RegisterIdentityProviderResponse>;
 export interface StartProductSubscriptionRequest {
   Username: string;
@@ -734,7 +733,7 @@ export interface StartProductSubscriptionRequest {
   Domain?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const StartProductSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const StartProductSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Username: S.String,
     IdentityProvider: IdentityProvider,
@@ -757,7 +756,7 @@ export const StartProductSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartProductSubscriptionResponse {
   ProductUserSummary: ProductUserSummary;
 }
-export const StartProductSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const StartProductSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProductUserSummary: ProductUserSummary }),
 ).annotate({
   identifier: "StartProductSubscriptionResponse",
@@ -769,7 +768,7 @@ export interface StopProductSubscriptionRequest {
   ProductUserArn?: string;
   Domain?: string;
 }
-export const StopProductSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const StopProductSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Username: S.optional(S.String),
     IdentityProvider: S.optional(IdentityProvider),
@@ -792,28 +791,28 @@ export const StopProductSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopProductSubscriptionResponse {
   ProductUserSummary: ProductUserSummary;
 }
-export const StopProductSubscriptionResponse =
+const StopProductSubscriptionResponse =
   StartProductSubscriptionResponse as any as S.Schema<StopProductSubscriptionResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: Tags }).pipe(
     T.all(T.Http({ method: "PUT", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = IpV4List as any as S.Schema<TagKeyList>;
+const TagKeyList = IpV4List as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -822,13 +821,13 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateSettings {
   AddSubnets: string[];
   RemoveSubnets: string[];
   SecurityGroupId?: string;
 }
-export const UpdateSettings = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AddSubnets: Subnets, RemoveSubnets: Subnets, SecurityGroupId: S.optional(S.String) }),
 ).annotate({ identifier: "UpdateSettings" }) as any as S.Schema<UpdateSettings>;
 export interface UpdateIdentityProviderSettingsRequest {
@@ -837,7 +836,7 @@ export interface UpdateIdentityProviderSettingsRequest {
   IdentityProviderArn?: string;
   UpdateSettings: UpdateSettings;
 }
-export const UpdateIdentityProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIdentityProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityProvider: S.optional(IdentityProvider),
     Product: S.optional(S.String),
@@ -859,7 +858,7 @@ export const UpdateIdentityProviderSettingsRequest = /*@__PURE__*/ S.suspend(() 
 export interface UpdateIdentityProviderSettingsResponse {
   IdentityProviderSummary: IdentityProviderSummary;
 }
-export const UpdateIdentityProviderSettingsResponse =
+const UpdateIdentityProviderSettingsResponse =
   DeregisterIdentityProviderResponse as any as S.Schema<UpdateIdentityProviderSettingsResponse>;
 export type AssociateUserError =
   | AccessDeniedException

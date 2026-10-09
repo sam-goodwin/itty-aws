@@ -67,7 +67,7 @@ export interface DeletePublicationsReadersRequest {
   /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
   name: string;
 }
-export const DeletePublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -84,7 +84,7 @@ export const DeletePublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response to deleting a reader of a publication. */
 export interface DeleteReaderResponse {}
-export const DeleteReaderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteReaderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteReaderResponse",
 }) as any as S.Schema<DeleteReaderResponse>;
 
@@ -92,7 +92,7 @@ export interface GetEntitlementsPublicationsReadersRequest {
   /** Required. The name of the reader entitlements to retrieve. Format: publications/{publication_id}/readers/{reader_id}/entitlements */
   name: string;
 }
-export const GetEntitlementsPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntitlementsPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -117,7 +117,7 @@ export interface Entitlement {
   /** Optional. Expiration time of the entitlement. If unset, the entitlement does not expire (indefinite entitlement). We need to support indefinite entitlements for platform publishers. dd: go/rrm-sl-notedotcom Entitlements that have expired over 30 days will be purged. */
   expireTime?: string;
 }
-export const Entitlement = /*@__PURE__*/ S.suspend(() =>
+const Entitlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionToken: S.optional(S.String),
     productId: S.optional(S.String),
@@ -127,9 +127,7 @@ export const Entitlement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 
 export type EntitlementList = Array<Entitlement>;
-export const EntitlementList = /*@__PURE__*/ S.Array(
-  Entitlement,
-) as any as S.Schema<EntitlementList>;
+const EntitlementList = /*@__PURE__*/ S.Array(Entitlement) as any as S.Schema<EntitlementList>;
 
 /** A singleton containing all of a reader's entitlements for a publication. */
 export interface ReaderEntitlements {
@@ -138,7 +136,7 @@ export interface ReaderEntitlements {
   /** All of the entitlements for a publication reader. */
   entitlements?: EntitlementList;
 }
-export const ReaderEntitlements = /*@__PURE__*/ S.suspend(() =>
+const ReaderEntitlements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     entitlements: S.optional(EntitlementList),
@@ -149,7 +147,7 @@ export interface GetPublicationsReadersRequest {
   /** Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} */
   name: string;
 }
-export const GetPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -176,7 +174,7 @@ export interface Reader {
   /** Output only. The publisher provided id of the reader. */
   ppid?: string;
 }
-export const Reader = /*@__PURE__*/ S.suspend(() =>
+const Reader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -194,7 +192,7 @@ export interface ListPublications_ReadersEntitlementsRequest {
   /** Required. The parent reader scope. Format: "publications/-/readers/{reader_id}" */
   parent: string;
 }
-export const ListPublications_ReadersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublications_ReadersEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -211,7 +209,7 @@ export const ListPublications_ReadersEntitlementsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListPublications_ReadersEntitlementsRequest>;
 
 export type ReaderEntitlementsList = Array<ReaderEntitlements>;
-export const ReaderEntitlementsList = /*@__PURE__*/ S.Array(
+const ReaderEntitlementsList = /*@__PURE__*/ S.Array(
   ReaderEntitlements,
 ) as any as S.Schema<ReaderEntitlementsList>;
 
@@ -222,7 +220,7 @@ export interface ListReaderEntitlementsResponse {
   /** The collection of ReaderEntitlements found across the scoped child publications. Every element's `name` field will contain the canonical sub-publication path, never the wildcard dash. */
   readerEntitlements?: ReaderEntitlementsList;
 }
-export const ListReaderEntitlementsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReaderEntitlementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     readerEntitlements: S.optional(ReaderEntitlementsList),
@@ -239,7 +237,7 @@ export interface UpdateEntitlementsPublicationsReadersRequest {
   /** Request body */
   body?: ReaderEntitlements;
 }
-export const UpdateEntitlementsPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEntitlementsPublicationsReadersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

@@ -49,7 +49,7 @@ export interface GetCourseLessonInteractionRequest {
   /** The unique identifier of the lesson interaction to retrieve. */
   id: string;
 }
-export const GetCourseLessonInteractionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCourseLessonInteractionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/course_lesson_interactions/{id}", code: 200 })),
@@ -62,7 +62,7 @@ export interface CourseLessonInteractionCourseExperience {
   /** The unique identifier for the experience. */
   id: string;
 }
-export const CourseLessonInteractionCourseExperience = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonInteractionCourseExperience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -79,7 +79,7 @@ export interface CourseLessonInteractionCourse {
   /** The display name of the course shown to students. Null if no title has been set. */
   title: string | null;
 }
-export const CourseLessonInteractionCourse = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonInteractionCourse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experience: CourseLessonInteractionCourseExperience,
     id: S.String,
@@ -94,7 +94,7 @@ export interface CourseLessonInteractionLessonChapter {
   /** The unique identifier for the chapter. */
   id: string;
 }
-export const CourseLessonInteractionLessonChapter =
+const CourseLessonInteractionLessonChapter =
   CourseLessonInteractionCourseExperience as any as S.Schema<CourseLessonInteractionLessonChapter>;
 
 /** The lesson that this progress record belongs to. */
@@ -106,7 +106,7 @@ export interface CourseLessonInteractionLesson {
   /** The display name of the lesson shown to students. Maximum 120 characters. */
   title: string;
 }
-export const CourseLessonInteractionLesson = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonInteractionLesson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chapter: CourseLessonInteractionLessonChapter,
     id: S.String,
@@ -125,7 +125,7 @@ export interface CourseLessonInteractionUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const CourseLessonInteractionUser = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonInteractionUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -150,7 +150,7 @@ export interface CourseLessonInteraction {
   /** The user whose progress is being tracked. */
   user: CourseLessonInteractionUser;
 }
-export const CourseLessonInteraction = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonInteraction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     course: CourseLessonInteractionCourse,
@@ -171,7 +171,7 @@ export interface ListCourseLessonInteractionRequest {
   course_id?: string;
   completed?: boolean;
 }
-export const ListCourseLessonInteractionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCourseLessonInteractionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -188,16 +188,10 @@ export const ListCourseLessonInteractionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The parent chapter that contains this lesson. */
 export type CourseLessonInteractionListItemLessonChapter = CourseLessonInteractionLessonChapter;
-export const CourseLessonInteractionListItemLessonChapter = CourseLessonInteractionLessonChapter;
-
 /** The lesson that this progress record belongs to. */
 export type CourseLessonInteractionListItemLesson = CourseLessonInteractionLesson;
-export const CourseLessonInteractionListItemLesson = CourseLessonInteractionLesson;
-
 /** The user whose progress is being tracked. */
 export type CourseLessonInteractionListItemUser = CourseLessonInteractionUser;
-export const CourseLessonInteractionListItemUser = CourseLessonInteractionUser;
-
 /** A record of a user's progress on a specific lesson, tracking whether they have completed it. */
 export interface CourseLessonInteractionListItem {
   /** Whether the user has finished this lesson. */
@@ -211,7 +205,7 @@ export interface CourseLessonInteractionListItem {
   /** The user whose progress is being tracked. */
   user: CourseLessonInteractionUser;
 }
-export const CourseLessonInteractionListItem = /*@__PURE__*/ S.suspend(() =>
+const CourseLessonInteractionListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     created_at: S.String,
@@ -225,7 +219,7 @@ export const CourseLessonInteractionListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListCourseLessonInteractionResponseDataList = Array<CourseLessonInteractionListItem>;
-export const ListCourseLessonInteractionResponseDataList = /*@__PURE__*/ S.Array(
+const ListCourseLessonInteractionResponseDataList = /*@__PURE__*/ S.Array(
   CourseLessonInteractionListItem,
 ) as any as S.Schema<ListCourseLessonInteractionResponseDataList>;
 
@@ -240,7 +234,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -255,7 +249,7 @@ export interface ListCourseLessonInteractionResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListCourseLessonInteractionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCourseLessonInteractionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCourseLessonInteractionResponseDataList,
     page_info: PageInfo,

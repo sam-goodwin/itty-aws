@@ -42,7 +42,7 @@ export interface DisputesAcceptClaimRequest {
   /** A file with evidence. */
   accept_claim_document?: string;
 }
-export const DisputesAcceptClaimRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesAcceptClaimRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     accept_claim_document: S.optional(S.String.pipe(T.Body("accept-claim-document"))),
@@ -68,7 +68,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -79,7 +79,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -89,7 +89,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links/). */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
+const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<DefinitionsLinkDescriptionList>;
 
@@ -97,7 +97,7 @@ export const DefinitionsLinkDescriptionList = /*@__PURE__*/ S.Array(
 export interface SubsequentAction {
   links?: DefinitionsLinkDescriptionList;
 }
-export const SubsequentAction = /*@__PURE__*/ S.suspend(() =>
+const SubsequentAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     links: S.optional(DefinitionsLinkDescriptionList),
   }),
@@ -109,7 +109,7 @@ export interface DisputesAcceptOfferRequest {
   /** The customer notes about accepting of offer. PayPal can but the merchant cannot view these notes. */
   note?: string;
 }
-export const DisputesAcceptOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesAcceptOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     note: S.optional(S.String),
@@ -124,7 +124,7 @@ export interface DisputesAcknowledgeReturnItemRequest {
   /** A file with evidence. */
   acknowledgement_document?: string;
 }
-export const DisputesAcknowledgeReturnItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesAcknowledgeReturnItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     acknowledgement_document: S.optional(S.String),
@@ -142,7 +142,7 @@ export const DisputesAcknowledgeReturnItemRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The outcome of the adjudication. */
 export type DisputesAdjudicateRequestAdjudicationOutcome = "BUYER_FAVOR" | "SELLER_FAVOR";
-export const DisputesAdjudicateRequestAdjudicationOutcome = S.String;
+const DisputesAdjudicateRequestAdjudicationOutcome = S.String;
 
 export interface DisputesAdjudicateRequest {
   /** The ID of the dispute for which to provide the supporting information. */
@@ -150,7 +150,7 @@ export interface DisputesAdjudicateRequest {
   /** The outcome of the adjudication. */
   adjudication_outcome: DisputesAdjudicateRequestAdjudicationOutcome | (string & {});
 }
-export const DisputesAdjudicateRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesAdjudicateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     adjudication_outcome: DisputesAdjudicateRequestAdjudicationOutcome,
@@ -165,7 +165,7 @@ export interface DisputesAppealRequest {
   /** A file with evidence. */
   evidence_file?: string;
 }
-export const DisputesAppealRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesAppealRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     evidence_file: S.optional(S.String.pipe(T.Body("evidence-file"))),
@@ -185,7 +185,7 @@ export interface DisputesDenyOfferRequest {
   /** The customer notes about the denial of offer. PayPal can but the merchant cannot view these notes. */
   note: string;
 }
-export const DisputesDenyOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesDenyOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     note: S.String,
@@ -199,7 +199,7 @@ export interface DisputesEscalateRequest {
   note?: string;
   buyer_escalation_reason?: unknown;
 }
-export const DisputesEscalateRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesEscalateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     note: S.optional(S.String),
@@ -211,7 +211,7 @@ export const DisputesEscalateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EscalateResponse {
   links?: DefinitionsLinkDescriptionList;
 }
-export const EscalateResponse = SubsequentAction as any as S.Schema<EscalateResponse>;
+const EscalateResponse = SubsequentAction as any as S.Schema<EscalateResponse>;
 
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Money {
@@ -219,7 +219,7 @@ export interface Money {
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-codes/). */
   value: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency_code: S.String,
     value: S.String,
@@ -241,7 +241,7 @@ export interface AddressDetails {
   /** The first-order entity below a named building or location that represents the sub-premises. Usually a single building within a collection of buildings with a common name. Can be a flat, story, floor, room, or apartment. */
   sub_building?: string;
 }
-export const AddressDetails = /*@__PURE__*/ S.suspend(() =>
+const AddressDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     street_number: S.optional(S.String),
     street_name: S.optional(S.String),
@@ -273,7 +273,7 @@ export interface AddressPortable {
   country_code: string;
   address_details?: AddressDetails;
 }
-export const AddressPortable = /*@__PURE__*/ S.suspend(() =>
+const AddressPortable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_line_1: S.optional(S.String),
     address_line_2: S.optional(S.String),
@@ -294,7 +294,7 @@ export type OfferType =
   | "REFUND_WITH_RETURN"
   | "REFUND_WITH_REPLACEMENT"
   | "REPLACEMENT_WITHOUT_REFUND";
-export const OfferType = S.String;
+const OfferType = S.String;
 
 export interface DisputesMakeOfferRequest {
   /** The ID of the dispute for which to provide the supporting information. */
@@ -309,7 +309,7 @@ export interface DisputesMakeOfferRequest {
   invoice_id?: string;
   offer_type: OfferType | (string & {});
 }
-export const DisputesMakeOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesMakeOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     note: S.String,
@@ -326,7 +326,7 @@ export interface DisputesProvideEvidenceRequest {
   /** A file with evidence. */
   evidence_file?: string;
 }
-export const DisputesProvideEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesProvideEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     evidence_file: S.optional(S.String.pipe(T.Body("evidence-file"))),
@@ -348,7 +348,7 @@ export interface DisputesProvideSupportingInfoRequest {
   /** A file with evidence. */
   supporting_document?: string;
 }
-export const DisputesProvideSupportingInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesProvideSupportingInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     supporting_document: S.optional(S.String.pipe(T.Body("supporting document"))),
@@ -366,7 +366,7 @@ export const DisputesProvideSupportingInfoRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The action. Indicates whether the state change enables the customer or merchant to submit evidence. */
 export type DisputesRequireEvidenceRequestAction = "BUYER_EVIDENCE" | "SELLER_EVIDENCE";
-export const DisputesRequireEvidenceRequestAction = S.String;
+const DisputesRequireEvidenceRequestAction = S.String;
 
 export interface DisputesRequireEvidenceRequest {
   /** The ID of the dispute for which to provide the supporting information. */
@@ -374,7 +374,7 @@ export interface DisputesRequireEvidenceRequest {
   /** The action. Indicates whether the state change enables the customer or merchant to submit evidence. */
   action: DisputesRequireEvidenceRequestAction | (string & {});
 }
-export const DisputesRequireEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesRequireEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     action: DisputesRequireEvidenceRequestAction,
@@ -391,7 +391,7 @@ export interface DisputesSendMessageRequest {
   /** A file that contains any additional info about the message posted. */
   message_document?: string;
 }
-export const DisputesSendMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const DisputesSendMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     message_document: S.optional(S.String),
@@ -411,7 +411,7 @@ export interface GetDisputeRequest {
   /** The ID of the dispute for which to provide the supporting information. */
   id: string;
 }
-export const GetDisputeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/customer/disputes/{id}", code: 200 })),
@@ -429,7 +429,7 @@ export type TransactionInfoTransactionStatus =
   | "REFUNDED"
   | "REVERSED"
   | "CANCELLED";
-export const TransactionInfoTransactionStatus = S.String;
+const TransactionInfoTransactionStatus = S.String;
 
 /** The cryptocurrency symbol or code ticker options. Assigned by liquidity providers and exchanges. */
 export type CryptocurrencySymbol =
@@ -441,7 +441,7 @@ export type CryptocurrencySymbol =
   | "LINK"
   | "SOL"
   | "MATIC";
-export const CryptocurrencySymbol = S.String;
+const CryptocurrencySymbol = S.String;
 
 /** The details needed to represent a specific cryptocurrency balance, such as its symbol and quantity. */
 export interface Cryptocurrency {
@@ -450,7 +450,7 @@ export interface Cryptocurrency {
   quantity_in_subunits?: string;
   decimals?: number;
 }
-export const Cryptocurrency = /*@__PURE__*/ S.suspend(() =>
+const Cryptocurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asset_symbol: CryptocurrencySymbol,
     quantity: S.String,
@@ -464,7 +464,7 @@ export interface Buyer {
   /** The customer's name. */
   name?: string;
 }
-export const Buyer = /*@__PURE__*/ S.suspend(() =>
+const Buyer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -479,7 +479,7 @@ export interface Seller {
   /** The name of the merchant. */
   name?: string;
 }
-export const Seller = /*@__PURE__*/ S.suspend(() =>
+const Seller = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     merchant_id: S.optional(S.String),
@@ -499,11 +499,11 @@ export type DisputeReason =
   | "CANCELED_RECURRING_BILLING"
   | "PROBLEM_WITH_REMITTANCE"
   | "OTHER";
-export const DisputeReason = S.String;
+const DisputeReason = S.String;
 
 /** The type of the item which has the issue. */
 export type ItemType = "PRODUCT" | "SERVICE" | "BOOKING" | "DIGITAL_DOWNLOAD";
-export const ItemType = S.String;
+const ItemType = S.String;
 
 /** The information for a purchased item in a disputed transaction. */
 export interface ItemInfo {
@@ -530,7 +530,7 @@ export interface ItemInfo {
   cancellation_details?: unknown;
   agreed_refund_details?: unknown;
 }
-export const ItemInfo = /*@__PURE__*/ S.suspend(() =>
+const ItemInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item_id: S.optional(S.String),
     item_name: S.optional(S.String),
@@ -552,7 +552,7 @@ export const ItemInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of items that were purchased as part of the transaction. */
 export type ItemInfoList = Array<ItemInfo>;
-export const ItemInfoList = /*@__PURE__*/ S.Array(ItemInfo) as any as S.Schema<ItemInfoList>;
+const ItemInfoList = /*@__PURE__*/ S.Array(ItemInfo) as any as S.Schema<ItemInfoList>;
 
 /** The information about the disputed transaction. */
 export interface TransactionInfo {
@@ -579,7 +579,7 @@ export interface TransactionInfo {
   items?: ItemInfoList;
   payment_processor?: unknown;
 }
-export const TransactionInfo = /*@__PURE__*/ S.suspend(() =>
+const TransactionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buyer_transaction_id: S.optional(S.String),
     seller_transaction_id: S.optional(S.String),
@@ -599,7 +599,7 @@ export const TransactionInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of transactions for which disputes were created. */
 export type TransactionInfoList = Array<TransactionInfo>;
-export const TransactionInfoList = /*@__PURE__*/ S.Array(
+const TransactionInfoList = /*@__PURE__*/ S.Array(
   TransactionInfo,
 ) as any as S.Schema<TransactionInfoList>;
 
@@ -611,7 +611,7 @@ export type Status =
   | "UNDER_REVIEW"
   | "RESOLVED"
   | "OTHER";
-export const Status = S.String;
+const Status = S.String;
 
 /** The outcome of a resolved dispute. */
 export type DisputeOutcomeOutcomeCode =
@@ -622,7 +622,7 @@ export type DisputeOutcomeOutcomeCode =
   | "ACCEPTED"
   | "DENIED"
   | "NONE";
-export const DisputeOutcomeOutcomeCode = S.String;
+const DisputeOutcomeOutcomeCode = S.String;
 
 /** The reason for the adjudication type. */
 export type AdjudicationReason =
@@ -744,7 +744,7 @@ export type AdjudicationReason =
   | "PROTECTION_POLICY_APPLIES"
   | "SNAD_DELAYED_FILING"
   | "FUNDS_TRANSFERRED_TO_INCORRECT_RECIPIENT";
-export const AdjudicationReason = S.String;
+const AdjudicationReason = S.String;
 
 /** The outcome of a dispute. */
 export interface DisputeOutcome {
@@ -757,7 +757,7 @@ export interface DisputeOutcome {
   /** The asset that either the merchant or PayPal refunds the customer. */
   asset_refunded?: Cryptocurrency;
 }
-export const DisputeOutcome = /*@__PURE__*/ S.suspend(() =>
+const DisputeOutcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outcome_code: S.optional(DisputeOutcomeOutcomeCode),
     outcome_reason: S.optional(AdjudicationReason),
@@ -772,11 +772,11 @@ export type AdjudicationType =
   | "PAYOUT_TO_BUYER"
   | "PAYOUT_TO_SELLER"
   | "RECOVER_FROM_SELLER";
-export const AdjudicationType = S.String;
+const AdjudicationType = S.String;
 
 /** The stage in the dispute lifecycle. */
 export type DisputeLifecycleStage = "INQUIRY" | "CHARGEBACK" | "PRE_ARBITRATION" | "ARBITRATION";
-export const DisputeLifecycleStage = S.String;
+const DisputeLifecycleStage = S.String;
 
 /** The Adjudication details for the dispute. */
 export interface Adjudication {
@@ -789,7 +789,7 @@ export interface Adjudication {
   /** The dispute life cycle stage during the adjudication. */
   dispute_life_cycle_stage?: DisputeLifecycleStage;
 }
-export const Adjudication = /*@__PURE__*/ S.suspend(() =>
+const Adjudication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AdjudicationType,
     adjudication_time: S.String,
@@ -800,17 +800,15 @@ export const Adjudication = /*@__PURE__*/ S.suspend(() =>
 
 /** The Teammate Adjudication details for the dispute. */
 export type AdjudicationList = Array<Adjudication>;
-export const AdjudicationList = /*@__PURE__*/ S.Array(
-  Adjudication,
-) as any as S.Schema<AdjudicationList>;
+const AdjudicationList = /*@__PURE__*/ S.Array(Adjudication) as any as S.Schema<AdjudicationList>;
 
 /** The affected party in the money movement. */
 export type MoneyMovementAffectedParty = "SELLER" | "BUYER" | "PAYMENT_PROCESSOR";
-export const MoneyMovementAffectedParty = S.String;
+const MoneyMovementAffectedParty = S.String;
 
 /** The type of the money movement. */
 export type MoneyMovementType = "DEBIT" | "CREDIT";
-export const MoneyMovementType = S.String;
+const MoneyMovementType = S.String;
 
 /** The reason for the money movement. */
 export type MoneyMovementReason =
@@ -818,7 +816,7 @@ export type MoneyMovementReason =
   | "DISPUTE_SETTLEMENT"
   | "DISPUTE_FEE"
   | "CHARGEBACK_FEE";
-export const MoneyMovementReason = S.String;
+const MoneyMovementReason = S.String;
 
 /** The Money movement details with party. */
 export interface MoneyMovement {
@@ -835,7 +833,7 @@ export interface MoneyMovement {
   /** The reason for the money movement. */
   reason?: MoneyMovementReason;
 }
-export const MoneyMovement = /*@__PURE__*/ S.suspend(() =>
+const MoneyMovement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affected_party: S.optional(MoneyMovementAffectedParty),
     amount: S.optional(Money),
@@ -848,17 +846,17 @@ export const MoneyMovement = /*@__PURE__*/ S.suspend(() =>
 
 /** DEPRECATED The Money movement details for the dispute. */
 export type MoneyMovementList = Array<MoneyMovement>;
-export const MoneyMovementList = /*@__PURE__*/ S.Array(
+const MoneyMovementList = /*@__PURE__*/ S.Array(
   MoneyMovement,
 ) as any as S.Schema<MoneyMovementList>;
 
 /** The affected party in the money movement. */
 export type FundMovementParty = "SELLER" | "BUYER" | "PAYMENT_PROCESSOR";
-export const FundMovementParty = S.String;
+const FundMovementParty = S.String;
 
 /** The type of the money movement. */
 export type FundMovementType = "DEBIT" | "CREDIT";
-export const FundMovementType = S.String;
+const FundMovementType = S.String;
 
 /** The reason for the fund movement. */
 export type FundMovementReason =
@@ -866,7 +864,7 @@ export type FundMovementReason =
   | "DISPUTE_SETTLEMENT"
   | "DISPUTE_FEE"
   | "CHARGEBACK_FEE";
-export const FundMovementReason = S.String;
+const FundMovementReason = S.String;
 
 /** This section contains the details about the fund movement of the parties ,time , direction and the reason for it. */
 export interface FundMovement {
@@ -883,7 +881,7 @@ export interface FundMovement {
   /** The reason for the fund movement. */
   reason?: FundMovementReason;
 }
-export const FundMovement = /*@__PURE__*/ S.suspend(() =>
+const FundMovement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     party: S.optional(FundMovementParty),
     amount: S.optional(Money),
@@ -896,17 +894,15 @@ export const FundMovement = /*@__PURE__*/ S.suspend(() =>
 
 /** The movements of fund due to the dispute. */
 export type FundMovementList = Array<FundMovement>;
-export const FundMovementList = /*@__PURE__*/ S.Array(
-  FundMovement,
-) as any as S.Schema<FundMovementList>;
+const FundMovementList = /*@__PURE__*/ S.Array(FundMovement) as any as S.Schema<FundMovementList>;
 
 /** The channel where the customer created the dispute. */
 export type DisputeChannel = "INTERNAL" | "EXTERNAL" | "ALERT";
-export const DisputeChannel = S.String;
+const DisputeChannel = S.String;
 
 /** Indicates whether the customer, merchant, or dispute arbiter posted the message. */
 export type MessagePostedBy = "BUYER" | "SELLER" | "ARBITER";
-export const MessagePostedBy = S.String;
+const MessagePostedBy = S.String;
 
 /** An uploaded document as a binary object that supports a dispute. */
 export interface Document {
@@ -915,7 +911,7 @@ export interface Document {
   /** The downloadable URL for the document for which the client has access.<br/><br/><blockquote><strong>Note:</strong> Document download may require some configuration setup and available as a limited release at this time. For more information, reach out to your PayPal account manager.</blockquote>. */
   url?: string;
 }
-export const Document = /*@__PURE__*/ S.suspend(() =>
+const Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     url: S.optional(S.String),
@@ -924,7 +920,7 @@ export const Document = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of metadata for the documents which contains any additional info about the message posted. */
 export type DocumentList = Array<Document>;
-export const DocumentList = /*@__PURE__*/ S.Array(Document) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(Document) as any as S.Schema<DocumentList>;
 
 /** A customer- or merchant-posted message for the dispute. */
 export interface Message {
@@ -936,7 +932,7 @@ export interface Message {
   content?: string;
   documents?: DocumentList;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     posted_by: S.optional(MessagePostedBy),
     time_posted: S.optional(S.String),
@@ -947,15 +943,15 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of customer- or merchant-posted messages for the dispute. */
 export type MessageList = Array<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 /** The outcome when the customer has contacted the merchant. */
 export type MerchantContactedOutcome = "NO_RESPONSE" | "FIXED" | "NOT_FIXED";
-export const MerchantContactedOutcome = S.String;
+const MerchantContactedOutcome = S.String;
 
 /** The method used to contact the merchant. */
 export type MerchantContactedMode = "WEBSITE" | "PHONE" | "EMAIL" | "WRITTEN" | "IN_PERSON";
-export const MerchantContactedMode = S.String;
+const MerchantContactedMode = S.String;
 
 /** The duplicate transaction details. */
 export interface DuplicateTransaction {
@@ -964,7 +960,7 @@ export interface DuplicateTransaction {
   /** The transaction details for the original transaction, when the dispute reason is `DUPLICATE_TRANSACTION`. Currently, contains only the date and amount. */
   original_transaction?: TransactionInfo;
 }
-export const DuplicateTransaction = /*@__PURE__*/ S.suspend(() =>
+const DuplicateTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     received_duplicate: S.optional(S.Boolean),
     original_transaction: S.optional(TransactionInfo),
@@ -979,7 +975,7 @@ export interface IncorrectTransactionAmount {
   /** The date and time when the customer created the transaction, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   correct_transaction_time?: string;
 }
-export const IncorrectTransactionAmount = /*@__PURE__*/ S.suspend(() =>
+const IncorrectTransactionAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correct_transaction_amount: S.optional(Money),
     correct_transaction_asset: S.optional(Cryptocurrency),
@@ -998,7 +994,7 @@ export type PaymentByOtherMeansPaymentMethod =
   | "DEBIT_CARD"
   | "GIFT_CARD"
   | "BANK_TRANSFER";
-export const PaymentByOtherMeansPaymentMethod = S.String;
+const PaymentByOtherMeansPaymentMethod = S.String;
 
 /** The payment by other means details. */
 export interface PaymentByOtherMeans {
@@ -1011,7 +1007,7 @@ export interface PaymentByOtherMeans {
   /** Last 2-4 characters of the payment instrument. For payment_method CHECK, payment_instrument_suffix entered must be of minimum length 2-4 characters. For payment_method CREDIT_CARD, DEBIT_CARD, GIFT_CARD, BANK_TRANSFER, payment_instrument_suffix entered must be of length 4. */
   payment_instrument_suffix?: string;
 }
-export const PaymentByOtherMeans = /*@__PURE__*/ S.suspend(() =>
+const PaymentByOtherMeans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charge_different_from_original: S.optional(S.Boolean),
     received_duplicate: S.optional(S.Boolean),
@@ -1022,7 +1018,7 @@ export const PaymentByOtherMeans = /*@__PURE__*/ S.suspend(() =>
 
 /** The issue type. */
 export type CreditNotProcessedIssueType = "PRODUCT" | "SERVICE";
-export const CreditNotProcessedIssueType = S.String;
+const CreditNotProcessedIssueType = S.String;
 
 /** Indicates the mode used for order cancellation. */
 export type CancellationDetailsCancellationMode =
@@ -1032,7 +1028,7 @@ export type CancellationDetailsCancellationMode =
   | "EMAIL"
   | "WRITTEN"
   | "IN_PERSON";
-export const CancellationDetailsCancellationMode = S.String;
+const CancellationDetailsCancellationMode = S.String;
 
 /** The cancellation details. */
 export interface CancellationDetails {
@@ -1045,7 +1041,7 @@ export interface CancellationDetails {
   /** Indicates the mode used for order cancellation. */
   cancellation_mode?: CancellationDetailsCancellationMode;
 }
-export const CancellationDetails = /*@__PURE__*/ S.suspend(() =>
+const CancellationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancellation_date: S.optional(S.String),
     cancellation_number: S.optional(S.String),
@@ -1056,19 +1052,19 @@ export const CancellationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether the product was, or was not, received or returned. */
 export type ProductDetailsProductReceived = "YES" | "NO" | "RETURNED";
-export const ProductDetailsProductReceived = S.String;
+const ProductDetailsProductReceived = S.String;
 
 /** The sub-reason for the product issue. */
 export type SubReasons = "DAMAGED" | "DIFFERENT" | "MISSING_PARTS" | "OTHER";
-export const SubReasons = S.String;
+const SubReasons = S.String;
 
 /** An array of sub-reasons for the product issue. */
 export type SubReasonsList = Array<SubReasons>;
-export const SubReasonsList = /*@__PURE__*/ S.Array(SubReasons) as any as S.Schema<SubReasonsList>;
+const SubReasonsList = /*@__PURE__*/ S.Array(SubReasons) as any as S.Schema<SubReasonsList>;
 
 /** The method that the customer used to return the product. */
 export type ReturnDetailsMode = "SHIPPED" | "IN_PERSON";
-export const ReturnDetailsMode = S.String;
+const ReturnDetailsMode = S.String;
 
 /** The return details for the product. */
 export interface ReturnDetails {
@@ -1083,7 +1079,7 @@ export interface ReturnDetails {
   /** If `true`, indicates that the item was returned but the seller refused to accept the return and if `false`, indicates the item was not attempted to return. */
   returned?: boolean;
 }
-export const ReturnDetails = /*@__PURE__*/ S.suspend(() =>
+const ReturnDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     return_time: S.optional(S.String),
     mode: S.optional(ReturnDetailsMode),
@@ -1108,7 +1104,7 @@ export interface ProductDetails {
   purchase_url?: string;
   return_details?: ReturnDetails;
 }
-export const ProductDetails = /*@__PURE__*/ S.suspend(() =>
+const ProductDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     product_received: S.optional(ProductDetailsProductReceived),
@@ -1122,15 +1118,15 @@ export const ProductDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether the service was started or cancelled. */
 export type ServiceDetailsServiceStarted = "YES" | "NO" | "CANCELLED";
-export const ServiceDetailsServiceStarted = S.String;
+const ServiceDetailsServiceStarted = S.String;
 
 /** The sub-reason for the service issue. */
 export type DefinitionsSubReasons = "DAMAGED" | "DIFFERENT" | "INCOMPLETE" | "OTHER";
-export const DefinitionsSubReasons = S.String;
+const DefinitionsSubReasons = S.String;
 
 /** An array of sub-reasons for the service issue. */
 export type DefinitionsSubReasonsList = Array<DefinitionsSubReasons>;
-export const DefinitionsSubReasonsList = /*@__PURE__*/ S.Array(
+const DefinitionsSubReasonsList = /*@__PURE__*/ S.Array(
   DefinitionsSubReasons,
 ) as any as S.Schema<DefinitionsSubReasonsList>;
 
@@ -1146,7 +1142,7 @@ export interface ServiceDetails {
   /** The URL of the merchant or marketplace site where the customer purchased the service. */
   purchase_url?: string;
 }
-export const ServiceDetails = /*@__PURE__*/ S.suspend(() =>
+const ServiceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     service_started: S.optional(ServiceDetailsServiceStarted),
@@ -1163,7 +1159,7 @@ export interface AgreedRefundDetails {
   /** The date and time proposed by merchant to provide the refund, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   merchant_agreed_refund_time?: string;
 }
-export const AgreedRefundDetails = /*@__PURE__*/ S.suspend(() =>
+const AgreedRefundDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchant_agreed_refund: S.optional(S.Boolean),
     merchant_agreed_refund_time: S.optional(S.String),
@@ -1180,7 +1176,7 @@ export interface CreditNotProcessed {
   service_details?: ServiceDetails;
   agreed_refund_details?: AgreedRefundDetails;
 }
-export const CreditNotProcessed = /*@__PURE__*/ S.suspend(() =>
+const CreditNotProcessed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issue_type: S.optional(CreditNotProcessedIssueType),
     expected_refund: S.optional(Money),
@@ -1196,7 +1192,7 @@ export interface CanceledRecurringBilling {
   expected_refund?: Money;
   cancellation_details?: CancellationDetails;
 }
-export const CanceledRecurringBilling = /*@__PURE__*/ S.suspend(() =>
+const CanceledRecurringBilling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expected_refund: S.optional(Money),
     cancellation_details: S.optional(CancellationDetails),
@@ -1211,7 +1207,7 @@ export interface BillingDisputesProperties {
   credit_not_processed?: CreditNotProcessed;
   canceled_recurring_billing?: CanceledRecurringBilling;
 }
-export const BillingDisputesProperties = /*@__PURE__*/ S.suspend(() =>
+const BillingDisputesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duplicate_transaction: S.optional(DuplicateTransaction),
     incorrect_transaction_amount: S.optional(IncorrectTransactionAmount),
@@ -1225,7 +1221,7 @@ export const BillingDisputesProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The issue type. */
 export type MerchandizeDisputePropertiesIssueType = "PRODUCT" | "SERVICE";
-export const MerchandizeDisputePropertiesIssueType = S.String;
+const MerchandizeDisputePropertiesIssueType = S.String;
 
 /** The customer-provided merchandise issue details for the dispute. */
 export interface MerchandizeDisputeProperties {
@@ -1237,7 +1233,7 @@ export interface MerchandizeDisputeProperties {
   /** The return address for the item. Required when the customer must return an item to the merchant for the <a href="/docs/integration/direct/customer-disputes/integration-guide/#merchandise_or_service_not_as_described"><code>MERCHANDISE_OR_SERVICE_NOT_AS_DESCRIBED</code></a> dispute reason. */
   return_shipping_address?: AddressPortable;
 }
-export const MerchandizeDisputeProperties = /*@__PURE__*/ S.suspend(() =>
+const MerchandizeDisputeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issue_type: S.optional(MerchandizeDisputePropertiesIssueType),
     product_details: S.optional(ProductDetails),
@@ -1259,7 +1255,7 @@ export type DisputeSource =
   | "MOBILE_APP"
   | "MOBILE_WEB"
   | "API";
-export const DisputeSource = S.String;
+const DisputeSource = S.String;
 
 /** The extended properties for the dispute. Includes additional information for a dispute category, such as billing disputes, the original transaction ID, and the correct amount. */
 export interface Extensions {
@@ -1278,7 +1274,7 @@ export interface Extensions {
   merchandize_dispute_properties?: MerchandizeDisputeProperties;
   reported_source?: DisputeSource;
 }
-export const Extensions = /*@__PURE__*/ S.suspend(() =>
+const Extensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchant_contacted: S.optional(S.Boolean),
     merchant_contacted_outcome: S.optional(MerchantContactedOutcome),
@@ -1370,7 +1366,7 @@ export type EvidenceEvidenceType =
   | "ITEM_DETAILS"
   | "CORRECT_RECIPIENT_INFORMATION"
   | "EXPLANATION_OF_FUNDS_NOT_DELIVERED";
-export const EvidenceEvidenceType = S.String;
+const EvidenceEvidenceType = S.String;
 
 /** The name of the shipment carrier for the transaction for this dispute. */
 export type TrackingInfoCarrierName =
@@ -2631,7 +2627,7 @@ export type TrackingInfoCarrierName =
   | "NOX_NIGHT_TIME_EXPRESS"
   | "SENDING"
   | "HUODULL";
-export const TrackingInfoCarrierName = S.String;
+const TrackingInfoCarrierName = S.String;
 
 /** The tracking information. */
 export interface TrackingInfo {
@@ -2644,7 +2640,7 @@ export interface TrackingInfo {
   /** The number to track the dispute-related transaction shipment. */
   tracking_number: string;
 }
-export const TrackingInfo = /*@__PURE__*/ S.suspend(() =>
+const TrackingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrier_name: TrackingInfoCarrierName,
     carrier_name_other: S.optional(S.String),
@@ -2655,20 +2651,18 @@ export const TrackingInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of relevant tracking information for the transaction involved in this dispute. */
 export type TrackingInfoList = Array<TrackingInfo>;
-export const TrackingInfoList = /*@__PURE__*/ S.Array(
-  TrackingInfo,
-) as any as S.Schema<TrackingInfoList>;
+const TrackingInfoList = /*@__PURE__*/ S.Array(TrackingInfo) as any as S.Schema<TrackingInfoList>;
 
 /** An array of refund IDs for the transaction involved in this dispute. */
 export type RefundIdsList = Array<string>;
-export const RefundIdsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<RefundIdsList>;
+const RefundIdsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<RefundIdsList>;
 
 /** The evidence-related information. */
 export interface EvidenceInfo {
   tracking_info?: TrackingInfoList;
   refund_ids?: RefundIdsList;
 }
-export const EvidenceInfo = /*@__PURE__*/ S.suspend(() =>
+const EvidenceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tracking_info: S.optional(TrackingInfoList),
     refund_ids: S.optional(RefundIdsList),
@@ -2677,7 +2671,7 @@ export const EvidenceInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of evidence documents. */
 export type DefinitionsDocumentList = Array<Document>;
-export const DefinitionsDocumentList = /*@__PURE__*/ S.Array(
+const DefinitionsDocumentList = /*@__PURE__*/ S.Array(
   Document,
 ) as any as S.Schema<DefinitionsDocumentList>;
 
@@ -2688,7 +2682,7 @@ export type EvidenceSource =
   | "SUBMITTED_BY_BUYER"
   | "SUBMITTED_BY_SELLER"
   | "SUBMITTED_BY_PARTNER";
-export const EvidenceSource = S.String;
+const EvidenceSource = S.String;
 
 /** The action for which the evidence was requested or submitted. */
 export type ActionInfoAction =
@@ -2699,7 +2693,7 @@ export type ActionInfoAction =
   | "CANCEL"
   | "CHANGE_REASON"
   | "ESCALATE";
-export const ActionInfoAction = S.String;
+const ActionInfoAction = S.String;
 
 /** The extended properties for a evidence. Includes additional information such as the action for which the evidence was requested/submitted, and whether the evidence is mandatory. */
 export interface ActionInfo {
@@ -2710,7 +2704,7 @@ export interface ActionInfo {
   /** Indicates whether the evidence is mandatory for the corresponding action and response option. */
   mandatory?: boolean;
 }
-export const ActionInfo = /*@__PURE__*/ S.suspend(() =>
+const ActionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(ActionInfoAction),
     response_option: S.optional(S.String),
@@ -2739,7 +2733,7 @@ export interface Evidence {
   /** The dispute life cycle stage for the evidence. */
   dispute_life_cycle_stage?: DisputeLifecycleStage;
 }
-export const Evidence = /*@__PURE__*/ S.suspend(() =>
+const Evidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evidence_type: S.optional(EvidenceEvidenceType),
     evidence_info: S.optional(EvidenceInfo),
@@ -2756,15 +2750,15 @@ export const Evidence = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of evidence documents. */
 export type EvidenceList = Array<Evidence>;
-export const EvidenceList = /*@__PURE__*/ S.Array(Evidence) as any as S.Schema<EvidenceList>;
+const EvidenceList = /*@__PURE__*/ S.Array(Evidence) as any as S.Schema<EvidenceList>;
 
 /** The event-related actor. */
 export type OfferHistoryActor = "BUYER" | "SELLER";
-export const OfferHistoryActor = S.String;
+const OfferHistoryActor = S.String;
 
 /** The type of the history event. */
 export type OfferHistoryEventType = "PROPOSED" | "ACCEPTED" | "DENIED";
-export const OfferHistoryEventType = S.String;
+const OfferHistoryEventType = S.String;
 
 /** The offer history. */
 export interface OfferHistory {
@@ -2782,7 +2776,7 @@ export interface OfferHistory {
   /** The dispute life cycle stage during the offer event. */
   dispute_life_cycle_stage?: DisputeLifecycleStage;
 }
-export const OfferHistory = /*@__PURE__*/ S.suspend(() =>
+const OfferHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offer_time: S.optional(S.String),
     actor: S.optional(OfferHistoryActor),
@@ -2796,9 +2790,7 @@ export const OfferHistory = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of history information for an offer. */
 export type OfferHistoryList = Array<OfferHistory>;
-export const OfferHistoryList = /*@__PURE__*/ S.Array(
-  OfferHistory,
-) as any as S.Schema<OfferHistoryList>;
+const OfferHistoryList = /*@__PURE__*/ S.Array(OfferHistory) as any as S.Schema<OfferHistoryList>;
 
 /** The merchant-proposed offer for a dispute. */
 export interface Offer {
@@ -2809,7 +2801,7 @@ export interface Offer {
   offer_type?: OfferType;
   history?: OfferHistoryList;
 }
-export const Offer = /*@__PURE__*/ S.suspend(() =>
+const Offer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buyer_requested_amount: S.optional(Money),
     seller_offered_amount: S.optional(Money),
@@ -2823,7 +2815,7 @@ export interface RefundDetails {
   /** The maximum refundable amount. */
   allowed_refund_amount?: Money;
 }
-export const RefundDetails = /*@__PURE__*/ S.suspend(() =>
+const RefundDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed_refund_amount: S.optional(Money),
   }),
@@ -2838,7 +2830,7 @@ export interface CommunicationDetails {
   /** The date and time when the contact details were posted, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   time_posted?: string;
 }
-export const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
+const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     note: S.optional(S.String),
@@ -2848,7 +2840,7 @@ export const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of metadata for the documents which were uploaded as supporting information for the dispute. */
 export type SupportingInfoDefinitionsDocumentList = Array<Document>;
-export const SupportingInfoDefinitionsDocumentList =
+const SupportingInfoDefinitionsDocumentList =
   DefinitionsDocumentList as any as S.Schema<SupportingInfoDefinitionsDocumentList>;
 
 /** The source of the Information. */
@@ -2856,7 +2848,7 @@ export type SupportingInfoSource =
   | "SUBMITTED_BY_BUYER"
   | "SUBMITTED_BY_SELLER"
   | "SUBMITTED_BY_PARTNER";
-export const SupportingInfoSource = S.String;
+const SupportingInfoSource = S.String;
 
 /** A merchant- or customer-submitted supporting information. */
 export interface SupportingInfo {
@@ -2870,7 +2862,7 @@ export interface SupportingInfo {
   /** The dispute life cycle stage for the supporting info. */
   dispute_life_cycle_stage?: DisputeLifecycleStage;
 }
-export const SupportingInfo = /*@__PURE__*/ S.suspend(() =>
+const SupportingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notes: S.optional(S.String),
     documents: S.optional(SupportingInfoDefinitionsDocumentList),
@@ -2882,7 +2874,7 @@ export const SupportingInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of all the supporting information that are associated to this dispute. */
 export type SupportingInfoList = Array<SupportingInfo>;
-export const SupportingInfoList = /*@__PURE__*/ S.Array(
+const SupportingInfoList = /*@__PURE__*/ S.Array(
   SupportingInfo,
 ) as any as S.Schema<SupportingInfoList>;
 
@@ -2893,18 +2885,16 @@ export type AcknowledgementType =
   | "DAMAGED"
   | "EMPTY_PACKAGE_OR_DIFFERENT"
   | "MISSING_ITEMS";
-export const AcknowledgementType = S.String;
-
 /** The types of response when the merchant acknowledges a returned item. */
 export type AcknowledgementTypeList = Array<AcknowledgementType>;
-export const AcknowledgementTypeList =
+const AcknowledgementTypeList =
   DefinitionsSubReasonsList as any as S.Schema<AcknowledgementTypeList>;
 
 /** The allowed response options when the seller acknowledges that the buyer has returned an item for the dispute. */
 export interface AcknowledgeReturnItemResponseOptions {
   acknowledgement_types?: AcknowledgementTypeList;
 }
-export const AcknowledgeReturnItemResponseOptions = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeReturnItemResponseOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledgement_types: S.optional(AcknowledgementTypeList),
   }),
@@ -2918,18 +2908,15 @@ export type AcceptClaimType =
   | "REFUND_WITH_RETURN"
   | "PARTIAL_REFUND"
   | "REFUND_WITH_RETURN_SHIPMENT_LABEL";
-export const AcceptClaimType = S.String;
-
 /** The types of refund the merchant can provide the customer. */
 export type AcceptClaimTypeList = Array<AcceptClaimType>;
-export const AcceptClaimTypeList =
-  DefinitionsSubReasonsList as any as S.Schema<AcceptClaimTypeList>;
+const AcceptClaimTypeList = DefinitionsSubReasonsList as any as S.Schema<AcceptClaimTypeList>;
 
 /** The allowed response options when the merchant is accepting the claim. */
 export interface AcceptClaimResponseOptions {
   accept_claim_types?: AcceptClaimTypeList;
 }
-export const AcceptClaimResponseOptions = /*@__PURE__*/ S.suspend(() =>
+const AcceptClaimResponseOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accept_claim_types: S.optional(AcceptClaimTypeList),
   }),
@@ -2939,13 +2926,13 @@ export const AcceptClaimResponseOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The types of offer the merchant can offer the customer. */
 export type OfferTypeList = Array<OfferType>;
-export const OfferTypeList = SubReasonsList as any as S.Schema<OfferTypeList>;
+const OfferTypeList = SubReasonsList as any as S.Schema<OfferTypeList>;
 
 /** The allowed response options when the merchant makes offer to the customer. */
 export interface MakeOfferResponseOptions {
   offer_types?: OfferTypeList;
 }
-export const MakeOfferResponseOptions = /*@__PURE__*/ S.suspend(() =>
+const MakeOfferResponseOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offer_types: S.optional(OfferTypeList),
   }),
@@ -2957,7 +2944,7 @@ export interface AllowedResponseOptions {
   accept_claim?: AcceptClaimResponseOptions;
   make_offer?: MakeOfferResponseOptions;
 }
-export const AllowedResponseOptions = /*@__PURE__*/ S.suspend(() =>
+const AllowedResponseOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledge_return_item: S.optional(AcknowledgeReturnItemResponseOptions),
     accept_claim: S.optional(AcceptClaimResponseOptions),
@@ -3004,7 +2991,7 @@ export interface Dispute {
   allowed_response_options?: AllowedResponseOptions;
   links?: DefinitionsLinkDescriptionList;
 }
-export const Dispute = /*@__PURE__*/ S.suspend(() =>
+const Dispute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dispute_id: S.optional(S.String),
     create_time: S.optional(S.String),
@@ -3052,7 +3039,7 @@ export interface ListDisputesRequest {
   /** The date and time when the dispute was last updated, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). For example, *`yyyy`*-*`MM`*-*`dd`*`T`*`HH`*:*`mm`*:*`ss`*.*`SSS`*`Z`. update_time_after must be within the last 180 days and the default is the maximum time (180 days) supported. */
   update_time_after?: string;
 }
-export const ListDisputesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDisputesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_time: S.optional(S.String.pipe(T.Query())),
     disputed_transaction_id: S.optional(S.String.pipe(T.Query())),
@@ -3072,7 +3059,7 @@ export type DisputeState =
   | "UNDER_PAYPAL_REVIEW"
   | "APPEALABLE"
   | "RESOLVED";
-export const DisputeState = S.String;
+const DisputeState = S.String;
 
 /** The dispute summary information. */
 export interface DisputeInfo {
@@ -3097,7 +3084,7 @@ export interface DisputeInfo {
   seller_response_due_date?: string;
   links?: DefinitionsLinkDescriptionList;
 }
-export const DisputeInfo = /*@__PURE__*/ S.suspend(() =>
+const DisputeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dispute_id: S.optional(S.String),
     create_time: S.optional(S.String),
@@ -3117,16 +3104,14 @@ export const DisputeInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of disputes that match the filter criteria. Sorted in latest to earliest creation time order. */
 export type DisputeInfoList = Array<DisputeInfo>;
-export const DisputeInfoList = /*@__PURE__*/ S.Array(
-  DisputeInfo,
-) as any as S.Schema<DisputeInfoList>;
+const DisputeInfoList = /*@__PURE__*/ S.Array(DisputeInfo) as any as S.Schema<DisputeInfoList>;
 
 /** An array of disputes. Includes links that enable you to navigate through the response. */
 export interface DisputeSearch {
   items?: DisputeInfoList;
   links?: DefinitionsLinkDescriptionList;
 }
-export const DisputeSearch = /*@__PURE__*/ S.suspend(() =>
+const DisputeSearch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(DisputeInfoList),
     links: S.optional(DefinitionsLinkDescriptionList),
@@ -3135,7 +3120,7 @@ export const DisputeSearch = /*@__PURE__*/ S.suspend(() =>
 
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
-export const PatchOp = S.String;
+const PatchOp = S.String;
 
 /** The JSON patch object to apply partial updates to resources. */
 export interface Patch {
@@ -3148,7 +3133,7 @@ export interface Patch {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
-export const Patch = /*@__PURE__*/ S.suspend(() =>
+const Patch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: PatchOp,
     path: S.optional(S.String),
@@ -3159,14 +3144,14 @@ export const Patch = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<Patch>;
-export const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
+const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
 
 export interface PatchDisputeRequest {
   /** The ID of the dispute for which to provide the supporting information. */
   id: string;
   body?: PatchRequest;
 }
-export const PatchDisputeRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDisputeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(PatchRequest.pipe(T.HttpBody())),
@@ -3174,7 +3159,7 @@ export const PatchDisputeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchDisputeRequest" }) as any as S.Schema<PatchDisputeRequest>;
 
 export interface PatchDisputeResponse {}
-export const PatchDisputeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const PatchDisputeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PatchDisputeResponse",
 }) as any as S.Schema<PatchDisputeResponse>;
 

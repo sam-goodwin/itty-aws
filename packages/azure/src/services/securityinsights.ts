@@ -15,7 +15,7 @@ export interface ActionRequestProperties {
   /** Logic App Callback URL for this specific workflow. */
   triggerUri: string;
 }
-export const ActionRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const ActionRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logicAppResourceId: S.String,
     triggerUri: S.String,
@@ -38,7 +38,7 @@ export interface ActionsCreateOrUpdateRequest {
   /** Action properties for put request */
   properties?: ActionRequestProperties;
 }
-export const ActionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ActionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -61,11 +61,11 @@ export const ActionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -82,7 +82,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -100,7 +100,7 @@ export interface ActionResponseProperties {
   /** The name of the logic app's workflow. */
   workflowId?: string;
 }
-export const ActionResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const ActionResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logicAppResourceId: S.String,
     workflowId: S.optional(S.String),
@@ -121,7 +121,7 @@ export interface ActionsCreateOrUpdateResponse {
   /** Etag of the action. */
   etag?: string;
 }
-export const ActionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ActionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -136,7 +136,7 @@ export const ActionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of the alert rule */
 export type AlertRuleKind = "Scheduled" | "MicrosoftSecurityIncidentCreation" | "Fusion";
-export const AlertRuleKind = S.String;
+const AlertRuleKind = S.String;
 
 export interface AlertRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -154,7 +154,7 @@ export interface AlertRulesCreateOrUpdateRequest {
   /** Alert rule properties (polymorphic on `kind`: Scheduled, Fusion, MicrosoftSecurityIncidentCreation, NRT, ...). */
   properties?: unknown;
 }
-export const AlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -191,7 +191,7 @@ export interface AlertRulesCreateOrUpdateResponse {
   /** Alert rule properties (polymorphic on `kind`: Scheduled, Fusion, MicrosoftSecurityIncidentCreation, NRT, ...). */
   properties?: unknown;
 }
-export const AlertRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AlertRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -206,10 +206,10 @@ export const AlertRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertRulesCreateOrUpdateResponse>;
 
 export type TriggersOn = "Incidents" | "Alerts";
-export const TriggersOn = S.String;
+const TriggersOn = S.String;
 
 export type TriggersWhen = "Created" | "Updated";
-export const TriggersWhen = S.String;
+const TriggersWhen = S.String;
 
 export type ConditionType =
   | "Property"
@@ -217,7 +217,7 @@ export type ConditionType =
   | "PropertyChanged"
   | "PropertyArrayChanged"
   | "Boolean";
-export const ConditionType = S.String;
+const ConditionType = S.String;
 
 /** Describes an automation rule condition. */
 export interface AutomationRuleCondition {
@@ -225,7 +225,7 @@ export interface AutomationRuleCondition {
   /** Condition properties (shape depends on `conditionType`). */
   conditionProperties?: unknown;
 }
-export const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
+const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditionType: ConditionType,
     conditionProperties: S.optional(S.Unknown),
@@ -234,7 +234,7 @@ export const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions to evaluate to determine if the automation rule should be triggered on a given object. */
 export type AutomationRuleTriggeringLogicConditionsList = Array<AutomationRuleCondition>;
-export const AutomationRuleTriggeringLogicConditionsList = /*@__PURE__*/ S.Array(
+const AutomationRuleTriggeringLogicConditionsList = /*@__PURE__*/ S.Array(
   AutomationRuleCondition,
 ) as any as S.Schema<AutomationRuleTriggeringLogicConditionsList>;
 
@@ -249,7 +249,7 @@ export interface AutomationRuleTriggeringLogic {
   /** The conditions to evaluate to determine if the automation rule should be triggered on a given object. */
   conditions?: AutomationRuleTriggeringLogicConditionsList;
 }
-export const AutomationRuleTriggeringLogic = /*@__PURE__*/ S.suspend(() =>
+const AutomationRuleTriggeringLogic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEnabled: S.Boolean,
     expirationTimeUtc: S.optional(S.String),
@@ -263,7 +263,7 @@ export const AutomationRuleTriggeringLogic = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the automation rule action. */
 export type ActionType = "ModifyProperties" | "RunPlaybook" | "AddIncidentTask";
-export const ActionType = S.String;
+const ActionType = S.String;
 
 /** Describes an automation rule action. */
 export interface AutomationRuleAction {
@@ -273,7 +273,7 @@ export interface AutomationRuleAction {
   /** Action configuration (shape depends on `actionType`). */
   actionConfiguration?: unknown;
 }
-export const AutomationRuleAction = /*@__PURE__*/ S.suspend(() =>
+const AutomationRuleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order: S.Number,
     actionType: ActionType,
@@ -283,7 +283,7 @@ export const AutomationRuleAction = /*@__PURE__*/ S.suspend(() =>
 
 /** The actions to execute when the automation rule is triggered. */
 export type AutomationRulePropertiesInputActionsList = Array<AutomationRuleAction>;
-export const AutomationRulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
+const AutomationRulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
   AutomationRuleAction,
 ) as any as S.Schema<AutomationRulePropertiesInputActionsList>;
 
@@ -298,7 +298,7 @@ export interface AutomationRulePropertiesInput {
   /** The actions to execute when the automation rule is triggered. */
   actions: AutomationRulePropertiesInputActionsList;
 }
-export const AutomationRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AutomationRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     order: S.Number,
@@ -323,7 +323,7 @@ export interface AutomationRulesCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -345,7 +345,7 @@ export const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The actions to execute when the automation rule is triggered. */
 export type AutomationRulePropertiesActionsList = Array<AutomationRuleAction>;
-export const AutomationRulePropertiesActionsList =
+const AutomationRulePropertiesActionsList =
   AutomationRulePropertiesInputActionsList as any as S.Schema<AutomationRulePropertiesActionsList>;
 
 /** Information on the client (user or application) that made some action */
@@ -359,7 +359,7 @@ export interface ClientInfo {
   /** The user principal name of the client. */
   userPrincipalName?: string;
 }
-export const ClientInfo = /*@__PURE__*/ S.suspend(() =>
+const ClientInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -387,7 +387,7 @@ export interface AutomationRuleProperties {
   /** Information on the client (user or application) that made some action */
   createdBy?: ClientInfo;
 }
-export const AutomationRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const AutomationRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     order: S.Number,
@@ -414,7 +414,7 @@ export interface AutomationRulesCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const AutomationRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AutomationRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -432,7 +432,7 @@ export interface UserInfoInput {
   /** The object id of the user. */
   objectId?: string | null;
 }
-export const UserInfoInput = /*@__PURE__*/ S.suspend(() =>
+const UserInfoInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.NullOr(S.String)),
   }),
@@ -440,13 +440,13 @@ export const UserInfoInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of labels relevant to this bookmark */
 export type BookmarkPropertiesInputLabelsList = Array<string>;
-export const BookmarkPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
+const BookmarkPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BookmarkPropertiesInputLabelsList>;
 
 /** The severity of the incident */
 export type IncidentSeverity = "High" | "Medium" | "Low" | "Informational";
-export const IncidentSeverity = S.String;
+const IncidentSeverity = S.String;
 
 /** Describes related incident information for the bookmark */
 export interface IncidentInfo {
@@ -459,7 +459,7 @@ export interface IncidentInfo {
   /** Relation Name */
   relationName?: string;
 }
-export const IncidentInfo = /*@__PURE__*/ S.suspend(() =>
+const IncidentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incidentId: S.optional(S.String),
     severity: S.optional(IncidentSeverity),
@@ -497,7 +497,7 @@ export interface BookmarkPropertiesInput {
   /** Describes an incident that relates to bookmark */
   incidentInfo?: IncidentInfo;
 }
-export const BookmarkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BookmarkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     createdBy: S.optional(UserInfoInput),
@@ -529,7 +529,7 @@ export interface BookmarksCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const BookmarksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BookmarksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -558,7 +558,7 @@ export interface UserInfo {
   /** The object id of the user. */
   objectId?: string | null;
 }
-export const UserInfo = /*@__PURE__*/ S.suspend(() =>
+const UserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -568,7 +568,7 @@ export const UserInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of labels relevant to this bookmark */
 export type BookmarkPropertiesLabelsList = Array<string>;
-export const BookmarkPropertiesLabelsList =
+const BookmarkPropertiesLabelsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<BookmarkPropertiesLabelsList>;
 
 /** Describes bookmark properties */
@@ -600,7 +600,7 @@ export interface BookmarkProperties {
   /** Describes an incident that relates to bookmark */
   incidentInfo?: IncidentInfo;
 }
-export const BookmarkProperties = /*@__PURE__*/ S.suspend(() =>
+const BookmarkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     createdBy: S.optional(UserInfo),
@@ -632,7 +632,7 @@ export interface BookmarksCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const BookmarksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BookmarksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -647,7 +647,7 @@ export const BookmarksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Source type of the content */
 export type SourceKind = "LocalWorkspace" | "Community" | "Solution" | "SourceRepository";
-export const SourceKind = S.String;
+const SourceKind = S.String;
 
 /** The original source of the content item, where it comes from. */
 export interface MetadataSource {
@@ -658,7 +658,7 @@ export interface MetadataSource {
   /** ID of the content source. The solution ID, workspace ID, etc */
   sourceId?: string;
 }
-export const MetadataSource = /*@__PURE__*/ S.suspend(() =>
+const MetadataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: SourceKind,
     name: S.optional(S.String),
@@ -675,7 +675,7 @@ export interface MetadataAuthor {
   /** Link for author/vendor page */
   link?: string;
 }
-export const MetadataAuthor = /*@__PURE__*/ S.suspend(() =>
+const MetadataAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     email: S.optional(S.String),
@@ -685,7 +685,7 @@ export const MetadataAuthor = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of support for content item */
 export type SupportTier = "Microsoft" | "Partner" | "Community";
-export const SupportTier = S.String;
+const SupportTier = S.String;
 
 /** Support information for the content item. */
 export interface MetadataSupport {
@@ -698,7 +698,7 @@ export interface MetadataSupport {
   /** Link for support help, like to support page to open a ticket etc. */
   link?: string;
 }
-export const MetadataSupport = /*@__PURE__*/ S.suspend(() =>
+const MetadataSupport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tier: SupportTier,
     name: S.optional(S.String),
@@ -730,15 +730,15 @@ export type Kind =
   | "Notebook"
   | "Standalone"
   | "SummaryRule";
-export const Kind = S.String;
+const Kind = S.String;
 
 /** Operator used for list of dependencies in criteria array. */
 export type MetadataDependencyOperator = "AND" | "OR";
-export const MetadataDependencyOperator = S.String;
+const MetadataDependencyOperator = S.String;
 
 /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
 export type MetadataDependenciesCriteriaList = Array<MetadataDependencies>;
-export const MetadataDependenciesCriteriaList = /*@__PURE__*/ S.Array(
+const MetadataDependenciesCriteriaList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => MetadataDependencies),
 ) as any as S.Schema<MetadataDependenciesCriteriaList>;
 
@@ -757,7 +757,7 @@ export interface MetadataDependencies {
   /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
   criteria?: MetadataDependenciesCriteriaList;
 }
-export const MetadataDependencies = /*@__PURE__*/ S.suspend(() =>
+const MetadataDependencies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     kind: S.optional(Kind),
@@ -770,12 +770,12 @@ export const MetadataDependencies = /*@__PURE__*/ S.suspend(() =>
 
 /** domain for the solution content item */
 export type MetadataCategoriesDomainsList = Array<string>;
-export const MetadataCategoriesDomainsList =
+const MetadataCategoriesDomainsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataCategoriesDomainsList>;
 
 /** Industry verticals for the solution content item */
 export type MetadataCategoriesVerticalsList = Array<string>;
-export const MetadataCategoriesVerticalsList =
+const MetadataCategoriesVerticalsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataCategoriesVerticalsList>;
 
 /** ies for the solution content item */
@@ -785,7 +785,7 @@ export interface MetadataCategories {
   /** Industry verticals for the solution content item */
   verticals?: MetadataCategoriesVerticalsList;
 }
-export const MetadataCategories = /*@__PURE__*/ S.suspend(() =>
+const MetadataCategories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(MetadataCategoriesDomainsList),
     verticals: S.optional(MetadataCategoriesVerticalsList),
@@ -794,27 +794,27 @@ export const MetadataCategories = /*@__PURE__*/ S.suspend(() =>
 
 /** Providers for the solution content item */
 export type MetadataPropertiesProvidersList = Array<string>;
-export const MetadataPropertiesProvidersList =
+const MetadataPropertiesProvidersList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesProvidersList>;
 
 /** the tactics the resource covers */
 export type MetadataPropertiesThreatAnalysisTacticsList = Array<string>;
-export const MetadataPropertiesThreatAnalysisTacticsList =
+const MetadataPropertiesThreatAnalysisTacticsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type MetadataPropertiesThreatAnalysisTechniquesList = Array<string>;
-export const MetadataPropertiesThreatAnalysisTechniquesList =
+const MetadataPropertiesThreatAnalysisTechniquesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
 export type MetadataPropertiesPreviewImagesList = Array<string>;
-export const MetadataPropertiesPreviewImagesList =
+const MetadataPropertiesPreviewImagesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type MetadataPropertiesPreviewImagesDarkList = Array<string>;
-export const MetadataPropertiesPreviewImagesDarkList =
+const MetadataPropertiesPreviewImagesDarkList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPreviewImagesDarkList>;
 
 /** Metadata property bag. */
@@ -858,7 +858,7 @@ export interface MetadataProperties {
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
   previewImagesDark?: MetadataPropertiesPreviewImagesDarkList;
 }
-export const MetadataProperties = /*@__PURE__*/ S.suspend(() =>
+const MetadataProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     parentId: S.String,
@@ -896,7 +896,7 @@ export interface CreateMetadataRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const CreateMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -928,7 +928,7 @@ export interface CreateMetadataResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const CreateMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -944,7 +944,7 @@ export interface SentinelOnboardingStateProperties {
   /** Flag that indicates the status of the CMK setting */
   customerManagedKey?: boolean;
 }
-export const SentinelOnboardingStateProperties = /*@__PURE__*/ S.suspend(() =>
+const SentinelOnboardingStateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerManagedKey: S.optional(S.Boolean),
   }),
@@ -966,7 +966,7 @@ export interface CreateSentinelOnboardingStateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const CreateSentinelOnboardingStateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSentinelOnboardingStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1000,7 +1000,7 @@ export interface CreateSentinelOnboardingStateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const CreateSentinelOnboardingStateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSentinelOnboardingStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1015,7 +1015,7 @@ export const CreateSentinelOnboardingStateResponse = /*@__PURE__*/ S.suspend(() 
 
 /** The type of repository. */
 export type RepoType = "Github" | "AzureDevOps";
-export const RepoType = S.String;
+const RepoType = S.String;
 
 /** The content type of a source control path. */
 export type ContentType =
@@ -1025,11 +1025,11 @@ export type ContentType =
   | "Parser"
   | "Playbook"
   | "Workbook";
-export const ContentType = S.String;
+const ContentType = S.String;
 
 /** Array of source control content types. */
 export type SourceControlPropertiesInputContentTypesList = Array<ContentType | (string & {})>;
-export const SourceControlPropertiesInputContentTypesList = /*@__PURE__*/ S.Array(
+const SourceControlPropertiesInputContentTypesList = /*@__PURE__*/ S.Array(
   ContentType,
 ) as any as S.Schema<SourceControlPropertiesInputContentTypesList>;
 
@@ -1042,7 +1042,7 @@ export interface RepositoryInput {
   /** Display url of repository. */
   displayUrl?: string;
 }
-export const RepositoryInput = /*@__PURE__*/ S.suspend(() =>
+const RepositoryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     branch: S.String,
@@ -1055,7 +1055,7 @@ export interface ServicePrincipalInput {
   /** Expiration time of service principal credentials. */
   credentialsExpireOn?: string;
 }
-export const ServicePrincipalInput = /*@__PURE__*/ S.suspend(() =>
+const ServicePrincipalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsExpireOn: S.optional(S.String),
   }),
@@ -1063,7 +1063,7 @@ export const ServicePrincipalInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of repository access credentials */
 export type RepositoryAccessKind = "OAuth" | "PAT" | "App";
-export const RepositoryAccessKind = S.String;
+const RepositoryAccessKind = S.String;
 
 /** Credentials to access repository. */
 export interface RepositoryAccess {
@@ -1080,7 +1080,7 @@ export interface RepositoryAccess {
   /** Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only. */
   installationId?: string;
 }
-export const RepositoryAccess = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: RepositoryAccessKind,
     code: S.optional(S.String),
@@ -1096,7 +1096,7 @@ export interface WebhookInput {
   /** A flag to instruct the backend service to rotate webhook secret. */
   rotateWebhookSecret?: boolean;
 }
-export const WebhookInput = /*@__PURE__*/ S.suspend(() =>
+const WebhookInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rotateWebhookSecret: S.optional(S.Boolean),
   }),
@@ -1107,7 +1107,7 @@ export interface RepositoryResourceInfoInput {
   /** The webhook object created for the source-control. */
   webhook?: WebhookInput;
 }
-export const RepositoryResourceInfoInput = /*@__PURE__*/ S.suspend(() =>
+const RepositoryResourceInfoInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook: S.optional(WebhookInput),
   }),
@@ -1134,7 +1134,7 @@ export interface SourceControlPropertiesInput {
   /** Information regarding the resources created in user's repository. */
   repositoryResourceInfo?: RepositoryResourceInfoInput;
 }
-export const SourceControlPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SourceControlPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     description: S.optional(S.String),
@@ -1163,7 +1163,7 @@ export interface CreateSourceControlRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const CreateSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1185,11 +1185,11 @@ export const CreateSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The version of the source control. */
 export type Version = "V1" | "V2";
-export const Version = S.String;
+const Version = S.String;
 
 /** Array of source control content types. */
 export type SourceControlPropertiesContentTypesList = Array<ContentType>;
-export const SourceControlPropertiesContentTypesList =
+const SourceControlPropertiesContentTypesList =
   SourceControlPropertiesInputContentTypesList as any as S.Schema<SourceControlPropertiesContentTypesList>;
 
 /** metadata of a repository. */
@@ -1203,7 +1203,7 @@ export interface Repository {
   /** Url to access repository action logs. */
   deploymentLogsUrl?: string;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     branch: S.String,
@@ -1223,7 +1223,7 @@ export interface ServicePrincipal {
   /** Expiration time of service principal credentials. */
   credentialsExpireOn?: string;
 }
-export const ServicePrincipal = /*@__PURE__*/ S.suspend(() =>
+const ServicePrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1245,7 +1245,7 @@ export interface WorkloadIdentityFederation {
   /** Issuer of Workload Identity Federation. */
   issuer?: string;
 }
-export const WorkloadIdentityFederation = /*@__PURE__*/ S.suspend(() =>
+const WorkloadIdentityFederation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1268,7 +1268,7 @@ export interface Webhook {
   /** A flag to instruct the backend service to rotate webhook secret. */
   rotateWebhookSecret?: boolean;
 }
-export const Webhook = /*@__PURE__*/ S.suspend(() =>
+const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.optional(S.String),
     webhookUrl: S.optional(S.String),
@@ -1282,7 +1282,7 @@ export interface GitHubResourceInfo {
   /** GitHub application installation id. */
   appInstallationId?: string;
 }
-export const GitHubResourceInfo = /*@__PURE__*/ S.suspend(() =>
+const GitHubResourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appInstallationId: S.optional(S.String),
   }),
@@ -1295,7 +1295,7 @@ export interface AzureDevOpsResourceInfo {
   /** Id of the service-connection created for the source-control. */
   serviceConnectionId?: string;
 }
-export const AzureDevOpsResourceInfo = /*@__PURE__*/ S.suspend(() =>
+const AzureDevOpsResourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineId: S.optional(S.String),
     serviceConnectionId: S.optional(S.String),
@@ -1311,7 +1311,7 @@ export interface RepositoryResourceInfo {
   /** Resources created in Azure DevOps for this source-control. */
   azureDevOpsResourceInfo?: AzureDevOpsResourceInfo;
 }
-export const RepositoryResourceInfo = /*@__PURE__*/ S.suspend(() =>
+const RepositoryResourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook: S.optional(Webhook),
     gitHubResourceInfo: S.optional(GitHubResourceInfo),
@@ -1321,15 +1321,15 @@ export const RepositoryResourceInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Status while trying to fetch the deployment information. */
 export type DeploymentFetchStatus = "Success" | "Unauthorized" | "NotFound";
-export const DeploymentFetchStatus = S.String;
+const DeploymentFetchStatus = S.String;
 
 /** The current state of the deployment. */
 export type DeploymentState = "In_Progress" | "Completed" | "Queued" | "Canceling";
-export const DeploymentState = S.String;
+const DeploymentState = S.String;
 
 /** Status while trying to fetch the deployment information. */
 export type DeploymentResult = "Success" | "Canceled" | "Failed";
-export const DeploymentResult = S.String;
+const DeploymentResult = S.String;
 
 /** Description about a deployment. */
 export interface Deployment {
@@ -1344,7 +1344,7 @@ export interface Deployment {
   /** Url to access repository action logs. */
   deploymentLogsUrl?: string;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.optional(S.String),
     deploymentState: S.optional(DeploymentState),
@@ -1363,7 +1363,7 @@ export interface DeploymentInfo {
   /** Additional details about the deployment that can be shown to the user. */
   message?: string;
 }
-export const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
+const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentFetchStatus: S.optional(DeploymentFetchStatus),
     deployment: S.optional(Deployment),
@@ -1373,7 +1373,7 @@ export const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the pull request. */
 export type PullRequestState = "Open" | "Closed";
-export const PullRequestState = S.String;
+const PullRequestState = S.String;
 
 /** Information regarding pull request for protected branches. */
 export interface PullRequest {
@@ -1382,7 +1382,7 @@ export interface PullRequest {
   /** State of the pull request */
   state?: PullRequestState;
 }
-export const PullRequest = /*@__PURE__*/ S.suspend(() =>
+const PullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     state: S.optional(PullRequestState),
@@ -1418,7 +1418,7 @@ export interface SourceControlProperties {
   /** Information regarding the pull request of the source control. */
   pullRequest?: PullRequest;
 }
-export const SourceControlProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceControlProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(Version),
@@ -1450,7 +1450,7 @@ export interface CreateSourceControlResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const CreateSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1465,18 +1465,17 @@ export const CreateSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of the threat intelligence entity */
 export type ThreatIntelligenceResourceInnerKind = "indicator";
-export const ThreatIntelligenceResourceInnerKind = S.String;
+const ThreatIntelligenceResourceInnerKind = S.String;
 
 /** List of tags */
 export type ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList = Array<string>;
-export const ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList>;
+const ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList>;
 
 /** Indicator types of threat intelligence entities */
 export type ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList = Array<string>;
-export const ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList =
+const ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList>;
 
 /** Describes threat kill chain phase entity */
@@ -1486,7 +1485,7 @@ export interface ThreatIntelligenceKillChainPhase {
   /** Phase name */
   phaseName?: string;
 }
-export const ThreatIntelligenceKillChainPhase = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceKillChainPhase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     killChainName: S.optional(S.String),
     phaseName: S.optional(S.String),
@@ -1498,7 +1497,7 @@ export const ThreatIntelligenceKillChainPhase = /*@__PURE__*/ S.suspend(() =>
 /** Kill chain phases */
 export type ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList =
   Array<ThreatIntelligenceKillChainPhase>;
-export const ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList = /*@__PURE__*/ S.Array(
+const ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceKillChainPhase,
 ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList>;
 
@@ -1509,7 +1508,7 @@ export interface ThreatIntelligenceParsedPatternTypeValue {
   /** Value of parsed pattern */
   value?: string;
 }
-export const ThreatIntelligenceParsedPatternTypeValue = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceParsedPatternTypeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueType: S.optional(S.String),
     value: S.optional(S.String),
@@ -1521,7 +1520,7 @@ export const ThreatIntelligenceParsedPatternTypeValue = /*@__PURE__*/ S.suspend(
 /** Pattern type keys */
 export type ThreatIntelligenceParsedPatternPatternTypeValuesList =
   Array<ThreatIntelligenceParsedPatternTypeValue>;
-export const ThreatIntelligenceParsedPatternPatternTypeValuesList = /*@__PURE__*/ S.Array(
+const ThreatIntelligenceParsedPatternPatternTypeValuesList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceParsedPatternTypeValue,
 ) as any as S.Schema<ThreatIntelligenceParsedPatternPatternTypeValuesList>;
 
@@ -1532,7 +1531,7 @@ export interface ThreatIntelligenceParsedPattern {
   /** Pattern type keys */
   patternTypeValues?: ThreatIntelligenceParsedPatternPatternTypeValuesList;
 }
-export const ThreatIntelligenceParsedPattern = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceParsedPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     patternTypeKey: S.optional(S.String),
     patternTypeValues: S.optional(ThreatIntelligenceParsedPatternPatternTypeValuesList),
@@ -1544,13 +1543,13 @@ export const ThreatIntelligenceParsedPattern = /*@__PURE__*/ S.suspend(() =>
 /** Parsed patterns */
 export type ThreatIntelligenceIndicatorPropertiesInputParsedPatternList =
   Array<ThreatIntelligenceParsedPattern>;
-export const ThreatIntelligenceIndicatorPropertiesInputParsedPatternList = /*@__PURE__*/ S.Array(
+const ThreatIntelligenceIndicatorPropertiesInputParsedPatternList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceParsedPattern,
 ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputParsedPatternList>;
 
 /** External reference hashes */
 export type ThreatIntelligenceExternalReferenceHashesMap = { [key: string]: string | undefined };
-export const ThreatIntelligenceExternalReferenceHashesMap = /*@__PURE__*/ S.Record(
+const ThreatIntelligenceExternalReferenceHashesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ThreatIntelligenceExternalReferenceHashesMap>;
@@ -1568,7 +1567,7 @@ export interface ThreatIntelligenceExternalReference {
   /** External reference hashes */
   hashes?: ThreatIntelligenceExternalReferenceHashesMap;
 }
-export const ThreatIntelligenceExternalReference = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceExternalReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     externalId: S.optional(S.String),
@@ -1583,14 +1582,13 @@ export const ThreatIntelligenceExternalReference = /*@__PURE__*/ S.suspend(() =>
 /** External References */
 export type ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList =
   Array<ThreatIntelligenceExternalReference>;
-export const ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList =
-  /*@__PURE__*/ S.Array(
-    ThreatIntelligenceExternalReference,
-  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList>;
+const ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList = /*@__PURE__*/ S.Array(
+  ThreatIntelligenceExternalReference,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList>;
 
 /** granular marking model selectors */
 export type ThreatIntelligenceGranularMarkingModelSelectorsList = Array<string>;
-export const ThreatIntelligenceGranularMarkingModelSelectorsList =
+const ThreatIntelligenceGranularMarkingModelSelectorsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceGranularMarkingModelSelectorsList>;
 
 /** Describes threat granular marking model entity */
@@ -1602,7 +1600,7 @@ export interface ThreatIntelligenceGranularMarkingModel {
   /** granular marking model selectors */
   selectors?: ThreatIntelligenceGranularMarkingModelSelectorsList;
 }
-export const ThreatIntelligenceGranularMarkingModel = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceGranularMarkingModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.optional(S.String),
     markingRef: S.optional(S.Number),
@@ -1615,30 +1613,30 @@ export const ThreatIntelligenceGranularMarkingModel = /*@__PURE__*/ S.suspend(()
 /** Granular Markings */
 export type ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList =
   Array<ThreatIntelligenceGranularMarkingModel>;
-export const ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList = /*@__PURE__*/ S.Array(
+const ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceGranularMarkingModel,
 ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList>;
 
 /** Labels of threat intelligence entity */
 export type ThreatIntelligenceIndicatorPropertiesInputLabelsList = Array<string>;
-export const ThreatIntelligenceIndicatorPropertiesInputLabelsList =
+const ThreatIntelligenceIndicatorPropertiesInputLabelsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputLabelsList>;
 
 /** Threat intelligence entity object marking references */
 export type ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList = Array<string>;
-export const ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList =
+const ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList =
   ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList>;
 
 /** Threat types */
 export type ThreatIntelligenceIndicatorPropertiesInputThreatTypesList = Array<string>;
-export const ThreatIntelligenceIndicatorPropertiesInputThreatTypesList =
+const ThreatIntelligenceIndicatorPropertiesInputThreatTypesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputThreatTypesList>;
 
 /** Extensions map */
 export type ThreatIntelligenceIndicatorPropertiesInputExtensionsMap = {
   [key: string]: unknown | undefined;
 };
-export const ThreatIntelligenceIndicatorPropertiesInputExtensionsMap = /*@__PURE__*/ S.Record(
+const ThreatIntelligenceIndicatorPropertiesInputExtensionsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputExtensionsMap>;
@@ -1702,7 +1700,7 @@ export interface ThreatIntelligenceIndicatorPropertiesInput {
   /** Extensions map */
   extensions?: ThreatIntelligenceIndicatorPropertiesInputExtensionsMap;
 }
-export const ThreatIntelligenceIndicatorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceIndicatorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threatIntelligenceTags: S.optional(
       ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList,
@@ -1757,7 +1755,7 @@ export interface CreateThreatIntelligenceIndicatorRequest {
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
-export const CreateThreatIntelligenceIndicatorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatIntelligenceIndicatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1792,7 +1790,7 @@ export interface CreateThreatIntelligenceIndicatorResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const CreateThreatIntelligenceIndicatorResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatIntelligenceIndicatorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1819,7 +1817,7 @@ export interface CreateThreatIntelligenceIndicatorIndicatorRequest {
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
-export const CreateThreatIntelligenceIndicatorIndicatorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateThreatIntelligenceIndicatorIndicatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1853,12 +1851,12 @@ export interface CreateThreatIntelligenceIndicatorIndicatorResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const CreateThreatIntelligenceIndicatorIndicatorResponse =
+const CreateThreatIntelligenceIndicatorIndicatorResponse =
   CreateThreatIntelligenceIndicatorResponse as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorResponse>;
 
 /** The kind of the data connector definitions */
 export type DataConnectorDefinitionKind = "Customizable";
-export const DataConnectorDefinitionKind = S.String;
+const DataConnectorDefinitionKind = S.String;
 
 export interface DataConnectorDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1876,7 +1874,7 @@ export interface DataConnectorDefinitionsCreateOrUpdateRequest {
   /** Data connector definition properties (polymorphic on `kind`, e.g. Customizable). */
   properties?: unknown;
 }
-export const DataConnectorDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataConnectorDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1913,7 +1911,7 @@ export interface DataConnectorDefinitionsCreateOrUpdateResponse {
   /** Data connector definition properties (polymorphic on `kind`, e.g. Customizable). */
   properties?: unknown;
 }
-export const DataConnectorDefinitionsCreateOrUpdateResponse =
+const DataConnectorDefinitionsCreateOrUpdateResponse =
   AlertRulesCreateOrUpdateResponse as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateResponse>;
 
 /** The kind of the data connector */
@@ -1929,7 +1927,7 @@ export type DataConnectorKind =
   | "MicrosoftThreatIntelligence"
   | "PremiumMicrosoftDefenderForThreatIntelligence"
   | "RestApiPoller";
-export const DataConnectorKind = S.String;
+const DataConnectorKind = S.String;
 
 export interface DataConnectorsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1947,7 +1945,7 @@ export interface DataConnectorsCreateOrUpdateRequest {
   /** Data connector properties (polymorphic on `kind`). */
   properties?: unknown;
 }
-export const DataConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1984,7 +1982,7 @@ export interface DataConnectorsCreateOrUpdateResponse {
   /** Data connector properties (polymorphic on `kind`). */
   properties?: unknown;
 }
-export const DataConnectorsCreateOrUpdateResponse =
+const DataConnectorsCreateOrUpdateResponse =
   AlertRulesCreateOrUpdateResponse as any as S.Schema<DataConnectorsCreateOrUpdateResponse>;
 
 export interface DeleteActionRequest {
@@ -1999,7 +1997,7 @@ export interface DeleteActionRequest {
   /** Action ID */
   actionId: string;
 }
-export const DeleteActionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2017,7 +2015,7 @@ export const DeleteActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteActionRequest" }) as any as S.Schema<DeleteActionRequest>;
 
 export interface DeleteActionResponse {}
-export const DeleteActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteActionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteActionResponse",
 }) as any as S.Schema<DeleteActionResponse>;
 
@@ -2031,7 +2029,7 @@ export interface DeleteAlertRuleRequest {
   /** Alert rule ID */
   ruleId: string;
 }
-export const DeleteAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2048,8 +2046,7 @@ export const DeleteAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAlertRuleRequest" }) as any as S.Schema<DeleteAlertRuleRequest>;
 
 export interface DeleteAlertRuleResponse {}
-export const DeleteAlertRuleResponse =
-  DeleteActionResponse as any as S.Schema<DeleteAlertRuleResponse>;
+const DeleteAlertRuleResponse = DeleteActionResponse as any as S.Schema<DeleteAlertRuleResponse>;
 
 export interface DeleteAutomationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2061,7 +2058,7 @@ export interface DeleteAutomationRuleRequest {
   /** Automation rule ID */
   automationRuleId: string;
 }
-export const DeleteAutomationRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAutomationRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2080,7 +2077,7 @@ export const DeleteAutomationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAutomationRuleRequest>;
 
 export type DeleteAutomationRuleResponse = unknown;
-export const DeleteAutomationRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAutomationRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteAutomationRuleResponse",
@@ -2096,7 +2093,7 @@ export interface DeleteBookmarkRequest {
   /** Bookmark ID */
   bookmarkId: string;
 }
-export const DeleteBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2113,8 +2110,7 @@ export const DeleteBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBookmarkRequest" }) as any as S.Schema<DeleteBookmarkRequest>;
 
 export interface DeleteBookmarkResponse {}
-export const DeleteBookmarkResponse =
-  DeleteActionResponse as any as S.Schema<DeleteBookmarkResponse>;
+const DeleteBookmarkResponse = DeleteActionResponse as any as S.Schema<DeleteBookmarkResponse>;
 
 export interface DeleteContentTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2126,7 +2122,7 @@ export interface DeleteContentTemplateRequest {
   /** template Id */
   templateId: string;
 }
-export const DeleteContentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2145,7 +2141,7 @@ export const DeleteContentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContentTemplateRequest>;
 
 export interface DeleteContentTemplateResponse {}
-export const DeleteContentTemplateResponse =
+const DeleteContentTemplateResponse =
   DeleteActionResponse as any as S.Schema<DeleteContentTemplateResponse>;
 
 export interface DeleteDataConnectorRequest {
@@ -2158,7 +2154,7 @@ export interface DeleteDataConnectorRequest {
   /** Connector ID */
   dataConnectorId: string;
 }
-export const DeleteDataConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2177,7 +2173,7 @@ export const DeleteDataConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDataConnectorRequest>;
 
 export interface DeleteDataConnectorResponse {}
-export const DeleteDataConnectorResponse =
+const DeleteDataConnectorResponse =
   DeleteActionResponse as any as S.Schema<DeleteDataConnectorResponse>;
 
 export interface DeleteDataConnectorDefinitionRequest {
@@ -2190,7 +2186,7 @@ export interface DeleteDataConnectorDefinitionRequest {
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
 }
-export const DeleteDataConnectorDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataConnectorDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2209,9 +2205,7 @@ export const DeleteDataConnectorDefinitionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteDataConnectorDefinitionRequest>;
 
 export interface DeleteDataConnectorDefinitionResponse {}
-export const DeleteDataConnectorDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteDataConnectorDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDataConnectorDefinitionResponse",
 }) as any as S.Schema<DeleteDataConnectorDefinitionResponse>;
 
@@ -2225,7 +2219,7 @@ export interface DeleteIncidentRequest {
   /** Incident ID */
   incidentId: string;
 }
-export const DeleteIncidentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIncidentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2242,8 +2236,7 @@ export const DeleteIncidentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIncidentRequest" }) as any as S.Schema<DeleteIncidentRequest>;
 
 export interface DeleteIncidentResponse {}
-export const DeleteIncidentResponse =
-  DeleteActionResponse as any as S.Schema<DeleteIncidentResponse>;
+const DeleteIncidentResponse = DeleteActionResponse as any as S.Schema<DeleteIncidentResponse>;
 
 export interface DeleteIncidentCommentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2257,7 +2250,7 @@ export interface DeleteIncidentCommentRequest {
   /** Incident comment ID */
   incidentCommentId: string;
 }
-export const DeleteIncidentCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIncidentCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2277,7 +2270,7 @@ export const DeleteIncidentCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIncidentCommentRequest>;
 
 export interface DeleteIncidentCommentResponse {}
-export const DeleteIncidentCommentResponse =
+const DeleteIncidentCommentResponse =
   DeleteActionResponse as any as S.Schema<DeleteIncidentCommentResponse>;
 
 export interface DeleteIncidentRelationRequest {
@@ -2292,7 +2285,7 @@ export interface DeleteIncidentRelationRequest {
   /** Relation Name */
   relationName: string;
 }
-export const DeleteIncidentRelationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIncidentRelationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2312,7 +2305,7 @@ export const DeleteIncidentRelationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIncidentRelationRequest>;
 
 export interface DeleteIncidentRelationResponse {}
-export const DeleteIncidentRelationResponse =
+const DeleteIncidentRelationResponse =
   DeleteActionResponse as any as S.Schema<DeleteIncidentRelationResponse>;
 
 export interface DeleteIncidentTaskRequest {
@@ -2327,7 +2320,7 @@ export interface DeleteIncidentTaskRequest {
   /** Incident task ID */
   incidentTaskId: string;
 }
-export const DeleteIncidentTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIncidentTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2347,7 +2340,7 @@ export const DeleteIncidentTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIncidentTaskRequest>;
 
 export interface DeleteIncidentTaskResponse {}
-export const DeleteIncidentTaskResponse =
+const DeleteIncidentTaskResponse =
   DeleteActionResponse as any as S.Schema<DeleteIncidentTaskResponse>;
 
 export interface DeleteMetadataRequest {
@@ -2360,7 +2353,7 @@ export interface DeleteMetadataRequest {
   /** The Metadata name. */
   metadataName: string;
 }
-export const DeleteMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2377,8 +2370,7 @@ export const DeleteMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMetadataRequest" }) as any as S.Schema<DeleteMetadataRequest>;
 
 export interface DeleteMetadataResponse {}
-export const DeleteMetadataResponse =
-  DeleteActionResponse as any as S.Schema<DeleteMetadataResponse>;
+const DeleteMetadataResponse = DeleteActionResponse as any as S.Schema<DeleteMetadataResponse>;
 
 export interface DeleteSecurityMLAnalyticsSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2390,7 +2382,7 @@ export interface DeleteSecurityMLAnalyticsSettingsRequest {
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
 }
-export const DeleteSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2409,7 +2401,7 @@ export const DeleteSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteSecurityMLAnalyticsSettingsRequest>;
 
 export interface DeleteSecurityMLAnalyticsSettingsResponse {}
-export const DeleteSecurityMLAnalyticsSettingsResponse =
+const DeleteSecurityMLAnalyticsSettingsResponse =
   DeleteDataConnectorDefinitionResponse as any as S.Schema<DeleteSecurityMLAnalyticsSettingsResponse>;
 
 export interface DeleteSentinelOnboardingStateRequest {
@@ -2422,7 +2414,7 @@ export interface DeleteSentinelOnboardingStateRequest {
   /** The Sentinel onboarding state name. Supports - default */
   sentinelOnboardingStateName: string;
 }
-export const DeleteSentinelOnboardingStateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSentinelOnboardingStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2441,7 +2433,7 @@ export const DeleteSentinelOnboardingStateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteSentinelOnboardingStateRequest>;
 
 export interface DeleteSentinelOnboardingStateResponse {}
-export const DeleteSentinelOnboardingStateResponse =
+const DeleteSentinelOnboardingStateResponse =
   DeleteDataConnectorDefinitionResponse as any as S.Schema<DeleteSentinelOnboardingStateResponse>;
 
 /** Credentials to access repository. */
@@ -2449,7 +2441,7 @@ export interface RepositoryAccessObject {
   /** RepositoryAccess properties */
   repositoryAccess: RepositoryAccess;
 }
-export const RepositoryAccessObject = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAccessObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryAccess: RepositoryAccess,
   }),
@@ -2467,7 +2459,7 @@ export interface DeleteSourceControlRequest {
   /** RepositoryAccess properties */
   properties: RepositoryAccessObject;
 }
-export const DeleteSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2493,10 +2485,10 @@ export type WarningCode =
   | "SourceControlWarning_DeleteWorkflowAndSecretFromGitHub"
   | "SourceControlWarning_DeleteRoleAssignment"
   | "SourceControl_DeletedWithWarnings";
-export const WarningCode = S.String;
+const WarningCode = S.String;
 
 export type WarningBodyDetailsList = Array<WarningBody>;
-export const WarningBodyDetailsList = /*@__PURE__*/ S.Array(
+const WarningBodyDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => WarningBody),
 ) as any as S.Schema<WarningBodyDetailsList>;
 
@@ -2508,7 +2500,7 @@ export interface WarningBody {
   message?: string;
   details?: WarningBodyDetailsList;
 }
-export const WarningBody = /*@__PURE__*/ S.suspend(() =>
+const WarningBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(WarningCode),
     message: S.optional(S.String),
@@ -2521,7 +2513,7 @@ export interface Warning {
   /** Warning data. */
   warning?: WarningBody;
 }
-export const Warning = /*@__PURE__*/ S.suspend(() =>
+const Warning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warning: S.optional(WarningBody),
   }),
@@ -2537,7 +2529,7 @@ export interface DeleteThreatIntelligenceIndicatorRequest {
   /** Threat intelligence indicator name field. */
   name: string;
 }
-export const DeleteThreatIntelligenceIndicatorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreatIntelligenceIndicatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2556,7 +2548,7 @@ export const DeleteThreatIntelligenceIndicatorRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteThreatIntelligenceIndicatorRequest>;
 
 export interface DeleteThreatIntelligenceIndicatorResponse {}
-export const DeleteThreatIntelligenceIndicatorResponse =
+const DeleteThreatIntelligenceIndicatorResponse =
   DeleteDataConnectorDefinitionResponse as any as S.Schema<DeleteThreatIntelligenceIndicatorResponse>;
 
 export interface DeleteWatchlistRequest {
@@ -2569,7 +2561,7 @@ export interface DeleteWatchlistRequest {
   /** The watchlist alias */
   watchlistAlias: string;
 }
-export const DeleteWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2586,8 +2578,7 @@ export const DeleteWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWatchlistRequest" }) as any as S.Schema<DeleteWatchlistRequest>;
 
 export interface DeleteWatchlistResponse {}
-export const DeleteWatchlistResponse =
-  DeleteActionResponse as any as S.Schema<DeleteWatchlistResponse>;
+const DeleteWatchlistResponse = DeleteActionResponse as any as S.Schema<DeleteWatchlistResponse>;
 
 export interface DeleteWatchlistItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2601,7 +2592,7 @@ export interface DeleteWatchlistItemRequest {
   /** The watchlist item id (GUID) */
   watchlistItemId: string;
 }
-export const DeleteWatchlistItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWatchlistItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2621,7 +2612,7 @@ export const DeleteWatchlistItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWatchlistItemRequest>;
 
 export interface DeleteWatchlistItemResponse {}
-export const DeleteWatchlistItemResponse =
+const DeleteWatchlistItemResponse =
   DeleteActionResponse as any as S.Schema<DeleteWatchlistItemResponse>;
 
 export interface GetActionRequest {
@@ -2636,7 +2627,7 @@ export interface GetActionRequest {
   /** Action ID */
   actionId: string;
 }
-export const GetActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2667,7 +2658,7 @@ export interface GetActionResponse {
   /** Etag of the action. */
   etag?: string;
 }
-export const GetActionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2688,7 +2679,7 @@ export interface GetAlertRuleRequest {
   /** Alert rule ID */
   ruleId: string;
 }
-export const GetAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2720,7 +2711,7 @@ export interface GetAlertRuleResponse {
   /** Alert rule properties (polymorphic on `kind`: Scheduled, Fusion, MicrosoftSecurityIncidentCreation, NRT, ...). */
   properties?: unknown;
 }
-export const GetAlertRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2742,7 +2733,7 @@ export interface GetAlertRuleTemplateRequest {
   /** Alert rule template ID */
   alertRuleTemplateId: string;
 }
-export const GetAlertRuleTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRuleTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2772,7 +2763,7 @@ export interface GetAlertRuleTemplateResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: AlertRuleKind;
 }
-export const GetAlertRuleTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRuleTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2794,7 +2785,7 @@ export interface GetAutomationRuleRequest {
   /** Automation rule ID */
   automationRuleId: string;
 }
-export const GetAutomationRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutomationRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2824,7 +2815,7 @@ export interface GetAutomationRuleResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetAutomationRuleResponse =
+const GetAutomationRuleResponse =
   AutomationRulesCreateOrUpdateResponse as any as S.Schema<GetAutomationRuleResponse>;
 
 export interface GetBookmarkRequest {
@@ -2837,7 +2828,7 @@ export interface GetBookmarkRequest {
   /** Bookmark ID */
   bookmarkId: string;
 }
-export const GetBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2867,7 +2858,7 @@ export interface GetBookmarkResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBookmarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2888,7 +2879,7 @@ export interface GetContentPackageRequest {
   /** package Id */
   packageId: string;
 }
-export const GetContentPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContentPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2906,25 +2897,25 @@ export const GetContentPackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The package kind */
 export type PackageKind = "Solution" | "Standalone";
-export const PackageKind = S.String;
+const PackageKind = S.String;
 
 /** The boolean value the metadata is for. */
 export type Flag = "true" | "false";
-export const Flag = S.String;
+const Flag = S.String;
 
 /** Providers for the package item */
 export type PackageBasePropertiesProvidersList = Array<string>;
-export const PackageBasePropertiesProvidersList =
+const PackageBasePropertiesProvidersList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<PackageBasePropertiesProvidersList>;
 
 /** the tactics the resource covers */
 export type PackageBasePropertiesThreatAnalysisTacticsList = Array<string>;
-export const PackageBasePropertiesThreatAnalysisTacticsList =
+const PackageBasePropertiesThreatAnalysisTacticsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<PackageBasePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type PackageBasePropertiesThreatAnalysisTechniquesList = Array<string>;
-export const PackageBasePropertiesThreatAnalysisTechniquesList =
+const PackageBasePropertiesThreatAnalysisTechniquesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<PackageBasePropertiesThreatAnalysisTechniquesList>;
 
 /** Describes package properties */
@@ -2976,7 +2967,7 @@ export interface PackageBaseProperties {
   /** the icon identifier. this id can later be fetched from the content metadata */
   icon?: string;
 }
-export const PackageBaseProperties = /*@__PURE__*/ S.suspend(() =>
+const PackageBaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     contentProductId: S.optional(S.String),
@@ -3018,7 +3009,7 @@ export interface GetContentPackageResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetContentPackageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContentPackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3041,7 +3032,7 @@ export interface GetContentTemplateRequest {
   /** template Id */
   templateId: string;
 }
-export const GetContentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3061,32 +3052,32 @@ export const GetContentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Providers for the content item */
 export type TemplatePropertiesProvidersList = Array<string>;
-export const TemplatePropertiesProvidersList =
+const TemplatePropertiesProvidersList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesProvidersList>;
 
 /** the tactics the resource covers */
 export type TemplatePropertiesThreatAnalysisTacticsList = Array<string>;
-export const TemplatePropertiesThreatAnalysisTacticsList =
+const TemplatePropertiesThreatAnalysisTacticsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type TemplatePropertiesThreatAnalysisTechniquesList = Array<string>;
-export const TemplatePropertiesThreatAnalysisTechniquesList =
+const TemplatePropertiesThreatAnalysisTechniquesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
 export type TemplatePropertiesPreviewImagesList = Array<string>;
-export const TemplatePropertiesPreviewImagesList =
+const TemplatePropertiesPreviewImagesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type TemplatePropertiesPreviewImagesDarkList = Array<string>;
-export const TemplatePropertiesPreviewImagesDarkList =
+const TemplatePropertiesPreviewImagesDarkList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesPreviewImagesDarkList>;
 
 /** Dependant templates. Expandable. */
 export type TemplatePropertiesDependantTemplatesList = Array<TemplateProperties>;
-export const TemplatePropertiesDependantTemplatesList = /*@__PURE__*/ S.Array(
+const TemplatePropertiesDependantTemplatesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => TemplateProperties),
 ) as any as S.Schema<TemplatePropertiesDependantTemplatesList>;
 
@@ -3147,7 +3138,7 @@ export interface TemplateProperties {
   /** Dependant templates. Expandable. */
   dependantTemplates?: TemplatePropertiesDependantTemplatesList;
 }
-export const TemplateProperties = /*@__PURE__*/ S.suspend(() =>
+const TemplateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     contentProductId: S.optional(S.String),
@@ -3193,7 +3184,7 @@ export interface GetContentTemplateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetContentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3216,7 +3207,7 @@ export interface GetDataConnectorRequest {
   /** Connector ID */
   dataConnectorId: string;
 }
-export const GetDataConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3248,8 +3239,7 @@ export interface GetDataConnectorResponse {
   /** Data connector properties (polymorphic on `kind`). */
   properties?: unknown;
 }
-export const GetDataConnectorResponse =
-  GetAlertRuleResponse as any as S.Schema<GetDataConnectorResponse>;
+const GetDataConnectorResponse = GetAlertRuleResponse as any as S.Schema<GetDataConnectorResponse>;
 
 export interface GetDataConnectorDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3261,7 +3251,7 @@ export interface GetDataConnectorDefinitionRequest {
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
 }
-export const GetDataConnectorDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataConnectorDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3295,7 +3285,7 @@ export interface GetDataConnectorDefinitionResponse {
   /** Data connector definition properties (polymorphic on `kind`, e.g. Customizable). */
   properties?: unknown;
 }
-export const GetDataConnectorDefinitionResponse =
+const GetDataConnectorDefinitionResponse =
   DataConnectorDefinitionsCreateOrUpdateResponse as any as S.Schema<GetDataConnectorDefinitionResponse>;
 
 export interface GetIncidentRequest {
@@ -3308,7 +3298,7 @@ export interface GetIncidentRequest {
   /** Incident ID */
   incidentId: string;
 }
-export const GetIncidentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3326,7 +3316,7 @@ export const GetIncidentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of the incident */
 export type IncidentStatus = "New" | "Active" | "Closed";
-export const IncidentStatus = S.String;
+const IncidentStatus = S.String;
 
 /** The reason the incident was closed */
 export type IncidentClassification =
@@ -3334,7 +3324,7 @@ export type IncidentClassification =
   | "TruePositive"
   | "BenignPositive"
   | "FalsePositive";
-export const IncidentClassification = S.String;
+const IncidentClassification = S.String;
 
 /** The classification reason the incident was closed with */
 export type IncidentClassificationReason =
@@ -3342,11 +3332,11 @@ export type IncidentClassificationReason =
   | "SuspiciousButExpected"
   | "IncorrectAlertLogic"
   | "InaccurateData";
-export const IncidentClassificationReason = S.String;
+const IncidentClassificationReason = S.String;
 
 /** The type of the owner the hunt is assigned to. */
 export type OwnerType = "Unknown" | "User" | "Group";
-export const OwnerType = S.String;
+const OwnerType = S.String;
 
 /** Information on the user an incident is assigned to */
 export interface IncidentOwnerInfo {
@@ -3361,7 +3351,7 @@ export interface IncidentOwnerInfo {
   /** The type of the owner the incident is assigned to. */
   ownerType?: OwnerType | (string & {});
 }
-export const IncidentOwnerInfo = /*@__PURE__*/ S.suspend(() =>
+const IncidentOwnerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     assignedTo: S.optional(S.String),
@@ -3373,7 +3363,7 @@ export const IncidentOwnerInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the label */
 export type IncidentLabelType = "User" | "AutoAssigned";
-export const IncidentLabelType = S.String;
+const IncidentLabelType = S.String;
 
 /** Represents an incident label */
 export interface IncidentLabel {
@@ -3382,7 +3372,7 @@ export interface IncidentLabel {
   /** The type of the label */
   labelType?: IncidentLabelType | (string & {});
 }
-export const IncidentLabel = /*@__PURE__*/ S.suspend(() =>
+const IncidentLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelName: S.String,
     labelType: S.optional(IncidentLabelType),
@@ -3391,13 +3381,13 @@ export const IncidentLabel = /*@__PURE__*/ S.suspend(() =>
 
 /** List of labels relevant to this incident */
 export type IncidentPropertiesLabelsList = Array<IncidentLabel>;
-export const IncidentPropertiesLabelsList = /*@__PURE__*/ S.Array(
+const IncidentPropertiesLabelsList = /*@__PURE__*/ S.Array(
   IncidentLabel,
 ) as any as S.Schema<IncidentPropertiesLabelsList>;
 
 /** List of product names of alerts in the incident */
 export type IncidentAdditionalDataAlertProductNamesList = Array<string>;
-export const IncidentAdditionalDataAlertProductNamesList =
+const IncidentAdditionalDataAlertProductNamesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<IncidentAdditionalDataAlertProductNamesList>;
 
 /** The severity for alerts created by this alert rule. */
@@ -3419,11 +3409,9 @@ export type AttackTactic =
   | "PreAttack"
   | "ImpairProcessControl"
   | "InhibitResponseFunction";
-export const AttackTactic = S.String;
-
 /** The tactics associated with incident */
 export type IncidentAdditionalDataTacticsList = Array<AttackTactic>;
-export const IncidentAdditionalDataTacticsList =
+const IncidentAdditionalDataTacticsList =
   SourceControlPropertiesInputContentTypesList as any as S.Schema<IncidentAdditionalDataTacticsList>;
 
 /** Incident additional data property bag. */
@@ -3441,7 +3429,7 @@ export interface IncidentAdditionalData {
   /** The provider incident url to the incident in Microsoft 365 Defender portal */
   providerIncidentUrl?: string;
 }
-export const IncidentAdditionalData = /*@__PURE__*/ S.suspend(() =>
+const IncidentAdditionalData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertsCount: S.optional(S.Number),
     bookmarksCount: S.optional(S.Number),
@@ -3454,7 +3442,7 @@ export const IncidentAdditionalData = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource ids of Analytic rules related to the incident */
 export type IncidentPropertiesRelatedAnalyticRuleIdsList = Array<string>;
-export const IncidentPropertiesRelatedAnalyticRuleIdsList =
+const IncidentPropertiesRelatedAnalyticRuleIdsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<IncidentPropertiesRelatedAnalyticRuleIdsList>;
 
 /** Describes incident properties */
@@ -3498,7 +3486,7 @@ export interface IncidentProperties {
   /** The incident ID assigned by the incident provider */
   providerIncidentId?: string;
 }
-export const IncidentProperties = /*@__PURE__*/ S.suspend(() =>
+const IncidentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.optional(S.String),
@@ -3536,7 +3524,7 @@ export interface GetIncidentResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetIncidentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3559,7 +3547,7 @@ export interface GetIncidentCommentRequest {
   /** Incident comment ID */
   incidentCommentId: string;
 }
-export const GetIncidentCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3589,7 +3577,7 @@ export interface IncidentCommentProperties {
   /** Describes the client that created the comment */
   author?: ClientInfo;
 }
-export const IncidentCommentProperties = /*@__PURE__*/ S.suspend(() =>
+const IncidentCommentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     createdTimeUtc: S.optional(S.String),
@@ -3614,7 +3602,7 @@ export interface GetIncidentCommentResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetIncidentCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3639,7 +3627,7 @@ export interface GetIncidentRelationRequest {
   /** Relation Name */
   relationName: string;
 }
-export const GetIncidentRelationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentRelationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3669,7 +3657,7 @@ export interface RelationProperties {
   /** The resource kind of the related resource */
   relatedResourceKind?: string;
 }
-export const RelationProperties = /*@__PURE__*/ S.suspend(() =>
+const RelationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relatedResourceId: S.String,
     relatedResourceName: S.optional(S.String),
@@ -3692,7 +3680,7 @@ export interface GetIncidentRelationResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetIncidentRelationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentRelationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3717,7 +3705,7 @@ export interface GetIncidentTaskRequest {
   /** Incident task ID */
   incidentTaskId: string;
 }
-export const GetIncidentTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3736,7 +3724,7 @@ export const GetIncidentTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of the task */
 export type IncidentTaskStatus = "New" | "Completed";
-export const IncidentTaskStatus = S.String;
+const IncidentTaskStatus = S.String;
 
 /** Describes the properties of an incident task */
 export interface IncidentTaskProperties {
@@ -3755,7 +3743,7 @@ export interface IncidentTaskProperties {
   /** Information on the client (user or application) that made some action */
   lastModifiedBy?: ClientInfo;
 }
-export const IncidentTaskProperties = /*@__PURE__*/ S.suspend(() =>
+const IncidentTaskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.optional(S.String),
@@ -3781,7 +3769,7 @@ export interface GetIncidentTaskResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetIncidentTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIncidentTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3802,7 +3790,7 @@ export interface GetMetadataRequest {
   /** The Metadata name. */
   metadataName: string;
 }
-export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3832,7 +3820,7 @@ export interface GetMetadataResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetMetadataResponse = CreateMetadataResponse as any as S.Schema<GetMetadataResponse>;
+const GetMetadataResponse = CreateMetadataResponse as any as S.Schema<GetMetadataResponse>;
 
 export interface GetProductPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3844,7 +3832,7 @@ export interface GetProductPackageRequest {
   /** package Id */
   packageId: string;
 }
-export const GetProductPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3862,17 +3850,17 @@ export const GetProductPackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Providers for the package item */
 export type ProductPackagePropertiesProvidersList = Array<string>;
-export const ProductPackagePropertiesProvidersList =
+const ProductPackagePropertiesProvidersList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ProductPackagePropertiesProvidersList>;
 
 /** the tactics the resource covers */
 export type ProductPackagePropertiesThreatAnalysisTacticsList = Array<string>;
-export const ProductPackagePropertiesThreatAnalysisTacticsList =
+const ProductPackagePropertiesThreatAnalysisTacticsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ProductPackagePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type ProductPackagePropertiesThreatAnalysisTechniquesList = Array<string>;
-export const ProductPackagePropertiesThreatAnalysisTechniquesList =
+const ProductPackagePropertiesThreatAnalysisTechniquesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ProductPackagePropertiesThreatAnalysisTechniquesList>;
 
 /** Describes package properties */
@@ -3930,7 +3918,7 @@ export interface ProductPackageProperties {
   /** The json of the ARM template to deploy. Expandable. */
   packagedContent?: unknown;
 }
-export const ProductPackageProperties = /*@__PURE__*/ S.suspend(() =>
+const ProductPackageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     contentProductId: S.optional(S.String),
@@ -3975,7 +3963,7 @@ export interface GetProductPackageResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetProductPackageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProductPackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3998,7 +3986,7 @@ export interface GetProductTemplateRequest {
   /** template Id */
   templateId: string;
 }
-export const GetProductTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4018,27 +4006,27 @@ export const GetProductTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Providers for the content item */
 export type ProductTemplatePropertiesProvidersList = Array<string>;
-export const ProductTemplatePropertiesProvidersList =
+const ProductTemplatePropertiesProvidersList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesProvidersList>;
 
 /** the tactics the resource covers */
 export type ProductTemplatePropertiesThreatAnalysisTacticsList = Array<string>;
-export const ProductTemplatePropertiesThreatAnalysisTacticsList =
+const ProductTemplatePropertiesThreatAnalysisTacticsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type ProductTemplatePropertiesThreatAnalysisTechniquesList = Array<string>;
-export const ProductTemplatePropertiesThreatAnalysisTechniquesList =
+const ProductTemplatePropertiesThreatAnalysisTechniquesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
 export type ProductTemplatePropertiesPreviewImagesList = Array<string>;
-export const ProductTemplatePropertiesPreviewImagesList =
+const ProductTemplatePropertiesPreviewImagesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type ProductTemplatePropertiesPreviewImagesDarkList = Array<string>;
-export const ProductTemplatePropertiesPreviewImagesDarkList =
+const ProductTemplatePropertiesPreviewImagesDarkList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesPreviewImagesDarkList>;
 
 /** Template property bag. */
@@ -4096,7 +4084,7 @@ export interface ProductTemplateProperties {
   /** The json of the ARM template to deploy */
   packagedContent?: unknown;
 }
-export const ProductTemplateProperties = /*@__PURE__*/ S.suspend(() =>
+const ProductTemplateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     contentProductId: S.optional(S.String),
@@ -4143,7 +4131,7 @@ export interface GetProductTemplateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetProductTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProductTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4166,7 +4154,7 @@ export interface GetSecurityMLAnalyticsSettingsRequest {
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
 }
-export const GetSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4186,7 +4174,7 @@ export const GetSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The kind of security ML analytics settings */
 export type SecurityMLAnalyticsSettingsKind = "Anomaly";
-export const SecurityMLAnalyticsSettingsKind = S.String;
+const SecurityMLAnalyticsSettingsKind = S.String;
 
 export interface GetSecurityMLAnalyticsSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4204,7 +4192,7 @@ export interface GetSecurityMLAnalyticsSettingsResponse {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
-export const GetSecurityMLAnalyticsSettingsResponse =
+const GetSecurityMLAnalyticsSettingsResponse =
   AlertRulesCreateOrUpdateResponse as any as S.Schema<GetSecurityMLAnalyticsSettingsResponse>;
 
 export interface GetSentinelOnboardingStateRequest {
@@ -4217,7 +4205,7 @@ export interface GetSentinelOnboardingStateRequest {
   /** The Sentinel onboarding state name. Supports - default */
   sentinelOnboardingStateName: string;
 }
-export const GetSentinelOnboardingStateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSentinelOnboardingStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4249,7 +4237,7 @@ export interface GetSentinelOnboardingStateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetSentinelOnboardingStateResponse =
+const GetSentinelOnboardingStateResponse =
   CreateSentinelOnboardingStateResponse as any as S.Schema<GetSentinelOnboardingStateResponse>;
 
 export interface GetSourceControlRequest {
@@ -4262,7 +4250,7 @@ export interface GetSourceControlRequest {
   /** Source control Id */
   sourceControlId: string;
 }
-export const GetSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4292,7 +4280,7 @@ export interface GetSourceControlResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4313,7 +4301,7 @@ export interface GetThreatIntelligenceIndicatorRequest {
   /** Threat intelligence indicator name field. */
   name: string;
 }
-export const GetThreatIntelligenceIndicatorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreatIntelligenceIndicatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4345,7 +4333,7 @@ export interface GetThreatIntelligenceIndicatorResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetThreatIntelligenceIndicatorResponse =
+const GetThreatIntelligenceIndicatorResponse =
   CreateThreatIntelligenceIndicatorResponse as any as S.Schema<GetThreatIntelligenceIndicatorResponse>;
 
 export interface GetWatchlistRequest {
@@ -4358,7 +4346,7 @@ export interface GetWatchlistRequest {
   /** The watchlist alias */
   watchlistAlias: string;
 }
-export const GetWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4376,11 +4364,11 @@ export const GetWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The sourceType of the watchlist */
 export type SourceType = "Local" | "AzureStorage";
-export const SourceType = S.String;
+const SourceType = S.String;
 
 /** List of labels relevant to this watchlist */
 export type WatchlistPropertiesLabelsList = Array<string>;
-export const WatchlistPropertiesLabelsList =
+const WatchlistPropertiesLabelsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<WatchlistPropertiesLabelsList>;
 
 /** The provisioning state of the watchlist */
@@ -4392,7 +4380,7 @@ export type WatchlistProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-export const WatchlistProvisioningState = S.String;
+const WatchlistProvisioningState = S.String;
 
 /** Describes watchlist properties */
 export interface WatchlistProperties {
@@ -4441,7 +4429,7 @@ export interface WatchlistProperties {
   /** Describes provisioning state */
   provisioningState?: WatchlistProvisioningState;
 }
-export const WatchlistProperties = /*@__PURE__*/ S.suspend(() =>
+const WatchlistProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watchlistId: S.optional(S.String),
     displayName: S.String,
@@ -4482,7 +4470,7 @@ export interface GetWatchlistResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetWatchlistResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWatchlistResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4505,7 +4493,7 @@ export interface GetWatchlistItemRequest {
   /** The watchlist item id (GUID) */
   watchlistItemId: string;
 }
-export const GetWatchlistItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWatchlistItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4545,7 +4533,7 @@ export interface WatchlistItemProperties {
   /** key-value pairs for a watchlist item entity mapping */
   entityMapping?: unknown;
 }
-export const WatchlistItemProperties = /*@__PURE__*/ S.suspend(() =>
+const WatchlistItemProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watchlistItemType: S.optional(S.String),
     watchlistItemId: S.optional(S.String),
@@ -4574,7 +4562,7 @@ export interface GetWatchlistItemResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const GetWatchlistItemResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWatchlistItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4590,7 +4578,7 @@ export interface IncidentCommentPropertiesInput {
   /** The comment message */
   message: string;
 }
-export const IncidentCommentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IncidentCommentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
   }),
@@ -4614,7 +4602,7 @@ export interface IncidentCommentsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4649,7 +4637,7 @@ export interface IncidentCommentsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentCommentsCreateOrUpdateResponse =
+const IncidentCommentsCreateOrUpdateResponse =
   GetIncidentCommentResponse as any as S.Schema<IncidentCommentsCreateOrUpdateResponse>;
 
 /** Relation property bag. */
@@ -4657,7 +4645,7 @@ export interface RelationPropertiesInput {
   /** The resource ID of the related resource */
   relatedResourceId: string;
 }
-export const RelationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RelationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relatedResourceId: S.String,
   }),
@@ -4679,7 +4667,7 @@ export interface IncidentRelationsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentRelationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const IncidentRelationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4714,12 +4702,12 @@ export interface IncidentRelationsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentRelationsCreateOrUpdateResponse =
+const IncidentRelationsCreateOrUpdateResponse =
   GetIncidentRelationResponse as any as S.Schema<IncidentRelationsCreateOrUpdateResponse>;
 
 /** List of labels relevant to this incident */
 export type IncidentPropertiesInputLabelsList = Array<IncidentLabel>;
-export const IncidentPropertiesInputLabelsList =
+const IncidentPropertiesInputLabelsList =
   IncidentPropertiesLabelsList as any as S.Schema<IncidentPropertiesInputLabelsList>;
 
 /** Describes incident properties */
@@ -4747,7 +4735,7 @@ export interface IncidentPropertiesInput {
   /** The time of the last activity in the incident */
   lastActivityTimeUtc?: string;
 }
-export const IncidentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IncidentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.optional(S.String),
@@ -4777,7 +4765,7 @@ export interface IncidentsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4811,7 +4799,7 @@ export interface IncidentsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const IncidentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4837,7 +4825,7 @@ export interface IncidentTaskPropertiesInput {
   /** Information on the client (user or application) that made some action */
   lastModifiedBy?: ClientInfo;
 }
-export const IncidentTaskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IncidentTaskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.optional(S.String),
@@ -4865,7 +4853,7 @@ export interface IncidentTasksCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4900,7 +4888,7 @@ export interface IncidentTasksCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentTasksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const IncidentTasksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4927,7 +4915,7 @@ export interface InstallContentPackageRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const InstallContentPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const InstallContentPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4961,32 +4949,32 @@ export interface InstallContentPackageResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const InstallContentPackageResponse =
+const InstallContentPackageResponse =
   GetContentPackageResponse as any as S.Schema<InstallContentPackageResponse>;
 
 /** Providers for the content item */
 export type TemplatePropertiesInputProvidersList = Array<string>;
-export const TemplatePropertiesInputProvidersList =
+const TemplatePropertiesInputProvidersList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputProvidersList>;
 
 /** the tactics the resource covers */
 export type TemplatePropertiesInputThreatAnalysisTacticsList = Array<string>;
-export const TemplatePropertiesInputThreatAnalysisTacticsList =
+const TemplatePropertiesInputThreatAnalysisTacticsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type TemplatePropertiesInputThreatAnalysisTechniquesList = Array<string>;
-export const TemplatePropertiesInputThreatAnalysisTechniquesList =
+const TemplatePropertiesInputThreatAnalysisTechniquesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
 export type TemplatePropertiesInputPreviewImagesList = Array<string>;
-export const TemplatePropertiesInputPreviewImagesList =
+const TemplatePropertiesInputPreviewImagesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type TemplatePropertiesInputPreviewImagesDarkList = Array<string>;
-export const TemplatePropertiesInputPreviewImagesDarkList =
+const TemplatePropertiesInputPreviewImagesDarkList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputPreviewImagesDarkList>;
 
 /** Template property bag. */
@@ -5042,7 +5030,7 @@ export interface TemplatePropertiesInput {
   /** The JSON of the ARM template to deploy active content. Expandable. */
   mainTemplate?: unknown;
 }
-export const TemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const TemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     contentProductId: S.optional(S.String),
@@ -5086,7 +5074,7 @@ export interface InstallContentTemplateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const InstallContentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const InstallContentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5120,7 +5108,7 @@ export interface InstallContentTemplateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const InstallContentTemplateResponse =
+const InstallContentTemplateResponse =
   GetContentTemplateResponse as any as S.Schema<InstallContentTemplateResponse>;
 
 export interface ListActionByAlertRuleRequest {
@@ -5133,7 +5121,7 @@ export interface ListActionByAlertRuleRequest {
   /** Alert rule ID */
   ruleId: string;
 }
-export const ListActionByAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActionByAlertRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5166,11 +5154,11 @@ export interface ActionResponse {
   /** Etag of the action. */
   etag?: string;
 }
-export const ActionResponse = GetActionResponse as any as S.Schema<ActionResponse>;
+const ActionResponse = GetActionResponse as any as S.Schema<ActionResponse>;
 
 /** The ActionResponse items on this page */
 export type ActionsListValueList = Array<ActionResponse>;
-export const ActionsListValueList = /*@__PURE__*/ S.Array(
+const ActionsListValueList = /*@__PURE__*/ S.Array(
   ActionResponse,
 ) as any as S.Schema<ActionsListValueList>;
 
@@ -5181,7 +5169,7 @@ export interface ActionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ActionsList = /*@__PURE__*/ S.suspend(() =>
+const ActionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ActionsListValueList,
     nextLink: S.optional(S.String),
@@ -5196,7 +5184,7 @@ export interface ListAlertRulesRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListAlertRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5226,7 +5214,7 @@ export interface AlertRule {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const AlertRule = /*@__PURE__*/ S.suspend(() =>
+const AlertRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5239,7 +5227,7 @@ export const AlertRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The AlertRule items on this page */
 export type AlertRulesListValueList = Array<AlertRule>;
-export const AlertRulesListValueList = /*@__PURE__*/ S.Array(
+const AlertRulesListValueList = /*@__PURE__*/ S.Array(
   AlertRule,
 ) as any as S.Schema<AlertRulesListValueList>;
 
@@ -5250,7 +5238,7 @@ export interface AlertRulesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AlertRulesList = /*@__PURE__*/ S.suspend(() =>
+const AlertRulesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AlertRulesListValueList,
     nextLink: S.optional(S.String),
@@ -5265,7 +5253,7 @@ export interface ListAlertRuleTemplatesRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListAlertRuleTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertRuleTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5295,7 +5283,7 @@ export interface AlertRuleTemplate {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: AlertRuleKind;
 }
-export const AlertRuleTemplate = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5307,7 +5295,7 @@ export const AlertRuleTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** The AlertRuleTemplate items on this page */
 export type AlertRuleTemplatesListValueList = Array<AlertRuleTemplate>;
-export const AlertRuleTemplatesListValueList = /*@__PURE__*/ S.Array(
+const AlertRuleTemplatesListValueList = /*@__PURE__*/ S.Array(
   AlertRuleTemplate,
 ) as any as S.Schema<AlertRuleTemplatesListValueList>;
 
@@ -5318,7 +5306,7 @@ export interface AlertRuleTemplatesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AlertRuleTemplatesList = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleTemplatesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AlertRuleTemplatesListValueList,
     nextLink: S.optional(S.String),
@@ -5333,7 +5321,7 @@ export interface ListAutomationRulesRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListAutomationRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutomationRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5365,7 +5353,7 @@ export interface AutomationRule {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
+const AutomationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5378,7 +5366,7 @@ export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of automation rules. */
 export type AutomationRulesListValueList = Array<AutomationRule>;
-export const AutomationRulesListValueList = /*@__PURE__*/ S.Array(
+const AutomationRulesListValueList = /*@__PURE__*/ S.Array(
   AutomationRule,
 ) as any as S.Schema<AutomationRulesListValueList>;
 
@@ -5388,7 +5376,7 @@ export interface AutomationRulesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AutomationRulesList = /*@__PURE__*/ S.suspend(() =>
+const AutomationRulesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AutomationRulesListValueList),
     nextLink: S.optional(S.String),
@@ -5403,7 +5391,7 @@ export interface ListBookmarksRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListBookmarksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBookmarksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5433,11 +5421,11 @@ export interface Bookmark {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const Bookmark = GetBookmarkResponse as any as S.Schema<Bookmark>;
+const Bookmark = GetBookmarkResponse as any as S.Schema<Bookmark>;
 
 /** The Bookmark items on this page */
 export type BookmarkListValueList = Array<Bookmark>;
-export const BookmarkListValueList = /*@__PURE__*/ S.Array(
+const BookmarkListValueList = /*@__PURE__*/ S.Array(
   Bookmark,
 ) as any as S.Schema<BookmarkListValueList>;
 
@@ -5448,7 +5436,7 @@ export interface BookmarkList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const BookmarkList = /*@__PURE__*/ S.suspend(() =>
+const BookmarkList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: BookmarkListValueList,
     nextLink: S.optional(S.String),
@@ -5477,7 +5465,7 @@ export interface ListContentPackagesRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
-export const ListContentPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContentPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5516,7 +5504,7 @@ export interface PackageModel {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const PackageModel = /*@__PURE__*/ S.suspend(() =>
+const PackageModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5529,7 +5517,7 @@ export const PackageModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The PackageModel items on this page */
 export type PackageListValueList = Array<PackageModel>;
-export const PackageListValueList = /*@__PURE__*/ S.Array(
+const PackageListValueList = /*@__PURE__*/ S.Array(
   PackageModel,
 ) as any as S.Schema<PackageListValueList>;
 
@@ -5540,7 +5528,7 @@ export interface PackageList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PackageList = /*@__PURE__*/ S.suspend(() =>
+const PackageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PackageListValueList,
     nextLink: S.optional(S.String),
@@ -5571,7 +5559,7 @@ export interface ListContentTemplatesRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
-export const ListContentTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContentTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5611,7 +5599,7 @@ export interface TemplateModel {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const TemplateModel = /*@__PURE__*/ S.suspend(() =>
+const TemplateModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5624,7 +5612,7 @@ export const TemplateModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The TemplateModel items on this page */
 export type TemplateListValueList = Array<TemplateModel>;
-export const TemplateListValueList = /*@__PURE__*/ S.Array(
+const TemplateListValueList = /*@__PURE__*/ S.Array(
   TemplateModel,
 ) as any as S.Schema<TemplateListValueList>;
 
@@ -5635,7 +5623,7 @@ export interface TemplateList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TemplateList = /*@__PURE__*/ S.suspend(() =>
+const TemplateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TemplateListValueList,
     nextLink: S.optional(S.String),
@@ -5650,7 +5638,7 @@ export interface ListDataConnectorDefinitionsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListDataConnectorDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataConnectorDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5682,11 +5670,9 @@ export interface DataConnectorDefinition {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const DataConnectorDefinition = AlertRule as any as S.Schema<DataConnectorDefinition>;
-
 /** List of data connector definitions. */
 export type DataConnectorDefinitionArmCollectionWrapperValueList = Array<DataConnectorDefinition>;
-export const DataConnectorDefinitionArmCollectionWrapperValueList =
+const DataConnectorDefinitionArmCollectionWrapperValueList =
   AlertRulesListValueList as any as S.Schema<DataConnectorDefinitionArmCollectionWrapperValueList>;
 
 /** Encapsulate the data connector definition object */
@@ -5696,7 +5682,7 @@ export interface DataConnectorDefinitionArmCollectionWrapper {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DataConnectorDefinitionArmCollectionWrapper = /*@__PURE__*/ S.suspend(() =>
+const DataConnectorDefinitionArmCollectionWrapper = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DataConnectorDefinitionArmCollectionWrapperValueList),
     nextLink: S.optional(S.String),
@@ -5713,7 +5699,7 @@ export interface ListDataConnectorsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListDataConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5745,13 +5731,8 @@ export interface DataConnector {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const DataConnector = AlertRule as any as S.Schema<DataConnector>;
-
 /** The DataConnector items on this page */
 export type DataConnectorListValueList = Array<DataConnector>;
-export const DataConnectorListValueList =
-  AlertRulesListValueList as any as S.Schema<DataConnectorListValueList>;
-
 /** List all the data connectors. */
 export interface DataConnectorList {
   /** The DataConnector items on this page */
@@ -5759,7 +5740,7 @@ export interface DataConnectorList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DataConnectorList = AlertRulesList as any as S.Schema<DataConnectorList>;
+const DataConnectorList = AlertRulesList as any as S.Schema<DataConnectorList>;
 
 export interface ListIncidentAlertsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5771,7 +5752,7 @@ export interface ListIncidentAlertsRequest {
   /** Incident ID */
   incidentId: string;
 }
-export const ListIncidentAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5812,16 +5793,16 @@ export type EntityKindEnum =
   | "MailMessage"
   | "Mailbox"
   | "SubmissionMail";
-export const EntityKindEnum = S.String;
+const EntityKindEnum = S.String;
 
 /** A bag of custom fields that should be part of the entity and will be presented to the user. */
 export type SecurityAlertPropertiesAdditionalDataMap = { [key: string]: unknown | undefined };
-export const SecurityAlertPropertiesAdditionalDataMap =
+const SecurityAlertPropertiesAdditionalDataMap =
   ThreatIntelligenceIndicatorPropertiesInputExtensionsMap as any as S.Schema<SecurityAlertPropertiesAdditionalDataMap>;
 
 /** The confidence level of this alert. */
 export type ConfidenceLevel = "Unknown" | "Low" | "High";
-export const ConfidenceLevel = S.String;
+const ConfidenceLevel = S.String;
 
 /** confidence reason item */
 export interface SecurityAlertPropertiesConfidenceReasonsItem {
@@ -5830,7 +5811,7 @@ export interface SecurityAlertPropertiesConfidenceReasonsItem {
   /** The type (category) of the reason */
   reasonType?: string;
 }
-export const SecurityAlertPropertiesConfidenceReasonsItem = /*@__PURE__*/ S.suspend(() =>
+const SecurityAlertPropertiesConfidenceReasonsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     reasonType: S.optional(S.String),
@@ -5842,13 +5823,13 @@ export const SecurityAlertPropertiesConfidenceReasonsItem = /*@__PURE__*/ S.susp
 /** The confidence reasons */
 export type SecurityAlertPropertiesConfidenceReasonsList =
   Array<SecurityAlertPropertiesConfidenceReasonsItem>;
-export const SecurityAlertPropertiesConfidenceReasonsList = /*@__PURE__*/ S.Array(
+const SecurityAlertPropertiesConfidenceReasonsList = /*@__PURE__*/ S.Array(
   SecurityAlertPropertiesConfidenceReasonsItem,
 ) as any as S.Schema<SecurityAlertPropertiesConfidenceReasonsList>;
 
 /** The confidence score calculation status, i.e. indicating if score calculation is pending for this alert, not applicable or final. */
 export type ConfidenceScoreStatus = "NotApplicable" | "InProcess" | "NotFinal" | "Final";
-export const ConfidenceScoreStatus = S.String;
+const ConfidenceScoreStatus = S.String;
 
 /** The intent of the alert. */
 export type KillChainIntent =
@@ -5866,29 +5847,29 @@ export type KillChainIntent =
   | "Exfiltration"
   | "CommandAndControl"
   | "Impact";
-export const KillChainIntent = S.String;
+const KillChainIntent = S.String;
 
 /** Manual action items to take to remediate the alert. */
 export type SecurityAlertPropertiesRemediationStepsList = Array<string>;
-export const SecurityAlertPropertiesRemediationStepsList =
+const SecurityAlertPropertiesRemediationStepsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<SecurityAlertPropertiesRemediationStepsList>;
 
 /** The severity of the alert */
 export type AlertSeverity = "High" | "Medium" | "Low" | "Informational";
-export const AlertSeverity = S.String;
+const AlertSeverity = S.String;
 
 /** The lifecycle status of the alert. */
 export type AlertStatus = "Unknown" | "New" | "Resolved" | "Dismissed" | "InProgress";
-export const AlertStatus = S.String;
+const AlertStatus = S.String;
 
 /** The tactics of the alert */
 export type SecurityAlertPropertiesTacticsList = Array<AttackTactic>;
-export const SecurityAlertPropertiesTacticsList =
+const SecurityAlertPropertiesTacticsList =
   IncidentAdditionalDataTacticsList as any as S.Schema<SecurityAlertPropertiesTacticsList>;
 
 /** The list of resource identifiers of the alert. */
 export type SecurityAlertPropertiesResourceIdentifiersList = Array<unknown>;
-export const SecurityAlertPropertiesResourceIdentifiersList = /*@__PURE__*/ S.Array(
+const SecurityAlertPropertiesResourceIdentifiersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SecurityAlertPropertiesResourceIdentifiersList>;
 
@@ -5949,7 +5930,7 @@ export interface SecurityAlertProperties {
   /** The list of resource identifiers of the alert. */
   resourceIdentifiers?: SecurityAlertPropertiesResourceIdentifiersList;
 }
-export const SecurityAlertProperties = /*@__PURE__*/ S.suspend(() =>
+const SecurityAlertProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalData: S.optional(SecurityAlertPropertiesAdditionalDataMap),
     friendlyName: S.optional(S.String),
@@ -5996,7 +5977,7 @@ export interface SecurityAlert {
   /** SecurityAlert entity properties */
   properties?: SecurityAlertProperties;
 }
-export const SecurityAlert = /*@__PURE__*/ S.suspend(() =>
+const SecurityAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6009,7 +5990,7 @@ export const SecurityAlert = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of incident alerts. */
 export type IncidentAlertListValueList = Array<SecurityAlert>;
-export const IncidentAlertListValueList = /*@__PURE__*/ S.Array(
+const IncidentAlertListValueList = /*@__PURE__*/ S.Array(
   SecurityAlert,
 ) as any as S.Schema<IncidentAlertListValueList>;
 
@@ -6018,7 +5999,7 @@ export interface IncidentAlertList {
   /** Array of incident alerts. */
   value: IncidentAlertListValueList;
 }
-export const IncidentAlertList = /*@__PURE__*/ S.suspend(() =>
+const IncidentAlertList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IncidentAlertListValueList,
   }),
@@ -6034,7 +6015,7 @@ export interface ListIncidentBookmarksRequest {
   /** Incident ID */
   incidentId: string;
 }
-export const ListIncidentBookmarksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentBookmarksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6054,12 +6035,12 @@ export const ListIncidentBookmarksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A bag of custom fields that should be part of the entity and will be presented to the user. */
 export type HuntingBookmarkPropertiesAdditionalDataMap = { [key: string]: unknown | undefined };
-export const HuntingBookmarkPropertiesAdditionalDataMap =
+const HuntingBookmarkPropertiesAdditionalDataMap =
   ThreatIntelligenceIndicatorPropertiesInputExtensionsMap as any as S.Schema<HuntingBookmarkPropertiesAdditionalDataMap>;
 
 /** List of labels relevant to this bookmark */
 export type HuntingBookmarkPropertiesLabelsList = Array<string>;
-export const HuntingBookmarkPropertiesLabelsList =
+const HuntingBookmarkPropertiesLabelsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<HuntingBookmarkPropertiesLabelsList>;
 
 /** Describes bookmark properties */
@@ -6091,7 +6072,7 @@ export interface HuntingBookmarkProperties {
   /** Describes an incident that relates to bookmark */
   incidentInfo?: IncidentInfo;
 }
-export const HuntingBookmarkProperties = /*@__PURE__*/ S.suspend(() =>
+const HuntingBookmarkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalData: S.optional(HuntingBookmarkPropertiesAdditionalDataMap),
     friendlyName: S.optional(S.String),
@@ -6126,7 +6107,7 @@ export interface HuntingBookmark {
   /** HuntingBookmark entity properties */
   properties?: HuntingBookmarkProperties;
 }
-export const HuntingBookmark = /*@__PURE__*/ S.suspend(() =>
+const HuntingBookmark = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6139,7 +6120,7 @@ export const HuntingBookmark = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of incident bookmarks. */
 export type IncidentBookmarkListValueList = Array<HuntingBookmark>;
-export const IncidentBookmarkListValueList = /*@__PURE__*/ S.Array(
+const IncidentBookmarkListValueList = /*@__PURE__*/ S.Array(
   HuntingBookmark,
 ) as any as S.Schema<IncidentBookmarkListValueList>;
 
@@ -6148,7 +6129,7 @@ export interface IncidentBookmarkList {
   /** Array of incident bookmarks. */
   value: IncidentBookmarkListValueList;
 }
-export const IncidentBookmarkList = /*@__PURE__*/ S.suspend(() =>
+const IncidentBookmarkList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IncidentBookmarkListValueList,
   }),
@@ -6172,7 +6153,7 @@ export interface ListIncidentCommentsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
-export const ListIncidentCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6209,7 +6190,7 @@ export interface IncidentComment {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentComment = /*@__PURE__*/ S.suspend(() =>
+const IncidentComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6222,7 +6203,7 @@ export const IncidentComment = /*@__PURE__*/ S.suspend(() =>
 
 /** The IncidentComment items on this page */
 export type IncidentCommentListValueList = Array<IncidentComment>;
-export const IncidentCommentListValueList = /*@__PURE__*/ S.Array(
+const IncidentCommentListValueList = /*@__PURE__*/ S.Array(
   IncidentComment,
 ) as any as S.Schema<IncidentCommentListValueList>;
 
@@ -6233,7 +6214,7 @@ export interface IncidentCommentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const IncidentCommentList = /*@__PURE__*/ S.suspend(() =>
+const IncidentCommentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IncidentCommentListValueList,
     nextLink: S.optional(S.String),
@@ -6250,7 +6231,7 @@ export interface ListIncidentEntitiesRequest {
   /** Incident ID */
   incidentId: string;
 }
-export const ListIncidentEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6281,11 +6262,9 @@ export interface Entity {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: EntityKindEnum;
 }
-export const Entity = AlertRuleTemplate as any as S.Schema<Entity>;
-
 /** Array of the incident related entities. */
 export type IncidentEntitiesResponseEntitiesList = Array<Entity>;
-export const IncidentEntitiesResponseEntitiesList =
+const IncidentEntitiesResponseEntitiesList =
   AlertRuleTemplatesListValueList as any as S.Schema<IncidentEntitiesResponseEntitiesList>;
 
 /** Information of a specific aggregation in the incident related entities result. */
@@ -6295,7 +6274,7 @@ export interface IncidentEntitiesResultsMetadata {
   /** Total number of aggregations of the given kind in the incident related entities result. */
   count: number;
 }
-export const IncidentEntitiesResultsMetadata = /*@__PURE__*/ S.suspend(() =>
+const IncidentEntitiesResultsMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityKind: EntityKindEnum,
     count: S.Number,
@@ -6306,7 +6285,7 @@ export const IncidentEntitiesResultsMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata from the incident related entities results. */
 export type IncidentEntitiesResponseMetaDataList = Array<IncidentEntitiesResultsMetadata>;
-export const IncidentEntitiesResponseMetaDataList = /*@__PURE__*/ S.Array(
+const IncidentEntitiesResponseMetaDataList = /*@__PURE__*/ S.Array(
   IncidentEntitiesResultsMetadata,
 ) as any as S.Schema<IncidentEntitiesResponseMetaDataList>;
 
@@ -6317,7 +6296,7 @@ export interface IncidentEntitiesResponse {
   /** The metadata from the incident related entities results. */
   metaData?: IncidentEntitiesResponseMetaDataList;
 }
-export const IncidentEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const IncidentEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entities: S.optional(IncidentEntitiesResponseEntitiesList),
     metaData: S.optional(IncidentEntitiesResponseMetaDataList),
@@ -6342,7 +6321,7 @@ export interface ListIncidentRelationsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
-export const ListIncidentRelationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentRelationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6379,7 +6358,7 @@ export interface Relation {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const Relation = /*@__PURE__*/ S.suspend(() =>
+const Relation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6392,7 +6371,7 @@ export const Relation = /*@__PURE__*/ S.suspend(() =>
 
 /** The Relation items on this page */
 export type RelationListValueList = Array<Relation>;
-export const RelationListValueList = /*@__PURE__*/ S.Array(
+const RelationListValueList = /*@__PURE__*/ S.Array(
   Relation,
 ) as any as S.Schema<RelationListValueList>;
 
@@ -6403,7 +6382,7 @@ export interface RelationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RelationList = /*@__PURE__*/ S.suspend(() =>
+const RelationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RelationListValueList,
     nextLink: S.optional(S.String),
@@ -6426,7 +6405,7 @@ export interface ListIncidentsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
-export const ListIncidentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6460,11 +6439,11 @@ export interface Incident {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const Incident = GetIncidentResponse as any as S.Schema<Incident>;
+const Incident = GetIncidentResponse as any as S.Schema<Incident>;
 
 /** The Incident items on this page */
 export type IncidentListValueList = Array<Incident>;
-export const IncidentListValueList = /*@__PURE__*/ S.Array(
+const IncidentListValueList = /*@__PURE__*/ S.Array(
   Incident,
 ) as any as S.Schema<IncidentListValueList>;
 
@@ -6475,7 +6454,7 @@ export interface IncidentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const IncidentList = /*@__PURE__*/ S.suspend(() =>
+const IncidentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IncidentListValueList,
     nextLink: S.optional(S.String),
@@ -6492,7 +6471,7 @@ export interface ListIncidentTasksRequest {
   /** Incident ID */
   incidentId: string;
 }
-export const ListIncidentTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIncidentTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6523,11 +6502,11 @@ export interface IncidentTask {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const IncidentTask = GetIncidentTaskResponse as any as S.Schema<IncidentTask>;
+const IncidentTask = GetIncidentTaskResponse as any as S.Schema<IncidentTask>;
 
 /** List of incident tasks. */
 export type IncidentTaskListValueList = Array<IncidentTask>;
-export const IncidentTaskListValueList = /*@__PURE__*/ S.Array(
+const IncidentTaskListValueList = /*@__PURE__*/ S.Array(
   IncidentTask,
 ) as any as S.Schema<IncidentTaskListValueList>;
 
@@ -6538,7 +6517,7 @@ export interface IncidentTaskList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const IncidentTaskList = /*@__PURE__*/ S.suspend(() =>
+const IncidentTaskList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(IncidentTaskListValueList),
     nextLink: S.optional(S.String),
@@ -6561,7 +6540,7 @@ export interface ListMetadataRequest {
   /** Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left. */
   _skip?: number;
 }
-export const ListMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6595,11 +6574,11 @@ export interface MetadataModel {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const MetadataModel = CreateMetadataResponse as any as S.Schema<MetadataModel>;
+const MetadataModel = CreateMetadataResponse as any as S.Schema<MetadataModel>;
 
 /** The MetadataModel items on this page */
 export type MetadataListValueList = Array<MetadataModel>;
-export const MetadataListValueList = /*@__PURE__*/ S.Array(
+const MetadataListValueList = /*@__PURE__*/ S.Array(
   MetadataModel,
 ) as any as S.Schema<MetadataListValueList>;
 
@@ -6610,7 +6589,7 @@ export interface MetadataList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MetadataList = /*@__PURE__*/ S.suspend(() =>
+const MetadataList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MetadataListValueList,
     nextLink: S.optional(S.String),
@@ -6618,7 +6597,7 @@ export const MetadataList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataList" }) as any as S.Schema<MetadataList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -6640,7 +6619,7 @@ export interface OperationDisplay {
   /** Resource name */
   resource?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     operation: S.optional(S.String),
@@ -6660,7 +6639,7 @@ export interface Operation {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display: S.optional(OperationDisplay),
     name: S.optional(S.String),
@@ -6671,7 +6650,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of operations */
 export type OperationsListValueList = Array<Operation>;
-export const OperationsListValueList = /*@__PURE__*/ S.Array(
+const OperationsListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListValueList>;
 
@@ -6682,7 +6661,7 @@ export interface OperationsList {
   /** Array of operations */
   value: OperationsListValueList;
 }
-export const OperationsList = /*@__PURE__*/ S.suspend(() =>
+const OperationsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: OperationsListValueList,
@@ -6707,7 +6686,7 @@ export interface ListProductPackagesRequest {
   /** Searches for a substring in the response. Optional. */
   _search?: string;
 }
-export const ListProductPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6744,7 +6723,7 @@ export interface ProductPackageModel {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const ProductPackageModel = /*@__PURE__*/ S.suspend(() =>
+const ProductPackageModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6757,7 +6736,7 @@ export const ProductPackageModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProductPackageModel items on this page */
 export type ProductPackageListValueList = Array<ProductPackageModel>;
-export const ProductPackageListValueList = /*@__PURE__*/ S.Array(
+const ProductPackageListValueList = /*@__PURE__*/ S.Array(
   ProductPackageModel,
 ) as any as S.Schema<ProductPackageListValueList>;
 
@@ -6768,7 +6747,7 @@ export interface ProductPackageList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ProductPackageList = /*@__PURE__*/ S.suspend(() =>
+const ProductPackageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ProductPackageListValueList,
     nextLink: S.optional(S.String),
@@ -6797,7 +6776,7 @@ export interface ListProductTemplatesRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
-export const ListProductTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6836,7 +6815,7 @@ export interface ProductTemplateModel {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const ProductTemplateModel = /*@__PURE__*/ S.suspend(() =>
+const ProductTemplateModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6849,7 +6828,7 @@ export const ProductTemplateModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProductTemplateModel items on this page */
 export type ProductTemplateListValueList = Array<ProductTemplateModel>;
-export const ProductTemplateListValueList = /*@__PURE__*/ S.Array(
+const ProductTemplateListValueList = /*@__PURE__*/ S.Array(
   ProductTemplateModel,
 ) as any as S.Schema<ProductTemplateListValueList>;
 
@@ -6860,7 +6839,7 @@ export interface ProductTemplateList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ProductTemplateList = /*@__PURE__*/ S.suspend(() =>
+const ProductTemplateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ProductTemplateListValueList,
     nextLink: S.optional(S.String),
@@ -6875,7 +6854,7 @@ export interface ListSecurityMLAnalyticsSettingsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6909,12 +6888,12 @@ export interface SecurityMLAnalyticsSetting {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
-export const SecurityMLAnalyticsSetting =
+const SecurityMLAnalyticsSetting =
   GetSecurityMLAnalyticsSettingsResponse as any as S.Schema<SecurityMLAnalyticsSetting>;
 
 /** The SecurityMLAnalyticsSetting items on this page */
 export type SecurityMLAnalyticsSettingsListValueList = Array<SecurityMLAnalyticsSetting>;
-export const SecurityMLAnalyticsSettingsListValueList = /*@__PURE__*/ S.Array(
+const SecurityMLAnalyticsSettingsListValueList = /*@__PURE__*/ S.Array(
   SecurityMLAnalyticsSetting,
 ) as any as S.Schema<SecurityMLAnalyticsSettingsListValueList>;
 
@@ -6925,7 +6904,7 @@ export interface SecurityMLAnalyticsSettingsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SecurityMLAnalyticsSettingsList = /*@__PURE__*/ S.suspend(() =>
+const SecurityMLAnalyticsSettingsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SecurityMLAnalyticsSettingsListValueList,
     nextLink: S.optional(S.String),
@@ -6942,7 +6921,7 @@ export interface ListSentinelOnboardingStatesRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
-export const ListSentinelOnboardingStatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSentinelOnboardingStatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6974,7 +6953,7 @@ export interface SentinelOnboardingState {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const SentinelOnboardingState = /*@__PURE__*/ S.suspend(() =>
+const SentinelOnboardingState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6987,7 +6966,7 @@ export const SentinelOnboardingState = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Sentinel onboarding states */
 export type SentinelOnboardingStatesListValueList = Array<SentinelOnboardingState>;
-export const SentinelOnboardingStatesListValueList = /*@__PURE__*/ S.Array(
+const SentinelOnboardingStatesListValueList = /*@__PURE__*/ S.Array(
   SentinelOnboardingState,
 ) as any as S.Schema<SentinelOnboardingStatesListValueList>;
 
@@ -6996,7 +6975,7 @@ export interface SentinelOnboardingStatesList {
   /** Array of Sentinel onboarding states */
   value: SentinelOnboardingStatesListValueList;
 }
-export const SentinelOnboardingStatesList = /*@__PURE__*/ S.suspend(() =>
+const SentinelOnboardingStatesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SentinelOnboardingStatesListValueList,
   }),
@@ -7014,7 +6993,7 @@ export interface ListSourceControlRepositoriesRequest {
   /** RepositoryAccess properties */
   properties: RepositoryAccessObject;
 }
-export const ListSourceControlRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSourceControlRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7034,8 +7013,7 @@ export const ListSourceControlRepositoriesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Array of branches. */
 export type RepoBranchesList = Array<string>;
-export const RepoBranchesList =
-  BookmarkPropertiesInputLabelsList as any as S.Schema<RepoBranchesList>;
+const RepoBranchesList = BookmarkPropertiesInputLabelsList as any as S.Schema<RepoBranchesList>;
 
 /** Represents a repository. */
 export interface Repo {
@@ -7048,7 +7026,7 @@ export interface Repo {
   /** Array of branches. */
   branches?: RepoBranchesList;
 }
-export const Repo = /*@__PURE__*/ S.suspend(() =>
+const Repo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     fullName: S.optional(S.String),
@@ -7059,7 +7037,7 @@ export const Repo = /*@__PURE__*/ S.suspend(() =>
 
 /** The Repo items on this page */
 export type RepoListValueList = Array<Repo>;
-export const RepoListValueList = /*@__PURE__*/ S.Array(Repo) as any as S.Schema<RepoListValueList>;
+const RepoListValueList = /*@__PURE__*/ S.Array(Repo) as any as S.Schema<RepoListValueList>;
 
 /** List all the source controls. */
 export interface RepoList {
@@ -7068,7 +7046,7 @@ export interface RepoList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RepoList = /*@__PURE__*/ S.suspend(() =>
+const RepoList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RepoListValueList,
     nextLink: S.optional(S.String),
@@ -7083,7 +7061,7 @@ export interface ListSourceControlsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListSourceControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSourceControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7115,11 +7093,11 @@ export interface SourceControl {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const SourceControl = GetSourceControlResponse as any as S.Schema<SourceControl>;
+const SourceControl = GetSourceControlResponse as any as S.Schema<SourceControl>;
 
 /** The SourceControl items on this page */
 export type SourceControlListValueList = Array<SourceControl>;
-export const SourceControlListValueList = /*@__PURE__*/ S.Array(
+const SourceControlListValueList = /*@__PURE__*/ S.Array(
   SourceControl,
 ) as any as S.Schema<SourceControlListValueList>;
 
@@ -7130,7 +7108,7 @@ export interface SourceControlList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SourceControlList = /*@__PURE__*/ S.suspend(() =>
+const SourceControlList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SourceControlListValueList,
     nextLink: S.optional(S.String),
@@ -7145,7 +7123,7 @@ export interface ListThreatIntelligenceIndicatorMetricsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
-export const ListThreatIntelligenceIndicatorMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatIntelligenceIndicatorMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7169,7 +7147,7 @@ export interface ThreatIntelligenceMetricEntity {
   /** Metric value */
   metricValue?: number;
 }
-export const ThreatIntelligenceMetricEntity = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceMetricEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricName: S.optional(S.String),
     metricValue: S.optional(S.Number),
@@ -7180,18 +7158,18 @@ export const ThreatIntelligenceMetricEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** Threat type metrics */
 export type ThreatIntelligenceMetricThreatTypeMetricsList = Array<ThreatIntelligenceMetricEntity>;
-export const ThreatIntelligenceMetricThreatTypeMetricsList = /*@__PURE__*/ S.Array(
+const ThreatIntelligenceMetricThreatTypeMetricsList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceMetricEntity,
 ) as any as S.Schema<ThreatIntelligenceMetricThreatTypeMetricsList>;
 
 /** Pattern type metrics */
 export type ThreatIntelligenceMetricPatternTypeMetricsList = Array<ThreatIntelligenceMetricEntity>;
-export const ThreatIntelligenceMetricPatternTypeMetricsList =
+const ThreatIntelligenceMetricPatternTypeMetricsList =
   ThreatIntelligenceMetricThreatTypeMetricsList as any as S.Schema<ThreatIntelligenceMetricPatternTypeMetricsList>;
 
 /** Source metrics */
 export type ThreatIntelligenceMetricSourceMetricsList = Array<ThreatIntelligenceMetricEntity>;
-export const ThreatIntelligenceMetricSourceMetricsList =
+const ThreatIntelligenceMetricSourceMetricsList =
   ThreatIntelligenceMetricThreatTypeMetricsList as any as S.Schema<ThreatIntelligenceMetricSourceMetricsList>;
 
 /** Describes threat intelligence metric */
@@ -7205,7 +7183,7 @@ export interface ThreatIntelligenceMetric {
   /** Source metrics */
   sourceMetrics?: ThreatIntelligenceMetricSourceMetricsList;
 }
-export const ThreatIntelligenceMetric = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdatedTimeUtc: S.optional(S.String),
     threatTypeMetrics: S.optional(ThreatIntelligenceMetricThreatTypeMetricsList),
@@ -7219,7 +7197,7 @@ export interface ThreatIntelligenceMetrics {
   /** Threat intelligence metrics. */
   properties?: ThreatIntelligenceMetric;
 }
-export const ThreatIntelligenceMetrics = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ThreatIntelligenceMetric),
   }),
@@ -7229,7 +7207,7 @@ export const ThreatIntelligenceMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of threat intelligence metric fields (type/threat type/source). */
 export type ThreatIntelligenceMetricsListValueList = Array<ThreatIntelligenceMetrics>;
-export const ThreatIntelligenceMetricsListValueList = /*@__PURE__*/ S.Array(
+const ThreatIntelligenceMetricsListValueList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceMetrics,
 ) as any as S.Schema<ThreatIntelligenceMetricsListValueList>;
 
@@ -7238,7 +7216,7 @@ export interface ThreatIntelligenceMetricsList {
   /** Array of threat intelligence metric fields (type/threat type/source). */
   value: ThreatIntelligenceMetricsListValueList;
 }
-export const ThreatIntelligenceMetricsList = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceMetricsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ThreatIntelligenceMetricsListValueList,
   }),
@@ -7262,7 +7240,7 @@ export interface ListThreatIntelligenceIndicatorsRequest {
   /** Sorts the results. Optional. */
   _orderby?: string;
 }
-export const ListThreatIntelligenceIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListThreatIntelligenceIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7298,12 +7276,12 @@ export interface ThreatIntelligenceInformation {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const ThreatIntelligenceInformation =
+const ThreatIntelligenceInformation =
   CreateThreatIntelligenceIndicatorResponse as any as S.Schema<ThreatIntelligenceInformation>;
 
 /** The ThreatIntelligenceInformation items on this page */
 export type ThreatIntelligenceInformationListValueList = Array<ThreatIntelligenceInformation>;
-export const ThreatIntelligenceInformationListValueList = /*@__PURE__*/ S.Array(
+const ThreatIntelligenceInformationListValueList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceInformation,
 ) as any as S.Schema<ThreatIntelligenceInformationListValueList>;
 
@@ -7314,7 +7292,7 @@ export interface ThreatIntelligenceInformationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ThreatIntelligenceInformationList = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceInformationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ThreatIntelligenceInformationListValueList,
     nextLink: S.optional(S.String),
@@ -7335,7 +7313,7 @@ export interface ListWatchlistItemsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
-export const ListWatchlistItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatchlistItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7369,11 +7347,11 @@ export interface WatchlistItem {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const WatchlistItem = GetWatchlistItemResponse as any as S.Schema<WatchlistItem>;
+const WatchlistItem = GetWatchlistItemResponse as any as S.Schema<WatchlistItem>;
 
 /** The WatchlistItem items on this page */
 export type WatchlistItemListValueList = Array<WatchlistItem>;
-export const WatchlistItemListValueList = /*@__PURE__*/ S.Array(
+const WatchlistItemListValueList = /*@__PURE__*/ S.Array(
   WatchlistItem,
 ) as any as S.Schema<WatchlistItemListValueList>;
 
@@ -7384,7 +7362,7 @@ export interface WatchlistItemList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WatchlistItemList = /*@__PURE__*/ S.suspend(() =>
+const WatchlistItemList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WatchlistItemListValueList,
     nextLink: S.optional(S.String),
@@ -7401,7 +7379,7 @@ export interface ListWatchlistsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
-export const ListWatchlistsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatchlistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7432,11 +7410,11 @@ export interface Watchlist {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const Watchlist = GetWatchlistResponse as any as S.Schema<Watchlist>;
+const Watchlist = GetWatchlistResponse as any as S.Schema<Watchlist>;
 
 /** The Watchlist items on this page */
 export type WatchlistListValueList = Array<Watchlist>;
-export const WatchlistListValueList = /*@__PURE__*/ S.Array(
+const WatchlistListValueList = /*@__PURE__*/ S.Array(
   Watchlist,
 ) as any as S.Schema<WatchlistListValueList>;
 
@@ -7447,7 +7425,7 @@ export interface WatchlistList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WatchlistList = /*@__PURE__*/ S.suspend(() =>
+const WatchlistList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WatchlistListValueList,
     nextLink: S.optional(S.String),
@@ -7470,7 +7448,7 @@ export interface ReplaceThreatIntelligenceIndicatorTagsRequest {
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
-export const ReplaceThreatIntelligenceIndicatorTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceThreatIntelligenceIndicatorTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7505,7 +7483,7 @@ export interface ReplaceThreatIntelligenceIndicatorTagsResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const ReplaceThreatIntelligenceIndicatorTagsResponse =
+const ReplaceThreatIntelligenceIndicatorTagsResponse =
   CreateThreatIntelligenceIndicatorResponse as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsResponse>;
 
 export interface RunEntityPlaybookRequest {
@@ -7524,7 +7502,7 @@ export interface RunEntityPlaybookRequest {
   /** The resource id of the playbook resource. */
   logicAppsResourceId: string;
 }
-export const RunEntityPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
+const RunEntityPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7544,7 +7522,7 @@ export const RunEntityPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunEntityPlaybookRequest" }) as any as S.Schema<RunEntityPlaybookRequest>;
 
 export interface RunEntityPlaybookResponse {}
-export const RunEntityPlaybookResponse =
+const RunEntityPlaybookResponse =
   DeleteActionResponse as any as S.Schema<RunEntityPlaybookResponse>;
 
 export interface RunIncidentPlaybookRequest {
@@ -7560,7 +7538,7 @@ export interface RunIncidentPlaybookRequest {
   /** Related Analytic rule resource id */
   logicAppsResourceId: string;
 }
-export const RunIncidentPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
+const RunIncidentPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7581,7 +7559,7 @@ export const RunIncidentPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunIncidentPlaybookRequest>;
 
 export interface RunIncidentPlaybookResponse {}
-export const RunIncidentPlaybookResponse =
+const RunIncidentPlaybookResponse =
   DeleteActionResponse as any as S.Schema<RunIncidentPlaybookResponse>;
 
 export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
@@ -7600,7 +7578,7 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
-export const SecurityMLAnalyticsSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SecurityMLAnalyticsSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7637,12 +7615,12 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateResponse {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
-export const SecurityMLAnalyticsSettingsCreateOrUpdateResponse =
+const SecurityMLAnalyticsSettingsCreateOrUpdateResponse =
   GetSecurityMLAnalyticsSettingsResponse as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateResponse>;
 
 /** List of tags to be appended. */
 export type ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList = Array<string>;
-export const ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList =
+const ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList =
   ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList>;
 
 export interface ThreatIntelligenceIndicatorAppendTagsRequest {
@@ -7657,7 +7635,7 @@ export interface ThreatIntelligenceIndicatorAppendTagsRequest {
   /** List of tags to be appended. */
   threatIntelligenceTags?: ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList;
 }
-export const ThreatIntelligenceIndicatorAppendTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceIndicatorAppendTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7679,12 +7657,12 @@ export const ThreatIntelligenceIndicatorAppendTagsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequest>;
 
 export interface ThreatIntelligenceIndicatorAppendTagsResponse {}
-export const ThreatIntelligenceIndicatorAppendTagsResponse =
+const ThreatIntelligenceIndicatorAppendTagsResponse =
   DeleteDataConnectorDefinitionResponse as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsResponse>;
 
 /** Sorting order (ascending/descending/unsorted). */
 export type ThreatIntelligenceSortingOrder = "unsorted" | "ascending" | "descending";
-export const ThreatIntelligenceSortingOrder = S.String;
+const ThreatIntelligenceSortingOrder = S.String;
 
 /** List of available columns for sorting */
 export interface ThreatIntelligenceSortingCriteria {
@@ -7693,7 +7671,7 @@ export interface ThreatIntelligenceSortingCriteria {
   /** Sorting order (ascending/descending/unsorted). */
   sortOrder?: ThreatIntelligenceSortingOrder | (string & {});
 }
-export const ThreatIntelligenceSortingCriteria = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceSortingCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemKey: S.optional(S.String),
     sortOrder: S.optional(ThreatIntelligenceSortingOrder),
@@ -7705,33 +7683,33 @@ export const ThreatIntelligenceSortingCriteria = /*@__PURE__*/ S.suspend(() =>
 /** Columns to sort by and sorting order */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList =
   Array<ThreatIntelligenceSortingCriteria>;
-export const ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList = /*@__PURE__*/ S.Array(
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceSortingCriteria,
 ) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList>;
 
 /** Sources of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList = Array<string>;
-export const ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList =
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList>;
 
 /** Pattern types */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList = Array<string>;
-export const ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList =
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList =
   ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList>;
 
 /** Threat types of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList = Array<string>;
-export const ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList =
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList =
   ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList>;
 
 /** Ids of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList = Array<string>;
-export const ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList =
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList>;
 
 /** Keywords for searching threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList = Array<string>;
-export const ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList =
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList>;
 
 export interface ThreatIntelligenceIndicatorQueryIndicatorsRequest {
@@ -7768,7 +7746,7 @@ export interface ThreatIntelligenceIndicatorQueryIndicatorsRequest {
   /** Skip token. */
   skipToken?: string;
 }
-export const ThreatIntelligenceIndicatorQueryIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ThreatIntelligenceIndicatorQueryIndicatorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7808,7 +7786,7 @@ export interface UninstallContentPackageRequest {
   /** package Id */
   packageId: string;
 }
-export const UninstallContentPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const UninstallContentPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7827,33 +7805,33 @@ export const UninstallContentPackageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UninstallContentPackageRequest>;
 
 export interface UninstallContentPackageResponse {}
-export const UninstallContentPackageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UninstallContentPackageResponse" },
-) as any as S.Schema<UninstallContentPackageResponse>;
+const UninstallContentPackageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "UninstallContentPackageResponse",
+}) as any as S.Schema<UninstallContentPackageResponse>;
 
 /** Providers for the solution content item */
 export type MetadataPropertiesPatchProvidersList = Array<string>;
-export const MetadataPropertiesPatchProvidersList =
+const MetadataPropertiesPatchProvidersList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchProvidersList>;
 
 /** the tactics the resource covers */
 export type MetadataPropertiesPatchThreatAnalysisTacticsList = Array<string>;
-export const MetadataPropertiesPatchThreatAnalysisTacticsList =
+const MetadataPropertiesPatchThreatAnalysisTacticsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type MetadataPropertiesPatchThreatAnalysisTechniquesList = Array<string>;
-export const MetadataPropertiesPatchThreatAnalysisTechniquesList =
+const MetadataPropertiesPatchThreatAnalysisTechniquesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
 export type MetadataPropertiesPatchPreviewImagesList = Array<string>;
-export const MetadataPropertiesPatchPreviewImagesList =
+const MetadataPropertiesPatchPreviewImagesList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type MetadataPropertiesPatchPreviewImagesDarkList = Array<string>;
-export const MetadataPropertiesPatchPreviewImagesDarkList =
+const MetadataPropertiesPatchPreviewImagesDarkList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchPreviewImagesDarkList>;
 
 /** Metadata property bag for patch requests. This is the same as the MetadataProperties, but with nothing required */
@@ -7897,7 +7875,7 @@ export interface MetadataPropertiesPatch {
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
   previewImagesDark?: MetadataPropertiesPatchPreviewImagesDarkList;
 }
-export const MetadataPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
+const MetadataPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentId: S.optional(S.String),
     parentId: S.optional(S.String),
@@ -7935,7 +7913,7 @@ export interface UpdateMetadataRequest {
   /** Metadata patch request body */
   properties?: MetadataPropertiesPatch;
 }
-export const UpdateMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7967,8 +7945,7 @@ export interface UpdateMetadataResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const UpdateMetadataResponse =
-  CreateMetadataResponse as any as S.Schema<UpdateMetadataResponse>;
+const UpdateMetadataResponse = CreateMetadataResponse as any as S.Schema<UpdateMetadataResponse>;
 
 /** Describes watchlist item properties */
 export interface WatchlistItemPropertiesInput {
@@ -7993,7 +7970,7 @@ export interface WatchlistItemPropertiesInput {
   /** key-value pairs for a watchlist item entity mapping */
   entityMapping?: unknown;
 }
-export const WatchlistItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WatchlistItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watchlistItemType: S.optional(S.String),
     watchlistItemId: S.optional(S.String),
@@ -8026,7 +8003,7 @@ export interface WatchlistItemsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8061,7 +8038,7 @@ export interface WatchlistItemsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const WatchlistItemsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const WatchlistItemsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8076,7 +8053,7 @@ export const WatchlistItemsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** List of labels relevant to this watchlist */
 export type WatchlistPropertiesInputLabelsList = Array<string>;
-export const WatchlistPropertiesInputLabelsList =
+const WatchlistPropertiesInputLabelsList =
   BookmarkPropertiesInputLabelsList as any as S.Schema<WatchlistPropertiesInputLabelsList>;
 
 /** Describes watchlist properties */
@@ -8124,7 +8101,7 @@ export interface WatchlistPropertiesInput {
   /** The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted */
   uploadStatus?: string;
 }
-export const WatchlistPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WatchlistPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watchlistId: S.optional(S.String),
     displayName: S.String,
@@ -8164,7 +8141,7 @@ export interface WatchlistsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8198,7 +8175,7 @@ export interface WatchlistsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
-export const WatchlistsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const WatchlistsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

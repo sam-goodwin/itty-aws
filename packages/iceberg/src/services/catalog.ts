@@ -266,12 +266,12 @@ export class UnsupportedOperationException
 export type CancelPlanningRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
-export const CancelPlanningRequestXIcebergAccessDelegationItem = S.String;
+const CancelPlanningRequestXIcebergAccessDelegationItem = S.String;
 
 export type CancelPlanningRequestXIcebergAccessDelegationList = Array<
   CancelPlanningRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const CancelPlanningRequestXIcebergAccessDelegationList = /*@__PURE__*/ S.Array(
+const CancelPlanningRequestXIcebergAccessDelegationList = /*@__PURE__*/ S.Array(
   CancelPlanningRequestXIcebergAccessDelegationItem,
 ) as any as S.Schema<CancelPlanningRequestXIcebergAccessDelegationList>;
 
@@ -287,7 +287,7 @@ export interface CancelPlanningRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
-export const CancelPlanningRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelPlanningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -310,19 +310,19 @@ export const CancelPlanningRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelPlanningRequest" }) as any as S.Schema<CancelPlanningRequest>;
 
 export interface CancelPlanningResponse {}
-export const CancelPlanningResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelPlanningResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CancelPlanningResponse" }) as any as S.Schema<CancelPlanningResponse>;
 
 /** Reference to one or more levels of a namespace */
 export type Namespace = Array<string>;
-export const Namespace = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Namespace>;
+const Namespace = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Namespace>;
 
 export interface TableIdentifier {
   namespace: Namespace;
   name: string;
 }
-export const TableIdentifier = /*@__PURE__*/ S.suspend(() =>
+const TableIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: Namespace,
     name: S.String,
@@ -332,14 +332,14 @@ export const TableIdentifier = /*@__PURE__*/ S.suspend(() =>
 export interface TableRequirement {
   type: string;
 }
-export const TableRequirement = /*@__PURE__*/ S.suspend(() =>
+const TableRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
   }),
 ).annotate({ identifier: "TableRequirement" }) as any as S.Schema<TableRequirement>;
 
 export type CommitTableRequestInputRequirementsList = Array<TableRequirement>;
-export const CommitTableRequestInputRequirementsList = /*@__PURE__*/ S.Array(
+const CommitTableRequestInputRequirementsList = /*@__PURE__*/ S.Array(
   TableRequirement,
 ) as any as S.Schema<CommitTableRequestInputRequirementsList>;
 
@@ -348,57 +348,21 @@ export interface AssignUUIDUpdate {
   action: string;
   uuid: string;
 }
-export const AssignUUIDUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    uuid: S.String,
-  }),
-).annotate({ identifier: "AssignUUIDUpdate" }) as any as S.Schema<AssignUUIDUpdate>;
-
 export interface UpgradeFormatVersionUpdate {
   action: string;
   format_version: number;
 }
-export const UpgradeFormatVersionUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    format_version: S.Number.pipe(T.Body("format-version")),
-  }),
-).annotate({
-  identifier: "UpgradeFormatVersionUpdate",
-}) as any as S.Schema<UpgradeFormatVersionUpdate>;
-
 export type StructTypeFieldsList = Array<StructField>;
-export const StructTypeFieldsList = /*@__PURE__*/ S.Array(
-  /*@__PURE__*/ S.suspend(() => StructField),
-) as any as S.Schema<StructTypeFieldsList>;
-
 export interface StructType {
   type: string;
   fields: StructTypeFieldsList;
 }
-export const StructType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    fields: StructTypeFieldsList,
-  }),
-).annotate({ identifier: "StructType" }) as any as S.Schema<StructType>;
-
 export interface ListType {
   type: string;
   element_id: number;
   element: Type;
   element_required: boolean;
 }
-export const ListType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    element_id: S.Number.pipe(T.Body("element-id")),
-    element: S.suspend(() => Type),
-    element_required: S.Boolean.pipe(T.Body("element-required")),
-  }),
-).annotate({ identifier: "ListType" }) as any as S.Schema<ListType>;
-
 export interface MapType {
   type: string;
   key_id: number;
@@ -407,22 +371,11 @@ export interface MapType {
   value: Type;
   value_required: boolean;
 }
-export const MapType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    key_id: S.Number.pipe(T.Body("key-id")),
-    key: S.suspend(() => Type),
-    value_id: S.Number.pipe(T.Body("value-id")),
-    value: S.suspend(() => Type),
-    value_required: S.Boolean.pipe(T.Body("value-required")),
-  }),
-).annotate({ identifier: "MapType" }) as any as S.Schema<MapType>;
-
 export type Type = string | StructType | ListType | MapType;
-export const Type = /*@__PURE__*/ S.Unknown as any as S.Schema<Type>;
+const Type = /*@__PURE__*/ S.Unknown as any as S.Schema<Type>;
 
 export type PrimitiveTypeValue = boolean | number | number | string;
-export const PrimitiveTypeValue = /*@__PURE__*/ S.Unknown as any as S.Schema<PrimitiveTypeValue>;
+const PrimitiveTypeValue = /*@__PURE__*/ S.Unknown as any as S.Schema<PrimitiveTypeValue>;
 
 export interface StructField {
   id: number;
@@ -433,7 +386,7 @@ export interface StructField {
   initial_default?: PrimitiveTypeValue;
   write_default?: PrimitiveTypeValue;
 }
-export const StructField = /*@__PURE__*/ S.suspend(() =>
+const StructField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -446,12 +399,12 @@ export const StructField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StructField" }) as any as S.Schema<StructField>;
 
 export type SchemaInputFieldsList = Array<StructField>;
-export const SchemaInputFieldsList = /*@__PURE__*/ S.Array(
+const SchemaInputFieldsList = /*@__PURE__*/ S.Array(
   StructField,
 ) as any as S.Schema<SchemaInputFieldsList>;
 
 export type SchemaInputIdentifierFieldIdsList = Array<number>;
-export const SchemaInputIdentifierFieldIdsList = /*@__PURE__*/ S.Array(
+const SchemaInputIdentifierFieldIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SchemaInputIdentifierFieldIdsList>;
 
@@ -460,7 +413,7 @@ export interface SchemaInput {
   fields: SchemaInputFieldsList;
   identifier_field_ids?: SchemaInputIdentifierFieldIdsList;
 }
-export const SchemaInput = /*@__PURE__*/ S.suspend(() =>
+const SchemaInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     fields: SchemaInputFieldsList,
@@ -476,33 +429,18 @@ export interface AddSchemaUpdateInput {
   /** This optional field is **DEPRECATED for REMOVAL** since it more safe to handle this internally, and shouldn't be exposed to the clients. The highest assigned column ID for the table. This is used to ensure columns are always assigned an unused ID when evolving schemas. When omitted, it will be computed on the server side. */
   last_column_id?: number;
 }
-export const AddSchemaUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    schema: SchemaInput,
-    last_column_id: S.optional(S.Number.pipe(T.Body("last-column-id"))),
-  }),
-).annotate({ identifier: "AddSchemaUpdateInput" }) as any as S.Schema<AddSchemaUpdateInput>;
-
 export interface SetCurrentSchemaUpdate {
   action: string;
   /** Schema ID to set as current, or -1 to set last added schema */
   schema_id: number;
 }
-export const SetCurrentSchemaUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    schema_id: S.Number.pipe(T.Body("schema-id")),
-  }),
-).annotate({ identifier: "SetCurrentSchemaUpdate" }) as any as S.Schema<SetCurrentSchemaUpdate>;
-
 export interface PartitionField {
   field_id?: number;
   source_id: number;
   name: string;
   transform: string;
 }
-export const PartitionField = /*@__PURE__*/ S.suspend(() =>
+const PartitionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field_id: S.optional(S.Number.pipe(T.Body("field-id"))),
     source_id: S.Number.pipe(T.Body("source-id")),
@@ -512,14 +450,14 @@ export const PartitionField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartitionField" }) as any as S.Schema<PartitionField>;
 
 export type PartitionSpecInputFieldsList = Array<PartitionField>;
-export const PartitionSpecInputFieldsList = /*@__PURE__*/ S.Array(
+const PartitionSpecInputFieldsList = /*@__PURE__*/ S.Array(
   PartitionField,
 ) as any as S.Schema<PartitionSpecInputFieldsList>;
 
 export interface PartitionSpecInput {
   fields: PartitionSpecInputFieldsList;
 }
-export const PartitionSpecInput = /*@__PURE__*/ S.suspend(() =>
+const PartitionSpecInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: PartitionSpecInputFieldsList,
   }),
@@ -529,32 +467,16 @@ export interface AddPartitionSpecUpdateInput {
   action: string;
   spec: PartitionSpecInput;
 }
-export const AddPartitionSpecUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    spec: PartitionSpecInput,
-  }),
-).annotate({
-  identifier: "AddPartitionSpecUpdateInput",
-}) as any as S.Schema<AddPartitionSpecUpdateInput>;
-
 export interface SetDefaultSpecUpdate {
   action: string;
   /** Partition spec ID to set as the default, or -1 to set last added spec */
   spec_id: number;
 }
-export const SetDefaultSpecUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    spec_id: S.Number.pipe(T.Body("spec-id")),
-  }),
-).annotate({ identifier: "SetDefaultSpecUpdate" }) as any as S.Schema<SetDefaultSpecUpdate>;
-
 export type SortDirection = "asc" | "desc";
-export const SortDirection = S.String;
+const SortDirection = S.String;
 
 export type NullOrder = "nulls-first" | "nulls-last";
-export const NullOrder = S.String;
+const NullOrder = S.String;
 
 export interface SortField {
   source_id: number;
@@ -562,7 +484,7 @@ export interface SortField {
   direction: SortDirection | (string & {});
   null_order: NullOrder | (string & {});
 }
-export const SortField = /*@__PURE__*/ S.suspend(() =>
+const SortField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_id: S.Number.pipe(T.Body("source-id")),
     transform: S.String,
@@ -572,14 +494,14 @@ export const SortField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SortField" }) as any as S.Schema<SortField>;
 
 export type SortOrderInputFieldsList = Array<SortField>;
-export const SortOrderInputFieldsList = /*@__PURE__*/ S.Array(
+const SortOrderInputFieldsList = /*@__PURE__*/ S.Array(
   SortField,
 ) as any as S.Schema<SortOrderInputFieldsList>;
 
 export interface SortOrderInput {
   fields: SortOrderInputFieldsList;
 }
-export const SortOrderInput = /*@__PURE__*/ S.suspend(() =>
+const SortOrderInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: SortOrderInputFieldsList,
   }),
@@ -589,34 +511,18 @@ export interface AddSortOrderUpdateInput {
   action: string;
   sort_order: SortOrderInput;
 }
-export const AddSortOrderUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    sort_order: SortOrderInput.pipe(T.Body("sort-order")),
-  }),
-).annotate({ identifier: "AddSortOrderUpdateInput" }) as any as S.Schema<AddSortOrderUpdateInput>;
-
 export interface SetDefaultSortOrderUpdate {
   action: string;
   /** Sort order ID to set as the default, or -1 to set last added sort order */
   sort_order_id: number;
 }
-export const SetDefaultSortOrderUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    sort_order_id: S.Number.pipe(T.Body("sort-order-id")),
-  }),
-).annotate({
-  identifier: "SetDefaultSortOrderUpdate",
-}) as any as S.Schema<SetDefaultSortOrderUpdate>;
-
 export type SnapshotSummaryOperation = "append" | "replace" | "overwrite" | "delete";
-export const SnapshotSummaryOperation = S.String;
+const SnapshotSummaryOperation = S.String;
 
 export interface SnapshotSummary {
   operation: SnapshotSummaryOperation | (string & {});
 }
-export const SnapshotSummary = /*@__PURE__*/ S.suspend(() =>
+const SnapshotSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: SnapshotSummaryOperation,
   }),
@@ -636,7 +542,7 @@ export interface Snapshot {
   summary: SnapshotSummary;
   schema_id?: number;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
     parent_snapshot_id: S.optional(S.Number.pipe(T.Body("parent-snapshot-id"))),
@@ -654,16 +560,7 @@ export interface AddSnapshotUpdate {
   action: string;
   snapshot: Snapshot;
 }
-export const AddSnapshotUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    snapshot: Snapshot,
-  }),
-).annotate({ identifier: "AddSnapshotUpdate" }) as any as S.Schema<AddSnapshotUpdate>;
-
 export type SetSnapshotRefUpdateType = "tag" | "branch";
-export const SetSnapshotRefUpdateType = S.String;
-
 export interface SetSnapshotRefUpdate {
   action: string;
   type: SetSnapshotRefUpdateType | (string & {});
@@ -673,57 +570,21 @@ export interface SetSnapshotRefUpdate {
   min_snapshots_to_keep?: number;
   ref_name: string;
 }
-export const SetSnapshotRefUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    type: SetSnapshotRefUpdateType,
-    snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
-    max_ref_age_ms: S.optional(S.Number.pipe(T.Body("max-ref-age-ms"))),
-    max_snapshot_age_ms: S.optional(S.Number.pipe(T.Body("max-snapshot-age-ms"))),
-    min_snapshots_to_keep: S.optional(S.Number.pipe(T.Body("min-snapshots-to-keep"))),
-    ref_name: S.String.pipe(T.Body("ref-name")),
-  }),
-).annotate({ identifier: "SetSnapshotRefUpdate" }) as any as S.Schema<SetSnapshotRefUpdate>;
-
 export type RemoveSnapshotsUpdateSnapshotIdsList = Array<number>;
-export const RemoveSnapshotsUpdateSnapshotIdsList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<RemoveSnapshotsUpdateSnapshotIdsList>;
-
 export interface RemoveSnapshotsUpdate {
   action: string;
   snapshot_ids: RemoveSnapshotsUpdateSnapshotIdsList;
 }
-export const RemoveSnapshotsUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    snapshot_ids: RemoveSnapshotsUpdateSnapshotIdsList.pipe(T.Body("snapshot-ids")),
-  }),
-).annotate({ identifier: "RemoveSnapshotsUpdate" }) as any as S.Schema<RemoveSnapshotsUpdate>;
-
 export interface RemoveSnapshotRefUpdate {
   action: string;
   ref_name: string;
 }
-export const RemoveSnapshotRefUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    ref_name: S.String.pipe(T.Body("ref-name")),
-  }),
-).annotate({ identifier: "RemoveSnapshotRefUpdate" }) as any as S.Schema<RemoveSnapshotRefUpdate>;
-
 export interface SetLocationUpdate {
   action: string;
   location: string;
 }
-export const SetLocationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    location: S.String,
-  }),
-).annotate({ identifier: "SetLocationUpdate" }) as any as S.Schema<SetLocationUpdate>;
-
 export type SetPropertiesUpdateUpdatesMap = { [key: string]: string | undefined };
-export const SetPropertiesUpdateUpdatesMap = /*@__PURE__*/ S.Record(
+const SetPropertiesUpdateUpdatesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<SetPropertiesUpdateUpdatesMap>;
@@ -732,15 +593,8 @@ export interface SetPropertiesUpdate {
   action: string;
   updates: SetPropertiesUpdateUpdatesMap;
 }
-export const SetPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    updates: SetPropertiesUpdateUpdatesMap,
-  }),
-).annotate({ identifier: "SetPropertiesUpdate" }) as any as S.Schema<SetPropertiesUpdate>;
-
 export type RemovePropertiesUpdateRemovalsList = Array<string>;
-export const RemovePropertiesUpdateRemovalsList = /*@__PURE__*/ S.Array(
+const RemovePropertiesUpdateRemovalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RemovePropertiesUpdateRemovalsList>;
 
@@ -748,19 +602,12 @@ export interface RemovePropertiesUpdate {
   action: string;
   removals: RemovePropertiesUpdateRemovalsList;
 }
-export const RemovePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    removals: RemovePropertiesUpdateRemovalsList,
-  }),
-).annotate({ identifier: "RemovePropertiesUpdate" }) as any as S.Schema<RemovePropertiesUpdate>;
-
 export type BlobMetadataFieldsList = Array<number>;
-export const BlobMetadataFieldsList =
+const BlobMetadataFieldsList =
   SchemaInputIdentifierFieldIdsList as any as S.Schema<BlobMetadataFieldsList>;
 
 export type BlobMetadataPropertiesMap = { [key: string]: string | undefined };
-export const BlobMetadataPropertiesMap =
+const BlobMetadataPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<BlobMetadataPropertiesMap>;
 
 export interface BlobMetadata {
@@ -770,7 +617,7 @@ export interface BlobMetadata {
   fields: BlobMetadataFieldsList;
   properties?: BlobMetadataPropertiesMap;
 }
-export const BlobMetadata = /*@__PURE__*/ S.suspend(() =>
+const BlobMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
@@ -781,7 +628,7 @@ export const BlobMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlobMetadata" }) as any as S.Schema<BlobMetadata>;
 
 export type StatisticsFileBlobMetadataList = Array<BlobMetadata>;
-export const StatisticsFileBlobMetadataList = /*@__PURE__*/ S.Array(
+const StatisticsFileBlobMetadataList = /*@__PURE__*/ S.Array(
   BlobMetadata,
 ) as any as S.Schema<StatisticsFileBlobMetadataList>;
 
@@ -792,7 +639,7 @@ export interface StatisticsFile {
   file_footer_size_in_bytes: number;
   blob_metadata: StatisticsFileBlobMetadataList;
 }
-export const StatisticsFile = /*@__PURE__*/ S.suspend(() =>
+const StatisticsFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
     statistics_path: S.String.pipe(T.Body("statistics-path")),
@@ -808,31 +655,16 @@ export interface SetStatisticsUpdate {
   snapshot_id?: number;
   statistics: StatisticsFile;
 }
-export const SetStatisticsUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    snapshot_id: S.optional(S.Number.pipe(T.Body("snapshot-id"))),
-    statistics: StatisticsFile,
-  }),
-).annotate({ identifier: "SetStatisticsUpdate" }) as any as S.Schema<SetStatisticsUpdate>;
-
 export interface RemoveStatisticsUpdate {
   action: string;
   snapshot_id: number;
 }
-export const RemoveStatisticsUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
-  }),
-).annotate({ identifier: "RemoveStatisticsUpdate" }) as any as S.Schema<RemoveStatisticsUpdate>;
-
 export interface PartitionStatisticsFile {
   snapshot_id: number;
   statistics_path: string;
   file_size_in_bytes: number;
 }
-export const PartitionStatisticsFile = /*@__PURE__*/ S.suspend(() =>
+const PartitionStatisticsFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
     statistics_path: S.String.pipe(T.Body("statistics-path")),
@@ -844,52 +676,19 @@ export interface SetPartitionStatisticsUpdate {
   action: string;
   partition_statistics: PartitionStatisticsFile;
 }
-export const SetPartitionStatisticsUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    partition_statistics: PartitionStatisticsFile.pipe(T.Body("partition-statistics")),
-  }),
-).annotate({
-  identifier: "SetPartitionStatisticsUpdate",
-}) as any as S.Schema<SetPartitionStatisticsUpdate>;
-
 export type RemovePartitionStatisticsUpdate = RemoveStatisticsUpdate;
-export const RemovePartitionStatisticsUpdate = RemoveStatisticsUpdate;
-
 export type RemovePartitionSpecsUpdateSpecIdsList = Array<number>;
-export const RemovePartitionSpecsUpdateSpecIdsList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<RemovePartitionSpecsUpdateSpecIdsList>;
-
 export interface RemovePartitionSpecsUpdate {
   action: string;
   spec_ids: RemovePartitionSpecsUpdateSpecIdsList;
 }
-export const RemovePartitionSpecsUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    spec_ids: RemovePartitionSpecsUpdateSpecIdsList.pipe(T.Body("spec-ids")),
-  }),
-).annotate({
-  identifier: "RemovePartitionSpecsUpdate",
-}) as any as S.Schema<RemovePartitionSpecsUpdate>;
-
 export type RemoveSchemasUpdateSchemaIdsList = Array<number>;
-export const RemoveSchemasUpdateSchemaIdsList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<RemoveSchemasUpdateSchemaIdsList>;
-
 export interface RemoveSchemasUpdate {
   action: string;
   schema_ids: RemoveSchemasUpdateSchemaIdsList;
 }
-export const RemoveSchemasUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    schema_ids: RemoveSchemasUpdateSchemaIdsList.pipe(T.Body("schema-ids")),
-  }),
-).annotate({ identifier: "RemoveSchemasUpdate" }) as any as S.Schema<RemoveSchemasUpdate>;
-
 export type EncryptedKeyPropertiesMap = { [key: string]: string | undefined };
-export const EncryptedKeyPropertiesMap =
+const EncryptedKeyPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<EncryptedKeyPropertiesMap>;
 
 export interface EncryptedKey {
@@ -898,7 +697,7 @@ export interface EncryptedKey {
   encrypted_by_id?: string;
   properties?: EncryptedKeyPropertiesMap;
 }
-export const EncryptedKey = /*@__PURE__*/ S.suspend(() =>
+const EncryptedKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.String.pipe(T.Body("key-id")),
     encrypted_key_metadata: S.String.pipe(T.Body("encrypted-key-metadata")),
@@ -911,26 +710,10 @@ export interface AddEncryptionKeyUpdate {
   action: string;
   encryption_key: EncryptedKey;
 }
-export const AddEncryptionKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    encryption_key: EncryptedKey.pipe(T.Body("encryption-key")),
-  }),
-).annotate({ identifier: "AddEncryptionKeyUpdate" }) as any as S.Schema<AddEncryptionKeyUpdate>;
-
 export interface RemoveEncryptionKeyUpdate {
   action: string;
   key_id: string;
 }
-export const RemoveEncryptionKeyUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    key_id: S.String.pipe(T.Body("key-id")),
-  }),
-).annotate({
-  identifier: "RemoveEncryptionKeyUpdate",
-}) as any as S.Schema<RemoveEncryptionKeyUpdate>;
-
 export type TableUpdateInput =
   | AssignUUIDUpdate
   | UpgradeFormatVersionUpdate
@@ -955,10 +738,10 @@ export type TableUpdateInput =
   | RemoveSchemasUpdate
   | AddEncryptionKeyUpdate
   | RemoveEncryptionKeyUpdate;
-export const TableUpdateInput = /*@__PURE__*/ S.Unknown as any as S.Schema<TableUpdateInput>;
+const TableUpdateInput = /*@__PURE__*/ S.Unknown as any as S.Schema<TableUpdateInput>;
 
 export type CommitTableRequestInputUpdatesList = Array<TableUpdateInput>;
-export const CommitTableRequestInputUpdatesList = /*@__PURE__*/ S.Array(
+const CommitTableRequestInputUpdatesList = /*@__PURE__*/ S.Array(
   TableUpdateInput,
 ) as any as S.Schema<CommitTableRequestInputUpdatesList>;
 
@@ -968,7 +751,7 @@ export interface CommitTableRequestInput {
   requirements: CommitTableRequestInputRequirementsList;
   updates: CommitTableRequestInputUpdatesList;
 }
-export const CommitTableRequestInput = /*@__PURE__*/ S.suspend(() =>
+const CommitTableRequestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(TableIdentifier),
     requirements: CommitTableRequestInputRequirementsList,
@@ -977,7 +760,7 @@ export const CommitTableRequestInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitTableRequestInput" }) as any as S.Schema<CommitTableRequestInput>;
 
 export type CommitTransactionRequestTableChangesList = Array<CommitTableRequestInput>;
-export const CommitTransactionRequestTableChangesList = /*@__PURE__*/ S.Array(
+const CommitTransactionRequestTableChangesList = /*@__PURE__*/ S.Array(
   CommitTableRequestInput,
 ) as any as S.Schema<CommitTransactionRequestTableChangesList>;
 
@@ -986,7 +769,7 @@ export interface CommitTransactionRequest {
   idempotencyKey?: string;
   table_changes: CommitTransactionRequestTableChangesList;
 }
-export const CommitTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
     table_changes: CommitTransactionRequestTableChangesList.pipe(T.Body("table-changes")),
@@ -996,7 +779,7 @@ export const CommitTransactionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitTransactionRequest" }) as any as S.Schema<CommitTransactionRequest>;
 
 export interface CommitTransactionResponse {}
-export const CommitTransactionResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitTransactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CommitTransactionResponse",
@@ -1004,7 +787,7 @@ export const CommitTransactionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Configured string to string map of properties for the namespace */
 export type CreateNamespaceRequestPropertiesMap = { [key: string]: string | undefined };
-export const CreateNamespaceRequestPropertiesMap =
+const CreateNamespaceRequestPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<CreateNamespaceRequestPropertiesMap>;
 
 export interface CreateNamespaceRequest {
@@ -1014,7 +797,7 @@ export interface CreateNamespaceRequest {
   /** Configured string to string map of properties for the namespace */
   properties?: CreateNamespaceRequestPropertiesMap;
 }
-export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
     namespace: Namespace,
@@ -1026,7 +809,7 @@ export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties stored on the namespace, if supported by the server. */
 export type CreateNamespaceResponsePropertiesMap = { [key: string]: string | undefined };
-export const CreateNamespaceResponsePropertiesMap =
+const CreateNamespaceResponsePropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<CreateNamespaceResponsePropertiesMap>;
 
 export interface CreateNamespaceResponse {
@@ -1034,7 +817,7 @@ export interface CreateNamespaceResponse {
   /** Properties stored on the namespace, if supported by the server. */
   properties?: CreateNamespaceResponsePropertiesMap;
 }
-export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: Namespace,
     properties: S.optional(CreateNamespaceResponsePropertiesMap),
@@ -1044,16 +827,14 @@ export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateTableRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
-export const CreateTableRequestXIcebergAccessDelegationItem = S.String;
-
 export type CreateTableRequestXIcebergAccessDelegationList = Array<
   CreateTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const CreateTableRequestXIcebergAccessDelegationList =
+const CreateTableRequestXIcebergAccessDelegationList =
   CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<CreateTableRequestXIcebergAccessDelegationList>;
 
 export type CreateTableRequestPropertiesMap = { [key: string]: string | undefined };
-export const CreateTableRequestPropertiesMap =
+const CreateTableRequestPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<CreateTableRequestPropertiesMap>;
 
 export interface CreateTableRequest {
@@ -1071,7 +852,7 @@ export interface CreateTableRequest {
   stage_create?: boolean;
   properties?: CreateTableRequestPropertiesMap;
 }
-export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     xIcebergAccessDelegation: S.optional(
@@ -1091,14 +872,14 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTableRequest" }) as any as S.Schema<CreateTableRequest>;
 
 export type TableMetadataPropertiesMap = { [key: string]: string | undefined };
-export const TableMetadataPropertiesMap =
+const TableMetadataPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<TableMetadataPropertiesMap>;
 
 export type SchemaFieldsList = Array<StructField>;
-export const SchemaFieldsList = SchemaInputFieldsList as any as S.Schema<SchemaFieldsList>;
+const SchemaFieldsList = SchemaInputFieldsList as any as S.Schema<SchemaFieldsList>;
 
 export type SchemaIdentifierFieldIdsList = Array<number>;
-export const SchemaIdentifierFieldIdsList =
+const SchemaIdentifierFieldIdsList =
   SchemaInputIdentifierFieldIdsList as any as S.Schema<SchemaIdentifierFieldIdsList>;
 
 export interface Schema {
@@ -1107,7 +888,7 @@ export interface Schema {
   schema_id?: number;
   identifier_field_ids?: SchemaIdentifierFieldIdsList;
 }
-export const Schema = /*@__PURE__*/ S.suspend(() =>
+const Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     fields: SchemaFieldsList,
@@ -1119,19 +900,19 @@ export const Schema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema" }) as any as S.Schema<Schema>;
 
 export type TableMetadataSchemasList = Array<Schema>;
-export const TableMetadataSchemasList = /*@__PURE__*/ S.Array(
+const TableMetadataSchemasList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<TableMetadataSchemasList>;
 
 export type PartitionSpecFieldsList = Array<PartitionField>;
-export const PartitionSpecFieldsList =
+const PartitionSpecFieldsList =
   PartitionSpecInputFieldsList as any as S.Schema<PartitionSpecFieldsList>;
 
 export interface PartitionSpec {
   spec_id?: number;
   fields: PartitionSpecFieldsList;
 }
-export const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
+const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spec_id: S.optional(S.Number.pipe(T.Body("spec-id"))),
     fields: PartitionSpecFieldsList,
@@ -1139,18 +920,18 @@ export const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartitionSpec" }) as any as S.Schema<PartitionSpec>;
 
 export type TableMetadataPartitionSpecsList = Array<PartitionSpec>;
-export const TableMetadataPartitionSpecsList = /*@__PURE__*/ S.Array(
+const TableMetadataPartitionSpecsList = /*@__PURE__*/ S.Array(
   PartitionSpec,
 ) as any as S.Schema<TableMetadataPartitionSpecsList>;
 
 export type SortOrderFieldsList = Array<SortField>;
-export const SortOrderFieldsList = SortOrderInputFieldsList as any as S.Schema<SortOrderFieldsList>;
+const SortOrderFieldsList = SortOrderInputFieldsList as any as S.Schema<SortOrderFieldsList>;
 
 export interface SortOrder {
   order_id: number;
   fields: SortOrderFieldsList;
 }
-export const SortOrder = /*@__PURE__*/ S.suspend(() =>
+const SortOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.Number.pipe(T.Body("order-id")),
     fields: SortOrderFieldsList,
@@ -1158,22 +939,22 @@ export const SortOrder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SortOrder" }) as any as S.Schema<SortOrder>;
 
 export type TableMetadataSortOrdersList = Array<SortOrder>;
-export const TableMetadataSortOrdersList = /*@__PURE__*/ S.Array(
+const TableMetadataSortOrdersList = /*@__PURE__*/ S.Array(
   SortOrder,
 ) as any as S.Schema<TableMetadataSortOrdersList>;
 
 export type TableMetadataEncryptionKeysList = Array<EncryptedKey>;
-export const TableMetadataEncryptionKeysList = /*@__PURE__*/ S.Array(
+const TableMetadataEncryptionKeysList = /*@__PURE__*/ S.Array(
   EncryptedKey,
 ) as any as S.Schema<TableMetadataEncryptionKeysList>;
 
 export type TableMetadataSnapshotsList = Array<Snapshot>;
-export const TableMetadataSnapshotsList = /*@__PURE__*/ S.Array(
+const TableMetadataSnapshotsList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<TableMetadataSnapshotsList>;
 
 export type SnapshotReferenceType = "tag" | "branch";
-export const SnapshotReferenceType = S.String;
+const SnapshotReferenceType = S.String;
 
 export interface SnapshotReference {
   type: SnapshotReferenceType;
@@ -1182,7 +963,7 @@ export interface SnapshotReference {
   max_snapshot_age_ms?: number;
   min_snapshots_to_keep?: number;
 }
-export const SnapshotReference = /*@__PURE__*/ S.suspend(() =>
+const SnapshotReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SnapshotReferenceType,
     snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
@@ -1193,7 +974,7 @@ export const SnapshotReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotReference" }) as any as S.Schema<SnapshotReference>;
 
 export type SnapshotReferences = { [key: string]: SnapshotReference | undefined };
-export const SnapshotReferences = /*@__PURE__*/ S.Record(
+const SnapshotReferences = /*@__PURE__*/ S.Record(
   S.String,
   SnapshotReference,
 ) as any as S.Schema<SnapshotReferences>;
@@ -1202,7 +983,7 @@ export interface SnapshotLogItem {
   snapshot_id: number;
   timestamp_ms: number;
 }
-export const SnapshotLogItem = /*@__PURE__*/ S.suspend(() =>
+const SnapshotLogItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
     timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
@@ -1210,13 +991,13 @@ export const SnapshotLogItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotLogItem" }) as any as S.Schema<SnapshotLogItem>;
 
 export type SnapshotLog = Array<SnapshotLogItem>;
-export const SnapshotLog = /*@__PURE__*/ S.Array(SnapshotLogItem) as any as S.Schema<SnapshotLog>;
+const SnapshotLog = /*@__PURE__*/ S.Array(SnapshotLogItem) as any as S.Schema<SnapshotLog>;
 
 export interface MetadataLogItem {
   metadata_file: string;
   timestamp_ms: number;
 }
-export const MetadataLogItem = /*@__PURE__*/ S.suspend(() =>
+const MetadataLogItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata_file: S.String.pipe(T.Body("metadata-file")),
     timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
@@ -1224,15 +1005,15 @@ export const MetadataLogItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataLogItem" }) as any as S.Schema<MetadataLogItem>;
 
 export type MetadataLog = Array<MetadataLogItem>;
-export const MetadataLog = /*@__PURE__*/ S.Array(MetadataLogItem) as any as S.Schema<MetadataLog>;
+const MetadataLog = /*@__PURE__*/ S.Array(MetadataLogItem) as any as S.Schema<MetadataLog>;
 
 export type TableMetadataStatisticsList = Array<StatisticsFile>;
-export const TableMetadataStatisticsList = /*@__PURE__*/ S.Array(
+const TableMetadataStatisticsList = /*@__PURE__*/ S.Array(
   StatisticsFile,
 ) as any as S.Schema<TableMetadataStatisticsList>;
 
 export type TableMetadataPartitionStatisticsList = Array<PartitionStatisticsFile>;
-export const TableMetadataPartitionStatisticsList = /*@__PURE__*/ S.Array(
+const TableMetadataPartitionStatisticsList = /*@__PURE__*/ S.Array(
   PartitionStatisticsFile,
 ) as any as S.Schema<TableMetadataPartitionStatisticsList>;
 
@@ -1262,7 +1043,7 @@ export interface TableMetadata {
   statistics?: TableMetadataStatisticsList;
   partition_statistics?: TableMetadataPartitionStatisticsList;
 }
-export const TableMetadata = /*@__PURE__*/ S.suspend(() =>
+const TableMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format_version: S.Number.pipe(T.Body("format-version")),
     table_uuid: S.String.pipe(T.Body("table-uuid")),
@@ -1293,11 +1074,11 @@ export const TableMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableMetadata" }) as any as S.Schema<TableMetadata>;
 
 export type LoadTableResultConfigMap = { [key: string]: string | undefined };
-export const LoadTableResultConfigMap =
+const LoadTableResultConfigMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<LoadTableResultConfigMap>;
 
 export type StorageCredentialConfigMap = { [key: string]: string | undefined };
-export const StorageCredentialConfigMap =
+const StorageCredentialConfigMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<StorageCredentialConfigMap>;
 
 export interface StorageCredential {
@@ -1305,7 +1086,7 @@ export interface StorageCredential {
   prefix: string;
   config: StorageCredentialConfigMap;
 }
-export const StorageCredential = /*@__PURE__*/ S.suspend(() =>
+const StorageCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.String,
     config: StorageCredentialConfigMap,
@@ -1313,22 +1094,22 @@ export const StorageCredential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageCredential" }) as any as S.Schema<StorageCredential>;
 
 export type LoadTableResultStorageCredentialsList = Array<StorageCredential>;
-export const LoadTableResultStorageCredentialsList = /*@__PURE__*/ S.Array(
+const LoadTableResultStorageCredentialsList = /*@__PURE__*/ S.Array(
   StorageCredential,
 ) as any as S.Schema<LoadTableResultStorageCredentialsList>;
 
 /** Static key-value pairs the signer client MUST pass through unchanged in the `properties` field of every `RemoteSignRequest` sent to the signing endpoint. */
 export type RemoteSigningConfigPropertiesMap = { [key: string]: string | undefined };
-export const RemoteSigningConfigPropertiesMap =
+const RemoteSigningConfigPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<RemoteSigningConfigPropertiesMap>;
 
 export type MultiValuedMapValueList = Array<string>;
-export const MultiValuedMapValueList =
+const MultiValuedMapValueList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<MultiValuedMapValueList>;
 
 /** A map of string keys where each key can map to multiple string values. */
 export type MultiValuedMap = { [key: string]: MultiValuedMapValueList | undefined };
-export const MultiValuedMap = /*@__PURE__*/ S.Record(
+const MultiValuedMap = /*@__PURE__*/ S.Record(
   S.String,
   MultiValuedMapValueList,
 ) as any as S.Schema<MultiValuedMap>;
@@ -1340,7 +1121,7 @@ export interface RemoteSigningConfig {
   /** Static headers the signer client MUST include unchanged in every request to the signing endpoint. */
   headers?: MultiValuedMap;
 }
-export const RemoteSigningConfig = /*@__PURE__*/ S.suspend(() =>
+const RemoteSigningConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(RemoteSigningConfigPropertiesMap),
     headers: S.optional(MultiValuedMap),
@@ -1352,7 +1133,7 @@ export interface Action {
   /** Field ID of the column being projected. */
   field_id: number;
 }
-export const Action = /*@__PURE__*/ S.suspend(() =>
+const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     field_id: S.Number.pipe(T.Body("field-id")),
@@ -1361,150 +1142,70 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of columns that require specific actions to be applied when reading. A server must not return an action for a column whose type is not listed in that action's "Applicable to" set. If absent or empty, no required actions apply; columns not listed are not subject to any required action. 1. For each column listed, the reader must apply the specified action before returning values for that column. 2. The reader must replace all output references to the column with the result of the action, presenting the result under the original field-id. For example, if the action for field-id `9` is mask-alphanum, the reader must return the masked value as field-id `9` in the query output. 3. A server must not return more than one projection for the same field-id in required-column-projections. If a duplicate field-id appears, the reader must fail the query. 4. A server must not return a projection that targets a map's key field-id; a reader that receives one must fail the query. Applying an action to keys can produce duplicate or null keys, which readers silently coalesce or reject, causing data loss. 5. A reader must enforce projections on the columns it is actually reading. Projections referencing columns that are not being read do not apply. 6. A server must not return projections on both a nested-typed field (struct, list, or map) and any field-id nested within it at any depth. A reader that receives such a response must fail the query. */
 export type ReadRestrictionsRequiredColumnProjectionsList = Array<Action>;
-export const ReadRestrictionsRequiredColumnProjectionsList = /*@__PURE__*/ S.Array(
+const ReadRestrictionsRequiredColumnProjectionsList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ReadRestrictionsRequiredColumnProjectionsList>;
 
 /** Deprecated. Use the bare boolean literal `true` as a predicate instead. */
 export type TrueExpression = TableRequirement;
-export const TrueExpression = TableRequirement;
-
 /** Deprecated. Use the bare boolean literal `false` as a predicate instead. */
 export type FalseExpression = TableRequirement;
-export const FalseExpression = TableRequirement;
-
 export interface AndOrPredicate {
   type: string;
   left: Predicate;
   right: Predicate;
 }
-export const AndOrPredicate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    left: S.suspend(() => Predicate),
-    right: S.suspend(() => Predicate),
-  }),
-).annotate({ identifier: "AndOrPredicate" }) as any as S.Schema<AndOrPredicate>;
-
 export interface NotPredicate {
   type: string;
   child: Predicate;
 }
-export const NotPredicate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    child: S.suspend(() => Predicate),
-  }),
-).annotate({ identifier: "NotPredicate" }) as any as S.Schema<NotPredicate>;
-
 export interface LiteralCase1 {
   type: string;
   value: PrimitiveTypeValue;
   data_type?: string;
 }
-export const LiteralCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    value: PrimitiveTypeValue,
-    data_type: S.optional(S.String.pipe(T.Body("data-type"))),
-  }),
-).annotate({ identifier: "LiteralCase1" }) as any as S.Schema<LiteralCase1>;
-
 /** A literal is either a bare value, an untyped literal object, or a typed literal object. */
 export type Literal = PrimitiveTypeValue | LiteralCase1;
-export const Literal = /*@__PURE__*/ S.Unknown as any as S.Schema<Literal>;
-
 /** A bound reference to a field by field ID. */
 export interface IdReference {
   type: string;
   id: number;
 }
-export const IdReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.Number,
-  }),
-).annotate({ identifier: "IdReference" }) as any as S.Schema<IdReference>;
-
 /** An unbound reference to a field by name. */
 export interface NamedReference {
   type: string;
   name: string;
 }
-export const NamedReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "NamedReference" }) as any as S.Schema<NamedReference>;
-
 /** A reference to a field. Either a bound reference (by field ID) or an unbound reference (by name). The context in which an expression is used determines which form is valid. */
 export type Reference = IdReference | NamedReference;
-export const Reference = /*@__PURE__*/ S.Unknown as any as S.Schema<Reference>;
-
 /** Reference to a catalog object (for example, table, view, or namespace) as an ordered list of hierarchical levels. The object kind is determined by context (e.g. the endpoint or a companion type discriminator), not by the identifier structure alone. */
 export type CatalogObjectIdentifier = Array<string>;
-export const CatalogObjectIdentifier =
+const CatalogObjectIdentifier =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<CatalogObjectIdentifier>;
 
 export interface ApplyFunctionCase2 {
   catalog?: string;
   identifier: CatalogObjectIdentifier;
 }
-export const ApplyFunctionCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    catalog: S.optional(S.String),
-    identifier: CatalogObjectIdentifier,
-  }),
-).annotate({ identifier: "ApplyFunctionCase2" }) as any as S.Schema<ApplyFunctionCase2>;
-
 export type ApplyFunction = string | CatalogObjectIdentifier | ApplyFunctionCase2;
-export const ApplyFunction = /*@__PURE__*/ S.Unknown as any as S.Schema<ApplyFunction>;
-
 export type FunctionArgument = ValueExpression | Predicate;
-export const FunctionArgument = /*@__PURE__*/ S.Unknown as any as S.Schema<FunctionArgument>;
-
 export type ApplyArgumentsList = Array<FunctionArgument>;
-export const ApplyArgumentsList = /*@__PURE__*/ S.Array(
-  FunctionArgument,
-) as any as S.Schema<ApplyArgumentsList>;
-
 /** A function application on zero or more value expressions or predicates. */
 export interface Apply {
   type: string;
   function: ApplyFunction;
   arguments: ApplyArgumentsList;
 }
-export const Apply = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    function: ApplyFunction,
-    arguments: ApplyArgumentsList,
-  }),
-).annotate({ identifier: "Apply" }) as any as S.Schema<Apply>;
-
 /** A value expression: a literal, a field reference, or a function application. */
 export type ValueExpression = Literal | Reference | Apply;
-export const ValueExpression = /*@__PURE__*/ S.Unknown as any as S.Schema<ValueExpression>;
-
 /** Deprecated. Legacy transform-applied-to-a-term form. Use Apply with a Reference argument instead. */
 export interface TransformTerm {
   type: string;
   transform: string;
   term: string;
 }
-export const TransformTerm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    transform: S.String,
-    term: S.String,
-  }),
-).annotate({ identifier: "TransformTerm" }) as any as S.Schema<TransformTerm>;
-
 /** Deprecated. Legacy term form used by older REST predicates. Use Reference or Apply instead. */
 export type Term = string | TransformTerm;
-export const Term = /*@__PURE__*/ S.Unknown as any as S.Schema<Term>;
-
 /** A predicate that tests a single value expression. Accepts either 'child' (preferred) or 'term' (deprecated) to identify the operand. */
 export interface UnaryPredicate {
   type: string;
@@ -1512,14 +1213,6 @@ export interface UnaryPredicate {
   /** Deprecated. Use 'child' instead. */
   term?: Term;
 }
-export const UnaryPredicate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    child: S.optional(ValueExpression),
-    term: S.optional(Term),
-  }),
-).annotate({ identifier: "UnaryPredicate" }) as any as S.Schema<UnaryPredicate>;
-
 /** A predicate that compares two value expressions. Accepts either 'left'/'right' (preferred) or 'term'/'value' (deprecated). */
 export interface ComparisonPredicate {
   type: string;
@@ -1530,23 +1223,9 @@ export interface ComparisonPredicate {
   /** Deprecated. Use 'right' instead. */
   value?: Literal;
 }
-export const ComparisonPredicate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    left: S.optional(ValueExpression),
-    right: S.optional(ValueExpression),
-    term: S.optional(Term),
-    value: S.optional(Literal),
-  }),
-).annotate({ identifier: "ComparisonPredicate" }) as any as S.Schema<ComparisonPredicate>;
-
 export type LiteralsCase0List = Array<Literal>;
-export const LiteralsCase0List = /*@__PURE__*/ S.Array(
-  Literal,
-) as any as S.Schema<LiteralsCase0List>;
-
 export type LiteralsCase1ValuesList = Array<PrimitiveTypeValue>;
-export const LiteralsCase1ValuesList = /*@__PURE__*/ S.Array(
+const LiteralsCase1ValuesList = /*@__PURE__*/ S.Array(
   PrimitiveTypeValue,
 ) as any as S.Schema<LiteralsCase1ValuesList>;
 
@@ -1555,18 +1234,8 @@ export interface LiteralsCase1 {
   values: LiteralsCase1ValuesList;
   data_type: string;
 }
-export const LiteralsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    values: LiteralsCase1ValuesList,
-    data_type: S.String.pipe(T.Body("data-type")),
-  }),
-).annotate({ identifier: "LiteralsCase1" }) as any as S.Schema<LiteralsCase1>;
-
 /** Literals is either a bare array of literals or a typed object with an explicit data-type applied to all values. */
 export type Literals = LiteralsCase0List | LiteralsCase1;
-export const Literals = /*@__PURE__*/ S.Unknown as any as S.Schema<Literals>;
-
 /** A predicate that tests whether a value is in a set of literals. Accepts either 'child' (preferred) or 'term' (deprecated) to identify the operand. */
 export interface SetPredicate {
   type: string;
@@ -1575,15 +1244,6 @@ export interface SetPredicate {
   term?: Term;
   values: Literals;
 }
-export const SetPredicate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    child: S.optional(ValueExpression),
-    term: S.optional(Term),
-    values: Literals,
-  }),
-).annotate({ identifier: "SetPredicate" }) as any as S.Schema<SetPredicate>;
-
 export type Predicate =
   | boolean
   | TableRequirement
@@ -1593,7 +1253,7 @@ export type Predicate =
   | UnaryPredicate
   | ComparisonPredicate
   | SetPredicate;
-export const Predicate = /*@__PURE__*/ S.Unknown as any as S.Schema<Predicate>;
+const Predicate = /*@__PURE__*/ S.Unknown as any as S.Schema<Predicate>;
 
 /** Read restrictions for a table. A reader evaluates the row filter against original, untransformed column values, then applies required-column-projections to the surviving rows. Each action must produce a value of the same type as the input column. If a reader that supports read-restrictions cannot apply any returned restriction (a filter expression or an action), it must fail the query and must not silently return raw, partial, or empty results. A missing or empty ReadRestrictions object (no required-column-projections and no required-row-filter) imposes no restrictions. */
 export interface ReadRestrictions {
@@ -1602,7 +1262,7 @@ export interface ReadRestrictions {
   /** An expression that limits which rows the reader may return. 1. The expression must evaluate to a boolean (TRUE or FALSE; Iceberg predicates never produce NULL). A reader must discard any row for which the filter evaluates to FALSE, and no information derived from discarded rows may be included in the query result. 2. If this property is absent, null, or always true then no mandatory filtering is required. 3. Column references within the expression must use field IDs (IdReference), not column names. This ensures the filter remains valid across column renames, consistent with required-column-projections which also reference columns by field-id. */
   required_row_filter?: Predicate;
 }
-export const ReadRestrictions = /*@__PURE__*/ S.suspend(() =>
+const ReadRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     required_column_projections: S.optional(
       ReadRestrictionsRequiredColumnProjectionsList.pipe(T.Body("required-column-projections")),
@@ -1613,13 +1273,11 @@ export const ReadRestrictions = /*@__PURE__*/ S.suspend(() =>
 
 /** Flat key-value labels attached to the object (table, view, ...) as a whole. */
 export type CatalogObjectLabels = { [key: string]: string | undefined };
-export const CatalogObjectLabels =
-  SetPropertiesUpdateUpdatesMap as any as S.Schema<CatalogObjectLabels>;
+const CatalogObjectLabels = SetPropertiesUpdateUpdatesMap as any as S.Schema<CatalogObjectLabels>;
 
 /** Flat key-value labels for this field */
 export type FieldLabelsLabelsMap = { [key: string]: string | undefined };
-export const FieldLabelsLabelsMap =
-  SetPropertiesUpdateUpdatesMap as any as S.Schema<FieldLabelsLabelsMap>;
+const FieldLabelsLabelsMap = SetPropertiesUpdateUpdatesMap as any as S.Schema<FieldLabelsLabelsMap>;
 
 /** Labels attached to a single field, identified by field-id. */
 export interface FieldLabels {
@@ -1628,7 +1286,7 @@ export interface FieldLabels {
   /** Flat key-value labels for this field */
   labels: FieldLabelsLabelsMap;
 }
-export const FieldLabels = /*@__PURE__*/ S.suspend(() =>
+const FieldLabels = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field_id: S.Number.pipe(T.Body("field-id")),
     labels: FieldLabelsLabelsMap,
@@ -1637,9 +1295,7 @@ export const FieldLabels = /*@__PURE__*/ S.suspend(() =>
 
 /** Field-level labels. Each entry identifies its field by field-id. */
 export type LabelsFieldsList = Array<FieldLabels>;
-export const LabelsFieldsList = /*@__PURE__*/ S.Array(
-  FieldLabels,
-) as any as S.Schema<LabelsFieldsList>;
+const LabelsFieldsList = /*@__PURE__*/ S.Array(FieldLabels) as any as S.Schema<LabelsFieldsList>;
 
 /** Catalog-provided metadata enrichment (for example ownership, classification, or cost attribution) returned with a table or view. Labels are catalog-provided and optional; clients may ignore them, and may cache them following the response ETag. The spec does not require how a catalog produces or stores labels, nor whether they are persisted or versioned. `object-labels` carries labels for the object as a whole; `fields` carries per-field labels, each identified by field-id. */
 export interface Labels {
@@ -1647,7 +1303,7 @@ export interface Labels {
   /** Field-level labels. Each entry identifies its field by field-id. */
   fields?: LabelsFieldsList;
 }
-export const Labels = /*@__PURE__*/ S.suspend(() =>
+const Labels = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object_labels: S.optional(CatalogObjectLabels.pipe(T.Body("object-labels"))),
     fields: S.optional(LabelsFieldsList),
@@ -1665,7 +1321,7 @@ export interface LoadTableResult {
   read_restrictions?: ReadRestrictions;
   labels?: Labels;
 }
-export const LoadTableResult = /*@__PURE__*/ S.suspend(() =>
+const LoadTableResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata_location: S.optional(S.NullOr(S.String).pipe(T.Body("metadata-location"))),
     metadata: TableMetadata,
@@ -1680,7 +1336,7 @@ export const LoadTableResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadTableResult" }) as any as S.Schema<LoadTableResult>;
 
 export type ViewVersionSummaryMap = { [key: string]: string | undefined };
-export const ViewVersionSummaryMap =
+const ViewVersionSummaryMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<ViewVersionSummaryMap>;
 
 export interface SQLViewRepresentation {
@@ -1688,7 +1344,7 @@ export interface SQLViewRepresentation {
   sql: string;
   dialect: string;
 }
-export const SQLViewRepresentation = /*@__PURE__*/ S.suspend(() =>
+const SQLViewRepresentation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     sql: S.String,
@@ -1697,7 +1353,7 @@ export const SQLViewRepresentation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SQLViewRepresentation" }) as any as S.Schema<SQLViewRepresentation>;
 
 export type ViewVersionRepresentationsList = Array<SQLViewRepresentation>;
-export const ViewVersionRepresentationsList = /*@__PURE__*/ S.Array(
+const ViewVersionRepresentationsList = /*@__PURE__*/ S.Array(
   SQLViewRepresentation,
 ) as any as S.Schema<ViewVersionRepresentationsList>;
 
@@ -1711,7 +1367,7 @@ export interface ViewVersion {
   default_catalog?: string;
   default_namespace: Namespace;
 }
-export const ViewVersion = /*@__PURE__*/ S.suspend(() =>
+const ViewVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version_id: S.Number.pipe(T.Body("version-id")),
     timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
@@ -1724,7 +1380,7 @@ export const ViewVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewVersion" }) as any as S.Schema<ViewVersion>;
 
 export type CreateViewRequestPropertiesMap = { [key: string]: string | undefined };
-export const CreateViewRequestPropertiesMap =
+const CreateViewRequestPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<CreateViewRequestPropertiesMap>;
 
 export interface CreateViewRequest {
@@ -1737,7 +1393,7 @@ export interface CreateViewRequest {
   view_version: ViewVersion;
   properties: CreateViewRequestPropertiesMap;
 }
-export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String,
@@ -1751,7 +1407,7 @@ export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateViewRequest" }) as any as S.Schema<CreateViewRequest>;
 
 export type ViewMetadataVersionsList = Array<ViewVersion>;
-export const ViewMetadataVersionsList = /*@__PURE__*/ S.Array(
+const ViewMetadataVersionsList = /*@__PURE__*/ S.Array(
   ViewVersion,
 ) as any as S.Schema<ViewMetadataVersionsList>;
 
@@ -1759,7 +1415,7 @@ export interface ViewHistoryEntry {
   version_id: number;
   timestamp_ms: number;
 }
-export const ViewHistoryEntry = /*@__PURE__*/ S.suspend(() =>
+const ViewHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version_id: S.Number.pipe(T.Body("version-id")),
     timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
@@ -1767,16 +1423,16 @@ export const ViewHistoryEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewHistoryEntry" }) as any as S.Schema<ViewHistoryEntry>;
 
 export type ViewMetadataVersionLogList = Array<ViewHistoryEntry>;
-export const ViewMetadataVersionLogList = /*@__PURE__*/ S.Array(
+const ViewMetadataVersionLogList = /*@__PURE__*/ S.Array(
   ViewHistoryEntry,
 ) as any as S.Schema<ViewMetadataVersionLogList>;
 
 export type ViewMetadataSchemasList = Array<Schema>;
-export const ViewMetadataSchemasList =
+const ViewMetadataSchemasList =
   TableMetadataSchemasList as any as S.Schema<ViewMetadataSchemasList>;
 
 export type ViewMetadataPropertiesMap = { [key: string]: string | undefined };
-export const ViewMetadataPropertiesMap =
+const ViewMetadataPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<ViewMetadataPropertiesMap>;
 
 export interface ViewMetadata {
@@ -1789,7 +1445,7 @@ export interface ViewMetadata {
   schemas: ViewMetadataSchemasList;
   properties?: ViewMetadataPropertiesMap;
 }
-export const ViewMetadata = /*@__PURE__*/ S.suspend(() =>
+const ViewMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_uuid: S.String.pipe(T.Body("view-uuid")),
     format_version: S.Number.pipe(T.Body("format-version")),
@@ -1803,7 +1459,7 @@ export const ViewMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewMetadata" }) as any as S.Schema<ViewMetadata>;
 
 export type LoadViewResultConfigMap = { [key: string]: string | undefined };
-export const LoadViewResultConfigMap =
+const LoadViewResultConfigMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<LoadViewResultConfigMap>;
 
 /** Result used when a view is successfully loaded. The view metadata JSON is returned in the `metadata` field. The corresponding file location of view metadata is returned in the `metadata-location` field. Clients can check whether metadata has changed by comparing metadata locations after the view has been created. The `config` map returns view-specific configuration for the view's resources. The following configurations should be respected by clients: ## General Configurations - `token`: Authorization bearer token to use for view requests if OAuth2 security is enabled */
@@ -1813,7 +1469,7 @@ export interface LoadViewResult {
   config?: LoadViewResultConfigMap;
   labels?: Labels;
 }
-export const LoadViewResult = /*@__PURE__*/ S.suspend(() =>
+const LoadViewResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata_location: S.String.pipe(T.Body("metadata-location")),
     metadata: ViewMetadata,
@@ -1828,7 +1484,7 @@ export interface DropNamespaceRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
-export const DropNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DropNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -1838,8 +1494,7 @@ export const DropNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DropNamespaceRequest" }) as any as S.Schema<DropNamespaceRequest>;
 
 export interface DropNamespaceResponse {}
-export const DropNamespaceResponse =
-  CancelPlanningResponse as any as S.Schema<DropNamespaceResponse>;
+const DropNamespaceResponse = CancelPlanningResponse as any as S.Schema<DropNamespaceResponse>;
 
 export interface DropTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
@@ -1851,7 +1506,7 @@ export interface DropTableRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
-export const DropTableRequest = /*@__PURE__*/ S.suspend(() =>
+const DropTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -1863,7 +1518,7 @@ export const DropTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DropTableRequest" }) as any as S.Schema<DropTableRequest>;
 
 export interface DropTableResponse {}
-export const DropTableResponse = CancelPlanningResponse as any as S.Schema<DropTableResponse>;
+const DropTableResponse = CancelPlanningResponse as any as S.Schema<DropTableResponse>;
 
 export interface DropViewRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
@@ -1873,7 +1528,7 @@ export interface DropViewRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
-export const DropViewRequest = /*@__PURE__*/ S.suspend(() =>
+const DropViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     view: S.String.pipe(T.Label()),
@@ -1884,17 +1539,15 @@ export const DropViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DropViewRequest" }) as any as S.Schema<DropViewRequest>;
 
 export interface DropViewResponse {}
-export const DropViewResponse = CancelPlanningResponse as any as S.Schema<DropViewResponse>;
+const DropViewResponse = CancelPlanningResponse as any as S.Schema<DropViewResponse>;
 
 export type FetchPlanningResultRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
-export const FetchPlanningResultRequestXIcebergAccessDelegationItem = S.String;
-
 export type FetchPlanningResultRequestXIcebergAccessDelegationList = Array<
   FetchPlanningResultRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const FetchPlanningResultRequestXIcebergAccessDelegationList =
+const FetchPlanningResultRequestXIcebergAccessDelegationList =
   CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<FetchPlanningResultRequestXIcebergAccessDelegationList>;
 
 export interface FetchPlanningResultRequest {
@@ -1907,7 +1560,7 @@ export interface FetchPlanningResultRequest {
   /** Optional signal to the server that the client supports delegated access via a comma-separated list of access mechanisms. The server may choose to supply access via any or none of the requested mechanisms. Specific properties and handling for `vended-credentials` and `remote-signing` are documented in the `LoadTableResult` schema section of this spec document. */
   xIcebergAccessDelegation?: FetchPlanningResultRequestXIcebergAccessDelegationList;
 }
-export const FetchPlanningResultRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchPlanningResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -1931,23 +1584,17 @@ export const FetchPlanningResultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FetchPlanningResultRequest>;
 
 export type FileFormat = "avro" | "orc" | "parquet" | "puffin";
-export const FileFormat = S.String;
+const FileFormat = S.String;
 
 /** A list of partition field values ordered based on the fields of the partition spec specified by the `spec-id` */
 export type PositionDeleteFilePartitionList = Array<PrimitiveTypeValue>;
-export const PositionDeleteFilePartitionList =
-  LiteralsCase1ValuesList as any as S.Schema<PositionDeleteFilePartitionList>;
-
 /** List of splittable offsets */
 export type PositionDeleteFileSplitOffsetsList = Array<number>;
-export const PositionDeleteFileSplitOffsetsList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<PositionDeleteFileSplitOffsetsList>;
-
 export interface FieldStatistics {
   /** Avg value size in memory (uncompressed) in bytes over non-null values to estimate memory consumption */
   avg_value_size_in_bytes?: number;
 }
-export const FieldStatistics = /*@__PURE__*/ S.suspend(() =>
+const FieldStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avg_value_size_in_bytes: S.optional(S.Number.pipe(T.Body("avg-value-size-in-bytes"))),
   }),
@@ -1955,7 +1602,7 @@ export const FieldStatistics = /*@__PURE__*/ S.suspend(() =>
 
 /** Container struct for per-field metrics structs */
 export type PositionDeleteFileContentStatsMap = { [key: string]: FieldStatistics | undefined };
-export const PositionDeleteFileContentStatsMap = /*@__PURE__*/ S.Record(
+const PositionDeleteFileContentStatsMap = /*@__PURE__*/ S.Record(
   S.String,
   FieldStatistics,
 ) as any as S.Schema<PositionDeleteFileContentStatsMap>;
@@ -1983,44 +1630,14 @@ export interface PositionDeleteFile {
   /** Length, in bytes, of the delete content; required if content-offset is present */
   content_size_in_bytes?: number;
 }
-export const PositionDeleteFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    file_path: S.String.pipe(T.Body("file-path")),
-    file_format: FileFormat.pipe(T.Body("file-format")),
-    spec_id: S.Number.pipe(T.Body("spec-id")),
-    partition: PositionDeleteFilePartitionList,
-    file_size_in_bytes: S.Number.pipe(T.Body("file-size-in-bytes")),
-    record_count: S.Number.pipe(T.Body("record-count")),
-    key_metadata: S.optional(S.String.pipe(T.Body("key-metadata"))),
-    split_offsets: S.optional(PositionDeleteFileSplitOffsetsList.pipe(T.Body("split-offsets"))),
-    sort_order_id: S.optional(S.Number.pipe(T.Body("sort-order-id"))),
-    content_stats: S.optional(PositionDeleteFileContentStatsMap.pipe(T.Body("content-stats"))),
-    content_offset: S.optional(S.Number.pipe(T.Body("content-offset"))),
-    content_size_in_bytes: S.optional(S.Number.pipe(T.Body("content-size-in-bytes"))),
-  }),
-).annotate({ identifier: "PositionDeleteFile" }) as any as S.Schema<PositionDeleteFile>;
-
 /** A list of partition field values ordered based on the fields of the partition spec specified by the `spec-id` */
 export type EqualityDeleteFilePartitionList = Array<PrimitiveTypeValue>;
-export const EqualityDeleteFilePartitionList =
-  LiteralsCase1ValuesList as any as S.Schema<EqualityDeleteFilePartitionList>;
-
 /** List of splittable offsets */
 export type EqualityDeleteFileSplitOffsetsList = Array<number>;
-export const EqualityDeleteFileSplitOffsetsList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<EqualityDeleteFileSplitOffsetsList>;
-
 /** Container struct for per-field metrics structs */
 export type EqualityDeleteFileContentStatsMap = { [key: string]: FieldStatistics | undefined };
-export const EqualityDeleteFileContentStatsMap =
-  PositionDeleteFileContentStatsMap as any as S.Schema<EqualityDeleteFileContentStatsMap>;
-
 /** List of equality field IDs */
 export type EqualityDeleteFileEqualityIdsList = Array<number>;
-export const EqualityDeleteFileEqualityIdsList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<EqualityDeleteFileEqualityIdsList>;
-
 export interface EqualityDeleteFile {
   content: string;
   file_path: string;
@@ -2042,56 +1659,36 @@ export interface EqualityDeleteFile {
   /** List of equality field IDs */
   equality_ids?: EqualityDeleteFileEqualityIdsList;
 }
-export const EqualityDeleteFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.String,
-    file_path: S.String.pipe(T.Body("file-path")),
-    file_format: FileFormat.pipe(T.Body("file-format")),
-    spec_id: S.Number.pipe(T.Body("spec-id")),
-    partition: EqualityDeleteFilePartitionList,
-    file_size_in_bytes: S.Number.pipe(T.Body("file-size-in-bytes")),
-    record_count: S.Number.pipe(T.Body("record-count")),
-    key_metadata: S.optional(S.String.pipe(T.Body("key-metadata"))),
-    split_offsets: S.optional(EqualityDeleteFileSplitOffsetsList.pipe(T.Body("split-offsets"))),
-    sort_order_id: S.optional(S.Number.pipe(T.Body("sort-order-id"))),
-    content_stats: S.optional(EqualityDeleteFileContentStatsMap.pipe(T.Body("content-stats"))),
-    equality_ids: S.optional(EqualityDeleteFileEqualityIdsList.pipe(T.Body("equality-ids"))),
-  }),
-).annotate({ identifier: "EqualityDeleteFile" }) as any as S.Schema<EqualityDeleteFile>;
-
 export type DeleteFile = PositionDeleteFile | EqualityDeleteFile;
-export const DeleteFile = /*@__PURE__*/ S.Unknown as any as S.Schema<DeleteFile>;
+const DeleteFile = /*@__PURE__*/ S.Unknown as any as S.Schema<DeleteFile>;
 
 /** Delete files referenced by file scan tasks */
 export type CompletedPlanningResultDeleteFilesList = Array<DeleteFile>;
-export const CompletedPlanningResultDeleteFilesList = /*@__PURE__*/ S.Array(
+const CompletedPlanningResultDeleteFilesList = /*@__PURE__*/ S.Array(
   DeleteFile,
 ) as any as S.Schema<CompletedPlanningResultDeleteFilesList>;
 
 /** A list of partition field values ordered based on the fields of the partition spec specified by the `spec-id` */
 export type DataFilePartitionList = Array<PrimitiveTypeValue>;
-export const DataFilePartitionList =
-  LiteralsCase1ValuesList as any as S.Schema<DataFilePartitionList>;
+const DataFilePartitionList = LiteralsCase1ValuesList as any as S.Schema<DataFilePartitionList>;
 
 /** List of splittable offsets */
 export type DataFileSplitOffsetsList = Array<number>;
-export const DataFileSplitOffsetsList =
+const DataFileSplitOffsetsList =
   SchemaInputIdentifierFieldIdsList as any as S.Schema<DataFileSplitOffsetsList>;
 
 /** Container struct for per-field metrics structs */
 export type DataFileContentStatsMap = { [key: string]: FieldStatistics | undefined };
-export const DataFileContentStatsMap =
+const DataFileContentStatsMap =
   PositionDeleteFileContentStatsMap as any as S.Schema<DataFileContentStatsMap>;
 
 /** List of integer column ids for each corresponding value */
 export type CountMapKeysList = Array<number>;
-export const CountMapKeysList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<CountMapKeysList>;
+const CountMapKeysList = SchemaInputIdentifierFieldIdsList as any as S.Schema<CountMapKeysList>;
 
 /** List of Long values, matched to 'keys' by index */
 export type CountMapValuesList = Array<number>;
-export const CountMapValuesList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<CountMapValuesList>;
+const CountMapValuesList = SchemaInputIdentifierFieldIdsList as any as S.Schema<CountMapValuesList>;
 
 export interface CountMap {
   /** List of integer column ids for each corresponding value */
@@ -2099,7 +1696,7 @@ export interface CountMap {
   /** List of Long values, matched to 'keys' by index */
   values?: CountMapValuesList;
 }
-export const CountMap = /*@__PURE__*/ S.suspend(() =>
+const CountMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(CountMapKeysList),
     values: S.optional(CountMapValuesList),
@@ -2108,12 +1705,11 @@ export const CountMap = /*@__PURE__*/ S.suspend(() =>
 
 /** List of integer column ids for each corresponding value */
 export type ValueMapKeysList = Array<number>;
-export const ValueMapKeysList =
-  SchemaInputIdentifierFieldIdsList as any as S.Schema<ValueMapKeysList>;
+const ValueMapKeysList = SchemaInputIdentifierFieldIdsList as any as S.Schema<ValueMapKeysList>;
 
 /** List of primitive type values, matched to 'keys' by index */
 export type ValueMapValuesList = Array<PrimitiveTypeValue>;
-export const ValueMapValuesList = LiteralsCase1ValuesList as any as S.Schema<ValueMapValuesList>;
+const ValueMapValuesList = LiteralsCase1ValuesList as any as S.Schema<ValueMapValuesList>;
 
 export interface ValueMap {
   /** List of integer column ids for each corresponding value */
@@ -2121,7 +1717,7 @@ export interface ValueMap {
   /** List of primitive type values, matched to 'keys' by index */
   values?: ValueMapValuesList;
 }
-export const ValueMap = /*@__PURE__*/ S.suspend(() =>
+const ValueMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(ValueMapKeysList),
     values: S.optional(ValueMapValuesList),
@@ -2161,7 +1757,7 @@ export interface DataFile {
   /** Map of column id to upper bound primitive type values */
   upper_bounds?: ValueMap;
 }
-export const DataFile = /*@__PURE__*/ S.suspend(() =>
+const DataFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     file_path: S.String.pipe(T.Body("file-path")),
@@ -2186,7 +1782,7 @@ export const DataFile = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of indices in the delete files array (0-based) */
 export type FileScanTaskDeleteFileReferencesList = Array<number>;
-export const FileScanTaskDeleteFileReferencesList =
+const FileScanTaskDeleteFileReferencesList =
   SchemaInputIdentifierFieldIdsList as any as S.Schema<FileScanTaskDeleteFileReferencesList>;
 
 export interface FileScanTask {
@@ -2196,7 +1792,7 @@ export interface FileScanTask {
   /** An optional filter to be applied to rows in this file scan task. If the residual is not present, the client must produce the residual or use the original filter. */
   residual_filter?: Predicate;
 }
-export const FileScanTask = /*@__PURE__*/ S.suspend(() =>
+const FileScanTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_file: DataFile.pipe(T.Body("data-file")),
     delete_file_references: S.optional(
@@ -2207,23 +1803,15 @@ export const FileScanTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileScanTask" }) as any as S.Schema<FileScanTask>;
 
 export type CompletedPlanningResultFileScanTasksList = Array<FileScanTask>;
-export const CompletedPlanningResultFileScanTasksList = /*@__PURE__*/ S.Array(
+const CompletedPlanningResultFileScanTasksList = /*@__PURE__*/ S.Array(
   FileScanTask,
 ) as any as S.Schema<CompletedPlanningResultFileScanTasksList>;
 
 export type CompletedPlanningResultPlanTasksList = Array<string>;
-export const CompletedPlanningResultPlanTasksList =
-  RemovePropertiesUpdateRemovalsList as any as S.Schema<CompletedPlanningResultPlanTasksList>;
-
 /** Status of a server-side planning operation */
 export type PlanStatus = "completed" | "submitted" | "cancelled" | "failed";
-export const PlanStatus = S.String;
-
 /** Storage credentials for accessing the files returned in the scan result. If the server returns storage credentials as part of the completed scan planning response, the expectation is for the client to use these credentials to read the files returned in the FileScanTasks as part of the scan result. */
 export type CompletedPlanningResultStorageCredentialsList = Array<StorageCredential>;
-export const CompletedPlanningResultStorageCredentialsList =
-  LoadTableResultStorageCredentialsList as any as S.Schema<CompletedPlanningResultStorageCredentialsList>;
-
 /** Completed server-side planning result */
 export interface CompletedPlanningResult {
   /** Delete files referenced by file scan tasks */
@@ -2234,24 +1822,7 @@ export interface CompletedPlanningResult {
   /** Storage credentials for accessing the files returned in the scan result. If the server returns storage credentials as part of the completed scan planning response, the expectation is for the client to use these credentials to read the files returned in the FileScanTasks as part of the scan result. */
   storage_credentials?: CompletedPlanningResultStorageCredentialsList;
 }
-export const CompletedPlanningResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delete_files: S.optional(CompletedPlanningResultDeleteFilesList.pipe(T.Body("delete-files"))),
-    file_scan_tasks: S.optional(
-      CompletedPlanningResultFileScanTasksList.pipe(T.Body("file-scan-tasks")),
-    ),
-    plan_tasks: S.optional(CompletedPlanningResultPlanTasksList.pipe(T.Body("plan-tasks"))),
-    status: PlanStatus,
-    storage_credentials: S.optional(
-      CompletedPlanningResultStorageCredentialsList.pipe(T.Body("storage-credentials")),
-    ),
-  }),
-).annotate({ identifier: "CompletedPlanningResult" }) as any as S.Schema<CompletedPlanningResult>;
-
 export type ErrorModelStackList = Array<string>;
-export const ErrorModelStackList =
-  RemovePropertiesUpdateRemovalsList as any as S.Schema<ErrorModelStackList>;
-
 /** JSON error payload returned in a response with further details on the error */
 export interface ErrorModel {
   /** Human-readable error message */
@@ -2262,43 +1833,21 @@ export interface ErrorModel {
   code: number;
   stack?: ErrorModelStackList;
 }
-export const ErrorModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    type: S.String,
-    code: S.Number,
-    stack: S.optional(ErrorModelStackList),
-  }),
-).annotate({ identifier: "ErrorModel" }) as any as S.Schema<ErrorModel>;
-
 /** Failed server-side planning result */
 export interface FailedPlanningResult {
   error: ErrorModel;
   status: PlanStatus;
 }
-export const FailedPlanningResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: ErrorModel,
-    status: PlanStatus,
-  }),
-).annotate({ identifier: "FailedPlanningResult" }) as any as S.Schema<FailedPlanningResult>;
-
 /** Empty server-side planning result */
 export interface EmptyPlanningResult {
   status: PlanStatus;
 }
-export const EmptyPlanningResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: PlanStatus,
-  }),
-).annotate({ identifier: "EmptyPlanningResult" }) as any as S.Schema<EmptyPlanningResult>;
-
 /** Result of server-side scan planning for fetchPlanningResult */
 export type PlanningResult = CompletedPlanningResult | FailedPlanningResult | EmptyPlanningResult;
-export const PlanningResult = /*@__PURE__*/ S.Unknown as any as S.Schema<PlanningResult>;
+const PlanningResult = /*@__PURE__*/ S.Unknown as any as S.Schema<PlanningResult>;
 
 export type FetchPlanningResultResponse = PlanningResult;
-export const FetchPlanningResultResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchPlanningResultResponse = /*@__PURE__*/ S.suspend(() =>
   PlanningResult.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "FetchPlanningResultResponse",
@@ -2313,7 +1862,7 @@ export interface FetchScanTasksRequest {
   idempotencyKey?: string;
   plan_task: string;
 }
-export const FetchScanTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchScanTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -2328,15 +1877,15 @@ export const FetchScanTasksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Delete files referenced by file scan tasks */
 export type FetchScanTasksResponseDeleteFilesList = Array<DeleteFile>;
-export const FetchScanTasksResponseDeleteFilesList =
+const FetchScanTasksResponseDeleteFilesList =
   CompletedPlanningResultDeleteFilesList as any as S.Schema<FetchScanTasksResponseDeleteFilesList>;
 
 export type FetchScanTasksResponseFileScanTasksList = Array<FileScanTask>;
-export const FetchScanTasksResponseFileScanTasksList =
+const FetchScanTasksResponseFileScanTasksList =
   CompletedPlanningResultFileScanTasksList as any as S.Schema<FetchScanTasksResponseFileScanTasksList>;
 
 export type FetchScanTasksResponsePlanTasksList = Array<string>;
-export const FetchScanTasksResponsePlanTasksList =
+const FetchScanTasksResponsePlanTasksList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<FetchScanTasksResponsePlanTasksList>;
 
 export interface FetchScanTasksResponse {
@@ -2345,7 +1894,7 @@ export interface FetchScanTasksResponse {
   file_scan_tasks?: FetchScanTasksResponseFileScanTasksList;
   plan_tasks?: FetchScanTasksResponsePlanTasksList;
 }
-export const FetchScanTasksResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchScanTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete_files: S.optional(FetchScanTasksResponseDeleteFilesList.pipe(T.Body("delete-files"))),
     file_scan_tasks: S.optional(
@@ -2359,7 +1908,7 @@ export interface GetConfigRequest {
   /** Warehouse location or identifier to request from the service */
   warehouse?: string;
 }
-export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warehouse: S.optional(S.String.pipe(T.Query())),
   })
@@ -2369,17 +1918,17 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties that should be used to override client configuration; applied after defaults and client configuration. */
 export type CatalogConfigOverridesMap = { [key: string]: string | undefined };
-export const CatalogConfigOverridesMap =
+const CatalogConfigOverridesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<CatalogConfigOverridesMap>;
 
 /** Properties that should be used as default configuration; applied before client configuration. */
 export type CatalogConfigDefaultsMap = { [key: string]: string | undefined };
-export const CatalogConfigDefaultsMap =
+const CatalogConfigDefaultsMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<CatalogConfigDefaultsMap>;
 
 /** A list of endpoints that the server supports. The format of each endpoint must be "<HTTP verb> <resource path from OpenAPI REST spec>". The HTTP verb and the resource path must be separated by a space character. */
 export type CatalogConfigEndpointsList = Array<string>;
-export const CatalogConfigEndpointsList =
+const CatalogConfigEndpointsList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<CatalogConfigEndpointsList>;
 
 /** Server-provided configuration for the catalog. */
@@ -2393,7 +1942,7 @@ export interface CatalogConfig {
   /** Client reuse window for an Idempotency-Key (ISO-8601 duration, e.g., PT30M, PT24H). Interpreted as the maximum time from the first submission using a key to the last retry during which a client may reuse that key. Servers SHOULD accept retries for at least this duration and MAY include a grace period to account for delays/clock skew. Clients SHOULD NOT reuse an Idempotency-Key after this window elapses; they SHOULD generate a new key for any subsequent attempt. Presence of this field indicates the server supports Idempotency-Key semantics for mutation endpoints. If absent, clients MUST assume idempotency is not supported. */
   idempotency_key_lifetime?: string;
 }
-export const CatalogConfig = /*@__PURE__*/ S.suspend(() =>
+const CatalogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overrides: CatalogConfigOverridesMap,
     defaults: CatalogConfigDefaultsMap,
@@ -2409,7 +1958,7 @@ export interface ListFunctionsRequest {
   /** For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`. */
   pageSize?: number;
 }
-export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2420,7 +1969,7 @@ export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFunctionsRequest" }) as any as S.Schema<ListFunctionsRequest>;
 
 export type ListFunctionsResponseIdentifiersList = Array<CatalogObjectIdentifier>;
-export const ListFunctionsResponseIdentifiersList = /*@__PURE__*/ S.Array(
+const ListFunctionsResponseIdentifiersList = /*@__PURE__*/ S.Array(
   CatalogObjectIdentifier,
 ) as any as S.Schema<ListFunctionsResponseIdentifiersList>;
 
@@ -2428,7 +1977,7 @@ export interface ListFunctionsResponse {
   next_page_token?: string | null;
   identifiers: ListFunctionsResponseIdentifiersList;
 }
-export const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
     identifiers: ListFunctionsResponseIdentifiersList,
@@ -2442,7 +1991,7 @@ export interface ListNamespacesRequest {
   /** An optional namespace, underneath which to list namespaces. If not provided, all top-level namespaces should be listed. For backward compatibility, empty string is treated as absent for now. If parent is a multipart namespace, the parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   parent?: string;
 }
-export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2453,7 +2002,7 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNamespacesRequest" }) as any as S.Schema<ListNamespacesRequest>;
 
 export type ListNamespacesResponseNamespacesList = Array<Namespace>;
-export const ListNamespacesResponseNamespacesList = /*@__PURE__*/ S.Array(
+const ListNamespacesResponseNamespacesList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<ListNamespacesResponseNamespacesList>;
 
@@ -2461,7 +2010,7 @@ export interface ListNamespacesResponse {
   next_page_token?: string | null;
   namespaces: ListNamespacesResponseNamespacesList;
 }
-export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
     namespaces: ListNamespacesResponseNamespacesList,
@@ -2475,7 +2024,7 @@ export interface ListTablesRequest {
   /** For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`. */
   pageSize?: number;
 }
-export const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2486,7 +2035,7 @@ export const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTablesRequest" }) as any as S.Schema<ListTablesRequest>;
 
 export type ListTablesResponseIdentifiersList = Array<TableIdentifier>;
-export const ListTablesResponseIdentifiersList = /*@__PURE__*/ S.Array(
+const ListTablesResponseIdentifiersList = /*@__PURE__*/ S.Array(
   TableIdentifier,
 ) as any as S.Schema<ListTablesResponseIdentifiersList>;
 
@@ -2494,7 +2043,7 @@ export interface ListTablesResponse {
   next_page_token?: string | null;
   identifiers: ListTablesResponseIdentifiersList;
 }
-export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
     identifiers: ListTablesResponseIdentifiersList,
@@ -2508,7 +2057,7 @@ export interface ListViewsRequest {
   /** For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`. */
   pageSize?: number;
 }
-export const ListViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2528,7 +2077,7 @@ export interface LoadCredentialsRequest {
   /** A comma-separated list of fully qualified view names (namespace and view name) representing the view reference chain when an entity (table or view) is loaded via a view. The list should be ordered with the outermost view first, followed by any intermediate views it references, down to the view that directly references the entity. For a simple case where a view directly references the entity, the list contains a single view identifier. For nested views (a view referencing another view which references the entity), the list contains multiple view identifiers representing the complete dependency chain. The view identifier is a composite string of the format {namespace}{separator}{viewName}. The namespace-separator (defined in /config) acts as the delimiter. When parsing, the last occurrence of this separator identifies the boundary between the namespace and the view name. Multipart namespaces must follow the encoding rules of the parent parameter in the list namespaces endpoint. Multiple view identifiers are separated by commas. Servers should split the parameter value on comma characters to parse individual view identifiers. If view names contain commas, they must be url-encoded as %2C. Example with multiple views (where prod%1Fanalytics is a nested namespace which has a quarterly_view which references to monthly_view which then references the entity being loaded) - prod%1Fanalytics%1Fquarterly_view,prod%1Fanalytics%1Fmonthly_view */
   referenced_by?: string;
 }
-export const LoadCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const LoadCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -2546,13 +2095,13 @@ export const LoadCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadCredentialsRequest" }) as any as S.Schema<LoadCredentialsRequest>;
 
 export type LoadCredentialsResponseStorageCredentialsList = Array<StorageCredential>;
-export const LoadCredentialsResponseStorageCredentialsList =
+const LoadCredentialsResponseStorageCredentialsList =
   LoadTableResultStorageCredentialsList as any as S.Schema<LoadCredentialsResponseStorageCredentialsList>;
 
 export interface LoadCredentialsResponse {
   storage_credentials: LoadCredentialsResponseStorageCredentialsList;
 }
-export const LoadCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const LoadCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storage_credentials: LoadCredentialsResponseStorageCredentialsList.pipe(
       T.Body("storage-credentials"),
@@ -2566,7 +2115,7 @@ export interface LoadFunctionRequest {
   /** A function name */
   function: string;
 }
-export const LoadFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const LoadFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     function: S.String.pipe(T.Label()),
@@ -2580,59 +2129,26 @@ export interface FunctionListType {
   type: string;
   element: FunctionDataType;
 }
-export const FunctionListType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    element: S.suspend(() => FunctionDataType),
-  }),
-).annotate({ identifier: "FunctionListType" }) as any as S.Schema<FunctionListType>;
-
 /** UDF map type object. */
 export interface FunctionMapType {
   type: string;
   key: FunctionDataType;
   value: FunctionDataType;
 }
-export const FunctionMapType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    key: S.suspend(() => FunctionDataType),
-    value: S.suspend(() => FunctionDataType),
-  }),
-).annotate({ identifier: "FunctionMapType" }) as any as S.Schema<FunctionMapType>;
-
 /** UDF struct field. */
 export interface FunctionStructField {
   name: string;
   type: FunctionDataType;
 }
-export const FunctionStructField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: S.suspend(() => FunctionDataType),
-  }),
-).annotate({ identifier: "FunctionStructField" }) as any as S.Schema<FunctionStructField>;
-
 export type FunctionStructTypeFieldsList = Array<FunctionStructField>;
-export const FunctionStructTypeFieldsList = /*@__PURE__*/ S.Array(
-  FunctionStructField,
-) as any as S.Schema<FunctionStructTypeFieldsList>;
-
 /** UDF struct type object. */
 export interface FunctionStructType {
   type: string;
   fields: FunctionStructTypeFieldsList;
 }
-export const FunctionStructType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    fields: FunctionStructTypeFieldsList,
-  }),
-).annotate({ identifier: "FunctionStructType" }) as any as S.Schema<FunctionStructType>;
-
 /** A type for function parameters or return value. It is encoded either as a type string or as a JSON object for nested types (struct, list, map) following the UDF spec Types section. Primitive and semi-structured type strings are encoded based on the Iceberg type JSON representation (e.g., "int", "string", "timestamp", "decimal(9,2)", "variant"). Type strings must contain no spaces or quote characters. Nested types are based on the Iceberg type JSON representation, but the UDF spec only requires a subset of fields (e.g., list requires `type` and `element`; map requires `type`, `key`, and `value`; struct requires `type` and `fields`). Any other fields must be ignored. */
 export type FunctionDataType = string | FunctionListType | FunctionMapType | FunctionStructType;
-export const FunctionDataType = /*@__PURE__*/ S.Unknown as any as S.Schema<FunctionDataType>;
+const FunctionDataType = /*@__PURE__*/ S.Unknown as any as S.Schema<FunctionDataType>;
 
 export interface FunctionParameter {
   type: FunctionDataType;
@@ -2640,7 +2156,7 @@ export interface FunctionParameter {
   /** Parameter documentation. */
   doc?: string;
 }
-export const FunctionParameter = /*@__PURE__*/ S.suspend(() =>
+const FunctionParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: FunctionDataType,
     name: S.String,
@@ -2650,7 +2166,7 @@ export const FunctionParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of function parameters. Invocation order must match this list. */
 export type FunctionDefinitionParametersList = Array<FunctionParameter>;
-export const FunctionDefinitionParametersList = /*@__PURE__*/ S.Array(
+const FunctionDefinitionParametersList = /*@__PURE__*/ S.Array(
   FunctionParameter,
 ) as any as S.Schema<FunctionDefinitionParametersList>;
 
@@ -2661,7 +2177,7 @@ export interface FunctionSQLRepresentation {
   /** SQL expression text. */
   sql: string;
 }
-export const FunctionSQLRepresentation = /*@__PURE__*/ S.suspend(() =>
+const FunctionSQLRepresentation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     dialect: S.String,
@@ -2673,13 +2189,13 @@ export const FunctionSQLRepresentation = /*@__PURE__*/ S.suspend(() =>
 
 /** UDF implementations. */
 export type FunctionDefinitionVersionRepresentationsList = Array<FunctionSQLRepresentation>;
-export const FunctionDefinitionVersionRepresentationsList = /*@__PURE__*/ S.Array(
+const FunctionDefinitionVersionRepresentationsList = /*@__PURE__*/ S.Array(
   FunctionSQLRepresentation,
 ) as any as S.Schema<FunctionDefinitionVersionRepresentationsList>;
 
 /** Defines how the UDF behaves when any input parameter is NULL. */
 export type FunctionDefinitionVersionOnNullInput = "return-null" | "call";
-export const FunctionDefinitionVersionOnNullInput = S.String;
+const FunctionDefinitionVersionOnNullInput = S.String;
 
 export interface FunctionDefinitionVersion {
   /** Monotonically increasing identifier of the definition version. */
@@ -2693,7 +2209,7 @@ export interface FunctionDefinitionVersion {
   /** Creation timestamp of this version (unix epoch millis). */
   timestamp_ms: number;
 }
-export const FunctionDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
+const FunctionDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version_id: S.Number.pipe(T.Body("version-id")),
     representations: FunctionDefinitionVersionRepresentationsList,
@@ -2707,13 +2223,13 @@ export const FunctionDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** Versioned implementations of this definition. */
 export type FunctionDefinitionVersionsList = Array<FunctionDefinitionVersion>;
-export const FunctionDefinitionVersionsList = /*@__PURE__*/ S.Array(
+const FunctionDefinitionVersionsList = /*@__PURE__*/ S.Array(
   FunctionDefinitionVersion,
 ) as any as S.Schema<FunctionDefinitionVersionsList>;
 
 /** Function type. When set to "udtf", "return-type" must be a struct describing the output schema. */
 export type FunctionDefinitionFunctionType = "udf" | "udtf";
-export const FunctionDefinitionFunctionType = S.String;
+const FunctionDefinitionFunctionType = S.String;
 
 export interface FunctionDefinition {
   /** A canonical string derived from the parameter types, formatted as a comma-separated list with no spaces. */
@@ -2734,7 +2250,7 @@ export interface FunctionDefinition {
   /** Documentation string. */
   doc?: string;
 }
-export const FunctionDefinition = /*@__PURE__*/ S.suspend(() =>
+const FunctionDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition_id: S.String.pipe(T.Body("definition-id")),
     specific_name: S.optional(S.String.pipe(T.Body("specific-name"))),
@@ -2750,7 +2266,7 @@ export const FunctionDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of function definition entities. */
 export type FunctionMetadataDefinitionsList = Array<FunctionDefinition>;
-export const FunctionMetadataDefinitionsList = /*@__PURE__*/ S.Array(
+const FunctionMetadataDefinitionsList = /*@__PURE__*/ S.Array(
   FunctionDefinition,
 ) as any as S.Schema<FunctionMetadataDefinitionsList>;
 
@@ -2758,7 +2274,7 @@ export interface FunctionDefinitionVersionRef {
   definition_id: string;
   version_id: number;
 }
-export const FunctionDefinitionVersionRef = /*@__PURE__*/ S.suspend(() =>
+const FunctionDefinitionVersionRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition_id: S.String.pipe(T.Body("definition-id")),
     version_id: S.Number.pipe(T.Body("version-id")),
@@ -2769,7 +2285,7 @@ export const FunctionDefinitionVersionRef = /*@__PURE__*/ S.suspend(() =>
 
 /** Mapping of each definition to its selected version at this time. */
 export type FunctionDefinitionLogEntryDefinitionVersionsList = Array<FunctionDefinitionVersionRef>;
-export const FunctionDefinitionLogEntryDefinitionVersionsList = /*@__PURE__*/ S.Array(
+const FunctionDefinitionLogEntryDefinitionVersionsList = /*@__PURE__*/ S.Array(
   FunctionDefinitionVersionRef,
 ) as any as S.Schema<FunctionDefinitionLogEntryDefinitionVersionsList>;
 
@@ -2779,7 +2295,7 @@ export interface FunctionDefinitionLogEntry {
   /** Mapping of each definition to its selected version at this time. */
   definition_versions: FunctionDefinitionLogEntryDefinitionVersionsList;
 }
-export const FunctionDefinitionLogEntry = /*@__PURE__*/ S.suspend(() =>
+const FunctionDefinitionLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
     definition_versions: FunctionDefinitionLogEntryDefinitionVersionsList.pipe(
@@ -2792,13 +2308,13 @@ export const FunctionDefinitionLogEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** History of versions within the function's definitions. */
 export type FunctionMetadataDefinitionLogList = Array<FunctionDefinitionLogEntry>;
-export const FunctionMetadataDefinitionLogList = /*@__PURE__*/ S.Array(
+const FunctionMetadataDefinitionLogList = /*@__PURE__*/ S.Array(
   FunctionDefinitionLogEntry,
 ) as any as S.Schema<FunctionMetadataDefinitionLogList>;
 
 /** A string-to-string map of properties. */
 export type FunctionMetadataPropertiesMap = { [key: string]: string | undefined };
-export const FunctionMetadataPropertiesMap =
+const FunctionMetadataPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<FunctionMetadataPropertiesMap>;
 
 /** Portable UDF metadata format. Each function is represented by a self-contained metadata file. The `format-version` field identifies the UDF metadata format. */
@@ -2820,7 +2336,7 @@ export interface FunctionMetadata {
   /** Documentation string. */
   doc?: string;
 }
-export const FunctionMetadata = /*@__PURE__*/ S.suspend(() =>
+const FunctionMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function_uuid: S.String.pipe(T.Body("function-uuid")),
     format_version: S.Number.pipe(T.Body("format-version")),
@@ -2838,7 +2354,7 @@ export interface LoadFunctionResult {
   metadata_location?: string;
   metadata: FunctionMetadata;
 }
-export const LoadFunctionResult = /*@__PURE__*/ S.suspend(() =>
+const LoadFunctionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata_location: S.optional(S.String.pipe(T.Body("metadata-location"))),
     metadata: FunctionMetadata,
@@ -2849,7 +2365,7 @@ export interface LoadNamespaceMetadataRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
 }
-export const LoadNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const LoadNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
   })
@@ -2861,7 +2377,7 @@ export const LoadNamespaceMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties stored on the namespace, if supported by the server. If the server does not support namespace properties, it should return null for this field. If namespace properties are supported, but none are set, it should return an empty object. */
 export type GetNamespaceResponsePropertiesMap = { [key: string]: string | undefined };
-export const GetNamespaceResponsePropertiesMap =
+const GetNamespaceResponsePropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<GetNamespaceResponsePropertiesMap>;
 
 export interface GetNamespaceResponse {
@@ -2869,7 +2385,7 @@ export interface GetNamespaceResponse {
   /** Properties stored on the namespace, if supported by the server. If the server does not support namespace properties, it should return null for this field. If namespace properties are supported, but none are set, it should return an empty object. */
   properties?: GetNamespaceResponsePropertiesMap | null;
 }
-export const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: Namespace,
     properties: S.optional(S.NullOr(GetNamespaceResponsePropertiesMap)),
@@ -2877,15 +2393,13 @@ export const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetNamespaceResponse" }) as any as S.Schema<GetNamespaceResponse>;
 
 export type LoadTableRequestSnapshots = "all" | "refs";
-export const LoadTableRequestSnapshots = S.String;
+const LoadTableRequestSnapshots = S.String;
 
 export type LoadTableRequestXIcebergAccessDelegationItem = "vended-credentials" | "remote-signing";
-export const LoadTableRequestXIcebergAccessDelegationItem = S.String;
-
 export type LoadTableRequestXIcebergAccessDelegationList = Array<
   LoadTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const LoadTableRequestXIcebergAccessDelegationList =
+const LoadTableRequestXIcebergAccessDelegationList =
   CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<LoadTableRequestXIcebergAccessDelegationList>;
 
 export interface LoadTableRequest {
@@ -2902,7 +2416,7 @@ export interface LoadTableRequest {
   /** An optional header that allows the server to return 304 (Not Modified) if the metadata is current. The content is the value of the ETag received in a CreateTableResponse, LoadTableResponse or CommitTableResponse. */
   ifNoneMatch?: string;
 }
-export const LoadTableRequest = /*@__PURE__*/ S.suspend(() =>
+const LoadTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -2925,7 +2439,7 @@ export interface LoadViewRequest {
   /** A comma-separated list of fully qualified view names (namespace and view name) representing the view reference chain when an entity (table or view) is loaded via a view. The list should be ordered with the outermost view first, followed by any intermediate views it references, down to the view that directly references the entity. For a simple case where a view directly references the entity, the list contains a single view identifier. For nested views (a view referencing another view which references the entity), the list contains multiple view identifiers representing the complete dependency chain. The view identifier is a composite string of the format {namespace}{separator}{viewName}. The namespace-separator (defined in /config) acts as the delimiter. When parsing, the last occurrence of this separator identifies the boundary between the namespace and the view name. Multipart namespaces must follow the encoding rules of the parent parameter in the list namespaces endpoint. Multiple view identifiers are separated by commas. Servers should split the parameter value on comma characters to parse individual view identifiers. If view names contain commas, they must be url-encoded as %2C. Example with multiple views (where prod%1Fanalytics is a nested namespace which has a quarterly_view which references to monthly_view which then references the entity being loaded) - prod%1Fanalytics%1Fquarterly_view,prod%1Fanalytics%1Fmonthly_view */
   referenced_by?: string;
 }
-export const LoadViewRequest = /*@__PURE__*/ S.suspend(() =>
+const LoadViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     view: S.String.pipe(T.Label()),
@@ -2939,7 +2453,7 @@ export interface NamespaceExistsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
 }
-export const NamespaceExistsRequest = /*@__PURE__*/ S.suspend(() =>
+const NamespaceExistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
   })
@@ -2948,28 +2462,25 @@ export const NamespaceExistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespaceExistsRequest" }) as any as S.Schema<NamespaceExistsRequest>;
 
 export interface NamespaceExistsResponse {}
-export const NamespaceExistsResponse =
-  CancelPlanningResponse as any as S.Schema<NamespaceExistsResponse>;
+const NamespaceExistsResponse = CancelPlanningResponse as any as S.Schema<NamespaceExistsResponse>;
 
 export type PlanTableScanRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
-export const PlanTableScanRequestXIcebergAccessDelegationItem = S.String;
-
 export type PlanTableScanRequestXIcebergAccessDelegationList = Array<
   PlanTableScanRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const PlanTableScanRequestXIcebergAccessDelegationList =
+const PlanTableScanRequestXIcebergAccessDelegationList =
   CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<PlanTableScanRequestXIcebergAccessDelegationList>;
 
 /** List of selected schema fields */
 export type PlanTableScanRequestSelectList = Array<string>;
-export const PlanTableScanRequestSelectList =
+const PlanTableScanRequestSelectList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<PlanTableScanRequestSelectList>;
 
 /** List of fields for which the service should send column stats. */
 export type PlanTableScanRequestStatsFieldsList = Array<string>;
-export const PlanTableScanRequestStatsFieldsList =
+const PlanTableScanRequestStatsFieldsList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<PlanTableScanRequestStatsFieldsList>;
 
 export interface PlanTableScanRequest {
@@ -3000,7 +2511,7 @@ export interface PlanTableScanRequest {
   /** List of fields for which the service should send column stats. */
   stats_fields?: PlanTableScanRequestStatsFieldsList;
 }
-export const PlanTableScanRequest = /*@__PURE__*/ S.suspend(() =>
+const PlanTableScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -3026,22 +2537,10 @@ export const PlanTableScanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Delete files referenced by file scan tasks */
 export type CompletedPlanningWithIDResultDeleteFilesList = Array<DeleteFile>;
-export const CompletedPlanningWithIDResultDeleteFilesList =
-  CompletedPlanningResultDeleteFilesList as any as S.Schema<CompletedPlanningWithIDResultDeleteFilesList>;
-
 export type CompletedPlanningWithIDResultFileScanTasksList = Array<FileScanTask>;
-export const CompletedPlanningWithIDResultFileScanTasksList =
-  CompletedPlanningResultFileScanTasksList as any as S.Schema<CompletedPlanningWithIDResultFileScanTasksList>;
-
 export type CompletedPlanningWithIDResultPlanTasksList = Array<string>;
-export const CompletedPlanningWithIDResultPlanTasksList =
-  RemovePropertiesUpdateRemovalsList as any as S.Schema<CompletedPlanningWithIDResultPlanTasksList>;
-
 /** Storage credentials for accessing the files returned in the scan result. If the server returns storage credentials as part of the completed scan planning response, the expectation is for the client to use these credentials to read the files returned in the FileScanTasks as part of the scan result. */
 export type CompletedPlanningWithIDResultStorageCredentialsList = Array<StorageCredential>;
-export const CompletedPlanningWithIDResultStorageCredentialsList =
-  LoadTableResultStorageCredentialsList as any as S.Schema<CompletedPlanningWithIDResultStorageCredentialsList>;
-
 export interface CompletedPlanningWithIDResult {
   /** Delete files referenced by file scan tasks */
   delete_files?: CompletedPlanningWithIDResultDeleteFilesList;
@@ -3053,59 +2552,31 @@ export interface CompletedPlanningWithIDResult {
   /** ID used to track a planning request */
   plan_id: string;
 }
-export const CompletedPlanningWithIDResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delete_files: S.optional(
-      CompletedPlanningWithIDResultDeleteFilesList.pipe(T.Body("delete-files")),
-    ),
-    file_scan_tasks: S.optional(
-      CompletedPlanningWithIDResultFileScanTasksList.pipe(T.Body("file-scan-tasks")),
-    ),
-    plan_tasks: S.optional(CompletedPlanningWithIDResultPlanTasksList.pipe(T.Body("plan-tasks"))),
-    status: PlanStatus,
-    storage_credentials: S.optional(
-      CompletedPlanningWithIDResultStorageCredentialsList.pipe(T.Body("storage-credentials")),
-    ),
-    plan_id: S.String.pipe(T.Body("plan-id")),
-  }),
-).annotate({
-  identifier: "CompletedPlanningWithIDResult",
-}) as any as S.Schema<CompletedPlanningWithIDResult>;
-
 export interface AsyncPlanningResult {
   status: PlanStatus;
   /** ID used to track a planning request */
   plan_id: string;
 }
-export const AsyncPlanningResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: PlanStatus,
-    plan_id: S.String.pipe(T.Body("plan-id")),
-  }),
-).annotate({ identifier: "AsyncPlanningResult" }) as any as S.Schema<AsyncPlanningResult>;
-
 /** Result of server-side scan planning for planTableScan */
 export type PlanTableScanResult =
   | CompletedPlanningWithIDResult
   | FailedPlanningResult
   | AsyncPlanningResult
   | EmptyPlanningResult;
-export const PlanTableScanResult = /*@__PURE__*/ S.Unknown as any as S.Schema<PlanTableScanResult>;
+const PlanTableScanResult = /*@__PURE__*/ S.Unknown as any as S.Schema<PlanTableScanResult>;
 
 export type PlanTableScanResponse = PlanTableScanResult;
-export const PlanTableScanResponse = /*@__PURE__*/ S.suspend(() =>
+const PlanTableScanResponse = /*@__PURE__*/ S.suspend(() =>
   PlanTableScanResult.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PlanTableScanResponse" }) as any as S.Schema<PlanTableScanResponse>;
 
 export type RegisterTableRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
-export const RegisterTableRequestXIcebergAccessDelegationItem = S.String;
-
 export type RegisterTableRequestXIcebergAccessDelegationList = Array<
   RegisterTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
-export const RegisterTableRequestXIcebergAccessDelegationList =
+const RegisterTableRequestXIcebergAccessDelegationList =
   CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<RegisterTableRequestXIcebergAccessDelegationList>;
 
 export interface RegisterTableRequest {
@@ -3120,7 +2591,7 @@ export interface RegisterTableRequest {
   /** Whether to overwrite table metadata if the table already exists */
   overwrite?: boolean;
 }
-export const RegisterTableRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     xIcebergAccessDelegation: S.optional(
@@ -3145,7 +2616,7 @@ export interface RegisterViewRequest {
   name: string;
   metadata_location: string;
 }
-export const RegisterViewRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -3162,7 +2633,7 @@ export interface RenameTableRequest {
   source: TableIdentifier;
   destination: TableIdentifier;
 }
-export const RenameTableRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
     source: TableIdentifier,
@@ -3173,7 +2644,7 @@ export const RenameTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenameTableRequest" }) as any as S.Schema<RenameTableRequest>;
 
 export interface RenameTableResponse {}
-export const RenameTableResponse = CancelPlanningResponse as any as S.Schema<RenameTableResponse>;
+const RenameTableResponse = CancelPlanningResponse as any as S.Schema<RenameTableResponse>;
 
 export interface RenameViewRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
@@ -3181,7 +2652,7 @@ export interface RenameViewRequest {
   source: TableIdentifier;
   destination: TableIdentifier;
 }
-export const RenameViewRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
     source: TableIdentifier,
@@ -3192,14 +2663,14 @@ export const RenameViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenameViewRequest" }) as any as S.Schema<RenameViewRequest>;
 
 export interface RenameViewResponse {}
-export const RenameViewResponse = CancelPlanningResponse as any as S.Schema<RenameViewResponse>;
+const RenameViewResponse = CancelPlanningResponse as any as S.Schema<RenameViewResponse>;
 
 /** The view UUID must match the requirement's `uuid` */
 export interface AssertViewUUID {
   type: string;
   uuid: string;
 }
-export const AssertViewUUID = /*@__PURE__*/ S.suspend(() =>
+const AssertViewUUID = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     uuid: S.String,
@@ -3207,7 +2678,7 @@ export const AssertViewUUID = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssertViewUUID" }) as any as S.Schema<AssertViewUUID>;
 
 export type ReplaceViewRequestRequirementsList = Array<AssertViewUUID>;
-export const ReplaceViewRequestRequirementsList = /*@__PURE__*/ S.Array(
+const ReplaceViewRequestRequirementsList = /*@__PURE__*/ S.Array(
   AssertViewUUID,
 ) as any as S.Schema<ReplaceViewRequestRequirementsList>;
 
@@ -3215,27 +2686,11 @@ export interface AddViewVersionUpdate {
   action: string;
   view_version: ViewVersion;
 }
-export const AddViewVersionUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    view_version: ViewVersion.pipe(T.Body("view-version")),
-  }),
-).annotate({ identifier: "AddViewVersionUpdate" }) as any as S.Schema<AddViewVersionUpdate>;
-
 export interface SetCurrentViewVersionUpdate {
   action: string;
   /** The view version id to set as current, or -1 to set last added view version id */
   view_version_id: number;
 }
-export const SetCurrentViewVersionUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    view_version_id: S.Number.pipe(T.Body("view-version-id")),
-  }),
-).annotate({
-  identifier: "SetCurrentViewVersionUpdate",
-}) as any as S.Schema<SetCurrentViewVersionUpdate>;
-
 export type ViewUpdateInput =
   | AssignUUIDUpdate
   | UpgradeFormatVersionUpdate
@@ -3245,10 +2700,10 @@ export type ViewUpdateInput =
   | RemovePropertiesUpdate
   | AddViewVersionUpdate
   | SetCurrentViewVersionUpdate;
-export const ViewUpdateInput = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewUpdateInput>;
+const ViewUpdateInput = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewUpdateInput>;
 
 export type ReplaceViewRequestUpdatesList = Array<ViewUpdateInput>;
-export const ReplaceViewRequestUpdatesList = /*@__PURE__*/ S.Array(
+const ReplaceViewRequestUpdatesList = /*@__PURE__*/ S.Array(
   ViewUpdateInput,
 ) as any as S.Schema<ReplaceViewRequestUpdatesList>;
 
@@ -3264,7 +2719,7 @@ export interface ReplaceViewRequest {
   requirements?: ReplaceViewRequestRequirementsList;
   updates: ReplaceViewRequestUpdatesList;
 }
-export const ReplaceViewRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     view: S.String.pipe(T.Label()),
@@ -3284,7 +2739,7 @@ export interface ReportMetricsRequest {
   table: string;
   report_type: string;
 }
-export const ReportMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -3297,8 +2752,7 @@ export const ReportMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportMetricsRequest" }) as any as S.Schema<ReportMetricsRequest>;
 
 export interface ReportMetricsResponse {}
-export const ReportMetricsResponse =
-  CancelPlanningResponse as any as S.Schema<ReportMetricsResponse>;
+const ReportMetricsResponse = CancelPlanningResponse as any as S.Schema<ReportMetricsResponse>;
 
 export type SignRequestRequestMethod =
   | "PUT"
@@ -3308,10 +2762,10 @@ export type SignRequestRequestMethod =
   | "DELETE"
   | "PATCH"
   | "OPTIONS";
-export const SignRequestRequestMethod = S.String;
+const SignRequestRequestMethod = S.String;
 
 export type SignRequestRequestPropertiesMap = { [key: string]: string | undefined };
-export const SignRequestRequestPropertiesMap =
+const SignRequestRequestPropertiesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<SignRequestRequestPropertiesMap>;
 
 export interface SignRequestRequest {
@@ -3329,7 +2783,7 @@ export interface SignRequestRequest {
   /** The storage provider for which the request is to be signed. The provider should correspond to the scheme used for a storage native URI. For example `s3` for AWS S3 paths. For backwards compatibility, if this is not specified, the provider is assumed to be `s3`. */
   provider?: string;
 }
-export const SignRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const SignRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -3350,7 +2804,7 @@ export interface RemoteSignResult {
   uri: string;
   headers: MultiValuedMap;
 }
-export const RemoteSignResult = /*@__PURE__*/ S.suspend(() =>
+const RemoteSignResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.String,
     headers: MultiValuedMap,
@@ -3363,7 +2817,7 @@ export interface TableExistsRequest {
   /** A table name */
   table: string;
 }
-export const TableExistsRequest = /*@__PURE__*/ S.suspend(() =>
+const TableExistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -3373,7 +2827,7 @@ export const TableExistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableExistsRequest" }) as any as S.Schema<TableExistsRequest>;
 
 export interface TableExistsResponse {}
-export const TableExistsResponse = CancelPlanningResponse as any as S.Schema<TableExistsResponse>;
+const TableExistsResponse = CancelPlanningResponse as any as S.Schema<TableExistsResponse>;
 
 export interface UnregisterTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
@@ -3383,7 +2837,7 @@ export interface UnregisterTableRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
-export const UnregisterTableRequest = /*@__PURE__*/ S.suspend(() =>
+const UnregisterTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -3405,7 +2859,7 @@ export interface UnregisterTableResult {
   metadata_location: string;
   metadata: TableMetadata;
 }
-export const UnregisterTableResult = /*@__PURE__*/ S.suspend(() =>
+const UnregisterTableResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata_location: S.String.pipe(T.Body("metadata-location")),
     metadata: TableMetadata,
@@ -3413,11 +2867,11 @@ export const UnregisterTableResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnregisterTableResult" }) as any as S.Schema<UnregisterTableResult>;
 
 export type UpdatePropertiesRequestRemovalsList = Array<string>;
-export const UpdatePropertiesRequestRemovalsList =
+const UpdatePropertiesRequestRemovalsList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<UpdatePropertiesRequestRemovalsList>;
 
 export type UpdatePropertiesRequestUpdatesMap = { [key: string]: string | undefined };
-export const UpdatePropertiesRequestUpdatesMap =
+const UpdatePropertiesRequestUpdatesMap =
   SetPropertiesUpdateUpdatesMap as any as S.Schema<UpdatePropertiesRequestUpdatesMap>;
 
 export interface UpdatePropertiesRequest {
@@ -3428,7 +2882,7 @@ export interface UpdatePropertiesRequest {
   removals?: UpdatePropertiesRequestRemovalsList;
   updates?: UpdatePropertiesRequestUpdatesMap;
 }
-export const UpdatePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -3441,17 +2895,17 @@ export const UpdatePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of property keys that were added or updated */
 export type UpdateNamespacePropertiesResponseUpdatedList = Array<string>;
-export const UpdateNamespacePropertiesResponseUpdatedList =
+const UpdateNamespacePropertiesResponseUpdatedList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<UpdateNamespacePropertiesResponseUpdatedList>;
 
 /** List of properties that were removed */
 export type UpdateNamespacePropertiesResponseRemovedList = Array<string>;
-export const UpdateNamespacePropertiesResponseRemovedList =
+const UpdateNamespacePropertiesResponseRemovedList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<UpdateNamespacePropertiesResponseRemovedList>;
 
 /** List of properties requested for removal that were not found in the namespace's properties. Represents a partial success response. Server's do not need to implement this. */
 export type UpdateNamespacePropertiesResponseMissingList = Array<string>;
-export const UpdateNamespacePropertiesResponseMissingList =
+const UpdateNamespacePropertiesResponseMissingList =
   RemovePropertiesUpdateRemovalsList as any as S.Schema<UpdateNamespacePropertiesResponseMissingList>;
 
 export interface UpdateNamespacePropertiesResponse {
@@ -3462,7 +2916,7 @@ export interface UpdateNamespacePropertiesResponse {
   /** List of properties requested for removal that were not found in the namespace's properties. Represents a partial success response. Server's do not need to implement this. */
   missing?: UpdateNamespacePropertiesResponseMissingList | null;
 }
-export const UpdateNamespacePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespacePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: UpdateNamespacePropertiesResponseUpdatedList,
     removed: UpdateNamespacePropertiesResponseRemovedList,
@@ -3473,11 +2927,11 @@ export const UpdateNamespacePropertiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateNamespacePropertiesResponse>;
 
 export type UpdateTableRequestRequirementsList = Array<TableRequirement>;
-export const UpdateTableRequestRequirementsList =
+const UpdateTableRequestRequirementsList =
   CommitTableRequestInputRequirementsList as any as S.Schema<UpdateTableRequestRequirementsList>;
 
 export type UpdateTableRequestUpdatesList = Array<TableUpdateInput>;
-export const UpdateTableRequestUpdatesList =
+const UpdateTableRequestUpdatesList =
   CommitTableRequestInputUpdatesList as any as S.Schema<UpdateTableRequestUpdatesList>;
 
 export interface UpdateTableRequest {
@@ -3492,7 +2946,7 @@ export interface UpdateTableRequest {
   requirements: UpdateTableRequestRequirementsList;
   updates: UpdateTableRequestUpdatesList;
 }
-export const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     table: S.String.pipe(T.Label()),
@@ -3509,7 +2963,7 @@ export interface CommitTableResponse {
   metadata_location: string;
   metadata: TableMetadata;
 }
-export const CommitTableResponse = UnregisterTableResult as any as S.Schema<CommitTableResponse>;
+const CommitTableResponse = UnregisterTableResult as any as S.Schema<CommitTableResponse>;
 
 export interface ViewExistsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
@@ -3517,7 +2971,7 @@ export interface ViewExistsRequest {
   /** A view name */
   view: string;
 }
-export const ViewExistsRequest = /*@__PURE__*/ S.suspend(() =>
+const ViewExistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     view: S.String.pipe(T.Label()),
@@ -3527,7 +2981,7 @@ export const ViewExistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewExistsRequest" }) as any as S.Schema<ViewExistsRequest>;
 
 export interface ViewExistsResponse {}
-export const ViewExistsResponse = CancelPlanningResponse as any as S.Schema<ViewExistsResponse>;
+const ViewExistsResponse = CancelPlanningResponse as any as S.Schema<ViewExistsResponse>;
 
 export type CancelPlanningError =
   | NoSuchNamespaceException

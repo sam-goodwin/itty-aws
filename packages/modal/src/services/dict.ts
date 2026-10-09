@@ -11,34 +11,34 @@ export type { ModalOpError, ModalOpContext };
 export interface ClearDictRequest {
   dictId?: string;
 }
-export const ClearDictRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearDictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/DictClear", code: 200 })),
 ).annotate({ identifier: "ClearDictRequest" }) as any as S.Schema<ClearDictRequest>;
 
 export interface ClearDictResponse {}
-export const ClearDictResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ClearDictResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ClearDictResponse",
 }) as any as S.Schema<ClearDictResponse>;
 
 export interface DeleteDictRequest {
   dictId?: string;
 }
-export const DeleteDictRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/DictDelete", code: 200 })),
 ).annotate({ identifier: "DeleteDictRequest" }) as any as S.Schema<DeleteDictRequest>;
 
 export interface DeleteDictResponse {}
-export const DeleteDictResponse = ClearDictResponse as any as S.Schema<DeleteDictResponse>;
+const DeleteDictResponse = ClearDictResponse as any as S.Schema<DeleteDictResponse>;
 
 export interface DictContainsRequest {
   dictId?: string;
   key?: string;
 }
-export const DictContainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DictContainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
     key: S.optional(S.String),
@@ -48,7 +48,7 @@ export const DictContainsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DictContainsResponse {
   found?: boolean;
 }
-export const DictContainsResponse = /*@__PURE__*/ S.suspend(() =>
+const DictContainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.optional(S.Boolean),
   }),
@@ -57,7 +57,7 @@ export const DictContainsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DictGetByIdRequest {
   dictId?: string;
 }
-export const DictGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DictGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/DictGetById", code: 200 })),
@@ -69,7 +69,7 @@ export interface CreationInfo {
   /** Timestamp of resource creation */
   createdBy?: string;
 }
-export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
+const CreationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Number),
     createdBy: S.optional(S.String),
@@ -80,7 +80,7 @@ export interface DictMetadata {
   name?: string;
   creationInfo?: CreationInfo;
 }
-export const DictMetadata = /*@__PURE__*/ S.suspend(() =>
+const DictMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     creationInfo: S.optional(CreationInfo),
@@ -91,7 +91,7 @@ export interface DictGetByIdResponse {
   dictId?: string;
   metadata?: DictMetadata;
 }
-export const DictGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
+const DictGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
     metadata: S.optional(DictMetadata),
@@ -105,13 +105,13 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-export const ObjectCreationType = S.String;
+const ObjectCreationType = S.String;
 
 export interface DictEntry {
   key?: string;
   value?: string;
 }
-export const DictEntry = /*@__PURE__*/ S.suspend(() =>
+const DictEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -119,7 +119,7 @@ export const DictEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DictEntry" }) as any as S.Schema<DictEntry>;
 
 export type DictEntryList = Array<DictEntry>;
-export const DictEntryList = /*@__PURE__*/ S.Array(DictEntry) as any as S.Schema<DictEntryList>;
+const DictEntryList = /*@__PURE__*/ S.Array(DictEntry) as any as S.Schema<DictEntryList>;
 
 export interface DictGetOrCreateRequest {
   deploymentName?: string;
@@ -128,7 +128,7 @@ export interface DictGetOrCreateRequest {
   objectCreationType?: ObjectCreationType | (string & {});
   data?: DictEntryList;
 }
-export const DictGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const DictGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -141,25 +141,24 @@ export interface DictGetOrCreateResponse {
   dictId?: string;
   metadata?: DictMetadata;
 }
-export const DictGetOrCreateResponse =
-  DictGetByIdResponse as any as S.Schema<DictGetOrCreateResponse>;
+const DictGetOrCreateResponse = DictGetByIdResponse as any as S.Schema<DictGetOrCreateResponse>;
 
 export interface DictHeartbeatRequest {
   dictId?: string;
 }
-export const DictHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const DictHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/DictHeartbeat", code: 200 })),
 ).annotate({ identifier: "DictHeartbeatRequest" }) as any as S.Schema<DictHeartbeatRequest>;
 
 export interface DictHeartbeatResponse {}
-export const DictHeartbeatResponse = ClearDictResponse as any as S.Schema<DictHeartbeatResponse>;
+const DictHeartbeatResponse = ClearDictResponse as any as S.Schema<DictHeartbeatResponse>;
 
 export interface DictLenRequest {
   dictId?: string;
 }
-export const DictLenRequest = /*@__PURE__*/ S.suspend(() =>
+const DictLenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/DictLen", code: 200 })),
@@ -168,7 +167,7 @@ export const DictLenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DictLenResponse {
   len?: number;
 }
-export const DictLenResponse = /*@__PURE__*/ S.suspend(() =>
+const DictLenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     len: S.optional(S.Number),
   }),
@@ -178,7 +177,7 @@ export interface DictPopRequest {
   dictId?: string;
   key?: string;
 }
-export const DictPopRequest = /*@__PURE__*/ S.suspend(() =>
+const DictPopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
     key: S.optional(S.String),
@@ -189,7 +188,7 @@ export interface DictPopResponse {
   found?: boolean;
   value?: string;
 }
-export const DictPopResponse = /*@__PURE__*/ S.suspend(() =>
+const DictPopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.optional(S.Boolean),
     value: S.optional(S.String),
@@ -200,7 +199,7 @@ export interface GetDictRequest {
   dictId?: string;
   key?: string;
 }
-export const GetDictRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
     key: S.optional(S.String),
@@ -211,13 +210,13 @@ export interface GetDictResponse {
   found?: boolean;
   value?: string;
 }
-export const GetDictResponse = DictPopResponse as any as S.Schema<GetDictResponse>;
+const GetDictResponse = DictPopResponse as any as S.Schema<GetDictResponse>;
 
 export interface ListPagination {
   maxObjects?: number;
   createdBefore?: number;
 }
-export const ListPagination = /*@__PURE__*/ S.suspend(() =>
+const ListPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxObjects: S.optional(S.Number),
     createdBefore: S.optional(S.Number),
@@ -228,7 +227,7 @@ export interface ListDictRequest {
   environmentName?: string;
   pagination?: ListPagination;
 }
-export const ListDictRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     pagination: S.optional(ListPagination),
@@ -242,7 +241,7 @@ export interface ListDictResponseDictInfo {
   dictId?: string;
   metadata?: DictMetadata;
 }
-export const ListDictResponseDictInfo = /*@__PURE__*/ S.suspend(() =>
+const ListDictResponseDictInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -252,7 +251,7 @@ export const ListDictResponseDictInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDictResponseDictInfo" }) as any as S.Schema<ListDictResponseDictInfo>;
 
 export type ListDictResponseDictInfoList = Array<ListDictResponseDictInfo>;
-export const ListDictResponseDictInfoList = /*@__PURE__*/ S.Array(
+const ListDictResponseDictInfoList = /*@__PURE__*/ S.Array(
   ListDictResponseDictInfo,
 ) as any as S.Schema<ListDictResponseDictInfoList>;
 
@@ -260,7 +259,7 @@ export interface ListDictResponse {
   dicts?: ListDictResponseDictInfoList;
   environmentName?: string;
 }
-export const ListDictResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDictResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dicts: S.optional(ListDictResponseDictInfoList),
     environmentName: S.optional(S.String),
@@ -272,7 +271,7 @@ export interface UpdateDictRequest {
   updates?: DictEntryList;
   ifNotExists?: boolean;
 }
-export const UpdateDictRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
     updates: S.optional(DictEntryList),
@@ -283,7 +282,7 @@ export const UpdateDictRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDictResponse {
   created?: boolean;
 }
-export const UpdateDictResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDictResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.Boolean),
   }),

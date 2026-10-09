@@ -15,7 +15,7 @@ export interface NotebookOutputExecuteResult {
   /** mimebundle */
   metadata?: unknown;
 }
-export const NotebookOutputExecuteResult = /*@__PURE__*/ S.suspend(() =>
+const NotebookOutputExecuteResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionCount: S.optional(S.Number),
     data: S.optional(S.Unknown),
@@ -33,7 +33,7 @@ export interface NotebookOutputDisplayData {
   /** This should not be included in saved notebook. */
   transientDisplayId?: string;
 }
-export const NotebookOutputDisplayData = /*@__PURE__*/ S.suspend(() =>
+const NotebookOutputDisplayData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.Unknown),
     metadata: S.optional(S.Unknown),
@@ -49,7 +49,7 @@ export interface NotebookOutputStream {
   /** stdout | stderr */
   text?: string;
 }
-export const NotebookOutputStream = /*@__PURE__*/ S.suspend(() =>
+const NotebookOutputStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     text: S.optional(S.String),
@@ -57,7 +57,7 @@ export const NotebookOutputStream = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotebookOutputStream" }) as any as S.Schema<NotebookOutputStream>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Output of an error that occurred during code cell execution. */
 export interface NotebookOutputError {
@@ -65,7 +65,7 @@ export interface NotebookOutputError {
   evalue?: string;
   traceback?: StringList;
 }
-export const NotebookOutputError = /*@__PURE__*/ S.suspend(() =>
+const NotebookOutputError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ename: S.optional(S.String),
     evalue: S.optional(S.String),
@@ -80,7 +80,7 @@ export interface NotebookOutput {
   stream?: NotebookOutputStream;
   error?: NotebookOutputError;
 }
-export const NotebookOutput = /*@__PURE__*/ S.suspend(() =>
+const NotebookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executeResult: S.optional(NotebookOutputExecuteResult),
     displayData: S.optional(NotebookOutputDisplayData),
@@ -95,7 +95,7 @@ export interface NotebookKernelPublishResultsRequestExecuteReply {
   executionCount?: number;
   duration?: number;
 }
-export const NotebookKernelPublishResultsRequestExecuteReply = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelPublishResultsRequestExecuteReply = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     executionCount: S.optional(S.Number),
@@ -115,7 +115,7 @@ export interface NotebookKernelPublishResultsRequestCellResult {
   /** Cell has finished executing, return the kernel's execute_reply. */
   executeReply?: NotebookKernelPublishResultsRequestExecuteReply;
 }
-export const NotebookKernelPublishResultsRequestCellResult = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelPublishResultsRequestCellResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cellId: S.optional(S.String),
     output: S.optional(NotebookOutput),
@@ -128,7 +128,7 @@ export const NotebookKernelPublishResultsRequestCellResult = /*@__PURE__*/ S.sus
 
 export type NotebookKernelPublishResultsRequestCellResultList =
   Array<NotebookKernelPublishResultsRequestCellResult>;
-export const NotebookKernelPublishResultsRequestCellResultList = /*@__PURE__*/ S.Array(
+const NotebookKernelPublishResultsRequestCellResultList = /*@__PURE__*/ S.Array(
   NotebookKernelPublishResultsRequestCellResult,
 ) as any as S.Schema<NotebookKernelPublishResultsRequestCellResultList>;
 
@@ -136,7 +136,7 @@ export interface NotebookKernelPublishResultsRequest {
   notebookId?: string;
   results?: NotebookKernelPublishResultsRequestCellResultList;
 }
-export const NotebookKernelPublishResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelPublishResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notebookId: S.optional(S.String),
     results: S.optional(NotebookKernelPublishResultsRequestCellResultList),
@@ -152,9 +152,7 @@ export const NotebookKernelPublishResultsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebookKernelPublishResultsRequest>;
 
 export interface NotebookKernelPublishResultsResponse {}
-export const NotebookKernelPublishResultsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const NotebookKernelPublishResultsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "NotebookKernelPublishResultsResponse",
 }) as any as S.Schema<NotebookKernelPublishResultsResponse>;
 

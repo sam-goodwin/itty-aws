@@ -10,11 +10,11 @@ export type { OvhOpError, OvhOpContext };
 
 /** Ticket request category */
 export type SupportTicketCategoryEnum = "assistance" | "billing" | "incident";
-export const SupportTicketCategoryEnum = S.String;
+const SupportTicketCategoryEnum = S.String;
 
 /** Ticket level of impact or urgency (reserved for Business or Enterprise support level accounts) */
 export type SupportTicketImpactUrgencyEnum = "high" | "low" | "medium";
-export const SupportTicketImpactUrgencyEnum = S.String;
+const SupportTicketImpactUrgencyEnum = S.String;
 
 /** Ticket product */
 export type SupportTicketProductEnum =
@@ -43,7 +43,7 @@ export type SupportTicketProductEnum =
   | "vps"
   | "web-billing"
   | "web-other";
-export const SupportTicketProductEnum = S.String;
+const SupportTicketProductEnum = S.String;
 
 /** Ticket request subcategory */
 export type SupportTicketSubCategoryEnum =
@@ -57,15 +57,15 @@ export type SupportTicketSubCategoryEnum =
   | "perfs"
   | "start"
   | "usage";
-export const SupportTicketSubCategoryEnum = S.String;
+const SupportTicketSubCategoryEnum = S.String;
 
 /** DEPRECATED - Ticket type (criticalIntervention requires VIP support level) */
 export type SupportTicketTypeEnum = "criticalIntervention" | "genericRequest";
-export const SupportTicketTypeEnum = S.String;
+const SupportTicketTypeEnum = S.String;
 
 /** List of e-mail addresses to notify on ticket updates (max. 10) */
 export type CreateSupportTicketRequestWatchersList = Array<string>;
-export const CreateSupportTicketRequestWatchersList = /*@__PURE__*/ S.Array(
+const CreateSupportTicketRequestWatchersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateSupportTicketRequestWatchersList>;
 
@@ -91,7 +91,7 @@ export interface CreateSupportTicketRequest {
   /** List of e-mail addresses to notify on ticket updates (max. 10) */
   watchers?: CreateSupportTicketRequestWatchersList;
 }
-export const CreateSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.String,
     category: S.optional(SupportTicketCategoryEnum),
@@ -119,7 +119,7 @@ export interface SupportNewMessageInfo {
   /** Ticket external number */
   ticketNumber?: number;
 }
-export const SupportNewMessageInfo = /*@__PURE__*/ S.suspend(() =>
+const SupportNewMessageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalNotice: S.optional(S.NullOr(S.String)),
     messageId: S.optional(S.Number),
@@ -132,7 +132,7 @@ export interface CreateSupportTicketCloseRequest {
   /** internal ticket identifier */
   ticketId: number;
 }
-export const CreateSupportTicketCloseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportTicketCloseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ticketId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/support/tickets/{ticketId}/close", code: 200 })),
@@ -141,9 +141,7 @@ export const CreateSupportTicketCloseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSupportTicketCloseRequest>;
 
 export interface CreateSupportTicketCloseResponse {}
-export const CreateSupportTicketCloseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CreateSupportTicketCloseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateSupportTicketCloseResponse",
 }) as any as S.Schema<CreateSupportTicketCloseResponse>;
 
@@ -153,7 +151,7 @@ export interface CreateSupportTicketReopenRequest {
   /** ticket reopen reason */
   body: string;
 }
-export const CreateSupportTicketReopenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportTicketReopenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ticketId: S.Number.pipe(T.Label()),
     body: S.String,
@@ -163,7 +161,7 @@ export const CreateSupportTicketReopenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSupportTicketReopenRequest>;
 
 export interface CreateSupportTicketReopenResponse {}
-export const CreateSupportTicketReopenResponse =
+const CreateSupportTicketReopenResponse =
   CreateSupportTicketCloseResponse as any as S.Schema<CreateSupportTicketReopenResponse>;
 
 export interface CreateSupportTicketScoreRequest {
@@ -174,7 +172,7 @@ export interface CreateSupportTicketScoreRequest {
   /** ticket comment about the score */
   scoreComment?: string;
 }
-export const CreateSupportTicketScoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportTicketScoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ticketId: S.Number.pipe(T.Label()),
     score: S.String,
@@ -185,14 +183,14 @@ export const CreateSupportTicketScoreRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSupportTicketScoreRequest>;
 
 export interface CreateSupportTicketScoreResponse {}
-export const CreateSupportTicketScoreResponse =
+const CreateSupportTicketScoreResponse =
   CreateSupportTicketCloseResponse as any as S.Schema<CreateSupportTicketScoreResponse>;
 
 export interface GetSupportTicketRequest {
   /** internal identifier ticket */
   ticketId: number;
 }
-export const GetSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ticketId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/support/tickets/{ticketId}", code: 200 })),
@@ -200,11 +198,11 @@ export const GetSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Message sender type */
 export type SupportMessageSenderEnum = "customer" | "support";
-export const SupportMessageSenderEnum = S.String;
+const SupportMessageSenderEnum = S.String;
 
 /** Support ticket statuses */
 export type SupportTicketStatusEnum = "closed" | "open" | "unknown";
-export const SupportTicketStatusEnum = S.String;
+const SupportTicketStatusEnum = S.String;
 
 /** Support Ticket */
 export interface SupportTicket {
@@ -237,7 +235,7 @@ export interface SupportTicket {
   /** Ticket last update date */
   updateDate?: string;
 }
-export const SupportTicket = /*@__PURE__*/ S.suspend(() =>
+const SupportTicket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     canBeClosed: S.optional(S.Boolean),
@@ -260,7 +258,7 @@ export interface GetSupportTicketCanBeScoredRequest {
   /** internal ticket identifier */
   ticketId: number;
 }
-export const GetSupportTicketCanBeScoredRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportTicketCanBeScoredRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ticketId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/support/tickets/{ticketId}/canBeScored", code: 200 })),
@@ -269,7 +267,7 @@ export const GetSupportTicketCanBeScoredRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSupportTicketCanBeScoredRequest>;
 
 export type GetSupportTicketCanBeScoredResponse = boolean;
-export const GetSupportTicketCanBeScoredResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSupportTicketCanBeScoredResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSupportTicketCanBeScoredResponse",
@@ -279,7 +277,7 @@ export interface ListSupportTicketMessagesRequest {
   /** internal ticket identifier */
   ticketId: number;
 }
-export const ListSupportTicketMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSupportTicketMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ticketId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/support/tickets/{ticketId}/messages", code: 200 })),
@@ -302,7 +300,7 @@ export interface SupportMessage {
   /** Message last update date */
   updateDate?: string;
 }
-export const SupportMessage = /*@__PURE__*/ S.suspend(() =>
+const SupportMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(S.String),
     creationDate: S.optional(S.String),
@@ -314,12 +312,12 @@ export const SupportMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportMessage" }) as any as S.Schema<SupportMessage>;
 
 export type ListSupportTicketMessagesResponseBodyList = Array<SupportMessage>;
-export const ListSupportTicketMessagesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSupportTicketMessagesResponseBodyList = /*@__PURE__*/ S.Array(
   SupportMessage,
 ) as any as S.Schema<ListSupportTicketMessagesResponseBodyList>;
 
 export type ListSupportTicketMessagesResponse = ListSupportTicketMessagesResponseBodyList;
-export const ListSupportTicketMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSupportTicketMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   ListSupportTicketMessagesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSupportTicketMessagesResponse",
@@ -353,7 +351,7 @@ export interface ListSupportTicketsRequest {
   /** Search by ticket number */
   ticketNumber?: string;
 }
-export const ListSupportTicketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSupportTicketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archived: S.optional(S.Boolean.pipe(T.Query())),
     category: S.optional(SupportTicketCategoryEnum.pipe(T.Query())),
@@ -374,12 +372,12 @@ export const ListSupportTicketsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSupportTicketsRequest>;
 
 export type ListSupportTicketsResponseBodyList = Array<number>;
-export const ListSupportTicketsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSupportTicketsResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListSupportTicketsResponseBodyList>;
 
 export type ListSupportTicketsResponse = ListSupportTicketsResponseBodyList;
-export const ListSupportTicketsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSupportTicketsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSupportTicketsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSupportTicketsResponse",
@@ -391,7 +389,7 @@ export interface ReplySupportTicketRequest {
   /** text body of ticket response */
   body: string;
 }
-export const ReplySupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplySupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ticketId: S.Number.pipe(T.Label()),
     body: S.String,
@@ -401,7 +399,7 @@ export const ReplySupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplySupportTicketRequest>;
 
 export interface ReplySupportTicketResponse {}
-export const ReplySupportTicketResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ReplySupportTicketResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ReplySupportTicketResponse",
 }) as any as S.Schema<ReplySupportTicketResponse>;
 

@@ -69,7 +69,7 @@ export interface CancelTaskRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const CancelTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String),
   }),
@@ -81,7 +81,7 @@ export interface CancelTasksRequest {
   /** Request body */
   body?: CancelTaskRequest;
 }
-export const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelTaskRequest.pipe(T.HttpBody())),
@@ -95,10 +95,7 @@ export const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelTasksRequest" }) as any as S.Schema<CancelTasksRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** FilePart represents the different ways files can be provided. If files are small, directly feeding the bytes is supported via file_with_bytes. If the file is large, the agent should read the content as appropriate directly from the file_with_uri source. */
 export interface FilePart {
@@ -107,7 +104,7 @@ export interface FilePart {
   mimeType?: string;
   fileWithUri?: string;
 }
-export const FilePart = /*@__PURE__*/ S.suspend(() =>
+const FilePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     fileWithBytes: S.optional(S.String),
@@ -120,7 +117,7 @@ export const FilePart = /*@__PURE__*/ S.suspend(() =>
 export interface DataPart {
   data?: DocumentMap;
 }
-export const DataPart = /*@__PURE__*/ S.suspend(() =>
+const DataPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(DocumentMap),
   }),
@@ -134,7 +131,7 @@ export interface Part {
   /** Optional metadata associated with this part. */
   metadata?: DocumentMap;
 }
-export const Part = /*@__PURE__*/ S.suspend(() =>
+const Part = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.optional(FilePart),
     data: S.optional(DataPart),
@@ -144,10 +141,10 @@ export const Part = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Part" }) as any as S.Schema<Part>;
 
 export type PartList = Array<Part>;
-export const PartList = /*@__PURE__*/ S.Array(Part) as any as S.Schema<PartList>;
+const PartList = /*@__PURE__*/ S.Array(Part) as any as S.Schema<PartList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Artifacts are the container for task completed results. These are similar to Messages but are intended to be the product of a task, as opposed to point-to-point communication. */
 export interface Artifact {
@@ -164,7 +161,7 @@ export interface Artifact {
   /** A human readable description of the artifact, optional. */
   description?: string;
 }
-export const Artifact = /*@__PURE__*/ S.suspend(() =>
+const Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -176,10 +173,10 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 export type ArtifactList = Array<Artifact>;
-export const ArtifactList = /*@__PURE__*/ S.Array(Artifact) as any as S.Schema<ArtifactList>;
+const ArtifactList = /*@__PURE__*/ S.Array(Artifact) as any as S.Schema<ArtifactList>;
 
 export type MessageRoleEnum = "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT";
-export const MessageRoleEnum = S.String;
+const MessageRoleEnum = S.String;
 
 /** Message is one unit of communication between client and server. It is associated with a context and optionally a task. Since the server is responsible for the context definition, it must always provide a context_id in its messages. The client can optionally provide the context_id if it knows the context to associate the message to. Similarly for task_id, except the server decides if a task is created and whether to include the task_id. */
 export interface Message {
@@ -198,7 +195,7 @@ export interface Message {
   /** The task id of the message. This is optional and if set, the message will be associated with the given task. */
   taskId?: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(PartList),
     role: S.optional(MessageRoleEnum),
@@ -211,7 +208,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
 export type MessageList = Array<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 export type TaskStatusStateEnum =
   | "TASK_STATE_UNSPECIFIED"
@@ -223,7 +220,7 @@ export type TaskStatusStateEnum =
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
   | "TASK_STATE_AUTH_REQUIRED";
-export const TaskStatusStateEnum = S.String;
+const TaskStatusStateEnum = S.String;
 
 /** A container for the status of a task */
 export interface TaskStatus {
@@ -234,7 +231,7 @@ export interface TaskStatus {
   /** A message associated with the status. */
   message?: Message;
 }
-export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
+const TaskStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     state: S.optional(TaskStatusStateEnum),
@@ -257,7 +254,7 @@ export interface Task {
   /** The current status of a Task, including state and a message. */
   status?: TaskStatus;
 }
-export const Task = /*@__PURE__*/ S.suspend(() =>
+const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     contextId: S.optional(S.String),
@@ -273,7 +270,7 @@ export interface NotificationEndpoint {
   /** Immutable. The Pub/Sub topic that receives events for the subscription. Format: `projects/{project}/topics/{topic}` You must create the topic in the same Google Cloud project where you create this subscription. Note: The Google Workspace Events API uses [ordering keys](https://cloud.google.com/pubsub/docs/ordering) for the benefit of sequential events. If the Cloud Pub/Sub topic has a [message storage policy](https://cloud.google.com/pubsub/docs/resource-location-restriction#exceptions) configured to exclude the nearest Google Cloud region, publishing events with ordering keys will fail. When the topic receives events, the events are encoded as Pub/Sub messages. For details, see the [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md). */
   pubsubTopic?: string;
 }
-export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
+const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(S.String),
   }),
@@ -286,7 +283,7 @@ export interface PayloadOptions {
   /** Optional. If `include_resource` is set to `true`, the list of fields to include in the event payload. Separate fields with a comma. For example, to include a Google Chat message's sender and create time, enter `message.sender,message.createTime`. If omitted, the payload includes all fields for the resource. If you specify a field that doesn't exist for the resource, the system ignores the field. */
   fieldMask?: string;
 }
-export const PayloadOptions = /*@__PURE__*/ S.suspend(() =>
+const PayloadOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeResource: S.optional(S.Boolean),
     fieldMask: S.optional(S.String),
@@ -298,14 +295,14 @@ export interface DriveOptions {
   /** Optional. Immutable. For subscriptions to Google Drive events, whether to receive events about Drive files that are children of the target folder or shared drive. This field must be `true` for subscriptions on shared drives. * If `false`, the subscription only receives events about changes to the folder or shared drive that's specified as the `targetResource`. * If `true`, the `mimeType` field of the `file` resource must be set to `application/vnd.google-apps.folder`. For details, see [Google Drive event types](https://developers.google.com/workspace/events/guides/events-drive#event-types). */
   includeDescendants?: boolean;
 }
-export const DriveOptions = /*@__PURE__*/ S.suspend(() =>
+const DriveOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeDescendants: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "DriveOptions" }) as any as S.Schema<DriveOptions>;
 
 export type SubscriptionStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED" | "DELETED";
-export const SubscriptionStateEnum = S.String;
+const SubscriptionStateEnum = S.String;
 
 export type SubscriptionSuspensionReasonEnum =
   | "ERROR_TYPE_UNSPECIFIED"
@@ -318,7 +315,7 @@ export type SubscriptionSuspensionReasonEnum =
   | "ENDPOINT_NOT_FOUND"
   | "ENDPOINT_RESOURCE_EXHAUSTED"
   | "OTHER";
-export const SubscriptionSuspensionReasonEnum = S.String;
+const SubscriptionSuspensionReasonEnum = S.String;
 
 /** A subscription to receive events about a Google Workspace resource. To learn more about subscriptions, see the [Google Workspace Events API overview](https://developers.google.com/workspace/events). */
 export interface Subscription {
@@ -359,7 +356,7 @@ export interface Subscription {
   /** Output only. The service account that was used to authorize the creation of the subscription. This service account must be owned by the same Google Cloud project where you created this subscription. Format: `projects/{project_id}/serviceAccounts/{service_account_id}` */
   serviceAccountAuthority?: string;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authority: S.optional(S.String),
     notificationEndpoint: S.optional(NotificationEndpoint),
@@ -388,7 +385,7 @@ export interface CreateSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Subscription.pipe(T.HttpBody())),
@@ -404,9 +401,7 @@ export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSubscriptionsRequest>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -417,7 +412,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -438,7 +433,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     done: S.optional(S.Boolean),
@@ -455,7 +450,7 @@ export interface AuthenticationInfo {
   /** Supported authentication schemes - e.g. Basic, Bearer, etc */
   schemes?: StringList;
 }
-export const AuthenticationInfo = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(S.String),
     schemes: S.optional(StringList),
@@ -473,7 +468,7 @@ export interface PushNotificationConfig {
   /** Token unique for this task/session */
   token?: string;
 }
-export const PushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const PushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication: S.optional(AuthenticationInfo),
     url: S.optional(S.String),
@@ -488,7 +483,7 @@ export interface TaskPushNotificationConfig {
   /** The push notification configuration details. */
   pushNotificationConfig?: PushNotificationConfig;
 }
-export const TaskPushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const TaskPushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     pushNotificationConfig: S.optional(PushNotificationConfig),
@@ -507,7 +502,7 @@ export interface CreateTasksPushNotificationConfigsRequest {
   /** Request body */
   body?: TaskPushNotificationConfig;
 }
-export const CreateTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     configId: S.optional(S.String.pipe(T.Query())),
@@ -534,7 +529,7 @@ export interface DeleteSubscriptionsRequest {
   /** Optional. Etag of the subscription. If present, it must match with the server's etag. Otherwise, request fails with the status `ABORTED`. */
   etag?: string;
 }
-export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -557,7 +552,7 @@ export interface DeleteTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const DeleteTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     tenant: S.optional(S.String.pipe(T.Query())),
@@ -574,7 +569,7 @@ export const DeleteTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -582,7 +577,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -598,7 +593,7 @@ export interface GetSubscriptionsRequest {
   /** Required. Resource name of the subscription. Format: `subscriptions/{subscription}` */
   name: string;
 }
-export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -618,7 +613,7 @@ export interface GetTasksRequest {
   /** The number of most recent messages from the task's history to retrieve. */
   historyLength?: number;
 }
-export const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     tenant: S.optional(S.String.pipe(T.Query())),
@@ -638,7 +633,7 @@ export interface GetTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const GetTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     tenant: S.optional(S.String.pipe(T.Query())),
@@ -661,7 +656,7 @@ export interface ListSubscriptionsRequest {
   /** Required. A query filter. You can filter subscriptions by event type (`event_types`) and target resource (`target_resource`). You must specify at least one event type in your query. To filter for multiple event types, use the `OR` operator. To filter by both event type and target resource, use the `AND` operator and specify the full resource name, such as `//chat.googleapis.com/spaces/{space}`. For example, the following queries are valid: ``` event_types:"google.workspace.chat.membership.v1.updated" OR event_types:"google.workspace.chat.message.v1.created" event_types:"google.workspace.chat.message.v1.created" AND target_resource="//chat.googleapis.com/spaces/{space}" ( event_types:"google.workspace.chat.membership.v1.updated" OR event_types:"google.workspace.chat.message.v1.created" ) AND target_resource="//chat.googleapis.com/spaces/{space}" ``` The following query is available in [Developer Preview](https://developers.google.com/workspace/preview): ``` event_types:"google.workspace.chat.message.v1.created" AND target_resource="//admin.googleapis.com/customers/my_customer" ``` The server rejects invalid queries with an `INVALID_ARGUMENT` error. */
   filter?: string;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -676,9 +671,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** The response message for SubscriptionsService.ListSubscriptions. */
 export interface ListSubscriptionsResponse {
@@ -687,7 +680,7 @@ export interface ListSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptions: S.optional(SubscriptionList),
     nextPageToken: S.optional(S.String),
@@ -706,7 +699,7 @@ export interface ListTasksPushNotificationConfigsRequest {
   /** The parent task resource. Format: tasks/{task_id} */
   parent: string;
 }
-export const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -724,7 +717,7 @@ export const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTasksPushNotificationConfigsRequest>;
 
 export type TaskPushNotificationConfigList = Array<TaskPushNotificationConfig>;
-export const TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(
+const TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(
   TaskPushNotificationConfig,
 ) as any as S.Schema<TaskPushNotificationConfigList>;
 
@@ -734,7 +727,7 @@ export interface ListTaskPushNotificationConfigResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListTaskPushNotificationConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTaskPushNotificationConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configs: S.optional(TaskPushNotificationConfigList),
     nextPageToken: S.optional(S.String),
@@ -753,7 +746,7 @@ export interface PatchSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const PatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -772,8 +765,7 @@ export const PatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for SubscriptionsService.ReactivateSubscription. */
 export interface ReactivateSubscriptionRequest {}
-export const ReactivateSubscriptionRequest =
-  Empty as any as S.Schema<ReactivateSubscriptionRequest>;
+const ReactivateSubscriptionRequest = Empty as any as S.Schema<ReactivateSubscriptionRequest>;
 
 export interface ReactivateSubscriptionsRequest {
   /** Required. Resource name of the subscription. Format: `subscriptions/{subscription}` */
@@ -781,7 +773,7 @@ export interface ReactivateSubscriptionsRequest {
   /** Request body */
   body?: ReactivateSubscriptionRequest;
 }
-export const ReactivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ReactivateSubscriptionRequest.pipe(T.HttpBody())),
@@ -807,7 +799,7 @@ export interface SendMessageConfiguration {
   /** A configuration of a webhook that can be used to receive updates */
   pushNotification?: PushNotificationConfig;
 }
-export const SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocking: S.optional(S.Boolean),
     historyLength: S.optional(S.Number),
@@ -827,7 +819,7 @@ export interface SendMessageRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     message: S.optional(Message),
@@ -840,7 +832,7 @@ export interface StreamMessageRequest {
   /** Request body */
   body?: SendMessageRequest;
 }
-export const StreamMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SendMessageRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -865,7 +857,7 @@ export interface TaskStatusUpdateEvent {
   /** The id of the context that the task belongs to */
   contextId?: string;
 }
-export const TaskStatusUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+const TaskStatusUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     final: S.optional(S.Boolean),
     taskId: S.optional(S.String),
@@ -890,7 +882,7 @@ export interface TaskArtifactUpdateEvent {
   /** The id of the context that this task belongs too */
   contextId?: string;
 }
-export const TaskArtifactUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+const TaskArtifactUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     append: S.optional(S.Boolean),
     taskId: S.optional(S.String),
@@ -908,7 +900,7 @@ export interface StreamResponse {
   artifactUpdate?: TaskArtifactUpdateEvent;
   message?: Message;
 }
-export const StreamResponse = /*@__PURE__*/ S.suspend(() =>
+const StreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task: S.optional(Task),
     statusUpdate: S.optional(TaskStatusUpdateEvent),
@@ -923,7 +915,7 @@ export interface SubscribeTasksRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const SubscribeTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     tenant: S.optional(S.String.pipe(T.Query())),

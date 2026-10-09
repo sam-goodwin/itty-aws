@@ -63,7 +63,7 @@ export class NotFound
 
 /** Request message for CancelSubmission. */
 export interface CancelSubmissionRequest {}
-export const CancelSubmissionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelSubmissionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelSubmissionRequest",
 }) as any as S.Schema<CancelSubmissionRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelSubmissionPublishersItemsRequest {
   /** Request body */
   body?: CancelSubmissionRequest;
 }
-export const CancelSubmissionPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelSubmissionPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelSubmissionRequest.pipe(T.HttpBody())),
@@ -90,14 +90,14 @@ export const CancelSubmissionPublishersItemsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Response message for `CancelSubmission`. */
 export interface CancelSubmissionResponse {}
-export const CancelSubmissionResponse =
+const CancelSubmissionResponse =
   CancelSubmissionRequest as any as S.Schema<CancelSubmissionResponse>;
 
 export interface FetchStatusPublishersItemsRequest {
   /** Required. Name of the item to retrieve the status of in the form `publishers/{publisherId}/items/{itemId}` */
   name: string;
 }
-export const FetchStatusPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchStatusPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -119,7 +119,7 @@ export type ItemRevisionStatusStateEnum =
   | "PUBLISHED_TO_TESTERS"
   | "REJECTED"
   | "CANCELLED";
-export const ItemRevisionStatusStateEnum = S.String;
+const ItemRevisionStatusStateEnum = S.String;
 
 /** Deployment information for a specific release channel */
 export interface DistributionChannel {
@@ -128,7 +128,7 @@ export interface DistributionChannel {
   /** The current deploy percentage for the release channel (nonnegative number between 0 and 100). */
   deployPercentage?: number;
 }
-export const DistributionChannel = /*@__PURE__*/ S.suspend(() =>
+const DistributionChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crxVersion: S.optional(S.String),
     deployPercentage: S.optional(S.Number),
@@ -136,7 +136,7 @@ export const DistributionChannel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DistributionChannel" }) as any as S.Schema<DistributionChannel>;
 
 export type DistributionChannelList = Array<DistributionChannel>;
-export const DistributionChannelList = /*@__PURE__*/ S.Array(
+const DistributionChannelList = /*@__PURE__*/ S.Array(
   DistributionChannel,
 ) as any as S.Schema<DistributionChannelList>;
 
@@ -147,7 +147,7 @@ export interface ItemRevisionStatus {
   /** Details on the package of the item */
   distributionChannels?: DistributionChannelList;
 }
-export const ItemRevisionStatus = /*@__PURE__*/ S.suspend(() =>
+const ItemRevisionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ItemRevisionStatusStateEnum),
     distributionChannels: S.optional(DistributionChannelList),
@@ -160,7 +160,7 @@ export type FetchItemStatusResponseLastAsyncUploadStateEnum =
   | "IN_PROGRESS"
   | "FAILED"
   | "NOT_FOUND";
-export const FetchItemStatusResponseLastAsyncUploadStateEnum = S.String;
+const FetchItemStatusResponseLastAsyncUploadStateEnum = S.String;
 
 /** Response message for `FetchItemStatus`. */
 export interface FetchItemStatusResponse {
@@ -181,7 +181,7 @@ export interface FetchItemStatusResponse {
   /** Output only. The ID of the item. */
   itemId?: string;
 }
-export const FetchItemStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchItemStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishedItemRevisionStatus: S.optional(ItemRevisionStatus),
     name: S.optional(S.String),
@@ -198,21 +198,21 @@ export type PublishItemRequestPublishTypeEnum =
   | "PUBLISH_TYPE_UNSPECIFIED"
   | "DEFAULT_PUBLISH"
   | "STAGED_PUBLISH";
-export const PublishItemRequestPublishTypeEnum = S.String;
+const PublishItemRequestPublishTypeEnum = S.String;
 
 /** Deployment information for a specific release channel. Used in requests to update deployment parameters. */
 export interface DeployInfo {
   /** Required. The current deploy percentage for the release channel (nonnegative number between 0 and 100). */
   deployPercentage?: number;
 }
-export const DeployInfo = /*@__PURE__*/ S.suspend(() =>
+const DeployInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployPercentage: S.optional(S.Number),
   }),
 ).annotate({ identifier: "DeployInfo" }) as any as S.Schema<DeployInfo>;
 
 export type DeployInfoList = Array<DeployInfo>;
-export const DeployInfoList = /*@__PURE__*/ S.Array(DeployInfo) as any as S.Schema<DeployInfoList>;
+const DeployInfoList = /*@__PURE__*/ S.Array(DeployInfo) as any as S.Schema<DeployInfoList>;
 
 /** Request message for PublishItem. */
 export interface PublishItemRequest {
@@ -225,7 +225,7 @@ export interface PublishItemRequest {
   /** Optional. Whether to attempt to skip item review. The API will validate if the item qualifies and return a validation error if the item requires review. Defaults to `false` if unset. */
   skipReview?: boolean;
 }
-export const PublishItemRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishType: S.optional(PublishItemRequestPublishTypeEnum),
     deployInfos: S.optional(DeployInfoList),
@@ -240,7 +240,7 @@ export interface PublishPublishersItemsRequest {
   /** Request body */
   body?: PublishItemRequest;
 }
-export const PublishPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishPublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PublishItemRequest.pipe(T.HttpBody())),
@@ -263,7 +263,7 @@ export type PublishItemResponseStateEnum =
   | "PUBLISHED_TO_TESTERS"
   | "REJECTED"
   | "CANCELLED";
-export const PublishItemResponseStateEnum = S.String;
+const PublishItemResponseStateEnum = S.String;
 
 /** Represents a single warning encountered during the request. */
 export interface Warning {
@@ -272,7 +272,7 @@ export interface Warning {
   /** A description of the warning. Developers should use this message to understand the warning and take appropriate action to resolve the issue. */
   description?: string;
 }
-export const Warning = /*@__PURE__*/ S.suspend(() =>
+const Warning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     description: S.optional(S.String),
@@ -280,14 +280,14 @@ export const Warning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
 export type WarningList = Array<Warning>;
-export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
+const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
 
 /** Message containing details on warnings encountered during PublishItem. */
 export interface WarningsInfo {
   /** All warnings encountered during the request. */
   warnings?: WarningList;
 }
-export const WarningsInfo = /*@__PURE__*/ S.suspend(() =>
+const WarningsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warnings: S.optional(WarningList),
   }),
@@ -304,7 +304,7 @@ export interface PublishItemResponse {
   /** Output only. Non-blocking warnings encountered during the request. */
   warningInfo?: WarningsInfo;
 }
-export const PublishItemResponse = /*@__PURE__*/ S.suspend(() =>
+const PublishItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(PublishItemResponseStateEnum),
     itemId: S.optional(S.String),
@@ -318,7 +318,7 @@ export interface SetPublishedDeployPercentageRequest {
   /** Required. Unscaled percentage value for the publised revision (nonnegative number between 0 and 100). It must be larger than the existing target percentage. */
   deployPercentage?: number;
 }
-export const SetPublishedDeployPercentageRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPublishedDeployPercentageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployPercentage: S.optional(S.Number),
   }),
@@ -332,7 +332,7 @@ export interface SetPublishedDeployPercentagePublishersItemsRequest {
   /** Request body */
   body?: SetPublishedDeployPercentageRequest;
 }
-export const SetPublishedDeployPercentagePublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPublishedDeployPercentagePublishersItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SetPublishedDeployPercentageRequest.pipe(T.HttpBody())),
@@ -349,23 +349,19 @@ export const SetPublishedDeployPercentagePublishersItemsRequest = /*@__PURE__*/ 
 
 /** Response message for `SetPublishedDeployPercentage`. */
 export interface SetPublishedDeployPercentageResponse {}
-export const SetPublishedDeployPercentageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const SetPublishedDeployPercentageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SetPublishedDeployPercentageResponse",
 }) as any as S.Schema<SetPublishedDeployPercentageResponse>;
 
 /** Request message for UploadItemPackage. */
 export type UploadItemPackageRequest = CancelSubmissionRequest;
-export const UploadItemPackageRequest = CancelSubmissionRequest;
-
 export interface UploadMediaRequest {
   /** Required. Name of the item to upload the new package to in the form `publishers/{publisherId}/items/{itemId}` */
   name: string;
   /** Request body */
   body?: CancelSubmissionRequest;
 }
-export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelSubmissionRequest.pipe(T.HttpBody())),
@@ -384,7 +380,7 @@ export type UploadItemPackageResponseUploadStateEnum =
   | "IN_PROGRESS"
   | "FAILED"
   | "NOT_FOUND";
-export const UploadItemPackageResponseUploadStateEnum = S.String;
+const UploadItemPackageResponseUploadStateEnum = S.String;
 
 /** Response message for `UploadItemPackage`. */
 export interface UploadItemPackageResponse {
@@ -397,7 +393,7 @@ export interface UploadItemPackageResponse {
   /** The name of the item the package was uploaded to. */
   name?: string;
 }
-export const UploadItemPackageResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadItemPackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crxVersion: S.optional(S.String),
     itemId: S.optional(S.String),

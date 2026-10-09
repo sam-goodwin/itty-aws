@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,19 +90,17 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Request message for cancelling a rollout. */
 export type CancelRolloutRequest = CancelOperationRequest;
-export const CancelRolloutRequest = CancelOperationRequest;
-
 export interface CancelProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout to cancel. projects/{project}/locations/{location}/rollouts/{rollout} */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -118,15 +116,10 @@ export const CancelProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CancelProjectsLocationsRolloutsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
@@ -137,7 +130,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -158,7 +151,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(GoogleRpcStatus),
     done: S.optional(S.Boolean),
@@ -172,7 +165,7 @@ export type IdentityServiceMembershipStateStateEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "OK"
   | "ERROR";
-export const IdentityServiceMembershipStateStateEnum = S.String;
+const IdentityServiceMembershipStateStateEnum = S.String;
 
 /** Configuration options for the AIS diagnostic interface. */
 export interface IdentityServiceDiagnosticInterface {
@@ -181,7 +174,7 @@ export interface IdentityServiceDiagnosticInterface {
   /** Determines whether to enable the diagnostic interface. */
   enabled?: boolean;
 }
-export const IdentityServiceDiagnosticInterface = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceDiagnosticInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationTime: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -197,7 +190,7 @@ export interface IdentityServiceIdentityServiceOptions {
   /** Determines the lifespan of STS tokens issued by Anthos Identity Service. */
   sessionDuration?: string;
 }
-export const IdentityServiceIdentityServiceOptions = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceIdentityServiceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diagnosticInterface: S.optional(IdentityServiceDiagnosticInterface),
     sessionDuration: S.optional(S.String),
@@ -211,7 +204,7 @@ export interface IdentityServiceGoogleConfig {
   /** Disable automatic configuration of Google Plugin on supported platforms. */
   disable?: boolean;
 }
-export const IdentityServiceGoogleConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceGoogleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disable: S.optional(S.Boolean),
   }),
@@ -230,7 +223,7 @@ export interface IdentityServiceUserConfig {
   /** Required. The location of the subtree in the LDAP directory to search for user entries. */
   baseDn?: string;
 }
-export const IdentityServiceUserConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceUserConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idAttribute: S.optional(S.String),
     loginAttribute: S.optional(S.String),
@@ -250,7 +243,7 @@ export interface IdentityServiceGroupConfig {
   /** Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName". */
   idAttribute?: string;
 }
-export const IdentityServiceGroupConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceGroupConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     baseDn: S.optional(S.String),
@@ -269,7 +262,7 @@ export interface IdentityServiceSimpleBindCredentials {
   /** Required. The distinguished name(DN) of the service account object/user. */
   dn?: string;
 }
-export const IdentityServiceSimpleBindCredentials = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceSimpleBindCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptedPassword: S.optional(S.String),
     password: S.optional(S.String),
@@ -284,7 +277,7 @@ export interface IdentityServiceServiceAccountConfig {
   /** Credentials for basic auth. */
   simpleBindCredentials?: IdentityServiceSimpleBindCredentials;
 }
-export const IdentityServiceServiceAccountConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceServiceAccountConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     simpleBindCredentials: S.optional(IdentityServiceSimpleBindCredentials),
   }),
@@ -301,7 +294,7 @@ export interface IdentityServiceServerConfig {
   /** Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections. */
   certificateAuthorityData?: string;
 }
-export const IdentityServiceServerConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceServerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionType: S.optional(S.String),
     host: S.optional(S.String),
@@ -322,7 +315,7 @@ export interface IdentityServiceLdapConfig {
   /** Required. Server settings for the external LDAP server. */
   server?: IdentityServiceServerConfig;
 }
-export const IdentityServiceLdapConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceLdapConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(IdentityServiceUserConfig),
     group: S.optional(IdentityServiceGroupConfig),
@@ -350,7 +343,7 @@ export interface IdentityServiceAzureADConfig {
   /** Output only. Encrypted AzureAD client secret. */
   encryptedClientSecret?: string;
 }
-export const IdentityServiceAzureADConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceAzureADConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userClaim: S.optional(S.String),
     groupFormat: S.optional(S.String),
@@ -395,7 +388,7 @@ export interface IdentityServiceOidcConfig {
   /** URI for the OIDC provider. This should point to the level below .well-known/openid-configuration. */
   issuerUri?: string;
 }
-export const IdentityServiceOidcConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceOidcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userPrefix: S.optional(S.String),
     userClaim: S.optional(S.String),
@@ -417,10 +410,10 @@ export const IdentityServiceOidcConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityServiceOidcConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Configuration for the SAML Auth flow. */
 export interface IdentityServiceSamlConfig {
@@ -441,7 +434,7 @@ export interface IdentityServiceSamlConfig {
   /** Required. The list of IdP certificates to validate the SAML response against. */
   identityProviderCertificates?: StringList;
 }
-export const IdentityServiceSamlConfig = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceSamlConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityProviderSsoUri: S.optional(S.String),
     userAttribute: S.optional(S.String),
@@ -473,7 +466,7 @@ export interface IdentityServiceAuthMethod {
   /** SAML specific configuration. */
   samlConfig?: IdentityServiceSamlConfig;
 }
-export const IdentityServiceAuthMethod = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceAuthMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proxy: S.optional(S.String),
     googleConfig: S.optional(IdentityServiceGoogleConfig),
@@ -488,7 +481,7 @@ export const IdentityServiceAuthMethod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityServiceAuthMethod>;
 
 export type IdentityServiceAuthMethodList = Array<IdentityServiceAuthMethod>;
-export const IdentityServiceAuthMethodList = /*@__PURE__*/ S.Array(
+const IdentityServiceAuthMethodList = /*@__PURE__*/ S.Array(
   IdentityServiceAuthMethod,
 ) as any as S.Schema<IdentityServiceAuthMethodList>;
 
@@ -499,7 +492,7 @@ export interface IdentityServiceMembershipSpec {
   /** A member may support multiple auth methods. */
   authMethods?: IdentityServiceAuthMethodList;
 }
-export const IdentityServiceMembershipSpec = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceMembershipSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityServiceOptions: S.optional(IdentityServiceIdentityServiceOptions),
     authMethods: S.optional(IdentityServiceAuthMethodList),
@@ -519,7 +512,7 @@ export interface IdentityServiceMembershipState {
   /** The reason of the failure. */
   failureReason?: string;
 }
-export const IdentityServiceMembershipState = /*@__PURE__*/ S.suspend(() =>
+const IdentityServiceMembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(IdentityServiceMembershipStateStateEnum),
     installedVersion: S.optional(S.String),
@@ -536,14 +529,14 @@ export type ConfigManagementBinauthzStateWebhookEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementBinauthzStateWebhookEnum = S.String;
+const ConfigManagementBinauthzStateWebhookEnum = S.String;
 
 /** The version of binauthz. */
 export interface ConfigManagementBinauthzVersion {
   /** The version of the binauthz webhook. */
   webhookVersion?: string;
 }
-export const ConfigManagementBinauthzVersion = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementBinauthzVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookVersion: S.optional(S.String),
   }),
@@ -558,7 +551,7 @@ export interface ConfigManagementBinauthzState {
   /** The version of binauthz that is installed. */
   version?: ConfigManagementBinauthzVersion;
 }
-export const ConfigManagementBinauthzState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementBinauthzState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook: S.optional(ConfigManagementBinauthzStateWebhookEnum),
     version: S.optional(ConfigManagementBinauthzVersion),
@@ -573,8 +566,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManager
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum =
-  S.String;
+const ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum = S.String;
 
 export type ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -582,7 +574,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum = S.String;
+const ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum = S.String;
 
 export type ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -590,7 +582,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum = S.String;
+const ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum = S.String;
 
 /** State of Policy Controller installation. */
 export interface ConfigManagementGatekeeperDeploymentState {
@@ -605,7 +597,7 @@ export interface ConfigManagementGatekeeperDeploymentState {
   /** Status of gatekeeper-audit deployment. */
   gatekeeperAudit?: ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum | (string & {});
 }
-export const ConfigManagementGatekeeperDeploymentState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementGatekeeperDeploymentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatekeeperControllerManagerState: S.optional(
       ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum,
@@ -622,7 +614,7 @@ export interface ConfigManagementPolicyControllerVersion {
   /** The gatekeeper image tag that is composed of ACM version, git tag, build number. */
   version?: string;
 }
-export const ConfigManagementPolicyControllerVersion = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementPolicyControllerVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
   }),
@@ -634,7 +626,7 @@ export type ConfigManagementPolicyControllerMigrationStageEnum =
   | "STAGE_UNSPECIFIED"
   | "ACM_MANAGED"
   | "POCO_MANAGED";
-export const ConfigManagementPolicyControllerMigrationStageEnum = S.String;
+const ConfigManagementPolicyControllerMigrationStageEnum = S.String;
 
 /** State for the migration of PolicyController from ACM -> PoCo Hub. */
 export interface ConfigManagementPolicyControllerMigration {
@@ -643,7 +635,7 @@ export interface ConfigManagementPolicyControllerMigration {
   /** Last time this membership spec was copied to PoCo feature. */
   copyTime?: string;
 }
-export const ConfigManagementPolicyControllerMigration = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementPolicyControllerMigration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: S.optional(ConfigManagementPolicyControllerMigrationStageEnum),
     copyTime: S.optional(S.String),
@@ -661,7 +653,7 @@ export interface ConfigManagementPolicyControllerState {
   /** Record state of ACM -> PoCo Hub migration for this feature. */
   migration?: ConfigManagementPolicyControllerMigration;
 }
-export const ConfigManagementPolicyControllerState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementPolicyControllerState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentState: S.optional(ConfigManagementGatekeeperDeploymentState),
     version: S.optional(ConfigManagementPolicyControllerVersion),
@@ -678,7 +670,7 @@ export interface ConfigManagementHierarchyControllerVersion {
   /** Version for Hierarchy Controller extension */
   extension?: string;
 }
-export const ConfigManagementHierarchyControllerVersion = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementHierarchyControllerVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hnc: S.optional(S.String),
     extension: S.optional(S.String),
@@ -693,7 +685,7 @@ export type ConfigManagementHierarchyControllerDeploymentStateHncEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementHierarchyControllerDeploymentStateHncEnum = S.String;
+const ConfigManagementHierarchyControllerDeploymentStateHncEnum = S.String;
 
 export type ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -701,7 +693,7 @@ export type ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementHierarchyControllerDeploymentStateExtensionEnum = S.String;
+const ConfigManagementHierarchyControllerDeploymentStateExtensionEnum = S.String;
 
 /** Deployment state for Hierarchy Controller */
 export interface ConfigManagementHierarchyControllerDeploymentState {
@@ -710,7 +702,7 @@ export interface ConfigManagementHierarchyControllerDeploymentState {
   /** The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1) */
   extension?: ConfigManagementHierarchyControllerDeploymentStateExtensionEnum | (string & {});
 }
-export const ConfigManagementHierarchyControllerDeploymentState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementHierarchyControllerDeploymentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hnc: S.optional(ConfigManagementHierarchyControllerDeploymentStateHncEnum),
     extension: S.optional(ConfigManagementHierarchyControllerDeploymentStateExtensionEnum),
@@ -726,7 +718,7 @@ export interface ConfigManagementHierarchyControllerState {
   /** The deployment state for Hierarchy Controller */
   state?: ConfigManagementHierarchyControllerDeploymentState;
 }
-export const ConfigManagementHierarchyControllerState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementHierarchyControllerState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(ConfigManagementHierarchyControllerVersion),
     state: S.optional(ConfigManagementHierarchyControllerDeploymentState),
@@ -740,7 +732,7 @@ export interface ConfigManagementInstallError {
   /** A string representing the user facing error message */
   errorMessage?: string;
 }
-export const ConfigManagementInstallError = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementInstallError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
   }),
@@ -749,7 +741,7 @@ export const ConfigManagementInstallError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementInstallError>;
 
 export type ConfigManagementInstallErrorList = Array<ConfigManagementInstallError>;
-export const ConfigManagementInstallErrorList = /*@__PURE__*/ S.Array(
+const ConfigManagementInstallErrorList = /*@__PURE__*/ S.Array(
   ConfigManagementInstallError,
 ) as any as S.Schema<ConfigManagementInstallErrorList>;
 
@@ -759,7 +751,7 @@ export type ConfigManagementOperatorStateDeploymentStateEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementOperatorStateDeploymentStateEnum = S.String;
+const ConfigManagementOperatorStateDeploymentStateEnum = S.String;
 
 /** State information for an ACM's Operator */
 export interface ConfigManagementOperatorState {
@@ -770,7 +762,7 @@ export interface ConfigManagementOperatorState {
   /** The semenatic version number of the operator */
   version?: string;
 }
-export const ConfigManagementOperatorState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementOperatorState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(ConfigManagementInstallErrorList),
     deploymentState: S.optional(ConfigManagementOperatorStateDeploymentStateEnum),
@@ -784,12 +776,12 @@ export type ConfigManagementPolicyControllerMonitoringBackendsItemEnum =
   | "MONITORING_BACKEND_UNSPECIFIED"
   | "PROMETHEUS"
   | "CLOUD_MONITORING";
-export const ConfigManagementPolicyControllerMonitoringBackendsItemEnum = S.String;
+const ConfigManagementPolicyControllerMonitoringBackendsItemEnum = S.String;
 
 export type ConfigManagementPolicyControllerMonitoringBackendsItemEnumList = Array<
   ConfigManagementPolicyControllerMonitoringBackendsItemEnum | (string & {})
 >;
-export const ConfigManagementPolicyControllerMonitoringBackendsItemEnumList = /*@__PURE__*/ S.Array(
+const ConfigManagementPolicyControllerMonitoringBackendsItemEnumList = /*@__PURE__*/ S.Array(
   ConfigManagementPolicyControllerMonitoringBackendsItemEnum,
 ) as any as S.Schema<ConfigManagementPolicyControllerMonitoringBackendsItemEnumList>;
 
@@ -798,7 +790,7 @@ export interface ConfigManagementPolicyControllerMonitoring {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
   backends?: ConfigManagementPolicyControllerMonitoringBackendsItemEnumList;
 }
-export const ConfigManagementPolicyControllerMonitoring = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementPolicyControllerMonitoring = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backends: S.optional(ConfigManagementPolicyControllerMonitoringBackendsItemEnumList),
   }),
@@ -827,7 +819,7 @@ export interface ConfigManagementPolicyController {
   /** Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated. */
   referentialRulesEnabled?: boolean;
 }
-export const ConfigManagementPolicyController = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementPolicyController = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templateLibraryInstalled: S.optional(S.Boolean),
     monitoring: S.optional(ConfigManagementPolicyControllerMonitoring),
@@ -848,7 +840,7 @@ export interface ConfigManagementBinauthzConfig {
   /** Whether binauthz is enabled in this cluster. */
   enabled?: boolean;
 }
-export const ConfigManagementBinauthzConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementBinauthzConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -860,7 +852,7 @@ export type ConfigManagementMembershipSpecManagementEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "MANAGEMENT_AUTOMATIC"
   | "MANAGEMENT_MANUAL";
-export const ConfigManagementMembershipSpecManagementEnum = S.String;
+const ConfigManagementMembershipSpecManagementEnum = S.String;
 
 /** Configuration for Hierarchy Controller */
 export interface ConfigManagementHierarchyControllerConfig {
@@ -871,7 +863,7 @@ export interface ConfigManagementHierarchyControllerConfig {
   /** Whether hierarchical resource quota is enabled in this cluster. */
   enableHierarchicalResourceQuota?: boolean;
 }
-export const ConfigManagementHierarchyControllerConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementHierarchyControllerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enablePodTreeLabels: S.optional(S.Boolean),
     enabled: S.optional(S.Boolean),
@@ -900,7 +892,7 @@ export interface ConfigManagementGitConfig {
   /** Required. The URL of the Git repository to use as the source of truth. */
   syncRepo?: string;
 }
-export const ConfigManagementGitConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementGitConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyDir: S.optional(S.String),
     secretType: S.optional(S.String),
@@ -928,7 +920,7 @@ export interface ConfigManagementContainerOverride {
   /** Optional. The cpu limit of the container. Use the following CPU resource units: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu. */
   cpuLimit?: string;
 }
-export const ConfigManagementContainerOverride = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementContainerOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryLimit: S.optional(S.String),
     cpuRequest: S.optional(S.String),
@@ -941,7 +933,7 @@ export const ConfigManagementContainerOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementContainerOverride>;
 
 export type ConfigManagementContainerOverrideList = Array<ConfigManagementContainerOverride>;
-export const ConfigManagementContainerOverrideList = /*@__PURE__*/ S.Array(
+const ConfigManagementContainerOverrideList = /*@__PURE__*/ S.Array(
   ConfigManagementContainerOverride,
 ) as any as S.Schema<ConfigManagementContainerOverrideList>;
 
@@ -954,7 +946,7 @@ export interface ConfigManagementDeploymentOverride {
   /** Optional. The containers of the deployment resource to be overridden. */
   containers?: ConfigManagementContainerOverrideList;
 }
-export const ConfigManagementDeploymentOverride = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementDeploymentOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     deploymentNamespace: S.optional(S.String),
@@ -965,7 +957,7 @@ export const ConfigManagementDeploymentOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementDeploymentOverride>;
 
 export type ConfigManagementDeploymentOverrideList = Array<ConfigManagementDeploymentOverride>;
-export const ConfigManagementDeploymentOverrideList = /*@__PURE__*/ S.Array(
+const ConfigManagementDeploymentOverrideList = /*@__PURE__*/ S.Array(
   ConfigManagementDeploymentOverride,
 ) as any as S.Schema<ConfigManagementDeploymentOverrideList>;
 
@@ -982,7 +974,7 @@ export interface ConfigManagementOciConfig {
   /** Optional. Period in seconds between consecutive syncs. Default: 15. */
   syncWaitSecs?: string;
 }
-export const ConfigManagementOciConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementOciConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretType: S.optional(S.String),
     gcpServiceAccountEmail: S.optional(S.String),
@@ -1013,7 +1005,7 @@ export interface ConfigManagementConfigSync {
   /** Optional. Specifies whether the Config Sync repo is in `hierarchical` or `unstructured` mode. Defaults to `hierarchical`. See https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs for an explanation. */
   sourceFormat?: string;
 }
-export const ConfigManagementConfigSync = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementConfigSync = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricsGcpServiceAccountEmail: S.optional(S.String),
     git: S.optional(ConfigManagementGitConfig),
@@ -1045,7 +1037,7 @@ export interface ConfigManagementMembershipSpec {
   /** Optional. Config Sync configuration for the cluster. */
   configSync?: ConfigManagementConfigSync;
 }
-export const ConfigManagementMembershipSpec = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementMembershipSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyController: S.optional(ConfigManagementPolicyController),
     cluster: S.optional(S.String),
@@ -1080,7 +1072,7 @@ export interface ConfigManagementConfigSyncVersion {
   /** Version of the deployed otel-collector pod */
   otelCollector?: string;
 }
-export const ConfigManagementConfigSyncVersion = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementConfigSyncVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syncer: S.optional(S.String),
     admissionWebhook: S.optional(S.String),
@@ -1102,7 +1094,7 @@ export type ConfigManagementConfigSyncStateRootsyncCrdEnum =
   | "INSTALLED"
   | "TERMINATING"
   | "INSTALLING";
-export const ConfigManagementConfigSyncStateRootsyncCrdEnum = S.String;
+const ConfigManagementConfigSyncStateRootsyncCrdEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateImporterEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1110,7 +1102,7 @@ export type ConfigManagementConfigSyncDeploymentStateImporterEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateImporterEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateImporterEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateMonitorEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1118,7 +1110,7 @@ export type ConfigManagementConfigSyncDeploymentStateMonitorEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateMonitorEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateMonitorEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1126,7 +1118,7 @@ export type ConfigManagementConfigSyncDeploymentStateResourceGroupControllerMana
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1134,7 +1126,7 @@ export type ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1142,7 +1134,7 @@ export type ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1150,7 +1142,7 @@ export type ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateSyncerEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1158,7 +1150,7 @@ export type ConfigManagementConfigSyncDeploymentStateSyncerEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateSyncerEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateSyncerEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1166,7 +1158,7 @@ export type ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum = S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
@@ -1174,7 +1166,7 @@ export type ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-export const ConfigManagementConfigSyncDeploymentStateGitSyncEnum = S.String;
+const ConfigManagementConfigSyncDeploymentStateGitSyncEnum = S.String;
 
 /** The state of ConfigSync's deployment on a cluster */
 export interface ConfigManagementConfigSyncDeploymentState {
@@ -1201,7 +1193,7 @@ export interface ConfigManagementConfigSyncDeploymentState {
   /** Deployment state of the git-sync pod */
   gitSync?: ConfigManagementConfigSyncDeploymentStateGitSyncEnum | (string & {});
 }
-export const ConfigManagementConfigSyncDeploymentState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementConfigSyncDeploymentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     importer: S.optional(ConfigManagementConfigSyncDeploymentStateImporterEnum),
     monitor: S.optional(ConfigManagementConfigSyncDeploymentStateMonitorEnum),
@@ -1221,10 +1213,8 @@ export const ConfigManagementConfigSyncDeploymentState = /*@__PURE__*/ S.suspend
 
 /** Errors pertaining to the installation of Config Sync */
 export type ConfigManagementConfigSyncError = ConfigManagementInstallError;
-export const ConfigManagementConfigSyncError = ConfigManagementInstallError;
-
 export type ConfigManagementConfigSyncErrorList = Array<ConfigManagementInstallError>;
-export const ConfigManagementConfigSyncErrorList =
+const ConfigManagementConfigSyncErrorList =
   ConfigManagementInstallErrorList as any as S.Schema<ConfigManagementConfigSyncErrorList>;
 
 export type ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
@@ -1232,7 +1222,7 @@ export type ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
   | "NOT_STOPPED"
   | "PENDING"
   | "STOPPED";
-export const ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum = S.String;
+const ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum = S.String;
 
 export type ConfigManagementConfigSyncStateReposyncCrdEnum =
   | "CRD_STATE_UNSPECIFIED"
@@ -1240,7 +1230,7 @@ export type ConfigManagementConfigSyncStateReposyncCrdEnum =
   | "INSTALLED"
   | "TERMINATING"
   | "INSTALLING";
-export const ConfigManagementConfigSyncStateReposyncCrdEnum = S.String;
+const ConfigManagementConfigSyncStateReposyncCrdEnum = S.String;
 
 export type ConfigManagementConfigSyncStateStateEnum =
   | "STATE_UNSPECIFIED"
@@ -1248,7 +1238,7 @@ export type ConfigManagementConfigSyncStateStateEnum =
   | "CONFIG_SYNC_INSTALLED"
   | "CONFIG_SYNC_ERROR"
   | "CONFIG_SYNC_PENDING";
-export const ConfigManagementConfigSyncStateStateEnum = S.String;
+const ConfigManagementConfigSyncStateStateEnum = S.String;
 
 export type ConfigManagementSyncStateCodeEnum =
   | "SYNC_CODE_UNSPECIFIED"
@@ -1259,7 +1249,7 @@ export type ConfigManagementSyncStateCodeEnum =
   | "NOT_INSTALLED"
   | "UNAUTHORIZED"
   | "UNREACHABLE";
-export const ConfigManagementSyncStateCodeEnum = S.String;
+const ConfigManagementSyncStateCodeEnum = S.String;
 
 /** A Kubernetes object's GVK */
 export interface ConfigManagementGroupVersionKind {
@@ -1270,7 +1260,7 @@ export interface ConfigManagementGroupVersionKind {
   /** Kubernetes Group */
   group?: string;
 }
-export const ConfigManagementGroupVersionKind = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementGroupVersionKind = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1291,7 +1281,7 @@ export interface ConfigManagementErrorResource {
   /** Metadata name of the resource that is causing an error */
   resourceName?: string;
 }
-export const ConfigManagementErrorResource = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementErrorResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourcePath: S.optional(S.String),
     resourceNamespace: S.optional(S.String),
@@ -1303,7 +1293,7 @@ export const ConfigManagementErrorResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementErrorResource>;
 
 export type ConfigManagementErrorResourceList = Array<ConfigManagementErrorResource>;
-export const ConfigManagementErrorResourceList = /*@__PURE__*/ S.Array(
+const ConfigManagementErrorResourceList = /*@__PURE__*/ S.Array(
   ConfigManagementErrorResource,
 ) as any as S.Schema<ConfigManagementErrorResourceList>;
 
@@ -1316,7 +1306,7 @@ export interface ConfigManagementSyncError {
   /** A list of config(s) associated with the error, if any */
   errorResources?: ConfigManagementErrorResourceList;
 }
-export const ConfigManagementSyncError = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementSyncError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     code: S.optional(S.String),
@@ -1327,7 +1317,7 @@ export const ConfigManagementSyncError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementSyncError>;
 
 export type ConfigManagementSyncErrorList = Array<ConfigManagementSyncError>;
-export const ConfigManagementSyncErrorList = /*@__PURE__*/ S.Array(
+const ConfigManagementSyncErrorList = /*@__PURE__*/ S.Array(
   ConfigManagementSyncError,
 ) as any as S.Schema<ConfigManagementSyncErrorList>;
 
@@ -1348,7 +1338,7 @@ export interface ConfigManagementSyncState {
   /** A list of errors resulting from problematic configs. This list will be truncated after 100 errors, although it is unlikely for that many errors to simultaneously exist. */
   errors?: ConfigManagementSyncErrorList;
 }
-export const ConfigManagementSyncState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementSyncState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastSync: S.optional(S.String),
     lastSyncTime: S.optional(S.String),
@@ -1385,7 +1375,7 @@ export interface ConfigManagementConfigSyncState {
   /** Output only. The state of ConfigSync's process to sync configs to a cluster */
   syncState?: ConfigManagementSyncState;
 }
-export const ConfigManagementConfigSyncState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementConfigSyncState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(ConfigManagementConfigSyncVersion),
     crCount: S.optional(S.Number),
@@ -1422,7 +1412,7 @@ export interface ConfigManagementMembershipState {
   /** Output only. Current sync status */
   configSyncState?: ConfigManagementConfigSyncState;
 }
-export const ConfigManagementMembershipState = /*@__PURE__*/ S.suspend(() =>
+const ConfigManagementMembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     binauthzState: S.optional(ConfigManagementBinauthzState),
     policyControllerState: S.optional(ConfigManagementPolicyControllerState),
@@ -1438,7 +1428,7 @@ export const ConfigManagementMembershipState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementMembershipState>;
 
 export type FeatureStateCodeEnum = "CODE_UNSPECIFIED" | "OK" | "WARNING" | "ERROR";
-export const FeatureStateCodeEnum = S.String;
+const FeatureStateCodeEnum = S.String;
 
 /** FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context. */
 export interface FeatureState {
@@ -1449,7 +1439,7 @@ export interface FeatureState {
   /** The high-level, machine-readable status of this Feature. */
   code?: FeatureStateCodeEnum | (string & {});
 }
-export const FeatureState = /*@__PURE__*/ S.suspend(() =>
+const FeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -1461,7 +1451,7 @@ export type WorkloadIdentityIdentityProviderStateDetailCodeEnum =
   | "IDENTITY_PROVIDER_STATE_UNSPECIFIED"
   | "IDENTITY_PROVIDER_STATE_OK"
   | "IDENTITY_PROVIDER_STATE_ERROR";
-export const WorkloadIdentityIdentityProviderStateDetailCodeEnum = S.String;
+const WorkloadIdentityIdentityProviderStateDetailCodeEnum = S.String;
 
 /** IdentityProviderStateDetail represents the state of an Identity Provider. */
 export interface WorkloadIdentityIdentityProviderStateDetail {
@@ -1470,7 +1460,7 @@ export interface WorkloadIdentityIdentityProviderStateDetail {
   /** A human-readable description of the current state or returned error. */
   description?: string;
 }
-export const WorkloadIdentityIdentityProviderStateDetail = /*@__PURE__*/ S.suspend(() =>
+const WorkloadIdentityIdentityProviderStateDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(WorkloadIdentityIdentityProviderStateDetailCodeEnum),
     description: S.optional(S.String),
@@ -1482,7 +1472,7 @@ export const WorkloadIdentityIdentityProviderStateDetail = /*@__PURE__*/ S.suspe
 export type WorkloadIdentityIdentityProviderStateDetailMap = {
   [key: string]: WorkloadIdentityIdentityProviderStateDetail | undefined;
 };
-export const WorkloadIdentityIdentityProviderStateDetailMap = /*@__PURE__*/ S.Record(
+const WorkloadIdentityIdentityProviderStateDetailMap = /*@__PURE__*/ S.Record(
   S.String,
   WorkloadIdentityIdentityProviderStateDetail,
 ) as any as S.Schema<WorkloadIdentityIdentityProviderStateDetailMap>;
@@ -1494,7 +1484,7 @@ export interface WorkloadIdentityMembershipState {
   /** The state of the Identity Providers corresponding to the membership. */
   identityProviderStateDetails?: WorkloadIdentityIdentityProviderStateDetailMap;
 }
-export const WorkloadIdentityMembershipState = /*@__PURE__*/ S.suspend(() =>
+const WorkloadIdentityMembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     identityProviderStateDetails: S.optional(WorkloadIdentityIdentityProviderStateDetailMap),
@@ -1504,7 +1494,7 @@ export const WorkloadIdentityMembershipState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkloadIdentityMembershipState>;
 
 export type StatusCodeEnum = "CODE_UNSPECIFIED" | "OK" | "FAILED" | "UNKNOWN";
-export const StatusCodeEnum = S.String;
+const StatusCodeEnum = S.String;
 
 /** Status specifies state for the subcomponent. */
 export interface Status {
@@ -1513,7 +1503,7 @@ export interface Status {
   /** Description is populated if Code is Failed, explaining why it has failed. */
   description?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(StatusCodeEnum),
     description: S.optional(S.String),
@@ -1525,7 +1515,7 @@ export interface AppDevExperienceFeatureState {
   /** Status of subcomponent that detects configured Service Mesh resources. */
   networkingInstallSucceeded?: Status;
 }
-export const AppDevExperienceFeatureState = /*@__PURE__*/ S.suspend(() =>
+const AppDevExperienceFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkingInstallSucceeded: S.optional(Status),
   }),
@@ -1535,8 +1525,6 @@ export const AppDevExperienceFeatureState = /*@__PURE__*/ S.suspend(() =>
 
 /** **FleetObservability**: Membership-specific Feature state for fleetobservability. */
 export type FleetObservabilityMembershipState = CancelOperationRequest;
-export const FleetObservabilityMembershipState = CancelOperationRequest;
-
 /** IgnoredMembership represents a membership ignored by the feature. A membership can be ignored because it was manually upgraded to a newer version than RC default. */
 export interface ClusterUpgradeIgnoredMembership {
   /** Reason why the membership is ignored. */
@@ -1544,7 +1532,7 @@ export interface ClusterUpgradeIgnoredMembership {
   /** Time when the membership was first set to ignored. */
   ignoredTime?: string;
 }
-export const ClusterUpgradeIgnoredMembership = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeIgnoredMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     ignoredTime: S.optional(S.String),
@@ -1561,7 +1549,7 @@ export type ClusterUpgradeUpgradeStatusCodeEnum =
   | "SOAKING"
   | "FORCED_SOAKING"
   | "COMPLETE";
-export const ClusterUpgradeUpgradeStatusCodeEnum = S.String;
+const ClusterUpgradeUpgradeStatusCodeEnum = S.String;
 
 /** UpgradeStatus provides status information for each upgrade. */
 export interface ClusterUpgradeUpgradeStatus {
@@ -1572,7 +1560,7 @@ export interface ClusterUpgradeUpgradeStatus {
   /** Reason for this status. */
   reason?: string;
 }
-export const ClusterUpgradeUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(ClusterUpgradeUpgradeStatusCodeEnum),
     updateTime: S.optional(S.String),
@@ -1589,7 +1577,7 @@ export interface ClusterUpgradeGKEUpgrade {
   /** Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters. */
   version?: string;
 }
-export const ClusterUpgradeGKEUpgrade = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeGKEUpgrade = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -1603,7 +1591,7 @@ export interface ClusterUpgradeMembershipGKEUpgradeState {
   /** Which upgrade to track the state. */
   upgrade?: ClusterUpgradeGKEUpgrade;
 }
-export const ClusterUpgradeMembershipGKEUpgradeState = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeMembershipGKEUpgradeState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ClusterUpgradeUpgradeStatus),
     upgrade: S.optional(ClusterUpgradeGKEUpgrade),
@@ -1614,7 +1602,7 @@ export const ClusterUpgradeMembershipGKEUpgradeState = /*@__PURE__*/ S.suspend((
 
 export type ClusterUpgradeMembershipGKEUpgradeStateList =
   Array<ClusterUpgradeMembershipGKEUpgradeState>;
-export const ClusterUpgradeMembershipGKEUpgradeStateList = /*@__PURE__*/ S.Array(
+const ClusterUpgradeMembershipGKEUpgradeStateList = /*@__PURE__*/ S.Array(
   ClusterUpgradeMembershipGKEUpgradeState,
 ) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeStateList>;
 
@@ -1625,7 +1613,7 @@ export interface ClusterUpgradeMembershipState {
   /** Actual upgrade state against desired. */
   upgrades?: ClusterUpgradeMembershipGKEUpgradeStateList;
 }
-export const ClusterUpgradeMembershipState = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeMembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignored: S.optional(ClusterUpgradeIgnoredMembership),
     upgrades: S.optional(ClusterUpgradeMembershipGKEUpgradeStateList),
@@ -1645,7 +1633,7 @@ export type PolicyControllerMembershipStateStateEnum =
   | "HUB_ERROR"
   | "SUSPENDED"
   | "DETACHED";
-export const PolicyControllerMembershipStateStateEnum = S.String;
+const PolicyControllerMembershipStateStateEnum = S.String;
 
 export type PolicyControllerOnClusterStateStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
@@ -1658,7 +1646,7 @@ export type PolicyControllerOnClusterStateStateEnum =
   | "HUB_ERROR"
   | "SUSPENDED"
   | "DETACHED";
-export const PolicyControllerOnClusterStateStateEnum = S.String;
+const PolicyControllerOnClusterStateStateEnum = S.String;
 
 /** OnClusterState represents the state of a sub-component of Policy Controller. */
 export interface PolicyControllerOnClusterState {
@@ -1667,7 +1655,7 @@ export interface PolicyControllerOnClusterState {
   /** Surface potential errors or information logs. */
   details?: string;
 }
-export const PolicyControllerOnClusterState = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerOnClusterState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(PolicyControllerOnClusterStateStateEnum),
     details: S.optional(S.String),
@@ -1679,7 +1667,7 @@ export const PolicyControllerOnClusterState = /*@__PURE__*/ S.suspend(() =>
 export type PolicyControllerOnClusterStateMap = {
   [key: string]: PolicyControllerOnClusterState | undefined;
 };
-export const PolicyControllerOnClusterStateMap = /*@__PURE__*/ S.Record(
+const PolicyControllerOnClusterStateMap = /*@__PURE__*/ S.Record(
   S.String,
   PolicyControllerOnClusterState,
 ) as any as S.Schema<PolicyControllerOnClusterStateMap>;
@@ -1693,7 +1681,7 @@ export interface PolicyControllerPolicyContentState {
   /** The state of the referential data sync configuration. This could represent the state of either the syncSet object(s) or the config object, depending on the version of PoCo configured by the user. */
   referentialSyncConfigState?: PolicyControllerOnClusterState;
 }
-export const PolicyControllerPolicyContentState = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerPolicyContentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bundleStates: S.optional(PolicyControllerOnClusterStateMap),
     templateLibraryState: S.optional(PolicyControllerOnClusterState),
@@ -1712,7 +1700,7 @@ export interface PolicyControllerMembershipState {
   /** The overall content state observed by the Hub Feature controller. */
   policyContentState?: PolicyControllerPolicyContentState;
 }
-export const PolicyControllerMembershipState = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerMembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(PolicyControllerMembershipStateStateEnum),
     componentStates: S.optional(PolicyControllerOnClusterStateMap),
@@ -1729,7 +1717,7 @@ export interface ServiceMeshStatusDetails {
   /** Human-readable explanation of code. */
   details?: string;
 }
-export const ServiceMeshStatusDetails = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshStatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     details: S.optional(S.String),
@@ -1737,7 +1725,7 @@ export const ServiceMeshStatusDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceMeshStatusDetails" }) as any as S.Schema<ServiceMeshStatusDetails>;
 
 export type ServiceMeshStatusDetailsList = Array<ServiceMeshStatusDetails>;
-export const ServiceMeshStatusDetailsList = /*@__PURE__*/ S.Array(
+const ServiceMeshStatusDetailsList = /*@__PURE__*/ S.Array(
   ServiceMeshStatusDetails,
 ) as any as S.Schema<ServiceMeshStatusDetailsList>;
 
@@ -1751,14 +1739,14 @@ export type ServiceMeshControlPlaneManagementStateEnum =
   | "NEEDS_ATTENTION"
   | "DEGRADED"
   | "DEPROVISIONING";
-export const ServiceMeshControlPlaneManagementStateEnum = S.String;
+const ServiceMeshControlPlaneManagementStateEnum = S.String;
 
 export type ServiceMeshControlPlaneManagementImplementationEnum =
   | "IMPLEMENTATION_UNSPECIFIED"
   | "ISTIOD"
   | "TRAFFIC_DIRECTOR"
   | "UPDATING";
-export const ServiceMeshControlPlaneManagementImplementationEnum = S.String;
+const ServiceMeshControlPlaneManagementImplementationEnum = S.String;
 
 /** Status of control plane management. */
 export interface ServiceMeshControlPlaneManagement {
@@ -1769,7 +1757,7 @@ export interface ServiceMeshControlPlaneManagement {
   /** Output only. Implementation of managed control plane. */
   implementation?: ServiceMeshControlPlaneManagementImplementationEnum | (string & {});
 }
-export const ServiceMeshControlPlaneManagement = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshControlPlaneManagement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(ServiceMeshStatusDetailsList),
     state: S.optional(ServiceMeshControlPlaneManagementStateEnum),
@@ -1789,7 +1777,7 @@ export type ServiceMeshDataPlaneManagementStateEnum =
   | "NEEDS_ATTENTION"
   | "DEGRADED"
   | "DEPROVISIONING";
-export const ServiceMeshDataPlaneManagementStateEnum = S.String;
+const ServiceMeshDataPlaneManagementStateEnum = S.String;
 
 /** Status of data plane management. Only reported per-member. */
 export interface ServiceMeshDataPlaneManagement {
@@ -1798,7 +1786,7 @@ export interface ServiceMeshDataPlaneManagement {
   /** Explanation of the status. */
   details?: ServiceMeshStatusDetailsList;
 }
-export const ServiceMeshDataPlaneManagement = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshDataPlaneManagement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ServiceMeshDataPlaneManagementStateEnum),
     details: S.optional(ServiceMeshStatusDetailsList),
@@ -1812,7 +1800,7 @@ export type ServiceMeshConditionSeverityEnum =
   | "ERROR"
   | "WARNING"
   | "INFO";
-export const ServiceMeshConditionSeverityEnum = S.String;
+const ServiceMeshConditionSeverityEnum = S.String;
 
 export type ServiceMeshConditionCodeEnum =
   | "CODE_UNSPECIFIED"
@@ -1880,7 +1868,7 @@ export type ServiceMeshConditionCodeEnum =
   | "MODERNIZATION_INCOMPATIBLE"
   | "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE"
   | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA";
-export const ServiceMeshConditionCodeEnum = S.String;
+const ServiceMeshConditionCodeEnum = S.String;
 
 /** Condition being reported. */
 export interface ServiceMeshCondition {
@@ -1893,7 +1881,7 @@ export interface ServiceMeshCondition {
   /** Unique identifier of the condition which describes the condition recognizable to the user. */
   code?: ServiceMeshConditionCodeEnum | (string & {});
 }
-export const ServiceMeshCondition = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentationLink: S.optional(S.String),
     details: S.optional(S.String),
@@ -1903,7 +1891,7 @@ export const ServiceMeshCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceMeshCondition" }) as any as S.Schema<ServiceMeshCondition>;
 
 export type ServiceMeshConditionList = Array<ServiceMeshCondition>;
-export const ServiceMeshConditionList = /*@__PURE__*/ S.Array(
+const ServiceMeshConditionList = /*@__PURE__*/ S.Array(
   ServiceMeshCondition,
 ) as any as S.Schema<ServiceMeshConditionList>;
 
@@ -1916,7 +1904,7 @@ export interface ServiceMeshMembershipState {
   /** Output only. List of conditions reported for this membership. */
   conditions?: ServiceMeshConditionList;
 }
-export const ServiceMeshMembershipState = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshMembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlPlaneManagement: S.optional(ServiceMeshControlPlaneManagement),
     dataPlaneManagement: S.optional(ServiceMeshDataPlaneManagement),
@@ -1933,7 +1921,7 @@ export interface MeteringMembershipState {
   /** The time stamp of the most recent measurement of the number of vCPUs in the cluster. */
   lastMeasurementTime?: string;
 }
-export const MeteringMembershipState = /*@__PURE__*/ S.suspend(() =>
+const MeteringMembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preciseLastMeasuredClusterVcpuCapacity: S.optional(S.Number),
     lastMeasurementTime: S.optional(S.String),
@@ -1963,7 +1951,7 @@ export interface MembershipFeatureState {
   /** Metering-specific state. */
   metering?: MeteringMembershipState;
 }
-export const MembershipFeatureState = /*@__PURE__*/ S.suspend(() =>
+const MembershipFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityservice: S.optional(IdentityServiceMembershipState),
     configmanagement: S.optional(ConfigManagementMembershipState),
@@ -1979,7 +1967,7 @@ export const MembershipFeatureState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MembershipFeatureState" }) as any as S.Schema<MembershipFeatureState>;
 
 export type MembershipFeatureStateMap = { [key: string]: MembershipFeatureState | undefined };
-export const MembershipFeatureStateMap = /*@__PURE__*/ S.Record(
+const MembershipFeatureStateMap = /*@__PURE__*/ S.Record(
   S.String,
   MembershipFeatureState,
 ) as any as S.Schema<MembershipFeatureStateMap>;
@@ -1989,14 +1977,14 @@ export interface ScopeFeatureState {
   /** Output only. The "running state" of the Feature in this Scope. */
   state?: FeatureState;
 }
-export const ScopeFeatureState = /*@__PURE__*/ S.suspend(() =>
+const ScopeFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(FeatureState),
   }),
 ).annotate({ identifier: "ScopeFeatureState" }) as any as S.Schema<ScopeFeatureState>;
 
 export type ScopeFeatureStateMap = { [key: string]: ScopeFeatureState | undefined };
-export const ScopeFeatureStateMap = /*@__PURE__*/ S.Record(
+const ScopeFeatureStateMap = /*@__PURE__*/ S.Record(
   S.String,
   ScopeFeatureState,
 ) as any as S.Schema<ScopeFeatureStateMap>;
@@ -2005,20 +1993,15 @@ export type PolicyControllerMonitoringConfigBackendsItemEnum =
   | "MONITORING_BACKEND_UNSPECIFIED"
   | "PROMETHEUS"
   | "CLOUD_MONITORING";
-export const PolicyControllerMonitoringConfigBackendsItemEnum = S.String;
-
 export type PolicyControllerMonitoringConfigBackendsItemEnumList = Array<
   PolicyControllerMonitoringConfigBackendsItemEnum | (string & {})
 >;
-export const PolicyControllerMonitoringConfigBackendsItemEnumList =
-  ConfigManagementPolicyControllerMonitoringBackendsItemEnumList as any as S.Schema<PolicyControllerMonitoringConfigBackendsItemEnumList>;
-
 /** MonitoringConfig specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"] */
 export interface PolicyControllerMonitoringConfig {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
   backends?: PolicyControllerMonitoringConfigBackendsItemEnumList;
 }
-export const PolicyControllerMonitoringConfig =
+const PolicyControllerMonitoringConfig =
   ConfigManagementPolicyControllerMonitoring as any as S.Schema<PolicyControllerMonitoringConfig>;
 
 /** ResourceList contains container resource requirements. */
@@ -2028,7 +2011,7 @@ export interface PolicyControllerResourceList {
   /** CPU requirement expressed in Kubernetes resource units. */
   cpu?: string;
 }
-export const PolicyControllerResourceList = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memory: S.optional(S.String),
     cpu: S.optional(S.String),
@@ -2044,7 +2027,7 @@ export interface PolicyControllerResourceRequirements {
   /** Requests describes the amount of compute resources reserved for the container by the kube-scheduler. */
   requests?: PolicyControllerResourceList;
 }
-export const PolicyControllerResourceRequirements = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerResourceRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limits: S.optional(PolicyControllerResourceList),
     requests: S.optional(PolicyControllerResourceList),
@@ -2064,7 +2047,7 @@ export interface PolicyControllerToleration {
   /** Matches a taint operator. */
   operator?: string;
 }
-export const PolicyControllerToleration = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerToleration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     key: S.optional(S.String),
@@ -2076,7 +2059,7 @@ export const PolicyControllerToleration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyControllerToleration>;
 
 export type PolicyControllerTolerationList = Array<PolicyControllerToleration>;
-export const PolicyControllerTolerationList = /*@__PURE__*/ S.Array(
+const PolicyControllerTolerationList = /*@__PURE__*/ S.Array(
   PolicyControllerToleration,
 ) as any as S.Schema<PolicyControllerTolerationList>;
 
@@ -2084,7 +2067,7 @@ export type PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum =
   | "AFFINITY_UNSPECIFIED"
   | "NO_AFFINITY"
   | "ANTI_AFFINITY";
-export const PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum = S.String;
+const PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum = S.String;
 
 /** Deployment-specific configuration. */
 export interface PolicyControllerPolicyControllerDeploymentConfig {
@@ -2099,7 +2082,7 @@ export interface PolicyControllerPolicyControllerDeploymentConfig {
   /** Pod affinity configuration. */
   podAffinity?: PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum | (string & {});
 }
-export const PolicyControllerPolicyControllerDeploymentConfig = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerPolicyControllerDeploymentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaCount: S.optional(S.String),
     containerResources: S.optional(PolicyControllerResourceRequirements),
@@ -2114,7 +2097,7 @@ export const PolicyControllerPolicyControllerDeploymentConfig = /*@__PURE__*/ S.
 export type PolicyControllerPolicyControllerDeploymentConfigMap = {
   [key: string]: PolicyControllerPolicyControllerDeploymentConfig | undefined;
 };
-export const PolicyControllerPolicyControllerDeploymentConfigMap = /*@__PURE__*/ S.Record(
+const PolicyControllerPolicyControllerDeploymentConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   PolicyControllerPolicyControllerDeploymentConfig,
 ) as any as S.Schema<PolicyControllerPolicyControllerDeploymentConfigMap>;
@@ -2123,14 +2106,14 @@ export type PolicyControllerTemplateLibraryConfigInstallationEnum =
   | "INSTALLATION_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "ALL";
-export const PolicyControllerTemplateLibraryConfigInstallationEnum = S.String;
+const PolicyControllerTemplateLibraryConfigInstallationEnum = S.String;
 
 /** The config specifying which default library templates to install. */
 export interface PolicyControllerTemplateLibraryConfig {
   /** Configures the manner in which the template library is installed on the cluster. */
   installation?: PolicyControllerTemplateLibraryConfigInstallationEnum | (string & {});
 }
-export const PolicyControllerTemplateLibraryConfig = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerTemplateLibraryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation: S.optional(PolicyControllerTemplateLibraryConfigInstallationEnum),
   }),
@@ -2143,7 +2126,7 @@ export interface PolicyControllerBundleInstallSpec {
   /** The set of namespaces to be exempted from the bundle. */
   exemptedNamespaces?: StringList;
 }
-export const PolicyControllerBundleInstallSpec = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerBundleInstallSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedNamespaces: S.optional(StringList),
   }),
@@ -2154,7 +2137,7 @@ export const PolicyControllerBundleInstallSpec = /*@__PURE__*/ S.suspend(() =>
 export type PolicyControllerBundleInstallSpecMap = {
   [key: string]: PolicyControllerBundleInstallSpec | undefined;
 };
-export const PolicyControllerBundleInstallSpecMap = /*@__PURE__*/ S.Record(
+const PolicyControllerBundleInstallSpecMap = /*@__PURE__*/ S.Record(
   S.String,
   PolicyControllerBundleInstallSpec,
 ) as any as S.Schema<PolicyControllerBundleInstallSpecMap>;
@@ -2166,7 +2149,7 @@ export interface PolicyControllerPolicyContentSpec {
   /** map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint. */
   bundles?: PolicyControllerBundleInstallSpecMap;
 }
-export const PolicyControllerPolicyContentSpec = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerPolicyContentSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templateLibrary: S.optional(PolicyControllerTemplateLibraryConfig),
     bundles: S.optional(PolicyControllerBundleInstallSpecMap),
@@ -2181,7 +2164,7 @@ export type PolicyControllerHubConfigInstallSpecEnum =
   | "INSTALL_SPEC_ENABLED"
   | "INSTALL_SPEC_SUSPENDED"
   | "INSTALL_SPEC_DETACHED";
-export const PolicyControllerHubConfigInstallSpecEnum = S.String;
+const PolicyControllerHubConfigInstallSpecEnum = S.String;
 
 /** Configuration for Policy Controller */
 export interface PolicyControllerHubConfig {
@@ -2206,7 +2189,7 @@ export interface PolicyControllerHubConfig {
   /** The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster. */
   exemptableNamespaces?: StringList;
 }
-export const PolicyControllerHubConfig = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerHubConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoring: S.optional(PolicyControllerMonitoringConfig),
     constraintViolationLimit: S.optional(S.String),
@@ -2230,7 +2213,7 @@ export interface PolicyControllerMembershipSpec {
   /** Policy Controller configuration for the cluster. */
   policyControllerHubConfig?: PolicyControllerHubConfig;
 }
-export const PolicyControllerMembershipSpec = /*@__PURE__*/ S.suspend(() =>
+const PolicyControllerMembershipSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     policyControllerHubConfig: S.optional(PolicyControllerHubConfig),
@@ -2243,20 +2226,20 @@ export type ServiceMeshMembershipSpecControlPlaneEnum =
   | "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED"
   | "AUTOMATIC"
   | "MANUAL";
-export const ServiceMeshMembershipSpecControlPlaneEnum = S.String;
+const ServiceMeshMembershipSpecControlPlaneEnum = S.String;
 
 export type ServiceMeshMembershipSpecConfigApiEnum =
   | "CONFIG_API_UNSPECIFIED"
   | "CONFIG_API_ISTIO"
   | "CONFIG_API_GATEWAY";
-export const ServiceMeshMembershipSpecConfigApiEnum = S.String;
+const ServiceMeshMembershipSpecConfigApiEnum = S.String;
 
 export type ServiceMeshMembershipSpecManagementEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "MANAGEMENT_AUTOMATIC"
   | "MANAGEMENT_MANUAL"
   | "MANAGEMENT_NOT_INSTALLED";
-export const ServiceMeshMembershipSpecManagementEnum = S.String;
+const ServiceMeshMembershipSpecManagementEnum = S.String;
 
 /** **Service Mesh**: Spec for a single Membership for the servicemesh feature */
 export interface ServiceMeshMembershipSpec {
@@ -2267,7 +2250,7 @@ export interface ServiceMeshMembershipSpec {
   /** Optional. Enables automatic Service Mesh management. */
   management?: ServiceMeshMembershipSpecManagementEnum | (string & {});
 }
-export const ServiceMeshMembershipSpec = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshMembershipSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlPlane: S.optional(ServiceMeshMembershipSpecControlPlaneEnum),
     configApi: S.optional(ServiceMeshMembershipSpecConfigApiEnum),
@@ -2288,7 +2271,7 @@ export interface CommonFleetDefaultMemberConfigSpec {
   /** Anthos Service Mesh-specific spec */
   mesh?: ServiceMeshMembershipSpec;
 }
-export const CommonFleetDefaultMemberConfigSpec = /*@__PURE__*/ S.suspend(() =>
+const CommonFleetDefaultMemberConfigSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityservice: S.optional(IdentityServiceMembershipSpec),
     configmanagement: S.optional(ConfigManagementMembershipSpec),
@@ -2301,13 +2284,11 @@ export const CommonFleetDefaultMemberConfigSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** **FleetObservability**: The membership-specific input for FleetObservability feature. */
 export type FleetObservabilityMembershipSpec = CancelOperationRequest;
-export const FleetObservabilityMembershipSpec = CancelOperationRequest;
-
 export type MembershipSpecSecurityPolicyEnum =
   | "SECURITY_POLICY_UNSPECIFIED"
   | "NON_PRIVILEGED"
   | "PRIVILEGED";
-export const MembershipSpecSecurityPolicyEnum = S.String;
+const MembershipSpecSecurityPolicyEnum = S.String;
 
 /** **Cloud Build**: Configurations for each Cloud Build enabled cluster. */
 export interface MembershipSpec {
@@ -2316,7 +2297,7 @@ export interface MembershipSpec {
   /** Whether it is allowed to run the privileged builds on the cluster or not. */
   securityPolicy?: MembershipSpecSecurityPolicyEnum | (string & {});
 }
-export const MembershipSpec = /*@__PURE__*/ S.suspend(() =>
+const MembershipSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     securityPolicy: S.optional(MembershipSpecSecurityPolicyEnum),
@@ -2324,14 +2305,14 @@ export const MembershipSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MembershipSpec" }) as any as S.Schema<MembershipSpec>;
 
 export type OriginTypeEnum = "TYPE_UNSPECIFIED" | "FLEET" | "FLEET_OUT_OF_SYNC" | "USER";
-export const OriginTypeEnum = S.String;
+const OriginTypeEnum = S.String;
 
 /** Origin defines where this MembershipFeatureSpec originated from. */
 export interface Origin {
   /** Type specifies which type of origin is set. */
   type?: OriginTypeEnum | (string & {});
 }
-export const Origin = /*@__PURE__*/ S.suspend(() =>
+const Origin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(OriginTypeEnum),
   }),
@@ -2354,7 +2335,7 @@ export interface MembershipFeatureSpec {
   /** Policy Controller spec. */
   policycontroller?: PolicyControllerMembershipSpec;
 }
-export const MembershipFeatureSpec = /*@__PURE__*/ S.suspend(() =>
+const MembershipFeatureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fleetobservability: S.optional(CancelOperationRequest),
     identityservice: S.optional(IdentityServiceMembershipSpec),
@@ -2367,7 +2348,7 @@ export const MembershipFeatureSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MembershipFeatureSpec" }) as any as S.Schema<MembershipFeatureSpec>;
 
 export type MembershipFeatureSpecMap = { [key: string]: MembershipFeatureSpec | undefined };
-export const MembershipFeatureSpecMap = /*@__PURE__*/ S.Record(
+const MembershipFeatureSpecMap = /*@__PURE__*/ S.Record(
   S.String,
   MembershipFeatureSpec,
 ) as any as S.Schema<MembershipFeatureSpecMap>;
@@ -2438,14 +2419,14 @@ export type ServiceMeshFeatureConditionCodeEnum =
   | "MODERNIZATION_INCOMPATIBLE"
   | "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE"
   | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA";
-export const ServiceMeshFeatureConditionCodeEnum = S.String;
+const ServiceMeshFeatureConditionCodeEnum = S.String;
 
 export type ServiceMeshFeatureConditionSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
   | "INFO";
-export const ServiceMeshFeatureConditionSeverityEnum = S.String;
+const ServiceMeshFeatureConditionSeverityEnum = S.String;
 
 /** Condition being reported. */
 export interface ServiceMeshFeatureCondition {
@@ -2458,7 +2439,7 @@ export interface ServiceMeshFeatureCondition {
   /** Severity level of the condition. */
   severity?: ServiceMeshFeatureConditionSeverityEnum | (string & {});
 }
-export const ServiceMeshFeatureCondition = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshFeatureCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(S.String),
     documentationLink: S.optional(S.String),
@@ -2470,7 +2451,7 @@ export const ServiceMeshFeatureCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceMeshFeatureCondition>;
 
 export type ServiceMeshFeatureConditionList = Array<ServiceMeshFeatureCondition>;
-export const ServiceMeshFeatureConditionList = /*@__PURE__*/ S.Array(
+const ServiceMeshFeatureConditionList = /*@__PURE__*/ S.Array(
   ServiceMeshFeatureCondition,
 ) as any as S.Schema<ServiceMeshFeatureConditionList>;
 
@@ -2479,7 +2460,7 @@ export interface ServiceMeshFeatureState {
   /** Output only. List of conditions reported for this feature. */
   conditions?: ServiceMeshFeatureConditionList;
 }
-export const ServiceMeshFeatureState = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(ServiceMeshFeatureConditionList),
   }),
@@ -2489,7 +2470,7 @@ export type WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum =
   | "WORKLOAD_IDENTITY_POOL_STATE_UNSPECIFIED"
   | "WORKLOAD_IDENTITY_POOL_STATE_OK"
   | "WORKLOAD_IDENTITY_POOL_STATE_ERROR";
-export const WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum = S.String;
+const WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum = S.String;
 
 /** WorkloadIdentityPoolStateDetail represents the state of the Workload Identity Pools for the fleet. */
 export interface WorkloadIdentityWorkloadIdentityPoolStateDetail {
@@ -2498,7 +2479,7 @@ export interface WorkloadIdentityWorkloadIdentityPoolStateDetail {
   /** The state of the Workload Identity Pool. */
   code?: WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum | (string & {});
 }
-export const WorkloadIdentityWorkloadIdentityPoolStateDetail = /*@__PURE__*/ S.suspend(() =>
+const WorkloadIdentityWorkloadIdentityPoolStateDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     code: S.optional(WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum),
@@ -2510,7 +2491,7 @@ export const WorkloadIdentityWorkloadIdentityPoolStateDetail = /*@__PURE__*/ S.s
 export type WorkloadIdentityWorkloadIdentityPoolStateDetailMap = {
   [key: string]: WorkloadIdentityWorkloadIdentityPoolStateDetail | undefined;
 };
-export const WorkloadIdentityWorkloadIdentityPoolStateDetailMap = /*@__PURE__*/ S.Record(
+const WorkloadIdentityWorkloadIdentityPoolStateDetailMap = /*@__PURE__*/ S.Record(
   S.String,
   WorkloadIdentityWorkloadIdentityPoolStateDetail,
 ) as any as S.Schema<WorkloadIdentityWorkloadIdentityPoolStateDetailMap>;
@@ -2519,12 +2500,12 @@ export type WorkloadIdentityFeatureStateNamespaceStatesValueEnum =
   | "NAMESPACE_STATE_UNSPECIFIED"
   | "NAMESPACE_STATE_OK"
   | "NAMESPACE_STATE_ERROR";
-export const WorkloadIdentityFeatureStateNamespaceStatesValueEnum = S.String;
+const WorkloadIdentityFeatureStateNamespaceStatesValueEnum = S.String;
 
 export type WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap = {
   [key: string]: WorkloadIdentityFeatureStateNamespaceStatesValueEnum | (string & {}) | undefined;
 };
-export const WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap = /*@__PURE__*/ S.Record(
+const WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap = /*@__PURE__*/ S.Record(
   S.String,
   WorkloadIdentityFeatureStateNamespaceStatesValueEnum,
 ) as any as S.Schema<WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap>;
@@ -2533,8 +2514,6 @@ export type WorkloadIdentityNamespaceStateDetailCodeEnum =
   | "NAMESPACE_STATE_UNSPECIFIED"
   | "NAMESPACE_STATE_OK"
   | "NAMESPACE_STATE_ERROR";
-export const WorkloadIdentityNamespaceStateDetailCodeEnum = S.String;
-
 /** NamespaceStateDetail represents the state of a IAM namespace. */
 export interface WorkloadIdentityNamespaceStateDetail {
   /** The state of the IAM namespace. */
@@ -2542,13 +2521,10 @@ export interface WorkloadIdentityNamespaceStateDetail {
   /** A human-readable description of the current state or returned error. */
   description?: string;
 }
-export const WorkloadIdentityNamespaceStateDetail =
-  WorkloadIdentityIdentityProviderStateDetail as any as S.Schema<WorkloadIdentityNamespaceStateDetail>;
-
 export type WorkloadIdentityNamespaceStateDetailMap = {
   [key: string]: WorkloadIdentityNamespaceStateDetail | undefined;
 };
-export const WorkloadIdentityNamespaceStateDetailMap =
+const WorkloadIdentityNamespaceStateDetailMap =
   WorkloadIdentityIdentityProviderStateDetailMap as any as S.Schema<WorkloadIdentityNamespaceStateDetailMap>;
 
 /** **WorkloadIdentity**: Global feature state. */
@@ -2564,7 +2540,7 @@ export interface WorkloadIdentityFeatureState {
   /** The state of the IAM namespaces for the fleet. */
   namespaceStateDetails?: WorkloadIdentityNamespaceStateDetailMap;
 }
-export const WorkloadIdentityFeatureState = /*@__PURE__*/ S.suspend(() =>
+const WorkloadIdentityFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadIdentityPool: S.optional(S.String),
     scopeTenancyWorkloadIdentityPool: S.optional(S.String),
@@ -2581,7 +2557,7 @@ export const WorkloadIdentityFeatureState = /*@__PURE__*/ S.suspend(() =>
 export type ClusterUpgradeIgnoredMembershipMap = {
   [key: string]: ClusterUpgradeIgnoredMembership | undefined;
 };
-export const ClusterUpgradeIgnoredMembershipMap = /*@__PURE__*/ S.Record(
+const ClusterUpgradeIgnoredMembershipMap = /*@__PURE__*/ S.Record(
   S.String,
   ClusterUpgradeIgnoredMembership,
 ) as any as S.Schema<ClusterUpgradeIgnoredMembershipMap>;
@@ -2595,7 +2571,7 @@ export interface ClusterUpgradeGKEUpgradeState {
   /** Status of the upgrade. */
   status?: ClusterUpgradeUpgradeStatus;
 }
-export const ClusterUpgradeGKEUpgradeState = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeGKEUpgradeState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgrade: S.optional(ClusterUpgradeGKEUpgrade),
     stats: S.optional(StringMap),
@@ -2606,7 +2582,7 @@ export const ClusterUpgradeGKEUpgradeState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterUpgradeGKEUpgradeState>;
 
 export type ClusterUpgradeGKEUpgradeStateList = Array<ClusterUpgradeGKEUpgradeState>;
-export const ClusterUpgradeGKEUpgradeStateList = /*@__PURE__*/ S.Array(
+const ClusterUpgradeGKEUpgradeStateList = /*@__PURE__*/ S.Array(
   ClusterUpgradeGKEUpgradeState,
 ) as any as S.Schema<ClusterUpgradeGKEUpgradeStateList>;
 
@@ -2621,7 +2597,7 @@ export interface ClusterUpgradeGKEUpgradeFeatureCondition {
   /** Reason why the feature is in this status. */
   reason?: string;
 }
-export const ClusterUpgradeGKEUpgradeFeatureCondition = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeGKEUpgradeFeatureCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     type: S.optional(S.String),
@@ -2634,7 +2610,7 @@ export const ClusterUpgradeGKEUpgradeFeatureCondition = /*@__PURE__*/ S.suspend(
 
 export type ClusterUpgradeGKEUpgradeFeatureConditionList =
   Array<ClusterUpgradeGKEUpgradeFeatureCondition>;
-export const ClusterUpgradeGKEUpgradeFeatureConditionList = /*@__PURE__*/ S.Array(
+const ClusterUpgradeGKEUpgradeFeatureConditionList = /*@__PURE__*/ S.Array(
   ClusterUpgradeGKEUpgradeFeatureCondition,
 ) as any as S.Schema<ClusterUpgradeGKEUpgradeFeatureConditionList>;
 
@@ -2645,7 +2621,7 @@ export interface ClusterUpgradeGKEUpgradeFeatureState {
   /** Current conditions of the feature. */
   conditions?: ClusterUpgradeGKEUpgradeFeatureConditionList;
 }
-export const ClusterUpgradeGKEUpgradeFeatureState = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeGKEUpgradeFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgradeState: S.optional(ClusterUpgradeGKEUpgradeStateList),
     conditions: S.optional(ClusterUpgradeGKEUpgradeFeatureConditionList),
@@ -2663,7 +2639,7 @@ export interface ClusterUpgradeFleetState {
   /** Feature state for GKE clusters. */
   gkeState?: ClusterUpgradeGKEUpgradeFeatureState;
 }
-export const ClusterUpgradeFleetState = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeFleetState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignored: S.optional(ClusterUpgradeIgnoredMembershipMap),
     downstreamFleets: S.optional(StringList),
@@ -2678,7 +2654,7 @@ export interface FleetObservabilityFeatureError {
   /** A human-readable description of the current status. */
   description?: string;
 }
-export const FleetObservabilityFeatureError = /*@__PURE__*/ S.suspend(() =>
+const FleetObservabilityFeatureError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     description: S.optional(S.String),
@@ -2688,7 +2664,7 @@ export const FleetObservabilityFeatureError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetObservabilityFeatureError>;
 
 export type FleetObservabilityFeatureErrorList = Array<FleetObservabilityFeatureError>;
-export const FleetObservabilityFeatureErrorList = /*@__PURE__*/ S.Array(
+const FleetObservabilityFeatureErrorList = /*@__PURE__*/ S.Array(
   FleetObservabilityFeatureError,
 ) as any as S.Schema<FleetObservabilityFeatureErrorList>;
 
@@ -2696,7 +2672,7 @@ export type FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum =
   | "CODE_UNSPECIFIED"
   | "OK"
   | "ERROR";
-export const FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum = S.String;
+const FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum = S.String;
 
 /** Base state for fleet observability feature. */
 export interface FleetObservabilityFleetObservabilityBaseFeatureState {
@@ -2705,7 +2681,7 @@ export interface FleetObservabilityFleetObservabilityBaseFeatureState {
   /** The high-level, machine-readable status of this Feature. */
   code?: FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum | (string & {});
 }
-export const FleetObservabilityFleetObservabilityBaseFeatureState = /*@__PURE__*/ S.suspend(() =>
+const FleetObservabilityFleetObservabilityBaseFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(FleetObservabilityFeatureErrorList),
     code: S.optional(FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum),
@@ -2719,7 +2695,7 @@ export interface FleetObservabilityFleetObservabilityMonitoringState {
   /** The base feature state of fleet monitoring feature. */
   state?: FleetObservabilityFleetObservabilityBaseFeatureState;
 }
-export const FleetObservabilityFleetObservabilityMonitoringState = /*@__PURE__*/ S.suspend(() =>
+const FleetObservabilityFleetObservabilityMonitoringState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(FleetObservabilityFleetObservabilityBaseFeatureState),
   }),
@@ -2734,7 +2710,7 @@ export interface FleetObservabilityFleetObservabilityLoggingState {
   /** The base feature state of fleet scope log. */
   scopeLog?: FleetObservabilityFleetObservabilityBaseFeatureState;
 }
-export const FleetObservabilityFleetObservabilityLoggingState = /*@__PURE__*/ S.suspend(() =>
+const FleetObservabilityFleetObservabilityLoggingState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultLog: S.optional(FleetObservabilityFleetObservabilityBaseFeatureState),
     scopeLog: S.optional(FleetObservabilityFleetObservabilityBaseFeatureState),
@@ -2750,7 +2726,7 @@ export interface FleetObservabilityFeatureState {
   /** The feature state of default logging. */
   logging?: FleetObservabilityFleetObservabilityLoggingState;
 }
-export const FleetObservabilityFeatureState = /*@__PURE__*/ S.suspend(() =>
+const FleetObservabilityFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoring: S.optional(FleetObservabilityFleetObservabilityMonitoringState),
     logging: S.optional(FleetObservabilityFleetObservabilityLoggingState),
@@ -2761,8 +2737,6 @@ export const FleetObservabilityFeatureState = /*@__PURE__*/ S.suspend(() =>
 
 /** **RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide Feature state. */
 export type RBACRoleBindingActuationFeatureState = CancelOperationRequest;
-export const RBACRoleBindingActuationFeatureState = CancelOperationRequest;
-
 /** CommonFeatureState contains Fleet-wide Feature status information. */
 export interface CommonFeatureState {
   /** Service Mesh-specific state. */
@@ -2780,7 +2754,7 @@ export interface CommonFeatureState {
   /** RBAC Role Binding Actuation feature state */
   rbacrolebindingactuation?: CancelOperationRequest;
 }
-export const CommonFeatureState = /*@__PURE__*/ S.suspend(() =>
+const CommonFeatureState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicemesh: S.optional(ServiceMeshFeatureState),
     appdevexperience: S.optional(AppDevExperienceFeatureState),
@@ -2799,14 +2773,14 @@ export type FeatureResourceStateStateEnum =
   | "DISABLING"
   | "UPDATING"
   | "SERVICE_UPDATING";
-export const FeatureResourceStateStateEnum = S.String;
+const FeatureResourceStateStateEnum = S.String;
 
 /** FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Fleet and across Memberships. */
 export interface FeatureResourceState {
   /** The current state of the Feature resource in the Hub API. */
   state?: FeatureResourceStateStateEnum | (string & {});
 }
-export const FeatureResourceState = /*@__PURE__*/ S.suspend(() =>
+const FeatureResourceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(FeatureResourceStateStateEnum),
   }),
@@ -2816,7 +2790,7 @@ export type MultiClusterIngressFeatureSpecBillingEnum =
   | "BILLING_UNSPECIFIED"
   | "PAY_AS_YOU_GO"
   | "ANTHOS_LICENSE";
-export const MultiClusterIngressFeatureSpecBillingEnum = S.String;
+const MultiClusterIngressFeatureSpecBillingEnum = S.String;
 
 /** **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature. */
 export interface MultiClusterIngressFeatureSpec {
@@ -2825,7 +2799,7 @@ export interface MultiClusterIngressFeatureSpec {
   /** Deprecated: This field will be ignored and should not be set. Customer's billing structure. */
   billing?: MultiClusterIngressFeatureSpecBillingEnum | (string & {});
 }
-export const MultiClusterIngressFeatureSpec = /*@__PURE__*/ S.suspend(() =>
+const MultiClusterIngressFeatureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configMembership: S.optional(S.String),
     billing: S.optional(MultiClusterIngressFeatureSpecBillingEnum),
@@ -2839,7 +2813,7 @@ export interface DataplaneV2FeatureSpec {
   /** Enable dataplane-v2 based encryption for multiple clusters. */
   enableEncryption?: boolean;
 }
-export const DataplaneV2FeatureSpec = /*@__PURE__*/ S.suspend(() =>
+const DataplaneV2FeatureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableEncryption: S.optional(S.Boolean),
   }),
@@ -2849,13 +2823,13 @@ export type ServiceMeshFeatureSpecModernizationCompatibilityEnum =
   | "MODERNIZATION_COMPATIBILITY_UNSPECIFIED"
   | "VALIDATION_ENABLED"
   | "VALIDATION_DISABLED";
-export const ServiceMeshFeatureSpecModernizationCompatibilityEnum = S.String;
+const ServiceMeshFeatureSpecModernizationCompatibilityEnum = S.String;
 
 export type ServiceMeshFeatureSpecModernizationStrategyEnum =
   | "MODERNIZATION_STRATEGY_UNSPECIFIED"
   | "AUTOMATIC"
   | "DEFERRED";
-export const ServiceMeshFeatureSpecModernizationStrategyEnum = S.String;
+const ServiceMeshFeatureSpecModernizationStrategyEnum = S.String;
 
 /** **Service Mesh**: Spec for the fleet for the servicemesh feature */
 export interface ServiceMeshFeatureSpec {
@@ -2864,7 +2838,7 @@ export interface ServiceMeshFeatureSpec {
   /** Optional. Declares your intended modernization strategy for the fleet. */
   modernizationStrategy?: ServiceMeshFeatureSpecModernizationStrategyEnum | (string & {});
 }
-export const ServiceMeshFeatureSpec = /*@__PURE__*/ S.suspend(() =>
+const ServiceMeshFeatureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modernizationCompatibility: S.optional(ServiceMeshFeatureSpecModernizationCompatibilityEnum),
     modernizationStrategy: S.optional(ServiceMeshFeatureSpecModernizationStrategyEnum),
@@ -2873,14 +2847,12 @@ export const ServiceMeshFeatureSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Spec for App Dev Experience Feature. */
 export type AppDevExperienceFeatureSpec = CancelOperationRequest;
-export const AppDevExperienceFeatureSpec = CancelOperationRequest;
-
 /** **WorkloadIdentity**: Global feature specification. */
 export interface WorkloadIdentityFeatureSpec {
   /** Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool */
   scopeTenancyPool?: string;
 }
-export const WorkloadIdentityFeatureSpec = /*@__PURE__*/ S.suspend(() =>
+const WorkloadIdentityFeatureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeTenancyPool: S.optional(S.String),
   }),
@@ -2893,7 +2865,7 @@ export interface RBACRoleBindingActuationFeatureSpec {
   /** The list of allowed custom roles (ClusterRoles). If a ClusterRole is not part of this list, it cannot be used in a Scope RBACRoleBinding. If a ClusterRole in this list is in use, it cannot be removed from the list. */
   allowedCustomRoles?: StringList;
 }
-export const RBACRoleBindingActuationFeatureSpec = /*@__PURE__*/ S.suspend(() =>
+const RBACRoleBindingActuationFeatureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedCustomRoles: S.optional(StringList),
   }),
@@ -2902,14 +2874,14 @@ export const RBACRoleBindingActuationFeatureSpec = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RBACRoleBindingActuationFeatureSpec>;
 
 export type FleetObservabilityRoutingConfigModeEnum = "MODE_UNSPECIFIED" | "COPY" | "MOVE";
-export const FleetObservabilityRoutingConfigModeEnum = S.String;
+const FleetObservabilityRoutingConfigModeEnum = S.String;
 
 /** RoutingConfig configures the behaviour of fleet logging feature. */
 export interface FleetObservabilityRoutingConfig {
   /** mode configures the logs routing mode. */
   mode?: FleetObservabilityRoutingConfigModeEnum | (string & {});
 }
-export const FleetObservabilityRoutingConfig = /*@__PURE__*/ S.suspend(() =>
+const FleetObservabilityRoutingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(FleetObservabilityRoutingConfigModeEnum),
   }),
@@ -2924,7 +2896,7 @@ export interface FleetObservabilityLoggingConfig {
   /** Specified if applying the default routing config to logs not specified in other configs. */
   defaultConfig?: FleetObservabilityRoutingConfig;
 }
-export const FleetObservabilityLoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const FleetObservabilityLoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fleetScopeLogsConfig: S.optional(FleetObservabilityRoutingConfig),
     defaultConfig: S.optional(FleetObservabilityRoutingConfig),
@@ -2938,7 +2910,7 @@ export interface FleetObservabilityFeatureSpec {
   /** Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet. */
   loggingConfig?: FleetObservabilityLoggingConfig;
 }
-export const FleetObservabilityFeatureSpec = /*@__PURE__*/ S.suspend(() =>
+const FleetObservabilityFeatureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loggingConfig: S.optional(FleetObservabilityLoggingConfig),
   }),
@@ -2951,7 +2923,7 @@ export interface ClusterUpgradePostConditions {
   /** Required. Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days. Required. */
   soaking?: string;
 }
-export const ClusterUpgradePostConditions = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradePostConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     soaking: S.optional(S.String),
   }),
@@ -2966,7 +2938,7 @@ export interface ClusterUpgradeGKEUpgradeOverride {
   /** Required. Which upgrade to override. Required. */
   upgrade?: ClusterUpgradeGKEUpgrade;
 }
-export const ClusterUpgradeGKEUpgradeOverride = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeGKEUpgradeOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postConditions: S.optional(ClusterUpgradePostConditions),
     upgrade: S.optional(ClusterUpgradeGKEUpgrade),
@@ -2976,7 +2948,7 @@ export const ClusterUpgradeGKEUpgradeOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterUpgradeGKEUpgradeOverride>;
 
 export type ClusterUpgradeGKEUpgradeOverrideList = Array<ClusterUpgradeGKEUpgradeOverride>;
-export const ClusterUpgradeGKEUpgradeOverrideList = /*@__PURE__*/ S.Array(
+const ClusterUpgradeGKEUpgradeOverrideList = /*@__PURE__*/ S.Array(
   ClusterUpgradeGKEUpgradeOverride,
 ) as any as S.Schema<ClusterUpgradeGKEUpgradeOverrideList>;
 
@@ -2989,7 +2961,7 @@ export interface ClusterUpgradeFleetSpec {
   /** This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet. */
   upstreamFleets?: StringList;
 }
-export const ClusterUpgradeFleetSpec = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpgradeFleetSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postConditions: S.optional(ClusterUpgradePostConditions),
     gkeUpgradeOverrides: S.optional(ClusterUpgradeGKEUpgradeOverrideList),
@@ -3016,7 +2988,7 @@ export interface CommonFeatureSpec {
   /** ClusterUpgrade (fleet-based) feature spec. */
   clusterupgrade?: ClusterUpgradeFleetSpec;
 }
-export const CommonFeatureSpec = /*@__PURE__*/ S.suspend(() =>
+const CommonFeatureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiclusteringress: S.optional(MultiClusterIngressFeatureSpec),
     dataplanev2: S.optional(DataplaneV2FeatureSpec),
@@ -3031,10 +3003,8 @@ export const CommonFeatureSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** ScopeFeatureSpec contains feature specs for a fleet scope. */
 export type ScopeFeatureSpec = CancelOperationRequest;
-export const ScopeFeatureSpec = CancelOperationRequest;
-
 export type ScopeFeatureSpecMap = { [key: string]: CancelOperationRequest | undefined };
-export const ScopeFeatureSpecMap = /*@__PURE__*/ S.Record(
+const ScopeFeatureSpecMap = /*@__PURE__*/ S.Record(
   S.String,
   CancelOperationRequest,
 ) as any as S.Schema<ScopeFeatureSpecMap>;
@@ -3070,7 +3040,7 @@ export interface Feature {
   /** Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature. */
   scopeSpecs?: ScopeFeatureSpecMap;
 }
-export const Feature = /*@__PURE__*/ S.suspend(() =>
+const Feature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteTime: S.optional(S.String),
     membershipStates: S.optional(MembershipFeatureStateMap),
@@ -3099,7 +3069,7 @@ export interface CreateProjectsLocationsFeaturesRequest {
   /** Request body */
   body?: Feature;
 }
-export const CreateProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -3120,21 +3090,21 @@ export type BinaryAuthorizationConfigEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "DISABLED"
   | "POLICY_BINDINGS";
-export const BinaryAuthorizationConfigEvaluationModeEnum = S.String;
+const BinaryAuthorizationConfigEvaluationModeEnum = S.String;
 
 /** Binauthz policy that applies to this cluster. */
 export interface PolicyBinding {
   /** The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`. */
   name?: string;
 }
-export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
+const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
 export type PolicyBindingList = Array<PolicyBinding>;
-export const PolicyBindingList = /*@__PURE__*/ S.Array(
+const PolicyBindingList = /*@__PURE__*/ S.Array(
   PolicyBinding,
 ) as any as S.Schema<PolicyBindingList>;
 
@@ -3145,7 +3115,7 @@ export interface BinaryAuthorizationConfig {
   /** Optional. Binauthz policies that apply to this cluster. */
   policyBindings?: PolicyBindingList;
 }
-export const BinaryAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
+const BinaryAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationMode: S.optional(BinaryAuthorizationConfigEvaluationModeEnum),
     policyBindings: S.optional(PolicyBindingList),
@@ -3158,19 +3128,19 @@ export interface ComplianceStandard {
   /** Name of the compliance standard. */
   standard?: string;
 }
-export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
+const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     standard: S.optional(S.String),
   }),
 ).annotate({ identifier: "ComplianceStandard" }) as any as S.Schema<ComplianceStandard>;
 
 export type ComplianceStandardList = Array<ComplianceStandard>;
-export const ComplianceStandardList = /*@__PURE__*/ S.Array(
+const ComplianceStandardList = /*@__PURE__*/ S.Array(
   ComplianceStandard,
 ) as any as S.Schema<ComplianceStandardList>;
 
 export type CompliancePostureConfigModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED";
-export const CompliancePostureConfigModeEnum = S.String;
+const CompliancePostureConfigModeEnum = S.String;
 
 /** Deprecated: Compliance Posture is no longer supported. For more details, see https://cloud.google.com/kubernetes-engine/docs/deprecations/posture-management-deprecation. CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture. */
 export interface CompliancePostureConfig {
@@ -3179,7 +3149,7 @@ export interface CompliancePostureConfig {
   /** Defines the enablement mode for Compliance Posture. */
   mode?: CompliancePostureConfigModeEnum | (string & {});
 }
-export const CompliancePostureConfig = /*@__PURE__*/ S.suspend(() =>
+const CompliancePostureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     complianceStandards: S.optional(ComplianceStandardList),
     mode: S.optional(CompliancePostureConfigModeEnum),
@@ -3191,14 +3161,14 @@ export type SecurityPostureConfigModeEnum =
   | "DISABLED"
   | "BASIC"
   | "ENTERPRISE";
-export const SecurityPostureConfigModeEnum = S.String;
+const SecurityPostureConfigModeEnum = S.String;
 
 export type SecurityPostureConfigVulnerabilityModeEnum =
   | "VULNERABILITY_MODE_UNSPECIFIED"
   | "VULNERABILITY_DISABLED"
   | "VULNERABILITY_BASIC"
   | "VULNERABILITY_ENTERPRISE";
-export const SecurityPostureConfigVulnerabilityModeEnum = S.String;
+const SecurityPostureConfigVulnerabilityModeEnum = S.String;
 
 /** SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API. */
 export interface SecurityPostureConfig {
@@ -3207,7 +3177,7 @@ export interface SecurityPostureConfig {
   /** Sets which mode to use for vulnerability scanning. */
   vulnerabilityMode?: SecurityPostureConfigVulnerabilityModeEnum | (string & {});
 }
-export const SecurityPostureConfig = /*@__PURE__*/ S.suspend(() =>
+const SecurityPostureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(SecurityPostureConfigModeEnum),
     vulnerabilityMode: S.optional(SecurityPostureConfigVulnerabilityModeEnum),
@@ -3223,7 +3193,7 @@ export interface DefaultClusterConfig {
   /** Optional. Enable/Disable Security Posture features for the cluster. */
   securityPostureConfig?: SecurityPostureConfig;
 }
-export const DefaultClusterConfig = /*@__PURE__*/ S.suspend(() =>
+const DefaultClusterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     binaryAuthorizationConfig: S.optional(BinaryAuthorizationConfig),
     compliancePostureConfig: S.optional(CompliancePostureConfig),
@@ -3237,14 +3207,14 @@ export type FleetLifecycleStateCodeEnum =
   | "READY"
   | "DELETING"
   | "UPDATING";
-export const FleetLifecycleStateCodeEnum = S.String;
+const FleetLifecycleStateCodeEnum = S.String;
 
 /** FleetLifecycleState describes the state of a Fleet resource. */
 export interface FleetLifecycleState {
   /** Output only. The current state of the Fleet resource. */
   code?: FleetLifecycleStateCodeEnum | (string & {});
 }
-export const FleetLifecycleState = /*@__PURE__*/ S.suspend(() =>
+const FleetLifecycleState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(FleetLifecycleStateCodeEnum),
   }),
@@ -3271,7 +3241,7 @@ export interface Fleet {
   /** Output only. State of the namespace resource. */
   state?: FleetLifecycleState;
 }
-export const Fleet = /*@__PURE__*/ S.suspend(() =>
+const Fleet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     uid: S.optional(S.String),
@@ -3291,7 +3261,7 @@ export interface CreateProjectsLocationsFleetsRequest {
   /** Request body */
   body?: Fleet;
 }
-export const CreateProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Fleet.pipe(T.HttpBody())),
@@ -3307,10 +3277,10 @@ export const CreateProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateProjectsLocationsFleetsRequest>;
 
 export type MembershipClusterTierEnum = "CLUSTER_TIER_UNSPECIFIED" | "STANDARD" | "ENTERPRISE";
-export const MembershipClusterTierEnum = S.String;
+const MembershipClusterTierEnum = S.String;
 
 export type MembershipMembershipTypeEnum = "MEMBERSHIP_TYPE_UNSPECIFIED" | "LIGHTWEIGHT";
-export const MembershipMembershipTypeEnum = S.String;
+const MembershipMembershipTypeEnum = S.String;
 
 /** ResourceOptions represent options for Kubernetes resource generation. */
 export interface ResourceOptions {
@@ -3323,7 +3293,7 @@ export interface ResourceOptions {
   /** Optional. Git version of the Kubernetes cluster. This is only used to gate the Connect Agent migration to svc.id.goog on GDC-SO 1.33.100 patch and above. */
   k8sGitVersion?: string;
 }
-export const ResourceOptions = /*@__PURE__*/ S.suspend(() =>
+const ResourceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     k8sVersion: S.optional(S.String),
     v1beta1Crd: S.optional(S.Boolean),
@@ -3339,7 +3309,7 @@ export interface ResourceManifest {
   /** Output only. YAML manifest of the resource. */
   manifest?: string;
 }
-export const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
+const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterScoped: S.optional(S.Boolean),
     manifest: S.optional(S.String),
@@ -3347,7 +3317,7 @@ export const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceManifest" }) as any as S.Schema<ResourceManifest>;
 
 export type ResourceManifestList = Array<ResourceManifest>;
-export const ResourceManifestList = /*@__PURE__*/ S.Array(
+const ResourceManifestList = /*@__PURE__*/ S.Array(
   ResourceManifest,
 ) as any as S.Schema<ResourceManifestList>;
 
@@ -3362,7 +3332,7 @@ export interface KubernetesResource {
   /** Output only. Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask. */
   membershipResources?: ResourceManifestList;
 }
-export const KubernetesResource = /*@__PURE__*/ S.suspend(() =>
+const KubernetesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceOptions: S.optional(ResourceOptions),
     membershipCrManifest: S.optional(S.String),
@@ -3377,7 +3347,7 @@ export type OnPremClusterClusterTypeEnum =
   | "HYBRID"
   | "STANDALONE"
   | "USER";
-export const OnPremClusterClusterTypeEnum = S.String;
+const OnPremClusterClusterTypeEnum = S.String;
 
 /** OnPremCluster contains information specific to GKE On-Prem clusters. */
 export interface OnPremCluster {
@@ -3390,7 +3360,7 @@ export interface OnPremCluster {
   /** Immutable. Whether the cluster is an admin cluster. */
   adminCluster?: boolean;
 }
-export const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
+const OnPremCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterType: S.optional(OnPremClusterClusterTypeEnum),
     resourceLink: S.optional(S.String),
@@ -3406,7 +3376,7 @@ export interface GkeCluster {
   /** Output only. If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane. */
   clusterMissing?: boolean;
 }
-export const GkeCluster = /*@__PURE__*/ S.suspend(() =>
+const GkeCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceLink: S.optional(S.String),
     clusterMissing: S.optional(S.Boolean),
@@ -3428,7 +3398,7 @@ export interface KubernetesMetadata {
   /** Output only. Kubernetes API server version string as reported by `/version`. */
   kubernetesApiServerVersion?: string;
 }
-export const KubernetesMetadata = /*@__PURE__*/ S.suspend(() =>
+const KubernetesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     nodeProviderId: S.optional(S.String),
@@ -3444,7 +3414,7 @@ export interface EdgeCluster {
   /** Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster */
   resourceLink?: string;
 }
-export const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
+const EdgeCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceLink: S.optional(S.String),
   }),
@@ -3455,7 +3425,7 @@ export interface ApplianceCluster {
   /** Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance */
   resourceLink?: string;
 }
-export const ApplianceCluster = EdgeCluster as any as S.Schema<ApplianceCluster>;
+const ApplianceCluster = EdgeCluster as any as S.Schema<ApplianceCluster>;
 
 /** MultiCloudCluster contains information specific to GKE Multi-Cloud clusters. */
 export interface MultiCloudCluster {
@@ -3464,7 +3434,7 @@ export interface MultiCloudCluster {
   /** Output only. If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists. */
   clusterMissing?: boolean;
 }
-export const MultiCloudCluster = GkeCluster as any as S.Schema<MultiCloudCluster>;
+const MultiCloudCluster = GkeCluster as any as S.Schema<MultiCloudCluster>;
 
 /** MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata. */
 export interface MembershipEndpoint {
@@ -3485,7 +3455,7 @@ export interface MembershipEndpoint {
   /** Optional. Specific information for a GKE Multi-Cloud cluster. */
   multiCloudCluster?: MultiCloudCluster;
 }
-export const MembershipEndpoint = /*@__PURE__*/ S.suspend(() =>
+const MembershipEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kubernetesResource: S.optional(KubernetesResource),
     onPremCluster: S.optional(OnPremCluster),
@@ -3513,7 +3483,7 @@ export interface Authority {
   /** Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field. */
   oidcJwks?: string;
 }
-export const Authority = /*@__PURE__*/ S.suspend(() =>
+const Authority = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workloadIdentityPool: S.optional(S.String),
     issuer: S.optional(S.String),
@@ -3531,14 +3501,12 @@ export type MembershipStateCodeEnum =
   | "DELETING"
   | "UPDATING"
   | "SERVICE_UPDATING";
-export const MembershipStateCodeEnum = S.String;
-
 /** MembershipState describes the state of a Membership resource. */
 export interface MembershipState {
   /** Output only. The current state of the Membership resource. */
   code?: MembershipStateCodeEnum | (string & {});
 }
-export const MembershipState = FleetLifecycleState as any as S.Schema<MembershipState>;
+const MembershipState = FleetLifecycleState as any as S.Schema<MembershipState>;
 
 /** MonitoringConfig informs Fleet-based applications/services/UIs how the metrics for the underlying cluster is reported to cloud monitoring services. It can be set from empty to non-empty, but can't be mutated directly to prevent accidentally breaking the constinousty of metrics. */
 export interface MonitoringConfig {
@@ -3553,7 +3521,7 @@ export interface MonitoringConfig {
   /** Optional. Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix today but will migration to be under kubernetes.io/anthos. */
   kubernetesMetricsPrefix?: string;
 }
-export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
+const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterHash: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -3596,7 +3564,7 @@ export interface Membership {
   /** Optional. The monitoring config information for this membership. */
   monitoringConfig?: MonitoringConfig;
 }
-export const Membership = /*@__PURE__*/ S.suspend(() =>
+const Membership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     deleteTime: S.optional(S.String),
@@ -3626,7 +3594,7 @@ export interface CreateProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: Membership;
 }
-export const CreateProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     membershipId: S.optional(S.String.pipe(T.Query())),
@@ -3649,14 +3617,14 @@ export type MembershipBindingLifecycleStateCodeEnum =
   | "READY"
   | "DELETING"
   | "UPDATING";
-export const MembershipBindingLifecycleStateCodeEnum = S.String;
+const MembershipBindingLifecycleStateCodeEnum = S.String;
 
 /** MembershipBindingLifecycleState describes the state of a Binding resource. */
 export interface MembershipBindingLifecycleState {
   /** Output only. The current state of the MembershipBinding resource. */
   code?: MembershipBindingLifecycleStateCodeEnum | (string & {});
 }
-export const MembershipBindingLifecycleState = /*@__PURE__*/ S.suspend(() =>
+const MembershipBindingLifecycleState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(MembershipBindingLifecycleStateCodeEnum),
   }),
@@ -3683,7 +3651,7 @@ export interface MembershipBinding {
   /** Output only. Google-generated UUID for this resource. This is unique across all membershipbinding resources. If a membershipbinding resource is deleted and another resource with the same name is created, it gets a different uid. */
   uid?: string;
 }
-export const MembershipBinding = /*@__PURE__*/ S.suspend(() =>
+const MembershipBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -3704,7 +3672,7 @@ export interface CreateProjectsLocationsMembershipsBindingsRequest {
   /** Request body */
   body?: MembershipBinding;
 }
-export const CreateProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     membershipBindingId: S.optional(S.String.pipe(T.Query())),
@@ -3721,7 +3689,7 @@ export const CreateProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<CreateProjectsLocationsMembershipsBindingsRequest>;
 
 export type RolePredefinedRoleEnum = "UNKNOWN" | "ADMIN" | "EDIT" | "VIEW" | "ANTHOS_SUPPORT";
-export const RolePredefinedRoleEnum = S.String;
+const RolePredefinedRoleEnum = S.String;
 
 /** Role is the type for Kubernetes roles */
 export interface Role {
@@ -3730,7 +3698,7 @@ export interface Role {
   /** Optional. custom_role is the name of a custom KubernetesClusterRole to use. */
   customRole?: string;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
+const Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predefinedRole: S.optional(RolePredefinedRoleEnum),
     customRole: S.optional(S.String),
@@ -3743,14 +3711,12 @@ export type RBACRoleBindingLifecycleStateCodeEnum =
   | "READY"
   | "DELETING"
   | "UPDATING";
-export const RBACRoleBindingLifecycleStateCodeEnum = S.String;
-
 /** RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource. */
 export interface RBACRoleBindingLifecycleState {
   /** Output only. The current state of the rbacrolebinding resource. */
   code?: RBACRoleBindingLifecycleStateCodeEnum | (string & {});
 }
-export const RBACRoleBindingLifecycleState =
+const RBACRoleBindingLifecycleState =
   MembershipBindingLifecycleState as any as S.Schema<RBACRoleBindingLifecycleState>;
 
 /** RBACRoleBinding represents a rbacrolebinding across the Fleet */
@@ -3776,7 +3742,7 @@ export interface RBACRoleBinding {
   /** user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld" */
   user?: string;
 }
-export const RBACRoleBinding = /*@__PURE__*/ S.suspend(() =>
+const RBACRoleBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     deleteTime: S.optional(S.String),
@@ -3799,19 +3765,18 @@ export interface CreateProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const CreateProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      rbacrolebindingId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/rbacrolebindings",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rbacrolebindingId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/rbacrolebindings",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsMembershipsRbacrolebindingsRequest",
 }) as any as S.Schema<CreateProjectsLocationsMembershipsRbacrolebindingsRequest>;
@@ -3822,12 +3787,10 @@ export type RolloutCreationScopeUpgradeTypesItemEnum =
   | "CONTROL_PLANE_PATCH"
   | "NODE_MINOR"
   | "NODE_PATCH";
-export const RolloutCreationScopeUpgradeTypesItemEnum = S.String;
-
 export type RolloutCreationScopeUpgradeTypesItemEnumList = Array<
   RolloutCreationScopeUpgradeTypesItemEnum | (string & {})
 >;
-export const RolloutCreationScopeUpgradeTypesItemEnumList =
+const RolloutCreationScopeUpgradeTypesItemEnumList =
   ConfigManagementPolicyControllerMonitoringBackendsItemEnumList as any as S.Schema<RolloutCreationScopeUpgradeTypesItemEnumList>;
 
 /** The scope for automatic rollout creation. */
@@ -3835,7 +3798,7 @@ export interface RolloutCreationScope {
   /** Optional. The list of enabled upgrade types. */
   upgradeTypes?: RolloutCreationScopeUpgradeTypesItemEnumList;
 }
-export const RolloutCreationScope = /*@__PURE__*/ S.suspend(() =>
+const RolloutCreationScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgradeTypes: S.optional(RolloutCreationScopeUpgradeTypesItemEnumList),
   }),
@@ -3848,7 +3811,7 @@ export interface AutoUpgradeConfig {
   /** Output only. Mandatory Safety Policies (Always active) which cannot be disabled. The key is the policy ID (e.g., "ENFORCED_CONTROL_PLANE_PATCH") and the value is a human-readable description. */
   enforcedRollouts?: StringMap;
 }
-export const AutoUpgradeConfig = /*@__PURE__*/ S.suspend(() =>
+const AutoUpgradeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutCreationScope: S.optional(RolloutCreationScope),
     enforcedRollouts: S.optional(StringMap),
@@ -3860,7 +3823,7 @@ export interface ClusterSelector {
   /** Required. A valid CEL (Common Expression Language) expression which evaluates `resource.labels`. */
   labelSelector?: string;
 }
-export const ClusterSelector = /*@__PURE__*/ S.suspend(() =>
+const ClusterSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelSelector: S.optional(S.String),
   }),
@@ -3875,7 +3838,7 @@ export interface Stage {
   /** Optional. Filter members of fleets (above) to a subset of clusters. If not specified, all clusters in the fleets are selected. */
   clusterSelector?: ClusterSelector;
 }
-export const Stage = /*@__PURE__*/ S.suspend(() =>
+const Stage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     soakDuration: S.optional(S.String),
     fleetProjects: S.optional(StringList),
@@ -3884,7 +3847,7 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
 export type StageList = Array<Stage>;
-export const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
+const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
 
 export type OperationalStateReasonsItemEnum =
   | "REASON_UNSPECIFIED"
@@ -3894,12 +3857,10 @@ export type OperationalStateReasonsItemEnum =
   | "MIXED_RELEASE_CHANNELS_WARNING"
   | "INTERNAL_ERROR"
   | "NO_CLUSTERS_IN_SEQUENCE";
-export const OperationalStateReasonsItemEnum = S.String;
-
 export type OperationalStateReasonsItemEnumList = Array<
   OperationalStateReasonsItemEnum | (string & {})
 >;
-export const OperationalStateReasonsItemEnumList =
+const OperationalStateReasonsItemEnumList =
   ConfigManagementPolicyControllerMonitoringBackendsItemEnumList as any as S.Schema<OperationalStateReasonsItemEnumList>;
 
 export type OperationalStateStateEnum =
@@ -3908,7 +3869,7 @@ export type OperationalStateStateEnum =
   | "WARNING"
   | "ERROR"
   | "INITIALIZING";
-export const OperationalStateStateEnum = S.String;
+const OperationalStateStateEnum = S.String;
 
 /** Operational state of the Rollout Sequence. */
 export interface OperationalState {
@@ -3919,7 +3880,7 @@ export interface OperationalState {
   /** Output only. State of the Rollout Sequence. */
   state?: OperationalStateStateEnum | (string & {});
 }
-export const OperationalState = /*@__PURE__*/ S.suspend(() =>
+const OperationalState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateChangeTime: S.optional(S.String),
     reasons: S.optional(OperationalStateReasonsItemEnumList),
@@ -3934,7 +3895,7 @@ export type RolloutSequenceComputedReleaseChannelEnum =
   | "STABLE"
   | "EXTENDED"
   | "NO_CHANNEL";
-export const RolloutSequenceComputedReleaseChannelEnum = S.String;
+const RolloutSequenceComputedReleaseChannelEnum = S.String;
 
 /** RolloutSequence defines the desired order of upgrades. Next ID: 20 */
 export interface RolloutSequence {
@@ -3975,7 +3936,7 @@ export interface RolloutSequence {
   /** Output only. Google-generated UUID for this resource. This is unique across all Rollout Sequence resources. If a Rollout Sequence resource is deleted and another resource with the same name is created, it gets a different uid. */
   uid?: string;
 }
-export const RolloutSequence = /*@__PURE__*/ S.suspend(() =>
+const RolloutSequence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     effectiveAutoUpgradeConfig: S.optional(AutoUpgradeConfig),
@@ -4006,7 +3967,7 @@ export interface CreateProjectsLocationsRolloutSequencesRequest {
   /** Request body */
   body?: RolloutSequence;
 }
-export const CreateProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     rolloutSequenceId: S.optional(S.String.pipe(T.Query())),
@@ -4028,14 +3989,12 @@ export type ScopeLifecycleStateCodeEnum =
   | "READY"
   | "DELETING"
   | "UPDATING";
-export const ScopeLifecycleStateCodeEnum = S.String;
-
 /** ScopeLifecycleState describes the state of a Scope resource. */
 export interface ScopeLifecycleState {
   /** Output only. The current state of the scope resource. */
   code?: ScopeLifecycleStateCodeEnum | (string & {});
 }
-export const ScopeLifecycleState = FleetLifecycleState as any as S.Schema<ScopeLifecycleState>;
+const ScopeLifecycleState = FleetLifecycleState as any as S.Schema<ScopeLifecycleState>;
 
 /** Scope represents a Scope in a Fleet. */
 export interface Scope {
@@ -4056,7 +4015,7 @@ export interface Scope {
   /** Output only. State of the scope resource. */
   state?: ScopeLifecycleState;
 }
-export const Scope = /*@__PURE__*/ S.suspend(() =>
+const Scope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteTime: S.optional(S.String),
     namespaceLabels: S.optional(StringMap),
@@ -4077,7 +4036,7 @@ export interface CreateProjectsLocationsScopesRequest {
   /** Request body */
   body?: Scope;
 }
-export const CreateProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     scopeId: S.optional(S.String.pipe(T.Query())),
@@ -4099,15 +4058,12 @@ export type NamespaceLifecycleStateCodeEnum =
   | "READY"
   | "DELETING"
   | "UPDATING";
-export const NamespaceLifecycleStateCodeEnum = S.String;
-
 /** NamespaceLifecycleState describes the state of a Namespace resource. */
 export interface NamespaceLifecycleState {
   /** Output only. The current state of the Namespace resource. */
   code?: NamespaceLifecycleStateCodeEnum | (string & {});
 }
-export const NamespaceLifecycleState =
-  FleetLifecycleState as any as S.Schema<NamespaceLifecycleState>;
+const NamespaceLifecycleState = FleetLifecycleState as any as S.Schema<NamespaceLifecycleState>;
 
 /** Namespace represents a namespace across the Fleet */
 export interface Namespace {
@@ -4130,7 +4086,7 @@ export interface Namespace {
   /** Required. Scope associated with the namespace */
   scope?: string;
 }
-export const Namespace = /*@__PURE__*/ S.suspend(() =>
+const Namespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(NamespaceLifecycleState),
     name: S.optional(S.String),
@@ -4152,7 +4108,7 @@ export interface CreateProjectsLocationsScopesNamespacesRequest {
   /** Request body */
   body?: Namespace;
 }
-export const CreateProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeNamespaceId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4176,7 +4132,7 @@ export interface CreateProjectsLocationsScopesRbacrolebindingsRequest {
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const CreateProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rbacrolebindingId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4200,7 +4156,7 @@ export interface DeleteProjectsLocationsFeaturesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4216,7 +4172,7 @@ export interface DeleteProjectsLocationsFleetsRequest {
   /** Required. The Fleet resource name in the format `projects/*\/locations/*\/fleets/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4234,7 +4190,7 @@ export interface DeleteProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4250,7 +4206,7 @@ export interface DeleteProjectsLocationsMembershipsBindingsRequest {
   /** Required. The MembershipBinding resource name in the format `projects/*\/locations/*\/memberships/*\/bindings/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4264,17 +4220,16 @@ export interface DeleteProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Required. The RBACRoleBinding resource name in the format `projects/*\/locations/*\/memberships/*\/rbacrolebindings/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta/{+name}",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta/{+name}",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsMembershipsRbacrolebindingsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsMembershipsRbacrolebindingsRequest>;
@@ -4283,7 +4238,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4299,7 +4254,7 @@ export interface DeleteProjectsLocationsRolloutsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -4314,7 +4269,7 @@ export interface DeleteProjectsLocationsRolloutSequencesRequest {
   /** Required. The name of the rollout sequence to delete. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} */
   name: string;
 }
-export const DeleteProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4328,7 +4283,7 @@ export interface DeleteProjectsLocationsScopesRequest {
   /** Required. The Scope resource name in the format `projects/*\/locations/*\/scopes/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4342,7 +4297,7 @@ export interface DeleteProjectsLocationsScopesNamespacesRequest {
   /** Required. The Namespace resource name in the format `projects/*\/locations/*\/scopes/*\/namespaces/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4356,7 +4311,7 @@ export interface DeleteProjectsLocationsScopesRbacrolebindingsRequest {
   /** Required. The RBACRoleBinding resource name in the format `projects/*\/locations/*\/scopes/*\/rbacrolebindings/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4371,7 +4326,7 @@ export interface ForceCompleteRolloutStageRequest {
   /** Required. The stage number to force-complete. */
   stageNumber?: number;
 }
-export const ForceCompleteRolloutStageRequest = /*@__PURE__*/ S.suspend(() =>
+const ForceCompleteRolloutStageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stageNumber: S.optional(S.Number),
   }),
@@ -4385,7 +4340,7 @@ export interface ForceCompleteStageProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: ForceCompleteRolloutStageRequest;
 }
-export const ForceCompleteStageProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const ForceCompleteStageProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ForceCompleteRolloutStageRequest.pipe(T.HttpBody())),
@@ -4416,23 +4371,22 @@ export interface GenerateConnectManifestProjectsLocationsMembershipsRequest {
   /** Optional. URI of a proxy if connectivity from the agent to gkeconnect.googleapis.com requires the use of a proxy. Format must be in the form `http(s)://{proxy_address}`, depending on the HTTP/HTTPS protocol supported by the proxy. This will direct the connect agent's outbound traffic through a HTTP(S) proxy. */
   proxy?: string;
 }
-export const GenerateConnectManifestProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      registry: S.optional(S.String.pipe(T.Query())),
-      namespace: S.optional(S.String.pipe(T.Query())),
-      imagePullSecretContent: S.optional(S.String.pipe(T.Query())),
-      isUpgrade: S.optional(S.Boolean.pipe(T.Query())),
-      version: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      proxy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+name}:generateConnectManifest",
-        baseUrl: "https://gkehub.googleapis.com/",
-      }),
-    ),
+const GenerateConnectManifestProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registry: S.optional(S.String.pipe(T.Query())),
+    namespace: S.optional(S.String.pipe(T.Query())),
+    imagePullSecretContent: S.optional(S.String.pipe(T.Query())),
+    isUpgrade: S.optional(S.Boolean.pipe(T.Query())),
+    version: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    proxy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+name}:generateConnectManifest",
+      baseUrl: "https://gkehub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GenerateConnectManifestProjectsLocationsMembershipsRequest",
 }) as any as S.Schema<GenerateConnectManifestProjectsLocationsMembershipsRequest>;
@@ -4444,7 +4398,7 @@ export interface TypeMeta {
   /** Kind of the resource (e.g. Deployment). */
   kind?: string;
 }
-export const TypeMeta = /*@__PURE__*/ S.suspend(() =>
+const TypeMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -4458,7 +4412,7 @@ export interface ConnectAgentResource {
   /** Kubernetes type of the resource. */
   type?: TypeMeta;
 }
-export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
+const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manifest: S.optional(S.String),
     type: S.optional(TypeMeta),
@@ -4466,7 +4420,7 @@ export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectAgentResource" }) as any as S.Schema<ConnectAgentResource>;
 
 export type ConnectAgentResourceList = Array<ConnectAgentResource>;
-export const ConnectAgentResourceList = /*@__PURE__*/ S.Array(
+const ConnectAgentResourceList = /*@__PURE__*/ S.Array(
   ConnectAgentResource,
 ) as any as S.Schema<ConnectAgentResourceList>;
 
@@ -4475,7 +4429,7 @@ export interface GenerateConnectManifestResponse {
   /** The ordered list of Kubernetes resources that need to be applied to the cluster for GKE Connect agent installation/upgrade. */
   manifest?: ConnectAgentResourceList;
 }
-export const GenerateConnectManifestResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateConnectManifestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manifest: S.optional(ConnectAgentResourceList),
   }),
@@ -4491,7 +4445,7 @@ export interface GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershi
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest =
+const GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -4514,7 +4468,7 @@ export interface GenerateMembershipRBACRoleBindingYAMLResponse {
   /** a yaml text blob including the RBAC policies. */
   roleBindingsYaml?: string;
 }
-export const GenerateMembershipRBACRoleBindingYAMLResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateMembershipRBACRoleBindingYAMLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleBindingsYaml: S.optional(S.String),
   }),
@@ -4528,7 +4482,7 @@ export interface GetIamPolicyProjectsLocationsFeaturesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4554,7 +4508,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     location: S.optional(S.String),
@@ -4572,7 +4526,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     condition: S.optional(Expr),
@@ -4581,14 +4535,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -4597,7 +4551,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -4605,7 +4559,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -4616,7 +4570,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -4624,9 +4578,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -4639,7 +4591,7 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     version: S.optional(S.Number),
@@ -4654,7 +4606,7 @@ export interface GetIamPolicyProjectsLocationsMembershipsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4675,7 +4627,7 @@ export interface GetIamPolicyProjectsLocationsScopesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4694,7 +4646,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4717,7 +4669,7 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     locationId: S.optional(S.String),
@@ -4733,7 +4685,7 @@ export interface GetProjectsLocationsFeaturesRequest {
   /** Required. The Feature resource name in the format `projects/*\/locations/*\/features/*` */
   name: string;
 }
-export const GetProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4748,7 +4700,7 @@ export interface GetProjectsLocationsFleetsRequest {
   /** Required. The Fleet resource name in the format `projects/*\/locations/*\/fleets/*`. */
   name: string;
 }
-export const GetProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4762,7 +4714,7 @@ export interface GetProjectsLocationsMembershipsRequest {
   /** Required. The Membership resource name in the format `projects/*\/locations/*\/memberships/*`. */
   name: string;
 }
-export const GetProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4776,7 +4728,7 @@ export interface GetProjectsLocationsMembershipsBindingsRequest {
   /** Required. The MembershipBinding resource name in the format `projects/*\/locations/*\/memberships/*\/bindings/*`. */
   name: string;
 }
-export const GetProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4790,7 +4742,7 @@ export interface GetProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Required. The RBACRoleBinding resource name in the format `projects/*\/locations/*\/memberships/*\/rbacrolebindings/*`. */
   name: string;
 }
-export const GetProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4804,7 +4756,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4818,7 +4770,7 @@ export interface GetProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout to retrieve. projects/{project}/locations/{location}/rollouts/{rollout} */
   name: string;
 }
-export const GetProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4834,7 +4786,7 @@ export type RolloutIntentEnum =
   | "CONTROL_PLANE_PATCH_ENFORCEMENT"
   | "END_OF_SUPPORT_ENFORCEMENT"
   | "PARTIAL_PATCH";
-export const RolloutIntentEnum = S.String;
+const RolloutIntentEnum = S.String;
 
 export type RolloutStageStateEnum =
   | "STATE_UNSPECIFIED"
@@ -4843,7 +4795,7 @@ export type RolloutStageStateEnum =
   | "SOAKING"
   | "COMPLETED"
   | "PAUSED";
-export const RolloutStageStateEnum = S.String;
+const RolloutStageStateEnum = S.String;
 
 /** Stage represents a single stage in the Rollout. */
 export interface RolloutStage {
@@ -4862,7 +4814,7 @@ export interface RolloutStage {
   /** Optional. Output only. The time at which the stage ended. */
   endTime?: string;
 }
-export const RolloutStage = /*@__PURE__*/ S.suspend(() =>
+const RolloutStage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fleetProjects: S.optional(StringList),
     clusterSelector: S.optional(ClusterSelector),
@@ -4875,12 +4827,10 @@ export const RolloutStage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RolloutStage" }) as any as S.Schema<RolloutStage>;
 
 export type RolloutStageList = Array<RolloutStage>;
-export const RolloutStageList = /*@__PURE__*/ S.Array(
-  RolloutStage,
-) as any as S.Schema<RolloutStageList>;
+const RolloutStageList = /*@__PURE__*/ S.Array(RolloutStage) as any as S.Schema<RolloutStageList>;
 
 export type RolloutTriggerEnum = "ROLLOUT_TRIGGER_UNSPECIFIED" | "USER" | "GKE";
-export const RolloutTriggerEnum = S.String;
+const RolloutTriggerEnum = S.String;
 
 export type RolloutStateReasonTypeEnum =
   | "STATE_REASON_TYPE_UNSPECIFIED"
@@ -4892,7 +4842,7 @@ export type RolloutStateReasonTypeEnum =
   | "CANCELLED_SUPERSEDED"
   | "CANCELLED_INCOMPATIBLE_ROLLOUT_SEQUENCE"
   | "CANCELLED_SUPERSEDED_BY_USER_ROLLOUT";
-export const RolloutStateReasonTypeEnum = S.String;
+const RolloutStateReasonTypeEnum = S.String;
 
 export type RolloutStateEnum =
   | "STATE_UNSPECIFIED"
@@ -4900,7 +4850,7 @@ export type RolloutStateEnum =
   | "PAUSED"
   | "CANCELLED"
   | "COMPLETED";
-export const RolloutStateEnum = S.String;
+const RolloutStateEnum = S.String;
 
 export type RolloutTargetStateEnum =
   | "STATE_UNSPECIFIED"
@@ -4912,7 +4862,7 @@ export type RolloutTargetStateEnum =
   | "REMOVED"
   | "INELIGIBLE"
   | "SKIPPED";
-export const RolloutTargetStateEnum = S.String;
+const RolloutTargetStateEnum = S.String;
 
 /** Metadata about the status of targets (clusters or node pools) involved in the Rollout. */
 export interface RolloutTarget {
@@ -4927,7 +4877,7 @@ export interface RolloutTarget {
   /** Optional. Output only. The resource link of the Cluster resource upgraded in this Rollout. It is formatted as: `//{api_service}/projects/{project_number}/locations/{location}/clusters/{cluster_name}`. . */
   cluster?: string;
 }
-export const RolloutTarget = /*@__PURE__*/ S.suspend(() =>
+const RolloutTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.optional(S.String),
     reason: S.optional(S.String),
@@ -4938,7 +4888,7 @@ export const RolloutTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RolloutTarget" }) as any as S.Schema<RolloutTarget>;
 
 export type RolloutTargetList = Array<RolloutTarget>;
-export const RolloutTargetList = /*@__PURE__*/ S.Array(
+const RolloutTargetList = /*@__PURE__*/ S.Array(
   RolloutTarget,
 ) as any as S.Schema<RolloutTargetList>;
 
@@ -4951,7 +4901,7 @@ export interface RolloutMembershipState {
   /** Optional. Output only. The time this status and any related Rollout-specific details for the membership were updated. */
   lastUpdateTime?: string;
 }
-export const RolloutMembershipState = /*@__PURE__*/ S.suspend(() =>
+const RolloutMembershipState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stageAssignment: S.optional(S.Number),
     targets: S.optional(RolloutTargetList),
@@ -4960,13 +4910,13 @@ export const RolloutMembershipState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RolloutMembershipState" }) as any as S.Schema<RolloutMembershipState>;
 
 export type RolloutMembershipStateMap = { [key: string]: RolloutMembershipState | undefined };
-export const RolloutMembershipStateMap = /*@__PURE__*/ S.Record(
+const RolloutMembershipStateMap = /*@__PURE__*/ S.Record(
   S.String,
   RolloutMembershipState,
 ) as any as S.Schema<RolloutMembershipStateMap>;
 
 export type VersionUpgradeTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_CONTROL_PLANE" | "TYPE_NODE_POOL";
-export const VersionUpgradeTypeEnum = S.String;
+const VersionUpgradeTypeEnum = S.String;
 
 /** Config for version upgrade of clusters. */
 export interface VersionUpgrade {
@@ -4975,7 +4925,7 @@ export interface VersionUpgrade {
   /** Optional. Type of version upgrade specifies which component should be upgraded. */
   type?: VersionUpgradeTypeEnum;
 }
-export const VersionUpgrade = /*@__PURE__*/ S.suspend(() =>
+const VersionUpgrade = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     desiredVersion: S.optional(S.String),
     type: S.optional(VersionUpgradeTypeEnum),
@@ -5029,7 +4979,7 @@ export interface Rollout {
   /** Output only. A human-readable description explaining the reason for the current state. */
   stateReason?: string;
 }
-export const Rollout = /*@__PURE__*/ S.suspend(() =>
+const Rollout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignoreMaintenancePolicies: S.optional(S.Boolean),
     intent: S.optional(RolloutIntentEnum),
@@ -5060,7 +5010,7 @@ export interface GetProjectsLocationsRolloutSequencesRequest {
   /** Required. The name of the rollout sequence to retrieve. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} */
   name: string;
 }
-export const GetProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5074,7 +5024,7 @@ export interface GetProjectsLocationsScopesRequest {
   /** Required. The Scope resource name in the format `projects/*\/locations/*\/scopes/*`. */
   name: string;
 }
-export const GetProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5088,7 +5038,7 @@ export interface GetProjectsLocationsScopesNamespacesRequest {
   /** Required. The Namespace resource name in the format `projects/*\/locations/*\/scopes/*\/namespaces/*`. */
   name: string;
 }
-export const GetProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5102,7 +5052,7 @@ export interface GetProjectsLocationsScopesRbacrolebindingsRequest {
   /** Required. The RBACRoleBinding resource name in the format `projects/*\/locations/*\/scopes/*\/rbacrolebindings/*`. */
   name: string;
 }
-export const GetProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5122,7 +5072,7 @@ export interface ListMembershipsProjectsLocationsScopesRequest {
   /** Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Currently, filtering can be done only based on Memberships's `name`, `labels`, `create_time`, `update_time`, and `unique_id`. */
   filter?: string;
 }
-export const ListMembershipsProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeName: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5140,7 +5090,7 @@ export const ListMembershipsProjectsLocationsScopesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListMembershipsProjectsLocationsScopesRequest>;
 
 export type MembershipList = Array<Membership>;
-export const MembershipList = /*@__PURE__*/ S.Array(Membership) as any as S.Schema<MembershipList>;
+const MembershipList = /*@__PURE__*/ S.Array(Membership) as any as S.Schema<MembershipList>;
 
 /** List of Memberships bound to a Scope. */
 export interface ListBoundMembershipsResponse {
@@ -5151,7 +5101,7 @@ export interface ListBoundMembershipsResponse {
   /** List of locations that could not be reached while fetching this list. */
   unreachable?: StringList;
 }
-export const ListBoundMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBoundMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     memberships: S.optional(MembershipList),
@@ -5169,7 +5119,7 @@ export interface ListOrganizationsLocationsFleetsRequest {
   /** Required. The organization or project to list for Fleets under, in the format `organizations/*\/locations/*` or `projects/*\/locations/*`. */
   parent: string;
 }
-export const ListOrganizationsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5186,7 +5136,7 @@ export const ListOrganizationsLocationsFleetsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListOrganizationsLocationsFleetsRequest>;
 
 export type FleetList = Array<Fleet>;
-export const FleetList = /*@__PURE__*/ S.Array(Fleet) as any as S.Schema<FleetList>;
+const FleetList = /*@__PURE__*/ S.Array(Fleet) as any as S.Schema<FleetList>;
 
 /** Response message for the `GkeHub.ListFleetsResponse` method. */
 export interface ListFleetsResponse {
@@ -5195,7 +5145,7 @@ export interface ListFleetsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. The token is only valid for 1h. */
   nextPageToken?: string;
 }
-export const ListFleetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFleetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fleets: S.optional(FleetList),
     nextPageToken: S.optional(S.String),
@@ -5210,7 +5160,7 @@ export interface ListPermittedProjectsLocationsScopesRequest {
   /** Optional. Token returned by previous call to `ListPermittedScopes` which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
 }
-export const ListPermittedProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPermittedProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5227,7 +5177,7 @@ export const ListPermittedProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListPermittedProjectsLocationsScopesRequest>;
 
 export type ScopeList = Array<Scope>;
-export const ScopeList = /*@__PURE__*/ S.Array(Scope) as any as S.Schema<ScopeList>;
+const ScopeList = /*@__PURE__*/ S.Array(Scope) as any as S.Schema<ScopeList>;
 
 /** List of permitted Scopes. */
 export interface ListPermittedScopesResponse {
@@ -5236,7 +5186,7 @@ export interface ListPermittedScopesResponse {
   /** The list of permitted Scopes */
   scopes?: ScopeList;
 }
-export const ListPermittedScopesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPermittedScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     scopes: S.optional(ScopeList),
@@ -5257,7 +5207,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5276,7 +5226,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -5285,7 +5235,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -5306,7 +5256,7 @@ export interface ListProjectsLocationsFeaturesRequest {
   /** Lists Features that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name "servicemesh" in project "foo-proj": name = "projects/foo-proj/locations/global/features/servicemesh" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar */
   filter?: string;
 }
-export const ListProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -5326,7 +5276,7 @@ export const ListProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsFeaturesRequest>;
 
 export type FeatureList = Array<Feature>;
-export const FeatureList = /*@__PURE__*/ S.Array(Feature) as any as S.Schema<FeatureList>;
+const FeatureList = /*@__PURE__*/ S.Array(Feature) as any as S.Schema<FeatureList>;
 
 /** Response message for the `GkeHub.ListFeatures` method. */
 export interface ListFeaturesResponse {
@@ -5335,7 +5285,7 @@ export interface ListFeaturesResponse {
   /** A token to request the next page of resources from the `ListFeatures` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
-export const ListFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(FeatureList),
     nextPageToken: S.optional(S.String),
@@ -5350,7 +5300,7 @@ export interface ListProjectsLocationsFleetsRequest {
   /** Optional. The maximum number of fleets to return. The service may return fewer than this value. If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5378,7 +5328,7 @@ export interface ListProjectsLocationsMembershipsRequest {
   /** Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Name is `bar` in project `foo-proj` and location `global`: name = "projects/foo-proj/locations/global/membership/bar" - Memberships that have a label called `foo`: labels.foo:* - Memberships that have a label called `foo` whose value is `bar`: labels.foo = bar - Memberships in the CREATING state: state = CREATING */
   filter?: string;
 }
-export const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5405,7 +5355,7 @@ export interface ListMembershipsResponse {
   /** The list of matching Memberships. */
   resources?: MembershipList;
 }
-export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -5423,7 +5373,7 @@ export interface ListProjectsLocationsMembershipsBindingsRequest {
   /** Optional. Lists MembershipBindings that match the filter expression, following the syntax outlined in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5441,7 +5391,7 @@ export const ListProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsLocationsMembershipsBindingsRequest>;
 
 export type MembershipBindingList = Array<MembershipBinding>;
-export const MembershipBindingList = /*@__PURE__*/ S.Array(
+const MembershipBindingList = /*@__PURE__*/ S.Array(
   MembershipBinding,
 ) as any as S.Schema<MembershipBindingList>;
 
@@ -5454,7 +5404,7 @@ export interface ListMembershipBindingsResponse {
   /** The list of membership_bindings */
   membershipBindings?: MembershipBindingList;
 }
-export const ListMembershipBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -5472,7 +5422,7 @@ export interface ListProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
   pageSize?: number;
 }
-export const ListProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5489,7 +5439,7 @@ export const ListProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
 export type RBACRoleBindingList = Array<RBACRoleBinding>;
-export const RBACRoleBindingList = /*@__PURE__*/ S.Array(
+const RBACRoleBindingList = /*@__PURE__*/ S.Array(
   RBACRoleBinding,
 ) as any as S.Schema<RBACRoleBindingList>;
 
@@ -5502,7 +5452,7 @@ export interface ListMembershipRBACRoleBindingsResponse {
   /** The list of Membership RBACRoleBindings. */
   rbacrolebindings?: RBACRoleBindingList;
 }
-export const ListMembershipRBACRoleBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembershipRBACRoleBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -5524,7 +5474,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5543,7 +5493,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -5554,7 +5504,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -5572,7 +5522,7 @@ export interface ListProjectsLocationsRolloutsRequest {
   /** Required. The parent, which owns this collection of rollout. Format: projects/{project}/locations/{location} */
   parent: string;
 }
-export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5590,7 +5540,7 @@ export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
 
 export type RolloutList = Array<Rollout>;
-export const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
+const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
 
 /** Response message for listing rollouts. */
 export interface ListRolloutsResponse {
@@ -5599,7 +5549,7 @@ export interface ListRolloutsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollouts: S.optional(RolloutList),
     nextPageToken: S.optional(S.String),
@@ -5616,7 +5566,7 @@ export interface ListProjectsLocationsRolloutSequencesRequest {
   /** Optional. Lists Rollout Sequences that match the filter expression, following the syntax outlined in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5634,7 +5584,7 @@ export const ListProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsRolloutSequencesRequest>;
 
 export type RolloutSequenceList = Array<RolloutSequence>;
-export const RolloutSequenceList = /*@__PURE__*/ S.Array(
+const RolloutSequenceList = /*@__PURE__*/ S.Array(
   RolloutSequence,
 ) as any as S.Schema<RolloutSequenceList>;
 
@@ -5645,7 +5595,7 @@ export interface ListRolloutSequencesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListRolloutSequencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolloutSequencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutSequences: S.optional(RolloutSequenceList),
     nextPageToken: S.optional(S.String),
@@ -5662,7 +5612,7 @@ export interface ListProjectsLocationsScopesRequest {
   /** Optional. Token returned by previous call to `ListScopes` which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
 }
-export const ListProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5685,7 +5635,7 @@ export interface ListScopesResponse {
   /** A token to request the next page of resources from the `ListScopes` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
-export const ListScopesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: S.optional(ScopeList),
     nextPageToken: S.optional(S.String),
@@ -5700,7 +5650,7 @@ export interface ListProjectsLocationsScopesNamespacesRequest {
   /** Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*\/locations/*\/scopes/*`. */
   parent: string;
 }
-export const ListProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5717,7 +5667,7 @@ export const ListProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsScopesNamespacesRequest>;
 
 export type NamespaceList = Array<Namespace>;
-export const NamespaceList = /*@__PURE__*/ S.Array(Namespace) as any as S.Schema<NamespaceList>;
+const NamespaceList = /*@__PURE__*/ S.Array(Namespace) as any as S.Schema<NamespaceList>;
 
 /** List of fleet namespaces. */
 export interface ListScopeNamespacesResponse {
@@ -5726,7 +5676,7 @@ export interface ListScopeNamespacesResponse {
   /** The list of fleet namespaces */
   scopeNamespaces?: NamespaceList;
 }
-export const ListScopeNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScopeNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     scopeNamespaces: S.optional(NamespaceList),
@@ -5743,7 +5693,7 @@ export interface ListProjectsLocationsScopesRbacrolebindingsRequest {
   /** Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*\/locations/*\/scopes/*`. */
   parent: string;
 }
-export const ListProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5766,7 +5716,7 @@ export interface ListScopeRBACRoleBindingsResponse {
   /** A token to request the next page of resources from the `ListScopeRBACRoleBindings` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
-export const ListScopeRBACRoleBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScopeRBACRoleBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rbacrolebindings: S.optional(RBACRoleBindingList),
     nextPageToken: S.optional(S.String),
@@ -5785,7 +5735,7 @@ export interface PatchProjectsLocationsFeaturesRequest {
   /** Request body */
   body?: Feature;
 }
-export const PatchProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -5806,7 +5756,7 @@ export interface PatchProjectsLocationsFleetsRequest {
   /** Request body */
   body?: Fleet;
 }
-export const PatchProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5828,7 +5778,7 @@ export interface PatchProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: Membership;
 }
-export const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5849,7 +5799,7 @@ export interface PatchProjectsLocationsMembershipsBindingsRequest {
   /** Request body */
   body?: MembershipBinding;
 }
-export const PatchProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsMembershipsBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5869,15 +5819,14 @@ export interface PatchProjectsLocationsMembershipsRbacrolebindingsRequest {
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const PatchProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({ method: "PATCH", uri: "v1beta/{+name}", baseUrl: "https://gkehub.googleapis.com/" }),
-    ),
+const PatchProjectsLocationsMembershipsRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(RBACRoleBinding.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({ method: "PATCH", uri: "v1beta/{+name}", baseUrl: "https://gkehub.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsMembershipsRbacrolebindingsRequest",
 }) as any as S.Schema<PatchProjectsLocationsMembershipsRbacrolebindingsRequest>;
@@ -5890,7 +5839,7 @@ export interface PatchProjectsLocationsRolloutSequencesRequest {
   /** Request body */
   body?: RolloutSequence;
 }
-export const PatchProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5910,7 +5859,7 @@ export interface PatchProjectsLocationsScopesRequest {
   /** Request body */
   body?: Scope;
 }
-export const PatchProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5930,7 +5879,7 @@ export interface PatchProjectsLocationsScopesNamespacesRequest {
   /** Request body */
   body?: Namespace;
 }
-export const PatchProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsScopesNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5950,7 +5899,7 @@ export interface PatchProjectsLocationsScopesRbacrolebindingsRequest {
   /** Request body */
   body?: RBACRoleBinding;
 }
-export const PatchProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5964,15 +5913,13 @@ export const PatchProjectsLocationsScopesRbacrolebindingsRequest = /*@__PURE__*/
 
 /** Request message for pausing a rollout. */
 export type PauseRolloutRequest = CancelOperationRequest;
-export const PauseRolloutRequest = CancelOperationRequest;
-
 export interface PauseProjectsLocationsRolloutsRequest {
   /** Required. The name of the rollout to pause. projects/{project}/locations/{location}/rollouts/{rollout} */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const PauseProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -5994,7 +5941,7 @@ export interface ResumeRolloutRequest {
   /** Optional. If set, resume rollout will be executed in dry-run mode. */
   validateOnly?: boolean;
 }
-export const ResumeRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleOffset: S.optional(S.String),
     validateOnly: S.optional(S.Boolean),
@@ -6007,7 +5954,7 @@ export interface ResumeProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: ResumeRolloutRequest;
 }
-export const ResumeProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ResumeRolloutRequest.pipe(T.HttpBody())),
@@ -6029,7 +5976,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -6042,7 +5989,7 @@ export interface SetIamPolicyProjectsLocationsFeaturesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6063,7 +6010,7 @@ export interface SetIamPolicyProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6084,7 +6031,7 @@ export interface SetIamPolicyProjectsLocationsScopesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6104,7 +6051,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -6118,7 +6065,7 @@ export interface TestIamPermissionsProjectsLocationsFeaturesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -6138,7 +6085,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
@@ -6147,7 +6094,7 @@ export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -6168,7 +6115,7 @@ export interface TestIamPermissionsProjectsLocationsScopesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -6187,14 +6134,14 @@ export type UpgradeRolloutSequenceRequestUpgradeTypeEnum =
   | "UPGRADE_TYPE_UNSPECIFIED"
   | "CONTROL_PLANE"
   | "NODE";
-export const UpgradeRolloutSequenceRequestUpgradeTypeEnum = S.String;
+const UpgradeRolloutSequenceRequestUpgradeTypeEnum = S.String;
 
 /** Configuration for per-stage soak duration overrides. */
 export interface PerStageSoakDurationOverrides {
   /** Required. A mapping of stage numbers to their respective desired soak durations. Key is the stage number, value is the desired soak duration. Stages omitted from the map will receive the standard soak duration configured on the sequence for that stage. */
   stageOverrides?: StringMap;
 }
-export const PerStageSoakDurationOverrides = /*@__PURE__*/ S.suspend(() =>
+const PerStageSoakDurationOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stageOverrides: S.optional(StringMap),
   }),
@@ -6223,7 +6170,7 @@ export interface UpgradeRolloutSequenceRequest {
   /** Optional. If set to true, conflicting rollouts will be paused, to allow this rollout to progress through the sequence. Conflicting rollouts running on the first stage will be canceled, to allow this rollout to be created. */
   prioritized?: boolean;
 }
-export const UpgradeRolloutSequenceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeRolloutSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignoreMaintenancePolicies: S.optional(S.Boolean),
     version: S.optional(S.String),
@@ -6245,7 +6192,7 @@ export interface UpgradeProjectsLocationsRolloutSequencesRequest {
   /** Request body */
   body?: UpgradeRolloutSequenceRequest;
 }
-export const UpgradeProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeProjectsLocationsRolloutSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpgradeRolloutSequenceRequest.pipe(T.HttpBody())),

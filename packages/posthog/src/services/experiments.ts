@@ -37,7 +37,7 @@ export class NotFound
 
 /** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
 export type ExperimentFlagRolloutGroupPropertiesList = Array<unknown>;
-export const ExperimentFlagRolloutGroupPropertiesList = /*@__PURE__*/ S.Array(
+const ExperimentFlagRolloutGroupPropertiesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ExperimentFlagRolloutGroupPropertiesList>;
 
@@ -48,7 +48,7 @@ export interface ExperimentFlagRolloutGroup {
   /** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
   properties?: ExperimentFlagRolloutGroupPropertiesList;
 }
-export const ExperimentFlagRolloutGroup = /*@__PURE__*/ S.suspend(() =>
+const ExperimentFlagRolloutGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollout_percentage: S.optional(S.NullOr(S.Number)),
     properties: S.optional(ExperimentFlagRolloutGroupPropertiesList),
@@ -59,7 +59,7 @@ export const ExperimentFlagRolloutGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Overall rollout as a single group: [{"properties": [], "rollout_percentage": N}]. */
 export type ExperimentFeatureFlagFiltersGroupsList = Array<ExperimentFlagRolloutGroup>;
-export const ExperimentFeatureFlagFiltersGroupsList = /*@__PURE__*/ S.Array(
+const ExperimentFeatureFlagFiltersGroupsList = /*@__PURE__*/ S.Array(
   ExperimentFlagRolloutGroup,
 ) as any as S.Schema<ExperimentFeatureFlagFiltersGroupsList>;
 
@@ -72,7 +72,7 @@ export interface ExperimentFlagVariant {
   /** Variant rollout percentage (0-100). Across variants these must sum to 100. */
   rollout_percentage: number;
 }
-export const ExperimentFlagVariant = /*@__PURE__*/ S.suspend(() =>
+const ExperimentFlagVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.optional(S.String),
@@ -82,7 +82,7 @@ export const ExperimentFlagVariant = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
 export type ExperimentFlagMultivariateVariantsList = Array<ExperimentFlagVariant>;
-export const ExperimentFlagMultivariateVariantsList = /*@__PURE__*/ S.Array(
+const ExperimentFlagMultivariateVariantsList = /*@__PURE__*/ S.Array(
   ExperimentFlagVariant,
 ) as any as S.Schema<ExperimentFlagMultivariateVariantsList>;
 
@@ -91,7 +91,7 @@ export interface ExperimentFlagMultivariate {
   /** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
   variants: ExperimentFlagMultivariateVariantsList;
 }
-export const ExperimentFlagMultivariate = /*@__PURE__*/ S.suspend(() =>
+const ExperimentFlagMultivariate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variants: ExperimentFlagMultivariateVariantsList,
   }),
@@ -101,7 +101,7 @@ export const ExperimentFlagMultivariate = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional payload values keyed by variant key. */
 export type ExperimentFeatureFlagFiltersPayloadsMap = { [key: string]: string | undefined };
-export const ExperimentFeatureFlagFiltersPayloadsMap = /*@__PURE__*/ S.Record(
+const ExperimentFeatureFlagFiltersPayloadsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ExperimentFeatureFlagFiltersPayloadsMap>;
@@ -117,7 +117,7 @@ export interface ExperimentFeatureFlagFilters {
   /** Optional payload values keyed by variant key. */
   payloads?: ExperimentFeatureFlagFiltersPayloadsMap;
 }
-export const ExperimentFeatureFlagFilters = /*@__PURE__*/ S.suspend(() =>
+const ExperimentFeatureFlagFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(ExperimentFeatureFlagFiltersGroupsList),
     multivariate: S.optional(S.NullOr(ExperimentFlagMultivariate)),
@@ -135,7 +135,7 @@ export interface ExperimentFeatureFlagInput {
   /** Whether the flag persists variant assignment across authentication steps. */
   ensure_experience_continuity?: boolean | null;
 }
-export const ExperimentFeatureFlagInput = /*@__PURE__*/ S.suspend(() =>
+const ExperimentFeatureFlagInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(ExperimentFeatureFlagFilters),
     ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
@@ -145,7 +145,7 @@ export const ExperimentFeatureFlagInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentFeatureFlagInput>;
 
 export type ExperimentParametersVariantNotesMap = { [key: string]: string | undefined };
-export const ExperimentParametersVariantNotesMap =
+const ExperimentParametersVariantNotesMap =
   ExperimentFeatureFlagFiltersPayloadsMap as any as S.Schema<ExperimentParametersVariantNotesMap>;
 
 export interface ExperimentParameters {
@@ -154,7 +154,7 @@ export interface ExperimentParameters {
   /** Free-text notes per variant, keyed by variant key. Use to document what each variant does or its reroute URL. */
   variant_notes?: ExperimentParametersVariantNotesMap | null;
 }
-export const ExperimentParameters = /*@__PURE__*/ S.suspend(() =>
+const ExperimentParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimum_detectable_effect: S.optional(S.NullOr(S.Number)),
     variant_notes: S.optional(S.NullOr(ExperimentParametersVariantNotesMap)),
@@ -162,10 +162,10 @@ export const ExperimentParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExperimentParameters" }) as any as S.Schema<ExperimentParameters>;
 
 export type ConversionRateInputType = "manual" | "automatic";
-export const ConversionRateInputType = S.String;
+const ConversionRateInputType = S.String;
 
 export type ManualMetricType = "funnel" | "mean_count" | "mean_sum_or_avg";
-export const ManualMetricType = S.String;
+const ManualMetricType = S.String;
 
 export interface ExperimentExposureEstimateConfig {
   /** 'manual' when the baseline value and exposure rate were entered by hand, 'automatic' when derived from live experiment data. */
@@ -177,7 +177,7 @@ export interface ExperimentExposureEstimateConfig {
   /** Metric type the manual baseline value refers to. Only used in manual mode. */
   manualMetricType?: ManualMetricType | (string & {}) | null;
 }
-export const ExperimentExposureEstimateConfig = /*@__PURE__*/ S.suspend(() =>
+const ExperimentExposureEstimateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionRateInputType: ConversionRateInputType,
     manualBaselineValue: S.optional(S.NullOr(S.Number)),
@@ -198,7 +198,7 @@ export interface ExperimentRunningTimeCalculation {
   /** Recommended number of exposed users needed for statistical significance. */
   recommended_sample_size?: number | null;
 }
-export const ExperimentRunningTimeCalculation = /*@__PURE__*/ S.suspend(() =>
+const ExperimentRunningTimeCalculation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exposure_estimate_config: S.optional(S.NullOr(ExperimentExposureEstimateConfig)),
     minimum_detectable_effect: S.optional(S.NullOr(S.Number)),
@@ -211,21 +211,21 @@ export const ExperimentRunningTimeCalculation = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type CreateExperimentRequestExcludedVariantsList = Array<string>;
-export const CreateExperimentRequestExcludedVariantsList = /*@__PURE__*/ S.Array(
+const CreateExperimentRequestExcludedVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateExperimentRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type CreateExperimentRequestSavedMetricsIdsList = Array<unknown>;
-export const CreateExperimentRequestSavedMetricsIdsList =
+const CreateExperimentRequestSavedMetricsIdsList =
   ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<CreateExperimentRequestSavedMetricsIdsList>;
 
 /** * `web` - web * `product` - product */
 export type ExperimentTypeEnum = "web" | "product";
-export const ExperimentTypeEnum = S.String;
+const ExperimentTypeEnum = S.String;
 
 export type Kind2 = "ExperimentEventExposureConfig" | "ActionsNode";
-export const Kind2 = S.String;
+const Kind2 = S.String;
 
 export type PropertyOperator =
   | "exact"
@@ -266,23 +266,16 @@ export type PropertyOperator =
   | "semver_wildcard"
   | "icontains_multi"
   | "not_icontains_multi";
-export const PropertyOperator = S.String;
+const PropertyOperator = S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
-export const EventPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
-
 export type EventPropertyFilterValueCase0List = Array<EventPropertyFilterValueCase0Item>;
-export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  EventPropertyFilterValueCase0Item,
-) as any as S.Schema<EventPropertyFilterValueCase0List>;
-
 export type EventPropertyFilterValue =
   | EventPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const EventPropertyFilterValue = S.Unknown as any as S.Schema<EventPropertyFilterValue>;
+const EventPropertyFilterValue = S.Unknown as any as S.Schema<EventPropertyFilterValue>;
 
 export interface EventPropertyFilter {
   key?: string;
@@ -292,7 +285,7 @@ export interface EventPropertyFilter {
   type?: string;
   value?: EventPropertyFilterValue | null;
 }
-export const EventPropertyFilter = /*@__PURE__*/ S.suspend(() =>
+const EventPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     label: S.optional(S.NullOr(S.String)),
@@ -303,21 +296,12 @@ export const EventPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventPropertyFilter" }) as any as S.Schema<EventPropertyFilter>;
 
 export type PersonPropertyFilterValueCase0Item = string | number | boolean;
-export const PersonPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
-
 export type PersonPropertyFilterValueCase0List = Array<PersonPropertyFilterValueCase0Item>;
-export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  PersonPropertyFilterValueCase0Item,
-) as any as S.Schema<PersonPropertyFilterValueCase0List>;
-
 export type PersonPropertyFilterValue =
   | PersonPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const PersonPropertyFilterValue = S.Unknown as any as S.Schema<PersonPropertyFilterValue>;
-
 export interface PersonPropertyFilter {
   key?: string;
   label?: string | null;
@@ -326,34 +310,14 @@ export interface PersonPropertyFilter {
   type?: string;
   value?: PersonPropertyFilterValue | null;
 }
-export const PersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(PersonPropertyFilterValue)),
-  }),
-).annotate({ identifier: "PersonPropertyFilter" }) as any as S.Schema<PersonPropertyFilter>;
-
 export type PersonMetadataPropertyFilterValueCase0Item = string | number | boolean;
-export const PersonMetadataPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
-
 export type PersonMetadataPropertyFilterValueCase0List =
   Array<PersonMetadataPropertyFilterValueCase0Item>;
-export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  PersonMetadataPropertyFilterValueCase0Item,
-) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
-
 export type PersonMetadataPropertyFilterValue =
   | PersonMetadataPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const PersonMetadataPropertyFilterValue =
-  S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValue>;
-
 export interface PersonMetadataPropertyFilter {
   key: string;
   label?: string | null;
@@ -362,37 +326,14 @@ export interface PersonMetadataPropertyFilter {
   type?: string;
   value?: PersonMetadataPropertyFilterValue | null;
 }
-export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(PersonMetadataPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "PersonMetadataPropertyFilter",
-}) as any as S.Schema<PersonMetadataPropertyFilter>;
-
 export type Key10 = "tag_name" | "text" | "href" | "selector";
-export const Key10 = S.String;
-
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
-export const ElementPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
-
 export type ElementPropertyFilterValueCase0List = Array<ElementPropertyFilterValueCase0Item>;
-export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  ElementPropertyFilterValueCase0Item,
-) as any as S.Schema<ElementPropertyFilterValueCase0List>;
-
 export type ElementPropertyFilterValue =
   | ElementPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const ElementPropertyFilterValue = S.Unknown as any as S.Schema<ElementPropertyFilterValue>;
-
 export interface ElementPropertyFilter {
   key?: Key10 | (string & {});
   label?: string | null;
@@ -400,34 +341,14 @@ export interface ElementPropertyFilter {
   type?: string;
   value?: ElementPropertyFilterValue | null;
 }
-export const ElementPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(Key10),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(ElementPropertyFilterValue)),
-  }),
-).annotate({ identifier: "ElementPropertyFilter" }) as any as S.Schema<ElementPropertyFilter>;
-
 export type EventMetadataPropertyFilterValueCase0Item = string | number | boolean;
-export const EventMetadataPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
-
 export type EventMetadataPropertyFilterValueCase0List =
   Array<EventMetadataPropertyFilterValueCase0Item>;
-export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  EventMetadataPropertyFilterValueCase0Item,
-) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
-
 export type EventMetadataPropertyFilterValue =
   | EventMetadataPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const EventMetadataPropertyFilterValue =
-  S.Unknown as any as S.Schema<EventMetadataPropertyFilterValue>;
-
 export interface EventMetadataPropertyFilter {
   key?: string;
   label?: string | null;
@@ -435,34 +356,13 @@ export interface EventMetadataPropertyFilter {
   type?: string;
   value?: EventMetadataPropertyFilterValue | null;
 }
-export const EventMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(EventMetadataPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "EventMetadataPropertyFilter",
-}) as any as S.Schema<EventMetadataPropertyFilter>;
-
 export type SessionPropertyFilterValueCase0Item = string | number | boolean;
-export const SessionPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
-
 export type SessionPropertyFilterValueCase0List = Array<SessionPropertyFilterValueCase0Item>;
-export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  SessionPropertyFilterValueCase0Item,
-) as any as S.Schema<SessionPropertyFilterValueCase0List>;
-
 export type SessionPropertyFilterValue =
   | SessionPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const SessionPropertyFilterValue = S.Unknown as any as S.Schema<SessionPropertyFilterValue>;
-
 export interface SessionPropertyFilter {
   key?: string;
   label?: string | null;
@@ -470,16 +370,6 @@ export interface SessionPropertyFilter {
   type?: string;
   value?: SessionPropertyFilterValue | null;
 }
-export const SessionPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(SessionPropertyFilterValue)),
-  }),
-).annotate({ identifier: "SessionPropertyFilter" }) as any as S.Schema<SessionPropertyFilter>;
-
 export interface CohortPropertyFilter {
   cohort_name?: string | null;
   key?: string;
@@ -488,40 +378,15 @@ export interface CohortPropertyFilter {
   type?: string;
   value?: number;
 }
-export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cohort_name: S.optional(S.NullOr(S.String)),
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    type: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CohortPropertyFilter" }) as any as S.Schema<CohortPropertyFilter>;
-
 export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
-export const DurationType = S.String;
-
 export type RecordingPropertyFilterKey = DurationType | string;
-export const RecordingPropertyFilterKey = S.Unknown as any as S.Schema<RecordingPropertyFilterKey>;
-
 export type RecordingPropertyFilterValueCase0Item = string | number | boolean;
-export const RecordingPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
-
 export type RecordingPropertyFilterValueCase0List = Array<RecordingPropertyFilterValueCase0Item>;
-export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  RecordingPropertyFilterValueCase0Item,
-) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
-
 export type RecordingPropertyFilterValue =
   | RecordingPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const RecordingPropertyFilterValue =
-  S.Unknown as any as S.Schema<RecordingPropertyFilterValue>;
-
 export interface RecordingPropertyFilter {
   key?: RecordingPropertyFilterKey;
   label?: string | null;
@@ -529,33 +394,13 @@ export interface RecordingPropertyFilter {
   type?: string;
   value?: RecordingPropertyFilterValue | null;
 }
-export const RecordingPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(RecordingPropertyFilterKey),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(RecordingPropertyFilterValue)),
-  }),
-).annotate({ identifier: "RecordingPropertyFilter" }) as any as S.Schema<RecordingPropertyFilter>;
-
 export type LogEntryPropertyFilterValueCase0Item = string | number | boolean;
-export const LogEntryPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
-
 export type LogEntryPropertyFilterValueCase0List = Array<LogEntryPropertyFilterValueCase0Item>;
-export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  LogEntryPropertyFilterValueCase0Item,
-) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
-
 export type LogEntryPropertyFilterValue =
   | LogEntryPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const LogEntryPropertyFilterValue =
-  S.Unknown as any as S.Schema<LogEntryPropertyFilterValue>;
-
 export interface LogEntryPropertyFilter {
   key?: string;
   label?: string | null;
@@ -563,36 +408,14 @@ export interface LogEntryPropertyFilter {
   type?: string;
   value?: LogEntryPropertyFilterValue | null;
 }
-export const LogEntryPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(LogEntryPropertyFilterValue)),
-  }),
-).annotate({ identifier: "LogEntryPropertyFilter" }) as any as S.Schema<LogEntryPropertyFilter>;
-
 export type GroupPropertyFilterGroupKeyNamesMap = { [key: string]: string | undefined };
-export const GroupPropertyFilterGroupKeyNamesMap =
-  ExperimentFeatureFlagFiltersPayloadsMap as any as S.Schema<GroupPropertyFilterGroupKeyNamesMap>;
-
 export type GroupPropertyFilterValueCase0Item = string | number | boolean;
-export const GroupPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
-
 export type GroupPropertyFilterValueCase0List = Array<GroupPropertyFilterValueCase0Item>;
-export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  GroupPropertyFilterValueCase0Item,
-) as any as S.Schema<GroupPropertyFilterValueCase0List>;
-
 export type GroupPropertyFilterValue =
   | GroupPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const GroupPropertyFilterValue = S.Unknown as any as S.Schema<GroupPropertyFilterValue>;
-
 export interface GroupPropertyFilter {
   group_key_names?: GroupPropertyFilterGroupKeyNamesMap | null;
   group_type_index?: number | null;
@@ -602,34 +425,13 @@ export interface GroupPropertyFilter {
   type?: string;
   value?: GroupPropertyFilterValue | null;
 }
-export const GroupPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    group_key_names: S.optional(S.NullOr(GroupPropertyFilterGroupKeyNamesMap)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(GroupPropertyFilterValue)),
-  }),
-).annotate({ identifier: "GroupPropertyFilter" }) as any as S.Schema<GroupPropertyFilter>;
-
 export type FeaturePropertyFilterValueCase0Item = string | number | boolean;
-export const FeaturePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
-
 export type FeaturePropertyFilterValueCase0List = Array<FeaturePropertyFilterValueCase0Item>;
-export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  FeaturePropertyFilterValueCase0Item,
-) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
-
 export type FeaturePropertyFilterValue =
   | FeaturePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const FeaturePropertyFilterValue = S.Unknown as any as S.Schema<FeaturePropertyFilterValue>;
-
 export interface FeaturePropertyFilter {
   key?: string;
   label?: string | null;
@@ -638,20 +440,8 @@ export interface FeaturePropertyFilter {
   type?: string;
   value?: FeaturePropertyFilterValue | null;
 }
-export const FeaturePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(FeaturePropertyFilterValue)),
-  }),
-).annotate({ identifier: "FeaturePropertyFilter" }) as any as S.Schema<FeaturePropertyFilter>;
-
 /** The value can be true, false, or a variant name */
 export type FlagPropertyFilterValue = boolean | string;
-export const FlagPropertyFilterValue = S.Unknown as any as S.Schema<FlagPropertyFilterValue>;
-
 export interface FlagPropertyFilter {
   /** The key should be the flag ID */
   key?: string;
@@ -663,74 +453,30 @@ export interface FlagPropertyFilter {
   /** The value can be true, false, or a variant name */
   value?: FlagPropertyFilterValue;
 }
-export const FlagPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(S.String),
-    type: S.optional(S.String),
-    value: S.optional(FlagPropertyFilterValue),
-  }),
-).annotate({ identifier: "FlagPropertyFilter" }) as any as S.Schema<FlagPropertyFilter>;
-
 export type HogQLPropertyFilterValueCase0Item = string | number | boolean;
-export const HogQLPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
-
 export type HogQLPropertyFilterValueCase0List = Array<HogQLPropertyFilterValueCase0Item>;
-export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  HogQLPropertyFilterValueCase0Item,
-) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
-
 export type HogQLPropertyFilterValue =
   | HogQLPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const HogQLPropertyFilterValue = S.Unknown as any as S.Schema<HogQLPropertyFilterValue>;
-
 export interface HogQLPropertyFilter {
   key?: string;
   label?: string | null;
   type?: string;
   value?: HogQLPropertyFilterValue | null;
 }
-export const HogQLPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(HogQLPropertyFilterValue)),
-  }),
-).annotate({ identifier: "HogQLPropertyFilter" }) as any as S.Schema<HogQLPropertyFilter>;
-
 export interface EmptyPropertyFilter {
   type?: string;
 }
-export const EmptyPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "EmptyPropertyFilter" }) as any as S.Schema<EmptyPropertyFilter>;
-
 export type DataWarehousePropertyFilterValueCase0Item = string | number | boolean;
-export const DataWarehousePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
-
 export type DataWarehousePropertyFilterValueCase0List =
   Array<DataWarehousePropertyFilterValueCase0Item>;
-export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  DataWarehousePropertyFilterValueCase0Item,
-) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
-
 export type DataWarehousePropertyFilterValue =
   | DataWarehousePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const DataWarehousePropertyFilterValue =
-  S.Unknown as any as S.Schema<DataWarehousePropertyFilterValue>;
-
 export interface DataWarehousePropertyFilter {
   key?: string;
   label?: string | null;
@@ -738,36 +484,14 @@ export interface DataWarehousePropertyFilter {
   type?: string;
   value?: DataWarehousePropertyFilterValue | null;
 }
-export const DataWarehousePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(DataWarehousePropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "DataWarehousePropertyFilter",
-}) as any as S.Schema<DataWarehousePropertyFilter>;
-
 export type DataWarehousePersonPropertyFilterValueCase0Item = string | number | boolean;
-export const DataWarehousePersonPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
-
 export type DataWarehousePersonPropertyFilterValueCase0List =
   Array<DataWarehousePersonPropertyFilterValueCase0Item>;
-export const DataWarehousePersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  DataWarehousePersonPropertyFilterValueCase0Item,
-) as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0List>;
-
 export type DataWarehousePersonPropertyFilterValue =
   | DataWarehousePersonPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const DataWarehousePersonPropertyFilterValue =
-  S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValue>;
-
 export interface DataWarehousePersonPropertyFilter {
   key?: string;
   label?: string | null;
@@ -775,35 +499,13 @@ export interface DataWarehousePersonPropertyFilter {
   type?: string;
   value?: DataWarehousePersonPropertyFilterValue | null;
 }
-export const DataWarehousePersonPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(DataWarehousePersonPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "DataWarehousePersonPropertyFilter",
-}) as any as S.Schema<DataWarehousePersonPropertyFilter>;
-
 export type ErrorTrackingIssueFilterValueCase0Item = string | number | boolean;
-export const ErrorTrackingIssueFilterValueCase0Item =
-  S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
-
 export type ErrorTrackingIssueFilterValueCase0List = Array<ErrorTrackingIssueFilterValueCase0Item>;
-export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
-  ErrorTrackingIssueFilterValueCase0Item,
-) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
-
 export type ErrorTrackingIssueFilterValue =
   | ErrorTrackingIssueFilterValueCase0List
   | string
   | number
   | boolean;
-export const ErrorTrackingIssueFilterValue =
-  S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValue>;
-
 export interface ErrorTrackingIssueFilter {
   key?: string;
   label?: string | null;
@@ -811,31 +513,10 @@ export interface ErrorTrackingIssueFilter {
   type?: string;
   value?: ErrorTrackingIssueFilterValue | null;
 }
-export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(ErrorTrackingIssueFilterValue)),
-  }),
-).annotate({ identifier: "ErrorTrackingIssueFilter" }) as any as S.Schema<ErrorTrackingIssueFilter>;
-
 export type LogPropertyFilterType = "log" | "log_attribute" | "log_resource_attribute";
-export const LogPropertyFilterType = S.String;
-
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
-export const LogPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
-
 export type LogPropertyFilterValueCase0List = Array<LogPropertyFilterValueCase0Item>;
-export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  LogPropertyFilterValueCase0Item,
-) as any as S.Schema<LogPropertyFilterValueCase0List>;
-
 export type LogPropertyFilterValue = LogPropertyFilterValueCase0List | string | number | boolean;
-export const LogPropertyFilterValue = S.Unknown as any as S.Schema<LogPropertyFilterValue>;
-
 export interface LogPropertyFilter {
   key?: string;
   label?: string | null;
@@ -843,32 +524,13 @@ export interface LogPropertyFilter {
   type?: LogPropertyFilterType | (string & {});
   value?: LogPropertyFilterValue | null;
 }
-export const LogPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(LogPropertyFilterType),
-    value: S.optional(S.NullOr(LogPropertyFilterValue)),
-  }),
-).annotate({ identifier: "LogPropertyFilter" }) as any as S.Schema<LogPropertyFilter>;
-
 export type MetricPropertyFilterValueCase0Item = string | number | boolean;
-export const MetricPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
-
 export type MetricPropertyFilterValueCase0List = Array<MetricPropertyFilterValueCase0Item>;
-export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  MetricPropertyFilterValueCase0Item,
-) as any as S.Schema<MetricPropertyFilterValueCase0List>;
-
 export type MetricPropertyFilterValue =
   | MetricPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const MetricPropertyFilterValue = S.Unknown as any as S.Schema<MetricPropertyFilterValue>;
-
 export interface MetricPropertyFilter {
   key: string;
   label?: string | null;
@@ -876,31 +538,10 @@ export interface MetricPropertyFilter {
   type?: string;
   value?: MetricPropertyFilterValue | null;
 }
-export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(MetricPropertyFilterValue)),
-  }),
-).annotate({ identifier: "MetricPropertyFilter" }) as any as S.Schema<MetricPropertyFilter>;
-
 export type SpanPropertyFilterType = "span" | "span_attribute" | "span_resource_attribute";
-export const SpanPropertyFilterType = S.String;
-
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
-export const SpanPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
-
 export type SpanPropertyFilterValueCase0List = Array<SpanPropertyFilterValueCase0Item>;
-export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  SpanPropertyFilterValueCase0Item,
-) as any as S.Schema<SpanPropertyFilterValueCase0List>;
-
 export type SpanPropertyFilterValue = SpanPropertyFilterValueCase0List | string | number | boolean;
-export const SpanPropertyFilterValue = S.Unknown as any as S.Schema<SpanPropertyFilterValue>;
-
 export interface SpanPropertyFilter {
   key?: string;
   label?: string | null;
@@ -908,34 +549,14 @@ export interface SpanPropertyFilter {
   type?: SpanPropertyFilterType | (string & {});
   value?: SpanPropertyFilterValue | null;
 }
-export const SpanPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(SpanPropertyFilterType),
-    value: S.optional(S.NullOr(SpanPropertyFilterValue)),
-  }),
-).annotate({ identifier: "SpanPropertyFilter" }) as any as S.Schema<SpanPropertyFilter>;
-
 export type RevenueAnalyticsPropertyFilterValueCase0Item = string | number | boolean;
-export const RevenueAnalyticsPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
-
 export type RevenueAnalyticsPropertyFilterValueCase0List =
   Array<RevenueAnalyticsPropertyFilterValueCase0Item>;
-export const RevenueAnalyticsPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  RevenueAnalyticsPropertyFilterValueCase0Item,
-) as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0List>;
-
 export type RevenueAnalyticsPropertyFilterValue =
   | RevenueAnalyticsPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const RevenueAnalyticsPropertyFilterValue =
-  S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValue>;
-
 export interface RevenueAnalyticsPropertyFilter {
   key?: string;
   label?: string | null;
@@ -943,36 +564,14 @@ export interface RevenueAnalyticsPropertyFilter {
   type?: string;
   value?: RevenueAnalyticsPropertyFilterValue | null;
 }
-export const RevenueAnalyticsPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(RevenueAnalyticsPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "RevenueAnalyticsPropertyFilter",
-}) as any as S.Schema<RevenueAnalyticsPropertyFilter>;
-
 export type AccountCustomPropertyFilterValueCase0Item = string | number | boolean;
-export const AccountCustomPropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
-
 export type AccountCustomPropertyFilterValueCase0List =
   Array<AccountCustomPropertyFilterValueCase0Item>;
-export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  AccountCustomPropertyFilterValueCase0Item,
-) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
-
 export type AccountCustomPropertyFilterValue =
   | AccountCustomPropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const AccountCustomPropertyFilterValue =
-  S.Unknown as any as S.Schema<AccountCustomPropertyFilterValue>;
-
 export interface AccountCustomPropertyFilter {
   key: string;
   label?: string | null;
@@ -981,36 +580,14 @@ export interface AccountCustomPropertyFilter {
   type?: string;
   value?: AccountCustomPropertyFilterValue | null;
 }
-export const AccountCustomPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    operator: PropertyOperator,
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(AccountCustomPropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "AccountCustomPropertyFilter",
-}) as any as S.Schema<AccountCustomPropertyFilter>;
-
 export type WorkflowVariablePropertyFilterValueCase0Item = string | number | boolean;
-export const WorkflowVariablePropertyFilterValueCase0Item =
-  S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
-
 export type WorkflowVariablePropertyFilterValueCase0List =
   Array<WorkflowVariablePropertyFilterValueCase0Item>;
-export const WorkflowVariablePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
-  WorkflowVariablePropertyFilterValueCase0Item,
-) as any as S.Schema<WorkflowVariablePropertyFilterValueCase0List>;
-
 export type WorkflowVariablePropertyFilterValue =
   | WorkflowVariablePropertyFilterValueCase0List
   | string
   | number
   | boolean;
-export const WorkflowVariablePropertyFilterValue =
-  S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValue>;
-
 export interface WorkflowVariablePropertyFilter {
   key?: string;
   label?: string | null;
@@ -1018,42 +595,17 @@ export interface WorkflowVariablePropertyFilter {
   type?: string;
   value?: WorkflowVariablePropertyFilterValue | null;
 }
-export const WorkflowVariablePropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    operator: S.optional(PropertyOperator),
-    type: S.optional(S.String),
-    value: S.optional(S.NullOr(WorkflowVariablePropertyFilterValue)),
-  }),
-).annotate({
-  identifier: "WorkflowVariablePropertyFilter",
-}) as any as S.Schema<WorkflowVariablePropertyFilter>;
-
 export type BehavioralPropertyFilterEventFiltersItem =
   | EventPropertyFilter
   | PersonPropertyFilter
   | ElementPropertyFilter
   | FeaturePropertyFilter
   | HogQLPropertyFilter;
-export const BehavioralPropertyFilterEventFiltersItem =
-  S.Unknown as any as S.Schema<BehavioralPropertyFilterEventFiltersItem>;
-
 export type BehavioralPropertyFilterEventFiltersList =
   Array<BehavioralPropertyFilterEventFiltersItem>;
-export const BehavioralPropertyFilterEventFiltersList = /*@__PURE__*/ S.Array(
-  BehavioralPropertyFilterEventFiltersItem,
-) as any as S.Schema<BehavioralPropertyFilterEventFiltersList>;
-
 export type BehavioralEventSource = "events" | "actions";
-export const BehavioralEventSource = S.String;
-
 export type TimeUnitType = "day" | "week" | "month" | "year";
-export const TimeUnitType = S.String;
-
 export type InlineBehavioralType = "performed_event" | "performed_event_multiple";
-export const InlineBehavioralType = S.String;
-
 export interface BehavioralPropertyFilter {
   /** Extra property filters the matching events must satisfy. Deliberately excludes nested behavioral/cohort filters and groups */
   event_filters?: BehavioralPropertyFilterEventFiltersList | null;
@@ -1077,24 +629,6 @@ export interface BehavioralPropertyFilter {
   type?: string;
   value: InlineBehavioralType | (string & {});
 }
-export const BehavioralPropertyFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    event_filters: S.optional(S.NullOr(BehavioralPropertyFilterEventFiltersList)),
-    event_type: BehavioralEventSource,
-    explicit_datetime: S.optional(S.NullOr(S.String)),
-    explicit_datetime_to: S.optional(S.NullOr(S.String)),
-    key: S.String,
-    label: S.optional(S.NullOr(S.String)),
-    negation: S.optional(S.NullOr(S.Boolean)),
-    operator: S.optional(S.NullOr(PropertyOperator)),
-    operator_value: S.optional(S.NullOr(S.Number)),
-    time_interval: S.optional(S.NullOr(TimeUnitType)),
-    time_value: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    value: InlineBehavioralType,
-  }),
-).annotate({ identifier: "BehavioralPropertyFilter" }) as any as S.Schema<BehavioralPropertyFilter>;
-
 export type ExperimentApiExposureConfigPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -1120,13 +654,13 @@ export type ExperimentApiExposureConfigPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const ExperimentApiExposureConfigPropertiesItem =
+const ExperimentApiExposureConfigPropertiesItem =
   S.Unknown as any as S.Schema<ExperimentApiExposureConfigPropertiesItem>;
 
 /** Property filters (event, person, and other supported types). Pass an empty array if no filters needed. */
 export type ExperimentApiExposureConfigPropertiesList =
   Array<ExperimentApiExposureConfigPropertiesItem>;
-export const ExperimentApiExposureConfigPropertiesList = /*@__PURE__*/ S.Array(
+const ExperimentApiExposureConfigPropertiesList = /*@__PURE__*/ S.Array(
   ExperimentApiExposureConfigPropertiesItem,
 ) as any as S.Schema<ExperimentApiExposureConfigPropertiesList>;
 
@@ -1140,7 +674,7 @@ export interface ExperimentApiExposureConfig {
   /** Property filters (event, person, and other supported types). Pass an empty array if no filters needed. */
   properties?: ExperimentApiExposureConfigPropertiesList;
 }
-export const ExperimentApiExposureConfig = /*@__PURE__*/ S.suspend(() =>
+const ExperimentApiExposureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(S.NullOr(S.String)),
     id: S.optional(S.NullOr(S.Number)),
@@ -1152,7 +686,7 @@ export const ExperimentApiExposureConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentApiExposureConfig>;
 
 export type MultipleVariantHandling = "exclude" | "first_seen";
-export const MultipleVariantHandling = S.String;
+const MultipleVariantHandling = S.String;
 
 export interface ExperimentApiExposureCriteria {
   /** Additional event (or action) an entity must emit at/after their first default exposure event before they count as exposed; exposure time becomes this event's timestamp. Only valid with the default exposure event, not a custom `exposure_config`. */
@@ -1162,7 +696,7 @@ export interface ExperimentApiExposureCriteria {
   /** How to handle entities exposed to multiple variants. 'exclude' (default) drops them from the analysis; 'first_seen' assigns them to the variant from their earliest exposure. */
   multiple_variant_handling?: MultipleVariantHandling | (string & {}) | null;
 }
-export const ExperimentApiExposureCriteria = /*@__PURE__*/ S.suspend(() =>
+const ExperimentApiExposureCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activation_config: S.optional(S.NullOr(ExperimentApiExposureConfig)),
     exposure_config: S.optional(S.NullOr(ExperimentApiExposureConfig)),
@@ -1174,7 +708,7 @@ export const ExperimentApiExposureCriteria = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentApiExposureCriteria>;
 
 export type Kind1 = "EventsNode" | "ActionsNode";
-export const Kind1 = S.String;
+const Kind1 = S.String;
 
 export type ExperimentMetricMathType =
   | "total"
@@ -1186,13 +720,13 @@ export type ExperimentMetricMathType =
   | "dau"
   | "unique_group"
   | "hogql";
-export const ExperimentMetricMathType = S.String;
+const ExperimentMetricMathType = S.String;
 
 export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
-export const MathGroupTypeIndex = S.Number;
+const MathGroupTypeIndex = S.Number;
 
 export type ExperimentApiEventSourcePropertiesList = Array<EventPropertyFilter>;
-export const ExperimentApiEventSourcePropertiesList = /*@__PURE__*/ S.Array(
+const ExperimentApiEventSourcePropertiesList = /*@__PURE__*/ S.Array(
   EventPropertyFilter,
 ) as any as S.Schema<ExperimentApiEventSourcePropertiesList>;
 
@@ -1213,7 +747,7 @@ export interface ExperimentApiEventSource {
   /** Event property filters to narrow which events are counted. */
   properties?: ExperimentApiEventSourcePropertiesList | null;
 }
-export const ExperimentApiEventSource = /*@__PURE__*/ S.suspend(() =>
+const ExperimentApiEventSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(S.NullOr(S.String)),
     id: S.optional(S.NullOr(S.Number)),
@@ -1233,7 +767,7 @@ export type FunnelConversionWindowTimeUnit =
   | "day"
   | "week"
   | "month";
-export const FunnelConversionWindowTimeUnit = S.String;
+const FunnelConversionWindowTimeUnit = S.String;
 
 export interface ExperimentMetricOutlierHandling {
   ignore_zeros?: boolean | null;
@@ -1242,7 +776,7 @@ export interface ExperimentMetricOutlierHandling {
   /** Winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile). */
   upper_bound_percentile?: number | null;
 }
-export const ExperimentMetricOutlierHandling = /*@__PURE__*/ S.suspend(() =>
+const ExperimentMetricOutlierHandling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignore_zeros: S.optional(S.NullOr(S.Boolean)),
     lower_bound_percentile: S.optional(S.NullOr(S.Number)),
@@ -1253,24 +787,24 @@ export const ExperimentMetricOutlierHandling = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentMetricOutlierHandling>;
 
 export type StepOrderValue = "strict" | "unordered" | "ordered";
-export const StepOrderValue = S.String;
+const StepOrderValue = S.String;
 
 export type ExperimentMetricGoal = "increase" | "decrease";
-export const ExperimentMetricGoal = S.String;
+const ExperimentMetricGoal = S.String;
 
 export type ExperimentMetricType = "funnel" | "mean" | "ratio" | "retention";
-export const ExperimentMetricType = S.String;
+const ExperimentMetricType = S.String;
 
 export type ExperimentApiMetricSeriesList = Array<ExperimentApiEventSource>;
-export const ExperimentApiMetricSeriesList = /*@__PURE__*/ S.Array(
+const ExperimentApiMetricSeriesList = /*@__PURE__*/ S.Array(
   ExperimentApiEventSource,
 ) as any as S.Schema<ExperimentApiMetricSeriesList>;
 
 export type Kind3 = "EventsNode" | "ActionsNode" | "ExperimentExposureNode";
-export const Kind3 = S.String;
+const Kind3 = S.String;
 
 export type ExperimentApiRetentionStartPropertiesList = Array<EventPropertyFilter>;
-export const ExperimentApiRetentionStartPropertiesList =
+const ExperimentApiRetentionStartPropertiesList =
   ExperimentApiEventSourcePropertiesList as any as S.Schema<ExperimentApiRetentionStartPropertiesList>;
 
 export interface ExperimentApiRetentionStart {
@@ -1291,7 +825,7 @@ export interface ExperimentApiRetentionStart {
   /** Event property filters to narrow which events are counted. */
   properties?: ExperimentApiRetentionStartPropertiesList | null;
 }
-export const ExperimentApiRetentionStart = /*@__PURE__*/ S.suspend(() =>
+const ExperimentApiRetentionStart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.optional(S.NullOr(S.String)),
     id: S.optional(S.NullOr(S.Number)),
@@ -1307,7 +841,7 @@ export const ExperimentApiRetentionStart = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentApiRetentionStart>;
 
 export type StartHandling = "first_seen" | "last_seen";
-export const StartHandling = S.String;
+const StartHandling = S.String;
 
 export interface ExperimentApiMetric {
   /** For retention metrics: completion event. */
@@ -1353,7 +887,7 @@ export interface ExperimentApiMetric {
   /** Unique identifier. Auto-generated if omitted. */
   uuid?: string | null;
 }
-export const ExperimentApiMetric = /*@__PURE__*/ S.suspend(() =>
+const ExperimentApiMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completion_event: S.optional(S.NullOr(ExperimentApiEventSource)),
     conversion_window: S.optional(S.NullOr(S.Number)),
@@ -1384,34 +918,34 @@ export const ExperimentApiMetric = /*@__PURE__*/ S.suspend(() =>
 
 /** List wrapper for OpenAPI schema generation -- the field stores an array of metrics. */
 export type ExperimentApiMetricsList = Array<ExperimentApiMetric>;
-export const ExperimentApiMetricsList = /*@__PURE__*/ S.Array(
+const ExperimentApiMetricsList = /*@__PURE__*/ S.Array(
   ExperimentApiMetric,
 ) as any as S.Schema<ExperimentApiMetricsList>;
 
 /** * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
 export type ConclusionEnum = "won" | "lost" | "inconclusive" | "stopped_early" | "invalid";
-export const ConclusionEnum = S.String;
+const ConclusionEnum = S.String;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-export const CreateExperimentRequestPrimaryMetricsOrderedUuidsList =
+const CreateExperimentRequestPrimaryMetricsOrderedUuidsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-export const CreateExperimentRequestSecondaryMetricsOrderedUuidsList =
+const CreateExperimentRequestSecondaryMetricsOrderedUuidsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type CreateExperimentRequestOriginalExperimentMap = { [key: string]: unknown | undefined };
-export const CreateExperimentRequestOriginalExperimentMap = /*@__PURE__*/ S.Record(
+const CreateExperimentRequestOriginalExperimentMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateExperimentRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type CreateExperimentRequestTagsList = Array<string>;
-export const CreateExperimentRequestTagsList =
+const CreateExperimentRequestTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentRequestTagsList>;
 
 export interface CreateExperimentRequest {
@@ -1475,7 +1009,7 @@ export interface CreateExperimentRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: CreateExperimentRequestTagsList;
 }
-export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -1519,32 +1053,26 @@ export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateExperimentRequest" }) as any as S.Schema<CreateExperimentRequest>;
 
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-export const MinimalFeatureFlagFiltersMap =
+const MinimalFeatureFlagFiltersMap =
   CreateExperimentRequestOriginalExperimentMap as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
-export const EvaluationRuntimeEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-export const MinimalFeatureFlagEvaluationRuntime =
+const MinimalFeatureFlagEvaluationRuntime =
   S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type BucketingIdentifierEnum = "distinct_id" | "device_id";
-export const BucketingIdentifierEnum = S.String;
-
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type MinimalFeatureFlagBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-export const MinimalFeatureFlagBucketingIdentifier =
+const MinimalFeatureFlagBucketingIdentifier =
   S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-export const MinimalFeatureFlagEvaluationContextsList =
+const MinimalFeatureFlagEvaluationContextsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
 
 export interface MinimalFeatureFlag {
@@ -1563,7 +1091,7 @@ export interface MinimalFeatureFlag {
   bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
   evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
 }
-export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
+const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     team_id: S.optional(S.Number),
@@ -1582,8 +1110,6 @@ export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
 
 /** * `cohort` - cohort * `person` - person * `group` - group */
 export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
-export const PropertyGroupTypeEnum = S.String;
-
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
 export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "exact"
@@ -1600,8 +1126,6 @@ export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "gte"
   | "lt"
   | "lte";
-export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyGenericSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -1616,23 +1140,8 @@ export interface FeatureFlagFilterPropertyGenericSchema {
   /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
   operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum;
 }
-export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.Unknown),
-    operator: S.optional(FeatureFlagFilterPropertyGenericSchemaOperatorEnum),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyGenericSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
-
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
 export type ExistenceOperatorEnum = "is_set" | "is_not_set";
-export const ExistenceOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyExistsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -1647,23 +1156,8 @@ export interface FeatureFlagFilterPropertyExistsSchema {
   /** Optional value. Runtime behavior determines whether this is ignored. */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(ExistenceOperatorEnum),
-    value: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyExistsSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyExistsSchema>;
-
 /** * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after */
 export type DateOperatorEnum = "is_date_exact" | "is_date_before" | "is_date_after";
-export const DateOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyDateSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -1678,19 +1172,6 @@ export interface FeatureFlagFilterPropertyDateSchema {
   /** Date value in ISO format or relative date expression. */
   value?: string;
 }
-export const FeatureFlagFilterPropertyDateSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(DateOperatorEnum),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyDateSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyDateSchema>;
-
 /** * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
 export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_gt"
@@ -1702,8 +1183,6 @@ export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_tilde"
   | "semver_caret"
   | "semver_wildcard";
-export const FeatureFlagFilterPropertySemverSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertySemverSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -1718,20 +1197,12 @@ export interface FeatureFlagFilterPropertySemverSchema {
   /** Semantic version string. */
   value?: string;
 }
-export const FeatureFlagFilterPropertySemverSchema =
-  FeatureFlagFilterPropertyDateSchema as any as S.Schema<FeatureFlagFilterPropertySemverSchema>;
-
 /** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
 export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   | "icontains_multi"
   | "not_icontains_multi";
-export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum = S.String;
-
 /** List of strings to evaluate against. */
 export type FeatureFlagFilterPropertyMultiContainsSchemaValueList = Array<string>;
-export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
-  CreateExperimentRequestExcludedVariantsList as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchemaValueList>;
-
 export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -1746,27 +1217,10 @@ export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** List of strings to evaluate against. */
   value?: FeatureFlagFilterPropertyMultiContainsSchemaValueList;
 }
-export const FeatureFlagFilterPropertyMultiContainsSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum),
-    value: S.optional(FeatureFlagFilterPropertyMultiContainsSchemaValueList),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyMultiContainsSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
-
 /** * `cohort` - cohort */
 export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
-export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum = S.String;
-
 /** * `in` - in * `not_in` - not_in */
 export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum = "in" | "not_in";
-export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -1781,17 +1235,10 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Cohort comparison value (single or list, depending on usage). */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyCohortInSchema =
-  FeatureFlagFilterPropertyExistsSchema as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
-
 /** * `flag` - flag */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
-export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = S.String;
-
 /** * `flag_evaluates_to` - flag_evaluates_to */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum = "flag_evaluates_to";
-export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -1806,9 +1253,6 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Value to compare flag evaluation against. */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyFlagEvaluatesSchema =
-  FeatureFlagFilterPropertyExistsSchema as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
-
 export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyGenericSchema
   | FeatureFlagFilterPropertyExistsSchema
@@ -1817,12 +1261,12 @@ export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyMultiContainsSchema
   | FeatureFlagFilterPropertyCohortInSchema
   | FeatureFlagFilterPropertyFlagEvaluatesSchema;
-export const FeatureFlagFilterPropertySchema =
+const FeatureFlagFilterPropertySchema =
   S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
 
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList = Array<FeatureFlagFilterPropertySchema>;
-export const FeatureFlagConditionGroupSchemaPropertiesList = /*@__PURE__*/ S.Array(
+const FeatureFlagConditionGroupSchemaPropertiesList = /*@__PURE__*/ S.Array(
   FeatureFlagFilterPropertySchema,
 ) as any as S.Schema<FeatureFlagConditionGroupSchemaPropertiesList>;
 
@@ -1836,7 +1280,7 @@ export interface FeatureFlagConditionGroupSchema {
   /** Group type index for this condition set. None means person-level aggregation. */
   aggregation_group_type_index?: number | null;
 }
-export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(FeatureFlagConditionGroupSchemaPropertiesList),
     rollout_percentage: S.optional(S.Number),
@@ -1849,12 +1293,12 @@ export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0-100, may be fractional) is the **exclusion** percentage -- the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
 export type ExperimentHoldoutFiltersList = Array<FeatureFlagConditionGroupSchema>;
-export const ExperimentHoldoutFiltersList = /*@__PURE__*/ S.Array(
+const ExperimentHoldoutFiltersList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionGroupSchema,
 ) as any as S.Schema<ExperimentHoldoutFiltersList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -1868,11 +1312,8 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -1885,7 +1326,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -1914,7 +1355,7 @@ export interface ExperimentHoldout {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const ExperimentHoldout = /*@__PURE__*/ S.suspend(() =>
+const ExperimentHoldout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -1929,7 +1370,7 @@ export const ExperimentHoldout = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentOutputExcludedVariantsList = Array<string>;
-export const ExperimentOutputExcludedVariantsList =
+const ExperimentOutputExcludedVariantsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputExcludedVariantsList>;
 
 export interface ExperimentToSavedMetric {
@@ -1941,7 +1382,7 @@ export interface ExperimentToSavedMetric {
   query?: unknown;
   name?: string;
 }
-export const ExperimentToSavedMetric = /*@__PURE__*/ S.suspend(() =>
+const ExperimentToSavedMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     experiment: S.optional(S.Number),
@@ -1954,31 +1395,31 @@ export const ExperimentToSavedMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExperimentToSavedMetric" }) as any as S.Schema<ExperimentToSavedMetric>;
 
 export type ExperimentOutputSavedMetricsList = Array<ExperimentToSavedMetric>;
-export const ExperimentOutputSavedMetricsList = /*@__PURE__*/ S.Array(
+const ExperimentOutputSavedMetricsList = /*@__PURE__*/ S.Array(
   ExperimentToSavedMetric,
 ) as any as S.Schema<ExperimentOutputSavedMetricsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentOutputSavedMetricsIdsList = Array<unknown>;
-export const ExperimentOutputSavedMetricsIdsList =
+const ExperimentOutputSavedMetricsIdsList =
   ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<ExperimentOutputSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentOutputPrimaryMetricsOrderedUuidsList = Array<string>;
-export const ExperimentOutputPrimaryMetricsOrderedUuidsList =
+const ExperimentOutputPrimaryMetricsOrderedUuidsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentOutputSecondaryMetricsOrderedUuidsList = Array<string>;
-export const ExperimentOutputSecondaryMetricsOrderedUuidsList =
+const ExperimentOutputSecondaryMetricsOrderedUuidsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputSecondaryMetricsOrderedUuidsList>;
 
 export type ExperimentStatusEnum = "draft" | "running" | "paused" | "exposure_frozen" | "stopped";
-export const ExperimentStatusEnum = S.String;
+const ExperimentStatusEnum = S.String;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentOutputTagsList = Array<string>;
-export const ExperimentOutputTagsList =
+const ExperimentOutputTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentOutputTagsList>;
 
 /** Full experiment representation for the detail, create, and update endpoints. Extends the shared read-side fields in ``ExperimentBaseSerializer`` with the metric definitions (``metrics``/``metrics_secondary``/``saved_metrics``) and the write-side fields, and refreshes stale action names while serializing. The list endpoint uses the leaner ``ExperimentBasicSerializer`` instead. */
@@ -2052,7 +1493,7 @@ export interface ExperimentOutput {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentOutputTagsList;
 }
-export const ExperimentOutput = /*@__PURE__*/ S.suspend(() =>
+const ExperimentOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -2105,11 +1546,11 @@ export const ExperimentOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** * `funnel` - funnel * `mean_count` - mean_count * `mean_sum_or_avg` - mean_sum_or_avg * `ratio` - ratio * `retention` - retention */
 export type MetricTypeEnum = "funnel" | "mean_count" | "mean_sum_or_avg" | "ratio" | "retention";
-export const MetricTypeEnum = S.String;
+const MetricTypeEnum = S.String;
 
 /** Per-step counts for funnel metrics; the last entry is the final-step count. */
 export type RunningTimeBaselineStatsStepCountsList = Array<number>;
-export const RunningTimeBaselineStatsStepCountsList = /*@__PURE__*/ S.Array(
+const RunningTimeBaselineStatsStepCountsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RunningTimeBaselineStatsStepCountsList>;
 
@@ -2130,7 +1571,7 @@ export interface RunningTimeBaselineStats {
   /** Per-step counts for funnel metrics; the last entry is the final-step count. */
   step_counts?: RunningTimeBaselineStatsStepCountsList;
 }
-export const RunningTimeBaselineStats = /*@__PURE__*/ S.suspend(() =>
+const RunningTimeBaselineStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number_of_samples: S.Number,
     sum: S.Number,
@@ -2160,7 +1601,7 @@ export interface CreateExperimentsCalculateRunningTimeRequest {
   /** Raw control-group statistics. When provided, the server derives baseline_value and variance. */
   baseline_stats?: RunningTimeBaselineStats | null;
 }
-export const CreateExperimentsCalculateRunningTimeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsCalculateRunningTimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     metric_type: MetricTypeEnum,
@@ -2192,7 +1633,7 @@ export interface RunningTimeCalculationResult {
   /** Estimated days to reach the recommended sample size. Null when exposure_rate_per_day is omitted. */
   recommended_running_time_days: number | null;
 }
-export const RunningTimeCalculationResult = /*@__PURE__*/ S.suspend(() =>
+const RunningTimeCalculationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseline_value: S.NullOr(S.Number),
     variance: S.NullOr(S.Number),
@@ -2219,7 +1660,7 @@ export interface CreateExperimentsEndRequest {
   /** When true, also save `repository` as this environment's default cleanup repository, used for experiments that have no repository of their own. Only acts when open_cleanup_pr is true and `repository` is provided and belongs to the team's GitHub installation. Requires project admin access (403 otherwise). */
   set_repository_as_team_default?: boolean;
 }
-export const CreateExperimentsEndRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsEndRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2241,7 +1682,7 @@ export interface CreateExperimentsFreezeExposureRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const CreateExperimentsFreezeExposureRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsFreezeExposureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2262,7 +1703,7 @@ export interface CreateExperimentsLaunchRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const CreateExperimentsLaunchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsLaunchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2285,7 +1726,7 @@ export type ExperimentMetricsRecalculationRequestTriggerEnum =
   | "heal_latest_run"
   | "experiment_config_change"
   | "metric_config_change";
-export const ExperimentMetricsRecalculationRequestTriggerEnum = S.String;
+const ExperimentMetricsRecalculationRequestTriggerEnum = S.String;
 
 export interface CreateExperimentsMetricsRecalculationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2295,7 +1736,7 @@ export interface CreateExperimentsMetricsRecalculationRequest {
   /** What triggered this recalculation (manual is the default for user-initiated runs). Only client triggers are accepted; agent_mcp, timeseries_sync and scheduled are set by the server. * `manual` - Manual * `manual_retry` - Manual Retry * `cold_run` - Cold Run * `heal_latest_run` - Heal Latest Run * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change */
   trigger?: ExperimentMetricsRecalculationRequestTriggerEnum | (string & {});
 }
-export const CreateExperimentsMetricsRecalculationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsMetricsRecalculationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2313,7 +1754,7 @@ export const CreateExperimentsMetricsRecalculationRequest = /*@__PURE__*/ S.susp
 
 /** * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
 export type MetricsRecalculationStatusEnum = "pending" | "in_progress" | "completed" | "failed";
-export const MetricsRecalculationStatusEnum = S.String;
+const MetricsRecalculationStatusEnum = S.String;
 
 /** POST response: the job just queued, or the one already active. It carries no results or live progress yet. */
 export interface ExperimentMetricsRecalculationJob {
@@ -2342,7 +1783,7 @@ export interface ExperimentMetricsRecalculationJob {
   /** True if returning an existing job rather than a newly created one */
   is_existing: boolean;
 }
-export const ExperimentMetricsRecalculationJob = /*@__PURE__*/ S.suspend(() =>
+const ExperimentMetricsRecalculationJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     experiment_id: S.Number,
@@ -2367,7 +1808,7 @@ export interface CreateExperimentsPauseRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const CreateExperimentsPauseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsPauseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2384,43 +1825,40 @@ export const CreateExperimentsPauseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList = Array<string>;
-export const CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList>;
+const CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList = Array<unknown>;
-export const CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList>;
+const CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList =
   Array<string>;
-export const CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList =
+const CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList =
   Array<string>;
-export const CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList =
+const CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap>;
+const CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type CreateExperimentsRecalculateTimeseriesRequestTagsList = Array<string>;
-export const CreateExperimentsRecalculateTimeseriesRequestTagsList =
+const CreateExperimentsRecalculateTimeseriesRequestTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequestTagsList>;
 
 export interface CreateExperimentsRecalculateTimeseriesRequest {
@@ -2484,7 +1922,7 @@ export interface CreateExperimentsRecalculateTimeseriesRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: CreateExperimentsRecalculateTimeseriesRequestTagsList;
 }
-export const CreateExperimentsRecalculateTimeseriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsRecalculateTimeseriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2542,7 +1980,7 @@ export const CreateExperimentsRecalculateTimeseriesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateExperimentsRecalculateTimeseriesRequest>;
 
 export interface CreateExperimentsRecalculateTimeseriesResponse {}
-export const CreateExperimentsRecalculateTimeseriesResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsRecalculateTimeseriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateExperimentsRecalculateTimeseriesResponse",
@@ -2550,11 +1988,11 @@ export const CreateExperimentsRecalculateTimeseriesResponse = /*@__PURE__*/ S.su
 
 /** * `fired_any` - fired_any * `no_metric_activity` - no_metric_activity * `funnel_dropoff` - funnel_dropoff */
 export type ExperimentSessionBucketEnum = "fired_any" | "no_metric_activity" | "funnel_dropoff";
-export const ExperimentSessionBucketEnum = S.String;
+const ExperimentSessionBucketEnum = S.String;
 
 /** Metrics the bucket is computed over. Exactly one funnel metric for 'funnel_dropoff'. Omit for the other buckets to use every metric of the experiment that can be matched to recordings. */
 export type CreateExperimentsSessionBucketRequestMetricUuidsList = Array<string>;
-export const CreateExperimentsSessionBucketRequestMetricUuidsList =
+const CreateExperimentsSessionBucketRequestMetricUuidsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsSessionBucketRequestMetricUuidsList>;
 
 export interface CreateExperimentsSessionBucketRequest {
@@ -2571,7 +2009,7 @@ export interface CreateExperimentsSessionBucketRequest {
   /** Maximum session IDs to return, at most 100. The most recently active matching sessions win. */
   limit?: number;
 }
-export const CreateExperimentsSessionBucketRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsSessionBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2592,7 +2030,7 @@ export const CreateExperimentsSessionBucketRequest = /*@__PURE__*/ S.suspend(() 
 
 /** IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment's exposed sessions, so the exposure filter can stay in place alongside them. */
 export type ExperimentSessionBucketResponseSessionIdsList = Array<string>;
-export const ExperimentSessionBucketResponseSessionIdsList =
+const ExperimentSessionBucketResponseSessionIdsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionBucketResponseSessionIdsList>;
 
 /** One metric the bucket was computed over. */
@@ -2602,7 +2040,7 @@ export interface ExperimentSessionBucketMetric {
   /** Display name of the metric, or an event-derived title (matching the experiment UI) when unnamed. */
   metric_name: string;
 }
-export const ExperimentSessionBucketMetric = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionBucketMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_uuid: S.String,
     metric_name: S.String,
@@ -2614,7 +2052,7 @@ export const ExperimentSessionBucketMetric = /*@__PURE__*/ S.suspend(() =>
 /** The metrics the bucket was actually computed over. Load-bearing for 'no_metric_activity': 'fired nothing' only means something next to the list of metrics it was evaluated against. */
 export type ExperimentSessionBucketResponseConsideredMetricsList =
   Array<ExperimentSessionBucketMetric>;
-export const ExperimentSessionBucketResponseConsideredMetricsList = /*@__PURE__*/ S.Array(
+const ExperimentSessionBucketResponseConsideredMetricsList = /*@__PURE__*/ S.Array(
   ExperimentSessionBucketMetric,
 ) as any as S.Schema<ExperimentSessionBucketResponseConsideredMetricsList>;
 
@@ -2627,7 +2065,7 @@ export interface ExperimentSessionBucketExcludedMetric {
   /** Why the metric can't be matched to recordings: a data-warehouse-only source, a retention window, or events only ever captured server-side. */
   reason: string;
 }
-export const ExperimentSessionBucketExcludedMetric = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionBucketExcludedMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_uuid: S.String,
     metric_name: S.String,
@@ -2640,7 +2078,7 @@ export const ExperimentSessionBucketExcludedMetric = /*@__PURE__*/ S.suspend(() 
 /** Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result. */
 export type ExperimentSessionBucketResponseExcludedMetricsList =
   Array<ExperimentSessionBucketExcludedMetric>;
-export const ExperimentSessionBucketResponseExcludedMetricsList = /*@__PURE__*/ S.Array(
+const ExperimentSessionBucketResponseExcludedMetricsList = /*@__PURE__*/ S.Array(
   ExperimentSessionBucketExcludedMetric,
 ) as any as S.Schema<ExperimentSessionBucketResponseExcludedMetricsList>;
 
@@ -2663,7 +2101,7 @@ export interface ExperimentSessionBucketResponse {
   /** True when the exposed population was matched on the stamped $feature/<flag key> event property instead of the exposure event, because the default exposure event has only ever been captured server-side and can never match a session. The sessions then mean 'the flag was active in this session', not 'the exposure moment was captured'. The variant comes from the flag's value on each event, so a returning user can appear under a variant they were re-bucketed into later. */
   used_exposure_fallback: boolean;
 }
-export const ExperimentSessionBucketResponse = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionBucketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_ids: ExperimentSessionBucketResponseSessionIdsList,
     truncated: S.Boolean,
@@ -2680,7 +2118,7 @@ export const ExperimentSessionBucketResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
 export type CreateExperimentsSessionContextRequestSessionIdsList = Array<string>;
-export const CreateExperimentsSessionContextRequestSessionIdsList =
+const CreateExperimentsSessionContextRequestSessionIdsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<CreateExperimentsSessionContextRequestSessionIdsList>;
 
 export interface CreateExperimentsSessionContextRequest {
@@ -2689,7 +2127,7 @@ export interface CreateExperimentsSessionContextRequest {
   /** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
   session_ids: CreateExperimentsSessionContextRequestSessionIdsList;
 }
-export const CreateExperimentsSessionContextRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsSessionContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     session_ids: CreateExperimentsSessionContextRequestSessionIdsList,
@@ -2706,12 +2144,12 @@ export const CreateExperimentsSessionContextRequest = /*@__PURE__*/ S.suspend(()
 
 /** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants -- a signal of multi-exposure bias. */
 export type ExperimentSessionContextItemVariantsSeenList = Array<string>;
-export const ExperimentSessionContextItemVariantsSeenList =
+const ExperimentSessionContextItemVariantsSeenList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionContextItemVariantsSeenList>;
 
 /** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
 export type ExperimentSessionMetricHitTimestampsList = Array<string>;
-export const ExperimentSessionMetricHitTimestampsList =
+const ExperimentSessionMetricHitTimestampsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionMetricHitTimestampsList>;
 
 /** * `source` - source * `step` - step * `numerator` - numerator * `denominator` - denominator * `retention_start` - retention_start * `retention_completion` - retention_completion */
@@ -2722,11 +2160,11 @@ export type SourceRoleEnum =
   | "denominator"
   | "retention_start"
   | "retention_completion";
-export const SourceRoleEnum = S.String;
+const SourceRoleEnum = S.String;
 
 /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
 export type ExperimentSessionMetricSourceHitTimestampsList = Array<string>;
-export const ExperimentSessionMetricSourceHitTimestampsList =
+const ExperimentSessionMetricSourceHitTimestampsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionMetricSourceHitTimestampsList>;
 
 /** One event/action source of a metric with at least one matching event in a session recording. */
@@ -2746,7 +2184,7 @@ export interface ExperimentSessionMetricSourceHit {
   /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter -- treat these as seek points, not a count. */
   timestamps: ExperimentSessionMetricSourceHitTimestampsList;
 }
-export const ExperimentSessionMetricSourceHit = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionMetricSourceHit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source_role: SourceRoleEnum,
     source_name: S.String,
@@ -2762,7 +2200,7 @@ export const ExperimentSessionMetricSourceHit = /*@__PURE__*/ S.suspend(() =>
 
 /** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
 export type ExperimentSessionMetricHitSourcesList = Array<ExperimentSessionMetricSourceHit>;
-export const ExperimentSessionMetricHitSourcesList = /*@__PURE__*/ S.Array(
+const ExperimentSessionMetricHitSourcesList = /*@__PURE__*/ S.Array(
   ExperimentSessionMetricSourceHit,
 ) as any as S.Schema<ExperimentSessionMetricHitSourcesList>;
 
@@ -2781,7 +2219,7 @@ export interface ExperimentSessionMetricHit {
   /** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
   sources: ExperimentSessionMetricHitSourcesList;
 }
-export const ExperimentSessionMetricHit = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionMetricHit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_uuid: S.String,
     metric_name: S.String,
@@ -2796,7 +2234,7 @@ export const ExperimentSessionMetricHit = /*@__PURE__*/ S.suspend(() =>
 
 /** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
 export type ExperimentSessionContextItemMetricsInSessionList = Array<ExperimentSessionMetricHit>;
-export const ExperimentSessionContextItemMetricsInSessionList = /*@__PURE__*/ S.Array(
+const ExperimentSessionContextItemMetricsInSessionList = /*@__PURE__*/ S.Array(
   ExperimentSessionMetricHit,
 ) as any as S.Schema<ExperimentSessionContextItemMetricsInSessionList>;
 
@@ -2823,7 +2261,7 @@ export interface ExperimentSessionContextItem {
   /** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
   metrics_in_session: ExperimentSessionContextItemMetricsInSessionList;
 }
-export const ExperimentSessionContextItem = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionContextItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experiment_id: S.Number,
     experiment_name: S.String,
@@ -2842,7 +2280,7 @@ export const ExperimentSessionContextItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
 export type ExperimentSessionContextResponseResultsList = Array<ExperimentSessionContextItem>;
-export const ExperimentSessionContextResponseResultsList = /*@__PURE__*/ S.Array(
+const ExperimentSessionContextResponseResultsList = /*@__PURE__*/ S.Array(
   ExperimentSessionContextItem,
 ) as any as S.Schema<ExperimentSessionContextResponseResultsList>;
 
@@ -2853,7 +2291,7 @@ export interface ExperimentSessionContextResponse {
   /** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
   results: ExperimentSessionContextResponseResultsList;
 }
-export const ExperimentSessionContextResponse = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionContextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String,
     results: ExperimentSessionContextResponseResultsList,
@@ -2864,7 +2302,7 @@ export const ExperimentSessionContextResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint. */
 export type ExperimentSessionContextsResponseResultsList = Array<ExperimentSessionContextResponse>;
-export const ExperimentSessionContextsResponseResultsList = /*@__PURE__*/ S.Array(
+const ExperimentSessionContextsResponseResultsList = /*@__PURE__*/ S.Array(
   ExperimentSessionContextResponse,
 ) as any as S.Schema<ExperimentSessionContextsResponseResultsList>;
 
@@ -2873,7 +2311,7 @@ export interface ExperimentSessionContextsResponse {
   /** Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint. */
   results: ExperimentSessionContextsResponseResultsList;
 }
-export const ExperimentSessionContextsResponse = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionContextsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ExperimentSessionContextsResponseResultsList,
   }),
@@ -2887,7 +2325,7 @@ export interface CreateExperimentsSessionEventDeltasRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const CreateExperimentsSessionEventDeltasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsSessionEventDeltasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2904,15 +2342,15 @@ export const CreateExperimentsSessionEventDeltasRequest = /*@__PURE__*/ S.suspen
 
 /** * `behavior` - behavior * `friction` - friction * `variant_only` - variant_only * `metric` - metric */
 export type ExperimentWatchCardKindEnum = "behavior" | "friction" | "variant_only" | "metric";
-export const ExperimentWatchCardKindEnum = S.String;
+const ExperimentWatchCardKindEnum = S.String;
 
 /** * `only` - only * `far_more` - far_more * `more` - more * `slightly_more` - slightly_more */
 export type ExperimentWatchCardStrengthEnum = "only" | "far_more" | "more" | "slightly_more";
-export const ExperimentWatchCardStrengthEnum = S.String;
+const ExperimentWatchCardStrengthEnum = S.String;
 
 /** The recordings themselves, most recent first, ready to hand to the recordings list as-is. */
 export type ExperimentWatchCardSessionIdsList = Array<string>;
-export const ExperimentWatchCardSessionIdsList =
+const ExperimentWatchCardSessionIdsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentWatchCardSessionIdsList>;
 
 /** One recording a card names first, and the phrase that says why. */
@@ -2922,7 +2360,7 @@ export interface ExperimentWatchHighlight {
   /** Everything this recording carries that earned it the place, ready to render as-is, for example '6 rage clicks, 6 errors' or '1 error, did this 4 times'. Every signal the session shows is listed, so the phrase is the whole picture rather than the single strongest part of it. Friction counts run from the moment the person was exposed to the end of the session, so friction before they met the variant is left out; 'did this N times' counts the card's own event. Not a comparison and not a reason the card exists. */
   reason: string;
 }
-export const ExperimentWatchHighlight = /*@__PURE__*/ S.suspend(() =>
+const ExperimentWatchHighlight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String,
     reason: S.String,
@@ -2931,7 +2369,7 @@ export const ExperimentWatchHighlight = /*@__PURE__*/ S.suspend(() =>
 
 /** Which of the card's recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding. */
 export type ExperimentWatchCardHighlightsList = Array<ExperimentWatchHighlight>;
-export const ExperimentWatchCardHighlightsList = /*@__PURE__*/ S.Array(
+const ExperimentWatchCardHighlightsList = /*@__PURE__*/ S.Array(
   ExperimentWatchHighlight,
 ) as any as S.Schema<ExperimentWatchCardHighlightsList>;
 
@@ -2954,7 +2392,7 @@ export interface ExperimentWatchCard {
   /** Which of the card's recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding. */
   highlights: ExperimentWatchCardHighlightsList;
 }
-export const ExperimentWatchCard = /*@__PURE__*/ S.suspend(() =>
+const ExperimentWatchCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: ExperimentWatchCardKindEnum,
     event: S.String,
@@ -2969,7 +2407,7 @@ export const ExperimentWatchCard = /*@__PURE__*/ S.suspend(() =>
 
 /** The shelf, strongest comparison first, then the variant's own rendering, then metric shortcuts. Events the variants can't be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Empty also takes the metric shortcuts with it: a shelf of shortcuts and no finding restates what the experiment's results already answer while reading as a finding, so it is withheld. Read empty_reason and say what it reports instead of presenting an empty shelf. Group by kind before presenting: a 'variant_only' card outranks every real difference by construction, and reading the shelf in order would report it as the headline. */
 export type ExperimentSessionEventDeltaResponseCardsList = Array<ExperimentWatchCard>;
-export const ExperimentSessionEventDeltaResponseCardsList = /*@__PURE__*/ S.Array(
+const ExperimentSessionEventDeltaResponseCardsList = /*@__PURE__*/ S.Array(
   ExperimentWatchCard,
 ) as any as S.Schema<ExperimentSessionEventDeltaResponseCardsList>;
 
@@ -2982,7 +2420,7 @@ export interface ExperimentWatchVariant {
   /** Sessions those people had within 24 hours of being exposed, and before the experiment ended or this request was made, which is more than the comparison reads: it says how much recorded material sits behind the variant. */
   sessions: number;
 }
-export const ExperimentWatchVariant = /*@__PURE__*/ S.suspend(() =>
+const ExperimentWatchVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     persons: S.Number,
@@ -2992,17 +2430,17 @@ export const ExperimentWatchVariant = /*@__PURE__*/ S.suspend(() =>
 
 /** Every variant the analysis compares, with its population, in the flag's variant order. A variant the experiment excludes never appears here, because the analysis does not count it either, so read a missing key as excluded rather than as zero people. */
 export type ExperimentSessionEventDeltaResponseVariantsList = Array<ExperimentWatchVariant>;
-export const ExperimentSessionEventDeltaResponseVariantsList = /*@__PURE__*/ S.Array(
+const ExperimentSessionEventDeltaResponseVariantsList = /*@__PURE__*/ S.Array(
   ExperimentWatchVariant,
 ) as any as S.Schema<ExperimentSessionEventDeltaResponseVariantsList>;
 
 /** * `exclude` - exclude * `first_seen` - first_seen */
 export type ExperimentWatchMultipleVariantHandlingEnum = "exclude" | "first_seen";
-export const ExperimentWatchMultipleVariantHandlingEnum = S.String;
+const ExperimentWatchMultipleVariantHandlingEnum = S.String;
 
 /** The events the experiment's own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment's results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved. */
 export type ExperimentSessionEventDeltaResponseMetricEventsList = Array<string>;
-export const ExperimentSessionEventDeltaResponseMetricEventsList =
+const ExperimentSessionEventDeltaResponseMetricEventsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSessionEventDeltaResponseMetricEventsList>;
 
 /** * `too_early` - too_early * `no_separation` - no_separation * `no_recordings` - no_recordings * `no_session_linked_exposures` - no_session_linked_exposures */
@@ -3011,7 +2449,7 @@ export type ExperimentWatchEmptyReasonEnum =
   | "no_separation"
   | "no_recordings"
   | "no_session_linked_exposures";
-export const ExperimentWatchEmptyReasonEnum = S.String;
+const ExperimentWatchEmptyReasonEnum = S.String;
 
 /** The recordings worth watching for this experiment, grouped into cards. Descriptive, never a result: cards say where behavior visibly differed and hand over the recordings, while the experiment's results measure its metrics over the whole run window and state the magnitudes. Nothing here says a variant is winning. */
 export interface ExperimentSessionEventDeltaResponse {
@@ -3048,7 +2486,7 @@ export interface ExperimentSessionEventDeltaResponse {
   /** Why cards is empty, and null whenever cards is not empty. Report which of the four happened rather than reporting an empty shelf, because they ask different things of the reader. 'too_early': fewer than two variants have min_variant_persons exposed people, so nothing was compared yet. The answer can still change unless sessions_truncated is true, in which case only the people exposed between date_from and date_to were compared and more time helps only if more people are exposed within a stretch that long; a rollout split that changed during the run lands here too, and the experiment's exposure chart is where that shows. 'no_separation': the variants were compared and no event told them apart, which is a result rather than a failure. 'no_recordings': events did tell the variants apart, but no recording behind them can be opened, so the project's session replay sampling and retention are what decide whether this surface can ever show anything. 'no_session_linked_exposures': the people exposed between date_from and date_to had no session we can see since being exposed, looking up to 24 hours after each exposure, so there was nothing to compare. Two things reach this state, and they ask for different answers: no browser or mobile SDK is capturing events, because sessions exist nowhere else, or the exposed people have not come back. While the experiment runs the read stops at the time of the request, so people exposed less than a day ago are judged on less than a day and can still return. Check which one before telling anyone to check back, because more exposures captured the same way yield more of the same. Never fill an empty shelf with the experiment's metrics: shortcut cards to those metrics' events are withheld here for exactly that reason. * `too_early` - too_early * `no_separation` - no_separation * `no_recordings` - no_recordings * `no_session_linked_exposures` - no_session_linked_exposures */
   empty_reason: ExperimentWatchEmptyReasonEnum | null;
 }
-export const ExperimentSessionEventDeltaResponse = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSessionEventDeltaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cards: ExperimentSessionEventDeltaResponseCardsList,
     variants: ExperimentSessionEventDeltaResponseVariantsList,
@@ -3072,12 +2510,12 @@ export const ExperimentSessionEventDeltaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentSessionEventDeltaResponse>;
 
 export type ExperimentSetupPropertyFilterListItem = EventPropertyFilter | PersonPropertyFilter;
-export const ExperimentSetupPropertyFilterListItem =
+const ExperimentSetupPropertyFilterListItem =
   S.Unknown as any as S.Schema<ExperimentSetupPropertyFilterListItem>;
 
 /** Event or person property filters that narrow which events are counted. */
 export type ExperimentSetupPropertyFilterList = Array<ExperimentSetupPropertyFilterListItem>;
-export const ExperimentSetupPropertyFilterList = /*@__PURE__*/ S.Array(
+const ExperimentSetupPropertyFilterList = /*@__PURE__*/ S.Array(
   ExperimentSetupPropertyFilterListItem,
 ) as any as S.Schema<ExperimentSetupPropertyFilterList>;
 
@@ -3099,7 +2537,7 @@ export interface CreateExperimentsSetupContextRequest {
   /** How many shared metrics to return, most reused first, 1 to 25. */
   shared_metrics_limit?: number;
 }
-export const CreateExperimentsSetupContextRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsSetupContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     target_event: S.optional(S.NullOr(S.String)),
@@ -3122,7 +2560,7 @@ export const CreateExperimentsSetupContextRequest = /*@__PURE__*/ S.suspend(() =
 
 /** * `ok` - Ok * `skipped` - Skipped * `timed_out` - Timed Out * `error` - Error */
 export type SetupContextSectionStatusEnum = "ok" | "skipped" | "timed_out" | "error";
-export const SetupContextSectionStatusEnum = S.String;
+const SetupContextSectionStatusEnum = S.String;
 
 export interface ExperimentSetupTeamDefaults {
   /** Default statistical method for new experiments: 'bayesian' or 'frequentist'. */
@@ -3152,7 +2590,7 @@ export interface ExperimentSetupTeamDefaults {
   /** The exposure event a new experiment launched now counts by default: '$experiment_exposure' or '$feature_flag_called'. */
   default_exposure_event: string;
 }
-export const ExperimentSetupTeamDefaults = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupTeamDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stats_method: S.NullOr(S.String),
     confidence_level: S.NullOr(S.Number),
@@ -3178,7 +2616,7 @@ export interface ExperimentSetupTeamDefaultsSection {
   /** The team's experiment defaults. */
   data: ExperimentSetupTeamDefaults | null;
 }
-export const ExperimentSetupTeamDefaultsSection = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupTeamDefaultsSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: SetupContextSectionStatusEnum,
     data: S.NullOr(ExperimentSetupTeamDefaults),
@@ -3189,7 +2627,7 @@ export const ExperimentSetupTeamDefaultsSection = /*@__PURE__*/ S.suspend(() =>
 
 /** * `web` - Web * `mobile` - Mobile * `server` - Server * `other` - Other */
 export type SdkLibCategoryEnum = "web" | "mobile" | "server" | "other";
-export const SdkLibCategoryEnum = S.String;
+const SdkLibCategoryEnum = S.String;
 
 export interface ExperimentSetupSdkLib {
   /** The $lib value of the SDK, for example 'web'. */
@@ -3207,7 +2645,7 @@ export interface ExperimentSetupSdkLib {
   /** Share of distinct ids that were anonymous, among those that report whether they are identified. Null when no call from this SDK reported it. */
   anonymous_share: number | null;
 }
-export const ExperimentSetupSdkLib = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupSdkLib = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lib: S.NullOr(S.String),
     category: SdkLibCategoryEnum,
@@ -3221,7 +2659,7 @@ export const ExperimentSetupSdkLib = /*@__PURE__*/ S.suspend(() =>
 
 /** One row per SDK, most calls first. */
 export type ExperimentSetupSdkProfileLibsList = Array<ExperimentSetupSdkLib>;
-export const ExperimentSetupSdkProfileLibsList = /*@__PURE__*/ S.Array(
+const ExperimentSetupSdkProfileLibsList = /*@__PURE__*/ S.Array(
   ExperimentSetupSdkLib,
 ) as any as S.Schema<ExperimentSetupSdkProfileLibsList>;
 
@@ -3235,7 +2673,7 @@ export interface ExperimentSetupLibActivity {
   /** Distinct ids that sent those events. */
   distinct_ids: number;
 }
-export const ExperimentSetupLibActivity = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupLibActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lib: S.NullOr(S.String),
     category: SdkLibCategoryEnum,
@@ -3248,7 +2686,7 @@ export const ExperimentSetupLibActivity = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 10 SDKs seen on any event over the last day, most events first. Set only when libs is empty, so a project creating its first experiment still says which platforms it sends from. Null when flag calls exist, and null when this extra read timed out. */
 export type ExperimentSetupSdkProfileLibsOnAnyEventList = Array<ExperimentSetupLibActivity>;
-export const ExperimentSetupSdkProfileLibsOnAnyEventList = /*@__PURE__*/ S.Array(
+const ExperimentSetupSdkProfileLibsOnAnyEventList = /*@__PURE__*/ S.Array(
   ExperimentSetupLibActivity,
 ) as any as S.Schema<ExperimentSetupSdkProfileLibsOnAnyEventList>;
 
@@ -3274,7 +2712,7 @@ export interface ExperimentSetupSdkProfile {
   /** True when more SDKs sent events than libs_on_any_event lists. False when it is null. */
   libs_on_any_event_truncated: boolean;
 }
-export const ExperimentSetupSdkProfile = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupSdkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_days: S.Number,
     source_event: S.String,
@@ -3297,7 +2735,7 @@ export interface ExperimentSetupSdkProfileSection {
   /** Which SDKs send multivariate flag calls, across the whole project. */
   data: ExperimentSetupSdkProfile | null;
 }
-export const ExperimentSetupSdkProfileSection = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupSdkProfileSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: SetupContextSectionStatusEnum,
     data: S.NullOr(ExperimentSetupSdkProfile),
@@ -3318,7 +2756,7 @@ export interface ExperimentSetupLibReach {
   /** Share of this SDK's target events that carry a $device_id. 0 when it never sends one. */
   device_id_share: number;
 }
-export const ExperimentSetupLibReach = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupLibReach = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lib: S.NullOr(S.String),
     category: SdkLibCategoryEnum,
@@ -3330,7 +2768,7 @@ export const ExperimentSetupLibReach = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 5 SDKs, most persons reached first. */
 export type ExperimentSetupTargetSurfaceLibsList = Array<ExperimentSetupLibReach>;
-export const ExperimentSetupTargetSurfaceLibsList = /*@__PURE__*/ S.Array(
+const ExperimentSetupTargetSurfaceLibsList = /*@__PURE__*/ S.Array(
   ExperimentSetupLibReach,
 ) as any as S.Schema<ExperimentSetupTargetSurfaceLibsList>;
 
@@ -3360,7 +2798,7 @@ export interface ExperimentSetupTargetSurface {
   /** Share of all target events that carry a $device_id. Null when there were no target events. */
   device_id_share: number | null;
 }
-export const ExperimentSetupTargetSurface = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupTargetSurface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_days: S.Number,
     source_event: S.String,
@@ -3385,7 +2823,7 @@ export interface ExperimentSetupTargetSurfaceSection {
   /** Traffic on the target surface. Skipped without target_event. */
   data: ExperimentSetupTargetSurface | null;
 }
-export const ExperimentSetupTargetSurfaceSection = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupTargetSurfaceSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: SetupContextSectionStatusEnum,
     data: S.NullOr(ExperimentSetupTargetSurface),
@@ -3396,7 +2834,7 @@ export const ExperimentSetupTargetSurfaceSection = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry: the persons who converted. */
 export type ExperimentSetupFunnelBaselineStepCountsList = Array<number>;
-export const ExperimentSetupFunnelBaselineStepCountsList =
+const ExperimentSetupFunnelBaselineStepCountsList =
   RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupFunnelBaselineStepCountsList>;
 
 export interface ExperimentSetupFunnelBaseline {
@@ -3407,7 +2845,7 @@ export interface ExperimentSetupFunnelBaseline {
   /** One entry: the persons who converted. */
   step_counts: ExperimentSetupFunnelBaselineStepCountsList;
 }
-export const ExperimentSetupFunnelBaseline = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupFunnelBaseline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number_of_samples: S.Number,
     sum: S.Number,
@@ -3425,7 +2863,7 @@ export interface ExperimentSetupMeanCountBaseline {
   /** Sum over persons of their metric event count squared. */
   sum_squares: number;
 }
-export const ExperimentSetupMeanCountBaseline = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupMeanCountBaseline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number_of_samples: S.Number,
     sum: S.Number,
@@ -3465,7 +2903,7 @@ export interface ExperimentSetupCandidateMetric {
   /** Persons who sent the metric event, with metric_properties applied. */
   unique_persons: number | null;
 }
-export const ExperimentSetupCandidateMetric = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupCandidateMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window_days: S.Number,
     source_event: S.String,
@@ -3492,7 +2930,7 @@ export interface ExperimentSetupCandidateMetricSection {
   /** Baseline of the candidate metric. Skipped without metric_event. */
   data: ExperimentSetupCandidateMetric | null;
 }
-export const ExperimentSetupCandidateMetricSection = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupCandidateMetricSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: SetupContextSectionStatusEnum,
     data: S.NullOr(ExperimentSetupCandidateMetric),
@@ -3508,7 +2946,7 @@ export type PreviousExperimentStateEnum =
   | "paused"
   | "exposure_frozen"
   | "stopped";
-export const PreviousExperimentStateEnum = S.String;
+const PreviousExperimentStateEnum = S.String;
 
 export type ExperimentSetupStoredPropertyFilterListItem =
   | EventPropertyFilter
@@ -3535,29 +2973,29 @@ export type ExperimentSetupStoredPropertyFilterListItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-export const ExperimentSetupStoredPropertyFilterListItem =
+const ExperimentSetupStoredPropertyFilterListItem =
   S.Unknown as any as S.Schema<ExperimentSetupStoredPropertyFilterListItem>;
 
 /** Property filters as an experiment stored them. Any filter type can appear, cohorts included. */
 export type ExperimentSetupStoredPropertyFilterList =
   Array<ExperimentSetupStoredPropertyFilterListItem>;
-export const ExperimentSetupStoredPropertyFilterList = /*@__PURE__*/ S.Array(
+const ExperimentSetupStoredPropertyFilterList = /*@__PURE__*/ S.Array(
   ExperimentSetupStoredPropertyFilterListItem,
 ) as any as S.Schema<ExperimentSetupStoredPropertyFilterList>;
 
 /** metric_type of each primary metric, for example 'mean', 'funnel', 'ratio' or 'retention'. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricTypesList = Array<string>;
-export const ExperimentSetupPreviousExperimentPrimaryMetricTypesList =
+const ExperimentSetupPreviousExperimentPrimaryMetricTypesList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricTypesList>;
 
 /** Event names the primary metrics count. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricEventsList = Array<string>;
-export const ExperimentSetupPreviousExperimentPrimaryMetricEventsList =
+const ExperimentSetupPreviousExperimentPrimaryMetricEventsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricEventsList>;
 
 /** Actions the primary metrics count. */
 export type ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList = Array<number>;
-export const ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList =
+const ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList =
   RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupPreviousExperimentPrimaryMetricActionIdsList>;
 
 export interface ExperimentSetupOutcome {
@@ -3576,7 +3014,7 @@ export interface ExperimentSetupOutcome {
   /** The last moment the result covers. A backfill writes an older day with a recent completed_at, so this says how current the numbers are. */
   result_data_through: string | null;
 }
-export const ExperimentSetupOutcome = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupOutcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_type: S.String,
     metric_samples: S.NullOr(S.Number),
@@ -3658,7 +3096,7 @@ export interface ExperimentSetupPreviousExperiment {
   /** From the completed result that covers the latest data in the experiment's current run. A funnel or a mean primary metric is chosen over a retention or a ratio one, because only its samples are the analyzed population. Null when no result exists for that run, which is also the case for older metric definitions that results are never stored for. */
   outcome: ExperimentSetupOutcome | null;
 }
-export const ExperimentSetupPreviousExperiment = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupPreviousExperiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -3702,7 +3140,7 @@ export const ExperimentSetupPreviousExperiment = /*@__PURE__*/ S.suspend(() =>
 /** Most recently launched first, then drafts. Archived experiments are included, deleted ones are not. */
 export type ExperimentSetupPreviousExperimentsExperimentsList =
   Array<ExperimentSetupPreviousExperiment>;
-export const ExperimentSetupPreviousExperimentsExperimentsList = /*@__PURE__*/ S.Array(
+const ExperimentSetupPreviousExperimentsExperimentsList = /*@__PURE__*/ S.Array(
   ExperimentSetupPreviousExperiment,
 ) as any as S.Schema<ExperimentSetupPreviousExperimentsExperimentsList>;
 
@@ -3734,7 +3172,7 @@ export interface ExperimentSetupPreviousExperimentsSummary {
   /** Launched experiments whose flag now serves one variant to everyone it matches, usually after shipping. */
   serving_single_variant: number;
 }
-export const ExperimentSetupPreviousExperimentsSummary = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupPreviousExperimentsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     launched: S.Number,
@@ -3760,7 +3198,7 @@ export interface ExperimentSetupPreviousExperiments {
   /** Counts over the listed experiments. */
   summary: ExperimentSetupPreviousExperimentsSummary;
 }
-export const ExperimentSetupPreviousExperiments = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupPreviousExperiments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experiments: ExperimentSetupPreviousExperimentsExperimentsList,
     summary: ExperimentSetupPreviousExperimentsSummary,
@@ -3775,7 +3213,7 @@ export interface ExperimentSetupPreviousExperimentsSection {
   /** How the project's recent experiments were set up and how they went. */
   data: ExperimentSetupPreviousExperiments | null;
 }
-export const ExperimentSetupPreviousExperimentsSection = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupPreviousExperimentsSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: SetupContextSectionStatusEnum,
     data: S.NullOr(ExperimentSetupPreviousExperiments),
@@ -3786,17 +3224,17 @@ export const ExperimentSetupPreviousExperimentsSection = /*@__PURE__*/ S.suspend
 
 /** Event names the metric counts. */
 export type ExperimentSetupSharedMetricEventsList = Array<string>;
-export const ExperimentSetupSharedMetricEventsList =
+const ExperimentSetupSharedMetricEventsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupSharedMetricEventsList>;
 
 /** Actions the metric counts. */
 export type ExperimentSetupSharedMetricActionIdsList = Array<number>;
-export const ExperimentSetupSharedMetricActionIdsList =
+const ExperimentSetupSharedMetricActionIdsList =
   RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentSetupSharedMetricActionIdsList>;
 
 /** Where metric_event sits in the metric: 'funnel_step' and 'funnel_final_step' for a funnel, 'mean_source', 'ratio_numerator', 'ratio_denominator', 'retention_start' or 'retention_completion'. A metric that only starts from the event is a different precedent from one that converts on it. Empty when the metric does not count it, and null when no metric_event was passed. */
 export type ExperimentSetupSharedMetricMetricEventRolesList = Array<string>;
-export const ExperimentSetupSharedMetricMetricEventRolesList =
+const ExperimentSetupSharedMetricMetricEventRolesList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentSetupSharedMetricMetricEventRolesList>;
 
 export interface ExperimentSetupSharedMetric {
@@ -3821,7 +3259,7 @@ export interface ExperimentSetupSharedMetric {
   /** Where metric_event sits in the metric: 'funnel_step' and 'funnel_final_step' for a funnel, 'mean_source', 'ratio_numerator', 'ratio_denominator', 'retention_start' or 'retention_completion'. A metric that only starts from the event is a different precedent from one that converts on it. Empty when the metric does not count it, and null when no metric_event was passed. */
   metric_event_roles: ExperimentSetupSharedMetricMetricEventRolesList | null;
 }
-export const ExperimentSetupSharedMetric = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupSharedMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -3840,7 +3278,7 @@ export const ExperimentSetupSharedMetric = /*@__PURE__*/ S.suspend(() =>
 
 /** Metrics that match metric_event first, then most reused. A use counts when it is on an experiment you can open and that is not deleted, so the counts follow your access. */
 export type ExperimentSetupSharedMetricsMetricsList = Array<ExperimentSetupSharedMetric>;
-export const ExperimentSetupSharedMetricsMetricsList = /*@__PURE__*/ S.Array(
+const ExperimentSetupSharedMetricsMetricsList = /*@__PURE__*/ S.Array(
   ExperimentSetupSharedMetric,
 ) as any as S.Schema<ExperimentSetupSharedMetricsMetricsList>;
 
@@ -3852,7 +3290,7 @@ export interface ExperimentSetupSharedMetrics {
   /** Metrics that match metric_event first, then most reused. A use counts when it is on an experiment you can open and that is not deleted, so the counts follow your access. */
   metrics: ExperimentSetupSharedMetricsMetricsList;
 }
-export const ExperimentSetupSharedMetrics = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupSharedMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_event: S.NullOr(S.String),
     metric_event_match_truncated: S.Boolean,
@@ -3868,7 +3306,7 @@ export interface ExperimentSetupSharedMetricsSection {
   /** Shared metrics the project reuses. */
   data: ExperimentSetupSharedMetrics | null;
 }
-export const ExperimentSetupSharedMetricsSection = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupSharedMetricsSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: SetupContextSectionStatusEnum,
     data: S.NullOr(ExperimentSetupSharedMetrics),
@@ -3892,7 +3330,7 @@ export interface ExperimentSetupContextResponse {
   /** Most reused shared metrics. */
   shared_metrics: ExperimentSetupSharedMetricsSection;
 }
-export const ExperimentSetupContextResponse = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSetupContextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_defaults: ExperimentSetupTeamDefaultsSection,
     sdk_profile: ExperimentSetupSdkProfileSection,
@@ -3925,7 +3363,7 @@ export interface CreateExperimentsShipVariantRequest {
   /** If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution -- existing release conditions are preserved and the variant is served only to users who already match them. */
   release_to_everyone?: boolean;
 }
-export const CreateExperimentsShipVariantRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsShipVariantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3953,7 +3391,7 @@ export interface CreateExperimentsUnfreezeExposureRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const CreateExperimentsUnfreezeExposureRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentsUnfreezeExposureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3976,7 +3414,7 @@ export interface ExperimentsArchiveCreateRequest {
   /** When the linked feature flag is still enabled, also disable and archive it along with the experiment. Has no effect if the flag is already disabled (it is archived either way). */
   disable_feature_flag?: boolean;
 }
-export const ExperimentsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3994,16 +3432,16 @@ export const ExperimentsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of object IDs to update tags on. */
 export type ExperimentsBulkUpdateTagsCreateRequestIdsList = Array<number>;
-export const ExperimentsBulkUpdateTagsCreateRequestIdsList =
+const ExperimentsBulkUpdateTagsCreateRequestIdsList =
   RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-export const BulkUpdateTagsActionEnum = S.String;
+const BulkUpdateTagsActionEnum = S.String;
 
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type ExperimentsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-export const ExperimentsBulkUpdateTagsCreateRequestTagsList =
+const ExperimentsBulkUpdateTagsCreateRequestTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequestTagsList>;
 
 export interface ExperimentsBulkUpdateTagsCreateRequest {
@@ -4016,7 +3454,7 @@ export interface ExperimentsBulkUpdateTagsCreateRequest {
   /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
   tags?: ExperimentsBulkUpdateTagsCreateRequestTagsList;
 }
-export const ExperimentsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ids: S.optional(ExperimentsBulkUpdateTagsCreateRequestIdsList),
@@ -4034,14 +3472,14 @@ export const ExperimentsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ExperimentsBulkUpdateTagsCreateRequest>;
 
 export type BulkUpdateTagsItemTagsList = Array<string>;
-export const BulkUpdateTagsItemTagsList =
+const BulkUpdateTagsItemTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<BulkUpdateTagsItemTagsList>;
 
 export interface BulkUpdateTagsItem {
   id?: number;
   tags?: BulkUpdateTagsItemTagsList;
 }
-export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     tags: S.optional(BulkUpdateTagsItemTagsList),
@@ -4049,7 +3487,7 @@ export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkUpdateTagsItem" }) as any as S.Schema<BulkUpdateTagsItem>;
 
 export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
-export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
+const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsItem,
 ) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
 
@@ -4057,7 +3495,7 @@ export interface BulkUpdateTagsError {
   id?: number;
   reason?: string;
 }
-export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     reason: S.optional(S.String),
@@ -4065,7 +3503,7 @@ export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkUpdateTagsError" }) as any as S.Schema<BulkUpdateTagsError>;
 
 export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
-export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
+const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsError,
 ) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
 
@@ -4073,7 +3511,7 @@ export interface BulkUpdateTagsResponse {
   updated?: BulkUpdateTagsResponseUpdatedList;
   skipped?: BulkUpdateTagsResponseSkippedList;
 }
-export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: S.optional(BulkUpdateTagsResponseUpdatedList),
     skipped: S.optional(BulkUpdateTagsResponseSkippedList),
@@ -4092,7 +3530,7 @@ export interface ExperimentsCopyToProjectCreateRequest {
   /** Optional name for the copied experiment. */
   name?: string;
 }
-export const ExperimentsCopyToProjectCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsCopyToProjectCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4113,37 +3551,37 @@ export const ExperimentsCopyToProjectCreateRequest = /*@__PURE__*/ S.suspend(() 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
   Array<string>;
-export const ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
+const ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
   Array<unknown>;
-export const ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
+const ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList =
   CreateExperimentsRecalculateTimeseriesRequestSavedMetricsIdsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList =
   Array<string>;
-export const ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList =
+const ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList =
   Array<string>;
-export const ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList =
+const ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-export const ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap =
+const ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap =
   CreateExperimentsRecalculateTimeseriesRequestOriginalExperimentMap as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList = Array<string>;
-export const ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList =
+const ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList>;
 
 export interface ExperimentsCreateExposureCohortForExperimentCreateRequest {
@@ -4207,89 +3645,88 @@ export interface ExperimentsCreateExposureCohortForExperimentCreateRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList;
 }
-export const ExperimentsCreateExposureCohortForExperimentCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      name: S.optional(S.String),
-      description: S.optional(S.NullOr(S.String)),
-      start_date: S.optional(S.NullOr(S.String)),
-      end_date: S.optional(S.NullOr(S.String)),
-      feature_flag_key: S.optional(S.String),
-      holdout_id: S.optional(S.NullOr(S.Number)),
-      parameters: S.optional(S.NullOr(ExperimentParameters)),
-      running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
-      excluded_variants: S.optional(
-        S.NullOr(ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList),
-      ),
-      secondary_metrics: S.optional(S.Unknown),
-      saved_metrics_ids: S.optional(
-        S.NullOr(ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList),
-      ),
-      filters: S.optional(S.Unknown),
-      archived: S.optional(S.Boolean),
-      deleted: S.optional(S.NullOr(S.Boolean)),
-      type: S.optional(S.NullOr(ExperimentTypeEnum)),
-      exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-      metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-      metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
-      stats_config: S.optional(S.Unknown),
-      scheduling_config: S.optional(S.Unknown),
-      allow_unknown_events: S.optional(S.Boolean),
-      _create_in_folder: S.optional(S.String),
-      conclusion: S.optional(S.NullOr(ConclusionEnum)),
-      conclusion_comment: S.optional(S.NullOr(S.String)),
-      repository: S.optional(S.NullOr(S.String)),
-      primary_metrics_ordered_uuids: S.optional(
-        S.NullOr(
-          ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList,
-        ),
-      ),
-      secondary_metrics_ordered_uuids: S.optional(
-        S.NullOr(
-          ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList,
-        ),
-      ),
-      only_count_matured_users: S.optional(S.Boolean),
-      update_feature_flag_params: S.optional(S.Boolean),
-      version: S.optional(S.NullOr(S.Number)),
-      original_experiment: S.optional(
-        S.NullOr(ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap),
-      ),
-      tags: S.optional(ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/experiments/{id}/create_exposure_cohort_for_experiment/",
-        code: 200,
-      }),
+const ExperimentsCreateExposureCohortForExperimentCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    start_date: S.optional(S.NullOr(S.String)),
+    end_date: S.optional(S.NullOr(S.String)),
+    feature_flag_key: S.optional(S.String),
+    holdout_id: S.optional(S.NullOr(S.Number)),
+    parameters: S.optional(S.NullOr(ExperimentParameters)),
+    running_time_calculation: S.optional(S.NullOr(ExperimentRunningTimeCalculation)),
+    excluded_variants: S.optional(
+      S.NullOr(ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList),
     ),
+    secondary_metrics: S.optional(S.Unknown),
+    saved_metrics_ids: S.optional(
+      S.NullOr(ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList),
+    ),
+    filters: S.optional(S.Unknown),
+    archived: S.optional(S.Boolean),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(S.NullOr(ExperimentTypeEnum)),
+    exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
+    metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
+    metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+    stats_config: S.optional(S.Unknown),
+    scheduling_config: S.optional(S.Unknown),
+    allow_unknown_events: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
+    conclusion: S.optional(S.NullOr(ConclusionEnum)),
+    conclusion_comment: S.optional(S.NullOr(S.String)),
+    repository: S.optional(S.NullOr(S.String)),
+    primary_metrics_ordered_uuids: S.optional(
+      S.NullOr(
+        ExperimentsCreateExposureCohortForExperimentCreateRequestPrimaryMetricsOrderedUuidsList,
+      ),
+    ),
+    secondary_metrics_ordered_uuids: S.optional(
+      S.NullOr(
+        ExperimentsCreateExposureCohortForExperimentCreateRequestSecondaryMetricsOrderedUuidsList,
+      ),
+    ),
+    only_count_matured_users: S.optional(S.Boolean),
+    update_feature_flag_params: S.optional(S.Boolean),
+    version: S.optional(S.NullOr(S.Number)),
+    original_experiment: S.optional(
+      S.NullOr(ExperimentsCreateExposureCohortForExperimentCreateRequestOriginalExperimentMap),
+    ),
+    tags: S.optional(ExperimentsCreateExposureCohortForExperimentCreateRequestTagsList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/create_exposure_cohort_for_experiment/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ExperimentsCreateExposureCohortForExperimentCreateRequest",
 }) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateRequest>;
 
 export interface ExperimentsCreateExposureCohortForExperimentCreateResponse {}
-export const ExperimentsCreateExposureCohortForExperimentCreateResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const ExperimentsCreateExposureCohortForExperimentCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "ExperimentsCreateExposureCohortForExperimentCreateResponse",
 }) as any as S.Schema<ExperimentsCreateExposureCohortForExperimentCreateResponse>;
 
 /** Ordered list of prompt version numbers to assign to experiment variants. The first entry is the control variant. Must contain between 2 and 10 distinct versions. */
 export type ExperimentsCreateFromPromptCreateRequestVersionsList = Array<number>;
-export const ExperimentsCreateFromPromptCreateRequestVersionsList =
+const ExperimentsCreateFromPromptCreateRequestVersionsList =
   RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentsCreateFromPromptCreateRequestVersionsList>;
 
 /** * `cost` - cost * `latency` - latency * `eval_pass_rate` - eval_pass_rate */
 export type TemplatesEnum = "cost" | "latency" | "eval_pass_rate";
-export const TemplatesEnum = S.String;
+const TemplatesEnum = S.String;
 
 /** One or more metric templates to attach as primary metrics. Each template becomes one metric on the experiment. Allowed values: cost, latency, eval_pass_rate. */
 export type ExperimentsCreateFromPromptCreateRequestTemplatesList = Array<
   TemplatesEnum | (string & {})
 >;
-export const ExperimentsCreateFromPromptCreateRequestTemplatesList = /*@__PURE__*/ S.Array(
+const ExperimentsCreateFromPromptCreateRequestTemplatesList = /*@__PURE__*/ S.Array(
   TemplatesEnum,
 ) as any as S.Schema<ExperimentsCreateFromPromptCreateRequestTemplatesList>;
 
@@ -4309,7 +3746,7 @@ export interface ExperimentsCreateFromPromptCreateRequest {
   /** Optional experiment description. */
   description?: string;
 }
-export const ExperimentsCreateFromPromptCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsCreateFromPromptCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String,
@@ -4335,7 +3772,7 @@ export interface ExperimentsDestroyRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const ExperimentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4347,40 +3784,40 @@ export const ExperimentsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentsDestroyRequest>;
 
 export interface ExperimentsDestroyResponse {}
-export const ExperimentsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ExperimentsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ExperimentsDestroyResponse",
 }) as any as S.Schema<ExperimentsDestroyResponse>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsDuplicateCreateRequestExcludedVariantsList = Array<string>;
-export const ExperimentsDuplicateCreateRequestExcludedVariantsList =
+const ExperimentsDuplicateCreateRequestExcludedVariantsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type ExperimentsDuplicateCreateRequestSavedMetricsIdsList = Array<unknown>;
-export const ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
+const ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
   ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<ExperimentsDuplicateCreateRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-export const ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList =
+const ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-export const ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList =
+const ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type ExperimentsDuplicateCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-export const ExperimentsDuplicateCreateRequestOriginalExperimentMap =
+const ExperimentsDuplicateCreateRequestOriginalExperimentMap =
   CreateExperimentRequestOriginalExperimentMap as any as S.Schema<ExperimentsDuplicateCreateRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentsDuplicateCreateRequestTagsList = Array<string>;
-export const ExperimentsDuplicateCreateRequestTagsList =
+const ExperimentsDuplicateCreateRequestTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentsDuplicateCreateRequestTagsList>;
 
 export interface ExperimentsDuplicateCreateRequest {
@@ -4444,7 +3881,7 @@ export interface ExperimentsDuplicateCreateRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentsDuplicateCreateRequestTagsList;
 }
-export const ExperimentsDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4498,7 +3935,7 @@ export const ExperimentsDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentsDuplicateCreateRequest>;
 
 export interface ExperimentsDuplicateCreateResponse {}
-export const ExperimentsDuplicateCreateResponse =
+const ExperimentsDuplicateCreateResponse =
   CreateExperimentsRecalculateTimeseriesResponse as any as S.Schema<ExperimentsDuplicateCreateResponse>;
 
 export interface ExperimentsMigrateCreateRequest {
@@ -4507,7 +3944,7 @@ export interface ExperimentsMigrateCreateRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const ExperimentsMigrateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsMigrateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4528,7 +3965,7 @@ export interface ExperimentsResetCreateRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const ExperimentsResetCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsResetCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4549,7 +3986,7 @@ export interface ExperimentsResumeCreateRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const ExperimentsResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4570,7 +4007,7 @@ export interface ExperimentsUnarchiveCreateRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const ExperimentsUnarchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentsUnarchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4591,7 +4028,7 @@ export interface GetExperimentRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4610,7 +4047,7 @@ export interface GetExperimentsActivityRequest {
   /** Page number */
   page?: number;
 }
-export const GetExperimentsActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4634,7 +4071,7 @@ export interface Change {
   before?: unknown;
   after?: unknown;
 }
-export const Change = /*@__PURE__*/ S.suspend(() =>
+const Change = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     action: S.optional(S.String),
@@ -4645,16 +4082,14 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 
 export type DetailChangesList = Array<Change>;
-export const DetailChangesList = /*@__PURE__*/ S.Array(
-  Change,
-) as any as S.Schema<DetailChangesList>;
+const DetailChangesList = /*@__PURE__*/ S.Array(Change) as any as S.Schema<DetailChangesList>;
 
 export interface Merge {
   type?: string;
   source?: unknown;
   target?: unknown;
 }
-export const Merge = /*@__PURE__*/ S.suspend(() =>
+const Merge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     source: S.optional(S.Unknown),
@@ -4667,7 +4102,7 @@ export interface Trigger {
   job_id?: string;
   payload?: unknown;
 }
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
+const Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_type: S.optional(S.String),
     job_id: S.optional(S.String),
@@ -4684,7 +4119,7 @@ export interface Detail {
   short_id?: string;
   type?: string;
 }
-export const Detail = /*@__PURE__*/ S.suspend(() =>
+const Detail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     changes: S.optional(DetailChangesList),
@@ -4711,7 +4146,7 @@ export interface ActivityLogEntry {
   /** API client that triggered the activity. Self-reported through the x-posthog-client request header (e.g. 'mcp'), or 'scout:<skill_name>' when a scout run made the change, which the server derives from the run's own token. Null for requests that did neither. */
   client?: string | null;
 }
-export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     user: S.optional(S.NullOr(S.Unknown)),
@@ -4727,7 +4162,7 @@ export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityLogEntry" }) as any as S.Schema<ActivityLogEntry>;
 
 export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
-export const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
+const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
   ActivityLogEntry,
 ) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
 
@@ -4738,7 +4173,7 @@ export interface ActivityLogPaginatedResponse {
   previous?: string | null;
   total_count?: number;
 }
-export const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(ActivityLogPaginatedResponseResultsList),
     next: S.optional(S.NullOr(S.String)),
@@ -4755,7 +4190,7 @@ export interface GetExperimentsFlagCleanupTargetRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const GetExperimentsFlagCleanupTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsFlagCleanupTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4777,11 +4212,11 @@ export type ExperimentFlagCleanupTargetSourceEnum =
   | "single_repo"
   | "ambiguous"
   | "no_integration";
-export const ExperimentFlagCleanupTargetSourceEnum = S.String;
+const ExperimentFlagCleanupTargetSourceEnum = S.String;
 
 /** Repositories connected to the team's GitHub integration, to choose a target from. */
 export type ExperimentFlagCleanupTargetCandidatesList = Array<string>;
-export const ExperimentFlagCleanupTargetCandidatesList =
+const ExperimentFlagCleanupTargetCandidatesList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentFlagCleanupTargetCandidatesList>;
 
 export interface ExperimentFlagCleanupTarget {
@@ -4792,7 +4227,7 @@ export interface ExperimentFlagCleanupTarget {
   /** Repositories connected to the team's GitHub integration, to choose a target from. */
   candidates: ExperimentFlagCleanupTargetCandidatesList;
 }
-export const ExperimentFlagCleanupTarget = /*@__PURE__*/ S.suspend(() =>
+const ExperimentFlagCleanupTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository: S.NullOr(S.String),
     source: ExperimentFlagCleanupTargetSourceEnum,
@@ -4808,7 +4243,7 @@ export interface GetExperimentsFlagCleanupTaskRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const GetExperimentsFlagCleanupTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsFlagCleanupTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4831,7 +4266,7 @@ export type RunStatusEnum =
   | "completed"
   | "failed"
   | "cancelled";
-export const RunStatusEnum = S.String;
+const RunStatusEnum = S.String;
 
 export interface ExperimentFlagCleanupTask {
   /** ID of the flag-cleanup Desktop task. */
@@ -4845,7 +4280,7 @@ export interface ExperimentFlagCleanupTask {
   /** Whether the requesting user can open the task in PostHog Desktop. Cleanup tasks are visible to their creator only, so other viewers should not be shown a task link. */
   can_view_task: boolean;
 }
-export const ExperimentFlagCleanupTask = /*@__PURE__*/ S.suspend(() =>
+const ExperimentFlagCleanupTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
     run_status: RunStatusEnum,
@@ -4863,7 +4298,7 @@ export interface GetExperimentsInSessionExposureRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const GetExperimentsInSessionExposureRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsInSessionExposureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4887,7 +4322,7 @@ export interface ExperimentInSessionExposure {
   /** True when in-session evidence is the stamped `$feature/<flag_key>` property, which means the flag was active in the session, rather than the exposure event itself being captured there. Copy must not claim the exposure was captured in the session when this is set. */
   uses_stamped_fallback: boolean;
 }
-export const ExperimentInSessionExposure = /*@__PURE__*/ S.suspend(() =>
+const ExperimentInSessionExposure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.Boolean,
     unavailable_reason: S.NullOr(S.String),
@@ -4905,7 +4340,7 @@ export type GetExperimentsMatchingIdsRequestStatus =
   | "paused"
   | "running"
   | "stopped";
-export const GetExperimentsMatchingIdsRequestStatus = S.String;
+const GetExperimentsMatchingIdsRequestStatus = S.String;
 
 export interface GetExperimentsMatchingIdsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4931,7 +4366,7 @@ export interface GetExperimentsMatchingIdsRequest {
   /** JSON-encoded list of tag names. Returns experiments carrying at least one of the given tags, e.g. `["growth", "checkout"]`. */
   tags?: string;
 }
-export const GetExperimentsMatchingIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsMatchingIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -4957,7 +4392,7 @@ export const GetExperimentsMatchingIdsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of all experiments matching the current list filters that the user can edit. */
 export type ExperimentMatchingIdsResponseIdsList = Array<number>;
-export const ExperimentMatchingIdsResponseIdsList =
+const ExperimentMatchingIdsResponseIdsList =
   RunningTimeBaselineStatsStepCountsList as any as S.Schema<ExperimentMatchingIdsResponseIdsList>;
 
 export interface ExperimentMatchingIdsResponse {
@@ -4966,7 +4401,7 @@ export interface ExperimentMatchingIdsResponse {
   /** Number of matching editable experiments. */
   total: number;
 }
-export const ExperimentMatchingIdsResponse = /*@__PURE__*/ S.suspend(() =>
+const ExperimentMatchingIdsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: ExperimentMatchingIdsResponseIdsList,
     total: S.Number,
@@ -4983,7 +4418,7 @@ export interface GetExperimentsMetricsRecalculationRequest {
   /** UUID of the recalculation run to fetch. This is the run's own id, not the experiment id. */
   recalculation_id: string;
 }
-export const GetExperimentsMetricsRecalculationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsMetricsRecalculationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -5001,7 +4436,7 @@ export const GetExperimentsMetricsRecalculationRequest = /*@__PURE__*/ S.suspend
 
 /** * `pending` - pending * `completed` - completed * `failed` - failed */
 export type MetricRecalculationResultStatusEnum = "pending" | "completed" | "failed";
-export const MetricRecalculationResultStatusEnum = S.String;
+const MetricRecalculationResultStatusEnum = S.String;
 
 /** One metric's recalculated result row, read back from ExperimentMetricResult. */
 export interface MetricRecalculationResult {
@@ -5014,7 +4449,7 @@ export interface MetricRecalculationResult {
   /** Error message when status is failed; otherwise null */
   error_message: string | null;
 }
-export const MetricRecalculationResult = /*@__PURE__*/ S.suspend(() =>
+const MetricRecalculationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metric_uuid: S.String,
     status: MetricRecalculationResultStatusEnum,
@@ -5027,7 +4462,7 @@ export const MetricRecalculationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
 export type ExperimentMetricsRecalculationRunResultsList = Array<MetricRecalculationResult>;
-export const ExperimentMetricsRecalculationRunResultsList = /*@__PURE__*/ S.Array(
+const ExperimentMetricsRecalculationRunResultsList = /*@__PURE__*/ S.Array(
   MetricRecalculationResult,
 ) as any as S.Schema<ExperimentMetricsRecalculationRunResultsList>;
 
@@ -5064,7 +4499,7 @@ export interface ExperimentMetricsRecalculationRun {
   /** ClickHouse's total_rows_approx across running queries plus the final read_rows of finished ones. A soft ceiling revised mid-scan, so it can exceed or trail rows_read; treat rows_read as the reliable signal */
   estimated_rows_total?: number | null;
 }
-export const ExperimentMetricsRecalculationRun = /*@__PURE__*/ S.suspend(() =>
+const ExperimentMetricsRecalculationRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     experiment_id: S.Number,
@@ -5092,7 +4527,7 @@ export interface GetExperimentsMetricsRecalculationLatestRequest {
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const GetExperimentsMetricsRecalculationLatestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsMetricsRecalculationLatestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -5109,7 +4544,7 @@ export const GetExperimentsMetricsRecalculationLatestRequest = /*@__PURE__*/ S.s
 
 /** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
 export type ExperimentMetricsRecalculationLatestResultsList = Array<MetricRecalculationResult>;
-export const ExperimentMetricsRecalculationLatestResultsList =
+const ExperimentMetricsRecalculationLatestResultsList =
   ExperimentMetricsRecalculationRunResultsList as any as S.Schema<ExperimentMetricsRecalculationLatestResultsList>;
 
 /** Pointer to a recalculation run that is still executing, surfaced alongside the latest terminal results. */
@@ -5119,7 +4554,7 @@ export interface ActiveRecalculationRun {
   /** Status of the executing run (pending or in_progress) * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
   status: MetricsRecalculationStatusEnum;
 }
-export const ActiveRecalculationRun = /*@__PURE__*/ S.suspend(() =>
+const ActiveRecalculationRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: MetricsRecalculationStatusEnum,
@@ -5128,7 +4563,7 @@ export const ActiveRecalculationRun = /*@__PURE__*/ S.suspend(() =>
 
 /** * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
 export type ResultSourceEnum = "recalculation" | "timeseries_fallback";
-export const ResultSourceEnum = S.String;
+const ResultSourceEnum = S.String;
 
 /** GET latest: the newest terminal run, or the timeseries fallback, plus a pointer to any active run. */
 export interface ExperimentMetricsRecalculationLatest {
@@ -5167,7 +4602,7 @@ export interface ExperimentMetricsRecalculationLatest {
   /** Where these results came from: 'recalculation' for a real metrics-recalculation run, 'timeseries_fallback' for a cold-start placeholder built from the latest daily timeseries data. * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
   result_source: ResultSourceEnum;
 }
-export const ExperimentMetricsRecalculationLatest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentMetricsRecalculationLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     experiment_id: S.Number,
@@ -5195,7 +4630,7 @@ export interface GetExperimentsPromptTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetExperimentsPromptTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsPromptTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -5214,7 +4649,7 @@ export interface GetExperimentsPromptTemplateResponseBodyItem {
   label: string;
   description: string;
 }
-export const GetExperimentsPromptTemplateResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsPromptTemplateResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     label: S.String,
@@ -5226,12 +4661,12 @@ export const GetExperimentsPromptTemplateResponseBodyItem = /*@__PURE__*/ S.susp
 
 export type GetExperimentsPromptTemplateResponseBodyList =
   Array<GetExperimentsPromptTemplateResponseBodyItem>;
-export const GetExperimentsPromptTemplateResponseBodyList = /*@__PURE__*/ S.Array(
+const GetExperimentsPromptTemplateResponseBodyList = /*@__PURE__*/ S.Array(
   GetExperimentsPromptTemplateResponseBodyItem,
 ) as any as S.Schema<GetExperimentsPromptTemplateResponseBodyList>;
 
 export type GetExperimentsPromptTemplateResponse = GetExperimentsPromptTemplateResponseBodyList;
-export const GetExperimentsPromptTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsPromptTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   GetExperimentsPromptTemplateResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetExperimentsPromptTemplateResponse",
@@ -5243,7 +4678,7 @@ export interface GetExperimentsSessionContextRequest {
   /** ID of the session recording to resolve experiment context for. */
   session_id: string;
 }
-export const GetExperimentsSessionContextRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsSessionContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     session_id: S.String.pipe(T.Query()),
@@ -5262,7 +4697,7 @@ export interface GetExperimentsStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetExperimentsStatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsStatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -5273,7 +4708,7 @@ export const GetExperimentsStatRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExperimentsStatRequest>;
 
 export interface GetExperimentsStatResponse {}
-export const GetExperimentsStatResponse =
+const GetExperimentsStatResponse =
   ExperimentsDestroyResponse as any as S.Schema<GetExperimentsStatResponse>;
 
 export interface GetExperimentsTimeseriesResultRequest {
@@ -5286,7 +4721,7 @@ export interface GetExperimentsTimeseriesResultRequest {
   /** UUID of the metric to fetch timeseries for. Available on each metric in the experiment's metrics array. */
   metric_uuid: string;
 }
-export const GetExperimentsTimeseriesResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsTimeseriesResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -5304,7 +4739,7 @@ export const GetExperimentsTimeseriesResultRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetExperimentsTimeseriesResultRequest>;
 
 export interface GetExperimentsTimeseriesResultResponse {}
-export const GetExperimentsTimeseriesResultResponse =
+const GetExperimentsTimeseriesResultResponse =
   CreateExperimentsRecalculateTimeseriesResponse as any as S.Schema<GetExperimentsTimeseriesResultResponse>;
 
 export type ListExperimentsRequestStatus =
@@ -5315,7 +4750,7 @@ export type ListExperimentsRequestStatus =
   | "paused"
   | "running"
   | "stopped";
-export const ListExperimentsRequestStatus = S.String;
+const ListExperimentsRequestStatus = S.String;
 
 export interface ListExperimentsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -5345,7 +4780,7 @@ export interface ListExperimentsRequest {
   /** JSON-encoded list of tag names. Returns experiments carrying at least one of the given tags, e.g. `["growth", "checkout"]`. */
   tags?: string;
 }
-export const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -5365,12 +4800,12 @@ export const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentBasicExcludedVariantsList = Array<string>;
-export const ExperimentBasicExcludedVariantsList =
+const ExperimentBasicExcludedVariantsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentBasicExcludedVariantsList>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type ExperimentBasicTagsList = Array<string>;
-export const ExperimentBasicTagsList =
+const ExperimentBasicTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<ExperimentBasicTagsList>;
 
 /** Lightweight, read-only serializer for the experiment list endpoint. The list view (and the MCP list tool) render only the scalar and feature-flag fields shared via ``ExperimentBaseSerializer`` -- never the metric definitions. Omitting ``metrics``/``metrics_secondary``/``saved_metrics`` lets the list query defer the large JSON columns and skip the saved-metric prefetch plus per-row fingerprinting; that work belongs to the detail response served by ``ExperimentSerializer``. Because the metric fields, the write-side machinery, and the action-name-refreshing ``to_representation`` all live on ``ExperimentSerializer`` rather than the shared base, this serializer needs no overrides: it gets DRF's default ``get_fields`` (no write-only ``holdout_id`` to configure), default ``to_representation`` (no metrics to normalize), and a plain ``ListSerializer`` that never touches the deferred columns. See ``EnterpriseExperimentsViewSet.safely_get_queryset``. */
@@ -5414,7 +4849,7 @@ export interface ExperimentBasic {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: ExperimentBasicTagsList;
 }
-export const ExperimentBasic = /*@__PURE__*/ S.suspend(() =>
+const ExperimentBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -5444,7 +4879,7 @@ export const ExperimentBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExperimentBasic" }) as any as S.Schema<ExperimentBasic>;
 
 export type PaginatedExperimentBasicListResultsList = Array<ExperimentBasic>;
-export const PaginatedExperimentBasicListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedExperimentBasicListResultsList = /*@__PURE__*/ S.Array(
   ExperimentBasic,
 ) as any as S.Schema<PaginatedExperimentBasicListResultsList>;
 
@@ -5454,7 +4889,7 @@ export interface PaginatedExperimentBasicList {
   previous?: string | null;
   results: PaginatedExperimentBasicListResultsList;
 }
-export const PaginatedExperimentBasicList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedExperimentBasicList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -5467,32 +4902,32 @@ export const PaginatedExperimentBasicList = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type UpdateExperimentRequestExcludedVariantsList = Array<string>;
-export const UpdateExperimentRequestExcludedVariantsList =
+const UpdateExperimentRequestExcludedVariantsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type UpdateExperimentRequestSavedMetricsIdsList = Array<unknown>;
-export const UpdateExperimentRequestSavedMetricsIdsList =
+const UpdateExperimentRequestSavedMetricsIdsList =
   ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<UpdateExperimentRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-export const UpdateExperimentRequestPrimaryMetricsOrderedUuidsList =
+const UpdateExperimentRequestPrimaryMetricsOrderedUuidsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-export const UpdateExperimentRequestSecondaryMetricsOrderedUuidsList =
+const UpdateExperimentRequestSecondaryMetricsOrderedUuidsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type UpdateExperimentRequestOriginalExperimentMap = { [key: string]: unknown | undefined };
-export const UpdateExperimentRequestOriginalExperimentMap =
+const UpdateExperimentRequestOriginalExperimentMap =
   CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UpdateExperimentRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type UpdateExperimentRequestTagsList = Array<string>;
-export const UpdateExperimentRequestTagsList =
+const UpdateExperimentRequestTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentRequestTagsList>;
 
 export interface UpdateExperimentRequest {
@@ -5558,7 +4993,7 @@ export interface UpdateExperimentRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: UpdateExperimentRequestTagsList;
 }
-export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -5606,34 +5041,34 @@ export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type UpdateExperimentsPartialRequestExcludedVariantsList = Array<string>;
-export const UpdateExperimentsPartialRequestExcludedVariantsList =
+const UpdateExperimentsPartialRequestExcludedVariantsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
 export type UpdateExperimentsPartialRequestSavedMetricsIdsList = Array<unknown>;
-export const UpdateExperimentsPartialRequestSavedMetricsIdsList =
+const UpdateExperimentsPartialRequestSavedMetricsIdsList =
   ExperimentFlagRolloutGroupPropertiesList as any as S.Schema<UpdateExperimentsPartialRequestSavedMetricsIdsList>;
 
 /** Display order of the primary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList = Array<string>;
-export const UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList =
+const UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestPrimaryMetricsOrderedUuidsList>;
 
 /** Display order of the secondary metrics, as metric uuids. This is a display hint only: a metric not in the list renders after the listed ones in stored order, and an entry that matches no metric is ignored. Send it only to reorder metrics. Adding or removing metrics does not need it. */
 export type UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList = Array<string>;
-export const UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList =
+const UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList =
   CreateExperimentsRecalculateTimeseriesRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestSecondaryMetricsOrderedUuidsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value -- and, without this object, any version mismatch -- fail with HTTP 409. */
 export type UpdateExperimentsPartialRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateExperimentsPartialRequestOriginalExperimentMap =
+const UpdateExperimentsPartialRequestOriginalExperimentMap =
   CreateExperimentRequestOriginalExperimentMap as any as S.Schema<UpdateExperimentsPartialRequestOriginalExperimentMap>;
 
 /** Organizational tags for this experiment (up to 100, 255 characters each). */
 export type UpdateExperimentsPartialRequestTagsList = Array<string>;
-export const UpdateExperimentsPartialRequestTagsList =
+const UpdateExperimentsPartialRequestTagsList =
   CreateExperimentRequestExcludedVariantsList as any as S.Schema<UpdateExperimentsPartialRequestTagsList>;
 
 export interface UpdateExperimentsPartialRequest {
@@ -5699,7 +5134,7 @@ export interface UpdateExperimentsPartialRequest {
   /** Organizational tags for this experiment (up to 100, 255 characters each). */
   tags?: UpdateExperimentsPartialRequestTagsList;
 }
-export const UpdateExperimentsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

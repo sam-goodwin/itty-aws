@@ -11,7 +11,7 @@ export interface GetHeatmapCapturePageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetHeatmapCapturePageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHeatmapCapturePageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -27,7 +27,7 @@ export interface HeatmapCapturePage {
   /** Heatmap events captured on this page in the last 30 days. */
   count: number;
 }
-export const HeatmapCapturePage = /*@__PURE__*/ S.suspend(() =>
+const HeatmapCapturePage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     count: S.Number,
@@ -36,7 +36,7 @@ export const HeatmapCapturePage = /*@__PURE__*/ S.suspend(() =>
 
 /** Top pages by recent heatmap volume, most active first. */
 export type HeatmapCapturePagesPagesList = Array<HeatmapCapturePage>;
-export const HeatmapCapturePagesPagesList = /*@__PURE__*/ S.Array(
+const HeatmapCapturePagesPagesList = /*@__PURE__*/ S.Array(
   HeatmapCapturePage,
 ) as any as S.Schema<HeatmapCapturePagesPagesList>;
 
@@ -44,7 +44,7 @@ export interface HeatmapCapturePages {
   /** Top pages by recent heatmap volume, most active first. */
   pages: HeatmapCapturePagesPagesList;
 }
-export const HeatmapCapturePages = /*@__PURE__*/ S.suspend(() =>
+const HeatmapCapturePages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pages: HeatmapCapturePagesPagesList,
   }),
@@ -54,7 +54,7 @@ export interface GetHeatmapCaptureSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetHeatmapCaptureSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHeatmapCaptureSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -70,11 +70,11 @@ export const GetHeatmapCaptureSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `all` - All URLs * `url_allowlist` - Only listed URLs */
 export type TeamHeatmapConfigCaptureModeEnum = "all" | "url_allowlist";
-export const TeamHeatmapConfigCaptureModeEnum = S.String;
+const TeamHeatmapConfigCaptureModeEnum = S.String;
 
 /** Full http(s) URLs that may send heatmap data. Use * to match any characters. */
 export type HeatmapCaptureSettingsUrlAllowlistList = Array<string>;
-export const HeatmapCaptureSettingsUrlAllowlistList = /*@__PURE__*/ S.Array(
+const HeatmapCaptureSettingsUrlAllowlistList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HeatmapCaptureSettingsUrlAllowlistList>;
 
@@ -90,7 +90,7 @@ export interface HeatmapCaptureSettings {
   /** How many URLs this plan may capture, or null when the plan captures all pages. */
   capture_url_limit: number | null;
 }
-export const HeatmapCaptureSettings = /*@__PURE__*/ S.suspend(() =>
+const HeatmapCaptureSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capture_mode: TeamHeatmapConfigCaptureModeEnum,
     url_allowlist: HeatmapCaptureSettingsUrlAllowlistList,
@@ -102,7 +102,7 @@ export const HeatmapCaptureSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Full http(s) URLs that may send heatmap data. Use * to match any characters. */
 export type UpdateHeatmapCaptureSettingsRequestUrlAllowlistList = Array<string>;
-export const UpdateHeatmapCaptureSettingsRequestUrlAllowlistList =
+const UpdateHeatmapCaptureSettingsRequestUrlAllowlistList =
   HeatmapCaptureSettingsUrlAllowlistList as any as S.Schema<UpdateHeatmapCaptureSettingsRequestUrlAllowlistList>;
 
 export interface UpdateHeatmapCaptureSettingsRequest {
@@ -113,7 +113,7 @@ export interface UpdateHeatmapCaptureSettingsRequest {
   /** Full http(s) URLs that may send heatmap data. Use * to match any characters. */
   url_allowlist?: UpdateHeatmapCaptureSettingsRequestUrlAllowlistList;
 }
-export const UpdateHeatmapCaptureSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHeatmapCaptureSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     capture_mode: S.optional(TeamHeatmapConfigCaptureModeEnum),

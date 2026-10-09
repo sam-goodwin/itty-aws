@@ -62,10 +62,10 @@ export class NotFound
   ) {}
 
 export type ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum = "NOT_LINKED_IMAGE" | "LINKED";
-export const ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum = S.String;
+const ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A criteria that matches a specific string of text in a shape or table. */
 export interface SubstringMatchCriteria {
@@ -76,7 +76,7 @@ export interface SubstringMatchCriteria {
   /** The text to search for in the shape or table. */
   text?: string;
 }
-export const SubstringMatchCriteria = /*@__PURE__*/ S.suspend(() =>
+const SubstringMatchCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchCase: S.optional(S.Boolean),
     searchByRegex: S.optional(S.Boolean),
@@ -97,7 +97,7 @@ export interface ReplaceAllShapesWithSheetsChartRequest {
   /** The ID of the Google Sheets spreadsheet that contains the chart. */
   spreadsheetId?: string;
 }
-export const ReplaceAllShapesWithSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllShapesWithSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkingMode: S.optional(ReplaceAllShapesWithSheetsChartRequestLinkingModeEnum),
     pageObjectIds: S.optional(StringList),
@@ -115,7 +115,7 @@ export type LinkRelativeLinkEnum =
   | "PREVIOUS_SLIDE"
   | "FIRST_SLIDE"
   | "LAST_SLIDE";
-export const LinkRelativeLinkEnum = S.String;
+const LinkRelativeLinkEnum = S.String;
 
 /** A hypertext link. */
 export interface Link {
@@ -128,7 +128,7 @@ export interface Link {
   /** If set, indicates this is a link to the external web page at this URL. */
   url?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relativeLink: S.optional(LinkRelativeLinkEnum),
     pageObjectId: S.optional(S.String),
@@ -144,7 +144,7 @@ export interface WeightedFontFamily {
   /** The font family of the text. The font family can be any font from the Font menu in Slides or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. */
   fontFamily?: string;
 }
-export const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
+const WeightedFontFamily = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weight: S.optional(S.Number),
     fontFamily: S.optional(S.String),
@@ -169,7 +169,7 @@ export type OpaqueColorThemeColorEnum =
   | "BACKGROUND1"
   | "TEXT2"
   | "BACKGROUND2";
-export const OpaqueColorThemeColorEnum = S.String;
+const OpaqueColorThemeColorEnum = S.String;
 
 /** An RGB color. */
 export interface RgbColor {
@@ -180,7 +180,7 @@ export interface RgbColor {
   /** The green component of the color, from 0.0 to 1.0. */
   green?: number;
 }
-export const RgbColor = /*@__PURE__*/ S.suspend(() =>
+const RgbColor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     red: S.optional(S.Number),
     blue: S.optional(S.Number),
@@ -195,7 +195,7 @@ export interface OpaqueColor {
   /** An opaque RGB color. */
   rgbColor?: RgbColor;
 }
-export const OpaqueColor = /*@__PURE__*/ S.suspend(() =>
+const OpaqueColor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     themeColor: S.optional(OpaqueColorThemeColorEnum),
     rgbColor: S.optional(RgbColor),
@@ -207,7 +207,7 @@ export interface OptionalColor {
   /** If set, this will be used as an opaque color. If unset, this represents a transparent color. */
   opaqueColor?: OpaqueColor;
 }
-export const OptionalColor = /*@__PURE__*/ S.suspend(() =>
+const OptionalColor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opaqueColor: S.optional(OpaqueColor),
   }),
@@ -218,10 +218,10 @@ export type TextStyleBaselineOffsetEnum =
   | "NONE"
   | "SUPERSCRIPT"
   | "SUBSCRIPT";
-export const TextStyleBaselineOffsetEnum = S.String;
+const TextStyleBaselineOffsetEnum = S.String;
 
 export type DimensionUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
-export const DimensionUnitEnum = S.String;
+const DimensionUnitEnum = S.String;
 
 /** A magnitude in a single direction in the specified units. */
 export interface Dimension {
@@ -230,7 +230,7 @@ export interface Dimension {
   /** The magnitude. */
   magnitude?: number;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(DimensionUnitEnum),
     magnitude: S.optional(S.Number),
@@ -264,7 +264,7 @@ export interface TextStyle {
   /** Whether or not the text is underlined. */
   underline?: boolean;
 }
-export const TextStyle = /*@__PURE__*/ S.suspend(() =>
+const TextStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(Link),
     weightedFontFamily: S.optional(WeightedFontFamily),
@@ -288,7 +288,7 @@ export interface TableCellLocation {
   /** The 0-based row index. */
   rowIndex?: number;
 }
-export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
+const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnIndex: S.optional(S.Number),
     rowIndex: S.optional(S.Number),
@@ -296,7 +296,7 @@ export const TableCellLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableCellLocation" }) as any as S.Schema<TableCellLocation>;
 
 export type RangeTypeEnum = "RANGE_TYPE_UNSPECIFIED" | "FIXED_RANGE" | "FROM_START_INDEX" | "ALL";
-export const RangeTypeEnum = S.String;
+const RangeTypeEnum = S.String;
 
 /** Specifies a contiguous range of an indexed collection, such as characters in text. */
 export interface Range {
@@ -307,7 +307,7 @@ export interface Range {
   /** The type of range. */
   type?: RangeTypeEnum | (string & {});
 }
-export const Range = /*@__PURE__*/ S.suspend(() =>
+const Range = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.Number),
     endIndex: S.optional(S.Number),
@@ -328,7 +328,7 @@ export interface UpdateTextStyleRequest {
   /** The range of text to style. The range may be extended to include adjacent newlines. If the range fully contains a paragraph belonging to a list, the paragraph's bullet is also updated with the matching text style. */
   textRange?: Range;
 }
-export const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTextStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     style: S.optional(TextStyle),
     objectId: S.optional(S.String),
@@ -342,7 +342,7 @@ export type ReplaceImageRequestImageReplaceMethodEnum =
   | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
   | "CENTER_INSIDE"
   | "CENTER_CROP";
-export const ReplaceImageRequestImageReplaceMethodEnum = S.String;
+const ReplaceImageRequestImageReplaceMethodEnum = S.String;
 
 /** Replaces an existing image with a new image. Replacing an image removes some image effects from the existing image. */
 export interface ReplaceImageRequest {
@@ -353,7 +353,7 @@ export interface ReplaceImageRequest {
   /** The replacement method. */
   imageReplaceMethod?: ReplaceImageRequestImageReplaceMethodEnum | (string & {});
 }
-export const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageObjectId: S.optional(S.String),
     url: S.optional(S.String),
@@ -367,7 +367,7 @@ export type UpdatePageElementsZOrderRequestOperationEnum =
   | "BRING_FORWARD"
   | "SEND_BACKWARD"
   | "SEND_TO_BACK";
-export const UpdatePageElementsZOrderRequestOperationEnum = S.String;
+const UpdatePageElementsZOrderRequestOperationEnum = S.String;
 
 /** Updates the Z-order of page elements. Z-order is an ordering of the elements on the page from back to front. The page element in the front may cover the elements that are behind it. */
 export interface UpdatePageElementsZOrderRequest {
@@ -376,7 +376,7 @@ export interface UpdatePageElementsZOrderRequest {
   /** The Z-order operation to apply on the page elements. When applying the operation on multiple page elements, the relative Z-orders within these page elements before the operation is maintained. */
   operation?: UpdatePageElementsZOrderRequestOperationEnum | (string & {});
 }
-export const UpdatePageElementsZOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePageElementsZOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageElementObjectIds: S.optional(StringList),
     operation: S.optional(UpdatePageElementsZOrderRequestOperationEnum),
@@ -392,7 +392,7 @@ export interface SolidFill {
   /** The fraction of this `color` that should be applied to the pixel. That is, the final pixel color is defined by the equation: pixel color = alpha * (color) + (1.0 - alpha) * (background color) This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent color. */
   alpha?: number;
 }
-export const SolidFill = /*@__PURE__*/ S.suspend(() =>
+const SolidFill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(OpaqueColor),
     alpha: S.optional(S.Number),
@@ -404,7 +404,7 @@ export interface TableBorderFill {
   /** Solid fill. */
   solidFill?: SolidFill;
 }
-export const TableBorderFill = /*@__PURE__*/ S.suspend(() =>
+const TableBorderFill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     solidFill: S.optional(SolidFill),
   }),
@@ -418,7 +418,7 @@ export type TableBorderPropertiesDashStyleEnum =
   | "DASH_DOT"
   | "LONG_DASH"
   | "LONG_DASH_DOT";
-export const TableBorderPropertiesDashStyleEnum = S.String;
+const TableBorderPropertiesDashStyleEnum = S.String;
 
 /** The border styling properties of the TableBorderCell. */
 export interface TableBorderProperties {
@@ -429,7 +429,7 @@ export interface TableBorderProperties {
   /** The dash style of the border. */
   dashStyle?: TableBorderPropertiesDashStyleEnum | (string & {});
 }
-export const TableBorderProperties = /*@__PURE__*/ S.suspend(() =>
+const TableBorderProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBorderFill: S.optional(TableBorderFill),
     weight: S.optional(Dimension),
@@ -446,7 +446,7 @@ export interface TableRange {
   /** The starting location of the table range. */
   location?: TableCellLocation;
 }
-export const TableRange = /*@__PURE__*/ S.suspend(() =>
+const TableRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowSpan: S.optional(S.Number),
     columnSpan: S.optional(S.Number),
@@ -464,7 +464,7 @@ export type UpdateTableBorderPropertiesRequestBorderPositionEnum =
   | "OUTER"
   | "RIGHT"
   | "TOP";
-export const UpdateTableBorderPropertiesRequestBorderPositionEnum = S.String;
+const UpdateTableBorderPropertiesRequestBorderPositionEnum = S.String;
 
 /** Updates the properties of the table borders in a Table. */
 export interface UpdateTableBorderPropertiesRequest {
@@ -479,7 +479,7 @@ export interface UpdateTableBorderPropertiesRequest {
   /** The border position in the table range the updates should apply to. If a border position is not specified, the updates will apply to all borders in the table range. */
   borderPosition?: UpdateTableBorderPropertiesRequestBorderPositionEnum | (string & {});
 }
-export const UpdateTableBorderPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableBorderPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBorderProperties: S.optional(TableBorderProperties),
     tableRange: S.optional(TableRange),
@@ -500,7 +500,7 @@ export interface ReplaceAllTextRequest {
   /** Finds text in a shape matching this substring. */
   containsText?: SubstringMatchCriteria;
 }
-export const ReplaceAllTextRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageObjectIds: S.optional(StringList),
     replaceText: S.optional(S.String),
@@ -513,7 +513,7 @@ export interface MasterProperties {
   /** The human-readable name of the master. */
   displayName?: string;
 }
-export const MasterProperties = /*@__PURE__*/ S.suspend(() =>
+const MasterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
@@ -537,7 +537,7 @@ export type ThemeColorPairTypeEnum =
   | "BACKGROUND1"
   | "TEXT2"
   | "BACKGROUND2";
-export const ThemeColorPairTypeEnum = S.String;
+const ThemeColorPairTypeEnum = S.String;
 
 /** A pair mapping a theme color type to the concrete color it represents. */
 export interface ThemeColorPair {
@@ -546,7 +546,7 @@ export interface ThemeColorPair {
   /** The type of the theme color. */
   type?: ThemeColorPairTypeEnum | (string & {});
 }
-export const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
+const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(RgbColor),
     type: S.optional(ThemeColorPairTypeEnum),
@@ -554,7 +554,7 @@ export const ThemeColorPair = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ThemeColorPair" }) as any as S.Schema<ThemeColorPair>;
 
 export type ThemeColorPairList = Array<ThemeColorPair>;
-export const ThemeColorPairList = /*@__PURE__*/ S.Array(
+const ThemeColorPairList = /*@__PURE__*/ S.Array(
   ThemeColorPair,
 ) as any as S.Schema<ThemeColorPairList>;
 
@@ -563,7 +563,7 @@ export interface ColorScheme {
   /** The ThemeColorType and corresponding concrete color pairs. */
   colors?: ThemeColorPairList;
 }
-export const ColorScheme = /*@__PURE__*/ S.suspend(() =>
+const ColorScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colors: S.optional(ThemeColorPairList),
   }),
@@ -576,7 +576,7 @@ export interface Size {
   /** The width of the object. */
   width?: Dimension;
 }
-export const Size = /*@__PURE__*/ S.suspend(() =>
+const Size = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(Dimension),
     width: S.optional(Dimension),
@@ -590,7 +590,7 @@ export interface StretchedPictureFill {
   /** Reading the content_url: An URL to a picture with a default lifetime of 30 minutes. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the picture as the original requester. Access to the picture may be lost if the presentation's sharing settings change. Writing the content_url: The picture is fetched once at insertion time and a copy is stored for display inside the presentation. Pictures must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The provided URL can be at most 2 kB in length. */
   contentUrl?: string;
 }
-export const StretchedPictureFill = /*@__PURE__*/ S.suspend(() =>
+const StretchedPictureFill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(Size),
     contentUrl: S.optional(S.String),
@@ -598,7 +598,7 @@ export const StretchedPictureFill = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StretchedPictureFill" }) as any as S.Schema<StretchedPictureFill>;
 
 export type PageBackgroundFillPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
-export const PageBackgroundFillPropertyStateEnum = S.String;
+const PageBackgroundFillPropertyStateEnum = S.String;
 
 /** The page background fill. */
 export interface PageBackgroundFill {
@@ -609,7 +609,7 @@ export interface PageBackgroundFill {
   /** The background fill property state. Updating the fill on a page will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no fill on a page, set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be ignored. */
   propertyState?: PageBackgroundFillPropertyStateEnum | (string & {});
 }
-export const PageBackgroundFill = /*@__PURE__*/ S.suspend(() =>
+const PageBackgroundFill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stretchedPictureFill: S.optional(StretchedPictureFill),
     solidFill: S.optional(SolidFill),
@@ -624,7 +624,7 @@ export interface PageProperties {
   /** The background fill of the page. If unset, the background fill is inherited from a parent page if it exists. If the page has no parent, then the background fill defaults to the corresponding fill in the Slides editor. */
   pageBackgroundFill?: PageBackgroundFill;
 }
-export const PageProperties = /*@__PURE__*/ S.suspend(() =>
+const PageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colorScheme: S.optional(ColorScheme),
     pageBackgroundFill: S.optional(PageBackgroundFill),
@@ -636,7 +636,7 @@ export interface NotesProperties {
   /** The object ID of the shape on this notes page that contains the speaker notes for the corresponding slide. The actual shape may not always exist on the notes page. Inserting text using this object ID will automatically create the shape. In this case, the actual shape may have different object ID. The `GetPresentation` or `GetPage` action will always return the latest object ID. */
   speakerNotesObjectId?: string;
 }
-export const NotesProperties = /*@__PURE__*/ S.suspend(() =>
+const NotesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     speakerNotesObjectId: S.optional(S.String),
   }),
@@ -649,7 +649,7 @@ export interface TextRange {
   /** The zero-based index of the end of the range. This field is an Int32Value in order to accommodate future use cases with open-ended ranges. */
   endIndex?: number;
 }
-export const TextRange = /*@__PURE__*/ S.suspend(() =>
+const TextRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.Number),
     endIndex: S.optional(S.Number),
@@ -657,14 +657,14 @@ export const TextRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TextRange" }) as any as S.Schema<TextRange>;
 
 export type TextRangeList = Array<TextRange>;
-export const TextRangeList = /*@__PURE__*/ S.Array(TextRange) as any as S.Schema<TextRangeList>;
+const TextRangeList = /*@__PURE__*/ S.Array(TextRange) as any as S.Schema<TextRangeList>;
 
 /** Represents text ranges within a shape covered by a comment anchor. */
 export interface ShapeTextAnchors {
   /** A list of text ranges covered by the comment anchor. */
   ranges?: TextRangeList;
 }
-export const ShapeTextAnchors = /*@__PURE__*/ S.suspend(() =>
+const ShapeTextAnchors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ranges: S.optional(TextRangeList),
   }),
@@ -677,7 +677,7 @@ export interface TableCellTextRanges {
   /** The location of the table cell. */
   cellLocation?: TableCellLocation;
 }
-export const TableCellTextRanges = /*@__PURE__*/ S.suspend(() =>
+const TableCellTextRanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ranges: S.optional(TextRangeList),
     cellLocation: S.optional(TableCellLocation),
@@ -685,7 +685,7 @@ export const TableCellTextRanges = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableCellTextRanges" }) as any as S.Schema<TableCellTextRanges>;
 
 export type TableCellTextRangesList = Array<TableCellTextRanges>;
-export const TableCellTextRangesList = /*@__PURE__*/ S.Array(
+const TableCellTextRangesList = /*@__PURE__*/ S.Array(
   TableCellTextRanges,
 ) as any as S.Schema<TableCellTextRangesList>;
 
@@ -694,7 +694,7 @@ export interface TableCellAnchors {
   /** A list of all table cells in a table that have text covered by the anchor in the table. */
   cellRanges?: TableCellTextRangesList;
 }
-export const TableCellAnchors = /*@__PURE__*/ S.suspend(() =>
+const TableCellAnchors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cellRanges: S.optional(TableCellTextRangesList),
   }),
@@ -709,7 +709,7 @@ export interface ObjectAnchor {
   /** Output only. The page or page element that the comment thread is anchored to. */
   objectId?: string;
 }
-export const ObjectAnchor = /*@__PURE__*/ S.suspend(() =>
+const ObjectAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shapeTextAnchors: S.optional(ShapeTextAnchors),
     tableCellAnchors: S.optional(TableCellAnchors),
@@ -718,9 +718,7 @@ export const ObjectAnchor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectAnchor" }) as any as S.Schema<ObjectAnchor>;
 
 export type ObjectAnchorList = Array<ObjectAnchor>;
-export const ObjectAnchorList = /*@__PURE__*/ S.Array(
-  ObjectAnchor,
-) as any as S.Schema<ObjectAnchorList>;
+const ObjectAnchorList = /*@__PURE__*/ S.Array(ObjectAnchor) as any as S.Schema<ObjectAnchorList>;
 
 /** Contains a list of all locations in a `Page` that are anchored to a CommentThread via the same anchorId. Multiple separate anchors may refer to the same location, either within a `Page` or across different pages, */
 export interface CommentAnchor {
@@ -729,7 +727,7 @@ export interface CommentAnchor {
   /** Output only. The unique ID of the comment anchor. */
   anchorId?: string;
 }
-export const CommentAnchor = /*@__PURE__*/ S.suspend(() =>
+const CommentAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectAnchors: S.optional(ObjectAnchorList),
     anchorId: S.optional(S.String),
@@ -737,7 +735,7 @@ export const CommentAnchor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommentAnchor" }) as any as S.Schema<CommentAnchor>;
 
 export type CommentAnchorList = Array<CommentAnchor>;
-export const CommentAnchorList = /*@__PURE__*/ S.Array(
+const CommentAnchorList = /*@__PURE__*/ S.Array(
   CommentAnchor,
 ) as any as S.Schema<CommentAnchorList>;
 
@@ -746,14 +744,14 @@ export type PageCommentsViewModeEnum =
   | "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS"
   | "COMMENTS_VIEW_MODE_OMITTED"
   | "COMMENTS_VIEW_MODE_INCLUDED";
-export const PageCommentsViewModeEnum = S.String;
+const PageCommentsViewModeEnum = S.String;
 
 export type PostCommentActionEnum =
   | "COMMENT_ACTION_TYPE_UNSPECIFIED"
   | "NO_COMMENT_ACTION_CHANGE"
   | "RESOLVE"
   | "REOPEN";
-export const PostCommentActionEnum = S.String;
+const PostCommentActionEnum = S.String;
 
 /** Represents a user who authored a comment post. */
 export interface PostAuthor {
@@ -766,7 +764,7 @@ export interface PostAuthor {
   /** Whether the user is anonymous. */
   anonymous?: boolean;
 }
-export const PostAuthor = /*@__PURE__*/ S.suspend(() =>
+const PostAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     user: S.optional(S.String),
@@ -800,7 +798,7 @@ export interface Post {
   /** Output only. The content of the post as HTML. */
   contentHtml?: string;
 }
-export const Post = /*@__PURE__*/ S.suspend(() =>
+const Post = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postId: S.optional(S.String),
     commentAction: S.optional(PostCommentActionEnum),
@@ -817,10 +815,10 @@ export const Post = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Post" }) as any as S.Schema<Post>;
 
 export type PostList = Array<Post>;
-export const PostList = /*@__PURE__*/ S.Array(Post) as any as S.Schema<PostList>;
+const PostList = /*@__PURE__*/ S.Array(Post) as any as S.Schema<PostList>;
 
 export type CommentThreadStatusEnum = "STATUS_UNSPECIFIED" | "OPEN" | "RESOLVED";
-export const CommentThreadStatusEnum = S.String;
+const CommentThreadStatusEnum = S.String;
 
 /** Represents a single comment thread inside a presentation. */
 export interface CommentThread {
@@ -837,7 +835,7 @@ export interface CommentThread {
   /** Whether the thread is open or resolved. */
   status?: CommentThreadStatusEnum | (string & {});
 }
-export const CommentThread = /*@__PURE__*/ S.suspend(() =>
+const CommentThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replies: S.optional(PostList),
     headPost: S.optional(Post),
@@ -849,12 +847,12 @@ export const CommentThread = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommentThread" }) as any as S.Schema<CommentThread>;
 
 export type CommentThreadList = Array<CommentThread>;
-export const CommentThreadList = /*@__PURE__*/ S.Array(
+const CommentThreadList = /*@__PURE__*/ S.Array(
   CommentThread,
 ) as any as S.Schema<CommentThreadList>;
 
 export type AutoTextTypeEnum = "TYPE_UNSPECIFIED" | "SLIDE_NUMBER";
-export const AutoTextTypeEnum = S.String;
+const AutoTextTypeEnum = S.String;
 
 /** A TextElement kind that represents auto text. */
 export interface AutoText {
@@ -865,7 +863,7 @@ export interface AutoText {
   /** The rendered content of this auto text, if available. */
   content?: string;
 }
-export const AutoText = /*@__PURE__*/ S.suspend(() =>
+const AutoText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     style: S.optional(TextStyle),
     type: S.optional(AutoTextTypeEnum),
@@ -884,7 +882,7 @@ export interface Bullet {
   /** The paragraph specific text style applied to this bullet. */
   bulletStyle?: TextStyle;
 }
-export const Bullet = /*@__PURE__*/ S.suspend(() =>
+const Bullet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nestingLevel: S.optional(S.Number),
     glyph: S.optional(S.String),
@@ -897,13 +895,13 @@ export type ParagraphStyleDirectionEnum =
   | "TEXT_DIRECTION_UNSPECIFIED"
   | "LEFT_TO_RIGHT"
   | "RIGHT_TO_LEFT";
-export const ParagraphStyleDirectionEnum = S.String;
+const ParagraphStyleDirectionEnum = S.String;
 
 export type ParagraphStyleSpacingModeEnum =
   | "SPACING_MODE_UNSPECIFIED"
   | "NEVER_COLLAPSE"
   | "COLLAPSE_LISTS";
-export const ParagraphStyleSpacingModeEnum = S.String;
+const ParagraphStyleSpacingModeEnum = S.String;
 
 export type ParagraphStyleAlignmentEnum =
   | "ALIGNMENT_UNSPECIFIED"
@@ -911,7 +909,7 @@ export type ParagraphStyleAlignmentEnum =
   | "CENTER"
   | "END"
   | "JUSTIFIED";
-export const ParagraphStyleAlignmentEnum = S.String;
+const ParagraphStyleAlignmentEnum = S.String;
 
 /** Styles that apply to a whole paragraph. If this text is contained in a shape with a parent placeholder, then these paragraph styles may be inherited from the parent. Which paragraph styles are inherited depend on the nesting level of lists: * A paragraph not in a list will inherit its paragraph style from the paragraph at the 0 nesting level of the list inside the parent placeholder. * A paragraph in a list will inherit its paragraph style from the paragraph at its corresponding nesting level of the list inside the parent placeholder. Inherited paragraph styles are represented as unset fields in this message. */
 export interface ParagraphStyle {
@@ -934,7 +932,7 @@ export interface ParagraphStyle {
   /** The amount of indentation for the start of the first line of the paragraph. If unset, the value is inherited from the parent. */
   indentFirstLine?: Dimension;
 }
-export const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
+const ParagraphStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indentEnd: S.optional(Dimension),
     direction: S.optional(ParagraphStyleDirectionEnum),
@@ -955,7 +953,7 @@ export interface ParagraphMarker {
   /** The paragraph's style */
   style?: ParagraphStyle;
 }
-export const ParagraphMarker = /*@__PURE__*/ S.suspend(() =>
+const ParagraphMarker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bullet: S.optional(Bullet),
     style: S.optional(ParagraphStyle),
@@ -969,7 +967,7 @@ export interface TextRun {
   /** The text of this run. */
   content?: string;
 }
-export const TextRun = /*@__PURE__*/ S.suspend(() =>
+const TextRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     style: S.optional(TextStyle),
     content: S.optional(S.String),
@@ -989,7 +987,7 @@ export interface TextElement {
   /** A TextElement representing a run of text where all of the characters in the run have the same TextStyle. The `start_index` and `end_index` of TextRuns will always be fully contained in the index range of a single `paragraph_marker` TextElement. In other words, a TextRun will never span multiple paragraphs. */
   textRun?: TextRun;
 }
-export const TextElement = /*@__PURE__*/ S.suspend(() =>
+const TextElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.Number),
     autoText: S.optional(AutoText),
@@ -1000,23 +998,21 @@ export const TextElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TextElement" }) as any as S.Schema<TextElement>;
 
 export type TextElementList = Array<TextElement>;
-export const TextElementList = /*@__PURE__*/ S.Array(
-  TextElement,
-) as any as S.Schema<TextElementList>;
+const TextElementList = /*@__PURE__*/ S.Array(TextElement) as any as S.Schema<TextElementList>;
 
 /** Contains properties describing the look and feel of a list bullet at a given level of nesting. */
 export interface NestingLevel {
   /** The style of a bullet at this level of nesting. */
   bulletStyle?: TextStyle;
 }
-export const NestingLevel = /*@__PURE__*/ S.suspend(() =>
+const NestingLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bulletStyle: S.optional(TextStyle),
   }),
 ).annotate({ identifier: "NestingLevel" }) as any as S.Schema<NestingLevel>;
 
 export type NestingLevelMap = { [key: string]: NestingLevel | undefined };
-export const NestingLevelMap = /*@__PURE__*/ S.Record(
+const NestingLevelMap = /*@__PURE__*/ S.Record(
   S.String,
   NestingLevel,
 ) as any as S.Schema<NestingLevelMap>;
@@ -1028,7 +1024,7 @@ export interface List {
   /** The ID of the list. */
   listId?: string;
 }
-export const List = /*@__PURE__*/ S.suspend(() =>
+const List = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nestingLevel: S.optional(NestingLevelMap),
     listId: S.optional(S.String),
@@ -1036,7 +1032,7 @@ export const List = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "List" }) as any as S.Schema<List>;
 
 export type ListMap = { [key: string]: List | undefined };
-export const ListMap = /*@__PURE__*/ S.Record(S.String, List) as any as S.Schema<ListMap>;
+const ListMap = /*@__PURE__*/ S.Record(S.String, List) as any as S.Schema<ListMap>;
 
 /** The general text content. The text must reside in a compatible shape (e.g. text box or rectangle) or a table cell in a page. */
 export interface TextContent {
@@ -1045,7 +1041,7 @@ export interface TextContent {
   /** The bulleted lists contained in this text, keyed by list ID. */
   lists?: ListMap;
 }
-export const TextContent = /*@__PURE__*/ S.suspend(() =>
+const TextContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textElements: S.optional(TextElementList),
     lists: S.optional(ListMap),
@@ -1057,7 +1053,7 @@ export type AutofitAutofitTypeEnum =
   | "NONE"
   | "TEXT_AUTOFIT"
   | "SHAPE_AUTOFIT";
-export const AutofitAutofitTypeEnum = S.String;
+const AutofitAutofitTypeEnum = S.String;
 
 /** The autofit properties of a Shape. This property is only set for shapes that allow text. */
 export interface Autofit {
@@ -1068,7 +1064,7 @@ export interface Autofit {
   /** The font scale applied to the shape. For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value is the default value of 1. For TEXT_AUTOFIT, this value multiplied by the font_size gives the font size that's rendered in the editor. This property is read-only. */
   fontScale?: number;
 }
-export const Autofit = /*@__PURE__*/ S.suspend(() =>
+const Autofit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineSpacingReduction: S.optional(S.Number),
     autofitType: S.optional(AutofitAutofitTypeEnum),
@@ -1082,7 +1078,7 @@ export type ShapePropertiesContentAlignmentEnum =
   | "TOP"
   | "MIDDLE"
   | "BOTTOM";
-export const ShapePropertiesContentAlignmentEnum = S.String;
+const ShapePropertiesContentAlignmentEnum = S.String;
 
 export type ShadowAlignmentEnum =
   | "RECTANGLE_POSITION_UNSPECIFIED"
@@ -1095,13 +1091,13 @@ export type ShadowAlignmentEnum =
   | "BOTTOM_LEFT"
   | "BOTTOM_CENTER"
   | "BOTTOM_RIGHT";
-export const ShadowAlignmentEnum = S.String;
+const ShadowAlignmentEnum = S.String;
 
 export type ShadowTypeEnum = "SHADOW_TYPE_UNSPECIFIED" | "OUTER";
-export const ShadowTypeEnum = S.String;
+const ShadowTypeEnum = S.String;
 
 export type AffineTransformUnitEnum = "UNIT_UNSPECIFIED" | "EMU" | "PT";
-export const AffineTransformUnitEnum = S.String;
+const AffineTransformUnitEnum = S.String;
 
 /** AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to transform source coordinates (x,y) into destination coordinates (x', y') according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y * y + shear_y * x + translate_y; This message is therefore composed of these six matrix elements. */
 export interface AffineTransform {
@@ -1120,7 +1116,7 @@ export interface AffineTransform {
   /** The Y coordinate translation element. */
   translateY?: number;
 }
-export const AffineTransform = /*@__PURE__*/ S.suspend(() =>
+const AffineTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scaleY: S.optional(S.Number),
     scaleX: S.optional(S.Number),
@@ -1133,7 +1129,7 @@ export const AffineTransform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AffineTransform" }) as any as S.Schema<AffineTransform>;
 
 export type ShadowPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
-export const ShadowPropertyStateEnum = S.String;
+const ShadowPropertyStateEnum = S.String;
 
 /** The shadow properties of a page element. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
 export interface Shadow {
@@ -1154,7 +1150,7 @@ export interface Shadow {
   /** The shadow property state. Updating the shadow on a page element will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no shadow on a page element, set this field to `NOT_RENDERED`. In this case, any other shadow fields set in the same request will be ignored. */
   propertyState?: ShadowPropertyStateEnum | (string & {});
 }
-export const Shadow = /*@__PURE__*/ S.suspend(() =>
+const Shadow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alignment: S.optional(ShadowAlignmentEnum),
     alpha: S.optional(S.Number),
@@ -1168,7 +1164,7 @@ export const Shadow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Shadow" }) as any as S.Schema<Shadow>;
 
 export type ShapeBackgroundFillPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
-export const ShapeBackgroundFillPropertyStateEnum = S.String;
+const ShapeBackgroundFillPropertyStateEnum = S.String;
 
 /** The shape background fill. */
 export interface ShapeBackgroundFill {
@@ -1177,7 +1173,7 @@ export interface ShapeBackgroundFill {
   /** Solid color fill. */
   solidFill?: SolidFill;
 }
-export const ShapeBackgroundFill = /*@__PURE__*/ S.suspend(() =>
+const ShapeBackgroundFill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyState: S.optional(ShapeBackgroundFillPropertyStateEnum),
     solidFill: S.optional(SolidFill),
@@ -1185,7 +1181,7 @@ export const ShapeBackgroundFill = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ShapeBackgroundFill" }) as any as S.Schema<ShapeBackgroundFill>;
 
 export type OutlinePropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
-export const OutlinePropertyStateEnum = S.String;
+const OutlinePropertyStateEnum = S.String;
 
 export type OutlineDashStyleEnum =
   | "DASH_STYLE_UNSPECIFIED"
@@ -1195,14 +1191,14 @@ export type OutlineDashStyleEnum =
   | "DASH_DOT"
   | "LONG_DASH"
   | "LONG_DASH_DOT";
-export const OutlineDashStyleEnum = S.String;
+const OutlineDashStyleEnum = S.String;
 
 /** The fill of the outline. */
 export interface OutlineFill {
   /** Solid color fill. */
   solidFill?: SolidFill;
 }
-export const OutlineFill = TableBorderFill as any as S.Schema<OutlineFill>;
+const OutlineFill = TableBorderFill as any as S.Schema<OutlineFill>;
 
 /** The outline of a PageElement. If these fields are unset, they may be inherited from a parent placeholder if it exists. If there is no parent, the fields will default to the value used for new page elements created in the Slides editor, which may depend on the page element kind. */
 export interface Outline {
@@ -1215,7 +1211,7 @@ export interface Outline {
   /** The fill of the outline. */
   outlineFill?: OutlineFill;
 }
-export const Outline = /*@__PURE__*/ S.suspend(() =>
+const Outline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyState: S.optional(OutlinePropertyStateEnum),
     weight: S.optional(Dimension),
@@ -1239,7 +1235,7 @@ export interface ShapeProperties {
   /** The outline of the shape. If unset, the outline is inherited from a parent placeholder if it exists. If the shape has no parent, then the default outline depends on the shape type, matching the defaults for new shapes created in the Slides editor. */
   outline?: Outline;
 }
-export const ShapeProperties = /*@__PURE__*/ S.suspend(() =>
+const ShapeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autofit: S.optional(Autofit),
     contentAlignment: S.optional(ShapePropertiesContentAlignmentEnum),
@@ -1394,7 +1390,7 @@ export type ShapeShapeTypeEnum =
   | "ELLIPSE_RIBBON_2"
   | "CLOUD_CALLOUT"
   | "CUSTOM";
-export const ShapeShapeTypeEnum = S.String;
+const ShapeShapeTypeEnum = S.String;
 
 export type PlaceholderTypeEnum =
   | "NONE"
@@ -1414,7 +1410,7 @@ export type PlaceholderTypeEnum =
   | "TABLE"
   | "TITLE"
   | "SLIDE_IMAGE";
-export const PlaceholderTypeEnum = S.String;
+const PlaceholderTypeEnum = S.String;
 
 /** The placeholder information that uniquely identifies a placeholder shape. */
 export interface Placeholder {
@@ -1425,7 +1421,7 @@ export interface Placeholder {
   /** The index of the placeholder. If the same placeholder types are present in the same page, they would have different index values. */
   index?: number;
 }
-export const Placeholder = /*@__PURE__*/ S.suspend(() =>
+const Placeholder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(PlaceholderTypeEnum),
     parentObjectId: S.optional(S.String),
@@ -1444,7 +1440,7 @@ export interface Shape {
   /** Placeholders are page elements that inherit from corresponding placeholders on layouts and masters. If set, the shape is a placeholder shape and any inherited properties can be resolved by looking at the parent placeholder identified by the Placeholder.parent_object_id field. */
   placeholder?: Placeholder;
 }
-export const Shape = /*@__PURE__*/ S.suspend(() =>
+const Shape = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(TextContent),
     shapeProperties: S.optional(ShapeProperties),
@@ -1466,7 +1462,7 @@ export interface CropProperties {
   /** The rotation angle of the crop window around its center, in radians. Rotation angle is applied after the offset. */
   angle?: number;
 }
-export const CropProperties = /*@__PURE__*/ S.suspend(() =>
+const CropProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rightOffset: S.optional(S.Number),
     bottomOffset: S.optional(S.Number),
@@ -1485,7 +1481,7 @@ export interface ColorStop {
   /** The relative position of the color stop in the gradient band measured in percentage. The value should be in the interval [0.0, 1.0]. */
   position?: number;
 }
-export const ColorStop = /*@__PURE__*/ S.suspend(() =>
+const ColorStop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alpha: S.optional(S.Number),
     color: S.optional(OpaqueColor),
@@ -1494,7 +1490,7 @@ export const ColorStop = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ColorStop" }) as any as S.Schema<ColorStop>;
 
 export type ColorStopList = Array<ColorStop>;
-export const ColorStopList = /*@__PURE__*/ S.Array(ColorStop) as any as S.Schema<ColorStopList>;
+const ColorStopList = /*@__PURE__*/ S.Array(ColorStop) as any as S.Schema<ColorStopList>;
 
 export type RecolorNameEnum =
   | "NONE"
@@ -1522,7 +1518,7 @@ export type RecolorNameEnum =
   | "NEGATIVE"
   | "SEPIA"
   | "CUSTOM";
-export const RecolorNameEnum = S.String;
+const RecolorNameEnum = S.String;
 
 /** A recolor effect applied on an image. */
 export interface Recolor {
@@ -1531,7 +1527,7 @@ export interface Recolor {
   /** The name of the recolor effect. The name is determined from the `recolor_stops` by matching the gradient against the colors in the page's current color scheme. This property is read-only. */
   name?: RecolorNameEnum | (string & {});
 }
-export const Recolor = /*@__PURE__*/ S.suspend(() =>
+const Recolor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recolorStops: S.optional(ColorStopList),
     name: S.optional(RecolorNameEnum),
@@ -1557,7 +1553,7 @@ export interface ImageProperties {
   /** The shadow of the image. If not set, the image has no shadow. This property is read-only. */
   shadow?: Shadow;
 }
-export const ImageProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outline: S.optional(Outline),
     cropProperties: S.optional(CropProperties),
@@ -1581,7 +1577,7 @@ export interface Image {
   /** An URL to an image with a default lifetime of 30 minutes. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the image as the original requester. Access to the image may be lost if the presentation's sharing settings change. */
   contentUrl?: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceUrl: S.optional(S.String),
     imageProperties: S.optional(ImageProperties),
@@ -1597,7 +1593,7 @@ export interface SpeakerSpotlightProperties {
   /** The outline of the Speaker Spotlight. If not set, it has no outline. */
   outline?: Outline;
 }
-export const SpeakerSpotlightProperties = /*@__PURE__*/ S.suspend(() =>
+const SpeakerSpotlightProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shadow: S.optional(Shadow),
     outline: S.optional(Outline),
@@ -1611,7 +1607,7 @@ export interface SpeakerSpotlight {
   /** The properties of the Speaker Spotlight. */
   speakerSpotlightProperties?: SpeakerSpotlightProperties;
 }
-export const SpeakerSpotlight = /*@__PURE__*/ S.suspend(() =>
+const SpeakerSpotlight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     speakerSpotlightProperties: S.optional(SpeakerSpotlightProperties),
   }),
@@ -1622,7 +1618,7 @@ export interface Group {
   /** The collection of elements in the group. The minimum size of a group is 2. */
   children?: PageElementList;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     children: S.optional(S.suspend(() => PageElementList)),
   }),
@@ -1635,7 +1631,7 @@ export interface TableBorderCell {
   /** The border properties. */
   tableBorderProperties?: TableBorderProperties;
 }
-export const TableBorderCell = /*@__PURE__*/ S.suspend(() =>
+const TableBorderCell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(TableCellLocation),
     tableBorderProperties: S.optional(TableBorderProperties),
@@ -1643,7 +1639,7 @@ export const TableBorderCell = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableBorderCell" }) as any as S.Schema<TableBorderCell>;
 
 export type TableBorderCellList = Array<TableBorderCell>;
-export const TableBorderCellList = /*@__PURE__*/ S.Array(
+const TableBorderCellList = /*@__PURE__*/ S.Array(
   TableBorderCell,
 ) as any as S.Schema<TableBorderCellList>;
 
@@ -1652,19 +1648,19 @@ export interface TableBorderRow {
   /** Properties of each border cell. When a border's adjacent table cells are merged, it is not included in the response. */
   tableBorderCells?: TableBorderCellList;
 }
-export const TableBorderRow = /*@__PURE__*/ S.suspend(() =>
+const TableBorderRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBorderCells: S.optional(TableBorderCellList),
   }),
 ).annotate({ identifier: "TableBorderRow" }) as any as S.Schema<TableBorderRow>;
 
 export type TableBorderRowList = Array<TableBorderRow>;
-export const TableBorderRowList = /*@__PURE__*/ S.Array(
+const TableBorderRowList = /*@__PURE__*/ S.Array(
   TableBorderRow,
 ) as any as S.Schema<TableBorderRowList>;
 
 export type TableCellBackgroundFillPropertyStateEnum = "RENDERED" | "NOT_RENDERED" | "INHERIT";
-export const TableCellBackgroundFillPropertyStateEnum = S.String;
+const TableCellBackgroundFillPropertyStateEnum = S.String;
 
 /** The table cell background fill. */
 export interface TableCellBackgroundFill {
@@ -1673,7 +1669,7 @@ export interface TableCellBackgroundFill {
   /** The background fill property state. Updating the fill on a table cell will implicitly update this field to `RENDERED`, unless another value is specified in the same request. To have no fill on a table cell, set this field to `NOT_RENDERED`. In this case, any other fill fields set in the same request will be ignored. */
   propertyState?: TableCellBackgroundFillPropertyStateEnum | (string & {});
 }
-export const TableCellBackgroundFill = /*@__PURE__*/ S.suspend(() =>
+const TableCellBackgroundFill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     solidFill: S.optional(SolidFill),
     propertyState: S.optional(TableCellBackgroundFillPropertyStateEnum),
@@ -1686,7 +1682,7 @@ export type TableCellPropertiesContentAlignmentEnum =
   | "TOP"
   | "MIDDLE"
   | "BOTTOM";
-export const TableCellPropertiesContentAlignmentEnum = S.String;
+const TableCellPropertiesContentAlignmentEnum = S.String;
 
 /** The properties of the TableCell. */
 export interface TableCellProperties {
@@ -1695,7 +1691,7 @@ export interface TableCellProperties {
   /** The alignment of the content in the table cell. The default alignment matches the alignment for newly created table cells in the Slides editor. */
   contentAlignment?: TableCellPropertiesContentAlignmentEnum | (string & {});
 }
-export const TableCellProperties = /*@__PURE__*/ S.suspend(() =>
+const TableCellProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableCellBackgroundFill: S.optional(TableCellBackgroundFill),
     contentAlignment: S.optional(TableCellPropertiesContentAlignmentEnum),
@@ -1715,7 +1711,7 @@ export interface TableCell {
   /** Column span of the cell. */
   columnSpan?: number;
 }
-export const TableCell = /*@__PURE__*/ S.suspend(() =>
+const TableCell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(TextContent),
     location: S.optional(TableCellLocation),
@@ -1726,14 +1722,14 @@ export const TableCell = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
 export type TableCellList = Array<TableCell>;
-export const TableCellList = /*@__PURE__*/ S.Array(TableCell) as any as S.Schema<TableCellList>;
+const TableCellList = /*@__PURE__*/ S.Array(TableCell) as any as S.Schema<TableCellList>;
 
 /** Properties of each row in a table. */
 export interface TableRowProperties {
   /** Minimum height of the row. The row will be rendered in the Slides editor at a height equal to or greater than this value in order to show all the text in the row's cell(s). */
   minRowHeight?: Dimension;
 }
-export const TableRowProperties = /*@__PURE__*/ S.suspend(() =>
+const TableRowProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minRowHeight: S.optional(Dimension),
   }),
@@ -1748,7 +1744,7 @@ export interface TableRow {
   /** Height of a row. */
   rowHeight?: Dimension;
 }
-export const TableRow = /*@__PURE__*/ S.suspend(() =>
+const TableRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableCells: S.optional(TableCellList),
     tableRowProperties: S.optional(TableRowProperties),
@@ -1757,21 +1753,21 @@ export const TableRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
 export type TableRowList = Array<TableRow>;
-export const TableRowList = /*@__PURE__*/ S.Array(TableRow) as any as S.Schema<TableRowList>;
+const TableRowList = /*@__PURE__*/ S.Array(TableRow) as any as S.Schema<TableRowList>;
 
 /** Properties of each column in a table. */
 export interface TableColumnProperties {
   /** Width of a column. */
   columnWidth?: Dimension;
 }
-export const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
+const TableColumnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnWidth: S.optional(Dimension),
   }),
 ).annotate({ identifier: "TableColumnProperties" }) as any as S.Schema<TableColumnProperties>;
 
 export type TableColumnPropertiesList = Array<TableColumnProperties>;
-export const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
+const TableColumnPropertiesList = /*@__PURE__*/ S.Array(
   TableColumnProperties,
 ) as any as S.Schema<TableColumnPropertiesList>;
 
@@ -1790,7 +1786,7 @@ export interface Table {
   /** Properties of each column. */
   tableColumns?: TableColumnPropertiesList;
 }
-export const Table = /*@__PURE__*/ S.suspend(() =>
+const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verticalBorderRows: S.optional(TableBorderRowList),
     columns: S.optional(S.Number),
@@ -1806,7 +1802,7 @@ export interface WordArt {
   /** The text rendered as word art. */
   renderedText?: string;
 }
-export const WordArt = /*@__PURE__*/ S.suspend(() =>
+const WordArt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renderedText: S.optional(S.String),
   }),
@@ -1825,7 +1821,7 @@ export interface VideoProperties {
   /** Whether to enable video autoplay when the page is displayed in present mode. Defaults to false. */
   autoPlay?: boolean;
 }
-export const VideoProperties = /*@__PURE__*/ S.suspend(() =>
+const VideoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mute: S.optional(S.Boolean),
     outline: S.optional(Outline),
@@ -1836,7 +1832,7 @@ export const VideoProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VideoProperties" }) as any as S.Schema<VideoProperties>;
 
 export type VideoSourceEnum = "SOURCE_UNSPECIFIED" | "YOUTUBE" | "DRIVE";
-export const VideoSourceEnum = S.String;
+const VideoSourceEnum = S.String;
 
 /** A PageElement kind representing a video. */
 export interface Video {
@@ -1849,7 +1845,7 @@ export interface Video {
   /** An URL to a video. The URL is valid as long as the source video exists and sharing settings do not change. */
   url?: string;
 }
-export const Video = /*@__PURE__*/ S.suspend(() =>
+const Video = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoProperties: S.optional(VideoProperties),
     source: S.optional(VideoSourceEnum),
@@ -1863,7 +1859,7 @@ export interface SheetsChartProperties {
   /** The properties of the embedded chart image. */
   chartImageProperties?: ImageProperties;
 }
-export const SheetsChartProperties = /*@__PURE__*/ S.suspend(() =>
+const SheetsChartProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chartImageProperties: S.optional(ImageProperties),
   }),
@@ -1880,7 +1876,7 @@ export interface SheetsChart {
   /** The ID of the Google Sheets spreadsheet that contains the source chart. */
   spreadsheetId?: string;
 }
-export const SheetsChart = /*@__PURE__*/ S.suspend(() =>
+const SheetsChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sheetsChartProperties: S.optional(SheetsChartProperties),
     chartId: S.optional(S.Number),
@@ -1890,7 +1886,7 @@ export const SheetsChart = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SheetsChart" }) as any as S.Schema<SheetsChart>;
 
 export type LineLineCategoryEnum = "LINE_CATEGORY_UNSPECIFIED" | "STRAIGHT" | "BENT" | "CURVED";
-export const LineLineCategoryEnum = S.String;
+const LineLineCategoryEnum = S.String;
 
 export type LinePropertiesEndArrowEnum =
   | "ARROW_STYLE_UNSPECIFIED"
@@ -1904,7 +1900,7 @@ export type LinePropertiesEndArrowEnum =
   | "OPEN_CIRCLE"
   | "OPEN_SQUARE"
   | "OPEN_DIAMOND";
-export const LinePropertiesEndArrowEnum = S.String;
+const LinePropertiesEndArrowEnum = S.String;
 
 /** The properties for one end of a Line connection. */
 export interface LineConnection {
@@ -1913,7 +1909,7 @@ export interface LineConnection {
   /** The index of the connection site on the connected page element. In most cases, it corresponds to the predefined connection site index from the ECMA-376 standard. More information on those connection sites can be found in both the description of the "cxn" attribute in section 20.1.9.9 and "Annex H. Example Predefined DrawingML Shape and Text Geometries" of "Office Open XML File Formats - Fundamentals and Markup Language Reference", part 1 of [ECMA-376 5th edition](https://ecma-international.org/publications-and-standards/standards/ecma-376/). The position of each connection site can also be viewed from Slides editor. */
   connectionSiteIndex?: number;
 }
-export const LineConnection = /*@__PURE__*/ S.suspend(() =>
+const LineConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedObjectId: S.optional(S.String),
     connectionSiteIndex: S.optional(S.Number),
@@ -1922,8 +1918,6 @@ export const LineConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The fill of the line. */
 export type LineFill = OutlineFill;
-export const LineFill = OutlineFill;
-
 export type LinePropertiesDashStyleEnum =
   | "DASH_STYLE_UNSPECIFIED"
   | "SOLID"
@@ -1932,7 +1926,7 @@ export type LinePropertiesDashStyleEnum =
   | "DASH_DOT"
   | "LONG_DASH"
   | "LONG_DASH_DOT";
-export const LinePropertiesDashStyleEnum = S.String;
+const LinePropertiesDashStyleEnum = S.String;
 
 export type LinePropertiesStartArrowEnum =
   | "ARROW_STYLE_UNSPECIFIED"
@@ -1946,7 +1940,7 @@ export type LinePropertiesStartArrowEnum =
   | "OPEN_CIRCLE"
   | "OPEN_SQUARE"
   | "OPEN_DIAMOND";
-export const LinePropertiesStartArrowEnum = S.String;
+const LinePropertiesStartArrowEnum = S.String;
 
 /** The properties of the Line. When unset, these fields default to values that match the appearance of new lines created in the Slides editor. */
 export interface LineProperties {
@@ -1967,7 +1961,7 @@ export interface LineProperties {
   /** The style of the arrow at the beginning of the line. */
   startArrow?: LinePropertiesStartArrowEnum | (string & {});
 }
-export const LineProperties = /*@__PURE__*/ S.suspend(() =>
+const LineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weight: S.optional(Dimension),
     endArrow: S.optional(LinePropertiesEndArrowEnum),
@@ -1992,7 +1986,7 @@ export type LineLineTypeEnum =
   | "CURVED_CONNECTOR_4"
   | "CURVED_CONNECTOR_5"
   | "STRAIGHT_LINE";
-export const LineLineTypeEnum = S.String;
+const LineLineTypeEnum = S.String;
 
 /** A PageElement kind representing a non-connector line, straight connector, curved connector, or bent connector. */
 export interface Line {
@@ -2003,7 +1997,7 @@ export interface Line {
   /** The type of the line. */
   lineType?: LineLineTypeEnum | (string & {});
 }
-export const Line = /*@__PURE__*/ S.suspend(() =>
+const Line = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineCategory: S.optional(LineLineCategoryEnum),
     lineProperties: S.optional(LineProperties),
@@ -2042,7 +2036,7 @@ export interface PageElement {
   /** A line page element. */
   line?: Line;
 }
-export const PageElement = /*@__PURE__*/ S.suspend(() =>
+const PageElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shape: S.optional(Shape),
     image: S.optional(Image),
@@ -2062,9 +2056,7 @@ export const PageElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PageElement" }) as any as S.Schema<PageElement>;
 
 export type PageElementList = Array<PageElement>;
-export const PageElementList = /*@__PURE__*/ S.Array(
-  PageElement,
-) as any as S.Schema<PageElementList>;
+const PageElementList = /*@__PURE__*/ S.Array(PageElement) as any as S.Schema<PageElementList>;
 
 /** The properties of Page are only relevant for pages with page_type LAYOUT. */
 export interface LayoutProperties {
@@ -2075,7 +2067,7 @@ export interface LayoutProperties {
   /** The name of the layout. */
   name?: string;
 }
-export const LayoutProperties = /*@__PURE__*/ S.suspend(() =>
+const LayoutProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     masterObjectId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2084,7 +2076,7 @@ export const LayoutProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LayoutProperties" }) as any as S.Schema<LayoutProperties>;
 
 export type PagePageTypeEnum = "SLIDE" | "MASTER" | "LAYOUT" | "NOTES" | "NOTES_MASTER";
-export const PagePageTypeEnum = S.String;
+const PagePageTypeEnum = S.String;
 
 /** A page in a presentation. */
 export interface Page {
@@ -2113,7 +2105,7 @@ export interface Page {
   /** The type of the page. */
   pageType?: PagePageTypeEnum | (string & {});
 }
-export const Page = /*@__PURE__*/ S.suspend(() =>
+const Page = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     masterProperties: S.optional(MasterProperties),
     pageProperties: S.optional(PageProperties),
@@ -2141,7 +2133,7 @@ export interface SlideProperties {
   /** Whether the slide is skipped in the presentation mode. Defaults to false. */
   isSkipped?: boolean;
 }
-export const SlideProperties = /*@__PURE__*/ S.suspend(() =>
+const SlideProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notesPage: S.optional(Page),
     layoutObjectId: S.optional(S.String),
@@ -2159,7 +2151,7 @@ export interface UpdateSlidePropertiesRequest {
   /** The fields that should be updated. At least one field must be specified. The root 'slideProperties' is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update whether a slide is skipped, set `fields` to `"isSkipped"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
   fields?: string;
 }
-export const UpdateSlidePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSlidePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
     slideProperties: S.optional(SlideProperties),
@@ -2170,7 +2162,7 @@ export const UpdateSlidePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSlidePropertiesRequest>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Updates the properties of a Table row. */
 export interface UpdateTableRowPropertiesRequest {
@@ -2183,7 +2175,7 @@ export interface UpdateTableRowPropertiesRequest {
   /** The object ID of the table. */
   objectId?: string;
 }
-export const UpdateTableRowPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableRowPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowIndices: S.optional(IntegerList),
     fields: S.optional(S.String),
@@ -2205,7 +2197,7 @@ export interface UpdateTableColumnPropertiesRequest {
   /** The object ID of the table. */
   objectId?: string;
 }
-export const UpdateTableColumnPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableColumnPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnIndices: S.optional(IntegerList),
     tableColumnProperties: S.optional(TableColumnProperties),
@@ -2225,7 +2217,7 @@ export interface UpdatePageElementAltTextRequest {
   /** The updated alt text description of the page element. If unset the existing value will be maintained. The description is exposed to screen readers and other accessibility interfaces. Only use human readable values related to the content of the page element. */
   description?: string;
 }
-export const UpdatePageElementAltTextRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePageElementAltTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     objectId: S.optional(S.String),
@@ -2240,7 +2232,7 @@ export type UpdateLineCategoryRequestLineCategoryEnum =
   | "STRAIGHT"
   | "BENT"
   | "CURVED";
-export const UpdateLineCategoryRequestLineCategoryEnum = S.String;
+const UpdateLineCategoryRequestLineCategoryEnum = S.String;
 
 /** Updates the category of a line. */
 export interface UpdateLineCategoryRequest {
@@ -2249,7 +2241,7 @@ export interface UpdateLineCategoryRequest {
   /** The object ID of the line the update is applied to. Only a line with a category indicating it is a "connector" can be updated. The line may be rerouted after updating its category. */
   objectId?: string;
 }
-export const UpdateLineCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLineCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineCategory: S.optional(UpdateLineCategoryRequestLineCategoryEnum),
     objectId: S.optional(S.String),
@@ -2259,7 +2251,7 @@ export const UpdateLineCategoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateLineCategoryRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Duplicates a slide or page element. When duplicating a slide, the duplicate slide will be created immediately following the specified slide. When duplicating a page element, the duplicate will be placed on the same page at the same position as the original. */
 export interface DuplicateObjectRequest {
@@ -2268,7 +2260,7 @@ export interface DuplicateObjectRequest {
   /** The object being duplicated may contain other objects, for example when duplicating a slide or a group page element. This map defines how the IDs of duplicated objects are generated: the keys are the IDs of the original objects and its values are the IDs that will be assigned to the corresponding duplicate object. The ID of the source object's duplicate may be specified in this map as well, using the same value of the `object_id` field as a key and the newly desired ID as the value. All keys must correspond to existing IDs in the presentation. All values must be unique in the presentation and must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the new ID must not be less than 5 or greater than 50. If any IDs of source objects are omitted from the map, a new random ID will be assigned. If the map is empty or unset, all duplicate objects will receive a new random ID. */
   objectIds?: StringMap;
 }
-export const DuplicateObjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateObjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
     objectIds: S.optional(StringMap),
@@ -2282,7 +2274,7 @@ export interface DeleteCommentReplyRequest {
   /** The ID of the CommentThread which the post belongs to. */
   commentId?: string;
 }
-export const DeleteCommentReplyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentReplyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postId: S.optional(S.String),
     commentId: S.optional(S.String),
@@ -2302,7 +2294,7 @@ export interface InsertTableColumnsRequest {
   /** The table to insert columns into. */
   tableObjectId?: string;
 }
-export const InsertTableColumnsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTableColumnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cellLocation: S.optional(TableCellLocation),
     insertRight: S.optional(S.Boolean),
@@ -2318,7 +2310,7 @@ export interface RefreshSheetsChartRequest {
   /** The object ID of the chart to refresh. */
   objectId?: string;
 }
-export const RefreshSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
   }),
@@ -2335,7 +2327,7 @@ export interface UpdatePagePropertiesRequest {
   /** The page properties to update. */
   pageProperties?: PageProperties;
 }
-export const UpdatePagePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePagePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.String),
     objectId: S.optional(S.String),
@@ -2361,7 +2353,7 @@ export type CreateParagraphBulletsRequestBulletPresetEnum =
   | "NUMBERED_UPPERALPHA_ALPHA_ROMAN"
   | "NUMBERED_UPPERROMAN_UPPERALPHA_DIGIT"
   | "NUMBERED_ZERODIGIT_ALPHA_ROMAN";
-export const CreateParagraphBulletsRequestBulletPresetEnum = S.String;
+const CreateParagraphBulletsRequestBulletPresetEnum = S.String;
 
 /** Creates bullets for all of the paragraphs that overlap with the given text index range. The nesting level of each paragraph will be determined by counting leading tabs in front of each paragraph. To avoid excess space between the bullet and the corresponding paragraph, these leading tabs are removed by this request. This may change the indices of parts of the text. If the paragraph immediately before paragraphs being updated is in a list with a matching preset, the paragraphs being updated are added to that preceding list. */
 export interface CreateParagraphBulletsRequest {
@@ -2374,7 +2366,7 @@ export interface CreateParagraphBulletsRequest {
   /** The range of text to apply the bullet presets to, based on TextElement indexes. */
   textRange?: Range;
 }
-export const CreateParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bulletPreset: S.optional(CreateParagraphBulletsRequestBulletPresetEnum),
     objectId: S.optional(S.String),
@@ -2394,7 +2386,7 @@ export interface UpdateLinePropertiesRequest {
   /** The fields that should be updated. At least one field must be specified. The root `lineProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the line solid fill color, set `fields` to `"lineFill.solidFill.color"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
   fields?: string;
 }
-export const UpdateLinePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLinePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineProperties: S.optional(LineProperties),
     objectId: S.optional(S.String),
@@ -2413,7 +2405,7 @@ export interface UpdateVideoPropertiesRequest {
   /** The fields that should be updated. At least one field must be specified. The root `videoProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the video outline color, set `fields` to `"outline.outlineFill.solidFill.color"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
   fields?: string;
 }
-export const UpdateVideoPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVideoPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
     videoProperties: S.optional(VideoProperties),
@@ -2434,7 +2426,7 @@ export interface InsertTextRequest {
   /** The index where the text will be inserted, in Unicode code units, based on TextElement indexes. The index is zero-based and is computed from the start of the string. The index may be adjusted to prevent insertions inside Unicode grapheme clusters. In these cases, the text will be inserted immediately after the grapheme cluster. */
   insertionIndex?: number;
 }
-export const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     cellLocation: S.optional(TableCellLocation),
@@ -2447,10 +2439,10 @@ export type ReplaceAllShapesWithImageRequestImageReplaceMethodEnum =
   | "IMAGE_REPLACE_METHOD_UNSPECIFIED"
   | "CENTER_INSIDE"
   | "CENTER_CROP";
-export const ReplaceAllShapesWithImageRequestImageReplaceMethodEnum = S.String;
+const ReplaceAllShapesWithImageRequestImageReplaceMethodEnum = S.String;
 
 export type ReplaceAllShapesWithImageRequestReplaceMethodEnum = "CENTER_INSIDE" | "CENTER_CROP";
-export const ReplaceAllShapesWithImageRequestReplaceMethodEnum = S.String;
+const ReplaceAllShapesWithImageRequestReplaceMethodEnum = S.String;
 
 /** Replaces all shapes that match the given criteria with the provided image. The images replacing the shapes are rectangular after being inserted into the presentation and do not take on the forms of the shapes. */
 export interface ReplaceAllShapesWithImageRequest {
@@ -2465,7 +2457,7 @@ export interface ReplaceAllShapesWithImageRequest {
   /** If set, this request will replace all of the shapes that contain the given text. */
   containsText?: SubstringMatchCriteria;
 }
-export const ReplaceAllShapesWithImageRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllShapesWithImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUrl: S.optional(S.String),
     imageReplaceMethod: S.optional(ReplaceAllShapesWithImageRequestImageReplaceMethodEnum),
@@ -2484,7 +2476,7 @@ export interface DeleteTableRowRequest {
   /** The reference table cell location from which a row will be deleted. The row this cell spans will be deleted. If this is a merged cell, multiple rows will be deleted. If no rows remain in the table after this deletion, the whole table is deleted. */
   cellLocation?: TableCellLocation;
 }
-export const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTableRowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableObjectId: S.optional(S.String),
     cellLocation: S.optional(TableCellLocation),
@@ -2500,7 +2492,7 @@ export interface PageElementProperties {
   /** The size of the element. */
   size?: Size;
 }
-export const PageElementProperties = /*@__PURE__*/ S.suspend(() =>
+const PageElementProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transform: S.optional(AffineTransform),
     pageObjectId: S.optional(S.String),
@@ -2652,7 +2644,7 @@ export type CreateShapeRequestShapeTypeEnum =
   | "ELLIPSE_RIBBON_2"
   | "CLOUD_CALLOUT"
   | "CUSTOM";
-export const CreateShapeRequestShapeTypeEnum = S.String;
+const CreateShapeRequestShapeTypeEnum = S.String;
 
 /** Creates a new shape. */
 export interface CreateShapeRequest {
@@ -2663,7 +2655,7 @@ export interface CreateShapeRequest {
   /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If empty, a unique identifier will be generated. */
   objectId?: string;
 }
-export const CreateShapeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateShapeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elementProperties: S.optional(PageElementProperties),
     shapeType: S.optional(CreateShapeRequestShapeTypeEnum),
@@ -2678,7 +2670,7 @@ export interface DeleteTableColumnRequest {
   /** The table to delete columns from. */
   tableObjectId?: string;
 }
-export const DeleteTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTableColumnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cellLocation: S.optional(TableCellLocation),
     tableObjectId: S.optional(S.String),
@@ -2692,7 +2684,7 @@ export interface MergeTableCellsRequest {
   /** The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the upper-left ("head") cell of the range. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged), a 400 bad request error is returned. */
   tableRange?: TableRange;
 }
-export const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
+const MergeTableCellsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
     tableRange: S.optional(TableRange),
@@ -2703,7 +2695,7 @@ export type UpdatePageElementTransformRequestApplyModeEnum =
   | "APPLY_MODE_UNSPECIFIED"
   | "RELATIVE"
   | "ABSOLUTE";
-export const UpdatePageElementTransformRequestApplyModeEnum = S.String;
+const UpdatePageElementTransformRequestApplyModeEnum = S.String;
 
 /** Updates the transform of a page element. Updating the transform of a group will change the absolute transform of the page elements in that group, which can change their visual appearance. See the documentation for PageElement.transform for more details. */
 export interface UpdatePageElementTransformRequest {
@@ -2714,7 +2706,7 @@ export interface UpdatePageElementTransformRequest {
   /** The object ID of the page element to update. */
   objectId?: string;
 }
-export const UpdatePageElementTransformRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePageElementTransformRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transform: S.optional(AffineTransform),
     applyMode: S.optional(UpdatePageElementTransformRequestApplyModeEnum),
@@ -2733,7 +2725,7 @@ export interface CreateImageRequest {
   /** The image URL. The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50 MB in size, can't exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF formats. The provided URL must be publicly accessible and up to 2 KB in length. The URL is saved with the image, and exposed through the Image.source_url field. */
   url?: string;
 }
-export const CreateImageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elementProperties: S.optional(PageElementProperties),
     objectId: S.optional(S.String),
@@ -2750,7 +2742,7 @@ export interface LayoutPlaceholderIdMapping {
   /** A user-supplied object ID for the placeholder identified above that to be created onto a slide. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
   objectId?: string;
 }
-export const LayoutPlaceholderIdMapping = /*@__PURE__*/ S.suspend(() =>
+const LayoutPlaceholderIdMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layoutPlaceholderObjectId: S.optional(S.String),
     layoutPlaceholder: S.optional(Placeholder),
@@ -2761,7 +2753,7 @@ export const LayoutPlaceholderIdMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LayoutPlaceholderIdMapping>;
 
 export type LayoutPlaceholderIdMappingList = Array<LayoutPlaceholderIdMapping>;
-export const LayoutPlaceholderIdMappingList = /*@__PURE__*/ S.Array(
+const LayoutPlaceholderIdMappingList = /*@__PURE__*/ S.Array(
   LayoutPlaceholderIdMapping,
 ) as any as S.Schema<LayoutPlaceholderIdMappingList>;
 
@@ -2778,7 +2770,7 @@ export type LayoutReferencePredefinedLayoutEnum =
   | "ONE_COLUMN_TEXT"
   | "MAIN_POINT"
   | "BIG_NUMBER";
-export const LayoutReferencePredefinedLayoutEnum = S.String;
+const LayoutReferencePredefinedLayoutEnum = S.String;
 
 /** Slide layout reference. This may reference either: - A predefined layout - One of the layouts in the presentation. */
 export interface LayoutReference {
@@ -2787,7 +2779,7 @@ export interface LayoutReference {
   /** Layout ID: the object ID of one of the layouts in the presentation. */
   layoutId?: string;
 }
-export const LayoutReference = /*@__PURE__*/ S.suspend(() =>
+const LayoutReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predefinedLayout: S.optional(LayoutReferencePredefinedLayoutEnum),
     layoutId: S.optional(S.String),
@@ -2805,7 +2797,7 @@ export interface CreateSlideRequest {
   /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The ID length must be between 5 and 50 characters, inclusive. If you don't specify an ID, a unique one is generated. */
   objectId?: string;
 }
-export const CreateSlideRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSlideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placeholderIdMappings: S.optional(LayoutPlaceholderIdMappingList),
     slideLayoutReference: S.optional(LayoutReference),
@@ -2825,7 +2817,7 @@ export interface InsertTableRowsRequest {
   /** Whether to insert new rows below the reference cell location. - `True`: insert below the cell. - `False`: insert above the cell. */
   insertBelow?: boolean;
 }
-export const InsertTableRowsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTableRowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cellLocation: S.optional(TableCellLocation),
     tableObjectId: S.optional(S.String),
@@ -2843,7 +2835,7 @@ export interface UpdateShapePropertiesRequest {
   /** The fields that should be updated. At least one field must be specified. The root `shapeProperties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the shape background solid fill color, set `fields` to `"shapeBackgroundFill.solidFill.color"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
   fields?: string;
 }
-export const UpdateShapePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateShapePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
     shapeProperties: S.optional(ShapeProperties),
@@ -2862,7 +2854,7 @@ export interface UpdateImagePropertiesRequest {
   /** The object ID of the image the updates are applied to. */
   objectId?: string;
 }
-export const UpdateImagePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateImagePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.String),
     imageProperties: S.optional(ImageProperties),
@@ -2879,7 +2871,7 @@ export interface AddCommentReplyRequest {
   /** The Post representing the reply. */
   post?: Post;
 }
-export const AddCommentReplyRequest = /*@__PURE__*/ S.suspend(() =>
+const AddCommentReplyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentId: S.optional(S.String),
     post: S.optional(Post),
@@ -2891,7 +2883,7 @@ export interface RerouteLineRequest {
   /** The object ID of the line to reroute. Only a line with a category indicating it is a "connector" can be rerouted. The start and end connections of the line must be on different page elements. */
   objectId?: string;
 }
-export const RerouteLineRequest = /*@__PURE__*/ S.suspend(() =>
+const RerouteLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
   }),
@@ -2902,7 +2894,7 @@ export interface UngroupObjectsRequest {
   /** The object IDs of the objects to ungroup. Only groups that are not inside other groups can be ungrouped. All the groups should be on the same page. The group itself is deleted. The visual sizes and positions of all the children are preserved. */
   objectIds?: StringList;
 }
-export const UngroupObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UngroupObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectIds: S.optional(StringList),
   }),
@@ -2917,7 +2909,7 @@ export interface DeleteTextRequest {
   /** The object ID of the shape or table from which the text will be deleted. */
   objectId?: string;
 }
-export const DeleteTextRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textRange: S.optional(Range),
     cellLocation: S.optional(TableCellLocation),
@@ -2936,7 +2928,7 @@ export interface CreateTableRequest {
   /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
   objectId?: string;
 }
-export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: S.optional(S.Number),
     elementProperties: S.optional(PageElementProperties),
@@ -2946,7 +2938,7 @@ export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTableRequest" }) as any as S.Schema<CreateTableRequest>;
 
 export type CreateSheetsChartRequestLinkingModeEnum = "NOT_LINKED_IMAGE" | "LINKED";
-export const CreateSheetsChartRequestLinkingModeEnum = S.String;
+const CreateSheetsChartRequestLinkingModeEnum = S.String;
 
 /** Creates an embedded Google Sheets chart. NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, drive.file, or drive OAuth scopes. */
 export interface CreateSheetsChartRequest {
@@ -2961,7 +2953,7 @@ export interface CreateSheetsChartRequest {
   /** The ID of the Google Sheets spreadsheet that contains the chart. You might need to add a resource key to the HTTP header for a subset of old files. For more information, see [Access link-shared files using resource keys](https://developers.google.com/drive/api/v3/resource-keys). */
   spreadsheetId?: string;
 }
-export const CreateSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSheetsChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elementProperties: S.optional(PageElementProperties),
     objectId: S.optional(S.String),
@@ -2980,7 +2972,7 @@ export interface UpdateCommentPostRequest {
   /** The ID of the CommentThread which the post belongs to. */
   commentId?: string;
 }
-export const UpdateCommentPostRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     postId: S.optional(S.String),
@@ -2995,7 +2987,7 @@ export interface GroupObjectsRequest {
   /** A user-supplied object ID for the group to be created. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
   groupObjectId?: string;
 }
-export const GroupObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     childrenObjectIds: S.optional(StringList),
     groupObjectId: S.optional(S.String),
@@ -3003,7 +2995,7 @@ export const GroupObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupObjectsRequest" }) as any as S.Schema<GroupObjectsRequest>;
 
 export type CreateVideoRequestSourceEnum = "SOURCE_UNSPECIFIED" | "YOUTUBE" | "DRIVE";
-export const CreateVideoRequestSourceEnum = S.String;
+const CreateVideoRequestSourceEnum = S.String;
 
 /** Creates a video. NOTE: Creating a video from Google Drive requires that the requesting app have at least one of the drive, drive.readonly, or drive.file OAuth scopes. */
 export interface CreateVideoRequest {
@@ -3016,7 +3008,7 @@ export interface CreateVideoRequest {
   /** A user-supplied object ID. If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must not be less than 5 or greater than 50. If you don't specify an ID, a unique one is generated. */
   objectId?: string;
 }
-export const CreateVideoRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVideoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     elementProperties: S.optional(PageElementProperties),
@@ -3032,7 +3024,7 @@ export interface UpdateSlidesPositionRequest {
   /** The index where the slides should be inserted, based on the slide arrangement before the move takes place. Must be between zero and the number of slides in the presentation, inclusive. */
   insertionIndex?: number;
 }
-export const UpdateSlidesPositionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSlidesPositionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slideObjectIds: S.optional(StringList),
     insertionIndex: S.optional(S.Number),
@@ -3042,14 +3034,14 @@ export const UpdateSlidesPositionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSlidesPositionRequest>;
 
 export type CreateLineRequestLineCategoryEnum = "STRAIGHT" | "BENT" | "CURVED";
-export const CreateLineRequestLineCategoryEnum = S.String;
+const CreateLineRequestLineCategoryEnum = S.String;
 
 export type CreateLineRequestCategoryEnum =
   | "LINE_CATEGORY_UNSPECIFIED"
   | "STRAIGHT"
   | "BENT"
   | "CURVED";
-export const CreateLineRequestCategoryEnum = S.String;
+const CreateLineRequestCategoryEnum = S.String;
 
 /** Creates a line. */
 export interface CreateLineRequest {
@@ -3062,7 +3054,7 @@ export interface CreateLineRequest {
   /** The element properties for the line. */
   elementProperties?: PageElementProperties;
 }
-export const CreateLineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineCategory: S.optional(CreateLineRequestLineCategoryEnum),
     category: S.optional(CreateLineRequestCategoryEnum),
@@ -3080,7 +3072,7 @@ export interface TableCellTextAnchor {
   /** The text range for the anchor. */
   textRange?: Range;
 }
-export const TableCellTextAnchor = /*@__PURE__*/ S.suspend(() =>
+const TableCellTextAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cellLocation: S.optional(TableCellLocation),
     objectId: S.optional(S.String),
@@ -3095,7 +3087,7 @@ export interface ShapeTextAnchor {
   /** The object ID of the page element containing the text. */
   objectId?: string;
 }
-export const ShapeTextAnchor = /*@__PURE__*/ S.suspend(() =>
+const ShapeTextAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textRange: S.optional(Range),
     objectId: S.optional(S.String),
@@ -3109,7 +3101,7 @@ export interface TableAnchor {
   /** The object ID of the table. */
   objectId?: string;
 }
-export const TableAnchor = /*@__PURE__*/ S.suspend(() =>
+const TableAnchor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableRange: S.optional(TableRange),
     objectId: S.optional(S.String),
@@ -3131,7 +3123,7 @@ export interface InsertCommentRequest {
   /** Anchors a comment to a specific range of cells within a Table. Returns a 400 bad request error if no cells within the range contain text. */
   tableAnchor?: TableAnchor;
 }
-export const InsertCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     assigneeEmailAddress: S.optional(S.String),
@@ -3155,7 +3147,7 @@ export interface UpdateParagraphStyleRequest {
   /** The paragraph's style. */
   style?: ParagraphStyle;
 }
-export const UpdateParagraphStyleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateParagraphStyleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.String),
     objectId: S.optional(S.String),
@@ -3172,7 +3164,7 @@ export interface DeleteObjectRequest {
   /** The object ID of the page or page element to delete. If after a delete operation a group contains only 1 or no page elements, the group is also deleted. If a placeholder is deleted on a layout, any empty inheriting placeholders are also deleted. */
   objectId?: string;
 }
-export const DeleteObjectRequest = RerouteLineRequest as any as S.Schema<DeleteObjectRequest>;
+const DeleteObjectRequest = RerouteLineRequest as any as S.Schema<DeleteObjectRequest>;
 
 /** Unmerges cells in a Table. */
 export interface UnmergeTableCellsRequest {
@@ -3181,7 +3173,7 @@ export interface UnmergeTableCellsRequest {
   /** The object ID of the table. */
   objectId?: string;
 }
-export const UnmergeTableCellsRequest = TableAnchor as any as S.Schema<UnmergeTableCellsRequest>;
+const UnmergeTableCellsRequest = TableAnchor as any as S.Schema<UnmergeTableCellsRequest>;
 
 /** Deletes bullets from all of the paragraphs that overlap with the given text index range. The nesting level of each paragraph will be visually preserved by adding indent to the start of the corresponding paragraph. */
 export interface DeleteParagraphBulletsRequest {
@@ -3192,7 +3184,7 @@ export interface DeleteParagraphBulletsRequest {
   /** The object ID of the shape or table containing the text to delete bullets from. */
   objectId?: string;
 }
-export const DeleteParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteParagraphBulletsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cellLocation: S.optional(TableCellLocation),
     textRange: S.optional(Range),
@@ -3207,7 +3199,7 @@ export interface DeleteCommentRequest {
   /** The ID of the CommentThread that is being deleted. */
   commentId?: string;
 }
-export const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentId: S.optional(S.String),
   }),
@@ -3224,7 +3216,7 @@ export interface UpdateTableCellPropertiesRequest {
   /** The object ID of the table. */
   objectId?: string;
 }
-export const UpdateTableCellPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTableCellPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableCellProperties: S.optional(TableCellProperties),
     fields: S.optional(S.String),
@@ -3336,7 +3328,7 @@ export interface Request {
   /** Updates the properties of a TableCell. */
   updateTableCellProperties?: UpdateTableCellPropertiesRequest;
 }
-export const Request = /*@__PURE__*/ S.suspend(() =>
+const Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replaceAllShapesWithSheetsChart: S.optional(ReplaceAllShapesWithSheetsChartRequest),
     updateTextStyle: S.optional(UpdateTextStyleRequest),
@@ -3391,14 +3383,14 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
 export type RequestList = Array<Request>;
-export const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
+const RequestList = /*@__PURE__*/ S.Array(Request) as any as S.Schema<RequestList>;
 
 /** Provides control over how write requests are executed. */
 export interface WriteControl {
   /** The revision ID of the presentation required for the write request. If specified and the required revision ID doesn't match the presentation's current revision ID, the request is not processed and returns a 400 bad request error. When a required revision ID is returned in a response, it indicates the revision ID of the document after the request was applied. */
   requiredRevisionId?: string;
 }
-export const WriteControl = /*@__PURE__*/ S.suspend(() =>
+const WriteControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredRevisionId: S.optional(S.String),
   }),
@@ -3411,7 +3403,7 @@ export interface BatchUpdatePresentationRequest {
   /** Provides control over how write requests are executed. */
   writeControl?: WriteControl;
 }
-export const BatchUpdatePresentationRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdatePresentationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(RequestList),
     writeControl: S.optional(WriteControl),
@@ -3426,7 +3418,7 @@ export interface BatchUpdatePresentationsRequest {
   /** Request body */
   body?: BatchUpdatePresentationRequest;
 }
-export const BatchUpdatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presentationId: S.String.pipe(T.Label()),
     body: S.optional(BatchUpdatePresentationRequest.pipe(T.HttpBody())),
@@ -3446,14 +3438,14 @@ export type BatchUpdatePresentationResponseCommentUpdateStateEnum =
   | "NO_UPDATES_REQUESTED"
   | "ALL_SAVED"
   | "ALL_FAILED_UNKNOWN_REASON";
-export const BatchUpdatePresentationResponseCommentUpdateStateEnum = S.String;
+const BatchUpdatePresentationResponseCommentUpdateStateEnum = S.String;
 
 /** The result of creating a reply. */
 export interface AddCommentReplyResponse {
   /** The newly-inserted reply Post. */
   post?: Post;
 }
-export const AddCommentReplyResponse = /*@__PURE__*/ S.suspend(() =>
+const AddCommentReplyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     post: S.optional(Post),
   }),
@@ -3464,7 +3456,7 @@ export interface ReplaceAllShapesWithSheetsChartResponse {
   /** The number of shapes replaced with charts. */
   occurrencesChanged?: number;
 }
-export const ReplaceAllShapesWithSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllShapesWithSheetsChartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     occurrencesChanged: S.optional(S.Number),
   }),
@@ -3477,7 +3469,7 @@ export interface InsertCommentResponse {
   /** The newly-inserted comment thread. */
   commentThread?: CommentThread;
 }
-export const InsertCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const InsertCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentThread: S.optional(CommentThread),
   }),
@@ -3488,36 +3480,35 @@ export interface DuplicateObjectResponse {
   /** The ID of the new duplicate object. */
   objectId?: string;
 }
-export const DuplicateObjectResponse =
-  RerouteLineRequest as any as S.Schema<DuplicateObjectResponse>;
+const DuplicateObjectResponse = RerouteLineRequest as any as S.Schema<DuplicateObjectResponse>;
 
 /** The result of grouping objects. */
 export interface GroupObjectsResponse {
   /** The object ID of the created group. */
   objectId?: string;
 }
-export const GroupObjectsResponse = RerouteLineRequest as any as S.Schema<GroupObjectsResponse>;
+const GroupObjectsResponse = RerouteLineRequest as any as S.Schema<GroupObjectsResponse>;
 
 /** The result of creating a shape. */
 export interface CreateShapeResponse {
   /** The object ID of the created shape. */
   objectId?: string;
 }
-export const CreateShapeResponse = RerouteLineRequest as any as S.Schema<CreateShapeResponse>;
+const CreateShapeResponse = RerouteLineRequest as any as S.Schema<CreateShapeResponse>;
 
 /** The result of creating a table. */
 export interface CreateTableResponse {
   /** The object ID of the created table. */
   objectId?: string;
 }
-export const CreateTableResponse = RerouteLineRequest as any as S.Schema<CreateTableResponse>;
+const CreateTableResponse = RerouteLineRequest as any as S.Schema<CreateTableResponse>;
 
 /** The result of replacing shapes with an image. */
 export interface ReplaceAllShapesWithImageResponse {
   /** The number of shapes replaced with images. */
   occurrencesChanged?: number;
 }
-export const ReplaceAllShapesWithImageResponse =
+const ReplaceAllShapesWithImageResponse =
   ReplaceAllShapesWithSheetsChartResponse as any as S.Schema<ReplaceAllShapesWithImageResponse>;
 
 /** The result of creating an image. */
@@ -3525,28 +3516,28 @@ export interface CreateImageResponse {
   /** The object ID of the created image. */
   objectId?: string;
 }
-export const CreateImageResponse = RerouteLineRequest as any as S.Schema<CreateImageResponse>;
+const CreateImageResponse = RerouteLineRequest as any as S.Schema<CreateImageResponse>;
 
 /** The result of creating a line. */
 export interface CreateLineResponse {
   /** The object ID of the created line. */
   objectId?: string;
 }
-export const CreateLineResponse = RerouteLineRequest as any as S.Schema<CreateLineResponse>;
+const CreateLineResponse = RerouteLineRequest as any as S.Schema<CreateLineResponse>;
 
 /** The result of creating a slide. */
 export interface CreateSlideResponse {
   /** The object ID of the created slide. */
   objectId?: string;
 }
-export const CreateSlideResponse = RerouteLineRequest as any as S.Schema<CreateSlideResponse>;
+const CreateSlideResponse = RerouteLineRequest as any as S.Schema<CreateSlideResponse>;
 
 /** The result of creating an embedded Google Sheets chart. */
 export interface CreateSheetsChartResponse {
   /** The object ID of the created chart. */
   objectId?: string;
 }
-export const CreateSheetsChartResponse =
+const CreateSheetsChartResponse =
   RefreshSheetsChartRequest as any as S.Schema<CreateSheetsChartResponse>;
 
 /** The result of creating a video. */
@@ -3554,14 +3545,14 @@ export interface CreateVideoResponse {
   /** The object ID of the created video. */
   objectId?: string;
 }
-export const CreateVideoResponse = RerouteLineRequest as any as S.Schema<CreateVideoResponse>;
+const CreateVideoResponse = RerouteLineRequest as any as S.Schema<CreateVideoResponse>;
 
 /** The result of replacing text. */
 export interface ReplaceAllTextResponse {
   /** The number of occurrences changed by replacing all text. */
   occurrencesChanged?: number;
 }
-export const ReplaceAllTextResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllTextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     occurrencesChanged: S.optional(S.Number),
   }),
@@ -3598,7 +3589,7 @@ export interface Response {
   /** The result of replacing text. */
   replaceAllText?: ReplaceAllTextResponse;
 }
-export const Response = /*@__PURE__*/ S.suspend(() =>
+const Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addCommentReply: S.optional(AddCommentReplyResponse),
     replaceAllShapesWithSheetsChart: S.optional(ReplaceAllShapesWithSheetsChartResponse),
@@ -3618,7 +3609,7 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
 export type ResponseList = Array<Response>;
-export const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
+const ResponseList = /*@__PURE__*/ S.Array(Response) as any as S.Schema<ResponseList>;
 
 /** Response message from a batch update. */
 export interface BatchUpdatePresentationResponse {
@@ -3631,7 +3622,7 @@ export interface BatchUpdatePresentationResponse {
   /** The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty. */
   replies?: ResponseList;
 }
-export const BatchUpdatePresentationResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdatePresentationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presentationId: S.optional(S.String),
     commentUpdateState: S.optional(BatchUpdatePresentationResponseCommentUpdateStateEnum),
@@ -3647,10 +3638,10 @@ export type PresentationCommentsViewModeEnum =
   | "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS"
   | "COMMENTS_VIEW_MODE_OMITTED"
   | "COMMENTS_VIEW_MODE_INCLUDED";
-export const PresentationCommentsViewModeEnum = S.String;
+const PresentationCommentsViewModeEnum = S.String;
 
 export type PageList = Array<Page>;
-export const PageList = /*@__PURE__*/ S.Array(Page) as any as S.Schema<PageList>;
+const PageList = /*@__PURE__*/ S.Array(Page) as any as S.Schema<PageList>;
 
 /** A Google Slides presentation. */
 export interface Presentation {
@@ -3677,7 +3668,7 @@ export interface Presentation {
   /** Output only. The comment threads associated with the presentation. */
   comments?: CommentThreadList;
 }
-export const Presentation = /*@__PURE__*/ S.suspend(() =>
+const Presentation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String),
     pageSize: S.optional(Size),
@@ -3697,7 +3688,7 @@ export interface CreatePresentationsRequest {
   /** Request body */
   body?: Presentation;
 }
-export const CreatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePresentationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Presentation.pipe(T.HttpBody())),
   }).pipe(
@@ -3712,7 +3703,7 @@ export type GetPresentationsCommentsViewModeEnum =
   | "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS"
   | "COMMENTS_VIEW_MODE_OMITTED"
   | "COMMENTS_VIEW_MODE_INCLUDED";
-export const GetPresentationsCommentsViewModeEnum = S.String;
+const GetPresentationsCommentsViewModeEnum = S.String;
 
 export interface GetPresentationsRequest {
   /** The ID of the presentation to retrieve. */
@@ -3720,7 +3711,7 @@ export interface GetPresentationsRequest {
   /** The comments view mode to apply to the presentation. This allows viewing the presentation with comments omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. */
   commentsViewMode?: GetPresentationsCommentsViewModeEnum | (string & {});
 }
-export const GetPresentationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPresentationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     presentationId: S.String.pipe(T.Label()),
     commentsViewMode: S.optional(GetPresentationsCommentsViewModeEnum.pipe(T.Query())),
@@ -3738,7 +3729,7 @@ export type GetPresentationsPagesCommentsViewModeEnum =
   | "COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS"
   | "COMMENTS_VIEW_MODE_OMITTED"
   | "COMMENTS_VIEW_MODE_INCLUDED";
-export const GetPresentationsPagesCommentsViewModeEnum = S.String;
+const GetPresentationsPagesCommentsViewModeEnum = S.String;
 
 export interface GetPresentationsPagesRequest {
   /** The comments view mode to apply to the page. This allows viewing the page with comments omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. */
@@ -3748,7 +3739,7 @@ export interface GetPresentationsPagesRequest {
   /** The object ID of the page to retrieve. */
   pageObjectId: string;
 }
-export const GetPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentsViewMode: S.optional(GetPresentationsPagesCommentsViewModeEnum.pipe(T.Query())),
     presentationId: S.String.pipe(T.Label()),
@@ -3770,10 +3761,10 @@ export type GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum 
   | "MEDIUM"
   | "SMALL"
   | "WIDTH2000_PX";
-export const GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum = S.String;
+const GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum = S.String;
 
 export type GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum = "PNG";
-export const GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum = S.String;
+const GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum = S.String;
 
 export interface GetThumbnailPresentationsPagesRequest {
   /** The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image. */
@@ -3789,7 +3780,7 @@ export interface GetThumbnailPresentationsPagesRequest {
     | GetThumbnailPresentationsPagesThumbnailProperties_mimeTypeEnum
     | (string & {});
 }
-export const GetThumbnailPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThumbnailPresentationsPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "thumbnailProperties.thumbnailSize": S.optional(
       GetThumbnailPresentationsPagesThumbnailProperties_thumbnailSizeEnum.pipe(T.Query()),
@@ -3819,7 +3810,7 @@ export interface Thumbnail {
   /** The positive width in pixels of the thumbnail image. */
   width?: number;
 }
-export const Thumbnail = /*@__PURE__*/ S.suspend(() =>
+const Thumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentUrl: S.optional(S.String),
     height: S.optional(S.Number),

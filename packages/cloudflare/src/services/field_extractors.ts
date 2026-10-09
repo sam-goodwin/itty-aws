@@ -18,7 +18,7 @@ export interface DeleteRequest {
   /** Extractor type. */
   extractor: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     extractor: S.String.pipe(T.Label()),
@@ -32,7 +32,7 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 export type DeleteResponse = unknown;
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
@@ -42,7 +42,7 @@ export interface GetRequest {
   /** Extractor type. */
   extractor: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     extractor: S.String.pipe(T.Label()),
@@ -61,7 +61,7 @@ export interface GetResponseRulesItemFieldsItem {
   /** Field name. */
   name: string;
 }
-export const GetResponseRulesItemFieldsItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponseRulesItemFieldsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
     name: S.String,
@@ -71,7 +71,7 @@ export const GetResponseRulesItemFieldsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseRulesItemFieldsItem>;
 
 export type GetResponseRulesItemFieldsList = Array<GetResponseRulesItemFieldsItem>;
-export const GetResponseRulesItemFieldsList = /*@__PURE__*/ S.Array(
+const GetResponseRulesItemFieldsList = /*@__PURE__*/ S.Array(
   GetResponseRulesItemFieldsItem,
 ) as any as S.Schema<GetResponseRulesItemFieldsList>;
 
@@ -82,7 +82,7 @@ export interface GetResponseRulesItem {
   /** Human-readable rule description. */
   description?: string | null;
 }
-export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: GetResponseRulesItemFieldsList,
     ref: S.String,
@@ -91,7 +91,7 @@ export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponseRulesItem" }) as any as S.Schema<GetResponseRulesItem>;
 
 export type GetResponseRulesList = Array<GetResponseRulesItem>;
-export const GetResponseRulesList = /*@__PURE__*/ S.Array(
+const GetResponseRulesList = /*@__PURE__*/ S.Array(
   GetResponseRulesItem,
 ) as any as S.Schema<GetResponseRulesList>;
 
@@ -101,7 +101,7 @@ export interface GetResponse {
   extractor: string;
   rules: GetResponseRulesList;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extractor: S.String,
     rules: GetResponseRulesList,
@@ -112,11 +112,8 @@ export interface UpdateRequestRulesItemFieldsItem {
   expression: string;
   name: string;
 }
-export const UpdateRequestRulesItemFieldsItem =
-  GetResponseRulesItemFieldsItem as any as S.Schema<UpdateRequestRulesItemFieldsItem>;
-
 export type UpdateRequestRulesItemFieldsList = Array<UpdateRequestRulesItemFieldsItem>;
-export const UpdateRequestRulesItemFieldsList =
+const UpdateRequestRulesItemFieldsList =
   GetResponseRulesItemFieldsList as any as S.Schema<UpdateRequestRulesItemFieldsList>;
 
 export interface UpdateRequestRulesItem {
@@ -124,7 +121,7 @@ export interface UpdateRequestRulesItem {
   ref: string;
   description?: string;
 }
-export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: UpdateRequestRulesItemFieldsList,
     ref: S.String,
@@ -133,7 +130,7 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRequestRulesItem" }) as any as S.Schema<UpdateRequestRulesItem>;
 
 export type UpdateRequestRulesList = Array<UpdateRequestRulesItem>;
-export const UpdateRequestRulesList = /*@__PURE__*/ S.Array(
+const UpdateRequestRulesList = /*@__PURE__*/ S.Array(
   UpdateRequestRulesItem,
 ) as any as S.Schema<UpdateRequestRulesList>;
 
@@ -144,7 +141,7 @@ export interface UpdateRequest {
   extractor: string;
   rules: UpdateRequestRulesList;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     extractor: S.String.pipe(T.Label()),
@@ -159,12 +156,7 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
 export type UpdateResponseRulesItemFieldsItem = GetResponseRulesItemFieldsItem;
-export const UpdateResponseRulesItemFieldsItem = GetResponseRulesItemFieldsItem;
-
 export type UpdateResponseRulesItemFieldsList = Array<GetResponseRulesItemFieldsItem>;
-export const UpdateResponseRulesItemFieldsList =
-  GetResponseRulesItemFieldsList as any as S.Schema<UpdateResponseRulesItemFieldsList>;
-
 export interface UpdateResponseRulesItem {
   fields: UpdateResponseRulesItemFieldsList;
   /** Stable rule identifier. */
@@ -172,20 +164,14 @@ export interface UpdateResponseRulesItem {
   /** Human-readable rule description. */
   description?: string | null;
 }
-export const UpdateResponseRulesItem =
-  GetResponseRulesItem as any as S.Schema<UpdateResponseRulesItem>;
-
 export type UpdateResponseRulesList = Array<UpdateResponseRulesItem>;
-export const UpdateResponseRulesList =
-  GetResponseRulesList as any as S.Schema<UpdateResponseRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
   /** Extractor type. */
   extractor: string;
   rules: UpdateResponseRulesList;
 }
-export const UpdateResponse = GetResponse as any as S.Schema<UpdateResponse>;
+const UpdateResponse = GetResponse as any as S.Schema<UpdateResponse>;
 
 export type DeleteError = CloudflareOpError;
 /** Deletes all custom extraction rules for an extractor type. */

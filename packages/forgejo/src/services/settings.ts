@@ -8,7 +8,7 @@ import * as T from "../traits.ts";
 export type { ForgejoOpError, ForgejoOpContext };
 
 export interface GetGeneralAPISettingsRequest {}
-export const GetGeneralAPISettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGeneralAPISettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/settings/api", code: 200 })),
 ).annotate({
   identifier: "GetGeneralAPISettingsRequest",
@@ -21,7 +21,7 @@ export interface GeneralAPISettings {
   default_paging_num?: number;
   max_response_items?: number;
 }
-export const GeneralAPISettings = /*@__PURE__*/ S.suspend(() =>
+const GeneralAPISettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_git_trees_per_page: S.optional(S.Number),
     default_max_blob_size: S.optional(S.Number),
@@ -31,7 +31,7 @@ export const GeneralAPISettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeneralAPISettings" }) as any as S.Schema<GeneralAPISettings>;
 
 export interface GetGeneralAttachmentSettingsRequest {}
-export const GetGeneralAttachmentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGeneralAttachmentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/settings/attachment", code: 200 })),
 ).annotate({
   identifier: "GetGeneralAttachmentSettingsRequest",
@@ -44,7 +44,7 @@ export interface GeneralAttachmentSettings {
   max_files?: number;
   max_size?: number;
 }
-export const GeneralAttachmentSettings = /*@__PURE__*/ S.suspend(() =>
+const GeneralAttachmentSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed_types: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -56,7 +56,7 @@ export const GeneralAttachmentSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeneralAttachmentSettings>;
 
 export interface GetGeneralRepositorySettingsRequest {}
-export const GetGeneralRepositorySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGeneralRepositorySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/settings/repository", code: 200 })),
 ).annotate({
   identifier: "GetGeneralRepositorySettingsRequest",
@@ -72,7 +72,7 @@ export interface GeneralRepoSettings {
   stars_disabled?: boolean;
   time_tracking_disabled?: boolean;
 }
-export const GeneralRepoSettings = /*@__PURE__*/ S.suspend(() =>
+const GeneralRepoSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forks_disabled: S.optional(S.Boolean),
     http_git_disabled: S.optional(S.Boolean),
@@ -85,19 +85,19 @@ export const GeneralRepoSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeneralRepoSettings" }) as any as S.Schema<GeneralRepoSettings>;
 
 export interface GetGeneralUISettingsRequest {}
-export const GetGeneralUISettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGeneralUISettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/settings/ui", code: 200 })),
 ).annotate({
   identifier: "GetGeneralUISettingsRequest",
 }) as any as S.Schema<GetGeneralUISettingsRequest>;
 
 export type GeneralUISettingsAllowedReactionsList = Array<string>;
-export const GeneralUISettingsAllowedReactionsList = /*@__PURE__*/ S.Array(
+const GeneralUISettingsAllowedReactionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GeneralUISettingsAllowedReactionsList>;
 
 export type GeneralUISettingsCustomEmojisList = Array<string>;
-export const GeneralUISettingsCustomEmojisList =
+const GeneralUISettingsCustomEmojisList =
   GeneralUISettingsAllowedReactionsList as any as S.Schema<GeneralUISettingsCustomEmojisList>;
 
 /** GeneralUISettings contains global ui settings exposed by API */
@@ -106,7 +106,7 @@ export interface GeneralUISettings {
   custom_emojis?: GeneralUISettingsCustomEmojisList;
   default_theme?: string;
 }
-export const GeneralUISettings = /*@__PURE__*/ S.suspend(() =>
+const GeneralUISettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowed_reactions: S.optional(GeneralUISettingsAllowedReactionsList),
     custom_emojis: S.optional(GeneralUISettingsCustomEmojisList),

@@ -13,7 +13,7 @@ export interface GetWebAnalyticsContentAutopilotProposalRequest {
   /** A UUID string identifying this content autopilot proposal. */
   id: string;
 }
-export const GetWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -30,7 +30,7 @@ export const GetWebAnalyticsContentAutopilotProposalRequest = /*@__PURE__*/ S.su
 
 /** * `new_content` - New content * `page_improvement` - Page improvement */
 export type ContentAutopilotProposalProposalTypeEnum = "new_content" | "page_improvement";
-export const ContentAutopilotProposalProposalTypeEnum = S.String;
+const ContentAutopilotProposalProposalTypeEnum = S.String;
 
 /** * `generating` - Generating * `ready_for_review` - Ready for review * `rejected` - Rejected * `exported` - Exported * `failed` - Failed */
 export type ContentAutopilotProposalLifecycleStatusEnum =
@@ -39,7 +39,7 @@ export type ContentAutopilotProposalLifecycleStatusEnum =
   | "rejected"
   | "exported"
   | "failed";
-export const ContentAutopilotProposalLifecycleStatusEnum = S.String;
+const ContentAutopilotProposalLifecycleStatusEnum = S.String;
 
 /** * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
 export type OpportunityKindEnum =
@@ -48,7 +48,7 @@ export type OpportunityKindEnum =
   | "organic_decline"
   | "ai_visibility_gap"
   | "site_hygiene";
-export const OpportunityKindEnum = S.String;
+const OpportunityKindEnum = S.String;
 
 export interface ContentAutopilotEvidence {
   /** Reason the opportunity was selected. * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
@@ -60,7 +60,7 @@ export interface ContentAutopilotEvidence {
   /** Search query supported by this evidence. */
   query?: string;
 }
-export const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opportunity_kind: OpportunityKindEnum,
     explanation: S.String,
@@ -71,7 +71,7 @@ export const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
 
 /** Performance evidence for this proposal. */
 export type ContentAutopilotProposalEvidenceList = Array<ContentAutopilotEvidence>;
-export const ContentAutopilotProposalEvidenceList = /*@__PURE__*/ S.Array(
+const ContentAutopilotProposalEvidenceList = /*@__PURE__*/ S.Array(
   ContentAutopilotEvidence,
 ) as any as S.Schema<ContentAutopilotProposalEvidenceList>;
 
@@ -87,7 +87,7 @@ export interface ContentAutopilotValidationCheck {
   /** Whether failure prevents export. */
   blocking: boolean;
 }
-export const ContentAutopilotValidationCheck = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotValidationCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check_key: S.String,
     label: S.String,
@@ -101,7 +101,7 @@ export const ContentAutopilotValidationCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** Factual, brand, intent, originality, linking, crawlability, and schema checks. */
 export type ContentAutopilotValidationReportChecksList = Array<ContentAutopilotValidationCheck>;
-export const ContentAutopilotValidationReportChecksList = /*@__PURE__*/ S.Array(
+const ContentAutopilotValidationReportChecksList = /*@__PURE__*/ S.Array(
   ContentAutopilotValidationCheck,
 ) as any as S.Schema<ContentAutopilotValidationReportChecksList>;
 
@@ -111,7 +111,7 @@ export interface ContentAutopilotValidationReport {
   /** Factual, brand, intent, originality, linking, crawlability, and schema checks. */
   checks: ContentAutopilotValidationReportChecksList;
 }
-export const ContentAutopilotValidationReport = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotValidationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passed: S.Boolean,
     checks: ContentAutopilotValidationReportChecksList,
@@ -126,7 +126,7 @@ export interface ContentAutopilotFrontmatterEntry {
   /** Serialized frontmatter value. */
   value: string;
 }
-export const ContentAutopilotFrontmatterEntry = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotFrontmatterEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -137,19 +137,19 @@ export const ContentAutopilotFrontmatterEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered frontmatter entries. */
 export type ContentAutopilotPackageFrontmatterList = Array<ContentAutopilotFrontmatterEntry>;
-export const ContentAutopilotPackageFrontmatterList = /*@__PURE__*/ S.Array(
+const ContentAutopilotPackageFrontmatterList = /*@__PURE__*/ S.Array(
   ContentAutopilotFrontmatterEntry,
 ) as any as S.Schema<ContentAutopilotPackageFrontmatterList>;
 
 /** Validated same-origin internal links included in the content. */
 export type ContentAutopilotPackageInternalLinksList = Array<string>;
-export const ContentAutopilotPackageInternalLinksList = /*@__PURE__*/ S.Array(
+const ContentAutopilotPackageInternalLinksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContentAutopilotPackageInternalLinksList>;
 
 /** Portable source notes included with the export. */
 export type ContentAutopilotPackageSourceNotesList = Array<string>;
-export const ContentAutopilotPackageSourceNotesList =
+const ContentAutopilotPackageSourceNotesList =
   ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotPackageSourceNotesList>;
 
 export interface ContentAutopilotPackage {
@@ -172,7 +172,7 @@ export interface ContentAutopilotPackage {
   /** Suggested llms.txt entry for the page. */
   llms_txt_line?: string;
 }
-export const ContentAutopilotPackage = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file_path: S.String,
     title: S.String,
@@ -188,7 +188,7 @@ export const ContentAutopilotPackage = /*@__PURE__*/ S.suspend(() =>
 
 /** Site pages the brief asked to read for facts. */
 export type ContentAutopilotBriefSitePagesToReadList = Array<string>;
-export const ContentAutopilotBriefSitePagesToReadList =
+const ContentAutopilotBriefSitePagesToReadList =
   ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefSitePagesToReadList>;
 
 export interface ContentAutopilotBriefCompetitor {
@@ -197,7 +197,7 @@ export interface ContentAutopilotBriefCompetitor {
   /** The product's own page to research. */
   url: string;
 }
-export const ContentAutopilotBriefCompetitor = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotBriefCompetitor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     url: S.String,
@@ -208,23 +208,23 @@ export const ContentAutopilotBriefCompetitor = /*@__PURE__*/ S.suspend(() =>
 
 /** Products the brief asked to research for a comparison. */
 export type ContentAutopilotBriefCompetitorsToResearchList = Array<ContentAutopilotBriefCompetitor>;
-export const ContentAutopilotBriefCompetitorsToResearchList = /*@__PURE__*/ S.Array(
+const ContentAutopilotBriefCompetitorsToResearchList = /*@__PURE__*/ S.Array(
   ContentAutopilotBriefCompetitor,
 ) as any as S.Schema<ContentAutopilotBriefCompetitorsToResearchList>;
 
 /** Planned sections, in order. */
 export type ContentAutopilotBriefOutlineList = Array<string>;
-export const ContentAutopilotBriefOutlineList =
+const ContentAutopilotBriefOutlineList =
   ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefOutlineList>;
 
 /** Questions the page must answer. */
 export type ContentAutopilotBriefQuestionsToAnswerList = Array<string>;
-export const ContentAutopilotBriefQuestionsToAnswerList =
+const ContentAutopilotBriefQuestionsToAnswerList =
   ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefQuestionsToAnswerList>;
 
 /** Topics the cited competitor pages cover that the site's pages don't. */
 export type ContentAutopilotBriefCompetitorCoverageList = Array<string>;
-export const ContentAutopilotBriefCompetitorCoverageList =
+const ContentAutopilotBriefCompetitorCoverageList =
   ContentAutopilotPackageInternalLinksList as any as S.Schema<ContentAutopilotBriefCompetitorCoverageList>;
 
 export interface ContentAutopilotBrief {
@@ -253,7 +253,7 @@ export interface ContentAutopilotBrief {
   /** What the question means, when AI answer engines misread which product or company it asks about. */
   disambiguation?: string;
 }
-export const ContentAutopilotBrief = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotBrief = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intent: S.optional(S.String),
     audience: S.optional(S.String),
@@ -272,7 +272,7 @@ export const ContentAutopilotBrief = /*@__PURE__*/ S.suspend(() =>
 
 /** * `site` - site * `competitor` - competitor */
 export type ContentAutopilotSourceLedgerEntryKindEnum = "site" | "competitor";
-export const ContentAutopilotSourceLedgerEntryKindEnum = S.String;
+const ContentAutopilotSourceLedgerEntryKindEnum = S.String;
 
 export interface ContentAutopilotSourceLedgerEntry {
   /** Factual claim the draft makes. */
@@ -284,7 +284,7 @@ export interface ContentAutopilotSourceLedgerEntry {
   /** Whether the source is one of the site's pages or a competitor's own page. * `site` - site * `competitor` - competitor */
   kind?: ContentAutopilotSourceLedgerEntryKindEnum;
 }
-export const ContentAutopilotSourceLedgerEntry = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotSourceLedgerEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claim: S.String,
     source_url: S.String,
@@ -297,7 +297,7 @@ export const ContentAutopilotSourceLedgerEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Factual claims in the draft and the site pages that support them. */
 export type ContentAutopilotProposalSourceLedgerList = Array<ContentAutopilotSourceLedgerEntry>;
-export const ContentAutopilotProposalSourceLedgerList = /*@__PURE__*/ S.Array(
+const ContentAutopilotProposalSourceLedgerList = /*@__PURE__*/ S.Array(
   ContentAutopilotSourceLedgerEntry,
 ) as any as S.Schema<ContentAutopilotProposalSourceLedgerList>;
 
@@ -332,7 +332,7 @@ export interface ContentAutopilotProposal {
   created_at: string;
   updated_at: string;
 }
-export const ContentAutopilotProposal = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotProposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     run_id: S.String,
@@ -365,7 +365,7 @@ export interface ListWebAnalyticsContentAutopilotProposalsRequest {
   /** Only return proposals from this content run. */
   run_id?: string;
 }
-export const ListWebAnalyticsContentAutopilotProposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAnalyticsContentAutopilotProposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -385,7 +385,7 @@ export const ListWebAnalyticsContentAutopilotProposalsRequest = /*@__PURE__*/ S.
 
 /** Performance evidence for this proposal. */
 export type ContentAutopilotProposalListEvidenceList = Array<ContentAutopilotEvidence>;
-export const ContentAutopilotProposalListEvidenceList =
+const ContentAutopilotProposalListEvidenceList =
   ContentAutopilotProposalEvidenceList as any as S.Schema<ContentAutopilotProposalListEvidenceList>;
 
 export interface ContentAutopilotProposalList {
@@ -404,7 +404,7 @@ export interface ContentAutopilotProposalList {
   created_at: string;
   updated_at: string;
 }
-export const ContentAutopilotProposalList = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotProposalList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     run_id: S.String,
@@ -424,7 +424,7 @@ export const ContentAutopilotProposalList = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedContentAutopilotProposalListListResultsList =
   Array<ContentAutopilotProposalList>;
-export const PaginatedContentAutopilotProposalListListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedContentAutopilotProposalListListResultsList = /*@__PURE__*/ S.Array(
   ContentAutopilotProposalList,
 ) as any as S.Schema<PaginatedContentAutopilotProposalListListResultsList>;
 
@@ -434,7 +434,7 @@ export interface PaginatedContentAutopilotProposalListList {
   previous?: string | null;
   results: PaginatedContentAutopilotProposalListListResultsList;
 }
-export const PaginatedContentAutopilotProposalListList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedContentAutopilotProposalListList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),

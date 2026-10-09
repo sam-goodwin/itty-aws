@@ -80,7 +80,7 @@ export interface AdapterSession {
   /** Identifier. The name of the session. This is always system-assigned. */
   name?: string;
 }
-export const AdapterSession = /*@__PURE__*/ S.suspend(() =>
+const AdapterSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -92,7 +92,7 @@ export interface AdapterProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: AdapterSession;
 }
-export const AdapterProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdapterProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AdapterSession.pipe(T.HttpBody())),
@@ -108,7 +108,7 @@ export const AdapterProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<AdapterProjectsInstancesDatabasesSessionsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Message sent by the client to the adapter. */
 export interface AdaptMessageRequest {
@@ -119,7 +119,7 @@ export interface AdaptMessageRequest {
   /** Required. Identifier for the underlying wire protocol. */
   protocol?: string;
 }
-export const AdaptMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const AdaptMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(S.String),
     attachments: S.optional(StringMap),
@@ -133,7 +133,7 @@ export interface AdaptMessageProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: AdaptMessageRequest;
 }
-export const AdaptMessageProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdaptMessageProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AdaptMessageRequest.pipe(T.HttpBody())),
@@ -157,7 +157,7 @@ export interface AdaptMessageResponse {
   /** Optional. Uninterpreted bytes from the underlying wire protocol. */
   payload?: string;
 }
-export const AdaptMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const AdaptMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateUpdates: S.optional(StringMap),
     last: S.optional(S.Boolean),
@@ -166,21 +166,21 @@ export const AdaptMessageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdaptMessageResponse" }) as any as S.Schema<AdaptMessageResponse>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** A split key. */
 export interface Key {
   /** Required. The column values making up the split key. */
   keyParts?: DocumentList;
 }
-export const Key = /*@__PURE__*/ S.suspend(() =>
+const Key = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyParts: S.optional(DocumentList),
   }),
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
 export type KeyList = Array<Key>;
-export const KeyList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyList>;
+const KeyList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyList>;
 
 /** The split points of a table or an index. */
 export interface SplitPoints {
@@ -193,7 +193,7 @@ export interface SplitPoints {
   /** Optional. The expiration timestamp of the split points. A timestamp in the past means immediate expiration. The maximum value can be 30 days in the future. Defaults to 10 days in the future if not specified. */
   expireTime?: string;
 }
-export const SplitPoints = /*@__PURE__*/ S.suspend(() =>
+const SplitPoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(KeyList),
     index: S.optional(S.String),
@@ -203,9 +203,7 @@ export const SplitPoints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SplitPoints" }) as any as S.Schema<SplitPoints>;
 
 export type SplitPointsList = Array<SplitPoints>;
-export const SplitPointsList = /*@__PURE__*/ S.Array(
-  SplitPoints,
-) as any as S.Schema<SplitPointsList>;
+const SplitPointsList = /*@__PURE__*/ S.Array(SplitPoints) as any as S.Schema<SplitPointsList>;
 
 /** The request for AddSplitPoints. */
 export interface AddSplitPointsRequest {
@@ -214,7 +212,7 @@ export interface AddSplitPointsRequest {
   /** Optional. A user-supplied tag associated with the split points. For example, "initial_data_load", "special_event_1". Defaults to "CloudAddSplitPointsAPI" if not specified. The length of the tag must not exceed 50 characters, or else it is trimmed. Only valid UTF8 characters are allowed. */
   initiator?: string;
 }
-export const AddSplitPointsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSplitPointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     splitPoints: S.optional(SplitPointsList),
     initiator: S.optional(S.String),
@@ -227,7 +225,7 @@ export interface AddSplitPointsProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: AddSplitPointsRequest;
 }
-export const AddSplitPointsProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSplitPointsProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(AddSplitPointsRequest.pipe(T.HttpBody())),
@@ -244,7 +242,7 @@ export const AddSplitPointsProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.s
 
 /** The response for AddSplitPoints. */
 export interface AddSplitPointsResponse {}
-export const AddSplitPointsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AddSplitPointsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddSplitPointsResponse",
 }) as any as S.Schema<AddSplitPointsResponse>;
 
@@ -263,7 +261,7 @@ export interface Session {
   /** Output only. The timestamp when the session is created. */
   createTime?: string;
 }
-export const Session = /*@__PURE__*/ S.suspend(() =>
+const Session = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     multiplexed: S.optional(S.Boolean),
@@ -281,7 +279,7 @@ export interface BatchCreateSessionsRequest {
   /** Required. The number of sessions to be created in this batch call. At least one session is created. The API can return fewer than the requested number of sessions. If a specific number of sessions are desired, the client can make additional calls to `BatchCreateSessions` (adjusting session_count as necessary). */
   sessionCount?: number;
 }
-export const BatchCreateSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreateSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionTemplate: S.optional(Session),
     sessionCount: S.optional(S.Number),
@@ -296,7 +294,7 @@ export interface BatchCreateProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: BatchCreateSessionsRequest;
 }
-export const BatchCreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchCreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(BatchCreateSessionsRequest.pipe(T.HttpBody())),
@@ -312,14 +310,14 @@ export const BatchCreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*
 }) as any as S.Schema<BatchCreateProjectsInstancesDatabasesSessionsRequest>;
 
 export type SessionList = Array<Session>;
-export const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
+const SessionList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<SessionList>;
 
 /** The response for BatchCreateSessions. */
 export interface BatchCreateSessionsResponse {
   /** The freshly created sessions. */
   session?: SessionList;
 }
-export const BatchCreateSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchCreateSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.optional(SessionList),
   }),
@@ -332,20 +330,17 @@ export type RequestOptionsPriorityEnum =
   | "PRIORITY_LOW"
   | "PRIORITY_MEDIUM"
   | "PRIORITY_HIGH";
-export const RequestOptionsPriorityEnum = S.String;
+const RequestOptionsPriorityEnum = S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Container for various pieces of client-owned context attached to a request. */
 export interface ClientContext {
   /** Optional. Map of parameter name to value for this request. These values will be returned by any SECURE_CONTEXT() calls invoked by this request (e.g., by queries against Parameterized Secure Views). */
   secureContext?: DocumentMap;
 }
-export const ClientContext = /*@__PURE__*/ S.suspend(() =>
+const ClientContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secureContext: S.optional(DocumentMap),
   }),
@@ -362,7 +357,7 @@ export interface RequestOptions {
   /** Optional. Optional context that may be needed for some requests. */
   clientContext?: ClientContext;
 }
-export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
+const RequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionTag: S.optional(S.String),
     priority: S.optional(RequestOptionsPriorityEnum),
@@ -372,12 +367,10 @@ export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestOptions" }) as any as S.Schema<RequestOptions>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type DocumentListList = Array<DocumentList>;
-export const DocumentListList = /*@__PURE__*/ S.Array(
-  DocumentList,
-) as any as S.Schema<DocumentListList>;
+const DocumentListList = /*@__PURE__*/ S.Array(DocumentList) as any as S.Schema<DocumentListList>;
 
 /** Arguments to insert, update, insert_or_update, and replace operations. */
 export interface Write {
@@ -388,7 +381,7 @@ export interface Write {
   /** The values to be written. `values` can contain more than one list of values. If it does, then multiple rows are written, one for each entry in `values`. Each list in `values` must have exactly as many entries as there are entries in columns above. Sending multiple lists is equivalent to sending multiple `Mutation`s, each containing one `values` entry and repeating table and columns. Individual values in each list are encoded as described here. */
   values?: DocumentListList;
 }
-export const Write = /*@__PURE__*/ S.suspend(() =>
+const Write = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(StringList),
     table: S.optional(S.String),
@@ -405,7 +398,7 @@ export interface Ack {
   /** Required. The queue where the message to be acked is stored. */
   queue?: string;
 }
-export const Ack = /*@__PURE__*/ S.suspend(() =>
+const Ack = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignoreNotFound: S.optional(S.Boolean),
     key: S.optional(DocumentList),
@@ -424,7 +417,7 @@ export interface Send {
   /** The payload of the message. */
   payload?: unknown;
 }
-export const Send = /*@__PURE__*/ S.suspend(() =>
+const Send = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queue: S.optional(S.String),
     deliverTime: S.optional(S.String),
@@ -444,7 +437,7 @@ export interface KeyRange {
   /** If the start is open, then the range excludes rows whose first `len(start_open)` key columns exactly match `start_open`. */
   startOpen?: DocumentList;
 }
-export const KeyRange = /*@__PURE__*/ S.suspend(() =>
+const KeyRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endOpen: S.optional(DocumentList),
     endClosed: S.optional(DocumentList),
@@ -454,7 +447,7 @@ export const KeyRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyRange" }) as any as S.Schema<KeyRange>;
 
 export type KeyRangeList = Array<KeyRange>;
-export const KeyRangeList = /*@__PURE__*/ S.Array(KeyRange) as any as S.Schema<KeyRangeList>;
+const KeyRangeList = /*@__PURE__*/ S.Array(KeyRange) as any as S.Schema<KeyRangeList>;
 
 /** `KeySet` defines a collection of Cloud Spanner keys and/or key ranges. All the keys are expected to be in the same table or index. The keys need not be sorted in any particular way. If the same key is specified multiple times in the set (for example if two ranges, two keys, or a key and a range overlap), Cloud Spanner behaves as if the key were only specified once. */
 export interface KeySet {
@@ -465,7 +458,7 @@ export interface KeySet {
   /** A list of specific keys. Entries in `keys` should have exactly as many elements as there are columns in the primary or index key with which this `KeySet` is used. Individual key values are encoded as described here. */
   keys?: DocumentListList;
 }
-export const KeySet = /*@__PURE__*/ S.suspend(() =>
+const KeySet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.optional(S.Boolean),
     ranges: S.optional(KeyRangeList),
@@ -480,7 +473,7 @@ export interface Delete {
   /** Required. The table whose rows will be deleted. */
   table?: string;
 }
-export const Delete = /*@__PURE__*/ S.suspend(() =>
+const Delete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keySet: S.optional(KeySet),
     table: S.optional(S.String),
@@ -504,7 +497,7 @@ export interface Mutation {
   /** Delete rows from a table. Succeeds whether or not the named rows were present. */
   delete?: Delete;
 }
-export const Mutation = /*@__PURE__*/ S.suspend(() =>
+const Mutation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insertOrUpdate: S.optional(Write),
     ack: S.optional(Ack),
@@ -517,21 +510,21 @@ export const Mutation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Mutation" }) as any as S.Schema<Mutation>;
 
 export type MutationList = Array<Mutation>;
-export const MutationList = /*@__PURE__*/ S.Array(Mutation) as any as S.Schema<MutationList>;
+const MutationList = /*@__PURE__*/ S.Array(Mutation) as any as S.Schema<MutationList>;
 
 /** A group of mutations to be committed together. Related mutations should be placed in a group. For example, two mutations inserting rows with the same primary key prefix in both parent and child tables are related. */
 export interface MutationGroup {
   /** Required. The mutations in this group. */
   mutations?: MutationList;
 }
-export const MutationGroup = /*@__PURE__*/ S.suspend(() =>
+const MutationGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutations: S.optional(MutationList),
   }),
 ).annotate({ identifier: "MutationGroup" }) as any as S.Schema<MutationGroup>;
 
 export type MutationGroupList = Array<MutationGroup>;
-export const MutationGroupList = /*@__PURE__*/ S.Array(
+const MutationGroupList = /*@__PURE__*/ S.Array(
   MutationGroup,
 ) as any as S.Schema<MutationGroupList>;
 
@@ -544,7 +537,7 @@ export interface BatchWriteRequest {
   /** Required. The groups of mutations to be applied. */
   mutationGroups?: MutationGroupList;
 }
-export const BatchWriteRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludeTxnFromChangeStreams: S.optional(S.Boolean),
     requestOptions: S.optional(RequestOptions),
@@ -558,7 +551,7 @@ export interface BatchWriteProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: BatchWriteRequest;
 }
-export const BatchWriteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(BatchWriteRequest.pipe(T.HttpBody())),
@@ -574,9 +567,7 @@ export const BatchWriteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/
 }) as any as S.Schema<BatchWriteProjectsInstancesDatabasesSessionsRequest>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -587,7 +578,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -596,7 +587,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** The result of applying a batch of mutations. */
 export interface BatchWriteResponse {
@@ -607,7 +598,7 @@ export interface BatchWriteResponse {
   /** The mutation groups applied in this batch. The values index into the `mutation_groups` field in the corresponding `BatchWriteRequest`. */
   indexes?: IntegerList;
 }
-export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitTimestamp: S.optional(S.String),
     status: S.optional(Status),
@@ -619,11 +610,11 @@ export type TransactionOptionsIsolationLevelEnum =
   | "ISOLATION_LEVEL_UNSPECIFIED"
   | "SERIALIZABLE"
   | "REPEATABLE_READ";
-export const TransactionOptionsIsolationLevelEnum = S.String;
+const TransactionOptionsIsolationLevelEnum = S.String;
 
 /** Message type to initiate a Partitioned DML transaction. */
 export interface PartitionedDml {}
-export const PartitionedDml = AddSplitPointsResponse as any as S.Schema<PartitionedDml>;
+const PartitionedDml = AddSplitPointsResponse as any as S.Schema<PartitionedDml>;
 
 /** Message type to initiate a read-only transaction. */
 export interface ReadOnly {
@@ -640,7 +631,7 @@ export interface ReadOnly {
   /** If true, the Cloud Spanner-selected read timestamp is included in the Transaction message that describes the transaction. */
   returnReadTimestamp?: boolean;
 }
-export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
+const ReadOnly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     strong: S.optional(S.Boolean),
     maxStaleness: S.optional(S.String),
@@ -652,7 +643,7 @@ export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadOnly" }) as any as S.Schema<ReadOnly>;
 
 export type ReadWriteReadLockModeEnum = "READ_LOCK_MODE_UNSPECIFIED" | "PESSIMISTIC" | "OPTIMISTIC";
-export const ReadWriteReadLockModeEnum = S.String;
+const ReadWriteReadLockModeEnum = S.String;
 
 /** Message type to initiate a read-write transaction. Currently this transaction type has no options. */
 export interface ReadWrite {
@@ -661,7 +652,7 @@ export interface ReadWrite {
   /** Optional. Clients should pass the transaction ID of the previous transaction attempt that was aborted if this transaction is being executed on a multiplexed session. */
   multiplexedSessionPreviousTransactionId?: string;
 }
-export const ReadWrite = /*@__PURE__*/ S.suspend(() =>
+const ReadWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readLockMode: S.optional(ReadWriteReadLockModeEnum),
     multiplexedSessionPreviousTransactionId: S.optional(S.String),
@@ -681,7 +672,7 @@ export interface TransactionOptions {
   /** Transaction may write. Authorization to begin a read-write transaction requires `spanner.databases.beginOrRollbackReadWriteTransaction` permission on the `session` resource. */
   readWrite?: ReadWrite;
 }
-export const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
+const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isolationLevel: S.optional(TransactionOptionsIsolationLevelEnum),
     partitionedDml: S.optional(PartitionedDml),
@@ -700,7 +691,7 @@ export interface BeginTransactionRequest {
   /** Optional. Required for read-write transactions on a multiplexed session that commit mutations but don't perform any reads or queries. You must randomly select one of the mutations from the mutation set and send it as a part of this request. */
   mutationKey?: Mutation;
 }
-export const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(TransactionOptions),
     requestOptions: S.optional(RequestOptions),
@@ -714,18 +705,17 @@ export interface BeginTransactionProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: BeginTransactionRequest;
 }
-export const BeginTransactionProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:beginTransaction",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
+const BeginTransactionProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session: S.String.pipe(T.Label()),
+    body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+session}:beginTransaction",
+      baseUrl: "https://spanner.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BeginTransactionProjectsInstancesDatabasesSessionsRequest",
 }) as any as S.Schema<BeginTransactionProjectsInstancesDatabasesSessionsRequest>;
@@ -737,7 +727,7 @@ export interface MultiplexedSessionPrecommitToken {
   /** Opaque precommit token. */
   precommitToken?: string;
 }
-export const MultiplexedSessionPrecommitToken = /*@__PURE__*/ S.suspend(() =>
+const MultiplexedSessionPrecommitToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seqNum: S.optional(S.Number),
     precommitToken: S.optional(S.String),
@@ -755,7 +745,7 @@ export interface Transaction {
   /** For snapshot read-only transactions, the read timestamp chosen for the transaction. Not returned by default: see TransactionOptions.ReadOnly.return_read_timestamp. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example: `"2014-10-02T15:01:23.045123456Z"`. */
   readTimestamp?: string;
 }
-export const Transaction = /*@__PURE__*/ S.suspend(() =>
+const Transaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     precommitToken: S.optional(MultiplexedSessionPrecommitToken),
@@ -767,7 +757,7 @@ export interface CancelProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -783,13 +773,13 @@ export const CancelProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.su
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = AddSplitPointsResponse as any as S.Schema<Empty>;
+const Empty = AddSplitPointsResponse as any as S.Schema<Empty>;
 
 export interface CancelProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -807,7 +797,7 @@ export interface CancelProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -825,7 +815,7 @@ export interface CancelProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -843,17 +833,16 @@ export interface CancelProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:cancel",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
+const CancelProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:cancel",
+      baseUrl: "https://spanner.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CancelProjectsInstancesInstancePartitionsOperationsRequest",
 }) as any as S.Schema<CancelProjectsInstancesInstancePartitionsOperationsRequest>;
@@ -862,7 +851,7 @@ export interface CancelProjectsInstancesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -878,14 +867,12 @@ export const CancelProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** Message type for a dual-region quorum. Currently this type has no options. */
 export type DualRegionQuorum = PartitionedDml;
-export const DualRegionQuorum = PartitionedDml;
-
 /** Message type for a single-region quorum. */
 export interface SingleRegionQuorum {
   /** Required. The location of the serving region, for example, "us-central1". The location must be one of the regions within the dual-region instance configuration of your database. The list of valid locations is available using the GetInstanceConfig API. This should only be used if you plan to change quorum to the single-region quorum type. */
   servingLocation?: string;
 }
-export const SingleRegionQuorum = /*@__PURE__*/ S.suspend(() =>
+const SingleRegionQuorum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servingLocation: S.optional(S.String),
   }),
@@ -898,7 +885,7 @@ export interface QuorumType {
   /** Single-region quorum type. */
   singleRegion?: SingleRegionQuorum;
 }
-export const QuorumType = /*@__PURE__*/ S.suspend(() =>
+const QuorumType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dualRegion: S.optional(PartitionedDml),
     singleRegion: S.optional(SingleRegionQuorum),
@@ -914,7 +901,7 @@ export interface ChangeQuorumRequest {
   /** Required. The type of this quorum. */
   quorumType?: QuorumType;
 }
-export const ChangeQuorumRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeQuorumRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     name: S.optional(S.String),
@@ -928,7 +915,7 @@ export interface ChangequorumProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: ChangeQuorumRequest;
 }
-export const ChangequorumProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangequorumProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ChangeQuorumRequest.pipe(T.HttpBody())),
@@ -956,7 +943,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     response: S.optional(DocumentMap),
@@ -983,7 +970,7 @@ export interface CommitRequest {
   /** The mutations to be executed when this transaction commits. All mutations are applied atomically, in the order they appear in this list. */
   mutations?: MutationList;
 }
-export const CommitRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxCommitDelay: S.optional(S.String),
     returnCommitStats: S.optional(S.Boolean),
@@ -1001,7 +988,7 @@ export interface CommitProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: CommitRequest;
 }
-export const CommitProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(CommitRequest.pipe(T.HttpBody())),
@@ -1021,7 +1008,7 @@ export interface CommitStats {
   /** The total number of mutations for the transaction. Knowing the `mutation_count` value can help you maximize the number of mutations in a transaction and minimize the number of API round trips. You can also monitor this value to prevent transactions from exceeding the system [limit](https://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data). If the number of mutations exceeds the limit, the server returns [INVALID_ARGUMENT](https://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT). */
   mutationCount?: string;
 }
-export const CommitStats = /*@__PURE__*/ S.suspend(() =>
+const CommitStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationCount: S.optional(S.String),
   }),
@@ -1031,13 +1018,13 @@ export type CommitResponseIsolationLevelEnum =
   | "ISOLATION_LEVEL_UNSPECIFIED"
   | "SERIALIZABLE"
   | "REPEATABLE_READ";
-export const CommitResponseIsolationLevelEnum = S.String;
+const CommitResponseIsolationLevelEnum = S.String;
 
 export type CommitResponseReadLockModeEnum =
   | "READ_LOCK_MODE_UNSPECIFIED"
   | "PESSIMISTIC"
   | "OPTIMISTIC";
-export const CommitResponseReadLockModeEnum = S.String;
+const CommitResponseReadLockModeEnum = S.String;
 
 /** The response for Commit. */
 export interface CommitResponse {
@@ -1054,7 +1041,7 @@ export interface CommitResponse {
   /** The read lock mode used for the read-write transaction. */
   readLockMode?: CommitResponseReadLockModeEnum;
 }
-export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitTimestamp: S.optional(S.String),
     snapshotTimestamp: S.optional(S.String),
@@ -1070,7 +1057,7 @@ export type CopyBackupEncryptionConfigEncryptionTypeEnum =
   | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-export const CopyBackupEncryptionConfigEncryptionTypeEnum = S.String;
+const CopyBackupEncryptionConfigEncryptionTypeEnum = S.String;
 
 /** Encryption configuration for the copied backup. */
 export interface CopyBackupEncryptionConfig {
@@ -1081,7 +1068,7 @@ export interface CopyBackupEncryptionConfig {
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. */
   kmsKeyName?: string;
 }
-export const CopyBackupEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const CopyBackupEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyNames: S.optional(StringList),
     encryptionType: S.optional(CopyBackupEncryptionConfigEncryptionTypeEnum),
@@ -1102,7 +1089,7 @@ export interface CopyBackupRequest {
   /** Required. The source backup to be copied. The source backup needs to be in READY state for it to be copied. Once CopyBackup is in progress, the source backup cannot be deleted or cleaned up on expiration until CopyBackup is finished. Values are of the form: `projects/{project}/instances/{instance}/backups/{backup}`. */
   sourceBackup?: string;
 }
-export const CopyBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String),
     encryptionConfig: S.optional(CopyBackupEncryptionConfig),
@@ -1117,7 +1104,7 @@ export interface CopyProjectsInstancesBackupsRequest {
   /** Request body */
   body?: CopyBackupRequest;
 }
-export const CopyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CopyBackupRequest.pipe(T.HttpBody())),
@@ -1138,10 +1125,10 @@ export type InstanceConfigFreeInstanceAvailabilityEnum =
   | "UNSUPPORTED"
   | "DISABLED"
   | "QUOTA_EXCEEDED";
-export const InstanceConfigFreeInstanceAvailabilityEnum = S.String;
+const InstanceConfigFreeInstanceAvailabilityEnum = S.String;
 
 export type ReplicaInfoTypeEnum = "TYPE_UNSPECIFIED" | "READ_WRITE" | "READ_ONLY" | "WITNESS";
-export const ReplicaInfoTypeEnum = S.String;
+const ReplicaInfoTypeEnum = S.String;
 
 export interface ReplicaInfo {
   /** If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details. */
@@ -1151,7 +1138,7 @@ export interface ReplicaInfo {
   /** The location of the serving resources, e.g., "us-central1". */
   location?: string;
 }
-export const ReplicaInfo = /*@__PURE__*/ S.suspend(() =>
+const ReplicaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultLeaderLocation: S.optional(S.Boolean),
     type: S.optional(ReplicaInfoTypeEnum),
@@ -1160,22 +1147,20 @@ export const ReplicaInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaInfo" }) as any as S.Schema<ReplicaInfo>;
 
 export type ReplicaInfoList = Array<ReplicaInfo>;
-export const ReplicaInfoList = /*@__PURE__*/ S.Array(
-  ReplicaInfo,
-) as any as S.Schema<ReplicaInfoList>;
+const ReplicaInfoList = /*@__PURE__*/ S.Array(ReplicaInfo) as any as S.Schema<ReplicaInfoList>;
 
 export type InstanceConfigStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
-export const InstanceConfigStateEnum = S.String;
+const InstanceConfigStateEnum = S.String;
 
 export type InstanceConfigQuorumTypeEnum =
   | "QUORUM_TYPE_UNSPECIFIED"
   | "REGION"
   | "DUAL_REGION"
   | "MULTI_REGION";
-export const InstanceConfigQuorumTypeEnum = S.String;
+const InstanceConfigQuorumTypeEnum = S.String;
 
 export type InstanceConfigConfigTypeEnum = "TYPE_UNSPECIFIED" | "GOOGLE_MANAGED" | "USER_MANAGED";
-export const InstanceConfigConfigTypeEnum = S.String;
+const InstanceConfigConfigTypeEnum = S.String;
 
 /** A possible configuration for a Cloud Spanner instance. Configurations define the geographic placement of nodes and their replication. */
 export interface InstanceConfig {
@@ -1208,7 +1193,7 @@ export interface InstanceConfig {
   /** Output only. Whether this instance configuration is a Google-managed or user-managed configuration. */
   configType?: InstanceConfigConfigTypeEnum | (string & {});
 }
-export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
+const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     leaderOptions: S.optional(StringList),
@@ -1236,7 +1221,7 @@ export interface CreateInstanceConfigRequest {
   /** An option to validate, but not actually execute, a request, and provide the same response. */
   validateOnly?: boolean;
 }
-export const CreateInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceConfigId: S.optional(S.String),
     instanceConfig: S.optional(InstanceConfig),
@@ -1252,7 +1237,7 @@ export interface CreateProjectsInstanceConfigsRequest {
   /** Request body */
   body?: CreateInstanceConfigRequest;
 }
-export const CreateProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateInstanceConfigRequest.pipe(T.HttpBody())),
@@ -1272,13 +1257,13 @@ export type InstanceEditionEnum =
   | "STANDARD"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS";
-export const InstanceEditionEnum = S.String;
+const InstanceEditionEnum = S.String;
 
 export type FreeInstanceMetadataExpireBehaviorEnum =
   | "EXPIRE_BEHAVIOR_UNSPECIFIED"
   | "FREE_TO_PROVISIONED"
   | "REMOVE_AFTER_GRACE_PERIOD";
-export const FreeInstanceMetadataExpireBehaviorEnum = S.String;
+const FreeInstanceMetadataExpireBehaviorEnum = S.String;
 
 /** Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes. */
 export interface FreeInstanceMetadata {
@@ -1289,7 +1274,7 @@ export interface FreeInstanceMetadata {
   /** Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration. */
   expireBehavior?: FreeInstanceMetadataExpireBehaviorEnum | (string & {});
 }
-export const FreeInstanceMetadata = /*@__PURE__*/ S.suspend(() =>
+const FreeInstanceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String),
     upgradeTime: S.optional(S.String),
@@ -1301,14 +1286,14 @@ export type InstanceDefaultBackupScheduleTypeEnum =
   | "DEFAULT_BACKUP_SCHEDULE_TYPE_UNSPECIFIED"
   | "NONE"
   | "AUTOMATIC";
-export const InstanceDefaultBackupScheduleTypeEnum = S.String;
+const InstanceDefaultBackupScheduleTypeEnum = S.String;
 
 /** ReplicaSelection identifies replicas with common properties. */
 export interface InstanceReplicaSelection {
   /** Required. Name of the location of the replicas (for example, "us-central1"). */
   location?: string;
 }
-export const InstanceReplicaSelection = /*@__PURE__*/ S.suspend(() =>
+const InstanceReplicaSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
   }),
@@ -1323,7 +1308,7 @@ export interface ReplicaComputeCapacity {
   /** Required. Identifies replicas by specified properties. All replicas in the selection have the same amount of compute capacity. */
   replicaSelection?: InstanceReplicaSelection;
 }
-export const ReplicaComputeCapacity = /*@__PURE__*/ S.suspend(() =>
+const ReplicaComputeCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeCount: S.optional(S.Number),
     processingUnits: S.optional(S.Number),
@@ -1332,12 +1317,12 @@ export const ReplicaComputeCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaComputeCapacity" }) as any as S.Schema<ReplicaComputeCapacity>;
 
 export type ReplicaComputeCapacityList = Array<ReplicaComputeCapacity>;
-export const ReplicaComputeCapacityList = /*@__PURE__*/ S.Array(
+const ReplicaComputeCapacityList = /*@__PURE__*/ S.Array(
   ReplicaComputeCapacity,
 ) as any as S.Schema<ReplicaComputeCapacityList>;
 
 export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
-export const InstanceStateEnum = S.String;
+const InstanceStateEnum = S.String;
 
 /** The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing units to specify the limits, but should use the same unit to set both the min_limit and max_limit. */
 export interface AutoscalingLimits {
@@ -1350,7 +1335,7 @@ export interface AutoscalingLimits {
   /** Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units. */
   maxProcessingUnits?: number;
 }
-export const AutoscalingLimits = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxNodes: S.optional(S.Number),
     minNodes: S.optional(S.Number),
@@ -1372,7 +1357,7 @@ export interface AutoscalingConfigOverrides {
   /** Optional. If true, disables high priority CPU autoscaling for the selected replicas and ignores high_priority_cpu_utilization_percent in the top-level autoscaling configuration. When setting this field to true, setting autoscaling_target_high_priority_cpu_utilization_percent field to a non-zero value for the same replica is not supported. If false, the autoscaling_target_high_priority_cpu_utilization_percent field in the replica will be used if set to a non-zero value. Otherwise, the high_priority_cpu_utilization_percent field in the top-level autoscaling configuration will be used. Setting both disable_high_priority_cpu_autoscaling and disable_total_cpu_autoscaling to true for the same replica is not supported. */
   disableHighPriorityCpuAutoscaling?: boolean;
 }
-export const AutoscalingConfigOverrides = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingConfigOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoscalingLimits: S.optional(AutoscalingLimits),
     autoscalingTargetHighPriorityCpuUtilizationPercent: S.optional(S.Number),
@@ -1391,7 +1376,7 @@ export interface AsymmetricAutoscalingOption {
   /** Optional. Overrides applied to the top-level autoscaling configuration for the selected replicas. */
   overrides?: AutoscalingConfigOverrides;
 }
-export const AsymmetricAutoscalingOption = /*@__PURE__*/ S.suspend(() =>
+const AsymmetricAutoscalingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaSelection: S.optional(InstanceReplicaSelection),
     overrides: S.optional(AutoscalingConfigOverrides),
@@ -1401,7 +1386,7 @@ export const AsymmetricAutoscalingOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AsymmetricAutoscalingOption>;
 
 export type AsymmetricAutoscalingOptionList = Array<AsymmetricAutoscalingOption>;
-export const AsymmetricAutoscalingOptionList = /*@__PURE__*/ S.Array(
+const AsymmetricAutoscalingOptionList = /*@__PURE__*/ S.Array(
   AsymmetricAutoscalingOption,
 ) as any as S.Schema<AsymmetricAutoscalingOptionList>;
 
@@ -1414,7 +1399,7 @@ export interface AutoscalingTargets {
   /** Optional. The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive. If not specified or set to 0, the autoscaler skips scaling based on high priority CPU utilization. */
   highPriorityCpuUtilizationPercent?: number;
 }
-export const AutoscalingTargets = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCpuUtilizationPercent: S.optional(S.Number),
     storageUtilizationPercent: S.optional(S.Number),
@@ -1431,7 +1416,7 @@ export interface AutoscalingConfig {
   /** Required. Autoscaling limits for an instance. */
   autoscalingLimits?: AutoscalingLimits;
 }
-export const AutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asymmetricAutoscalingOptions: S.optional(AsymmetricAutoscalingOptionList),
     autoscalingTargets: S.optional(AutoscalingTargets),
@@ -1443,7 +1428,7 @@ export type InstanceInstanceTypeEnum =
   | "INSTANCE_TYPE_UNSPECIFIED"
   | "PROVISIONED"
   | "FREE_INSTANCE";
-export const InstanceInstanceTypeEnum = S.String;
+const InstanceInstanceTypeEnum = S.String;
 
 /** An isolated set of Cloud Spanner resources on which databases can be hosted. */
 export interface Instance {
@@ -1480,7 +1465,7 @@ export interface Instance {
   /** The `InstanceType` of the current instance. */
   instanceType?: InstanceInstanceTypeEnum | (string & {});
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     edition: S.optional(InstanceEditionEnum),
@@ -1508,7 +1493,7 @@ export interface CreateInstanceRequest {
   /** Required. The instance to create. The name may be omitted, but if specified must be `/instances/`. */
   instance?: Instance;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.optional(S.String),
     instance: S.optional(Instance),
@@ -1521,7 +1506,7 @@ export interface CreateProjectsInstancesRequest {
   /** Request body */
   body?: CreateInstanceRequest;
 }
-export const CreateProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateInstanceRequest.pipe(T.HttpBody())),
@@ -1541,13 +1526,13 @@ export type CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum =
   | "USE_DATABASE_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-export const CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum = S.String;
+const CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum = S.String;
 
 export type EncryptionInfoEncryptionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-export const EncryptionInfoEncryptionTypeEnum = S.String;
+const EncryptionInfoEncryptionTypeEnum = S.String;
 
 /** Encryption information for a Cloud Spanner database or backup. */
 export interface EncryptionInfo {
@@ -1558,7 +1543,7 @@ export interface EncryptionInfo {
   /** Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest. */
   encryptionStatus?: Status;
 }
-export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
+const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionType: S.optional(EncryptionInfoEncryptionTypeEnum),
     kmsKeyVersion: S.optional(S.String),
@@ -1567,39 +1552,39 @@ export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
 
 export type EncryptionInfoList = Array<EncryptionInfo>;
-export const EncryptionInfoList = /*@__PURE__*/ S.Array(
+const EncryptionInfoList = /*@__PURE__*/ S.Array(
   EncryptionInfo,
 ) as any as S.Schema<EncryptionInfoList>;
 
 export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
-export const BackupStateEnum = S.String;
+const BackupStateEnum = S.String;
 
 export type BackupMinimumRestorableEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS";
-export const BackupMinimumRestorableEditionEnum = S.String;
+const BackupMinimumRestorableEditionEnum = S.String;
 
 export type BackupDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
   | "POSTGRESQL";
-export const BackupDatabaseDialectEnum = S.String;
+const BackupDatabaseDialectEnum = S.String;
 
 /** Instance partition information for the backup. */
 export interface BackupInstancePartition {
   /** A unique identifier for the instance partition. Values are of the form `projects/{project}/instances/{instance}/instancePartitions/{instance_partition_id}` */
   instancePartition?: string;
 }
-export const BackupInstancePartition = /*@__PURE__*/ S.suspend(() =>
+const BackupInstancePartition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instancePartition: S.optional(S.String),
   }),
 ).annotate({ identifier: "BackupInstancePartition" }) as any as S.Schema<BackupInstancePartition>;
 
 export type BackupInstancePartitionList = Array<BackupInstancePartition>;
-export const BackupInstancePartitionList = /*@__PURE__*/ S.Array(
+const BackupInstancePartitionList = /*@__PURE__*/ S.Array(
   BackupInstancePartition,
 ) as any as S.Schema<BackupInstancePartitionList>;
 
@@ -1646,7 +1631,7 @@ export interface Backup {
   /** Output only. Populated only for backups in an incremental backup chain. Backups share the same chain id if and only if they belong to the same incremental backup chain. Use this field to determine which backups are part of the same incremental backup chain. The ordering of backups in the chain can be determined by ordering the backup `version_time`. */
   incrementalBackupChainId?: string;
 }
-export const Backup = /*@__PURE__*/ S.suspend(() =>
+const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oldestVersionTime: S.optional(S.String),
     referencingBackups: S.optional(StringList),
@@ -1687,7 +1672,7 @@ export interface CreateProjectsInstancesBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const CreateProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     backupId: S.optional(S.String.pipe(T.Query())),
@@ -1715,7 +1700,7 @@ export interface EncryptionConfig {
   /** Specifies the KMS configuration for one or more keys used to encrypt the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
   kmsKeyNames?: StringList;
 }
-export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
     kmsKeyNames: S.optional(StringList),
@@ -1726,7 +1711,7 @@ export type CreateDatabaseRequestDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
   | "POSTGRESQL";
-export const CreateDatabaseRequestDatabaseDialectEnum = S.String;
+const CreateDatabaseRequestDatabaseDialectEnum = S.String;
 
 /** The request for CreateDatabase. */
 export interface CreateDatabaseRequest {
@@ -1741,7 +1726,7 @@ export interface CreateDatabaseRequest {
   /** Optional. The dialect of the Cloud Spanner Database. */
   databaseDialect?: CreateDatabaseRequestDatabaseDialectEnum | (string & {});
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionConfig: S.optional(EncryptionConfig),
     extraStatements: S.optional(StringList),
@@ -1757,7 +1742,7 @@ export interface CreateProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: CreateDatabaseRequest;
 }
-export const CreateProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateDatabaseRequest.pipe(T.HttpBody())),
@@ -1774,8 +1759,6 @@ export const CreateProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend((
 
 /** The specification for incremental backup chains. An incremental backup stores the delta of changes between a previous backup and the database contents at a given version time. An incremental backup chain consists of a full backup and zero or more successive incremental backups. The first backup created for an incremental backup chain is always a full backup. */
 export type IncrementalBackupSpec = PartitionedDml;
-export const IncrementalBackupSpec = PartitionedDml;
-
 /** CrontabSpec can be used to specify the version time and frequency at which the backup is created. */
 export interface CrontabSpec {
   /** Output only. The time zone of the times in `CrontabSpec.text`. Currently, only UTC is supported. */
@@ -1785,7 +1768,7 @@ export interface CrontabSpec {
   /** Output only. Scheduled backups contain an externally consistent copy of the database at the version time specified in `schedule_spec.cron_spec`. However, Spanner might not initiate the creation of the scheduled backups at that version time. Spanner initiates the creation of scheduled backups within the time window bounded by the version_time specified in `schedule_spec.cron_spec` and version_time + `creation_window`. */
   creationWindow?: string;
 }
-export const CrontabSpec = /*@__PURE__*/ S.suspend(() =>
+const CrontabSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String),
     text: S.optional(S.String),
@@ -1798,7 +1781,7 @@ export interface BackupScheduleSpec {
   /** Cron style schedule specification. */
   cronSpec?: CrontabSpec;
 }
-export const BackupScheduleSpec = /*@__PURE__*/ S.suspend(() =>
+const BackupScheduleSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cronSpec: S.optional(CrontabSpec),
   }),
@@ -1809,7 +1792,7 @@ export type CreateBackupEncryptionConfigEncryptionTypeEnum =
   | "USE_DATABASE_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-export const CreateBackupEncryptionConfigEncryptionTypeEnum = S.String;
+const CreateBackupEncryptionConfigEncryptionTypeEnum = S.String;
 
 /** Encryption configuration for the backup to create. */
 export interface CreateBackupEncryptionConfig {
@@ -1820,7 +1803,7 @@ export interface CreateBackupEncryptionConfig {
   /** Required. The encryption type of the backup. */
   encryptionType?: CreateBackupEncryptionConfigEncryptionTypeEnum | (string & {});
 }
-export const CreateBackupEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
     kmsKeyNames: S.optional(StringList),
@@ -1832,8 +1815,6 @@ export const CreateBackupEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The specification for full backups. A full backup stores the entire contents of the database at a given version time. */
 export type FullBackupSpec = PartitionedDml;
-export const FullBackupSpec = PartitionedDml;
-
 /** BackupSchedule expresses the automated backup creation specification for a Spanner database. */
 export interface BackupSchedule {
   /** The schedule creates incremental backup chains. */
@@ -1851,7 +1832,7 @@ export interface BackupSchedule {
   /** Identifier. Output only for the CreateBackupSchedule operation. Required for the UpdateBackupSchedule operation. A globally unique identifier for the backup schedule which cannot be changed. Values are of the form `projects//instances//databases//backupSchedules/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. */
   name?: string;
 }
-export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
+const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incrementalBackupSpec: S.optional(PartitionedDml),
     updateTime: S.optional(S.String),
@@ -1871,7 +1852,7 @@ export interface CreateProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: BackupSchedule;
 }
-export const CreateProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupScheduleId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1892,7 +1873,7 @@ export interface CreateSessionRequest {
   /** Required. The session to create. */
   session?: Session;
 }
-export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.optional(Session),
   }),
@@ -1904,7 +1885,7 @@ export interface CreateProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: CreateSessionRequest;
 }
-export const CreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(CreateSessionRequest.pipe(T.HttpBody())),
@@ -1920,7 +1901,7 @@ export const CreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateProjectsInstancesDatabasesSessionsRequest>;
 
 export type InstancePartitionStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
-export const InstancePartitionStateEnum = S.String;
+const InstancePartitionStateEnum = S.String;
 
 /** An isolated set of Cloud Spanner resources that databases can define placements on. */
 export interface InstancePartition {
@@ -1949,7 +1930,7 @@ export interface InstancePartition {
   /** Output only. Deprecated: This field is not populated. Output only. The names of the backups that reference this instance partition. Referencing backups should share the parent instance. The existence of any referencing backup prevents the instance partition from being deleted. */
   referencingBackups?: StringList;
 }
-export const InstancePartition = /*@__PURE__*/ S.suspend(() =>
+const InstancePartition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     etag: S.optional(S.String),
@@ -1973,7 +1954,7 @@ export interface CreateInstancePartitionRequest {
   /** Required. The instance partition to create. The instance_partition.name may be omitted, but if specified must be `/instancePartitions/`. */
   instancePartition?: InstancePartition;
 }
-export const CreateInstancePartitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstancePartitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instancePartitionId: S.optional(S.String),
     instancePartition: S.optional(InstancePartition),
@@ -1988,7 +1969,7 @@ export interface CreateProjectsInstancesInstancePartitionsRequest {
   /** Request body */
   body?: CreateInstancePartitionRequest;
 }
-export const CreateProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateInstancePartitionRequest.pipe(T.HttpBody())),
@@ -2011,7 +1992,7 @@ export interface DeleteProjectsInstanceConfigsRequest {
   /** Used for optimistic concurrency control as a way to help prevent simultaneous deletes of an instance configuration from overwriting each other. If not empty, the API only deletes the instance configuration when the etag provided matches the current status of the requested instance configuration. Otherwise, deletes the instance configuration without checking the current status of the requested instance configuration. */
   etag?: string;
 }
-export const DeleteProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2027,7 +2008,7 @@ export interface DeleteProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2041,7 +2022,7 @@ export interface DeleteProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2055,7 +2036,7 @@ export interface DeleteProjectsInstancesRequest {
   /** Required. The name of the instance to be deleted. Values are of the form `projects//instances/` */
   name: string;
 }
-export const DeleteProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2069,7 +2050,7 @@ export interface DeleteProjectsInstancesBackupsRequest {
   /** Required. Name of the backup to delete. Values are of the form `projects/{project}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
-export const DeleteProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2083,7 +2064,7 @@ export interface DeleteProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2097,7 +2078,7 @@ export interface DeleteProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. The name of the schedule to delete. Values are of the form `projects//instances//databases//backupSchedules/`. */
   name: string;
 }
-export const DeleteProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2111,7 +2092,7 @@ export interface DeleteProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2125,7 +2106,7 @@ export interface DeleteProjectsInstancesDatabasesSessionsRequest {
   /** Required. The name of the session to delete. */
   name: string;
 }
-export const DeleteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2141,7 +2122,7 @@ export interface DeleteProjectsInstancesInstancePartitionsRequest {
   /** Required. The name of the instance partition to be deleted. Values are of the form `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}` */
   name: string;
 }
-export const DeleteProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2156,13 +2137,12 @@ export interface DeleteProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" }),
-    ),
+const DeleteProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsInstancesInstancePartitionsOperationsRequest",
 }) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsOperationsRequest>;
@@ -2171,7 +2151,7 @@ export interface DeleteProjectsInstancesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2185,7 +2165,7 @@ export interface DropDatabaseProjectsInstancesDatabasesRequest {
   /** Required. The database to be dropped. */
   database: string;
 }
-export const DropDatabaseProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DropDatabaseProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
   }).pipe(
@@ -2204,7 +2184,7 @@ export interface TransactionSelector {
   /** Execute the read or SQL query in a previously-started transaction. */
   id?: string;
 }
-export const TransactionSelector = /*@__PURE__*/ S.suspend(() =>
+const TransactionSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     begin: S.optional(TransactionOptions),
     singleUse: S.optional(TransactionOptions),
@@ -2217,7 +2197,7 @@ export type TypeTypeAnnotationEnum =
   | "PG_NUMERIC"
   | "PG_JSONB"
   | "PG_OID";
-export const TypeTypeAnnotationEnum = S.String;
+const TypeTypeAnnotationEnum = S.String;
 
 /** Message representing a single field of a struct. */
 export interface Field {
@@ -2226,7 +2206,7 @@ export interface Field {
   /** The type of the field. */
   type?: Type;
 }
-export const Field = /*@__PURE__*/ S.suspend(() =>
+const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.suspend(() => Type)),
@@ -2234,14 +2214,14 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type FieldList = Array<Field>;
-export const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
+const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
 
 /** `StructType` defines the fields of a STRUCT type. */
 export interface StructType {
   /** The list of fields that make up this struct. Order is significant, because values of this struct type are represented as lists, where the order of field values matches the order of fields in the StructType. In turn, the order of fields matches the order of columns in a read request, or the order of fields in the `SELECT` clause of a query. */
   fields?: FieldList;
 }
-export const StructType = /*@__PURE__*/ S.suspend(() =>
+const StructType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(FieldList),
   }),
@@ -2265,7 +2245,7 @@ export type TypeCodeEnum =
   | "ENUM"
   | "INTERVAL"
   | "UUID";
-export const TypeCodeEnum = S.String;
+const TypeCodeEnum = S.String;
 
 /** `Type` indicates the type of a Cloud Spanner value, as might be stored in a table cell or returned from an SQL query. */
 export interface Type {
@@ -2280,7 +2260,7 @@ export interface Type {
   /** If code == ARRAY, then `array_element_type` is the type of the array elements. */
   arrayElementType?: Type;
 }
-export const Type = /*@__PURE__*/ S.suspend(() =>
+const Type = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeAnnotation: S.optional(TypeTypeAnnotationEnum),
     structType: S.optional(StructType),
@@ -2291,7 +2271,7 @@ export const Type = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
 export type TypeMap = { [key: string]: Type | undefined };
-export const TypeMap = /*@__PURE__*/ S.Record(S.String, Type) as any as S.Schema<TypeMap>;
+const TypeMap = /*@__PURE__*/ S.Record(S.String, Type) as any as S.Schema<TypeMap>;
 
 /** A single DML statement. */
 export interface Statement {
@@ -2302,7 +2282,7 @@ export interface Statement {
   /** Parameter names and values that bind to placeholders in the DML string. A parameter placeholder consists of the `@` character followed by the parameter name (for example, `@firstName`). Parameter names can contain letters, numbers, and underscores. Parameters can appear anywhere that a literal value is expected. The same parameter name can be used more than once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It's an error to execute a SQL statement with unbound parameters. */
   params?: DocumentMap;
 }
-export const Statement = /*@__PURE__*/ S.suspend(() =>
+const Statement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paramTypes: S.optional(TypeMap),
     sql: S.optional(S.String),
@@ -2311,7 +2291,7 @@ export const Statement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Statement" }) as any as S.Schema<Statement>;
 
 export type StatementList = Array<Statement>;
-export const StatementList = /*@__PURE__*/ S.Array(Statement) as any as S.Schema<StatementList>;
+const StatementList = /*@__PURE__*/ S.Array(Statement) as any as S.Schema<StatementList>;
 
 /** The request for ExecuteBatchDml. */
 export interface ExecuteBatchDmlRequest {
@@ -2326,7 +2306,7 @@ export interface ExecuteBatchDmlRequest {
   /** Required. The list of statements to execute in this batch. Statements are executed serially, such that the effects of statement `i` are visible to statement `i+1`. Each statement must be a DML statement. Execution stops at the first failed statement; the remaining statements are not executed. Callers must provide at least one statement. */
   statements?: StatementList;
 }
-export const ExecuteBatchDmlRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteBatchDmlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(TransactionSelector),
     lastStatements: S.optional(S.Boolean),
@@ -2342,24 +2322,23 @@ export interface ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ExecuteBatchDmlRequest;
 }
-export const ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteBatchDmlRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:executeBatchDml",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
+const ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session: S.String.pipe(T.Label()),
+    body: S.optional(ExecuteBatchDmlRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+session}:executeBatchDml",
+      baseUrl: "https://spanner.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest",
 }) as any as S.Schema<ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest>;
 
 export type IntegerMap = { [key: string]: number | undefined };
-export const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
+const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
 
 /** Condensed representation of a node and its subtree. Only present for `SCALAR` PlanNode(s). */
 export interface ShortRepresentation {
@@ -2368,7 +2347,7 @@ export interface ShortRepresentation {
   /** A mapping of (subquery variable name) -> (subquery node id) for cases where the `description` string of this node references a `SCALAR` subquery contained in the expression subtree rooted at this node. The referenced `SCALAR` subquery may not necessarily be a direct child of this node. */
   subqueries?: IntegerMap;
 }
-export const ShortRepresentation = /*@__PURE__*/ S.suspend(() =>
+const ShortRepresentation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     subqueries: S.optional(IntegerMap),
@@ -2384,7 +2363,7 @@ export interface ChildLink {
   /** The type of the link. For example, in Hash Joins this could be used to distinguish between the build child and the probe child, or in the case of the child being an output variable, to represent the tag associated with the output variable. */
   type?: string;
 }
-export const ChildLink = /*@__PURE__*/ S.suspend(() =>
+const ChildLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     childIndex: S.optional(S.Number),
     variable: S.optional(S.String),
@@ -2393,10 +2372,10 @@ export const ChildLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChildLink" }) as any as S.Schema<ChildLink>;
 
 export type ChildLinkList = Array<ChildLink>;
-export const ChildLinkList = /*@__PURE__*/ S.Array(ChildLink) as any as S.Schema<ChildLinkList>;
+const ChildLinkList = /*@__PURE__*/ S.Array(ChildLink) as any as S.Schema<ChildLinkList>;
 
 export type PlanNodeKindEnum = "KIND_UNSPECIFIED" | "RELATIONAL" | "SCALAR";
-export const PlanNodeKindEnum = S.String;
+const PlanNodeKindEnum = S.String;
 
 /** Node information for nodes appearing in a QueryPlan.plan_nodes. */
 export interface PlanNode {
@@ -2415,7 +2394,7 @@ export interface PlanNode {
   /** The `PlanNode`'s index in node list. */
   index?: number;
 }
-export const PlanNode = /*@__PURE__*/ S.suspend(() =>
+const PlanNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shortRepresentation: S.optional(ShortRepresentation),
     childLinks: S.optional(ChildLinkList),
@@ -2428,7 +2407,7 @@ export const PlanNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanNode" }) as any as S.Schema<PlanNode>;
 
 export type PlanNodeList = Array<PlanNode>;
-export const PlanNodeList = /*@__PURE__*/ S.Array(PlanNode) as any as S.Schema<PlanNodeList>;
+const PlanNodeList = /*@__PURE__*/ S.Array(PlanNode) as any as S.Schema<PlanNodeList>;
 
 /** Recommendation to add new indexes to run queries more efficiently. */
 export interface IndexAdvice {
@@ -2437,7 +2416,7 @@ export interface IndexAdvice {
   /** Optional. Estimated latency improvement factor. For example if the query currently takes 500 ms to run and the estimated latency with new indexes is 100 ms this field will be 5. */
   improvementFactor?: number;
 }
-export const IndexAdvice = /*@__PURE__*/ S.suspend(() =>
+const IndexAdvice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ddl: S.optional(StringList),
     improvementFactor: S.optional(S.Number),
@@ -2445,16 +2424,14 @@ export const IndexAdvice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexAdvice" }) as any as S.Schema<IndexAdvice>;
 
 export type IndexAdviceList = Array<IndexAdvice>;
-export const IndexAdviceList = /*@__PURE__*/ S.Array(
-  IndexAdvice,
-) as any as S.Schema<IndexAdviceList>;
+const IndexAdviceList = /*@__PURE__*/ S.Array(IndexAdvice) as any as S.Schema<IndexAdviceList>;
 
 /** Output of query advisor analysis. */
 export interface QueryAdvisorResult {
   /** Optional. Index Recommendation for a query. This is an optional field and the recommendation will only be available when the recommendation guarantees significant improvement in query performance. */
   indexAdvice?: IndexAdviceList;
 }
-export const QueryAdvisorResult = /*@__PURE__*/ S.suspend(() =>
+const QueryAdvisorResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexAdvice: S.optional(IndexAdviceList),
   }),
@@ -2467,7 +2444,7 @@ export interface QueryPlan {
   /** Optional. The advise/recommendations for a query. Currently this field will be serving index recommendations for a query. */
   queryAdvice?: QueryAdvisorResult;
 }
-export const QueryPlan = /*@__PURE__*/ S.suspend(() =>
+const QueryPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planNodes: S.optional(PlanNodeList),
     queryAdvice: S.optional(QueryAdvisorResult),
@@ -2485,7 +2462,7 @@ export interface ResultSetStats {
   /** Standard DML returns an exact count of rows that were modified. */
   rowCountExact?: string;
 }
-export const ResultSetStats = /*@__PURE__*/ S.suspend(() =>
+const ResultSetStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowCountLowerBound: S.optional(S.String),
     queryPlan: S.optional(QueryPlan),
@@ -2503,7 +2480,7 @@ export interface ResultSetMetadata {
   /** Indicates the field names and types for the rows in the result set. For example, a SQL query like `"SELECT UserId, UserName FROM Users"` could return a `row_type` value like: "fields": [ { "name": "UserId", "type": { "code": "INT64" } }, { "name": "UserName", "type": { "code": "STRING" } }, ] */
   rowType?: StructType;
 }
-export const ResultSetMetadata = /*@__PURE__*/ S.suspend(() =>
+const ResultSetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(Transaction),
     undeclaredParameters: S.optional(StructType),
@@ -2522,7 +2499,7 @@ export interface ResultSet {
   /** Each element in `rows` is a row whose format is defined by metadata.row_type. The ith element in each row matches the ith field in metadata.row_type. Elements are encoded based on type as described here. */
   rows?: DocumentListList;
 }
-export const ResultSet = /*@__PURE__*/ S.suspend(() =>
+const ResultSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     precommitToken: S.optional(MultiplexedSessionPrecommitToken),
     stats: S.optional(ResultSetStats),
@@ -2532,7 +2509,7 @@ export const ResultSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResultSet" }) as any as S.Schema<ResultSet>;
 
 export type ResultSetList = Array<ResultSet>;
-export const ResultSetList = /*@__PURE__*/ S.Array(ResultSet) as any as S.Schema<ResultSetList>;
+const ResultSetList = /*@__PURE__*/ S.Array(ResultSet) as any as S.Schema<ResultSetList>;
 
 /** The response for ExecuteBatchDml. Contains a list of ResultSet messages, one for each DML statement that has successfully executed, in the same order as the statements in the request. If a statement fails, the status in the response body identifies the cause of the failure. To check for DML statements that failed, use the following approach: 1. Check the status in the response message. The google.rpc.Code enum value `OK` indicates that all statements were executed successfully. 2. If the status was not `OK`, check the number of result sets in the response. If the response contains `N` ResultSet messages, then statement `N+1` in the request failed. Example 1: * Request: 5 DML statements, all executed successfully. * Response: 5 ResultSet messages, with the status `OK`. Example 2: * Request: 5 DML statements. The third statement has a syntax error. * Response: 2 ResultSet messages, and a syntax error (`INVALID_ARGUMENT`) status. The number of ResultSet messages indicates that the third statement failed, and the fourth and fifth statements were not executed. */
 export interface ExecuteBatchDmlResponse {
@@ -2543,7 +2520,7 @@ export interface ExecuteBatchDmlResponse {
   /** If all DML statements are executed successfully, the status is `OK`. Otherwise, the error status of the first failed statement. */
   status?: Status;
 }
-export const ExecuteBatchDmlResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecuteBatchDmlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resultSets: S.optional(ResultSetList),
     precommitToken: S.optional(MultiplexedSessionPrecommitToken),
@@ -2557,10 +2534,10 @@ export type ExecuteSqlRequestQueryModeEnum =
   | "PROFILE"
   | "WITH_STATS"
   | "WITH_PLAN_AND_STATS";
-export const ExecuteSqlRequestQueryModeEnum = S.String;
+const ExecuteSqlRequestQueryModeEnum = S.String;
 
 export type ReplicaSelectionTypeEnum = "TYPE_UNSPECIFIED" | "READ_WRITE" | "READ_ONLY";
-export const ReplicaSelectionTypeEnum = S.String;
+const ReplicaSelectionTypeEnum = S.String;
 
 /** The directed read replica selector. Callers must provide one or more of the following fields for replica selection: * `location` - The location must be one of the regions within the multi-region configuration of your database. * `type` - The type of the replica. Some examples of using replica_selectors are: * `location:us-east1` --> The "us-east1" replica(s) of any available type is used to process the request. * `type:READ_ONLY` --> The "READ_ONLY" type replica(s) in the nearest available location are used to process the request. * `location:us-east1 type:READ_ONLY` --> The "READ_ONLY" type replica(s) in location "us-east1" is used to process the request. */
 export interface ReplicaSelection {
@@ -2569,7 +2546,7 @@ export interface ReplicaSelection {
   /** The location or region of the serving requests, for example, "us-east1". */
   location?: string;
 }
-export const ReplicaSelection = /*@__PURE__*/ S.suspend(() =>
+const ReplicaSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ReplicaSelectionTypeEnum),
     location: S.optional(S.String),
@@ -2577,7 +2554,7 @@ export const ReplicaSelection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaSelection" }) as any as S.Schema<ReplicaSelection>;
 
 export type ReplicaSelectionList = Array<ReplicaSelection>;
-export const ReplicaSelectionList = /*@__PURE__*/ S.Array(
+const ReplicaSelectionList = /*@__PURE__*/ S.Array(
   ReplicaSelection,
 ) as any as S.Schema<ReplicaSelectionList>;
 
@@ -2588,7 +2565,7 @@ export interface IncludeReplicas {
   /** If `true`, Spanner doesn't route requests to a replica outside the <`include_replicas` list when all of the specified replicas are unavailable or unhealthy. Default value is `false`. */
   autoFailoverDisabled?: boolean;
 }
-export const IncludeReplicas = /*@__PURE__*/ S.suspend(() =>
+const IncludeReplicas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaSelections: S.optional(ReplicaSelectionList),
     autoFailoverDisabled: S.optional(S.Boolean),
@@ -2600,7 +2577,7 @@ export interface ExcludeReplicas {
   /** The directed read replica selector. */
   replicaSelections?: ReplicaSelectionList;
 }
-export const ExcludeReplicas = /*@__PURE__*/ S.suspend(() =>
+const ExcludeReplicas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaSelections: S.optional(ReplicaSelectionList),
   }),
@@ -2613,7 +2590,7 @@ export interface DirectedReadOptions {
   /** `Exclude_replicas` indicates that specified replicas should be excluded from serving requests. Spanner doesn't route requests to the replicas in this list. */
   excludeReplicas?: ExcludeReplicas;
 }
-export const DirectedReadOptions = /*@__PURE__*/ S.suspend(() =>
+const DirectedReadOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeReplicas: S.optional(IncludeReplicas),
     excludeReplicas: S.optional(ExcludeReplicas),
@@ -2627,7 +2604,7 @@ export interface QueryOptions {
   /** An option to control the selection of optimizer version. This parameter allows individual queries to pick different query optimizer versions. Specifying `latest` as a value instructs Cloud Spanner to use the latest supported query optimizer version. If not specified, Cloud Spanner uses the optimizer version set at the database level options. Any other positive integer (from the list of supported optimizer versions) overrides the default optimizer version for query execution. The list of supported optimizer versions can be queried from `SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS`. Executing a SQL statement with an invalid optimizer version fails with an `INVALID_ARGUMENT` error. See https://cloud.google.com/spanner/docs/query-optimizer/manage-query-optimizer for more information on managing the query optimizer. The `optimizer_version` statement hint has precedence over this setting. */
   optimizerVersion?: string;
 }
-export const QueryOptions = /*@__PURE__*/ S.suspend(() =>
+const QueryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optimizerStatisticsPackage: S.optional(S.String),
     optimizerVersion: S.optional(S.String),
@@ -2663,7 +2640,7 @@ export interface ExecuteSqlRequest {
   /** Query optimizer configuration to use for the given query. */
   queryOptions?: QueryOptions;
 }
-export const ExecuteSqlRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteSqlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryMode: S.optional(ExecuteSqlRequestQueryModeEnum),
     transaction: S.optional(TransactionSelector),
@@ -2687,7 +2664,7 @@ export interface ExecuteSqlProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ExecuteSqlRequest;
 }
-export const ExecuteSqlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteSqlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
@@ -2708,18 +2685,17 @@ export interface ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ExecuteSqlRequest;
 }
-export const ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      session: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+session}:executeStreamingSql",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
+const ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session: S.String.pipe(T.Label()),
+    body: S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+session}:executeStreamingSql",
+      baseUrl: "https://spanner.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest",
 }) as any as S.Schema<ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest>;
@@ -2741,7 +2717,7 @@ export interface PartialResultSet {
   /** Optional. Indicates whether this is the last `PartialResultSet` in the stream. The server might optionally set this field. Clients shouldn't rely on this field being set in all cases. */
   last?: boolean;
 }
-export const PartialResultSet = /*@__PURE__*/ S.suspend(() =>
+const PartialResultSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resumeToken: S.optional(S.String),
     chunkedValue: S.optional(S.Boolean),
@@ -2757,7 +2733,7 @@ export interface GetDdlProjectsInstancesDatabasesRequest {
   /** Required. The database whose schema we wish to get. Values are of the form `projects//instances//databases/` */
   database: string;
 }
-export const GetDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
   }).pipe(
@@ -2778,7 +2754,7 @@ export interface GetDatabaseDdlResponse {
   /** A list of formatted DDL statements defining the schema of the database specified in the request. */
   statements?: StringList;
 }
-export const GetDatabaseDdlResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseDdlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protoDescriptors: S.optional(S.String),
     statements: S.optional(StringList),
@@ -2790,7 +2766,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -2801,7 +2777,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -2813,7 +2789,7 @@ export interface GetIamPolicyProjectsInstancesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2839,7 +2815,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -2857,7 +2833,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     role: S.optional(S.String),
@@ -2866,7 +2842,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2877,7 +2853,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     bindings: S.optional(BindingList),
@@ -2891,7 +2867,7 @@ export interface GetIamPolicyProjectsInstancesBackupsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2912,7 +2888,7 @@ export interface GetIamPolicyProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2933,18 +2909,17 @@ export interface GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://spanner.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest",
 }) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>;
@@ -2953,7 +2928,7 @@ export interface GetProjectsInstanceConfigsRequest {
   /** Required. The name of the requested instance configuration. Values are of the form `projects//instanceConfigs/`. */
   name: string;
 }
-export const GetProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -2965,7 +2940,7 @@ export interface GetProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -2977,7 +2952,7 @@ export interface GetProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -2991,7 +2966,7 @@ export interface GetProjectsInstancesRequest {
   /** If field_mask is present, specifies the subset of Instance fields that should be returned. If absent, all Instance fields are returned. */
   fieldMask?: string;
 }
-export const GetProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     fieldMask: S.optional(S.String.pipe(T.Query())),
@@ -3004,7 +2979,7 @@ export interface GetProjectsInstancesBackupsRequest {
   /** Required. Name of the backup. Values are of the form `projects/{project}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
-export const GetProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3016,7 +2991,7 @@ export interface GetProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3028,7 +3003,7 @@ export interface GetProjectsInstancesDatabasesRequest {
   /** Required. The name of the requested database. Values are of the form `projects//instances//databases/`. */
   name: string;
 }
-export const GetProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3037,7 +3012,7 @@ export const GetProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetProjectsInstancesDatabasesRequest>;
 
 export type QuorumInfoInitiatorEnum = "INITIATOR_UNSPECIFIED" | "GOOGLE" | "USER";
-export const QuorumInfoInitiatorEnum = S.String;
+const QuorumInfoInitiatorEnum = S.String;
 
 /** Information about the dual-region quorum. */
 export interface QuorumInfo {
@@ -3050,7 +3025,7 @@ export interface QuorumInfo {
   /** Output only. The timestamp when the request was triggered. */
   startTime?: string;
 }
-export const QuorumInfo = /*@__PURE__*/ S.suspend(() =>
+const QuorumInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quorumType: S.optional(QuorumType),
     etag: S.optional(S.String),
@@ -3070,7 +3045,7 @@ export interface BackupInfo {
   /** The time the CreateBackup request was received. */
   createTime?: string;
 }
-export const BackupInfo = /*@__PURE__*/ S.suspend(() =>
+const BackupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup: S.optional(S.String),
     sourceDatabase: S.optional(S.String),
@@ -3080,7 +3055,7 @@ export const BackupInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupInfo" }) as any as S.Schema<BackupInfo>;
 
 export type RestoreInfoSourceTypeEnum = "TYPE_UNSPECIFIED" | "BACKUP";
-export const RestoreInfoSourceTypeEnum = S.String;
+const RestoreInfoSourceTypeEnum = S.String;
 
 /** Information about the database restore. */
 export interface RestoreInfo {
@@ -3089,7 +3064,7 @@ export interface RestoreInfo {
   /** The type of the restore source. */
   sourceType?: RestoreInfoSourceTypeEnum | (string & {});
 }
-export const RestoreInfo = /*@__PURE__*/ S.suspend(() =>
+const RestoreInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupInfo: S.optional(BackupInfo),
     sourceType: S.optional(RestoreInfoSourceTypeEnum),
@@ -3097,13 +3072,13 @@ export const RestoreInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreInfo" }) as any as S.Schema<RestoreInfo>;
 
 export type DatabaseStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "READY_OPTIMIZING";
-export const DatabaseStateEnum = S.String;
+const DatabaseStateEnum = S.String;
 
 export type DatabaseDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
   | "POSTGRESQL";
-export const DatabaseDatabaseDialectEnum = S.String;
+const DatabaseDatabaseDialectEnum = S.String;
 
 /** A Cloud Spanner database. */
 export interface Database {
@@ -3134,7 +3109,7 @@ export interface Database {
   /** Output only. For databases that are using customer managed encryption, this field contains the encryption information for the database, such as all Cloud KMS key versions that are in use. The `encryption_status` field inside of each `EncryptionInfo` is not populated. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field. */
   encryptionInfo?: EncryptionInfoList;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quorumInfo: S.optional(QuorumInfo),
     restoreInfo: S.optional(RestoreInfo),
@@ -3156,7 +3131,7 @@ export interface GetProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. The name of the schedule to retrieve. Values are of the form `projects//instances//databases//backupSchedules/`. */
   name: string;
 }
-export const GetProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3168,7 +3143,7 @@ export interface GetProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3180,7 +3155,7 @@ export interface GetProjectsInstancesDatabasesSessionsRequest {
   /** Required. The name of the session to retrieve. */
   name: string;
 }
-export const GetProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3192,7 +3167,7 @@ export interface GetProjectsInstancesInstancePartitionsRequest {
   /** Required. The name of the requested instance partition. Values are of the form `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`. */
   name: string;
 }
-export const GetProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3204,7 +3179,7 @@ export interface GetProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3216,7 +3191,7 @@ export interface GetProjectsInstancesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
@@ -3225,7 +3200,7 @@ export const GetProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetProjectsInstancesOperationsRequest>;
 
 export type GetScansProjectsInstancesDatabasesViewEnum = "VIEW_UNSPECIFIED" | "SUMMARY" | "FULL";
-export const GetScansProjectsInstancesDatabasesViewEnum = S.String;
+const GetScansProjectsInstancesDatabasesViewEnum = S.String;
 
 export interface GetScansProjectsInstancesDatabasesRequest {
   /** Required. The unique name of the scan containing the requested information, specific to the Database service implementing this interface. */
@@ -3237,7 +3212,7 @@ export interface GetScansProjectsInstancesDatabasesRequest {
   /** These fields restrict the Database-specific information returned in the `Scan.data` field. If a `View` is provided that does not include the `Scan.data` field, these are ignored. This range of time must be entirely contained within the defined time range of the targeted scan. The lower bound for the time range to retrieve Scan data for. */
   startTime?: string;
 }
-export const GetScansProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScansProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetScansProjectsInstancesDatabasesViewEnum.pipe(T.Query())),
@@ -3263,7 +3238,7 @@ export interface PrefixNode {
   /** Whether this corresponds to a data_source name. */
   dataSourceNode?: boolean;
 }
-export const PrefixNode = /*@__PURE__*/ S.suspend(() =>
+const PrefixNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endIndex: S.optional(S.Number),
     depth: S.optional(S.Number),
@@ -3274,10 +3249,10 @@ export const PrefixNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrefixNode" }) as any as S.Schema<PrefixNode>;
 
 export type PrefixNodeList = Array<PrefixNode>;
-export const PrefixNodeList = /*@__PURE__*/ S.Array(PrefixNode) as any as S.Schema<PrefixNodeList>;
+const PrefixNodeList = /*@__PURE__*/ S.Array(PrefixNode) as any as S.Schema<PrefixNodeList>;
 
 export type VisualizationDataKeyUnitEnum = "KEY_UNIT_UNSPECIFIED" | "KEY" | "CHUNK";
-export const VisualizationDataKeyUnitEnum = S.String;
+const VisualizationDataKeyUnitEnum = S.String;
 
 /** A message representing a user-facing string whose value may need to be translated before being displayed. */
 export interface LocalizedString {
@@ -3288,7 +3263,7 @@ export interface LocalizedString {
   /** The canonical English version of this message. If no token is provided or the front-end has no message associated with the token, this text will be displayed as-is. */
   message?: string;
 }
-export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
+const LocalizedString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     args: S.optional(StringMap),
@@ -3302,7 +3277,7 @@ export type ContextValueSeverityEnum =
   | "WARNING"
   | "ERROR"
   | "FATAL";
-export const ContextValueSeverityEnum = S.String;
+const ContextValueSeverityEnum = S.String;
 
 /** A message representing context for a KeyRangeInfo, including a label, value, unit, and severity. */
 export interface ContextValue {
@@ -3315,7 +3290,7 @@ export interface ContextValue {
   /** The severity of this context. */
   severity?: ContextValueSeverityEnum;
 }
-export const ContextValue = /*@__PURE__*/ S.suspend(() =>
+const ContextValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     label: S.optional(LocalizedString),
@@ -3325,9 +3300,7 @@ export const ContextValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContextValue" }) as any as S.Schema<ContextValue>;
 
 export type ContextValueList = Array<ContextValue>;
-export const ContextValueList = /*@__PURE__*/ S.Array(
-  ContextValue,
-) as any as S.Schema<ContextValueList>;
+const ContextValueList = /*@__PURE__*/ S.Array(ContextValue) as any as S.Schema<ContextValueList>;
 
 /** A message representing information for a key range (possibly one key). */
 export interface KeyRangeInfo {
@@ -3350,7 +3323,7 @@ export interface KeyRangeInfo {
   /** The name of the metric. e.g. "latency". */
   metric?: LocalizedString;
 }
-export const KeyRangeInfo = /*@__PURE__*/ S.suspend(() =>
+const KeyRangeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endKeyIndex: S.optional(S.Number),
     unit: S.optional(LocalizedString),
@@ -3365,9 +3338,7 @@ export const KeyRangeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyRangeInfo" }) as any as S.Schema<KeyRangeInfo>;
 
 export type KeyRangeInfoList = Array<KeyRangeInfo>;
-export const KeyRangeInfoList = /*@__PURE__*/ S.Array(
-  KeyRangeInfo,
-) as any as S.Schema<KeyRangeInfoList>;
+const KeyRangeInfoList = /*@__PURE__*/ S.Array(KeyRangeInfo) as any as S.Schema<KeyRangeInfoList>;
 
 /** A message representing a list of specific information for multiple key ranges. */
 export interface KeyRangeInfos {
@@ -3376,7 +3347,7 @@ export interface KeyRangeInfos {
   /** The list individual KeyRangeInfos. */
   infos?: KeyRangeInfoList;
 }
-export const KeyRangeInfos = /*@__PURE__*/ S.suspend(() =>
+const KeyRangeInfos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalSize: S.optional(S.Number),
     infos: S.optional(KeyRangeInfoList),
@@ -3384,7 +3355,7 @@ export const KeyRangeInfos = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyRangeInfos" }) as any as S.Schema<KeyRangeInfos>;
 
 export type KeyRangeInfosMap = { [key: string]: KeyRangeInfos | undefined };
-export const KeyRangeInfosMap = /*@__PURE__*/ S.Record(
+const KeyRangeInfosMap = /*@__PURE__*/ S.Record(
   S.String,
   KeyRangeInfos,
 ) as any as S.Schema<KeyRangeInfosMap>;
@@ -3394,37 +3365,37 @@ export interface IndexedKeyRangeInfos {
   /** A (sparse) mapping from key bucket index to the KeyRangeInfos for that key bucket. */
   keyRangeInfos?: KeyRangeInfosMap;
 }
-export const IndexedKeyRangeInfos = /*@__PURE__*/ S.suspend(() =>
+const IndexedKeyRangeInfos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyRangeInfos: S.optional(KeyRangeInfosMap),
   }),
 ).annotate({ identifier: "IndexedKeyRangeInfos" }) as any as S.Schema<IndexedKeyRangeInfos>;
 
 export type IndexedKeyRangeInfosMap = { [key: string]: IndexedKeyRangeInfos | undefined };
-export const IndexedKeyRangeInfosMap = /*@__PURE__*/ S.Record(
+const IndexedKeyRangeInfosMap = /*@__PURE__*/ S.Record(
   S.String,
   IndexedKeyRangeInfos,
 ) as any as S.Schema<IndexedKeyRangeInfosMap>;
 
 export type MetricAggregationEnum = "AGGREGATION_UNSPECIFIED" | "MAX" | "SUM";
-export const MetricAggregationEnum = S.String;
+const MetricAggregationEnum = S.String;
 
 export type DoubleList = Array<number>;
-export const DoubleList = IntegerList as any as S.Schema<DoubleList>;
+const DoubleList = IntegerList as any as S.Schema<DoubleList>;
 
 /** A message representing a row of a matrix of floats. */
 export interface MetricMatrixRow {
   /** The columns of the row. */
   cols?: DoubleList;
 }
-export const MetricMatrixRow = /*@__PURE__*/ S.suspend(() =>
+const MetricMatrixRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cols: S.optional(DoubleList),
   }),
 ).annotate({ identifier: "MetricMatrixRow" }) as any as S.Schema<MetricMatrixRow>;
 
 export type MetricMatrixRowList = Array<MetricMatrixRow>;
-export const MetricMatrixRowList = /*@__PURE__*/ S.Array(
+const MetricMatrixRowList = /*@__PURE__*/ S.Array(
   MetricMatrixRow,
 ) as any as S.Schema<MetricMatrixRowList>;
 
@@ -3433,7 +3404,7 @@ export interface MetricMatrix {
   /** The rows of the matrix. */
   rows?: MetricMatrixRowList;
 }
-export const MetricMatrix = /*@__PURE__*/ S.suspend(() =>
+const MetricMatrix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: S.optional(MetricMatrixRowList),
   }),
@@ -3446,7 +3417,7 @@ export interface DerivedMetric {
   /** The name of the denominator metric. e.g. "rows". */
   denominator?: LocalizedString;
 }
-export const DerivedMetric = /*@__PURE__*/ S.suspend(() =>
+const DerivedMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numerator: S.optional(LocalizedString),
     denominator: S.optional(LocalizedString),
@@ -3458,14 +3429,14 @@ export interface IndexedHotKey {
   /** A (sparse) mapping from key bucket index to the index of the specific hot row key for that key bucket. The index of the hot row key can be translated to the actual row key via the ScanData.VisualizationData.indexed_keys repeated field. */
   sparseHotKeys?: IntegerMap;
 }
-export const IndexedHotKey = /*@__PURE__*/ S.suspend(() =>
+const IndexedHotKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sparseHotKeys: S.optional(IntegerMap),
   }),
 ).annotate({ identifier: "IndexedHotKey" }) as any as S.Schema<IndexedHotKey>;
 
 export type IndexedHotKeyMap = { [key: string]: IndexedHotKey | undefined };
-export const IndexedHotKeyMap = /*@__PURE__*/ S.Record(
+const IndexedHotKeyMap = /*@__PURE__*/ S.Record(
   S.String,
   IndexedHotKey,
 ) as any as S.Schema<IndexedHotKeyMap>;
@@ -3497,7 +3468,7 @@ export interface Metric {
   /** The category of the metric, e.g. "Activity", "Alerts", "Reads", etc. */
   category?: LocalizedString;
 }
-export const Metric = /*@__PURE__*/ S.suspend(() =>
+const Metric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexedKeyRangeInfos: S.optional(IndexedKeyRangeInfosMap),
     aggregation: S.optional(MetricAggregationEnum),
@@ -3515,7 +3486,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 export type MetricList = Array<Metric>;
-export const MetricList = /*@__PURE__*/ S.Array(Metric) as any as S.Schema<MetricList>;
+const MetricList = /*@__PURE__*/ S.Array(Metric) as any as S.Schema<MetricList>;
 
 export type DiagnosticMessageSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
@@ -3523,7 +3494,7 @@ export type DiagnosticMessageSeverityEnum =
   | "WARNING"
   | "ERROR"
   | "FATAL";
-export const DiagnosticMessageSeverityEnum = S.String;
+const DiagnosticMessageSeverityEnum = S.String;
 
 /** A message representing the key visualizer diagnostic messages. */
 export interface DiagnosticMessage {
@@ -3538,7 +3509,7 @@ export interface DiagnosticMessage {
   /** Whether this message is specific only for the current metric. By default Diagnostics are shown for all metrics, regardless which metric is the currently selected metric in the UI. However occasionally a metric will generate so many messages that the resulting visual clutter becomes overwhelming. In this case setting this to true, will show the diagnostic messages for that metric only if it is the currently selected metric. */
   metricSpecific?: boolean;
 }
-export const DiagnosticMessage = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(LocalizedString),
     shortMessage: S.optional(LocalizedString),
@@ -3549,7 +3520,7 @@ export const DiagnosticMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiagnosticMessage" }) as any as S.Schema<DiagnosticMessage>;
 
 export type DiagnosticMessageList = Array<DiagnosticMessage>;
-export const DiagnosticMessageList = /*@__PURE__*/ S.Array(
+const DiagnosticMessageList = /*@__PURE__*/ S.Array(
   DiagnosticMessage,
 ) as any as S.Schema<DiagnosticMessageList>;
 
@@ -3575,7 +3546,7 @@ export interface VisualizationData {
   /** The list of messages (info, alerts, ...) */
   diagnosticMessages?: DiagnosticMessageList;
 }
-export const VisualizationData = /*@__PURE__*/ S.suspend(() =>
+const VisualizationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefixNodes: S.optional(PrefixNodeList),
     keySeparator: S.optional(S.String),
@@ -3599,7 +3570,7 @@ export interface ScanData {
   /** The upper bound for when the contained data is defined. */
   endTime?: string;
 }
-export const ScanData = /*@__PURE__*/ S.suspend(() =>
+const ScanData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(VisualizationData),
     startTime: S.optional(S.String),
@@ -3620,7 +3591,7 @@ export interface Scan {
   /** A range of time (inclusive) for when the scan is defined. The lower bound for when the scan is defined. */
   startTime?: string;
 }
-export const Scan = /*@__PURE__*/ S.suspend(() =>
+const Scan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -3640,7 +3611,7 @@ export interface ListProjectsInstanceConfigOperationsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListInstanceConfigOperationsResponse to the same `parent` and with the same `filter`. */
   pageToken?: string;
 }
-export const ListProjectsInstanceConfigOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstanceConfigOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3658,7 +3629,7 @@ export const ListProjectsInstanceConfigOperationsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsInstanceConfigOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response for ListInstanceConfigOperations. */
 export interface ListInstanceConfigOperationsResponse {
@@ -3667,7 +3638,7 @@ export interface ListInstanceConfigOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstanceConfigOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
 }
-export const ListInstanceConfigOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstanceConfigOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -3684,7 +3655,7 @@ export interface ListProjectsInstanceConfigsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListInstanceConfigsResponse. */
   pageToken?: string;
 }
-export const ListProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3701,7 +3672,7 @@ export const ListProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsInstanceConfigsRequest>;
 
 export type InstanceConfigList = Array<InstanceConfig>;
-export const InstanceConfigList = /*@__PURE__*/ S.Array(
+const InstanceConfigList = /*@__PURE__*/ S.Array(
   InstanceConfig,
 ) as any as S.Schema<InstanceConfigList>;
 
@@ -3712,7 +3683,7 @@ export interface ListInstanceConfigsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstanceConfigs call to fetch more of the matching instance configurations. */
   nextPageToken?: string;
 }
-export const ListInstanceConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstanceConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceConfigs: S.optional(InstanceConfigList),
     nextPageToken: S.optional(S.String),
@@ -3733,7 +3704,7 @@ export interface ListProjectsInstanceConfigsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3754,7 +3725,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
@@ -3774,7 +3745,7 @@ export interface ListProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -3798,7 +3769,7 @@ export interface ListProjectsInstancesRequest {
   /** Required. The name of the project for which a list of instances is requested. Values are of the form `projects/`. */
   parent: string;
 }
-export const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3817,7 +3788,7 @@ export const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsInstancesRequest>;
 
 export type InstanceList = Array<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** The response for ListInstances. */
 export interface ListInstancesResponse {
@@ -3828,7 +3799,7 @@ export interface ListInstancesResponse {
   /** `next_page_token` can be sent in a subsequent ListInstances call to fetch more of the matching instances. */
   nextPageToken?: string;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     instances: S.optional(InstanceList),
@@ -3846,7 +3817,7 @@ export interface ListProjectsInstancesBackupOperationsRequest {
   /** Required. The instance of the backup operations. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
 }
-export const ListProjectsInstancesBackupOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesBackupOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3870,7 +3841,7 @@ export interface ListBackupOperationsResponse {
   /** The list of matching backup long-running operations. Each operation's name will be prefixed by the backup's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that are pending or have completed/failed/canceled within the last 7 days. Operations returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting from the most recently started operation. */
   operations?: OperationList;
 }
-export const ListBackupOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -3889,7 +3860,7 @@ export interface ListProjectsInstancesBackupsRequest {
   /** Number of backups to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
   pageSize?: number;
 }
-export const ListProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3907,7 +3878,7 @@ export const ListProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsInstancesBackupsRequest>;
 
 export type BackupList = Array<Backup>;
-export const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
+const BackupList = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<BackupList>;
 
 /** The response for ListBackups. */
 export interface ListBackupsResponse {
@@ -3916,7 +3887,7 @@ export interface ListBackupsResponse {
   /** The list of matching backups. Backups returned are ordered by `create_time` in descending order, starting from the most recent `create_time`. */
   backups?: BackupList;
 }
-export const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     backups: S.optional(BackupList),
@@ -3935,7 +3906,7 @@ export interface ListProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3957,7 +3928,7 @@ export interface ListProjectsInstancesDatabaseOperationsRequest {
   /** An expression that filters the list of returned operations. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not case sensitive. The following fields in the operation are eligible for filtering: * `name` - The name of the long-running operation * `done` - False if the operation is in progress, else true. * `metadata.@type` - the type of metadata. For example, the type string for RestoreDatabaseMetadata is `type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata`. * `metadata.` - any field in metadata.value. `metadata.@type` must be specified first, if filtering on metadata fields. * `error` - Error associated with the long-running operation. * `response.@type` - the type of response. * `response.` - any field in response.value. You can combine multiple expressions by enclosing each expression in parentheses. By default, expressions are combined with AND logic. However, you can specify AND, OR, and NOT logic explicitly. Here are a few examples: * `done:true` - The operation is complete. * `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata) AND` \ `(metadata.source_type:BACKUP) AND` \ `(metadata.backup_info.backup:backup_howl) AND` \ `(metadata.name:restored_howl) AND` \ `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND` \ `(error:*)` - Return operations where: * The operation's metadata type is RestoreDatabaseMetadata. * The database is restored from a backup. * The backup name contains "backup_howl". * The restored database's name contains "restored_howl". * The operation started before 2018-03-28T14:50:00Z. * The operation resulted in an error. */
   filter?: string;
 }
-export const ListProjectsInstancesDatabaseOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesDatabaseOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3981,7 +3952,7 @@ export interface ListDatabaseOperationsResponse {
   /** The list of matching database long-running operations. Each operation's name will be prefixed by the database's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. */
   operations?: OperationList;
 }
-export const ListDatabaseOperationsResponse =
+const ListDatabaseOperationsResponse =
   ListBackupOperationsResponse as any as S.Schema<ListDatabaseOperationsResponse>;
 
 export interface ListProjectsInstancesDatabasesRequest {
@@ -3992,7 +3963,7 @@ export interface ListProjectsInstancesDatabasesRequest {
   /** Number of databases to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
   pageSize?: number;
 }
-export const ListProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4009,7 +3980,7 @@ export const ListProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsInstancesDatabasesRequest>;
 
 export type DatabaseList = Array<Database>;
-export const DatabaseList = /*@__PURE__*/ S.Array(Database) as any as S.Schema<DatabaseList>;
+const DatabaseList = /*@__PURE__*/ S.Array(Database) as any as S.Schema<DatabaseList>;
 
 /** The response for ListDatabases. */
 export interface ListDatabasesResponse {
@@ -4018,7 +3989,7 @@ export interface ListDatabasesResponse {
   /** Databases that matched the request. */
   databases?: DatabaseList;
 }
-export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     databases: S.optional(DatabaseList),
@@ -4033,7 +4004,7 @@ export interface ListProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Optional. Number of backup schedules to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
   pageSize?: number;
 }
-export const ListProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4050,7 +4021,7 @@ export const ListProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*
 }) as any as S.Schema<ListProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 export type BackupScheduleList = Array<BackupSchedule>;
-export const BackupScheduleList = /*@__PURE__*/ S.Array(
+const BackupScheduleList = /*@__PURE__*/ S.Array(
   BackupSchedule,
 ) as any as S.Schema<BackupScheduleList>;
 
@@ -4061,7 +4032,7 @@ export interface ListBackupSchedulesResponse {
   /** The list of backup schedules for a database. */
   backupSchedules?: BackupScheduleList;
 }
-export const ListBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     backupSchedules: S.optional(BackupScheduleList),
@@ -4078,7 +4049,7 @@ export interface ListProjectsInstancesDatabasesDatabaseRolesRequest {
   /** Required. The database whose roles should be listed. Values are of the form `projects//instances//databases/`. */
   parent: string;
 }
-export const ListProjectsInstancesDatabasesDatabaseRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesDatabasesDatabaseRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4099,12 +4070,10 @@ export interface DatabaseRole {
   /** Required. The name of the database role. Values are of the form `projects//instances//databases//databaseRoles/` where `` is as specified in the `CREATE ROLE` DDL statement. */
   name?: string;
 }
-export const DatabaseRole = AdapterSession as any as S.Schema<DatabaseRole>;
+const DatabaseRole = AdapterSession as any as S.Schema<DatabaseRole>;
 
 export type DatabaseRoleList = Array<DatabaseRole>;
-export const DatabaseRoleList = /*@__PURE__*/ S.Array(
-  DatabaseRole,
-) as any as S.Schema<DatabaseRoleList>;
+const DatabaseRoleList = /*@__PURE__*/ S.Array(DatabaseRole) as any as S.Schema<DatabaseRoleList>;
 
 /** The response for ListDatabaseRoles. */
 export interface ListDatabaseRolesResponse {
@@ -4113,7 +4082,7 @@ export interface ListDatabaseRolesResponse {
   /** `next_page_token` can be sent in a subsequent ListDatabaseRoles call to fetch more of the matching roles. */
   nextPageToken?: string;
 }
-export const ListDatabaseRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseRolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseRoles: S.optional(DatabaseRoleList),
     nextPageToken: S.optional(S.String),
@@ -4134,7 +4103,7 @@ export interface ListProjectsInstancesDatabasesOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -4156,7 +4125,7 @@ export interface ListProjectsInstancesDatabasesSessionsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListSessionsResponse. */
   pageToken?: string;
 }
-export const ListProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4180,7 +4149,7 @@ export interface ListSessionsResponse {
   /** The list of requested sessions. */
   sessions?: SessionList;
 }
-export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     sessions: S.optional(SessionList),
@@ -4199,7 +4168,7 @@ export interface ListProjectsInstancesInstancePartitionOperationsRequest {
   /** Required. The parent instance of the instance partition operations. Values are of the form `projects//instances/`. */
   parent: string;
 }
-export const ListProjectsInstancesInstancePartitionOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesInstancePartitionOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4226,7 +4195,7 @@ export interface ListInstancePartitionOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstancePartitionOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
 }
-export const ListInstancePartitionOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancePartitionOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     unreachableInstancePartitions: S.optional(StringList),
@@ -4246,7 +4215,7 @@ export interface ListProjectsInstancesInstancePartitionsRequest {
   /** Optional. Deadline used while retrieving metadata for instance partitions. Instance partitions whose metadata cannot be retrieved within this deadline will be added to unreachable in ListInstancePartitionsResponse. */
   instancePartitionDeadline?: string;
 }
-export const ListProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4264,7 +4233,7 @@ export const ListProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsInstancesInstancePartitionsRequest>;
 
 export type InstancePartitionList = Array<InstancePartition>;
-export const InstancePartitionList = /*@__PURE__*/ S.Array(
+const InstancePartitionList = /*@__PURE__*/ S.Array(
   InstancePartition,
 ) as any as S.Schema<InstancePartitionList>;
 
@@ -4277,7 +4246,7 @@ export interface ListInstancePartitionsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstancePartitions call to fetch more of the matching instance partitions. */
   nextPageToken?: string;
 }
-export const ListInstancePartitionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancePartitionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     instancePartitions: S.optional(InstancePartitionList),
@@ -4299,17 +4268,14 @@ export interface ListProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" }),
-    ),
+const ListProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://spanner.googleapis.com/" })),
 ).annotate({
   identifier: "ListProjectsInstancesInstancePartitionsOperationsRequest",
 }) as any as S.Schema<ListProjectsInstancesInstancePartitionsOperationsRequest>;
@@ -4326,7 +4292,7 @@ export interface ListProjectsInstancesOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4339,7 +4305,7 @@ export const ListProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsInstancesOperationsRequest>;
 
 export type ListScansViewEnum = "VIEW_UNSPECIFIED" | "SUMMARY" | "FULL";
-export const ListScansViewEnum = S.String;
+const ListScansViewEnum = S.String;
 
 export interface ListScansRequest {
   /** Specifies which parts of the Scan should be returned in the response. Note, only the SUMMARY view (the default) is currently supported for ListScans. */
@@ -4353,7 +4319,7 @@ export interface ListScansRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListScansViewEnum.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4366,7 +4332,7 @@ export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListScansRequest" }) as any as S.Schema<ListScansRequest>;
 
 export type ScanList = Array<Scan>;
-export const ScanList = /*@__PURE__*/ S.Array(Scan) as any as S.Schema<ScanList>;
+const ScanList = /*@__PURE__*/ S.Array(Scan) as any as S.Schema<ScanList>;
 
 /** Response method from the ListScans method. */
 export interface ListScansResponse {
@@ -4375,7 +4341,7 @@ export interface ListScansResponse {
   /** Available scans based on the list query parameters. */
   scans?: ScanList;
 }
-export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     scans: S.optional(ScanList),
@@ -4389,7 +4355,7 @@ export interface InstanceEncryptionConfig {
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
   kmsKeyName?: string;
 }
-export const InstanceEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const InstanceEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyNames: S.optional(StringList),
     kmsKeyName: S.optional(S.String),
@@ -4403,7 +4369,7 @@ export interface DatabaseMoveConfig {
   /** Required. The unique identifier of the database resource in the Instance. For example, if the database uri is `projects/foo/instances/bar/databases/baz`, then the id to supply here is baz. */
   databaseId?: string;
 }
-export const DatabaseMoveConfig = /*@__PURE__*/ S.suspend(() =>
+const DatabaseMoveConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionConfig: S.optional(InstanceEncryptionConfig),
     databaseId: S.optional(S.String),
@@ -4411,7 +4377,7 @@ export const DatabaseMoveConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseMoveConfig" }) as any as S.Schema<DatabaseMoveConfig>;
 
 export type DatabaseMoveConfigList = Array<DatabaseMoveConfig>;
-export const DatabaseMoveConfigList = /*@__PURE__*/ S.Array(
+const DatabaseMoveConfigList = /*@__PURE__*/ S.Array(
   DatabaseMoveConfig,
 ) as any as S.Schema<DatabaseMoveConfigList>;
 
@@ -4422,7 +4388,7 @@ export interface MoveInstanceRequest {
   /** Optional. The configuration for each database in the target instance configuration. */
   targetDatabaseMoveConfigs?: DatabaseMoveConfigList;
 }
-export const MoveInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetConfig: S.optional(S.String),
     targetDatabaseMoveConfigs: S.optional(DatabaseMoveConfigList),
@@ -4435,7 +4401,7 @@ export interface MoveProjectsInstancesRequest {
   /** Request body */
   body?: MoveInstanceRequest;
 }
-export const MoveProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MoveInstanceRequest.pipe(T.HttpBody())),
@@ -4453,7 +4419,7 @@ export interface PartitionOptions {
   /** **Note:** This hint is currently ignored by `PartitionQuery` and `PartitionRead` requests. The desired data size for each partition generated. The default for this option is currently 1 GiB. This is only a hint. The actual size of each partition can be smaller or larger than this size request. */
   partitionSizeBytes?: string;
 }
-export const PartitionOptions = /*@__PURE__*/ S.suspend(() =>
+const PartitionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxPartitions: S.optional(S.String),
     partitionSizeBytes: S.optional(S.String),
@@ -4473,7 +4439,7 @@ export interface PartitionQueryRequest {
   /** Optional. It isn't always possible for Cloud Spanner to infer the right SQL type from a JSON value. For example, values of type `BYTES` and values of type `STRING` both appear in params as JSON strings. In these cases, `param_types` can be used to specify the exact SQL type for some or all of the SQL query parameters. See the definition of Type for more information about SQL types. */
   paramTypes?: TypeMap;
 }
-export const PartitionQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const PartitionQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     params: S.optional(DocumentMap),
     transaction: S.optional(TransactionSelector),
@@ -4489,7 +4455,7 @@ export interface PartitionQueryProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: PartitionQueryRequest;
 }
-export const PartitionQueryProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PartitionQueryProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(PartitionQueryRequest.pipe(T.HttpBody())),
@@ -4509,14 +4475,14 @@ export interface Partition {
   /** This token can be passed to `Read`, `StreamingRead`, `ExecuteSql`, or `ExecuteStreamingSql` requests to restrict the results to those identified by this partition token. */
   partitionToken?: string;
 }
-export const Partition = /*@__PURE__*/ S.suspend(() =>
+const Partition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionToken: S.optional(S.String),
   }),
 ).annotate({ identifier: "Partition" }) as any as S.Schema<Partition>;
 
 export type PartitionList = Array<Partition>;
-export const PartitionList = /*@__PURE__*/ S.Array(Partition) as any as S.Schema<PartitionList>;
+const PartitionList = /*@__PURE__*/ S.Array(Partition) as any as S.Schema<PartitionList>;
 
 /** The response for PartitionQuery or PartitionRead */
 export interface PartitionResponse {
@@ -4525,7 +4491,7 @@ export interface PartitionResponse {
   /** Partitions created by this request. */
   partitions?: PartitionList;
 }
-export const PartitionResponse = /*@__PURE__*/ S.suspend(() =>
+const PartitionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(Transaction),
     partitions: S.optional(PartitionList),
@@ -4547,7 +4513,7 @@ export interface PartitionReadRequest {
   /** If non-empty, the name of an index on table. This index is used instead of the table primary key when interpreting key_set and sorting result rows. See key_set for further information. */
   index?: string;
 }
-export const PartitionReadRequest = /*@__PURE__*/ S.suspend(() =>
+const PartitionReadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(StringList),
     partitionOptions: S.optional(PartitionOptions),
@@ -4564,7 +4530,7 @@ export interface PartitionReadProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: PartitionReadRequest;
 }
-export const PartitionReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PartitionReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(PartitionReadRequest.pipe(T.HttpBody())),
@@ -4588,7 +4554,7 @@ export interface UpdateInstanceConfigRequest {
   /** Required. The user instance configuration to update, which must always include the instance configuration name. Otherwise, only fields mentioned in update_mask need be included. To prevent conflicts of concurrent updates, etag can be used. */
   instanceConfig?: InstanceConfig;
 }
-export const UpdateInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     updateMask: S.optional(S.String),
@@ -4604,7 +4570,7 @@ export interface PatchProjectsInstanceConfigsRequest {
   /** Request body */
   body?: UpdateInstanceConfigRequest;
 }
-export const PatchProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateInstanceConfigRequest.pipe(T.HttpBody())),
@@ -4622,7 +4588,7 @@ export interface UpdateInstanceRequest {
   /** Required. A mask specifying which fields in Instance should be updated. The field mask must always be specified; this prevents any future fields in Instance from being erased accidentally by clients that do not know about them. */
   fieldMask?: string;
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.optional(Instance),
     fieldMask: S.optional(S.String),
@@ -4635,7 +4601,7 @@ export interface PatchProjectsInstancesRequest {
   /** Request body */
   body?: UpdateInstanceRequest;
 }
-export const PatchProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateInstanceRequest.pipe(T.HttpBody())),
@@ -4654,7 +4620,7 @@ export interface PatchProjectsInstancesBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-export const PatchProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4674,7 +4640,7 @@ export interface PatchProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-export const PatchProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4694,7 +4660,7 @@ export interface PatchProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: BackupSchedule;
 }
-export const PatchProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4713,7 +4679,7 @@ export interface UpdateInstancePartitionRequest {
   /** Required. A mask specifying which fields in InstancePartition should be updated. The field mask must always be specified; this prevents any future fields in InstancePartition from being erased accidentally by clients that do not know about them. */
   fieldMask?: string;
 }
-export const UpdateInstancePartitionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstancePartitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instancePartition: S.optional(InstancePartition),
     fieldMask: S.optional(S.String),
@@ -4728,7 +4694,7 @@ export interface PatchProjectsInstancesInstancePartitionsRequest {
   /** Request body */
   body?: UpdateInstancePartitionRequest;
 }
-export const PatchProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateInstancePartitionRequest.pipe(T.HttpBody())),
@@ -4743,13 +4709,13 @@ export type ReadRequestLockHintEnum =
   | "LOCK_HINT_UNSPECIFIED"
   | "LOCK_HINT_SHARED"
   | "LOCK_HINT_EXCLUSIVE";
-export const ReadRequestLockHintEnum = S.String;
+const ReadRequestLockHintEnum = S.String;
 
 export type ReadRequestOrderByEnum =
   | "ORDER_BY_UNSPECIFIED"
   | "ORDER_BY_PRIMARY_KEY"
   | "ORDER_BY_NO_ORDER";
-export const ReadRequestOrderByEnum = S.String;
+const ReadRequestOrderByEnum = S.String;
 
 /** The request for Read and StreamingRead. */
 export interface ReadRequest {
@@ -4780,7 +4746,7 @@ export interface ReadRequest {
   /** Required. The name of the table in the database to be read. */
   table?: string;
 }
-export const ReadRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resumeToken: S.optional(S.String),
     keySet: S.optional(KeySet),
@@ -4804,7 +4770,7 @@ export interface ReadProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ReadRequest;
 }
-export const ReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(ReadRequest.pipe(T.HttpBody())),
@@ -4824,7 +4790,7 @@ export type RestoreDatabaseEncryptionConfigEncryptionTypeEnum =
   | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-export const RestoreDatabaseEncryptionConfigEncryptionTypeEnum = S.String;
+const RestoreDatabaseEncryptionConfigEncryptionTypeEnum = S.String;
 
 /** Encryption configuration for the restored database. */
 export interface RestoreDatabaseEncryptionConfig {
@@ -4835,7 +4801,7 @@ export interface RestoreDatabaseEncryptionConfig {
   /** Optional. Specifies the KMS configuration for one or more keys used to encrypt the database. Values have the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
   kmsKeyNames?: StringList;
 }
-export const RestoreDatabaseEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatabaseEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
     encryptionType: S.optional(RestoreDatabaseEncryptionConfigEncryptionTypeEnum),
@@ -4854,7 +4820,7 @@ export interface RestoreDatabaseRequest {
   /** Optional. An encryption configuration describing the encryption type and key resources in Cloud KMS used to encrypt/decrypt the database to restore to. If this field is not specified, the restored database will use the same encryption configuration as the backup by default, namely encryption_type = `USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION`. */
   encryptionConfig?: RestoreDatabaseEncryptionConfig;
 }
-export const RestoreDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup: S.optional(S.String),
     databaseId: S.optional(S.String),
@@ -4868,7 +4834,7 @@ export interface RestoreProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: RestoreDatabaseRequest;
 }
-export const RestoreProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RestoreDatabaseRequest.pipe(T.HttpBody())),
@@ -4888,7 +4854,7 @@ export interface RollbackRequest {
   /** Required. The transaction to roll back. */
   transactionId?: string;
 }
-export const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionId: S.optional(S.String),
   }),
@@ -4900,7 +4866,7 @@ export interface RollbackProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: RollbackRequest;
 }
-export const RollbackProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(RollbackRequest.pipe(T.HttpBody())),
@@ -4920,7 +4886,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -4932,7 +4898,7 @@ export interface SetIamPolicyProjectsInstancesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4953,7 +4919,7 @@ export interface SetIamPolicyProjectsInstancesBackupsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4974,7 +4940,7 @@ export interface SetIamPolicyProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -4995,18 +4961,17 @@ export interface SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://spanner.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest",
 }) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>;
@@ -5017,7 +4982,7 @@ export interface StreamingReadProjectsInstancesDatabasesSessionsRequest {
   /** Request body */
   body?: ReadRequest;
 }
-export const StreamingReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamingReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(ReadRequest.pipe(T.HttpBody())),
@@ -5037,7 +5002,7 @@ export interface TestIamPermissionsRequest {
   /** REQUIRED: The set of permissions to check for 'resource'. Permissions with wildcards (such as '*', 'spanner.*', 'spanner.instances.*') are not allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -5051,7 +5016,7 @@ export interface TestIamPermissionsProjectsInstancesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -5071,7 +5036,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsInstancesBackupsRequest {
@@ -5080,7 +5045,7 @@ export interface TestIamPermissionsProjectsInstancesBackupsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -5101,7 +5066,7 @@ export interface TestIamPermissionsProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -5122,8 +5087,8 @@ export interface TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequ
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -5134,9 +5099,9 @@ export const TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest 
         baseUrl: "https://spanner.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest>;
 
 export interface TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
@@ -5144,8 +5109,8 @@ export interface TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesReques
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -5156,9 +5121,9 @@ export const TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest =
         baseUrl: "https://spanner.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest>;
 
 /** Enqueues the given DDL statements to be applied, in order but not necessarily all at once, to the database schema at some point (or points) in the future. The server checks that the statements are executable (syntactically valid, name tables that exist, etc.) before enqueueing them, but they may still fail upon later execution (for example, if a statement from another batch of statements is applied first and it conflicts in some way, or if there is some data-related problem like a `NULL` value in a column to which `NOT NULL` would be added). If a statement fails, all subsequent statements in the batch are automatically cancelled. Each batch of statements is assigned a name which can be used with the Operations API to monitor progress. See the operation_id field for more details. */
 export interface UpdateDatabaseDdlRequest {
@@ -5169,7 +5134,7 @@ export interface UpdateDatabaseDdlRequest {
   /** Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \ moon/shot/app.proto ``` For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
   protoDescriptors?: string;
 }
-export const UpdateDatabaseDdlRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabaseDdlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statements: S.optional(StringList),
     operationId: S.optional(S.String),
@@ -5183,7 +5148,7 @@ export interface UpdateDdlProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: UpdateDatabaseDdlRequest;
 }
-export const UpdateDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(UpdateDatabaseDdlRequest.pipe(T.HttpBody())),

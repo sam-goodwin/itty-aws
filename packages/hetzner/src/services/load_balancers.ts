@@ -11,14 +11,14 @@ export type { HetznerOpError, HetznerOpContext };
 
 /** Type of the algorithm. */
 export type CreateLoadBalancerRequestAlgorithmType = "round_robin" | "least_connections";
-export const CreateLoadBalancerRequestAlgorithmType = S.String;
+const CreateLoadBalancerRequestAlgorithmType = S.String;
 
 /** Algorithm of the Load Balancer. */
 export interface CreateLoadBalancerRequestAlgorithm {
   /** Type of the algorithm. */
   type: CreateLoadBalancerRequestAlgorithmType | (string & {});
 }
-export const CreateLoadBalancerRequestAlgorithm = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerRequestAlgorithm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CreateLoadBalancerRequestAlgorithmType,
   }),
@@ -28,18 +28,10 @@ export const CreateLoadBalancerRequestAlgorithm = /*@__PURE__*/ S.suspend(() =>
 
 /** Protocol of the Load Balancer. */
 export type ServiceTCPProtocol = "tcp" | "http" | "https";
-export const ServiceTCPProtocol = S.String;
-
 /** Type of the health check. */
 export type ServiceTCPHealthCheckProtocol = "tcp" | "http";
-export const ServiceTCPHealthCheckProtocol = S.String;
-
 /** List of returned HTTP status codes in order to pass the health check. Supports the wildcards `?` for exactly one character and `*` for multiple ones. */
 export type ServiceTCPHealthCheckHttpStatusCodesList = Array<string>;
-export const ServiceTCPHealthCheckHttpStatusCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServiceTCPHealthCheckHttpStatusCodesList>;
-
 /** Additional configuration for protocol http. */
 export interface ServiceTCPHealthCheckHttp {
   /** Host header to send in the HTTP request. May not contain spaces, percent or backslash symbols. Can be null, in that case no host header is sent. */
@@ -53,18 +45,6 @@ export interface ServiceTCPHealthCheckHttp {
   /** Use HTTPS for health check. */
   tls?: boolean;
 }
-export const ServiceTCPHealthCheckHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.NullOr(S.String),
-    path: S.String,
-    response: S.optional(S.String),
-    status_codes: S.optional(ServiceTCPHealthCheckHttpStatusCodesList),
-    tls: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServiceTCPHealthCheckHttp",
-}) as any as S.Schema<ServiceTCPHealthCheckHttp>;
-
 /** Service health check. */
 export interface ServiceTCPHealthCheck {
   /** Type of the health check. */
@@ -80,17 +60,6 @@ export interface ServiceTCPHealthCheck {
   /** Additional configuration for protocol http. */
   http?: ServiceTCPHealthCheckHttp;
 }
-export const ServiceTCPHealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: ServiceTCPHealthCheckProtocol,
-    port: S.Number,
-    interval: S.Number,
-    timeout: S.Number,
-    retries: S.Number,
-    http: S.optional(ServiceTCPHealthCheckHttp),
-  }),
-).annotate({ identifier: "ServiceTCPHealthCheck" }) as any as S.Schema<ServiceTCPHealthCheck>;
-
 export interface ServiceTCP {
   /** Protocol of the Load Balancer. */
   protocol: ServiceTCPProtocol | (string & {});
@@ -103,29 +72,12 @@ export interface ServiceTCP {
   /** Service health check. */
   health_check: ServiceTCPHealthCheck;
 }
-export const ServiceTCP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: ServiceTCPProtocol,
-    listen_port: S.Number,
-    destination_port: S.Number,
-    proxyprotocol: S.Boolean,
-    health_check: ServiceTCPHealthCheck,
-  }),
-).annotate({ identifier: "ServiceTCP" }) as any as S.Schema<ServiceTCP>;
-
 /** Protocol of the Load Balancer. */
 export type ServiceHTTPProtocolProtocol = "tcp" | "http" | "https";
-export const ServiceHTTPProtocolProtocol = S.String;
-
 /** Type of the health check. */
 export type ServiceHTTPProtocolHealthCheckProtocol = "tcp" | "http";
-export const ServiceHTTPProtocolHealthCheckProtocol = S.String;
-
 /** List of returned HTTP status codes in order to pass the health check. Supports the wildcards `?` for exactly one character and `*` for multiple ones. */
 export type ServiceHTTPProtocolHealthCheckHttpStatusCodesList = Array<string>;
-export const ServiceHTTPProtocolHealthCheckHttpStatusCodesList =
-  ServiceTCPHealthCheckHttpStatusCodesList as any as S.Schema<ServiceHTTPProtocolHealthCheckHttpStatusCodesList>;
-
 /** Additional configuration for protocol http. */
 export interface ServiceHTTPProtocolHealthCheckHttp {
   /** Host header to send in the HTTP request. May not contain spaces, percent or backslash symbols. Can be null, in that case no host header is sent. */
@@ -139,9 +91,6 @@ export interface ServiceHTTPProtocolHealthCheckHttp {
   /** Use HTTPS for health check. */
   tls?: boolean;
 }
-export const ServiceHTTPProtocolHealthCheckHttp =
-  ServiceTCPHealthCheckHttp as any as S.Schema<ServiceHTTPProtocolHealthCheckHttp>;
-
 /** Service health check. */
 export interface ServiceHTTPProtocolHealthCheck {
   /** Type of the health check. */
@@ -157,19 +106,6 @@ export interface ServiceHTTPProtocolHealthCheck {
   /** Additional configuration for protocol http. */
   http?: ServiceHTTPProtocolHealthCheckHttp;
 }
-export const ServiceHTTPProtocolHealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: ServiceHTTPProtocolHealthCheckProtocol,
-    port: S.Number,
-    interval: S.Number,
-    timeout: S.Number,
-    retries: S.Number,
-    http: S.optional(ServiceHTTPProtocolHealthCheckHttp),
-  }),
-).annotate({
-  identifier: "ServiceHTTPProtocolHealthCheck",
-}) as any as S.Schema<ServiceHTTPProtocolHealthCheck>;
-
 /** Configuration option for protocol http. */
 export interface ServiceHTTPProtocolHttp {
   /** Name of the cookie used for sticky sessions. */
@@ -181,15 +117,6 @@ export interface ServiceHTTPProtocolHttp {
   /** Use sticky sessions. */
   sticky_sessions: boolean;
 }
-export const ServiceHTTPProtocolHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie_name: S.String,
-    cookie_lifetime: S.Number,
-    timeout_idle: S.Number,
-    sticky_sessions: S.Boolean,
-  }),
-).annotate({ identifier: "ServiceHTTPProtocolHttp" }) as any as S.Schema<ServiceHTTPProtocolHttp>;
-
 export interface ServiceHTTPProtocol {
   /** Protocol of the Load Balancer. */
   protocol: ServiceHTTPProtocolProtocol | (string & {});
@@ -204,30 +131,12 @@ export interface ServiceHTTPProtocol {
   /** Configuration option for protocol http. */
   http: ServiceHTTPProtocolHttp;
 }
-export const ServiceHTTPProtocol = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: ServiceHTTPProtocolProtocol,
-    listen_port: S.Number,
-    destination_port: S.Number,
-    proxyprotocol: S.Boolean,
-    health_check: ServiceHTTPProtocolHealthCheck,
-    http: ServiceHTTPProtocolHttp,
-  }),
-).annotate({ identifier: "ServiceHTTPProtocol" }) as any as S.Schema<ServiceHTTPProtocol>;
-
 /** Protocol of the Load Balancer. */
 export type ServiceHTTPSProtocolProtocol = "tcp" | "http" | "https";
-export const ServiceHTTPSProtocolProtocol = S.String;
-
 /** Type of the health check. */
 export type ServiceHTTPSProtocolHealthCheckProtocol = "tcp" | "http";
-export const ServiceHTTPSProtocolHealthCheckProtocol = S.String;
-
 /** List of returned HTTP status codes in order to pass the health check. Supports the wildcards `?` for exactly one character and `*` for multiple ones. */
 export type ServiceHTTPSProtocolHealthCheckHttpStatusCodesList = Array<string>;
-export const ServiceHTTPSProtocolHealthCheckHttpStatusCodesList =
-  ServiceTCPHealthCheckHttpStatusCodesList as any as S.Schema<ServiceHTTPSProtocolHealthCheckHttpStatusCodesList>;
-
 /** Additional configuration for protocol http. */
 export interface ServiceHTTPSProtocolHealthCheckHttp {
   /** Host header to send in the HTTP request. May not contain spaces, percent or backslash symbols. Can be null, in that case no host header is sent. */
@@ -241,9 +150,6 @@ export interface ServiceHTTPSProtocolHealthCheckHttp {
   /** Use HTTPS for health check. */
   tls?: boolean;
 }
-export const ServiceHTTPSProtocolHealthCheckHttp =
-  ServiceTCPHealthCheckHttp as any as S.Schema<ServiceHTTPSProtocolHealthCheckHttp>;
-
 /** Service health check. */
 export interface ServiceHTTPSProtocolHealthCheck {
   /** Type of the health check. */
@@ -259,25 +165,8 @@ export interface ServiceHTTPSProtocolHealthCheck {
   /** Additional configuration for protocol http. */
   http?: ServiceHTTPSProtocolHealthCheckHttp;
 }
-export const ServiceHTTPSProtocolHealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: ServiceHTTPSProtocolHealthCheckProtocol,
-    port: S.Number,
-    interval: S.Number,
-    timeout: S.Number,
-    retries: S.Number,
-    http: S.optional(ServiceHTTPSProtocolHealthCheckHttp),
-  }),
-).annotate({
-  identifier: "ServiceHTTPSProtocolHealthCheck",
-}) as any as S.Schema<ServiceHTTPSProtocolHealthCheck>;
-
 /** IDs of the Certificates to use for TLS/SSL termination by the Load Balancer; empty for TLS/SSL passthrough. */
 export type ServiceHTTPSProtocolHttpCertificatesList = Array<number>;
-export const ServiceHTTPSProtocolHttpCertificatesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<ServiceHTTPSProtocolHttpCertificatesList>;
-
 /** Configuration option for protocol https. */
 export interface ServiceHTTPSProtocolHttp {
   /** Name of the cookie used for sticky sessions. */
@@ -293,17 +182,6 @@ export interface ServiceHTTPSProtocolHttp {
   /** Use sticky sessions. */
   sticky_sessions: boolean;
 }
-export const ServiceHTTPSProtocolHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cookie_name: S.String,
-    cookie_lifetime: S.Number,
-    timeout_idle: S.Number,
-    certificates: ServiceHTTPSProtocolHttpCertificatesList,
-    redirect_http: S.Boolean,
-    sticky_sessions: S.Boolean,
-  }),
-).annotate({ identifier: "ServiceHTTPSProtocolHttp" }) as any as S.Schema<ServiceHTTPSProtocolHttp>;
-
 export interface ServiceHTTPSProtocol {
   /** Protocol of the Load Balancer. */
   protocol: ServiceHTTPSProtocolProtocol | (string & {});
@@ -318,33 +196,22 @@ export interface ServiceHTTPSProtocol {
   /** Configuration option for protocol https. */
   http: ServiceHTTPSProtocolHttp;
 }
-export const ServiceHTTPSProtocol = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: ServiceHTTPSProtocolProtocol,
-    listen_port: S.Number,
-    destination_port: S.Number,
-    proxyprotocol: S.Boolean,
-    health_check: ServiceHTTPSProtocolHealthCheck,
-    http: ServiceHTTPSProtocolHttp,
-  }),
-).annotate({ identifier: "ServiceHTTPSProtocol" }) as any as S.Schema<ServiceHTTPSProtocol>;
-
 export type CreateLoadBalancerRequestServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-export const CreateLoadBalancerRequestServicesItem =
+const CreateLoadBalancerRequestServicesItem =
   S.Unknown as any as S.Schema<CreateLoadBalancerRequestServicesItem>;
 
 /** Array of services. */
 export type CreateLoadBalancerRequestServicesList = Array<CreateLoadBalancerRequestServicesItem>;
-export const CreateLoadBalancerRequestServicesList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerRequestServicesList = /*@__PURE__*/ S.Array(
   CreateLoadBalancerRequestServicesItem,
 ) as any as S.Schema<CreateLoadBalancerRequestServicesList>;
 
 /** Type of the resource. */
 export type CreateLoadBalancerRequestTargetsItemType = "server" | "label_selector" | "ip";
-export const CreateLoadBalancerRequestTargetsItemType = S.String;
+const CreateLoadBalancerRequestTargetsItemType = S.String;
 
 /** Configuration for type Server, only valid and required if type is `server`. */
 export interface CreateLoadBalancerRequestTargetsItemServer {
@@ -353,7 +220,7 @@ export interface CreateLoadBalancerRequestTargetsItemServer {
   /** Optional public IP of the Server to use as target. Must be the Primary IPv4 of the Server, or an IPv6 host address within IPv6 /64 subnet of the Server. If omitted, the Primary IPv4 of the Server is used. Must not be a private IP and is only valid for public targets. */
   ip?: string;
 }
-export const CreateLoadBalancerRequestTargetsItemServer = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerRequestTargetsItemServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     ip: S.optional(S.String),
@@ -367,7 +234,7 @@ export interface CreateLoadBalancerRequestTargetsItemLabelSelector {
   /** Label selector. */
   selector: string;
 }
-export const CreateLoadBalancerRequestTargetsItemLabelSelector = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerRequestTargetsItemLabelSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -380,7 +247,7 @@ export interface CreateLoadBalancerRequestTargetsItemIp {
   /** IP of a server that belongs to the same customer (public IPv4/IPv6) or private IP in a subnet type vswitch. */
   ip: string;
 }
-export const CreateLoadBalancerRequestTargetsItemIp = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerRequestTargetsItemIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ip: S.String,
   }),
@@ -400,7 +267,7 @@ export interface CreateLoadBalancerRequestTargetsItem {
   /** Use the private network IP instead of the public IP of the Server, requires the Server and Load Balancer to be in the same network. Only valid for target types `server` and `label_selector`. */
   use_private_ip?: boolean;
 }
-export const CreateLoadBalancerRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CreateLoadBalancerRequestTargetsItemType,
     server: S.optional(CreateLoadBalancerRequestTargetsItemServer),
@@ -414,13 +281,13 @@ export const CreateLoadBalancerRequestTargetsItem = /*@__PURE__*/ S.suspend(() =
 
 /** Array of targets. */
 export type CreateLoadBalancerRequestTargetsList = Array<CreateLoadBalancerRequestTargetsItem>;
-export const CreateLoadBalancerRequestTargetsList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerRequestTargetsList = /*@__PURE__*/ S.Array(
   CreateLoadBalancerRequestTargetsItem,
 ) as any as S.Schema<CreateLoadBalancerRequestTargetsList>;
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateLoadBalancerRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateLoadBalancerRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreateLoadBalancerRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateLoadBalancerRequestLabelsMap>;
@@ -447,7 +314,7 @@ export interface CreateLoadBalancerRequest {
   /** ID or name of Location to create Load Balancer in. */
   location?: string;
 }
-export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     load_balancer_type: S.String,
@@ -471,7 +338,7 @@ export interface CreateLoadBalancerResponseLoadBalancerPublicNetIpv4 {
   /** Reverse DNS PTR entry for the IPv4 address of this Load Balancer. */
   dns_ptr: string | null;
 }
-export const CreateLoadBalancerResponseLoadBalancerPublicNetIpv4 = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancerPublicNetIpv4 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ip: S.NullOr(S.String),
     dns_ptr: S.NullOr(S.String),
@@ -487,7 +354,7 @@ export interface CreateLoadBalancerResponseLoadBalancerPublicNetIpv6 {
   /** Reverse DNS PTR entry for the IPv6 address of this Load Balancer. */
   dns_ptr: string | null;
 }
-export const CreateLoadBalancerResponseLoadBalancerPublicNetIpv6 =
+const CreateLoadBalancerResponseLoadBalancerPublicNetIpv6 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv4 as any as S.Schema<CreateLoadBalancerResponseLoadBalancerPublicNetIpv6>;
 
 /** Public network information. */
@@ -499,7 +366,7 @@ export interface CreateLoadBalancerResponseLoadBalancerPublicNet {
   /** IP address (v6). */
   ipv6: CreateLoadBalancerResponseLoadBalancerPublicNetIpv6;
 }
-export const CreateLoadBalancerResponseLoadBalancerPublicNet = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancerPublicNet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     ipv4: CreateLoadBalancerResponseLoadBalancerPublicNetIpv4,
@@ -515,7 +382,7 @@ export interface CreateLoadBalancerResponseLoadBalancerPrivateNetItem {
   /** IP address (v4) of this Load Balancer in this Network. */
   ip: string;
 }
-export const CreateLoadBalancerResponseLoadBalancerPrivateNetItem = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancerPrivateNetItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.Number,
     ip: S.String,
@@ -527,7 +394,7 @@ export const CreateLoadBalancerResponseLoadBalancerPrivateNetItem = /*@__PURE__*
 /** Private networks information. */
 export type CreateLoadBalancerResponseLoadBalancerPrivateNetList =
   Array<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-export const CreateLoadBalancerResponseLoadBalancerPrivateNetList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerResponseLoadBalancerPrivateNetList = /*@__PURE__*/ S.Array(
   CreateLoadBalancerResponseLoadBalancerPrivateNetItem,
 ) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerPrivateNetList>;
 
@@ -549,7 +416,7 @@ export interface CreateLoadBalancerResponseLoadBalancerLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
-export const CreateLoadBalancerResponseLoadBalancerLocation = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancerLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -571,15 +438,15 @@ export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecati
   /** Date of the deprecation announcement. */
   announced: string;
 }
-export const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       unavailable_after: S.String,
       announced: S.String,
     }),
-  ).annotate({
-    identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation",
-  }) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation>;
+).annotate({
+  identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation",
+}) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation>;
 
 /** Hourly price in this [Location](#tag/locations). */
 export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly {
@@ -588,7 +455,7 @@ export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesIte
   /** Price with VAT added. */
   gross: string;
 }
-export const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly =
+const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       net: S.String,
@@ -601,15 +468,9 @@ export const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPri
 /** Monthly price in this [Location](#tag/locations). */
 export type CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceMonthly =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceMonthly =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 /** Additional traffic price per TB in this [Location](#tag/locations). */
 export type CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPricePerTbTraffic =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPricePerTbTraffic =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem {
   /** Name of the [Location](#tag/locations) the price is for. */
   location: string;
@@ -622,8 +483,8 @@ export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesIte
   /** Additional traffic price per TB in this [Location](#tag/locations). */
   price_per_tb_traffic: CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
 }
-export const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       location: S.String,
       price_hourly: CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly,
@@ -632,17 +493,16 @@ export const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem =
       price_per_tb_traffic:
         CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly,
     }),
-  ).annotate({
-    identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem",
-  }) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
+).annotate({
+  identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem",
+}) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
 
 /** Price per [Location](#tag/locations). */
 export type CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList =
   Array<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
-export const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList =
-  /*@__PURE__*/ S.Array(
-    CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem,
-  ) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList>;
+const CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList = /*@__PURE__*/ S.Array(
+  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem,
+) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList>;
 
 export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** ID of the Load Balancer type. */
@@ -666,7 +526,7 @@ export interface CreateLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList;
 }
-export const CreateLoadBalancerResponseLoadBalancerLoadBalancerType = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancerLoadBalancerType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -688,7 +548,7 @@ export interface CreateLoadBalancerResponseLoadBalancerProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-export const CreateLoadBalancerResponseLoadBalancerProtection = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancerProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete: S.Boolean,
   }),
@@ -698,27 +558,25 @@ export const CreateLoadBalancerResponseLoadBalancerProtection = /*@__PURE__*/ S.
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateLoadBalancerResponseLoadBalancerLabelsMap = { [key: string]: string | undefined };
-export const CreateLoadBalancerResponseLoadBalancerLabelsMap =
+const CreateLoadBalancerResponseLoadBalancerLabelsMap =
   CreateLoadBalancerRequestLabelsMap as any as S.Schema<CreateLoadBalancerResponseLoadBalancerLabelsMap>;
 
 export type CreateLoadBalancerResponseLoadBalancerServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-export const CreateLoadBalancerResponseLoadBalancerServicesItem =
+const CreateLoadBalancerResponseLoadBalancerServicesItem =
   S.Unknown as any as S.Schema<CreateLoadBalancerResponseLoadBalancerServicesItem>;
 
 /** List of services that belong to this Load Balancer. */
 export type CreateLoadBalancerResponseLoadBalancerServicesList =
   Array<CreateLoadBalancerResponseLoadBalancerServicesItem>;
-export const CreateLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ S.Array(
   CreateLoadBalancerResponseLoadBalancerServicesItem,
 ) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerServicesList>;
 
 /** Type of the resource. */
 export type TargetTypeServerType = "server" | "label_selector" | "ip";
-export const TargetTypeServerType = S.String;
-
 /** Server where the traffic should be routed to. Only present for target type "server". */
 export interface TargetTypeServerServer {
   /** ID of the Server. */
@@ -726,16 +584,7 @@ export interface TargetTypeServerServer {
   /** IP of the Server that the traffic is routed to. Either the Server's primary IPv4 or, if an IPv6 was specified when adding the target, an IPv6 within the Server's /64 subnet. */
   ip: string;
 }
-export const TargetTypeServerServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    ip: S.String,
-  }),
-).annotate({ identifier: "TargetTypeServerServer" }) as any as S.Schema<TargetTypeServerServer>;
-
 export type TargetTypeServerHealthStatusItemStatus = "healthy" | "unhealthy" | "unknown";
-export const TargetTypeServerHealthStatusItemStatus = S.String;
-
 /** Additional details about why the health check failed. Only present when `status` is `unhealthy`. */
 export type TargetTypeServerHealthStatusItemDetail =
   | "unspecified"
@@ -744,8 +593,6 @@ export type TargetTypeServerHealthStatusItemDetail =
   | "layer7_timeout"
   | "unexpected_http_status"
   | "unexpected_http_content";
-export const TargetTypeServerHealthStatusItemDetail = S.String;
-
 export interface TargetTypeServerHealthStatusItem {
   listen_port: number;
   status: TargetTypeServerHealthStatusItemStatus;
@@ -754,23 +601,8 @@ export interface TargetTypeServerHealthStatusItem {
   /** HTTP status code returned by the target during the last health check. Only present when `status` is `unhealthy` and `detail` is `unexpected_http_status`. */
   http_status_code?: number;
 }
-export const TargetTypeServerHealthStatusItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    listen_port: S.Number,
-    status: TargetTypeServerHealthStatusItemStatus,
-    detail: S.optional(TargetTypeServerHealthStatusItemDetail),
-    http_status_code: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TargetTypeServerHealthStatusItem",
-}) as any as S.Schema<TargetTypeServerHealthStatusItem>;
-
 /** List of health statuses of the services on this target. Only present for target types "server" and "ip". */
 export type TargetTypeServerHealthStatusList = Array<TargetTypeServerHealthStatusItem>;
-export const TargetTypeServerHealthStatusList = /*@__PURE__*/ S.Array(
-  TargetTypeServerHealthStatusItem,
-) as any as S.Schema<TargetTypeServerHealthStatusList>;
-
 export interface TargetTypeServer {
   /** Type of the resource. */
   type: TargetTypeServerType;
@@ -781,35 +613,17 @@ export interface TargetTypeServer {
   /** Use the private network IP instead of the public IP. Only present for target types "server" and "label_selector". */
   use_private_ip: boolean;
 }
-export const TargetTypeServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TargetTypeServerType,
-    server: TargetTypeServerServer,
-    health_status: TargetTypeServerHealthStatusList,
-    use_private_ip: S.Boolean,
-  }),
-).annotate({ identifier: "TargetTypeServer" }) as any as S.Schema<TargetTypeServer>;
-
 /** Type of the resource. */
 export type TargetTypeLabelSelectorType = "server" | "label_selector" | "ip";
-export const TargetTypeLabelSelectorType = S.String;
-
 /** Label selector used to determine targets. Only present for target type "label_selector". */
 export type TargetTypeLabelSelectorLabelSelector =
   CreateLoadBalancerRequestTargetsItemLabelSelector;
-export const TargetTypeLabelSelectorLabelSelector =
-  CreateLoadBalancerRequestTargetsItemLabelSelector;
-
 /** Server where the traffic should be routed to. Only present for target type "server". */
 export type TargetTypeLabelSelectorTargetsItemServer = TargetTypeServerServer;
-export const TargetTypeLabelSelectorTargetsItemServer = TargetTypeServerServer;
-
 export type TargetTypeLabelSelectorTargetsItemHealthStatusItemStatus =
   | "healthy"
   | "unhealthy"
   | "unknown";
-export const TargetTypeLabelSelectorTargetsItemHealthStatusItemStatus = S.String;
-
 /** Additional details about why the health check failed. Only present when `status` is `unhealthy`. */
 export type TargetTypeLabelSelectorTargetsItemHealthStatusItemDetail =
   | "unspecified"
@@ -818,8 +632,6 @@ export type TargetTypeLabelSelectorTargetsItemHealthStatusItemDetail =
   | "layer7_timeout"
   | "unexpected_http_status"
   | "unexpected_http_content";
-export const TargetTypeLabelSelectorTargetsItemHealthStatusItemDetail = S.String;
-
 export interface TargetTypeLabelSelectorTargetsItemHealthStatusItem {
   listen_port: number;
   status: TargetTypeLabelSelectorTargetsItemHealthStatusItemStatus;
@@ -828,15 +640,9 @@ export interface TargetTypeLabelSelectorTargetsItemHealthStatusItem {
   /** HTTP status code returned by the target during the last health check. Only present when `status` is `unhealthy` and `detail` is `unexpected_http_status`. */
   http_status_code?: number;
 }
-export const TargetTypeLabelSelectorTargetsItemHealthStatusItem =
-  TargetTypeServerHealthStatusItem as any as S.Schema<TargetTypeLabelSelectorTargetsItemHealthStatusItem>;
-
 /** List of health statuses of the services on this target. Only present for target types "server" and "ip". */
 export type TargetTypeLabelSelectorTargetsItemHealthStatusList =
   Array<TargetTypeLabelSelectorTargetsItemHealthStatusItem>;
-export const TargetTypeLabelSelectorTargetsItemHealthStatusList =
-  TargetTypeServerHealthStatusList as any as S.Schema<TargetTypeLabelSelectorTargetsItemHealthStatusList>;
-
 export interface TargetTypeLabelSelectorTargetsItem {
   /** Type of the resource. Here always "server". */
   type: string;
@@ -847,23 +653,8 @@ export interface TargetTypeLabelSelectorTargetsItem {
   /** Use the private network IP instead of the public IP. Only present for target types "server" and "label_selector". */
   use_private_ip: boolean;
 }
-export const TargetTypeLabelSelectorTargetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    server: TargetTypeServerServer,
-    health_status: TargetTypeLabelSelectorTargetsItemHealthStatusList,
-    use_private_ip: S.Boolean,
-  }),
-).annotate({
-  identifier: "TargetTypeLabelSelectorTargetsItem",
-}) as any as S.Schema<TargetTypeLabelSelectorTargetsItem>;
-
 /** List of resolved label selector target Servers. */
 export type TargetTypeLabelSelectorTargetsList = Array<TargetTypeLabelSelectorTargetsItem>;
-export const TargetTypeLabelSelectorTargetsList = /*@__PURE__*/ S.Array(
-  TargetTypeLabelSelectorTargetsItem,
-) as any as S.Schema<TargetTypeLabelSelectorTargetsList>;
-
 export interface TargetTypeLabelSelector {
   /** Type of the resource. */
   type: TargetTypeLabelSelectorType;
@@ -874,26 +665,11 @@ export interface TargetTypeLabelSelector {
   /** Use the private network IP instead of the public IP. Only present for target types "server" and "label_selector". */
   use_private_ip: boolean;
 }
-export const TargetTypeLabelSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TargetTypeLabelSelectorType,
-    label_selector: CreateLoadBalancerRequestTargetsItemLabelSelector,
-    targets: TargetTypeLabelSelectorTargetsList,
-    use_private_ip: S.Boolean,
-  }),
-).annotate({ identifier: "TargetTypeLabelSelector" }) as any as S.Schema<TargetTypeLabelSelector>;
-
 /** Type of the resource. */
 export type TargetTypeIPType = "server" | "label_selector" | "ip";
-export const TargetTypeIPType = S.String;
-
 /** IP target where the traffic should be routed to. It is only possible to use the (Public or vSwitch) IPs of Hetzner Online Root Servers belonging to the project owner. IPs belonging to other users are blocked. Additionally IPs belonging to services provided by Hetzner Cloud (Servers, Load Balancers, ...) are blocked as well. Only present for target type `ip`. */
 export type TargetTypeIPIp = CreateLoadBalancerRequestTargetsItemIp;
-export const TargetTypeIPIp = CreateLoadBalancerRequestTargetsItemIp;
-
 export type TargetTypeIPHealthStatusItemStatus = "healthy" | "unhealthy" | "unknown";
-export const TargetTypeIPHealthStatusItemStatus = S.String;
-
 /** Additional details about why the health check failed. Only present when `status` is `unhealthy`. */
 export type TargetTypeIPHealthStatusItemDetail =
   | "unspecified"
@@ -902,8 +678,6 @@ export type TargetTypeIPHealthStatusItemDetail =
   | "layer7_timeout"
   | "unexpected_http_status"
   | "unexpected_http_content";
-export const TargetTypeIPHealthStatusItemDetail = S.String;
-
 export interface TargetTypeIPHealthStatusItem {
   listen_port: number;
   status: TargetTypeIPHealthStatusItemStatus;
@@ -912,14 +686,8 @@ export interface TargetTypeIPHealthStatusItem {
   /** HTTP status code returned by the target during the last health check. Only present when `status` is `unhealthy` and `detail` is `unexpected_http_status`. */
   http_status_code?: number;
 }
-export const TargetTypeIPHealthStatusItem =
-  TargetTypeServerHealthStatusItem as any as S.Schema<TargetTypeIPHealthStatusItem>;
-
 /** List of health statuses of the services on this target. Only present for target types "server" and "ip". */
 export type TargetTypeIPHealthStatusList = Array<TargetTypeIPHealthStatusItem>;
-export const TargetTypeIPHealthStatusList =
-  TargetTypeServerHealthStatusList as any as S.Schema<TargetTypeIPHealthStatusList>;
-
 export interface TargetTypeIP {
   /** Type of the resource. */
   type: TargetTypeIPType;
@@ -928,25 +696,17 @@ export interface TargetTypeIP {
   /** List of health statuses of the services on this target. Only present for target types "server" and "ip". */
   health_status: TargetTypeIPHealthStatusList;
 }
-export const TargetTypeIP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: TargetTypeIPType,
-    ip: CreateLoadBalancerRequestTargetsItemIp,
-    health_status: TargetTypeIPHealthStatusList,
-  }),
-).annotate({ identifier: "TargetTypeIP" }) as any as S.Schema<TargetTypeIP>;
-
 export type CreateLoadBalancerResponseLoadBalancerTargetsItem =
   | TargetTypeServer
   | TargetTypeLabelSelector
   | TargetTypeIP;
-export const CreateLoadBalancerResponseLoadBalancerTargetsItem =
+const CreateLoadBalancerResponseLoadBalancerTargetsItem =
   S.Unknown as any as S.Schema<CreateLoadBalancerResponseLoadBalancerTargetsItem>;
 
 /** List of targets that belong to this Load Balancer. */
 export type CreateLoadBalancerResponseLoadBalancerTargetsList =
   Array<CreateLoadBalancerResponseLoadBalancerTargetsItem>;
-export const CreateLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ S.Array(
   CreateLoadBalancerResponseLoadBalancerTargetsItem,
 ) as any as S.Schema<CreateLoadBalancerResponseLoadBalancerTargetsList>;
 
@@ -954,14 +714,12 @@ export const CreateLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ S
 export type CreateLoadBalancerResponseLoadBalancerAlgorithmType =
   | "round_robin"
   | "least_connections";
-export const CreateLoadBalancerResponseLoadBalancerAlgorithmType = S.String;
-
 /** Algorithm of the Load Balancer. */
 export interface CreateLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: CreateLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-export const CreateLoadBalancerResponseLoadBalancerAlgorithm =
+const CreateLoadBalancerResponseLoadBalancerAlgorithm =
   CreateLoadBalancerRequestAlgorithm as any as S.Schema<CreateLoadBalancerResponseLoadBalancerAlgorithm>;
 
 export interface CreateLoadBalancerResponseLoadBalancer {
@@ -994,7 +752,7 @@ export interface CreateLoadBalancerResponseLoadBalancer {
   /** Free Traffic for the current billing period in bytes. */
   included_traffic: number;
 }
-export const CreateLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1018,7 +776,7 @@ export const CreateLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(()
 
 /** Status of the Action. */
 export type CreateLoadBalancerResponseActionStatus = "running" | "success" | "error";
-export const CreateLoadBalancerResponseActionStatus = S.String;
+const CreateLoadBalancerResponseActionStatus = S.String;
 
 export interface CreateLoadBalancerResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -1026,7 +784,7 @@ export interface CreateLoadBalancerResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const CreateLoadBalancerResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -1038,7 +796,7 @@ export const CreateLoadBalancerResponseActionResourcesItem = /*@__PURE__*/ S.sus
 /** Resources the Action relates to. */
 export type CreateLoadBalancerResponseActionResourcesList =
   Array<CreateLoadBalancerResponseActionResourcesItem>;
-export const CreateLoadBalancerResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerResponseActionResourcesList = /*@__PURE__*/ S.Array(
   CreateLoadBalancerResponseActionResourcesItem,
 ) as any as S.Schema<CreateLoadBalancerResponseActionResourcesList>;
 
@@ -1049,7 +807,7 @@ export interface CreateLoadBalancerResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const CreateLoadBalancerResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -1076,7 +834,7 @@ export interface CreateLoadBalancerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateLoadBalancerResponseActionError | null;
 }
-export const CreateLoadBalancerResponseAction = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -1095,7 +853,7 @@ export interface CreateLoadBalancerResponse {
   load_balancer: CreateLoadBalancerResponseLoadBalancer;
   action: CreateLoadBalancerResponseAction;
 }
-export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     load_balancer: CreateLoadBalancerResponseLoadBalancer,
     action: CreateLoadBalancerResponseAction,
@@ -1108,7 +866,7 @@ export interface DeleteLoadBalancerRequest {
   /** ID of the Load Balancer. */
   id: number;
 }
-export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/load_balancers/{id}", code: 200 })),
@@ -1117,7 +875,7 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoadBalancerRequest>;
 
 export interface DeleteLoadBalancerResponse {}
-export const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteLoadBalancerResponse",
 }) as any as S.Schema<DeleteLoadBalancerResponse>;
 
@@ -1125,7 +883,7 @@ export interface GetLoadBalancerRequest {
   /** ID of the Load Balancer. */
   id: number;
 }
-export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/load_balancers/{id}", code: 200 })),
@@ -1134,70 +892,40 @@ export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 /** IP address (v4). */
 export type GetLoadBalancerResponseLoadBalancerPublicNetIpv4 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
-export const GetLoadBalancerResponseLoadBalancerPublicNetIpv4 =
-  CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
-
 /** IP address (v6). */
 export type GetLoadBalancerResponseLoadBalancerPublicNetIpv6 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv6;
-export const GetLoadBalancerResponseLoadBalancerPublicNetIpv6 =
-  CreateLoadBalancerResponseLoadBalancerPublicNetIpv6;
-
 /** Public network information. */
 export type GetLoadBalancerResponseLoadBalancerPublicNet =
   CreateLoadBalancerResponseLoadBalancerPublicNet;
-export const GetLoadBalancerResponseLoadBalancerPublicNet =
-  CreateLoadBalancerResponseLoadBalancerPublicNet;
-
 export type GetLoadBalancerResponseLoadBalancerPrivateNetItem =
   CreateLoadBalancerResponseLoadBalancerPrivateNetItem;
-export const GetLoadBalancerResponseLoadBalancerPrivateNetItem =
-  CreateLoadBalancerResponseLoadBalancerPrivateNetItem;
-
 /** Private networks information. */
 export type GetLoadBalancerResponseLoadBalancerPrivateNetList =
   Array<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-export const GetLoadBalancerResponseLoadBalancerPrivateNetList =
+const GetLoadBalancerResponseLoadBalancerPrivateNetList =
   CreateLoadBalancerResponseLoadBalancerPrivateNetList as any as S.Schema<GetLoadBalancerResponseLoadBalancerPrivateNetList>;
 
 export type GetLoadBalancerResponseLoadBalancerLocation =
   CreateLoadBalancerResponseLoadBalancerLocation;
-export const GetLoadBalancerResponseLoadBalancerLocation =
-  CreateLoadBalancerResponseLoadBalancerLocation;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type GetLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation;
-export const GetLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation;
-
 /** Hourly price in this [Location](#tag/locations). */
 export type GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceMonthly =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceMonthly =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 /** Additional traffic price per TB in this [Location](#tag/locations). */
 export type GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPricePerTbTraffic =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPricePerTbTraffic =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 export type GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem;
-export const GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem;
-
 /** Price per [Location](#tag/locations). */
 export type GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList =
   Array<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
-export const GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList = /*@__PURE__*/ S.Array(
+const GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList = /*@__PURE__*/ S.Array(
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem,
 ) as any as S.Schema<GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList>;
 
@@ -1223,7 +951,7 @@ export interface GetLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: GetLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList;
 }
-export const GetLoadBalancerResponseLoadBalancerLoadBalancerType = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerResponseLoadBalancerLoadBalancerType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1243,25 +971,22 @@ export const GetLoadBalancerResponseLoadBalancerLoadBalancerType = /*@__PURE__*/
 /** Protection configuration for the Resource. */
 export type GetLoadBalancerResponseLoadBalancerProtection =
   CreateLoadBalancerResponseLoadBalancerProtection;
-export const GetLoadBalancerResponseLoadBalancerProtection =
-  CreateLoadBalancerResponseLoadBalancerProtection;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetLoadBalancerResponseLoadBalancerLabelsMap = { [key: string]: string | undefined };
-export const GetLoadBalancerResponseLoadBalancerLabelsMap =
+const GetLoadBalancerResponseLoadBalancerLabelsMap =
   CreateLoadBalancerRequestLabelsMap as any as S.Schema<GetLoadBalancerResponseLoadBalancerLabelsMap>;
 
 export type GetLoadBalancerResponseLoadBalancerServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-export const GetLoadBalancerResponseLoadBalancerServicesItem =
+const GetLoadBalancerResponseLoadBalancerServicesItem =
   S.Unknown as any as S.Schema<GetLoadBalancerResponseLoadBalancerServicesItem>;
 
 /** List of services that belong to this Load Balancer. */
 export type GetLoadBalancerResponseLoadBalancerServicesList =
   Array<GetLoadBalancerResponseLoadBalancerServicesItem>;
-export const GetLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ S.Array(
+const GetLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ S.Array(
   GetLoadBalancerResponseLoadBalancerServicesItem,
 ) as any as S.Schema<GetLoadBalancerResponseLoadBalancerServicesList>;
 
@@ -1269,26 +994,24 @@ export type GetLoadBalancerResponseLoadBalancerTargetsItem =
   | TargetTypeServer
   | TargetTypeLabelSelector
   | TargetTypeIP;
-export const GetLoadBalancerResponseLoadBalancerTargetsItem =
+const GetLoadBalancerResponseLoadBalancerTargetsItem =
   S.Unknown as any as S.Schema<GetLoadBalancerResponseLoadBalancerTargetsItem>;
 
 /** List of targets that belong to this Load Balancer. */
 export type GetLoadBalancerResponseLoadBalancerTargetsList =
   Array<GetLoadBalancerResponseLoadBalancerTargetsItem>;
-export const GetLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ S.Array(
+const GetLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ S.Array(
   GetLoadBalancerResponseLoadBalancerTargetsItem,
 ) as any as S.Schema<GetLoadBalancerResponseLoadBalancerTargetsList>;
 
 /** Type of the algorithm. */
 export type GetLoadBalancerResponseLoadBalancerAlgorithmType = "round_robin" | "least_connections";
-export const GetLoadBalancerResponseLoadBalancerAlgorithmType = S.String;
-
 /** Algorithm of the Load Balancer. */
 export interface GetLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: GetLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-export const GetLoadBalancerResponseLoadBalancerAlgorithm =
+const GetLoadBalancerResponseLoadBalancerAlgorithm =
   CreateLoadBalancerRequestAlgorithm as any as S.Schema<GetLoadBalancerResponseLoadBalancerAlgorithm>;
 
 export interface GetLoadBalancerResponseLoadBalancer {
@@ -1321,7 +1044,7 @@ export interface GetLoadBalancerResponseLoadBalancer {
   /** Free Traffic for the current billing period in bytes. */
   included_traffic: number;
 }
-export const GetLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1346,7 +1069,7 @@ export const GetLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(() =>
 export interface GetLoadBalancerResponse {
   load_balancer: GetLoadBalancerResponseLoadBalancer;
 }
-export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     load_balancer: GetLoadBalancerResponseLoadBalancer,
   }),
@@ -1357,12 +1080,12 @@ export type GetLoadBalancerMetricsRequestTypeItem =
   | "connections_per_second"
   | "requests_per_second"
   | "bandwidth";
-export const GetLoadBalancerMetricsRequestTypeItem = S.String;
+const GetLoadBalancerMetricsRequestTypeItem = S.String;
 
 export type GetLoadBalancerMetricsRequestTypeList = Array<
   GetLoadBalancerMetricsRequestTypeItem | (string & {})
 >;
-export const GetLoadBalancerMetricsRequestTypeList = /*@__PURE__*/ S.Array(
+const GetLoadBalancerMetricsRequestTypeList = /*@__PURE__*/ S.Array(
   GetLoadBalancerMetricsRequestTypeItem,
 ) as any as S.Schema<GetLoadBalancerMetricsRequestTypeList>;
 
@@ -1378,7 +1101,7 @@ export interface GetLoadBalancerMetricsRequest {
   /** Resolution of results in seconds. */
   step?: string;
 }
-export const GetLoadBalancerMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     type: GetLoadBalancerMetricsRequestTypeList.pipe(T.Query()),
@@ -1391,15 +1114,14 @@ export const GetLoadBalancerMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLoadBalancerMetricsRequest>;
 
 export type GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList = Array<unknown>;
-export const GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList>;
+const GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList>;
 
 /** Metrics timestamps with values. */
 export type GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList =
   Array<GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList>;
-export const GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList = /*@__PURE__*/ S.Array(
+const GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList = /*@__PURE__*/ S.Array(
   GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesItemList,
 ) as any as S.Schema<GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList>;
 
@@ -1407,7 +1129,7 @@ export interface GetLoadBalancerMetricsResponseMetricsTimeSeriesValue {
   /** Metrics timestamps with values. */
   values: GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList;
 }
-export const GetLoadBalancerMetricsResponseMetricsTimeSeriesValue = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerMetricsResponseMetricsTimeSeriesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: GetLoadBalancerMetricsResponseMetricsTimeSeriesValueValuesList,
   }),
@@ -1419,7 +1141,7 @@ export const GetLoadBalancerMetricsResponseMetricsTimeSeriesValue = /*@__PURE__*
 export type GetLoadBalancerMetricsResponseMetricsTimeSeriesMap = {
   [key: string]: GetLoadBalancerMetricsResponseMetricsTimeSeriesValue | undefined;
 };
-export const GetLoadBalancerMetricsResponseMetricsTimeSeriesMap = /*@__PURE__*/ S.Record(
+const GetLoadBalancerMetricsResponseMetricsTimeSeriesMap = /*@__PURE__*/ S.Record(
   S.String,
   GetLoadBalancerMetricsResponseMetricsTimeSeriesValue,
 ) as any as S.Schema<GetLoadBalancerMetricsResponseMetricsTimeSeriesMap>;
@@ -1434,7 +1156,7 @@ export interface GetLoadBalancerMetricsResponseMetrics {
   /** Hash with timeseries information, containing the name of timeseries as key. */
   time_series: GetLoadBalancerMetricsResponseMetricsTimeSeriesMap;
 }
-export const GetLoadBalancerMetricsResponseMetrics = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerMetricsResponseMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.String,
     end: S.String,
@@ -1448,7 +1170,7 @@ export const GetLoadBalancerMetricsResponseMetrics = /*@__PURE__*/ S.suspend(() 
 export interface GetLoadBalancerMetricsResponse {
   metrics: GetLoadBalancerMetricsResponseMetrics;
 }
-export const GetLoadBalancerMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics: GetLoadBalancerMetricsResponseMetrics,
   }),
@@ -1466,12 +1188,10 @@ export type ListLoadBalancersRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-export const ListLoadBalancersRequestSortItem = S.String;
-
 export type ListLoadBalancersRequestSortList = Array<
   ListLoadBalancersRequestSortItem | (string & {})
 >;
-export const ListLoadBalancersRequestSortList =
+const ListLoadBalancersRequestSortList =
   GetLoadBalancerMetricsRequestTypeList as any as S.Schema<ListLoadBalancersRequestSortList>;
 
 export interface ListLoadBalancersRequest {
@@ -1486,7 +1206,7 @@ export interface ListLoadBalancersRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sort: S.optional(ListLoadBalancersRequestSortList.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
@@ -1499,70 +1219,40 @@ export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
 /** IP address (v4). */
 export type ListLoadBalancersResponseLoadBalancersItemPublicNetIpv4 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
-export const ListLoadBalancersResponseLoadBalancersItemPublicNetIpv4 =
-  CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
-
 /** IP address (v6). */
 export type ListLoadBalancersResponseLoadBalancersItemPublicNetIpv6 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv6;
-export const ListLoadBalancersResponseLoadBalancersItemPublicNetIpv6 =
-  CreateLoadBalancerResponseLoadBalancerPublicNetIpv6;
-
 /** Public network information. */
 export type ListLoadBalancersResponseLoadBalancersItemPublicNet =
   CreateLoadBalancerResponseLoadBalancerPublicNet;
-export const ListLoadBalancersResponseLoadBalancersItemPublicNet =
-  CreateLoadBalancerResponseLoadBalancerPublicNet;
-
 export type ListLoadBalancersResponseLoadBalancersItemPrivateNetItem =
   CreateLoadBalancerResponseLoadBalancerPrivateNetItem;
-export const ListLoadBalancersResponseLoadBalancersItemPrivateNetItem =
-  CreateLoadBalancerResponseLoadBalancerPrivateNetItem;
-
 /** Private networks information. */
 export type ListLoadBalancersResponseLoadBalancersItemPrivateNetList =
   Array<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-export const ListLoadBalancersResponseLoadBalancersItemPrivateNetList =
+const ListLoadBalancersResponseLoadBalancersItemPrivateNetList =
   CreateLoadBalancerResponseLoadBalancerPrivateNetList as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemPrivateNetList>;
 
 export type ListLoadBalancersResponseLoadBalancersItemLocation =
   CreateLoadBalancerResponseLoadBalancerLocation;
-export const ListLoadBalancersResponseLoadBalancersItemLocation =
-  CreateLoadBalancerResponseLoadBalancerLocation;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypeDeprecation =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation;
-export const ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypeDeprecation =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation;
-
 /** Hourly price in this [Location](#tag/locations). */
 export type ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItemPriceHourly =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItemPriceHourly =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItemPriceMonthly =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItemPriceMonthly =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 /** Additional traffic price per TB in this [Location](#tag/locations). */
 export type ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItemPricePerTbTraffic =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItemPricePerTbTraffic =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 export type ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItem =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem;
-export const ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesItem =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem;
-
 /** Price per [Location](#tag/locations). */
 export type ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList =
   Array<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
-export const ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList =
+const ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList>;
 
 export interface ListLoadBalancersResponseLoadBalancersItemLoadBalancerType {
@@ -1587,20 +1277,19 @@ export interface ListLoadBalancersResponseLoadBalancersItemLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList;
 }
-export const ListLoadBalancersResponseLoadBalancersItemLoadBalancerType = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.Number,
-      name: S.String,
-      description: S.String,
-      max_connections: S.Number,
-      max_services: S.Number,
-      max_targets: S.Number,
-      max_assigned_certificates: S.Number,
-      deprecated: S.NullOr(S.String),
-      deprecation: S.NullOr(CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation),
-      prices: ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList,
-    }),
+const ListLoadBalancersResponseLoadBalancersItemLoadBalancerType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    name: S.String,
+    description: S.String,
+    max_connections: S.Number,
+    max_services: S.Number,
+    max_targets: S.Number,
+    max_assigned_certificates: S.Number,
+    deprecated: S.NullOr(S.String),
+    deprecation: S.NullOr(CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation),
+    prices: ListLoadBalancersResponseLoadBalancersItemLoadBalancerTypePricesList,
+  }),
 ).annotate({
   identifier: "ListLoadBalancersResponseLoadBalancersItemLoadBalancerType",
 }) as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemLoadBalancerType>;
@@ -1608,27 +1297,24 @@ export const ListLoadBalancersResponseLoadBalancersItemLoadBalancerType = /*@__P
 /** Protection configuration for the Resource. */
 export type ListLoadBalancersResponseLoadBalancersItemProtection =
   CreateLoadBalancerResponseLoadBalancerProtection;
-export const ListLoadBalancersResponseLoadBalancersItemProtection =
-  CreateLoadBalancerResponseLoadBalancerProtection;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListLoadBalancersResponseLoadBalancersItemLabelsMap = {
   [key: string]: string | undefined;
 };
-export const ListLoadBalancersResponseLoadBalancersItemLabelsMap =
+const ListLoadBalancersResponseLoadBalancersItemLabelsMap =
   CreateLoadBalancerRequestLabelsMap as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemLabelsMap>;
 
 export type ListLoadBalancersResponseLoadBalancersItemServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-export const ListLoadBalancersResponseLoadBalancersItemServicesItem =
+const ListLoadBalancersResponseLoadBalancersItemServicesItem =
   S.Unknown as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemServicesItem>;
 
 /** List of services that belong to this Load Balancer. */
 export type ListLoadBalancersResponseLoadBalancersItemServicesList =
   Array<ListLoadBalancersResponseLoadBalancersItemServicesItem>;
-export const ListLoadBalancersResponseLoadBalancersItemServicesList = /*@__PURE__*/ S.Array(
+const ListLoadBalancersResponseLoadBalancersItemServicesList = /*@__PURE__*/ S.Array(
   ListLoadBalancersResponseLoadBalancersItemServicesItem,
 ) as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemServicesList>;
 
@@ -1636,13 +1322,13 @@ export type ListLoadBalancersResponseLoadBalancersItemTargetsItem =
   | TargetTypeServer
   | TargetTypeLabelSelector
   | TargetTypeIP;
-export const ListLoadBalancersResponseLoadBalancersItemTargetsItem =
+const ListLoadBalancersResponseLoadBalancersItemTargetsItem =
   S.Unknown as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemTargetsItem>;
 
 /** List of targets that belong to this Load Balancer. */
 export type ListLoadBalancersResponseLoadBalancersItemTargetsList =
   Array<ListLoadBalancersResponseLoadBalancersItemTargetsItem>;
-export const ListLoadBalancersResponseLoadBalancersItemTargetsList = /*@__PURE__*/ S.Array(
+const ListLoadBalancersResponseLoadBalancersItemTargetsList = /*@__PURE__*/ S.Array(
   ListLoadBalancersResponseLoadBalancersItemTargetsItem,
 ) as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemTargetsList>;
 
@@ -1650,14 +1336,12 @@ export const ListLoadBalancersResponseLoadBalancersItemTargetsList = /*@__PURE__
 export type ListLoadBalancersResponseLoadBalancersItemAlgorithmType =
   | "round_robin"
   | "least_connections";
-export const ListLoadBalancersResponseLoadBalancersItemAlgorithmType = S.String;
-
 /** Algorithm of the Load Balancer. */
 export interface ListLoadBalancersResponseLoadBalancersItemAlgorithm {
   /** Type of the algorithm. */
   type: ListLoadBalancersResponseLoadBalancersItemAlgorithmType;
 }
-export const ListLoadBalancersResponseLoadBalancersItemAlgorithm =
+const ListLoadBalancersResponseLoadBalancersItemAlgorithm =
   CreateLoadBalancerRequestAlgorithm as any as S.Schema<ListLoadBalancersResponseLoadBalancersItemAlgorithm>;
 
 export interface ListLoadBalancersResponseLoadBalancersItem {
@@ -1690,7 +1374,7 @@ export interface ListLoadBalancersResponseLoadBalancersItem {
   /** Free Traffic for the current billing period in bytes. */
   included_traffic: number;
 }
-export const ListLoadBalancersResponseLoadBalancersItem = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancersResponseLoadBalancersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1714,7 +1398,7 @@ export const ListLoadBalancersResponseLoadBalancersItem = /*@__PURE__*/ S.suspen
 
 export type ListLoadBalancersResponseLoadBalancersList =
   Array<ListLoadBalancersResponseLoadBalancersItem>;
-export const ListLoadBalancersResponseLoadBalancersList = /*@__PURE__*/ S.Array(
+const ListLoadBalancersResponseLoadBalancersList = /*@__PURE__*/ S.Array(
   ListLoadBalancersResponseLoadBalancersItem,
 ) as any as S.Schema<ListLoadBalancersResponseLoadBalancersList>;
 
@@ -1733,7 +1417,7 @@ export interface ListLoadBalancersResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListLoadBalancersResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancersResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -1750,7 +1434,7 @@ export interface ListLoadBalancersResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListLoadBalancersResponseMetaPagination;
 }
-export const ListLoadBalancersResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancersResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListLoadBalancersResponseMetaPagination,
   }),
@@ -1762,7 +1446,7 @@ export interface ListLoadBalancersResponse {
   load_balancers: ListLoadBalancersResponseLoadBalancersList;
   meta: ListLoadBalancersResponseMeta;
 }
-export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     load_balancers: ListLoadBalancersResponseLoadBalancersList,
     meta: ListLoadBalancersResponseMeta,
@@ -1773,7 +1457,7 @@ export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateLoadBalancerRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateLoadBalancerRequestLabelsMap =
+const UpdateLoadBalancerRequestLabelsMap =
   CreateLoadBalancerRequestLabelsMap as any as S.Schema<UpdateLoadBalancerRequestLabelsMap>;
 
 export interface UpdateLoadBalancerRequest {
@@ -1784,7 +1468,7 @@ export interface UpdateLoadBalancerRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateLoadBalancerRequestLabelsMap;
 }
-export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -1797,72 +1481,39 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 /** IP address (v4). */
 export type UpdateLoadBalancerResponseLoadBalancerPublicNetIpv4 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
-export const UpdateLoadBalancerResponseLoadBalancerPublicNetIpv4 =
-  CreateLoadBalancerResponseLoadBalancerPublicNetIpv4;
-
 /** IP address (v6). */
 export type UpdateLoadBalancerResponseLoadBalancerPublicNetIpv6 =
   CreateLoadBalancerResponseLoadBalancerPublicNetIpv6;
-export const UpdateLoadBalancerResponseLoadBalancerPublicNetIpv6 =
-  CreateLoadBalancerResponseLoadBalancerPublicNetIpv6;
-
 /** Public network information. */
 export type UpdateLoadBalancerResponseLoadBalancerPublicNet =
   CreateLoadBalancerResponseLoadBalancerPublicNet;
-export const UpdateLoadBalancerResponseLoadBalancerPublicNet =
-  CreateLoadBalancerResponseLoadBalancerPublicNet;
-
 export type UpdateLoadBalancerResponseLoadBalancerPrivateNetItem =
   CreateLoadBalancerResponseLoadBalancerPrivateNetItem;
-export const UpdateLoadBalancerResponseLoadBalancerPrivateNetItem =
-  CreateLoadBalancerResponseLoadBalancerPrivateNetItem;
-
 /** Private networks information. */
 export type UpdateLoadBalancerResponseLoadBalancerPrivateNetList =
   Array<CreateLoadBalancerResponseLoadBalancerPrivateNetItem>;
-export const UpdateLoadBalancerResponseLoadBalancerPrivateNetList =
+const UpdateLoadBalancerResponseLoadBalancerPrivateNetList =
   CreateLoadBalancerResponseLoadBalancerPrivateNetList as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerPrivateNetList>;
 
 export type UpdateLoadBalancerResponseLoadBalancerLocation =
   CreateLoadBalancerResponseLoadBalancerLocation;
-export const UpdateLoadBalancerResponseLoadBalancerLocation =
-  CreateLoadBalancerResponseLoadBalancerLocation;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation;
-export const UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation;
-
 /** Hourly price in this [Location](#tag/locations). */
 export type UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceMonthly =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceMonthly =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 /** Additional traffic price per TB in this [Location](#tag/locations). */
 export type UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPricePerTbTraffic =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-export const UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPricePerTbTraffic =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly;
-
 export type UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem;
-export const UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem;
-
 /** Price per [Location](#tag/locations). */
 export type UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList =
   Array<CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem>;
-export const UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList =
-  CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList>;
-
 export interface UpdateLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** ID of the Load Balancer type. */
   id: number;
@@ -1885,31 +1536,28 @@ export interface UpdateLoadBalancerResponseLoadBalancerLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: UpdateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesList;
 }
-export const UpdateLoadBalancerResponseLoadBalancerLoadBalancerType =
+const UpdateLoadBalancerResponseLoadBalancerLoadBalancerType =
   CreateLoadBalancerResponseLoadBalancerLoadBalancerType as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerLoadBalancerType>;
 
 /** Protection configuration for the Resource. */
 export type UpdateLoadBalancerResponseLoadBalancerProtection =
   CreateLoadBalancerResponseLoadBalancerProtection;
-export const UpdateLoadBalancerResponseLoadBalancerProtection =
-  CreateLoadBalancerResponseLoadBalancerProtection;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateLoadBalancerResponseLoadBalancerLabelsMap = { [key: string]: string | undefined };
-export const UpdateLoadBalancerResponseLoadBalancerLabelsMap =
+const UpdateLoadBalancerResponseLoadBalancerLabelsMap =
   CreateLoadBalancerRequestLabelsMap as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerLabelsMap>;
 
 export type UpdateLoadBalancerResponseLoadBalancerServicesItem =
   | ServiceTCP
   | ServiceHTTPProtocol
   | ServiceHTTPSProtocol;
-export const UpdateLoadBalancerResponseLoadBalancerServicesItem =
+const UpdateLoadBalancerResponseLoadBalancerServicesItem =
   S.Unknown as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerServicesItem>;
 
 /** List of services that belong to this Load Balancer. */
 export type UpdateLoadBalancerResponseLoadBalancerServicesList =
   Array<UpdateLoadBalancerResponseLoadBalancerServicesItem>;
-export const UpdateLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ S.Array(
+const UpdateLoadBalancerResponseLoadBalancerServicesList = /*@__PURE__*/ S.Array(
   UpdateLoadBalancerResponseLoadBalancerServicesItem,
 ) as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerServicesList>;
 
@@ -1917,13 +1565,13 @@ export type UpdateLoadBalancerResponseLoadBalancerTargetsItem =
   | TargetTypeServer
   | TargetTypeLabelSelector
   | TargetTypeIP;
-export const UpdateLoadBalancerResponseLoadBalancerTargetsItem =
+const UpdateLoadBalancerResponseLoadBalancerTargetsItem =
   S.Unknown as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerTargetsItem>;
 
 /** List of targets that belong to this Load Balancer. */
 export type UpdateLoadBalancerResponseLoadBalancerTargetsList =
   Array<UpdateLoadBalancerResponseLoadBalancerTargetsItem>;
-export const UpdateLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ S.Array(
+const UpdateLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ S.Array(
   UpdateLoadBalancerResponseLoadBalancerTargetsItem,
 ) as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerTargetsList>;
 
@@ -1931,14 +1579,12 @@ export const UpdateLoadBalancerResponseLoadBalancerTargetsList = /*@__PURE__*/ S
 export type UpdateLoadBalancerResponseLoadBalancerAlgorithmType =
   | "round_robin"
   | "least_connections";
-export const UpdateLoadBalancerResponseLoadBalancerAlgorithmType = S.String;
-
 /** Algorithm of the Load Balancer. */
 export interface UpdateLoadBalancerResponseLoadBalancerAlgorithm {
   /** Type of the algorithm. */
   type: UpdateLoadBalancerResponseLoadBalancerAlgorithmType;
 }
-export const UpdateLoadBalancerResponseLoadBalancerAlgorithm =
+const UpdateLoadBalancerResponseLoadBalancerAlgorithm =
   CreateLoadBalancerRequestAlgorithm as any as S.Schema<UpdateLoadBalancerResponseLoadBalancerAlgorithm>;
 
 export interface UpdateLoadBalancerResponseLoadBalancer {
@@ -1971,7 +1617,7 @@ export interface UpdateLoadBalancerResponseLoadBalancer {
   /** Free Traffic for the current billing period in bytes. */
   included_traffic: number;
 }
-export const UpdateLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(() =>
+const UpdateLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1996,7 +1642,7 @@ export const UpdateLoadBalancerResponseLoadBalancer = /*@__PURE__*/ S.suspend(()
 export interface UpdateLoadBalancerResponse {
   load_balancer: UpdateLoadBalancerResponseLoadBalancer;
 }
-export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     load_balancer: UpdateLoadBalancerResponseLoadBalancer,
   }),

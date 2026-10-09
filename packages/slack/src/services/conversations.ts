@@ -23,7 +23,7 @@ export interface AcceptSharedInviteRequest {
   /** The ID of the workspace to accept the channel in. If an org-level token is used to call this method, the `team_id` argument is required. */
   team_id?: string;
 }
-export const AcceptSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_name: S.String,
     is_private: S.optional(S.Boolean),
@@ -46,7 +46,7 @@ export interface AcceptSharedInviteResponse {
   /** Indicates if the acceptor can SCDM the inviter */
   can_open_scdm: boolean;
 }
-export const AcceptSharedInviteResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptSharedInviteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     implicit_approval: S.Boolean,
@@ -65,7 +65,7 @@ export interface ApproveRequestSharedInviteRequestMessage {
   /** When true will override the user specified message. Otherwise text will be appended to the user specified message on the invite request. */
   is_override: boolean;
 }
-export const ApproveRequestSharedInviteRequestMessage = /*@__PURE__*/ S.suspend(() =>
+const ApproveRequestSharedInviteRequestMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.String,
     is_override: S.Boolean,
@@ -84,7 +84,7 @@ export interface ApproveRequestSharedInviteRequest {
   /** Object describing the text to send along with the invite. If this object is specified, both `text` and `is_override` are required properties. If `is_override` is set to `true`, `text` will override the original invitation message. Otherwise, `text` will be appended to the original invitation message. The total length of the message cannot exceed 560 characters. If `is_override` is set to `false`, the length of `text` and the user specified message on the invite request in total must be less than 560 characters. */
   message?: ApproveRequestSharedInviteRequestMessage;
 }
-export const ApproveRequestSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveRequestSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invite_id: S.String,
     is_external_limited: S.optional(S.Boolean),
@@ -102,7 +102,7 @@ export interface ApproveRequestSharedInviteResponse {
   confirmation_code?: string;
   url?: string;
 }
-export const ApproveRequestSharedInviteResponse = /*@__PURE__*/ S.suspend(() =>
+const ApproveRequestSharedInviteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     invite_id: S.String,
@@ -119,7 +119,7 @@ export interface ApproveSharedInviteRequest {
   /** The team or enterprise ID of the receiving party involved in the invitation you are approving */
   target_team?: string;
 }
-export const ApproveSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invite_id: S.String,
     target_team: S.optional(S.String),
@@ -131,7 +131,7 @@ export const ApproveSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ApproveSharedInviteResponse {
   ok: boolean;
 }
-export const ApproveSharedInviteResponse = /*@__PURE__*/ S.suspend(() =>
+const ApproveSharedInviteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -143,7 +143,7 @@ export interface ArchiveConversationRequest {
   /** ID of conversation to archive */
   channel: string;
 }
-export const ArchiveConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchiveConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/conversations.archive", code: 200 })),
@@ -155,14 +155,14 @@ export interface ArchiveConversationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ArchiveConversationResponse =
+const ArchiveConversationResponse =
   ApproveSharedInviteResponse as any as S.Schema<ArchiveConversationResponse>;
 
 export interface ConversationsCloseRequest {
   /** Conversation to close. */
   channel: string;
 }
-export const ConversationsCloseRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsCloseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/conversations.close", code: 200 })),
@@ -176,7 +176,7 @@ export interface ConversationsCloseResponse {
   already_closed?: boolean;
   no_op?: boolean;
 }
-export const ConversationsCloseResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversationsCloseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     already_closed: S.optional(S.Boolean),
@@ -202,7 +202,7 @@ export interface ConversationsHistoryRequest {
   /** Only messages after this Unix timestamp will be included in results. */
   oldest?: string;
 }
-export const ConversationsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String.pipe(T.Query()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -217,7 +217,7 @@ export const ConversationsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsHistoryRequest>;
 
 export type ConversationsHistoryResponseMessagesList = Array<unknown>;
-export const ConversationsHistoryResponseMessagesList = /*@__PURE__*/ S.Array(
+const ConversationsHistoryResponseMessagesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ConversationsHistoryResponseMessagesList>;
 
@@ -226,7 +226,7 @@ export interface ConversationsHistoryResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const ConversationsHistoryResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const ConversationsHistoryResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -235,13 +235,13 @@ export const ConversationsHistoryResponseResponseMetadata = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ConversationsHistoryResponseResponseMetadata>;
 
 export type ConversationsHistoryResponseUsersMap = { [key: string]: unknown | undefined };
-export const ConversationsHistoryResponseUsersMap = /*@__PURE__*/ S.Record(
+const ConversationsHistoryResponseUsersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ConversationsHistoryResponseUsersMap>;
 
 export type ConversationsHistoryResponseDeletedList = Array<string>;
-export const ConversationsHistoryResponseDeletedList = /*@__PURE__*/ S.Array(
+const ConversationsHistoryResponseDeletedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConversationsHistoryResponseDeletedList>;
 
@@ -250,7 +250,7 @@ export interface ConversationsHistoryResponseMutationTimestamps {
   updated: string;
   history_invalid: string;
 }
-export const ConversationsHistoryResponseMutationTimestamps = /*@__PURE__*/ S.suspend(() =>
+const ConversationsHistoryResponseMutationTimestamps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latest: S.String,
     updated: S.String,
@@ -261,15 +261,15 @@ export const ConversationsHistoryResponseMutationTimestamps = /*@__PURE__*/ S.su
 }) as any as S.Schema<ConversationsHistoryResponseMutationTimestamps>;
 
 export type ConversationsHistoryResponseWarningsList = Array<string>;
-export const ConversationsHistoryResponseWarningsList =
+const ConversationsHistoryResponseWarningsList =
   ConversationsHistoryResponseDeletedList as any as S.Schema<ConversationsHistoryResponseWarningsList>;
 
 export type ConversationsHistoryResponseLatestUpdatesMap = { [key: string]: unknown | undefined };
-export const ConversationsHistoryResponseLatestUpdatesMap =
+const ConversationsHistoryResponseLatestUpdatesMap =
   ConversationsHistoryResponseUsersMap as any as S.Schema<ConversationsHistoryResponseLatestUpdatesMap>;
 
 export type ConversationsHistoryResponseUnchangedMessagesList = Array<string>;
-export const ConversationsHistoryResponseUnchangedMessagesList =
+const ConversationsHistoryResponseUnchangedMessagesList =
   ConversationsHistoryResponseDeletedList as any as S.Schema<ConversationsHistoryResponseUnchangedMessagesList>;
 
 export interface ConversationsHistoryResponse {
@@ -297,7 +297,7 @@ export interface ConversationsHistoryResponse {
   /** Unix timestamp of when the user joined the channel */
   date_joined?: number;
 }
-export const ConversationsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversationsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     messages: ConversationsHistoryResponseMessagesList,
@@ -332,7 +332,7 @@ export interface ConversationsInfoRequest {
   /** Set to `true` to include the member count for the specified conversation. Defaults to `false` */
   include_num_members?: boolean;
 }
-export const ConversationsInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String.pipe(T.Query()),
     include_locale: S.optional(S.Boolean.pipe(T.Query())),
@@ -347,7 +347,7 @@ export interface ConversationsInfoResponse {
   channel: unknown;
   home_view?: unknown | null;
 }
-export const ConversationsInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversationsInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     app_home: S.optional(S.Unknown),
@@ -364,7 +364,7 @@ export interface ConversationsKickRequest {
   /** User ID to be removed. */
   user?: string;
 }
-export const ConversationsKickRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsKickRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     user: S.optional(S.String),
@@ -375,7 +375,7 @@ export interface ConversationsKickResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ConversationsKickResponse =
+const ConversationsKickResponse =
   ApproveSharedInviteResponse as any as S.Schema<ConversationsKickResponse>;
 
 export interface ConversationsMarkRequest {
@@ -384,7 +384,7 @@ export interface ConversationsMarkRequest {
   /** Unique identifier of message you want marked as most recently seen in this conversation. */
   ts: string;
 }
-export const ConversationsMarkRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsMarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     ts: S.String,
@@ -395,7 +395,7 @@ export interface ConversationsMarkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ConversationsMarkResponse =
+const ConversationsMarkResponse =
   ApproveSharedInviteResponse as any as S.Schema<ConversationsMarkResponse>;
 
 export interface ConversationsMembersRequest {
@@ -406,7 +406,7 @@ export interface ConversationsMembersRequest {
   /** The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. */
   limit?: number;
 }
-export const ConversationsMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String.pipe(T.Query()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -417,15 +417,12 @@ export const ConversationsMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsMembersRequest>;
 
 export type ConversationsMembersResponseMembersList = Array<string>;
-export const ConversationsMembersResponseMembersList =
+const ConversationsMembersResponseMembersList =
   ConversationsHistoryResponseDeletedList as any as S.Schema<ConversationsMembersResponseMembersList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ConversationsMembersResponseResponseMetadata =
   ConversationsHistoryResponseResponseMetadata;
-export const ConversationsMembersResponseResponseMetadata =
-  ConversationsHistoryResponseResponseMetadata;
-
 export interface ConversationsMembersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -433,7 +430,7 @@ export interface ConversationsMembersResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ConversationsHistoryResponseResponseMetadata;
 }
-export const ConversationsMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversationsMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     members: ConversationsMembersResponseMembersList,
@@ -453,7 +450,7 @@ export interface ConversationsOpenRequest {
   /** Do not create a direct message or multi-person direct message. This is used to see if there is an existing dm or mpdm. */
   prevent_creation?: boolean;
 }
-export const ConversationsOpenRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsOpenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.NullOr(S.String)),
     return_im: S.optional(S.Boolean),
@@ -471,7 +468,7 @@ export interface ConversationsOpenResponse {
   app_home?: unknown;
   home_view?: unknown | null;
 }
-export const ConversationsOpenResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversationsOpenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     already_open: S.optional(S.Boolean),
@@ -502,7 +499,7 @@ export interface ConversationsRepliesRequest {
   /** Unique identifier of either a thread's parent message or a message in the thread. `ts` must be the timestamp of an existing message with 0 or more replies. If there are no replies then just the single message referenced by `ts` will return - it is just an ordinary, unthreaded message. */
   ts: string;
 }
-export const ConversationsRepliesRequest = /*@__PURE__*/ S.suspend(() =>
+const ConversationsRepliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String.pipe(T.Query()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -518,23 +515,20 @@ export const ConversationsRepliesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationsRepliesRequest>;
 
 export type ConversationsRepliesResponseMessagesList = Array<unknown>;
-export const ConversationsRepliesResponseMessagesList =
+const ConversationsRepliesResponseMessagesList =
   ConversationsHistoryResponseMessagesList as any as S.Schema<ConversationsRepliesResponseMessagesList>;
 
 export type ConversationsRepliesResponseLatestUpdatesMap = { [key: string]: unknown | undefined };
-export const ConversationsRepliesResponseLatestUpdatesMap =
+const ConversationsRepliesResponseLatestUpdatesMap =
   ConversationsHistoryResponseUsersMap as any as S.Schema<ConversationsRepliesResponseLatestUpdatesMap>;
 
 export type ConversationsRepliesResponseUnchangedMessagesList = Array<string>;
-export const ConversationsRepliesResponseUnchangedMessagesList =
+const ConversationsRepliesResponseUnchangedMessagesList =
   ConversationsHistoryResponseDeletedList as any as S.Schema<ConversationsRepliesResponseUnchangedMessagesList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ConversationsRepliesResponseResponseMetadata =
   ConversationsHistoryResponseResponseMetadata;
-export const ConversationsRepliesResponseResponseMetadata =
-  ConversationsHistoryResponseResponseMetadata;
-
 export interface ConversationsRepliesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -545,7 +539,7 @@ export interface ConversationsRepliesResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ConversationsHistoryResponseResponseMetadata;
 }
-export const ConversationsRepliesResponse = /*@__PURE__*/ S.suspend(() =>
+const ConversationsRepliesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     has_more: S.optional(S.Boolean),
@@ -566,7 +560,7 @@ export interface CreateCanvaseRequest {
   /** Title of the newly created canvas */
   title?: string;
 }
-export const CreateCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     document_content: S.optional(S.Unknown),
@@ -580,7 +574,7 @@ export interface CreateCanvaseResponse {
   /** Encoded ID of the canvas */
   canvas_id: string;
 }
-export const CreateCanvaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCanvaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     canvas_id: S.String,
@@ -595,7 +589,7 @@ export interface CreateConversationRequest {
   /** encoded team id to create the channel in, required if org token is used */
   team_id?: string | null;
 }
-export const CreateConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_private: S.optional(S.Boolean),
     name: S.String,
@@ -610,7 +604,7 @@ export interface CreateConversationResponse {
   ok: boolean;
   channel: unknown;
 }
-export const CreateConversationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConversationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.Unknown,
@@ -627,7 +621,7 @@ export interface InviteConversationRequest {
   /** A comma separated list of user IDs. Up to 1000 users may be listed. */
   users: string;
 }
-export const InviteConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const InviteConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     force: S.optional(S.Boolean),
@@ -638,7 +632,7 @@ export const InviteConversationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteConversationRequest>;
 
 export type InviteConversationResponseErrorsList = Array<unknown>;
-export const InviteConversationResponseErrorsList =
+const InviteConversationResponseErrorsList =
   ConversationsHistoryResponseMessagesList as any as S.Schema<InviteConversationResponseErrorsList>;
 
 export interface InviteConversationResponse {
@@ -648,7 +642,7 @@ export interface InviteConversationResponse {
   group?: unknown;
   errors?: InviteConversationResponseErrorsList;
 }
-export const InviteConversationResponse = /*@__PURE__*/ S.suspend(() =>
+const InviteConversationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.optional(S.Unknown),
@@ -665,7 +659,7 @@ export interface InviteDeclineSharedRequest {
   /** The team or enterprise id of the other party involved in the invitation you are declining */
   target_team?: string;
 }
-export const InviteDeclineSharedRequest = /*@__PURE__*/ S.suspend(() =>
+const InviteDeclineSharedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invite_id: S.String.pipe(T.Query()),
     target_team: S.optional(S.String.pipe(T.Query())),
@@ -677,17 +671,17 @@ export const InviteDeclineSharedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface InviteDeclineSharedResponse {
   ok: boolean;
 }
-export const InviteDeclineSharedResponse =
+const InviteDeclineSharedResponse =
   ApproveSharedInviteResponse as any as S.Schema<InviteDeclineSharedResponse>;
 
 /** Optional email to receive this invite. Either `emails` or `user_ids` must be provided. Only one email or one user ID may be invited at a time. */
 export type InviteSharedRequestEmailsList = Array<string>;
-export const InviteSharedRequestEmailsList =
+const InviteSharedRequestEmailsList =
   ConversationsHistoryResponseDeletedList as any as S.Schema<InviteSharedRequestEmailsList>;
 
 /** Optional user_id to receive this invite. Either `emails` or `user_ids` must be provided. Only one email or one user ID may be invited at a time. */
 export type InviteSharedRequestUserIdsList = Array<string>;
-export const InviteSharedRequestUserIdsList =
+const InviteSharedRequestUserIdsList =
   ConversationsHistoryResponseDeletedList as any as S.Schema<InviteSharedRequestUserIdsList>;
 
 export interface InviteSharedRequest {
@@ -700,7 +694,7 @@ export interface InviteSharedRequest {
   /** Optional boolean on whether invite is to an external limited member. Defaults to `true`. */
   external_limited?: boolean;
 }
-export const InviteSharedRequest = /*@__PURE__*/ S.suspend(() =>
+const InviteSharedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     emails: S.optional(InviteSharedRequestEmailsList),
@@ -717,7 +711,7 @@ export interface InviteSharedResponse {
   conf_code?: string;
   is_legacy_shared_channel?: boolean;
 }
-export const InviteSharedResponse = /*@__PURE__*/ S.suspend(() =>
+const InviteSharedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     url: S.optional(S.String),
@@ -731,20 +725,20 @@ export interface JoinConversationRequest {
   /** ID of conversation to join */
   channel: string;
 }
-export const JoinConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const JoinConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/conversations.join", code: 200 })),
 ).annotate({ identifier: "JoinConversationRequest" }) as any as S.Schema<JoinConversationRequest>;
 
 export type JoinConversationResponseResponseMetadataWarningsList = Array<string>;
-export const JoinConversationResponseResponseMetadataWarningsList =
+const JoinConversationResponseResponseMetadataWarningsList =
   ConversationsHistoryResponseDeletedList as any as S.Schema<JoinConversationResponseResponseMetadataWarningsList>;
 
 export interface JoinConversationResponseResponseMetadata {
   warnings?: JoinConversationResponseResponseMetadataWarningsList;
 }
-export const JoinConversationResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const JoinConversationResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warnings: S.optional(JoinConversationResponseResponseMetadataWarningsList),
   }),
@@ -758,7 +752,7 @@ export interface JoinConversationResponse {
   channel: unknown;
   response_metadata?: JoinConversationResponseResponseMetadata;
 }
-export const JoinConversationResponse = /*@__PURE__*/ S.suspend(() =>
+const JoinConversationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.Unknown,
@@ -770,7 +764,7 @@ export interface LeaveConversationRequest {
   /** Conversation to leave */
   channel: string;
 }
-export const LeaveConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const LeaveConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/conversations.leave", code: 200 })),
@@ -781,7 +775,7 @@ export interface LeaveConversationResponse {
   ok: boolean;
   not_in_channel?: boolean;
 }
-export const LeaveConversationResponse = /*@__PURE__*/ S.suspend(() =>
+const LeaveConversationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     not_in_channel: S.optional(S.Boolean),
@@ -798,7 +792,7 @@ export interface ListConnectInvitesRequest {
   /** Set to `next_cursor` returned by previous call to list items in subsequent page */
   cursor?: string;
 }
-export const ListConnectInvitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectInvitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.optional(S.String),
     count: S.optional(S.Number),
@@ -809,15 +803,12 @@ export const ListConnectInvitesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConnectInvitesRequest>;
 
 export type ListConnectInvitesResponseInvitesList = Array<unknown>;
-export const ListConnectInvitesResponseInvitesList =
+const ListConnectInvitesResponseInvitesList =
   ConversationsHistoryResponseMessagesList as any as S.Schema<ListConnectInvitesResponseInvitesList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListConnectInvitesResponseResponseMetadata =
   ConversationsHistoryResponseResponseMetadata;
-export const ListConnectInvitesResponseResponseMetadata =
-  ConversationsHistoryResponseResponseMetadata;
-
 export interface ListConnectInvitesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -825,7 +816,7 @@ export interface ListConnectInvitesResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ConversationsHistoryResponseResponseMetadata;
 }
-export const ListConnectInvitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectInvitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     invites: ListConnectInvitesResponseInvitesList,
@@ -847,7 +838,7 @@ export interface ListConversationsRequest {
   /** Mix and match channel types by providing a comma-separated list of any combination of `public_channel`, `private_channel`, `mpim`, `im` */
   types?: string;
 }
-export const ListConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     exclude_archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -858,15 +849,12 @@ export const ListConversationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListConversationsRequest" }) as any as S.Schema<ListConversationsRequest>;
 
 export type ListConversationsResponseChannelsList = Array<unknown>;
-export const ListConversationsResponseChannelsList =
+const ListConversationsResponseChannelsList =
   ConversationsHistoryResponseMessagesList as any as S.Schema<ListConversationsResponseChannelsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListConversationsResponseResponseMetadata =
   ConversationsHistoryResponseResponseMetadata;
-export const ListConversationsResponseResponseMetadata =
-  ConversationsHistoryResponseResponseMetadata;
-
 export interface ListConversationsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -874,7 +862,7 @@ export interface ListConversationsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ConversationsHistoryResponseResponseMetadata;
 }
-export const ListConversationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConversationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channels: ListConversationsResponseChannelsList,
@@ -886,7 +874,7 @@ export const ListConversationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional list of invitation ids to look up */
 export type ListRequestSharedInviteRequestInviteIdsList = Array<string>;
-export const ListRequestSharedInviteRequestInviteIdsList =
+const ListRequestSharedInviteRequestInviteIdsList =
   ConversationsHistoryResponseDeletedList as any as S.Schema<ListRequestSharedInviteRequestInviteIdsList>;
 
 export interface ListRequestSharedInviteRequest {
@@ -905,7 +893,7 @@ export interface ListRequestSharedInviteRequest {
   /** Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. See [pagination](/apis/web-api/pagination) for more detail. */
   cursor?: string;
 }
-export const ListRequestSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRequestSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.optional(S.String),
     include_expired: S.optional(S.Boolean),
@@ -920,15 +908,12 @@ export const ListRequestSharedInviteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRequestSharedInviteRequest>;
 
 export type ListRequestSharedInviteResponseInviteRequestsList = Array<unknown>;
-export const ListRequestSharedInviteResponseInviteRequestsList =
+const ListRequestSharedInviteResponseInviteRequestsList =
   ConversationsHistoryResponseMessagesList as any as S.Schema<ListRequestSharedInviteResponseInviteRequestsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListRequestSharedInviteResponseResponseMetadata =
   ConversationsHistoryResponseResponseMetadata;
-export const ListRequestSharedInviteResponseResponseMetadata =
-  ConversationsHistoryResponseResponseMetadata;
-
 export interface ListRequestSharedInviteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -936,7 +921,7 @@ export interface ListRequestSharedInviteResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ConversationsHistoryResponseResponseMetadata;
 }
-export const ListRequestSharedInviteResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRequestSharedInviteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     invite_requests: ListRequestSharedInviteResponseInviteRequestsList,
@@ -952,7 +937,7 @@ export interface RenameConversationRequest {
   /** New name for conversation. */
   name: string;
 }
-export const RenameConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     name: S.String,
@@ -966,7 +951,7 @@ export interface RenameConversationResponse {
   ok: boolean;
   channel: unknown;
 }
-export const RenameConversationResponse =
+const RenameConversationResponse =
   CreateConversationResponse as any as S.Schema<RenameConversationResponse>;
 
 export interface RequestSharedInviteDenyRequest {
@@ -975,7 +960,7 @@ export interface RequestSharedInviteDenyRequest {
   /** Optional message explaining why the request to invite was denied. */
   message?: string;
 }
-export const RequestSharedInviteDenyRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestSharedInviteDenyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invite_id: S.String,
     message: S.optional(S.String),
@@ -987,12 +972,12 @@ export const RequestSharedInviteDenyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RequestSharedInviteDenyResponse {
   ok: boolean;
 }
-export const RequestSharedInviteDenyResponse =
+const RequestSharedInviteDenyResponse =
   ApproveSharedInviteResponse as any as S.Schema<RequestSharedInviteDenyResponse>;
 
 /** Type of action to be taken: upgrade or downgrade */
 export type SetExternalInvitePermissionsRequestAction = "upgrade" | "downgrade";
-export const SetExternalInvitePermissionsRequestAction = S.String;
+const SetExternalInvitePermissionsRequestAction = S.String;
 
 export interface SetExternalInvitePermissionsRequest {
   /** The channel ID to change external invite permissions for */
@@ -1002,7 +987,7 @@ export interface SetExternalInvitePermissionsRequest {
   /** Type of action to be taken: upgrade or downgrade */
   action: SetExternalInvitePermissionsRequestAction | (string & {});
 }
-export const SetExternalInvitePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetExternalInvitePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     target_team: S.String,
@@ -1022,7 +1007,7 @@ export const SetExternalInvitePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SetExternalInvitePermissionsResponse {
   ok: boolean;
 }
-export const SetExternalInvitePermissionsResponse =
+const SetExternalInvitePermissionsResponse =
   ApproveSharedInviteResponse as any as S.Schema<SetExternalInvitePermissionsResponse>;
 
 export interface SetPurposeRequest {
@@ -1031,7 +1016,7 @@ export interface SetPurposeRequest {
   /** The description */
   purpose: string;
 }
-export const SetPurposeRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPurposeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     purpose: S.String,
@@ -1043,7 +1028,7 @@ export interface SetPurposeResponse {
   ok: boolean;
   channel: unknown;
 }
-export const SetPurposeResponse = /*@__PURE__*/ S.suspend(() =>
+const SetPurposeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     channel: S.Unknown,
@@ -1056,7 +1041,7 @@ export interface SetTopicRequest {
   /** The new topic string. Does not support formatting or linkification. */
   topic: string;
 }
-export const SetTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const SetTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
     topic: S.String,
@@ -1068,13 +1053,13 @@ export interface SetTopicResponse {
   ok: boolean;
   channel: unknown;
 }
-export const SetTopicResponse = SetPurposeResponse as any as S.Schema<SetTopicResponse>;
+const SetTopicResponse = SetPurposeResponse as any as S.Schema<SetTopicResponse>;
 
 export interface UnarchiveConversationRequest {
   /** ID of conversation to unarchive */
   channel: string;
 }
-export const UnarchiveConversationRequest = /*@__PURE__*/ S.suspend(() =>
+const UnarchiveConversationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/conversations.unarchive", code: 200 })),
@@ -1086,7 +1071,7 @@ export interface UnarchiveConversationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UnarchiveConversationResponse =
+const UnarchiveConversationResponse =
   ApproveSharedInviteResponse as any as S.Schema<UnarchiveConversationResponse>;
 
 export type AcceptSharedInviteError = SlackOpError;

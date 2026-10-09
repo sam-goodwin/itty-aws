@@ -383,7 +383,7 @@ export interface RequestPayloadPart {
   CompletionState?: string;
   P?: string;
 }
-export const RequestPayloadPart = /*@__PURE__*/ S.suspend(() =>
+const RequestPayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()),
     DataType: S.optional(S.String).pipe(T.EventHeader()),
@@ -392,7 +392,7 @@ export const RequestPayloadPart = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RequestPayloadPart" }) as any as S.Schema<RequestPayloadPart>;
 export type RequestStreamEvent = { PayloadPart: RequestPayloadPart };
-export const RequestStreamEvent = /*@__PURE__*/ T.InputEventStream(
+const RequestStreamEvent = /*@__PURE__*/ T.InputEventStream(
   /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ PayloadPart: RequestPayloadPart })]),
 ) as any as S.Schema<stream.Stream<RequestStreamEvent, Error, never>>;
 export interface InvokeEndpointWithBidirectionalStreamInput {
@@ -402,7 +402,7 @@ export interface InvokeEndpointWithBidirectionalStreamInput {
   ModelInvocationPath?: string;
   ModelQueryString?: string;
 }
-export const InvokeEndpointWithBidirectionalStreamInput = /*@__PURE__*/ S.suspend(() =>
+const InvokeEndpointWithBidirectionalStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
     Body: RequestStreamEvent.pipe(T.HttpPayload()),
@@ -432,12 +432,12 @@ export interface ResponsePayloadPart {
   CompletionState?: string;
   P?: string;
 }
-export const ResponsePayloadPart = RequestPayloadPart as any as S.Schema<ResponsePayloadPart>;
+const ResponsePayloadPart = RequestPayloadPart as any as S.Schema<ResponsePayloadPart>;
 export type ResponseStreamEvent =
   | { PayloadPart: ResponsePayloadPart; ModelStreamError?: never; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError: ModelStreamError; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError?: never; InternalStreamFailure: InternalStreamFailure };
-export const ResponseStreamEvent = /*@__PURE__*/ T.EventStream(
+const ResponseStreamEvent = /*@__PURE__*/ T.EventStream(
   /*@__PURE__*/ S.Union([
     /*@__PURE__*/ S.Struct({ PayloadPart: ResponsePayloadPart }),
     /*@__PURE__*/ S.Struct({
@@ -456,7 +456,7 @@ export interface InvokeEndpointWithBidirectionalStreamOutput {
   Body: stream.Stream<ResponseStreamEvent, Error, never>;
   InvokedProductionVariant?: string;
 }
-export const InvokeEndpointWithBidirectionalStreamOutput = /*@__PURE__*/ S.suspend(() =>
+const InvokeEndpointWithBidirectionalStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Body: ResponseStreamEvent.pipe(T.HttpPayload()),
     InvokedProductionVariant: S.optional(S.String).pipe(

@@ -71,7 +71,7 @@ export interface ActivateSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-export const ActivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -92,7 +92,7 @@ export interface SubscriptionTrialSettings {
   /** Determines if a subscription's plan is in a 30-day free trial or not: - `true` -- The plan is in trial. - `false` -- The plan is not in trial. */
   isInTrial?: boolean;
 }
-export const SubscriptionTrialSettings = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionTrialSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trialEndTime: S.optional(S.String),
     isInTrial: S.optional(S.Boolean),
@@ -108,7 +108,7 @@ export interface RenewalSettings {
   /** Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center. When renewing a subscription, the `renewalType` is a required property. */
   renewalType?: string;
 }
-export const RenewalSettings = /*@__PURE__*/ S.suspend(() =>
+const RenewalSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     renewalType: S.optional(S.String),
@@ -126,7 +126,7 @@ export interface Seats {
   /** This is a required property and is exclusive to subscriptions with `ANNUAL_MONTHLY_PAY` and `ANNUAL_YEARLY_PAY` plans. This property sets the maximum number of licenses assignable to users on a subscription. The reseller can add more licenses, but once set, the `numberOfSeats` cannot be reduced until renewal. The reseller is invoiced based on the `numberOfSeats` value regardless of how many of these user licenses are assigned. *Note: *Google Workspace subscriptions automatically assign a license to every user. */
   numberOfSeats?: number;
 }
-export const Seats = /*@__PURE__*/ S.suspend(() =>
+const Seats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maximumNumberOfSeats: S.optional(S.Number),
     licensedNumberOfSeats: S.optional(S.Number),
@@ -143,7 +143,7 @@ export interface SubscriptionTransferInfo {
   /** The time when transfer token or intent to transfer will expire. The time is in milliseconds using UNIX Epoch format. */
   transferabilityExpirationTime?: string;
 }
-export const SubscriptionTransferInfo = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionTransferInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentLegacySkuId: S.optional(S.String),
     minimumTransferableSeats: S.optional(S.Number),
@@ -152,7 +152,7 @@ export const SubscriptionTransferInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscriptionTransferInfo" }) as any as S.Schema<SubscriptionTransferInfo>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface SubscriptionPlanCommitmentInterval {
   /** An annual commitment plan's interval's `endTime` in milliseconds using the UNIX Epoch format. See an example Epoch converter. */
@@ -160,7 +160,7 @@ export interface SubscriptionPlanCommitmentInterval {
   /** An annual commitment plan's interval's `startTime` in milliseconds using UNIX Epoch format. See an example Epoch converter. */
   startTime?: string;
 }
-export const SubscriptionPlanCommitmentInterval = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPlanCommitmentInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -177,7 +177,7 @@ export interface SubscriptionPlan {
   /** The `planName` property is required. This is the name of the subscription's plan. For more information about the Google payment plans, see the API concepts. Possible values are: - `ANNUAL_MONTHLY_PAY` -- The annual commitment plan with monthly payments. *Caution: *`ANNUAL_MONTHLY_PAY` is returned as `ANNUAL` in all API responses. - `ANNUAL_YEARLY_PAY` -- The annual commitment plan with yearly payments - `FLEXIBLE` -- The flexible plan - `TRIAL` -- The 30-day free trial plan. A subscription in trial will be suspended after the 30th free day if no payment plan is assigned. Calling `changePlan` will assign a payment plan to a trial but will not activate the plan. A trial will automatically begin its assigned payment plan after its 30th free day or immediately after calling `startPaidService`. - `FREE` -- The free plan is exclusive to the Cloud Identity SKU and does not incur any billing. */
   planName?: string;
 }
-export const SubscriptionPlan = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitmentInterval: S.optional(SubscriptionPlanCommitmentInterval),
     isCommitmentPlan: S.optional(S.Boolean),
@@ -224,7 +224,7 @@ export interface Subscription {
   /** The `creationTime` property is the date when subscription was created. It is in milliseconds using the Epoch format. See an example Epoch converter. */
   creationTime?: string;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuName: S.optional(S.String),
     trialSettings: S.optional(SubscriptionTrialSettings),
@@ -260,7 +260,7 @@ export interface ChangePlanRequest {
   /** This is an optional property. This purchase order (PO) information is for resellers to use for their company tracking usage. If a `purchaseOrderId` value is given it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. */
   purchaseOrderId?: string;
 }
-export const ChangePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dealCode: S.optional(S.String),
     kind: S.optional(S.String),
@@ -278,7 +278,7 @@ export interface ChangePlanSubscriptionsRequest {
   /** Request body */
   body?: ChangePlanRequest;
 }
-export const ChangePlanSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangePlanSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -302,7 +302,7 @@ export interface ChangeRenewalSettingsSubscriptionsRequest {
   /** Request body */
   body?: RenewalSettings;
 }
-export const ChangeRenewalSettingsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeRenewalSettingsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     customerId: S.String.pipe(T.Label()),
@@ -326,7 +326,7 @@ export interface ChangeSeatsSubscriptionsRequest {
   /** Request body */
   body?: Seats;
 }
-export const ChangeSeatsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeSeatsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     customerId: S.String.pipe(T.Label()),
@@ -346,7 +346,7 @@ export type DeleteSubscriptionsDeletionTypeEnum =
   | "deletion_type_undefined"
   | "cancel"
   | "transfer_to_direct";
-export const DeleteSubscriptionsDeletionTypeEnum = S.String;
+const DeleteSubscriptionsDeletionTypeEnum = S.String;
 
 export interface DeleteSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
@@ -356,7 +356,7 @@ export interface DeleteSubscriptionsRequest {
   /** The `deletionType` query string enables the cancellation, downgrade, or suspension of a subscription. */
   deletionType: DeleteSubscriptionsDeletionTypeEnum | (string & {});
 }
-export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     customerId: S.String.pipe(T.Label()),
@@ -373,7 +373,7 @@ export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionsRequest>;
 
 export interface DeleteSubscriptionsResponse {}
-export const DeleteSubscriptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSubscriptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSubscriptionsResponse",
 }) as any as S.Schema<DeleteSubscriptionsResponse>;
 
@@ -381,7 +381,7 @@ export interface GetCustomersRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
 }
-export const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
   }).pipe(
@@ -416,7 +416,7 @@ export interface Address {
   /** A customer's physical address. An address can be composed of one to three lines. The `addressline2` and `addressLine3` are optional. */
   addressLine1?: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCode: S.optional(S.String),
     contactName: S.optional(S.String),
@@ -432,14 +432,14 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
 export type CustomerCustomerTypeEnum = "customerTypeUnspecified" | "domain" | "team";
-export const CustomerCustomerTypeEnum = S.String;
+const CustomerCustomerTypeEnum = S.String;
 
 /** JSON template for primary admin in case of TEAM customers */
 export interface PrimaryAdmin {
   /** The business email of the primary administrator of the customer. The email verification link is sent to this email address at the time of customer creation. Primary administrators have access to the customer's Admin Console, including the ability to invite and evict users and manage the administrative needs of the customer. */
   primaryEmail?: string;
 }
-export const PrimaryAdmin = /*@__PURE__*/ S.suspend(() =>
+const PrimaryAdmin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryEmail: S.optional(S.String),
   }),
@@ -468,7 +468,7 @@ export interface Customer {
   /** URL to customer's Admin console dashboard. The read-only URL is generated by the API service. This is used if your client application requires the customer to complete a task in the Admin console. */
   resourceUiUrl?: string;
 }
-export const Customer = /*@__PURE__*/ S.suspend(() =>
+const Customer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternateEmail: S.optional(S.String),
     postalAddress: S.optional(Address),
@@ -489,7 +489,7 @@ export interface GetSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -503,7 +503,7 @@ export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSubscriptionsRequest" }) as any as S.Schema<GetSubscriptionsRequest>;
 
 export interface GetwatchdetailsResellernotifyRequest {}
-export const GetwatchdetailsResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetwatchdetailsResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -522,7 +522,7 @@ export interface ResellernotifyGetwatchdetailsResponse {
   /** List of registered service accounts. */
   serviceAccountEmailAddresses?: StringList;
 }
-export const ResellernotifyGetwatchdetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ResellernotifyGetwatchdetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String),
     serviceAccountEmailAddresses: S.optional(StringList),
@@ -537,7 +537,7 @@ export interface InsertCustomersRequest {
   /** Request body */
   body?: Customer;
 }
-export const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAuthToken: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Customer.pipe(T.HttpBody())),
@@ -551,7 +551,7 @@ export const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertCustomersRequest" }) as any as S.Schema<InsertCustomersRequest>;
 
 export type InsertSubscriptionsActionEnum = "actionUnspecified" | "buy" | "switch";
-export const InsertSubscriptionsActionEnum = S.String;
+const InsertSubscriptionsActionEnum = S.String;
 
 export interface InsertSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
@@ -565,7 +565,7 @@ export interface InsertSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     customerAuthToken: S.optional(S.String.pipe(T.Query())),
@@ -595,7 +595,7 @@ export interface ListSubscriptionsRequest {
   /** When retrieving a large list, the `maxResults` is the maximum number of results per page. The `nextPageToken` value takes you to the next page. The default is 20. */
   maxResults?: number;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -612,9 +612,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** A subscription manages the relationship of a Google customer's payment plan with a product's SKU, user licenses, 30-day free trial status, and renewal options. A primary role of a reseller is to manage the Google customer's subscriptions. */
 export interface Subscriptions {
@@ -625,7 +623,7 @@ export interface Subscriptions {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
-export const Subscriptions = /*@__PURE__*/ S.suspend(() =>
+const Subscriptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptions: S.optional(SubscriptionList),
     kind: S.optional(S.String),
@@ -639,7 +637,7 @@ export interface PatchCustomersRequest {
   /** Request body */
   body?: Customer;
 }
-export const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     body: S.optional(Customer.pipe(T.HttpBody())),
@@ -656,7 +654,7 @@ export interface RegisterResellernotifyRequest {
   /** The service account which will own the created Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
 }
-export const RegisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -675,7 +673,7 @@ export interface ResellernotifyResource {
   /** Topic name of the PubSub */
   topicName?: string;
 }
-export const ResellernotifyResource = /*@__PURE__*/ S.suspend(() =>
+const ResellernotifyResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String),
   }),
@@ -687,7 +685,7 @@ export interface StartPaidServiceSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-export const StartPaidServiceSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartPaidServiceSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -708,7 +706,7 @@ export interface SuspendSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-export const SuspendSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -727,7 +725,7 @@ export interface UnregisterResellernotifyRequest {
   /** The service account which owns the Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
 }
-export const UnregisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
+const UnregisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -747,7 +745,7 @@ export interface UpdateCustomersRequest {
   /** Request body */
   body?: Customer;
 }
-export const UpdateCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     body: S.optional(Customer.pipe(T.HttpBody())),

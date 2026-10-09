@@ -130,13 +130,13 @@ export type LanguageCode =
   | "zh-TW"
   | "tr-TR"
   | (string & {});
-export const LanguageCode = S.String;
+const LanguageCode = S.String;
 
 export interface GetAccountActivityRequest {
   activityId: string;
   languageCode?: LanguageCode;
 }
-export const GetAccountActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ activityId: S.String, languageCode: S.optional(LanguageCode) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -149,22 +149,20 @@ export type ActivityStatus =
   | "COMPLETED"
   | "EXPIRING"
   | (string & {});
-export const ActivityStatus = S.String;
+const ActivityStatus = S.String;
 
 export type CurrencyCode = "USD" | (string & {});
-export const CurrencyCode = S.String;
+const CurrencyCode = S.String;
 
 export interface MonetaryAmount {
   amount: number;
   unit: CurrencyCode;
 }
-export const MonetaryAmount = /*@__PURE__*/ S.suspend(() =>
+const MonetaryAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ amount: S.Number, unit: CurrencyCode }),
 ).annotate({ identifier: "MonetaryAmount" }) as any as S.Schema<MonetaryAmount>;
 export type ActivityReward = { credit: MonetaryAmount };
-export const ActivityReward = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ credit: MonetaryAmount }),
-]);
+const ActivityReward = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ credit: MonetaryAmount })]);
 export interface GetAccountActivityResponse {
   activityId: string;
   title: string;
@@ -177,7 +175,7 @@ export interface GetAccountActivityResponse {
   startedAt?: Date;
   completedAt?: Date;
 }
-export const GetAccountActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountActivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityId: S.String,
     title: S.String,
@@ -194,17 +192,17 @@ export const GetAccountActivityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountActivityResponse",
 }) as any as S.Schema<GetAccountActivityResponse>;
 export interface GetAccountPlanStateRequest {}
-export const GetAccountPlanStateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPlanStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({
   identifier: "GetAccountPlanStateRequest",
 }) as any as S.Schema<GetAccountPlanStateRequest>;
 export type AccountId = string;
 export type AccountPlanType = "FREE" | "PAID" | (string & {});
-export const AccountPlanType = S.String;
+const AccountPlanType = S.String;
 
 export type AccountPlanStatus = "NOT_STARTED" | "ACTIVE" | "EXPIRED" | (string & {});
-export const AccountPlanStatus = S.String;
+const AccountPlanStatus = S.String;
 
 export interface GetAccountPlanStateResponse {
   accountId: string;
@@ -213,7 +211,7 @@ export interface GetAccountPlanStateResponse {
   accountPlanRemainingCredits?: MonetaryAmount;
   accountPlanExpirationDate?: Date;
 }
-export const GetAccountPlanStateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPlanStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String,
     accountPlanType: AccountPlanType,
@@ -225,7 +223,7 @@ export const GetAccountPlanStateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountPlanStateResponse",
 }) as any as S.Schema<GetAccountPlanStateResponse>;
 export type Expressions = Expression[];
-export const Expressions = /*@__PURE__*/ S.Array(
+const Expressions = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
     identifier: "Expression",
   }),
@@ -239,11 +237,11 @@ export type Dimension =
   | "DESCRIPTION"
   | "USAGE_PERCENTAGE"
   | (string & {});
-export const Dimension = S.String;
+const Dimension = S.String;
 
 export type Value = string;
 export type Values = string[];
-export const Values = /*@__PURE__*/ S.Array(S.String);
+const Values = /*@__PURE__*/ S.Array(S.String);
 export type MatchOption =
   | "EQUALS"
   | "STARTS_WITH"
@@ -251,16 +249,16 @@ export type MatchOption =
   | "CONTAINS"
   | "GREATER_THAN_OR_EQUAL"
   | (string & {});
-export const MatchOption = S.String;
+const MatchOption = S.String;
 
 export type MatchOptions = MatchOption[];
-export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
+const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
   Key: Dimension;
   Values: string[];
   MatchOptions: MatchOption[];
 }
-export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
+const DimensionValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: Dimension, Values: Values, MatchOptions: MatchOptions }),
 ).annotate({ identifier: "DimensionValues" }) as any as S.Schema<DimensionValues>;
 export interface Expression {
@@ -269,7 +267,7 @@ export interface Expression {
   Not?: Expression;
   Dimensions?: DimensionValues;
 }
-export const Expression = /*@__PURE__*/ S.suspend(() =>
+const Expression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Or: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
     And: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
@@ -286,7 +284,7 @@ export interface GetFreeTierUsageRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const GetFreeTierUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFreeTierUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(Expression),
     maxResults: S.optional(S.Number),
@@ -305,7 +303,7 @@ export interface FreeTierUsage {
   description?: string;
   freeTierType?: string;
 }
-export const FreeTierUsage = /*@__PURE__*/ S.suspend(() =>
+const FreeTierUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     operation: S.optional(S.String),
@@ -320,23 +318,23 @@ export const FreeTierUsage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FreeTierUsage" }) as any as S.Schema<FreeTierUsage>;
 export type FreeTierUsages = FreeTierUsage[];
-export const FreeTierUsages = /*@__PURE__*/ S.Array(FreeTierUsage);
+const FreeTierUsages = /*@__PURE__*/ S.Array(FreeTierUsage);
 export interface GetFreeTierUsageResponse {
   freeTierUsages: FreeTierUsage[];
   nextToken?: string;
 }
-export const GetFreeTierUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFreeTierUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ freeTierUsages: FreeTierUsages, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetFreeTierUsageResponse" }) as any as S.Schema<GetFreeTierUsageResponse>;
 export type FilterActivityStatuses = ActivityStatus[];
-export const FilterActivityStatuses = MatchOptions as any as S.Schema<FilterActivityStatuses>;
+const FilterActivityStatuses = MatchOptions as any as S.Schema<FilterActivityStatuses>;
 export interface ListAccountActivitiesRequest {
   filterActivityStatuses?: ActivityStatus[];
   nextToken?: string;
   maxResults?: number;
   languageCode?: LanguageCode;
 }
-export const ListAccountActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterActivityStatuses: S.optional(FilterActivityStatuses),
     nextToken: S.optional(S.String),
@@ -352,7 +350,7 @@ export interface ActivitySummary {
   reward: ActivityReward;
   status: ActivityStatus;
 }
-export const ActivitySummary = /*@__PURE__*/ S.suspend(() =>
+const ActivitySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityId: S.String,
     title: S.String,
@@ -361,12 +359,12 @@ export const ActivitySummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActivitySummary" }) as any as S.Schema<ActivitySummary>;
 export type Activities = ActivitySummary[];
-export const Activities = /*@__PURE__*/ S.Array(ActivitySummary);
+const Activities = /*@__PURE__*/ S.Array(ActivitySummary);
 export interface ListAccountActivitiesResponse {
   activities: ActivitySummary[];
   nextToken?: string;
 }
-export const ListAccountActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ activities: Activities, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListAccountActivitiesResponse",
@@ -374,7 +372,7 @@ export const ListAccountActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpgradeAccountPlanRequest {
   accountPlanType: AccountPlanType;
 }
-export const UpgradeAccountPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeAccountPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountPlanType: AccountPlanType }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -386,7 +384,7 @@ export interface UpgradeAccountPlanResponse {
   accountPlanType: AccountPlanType;
   accountPlanStatus: AccountPlanStatus;
 }
-export const UpgradeAccountPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const UpgradeAccountPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String,
     accountPlanType: AccountPlanType,

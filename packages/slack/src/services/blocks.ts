@@ -9,19 +9,10 @@ import * as T from "../traits.ts";
 export type { SlackOpError, SlackOpContext };
 
 export type ValidateBlockRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
-export const ValidateBlockRequestBlocksCase1ItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ValidateBlockRequestBlocksCase1ItemMap>;
-
 export type ValidateBlockRequestBlocksCase1List = Array<ValidateBlockRequestBlocksCase1ItemMap>;
-export const ValidateBlockRequestBlocksCase1List = /*@__PURE__*/ S.Array(
-  ValidateBlockRequestBlocksCase1ItemMap,
-) as any as S.Schema<ValidateBlockRequestBlocksCase1List>;
-
 /** A JSON-encoded array of [structured blocks](/reference/block-kit/blocks). Provide exactly one of `blocks`, `view`, or `message`. */
 export type ValidateBlockRequestBlocks = string | ValidateBlockRequestBlocksCase1List;
-export const ValidateBlockRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
+const ValidateBlockRequestBlocks = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -33,7 +24,7 @@ export interface ValidateBlockRequest {
   /** A JSON-encoded [view payload](/reference/views) to validate. Provide exactly one of `blocks`, `view`, or `message`. */
   view?: string;
 }
-export const ValidateBlockRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateBlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocks: S.optional(ValidateBlockRequestBlocks),
     message: S.optional(S.String),
@@ -45,7 +36,7 @@ export interface ValidateBlockResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const ValidateBlockResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateBlockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),

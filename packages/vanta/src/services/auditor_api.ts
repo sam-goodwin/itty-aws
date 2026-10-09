@@ -14,7 +14,7 @@ export interface AcceptInformationRequestEvidenceRequest {
   /** Email of the auditor accepting the evidence. Must match an existing Vanta user who belongs to the audit firm making the API request. */
   auditorEmail: string;
 }
-export const AcceptInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -32,13 +32,13 @@ export const AcceptInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend((
 
 /** Deprecated control-linkage field retained for response compatibility. It may contain control IDs supplied directly to the request, but it is not a complete or guaranteed-current list of controls linked to the request. Use `linkedControlIds` for the complete current list. */
 export type InformationRequestAdditionalControlIdsList = Array<string>;
-export const InformationRequestAdditionalControlIdsList = /*@__PURE__*/ S.Array(
+const InformationRequestAdditionalControlIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InformationRequestAdditionalControlIdsList>;
 
 /** The complete current set of control IDs linked to this request, including controls linked through framework codes and controls added directly. Each ID is returned by the audit controls endpoint. */
 export type InformationRequestLinkedControlIdsList = Array<string>;
-export const InformationRequestLinkedControlIdsList =
+const InformationRequestLinkedControlIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<InformationRequestLinkedControlIdsList>;
 
 /** Current approval status of the information request, tracking its lifecycle through the audit process. The status progresses through the workflow: initial state -> awaiting review -> approved or flagged. Status can move between awaiting review and flagged states as evidence is reviewed and resubmitted. */
@@ -47,55 +47,41 @@ export type InformationRequestApprovalStatus =
   | "READY_FOR_AUDIT"
   | "AUDITOR_APPROVED"
   | "AUDITOR_FLAGGED";
-export const InformationRequestApprovalStatus = S.String;
+const InformationRequestApprovalStatus = S.String;
 
 /** Frequency cadence for the information request, indicating how often it recurs. */
 export type InformationRequestCadence = "ANNUALLY" | "BIANNUALLY" | "MONTHLY" | "QUARTERLY";
-export const InformationRequestCadence = S.String;
+const InformationRequestCadence = S.String;
 
 /** Always empty on read. Use `linkedControlIds` for control linkage and `segmentIds` for request assignment. */
 export type InformationRequestFrameworkCodesList = Array<string>;
-export const InformationRequestFrameworkCodesList =
+const InformationRequestFrameworkCodesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<InformationRequestFrameworkCodesList>;
 
 /** Audit segments this request is assigned to. Empty means unassigned. Resolved against the current audit scope -- stale IDs are dropped. This field is a current-scope projection, not a stored watermark. An audit-scope change that drops or adds IDs here does not update creationDate, modificationDate, or deletionDate, so it does not appear in `changedSinceDate` delta sync on its own. Re-fetch the list without that parameter, or GET the request by id, to see the current projection. */
 export type InformationRequestSegmentIdsList = Array<string>;
-export const InformationRequestSegmentIdsList =
+const InformationRequestSegmentIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<InformationRequestSegmentIdsList>;
 
 /** Type of information request, defining what scope of evidence is needed. - POINT_IN_TIME: Evidence for a specific moment (e.g., current state of a policy) - POPULATION: Evidence covering all items in a category (e.g., all employees) - SAMPLE: Evidence for a representative sample (e.g., 10 random customer records) */
 export type InformationRequestType = "POINT_IN_TIME" | "POPULATION" | "SAMPLE";
-export const InformationRequestType = S.String;
+const InformationRequestType = S.String;
 
 export type ResourceOwnerCase0Type = "user";
-export const ResourceOwnerCase0Type = S.String;
-
 export interface ResourceOwnerCase0 {
   displayName: string;
   id: string;
   type: ResourceOwnerCase0Type;
 }
-export const ResourceOwnerCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.String,
-    id: S.String,
-    type: ResourceOwnerCase0Type,
-  }),
-).annotate({ identifier: "ResourceOwnerCase0" }) as any as S.Schema<ResourceOwnerCase0>;
-
 export type ResourceOwnerCase1Type = "team";
-export const ResourceOwnerCase1Type = S.String;
-
 export interface ResourceOwnerCase1 {
   displayName: string;
   id: string;
   type: ResourceOwnerCase1Type;
 }
-export const ResourceOwnerCase1 = ResourceOwnerCase0 as any as S.Schema<ResourceOwnerCase1>;
-
 /** Represents either a user or a team owning a resource. */
 export type ResourceOwner = ResourceOwnerCase0 | ResourceOwnerCase1;
-export const ResourceOwner = S.Unknown as any as S.Schema<ResourceOwner>;
+const ResourceOwner = S.Unknown as any as S.Schema<ResourceOwner>;
 
 /** Information Request resource representing a single request for audit evidence from a customer. An information request is created by an auditor and shared with the customer organization. The customer then uploads evidence, which the auditor reviews and either approves or flags for issues. */
 export interface InformationRequest {
@@ -136,7 +122,7 @@ export interface InformationRequest {
   /** Resource owner (user or team) assigned to this information request. Returns null if no resource owner is assigned. */
   ownerAssignment: ResourceOwner | null;
 }
-export const InformationRequest = /*@__PURE__*/ S.suspend(() =>
+const InformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     uniqueId: S.String,
@@ -167,7 +153,7 @@ export interface CreateAuditorRequest {
   /** Last name of the new user. */
   familyName: string;
 }
-export const CreateAuditorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuditorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     givenName: S.String,
@@ -186,7 +172,7 @@ export interface Auditor {
   /** The family name (last name) of the auditor. */
   familyName: string;
 }
-export const Auditor = /*@__PURE__*/ S.suspend(() =>
+const Auditor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     organizationId: S.String,
@@ -206,7 +192,7 @@ export interface CreateCommentForAuditEvidenceRequest {
   /** When the comment was created in the external system */
   creationDate: string;
 }
-export const CreateCommentForAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentForAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     auditEvidenceId: S.String.pipe(T.Label()),
@@ -242,7 +228,7 @@ export interface Comment {
   /** Human-readable display name of the comment author. Null if the author's name is not available (e.g., user was deleted). This enables correct author attribution in integrations where users cannot be reliably matched across systems by email alone. */
   authorName: string | null;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     auditEvidenceId: S.String,
@@ -265,7 +251,7 @@ export interface CreateCommentForControlRequest {
   /** Timestamp when the comment was created in the external audit management system. This allows synchronizing comment timestamps from external systems. Format: ISO 8601 UTC timestamp. */
   creationDate: string;
 }
-export const CreateCommentForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -296,7 +282,7 @@ export interface AuditControlComment {
   /** Human-readable display name of the comment author. Null if the author's name is not available (e.g., user was deleted). This enables correct author attribution in integrations where users cannot be reliably matched across systems by email alone. */
   authorName: string | null;
 }
-export const AuditControlComment = /*@__PURE__*/ S.suspend(() =>
+const AuditControlComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     text: S.String,
@@ -318,7 +304,7 @@ export interface CreateCommentForInformationRequestRequest {
   /** Timestamp when the comment was created in the external audit management system. This allows synchronizing comment timestamps from external systems. Format: ISO 8601 UTC timestamp. */
   creationDate: string;
 }
-export const CreateCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -353,7 +339,7 @@ export interface InformationRequestComment {
   /** Human-readable display name of the comment author. Null if the author's name is not available (e.g., user was deleted). This enables correct author attribution in integrations where users cannot be reliably matched across systems by email alone. */
   authorName: string | null;
 }
-export const InformationRequestComment = /*@__PURE__*/ S.suspend(() =>
+const InformationRequestComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     text: S.String,
@@ -406,7 +392,7 @@ export type ControlDomain =
   | "TECHNICAL"
   | "BASIC"
   | "DERIVED";
-export const ControlDomain = S.String;
+const ControlDomain = S.String;
 
 export type FrameworkId =
   | "AU_E_8"
@@ -445,17 +431,14 @@ export type FrameworkId =
   | "SOX_ITGC"
   | "UK_CYBER_ESSENTIALS"
   | "US_DATA_PRIVACY";
-export const FrameworkId = S.String;
-
 export type FrameworkSectionFrameworkId = FrameworkId | string;
-export const FrameworkSectionFrameworkId =
-  S.Unknown as any as S.Schema<FrameworkSectionFrameworkId>;
+const FrameworkSectionFrameworkId = S.Unknown as any as S.Schema<FrameworkSectionFrameworkId>;
 
 export interface FrameworkSection {
   frameworkId: FrameworkSectionFrameworkId;
   sectionId: string;
 }
-export const FrameworkSection = /*@__PURE__*/ S.suspend(() =>
+const FrameworkSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frameworkId: FrameworkSectionFrameworkId,
     sectionId: S.String,
@@ -464,12 +447,12 @@ export const FrameworkSection = /*@__PURE__*/ S.suspend(() =>
 
 /** Framework sections that the control should be mapped to. */
 export type CreateCustomControlRequestSectionsList = Array<FrameworkSection>;
-export const CreateCustomControlRequestSectionsList = /*@__PURE__*/ S.Array(
+const CreateCustomControlRequestSectionsList = /*@__PURE__*/ S.Array(
   FrameworkSection,
 ) as any as S.Schema<CreateCustomControlRequestSectionsList>;
 
 export type GdprRole = "BOTH" | "CONTROLLER" | "PROCESSOR";
-export const GdprRole = S.String;
+const GdprRole = S.String;
 
 export interface CreateCustomControlRequest {
   auditId: string;
@@ -488,7 +471,7 @@ export interface CreateCustomControlRequest {
   /** The GDPR role of the control, which specifies whether the data is being "collected" or "processed". See the GdprRole enum for possible values. This field should only be included for controls that are to be mapped to the GDPR framework. */
   role?: GdprRole | (string & {}) | null;
 }
-export const CreateCustomControlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     externalId: S.String,
@@ -504,11 +487,11 @@ export const CreateCustomControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCustomControlRequest>;
 
 export type ControlSource = "Vanta" | "Custom";
-export const ControlSource = S.String;
+const ControlSource = S.String;
 
 /** The security domains that the control belongs to. */
 export type AuditorApiControlDomainsList = Array<string>;
-export const AuditorApiControlDomainsList =
+const AuditorApiControlDomainsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditorApiControlDomainsList>;
 
 export interface Owner {
@@ -519,7 +502,7 @@ export interface Owner {
   /** Email address of the person. */
   emailAddress: string;
 }
-export const Owner = /*@__PURE__*/ S.suspend(() =>
+const Owner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -528,17 +511,14 @@ export const Owner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Owner" }) as any as S.Schema<Owner>;
 
 export type CustomFieldValueCase1List = Array<string>;
-export const CustomFieldValueCase1List =
-  InformationRequestAdditionalControlIdsList as any as S.Schema<CustomFieldValueCase1List>;
-
 export type CustomFieldValue = string | CustomFieldValueCase1List;
-export const CustomFieldValue = S.Unknown as any as S.Schema<CustomFieldValue>;
+const CustomFieldValue = S.Unknown as any as S.Schema<CustomFieldValue>;
 
 export interface CustomField {
   label: string;
   value: CustomFieldValue;
 }
-export const CustomField = /*@__PURE__*/ S.suspend(() =>
+const CustomField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     value: CustomFieldValue,
@@ -547,7 +527,7 @@ export const CustomField = /*@__PURE__*/ S.suspend(() =>
 
 /** The control's custom field values, if control custom fields is included in your Vanta instance. */
 export type AuditorApiControlCustomFieldsList = Array<CustomField>;
-export const AuditorApiControlCustomFieldsList = /*@__PURE__*/ S.Array(
+const AuditorApiControlCustomFieldsList = /*@__PURE__*/ S.Array(
   CustomField,
 ) as any as S.Schema<AuditorApiControlCustomFieldsList>;
 
@@ -575,7 +555,7 @@ export interface AuditorApiControl {
   /** When the control was last modified. Returns null for Vanta library controls. */
   modificationDate: string | null;
 }
-export const AuditorApiControl = /*@__PURE__*/ S.suspend(() =>
+const AuditorApiControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     externalId: S.NullOr(S.String),
@@ -593,11 +573,11 @@ export const AuditorApiControl = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of controls, referenced by id, to map the evidence to */
 export type CreateCustomEvidenceRequestRequestControlIdsList = Array<string>;
-export const CreateCustomEvidenceRequestRequestControlIdsList =
+const CreateCustomEvidenceRequestRequestControlIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<CreateCustomEvidenceRequestRequestControlIdsList>;
 
 export type RecurrenceDuration = "P0D" | "P1D" | "P1W" | "P1M" | "P3M" | "P6M" | "P1Y" | "P2Y";
-export const RecurrenceDuration = S.String;
+const RecurrenceDuration = S.String;
 
 export interface CreateCustomEvidenceRequestRequest {
   auditId: string;
@@ -616,7 +596,7 @@ export interface CreateCustomEvidenceRequestRequest {
   /** Email of the auditor who created the custom evidence request. */
   auditorEmail: string;
 }
-export const CreateCustomEvidenceRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomEvidenceRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     controlIds: CreateCustomEvidenceRequestRequestControlIdsList,
@@ -639,7 +619,7 @@ export const CreateCustomEvidenceRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A set of controls, referenced by id, to map the evidence to */
 export type CustomEvidenceRequestControlIdsList = Array<string>;
-export const CustomEvidenceRequestControlIdsList =
+const CustomEvidenceRequestControlIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<CustomEvidenceRequestControlIdsList>;
 
 export interface CustomEvidenceRequest {
@@ -658,7 +638,7 @@ export interface CustomEvidenceRequest {
   /** Whether this document contains sensitive data and needs more restrictive read access */
   isRestricted: boolean;
 }
-export const CustomEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     controlIds: CustomEvidenceRequestControlIdsList,
@@ -672,12 +652,12 @@ export const CustomEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Framework codes this request addresses. An empty array if no framework codes are associated. */
 export type CreateInformationRequestRequestFrameworkCodesList = Array<string>;
-export const CreateInformationRequestRequestFrameworkCodesList =
+const CreateInformationRequestRequestFrameworkCodesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<CreateInformationRequestRequestFrameworkCodesList>;
 
 /** Control IDs to link directly to this request, beyond those automatically mapped from framework codes. Each must be the `id` of an existing control in the customer's organization (the identifier returned by the controls endpoints). Unknown IDs and controls without an active mapping to a framework in the audit are skipped. Omit or pass an empty array for no direct control links. */
 export type CreateInformationRequestRequestAdditionalControlIdsList = Array<string>;
-export const CreateInformationRequestRequestAdditionalControlIdsList =
+const CreateInformationRequestRequestAdditionalControlIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<CreateInformationRequestRequestAdditionalControlIdsList>;
 
 export interface CreateInformationRequestRequest {
@@ -701,7 +681,7 @@ export interface CreateInformationRequestRequest {
   /** Control IDs to link directly to this request, beyond those automatically mapped from framework codes. Each must be the `id` of an existing control in the customer's organization (the identifier returned by the controls endpoints). Unknown IDs and controls without an active mapping to a framework in the audit are skipped. Omit or pass an empty array for no direct control links. */
   additionalControlIds?: CreateInformationRequestRequestAdditionalControlIdsList;
 }
-export const CreateInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     uniqueId: S.String,
@@ -725,7 +705,7 @@ export interface DeleteCommentForControlRequest {
   /** Email address of the comment author. Must match an existing Vanta user who belongs to the audit firm making the API request. This email uniquely identifies the author across systems. */
   email: string;
 }
-export const DeleteCommentForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -743,9 +723,9 @@ export const DeleteCommentForControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCommentForControlRequest>;
 
 export interface DeleteCommentForControlResponse {}
-export const DeleteCommentForControlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteCommentForControlResponse" },
-) as any as S.Schema<DeleteCommentForControlResponse>;
+const DeleteCommentForControlResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteCommentForControlResponse",
+}) as any as S.Schema<DeleteCommentForControlResponse>;
 
 export interface DeleteCommentForInformationRequestRequest {
   auditId: string;
@@ -754,7 +734,7 @@ export interface DeleteCommentForInformationRequestRequest {
   /** Email address of the comment author. Must match an existing Vanta user who belongs to the audit firm making the API request. This email uniquely identifies the author across systems. */
   email: string;
 }
-export const DeleteCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -772,7 +752,7 @@ export const DeleteCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteCommentForInformationRequestRequest>;
 
 export interface DeleteCommentForInformationRequestResponse {}
-export const DeleteCommentForInformationRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentForInformationRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteCommentForInformationRequestResponse",
@@ -782,7 +762,7 @@ export interface DeleteInformationRequestRequest {
   auditId: string;
   requestId: string;
 }
-export const DeleteInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -798,12 +778,12 @@ export const DeleteInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInformationRequestRequest>;
 
 export interface DeleteInformationRequestResponse {}
-export const DeleteInformationRequestResponse =
+const DeleteInformationRequestResponse =
   DeleteCommentForInformationRequestResponse as any as S.Schema<DeleteInformationRequestResponse>;
 
 /** Emails of auditors who may access the new audit. Minimum one entry required. Each email must match an active user in the authenticated audit firm's domain. */
 export type DuplicateRequestAllowAuditorEmailsList = Array<string>;
-export const DuplicateRequestAllowAuditorEmailsList =
+const DuplicateRequestAllowAuditorEmailsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<DuplicateRequestAllowAuditorEmailsList>;
 
 export interface DuplicateRequest {
@@ -820,7 +800,7 @@ export interface DuplicateRequest {
   /** Emails of auditors who may access the new audit. Minimum one entry required. Each email must match an active user in the authenticated audit firm's domain. */
   allowAuditorEmails: DuplicateRequestAllowAuditorEmailsList;
 }
-export const DuplicateRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceAuditId: S.String,
     displayName: S.String,
@@ -833,21 +813,21 @@ export const DuplicateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Emails of auditors with access to audit */
 export type AuditAllowAuditorEmailsList = Array<string>;
-export const AuditAllowAuditorEmailsList =
+const AuditAllowAuditorEmailsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditAllowAuditorEmailsList>;
 
 export type AuditFocus = "EXTERNAL" | "INTERNAL";
-export const AuditFocus = S.String;
+const AuditFocus = S.String;
 
 export type AuditIrlGenerationStatus = "PENDING" | "RUNNING" | "READY" | "FAILED";
-export const AuditIrlGenerationStatus = S.String;
+const AuditIrlGenerationStatus = S.String;
 
 /** Metadata about the auditor request list. This field is only present for IRL (Information Request List) based audits and will be undefined for standard audits. Use the presence of this field to differentiate between IRL and non-IRL audits. */
 export interface AuditAuditorRequestListMetadata {
   /** Timestamp when information requests were shared with the customer. Null if not shared. */
   requestsSharedWithCustomer: string | null;
 }
-export const AuditAuditorRequestListMetadata = /*@__PURE__*/ S.suspend(() =>
+const AuditAuditorRequestListMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestsSharedWithCustomer: S.NullOr(S.String),
   }),
@@ -856,14 +836,14 @@ export const AuditAuditorRequestListMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuditAuditorRequestListMetadata>;
 
 export type AuditSegmentKind = "PROGRAM" | "SYSTEM";
-export const AuditSegmentKind = S.String;
+const AuditSegmentKind = S.String;
 
 /** The framework this segment is in. */
 export interface AuditSegmentFramework {
   /** Display name of the framework. */
   displayName: string;
 }
-export const AuditSegmentFramework = /*@__PURE__*/ S.suspend(() =>
+const AuditSegmentFramework = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
   }),
@@ -876,7 +856,7 @@ export interface AuditSegmentAssociation {
   /** The human-readable name of the associated business unit or information system. */
   displayName: string;
 }
-export const AuditSegmentAssociation = /*@__PURE__*/ S.suspend(() =>
+const AuditSegmentAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -884,7 +864,7 @@ export const AuditSegmentAssociation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditSegmentAssociation" }) as any as S.Schema<AuditSegmentAssociation>;
 
 export type AuditSoc2ReportType = "soc2type1" | "soc2type2";
-export const AuditSoc2ReportType = S.String;
+const AuditSoc2ReportType = S.String;
 
 export type AuditSoc2Tsc =
   | "SECURITY"
@@ -892,11 +872,11 @@ export type AuditSoc2Tsc =
   | "CONFIDENTIALITY"
   | "PRIVACY"
   | "PROCESSING_INTEGRITY";
-export const AuditSoc2Tsc = S.String;
+const AuditSoc2Tsc = S.String;
 
 /** Trust Services Criteria this segment covers. */
 export type AuditSoc2DeliverableTscsList = Array<AuditSoc2Tsc>;
-export const AuditSoc2DeliverableTscsList = /*@__PURE__*/ S.Array(
+const AuditSoc2DeliverableTscsList = /*@__PURE__*/ S.Array(
   AuditSoc2Tsc,
 ) as any as S.Schema<AuditSoc2DeliverableTscsList>;
 
@@ -907,7 +887,7 @@ export interface AuditSoc2Deliverable {
   /** Trust Services Criteria this segment covers. */
   tscs: AuditSoc2DeliverableTscsList;
 }
-export const AuditSoc2Deliverable = /*@__PURE__*/ S.suspend(() =>
+const AuditSoc2Deliverable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportType: AuditSoc2ReportType,
     tscs: AuditSoc2DeliverableTscsList,
@@ -931,7 +911,7 @@ export interface AuditSegment {
   /** SOC 2 report type and Trust Services Criteria for this segment, or null. */
   soc2Deliverable: AuditSoc2Deliverable | null;
 }
-export const AuditSegment = /*@__PURE__*/ S.suspend(() =>
+const AuditSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: AuditSegmentKind,
@@ -945,9 +925,7 @@ export const AuditSegment = /*@__PURE__*/ S.suspend(() =>
 
 /** The audit's scope as a list of segments. Always present. A live audit returns every in-scope program and system segment; more than one segment does not by itself imply more than one framework. Soft-deleted audits return an empty list. Prefer this over the deprecated top-level `framework` field. */
 export type AuditSegmentsList = Array<AuditSegment>;
-export const AuditSegmentsList = /*@__PURE__*/ S.Array(
-  AuditSegment,
-) as any as S.Schema<AuditSegmentsList>;
+const AuditSegmentsList = /*@__PURE__*/ S.Array(AuditSegment) as any as S.Schema<AuditSegmentsList>;
 
 export interface Audit {
   /** The unique identifier for the audit. */
@@ -989,7 +967,7 @@ export interface Audit {
   /** The audit's scope as a list of segments. Always present. A live audit returns every in-scope program and system segment; more than one segment does not by itself imply more than one framework. Soft-deleted audits return an empty list. Prefer this over the deprecated top-level `framework` field. */
   segments: AuditSegmentsList;
 }
-export const Audit = /*@__PURE__*/ S.suspend(() =>
+const Audit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     customerOrganizationName: S.String,
@@ -1021,7 +999,7 @@ export interface FlagInformationRequestEvidenceRequest {
   /** Detailed explanation of what issues were found with the evidence. This reason is visible to the customer and guides them on what to fix. Must be at least 1 character. */
   reason: string;
 }
-export const FlagInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const FlagInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -1041,7 +1019,7 @@ export const FlagInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() 
 export interface GetAuditRequest {
   auditId: string;
 }
-export const GetAuditRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}", code: 200 })),
@@ -1051,7 +1029,7 @@ export interface GetAuditEvidenceRequest {
   auditId: string;
   auditEvidenceId: string;
 }
-export const GetAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     auditEvidenceId: S.String.pipe(T.Label()),
@@ -1067,14 +1045,14 @@ export type AuditEvidenceState =
   | "NA"
   | "Not ready for audit"
   | "Ready for audit";
-export const AuditEvidenceState = S.String;
+const AuditEvidenceState = S.String;
 
 export type AuditEvidenceType = "Evidence Request" | "Policy" | "Test";
-export const AuditEvidenceType = S.String;
+const AuditEvidenceType = S.String;
 
 /** A list sections associated to the control */
 export type EvidenceControlSectionNamesList = Array<string>;
-export const EvidenceControlSectionNamesList =
+const EvidenceControlSectionNamesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<EvidenceControlSectionNamesList>;
 
 export interface EvidenceControl {
@@ -1083,7 +1061,7 @@ export interface EvidenceControl {
   /** A list sections associated to the control */
   sectionNames: EvidenceControlSectionNamesList;
 }
-export const EvidenceControl = /*@__PURE__*/ S.suspend(() =>
+const EvidenceControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     sectionNames: EvidenceControlSectionNamesList,
@@ -1092,7 +1070,7 @@ export const EvidenceControl = /*@__PURE__*/ S.suspend(() =>
 
 /** The controls associated to this evidence */
 export type EvidenceRelatedControlsList = Array<EvidenceControl>;
-export const EvidenceRelatedControlsList = /*@__PURE__*/ S.Array(
+const EvidenceRelatedControlsList = /*@__PURE__*/ S.Array(
   EvidenceControl,
 ) as any as S.Schema<EvidenceRelatedControlsList>;
 
@@ -1122,7 +1100,7 @@ export interface Evidence {
   /** The description for the evidence. It will be set to null if the evidence is deleted */
   description: string | null;
 }
-export const Evidence = /*@__PURE__*/ S.suspend(() =>
+const Evidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     externalId: S.String,
@@ -1144,7 +1122,7 @@ export interface GetAuditEvidenceCommentRequest {
   auditEvidenceId: string;
   commentId: string;
 }
-export const GetAuditEvidenceCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuditEvidenceCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     auditEvidenceId: S.String.pipe(T.Label()),
@@ -1165,7 +1143,7 @@ export interface GetCommentForInformationRequestRequest {
   requestId: string;
   commentId: string;
 }
-export const GetCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -1184,7 +1162,7 @@ export const GetCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(()
 export interface GetFrameworkCodesRequest {
   auditId: string;
 }
-export const GetFrameworkCodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFrameworkCodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/framework-codes", code: 200 })),
@@ -1192,12 +1170,12 @@ export const GetFrameworkCodesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Valid framework codes for this audit. */
 export type FrameworkCodesFrameworkCodesList = Array<string>;
-export const FrameworkCodesFrameworkCodesList =
+const FrameworkCodesFrameworkCodesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<FrameworkCodesFrameworkCodesList>;
 
 /** Valid codes for this framework, sorted. */
 export type FrameworkCodesByFrameworkCodesList = Array<string>;
-export const FrameworkCodesByFrameworkCodesList =
+const FrameworkCodesByFrameworkCodesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<FrameworkCodesByFrameworkCodesList>;
 
 export interface FrameworkCodesByFramework {
@@ -1206,7 +1184,7 @@ export interface FrameworkCodesByFramework {
   /** Valid codes for this framework, sorted. */
   codes: FrameworkCodesByFrameworkCodesList;
 }
-export const FrameworkCodesByFramework = /*@__PURE__*/ S.suspend(() =>
+const FrameworkCodesByFramework = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     framework: S.String,
     codes: FrameworkCodesByFrameworkCodesList,
@@ -1217,7 +1195,7 @@ export const FrameworkCodesByFramework = /*@__PURE__*/ S.suspend(() =>
 
 /** Valid codes grouped by each distinct in-scope framework. A code that exists on two frameworks appears in both groups. Two segments that share a framework contribute one group. `framework` is the display name. */
 export type FrameworkCodesCodesByFrameworkList = Array<FrameworkCodesByFramework>;
-export const FrameworkCodesCodesByFrameworkList = /*@__PURE__*/ S.Array(
+const FrameworkCodesCodesByFrameworkList = /*@__PURE__*/ S.Array(
   FrameworkCodesByFramework,
 ) as any as S.Schema<FrameworkCodesCodesByFrameworkList>;
 
@@ -1228,7 +1206,7 @@ export interface FrameworkCodes {
   /** Valid codes grouped by each distinct in-scope framework. A code that exists on two frameworks appears in both groups. Two segments that share a framework contribute one group. `framework` is the display name. */
   codesByFramework: FrameworkCodesCodesByFrameworkList;
 }
-export const FrameworkCodes = /*@__PURE__*/ S.suspend(() =>
+const FrameworkCodes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frameworkCodes: FrameworkCodesFrameworkCodesList,
     codesByFramework: FrameworkCodesCodesByFrameworkList,
@@ -1239,7 +1217,7 @@ export interface GetInformationRequestRequest {
   auditId: string;
   requestId: string;
 }
-export const GetInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -1255,7 +1233,7 @@ export interface GetInformationRequestEvidenceRequest {
   requestId: string;
   evidenceId: string;
 }
-export const GetInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -1279,7 +1257,7 @@ export type InformationRequestSupportedEvidenceType =
   | "VANTA_POLICY"
   | "VANTA_TEST"
   | "VANTA_TEST_SNAPSHOT";
-export const InformationRequestSupportedEvidenceType = S.String;
+const InformationRequestSupportedEvidenceType = S.String;
 
 /** Evidence in the form of an uploaded document file. The URL is a temporary presigned URL that expires after a certain period. */
 export interface UploadedDocumentEvidence {
@@ -1292,15 +1270,6 @@ export interface UploadedDocumentEvidence {
   /** A presigned URL for downloading the document. This URL is temporary and expires after a limited time. Request a new evidence list to get a fresh URL if expired. */
   url: string;
 }
-export const UploadedDocumentEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    filename: S.optional(S.String),
-    mimeType: S.String,
-    url: S.String,
-  }),
-).annotate({ identifier: "UploadedDocumentEvidence" }) as any as S.Schema<UploadedDocumentEvidence>;
-
 /** Evidence in the form of a link to external documentation or resources. */
 export interface LinkEvidence {
   /** The title or descriptive name for the link. */
@@ -1310,43 +1279,18 @@ export interface LinkEvidence {
   /** The URL pointing to the external documentation or resource. */
   url: string;
 }
-export const LinkEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    description: S.optional(S.String),
-    url: S.String,
-  }),
-).annotate({ identifier: "LinkEvidence" }) as any as S.Schema<LinkEvidence>;
-
 /** Evidence in the form of a text observation or note. */
 export interface ObservationEvidence {
   /** The text content of the observation. */
   observationDetails: string;
 }
-export const ObservationEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    observationDetails: S.String,
-  }),
-).annotate({ identifier: "ObservationEvidence" }) as any as S.Schema<ObservationEvidence>;
-
 /** Information about the user who added this file version to the document. Undefined if the user information is not available. */
 export interface VantaDocumentEvidenceAddedBy {
   email: string;
   name: string;
 }
-export const VantaDocumentEvidenceAddedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "VantaDocumentEvidenceAddedBy",
-}) as any as S.Schema<VantaDocumentEvidenceAddedBy>;
-
 /** Discriminator to identify this as an uploaded file. */
 export type VantaDocumentUploadedEvidenceType = "uploaded";
-export const VantaDocumentUploadedEvidenceType = S.String;
-
 /** Represents an uploaded file in a Vanta Document. The file is stored in Vanta's system and accessed via a presigned URL. */
 export interface VantaDocumentUploadedEvidence {
   /** Discriminator to identify this as an uploaded file. */
@@ -1360,22 +1304,8 @@ export interface VantaDocumentUploadedEvidence {
   /** A presigned URL for downloading the document. This URL is temporary and expires after a limited time. Request a new evidence list to get a fresh URL if expired. */
   url: string;
 }
-export const VantaDocumentUploadedEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: VantaDocumentUploadedEvidenceType,
-    id: S.String,
-    filename: S.optional(S.String),
-    mimeType: S.String,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "VantaDocumentUploadedEvidence",
-}) as any as S.Schema<VantaDocumentUploadedEvidence>;
-
 /** Discriminator to identify this as an external link. */
 export type VantaDocumentLinkEvidenceType = "link";
-export const VantaDocumentLinkEvidenceType = S.String;
-
 /** Represents an external link in a Vanta Document. The link points to documentation hosted outside of Vanta's system. */
 export interface VantaDocumentLinkEvidence {
   /** Discriminator to identify this as an external link. */
@@ -1385,20 +1315,8 @@ export interface VantaDocumentLinkEvidence {
   /** The URL pointing to the external documentation or resource. */
   url: string;
 }
-export const VantaDocumentLinkEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: VantaDocumentLinkEvidenceType,
-    id: S.String,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "VantaDocumentLinkEvidence",
-}) as any as S.Schema<VantaDocumentLinkEvidence>;
-
 /** The file or link associated with this document version. Use the `type` discriminator to determine whether it's an uploaded file or an external link. */
 export type VantaDocumentEvidenceFile = VantaDocumentUploadedEvidence | VantaDocumentLinkEvidence;
-export const VantaDocumentEvidenceFile = S.Unknown as any as S.Schema<VantaDocumentEvidenceFile>;
-
 /** Evidence in the form of a Vanta Document. Vanta Documents are managed documents with metadata like expiration dates and versioning. They can either be uploaded files stored in Vanta or links to external documentation. */
 export interface VantaDocumentEvidence {
   /** The title of the document as displayed in Vanta. */
@@ -1414,21 +1332,8 @@ export interface VantaDocumentEvidence {
   /** The file or link associated with this document version. Use the `type` discriminator to determine whether it's an uploaded file or an external link. */
   file: VantaDocumentEvidenceFile;
 }
-export const VantaDocumentEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    description: S.optional(S.String),
-    expirationDate: S.optional(S.String),
-    addedBy: S.optional(VantaDocumentEvidenceAddedBy),
-    documentVersionId: S.String,
-    file: VantaDocumentEvidenceFile,
-  }),
-).annotate({ identifier: "VantaDocumentEvidence" }) as any as S.Schema<VantaDocumentEvidence>;
-
 /** Information about the user who last edited this policy version. Undefined if the user information is not available. */
 export type VantaPolicyEvidenceLastEditedBy = VantaDocumentEvidenceAddedBy;
-export const VantaPolicyEvidenceLastEditedBy = VantaDocumentEvidenceAddedBy;
-
 /** The uploaded policy file for this version. */
 export interface VantaPolicyEvidenceFile {
   /** The date when this policy version became effective, or when it was created. Format: ISO 8601 UTC timestamp. */
@@ -1444,17 +1349,6 @@ export interface VantaPolicyEvidenceFile {
   /** The unique identifier for the uploaded policy file in Vanta's system. */
   id: string;
 }
-export const VantaPolicyEvidenceFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    effectiveOrCreationDate: S.String,
-    locale: S.String,
-    url: S.String,
-    mimeType: S.String,
-    filename: S.optional(S.String),
-    id: S.String,
-  }),
-).annotate({ identifier: "VantaPolicyEvidenceFile" }) as any as S.Schema<VantaPolicyEvidenceFile>;
-
 /** Evidence in the form of a Vanta Policy. Vanta Policies are compliance policies with metadata like locale, effective dates, and versioning. Policies are always uploaded files stored in Vanta's system. */
 export interface VantaPolicyEvidence {
   /** The title of the policy as displayed in Vanta. */
@@ -1474,29 +1368,12 @@ export interface VantaPolicyEvidence {
   /** The uploaded policy file for this version. */
   file: VantaPolicyEvidenceFile;
 }
-export const VantaPolicyEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    description: S.optional(S.String),
-    expirationDate: S.optional(S.String),
-    lastEditedBy: S.optional(VantaDocumentEvidenceAddedBy),
-    policyId: S.String,
-    policyVersionId: S.String,
-    policyVersionFileId: S.String,
-    file: VantaPolicyEvidenceFile,
-  }),
-).annotate({ identifier: "VantaPolicyEvidence" }) as any as S.Schema<VantaPolicyEvidence>;
-
 export type VantaTestRunStatus = "NA" | "IN_PROGRESS" | "FAIL" | "PASS" | "INVALID" | "DISABLED";
-export const VantaTestRunStatus = S.String;
-
 export type VantaTestFileType =
   | "TEST_EVIDENCE_WORKPAPER"
   | "TEST_RAW_DATA"
   | "OUT_OF_SCOPE_RESOURCES"
   | "API_REQUESTS";
-export const VantaTestFileType = S.String;
-
 /** The evidence file for this test run. */
 export interface VantaTestEvidenceFile {
   /** The MIME type of the evidence file. Common types: "application/pdf" for workpapers, "text/csv" for raw data */
@@ -1504,13 +1381,6 @@ export interface VantaTestEvidenceFile {
   /** A presigned URL for downloading the evidence file. This URL is temporary and expires after a limited time. Request a new evidence list to get a fresh URL if expired. */
   url: string;
 }
-export const VantaTestEvidenceFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mimeType: S.String,
-    url: S.String,
-  }),
-).annotate({ identifier: "VantaTestEvidenceFile" }) as any as S.Schema<VantaTestEvidenceFile>;
-
 /** Evidence in the form of a Vanta automated test run. Vanta Tests are automated compliance tests with metadata like test status, execution time, and file type. Tests generate evidence files that can be workpapers, raw data, or API request logs. */
 export interface VantaTestEvidence {
   /** The title of the test run as displayed in Vanta. */
@@ -1528,18 +1398,6 @@ export interface VantaTestEvidence {
   /** The evidence file for this test run. */
   file: VantaTestEvidenceFile;
 }
-export const VantaTestEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.String,
-    testId: S.String,
-    snapshotId: S.String,
-    testRunStatus: VantaTestRunStatus,
-    executedAt: S.String,
-    fileType: VantaTestFileType,
-    file: VantaTestEvidenceFile,
-  }),
-).annotate({ identifier: "VantaTestEvidence" }) as any as S.Schema<VantaTestEvidence>;
-
 /** The outcome status of the test run. */
 export type VantaTestSnapshotEvidenceTestRunStatus =
   | "NA"
@@ -1548,8 +1406,6 @@ export type VantaTestSnapshotEvidenceTestRunStatus =
   | "PASS"
   | "INVALID"
   | "DISABLED";
-export const VantaTestSnapshotEvidenceTestRunStatus = S.String;
-
 /** Evidence in the form of a Vanta automated test run snapshot. Unlike VantaTestEvidence (which represents a single file within a test run's evidence packet), a snapshot represents the entire test-run bundle. Use the dedicated snapshot detail endpoint to retrieve the files associated with a snapshot. */
 export interface VantaTestSnapshotEvidence {
   /** The unique identifier for the point-in-time capture of this test run's evidence. A snapshot is an immutable record of all files (workpapers, raw data, etc.) generated during a single test execution. */
@@ -1565,19 +1421,6 @@ export interface VantaTestSnapshotEvidence {
   /** The date and time when the test was executed. Format: ISO 8601 UTC timestamp. */
   testRunExecutedAt: string;
 }
-export const VantaTestSnapshotEvidence = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snapshotId: S.String,
-    testId: S.String,
-    testRunId: S.String,
-    testRunTitle: S.String,
-    testRunStatus: VantaTestSnapshotEvidenceTestRunStatus,
-    testRunExecutedAt: S.String,
-  }),
-).annotate({
-  identifier: "VantaTestSnapshotEvidence",
-}) as any as S.Schema<VantaTestSnapshotEvidence>;
-
 /** Union type representing the different forms of evidence content. The specific type is determined by the `evidenceType` field in InformationRequestEvidence. */
 export type InformationRequestEvidenceUnion =
   | UploadedDocumentEvidence
@@ -1587,7 +1430,7 @@ export type InformationRequestEvidenceUnion =
   | VantaPolicyEvidence
   | VantaTestEvidence
   | VantaTestSnapshotEvidence;
-export const InformationRequestEvidenceUnion =
+const InformationRequestEvidenceUnion =
   S.Unknown as any as S.Schema<InformationRequestEvidenceUnion>;
 
 export interface InformationRequestEvidence {
@@ -1606,7 +1449,7 @@ export interface InformationRequestEvidence {
   /** The evidence content. Structure varies based on evidenceType. */
   evidence: InformationRequestEvidenceUnion;
 }
-export const InformationRequestEvidence = /*@__PURE__*/ S.suspend(() =>
+const InformationRequestEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     evidenceType: InformationRequestSupportedEvidenceType,
@@ -1625,7 +1468,7 @@ export interface GetInformationRequestTestSnapshotEvidenceDetailRequest {
   requestId: string;
   evidenceId: string;
 }
-export const GetInformationRequestTestSnapshotEvidenceDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInformationRequestTestSnapshotEvidenceDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -1646,7 +1489,7 @@ export interface VantaTestSnapshotIntegration {
   integrationId: string;
   displayName: string;
 }
-export const VantaTestSnapshotIntegration = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.String,
     displayName: S.String,
@@ -1657,7 +1500,7 @@ export const VantaTestSnapshotIntegration = /*@__PURE__*/ S.suspend(() =>
 
 /** Integrations whose data feeds the test. */
 export type VantaTestSnapshotEvidenceDetailIntegrationsList = Array<VantaTestSnapshotIntegration>;
-export const VantaTestSnapshotEvidenceDetailIntegrationsList = /*@__PURE__*/ S.Array(
+const VantaTestSnapshotEvidenceDetailIntegrationsList = /*@__PURE__*/ S.Array(
   VantaTestSnapshotIntegration,
 ) as any as S.Schema<VantaTestSnapshotEvidenceDetailIntegrationsList>;
 
@@ -1665,7 +1508,7 @@ export interface VantaTestSnapshotSlaRemediationSettings {
   numericValue: number;
   unit: string | null;
 }
-export const VantaTestSnapshotSlaRemediationSettings = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotSlaRemediationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numericValue: S.Number,
     unit: S.NullOr(S.String),
@@ -1678,7 +1521,7 @@ export interface VantaTestSnapshotSlaRemediation {
   id: string;
   settings: VantaTestSnapshotSlaRemediationSettings | null;
 }
-export const VantaTestSnapshotSlaRemediation = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotSlaRemediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     settings: S.NullOr(VantaTestSnapshotSlaRemediationSettings),
@@ -1696,7 +1539,7 @@ export interface VantaTestSnapshotRawTestDataRow {
   /** Raw JSON payload as emitted by the test runner. Shape varies by `resourceType` for structured snapshots and matches the full test-run blob for unstructured snapshots. */
   rawJson: unknown;
 }
-export const VantaTestSnapshotRawTestDataRow = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotRawTestDataRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.NullOr(S.String),
     resourceType: S.NullOr(S.String),
@@ -1708,7 +1551,7 @@ export const VantaTestSnapshotRawTestDataRow = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw test data captured at snapshot time. */
 export type VantaTestSnapshotEvidenceDetailRawTestDataList = Array<VantaTestSnapshotRawTestDataRow>;
-export const VantaTestSnapshotEvidenceDetailRawTestDataList = /*@__PURE__*/ S.Array(
+const VantaTestSnapshotEvidenceDetailRawTestDataList = /*@__PURE__*/ S.Array(
   VantaTestSnapshotRawTestDataRow,
 ) as any as S.Schema<VantaTestSnapshotEvidenceDetailRawTestDataList>;
 
@@ -1716,7 +1559,7 @@ export interface VantaTestSnapshotExcludedItem {
   id: string;
   displayName: string | null;
 }
-export const VantaTestSnapshotExcludedItem = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotExcludedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.NullOr(S.String),
@@ -1726,7 +1569,7 @@ export const VantaTestSnapshotExcludedItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VantaTestSnapshotExcludedItem>;
 
 export type VantaTestSnapshotExcludedItemGroupEntitiesList = Array<VantaTestSnapshotExcludedItem>;
-export const VantaTestSnapshotExcludedItemGroupEntitiesList = /*@__PURE__*/ S.Array(
+const VantaTestSnapshotExcludedItemGroupEntitiesList = /*@__PURE__*/ S.Array(
   VantaTestSnapshotExcludedItem,
 ) as any as S.Schema<VantaTestSnapshotExcludedItemGroupEntitiesList>;
 
@@ -1734,7 +1577,7 @@ export interface VantaTestSnapshotExcludedItemGroup {
   reason: string;
   entities: VantaTestSnapshotExcludedItemGroupEntitiesList;
 }
-export const VantaTestSnapshotExcludedItemGroup = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotExcludedItemGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.String,
     entities: VantaTestSnapshotExcludedItemGroupEntitiesList,
@@ -1745,13 +1588,13 @@ export const VantaTestSnapshotExcludedItemGroup = /*@__PURE__*/ S.suspend(() =>
 
 export type VantaTestSnapshotOutOfScopeResourcesTestLevelList =
   Array<VantaTestSnapshotExcludedItemGroup>;
-export const VantaTestSnapshotOutOfScopeResourcesTestLevelList = /*@__PURE__*/ S.Array(
+const VantaTestSnapshotOutOfScopeResourcesTestLevelList = /*@__PURE__*/ S.Array(
   VantaTestSnapshotExcludedItemGroup,
 ) as any as S.Schema<VantaTestSnapshotOutOfScopeResourcesTestLevelList>;
 
 export type VantaTestSnapshotFrameworkExclusionGroupedByReasonList =
   Array<VantaTestSnapshotExcludedItemGroup>;
-export const VantaTestSnapshotFrameworkExclusionGroupedByReasonList =
+const VantaTestSnapshotFrameworkExclusionGroupedByReasonList =
   VantaTestSnapshotOutOfScopeResourcesTestLevelList as any as S.Schema<VantaTestSnapshotFrameworkExclusionGroupedByReasonList>;
 
 export interface VantaTestSnapshotFrameworkExclusion {
@@ -1759,7 +1602,7 @@ export interface VantaTestSnapshotFrameworkExclusion {
   frameworkName: string;
   groupedByReason: VantaTestSnapshotFrameworkExclusionGroupedByReasonList;
 }
-export const VantaTestSnapshotFrameworkExclusion = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotFrameworkExclusion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frameworkId: S.String,
     frameworkName: S.String,
@@ -1771,7 +1614,7 @@ export const VantaTestSnapshotFrameworkExclusion = /*@__PURE__*/ S.suspend(() =>
 
 export type VantaTestSnapshotOutOfScopeResourcesFrameworkLevelList =
   Array<VantaTestSnapshotFrameworkExclusion>;
-export const VantaTestSnapshotOutOfScopeResourcesFrameworkLevelList = /*@__PURE__*/ S.Array(
+const VantaTestSnapshotOutOfScopeResourcesFrameworkLevelList = /*@__PURE__*/ S.Array(
   VantaTestSnapshotFrameworkExclusion,
 ) as any as S.Schema<VantaTestSnapshotOutOfScopeResourcesFrameworkLevelList>;
 
@@ -1780,7 +1623,7 @@ export interface VantaTestSnapshotOutOfScopeResources {
   testLevel: VantaTestSnapshotOutOfScopeResourcesTestLevelList;
   frameworkLevel: VantaTestSnapshotOutOfScopeResourcesFrameworkLevelList;
 }
-export const VantaTestSnapshotOutOfScopeResources = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotOutOfScopeResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testLevel: VantaTestSnapshotOutOfScopeResourcesTestLevelList,
     frameworkLevel: VantaTestSnapshotOutOfScopeResourcesFrameworkLevelList,
@@ -1800,7 +1643,7 @@ export interface VantaTestSnapshotApiRequest {
   timestamp: string;
   dataTooLarge: boolean;
 }
-export const VantaTestSnapshotApiRequest = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     resourceType: S.String,
@@ -1817,7 +1660,7 @@ export const VantaTestSnapshotApiRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** API requests captured during the test run. Absent when the snapshot data could not be loaded. Empty array when the test does not perform API introspection. */
 export type VantaTestSnapshotEvidenceDetailApiRequestsList = Array<VantaTestSnapshotApiRequest>;
-export const VantaTestSnapshotEvidenceDetailApiRequestsList = /*@__PURE__*/ S.Array(
+const VantaTestSnapshotEvidenceDetailApiRequestsList = /*@__PURE__*/ S.Array(
   VantaTestSnapshotApiRequest,
 ) as any as S.Schema<VantaTestSnapshotEvidenceDetailApiRequestsList>;
 
@@ -1842,7 +1685,7 @@ export interface VantaTestSnapshotEvidenceDetail {
   /** API requests captured during the test run. Absent when the snapshot data could not be loaded. Empty array when the test does not perform API introspection. */
   apiRequests?: VantaTestSnapshotEvidenceDetailApiRequestsList;
 }
-export const VantaTestSnapshotEvidenceDetail = /*@__PURE__*/ S.suspend(() =>
+const VantaTestSnapshotEvidenceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testId: S.String,
     testName: S.String,
@@ -1862,7 +1705,7 @@ export interface GetOrganizationInformationRequest {
   /** The audit ID */
   auditId: string;
 }
-export const GetOrganizationInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/audits/{auditId}/organization/information", code: 200 })),
@@ -1875,7 +1718,7 @@ export interface AuditOrganizationCompanyLogo {
   /** URL to download the company logo. */
   url: string;
 }
-export const AuditOrganizationCompanyLogo = /*@__PURE__*/ S.suspend(() =>
+const AuditOrganizationCompanyLogo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -1902,7 +1745,7 @@ export interface AuditOrganizationInformation {
   /** Company logo reference (download URL), or null if no logo is uploaded. */
   companyLogo?: AuditOrganizationCompanyLogo | null;
 }
-export const AuditOrganizationInformation = /*@__PURE__*/ S.suspend(() =>
+const AuditOrganizationInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     displayName: S.String,
@@ -1921,7 +1764,7 @@ export interface GetOrganizationNotificationsRequest {
   /** The audit ID */
   auditId: string;
 }
-export const GetOrganizationNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1933,7 +1776,7 @@ export const GetOrganizationNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Channels on which the personnel reminder digest is delivered (e.g. `["EMAIL"]` or `["EMAIL", "SLACK"]`). */
 export type AuditOrganizationNotificationsSubscribedChannelTypesList = Array<string>;
-export const AuditOrganizationNotificationsSubscribedChannelTypesList =
+const AuditOrganizationNotificationsSubscribedChannelTypesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditOrganizationNotificationsSubscribedChannelTypesList>;
 
 /** A single external-notification subscription row returned by the auditor organization notifications API. Represents one mailing-list address + notification-category pairing. */
@@ -1949,7 +1792,7 @@ export interface AuditOrganizationNotificationSubscription {
   /** Whether the address is currently subscribed to receive this category's notifications. */
   toggleIsSubscribed: boolean;
 }
-export const AuditOrganizationNotificationSubscription = /*@__PURE__*/ S.suspend(() =>
+const AuditOrganizationNotificationSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     address: S.String,
@@ -1964,7 +1807,7 @@ export const AuditOrganizationNotificationSubscription = /*@__PURE__*/ S.suspend
 /** External notification subscriptions -- one row per mailing-list address plus category pairing. Covers Compliance, Vendors, Access Reviews, and Trust Center categories. */
 export type AuditOrganizationNotificationsExternalNotificationsList =
   Array<AuditOrganizationNotificationSubscription>;
-export const AuditOrganizationNotificationsExternalNotificationsList = /*@__PURE__*/ S.Array(
+const AuditOrganizationNotificationsExternalNotificationsList = /*@__PURE__*/ S.Array(
   AuditOrganizationNotificationSubscription,
 ) as any as S.Schema<AuditOrganizationNotificationsExternalNotificationsList>;
 
@@ -1981,7 +1824,7 @@ export interface AuditOrganizationNotifications {
   /** External notification subscriptions -- one row per mailing-list address plus category pairing. Covers Compliance, Vendors, Access Reviews, and Trust Center categories. */
   externalNotifications?: AuditOrganizationNotificationsExternalNotificationsList;
 }
-export const AuditOrganizationNotifications = /*@__PURE__*/ S.suspend(() =>
+const AuditOrganizationNotifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     preferredTimeZone: S.optional(S.NullOr(S.String)),
@@ -2001,7 +1844,7 @@ export interface ListAccountAccessServicesRequest {
   /** Pagination cursor from previous response */
   pageCursor?: string;
 }
-export const ListAccountAccessServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountAccessServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2028,7 +1871,7 @@ export interface AccountAccessService {
   /** Sub-account identifier for multi-account integrations, or null if not applicable. */
   subAccountId: string | null;
 }
-export const AccountAccessService = /*@__PURE__*/ S.suspend(() =>
+const AccountAccessService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     credentialDisplayName: S.String,
@@ -2038,7 +1881,7 @@ export const AccountAccessService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountAccessService" }) as any as S.Schema<AccountAccessService>;
 
 export type PaginatedResponseAccountAccessServiceResultsDataList = Array<AccountAccessService>;
-export const PaginatedResponseAccountAccessServiceResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAccountAccessServiceResultsDataList = /*@__PURE__*/ S.Array(
   AccountAccessService,
 ) as any as S.Schema<PaginatedResponseAccountAccessServiceResultsDataList>;
 
@@ -2053,7 +1896,7 @@ export interface PageInfo {
   /** The cursor that points to the start of the current page, or null if there is no such cursor. */
   startCursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endCursor: S.NullOr(S.String),
     hasNextPage: S.Boolean,
@@ -2066,7 +1909,7 @@ export interface PaginatedResponseAccountAccessServiceResults {
   data: PaginatedResponseAccountAccessServiceResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAccountAccessServiceResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAccountAccessServiceResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAccountAccessServiceResultsDataList,
     pageInfo: PageInfo,
@@ -2078,7 +1921,7 @@ export const PaginatedResponseAccountAccessServiceResults = /*@__PURE__*/ S.susp
 export interface PaginatedResponseAccountAccessService {
   results: PaginatedResponseAccountAccessServiceResults;
 }
-export const PaginatedResponseAccountAccessService = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAccountAccessService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAccountAccessServiceResults,
   }),
@@ -2093,7 +1936,7 @@ export interface ListAuditCommentsRequest {
   /** Includes all comments that have changed since changedSinceDate. */
   changedSinceDate?: string;
 }
-export const ListAuditCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2103,7 +1946,7 @@ export const ListAuditCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAuditCommentsRequest" }) as any as S.Schema<ListAuditCommentsRequest>;
 
 export type PaginatedResponseCommentResultsDataList = Array<Comment>;
-export const PaginatedResponseCommentResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseCommentResultsDataList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<PaginatedResponseCommentResultsDataList>;
 
@@ -2111,7 +1954,7 @@ export interface PaginatedResponseCommentResults {
   data: PaginatedResponseCommentResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseCommentResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseCommentResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseCommentResultsDataList,
     pageInfo: PageInfo,
@@ -2123,14 +1966,14 @@ export const PaginatedResponseCommentResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseComment {
   results: PaginatedResponseCommentResults;
 }
-export const PaginatedResponseComment = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseCommentResults,
   }),
 ).annotate({ identifier: "PaginatedResponseComment" }) as any as S.Schema<PaginatedResponseComment>;
 
 export type ListAuditControlsRequestExternalIdMatchesAnyList = Array<string>;
-export const ListAuditControlsRequestExternalIdMatchesAnyList =
+const ListAuditControlsRequestExternalIdMatchesAnyList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<ListAuditControlsRequestExternalIdMatchesAnyList>;
 
 export interface ListAuditControlsRequest {
@@ -2140,7 +1983,7 @@ export interface ListAuditControlsRequest {
   /** Filter controls whose externalId matches any of the provided values (exact, case-sensitive match). */
   externalIdMatchesAny?: ListAuditControlsRequestExternalIdMatchesAnyList;
 }
-export const ListAuditControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2153,12 +1996,12 @@ export const ListAuditControlsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The security domains that the control belongs to. */
 export type AuditorControlDomainsList = Array<string>;
-export const AuditorControlDomainsList =
+const AuditorControlDomainsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditorControlDomainsList>;
 
 /** The control's custom field values, if control custom fields is included in your Vanta instance. */
 export type AuditorControlCustomFieldsList = Array<CustomField>;
-export const AuditorControlCustomFieldsList =
+const AuditorControlCustomFieldsList =
   AuditorApiControlCustomFieldsList as any as S.Schema<AuditorControlCustomFieldsList>;
 
 export interface SectionPrinciple {
@@ -2167,7 +2010,7 @@ export interface SectionPrinciple {
   /** The principle's name. */
   name: string;
 }
-export const SectionPrinciple = /*@__PURE__*/ S.suspend(() =>
+const SectionPrinciple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -2182,7 +2025,7 @@ export interface Section {
   /** The principle that groups this section, if any. */
   principle: SectionPrinciple | null;
 }
-export const Section = /*@__PURE__*/ S.suspend(() =>
+const Section = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     framework: S.String,
@@ -2192,13 +2035,13 @@ export const Section = /*@__PURE__*/ S.suspend(() =>
 
 /** Current framework sections this control satisfies within the audit segments in which it is in scope. */
 export type AuditorControlSectionsList = Array<Section>;
-export const AuditorControlSectionsList = /*@__PURE__*/ S.Array(
+const AuditorControlSectionsList = /*@__PURE__*/ S.Array(
   Section,
 ) as any as S.Schema<AuditorControlSectionsList>;
 
 /** Audit segments in which this control is in scope. This can differ from current framework mappings, and the array can be empty. */
 export type AuditorControlInScopeSegmentIdsList = Array<string>;
-export const AuditorControlInScopeSegmentIdsList =
+const AuditorControlInScopeSegmentIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditorControlInScopeSegmentIdsList>;
 
 /** An auditor's assessment of a control within an audit. This is the full flat union of every framework's assessment states (the superset); the selected segment's framework determines which subset applies. `NOT_ASSESSED` is shared by all frameworks and is the default for a control that has not yet been assessed. Which states apply to which framework: - Most frameworks (e.g. SOC 2): `IN_PLACE`, `NOT_IN_PLACE`, `PARTIAL`, `NOT_ASSESSED` - ISO 27001: `CONFORMING`, `MINOR_NON_CONFORMITY`, `MAJOR_NON_CONFORMITY`, `NOT_ASSESSED` - FedRAMP: `SATISFIED`, `NOT_SATISFIED`, `OTHER_THAN_SATISFIED`, `NOT_ASSESSED` - FedRAMP Key Security Indicators (KSI): `TRUE`, `FALSE`, `PARTIAL`, `NOT_ASSESSED` Distinct from `ControlStatus`, which is the computed tests/documents-passing status -- a different concept. */
@@ -2215,7 +2058,7 @@ export type AuditControlAssessmentState =
   | "OTHER_THAN_SATISFIED"
   | "TRUE"
   | "FALSE";
-export const AuditControlAssessmentState = S.String;
+const AuditControlAssessmentState = S.String;
 
 /** An auditor's assessment of a control within one audit segment. Assessments can be recorded for any segment on the audit, `PROGRAM` or `SYSTEM`, and a control can carry a distinct assessment per segment. A segment with no recorded assessment returns `NOT_ASSESSED` with a `null` justification. */
 export interface AuditControlAssessment {
@@ -2226,7 +2069,7 @@ export interface AuditControlAssessment {
   /** Free-text reasoning for the assessment; `null` when none has been recorded. */
   justification: string | null;
 }
-export const AuditControlAssessment = /*@__PURE__*/ S.suspend(() =>
+const AuditControlAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     segmentId: S.String,
     assessmentState: AuditControlAssessmentState,
@@ -2236,7 +2079,7 @@ export const AuditControlAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** The auditor's assessments of this control, with one entry for each segment in `inScopeSegmentIds`, which can be any segment on the audit, `PROGRAM` or `SYSTEM`. Populated only for IRL audits when assessment access is allowed; empty otherwise. A segment with no recorded assessment returns `NOT_ASSESSED`. */
 export type AuditorControlAssessmentsList = Array<AuditControlAssessment>;
-export const AuditorControlAssessmentsList = /*@__PURE__*/ S.Array(
+const AuditorControlAssessmentsList = /*@__PURE__*/ S.Array(
   AuditControlAssessment,
 ) as any as S.Schema<AuditorControlAssessmentsList>;
 
@@ -2272,7 +2115,7 @@ export interface AuditorControl {
   /** The auditor's assessments of this control, with one entry for each segment in `inScopeSegmentIds`, which can be any segment on the audit, `PROGRAM` or `SYSTEM`. Populated only for IRL audits when assessment access is allowed; empty otherwise. A segment with no recorded assessment returns `NOT_ASSESSED`. */
   assessments: AuditorControlAssessmentsList;
 }
-export const AuditorControl = /*@__PURE__*/ S.suspend(() =>
+const AuditorControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     externalId: S.NullOr(S.String),
@@ -2293,7 +2136,7 @@ export const AuditorControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditorControl" }) as any as S.Schema<AuditorControl>;
 
 export type PaginatedResponseAuditorControlResultsDataList = Array<AuditorControl>;
-export const PaginatedResponseAuditorControlResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAuditorControlResultsDataList = /*@__PURE__*/ S.Array(
   AuditorControl,
 ) as any as S.Schema<PaginatedResponseAuditorControlResultsDataList>;
 
@@ -2301,7 +2144,7 @@ export interface PaginatedResponseAuditorControlResults {
   data: PaginatedResponseAuditorControlResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAuditorControlResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditorControlResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAuditorControlResultsDataList,
     pageInfo: PageInfo,
@@ -2313,7 +2156,7 @@ export const PaginatedResponseAuditorControlResults = /*@__PURE__*/ S.suspend(()
 export interface PaginatedResponseAuditorControl {
   results: PaginatedResponseAuditorControlResults;
 }
-export const PaginatedResponseAuditorControl = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditorControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAuditorControlResults,
   }),
@@ -2328,7 +2171,7 @@ export interface ListAuditEvidenceRequest {
   /** Includes all audit evidence that have changed since changedSinceDate. */
   changedSinceDate?: string;
 }
-export const ListAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2338,7 +2181,7 @@ export const ListAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAuditEvidenceRequest" }) as any as S.Schema<ListAuditEvidenceRequest>;
 
 export type PaginatedResponseEvidenceResultsDataList = Array<Evidence>;
-export const PaginatedResponseEvidenceResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseEvidenceResultsDataList = /*@__PURE__*/ S.Array(
   Evidence,
 ) as any as S.Schema<PaginatedResponseEvidenceResultsDataList>;
 
@@ -2346,7 +2189,7 @@ export interface PaginatedResponseEvidenceResults {
   data: PaginatedResponseEvidenceResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseEvidenceResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseEvidenceResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseEvidenceResultsDataList,
     pageInfo: PageInfo,
@@ -2358,7 +2201,7 @@ export const PaginatedResponseEvidenceResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseEvidence {
   results: PaginatedResponseEvidenceResults;
 }
-export const PaginatedResponseEvidence = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseEvidenceResults,
   }),
@@ -2372,7 +2215,7 @@ export interface ListAuditEvidenceUrlsRequest {
   pageSize?: number;
   pageCursor?: string;
 }
-export const ListAuditEvidenceUrlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditEvidenceUrlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     auditEvidenceId: S.String.pipe(T.Label()),
@@ -2397,7 +2240,7 @@ export interface EvidenceUrl {
   /** MIME type of the evidence file (e.g., "application/pdf", "image/png") */
   mimeType: string | null;
 }
-export const EvidenceUrl = /*@__PURE__*/ S.suspend(() =>
+const EvidenceUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     url: S.String,
@@ -2408,7 +2251,7 @@ export const EvidenceUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvidenceUrl" }) as any as S.Schema<EvidenceUrl>;
 
 export type PaginatedResponseEvidenceUrlResultsDataList = Array<EvidenceUrl>;
-export const PaginatedResponseEvidenceUrlResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseEvidenceUrlResultsDataList = /*@__PURE__*/ S.Array(
   EvidenceUrl,
 ) as any as S.Schema<PaginatedResponseEvidenceUrlResultsDataList>;
 
@@ -2416,7 +2259,7 @@ export interface PaginatedResponseEvidenceUrlResults {
   data: PaginatedResponseEvidenceUrlResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseEvidenceUrlResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseEvidenceUrlResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseEvidenceUrlResultsDataList,
     pageInfo: PageInfo,
@@ -2428,7 +2271,7 @@ export const PaginatedResponseEvidenceUrlResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseEvidenceUrl {
   results: PaginatedResponseEvidenceUrlResults;
 }
-export const PaginatedResponseEvidenceUrl = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseEvidenceUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseEvidenceUrlResults,
   }),
@@ -2437,16 +2280,16 @@ export const PaginatedResponseEvidenceUrl = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseEvidenceUrl>;
 
 export type ListAuditIssuesRequestSnapshotIdMatchesAnyList = Array<string>;
-export const ListAuditIssuesRequestSnapshotIdMatchesAnyList =
+const ListAuditIssuesRequestSnapshotIdMatchesAnyList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<ListAuditIssuesRequestSnapshotIdMatchesAnyList>;
 
 /** Allowed values for the `orderBy` query parameter on issue snapshot item endpoints. */
 export type IssueSnapshotItemOrderBy = "createdAt" | "lastModifiedAt" | "detectedAt";
-export const IssueSnapshotItemOrderBy = S.String;
+const IssueSnapshotItemOrderBy = S.String;
 
 /** `"asc"` for ascending, `"desc"` for descending. */
 export type OrderDirection = "asc" | "desc";
-export const OrderDirection = S.String;
+const OrderDirection = S.String;
 
 export interface ListAuditIssuesRequest {
   /** The audit ID */
@@ -2472,7 +2315,7 @@ export interface ListAuditIssuesRequest {
   /** Sort direction: "asc" or "desc". Default: "desc" */
   orderDirection?: OrderDirection | (string & {});
 }
-export const ListAuditIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2495,7 +2338,7 @@ export type IssueStatusTypeForSnapshot =
   | "NOT_STARTED"
   | "PENDING_REVIEW"
   | "CLOSED";
-export const IssueStatusTypeForSnapshot = S.String;
+const IssueStatusTypeForSnapshot = S.String;
 
 /** Approval progress for an issue at the time the snapshot was captured. */
 export interface IssueSnapshotItemApprovalProgress {
@@ -2504,7 +2347,7 @@ export interface IssueSnapshotItemApprovalProgress {
   /** The total number of approvers in the issue's approval chain. */
   totalApprovers: number;
 }
-export const IssueSnapshotItemApprovalProgress = /*@__PURE__*/ S.suspend(() =>
+const IssueSnapshotItemApprovalProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvedCount: S.Number,
     totalApprovers: S.Number,
@@ -2539,7 +2382,7 @@ export interface IssueSnapshotItem {
   /** The date and time when the issue was detected. */
   detectedAt?: string;
 }
-export const IssueSnapshotItem = /*@__PURE__*/ S.suspend(() =>
+const IssueSnapshotItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.optional(S.String),
@@ -2557,7 +2400,7 @@ export const IssueSnapshotItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueSnapshotItem" }) as any as S.Schema<IssueSnapshotItem>;
 
 export type PaginatedResponseIssueSnapshotItemResultsDataList = Array<IssueSnapshotItem>;
-export const PaginatedResponseIssueSnapshotItemResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseIssueSnapshotItemResultsDataList = /*@__PURE__*/ S.Array(
   IssueSnapshotItem,
 ) as any as S.Schema<PaginatedResponseIssueSnapshotItemResultsDataList>;
 
@@ -2565,7 +2408,7 @@ export interface PaginatedResponseIssueSnapshotItemResults {
   data: PaginatedResponseIssueSnapshotItemResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseIssueSnapshotItemResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseIssueSnapshotItemResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseIssueSnapshotItemResultsDataList,
     pageInfo: PageInfo,
@@ -2577,7 +2420,7 @@ export const PaginatedResponseIssueSnapshotItemResults = /*@__PURE__*/ S.suspend
 export interface PaginatedResponseIssueSnapshotItem {
   results: PaginatedResponseIssueSnapshotItemResults;
 }
-export const PaginatedResponseIssueSnapshotItem = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseIssueSnapshotItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseIssueSnapshotItemResults,
   }),
@@ -2596,7 +2439,7 @@ export type RiskOrderBy =
   | "categories"
   | "ciaCategories"
   | "identified";
-export const RiskOrderBy = S.String;
+const RiskOrderBy = S.String;
 
 export interface ListAuditRisksRequest {
   /** The audit ID */
@@ -2614,7 +2457,7 @@ export interface ListAuditRisksRequest {
   /** Sort direction: "asc" or "desc". Default: "desc" */
   orderDirection?: OrderDirection | (string & {});
 }
-export const ListAuditRisksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditRisksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     snapshotId: S.String.pipe(T.Label()),
@@ -2628,11 +2471,11 @@ export const ListAuditRisksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Risk treatment strategy returned by the auditor API. */
 export type AuditRiskTreatment = "ACCEPT" | "AVOID" | "MITIGATE" | "TRANSFER";
-export const AuditRiskTreatment = S.String;
+const AuditRiskTreatment = S.String;
 
 /** Treatment implementation status returned by the auditor API. */
 export type AuditRiskTreatmentStatus = "IN_PROGRESS" | "DONE";
-export const AuditRiskTreatmentStatus = S.String;
+const AuditRiskTreatmentStatus = S.String;
 
 /** Risk scenario review status returned by the auditor API. */
 export type AuditRiskReviewStatus =
@@ -2642,7 +2485,7 @@ export type AuditRiskReviewStatus =
   | "AWAITING_SUBMISSION"
   | "PENDING_APPROVAL"
   | "REQUESTED_CHANGES";
-export const AuditRiskReviewStatus = S.String;
+const AuditRiskReviewStatus = S.String;
 
 /** Owner information for a risk. */
 export interface AuditRiskOwner {
@@ -2651,7 +2494,7 @@ export interface AuditRiskOwner {
   /** URL of the owner's profile image, or null if not available. */
   imageUrl: string | null;
 }
-export const AuditRiskOwner = /*@__PURE__*/ S.suspend(() =>
+const AuditRiskOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     imageUrl: S.NullOr(S.String),
@@ -2660,21 +2503,19 @@ export const AuditRiskOwner = /*@__PURE__*/ S.suspend(() =>
 
 /** Risk category names, or empty array if not categorized. */
 export type AuditRiskCategoriesList = Array<string>;
-export const AuditRiskCategoriesList =
+const AuditRiskCategoriesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditRiskCategoriesList>;
 
 /** CIA triad category returned by the auditor API. */
 export type AuditRiskCia = "AVAILABILITY" | "CONFIDENTIALITY" | "INTEGRITY";
-export const AuditRiskCia = S.String;
-
 /** CIA triad categories, or empty array if not categorized. */
 export type AuditRiskCiaCategoriesList = Array<AuditRiskCia>;
-export const AuditRiskCiaCategoriesList =
+const AuditRiskCiaCategoriesList =
   AuditSoc2DeliverableTscsList as any as S.Schema<AuditRiskCiaCategoriesList>;
 
 /** IDs of controls linked to this risk scenario, or empty array if none. Full Audit View only - omitted in Controlled Audit View. */
 export type AuditRiskLinkedControlIdsList = Array<string>;
-export const AuditRiskLinkedControlIdsList =
+const AuditRiskLinkedControlIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditRiskLinkedControlIdsList>;
 
 /** A risk record from the risk population. `id` and `riskId` are required. All other fields are optional to support customizable field visibility. Omitted keys mean the column is not in the response; `null` means the column is present but empty. */
@@ -2710,7 +2551,7 @@ export interface AuditRisk {
   /** When the risk was identified, or null if not recorded. ISO 8601 format. */
   identified?: string | null;
 }
-export const AuditRisk = /*@__PURE__*/ S.suspend(() =>
+const AuditRisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     riskId: S.NullOr(S.String),
@@ -2731,7 +2572,7 @@ export const AuditRisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditRisk" }) as any as S.Schema<AuditRisk>;
 
 export type PaginatedResponseAuditRiskResultsDataList = Array<AuditRisk>;
-export const PaginatedResponseAuditRiskResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAuditRiskResultsDataList = /*@__PURE__*/ S.Array(
   AuditRisk,
 ) as any as S.Schema<PaginatedResponseAuditRiskResultsDataList>;
 
@@ -2739,7 +2580,7 @@ export interface PaginatedResponseAuditRiskResults {
   data: PaginatedResponseAuditRiskResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAuditRiskResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditRiskResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAuditRiskResultsDataList,
     pageInfo: PageInfo,
@@ -2751,7 +2592,7 @@ export const PaginatedResponseAuditRiskResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseAuditRisk {
   results: PaginatedResponseAuditRiskResults;
 }
-export const PaginatedResponseAuditRisk = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditRisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAuditRiskResults,
   }),
@@ -2767,7 +2608,7 @@ export interface ListAuditsRequest {
   /** Includes only audits with no audit report uploaded */
   isActiveAudit?: boolean;
 }
-export const ListAuditsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageCursor: S.optional(S.String.pipe(T.Query())),
@@ -2777,7 +2618,7 @@ export const ListAuditsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAuditsRequest" }) as any as S.Schema<ListAuditsRequest>;
 
 export type PaginatedResponseAuditResultsDataList = Array<Audit>;
-export const PaginatedResponseAuditResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAuditResultsDataList = /*@__PURE__*/ S.Array(
   Audit,
 ) as any as S.Schema<PaginatedResponseAuditResultsDataList>;
 
@@ -2785,7 +2626,7 @@ export interface PaginatedResponseAuditResults {
   data: PaginatedResponseAuditResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAuditResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAuditResultsDataList,
     pageInfo: PageInfo,
@@ -2797,7 +2638,7 @@ export const PaginatedResponseAuditResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseAudit {
   results: PaginatedResponseAuditResults;
 }
-export const PaginatedResponseAudit = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAudit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAuditResults,
   }),
@@ -2813,7 +2654,7 @@ export interface ListAuditSnapshotsRequest {
   /** Search term for filtering by snapshot title and description */
   search?: string;
 }
-export const ListAuditSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2834,7 +2675,7 @@ export interface IssueSnapshotMetadata {
   /** The date and time when the snapshot was created. */
   createdAt?: string;
 }
-export const IssueSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
+const IssueSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.optional(S.String),
@@ -2844,7 +2685,7 @@ export const IssueSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueSnapshotMetadata" }) as any as S.Schema<IssueSnapshotMetadata>;
 
 export type PaginatedResponseIssueSnapshotMetadataResultsDataList = Array<IssueSnapshotMetadata>;
-export const PaginatedResponseIssueSnapshotMetadataResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseIssueSnapshotMetadataResultsDataList = /*@__PURE__*/ S.Array(
   IssueSnapshotMetadata,
 ) as any as S.Schema<PaginatedResponseIssueSnapshotMetadataResultsDataList>;
 
@@ -2852,7 +2693,7 @@ export interface PaginatedResponseIssueSnapshotMetadataResults {
   data: PaginatedResponseIssueSnapshotMetadataResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseIssueSnapshotMetadataResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseIssueSnapshotMetadataResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseIssueSnapshotMetadataResultsDataList,
     pageInfo: PageInfo,
@@ -2864,7 +2705,7 @@ export const PaginatedResponseIssueSnapshotMetadataResults = /*@__PURE__*/ S.sus
 export interface PaginatedResponseIssueSnapshotMetadata {
   results: PaginatedResponseIssueSnapshotMetadataResults;
 }
-export const PaginatedResponseIssueSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseIssueSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseIssueSnapshotMetadataResults,
   }),
@@ -2874,12 +2715,10 @@ export const PaginatedResponseIssueSnapshotMetadata = /*@__PURE__*/ S.suspend(()
 
 /** Version control source service name for code changes. */
 export type ApiCodeChangeSource = "github" | "gitlab" | "bitbucket" | "azuredevops";
-export const ApiCodeChangeSource = S.String;
-
 export type ListCodeChangesRequestSourcesMatchesAnyList = Array<
   ApiCodeChangeSource | (string & {})
 >;
-export const ListCodeChangesRequestSourcesMatchesAnyList =
+const ListCodeChangesRequestSourcesMatchesAnyList =
   AuditSoc2DeliverableTscsList as any as S.Schema<ListCodeChangesRequestSourcesMatchesAnyList>;
 
 export interface ListCodeChangesRequest {
@@ -2898,7 +2737,7 @@ export interface ListCodeChangesRequest {
   /** Filter code changes closed on or before this date (ISO 8601) */
   closedBeforeDate?: string;
 }
-export const ListCodeChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCodeChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2927,7 +2766,7 @@ export interface CodeChange {
   /** Date the code change was merged/closed. */
   closedAt?: string;
 }
-export const CodeChange = /*@__PURE__*/ S.suspend(() =>
+const CodeChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     codeChange: S.String,
@@ -2940,7 +2779,7 @@ export const CodeChange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeChange" }) as any as S.Schema<CodeChange>;
 
 export type PaginatedResponseCodeChangeResultsDataList = Array<CodeChange>;
-export const PaginatedResponseCodeChangeResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseCodeChangeResultsDataList = /*@__PURE__*/ S.Array(
   CodeChange,
 ) as any as S.Schema<PaginatedResponseCodeChangeResultsDataList>;
 
@@ -2948,7 +2787,7 @@ export interface PaginatedResponseCodeChangeResults {
   data: PaginatedResponseCodeChangeResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseCodeChangeResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseCodeChangeResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseCodeChangeResultsDataList,
     pageInfo: PageInfo,
@@ -2960,7 +2799,7 @@ export const PaginatedResponseCodeChangeResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseCodeChange {
   results: PaginatedResponseCodeChangeResults;
 }
-export const PaginatedResponseCodeChange = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseCodeChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseCodeChangeResults,
   }),
@@ -2978,7 +2817,7 @@ export interface ListCommentsForControlRequest {
   /** Includes all comments that have changed since changedSinceDate. Considers creationDate, modificationDate, and deletionDate timestamps when determining changes. */
   changedSinceDate?: string;
 }
-export const ListCommentsForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -2993,7 +2832,7 @@ export const ListCommentsForControlRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommentsForControlRequest>;
 
 export type PaginatedResponseAuditControlCommentResultsDataList = Array<AuditControlComment>;
-export const PaginatedResponseAuditControlCommentResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAuditControlCommentResultsDataList = /*@__PURE__*/ S.Array(
   AuditControlComment,
 ) as any as S.Schema<PaginatedResponseAuditControlCommentResultsDataList>;
 
@@ -3001,7 +2840,7 @@ export interface PaginatedResponseAuditControlCommentResults {
   data: PaginatedResponseAuditControlCommentResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAuditControlCommentResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditControlCommentResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAuditControlCommentResultsDataList,
     pageInfo: PageInfo,
@@ -3013,7 +2852,7 @@ export const PaginatedResponseAuditControlCommentResults = /*@__PURE__*/ S.suspe
 export interface PaginatedResponseAuditControlComment {
   results: PaginatedResponseAuditControlCommentResults;
 }
-export const PaginatedResponseAuditControlComment = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditControlComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAuditControlCommentResults,
   }),
@@ -3031,7 +2870,7 @@ export interface ListCommentsForInformationRequestRequest {
   /** Includes all comments that have changed since changedSinceDate. Considers creationDate, modificationDate, and deletionDate timestamps when determining changes. */
   changedSinceDate?: string;
 }
-export const ListCommentsForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -3051,7 +2890,7 @@ export const ListCommentsForInformationRequestRequest = /*@__PURE__*/ S.suspend(
 
 export type PaginatedResponseInformationRequestCommentResultsDataList =
   Array<InformationRequestComment>;
-export const PaginatedResponseInformationRequestCommentResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseInformationRequestCommentResultsDataList = /*@__PURE__*/ S.Array(
   InformationRequestComment,
 ) as any as S.Schema<PaginatedResponseInformationRequestCommentResultsDataList>;
 
@@ -3059,7 +2898,7 @@ export interface PaginatedResponseInformationRequestCommentResults {
   data: PaginatedResponseInformationRequestCommentResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseInformationRequestCommentResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseInformationRequestCommentResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseInformationRequestCommentResultsDataList,
     pageInfo: PageInfo,
@@ -3071,7 +2910,7 @@ export const PaginatedResponseInformationRequestCommentResults = /*@__PURE__*/ S
 export interface PaginatedResponseInformationRequestComment {
   results: PaginatedResponseInformationRequestCommentResults;
 }
-export const PaginatedResponseInformationRequestComment = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseInformationRequestComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseInformationRequestCommentResults,
   }),
@@ -3089,7 +2928,7 @@ export interface ListInformationRequestActivityRequest {
   /** Includes activity logs that have changed since changedSinceDate. */
   changedSinceDate?: string;
 }
-export const ListInformationRequestActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInformationRequestActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -3115,7 +2954,7 @@ export type InformationRequestActivityType =
   | "REMOVE_EVIDENCE"
   | "SHARE_EVIDENCE_WITH_AUDITOR"
   | "UPLOAD_EVIDENCE";
-export const InformationRequestActivityType = S.String;
+const InformationRequestActivityType = S.String;
 
 /** Previous approval status before the status change. Only populated for status change activities. Null for all other activity types. */
 export type InformationRequestActivityLogOldStatus =
@@ -3124,7 +2963,7 @@ export type InformationRequestActivityLogOldStatus =
   | "AUDITOR_APPROVED"
   | "AUDITOR_FLAGGED"
   | "READY_FOR_INTERNAL_REVIEW";
-export const InformationRequestActivityLogOldStatus = S.String;
+const InformationRequestActivityLogOldStatus = S.String;
 
 /** New approval status after the status change. Only populated for status change activities. Null for all other activity types. */
 export type InformationRequestActivityLogNewStatus =
@@ -3133,10 +2972,10 @@ export type InformationRequestActivityLogNewStatus =
   | "AUDITOR_APPROVED"
   | "AUDITOR_FLAGGED"
   | "READY_FOR_INTERNAL_REVIEW";
-export const InformationRequestActivityLogNewStatus = S.String;
+const InformationRequestActivityLogNewStatus = S.String;
 
 export type EvidenceFillOutcome = "SUCCESS" | "PARTIAL" | "FAILED";
-export const EvidenceFillOutcome = S.String;
+const EvidenceFillOutcome = S.String;
 
 /** Activity log entry tracking changes and actions on an information request. The activity log provides an audit trail of operations performed on an information request, including status changes, evidence uploads, edits, and evidence sharing. This enables tracking compliance activities and understanding the request's history. Which entries are visible depends on the endpoint returning them; see the endpoint's own description. */
 export interface InformationRequestActivityLog {
@@ -3161,7 +3000,7 @@ export interface InformationRequestActivityLog {
   /** Identifier of the audit this request's audit was duplicated from. Only populated for audit-duplication trail activities. Null for all other activity types. Format: ObjectId as a string. */
   sourceAuditId: string | null;
 }
-export const InformationRequestActivityLog = /*@__PURE__*/ S.suspend(() =>
+const InformationRequestActivityLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     activityType: InformationRequestActivityType,
@@ -3180,7 +3019,7 @@ export const InformationRequestActivityLog = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedResponseInformationRequestActivityLogResultsDataList =
   Array<InformationRequestActivityLog>;
-export const PaginatedResponseInformationRequestActivityLogResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseInformationRequestActivityLogResultsDataList = /*@__PURE__*/ S.Array(
   InformationRequestActivityLog,
 ) as any as S.Schema<PaginatedResponseInformationRequestActivityLogResultsDataList>;
 
@@ -3188,7 +3027,7 @@ export interface PaginatedResponseInformationRequestActivityLogResults {
   data: PaginatedResponseInformationRequestActivityLogResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseInformationRequestActivityLogResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseInformationRequestActivityLogResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseInformationRequestActivityLogResultsDataList,
     pageInfo: PageInfo,
@@ -3200,7 +3039,7 @@ export const PaginatedResponseInformationRequestActivityLogResults = /*@__PURE__
 export interface PaginatedResponseInformationRequestActivityLog {
   results: PaginatedResponseInformationRequestActivityLogResults;
 }
-export const PaginatedResponseInformationRequestActivityLog = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseInformationRequestActivityLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseInformationRequestActivityLogResults,
   }),
@@ -3211,10 +3050,9 @@ export const PaginatedResponseInformationRequestActivityLog = /*@__PURE__*/ S.su
 export type ListInformationRequestEvidenceRequestEvidenceTypeMatchesAnyList = Array<
   InformationRequestSupportedEvidenceType | (string & {})
 >;
-export const ListInformationRequestEvidenceRequestEvidenceTypeMatchesAnyList =
-  /*@__PURE__*/ S.Array(
-    InformationRequestSupportedEvidenceType,
-  ) as any as S.Schema<ListInformationRequestEvidenceRequestEvidenceTypeMatchesAnyList>;
+const ListInformationRequestEvidenceRequestEvidenceTypeMatchesAnyList = /*@__PURE__*/ S.Array(
+  InformationRequestSupportedEvidenceType,
+) as any as S.Schema<ListInformationRequestEvidenceRequestEvidenceTypeMatchesAnyList>;
 
 export interface ListInformationRequestEvidenceRequest {
   auditId: string;
@@ -3228,7 +3066,7 @@ export interface ListInformationRequestEvidenceRequest {
   /** Limits results to the provided evidence types. Must include at least one of: UPLOADED_DOCUMENT, OBSERVATION, LINK, VANTA_DOCUMENT, VANTA_POLICY, VANTA_TEST, VANTA_TEST_SNAPSHOT. */
   evidenceTypeMatchesAny?: ListInformationRequestEvidenceRequestEvidenceTypeMatchesAnyList;
 }
-export const ListInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -3251,7 +3089,7 @@ export const ListInformationRequestEvidenceRequest = /*@__PURE__*/ S.suspend(() 
 
 export type PaginatedResponseInformationRequestEvidenceResultsDataList =
   Array<InformationRequestEvidence>;
-export const PaginatedResponseInformationRequestEvidenceResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseInformationRequestEvidenceResultsDataList = /*@__PURE__*/ S.Array(
   InformationRequestEvidence,
 ) as any as S.Schema<PaginatedResponseInformationRequestEvidenceResultsDataList>;
 
@@ -3259,7 +3097,7 @@ export interface PaginatedResponseInformationRequestEvidenceResults {
   data: PaginatedResponseInformationRequestEvidenceResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseInformationRequestEvidenceResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseInformationRequestEvidenceResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseInformationRequestEvidenceResultsDataList,
     pageInfo: PageInfo,
@@ -3271,7 +3109,7 @@ export const PaginatedResponseInformationRequestEvidenceResults = /*@__PURE__*/ 
 export interface PaginatedResponseInformationRequestEvidence {
   results: PaginatedResponseInformationRequestEvidenceResults;
 }
-export const PaginatedResponseInformationRequestEvidence = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseInformationRequestEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseInformationRequestEvidenceResults,
   }),
@@ -3280,7 +3118,7 @@ export const PaginatedResponseInformationRequestEvidence = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PaginatedResponseInformationRequestEvidence>;
 
 export type ListInformationRequestsRequestSegmentIdsMatchesAnyList = Array<string>;
-export const ListInformationRequestsRequestSegmentIdsMatchesAnyList =
+const ListInformationRequestsRequestSegmentIdsMatchesAnyList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<ListInformationRequestsRequestSegmentIdsMatchesAnyList>;
 
 export interface ListInformationRequestsRequest {
@@ -3294,7 +3132,7 @@ export interface ListInformationRequestsRequest {
   /** Return requests whose stored segment assignment includes any of these IDs (OR). Omit to return all. A match can still come back with `segmentIds: []` if the stored ID is no longer in the audit's scope. */
   segmentIdsMatchesAny?: ListInformationRequestsRequestSegmentIdsMatchesAnyList;
 }
-export const ListInformationRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInformationRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3309,7 +3147,7 @@ export const ListInformationRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInformationRequestsRequest>;
 
 export type PaginatedResponseInformationRequestResultsDataList = Array<InformationRequest>;
-export const PaginatedResponseInformationRequestResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseInformationRequestResultsDataList = /*@__PURE__*/ S.Array(
   InformationRequest,
 ) as any as S.Schema<PaginatedResponseInformationRequestResultsDataList>;
 
@@ -3317,7 +3155,7 @@ export interface PaginatedResponseInformationRequestResults {
   data: PaginatedResponseInformationRequestResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseInformationRequestResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseInformationRequestResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseInformationRequestResultsDataList,
     pageInfo: PageInfo,
@@ -3329,7 +3167,7 @@ export const PaginatedResponseInformationRequestResults = /*@__PURE__*/ S.suspen
 export interface PaginatedResponseInformationRequest {
   results: PaginatedResponseInformationRequestResults;
 }
-export const PaginatedResponseInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseInformationRequestResults,
   }),
@@ -3345,7 +3183,7 @@ export interface ListInformationRequestsForControlRequest {
   /** Pagination cursor from a previous response. Provide to fetch the next page of results. */
   pageCursor?: string;
 }
-export const ListInformationRequestsForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInformationRequestsForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -3384,10 +3222,8 @@ export type AuditIntegrationTag =
   | "VENDOR_DISCOVERY"
   | "VENDOR_PROCUREMENT"
   | "VULNERABILITIES";
-export const AuditIntegrationTag = S.String;
-
 export type ListIntegrationsRequestTagsMatchesAnyList = Array<AuditIntegrationTag | (string & {})>;
-export const ListIntegrationsRequestTagsMatchesAnyList =
+const ListIntegrationsRequestTagsMatchesAnyList =
   AuditSoc2DeliverableTscsList as any as S.Schema<ListIntegrationsRequestTagsMatchesAnyList>;
 
 export type AuditIntegrationCategory =
@@ -3413,12 +3249,10 @@ export type AuditIntegrationCategory =
   | "TASK_TRACKER"
   | "VERSION_CONTROL_SYSTEM"
   | "VULNERABILITY_SCANNER";
-export const AuditIntegrationCategory = S.String;
-
 export type ListIntegrationsRequestCategoriesMatchesAnyList = Array<
   AuditIntegrationCategory | (string & {})
 >;
-export const ListIntegrationsRequestCategoriesMatchesAnyList =
+const ListIntegrationsRequestCategoriesMatchesAnyList =
   AuditSoc2DeliverableTscsList as any as S.Schema<ListIntegrationsRequestCategoriesMatchesAnyList>;
 
 export interface ListIntegrationsRequest {
@@ -3435,7 +3269,7 @@ export interface ListIntegrationsRequest {
   /** Filter integrations by category values */
   categoriesMatchesAny?: ListIntegrationsRequestCategoriesMatchesAnyList;
 }
-export const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3450,12 +3284,12 @@ export const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Integration tag display names describing what data this integration provides. */
 export type AuditIntegrationTagsList = Array<string>;
-export const AuditIntegrationTagsList =
+const AuditIntegrationTagsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditIntegrationTagsList>;
 
 /** Category display names describing what the integration is used for. */
 export type AuditIntegrationCategoriesList = Array<string>;
-export const AuditIntegrationCategoriesList =
+const AuditIntegrationCategoriesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AuditIntegrationCategoriesList>;
 
 /** Integration row returned by the auditor integrations API. `id` and `name` are always present. Other fields are optional to support controlled audits where only approved columns are returned. */
@@ -3469,7 +3303,7 @@ export interface AuditIntegration {
   /** Category display names describing what the integration is used for. */
   categories?: AuditIntegrationCategoriesList;
 }
-export const AuditIntegration = /*@__PURE__*/ S.suspend(() =>
+const AuditIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3479,7 +3313,7 @@ export const AuditIntegration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditIntegration" }) as any as S.Schema<AuditIntegration>;
 
 export type PaginatedResponseAuditIntegrationResultsDataList = Array<AuditIntegration>;
-export const PaginatedResponseAuditIntegrationResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAuditIntegrationResultsDataList = /*@__PURE__*/ S.Array(
   AuditIntegration,
 ) as any as S.Schema<PaginatedResponseAuditIntegrationResultsDataList>;
 
@@ -3487,7 +3321,7 @@ export interface PaginatedResponseAuditIntegrationResults {
   data: PaginatedResponseAuditIntegrationResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAuditIntegrationResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditIntegrationResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAuditIntegrationResultsDataList,
     pageInfo: PageInfo,
@@ -3499,7 +3333,7 @@ export const PaginatedResponseAuditIntegrationResults = /*@__PURE__*/ S.suspend(
 export interface PaginatedResponseAuditIntegration {
   results: PaginatedResponseAuditIntegrationResults;
 }
-export const PaginatedResponseAuditIntegration = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAuditIntegrationResults,
   }),
@@ -3509,7 +3343,7 @@ export const PaginatedResponseAuditIntegration = /*@__PURE__*/ S.suspend(() =>
 
 /** Account status values for account access records. Unified status enum that covers all service types. */
 export type AccountAccessStatus = "ACTIVE" | "DEACTIVATED" | "UNKNOWN";
-export const AccountAccessStatus = S.String;
+const AccountAccessStatus = S.String;
 
 export interface ListPersonnelAccountAccessRequest {
   /** The audit ID */
@@ -3525,7 +3359,7 @@ export interface ListPersonnelAccountAccessRequest {
   /** Filter by account status */
   status?: AccountAccessStatus | (string & {});
 }
-export const ListPersonnelAccountAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPersonnelAccountAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     serviceId: S.String.pipe(T.Label()),
@@ -3546,7 +3380,7 @@ export const ListPersonnelAccountAccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Account roles; empty array when the column is visible but has no roles. */
 export type AccountAccessRoleList = Array<string>;
-export const AccountAccessRoleList =
+const AccountAccessRoleList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<AccountAccessRoleList>;
 
 /** Account access record from personnel population. This unified interface represents account access data from all service types: - IDP services (Okta, Azure AD, Google Workspace, etc.) - First-party account services (AWS, Azure, GCP, Oracle Cloud, etc.) - Role grants services (GCP, Azure role grants) - Received/third-party applications Only `id` and `accountName` are always present. Other fields are optional so disallowed columns can be omitted (for example under controlled audit view). When an optional field is present, `null` means the column is visible but empty (only fields that are nullable in population data use `null`). */
@@ -3568,7 +3402,7 @@ export interface AccountAccess {
   /** Account deactivation date when present, or null when active. */
   deactivatedDate?: string | null;
 }
-export const AccountAccess = /*@__PURE__*/ S.suspend(() =>
+const AccountAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     accountName: S.String,
@@ -3582,7 +3416,7 @@ export const AccountAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountAccess" }) as any as S.Schema<AccountAccess>;
 
 export type PaginatedResponseAccountAccessResultsDataList = Array<AccountAccess>;
-export const PaginatedResponseAccountAccessResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAccountAccessResultsDataList = /*@__PURE__*/ S.Array(
   AccountAccess,
 ) as any as S.Schema<PaginatedResponseAccountAccessResultsDataList>;
 
@@ -3590,7 +3424,7 @@ export interface PaginatedResponseAccountAccessResults {
   data: PaginatedResponseAccountAccessResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAccountAccessResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAccountAccessResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAccountAccessResultsDataList,
     pageInfo: PageInfo,
@@ -3602,7 +3436,7 @@ export const PaginatedResponseAccountAccessResults = /*@__PURE__*/ S.suspend(() 
 export interface PaginatedResponseAccountAccess {
   results: PaginatedResponseAccountAccessResults;
 }
-export const PaginatedResponseAccountAccess = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAccountAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAccountAccessResults,
   }),
@@ -3611,11 +3445,11 @@ export const PaginatedResponseAccountAccess = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedResponseAccountAccess>;
 
 export type ListPersonnelGroupsRequestSourcesMatchesAnyList = Array<string>;
-export const ListPersonnelGroupsRequestSourcesMatchesAnyList =
+const ListPersonnelGroupsRequestSourcesMatchesAnyList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<ListPersonnelGroupsRequestSourcesMatchesAnyList>;
 
 export type GroupOrderBy = "name" | "members" | "source" | "tasksLastUpdated" | "pointOfContact";
-export const GroupOrderBy = S.String;
+const GroupOrderBy = S.String;
 
 export interface ListPersonnelGroupsRequest {
   /** The audit ID */
@@ -3633,7 +3467,7 @@ export interface ListPersonnelGroupsRequest {
   /** Sort direction: "asc" or "desc". Default: "asc" */
   orderDirection?: OrderDirection | (string & {});
 }
-export const ListPersonnelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPersonnelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3652,7 +3486,7 @@ export interface PersonnelGroupTask {
   /** Task name */
   name: string;
 }
-export const PersonnelGroupTask = /*@__PURE__*/ S.suspend(() =>
+const PersonnelGroupTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -3660,7 +3494,7 @@ export const PersonnelGroupTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Security tasks enabled for this group, or empty array if not available. */
 export type PersonnelGroupTasksList = Array<PersonnelGroupTask>;
-export const PersonnelGroupTasksList = /*@__PURE__*/ S.Array(
+const PersonnelGroupTasksList = /*@__PURE__*/ S.Array(
   PersonnelGroupTask,
 ) as any as S.Schema<PersonnelGroupTasksList>;
 
@@ -3681,7 +3515,7 @@ export interface PersonnelGroup {
   /** Display name of the group's designated point of contact, or null if not set. */
   pointOfContact?: string | null;
 }
-export const PersonnelGroup = /*@__PURE__*/ S.suspend(() =>
+const PersonnelGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3694,7 +3528,7 @@ export const PersonnelGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PersonnelGroup" }) as any as S.Schema<PersonnelGroup>;
 
 export type PaginatedResponsePersonnelGroupResultsDataList = Array<PersonnelGroup>;
-export const PaginatedResponsePersonnelGroupResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponsePersonnelGroupResultsDataList = /*@__PURE__*/ S.Array(
   PersonnelGroup,
 ) as any as S.Schema<PaginatedResponsePersonnelGroupResultsDataList>;
 
@@ -3702,7 +3536,7 @@ export interface PaginatedResponsePersonnelGroupResults {
   data: PaginatedResponsePersonnelGroupResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponsePersonnelGroupResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponsePersonnelGroupResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponsePersonnelGroupResultsDataList,
     pageInfo: PageInfo,
@@ -3714,7 +3548,7 @@ export const PaginatedResponsePersonnelGroupResults = /*@__PURE__*/ S.suspend(()
 export interface PaginatedResponsePersonnelGroup {
   results: PaginatedResponsePersonnelGroupResults;
 }
-export const PaginatedResponsePersonnelGroup = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponsePersonnelGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponsePersonnelGroupResults,
   }),
@@ -3730,14 +3564,14 @@ export type PeopleEmploymentStatus =
   | "ON_LEAVE"
   | "PREVIOUSLY_EMPLOYED"
   | "UPCOMING_EMPLOYEE";
-export const PeopleEmploymentStatus = S.String;
+const PeopleEmploymentStatus = S.String;
 
 export type ListPersonnelPeopleRequestGroupsMatchesAnyList = Array<string>;
-export const ListPersonnelPeopleRequestGroupsMatchesAnyList =
+const ListPersonnelPeopleRequestGroupsMatchesAnyList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<ListPersonnelPeopleRequestGroupsMatchesAnyList>;
 
 export type PeopleOrderBy = "name" | "employmentStatus";
-export const PeopleOrderBy = S.String;
+const PeopleOrderBy = S.String;
 
 export interface ListPersonnelPeopleRequest {
   /** The audit ID */
@@ -3757,7 +3591,7 @@ export interface ListPersonnelPeopleRequest {
   /** Sort direction: "asc" or "desc". Default: "asc" */
   orderDirection?: OrderDirection | (string & {});
 }
-export const ListPersonnelPeopleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPersonnelPeopleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3775,7 +3609,7 @@ export const ListPersonnelPeopleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PersonnelPersonGroupsItem {
   name: string;
 }
-export const PersonnelPersonGroupsItem = /*@__PURE__*/ S.suspend(() =>
+const PersonnelPersonGroupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -3785,7 +3619,7 @@ export const PersonnelPersonGroupsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Groups (roles) the person belongs to. Present only when the column is in the response; use an empty array when there are no groups. */
 export type PersonnelPersonGroupsList = Array<PersonnelPersonGroupsItem>;
-export const PersonnelPersonGroupsList = /*@__PURE__*/ S.Array(
+const PersonnelPersonGroupsList = /*@__PURE__*/ S.Array(
   PersonnelPersonGroupsItem,
 ) as any as S.Schema<PersonnelPersonGroupsList>;
 
@@ -3796,7 +3630,7 @@ export interface PeopleSourceInfo {
   /** Supplementary source, or null if none. */
   supplementarySource: string | null;
 }
-export const PeopleSourceInfo = /*@__PURE__*/ S.suspend(() =>
+const PeopleSourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mainSource: S.String,
     supplementarySource: S.NullOr(S.String),
@@ -3813,7 +3647,7 @@ export type PeopleTaskStatus =
   | "SECURITY_TASKS_COMPLETE"
   | "SECURITY_TASKS_DUE_SOON"
   | "SECURITY_TASKS_OVERDUE";
-export const PeopleTaskStatus = S.String;
+const PeopleTaskStatus = S.String;
 
 /** Overall task status information for a person. Full Audit View only - omitted in Controlled Audit View. */
 export interface PeopleTaskStatusInfo {
@@ -3830,7 +3664,7 @@ export interface PeopleTaskStatusInfo {
   /** Count of tasks due soon, or null if not available. */
   numTasksDueSoon: number | null;
 }
-export const PeopleTaskStatusInfo = /*@__PURE__*/ S.suspend(() =>
+const PeopleTaskStatusInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: PeopleTaskStatus,
     dueDate: S.NullOr(S.String),
@@ -3847,7 +3681,7 @@ export type PeopleSecurityTaskStatus =
   | "SECURITY_TASKS_COMPLETE"
   | "SECURITY_TASKS_DUE_SOON"
   | "SECURITY_TASKS_OVERDUE";
-export const PeopleSecurityTaskStatus = S.String;
+const PeopleSecurityTaskStatus = S.String;
 
 /** Security task details for a specific task category. Full Audit View only - omitted in Controlled Audit View. */
 export interface PeopleSecurityTaskDetails {
@@ -3858,7 +3692,7 @@ export interface PeopleSecurityTaskDetails {
   /** Completion date for completed task in ISO 8601 format, or null if incomplete. */
   completionDate: string | null;
 }
-export const PeopleSecurityTaskDetails = /*@__PURE__*/ S.suspend(() =>
+const PeopleSecurityTaskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: PeopleSecurityTaskStatus,
     dueDate: S.NullOr(S.String),
@@ -3905,7 +3739,7 @@ export interface PersonnelPerson {
   /** Custom offboarding task details, or null if not available. Full Audit View only - omitted in Controlled Audit View. */
   customOffboarding?: PeopleSecurityTaskDetails | null;
 }
-export const PersonnelPerson = /*@__PURE__*/ S.suspend(() =>
+const PersonnelPerson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3928,7 +3762,7 @@ export const PersonnelPerson = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PersonnelPerson" }) as any as S.Schema<PersonnelPerson>;
 
 export type PaginatedResponsePersonnelPersonResultsDataList = Array<PersonnelPerson>;
-export const PaginatedResponsePersonnelPersonResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponsePersonnelPersonResultsDataList = /*@__PURE__*/ S.Array(
   PersonnelPerson,
 ) as any as S.Schema<PaginatedResponsePersonnelPersonResultsDataList>;
 
@@ -3936,7 +3770,7 @@ export interface PaginatedResponsePersonnelPersonResults {
   data: PaginatedResponsePersonnelPersonResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponsePersonnelPersonResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponsePersonnelPersonResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponsePersonnelPersonResultsDataList,
     pageInfo: PageInfo,
@@ -3948,7 +3782,7 @@ export const PaginatedResponsePersonnelPersonResults = /*@__PURE__*/ S.suspend((
 export interface PaginatedResponsePersonnelPerson {
   results: PaginatedResponsePersonnelPersonResults;
 }
-export const PaginatedResponsePersonnelPerson = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponsePersonnelPerson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponsePersonnelPersonResults,
   }),
@@ -3964,7 +3798,7 @@ export interface ListRiskSnapshotsRequest {
   /** Pagination cursor from previous response */
   pageCursor?: string;
 }
-export const ListRiskSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRiskSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3979,7 +3813,7 @@ export interface RiskSnapshot {
   /** The date and time when this risk snapshot was created. */
   createdAt: string;
 }
-export const RiskSnapshot = /*@__PURE__*/ S.suspend(() =>
+const RiskSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -3987,7 +3821,7 @@ export const RiskSnapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RiskSnapshot" }) as any as S.Schema<RiskSnapshot>;
 
 export type PaginatedResponseRiskSnapshotResultsDataList = Array<RiskSnapshot>;
-export const PaginatedResponseRiskSnapshotResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseRiskSnapshotResultsDataList = /*@__PURE__*/ S.Array(
   RiskSnapshot,
 ) as any as S.Schema<PaginatedResponseRiskSnapshotResultsDataList>;
 
@@ -3995,7 +3829,7 @@ export interface PaginatedResponseRiskSnapshotResults {
   data: PaginatedResponseRiskSnapshotResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseRiskSnapshotResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseRiskSnapshotResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseRiskSnapshotResultsDataList,
     pageInfo: PageInfo,
@@ -4007,7 +3841,7 @@ export const PaginatedResponseRiskSnapshotResults = /*@__PURE__*/ S.suspend(() =
 export interface PaginatedResponseRiskSnapshot {
   results: PaginatedResponseRiskSnapshotResults;
 }
-export const PaginatedResponseRiskSnapshot = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseRiskSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseRiskSnapshotResults,
   }),
@@ -4018,7 +3852,7 @@ export const PaginatedResponseRiskSnapshot = /*@__PURE__*/ S.suspend(() =>
 export interface ListShareInformationRequestRequest {
   auditId: string;
 }
-export const ListShareInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ListShareInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4029,25 +3863,25 @@ export const ListShareInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListShareInformationRequestRequest>;
 
 export type AuditVendorStatus = "ACTIVE" | "ARCHIVED" | "IN_PROCUREMENT";
-export const AuditVendorStatus = S.String;
+const AuditVendorStatus = S.String;
 
 export type ListVendorsRequestVendorStatusesMatchesAnyList = Array<
   AuditVendorStatus | (string & {})
 >;
-export const ListVendorsRequestVendorStatusesMatchesAnyList =
+const ListVendorsRequestVendorStatusesMatchesAnyList =
   AuditSoc2DeliverableTscsList as any as S.Schema<ListVendorsRequestVendorStatusesMatchesAnyList>;
 
 export type AuditVendorRiskLevel = "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "UNSCORED";
-export const AuditVendorRiskLevel = S.String;
+const AuditVendorRiskLevel = S.String;
 
 export type ListVendorsRequestInherentRiskMatchesAnyList = Array<
   AuditVendorRiskLevel | (string & {})
 >;
-export const ListVendorsRequestInherentRiskMatchesAnyList =
+const ListVendorsRequestInherentRiskMatchesAnyList =
   AuditSoc2DeliverableTscsList as any as S.Schema<ListVendorsRequestInherentRiskMatchesAnyList>;
 
 export type VendorOrderBy = "name" | "inherentRisk";
-export const VendorOrderBy = S.String;
+const VendorOrderBy = S.String;
 
 export interface ListVendorsRequest {
   /** The audit ID */
@@ -4067,7 +3901,7 @@ export interface ListVendorsRequest {
   /** Sort direction: "asc" or "desc". Default: "asc" */
   orderDirection?: OrderDirection | (string & {});
 }
-export const ListVendorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVendorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4089,7 +3923,7 @@ export interface AuditVendorDataAgreements {
   total: number;
   complete: number;
 }
-export const AuditVendorDataAgreements = /*@__PURE__*/ S.suspend(() =>
+const AuditVendorDataAgreements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     complete: S.Number,
@@ -4121,7 +3955,7 @@ export interface AuditVendor {
   /** BAA/DPA document completion counts, or null if no such documents are required. Full Audit View only - omitted in Controlled Audit View. */
   dataAgreements?: AuditVendorDataAgreements | null;
 }
-export const AuditVendor = /*@__PURE__*/ S.suspend(() =>
+const AuditVendor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -4137,7 +3971,7 @@ export const AuditVendor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditVendor" }) as any as S.Schema<AuditVendor>;
 
 export type PaginatedResponseAuditVendorResultsDataList = Array<AuditVendor>;
-export const PaginatedResponseAuditVendorResultsDataList = /*@__PURE__*/ S.Array(
+const PaginatedResponseAuditVendorResultsDataList = /*@__PURE__*/ S.Array(
   AuditVendor,
 ) as any as S.Schema<PaginatedResponseAuditVendorResultsDataList>;
 
@@ -4145,7 +3979,7 @@ export interface PaginatedResponseAuditVendorResults {
   data: PaginatedResponseAuditVendorResultsDataList;
   pageInfo: PageInfo;
 }
-export const PaginatedResponseAuditVendorResults = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditVendorResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedResponseAuditVendorResultsDataList,
     pageInfo: PageInfo,
@@ -4157,7 +3991,7 @@ export const PaginatedResponseAuditVendorResults = /*@__PURE__*/ S.suspend(() =>
 export interface PaginatedResponseAuditVendor {
   results: PaginatedResponseAuditVendorResults;
 }
-export const PaginatedResponseAuditVendor = /*@__PURE__*/ S.suspend(() =>
+const PaginatedResponseAuditVendor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginatedResponseAuditVendorResults,
   }),
@@ -4171,7 +4005,7 @@ export type AuditorEnabledStateTransition =
   | "FLAG"
   | "MARK_NA"
   | "READY_FOR_AUDIT";
-export const AuditorEnabledStateTransition = S.String;
+const AuditorEnabledStateTransition = S.String;
 
 export interface UpdateAuditEvidenceRequestStatusUpdate {
   /** Email of the auditor who changed the state */
@@ -4179,7 +4013,7 @@ export interface UpdateAuditEvidenceRequestStatusUpdate {
   /** State change for audit evidence */
   stateTransition: AuditorEnabledStateTransition | (string & {});
 }
-export const UpdateAuditEvidenceRequestStatusUpdate = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuditEvidenceRequestStatusUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditorEmail: S.String,
     stateTransition: AuditorEnabledStateTransition,
@@ -4193,7 +4027,7 @@ export interface UpdateAuditEvidenceRequest {
   auditEvidenceId: string;
   statusUpdate?: UpdateAuditEvidenceRequestStatusUpdate;
 }
-export const UpdateAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAuditEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     auditEvidenceId: S.String.pipe(T.Label()),
@@ -4214,7 +4048,7 @@ export interface UpdateCommentForControlRequest {
   /** Email address of the comment author. Must match an existing Vanta user who belongs to the audit firm making the API request. This email uniquely identifies the author across systems. */
   email: string;
 }
-export const UpdateCommentForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -4241,7 +4075,7 @@ export interface UpdateCommentForInformationRequestRequest {
   /** Email address of the comment author. Must match an existing Vanta user who belongs to the audit firm making the API request. This email uniquely identifies the author across systems. */
   email: string;
 }
-export const UpdateCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -4261,17 +4095,17 @@ export const UpdateCommentForInformationRequestRequest = /*@__PURE__*/ S.suspend
 
 /** Framework codes are assigned only at creation; on update this field is a silent no-op -- a value sent here is accepted for backwards compatibility but ignored, leaving the request's framework codes unchanged. */
 export type UpdateInformationRequestRequestFrameworkCodesList = Array<string>;
-export const UpdateInformationRequestRequestFrameworkCodesList =
+const UpdateInformationRequestRequestFrameworkCodesList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<UpdateInformationRequestRequestFrameworkCodesList>;
 
 /** This legacy field is accepted for backwards compatibility but ignored. Use `linkedControlIds` to replace the complete set of linked controls. */
 export type UpdateInformationRequestRequestAdditionalControlIdsList = Array<string>;
-export const UpdateInformationRequestRequestAdditionalControlIdsList =
+const UpdateInformationRequestRequestAdditionalControlIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<UpdateInformationRequestRequestAdditionalControlIdsList>;
 
 /** The complete desired set of control IDs linked to this request. Send the full list to replace the set, an empty array to clear it, or omit the property to leave links unchanged. Each ID must identify an existing control in the customer's organization and is returned by the audit controls endpoint. The request is rejected if any ID does not match a control. */
 export type UpdateInformationRequestRequestLinkedControlIdsList = Array<string>;
-export const UpdateInformationRequestRequestLinkedControlIdsList =
+const UpdateInformationRequestRequestLinkedControlIdsList =
   InformationRequestAdditionalControlIdsList as any as S.Schema<UpdateInformationRequestRequestLinkedControlIdsList>;
 
 export interface UpdateInformationRequestRequest {
@@ -4296,7 +4130,7 @@ export interface UpdateInformationRequestRequest {
   /** The complete desired set of control IDs linked to this request. Send the full list to replace the set, an empty array to clear it, or omit the property to leave links unchanged. Each ID must identify an existing control in the customer's organization and is returned by the audit controls endpoint. The request is rejected if any ID does not match a control. */
   linkedControlIds?: UpdateInformationRequestRequestLinkedControlIdsList;
 }
-export const UpdateInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInformationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     requestId: S.String.pipe(T.Label()),
@@ -4332,7 +4166,7 @@ export interface UpsertAssessmentForControlRequest {
   /** Email of the auditor performing the assessment. Must match an existing Vanta user who belongs to the audit firm making the API request. */
   auditorEmail: string;
 }
-export const UpsertAssessmentForControlRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertAssessmentForControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditId: S.String.pipe(T.Label()),
     controlId: S.String.pipe(T.Label()),
@@ -4358,7 +4192,7 @@ export interface AuditorControlAssessment {
   /** The recorded justification. */
   justification: string;
 }
-export const AuditorControlAssessment = /*@__PURE__*/ S.suspend(() =>
+const AuditorControlAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controlId: S.String,
     segmentId: S.String,

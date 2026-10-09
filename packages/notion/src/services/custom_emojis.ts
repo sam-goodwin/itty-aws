@@ -14,7 +14,7 @@ export interface ListCustomEmojisRequest {
   page_size?: number;
   name?: string;
 }
-export const ListCustomEmojisRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomEmojisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_cursor: S.optional(S.String.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -30,7 +30,7 @@ export interface CustomEmojiResponse {
   /** The URL of the custom emoji. */
   url: string;
 }
-export const CustomEmojiResponse = /*@__PURE__*/ S.suspend(() =>
+const CustomEmojiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -40,7 +40,7 @@ export const CustomEmojiResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of custom emojis. */
 export type ListCustomEmojisResponseResultsList = Array<CustomEmojiResponse>;
-export const ListCustomEmojisResponseResultsList = /*@__PURE__*/ S.Array(
+const ListCustomEmojisResponseResultsList = /*@__PURE__*/ S.Array(
   CustomEmojiResponse,
 ) as any as S.Schema<ListCustomEmojisResponseResultsList>;
 
@@ -56,7 +56,7 @@ export interface ListCustomEmojisResponse {
   /** The cursor to use for the next page of results, or null if there are no more results. */
   next_cursor: string | null;
 }
-export const ListCustomEmojisResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomEmojisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     type: S.String,

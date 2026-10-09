@@ -37,13 +37,13 @@ export class NotFound
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type CreateSubscriptionRequestDashboardExportInsightsList = Array<number>;
-export const CreateSubscriptionRequestDashboardExportInsightsList = /*@__PURE__*/ S.Array(
+const CreateSubscriptionRequestDashboardExportInsightsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateSubscriptionRequestDashboardExportInsightsList>;
 
 /** * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
 export type SubscriptionAIWindowModeEnum = "since_last_sent" | "last_n_days" | "days_ago_range";
-export const SubscriptionAIWindowModeEnum = S.String;
+const SubscriptionAIWindowModeEnum = S.String;
 
 export interface AIWindowConfig {
   /** What the report analyzes each run: * `since_last_sent` (default) -- everything since the previous successful scheduled delivery (gap-free; test/manual sends don't move the anchor) * `last_n_days` -- a fixed trailing window of start_days_ago days * `days_ago_range` -- the explicit range from start_days_ago to end_days_ago days ago * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
@@ -53,7 +53,7 @@ export interface AIWindowConfig {
   /** Upper bound of the analysis window, in days before the run (0 = now). Required for 'days_ago_range' and must be less than start_days_ago; ignored for other modes. 0-365. */
   end_days_ago?: number | null;
 }
-export const AIWindowConfig = /*@__PURE__*/ S.suspend(() =>
+const AIWindowConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(SubscriptionAIWindowModeEnum),
     start_days_ago: S.optional(S.NullOr(S.Number)),
@@ -65,7 +65,7 @@ export interface AIPromptConfig {
   /** Analysis window for the report. Omitted = 'since_last_sent' (everything since the previous scheduled delivery). */
   window?: AIWindowConfig;
 }
-export const AIPromptConfig = /*@__PURE__*/ S.suspend(() =>
+const AIPromptConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     window: S.optional(AIWindowConfig),
   }),
@@ -74,44 +74,28 @@ export const AIPromptConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSubscriptionRequestContextsItemCase0 {
   dashboard_id: number;
 }
-export const CreateSubscriptionRequestContextsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashboard_id: S.Number,
-  }),
-).annotate({
-  identifier: "CreateSubscriptionRequestContextsItemCase0",
-}) as any as S.Schema<CreateSubscriptionRequestContextsItemCase0>;
-
 export interface CreateSubscriptionRequestContextsItemCase1 {
   insight_id: number;
 }
-export const CreateSubscriptionRequestContextsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insight_id: S.Number,
-  }),
-).annotate({
-  identifier: "CreateSubscriptionRequestContextsItemCase1",
-}) as any as S.Schema<CreateSubscriptionRequestContextsItemCase1>;
-
 export type CreateSubscriptionRequestContextsItem =
   | CreateSubscriptionRequestContextsItemCase0
   | CreateSubscriptionRequestContextsItemCase1;
-export const CreateSubscriptionRequestContextsItem =
+const CreateSubscriptionRequestContextsItem =
   S.Unknown as any as S.Schema<CreateSubscriptionRequestContextsItem>;
 
 /** Complete dashboard and insight context for an AI report. Omit on PATCH to preserve, pass an empty list to clear, or pass up to 3 items to replace all contexts. */
 export type CreateSubscriptionRequestContextsList = Array<CreateSubscriptionRequestContextsItem>;
-export const CreateSubscriptionRequestContextsList = /*@__PURE__*/ S.Array(
+const CreateSubscriptionRequestContextsList = /*@__PURE__*/ S.Array(
   CreateSubscriptionRequestContextsItem,
 ) as any as S.Schema<CreateSubscriptionRequestContextsList>;
 
 /** * `email` - Email * `slack` - Slack * `teams` - Microsoft Teams */
 export type SubscriptionTargetEnum = "email" | "slack" | "teams";
-export const SubscriptionTargetEnum = S.String;
+const SubscriptionTargetEnum = S.String;
 
 /** * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type RecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
-export const RecurrenceIntervalEnum = S.String;
+const RecurrenceIntervalEnum = S.String;
 
 /** * `monday` - Monday * `tuesday` - Tuesday * `wednesday` - Wednesday * `thursday` - Thursday * `friday` - Friday * `saturday` - Saturday * `sunday` - Sunday */
 export type CreateSubscriptionRequestByweekdayItem =
@@ -122,13 +106,13 @@ export type CreateSubscriptionRequestByweekdayItem =
   | "friday"
   | "saturday"
   | "sunday";
-export const CreateSubscriptionRequestByweekdayItem = S.String;
+const CreateSubscriptionRequestByweekdayItem = S.String;
 
 /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type CreateSubscriptionRequestByweekdayList = Array<
   CreateSubscriptionRequestByweekdayItem | (string & {})
 >;
-export const CreateSubscriptionRequestByweekdayList = /*@__PURE__*/ S.Array(
+const CreateSubscriptionRequestByweekdayList = /*@__PURE__*/ S.Array(
   CreateSubscriptionRequestByweekdayItem,
 ) as any as S.Schema<CreateSubscriptionRequestByweekdayList>;
 
@@ -145,7 +129,7 @@ export interface DeliveryConfig {
   /** Prompt subscriptions only: include PostHog product guidance. Defaults to true when omitted. Only a Slack report renders the guidance. Email and Microsoft Teams reports leave it out and accept the option without an error, unlike post_all_insights_in_main_message. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that. */
   include_posthog_hint?: boolean;
 }
-export const DeliveryConfig = /*@__PURE__*/ S.suspend(() =>
+const DeliveryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     post_all_insights_in_main_message: S.optional(S.Boolean),
     include_images: S.optional(S.Boolean),
@@ -207,7 +191,7 @@ export interface CreateSubscriptionRequest {
   /** Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option's own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options. */
   delivery_config?: DeliveryConfig;
 }
-export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     dashboard: S.optional(S.NullOr(S.Number)),
@@ -241,11 +225,11 @@ export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `insight` - Insight * `dashboard` - Dashboard * `ai_prompt` - AI prompt */
 export type SubscriptionResourceTypeEnum = "insight" | "dashboard" | "ai_prompt";
-export const SubscriptionResourceTypeEnum = S.String;
+const SubscriptionResourceTypeEnum = S.String;
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type SubscriptionOutputDashboardExportInsightsList = Array<number>;
-export const SubscriptionOutputDashboardExportInsightsList =
+const SubscriptionOutputDashboardExportInsightsList =
   CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<SubscriptionOutputDashboardExportInsightsList>;
 
 export interface SubscriptionDashboardContext {
@@ -254,15 +238,6 @@ export interface SubscriptionDashboardContext {
   /** Current display name of the context dashboard. */
   dashboard_name: string;
 }
-export const SubscriptionDashboardContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashboard_id: S.Number,
-    dashboard_name: S.String,
-  }),
-).annotate({
-  identifier: "SubscriptionDashboardContext",
-}) as any as S.Schema<SubscriptionDashboardContext>;
-
 export interface SubscriptionInsightContext {
   /** Database ID of the context insight. */
   insight_id: number;
@@ -271,27 +246,17 @@ export interface SubscriptionInsightContext {
   /** Current display name of the context insight. */
   insight_name: string;
 }
-export const SubscriptionInsightContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insight_id: S.Number,
-    insight_short_id: S.String,
-    insight_name: S.String,
-  }),
-).annotate({
-  identifier: "SubscriptionInsightContext",
-}) as any as S.Schema<SubscriptionInsightContext>;
-
 export type SubscriptionContext = SubscriptionDashboardContext | SubscriptionInsightContext;
-export const SubscriptionContext = S.Unknown as any as S.Schema<SubscriptionContext>;
+const SubscriptionContext = S.Unknown as any as S.Schema<SubscriptionContext>;
 
 /** Dashboards and insights that ground this AI report. Deleted resources are omitted. */
 export type SubscriptionOutputContextsList = Array<SubscriptionContext>;
-export const SubscriptionOutputContextsList = /*@__PURE__*/ S.Array(
+const SubscriptionOutputContextsList = /*@__PURE__*/ S.Array(
   SubscriptionContext,
 ) as any as S.Schema<SubscriptionOutputContextsList>;
 
 export type AIQueryPlanStatusEnum = "frozen" | "not_frozen" | "planner_updated";
-export const AIQueryPlanStatusEnum = S.String;
+const AIQueryPlanStatusEnum = S.String;
 
 /** * `monday` - Monday * `tuesday` - Tuesday * `wednesday` - Wednesday * `thursday` - Thursday * `friday` - Friday * `saturday` - Saturday * `sunday` - Sunday */
 export type SubscriptionOutputByweekdayItem =
@@ -302,15 +267,13 @@ export type SubscriptionOutputByweekdayItem =
   | "friday"
   | "saturday"
   | "sunday";
-export const SubscriptionOutputByweekdayItem = S.String;
-
 /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type SubscriptionOutputByweekdayList = Array<SubscriptionOutputByweekdayItem>;
-export const SubscriptionOutputByweekdayList =
+const SubscriptionOutputByweekdayList =
   CreateSubscriptionRequestByweekdayList as any as S.Schema<SubscriptionOutputByweekdayList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -326,14 +289,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -346,7 +304,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -421,7 +379,7 @@ export interface SubscriptionOutput {
   /** Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option's own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options. */
   delivery_config?: DeliveryConfig;
 }
-export const SubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     resource_type: S.optional(SubscriptionResourceTypeEnum),
@@ -464,7 +422,7 @@ export interface CreateSubscriptionsTestDeliveryRequest {
   /** A unique integer value identifying this subscription. */
   id: number;
 }
-export const CreateSubscriptionsTestDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionsTestDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -480,7 +438,7 @@ export const CreateSubscriptionsTestDeliveryRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateSubscriptionsTestDeliveryRequest>;
 
 export interface CreateSubscriptionsTestDeliveryResponse {}
-export const CreateSubscriptionsTestDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionsTestDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateSubscriptionsTestDeliveryResponse",
@@ -492,7 +450,7 @@ export interface GetSubscriptionRequest {
   /** A unique integer value identifying this subscription. */
   id: number;
 }
-export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -508,7 +466,7 @@ export interface GetSubscriptionsDeliveryRequest {
   /** A UUID string identifying this subscription delivery. */
   id: string;
 }
-export const GetSubscriptionsDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     subscription_id: S.Number.pipe(T.Label()),
@@ -526,12 +484,12 @@ export const GetSubscriptionsDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ExportedAsset ids generated for this send. */
 export type SubscriptionDeliveryExportedAssetIdsList = Array<number>;
-export const SubscriptionDeliveryExportedAssetIdsList =
+const SubscriptionDeliveryExportedAssetIdsList =
   CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<SubscriptionDeliveryExportedAssetIdsList>;
 
 /** * `starting` - Starting * `completed` - Completed * `failed` - Failed * `skipped` - Skipped */
 export type SubscriptionDeliveryStatusEnum = "starting" | "completed" | "failed" | "skipped";
-export const SubscriptionDeliveryStatusEnum = S.String;
+const SubscriptionDeliveryStatusEnum = S.String;
 
 export interface AIReportQueryDiagnostic {
   /** What this query step was meant to compute. */
@@ -547,7 +505,7 @@ export interface AIReportQueryDiagnostic {
   /** Human-readable failure reason, present only for query errors safe to surface to the subscription owner (e.g. an unresolved field name); null on success and for internal errors, which expose error_type only. */
   human_readable_error?: string | null;
 }
-export const AIReportQueryDiagnostic = /*@__PURE__*/ S.suspend(() =>
+const AIReportQueryDiagnostic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     hogql: S.String,
@@ -560,7 +518,7 @@ export const AIReportQueryDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics. */
 export type SubscriptionDeliveryAiReportDiagnosticsList = Array<AIReportQueryDiagnostic>;
-export const SubscriptionDeliveryAiReportDiagnosticsList = /*@__PURE__*/ S.Array(
+const SubscriptionDeliveryAiReportDiagnosticsList = /*@__PURE__*/ S.Array(
   AIReportQueryDiagnostic,
 ) as any as S.Schema<SubscriptionDeliveryAiReportDiagnosticsList>;
 
@@ -572,7 +530,7 @@ export interface AIReportChart {
   /** Index of the plan step this chart came from. */
   step_index: number;
 }
-export const AIReportChart = /*@__PURE__*/ S.suspend(() =>
+const AIReportChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     export_asset_id: S.Number,
     title: S.String,
@@ -582,7 +540,7 @@ export const AIReportChart = /*@__PURE__*/ S.suspend(() =>
 
 /** Charts rendered for this report, in the order they were delivered. Empty when the report had no charts. Null for non-AI deliveries and for deliveries recorded before charts existed. */
 export type SubscriptionDeliveryAiReportChartsList = Array<AIReportChart>;
-export const SubscriptionDeliveryAiReportChartsList = /*@__PURE__*/ S.Array(
+const SubscriptionDeliveryAiReportChartsList = /*@__PURE__*/ S.Array(
   AIReportChart,
 ) as any as S.Schema<SubscriptionDeliveryAiReportChartsList>;
 
@@ -632,7 +590,7 @@ export interface SubscriptionDelivery {
   /** Query plan state recorded for this delivery: frozen, not_frozen, or planner_updated. Null for older deliveries and non-AI deliveries. */
   ai_query_plan_status?: AIQueryPlanStatusEnum | null;
 }
-export const SubscriptionDelivery = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     subscription: S.optional(S.Number),
@@ -663,7 +621,7 @@ export interface GetSubscriptionsSummaryQuotaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetSubscriptionsSummaryQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsSummaryQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -682,7 +640,7 @@ export interface GetSubscriptionsSummaryQuotaResponse {
   limit: number | null;
   at_limit: boolean;
 }
-export const GetSubscriptionsSummaryQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsSummaryQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_count: S.Number,
     limit: S.NullOr(S.Number),
@@ -693,10 +651,10 @@ export const GetSubscriptionsSummaryQuotaResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetSubscriptionsSummaryQuotaResponse>;
 
 export type ListSubscriptionsRequestResourceType = "ai_prompt" | "dashboard" | "insight";
-export const ListSubscriptionsRequestResourceType = S.String;
+const ListSubscriptionsRequestResourceType = S.String;
 
 export type ListSubscriptionsRequestTargetType = "email" | "slack" | "teams";
-export const ListSubscriptionsRequestTargetType = S.String;
+const ListSubscriptionsRequestTargetType = S.String;
 
 export interface ListSubscriptionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -724,7 +682,7 @@ export interface ListSubscriptionsRequest {
   /** Filter by delivery channel: email, Slack, or Microsoft Teams. */
   target_type?: ListSubscriptionsRequestTargetType | (string & {});
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_by: S.optional(S.String.pipe(T.Query())),
@@ -742,7 +700,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type PaginatedSubscriptionListOutputResultsList = Array<SubscriptionOutput>;
-export const PaginatedSubscriptionListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSubscriptionListOutputResultsList = /*@__PURE__*/ S.Array(
   SubscriptionOutput,
 ) as any as S.Schema<PaginatedSubscriptionListOutputResultsList>;
 
@@ -752,7 +710,7 @@ export interface PaginatedSubscriptionListOutput {
   previous?: string | null;
   results?: PaginatedSubscriptionListOutputResultsList;
 }
-export const PaginatedSubscriptionListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSubscriptionListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -768,7 +726,7 @@ export type ListSubscriptionsDeliveriesRequestStatus =
   | "failed"
   | "skipped"
   | "starting";
-export const ListSubscriptionsDeliveriesRequestStatus = S.String;
+const ListSubscriptionsDeliveriesRequestStatus = S.String;
 
 export interface ListSubscriptionsDeliveriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -779,7 +737,7 @@ export interface ListSubscriptionsDeliveriesRequest {
   /** Return only deliveries in this run status (starting, completed, failed, or skipped). */
   status?: ListSubscriptionsDeliveriesRequestStatus | (string & {});
 }
-export const ListSubscriptionsDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     subscription_id: S.Number.pipe(T.Label()),
@@ -797,7 +755,7 @@ export const ListSubscriptionsDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubscriptionsDeliveriesRequest>;
 
 export type PaginatedSubscriptionDeliveryListResultsList = Array<SubscriptionDelivery>;
-export const PaginatedSubscriptionDeliveryListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSubscriptionDeliveryListResultsList = /*@__PURE__*/ S.Array(
   SubscriptionDelivery,
 ) as any as S.Schema<PaginatedSubscriptionDeliveryListResultsList>;
 
@@ -806,7 +764,7 @@ export interface PaginatedSubscriptionDeliveryList {
   previous?: string | null;
   results?: PaginatedSubscriptionDeliveryListResultsList;
 }
-export const PaginatedSubscriptionDeliveryList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSubscriptionDeliveryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
@@ -822,7 +780,7 @@ export interface SubscriptionsDestroyRequest {
   /** A unique integer value identifying this subscription. */
   id: number;
 }
-export const SubscriptionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -834,32 +792,26 @@ export const SubscriptionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsDestroyRequest>;
 
 export interface SubscriptionsDestroyResponse {}
-export const SubscriptionsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SubscriptionsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SubscriptionsDestroyResponse",
 }) as any as S.Schema<SubscriptionsDestroyResponse>;
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type UpdateSubscriptionRequestDashboardExportInsightsList = Array<number>;
-export const UpdateSubscriptionRequestDashboardExportInsightsList =
+const UpdateSubscriptionRequestDashboardExportInsightsList =
   CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<UpdateSubscriptionRequestDashboardExportInsightsList>;
 
 export type UpdateSubscriptionRequestContextsItemCase0 = CreateSubscriptionRequestContextsItemCase0;
-export const UpdateSubscriptionRequestContextsItemCase0 =
-  CreateSubscriptionRequestContextsItemCase0;
-
 export type UpdateSubscriptionRequestContextsItemCase1 = CreateSubscriptionRequestContextsItemCase1;
-export const UpdateSubscriptionRequestContextsItemCase1 =
-  CreateSubscriptionRequestContextsItemCase1;
-
 export type UpdateSubscriptionRequestContextsItem =
   | CreateSubscriptionRequestContextsItemCase0
   | CreateSubscriptionRequestContextsItemCase1;
-export const UpdateSubscriptionRequestContextsItem =
+const UpdateSubscriptionRequestContextsItem =
   S.Unknown as any as S.Schema<UpdateSubscriptionRequestContextsItem>;
 
 /** Complete dashboard and insight context for an AI report. Omit on PATCH to preserve, pass an empty list to clear, or pass up to 3 items to replace all contexts. */
 export type UpdateSubscriptionRequestContextsList = Array<UpdateSubscriptionRequestContextsItem>;
-export const UpdateSubscriptionRequestContextsList = /*@__PURE__*/ S.Array(
+const UpdateSubscriptionRequestContextsList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionRequestContextsItem,
 ) as any as S.Schema<UpdateSubscriptionRequestContextsList>;
 
@@ -872,13 +824,11 @@ export type UpdateSubscriptionRequestByweekdayItem =
   | "friday"
   | "saturday"
   | "sunday";
-export const UpdateSubscriptionRequestByweekdayItem = S.String;
-
 /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type UpdateSubscriptionRequestByweekdayList = Array<
   UpdateSubscriptionRequestByweekdayItem | (string & {})
 >;
-export const UpdateSubscriptionRequestByweekdayList =
+const UpdateSubscriptionRequestByweekdayList =
   CreateSubscriptionRequestByweekdayList as any as S.Schema<UpdateSubscriptionRequestByweekdayList>;
 
 export interface UpdateSubscriptionRequest {
@@ -935,7 +885,7 @@ export interface UpdateSubscriptionRequest {
   /** Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option's own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options. */
   delivery_config?: DeliveryConfig;
 }
-export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -972,29 +922,23 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type UpdateSubscriptionsPartialRequestDashboardExportInsightsList = Array<number>;
-export const UpdateSubscriptionsPartialRequestDashboardExportInsightsList =
+const UpdateSubscriptionsPartialRequestDashboardExportInsightsList =
   CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<UpdateSubscriptionsPartialRequestDashboardExportInsightsList>;
 
 export type UpdateSubscriptionsPartialRequestContextsItemCase0 =
   CreateSubscriptionRequestContextsItemCase0;
-export const UpdateSubscriptionsPartialRequestContextsItemCase0 =
-  CreateSubscriptionRequestContextsItemCase0;
-
 export type UpdateSubscriptionsPartialRequestContextsItemCase1 =
   CreateSubscriptionRequestContextsItemCase1;
-export const UpdateSubscriptionsPartialRequestContextsItemCase1 =
-  CreateSubscriptionRequestContextsItemCase1;
-
 export type UpdateSubscriptionsPartialRequestContextsItem =
   | CreateSubscriptionRequestContextsItemCase0
   | CreateSubscriptionRequestContextsItemCase1;
-export const UpdateSubscriptionsPartialRequestContextsItem =
+const UpdateSubscriptionsPartialRequestContextsItem =
   S.Unknown as any as S.Schema<UpdateSubscriptionsPartialRequestContextsItem>;
 
 /** Complete dashboard and insight context for an AI report. Omit on PATCH to preserve, pass an empty list to clear, or pass up to 3 items to replace all contexts. */
 export type UpdateSubscriptionsPartialRequestContextsList =
   Array<UpdateSubscriptionsPartialRequestContextsItem>;
-export const UpdateSubscriptionsPartialRequestContextsList = /*@__PURE__*/ S.Array(
+const UpdateSubscriptionsPartialRequestContextsList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionsPartialRequestContextsItem,
 ) as any as S.Schema<UpdateSubscriptionsPartialRequestContextsList>;
 
@@ -1007,13 +951,11 @@ export type UpdateSubscriptionsPartialRequestByweekdayItem =
   | "friday"
   | "saturday"
   | "sunday";
-export const UpdateSubscriptionsPartialRequestByweekdayItem = S.String;
-
 /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type UpdateSubscriptionsPartialRequestByweekdayList = Array<
   UpdateSubscriptionsPartialRequestByweekdayItem | (string & {})
 >;
-export const UpdateSubscriptionsPartialRequestByweekdayList =
+const UpdateSubscriptionsPartialRequestByweekdayList =
   CreateSubscriptionRequestByweekdayList as any as S.Schema<UpdateSubscriptionsPartialRequestByweekdayList>;
 
 export interface UpdateSubscriptionsPartialRequest {
@@ -1070,7 +1012,7 @@ export interface UpdateSubscriptionsPartialRequest {
   /** Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option's own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options. */
   delivery_config?: DeliveryConfig;
 }
-export const UpdateSubscriptionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

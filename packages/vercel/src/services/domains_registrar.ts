@@ -54,7 +54,7 @@ export interface BuyDomainsRequestDomainsItem {
   /** The language code for the domain. For punycode domains, this must be provided. The list of supported language codes for a TLD can be retrieved from the [Get TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld) endpoint. */
   languageCode?: string;
 }
-export const BuyDomainsRequestDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const BuyDomainsRequestDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.String,
     autoRenew: S.Boolean,
@@ -67,7 +67,7 @@ export const BuyDomainsRequestDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BuyDomainsRequestDomainsItem>;
 
 export type BuyDomainsRequestDomainsList = Array<BuyDomainsRequestDomainsItem>;
-export const BuyDomainsRequestDomainsList = /*@__PURE__*/ S.Array(
+const BuyDomainsRequestDomainsList = /*@__PURE__*/ S.Array(
   BuyDomainsRequestDomainsItem,
 ) as any as S.Schema<BuyDomainsRequestDomainsList>;
 
@@ -87,7 +87,7 @@ export interface BuyDomainsRequestContactInformation {
   fax?: string;
   additional?: unknown;
 }
-export const BuyDomainsRequestContactInformation = /*@__PURE__*/ S.suspend(() =>
+const BuyDomainsRequestContactInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.String,
     lastName: S.String,
@@ -113,7 +113,7 @@ export interface BuyDomainsRequest {
   /** The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields. */
   contactInformation: BuyDomainsRequestContactInformation;
 }
-export const BuyDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const BuyDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     domains: BuyDomainsRequestDomainsList,
@@ -122,13 +122,13 @@ export const BuyDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuyDomainsRequest" }) as any as S.Schema<BuyDomainsRequest>;
 
 export type BuyDomainsResponseLinksValueMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-export const BuyDomainsResponseLinksValueMethod = S.String;
+const BuyDomainsResponseLinksValueMethod = S.String;
 
 export interface BuyDomainsResponseLinksValue {
   href: string;
   method: BuyDomainsResponseLinksValueMethod;
 }
-export const BuyDomainsResponseLinksValue = /*@__PURE__*/ S.suspend(() =>
+const BuyDomainsResponseLinksValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     method: BuyDomainsResponseLinksValueMethod,
@@ -140,7 +140,7 @@ export const BuyDomainsResponseLinksValue = /*@__PURE__*/ S.suspend(() =>
 export type BuyDomainsResponseLinksMap = {
   [key: string]: BuyDomainsResponseLinksValue | undefined;
 };
-export const BuyDomainsResponseLinksMap = /*@__PURE__*/ S.Record(
+const BuyDomainsResponseLinksMap = /*@__PURE__*/ S.Record(
   S.String,
   BuyDomainsResponseLinksValue,
 ) as any as S.Schema<BuyDomainsResponseLinksMap>;
@@ -149,7 +149,7 @@ export interface BuyDomainsResponse {
   orderId: string;
   _links: BuyDomainsResponseLinksMap;
 }
-export const BuyDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const BuyDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String,
     _links: BuyDomainsResponseLinksMap,
@@ -158,8 +158,6 @@ export const BuyDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The contact information for the domain. Some TLDs require additional contact information. Use the [Get contact info schema](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-contact-info-schema) endpoint to retrieve the required fields. */
 export type BuySingleDomainRequestContactInformation = BuyDomainsRequestContactInformation;
-export const BuySingleDomainRequestContactInformation = BuyDomainsRequestContactInformation;
-
 export interface BuySingleDomainRequest {
   domain: string;
   teamId?: string;
@@ -173,7 +171,7 @@ export interface BuySingleDomainRequest {
   /** The language code for the domain. For punycode domains, this must be provided. The list of supported language codes for a TLD can be retrieved from the [Get TLD](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld) endpoint. */
   languageCode?: string;
 }
-export const BuySingleDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const BuySingleDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -186,31 +184,22 @@ export const BuySingleDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BuySingleDomainRequest" }) as any as S.Schema<BuySingleDomainRequest>;
 
 export type BuySingleDomainResponseLinksValueMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-export const BuySingleDomainResponseLinksValueMethod = S.String;
-
 export interface BuySingleDomainResponseLinksValue {
   href: string;
   method: BuySingleDomainResponseLinksValueMethod;
 }
-export const BuySingleDomainResponseLinksValue =
-  BuyDomainsResponseLinksValue as any as S.Schema<BuySingleDomainResponseLinksValue>;
-
 export type BuySingleDomainResponseLinksMap = {
   [key: string]: BuySingleDomainResponseLinksValue | undefined;
 };
-export const BuySingleDomainResponseLinksMap =
-  BuyDomainsResponseLinksMap as any as S.Schema<BuySingleDomainResponseLinksMap>;
-
 export interface BuySingleDomainResponse {
   orderId: string;
   _links: BuySingleDomainResponseLinksMap;
 }
-export const BuySingleDomainResponse =
-  BuyDomainsResponse as any as S.Schema<BuySingleDomainResponse>;
+const BuySingleDomainResponse = BuyDomainsResponse as any as S.Schema<BuySingleDomainResponse>;
 
 /** an array of at most 50 item(s) */
 export type GetBulkAvailabilityRequestDomainsList = Array<string>;
-export const GetBulkAvailabilityRequestDomainsList = /*@__PURE__*/ S.Array(
+const GetBulkAvailabilityRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetBulkAvailabilityRequestDomainsList>;
 
@@ -219,7 +208,7 @@ export interface GetBulkAvailabilityRequest {
   /** an array of at most 50 item(s) */
   domains: GetBulkAvailabilityRequestDomainsList;
 }
-export const GetBulkAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBulkAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     domains: GetBulkAvailabilityRequestDomainsList,
@@ -232,7 +221,7 @@ export interface GetBulkAvailabilityResponseResultsItem {
   domain: string;
   available: boolean;
 }
-export const GetBulkAvailabilityResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
+const GetBulkAvailabilityResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     available: S.Boolean,
@@ -242,14 +231,14 @@ export const GetBulkAvailabilityResponseResultsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetBulkAvailabilityResponseResultsItem>;
 
 export type GetBulkAvailabilityResponseResultsList = Array<GetBulkAvailabilityResponseResultsItem>;
-export const GetBulkAvailabilityResponseResultsList = /*@__PURE__*/ S.Array(
+const GetBulkAvailabilityResponseResultsList = /*@__PURE__*/ S.Array(
   GetBulkAvailabilityResponseResultsItem,
 ) as any as S.Schema<GetBulkAvailabilityResponseResultsList>;
 
 export interface GetBulkAvailabilityResponse {
   results: GetBulkAvailabilityResponseResultsList;
 }
-export const GetBulkAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBulkAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: GetBulkAvailabilityResponseResultsList,
   }),
@@ -259,7 +248,7 @@ export const GetBulkAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** an array of at most 50 item(s) */
 export type GetBulkPriceRequestDomainsList = Array<string>;
-export const GetBulkPriceRequestDomainsList =
+const GetBulkPriceRequestDomainsList =
   GetBulkAvailabilityRequestDomainsList as any as S.Schema<GetBulkPriceRequestDomainsList>;
 
 export interface GetBulkPriceRequest {
@@ -269,7 +258,7 @@ export interface GetBulkPriceRequest {
   /** The number of years to get the price for. If not provided, the minimum number of years for the TLD will be used. */
   years?: number;
 }
-export const GetBulkPriceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBulkPriceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     domains: GetBulkPriceRequestDomainsList,
@@ -278,15 +267,15 @@ export const GetBulkPriceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetBulkPriceRequest" }) as any as S.Schema<GetBulkPriceRequest>;
 
 export type GetBulkPriceResponseResultsItemPurchasePrice = number | string;
-export const GetBulkPriceResponseResultsItemPurchasePrice =
+const GetBulkPriceResponseResultsItemPurchasePrice =
   S.Unknown as any as S.Schema<GetBulkPriceResponseResultsItemPurchasePrice>;
 
 export type GetBulkPriceResponseResultsItemRenewalPrice = number | string;
-export const GetBulkPriceResponseResultsItemRenewalPrice =
+const GetBulkPriceResponseResultsItemRenewalPrice =
   S.Unknown as any as S.Schema<GetBulkPriceResponseResultsItemRenewalPrice>;
 
 export type GetBulkPriceResponseResultsItemTransferPrice = number | string;
-export const GetBulkPriceResponseResultsItemTransferPrice =
+const GetBulkPriceResponseResultsItemTransferPrice =
   S.Unknown as any as S.Schema<GetBulkPriceResponseResultsItemTransferPrice>;
 
 export interface GetBulkPriceResponseResultsItem {
@@ -296,7 +285,7 @@ export interface GetBulkPriceResponseResultsItem {
   renewalPrice: GetBulkPriceResponseResultsItemRenewalPrice;
   transferPrice: GetBulkPriceResponseResultsItemTransferPrice;
 }
-export const GetBulkPriceResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
+const GetBulkPriceResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     years: S.Number,
@@ -309,14 +298,14 @@ export const GetBulkPriceResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBulkPriceResponseResultsItem>;
 
 export type GetBulkPriceResponseResultsList = Array<GetBulkPriceResponseResultsItem>;
-export const GetBulkPriceResponseResultsList = /*@__PURE__*/ S.Array(
+const GetBulkPriceResponseResultsList = /*@__PURE__*/ S.Array(
   GetBulkPriceResponseResultsItem,
 ) as any as S.Schema<GetBulkPriceResponseResultsList>;
 
 export interface GetBulkPriceResponse {
   results: GetBulkPriceResponseResultsList;
 }
-export const GetBulkPriceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBulkPriceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: GetBulkPriceResponseResultsList,
   }),
@@ -326,7 +315,7 @@ export interface GetContactInfoSchemaRequest {
   domain: string;
   teamId?: string;
 }
-export const GetContactInfoSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContactInfoSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -338,7 +327,7 @@ export const GetContactInfoSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContactInfoSchemaRequest>;
 
 export type GetContactInfoSchemaResponse = unknown;
-export const GetContactInfoSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContactInfoSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetContactInfoSchemaResponse",
@@ -348,7 +337,7 @@ export interface GetDomainAuthCodeRequest {
   domain: string;
   teamId?: string;
 }
-export const GetDomainAuthCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainAuthCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -358,7 +347,7 @@ export const GetDomainAuthCodeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainAuthCodeResponse {
   authCode: string;
 }
-export const GetDomainAuthCodeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainAuthCodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authCode: S.String,
   }),
@@ -370,7 +359,7 @@ export interface GetDomainAvailabilityRequest {
   domain: string;
   teamId?: string;
 }
-export const GetDomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -382,7 +371,7 @@ export const GetDomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainAvailabilityResponse {
   available: boolean;
 }
-export const GetDomainAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.Boolean,
   }),
@@ -394,7 +383,7 @@ export interface GetDomainContactVerificationRequest {
   domain: string;
   teamId?: string;
 }
-export const GetDomainContactVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainContactVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -413,34 +402,18 @@ export const GetDomainContactVerificationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ContactVerified {
   verified: boolean;
 }
-export const ContactVerified = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verified: S.Boolean,
-  }),
-).annotate({ identifier: "ContactVerified" }) as any as S.Schema<ContactVerified>;
-
 /** The registrant contact has not yet been verified. The contact must be verified by `verifyBy`, and a verification email is sent to `email`. */
 export interface ContactPendingVerification {
   verified: boolean;
   verifyBy: string;
   email: string;
 }
-export const ContactPendingVerification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verified: S.Boolean,
-    verifyBy: S.String,
-    email: S.String,
-  }),
-).annotate({
-  identifier: "ContactPendingVerification",
-}) as any as S.Schema<ContactPendingVerification>;
-
 export type GetDomainContactVerificationResponseBody = ContactVerified | ContactPendingVerification;
-export const GetDomainContactVerificationResponseBody =
+const GetDomainContactVerificationResponseBody =
   S.Unknown as any as S.Schema<GetDomainContactVerificationResponseBody>;
 
 export type GetDomainContactVerificationResponse = GetDomainContactVerificationResponseBody;
-export const GetDomainContactVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainContactVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   GetDomainContactVerificationResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDomainContactVerificationResponse",
@@ -452,7 +425,7 @@ export interface GetDomainPriceRequest {
   years?: string;
   teamId?: string;
 }
-export const GetDomainPriceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainPriceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     years: S.optional(S.String.pipe(T.Query())),
@@ -461,15 +434,15 @@ export const GetDomainPriceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDomainPriceRequest" }) as any as S.Schema<GetDomainPriceRequest>;
 
 export type GetDomainPriceResponsePurchasePrice = number | string;
-export const GetDomainPriceResponsePurchasePrice =
+const GetDomainPriceResponsePurchasePrice =
   S.Unknown as any as S.Schema<GetDomainPriceResponsePurchasePrice>;
 
 export type GetDomainPriceResponseRenewalPrice = number | string;
-export const GetDomainPriceResponseRenewalPrice =
+const GetDomainPriceResponseRenewalPrice =
   S.Unknown as any as S.Schema<GetDomainPriceResponseRenewalPrice>;
 
 export type GetDomainPriceResponseTransferPrice = number | string;
-export const GetDomainPriceResponseTransferPrice =
+const GetDomainPriceResponseTransferPrice =
   S.Unknown as any as S.Schema<GetDomainPriceResponseTransferPrice>;
 
 export interface GetDomainPriceResponse {
@@ -478,7 +451,7 @@ export interface GetDomainPriceResponse {
   renewalPrice: GetDomainPriceResponseRenewalPrice;
   transferPrice: GetDomainPriceResponseTransferPrice;
 }
-export const GetDomainPriceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainPriceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     years: S.Number,
     purchasePrice: GetDomainPriceResponsePurchasePrice,
@@ -491,7 +464,7 @@ export interface GetDomainTransferInRequest {
   domain: string;
   teamId?: string;
 }
-export const GetDomainTransferInRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainTransferInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -514,12 +487,12 @@ export type GetDomainTransferInResponseStatus =
   | "pending_registry_unlock"
   | "rejected"
   | "submitting_transfer";
-export const GetDomainTransferInResponseStatus = S.String;
+const GetDomainTransferInResponseStatus = S.String;
 
 export interface GetDomainTransferInResponse {
   status: GetDomainTransferInResponseStatus;
 }
-export const GetDomainTransferInResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainTransferInResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: GetDomainTransferInResponseStatus,
   }),
@@ -531,7 +504,7 @@ export interface GetOrderRequest {
   orderId: string;
   teamId?: string;
 }
-export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -539,147 +512,60 @@ export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOrderRequest" }) as any as S.Schema<GetOrderRequest>;
 
 export type GetOrderResponseDomainsItemCase0PurchaseType = "purchase";
-export const GetOrderResponseDomainsItemCase0PurchaseType = S.String;
-
 export type GetOrderResponseDomainsItemCase0Status =
   | "pending"
   | "completed"
   | "failed"
   | "refunded"
   | "refund-failed";
-export const GetOrderResponseDomainsItemCase0Status = S.String;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case0Code = "unsupported-language-code";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case0Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case0Details {
   detectedLanguageCode: string;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case0Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detectedLanguageCode: S.String,
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0ErrorCase0Case0Details",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case0Details>;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case0 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case0Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: GetOrderResponseDomainsItemCase0ErrorCase0Case0Code,
-    details: GetOrderResponseDomainsItemCase0ErrorCase0Case0Details,
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0ErrorCase0Case0",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case0>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case1Code = "incorrect-language-code";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case1Code = S.String;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case1Details =
   GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case1Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case1 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case1Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case1 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0 as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case1>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case2Code = "client-transfer-prohibited";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case2Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case2 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case2Code;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: GetOrderResponseDomainsItemCase0ErrorCase0Case2Code,
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0ErrorCase0Case2",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case2>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case3Code = "incorrect-auth-code";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case3Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case3 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case3Code;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case3 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case3>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case4Code = "claims-notice-required";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case4Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case4 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case4Code;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case4 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case4>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case5Code = "cannot-transfer-in-until";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case5Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case5Details {
   numDaysUntilTransferrable: number;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case5Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numDaysUntilTransferrable: S.Number,
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0ErrorCase0Case5Details",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case5Details>;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case5 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case5Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case5Details;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: GetOrderResponseDomainsItemCase0ErrorCase0Case5Code,
-    details: GetOrderResponseDomainsItemCase0ErrorCase0Case5Details,
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0ErrorCase0Case5",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case5>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case6Code = "account-transfer-required";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case6Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case6 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case6Code;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case6 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case6>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case7Code = "price-change";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case7Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case7 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case7Code;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case7 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case7>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case8Code = "unavailable-legal";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case8Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case8 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case8Code;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case8 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case8>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case9Code = "invalid-contact";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case9Code = S.String;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0Case9DetailsInvalidField =
   | "firstName"
   | "lastName"
@@ -693,32 +579,13 @@ export type GetOrderResponseDomainsItemCase0ErrorCase0Case9DetailsInvalidField =
   | "country"
   | "companyName"
   | "fax";
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case9DetailsInvalidField = S.String;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case9Details {
   invalidField?: GetOrderResponseDomainsItemCase0ErrorCase0Case9DetailsInvalidField;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case9Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invalidField: S.optional(GetOrderResponseDomainsItemCase0ErrorCase0Case9DetailsInvalidField),
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0ErrorCase0Case9Details",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case9Details>;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase0Case9 {
   code: GetOrderResponseDomainsItemCase0ErrorCase0Case9Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case9Details;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase0Case9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: GetOrderResponseDomainsItemCase0ErrorCase0Case9Code,
-    details: GetOrderResponseDomainsItemCase0ErrorCase0Case9Details,
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0ErrorCase0Case9",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0Case9>;
-
 export type GetOrderResponseDomainsItemCase0ErrorCase0 =
   | GetOrderResponseDomainsItemCase0ErrorCase0Case0
   | GetOrderResponseDomainsItemCase0ErrorCase0Case1
@@ -730,28 +597,13 @@ export type GetOrderResponseDomainsItemCase0ErrorCase0 =
   | GetOrderResponseDomainsItemCase0ErrorCase0Case7
   | GetOrderResponseDomainsItemCase0ErrorCase0Case8
   | GetOrderResponseDomainsItemCase0ErrorCase0Case9;
-export const GetOrderResponseDomainsItemCase0ErrorCase0 =
-  S.Unknown as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase0>;
-
 export interface GetOrderResponseDomainsItemCase0ErrorCase1 {
   code: string;
   details?: unknown;
 }
-export const GetOrderResponseDomainsItemCase0ErrorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    details: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0ErrorCase1",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0ErrorCase1>;
-
 export type GetOrderResponseDomainsItemCase0Error =
   | GetOrderResponseDomainsItemCase0ErrorCase0
   | GetOrderResponseDomainsItemCase0ErrorCase1;
-export const GetOrderResponseDomainsItemCase0Error =
-  S.Unknown as any as S.Schema<GetOrderResponseDomainsItemCase0Error>;
-
 export interface GetOrderResponseDomainsItemCase0 {
   purchaseType: GetOrderResponseDomainsItemCase0PurchaseType;
   autoRenew: boolean;
@@ -762,133 +614,59 @@ export interface GetOrderResponseDomainsItemCase0 {
   price: number;
   error?: GetOrderResponseDomainsItemCase0Error;
 }
-export const GetOrderResponseDomainsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purchaseType: GetOrderResponseDomainsItemCase0PurchaseType,
-    autoRenew: S.Boolean,
-    years: S.Number,
-    domainName: S.String,
-    status: GetOrderResponseDomainsItemCase0Status,
-    price: S.Number,
-    error: S.optional(GetOrderResponseDomainsItemCase0Error),
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase0",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase0>;
-
 export type GetOrderResponseDomainsItemCase1PurchaseType = "renewal";
-export const GetOrderResponseDomainsItemCase1PurchaseType = S.String;
-
 export type GetOrderResponseDomainsItemCase1Status =
   | "pending"
   | "completed"
   | "failed"
   | "refunded"
   | "refund-failed";
-export const GetOrderResponseDomainsItemCase1Status = S.String;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case0Code = "unsupported-language-code";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case0Code = S.String;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case0Details =
   GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case0Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case0 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case0Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case0 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case0>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case1Code = "incorrect-language-code";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case1Code = S.String;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case1Details =
   GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case1Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case1 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case1Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case1 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case1>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case2Code = "client-transfer-prohibited";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case2Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case2 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case2Code;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case2 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case2>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case3Code = "incorrect-auth-code";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case3Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case3 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case3Code;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case3 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case3>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case4Code = "claims-notice-required";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case4Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case4 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case4Code;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case4 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case4>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case5Code = "cannot-transfer-in-until";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case5Code = S.String;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case5Details =
   GetOrderResponseDomainsItemCase0ErrorCase0Case5Details;
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case5Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case5Details;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case5 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case5Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case5Details;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case5 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case5 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case5>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case6Code = "account-transfer-required";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case6Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case6 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case6Code;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case6 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case6>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case7Code = "price-change";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case7Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case7 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case7Code;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case7 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case7>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case8Code = "unavailable-legal";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case8Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case8 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case8Code;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case8 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case8>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case9Code = "invalid-contact";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case9Code = S.String;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0Case9DetailsInvalidField =
   | "firstName"
   | "lastName"
@@ -902,21 +680,13 @@ export type GetOrderResponseDomainsItemCase1ErrorCase0Case9DetailsInvalidField =
   | "country"
   | "companyName"
   | "fax";
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case9DetailsInvalidField = S.String;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case9Details {
   invalidField?: GetOrderResponseDomainsItemCase1ErrorCase0Case9DetailsInvalidField;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case9Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case9Details as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case9Details>;
-
 export interface GetOrderResponseDomainsItemCase1ErrorCase0Case9 {
   code: GetOrderResponseDomainsItemCase1ErrorCase0Case9Code;
   details: GetOrderResponseDomainsItemCase1ErrorCase0Case9Details;
 }
-export const GetOrderResponseDomainsItemCase1ErrorCase0Case9 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case9 as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0Case9>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase0 =
   | GetOrderResponseDomainsItemCase1ErrorCase0Case0
   | GetOrderResponseDomainsItemCase1ErrorCase0Case1
@@ -928,19 +698,10 @@ export type GetOrderResponseDomainsItemCase1ErrorCase0 =
   | GetOrderResponseDomainsItemCase1ErrorCase0Case7
   | GetOrderResponseDomainsItemCase1ErrorCase0Case8
   | GetOrderResponseDomainsItemCase1ErrorCase0Case9;
-export const GetOrderResponseDomainsItemCase1ErrorCase0 =
-  S.Unknown as any as S.Schema<GetOrderResponseDomainsItemCase1ErrorCase0>;
-
 export type GetOrderResponseDomainsItemCase1ErrorCase1 = GetOrderResponseDomainsItemCase0ErrorCase1;
-export const GetOrderResponseDomainsItemCase1ErrorCase1 =
-  GetOrderResponseDomainsItemCase0ErrorCase1;
-
 export type GetOrderResponseDomainsItemCase1Error =
   | GetOrderResponseDomainsItemCase1ErrorCase0
   | GetOrderResponseDomainsItemCase0ErrorCase1;
-export const GetOrderResponseDomainsItemCase1Error =
-  S.Unknown as any as S.Schema<GetOrderResponseDomainsItemCase1Error>;
-
 export interface GetOrderResponseDomainsItemCase1 {
   purchaseType: GetOrderResponseDomainsItemCase1PurchaseType;
   /** The number of years the domain is being renewed for. */
@@ -950,132 +711,59 @@ export interface GetOrderResponseDomainsItemCase1 {
   price: number;
   error?: GetOrderResponseDomainsItemCase1Error;
 }
-export const GetOrderResponseDomainsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purchaseType: GetOrderResponseDomainsItemCase1PurchaseType,
-    years: S.Number,
-    domainName: S.String,
-    status: GetOrderResponseDomainsItemCase1Status,
-    price: S.Number,
-    error: S.optional(GetOrderResponseDomainsItemCase1Error),
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase1",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase1>;
-
 export type GetOrderResponseDomainsItemCase2PurchaseType = "transfer";
-export const GetOrderResponseDomainsItemCase2PurchaseType = S.String;
-
 export type GetOrderResponseDomainsItemCase2Status =
   | "pending"
   | "completed"
   | "failed"
   | "refunded"
   | "refund-failed";
-export const GetOrderResponseDomainsItemCase2Status = S.String;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case0Code = "unsupported-language-code";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case0Code = S.String;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case0Details =
   GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case0Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case0 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case0Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case0 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case0>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case1Code = "incorrect-language-code";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case1Code = S.String;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case1Details =
   GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case1Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case1 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case1Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case0Details;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case1 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case0 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case1>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case2Code = "client-transfer-prohibited";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case2Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case2 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case2Code;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case2 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case2>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case3Code = "incorrect-auth-code";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case3Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case3 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case3Code;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case3 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case3>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case4Code = "claims-notice-required";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case4Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case4 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case4Code;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case4 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case4>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case5Code = "cannot-transfer-in-until";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case5Code = S.String;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case5Details =
   GetOrderResponseDomainsItemCase0ErrorCase0Case5Details;
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case5Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case5Details;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case5 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case5Code;
   details: GetOrderResponseDomainsItemCase0ErrorCase0Case5Details;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case5 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case5 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case5>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case6Code = "account-transfer-required";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case6Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case6 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case6Code;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case6 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case6>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case7Code = "price-change";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case7Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case7 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case7Code;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case7 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case7>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case8Code = "unavailable-legal";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case8Code = S.String;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case8 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case8Code;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case8 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case8>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case9Code = "invalid-contact";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case9Code = S.String;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0Case9DetailsInvalidField =
   | "firstName"
   | "lastName"
@@ -1089,21 +777,13 @@ export type GetOrderResponseDomainsItemCase2ErrorCase0Case9DetailsInvalidField =
   | "country"
   | "companyName"
   | "fax";
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case9DetailsInvalidField = S.String;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case9Details {
   invalidField?: GetOrderResponseDomainsItemCase2ErrorCase0Case9DetailsInvalidField;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case9Details =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case9Details as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case9Details>;
-
 export interface GetOrderResponseDomainsItemCase2ErrorCase0Case9 {
   code: GetOrderResponseDomainsItemCase2ErrorCase0Case9Code;
   details: GetOrderResponseDomainsItemCase2ErrorCase0Case9Details;
 }
-export const GetOrderResponseDomainsItemCase2ErrorCase0Case9 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case9 as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0Case9>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase0 =
   | GetOrderResponseDomainsItemCase2ErrorCase0Case0
   | GetOrderResponseDomainsItemCase2ErrorCase0Case1
@@ -1115,19 +795,10 @@ export type GetOrderResponseDomainsItemCase2ErrorCase0 =
   | GetOrderResponseDomainsItemCase2ErrorCase0Case7
   | GetOrderResponseDomainsItemCase2ErrorCase0Case8
   | GetOrderResponseDomainsItemCase2ErrorCase0Case9;
-export const GetOrderResponseDomainsItemCase2ErrorCase0 =
-  S.Unknown as any as S.Schema<GetOrderResponseDomainsItemCase2ErrorCase0>;
-
 export type GetOrderResponseDomainsItemCase2ErrorCase1 = GetOrderResponseDomainsItemCase0ErrorCase1;
-export const GetOrderResponseDomainsItemCase2ErrorCase1 =
-  GetOrderResponseDomainsItemCase0ErrorCase1;
-
 export type GetOrderResponseDomainsItemCase2Error =
   | GetOrderResponseDomainsItemCase2ErrorCase0
   | GetOrderResponseDomainsItemCase0ErrorCase1;
-export const GetOrderResponseDomainsItemCase2Error =
-  S.Unknown as any as S.Schema<GetOrderResponseDomainsItemCase2Error>;
-
 export interface GetOrderResponseDomainsItemCase2 {
   purchaseType: GetOrderResponseDomainsItemCase2PurchaseType;
   autoRenew: boolean;
@@ -1138,170 +809,65 @@ export interface GetOrderResponseDomainsItemCase2 {
   price: number;
   error?: GetOrderResponseDomainsItemCase2Error;
 }
-export const GetOrderResponseDomainsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purchaseType: GetOrderResponseDomainsItemCase2PurchaseType,
-    autoRenew: S.Boolean,
-    years: S.Number,
-    domainName: S.String,
-    status: GetOrderResponseDomainsItemCase2Status,
-    price: S.Number,
-    error: S.optional(GetOrderResponseDomainsItemCase2Error),
-  }),
-).annotate({
-  identifier: "GetOrderResponseDomainsItemCase2",
-}) as any as S.Schema<GetOrderResponseDomainsItemCase2>;
-
 export type GetOrderResponseDomainsItem =
   | GetOrderResponseDomainsItemCase0
   | GetOrderResponseDomainsItemCase1
   | GetOrderResponseDomainsItemCase2;
-export const GetOrderResponseDomainsItem =
-  S.Unknown as any as S.Schema<GetOrderResponseDomainsItem>;
+const GetOrderResponseDomainsItem = S.Unknown as any as S.Schema<GetOrderResponseDomainsItem>;
 
 export type GetOrderResponseDomainsList = Array<GetOrderResponseDomainsItem>;
-export const GetOrderResponseDomainsList = /*@__PURE__*/ S.Array(
+const GetOrderResponseDomainsList = /*@__PURE__*/ S.Array(
   GetOrderResponseDomainsItem,
 ) as any as S.Schema<GetOrderResponseDomainsList>;
 
 export type GetOrderResponseStatus = "draft" | "purchasing" | "completed" | "failed";
-export const GetOrderResponseStatus = S.String;
+const GetOrderResponseStatus = S.String;
 
 export type GetOrderResponseErrorCase0Case0Code = "payment-failed";
-export const GetOrderResponseErrorCase0Case0Code = S.String;
-
 export interface GetOrderResponseErrorCase0Case0 {
   code: GetOrderResponseErrorCase0Case0Code;
 }
-export const GetOrderResponseErrorCase0Case0 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseErrorCase0Case0>;
-
 export type GetOrderResponseErrorCase0Case1Code = "tld-outage";
-export const GetOrderResponseErrorCase0Case1Code = S.String;
-
 export interface GetOrderResponseErrorCase0Case1DetailsTldsItem {
   tldName: string;
   endsAt: string;
 }
-export const GetOrderResponseErrorCase0Case1DetailsTldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tldName: S.String,
-    endsAt: S.String,
-  }),
-).annotate({
-  identifier: "GetOrderResponseErrorCase0Case1DetailsTldsItem",
-}) as any as S.Schema<GetOrderResponseErrorCase0Case1DetailsTldsItem>;
-
 export type GetOrderResponseErrorCase0Case1DetailsTldsList =
   Array<GetOrderResponseErrorCase0Case1DetailsTldsItem>;
-export const GetOrderResponseErrorCase0Case1DetailsTldsList = /*@__PURE__*/ S.Array(
-  GetOrderResponseErrorCase0Case1DetailsTldsItem,
-) as any as S.Schema<GetOrderResponseErrorCase0Case1DetailsTldsList>;
-
 export interface GetOrderResponseErrorCase0Case1Details {
   tlds: GetOrderResponseErrorCase0Case1DetailsTldsList;
 }
-export const GetOrderResponseErrorCase0Case1Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tlds: GetOrderResponseErrorCase0Case1DetailsTldsList,
-  }),
-).annotate({
-  identifier: "GetOrderResponseErrorCase0Case1Details",
-}) as any as S.Schema<GetOrderResponseErrorCase0Case1Details>;
-
 export interface GetOrderResponseErrorCase0Case1 {
   code: GetOrderResponseErrorCase0Case1Code;
   details: GetOrderResponseErrorCase0Case1Details;
 }
-export const GetOrderResponseErrorCase0Case1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: GetOrderResponseErrorCase0Case1Code,
-    details: GetOrderResponseErrorCase0Case1Details,
-  }),
-).annotate({
-  identifier: "GetOrderResponseErrorCase0Case1",
-}) as any as S.Schema<GetOrderResponseErrorCase0Case1>;
-
 export type GetOrderResponseErrorCase0Case2Code = "price-mismatch";
-export const GetOrderResponseErrorCase0Case2Code = S.String;
-
 export interface GetOrderResponseErrorCase0Case2Details {
   expectedPrice: number;
   actualPrice?: number;
 }
-export const GetOrderResponseErrorCase0Case2Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expectedPrice: S.Number,
-    actualPrice: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetOrderResponseErrorCase0Case2Details",
-}) as any as S.Schema<GetOrderResponseErrorCase0Case2Details>;
-
 export interface GetOrderResponseErrorCase0Case2 {
   code: GetOrderResponseErrorCase0Case2Code;
   details: GetOrderResponseErrorCase0Case2Details;
 }
-export const GetOrderResponseErrorCase0Case2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: GetOrderResponseErrorCase0Case2Code,
-    details: GetOrderResponseErrorCase0Case2Details,
-  }),
-).annotate({
-  identifier: "GetOrderResponseErrorCase0Case2",
-}) as any as S.Schema<GetOrderResponseErrorCase0Case2>;
-
 export type GetOrderResponseErrorCase0Case3Code = "unexpected-error";
-export const GetOrderResponseErrorCase0Case3Code = S.String;
-
 export interface GetOrderResponseErrorCase0Case3 {
   code: GetOrderResponseErrorCase0Case3Code;
 }
-export const GetOrderResponseErrorCase0Case3 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseErrorCase0Case3>;
-
 export type GetOrderResponseErrorCase0Case4Code = "claims-required";
-export const GetOrderResponseErrorCase0Case4Code = S.String;
-
 export type GetOrderResponseErrorCase0Case4DetailsDomainNamesList = Array<string>;
-export const GetOrderResponseErrorCase0Case4DetailsDomainNamesList =
-  GetBulkAvailabilityRequestDomainsList as any as S.Schema<GetOrderResponseErrorCase0Case4DetailsDomainNamesList>;
-
 export interface GetOrderResponseErrorCase0Case4Details {
   message: string;
   domainNames: GetOrderResponseErrorCase0Case4DetailsDomainNamesList;
 }
-export const GetOrderResponseErrorCase0Case4Details = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    domainNames: GetOrderResponseErrorCase0Case4DetailsDomainNamesList,
-  }),
-).annotate({
-  identifier: "GetOrderResponseErrorCase0Case4Details",
-}) as any as S.Schema<GetOrderResponseErrorCase0Case4Details>;
-
 export interface GetOrderResponseErrorCase0Case4 {
   code: GetOrderResponseErrorCase0Case4Code;
   details: GetOrderResponseErrorCase0Case4Details;
 }
-export const GetOrderResponseErrorCase0Case4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: GetOrderResponseErrorCase0Case4Code,
-    details: GetOrderResponseErrorCase0Case4Details,
-  }),
-).annotate({
-  identifier: "GetOrderResponseErrorCase0Case4",
-}) as any as S.Schema<GetOrderResponseErrorCase0Case4>;
-
 export type GetOrderResponseErrorCase0Case5Code = "domain-mismatch";
-export const GetOrderResponseErrorCase0Case5Code = S.String;
-
 export interface GetOrderResponseErrorCase0Case5 {
   code: GetOrderResponseErrorCase0Case5Code;
 }
-export const GetOrderResponseErrorCase0Case5 =
-  GetOrderResponseDomainsItemCase0ErrorCase0Case2 as any as S.Schema<GetOrderResponseErrorCase0Case5>;
-
 export type GetOrderResponseErrorCase0 =
   | GetOrderResponseErrorCase0Case0
   | GetOrderResponseErrorCase0Case1
@@ -1309,15 +875,11 @@ export type GetOrderResponseErrorCase0 =
   | GetOrderResponseErrorCase0Case3
   | GetOrderResponseErrorCase0Case4
   | GetOrderResponseErrorCase0Case5;
-export const GetOrderResponseErrorCase0 = S.Unknown as any as S.Schema<GetOrderResponseErrorCase0>;
-
 export type GetOrderResponseErrorCase1 = GetOrderResponseDomainsItemCase0ErrorCase1;
-export const GetOrderResponseErrorCase1 = GetOrderResponseDomainsItemCase0ErrorCase1;
-
 export type GetOrderResponseError =
   | GetOrderResponseErrorCase0
   | GetOrderResponseDomainsItemCase0ErrorCase1;
-export const GetOrderResponseError = S.Unknown as any as S.Schema<GetOrderResponseError>;
+const GetOrderResponseError = S.Unknown as any as S.Schema<GetOrderResponseError>;
 
 export interface GetOrderResponse {
   orderId: string;
@@ -1325,7 +887,7 @@ export interface GetOrderResponse {
   status: GetOrderResponseStatus;
   error?: GetOrderResponseError;
 }
-export const GetOrderResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String,
     domains: GetOrderResponseDomainsList,
@@ -1337,7 +899,7 @@ export const GetOrderResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSupportedTldsRequest {
   teamId?: string;
 }
-export const GetSupportedTldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportedTldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/registrar/tlds/supported", code: 200 })),
@@ -1345,11 +907,11 @@ export const GetSupportedTldsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the TLDs supported by Vercel. */
 export type GetSupportedTldsResponseBodyList = Array<string>;
-export const GetSupportedTldsResponseBodyList =
+const GetSupportedTldsResponseBodyList =
   GetBulkAvailabilityRequestDomainsList as any as S.Schema<GetSupportedTldsResponseBodyList>;
 
 export type GetSupportedTldsResponse = GetSupportedTldsResponseBodyList;
-export const GetSupportedTldsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSupportedTldsResponse = /*@__PURE__*/ S.suspend(() =>
   GetSupportedTldsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetSupportedTldsResponse" }) as any as S.Schema<GetSupportedTldsResponse>;
 
@@ -1357,7 +919,7 @@ export interface GetTldRequest {
   tld: string;
   teamId?: string;
 }
-export const GetTldRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tld: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1366,7 +928,7 @@ export const GetTldRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The language codes that are supported for the TLD. The key is the language code, and the value is the name of the language. */
 export type GetTldResponseSupportedLanguageCodesMap = { [key: string]: string | undefined };
-export const GetTldResponseSupportedLanguageCodesMap = /*@__PURE__*/ S.Record(
+const GetTldResponseSupportedLanguageCodesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetTldResponseSupportedLanguageCodesMap>;
@@ -1375,7 +937,7 @@ export interface GetTldResponse {
   /** The language codes that are supported for the TLD. The key is the language code, and the value is the name of the language. */
   supportedLanguageCodes: GetTldResponseSupportedLanguageCodesMap;
 }
-export const GetTldResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedLanguageCodes: GetTldResponseSupportedLanguageCodesMap,
   }),
@@ -1387,7 +949,7 @@ export interface GetTldPriceRequest {
   years?: string;
   teamId?: string;
 }
-export const GetTldPriceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTldPriceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tld: S.String.pipe(T.Label()),
     years: S.optional(S.String.pipe(T.Query())),
@@ -1396,15 +958,15 @@ export const GetTldPriceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTldPriceRequest" }) as any as S.Schema<GetTldPriceRequest>;
 
 export type GetTldPriceResponsePurchasePrice = number | string;
-export const GetTldPriceResponsePurchasePrice =
+const GetTldPriceResponsePurchasePrice =
   S.Unknown as any as S.Schema<GetTldPriceResponsePurchasePrice>;
 
 export type GetTldPriceResponseRenewalPrice = number | string;
-export const GetTldPriceResponseRenewalPrice =
+const GetTldPriceResponseRenewalPrice =
   S.Unknown as any as S.Schema<GetTldPriceResponseRenewalPrice>;
 
 export type GetTldPriceResponseTransferPrice = number | string;
-export const GetTldPriceResponseTransferPrice =
+const GetTldPriceResponseTransferPrice =
   S.Unknown as any as S.Schema<GetTldPriceResponseTransferPrice>;
 
 export interface GetTldPriceResponse {
@@ -1414,7 +976,7 @@ export interface GetTldPriceResponse {
   renewalPrice: GetTldPriceResponseRenewalPrice;
   transferPrice: GetTldPriceResponseTransferPrice;
 }
-export const GetTldPriceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTldPriceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     years: S.Number,
     purchasePrice: GetTldPriceResponsePurchasePrice,
@@ -1437,7 +999,7 @@ export interface RenewDomainRequestContactInformation {
   companyName?: string;
   fax?: string;
 }
-export const RenewDomainRequestContactInformation = /*@__PURE__*/ S.suspend(() =>
+const RenewDomainRequestContactInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.String,
     lastName: S.String,
@@ -1464,7 +1026,7 @@ export interface RenewDomainRequest {
   expectedPrice: number;
   contactInformation?: RenewDomainRequestContactInformation;
 }
-export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1475,30 +1037,22 @@ export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenewDomainRequest" }) as any as S.Schema<RenewDomainRequest>;
 
 export type RenewDomainResponseLinksValueMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-export const RenewDomainResponseLinksValueMethod = S.String;
-
 export interface RenewDomainResponseLinksValue {
   href: string;
   method: RenewDomainResponseLinksValueMethod;
 }
-export const RenewDomainResponseLinksValue =
-  BuyDomainsResponseLinksValue as any as S.Schema<RenewDomainResponseLinksValue>;
-
 export type RenewDomainResponseLinksMap = {
   [key: string]: RenewDomainResponseLinksValue | undefined;
 };
-export const RenewDomainResponseLinksMap =
-  BuyDomainsResponseLinksMap as any as S.Schema<RenewDomainResponseLinksMap>;
-
 export interface RenewDomainResponse {
   orderId: string;
   _links: RenewDomainResponseLinksMap;
 }
-export const RenewDomainResponse = BuyDomainsResponse as any as S.Schema<RenewDomainResponse>;
+const RenewDomainResponse = BuyDomainsResponse as any as S.Schema<RenewDomainResponse>;
 
 /** an array of at most 200 item(s) */
 export type SearchDomainsRequestDomainsList = Array<string>;
-export const SearchDomainsRequestDomainsList =
+const SearchDomainsRequestDomainsList =
   GetBulkAvailabilityRequestDomainsList as any as S.Schema<SearchDomainsRequestDomainsList>;
 
 export interface SearchDomainsRequest {
@@ -1506,7 +1060,7 @@ export interface SearchDomainsRequest {
   /** an array of at most 200 item(s) */
   domains: SearchDomainsRequestDomainsList;
 }
-export const SearchDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     domains: SearchDomainsRequestDomainsList,
@@ -1518,9 +1072,6 @@ export interface SearchDomainsResponseResultsItemCase0 {
   /** `false` means the domain is unavailable or its availability could not be confirmed. */
   available: boolean;
 }
-export const SearchDomainsResponseResultsItemCase0 =
-  GetBulkAvailabilityResponseResultsItem as any as S.Schema<SearchDomainsResponseResultsItemCase0>;
-
 export interface SearchDomainsResponseResultsItemCase1 {
   domain: string;
   available: boolean;
@@ -1529,42 +1080,27 @@ export interface SearchDomainsResponseResultsItemCase1 {
   renewalPrice: number;
   premium: boolean;
 }
-export const SearchDomainsResponseResultsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String,
-    available: S.Boolean,
-    years: S.Number,
-    price: S.Number,
-    renewalPrice: S.Number,
-    premium: S.Boolean,
-  }),
-).annotate({
-  identifier: "SearchDomainsResponseResultsItemCase1",
-}) as any as S.Schema<SearchDomainsResponseResultsItemCase1>;
-
 export type SearchDomainsResponseResultsItem =
   | SearchDomainsResponseResultsItemCase0
   | SearchDomainsResponseResultsItemCase1;
-export const SearchDomainsResponseResultsItem =
+const SearchDomainsResponseResultsItem =
   S.Unknown as any as S.Schema<SearchDomainsResponseResultsItem>;
 
 export type SearchDomainsResponseResultsList = Array<SearchDomainsResponseResultsItem>;
-export const SearchDomainsResponseResultsList = /*@__PURE__*/ S.Array(
+const SearchDomainsResponseResultsList = /*@__PURE__*/ S.Array(
   SearchDomainsResponseResultsItem,
 ) as any as S.Schema<SearchDomainsResponseResultsList>;
 
 export interface SearchDomainsResponse {
   results: SearchDomainsResponseResultsList;
 }
-export const SearchDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: SearchDomainsResponseResultsList,
   }),
 ).annotate({ identifier: "SearchDomainsResponse" }) as any as S.Schema<SearchDomainsResponse>;
 
 export type TransferInDomainRequestContactInformation = RenewDomainRequestContactInformation;
-export const TransferInDomainRequestContactInformation = RenewDomainRequestContactInformation;
-
 export interface TransferInDomainRequest {
   domain: string;
   teamId?: string;
@@ -1577,7 +1113,7 @@ export interface TransferInDomainRequest {
   expectedPrice: number;
   contactInformation: RenewDomainRequestContactInformation;
 }
-export const TransferInDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferInDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1590,34 +1126,25 @@ export const TransferInDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferInDomainRequest" }) as any as S.Schema<TransferInDomainRequest>;
 
 export type TransferInDomainResponseLinksValueMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-export const TransferInDomainResponseLinksValueMethod = S.String;
-
 export interface TransferInDomainResponseLinksValue {
   href: string;
   method: TransferInDomainResponseLinksValueMethod;
 }
-export const TransferInDomainResponseLinksValue =
-  BuyDomainsResponseLinksValue as any as S.Schema<TransferInDomainResponseLinksValue>;
-
 export type TransferInDomainResponseLinksMap = {
   [key: string]: TransferInDomainResponseLinksValue | undefined;
 };
-export const TransferInDomainResponseLinksMap =
-  BuyDomainsResponseLinksMap as any as S.Schema<TransferInDomainResponseLinksMap>;
-
 export interface TransferInDomainResponse {
   orderId: string;
   _links: TransferInDomainResponseLinksMap;
 }
-export const TransferInDomainResponse =
-  BuyDomainsResponse as any as S.Schema<TransferInDomainResponse>;
+const TransferInDomainResponse = BuyDomainsResponse as any as S.Schema<TransferInDomainResponse>;
 
 export interface UpdateDomainAutoRenewRequest {
   domain: string;
   teamId?: string;
   autoRenew: boolean;
 }
-export const UpdateDomainAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1628,12 +1155,12 @@ export const UpdateDomainAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDomainAutoRenewRequest>;
 
 export interface UpdateDomainAutoRenewResponse {}
-export const UpdateDomainAutoRenewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UpdateDomainAutoRenewResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UpdateDomainAutoRenewResponse",
 }) as any as S.Schema<UpdateDomainAutoRenewResponse>;
 
 export type UpdateDomainNameserversRequestNameserversList = Array<string>;
-export const UpdateDomainNameserversRequestNameserversList =
+const UpdateDomainNameserversRequestNameserversList =
   GetBulkAvailabilityRequestDomainsList as any as S.Schema<UpdateDomainNameserversRequestNameserversList>;
 
 export interface UpdateDomainNameserversRequest {
@@ -1641,7 +1168,7 @@ export interface UpdateDomainNameserversRequest {
   teamId?: string;
   nameservers: UpdateDomainNameserversRequestNameserversList;
 }
-export const UpdateDomainNameserversRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainNameserversRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1654,9 +1181,9 @@ export const UpdateDomainNameserversRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDomainNameserversRequest>;
 
 export interface UpdateDomainNameserversResponse {}
-export const UpdateDomainNameserversResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateDomainNameserversResponse" },
-) as any as S.Schema<UpdateDomainNameserversResponse>;
+const UpdateDomainNameserversResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "UpdateDomainNameserversResponse",
+}) as any as S.Schema<UpdateDomainNameserversResponse>;
 
 export type BuyDomainsError = BadRequest | Forbidden | VercelOpError;
 /** Buy multiple domains Buy multiple domains at once */

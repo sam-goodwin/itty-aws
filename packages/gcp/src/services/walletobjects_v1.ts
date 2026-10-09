@@ -65,7 +65,7 @@ export interface DateTime {
   /** An ISO 8601 extended format date/time. Offset may or may not be required (refer to the parent field's documentation). Time may be specified up to nanosecond precision. Offsets may be specified with seconds precision (even though offset seconds is not part of ISO 8601). For example: `1985-04-12T23:20:50.52Z` would be 20 minutes and 50.52 seconds after the 23rd hour of April 12th, 1985 in UTC. `1985-04-12T19:20:50.52-04:00` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985, 4 hours before UTC (same instant in time as the above example). If the date/time is intended for a physical location in New York, this would be the equivalent of Eastern Daylight Time (EDT). Remember that offset varies in regions that observe Daylight Saving Time (or Summer Time), depending on the time of the year. `1985-04-12T19:20:50.52` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985 with no offset information. Providing an offset makes this an absolute instant in time around the world. The date/time will be adjusted based on the user's time zone. For example, a time of `2018-06-19T18:30:00-04:00` will be 18:30:00 for a user in New York and 15:30:00 for a user in Los Angeles. Omitting the offset makes this a local date/time, representing several instants in time around the world. The date/time will always be in the user's current time zone. For example, a time of `2018-06-19T18:30:00` will be 18:30:00 for a user in New York and also 18:30:00 for a user in Los Angeles. This is useful when the same local date/time should apply to many physical locations across several time zones. */
   date?: string;
 }
-export const DateTime = /*@__PURE__*/ S.suspend(() =>
+const DateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
   }),
@@ -79,7 +79,7 @@ export interface TimeInterval {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#timeInterval"`. */
   kind?: string;
 }
-export const TimeInterval = /*@__PURE__*/ S.suspend(() =>
+const TimeInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(DateTime),
     end: S.optional(DateTime),
@@ -95,7 +95,7 @@ export interface TranslatedString {
   /** The UTF-8 encoded translated string. */
   value?: string;
 }
-export const TranslatedString = /*@__PURE__*/ S.suspend(() =>
+const TranslatedString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     language: S.optional(S.String),
@@ -104,7 +104,7 @@ export const TranslatedString = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TranslatedString" }) as any as S.Schema<TranslatedString>;
 
 export type TranslatedStringList = Array<TranslatedString>;
-export const TranslatedStringList = /*@__PURE__*/ S.Array(
+const TranslatedStringList = /*@__PURE__*/ S.Array(
   TranslatedString,
 ) as any as S.Schema<TranslatedStringList>;
 
@@ -116,7 +116,7 @@ export interface LocalizedString {
   /** Contains the string to be displayed if no appropriate translation is available. */
   defaultValue?: TranslatedString;
 }
-export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
+const LocalizedString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     translatedValues: S.optional(TranslatedStringList),
@@ -131,7 +131,7 @@ export type MessageMessageTypeEnum =
   | "EXPIRATION_NOTIFICATION"
   | "expirationNotification"
   | "TEXT_AND_NOTIFY";
-export const MessageMessageTypeEnum = S.String;
+const MessageMessageTypeEnum = S.String;
 
 /** A message that will be displayed with a Valuable */
 export interface Message {
@@ -152,7 +152,7 @@ export interface Message {
   /** The message header. */
   header?: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayInterval: S.optional(TimeInterval),
     id: S.optional(S.String),
@@ -169,7 +169,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 export interface AddMessageRequest {
   message?: Message;
 }
-export const AddMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const AddMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
   }),
@@ -181,7 +181,7 @@ export interface AddmessageEventticketclassRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -204,7 +204,7 @@ export interface EventVenue {
   /** The name of the venue, such as "AT&T Park". This is required. */
   name?: LocalizedString;
 }
-export const EventVenue = /*@__PURE__*/ S.suspend(() =>
+const EventVenue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(LocalizedString),
     kind: S.optional(S.String),
@@ -226,7 +226,7 @@ export type FieldReferenceDateFormatEnum =
   | "dateYear"
   | "YEAR_MONTH"
   | "YEAR_MONTH_DAY";
-export const FieldReferenceDateFormatEnum = S.String;
+const FieldReferenceDateFormatEnum = S.String;
 
 /** Reference definition to use with field overrides. */
 export interface FieldReference {
@@ -235,7 +235,7 @@ export interface FieldReference {
   /** Only valid if the `fieldPath` references a date field. Chooses how the date field will be formatted and displayed in the UI. */
   dateFormat?: FieldReferenceDateFormatEnum | (string & {});
 }
-export const FieldReference = /*@__PURE__*/ S.suspend(() =>
+const FieldReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPath: S.optional(S.String),
     dateFormat: S.optional(FieldReferenceDateFormatEnum),
@@ -243,7 +243,7 @@ export const FieldReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldReference" }) as any as S.Schema<FieldReference>;
 
 export type FieldReferenceList = Array<FieldReference>;
-export const FieldReferenceList = /*@__PURE__*/ S.Array(
+const FieldReferenceList = /*@__PURE__*/ S.Array(
   FieldReference,
 ) as any as S.Schema<FieldReferenceList>;
 
@@ -252,7 +252,7 @@ export interface FieldSelector {
   /** If more than one reference is supplied, then the first one that references a non-empty field will be displayed. */
   fields?: FieldReferenceList;
 }
-export const FieldSelector = /*@__PURE__*/ S.suspend(() =>
+const FieldSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(FieldReferenceList),
   }),
@@ -264,7 +264,7 @@ export type TemplateItemPredefinedItemEnum =
   | "frequentFlyerProgramNameAndNumber"
   | "FLIGHT_NUMBER_AND_OPERATING_FLIGHT_NUMBER"
   | "flightNumberAndOperatingFlightNumber";
-export const TemplateItemPredefinedItemEnum = S.String;
+const TemplateItemPredefinedItemEnum = S.String;
 
 export interface TemplateItem {
   /** A reference to a field to display. If both `firstValue` and `secondValue` are populated, they will both appear as one item with a slash between them. For example, values A and B would be shown as "A / B". */
@@ -274,7 +274,7 @@ export interface TemplateItem {
   /** A predefined item to display. Only one of `firstValue` or `predefinedItem` may be set. */
   predefinedItem?: TemplateItemPredefinedItemEnum | (string & {});
 }
-export const TemplateItem = /*@__PURE__*/ S.suspend(() =>
+const TemplateItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstValue: S.optional(FieldSelector),
     secondValue: S.optional(FieldSelector),
@@ -290,7 +290,7 @@ export interface CardRowThreeItems {
   /** The item to be displayed at the start of the row. This item will be aligned to the left. */
   startItem?: TemplateItem;
 }
-export const CardRowThreeItems = /*@__PURE__*/ S.suspend(() =>
+const CardRowThreeItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     middleItem: S.optional(TemplateItem),
     endItem: S.optional(TemplateItem),
@@ -302,7 +302,7 @@ export interface CardRowOneItem {
   /** The item to be displayed in the row. This item will be automatically centered. */
   item?: TemplateItem;
 }
-export const CardRowOneItem = /*@__PURE__*/ S.suspend(() =>
+const CardRowOneItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item: S.optional(TemplateItem),
   }),
@@ -314,7 +314,7 @@ export interface CardRowTwoItems {
   /** The item to be displayed at the end of the row. This item will be aligned to the right. */
   endItem?: TemplateItem;
 }
-export const CardRowTwoItems = /*@__PURE__*/ S.suspend(() =>
+const CardRowTwoItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startItem: S.optional(TemplateItem),
     endItem: S.optional(TemplateItem),
@@ -329,7 +329,7 @@ export interface CardRowTemplateInfo {
   /** Template for a row containing two items. Exactly one of "one_item", "two_items", "three_items" must be set. */
   twoItems?: CardRowTwoItems;
 }
-export const CardRowTemplateInfo = /*@__PURE__*/ S.suspend(() =>
+const CardRowTemplateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threeItems: S.optional(CardRowThreeItems),
     oneItem: S.optional(CardRowOneItem),
@@ -338,7 +338,7 @@ export const CardRowTemplateInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CardRowTemplateInfo" }) as any as S.Schema<CardRowTemplateInfo>;
 
 export type CardRowTemplateInfoList = Array<CardRowTemplateInfo>;
-export const CardRowTemplateInfoList = /*@__PURE__*/ S.Array(
+const CardRowTemplateInfoList = /*@__PURE__*/ S.Array(
   CardRowTemplateInfo,
 ) as any as S.Schema<CardRowTemplateInfoList>;
 
@@ -346,7 +346,7 @@ export interface CardTemplateOverride {
   /** Template information for rows in the card view. At most three rows are allowed to be specified. */
   cardRowTemplateInfos?: CardRowTemplateInfoList;
 }
-export const CardTemplateOverride = /*@__PURE__*/ S.suspend(() =>
+const CardTemplateOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardRowTemplateInfos: S.optional(CardRowTemplateInfoList),
   }),
@@ -356,10 +356,10 @@ export interface DetailsItemInfo {
   /** The item to be displayed in the details list. */
   item?: TemplateItem;
 }
-export const DetailsItemInfo = CardRowOneItem as any as S.Schema<DetailsItemInfo>;
+const DetailsItemInfo = CardRowOneItem as any as S.Schema<DetailsItemInfo>;
 
 export type DetailsItemInfoList = Array<DetailsItemInfo>;
-export const DetailsItemInfoList = /*@__PURE__*/ S.Array(
+const DetailsItemInfoList = /*@__PURE__*/ S.Array(
   DetailsItemInfo,
 ) as any as S.Schema<DetailsItemInfoList>;
 
@@ -367,7 +367,7 @@ export interface DetailsTemplateOverride {
   /** Information for the "nth" item displayed in the details list. */
   detailsItemInfos?: DetailsItemInfoList;
 }
-export const DetailsTemplateOverride = /*@__PURE__*/ S.suspend(() =>
+const DetailsTemplateOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detailsItemInfos: S.optional(DetailsItemInfoList),
   }),
@@ -377,7 +377,7 @@ export interface BarcodeSectionDetail {
   /** A reference to an existing text-based or image field to display. */
   fieldSelector?: FieldSelector;
 }
-export const BarcodeSectionDetail = /*@__PURE__*/ S.suspend(() =>
+const BarcodeSectionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldSelector: S.optional(FieldSelector),
   }),
@@ -391,7 +391,7 @@ export interface CardBarcodeSectionDetails {
   /** Optional information to display below the barcode. */
   firstBottomDetail?: BarcodeSectionDetail;
 }
-export const CardBarcodeSectionDetails = /*@__PURE__*/ S.suspend(() =>
+const CardBarcodeSectionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secondTopDetail: S.optional(BarcodeSectionDetail),
     firstTopDetail: S.optional(BarcodeSectionDetail),
@@ -409,14 +409,14 @@ export type FirstRowOptionTransitOptionEnum =
   | "originAndDestinationCodes"
   | "ORIGIN_NAME"
   | "originName";
-export const FirstRowOptionTransitOptionEnum = S.String;
+const FirstRowOptionTransitOptionEnum = S.String;
 
 export interface FirstRowOption {
   /** A reference to the field to be displayed in the first row. */
   fieldOption?: FieldSelector;
   transitOption?: FirstRowOptionTransitOptionEnum | (string & {});
 }
-export const FirstRowOption = /*@__PURE__*/ S.suspend(() =>
+const FirstRowOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldOption: S.optional(FieldSelector),
     transitOption: S.optional(FirstRowOptionTransitOptionEnum),
@@ -431,7 +431,7 @@ export interface ListTemplateOverride {
   /** A reference to the field to be displayed in the second row. This option is only displayed if there are not multiple user objects in a group. If there is a group, the second row will always display a field shared by all objects. To set this override, please set secondRowOption to the FieldSelector of you choice. */
   secondRowOption?: FieldSelector;
 }
-export const ListTemplateOverride = /*@__PURE__*/ S.suspend(() =>
+const ListTemplateOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstRowOption: S.optional(FirstRowOption),
     thirdRowOption: S.optional(FieldSelector),
@@ -449,7 +449,7 @@ export interface ClassTemplateInfo {
   /** Override for the passes list view. */
   listTemplateOverride?: ListTemplateOverride;
 }
-export const ClassTemplateInfo = /*@__PURE__*/ S.suspend(() =>
+const ClassTemplateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cardTemplateOverride: S.optional(CardTemplateOverride),
     detailsTemplateOverride: S.optional(DetailsTemplateOverride),
@@ -464,7 +464,7 @@ export type EventTicketClassSectionLabelEnum =
   | "section"
   | "THEATER"
   | "theater";
-export const EventTicketClassSectionLabelEnum = S.String;
+const EventTicketClassSectionLabelEnum = S.String;
 
 export interface ImageUri {
   /** Additional information about the image, which is unused and retained only for backward compatibility. */
@@ -474,7 +474,7 @@ export interface ImageUri {
   /** Translated strings for the description, which are unused and retained only for backward compatibility. */
   localizedDescription?: LocalizedString;
 }
-export const ImageUri = /*@__PURE__*/ S.suspend(() =>
+const ImageUri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     uri: S.optional(S.String),
@@ -493,7 +493,7 @@ export interface Image {
   /** An ID for an already uploaded private image. Either this or source_uri should be set. Requests setting both or neither will be rejected. Please contact support to use private images. */
   privateImageId?: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceUri: S.optional(ImageUri),
     contentDescription: S.optional(LocalizedString),
@@ -508,7 +508,7 @@ export interface ImageModuleData {
   /** The ID associated with an image module. This field is here to enable ease of management of image modules. */
   id?: string;
 }
-export const ImageModuleData = /*@__PURE__*/ S.suspend(() =>
+const ImageModuleData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mainImage: S.optional(Image),
     id: S.optional(S.String),
@@ -516,7 +516,7 @@ export const ImageModuleData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageModuleData" }) as any as S.Schema<ImageModuleData>;
 
 export type ImageModuleDataList = Array<ImageModuleData>;
-export const ImageModuleDataList = /*@__PURE__*/ S.Array(
+const ImageModuleDataList = /*@__PURE__*/ S.Array(
   ImageModuleData,
 ) as any as S.Schema<ImageModuleDataList>;
 
@@ -530,7 +530,7 @@ export type EventTicketClassConfirmationCodeLabelEnum =
   | "orderNumber"
   | "RESERVATION_NUMBER"
   | "reservationNumber";
-export const EventTicketClassConfirmationCodeLabelEnum = S.String;
+const EventTicketClassConfirmationCodeLabelEnum = S.String;
 
 export interface CallbackOptions {
   /** The HTTPS url configured by the merchant. The URL should be hosted on HTTPS and robots.txt should allow the URL path to be accessible by UserAgent:Googlebot. */
@@ -538,7 +538,7 @@ export interface CallbackOptions {
   /** URL for the merchant endpoint that would be called to request updates. The URL should be hosted on HTTPS and robots.txt should allow the URL path to be accessible by UserAgent:Googlebot. Deprecated. */
   updateRequestUrl?: string;
 }
-export const CallbackOptions = /*@__PURE__*/ S.suspend(() =>
+const CallbackOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     updateRequestUrl: S.optional(S.String),
@@ -548,13 +548,13 @@ export const CallbackOptions = /*@__PURE__*/ S.suspend(() =>
 export type EventTicketClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const EventTicketClassNotifyPreferenceEnum = S.String;
+const EventTicketClassNotifyPreferenceEnum = S.String;
 
 export type EventTicketClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-export const EventTicketClassViewUnlockRequirementEnum = S.String;
+const EventTicketClassViewUnlockRequirementEnum = S.String;
 
 export interface Uri {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#uri"`. */
@@ -568,7 +568,7 @@ export interface Uri {
   /** The URI's title appearing in the app as text. Recommended maximum is 20 characters to ensure full string is displayed on smaller screens. Note that in some contexts this text is not used, such as when `description` is part of an image. */
   description?: string;
 }
-export const Uri = /*@__PURE__*/ S.suspend(() =>
+const Uri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     uri: S.optional(S.String),
@@ -584,7 +584,7 @@ export interface AppLinkDataAppLinkInfoAppTarget {
   /** URI for AppTarget. The description on the URI must be set. Prefer setting package field instead, if this target is defined for your application. */
   targetUri?: Uri;
 }
-export const AppLinkDataAppLinkInfoAppTarget = /*@__PURE__*/ S.suspend(() =>
+const AppLinkDataAppLinkInfoAppTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     targetUri: S.optional(Uri),
@@ -603,7 +603,7 @@ export interface AppLinkDataAppLinkInfo {
   /** Target to follow when opening the app link on clients. It will be used by partners to open their app or webpage. */
   appTarget?: AppLinkDataAppLinkInfoAppTarget;
 }
-export const AppLinkDataAppLinkInfo = /*@__PURE__*/ S.suspend(() =>
+const AppLinkDataAppLinkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(LocalizedString),
     description: S.optional(LocalizedString),
@@ -622,7 +622,7 @@ export interface AppLinkData {
   /** Optional information about the partner web link. */
   webAppLinkInfo?: AppLinkDataAppLinkInfo;
 }
-export const AppLinkData = /*@__PURE__*/ S.suspend(() =>
+const AppLinkData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayText: S.optional(LocalizedString),
     androidAppLinkInfo: S.optional(AppLinkDataAppLinkInfo),
@@ -637,7 +637,7 @@ export type EventDateTimeDoorsOpenLabelEnum =
   | "doorsOpen"
   | "GATES_OPEN"
   | "gatesOpen";
-export const EventDateTimeDoorsOpenLabelEnum = S.String;
+const EventDateTimeDoorsOpenLabelEnum = S.String;
 
 export interface EventDateTime {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventDateTime"`. */
@@ -653,7 +653,7 @@ export interface EventDateTime {
   /** The label to use for the doors open value (`doorsOpen`) on the card detail view. Each available option maps to a set of localized strings, so that translations are shown to the user based on their locale. Both `doorsOpenLabel` and `customDoorsOpenLabel` may not be set. If neither is set, the label will default to "Doors Open", localized. If the doors open field is unset, this label will not be used. */
   doorsOpenLabel?: EventDateTimeDoorsOpenLabelEnum | (string & {});
 }
-export const EventDateTime = /*@__PURE__*/ S.suspend(() =>
+const EventDateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     customDoorsOpenLabel: S.optional(LocalizedString),
@@ -675,7 +675,7 @@ export interface LabelValue {
   /** Translated strings for the value. Recommended maximum is 15 characters for a two-column layout and 30 characters for a one-column layout. */
   localizedValue?: LocalizedString;
 }
-export const LabelValue = /*@__PURE__*/ S.suspend(() =>
+const LabelValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localizedLabel: S.optional(LocalizedString),
     label: S.optional(S.String),
@@ -685,20 +685,20 @@ export const LabelValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelValue" }) as any as S.Schema<LabelValue>;
 
 export type LabelValueList = Array<LabelValue>;
-export const LabelValueList = /*@__PURE__*/ S.Array(LabelValue) as any as S.Schema<LabelValueList>;
+const LabelValueList = /*@__PURE__*/ S.Array(LabelValue) as any as S.Schema<LabelValueList>;
 
 export interface LabelValueRow {
   /** A list of labels and values. These will be displayed in a singular column, one after the other, not in multiple columns, despite the field name. */
   columns?: LabelValueList;
 }
-export const LabelValueRow = /*@__PURE__*/ S.suspend(() =>
+const LabelValueRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(LabelValueList),
   }),
 ).annotate({ identifier: "LabelValueRow" }) as any as S.Schema<LabelValueRow>;
 
 export type LabelValueRowList = Array<LabelValueRow>;
-export const LabelValueRowList = /*@__PURE__*/ S.Array(
+const LabelValueRowList = /*@__PURE__*/ S.Array(
   LabelValueRow,
 ) as any as S.Schema<LabelValueRowList>;
 
@@ -707,7 +707,7 @@ export interface InfoModuleData {
   /** A list of collections of labels and values. These will be displayed one after the other in a singular column. */
   labelValueRows?: LabelValueRowList;
 }
-export const InfoModuleData = /*@__PURE__*/ S.suspend(() =>
+const InfoModuleData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showLastUpdateTime: S.optional(S.Boolean),
     labelValueRows: S.optional(LabelValueRowList),
@@ -715,26 +715,26 @@ export const InfoModuleData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InfoModuleData" }) as any as S.Schema<InfoModuleData>;
 
 export type MessageList = Array<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 export interface Review {
   comments?: string;
 }
-export const Review = /*@__PURE__*/ S.suspend(() =>
+const Review = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: S.optional(S.String),
   }),
 ).annotate({ identifier: "Review" }) as any as S.Schema<Review>;
 
 export type EventTicketClassSeatLabelEnum = "SEAT_LABEL_UNSPECIFIED" | "SEAT" | "seat";
-export const EventTicketClassSeatLabelEnum = S.String;
+const EventTicketClassSeatLabelEnum = S.String;
 
 /** Constraints that all must be met for the module to be shown. */
 export interface ModuleViewConstraints {
   /** The period of time that the module will be displayed to users. Can define both a `startTime` and `endTime`. The module is displayed immediately after insertion unless a `startTime` is set. The module is displayed indefinitely if `endTime` is not set. */
   displayInterval?: TimeInterval;
 }
-export const ModuleViewConstraints = /*@__PURE__*/ S.suspend(() =>
+const ModuleViewConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayInterval: S.optional(TimeInterval),
   }),
@@ -755,7 +755,7 @@ export interface ValueAddedModuleData {
   /** URI that the module leads to on click. This can be a web link or a deep link as mentioned in https://developer.android.com/training/app-links/deep-linking. */
   uri?: string;
 }
-export const ValueAddedModuleData = /*@__PURE__*/ S.suspend(() =>
+const ValueAddedModuleData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(Image),
     header: S.optional(LocalizedString),
@@ -767,12 +767,12 @@ export const ValueAddedModuleData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValueAddedModuleData" }) as any as S.Schema<ValueAddedModuleData>;
 
 export type ValueAddedModuleDataList = Array<ValueAddedModuleData>;
-export const ValueAddedModuleDataList = /*@__PURE__*/ S.Array(
+const ValueAddedModuleDataList = /*@__PURE__*/ S.Array(
   ValueAddedModuleData,
 ) as any as S.Schema<ValueAddedModuleDataList>;
 
 export type EventTicketClassRowLabelEnum = "ROW_LABEL_UNSPECIFIED" | "ROW" | "row";
-export const EventTicketClassRowLabelEnum = S.String;
+const EventTicketClassRowLabelEnum = S.String;
 
 /** Data for Text module. All fields are optional. Header will be displayed if available, different types of bodies will be concatenated if they are defined. */
 export interface TextModuleData {
@@ -787,7 +787,7 @@ export interface TextModuleData {
   /** The body of the Text Module, which is defined as an uninterrupted string. Recommended maximum length is 500 characters to ensure full string is displayed on smaller screens. */
   body?: string;
 }
-export const TextModuleData = /*@__PURE__*/ S.suspend(() =>
+const TextModuleData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localizedHeader: S.optional(LocalizedString),
     id: S.optional(S.String),
@@ -798,7 +798,7 @@ export const TextModuleData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TextModuleData" }) as any as S.Schema<TextModuleData>;
 
 export type TextModuleDataList = Array<TextModuleData>;
-export const TextModuleDataList = /*@__PURE__*/ S.Array(
+const TextModuleDataList = /*@__PURE__*/ S.Array(
   TextModuleData,
 ) as any as S.Schema<TextModuleDataList>;
 
@@ -806,13 +806,13 @@ export type SecurityAnimationAnimationTypeEnum =
   | "ANIMATION_UNSPECIFIED"
   | "FOIL_SHIMMER"
   | "foilShimmer";
-export const SecurityAnimationAnimationTypeEnum = S.String;
+const SecurityAnimationAnimationTypeEnum = S.String;
 
 export interface SecurityAnimation {
   /** Type of animation. */
   animationType?: SecurityAnimationAnimationTypeEnum | (string & {});
 }
-export const SecurityAnimation = /*@__PURE__*/ S.suspend(() =>
+const SecurityAnimation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     animationType: S.optional(SecurityAnimationAnimationTypeEnum),
   }),
@@ -826,7 +826,7 @@ export interface LatLongPoint {
   /** The latitude specified as any value in the range of -90.0 through +90.0, both inclusive. Values outside these bounds will be rejected. */
   latitude?: number;
 }
-export const LatLongPoint = /*@__PURE__*/ S.suspend(() =>
+const LatLongPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longitude: S.optional(S.Number),
     kind: S.optional(S.String),
@@ -835,9 +835,7 @@ export const LatLongPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LatLongPoint" }) as any as S.Schema<LatLongPoint>;
 
 export type LatLongPointList = Array<LatLongPoint>;
-export const LatLongPointList = /*@__PURE__*/ S.Array(
-  LatLongPoint,
-) as any as S.Schema<LatLongPointList>;
+const LatLongPointList = /*@__PURE__*/ S.Array(LatLongPoint) as any as S.Schema<LatLongPointList>;
 
 /** Locations of interest for this class or object. Currently, this location is used for geofenced notifications. When a user is within a set radius of this lat/long, and dwells there, Google will trigger a notification. When a user exits this radius, the notification will be hidden. */
 export interface MerchantLocation {
@@ -846,7 +844,7 @@ export interface MerchantLocation {
   /** The latitude specified as any value in the range of -90.0 through +90.0, both inclusive. Values outside these bounds will be rejected. */
   latitude?: number;
 }
-export const MerchantLocation = /*@__PURE__*/ S.suspend(() =>
+const MerchantLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longitude: S.optional(S.Number),
     latitude: S.optional(S.Number),
@@ -854,7 +852,7 @@ export const MerchantLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MerchantLocation" }) as any as S.Schema<MerchantLocation>;
 
 export type MerchantLocationList = Array<MerchantLocation>;
-export const MerchantLocationList = /*@__PURE__*/ S.Array(
+const MerchantLocationList = /*@__PURE__*/ S.Array(
   MerchantLocation,
 ) as any as S.Schema<MerchantLocationList>;
 
@@ -866,7 +864,7 @@ export type EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-export const EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
+const EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
 
 export type EventTicketClassGateLabelEnum =
   | "GATE_LABEL_UNSPECIFIED"
@@ -876,7 +874,7 @@ export type EventTicketClassGateLabelEnum =
   | "door"
   | "ENTRANCE"
   | "entrance";
-export const EventTicketClassGateLabelEnum = S.String;
+const EventTicketClassGateLabelEnum = S.String;
 
 export type EventTicketClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
@@ -888,23 +886,23 @@ export type EventTicketClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-export const EventTicketClassReviewStatusEnum = S.String;
+const EventTicketClassReviewStatusEnum = S.String;
 
 export type UriList = Array<Uri>;
-export const UriList = /*@__PURE__*/ S.Array(Uri) as any as S.Schema<UriList>;
+const UriList = /*@__PURE__*/ S.Array(Uri) as any as S.Schema<UriList>;
 
 export interface LinksModuleData {
   /** The list of URIs. */
   uris?: UriList;
 }
-export const LinksModuleData = /*@__PURE__*/ S.suspend(() =>
+const LinksModuleData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uris: S.optional(UriList),
   }),
 ).annotate({ identifier: "LinksModuleData" }) as any as S.Schema<LinksModuleData>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface EventTicketClass {
   /** A custom label to use for the gate value (`eventTicketObject.seatInfo.gate`) on the card detail view. This should only be used if the default "Gate" label or one of the `gateLabel` options is not sufficient. Both `gateLabel` and `customGateLabel` may not be set. If neither is set, the label will default to "Gate", localized. If the gate field is unset, this label will not be used. */
@@ -1004,7 +1002,7 @@ export interface EventTicketClass {
   /** A custom label to use for the row value (`eventTicketObject.seatInfo.row`) on the card detail view. This should only be used if the default "Row" label or one of the `rowLabel` options is not sufficient. Both `rowLabel` and `customRowLabel` may not be set. If neither is set, the label will default to "Row", localized. If the row field is unset, this label will not be used. */
   customRowLabel?: LocalizedString;
 }
-export const EventTicketClass = /*@__PURE__*/ S.suspend(() =>
+const EventTicketClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customGateLabel: S.optional(LocalizedString),
     venue: S.optional(EventVenue),
@@ -1062,7 +1060,7 @@ export interface EventTicketClassAddMessageResponse {
   /** The updated EventTicketClass resource. */
   resource?: EventTicketClass;
 }
-export const EventTicketClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const EventTicketClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(EventTicketClass),
   }),
@@ -1076,7 +1074,7 @@ export interface AddmessageEventticketobjectRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -1101,7 +1099,7 @@ export type EventTicketObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-export const EventTicketObjectStateEnum = S.String;
+const EventTicketObjectStateEnum = S.String;
 
 export interface Money {
   /** The unit of money amount in micros. For example, $1 USD would be represented as 1000000 micros. */
@@ -1111,7 +1109,7 @@ export interface Money {
   /** The currency code, such as "USD" or "EUR." */
   currencyCode?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     micros: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1124,7 +1122,7 @@ export interface SaveRestrictions {
   /** Restrict the save of the referencing object to the given email address only. This is the hex output of SHA256 sum of the email address, all lowercase and without any notations like "." or "+", except "@". For example, for example@example.com, this value will be 31c5543c1734d25c7206f5fd591525d0295bec6fe84ff82f946a34fe970a1e66 and for Example@example.com, this value will be bc34f262c93ad7122763684ccea6f07fb7f5d8a2d11e60ce15a6f43fe70ce632 If email address of the logged-in user who tries to save this pass does not match with the defined value here, users won't be allowed to save this pass. They will instead be prompted with an error to contact the issuer. This information should be gathered from the user with an explicit consent via Sign in with Google integration https://developers.google.com/identity/authentication. Please contact with support before using Save Restrictions. */
   restrictToEmailSha256?: string;
 }
-export const SaveRestrictions = /*@__PURE__*/ S.suspend(() =>
+const SaveRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restrictToEmailSha256: S.optional(S.String),
   }),
@@ -1136,7 +1134,7 @@ export interface GroupingInfo {
   /** Optional grouping ID for grouping the passes with the same ID visually together. Grouping with different types of passes is allowed. */
   groupingId?: string;
 }
-export const GroupingInfo = /*@__PURE__*/ S.suspend(() =>
+const GroupingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortIndex: S.optional(S.Number),
     groupingId: S.optional(S.String),
@@ -1155,7 +1153,7 @@ export interface EventSeat {
   /** The gate the ticket holder should enter to get to their seat, such as "A" or "West". This field is localizable so you may translate words or use different alphabets for the characters in an identifier. */
   gate?: LocalizedString;
 }
-export const EventSeat = /*@__PURE__*/ S.suspend(() =>
+const EventSeat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     row: S.optional(LocalizedString),
     section: S.optional(LocalizedString),
@@ -1168,24 +1166,24 @@ export const EventSeat = /*@__PURE__*/ S.suspend(() =>
 export type EventTicketObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const EventTicketObjectNotifyPreferenceEnum = S.String;
+const EventTicketObjectNotifyPreferenceEnum = S.String;
 
 export type PassConstraintsScreenshotEligibilityEnum =
   | "SCREENSHOT_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
   | "INELIGIBLE";
-export const PassConstraintsScreenshotEligibilityEnum = S.String;
+const PassConstraintsScreenshotEligibilityEnum = S.String;
 
 export type PassConstraintsNfcConstraintItemEnum =
   | "NFC_CONSTRAINT_UNSPECIFIED"
   | "BLOCK_PAYMENT"
   | "BLOCK_CLOSED_LOOP_TRANSIT";
-export const PassConstraintsNfcConstraintItemEnum = S.String;
+const PassConstraintsNfcConstraintItemEnum = S.String;
 
 export type PassConstraintsNfcConstraintItemEnumList = Array<
   PassConstraintsNfcConstraintItemEnum | (string & {})
 >;
-export const PassConstraintsNfcConstraintItemEnumList = /*@__PURE__*/ S.Array(
+const PassConstraintsNfcConstraintItemEnumList = /*@__PURE__*/ S.Array(
   PassConstraintsNfcConstraintItemEnum,
 ) as any as S.Schema<PassConstraintsNfcConstraintItemEnumList>;
 
@@ -1196,7 +1194,7 @@ export interface PassConstraints {
   /** The NFC constraints for the pass. */
   nfcConstraint?: PassConstraintsNfcConstraintItemEnumList;
 }
-export const PassConstraints = /*@__PURE__*/ S.suspend(() =>
+const PassConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenshotEligibility: S.optional(PassConstraintsScreenshotEligibilityEnum),
     nfcConstraint: S.optional(PassConstraintsNfcConstraintItemEnumList),
@@ -1209,7 +1207,7 @@ export interface EventReservationInfo {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventReservationInfo"`. */
   kind?: string;
 }
-export const EventReservationInfo = /*@__PURE__*/ S.suspend(() =>
+const EventReservationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confirmationCode: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1217,7 +1215,7 @@ export const EventReservationInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventReservationInfo" }) as any as S.Schema<EventReservationInfo>;
 
 export type RotatingBarcodeRenderEncodingEnum = "RENDER_ENCODING_UNSPECIFIED" | "UTF_8";
-export const RotatingBarcodeRenderEncodingEnum = S.String;
+const RotatingBarcodeRenderEncodingEnum = S.String;
 
 /** Configuration for the key and value length. See https://www.rfc-editor.org/rfc/rfc4226#section-5.3 */
 export interface RotatingBarcodeTotpDetailsTotpParameters {
@@ -1226,7 +1224,7 @@ export interface RotatingBarcodeTotpDetailsTotpParameters {
   /** The secret key used for the TOTP value generation, encoded as a Base16 string. */
   key?: string;
 }
-export const RotatingBarcodeTotpDetailsTotpParameters = /*@__PURE__*/ S.suspend(() =>
+const RotatingBarcodeTotpDetailsTotpParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueLength: S.optional(S.Number),
     key: S.optional(S.String),
@@ -1237,12 +1235,12 @@ export const RotatingBarcodeTotpDetailsTotpParameters = /*@__PURE__*/ S.suspend(
 
 export type RotatingBarcodeTotpDetailsTotpParametersList =
   Array<RotatingBarcodeTotpDetailsTotpParameters>;
-export const RotatingBarcodeTotpDetailsTotpParametersList = /*@__PURE__*/ S.Array(
+const RotatingBarcodeTotpDetailsTotpParametersList = /*@__PURE__*/ S.Array(
   RotatingBarcodeTotpDetailsTotpParameters,
 ) as any as S.Schema<RotatingBarcodeTotpDetailsTotpParametersList>;
 
 export type RotatingBarcodeTotpDetailsAlgorithmEnum = "TOTP_ALGORITHM_UNSPECIFIED" | "TOTP_SHA1";
-export const RotatingBarcodeTotpDetailsAlgorithmEnum = S.String;
+const RotatingBarcodeTotpDetailsAlgorithmEnum = S.String;
 
 /** Configuration for the time-based OTP substitutions. See https://tools.ietf.org/html/rfc6238 */
 export interface RotatingBarcodeTotpDetails {
@@ -1253,7 +1251,7 @@ export interface RotatingBarcodeTotpDetails {
   /** The TOTP algorithm used to generate the OTP. */
   algorithm?: RotatingBarcodeTotpDetailsAlgorithmEnum | (string & {});
 }
-export const RotatingBarcodeTotpDetails = /*@__PURE__*/ S.suspend(() =>
+const RotatingBarcodeTotpDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     periodMillis: S.optional(S.String),
     parameters: S.optional(RotatingBarcodeTotpDetailsTotpParametersList),
@@ -1272,7 +1270,7 @@ export interface RotatingBarcodeValues {
   /** Required. The amount of time each barcode is valid for. */
   periodMillis?: string;
 }
-export const RotatingBarcodeValues = /*@__PURE__*/ S.suspend(() =>
+const RotatingBarcodeValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDateTime: S.optional(S.String),
     values: S.optional(StringList),
@@ -1309,7 +1307,7 @@ export type RotatingBarcodeTypeEnum =
   | "upcA"
   | "TEXT_ONLY"
   | "textOnly";
-export const RotatingBarcodeTypeEnum = S.String;
+const RotatingBarcodeTypeEnum = S.String;
 
 export interface RotatingBarcode {
   /** The render encoding for the barcode. When specified, barcode is rendered in the given encoding. Otherwise best known encoding is chosen by Google. */
@@ -1327,7 +1325,7 @@ export interface RotatingBarcode {
   /** String encoded barcode value. This string supports the following substitutions: * {totp_value_n}: Replaced with the TOTP value (see TotpDetails.parameters). * {totp_timestamp_millis}: Replaced with the timestamp (millis since epoch) at which the barcode was generated. * {totp_timestamp_seconds}: Replaced with the timestamp (seconds since epoch) at which the barcode was generated. */
   valuePattern?: string;
 }
-export const RotatingBarcode = /*@__PURE__*/ S.suspend(() =>
+const RotatingBarcode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renderEncoding: S.optional(RotatingBarcodeRenderEncodingEnum),
     totpDetails: S.optional(RotatingBarcodeTotpDetails),
@@ -1368,10 +1366,10 @@ export type BarcodeTypeEnum =
   | "upcA"
   | "TEXT_ONLY"
   | "textOnly";
-export const BarcodeTypeEnum = S.String;
+const BarcodeTypeEnum = S.String;
 
 export type BarcodeRenderEncodingEnum = "RENDER_ENCODING_UNSPECIFIED" | "UTF_8";
-export const BarcodeRenderEncodingEnum = S.String;
+const BarcodeRenderEncodingEnum = S.String;
 
 export interface Barcode {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#barcode"`. */
@@ -1387,7 +1385,7 @@ export interface Barcode {
   /** An optional text that will override the default text that shows under the barcode. This field is intended for a human readable equivalent of the barcode value, used when the barcode cannot be scanned. */
   alternateText?: string;
 }
-export const Barcode = /*@__PURE__*/ S.suspend(() =>
+const Barcode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     showCodeText: S.optional(LocalizedString),
@@ -1472,7 +1470,7 @@ export interface EventTicketObject {
   /** The barcode type and value. */
   barcode?: Barcode;
 }
-export const EventTicketObject = /*@__PURE__*/ S.suspend(() =>
+const EventTicketObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classReference: S.optional(EventTicketClass),
     id: S.optional(S.String),
@@ -1517,7 +1515,7 @@ export interface EventTicketObjectAddMessageResponse {
   /** The updated EventTicketObject resource. */
   resource?: EventTicketObject;
 }
-export const EventTicketObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const EventTicketObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(EventTicketObject),
   }),
@@ -1531,7 +1529,7 @@ export interface AddmessageFlightclassRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -1549,7 +1547,7 @@ export const AddmessageFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
 export type FlightClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const FlightClassNotifyPreferenceEnum = S.String;
+const FlightClassNotifyPreferenceEnum = S.String;
 
 export type FlightClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
@@ -1561,7 +1559,7 @@ export type FlightClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-export const FlightClassReviewStatusEnum = S.String;
+const FlightClassReviewStatusEnum = S.String;
 
 export interface FlightCarrier {
   /** Two character IATA airline code of the marketing carrier (as opposed to operating carrier). Exactly one of this or `carrierIcaoCode` needs to be provided for `carrier` and `operatingCarrier`. eg: "LX" for Swiss Air */
@@ -1579,7 +1577,7 @@ export interface FlightCarrier {
   /** Three character ICAO airline code of the marketing carrier (as opposed to operating carrier). Exactly one of this or `carrierIataCode` needs to be provided for `carrier` and `operatingCarrier`. eg: "EZY" for Easy Jet */
   carrierIcaoCode?: string;
 }
-export const FlightCarrier = /*@__PURE__*/ S.suspend(() =>
+const FlightCarrier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierIataCode: S.optional(S.String),
     wideAirlineLogo: S.optional(Image),
@@ -1605,7 +1603,7 @@ export interface FlightHeader {
   /** The flight number used by the operating carrier without IATA carrier code. This field should contain only digits. eg: "234" */
   operatingFlightNumber?: string;
 }
-export const FlightHeader = /*@__PURE__*/ S.suspend(() =>
+const FlightHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrier: S.optional(FlightCarrier),
     flightNumberDisplayOverride: S.optional(S.String),
@@ -1628,7 +1626,7 @@ export interface AirportInfo {
   /** A name of the gate. Eg: "B59" or "59" */
   gate?: string;
 }
-export const AirportInfo = /*@__PURE__*/ S.suspend(() =>
+const AirportInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     airportNameOverride: S.optional(LocalizedString),
     terminal: S.optional(S.String),
@@ -1646,13 +1644,13 @@ export type FlightClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-export const FlightClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
+const FlightClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
 
 export type FlightClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-export const FlightClassViewUnlockRequirementEnum = S.String;
+const FlightClassViewUnlockRequirementEnum = S.String;
 
 export type BoardingAndSeatingPolicySeatClassPolicyEnum =
   | "SEAT_CLASS_POLICY_UNSPECIFIED"
@@ -1664,7 +1662,7 @@ export type BoardingAndSeatingPolicySeatClassPolicyEnum =
   | "tierBased"
   | "SEAT_CLASS_POLICY_OTHER"
   | "seatClassPolicyOther";
-export const BoardingAndSeatingPolicySeatClassPolicyEnum = S.String;
+const BoardingAndSeatingPolicySeatClassPolicyEnum = S.String;
 
 export type BoardingAndSeatingPolicyBoardingPolicyEnum =
   | "BOARDING_POLICY_UNSPECIFIED"
@@ -1674,7 +1672,7 @@ export type BoardingAndSeatingPolicyBoardingPolicyEnum =
   | "groupBased"
   | "BOARDING_POLICY_OTHER"
   | "boardingPolicyOther";
-export const BoardingAndSeatingPolicyBoardingPolicyEnum = S.String;
+const BoardingAndSeatingPolicyBoardingPolicyEnum = S.String;
 
 export interface BoardingAndSeatingPolicy {
   /** Seating policy which dictates how we display the seat class. If unset, Google will default to `cabinBased`. */
@@ -1684,7 +1682,7 @@ export interface BoardingAndSeatingPolicy {
   /** Indicates the policy the airline uses for boarding. If unset, Google will default to `zoneBased`. */
   boardingPolicy?: BoardingAndSeatingPolicyBoardingPolicyEnum | (string & {});
 }
-export const BoardingAndSeatingPolicy = /*@__PURE__*/ S.suspend(() =>
+const BoardingAndSeatingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seatClassPolicy: S.optional(BoardingAndSeatingPolicySeatClassPolicyEnum),
     kind: S.optional(S.String),
@@ -1706,7 +1704,7 @@ export type FlightClassFlightStatusEnum =
   | "redirected"
   | "DIVERTED"
   | "diverted";
-export const FlightClassFlightStatusEnum = S.String;
+const FlightClassFlightStatusEnum = S.String;
 
 export interface FlightClass {
   /** The review comments set by the platform when a class is marked `approved` or `rejected`. */
@@ -1796,7 +1794,7 @@ export interface FlightClass {
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected by the validator. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
   merchantLocations?: MerchantLocationList;
 }
-export const FlightClass = /*@__PURE__*/ S.suspend(() =>
+const FlightClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     review: S.optional(Review),
     hexBackgroundColor: S.optional(S.String),
@@ -1849,7 +1847,7 @@ export interface FlightClassAddMessageResponse {
   /** The updated FlightClass resource. */
   resource?: FlightClass;
 }
-export const FlightClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const FlightClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(FlightClass),
   }),
@@ -1863,7 +1861,7 @@ export interface AddmessageFlightobjectRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -1881,7 +1879,7 @@ export const AddmessageFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
 export type FlightObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const FlightObjectNotifyPreferenceEnum = S.String;
+const FlightObjectNotifyPreferenceEnum = S.String;
 
 export type BoardingAndSeatingInfoBoardingDoorEnum =
   | "BOARDING_DOOR_UNSPECIFIED"
@@ -1889,7 +1887,7 @@ export type BoardingAndSeatingInfoBoardingDoorEnum =
   | "front"
   | "BACK"
   | "back";
-export const BoardingAndSeatingInfoBoardingDoorEnum = S.String;
+const BoardingAndSeatingInfoBoardingDoorEnum = S.String;
 
 export interface BoardingAndSeatingInfo {
   /** The value of passenger seat. If there is no specific identifier, use `seatAssignment` instead. eg: "25A" */
@@ -1911,7 +1909,7 @@ export interface BoardingAndSeatingInfo {
   /** A small image shown above the boarding barcode. Airlines can use it to communicate any special boarding privileges. In the event the security program logo is also set, this image might be rendered alongside the logo for that security program. */
   boardingPrivilegeImage?: Image;
 }
-export const BoardingAndSeatingInfo = /*@__PURE__*/ S.suspend(() =>
+const BoardingAndSeatingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seatNumber: S.optional(S.String),
     boardingPosition: S.optional(S.String),
@@ -1935,7 +1933,7 @@ export type FlightObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-export const FlightObjectStateEnum = S.String;
+const FlightObjectStateEnum = S.String;
 
 export interface FrequentFlyerInfo {
   /** Frequent flyer program name. eg: "Lufthansa Miles & More" */
@@ -1945,7 +1943,7 @@ export interface FrequentFlyerInfo {
   /** Frequent flyer number. Required for each nested object of kind `walletobjects#frequentFlyerInfo`. */
   frequentFlyerNumber?: string;
 }
-export const FrequentFlyerInfo = /*@__PURE__*/ S.suspend(() =>
+const FrequentFlyerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequentFlyerProgramName: S.optional(LocalizedString),
     kind: S.optional(S.String),
@@ -1963,7 +1961,7 @@ export interface ReservationInfo {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#reservationInfo"`. */
   kind?: string;
 }
-export const ReservationInfo = /*@__PURE__*/ S.suspend(() =>
+const ReservationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequentFlyerInfo: S.optional(FrequentFlyerInfo),
     eticketNumber: S.optional(S.String),
@@ -2040,7 +2038,7 @@ export interface FlightObject {
   /** Required. Information about flight reservation. */
   reservationInfo?: ReservationInfo;
 }
-export const FlightObject = /*@__PURE__*/ S.suspend(() =>
+const FlightObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasLinkedDevice: S.optional(S.Boolean),
     validTimeInterval: S.optional(TimeInterval),
@@ -2082,7 +2080,7 @@ export interface FlightObjectAddMessageResponse {
   /** The updated FlightObject resource. */
   resource?: FlightObject;
 }
-export const FlightObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const FlightObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(FlightObject),
   }),
@@ -2096,7 +2094,7 @@ export interface AddmessageGenericclassRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -2119,13 +2117,13 @@ export type GenericClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-export const GenericClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
+const GenericClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
 
 export type GenericClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-export const GenericClassViewUnlockRequirementEnum = S.String;
+const GenericClassViewUnlockRequirementEnum = S.String;
 
 /** Generic Class */
 export interface GenericClass {
@@ -2162,7 +2160,7 @@ export interface GenericClass {
   /** Text module data. If `textModulesData` is also defined on the object, both will be displayed. The maximum number of these fields displayed is 10 from class and 10 from object. */
   textModulesData?: TextModuleDataList;
 }
-export const GenericClass = /*@__PURE__*/ S.suspend(() =>
+const GenericClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(MessageList),
     valueAddedModuleData: S.optional(ValueAddedModuleDataList),
@@ -2189,7 +2187,7 @@ export interface GenericClassAddMessageResponse {
   /** The updated EventTicketClass resource. */
   resource?: GenericClass;
 }
-export const GenericClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const GenericClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(GenericClass),
   }),
@@ -2203,7 +2201,7 @@ export interface AddmessageGenericobjectRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -2223,7 +2221,7 @@ export interface UpcomingNotification {
   /** Indicates if the object needs to have upcoming notification enabled. */
   enableNotification?: boolean;
 }
-export const UpcomingNotification = /*@__PURE__*/ S.suspend(() =>
+const UpcomingNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableNotification: S.optional(S.Boolean),
   }),
@@ -2234,7 +2232,7 @@ export interface ExpiryNotification {
   /** Indicates if the object needs to have expiry notification enabled. */
   enableNotification?: boolean;
 }
-export const ExpiryNotification = UpcomingNotification as any as S.Schema<ExpiryNotification>;
+const ExpiryNotification = UpcomingNotification as any as S.Schema<ExpiryNotification>;
 
 /** Indicates if the object needs to have notification enabled. We support only one of ExpiryNotification/UpcomingNotification. `expiryNotification` takes precedence over `upcomingNotification`. In other words if `expiryNotification` is set, we ignore the `upcomingNotification` field. */
 export interface Notifications {
@@ -2243,7 +2241,7 @@ export interface Notifications {
   /** A notification would be triggered at a specific time before the card expires. */
   expiryNotification?: ExpiryNotification;
 }
-export const Notifications = /*@__PURE__*/ S.suspend(() =>
+const Notifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upcomingNotification: S.optional(UpcomingNotification),
     expiryNotification: S.optional(ExpiryNotification),
@@ -2271,7 +2269,7 @@ export type GenericObjectGenericTypeEnum =
   | "GENERIC_TRANSIT_PASS"
   | "GENERIC_VEHICLE_REGISTRATION"
   | "GENERIC_OTHER";
-export const GenericObjectGenericTypeEnum = S.String;
+const GenericObjectGenericTypeEnum = S.String;
 
 export type GenericObjectStateEnum =
   | "STATE_UNSPECIFIED"
@@ -2283,7 +2281,7 @@ export type GenericObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-export const GenericObjectStateEnum = S.String;
+const GenericObjectStateEnum = S.String;
 
 /** Generic Object */
 export interface GenericObject {
@@ -2344,7 +2342,7 @@ export interface GenericObject {
   /** The logo image of the pass. This image is displayed in the card detail view in upper left, and also on the list/thumbnail view. If the logo is not present, the first letter of `cardTitle` would be shown as logo. */
   logo?: Image;
 }
-export const GenericObject = /*@__PURE__*/ S.suspend(() =>
+const GenericObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     heroImage: S.optional(Image),
     linksModuleData: S.optional(LinksModuleData),
@@ -2382,7 +2380,7 @@ export interface GenericObjectAddMessageResponse {
   /** The updated GenericObject resource. */
   resource?: GenericObject;
 }
-export const GenericObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const GenericObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(GenericObject),
   }),
@@ -2396,7 +2394,7 @@ export interface AddmessageGiftcardclassRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -2414,7 +2412,7 @@ export const AddmessageGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
 export type GiftCardClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const GiftCardClassNotifyPreferenceEnum = S.String;
+const GiftCardClassNotifyPreferenceEnum = S.String;
 
 export type GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -2424,13 +2422,13 @@ export type GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-export const GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
+const GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
 
 export type GiftCardClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-export const GiftCardClassViewUnlockRequirementEnum = S.String;
+const GiftCardClassViewUnlockRequirementEnum = S.String;
 
 export type GiftCardClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
@@ -2442,7 +2440,7 @@ export type GiftCardClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-export const GiftCardClassReviewStatusEnum = S.String;
+const GiftCardClassReviewStatusEnum = S.String;
 
 export interface GiftCardClass {
   /** The URI of your application's home page. Populating the URI in this field results in the exact same behavior as populating an URI in linksModuleData (when an object is rendered, a link to the homepage is shown in what would usually be thought of as the linksModuleData section of the object). */
@@ -2530,7 +2528,7 @@ export interface GiftCardClass {
   /** Deprecated. */
   wordMark?: Image;
 }
-export const GiftCardClass = /*@__PURE__*/ S.suspend(() =>
+const GiftCardClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     homepageUri: S.optional(Uri),
     callbackOptions: S.optional(CallbackOptions),
@@ -2582,7 +2580,7 @@ export interface GiftCardClassAddMessageResponse {
   /** The updated GiftCardClass resource. */
   resource?: GiftCardClass;
 }
-export const GiftCardClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const GiftCardClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(GiftCardClass),
   }),
@@ -2596,7 +2594,7 @@ export interface AddmessageGiftcardobjectRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -2621,12 +2619,12 @@ export type GiftCardObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-export const GiftCardObjectStateEnum = S.String;
+const GiftCardObjectStateEnum = S.String;
 
 export type GiftCardObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const GiftCardObjectNotifyPreferenceEnum = S.String;
+const GiftCardObjectNotifyPreferenceEnum = S.String;
 
 export interface GiftCardObject {
   /** Required. The class associated with this object. The class must be of the same type as this object, must already exist, and must be approved. Class IDs should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. */
@@ -2696,7 +2694,7 @@ export interface GiftCardObject {
   /** Information that controls how passes are grouped together. */
   groupingInfo?: GroupingInfo;
 }
-export const GiftCardObject = /*@__PURE__*/ S.suspend(() =>
+const GiftCardObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classId: S.optional(S.String),
     classReference: S.optional(GiftCardClass),
@@ -2738,7 +2736,7 @@ export interface GiftCardObjectAddMessageResponse {
   /** The updated GiftCardObject resource. */
   resource?: GiftCardObject;
 }
-export const GiftCardObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const GiftCardObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(GiftCardObject),
   }),
@@ -2752,7 +2750,7 @@ export interface AddmessageLoyaltyclassRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -2781,15 +2779,14 @@ export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum =
   | "COUNTRY"
   | "EMAIL"
   | "PHONE";
-export const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum = S.String;
+const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum = S.String;
 
 export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList = Array<
   DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum | (string & {})
 >;
-export const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList =
-  /*@__PURE__*/ S.Array(
-    DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum,
-  ) as any as S.Schema<DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList>;
+const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList = /*@__PURE__*/ S.Array(
+  DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum,
+) as any as S.Schema<DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList>;
 
 /** Information about the merchant hosted signup flow for a program. */
 export interface DiscoverableProgramMerchantSignupInfo {
@@ -2798,7 +2795,7 @@ export interface DiscoverableProgramMerchantSignupInfo {
   /** The URL to direct the user to for the merchant's signup site. */
   signupWebsite?: Uri;
 }
-export const DiscoverableProgramMerchantSignupInfo = /*@__PURE__*/ S.suspend(() =>
+const DiscoverableProgramMerchantSignupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signupSharedDatas: S.optional(
       DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList,
@@ -2814,7 +2811,7 @@ export interface DiscoverableProgramMerchantSigninInfo {
   /** The URL to direct the user to for the merchant's signin site. */
   signinWebsite?: Uri;
 }
-export const DiscoverableProgramMerchantSigninInfo = /*@__PURE__*/ S.suspend(() =>
+const DiscoverableProgramMerchantSigninInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signinWebsite: S.optional(Uri),
   }),
@@ -2830,7 +2827,7 @@ export type DiscoverableProgramStateEnum =
   | "live"
   | "DISABLED"
   | "disabled";
-export const DiscoverableProgramStateEnum = S.String;
+const DiscoverableProgramStateEnum = S.String;
 
 /** Information about how a class may be discovered and instantiated from within the Google Wallet app. This is done by searching for a loyalty or gift card program and scanning or manually entering. */
 export interface DiscoverableProgram {
@@ -2841,7 +2838,7 @@ export interface DiscoverableProgram {
   /** Visibility state of the discoverable program. */
   state?: DiscoverableProgramStateEnum | (string & {});
 }
-export const DiscoverableProgram = /*@__PURE__*/ S.suspend(() =>
+const DiscoverableProgram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantSignupInfo: S.optional(DiscoverableProgramMerchantSignupInfo),
     merchantSigninInfo: S.optional(DiscoverableProgramMerchantSigninInfo),
@@ -2857,12 +2854,12 @@ export type LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-export const LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
+const LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
 
 export type LoyaltyClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const LoyaltyClassNotifyPreferenceEnum = S.String;
+const LoyaltyClassNotifyPreferenceEnum = S.String;
 
 export type LoyaltyClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
@@ -2874,13 +2871,13 @@ export type LoyaltyClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-export const LoyaltyClassReviewStatusEnum = S.String;
+const LoyaltyClassReviewStatusEnum = S.String;
 
 export type LoyaltyClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-export const LoyaltyClassViewUnlockRequirementEnum = S.String;
+const LoyaltyClassViewUnlockRequirementEnum = S.String;
 
 export interface LoyaltyClass {
   /** Information about how the class may be discovered and instantiated from within the Google Pay app. */
@@ -2980,7 +2977,7 @@ export interface LoyaltyClass {
   /** Callback options to be used to call the issuer back for every save/delete of an object for this class by the end-user. All objects of this class are eligible for the callback. */
   callbackOptions?: CallbackOptions;
 }
-export const LoyaltyClass = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoverableProgram: S.optional(DiscoverableProgram),
     classTemplateInfo: S.optional(ClassTemplateInfo),
@@ -3038,7 +3035,7 @@ export interface LoyaltyClassAddMessageResponse {
   /** The updated LoyaltyClass resource. */
   resource?: LoyaltyClass;
 }
-export const LoyaltyClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(LoyaltyClass),
   }),
@@ -3052,7 +3049,7 @@ export interface AddmessageLoyaltyobjectRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -3077,7 +3074,7 @@ export interface LoyaltyPointsBalance {
   /** The integer form of a balance. Only one of these subtypes (string, int, double, money) should be populated. */
   int?: number;
 }
-export const LoyaltyPointsBalance = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyPointsBalance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     money: S.optional(Money),
     string: S.optional(S.String),
@@ -3094,7 +3091,7 @@ export interface LoyaltyPoints {
   /** The loyalty points label, such as "Points". Recommended maximum length is 9 characters. */
   label?: string;
 }
-export const LoyaltyPoints = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyPoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.optional(LoyaltyPointsBalance),
     localizedLabel: S.optional(LocalizedString),
@@ -3112,12 +3109,12 @@ export type LoyaltyObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-export const LoyaltyObjectStateEnum = S.String;
+const LoyaltyObjectStateEnum = S.String;
 
 export type LoyaltyObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const LoyaltyObjectNotifyPreferenceEnum = S.String;
+const LoyaltyObjectNotifyPreferenceEnum = S.String;
 
 export interface LoyaltyObject {
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
@@ -3187,7 +3184,7 @@ export interface LoyaltyObject {
   /** Deprecated. Use textModulesData instead. */
   infoModuleData?: InfoModuleData;
 }
-export const LoyaltyObject = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueAddedModuleData: S.optional(ValueAddedModuleDataList),
     locations: S.optional(LatLongPointList),
@@ -3229,7 +3226,7 @@ export interface LoyaltyObjectAddMessageResponse {
   /** The updated LoyaltyObject resource. */
   resource?: LoyaltyObject;
 }
-export const LoyaltyObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(LoyaltyObject),
   }),
@@ -3243,7 +3240,7 @@ export interface AddmessageOfferclassRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -3268,12 +3265,12 @@ export type OfferClassRedemptionChannelEnum =
   | "both"
   | "TEMPORARY_PRICE_REDUCTION"
   | "temporaryPriceReduction";
-export const OfferClassRedemptionChannelEnum = S.String;
+const OfferClassRedemptionChannelEnum = S.String;
 
 export type OfferClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const OfferClassNotifyPreferenceEnum = S.String;
+const OfferClassNotifyPreferenceEnum = S.String;
 
 export type OfferClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -3283,7 +3280,7 @@ export type OfferClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-export const OfferClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
+const OfferClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
 
 export type OfferClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
@@ -3295,13 +3292,13 @@ export type OfferClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-export const OfferClassReviewStatusEnum = S.String;
+const OfferClassReviewStatusEnum = S.String;
 
 export type OfferClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-export const OfferClassViewUnlockRequirementEnum = S.String;
+const OfferClassViewUnlockRequirementEnum = S.String;
 
 export interface OfferClass {
   /** The help link for the offer, such as `http://myownpersonaldomain.com/help` */
@@ -3395,7 +3392,7 @@ export interface OfferClass {
   /** Deprecated. */
   wordMark?: Image;
 }
-export const OfferClass = /*@__PURE__*/ S.suspend(() =>
+const OfferClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     helpUri: S.optional(Uri),
     title: S.optional(S.String),
@@ -3450,7 +3447,7 @@ export interface OfferClassAddMessageResponse {
   /** The updated OfferClass resource. */
   resource?: OfferClass;
 }
-export const OfferClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const OfferClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(OfferClass),
   }),
@@ -3464,7 +3461,7 @@ export interface AddmessageOfferobjectRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -3489,12 +3486,12 @@ export type OfferObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-export const OfferObjectStateEnum = S.String;
+const OfferObjectStateEnum = S.String;
 
 export type OfferObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const OfferObjectNotifyPreferenceEnum = S.String;
+const OfferObjectNotifyPreferenceEnum = S.String;
 
 export interface OfferObject {
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding class only object AppLinkData will be displayed. */
@@ -3554,7 +3551,7 @@ export interface OfferObject {
   /** Required. The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. The unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   id?: string;
 }
-export const OfferObject = /*@__PURE__*/ S.suspend(() =>
+const OfferObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appLinkData: S.optional(AppLinkData),
     classId: S.optional(S.String),
@@ -3591,7 +3588,7 @@ export interface OfferObjectAddMessageResponse {
   /** The updated OfferObject resource. */
   resource?: OfferObject;
 }
-export const OfferObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const OfferObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(OfferObject),
   }),
@@ -3605,7 +3602,7 @@ export interface AddmessageTransitclassRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -3632,7 +3629,7 @@ export type TransitClassTransitTypeEnum =
   | "ferry"
   | "OTHER"
   | "other";
-export const TransitClassTransitTypeEnum = S.String;
+const TransitClassTransitTypeEnum = S.String;
 
 export type TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -3642,13 +3639,13 @@ export type TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-export const TransitClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
+const TransitClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
 
 export type TransitClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-export const TransitClassViewUnlockRequirementEnum = S.String;
+const TransitClassViewUnlockRequirementEnum = S.String;
 
 /** ActivationOptions for the class */
 export interface ActivationOptions {
@@ -3657,7 +3654,7 @@ export interface ActivationOptions {
   /** Flag to allow users to make activation call from different device. This allows client to render the activation button enabled even if the activationStatus is ACTIVATED but the requested device is different than the current device. */
   allowReactivation?: boolean;
 }
-export const ActivationOptions = /*@__PURE__*/ S.suspend(() =>
+const ActivationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activationUrl: S.optional(S.String),
     allowReactivation: S.optional(S.Boolean),
@@ -3667,7 +3664,7 @@ export const ActivationOptions = /*@__PURE__*/ S.suspend(() =>
 export type TransitClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const TransitClassNotifyPreferenceEnum = S.String;
+const TransitClassNotifyPreferenceEnum = S.String;
 
 export type TransitClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
@@ -3679,7 +3676,7 @@ export type TransitClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-export const TransitClassReviewStatusEnum = S.String;
+const TransitClassReviewStatusEnum = S.String;
 
 export interface TransitClass {
   /** Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
@@ -3797,7 +3794,7 @@ export interface TransitClass {
   /** The name of the transit operator. */
   transitOperatorName?: LocalizedString;
 }
-export const TransitClass = /*@__PURE__*/ S.suspend(() =>
+const TransitClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerName: S.optional(S.String),
     hexBackgroundColor: S.optional(S.String),
@@ -3864,7 +3861,7 @@ export interface TransitClassAddMessageResponse {
   /** The updated TransitClass resource. */
   resource?: TransitClass;
 }
-export const TransitClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const TransitClassAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(TransitClass),
   }),
@@ -3878,7 +3875,7 @@ export interface AddmessageTransitobjectRequest {
   /** Request body */
   body?: AddMessageRequest;
 }
-export const AddmessageTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AddmessageTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
@@ -3899,7 +3896,7 @@ export type TransitObjectTripTypeEnum =
   | "roundTrip"
   | "ONE_WAY"
   | "oneWay";
-export const TransitObjectTripTypeEnum = S.String;
+const TransitObjectTripTypeEnum = S.String;
 
 export type TicketSeatFareClassEnum =
   | "FARE_CLASS_UNSPECIFIED"
@@ -3909,7 +3906,7 @@ export type TicketSeatFareClassEnum =
   | "first"
   | "BUSINESS"
   | "business";
-export const TicketSeatFareClassEnum = S.String;
+const TicketSeatFareClassEnum = S.String;
 
 export interface TicketSeat {
   /** The identifier of where the ticketed seat is located. Eg. "42". If there is no specific identifier, use `seatAssigment` instead. */
@@ -3923,7 +3920,7 @@ export interface TicketSeat {
   /** A custome fare class to be used if no `fareClass` applies. Both `fareClass` and `customFareClass` may not be set. */
   customFareClass?: LocalizedString;
 }
-export const TicketSeat = /*@__PURE__*/ S.suspend(() =>
+const TicketSeat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seat: S.optional(S.String),
     seatAssignment: S.optional(LocalizedString),
@@ -3934,7 +3931,7 @@ export const TicketSeat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TicketSeat" }) as any as S.Schema<TicketSeat>;
 
 export type TicketSeatList = Array<TicketSeat>;
-export const TicketSeatList = /*@__PURE__*/ S.Array(TicketSeat) as any as S.Schema<TicketSeatList>;
+const TicketSeatList = /*@__PURE__*/ S.Array(TicketSeat) as any as S.Schema<TicketSeatList>;
 
 export interface TicketLeg {
   /** The name of the transit operator that is operating this leg of a trip. */
@@ -3966,7 +3963,7 @@ export interface TicketLeg {
   /** Short description/name of the fare for this leg of travel. Eg "Anytime Single Use". */
   fareName?: LocalizedString;
 }
-export const TicketLeg = /*@__PURE__*/ S.suspend(() =>
+const TicketLeg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transitOperatorName: S.optional(LocalizedString),
     departureDateTime: S.optional(S.String),
@@ -3990,7 +3987,7 @@ export interface DeviceContext {
   /** If set, redemption information will only be returned to the given device upon activation of the object. This should not be used as a stable identifier to trace a user's device. It can change across different passes for the same device or even across different activations for the same device. When setting this, callers must also set has_linked_device on the object being activated. */
   deviceToken?: string;
 }
-export const DeviceContext = /*@__PURE__*/ S.suspend(() =>
+const DeviceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceToken: S.optional(S.String),
   }),
@@ -4006,7 +4003,7 @@ export interface TicketRestrictions {
   /** More details about the above `routeRestrictions`. */
   routeRestrictionsDetails?: LocalizedString;
 }
-export const TicketRestrictions = /*@__PURE__*/ S.suspend(() =>
+const TicketRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routeRestrictions: S.optional(LocalizedString),
     otherRestrictions: S.optional(LocalizedString),
@@ -4016,7 +4013,7 @@ export const TicketRestrictions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TicketRestrictions" }) as any as S.Schema<TicketRestrictions>;
 
 export type TicketLegList = Array<TicketLeg>;
-export const TicketLegList = /*@__PURE__*/ S.Array(TicketLeg) as any as S.Schema<TicketLegList>;
+const TicketLegList = /*@__PURE__*/ S.Array(TicketLeg) as any as S.Schema<TicketLegList>;
 
 export type TransitObjectConcessionCategoryEnum =
   | "CONCESSION_CATEGORY_UNSPECIFIED"
@@ -4026,7 +4023,7 @@ export type TransitObjectConcessionCategoryEnum =
   | "child"
   | "SENIOR"
   | "senior";
-export const TransitObjectConcessionCategoryEnum = S.String;
+const TransitObjectConcessionCategoryEnum = S.String;
 
 export type ActivationStatusStateEnum =
   | "UNKNOWN_STATE"
@@ -4034,13 +4031,13 @@ export type ActivationStatusStateEnum =
   | "not_activated"
   | "ACTIVATED"
   | "activated";
-export const ActivationStatusStateEnum = S.String;
+const ActivationStatusStateEnum = S.String;
 
 /** The activation status of the object. This field includes activation status if valuable supports activation. */
 export interface ActivationStatus {
   state?: ActivationStatusStateEnum | (string & {});
 }
-export const ActivationStatus = /*@__PURE__*/ S.suspend(() =>
+const ActivationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ActivationStatusStateEnum),
   }),
@@ -4054,7 +4051,7 @@ export interface TicketCost {
   /** A message describing any kind of discount that was applied. */
   discountMessage?: LocalizedString;
 }
-export const TicketCost = /*@__PURE__*/ S.suspend(() =>
+const TicketCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     faceValue: S.optional(Money),
     purchasePrice: S.optional(Money),
@@ -4074,7 +4071,7 @@ export interface PurchaseDetails {
   /** Receipt number/identifier for tracking the ticket purchase via the body that sold the ticket. */
   purchaseReceiptNumber?: string;
 }
-export const PurchaseDetails = /*@__PURE__*/ S.suspend(() =>
+const PurchaseDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ticketCost: S.optional(TicketCost),
     confirmationCode: S.optional(S.String),
@@ -4087,7 +4084,7 @@ export const PurchaseDetails = /*@__PURE__*/ S.suspend(() =>
 export type TransitObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-export const TransitObjectNotifyPreferenceEnum = S.String;
+const TransitObjectNotifyPreferenceEnum = S.String;
 
 export type TransitObjectTicketStatusEnum =
   | "TICKET_STATUS_UNSPECIFIED"
@@ -4097,7 +4094,7 @@ export type TransitObjectTicketStatusEnum =
   | "refunded"
   | "EXCHANGED"
   | "exchanged";
-export const TransitObjectTicketStatusEnum = S.String;
+const TransitObjectTicketStatusEnum = S.String;
 
 export type TransitObjectStateEnum =
   | "STATE_UNSPECIFIED"
@@ -4109,7 +4106,7 @@ export type TransitObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-export const TransitObjectStateEnum = S.String;
+const TransitObjectStateEnum = S.String;
 
 export type TransitObjectPassengerTypeEnum =
   | "PASSENGER_TYPE_UNSPECIFIED"
@@ -4117,7 +4114,7 @@ export type TransitObjectPassengerTypeEnum =
   | "singlePassenger"
   | "MULTIPLE_PASSENGERS"
   | "multiplePassengers";
-export const TransitObjectPassengerTypeEnum = S.String;
+const TransitObjectPassengerTypeEnum = S.String;
 
 export interface TransitObject {
   /** A copy of the inherited fields of the parent class. These fields are retrieved during a GET. */
@@ -4207,7 +4204,7 @@ export interface TransitObject {
   /** A custom concession category to use when `concessionCategory` does not provide the right option. Both `concessionCategory` and `customConcessionCategory` may not be set. */
   customConcessionCategory?: LocalizedString;
 }
-export const TransitObject = /*@__PURE__*/ S.suspend(() =>
+const TransitObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classReference: S.optional(TransitClass),
     tripType: S.optional(TransitObjectTripTypeEnum),
@@ -4259,7 +4256,7 @@ export interface TransitObjectAddMessageResponse {
   /** The updated TransitObject resource. */
   resource?: TransitObject;
 }
-export const TransitObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const TransitObjectAddMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(TransitObject),
   }),
@@ -4271,7 +4268,7 @@ export interface DownloadMediaRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4289,7 +4286,7 @@ export type CompositeMediaReferenceTypeEnum =
   | "INLINE"
   | "BIGSTORE_REF"
   | "COSMO_BINARY_REFERENCE";
-export const CompositeMediaReferenceTypeEnum = S.String;
+const CompositeMediaReferenceTypeEnum = S.String;
 
 /** Information to read/write to blobstore2. */
 export interface Blobstore2Info {
@@ -4308,7 +4305,7 @@ export interface Blobstore2Info {
   /** The blob read token. Needed to read blobs that have not been replicated. Might not be available until the final call. */
   readToken?: string;
 }
-export const Blobstore2Info = /*@__PURE__*/ S.suspend(() =>
+const Blobstore2Info = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uploadFragmentListCreationInfo: S.optional(S.String),
     uploadMetadataContainer: S.optional(S.String),
@@ -4329,7 +4326,7 @@ export interface ObjectId {
   /** The name of the object. */
   objectName?: string;
 }
-export const ObjectId = /*@__PURE__*/ S.suspend(() =>
+const ObjectId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation: S.optional(S.String),
     bucketName: S.optional(S.String),
@@ -4362,7 +4359,7 @@ export interface CompositeMedia {
   /** Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be the byte representation of a blobstore.BlobRef. Since Blobstore is deprecating v1, use blobstore2_info instead. For now, any v2 blob will also be represented in this field as v1 BlobRef. */
   blobRef?: string;
 }
-export const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
+const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inline: S.optional(S.String),
     referenceType: S.optional(CompositeMediaReferenceTypeEnum),
@@ -4379,7 +4376,7 @@ export const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompositeMedia" }) as any as S.Schema<CompositeMedia>;
 
 export type CompositeMediaList = Array<CompositeMedia>;
-export const CompositeMediaList = /*@__PURE__*/ S.Array(
+const CompositeMediaList = /*@__PURE__*/ S.Array(
   CompositeMedia,
 ) as any as S.Schema<CompositeMediaList>;
 
@@ -4390,7 +4387,7 @@ export interface DiffVersionResponse {
   /** The total size of the server object. */
   objectSizeBytes?: string;
 }
-export const DiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectVersion: S.optional(S.String),
     objectSizeBytes: S.optional(S.String),
@@ -4406,7 +4403,7 @@ export interface DiffUploadRequest {
   /** The location of the new object. Agents must clone the object located here, as the upload server will delete the contents once a response is received. */
   objectInfo?: CompositeMedia;
 }
-export const DiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const DiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectVersion: S.optional(S.String),
     checksumsInfo: S.optional(CompositeMedia),
@@ -4431,7 +4428,7 @@ export interface ContentTypeInfo {
   /** The content type of the file derived by looking at specific bytes (i.e. "magic bytes") of the actual file. */
   fromBytes?: string;
 }
-export const ContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
+const ContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromHeader: S.optional(S.String),
     fusionIdDetectionMetadata: S.optional(S.String),
@@ -4456,7 +4453,7 @@ export interface DiffChecksumsResponse {
   /** The object version of the object the checksums are being returned for. */
   objectVersion?: string;
 }
-export const DiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectLocation: S.optional(CompositeMedia),
     chunkSizeBytes: S.optional(S.String),
@@ -4473,7 +4470,7 @@ export interface DiffUploadResponse {
   /** The object version of the object at the server. Must be included in the end notification response. The version in the end notification response must correspond to the new version of the object that is now stored at the server, after the upload. */
   objectVersion?: string;
 }
-export const DiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalObject: S.optional(CompositeMedia),
     objectVersion: S.optional(S.String),
@@ -4487,7 +4484,7 @@ export interface DownloadParameters {
   /** A boolean to be returned in the response to Scotty. Allows/disallows gzip encoding of the payload content when the server thinks it's advantageous (hence, does not guarantee compression) which allows Scotty to GZip the response to the client. */
   allowGzipCompression?: boolean;
 }
-export const DownloadParameters = /*@__PURE__*/ S.suspend(() =>
+const DownloadParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignoreRange: S.optional(S.Boolean),
     allowGzipCompression: S.optional(S.Boolean),
@@ -4499,7 +4496,7 @@ export interface DiffDownloadResponse {
   /** The original object location. */
   objectLocation?: CompositeMedia;
 }
-export const DiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectLocation: S.optional(CompositeMedia),
   }),
@@ -4519,7 +4516,7 @@ export type MediaReferenceTypeEnum =
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
   | "ARBITRARY_BYTES";
-export const MediaReferenceTypeEnum = S.String;
+const MediaReferenceTypeEnum = S.String;
 
 /** A reference to data stored on the filesystem, on GFS or in blobstore. */
 export interface Media {
@@ -4586,7 +4583,7 @@ export interface Media {
   /** Describes what the field reference contains. */
   referenceType?: MediaReferenceTypeEnum | (string & {});
 }
-export const Media = /*@__PURE__*/ S.suspend(() =>
+const Media = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compositeMedia: S.optional(CompositeMediaList),
     sha256Hash: S.optional(S.String),
@@ -4626,7 +4623,7 @@ export interface GetEventticketclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4644,7 +4641,7 @@ export interface GetEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4662,7 +4659,7 @@ export interface GetFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4678,7 +4675,7 @@ export interface GetFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4694,7 +4691,7 @@ export interface GetGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
 }
-export const GetGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4710,7 +4707,7 @@ export interface GetGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
 }
-export const GetGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4726,7 +4723,7 @@ export interface GetGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4742,7 +4739,7 @@ export interface GetGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4758,7 +4755,7 @@ export interface GetIssuerRequest {
   /** The unique identifier for an issuer. */
   resourceId: string;
 }
-export const GetIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4780,7 +4777,7 @@ export interface IssuerContactInfo {
   /** The primary contact phone number. */
   phone?: string;
 }
-export const IssuerContactInfo = /*@__PURE__*/ S.suspend(() =>
+const IssuerContactInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -4795,7 +4792,7 @@ export interface AuthenticationKey {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
   publicKeyPem?: string;
 }
-export const AuthenticationKey = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     publicKeyPem: S.optional(S.String),
@@ -4803,7 +4800,7 @@ export const AuthenticationKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthenticationKey" }) as any as S.Schema<AuthenticationKey>;
 
 export type AuthenticationKeyList = Array<AuthenticationKey>;
-export const AuthenticationKeyList = /*@__PURE__*/ S.Array(
+const AuthenticationKeyList = /*@__PURE__*/ S.Array(
   AuthenticationKey,
 ) as any as S.Schema<AuthenticationKeyList>;
 
@@ -4813,7 +4810,7 @@ export interface SmartTapMerchantData {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
   authenticationKeys?: AuthenticationKeyList;
 }
-export const SmartTapMerchantData = /*@__PURE__*/ S.suspend(() =>
+const SmartTapMerchantData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smartTapMerchantId: S.optional(S.String),
     authenticationKeys: S.optional(AuthenticationKeyList),
@@ -4834,7 +4831,7 @@ export interface Issuer {
   /** Allows the issuer to provide their callback settings. */
   callbackOptions?: CallbackOptions;
 }
-export const Issuer = /*@__PURE__*/ S.suspend(() =>
+const Issuer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     contactInfo: S.optional(IssuerContactInfo),
@@ -4849,7 +4846,7 @@ export interface GetLoyaltyclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4865,7 +4862,7 @@ export interface GetLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4881,7 +4878,7 @@ export interface GetOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4897,7 +4894,7 @@ export interface GetOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4913,7 +4910,7 @@ export interface GetPermissionsRequest {
   /** The unique identifier for an issuer. This ID must be unique across all issuers. */
   resourceId: string;
 }
-export const GetPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4933,7 +4930,7 @@ export type PermissionRoleEnum =
   | "reader"
   | "WRITER"
   | "writer";
-export const PermissionRoleEnum = S.String;
+const PermissionRoleEnum = S.String;
 
 export interface Permission {
   /** The role granted by this permission. */
@@ -4941,7 +4938,7 @@ export interface Permission {
   /** The email address of the user, group, or service account to which this permission refers to. */
   emailAddress?: string;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(PermissionRoleEnum),
     emailAddress: S.optional(S.String),
@@ -4949,7 +4946,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 export type PermissionList = Array<Permission>;
-export const PermissionList = /*@__PURE__*/ S.Array(Permission) as any as S.Schema<PermissionList>;
+const PermissionList = /*@__PURE__*/ S.Array(Permission) as any as S.Schema<PermissionList>;
 
 export interface Permissions {
   /** The complete list of permissions for the issuer account. */
@@ -4957,7 +4954,7 @@ export interface Permissions {
   /** ID of the issuer the list of permissions refer to. */
   issuerId?: string;
 }
-export const Permissions = /*@__PURE__*/ S.suspend(() =>
+const Permissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(PermissionList),
     issuerId: S.optional(S.String),
@@ -4968,7 +4965,7 @@ export interface GetTransitclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4984,7 +4981,7 @@ export interface GetTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-export const GetTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5000,7 +4997,7 @@ export interface InsertEventticketclassRequest {
   /** Request body */
   body?: EventTicketClass;
 }
-export const InsertEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(EventTicketClass.pipe(T.HttpBody())),
   }).pipe(
@@ -5018,7 +5015,7 @@ export interface InsertEventticketobjectRequest {
   /** Request body */
   body?: EventTicketObject;
 }
-export const InsertEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(EventTicketObject.pipe(T.HttpBody())),
   }).pipe(
@@ -5036,7 +5033,7 @@ export interface InsertFlightclassRequest {
   /** Request body */
   body?: FlightClass;
 }
-export const InsertFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(FlightClass.pipe(T.HttpBody())),
   }).pipe(
@@ -5052,7 +5049,7 @@ export interface InsertFlightobjectRequest {
   /** Request body */
   body?: FlightObject;
 }
-export const InsertFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(FlightObject.pipe(T.HttpBody())),
   }).pipe(
@@ -5070,7 +5067,7 @@ export interface InsertGenericclassRequest {
   /** Request body */
   body?: GenericClass;
 }
-export const InsertGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GenericClass.pipe(T.HttpBody())),
   }).pipe(
@@ -5088,7 +5085,7 @@ export interface InsertGenericobjectRequest {
   /** Request body */
   body?: GenericObject;
 }
-export const InsertGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GenericObject.pipe(T.HttpBody())),
   }).pipe(
@@ -5106,7 +5103,7 @@ export interface InsertGiftcardclassRequest {
   /** Request body */
   body?: GiftCardClass;
 }
-export const InsertGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GiftCardClass.pipe(T.HttpBody())),
   }).pipe(
@@ -5124,7 +5121,7 @@ export interface InsertGiftcardobjectRequest {
   /** Request body */
   body?: GiftCardObject;
 }
-export const InsertGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GiftCardObject.pipe(T.HttpBody())),
   }).pipe(
@@ -5142,7 +5139,7 @@ export interface InsertIssuerRequest {
   /** Request body */
   body?: Issuer;
 }
-export const InsertIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Issuer.pipe(T.HttpBody())),
   }).pipe(
@@ -5159,7 +5156,7 @@ export interface JwtResource {
   /** Required. A string representing a JWT of the format described at https://developers.google.com/wallet/reference/rest/v1/Jwt */
   jwt?: string;
 }
-export const JwtResource = /*@__PURE__*/ S.suspend(() =>
+const JwtResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwt: S.optional(S.String),
   }),
@@ -5169,7 +5166,7 @@ export interface InsertJwtRequest {
   /** Request body */
   body?: JwtResource;
 }
-export const InsertJwtRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertJwtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(JwtResource.pipe(T.HttpBody())),
   }).pipe(
@@ -5182,70 +5179,58 @@ export const InsertJwtRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertJwtRequest" }) as any as S.Schema<InsertJwtRequest>;
 
 export type LoyaltyClassList = Array<LoyaltyClass>;
-export const LoyaltyClassList = /*@__PURE__*/ S.Array(
-  LoyaltyClass,
-) as any as S.Schema<LoyaltyClassList>;
+const LoyaltyClassList = /*@__PURE__*/ S.Array(LoyaltyClass) as any as S.Schema<LoyaltyClassList>;
 
 export type GenericClassList = Array<GenericClass>;
-export const GenericClassList = /*@__PURE__*/ S.Array(
-  GenericClass,
-) as any as S.Schema<GenericClassList>;
+const GenericClassList = /*@__PURE__*/ S.Array(GenericClass) as any as S.Schema<GenericClassList>;
 
 export type GiftCardObjectList = Array<GiftCardObject>;
-export const GiftCardObjectList = /*@__PURE__*/ S.Array(
+const GiftCardObjectList = /*@__PURE__*/ S.Array(
   GiftCardObject,
 ) as any as S.Schema<GiftCardObjectList>;
 
 export type GenericObjectList = Array<GenericObject>;
-export const GenericObjectList = /*@__PURE__*/ S.Array(
+const GenericObjectList = /*@__PURE__*/ S.Array(
   GenericObject,
 ) as any as S.Schema<GenericObjectList>;
 
 export type OfferObjectList = Array<OfferObject>;
-export const OfferObjectList = /*@__PURE__*/ S.Array(
-  OfferObject,
-) as any as S.Schema<OfferObjectList>;
+const OfferObjectList = /*@__PURE__*/ S.Array(OfferObject) as any as S.Schema<OfferObjectList>;
 
 export type EventTicketClassList = Array<EventTicketClass>;
-export const EventTicketClassList = /*@__PURE__*/ S.Array(
+const EventTicketClassList = /*@__PURE__*/ S.Array(
   EventTicketClass,
 ) as any as S.Schema<EventTicketClassList>;
 
 export type LoyaltyObjectList = Array<LoyaltyObject>;
-export const LoyaltyObjectList = /*@__PURE__*/ S.Array(
+const LoyaltyObjectList = /*@__PURE__*/ S.Array(
   LoyaltyObject,
 ) as any as S.Schema<LoyaltyObjectList>;
 
 export type FlightObjectList = Array<FlightObject>;
-export const FlightObjectList = /*@__PURE__*/ S.Array(
-  FlightObject,
-) as any as S.Schema<FlightObjectList>;
+const FlightObjectList = /*@__PURE__*/ S.Array(FlightObject) as any as S.Schema<FlightObjectList>;
 
 export type TransitObjectList = Array<TransitObject>;
-export const TransitObjectList = /*@__PURE__*/ S.Array(
+const TransitObjectList = /*@__PURE__*/ S.Array(
   TransitObject,
 ) as any as S.Schema<TransitObjectList>;
 
 export type TransitClassList = Array<TransitClass>;
-export const TransitClassList = /*@__PURE__*/ S.Array(
-  TransitClass,
-) as any as S.Schema<TransitClassList>;
+const TransitClassList = /*@__PURE__*/ S.Array(TransitClass) as any as S.Schema<TransitClassList>;
 
 export type FlightClassList = Array<FlightClass>;
-export const FlightClassList = /*@__PURE__*/ S.Array(
-  FlightClass,
-) as any as S.Schema<FlightClassList>;
+const FlightClassList = /*@__PURE__*/ S.Array(FlightClass) as any as S.Schema<FlightClassList>;
 
 export type OfferClassList = Array<OfferClass>;
-export const OfferClassList = /*@__PURE__*/ S.Array(OfferClass) as any as S.Schema<OfferClassList>;
+const OfferClassList = /*@__PURE__*/ S.Array(OfferClass) as any as S.Schema<OfferClassList>;
 
 export type GiftCardClassList = Array<GiftCardClass>;
-export const GiftCardClassList = /*@__PURE__*/ S.Array(
+const GiftCardClassList = /*@__PURE__*/ S.Array(
   GiftCardClass,
 ) as any as S.Schema<GiftCardClassList>;
 
 export type EventTicketObjectList = Array<EventTicketObject>;
-export const EventTicketObjectList = /*@__PURE__*/ S.Array(
+const EventTicketObjectList = /*@__PURE__*/ S.Array(
   EventTicketObject,
 ) as any as S.Schema<EventTicketObjectList>;
 
@@ -5279,7 +5264,7 @@ export interface Resources {
   /** A list of event ticket objects. */
   eventTicketObjects?: EventTicketObjectList;
 }
-export const Resources = /*@__PURE__*/ S.suspend(() =>
+const Resources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loyaltyClasses: S.optional(LoyaltyClassList),
     genericClasses: S.optional(GenericClassList),
@@ -5304,7 +5289,7 @@ export interface JwtInsertResponse {
   /** Data that corresponds to the ids of the provided classes and objects in the JWT. resources will only include the non-empty arrays (i.e. if the JWT only includes eventTicketObjects, then that is the only field that will be present in resources). */
   resources?: Resources;
 }
-export const JwtInsertResponse = /*@__PURE__*/ S.suspend(() =>
+const JwtInsertResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     saveUri: S.optional(S.String),
     resources: S.optional(Resources),
@@ -5315,7 +5300,7 @@ export interface InsertLoyaltyclassRequest {
   /** Request body */
   body?: LoyaltyClass;
 }
-export const InsertLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
   }).pipe(
@@ -5333,7 +5318,7 @@ export interface InsertLoyaltyobjectRequest {
   /** Request body */
   body?: LoyaltyObject;
 }
-export const InsertLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
   }).pipe(
@@ -5351,7 +5336,7 @@ export interface InsertOfferclassRequest {
   /** Request body */
   body?: OfferClass;
 }
-export const InsertOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(OfferClass.pipe(T.HttpBody())),
   }).pipe(
@@ -5367,7 +5352,7 @@ export interface InsertOfferobjectRequest {
   /** Request body */
   body?: OfferObject;
 }
-export const InsertOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(OfferObject.pipe(T.HttpBody())),
   }).pipe(
@@ -5385,13 +5370,13 @@ export type IssuerToUserInfoActionEnum =
   | "s2ap"
   | "SIGN_UP"
   | "signUp";
-export const IssuerToUserInfoActionEnum = S.String;
+const IssuerToUserInfoActionEnum = S.String;
 
 export interface SignUpInfo {
   /** ID of the class the user can sign up for. */
   classId?: string;
 }
-export const SignUpInfo = /*@__PURE__*/ S.suspend(() =>
+const SignUpInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classId: S.optional(S.String),
   }),
@@ -5405,7 +5390,7 @@ export interface IssuerToUserInfo {
   value?: string;
   signUpInfo?: SignUpInfo;
 }
-export const IssuerToUserInfo = /*@__PURE__*/ S.suspend(() =>
+const IssuerToUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(IssuerToUserInfoActionEnum),
     url: S.optional(S.String),
@@ -5415,7 +5400,7 @@ export const IssuerToUserInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssuerToUserInfo" }) as any as S.Schema<IssuerToUserInfo>;
 
 export type IssuerToUserInfoList = Array<IssuerToUserInfo>;
-export const IssuerToUserInfoList = /*@__PURE__*/ S.Array(
+const IssuerToUserInfoList = /*@__PURE__*/ S.Array(
   IssuerToUserInfo,
 ) as any as S.Schema<IssuerToUserInfoList>;
 
@@ -5429,7 +5414,7 @@ export interface SmartTap {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#smartTap"`. */
   kind?: string;
 }
-export const SmartTap = /*@__PURE__*/ S.suspend(() =>
+const SmartTap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.optional(S.String),
     infos: S.optional(IssuerToUserInfoList),
@@ -5442,7 +5427,7 @@ export interface InsertSmarttapRequest {
   /** Request body */
   body?: SmartTap;
 }
-export const InsertSmarttapRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertSmarttapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SmartTap.pipe(T.HttpBody())),
   }).pipe(
@@ -5458,7 +5443,7 @@ export interface InsertTransitclassRequest {
   /** Request body */
   body?: TransitClass;
 }
-export const InsertTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(TransitClass.pipe(T.HttpBody())),
   }).pipe(
@@ -5476,7 +5461,7 @@ export interface InsertTransitobjectRequest {
   /** Request body */
   body?: TransitObject;
 }
-export const InsertTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(TransitObject.pipe(T.HttpBody())),
   }).pipe(
@@ -5498,7 +5483,7 @@ export interface ListEventticketclassRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` classes are available in a list. For example, if you have a list of 200 classes and you call list with `maxResults` set to 20, list will return the first 20 classes and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 classes. */
   token?: string;
 }
-export const ListEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5522,7 +5507,7 @@ export interface Pagination {
   /** Number of results returned in this page. */
   resultsPerPage?: number;
 }
-export const Pagination = /*@__PURE__*/ S.suspend(() =>
+const Pagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     kind: S.optional(S.String),
@@ -5536,7 +5521,7 @@ export interface EventTicketClassListResponse {
   /** Resources corresponding to the list request. */
   resources?: EventTicketClassList;
 }
-export const EventTicketClassListResponse = /*@__PURE__*/ S.suspend(() =>
+const EventTicketClassListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(Pagination),
     resources: S.optional(EventTicketClassList),
@@ -5553,7 +5538,7 @@ export interface ListEventticketobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
 }
-export const ListEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     classId: S.optional(S.String.pipe(T.Query())),
@@ -5575,7 +5560,7 @@ export interface EventTicketObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-export const EventTicketObjectListResponse = /*@__PURE__*/ S.suspend(() =>
+const EventTicketObjectListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(EventTicketObjectList),
     pagination: S.optional(Pagination),
@@ -5592,7 +5577,7 @@ export interface ListFlightclassRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
 }
-export const ListFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String.pipe(T.Query())),
     issuerId: S.optional(S.String.pipe(T.Query())),
@@ -5612,7 +5597,7 @@ export interface FlightClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-export const FlightClassListResponse = /*@__PURE__*/ S.suspend(() =>
+const FlightClassListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(FlightClassList),
     pagination: S.optional(Pagination),
@@ -5627,7 +5612,7 @@ export interface ListFlightobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
 }
-export const ListFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classId: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5647,7 +5632,7 @@ export interface FlightObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-export const FlightObjectListResponse = /*@__PURE__*/ S.suspend(() =>
+const FlightObjectListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(FlightObjectList),
     pagination: S.optional(Pagination),
@@ -5662,7 +5647,7 @@ export interface ListGenericclassRequest {
   /** The ID of the issuer authorized to list classes. */
   issuerId?: string;
 }
-export const ListGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     token: S.optional(S.String.pipe(T.Query())),
@@ -5683,7 +5668,7 @@ export interface GenericClassListResponse {
   /** Resources corresponding to the list request. */
   resources?: GenericClassList;
 }
-export const GenericClassListResponse = /*@__PURE__*/ S.suspend(() =>
+const GenericClassListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(Pagination),
     resources: S.optional(GenericClassList),
@@ -5698,7 +5683,7 @@ export interface ListGenericobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
 }
-export const ListGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String.pipe(T.Query())),
     classId: S.optional(S.String.pipe(T.Query())),
@@ -5719,7 +5704,7 @@ export interface GenericObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-export const GenericObjectListResponse = /*@__PURE__*/ S.suspend(() =>
+const GenericObjectListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(GenericObjectList),
     pagination: S.optional(Pagination),
@@ -5736,7 +5721,7 @@ export interface ListGiftcardclassRequest {
   /** The ID of the issuer authorized to list classes. */
   issuerId?: string;
 }
-export const ListGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     token: S.optional(S.String.pipe(T.Query())),
@@ -5756,7 +5741,7 @@ export interface GiftCardClassListResponse {
   /** Resources corresponding to the list request. */
   resources?: GiftCardClassList;
 }
-export const GiftCardClassListResponse = /*@__PURE__*/ S.suspend(() =>
+const GiftCardClassListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(Pagination),
     resources: S.optional(GiftCardClassList),
@@ -5773,7 +5758,7 @@ export interface ListGiftcardobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
 }
-export const ListGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     classId: S.optional(S.String.pipe(T.Query())),
@@ -5795,7 +5780,7 @@ export interface GiftCardObjectListResponse {
   /** Resources corresponding to the list request. */
   resources?: GiftCardObjectList;
 }
-export const GiftCardObjectListResponse = /*@__PURE__*/ S.suspend(() =>
+const GiftCardObjectListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(Pagination),
     resources: S.optional(GiftCardObjectList),
@@ -5805,7 +5790,7 @@ export const GiftCardObjectListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GiftCardObjectListResponse>;
 
 export interface ListIssuerRequest {}
-export const ListIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -5816,13 +5801,13 @@ export const ListIssuerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIssuerRequest" }) as any as S.Schema<ListIssuerRequest>;
 
 export type IssuerList = Array<Issuer>;
-export const IssuerList = /*@__PURE__*/ S.Array(Issuer) as any as S.Schema<IssuerList>;
+const IssuerList = /*@__PURE__*/ S.Array(Issuer) as any as S.Schema<IssuerList>;
 
 export interface IssuerListResponse {
   /** Resources corresponding to the list request. */
   resources?: IssuerList;
 }
-export const IssuerListResponse = /*@__PURE__*/ S.suspend(() =>
+const IssuerListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(IssuerList),
   }),
@@ -5836,7 +5821,7 @@ export interface ListLoyaltyclassRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` classes are available in a list. For example, if you have a list of 200 classes and you call list with `maxResults` set to 20, list will return the first 20 classes and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 classes. */
   token?: string;
 }
-export const ListLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     issuerId: S.optional(S.String.pipe(T.Query())),
@@ -5856,7 +5841,7 @@ export interface LoyaltyClassListResponse {
   /** Resources corresponding to the list request. */
   resources?: LoyaltyClassList;
 }
-export const LoyaltyClassListResponse = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyClassListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(Pagination),
     resources: S.optional(LoyaltyClassList),
@@ -5871,7 +5856,7 @@ export interface ListLoyaltyobjectRequest {
   /** The ID of the class whose objects will be listed. */
   classId?: string;
 }
-export const ListLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     token: S.optional(S.String.pipe(T.Query())),
@@ -5891,7 +5876,7 @@ export interface LoyaltyObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-export const LoyaltyObjectListResponse = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyObjectListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(LoyaltyObjectList),
     pagination: S.optional(Pagination),
@@ -5908,7 +5893,7 @@ export interface ListOfferclassRequest {
   /** The ID of the issuer authorized to list classes. */
   issuerId?: string;
 }
-export const ListOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5928,7 +5913,7 @@ export interface OfferClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-export const OfferClassListResponse = /*@__PURE__*/ S.suspend(() =>
+const OfferClassListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(OfferClassList),
     pagination: S.optional(Pagination),
@@ -5943,7 +5928,7 @@ export interface ListOfferobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
 }
-export const ListOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classId: S.optional(S.String.pipe(T.Query())),
     token: S.optional(S.String.pipe(T.Query())),
@@ -5963,7 +5948,7 @@ export interface OfferObjectListResponse {
   /** Resources corresponding to the list request. */
   resources?: OfferObjectList;
 }
-export const OfferObjectListResponse = /*@__PURE__*/ S.suspend(() =>
+const OfferObjectListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: S.optional(Pagination),
     resources: S.optional(OfferObjectList),
@@ -5978,7 +5963,7 @@ export interface ListTransitclassRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` classes are available in a list. For example, if you have a list of 200 classes and you call list with `maxResults` set to 20, list will return the first 20 classes and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 classes. */
   token?: string;
 }
-export const ListTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -5998,7 +5983,7 @@ export interface TransitClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-export const TransitClassListResponse = /*@__PURE__*/ S.suspend(() =>
+const TransitClassListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(TransitClassList),
     pagination: S.optional(Pagination),
@@ -6013,7 +5998,7 @@ export interface ListTransitobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
 }
-export const ListTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     classId: S.optional(S.String.pipe(T.Query())),
@@ -6033,7 +6018,7 @@ export interface TransitObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-export const TransitObjectListResponse = /*@__PURE__*/ S.suspend(() =>
+const TransitObjectListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(TransitObjectList),
     pagination: S.optional(Pagination),
@@ -6048,7 +6033,7 @@ export interface ModifyLinkedOfferObjects {
   /** The linked offer object ids to add to the object. */
   addLinkedOfferObjectIds?: StringList;
 }
-export const ModifyLinkedOfferObjects = /*@__PURE__*/ S.suspend(() =>
+const ModifyLinkedOfferObjects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removeLinkedOfferObjectIds: S.optional(StringList),
     addLinkedOfferObjectIds: S.optional(StringList),
@@ -6059,7 +6044,7 @@ export interface ModifyLinkedOfferObjectsRequest {
   /** The linked offer object ids to add or remove from the object. */
   linkedOfferObjectIds?: ModifyLinkedOfferObjects;
 }
-export const ModifyLinkedOfferObjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyLinkedOfferObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedOfferObjectIds: S.optional(ModifyLinkedOfferObjects),
   }),
@@ -6073,7 +6058,7 @@ export interface ModifylinkedofferobjectsEventticketobjectRequest {
   /** Request body */
   body?: ModifyLinkedOfferObjectsRequest;
 }
-export const ModifylinkedofferobjectsEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifylinkedofferobjectsEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(ModifyLinkedOfferObjectsRequest.pipe(T.HttpBody())),
@@ -6094,7 +6079,7 @@ export interface ModifylinkedofferobjectsLoyaltyobjectRequest {
   /** Request body */
   body?: ModifyLinkedOfferObjectsRequest;
 }
-export const ModifylinkedofferobjectsLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifylinkedofferobjectsLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(ModifyLinkedOfferObjectsRequest.pipe(T.HttpBody())),
@@ -6115,7 +6100,7 @@ export interface PatchEventticketclassRequest {
   /** Request body */
   body?: EventTicketClass;
 }
-export const PatchEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(EventTicketClass.pipe(T.HttpBody())),
@@ -6136,7 +6121,7 @@ export interface PatchEventticketobjectRequest {
   /** Request body */
   body?: EventTicketObject;
 }
-export const PatchEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(EventTicketObject.pipe(T.HttpBody())),
@@ -6157,7 +6142,7 @@ export interface PatchFlightclassRequest {
   /** Request body */
   body?: FlightClass;
 }
-export const PatchFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(FlightClass.pipe(T.HttpBody())),
@@ -6176,7 +6161,7 @@ export interface PatchFlightobjectRequest {
   /** Request body */
   body?: FlightObject;
 }
-export const PatchFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(FlightObject.pipe(T.HttpBody())),
@@ -6195,7 +6180,7 @@ export interface PatchGenericclassRequest {
   /** Request body */
   body?: GenericClass;
 }
-export const PatchGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(GenericClass.pipe(T.HttpBody())),
@@ -6214,7 +6199,7 @@ export interface PatchGenericobjectRequest {
   /** Request body */
   body?: GenericObject;
 }
-export const PatchGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(GenericObject.pipe(T.HttpBody())),
@@ -6235,7 +6220,7 @@ export interface PatchGiftcardclassRequest {
   /** Request body */
   body?: GiftCardClass;
 }
-export const PatchGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(GiftCardClass.pipe(T.HttpBody())),
@@ -6256,7 +6241,7 @@ export interface PatchGiftcardobjectRequest {
   /** Request body */
   body?: GiftCardObject;
 }
-export const PatchGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(GiftCardObject.pipe(T.HttpBody())),
@@ -6277,7 +6262,7 @@ export interface PatchIssuerRequest {
   /** Request body */
   body?: Issuer;
 }
-export const PatchIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(Issuer.pipe(T.HttpBody())),
@@ -6296,7 +6281,7 @@ export interface PatchLoyaltyclassRequest {
   /** Request body */
   body?: LoyaltyClass;
 }
-export const PatchLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
@@ -6315,7 +6300,7 @@ export interface PatchLoyaltyobjectRequest {
   /** Request body */
   body?: LoyaltyObject;
 }
-export const PatchLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
@@ -6336,7 +6321,7 @@ export interface PatchOfferclassRequest {
   /** Request body */
   body?: OfferClass;
 }
-export const PatchOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(OfferClass.pipe(T.HttpBody())),
@@ -6355,7 +6340,7 @@ export interface PatchOfferobjectRequest {
   /** Request body */
   body?: OfferObject;
 }
-export const PatchOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(OfferObject.pipe(T.HttpBody())),
@@ -6374,7 +6359,7 @@ export interface PatchTransitclassRequest {
   /** Request body */
   body?: TransitClass;
 }
-export const PatchTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(TransitClass.pipe(T.HttpBody())),
@@ -6393,7 +6378,7 @@ export interface PatchTransitobjectRequest {
   /** Request body */
   body?: TransitObject;
 }
-export const PatchTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(TransitObject.pipe(T.HttpBody())),
@@ -6417,7 +6402,7 @@ export interface SetPassUpdateNoticeRequest {
   /** Required. The JWT signature of the updated pass that the issuer wants to notify Google about. Only devices that report a different JWT signature than this JWT signature will receive the update notification. */
   updatedPassJwtSignature?: string;
 }
-export const SetPassUpdateNoticeRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPassUpdateNoticeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateUri: S.optional(S.String),
     externalPassId: S.optional(S.String),
@@ -6431,7 +6416,7 @@ export interface SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest {
   /** Request body */
   body?: SetPassUpdateNoticeRequest;
 }
-export const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SetPassUpdateNoticeRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -6447,7 +6432,7 @@ export const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest = /*@__PURE
 
 /** A response to a request to notify Google of an awaiting update to a private pass. */
 export interface SetPassUpdateNoticeResponse {}
-export const SetPassUpdateNoticeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SetPassUpdateNoticeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SetPassUpdateNoticeResponse",
 }) as any as S.Schema<SetPassUpdateNoticeResponse>;
 
@@ -6457,7 +6442,7 @@ export interface UpdateEventticketclassRequest {
   /** Request body */
   body?: EventTicketClass;
 }
-export const UpdateEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventticketclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(EventTicketClass.pipe(T.HttpBody())),
@@ -6478,7 +6463,7 @@ export interface UpdateEventticketobjectRequest {
   /** Request body */
   body?: EventTicketObject;
 }
-export const UpdateEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventticketobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(EventTicketObject.pipe(T.HttpBody())),
@@ -6499,7 +6484,7 @@ export interface UpdateFlightclassRequest {
   /** Request body */
   body?: FlightClass;
 }
-export const UpdateFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFlightclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(FlightClass.pipe(T.HttpBody())),
@@ -6518,7 +6503,7 @@ export interface UpdateFlightobjectRequest {
   /** Request body */
   body?: FlightObject;
 }
-export const UpdateFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFlightobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(FlightObject.pipe(T.HttpBody())),
@@ -6539,7 +6524,7 @@ export interface UpdateGenericclassRequest {
   /** Request body */
   body?: GenericClass;
 }
-export const UpdateGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGenericclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(GenericClass.pipe(T.HttpBody())),
@@ -6560,7 +6545,7 @@ export interface UpdateGenericobjectRequest {
   /** Request body */
   body?: GenericObject;
 }
-export const UpdateGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGenericobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(GenericObject.pipe(T.HttpBody())),
@@ -6581,7 +6566,7 @@ export interface UpdateGiftcardclassRequest {
   /** Request body */
   body?: GiftCardClass;
 }
-export const UpdateGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGiftcardclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(GiftCardClass.pipe(T.HttpBody())),
@@ -6602,7 +6587,7 @@ export interface UpdateGiftcardobjectRequest {
   /** Request body */
   body?: GiftCardObject;
 }
-export const UpdateGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGiftcardobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(GiftCardObject.pipe(T.HttpBody())),
@@ -6623,7 +6608,7 @@ export interface UpdateIssuerRequest {
   /** Request body */
   body?: Issuer;
 }
-export const UpdateIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(Issuer.pipe(T.HttpBody())),
@@ -6642,7 +6627,7 @@ export interface UpdateLoyaltyclassRequest {
   /** Request body */
   body?: LoyaltyClass;
 }
-export const UpdateLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
@@ -6663,7 +6648,7 @@ export interface UpdateLoyaltyobjectRequest {
   /** Request body */
   body?: LoyaltyObject;
 }
-export const UpdateLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
@@ -6684,7 +6669,7 @@ export interface UpdateOfferclassRequest {
   /** Request body */
   body?: OfferClass;
 }
-export const UpdateOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOfferclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(OfferClass.pipe(T.HttpBody())),
@@ -6703,7 +6688,7 @@ export interface UpdateOfferobjectRequest {
   /** Request body */
   body?: OfferObject;
 }
-export const UpdateOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOfferobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(OfferObject.pipe(T.HttpBody())),
@@ -6722,7 +6707,7 @@ export interface UpdatePermissionsRequest {
   /** Request body */
   body?: Permissions;
 }
-export const UpdatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(Permissions.pipe(T.HttpBody())),
@@ -6741,7 +6726,7 @@ export interface UpdateTransitclassRequest {
   /** Request body */
   body?: TransitClass;
 }
-export const UpdateTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTransitclassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(TransitClass.pipe(T.HttpBody())),
@@ -6762,7 +6747,7 @@ export interface UpdateTransitobjectRequest {
   /** Request body */
   body?: TransitObject;
 }
-export const UpdateTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTransitobjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(TransitObject.pipe(T.HttpBody())),
@@ -6783,7 +6768,7 @@ export type MediaRequestInfoNotificationTypeEnum =
   | "END"
   | "RESPONSE_SENT"
   | "ERROR";
-export const MediaRequestInfoNotificationTypeEnum = S.String;
+const MediaRequestInfoNotificationTypeEnum = S.String;
 
 /** Extra information added to operations that support Scotty media requests. */
 export interface MediaRequestInfo {
@@ -6808,7 +6793,7 @@ export interface MediaRequestInfo {
   /** The Scotty request ID. */
   requestId?: string;
 }
-export const MediaRequestInfo = /*@__PURE__*/ S.suspend(() =>
+const MediaRequestInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finalStatus: S.optional(S.Number),
     physicalHeaders: S.optional(S.String),
@@ -6830,7 +6815,7 @@ export interface TransitObjectUploadRotatingBarcodeValuesRequest {
   /** Extra information about the uploaded media. */
   mediaRequestInfo?: MediaRequestInfo;
 }
-export const TransitObjectUploadRotatingBarcodeValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const TransitObjectUploadRotatingBarcodeValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blob: S.optional(Media),
     mediaRequestInfo: S.optional(MediaRequestInfo),
@@ -6845,7 +6830,7 @@ export interface UploadMediaRequest {
   /** Request body */
   body?: TransitObjectUploadRotatingBarcodeValuesRequest;
 }
-export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
     body: S.optional(TransitObjectUploadRotatingBarcodeValuesRequest.pipe(T.HttpBody())),
@@ -6860,7 +6845,7 @@ export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for uploading rotating barcode values. */
 export interface TransitObjectUploadRotatingBarcodeValuesResponse {}
-export const TransitObjectUploadRotatingBarcodeValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const TransitObjectUploadRotatingBarcodeValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TransitObjectUploadRotatingBarcodeValuesResponse",
@@ -6871,7 +6856,7 @@ export interface JsonResource {
   /** Required. A JSON string representing the unencoded JWT payload for a pass of the format described at https://developers.google.com/wallet/reference/rest/v1/Jwt. This can be set to either the entire JSON representation described at this link or just the contents of the payload field holding the relevant classes and objects. */
   json?: string;
 }
-export const JsonResource = /*@__PURE__*/ S.suspend(() =>
+const JsonResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     json: S.optional(S.String),
   }),
@@ -6884,7 +6869,7 @@ export interface JwtValidateRequest {
   /** Optional. A JWT representation of a pass to be validated. Either this or json_resource should be set. Requests setting both or neither will be rejected. */
   jwtResource?: JwtResource;
 }
-export const JwtValidateRequest = /*@__PURE__*/ S.suspend(() =>
+const JwtValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonResource: S.optional(JsonResource),
     jwtResource: S.optional(JwtResource),
@@ -6895,7 +6880,7 @@ export interface ValidateJwtRequest {
   /** Request body */
   body?: JwtValidateRequest;
 }
-export const ValidateJwtRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateJwtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(JwtValidateRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -6909,8 +6894,7 @@ export const ValidateJwtRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Empty if the resource in the request is valid. Returns exception if invalid. */
 export interface JwtValidateResponse {}
-export const JwtValidateResponse =
-  SetPassUpdateNoticeResponse as any as S.Schema<JwtValidateResponse>;
+const JwtValidateResponse = SetPassUpdateNoticeResponse as any as S.Schema<JwtValidateResponse>;
 
 export type AddmessageEventticketclassError =
   | NotFound

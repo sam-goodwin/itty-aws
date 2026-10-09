@@ -70,35 +70,16 @@ export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0Mode =
   | "custom"
   | "default-allow"
   | "default-deny";
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0Mode = S.String;
-
 /** List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains). */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList = Array<string>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedCIDRsList = Array<string>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedCIDRsList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedCIDRsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0DeniedCIDRsList = Array<string>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0DeniedCIDRsList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0DeniedCIDRsList>;
-
 /** HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath {
   /** Match the value exactly. Case-sensitive for paths, header values, and methods; case-insensitive for domains and header keys. */
@@ -106,86 +87,35 @@ export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRu
   /** Match values that start with the given prefix. */
   startsWith?: string;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      exact: S.optional(S.String),
-      startsWith: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath",
-  }) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath>;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem {
   /** Matcher for the entry key (header name or query key). */
   key?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
   /** Matcher for the entry value. */
   value?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath,
-      ),
-      value: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem",
-  }) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
-  /*@__PURE__*/ S.Array(
-    CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem,
-  ) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -197,26 +127,6 @@ export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRu
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath,
-      ),
-      method: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList,
-      ),
-      queryString: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList,
-      ),
-      headers: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch",
-  }) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch>;
-
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItem {
   /** The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com. */
   domain: string;
@@ -225,27 +135,9 @@ export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRu
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domain: S.String,
-      headers: CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap,
-      match: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItem",
-  }) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItem>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItem>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesList =
-  /*@__PURE__*/ S.Array(
-    CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItem,
-  ) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesList>;
-
 /** Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules. */
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0 {
   /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -259,84 +151,35 @@ export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase0 {
   /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
   injectionRules?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesList;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: CreateSandboxesByNameForkV2RequestNetworkPolicyCase0Mode,
-    allowedDomains: S.optional(
-      CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList,
-    ),
-    allowedCIDRs: S.optional(CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedCIDRsList),
-    deniedCIDRs: S.optional(CreateSandboxesByNameForkV2RequestNetworkPolicyCase0DeniedCIDRsList),
-    injectionRules: S.optional(
-      CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesList,
-    ),
-  }),
-).annotate({
-  identifier: "CreateSandboxesByNameForkV2RequestNetworkPolicyCase0",
-}) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0>;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase0List = Array<string>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase0List =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase0List>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -348,42 +191,16 @@ export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1V
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch>;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap =
   { [key: string]: string | undefined };
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap>;
-
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem {
   headers?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      headers: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem",
-  }) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
-  /*@__PURE__*/ S.Array(
-    CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem,
-  ) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList>;
-
 /** HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap =
   { [key: string]: string | undefined };
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap>;
-
 /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse {
   /** HTTP status code returned to the sandbox. */
@@ -395,20 +212,6 @@ export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1V
   /** Value of the `Content-Type` response header. Required when `body` is set. */
   contentType?: string;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      statusCode: S.Number,
-      headers: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap,
-      ),
-      body: S.optional(S.String),
-      contentType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse",
-  }) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse>;
-
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch;
@@ -418,88 +221,31 @@ export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1V
   /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
   response?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      match: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch,
-      ),
-      transform: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList,
-      ),
-      forwardURL: S.optional(S.String),
-      response: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItem",
-  }) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItem>;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItem>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueList =
-  /*@__PURE__*/ S.Array(
-    CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItem,
-  ) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueList>;
-
 /** A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule. */
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1Map = {
   [key: string]:
     | CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueList
     | undefined;
 };
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1Map =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueList,
-  ) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1Map>;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Allow =
   | CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase0List
   | CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1Map;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Allow =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Allow>;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsAllowList = Array<string>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsAllowList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsAllowList>;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsDenyList = Array<string>;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsDenyList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsDenyList>;
-
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Subnets {
   allow?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsAllowList;
   deny?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsDenyList;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Subnets = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allow: S.optional(CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsAllowList),
-      deny: S.optional(CreateSandboxesByNameForkV2RequestNetworkPolicyCase1SubnetsDenyList),
-    }),
-).annotate({
-  identifier: "CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Subnets",
-}) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Subnets>;
-
 export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1 {
   allow?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Allow;
   subnets?: CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Subnets;
 }
-export const CreateSandboxesByNameForkV2RequestNetworkPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Allow),
-    subnets: S.optional(CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Subnets),
-  }),
-).annotate({
-  identifier: "CreateSandboxesByNameForkV2RequestNetworkPolicyCase1",
-}) as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicyCase1>;
-
 export type CreateSandboxesByNameForkV2RequestNetworkPolicy =
   | CreateSandboxesByNameForkV2RequestNetworkPolicyCase0
   | CreateSandboxesByNameForkV2RequestNetworkPolicyCase1;
-export const CreateSandboxesByNameForkV2RequestNetworkPolicy =
+const CreateSandboxesByNameForkV2RequestNetworkPolicy =
   S.Unknown as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicy>;
 
 /** Resources to define the VM */
@@ -509,7 +255,7 @@ export interface CreateSandboxesByNameForkV2RequestResources {
   /** The amount of memory in megabytes to allocate to the sandbox. Must equal vcpus * 2048. */
   memory?: number;
 }
-export const CreateSandboxesByNameForkV2RequestResources = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesByNameForkV2RequestResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vcpus: S.optional(S.Number),
     memory: S.optional(S.Number),
@@ -520,20 +266,20 @@ export const CreateSandboxesByNameForkV2RequestResources = /*@__PURE__*/ S.suspe
 
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesByNameForkV2RequestPortsList = Array<number>;
-export const CreateSandboxesByNameForkV2RequestPortsList = /*@__PURE__*/ S.Array(
+const CreateSandboxesByNameForkV2RequestPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateSandboxesByNameForkV2RequestPortsList>;
 
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesByNameForkV2RequestEnvMap = { [key: string]: string | undefined };
-export const CreateSandboxesByNameForkV2RequestEnvMap = /*@__PURE__*/ S.Record(
+const CreateSandboxesByNameForkV2RequestEnvMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateSandboxesByNameForkV2RequestEnvMap>;
 
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesByNameForkV2RequestMountsValueMode = "snapshot" | "read-write";
-export const CreateSandboxesByNameForkV2RequestMountsValueMode = S.String;
+const CreateSandboxesByNameForkV2RequestMountsValueMode = S.String;
 
 export interface CreateSandboxesByNameForkV2RequestMountsValue {
   /** Name of the drive to mount. The drive must already exist. */
@@ -541,7 +287,7 @@ export interface CreateSandboxesByNameForkV2RequestMountsValue {
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesByNameForkV2RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesByNameForkV2RequestMountsValue = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesByNameForkV2RequestMountsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     drive: S.String,
     mode: S.optional(CreateSandboxesByNameForkV2RequestMountsValueMode),
@@ -554,7 +300,7 @@ export const CreateSandboxesByNameForkV2RequestMountsValue = /*@__PURE__*/ S.sus
 export type CreateSandboxesByNameForkV2RequestMountsMap = {
   [key: string]: CreateSandboxesByNameForkV2RequestMountsValue | undefined;
 };
-export const CreateSandboxesByNameForkV2RequestMountsMap = /*@__PURE__*/ S.Record(
+const CreateSandboxesByNameForkV2RequestMountsMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateSandboxesByNameForkV2RequestMountsValue,
 ) as any as S.Schema<CreateSandboxesByNameForkV2RequestMountsMap>;
@@ -580,7 +326,7 @@ export type CreateSandboxesByNameForkV2RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesByNameForkV2RequestRegion = S.String;
+const CreateSandboxesByNameForkV2RequestRegion = S.String;
 
 export type CreateSandboxesByNameForkV2RequestFailoverRegionsItem =
   | "iad1"
@@ -602,24 +348,24 @@ export type CreateSandboxesByNameForkV2RequestFailoverRegionsItem =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesByNameForkV2RequestFailoverRegionsItem = S.String;
+const CreateSandboxesByNameForkV2RequestFailoverRegionsItem = S.String;
 
 /** The regions the sandbox falls back to when it cannot be created in `region`. */
 export type CreateSandboxesByNameForkV2RequestFailoverRegionsList = Array<
   CreateSandboxesByNameForkV2RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesByNameForkV2RequestFailoverRegionsList = /*@__PURE__*/ S.Array(
+const CreateSandboxesByNameForkV2RequestFailoverRegionsList = /*@__PURE__*/ S.Array(
   CreateSandboxesByNameForkV2RequestFailoverRegionsItem,
 ) as any as S.Schema<CreateSandboxesByNameForkV2RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesByNameForkV2RequestSnapshotExpiration = unknown | number;
-export const CreateSandboxesByNameForkV2RequestSnapshotExpiration =
+const CreateSandboxesByNameForkV2RequestSnapshotExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesByNameForkV2RequestSnapshotExpiration>;
 
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration = unknown | number;
-export const CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration =
+const CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration>;
 
 /** Protect the N most recent snapshots with different expiration/deletion behavior. */
@@ -631,7 +377,7 @@ export interface CreateSandboxesByNameForkV2RequestKeepLastSnapshots {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-export const CreateSandboxesByNameForkV2RequestKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesByNameForkV2RequestKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     expiration: S.optional(CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration),
@@ -643,7 +389,7 @@ export const CreateSandboxesByNameForkV2RequestKeepLastSnapshots = /*@__PURE__*/
 
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesByNameForkV2RequestTagsMap = { [key: string]: string | undefined };
-export const CreateSandboxesByNameForkV2RequestTagsMap =
+const CreateSandboxesByNameForkV2RequestTagsMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesByNameForkV2RequestTagsMap>;
 
 export interface CreateSandboxesByNameForkV2Request {
@@ -683,7 +429,7 @@ export interface CreateSandboxesByNameForkV2Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesByNameForkV2RequestTagsMap;
 }
-export const CreateSandboxesByNameForkV2Request = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesByNameForkV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -719,7 +465,7 @@ export interface SandboxPublicRoute {
   /** A public URL to access the corresponding port in the Sandbox. */
   url: string;
 }
-export const SandboxPublicRoute = /*@__PURE__*/ S.suspend(() =>
+const SandboxPublicRoute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.Number,
     subdomain: S.String,
@@ -729,13 +475,13 @@ export const SandboxPublicRoute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SandboxPublicRoute" }) as any as S.Schema<SandboxPublicRoute>;
 
 export type CreateSandboxesByNameForkV2ResponseRoutesList = Array<SandboxPublicRoute>;
-export const CreateSandboxesByNameForkV2ResponseRoutesList = /*@__PURE__*/ S.Array(
+const CreateSandboxesByNameForkV2ResponseRoutesList = /*@__PURE__*/ S.Array(
   SandboxPublicRoute,
 ) as any as S.Schema<CreateSandboxesByNameForkV2ResponseRoutesList>;
 
 /** CPU architecture of the sandbox. This value does not change. */
 export type NamedSandboxArchitecture = "amd64" | "arm64";
-export const NamedSandboxArchitecture = S.String;
+const NamedSandboxArchitecture = S.String;
 
 /** The regions the sandbox fails over to. Empty when it does not fail over. */
 export type NamedSandboxFailoverRegionsItem =
@@ -758,11 +504,9 @@ export type NamedSandboxFailoverRegionsItem =
   | "sin1"
   | "syd1"
   | "yul1";
-export const NamedSandboxFailoverRegionsItem = S.String;
-
 /** The regions the sandbox fails over to. Empty when it does not fail over. */
 export type NamedSandboxFailoverRegionsList = Array<NamedSandboxFailoverRegionsItem>;
-export const NamedSandboxFailoverRegionsList =
+const NamedSandboxFailoverRegionsList =
   CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<NamedSandboxFailoverRegionsList>;
 
 /** Keep-last snapshot configuration. */
@@ -774,7 +518,7 @@ export interface NamedSandboxKeepLastSnapshots {
   /** Expiration time in milliseconds for kept snapshots. */
   expiration?: number;
 }
-export const NamedSandboxKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
+const NamedSandboxKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     deleteEvicted: S.Boolean,
@@ -785,14 +529,14 @@ export const NamedSandboxKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamedSandboxKeepLastSnapshots>;
 
 export type NamedSandboxMountsValueMode = "read-only" | "read-write" | "snapshot";
-export const NamedSandboxMountsValueMode = S.String;
+const NamedSandboxMountsValueMode = S.String;
 
 /** Key-value pairs of mount path and drive. */
 export interface NamedSandboxMountsValue {
   drive: string;
   mode?: NamedSandboxMountsValueMode;
 }
-export const NamedSandboxMountsValue = /*@__PURE__*/ S.suspend(() =>
+const NamedSandboxMountsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     drive: S.String,
     mode: S.optional(NamedSandboxMountsValueMode),
@@ -801,22 +545,22 @@ export const NamedSandboxMountsValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of mount path and drive. */
 export type NamedSandboxMountsMap = { [key: string]: NamedSandboxMountsValue | undefined };
-export const NamedSandboxMountsMap = /*@__PURE__*/ S.Record(
+const NamedSandboxMountsMap = /*@__PURE__*/ S.Record(
   S.String,
   NamedSandboxMountsValue,
 ) as any as S.Schema<NamedSandboxMountsMap>;
 
 export type NamedSandboxNetworkPolicyAllowedCIDRsList = Array<string>;
-export const NamedSandboxNetworkPolicyAllowedCIDRsList = /*@__PURE__*/ S.Array(
+const NamedSandboxNetworkPolicyAllowedCIDRsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamedSandboxNetworkPolicyAllowedCIDRsList>;
 
 export type NamedSandboxNetworkPolicyAllowedDomainsList = Array<string>;
-export const NamedSandboxNetworkPolicyAllowedDomainsList =
+const NamedSandboxNetworkPolicyAllowedDomainsList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<NamedSandboxNetworkPolicyAllowedDomainsList>;
 
 export type NamedSandboxNetworkPolicyDeniedCIDRsList = Array<string>;
-export const NamedSandboxNetworkPolicyDeniedCIDRsList =
+const NamedSandboxNetworkPolicyDeniedCIDRsList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<NamedSandboxNetworkPolicyDeniedCIDRsList>;
 
 export type NamedSandboxNetworkPolicyMode =
@@ -825,7 +569,7 @@ export type NamedSandboxNetworkPolicyMode =
   | "default-allow"
   | "default-deny"
   | "deny-all";
-export const NamedSandboxNetworkPolicyMode = S.String;
+const NamedSandboxNetworkPolicyMode = S.String;
 
 /** Network policy configuration. */
 export interface NamedSandboxNetworkPolicy {
@@ -835,7 +579,7 @@ export interface NamedSandboxNetworkPolicy {
   mode: NamedSandboxNetworkPolicyMode;
   s3Key?: string;
 }
-export const NamedSandboxNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
+const NamedSandboxNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedCIDRs: S.optional(NamedSandboxNetworkPolicyAllowedCIDRsList),
     allowedDomains: S.optional(NamedSandboxNetworkPolicyAllowedDomainsList),
@@ -849,11 +593,11 @@ export const NamedSandboxNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of the current sandbox. */
 export type NamedSandboxStatus = "running" | "stopped" | "stopping";
-export const NamedSandboxStatus = S.String;
+const NamedSandboxStatus = S.String;
 
 /** Key-value tags attached to the named sandbox. */
 export type NamedSandboxTagsMap = { [key: string]: string | undefined };
-export const NamedSandboxTagsMap =
+const NamedSandboxTagsMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<NamedSandboxTagsMap>;
 
 /** This object contains information related to a Vercel NamedSandbox. */
@@ -917,7 +661,7 @@ export interface NamedSandbox {
   /** Number of virtual CPUs allocated. */
   vcpus?: number;
 }
-export const NamedSandbox = /*@__PURE__*/ S.suspend(() =>
+const NamedSandbox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     architecture: S.optional(NamedSandboxArchitecture),
     createdAt: S.Number,
@@ -953,26 +697,26 @@ export const NamedSandbox = /*@__PURE__*/ S.suspend(() =>
 
 /** CPU architecture of the sandbox. */
 export type SessionArchitecture = "amd64" | "arm64";
-export const SessionArchitecture = S.String;
+const SessionArchitecture = S.String;
 
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. */
 export type SandboxNetworkPolicyAllowedCIDRsList = Array<string>;
-export const SandboxNetworkPolicyAllowedCIDRsList =
+const SandboxNetworkPolicyAllowedCIDRsList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SandboxNetworkPolicyAllowedCIDRsList>;
 
 /** List of domain names the sandbox is allowed to connect to. Supports wildcard patterns (e.g., "*.vercel.com" matches all subdomains). */
 export type SandboxNetworkPolicyAllowedDomainsList = Array<string>;
-export const SandboxNetworkPolicyAllowedDomainsList =
+const SandboxNetworkPolicyAllowedDomainsList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SandboxNetworkPolicyAllowedDomainsList>;
 
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type SandboxNetworkPolicyDeniedCIDRsList = Array<string>;
-export const SandboxNetworkPolicyDeniedCIDRsList =
+const SandboxNetworkPolicyDeniedCIDRsList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SandboxNetworkPolicyDeniedCIDRsList>;
 
 /** The names of HTTP headers that have value that will be injected for requests to this domain. */
 export type SandboxInjectionRuleHeaderNamesList = Array<string>;
-export const SandboxInjectionRuleHeaderNamesList =
+const SandboxInjectionRuleHeaderNamesList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SandboxInjectionRuleHeaderNamesList>;
 
 /** HTTP header injection rules for outgoing requests matching specific domains. */
@@ -982,7 +726,7 @@ export interface SandboxInjectionRule {
   /** The names of HTTP headers that have value that will be injected for requests to this domain. */
   headerNames?: SandboxInjectionRuleHeaderNamesList;
 }
-export const SandboxInjectionRule = /*@__PURE__*/ S.suspend(() =>
+const SandboxInjectionRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     headerNames: S.optional(SandboxInjectionRuleHeaderNamesList),
@@ -991,13 +735,13 @@ export const SandboxInjectionRule = /*@__PURE__*/ S.suspend(() =>
 
 /** HTTP header injection rules for outgoing requests matching specific domains. */
 export type SandboxNetworkPolicyInjectionRulesList = Array<SandboxInjectionRule>;
-export const SandboxNetworkPolicyInjectionRulesList = /*@__PURE__*/ S.Array(
+const SandboxNetworkPolicyInjectionRulesList = /*@__PURE__*/ S.Array(
   SandboxInjectionRule,
 ) as any as S.Schema<SandboxNetworkPolicyInjectionRulesList>;
 
 /** The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules. */
 export type SandboxNetworkPolicyMode = "allow-all" | "custom" | "deny-all";
-export const SandboxNetworkPolicyMode = S.String;
+const SandboxNetworkPolicyMode = S.String;
 
 /** The network policy applied to this sandbox, if any. */
 export interface SandboxNetworkPolicy {
@@ -1012,7 +756,7 @@ export interface SandboxNetworkPolicy {
   /** The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules. */
   mode: SandboxNetworkPolicyMode;
 }
-export const SandboxNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
+const SandboxNetworkPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedCIDRs: S.optional(SandboxNetworkPolicyAllowedCIDRsList),
     allowedDomains: S.optional(SandboxNetworkPolicyAllowedDomainsList),
@@ -1027,7 +771,7 @@ export interface SessionNetworkTransfer {
   egress: number;
   ingress: number;
 }
-export const SessionNetworkTransfer = /*@__PURE__*/ S.suspend(() =>
+const SessionNetworkTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     egress: S.Number,
     ingress: S.Number,
@@ -1043,7 +787,7 @@ export type SessionStatus =
   | "snapshotting"
   | "stopped"
   | "stopping";
-export const SessionStatus = S.String;
+const SessionStatus = S.String;
 
 /** This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key. */
 export interface Session {
@@ -1097,7 +841,7 @@ export interface Session {
   /** Number of vCPUs allocated to this sandbox. */
   vcpus: number;
 }
-export const Session = /*@__PURE__*/ S.suspend(() =>
+const Session = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abortedAt: S.optional(S.Number),
     activeCpuDurationMs: S.optional(S.Number),
@@ -1132,7 +876,7 @@ export interface CreateSandboxesByNameForkV2Response {
   sandbox: NamedSandbox;
   session: Session;
 }
-export const CreateSandboxesByNameForkV2Response = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesByNameForkV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routes: CreateSandboxesByNameForkV2ResponseRoutesList,
     sandbox: NamedSandbox,
@@ -1149,88 +893,44 @@ export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0Mode =
   | "custom"
   | "default-allow"
   | "default-deny";
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0Mode = S.String;
-
 /** List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains). */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0AllowedDomainsList = Array<string>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0AllowedDomainsList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0AllowedDomainsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0AllowedCIDRsList = Array<string>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0AllowedCIDRsList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0AllowedCIDRsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0DeniedCIDRsList = Array<string>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0DeniedCIDRsList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0DeniedCIDRsList>;
-
 /** HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemHeadersMap>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -1242,9 +942,6 @@ export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRu
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatch>;
-
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItem {
   /** The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com. */
   domain: string;
@@ -1253,15 +950,9 @@ export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRu
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItemMatch;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItem as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItem>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesList =
   Array<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesItem>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesList>;
-
 /** Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules. */
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase0 {
   /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -1275,84 +966,35 @@ export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase0 {
   /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
   injectionRules?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesList;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: CreateSandboxesByNameForkV3RequestNetworkPolicyCase0Mode,
-    allowedDomains: S.optional(
-      CreateSandboxesByNameForkV3RequestNetworkPolicyCase0AllowedDomainsList,
-    ),
-    allowedCIDRs: S.optional(CreateSandboxesByNameForkV3RequestNetworkPolicyCase0AllowedCIDRsList),
-    deniedCIDRs: S.optional(CreateSandboxesByNameForkV3RequestNetworkPolicyCase0DeniedCIDRsList),
-    injectionRules: S.optional(
-      CreateSandboxesByNameForkV3RequestNetworkPolicyCase0InjectionRulesList,
-    ),
-  }),
-).annotate({
-  identifier: "CreateSandboxesByNameForkV3RequestNetworkPolicyCase0",
-}) as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase0>;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase0List = Array<string>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase0List =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase0List>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -1364,31 +1006,16 @@ export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1V
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatch>;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap =
   { [key: string]: string | undefined };
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap>;
-
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem {
   headers?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
   Array<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformList>;
-
 /** HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap =
   { [key: string]: string | undefined };
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap>;
-
 /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemResponse {
   /** HTTP status code returned to the sandbox. */
@@ -1400,9 +1027,6 @@ export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1V
   /** Value of the `Content-Type` response header. Required when `body` is set. */
   contentType?: string;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemResponse =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemResponse>;
-
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemMatch;
@@ -1412,97 +1036,59 @@ export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1V
   /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
   response?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItemResponse;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItem as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItem>;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueList =
   Array<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueItem>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueList>;
-
 /** A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1Map = {
   [key: string]:
     | CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1ValueList
     | undefined;
 };
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1Map =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1Map as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1Map>;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Allow =
   | CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase0List
   | CreateSandboxesByNameForkV3RequestNetworkPolicyCase1AllowCase1Map;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Allow =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Allow>;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1SubnetsAllowList = Array<string>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1SubnetsAllowList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1SubnetsAllowList>;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase1SubnetsDenyList = Array<string>;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1SubnetsDenyList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1SubnetsDenyList>;
-
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Subnets {
   allow?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase1SubnetsAllowList;
   deny?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase1SubnetsDenyList;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Subnets =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1Subnets as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Subnets>;
-
 export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1 {
   allow?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Allow;
   subnets?: CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Subnets;
 }
-export const CreateSandboxesByNameForkV3RequestNetworkPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Allow),
-    subnets: S.optional(CreateSandboxesByNameForkV3RequestNetworkPolicyCase1Subnets),
-  }),
-).annotate({
-  identifier: "CreateSandboxesByNameForkV3RequestNetworkPolicyCase1",
-}) as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicyCase1>;
-
 export type CreateSandboxesByNameForkV3RequestNetworkPolicy =
   | CreateSandboxesByNameForkV3RequestNetworkPolicyCase0
   | CreateSandboxesByNameForkV3RequestNetworkPolicyCase1;
-export const CreateSandboxesByNameForkV3RequestNetworkPolicy =
+const CreateSandboxesByNameForkV3RequestNetworkPolicy =
   S.Unknown as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicy>;
 
 /** Resources to define the VM */
 export type CreateSandboxesByNameForkV3RequestResources =
   CreateSandboxesByNameForkV2RequestResources;
-export const CreateSandboxesByNameForkV3RequestResources =
-  CreateSandboxesByNameForkV2RequestResources;
-
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesByNameForkV3RequestPortsList = Array<number>;
-export const CreateSandboxesByNameForkV3RequestPortsList =
+const CreateSandboxesByNameForkV3RequestPortsList =
   CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<CreateSandboxesByNameForkV3RequestPortsList>;
 
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesByNameForkV3RequestEnvMap = { [key: string]: string | undefined };
-export const CreateSandboxesByNameForkV3RequestEnvMap =
+const CreateSandboxesByNameForkV3RequestEnvMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesByNameForkV3RequestEnvMap>;
 
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesByNameForkV3RequestMountsValueMode = "snapshot" | "read-write";
-export const CreateSandboxesByNameForkV3RequestMountsValueMode = S.String;
-
 export interface CreateSandboxesByNameForkV3RequestMountsValue {
   /** Name of the drive to mount. The drive must already exist. */
   drive: string;
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesByNameForkV3RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesByNameForkV3RequestMountsValue =
-  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<CreateSandboxesByNameForkV3RequestMountsValue>;
-
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesByNameForkV3RequestMountsMap = {
   [key: string]: CreateSandboxesByNameForkV3RequestMountsValue | undefined;
 };
-export const CreateSandboxesByNameForkV3RequestMountsMap =
+const CreateSandboxesByNameForkV3RequestMountsMap =
   CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesByNameForkV3RequestMountsMap>;
 
 /** The Vercel region in which to create the sandbox. */
@@ -1526,7 +1112,7 @@ export type CreateSandboxesByNameForkV3RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesByNameForkV3RequestRegion = S.String;
+const CreateSandboxesByNameForkV3RequestRegion = S.String;
 
 export type CreateSandboxesByNameForkV3RequestFailoverRegionsItem =
   | "iad1"
@@ -1548,25 +1134,20 @@ export type CreateSandboxesByNameForkV3RequestFailoverRegionsItem =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesByNameForkV3RequestFailoverRegionsItem = S.String;
-
 /** The regions the sandbox falls back to when it cannot be created in `region`. */
 export type CreateSandboxesByNameForkV3RequestFailoverRegionsList = Array<
   CreateSandboxesByNameForkV3RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesByNameForkV3RequestFailoverRegionsList =
+const CreateSandboxesByNameForkV3RequestFailoverRegionsList =
   CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesByNameForkV3RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Defaults to 7 days. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesByNameForkV3RequestSnapshotExpiration = unknown | number;
-export const CreateSandboxesByNameForkV3RequestSnapshotExpiration =
+const CreateSandboxesByNameForkV3RequestSnapshotExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesByNameForkV3RequestSnapshotExpiration>;
 
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1Expiration = unknown | number;
-export const CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1Expiration =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1Expiration>;
-
 export interface CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1 {
   /** Number of most recent snapshots to keep. */
   count: number;
@@ -1575,27 +1156,16 @@ export interface CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1 {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-export const CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      count: S.Number,
-      expiration: S.optional(CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1Expiration),
-      deleteEvicted: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1",
-}) as any as S.Schema<CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1>;
-
 /** Protect the N most recent snapshots with different expiration/deletion behavior. Persistent sandboxes default to keeping only the last snapshot (evicted snapshots are deleted). Set to null to disable the limit. */
 export type CreateSandboxesByNameForkV3RequestKeepLastSnapshots =
   | string
   | CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1;
-export const CreateSandboxesByNameForkV3RequestKeepLastSnapshots =
+const CreateSandboxesByNameForkV3RequestKeepLastSnapshots =
   S.Unknown as any as S.Schema<CreateSandboxesByNameForkV3RequestKeepLastSnapshots>;
 
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesByNameForkV3RequestTagsMap = { [key: string]: string | undefined };
-export const CreateSandboxesByNameForkV3RequestTagsMap =
+const CreateSandboxesByNameForkV3RequestTagsMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesByNameForkV3RequestTagsMap>;
 
 export interface CreateSandboxesByNameForkV3Request {
@@ -1635,7 +1205,7 @@ export interface CreateSandboxesByNameForkV3Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesByNameForkV3RequestTagsMap;
 }
-export const CreateSandboxesByNameForkV3Request = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesByNameForkV3Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -1661,20 +1231,17 @@ export const CreateSandboxesByNameForkV3Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSandboxesByNameForkV3Request>;
 
 export type CreateSandboxesByNameForkV3ResponseRoutesList = Array<SandboxPublicRoute>;
-export const CreateSandboxesByNameForkV3ResponseRoutesList =
-  CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<CreateSandboxesByNameForkV3ResponseRoutesList>;
-
 export interface CreateSandboxesByNameForkV3Response {
   routes: CreateSandboxesByNameForkV3ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-export const CreateSandboxesByNameForkV3Response =
+const CreateSandboxesByNameForkV3Response =
   CreateSandboxesByNameForkV2Response as any as S.Schema<CreateSandboxesByNameForkV3Response>;
 
 /** The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration. */
 export type CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration = unknown | number;
-export const CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration =
+const CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration>;
 
 export interface CreateSandboxesSessionsBySessionIdSnapshotV2Request {
@@ -1687,7 +1254,7 @@ export interface CreateSandboxesSessionsBySessionIdSnapshotV2Request {
   /** The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration. */
   expiration?: CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration;
 }
-export const CreateSandboxesSessionsBySessionIdSnapshotV2Request = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesSessionsBySessionIdSnapshotV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1702,20 +1269,20 @@ export const CreateSandboxesSessionsBySessionIdSnapshotV2Request = /*@__PURE__*/
 
 /** CPU architecture required to restore the snapshot. */
 export type SnapshotArchitecture = "amd64" | "arm64";
-export const SnapshotArchitecture = S.String;
+const SnapshotArchitecture = S.String;
 
 /** The method used to create the snapshot. */
 export type SnapshotCreationMethod = "automatic" | "manual";
-export const SnapshotCreationMethod = S.String;
+const SnapshotCreationMethod = S.String;
 
 /** The regions where the snapshot is available. */
 export type SnapshotRegionsList = Array<string>;
-export const SnapshotRegionsList =
+const SnapshotRegionsList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SnapshotRegionsList>;
 
 /** The status of the snapshot. */
 export type SnapshotStatus = "created" | "deleted" | "failed";
-export const SnapshotStatus = S.String;
+const SnapshotStatus = S.String;
 
 /** This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API). */
 export interface Snapshot {
@@ -1748,7 +1315,7 @@ export interface Snapshot {
   /** Whether this snapshot is managed by v0 on the customer's behalf. */
   v0?: boolean;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     architecture: S.optional(SnapshotArchitecture),
     createdAt: S.Number,
@@ -1771,7 +1338,7 @@ export interface CreateSandboxesSessionsBySessionIdSnapshotV2Response {
   session: Session;
   snapshot: Snapshot;
 }
-export const CreateSandboxesSessionsBySessionIdSnapshotV2Response = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesSessionsBySessionIdSnapshotV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: Session,
     snapshot: Snapshot,
@@ -1782,7 +1349,7 @@ export const CreateSandboxesSessionsBySessionIdSnapshotV2Response = /*@__PURE__*
 
 /** The number of milliseconds after which the snapshot will expire and be deleted. Defaults to 7 days when neither this field nor the sandbox configuration specifies an expiration. Use 0 for no expiration. */
 export type CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration = unknown | number;
-export const CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration =
+const CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration>;
 
 export interface CreateSandboxesSessionsBySessionIdSnapshotV3Request {
@@ -1795,7 +1362,7 @@ export interface CreateSandboxesSessionsBySessionIdSnapshotV3Request {
   /** The number of milliseconds after which the snapshot will expire and be deleted. Defaults to 7 days when neither this field nor the sandbox configuration specifies an expiration. Use 0 for no expiration. */
   expiration?: CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration;
 }
-export const CreateSandboxesSessionsBySessionIdSnapshotV3Request = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesSessionsBySessionIdSnapshotV3Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1812,7 +1379,7 @@ export interface CreateSandboxesSessionsBySessionIdSnapshotV3Response {
   session: Session;
   snapshot: Snapshot;
 }
-export const CreateSandboxesSessionsBySessionIdSnapshotV3Response =
+const CreateSandboxesSessionsBySessionIdSnapshotV3Response =
   CreateSandboxesSessionsBySessionIdSnapshotV2Response as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Response>;
 
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -1822,88 +1389,44 @@ export type CreateSandboxesV2RequestNetworkPolicyCase0Mode =
   | "custom"
   | "default-allow"
   | "default-deny";
-export const CreateSandboxesV2RequestNetworkPolicyCase0Mode = S.String;
-
 /** List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains). */
 export type CreateSandboxesV2RequestNetworkPolicyCase0AllowedDomainsList = Array<string>;
-export const CreateSandboxesV2RequestNetworkPolicyCase0AllowedDomainsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0AllowedDomainsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0AllowedCIDRsList = Array<string>;
-export const CreateSandboxesV2RequestNetworkPolicyCase0AllowedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0AllowedCIDRsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0DeniedCIDRsList = Array<string>;
-export const CreateSandboxesV2RequestNetworkPolicyCase0DeniedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0DeniedCIDRsList>;
-
 /** HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -1915,9 +1438,6 @@ export interface CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMat
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatch>;
-
 export interface CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem {
   /** The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com. */
   domain: string;
@@ -1926,24 +1446,9 @@ export interface CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatch;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      domain: S.String,
-      headers: CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap,
-      match: S.optional(CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItemMatch),
-    }),
-).annotate({
-  identifier: "CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem",
-}) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesList =
   Array<CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem>;
-export const CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesList = /*@__PURE__*/ S.Array(
-  CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem,
-) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesList>;
-
 /** Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules. */
 export interface CreateSandboxesV2RequestNetworkPolicyCase0 {
   /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -1957,80 +1462,35 @@ export interface CreateSandboxesV2RequestNetworkPolicyCase0 {
   /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
   injectionRules?: CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesList;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: CreateSandboxesV2RequestNetworkPolicyCase0Mode,
-    allowedDomains: S.optional(CreateSandboxesV2RequestNetworkPolicyCase0AllowedDomainsList),
-    allowedCIDRs: S.optional(CreateSandboxesV2RequestNetworkPolicyCase0AllowedCIDRsList),
-    deniedCIDRs: S.optional(CreateSandboxesV2RequestNetworkPolicyCase0DeniedCIDRsList),
-    injectionRules: S.optional(CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesList),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV2RequestNetworkPolicyCase0",
-}) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase0>;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase0List = Array<string>;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase0List =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase0List>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -2042,43 +1502,18 @@ export interface CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMa
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch>;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap>;
-
 export interface CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem {
   headers?: CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      headers: S.optional(
-        CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem",
-  }) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
   Array<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
-  /*@__PURE__*/ S.Array(
-    CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem,
-  ) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList>;
-
 /** HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set. */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap>;
-
 /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
 export interface CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse {
   /** HTTP status code returned to the sandbox. */
@@ -2090,9 +1525,6 @@ export interface CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemRe
   /** Value of the `Content-Type` response header. Required when `body` is set. */
   contentType?: string;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse>;
-
 export interface CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch;
@@ -2102,93 +1534,41 @@ export interface CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
   response?: CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      match: S.optional(CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemMatch),
-      transform: S.optional(
-        CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList,
-      ),
-      forwardURL: S.optional(S.String),
-      response: S.optional(CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse),
-    }),
-  ).annotate({
-    identifier: "CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem",
-  }) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem>;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueList =
   Array<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem>;
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueList = /*@__PURE__*/ S.Array(
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem,
-) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueList>;
-
 /** A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule. */
 export type CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1Map = {
   [key: string]: CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueList | undefined;
 };
-export const CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueList,
-) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1Map>;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1Allow =
   | CreateSandboxesV2RequestNetworkPolicyCase1AllowCase0List
   | CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1Map;
-export const CreateSandboxesV2RequestNetworkPolicyCase1Allow =
-  S.Unknown as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1Allow>;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1SubnetsAllowList = Array<string>;
-export const CreateSandboxesV2RequestNetworkPolicyCase1SubnetsAllowList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1SubnetsAllowList>;
-
 export type CreateSandboxesV2RequestNetworkPolicyCase1SubnetsDenyList = Array<string>;
-export const CreateSandboxesV2RequestNetworkPolicyCase1SubnetsDenyList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1SubnetsDenyList>;
-
 export interface CreateSandboxesV2RequestNetworkPolicyCase1Subnets {
   allow?: CreateSandboxesV2RequestNetworkPolicyCase1SubnetsAllowList;
   deny?: CreateSandboxesV2RequestNetworkPolicyCase1SubnetsDenyList;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase1Subnets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(CreateSandboxesV2RequestNetworkPolicyCase1SubnetsAllowList),
-    deny: S.optional(CreateSandboxesV2RequestNetworkPolicyCase1SubnetsDenyList),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV2RequestNetworkPolicyCase1Subnets",
-}) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1Subnets>;
-
 export interface CreateSandboxesV2RequestNetworkPolicyCase1 {
   allow?: CreateSandboxesV2RequestNetworkPolicyCase1Allow;
   subnets?: CreateSandboxesV2RequestNetworkPolicyCase1Subnets;
 }
-export const CreateSandboxesV2RequestNetworkPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(CreateSandboxesV2RequestNetworkPolicyCase1Allow),
-    subnets: S.optional(CreateSandboxesV2RequestNetworkPolicyCase1Subnets),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV2RequestNetworkPolicyCase1",
-}) as any as S.Schema<CreateSandboxesV2RequestNetworkPolicyCase1>;
-
 export type CreateSandboxesV2RequestNetworkPolicy =
   | CreateSandboxesV2RequestNetworkPolicyCase0
   | CreateSandboxesV2RequestNetworkPolicyCase1;
-export const CreateSandboxesV2RequestNetworkPolicy =
+const CreateSandboxesV2RequestNetworkPolicy =
   S.Unknown as any as S.Schema<CreateSandboxesV2RequestNetworkPolicy>;
 
 /** The runtime environment for the sandbox. Determines the pre-installed language runtimes and tools available. */
 export type CreateSandboxesV2RequestRuntime = "node22" | "node24" | "node26" | "python3.13";
-export const CreateSandboxesV2RequestRuntime = S.String;
+const CreateSandboxesV2RequestRuntime = S.String;
 
 /** CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access. */
 export type CreateSandboxesV2RequestArchitecture = "amd64" | "arm64";
-export const CreateSandboxesV2RequestArchitecture = S.String;
+const CreateSandboxesV2RequestArchitecture = S.String;
 
 /** Resources to define the VM */
 export type CreateSandboxesV2RequestResources = CreateSandboxesByNameForkV2RequestResources;
-export const CreateSandboxesV2RequestResources = CreateSandboxesByNameForkV2RequestResources;
-
 /** Clone a Git repository into the sandbox. */
 export interface CreateSandboxesV2RequestSourceCase0 {
   /** Indicates the source is a Git repository. */
@@ -2204,19 +1584,6 @@ export interface CreateSandboxesV2RequestSourceCase0 {
   /** The specific commit SHA, branch name, or tag to checkout after cloning. */
   revision?: string;
 }
-export const CreateSandboxesV2RequestSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.Unknown,
-    url: S.String,
-    username: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    depth: S.optional(S.Number),
-    revision: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV2RequestSourceCase0",
-}) as any as S.Schema<CreateSandboxesV2RequestSourceCase0>;
-
 /** Download and extract a gzipped tarball into the sandbox. */
 export interface CreateSandboxesV2RequestSourceCase1 {
   /** Indicates the source is a tarball. */
@@ -2224,15 +1591,6 @@ export interface CreateSandboxesV2RequestSourceCase1 {
   /** URL of a gzipped tarball (.tar.gz) to download and extract. */
   url: string;
 }
-export const CreateSandboxesV2RequestSourceCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.Unknown,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "CreateSandboxesV2RequestSourceCase1",
-}) as any as S.Schema<CreateSandboxesV2RequestSourceCase1>;
-
 /** Restore the sandbox filesystem from an existing snapshot. */
 export interface CreateSandboxesV2RequestSourceCase2 {
   /** Indicates the source is a snapshot. */
@@ -2240,51 +1598,36 @@ export interface CreateSandboxesV2RequestSourceCase2 {
   /** The unique identifier of the snapshot to restore. */
   snapshotId: string;
 }
-export const CreateSandboxesV2RequestSourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.Unknown,
-    snapshotId: S.String,
-  }),
-).annotate({
-  identifier: "CreateSandboxesV2RequestSourceCase2",
-}) as any as S.Schema<CreateSandboxesV2RequestSourceCase2>;
-
 /** The source from which to initialize the sandbox filesystem. Can be a Git repository, a tarball URL, or an existing snapshot. */
 export type CreateSandboxesV2RequestSource =
   | CreateSandboxesV2RequestSourceCase0
   | CreateSandboxesV2RequestSourceCase1
   | CreateSandboxesV2RequestSourceCase2;
-export const CreateSandboxesV2RequestSource =
-  S.Unknown as any as S.Schema<CreateSandboxesV2RequestSource>;
+const CreateSandboxesV2RequestSource = S.Unknown as any as S.Schema<CreateSandboxesV2RequestSource>;
 
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesV2RequestPortsList = Array<number>;
-export const CreateSandboxesV2RequestPortsList =
+const CreateSandboxesV2RequestPortsList =
   CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<CreateSandboxesV2RequestPortsList>;
 
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesV2RequestEnvMap = { [key: string]: string | undefined };
-export const CreateSandboxesV2RequestEnvMap =
+const CreateSandboxesV2RequestEnvMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV2RequestEnvMap>;
 
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesV2RequestMountsValueMode = "snapshot" | "read-write";
-export const CreateSandboxesV2RequestMountsValueMode = S.String;
-
 export interface CreateSandboxesV2RequestMountsValue {
   /** Name of the drive to mount. The drive must already exist. */
   drive: string;
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesV2RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesV2RequestMountsValue =
-  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<CreateSandboxesV2RequestMountsValue>;
-
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesV2RequestMountsMap = {
   [key: string]: CreateSandboxesV2RequestMountsValue | undefined;
 };
-export const CreateSandboxesV2RequestMountsMap =
+const CreateSandboxesV2RequestMountsMap =
   CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV2RequestMountsMap>;
 
 /** The Vercel region in which to create the sandbox. */
@@ -2308,7 +1651,7 @@ export type CreateSandboxesV2RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesV2RequestRegion = S.String;
+const CreateSandboxesV2RequestRegion = S.String;
 
 export type CreateSandboxesV2RequestFailoverRegionsItem =
   | "iad1"
@@ -2330,23 +1673,21 @@ export type CreateSandboxesV2RequestFailoverRegionsItem =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesV2RequestFailoverRegionsItem = S.String;
-
 /** The regions the sandbox falls back to when it cannot be created in `region`. */
 export type CreateSandboxesV2RequestFailoverRegionsList = Array<
   CreateSandboxesV2RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesV2RequestFailoverRegionsList =
+const CreateSandboxesV2RequestFailoverRegionsList =
   CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV2RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV2RequestSnapshotExpiration = unknown | number;
-export const CreateSandboxesV2RequestSnapshotExpiration =
+const CreateSandboxesV2RequestSnapshotExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesV2RequestSnapshotExpiration>;
 
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesV2RequestKeepLastSnapshotsExpiration = unknown | number;
-export const CreateSandboxesV2RequestKeepLastSnapshotsExpiration =
+const CreateSandboxesV2RequestKeepLastSnapshotsExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesV2RequestKeepLastSnapshotsExpiration>;
 
 /** Protect the N most recent snapshots with different expiration/deletion behavior. */
@@ -2358,7 +1699,7 @@ export interface CreateSandboxesV2RequestKeepLastSnapshots {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-export const CreateSandboxesV2RequestKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesV2RequestKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     expiration: S.optional(CreateSandboxesV2RequestKeepLastSnapshotsExpiration),
@@ -2370,7 +1711,7 @@ export const CreateSandboxesV2RequestKeepLastSnapshots = /*@__PURE__*/ S.suspend
 
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesV2RequestTagsMap = { [key: string]: string | undefined };
-export const CreateSandboxesV2RequestTagsMap =
+const CreateSandboxesV2RequestTagsMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV2RequestTagsMap>;
 
 export interface CreateSandboxesV2Request {
@@ -2416,7 +1757,7 @@ export interface CreateSandboxesV2Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesV2RequestTagsMap;
 }
-export const CreateSandboxesV2Request = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -2443,15 +1784,12 @@ export const CreateSandboxesV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSandboxesV2Request" }) as any as S.Schema<CreateSandboxesV2Request>;
 
 export type CreateSandboxesV2ResponseRoutesList = Array<SandboxPublicRoute>;
-export const CreateSandboxesV2ResponseRoutesList =
-  CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<CreateSandboxesV2ResponseRoutesList>;
-
 export interface CreateSandboxesV2Response {
   routes: CreateSandboxesV2ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-export const CreateSandboxesV2Response =
+const CreateSandboxesV2Response =
   CreateSandboxesByNameForkV2Response as any as S.Schema<CreateSandboxesV2Response>;
 
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -2461,88 +1799,44 @@ export type CreateSandboxesV3RequestNetworkPolicyCase0Mode =
   | "custom"
   | "default-allow"
   | "default-deny";
-export const CreateSandboxesV3RequestNetworkPolicyCase0Mode = S.String;
-
 /** List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains). */
 export type CreateSandboxesV3RequestNetworkPolicyCase0AllowedDomainsList = Array<string>;
-export const CreateSandboxesV3RequestNetworkPolicyCase0AllowedDomainsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0AllowedDomainsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0AllowedCIDRsList = Array<string>;
-export const CreateSandboxesV3RequestNetworkPolicyCase0AllowedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0AllowedCIDRsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0DeniedCIDRsList = Array<string>;
-export const CreateSandboxesV3RequestNetworkPolicyCase0DeniedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0DeniedCIDRsList>;
-
 /** HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemHeadersMap>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -2554,9 +1848,6 @@ export interface CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMat
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatch>;
-
 export interface CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItem {
   /** The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com. */
   domain: string;
@@ -2565,15 +1856,9 @@ export interface CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItemMatch;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItem =
-  CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItem>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesList =
   Array<CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesItem>;
-export const CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesList =
-  CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesList>;
-
 /** Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules. */
 export interface CreateSandboxesV3RequestNetworkPolicyCase0 {
   /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -2587,80 +1872,35 @@ export interface CreateSandboxesV3RequestNetworkPolicyCase0 {
   /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
   injectionRules?: CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesList;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: CreateSandboxesV3RequestNetworkPolicyCase0Mode,
-    allowedDomains: S.optional(CreateSandboxesV3RequestNetworkPolicyCase0AllowedDomainsList),
-    allowedCIDRs: S.optional(CreateSandboxesV3RequestNetworkPolicyCase0AllowedCIDRsList),
-    deniedCIDRs: S.optional(CreateSandboxesV3RequestNetworkPolicyCase0DeniedCIDRsList),
-    injectionRules: S.optional(CreateSandboxesV3RequestNetworkPolicyCase0InjectionRulesList),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV3RequestNetworkPolicyCase0",
-}) as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase0>;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase0List = Array<string>;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase0List =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase0List>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -2672,33 +1912,18 @@ export interface CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMa
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatch>;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap>;
-
 export interface CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem {
   headers?: CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
   Array<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemTransformList>;
-
 /** HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set. */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap>;
-
 /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
 export interface CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemResponse {
   /** HTTP status code returned to the sandbox. */
@@ -2710,9 +1935,6 @@ export interface CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemRe
   /** Value of the `Content-Type` response header. Required when `body` is set. */
   contentType?: string;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemResponse =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemResponse>;
-
 export interface CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemMatch;
@@ -2722,117 +1944,73 @@ export interface CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
   response?: CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItemResponse;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItem =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItem>;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueList =
   Array<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueItem>;
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueList =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueList>;
-
 /** A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule. */
 export type CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1Map = {
   [key: string]: CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1ValueList | undefined;
 };
-export const CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1Map =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1Map as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1Map>;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1Allow =
   | CreateSandboxesV3RequestNetworkPolicyCase1AllowCase0List
   | CreateSandboxesV3RequestNetworkPolicyCase1AllowCase1Map;
-export const CreateSandboxesV3RequestNetworkPolicyCase1Allow =
-  S.Unknown as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1Allow>;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1SubnetsAllowList = Array<string>;
-export const CreateSandboxesV3RequestNetworkPolicyCase1SubnetsAllowList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1SubnetsAllowList>;
-
 export type CreateSandboxesV3RequestNetworkPolicyCase1SubnetsDenyList = Array<string>;
-export const CreateSandboxesV3RequestNetworkPolicyCase1SubnetsDenyList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1SubnetsDenyList>;
-
 export interface CreateSandboxesV3RequestNetworkPolicyCase1Subnets {
   allow?: CreateSandboxesV3RequestNetworkPolicyCase1SubnetsAllowList;
   deny?: CreateSandboxesV3RequestNetworkPolicyCase1SubnetsDenyList;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase1Subnets =
-  CreateSandboxesV2RequestNetworkPolicyCase1Subnets as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1Subnets>;
-
 export interface CreateSandboxesV3RequestNetworkPolicyCase1 {
   allow?: CreateSandboxesV3RequestNetworkPolicyCase1Allow;
   subnets?: CreateSandboxesV3RequestNetworkPolicyCase1Subnets;
 }
-export const CreateSandboxesV3RequestNetworkPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(CreateSandboxesV3RequestNetworkPolicyCase1Allow),
-    subnets: S.optional(CreateSandboxesV3RequestNetworkPolicyCase1Subnets),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV3RequestNetworkPolicyCase1",
-}) as any as S.Schema<CreateSandboxesV3RequestNetworkPolicyCase1>;
-
 export type CreateSandboxesV3RequestNetworkPolicy =
   | CreateSandboxesV3RequestNetworkPolicyCase0
   | CreateSandboxesV3RequestNetworkPolicyCase1;
-export const CreateSandboxesV3RequestNetworkPolicy =
+const CreateSandboxesV3RequestNetworkPolicy =
   S.Unknown as any as S.Schema<CreateSandboxesV3RequestNetworkPolicy>;
 
 /** CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access. */
 export type CreateSandboxesV3RequestArchitecture = "amd64" | "arm64";
-export const CreateSandboxesV3RequestArchitecture = S.String;
+const CreateSandboxesV3RequestArchitecture = S.String;
 
 /** Resources to define the VM */
 export type CreateSandboxesV3RequestResources = CreateSandboxesByNameForkV2RequestResources;
-export const CreateSandboxesV3RequestResources = CreateSandboxesByNameForkV2RequestResources;
-
 /** Clone a Git repository into the sandbox. */
 export type CreateSandboxesV3RequestSourceCase0 = CreateSandboxesV2RequestSourceCase0;
-export const CreateSandboxesV3RequestSourceCase0 = CreateSandboxesV2RequestSourceCase0;
-
 /** Download and extract a gzipped tarball into the sandbox. */
 export type CreateSandboxesV3RequestSourceCase1 = CreateSandboxesV2RequestSourceCase1;
-export const CreateSandboxesV3RequestSourceCase1 = CreateSandboxesV2RequestSourceCase1;
-
 /** Restore the sandbox filesystem from an existing snapshot. */
 export type CreateSandboxesV3RequestSourceCase2 = CreateSandboxesV2RequestSourceCase2;
-export const CreateSandboxesV3RequestSourceCase2 = CreateSandboxesV2RequestSourceCase2;
-
 /** The source from which to initialize the sandbox filesystem. Can be a Git repository, a tarball URL, or an existing snapshot. */
 export type CreateSandboxesV3RequestSource =
   | CreateSandboxesV2RequestSourceCase0
   | CreateSandboxesV2RequestSourceCase1
   | CreateSandboxesV2RequestSourceCase2;
-export const CreateSandboxesV3RequestSource =
-  S.Unknown as any as S.Schema<CreateSandboxesV3RequestSource>;
+const CreateSandboxesV3RequestSource = S.Unknown as any as S.Schema<CreateSandboxesV3RequestSource>;
 
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesV3RequestPortsList = Array<number>;
-export const CreateSandboxesV3RequestPortsList =
+const CreateSandboxesV3RequestPortsList =
   CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<CreateSandboxesV3RequestPortsList>;
 
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesV3RequestEnvMap = { [key: string]: string | undefined };
-export const CreateSandboxesV3RequestEnvMap =
+const CreateSandboxesV3RequestEnvMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV3RequestEnvMap>;
 
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesV3RequestMountsValueMode = "snapshot" | "read-write";
-export const CreateSandboxesV3RequestMountsValueMode = S.String;
-
 export interface CreateSandboxesV3RequestMountsValue {
   /** Name of the drive to mount. The drive must already exist. */
   drive: string;
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesV3RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesV3RequestMountsValue =
-  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<CreateSandboxesV3RequestMountsValue>;
-
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesV3RequestMountsMap = {
   [key: string]: CreateSandboxesV3RequestMountsValue | undefined;
 };
-export const CreateSandboxesV3RequestMountsMap =
+const CreateSandboxesV3RequestMountsMap =
   CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV3RequestMountsMap>;
 
 /** The Vercel region in which to create the sandbox. */
@@ -2856,7 +2034,7 @@ export type CreateSandboxesV3RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesV3RequestRegion = S.String;
+const CreateSandboxesV3RequestRegion = S.String;
 
 export type CreateSandboxesV3RequestFailoverRegionsItem =
   | "iad1"
@@ -2878,23 +2056,21 @@ export type CreateSandboxesV3RequestFailoverRegionsItem =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesV3RequestFailoverRegionsItem = S.String;
-
 /** The regions the sandbox falls back to when it cannot be created in `region`. */
 export type CreateSandboxesV3RequestFailoverRegionsList = Array<
   CreateSandboxesV3RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesV3RequestFailoverRegionsList =
+const CreateSandboxesV3RequestFailoverRegionsList =
   CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV3RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV3RequestSnapshotExpiration = unknown | number;
-export const CreateSandboxesV3RequestSnapshotExpiration =
+const CreateSandboxesV3RequestSnapshotExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesV3RequestSnapshotExpiration>;
 
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesV3RequestKeepLastSnapshotsExpiration = unknown | number;
-export const CreateSandboxesV3RequestKeepLastSnapshotsExpiration =
+const CreateSandboxesV3RequestKeepLastSnapshotsExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesV3RequestKeepLastSnapshotsExpiration>;
 
 /** Protect the N most recent snapshots with different expiration/deletion behavior. */
@@ -2906,7 +2082,7 @@ export interface CreateSandboxesV3RequestKeepLastSnapshots {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-export const CreateSandboxesV3RequestKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesV3RequestKeepLastSnapshots = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     expiration: S.optional(CreateSandboxesV3RequestKeepLastSnapshotsExpiration),
@@ -2918,7 +2094,7 @@ export const CreateSandboxesV3RequestKeepLastSnapshots = /*@__PURE__*/ S.suspend
 
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesV3RequestTagsMap = { [key: string]: string | undefined };
-export const CreateSandboxesV3RequestTagsMap =
+const CreateSandboxesV3RequestTagsMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV3RequestTagsMap>;
 
 export interface CreateSandboxesV3Request {
@@ -2962,7 +2138,7 @@ export interface CreateSandboxesV3Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesV3RequestTagsMap;
 }
-export const CreateSandboxesV3Request = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesV3Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -2988,15 +2164,12 @@ export const CreateSandboxesV3Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSandboxesV3Request" }) as any as S.Schema<CreateSandboxesV3Request>;
 
 export type CreateSandboxesV3ResponseRoutesList = Array<SandboxPublicRoute>;
-export const CreateSandboxesV3ResponseRoutesList =
-  CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<CreateSandboxesV3ResponseRoutesList>;
-
 export interface CreateSandboxesV3Response {
   routes: CreateSandboxesV3ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-export const CreateSandboxesV3Response =
+const CreateSandboxesV3Response =
   CreateSandboxesByNameForkV2Response as any as S.Schema<CreateSandboxesV3Response>;
 
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -3006,88 +2179,44 @@ export type CreateSandboxesV4RequestNetworkPolicyCase0Mode =
   | "custom"
   | "default-allow"
   | "default-deny";
-export const CreateSandboxesV4RequestNetworkPolicyCase0Mode = S.String;
-
 /** List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains). */
 export type CreateSandboxesV4RequestNetworkPolicyCase0AllowedDomainsList = Array<string>;
-export const CreateSandboxesV4RequestNetworkPolicyCase0AllowedDomainsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0AllowedDomainsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0AllowedCIDRsList = Array<string>;
-export const CreateSandboxesV4RequestNetworkPolicyCase0AllowedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0AllowedCIDRsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0DeniedCIDRsList = Array<string>;
-export const CreateSandboxesV4RequestNetworkPolicyCase0DeniedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0DeniedCIDRsList>;
-
 /** HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemHeadersMap>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -3099,9 +2228,6 @@ export interface CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMat
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatch>;
-
 export interface CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItem {
   /** The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com. */
   domain: string;
@@ -3110,15 +2236,9 @@ export interface CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItemMatch;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItem =
-  CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItem>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesList =
   Array<CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesItem>;
-export const CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesList =
-  CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesList>;
-
 /** Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules. */
 export interface CreateSandboxesV4RequestNetworkPolicyCase0 {
   /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -3132,80 +2252,35 @@ export interface CreateSandboxesV4RequestNetworkPolicyCase0 {
   /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
   injectionRules?: CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesList;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: CreateSandboxesV4RequestNetworkPolicyCase0Mode,
-    allowedDomains: S.optional(CreateSandboxesV4RequestNetworkPolicyCase0AllowedDomainsList),
-    allowedCIDRs: S.optional(CreateSandboxesV4RequestNetworkPolicyCase0AllowedCIDRsList),
-    deniedCIDRs: S.optional(CreateSandboxesV4RequestNetworkPolicyCase0DeniedCIDRsList),
-    injectionRules: S.optional(CreateSandboxesV4RequestNetworkPolicyCase0InjectionRulesList),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV4RequestNetworkPolicyCase0",
-}) as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase0>;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase0List = Array<string>;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase0List =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase0List>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
   Array<string>;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -3217,33 +2292,18 @@ export interface CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMa
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatch>;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap>;
-
 export interface CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem {
   headers?: CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
   Array<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemTransformList>;
-
 /** HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set. */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap = {
   [key: string]: string | undefined;
 };
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap>;
-
 /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
 export interface CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemResponse {
   /** HTTP status code returned to the sandbox. */
@@ -3255,9 +2315,6 @@ export interface CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemRe
   /** Value of the `Content-Type` response header. Required when `body` is set. */
   contentType?: string;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemResponse =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemResponse>;
-
 export interface CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemMatch;
@@ -3267,117 +2324,73 @@ export interface CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
   response?: CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItemResponse;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItem =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItem>;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueList =
   Array<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueItem>;
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueList =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueList>;
-
 /** A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule. */
 export type CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1Map = {
   [key: string]: CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1ValueList | undefined;
 };
-export const CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1Map =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1Map as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1Map>;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1Allow =
   | CreateSandboxesV4RequestNetworkPolicyCase1AllowCase0List
   | CreateSandboxesV4RequestNetworkPolicyCase1AllowCase1Map;
-export const CreateSandboxesV4RequestNetworkPolicyCase1Allow =
-  S.Unknown as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1Allow>;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1SubnetsAllowList = Array<string>;
-export const CreateSandboxesV4RequestNetworkPolicyCase1SubnetsAllowList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1SubnetsAllowList>;
-
 export type CreateSandboxesV4RequestNetworkPolicyCase1SubnetsDenyList = Array<string>;
-export const CreateSandboxesV4RequestNetworkPolicyCase1SubnetsDenyList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1SubnetsDenyList>;
-
 export interface CreateSandboxesV4RequestNetworkPolicyCase1Subnets {
   allow?: CreateSandboxesV4RequestNetworkPolicyCase1SubnetsAllowList;
   deny?: CreateSandboxesV4RequestNetworkPolicyCase1SubnetsDenyList;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase1Subnets =
-  CreateSandboxesV2RequestNetworkPolicyCase1Subnets as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1Subnets>;
-
 export interface CreateSandboxesV4RequestNetworkPolicyCase1 {
   allow?: CreateSandboxesV4RequestNetworkPolicyCase1Allow;
   subnets?: CreateSandboxesV4RequestNetworkPolicyCase1Subnets;
 }
-export const CreateSandboxesV4RequestNetworkPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(CreateSandboxesV4RequestNetworkPolicyCase1Allow),
-    subnets: S.optional(CreateSandboxesV4RequestNetworkPolicyCase1Subnets),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV4RequestNetworkPolicyCase1",
-}) as any as S.Schema<CreateSandboxesV4RequestNetworkPolicyCase1>;
-
 export type CreateSandboxesV4RequestNetworkPolicy =
   | CreateSandboxesV4RequestNetworkPolicyCase0
   | CreateSandboxesV4RequestNetworkPolicyCase1;
-export const CreateSandboxesV4RequestNetworkPolicy =
+const CreateSandboxesV4RequestNetworkPolicy =
   S.Unknown as any as S.Schema<CreateSandboxesV4RequestNetworkPolicy>;
 
 /** CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access. */
 export type CreateSandboxesV4RequestArchitecture = "amd64" | "arm64";
-export const CreateSandboxesV4RequestArchitecture = S.String;
+const CreateSandboxesV4RequestArchitecture = S.String;
 
 /** Resources to define the VM */
 export type CreateSandboxesV4RequestResources = CreateSandboxesByNameForkV2RequestResources;
-export const CreateSandboxesV4RequestResources = CreateSandboxesByNameForkV2RequestResources;
-
 /** Clone a Git repository into the sandbox. */
 export type CreateSandboxesV4RequestSourceCase0 = CreateSandboxesV2RequestSourceCase0;
-export const CreateSandboxesV4RequestSourceCase0 = CreateSandboxesV2RequestSourceCase0;
-
 /** Download and extract a gzipped tarball into the sandbox. */
 export type CreateSandboxesV4RequestSourceCase1 = CreateSandboxesV2RequestSourceCase1;
-export const CreateSandboxesV4RequestSourceCase1 = CreateSandboxesV2RequestSourceCase1;
-
 /** Restore the sandbox filesystem from an existing snapshot. */
 export type CreateSandboxesV4RequestSourceCase2 = CreateSandboxesV2RequestSourceCase2;
-export const CreateSandboxesV4RequestSourceCase2 = CreateSandboxesV2RequestSourceCase2;
-
 /** The source from which to initialize the sandbox filesystem. Can be a Git repository, a tarball URL, or an existing snapshot. */
 export type CreateSandboxesV4RequestSource =
   | CreateSandboxesV2RequestSourceCase0
   | CreateSandboxesV2RequestSourceCase1
   | CreateSandboxesV2RequestSourceCase2;
-export const CreateSandboxesV4RequestSource =
-  S.Unknown as any as S.Schema<CreateSandboxesV4RequestSource>;
+const CreateSandboxesV4RequestSource = S.Unknown as any as S.Schema<CreateSandboxesV4RequestSource>;
 
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesV4RequestPortsList = Array<number>;
-export const CreateSandboxesV4RequestPortsList =
+const CreateSandboxesV4RequestPortsList =
   CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<CreateSandboxesV4RequestPortsList>;
 
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesV4RequestEnvMap = { [key: string]: string | undefined };
-export const CreateSandboxesV4RequestEnvMap =
+const CreateSandboxesV4RequestEnvMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV4RequestEnvMap>;
 
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesV4RequestMountsValueMode = "snapshot" | "read-write";
-export const CreateSandboxesV4RequestMountsValueMode = S.String;
-
 export interface CreateSandboxesV4RequestMountsValue {
   /** Name of the drive to mount. The drive must already exist. */
   drive: string;
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesV4RequestMountsValueMode | (string & {});
 }
-export const CreateSandboxesV4RequestMountsValue =
-  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<CreateSandboxesV4RequestMountsValue>;
-
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesV4RequestMountsMap = {
   [key: string]: CreateSandboxesV4RequestMountsValue | undefined;
 };
-export const CreateSandboxesV4RequestMountsMap =
+const CreateSandboxesV4RequestMountsMap =
   CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV4RequestMountsMap>;
 
 /** The Vercel region in which to create the sandbox. */
@@ -3401,7 +2414,7 @@ export type CreateSandboxesV4RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesV4RequestRegion = S.String;
+const CreateSandboxesV4RequestRegion = S.String;
 
 export type CreateSandboxesV4RequestFailoverRegionsItem =
   | "iad1"
@@ -3423,25 +2436,20 @@ export type CreateSandboxesV4RequestFailoverRegionsItem =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const CreateSandboxesV4RequestFailoverRegionsItem = S.String;
-
 /** The regions the sandbox falls back to when it cannot be created in `region`. */
 export type CreateSandboxesV4RequestFailoverRegionsList = Array<
   CreateSandboxesV4RequestFailoverRegionsItem | (string & {})
 >;
-export const CreateSandboxesV4RequestFailoverRegionsList =
+const CreateSandboxesV4RequestFailoverRegionsList =
   CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV4RequestFailoverRegionsList>;
 
 /** Default snapshot expiration time in milliseconds. Defaults to 7 days. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV4RequestSnapshotExpiration = unknown | number;
-export const CreateSandboxesV4RequestSnapshotExpiration =
+const CreateSandboxesV4RequestSnapshotExpiration =
   S.Unknown as any as S.Schema<CreateSandboxesV4RequestSnapshotExpiration>;
 
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesV4RequestKeepLastSnapshotsCase1Expiration = unknown | number;
-export const CreateSandboxesV4RequestKeepLastSnapshotsCase1Expiration =
-  S.Unknown as any as S.Schema<CreateSandboxesV4RequestKeepLastSnapshotsCase1Expiration>;
-
 export interface CreateSandboxesV4RequestKeepLastSnapshotsCase1 {
   /** Number of most recent snapshots to keep. */
   count: number;
@@ -3450,26 +2458,16 @@ export interface CreateSandboxesV4RequestKeepLastSnapshotsCase1 {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-export const CreateSandboxesV4RequestKeepLastSnapshotsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    expiration: S.optional(CreateSandboxesV4RequestKeepLastSnapshotsCase1Expiration),
-    deleteEvicted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CreateSandboxesV4RequestKeepLastSnapshotsCase1",
-}) as any as S.Schema<CreateSandboxesV4RequestKeepLastSnapshotsCase1>;
-
 /** Protect the N most recent snapshots with different expiration/deletion behavior. Persistent sandboxes default to keeping only the last snapshot (evicted snapshots are deleted). Set to null to disable the limit. */
 export type CreateSandboxesV4RequestKeepLastSnapshots =
   | string
   | CreateSandboxesV4RequestKeepLastSnapshotsCase1;
-export const CreateSandboxesV4RequestKeepLastSnapshots =
+const CreateSandboxesV4RequestKeepLastSnapshots =
   S.Unknown as any as S.Schema<CreateSandboxesV4RequestKeepLastSnapshots>;
 
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesV4RequestTagsMap = { [key: string]: string | undefined };
-export const CreateSandboxesV4RequestTagsMap =
+const CreateSandboxesV4RequestTagsMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV4RequestTagsMap>;
 
 export interface CreateSandboxesV4Request {
@@ -3513,7 +2511,7 @@ export interface CreateSandboxesV4Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesV4RequestTagsMap;
 }
-export const CreateSandboxesV4Request = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxesV4Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -3539,15 +2537,12 @@ export const CreateSandboxesV4Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSandboxesV4Request" }) as any as S.Schema<CreateSandboxesV4Request>;
 
 export type CreateSandboxesV4ResponseRoutesList = Array<SandboxPublicRoute>;
-export const CreateSandboxesV4ResponseRoutesList =
-  CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<CreateSandboxesV4ResponseRoutesList>;
-
 export interface CreateSandboxesV4Response {
   routes: CreateSandboxesV4ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-export const CreateSandboxesV4Response =
+const CreateSandboxesV4Response =
   CreateSandboxesByNameForkV2Response as any as S.Schema<CreateSandboxesV4Response>;
 
 export interface CreateSessionDirectoryRequest {
@@ -3564,7 +2559,7 @@ export interface CreateSessionDirectoryRequest {
   /** If true, creates parent directories as needed (like `mkdir -p`). If false, fails if parent directories do not exist. */
   recursive?: boolean;
 }
-export const CreateSessionDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -3580,7 +2575,7 @@ export const CreateSessionDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionDirectoryRequest>;
 
 export type CreateSessionDirectoryResponse = unknown;
-export const CreateSessionDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateSessionDirectoryResponse",
@@ -3596,7 +2591,7 @@ export interface DeleteDriveRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteDriveRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDriveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -3628,7 +2623,7 @@ export interface Drive {
   /** Whether this drive is managed by v0 on the customer's behalf. */
   v0?: boolean;
 }
-export const Drive = /*@__PURE__*/ S.suspend(() =>
+const Drive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.Number,
     currentSandboxName: S.optional(S.String),
@@ -3646,7 +2641,7 @@ export const Drive = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDriveResponse {
   drive: Drive;
 }
-export const DeleteDriveResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDriveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     drive: Drive,
   }),
@@ -3664,7 +2659,7 @@ export interface DeleteSandboxRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -3677,7 +2672,7 @@ export const DeleteSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSandboxResponse {
   sandbox: NamedSandbox;
 }
-export const DeleteSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandbox: NamedSandbox,
   }),
@@ -3691,7 +2686,7 @@ export interface DeleteSessionSnapshotRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteSessionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSessionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -3704,7 +2699,7 @@ export const DeleteSessionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteSessionSnapshotResponse {
   snapshot: Snapshot;
 }
-export const DeleteSessionSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSessionSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot: Snapshot,
   }),
@@ -3722,7 +2717,7 @@ export interface ExtendSessionTimeoutRequest {
   /** The amount of time in milliseconds to add to the current timeout. Must be at least 1000ms (1 second). */
   duration: number;
 }
-export const ExtendSessionTimeoutRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtendSessionTimeoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -3738,7 +2733,7 @@ export const ExtendSessionTimeoutRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ExtendSessionTimeoutResponse {
   session: Session;
 }
-export const ExtendSessionTimeoutResponse = /*@__PURE__*/ S.suspend(() =>
+const ExtendSessionTimeoutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: Session,
   }),
@@ -3758,7 +2753,7 @@ export interface GetNamedSandboxRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetNamedSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamedSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -3769,7 +2764,7 @@ export const GetNamedSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetNamedSandboxRequest" }) as any as S.Schema<GetNamedSandboxRequest>;
 
 export type GetNamedSandboxResponseRoutesList = Array<SandboxPublicRoute>;
-export const GetNamedSandboxResponseRoutesList =
+const GetNamedSandboxResponseRoutesList =
   CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<GetNamedSandboxResponseRoutesList>;
 
 export interface GetNamedSandboxResponse {
@@ -3778,7 +2773,7 @@ export interface GetNamedSandboxResponse {
   sandbox: NamedSandbox;
   session: Session;
 }
-export const GetNamedSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamedSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resumed: S.Boolean,
     routes: GetNamedSandboxResponseRoutesList,
@@ -3808,7 +2803,7 @@ export type GetOrCreateDriveRequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const GetOrCreateDriveRequestRegion = S.String;
+const GetOrCreateDriveRequestRegion = S.String;
 
 export interface GetOrCreateDriveRequest {
   /** Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores). */
@@ -3824,7 +2819,7 @@ export interface GetOrCreateDriveRequest {
   /** Region where the drive is stored. Defaults to iad1. */
   region?: GetOrCreateDriveRequestRegion | (string & {});
 }
-export const GetOrCreateDriveRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrCreateDriveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -3838,8 +2833,7 @@ export const GetOrCreateDriveRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetOrCreateDriveResponse {
   drive: Drive;
 }
-export const GetOrCreateDriveResponse =
-  DeleteDriveResponse as any as S.Schema<GetOrCreateDriveResponse>;
+const GetOrCreateDriveResponse = DeleteDriveResponse as any as S.Schema<GetOrCreateDriveResponse>;
 
 export interface GetSessionRequest {
   /** The unique identifier of the session to retrieve. */
@@ -3849,7 +2843,7 @@ export interface GetSessionRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -3858,14 +2852,14 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSessionRequest" }) as any as S.Schema<GetSessionRequest>;
 
 export type GetSessionResponseRoutesList = Array<SandboxPublicRoute>;
-export const GetSessionResponseRoutesList =
+const GetSessionResponseRoutesList =
   CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<GetSessionResponseRoutesList>;
 
 export interface GetSessionResponse {
   routes: GetSessionResponseRoutesList;
   session: Session;
 }
-export const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routes: GetSessionResponseRoutesList,
     session: Session,
@@ -3884,7 +2878,7 @@ export interface GetSessionCommandRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     cmdId: S.String.pipe(T.Label()),
@@ -3898,7 +2892,7 @@ export const GetSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The arguments of the command. */
 export type SessionCommandArgsList = Array<string>;
-export const SessionCommandArgsList =
+const SessionCommandArgsList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SessionCommandArgsList>;
 
 /** This object represents a command run in a Vercel Sandbox session (v2 API). */
@@ -3920,7 +2914,7 @@ export interface SessionCommand {
   /** When the command was started, in milliseconds since the epoch. */
   startedAt: number;
 }
-export const SessionCommand = /*@__PURE__*/ S.suspend(() =>
+const SessionCommand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: SessionCommandArgsList,
     cwd: S.String,
@@ -3936,7 +2930,7 @@ export const SessionCommand = /*@__PURE__*/ S.suspend(() =>
 export interface GetSessionCommandResponse {
   command: SessionCommand;
 }
-export const GetSessionCommandResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSessionCommandResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: SessionCommand,
   }),
@@ -3954,7 +2948,7 @@ export interface GetSessionCommandLogsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetSessionCommandLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionCommandLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     cmdId: S.String.pipe(T.Label()),
@@ -3972,7 +2966,7 @@ export const GetSessionCommandLogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSessionCommandLogsRequest>;
 
 export interface GetSessionCommandLogsResponse {}
-export const GetSessionCommandLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetSessionCommandLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetSessionCommandLogsResponse",
 }) as any as S.Schema<GetSessionCommandLogsResponse>;
 
@@ -3984,7 +2978,7 @@ export interface GetSessionSnapshotRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetSessionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -3997,7 +2991,7 @@ export const GetSessionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSessionSnapshotResponse {
   snapshot: Snapshot;
 }
-export const GetSessionSnapshotResponse =
+const GetSessionSnapshotResponse =
   DeleteSessionSnapshotResponse as any as S.Schema<GetSessionSnapshotResponse>;
 
 export interface KillSessionCommandRequest {
@@ -4012,7 +3006,7 @@ export interface KillSessionCommandRequest {
   /** The POSIX signal number to send to the process. Common values: 15 (SIGTERM) for graceful termination, 9 (SIGKILL) for forced termination. */
   signal: number;
 }
-export const KillSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const KillSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     cmdId: S.String.pipe(T.Label()),
@@ -4033,16 +3027,16 @@ export const KillSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
 export interface KillSessionCommandResponse {
   command: SessionCommand;
 }
-export const KillSessionCommandResponse =
+const KillSessionCommandResponse =
   GetSessionCommandResponse as any as S.Schema<KillSessionCommandResponse>;
 
 /** Field to sort drives by. */
 export type ListDrivesRequestSortBy = "createdAt" | "updatedAt" | "name";
-export const ListDrivesRequestSortBy = S.String;
+const ListDrivesRequestSortBy = S.String;
 
 /** Sort direction for results. */
 export type ListDrivesRequestSortOrder = "asc" | "desc";
-export const ListDrivesRequestSortOrder = S.String;
+const ListDrivesRequestSortOrder = S.String;
 
 export interface ListDrivesRequest {
   /** The project ID or name associated with the drives. Required unless using a Vercel OIDC token scoped to a project. */
@@ -4062,7 +3056,7 @@ export interface ListDrivesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListDrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -4076,7 +3070,7 @@ export const ListDrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDrivesRequest" }) as any as S.Schema<ListDrivesRequest>;
 
 export type ListDrivesResponseDrivesList = Array<Drive>;
-export const ListDrivesResponseDrivesList = /*@__PURE__*/ S.Array(
+const ListDrivesResponseDrivesList = /*@__PURE__*/ S.Array(
   Drive,
 ) as any as S.Schema<ListDrivesResponseDrivesList>;
 
@@ -4084,7 +3078,7 @@ export interface ListDrivesResponsePagination {
   count: number;
   next: string | null;
 }
-export const ListDrivesResponsePagination = /*@__PURE__*/ S.suspend(() =>
+const ListDrivesResponsePagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.NullOr(S.String),
@@ -4097,7 +3091,7 @@ export interface ListDrivesResponse {
   drives: ListDrivesResponseDrivesList;
   pagination: ListDrivesResponsePagination;
 }
-export const ListDrivesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDrivesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     drives: ListDrivesResponseDrivesList,
     pagination: ListDrivesResponsePagination,
@@ -4110,24 +3104,20 @@ export type ListNamedSandboxesRequestSortBy =
   | "name"
   | "statusUpdatedAt"
   | "currentSnapshotId";
-export const ListNamedSandboxesRequestSortBy = S.String;
+const ListNamedSandboxesRequestSortBy = S.String;
 
 /** Sort direction. Defaults to desc. */
 export type ListNamedSandboxesRequestSortOrder = "asc" | "desc";
-export const ListNamedSandboxesRequestSortOrder = S.String;
+const ListNamedSandboxesRequestSortOrder = S.String;
 
 /** Filter named sandboxes by status. Only valid when sortBy is createdAt. */
 export type ListNamedSandboxesRequestStatus = "running" | "stopping" | "stopped";
-export const ListNamedSandboxesRequestStatus = S.String;
+const ListNamedSandboxesRequestStatus = S.String;
 
 export type ListNamedSandboxesRequestTagsCase1List = Array<string>;
-export const ListNamedSandboxesRequestTagsCase1List =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<ListNamedSandboxesRequestTagsCase1List>;
-
 /** Filter sandboxes by tag. Format: \"key:value\". Only one tag filter is supported at a time. */
 export type ListNamedSandboxesRequestTags = string | ListNamedSandboxesRequestTagsCase1List;
-export const ListNamedSandboxesRequestTags =
-  S.Unknown as any as S.Schema<ListNamedSandboxesRequestTags>;
+const ListNamedSandboxesRequestTags = S.Unknown as any as S.Schema<ListNamedSandboxesRequestTags>;
 
 export interface ListNamedSandboxesRequest {
   /** The unique identifier or name of the project to list named sandboxes for. */
@@ -4151,7 +3141,7 @@ export interface ListNamedSandboxesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListNamedSandboxesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamedSandboxesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -4169,10 +3159,8 @@ export const ListNamedSandboxesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamedSandboxesRequest>;
 
 export type ListNamedSandboxesResponsePagination = ListDrivesResponsePagination;
-export const ListNamedSandboxesResponsePagination = ListDrivesResponsePagination;
-
 export type ListNamedSandboxesResponseSandboxesList = Array<NamedSandbox>;
-export const ListNamedSandboxesResponseSandboxesList = /*@__PURE__*/ S.Array(
+const ListNamedSandboxesResponseSandboxesList = /*@__PURE__*/ S.Array(
   NamedSandbox,
 ) as any as S.Schema<ListNamedSandboxesResponseSandboxesList>;
 
@@ -4180,7 +3168,7 @@ export interface ListNamedSandboxesResponse {
   pagination: ListDrivesResponsePagination;
   sandboxes: ListNamedSandboxesResponseSandboxesList;
 }
-export const ListNamedSandboxesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamedSandboxesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListDrivesResponsePagination,
     sandboxes: ListNamedSandboxesResponseSandboxesList,
@@ -4197,7 +3185,7 @@ export interface ListSessionCommandsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListSessionCommandsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSessionCommandsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -4208,14 +3196,14 @@ export const ListSessionCommandsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSessionCommandsRequest>;
 
 export type ListSessionCommandsResponseCommandsList = Array<SessionCommand>;
-export const ListSessionCommandsResponseCommandsList = /*@__PURE__*/ S.Array(
+const ListSessionCommandsResponseCommandsList = /*@__PURE__*/ S.Array(
   SessionCommand,
 ) as any as S.Schema<ListSessionCommandsResponseCommandsList>;
 
 export interface ListSessionCommandsResponse {
   commands: ListSessionCommandsResponseCommandsList;
 }
-export const ListSessionCommandsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSessionCommandsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commands: ListSessionCommandsResponseCommandsList,
   }),
@@ -4225,7 +3213,7 @@ export const ListSessionCommandsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort direction for results by creation time. */
 export type ListSessionsRequestSortOrder = "asc" | "desc";
-export const ListSessionsRequestSortOrder = S.String;
+const ListSessionsRequestSortOrder = S.String;
 
 export interface ListSessionsRequest {
   /** The unique identifier or name of the project to list sessions for. */
@@ -4243,7 +3231,7 @@ export interface ListSessionsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
@@ -4256,37 +3244,22 @@ export const ListSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSessionsRequest" }) as any as S.Schema<ListSessionsRequest>;
 
 export type ListSessionsResponseBodyCase1Pagination = ListDrivesResponsePagination;
-export const ListSessionsResponseBodyCase1Pagination = ListDrivesResponsePagination;
-
 export type ListSessionsResponseBodyCase1SessionsList = Array<Session>;
-export const ListSessionsResponseBodyCase1SessionsList = /*@__PURE__*/ S.Array(
-  Session,
-) as any as S.Schema<ListSessionsResponseBodyCase1SessionsList>;
-
 export interface ListSessionsResponseBodyCase1 {
   pagination: ListDrivesResponsePagination;
   sessions: ListSessionsResponseBodyCase1SessionsList;
 }
-export const ListSessionsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pagination: ListDrivesResponsePagination,
-    sessions: ListSessionsResponseBodyCase1SessionsList,
-  }),
-).annotate({
-  identifier: "ListSessionsResponseBodyCase1",
-}) as any as S.Schema<ListSessionsResponseBodyCase1>;
-
 export type ListSessionsResponseBody = unknown | ListSessionsResponseBodyCase1;
-export const ListSessionsResponseBody = S.Unknown as any as S.Schema<ListSessionsResponseBody>;
+const ListSessionsResponseBody = S.Unknown as any as S.Schema<ListSessionsResponseBody>;
 
 export type ListSessionsResponse = ListSessionsResponseBody;
-export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSessionsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSessionsResponse" }) as any as S.Schema<ListSessionsResponse>;
 
 /** Sort direction for results by creation time. */
 export type ListSessionSnapshotsRequestSortOrder = "asc" | "desc";
-export const ListSessionSnapshotsRequestSortOrder = S.String;
+const ListSessionSnapshotsRequestSortOrder = S.String;
 
 export interface ListSessionSnapshotsRequest {
   /** The unique identifier or name of the project to list snapshots for. */
@@ -4304,7 +3277,7 @@ export interface ListSessionSnapshotsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListSessionSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSessionSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
@@ -4319,32 +3292,17 @@ export const ListSessionSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSessionSnapshotsRequest>;
 
 export type ListSessionSnapshotsResponseBodyCase1Pagination = ListDrivesResponsePagination;
-export const ListSessionSnapshotsResponseBodyCase1Pagination = ListDrivesResponsePagination;
-
 export type ListSessionSnapshotsResponseBodyCase1SnapshotsList = Array<Snapshot>;
-export const ListSessionSnapshotsResponseBodyCase1SnapshotsList = /*@__PURE__*/ S.Array(
-  Snapshot,
-) as any as S.Schema<ListSessionSnapshotsResponseBodyCase1SnapshotsList>;
-
 export interface ListSessionSnapshotsResponseBodyCase1 {
   pagination: ListDrivesResponsePagination;
   snapshots: ListSessionSnapshotsResponseBodyCase1SnapshotsList;
 }
-export const ListSessionSnapshotsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pagination: ListDrivesResponsePagination,
-    snapshots: ListSessionSnapshotsResponseBodyCase1SnapshotsList,
-  }),
-).annotate({
-  identifier: "ListSessionSnapshotsResponseBodyCase1",
-}) as any as S.Schema<ListSessionSnapshotsResponseBodyCase1>;
-
 export type ListSessionSnapshotsResponseBody = unknown | ListSessionSnapshotsResponseBodyCase1;
-export const ListSessionSnapshotsResponseBody =
+const ListSessionSnapshotsResponseBody =
   S.Unknown as any as S.Schema<ListSessionSnapshotsResponseBody>;
 
 export type ListSessionSnapshotsResponse = ListSessionSnapshotsResponseBody;
-export const ListSessionSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSessionSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSessionSnapshotsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSessionSnapshotsResponse",
@@ -4362,7 +3320,7 @@ export interface ReadSessionFileRequest {
   /** The path of the file to read. Can be absolute or relative to the working directory. */
   path: string;
 }
-export const ReadSessionFileRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadSessionFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -4373,17 +3331,17 @@ export const ReadSessionFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadSessionFileRequest" }) as any as S.Schema<ReadSessionFileRequest>;
 
 export interface ReadSessionFileResponse {}
-export const ReadSessionFileResponse =
+const ReadSessionFileResponse =
   GetSessionCommandLogsResponse as any as S.Schema<ReadSessionFileResponse>;
 
 /** Arguments to pass to the command. Each argument should be a separate array element. */
 export type RunSessionCommandRequestArgsList = Array<string>;
-export const RunSessionCommandRequestArgsList =
+const RunSessionCommandRequestArgsList =
   NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<RunSessionCommandRequestArgsList>;
 
 /** Additional environment variables to set for this command. These are merged with the sandbox environment. */
 export type RunSessionCommandRequestEnvMap = { [key: string]: string | undefined };
-export const RunSessionCommandRequestEnvMap =
+const RunSessionCommandRequestEnvMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<RunSessionCommandRequestEnvMap>;
 
 export interface RunSessionCommandRequest {
@@ -4412,7 +3370,7 @@ export interface RunSessionCommandRequest {
   /** Maximum duration in milliseconds the command may run before it is killed with SIGKILL, up to 5 hours. Enforced at exec time, independently of `wait`. */
   timeout?: number;
 }
-export const RunSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const RunSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     cmdId: S.String.pipe(T.Query()),
@@ -4432,7 +3390,7 @@ export const RunSessionCommandRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RunSessionCommandResponse {
   command: SessionCommand;
 }
-export const RunSessionCommandResponse =
+const RunSessionCommandResponse =
   GetSessionCommandResponse as any as S.Schema<RunSessionCommandResponse>;
 
 export interface StopSessionRequest {
@@ -4443,7 +3401,7 @@ export interface StopSessionRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const StopSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const StopSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -4454,50 +3412,32 @@ export const StopSessionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopSessionResponseBodyCase0 {
   session: Session;
 }
-export const StopSessionResponseBodyCase0 =
-  ExtendSessionTimeoutResponse as any as S.Schema<StopSessionResponseBodyCase0>;
-
 export interface StopSessionResponseBodyCase1 {
   sandbox: NamedSandbox;
   session: Session;
   snapshot: Snapshot;
 }
-export const StopSessionResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sandbox: NamedSandbox,
-    session: Session,
-    snapshot: Snapshot,
-  }),
-).annotate({
-  identifier: "StopSessionResponseBodyCase1",
-}) as any as S.Schema<StopSessionResponseBodyCase1>;
-
 export type StopSessionResponseBody = StopSessionResponseBodyCase0 | StopSessionResponseBodyCase1;
-export const StopSessionResponseBody = S.Unknown as any as S.Schema<StopSessionResponseBody>;
+const StopSessionResponseBody = S.Unknown as any as S.Schema<StopSessionResponseBody>;
 
 export type StopSessionResponse = StopSessionResponseBody;
-export const StopSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const StopSessionResponse = /*@__PURE__*/ S.suspend(() =>
   StopSessionResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "StopSessionResponse" }) as any as S.Schema<StopSessionResponse>;
 
 /** Resources to define the VM */
 export type UpdateSandboxRequestResources = CreateSandboxesByNameForkV2RequestResources;
-export const UpdateSandboxRequestResources = CreateSandboxesByNameForkV2RequestResources;
-
 /** The runtime environment for the sandbox. Determines the pre-installed language runtimes and tools available. */
 export type UpdateSandboxRequestRuntime = "node22" | "node24" | "node26" | "python3.13";
-export const UpdateSandboxRequestRuntime = S.String;
+const UpdateSandboxRequestRuntime = S.String;
 
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type UpdateSandboxRequestSnapshotExpiration = unknown | number;
-export const UpdateSandboxRequestSnapshotExpiration =
+const UpdateSandboxRequestSnapshotExpiration =
   S.Unknown as any as S.Schema<UpdateSandboxRequestSnapshotExpiration>;
 
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type UpdateSandboxRequestKeepLastSnapshotsCase1Expiration = unknown | number;
-export const UpdateSandboxRequestKeepLastSnapshotsCase1Expiration =
-  S.Unknown as any as S.Schema<UpdateSandboxRequestKeepLastSnapshotsCase1Expiration>;
-
 export interface UpdateSandboxRequestKeepLastSnapshotsCase1 {
   /** Number of most recent snapshots to keep. */
   count: number;
@@ -4506,21 +3446,11 @@ export interface UpdateSandboxRequestKeepLastSnapshotsCase1 {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-export const UpdateSandboxRequestKeepLastSnapshotsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    expiration: S.optional(UpdateSandboxRequestKeepLastSnapshotsCase1Expiration),
-    deleteEvicted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UpdateSandboxRequestKeepLastSnapshotsCase1",
-}) as any as S.Schema<UpdateSandboxRequestKeepLastSnapshotsCase1>;
-
 /** Protect the N most recent snapshots with different expiration/deletion behavior. Set to null to clear. */
 export type UpdateSandboxRequestKeepLastSnapshots =
   | string
   | UpdateSandboxRequestKeepLastSnapshotsCase1;
-export const UpdateSandboxRequestKeepLastSnapshots =
+const UpdateSandboxRequestKeepLastSnapshots =
   S.Unknown as any as S.Schema<UpdateSandboxRequestKeepLastSnapshots>;
 
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -4530,87 +3460,43 @@ export type UpdateSandboxRequestNetworkPolicyCase0Mode =
   | "custom"
   | "default-allow"
   | "default-deny";
-export const UpdateSandboxRequestNetworkPolicyCase0Mode = S.String;
-
 /** List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains). */
 export type UpdateSandboxRequestNetworkPolicyCase0AllowedDomainsList = Array<string>;
-export const UpdateSandboxRequestNetworkPolicyCase0AllowedDomainsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0AllowedDomainsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions. */
 export type UpdateSandboxRequestNetworkPolicyCase0AllowedCIDRsList = Array<string>;
-export const UpdateSandboxRequestNetworkPolicyCase0AllowedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0AllowedCIDRsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type UpdateSandboxRequestNetworkPolicyCase0DeniedCIDRsList = Array<string>;
-export const UpdateSandboxRequestNetworkPolicyCase0DeniedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0DeniedCIDRsList>;
-
 /** HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden. */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemHeadersMap>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchMethodList = Array<string>;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -4622,22 +3508,6 @@ export interface UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatch {
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList;
 }
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath,
-      ),
-      method: S.optional(UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchMethodList),
-      queryString: S.optional(
-        UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList,
-      ),
-      headers: S.optional(UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatchHeadersList),
-    }),
-  ).annotate({
-    identifier: "UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatch",
-  }) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatch>;
-
 export interface UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItem {
   /** The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com. */
   domain: string;
@@ -4646,24 +3516,9 @@ export interface UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatch;
 }
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      domain: S.String,
-      headers: UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemHeadersMap,
-      match: S.optional(UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItemMatch),
-    }),
-).annotate({
-  identifier: "UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItem",
-}) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItem>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
 export type UpdateSandboxRequestNetworkPolicyCase0InjectionRulesList =
   Array<UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItem>;
-export const UpdateSandboxRequestNetworkPolicyCase0InjectionRulesList = /*@__PURE__*/ S.Array(
-  UpdateSandboxRequestNetworkPolicyCase0InjectionRulesItem,
-) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0InjectionRulesList>;
-
 /** Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules. */
 export interface UpdateSandboxRequestNetworkPolicyCase0 {
   /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -4677,80 +3532,35 @@ export interface UpdateSandboxRequestNetworkPolicyCase0 {
   /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
   injectionRules?: UpdateSandboxRequestNetworkPolicyCase0InjectionRulesList;
 }
-export const UpdateSandboxRequestNetworkPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: UpdateSandboxRequestNetworkPolicyCase0Mode,
-    allowedDomains: S.optional(UpdateSandboxRequestNetworkPolicyCase0AllowedDomainsList),
-    allowedCIDRs: S.optional(UpdateSandboxRequestNetworkPolicyCase0AllowedCIDRsList),
-    deniedCIDRs: S.optional(UpdateSandboxRequestNetworkPolicyCase0DeniedCIDRsList),
-    injectionRules: S.optional(UpdateSandboxRequestNetworkPolicyCase0InjectionRulesList),
-  }),
-).annotate({
-  identifier: "UpdateSandboxRequestNetworkPolicyCase0",
-}) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase0>;
-
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase0List = Array<string>;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase0List =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase0List>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
   Array<string>;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -4762,48 +3572,18 @@ export interface UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatch 
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList;
 }
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      path: S.optional(
-        CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath,
-      ),
-      method: S.optional(UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchMethodList),
-      queryString: S.optional(
-        UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchQueryStringList,
-      ),
-      headers: S.optional(
-        UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatchHeadersList,
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatch",
-  }) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatch>;
-
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap>;
-
 export interface UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformItem {
   headers?: UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformItemHeadersMap;
 }
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformItem =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
   Array<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformItem>;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformList =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformList>;
-
 /** HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set. */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemResponseHeadersMap>;
-
 /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
 export interface UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemResponse {
   /** HTTP status code returned to the sandbox. */
@@ -4815,9 +3595,6 @@ export interface UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemRespon
   /** Value of the `Content-Type` response header. Required when `body` is set. */
   contentType?: string;
 }
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemResponse =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemResponse>;
-
 export interface UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatch;
@@ -4827,71 +3604,29 @@ export interface UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItem {
   /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
   response?: UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemResponse;
 }
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      match: S.optional(UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemMatch),
-      transform: S.optional(UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemTransformList),
-      forwardURL: S.optional(S.String),
-      response: S.optional(UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItemResponse),
-    }),
-).annotate({
-  identifier: "UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItem",
-}) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItem>;
-
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueList =
   Array<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItem>;
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueList = /*@__PURE__*/ S.Array(
-  UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueItem,
-) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueList>;
-
 /** A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule. */
 export type UpdateSandboxRequestNetworkPolicyCase1AllowCase1Map = {
   [key: string]: UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueList | undefined;
 };
-export const UpdateSandboxRequestNetworkPolicyCase1AllowCase1Map = /*@__PURE__*/ S.Record(
-  S.String,
-  UpdateSandboxRequestNetworkPolicyCase1AllowCase1ValueList,
-) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1AllowCase1Map>;
-
 export type UpdateSandboxRequestNetworkPolicyCase1Allow =
   | UpdateSandboxRequestNetworkPolicyCase1AllowCase0List
   | UpdateSandboxRequestNetworkPolicyCase1AllowCase1Map;
-export const UpdateSandboxRequestNetworkPolicyCase1Allow =
-  S.Unknown as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1Allow>;
-
 export type UpdateSandboxRequestNetworkPolicyCase1SubnetsAllowList = Array<string>;
-export const UpdateSandboxRequestNetworkPolicyCase1SubnetsAllowList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1SubnetsAllowList>;
-
 export type UpdateSandboxRequestNetworkPolicyCase1SubnetsDenyList = Array<string>;
-export const UpdateSandboxRequestNetworkPolicyCase1SubnetsDenyList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1SubnetsDenyList>;
-
 export interface UpdateSandboxRequestNetworkPolicyCase1Subnets {
   allow?: UpdateSandboxRequestNetworkPolicyCase1SubnetsAllowList;
   deny?: UpdateSandboxRequestNetworkPolicyCase1SubnetsDenyList;
 }
-export const UpdateSandboxRequestNetworkPolicyCase1Subnets =
-  CreateSandboxesV2RequestNetworkPolicyCase1Subnets as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1Subnets>;
-
 export interface UpdateSandboxRequestNetworkPolicyCase1 {
   allow?: UpdateSandboxRequestNetworkPolicyCase1Allow;
   subnets?: UpdateSandboxRequestNetworkPolicyCase1Subnets;
 }
-export const UpdateSandboxRequestNetworkPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(UpdateSandboxRequestNetworkPolicyCase1Allow),
-    subnets: S.optional(UpdateSandboxRequestNetworkPolicyCase1Subnets),
-  }),
-).annotate({
-  identifier: "UpdateSandboxRequestNetworkPolicyCase1",
-}) as any as S.Schema<UpdateSandboxRequestNetworkPolicyCase1>;
-
 export type UpdateSandboxRequestNetworkPolicy =
   | UpdateSandboxRequestNetworkPolicyCase0
   | UpdateSandboxRequestNetworkPolicyCase1;
-export const UpdateSandboxRequestNetworkPolicy =
+const UpdateSandboxRequestNetworkPolicy =
   S.Unknown as any as S.Schema<UpdateSandboxRequestNetworkPolicy>;
 
 /** The Vercel region in which to create the sandbox. */
@@ -4915,7 +3650,7 @@ export type UpdateSandboxRequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const UpdateSandboxRequestRegion = S.String;
+const UpdateSandboxRequestRegion = S.String;
 
 export type UpdateSandboxRequestFailoverRegionsItem =
   | "iad1"
@@ -4937,48 +3672,41 @@ export type UpdateSandboxRequestFailoverRegionsItem =
   | "yul1"
   | "hnd1"
   | "kix1";
-export const UpdateSandboxRequestFailoverRegionsItem = S.String;
-
 /** The regions the sandbox falls back to when it cannot be created in `region`. */
 export type UpdateSandboxRequestFailoverRegionsList = Array<
   UpdateSandboxRequestFailoverRegionsItem | (string & {})
 >;
-export const UpdateSandboxRequestFailoverRegionsList =
+const UpdateSandboxRequestFailoverRegionsList =
   CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<UpdateSandboxRequestFailoverRegionsList>;
 
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type UpdateSandboxRequestMountsValueMode = "snapshot" | "read-write";
-export const UpdateSandboxRequestMountsValueMode = S.String;
-
 export interface UpdateSandboxRequestMountsValue {
   /** Name of the drive to mount. The drive must already exist. */
   drive: string;
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: UpdateSandboxRequestMountsValueMode | (string & {});
 }
-export const UpdateSandboxRequestMountsValue =
-  CreateSandboxesByNameForkV2RequestMountsValue as any as S.Schema<UpdateSandboxRequestMountsValue>;
-
 /** Drives to mount to the sandbox at the provided path. Replaces the current mounts; an empty object removes them all. Changes take effect when the next session starts. */
 export type UpdateSandboxRequestMountsMap = {
   [key: string]: UpdateSandboxRequestMountsValue | undefined;
 };
-export const UpdateSandboxRequestMountsMap =
+const UpdateSandboxRequestMountsMap =
   CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<UpdateSandboxRequestMountsMap>;
 
 /** Default environment variables for the sandbox. Set to empty object to clear. */
 export type UpdateSandboxRequestEnvMap = { [key: string]: string | undefined };
-export const UpdateSandboxRequestEnvMap =
+const UpdateSandboxRequestEnvMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<UpdateSandboxRequestEnvMap>;
 
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type UpdateSandboxRequestPortsList = Array<number>;
-export const UpdateSandboxRequestPortsList =
+const UpdateSandboxRequestPortsList =
   CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<UpdateSandboxRequestPortsList>;
 
 /** Key-value tags to associate with the sandbox. Replaces existing tags. Set to empty object to clear. Maximum 5 tags. */
 export type UpdateSandboxRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSandboxRequestTagsMap =
+const UpdateSandboxRequestTagsMap =
   CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<UpdateSandboxRequestTagsMap>;
 
 export interface UpdateSandboxRequest {
@@ -5022,7 +3750,7 @@ export interface UpdateSandboxRequest {
   /** Key-value tags to associate with the sandbox. Replaces existing tags. Set to empty object to clear. Maximum 5 tags. */
   tags?: UpdateSandboxRequestTagsMap;
 }
-export const UpdateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -5048,50 +3776,24 @@ export const UpdateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSandboxRequest" }) as any as S.Schema<UpdateSandboxRequest>;
 
 export type UpdateSandboxResponseBodyCase0RoutesList = Array<SandboxPublicRoute>;
-export const UpdateSandboxResponseBodyCase0RoutesList =
-  CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<UpdateSandboxResponseBodyCase0RoutesList>;
-
 export interface UpdateSandboxResponseBodyCase0 {
   routes: UpdateSandboxResponseBodyCase0RoutesList;
   sandbox: NamedSandbox;
 }
-export const UpdateSandboxResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    routes: UpdateSandboxResponseBodyCase0RoutesList,
-    sandbox: NamedSandbox,
-  }),
-).annotate({
-  identifier: "UpdateSandboxResponseBodyCase0",
-}) as any as S.Schema<UpdateSandboxResponseBodyCase0>;
-
 export type UpdateSandboxResponseBodyCase1RoutesList = Array<SandboxPublicRoute>;
-export const UpdateSandboxResponseBodyCase1RoutesList =
-  CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<UpdateSandboxResponseBodyCase1RoutesList>;
-
 export interface UpdateSandboxResponseBodyCase1 {
   resumed: boolean;
   routes: UpdateSandboxResponseBodyCase1RoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-export const UpdateSandboxResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resumed: S.Boolean,
-    routes: UpdateSandboxResponseBodyCase1RoutesList,
-    sandbox: NamedSandbox,
-    session: Session,
-  }),
-).annotate({
-  identifier: "UpdateSandboxResponseBodyCase1",
-}) as any as S.Schema<UpdateSandboxResponseBodyCase1>;
-
 export type UpdateSandboxResponseBody =
   | UpdateSandboxResponseBodyCase0
   | UpdateSandboxResponseBodyCase1;
-export const UpdateSandboxResponseBody = S.Unknown as any as S.Schema<UpdateSandboxResponseBody>;
+const UpdateSandboxResponseBody = S.Unknown as any as S.Schema<UpdateSandboxResponseBody>;
 
 export type UpdateSandboxResponse = UpdateSandboxResponseBody;
-export const UpdateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateSandboxResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "UpdateSandboxResponse" }) as any as S.Schema<UpdateSandboxResponse>;
 
@@ -5102,88 +3804,44 @@ export type UpdateSessionNetworkPolicyRequestBodyCase0Mode =
   | "custom"
   | "default-allow"
   | "default-deny";
-export const UpdateSessionNetworkPolicyRequestBodyCase0Mode = S.String;
-
 /** List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains). */
 export type UpdateSessionNetworkPolicyRequestBodyCase0AllowedDomainsList = Array<string>;
-export const UpdateSessionNetworkPolicyRequestBodyCase0AllowedDomainsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0AllowedDomainsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. Traffic to these addresses bypasses domain-based restrictions. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0AllowedCIDRsList = Array<string>;
-export const UpdateSessionNetworkPolicyRequestBodyCase0AllowedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0AllowedCIDRsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0DeniedCIDRsList = Array<string>;
-export const UpdateSessionNetworkPolicyRequestBodyCase0DeniedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0DeniedCIDRsList>;
-
 /** HTTP headers to inject into requests for this domain. Existing headers with the same name will be overridden. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemHeadersMap>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchMethodList =
   Array<string>;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -5195,9 +3853,6 @@ export interface UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMat
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatchHeadersList;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatch>;
-
 export interface UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItem {
   /** The domain (or pattern) of requests to add headers for. Supports wildcards like *.example.com. */
   domain: string;
@@ -5206,15 +3861,9 @@ export interface UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItemMatch;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItem =
-  CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesItem as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItem>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesList =
   Array<UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesItem>;
-export const UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesList =
-  CreateSandboxesV2RequestNetworkPolicyCase0InjectionRulesList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesList>;
-
 /** Network access policy for the sandbox.\n Controls which external hosts the sandbox can communicate with.\n Use \"allow-all\" mode to allow all traffic, \"deny-all\" to block all traffic or \"custom\" to provide specific rules. */
 export interface UpdateSessionNetworkPolicyRequestBodyCase0 {
   /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
@@ -5228,80 +3877,35 @@ export interface UpdateSessionNetworkPolicyRequestBodyCase0 {
   /** HTTP header injection rules for outgoing requests matching specific domains. Traffic to matching domains will be intercepted instead of proxied through encrypted connections. */
   injectionRules?: UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesList;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: UpdateSessionNetworkPolicyRequestBodyCase0Mode,
-    allowedDomains: S.optional(UpdateSessionNetworkPolicyRequestBodyCase0AllowedDomainsList),
-    allowedCIDRs: S.optional(UpdateSessionNetworkPolicyRequestBodyCase0AllowedCIDRsList),
-    deniedCIDRs: S.optional(UpdateSessionNetworkPolicyRequestBodyCase0DeniedCIDRsList),
-    injectionRules: S.optional(UpdateSessionNetworkPolicyRequestBodyCase0InjectionRulesList),
-  }),
-).annotate({
-  identifier: "UpdateSessionNetworkPolicyRequestBodyCase0",
-}) as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase0>;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase0List = Array<string>;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase0List =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase0List>;
-
 /** Match on the request path. Comparison is case-sensitive. */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchPath =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchPath =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** HTTP methods to match. Any single match succeeds (OR semantics). */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchMethodList =
   Array<string>;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchMethodList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0AllowedDomainsList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchMethodList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Query-string entry matchers. Multiple entries are ANDed. Query parameter names and values are both compared case-sensitively (RFC 3986). When a request has multiple values for the same key, any matching value satisfies the matcher. */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchQueryStringList>;
-
 /** Matcher for the entry key (header name or query key). */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersItemKey =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersItemKey =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 /** Matcher for the entry value. */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersItemValue =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersItemValue =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchPath;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersItem =
   CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersItem =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem;
-
 /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersList =
   Array<CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringItem>;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersList =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatchQueryStringList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersList>;
-
 /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
 export interface UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatch {
   /** Match on the request path. Comparison is case-sensitive. */
@@ -5313,33 +3917,18 @@ export interface UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMa
   /** Header matchers. Multiple entries are ANDed. Header names are compared case-insensitively (RFC 9110); header values are compared case-sensitively. When a request has multiple values for the same header, any matching value satisfies the matcher. */
   headers?: UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatchHeadersList;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatch =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemMatch as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatch>;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformItemHeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformItemHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformItemHeadersMap>;
-
 export interface UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformItem {
   headers?: UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformItemHeadersMap;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformItem =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformItem as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformItem>;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformList =
   Array<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformItem>;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformList =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItemTransformList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemTransformList>;
-
 /** HTTP response headers. Framing and hop-by-hop headers are managed by the proxy and cannot be set. */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemResponseHeadersMap = {
   [key: string]: string | undefined;
 };
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemResponseHeadersMap =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase0InjectionRulesItemHeadersMap as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemResponseHeadersMap>;
-
 /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
 export interface UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemResponse {
   /** HTTP status code returned to the sandbox. */
@@ -5351,9 +3940,6 @@ export interface UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemRe
   /** Value of the `Content-Type` response header. Required when `body` is set. */
   contentType?: string;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemResponse =
-  CreateSandboxesByNameForkV2RequestNetworkPolicyCase1AllowCase1ValueItemResponse as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemResponse>;
-
 export interface UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItem {
   /** Optional L7 match. When provided, the injection rule only applies to requests that satisfy every specified dimension. When multiple injection rules target the same domain they are evaluated in order and the first match wins; a rule without `match` matches any request and shadows later rules for the same domain. */
   match?: UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemMatch;
@@ -5363,59 +3949,29 @@ export interface UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItem {
   /** Answer matching requests from the proxy with this response instead of forwarding them to the origin. Combine with a `match` on an earlier rule to allow one sub-path and reject the rest of a domain. */
   response?: UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItemResponse;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItem =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueItem as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItem>;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueList =
   Array<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueItem>;
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueList =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1ValueList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueList>;
-
 /** A rule applied to requests matching a domain in the network policy. Only one of `transform`, `forwardURL`, or `response` can be specified per rule. */
 export type UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1Map = {
   [key: string]: UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1ValueList | undefined;
 };
-export const UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1Map =
-  CreateSandboxesV2RequestNetworkPolicyCase1AllowCase1Map as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1Map>;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1Allow =
   | UpdateSessionNetworkPolicyRequestBodyCase1AllowCase0List
   | UpdateSessionNetworkPolicyRequestBodyCase1AllowCase1Map;
-export const UpdateSessionNetworkPolicyRequestBodyCase1Allow =
-  S.Unknown as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1Allow>;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1SubnetsAllowList = Array<string>;
-export const UpdateSessionNetworkPolicyRequestBodyCase1SubnetsAllowList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1SubnetsAllowList>;
-
 export type UpdateSessionNetworkPolicyRequestBodyCase1SubnetsDenyList = Array<string>;
-export const UpdateSessionNetworkPolicyRequestBodyCase1SubnetsDenyList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1SubnetsDenyList>;
-
 export interface UpdateSessionNetworkPolicyRequestBodyCase1Subnets {
   allow?: UpdateSessionNetworkPolicyRequestBodyCase1SubnetsAllowList;
   deny?: UpdateSessionNetworkPolicyRequestBodyCase1SubnetsDenyList;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase1Subnets =
-  CreateSandboxesV2RequestNetworkPolicyCase1Subnets as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1Subnets>;
-
 export interface UpdateSessionNetworkPolicyRequestBodyCase1 {
   allow?: UpdateSessionNetworkPolicyRequestBodyCase1Allow;
   subnets?: UpdateSessionNetworkPolicyRequestBodyCase1Subnets;
 }
-export const UpdateSessionNetworkPolicyRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(UpdateSessionNetworkPolicyRequestBodyCase1Allow),
-    subnets: S.optional(UpdateSessionNetworkPolicyRequestBodyCase1Subnets),
-  }),
-).annotate({
-  identifier: "UpdateSessionNetworkPolicyRequestBodyCase1",
-}) as any as S.Schema<UpdateSessionNetworkPolicyRequestBodyCase1>;
-
 export type UpdateSessionNetworkPolicyRequestBody =
   | UpdateSessionNetworkPolicyRequestBodyCase0
   | UpdateSessionNetworkPolicyRequestBodyCase1;
-export const UpdateSessionNetworkPolicyRequestBody =
+const UpdateSessionNetworkPolicyRequestBody =
   S.Unknown as any as S.Schema<UpdateSessionNetworkPolicyRequestBody>;
 
 export interface UpdateSessionNetworkPolicyRequest {
@@ -5427,7 +3983,7 @@ export interface UpdateSessionNetworkPolicyRequest {
   slug?: string;
   body?: UpdateSessionNetworkPolicyRequestBody;
 }
-export const UpdateSessionNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSessionNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -5443,7 +3999,7 @@ export const UpdateSessionNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSessionNetworkPolicyResponse {
   session: Session;
 }
-export const UpdateSessionNetworkPolicyResponse =
+const UpdateSessionNetworkPolicyResponse =
   ExtendSessionTimeoutResponse as any as S.Schema<UpdateSessionNetworkPolicyResponse>;
 
 export interface WriteSessionFilesRequest {
@@ -5456,7 +4012,7 @@ export interface WriteSessionFilesRequest {
   /** The target directory where the tarball contents will be extracted. If not specified, files are extracted to the sandbox home directory. */
   xCwd?: string;
 }
-export const WriteSessionFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteSessionFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -5468,7 +4024,7 @@ export const WriteSessionFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WriteSessionFilesRequest" }) as any as S.Schema<WriteSessionFilesRequest>;
 
 export type WriteSessionFilesResponse = unknown;
-export const WriteSessionFilesResponse =
+const WriteSessionFilesResponse =
   CreateSessionDirectoryResponse as any as S.Schema<WriteSessionFilesResponse>;
 
 export type CreateSandboxesByNameForkV2Error =

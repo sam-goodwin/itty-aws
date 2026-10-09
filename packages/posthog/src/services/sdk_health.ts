@@ -13,7 +13,7 @@ export interface GetSdkHealthReportRequest {
   /** When true, bypasses the Redis cache and re-queries ClickHouse for SDK usage. A background job refreshes this data once a day, so the cached answer is usually current. Use sparingly. */
   force_refresh?: boolean;
 }
-export const GetSdkHealthReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSdkHealthReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     force_refresh: S.optional(S.Boolean.pipe(T.Query())),
@@ -26,11 +26,11 @@ export const GetSdkHealthReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `healthy` - healthy * `needs_attention` - needs_attention */
 export type OverallHealthEnum = "healthy" | "needs_attention";
-export const OverallHealthEnum = S.String;
+const OverallHealthEnum = S.String;
 
 /** * `success` - success * `warning` - warning * `danger` - danger */
 export type SdkHealthReportHealthEnum = "success" | "warning" | "danger";
-export const SdkHealthReportHealthEnum = S.String;
+const SdkHealthReportHealthEnum = S.String;
 
 /** * `web` - web * `posthog-ios` - posthog-ios * `posthog-android` - posthog-android * `posthog-java` - posthog-java * `posthog-server` - posthog-server * `posthog-node` - posthog-node * `posthog-python` - posthog-python * `posthog-php` - posthog-php * `posthog-ruby` - posthog-ruby * `posthog-go` - posthog-go * `posthog-flutter` - posthog-flutter * `posthog-react-native` - posthog-react-native * `posthog-kmp` - posthog-kmp * `posthog-dotnet` - posthog-dotnet * `posthog-elixir` - posthog-elixir * `posthog-unity` - posthog-unity * `posthog-node-mcp` - posthog-node-mcp * `posthog-python-mcp` - posthog-python-mcp * `posthog-edge` - posthog-edge * `posthog-convex` - posthog-convex * `posthog-rails` - posthog-rails * `posthog-aspnetcore` - posthog-aspnetcore */
 export type LibEnum =
@@ -56,15 +56,15 @@ export type LibEnum =
   | "posthog-convex"
   | "posthog-rails"
   | "posthog-aspnetcore";
-export const LibEnum = S.String;
+const LibEnum = S.String;
 
 /** * `none` - none * `warning` - warning * `danger` - danger */
 export type SdkAssessmentSeverityEnum = "none" | "warning" | "danger";
-export const SdkAssessmentSeverityEnum = S.String;
+const SdkAssessmentSeverityEnum = S.String;
 
 /** Top-level alert sentences matching the SDK Health UI's 'Time for an update!' banner -- one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users. */
 export type SdkAssessmentBannersList = Array<string>;
-export const SdkAssessmentBannersList = /*@__PURE__*/ S.Array(
+const SdkAssessmentBannersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SdkAssessmentBannersList>;
 
@@ -96,7 +96,7 @@ export interface SdkReleaseAssessment {
   /** Relative URL path (starting with /project/{id}/) for the Activity > Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user's PostHog host (e.g. us.posthog.com) for a clickable link. */
   activity_page_url?: string;
 }
-export const SdkReleaseAssessment = /*@__PURE__*/ S.suspend(() =>
+const SdkReleaseAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     count: S.optional(S.Number),
@@ -116,7 +116,7 @@ export const SdkReleaseAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-version assessment for all versions seen in the last 7 days. */
 export type SdkAssessmentReleasesList = Array<SdkReleaseAssessment>;
-export const SdkAssessmentReleasesList = /*@__PURE__*/ S.Array(
+const SdkAssessmentReleasesList = /*@__PURE__*/ S.Array(
   SdkReleaseAssessment,
 ) as any as S.Schema<SdkAssessmentReleasesList>;
 
@@ -126,7 +126,7 @@ export interface OutdatedTrafficAlert {
   /** Traffic-percentage threshold that triggered the alert (10% for most SDKs, 20% for web). */
   threshold_percent?: number;
 }
-export const OutdatedTrafficAlert = /*@__PURE__*/ S.suspend(() =>
+const OutdatedTrafficAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     threshold_percent: S.optional(S.Number),
@@ -135,7 +135,7 @@ export const OutdatedTrafficAlert = /*@__PURE__*/ S.suspend(() =>
 
 /** Outdated versions that handle a significant share of traffic (above the threshold). Not populated for mobile SDKs. */
 export type SdkAssessmentOutdatedTrafficAlertsList = Array<OutdatedTrafficAlert>;
-export const SdkAssessmentOutdatedTrafficAlertsList = /*@__PURE__*/ S.Array(
+const SdkAssessmentOutdatedTrafficAlertsList = /*@__PURE__*/ S.Array(
   OutdatedTrafficAlert,
 ) as any as S.Schema<SdkAssessmentOutdatedTrafficAlertsList>;
 
@@ -165,7 +165,7 @@ export interface SdkAssessment {
   /** Outdated versions that handle a significant share of traffic (above the threshold). Not populated for mobile SDKs. */
   outdated_traffic_alerts?: SdkAssessmentOutdatedTrafficAlertsList;
 }
-export const SdkAssessment = /*@__PURE__*/ S.suspend(() =>
+const SdkAssessment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lib: S.optional(LibEnum),
     readable_name: S.optional(S.String),
@@ -184,7 +184,7 @@ export const SdkAssessment = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-SDK health assessments. */
 export type SdkHealthReportSdksList = Array<SdkAssessment>;
-export const SdkHealthReportSdksList = /*@__PURE__*/ S.Array(
+const SdkHealthReportSdksList = /*@__PURE__*/ S.Array(
   SdkAssessment,
 ) as any as S.Schema<SdkHealthReportSdksList>;
 
@@ -200,7 +200,7 @@ export interface SdkHealthReport {
   /** Per-SDK health assessments. */
   sdks?: SdkHealthReportSdksList;
 }
-export const SdkHealthReport = /*@__PURE__*/ S.suspend(() =>
+const SdkHealthReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overall_health: S.optional(OverallHealthEnum),
     health: S.optional(SdkHealthReportHealthEnum),

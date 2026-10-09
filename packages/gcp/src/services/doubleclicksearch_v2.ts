@@ -84,7 +84,7 @@ export interface ReportApiColumnSpec {
   /** Text used to identify this column in the report output; defaults to `columnName` or `savedColumnName` when not specified. This can be used to prevent collisions between DoubleClick Search columns and saved columns with the same name. */
   headerText?: string;
 }
-export const ReportApiColumnSpec = /*@__PURE__*/ S.suspend(() =>
+const ReportApiColumnSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnName: S.optional(S.String),
     customDimensionName: S.optional(S.String),
@@ -100,7 +100,7 @@ export const ReportApiColumnSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportApiColumnSpec" }) as any as S.Schema<ReportApiColumnSpec>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 export interface ReportRequestFiltersItem {
   /** Operator to use in the filter. See the filter reference for a list of available operators. */
@@ -110,7 +110,7 @@ export interface ReportRequestFiltersItem {
   /** A list of values to filter the column value against.\ The maximum number of filter values per request is 300. */
   values?: DocumentList;
 }
-export const ReportRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
+const ReportRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operator: S.optional(S.String),
     column: S.optional(ReportApiColumnSpec),
@@ -119,7 +119,7 @@ export const ReportRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportRequestFiltersItem" }) as any as S.Schema<ReportRequestFiltersItem>;
 
 export type ReportRequestFiltersItemList = Array<ReportRequestFiltersItem>;
-export const ReportRequestFiltersItemList = /*@__PURE__*/ S.Array(
+const ReportRequestFiltersItemList = /*@__PURE__*/ S.Array(
   ReportRequestFiltersItem,
 ) as any as S.Schema<ReportRequestFiltersItemList>;
 
@@ -133,7 +133,7 @@ export interface ReportRequestTimeRange {
   /** Inclusive date in YYYY-MM-DD format. */
   startDate?: string;
 }
-export const ReportRequestTimeRange = /*@__PURE__*/ S.suspend(() =>
+const ReportRequestTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changedAttributesSinceTimestamp: S.optional(S.String),
     changedMetricsSinceTimestamp: S.optional(S.String),
@@ -143,7 +143,7 @@ export const ReportRequestTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportRequestTimeRange" }) as any as S.Schema<ReportRequestTimeRange>;
 
 export type ReportApiColumnSpecList = Array<ReportApiColumnSpec>;
-export const ReportApiColumnSpecList = /*@__PURE__*/ S.Array(
+const ReportApiColumnSpecList = /*@__PURE__*/ S.Array(
   ReportApiColumnSpec,
 ) as any as S.Schema<ReportApiColumnSpecList>;
 
@@ -153,7 +153,7 @@ export interface ReportRequestOrderByItem {
   /** Column to perform the sort on. This can be a DoubleClick Search-defined column or a saved column. */
   column?: ReportApiColumnSpec;
 }
-export const ReportRequestOrderByItem = /*@__PURE__*/ S.suspend(() =>
+const ReportRequestOrderByItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortOrder: S.optional(S.String),
     column: S.optional(ReportApiColumnSpec),
@@ -161,7 +161,7 @@ export const ReportRequestOrderByItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportRequestOrderByItem" }) as any as S.Schema<ReportRequestOrderByItem>;
 
 export type ReportRequestOrderByItemList = Array<ReportRequestOrderByItem>;
-export const ReportRequestOrderByItemList = /*@__PURE__*/ S.Array(
+const ReportRequestOrderByItemList = /*@__PURE__*/ S.Array(
   ReportRequestOrderByItem,
 ) as any as S.Schema<ReportRequestOrderByItemList>;
 
@@ -181,7 +181,7 @@ export interface ReportRequestReportScope {
   /** DS agency ID. */
   agencyId?: string;
 }
-export const ReportRequestReportScope = /*@__PURE__*/ S.suspend(() =>
+const ReportRequestReportScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.optional(S.String),
     campaignId: S.optional(S.String),
@@ -224,7 +224,7 @@ export interface ReportRequest {
   /** Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are `0` to `10000`, inclusive. Defaults to `10000`. */
   rowCount?: number;
 }
-export const ReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadFormat: S.optional(S.String),
     maxRowsPerFile: S.optional(S.Number),
@@ -247,7 +247,7 @@ export interface GenerateReportsRequest {
   /** Request body */
   body?: ReportRequest;
 }
-export const GenerateReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ReportRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -261,10 +261,10 @@ export const GenerateReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A row in a DoubleClick Search report. */
 export type ReportRow = { [key: string]: unknown | undefined };
-export const ReportRow = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<ReportRow>;
+const ReportRow = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<ReportRow>;
 
 export type ReportRowList = Array<ReportRow>;
-export const ReportRowList = /*@__PURE__*/ S.Array(ReportRow) as any as S.Schema<ReportRowList>;
+const ReportRowList = /*@__PURE__*/ S.Array(ReportRow) as any as S.Schema<ReportRowList>;
 
 export interface ReportFilesItem {
   /** The size of this report file in bytes. */
@@ -272,7 +272,7 @@ export interface ReportFilesItem {
   /** Use this url to download the report file. */
   url?: string;
 }
-export const ReportFilesItem = /*@__PURE__*/ S.suspend(() =>
+const ReportFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     byteCount: S.optional(S.String),
     url: S.optional(S.String),
@@ -280,7 +280,7 @@ export const ReportFilesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportFilesItem" }) as any as S.Schema<ReportFilesItem>;
 
 export type ReportFilesItemList = Array<ReportFilesItem>;
-export const ReportFilesItemList = /*@__PURE__*/ S.Array(
+const ReportFilesItemList = /*@__PURE__*/ S.Array(
   ReportFilesItem,
 ) as any as S.Schema<ReportFilesItemList>;
 
@@ -305,7 +305,7 @@ export interface Report {
   /** Asynchronous report only. True if and only if the report has completed successfully and the report files are ready to be downloaded. */
   isReportReady?: boolean;
 }
-export const Report = /*@__PURE__*/ S.suspend(() =>
+const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statisticsTimeZone: S.optional(S.String),
     statisticsCurrencyCode: S.optional(S.String),
@@ -345,7 +345,7 @@ export interface GetByCustomerIdConversionRequest {
   /** The number of conversions to return per call. */
   rowCount: number;
 }
-export const GetByCustomerIdConversionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetByCustomerIdConversionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agencyId: S.optional(S.String.pipe(T.Query())),
     adId: S.optional(S.String.pipe(T.Query())),
@@ -377,7 +377,7 @@ export interface CustomDimension {
   /** Custom dimension value. */
   value?: string;
 }
-export const CustomDimension = /*@__PURE__*/ S.suspend(() =>
+const CustomDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -385,12 +385,12 @@ export const CustomDimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDimension" }) as any as S.Schema<CustomDimension>;
 
 export type CustomDimensionList = Array<CustomDimension>;
-export const CustomDimensionList = /*@__PURE__*/ S.Array(
+const CustomDimensionList = /*@__PURE__*/ S.Array(
   CustomDimension,
 ) as any as S.Schema<CustomDimensionList>;
 
 export type ConversionAdUserDataConsentEnum = "UNKNOWN" | "GRANTED" | "DENIED";
-export const ConversionAdUserDataConsentEnum = S.String;
+const ConversionAdUserDataConsentEnum = S.String;
 
 /** A message containing the custom metric. */
 export interface CustomMetric {
@@ -399,7 +399,7 @@ export interface CustomMetric {
   /** Custom metric numeric value. */
   value?: number;
 }
-export const CustomMetric = /*@__PURE__*/ S.suspend(() =>
+const CustomMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.Number),
@@ -407,9 +407,7 @@ export const CustomMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomMetric" }) as any as S.Schema<CustomMetric>;
 
 export type CustomMetricList = Array<CustomMetric>;
-export const CustomMetricList = /*@__PURE__*/ S.Array(
-  CustomMetric,
-) as any as S.Schema<CustomMetricList>;
+const CustomMetricList = /*@__PURE__*/ S.Array(CustomMetric) as any as S.Schema<CustomMetricList>;
 
 /** A conversion containing data relevant to DoubleClick Search. Common DS3 API conversion fields: Id Range [1 - 2800]. Next Id to use: 33 */
 export interface Conversion {
@@ -484,7 +482,7 @@ export interface Conversion {
   /** DS ad group ID. */
   adGroupId?: string;
 }
-export const Conversion = /*@__PURE__*/ S.suspend(() =>
+const Conversion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     segmentationName: S.optional(S.String),
     type: S.optional(S.String),
@@ -525,9 +523,7 @@ export const Conversion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Conversion" }) as any as S.Schema<Conversion>;
 
 export type ConversionList_ = Array<Conversion>;
-export const ConversionList_ = /*@__PURE__*/ S.Array(
-  Conversion,
-) as any as S.Schema<ConversionList_>;
+const ConversionList_ = /*@__PURE__*/ S.Array(Conversion) as any as S.Schema<ConversionList_>;
 
 /** A list of conversions. */
 export interface ConversionList {
@@ -536,7 +532,7 @@ export interface ConversionList {
   /** The conversions being requested. */
   conversion?: ConversionList_;
 }
-export const ConversionList = /*@__PURE__*/ S.suspend(() =>
+const ConversionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     conversion: S.optional(ConversionList_),
@@ -569,7 +565,7 @@ export interface GetConversionRequest {
   /** Numeric ID of the ad group. */
   adGroupId?: string;
 }
-export const GetConversionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConversionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startRow: S.Number.pipe(T.Query()),
     engineAccountId: S.String.pipe(T.Label()),
@@ -598,7 +594,7 @@ export interface GetFileReportsRequest {
   /** ID of the report. */
   reportId: string;
 }
-export const GetFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportFragment: S.Number.pipe(T.Label()),
     reportId: S.String.pipe(T.Label()),
@@ -612,7 +608,7 @@ export const GetFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFileReportsRequest" }) as any as S.Schema<GetFileReportsRequest>;
 
 export interface GetFileReportsResponse {}
-export const GetFileReportsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetFileReportsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetFileReportsResponse",
 }) as any as S.Schema<GetFileReportsResponse>;
 
@@ -622,7 +618,7 @@ export interface GetIdMappingFileReportsRequest {
   /** Legacy SA360 agency ID. */
   agencyId: string;
 }
-export const GetIdMappingFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIdMappingFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     agencyId: S.String.pipe(T.Label()),
@@ -639,13 +635,13 @@ export const GetIdMappingFileReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** File returned to https://developers.google.com/search-ads/v2/reference/reports/getIdMappingFile. */
 export interface IdMappingFile {}
-export const IdMappingFile = GetFileReportsResponse as any as S.Schema<IdMappingFile>;
+const IdMappingFile = GetFileReportsResponse as any as S.Schema<IdMappingFile>;
 
 export interface GetReportsRequest {
   /** ID of the report request being polled. */
   reportId: string;
 }
-export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportId: S.String.pipe(T.Label()),
   }).pipe(
@@ -661,7 +657,7 @@ export interface InsertConversionRequest {
   /** Request body */
   body?: ConversionList;
 }
-export const InsertConversionRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertConversionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ConversionList.pipe(T.HttpBody())),
   }).pipe(
@@ -679,7 +675,7 @@ export interface ListSavedColumnsRequest {
   /** DS ID of the agency. */
   agencyId: string;
 }
-export const ListSavedColumnsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSavedColumnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     agencyId: S.String.pipe(T.Label()),
@@ -701,7 +697,7 @@ export interface SavedColumn {
   /** The type of data this saved column will produce. */
   type?: string;
 }
-export const SavedColumn = /*@__PURE__*/ S.suspend(() =>
+const SavedColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     savedColumnName: S.optional(S.String),
@@ -710,9 +706,7 @@ export const SavedColumn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SavedColumn" }) as any as S.Schema<SavedColumn>;
 
 export type SavedColumnList_ = Array<SavedColumn>;
-export const SavedColumnList_ = /*@__PURE__*/ S.Array(
-  SavedColumn,
-) as any as S.Schema<SavedColumnList_>;
+const SavedColumnList_ = /*@__PURE__*/ S.Array(SavedColumn) as any as S.Schema<SavedColumnList_>;
 
 /** A list of saved columns. Advertisers create saved columns to report on Floodlight activities, Google Analytics goals, or custom KPIs. To request reports with saved columns, you'll need the saved column names that are available from this list. */
 export interface SavedColumnList {
@@ -721,7 +715,7 @@ export interface SavedColumnList {
   /** Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList. */
   kind?: string;
 }
-export const SavedColumnList = /*@__PURE__*/ S.suspend(() =>
+const SavedColumnList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(SavedColumnList_),
     kind: S.optional(S.String),
@@ -732,7 +726,7 @@ export interface RequestReportsRequest {
   /** Request body */
   body?: ReportRequest;
 }
-export const RequestReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ReportRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -761,7 +755,7 @@ export interface Availability {
   /** Customer ID of a client account in the new Search Ads 360 experience. */
   customerId?: string;
 }
-export const Availability = /*@__PURE__*/ S.suspend(() =>
+const Availability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     segmentationName: S.optional(S.String),
     availabilityTimestamp: S.optional(S.String),
@@ -774,16 +768,14 @@ export const Availability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Availability" }) as any as S.Schema<Availability>;
 
 export type AvailabilityList = Array<Availability>;
-export const AvailabilityList = /*@__PURE__*/ S.Array(
-  Availability,
-) as any as S.Schema<AvailabilityList>;
+const AvailabilityList = /*@__PURE__*/ S.Array(Availability) as any as S.Schema<AvailabilityList>;
 
 /** The request to update availability. */
 export interface UpdateAvailabilityRequest {
   /** The availabilities being requested. */
   availabilities?: AvailabilityList;
 }
-export const UpdateAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilities: S.optional(AvailabilityList),
   }),
@@ -795,7 +787,7 @@ export interface UpdateAvailabilityConversionRequest {
   /** Request body */
   body?: UpdateAvailabilityRequest;
 }
-export const UpdateAvailabilityConversionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAvailabilityConversionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(UpdateAvailabilityRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -814,14 +806,14 @@ export interface UpdateAvailabilityResponse {
   /** The availabilities being returned. */
   availabilities?: AvailabilityList;
 }
-export const UpdateAvailabilityResponse =
+const UpdateAvailabilityResponse =
   UpdateAvailabilityRequest as any as S.Schema<UpdateAvailabilityResponse>;
 
 export interface UpdateConversionRequest {
   /** Request body */
   body?: ConversionList;
 }
-export const UpdateConversionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConversionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ConversionList.pipe(T.HttpBody())),
   }).pipe(

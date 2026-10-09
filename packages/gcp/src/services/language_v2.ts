@@ -62,10 +62,10 @@ export class NotFound
   ) {}
 
 export type AnalyzeEntitiesRequestEncodingTypeEnum = "NONE" | "UTF8" | "UTF16" | "UTF32";
-export const AnalyzeEntitiesRequestEncodingTypeEnum = S.String;
+const AnalyzeEntitiesRequestEncodingTypeEnum = S.String;
 
 export type DocumentTypeEnum = "TYPE_UNSPECIFIED" | "PLAIN_TEXT" | "HTML";
-export const DocumentTypeEnum = S.String;
+const DocumentTypeEnum = S.String;
 
 /** Represents the input to API methods. */
 export interface Document {
@@ -78,7 +78,7 @@ export interface Document {
   /** The content of the input in string format. Cloud audit logging exempt since it is based on user data. */
   content?: string;
 }
-export const Document = /*@__PURE__*/ S.suspend(() =>
+const Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(DocumentTypeEnum),
     gcsContentUri: S.optional(S.String),
@@ -94,7 +94,7 @@ export interface AnalyzeEntitiesRequest {
   /** Required. Input document. */
   document?: Document;
 }
-export const AnalyzeEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encodingType: S.optional(AnalyzeEntitiesRequestEncodingTypeEnum),
     document: S.optional(Document),
@@ -105,7 +105,7 @@ export interface AnalyzeEntitiesDocumentsRequest {
   /** Request body */
   body?: AnalyzeEntitiesRequest;
 }
-export const AnalyzeEntitiesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeEntitiesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AnalyzeEntitiesRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -126,7 +126,7 @@ export interface Sentiment {
   /** Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment). */
   score?: number;
 }
-export const Sentiment = /*@__PURE__*/ S.suspend(() =>
+const Sentiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     magnitude: S.optional(S.Number),
     score: S.optional(S.Number),
@@ -147,10 +147,10 @@ export type EntityTypeEnum =
   | "DATE"
   | "NUMBER"
   | "PRICE";
-export const EntityTypeEnum = S.String;
+const EntityTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Represents a text span in the input document. */
 export interface TextSpan {
@@ -159,7 +159,7 @@ export interface TextSpan {
   /** The API calculates the beginning offset of the content in the original document according to the EncodingType specified in the API request. */
   beginOffset?: number;
 }
-export const TextSpan = /*@__PURE__*/ S.suspend(() =>
+const TextSpan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     beginOffset: S.optional(S.Number),
@@ -167,7 +167,7 @@ export const TextSpan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TextSpan" }) as any as S.Schema<TextSpan>;
 
 export type EntityMentionTypeEnum = "TYPE_UNKNOWN" | "PROPER" | "COMMON";
-export const EntityMentionTypeEnum = S.String;
+const EntityMentionTypeEnum = S.String;
 
 /** Represents a mention for an entity in the text. Currently, proper noun mentions are supported. */
 export interface EntityMention {
@@ -180,7 +180,7 @@ export interface EntityMention {
   /** Probability score associated with the entity. The score shows the probability of the entity mention being the entity type. The score is in (0, 1] range. */
   probability?: number;
 }
-export const EntityMention = /*@__PURE__*/ S.suspend(() =>
+const EntityMention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(TextSpan),
     type: S.optional(EntityMentionTypeEnum),
@@ -190,7 +190,7 @@ export const EntityMention = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EntityMention" }) as any as S.Schema<EntityMention>;
 
 export type EntityMentionList = Array<EntityMention>;
-export const EntityMentionList = /*@__PURE__*/ S.Array(
+const EntityMentionList = /*@__PURE__*/ S.Array(
   EntityMention,
 ) as any as S.Schema<EntityMentionList>;
 
@@ -207,7 +207,7 @@ export interface Entity {
   /** The mentions of this entity in the input document. The API currently supports proper noun mentions. */
   mentions?: EntityMentionList;
 }
-export const Entity = /*@__PURE__*/ S.suspend(() =>
+const Entity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sentiment: S.optional(Sentiment),
     name: S.optional(S.String),
@@ -218,7 +218,7 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 
 export type EntityList = Array<Entity>;
-export const EntityList = /*@__PURE__*/ S.Array(Entity) as any as S.Schema<EntityList>;
+const EntityList = /*@__PURE__*/ S.Array(Entity) as any as S.Schema<EntityList>;
 
 /** The entity analysis response message. */
 export interface AnalyzeEntitiesResponse {
@@ -229,7 +229,7 @@ export interface AnalyzeEntitiesResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language_code field for more details. */
   languageCode?: string;
 }
-export const AnalyzeEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entities: S.optional(EntityList),
     languageSupported: S.optional(S.Boolean),
@@ -238,7 +238,7 @@ export const AnalyzeEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalyzeEntitiesResponse" }) as any as S.Schema<AnalyzeEntitiesResponse>;
 
 export type AnalyzeSentimentRequestEncodingTypeEnum = "NONE" | "UTF8" | "UTF16" | "UTF32";
-export const AnalyzeSentimentRequestEncodingTypeEnum = S.String;
+const AnalyzeSentimentRequestEncodingTypeEnum = S.String;
 
 /** The sentiment analysis request message. */
 export interface AnalyzeSentimentRequest {
@@ -247,7 +247,7 @@ export interface AnalyzeSentimentRequest {
   /** The encoding type used by the API to calculate sentence offsets. */
   encodingType?: AnalyzeSentimentRequestEncodingTypeEnum | (string & {});
 }
-export const AnalyzeSentimentRequest = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeSentimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(Document),
     encodingType: S.optional(AnalyzeSentimentRequestEncodingTypeEnum),
@@ -258,7 +258,7 @@ export interface AnalyzeSentimentDocumentsRequest {
   /** Request body */
   body?: AnalyzeSentimentRequest;
 }
-export const AnalyzeSentimentDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeSentimentDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AnalyzeSentimentRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -279,7 +279,7 @@ export interface Sentence {
   /** For calls to AnalyzeSentiment or if AnnotateTextRequest.Features.extract_document_sentiment is set to true, this field will contain the sentiment for the sentence. */
   sentiment?: Sentiment;
 }
-export const Sentence = /*@__PURE__*/ S.suspend(() =>
+const Sentence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(TextSpan),
     sentiment: S.optional(Sentiment),
@@ -287,7 +287,7 @@ export const Sentence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sentence" }) as any as S.Schema<Sentence>;
 
 export type SentenceList = Array<Sentence>;
-export const SentenceList = /*@__PURE__*/ S.Array(Sentence) as any as S.Schema<SentenceList>;
+const SentenceList = /*@__PURE__*/ S.Array(Sentence) as any as S.Schema<SentenceList>;
 
 /** The sentiment analysis response message. */
 export interface AnalyzeSentimentResponse {
@@ -300,7 +300,7 @@ export interface AnalyzeSentimentResponse {
   /** Whether the language is officially supported. The API may still return a response when the language is not supported, but it is on a best effort basis. */
   languageSupported?: boolean;
 }
-export const AnalyzeSentimentResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeSentimentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentSentiment: S.optional(Sentiment),
     sentences: S.optional(SentenceList),
@@ -310,7 +310,7 @@ export const AnalyzeSentimentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalyzeSentimentResponse" }) as any as S.Schema<AnalyzeSentimentResponse>;
 
 export type AnnotateTextRequestEncodingTypeEnum = "NONE" | "UTF8" | "UTF16" | "UTF32";
-export const AnnotateTextRequestEncodingTypeEnum = S.String;
+const AnnotateTextRequestEncodingTypeEnum = S.String;
 
 /** All available features. Setting each one to true will enable that specific analysis for the input. */
 export interface AnnotateTextRequestFeatures {
@@ -323,7 +323,7 @@ export interface AnnotateTextRequestFeatures {
   /** Optional. Moderate the document for harmful and sensitive categories. */
   moderateText?: boolean;
 }
-export const AnnotateTextRequestFeatures = /*@__PURE__*/ S.suspend(() =>
+const AnnotateTextRequestFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extractEntities: S.optional(S.Boolean),
     extractDocumentSentiment: S.optional(S.Boolean),
@@ -343,7 +343,7 @@ export interface AnnotateTextRequest {
   /** Required. The enabled features. */
   features?: AnnotateTextRequestFeatures;
 }
-export const AnnotateTextRequest = /*@__PURE__*/ S.suspend(() =>
+const AnnotateTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(Document),
     encodingType: S.optional(AnnotateTextRequestEncodingTypeEnum),
@@ -355,7 +355,7 @@ export interface AnnotateTextDocumentsRequest {
   /** Request body */
   body?: AnnotateTextRequest;
 }
-export const AnnotateTextDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const AnnotateTextDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AnnotateTextRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -378,7 +378,7 @@ export interface ClassificationCategory {
   /** Optional. The classifier's severity of the category. This is only present when the ModerateTextRequest.ModelVersion is set to MODEL_VERSION_2, and the corresponding category has a severity score. */
   severity?: number;
 }
-export const ClassificationCategory = /*@__PURE__*/ S.suspend(() =>
+const ClassificationCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     confidence: S.optional(S.Number),
@@ -387,7 +387,7 @@ export const ClassificationCategory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassificationCategory" }) as any as S.Schema<ClassificationCategory>;
 
 export type ClassificationCategoryList = Array<ClassificationCategory>;
-export const ClassificationCategoryList = /*@__PURE__*/ S.Array(
+const ClassificationCategoryList = /*@__PURE__*/ S.Array(
   ClassificationCategory,
 ) as any as S.Schema<ClassificationCategoryList>;
 
@@ -408,7 +408,7 @@ export interface AnnotateTextResponse {
   /** Categories identified in the input document. */
   categories?: ClassificationCategoryList;
 }
-export const AnnotateTextResponse = /*@__PURE__*/ S.suspend(() =>
+const AnnotateTextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entities: S.optional(EntityList),
     languageCode: S.optional(S.String),
@@ -425,7 +425,7 @@ export interface ClassifyTextRequest {
   /** Required. Input document. */
   document?: Document;
 }
-export const ClassifyTextRequest = /*@__PURE__*/ S.suspend(() =>
+const ClassifyTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(Document),
   }),
@@ -435,7 +435,7 @@ export interface ClassifyTextDocumentsRequest {
   /** Request body */
   body?: ClassifyTextRequest;
 }
-export const ClassifyTextDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ClassifyTextDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ClassifyTextRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -458,7 +458,7 @@ export interface ClassifyTextResponse {
   /** Whether the language is officially supported. The API may still return a response when the language is not supported, but it is on a best effort basis. */
   languageSupported?: boolean;
 }
-export const ClassifyTextResponse = /*@__PURE__*/ S.suspend(() =>
+const ClassifyTextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(ClassificationCategoryList),
     languageCode: S.optional(S.String),
@@ -470,7 +470,7 @@ export type ModerateTextRequestModelVersionEnum =
   | "MODEL_VERSION_UNSPECIFIED"
   | "MODEL_VERSION_1"
   | "MODEL_VERSION_2";
-export const ModerateTextRequestModelVersionEnum = S.String;
+const ModerateTextRequestModelVersionEnum = S.String;
 
 /** The document moderation request message. */
 export interface ModerateTextRequest {
@@ -479,7 +479,7 @@ export interface ModerateTextRequest {
   /** Optional. The model version to use for ModerateText. */
   modelVersion?: ModerateTextRequestModelVersionEnum | (string & {});
 }
-export const ModerateTextRequest = /*@__PURE__*/ S.suspend(() =>
+const ModerateTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(Document),
     modelVersion: S.optional(ModerateTextRequestModelVersionEnum),
@@ -490,7 +490,7 @@ export interface ModerateTextDocumentsRequest {
   /** Request body */
   body?: ModerateTextRequest;
 }
-export const ModerateTextDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModerateTextDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ModerateTextRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -513,7 +513,7 @@ export interface ModerateTextResponse {
   /** Whether the language is officially supported. The API may still return a response when the language is not supported, but it is on a best effort basis. */
   languageSupported?: boolean;
 }
-export const ModerateTextResponse = /*@__PURE__*/ S.suspend(() =>
+const ModerateTextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moderationCategories: S.optional(ClassificationCategoryList),
     languageCode: S.optional(S.String),

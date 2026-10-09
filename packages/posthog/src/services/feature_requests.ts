@@ -9,13 +9,13 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** One or more active product area IDs. Duplicate IDs are ignored. */
 export type CreateFeatureRequestRequestProductAreaIdsList = Array<string>;
-export const CreateFeatureRequestRequestProductAreaIdsList = /*@__PURE__*/ S.Array(
+const CreateFeatureRequestRequestProductAreaIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateFeatureRequestRequestProductAreaIdsList>;
 
 /** Uploaded image IDs from this project to attach in display order. */
 export type FeatureRequestEvidencePayloadImageIdsList = Array<string>;
-export const FeatureRequestEvidencePayloadImageIdsList =
+const FeatureRequestEvidencePayloadImageIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestEvidencePayloadImageIdsList>;
 
 export interface FeatureRequestEvidencePayload {
@@ -32,7 +32,7 @@ export interface FeatureRequestEvidencePayload {
   /** Uploaded image IDs from this project to attach in display order. */
   image_ids?: FeatureRequestEvidencePayloadImageIdsList;
 }
-export const FeatureRequestEvidencePayload = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestEvidencePayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.optional(S.String),
     customer_quote: S.optional(S.String),
@@ -61,7 +61,7 @@ export interface CreateFeatureRequestRequest {
   /** Optional first evidence item to create for the selected account. */
   evidence?: FeatureRequestEvidencePayload | null;
 }
-export const CreateFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     title: S.String,
@@ -84,11 +84,11 @@ export type FeatureRequestStatusEnum =
   | "completed"
   | "wont_fix"
   | "duplicate";
-export const FeatureRequestStatusEnum = S.String;
+const FeatureRequestStatusEnum = S.String;
 
 /** * `high` - High * `medium` - Medium * `low` - Low */
 export type FeatureRequestPriorityEnum = "high" | "medium" | "low";
-export const FeatureRequestPriorityEnum = S.String;
+const FeatureRequestPriorityEnum = S.String;
 
 export interface FeatureRequestAccount {
   /** ID of the affected Customer Analytics account. */
@@ -96,7 +96,7 @@ export interface FeatureRequestAccount {
   /** Name of the affected account. */
   name: string;
 }
-export const FeatureRequestAccount = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -105,7 +105,7 @@ export const FeatureRequestAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Uploaded image IDs attached to this evidence item, in display order. */
 export type FeatureRequestEvidenceImageIdsList = Array<string>;
-export const FeatureRequestEvidenceImageIdsList =
+const FeatureRequestEvidenceImageIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestEvidenceImageIdsList>;
 
 export interface FeatureRequestEvidence {
@@ -132,7 +132,7 @@ export interface FeatureRequestEvidence {
   /** When the evidence was last updated. */
   updated_at: string;
 }
-export const FeatureRequestEvidence = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     summary: S.String,
@@ -150,7 +150,7 @@ export const FeatureRequestEvidence = /*@__PURE__*/ S.suspend(() =>
 
 /** Evidence recorded for this account and request. List responses omit these items. */
 export type FeatureRequestAccountLinkEvidenceList = Array<FeatureRequestEvidence>;
-export const FeatureRequestAccountLinkEvidenceList = /*@__PURE__*/ S.Array(
+const FeatureRequestAccountLinkEvidenceList = /*@__PURE__*/ S.Array(
   FeatureRequestEvidence,
 ) as any as S.Schema<FeatureRequestAccountLinkEvidenceList>;
 
@@ -168,7 +168,7 @@ export interface FeatureRequestAccountLink {
   /** When the account link was last changed. */
   updated_at: string | null;
 }
-export const FeatureRequestAccountLink = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestAccountLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account: FeatureRequestAccount,
@@ -183,7 +183,7 @@ export const FeatureRequestAccountLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Active account links visible to the caller, with account-specific evidence. */
 export type FeatureRequestAccountLinksList = Array<FeatureRequestAccountLink>;
-export const FeatureRequestAccountLinksList = /*@__PURE__*/ S.Array(
+const FeatureRequestAccountLinksList = /*@__PURE__*/ S.Array(
   FeatureRequestAccountLink,
 ) as any as S.Schema<FeatureRequestAccountLinksList>;
 
@@ -201,7 +201,7 @@ export interface FeatureRequestProductArea {
   /** When the product area was last updated. */
   updated_at: string;
 }
-export const FeatureRequestProductArea = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestProductArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -216,13 +216,13 @@ export const FeatureRequestProductArea = /*@__PURE__*/ S.suspend(() =>
 
 /** Product areas affected by this request. */
 export type FeatureRequestProductAreasList = Array<FeatureRequestProductArea>;
-export const FeatureRequestProductAreasList = /*@__PURE__*/ S.Array(
+const FeatureRequestProductAreasList = /*@__PURE__*/ S.Array(
   FeatureRequestProductArea,
 ) as any as S.Schema<FeatureRequestProductAreasList>;
 
 /** * `open` - open * `closed` - closed */
 export type IssueStateEnum = "open" | "closed";
-export const IssueStateEnum = S.String;
+const IssueStateEnum = S.String;
 
 export interface FeatureRequestGitHubLink {
   /** Stable GitHub link ID. */
@@ -242,7 +242,7 @@ export interface FeatureRequestGitHubLink {
   /** When GitHub last updated this link. */
   last_synced_at: string | null;
 }
-export const FeatureRequestGitHubLink = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestGitHubLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     issue_url: S.String,
@@ -295,7 +295,7 @@ export interface FeatureRequest {
   /** When the request was last updated. */
   updated_at: string;
 }
-export const FeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -330,7 +330,7 @@ export interface CreateFeatureRequestsLinkGithubRequest {
   /** Request version loaded by the editor. Stale versions return 409 Conflict. */
   expected_version: number;
 }
-export const CreateFeatureRequestsLinkGithubRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureRequestsLinkGithubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -355,7 +355,7 @@ export interface CreateFeatureRequestsPauseGithubRequest {
   /** Request version loaded by the editor. Stale versions return 409 Conflict. */
   expected_version: number;
 }
-export const CreateFeatureRequestsPauseGithubRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureRequestsPauseGithubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -382,7 +382,7 @@ export interface FeatureRequestsAddAccountCreateRequest {
   /** Optional first evidence item to create for the account in the same change. */
   evidence?: FeatureRequestEvidencePayload | null;
 }
-export const FeatureRequestsAddAccountCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestsAddAccountCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -402,7 +402,7 @@ export const FeatureRequestsAddAccountCreateRequest = /*@__PURE__*/ S.suspend(()
 
 /** Uploaded image IDs from this project to attach in display order. */
 export type FeatureRequestsAddEvidenceCreateRequestImageIdsList = Array<string>;
-export const FeatureRequestsAddEvidenceCreateRequestImageIdsList =
+const FeatureRequestsAddEvidenceCreateRequestImageIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestsAddEvidenceCreateRequestImageIdsList>;
 
 export interface FeatureRequestsAddEvidenceCreateRequest {
@@ -426,7 +426,7 @@ export interface FeatureRequestsAddEvidenceCreateRequest {
   /** Active account link that owns this evidence. */
   account_link_id: string;
 }
-export const FeatureRequestsAddEvidenceCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestsAddEvidenceCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -456,7 +456,7 @@ export interface FeatureRequestsArchiveCreateRequest {
   /** Request version loaded by the editor. Stale versions return 409 Conflict. */
   expected_version: number;
 }
-export const FeatureRequestsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -481,7 +481,7 @@ export interface FeatureRequestsRemoveEvidenceCreateRequest {
   /** Evidence item to delete. */
   evidence_id: string;
 }
-export const FeatureRequestsRemoveEvidenceCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestsRemoveEvidenceCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -505,7 +505,7 @@ export interface FeatureRequestsRestoreCreateRequest {
   /** Request version loaded by the editor. Stale versions return 409 Conflict. */
   expected_version: number;
 }
-export const FeatureRequestsRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestsRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -528,7 +528,7 @@ export interface FeatureRequestsResumeGithubCreateRequest {
   /** Request version loaded by the editor. Stale versions return 409 Conflict. */
   expected_version: number;
 }
-export const FeatureRequestsResumeGithubCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestsResumeGithubCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -551,7 +551,7 @@ export interface FeatureRequestsUnlinkGithubCreateRequest {
   /** Request version loaded by the editor. Stale versions return 409 Conflict. */
   expected_version: number;
 }
-export const FeatureRequestsUnlinkGithubCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestsUnlinkGithubCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -569,7 +569,7 @@ export const FeatureRequestsUnlinkGithubCreateRequest = /*@__PURE__*/ S.suspend(
 
 /** Uploaded image IDs from this project to attach in display order. */
 export type FeatureRequestsUpdateEvidenceCreateRequestImageIdsList = Array<string>;
-export const FeatureRequestsUpdateEvidenceCreateRequestImageIdsList =
+const FeatureRequestsUpdateEvidenceCreateRequestImageIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestsUpdateEvidenceCreateRequestImageIdsList>;
 
 export interface FeatureRequestsUpdateEvidenceCreateRequest {
@@ -593,7 +593,7 @@ export interface FeatureRequestsUpdateEvidenceCreateRequest {
   /** Evidence item to replace. */
   evidence_id: string;
 }
-export const FeatureRequestsUpdateEvidenceCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestsUpdateEvidenceCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -621,7 +621,7 @@ export interface GetFeatureRequestRequest {
   project_id: string;
   id: string;
 }
-export const GetFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -631,30 +631,30 @@ export const GetFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFeatureRequestRequest" }) as any as S.Schema<GetFeatureRequestRequest>;
 
 export type ListFeatureRequestsRequestAccountIdsList = Array<string>;
-export const ListFeatureRequestsRequestAccountIdsList =
+const ListFeatureRequestsRequestAccountIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<ListFeatureRequestsRequestAccountIdsList>;
 
 export type ListFeatureRequestsRequestArchiveState = "active" | "archived" | "all";
-export const ListFeatureRequestsRequestArchiveState = S.String;
+const ListFeatureRequestsRequestArchiveState = S.String;
 
 export type ListFeatureRequestsRequestCreatedByIdsList = Array<number>;
-export const ListFeatureRequestsRequestCreatedByIdsList = /*@__PURE__*/ S.Array(
+const ListFeatureRequestsRequestCreatedByIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListFeatureRequestsRequestCreatedByIdsList>;
 
 /** * `high` - High * `medium` - Medium * `low` - Low * `none` - No priority */
 export type ListFeatureRequestsRequestPrioritiesItem = "high" | "medium" | "low" | "none";
-export const ListFeatureRequestsRequestPrioritiesItem = S.String;
+const ListFeatureRequestsRequestPrioritiesItem = S.String;
 
 export type ListFeatureRequestsRequestPrioritiesList = Array<
   ListFeatureRequestsRequestPrioritiesItem | (string & {})
 >;
-export const ListFeatureRequestsRequestPrioritiesList = /*@__PURE__*/ S.Array(
+const ListFeatureRequestsRequestPrioritiesList = /*@__PURE__*/ S.Array(
   ListFeatureRequestsRequestPrioritiesItem,
 ) as any as S.Schema<ListFeatureRequestsRequestPrioritiesList>;
 
 export type ListFeatureRequestsRequestProductAreaIdsList = Array<string>;
-export const ListFeatureRequestsRequestProductAreaIdsList =
+const ListFeatureRequestsRequestProductAreaIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<ListFeatureRequestsRequestProductAreaIdsList>;
 
 export type ListFeatureRequestsRequestRequestOrdering =
@@ -676,7 +676,7 @@ export type ListFeatureRequestsRequestRequestOrdering =
   | "-created_by"
   | "evidence_count"
   | "-evidence_count";
-export const ListFeatureRequestsRequestRequestOrdering = S.String;
+const ListFeatureRequestsRequestRequestOrdering = S.String;
 
 /** * `requested` - Requested * `planned` - Planned * `completed` - Completed * `wont_fix` - Won't fix * `duplicate` - Duplicate */
 export type ListFeatureRequestsRequestStatusesItem =
@@ -685,12 +685,10 @@ export type ListFeatureRequestsRequestStatusesItem =
   | "completed"
   | "wont_fix"
   | "duplicate";
-export const ListFeatureRequestsRequestStatusesItem = S.String;
-
 export type ListFeatureRequestsRequestStatusesList = Array<
   ListFeatureRequestsRequestStatusesItem | (string & {})
 >;
-export const ListFeatureRequestsRequestStatusesList =
+const ListFeatureRequestsRequestStatusesList =
   ListFeatureRequestsRequestPrioritiesList as any as S.Schema<ListFeatureRequestsRequestStatusesList>;
 
 export interface ListFeatureRequestsRequest {
@@ -717,7 +715,7 @@ export interface ListFeatureRequestsRequest {
   /** Lifecycle statuses to include. Multiple values use OR semantics. */
   statuses?: ListFeatureRequestsRequestStatusesList;
 }
-export const ListFeatureRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_ids: S.optional(ListFeatureRequestsRequestAccountIdsList.pipe(T.Query())),
@@ -738,7 +736,7 @@ export const ListFeatureRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFeatureRequestsRequest>;
 
 export type PaginatedFeatureRequestListResultsList = Array<FeatureRequest>;
-export const PaginatedFeatureRequestListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedFeatureRequestListResultsList = /*@__PURE__*/ S.Array(
   FeatureRequest,
 ) as any as S.Schema<PaginatedFeatureRequestListResultsList>;
 
@@ -748,7 +746,7 @@ export interface PaginatedFeatureRequestList {
   previous?: string | null;
   results: PaginatedFeatureRequestListResultsList;
 }
-export const PaginatedFeatureRequestList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedFeatureRequestList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -764,7 +762,7 @@ export interface ListFeatureRequestsHistoryRequest {
   project_id: string;
   id: string;
 }
-export const ListFeatureRequestsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureRequestsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -789,11 +787,9 @@ export type FeatureRequestHistoryChangeFieldEnum =
   | "product_areas"
   | "github_link"
   | "github_sync";
-export const FeatureRequestHistoryChangeFieldEnum = S.String;
+const FeatureRequestHistoryChangeFieldEnum = S.String;
 
 export type FeatureRequestHistoryChangeBeforeCase2IssueState = "open" | "closed";
-export const FeatureRequestHistoryChangeBeforeCase2IssueState = S.String;
-
 export interface FeatureRequestHistoryChangeBeforeCase2 {
   id: string;
   issue_url: string;
@@ -803,61 +799,19 @@ export interface FeatureRequestHistoryChangeBeforeCase2 {
   issue_state: FeatureRequestHistoryChangeBeforeCase2IssueState;
   sync_enabled: boolean;
 }
-export const FeatureRequestHistoryChangeBeforeCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    issue_url: S.String,
-    repository: S.String,
-    issue_number: S.Number,
-    issue_title: S.String,
-    issue_state: FeatureRequestHistoryChangeBeforeCase2IssueState,
-    sync_enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "FeatureRequestHistoryChangeBeforeCase2",
-}) as any as S.Schema<FeatureRequestHistoryChangeBeforeCase2>;
-
 export interface FeatureRequestHistoryChangeBeforeCase3 {
   id: string | null;
   name: string;
 }
-export const FeatureRequestHistoryChangeBeforeCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.NullOr(S.String),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "FeatureRequestHistoryChangeBeforeCase3",
-}) as any as S.Schema<FeatureRequestHistoryChangeBeforeCase3>;
-
 export interface FeatureRequestHistoryChangeBeforeCase4Item {
   id: string;
   name: string;
 }
-export const FeatureRequestHistoryChangeBeforeCase4Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "FeatureRequestHistoryChangeBeforeCase4Item",
-}) as any as S.Schema<FeatureRequestHistoryChangeBeforeCase4Item>;
-
 export type FeatureRequestHistoryChangeBeforeCase4List =
   Array<FeatureRequestHistoryChangeBeforeCase4Item>;
-export const FeatureRequestHistoryChangeBeforeCase4List = /*@__PURE__*/ S.Array(
-  FeatureRequestHistoryChangeBeforeCase4Item,
-) as any as S.Schema<FeatureRequestHistoryChangeBeforeCase4List>;
-
 export type FeatureRequestHistoryChangeBeforeCase5Account =
   FeatureRequestHistoryChangeBeforeCase4Item;
-export const FeatureRequestHistoryChangeBeforeCase5Account =
-  FeatureRequestHistoryChangeBeforeCase4Item;
-
 export type FeatureRequestHistoryChangeBeforeCase5ImageIdsList = Array<string>;
-export const FeatureRequestHistoryChangeBeforeCase5ImageIdsList =
-  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestHistoryChangeBeforeCase5ImageIdsList>;
-
 export interface FeatureRequestHistoryChangeBeforeCase5 {
   id: string;
   account: FeatureRequestHistoryChangeBeforeCase4Item;
@@ -868,21 +822,6 @@ export interface FeatureRequestHistoryChangeBeforeCase5 {
   requested_on: string | null;
   image_ids?: FeatureRequestHistoryChangeBeforeCase5ImageIdsList;
 }
-export const FeatureRequestHistoryChangeBeforeCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    account: FeatureRequestHistoryChangeBeforeCase4Item,
-    summary: S.String,
-    customer_quote: S.String,
-    source: S.String,
-    source_url: S.String,
-    requested_on: S.NullOr(S.String),
-    image_ids: S.optional(FeatureRequestHistoryChangeBeforeCase5ImageIdsList),
-  }),
-).annotate({
-  identifier: "FeatureRequestHistoryChangeBeforeCase5",
-}) as any as S.Schema<FeatureRequestHistoryChangeBeforeCase5>;
-
 /** Value before the update, including relation snapshots. */
 export type FeatureRequestHistoryChangeBefore =
   | string
@@ -891,12 +830,10 @@ export type FeatureRequestHistoryChangeBefore =
   | FeatureRequestHistoryChangeBeforeCase3
   | FeatureRequestHistoryChangeBeforeCase4List
   | FeatureRequestHistoryChangeBeforeCase5;
-export const FeatureRequestHistoryChangeBefore =
+const FeatureRequestHistoryChangeBefore =
   S.Unknown as any as S.Schema<FeatureRequestHistoryChangeBefore>;
 
 export type FeatureRequestHistoryChangeAfterCase2IssueState = "open" | "closed";
-export const FeatureRequestHistoryChangeAfterCase2IssueState = S.String;
-
 export interface FeatureRequestHistoryChangeAfterCase2 {
   id: string;
   issue_url: string;
@@ -906,29 +843,13 @@ export interface FeatureRequestHistoryChangeAfterCase2 {
   issue_state: FeatureRequestHistoryChangeAfterCase2IssueState;
   sync_enabled: boolean;
 }
-export const FeatureRequestHistoryChangeAfterCase2 =
-  FeatureRequestHistoryChangeBeforeCase2 as any as S.Schema<FeatureRequestHistoryChangeAfterCase2>;
-
 export type FeatureRequestHistoryChangeAfterCase3 = FeatureRequestHistoryChangeBeforeCase3;
-export const FeatureRequestHistoryChangeAfterCase3 = FeatureRequestHistoryChangeBeforeCase3;
-
 export type FeatureRequestHistoryChangeAfterCase4Item = FeatureRequestHistoryChangeBeforeCase4Item;
-export const FeatureRequestHistoryChangeAfterCase4Item = FeatureRequestHistoryChangeBeforeCase4Item;
-
 export type FeatureRequestHistoryChangeAfterCase4List =
   Array<FeatureRequestHistoryChangeBeforeCase4Item>;
-export const FeatureRequestHistoryChangeAfterCase4List =
-  FeatureRequestHistoryChangeBeforeCase4List as any as S.Schema<FeatureRequestHistoryChangeAfterCase4List>;
-
 export type FeatureRequestHistoryChangeAfterCase5Account =
   FeatureRequestHistoryChangeBeforeCase4Item;
-export const FeatureRequestHistoryChangeAfterCase5Account =
-  FeatureRequestHistoryChangeBeforeCase4Item;
-
 export type FeatureRequestHistoryChangeAfterCase5ImageIdsList = Array<string>;
-export const FeatureRequestHistoryChangeAfterCase5ImageIdsList =
-  CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<FeatureRequestHistoryChangeAfterCase5ImageIdsList>;
-
 export interface FeatureRequestHistoryChangeAfterCase5 {
   id: string;
   account: FeatureRequestHistoryChangeBeforeCase4Item;
@@ -939,9 +860,6 @@ export interface FeatureRequestHistoryChangeAfterCase5 {
   requested_on: string | null;
   image_ids?: FeatureRequestHistoryChangeAfterCase5ImageIdsList;
 }
-export const FeatureRequestHistoryChangeAfterCase5 =
-  FeatureRequestHistoryChangeBeforeCase5 as any as S.Schema<FeatureRequestHistoryChangeAfterCase5>;
-
 /** Value after the update, including relation snapshots. */
 export type FeatureRequestHistoryChangeAfter =
   | string
@@ -950,7 +868,7 @@ export type FeatureRequestHistoryChangeAfter =
   | FeatureRequestHistoryChangeBeforeCase3
   | FeatureRequestHistoryChangeAfterCase4List
   | FeatureRequestHistoryChangeAfterCase5;
-export const FeatureRequestHistoryChangeAfter =
+const FeatureRequestHistoryChangeAfter =
   S.Unknown as any as S.Schema<FeatureRequestHistoryChangeAfter>;
 
 export interface FeatureRequestHistoryChange {
@@ -961,7 +879,7 @@ export interface FeatureRequestHistoryChange {
   /** Value after the update, including relation snapshots. */
   after: FeatureRequestHistoryChangeAfter | null;
 }
-export const FeatureRequestHistoryChange = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestHistoryChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: FeatureRequestHistoryChangeFieldEnum,
     before: S.NullOr(FeatureRequestHistoryChangeBefore),
@@ -973,13 +891,13 @@ export const FeatureRequestHistoryChange = /*@__PURE__*/ S.suspend(() =>
 
 /** Tracked fields changed together in one successful save. */
 export type FeatureRequestHistoryChangesList = Array<FeatureRequestHistoryChange>;
-export const FeatureRequestHistoryChangesList = /*@__PURE__*/ S.Array(
+const FeatureRequestHistoryChangesList = /*@__PURE__*/ S.Array(
   FeatureRequestHistoryChange,
 ) as any as S.Schema<FeatureRequestHistoryChangesList>;
 
 /** * `manual` - Manual * `github` - GitHub */
 export type FeatureRequestHistorySourceEnum = "manual" | "github";
-export const FeatureRequestHistorySourceEnum = S.String;
+const FeatureRequestHistorySourceEnum = S.String;
 
 export interface FeatureRequestHistory {
   /** Stable request history entry ID. */
@@ -997,7 +915,7 @@ export interface FeatureRequestHistory {
   /** When the request changed. */
   changed_at: string;
 }
-export const FeatureRequestHistory = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     changes: FeatureRequestHistoryChangesList,
@@ -1010,12 +928,12 @@ export const FeatureRequestHistory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeatureRequestHistory" }) as any as S.Schema<FeatureRequestHistory>;
 
 export type ListFeatureRequestsHistoryResponseBodyList = Array<FeatureRequestHistory>;
-export const ListFeatureRequestsHistoryResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFeatureRequestsHistoryResponseBodyList = /*@__PURE__*/ S.Array(
   FeatureRequestHistory,
 ) as any as S.Schema<ListFeatureRequestsHistoryResponseBodyList>;
 
 export type ListFeatureRequestsHistoryResponse = ListFeatureRequestsHistoryResponseBodyList;
-export const ListFeatureRequestsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureRequestsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   ListFeatureRequestsHistoryResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFeatureRequestsHistoryResponse",
@@ -1026,7 +944,7 @@ export interface ListFeatureRequestsStatusHistoryRequest {
   project_id: string;
   id: string;
 }
-export const ListFeatureRequestsStatusHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureRequestsStatusHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1057,7 +975,7 @@ export interface FeatureRequestStatusHistory {
   /** When the status changed. */
   changed_at: string;
 }
-export const FeatureRequestStatusHistory = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestStatusHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     previous_status: S.NullOr(FeatureRequestStatusEnum),
@@ -1072,13 +990,13 @@ export const FeatureRequestStatusHistory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureRequestStatusHistory>;
 
 export type ListFeatureRequestsStatusHistoryResponseBodyList = Array<FeatureRequestStatusHistory>;
-export const ListFeatureRequestsStatusHistoryResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFeatureRequestsStatusHistoryResponseBodyList = /*@__PURE__*/ S.Array(
   FeatureRequestStatusHistory,
 ) as any as S.Schema<ListFeatureRequestsStatusHistoryResponseBodyList>;
 
 export type ListFeatureRequestsStatusHistoryResponse =
   ListFeatureRequestsStatusHistoryResponseBodyList;
-export const ListFeatureRequestsStatusHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureRequestsStatusHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   ListFeatureRequestsStatusHistoryResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFeatureRequestsStatusHistoryResponse",
@@ -1086,12 +1004,12 @@ export const ListFeatureRequestsStatusHistoryResponse = /*@__PURE__*/ S.suspend(
 
 /** One or more affected account IDs. Removed accounts are unlinked without deleting their evidence. */
 export type UpdateFeatureRequestRequestAccountIdsList = Array<string>;
-export const UpdateFeatureRequestRequestAccountIdsList =
+const UpdateFeatureRequestRequestAccountIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<UpdateFeatureRequestRequestAccountIdsList>;
 
 /** One or more product area IDs. Existing inactive areas can remain linked. */
 export type UpdateFeatureRequestRequestProductAreaIdsList = Array<string>;
-export const UpdateFeatureRequestRequestProductAreaIdsList =
+const UpdateFeatureRequestRequestProductAreaIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<UpdateFeatureRequestRequestProductAreaIdsList>;
 
 export interface UpdateFeatureRequestRequest {
@@ -1115,7 +1033,7 @@ export interface UpdateFeatureRequestRequest {
   /** Updated manual priority. Pass null to remove the priority. * `high` - High * `medium` - Medium * `low` - Low */
   request_priority?: FeatureRequestPriorityEnum | (string & {}) | null;
 }
-export const UpdateFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1136,12 +1054,12 @@ export const UpdateFeatureRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more affected account IDs. Removed accounts are unlinked without deleting their evidence. */
 export type UpdateFeatureRequestsPartialRequestAccountIdsList = Array<string>;
-export const UpdateFeatureRequestsPartialRequestAccountIdsList =
+const UpdateFeatureRequestsPartialRequestAccountIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<UpdateFeatureRequestsPartialRequestAccountIdsList>;
 
 /** One or more product area IDs. Existing inactive areas can remain linked. */
 export type UpdateFeatureRequestsPartialRequestProductAreaIdsList = Array<string>;
-export const UpdateFeatureRequestsPartialRequestProductAreaIdsList =
+const UpdateFeatureRequestsPartialRequestProductAreaIdsList =
   CreateFeatureRequestRequestProductAreaIdsList as any as S.Schema<UpdateFeatureRequestsPartialRequestProductAreaIdsList>;
 
 export interface UpdateFeatureRequestsPartialRequest {
@@ -1165,7 +1083,7 @@ export interface UpdateFeatureRequestsPartialRequest {
   /** Updated manual priority. Pass null to remove the priority. * `high` - High * `medium` - Medium * `low` - Low */
   request_priority?: FeatureRequestPriorityEnum | (string & {}) | null;
 }
-export const UpdateFeatureRequestsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFeatureRequestsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

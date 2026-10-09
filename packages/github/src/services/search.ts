@@ -36,10 +36,10 @@ export class UnprocessableEntity
   ) {}
 
 export type CodeRequestSort = "indexed";
-export const CodeRequestSort = S.String;
+const CodeRequestSort = S.String;
 
 export type CodeRequestOrder = "desc" | "asc";
-export const CodeRequestOrder = S.String;
+const CodeRequestOrder = S.String;
 
 export interface CodeRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching code](https://docs.github.com/search-github/searching-on-github/searching-code)" for a detailed list of qualifiers. */
@@ -53,7 +53,7 @@ export interface CodeRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const CodeRequest = /*@__PURE__*/ S.suspend(() =>
+const CodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     sort: S.optional(CodeRequestSort.pipe(T.Query())),
@@ -88,7 +88,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -116,13 +116,13 @@ export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SimpleUser" }) as any as S.Schema<SimpleUser>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
+const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -131,7 +131,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -151,7 +151,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -168,7 +168,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -179,13 +179,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -194,98 +194,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -295,7 +279,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -310,16 +294,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -341,7 +324,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -364,7 +347,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -465,7 +448,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -561,11 +544,11 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepository" }) as any as S.Schema<MinimalRepository>;
 
 export type CodeSearchResultItemLineNumbersList = Array<string>;
-export const CodeSearchResultItemLineNumbersList =
+const CodeSearchResultItemLineNumbersList =
   MinimalRepositoryTopicsList as any as S.Schema<CodeSearchResultItemLineNumbersList>;
 
 export type SearchResultTextMatchesItemMatchesItemIndicesList = Array<number>;
-export const SearchResultTextMatchesItemMatchesItemIndicesList = /*@__PURE__*/ S.Array(
+const SearchResultTextMatchesItemMatchesItemIndicesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SearchResultTextMatchesItemMatchesItemIndicesList>;
 
@@ -573,7 +556,7 @@ export interface SearchResultTextMatchesItemMatchesItem {
   text?: string;
   indices?: SearchResultTextMatchesItemMatchesItemIndicesList;
 }
-export const SearchResultTextMatchesItemMatchesItem = /*@__PURE__*/ S.suspend(() =>
+const SearchResultTextMatchesItemMatchesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     indices: S.optional(SearchResultTextMatchesItemMatchesItemIndicesList),
@@ -583,7 +566,7 @@ export const SearchResultTextMatchesItemMatchesItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SearchResultTextMatchesItemMatchesItem>;
 
 export type SearchResultTextMatchesItemMatchesList = Array<SearchResultTextMatchesItemMatchesItem>;
-export const SearchResultTextMatchesItemMatchesList = /*@__PURE__*/ S.Array(
+const SearchResultTextMatchesItemMatchesList = /*@__PURE__*/ S.Array(
   SearchResultTextMatchesItemMatchesItem,
 ) as any as S.Schema<SearchResultTextMatchesItemMatchesList>;
 
@@ -594,7 +577,7 @@ export interface SearchResultTextMatchesItem {
   fragment?: string;
   matches?: SearchResultTextMatchesItemMatchesList;
 }
-export const SearchResultTextMatchesItem = /*@__PURE__*/ S.suspend(() =>
+const SearchResultTextMatchesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object_url: S.optional(S.String),
     object_type: S.optional(S.NullOr(S.String)),
@@ -607,7 +590,7 @@ export const SearchResultTextMatchesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchResultTextMatchesItem>;
 
 export type SearchResultTextMatches = Array<SearchResultTextMatchesItem>;
-export const SearchResultTextMatches = /*@__PURE__*/ S.Array(
+const SearchResultTextMatches = /*@__PURE__*/ S.Array(
   SearchResultTextMatchesItem,
 ) as any as S.Schema<SearchResultTextMatches>;
 
@@ -627,7 +610,7 @@ export interface CodeSearchResultItem {
   line_numbers?: CodeSearchResultItemLineNumbersList;
   text_matches?: SearchResultTextMatches;
 }
-export const CodeSearchResultItem = /*@__PURE__*/ S.suspend(() =>
+const CodeSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     path: S.String,
@@ -646,7 +629,7 @@ export const CodeSearchResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeSearchResultItem" }) as any as S.Schema<CodeSearchResultItem>;
 
 export type CodeResponseItemsList = Array<CodeSearchResultItem>;
-export const CodeResponseItemsList = /*@__PURE__*/ S.Array(
+const CodeResponseItemsList = /*@__PURE__*/ S.Array(
   CodeSearchResultItem,
 ) as any as S.Schema<CodeResponseItemsList>;
 
@@ -655,7 +638,7 @@ export interface CodeResponse {
   incomplete_results: boolean;
   items: CodeResponseItemsList;
 }
-export const CodeResponse = /*@__PURE__*/ S.suspend(() =>
+const CodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     incomplete_results: S.Boolean,
@@ -664,10 +647,10 @@ export const CodeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeResponse" }) as any as S.Schema<CodeResponse>;
 
 export type CommitsRequestSort = "author-date" | "committer-date";
-export const CommitsRequestSort = S.String;
+const CommitsRequestSort = S.String;
 
 export type CommitsRequestOrder = "desc" | "asc";
-export const CommitsRequestOrder = S.String;
+const CommitsRequestOrder = S.String;
 
 export interface CommitsRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching commits](https://docs.github.com/search-github/searching-on-github/searching-commits)" for a detailed list of qualifiers. */
@@ -681,7 +664,7 @@ export interface CommitsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const CommitsRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     sort: S.optional(CommitsRequestSort.pipe(T.Query())),
@@ -696,7 +679,7 @@ export interface CommitSearchResultItemCommitAuthor {
   email: string;
   date: string;
 }
-export const CommitSearchResultItemCommitAuthor = /*@__PURE__*/ S.suspend(() =>
+const CommitSearchResultItemCommitAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     email: S.String,
@@ -712,7 +695,7 @@ export interface NullableGitUser {
   email?: string;
   date?: string;
 }
-export const NullableGitUser = /*@__PURE__*/ S.suspend(() =>
+const NullableGitUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     email: S.optional(S.String),
@@ -724,7 +707,7 @@ export interface CommitSearchResultItemCommitTree {
   sha: string;
   url: string;
 }
-export const CommitSearchResultItemCommitTree = /*@__PURE__*/ S.suspend(() =>
+const CommitSearchResultItemCommitTree = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: S.String,
     url: S.String,
@@ -740,7 +723,7 @@ export interface Verification {
   signature: string | null;
   verified_at: string | null;
 }
-export const Verification = /*@__PURE__*/ S.suspend(() =>
+const Verification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verified: S.Boolean,
     reason: S.String,
@@ -759,7 +742,7 @@ export interface CommitSearchResultItemCommit {
   url: string;
   verification?: Verification;
 }
-export const CommitSearchResultItemCommit = /*@__PURE__*/ S.suspend(() =>
+const CommitSearchResultItemCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: CommitSearchResultItemCommitAuthor,
     committer: S.NullOr(NullableGitUser),
@@ -775,14 +758,12 @@ export const CommitSearchResultItemCommit = /*@__PURE__*/ S.suspend(() =>
 
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
-export const NullableSimpleUser = SimpleUser;
-
 export interface CommitSearchResultItemParentsItem {
   url?: string;
   html_url?: string;
   sha?: string;
 }
-export const CommitSearchResultItemParentsItem = /*@__PURE__*/ S.suspend(() =>
+const CommitSearchResultItemParentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     html_url: S.optional(S.String),
@@ -793,7 +774,7 @@ export const CommitSearchResultItemParentsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommitSearchResultItemParentsItem>;
 
 export type CommitSearchResultItemParentsList = Array<CommitSearchResultItemParentsItem>;
-export const CommitSearchResultItemParentsList = /*@__PURE__*/ S.Array(
+const CommitSearchResultItemParentsList = /*@__PURE__*/ S.Array(
   CommitSearchResultItemParentsItem,
 ) as any as S.Schema<CommitSearchResultItemParentsList>;
 
@@ -812,7 +793,7 @@ export interface CommitSearchResultItem {
   node_id: string;
   text_matches?: SearchResultTextMatches;
 }
-export const CommitSearchResultItem = /*@__PURE__*/ S.suspend(() =>
+const CommitSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     sha: S.String,
@@ -830,7 +811,7 @@ export const CommitSearchResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitSearchResultItem" }) as any as S.Schema<CommitSearchResultItem>;
 
 export type CommitsResponseItemsList = Array<CommitSearchResultItem>;
-export const CommitsResponseItemsList = /*@__PURE__*/ S.Array(
+const CommitsResponseItemsList = /*@__PURE__*/ S.Array(
   CommitSearchResultItem,
 ) as any as S.Schema<CommitsResponseItemsList>;
 
@@ -839,7 +820,7 @@ export interface CommitsResponse {
   incomplete_results: boolean;
   items: CommitsResponseItemsList;
 }
-export const CommitsResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     incomplete_results: S.Boolean,
@@ -859,13 +840,13 @@ export type IssuesAndPullRequestsRequestSort =
   | "interactions"
   | "created"
   | "updated";
-export const IssuesAndPullRequestsRequestSort = S.String;
+const IssuesAndPullRequestsRequestSort = S.String;
 
 export type IssuesAndPullRequestsRequestOrder = "desc" | "asc";
-export const IssuesAndPullRequestsRequestOrder = S.String;
+const IssuesAndPullRequestsRequestOrder = S.String;
 
 export type IssuesAndPullRequestsRequestSearchType = "semantic" | "hybrid";
-export const IssuesAndPullRequestsRequestSearchType = S.String;
+const IssuesAndPullRequestsRequestSearchType = S.String;
 
 export interface IssuesAndPullRequestsRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching issues and pull requests](https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests)" for a detailed list of qualifiers. */
@@ -883,7 +864,7 @@ export interface IssuesAndPullRequestsRequest {
   /** The type of search to perform on issues. When not specified, the default is lexical search. - `semantic` -- performs a pure semantic (vector) search using embedding-based understanding. - `hybrid` -- combines semantic search with lexical search for best results. Semantic and hybrid search require authentication and are rate limited to 10 requests per minute. Only applies to issue searches (`/search/issues`). */
   search_type?: IssuesAndPullRequestsRequestSearchType | (string & {});
 }
-export const IssuesAndPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssuesAndPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     sort: S.optional(IssuesAndPullRequestsRequestSort.pipe(T.Query())),
@@ -898,7 +879,7 @@ export const IssuesAndPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssuesAndPullRequestsRequest>;
 
 export type IssueSearchResultItemAssigneesList = Array<SimpleUser>;
-export const IssueSearchResultItemAssigneesList = /*@__PURE__*/ S.Array(
+const IssueSearchResultItemAssigneesList = /*@__PURE__*/ S.Array(
   SimpleUser,
 ) as any as S.Schema<IssueSearchResultItemAssigneesList>;
 
@@ -915,7 +896,7 @@ export interface IssueSearchResultItemLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by?: SimpleUser | null;
 }
-export const IssueSearchResultItemLabelsItem = /*@__PURE__*/ S.suspend(() =>
+const IssueSearchResultItemLabelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     node_id: S.optional(S.String),
@@ -932,7 +913,7 @@ export const IssueSearchResultItemLabelsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueSearchResultItemLabelsItem>;
 
 export type IssueSearchResultItemLabelsList = Array<IssueSearchResultItemLabelsItem>;
-export const IssueSearchResultItemLabelsList = /*@__PURE__*/ S.Array(
+const IssueSearchResultItemLabelsList = /*@__PURE__*/ S.Array(
   IssueSearchResultItemLabelsItem,
 ) as any as S.Schema<IssueSearchResultItemLabelsList>;
 
@@ -941,7 +922,7 @@ export interface SubIssuesSummary {
   completed: number;
   percent_completed: number;
 }
-export const SubIssuesSummary = /*@__PURE__*/ S.suspend(() =>
+const SubIssuesSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     completed: S.Number,
@@ -955,7 +936,7 @@ export interface IssueDependenciesSummary {
   total_blocked_by: number;
   total_blocking: number;
 }
-export const IssueDependenciesSummary = /*@__PURE__*/ S.suspend(() =>
+const IssueDependenciesSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocked_by: S.Number,
     blocking: S.Number,
@@ -966,11 +947,11 @@ export const IssueDependenciesSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The data type of the issue field */
 export type IssueFieldValueDataType = "text" | "single_select" | "multi_select" | "number" | "date";
-export const IssueFieldValueDataType = S.String;
+const IssueFieldValueDataType = S.String;
 
 /** The value of the issue field */
 export type IssueFieldValueValue = string | number | number;
-export const IssueFieldValueValue = S.Unknown as any as S.Schema<IssueFieldValueValue>;
+const IssueFieldValueValue = S.Unknown as any as S.Schema<IssueFieldValueValue>;
 
 /** Details about the selected option (only present for single_select fields) */
 export interface IssueFieldValueSingleSelectOption {
@@ -981,7 +962,7 @@ export interface IssueFieldValueSingleSelectOption {
   /** The color of the option */
   color: string;
 }
-export const IssueFieldValueSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
+const IssueFieldValueSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -992,11 +973,9 @@ export const IssueFieldValueSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueFieldValueSingleSelectOption>;
 
 export type IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
-export const IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
-
 /** Details about the selected options */
 export type IssueFieldValueMultiSelectOptionsList = Array<IssueFieldValueSingleSelectOption>;
-export const IssueFieldValueMultiSelectOptionsList = /*@__PURE__*/ S.Array(
+const IssueFieldValueMultiSelectOptionsList = /*@__PURE__*/ S.Array(
   IssueFieldValueSingleSelectOption,
 ) as any as S.Schema<IssueFieldValueMultiSelectOptionsList>;
 
@@ -1016,7 +995,7 @@ export interface IssueFieldValue {
   /** Details about the selected options */
   multi_select_options?: IssueFieldValueMultiSelectOptionsList | null;
 }
-export const IssueFieldValue = /*@__PURE__*/ S.suspend(() =>
+const IssueFieldValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issue_field_id: S.Number,
     issue_field_name: S.optional(S.String),
@@ -1029,13 +1008,13 @@ export const IssueFieldValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueFieldValue" }) as any as S.Schema<IssueFieldValue>;
 
 export type IssueSearchResultItemIssueFieldValuesList = Array<IssueFieldValue>;
-export const IssueSearchResultItemIssueFieldValuesList = /*@__PURE__*/ S.Array(
+const IssueSearchResultItemIssueFieldValuesList = /*@__PURE__*/ S.Array(
   IssueFieldValue,
 ) as any as S.Schema<IssueSearchResultItemIssueFieldValuesList>;
 
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-export const NullableMilestoneState = S.String;
+const NullableMilestoneState = S.String;
 
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
@@ -1059,7 +1038,7 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
+const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     html_url: S.String,
@@ -1087,7 +1066,7 @@ export interface IssueSearchResultItemPullRequest {
   patch_url: string | null;
   url: string | null;
 }
-export const IssueSearchResultItemPullRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueSearchResultItemPullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merged_at: S.optional(S.NullOr(S.String)),
     diff_url: S.NullOr(S.String),
@@ -1109,7 +1088,7 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export const AuthorAssociation = S.String;
+const AuthorAssociation = S.String;
 
 /** License Simple */
 export interface NullableLicenseSimple {
@@ -1120,7 +1099,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -1138,7 +1117,7 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -1149,35 +1128,34 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList =
-  MinimalRepositoryTopicsList as any as S.Schema<RepositoryTopicsList>;
+const RepositoryTopicsList = MinimalRepositoryTopicsList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
+const RepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
+const RepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
+const RepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
+const RepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
+const RepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lexical_search_ok: S.optional(S.Boolean),
     lexical_commit_sha: S.optional(S.String),
@@ -1318,7 +1296,7 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1431,7 +1409,7 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-export const IssueTypeColor = S.String;
+const IssueTypeColor = S.String;
 
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
@@ -1452,7 +1430,7 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-export const IssueType = /*@__PURE__*/ S.suspend(() =>
+const IssueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1483,23 +1461,8 @@ export interface Enterprise {
   updated_at: string | null;
   avatar_url: string;
 }
-export const Enterprise = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    html_url: S.String,
-    website_url: S.optional(S.NullOr(S.String)),
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    created_at: S.NullOr(S.String),
-    updated_at: S.NullOr(S.String),
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "Enterprise" }) as any as S.Schema<Enterprise>;
-
 export type NullableIntegrationOwner = SimpleUser | Enterprise;
-export const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
+const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
 
 /** The set of permissions for the GitHub app */
 export interface NullableIntegrationPermissions {
@@ -1509,7 +1472,7 @@ export interface NullableIntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
-export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
+const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(S.String),
     checks: S.optional(S.String),
@@ -1523,7 +1486,7 @@ export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList =
+const NullableIntegrationEventsList =
   MinimalRepositoryTopicsList as any as S.Schema<NullableIntegrationEventsList>;
 
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
@@ -1549,7 +1512,7 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-export const NullableIntegration = /*@__PURE__*/ S.suspend(() =>
+const NullableIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     slug: S.optional(S.String),
@@ -1580,7 +1543,7 @@ export interface ReactionRollup {
   eyes: number;
   rocket: number;
 }
-export const ReactionRollup = /*@__PURE__*/ S.suspend(() =>
+const ReactionRollup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     total_count: S.Number,
@@ -1600,7 +1563,7 @@ export interface NullablePinnedIssueComment {
   pinned_at: string;
   pinned_by: SimpleUser | null;
 }
-export const NullablePinnedIssueComment = /*@__PURE__*/ S.suspend(() =>
+const NullablePinnedIssueComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pinned_at: S.String,
     pinned_by: S.NullOr(SimpleUser),
@@ -1614,7 +1577,7 @@ export interface NullableIssueCommentMinimized {
   /** The reason the comment was minimized. */
   reason: string | null;
 }
-export const NullableIssueCommentMinimized = /*@__PURE__*/ S.suspend(() =>
+const NullableIssueCommentMinimized = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.NullOr(S.String),
   }),
@@ -1644,7 +1607,7 @@ export interface NullableIssueComment {
   pin?: NullablePinnedIssueComment | null;
   minimized?: NullableIssueCommentMinimized | null;
 }
-export const NullableIssueComment = /*@__PURE__*/ S.suspend(() =>
+const NullableIssueComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1708,7 +1671,7 @@ export interface IssueSearchResultItem {
   pinned_comment?: NullableIssueComment | null;
   reactions?: ReactionRollup;
 }
-export const IssueSearchResultItem = /*@__PURE__*/ S.suspend(() =>
+const IssueSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     repository_url: S.String,
@@ -1754,13 +1717,13 @@ export const IssueSearchResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueSearchResultItem" }) as any as S.Schema<IssueSearchResultItem>;
 
 export type IssuesAndPullRequestsResponseItemsList = Array<IssueSearchResultItem>;
-export const IssuesAndPullRequestsResponseItemsList = /*@__PURE__*/ S.Array(
+const IssuesAndPullRequestsResponseItemsList = /*@__PURE__*/ S.Array(
   IssueSearchResultItem,
 ) as any as S.Schema<IssuesAndPullRequestsResponseItemsList>;
 
 /** The type of search that was performed. Possible values are `lexical`, `semantic`, or `hybrid`. */
 export type IssuesAndPullRequestsResponseSearchType = "lexical" | "semantic" | "hybrid";
-export const IssuesAndPullRequestsResponseSearchType = S.String;
+const IssuesAndPullRequestsResponseSearchType = S.String;
 
 export type IssuesAndPullRequestsResponseLexicalFallbackReasonItem =
   | "no_text_terms"
@@ -1771,12 +1734,12 @@ export type IssuesAndPullRequestsResponseLexicalFallbackReasonItem =
   | "server_error"
   | "only_non_semantic_fields_requested"
   | "service_unavailable";
-export const IssuesAndPullRequestsResponseLexicalFallbackReasonItem = S.String;
+const IssuesAndPullRequestsResponseLexicalFallbackReasonItem = S.String;
 
 /** When a semantic or hybrid search falls back to lexical search, this field contains the reasons for the fallback. Only present when a fallback occurred. */
 export type IssuesAndPullRequestsResponseLexicalFallbackReasonList =
   Array<IssuesAndPullRequestsResponseLexicalFallbackReasonItem>;
-export const IssuesAndPullRequestsResponseLexicalFallbackReasonList = /*@__PURE__*/ S.Array(
+const IssuesAndPullRequestsResponseLexicalFallbackReasonList = /*@__PURE__*/ S.Array(
   IssuesAndPullRequestsResponseLexicalFallbackReasonItem,
 ) as any as S.Schema<IssuesAndPullRequestsResponseLexicalFallbackReasonList>;
 
@@ -1789,7 +1752,7 @@ export interface IssuesAndPullRequestsResponse {
   /** When a semantic or hybrid search falls back to lexical search, this field contains the reasons for the fallback. Only present when a fallback occurred. */
   lexical_fallback_reason?: IssuesAndPullRequestsResponseLexicalFallbackReasonList;
 }
-export const IssuesAndPullRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const IssuesAndPullRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     incomplete_results: S.Boolean,
@@ -1802,10 +1765,10 @@ export const IssuesAndPullRequestsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssuesAndPullRequestsResponse>;
 
 export type LabelsRequestSort = "created" | "updated";
-export const LabelsRequestSort = S.String;
+const LabelsRequestSort = S.String;
 
 export type LabelsRequestOrder = "desc" | "asc";
-export const LabelsRequestOrder = S.String;
+const LabelsRequestOrder = S.String;
 
 export interface LabelsRequest {
   /** The id of the repository. */
@@ -1821,7 +1784,7 @@ export interface LabelsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const LabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const LabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_id: S.Number.pipe(T.Query()),
     q: S.String.pipe(T.Query()),
@@ -1848,7 +1811,7 @@ export interface LabelSearchResultItem {
   score: number;
   text_matches?: SearchResultTextMatches;
 }
-export const LabelSearchResultItem = /*@__PURE__*/ S.suspend(() =>
+const LabelSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1865,7 +1828,7 @@ export const LabelSearchResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelSearchResultItem" }) as any as S.Schema<LabelSearchResultItem>;
 
 export type LabelsResponseItemsList = Array<LabelSearchResultItem>;
-export const LabelsResponseItemsList = /*@__PURE__*/ S.Array(
+const LabelsResponseItemsList = /*@__PURE__*/ S.Array(
   LabelSearchResultItem,
 ) as any as S.Schema<LabelsResponseItemsList>;
 
@@ -1874,7 +1837,7 @@ export interface LabelsResponse {
   incomplete_results: boolean;
   items: LabelsResponseItemsList;
 }
-export const LabelsResponse = /*@__PURE__*/ S.suspend(() =>
+const LabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     incomplete_results: S.Boolean,
@@ -1883,10 +1846,10 @@ export const LabelsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelsResponse" }) as any as S.Schema<LabelsResponse>;
 
 export type ReposRequestSort = "stars" | "forks" | "help-wanted-issues" | "updated";
-export const ReposRequestSort = S.String;
+const ReposRequestSort = S.String;
 
 export type ReposRequestOrder = "desc" | "asc";
-export const ReposRequestOrder = S.String;
+const ReposRequestOrder = S.String;
 
 export interface ReposRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching for repositories](https://docs.github.com/articles/searching-for-repositories/)" for a detailed list of qualifiers. */
@@ -1900,7 +1863,7 @@ export interface ReposRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ReposRequest = /*@__PURE__*/ S.suspend(() =>
+const ReposRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     sort: S.optional(ReposRequestSort.pipe(T.Query())),
@@ -1911,12 +1874,12 @@ export const ReposRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReposRequest" }) as any as S.Schema<ReposRequest>;
 
 export type RepoSearchResultItemTopicsList = Array<string>;
-export const RepoSearchResultItemTopicsList =
+const RepoSearchResultItemTopicsList =
   MinimalRepositoryTopicsList as any as S.Schema<RepoSearchResultItemTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepoSearchResultItemPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepoSearchResultItemPullRequestCreationPolicy = S.String;
+const RepoSearchResultItemPullRequestCreationPolicy = S.String;
 
 export interface RepoSearchResultItemPermissions {
   admin: boolean;
@@ -1925,7 +1888,7 @@ export interface RepoSearchResultItemPermissions {
   triage?: boolean;
   pull: boolean;
 }
-export const RepoSearchResultItemPermissions = /*@__PURE__*/ S.suspend(() =>
+const RepoSearchResultItemPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     maintain: S.optional(S.Boolean),
@@ -2034,7 +1997,7 @@ export interface RepoSearchResultItem {
   is_template?: boolean;
   web_commit_signoff_required?: boolean;
 }
-export const RepoSearchResultItem = /*@__PURE__*/ S.suspend(() =>
+const RepoSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -2131,7 +2094,7 @@ export const RepoSearchResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoSearchResultItem" }) as any as S.Schema<RepoSearchResultItem>;
 
 export type ReposResponseItemsList = Array<RepoSearchResultItem>;
-export const ReposResponseItemsList = /*@__PURE__*/ S.Array(
+const ReposResponseItemsList = /*@__PURE__*/ S.Array(
   RepoSearchResultItem,
 ) as any as S.Schema<ReposResponseItemsList>;
 
@@ -2140,7 +2103,7 @@ export interface ReposResponse {
   incomplete_results: boolean;
   items: ReposResponseItemsList;
 }
-export const ReposResponse = /*@__PURE__*/ S.suspend(() =>
+const ReposResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     incomplete_results: S.Boolean,
@@ -2156,7 +2119,7 @@ export interface TopicsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const TopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const TopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -2170,7 +2133,7 @@ export interface TopicSearchResultItemRelatedItemTopicRelation {
   topic_id?: number;
   relation_type?: string;
 }
-export const TopicSearchResultItemRelatedItemTopicRelation = /*@__PURE__*/ S.suspend(() =>
+const TopicSearchResultItemRelatedItemTopicRelation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -2184,7 +2147,7 @@ export const TopicSearchResultItemRelatedItemTopicRelation = /*@__PURE__*/ S.sus
 export interface TopicSearchResultItemRelatedItem {
   topic_relation?: TopicSearchResultItemRelatedItemTopicRelation;
 }
-export const TopicSearchResultItemRelatedItem = /*@__PURE__*/ S.suspend(() =>
+const TopicSearchResultItemRelatedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic_relation: S.optional(TopicSearchResultItemRelatedItemTopicRelation),
   }),
@@ -2193,20 +2156,15 @@ export const TopicSearchResultItemRelatedItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopicSearchResultItemRelatedItem>;
 
 export type TopicSearchResultItemRelatedList = Array<TopicSearchResultItemRelatedItem>;
-export const TopicSearchResultItemRelatedList = /*@__PURE__*/ S.Array(
+const TopicSearchResultItemRelatedList = /*@__PURE__*/ S.Array(
   TopicSearchResultItemRelatedItem,
 ) as any as S.Schema<TopicSearchResultItemRelatedList>;
 
 export type TopicSearchResultItemAliasesItemTopicRelation =
   TopicSearchResultItemRelatedItemTopicRelation;
-export const TopicSearchResultItemAliasesItemTopicRelation =
-  TopicSearchResultItemRelatedItemTopicRelation;
-
 export type TopicSearchResultItemAliasesItem = TopicSearchResultItemRelatedItem;
-export const TopicSearchResultItemAliasesItem = TopicSearchResultItemRelatedItem;
-
 export type TopicSearchResultItemAliasesList = Array<TopicSearchResultItemRelatedItem>;
-export const TopicSearchResultItemAliasesList =
+const TopicSearchResultItemAliasesList =
   TopicSearchResultItemRelatedList as any as S.Schema<TopicSearchResultItemAliasesList>;
 
 /** Topic Search Result Item */
@@ -2228,7 +2186,7 @@ export interface TopicSearchResultItem {
   related?: TopicSearchResultItemRelatedList | null;
   aliases?: TopicSearchResultItemAliasesList | null;
 }
-export const TopicSearchResultItem = /*@__PURE__*/ S.suspend(() =>
+const TopicSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     display_name: S.NullOr(S.String),
@@ -2250,7 +2208,7 @@ export const TopicSearchResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicSearchResultItem" }) as any as S.Schema<TopicSearchResultItem>;
 
 export type TopicsResponseItemsList = Array<TopicSearchResultItem>;
-export const TopicsResponseItemsList = /*@__PURE__*/ S.Array(
+const TopicsResponseItemsList = /*@__PURE__*/ S.Array(
   TopicSearchResultItem,
 ) as any as S.Schema<TopicsResponseItemsList>;
 
@@ -2259,7 +2217,7 @@ export interface TopicsResponse {
   incomplete_results: boolean;
   items: TopicsResponseItemsList;
 }
-export const TopicsResponse = /*@__PURE__*/ S.suspend(() =>
+const TopicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     incomplete_results: S.Boolean,
@@ -2268,10 +2226,10 @@ export const TopicsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicsResponse" }) as any as S.Schema<TopicsResponse>;
 
 export type UsersRequestSort = "followers" | "repositories" | "joined";
-export const UsersRequestSort = S.String;
+const UsersRequestSort = S.String;
 
 export type UsersRequestOrder = "desc" | "asc";
-export const UsersRequestOrder = S.String;
+const UsersRequestOrder = S.String;
 
 export interface UsersRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching users](https://docs.github.com/search-github/searching-on-github/searching-users)" for a detailed list of qualifiers. */
@@ -2285,7 +2243,7 @@ export interface UsersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const UsersRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     sort: S.optional(UsersRequestSort.pipe(T.Query())),
@@ -2333,7 +2291,7 @@ export interface UserSearchResultItem {
   suspended_at?: string | null;
   user_view_type?: string;
 }
-export const UserSearchResultItem = /*@__PURE__*/ S.suspend(() =>
+const UserSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.String,
     id: S.Number,
@@ -2374,7 +2332,7 @@ export const UserSearchResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSearchResultItem" }) as any as S.Schema<UserSearchResultItem>;
 
 export type UsersResponseItemsList = Array<UserSearchResultItem>;
-export const UsersResponseItemsList = /*@__PURE__*/ S.Array(
+const UsersResponseItemsList = /*@__PURE__*/ S.Array(
   UserSearchResultItem,
 ) as any as S.Schema<UsersResponseItemsList>;
 
@@ -2383,7 +2341,7 @@ export interface UsersResponse {
   incomplete_results: boolean;
   items: UsersResponseItemsList;
 }
-export const UsersResponse = /*@__PURE__*/ S.suspend(() =>
+const UsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     incomplete_results: S.Boolean,

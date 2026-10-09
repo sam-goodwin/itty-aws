@@ -51,7 +51,7 @@ export interface Credentials {
   access_key?: string;
   access_secret?: string | Redacted.Redacted<string>;
 }
-export const Credentials = /*@__PURE__*/ S.suspend(() =>
+const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_key: S.optional(S.String),
     access_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -68,7 +68,7 @@ export interface CreateProxyRequest {
   /** Upstream registry url to proxy */
   url: string;
 }
-export const CreateProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(Credentials),
     description: S.optional(S.String),
@@ -89,7 +89,7 @@ export interface CreateArtifactoryRequest {
   /** If proxy configuration is provided, this project will be created as a proxy-cache for the upstream registry. */
   proxy?: CreateProxyRequest;
 }
-export const CreateArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -110,7 +110,7 @@ export const CreateArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RedactedCredentials {
   access_key?: string;
 }
-export const RedactedCredentials = /*@__PURE__*/ S.suspend(() =>
+const RedactedCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_key: S.optional(S.String),
   }),
@@ -126,7 +126,7 @@ export interface Proxy {
   /** Upstream registry url to proxy */
   url: string;
 }
-export const Proxy = /*@__PURE__*/ S.suspend(() =>
+const Proxy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(RedactedCredentials),
     description: S.optional(S.String),
@@ -153,7 +153,7 @@ export interface Artifactory {
   /** How many users does this artifactory have. Read Only. */
   user_count: number;
 }
-export const Artifactory = /*@__PURE__*/ S.suspend(() =>
+const Artifactory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumed_quota_bytes: S.Number,
     create_time: S.String,
@@ -174,7 +174,7 @@ export interface DeleteArtifactoryRequest {
   /** Artifactory identifier. */
   artifactoryId: string;
 }
-export const DeleteArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -190,7 +190,7 @@ export const DeleteArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteArtifactoryRequest" }) as any as S.Schema<DeleteArtifactoryRequest>;
 
 export interface DeleteArtifactoryResponse {}
-export const DeleteArtifactoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteArtifactoryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteArtifactoryResponse",
 }) as any as S.Schema<DeleteArtifactoryResponse>;
 
@@ -202,7 +202,7 @@ export interface GetArtifactoryRequest {
   /** Artifactory identifier. */
   artifactoryId: string;
 }
-export const GetArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -227,7 +227,7 @@ export interface ListArtifactoriesRequest {
   /** A page token, received from a previous `ListArtifactories` call. Provide this to retrieve the subsequent page. */
   next_page_token?: string;
 }
-export const ListArtifactoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArtifactoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -244,7 +244,7 @@ export const ListArtifactoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListArtifactoriesRequest" }) as any as S.Schema<ListArtifactoriesRequest>;
 
 export type ArtifactoryListArtifactoriesList = Array<Artifactory>;
-export const ArtifactoryListArtifactoriesList = /*@__PURE__*/ S.Array(
+const ArtifactoryListArtifactoriesList = /*@__PURE__*/ S.Array(
   Artifactory,
 ) as any as S.Schema<ArtifactoryListArtifactoriesList>;
 
@@ -254,7 +254,7 @@ export interface ArtifactoryList {
   /** A token to retrieve the next page of results. Pass this value as `page_token` in the subsequent request. If empty, there are no more pages. */
   next_page_token?: string;
 }
-export const ArtifactoryList = /*@__PURE__*/ S.suspend(() =>
+const ArtifactoryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     artifactories: ArtifactoryListArtifactoriesList,
     next_page_token: S.optional(S.String),
@@ -267,7 +267,7 @@ export interface ListReplicationAdaptersRequest {
   /** STACKIT region identification */
   regionId: string;
 }
-export const ListReplicationAdaptersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReplicationAdaptersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -289,7 +289,7 @@ export interface ReplicationAdapter {
   /** Identifies the replication adapter */
   registry_type: string;
 }
-export const ReplicationAdapter = /*@__PURE__*/ S.suspend(() =>
+const ReplicationAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display_name: S.String,
     registry_type: S.String,
@@ -297,7 +297,7 @@ export const ReplicationAdapter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicationAdapter" }) as any as S.Schema<ReplicationAdapter>;
 
 export type ReplicationAdapterListReplicationAdaptersList = Array<ReplicationAdapter>;
-export const ReplicationAdapterListReplicationAdaptersList = /*@__PURE__*/ S.Array(
+const ReplicationAdapterListReplicationAdaptersList = /*@__PURE__*/ S.Array(
   ReplicationAdapter,
 ) as any as S.Schema<ReplicationAdapterListReplicationAdaptersList>;
 
@@ -307,7 +307,7 @@ export interface ReplicationAdapterList {
   next_page_token?: string;
   replication_adapters: ReplicationAdapterListReplicationAdaptersList;
 }
-export const ReplicationAdapterList = /*@__PURE__*/ S.suspend(() =>
+const ReplicationAdapterList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_page_token: S.optional(S.String),
     replication_adapters: ReplicationAdapterListReplicationAdaptersList,
@@ -322,7 +322,7 @@ export interface UpdateProxyRequest {
   /** Upstream registry url to proxy */
   url?: string;
 }
-export const UpdateProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(Credentials),
     description: S.optional(S.String),
@@ -339,7 +339,7 @@ export interface PatchArtifactoryRequest {
   artifactoryId: string;
   proxy?: UpdateProxyRequest;
 }
-export const PatchArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchArtifactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),

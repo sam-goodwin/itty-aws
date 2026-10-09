@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The type of the resource whose name is to be validated. This value must always be 'searchServices'. */
 export type CheckServiceNameAvailabilityRequestType = "searchServices";
-export const CheckServiceNameAvailabilityRequestType = S.String;
+const CheckServiceNameAvailabilityRequestType = S.String;
 
 export interface CheckServiceNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20,7 +20,7 @@ export interface CheckServiceNameAvailabilityRequest {
   /** The type of the resource whose name is to be validated. This value must always be 'searchServices'. */
   type: CheckServiceNameAvailabilityRequestType | (string & {});
 }
-export const CheckServiceNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckServiceNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -39,7 +39,7 @@ export const CheckServiceNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason why the name is not available. 'Invalid' indicates the name provided does not match the naming requirements (incorrect length, unsupported characters, etc.). 'AlreadyExists' indicates that the name is already in use and is therefore unavailable. */
 export type UnavailableNameReason = "Invalid" | "AlreadyExists";
-export const UnavailableNameReason = S.String;
+const UnavailableNameReason = S.String;
 
 /** Output of check name availability API. */
 export interface CheckNameAvailabilityOutput {
@@ -50,7 +50,7 @@ export interface CheckNameAvailabilityOutput {
   /** A message that explains why the name is invalid and provides resource naming requirements. Available only if 'Invalid' is returned in the 'reason' property. */
   message?: string;
 }
-export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(UnavailableNameReason),
@@ -70,7 +70,7 @@ export interface CreateQueryKeyRequest {
   /** The name of the new query API key. */
   name: string;
 }
-export const CreateQueryKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateQueryKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -93,7 +93,7 @@ export interface QueryKey {
   /** The value of the query API key. */
   key?: string;
 }
-export const QueryKey = /*@__PURE__*/ S.suspend(() =>
+const QueryKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     key: S.optional(S.String),
@@ -110,7 +110,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection to the Azure AI Search service with the specified resource group. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -130,11 +130,11 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -151,7 +151,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -167,7 +167,7 @@ export interface PrivateEndpointConnectionPropertiesPrivateEndpoint {
   /** The resource ID of the private endpoint resource from Microsoft.Network provider. */
   id?: string;
 }
-export const PrivateEndpointConnectionPropertiesPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -181,7 +181,7 @@ export type PrivateLinkServiceConnectionStatus =
   | "Approved"
   | "Rejected"
   | "Disconnected";
-export const PrivateLinkServiceConnectionStatus = S.String;
+const PrivateLinkServiceConnectionStatus = S.String;
 
 /** Describes the current state of an existing Azure Private Link service connection to the private endpoint. */
 export interface PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState {
@@ -192,7 +192,7 @@ export interface PrivateEndpointConnectionPropertiesPrivateLinkServiceConnection
   /** A description of any extra actions that may be required. */
   actionsRequired?: string;
 }
-export const PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState =
+const PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.optional(PrivateLinkServiceConnectionStatus),
@@ -211,7 +211,7 @@ export type PrivateLinkServiceConnectionProvisioningState =
   | "Succeeded"
   | "Incomplete"
   | "Canceled";
-export const PrivateLinkServiceConnectionProvisioningState = S.String;
+const PrivateLinkServiceConnectionProvisioningState = S.String;
 
 /** Describes the properties of an existing private endpoint connection to the search service. */
 export interface PrivateEndpointConnectionProperties {
@@ -224,7 +224,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled. */
   provisioningState?: PrivateLinkServiceConnectionProvisioningState | (string & {});
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointConnectionPropertiesPrivateEndpoint),
     privateLinkServiceConnectionState: S.optional(
@@ -249,7 +249,7 @@ export interface DeletePrivateEndpointConnectionResponse {
   /** Describes the properties of an existing private endpoint connection to the Azure AI Search service. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -271,7 +271,7 @@ export interface DeleteQueryKeyRequest {
   /** The query key to be deleted. Query keys are identified by value, not by name. */
   key: string;
 }
-export const DeleteQueryKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueryKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -288,7 +288,7 @@ export const DeleteQueryKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteQueryKeyRequest" }) as any as S.Schema<DeleteQueryKeyRequest>;
 
 export interface DeleteQueryKeyResponse {}
-export const DeleteQueryKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteQueryKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteQueryKeyResponse",
 }) as any as S.Schema<DeleteQueryKeyResponse>;
 
@@ -300,7 +300,7 @@ export interface DeleteServiceRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -316,8 +316,7 @@ export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteServiceRequest" }) as any as S.Schema<DeleteServiceRequest>;
 
 export interface DeleteServiceResponse {}
-export const DeleteServiceResponse =
-  DeleteQueryKeyResponse as any as S.Schema<DeleteServiceResponse>;
+const DeleteServiceResponse = DeleteQueryKeyResponse as any as S.Schema<DeleteServiceResponse>;
 
 export interface DeleteSharedPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -329,7 +328,7 @@ export interface DeleteSharedPrivateLinkResourceRequest {
   /** The name of the shared private link resource managed by the Azure AI Search service within the specified resource group. */
   sharedPrivateLinkResourceName: string;
 }
-export const DeleteSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -348,7 +347,7 @@ export const DeleteSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteSharedPrivateLinkResourceRequest>;
 
 export interface DeleteSharedPrivateLinkResourceResponse {}
-export const DeleteSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSharedPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSharedPrivateLinkResourceResponse",
@@ -362,7 +361,7 @@ export interface GetAdminKeyRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const GetAdminKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdminKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -384,7 +383,7 @@ export interface AdminKeyResult {
   /** The secondary admin API key of the search service. */
   secondaryKey?: string;
 }
-export const AdminKeyResult = /*@__PURE__*/ S.suspend(() =>
+const AdminKeyResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryKey: S.optional(S.String),
     secondaryKey: S.optional(S.String),
@@ -401,7 +400,7 @@ export interface GetNetworkSecurityPerimeterConfigurationRequest {
   /** The network security perimeter configuration name. */
   nspConfigName: string;
 }
-export const GetNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -428,7 +427,7 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Accepted"
   | "Failed"
   | "Canceled";
-export const NetworkSecurityPerimeterConfigurationProvisioningState = S.String;
+const NetworkSecurityPerimeterConfigurationProvisioningState = S.String;
 
 /** Type of issue */
 export type ProvisioningIssuePropertiesIssueType =
@@ -436,25 +435,25 @@ export type ProvisioningIssuePropertiesIssueType =
   | "ConfigurationPropagationFailure"
   | "MissingPerimeterConfiguration"
   | "MissingIdentityConfiguration";
-export const ProvisioningIssuePropertiesIssueType = S.String;
+const ProvisioningIssuePropertiesIssueType = S.String;
 
 /** Severity of the issue. */
 export type ProvisioningIssuePropertiesSeverity = "Warning" | "Error";
-export const ProvisioningIssuePropertiesSeverity = S.String;
+const ProvisioningIssuePropertiesSeverity = S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
 export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
-export const ProvisioningIssuePropertiesSuggestedResourceIdsList = /*@__PURE__*/ S.Array(
+const ProvisioningIssuePropertiesSuggestedResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Direction of Access Rule */
 export type AccessRuleDirection = "Inbound" | "Outbound";
-export const AccessRuleDirection = S.String;
+const AccessRuleDirection = S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
 export type AccessRulePropertiesAddressPrefixesList = Array<string>;
-export const AccessRulePropertiesAddressPrefixesList =
+const AccessRulePropertiesAddressPrefixesList =
   ProvisioningIssuePropertiesSuggestedResourceIdsList as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
 
 /** Subscription identifiers */
@@ -462,12 +461,12 @@ export interface AccessRulePropertiesSubscriptionsItem {
   /** The fully qualified Azure resource ID of the subscription e.g. ('/subscriptions/00000000-0000-0000-0000-000000000000') */
   id?: string;
 }
-export const AccessRulePropertiesSubscriptionsItem =
+const AccessRulePropertiesSubscriptionsItem =
   PrivateEndpointConnectionPropertiesPrivateEndpoint as any as S.Schema<AccessRulePropertiesSubscriptionsItem>;
 
 /** Subscriptions for inbound rules */
 export type AccessRulePropertiesSubscriptionsList = Array<AccessRulePropertiesSubscriptionsItem>;
-export const AccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
+const AccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   AccessRulePropertiesSubscriptionsItem,
 ) as any as S.Schema<AccessRulePropertiesSubscriptionsList>;
 
@@ -480,7 +479,7 @@ export interface NetworkSecurityPerimeter {
   /** Location of the network security perimeter */
   location?: string;
 }
-export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     perimeterGuid: S.optional(S.String),
@@ -490,23 +489,23 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network security perimeters for inbound rules */
 export type AccessRulePropertiesNetworkSecurityPerimetersList = Array<NetworkSecurityPerimeter>;
-export const AccessRulePropertiesNetworkSecurityPerimetersList = /*@__PURE__*/ S.Array(
+const AccessRulePropertiesNetworkSecurityPerimetersList = /*@__PURE__*/ S.Array(
   NetworkSecurityPerimeter,
 ) as any as S.Schema<AccessRulePropertiesNetworkSecurityPerimetersList>;
 
 /** Fully qualified domain names (FQDN) for outbound rules */
 export type AccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
-export const AccessRulePropertiesFullyQualifiedDomainNamesList =
+const AccessRulePropertiesFullyQualifiedDomainNamesList =
   ProvisioningIssuePropertiesSuggestedResourceIdsList as any as S.Schema<AccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Email addresses for outbound rules */
 export type AccessRulePropertiesEmailAddressesList = Array<string>;
-export const AccessRulePropertiesEmailAddressesList =
+const AccessRulePropertiesEmailAddressesList =
   ProvisioningIssuePropertiesSuggestedResourceIdsList as any as S.Schema<AccessRulePropertiesEmailAddressesList>;
 
 /** Phone numbers for outbound rules */
 export type AccessRulePropertiesPhoneNumbersList = Array<string>;
-export const AccessRulePropertiesPhoneNumbersList =
+const AccessRulePropertiesPhoneNumbersList =
   ProvisioningIssuePropertiesSuggestedResourceIdsList as any as S.Schema<AccessRulePropertiesPhoneNumbersList>;
 
 /** Properties of Access Rule */
@@ -525,7 +524,7 @@ export interface AccessRuleProperties {
   /** Phone numbers for outbound rules */
   phoneNumbers?: AccessRulePropertiesPhoneNumbersList;
 }
-export const AccessRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const AccessRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(AccessRuleDirection),
     addressPrefixes: S.optional(AccessRulePropertiesAddressPrefixesList),
@@ -543,7 +542,7 @@ export interface AccessRule {
   name?: string;
   properties?: AccessRuleProperties;
 }
-export const AccessRule = /*@__PURE__*/ S.suspend(() =>
+const AccessRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(AccessRuleProperties),
@@ -552,7 +551,7 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Access rules that can be added to the network security profile (NSP) to remediate the issue. */
 export type ProvisioningIssuePropertiesSuggestedAccessRulesList = Array<AccessRule>;
-export const ProvisioningIssuePropertiesSuggestedAccessRulesList = /*@__PURE__*/ S.Array(
+const ProvisioningIssuePropertiesSuggestedAccessRulesList = /*@__PURE__*/ S.Array(
   AccessRule,
 ) as any as S.Schema<ProvisioningIssuePropertiesSuggestedAccessRulesList>;
 
@@ -569,7 +568,7 @@ export interface ProvisioningIssueProperties {
   /** Access rules that can be added to the network security profile (NSP) to remediate the issue. */
   suggestedAccessRules?: ProvisioningIssuePropertiesSuggestedAccessRulesList;
 }
-export const ProvisioningIssueProperties = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningIssueProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueType: S.optional(ProvisioningIssuePropertiesIssueType),
     severity: S.optional(ProvisioningIssuePropertiesSeverity),
@@ -587,7 +586,7 @@ export interface ProvisioningIssue {
   name?: string;
   properties?: ProvisioningIssueProperties;
 }
-export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(ProvisioningIssueProperties),
@@ -597,14 +596,13 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 /** List of provisioning issues, if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   Array<ProvisioningIssue>;
-export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  /*@__PURE__*/ S.Array(
-    ProvisioningIssue,
-  ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
+const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList = /*@__PURE__*/ S.Array(
+  ProvisioningIssue,
+) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
 
 /** Access mode of the resource association */
 export type ResourceAssociationAccessMode = "Enforced" | "Learning" | "Audit";
-export const ResourceAssociationAccessMode = S.String;
+const ResourceAssociationAccessMode = S.String;
 
 /** Information about resource association */
 export interface ResourceAssociation {
@@ -612,7 +610,7 @@ export interface ResourceAssociation {
   name?: string;
   accessMode?: ResourceAssociationAccessMode;
 }
-export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
+const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     accessMode: S.optional(ResourceAssociationAccessMode),
@@ -621,12 +619,12 @@ export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Access Rules */
 export type NetworkSecurityProfileAccessRulesList = Array<AccessRule>;
-export const NetworkSecurityProfileAccessRulesList =
+const NetworkSecurityProfileAccessRulesList =
   ProvisioningIssuePropertiesSuggestedAccessRulesList as any as S.Schema<NetworkSecurityProfileAccessRulesList>;
 
 /** List of log categories that are enabled */
 export type NetworkSecurityProfileEnabledLogCategoriesList = Array<string>;
-export const NetworkSecurityProfileEnabledLogCategoriesList =
+const NetworkSecurityProfileEnabledLogCategoriesList =
   ProvisioningIssuePropertiesSuggestedResourceIdsList as any as S.Schema<NetworkSecurityProfileEnabledLogCategoriesList>;
 
 /** Network security perimeter configuration profile */
@@ -642,7 +640,7 @@ export interface NetworkSecurityProfile {
   /** List of log categories that are enabled */
   enabledLogCategories?: NetworkSecurityProfileEnabledLogCategoriesList;
 }
-export const NetworkSecurityProfile = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     accessRulesVersion: S.optional(S.Number),
@@ -661,7 +659,7 @@ export interface NetworkSecurityPerimeterConfigurationProperties {
   resourceAssociation?: ResourceAssociation;
   profile?: NetworkSecurityProfile;
 }
-export const NetworkSecurityPerimeterConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeterConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(NetworkSecurityPerimeterConfigurationProvisioningState),
     provisioningIssues: S.optional(
@@ -686,7 +684,7 @@ export interface GetNetworkSecurityPerimeterConfigurationResponse {
   systemData?: SystemData;
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-export const GetNetworkSecurityPerimeterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkSecurityPerimeterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -708,7 +706,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection to the Azure AI Search service with the specified resource group. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -738,7 +736,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Describes the properties of an existing private endpoint connection to the Azure AI Search service. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetServiceRequest {
@@ -749,7 +747,7 @@ export interface GetServiceRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -766,25 +764,25 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetServiceResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetServiceResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetServiceResponseTagsMap>;
 
 /** Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'. */
 export type SearchServicePropertiesHostingMode = "Default" | "HighDensity";
-export const SearchServicePropertiesHostingMode = S.String;
+const SearchServicePropertiesHostingMode = S.String;
 
 /** Configure this property to support the search service using either the Default Compute or Azure Confidential Compute. */
 export type ComputeType = "Default" | "Confidential";
-export const ComputeType = S.String;
+const ComputeType = S.String;
 
 /** This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method. */
 export type SearchServicePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
-export const SearchServicePropertiesPublicNetworkAccess = S.String;
+const SearchServicePropertiesPublicNetworkAccess = S.String;
 
 /** The status of the search service. Possible values include: 'running': The search service is running and no provisioning operations are underway. 'provisioning': The search service is being provisioned or scaled up or down. 'deleting': The search service is being deleted. 'degraded': The search service is degraded. This can occur when the underlying search units are not healthy. The search service is most likely operational, but performance might be slow and some requests might be dropped. 'disabled': The search service is disabled. In this state, the service will reject all API requests. 'error': The search service is in an error state. 'stopped': The search service is in a subscription that's disabled. If your service is in the degraded, disabled, or error states, it means the Azure AI Search team is actively investigating the underlying issue. Dedicated services in these states are still chargeable based on the number of search units provisioned. */
 export type SearchServiceStatus =
@@ -795,18 +793,18 @@ export type SearchServiceStatus =
   | "disabled"
   | "error"
   | "stopped";
-export const SearchServiceStatus = S.String;
+const SearchServiceStatus = S.String;
 
 /** The state of the last provisioning operation performed on the search service. Provisioning is an intermediate state that occurs while service capacity is being established. After capacity is set up, provisioningState changes to either 'Succeeded' or 'Failed'. Client applications can poll provisioning status (the recommended polling interval is from 30 seconds to one minute) by using the Get Search Service operation to see when an operation is completed. If you are using the free service, this value tends to come back as 'Succeeded' directly in the call to Create search service. This is because the free service uses capacity that is already set up. */
 export type ProvisioningState = "succeeded" | "provisioning" | "failed";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** The IP restriction rule of the Azure AI Search service. */
 export interface IpRule {
   /** Value corresponding to a single IPv4 address (eg., 123.1.2.3) or an IP range in CIDR format (eg., 123.1.2.3/24) to be allowed. */
   value?: string;
 }
-export const IpRule = /*@__PURE__*/ S.suspend(() =>
+const IpRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -814,13 +812,13 @@ export const IpRule = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IP restriction rules that defines the inbound network(s) with allowing access to the search service endpoint. At the meantime, all other public IP networks are blocked by the firewall. These restriction rules are applied only when the 'publicNetworkAccess' of the search service is 'enabled'; otherwise, traffic over public interface is not allowed even with any public IP rules, and private endpoint connections would be the exclusive access method. */
 export type NetworkRuleSetIpRulesList = Array<IpRule>;
-export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
+const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
   IpRule,
 ) as any as S.Schema<NetworkRuleSetIpRulesList>;
 
 /** Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section. */
 export type SearchBypass = "None" | "AzureServices";
-export const SearchBypass = S.String;
+const SearchBypass = S.String;
 
 /** Network specific rules that determine how the Azure AI Search service may be reached. */
 export interface NetworkRuleSet {
@@ -829,7 +827,7 @@ export interface NetworkRuleSet {
   /** Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section. */
   bypass?: SearchBypass | (string & {});
 }
-export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
+const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipRules: S.optional(NetworkRuleSetIpRulesList),
     bypass: S.optional(SearchBypass),
@@ -838,22 +836,22 @@ export const NetworkRuleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** A specific data exfiltration scenario that is disabled for the service. */
 export type SearchDataExfiltrationProtection = "BlockAll";
-export const SearchDataExfiltrationProtection = S.String;
+const SearchDataExfiltrationProtection = S.String;
 
 /** A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future. */
 export type SearchServicePropertiesDataExfiltrationProtectionsList =
   Array<SearchDataExfiltrationProtection>;
-export const SearchServicePropertiesDataExfiltrationProtectionsList = /*@__PURE__*/ S.Array(
+const SearchServicePropertiesDataExfiltrationProtectionsList = /*@__PURE__*/ S.Array(
   SearchDataExfiltrationProtection,
 ) as any as S.Schema<SearchServicePropertiesDataExfiltrationProtectionsList>;
 
 /** Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key. */
 export type SearchEncryptionWithCmk = "Disabled" | "Enabled" | "Unspecified";
-export const SearchEncryptionWithCmk = S.String;
+const SearchEncryptionWithCmk = S.String;
 
 /** Returns the status of search service compliance with respect to non-CMK-encrypted objects. If a service has more than one unencrypted object, and enforcement is enabled, the service is marked as noncompliant. */
 export type SearchEncryptionComplianceStatus = "Compliant" | "NonCompliant";
-export const SearchEncryptionComplianceStatus = S.String;
+const SearchEncryptionComplianceStatus = S.String;
 
 /** Describes a policy that determines how resources within the search service are to be encrypted with customer managed keys. */
 export interface EncryptionWithCmk {
@@ -862,7 +860,7 @@ export interface EncryptionWithCmk {
   /** Returns the status of search service compliance with respect to non-CMK-encrypted objects. If a service has more than one unencrypted object, and enforcement is enabled, the service is marked as noncompliant. */
   encryptionComplianceStatus?: SearchEncryptionComplianceStatus | (string & {});
 }
-export const EncryptionWithCmk = /*@__PURE__*/ S.suspend(() =>
+const EncryptionWithCmk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforcement: S.optional(SearchEncryptionWithCmk),
     encryptionComplianceStatus: S.optional(SearchEncryptionComplianceStatus),
@@ -871,14 +869,14 @@ export const EncryptionWithCmk = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes what response the data plane API of a search service would send for requests that failed authentication. */
 export type AadAuthFailureMode = "http403" | "http401WithBearerChallenge";
-export const AadAuthFailureMode = S.String;
+const AadAuthFailureMode = S.String;
 
 /** Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication. */
 export interface DataPlaneAadOrApiKeyAuthOption {
   /** Describes what response the data plane API of a search service would send for requests that failed authentication. */
   aadAuthFailureMode?: AadAuthFailureMode | (string & {});
 }
-export const DataPlaneAadOrApiKeyAuthOption = /*@__PURE__*/ S.suspend(() =>
+const DataPlaneAadOrApiKeyAuthOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aadAuthFailureMode: S.optional(AadAuthFailureMode),
   }),
@@ -893,7 +891,7 @@ export interface DataPlaneAuthOptions {
   /** Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication. */
   aadOrApiKey?: DataPlaneAadOrApiKeyAuthOption;
 }
-export const DataPlaneAuthOptions = /*@__PURE__*/ S.suspend(() =>
+const DataPlaneAuthOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyOnly: S.optional(S.Unknown),
     aadOrApiKey: S.optional(DataPlaneAadOrApiKeyAuthOption),
@@ -902,7 +900,7 @@ export const DataPlaneAuthOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions. */
 export type SearchSemanticSearch = "disabled" | "free" | "standard";
-export const SearchSemanticSearch = S.String;
+const SearchSemanticSearch = S.String;
 
 /** Describes an existing private endpoint connection to the Azure AI Search service. */
 export interface PrivateEndpointConnection {
@@ -917,19 +915,19 @@ export interface PrivateEndpointConnection {
   /** Describes the properties of an existing private endpoint connection to the Azure AI Search service. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection =
+const PrivateEndpointConnection =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnection>;
 
 /** The list of private endpoint connections to the Azure AI Search service. */
 export type SearchServicePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
-export const SearchServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const SearchServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<SearchServicePropertiesPrivateEndpointConnectionsList>;
 
 /** Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected. */
 export type SharedPrivateLinkResourceStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
-export const SharedPrivateLinkResourceStatus = S.String;
+const SharedPrivateLinkResourceStatus = S.String;
 
 /** The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete. */
 export type SharedPrivateLinkResourceProvisioningState =
@@ -938,7 +936,7 @@ export type SharedPrivateLinkResourceProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Incomplete";
-export const SharedPrivateLinkResourceProvisioningState = S.String;
+const SharedPrivateLinkResourceProvisioningState = S.String;
 
 /** Describes the properties of an existing shared private link resource managed by the Azure AI Search service. */
 export interface SharedPrivateLinkResourceProperties {
@@ -955,7 +953,7 @@ export interface SharedPrivateLinkResourceProperties {
   /** The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete. */
   provisioningState?: SharedPrivateLinkResourceProvisioningState | (string & {});
 }
-export const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkResourceId: S.optional(S.String),
     groupId: S.optional(S.String),
@@ -981,7 +979,7 @@ export interface SharedPrivateLinkResource {
   /** Describes the properties of a shared private link resource managed by the Azure AI Search service. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -996,13 +994,13 @@ export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 /** The list of shared private link resources managed by the Azure AI Search service. */
 export type SearchServicePropertiesSharedPrivateLinkResourcesList =
   Array<SharedPrivateLinkResource>;
-export const SearchServicePropertiesSharedPrivateLinkResourcesList = /*@__PURE__*/ S.Array(
+const SearchServicePropertiesSharedPrivateLinkResourcesList = /*@__PURE__*/ S.Array(
   SharedPrivateLinkResource,
 ) as any as S.Schema<SearchServicePropertiesSharedPrivateLinkResourcesList>;
 
 /** Indicates if the dedicated search service has an upgrade available. */
 export type UpgradeAvailable = "notAvailable" | "available";
-export const UpgradeAvailable = S.String;
+const UpgradeAvailable = S.String;
 
 /** Properties of the search service. */
 export interface SearchServiceProperties {
@@ -1047,7 +1045,7 @@ export interface SearchServiceProperties {
   /** The date and time the search service was last upgraded. This field will be null until the service gets upgraded for the first time. */
   serviceUpgradedAt?: string;
 }
-export const SearchServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const SearchServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaCount: S.optional(S.Number),
     partitionCount: S.optional(S.Number),
@@ -1081,14 +1079,14 @@ export type SkuName =
   | "standard3"
   | "storage_optimized_l1"
   | "storage_optimized_l2";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** Defines the SKU of a search service, which determines billing rate and capacity limits. */
 export interface Sku {
   /** The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions. 'serverless': Serverless tier with auto-scaling capabilities. */
   name?: SkuName | (string & {});
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SkuName),
   }),
@@ -1100,7 +1098,7 @@ export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-export const IdentityType = S.String;
+const IdentityType = S.String;
 
 /** User assigned identity properties */
 export interface IdentityUserAssignedIdentitiesValue {
@@ -1109,7 +1107,7 @@ export interface IdentityUserAssignedIdentitiesValue {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const IdentityUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
+const IdentityUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1122,7 +1120,7 @@ export const IdentityUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
 export type IdentityUserAssignedIdentitiesMap = {
   [key: string]: IdentityUserAssignedIdentitiesValue | undefined;
 };
-export const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   IdentityUserAssignedIdentitiesValue,
 ) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
@@ -1138,7 +1136,7 @@ export interface Identity {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-export const Identity = /*@__PURE__*/ S.suspend(() =>
+const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1167,7 +1165,7 @@ export interface GetServiceResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
-export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1191,7 +1189,7 @@ export interface GetSharedPrivateLinkResourceRequest {
   /** The name of the shared private link resource managed by the Azure AI Search service within the specified resource group. */
   sharedPrivateLinkResourceName: string;
 }
-export const GetSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSharedPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1221,7 +1219,7 @@ export interface GetSharedPrivateLinkResourceResponse {
   /** Describes the properties of a shared private link resource managed by the Azure AI Search service. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const GetSharedPrivateLinkResourceResponse =
+const GetSharedPrivateLinkResourceResponse =
   SharedPrivateLinkResource as any as S.Schema<GetSharedPrivateLinkResourceResponse>;
 
 export interface ListNetworkSecurityPerimeterConfigurationByServiceRequest {
@@ -1232,20 +1230,19 @@ export interface ListNetworkSecurityPerimeterConfigurationByServiceRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const ListNetworkSecurityPerimeterConfigurationByServiceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      searchServiceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/networkSecurityPerimeterConfigurations",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
+const ListNetworkSecurityPerimeterConfigurationByServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    searchServiceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Search/searchServices/{searchServiceName}/networkSecurityPerimeterConfigurations",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
 ).annotate({
   identifier: "ListNetworkSecurityPerimeterConfigurationByServiceRequest",
 }) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationByServiceRequest>;
@@ -1262,15 +1259,14 @@ export interface NetworkSecurityPerimeterConfigurationListResultValueItem {
   systemData?: SystemData;
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-export const NetworkSecurityPerimeterConfigurationListResultValueItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
-    }),
+const NetworkSecurityPerimeterConfigurationListResultValueItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
+  }),
 ).annotate({
   identifier: "NetworkSecurityPerimeterConfigurationListResultValueItem",
 }) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResultValueItem>;
@@ -1278,7 +1274,7 @@ export const NetworkSecurityPerimeterConfigurationListResultValueItem = /*@__PUR
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationListResultValueList =
   Array<NetworkSecurityPerimeterConfigurationListResultValueItem>;
-export const NetworkSecurityPerimeterConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+const NetworkSecurityPerimeterConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   NetworkSecurityPerimeterConfigurationListResultValueItem,
 ) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResultValueList>;
 
@@ -1289,7 +1285,7 @@ export interface NetworkSecurityPerimeterConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const NetworkSecurityPerimeterConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeterConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: NetworkSecurityPerimeterConfigurationListResultValueList,
     nextLink: S.optional(S.String),
@@ -1299,7 +1295,7 @@ export const NetworkSecurityPerimeterConfigurationListResult = /*@__PURE__*/ S.s
 }) as any as S.Schema<NetworkSecurityPerimeterConfigurationListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1321,7 +1317,7 @@ export interface OperationListResultValueItemDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationListResultValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationListResultValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1334,11 +1330,11 @@ export const OperationListResultValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationListResultValueItemOrigin = "user" | "system" | "user,system";
-export const OperationListResultValueItemOrigin = S.String;
+const OperationListResultValueItemOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationListResultValueItemActionType = "Internal";
-export const OperationListResultValueItemActionType = S.String;
+const OperationListResultValueItemActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface OperationListResultValueItem {
@@ -1353,7 +1349,7 @@ export interface OperationListResultValueItem {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationListResultValueItemActionType;
 }
-export const OperationListResultValueItem = /*@__PURE__*/ S.suspend(() =>
+const OperationListResultValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1367,7 +1363,7 @@ export const OperationListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations by Azure AI Search, some supported by the resource provider and others by data plane APIs. */
 export type OperationListResultValueList = Array<OperationListResultValueItem>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationListResultValueItem,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1378,7 +1374,7 @@ export interface OperationListResult {
   /** The URL to get the next set of operation list results, if any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1393,7 +1389,7 @@ export interface ListPrivateEndpointConnectionByServiceRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const ListPrivateEndpointConnectionByServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1412,7 +1408,7 @@ export const ListPrivateEndpointConnectionByServiceRequest = /*@__PURE__*/ S.sus
 
 /** The list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   SearchServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** Response containing a list of private endpoint connections. */
@@ -1422,7 +1418,7 @@ export interface PrivateEndpointConnectionListResult {
   /** Request URL that can be used to query next page of private endpoint connections. Returned when the total number of requested private endpoint connections exceed maximum page size. */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -1439,7 +1435,7 @@ export interface ListPrivateLinkResourceSupportedRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const ListPrivateLinkResourceSupportedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceSupportedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1458,12 +1454,12 @@ export const ListPrivateLinkResourceSupportedRequest = /*@__PURE__*/ S.suspend((
 
 /** The list of required members of the private link resource. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   ProvisioningIssuePropertiesSuggestedResourceIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The list of required DNS zone names of the private link resource. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   ProvisioningIssuePropertiesSuggestedResourceIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Describes the properties of a resource type that has been onboarded to private link service, supported by Azure AI Search. */
@@ -1475,7 +1471,7 @@ export interface ShareablePrivateLinkResourceProperties {
   /** The description of the resource type that has been onboarded to private link service, supported by Azure AI Search. */
   description?: string;
 }
-export const ShareablePrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ShareablePrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     groupId: S.optional(S.String),
@@ -1492,7 +1488,7 @@ export interface ShareablePrivateLinkResourceType {
   /** Describes the properties of a resource type that has been onboarded to private link service, supported by Azure AI Search. */
   properties?: ShareablePrivateLinkResourceProperties;
 }
-export const ShareablePrivateLinkResourceType = /*@__PURE__*/ S.suspend(() =>
+const ShareablePrivateLinkResourceType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(ShareablePrivateLinkResourceProperties),
@@ -1504,10 +1500,9 @@ export const ShareablePrivateLinkResourceType = /*@__PURE__*/ S.suspend(() =>
 /** The list of resources that are onboarded to private link service, that are supported by Azure AI Search. */
 export type PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
   Array<ShareablePrivateLinkResourceType>;
-export const PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
-  /*@__PURE__*/ S.Array(
-    ShareablePrivateLinkResourceType,
-  ) as any as S.Schema<PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList>;
+const PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList = /*@__PURE__*/ S.Array(
+  ShareablePrivateLinkResourceType,
+) as any as S.Schema<PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList>;
 
 /** Describes the properties of a supported private link resource for the Azure AI Search service. For a given API version, this represents the 'supported' groupIds when creating a shared private link resource. */
 export interface PrivateLinkResourceProperties {
@@ -1520,7 +1515,7 @@ export interface PrivateLinkResourceProperties {
   /** The list of resources that are onboarded to private link service, that are supported by Azure AI Search. */
   shareablePrivateLinkResourceTypes?: PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -1546,7 +1541,7 @@ export interface PrivateLinkResource {
   /** Describes the properties of a supported private link resource for the Azure AI Search service. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1558,7 +1553,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported Private Link Resources. */
 export type PrivateLinkResourcesResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourcesResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourcesResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesResultValueList>;
 
@@ -1569,7 +1564,7 @@ export interface PrivateLinkResourcesResult {
   /** The URL to get the next set of private link resources, if there are any. */
   nextLink?: string;
 }
-export const PrivateLinkResourcesResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourcesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourcesResultValueList),
     nextLink: S.optional(S.String),
@@ -1584,7 +1579,7 @@ export interface ListServiceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1602,9 +1597,6 @@ export const ListServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SearchServiceTagsMap = { [key: string]: string | undefined };
-export const SearchServiceTagsMap =
-  GetServiceResponseTagsMap as any as S.Schema<SearchServiceTagsMap>;
-
 /** Describes an Azure AI Search service and its current state. */
 export interface SearchService {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1626,11 +1618,11 @@ export interface SearchService {
   /** The identity of the resource. */
   identity?: Identity;
 }
-export const SearchService = GetServiceResponse as any as S.Schema<SearchService>;
+const SearchService = GetServiceResponse as any as S.Schema<SearchService>;
 
 /** The list of search services. */
 export type SearchServiceListResultValueList = Array<SearchService>;
-export const SearchServiceListResultValueList = /*@__PURE__*/ S.Array(
+const SearchServiceListResultValueList = /*@__PURE__*/ S.Array(
   SearchService,
 ) as any as S.Schema<SearchServiceListResultValueList>;
 
@@ -1641,7 +1633,7 @@ export interface SearchServiceListResult {
   /** Request URL that can be used to query next page of search services. Returned when the total number of requested search services exceed maximum page size. */
   nextLink?: string;
 }
-export const SearchServiceListResult = /*@__PURE__*/ S.suspend(() =>
+const SearchServiceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SearchServiceListResultValueList),
     nextLink: S.optional(S.String),
@@ -1652,7 +1644,7 @@ export interface ListServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1675,7 +1667,7 @@ export interface ListSharedPrivateLinkResourceByServiceRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const ListSharedPrivateLinkResourceByServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharedPrivateLinkResourceByServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1694,7 +1686,7 @@ export const ListSharedPrivateLinkResourceByServiceRequest = /*@__PURE__*/ S.sus
 
 /** The list of shared private link resources. */
 export type SharedPrivateLinkResourceListResultValueList = Array<SharedPrivateLinkResource>;
-export const SharedPrivateLinkResourceListResultValueList =
+const SharedPrivateLinkResourceListResultValueList =
   SearchServicePropertiesSharedPrivateLinkResourcesList as any as S.Schema<SharedPrivateLinkResourceListResultValueList>;
 
 /** Response containing a list of shared private link resources. */
@@ -1704,7 +1696,7 @@ export interface SharedPrivateLinkResourceListResult {
   /** The URL to get the next set of shared private link resources, if there are any. */
   nextLink?: string;
 }
-export const SharedPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const SharedPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SharedPrivateLinkResourceListResultValueList),
     nextLink: S.optional(S.String),
@@ -1719,7 +1711,7 @@ export interface ListUsageBySubscriptionRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListUsageBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsageBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1742,7 +1734,7 @@ export interface QuotaUsageResultName {
   /** The localized string value for the SKU name. */
   localizedValue?: string;
 }
-export const QuotaUsageResultName = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsageResultName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -1762,7 +1754,7 @@ export interface QuotaUsageResult {
   /** The SKU name information of the current search service. */
   name?: QuotaUsageResultName;
 }
-export const QuotaUsageResult = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsageResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     unit: S.optional(S.String),
@@ -1774,7 +1766,7 @@ export const QuotaUsageResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The quota usages for the SKUs supported by Azure AI Search. */
 export type QuotaUsagesListResultValueList = Array<QuotaUsageResult>;
-export const QuotaUsagesListResultValueList = /*@__PURE__*/ S.Array(
+const QuotaUsagesListResultValueList = /*@__PURE__*/ S.Array(
   QuotaUsageResult,
 ) as any as S.Schema<QuotaUsagesListResultValueList>;
 
@@ -1785,7 +1777,7 @@ export interface QuotaUsagesListResult {
   /** Request URL that can be used to query next page of quota usages. Returned when the total number of requested quota usages exceed maximum page size. */
   nextLink?: string;
 }
-export const QuotaUsagesListResult = /*@__PURE__*/ S.suspend(() =>
+const QuotaUsagesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(QuotaUsagesListResultValueList),
     nextLink: S.optional(S.String),
@@ -1802,7 +1794,7 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
   /** The network security perimeter configuration name. */
   nspConfigName: string;
 }
-export const NetworkSecurityPerimeterConfigurationsReconcileRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkSecurityPerimeterConfigurationsReconcileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1821,7 +1813,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileRequest = /*@__PURE_
 }) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>;
 
 export interface NetworkSecurityPerimeterConfigurationsReconcileResponse {}
-export const NetworkSecurityPerimeterConfigurationsReconcileResponse =
+const NetworkSecurityPerimeterConfigurationsReconcileResponse =
   DeleteSharedPrivateLinkResourceResponse as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>;
 
 export interface QueryKeysListBySearchServiceRequest {
@@ -1832,7 +1824,7 @@ export interface QueryKeysListBySearchServiceRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const QueryKeysListBySearchServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryKeysListBySearchServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1851,7 +1843,7 @@ export const QueryKeysListBySearchServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The query keys for the Azure AI Search service. */
 export type ListQueryKeysResultValueList = Array<QueryKey>;
-export const ListQueryKeysResultValueList = /*@__PURE__*/ S.Array(
+const ListQueryKeysResultValueList = /*@__PURE__*/ S.Array(
   QueryKey,
 ) as any as S.Schema<ListQueryKeysResultValueList>;
 
@@ -1862,7 +1854,7 @@ export interface ListQueryKeysResult {
   /** Request URL that can be used to query next page of query keys. Returned when the total number of requested query keys exceed maximum page size. */
   nextLink?: string;
 }
-export const ListQueryKeysResult = /*@__PURE__*/ S.suspend(() =>
+const ListQueryKeysResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListQueryKeysResultValueList),
     nextLink: S.optional(S.String),
@@ -1870,7 +1862,7 @@ export const ListQueryKeysResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListQueryKeysResult" }) as any as S.Schema<ListQueryKeysResult>;
 
 export type RegenerateAdminKeyRequestKeyKind = "primary" | "secondary";
-export const RegenerateAdminKeyRequestKeyKind = S.String;
+const RegenerateAdminKeyRequestKeyKind = S.String;
 
 export interface RegenerateAdminKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1882,7 +1874,7 @@ export interface RegenerateAdminKeyRequest {
   /** Specifies which key to regenerate. Valid values include 'primary' and 'secondary'. */
   keyKind: RegenerateAdminKeyRequestKeyKind | (string & {});
 }
-export const RegenerateAdminKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateAdminKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1902,25 +1894,25 @@ export const RegenerateAdminKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateRequestTagsMap =
+const ServicesCreateOrUpdateRequestTagsMap =
   GetServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
 
 /** Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'. */
 export type SearchServicePropertiesInputHostingMode = "Default" | "HighDensity";
-export const SearchServicePropertiesInputHostingMode = S.String;
+const SearchServicePropertiesInputHostingMode = S.String;
 
 /** This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method. */
 export type SearchServicePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
-export const SearchServicePropertiesInputPublicNetworkAccess = S.String;
+const SearchServicePropertiesInputPublicNetworkAccess = S.String;
 
 /** A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future. */
 export type SearchServicePropertiesInputDataExfiltrationProtectionsList = Array<
   SearchDataExfiltrationProtection | (string & {})
 >;
-export const SearchServicePropertiesInputDataExfiltrationProtectionsList =
+const SearchServicePropertiesInputDataExfiltrationProtectionsList =
   SearchServicePropertiesDataExfiltrationProtectionsList as any as S.Schema<SearchServicePropertiesInputDataExfiltrationProtectionsList>;
 
 /** Properties of the search service. */
@@ -1952,7 +1944,7 @@ export interface SearchServicePropertiesInput {
   /** Indicates if the search service has an upgrade available. */
   upgradeAvailable?: UpgradeAvailable | (string & {});
 }
-export const SearchServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SearchServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaCount: S.optional(S.Number),
     partitionCount: S.optional(S.Number),
@@ -1976,14 +1968,14 @@ export const SearchServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** User assigned identity properties */
 export interface IdentityInputUserAssignedIdentitiesValue {}
-export const IdentityInputUserAssignedIdentitiesValue =
+const IdentityInputUserAssignedIdentitiesValue =
   DeleteSharedPrivateLinkResourceResponse as any as S.Schema<IdentityInputUserAssignedIdentitiesValue>;
 
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: IdentityInputUserAssignedIdentitiesValue | undefined;
 };
-export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   IdentityInputUserAssignedIdentitiesValue,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
@@ -1995,7 +1987,7 @@ export interface IdentityInput {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: IdentityType,
     userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
@@ -2020,7 +2012,7 @@ export interface ServicesCreateOrUpdateRequest {
   /** The identity of the resource. */
   identity?: IdentityInput;
 }
-export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2044,7 +2036,7 @@ export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ServicesCreateOrUpdateResponseTagsMap =
+const ServicesCreateOrUpdateResponseTagsMap =
   GetServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
 
 export interface ServicesCreateOrUpdateResponse {
@@ -2067,7 +2059,7 @@ export interface ServicesCreateOrUpdateResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
-export const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2091,7 +2083,7 @@ export interface ServicesUpgradeRequest {
   /** The name of the Azure AI Search service associated with the specified resource group. */
   searchServiceName: string;
 }
-export const ServicesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+const ServicesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2108,9 +2100,6 @@ export const ServicesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ServicesUpgradeResponseTagsMap = { [key: string]: string | undefined };
-export const ServicesUpgradeResponseTagsMap =
-  GetServiceResponseTagsMap as any as S.Schema<ServicesUpgradeResponseTagsMap>;
-
 export interface ServicesUpgradeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2131,8 +2120,7 @@ export interface ServicesUpgradeResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
-export const ServicesUpgradeResponse =
-  GetServiceResponse as any as S.Schema<ServicesUpgradeResponse>;
+const ServicesUpgradeResponse = GetServiceResponse as any as S.Schema<ServicesUpgradeResponse>;
 
 export interface SharedPrivateLinkResourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2146,7 +2134,7 @@ export interface SharedPrivateLinkResourcesCreateOrUpdateRequest {
   /** Describes the properties of a shared private link resource managed by the Azure AI Search service. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const SharedPrivateLinkResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedPrivateLinkResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2177,7 +2165,7 @@ export interface SharedPrivateLinkResourcesCreateOrUpdateResponse {
   /** Describes the properties of a shared private link resource managed by the Azure AI Search service. */
   properties?: SharedPrivateLinkResourceProperties;
 }
-export const SharedPrivateLinkResourcesCreateOrUpdateResponse =
+const SharedPrivateLinkResourcesCreateOrUpdateResponse =
   SharedPrivateLinkResource as any as S.Schema<SharedPrivateLinkResourcesCreateOrUpdateResponse>;
 
 export interface UpdatePrivateEndpointConnectionRequest {
@@ -2192,7 +2180,7 @@ export interface UpdatePrivateEndpointConnectionRequest {
   /** Describes the properties of an existing private endpoint connection to the Azure AI Search service. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2223,12 +2211,12 @@ export interface UpdatePrivateEndpointConnectionResponse {
   /** Describes the properties of an existing private endpoint connection to the Azure AI Search service. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const UpdatePrivateEndpointConnectionResponse =
+const UpdatePrivateEndpointConnectionResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
 
 /** Tags to help categorize the resource in the Azure portal. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceRequestTagsMap =
+const UpdateServiceRequestTagsMap =
   GetServiceResponseTagsMap as any as S.Schema<UpdateServiceRequestTagsMap>;
 
 export interface UpdateServiceRequest {
@@ -2249,7 +2237,7 @@ export interface UpdateServiceRequest {
   /** Details about the search service identity. A null value indicates that the search service has no identity assigned. */
   identity?: IdentityInput;
 }
-export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2271,9 +2259,6 @@ export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateServiceResponseTagsMap =
-  GetServiceResponseTagsMap as any as S.Schema<UpdateServiceResponseTagsMap>;
-
 export interface UpdateServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2294,7 +2279,7 @@ export interface UpdateServiceResponse {
   /** The identity of the resource. */
   identity?: Identity;
 }
-export const UpdateServiceResponse = GetServiceResponse as any as S.Schema<UpdateServiceResponse>;
+const UpdateServiceResponse = GetServiceResponse as any as S.Schema<UpdateServiceResponse>;
 
 export interface UsageBySubscriptionSkuRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2304,7 +2289,7 @@ export interface UsageBySubscriptionSkuRequest {
   /** The unique SKU name that identifies a billable tier. */
   skuName: string;
 }
-export const UsageBySubscriptionSkuRequest = /*@__PURE__*/ S.suspend(() =>
+const UsageBySubscriptionSkuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),

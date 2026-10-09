@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for the CloseCase endpoint. */
 export interface CloseCaseRequest {}
-export const CloseCaseRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CloseCaseRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CloseCaseRequest",
 }) as any as S.Schema<CloseCaseRequest>;
 
@@ -73,7 +73,7 @@ export interface CloseCasesRequest {
   /** Request body */
   body?: CloseCaseRequest;
 }
-export const CloseCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CloseCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CloseCaseRequest.pipe(T.HttpBody())),
@@ -87,20 +87,20 @@ export const CloseCasesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloseCasesRequest" }) as any as S.Schema<CloseCasesRequest>;
 
 export type CaseSeverityEnum = "SEVERITY_UNSPECIFIED" | "S0" | "S1" | "S2" | "S3" | "S4";
-export const CaseSeverityEnum = S.String;
+const CaseSeverityEnum = S.String;
 
 export type CasePriorityEnum = "PRIORITY_UNSPECIFIED" | "P0" | "P1" | "P2" | "P3" | "P4";
-export const CasePriorityEnum = S.String;
+const CasePriorityEnum = S.String;
 
 export type ProductProductLineEnum = "PRODUCT_LINE_UNSPECIFIED" | "GOOGLE_CLOUD" | "GOOGLE_MAPS";
-export const ProductProductLineEnum = S.String;
+const ProductProductLineEnum = S.String;
 
 /** The product a case may be associated with. */
 export interface Product {
   /** The product line of the Product. */
   productLine?: ProductProductLineEnum | (string & {});
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productLine: S.optional(ProductProductLineEnum),
   }),
@@ -115,7 +115,7 @@ export interface CaseClassification {
   /** A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field. */
   displayName?: string;
 }
-export const CaseClassification = /*@__PURE__*/ S.suspend(() =>
+const CaseClassification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.optional(Product),
     id: S.optional(S.String),
@@ -124,7 +124,7 @@ export const CaseClassification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CaseClassification" }) as any as S.Schema<CaseClassification>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type CaseStateEnum =
   | "STATE_UNSPECIFIED"
@@ -133,7 +133,7 @@ export type CaseStateEnum =
   | "ACTION_REQUIRED"
   | "SOLUTION_PROVIDED"
   | "CLOSED";
-export const CaseStateEnum = S.String;
+const CaseStateEnum = S.String;
 
 /** An Actor represents an entity that performed an action. For example, an actor could be a user who posted a comment on a support case, a user who uploaded an attachment, or a service account that created a support case. */
 export interface Actor {
@@ -146,7 +146,7 @@ export interface Actor {
   /** Output only. Whether the actor is a Google support actor. */
   googleSupport?: boolean;
 }
-export const Actor = /*@__PURE__*/ S.suspend(() =>
+const Actor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     username: S.optional(S.String),
@@ -190,7 +190,7 @@ export interface Case {
   /** The user who created the case. This field is ignored on input. Note: The name and email will be obfuscated if the case was created by Google Support. */
   creator?: Actor;
 }
-export const Case = /*@__PURE__*/ S.suspend(() =>
+const Case = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(CaseSeverityEnum),
     description: S.optional(S.String),
@@ -217,7 +217,7 @@ export interface CreateCasesRequest {
   /** Request body */
   body?: Case;
 }
-export const CreateCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Case.pipe(T.HttpBody())),
@@ -243,7 +243,7 @@ export interface Comment {
   /** Output only. The user or Google Support agent who created the comment. */
   creator?: Actor;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     plainTextBody: S.optional(S.String),
@@ -259,7 +259,7 @@ export interface CreateCasesCommentsRequest {
   /** Request body */
   body?: Comment;
 }
-export const CreateCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Comment.pipe(T.HttpBody())),
@@ -279,14 +279,14 @@ export type SupportEventSubscriptionStateEnum =
   | "WORKING"
   | "FAILING"
   | "DELETED";
-export const SupportEventSubscriptionStateEnum = S.String;
+const SupportEventSubscriptionStateEnum = S.String;
 
 export type SupportEventSubscriptionFailureReasonEnum =
   | "FAILURE_REASON_UNSPECIFIED"
   | "PERMISSION_DENIED"
   | "TOPIC_NOT_FOUND"
   | "OTHER";
-export const SupportEventSubscriptionFailureReasonEnum = S.String;
+const SupportEventSubscriptionFailureReasonEnum = S.String;
 
 /** A support event subscription. You can also manage support event subscriptions using other tools: * [`gcloud support support-event-subscriptions`](/sdk/gcloud/reference/support/support-event-subscriptions) (or [`gcloud beta`](/sdk/gcloud/reference/beta/support/support-event-subscriptions) for beta) * [Terraform `google_cloud_support_support_event_subscription`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_support_support_event_subscription) (or [google-beta provider](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/cloud_support_support_event_subscription) for beta) */
 export interface SupportEventSubscription {
@@ -307,7 +307,7 @@ export interface SupportEventSubscription {
   /** Output only. The time at which the subscription will be purged. */
   purgeTime?: string;
 }
-export const SupportEventSubscription = /*@__PURE__*/ S.suspend(() =>
+const SupportEventSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubSubTopic: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -326,7 +326,7 @@ export interface CreateOrganizationsSupportEventSubscriptionsRequest {
   /** Request body */
   body?: SupportEventSubscription;
 }
-export const CreateOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SupportEventSubscription.pipe(T.HttpBody())),
@@ -345,7 +345,7 @@ export interface DeleteOrganizationsSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to delete. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
   name: string;
 }
-export const DeleteOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -363,7 +363,7 @@ export interface DownloadMediaRequest {
   /** The name of the file attachment to download. */
   name: string;
 }
-export const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -392,7 +392,7 @@ export interface Blobstore2Info {
   /** # gdata.* are outside protos with mising documentation */
   readToken?: string;
 }
-export const Blobstore2Info = /*@__PURE__*/ S.suspend(() =>
+const Blobstore2Info = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadExternalReadToken: S.optional(S.String),
     blobId: S.optional(S.String),
@@ -410,7 +410,7 @@ export type CompositeMediaReferenceTypeEnum =
   | "INLINE"
   | "BIGSTORE_REF"
   | "COSMO_BINARY_REFERENCE";
-export const CompositeMediaReferenceTypeEnum = S.String;
+const CompositeMediaReferenceTypeEnum = S.String;
 
 /** # gdata.* are outside protos with mising documentation */
 export interface ObjectId {
@@ -421,7 +421,7 @@ export interface ObjectId {
   /** # gdata.* are outside protos with mising documentation */
   generation?: string;
 }
-export const ObjectId = /*@__PURE__*/ S.suspend(() =>
+const ObjectId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
     objectName: S.optional(S.String),
@@ -454,7 +454,7 @@ export interface CompositeMedia {
   /** # gdata.* are outside protos with mising documentation */
   length?: string;
 }
-export const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
+const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     blobstore2Info: S.optional(Blobstore2Info),
@@ -483,7 +483,7 @@ export interface DiffChecksumsResponse {
   /** # gdata.* are outside protos with mising documentation */
   checksumsLocation?: CompositeMedia;
 }
-export const DiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffChecksumsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectVersion: S.optional(S.String),
     objectLocation: S.optional(CompositeMedia),
@@ -498,7 +498,7 @@ export interface DiffDownloadResponse {
   /** # gdata.* are outside protos with mising documentation */
   objectLocation?: CompositeMedia;
 }
-export const DiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectLocation: S.optional(CompositeMedia),
   }),
@@ -513,7 +513,7 @@ export interface DiffUploadRequest {
   /** # gdata.* are outside protos with mising documentation */
   checksumsInfo?: CompositeMedia;
 }
-export const DiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const DiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectInfo: S.optional(CompositeMedia),
     objectVersion: S.optional(S.String),
@@ -528,7 +528,7 @@ export interface DownloadParameters {
   /** # gdata.* are outside protos with mising documentation */
   ignoreRange?: boolean;
 }
-export const DownloadParameters = /*@__PURE__*/ S.suspend(() =>
+const DownloadParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowGzipCompression: S.optional(S.Boolean),
     ignoreRange: S.optional(S.Boolean),
@@ -552,7 +552,7 @@ export interface ContentTypeInfo {
   /** # gdata.* are outside protos with mising documentation */
   fusionIdDetectionMetadata?: string;
 }
-export const ContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
+const ContentTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromFileName: S.optional(S.String),
     bestGuess: S.optional(S.String),
@@ -578,10 +578,10 @@ export type MediaReferenceTypeEnum =
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
   | "ARBITRARY_BYTES";
-export const MediaReferenceTypeEnum = S.String;
+const MediaReferenceTypeEnum = S.String;
 
 export type CompositeMediaList = Array<CompositeMedia>;
-export const CompositeMediaList = /*@__PURE__*/ S.Array(
+const CompositeMediaList = /*@__PURE__*/ S.Array(
   CompositeMedia,
 ) as any as S.Schema<CompositeMediaList>;
 
@@ -592,7 +592,7 @@ export interface DiffVersionResponse {
   /** # gdata.* are outside protos with mising documentation */
   objectSizeBytes?: string;
 }
-export const DiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectVersion: S.optional(S.String),
     objectSizeBytes: S.optional(S.String),
@@ -606,7 +606,7 @@ export interface DiffUploadResponse {
   /** # gdata.* are outside protos with mising documentation */
   originalObject?: CompositeMedia;
 }
-export const DiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const DiffUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectVersion: S.optional(S.String),
     originalObject: S.optional(CompositeMedia),
@@ -678,7 +678,7 @@ export interface Media {
   /** # gdata.* are outside protos with mising documentation */
   crc32cHash?: number;
 }
-export const Media = /*@__PURE__*/ S.suspend(() =>
+const Media = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashVerified: S.optional(S.Boolean),
     inline: S.optional(S.String),
@@ -719,7 +719,7 @@ export type EscalationReasonEnum =
   | "RESOLUTION_TIME"
   | "TECHNICAL_EXPERTISE"
   | "BUSINESS_IMPACT";
-export const EscalationReasonEnum = S.String;
+const EscalationReasonEnum = S.String;
 
 /** An escalation of a support case. */
 export interface Escalation {
@@ -728,7 +728,7 @@ export interface Escalation {
   /** Required. A free text description to accompany the `reason` field above. Provides additional context on why the case is being escalated. */
   justification?: string;
 }
-export const Escalation = /*@__PURE__*/ S.suspend(() =>
+const Escalation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(EscalationReasonEnum),
     justification: S.optional(S.String),
@@ -740,7 +740,7 @@ export interface EscalateCaseRequest {
   /** The escalation information to be sent with the escalation request. */
   escalation?: Escalation;
 }
-export const EscalateCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const EscalateCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     escalation: S.optional(Escalation),
   }),
@@ -752,7 +752,7 @@ export interface EscalateCasesRequest {
   /** Request body */
   body?: EscalateCaseRequest;
 }
-export const EscalateCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const EscalateCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(EscalateCaseRequest.pipe(T.HttpBody())),
@@ -767,15 +767,13 @@ export const EscalateCasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for ExpungeSupportEventSubscription. */
 export type ExpungeSupportEventSubscriptionRequest = CloseCaseRequest;
-export const ExpungeSupportEventSubscriptionRequest = CloseCaseRequest;
-
 export interface ExpungeOrganizationsSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to expunge. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
   name: string;
   /** Request body */
   body?: CloseCaseRequest;
 }
-export const ExpungeOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExpungeOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CloseCaseRequest.pipe(T.HttpBody())),
@@ -792,13 +790,13 @@ export const ExpungeOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CloseCaseRequest as any as S.Schema<Empty>;
+const Empty = CloseCaseRequest as any as S.Schema<Empty>;
 
 export interface GetCasesRequest {
   /** Required. The full name of a case to be retrieved. */
   name: string;
 }
-export const GetCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -814,7 +812,7 @@ export interface GetCasesAttachmentsRequest {
   /** Required. The name of the attachment to get. */
   name: string;
 }
-export const GetCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -843,7 +841,7 @@ export interface Attachment {
   /** Output only. The MIME type of the attachment (e.g. text/plain). */
   mimeType?: string;
 }
-export const Attachment = /*@__PURE__*/ S.suspend(() =>
+const Attachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creator: S.optional(Actor),
     name: S.optional(S.String),
@@ -858,7 +856,7 @@ export interface GetCasesCommentsRequest {
   /** Required. The name of the comment to retrieve. */
   name: string;
 }
-export const GetCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -880,7 +878,7 @@ export interface GetFeedCasesRequest {
   /** Optional. Field to order feed items by, followed by `asc` or `desc` postfix. The only valid field is `creation_time`. This list is case-insensitive, default sorting order is ascending, and the redundant space characters are insignificant. Example: `creation_time desc` */
   orderBy?: string;
 }
-export const GetFeedCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeedCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -900,7 +898,7 @@ export interface TextContent {
   /** Content in this field should be rendered and interpreted as-is. */
   plainText?: string;
 }
-export const TextContent = /*@__PURE__*/ S.suspend(() =>
+const TextContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plainText: S.optional(S.String),
   }),
@@ -923,7 +921,7 @@ export interface EmailMessage {
   /** Output only. The full email message body. A best-effort attempt is made to remove extraneous reply threads. */
   bodyContent?: TextContent;
 }
-export const EmailMessage = /*@__PURE__*/ S.suspend(() =>
+const EmailMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -948,7 +946,7 @@ export interface FeedItem {
   /** Output only. Time corresponding to the event of this item. */
   eventTime?: string;
 }
-export const FeedItem = /*@__PURE__*/ S.suspend(() =>
+const FeedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachment: S.optional(Attachment),
     comment: S.optional(Comment),
@@ -959,7 +957,7 @@ export const FeedItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeedItem" }) as any as S.Schema<FeedItem>;
 
 export type FeedItemList = Array<FeedItem>;
-export const FeedItemList = /*@__PURE__*/ S.Array(FeedItem) as any as S.Schema<FeedItemList>;
+const FeedItemList = /*@__PURE__*/ S.Array(FeedItem) as any as S.Schema<FeedItemList>;
 
 /** The response message for the ShowFeed endpoint. */
 export interface ShowFeedResponse {
@@ -968,7 +966,7 @@ export interface ShowFeedResponse {
   /** The list of feed items associated with the given Case. */
   feedItems?: FeedItemList;
 }
-export const ShowFeedResponse = /*@__PURE__*/ S.suspend(() =>
+const ShowFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     feedItems: S.optional(FeedItemList),
@@ -979,7 +977,7 @@ export interface GetOrganizationsSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to retrieve. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
   name: string;
 }
-export const GetOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -994,7 +992,7 @@ export const GetOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetOrganizationsSupportEventSubscriptionsRequest>;
 
 export type ListCasesProductLineEnum = "PRODUCT_LINE_UNSPECIFIED" | "GOOGLE_CLOUD" | "GOOGLE_MAPS";
-export const ListCasesProductLineEnum = S.String;
+const ListCasesProductLineEnum = S.String;
 
 export interface ListCasesRequest {
   /** Required. The name of a parent to list cases under. */
@@ -1008,7 +1006,7 @@ export interface ListCasesRequest {
   /** The product line to request cases for. If unspecified, only Google Cloud cases will be returned. */
   productLine?: ListCasesProductLineEnum | (string & {});
 }
-export const ListCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1025,7 +1023,7 @@ export const ListCasesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCasesRequest" }) as any as S.Schema<ListCasesRequest>;
 
 export type CaseList = Array<Case>;
-export const CaseList = /*@__PURE__*/ S.Array(Case) as any as S.Schema<CaseList>;
+const CaseList = /*@__PURE__*/ S.Array(Case) as any as S.Schema<CaseList>;
 
 /** The response message for the ListCases endpoint. */
 export interface ListCasesResponse {
@@ -1034,7 +1032,7 @@ export interface ListCasesResponse {
   /** The list of cases associated with the parent after any filters have been applied. */
   cases?: CaseList;
 }
-export const ListCasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     cases: S.optional(CaseList),
@@ -1049,7 +1047,7 @@ export interface ListCasesAttachmentsRequest {
   /** Required. The name of the case for which attachments should be listed. */
   parent: string;
 }
-export const ListCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1066,7 +1064,7 @@ export const ListCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCasesAttachmentsRequest>;
 
 export type AttachmentList = Array<Attachment>;
-export const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
+const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
 
 /** The response message for the ListAttachments endpoint. */
 export interface ListAttachmentsResponse {
@@ -1075,7 +1073,7 @@ export interface ListAttachmentsResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.attachments.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
-export const ListAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: S.optional(AttachmentList),
     nextPageToken: S.optional(S.String),
@@ -1090,7 +1088,7 @@ export interface ListCasesCommentsRequest {
   /** Required. The name of the case for which to list comments. */
   parent: string;
 }
-export const ListCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1105,7 +1103,7 @@ export const ListCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCasesCommentsRequest" }) as any as S.Schema<ListCasesCommentsRequest>;
 
 export type CommentList = Array<Comment>;
-export const CommentList = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList>;
+const CommentList = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList>;
 
 /** The response message for the ListComments endpoint. */
 export interface ListCommentsResponse {
@@ -1114,7 +1112,7 @@ export interface ListCommentsResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.comments.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
-export const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: S.optional(CommentList),
     nextPageToken: S.optional(S.String),
@@ -1133,7 +1131,7 @@ export interface ListOrganizationsSupportEventSubscriptionsRequest {
   /** Required. The fully qualified name of the Cloud resource to list support event subscriptions under. Format: organizations/{organization_id} */
   parent: string;
 }
-export const ListOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1152,7 +1150,7 @@ export const ListOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListOrganizationsSupportEventSubscriptionsRequest>;
 
 export type SupportEventSubscriptionList = Array<SupportEventSubscription>;
-export const SupportEventSubscriptionList = /*@__PURE__*/ S.Array(
+const SupportEventSubscriptionList = /*@__PURE__*/ S.Array(
   SupportEventSubscription,
 ) as any as S.Schema<SupportEventSubscriptionList>;
 
@@ -1163,7 +1161,7 @@ export interface ListSupportEventSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListSupportEventSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSupportEventSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportEventSubscriptions: S.optional(SupportEventSubscriptionList),
     nextPageToken: S.optional(S.String),
@@ -1180,7 +1178,7 @@ export interface PatchCasesRequest {
   /** Request body */
   body?: Case;
 }
-export const PatchCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1202,7 +1200,7 @@ export interface PatchOrganizationsSupportEventSubscriptionsRequest {
   /** Request body */
   body?: SupportEventSubscription;
 }
-export const PatchOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1222,7 +1220,7 @@ export type SearchCaseClassificationsProduct_productLineEnum =
   | "PRODUCT_LINE_UNSPECIFIED"
   | "GOOGLE_CLOUD"
   | "GOOGLE_MAPS";
-export const SearchCaseClassificationsProduct_productLineEnum = S.String;
+const SearchCaseClassificationsProduct_productLineEnum = S.String;
 
 export interface SearchCaseClassificationsRequest {
   /** The maximum number of classifications fetched with each request. */
@@ -1234,7 +1232,7 @@ export interface SearchCaseClassificationsRequest {
   /** The product line of the Product. */
   "product.productLine"?: SearchCaseClassificationsProduct_productLineEnum | (string & {});
 }
-export const SearchCaseClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchCaseClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -1254,7 +1252,7 @@ export const SearchCaseClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchCaseClassificationsRequest>;
 
 export type CaseClassificationList = Array<CaseClassification>;
-export const CaseClassificationList = /*@__PURE__*/ S.Array(
+const CaseClassificationList = /*@__PURE__*/ S.Array(
   CaseClassification,
 ) as any as S.Schema<CaseClassificationList>;
 
@@ -1265,7 +1263,7 @@ export interface SearchCaseClassificationsResponse {
   /** The classifications retrieved. */
   caseClassifications?: CaseClassificationList;
 }
-export const SearchCaseClassificationsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchCaseClassificationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     caseClassifications: S.optional(CaseClassificationList),
@@ -1284,7 +1282,7 @@ export interface SearchCasesRequest {
   /** A token identifying the page of results to return. If unspecified, the first page is retrieved. */
   pageToken?: string;
 }
-export const SearchCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1306,19 +1304,17 @@ export interface SearchCasesResponse {
   /** The list of cases associated with the parent after any filters have been applied. */
   cases?: CaseList;
 }
-export const SearchCasesResponse = ListCasesResponse as any as S.Schema<SearchCasesResponse>;
+const SearchCasesResponse = ListCasesResponse as any as S.Schema<SearchCasesResponse>;
 
 /** Request message for UndeleteSupportEventSubscription. */
 export type UndeleteSupportEventSubscriptionRequest = CloseCaseRequest;
-export const UndeleteSupportEventSubscriptionRequest = CloseCaseRequest;
-
 export interface UndeleteOrganizationsSupportEventSubscriptionsRequest {
   /** Required. The name of the support event subscription to undelete. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} */
   name: string;
   /** Request body */
   body?: CloseCaseRequest;
 }
-export const UndeleteOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteOrganizationsSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CloseCaseRequest.pipe(T.HttpBody())),
@@ -1338,7 +1334,7 @@ export interface CreateAttachmentRequest {
   /** Required. The attachment to be created. */
   attachment?: Attachment;
 }
-export const CreateAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachment: S.optional(Attachment),
   }),
@@ -1350,7 +1346,7 @@ export interface UploadMediaRequest {
   /** Request body */
   body?: CreateAttachmentRequest;
 }
-export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateAttachmentRequest.pipe(T.HttpBody())),

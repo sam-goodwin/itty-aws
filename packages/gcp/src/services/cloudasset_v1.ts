@@ -66,7 +66,7 @@ export interface ConditionContext {
   /** The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned. */
   accessTime?: string;
 }
-export const ConditionContext = /*@__PURE__*/ S.suspend(() =>
+const ConditionContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessTime: S.optional(S.String),
   }),
@@ -87,7 +87,7 @@ export interface Options {
   /** Optional. If true, the result will output the relevant parent/child relationships between resources. Default is false. */
   outputResourceEdges?: boolean;
 }
-export const Options = /*@__PURE__*/ S.suspend(() =>
+const Options = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expandGroups: S.optional(S.Boolean),
     expandRoles: S.optional(S.Boolean),
@@ -103,7 +103,7 @@ export interface ResourceSelector {
   /** Required. The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types). */
   fullResourceName?: string;
 }
-export const ResourceSelector = /*@__PURE__*/ S.suspend(() =>
+const ResourceSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullResourceName: S.optional(S.String),
   }),
@@ -114,14 +114,14 @@ export interface IdentitySelector {
   /** Required. The identity appear in the form of principals in [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are: "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that wildcard characters (such as * and ?) are not supported. You must give a specific identity. */
   identity?: string;
 }
-export const IdentitySelector = /*@__PURE__*/ S.suspend(() =>
+const IdentitySelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
   }),
 ).annotate({ identifier: "IdentitySelector" }) as any as S.Schema<IdentitySelector>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Specifies roles and/or permissions to analyze, to determine both the identities possessing them and the resources they control. If multiple values are specified, results will include roles or permissions matching any of them. The total number of roles and permissions should be equal or less than 10. */
 export interface AccessSelector {
@@ -130,7 +130,7 @@ export interface AccessSelector {
   /** Optional. The roles to appear in result. */
   roles?: StringList;
 }
-export const AccessSelector = /*@__PURE__*/ S.suspend(() =>
+const AccessSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
     roles: S.optional(StringList),
@@ -152,7 +152,7 @@ export interface IamPolicyAnalysisQuery {
   /** Optional. Specifies roles or permissions for analysis. This is optional. */
   accessSelector?: AccessSelector;
 }
-export const IamPolicyAnalysisQuery = /*@__PURE__*/ S.suspend(() =>
+const IamPolicyAnalysisQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditionContext: S.optional(ConditionContext),
     options: S.optional(Options),
@@ -166,7 +166,7 @@ export const IamPolicyAnalysisQuery = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudAssetV1BigQueryDestinationPartitionKeyEnum =
   | "PARTITION_KEY_UNSPECIFIED"
   | "REQUEST_TIME";
-export const GoogleCloudAssetV1BigQueryDestinationPartitionKeyEnum = S.String;
+const GoogleCloudAssetV1BigQueryDestinationPartitionKeyEnum = S.String;
 
 /** A BigQuery destination. */
 export interface GoogleCloudAssetV1BigQueryDestination {
@@ -179,7 +179,7 @@ export interface GoogleCloudAssetV1BigQueryDestination {
   /** Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId", to which the analysis results should be exported. If this dataset does not exist, the export call will return an INVALID_ARGUMENT error. */
   dataset?: string;
 }
-export const GoogleCloudAssetV1BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writeDisposition: S.optional(S.String),
     partitionKey: S.optional(GoogleCloudAssetV1BigQueryDestinationPartitionKeyEnum),
@@ -195,7 +195,7 @@ export interface GoogleCloudAssetV1GcsDestination {
   /** Required. The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. If the specified Cloud Storage object already exists and there is no [hold](https://cloud.google.com/storage/docs/object-holds), it will be overwritten with the analysis result. */
   uri?: string;
 }
-export const GoogleCloudAssetV1GcsDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1GcsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -210,7 +210,7 @@ export interface IamPolicyAnalysisOutputConfig {
   /** Destination on Cloud Storage. */
   gcsDestination?: GoogleCloudAssetV1GcsDestination;
 }
-export const IamPolicyAnalysisOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const IamPolicyAnalysisOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryDestination: S.optional(GoogleCloudAssetV1BigQueryDestination),
     gcsDestination: S.optional(GoogleCloudAssetV1GcsDestination),
@@ -228,7 +228,7 @@ export interface AnalyzeIamPolicyLongrunningRequest {
   /** Required. Output configuration indicating where the results will be output to. */
   outputConfig?: IamPolicyAnalysisOutputConfig;
 }
-export const AnalyzeIamPolicyLongrunningRequest = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeIamPolicyLongrunningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savedAnalysisQuery: S.optional(S.String),
     analysisQuery: S.optional(IamPolicyAnalysisQuery),
@@ -244,7 +244,7 @@ export interface AnalyzeIamPolicyLongrunningV1Request {
   /** Request body */
   body?: AnalyzeIamPolicyLongrunningRequest;
 }
-export const AnalyzeIamPolicyLongrunningV1Request = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeIamPolicyLongrunningV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     body: S.optional(AnalyzeIamPolicyLongrunningRequest.pipe(T.HttpBody())),
@@ -260,15 +260,10 @@ export const AnalyzeIamPolicyLongrunningV1Request = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AnalyzeIamPolicyLongrunningV1Request>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -279,7 +274,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -300,7 +295,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(Status),
@@ -340,7 +335,7 @@ export interface AnalyzeIamPolicyV1Request {
   /** The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned. */
   "analysisQuery.conditionContext.accessTime"?: string;
 }
-export const AnalyzeIamPolicyV1Request = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeIamPolicyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "analysisQuery.accessSelector.roles": S.optional(StringList.pipe(T.Query())),
     "analysisQuery.accessSelector.permissions": S.optional(StringList.pipe(T.Query())),
@@ -387,7 +382,7 @@ export type IamPolicyAnalysisStateCodeEnum =
   | "INTERNAL"
   | "UNAVAILABLE"
   | "DATA_LOSS";
-export const IamPolicyAnalysisStateCodeEnum = S.String;
+const IamPolicyAnalysisStateCodeEnum = S.String;
 
 /** Represents the detailed state of an entity under analysis, such as a resource, an identity or an access. */
 export interface IamPolicyAnalysisState {
@@ -396,7 +391,7 @@ export interface IamPolicyAnalysisState {
   /** The human-readable description of the cause of failure. */
   cause?: string;
 }
-export const IamPolicyAnalysisState = /*@__PURE__*/ S.suspend(() =>
+const IamPolicyAnalysisState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(IamPolicyAnalysisStateCodeEnum),
     cause: S.optional(S.String),
@@ -404,7 +399,7 @@ export const IamPolicyAnalysisState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamPolicyAnalysisState" }) as any as S.Schema<IamPolicyAnalysisState>;
 
 export type IamPolicyAnalysisStateList = Array<IamPolicyAnalysisState>;
-export const IamPolicyAnalysisStateList = /*@__PURE__*/ S.Array(
+const IamPolicyAnalysisStateList = /*@__PURE__*/ S.Array(
   IamPolicyAnalysisState,
 ) as any as S.Schema<IamPolicyAnalysisStateList>;
 
@@ -415,7 +410,7 @@ export interface GoogleCloudAssetV1Identity {
   /** The analysis state of this identity. */
   analysisState?: IamPolicyAnalysisState;
 }
-export const GoogleCloudAssetV1Identity = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     analysisState: S.optional(IamPolicyAnalysisState),
@@ -425,7 +420,7 @@ export const GoogleCloudAssetV1Identity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAssetV1Identity>;
 
 export type GoogleCloudAssetV1IdentityList_ = Array<GoogleCloudAssetV1Identity>;
-export const GoogleCloudAssetV1IdentityList_ = /*@__PURE__*/ S.Array(
+const GoogleCloudAssetV1IdentityList_ = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Identity,
 ) as any as S.Schema<GoogleCloudAssetV1IdentityList_>;
 
@@ -436,7 +431,7 @@ export interface GoogleCloudAssetV1Edge {
   /** The target node of the edge. For example, it could be a full resource name for a resource node or an email of an identity. */
   targetNode?: string;
 }
-export const GoogleCloudAssetV1Edge = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1Edge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceNode: S.optional(S.String),
     targetNode: S.optional(S.String),
@@ -444,7 +439,7 @@ export const GoogleCloudAssetV1Edge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleCloudAssetV1Edge" }) as any as S.Schema<GoogleCloudAssetV1Edge>;
 
 export type GoogleCloudAssetV1EdgeList = Array<GoogleCloudAssetV1Edge>;
-export const GoogleCloudAssetV1EdgeList = /*@__PURE__*/ S.Array(
+const GoogleCloudAssetV1EdgeList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Edge,
 ) as any as S.Schema<GoogleCloudAssetV1EdgeList>;
 
@@ -455,7 +450,7 @@ export interface GoogleCloudAssetV1IdentityList {
   /** Group identity edges of the graph starting from the binding's group members to any node of the identities. The Edge.source_node contains a group, such as `group:parent@google.com`. The Edge.target_node contains a member of the group, such as `group:child@google.com` or `user:foo@google.com`. This field is present only if the output_group_edges option is enabled in request. */
   groupEdges?: GoogleCloudAssetV1EdgeList;
 }
-export const GoogleCloudAssetV1IdentityList = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1IdentityList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identities: S.optional(GoogleCloudAssetV1IdentityList_),
     groupEdges: S.optional(GoogleCloudAssetV1EdgeList),
@@ -469,14 +464,14 @@ export type ConditionEvaluationEvaluationValueEnum =
   | "TRUE"
   | "FALSE"
   | "CONDITIONAL";
-export const ConditionEvaluationEvaluationValueEnum = S.String;
+const ConditionEvaluationEvaluationValueEnum = S.String;
 
 /** The condition evaluation. */
 export interface ConditionEvaluation {
   /** The evaluation result. */
   evaluationValue?: ConditionEvaluationEvaluationValueEnum;
 }
-export const ConditionEvaluation = /*@__PURE__*/ S.suspend(() =>
+const ConditionEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationValue: S.optional(ConditionEvaluationEvaluationValueEnum),
   }),
@@ -489,7 +484,7 @@ export interface GoogleCloudAssetV1Resource {
   /** The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) */
   fullResourceName?: string;
 }
-export const GoogleCloudAssetV1Resource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analysisState: S.optional(IamPolicyAnalysisState),
     fullResourceName: S.optional(S.String),
@@ -499,7 +494,7 @@ export const GoogleCloudAssetV1Resource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAssetV1Resource>;
 
 export type GoogleCloudAssetV1ResourceList = Array<GoogleCloudAssetV1Resource>;
-export const GoogleCloudAssetV1ResourceList = /*@__PURE__*/ S.Array(
+const GoogleCloudAssetV1ResourceList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Resource,
 ) as any as S.Schema<GoogleCloudAssetV1ResourceList>;
 
@@ -512,7 +507,7 @@ export interface GoogleCloudAssetV1Access {
   /** The permission. */
   permission?: string;
 }
-export const GoogleCloudAssetV1Access = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1Access = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analysisState: S.optional(IamPolicyAnalysisState),
     role: S.optional(S.String),
@@ -521,7 +516,7 @@ export const GoogleCloudAssetV1Access = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleCloudAssetV1Access" }) as any as S.Schema<GoogleCloudAssetV1Access>;
 
 export type GoogleCloudAssetV1AccessList = Array<GoogleCloudAssetV1Access>;
-export const GoogleCloudAssetV1AccessList = /*@__PURE__*/ S.Array(
+const GoogleCloudAssetV1AccessList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Access,
 ) as any as S.Schema<GoogleCloudAssetV1AccessList>;
 
@@ -536,7 +531,7 @@ export interface GoogleCloudAssetV1AccessControlList {
   /** Resource edges of the graph starting from the policy attached resource to any descendant resources. The Edge.source_node contains the full resource name of a parent resource and Edge.target_node contains the full resource name of a child resource. This field is present only if the output_resource_edges option is enabled in request. */
   resourceEdges?: GoogleCloudAssetV1EdgeList;
 }
-export const GoogleCloudAssetV1AccessControlList = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1AccessControlList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditionEvaluation: S.optional(ConditionEvaluation),
     resources: S.optional(GoogleCloudAssetV1ResourceList),
@@ -548,7 +543,7 @@ export const GoogleCloudAssetV1AccessControlList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAssetV1AccessControlList>;
 
 export type GoogleCloudAssetV1AccessControlListList = Array<GoogleCloudAssetV1AccessControlList>;
-export const GoogleCloudAssetV1AccessControlListList = /*@__PURE__*/ S.Array(
+const GoogleCloudAssetV1AccessControlListList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1AccessControlList,
 ) as any as S.Schema<GoogleCloudAssetV1AccessControlListList>;
 
@@ -563,7 +558,7 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     title: S.optional(S.String),
@@ -581,7 +576,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -602,7 +597,7 @@ export interface IamPolicyAnalysisResult {
   /** The IAM policy binding under analysis. */
   iamBinding?: Binding;
 }
-export const IamPolicyAnalysisResult = /*@__PURE__*/ S.suspend(() =>
+const IamPolicyAnalysisResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityList: S.optional(GoogleCloudAssetV1IdentityList),
     fullyExplored: S.optional(S.Boolean),
@@ -613,7 +608,7 @@ export const IamPolicyAnalysisResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamPolicyAnalysisResult" }) as any as S.Schema<IamPolicyAnalysisResult>;
 
 export type IamPolicyAnalysisResultList = Array<IamPolicyAnalysisResult>;
-export const IamPolicyAnalysisResultList = /*@__PURE__*/ S.Array(
+const IamPolicyAnalysisResultList = /*@__PURE__*/ S.Array(
   IamPolicyAnalysisResult,
 ) as any as S.Schema<IamPolicyAnalysisResultList>;
 
@@ -628,7 +623,7 @@ export interface IamPolicyAnalysis {
   /** A list of IamPolicyAnalysisResult that matches the analysis query, or empty if no result is found. */
   analysisResults?: IamPolicyAnalysisResultList;
 }
-export const IamPolicyAnalysis = /*@__PURE__*/ S.suspend(() =>
+const IamPolicyAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonCriticalErrors: S.optional(IamPolicyAnalysisStateList),
     analysisQuery: S.optional(IamPolicyAnalysisQuery),
@@ -638,7 +633,7 @@ export const IamPolicyAnalysis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamPolicyAnalysis" }) as any as S.Schema<IamPolicyAnalysis>;
 
 export type IamPolicyAnalysisList = Array<IamPolicyAnalysis>;
-export const IamPolicyAnalysisList = /*@__PURE__*/ S.Array(
+const IamPolicyAnalysisList = /*@__PURE__*/ S.Array(
   IamPolicyAnalysis,
 ) as any as S.Schema<IamPolicyAnalysisList>;
 
@@ -651,7 +646,7 @@ export interface AnalyzeIamPolicyResponse {
   /** Represents whether all entries in the main_analysis and service_account_impersonation_analysis have been fully explored to answer the query in the request. */
   fullyExplored?: boolean;
 }
-export const AnalyzeIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountImpersonationAnalysis: S.optional(IamPolicyAnalysisList),
     mainAnalysis: S.optional(IamPolicyAnalysis),
@@ -660,7 +655,7 @@ export const AnalyzeIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalyzeIamPolicyResponse" }) as any as S.Schema<AnalyzeIamPolicyResponse>;
 
 export type AnalyzeMoveV1ViewEnum = "ANALYSIS_VIEW_UNSPECIFIED" | "FULL" | "BASIC";
-export const AnalyzeMoveV1ViewEnum = S.String;
+const AnalyzeMoveV1ViewEnum = S.String;
 
 export interface AnalyzeMoveV1Request {
   /** Required. Name of the resource to perform the analysis against. Only Google Cloud projects are supported as of today. Hence, this can only be a project ID (such as "projects/my-project-id") or a project number (such as "projects/12345"). */
@@ -670,7 +665,7 @@ export interface AnalyzeMoveV1Request {
   /** Required. Name of the Google Cloud folder or organization to reparent the target resource. The analysis will be performed against hypothetically moving the resource to this specified destination parent. This can only be a folder number (such as "folders/123") or an organization number (such as "organizations/123"). */
   destinationParent?: string;
 }
-export const AnalyzeMoveV1Request = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeMoveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     view: S.optional(AnalyzeMoveV1ViewEnum.pipe(T.Query())),
@@ -689,14 +684,14 @@ export interface MoveImpact {
   /** User friendly impact detail in a free form message. */
   detail?: string;
 }
-export const MoveImpact = /*@__PURE__*/ S.suspend(() =>
+const MoveImpact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detail: S.optional(S.String),
   }),
 ).annotate({ identifier: "MoveImpact" }) as any as S.Schema<MoveImpact>;
 
 export type MoveImpactList = Array<MoveImpact>;
-export const MoveImpactList = /*@__PURE__*/ S.Array(MoveImpact) as any as S.Schema<MoveImpactList>;
+const MoveImpactList = /*@__PURE__*/ S.Array(MoveImpact) as any as S.Schema<MoveImpactList>;
 
 /** An analysis result including blockers and warnings. */
 export interface MoveAnalysisResult {
@@ -705,7 +700,7 @@ export interface MoveAnalysisResult {
   /** Warning information indicating that moving the target resource to the specified destination might be unsafe. This can include important policy information and configuration changes, but will not block moves at runtime. */
   warnings?: MoveImpactList;
 }
-export const MoveAnalysisResult = /*@__PURE__*/ S.suspend(() =>
+const MoveAnalysisResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockers: S.optional(MoveImpactList),
     warnings: S.optional(MoveImpactList),
@@ -721,7 +716,7 @@ export interface MoveAnalysis {
   /** Description of error encountered when performing the analysis. */
   error?: Status;
 }
-export const MoveAnalysis = /*@__PURE__*/ S.suspend(() =>
+const MoveAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     analysis: S.optional(MoveAnalysisResult),
@@ -730,16 +725,14 @@ export const MoveAnalysis = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoveAnalysis" }) as any as S.Schema<MoveAnalysis>;
 
 export type MoveAnalysisList = Array<MoveAnalysis>;
-export const MoveAnalysisList = /*@__PURE__*/ S.Array(
-  MoveAnalysis,
-) as any as S.Schema<MoveAnalysisList>;
+const MoveAnalysisList = /*@__PURE__*/ S.Array(MoveAnalysis) as any as S.Schema<MoveAnalysisList>;
 
 /** The response message for resource move analysis. */
 export interface AnalyzeMoveResponse {
   /** The list of analyses returned from performing the intended resource move analysis. The analysis is grouped by different Google Cloud services. */
   moveAnalysis?: MoveAnalysisList;
 }
-export const AnalyzeMoveResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeMoveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moveAnalysis: S.optional(MoveAnalysisList),
   }),
@@ -757,7 +750,7 @@ export interface AnalyzeOrgPoliciesV1Request {
   /** The expression to filter AnalyzeOrgPoliciesResponse.org_policy_results. Filtering is currently available for bare literal values and the following fields: * consolidated_policy.attached_resource * consolidated_policy.rules.enforce When filtering by a specific field, the only supported operator is `=`. For example, filtering by consolidated_policy.attached_resource="//cloudresourcemanager.googleapis.com/folders/001" will return all the Organization Policy results attached to "folders/001". */
   filter?: string;
 }
-export const AnalyzeOrgPoliciesV1Request = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeOrgPoliciesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraint: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -779,7 +772,7 @@ export type GoogleCloudAssetV1CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GoogleCloudAssetV1CustomConstraintActionTypeEnum = S.String;
+const GoogleCloudAssetV1CustomConstraintActionTypeEnum = S.String;
 
 export type GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum =
   | "METHOD_TYPE_UNSPECIFIED"
@@ -788,11 +781,11 @@ export type GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum =
   | "DELETE"
   | "REMOVE_GRANT"
   | "GOVERN_TAGS";
-export const GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum = S.String;
+const GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum = S.String;
 
 export type GoogleCloudAssetV1CustomConstraintMethodTypesItemEnumList =
   Array<GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum>;
-export const GoogleCloudAssetV1CustomConstraintMethodTypesItemEnumList = /*@__PURE__*/ S.Array(
+const GoogleCloudAssetV1CustomConstraintMethodTypesItemEnumList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1CustomConstraintMethodTypesItemEnum,
 ) as any as S.Schema<GoogleCloudAssetV1CustomConstraintMethodTypesItemEnumList>;
 
@@ -813,7 +806,7 @@ export interface GoogleCloudAssetV1CustomConstraint {
   /** The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`. */
   resourceTypes?: StringList;
 }
-export const GoogleCloudAssetV1CustomConstraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1CustomConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(S.String),
     actionType: S.optional(GoogleCloudAssetV1CustomConstraintActionTypeEnum),
@@ -829,9 +822,7 @@ export const GoogleCloudAssetV1CustomConstraint = /*@__PURE__*/ S.suspend(() =>
 
 /** A `Constraint` that is either enforced or not. For example a constraint `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance, serial port connections will not be opened to that instance. */
 export interface GoogleCloudAssetV1BooleanConstraint {}
-export const GoogleCloudAssetV1BooleanConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GoogleCloudAssetV1BooleanConstraint = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleCloudAssetV1BooleanConstraint",
 }) as any as S.Schema<GoogleCloudAssetV1BooleanConstraint>;
 
@@ -839,7 +830,7 @@ export type GoogleCloudAssetV1ConstraintConstraintDefaultEnum =
   | "CONSTRAINT_DEFAULT_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GoogleCloudAssetV1ConstraintConstraintDefaultEnum = S.String;
+const GoogleCloudAssetV1ConstraintConstraintDefaultEnum = S.String;
 
 /** A `Constraint` that allows or disallows a list of string values, which are configured by an organization's policy administrator with a `Policy`. */
 export interface GoogleCloudAssetV1ListConstraint {
@@ -848,7 +839,7 @@ export interface GoogleCloudAssetV1ListConstraint {
   /** Indicates whether subtrees of Cloud Resource Manager resource hierarchy can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"under:folders/123"` would match any resource under the 'folders/123' folder. */
   supportsUnder?: boolean;
 }
-export const GoogleCloudAssetV1ListConstraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1ListConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportsIn: S.optional(S.Boolean),
     supportsUnder: S.optional(S.Boolean),
@@ -872,7 +863,7 @@ export interface GoogleCloudAssetV1Constraint {
   /** The unique name of the constraint. Format of the name should be * `constraints/{constraint_name}` For example, `constraints/compute.disableSerialPortAccess`. */
   name?: string;
 }
-export const GoogleCloudAssetV1Constraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1Constraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     booleanConstraint: S.optional(GoogleCloudAssetV1BooleanConstraint),
     constraintDefault: S.optional(GoogleCloudAssetV1ConstraintConstraintDefaultEnum),
@@ -892,7 +883,7 @@ export interface AnalyzerOrgPolicyConstraint {
   /** The definition of the canned constraint defined by Google. */
   googleDefinedConstraint?: GoogleCloudAssetV1Constraint;
 }
-export const AnalyzerOrgPolicyConstraint = /*@__PURE__*/ S.suspend(() =>
+const AnalyzerOrgPolicyConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customConstraint: S.optional(GoogleCloudAssetV1CustomConstraint),
     googleDefinedConstraint: S.optional(GoogleCloudAssetV1Constraint),
@@ -908,7 +899,7 @@ export interface GoogleCloudAssetV1StringValues {
   /** List of values allowed at this resource. */
   allowedValues?: StringList;
 }
-export const GoogleCloudAssetV1StringValues = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1StringValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deniedValues: S.optional(StringList),
     allowedValues: S.optional(StringList),
@@ -932,7 +923,7 @@ export interface GoogleCloudAssetV1Rule {
   /** The evaluating condition for this rule. */
   condition?: Expr;
 }
-export const GoogleCloudAssetV1Rule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1Rule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforce: S.optional(S.Boolean),
     values: S.optional(GoogleCloudAssetV1StringValues),
@@ -944,7 +935,7 @@ export const GoogleCloudAssetV1Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleCloudAssetV1Rule" }) as any as S.Schema<GoogleCloudAssetV1Rule>;
 
 export type GoogleCloudAssetV1RuleList = Array<GoogleCloudAssetV1Rule>;
-export const GoogleCloudAssetV1RuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudAssetV1RuleList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1Rule,
 ) as any as S.Schema<GoogleCloudAssetV1RuleList>;
 
@@ -961,7 +952,7 @@ export interface AnalyzerOrgPolicy {
   /** If `inherit_from_parent` is true, Rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the effective root for evaluation. */
   inheritFromParent?: boolean;
 }
-export const AnalyzerOrgPolicy = /*@__PURE__*/ S.suspend(() =>
+const AnalyzerOrgPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachedResource: S.optional(S.String),
     appliedResource: S.optional(S.String),
@@ -972,7 +963,7 @@ export const AnalyzerOrgPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalyzerOrgPolicy" }) as any as S.Schema<AnalyzerOrgPolicy>;
 
 export type AnalyzerOrgPolicyList = Array<AnalyzerOrgPolicy>;
-export const AnalyzerOrgPolicyList = /*@__PURE__*/ S.Array(
+const AnalyzerOrgPolicyList = /*@__PURE__*/ S.Array(
   AnalyzerOrgPolicy,
 ) as any as S.Schema<AnalyzerOrgPolicyList>;
 
@@ -989,7 +980,7 @@ export interface OrgPolicyResult {
   /** The folder(s) that this consolidated policy belongs to, in the format of folders/{FOLDER_NUMBER}. This field is available when the consolidated policy belongs (directly or cascadingly) to one or more folders. */
   folders?: StringList;
 }
-export const OrgPolicyResult = /*@__PURE__*/ S.suspend(() =>
+const OrgPolicyResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.optional(S.String),
     project: S.optional(S.String),
@@ -1000,7 +991,7 @@ export const OrgPolicyResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgPolicyResult" }) as any as S.Schema<OrgPolicyResult>;
 
 export type OrgPolicyResultList = Array<OrgPolicyResult>;
-export const OrgPolicyResultList = /*@__PURE__*/ S.Array(
+const OrgPolicyResultList = /*@__PURE__*/ S.Array(
   OrgPolicyResult,
 ) as any as S.Schema<OrgPolicyResultList>;
 
@@ -1013,7 +1004,7 @@ export interface AnalyzeOrgPoliciesResponse {
   /** The organization policies under the AnalyzeOrgPoliciesRequest.scope with the AnalyzeOrgPoliciesRequest.constraint. */
   orgPolicyResults?: OrgPolicyResultList;
 }
-export const AnalyzeOrgPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeOrgPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraint: S.optional(AnalyzerOrgPolicyConstraint),
     nextPageToken: S.optional(S.String),
@@ -1035,7 +1026,7 @@ export interface AnalyzeOrgPolicyGovernedAssetsV1Request {
   /** The pagination token to retrieve the next page. */
   pageToken?: string;
 }
-export const AnalyzeOrgPolicyGovernedAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeOrgPolicyGovernedAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1058,7 +1049,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -1067,7 +1058,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -1075,7 +1066,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -1086,7 +1077,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -1094,12 +1085,10 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1112,7 +1101,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     auditConfigs: S.optional(AuditConfigList),
@@ -1136,7 +1125,7 @@ export interface GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGoverne
   /** The full resource name of the resource on which this IAM policy is set. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format) for more information. */
   attachedResource?: string;
 }
-export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy =
+const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       folders: S.optional(StringList),
@@ -1161,7 +1150,7 @@ export interface Tag {
   /** TagValue ID, in the format of tagValues/{TAG_VALUE_ID}. */
   tagValueId?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagKeyId: S.optional(S.String),
     tagValue: S.optional(S.String),
@@ -1171,7 +1160,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 export type TagList = Array<Tag>;
-export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
+const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** The effective tags and the ancestor resources from which they were inherited. */
 export interface EffectiveTagDetails {
@@ -1180,7 +1169,7 @@ export interface EffectiveTagDetails {
   /** The effective tags inherited from the attached_resource. Note that tags with the same key but different values may attach to resources at a different hierarchy levels. The lower hierarchy tag value will overwrite the higher hierarchy tag value of the same tag key. In this case, the tag value at the higher hierarchy level will be removed. For more information, see [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance). */
   effectiveTags?: TagList;
 }
-export const EffectiveTagDetails = /*@__PURE__*/ S.suspend(() =>
+const EffectiveTagDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachedResource: S.optional(S.String),
     effectiveTags: S.optional(TagList),
@@ -1188,7 +1177,7 @@ export const EffectiveTagDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EffectiveTagDetails" }) as any as S.Schema<EffectiveTagDetails>;
 
 export type EffectiveTagDetailsList = Array<EffectiveTagDetails>;
-export const EffectiveTagDetailsList = /*@__PURE__*/ S.Array(
+const EffectiveTagDetailsList = /*@__PURE__*/ S.Array(
   EffectiveTagDetails,
 ) as any as S.Schema<EffectiveTagDetailsList>;
 
@@ -1209,7 +1198,7 @@ export interface GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGoverne
   /** The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of the parent of AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource.full_resource_name. */
   parent?: string;
 }
-export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource =
+const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization: S.optional(S.String),
@@ -1235,7 +1224,7 @@ export interface GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGoverne
   /** The consolidated policy for the analyzed asset. The consolidated policy is computed by merging and evaluating AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset.policy_bundle. The evaluation will respect the organization policy [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy). */
   consolidatedPolicy?: AnalyzerOrgPolicy;
 }
-export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset =
+const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       policyBundle: S.optional(AnalyzerOrgPolicyList),
@@ -1253,7 +1242,7 @@ export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAss
 
 export type GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAssetList =
   Array<GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>;
-export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAssetList =
+const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAssetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset,
   ) as any as S.Schema<GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAssetList>;
@@ -1267,7 +1256,7 @@ export interface AnalyzeOrgPolicyGovernedAssetsResponse {
   /** The list of the analyzed governed assets. */
   governedAssets?: GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAssetList;
 }
-export const AnalyzeOrgPolicyGovernedAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeOrgPolicyGovernedAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     constraint: S.optional(AnalyzerOrgPolicyConstraint),
     nextPageToken: S.optional(S.String),
@@ -1291,7 +1280,7 @@ export interface AnalyzeOrgPolicyGovernedContainersV1Request {
   /** The expression to filter AnalyzeOrgPolicyGovernedContainersResponse.governed_containers. Filtering is currently available for bare literal values and the following fields: * parent * consolidated_policy.rules.enforce When filtering by a specific field, the only supported operator is `=`. For example, filtering by parent="//cloudresourcemanager.googleapis.com/folders/001" will return all the containers under "folders/001". */
   filter?: string;
 }
-export const AnalyzeOrgPolicyGovernedContainersV1Request = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeOrgPolicyGovernedContainersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     scope: S.String.pipe(T.Label()),
@@ -1328,7 +1317,7 @@ export interface GoogleCloudAssetV1GovernedContainer {
   /** The organization that this resource belongs to, in the format of organizations/{ORGANIZATION_NUMBER}. This field is available when the resource belongs (directly or cascadingly) to an organization. */
   organization?: string;
 }
-export const GoogleCloudAssetV1GovernedContainer = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1GovernedContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consolidatedPolicy: S.optional(AnalyzerOrgPolicy),
     policyBundle: S.optional(AnalyzerOrgPolicyList),
@@ -1344,7 +1333,7 @@ export const GoogleCloudAssetV1GovernedContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAssetV1GovernedContainer>;
 
 export type GoogleCloudAssetV1GovernedContainerList = Array<GoogleCloudAssetV1GovernedContainer>;
-export const GoogleCloudAssetV1GovernedContainerList = /*@__PURE__*/ S.Array(
+const GoogleCloudAssetV1GovernedContainerList = /*@__PURE__*/ S.Array(
   GoogleCloudAssetV1GovernedContainer,
 ) as any as S.Schema<GoogleCloudAssetV1GovernedContainerList>;
 
@@ -1357,7 +1346,7 @@ export interface AnalyzeOrgPolicyGovernedContainersResponse {
   /** The definition of the constraint in the request. */
   constraint?: AnalyzerOrgPolicyConstraint;
 }
-export const AnalyzeOrgPolicyGovernedContainersResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeOrgPolicyGovernedContainersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     governedContainers: S.optional(GoogleCloudAssetV1GovernedContainerList),
     nextPageToken: S.optional(S.String),
@@ -1375,7 +1364,7 @@ export type BatchGetAssetsHistoryV1ContentTypeEnum =
   | "ACCESS_POLICY"
   | "OS_INVENTORY"
   | "RELATIONSHIP";
-export const BatchGetAssetsHistoryV1ContentTypeEnum = S.String;
+const BatchGetAssetsHistoryV1ContentTypeEnum = S.String;
 
 export interface BatchGetAssetsHistoryV1Request {
   /** Start time of the time window (exclusive). */
@@ -1391,7 +1380,7 @@ export interface BatchGetAssetsHistoryV1Request {
   /** A list of the full names of the assets. See: https://cloud.google.com/asset-inventory/docs/resource-name-format Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is 100 in one request. */
   assetNames?: StringList;
 }
-export const BatchGetAssetsHistoryV1Request = /*@__PURE__*/ S.suspend(() =>
+const BatchGetAssetsHistoryV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "readTimeWindow.startTime": S.optional(S.String.pipe(T.Query())),
     relationshipTypes: S.optional(StringList.pipe(T.Query())),
@@ -1416,14 +1405,14 @@ export type TemporalAssetPriorAssetStateEnum =
   | "INVALID"
   | "DOES_NOT_EXIST"
   | "DELETED";
-export const TemporalAssetPriorAssetStateEnum = S.String;
+const TemporalAssetPriorAssetStateEnum = S.String;
 
 /** `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec */
 export interface GoogleIdentityAccesscontextmanagerV1CustomLevel {
   /** Required. A Cloud CEL expression evaluating to a boolean. */
   expr?: Expr;
 }
-export const GoogleIdentityAccesscontextmanagerV1CustomLevel = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1CustomLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expr: S.optional(Expr),
   }),
@@ -1432,19 +1421,19 @@ export const GoogleIdentityAccesscontextmanagerV1CustomLevel = /*@__PURE__*/ S.s
 }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1CustomLevel>;
 
 export type GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum = "AND" | "OR";
-export const GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum = S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "NONE"
   | "BASIC"
   | "COMPLETE";
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
+const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
   Array<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum>;
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
+const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum,
   ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList>;
@@ -1454,12 +1443,9 @@ export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionSta
   | "ENCRYPTION_UNSUPPORTED"
   | "UNENCRYPTED"
   | "ENCRYPTED";
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum =
-  S.String;
-
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
   Array<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum>;
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
+const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
   GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList as any as S.Schema<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList>;
 
 export type GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
@@ -1470,7 +1456,7 @@ export type GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
   | "DESKTOP_CHROME_OS"
   | "ANDROID"
   | "IOS";
-export const GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum = S.String;
 
 /** A restriction on the OS type and version of devices making requests. */
 export interface GoogleIdentityAccesscontextmanagerV1OsConstraint {
@@ -1481,7 +1467,7 @@ export interface GoogleIdentityAccesscontextmanagerV1OsConstraint {
   /** Required. The allowed OS type. */
   osType?: GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum;
 }
-export const GoogleIdentityAccesscontextmanagerV1OsConstraint = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1OsConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requireVerifiedChromeOs: S.optional(S.Boolean),
     minimumVersion: S.optional(S.String),
@@ -1493,7 +1479,7 @@ export const GoogleIdentityAccesscontextmanagerV1OsConstraint = /*@__PURE__*/ S.
 
 export type GoogleIdentityAccesscontextmanagerV1OsConstraintList =
   Array<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
-export const GoogleIdentityAccesscontextmanagerV1OsConstraintList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1OsConstraintList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1OsConstraint,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1OsConstraintList>;
 
@@ -1512,7 +1498,7 @@ export interface GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   /** Whether the device needs to be approved by the customer admin. */
   requireAdminApproval?: boolean;
 }
-export const GoogleIdentityAccesscontextmanagerV1DevicePolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1DevicePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requireCorpOwned: S.optional(S.Boolean),
     allowedDeviceManagementLevels: S.optional(
@@ -1536,7 +1522,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcSubNetwork {
   /** CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed. */
   vpcIpSubnetworks?: StringList;
 }
-export const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     vpcIpSubnetworks: S.optional(StringList),
@@ -1550,7 +1536,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcNetworkSource {
   /** Sub-segment ranges of a VPC network. */
   vpcSubnetwork?: GoogleIdentityAccesscontextmanagerV1VpcSubNetwork;
 }
-export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcSubnetwork: S.optional(GoogleIdentityAccesscontextmanagerV1VpcSubNetwork),
   }),
@@ -1560,7 +1546,7 @@ export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource = /*@__PURE__*
 
 export type GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList =
   Array<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
-export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1VpcNetworkSource,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList>;
 
@@ -1581,7 +1567,7 @@ export interface GoogleIdentityAccesscontextmanagerV1Condition {
   /** The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`. */
   vpcNetworkSources?: GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList;
 }
-export const GoogleIdentityAccesscontextmanagerV1Condition = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(StringList),
     ipSubnetworks: S.optional(StringList),
@@ -1597,7 +1583,7 @@ export const GoogleIdentityAccesscontextmanagerV1Condition = /*@__PURE__*/ S.sus
 
 export type GoogleIdentityAccesscontextmanagerV1ConditionList =
   Array<GoogleIdentityAccesscontextmanagerV1Condition>;
-export const GoogleIdentityAccesscontextmanagerV1ConditionList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1ConditionList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1Condition,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ConditionList>;
 
@@ -1608,7 +1594,7 @@ export interface GoogleIdentityAccesscontextmanagerV1BasicLevel {
   /** Required. A list of requirements for the `AccessLevel` to be granted. */
   conditions?: GoogleIdentityAccesscontextmanagerV1ConditionList;
 }
-export const GoogleIdentityAccesscontextmanagerV1BasicLevel = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1BasicLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     combiningFunction: S.optional(
       GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum,
@@ -1632,7 +1618,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessLevel {
   /** Identifier. Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`. */
   name?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1AccessLevel = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1AccessLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     title: S.optional(S.String),
@@ -1649,7 +1635,7 @@ export interface GoogleCloudOrgpolicyV1BooleanPolicy {
   /** If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. Suppose you have a `Constraint` `constraints/compute.disableSerialPortAccess` with `constraint_default` set to `ALLOW`. A `Policy` for that `Constraint` exhibits the following behavior: - If the `Policy` at this resource has enforced set to `false`, serial port connection attempts will be allowed. - If the `Policy` at this resource has enforced set to `true`, serial port connection attempts will be refused. - If the `Policy` at this resource is `RestoreDefault`, serial port connection attempts will be allowed. - If no `Policy` is set at this resource or anywhere higher in the resource hierarchy, serial port connection attempts will be allowed. - If no `Policy` is set at this resource, but one exists higher in the resource hierarchy, the behavior is as if the`Policy` were set at this resource. The following examples demonstrate the different possible layerings: Example 1 (nearest `Constraint` wins): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has no `Policy` set. The constraint at `projects/bar` and `organizations/foo` will not be enforced. Example 2 (enforcement gets replaced): `organizations/foo` has a `Policy` with: {enforced: false} `projects/bar` has a `Policy` with: {enforced: true} The constraint at `organizations/foo` is not enforced. The constraint at `projects/bar` is enforced. Example 3 (RestoreDefault): `organizations/foo` has a `Policy` with: {enforced: true} `projects/bar` has a `Policy` with: {RestoreDefault: {}} The constraint at `organizations/foo` is enforced. The constraint at `projects/bar` is not enforced, because `constraint_default` for the `Constraint` is `ALLOW`. */
   enforced?: boolean;
 }
-export const GoogleCloudOrgpolicyV1BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV1BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforced: S.optional(S.Boolean),
   }),
@@ -1661,7 +1647,7 @@ export type GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum =
   | "ALL_VALUES_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-export const GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum = S.String;
+const GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum = S.String;
 
 /** Used in `policy_type` to specify how `list_policy` behaves at this resource. `ListPolicy` can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied by setting the `allowed_values` and `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used. You can set `allowed_values` and `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and `denied_values` must be unset. */
 export interface GoogleCloudOrgpolicyV1ListPolicy {
@@ -1676,7 +1662,7 @@ export interface GoogleCloudOrgpolicyV1ListPolicy {
   /** List of values allowed at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
   allowedValues?: StringList;
 }
-export const GoogleCloudOrgpolicyV1ListPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV1ListPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allValues: S.optional(GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum),
     suggestedValue: S.optional(S.String),
@@ -1690,8 +1676,6 @@ export const GoogleCloudOrgpolicyV1ListPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. Suppose that `constraint_default` is set to `ALLOW` for the `Constraint` `constraints/serviceuser.services`. Suppose that organization foo.com sets a `Policy` at their Organization resource node that restricts the allowed service activations to deny all service activations. They could then set a `Policy` with the `policy_type` `restore_default` on several experimental projects, restoring the `constraint_default` enforcement of the `Constraint` for only those projects, allowing those projects to have all services activated. */
 export type GoogleCloudOrgpolicyV1RestoreDefault = GoogleCloudAssetV1BooleanConstraint;
-export const GoogleCloudOrgpolicyV1RestoreDefault = GoogleCloudAssetV1BooleanConstraint;
-
 /** Defines a Cloud Organization `Policy` which is used to specify `Constraints` for configurations of Cloud Platform resources. */
 export interface GoogleCloudOrgpolicyV1Policy {
   /** Version of the `Policy`. Default version is 0; */
@@ -1709,7 +1693,7 @@ export interface GoogleCloudOrgpolicyV1Policy {
   /** An opaque tag indicating the current version of the `Policy`, used for concurrency control. When the `Policy` is returned from either a `GetPolicy` or a `ListOrgPolicy` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset. When the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value that was returned from a `GetOrgPolicy` request as part of a read-modify-write loop for concurrency control. Not setting the `etag`in a `SetOrgPolicy` request will result in an unconditional write of the `Policy`. */
   etag?: string;
 }
-export const GoogleCloudOrgpolicyV1Policy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudOrgpolicyV1Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     booleanPolicy: S.optional(GoogleCloudOrgpolicyV1BooleanPolicy),
@@ -1724,7 +1708,7 @@ export const GoogleCloudOrgpolicyV1Policy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudOrgpolicyV1Policy>;
 
 export type GoogleCloudOrgpolicyV1PolicyList = Array<GoogleCloudOrgpolicyV1Policy>;
-export const GoogleCloudOrgpolicyV1PolicyList = /*@__PURE__*/ S.Array(
+const GoogleCloudOrgpolicyV1PolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV1Policy,
 ) as any as S.Schema<GoogleCloudOrgpolicyV1PolicyList>;
 
@@ -1739,7 +1723,7 @@ export interface RelationshipAttributes {
   /** The target asset type. Example: `compute.googleapis.com/Disk` */
   targetResourceType?: string;
 }
-export const RelationshipAttributes = /*@__PURE__*/ S.suspend(() =>
+const RelationshipAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceResourceType: S.optional(S.String),
     action: S.optional(S.String),
@@ -1759,7 +1743,7 @@ export interface RelatedAsset {
   /** The full name of the asset. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1` See [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information. */
   asset?: string;
 }
-export const RelatedAsset = /*@__PURE__*/ S.suspend(() =>
+const RelatedAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relationshipType: S.optional(S.String),
     ancestors: S.optional(StringList),
@@ -1769,9 +1753,7 @@ export const RelatedAsset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedAsset" }) as any as S.Schema<RelatedAsset>;
 
 export type RelatedAssetList = Array<RelatedAsset>;
-export const RelatedAssetList = /*@__PURE__*/ S.Array(
-  RelatedAsset,
-) as any as S.Schema<RelatedAssetList>;
+const RelatedAssetList = /*@__PURE__*/ S.Array(RelatedAsset) as any as S.Schema<RelatedAssetList>;
 
 /** DEPRECATED. This message only presents for the purpose of backward-compatibility. The server will never populate this message in responses. The detailed related assets with the `relationship_type`. */
 export interface RelatedAssets {
@@ -1780,7 +1762,7 @@ export interface RelatedAssets {
   /** The peer resources of the relationship. */
   assets?: RelatedAssetList;
 }
-export const RelatedAssets = /*@__PURE__*/ S.suspend(() =>
+const RelatedAssets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relationshipAttributes: S.optional(RelationshipAttributes),
     assets: S.optional(RelatedAssetList),
@@ -1788,7 +1770,7 @@ export const RelatedAssets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedAssets" }) as any as S.Schema<RelatedAssets>;
 
 export type ItemOriginTypeEnum = "ORIGIN_TYPE_UNSPECIFIED" | "INVENTORY_REPORT";
-export const ItemOriginTypeEnum = S.String;
+const ItemOriginTypeEnum = S.String;
 
 /** Information related to the a standard versioned package. This includes package info for APT, Yum, Zypper, and Googet package managers. */
 export interface VersionedPackage {
@@ -1799,7 +1781,7 @@ export interface VersionedPackage {
   /** The name of the package. */
   packageName?: string;
 }
-export const VersionedPackage = /*@__PURE__*/ S.suspend(() =>
+const VersionedPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     architecture: S.optional(S.String),
@@ -1814,7 +1796,7 @@ export interface WindowsUpdateCategory {
   /** The name of the windows update category. */
   name?: string;
 }
-export const WindowsUpdateCategory = /*@__PURE__*/ S.suspend(() =>
+const WindowsUpdateCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1822,7 +1804,7 @@ export const WindowsUpdateCategory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WindowsUpdateCategory" }) as any as S.Schema<WindowsUpdateCategory>;
 
 export type WindowsUpdateCategoryList = Array<WindowsUpdateCategory>;
-export const WindowsUpdateCategoryList = /*@__PURE__*/ S.Array(
+const WindowsUpdateCategoryList = /*@__PURE__*/ S.Array(
   WindowsUpdateCategory,
 ) as any as S.Schema<WindowsUpdateCategoryList>;
 
@@ -1847,7 +1829,7 @@ export interface WindowsUpdatePackage {
   /** A collection of Microsoft Knowledge Base article IDs that are associated with the update package. */
   kbArticleIds?: StringList;
 }
-export const WindowsUpdatePackage = /*@__PURE__*/ S.suspend(() =>
+const WindowsUpdatePackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     moreInfoUrls: S.optional(StringList),
@@ -1872,7 +1854,7 @@ export interface ZypperPatch {
   /** The severity specified for this patch */
   severity?: string;
 }
-export const ZypperPatch = /*@__PURE__*/ S.suspend(() =>
+const ZypperPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.optional(S.String),
     patchName: S.optional(S.String),
@@ -1890,7 +1872,7 @@ export interface Cloudasset_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-export const Cloudasset_Date = /*@__PURE__*/ S.suspend(() =>
+const Cloudasset_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -1911,7 +1893,7 @@ export interface WindowsApplication {
   /** The last time this product received service. The value of this property is replaced each time a patch is applied or removed from the product or the command-line option is used to repair the product. */
   installDate?: Cloudasset_Date;
 }
-export const WindowsApplication = /*@__PURE__*/ S.suspend(() =>
+const WindowsApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayVersion: S.optional(S.String),
     helpLink: S.optional(S.String),
@@ -1932,7 +1914,7 @@ export interface WindowsQuickFixEngineeringPackage {
   /** A textual description of the QFE update. */
   description?: string;
 }
-export const WindowsQuickFixEngineeringPackage = /*@__PURE__*/ S.suspend(() =>
+const WindowsQuickFixEngineeringPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installTime: S.optional(S.String),
     caption: S.optional(S.String),
@@ -1964,7 +1946,7 @@ export interface SoftwarePackage {
   /** Details of a Windows Quick Fix engineering package. See https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering for info in Windows Quick Fix Engineering. */
   qfePackage?: WindowsQuickFixEngineeringPackage;
 }
-export const SoftwarePackage = /*@__PURE__*/ S.suspend(() =>
+const SoftwarePackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googetPackage: S.optional(VersionedPackage),
     wuaPackage: S.optional(WindowsUpdatePackage),
@@ -1979,7 +1961,7 @@ export const SoftwarePackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SoftwarePackage" }) as any as S.Schema<SoftwarePackage>;
 
 export type ItemTypeEnum = "TYPE_UNSPECIFIED" | "INSTALLED_PACKAGE" | "AVAILABLE_PACKAGE";
-export const ItemTypeEnum = S.String;
+const ItemTypeEnum = S.String;
 
 /** A single piece of inventory on a VM. */
 export interface Item {
@@ -1998,7 +1980,7 @@ export interface Item {
   /** The specific type of inventory, correlating to its specific details. */
   type?: ItemTypeEnum;
 }
-export const Item = /*@__PURE__*/ S.suspend(() =>
+const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -2011,7 +1993,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 export type ItemMap = { [key: string]: Item | undefined };
-export const ItemMap = /*@__PURE__*/ S.Record(S.String, Item) as any as S.Schema<ItemMap>;
+const ItemMap = /*@__PURE__*/ S.Record(S.String, Item) as any as S.Schema<ItemMap>;
 
 /** Operating system information for the VM. */
 export interface OsInfo {
@@ -2032,7 +2014,7 @@ export interface OsInfo {
   /** The VM hostname. */
   hostname?: string;
 }
-export const OsInfo = /*@__PURE__*/ S.suspend(() =>
+const OsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longName: S.optional(S.String),
     shortName: S.optional(S.String),
@@ -2056,7 +2038,7 @@ export interface Inventory {
   /** Base level operating system information for the VM. */
   osInfo?: OsInfo;
 }
-export const Inventory = /*@__PURE__*/ S.suspend(() =>
+const Inventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -2078,7 +2060,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   /** Required. Human readable title. Does not affect behavior. */
   title?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1AccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1AccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     name: S.optional(S.String),
@@ -2107,7 +2089,7 @@ export interface Resource {
   /** The content of the resource, in which some sensitive fields are removed and may not be present. */
   data?: DocumentMap;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryName: S.optional(S.String),
     discoveryDocumentUri: S.optional(S.String),
@@ -2122,21 +2104,21 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 export type GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum =
   | "PERIMETER_TYPE_REGULAR"
   | "PERIMETER_TYPE_BRIDGE";
-export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum = S.String;
 
 /** Specifies the Private Service Connect endpoint that an API call refers to. */
 export interface GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint {
   /** The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint. Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`. */
   forwardingRule?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       forwardingRule: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint",
-  }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint>;
+).annotate({
+  identifier: "GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint",
+}) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint>;
 
 /** The source that IngressPolicy authorizes access from. */
 export interface GoogleIdentityAccesscontextmanagerV1IngressSource {
@@ -2147,7 +2129,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressSource {
   /** An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed. */
   accessLevel?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1IngressSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1IngressSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     pscEndpoint: S.optional(GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint),
@@ -2159,7 +2141,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressSource = /*@__PURE__*/ S
 
 export type GoogleIdentityAccesscontextmanagerV1IngressSourceList =
   Array<GoogleIdentityAccesscontextmanagerV1IngressSource>;
-export const GoogleIdentityAccesscontextmanagerV1IngressSourceList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1IngressSourceList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1IngressSource,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1IngressSourceList>;
 
@@ -2168,7 +2150,7 @@ export type GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum =
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
   | "ANY_SERVICE_ACCOUNT";
-export const GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum = S.String;
 
 /** Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match. */
 export interface GoogleIdentityAccesscontextmanagerV1IngressFrom {
@@ -2179,7 +2161,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /** Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?: GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum;
 }
-export const GoogleIdentityAccesscontextmanagerV1IngressFrom = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1IngressFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sources: S.optional(GoogleIdentityAccesscontextmanagerV1IngressSourceList),
     identities: S.optional(StringList),
@@ -2196,7 +2178,7 @@ export interface GoogleIdentityAccesscontextmanagerV1MethodSelector {
   /** A valid Cloud IAM permission for the corresponding `service_name` in ApiOperation. */
   permission?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1MethodSelector = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1MethodSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     permission: S.optional(S.String),
@@ -2207,7 +2189,7 @@ export const GoogleIdentityAccesscontextmanagerV1MethodSelector = /*@__PURE__*/ 
 
 export type GoogleIdentityAccesscontextmanagerV1MethodSelectorList =
   Array<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
-export const GoogleIdentityAccesscontextmanagerV1MethodSelectorList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1MethodSelectorList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1MethodSelector,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1MethodSelectorList>;
 
@@ -2218,7 +2200,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ApiOperation {
   /** API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`. */
   methodSelectors?: GoogleIdentityAccesscontextmanagerV1MethodSelectorList;
 }
-export const GoogleIdentityAccesscontextmanagerV1ApiOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1ApiOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
     methodSelectors: S.optional(GoogleIdentityAccesscontextmanagerV1MethodSelectorList),
@@ -2229,7 +2211,7 @@ export const GoogleIdentityAccesscontextmanagerV1ApiOperation = /*@__PURE__*/ S.
 
 export type GoogleIdentityAccesscontextmanagerV1ApiOperationList =
   Array<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
-export const GoogleIdentityAccesscontextmanagerV1ApiOperationList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1ApiOperationList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1ApiOperation,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ApiOperationList>;
 
@@ -2242,7 +2224,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressTo {
   /** IAM roles that represent the set of operations that the sources specified in the corresponding IngressFrom are allowed to perform in this ServicePerimeter. */
   roles?: StringList;
 }
-export const GoogleIdentityAccesscontextmanagerV1IngressTo = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1IngressTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StringList),
     operations: S.optional(GoogleIdentityAccesscontextmanagerV1ApiOperationList),
@@ -2261,7 +2243,7 @@ export interface GoogleIdentityAccesscontextmanagerV1IngressPolicy {
   /** Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply. */
   ingressTo?: GoogleIdentityAccesscontextmanagerV1IngressTo;
 }
-export const GoogleIdentityAccesscontextmanagerV1IngressPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1IngressPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingressFrom: S.optional(GoogleIdentityAccesscontextmanagerV1IngressFrom),
     title: S.optional(S.String),
@@ -2273,7 +2255,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressPolicy = /*@__PURE__*/ S
 
 export type GoogleIdentityAccesscontextmanagerV1IngressPolicyList =
   Array<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
-export const GoogleIdentityAccesscontextmanagerV1IngressPolicyList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1IngressPolicyList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1IngressPolicy,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1IngressPolicyList>;
 
@@ -2288,7 +2270,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressTo {
   /** A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter. */
   resources?: StringList;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressTo = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1EgressTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(GoogleIdentityAccesscontextmanagerV1ApiOperationList),
     externalResources: S.optional(StringList),
@@ -2304,13 +2286,13 @@ export type GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
   | "ANY_SERVICE_ACCOUNT";
-export const GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum = S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum =
   | "SOURCE_RESTRICTION_UNSPECIFIED"
   | "SOURCE_RESTRICTION_ENABLED"
   | "SOURCE_RESTRICTION_DISABLED";
-export const GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum = S.String;
+const GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum = S.String;
 
 /** The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries. */
 export interface GoogleIdentityAccesscontextmanagerV1EgressSource {
@@ -2321,7 +2303,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressSource {
   /** A Google Cloud resource from the service perimeter that you want to allow to access data outside the perimeter. This field supports only projects. The project format is `projects/{project_number}`. You can't use `*` in this field to allow all Google Cloud resources. */
   resource?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1EgressSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessLevel: S.optional(S.String),
     pscEndpoint: S.optional(GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint),
@@ -2333,7 +2315,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressSource = /*@__PURE__*/ S.
 
 export type GoogleIdentityAccesscontextmanagerV1EgressSourceList =
   Array<GoogleIdentityAccesscontextmanagerV1EgressSource>;
-export const GoogleIdentityAccesscontextmanagerV1EgressSourceList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1EgressSourceList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1EgressSource,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSourceList>;
 
@@ -2348,7 +2330,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /** Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`. */
   sources?: GoogleIdentityAccesscontextmanagerV1EgressSourceList;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressFrom = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1EgressFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityType: S.optional(GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum),
     identities: S.optional(StringList),
@@ -2370,7 +2352,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressPolicy {
   /** Optional. Human-readable title for the egress rule. The title must be unique within the perimeter and can not exceed 100 characters. Within the access policy, the combined length of all rule titles must not exceed 240,000 characters. */
   title?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1EgressPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1EgressPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     egressTo: S.optional(GoogleIdentityAccesscontextmanagerV1EgressTo),
     egressFrom: S.optional(GoogleIdentityAccesscontextmanagerV1EgressFrom),
@@ -2382,7 +2364,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressPolicy = /*@__PURE__*/ S.
 
 export type GoogleIdentityAccesscontextmanagerV1EgressPolicyList =
   Array<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
-export const GoogleIdentityAccesscontextmanagerV1EgressPolicyList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1EgressPolicyList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1EgressPolicy,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressPolicyList>;
 
@@ -2393,7 +2375,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AddRequestHeader {
   /** HTTP header key. */
   key?: string;
 }
-export const GoogleIdentityAccesscontextmanagerV1AddRequestHeader = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1AddRequestHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     key: S.optional(S.String),
@@ -2407,7 +2389,7 @@ export interface GoogleIdentityAccesscontextmanagerV1Modifier {
   /** Adds an additional HTTP request header. */
   addRequestHeader?: GoogleIdentityAccesscontextmanagerV1AddRequestHeader;
 }
-export const GoogleIdentityAccesscontextmanagerV1Modifier = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1Modifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addRequestHeader: S.optional(GoogleIdentityAccesscontextmanagerV1AddRequestHeader),
   }),
@@ -2417,7 +2399,7 @@ export const GoogleIdentityAccesscontextmanagerV1Modifier = /*@__PURE__*/ S.susp
 
 export type GoogleIdentityAccesscontextmanagerV1ModifierList =
   Array<GoogleIdentityAccesscontextmanagerV1Modifier>;
-export const GoogleIdentityAccesscontextmanagerV1ModifierList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1ModifierList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1Modifier,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ModifierList>;
 
@@ -2430,7 +2412,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePattern {
   /** Modifiers to apply to the requests that match the URL pattern. */
   modifiers?: GoogleIdentityAccesscontextmanagerV1ModifierList;
 }
-export const GoogleIdentityAccesscontextmanagerV1ServicePattern = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1ServicePattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     pattern: S.optional(S.String),
@@ -2442,19 +2424,16 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePattern = /*@__PURE__*/ 
 
 export type GoogleIdentityAccesscontextmanagerV1ServicePatternList =
   Array<GoogleIdentityAccesscontextmanagerV1ServicePattern>;
-export const GoogleIdentityAccesscontextmanagerV1ServicePatternList = /*@__PURE__*/ S.Array(
+const GoogleIdentityAccesscontextmanagerV1ServicePatternList = /*@__PURE__*/ S.Array(
   GoogleIdentityAccesscontextmanagerV1ServicePattern,
 ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePatternList>;
 
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   | "SERVICE_PATTERNS_ENFORCEMENT_SCOPE_UNSPECIFIED"
   | "GOOGLE_APIS_VIA_PRIVATE_PATH";
-export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
-  S.String;
-
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
   Array<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum>;
-export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
+const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
   GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList as any as S.Schema<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList>;
 
 /** Specifies how APIs are allowed to communicate within the Service Perimeter. */
@@ -2468,16 +2447,15 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
   /** Defines the enforcement scopes of service patterns. */
   servicePatternsEnforcementScopes?: GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList;
 }
-export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enableRestriction: S.optional(S.Boolean),
-      allowedServicePatterns: S.optional(GoogleIdentityAccesscontextmanagerV1ServicePatternList),
-      allowedServices: S.optional(StringList),
-      servicePatternsEnforcementScopes: S.optional(
-        GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList,
-      ),
-    }),
+const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enableRestriction: S.optional(S.Boolean),
+    allowedServicePatterns: S.optional(GoogleIdentityAccesscontextmanagerV1ServicePatternList),
+    allowedServices: S.optional(StringList),
+    servicePatternsEnforcementScopes: S.optional(
+      GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList,
+    ),
+  }),
 ).annotate({
   identifier: "GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices",
 }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices>;
@@ -2497,16 +2475,15 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /** Configuration for APIs allowed within Perimeter. */
   vpcAccessibleServices?: GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices;
 }
-export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resources: S.optional(StringList),
-      ingressPolicies: S.optional(GoogleIdentityAccesscontextmanagerV1IngressPolicyList),
-      accessLevels: S.optional(StringList),
-      restrictedServices: S.optional(StringList),
-      egressPolicies: S.optional(GoogleIdentityAccesscontextmanagerV1EgressPolicyList),
-      vpcAccessibleServices: S.optional(GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices),
-    }),
+const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resources: S.optional(StringList),
+    ingressPolicies: S.optional(GoogleIdentityAccesscontextmanagerV1IngressPolicyList),
+    accessLevels: S.optional(StringList),
+    restrictedServices: S.optional(StringList),
+    egressPolicies: S.optional(GoogleIdentityAccesscontextmanagerV1EgressPolicyList),
+    vpcAccessibleServices: S.optional(GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices),
+  }),
 ).annotate({
   identifier: "GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig",
 }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig>;
@@ -2530,7 +2507,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /** Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries. */
   status?: GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig;
 }
-export const GoogleIdentityAccesscontextmanagerV1ServicePerimeter = /*@__PURE__*/ S.suspend(() =>
+const GoogleIdentityAccesscontextmanagerV1ServicePerimeter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useExplicitDryRunSpec: S.optional(S.Boolean),
     etag: S.optional(S.String),
@@ -2548,7 +2525,7 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePerimeter = /*@__PURE__*
 }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeter>;
 
 export type AssetExceptionExceptionTypeEnum = "EXCEPTION_TYPE_UNSPECIFIED" | "TRUNCATION";
-export const AssetExceptionExceptionTypeEnum = S.String;
+const AssetExceptionExceptionTypeEnum = S.String;
 
 /** An exception of an asset. */
 export interface AssetException {
@@ -2557,7 +2534,7 @@ export interface AssetException {
   /** The details of the exception. */
   details?: string;
 }
-export const AssetException = /*@__PURE__*/ S.suspend(() =>
+const AssetException = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exceptionType: S.optional(AssetExceptionExceptionTypeEnum),
     details: S.optional(S.String),
@@ -2565,7 +2542,7 @@ export const AssetException = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssetException" }) as any as S.Schema<AssetException>;
 
 export type AssetExceptionList = Array<AssetException>;
-export const AssetExceptionList = /*@__PURE__*/ S.Array(
+const AssetExceptionList = /*@__PURE__*/ S.Array(
   AssetException,
 ) as any as S.Schema<AssetExceptionList>;
 
@@ -2600,7 +2577,7 @@ export interface Asset {
   /** The exceptions of a resource. */
   assetExceptions?: AssetExceptionList;
 }
-export const Asset = /*@__PURE__*/ S.suspend(() =>
+const Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessLevel: S.optional(GoogleIdentityAccesscontextmanagerV1AccessLevel),
     orgPolicy: S.optional(GoogleCloudOrgpolicyV1PolicyList),
@@ -2626,7 +2603,7 @@ export interface TimeWindow {
   /** End time of the time window (inclusive). If not specified, the current timestamp is used instead. */
   endTime?: string;
 }
-export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
+const TimeWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -2646,7 +2623,7 @@ export interface TemporalAsset {
   /** Prior copy of the asset. Populated if prior_asset_state is PRESENT. Currently this is only set for responses in Real-Time Feed. */
   priorAsset?: Asset;
 }
-export const TemporalAsset = /*@__PURE__*/ S.suspend(() =>
+const TemporalAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priorAssetState: S.optional(TemporalAssetPriorAssetStateEnum),
     asset: S.optional(Asset),
@@ -2657,7 +2634,7 @@ export const TemporalAsset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemporalAsset" }) as any as S.Schema<TemporalAsset>;
 
 export type TemporalAssetList = Array<TemporalAsset>;
-export const TemporalAssetList = /*@__PURE__*/ S.Array(
+const TemporalAssetList = /*@__PURE__*/ S.Array(
   TemporalAsset,
 ) as any as S.Schema<TemporalAssetList>;
 
@@ -2666,7 +2643,7 @@ export interface BatchGetAssetsHistoryResponse {
   /** A list of assets with valid time windows. */
   assets?: TemporalAssetList;
 }
-export const BatchGetAssetsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetAssetsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(TemporalAssetList),
   }),
@@ -2680,7 +2657,7 @@ export interface BatchGetEffectiveIamPoliciesRequest {
   /** Required. The names refer to the [full_resource_names] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of the asset types [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types). A maximum of 20 resources' effective policies can be retrieved in a batch. */
   names?: StringList;
 }
-export const BatchGetEffectiveIamPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetEffectiveIamPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     names: S.optional(StringList.pipe(T.Query())),
@@ -2702,7 +2679,7 @@ export interface PolicyInfo {
   /** The IAM policy that's directly attached to the attached_resource. */
   policy?: Policy;
 }
-export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
+const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachedResource: S.optional(S.String),
     policy: S.optional(Policy),
@@ -2710,7 +2687,7 @@ export const PolicyInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyInfo" }) as any as S.Schema<PolicyInfo>;
 
 export type PolicyInfoList = Array<PolicyInfo>;
-export const PolicyInfoList = /*@__PURE__*/ S.Array(PolicyInfo) as any as S.Schema<PolicyInfoList>;
+const PolicyInfoList = /*@__PURE__*/ S.Array(PolicyInfo) as any as S.Schema<PolicyInfoList>;
 
 /** The effective IAM policies on one resource. */
 export interface EffectiveIamPolicy {
@@ -2719,7 +2696,7 @@ export interface EffectiveIamPolicy {
   /** The effective policies for the full_resource_name. These policies include the policy set on the full_resource_name and those set on its parents and ancestors up to the BatchGetEffectiveIamPoliciesRequest.scope. Note that these policies are not filtered according to the resource type of the full_resource_name. These policies are hierarchically ordered by PolicyInfo.attached_resource starting from full_resource_name itself to its parents and ancestors, such that policies[i]'s PolicyInfo.attached_resource is the child of policies[i+1]'s PolicyInfo.attached_resource, if policies[i+1] exists. */
   policies?: PolicyInfoList;
 }
-export const EffectiveIamPolicy = /*@__PURE__*/ S.suspend(() =>
+const EffectiveIamPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullResourceName: S.optional(S.String),
     policies: S.optional(PolicyInfoList),
@@ -2727,7 +2704,7 @@ export const EffectiveIamPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EffectiveIamPolicy" }) as any as S.Schema<EffectiveIamPolicy>;
 
 export type EffectiveIamPolicyList = Array<EffectiveIamPolicy>;
-export const EffectiveIamPolicyList = /*@__PURE__*/ S.Array(
+const EffectiveIamPolicyList = /*@__PURE__*/ S.Array(
   EffectiveIamPolicy,
 ) as any as S.Schema<EffectiveIamPolicyList>;
 
@@ -2736,7 +2713,7 @@ export interface BatchGetEffectiveIamPoliciesResponse {
   /** The effective policies for a batch of resources. Note that the results order is the same as the order of BatchGetEffectiveIamPoliciesRequest.names. When a resource does not have any effective IAM policies, its corresponding policy_result will contain empty EffectiveIamPolicy.policies. */
   policyResults?: EffectiveIamPolicyList;
 }
-export const BatchGetEffectiveIamPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetEffectiveIamPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyResults: S.optional(EffectiveIamPolicyList),
   }),
@@ -2749,7 +2726,7 @@ export interface PubsubDestination {
   /** The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`. */
   topic?: string;
 }
-export const PubsubDestination = /*@__PURE__*/ S.suspend(() =>
+const PubsubDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(S.String),
   }),
@@ -2760,7 +2737,7 @@ export interface FeedOutputConfig {
   /** Destination on Pub/Sub. */
   pubsubDestination?: PubsubDestination;
 }
-export const FeedOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const FeedOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubDestination: S.optional(PubsubDestination),
   }),
@@ -2774,7 +2751,7 @@ export type FeedContentTypeEnum =
   | "ACCESS_POLICY"
   | "OS_INVENTORY"
   | "RELATIONSHIP";
-export const FeedContentTypeEnum = S.String;
+const FeedContentTypeEnum = S.String;
 
 /** An asset feed used to export asset updates to a destinations. An asset feed filter controls what updates are exported. The asset feed must be created within a project, organization, or folder. Supported destinations are: Pub/Sub topics. */
 export interface Feed {
@@ -2793,7 +2770,7 @@ export interface Feed {
   /** A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
   relationshipTypes?: StringList;
 }
-export const Feed = /*@__PURE__*/ S.suspend(() =>
+const Feed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetTypes: S.optional(StringList),
     name: S.optional(S.String),
@@ -2812,7 +2789,7 @@ export interface CreateFeedRequest {
   /** Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id */
   feed?: Feed;
 }
-export const CreateFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedId: S.optional(S.String),
     feed: S.optional(Feed),
@@ -2825,7 +2802,7 @@ export interface CreateFeedsRequest {
   /** Request body */
   body?: CreateFeedRequest;
 }
-export const CreateFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateFeedRequest.pipe(T.HttpBody())),
@@ -2843,14 +2820,14 @@ export interface QueryContent {
   /** An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC. */
   iamPolicyAnalysisQuery?: IamPolicyAnalysisQuery;
 }
-export const QueryContent = /*@__PURE__*/ S.suspend(() =>
+const QueryContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamPolicyAnalysisQuery: S.optional(IamPolicyAnalysisQuery),
   }),
 ).annotate({ identifier: "QueryContent" }) as any as S.Schema<QueryContent>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A saved query which can be shared with others or used later. */
 export interface SavedQuery {
@@ -2871,7 +2848,7 @@ export interface SavedQuery {
   /** The description of this saved query. This value should be fewer than 255 characters. */
   description?: string;
 }
-export const SavedQuery = /*@__PURE__*/ S.suspend(() =>
+const SavedQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastUpdater: S.optional(S.String),
     name: S.optional(S.String),
@@ -2892,7 +2869,7 @@ export interface CreateSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const CreateSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savedQueryId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2912,7 +2889,7 @@ export interface DeleteFeedsRequest {
   /** Required. The name of the feed and it must be in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id */
   name: string;
 }
-export const DeleteFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2922,7 +2899,7 @@ export const DeleteFeedsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -2930,7 +2907,7 @@ export interface DeleteSavedQueriesRequest {
   /** Required. The name of the saved query to delete. It must be in the format of: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id */
   name: string;
 }
-export const DeleteSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2948,20 +2925,20 @@ export type ExportAssetsRequestContentTypeEnum =
   | "ACCESS_POLICY"
   | "OS_INVENTORY"
   | "RELATIONSHIP";
-export const ExportAssetsRequestContentTypeEnum = S.String;
+const ExportAssetsRequestContentTypeEnum = S.String;
 
 export type PartitionSpecPartitionKeyEnum =
   | "PARTITION_KEY_UNSPECIFIED"
   | "READ_TIME"
   | "REQUEST_TIME";
-export const PartitionSpecPartitionKeyEnum = S.String;
+const PartitionSpecPartitionKeyEnum = S.String;
 
 /** Specifications of BigQuery partitioned table as export destination. */
 export interface PartitionSpec {
   /** The partition key for BigQuery partitioned table. */
   partitionKey?: PartitionSpecPartitionKeyEnum | (string & {});
 }
-export const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
+const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionKey: S.optional(PartitionSpecPartitionKeyEnum),
   }),
@@ -2980,7 +2957,7 @@ export interface BigQueryDestination {
   /** If the destination table already exists and this flag is `TRUE`, the table will be overwritten by the contents of assets snapshot. If the flag is `FALSE` or unset and the destination table already exists, the export call returns an INVALID_ARGUMENT error. */
   force?: boolean;
 }
-export const BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     separateTablesPerAssetType: S.optional(S.Boolean),
     partitionSpec: S.optional(PartitionSpec),
@@ -2997,7 +2974,7 @@ export interface GcsDestination {
   /** The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. If the specified Cloud Storage object already exists and there is no [hold](https://cloud.google.com/storage/docs/object-holds), it will be overwritten with the exported result. */
   uri?: string;
 }
-export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
+const GcsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriPrefix: S.optional(S.String),
     uri: S.optional(S.String),
@@ -3011,7 +2988,7 @@ export interface OutputConfig {
   /** Destination on Cloud Storage. */
   gcsDestination?: GcsDestination;
 }
-export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
+const OutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryDestination: S.optional(BigQueryDestination),
     gcsDestination: S.optional(GcsDestination),
@@ -3031,7 +3008,7 @@ export interface ExportAssetsRequest {
   /** Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results. */
   readTime?: string;
 }
-export const ExportAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.optional(ExportAssetsRequestContentTypeEnum),
     outputConfig: S.optional(OutputConfig),
@@ -3047,7 +3024,7 @@ export interface ExportAssetsV1Request {
   /** Request body */
   body?: ExportAssetsRequest;
 }
-export const ExportAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ExportAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ExportAssetsRequest.pipe(T.HttpBody())),
@@ -3064,7 +3041,7 @@ export interface GetFeedsRequest {
   /** Required. The name of the Feed and it must be in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id */
   name: string;
 }
-export const GetFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3076,7 +3053,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3088,7 +3065,7 @@ export interface GetSavedQueriesRequest {
   /** Required. The name of the saved query and it must be in the format of: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id */
   name: string;
 }
-export const GetSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3104,7 +3081,7 @@ export type ListAssetsContentTypeEnum =
   | "ACCESS_POLICY"
   | "OS_INVENTORY"
   | "RELATIONSHIP";
-export const ListAssetsContentTypeEnum = S.String;
+const ListAssetsContentTypeEnum = S.String;
 
 export interface ListAssetsRequest {
   /** A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it snapshots specified relationships. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_types] or if any of the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it snapshots the supported relationships for all [asset_types] or returns an error if any of the [asset_types] has no relationship support. An unspecified asset types field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
@@ -3122,7 +3099,7 @@ export interface ListAssetsRequest {
   /** A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expression is also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types. */
   assetTypes?: StringList;
 }
-export const ListAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relationshipTypes: S.optional(StringList.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3141,7 +3118,7 @@ export const ListAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAssetsRequest" }) as any as S.Schema<ListAssetsRequest>;
 
 export type AssetList = Array<Asset>;
-export const AssetList = /*@__PURE__*/ S.Array(Asset) as any as S.Schema<AssetList>;
+const AssetList = /*@__PURE__*/ S.Array(Asset) as any as S.Schema<AssetList>;
 
 /** ListAssets response. */
 export interface ListAssetsResponse {
@@ -3152,7 +3129,7 @@ export interface ListAssetsResponse {
   /** Time the snapshot was taken. */
   readTime?: string;
 }
-export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(AssetList),
     nextPageToken: S.optional(S.String),
@@ -3164,7 +3141,7 @@ export interface ListFeedsRequest {
   /** Required. The parent project/folder/organization whose feeds are to be listed. It can only be using project/folder/organization number (such as "folders/12345")", or a project ID (such as "projects/my-project-id"). */
   parent: string;
 }
-export const ListFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -3177,13 +3154,13 @@ export const ListFeedsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFeedsRequest" }) as any as S.Schema<ListFeedsRequest>;
 
 export type FeedList = Array<Feed>;
-export const FeedList = /*@__PURE__*/ S.Array(Feed) as any as S.Schema<FeedList>;
+const FeedList = /*@__PURE__*/ S.Array(Feed) as any as S.Schema<FeedList>;
 
 export interface ListFeedsResponse {
   /** A list of feeds. */
   feeds?: FeedList;
 }
-export const ListFeedsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFeedsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feeds: S.optional(FeedList),
   }),
@@ -3199,7 +3176,7 @@ export interface ListSavedQueriesRequest {
   /** Optional. The maximum number of saved queries to return per page. The service may return fewer than this value. If unspecified, at most 50 will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3215,7 +3192,7 @@ export const ListSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSavedQueriesRequest" }) as any as S.Schema<ListSavedQueriesRequest>;
 
 export type SavedQueryList = Array<SavedQuery>;
-export const SavedQueryList = /*@__PURE__*/ S.Array(SavedQuery) as any as S.Schema<SavedQueryList>;
+const SavedQueryList = /*@__PURE__*/ S.Array(SavedQuery) as any as S.Schema<SavedQueryList>;
 
 /** Response of listing saved queries. */
 export interface ListSavedQueriesResponse {
@@ -3224,7 +3201,7 @@ export interface ListSavedQueriesResponse {
   /** A list of savedQueries. */
   savedQueries?: SavedQueryList;
 }
-export const ListSavedQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSavedQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     savedQueries: S.optional(SavedQueryList),
@@ -3238,7 +3215,7 @@ export interface UpdateFeedRequest {
   /** Required. The new values of feed details. It must match an existing feed and the field `name` must be in the format of: projects/project_number/feeds/feed_id or folders/folder_number/feeds/feed_id or organizations/organization_number/feeds/feed_id. */
   feed?: Feed;
 }
-export const UpdateFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     feed: S.optional(Feed),
@@ -3251,7 +3228,7 @@ export interface PatchFeedsRequest {
   /** Request body */
   body?: UpdateFeedRequest;
 }
-export const PatchFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateFeedRequest.pipe(T.HttpBody())),
@@ -3268,7 +3245,7 @@ export interface PatchSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const PatchSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -3287,13 +3264,12 @@ export interface GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination {
   /** Required. The BigQuery dataset where the query results will be saved. It has the format of "projects/{projectId}/datasets/{datasetId}". */
   dataset?: string;
 }
-export const GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      writeDisposition: S.optional(S.String),
-      table: S.optional(S.String),
-      dataset: S.optional(S.String),
-    }),
+const GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    writeDisposition: S.optional(S.String),
+    table: S.optional(S.String),
+    dataset: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination",
 }) as any as S.Schema<GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination>;
@@ -3303,7 +3279,7 @@ export interface QueryAssetsOutputConfig {
   /** BigQuery destination where the query results will be saved. */
   bigqueryDestination?: GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination;
 }
-export const QueryAssetsOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const QueryAssetsOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryDestination: S.optional(GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination),
   }),
@@ -3328,7 +3304,7 @@ export interface QueryAssetsRequest {
   /** Optional. A page token received from previous `QueryAssets`. The field will be ignored when [output_config] is specified. */
   pageToken?: string;
 }
-export const QueryAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number),
     jobReference: S.optional(S.String),
@@ -3347,7 +3323,7 @@ export interface QueryAssetsV1Request {
   /** Request body */
   body?: QueryAssetsRequest;
 }
-export const QueryAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
+const QueryAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(QueryAssetsRequest.pipe(T.HttpBody())),
@@ -3371,7 +3347,7 @@ export interface TableFieldSchema {
   /** The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE. */
   mode?: string;
 }
-export const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
+const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     fields: S.optional(S.suspend(() => TableFieldSchemaList)),
@@ -3381,7 +3357,7 @@ export const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableFieldSchema" }) as any as S.Schema<TableFieldSchema>;
 
 export type TableFieldSchemaList = Array<TableFieldSchema>;
-export const TableFieldSchemaList = /*@__PURE__*/ S.Array(
+const TableFieldSchemaList = /*@__PURE__*/ S.Array(
   TableFieldSchema,
 ) as any as S.Schema<TableFieldSchemaList>;
 
@@ -3390,7 +3366,7 @@ export interface TableSchema {
   /** Describes the fields in a table. */
   fields?: TableFieldSchemaList;
 }
-export const TableSchema = /*@__PURE__*/ S.suspend(() =>
+const TableSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(TableFieldSchemaList),
   }),
@@ -3407,7 +3383,7 @@ export interface QueryResult {
   /** Total rows of the whole query results. */
   totalRows?: string;
 }
-export const QueryResult = /*@__PURE__*/ S.suspend(() =>
+const QueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: S.optional(DocumentMapList),
     nextPageToken: S.optional(S.String),
@@ -3429,7 +3405,7 @@ export interface QueryAssetsResponse {
   /** Output configuration, which indicates that instead of being returned in an API response on the fly, the query result will be saved in a specific output. */
   outputConfig?: QueryAssetsOutputConfig;
 }
-export const QueryAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(Status),
@@ -3453,7 +3429,7 @@ export interface SearchAllIamPoliciesV1Request {
   /** Required. A scope can be a project, a folder, or an organization. The search is limited to the IAM policies within the `scope`. The caller must be granted the [`cloudasset.assets.searchAllIamPolicies`](https://cloud.google.com/asset-inventory/docs/access-control#required_permissions) permission on the desired scope. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456") */
   scope: string;
 }
-export const SearchAllIamPoliciesV1Request = /*@__PURE__*/ S.suspend(() =>
+const SearchAllIamPoliciesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -3477,14 +3453,14 @@ export interface Permissions {
   /** A list of permissions. A sample permission string: `compute.disk.get`. */
   permissions?: StringList;
 }
-export const Permissions = /*@__PURE__*/ S.suspend(() =>
+const Permissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
 ).annotate({ identifier: "Permissions" }) as any as S.Schema<Permissions>;
 
 export type PermissionsMap = { [key: string]: Permissions | undefined };
-export const PermissionsMap = /*@__PURE__*/ S.Record(
+const PermissionsMap = /*@__PURE__*/ S.Record(
   S.String,
   Permissions,
 ) as any as S.Schema<PermissionsMap>;
@@ -3494,7 +3470,7 @@ export interface Explanation {
   /** The map from roles to their included permissions that match the permission query (i.e., a query containing `policy.role.permissions:`). Example: if query `policy.role.permissions:compute.disk.get` matches a policy binding that contains owner role, the matched_permissions will be `{"roles/owner": ["compute.disk.get"]}`. The roles can also be found in the returned `policy` bindings. Note that the map is populated only for requests with permission queries. */
   matchedPermissions?: PermissionsMap;
 }
-export const Explanation = /*@__PURE__*/ S.suspend(() =>
+const Explanation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchedPermissions: S.optional(PermissionsMap),
   }),
@@ -3517,7 +3493,7 @@ export interface IamPolicySearchResult {
   /** The project that the associated Google Cloud resource belongs to, in the form of projects/{PROJECT_NUMBER}. If an IAM policy is set on a resource (like VM instance, Cloud Storage bucket), the project field will indicate the project that contains the resource. If an IAM policy is set on a folder or organization, this field will be empty. To search against the `project`: * specify the `scope` field as this project in your search request. */
   project?: string;
 }
-export const IamPolicySearchResult = /*@__PURE__*/ S.suspend(() =>
+const IamPolicySearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     policy: S.optional(Policy),
@@ -3530,7 +3506,7 @@ export const IamPolicySearchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamPolicySearchResult" }) as any as S.Schema<IamPolicySearchResult>;
 
 export type IamPolicySearchResultList = Array<IamPolicySearchResult>;
-export const IamPolicySearchResultList = /*@__PURE__*/ S.Array(
+const IamPolicySearchResultList = /*@__PURE__*/ S.Array(
   IamPolicySearchResult,
 ) as any as S.Schema<IamPolicySearchResultList>;
 
@@ -3541,7 +3517,7 @@ export interface SearchAllIamPoliciesResponse {
   /** Set if there are more results than those appearing in this response; to get the next set of results, call this method again, using this value as the `page_token`. */
   nextPageToken?: string;
 }
-export const SearchAllIamPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchAllIamPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(IamPolicySearchResultList),
     nextPageToken: S.optional(S.String),
@@ -3566,7 +3542,7 @@ export interface SearchAllResourcesV1Request {
   /** Optional. A list of asset types that this request searches for. If empty, it will search all the asset types [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types). Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. */
   assetTypes?: StringList;
 }
-export const SearchAllResourcesV1Request = /*@__PURE__*/ S.suspend(() =>
+const SearchAllResourcesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3593,7 +3569,7 @@ export interface RelatedResource {
   /** The type of the asset. Example: `compute.googleapis.com/Instance` */
   assetType?: string;
 }
-export const RelatedResource = /*@__PURE__*/ S.suspend(() =>
+const RelatedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullResourceName: S.optional(S.String),
     assetType: S.optional(S.String),
@@ -3601,7 +3577,7 @@ export const RelatedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedResource" }) as any as S.Schema<RelatedResource>;
 
 export type RelatedResourceList = Array<RelatedResource>;
-export const RelatedResourceList = /*@__PURE__*/ S.Array(
+const RelatedResourceList = /*@__PURE__*/ S.Array(
   RelatedResource,
 ) as any as S.Schema<RelatedResourceList>;
 
@@ -3610,14 +3586,14 @@ export interface RelatedResources {
   /** The detailed related resources of the primary resource. */
   relatedResources?: RelatedResourceList;
 }
-export const RelatedResources = /*@__PURE__*/ S.suspend(() =>
+const RelatedResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relatedResources: S.optional(RelatedResourceList),
   }),
 ).annotate({ identifier: "RelatedResources" }) as any as S.Schema<RelatedResources>;
 
 export type RelatedResourcesMap = { [key: string]: RelatedResources | undefined };
-export const RelatedResourcesMap = /*@__PURE__*/ S.Record(
+const RelatedResourcesMap = /*@__PURE__*/ S.Record(
   S.String,
   RelatedResources,
 ) as any as S.Schema<RelatedResourcesMap>;
@@ -3627,7 +3603,7 @@ export interface ResourceOwners {
   /** List of resource owners. */
   resourceOwners?: StringList;
 }
-export const ResourceOwners = /*@__PURE__*/ S.suspend(() =>
+const ResourceOwners = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceOwners: S.optional(StringList),
   }),
@@ -3638,14 +3614,14 @@ export interface AssetEnrichment {
   /** The resource owners for a resource. Note that this field only contains the members that have "roles/owner" role in the resource's IAM Policy. */
   resourceOwners?: ResourceOwners;
 }
-export const AssetEnrichment = /*@__PURE__*/ S.suspend(() =>
+const AssetEnrichment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceOwners: S.optional(ResourceOwners),
   }),
 ).annotate({ identifier: "AssetEnrichment" }) as any as S.Schema<AssetEnrichment>;
 
 export type AssetEnrichmentList = Array<AssetEnrichment>;
-export const AssetEnrichmentList = /*@__PURE__*/ S.Array(
+const AssetEnrichmentList = /*@__PURE__*/ S.Array(
   AssetEnrichment,
 ) as any as S.Schema<AssetEnrichmentList>;
 
@@ -3658,7 +3634,7 @@ export interface VersionedResource {
   /** API version of the resource. Example: If the resource is an instance provided by Compute Engine v1 API as defined in `https://cloud.google.com/compute/docs/reference/rest/v1/instances`, version will be "v1". */
   version?: string;
 }
-export const VersionedResource = /*@__PURE__*/ S.suspend(() =>
+const VersionedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(DocumentMap),
     assetExceptions: S.optional(AssetExceptionList),
@@ -3667,7 +3643,7 @@ export const VersionedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionedResource" }) as any as S.Schema<VersionedResource>;
 
 export type VersionedResourceList = Array<VersionedResource>;
-export const VersionedResourceList = /*@__PURE__*/ S.Array(
+const VersionedResourceList = /*@__PURE__*/ S.Array(
   VersionedResource,
 ) as any as S.Schema<VersionedResourceList>;
 
@@ -3678,7 +3654,7 @@ export interface AttachedResource {
   /** Versioned resource representations of this attached resource. This is repeated because there could be multiple versions of the attached resource representations during version migration. */
   versionedResources?: VersionedResourceList;
 }
-export const AttachedResource = /*@__PURE__*/ S.suspend(() =>
+const AttachedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetType: S.optional(S.String),
     versionedResources: S.optional(VersionedResourceList),
@@ -3686,7 +3662,7 @@ export const AttachedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttachedResource" }) as any as S.Schema<AttachedResource>;
 
 export type AttachedResourceList = Array<AttachedResource>;
-export const AttachedResourceList = /*@__PURE__*/ S.Array(
+const AttachedResourceList = /*@__PURE__*/ S.Array(
   AttachedResource,
 ) as any as S.Schema<AttachedResourceList>;
 
@@ -3749,7 +3725,7 @@ export interface ResourceSearchResult {
   /** The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available when the resource belongs to one or more folders. To search against `folders`: * Use a field query. Example: `folders:(123 OR 456)` * Use a free text query. Example: `123` * Specify the `scope` field as this folder in your search request. */
   folders?: StringList;
 }
-export const ResourceSearchResult = /*@__PURE__*/ S.suspend(() =>
+const ResourceSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentAssetType: S.optional(S.String),
     networkTags: S.optional(StringList),
@@ -3783,7 +3759,7 @@ export const ResourceSearchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSearchResult" }) as any as S.Schema<ResourceSearchResult>;
 
 export type ResourceSearchResultList = Array<ResourceSearchResult>;
-export const ResourceSearchResultList = /*@__PURE__*/ S.Array(
+const ResourceSearchResultList = /*@__PURE__*/ S.Array(
   ResourceSearchResult,
 ) as any as S.Schema<ResourceSearchResultList>;
 
@@ -3794,7 +3770,7 @@ export interface SearchAllResourcesResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const SearchAllResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchAllResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(ResourceSearchResultList),
     nextPageToken: S.optional(S.String),

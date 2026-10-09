@@ -14,7 +14,7 @@ export interface ScopeCluster {
   /** Namespace where the extension Release must be placed, for a Cluster scoped extension. If this namespace does not exist, it will be created */
   releaseNamespace?: string;
 }
-export const ScopeCluster = /*@__PURE__*/ S.suspend(() =>
+const ScopeCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releaseNamespace: S.optional(S.String),
   }),
@@ -25,7 +25,7 @@ export interface ScopeNamespace {
   /** Namespace where the extension will be created for an Namespace scoped extension. If this namespace does not exist, it will be created */
   targetNamespace?: string;
 }
-export const ScopeNamespace = /*@__PURE__*/ S.suspend(() =>
+const ScopeNamespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetNamespace: S.optional(S.String),
   }),
@@ -38,7 +38,7 @@ export interface Scope {
   /** Specifies that the scope of the extension is Namespace */
   namespace?: ScopeNamespace | null;
 }
-export const Scope = /*@__PURE__*/ S.suspend(() =>
+const Scope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cluster: S.optional(S.NullOr(ScopeCluster)),
     namespace: S.optional(S.NullOr(ScopeNamespace)),
@@ -49,7 +49,7 @@ export const Scope = /*@__PURE__*/ S.suspend(() =>
 export type ExtensionPropertiesInputConfigurationSettingsMap = {
   [key: string]: string | undefined;
 };
-export const ExtensionPropertiesInputConfigurationSettingsMap = /*@__PURE__*/ S.Record(
+const ExtensionPropertiesInputConfigurationSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ExtensionPropertiesInputConfigurationSettingsMap>;
@@ -58,12 +58,12 @@ export const ExtensionPropertiesInputConfigurationSettingsMap = /*@__PURE__*/ S.
 export type ExtensionPropertiesInputConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const ExtensionPropertiesInputConfigurationProtectedSettingsMap =
+const ExtensionPropertiesInputConfigurationProtectedSettingsMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ExtensionPropertiesInputConfigurationProtectedSettingsMap>;
 
 /** Level of the status. */
 export type ExtensionStatusLevel = "Error" | "Warning" | "Information";
-export const ExtensionStatusLevel = S.String;
+const ExtensionStatusLevel = S.String;
 
 /** Status from the extension. */
 export interface ExtensionStatus {
@@ -78,7 +78,7 @@ export interface ExtensionStatus {
   /** DateLiteral (per ISO8601) noting the time of installation status. */
   time?: string;
 }
-export const ExtensionStatus = /*@__PURE__*/ S.suspend(() =>
+const ExtensionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     displayStatus: S.optional(S.String),
@@ -90,21 +90,19 @@ export const ExtensionStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Status from this extension. */
 export type ExtensionPropertiesInputStatusesList = Array<ExtensionStatus>;
-export const ExtensionPropertiesInputStatusesList = /*@__PURE__*/ S.Array(
+const ExtensionPropertiesInputStatusesList = /*@__PURE__*/ S.Array(
   ExtensionStatus,
 ) as any as S.Schema<ExtensionPropertiesInputStatusesList>;
 
 /** The error detail. */
 export interface ExtensionPropertiesInputErrorInfo {}
-export const ExtensionPropertiesInputErrorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ExtensionPropertiesInputErrorInfo = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ExtensionPropertiesInputErrorInfo",
 }) as any as S.Schema<ExtensionPropertiesInputErrorInfo>;
 
 /** The identity type. */
 export type AKSIdentityType = "SystemAssigned" | "UserAssigned" | "Workload";
-export const AKSIdentityType = S.String;
+const AKSIdentityType = S.String;
 
 /** Identity of the Extension resource in an AKS cluster */
 export interface ExtensionPropertiesAksAssignedIdentityInput {
@@ -117,7 +115,7 @@ export interface ExtensionPropertiesAksAssignedIdentityInput {
   /** The ID of the resource identity. */
   resourceId?: string;
 }
-export const ExtensionPropertiesAksAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ExtensionPropertiesAksAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(AKSIdentityType),
     objectId: S.optional(S.String),
@@ -130,11 +128,11 @@ export const ExtensionPropertiesAksAssignedIdentityInput = /*@__PURE__*/ S.suspe
 
 /** The upgrade mode for auto upgrade. The default is "compatible". */
 export type ExtensionPropertiesInputAutoUpgradeMode = "none" | "patch" | "compatible";
-export const ExtensionPropertiesInputAutoUpgradeMode = S.String;
+const ExtensionPropertiesInputAutoUpgradeMode = S.String;
 
 /** The list of allowed actions for the entity */
 export type AccessDetailAllowedActionsList = Array<string>;
-export const AccessDetailAllowedActionsList = /*@__PURE__*/ S.Array(
+const AccessDetailAllowedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessDetailAllowedActionsList>;
 
@@ -147,7 +145,7 @@ export interface AccessDetail {
   /** The description of the entity */
   description?: string;
 }
-export const AccessDetail = /*@__PURE__*/ S.suspend(() =>
+const AccessDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(S.String),
     allowedActions: S.optional(AccessDetailAllowedActionsList),
@@ -157,7 +155,7 @@ export const AccessDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of access details of the managing entity */
 export type ManagementDetailsAccessDetailsList = Array<AccessDetail>;
-export const ManagementDetailsAccessDetailsList = /*@__PURE__*/ S.Array(
+const ManagementDetailsAccessDetailsList = /*@__PURE__*/ S.Array(
   AccessDetail,
 ) as any as S.Schema<ManagementDetailsAccessDetailsList>;
 
@@ -168,7 +166,7 @@ export interface ManagementDetails {
   /** The list of access details of the managing entity */
   accessDetails?: ManagementDetailsAccessDetailsList;
 }
-export const ManagementDetails = /*@__PURE__*/ S.suspend(() =>
+const ManagementDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.String),
     accessDetails: S.optional(ManagementDetailsAccessDetailsList),
@@ -184,7 +182,7 @@ export interface AdditionalDetails {
   /** Troubleshooting guide for the extension. */
   troubleshootingGuide?: string;
 }
-export const AdditionalDetails = /*@__PURE__*/ S.suspend(() =>
+const AdditionalDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     docs: S.optional(S.String),
     releaseNotes: S.optional(S.String),
@@ -221,7 +219,7 @@ export interface ExtensionPropertiesInput {
   /** Additional details provided by the publisher of the extension. */
   additionalDetails?: AdditionalDetails;
 }
-export const ExtensionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ExtensionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensionType: S.optional(S.String),
     autoUpgradeMinorVersion: S.optional(S.Boolean),
@@ -243,14 +241,14 @@ export const ExtensionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type CreateExtensionRequestIdentityType = "SystemAssigned";
-export const CreateExtensionRequestIdentityType = S.String;
+const CreateExtensionRequestIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface CreateExtensionRequestIdentity {
   /** The identity type. */
   type?: CreateExtensionRequestIdentityType | (string & {});
 }
-export const CreateExtensionRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CreateExtensionRequestIdentityType),
   }),
@@ -271,7 +269,7 @@ export interface CreateExtensionRequestPlan {
   /** The version of the desired product/artifact. */
   version?: string;
 }
-export const CreateExtensionRequestPlan = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionRequestPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     publisher: S.String,
@@ -305,7 +303,7 @@ export interface CreateExtensionRequest {
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
 }
-export const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -329,11 +327,11 @@ export const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -350,7 +348,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -363,14 +361,14 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration settings, as name-value pairs for configuring this extension. */
 export type ExtensionPropertiesConfigurationSettingsMap = { [key: string]: string | undefined };
-export const ExtensionPropertiesConfigurationSettingsMap =
+const ExtensionPropertiesConfigurationSettingsMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ExtensionPropertiesConfigurationSettingsMap>;
 
 /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
 export type ExtensionPropertiesConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const ExtensionPropertiesConfigurationProtectedSettingsMap =
+const ExtensionPropertiesConfigurationProtectedSettingsMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ExtensionPropertiesConfigurationProtectedSettingsMap>;
 
 /** The provisioning state of the resource. */
@@ -381,16 +379,16 @@ export type ProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Status from this extension. */
 export type ExtensionPropertiesStatusesList = Array<ExtensionStatus>;
-export const ExtensionPropertiesStatusesList =
+const ExtensionPropertiesStatusesList =
   ExtensionPropertiesInputStatusesList as any as S.Schema<ExtensionPropertiesStatusesList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -401,7 +399,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -410,7 +408,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -427,7 +425,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -439,13 +437,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type ExtensionPropertiesErrorInfoDetailsList = Array<ErrorDetail>;
-export const ExtensionPropertiesErrorInfoDetailsList = /*@__PURE__*/ S.Array(
+const ExtensionPropertiesErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ExtensionPropertiesErrorInfoDetailsList>;
 
 /** The error additional info. */
 export type ExtensionPropertiesErrorInfoAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ExtensionPropertiesErrorInfoAdditionalInfoList =
+const ExtensionPropertiesErrorInfoAdditionalInfoList =
   ErrorDetailAdditionalInfoList as any as S.Schema<ExtensionPropertiesErrorInfoAdditionalInfoList>;
 
 /** The error detail. */
@@ -461,7 +459,7 @@ export interface ExtensionPropertiesErrorInfo {
   /** The error additional info. */
   additionalInfo?: ExtensionPropertiesErrorInfoAdditionalInfoList;
 }
-export const ExtensionPropertiesErrorInfo = /*@__PURE__*/ S.suspend(() =>
+const ExtensionPropertiesErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -475,7 +473,7 @@ export const ExtensionPropertiesErrorInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom Location settings properties. */
 export type ExtensionPropertiesCustomLocationSettingsMap = { [key: string]: string | undefined };
-export const ExtensionPropertiesCustomLocationSettingsMap =
+const ExtensionPropertiesCustomLocationSettingsMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ExtensionPropertiesCustomLocationSettingsMap>;
 
 /** Identity of the Extension resource in an AKS cluster */
@@ -493,7 +491,7 @@ export interface ExtensionPropertiesAksAssignedIdentity {
   /** The ID of the resource identity. */
   resourceId?: string;
 }
-export const ExtensionPropertiesAksAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const ExtensionPropertiesAksAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -508,7 +506,7 @@ export const ExtensionPropertiesAksAssignedIdentity = /*@__PURE__*/ S.suspend(()
 
 /** The upgrade mode for auto upgrade. The default is "compatible". */
 export type ExtensionPropertiesAutoUpgradeMode = "none" | "patch" | "compatible";
-export const ExtensionPropertiesAutoUpgradeMode = S.String;
+const ExtensionPropertiesAutoUpgradeMode = S.String;
 
 /** Properties of an Extension resource */
 export interface ExtensionProperties {
@@ -551,7 +549,7 @@ export interface ExtensionProperties {
   /** State of the extension on the cluster. */
   extensionState?: string;
 }
-export const ExtensionProperties = /*@__PURE__*/ S.suspend(() =>
+const ExtensionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensionType: S.optional(S.String),
     autoUpgradeMinorVersion: S.optional(S.Boolean),
@@ -579,7 +577,7 @@ export const ExtensionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type CreateExtensionResponseIdentityType = "SystemAssigned";
-export const CreateExtensionResponseIdentityType = S.String;
+const CreateExtensionResponseIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface CreateExtensionResponseIdentity {
@@ -590,7 +588,7 @@ export interface CreateExtensionResponseIdentity {
   /** The identity type. */
   type?: CreateExtensionResponseIdentityType;
 }
-export const CreateExtensionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -602,8 +600,6 @@ export const CreateExtensionResponseIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** Plan for the resource. */
 export type CreateExtensionResponsePlan = CreateExtensionRequestPlan;
-export const CreateExtensionResponsePlan = CreateExtensionRequestPlan;
-
 export interface CreateExtensionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -622,7 +618,7 @@ export interface CreateExtensionResponse {
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
 }
-export const CreateExtensionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -651,7 +647,7 @@ export interface DeleteExtensionRequest {
   /** Delete the extension resource in Azure - not the normal asynchronous delete. */
   forceDelete?: boolean;
 }
-export const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -671,7 +667,7 @@ export const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteExtensionRequest" }) as any as S.Schema<DeleteExtensionRequest>;
 
 export interface DeleteExtensionResponse {}
-export const DeleteExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteExtensionResponse",
 }) as any as S.Schema<DeleteExtensionResponse>;
 
@@ -691,7 +687,7 @@ export interface DeleteFluxConfigurationRequest {
   /** Delete the extension resource in Azure - not the normal asynchronous delete. */
   forceDelete?: boolean;
 }
-export const DeleteFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -713,9 +709,9 @@ export const DeleteFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFluxConfigurationRequest>;
 
 export interface DeleteFluxConfigurationResponse {}
-export const DeleteFluxConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteFluxConfigurationResponse" },
-) as any as S.Schema<DeleteFluxConfigurationResponse>;
+const DeleteFluxConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteFluxConfigurationResponse",
+}) as any as S.Schema<DeleteFluxConfigurationResponse>;
 
 export interface DeleteSourceControlConfigurationRequest {
   /** The ID of the target subscription. */
@@ -731,7 +727,7 @@ export interface DeleteSourceControlConfigurationRequest {
   /** Name of the Source Control Configuration. */
   sourceControlConfigurationName: string;
 }
-export const DeleteSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -752,12 +748,12 @@ export const DeleteSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSourceControlConfigurationRequest>;
 
 export interface DeleteSourceControlConfigurationResponse {}
-export const DeleteSourceControlConfigurationResponse =
+const DeleteSourceControlConfigurationResponse =
   ExtensionPropertiesInputErrorInfo as any as S.Schema<DeleteSourceControlConfigurationResponse>;
 
 /** Scope at which the operator will be installed. */
 export type FluxConfigurationPropertiesInputScope = "cluster" | "namespace";
-export const FluxConfigurationPropertiesInputScope = S.String;
+const FluxConfigurationPropertiesInputScope = S.String;
 
 /** Source Kind to pull the configuration data from. */
 export type FluxConfigurationPropertiesInputSourceKind =
@@ -765,7 +761,7 @@ export type FluxConfigurationPropertiesInputSourceKind =
   | "Bucket"
   | "AzureBlob"
   | "OCIRepository";
-export const FluxConfigurationPropertiesInputSourceKind = S.String;
+const FluxConfigurationPropertiesInputSourceKind = S.String;
 
 /** The source reference for the GitRepository object. */
 export interface RepositoryRefDefinition {
@@ -778,7 +774,7 @@ export interface RepositoryRefDefinition {
   /** The commit SHA to checkout. This value must be combined with the branch name to be valid. This takes precedence over semver. */
   commit?: string | null;
 }
-export const RepositoryRefDefinition = /*@__PURE__*/ S.suspend(() =>
+const RepositoryRefDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branch: S.optional(S.NullOr(S.String)),
     tag: S.optional(S.NullOr(S.String)),
@@ -789,7 +785,7 @@ export const RepositoryRefDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Name of the provider used for authentication. */
 export type ProviderType = "Azure" | "GitHub" | "Generic";
-export const ProviderType = S.String;
+const ProviderType = S.String;
 
 /** Parameters to reconcile to the GitRepository source kind type. */
 export interface GitRepositoryDefinition {
@@ -812,7 +808,7 @@ export interface GitRepositoryDefinition {
   /** Name of the provider used for authentication. */
   provider?: ProviderType | (string & {}) | null;
 }
-export const GitRepositoryDefinition = /*@__PURE__*/ S.suspend(() =>
+const GitRepositoryDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     timeoutInSeconds: S.optional(S.NullOr(S.Number)),
@@ -843,7 +839,7 @@ export interface BucketDefinition {
   /** Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. */
   localAuthRef?: string | null;
 }
-export const BucketDefinition = /*@__PURE__*/ S.suspend(() =>
+const BucketDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     bucketName: S.optional(S.String),
@@ -870,7 +866,7 @@ export interface ServicePrincipalDefinition {
   /** Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate */
   clientCertificateSendChain?: boolean;
 }
-export const ServicePrincipalDefinition = /*@__PURE__*/ S.suspend(() =>
+const ServicePrincipalDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.NullOr(S.String)),
     tenantId: S.optional(S.NullOr(S.String)),
@@ -888,7 +884,7 @@ export interface ManagedIdentityDefinition {
   /** The client Id for authenticating a Managed Identity. */
   clientId?: string | null;
 }
-export const ManagedIdentityDefinition = /*@__PURE__*/ S.suspend(() =>
+const ManagedIdentityDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.NullOr(S.String)),
   }),
@@ -917,7 +913,7 @@ export interface AzureBlobDefinition {
   /** Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. */
   localAuthRef?: string | null;
 }
-export const AzureBlobDefinition = /*@__PURE__*/ S.suspend(() =>
+const AzureBlobDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     containerName: S.optional(S.NullOr(S.String)),
@@ -940,7 +936,7 @@ export interface OCIRepositoryRefDefinition {
   /** The image digest to pull from OCI repository, the value should be in the format 'sha256:'. This takes precedence over semver. */
   digest?: string | null;
 }
-export const OCIRepositoryRefDefinition = /*@__PURE__*/ S.suspend(() =>
+const OCIRepositoryRefDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.NullOr(S.String)),
     semver: S.optional(S.NullOr(S.String)),
@@ -952,7 +948,7 @@ export const OCIRepositoryRefDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The operation to be performed on the selected layer. The default value is 'extract', but it can be set to 'copy'. */
 export type OperationType = "extract" | "copy";
-export const OperationType = S.String;
+const OperationType = S.String;
 
 /** Parameters to specify which layer to pull from the OCI artifact. By default, the first layer in the artifact is pulled. */
 export interface LayerSelectorDefinition {
@@ -961,7 +957,7 @@ export interface LayerSelectorDefinition {
   /** The operation to be performed on the selected layer. The default value is 'extract', but it can be set to 'copy'. */
   operation?: OperationType | (string & {}) | null;
 }
-export const LayerSelectorDefinition = /*@__PURE__*/ S.suspend(() =>
+const LayerSelectorDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mediaType: S.optional(S.NullOr(S.String)),
     operation: S.optional(S.NullOr(OperationType)),
@@ -970,7 +966,7 @@ export const LayerSelectorDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** An object containing trusted public keys of trusted authors. */
 export type VerifyDefinitionVerificationConfigMap = { [key: string]: string | undefined };
-export const VerifyDefinitionVerificationConfigMap =
+const VerifyDefinitionVerificationConfigMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<VerifyDefinitionVerificationConfigMap>;
 
 /** MatchOIDCIdentity defines the criteria for matching the identity while verifying an OCI artifact. */
@@ -980,7 +976,7 @@ export interface MatchOidcIdentityDefinition {
   /** The regex pattern to match against to verify the identity subject. */
   subject?: string;
 }
-export const MatchOidcIdentityDefinition = /*@__PURE__*/ S.suspend(() =>
+const MatchOidcIdentityDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.optional(S.String),
     subject: S.optional(S.String),
@@ -991,7 +987,7 @@ export const MatchOidcIdentityDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Array defining the criteria for matching the identity while verifying an OCI artifact. */
 export type VerifyDefinitionMatchOidcIdentityList = Array<MatchOidcIdentityDefinition>;
-export const VerifyDefinitionMatchOidcIdentityList = /*@__PURE__*/ S.Array(
+const VerifyDefinitionMatchOidcIdentityList = /*@__PURE__*/ S.Array(
   MatchOidcIdentityDefinition,
 ) as any as S.Schema<VerifyDefinitionMatchOidcIdentityList>;
 
@@ -1004,7 +1000,7 @@ export interface VerifyDefinition {
   /** Array defining the criteria for matching the identity while verifying an OCI artifact. */
   matchOidcIdentity?: VerifyDefinitionMatchOidcIdentityList | null;
 }
-export const VerifyDefinition = /*@__PURE__*/ S.suspend(() =>
+const VerifyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     verificationConfig: S.optional(S.NullOr(VerifyDefinitionVerificationConfigMap)),
@@ -1021,7 +1017,7 @@ export interface TlsConfigDefinition {
   /** Base64-encoded CA certificate used to verify the server. */
   caCertificate?: string | null;
 }
-export const TlsConfigDefinition = /*@__PURE__*/ S.suspend(() =>
+const TlsConfigDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCertificate: S.optional(S.NullOr(S.String)),
     privateKey: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -1054,7 +1050,7 @@ export interface OCIRepositoryDefinition {
   /** Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. */
   localAuthRef?: string | null;
 }
-export const OCIRepositoryDefinition = /*@__PURE__*/ S.suspend(() =>
+const OCIRepositoryDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     timeoutInSeconds: S.optional(S.NullOr(S.Number)),
@@ -1072,12 +1068,12 @@ export const OCIRepositoryDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
 export type KustomizationDefinitionInputDependsOnList = Array<string>;
-export const KustomizationDefinitionInputDependsOnList =
+const KustomizationDefinitionInputDependsOnList =
   AccessDetailAllowedActionsList as any as S.Schema<KustomizationDefinitionInputDependsOnList>;
 
 /** Key/value pairs holding the variables to be substituted in this Kustomization. */
 export type PostBuildDefinitionSubstituteMap = { [key: string]: string | undefined };
-export const PostBuildDefinitionSubstituteMap =
+const PostBuildDefinitionSubstituteMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<PostBuildDefinitionSubstituteMap>;
 
 /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
@@ -1089,7 +1085,7 @@ export interface SubstituteFromDefinition {
   /** Set to True to proceed without ConfigMap/Secret, if it is not present. */
   optional?: boolean;
 }
-export const SubstituteFromDefinition = /*@__PURE__*/ S.suspend(() =>
+const SubstituteFromDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     name: S.optional(S.String),
@@ -1099,7 +1095,7 @@ export const SubstituteFromDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
 export type PostBuildDefinitionSubstituteFromList = Array<SubstituteFromDefinition>;
-export const PostBuildDefinitionSubstituteFromList = /*@__PURE__*/ S.Array(
+const PostBuildDefinitionSubstituteFromList = /*@__PURE__*/ S.Array(
   SubstituteFromDefinition,
 ) as any as S.Schema<PostBuildDefinitionSubstituteFromList>;
 
@@ -1110,7 +1106,7 @@ export interface PostBuildDefinition {
   /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
   substituteFrom?: PostBuildDefinitionSubstituteFromList;
 }
-export const PostBuildDefinition = /*@__PURE__*/ S.suspend(() =>
+const PostBuildDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     substitute: S.optional(S.NullOr(PostBuildDefinitionSubstituteMap)),
     substituteFrom: S.optional(PostBuildDefinitionSubstituteFromList),
@@ -1138,7 +1134,7 @@ export interface KustomizationDefinitionInput {
   /** Used for variable substitution for this Kustomization after kustomize build. */
   postBuild?: PostBuildDefinition | null;
 }
-export const KustomizationDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+const KustomizationDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     dependsOn: S.optional(S.NullOr(KustomizationDefinitionInputDependsOnList)),
@@ -1158,7 +1154,7 @@ export const KustomizationDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 export type FluxConfigurationPropertiesInputKustomizationsMap = {
   [key: string]: KustomizationDefinitionInput | undefined;
 };
-export const FluxConfigurationPropertiesInputKustomizationsMap = /*@__PURE__*/ S.Record(
+const FluxConfigurationPropertiesInputKustomizationsMap = /*@__PURE__*/ S.Record(
   S.String,
   KustomizationDefinitionInput,
 ) as any as S.Schema<FluxConfigurationPropertiesInputKustomizationsMap>;
@@ -1167,11 +1163,10 @@ export const FluxConfigurationPropertiesInputKustomizationsMap = /*@__PURE__*/ S
 export type FluxConfigurationPropertiesInputConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const FluxConfigurationPropertiesInputConfigurationProtectedSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<FluxConfigurationPropertiesInputConfigurationProtectedSettingsMap>;
+const FluxConfigurationPropertiesInputConfigurationProtectedSettingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FluxConfigurationPropertiesInputConfigurationProtectedSettingsMap>;
 
 /** Properties to create a Flux Configuration resource */
 export interface FluxConfigurationPropertiesInput {
@@ -1200,7 +1195,7 @@ export interface FluxConfigurationPropertiesInput {
   /** Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D */
   reconciliationWaitDuration?: string | null;
 }
-export const FluxConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const FluxConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(FluxConfigurationPropertiesInputScope),
     namespace: S.optional(S.String),
@@ -1237,7 +1232,7 @@ export interface FluxConfigurationsCreateOrUpdateRequest {
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationPropertiesInput;
 }
-export const FluxConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FluxConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1260,7 +1255,7 @@ export const FluxConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend((
 
 /** Scope at which the operator will be installed. */
 export type FluxConfigurationPropertiesScope = "cluster" | "namespace";
-export const FluxConfigurationPropertiesScope = S.String;
+const FluxConfigurationPropertiesScope = S.String;
 
 /** Source Kind to pull the configuration data from. */
 export type FluxConfigurationPropertiesSourceKind =
@@ -1268,11 +1263,11 @@ export type FluxConfigurationPropertiesSourceKind =
   | "Bucket"
   | "AzureBlob"
   | "OCIRepository";
-export const FluxConfigurationPropertiesSourceKind = S.String;
+const FluxConfigurationPropertiesSourceKind = S.String;
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
 export type KustomizationDefinitionDependsOnList = Array<string>;
-export const KustomizationDefinitionDependsOnList =
+const KustomizationDefinitionDependsOnList =
   AccessDetailAllowedActionsList as any as S.Schema<KustomizationDefinitionDependsOnList>;
 
 /** The Kustomization defining how to reconcile the artifact pulled by the source type on the cluster. */
@@ -1298,7 +1293,7 @@ export interface KustomizationDefinition {
   /** Used for variable substitution for this Kustomization after kustomize build. */
   postBuild?: PostBuildDefinition | null;
 }
-export const KustomizationDefinition = /*@__PURE__*/ S.suspend(() =>
+const KustomizationDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     path: S.optional(S.String),
@@ -1317,7 +1312,7 @@ export const KustomizationDefinition = /*@__PURE__*/ S.suspend(() =>
 export type FluxConfigurationPropertiesKustomizationsMap = {
   [key: string]: KustomizationDefinition | undefined;
 };
-export const FluxConfigurationPropertiesKustomizationsMap = /*@__PURE__*/ S.Record(
+const FluxConfigurationPropertiesKustomizationsMap = /*@__PURE__*/ S.Record(
   S.String,
   KustomizationDefinition,
 ) as any as S.Schema<FluxConfigurationPropertiesKustomizationsMap>;
@@ -1326,7 +1321,7 @@ export const FluxConfigurationPropertiesKustomizationsMap = /*@__PURE__*/ S.Reco
 export type FluxConfigurationPropertiesConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const FluxConfigurationPropertiesConfigurationProtectedSettingsMap =
+const FluxConfigurationPropertiesConfigurationProtectedSettingsMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<FluxConfigurationPropertiesConfigurationProtectedSettingsMap>;
 
 /** Compliance state of the applied object showing whether the applied object has come into a ready state on the cluster. */
@@ -1336,7 +1331,7 @@ export type ObjectStatusDefinitionComplianceState =
   | "Pending"
   | "Suspended"
   | "Unknown";
-export const ObjectStatusDefinitionComplianceState = S.String;
+const ObjectStatusDefinitionComplianceState = S.String;
 
 /** Object reference to a Kubernetes object on a cluster */
 export interface ObjectReferenceDefinition {
@@ -1345,7 +1340,7 @@ export interface ObjectReferenceDefinition {
   /** Namespace of the object */
   namespace?: string;
 }
-export const ObjectReferenceDefinition = /*@__PURE__*/ S.suspend(() =>
+const ObjectReferenceDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -1367,7 +1362,7 @@ export interface ObjectStatusConditionDefinition {
   /** Object status condition type for this object */
   type?: string;
 }
-export const ObjectStatusConditionDefinition = /*@__PURE__*/ S.suspend(() =>
+const ObjectStatusConditionDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastTransitionTime: S.optional(S.String),
     message: S.optional(S.String),
@@ -1381,7 +1376,7 @@ export const ObjectStatusConditionDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Kubernetes object status conditions present on the cluster */
 export type ObjectStatusDefinitionStatusConditionsList = Array<ObjectStatusConditionDefinition>;
-export const ObjectStatusDefinitionStatusConditionsList = /*@__PURE__*/ S.Array(
+const ObjectStatusDefinitionStatusConditionsList = /*@__PURE__*/ S.Array(
   ObjectStatusConditionDefinition,
 ) as any as S.Schema<ObjectStatusDefinitionStatusConditionsList>;
 
@@ -1398,7 +1393,7 @@ export interface HelmReleasePropertiesDefinition {
   /** Number of times that the HelmRelease failed to upgrade */
   upgradeFailureCount?: number | null;
 }
-export const HelmReleasePropertiesDefinition = /*@__PURE__*/ S.suspend(() =>
+const HelmReleasePropertiesDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastRevisionApplied: S.optional(S.NullOr(S.Number)),
     helmChartRef: S.optional(ObjectReferenceDefinition),
@@ -1427,7 +1422,7 @@ export interface ObjectStatusDefinition {
   /** Additional properties that are provided from objects of the HelmRelease kind */
   helmReleaseProperties?: HelmReleasePropertiesDefinition;
 }
-export const ObjectStatusDefinition = /*@__PURE__*/ S.suspend(() =>
+const ObjectStatusDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -1441,7 +1436,7 @@ export const ObjectStatusDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration. */
 export type FluxConfigurationPropertiesStatusesList = Array<ObjectStatusDefinition>;
-export const FluxConfigurationPropertiesStatusesList = /*@__PURE__*/ S.Array(
+const FluxConfigurationPropertiesStatusesList = /*@__PURE__*/ S.Array(
   ObjectStatusDefinition,
 ) as any as S.Schema<FluxConfigurationPropertiesStatusesList>;
 
@@ -1452,7 +1447,7 @@ export type FluxConfigurationPropertiesComplianceState =
   | "Pending"
   | "Suspended"
   | "Unknown";
-export const FluxConfigurationPropertiesComplianceState = S.String;
+const FluxConfigurationPropertiesComplianceState = S.String;
 
 /** Properties to create a Flux Configuration resource */
 export interface FluxConfigurationProperties {
@@ -1497,7 +1492,7 @@ export interface FluxConfigurationProperties {
   /** Error message returned to the user in the case of provisioning failure. */
   errorMessage?: string | null;
 }
-export const FluxConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const FluxConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(FluxConfigurationPropertiesScope),
     namespace: S.optional(S.String),
@@ -1538,7 +1533,7 @@ export interface FluxConfigurationsCreateOrUpdateResponse {
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationProperties;
 }
-export const FluxConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const FluxConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1564,7 +1559,7 @@ export interface GetExtensionRequest {
   /** Name of the Extension. */
   extensionName: string;
 }
-export const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1584,8 +1579,6 @@ export const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type GetExtensionResponseIdentityType = "SystemAssigned";
-export const GetExtensionResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface GetExtensionResponseIdentity {
   /** The principal ID of resource identity. */
@@ -1595,13 +1588,8 @@ export interface GetExtensionResponseIdentity {
   /** The identity type. */
   type?: GetExtensionResponseIdentityType;
 }
-export const GetExtensionResponseIdentity =
-  CreateExtensionResponseIdentity as any as S.Schema<GetExtensionResponseIdentity>;
-
 /** Plan for the resource. */
 export type GetExtensionResponsePlan = CreateExtensionRequestPlan;
-export const GetExtensionResponsePlan = CreateExtensionRequestPlan;
-
 export interface GetExtensionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1620,8 +1608,7 @@ export interface GetExtensionResponse {
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
 }
-export const GetExtensionResponse =
-  CreateExtensionResponse as any as S.Schema<GetExtensionResponse>;
+const GetExtensionResponse = CreateExtensionResponse as any as S.Schema<GetExtensionResponse>;
 
 export interface GetFluxConfigOperationStatusRequest {
   /** The ID of the target subscription. */
@@ -1638,7 +1625,7 @@ export interface GetFluxConfigOperationStatusRequest {
   fluxConfigurationName: string;
   operationId: string;
 }
-export const GetFluxConfigOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFluxConfigOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1661,19 +1648,13 @@ export const GetFluxConfigOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional information, if available. */
 export type OperationStatusResultPropertiesMap = { [key: string]: string | undefined };
-export const OperationStatusResultPropertiesMap =
+const OperationStatusResultPropertiesMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<OperationStatusResultPropertiesMap>;
 
 /** The error details. */
 export type OperationStatusResultErrorDetailsList = Array<ErrorDetail>;
-export const OperationStatusResultErrorDetailsList =
-  ExtensionPropertiesErrorInfoDetailsList as any as S.Schema<OperationStatusResultErrorDetailsList>;
-
 /** The error additional info. */
 export type OperationStatusResultErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const OperationStatusResultErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<OperationStatusResultErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface OperationStatusResultError {
   /** The error code. */
@@ -1687,7 +1668,7 @@ export interface OperationStatusResultError {
   /** The error additional info. */
   additionalInfo?: OperationStatusResultErrorAdditionalInfoList;
 }
-export const OperationStatusResultError =
+const OperationStatusResultError =
   ExtensionPropertiesErrorInfo as any as S.Schema<OperationStatusResultError>;
 
 /** The current status of an async operation. */
@@ -1703,7 +1684,7 @@ export interface OperationStatusResult_2 {
   /** The error detail. */
   error?: OperationStatusResultError;
 }
-export const OperationStatusResult_2 = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusResult_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1727,7 +1708,7 @@ export interface GetFluxConfigurationRequest {
   /** Name of the Flux Configuration. */
   fluxConfigurationName: string;
 }
-export const GetFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1759,7 +1740,7 @@ export interface GetFluxConfigurationResponse {
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationProperties;
 }
-export const GetFluxConfigurationResponse =
+const GetFluxConfigurationResponse =
   FluxConfigurationsCreateOrUpdateResponse as any as S.Schema<GetFluxConfigurationResponse>;
 
 export interface GetOperationStatusRequest {
@@ -1777,7 +1758,7 @@ export interface GetOperationStatusRequest {
   extensionName: string;
   operationId: string;
 }
-export const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1811,7 +1792,7 @@ export interface OperationStatusResult {
   /** The error detail. */
   error?: OperationStatusResultError;
 }
-export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1835,7 +1816,7 @@ export interface GetSourceControlConfigurationRequest {
   /** Name of the Source Control Configuration. */
   sourceControlConfigurationName: string;
 }
-export const GetSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1857,16 +1838,16 @@ export const GetSourceControlConfigurationRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Type of the operator */
 export type OperatorTypeDefinition = "Flux";
-export const OperatorTypeDefinition = S.String;
+const OperatorTypeDefinition = S.String;
 
 /** Name-value pairs of protected configuration settings for the configuration */
 export type ConfigurationProtectedSettings = { [key: string]: string | undefined };
-export const ConfigurationProtectedSettings =
+const ConfigurationProtectedSettings =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<ConfigurationProtectedSettings>;
 
 /** Scope at which the operator will be installed. */
 export type OperatorScopeDefinition = "cluster" | "namespace";
-export const OperatorScopeDefinition = S.String;
+const OperatorScopeDefinition = S.String;
 
 /** Properties for Helm operator. */
 export interface HelmOperatorProperties {
@@ -1875,7 +1856,7 @@ export interface HelmOperatorProperties {
   /** Values override for the operator Helm chart. */
   chartValues?: string;
 }
-export const HelmOperatorProperties = /*@__PURE__*/ S.suspend(() =>
+const HelmOperatorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chartVersion: S.optional(S.String),
     chartValues: S.optional(S.String),
@@ -1889,7 +1870,7 @@ export type GetSourceControlConfigurationResponsePropertiesProvisioningState =
   | "Running"
   | "Succeeded"
   | "Failed";
-export const GetSourceControlConfigurationResponsePropertiesProvisioningState = S.String;
+const GetSourceControlConfigurationResponsePropertiesProvisioningState = S.String;
 
 /** The compliance state of the configuration. */
 export type ComplianceStatusComplianceState =
@@ -1898,11 +1879,11 @@ export type ComplianceStatusComplianceState =
   | "Noncompliant"
   | "Installed"
   | "Failed";
-export const ComplianceStatusComplianceState = S.String;
+const ComplianceStatusComplianceState = S.String;
 
 /** Level of the message. */
 export type ComplianceStatusMessageLevel = "Error" | "Warning" | "Information";
-export const ComplianceStatusMessageLevel = S.String;
+const ComplianceStatusMessageLevel = S.String;
 
 /** Compliance Status details */
 export interface ComplianceStatus {
@@ -1915,7 +1896,7 @@ export interface ComplianceStatus {
   /** Level of the message. */
   messageLevel?: ComplianceStatusMessageLevel;
 }
-export const ComplianceStatus = /*@__PURE__*/ S.suspend(() =>
+const ComplianceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     complianceState: S.optional(ComplianceStatusComplianceState),
     lastConfigApplied: S.optional(S.String),
@@ -1953,7 +1934,7 @@ export interface GetSourceControlConfigurationResponseProperties {
   /** Compliance Status of the Configuration */
   complianceStatus?: ComplianceStatus;
 }
-export const GetSourceControlConfigurationResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlConfigurationResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryUrl: S.optional(S.String),
     operatorNamespace: S.optional(S.String),
@@ -1979,7 +1960,7 @@ export type GetSourceControlConfigurationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetSourceControlConfigurationResponseSystemDataCreatedByType = S.String;
+const GetSourceControlConfigurationResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type GetSourceControlConfigurationResponseSystemDataLastModifiedByType =
@@ -1987,7 +1968,7 @@ export type GetSourceControlConfigurationResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetSourceControlConfigurationResponseSystemDataLastModifiedByType = S.String;
+const GetSourceControlConfigurationResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetSourceControlConfigurationResponseSystemData {
@@ -2004,7 +1985,7 @@ export interface GetSourceControlConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetSourceControlConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlConfigurationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(GetSourceControlConfigurationResponseSystemDataCreatedByType),
@@ -2031,7 +2012,7 @@ export interface GetSourceControlConfigurationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetSourceControlConfigurationResponseSystemData;
 }
-export const GetSourceControlConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSourceControlConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2055,7 +2036,7 @@ export interface ListExtensionsRequest {
   /** The name of the kubernetes cluster. */
   clusterName: string;
 }
-export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2074,7 +2055,7 @@ export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type ExtensionIdentityType = "SystemAssigned";
-export const ExtensionIdentityType = S.String;
+const ExtensionIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface ExtensionIdentity {
@@ -2085,7 +2066,7 @@ export interface ExtensionIdentity {
   /** The identity type. */
   type?: ExtensionIdentityType;
 }
-export const ExtensionIdentity = /*@__PURE__*/ S.suspend(() =>
+const ExtensionIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -2095,8 +2076,6 @@ export const ExtensionIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** Plan for the resource. */
 export type ExtensionPlan = CreateExtensionRequestPlan;
-export const ExtensionPlan = CreateExtensionRequestPlan;
-
 /** The Extension object. */
 export interface Extension {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2116,7 +2095,7 @@ export interface Extension {
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
 }
-export const Extension = /*@__PURE__*/ S.suspend(() =>
+const Extension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2131,7 +2110,7 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
 
 /** The Extension items on this page */
 export type ExtensionsListValueList = Array<Extension>;
-export const ExtensionsListValueList = /*@__PURE__*/ S.Array(
+const ExtensionsListValueList = /*@__PURE__*/ S.Array(
   Extension,
 ) as any as S.Schema<ExtensionsListValueList>;
 
@@ -2142,7 +2121,7 @@ export interface ExtensionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ExtensionsList = /*@__PURE__*/ S.suspend(() =>
+const ExtensionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ExtensionsListValueList,
     nextLink: S.optional(S.String),
@@ -2161,7 +2140,7 @@ export interface ListFluxConfigurationsRequest {
   /** The name of the kubernetes cluster. */
   clusterName: string;
 }
-export const ListFluxConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFluxConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2193,7 +2172,7 @@ export interface FluxConfiguration {
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationProperties;
 }
-export const FluxConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FluxConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2205,7 +2184,7 @@ export const FluxConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The FluxConfiguration items on this page */
 export type FluxConfigurationsListValueList = Array<FluxConfiguration>;
-export const FluxConfigurationsListValueList = /*@__PURE__*/ S.Array(
+const FluxConfigurationsListValueList = /*@__PURE__*/ S.Array(
   FluxConfiguration,
 ) as any as S.Schema<FluxConfigurationsListValueList>;
 
@@ -2216,7 +2195,7 @@ export interface FluxConfigurationsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FluxConfigurationsList = /*@__PURE__*/ S.suspend(() =>
+const FluxConfigurationsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FluxConfigurationsListValueList,
     nextLink: S.optional(S.String),
@@ -2224,7 +2203,7 @@ export const FluxConfigurationsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FluxConfigurationsList" }) as any as S.Schema<FluxConfigurationsList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2246,7 +2225,7 @@ export interface ResourceProviderOperationDisplay {
   /** Description of this operation. */
   description?: string;
 }
-export const ResourceProviderOperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const ResourceProviderOperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2268,7 +2247,7 @@ export interface ResourceProviderOperation {
   /** Origin of the operation */
   origin?: string;
 }
-export const ResourceProviderOperation = /*@__PURE__*/ S.suspend(() =>
+const ResourceProviderOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(ResourceProviderOperationDisplay),
@@ -2281,7 +2260,7 @@ export const ResourceProviderOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by this resource provider. */
 export type ListOperationsResponseValueList = Array<ResourceProviderOperation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   ResourceProviderOperation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -2291,7 +2270,7 @@ export interface ListOperationsResponse {
   /** URL to the next set of results, if any. */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -2310,7 +2289,7 @@ export interface ListOperationStatusRequest {
   /** The name of the kubernetes cluster. */
   clusterName: string;
 }
-export const ListOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2331,7 +2310,7 @@ export const ListOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of async operations in progress, in the cluster. */
 export type ListOperationStatusResponseValueList = Array<OperationStatusResult>;
-export const ListOperationStatusResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationStatusResponseValueList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<ListOperationStatusResponseValueList>;
 
@@ -2341,7 +2320,7 @@ export interface ListOperationStatusResponse {
   /** URL to get the next set of Operation Result objects, if any. */
   nextLink?: string;
 }
-export const ListOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationStatusResponseValueList),
     nextLink: S.optional(S.String),
@@ -2362,7 +2341,7 @@ export interface ListSourceControlConfigurationsRequest {
   /** The name of the kubernetes cluster. */
   clusterName: string;
 }
-export const ListSourceControlConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSourceControlConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2388,8 +2367,6 @@ export type SourceControlConfigurationPropertiesProvisioningState =
   | "Running"
   | "Succeeded"
   | "Failed";
-export const SourceControlConfigurationPropertiesProvisioningState = S.String;
-
 /** Properties to create a Source Control Configuration resource */
 export interface SourceControlConfigurationProperties {
   /** Url of the SourceControl Repository. */
@@ -2419,7 +2396,7 @@ export interface SourceControlConfigurationProperties {
   /** Compliance Status of the Configuration */
   complianceStatus?: ComplianceStatus;
 }
-export const SourceControlConfigurationProperties =
+const SourceControlConfigurationProperties =
   GetSourceControlConfigurationResponseProperties as any as S.Schema<SourceControlConfigurationProperties>;
 
 /** The type of identity that created the resource. */
@@ -2428,7 +2405,7 @@ export type SourceControlConfigurationSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SourceControlConfigurationSystemDataCreatedByType = S.String;
+const SourceControlConfigurationSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SourceControlConfigurationSystemDataLastModifiedByType =
@@ -2436,7 +2413,7 @@ export type SourceControlConfigurationSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SourceControlConfigurationSystemDataLastModifiedByType = S.String;
+const SourceControlConfigurationSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SourceControlConfigurationSystemData {
@@ -2453,7 +2430,7 @@ export interface SourceControlConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SourceControlConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
+const SourceControlConfigurationSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SourceControlConfigurationSystemDataCreatedByType),
@@ -2479,7 +2456,7 @@ export interface SourceControlConfiguration {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SourceControlConfigurationSystemData;
 }
-export const SourceControlConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SourceControlConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2493,7 +2470,7 @@ export const SourceControlConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Source Control Configurations within a Kubernetes cluster. */
 export type SourceControlConfigurationListValueList = Array<SourceControlConfiguration>;
-export const SourceControlConfigurationListValueList = /*@__PURE__*/ S.Array(
+const SourceControlConfigurationListValueList = /*@__PURE__*/ S.Array(
   SourceControlConfiguration,
 ) as any as S.Schema<SourceControlConfigurationListValueList>;
 
@@ -2504,7 +2481,7 @@ export interface SourceControlConfigurationList {
   /** URL to get the next set of configuration objects, if any. */
   nextLink?: string;
 }
-export const SourceControlConfigurationList = /*@__PURE__*/ S.suspend(() =>
+const SourceControlConfigurationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SourceControlConfigurationListValueList),
     nextLink: S.optional(S.String),
@@ -2536,20 +2513,19 @@ export interface SourceControlConfigurationsCreateOrUpdateRequestProperties {
   /** Properties for Helm operator. */
   helmOperatorProperties?: HelmOperatorProperties;
 }
-export const SourceControlConfigurationsCreateOrUpdateRequestProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      repositoryUrl: S.optional(S.String),
-      operatorNamespace: S.optional(S.String),
-      operatorInstanceName: S.optional(S.String),
-      operatorType: S.optional(OperatorTypeDefinition),
-      operatorParams: S.optional(S.String),
-      configurationProtectedSettings: S.optional(ConfigurationProtectedSettings),
-      operatorScope: S.optional(OperatorScopeDefinition),
-      sshKnownHostsContents: S.optional(S.String),
-      enableHelmOperator: S.optional(S.Boolean),
-      helmOperatorProperties: S.optional(HelmOperatorProperties),
-    }),
+const SourceControlConfigurationsCreateOrUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repositoryUrl: S.optional(S.String),
+    operatorNamespace: S.optional(S.String),
+    operatorInstanceName: S.optional(S.String),
+    operatorType: S.optional(OperatorTypeDefinition),
+    operatorParams: S.optional(S.String),
+    configurationProtectedSettings: S.optional(ConfigurationProtectedSettings),
+    operatorScope: S.optional(OperatorScopeDefinition),
+    sshKnownHostsContents: S.optional(S.String),
+    enableHelmOperator: S.optional(S.Boolean),
+    helmOperatorProperties: S.optional(HelmOperatorProperties),
+  }),
 ).annotate({
   identifier: "SourceControlConfigurationsCreateOrUpdateRequestProperties",
 }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateRequestProperties>;
@@ -2570,7 +2546,7 @@ export interface SourceControlConfigurationsCreateOrUpdateRequest {
   /** Properties to create a Source Control Configuration resource */
   properties?: SourceControlConfigurationsCreateOrUpdateRequestProperties;
 }
-export const SourceControlConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SourceControlConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2598,8 +2574,7 @@ export type SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvision
   | "Running"
   | "Succeeded"
   | "Failed";
-export const SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState =
-  S.String;
+const SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState = S.String;
 
 /** Properties to create a Source Control Configuration resource */
 export interface SourceControlConfigurationsCreateOrUpdateResponseProperties {
@@ -2630,25 +2605,24 @@ export interface SourceControlConfigurationsCreateOrUpdateResponseProperties {
   /** Compliance Status of the Configuration */
   complianceStatus?: ComplianceStatus;
 }
-export const SourceControlConfigurationsCreateOrUpdateResponseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      repositoryUrl: S.optional(S.String),
-      operatorNamespace: S.optional(S.String),
-      operatorInstanceName: S.optional(S.String),
-      operatorType: S.optional(OperatorTypeDefinition),
-      operatorParams: S.optional(S.String),
-      configurationProtectedSettings: S.optional(ConfigurationProtectedSettings),
-      operatorScope: S.optional(OperatorScopeDefinition),
-      repositoryPublicKey: S.optional(S.String),
-      sshKnownHostsContents: S.optional(S.String),
-      enableHelmOperator: S.optional(S.Boolean),
-      helmOperatorProperties: S.optional(HelmOperatorProperties),
-      provisioningState: S.optional(
-        SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState,
-      ),
-      complianceStatus: S.optional(ComplianceStatus),
-    }),
+const SourceControlConfigurationsCreateOrUpdateResponseProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repositoryUrl: S.optional(S.String),
+    operatorNamespace: S.optional(S.String),
+    operatorInstanceName: S.optional(S.String),
+    operatorType: S.optional(OperatorTypeDefinition),
+    operatorParams: S.optional(S.String),
+    configurationProtectedSettings: S.optional(ConfigurationProtectedSettings),
+    operatorScope: S.optional(OperatorScopeDefinition),
+    repositoryPublicKey: S.optional(S.String),
+    sshKnownHostsContents: S.optional(S.String),
+    enableHelmOperator: S.optional(S.Boolean),
+    helmOperatorProperties: S.optional(HelmOperatorProperties),
+    provisioningState: S.optional(
+      SourceControlConfigurationsCreateOrUpdateResponsePropertiesProvisioningState,
+    ),
+    complianceStatus: S.optional(ComplianceStatus),
+  }),
 ).annotate({
   identifier: "SourceControlConfigurationsCreateOrUpdateResponseProperties",
 }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponseProperties>;
@@ -2659,7 +2633,7 @@ export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedBy
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+const SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -2667,8 +2641,7 @@ export type SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModif
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
+const SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SourceControlConfigurationsCreateOrUpdateResponseSystemData {
@@ -2685,20 +2658,19 @@ export interface SourceControlConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SourceControlConfigurationsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
+const SourceControlConfigurationsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(
+      SourceControlConfigurationsCreateOrUpdateResponseSystemDataCreatedByType,
+    ),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      SourceControlConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "SourceControlConfigurationsCreateOrUpdateResponseSystemData",
 }) as any as S.Schema<SourceControlConfigurationsCreateOrUpdateResponseSystemData>;
@@ -2715,7 +2687,7 @@ export interface SourceControlConfigurationsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SourceControlConfigurationsCreateOrUpdateResponseSystemData;
 }
-export const SourceControlConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SourceControlConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2729,20 +2701,20 @@ export const SourceControlConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S
 
 /** The upgrade mode for auto upgrade. The default is "compatible". */
 export type PatchExtensionPropertiesAutoUpgradeMode = "none" | "patch" | "compatible";
-export const PatchExtensionPropertiesAutoUpgradeMode = S.String;
+const PatchExtensionPropertiesAutoUpgradeMode = S.String;
 
 /** Configuration settings, as name-value pairs for configuring this extension. */
 export type PatchExtensionPropertiesConfigurationSettingsMap = {
   [key: string]: string | undefined;
 };
-export const PatchExtensionPropertiesConfigurationSettingsMap =
+const PatchExtensionPropertiesConfigurationSettingsMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<PatchExtensionPropertiesConfigurationSettingsMap>;
 
 /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
 export type PatchExtensionPropertiesConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const PatchExtensionPropertiesConfigurationProtectedSettingsMap =
+const PatchExtensionPropertiesConfigurationProtectedSettingsMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<PatchExtensionPropertiesConfigurationProtectedSettingsMap>;
 
 /** Updatable properties of an Extension Patch Request */
@@ -2760,7 +2732,7 @@ export interface PatchExtensionProperties {
   /** Configuration settings that are sensitive, as name-value pairs for configuring this extension. */
   configurationProtectedSettings?: PatchExtensionPropertiesConfigurationProtectedSettingsMap | null;
 }
-export const PatchExtensionProperties = /*@__PURE__*/ S.suspend(() =>
+const PatchExtensionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoUpgradeMinorVersion: S.optional(S.Boolean),
     autoUpgradeMode: S.optional(PatchExtensionPropertiesAutoUpgradeMode),
@@ -2789,7 +2761,7 @@ export interface UpdateExtensionRequest {
   /** Updatable properties of an Extension Patch Request */
   properties?: PatchExtensionProperties;
 }
-export const UpdateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2810,8 +2782,6 @@ export const UpdateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type UpdateExtensionResponseIdentityType = "SystemAssigned";
-export const UpdateExtensionResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface UpdateExtensionResponseIdentity {
   /** The principal ID of resource identity. */
@@ -2821,13 +2791,8 @@ export interface UpdateExtensionResponseIdentity {
   /** The identity type. */
   type?: UpdateExtensionResponseIdentityType;
 }
-export const UpdateExtensionResponseIdentity =
-  CreateExtensionResponseIdentity as any as S.Schema<UpdateExtensionResponseIdentity>;
-
 /** Plan for the resource. */
 export type UpdateExtensionResponsePlan = CreateExtensionRequestPlan;
-export const UpdateExtensionResponsePlan = CreateExtensionRequestPlan;
-
 export interface UpdateExtensionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2846,17 +2811,14 @@ export interface UpdateExtensionResponse {
   /** Plan for the resource. */
   plan?: CreateExtensionRequestPlan;
 }
-export const UpdateExtensionResponse =
-  CreateExtensionResponse as any as S.Schema<UpdateExtensionResponse>;
+const UpdateExtensionResponse = CreateExtensionResponse as any as S.Schema<UpdateExtensionResponse>;
 
 /** Source Kind to pull the configuration data from. */
 export type SourceKindType = "GitRepository" | "Bucket" | "AzureBlob" | "OCIRepository";
-export const SourceKindType = S.String;
+const SourceKindType = S.String;
 
 /** Parameters to reconcile to the GitRepository source kind type. */
 export type GitRepositoryPatchDefinition = GitRepositoryDefinition;
-export const GitRepositoryPatchDefinition = GitRepositoryDefinition;
-
 /** Parameters to reconcile to the Bucket source kind type. */
 export interface BucketPatchDefinition {
   /** The URL to sync for the flux configuration S3 bucket. */
@@ -2874,7 +2836,7 @@ export interface BucketPatchDefinition {
   /** Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. */
   localAuthRef?: string | null;
 }
-export const BucketPatchDefinition = /*@__PURE__*/ S.suspend(() =>
+const BucketPatchDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     bucketName: S.optional(S.NullOr(S.String)),
@@ -2901,7 +2863,7 @@ export interface ServicePrincipalPatchDefinition {
   /** Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate */
   clientCertificateSendChain?: boolean;
 }
-export const ServicePrincipalPatchDefinition = /*@__PURE__*/ S.suspend(() =>
+const ServicePrincipalPatchDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.NullOr(S.String)),
     tenantId: S.optional(S.NullOr(S.String)),
@@ -2916,8 +2878,6 @@ export const ServicePrincipalPatchDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters to authenticate using a Managed Identity. */
 export type ManagedIdentityPatchDefinition = ManagedIdentityDefinition;
-export const ManagedIdentityPatchDefinition = ManagedIdentityDefinition;
-
 /** Parameters to reconcile to the AzureBlob source kind type. */
 export interface AzureBlobPatchDefinition {
   /** The URL to sync for the flux configuration Azure Blob storage account. */
@@ -2939,7 +2899,7 @@ export interface AzureBlobPatchDefinition {
   /** Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. */
   localAuthRef?: string | null;
 }
-export const AzureBlobPatchDefinition = /*@__PURE__*/ S.suspend(() =>
+const AzureBlobPatchDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     containerName: S.optional(S.NullOr(S.String)),
@@ -2955,26 +2915,14 @@ export const AzureBlobPatchDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The source reference for the OCIRepository object. */
 export type OCIRepositoryRefPatchDefinition = OCIRepositoryRefDefinition;
-export const OCIRepositoryRefPatchDefinition = OCIRepositoryRefDefinition;
-
 /** Parameters to specify which layer to pull from the OCI artifact. By default, the first layer in the artifact is pulled. */
 export type LayerSelectorPatchDefinition = LayerSelectorDefinition;
-export const LayerSelectorPatchDefinition = LayerSelectorDefinition;
-
 /** An object containing trusted public keys of trusted authors. */
 export type VerifyPatchDefinitionVerificationConfigMap = { [key: string]: string | undefined };
-export const VerifyPatchDefinitionVerificationConfigMap =
-  ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<VerifyPatchDefinitionVerificationConfigMap>;
-
 /** MatchOIDCIdentity defines the criteria for matching the identity while verifying an OCI artifact. */
 export type MatchOidcIdentityPatchDefinition = MatchOidcIdentityDefinition;
-export const MatchOidcIdentityPatchDefinition = MatchOidcIdentityDefinition;
-
 /** Array defining the criteria for matching the OIDC identity while verifying an OCI artifact. */
 export type VerifyPatchDefinitionMatchOidcIdentityList = Array<MatchOidcIdentityDefinition>;
-export const VerifyPatchDefinitionMatchOidcIdentityList =
-  VerifyDefinitionMatchOidcIdentityList as any as S.Schema<VerifyPatchDefinitionMatchOidcIdentityList>;
-
 /** Parameters to verify the authenticity of an OCI Artifact. */
 export interface VerifyPatchDefinition {
   /** Verification provider name. */
@@ -2984,12 +2932,10 @@ export interface VerifyPatchDefinition {
   /** Array defining the criteria for matching the OIDC identity while verifying an OCI artifact. */
   matchOidcIdentity?: VerifyPatchDefinitionMatchOidcIdentityList | null;
 }
-export const VerifyPatchDefinition = VerifyDefinition as any as S.Schema<VerifyPatchDefinition>;
+const VerifyPatchDefinition = VerifyDefinition as any as S.Schema<VerifyPatchDefinition>;
 
 /** Parameters to authenticate using TLS config for OCI repository. */
 export type TlsConfigPatchDefinition = TlsConfigDefinition;
-export const TlsConfigPatchDefinition = TlsConfigDefinition;
-
 /** Parameters to reconcile to the OCIRepository source kind type. */
 export interface OCIRepositoryPatchDefinition {
   /** The URL to sync for the flux configuration OCI repository. */
@@ -3015,7 +2961,7 @@ export interface OCIRepositoryPatchDefinition {
   /** Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. */
   localAuthRef?: string | null;
 }
-export const OCIRepositoryPatchDefinition = /*@__PURE__*/ S.suspend(() =>
+const OCIRepositoryPatchDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     timeoutInSeconds: S.optional(S.NullOr(S.Number)),
@@ -3035,21 +2981,19 @@ export const OCIRepositoryPatchDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
 export type KustomizationPatchDefinitionDependsOnList = Array<string>;
-export const KustomizationPatchDefinitionDependsOnList =
+const KustomizationPatchDefinitionDependsOnList =
   AccessDetailAllowedActionsList as any as S.Schema<KustomizationPatchDefinitionDependsOnList>;
 
 /** Key/value pairs holding the variables to be substituted in this Kustomization. */
 export type PostBuildPatchDefinitionSubstituteMap = { [key: string]: string | undefined };
-export const PostBuildPatchDefinitionSubstituteMap =
+const PostBuildPatchDefinitionSubstituteMap =
   ExtensionPropertiesInputConfigurationSettingsMap as any as S.Schema<PostBuildPatchDefinitionSubstituteMap>;
 
 /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
 export type SubstituteFromPatchDefinition = SubstituteFromDefinition;
-export const SubstituteFromPatchDefinition = SubstituteFromDefinition;
-
 /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
 export type PostBuildPatchDefinitionSubstituteFromList = Array<SubstituteFromDefinition>;
-export const PostBuildPatchDefinitionSubstituteFromList =
+const PostBuildPatchDefinitionSubstituteFromList =
   PostBuildDefinitionSubstituteFromList as any as S.Schema<PostBuildPatchDefinitionSubstituteFromList>;
 
 /** The postBuild definitions defining variable substitutions for this Kustomization after kustomize build. */
@@ -3059,7 +3003,7 @@ export interface PostBuildPatchDefinition {
   /** Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization. */
   substituteFrom?: PostBuildPatchDefinitionSubstituteFromList | null;
 }
-export const PostBuildPatchDefinition = /*@__PURE__*/ S.suspend(() =>
+const PostBuildPatchDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     substitute: S.optional(S.NullOr(PostBuildPatchDefinitionSubstituteMap)),
     substituteFrom: S.optional(S.NullOr(PostBuildPatchDefinitionSubstituteFromList)),
@@ -3087,7 +3031,7 @@ export interface KustomizationPatchDefinition {
   /** Used for variable substitution for this Kustomization after kustomize build. */
   postBuild?: PostBuildPatchDefinition | null;
 }
-export const KustomizationPatchDefinition = /*@__PURE__*/ S.suspend(() =>
+const KustomizationPatchDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.NullOr(S.String)),
     dependsOn: S.optional(S.NullOr(KustomizationPatchDefinitionDependsOnList)),
@@ -3107,7 +3051,7 @@ export const KustomizationPatchDefinition = /*@__PURE__*/ S.suspend(() =>
 export type FluxConfigurationPatchPropertiesKustomizationsMap = {
   [key: string]: KustomizationPatchDefinition | undefined;
 };
-export const FluxConfigurationPatchPropertiesKustomizationsMap = /*@__PURE__*/ S.Record(
+const FluxConfigurationPatchPropertiesKustomizationsMap = /*@__PURE__*/ S.Record(
   S.String,
   KustomizationPatchDefinition,
 ) as any as S.Schema<FluxConfigurationPatchPropertiesKustomizationsMap>;
@@ -3116,7 +3060,7 @@ export const FluxConfigurationPatchPropertiesKustomizationsMap = /*@__PURE__*/ S
 export type FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap = {
   [key: string]: string | undefined;
 };
-export const FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap =
+const FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap =
   FluxConfigurationPropertiesInputConfigurationProtectedSettingsMap as any as S.Schema<FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap>;
 
 /** Updatable properties of an Flux Configuration Patch Request */
@@ -3138,7 +3082,7 @@ export interface FluxConfigurationPatchProperties {
   /** Key-value pairs of protected configuration settings for the configuration */
   configurationProtectedSettings?: FluxConfigurationPatchPropertiesConfigurationProtectedSettingsMap;
 }
-export const FluxConfigurationPatchProperties = /*@__PURE__*/ S.suspend(() =>
+const FluxConfigurationPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceKind: S.optional(SourceKindType),
     suspend: S.optional(S.Boolean),
@@ -3171,7 +3115,7 @@ export interface UpdateFluxConfigurationRequest {
   /** Updatable properties of an Flux Configuration Patch Request */
   properties?: FluxConfigurationPatchProperties;
 }
-export const UpdateFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFluxConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3204,7 +3148,7 @@ export interface UpdateFluxConfigurationResponse {
   /** Properties to create a Flux Configuration resource */
   properties?: FluxConfigurationProperties;
 }
-export const UpdateFluxConfigurationResponse =
+const UpdateFluxConfigurationResponse =
   FluxConfigurationsCreateOrUpdateResponse as any as S.Schema<UpdateFluxConfigurationResponse>;
 
 export type CreateExtensionError = AzureOpError;

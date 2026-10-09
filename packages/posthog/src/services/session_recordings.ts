@@ -44,7 +44,7 @@ export interface CreateSessionRecordingsSharingPasswordRequest {
   settings?: unknown;
   password_required?: boolean;
 }
-export const CreateSessionRecordingsSharingPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionRecordingsSharingPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     recording_id: S.String.pipe(T.Label()),
@@ -69,7 +69,7 @@ export interface SharePassword {
   created_by_email?: string;
   is_active?: boolean;
 }
-export const SharePassword = /*@__PURE__*/ S.suspend(() =>
+const SharePassword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     created_at: S.optional(S.String),
@@ -80,7 +80,7 @@ export const SharePassword = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
 
 export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
-export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
+const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
 
@@ -95,7 +95,7 @@ export interface SharingConfiguration {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -112,7 +112,7 @@ export interface ListSessionRecordingsSharingRequest {
   project_id: string;
   recording_id: string;
 }
-export const ListSessionRecordingsSharingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSessionRecordingsSharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     recording_id: S.String.pipe(T.Label()),
@@ -128,12 +128,12 @@ export const ListSessionRecordingsSharingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSessionRecordingsSharingRequest>;
 
 export type ListSessionRecordingsSharingResponseBodyList = Array<SharingConfiguration>;
-export const ListSessionRecordingsSharingResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSessionRecordingsSharingResponseBodyList = /*@__PURE__*/ S.Array(
   SharingConfiguration,
 ) as any as S.Schema<ListSessionRecordingsSharingResponseBodyList>;
 
 export type ListSessionRecordingsSharingResponse = ListSessionRecordingsSharingResponseBodyList;
-export const ListSessionRecordingsSharingResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSessionRecordingsSharingResponse = /*@__PURE__*/ S.suspend(() =>
   ListSessionRecordingsSharingResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSessionRecordingsSharingResponse",
@@ -145,7 +145,7 @@ export interface SessionRecordingsSharingPasswordsDestroyRequest {
   recording_id: string;
   password_id: string;
 }
-export const SessionRecordingsSharingPasswordsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingsSharingPasswordsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     recording_id: S.String.pipe(T.Label()),
@@ -162,7 +162,7 @@ export const SessionRecordingsSharingPasswordsDestroyRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<SessionRecordingsSharingPasswordsDestroyRequest>;
 
 export interface SessionRecordingsSharingPasswordsDestroyResponse {}
-export const SessionRecordingsSharingPasswordsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingsSharingPasswordsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "SessionRecordingsSharingPasswordsDestroyResponse",
@@ -176,7 +176,7 @@ export interface SessionRecordingsSharingRefreshCreateRequest {
   settings?: unknown;
   password_required?: boolean;
 }
-export const SessionRecordingsSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SessionRecordingsSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     recording_id: S.String.pipe(T.Label()),

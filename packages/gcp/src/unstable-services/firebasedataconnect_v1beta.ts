@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,26 +90,26 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type PostgreSqlSchemaValidationEnum =
   | "SQL_SCHEMA_VALIDATION_UNSPECIFIED"
   | "NONE"
   | "STRICT"
   | "COMPATIBLE";
-export const PostgreSqlSchemaValidationEnum = S.String;
+const PostgreSqlSchemaValidationEnum = S.String;
 
 export type PostgreSqlSchemaMigrationEnum =
   | "SQL_SCHEMA_MIGRATION_UNSPECIFIED"
   | "MIGRATE_COMPATIBLE";
-export const PostgreSqlSchemaMigrationEnum = S.String;
+const PostgreSqlSchemaMigrationEnum = S.String;
 
 export type CloudSqlInstanceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "EDITION_ENTERPRISE"
   | "EDITION_ENTERPRISE_PLUS"
   | "EDITION_DEVELOPER";
-export const CloudSqlInstanceEditionEnum = S.String;
+const CloudSqlInstanceEditionEnum = S.String;
 
 /** Settings for CloudSQL instance configuration. */
 export interface CloudSqlInstance {
@@ -118,7 +118,7 @@ export interface CloudSqlInstance {
   /** Required. Name of the CloudSQL instance, in the format: ``` projects/{project}/locations/{location}/instances/{instance} ``` */
   instance?: string;
 }
-export const CloudSqlInstance = /*@__PURE__*/ S.suspend(() =>
+const CloudSqlInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edition: S.optional(CloudSqlInstanceEditionEnum),
     instance: S.optional(S.String),
@@ -142,7 +142,7 @@ export interface PostgreSql {
   /** Cloud SQL configurations. */
   cloudSql?: CloudSqlInstance;
 }
-export const PostgreSql = /*@__PURE__*/ S.suspend(() =>
+const PostgreSql = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.optional(S.String),
     schema: S.optional(S.String),
@@ -161,7 +161,7 @@ export interface HttpGraphql {
   /** Required. The endpoint of the HTTP GraphQL server. */
   uri?: string;
 }
-export const HttpGraphql = /*@__PURE__*/ S.suspend(() =>
+const HttpGraphql = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeout: S.optional(S.String),
     uri: S.optional(S.String),
@@ -175,7 +175,7 @@ export interface Datasource {
   /** HTTP GraphQL server webhook configurations. */
   httpGraphql?: HttpGraphql;
 }
-export const Datasource = /*@__PURE__*/ S.suspend(() =>
+const Datasource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postgresql: S.optional(PostgreSql),
     httpGraphql: S.optional(HttpGraphql),
@@ -183,10 +183,10 @@ export const Datasource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Datasource" }) as any as S.Schema<Datasource>;
 
 export type DatasourceList = Array<Datasource>;
-export const DatasourceList = /*@__PURE__*/ S.Array(Datasource) as any as S.Schema<DatasourceList>;
+const DatasourceList = /*@__PURE__*/ S.Array(Datasource) as any as S.Schema<DatasourceList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Individual files. */
 export interface File {
@@ -195,7 +195,7 @@ export interface File {
   /** Required. The file name including folder path, if applicable. The path should be relative to a local workspace (e.g. dataconnect/(schema|connector)/*.gql) and not an absolute path (e.g. /absolute/path/(schema|connector)/*.gql). */
   path?: string;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
+const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     path: S.optional(S.String),
@@ -203,14 +203,14 @@ export const File = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
 export type FileList = Array<File>;
-export const FileList = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList>;
+const FileList = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList>;
 
 /** Used to represent a set of source files. */
 export interface Source {
   /** Required. The files that comprise the source set. */
   files?: FileList;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: S.optional(FileList),
   }),
@@ -241,7 +241,7 @@ export interface Firebasedataconnect_Schema {
   /** Required. The source files that comprise the application schema. */
   source?: Source;
 }
-export const Firebasedataconnect_Schema = /*@__PURE__*/ S.suspend(() =>
+const Firebasedataconnect_Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasources: S.optional(DatasourceList),
     reconciling: S.optional(S.Boolean),
@@ -260,7 +260,7 @@ export const Firebasedataconnect_Schema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Firebasedataconnect_Schema>;
 
 export type Firebasedataconnect_SchemaList = Array<Firebasedataconnect_Schema>;
-export const Firebasedataconnect_SchemaList = /*@__PURE__*/ S.Array(
+const Firebasedataconnect_SchemaList = /*@__PURE__*/ S.Array(
   Firebasedataconnect_Schema,
 ) as any as S.Schema<Firebasedataconnect_SchemaList>;
 
@@ -271,7 +271,7 @@ export interface ClientCache {
   /** Optional. A field that, if true, means that responses served by this connector will include entityIds in GraphQL response extensions. This helps the client SDK cache responses in an improved way, known as "normalized caching", if caching is enabled on the client. Each entityId is a stable key based on primary key values. Therefore, this field should only be set to true if the primary keys of accessed tables do not contain sensitive information. */
   entityIdIncluded?: boolean;
 }
-export const ClientCache = /*@__PURE__*/ S.suspend(() =>
+const ClientCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     strictValidationEnabled: S.optional(S.Boolean),
     entityIdIncluded: S.optional(S.Boolean),
@@ -303,7 +303,7 @@ export interface Connector {
   /** Output only. A field that if true, indicates that the system is working to compile and deploy the connector. */
   reconciling?: boolean;
 }
-export const Connector = /*@__PURE__*/ S.suspend(() =>
+const Connector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     name: S.optional(S.String),
@@ -320,7 +320,7 @@ export const Connector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
 
 export type ConnectorList = Array<Connector>;
-export const ConnectorList = /*@__PURE__*/ S.Array(Connector) as any as S.Schema<ConnectorList>;
+const ConnectorList = /*@__PURE__*/ S.Array(Connector) as any as S.Schema<ConnectorList>;
 
 /** A Firebase SQL Connect service. */
 export interface Service {
@@ -349,7 +349,7 @@ export interface Service {
   /** Optional. Input only. The source files for service, schemas, and connectors. */
   source?: Source;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     schemas: S.optional(Firebasedataconnect_SchemaList),
@@ -378,7 +378,7 @@ export interface CreateProjectsLocationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     serviceId: S.optional(S.String.pipe(T.Query())),
@@ -397,15 +397,10 @@ export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateProjectsLocationsServicesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -416,7 +411,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -437,7 +432,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
@@ -459,7 +454,7 @@ export interface CreateProjectsLocationsServicesConnectorsRequest {
   /** Request body */
   body?: Connector;
 }
-export const CreateProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -489,7 +484,7 @@ export interface CreateProjectsLocationsServicesSchemasRequest {
   /** Request body */
   body?: Firebasedataconnect_Schema;
 }
-export const CreateProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -511,7 +506,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -539,7 +534,7 @@ export interface DeleteProjectsLocationsServicesRequest {
   /** Optional. If set to true, any child resources (i.e. Schema, SchemaRevisions, Connectors, and ConnectorRevisions) will also be deleted. Otherwise, the request will only work if the Service has no child resources. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -572,7 +567,7 @@ export interface DeleteProjectsLocationsServicesConnectorsRequest {
   /** Required. The name of the connector to delete, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ``` */
   name: string;
 }
-export const DeleteProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -605,7 +600,7 @@ export interface DeleteProjectsLocationsServicesSchemasRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -633,7 +628,7 @@ export interface Impersonation {
   /** Evaluate the auth policy with a customized JWT auth token. Should follow the Firebase Auth token format. https://firebase.google.com/docs/rules/rules-and-auth For example: a verified user may have auth_claims of {"sub": , "email_verified": true} */
   authClaims?: DocumentMap;
 }
-export const Impersonation = /*@__PURE__*/ S.suspend(() =>
+const Impersonation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unauthenticated: S.optional(S.Boolean),
     includeDebugDetails: S.optional(S.Boolean),
@@ -646,7 +641,7 @@ export interface GraphqlRequestExtensions {
   /** Optional. If set, impersonate a request with given Firebase Auth context and evaluate the auth policies on the operation. If omitted, bypass any defined auth policies. */
   impersonate?: Impersonation;
 }
-export const GraphqlRequestExtensions = /*@__PURE__*/ S.suspend(() =>
+const GraphqlRequestExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impersonate: S.optional(Impersonation),
   }),
@@ -663,7 +658,7 @@ export interface GraphqlRequest {
   /** Optional. The name of the GraphQL operation name. Required only if `query` contains multiple operations. See https://graphql.org/learn/queries/#operation-name. */
   operationName?: string;
 }
-export const GraphqlRequest = /*@__PURE__*/ S.suspend(() =>
+const GraphqlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     extensions: S.optional(GraphqlRequestExtensions),
@@ -678,7 +673,7 @@ export interface ExecuteGraphqlProjectsLocationsServicesRequest {
   /** Request body */
   body?: GraphqlRequest;
 }
-export const ExecuteGraphqlProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteGraphqlProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GraphqlRequest.pipe(T.HttpBody())),
@@ -702,7 +697,7 @@ export interface Workaround {
   /** Why would this workaround address the error and warning. */
   reason?: string;
 }
-export const Workaround = /*@__PURE__*/ S.suspend(() =>
+const Workaround = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replace: S.optional(S.String),
     description: S.optional(S.String),
@@ -711,7 +706,7 @@ export const Workaround = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workaround" }) as any as S.Schema<Workaround>;
 
 export type WorkaroundList = Array<Workaround>;
-export const WorkaroundList = /*@__PURE__*/ S.Array(Workaround) as any as S.Schema<WorkaroundList>;
+const WorkaroundList = /*@__PURE__*/ S.Array(Workaround) as any as S.Schema<WorkaroundList>;
 
 export type GraphqlErrorExtensionsWarningLevelEnum =
   | "WARNING_LEVEL_UNKNOWN"
@@ -719,7 +714,7 @@ export type GraphqlErrorExtensionsWarningLevelEnum =
   | "INTERACTIVE_ACK"
   | "REQUIRE_ACK"
   | "REQUIRE_FORCE";
-export const GraphqlErrorExtensionsWarningLevelEnum = S.String;
+const GraphqlErrorExtensionsWarningLevelEnum = S.String;
 
 export type GraphqlErrorExtensionsCodeEnum =
   | "OK"
@@ -739,7 +734,7 @@ export type GraphqlErrorExtensionsCodeEnum =
   | "INTERNAL"
   | "UNAVAILABLE"
   | "DATA_LOSS";
-export const GraphqlErrorExtensionsCodeEnum = S.String;
+const GraphqlErrorExtensionsCodeEnum = S.String;
 
 /** GraphqlErrorExtensions contains additional information of `GraphqlError`. */
 export interface GraphqlErrorExtensions {
@@ -754,7 +749,7 @@ export interface GraphqlErrorExtensions {
   /** Maps to canonical gRPC codes. If not specified, it represents `Code.INTERNAL`. */
   code?: GraphqlErrorExtensionsCodeEnum;
 }
-export const GraphqlErrorExtensions = /*@__PURE__*/ S.suspend(() =>
+const GraphqlErrorExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workarounds: S.optional(WorkaroundList),
     warningLevel: S.optional(GraphqlErrorExtensionsWarningLevelEnum),
@@ -765,7 +760,7 @@ export const GraphqlErrorExtensions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GraphqlErrorExtensions" }) as any as S.Schema<GraphqlErrorExtensions>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** SourceLocation references a location in a GraphQL source. */
 export interface SourceLocation {
@@ -774,7 +769,7 @@ export interface SourceLocation {
   /** Line number starting at 1. */
   line?: number;
 }
-export const SourceLocation = /*@__PURE__*/ S.suspend(() =>
+const SourceLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.optional(S.Number),
     line: S.optional(S.Number),
@@ -782,7 +777,7 @@ export const SourceLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceLocation" }) as any as S.Schema<SourceLocation>;
 
 export type SourceLocationList = Array<SourceLocation>;
-export const SourceLocationList = /*@__PURE__*/ S.Array(
+const SourceLocationList = /*@__PURE__*/ S.Array(
   SourceLocation,
 ) as any as S.Schema<SourceLocationList>;
 
@@ -797,7 +792,7 @@ export interface GraphqlError {
   /** The source locations where the error occurred. Locations should help developers and toolings identify the source of error quickly. Included in admin endpoints (`ExecuteGraphql`, `ExecuteGraphqlRead`, `IntrospectGraphql`, `ImpersonateQuery`, `ImpersonateMutation`, `UpdateSchema` and `UpdateConnector`) to reference the provided GraphQL GQL document. Omitted in `ExecuteMutation` and `ExecuteQuery` since the caller shouldn't have access access the underlying GQL source. */
   locations?: SourceLocationList;
 }
-export const GraphqlError = /*@__PURE__*/ S.suspend(() =>
+const GraphqlError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     extensions: S.optional(GraphqlErrorExtensions),
@@ -807,12 +802,10 @@ export const GraphqlError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GraphqlError" }) as any as S.Schema<GraphqlError>;
 
 export type GraphqlErrorList = Array<GraphqlError>;
-export const GraphqlErrorList = /*@__PURE__*/ S.Array(
-  GraphqlError,
-) as any as S.Schema<GraphqlErrorList>;
+const GraphqlErrorList = /*@__PURE__*/ S.Array(GraphqlError) as any as S.Schema<GraphqlErrorList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** SQL Connect specific properties for a path under response.data. */
 export interface DataConnectProperties {
@@ -825,7 +818,7 @@ export interface DataConnectProperties {
   /** A single Entity ID. Set if the path points to a single entity. */
   entityId?: string;
 }
-export const DataConnectProperties = /*@__PURE__*/ S.suspend(() =>
+const DataConnectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(DocumentList),
     maxAge: S.optional(S.String),
@@ -835,7 +828,7 @@ export const DataConnectProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataConnectProperties" }) as any as S.Schema<DataConnectProperties>;
 
 export type DataConnectPropertiesList = Array<DataConnectProperties>;
-export const DataConnectPropertiesList = /*@__PURE__*/ S.Array(
+const DataConnectPropertiesList = /*@__PURE__*/ S.Array(
   DataConnectProperties,
 ) as any as S.Schema<DataConnectPropertiesList>;
 
@@ -844,7 +837,7 @@ export interface GraphqlResponseExtensions {
   /** SQL Connect specific GraphQL extension, a list of paths and properties. */
   dataConnect?: DataConnectPropertiesList;
 }
-export const GraphqlResponseExtensions = /*@__PURE__*/ S.suspend(() =>
+const GraphqlResponseExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataConnect: S.optional(DataConnectPropertiesList),
   }),
@@ -861,7 +854,7 @@ export interface GraphqlResponse {
   /** Additional response information. It conforms to https://spec.graphql.org/draft/#sec-Extensions . */
   extensions?: GraphqlResponseExtensions;
 }
-export const GraphqlResponse = /*@__PURE__*/ S.suspend(() =>
+const GraphqlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(DocumentMap),
     errors: S.optional(GraphqlErrorList),
@@ -875,7 +868,7 @@ export interface ExecuteGraphqlReadProjectsLocationsServicesRequest {
   /** Request body */
   body?: GraphqlRequest;
 }
-export const ExecuteGraphqlReadProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteGraphqlReadProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GraphqlRequest.pipe(T.HttpBody())),
@@ -897,7 +890,7 @@ export interface ExecuteMutationRequest {
   /** Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name. */
   operationName?: string;
 }
-export const ExecuteMutationRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteMutationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variables: S.optional(DocumentMap),
     operationName: S.optional(S.String),
@@ -910,18 +903,17 @@ export interface ExecuteMutationProjectsLocationsServicesConnectorsRequest {
   /** Request body */
   body?: ExecuteMutationRequest;
 }
-export const ExecuteMutationProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteMutationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:executeMutation",
-        baseUrl: "https://firebasedataconnect.googleapis.com/",
-      }),
-    ),
+const ExecuteMutationProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ExecuteMutationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+name}:executeMutation",
+      baseUrl: "https://firebasedataconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ExecuteMutationProjectsLocationsServicesConnectorsRequest",
 }) as any as S.Schema<ExecuteMutationProjectsLocationsServicesConnectorsRequest>;
@@ -935,19 +927,17 @@ export interface ExecuteMutationResponse {
   /** Additional response information. */
   extensions?: GraphqlResponseExtensions;
 }
-export const ExecuteMutationResponse = GraphqlResponse as any as S.Schema<ExecuteMutationResponse>;
+const ExecuteMutationResponse = GraphqlResponse as any as S.Schema<ExecuteMutationResponse>;
 
 /** The ExecuteQuery request to Firebase SQL Connect. */
 export type ExecuteQueryRequest = ExecuteMutationRequest;
-export const ExecuteQueryRequest = ExecuteMutationRequest;
-
 export interface ExecuteQueryProjectsLocationsServicesConnectorsRequest {
   /** Required. The resource name of the connector to find the predefined query, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ``` */
   name: string;
   /** Request body */
   body?: ExecuteMutationRequest;
 }
-export const ExecuteQueryProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteQueryProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExecuteMutationRequest.pipe(T.HttpBody())),
@@ -971,7 +961,7 @@ export interface ExecuteQueryResponse {
   /** Additional response information. */
   extensions?: GraphqlResponseExtensions;
 }
-export const ExecuteQueryResponse = GraphqlResponse as any as S.Schema<ExecuteQueryResponse>;
+const ExecuteQueryResponse = GraphqlResponse as any as S.Schema<ExecuteQueryResponse>;
 
 /** Request message for GenerateQuery. */
 export interface GenerateQueryRequest {
@@ -980,7 +970,7 @@ export interface GenerateQueryRequest {
   /** Required. The natural language description of the desired query. Example: "Find all users who signed up in the last 7 days." */
   prompt?: string;
 }
-export const GenerateQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemas: S.optional(Firebasedataconnect_SchemaList),
     prompt: S.optional(S.String),
@@ -993,7 +983,7 @@ export interface GenerateQueryProjectsLocationsServicesRequest {
   /** Request body */
   body?: GenerateQueryRequest;
 }
-export const GenerateQueryProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateQueryProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GenerateQueryRequest.pipe(T.HttpBody())),
@@ -1013,7 +1003,7 @@ export type GenerationStatusStateEnum =
   | "ANALYZING_CODE"
   | "GENERATING_CODE"
   | "COMPLETED";
-export const GenerationStatusStateEnum = S.String;
+const GenerationStatusStateEnum = S.String;
 
 /** Represents the progress of the server side generation request. */
 export interface GenerationStatus {
@@ -1022,7 +1012,7 @@ export interface GenerationStatus {
   /** Output only. A message providing more details about the state. */
   message?: string;
 }
-export const GenerationStatus = /*@__PURE__*/ S.suspend(() =>
+const GenerationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GenerationStatusStateEnum),
     message: S.optional(S.String),
@@ -1034,7 +1024,7 @@ export interface TextChunk {
   /** Required. The text content string. */
   text?: string;
 }
-export const TextChunk = /*@__PURE__*/ S.suspend(() =>
+const TextChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
   }),
@@ -1047,7 +1037,7 @@ export interface CodeChunk {
   /** Required. The code content string. */
   code?: string;
 }
-export const CodeChunk = /*@__PURE__*/ S.suspend(() =>
+const CodeChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
     code: S.optional(S.String),
@@ -1061,7 +1051,7 @@ export interface Part {
   /** Optional. A chunk of code. */
   codeChunk?: CodeChunk;
 }
-export const Part = /*@__PURE__*/ S.suspend(() =>
+const Part = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textChunk: S.optional(TextChunk),
     codeChunk: S.optional(CodeChunk),
@@ -1075,7 +1065,7 @@ export interface GenerateQueryResponse {
   /** Required. The content from the current conversational turn. */
   part?: Part;
 }
-export const GenerateQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenerationStatus),
     part: S.optional(Part),
@@ -1087,7 +1077,7 @@ export interface GenerateSchemaRequest {
   /** Required. The natural language description of the data model to generate. Example: "A blog system with Users, Posts, and Comments. Users can have multiple posts." */
   prompt?: string;
 }
-export const GenerateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt: S.optional(S.String),
   }),
@@ -1099,7 +1089,7 @@ export interface GenerateSchemaProjectsLocationsServicesRequest {
   /** Request body */
   body?: GenerateSchemaRequest;
 }
-export const GenerateSchemaProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSchemaProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GenerateSchemaRequest.pipe(T.HttpBody())),
@@ -1121,7 +1111,7 @@ export interface GenerateSchemaResponse {
   /** Essential for providing responsive UI feedback (e.g., a spinner or "Analyzing schema..." step). */
   status?: GenerationStatus;
 }
-export const GenerateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part: S.optional(Part),
     status: S.optional(GenerationStatus),
@@ -1132,7 +1122,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1159,7 +1149,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     labels: S.optional(StringMap),
@@ -1173,7 +1163,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1191,7 +1181,7 @@ export interface GetProjectsLocationsServicesRequest {
   /** Required. The name of the service to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service} ``` */
   name: string;
 }
-export const GetProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1209,7 +1199,7 @@ export interface GetProjectsLocationsServicesConnectorsRequest {
   /** Required. The name of the connector to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ``` */
   name: string;
 }
-export const GetProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1227,7 +1217,7 @@ export interface GetProjectsLocationsServicesSchemasRequest {
   /** Required. The name of the schema to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ``` */
   name: string;
 }
-export const GetProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1250,7 +1240,7 @@ export interface ImpersonateRequest {
   /** Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name. */
   operationName?: string;
 }
-export const ImpersonateRequest = /*@__PURE__*/ S.suspend(() =>
+const ImpersonateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variables: S.optional(DocumentMap),
     extensions: S.optional(GraphqlRequestExtensions),
@@ -1264,21 +1254,20 @@ export interface ImpersonateMutationProjectsLocationsServicesConnectorsRequest {
   /** Request body */
   body?: ImpersonateRequest;
 }
-export const ImpersonateMutationProjectsLocationsServicesConnectorsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ImpersonateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:impersonateMutation",
-        baseUrl: "https://firebasedataconnect.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImpersonateMutationProjectsLocationsServicesConnectorsRequest",
-  }) as any as S.Schema<ImpersonateMutationProjectsLocationsServicesConnectorsRequest>;
+const ImpersonateMutationProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ImpersonateRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+name}:impersonateMutation",
+      baseUrl: "https://firebasedataconnect.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ImpersonateMutationProjectsLocationsServicesConnectorsRequest",
+}) as any as S.Schema<ImpersonateMutationProjectsLocationsServicesConnectorsRequest>;
 
 export interface ImpersonateQueryProjectsLocationsServicesConnectorsRequest {
   /** Required. The resource name of the connector to find the predefined query/mutation, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ``` */
@@ -1286,18 +1275,17 @@ export interface ImpersonateQueryProjectsLocationsServicesConnectorsRequest {
   /** Request body */
   body?: ImpersonateRequest;
 }
-export const ImpersonateQueryProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ImpersonateRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:impersonateQuery",
-        baseUrl: "https://firebasedataconnect.googleapis.com/",
-      }),
-    ),
+const ImpersonateQueryProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ImpersonateRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+name}:impersonateQuery",
+      baseUrl: "https://firebasedataconnect.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ImpersonateQueryProjectsLocationsServicesConnectorsRequest",
 }) as any as S.Schema<ImpersonateQueryProjectsLocationsServicesConnectorsRequest>;
@@ -1308,7 +1296,7 @@ export interface IntrospectGraphqlProjectsLocationsServicesRequest {
   /** Request body */
   body?: GraphqlRequest;
 }
-export const IntrospectGraphqlProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const IntrospectGraphqlProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GraphqlRequest.pipe(T.HttpBody())),
@@ -1335,7 +1323,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1354,7 +1342,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1363,7 +1351,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1382,7 +1370,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1401,7 +1389,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1412,7 +1400,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
@@ -1432,7 +1420,7 @@ export interface ListProjectsLocationsServicesRequest {
   /** Optional. A page token, received from a previous `ListServices` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListServices` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1451,7 +1439,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
 export type ServiceList = Array<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Message for response to listing Services. */
 export interface ListServicesResponse {
@@ -1462,7 +1450,7 @@ export interface ListServicesResponse {
   /** The list of Services. */
   services?: ServiceList;
 }
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1482,7 +1470,7 @@ export interface ListProjectsLocationsServicesConnectorsRequest {
   /** Optional. A page token, received from a previous `ListConnectors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectors` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1509,7 +1497,7 @@ export interface ListConnectorsResponse {
   /** The list of Connectors. */
   connectors?: ConnectorList;
 }
-export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1529,7 +1517,7 @@ export interface ListProjectsLocationsServicesSchemasRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1556,7 +1544,7 @@ export interface ListSchemasResponse {
   /** The list of Schemas. */
   schemas?: Firebasedataconnect_SchemaList;
 }
-export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -1569,7 +1557,7 @@ export type MigrateSchemaRequestExecutionModeEnum =
   | "EXECUTE_AND_RECORD"
   | "EXECUTE_ONLY"
   | "RECORD_ONLY";
-export const MigrateSchemaRequestExecutionModeEnum = S.String;
+const MigrateSchemaRequestExecutionModeEnum = S.String;
 
 /** An individual unit of migration work. Next tag: 4 */
 export interface MigrationStep {
@@ -1580,7 +1568,7 @@ export interface MigrationStep {
   /** Optional. Descriptive migration label (e.g. "create_accounts_table"). If omitted, defaults to "adhoc". */
   name?: string;
 }
-export const MigrationStep = /*@__PURE__*/ S.suspend(() =>
+const MigrationStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     sql: S.optional(S.String),
@@ -1589,7 +1577,7 @@ export const MigrationStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrationStep" }) as any as S.Schema<MigrationStep>;
 
 export type MigrationStepList = Array<MigrationStep>;
-export const MigrationStepList = /*@__PURE__*/ S.Array(
+const MigrationStepList = /*@__PURE__*/ S.Array(
   MigrationStep,
 ) as any as S.Schema<MigrationStepList>;
 
@@ -1602,7 +1590,7 @@ export interface MigrateSchemaRequest {
   /** Optional. When true, runs preflight validation (syntax, applied-step immutability, sequence ordering, CONCURRENTLY isolation, and SAVEPOINT catalog checks) without committing mutations to the database. */
   validateOnly?: boolean;
 }
-export const MigrateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionMode: S.optional(MigrateSchemaRequestExecutionModeEnum),
     migrationSteps: S.optional(MigrationStepList),
@@ -1616,7 +1604,7 @@ export interface MigrateProjectsLocationsServicesSchemasRequest {
   /** Request body */
   body?: MigrateSchemaRequest;
 }
-export const MigrateProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MigrateSchemaRequest.pipe(T.HttpBody())),
@@ -1645,7 +1633,7 @@ export interface PatchProjectsLocationsServicesRequest {
   /** Request body */
   body?: Service;
 }
-export const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1678,7 +1666,7 @@ export interface PatchProjectsLocationsServicesConnectorsRequest {
   /** Request body */
   body?: Connector;
 }
-export const PatchProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServicesConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1711,7 +1699,7 @@ export interface PatchProjectsLocationsServicesSchemasRequest {
   /** Request body */
   body?: Firebasedataconnect_Schema;
 }
-export const PatchProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsServicesSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),

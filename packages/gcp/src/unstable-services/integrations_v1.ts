@@ -66,7 +66,7 @@ export interface GoogleCloudIntegrationsV1alphaCancelExecutionRequest {
   /** Required. Reason for cancelling the execution. This is provided by the client requesting the cancellation, and is not used by the Platform. */
   cancelReason?: string;
 }
-export const GoogleCloudIntegrationsV1alphaCancelExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCancelExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelReason: S.optional(S.String),
   }),
@@ -80,7 +80,7 @@ export interface CancelProjectsLocationsIntegrationsExecutionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaCancelExecutionRequest;
 }
-export const CancelProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaCancelExecutionRequest.pipe(T.HttpBody())),
@@ -100,7 +100,7 @@ export interface GoogleCloudIntegrationsV1alphaCancelExecutionResponse {
   /** True if cancellation performed successfully. */
   isCanceled?: boolean;
 }
-export const GoogleCloudIntegrationsV1alphaCancelExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCancelExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isCanceled: S.optional(S.Boolean),
   }),
@@ -121,7 +121,7 @@ export interface GoogleCloudIntegrationsV1alphaCloudKmsConfig {
   /** Required. A key ring organizes keys in a specific Google Cloud location and allows you to manage access control on groups of keys. A key ring's name does not need to be unique across a Google Cloud project, but must be unique within a given location. */
   kmsRing?: string;
 }
-export const GoogleCloudIntegrationsV1alphaCloudKmsConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCloudKmsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     kmsLocation: S.optional(S.String),
@@ -148,7 +148,7 @@ export interface GoogleCloudIntegrationsV1alphaCustomerConfig {
   /** Optional. True if every integration in this region should run under the hardened end-user-credential flow. See go/ip-euc-harden. */
   enableEucHardenedFlow?: boolean;
 }
-export const GoogleCloudIntegrationsV1alphaCustomerConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCustomerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableHttpCall: S.optional(S.Boolean),
     runAsServiceAccount: S.optional(S.String),
@@ -168,12 +168,11 @@ export interface GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest {
   /** Required. Field mask specifying the fields in the customer config that have been modified and must be updated. If absent or empty, no fields are updated. */
   updateMask?: string;
 }
-export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customerConfig: S.optional(GoogleCloudIntegrationsV1alphaCustomerConfig),
-      updateMask: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerConfig: S.optional(GoogleCloudIntegrationsV1alphaCustomerConfig),
+    updateMask: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest>;
@@ -184,7 +183,7 @@ export interface ChangeConfigProjectsLocationsClientsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest;
 }
-export const ChangeConfigProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeConfigProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest.pipe(T.HttpBody())),
@@ -204,11 +203,10 @@ export interface GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse {
   /** Required. The updated customer configuration. */
   customerConfig?: GoogleCloudIntegrationsV1alphaCustomerConfig;
 }
-export const GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customerConfig: S.optional(GoogleCloudIntegrationsV1alphaCustomerConfig),
-    }),
+const GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerConfig: S.optional(GoogleCloudIntegrationsV1alphaCustomerConfig),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse>;
@@ -220,12 +218,11 @@ export interface GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest {
   /** The auth config id necessary to fetch the necessary credentials to create the project for external clients */
   authConfigId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appsScriptProject: S.optional(S.String),
-      authConfigId: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appsScriptProject: S.optional(S.String),
+    authConfigId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest>;
@@ -236,7 +233,7 @@ export interface CreateProjectsLocationsAppsScriptProjectsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest;
 }
-export const CreateProjectsLocationsAppsScriptProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsScriptProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -258,14 +255,13 @@ export interface GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse {
   /** The created AppsScriptProject ID. */
   projectId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse>;
+const GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    projectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse>;
 
 export type GoogleCloudIntegrationsV1alphaAuthConfigStateEnum =
   | "STATE_UNSPECIFIED"
@@ -275,10 +271,10 @@ export type GoogleCloudIntegrationsV1alphaAuthConfigStateEnum =
   | "EXPIRED"
   | "UNAUTHORIZED"
   | "UNSUPPORTED";
-export const GoogleCloudIntegrationsV1alphaAuthConfigStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaAuthConfigStateEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents JSON web token(JWT), which is a compact, URL-safe means of representing claims to be transferred between two parties, enabling the claims to be digitally signed or integrity protected. */
 export interface GoogleCloudIntegrationsV1alphaJwt {
@@ -291,7 +287,7 @@ export interface GoogleCloudIntegrationsV1alphaJwt {
   /** The token calculated by the header, payload and signature. */
   jwt?: string;
 }
-export const GoogleCloudIntegrationsV1alphaJwt = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaJwt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwtPayload: S.optional(S.String),
     jwtHeader: S.optional(S.String),
@@ -307,7 +303,7 @@ export type GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeEnum
   | "REQUEST_BODY"
   | "QUERY_PARAMETERS"
   | "ENCODED_HEADER";
-export const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaParameterMapValueTypeEnum =
   | "INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"
@@ -328,7 +324,7 @@ export type GoogleCloudIntegrationsV1alphaParameterMapValueTypeEnum =
   | "PROTO_ENUM_ARRAY"
   | "BYTES"
   | "BYTES_ARRAY";
-export const GoogleCloudIntegrationsV1alphaParameterMapValueTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaParameterMapValueTypeEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaParameterMapKeyTypeEnum =
   | "INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"
@@ -349,17 +345,17 @@ export type GoogleCloudIntegrationsV1alphaParameterMapKeyTypeEnum =
   | "PROTO_ENUM_ARRAY"
   | "BYTES"
   | "BYTES_ARRAY";
-export const GoogleCloudIntegrationsV1alphaParameterMapKeyTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaParameterMapKeyTypeEnum = S.String;
 
 export type BooleanList = Array<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
+const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
 
 /** This message only contains a field of boolean array. */
 export interface GoogleCloudIntegrationsV1alphaBooleanParameterArray {
   /** Boolean array. */
   booleanValues?: BooleanList;
 }
-export const GoogleCloudIntegrationsV1alphaBooleanParameterArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaBooleanParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     booleanValues: S.optional(BooleanList),
   }),
@@ -372,7 +368,7 @@ export interface GoogleCloudIntegrationsV1alphaStringParameterArray {
   /** String array. */
   stringValues?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaStringParameterArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaStringParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringValues: S.optional(StringList),
   }),
@@ -381,14 +377,14 @@ export const GoogleCloudIntegrationsV1alphaStringParameterArray = /*@__PURE__*/ 
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaStringParameterArray>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** This message only contains a field of double number array. */
 export interface GoogleCloudIntegrationsV1alphaDoubleParameterArray {
   /** Double number array. */
   doubleValues?: DoubleList;
 }
-export const GoogleCloudIntegrationsV1alphaDoubleParameterArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaDoubleParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleValues: S.optional(DoubleList),
   }),
@@ -401,7 +397,7 @@ export interface GoogleCloudIntegrationsV1alphaIntParameterArray {
   /** Integer array. */
   intValues?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaIntParameterArray = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaIntParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intValues: S.optional(StringList),
   }),
@@ -430,7 +426,7 @@ export interface GoogleCloudIntegrationsV1alphaValueType {
   /** Integer Array. */
   intArray?: GoogleCloudIntegrationsV1alphaIntParameterArray;
 }
-export const GoogleCloudIntegrationsV1alphaValueType = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaValueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     booleanValue: S.optional(S.Boolean),
     intValue: S.optional(S.String),
@@ -453,7 +449,7 @@ export interface GoogleCloudIntegrationsV1alphaParameterMapField {
   /** Passing a literal value. */
   literalValue?: GoogleCloudIntegrationsV1alphaValueType;
 }
-export const GoogleCloudIntegrationsV1alphaParameterMapField = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaParameterMapField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceKey: S.optional(S.String),
     literalValue: S.optional(GoogleCloudIntegrationsV1alphaValueType),
@@ -469,7 +465,7 @@ export interface GoogleCloudIntegrationsV1alphaParameterMapEntry {
   /** Key of the map entry. */
   key?: GoogleCloudIntegrationsV1alphaParameterMapField;
 }
-export const GoogleCloudIntegrationsV1alphaParameterMapEntry = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaParameterMapEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GoogleCloudIntegrationsV1alphaParameterMapField),
     key: S.optional(GoogleCloudIntegrationsV1alphaParameterMapField),
@@ -480,7 +476,7 @@ export const GoogleCloudIntegrationsV1alphaParameterMapEntry = /*@__PURE__*/ S.s
 
 export type GoogleCloudIntegrationsV1alphaParameterMapEntryList =
   Array<GoogleCloudIntegrationsV1alphaParameterMapEntry>;
-export const GoogleCloudIntegrationsV1alphaParameterMapEntryList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaParameterMapEntryList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaParameterMapEntry,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaParameterMapEntryList>;
 
@@ -493,7 +489,7 @@ export interface GoogleCloudIntegrationsV1alphaParameterMap {
   /** A list of parameter map entries. */
   entries?: GoogleCloudIntegrationsV1alphaParameterMapEntryList;
 }
-export const GoogleCloudIntegrationsV1alphaParameterMap = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaParameterMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueType: S.optional(GoogleCloudIntegrationsV1alphaParameterMapValueTypeEnum),
     keyType: S.optional(GoogleCloudIntegrationsV1alphaParameterMapKeyTypeEnum),
@@ -516,7 +512,7 @@ export interface GoogleCloudIntegrationsV1alphaAccessToken {
   /** Required. The approximate time until the access token retrieved is valid. */
   accessTokenExpireTime?: string;
 }
-export const GoogleCloudIntegrationsV1alphaAccessToken = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaAccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenType: S.optional(S.String),
     refreshToken: S.optional(S.String),
@@ -547,7 +543,7 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials {
   /** A space-delimited list of requested scope permissions. */
   scope?: string;
 }
-export const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientSecret: S.optional(S.String),
     requestType: S.optional(GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeEnum),
@@ -568,7 +564,7 @@ export interface GoogleCloudIntegrationsV1alphaServiceAccountCredentials {
   /** A space-delimited list of requested scope permissions. */
   scope?: string;
 }
-export const GoogleCloudIntegrationsV1alphaServiceAccountCredentials = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaServiceAccountCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccount: S.optional(S.String),
     scope: S.optional(S.String),
@@ -584,7 +580,7 @@ export interface GoogleCloudIntegrationsV1alphaUsernameAndPassword {
   /** Password to be used */
   password?: string;
 }
-export const GoogleCloudIntegrationsV1alphaUsernameAndPassword = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaUsernameAndPassword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(S.String),
@@ -600,7 +596,7 @@ export interface GoogleCloudIntegrationsV1alphaAuthToken {
   /** The token for the auth type. */
   token?: string;
 }
-export const GoogleCloudIntegrationsV1alphaAuthToken = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaAuthToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     token: S.optional(S.String),
@@ -614,7 +610,7 @@ export type GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeEnum
   | "REQUEST_BODY"
   | "QUERY_PARAMETERS"
   | "ENCODED_HEADER";
-export const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeEnum = S.String;
 
 /** The OAuth Type where the client sends request with the client id and requested scopes to auth endpoint. User sees a consent screen and auth code is received at specified redirect url afterwards. The auth code is then combined with the client id and secret and sent to the token endpoint in exchange for the access and refresh token. The refresh token can be used to fetch new access tokens. */
 export interface GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
@@ -643,7 +639,7 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
     | GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeEnum
     | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenParams: S.optional(GoogleCloudIntegrationsV1alphaParameterMap),
     accessToken: S.optional(GoogleCloudIntegrationsV1alphaAccessToken),
@@ -672,7 +668,7 @@ export interface GoogleCloudIntegrationsV1alphaOidcToken {
   /** The service account email to be used as the identity for the token. */
   serviceAccountEmail?: string;
 }
-export const GoogleCloudIntegrationsV1alphaOidcToken = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaOidcToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience: S.optional(S.String),
     tokenExpireTime: S.optional(S.String),
@@ -688,7 +684,7 @@ export type GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestT
   | "REQUEST_BODY"
   | "QUERY_PARAMETERS"
   | "ENCODED_HEADER";
-export const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeEnum = S.String;
 
 /** For resource owner credentials grant, the client will ask the user for their authorization credentials (ususally a username and password) and send a POST request to the authorization server. The authorization server will respond with a JSON object containing the access token. */
 export interface GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
@@ -713,21 +709,20 @@ export interface GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
   /** The user's username. */
   username?: string;
 }
-export const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tokenEndpoint: S.optional(S.String),
-      clientSecret: S.optional(S.String),
-      scope: S.optional(S.String),
-      requestType: S.optional(
-        GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeEnum,
-      ),
-      clientId: S.optional(S.String),
-      password: S.optional(S.String),
-      accessToken: S.optional(GoogleCloudIntegrationsV1alphaAccessToken),
-      tokenParams: S.optional(GoogleCloudIntegrationsV1alphaParameterMap),
-      username: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tokenEndpoint: S.optional(S.String),
+    clientSecret: S.optional(S.String),
+    scope: S.optional(S.String),
+    requestType: S.optional(
+      GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeEnum,
+    ),
+    clientId: S.optional(S.String),
+    password: S.optional(S.String),
+    accessToken: S.optional(GoogleCloudIntegrationsV1alphaAccessToken),
+    tokenParams: S.optional(GoogleCloudIntegrationsV1alphaParameterMap),
+    username: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials>;
@@ -745,7 +740,7 @@ export type GoogleCloudIntegrationsV1alphaCredentialCredentialTypeEnum =
   | "SERVICE_ACCOUNT"
   | "CLIENT_CERTIFICATE_ONLY"
   | "OIDC_TOKEN";
-export const GoogleCloudIntegrationsV1alphaCredentialCredentialTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaCredentialCredentialTypeEnum = S.String;
 
 /** Defines parameters for a single, canonical credential. */
 export interface GoogleCloudIntegrationsV1alphaCredential {
@@ -768,7 +763,7 @@ export interface GoogleCloudIntegrationsV1alphaCredential {
   /** Credential type associated with auth config. */
   credentialType?: GoogleCloudIntegrationsV1alphaCredentialCredentialTypeEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaCredential = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwt: S.optional(GoogleCloudIntegrationsV1alphaJwt),
     oauth2ClientCredentials: S.optional(GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials),
@@ -790,7 +785,7 @@ export type GoogleCloudIntegrationsV1alphaAuthConfigVisibilityEnum =
   | "AUTH_CONFIG_VISIBILITY_UNSPECIFIED"
   | "PRIVATE"
   | "CLIENT_VISIBLE";
-export const GoogleCloudIntegrationsV1alphaAuthConfigVisibilityEnum = S.String;
+const GoogleCloudIntegrationsV1alphaAuthConfigVisibilityEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaAuthConfigCredentialTypeEnum =
   | "CREDENTIAL_TYPE_UNSPECIFIED"
@@ -805,7 +800,7 @@ export type GoogleCloudIntegrationsV1alphaAuthConfigCredentialTypeEnum =
   | "SERVICE_ACCOUNT"
   | "CLIENT_CERTIFICATE_ONLY"
   | "OIDC_TOKEN";
-export const GoogleCloudIntegrationsV1alphaAuthConfigCredentialTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaAuthConfigCredentialTypeEnum = S.String;
 
 /** The AuthConfig resource use to hold channels and connection config data. */
 export interface GoogleCloudIntegrationsV1alphaAuthConfig {
@@ -844,7 +839,7 @@ export interface GoogleCloudIntegrationsV1alphaAuthConfig {
   /** Required. The name of the auth config. */
   displayName?: string;
 }
-export const GoogleCloudIntegrationsV1alphaAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudIntegrationsV1alphaAuthConfigStateEnum),
     createTime: S.optional(S.String),
@@ -880,7 +875,7 @@ export interface CreateProjectsLocationsAuthConfigsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaAuthConfig;
 }
-export const CreateProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "clientCertificate.sslCertificate": S.optional(S.String.pipe(T.Query())),
     "clientCertificate.passphrase": S.optional(S.String.pipe(T.Query())),
@@ -907,7 +902,7 @@ export interface GoogleCloudIntegrationsV1alphaClientCertificate {
   /** 'passphrase' should be left unset if private key is not encrypted. Note that 'passphrase' is not the password for web server, but an extra layer of security to protected private key. */
   passphrase?: string;
 }
-export const GoogleCloudIntegrationsV1alphaClientCertificate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaClientCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptedPrivateKey: S.optional(S.String),
     sslCertificate: S.optional(S.String),
@@ -921,7 +916,7 @@ export type GoogleCloudIntegrationsV1alphaCertificateCertificateStatusEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "EXPIRED";
-export const GoogleCloudIntegrationsV1alphaCertificateCertificateStatusEnum = S.String;
+const GoogleCloudIntegrationsV1alphaCertificateCertificateStatusEnum = S.String;
 
 /** The certificate definition */
 export interface GoogleCloudIntegrationsV1alphaCertificate {
@@ -946,7 +941,7 @@ export interface GoogleCloudIntegrationsV1alphaCertificate {
   /** Immutable. Credential id that will be used to register with trawler */
   credentialId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaCertificate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -968,7 +963,7 @@ export interface CreateProjectsLocationsCertificatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaCertificate;
 }
-export const CreateProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaCertificate.pipe(T.HttpBody())),
@@ -987,7 +982,7 @@ export type GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequestGcfApiVersio
   | "GCF_API_VERSION_UNSPECIFIED"
   | "API_VERSION_V1"
   | "API_VERSION_V2";
-export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequestGcfApiVersionEnum = S.String;
+const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequestGcfApiVersionEnum = S.String;
 
 /** Request for Creating Cloud Function rpc call. */
 export interface GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest {
@@ -1002,16 +997,15 @@ export interface GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest {
   /** The function region of CF to be created */
   functionRegion?: string;
 }
-export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      functionName: S.optional(S.String),
-      projectId: S.optional(S.String),
-      gcfApiVersion: S.optional(
-        GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequestGcfApiVersionEnum,
-      ),
-      functionRegion: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    functionName: S.optional(S.String),
+    projectId: S.optional(S.String),
+    gcfApiVersion: S.optional(
+      GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequestGcfApiVersionEnum,
+    ),
+    functionRegion: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest>;
@@ -1022,7 +1016,7 @@ export interface CreateProjectsLocationsCloudFunctionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest;
 }
-export const CreateProjectsLocationsCloudFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCloudFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest.pipe(T.HttpBody())),
@@ -1042,11 +1036,10 @@ export interface GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse {
   /** The trigger url that will be returned */
   triggerUrl?: string;
 }
-export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      triggerUrl: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    triggerUrl: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse>;
@@ -1064,7 +1057,7 @@ export interface GoogleCloudIntegrationsV1alphaNextTask {
   /** User-provided description intended to give additional business context about the task. */
   description?: string;
 }
-export const GoogleCloudIntegrationsV1alphaNextTask = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaNextTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1078,7 +1071,7 @@ export const GoogleCloudIntegrationsV1alphaNextTask = /*@__PURE__*/ S.suspend(()
 
 export type GoogleCloudIntegrationsV1alphaNextTaskList =
   Array<GoogleCloudIntegrationsV1alphaNextTask>;
-export const GoogleCloudIntegrationsV1alphaNextTaskList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaNextTaskList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaNextTask,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaNextTaskList>;
 
@@ -1089,7 +1082,7 @@ export interface GoogleCloudIntegrationsV1alphaCoordinate {
   /** Required. Y axis of the coordinate */
   y?: number;
 }
-export const GoogleCloudIntegrationsV1alphaCoordinate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCoordinate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.optional(S.Number),
     y: S.optional(S.Number),
@@ -1113,7 +1106,7 @@ export interface GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
   /** Required. A number to uniquely identify each error catcher config within the workflow on UI. */
   errorCatcherNumber?: string;
 }
-export const GoogleCloudIntegrationsV1alphaErrorCatcherConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaErrorCatcherConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     startErrorTasks: S.optional(GoogleCloudIntegrationsV1alphaNextTaskList),
@@ -1128,7 +1121,7 @@ export const GoogleCloudIntegrationsV1alphaErrorCatcherConfig = /*@__PURE__*/ S.
 
 export type GoogleCloudIntegrationsV1alphaErrorCatcherConfigList =
   Array<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>;
-export const GoogleCloudIntegrationsV1alphaErrorCatcherConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaErrorCatcherConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaErrorCatcherConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaErrorCatcherConfigList>;
 
@@ -1136,30 +1129,24 @@ export type GoogleCloudIntegrationsV1alphaIntegrationVersionDatabasePersistenceP
   | "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"
   | "DATABASE_PERSISTENCE_DISABLED"
   | "DATABASE_PERSISTENCE_ASYNC";
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionDatabasePersistencePolicyEnum =
-  S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationVersionDatabasePersistencePolicyEnum = S.String;
 
 export interface EnterpriseCrmEventbusProtoBooleanParameterArray {
   booleanValues?: BooleanList;
 }
-export const EnterpriseCrmEventbusProtoBooleanParameterArray =
+const EnterpriseCrmEventbusProtoBooleanParameterArray =
   GoogleCloudIntegrationsV1alphaBooleanParameterArray as any as S.Schema<EnterpriseCrmEventbusProtoBooleanParameterArray>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 export interface EnterpriseCrmEventbusProtoProtoParameterArray {
   protoValues?: DocumentMapList;
 }
-export const EnterpriseCrmEventbusProtoProtoParameterArray = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoProtoParameterArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protoValues: S.optional(DocumentMapList),
   }),
@@ -1170,25 +1157,25 @@ export const EnterpriseCrmEventbusProtoProtoParameterArray = /*@__PURE__*/ S.sus
 export interface EnterpriseCrmEventbusProtoDoubleParameterArray {
   doubleValues?: DoubleList;
 }
-export const EnterpriseCrmEventbusProtoDoubleParameterArray =
+const EnterpriseCrmEventbusProtoDoubleParameterArray =
   GoogleCloudIntegrationsV1alphaDoubleParameterArray as any as S.Schema<EnterpriseCrmEventbusProtoDoubleParameterArray>;
 
 export interface EnterpriseCrmEventbusProtoStringParameterArray {
   stringValues?: StringList;
 }
-export const EnterpriseCrmEventbusProtoStringParameterArray =
+const EnterpriseCrmEventbusProtoStringParameterArray =
   GoogleCloudIntegrationsV1alphaStringParameterArray as any as S.Schema<EnterpriseCrmEventbusProtoStringParameterArray>;
 
 export interface EnterpriseCrmEventbusProtoIntParameterArray {
   intValues?: StringList;
 }
-export const EnterpriseCrmEventbusProtoIntParameterArray =
+const EnterpriseCrmEventbusProtoIntParameterArray =
   GoogleCloudIntegrationsV1alphaIntParameterArray as any as S.Schema<EnterpriseCrmEventbusProtoIntParameterArray>;
 
 export interface EnterpriseCrmEventbusProtoSerializedObjectParameter {
   objectValue?: string;
 }
-export const EnterpriseCrmEventbusProtoSerializedObjectParameter = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoSerializedObjectParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectValue: S.optional(S.String),
   }),
@@ -1210,7 +1197,7 @@ export interface EnterpriseCrmEventbusProtoParameterValueType {
   protoValue?: DocumentMap;
   doubleValue?: number;
 }
-export const EnterpriseCrmEventbusProtoParameterValueType = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoParameterValueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     booleanArray: S.optional(EnterpriseCrmEventbusProtoBooleanParameterArray),
     protoArray: S.optional(EnterpriseCrmEventbusProtoProtoParameterArray),
@@ -1237,7 +1224,7 @@ export interface EnterpriseCrmEventbusProtoParameterEntry {
   /** Values for the defined keys. Each value can either be string, int, double or any proto message. */
   value?: EnterpriseCrmEventbusProtoParameterValueType;
 }
-export const EnterpriseCrmEventbusProtoParameterEntry = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoParameterEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     masked: S.optional(S.Boolean),
     key: S.optional(S.String),
@@ -1249,7 +1236,7 @@ export const EnterpriseCrmEventbusProtoParameterEntry = /*@__PURE__*/ S.suspend(
 
 export type EnterpriseCrmEventbusProtoParameterEntryList =
   Array<EnterpriseCrmEventbusProtoParameterEntry>;
-export const EnterpriseCrmEventbusProtoParameterEntryList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoParameterEntryList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoParameterEntry,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoParameterEntryList>;
 
@@ -1258,7 +1245,7 @@ export interface EnterpriseCrmEventbusProtoEventParameters {
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
   parameters?: EnterpriseCrmEventbusProtoParameterEntryList;
 }
-export const EnterpriseCrmEventbusProtoEventParameters = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoEventParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(EnterpriseCrmEventbusProtoParameterEntryList),
   }),
@@ -1269,7 +1256,7 @@ export const EnterpriseCrmEventbusProtoEventParameters = /*@__PURE__*/ S.suspend
 export interface EnterpriseCrmEventbusProtoStringArray {
   values?: StringList;
 }
-export const EnterpriseCrmEventbusProtoStringArray = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoStringArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
   }),
@@ -1278,12 +1265,10 @@ export const EnterpriseCrmEventbusProtoStringArray = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<EnterpriseCrmEventbusProtoStringArray>;
 
 export type EnterpriseCrmEventbusProtoIntArray = EnterpriseCrmEventbusProtoStringArray;
-export const EnterpriseCrmEventbusProtoIntArray = EnterpriseCrmEventbusProtoStringArray;
-
 export interface EnterpriseCrmEventbusProtoDoubleArray {
   values?: DoubleList;
 }
-export const EnterpriseCrmEventbusProtoDoubleArray = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoDoubleArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(DoubleList),
   }),
@@ -1302,7 +1287,7 @@ export interface EnterpriseCrmEventbusProtoValueType {
   doubleArray?: EnterpriseCrmEventbusProtoDoubleArray;
   booleanValue?: boolean;
 }
-export const EnterpriseCrmEventbusProtoValueType = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoValueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringArray: S.optional(EnterpriseCrmEventbusProtoStringArray),
     protoValue: S.optional(DocumentMap),
@@ -1324,7 +1309,7 @@ export interface EnterpriseCrmEventbusProtoPropertyEntry {
   /** Values for the defined keys. Each value can either be string, int, double or any proto message. */
   value?: EnterpriseCrmEventbusProtoValueType;
 }
-export const EnterpriseCrmEventbusProtoPropertyEntry = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoPropertyEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(EnterpriseCrmEventbusProtoValueType),
@@ -1335,7 +1320,7 @@ export const EnterpriseCrmEventbusProtoPropertyEntry = /*@__PURE__*/ S.suspend((
 
 export type EnterpriseCrmEventbusProtoPropertyEntryList =
   Array<EnterpriseCrmEventbusProtoPropertyEntry>;
-export const EnterpriseCrmEventbusProtoPropertyEntryList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoPropertyEntryList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoPropertyEntry,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoPropertyEntryList>;
 
@@ -1344,7 +1329,7 @@ export interface EnterpriseCrmEventbusProtoEventBusProperties {
   /** An unordered list of property entries. */
   properties?: EnterpriseCrmEventbusProtoPropertyEntryList;
 }
-export const EnterpriseCrmEventbusProtoEventBusProperties = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoEventBusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(EnterpriseCrmEventbusProtoPropertyEntryList),
   }),
@@ -1357,7 +1342,7 @@ export interface EnterpriseCrmEventbusProtoNextTeardownTask {
   /** Required. Name of the next teardown task. */
   name?: string;
 }
-export const EnterpriseCrmEventbusProtoNextTeardownTask = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoNextTeardownTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -1377,7 +1362,7 @@ export interface EnterpriseCrmEventbusProtoTeardownTaskConfig {
   properties?: EnterpriseCrmEventbusProtoEventBusProperties;
   nextTeardownTask?: EnterpriseCrmEventbusProtoNextTeardownTask;
 }
-export const EnterpriseCrmEventbusProtoTeardownTaskConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTeardownTaskConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creatorEmail: S.optional(S.String),
     name: S.optional(S.String),
@@ -1392,7 +1377,7 @@ export const EnterpriseCrmEventbusProtoTeardownTaskConfig = /*@__PURE__*/ S.susp
 
 export type EnterpriseCrmEventbusProtoTeardownTaskConfigList =
   Array<EnterpriseCrmEventbusProtoTeardownTaskConfig>;
-export const EnterpriseCrmEventbusProtoTeardownTaskConfigList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoTeardownTaskConfigList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoTeardownTaskConfig,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoTeardownTaskConfigList>;
 
@@ -1400,7 +1385,7 @@ export interface EnterpriseCrmEventbusProtoTeardown {
   /** Required. */
   teardownTaskConfigs?: EnterpriseCrmEventbusProtoTeardownTaskConfigList;
 }
-export const EnterpriseCrmEventbusProtoTeardown = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTeardown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teardownTaskConfigs: S.optional(EnterpriseCrmEventbusProtoTeardownTaskConfigList),
   }),
@@ -1413,7 +1398,7 @@ export type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverit
   | "INFO"
   | "ERROR"
   | "WARNING";
-export const GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityEnum = S.String;
+const GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityEnum = S.String;
 
 /** Cloud Logging details for execution info */
 export interface GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
@@ -1424,7 +1409,7 @@ export interface GoogleCloudIntegrationsV1alphaCloudLoggingDetails {
     | GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityEnum
     | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaCloudLoggingDetails = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCloudLoggingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableCloudLogging: S.optional(S.Boolean),
     cloudLoggingSeverity: S.optional(
@@ -1441,14 +1426,14 @@ export type GoogleCloudIntegrationsV1alphaIntegrationVersionStatusEnum =
   | "ACTIVE"
   | "ARCHIVED"
   | "SNAPSHOT";
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionStatusEnum = S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationVersionStatusEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeEnum =
   | "IN_OUT_TYPE_UNSPECIFIED"
   | "IN"
   | "OUT"
   | "IN_OUT";
-export const GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeEnum =
   | "INTEGRATION_PARAMETER_DATA_TYPE_UNSPECIFIED"
@@ -1469,7 +1454,7 @@ export type GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeEnum =
   | "PROTO_ENUM_ARRAY"
   | "BYTES"
   | "BYTES_ARRAY";
-export const GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeEnum = S.String;
 
 /** Integration Parameter is defined in the integration config and are used to provide information about data types of the expected parameters and provide any default values if needed. They can also be used to add custom attributes. These are static in nature and should not be used for dynamic event definition. */
 export interface GoogleCloudIntegrationsV1alphaIntegrationParameter {
@@ -1500,7 +1485,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationParameter {
   /** Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object. */
   defaultValue?: GoogleCloudIntegrationsV1alphaValueType;
 }
-export const GoogleCloudIntegrationsV1alphaIntegrationParameter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaIntegrationParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     producer: S.optional(S.String),
     searchable: S.optional(S.Boolean),
@@ -1528,25 +1513,24 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationConfigParameter {
   /** Optional. Integration Parameter to provide the default value, data type and attributes required for the Integration config variables. */
   parameter?: GoogleCloudIntegrationsV1alphaIntegrationParameter;
 }
-export const GoogleCloudIntegrationsV1alphaIntegrationConfigParameter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(GoogleCloudIntegrationsV1alphaValueType),
-      parameter: S.optional(GoogleCloudIntegrationsV1alphaIntegrationParameter),
-    }),
+const GoogleCloudIntegrationsV1alphaIntegrationConfigParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(GoogleCloudIntegrationsV1alphaValueType),
+    parameter: S.optional(GoogleCloudIntegrationsV1alphaIntegrationParameter),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaIntegrationConfigParameter",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationConfigParameterList =
   Array<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter>;
-export const GoogleCloudIntegrationsV1alphaIntegrationConfigParameterList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaIntegrationConfigParameterList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaIntegrationConfigParameter,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationConfigParameterList>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationParameterList =
   Array<GoogleCloudIntegrationsV1alphaIntegrationParameter>;
-export const GoogleCloudIntegrationsV1alphaIntegrationParameterList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaIntegrationParameterList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaIntegrationParameter,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationParameterList>;
 
@@ -1555,11 +1539,10 @@ export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables {
   /** Optional. List of variable names. */
   names?: StringList;
 }
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      names: S.optional(StringList),
-    }),
+const EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    names: S.optional(StringList),
+  }),
 ).annotate({
   identifier: "EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables",
 }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables>;
@@ -1568,8 +1551,7 @@ export type EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPo
   | "UNSPECIFIED"
   | "RUN_ALL_MATCH"
   | "RUN_FIRST_MATCH";
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyEnum =
-  S.String;
+const EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyEnum = S.String;
 
 export interface EnterpriseCrmEventbusProtoTriggerCriteria {
   /** Optional. To be used in TaskConfig for the implementation class. */
@@ -1579,7 +1561,7 @@ export interface EnterpriseCrmEventbusProtoTriggerCriteria {
   /** Optional. Implementation class name. The class should implement the "TypedTask" interface. */
   triggerCriteriaTaskImplementationClassName?: string;
 }
-export const EnterpriseCrmEventbusProtoTriggerCriteria = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTriggerCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(EnterpriseCrmEventbusProtoEventParameters),
     condition: S.optional(S.String),
@@ -1594,7 +1576,7 @@ export interface EnterpriseCrmEventbusProtoCoordinate {
   x?: number;
   y?: number;
 }
-export const EnterpriseCrmEventbusProtoCoordinate =
+const EnterpriseCrmEventbusProtoCoordinate =
   GoogleCloudIntegrationsV1alphaCoordinate as any as S.Schema<EnterpriseCrmEventbusProtoCoordinate>;
 
 export type EnterpriseCrmEventbusProtoConditionOperatorEnum =
@@ -1607,7 +1589,7 @@ export type EnterpriseCrmEventbusProtoConditionOperatorEnum =
   | "DOES_NOT_EXIST"
   | "IS_EMPTY"
   | "IS_NOT_EMPTY";
-export const EnterpriseCrmEventbusProtoConditionOperatorEnum = S.String;
+const EnterpriseCrmEventbusProtoConditionOperatorEnum = S.String;
 
 /** Condition that uses `operator` to evaluate the key against the value. */
 export interface EnterpriseCrmEventbusProtoCondition {
@@ -1618,7 +1600,7 @@ export interface EnterpriseCrmEventbusProtoCondition {
   /** Value that's checked for the key. */
   value?: EnterpriseCrmEventbusProtoValueType;
 }
-export const EnterpriseCrmEventbusProtoCondition = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventPropertyKey: S.optional(S.String),
     operator: S.optional(EnterpriseCrmEventbusProtoConditionOperatorEnum),
@@ -1629,7 +1611,7 @@ export const EnterpriseCrmEventbusProtoCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterpriseCrmEventbusProtoCondition>;
 
 export type EnterpriseCrmEventbusProtoConditionList = Array<EnterpriseCrmEventbusProtoCondition>;
-export const EnterpriseCrmEventbusProtoConditionList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoConditionList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoCondition,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoConditionList>;
 
@@ -1638,7 +1620,7 @@ export interface EnterpriseCrmEventbusProtoCombinedCondition {
   /** A set of individual constituent conditions. */
   conditions?: EnterpriseCrmEventbusProtoConditionList;
 }
-export const EnterpriseCrmEventbusProtoCombinedCondition = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoCombinedCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(EnterpriseCrmEventbusProtoConditionList),
   }),
@@ -1648,7 +1630,7 @@ export const EnterpriseCrmEventbusProtoCombinedCondition = /*@__PURE__*/ S.suspe
 
 export type EnterpriseCrmEventbusProtoCombinedConditionList =
   Array<EnterpriseCrmEventbusProtoCombinedCondition>;
-export const EnterpriseCrmEventbusProtoCombinedConditionList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoCombinedConditionList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoCombinedCondition,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoCombinedConditionList>;
 
@@ -1667,7 +1649,7 @@ export interface EnterpriseCrmEventbusProtoNextTask {
   /** User-provided description intended to give more business context about the next task edge or condition. */
   description?: string;
 }
-export const EnterpriseCrmEventbusProtoNextTask = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoNextTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskNumber: S.optional(S.String),
     condition: S.optional(S.String),
@@ -1681,21 +1663,21 @@ export const EnterpriseCrmEventbusProtoNextTask = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterpriseCrmEventbusProtoNextTask>;
 
 export type EnterpriseCrmEventbusProtoNextTaskList = Array<EnterpriseCrmEventbusProtoNextTask>;
-export const EnterpriseCrmEventbusProtoNextTaskList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoNextTaskList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoNextTask,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoNextTaskList>;
 
 export type EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeEnum =
   | "DEFAULT_INCLUSIVE"
   | "EXCLUSIVE";
-export const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeEnum = S.String;
+const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeEnum = S.String;
 
 /** List of error enums for alerts. */
 export interface EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
   filterType?: EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeEnum | (string & {});
   enumStrings?: StringList;
 }
-export const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterType: S.optional(EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeEnum),
     enumStrings: S.optional(StringList),
@@ -1716,14 +1698,14 @@ export type EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEnum =
   | "EVENT_PERCENTILE_DURATION"
   | "TASK_AVERAGE_DURATION"
   | "TASK_PERCENTILE_DURATION";
-export const EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEnum = S.String;
+const EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEnum = S.String;
 
 /** The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. */
 export interface EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue {
   percentage?: number;
   absolute?: string;
 }
-export const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentage: S.optional(S.Number),
     absolute: S.optional(S.String),
@@ -1736,7 +1718,7 @@ export type EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeEnum =
   | "UNSPECIFIED_THRESHOLD_TYPE"
   | "EXPECTED_MIN"
   | "EXPECTED_MAX";
-export const EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeEnum = S.String;
+const EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeEnum = S.String;
 
 /** Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. */
 export interface EnterpriseCrmEventbusProtoWorkflowAlertConfig {
@@ -1764,7 +1746,7 @@ export interface EnterpriseCrmEventbusProtoWorkflowAlertConfig {
   /** For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours. */
   aggregationPeriod?: string;
 }
-export const EnterpriseCrmEventbusProtoWorkflowAlertConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoWorkflowAlertConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onlyFinalAttempt: S.optional(S.Boolean),
     errorEnumList: S.optional(EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList),
@@ -1786,12 +1768,12 @@ export const EnterpriseCrmEventbusProtoWorkflowAlertConfig = /*@__PURE__*/ S.sus
 
 export type EnterpriseCrmEventbusProtoWorkflowAlertConfigList =
   Array<EnterpriseCrmEventbusProtoWorkflowAlertConfig>;
-export const EnterpriseCrmEventbusProtoWorkflowAlertConfigList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoWorkflowAlertConfigList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoWorkflowAlertConfig,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoWorkflowAlertConfigList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeEnum =
   | "UNKNOWN"
@@ -1810,7 +1792,7 @@ export type EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeEnum =
   | "INTEGRATION_CONNECTOR_TRIGGER"
   | "PRIVATE_TRIGGER"
   | "EVENTARC_TRIGGER";
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeEnum = S.String;
 
 /** Cloud Scheduler Trigger configuration */
 export interface EnterpriseCrmEventbusProtoCloudSchedulerConfig {
@@ -1823,7 +1805,7 @@ export interface EnterpriseCrmEventbusProtoCloudSchedulerConfig {
   /** Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations */
   errorMessage?: string;
 }
-export const EnterpriseCrmEventbusProtoCloudSchedulerConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoCloudSchedulerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     serviceAccountEmail: S.optional(S.String),
@@ -1873,7 +1855,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
   /** Required. The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client. */
   enabledClients?: StringList;
 }
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoTriggerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputVariables: S.optional(EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables),
     triggerName: S.optional(S.String),
@@ -1902,7 +1884,7 @@ export const EnterpriseCrmFrontendsEventbusProtoTriggerConfig = /*@__PURE__*/ S.
 
 export type EnterpriseCrmFrontendsEventbusProtoTriggerConfigList =
   Array<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>;
-export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmFrontendsEventbusProtoTriggerConfigList = /*@__PURE__*/ S.Array(
   EnterpriseCrmFrontendsEventbusProtoTriggerConfig,
 ) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfigList>;
 
@@ -1915,7 +1897,7 @@ export type GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyEnum =
   | "LINEAR_BACKOFF"
   | "EXPONENTIAL_BACKOFF"
   | "RESTART_INTEGRATION_WITH_BACKOFF";
-export const GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyEnum = S.String;
+const GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyEnum = S.String;
 
 /** Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied). */
 export interface GoogleCloudIntegrationsV1alphaFailurePolicy {
@@ -1928,7 +1910,7 @@ export interface GoogleCloudIntegrationsV1alphaFailurePolicy {
   /** Defines what happens to the task upon failure. */
   retryStrategy?: GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaFailurePolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaFailurePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intervalTime: S.optional(S.String),
     condition: S.optional(S.String),
@@ -1943,14 +1925,14 @@ export type GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum =
   | "FINAL_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "SUSPENDED";
-export const GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum = S.String;
 
 /** Policy that dictates the behavior for the task after it completes successfully. */
 export interface GoogleCloudIntegrationsV1alphaSuccessPolicy {
   /** State to which the execution snapshot status will be set if the task succeeds. */
   finalState?: GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaSuccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaSuccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     finalState: S.optional(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum),
   }),
@@ -1967,7 +1949,7 @@ export interface GoogleCloudIntegrationsV1alphaEventParameter {
   /** True if this parameter should be masked in the logs */
   masked?: boolean;
 }
-export const GoogleCloudIntegrationsV1alphaEventParameter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaEventParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(GoogleCloudIntegrationsV1alphaValueType),
@@ -1980,7 +1962,7 @@ export const GoogleCloudIntegrationsV1alphaEventParameter = /*@__PURE__*/ S.susp
 export type GoogleCloudIntegrationsV1alphaEventParameterMap = {
   [key: string]: GoogleCloudIntegrationsV1alphaEventParameter | undefined;
 };
-export const GoogleCloudIntegrationsV1alphaEventParameterMap = /*@__PURE__*/ S.Record(
+const GoogleCloudIntegrationsV1alphaEventParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudIntegrationsV1alphaEventParameter,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaEventParameterMap>;
@@ -1989,11 +1971,11 @@ export type GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyEnum
   | "NEXT_TASKS_EXECUTION_POLICY_UNSPECIFIED"
   | "RUN_ALL_MATCH"
   | "RUN_FIRST_MATCH";
-export const GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaFailurePolicyList =
   Array<GoogleCloudIntegrationsV1alphaFailurePolicy>;
-export const GoogleCloudIntegrationsV1alphaFailurePolicyList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaFailurePolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaFailurePolicy,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaFailurePolicyList>;
 
@@ -2004,12 +1986,11 @@ export interface GoogleCloudIntegrationsV1alphaConditionalFailurePolicies {
   /** The list of failure policies that will be applied to the task in order. */
   failurePolicies?: GoogleCloudIntegrationsV1alphaFailurePolicyList;
 }
-export const GoogleCloudIntegrationsV1alphaConditionalFailurePolicies = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      defaultFailurePolicy: S.optional(GoogleCloudIntegrationsV1alphaFailurePolicy),
-      failurePolicies: S.optional(GoogleCloudIntegrationsV1alphaFailurePolicyList),
-    }),
+const GoogleCloudIntegrationsV1alphaConditionalFailurePolicies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultFailurePolicy: S.optional(GoogleCloudIntegrationsV1alphaFailurePolicy),
+    failurePolicies: S.optional(GoogleCloudIntegrationsV1alphaFailurePolicyList),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaConditionalFailurePolicies",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaConditionalFailurePolicies>;
@@ -2020,20 +2001,20 @@ export type GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionEnum =
   | "PRE_EXECUTION"
   | "POST_EXECUTION"
   | "PRE_POST_EXECUTION";
-export const GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyEnum =
   | "TASK_EXECUTION_STRATEGY_UNSPECIFIED"
   | "WHEN_ALL_SUCCEED"
   | "WHEN_ANY_SUCCEED"
   | "WHEN_ALL_TASKS_AND_CONDITIONS_SUCCEED";
-export const GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeEnum =
   | "EXTERNAL_TASK_TYPE_UNSPECIFIED"
   | "NORMAL_TASK"
   | "ERROR_TASK";
-export const GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeEnum = S.String;
 
 /** The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. */
 export interface GoogleCloudIntegrationsV1alphaTaskConfig {
@@ -2078,7 +2059,7 @@ export interface GoogleCloudIntegrationsV1alphaTaskConfig {
   /** Optional. External task type of the task */
   externalTaskType?: GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaTaskConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTaskConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     position: S.optional(GoogleCloudIntegrationsV1alphaCoordinate),
     displayName: S.optional(S.String),
@@ -2112,7 +2093,7 @@ export const GoogleCloudIntegrationsV1alphaTaskConfig = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudIntegrationsV1alphaTaskConfigList =
   Array<GoogleCloudIntegrationsV1alphaTaskConfig>;
-export const GoogleCloudIntegrationsV1alphaTaskConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaTaskConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTaskConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTaskConfigList>;
 
@@ -2122,7 +2103,7 @@ export type GoogleCloudIntegrationsV1alphaIntegrationVersionStateEnum =
   | "ACTIVE"
   | "ARCHIVED"
   | "SNAPSHOT";
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationVersionStateEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeEnum =
   | "METRIC_TYPE_UNSPECIFIED"
@@ -2131,13 +2112,13 @@ export type EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeEnum =
   | "TASK_RATE"
   | "TASK_AVERAGE_DURATION"
   | "TASK_PERCENTILE_DURATION";
-export const EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeEnum =
   | "UNSPECIFIED_THRESHOLD_TYPE"
   | "EXPECTED_MIN"
   | "EXPECTED_MAX";
-export const EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeEnum = S.String;
 
 /** Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. */
 export interface EnterpriseCrmEventbusProtoTaskAlertConfig {
@@ -2165,7 +2146,7 @@ export interface EnterpriseCrmEventbusProtoTaskAlertConfig {
   /** The threshold type for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired. */
   thresholdType?: EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeEnum | (string & {});
 }
-export const EnterpriseCrmEventbusProtoTaskAlertConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTaskAlertConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregationPeriod: S.optional(S.String),
     alertDisabled: S.optional(S.Boolean),
@@ -2187,7 +2168,7 @@ export const EnterpriseCrmEventbusProtoTaskAlertConfig = /*@__PURE__*/ S.suspend
 
 export type EnterpriseCrmEventbusProtoTaskAlertConfigList =
   Array<EnterpriseCrmEventbusProtoTaskAlertConfig>;
-export const EnterpriseCrmEventbusProtoTaskAlertConfigList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoTaskAlertConfigList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoTaskAlertConfig,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoTaskAlertConfigList>;
 
@@ -2197,7 +2178,7 @@ export type EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionEnu
   | "PRE_EXECUTION"
   | "POST_EXECUTION"
   | "PRE_POST_EXECUTION";
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyEnum =
   | "UNSPECIFIED"
@@ -2208,7 +2189,7 @@ export type EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyEnum =
   | "LINEAR_BACKOFF"
   | "EXPONENTIAL_BACKOFF"
   | "RESTART_WORKFLOW_WITH_BACKOFF";
-export const EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyEnum = S.String;
+const EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyEnum = S.String;
 
 /** Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied). */
 export interface EnterpriseCrmEventbusProtoFailurePolicy {
@@ -2221,7 +2202,7 @@ export interface EnterpriseCrmEventbusProtoFailurePolicy {
   /** Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the number of times the task will be retried if failed. */
   maxNumRetries?: number;
 }
-export const EnterpriseCrmEventbusProtoFailurePolicy = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoFailurePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intervalInSeconds: S.optional(S.String),
     retryStrategy: S.optional(EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyEnum),
@@ -2234,7 +2215,7 @@ export const EnterpriseCrmEventbusProtoFailurePolicy = /*@__PURE__*/ S.suspend((
 
 export type EnterpriseCrmEventbusProtoFailurePolicyList =
   Array<EnterpriseCrmEventbusProtoFailurePolicy>;
-export const EnterpriseCrmEventbusProtoFailurePolicyList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoFailurePolicyList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoFailurePolicy,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoFailurePolicyList>;
 
@@ -2244,7 +2225,7 @@ export interface EnterpriseCrmEventbusProtoConditionalFailurePolicies {
   /** The default failure policy to be applied if no conditional failure policy matches */
   defaultFailurePolicy?: EnterpriseCrmEventbusProtoFailurePolicy;
 }
-export const EnterpriseCrmEventbusProtoConditionalFailurePolicies = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoConditionalFailurePolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failurePolicies: S.optional(EnterpriseCrmEventbusProtoFailurePolicyList),
     defaultFailurePolicy: S.optional(EnterpriseCrmEventbusProtoFailurePolicy),
@@ -2259,7 +2240,7 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition {
   /** The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition". */
   fullName?: string;
 }
-export const EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     fullName: S.optional(S.String),
@@ -2275,15 +2256,15 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRan
   /** The inclusive maximum of the acceptable range. */
   max?: number;
 }
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange =
-  /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       min: S.optional(S.Number),
       max: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange",
-  }) as any as S.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange>;
+).annotate({
+  identifier: "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange",
+}) as any as S.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange>;
 
 /** Rule used to validate strings. */
 export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex {
@@ -2292,15 +2273,15 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringReg
   /** The regex applied to the input value(s). */
   regex?: string;
 }
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex =
-  /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       exclusive: S.optional(S.Boolean),
       regex: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex",
-  }) as any as S.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex>;
+).annotate({
+  identifier: "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex",
+}) as any as S.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex>;
 
 /** Range used to validate longs and ints. */
 export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange {
@@ -2309,22 +2290,21 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange 
   /** The inclusive maximum of the acceptable range. */
   max?: string;
 }
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      min: S.optional(S.String),
-      max: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange",
-  }) as any as S.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange>;
+const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    min: S.optional(S.String),
+    max: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange",
+}) as any as S.Schema<EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange>;
 
 export interface EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
   doubleRange?: EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange;
   stringRegex?: EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex;
   intRange?: EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange;
 }
-export const EnterpriseCrmEventbusProtoParamSpecEntryValidationRule = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoParamSpecEntryValidationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     doubleRange: S.optional(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange),
     stringRegex: S.optional(EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex),
@@ -2353,21 +2333,21 @@ export type EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeEnum =
   | "BYTES_ARRAY"
   | "NON_SERIALIZABLE_OBJECT"
   | "JSON_VALUE";
-export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionEnum =
   | "DEFAULT_NOT_PARAMETER_NAME"
   | "IS_PARAMETER_NAME"
   | "KEY_IS_PARAMETER_NAME"
   | "VALUE_IS_PARAMETER_NAME";
-export const EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionEnum = S.String;
+const EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionEnum =
   | "DEFAULT"
   | "STRING_MULTI_LINE"
   | "NUMBER_SLIDER"
   | "BOOLEAN_TOGGLE";
-export const EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionEnum = S.String;
+const EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionEnum = S.String;
 
 export interface EnterpriseCrmEventbusProtoParamSpecEntryConfig {
   /** Placeholder text which will appear in the UI input form for this parameter. */
@@ -2391,7 +2371,7 @@ export interface EnterpriseCrmEventbusProtoParamSpecEntryConfig {
     | EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionEnum
     | (string & {});
 }
-export const EnterpriseCrmEventbusProtoParamSpecEntryConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoParamSpecEntryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uiPlaceholderText: S.optional(S.String),
     hideDefaultValue: S.optional(S.Boolean),
@@ -2413,34 +2393,16 @@ export const EnterpriseCrmEventbusProtoParamSpecEntryConfig = /*@__PURE__*/ S.su
 
 export type EnterpriseCrmFrontendsEventbusProtoStringParameterArray =
   EnterpriseCrmEventbusProtoStringParameterArray;
-export const EnterpriseCrmFrontendsEventbusProtoStringParameterArray =
-  EnterpriseCrmEventbusProtoStringParameterArray;
-
 export type EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray =
   EnterpriseCrmEventbusProtoDoubleParameterArray;
-export const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray =
-  EnterpriseCrmEventbusProtoDoubleParameterArray;
-
 export type EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray =
   EnterpriseCrmEventbusProtoBooleanParameterArray;
-export const EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray =
-  EnterpriseCrmEventbusProtoBooleanParameterArray;
-
 export type EnterpriseCrmFrontendsEventbusProtoIntParameterArray =
   EnterpriseCrmEventbusProtoIntParameterArray;
-export const EnterpriseCrmFrontendsEventbusProtoIntParameterArray =
-  EnterpriseCrmEventbusProtoIntParameterArray;
-
 export type EnterpriseCrmFrontendsEventbusProtoProtoParameterArray =
   EnterpriseCrmEventbusProtoProtoParameterArray;
-export const EnterpriseCrmFrontendsEventbusProtoProtoParameterArray =
-  EnterpriseCrmEventbusProtoProtoParameterArray;
-
 export type EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter =
   EnterpriseCrmEventbusProtoSerializedObjectParameter;
-export const EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameter =
-  EnterpriseCrmEventbusProtoSerializedObjectParameter;
-
 /** To support various types of parameter values. Next available id: 14 */
 export interface EnterpriseCrmFrontendsEventbusProtoParameterValueType {
   stringArray?: EnterpriseCrmEventbusProtoStringParameterArray;
@@ -2456,7 +2418,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterValueType {
   serializedObjectValue?: EnterpriseCrmEventbusProtoSerializedObjectParameter;
   stringValue?: string;
 }
-export const EnterpriseCrmFrontendsEventbusProtoParameterValueType = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoParameterValueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringArray: S.optional(EnterpriseCrmEventbusProtoStringParameterArray),
     jsonValue: S.optional(S.String),
@@ -2501,7 +2463,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParamSpecEntry {
   /** Key is used to retrieve the corresponding parameter value. This should be unique for a given task. These parameters must be predefined in the workflow definition. */
   key?: string;
 }
-export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonSchema: S.optional(S.String),
     protoDef: S.optional(EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition),
@@ -2522,14 +2484,14 @@ export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry = /*@__PURE__*/ S
 
 export type EnterpriseCrmFrontendsEventbusProtoParamSpecEntryList =
   Array<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>;
-export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntryList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmFrontendsEventbusProtoParamSpecEntryList = /*@__PURE__*/ S.Array(
   EnterpriseCrmFrontendsEventbusProtoParamSpecEntry,
 ) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoParamSpecEntryList>;
 
 export interface EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage {
   parameters?: EnterpriseCrmFrontendsEventbusProtoParamSpecEntryList;
 }
-export const EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(EnterpriseCrmFrontendsEventbusProtoParamSpecEntryList),
   }),
@@ -2558,14 +2520,14 @@ export type EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdEnum =
   | "SUB_WORKFLOW_SCATTER_GATHER"
   | "CLOUD_SQL"
   | "GENERIC_CONNECTOR_TASK";
-export const EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdEnum = S.String;
 
 /** Task author would use this type to configure a config module. */
 export interface EnterpriseCrmEventbusProtoTaskUiModuleConfig {
   /** ID of the config module. */
   moduleId?: EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdEnum | (string & {});
 }
-export const EnterpriseCrmEventbusProtoTaskUiModuleConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTaskUiModuleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moduleId: S.optional(EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdEnum),
   }),
@@ -2575,7 +2537,7 @@ export const EnterpriseCrmEventbusProtoTaskUiModuleConfig = /*@__PURE__*/ S.susp
 
 export type EnterpriseCrmEventbusProtoTaskUiModuleConfigList =
   Array<EnterpriseCrmEventbusProtoTaskUiModuleConfig>;
-export const EnterpriseCrmEventbusProtoTaskUiModuleConfigList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoTaskUiModuleConfigList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoTaskUiModuleConfig,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoTaskUiModuleConfigList>;
 
@@ -2584,7 +2546,7 @@ export interface EnterpriseCrmEventbusProtoTaskUiConfig {
   /** Configurations of included config modules. */
   taskUiModuleConfigs?: EnterpriseCrmEventbusProtoTaskUiModuleConfigList;
 }
-export const EnterpriseCrmEventbusProtoTaskUiConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTaskUiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskUiModuleConfigs: S.optional(EnterpriseCrmEventbusProtoTaskUiModuleConfigList),
   }),
@@ -2597,12 +2559,12 @@ export type EnterpriseCrmEventbusStatsDimensionsRetryAttemptEnum =
   | "FINAL"
   | "RETRYABLE"
   | "CANCELED";
-export const EnterpriseCrmEventbusStatsDimensionsRetryAttemptEnum = S.String;
+const EnterpriseCrmEventbusStatsDimensionsRetryAttemptEnum = S.String;
 
 export type EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeEnum =
   | "DEFAULT_INCLUSIVE"
   | "EXCLUSIVE";
-export const EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeEnum = S.String;
+const EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeEnum = S.String;
 
 export interface EnterpriseCrmEventbusStatsDimensions {
   warningEnumString?: string;
@@ -2618,7 +2580,7 @@ export interface EnterpriseCrmEventbusStatsDimensions {
   enumFilterType?: EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeEnum | (string & {});
   clientId?: string;
 }
-export const EnterpriseCrmEventbusStatsDimensions = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusStatsDimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warningEnumString: S.optional(S.String),
     taskNumber: S.optional(S.String),
@@ -2648,7 +2610,7 @@ export interface EnterpriseCrmEventbusStats {
   /** Average error rate. */
   errorRate?: number;
 }
-export const EnterpriseCrmEventbusStats = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(EnterpriseCrmEventbusStatsDimensions),
     warningRate: S.optional(S.Number),
@@ -2671,7 +2633,7 @@ export type EnterpriseCrmEventbusProtoTaskMetadataCategoryEnum =
   | "CLOUD_SYSTEMS"
   | "CUSTOM_TASK_TEMPLATE"
   | "TASK_RECOMMENDATIONS";
-export const EnterpriseCrmEventbusProtoTaskMetadataCategoryEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskMetadataCategoryEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryEnum =
   | "UNSPECIFIED_EXTERNAL_CATEGORY"
@@ -2689,7 +2651,7 @@ export type EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryEnum =
   | "EXTERNAL_BYOT"
   | "EXTERNAL_ARTIFICIAL_INTELIGENCE"
   | "EXTERNAL_DATA_MANIPULATION";
-export const EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoTaskMetadataSystemEnum =
   | "UNSPECIFIED_SYSTEM"
@@ -2703,7 +2665,7 @@ export type EnterpriseCrmEventbusProtoTaskMetadataSystemEnum =
   | "EMAIL"
   | "SPANNER"
   | "DATA_BRIDGE";
-export const EnterpriseCrmEventbusProtoTaskMetadataSystemEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskMetadataSystemEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionEnum =
   | "UNSPECIFIED_JSON_VALIDATION_OPTION"
@@ -2711,14 +2673,14 @@ export type EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionEnu
   | "PRE_EXECUTION"
   | "POST_EXECUTION"
   | "PRE_POST_EXECUTION";
-export const EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionEnum = S.String;
 
 /** Admins are owners of a Task, and have all permissions on a particular task identified by the task name. By default, Eventbus periodically scans all task metadata and syncs (adds) any new admins defined here to Zanzibar. */
 export interface EnterpriseCrmEventbusProtoTaskMetadataAdmin {
   userEmail?: string;
   googleGroupEmail?: string;
 }
-export const EnterpriseCrmEventbusProtoTaskMetadataAdmin = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTaskMetadataAdmin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userEmail: S.optional(S.String),
     googleGroupEmail: S.optional(S.String),
@@ -2729,7 +2691,7 @@ export const EnterpriseCrmEventbusProtoTaskMetadataAdmin = /*@__PURE__*/ S.suspe
 
 export type EnterpriseCrmEventbusProtoTaskMetadataAdminList =
   Array<EnterpriseCrmEventbusProtoTaskMetadataAdmin>;
-export const EnterpriseCrmEventbusProtoTaskMetadataAdminList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoTaskMetadataAdminList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoTaskMetadataAdmin,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoTaskMetadataAdminList>;
 
@@ -2737,7 +2699,7 @@ export type EnterpriseCrmEventbusProtoTaskMetadataStatusEnum =
   | "UNSPECIFIED_STATUS"
   | "DEFAULT_INACTIVE"
   | "ACTIVE";
-export const EnterpriseCrmEventbusProtoTaskMetadataStatusEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskMetadataStatusEnum = S.String;
 
 /** TaskMetadata are attributes that are associated to every common Task we have. */
 export interface EnterpriseCrmEventbusProtoTaskMetadata {
@@ -2784,7 +2746,7 @@ export interface EnterpriseCrmEventbusProtoTaskMetadata {
   /** Contains the initial configuration of the task with default values set. For now, The string should be compatible to an ASCII-proto format. */
   defaultSpec?: string;
 }
-export const EnterpriseCrmEventbusProtoTaskMetadata = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTaskMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(EnterpriseCrmEventbusProtoTaskMetadataCategoryEnum),
     codeSearchLink: S.optional(S.String),
@@ -2819,7 +2781,7 @@ export type EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeEnum =
   | "TASK"
   | "ASIS_TEMPLATE"
   | "IO_TEMPLATE";
-export const EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeEnum = S.String;
 
 /** Contains a task's metadata and associated information. Next available id: 7 */
 export interface EnterpriseCrmFrontendsEventbusProtoTaskEntity {
@@ -2836,7 +2798,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTaskEntity {
   /** Defines the type of the task */
   taskType?: EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeEnum | (string & {});
 }
-export const EnterpriseCrmFrontendsEventbusProtoTaskEntity = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoTaskEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paramSpecs: S.optional(EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage),
     uiConfig: S.optional(EnterpriseCrmEventbusProtoTaskUiConfig),
@@ -2853,26 +2815,24 @@ export type EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyEn
   | "WHEN_ALL_SUCCEED"
   | "WHEN_ANY_SUCCEED"
   | "WHEN_ALL_TASKS_AND_CONDITIONS_SUCCEED";
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyEnum = S.String;
 
 export type EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeEnum =
   | "TASK"
   | "ASIS_TEMPLATE"
   | "IO_TEMPLATE";
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoSuccessPolicyFinalStateEnum =
   | "UNSPECIFIED"
   | "SUCCEEDED"
   | "SUSPENDED";
-export const EnterpriseCrmEventbusProtoSuccessPolicyFinalStateEnum = S.String;
-
 /** Policy that dictates the behavior for the task after it completes successfully. */
 export interface EnterpriseCrmEventbusProtoSuccessPolicy {
   /** State to which the execution snapshot status will be set if the task succeeds. */
   finalState?: EnterpriseCrmEventbusProtoSuccessPolicyFinalStateEnum | (string & {});
 }
-export const EnterpriseCrmEventbusProtoSuccessPolicy =
+const EnterpriseCrmEventbusProtoSuccessPolicy =
   GoogleCloudIntegrationsV1alphaSuccessPolicy as any as S.Schema<EnterpriseCrmEventbusProtoSuccessPolicy>;
 
 export type EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeEnum =
@@ -2894,7 +2854,7 @@ export type EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeEnum =
   | "BYTES_ARRAY"
   | "NON_SERIALIZABLE_OBJECT"
   | "JSON_VALUE";
-export const EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeEnum = S.String;
 
 /** Key-value pair of EventBus parameters. */
 export interface EnterpriseCrmFrontendsEventbusProtoParameterEntry {
@@ -2907,7 +2867,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoParameterEntry {
   /** True if this parameter should be masked in the logs */
   masked?: boolean;
 }
-export const EnterpriseCrmFrontendsEventbusProtoParameterEntry = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoParameterEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterValueType),
@@ -2920,7 +2880,7 @@ export const EnterpriseCrmFrontendsEventbusProtoParameterEntry = /*@__PURE__*/ S
 
 export type EnterpriseCrmFrontendsEventbusProtoParameterEntryList =
   Array<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
-export const EnterpriseCrmFrontendsEventbusProtoParameterEntryList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmFrontendsEventbusProtoParameterEntryList = /*@__PURE__*/ S.Array(
   EnterpriseCrmFrontendsEventbusProtoParameterEntry,
 ) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoParameterEntryList>;
 
@@ -2929,7 +2889,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventParameters {
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution. */
   parameters?: EnterpriseCrmFrontendsEventbusProtoParameterEntryList;
 }
-export const EnterpriseCrmFrontendsEventbusProtoEventParameters = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoEventParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterEntryList),
   }),
@@ -2946,7 +2906,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoRollbackStrategy {
   /** Optional. The customized parameters the user can pass to this task. */
   parameters?: EnterpriseCrmFrontendsEventbusProtoEventParameters;
 }
-export const EnterpriseCrmFrontendsEventbusProtoRollbackStrategy = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoRollbackStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskNumbersToRollback: S.optional(StringList),
     rollbackTaskImplementationClassName: S.optional(S.String),
@@ -2960,12 +2920,12 @@ export type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeEnum =
   | "EXTERNAL_TASK_TYPE_UNSPECIFIED"
   | "NORMAL_TASK"
   | "ERROR_TASK";
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeEnum = S.String;
 
 export type EnterpriseCrmFrontendsEventbusProtoParameterEntryMap = {
   [key: string]: EnterpriseCrmFrontendsEventbusProtoParameterEntry | undefined;
 };
-export const EnterpriseCrmFrontendsEventbusProtoParameterEntryMap = /*@__PURE__*/ S.Record(
+const EnterpriseCrmFrontendsEventbusProtoParameterEntryMap = /*@__PURE__*/ S.Record(
   S.String,
   EnterpriseCrmFrontendsEventbusProtoParameterEntry,
 ) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoParameterEntryMap>;
@@ -2974,7 +2934,7 @@ export type EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolic
   | "UNSPECIFIED"
   | "RUN_ALL_MATCH"
   | "RUN_FIRST_MATCH";
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyEnum = S.String;
 
 /** The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. */
 export interface EnterpriseCrmFrontendsEventbusProtoTaskConfig {
@@ -3044,7 +3004,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoTaskConfig {
     | EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyEnum
     | (string & {});
 }
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoTaskConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertConfigs: S.optional(EnterpriseCrmEventbusProtoTaskAlertConfigList),
     jsonValidationOption: S.optional(
@@ -3088,7 +3048,7 @@ export const EnterpriseCrmFrontendsEventbusProtoTaskConfig = /*@__PURE__*/ S.sus
 
 export type EnterpriseCrmFrontendsEventbusProtoTaskConfigList =
   Array<EnterpriseCrmFrontendsEventbusProtoTaskConfig>;
-export const EnterpriseCrmFrontendsEventbusProtoTaskConfigList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmFrontendsEventbusProtoTaskConfigList = /*@__PURE__*/ S.Array(
   EnterpriseCrmFrontendsEventbusProtoTaskConfig,
 ) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoTaskConfigList>;
 
@@ -3099,25 +3059,22 @@ export type GoogleCloudIntegrationsV1alphaIntegrationVersionOriginEnum =
   | "PIPER_V3"
   | "APPLICATION_IP_PROVISIONING"
   | "TEST_CASE";
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionOriginEnum = S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationVersionOriginEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyEnum =
   | "NEXT_TASKS_EXECUTION_POLICY_UNSPECIFIED"
   | "RUN_ALL_MATCH"
   | "RUN_FIRST_MATCH";
-export const GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyEnum = S.String;
 
 /** Variables names mapped to api trigger. */
 export type GoogleCloudIntegrationsV1alphaTriggerConfigVariables =
   EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables;
-export const GoogleCloudIntegrationsV1alphaTriggerConfigVariables =
-  EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables;
-
 export type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeEnum =
   | "THRESHOLD_TYPE_UNSPECIFIED"
   | "EXPECTED_MIN"
   | "EXPECTED_MAX";
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEnum =
   | "METRIC_TYPE_UNSPECIFIED"
@@ -3131,7 +3088,7 @@ export type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEnum =
   | "EVENT_PERCENTILE_DURATION"
   | "TASK_AVERAGE_DURATION"
   | "TASK_PERCENTILE_DURATION";
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEnum = S.String;
 
 /** The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. */
 export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue {
@@ -3140,15 +3097,15 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdVa
   /** Percentage threshold. */
   percentage?: number;
 }
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       absolute: S.optional(S.String),
       percentage: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue>;
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue>;
 
 /** Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. */
 export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
@@ -3173,7 +3130,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationAlertConfig {
   /** Should be specified only for *AVERAGE_DURATION and *PERCENTILE_DURATION metrics. This member should be used to specify what duration value the metrics should exceed for the alert to trigger. */
   durationThreshold?: string;
 }
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaIntegrationAlertConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertThreshold: S.optional(S.Number),
     onlyFinalAttempt: S.optional(S.Boolean),
@@ -3193,7 +3150,7 @@ export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfig = /*@__PURE__*
 
 export type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigList =
   Array<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>;
-export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaIntegrationAlertConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfigList>;
 
@@ -3209,7 +3166,7 @@ export type GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeEnum =
   | "PRIVATE_TRIGGER"
   | "CLOUD_PUBSUB"
   | "EVENTARC_TRIGGER";
-export const GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeEnum = S.String;
 
 /** Cloud Scheduler Trigger configuration */
 export interface GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
@@ -3222,7 +3179,7 @@ export interface GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
   /** Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations */
   errorMessage?: string;
 }
-export const GoogleCloudIntegrationsV1alphaCloudSchedulerConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaCloudSchedulerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountEmail: S.optional(S.String),
     cronTab: S.optional(S.String),
@@ -3268,7 +3225,7 @@ export interface GoogleCloudIntegrationsV1alphaTriggerConfig {
   /** Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers. */
   properties?: StringMap;
 }
-export const GoogleCloudIntegrationsV1alphaTriggerConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTriggerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     position: S.optional(GoogleCloudIntegrationsV1alphaCoordinate),
     nextTasksExecutionPolicy: S.optional(
@@ -3294,7 +3251,7 @@ export const GoogleCloudIntegrationsV1alphaTriggerConfig = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudIntegrationsV1alphaTriggerConfigList =
   Array<GoogleCloudIntegrationsV1alphaTriggerConfig>;
-export const GoogleCloudIntegrationsV1alphaTriggerConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaTriggerConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTriggerConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTriggerConfigList>;
 
@@ -3302,14 +3259,14 @@ export type GoogleCloudIntegrationsV1alphaIntegrationVersionEucHardeningDisposit
   | "EUC_HARDENING_DISPOSITION_UNSPECIFIED"
   | "LEGACY"
   | "HARDENED";
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionEucHardeningDispositionEnum = S.String;
+const GoogleCloudIntegrationsV1alphaIntegrationVersionEucHardeningDispositionEnum = S.String;
 
 export type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeEnum =
   | "IN_OUT_TYPE_UNSPECIFIED"
   | "IN"
   | "OUT"
   | "IN_OUT";
-export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeEnum = S.String;
 
 export type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
@@ -3330,21 +3287,21 @@ export type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeEnu
   | "BYTES_ARRAY"
   | "NON_SERIALIZABLE_OBJECT"
   | "JSON_VALUE";
-export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoLogSettingsSeedPeriodEnum =
   | "SEED_PERIOD_UNSPECIFIED"
   | "DAY"
   | "WEEK"
   | "MONTH";
-export const EnterpriseCrmEventbusProtoLogSettingsSeedPeriodEnum = S.String;
+const EnterpriseCrmEventbusProtoLogSettingsSeedPeriodEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoLogSettingsSeedScopeEnum =
   | "SEED_SCOPE_UNSPECIFIED"
   | "EVENT_NAME"
   | "TIME_PERIOD"
   | "PARAM_NAME";
-export const EnterpriseCrmEventbusProtoLogSettingsSeedScopeEnum = S.String;
+const EnterpriseCrmEventbusProtoLogSettingsSeedScopeEnum = S.String;
 
 /** The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. */
 export interface EnterpriseCrmEventbusProtoLogSettings {
@@ -3353,7 +3310,7 @@ export interface EnterpriseCrmEventbusProtoLogSettings {
   /** The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key. */
   logFieldName?: string;
 }
-export const EnterpriseCrmEventbusProtoLogSettings = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoLogSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seedPeriod: S.optional(EnterpriseCrmEventbusProtoLogSettingsSeedPeriodEnum),
     seedScope: S.optional(EnterpriseCrmEventbusProtoLogSettingsSeedScopeEnum),
@@ -3364,7 +3321,7 @@ export const EnterpriseCrmEventbusProtoLogSettings = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<EnterpriseCrmEventbusProtoLogSettings>;
 
 export type EnterpriseCrmEventbusProtoAttributesSearchableEnum = "UNSPECIFIED" | "YES" | "NO";
-export const EnterpriseCrmEventbusProtoAttributesSearchableEnum = S.String;
+const EnterpriseCrmEventbusProtoAttributesSearchableEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoAttributesDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
@@ -3373,7 +3330,7 @@ export type EnterpriseCrmEventbusProtoAttributesDataTypeEnum =
   | "CURRENCY"
   | "TIMESTAMP"
   | "DOMAIN_NAME";
-export const EnterpriseCrmEventbusProtoAttributesDataTypeEnum = S.String;
+const EnterpriseCrmEventbusProtoAttributesDataTypeEnum = S.String;
 
 /** Attributes are additional options that can be associated with each event property. For more information, see */
 export interface EnterpriseCrmEventbusProtoAttributes {
@@ -3395,7 +3352,7 @@ export interface EnterpriseCrmEventbusProtoAttributes {
   /** True if this workflow parameter should be masked in the logs */
   masked?: boolean;
 }
-export const EnterpriseCrmEventbusProtoAttributes = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isSearchable: S.optional(S.Boolean),
     taskVisibility: S.optional(StringList),
@@ -3415,7 +3372,7 @@ export type EnterpriseCrmEventbusProtoNodeIdentifierElementTypeEnum =
   | "UNKNOWN_TYPE"
   | "TASK_CONFIG"
   | "TRIGGER_CONFIG";
-export const EnterpriseCrmEventbusProtoNodeIdentifierElementTypeEnum = S.String;
+const EnterpriseCrmEventbusProtoNodeIdentifierElementTypeEnum = S.String;
 
 /** Represents a node identifier (type + id). Next highest id: 3 */
 export interface EnterpriseCrmEventbusProtoNodeIdentifier {
@@ -3424,7 +3381,7 @@ export interface EnterpriseCrmEventbusProtoNodeIdentifier {
   /** Destination node where the edge ends. It can only be a task config. */
   elementType?: EnterpriseCrmEventbusProtoNodeIdentifierElementTypeEnum | (string & {});
 }
-export const EnterpriseCrmEventbusProtoNodeIdentifier = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoNodeIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elementIdentifier: S.optional(S.String),
     elementType: S.optional(EnterpriseCrmEventbusProtoNodeIdentifierElementTypeEnum),
@@ -3467,35 +3424,34 @@ export interface EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry {
   /** Whether this parameter is a transient parameter. */
   isTransient?: boolean;
 }
-export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      containsLargeData: S.optional(S.Boolean),
-      inOutType: S.optional(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeEnum),
-      children: S.optional(
-        S.suspend(() => EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList),
-      ),
-      dataType: S.optional(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeEnum),
-      name: S.optional(S.String),
-      attributes: S.optional(EnterpriseCrmEventbusProtoAttributes),
-      protoDefPath: S.optional(S.String),
-      description: S.optional(S.String),
-      defaultValue: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterValueType),
-      protoDefName: S.optional(S.String),
-      producer: S.optional(S.String),
-      required: S.optional(S.Boolean),
-      jsonSchema: S.optional(S.String),
-      key: S.optional(S.String),
-      producedBy: S.optional(EnterpriseCrmEventbusProtoNodeIdentifier),
-      isTransient: S.optional(S.Boolean),
-    }),
+const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    containsLargeData: S.optional(S.Boolean),
+    inOutType: S.optional(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeEnum),
+    children: S.optional(
+      S.suspend(() => EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList),
+    ),
+    dataType: S.optional(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeEnum),
+    name: S.optional(S.String),
+    attributes: S.optional(EnterpriseCrmEventbusProtoAttributes),
+    protoDefPath: S.optional(S.String),
+    description: S.optional(S.String),
+    defaultValue: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterValueType),
+    protoDefName: S.optional(S.String),
+    producer: S.optional(S.String),
+    required: S.optional(S.Boolean),
+    jsonSchema: S.optional(S.String),
+    key: S.optional(S.String),
+    producedBy: S.optional(EnterpriseCrmEventbusProtoNodeIdentifier),
+    isTransient: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry",
 }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
 
 export type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList =
   Array<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
-export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList = /*@__PURE__*/ S.Array(
   EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry,
 ) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList>;
 
@@ -3504,7 +3460,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoWorkflowParameters {
   /** Parameters are a part of Event and can be used to communiticate between different tasks that are part of the same workflow execution. */
   parameters?: EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList;
 }
-export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameters = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoWorkflowParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList),
   }),
@@ -3575,7 +3531,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationVersion {
   /** Optional. Deprecated: Use `integration_parameters` instead. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter. */
   integrationParametersInternal?: EnterpriseCrmFrontendsEventbusProtoWorkflowParameters;
 }
-export const GoogleCloudIntegrationsV1alphaIntegrationVersion = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaIntegrationVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCatcherConfigs: S.optional(GoogleCloudIntegrationsV1alphaErrorCatcherConfigList),
     createdFromTemplate: S.optional(S.String),
@@ -3628,7 +3584,7 @@ export interface CreateProjectsLocationsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const CreateProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newIntegration: S.optional(S.Boolean.pipe(T.Query())),
     createSampleIntegrations: S.optional(S.Boolean.pipe(T.Query())),
@@ -3649,11 +3605,11 @@ export type GoogleCloudIntegrationsV1alphaTestCaseDatabasePersistencePolicyEnum 
   | "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"
   | "DATABASE_PERSISTENCE_DISABLED"
   | "DATABASE_PERSISTENCE_ASYNC";
-export const GoogleCloudIntegrationsV1alphaTestCaseDatabasePersistencePolicyEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTestCaseDatabasePersistencePolicyEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaEventParameterList =
   Array<GoogleCloudIntegrationsV1alphaEventParameter>;
-export const GoogleCloudIntegrationsV1alphaEventParameterList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaEventParameterList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaEventParameter,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaEventParameterList>;
 
@@ -3663,7 +3619,7 @@ export type GoogleCloudIntegrationsV1alphaMockConfigMockStrategyEnum =
   | "SPECIFIC_MOCK_STRATEGY"
   | "FAILURE_MOCK_STRATEGY"
   | "SKIP_MOCK_STRATEGY";
-export const GoogleCloudIntegrationsV1alphaMockConfigMockStrategyEnum = S.String;
+const GoogleCloudIntegrationsV1alphaMockConfigMockStrategyEnum = S.String;
 
 /** The configuration for mocking of a task during test execution Next available id: 4 */
 export interface GoogleCloudIntegrationsV1alphaMockConfig {
@@ -3674,7 +3630,7 @@ export interface GoogleCloudIntegrationsV1alphaMockConfig {
   /** Mockstrategy defines how the particular task should be mocked during test execution */
   mockStrategy?: GoogleCloudIntegrationsV1alphaMockConfigMockStrategyEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaMockConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaMockConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(GoogleCloudIntegrationsV1alphaEventParameterList),
     failedExecutions: S.optional(S.String),
@@ -3693,7 +3649,7 @@ export type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyEnum =
   | "ASSERT_NOT_EQUALS"
   | "ASSERT_CONTAINS"
   | "ASSERT_CONDITION";
-export const GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyEnum = S.String;
+const GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyEnum = S.String;
 
 /** An assertion which will check for a condition over task execution status or an expression for task output variables */
 export interface GoogleCloudIntegrationsV1alphaAssertion {
@@ -3706,7 +3662,7 @@ export interface GoogleCloudIntegrationsV1alphaAssertion {
   /** Optional. The type of assertion to perform. */
   assertionStrategy?: GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaAssertion = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaAssertion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retryCount: S.optional(S.Number),
     condition: S.optional(S.String),
@@ -3719,7 +3675,7 @@ export const GoogleCloudIntegrationsV1alphaAssertion = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudIntegrationsV1alphaAssertionList =
   Array<GoogleCloudIntegrationsV1alphaAssertion>;
-export const GoogleCloudIntegrationsV1alphaAssertionList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaAssertionList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaAssertion,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaAssertionList>;
 
@@ -3736,7 +3692,7 @@ export interface GoogleCloudIntegrationsV1alphaTestTaskConfig {
   /** Optional. List of conditions or expressions which should be evaluated to true unless there is a bug/problem in the integration. These are evaluated one the task execution is completed as per the mock strategy in test case */
   assertions?: GoogleCloudIntegrationsV1alphaAssertionList;
 }
-export const GoogleCloudIntegrationsV1alphaTestTaskConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTestTaskConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task: S.optional(S.String),
     taskNumber: S.optional(S.String),
@@ -3750,7 +3706,7 @@ export const GoogleCloudIntegrationsV1alphaTestTaskConfig = /*@__PURE__*/ S.susp
 
 export type GoogleCloudIntegrationsV1alphaTestTaskConfigList =
   Array<GoogleCloudIntegrationsV1alphaTestTaskConfig>;
-export const GoogleCloudIntegrationsV1alphaTestTaskConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaTestTaskConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTestTaskConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestTaskConfigList>;
 
@@ -3785,7 +3741,7 @@ export interface GoogleCloudIntegrationsV1alphaTestCase {
   /** Optional. Description of the test case. */
   description?: string;
 }
-export const GoogleCloudIntegrationsV1alphaTestCase = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTestCase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggerConfig: S.optional(GoogleCloudIntegrationsV1alphaTriggerConfig),
     createTime: S.optional(S.String),
@@ -3815,19 +3771,18 @@ export interface CreateProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaTestCase;
 }
-export const CreateProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      testCaseId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudIntegrationsV1alphaTestCase.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/testCases",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    testCaseId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudIntegrationsV1alphaTestCase.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/testCases",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsIntegrationsVersionsTestCasesRequest",
 }) as any as S.Schema<CreateProjectsLocationsIntegrationsVersionsTestCasesRequest>;
@@ -3844,7 +3799,7 @@ export interface CreateProjectsLocationsProductsAuthConfigsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaAuthConfig;
 }
-export const CreateProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "clientCertificate.encryptedPrivateKey": S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3868,7 +3823,7 @@ export interface CreateProjectsLocationsProductsCertificatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaCertificate;
 }
-export const CreateProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaCertificate.pipe(T.HttpBody())),
@@ -3889,7 +3844,7 @@ export interface CreateProjectsLocationsProductsCloudFunctionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest;
 }
-export const CreateProjectsLocationsProductsCloudFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsProductsCloudFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest.pipe(T.HttpBody())),
@@ -3914,20 +3869,19 @@ export interface CreateProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const CreateProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      newIntegration: S.optional(S.Boolean.pipe(T.Query())),
-      createSampleIntegrations: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/versions",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    newIntegration: S.optional(S.Boolean.pipe(T.Query())),
+    createSampleIntegrations: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/versions",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsProductsIntegrationsVersionsRequest",
 }) as any as S.Schema<CreateProjectsLocationsProductsIntegrationsVersionsRequest>;
@@ -3953,7 +3907,7 @@ export interface GoogleCloudIntegrationsV1alphaSfdcInstance {
   /** Optional. User selected unique name/alias to easily reference an instance. */
   displayName?: string;
 }
-export const GoogleCloudIntegrationsV1alphaSfdcInstance = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaSfdcInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -3975,7 +3929,7 @@ export interface CreateProjectsLocationsProductsSfdcInstancesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSfdcInstance;
 }
-export const CreateProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaSfdcInstance.pipe(T.HttpBody())),
@@ -4011,7 +3965,7 @@ export interface GoogleCloudIntegrationsV1alphaSfdcChannel {
   /** Resource name of the SFDC channel projects/{project}/locations/{location}/sfdcInstances/{sfdc_instance}/sfdcChannels/{sfdc_channel}. */
   name?: string;
 }
-export const GoogleCloudIntegrationsV1alphaSfdcChannel = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaSfdcChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     deleteTime: S.optional(S.String),
@@ -4033,8 +3987,8 @@ export interface CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSfdcChannel;
 }
-export const CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudIntegrationsV1alphaSfdcChannel.pipe(T.HttpBody())),
@@ -4045,9 +3999,9 @@ export const CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
         baseUrl: "https://integrations.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
+}) as any as S.Schema<CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export interface CreateProjectsLocationsSfdcInstancesRequest {
   /** Required. "projects/{project}/locations/{location}" format. */
@@ -4055,7 +4009,7 @@ export interface CreateProjectsLocationsSfdcInstancesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSfdcInstance;
 }
-export const CreateProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaSfdcInstance.pipe(T.HttpBody())),
@@ -4076,7 +4030,7 @@ export interface CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSfdcChannel;
 }
-export const CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaSfdcChannel.pipe(T.HttpBody())),
@@ -4098,19 +4052,18 @@ export interface GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate {
   /** Required. Unique Key of the IntegrationVersion. */
   key?: string;
 }
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
-      key: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
+    key: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationVersionTemplateList =
   Array<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplateList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplateList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplateList>;
 
@@ -4121,7 +4074,7 @@ export interface GoogleCloudIntegrationsV1alphaTemplateBundle {
   /** Required. Main integration templates of the template bundle. */
   integrationVersionTemplate?: GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate;
 }
-export const GoogleCloudIntegrationsV1alphaTemplateBundle = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTemplateBundle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subIntegrationVersionTemplates: S.optional(
       GoogleCloudIntegrationsV1alphaIntegrationVersionTemplateList,
@@ -4139,7 +4092,7 @@ export type GoogleCloudIntegrationsV1alphaTemplateVisibilityEnum =
   | "PRIVATE"
   | "SHARED"
   | "PUBLIC";
-export const GoogleCloudIntegrationsV1alphaTemplateVisibilityEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTemplateVisibilityEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum =
   | "CATEGORY_UNSPECIFIED"
@@ -4159,12 +4112,12 @@ export type GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum =
   | "UNIVERSAL_CONNECTORS"
   | "UTILITY"
   | "OTHERS";
-export const GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList = Array<
   GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum | (string & {})
 >;
-export const GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList>;
 
@@ -4173,7 +4126,7 @@ export type GoogleCloudIntegrationsV1alphaTemplateComponentTypeEnum =
   | "TRIGGER"
   | "TASK"
   | "CONNECTOR";
-export const GoogleCloudIntegrationsV1alphaTemplateComponentTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTemplateComponentTypeEnum = S.String;
 
 /** Define the components that are present in a template. */
 export interface GoogleCloudIntegrationsV1alphaTemplateComponent {
@@ -4182,7 +4135,7 @@ export interface GoogleCloudIntegrationsV1alphaTemplateComponent {
   /** Optional. Name of the component. */
   name?: string;
 }
-export const GoogleCloudIntegrationsV1alphaTemplateComponent = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTemplateComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudIntegrationsV1alphaTemplateComponentTypeEnum),
     name: S.optional(S.String),
@@ -4193,7 +4146,7 @@ export const GoogleCloudIntegrationsV1alphaTemplateComponent = /*@__PURE__*/ S.s
 
 export type GoogleCloudIntegrationsV1alphaTemplateComponentList =
   Array<GoogleCloudIntegrationsV1alphaTemplateComponent>;
-export const GoogleCloudIntegrationsV1alphaTemplateComponentList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaTemplateComponentList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTemplateComponent,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplateComponentList>;
 
@@ -4232,7 +4185,7 @@ export interface GoogleCloudIntegrationsV1alphaTemplate {
   /** Output only. Auto-generated */
   updateTime?: string;
 }
-export const GoogleCloudIntegrationsV1alphaTemplate = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     docLink: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4261,7 +4214,7 @@ export interface CreateProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaTemplate;
 }
-export const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaTemplate.pipe(T.HttpBody())),
@@ -4280,7 +4233,7 @@ export interface DeleteProjectsLocationsAuthConfigsRequest {
   /** Required. The name that is associated with the AuthConfig. */
   name: string;
 }
-export const DeleteProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4296,7 +4249,7 @@ export const DeleteProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -4304,7 +4257,7 @@ export interface DeleteProjectsLocationsCertificatesRequest {
   /** Required. The name that is associated with the Certificate. */
   name: string;
 }
-export const DeleteProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4322,7 +4275,7 @@ export interface DeleteProjectsLocationsIntegrationsRequest {
   /** Required. The location resource of the request. */
   name: string;
 }
-export const DeleteProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4340,7 +4293,7 @@ export interface DeleteProjectsLocationsIntegrationsVersionsRequest {
   /** Required. The version to delete. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
   name: string;
 }
-export const DeleteProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4358,17 +4311,16 @@ export interface DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Required. ID for the test case to be deleted */
   name: string;
 }
-export const DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest>;
@@ -4377,7 +4329,7 @@ export interface DeleteProjectsLocationsProductsAuthConfigsRequest {
   /** Required. The name that is associated with the AuthConfig. */
   name: string;
 }
-export const DeleteProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4395,7 +4347,7 @@ export interface DeleteProjectsLocationsProductsCertificatesRequest {
   /** Required. The name that is associated with the Certificate. */
   name: string;
 }
-export const DeleteProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4413,17 +4365,16 @@ export interface DeleteProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Required. The version to delete. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
   name: string;
 }
-export const DeleteProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsProductsIntegrationsVersionsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsProductsIntegrationsVersionsRequest>;
@@ -4432,7 +4383,7 @@ export interface DeleteProjectsLocationsProductsSfdcInstancesRequest {
   /** Required. The name that is associated with the SfdcInstance. */
   name: string;
 }
-export const DeleteProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4450,8 +4401,8 @@ export interface DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest
   /** Required. The name that is associated with the SfdcChannel. */
   name: string;
 }
-export const DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -4461,15 +4412,15 @@ export const DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
         baseUrl: "https://integrations.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export interface DeleteProjectsLocationsSfdcInstancesRequest {
   /** Required. The name that is associated with the SfdcInstance. */
   name: string;
 }
-export const DeleteProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4487,7 +4438,7 @@ export interface DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest {
   /** Required. The name that is associated with the SfdcChannel. */
   name: string;
 }
-export const DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4505,7 +4456,7 @@ export interface DeleteProjectsLocationsTemplatesRequest {
   /** Required. The name that is associated with the Template. */
   name: string;
 }
-export const DeleteProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4521,7 +4472,7 @@ export const DeleteProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend((
 
 /** Request for the Deprovision rpc */
 export interface GoogleCloudIntegrationsV1alphaDeprovisionClientRequest {}
-export const GoogleCloudIntegrationsV1alphaDeprovisionClientRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaDeprovisionClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaDeprovisionClientRequest",
@@ -4533,7 +4484,7 @@ export interface DeprovisionProjectsLocationsClientsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
 }
-export const DeprovisionProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeprovisionProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.pipe(T.HttpBody())),
@@ -4552,15 +4503,14 @@ export type DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
   | "INTEGRATION_CONFIG_VARIABLES";
-export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum = S.String;
+const DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum = S.String;
 
 export type DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList = Array<
   DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum | (string & {})
 >;
-export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList =
-  /*@__PURE__*/ S.Array(
-    DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum,
-  ) as any as S.Schema<DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList>;
+const DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList = /*@__PURE__*/ S.Array(
+  DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum,
+) as any as S.Schema<DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList>;
 
 export interface DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest {
   /** Optional. Integration related file to download like Integration Version, Config variable, testcase etc. */
@@ -4568,8 +4518,8 @@ export interface DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest
   /** Required. Integration version name Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
   name: string;
 }
-export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       files: S.optional(
         DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList.pipe(T.Query()),
@@ -4582,15 +4532,15 @@ export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest =
         baseUrl: "https://integrations.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest",
-  }) as any as S.Schema<DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest>;
+).annotate({
+  identifier: "DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest",
+}) as any as S.Schema<DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest>;
 
 export type GoogleCloudIntegrationsV1alphaFileTypeEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
   | "INTEGRATION_CONFIG_VARIABLES";
-export const GoogleCloudIntegrationsV1alphaFileTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaFileTypeEnum = S.String;
 
 /** To store Integration version related file i.e. Integration Version, Config variable etc. */
 export interface GoogleCloudIntegrationsV1alphaFile {
@@ -4601,7 +4551,7 @@ export interface GoogleCloudIntegrationsV1alphaFile {
   /** Integration version config file */
   integrationConfig?: DocumentMap;
 }
-export const GoogleCloudIntegrationsV1alphaFile = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudIntegrationsV1alphaFileTypeEnum),
     integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
@@ -4612,7 +4562,7 @@ export const GoogleCloudIntegrationsV1alphaFile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaFile>;
 
 export type GoogleCloudIntegrationsV1alphaFileList = Array<GoogleCloudIntegrationsV1alphaFile>;
-export const GoogleCloudIntegrationsV1alphaFileList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaFileList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaFile,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaFileList>;
 
@@ -4621,11 +4571,10 @@ export interface GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse {
   /** List containing JSON for multiple file with type information. */
   files?: GoogleCloudIntegrationsV1alphaFileList;
 }
-export const GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      files: S.optional(GoogleCloudIntegrationsV1alphaFileList),
-    }),
+const GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    files: S.optional(GoogleCloudIntegrationsV1alphaFileList),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse>;
@@ -4634,7 +4583,7 @@ export interface DownloadProjectsLocationsIntegrationsExecutionsRequest {
   /** Required. The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id} */
   name: string;
 }
-export const DownloadProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4653,7 +4602,7 @@ export interface GoogleCloudIntegrationsV1alphaDownloadExecutionResponse {
   /** The content of downloaded execution. */
   content?: string;
 }
-export const GoogleCloudIntegrationsV1alphaDownloadExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaDownloadExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
   }),
@@ -4665,18 +4614,16 @@ export type DownloadProjectsLocationsIntegrationsVersionsFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
   | "YAML";
-export const DownloadProjectsLocationsIntegrationsVersionsFileFormatEnum = S.String;
+const DownloadProjectsLocationsIntegrationsVersionsFileFormatEnum = S.String;
 
 export type DownloadProjectsLocationsIntegrationsVersionsFilesEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
   | "INTEGRATION_CONFIG_VARIABLES";
-export const DownloadProjectsLocationsIntegrationsVersionsFilesEnum = S.String;
-
 export type DownloadProjectsLocationsIntegrationsVersionsFilesEnumList = Array<
   DownloadProjectsLocationsIntegrationsVersionsFilesEnum | (string & {})
 >;
-export const DownloadProjectsLocationsIntegrationsVersionsFilesEnumList =
+const DownloadProjectsLocationsIntegrationsVersionsFilesEnumList =
   GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsFilesEnumList>;
 
 export interface DownloadProjectsLocationsIntegrationsVersionsRequest {
@@ -4687,7 +4634,7 @@ export interface DownloadProjectsLocationsIntegrationsVersionsRequest {
   /** Optional. Integration related file to download like Integration Json, Config variable, testcase etc. */
   files?: DownloadProjectsLocationsIntegrationsVersionsFilesEnumList;
 }
-export const DownloadProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileFormat: S.optional(
       DownloadProjectsLocationsIntegrationsVersionsFileFormatEnum.pipe(T.Query()),
@@ -4709,7 +4656,7 @@ export type GoogleCloudIntegrationsV1alphaSerializedFileFileEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
   | "INTEGRATION_CONFIG_VARIABLES";
-export const GoogleCloudIntegrationsV1alphaSerializedFileFileEnum = S.String;
+const GoogleCloudIntegrationsV1alphaSerializedFileFileEnum = S.String;
 
 /** To store string representation of Integration file. */
 export interface GoogleCloudIntegrationsV1alphaSerializedFile {
@@ -4718,7 +4665,7 @@ export interface GoogleCloudIntegrationsV1alphaSerializedFile {
   /** File information like Integration version, Integration Config variables etc. */
   file?: GoogleCloudIntegrationsV1alphaSerializedFileFileEnum;
 }
-export const GoogleCloudIntegrationsV1alphaSerializedFile = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaSerializedFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     file: S.optional(GoogleCloudIntegrationsV1alphaSerializedFileFileEnum),
@@ -4729,7 +4676,7 @@ export const GoogleCloudIntegrationsV1alphaSerializedFile = /*@__PURE__*/ S.susp
 
 export type GoogleCloudIntegrationsV1alphaSerializedFileList =
   Array<GoogleCloudIntegrationsV1alphaSerializedFile>;
-export const GoogleCloudIntegrationsV1alphaSerializedFileList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaSerializedFileList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaSerializedFile,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaSerializedFileList>;
 
@@ -4740,21 +4687,21 @@ export interface GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionRespons
   /** String representation of the requested file. */
   content?: string;
 }
-export const GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       files: S.optional(GoogleCloudIntegrationsV1alphaSerializedFileList),
       content: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse>;
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse>;
 
 export type DownloadProjectsLocationsIntegrationsVersionsTestCasesFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
   | "YAML";
-export const DownloadProjectsLocationsIntegrationsVersionsTestCasesFileFormatEnum = S.String;
+const DownloadProjectsLocationsIntegrationsVersionsTestCasesFileFormatEnum = S.String;
 
 export interface DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Required. The test case to download. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}/testCases/{test_case_id} */
@@ -4762,67 +4709,63 @@ export interface DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** File format for download request. */
   fileFormat?: DownloadProjectsLocationsIntegrationsVersionsTestCasesFileFormatEnum | (string & {});
 }
-export const DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      fileFormat: S.optional(
-        DownloadProjectsLocationsIntegrationsVersionsTestCasesFileFormatEnum.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:download",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
+const DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    fileFormat: S.optional(
+      DownloadProjectsLocationsIntegrationsVersionsTestCasesFileFormatEnum.pipe(T.Query()),
     ),
-  ).annotate({
-    identifier: "DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest",
-  }) as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:download",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest",
+}) as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 /** Response for DownloadTestCase. */
 export interface GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse {
   /** String representation of the test case. */
   content?: string;
 }
-export const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse =
+const GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse =
   GoogleCloudIntegrationsV1alphaDownloadExecutionResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse>;
 
 export interface DownloadProjectsLocationsProductsIntegrationsExecutionsRequest {
   /** Required. The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id} */
   name: string;
 }
-export const DownloadProjectsLocationsProductsIntegrationsExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:download",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DownloadProjectsLocationsProductsIntegrationsExecutionsRequest",
-  }) as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsExecutionsRequest>;
+const DownloadProjectsLocationsProductsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:download",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DownloadProjectsLocationsProductsIntegrationsExecutionsRequest",
+}) as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsExecutionsRequest>;
 
 export type DownloadProjectsLocationsProductsIntegrationsVersionsFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
   | "YAML";
-export const DownloadProjectsLocationsProductsIntegrationsVersionsFileFormatEnum = S.String;
+const DownloadProjectsLocationsProductsIntegrationsVersionsFileFormatEnum = S.String;
 
 export type DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
   | "INTEGRATION_CONFIG_VARIABLES";
-export const DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum = S.String;
-
 export type DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList = Array<
   DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum | (string & {})
 >;
-export const DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList =
+const DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList =
   DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList>;
 
 export interface DownloadProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -4833,23 +4776,22 @@ export interface DownloadProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Optional. Integration related file to download like Integration Json, Config variable, testcase etc. */
   files?: DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList;
 }
-export const DownloadProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      fileFormat: S.optional(
-        DownloadProjectsLocationsProductsIntegrationsVersionsFileFormatEnum.pipe(T.Query()),
-      ),
-      files: S.optional(
-        DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:download",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
+const DownloadProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    fileFormat: S.optional(
+      DownloadProjectsLocationsProductsIntegrationsVersionsFileFormatEnum.pipe(T.Query()),
     ),
+    files: S.optional(
+      DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:download",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DownloadProjectsLocationsProductsIntegrationsVersionsRequest",
 }) as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsRequest>;
@@ -4858,7 +4800,7 @@ export type DownloadProjectsLocationsTemplatesFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
   | "YAML";
-export const DownloadProjectsLocationsTemplatesFileFormatEnum = S.String;
+const DownloadProjectsLocationsTemplatesFileFormatEnum = S.String;
 
 export interface DownloadProjectsLocationsTemplatesRequest {
   /** Required. File format for download request. */
@@ -4866,7 +4808,7 @@ export interface DownloadProjectsLocationsTemplatesRequest {
   /** Required. The template to download. Format: projects/{project}/locations/{location}/template/{template_id} */
   name: string;
 }
-export const DownloadProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileFormat: S.optional(DownloadProjectsLocationsTemplatesFileFormatEnum.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4886,11 +4828,11 @@ export interface GoogleCloudIntegrationsV1alphaDownloadTemplateResponse {
   /** String representation of the template. */
   content?: string;
 }
-export const GoogleCloudIntegrationsV1alphaDownloadTemplateResponse =
+const GoogleCloudIntegrationsV1alphaDownloadTemplateResponse =
   GoogleCloudIntegrationsV1alphaDownloadExecutionResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse>;
 
 export interface EnumerateConnectorPlatformRegionsRequest {}
-export const EnumerateConnectorPlatformRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnumerateConnectorPlatformRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -4907,7 +4849,7 @@ export interface GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegions
   /** All regions where Connector Platform is provisioned. */
   regions?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse =
+const GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       regions: S.optional(StringList),
@@ -4922,7 +4864,7 @@ export interface ExecuteEventProjectsLocationsIntegrationsRequest {
   /** Required. The integration resource name. Format: projects/{gcp_project_id}/locations/{location}/integrations/{integration_id} */
   name: string;
 }
-export const ExecuteEventProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteEventProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggerId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4942,7 +4884,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteEventResponse {
   /** The id of the execution corresponding to this run of integration. */
   executionId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaExecuteEventResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaExecuteEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionId: S.optional(S.String),
   }),
@@ -4953,7 +4895,7 @@ export const GoogleCloudIntegrationsV1alphaExecuteEventResponse = /*@__PURE__*/ 
 export type GoogleCloudIntegrationsV1alphaValueTypeMap = {
   [key: string]: GoogleCloudIntegrationsV1alphaValueType | undefined;
 };
-export const GoogleCloudIntegrationsV1alphaValueTypeMap = /*@__PURE__*/ S.Record(
+const GoogleCloudIntegrationsV1alphaValueTypeMap = /*@__PURE__*/ S.Record(
   S.String,
   GoogleCloudIntegrationsV1alphaValueType,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaValueTypeMap>;
@@ -4975,17 +4917,16 @@ export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest {
   /** Optional. Flag to determine how to should propagate errors. If this flag is set to be true, it will not throw an exception. Instead, it will return a {@link ExecuteIntegrationsResponse} with an execution id and error messages as PostWithTriggerIdExecutionException in {@link EventParameters}. The flag is set to be false by default. */
   doNotPropagateError?: boolean;
 }
-export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parameters: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
-      triggerId: S.optional(S.String),
-      executionId: S.optional(S.String),
-      inputParameters: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
-      parameterEntries: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterEntryList),
-      requestId: S.optional(S.String),
-      doNotPropagateError: S.optional(S.Boolean),
-    }),
+const GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameters: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
+    triggerId: S.optional(S.String),
+    executionId: S.optional(S.String),
+    inputParameters: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
+    parameterEntries: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterEntryList),
+    requestId: S.optional(S.String),
+    doNotPropagateError: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest>;
@@ -4996,7 +4937,7 @@ export interface ExecuteProjectsLocationsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest;
 }
-export const ExecuteProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest.pipe(T.HttpBody())),
@@ -5026,16 +4967,15 @@ export interface GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse {
   /** Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
   parameterEntries?: EnterpriseCrmFrontendsEventbusProtoParameterEntryList;
 }
-export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parameters: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
-      executionFailed: S.optional(S.Boolean),
-      eventParameters: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
-      outputParameters: S.optional(DocumentMap),
-      executionId: S.optional(S.String),
-      parameterEntries: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterEntryList),
-    }),
+const GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameters: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
+    executionFailed: S.optional(S.Boolean),
+    eventParameters: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
+    outputParameters: S.optional(DocumentMap),
+    executionId: S.optional(S.String),
+    parameterEntries: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterEntryList),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse>;
@@ -5043,27 +4983,23 @@ export const GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse = /*@__PU
 /** Request for ExecuteTestCases. */
 export type GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest =
   GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
-export const GoogleCloudIntegrationsV1alphaExecuteTestCasesRequest =
-  GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
-
 export interface ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Required. The parent resource whose test cases are executed. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version} */
   parent: string;
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
 }
-export const ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/testCases:execute",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/testCases:execute",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest",
 }) as any as S.Schema<ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest>;
@@ -5072,13 +5008,13 @@ export type GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseTestExecutionSt
   | "STATE_UNSPECIFIED"
   | "PASSED"
   | "FAILED";
-export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseTestExecutionStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseTestExecutionStateEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaAssertionResultStatusEnum =
   | "ASSERTION_STATUS_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED";
-export const GoogleCloudIntegrationsV1alphaAssertionResultStatusEnum = S.String;
+const GoogleCloudIntegrationsV1alphaAssertionResultStatusEnum = S.String;
 
 /** The result of an assertion. */
 export interface GoogleCloudIntegrationsV1alphaAssertionResult {
@@ -5093,7 +5029,7 @@ export interface GoogleCloudIntegrationsV1alphaAssertionResult {
   /** Task name of task where the assertion was run. */
   taskName?: string;
 }
-export const GoogleCloudIntegrationsV1alphaAssertionResult = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaAssertionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleCloudIntegrationsV1alphaAssertionResultStatusEnum),
     assertion: S.optional(GoogleCloudIntegrationsV1alphaAssertion),
@@ -5107,7 +5043,7 @@ export const GoogleCloudIntegrationsV1alphaAssertionResult = /*@__PURE__*/ S.sus
 
 export type GoogleCloudIntegrationsV1alphaAssertionResultList =
   Array<GoogleCloudIntegrationsV1alphaAssertionResult>;
-export const GoogleCloudIntegrationsV1alphaAssertionResultList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaAssertionResultList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaAssertionResult,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaAssertionResultList>;
 
@@ -5122,7 +5058,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse {
   /** OUTPUT parameters in format of Map. Where Key is the name of the parameter. Note: Name of the system generated parameters are wrapped by backtick(`) to distinguish them from the user defined parameters. */
   outputParameters?: DocumentMap;
 }
-export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testExecutionState: S.optional(
       GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseTestExecutionStateEnum,
@@ -5137,7 +5073,7 @@ export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse = /*@__PURE__
 
 export type GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseList =
   Array<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>;
-export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseList>;
 
@@ -5146,7 +5082,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse {
   /** Results of each execution of test cases in an integration version. */
   executeTestCaseResponses?: GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseList;
 }
-export const GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executeTestCaseResponses: S.optional(GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseList),
   }),
@@ -5160,7 +5096,7 @@ export interface ExecuteProjectsLocationsProductsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest;
 }
-export const ExecuteProjectsLocationsProductsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteProjectsLocationsProductsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest.pipe(T.HttpBody())),
@@ -5180,7 +5116,7 @@ export interface GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest {
   /** Optional. Input parameters used by test case execution. */
   inputParameters?: GoogleCloudIntegrationsV1alphaValueTypeMap;
 }
-export const GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputParameters: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
   }),
@@ -5194,8 +5130,8 @@ export interface ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesReques
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest;
 }
-export const ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       testCaseName: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest.pipe(T.HttpBody())),
@@ -5206,9 +5142,9 @@ export const ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest =
         baseUrl: "https://integrations.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest",
-  }) as any as S.Schema<ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest>;
+).annotate({
+  identifier: "ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest",
+}) as any as S.Schema<ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 /** List of API triggerID and their workflow resource name. */
 export interface GoogleCloudIntegrationsV1alphaApiTriggerResource {
@@ -5217,7 +5153,7 @@ export interface GoogleCloudIntegrationsV1alphaApiTriggerResource {
   /** Required. Trigger Id of the API trigger(s) in the integration */
   triggerId?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaApiTriggerResource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaApiTriggerResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationResource: S.optional(S.String),
     triggerId: S.optional(StringList),
@@ -5228,7 +5164,7 @@ export const GoogleCloudIntegrationsV1alphaApiTriggerResource = /*@__PURE__*/ S.
 
 export type GoogleCloudIntegrationsV1alphaApiTriggerResourceList =
   Array<GoogleCloudIntegrationsV1alphaApiTriggerResource>;
-export const GoogleCloudIntegrationsV1alphaApiTriggerResourceList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaApiTriggerResourceList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaApiTriggerResource,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaApiTriggerResourceList>;
 
@@ -5236,7 +5172,7 @@ export type GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequestFileFormatEn
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
   | "YAML";
-export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequestFileFormatEnum = S.String;
+const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequestFileFormatEnum = S.String;
 
 /** Request for GenerateOpenApiSpec. */
 export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest {
@@ -5247,14 +5183,11 @@ export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest {
     | GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequestFileFormatEnum
     | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiTriggerResources: S.optional(GoogleCloudIntegrationsV1alphaApiTriggerResourceList),
-      fileFormat: S.optional(
-        GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequestFileFormatEnum,
-      ),
-    }),
+const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiTriggerResources: S.optional(GoogleCloudIntegrationsV1alphaApiTriggerResourceList),
+    fileFormat: S.optional(GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequestFileFormatEnum),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest>;
@@ -5265,7 +5198,7 @@ export interface GenerateOpenApiSpecProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest;
 }
-export const GenerateOpenApiSpecProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateOpenApiSpecProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest.pipe(T.HttpBody())),
@@ -5285,17 +5218,16 @@ export interface GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse {
   /** Open API spec as per the required format */
   openApiSpec?: string;
 }
-export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      openApiSpec: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    openApiSpec: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse>;
 
 export type GenerateTokenCallbackProductEnum = "UNSPECIFIED_PRODUCT" | "IP" | "APIGEE" | "SECURITY";
-export const GenerateTokenCallbackProductEnum = S.String;
+const GenerateTokenCallbackProductEnum = S.String;
 
 export interface GenerateTokenCallbackRequest {
   /** Redirect uri of the auth code request */
@@ -5309,7 +5241,7 @@ export interface GenerateTokenCallbackRequest {
   /** The auth config id for the given request */
   state?: string;
 }
-export const GenerateTokenCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateTokenCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirectUri: S.optional(S.String.pipe(T.Query())),
     code: S.optional(S.String.pipe(T.Query())),
@@ -5332,7 +5264,7 @@ export interface GoogleCloudIntegrationsV1alphaGenerateTokenResponse {
   /** The message that notifies the user if the request succeeded or not. */
   message?: string;
 }
-export const GoogleCloudIntegrationsV1alphaGenerateTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaGenerateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -5344,7 +5276,7 @@ export interface GetClientmetadataProjectsRequest {
   /** Required. Required: The ID of the GCP Project to be provisioned. */
   parent: string;
 }
-export const GetClientmetadataProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClientmetadataProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -5363,7 +5295,7 @@ export type GoogleCloudIntegrationsV1alphaProjectPropertiesIpEnablementStateEnum
   | "IP_ENABLEMENT_STATE_STANDALONE"
   | "IP_ENABLEMENT_STATE_APIGEE"
   | "IP_ENABLEMENT_STATE_APIGEE_ENTITLED";
-export const GoogleCloudIntegrationsV1alphaProjectPropertiesIpEnablementStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaProjectPropertiesIpEnablementStateEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaProjectPropertiesBillingTypeEnum =
   | "BILLING_TYPE_UNSPECIFIED"
@@ -5372,7 +5304,7 @@ export type GoogleCloudIntegrationsV1alphaProjectPropertiesBillingTypeEnum =
   | "PAYG"
   | "SUBSCRIPTION"
   | "NO_BILLING";
-export const GoogleCloudIntegrationsV1alphaProjectPropertiesBillingTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaProjectPropertiesBillingTypeEnum = S.String;
 
 /** Metadata information for the given project */
 export interface GoogleCloudIntegrationsV1alphaProjectProperties {
@@ -5383,7 +5315,7 @@ export interface GoogleCloudIntegrationsV1alphaProjectProperties {
   /** A list of provisioned regions on the current project */
   provisionedRegions?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaProjectProperties = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaProjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipEnablementState: S.optional(
       GoogleCloudIntegrationsV1alphaProjectPropertiesIpEnablementStateEnum,
@@ -5400,7 +5332,7 @@ export interface GoogleCloudIntegrationsV1alphaGetClientMetadataResponse {
   /** Required. Required: The client configuration that was requested */
   properties?: GoogleCloudIntegrationsV1alphaProjectProperties;
 }
-export const GoogleCloudIntegrationsV1alphaGetClientMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaGetClientMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(GoogleCloudIntegrationsV1alphaProjectProperties),
   }),
@@ -5412,7 +5344,7 @@ export interface GetClientsProjectsLocationsRequest {
   /** Required. Required: The ID of the GCP Project to be provisioned. */
   parent: string;
 }
-export const GetClientsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClientsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -5430,14 +5362,14 @@ export type GoogleCloudIntegrationsV1alphaClientConfigClientStateEnum =
   | "CLIENT_STATE_UNSPECIFIED"
   | "CLIENT_STATE_ACTIVE"
   | "CLIENT_STATE_DISABLED";
-export const GoogleCloudIntegrationsV1alphaClientConfigClientStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaClientConfigClientStateEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaClientConfigBillingTypeEnum =
   | "BILLING_TYPE_UNSPECIFIED"
   | "BILLING_TYPE_APIGEE_TRIALS"
   | "BILLING_TYPE_APIGEE_SUBSCRIPTION"
   | "BILLING_TYPE_PAYG";
-export const GoogleCloudIntegrationsV1alphaClientConfigBillingTypeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaClientConfigBillingTypeEnum = S.String;
 
 /** The configuration information for the Client */
 export interface GoogleCloudIntegrationsV1alphaClientConfig {
@@ -5472,7 +5404,7 @@ export interface GoogleCloudIntegrationsV1alphaClientConfig {
   /** The service agent associated with this client */
   p4ServiceAccount?: string;
 }
-export const GoogleCloudIntegrationsV1alphaClientConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaClientConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     clientState: S.optional(GoogleCloudIntegrationsV1alphaClientConfigClientStateEnum),
@@ -5500,7 +5432,7 @@ export interface GoogleCloudIntegrationsV1alphaGetClientResponse {
   /** Required. Required: The client configuration that was requested */
   client?: GoogleCloudIntegrationsV1alphaClientConfig;
 }
-export const GoogleCloudIntegrationsV1alphaGetClientResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaGetClientResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client: S.optional(GoogleCloudIntegrationsV1alphaClientConfig),
   }),
@@ -5512,16 +5444,15 @@ export interface GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest 
   /** Required. ConnectionSchemaMetadata name. Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
 }
-export const GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
-    ),
-  ).annotate({
-    identifier: "GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
+const GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
+  ),
+).annotate({
+  identifier: "GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest",
+}) as any as S.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
 
 /** Metadata of runtime connection schema. */
 export interface GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata {
@@ -5530,7 +5461,7 @@ export interface GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata {
   /** List of actions. */
   actions?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entities: S.optional(StringList),
     actions: S.optional(StringList),
@@ -5543,7 +5474,7 @@ export interface GetProjectsLocationsAuthConfigsRequest {
   /** Required. The name that is associated with the AuthConfig. */
   name: string;
 }
-export const GetProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5557,7 +5488,7 @@ export interface GetProjectsLocationsCertificatesRequest {
   /** Required. The certificate to retrieve. Format: projects/{project}/locations/{location}/certificates/{certificate} */
   name: string;
 }
-export const GetProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5571,7 +5502,7 @@ export interface GetProjectsLocationsIntegrationsExecutionsRequest {
   /** Required. The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id} */
   name: string;
 }
-export const GetProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5587,11 +5518,11 @@ export type GoogleCloudIntegrationsV1alphaExecutionIntegrationVersionStateEnum =
   | "ACTIVE"
   | "ARCHIVED"
   | "SNAPSHOT";
-export const GoogleCloudIntegrationsV1alphaExecutionIntegrationVersionStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaExecutionIntegrationVersionStateEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaExecutionList =
   Array<GoogleCloudIntegrationsV1alphaExecution>;
-export const GoogleCloudIntegrationsV1alphaExecutionList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaExecutionList = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleCloudIntegrationsV1alphaExecution),
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecutionList>;
 
@@ -5599,7 +5530,7 @@ export type GoogleCloudIntegrationsV1alphaExecutionReplayInfoReplayModeEnum =
   | "REPLAY_MODE_UNSPECIFIED"
   | "REPLAY_MODE_FROM_BEGINNING"
   | "REPLAY_MODE_POINT_OF_FAILURE";
-export const GoogleCloudIntegrationsV1alphaExecutionReplayInfoReplayModeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaExecutionReplayInfoReplayModeEnum = S.String;
 
 /** Contains the details of the execution info: this includes the replay reason and replay tree connecting executions in a parent-child relationship */
 export interface GoogleCloudIntegrationsV1alphaExecutionReplayInfo {
@@ -5612,7 +5543,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionReplayInfo {
   /** reason for replay */
   replayReason?: string;
 }
-export const GoogleCloudIntegrationsV1alphaExecutionReplayInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaExecutionReplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalExecutionInfoId: S.optional(S.String),
     replayMode: S.optional(GoogleCloudIntegrationsV1alphaExecutionReplayInfoReplayModeEnum),
@@ -5628,7 +5559,7 @@ export type GoogleCloudIntegrationsV1alphaExecutionExecutionMethodEnum =
   | "POST"
   | "POST_TO_QUEUE"
   | "SCHEDULE";
-export const GoogleCloudIntegrationsV1alphaExecutionExecutionMethodEnum = S.String;
+const GoogleCloudIntegrationsV1alphaExecutionExecutionMethodEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoEventExecutionDetailsEventExecutionStateEnum =
   | "UNSPECIFIED"
@@ -5639,7 +5570,7 @@ export type EnterpriseCrmEventbusProtoEventExecutionDetailsEventExecutionStateEn
   | "CANCELED"
   | "RETRY_ON_HOLD"
   | "SUSPENDED";
-export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventExecutionStateEnum = S.String;
+const EnterpriseCrmEventbusProtoEventExecutionDetailsEventExecutionStateEnum = S.String;
 
 export interface EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata {
   /** The direct integration which the event execution snapshots belongs to */
@@ -5659,7 +5590,7 @@ export interface EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionS
   /** the task attempt number this snapshot belongs to. Could be empty. */
   taskAttemptNum?: number;
 }
-export const EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata =
+const EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       integrationName: S.optional(S.String),
@@ -5684,7 +5615,7 @@ export interface EnterpriseCrmEventbusProtoConditionResult {
   /** the next task number. */
   nextTaskNumber?: string;
 }
-export const EnterpriseCrmEventbusProtoConditionResult = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoConditionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentTaskNumber: S.optional(S.String),
     result: S.optional(S.Boolean),
@@ -5696,7 +5627,7 @@ export const EnterpriseCrmEventbusProtoConditionResult = /*@__PURE__*/ S.suspend
 
 export type EnterpriseCrmEventbusProtoConditionResultList =
   Array<EnterpriseCrmEventbusProtoConditionResult>;
-export const EnterpriseCrmEventbusProtoConditionResultList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoConditionResultList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoConditionResult,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoConditionResultList>;
 
@@ -5714,7 +5645,7 @@ export type EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskExecutionStateEnum
   | "ROLLBACK_IN_PROCESS"
   | "ROLLEDBACK"
   | "SUSPENDED";
-export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskExecutionStateEnum = S.String;
+const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskExecutionStateEnum = S.String;
 
 export interface EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats {
   /** The start time of the task execution for current attempt. This could be in the future if it's been scheduled. */
@@ -5722,22 +5653,20 @@ export interface EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats 
   /** The end time of the task execution for current attempt. */
   endTime?: string;
 }
-export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      startTime: S.optional(S.String),
-      endTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats",
-  }) as any as S.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>;
+const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats",
+}) as any as S.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>;
 
 export type EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStatsList =
   Array<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>;
-export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStatsList =
-  /*@__PURE__*/ S.Array(
-    EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats,
-  ) as any as S.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStatsList>;
+const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStatsList = /*@__PURE__*/ S.Array(
+  EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats,
+) as any as S.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStatsList>;
 
 /** Contains the details of the execution of this task. Next available id: 11 */
 export interface EnterpriseCrmEventbusProtoTaskExecutionDetails {
@@ -5748,7 +5677,7 @@ export interface EnterpriseCrmEventbusProtoTaskExecutionDetails {
   /** Pointer to the task config it used for execution. */
   taskNumber?: string;
 }
-export const EnterpriseCrmEventbusProtoTaskExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoTaskExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skippedOnFailure: S.optional(S.Boolean),
     taskExecutionState: S.optional(
@@ -5765,7 +5694,7 @@ export const EnterpriseCrmEventbusProtoTaskExecutionDetails = /*@__PURE__*/ S.su
 
 export type EnterpriseCrmEventbusProtoTaskExecutionDetailsList =
   Array<EnterpriseCrmEventbusProtoTaskExecutionDetails>;
-export const EnterpriseCrmEventbusProtoTaskExecutionDetailsList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoTaskExecutionDetailsList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoTaskExecutionDetails,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsList>;
 
@@ -5797,7 +5726,7 @@ export interface EnterpriseCrmEventbusProtoEventExecutionSnapshot {
   /** Points to the event execution info this snapshot belongs to. */
   eventExecutionInfoId?: string;
 }
-export const EnterpriseCrmEventbusProtoEventExecutionSnapshot = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoEventExecutionSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventExecutionSnapshotMetadata: S.optional(
       EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata,
@@ -5821,7 +5750,7 @@ export const EnterpriseCrmEventbusProtoEventExecutionSnapshot = /*@__PURE__*/ S.
 
 export type EnterpriseCrmEventbusProtoEventExecutionSnapshotList =
   Array<EnterpriseCrmEventbusProtoEventExecutionSnapshot>;
-export const EnterpriseCrmEventbusProtoEventExecutionSnapshotList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoEventExecutionSnapshotList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoEventExecutionSnapshot,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoEventExecutionSnapshotList>;
 
@@ -5831,22 +5760,21 @@ export interface EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStat
   /** The start time of the event execution for current attempt. This could be in the future if it's been scheduled. */
   startTime?: string;
 }
-export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats =
-  /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       endTime: S.optional(S.String),
       startTime: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats",
-  }) as any as S.Schema<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
+).annotate({
+  identifier: "EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats",
+}) as any as S.Schema<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
 
 export type EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList =
   Array<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
-export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList =
-  /*@__PURE__*/ S.Array(
-    EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats,
-  ) as any as S.Schema<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList>;
+const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList = /*@__PURE__*/ S.Array(
+  EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats,
+) as any as S.Schema<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList>;
 
 /** Contains the details of the execution info of this event: this includes the tasks execution details plus the event execution statistics. Next available id: 12 */
 export interface EnterpriseCrmEventbusProtoEventExecutionDetails {
@@ -5868,7 +5796,7 @@ export interface EnterpriseCrmEventbusProtoEventExecutionDetails {
   /** The log file path (aka. cns address) for this event. */
   logFilePath?: string;
 }
-export const EnterpriseCrmEventbusProtoEventExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoEventExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventExecutionState: S.optional(
       EnterpriseCrmEventbusProtoEventExecutionDetailsEventExecutionStateEnum,
@@ -5908,7 +5836,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapsho
   /** The direct integration which the event execution snapshots belongs to */
   integrationName?: string;
 }
-export const GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata =
+const GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       taskLabel: S.optional(S.String),
@@ -5938,7 +5866,7 @@ export type GoogleCloudIntegrationsV1alphaTaskExecutionDetailsTaskExecutionState
   | "ROLLBACK_IN_PROCESS"
   | "ROLLEDBACK"
   | "SUSPENDED";
-export const GoogleCloudIntegrationsV1alphaTaskExecutionDetailsTaskExecutionStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTaskExecutionDetailsTaskExecutionStateEnum = S.String;
 
 /** Status for the execution attempt. */
 export interface GoogleCloudIntegrationsV1alphaAttemptStats {
@@ -5947,7 +5875,7 @@ export interface GoogleCloudIntegrationsV1alphaAttemptStats {
   /** The end time of the integration execution for current attempt. */
   endTime?: string;
 }
-export const GoogleCloudIntegrationsV1alphaAttemptStats = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaAttemptStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -5958,7 +5886,7 @@ export const GoogleCloudIntegrationsV1alphaAttemptStats = /*@__PURE__*/ S.suspen
 
 export type GoogleCloudIntegrationsV1alphaAttemptStatsList =
   Array<GoogleCloudIntegrationsV1alphaAttemptStats>;
-export const GoogleCloudIntegrationsV1alphaAttemptStatsList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaAttemptStatsList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaAttemptStats,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaAttemptStatsList>;
 
@@ -5971,7 +5899,7 @@ export interface GoogleCloudIntegrationsV1alphaTaskExecutionDetails {
   /** Pointer to the task config it used for execution. */
   taskNumber?: string;
 }
-export const GoogleCloudIntegrationsV1alphaTaskExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTaskExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskExecutionState: S.optional(
       GoogleCloudIntegrationsV1alphaTaskExecutionDetailsTaskExecutionStateEnum,
@@ -5985,7 +5913,7 @@ export const GoogleCloudIntegrationsV1alphaTaskExecutionDetails = /*@__PURE__*/ 
 
 export type GoogleCloudIntegrationsV1alphaTaskExecutionDetailsList =
   Array<GoogleCloudIntegrationsV1alphaTaskExecutionDetails>;
-export const GoogleCloudIntegrationsV1alphaTaskExecutionDetailsList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaTaskExecutionDetailsList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTaskExecutionDetails,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTaskExecutionDetailsList>;
 
@@ -6000,7 +5928,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionSnapshot {
   /** All of the task execution details at the given point of time. */
   taskExecutionDetails?: GoogleCloudIntegrationsV1alphaTaskExecutionDetailsList;
 }
-export const GoogleCloudIntegrationsV1alphaExecutionSnapshot = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaExecutionSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     params: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
     checkpointTaskNumber: S.optional(S.String),
@@ -6015,7 +5943,7 @@ export const GoogleCloudIntegrationsV1alphaExecutionSnapshot = /*@__PURE__*/ S.s
 
 export type GoogleCloudIntegrationsV1alphaExecutionSnapshotList =
   Array<GoogleCloudIntegrationsV1alphaExecutionSnapshot>;
-export const GoogleCloudIntegrationsV1alphaExecutionSnapshotList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaExecutionSnapshotList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaExecutionSnapshot,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecutionSnapshotList>;
 
@@ -6028,7 +5956,7 @@ export type GoogleCloudIntegrationsV1alphaExecutionDetailsStateEnum =
   | "CANCELLED"
   | "RETRY_ON_HOLD"
   | "SUSPENDED";
-export const GoogleCloudIntegrationsV1alphaExecutionDetailsStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaExecutionDetailsStateEnum = S.String;
 
 /** Contains the details of the execution info: this includes the tasks execution details plus the event execution statistics. */
 export interface GoogleCloudIntegrationsV1alphaExecutionDetails {
@@ -6041,7 +5969,7 @@ export interface GoogleCloudIntegrationsV1alphaExecutionDetails {
   /** Status of the execution. */
   state?: GoogleCloudIntegrationsV1alphaExecutionDetailsStateEnum;
 }
-export const GoogleCloudIntegrationsV1alphaExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventExecutionSnapshotsSize: S.optional(S.String),
     executionSnapshots: S.optional(GoogleCloudIntegrationsV1alphaExecutionSnapshotList),
@@ -6088,7 +6016,7 @@ export interface GoogleCloudIntegrationsV1alphaExecution {
   /** Optional. Cloud KMS resource name for the CMEK encryption key. */
   cloudKmsKey?: string;
 }
-export const GoogleCloudIntegrationsV1alphaExecution = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationVersionState: S.optional(
       GoogleCloudIntegrationsV1alphaExecutionIntegrationVersionStateEnum,
@@ -6118,7 +6046,7 @@ export interface GetProjectsLocationsIntegrationsVersionsRequest {
   /** Required. The version to retrieve. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
   name: string;
 }
-export const GetProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6132,13 +6060,12 @@ export interface GetProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Required. The ID of the test case to retrieve */
   name: string;
 }
-export const GetProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
-    ),
+const GetProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsIntegrationsVersionsTestCasesRequest",
 }) as any as S.Schema<GetProjectsLocationsIntegrationsVersionsTestCasesRequest>;
@@ -6147,7 +6074,7 @@ export interface GetProjectsLocationsProductsAuthConfigsRequest {
   /** Required. The name that is associated with the AuthConfig. */
   name: string;
 }
-export const GetProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6161,7 +6088,7 @@ export interface GetProjectsLocationsProductsCertificatesRequest {
   /** Required. The certificate to retrieve. Format: projects/{project}/locations/{location}/certificates/{certificate} */
   name: string;
 }
-export const GetProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6175,13 +6102,12 @@ export interface GetProjectsLocationsProductsIntegrationsExecutionsRequest {
   /** Required. The execution resource name. Format: projects/{gcp_project_id}/locations/{location}/products/{product}/integrations/{integration_id}/executions/{execution_id} */
   name: string;
 }
-export const GetProjectsLocationsProductsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
-    ),
+const GetProjectsLocationsProductsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsProductsIntegrationsExecutionsRequest",
 }) as any as S.Schema<GetProjectsLocationsProductsIntegrationsExecutionsRequest>;
@@ -6190,7 +6116,7 @@ export interface GetProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Required. The version to retrieve. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
   name: string;
 }
-export const GetProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6204,7 +6130,7 @@ export interface GetProjectsLocationsProductsSfdcInstancesRequest {
   /** Required. The name that is associated with the SfdcInstance. */
   name: string;
 }
-export const GetProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6218,13 +6144,12 @@ export interface GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest {
   /** Required. The name that is associated with the SfdcChannel. */
   name: string;
 }
-export const GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
-    ),
+const GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://integrations.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
 }) as any as S.Schema<GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
@@ -6233,7 +6158,7 @@ export interface GetProjectsLocationsSfdcInstancesRequest {
   /** Required. The name that is associated with the SfdcInstance. */
   name: string;
 }
-export const GetProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6247,7 +6172,7 @@ export interface GetProjectsLocationsSfdcInstancesSfdcChannelsRequest {
   /** Required. The name that is associated with the SfdcChannel. */
   name: string;
 }
-export const GetProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6261,7 +6186,7 @@ export interface GetProjectsLocationsTemplatesRequest {
   /** Required. The template to retrieve. Format: projects/{project}/locations/{location}/templates/{template} */
   name: string;
 }
-export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6278,20 +6203,20 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDeta
   /** Required. Name of the sub integration which would be created via templates. */
   integration?: string;
 }
-export const GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       integrationDescription: S.optional(S.String),
       integration: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails>;
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails>;
 
 export type GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetailsMap = {
   [key: string]: GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails | undefined;
 };
-export const GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetailsMap =
+const GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetailsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails,
@@ -6304,7 +6229,7 @@ export interface GoogleCloudIntegrationsV1alphaImportTemplateRequest {
   /** Required. Resource Name of the integration where template needs to be imported/inserted. */
   integration?: string;
 }
-export const GoogleCloudIntegrationsV1alphaImportTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaImportTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subIntegrations: S.optional(
       GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetailsMap,
@@ -6321,7 +6246,7 @@ export interface ImportProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaImportTemplateRequest;
 }
-export const ImportProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaImportTemplateRequest.pipe(T.HttpBody())),
@@ -6338,7 +6263,7 @@ export const ImportProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudIntegrationsV1alphaIntegrationVersionList =
   Array<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
-export const GoogleCloudIntegrationsV1alphaIntegrationVersionList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaIntegrationVersionList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaIntegrationVersion,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersionList>;
 
@@ -6349,7 +6274,7 @@ export interface GoogleCloudIntegrationsV1alphaImportTemplateResponse {
   /** IntegrationVersion after the import. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const GoogleCloudIntegrationsV1alphaImportTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaImportTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subIntegrationVersions: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersionList),
     integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
@@ -6363,7 +6288,7 @@ export interface GoogleCloudIntegrationsV1alphaLiftSuspensionRequest {
   /** User passed in suspension result and will be used to control workflow execution branching behavior by setting up corresponnding edge condition with suspension result. For example, if you want to lift the suspension, you can pass "Approved", or if you want to reject the suspension and terminate workfloe execution, you can pass "Rejected" and terminate the workflow execution with configuring the edge condition. */
   suspensionResult?: string;
 }
-export const GoogleCloudIntegrationsV1alphaLiftSuspensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaLiftSuspensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suspensionResult: S.optional(S.String),
   }),
@@ -6377,28 +6302,27 @@ export interface LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaLiftSuspensionRequest;
 }
-export const LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudIntegrationsV1alphaLiftSuspensionRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:lift",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
-  }) as any as S.Schema<LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
+const LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudIntegrationsV1alphaLiftSuspensionRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:lift",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
+}) as any as S.Schema<LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
 /** Response of lift Suspense */
 export interface GoogleCloudIntegrationsV1alphaLiftSuspensionResponse {
   /** Execution Id that will be returned */
   eventExecutionInfoId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaLiftSuspensionResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaLiftSuspensionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventExecutionInfoId: S.optional(S.String),
   }),
@@ -6412,7 +6336,7 @@ export interface LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsR
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaLiftSuspensionRequest;
 }
-export const LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest =
+const LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -6433,11 +6357,10 @@ export interface GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest {
   /** The id of the Apps Script project to be linked. */
   scriptId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scriptId: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scriptId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest>;
@@ -6448,7 +6371,7 @@ export interface LinkProjectsLocationsAppsScriptProjectsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest;
 }
-export const LinkProjectsLocationsAppsScriptProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkProjectsLocationsAppsScriptProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest.pipe(T.HttpBody())),
@@ -6468,7 +6391,7 @@ export interface GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse {
   /** The id of the linked Apps Script project. */
   scriptId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse =
+const GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse =
   GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest as any as S.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse>;
 
 export interface ListProjectsLocationsAuthConfigsRequest {
@@ -6483,7 +6406,7 @@ export interface ListProjectsLocationsAuthConfigsRequest {
   /** Filtering as supported in https://developers.google.com/authorized-buyers/apis/guides/list-filters. */
   filter?: string;
 }
-export const ListProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -6503,7 +6426,7 @@ export const ListProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudIntegrationsV1alphaAuthConfigList =
   Array<GoogleCloudIntegrationsV1alphaAuthConfig>;
-export const GoogleCloudIntegrationsV1alphaAuthConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaAuthConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaAuthConfig,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfigList>;
 
@@ -6514,7 +6437,7 @@ export interface GoogleCloudIntegrationsV1alphaListAuthConfigsResponse {
   /** The token used to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListAuthConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListAuthConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authConfigs: S.optional(GoogleCloudIntegrationsV1alphaAuthConfigList),
     nextPageToken: S.optional(S.String),
@@ -6535,7 +6458,7 @@ export interface ListProjectsLocationsCertificatesRequest {
   /** The size of entries in the response. If unspecified, defaults to 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -6555,7 +6478,7 @@ export const ListProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudIntegrationsV1alphaCertificateList =
   Array<GoogleCloudIntegrationsV1alphaCertificate>;
-export const GoogleCloudIntegrationsV1alphaCertificateList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaCertificateList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaCertificate,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificateList>;
 
@@ -6566,7 +6489,7 @@ export interface GoogleCloudIntegrationsV1alphaListCertificatesResponse {
   /** The token used to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificates: S.optional(GoogleCloudIntegrationsV1alphaCertificateList),
     nextPageToken: S.optional(S.String),
@@ -6587,7 +6510,7 @@ export interface ListProjectsLocationsConnectionsRequest {
   /** Order by parameters. */
   orderBy?: string;
 }
-export const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6614,13 +6537,12 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims {
   /** Optional. Value for the "iss" claim. */
   issuer?: string;
 }
-export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      audience: S.optional(S.String),
-      subject: S.optional(S.String),
-      issuer: S.optional(S.String),
-    }),
+const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    audience: S.optional(S.String),
+    subject: S.optional(S.String),
+    issuer: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims",
 }) as any as S.Schema<GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims>;
@@ -6630,7 +6552,7 @@ export interface GoogleCloudConnectorsV1Secret {
   /** Optional. The resource name of the secret version in the format, format as: `projects/*\/secrets/*\/versions/*`. */
   secretVersion?: string;
 }
-export const GoogleCloudConnectorsV1Secret = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1Secret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretVersion: S.optional(S.String),
   }),
@@ -6645,7 +6567,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer {
   /** Optional. Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*\/secrets/*\/versions/*`. */
   clientKey?: GoogleCloudConnectorsV1Secret;
 }
-export const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwtClaims: S.optional(GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims),
     clientKey: S.optional(GoogleCloudConnectorsV1Secret),
@@ -6663,22 +6585,22 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManage
   /** Optional. Redirect URI to be provided during the auth code exchange. */
   redirectUri?: string;
 }
-export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       authCode: S.optional(S.String),
       scopes: S.optional(StringList),
       redirectUri: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged",
-  }) as any as S.Schema<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged>;
+).annotate({
+  identifier: "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged",
+}) as any as S.Schema<GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged>;
 
 export type GoogleCloudConnectorsV1EncryptionKeyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_MANAGED"
   | "CUSTOMER_MANAGED";
-export const GoogleCloudConnectorsV1EncryptionKeyTypeEnum = S.String;
+const GoogleCloudConnectorsV1EncryptionKeyTypeEnum = S.String;
 
 /** Encryption Key value. */
 export interface GoogleCloudConnectorsV1EncryptionKey {
@@ -6687,7 +6609,7 @@ export interface GoogleCloudConnectorsV1EncryptionKey {
   /** Optional. The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*`. Will be empty string if google managed. */
   kmsKeyName?: string;
 }
-export const GoogleCloudConnectorsV1EncryptionKey = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1EncryptionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleCloudConnectorsV1EncryptionKeyTypeEnum),
     kmsKeyName: S.optional(S.String),
@@ -6711,7 +6633,7 @@ export interface GoogleCloudConnectorsV1ConfigVariable {
   /** Optional. Value is a bool. */
   boolValue?: boolean;
 }
-export const GoogleCloudConnectorsV1ConfigVariable = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1ConfigVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intValue: S.optional(S.String),
     key: S.optional(S.String),
@@ -6726,7 +6648,7 @@ export const GoogleCloudConnectorsV1ConfigVariable = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudConnectorsV1ConfigVariableList =
   Array<GoogleCloudConnectorsV1ConfigVariable>;
-export const GoogleCloudConnectorsV1ConfigVariableList = /*@__PURE__*/ S.Array(
+const GoogleCloudConnectorsV1ConfigVariableList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1ConfigVariable,
 ) as any as S.Schema<GoogleCloudConnectorsV1ConfigVariableList>;
 
@@ -6737,12 +6659,11 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials {
   /** Optional. The client identifier. */
   clientId?: string;
 }
-export const GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientSecret: S.optional(GoogleCloudConnectorsV1Secret),
-      clientId: S.optional(S.String),
-    }),
+const GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientSecret: S.optional(GoogleCloudConnectorsV1Secret),
+    clientId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials",
 }) as any as S.Schema<GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials>;
@@ -6754,7 +6675,7 @@ export interface GoogleCloudConnectorsV1AuthConfigUserPassword {
   /** Optional. Secret version reference containing the password. */
   password?: GoogleCloudConnectorsV1Secret;
 }
-export const GoogleCloudConnectorsV1AuthConfigUserPassword = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1AuthConfigUserPassword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(GoogleCloudConnectorsV1Secret),
@@ -6774,7 +6695,7 @@ export interface GoogleCloudConnectorsV1AuthConfigSshPublicKey {
   /** Optional. The user account used to authenticate. */
   username?: string;
 }
-export const GoogleCloudConnectorsV1AuthConfigSshPublicKey = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1AuthConfigSshPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sshClientCertPass: S.optional(GoogleCloudConnectorsV1Secret),
     sshClientCert: S.optional(GoogleCloudConnectorsV1Secret),
@@ -6804,7 +6725,7 @@ export interface GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow {
   /** Optional. Auth URL for Authorization Code Flow */
   authUri?: string;
 }
-export const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pkceVerifier: S.optional(S.String),
     scopes: S.optional(StringList),
@@ -6828,7 +6749,7 @@ export type GoogleCloudConnectorsV1AuthConfigAuthTypeEnum =
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
   | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
-export const GoogleCloudConnectorsV1AuthConfigAuthTypeEnum = S.String;
+const GoogleCloudConnectorsV1AuthConfigAuthTypeEnum = S.String;
 
 /** AuthConfig defines details of a authentication type. */
 export interface GoogleCloudConnectorsV1AuthConfig {
@@ -6851,7 +6772,7 @@ export interface GoogleCloudConnectorsV1AuthConfig {
   /** Optional. The type of authentication configured. */
   authType?: GoogleCloudConnectorsV1AuthConfigAuthTypeEnum;
 }
-export const GoogleCloudConnectorsV1AuthConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1AuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth2JwtBearer: S.optional(GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer),
     oauth2AuthCodeFlowGoogleManaged: S.optional(
@@ -6874,7 +6795,7 @@ export interface GoogleCloudConnectorsV1EnrichmentConfig {
   /** Optional. Append ACL to the event. */
   appendAcl?: boolean;
 }
-export const GoogleCloudConnectorsV1EnrichmentConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1EnrichmentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appendAcl: S.optional(S.Boolean),
   }),
@@ -6883,16 +6804,16 @@ export const GoogleCloudConnectorsV1EnrichmentConfig = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GoogleCloudConnectorsV1EnrichmentConfig>;
 
 export type GoogleCloudConnectorsV1SslConfigServerCertTypeEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
-export const GoogleCloudConnectorsV1SslConfigServerCertTypeEnum = S.String;
+const GoogleCloudConnectorsV1SslConfigServerCertTypeEnum = S.String;
 
 export type GoogleCloudConnectorsV1SslConfigClientCertTypeEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
-export const GoogleCloudConnectorsV1SslConfigClientCertTypeEnum = S.String;
+const GoogleCloudConnectorsV1SslConfigClientCertTypeEnum = S.String;
 
 export type GoogleCloudConnectorsV1SslConfigTrustModelEnum = "PUBLIC" | "PRIVATE" | "INSECURE";
-export const GoogleCloudConnectorsV1SslConfigTrustModelEnum = S.String;
+const GoogleCloudConnectorsV1SslConfigTrustModelEnum = S.String;
 
 export type GoogleCloudConnectorsV1SslConfigTypeEnum = "SSL_TYPE_UNSPECIFIED" | "TLS" | "MTLS";
-export const GoogleCloudConnectorsV1SslConfigTypeEnum = S.String;
+const GoogleCloudConnectorsV1SslConfigTypeEnum = S.String;
 
 /** SSL Configuration of a connection */
 export interface GoogleCloudConnectorsV1SslConfig {
@@ -6917,7 +6838,7 @@ export interface GoogleCloudConnectorsV1SslConfig {
   /** Optional. Additional SSL related field values */
   additionalVariables?: GoogleCloudConnectorsV1ConfigVariableList;
 }
-export const GoogleCloudConnectorsV1SslConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1SslConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useSsl: S.optional(S.Boolean),
     serverCertType: S.optional(GoogleCloudConnectorsV1SslConfigServerCertTypeEnum),
@@ -6942,7 +6863,7 @@ export interface GoogleCloudConnectorsV1Destination {
   /** For publicly routable host. */
   host?: string;
 }
-export const GoogleCloudConnectorsV1Destination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     serviceAttachment: S.optional(S.String),
@@ -6953,7 +6874,7 @@ export const GoogleCloudConnectorsV1Destination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudConnectorsV1Destination>;
 
 export type GoogleCloudConnectorsV1DestinationList = Array<GoogleCloudConnectorsV1Destination>;
-export const GoogleCloudConnectorsV1DestinationList = /*@__PURE__*/ S.Array(
+const GoogleCloudConnectorsV1DestinationList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1Destination,
 ) as any as S.Schema<GoogleCloudConnectorsV1DestinationList>;
 
@@ -6964,7 +6885,7 @@ export interface GoogleCloudConnectorsV1DestinationConfig {
   /** Optional. The destinations for the key. */
   destinations?: GoogleCloudConnectorsV1DestinationList;
 }
-export const GoogleCloudConnectorsV1DestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1DestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     destinations: S.optional(GoogleCloudConnectorsV1DestinationList),
@@ -6980,7 +6901,7 @@ export interface GoogleCloudConnectorsV1EventingConfigDeadLetterConfig {
   /** Optional. Project which has the topic given. */
   projectId?: string;
 }
-export const GoogleCloudConnectorsV1EventingConfigDeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1EventingConfigDeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -7020,7 +6941,7 @@ export interface GoogleCloudConnectorsV1EventingConfig {
   /** Optional. Additional eventing related field values */
   additionalVariables?: GoogleCloudConnectorsV1ConfigVariableList;
 }
-export const GoogleCloudConnectorsV1EventingConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1EventingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedEventTypes: S.optional(StringList),
     enrichmentEnabled: S.optional(S.Boolean),
@@ -7048,7 +6969,7 @@ export interface GoogleCloudConnectorsV1NodeConfig {
   /** Optional. Maximum number of nodes in the runtime nodes. */
   maxNodeCount?: number;
 }
-export const GoogleCloudConnectorsV1NodeConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1NodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minNodeCount: S.optional(S.Number),
     maxNodeCount: S.optional(S.Number),
@@ -7064,7 +6985,7 @@ export interface GoogleCloudConnectorsV1TrafficShapingConfig {
   /** Required. Specifies the duration over which the API call quota limits are calculated. This duration is used to define the time window for evaluating if the number of API calls made by a user is within the allowed quota limits. For example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and so on. It is important to note that this duration is not the time the quota is valid for, but rather the time window over which the quota is evaluated. For example, if the quota is 100 calls per 10 seconds, then this duration field would be set to 10 seconds. */
   duration?: string;
 }
-export const GoogleCloudConnectorsV1TrafficShapingConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1TrafficShapingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaLimit: S.optional(S.String),
     duration: S.optional(S.String),
@@ -7075,7 +6996,7 @@ export const GoogleCloudConnectorsV1TrafficShapingConfig = /*@__PURE__*/ S.suspe
 
 export type GoogleCloudConnectorsV1TrafficShapingConfigList =
   Array<GoogleCloudConnectorsV1TrafficShapingConfig>;
-export const GoogleCloudConnectorsV1TrafficShapingConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudConnectorsV1TrafficShapingConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1TrafficShapingConfig,
 ) as any as S.Schema<GoogleCloudConnectorsV1TrafficShapingConfigList>;
 
@@ -7083,11 +7004,11 @@ export type GoogleCloudConnectorsV1ConnectionSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "PAY_G"
   | "PAID";
-export const GoogleCloudConnectorsV1ConnectionSubscriptionTypeEnum = S.String;
+const GoogleCloudConnectorsV1ConnectionSubscriptionTypeEnum = S.String;
 
 export type GoogleCloudConnectorsV1DestinationConfigList =
   Array<GoogleCloudConnectorsV1DestinationConfig>;
-export const GoogleCloudConnectorsV1DestinationConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudConnectorsV1DestinationConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1DestinationConfig,
 ) as any as S.Schema<GoogleCloudConnectorsV1DestinationConfigList>;
 
@@ -7098,7 +7019,7 @@ export interface GoogleCloudConnectorsV1LockConfig {
   /** Optional. Describes why a connection is locked. */
   reason?: string;
 }
-export const GoogleCloudConnectorsV1LockConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1LockConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locked: S.optional(S.Boolean),
     reason: S.optional(S.String),
@@ -7114,7 +7035,7 @@ export type GoogleCloudConnectorsV1ConnectionConnectorVersionLaunchStageEnum =
   | "DEPRECATED"
   | "TEST"
   | "PRIVATE_PREVIEW";
-export const GoogleCloudConnectorsV1ConnectionConnectorVersionLaunchStageEnum = S.String;
+const GoogleCloudConnectorsV1ConnectionConnectorVersionLaunchStageEnum = S.String;
 
 /** WebhookData has details of webhook configuration. */
 export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
@@ -7135,7 +7056,7 @@ export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookData {
   /** Output only. Name of the Webhook */
   name?: string;
 }
-export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     nextRefreshTime: S.optional(S.String),
@@ -7152,7 +7073,7 @@ export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData = /*@__PURE__
 
 export type GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList =
   Array<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>;
-export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList = /*@__PURE__*/ S.Array(
+const GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1EventingRuntimeDataWebhookData,
 ) as any as S.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList>;
 
@@ -7161,21 +7082,20 @@ export interface GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions 
   /** Output only. Webhook data. */
   webhookData?: GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList;
 }
-export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      webhookData: S.optional(GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions",
-  }) as any as S.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions>;
+const GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    webhookData: S.optional(GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList),
+  }),
+).annotate({
+  identifier: "GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions",
+}) as any as S.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions>;
 
 export type GoogleCloudConnectorsV1EventingStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ERROR"
   | "INGRESS_ENDPOINT_REQUIRED";
-export const GoogleCloudConnectorsV1EventingStatusStateEnum = S.String;
+const GoogleCloudConnectorsV1EventingStatusStateEnum = S.String;
 
 /** EventingStatus indicates the state of eventing. */
 export interface GoogleCloudConnectorsV1EventingStatus {
@@ -7184,7 +7104,7 @@ export interface GoogleCloudConnectorsV1EventingStatus {
   /** Output only. Description of error if State is set to "ERROR". */
   description?: string;
 }
-export const GoogleCloudConnectorsV1EventingStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1EventingStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleCloudConnectorsV1EventingStatusStateEnum),
     description: S.optional(S.String),
@@ -7206,7 +7126,7 @@ export interface GoogleCloudConnectorsV1EventingRuntimeData {
   /** Output only. Current status of eventing. */
   status?: GoogleCloudConnectorsV1EventingStatus;
 }
-export const GoogleCloudConnectorsV1EventingRuntimeData = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1EventingRuntimeData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookSubscriptions: S.optional(
       GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions,
@@ -7225,7 +7145,7 @@ export type GoogleCloudConnectorsV1LogConfigLevelEnum =
   | "ERROR"
   | "INFO"
   | "DEBUG";
-export const GoogleCloudConnectorsV1LogConfigLevelEnum = S.String;
+const GoogleCloudConnectorsV1LogConfigLevelEnum = S.String;
 
 /** Log configuration for the connection. */
 export interface GoogleCloudConnectorsV1LogConfig {
@@ -7234,7 +7154,7 @@ export interface GoogleCloudConnectorsV1LogConfig {
   /** Optional. Log configuration level. */
   level?: GoogleCloudConnectorsV1LogConfigLevelEnum;
 }
-export const GoogleCloudConnectorsV1LogConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1LogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     level: S.optional(GoogleCloudConnectorsV1LogConfigLevelEnum),
@@ -7250,7 +7170,7 @@ export interface GoogleCloudConnectorsV1HPAConfig {
   /** Output only. Percent CPU utilization where HPA triggers autoscaling. */
   cpuUtilizationThreshold?: string;
 }
-export const GoogleCloudConnectorsV1HPAConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1HPAConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryUtilizationThreshold: S.optional(S.String),
     cpuUtilizationThreshold: S.optional(S.String),
@@ -7263,7 +7183,7 @@ export type GoogleCloudConnectorsV1ConnectorVersionInfraConfigTlsMigrationStateE
   | "TLS_MIGRATION_STATE_UNSPECIFIED"
   | "TLS_MIGRATION_NOT_STARTED"
   | "TLS_MIGRATION_COMPLETED";
-export const GoogleCloudConnectorsV1ConnectorVersionInfraConfigTlsMigrationStateEnum = S.String;
+const GoogleCloudConnectorsV1ConnectorVersionInfraConfigTlsMigrationStateEnum = S.String;
 
 /** Resource limits defined for connection pods of a given connector type. */
 export interface GoogleCloudConnectorsV1ResourceLimits {
@@ -7272,7 +7192,7 @@ export interface GoogleCloudConnectorsV1ResourceLimits {
   /** Output only. Memory limit. */
   memory?: string;
 }
-export const GoogleCloudConnectorsV1ResourceLimits = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1ResourceLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu: S.optional(S.String),
     memory: S.optional(S.String),
@@ -7288,14 +7208,14 @@ export interface GoogleCloudConnectorsV1ResourceRequests {
   /** Output only. Memory request. */
   memory?: string;
 }
-export const GoogleCloudConnectorsV1ResourceRequests =
+const GoogleCloudConnectorsV1ResourceRequests =
   GoogleCloudConnectorsV1ResourceLimits as any as S.Schema<GoogleCloudConnectorsV1ResourceRequests>;
 
 export type GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "GKE_MST"
   | "CLOUD_RUN_MST";
-export const GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelEnum = S.String;
+const GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelEnum = S.String;
 
 export type GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
   | "DEPLOYMENT_MODEL_MIGRATION_STATE_UNSPECIFIED"
@@ -7303,7 +7223,7 @@ export type GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelMig
   | "COMPLETED"
   | "ROLLEDBACK"
   | "ROLLBACK_IN_PROGRESS";
-export const GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
+const GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
   S.String;
 
 /** This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version */
@@ -7331,7 +7251,7 @@ export interface GoogleCloudConnectorsV1ConnectorVersionInfraConfig {
   /** Output only. Status of the deployment model migration. */
   deploymentModelMigrationState?: GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum;
 }
-export const GoogleCloudConnectorsV1ConnectorVersionInfraConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1ConnectorVersionInfraConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internalclientRatelimitThreshold: S.optional(S.String),
     ratelimitThreshold: S.optional(S.String),
@@ -7359,14 +7279,14 @@ export type GoogleCloudConnectorsV1BillingConfigBillingCategoryEnum =
   | "BILLING_CATEGORY_UNSPECIFIED"
   | "GCP_AND_TECHNICAL_CONNECTOR"
   | "NON_GCP_CONNECTOR";
-export const GoogleCloudConnectorsV1BillingConfigBillingCategoryEnum = S.String;
+const GoogleCloudConnectorsV1BillingConfigBillingCategoryEnum = S.String;
 
 /** Billing config for the connection. */
 export interface GoogleCloudConnectorsV1BillingConfig {
   /** Output only. Billing category for the connector. */
   billingCategory?: GoogleCloudConnectorsV1BillingConfigBillingCategoryEnum;
 }
-export const GoogleCloudConnectorsV1BillingConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1BillingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingCategory: S.optional(GoogleCloudConnectorsV1BillingConfigBillingCategoryEnum),
   }),
@@ -7383,7 +7303,7 @@ export type GoogleCloudConnectorsV1ConnectionStatusStateEnum =
   | "UPDATING"
   | "ERROR"
   | "AUTHORIZATION_REQUIRED";
-export const GoogleCloudConnectorsV1ConnectionStatusStateEnum = S.String;
+const GoogleCloudConnectorsV1ConnectionStatusStateEnum = S.String;
 
 /** ConnectionStatus indicates the state of the connection. */
 export interface GoogleCloudConnectorsV1ConnectionStatus {
@@ -7394,7 +7314,7 @@ export interface GoogleCloudConnectorsV1ConnectionStatus {
   /** State. */
   state?: GoogleCloudConnectorsV1ConnectionStatusStateEnum;
 }
-export const GoogleCloudConnectorsV1ConnectionStatus = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1ConnectionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -7408,14 +7328,14 @@ export type GoogleCloudConnectorsV1ConnectionEventingEnablementTypeEnum =
   | "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"
   | "EVENTING_AND_CONNECTION"
   | "ONLY_EVENTING";
-export const GoogleCloudConnectorsV1ConnectionEventingEnablementTypeEnum = S.String;
+const GoogleCloudConnectorsV1ConnectionEventingEnablementTypeEnum = S.String;
 
 /** StringListValues is a message to store a list of string values. */
 export interface GoogleCloudConnectorsV1AdminFiltersStringListValues {
   /** Required. The list of string values. */
   listValues?: StringList;
 }
-export const GoogleCloudConnectorsV1AdminFiltersStringListValues = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1AdminFiltersStringListValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listValues: S.optional(StringList),
   }),
@@ -7427,7 +7347,7 @@ export type GoogleCloudConnectorsV1AdminFiltersFilterTypeEnum =
   | "FILTER_TYPE_UNSPECIFIED"
   | "INCLUSION"
   | "EXCLUSION";
-export const GoogleCloudConnectorsV1AdminFiltersFilterTypeEnum = S.String;
+const GoogleCloudConnectorsV1AdminFiltersFilterTypeEnum = S.String;
 
 /** * AdminFilters defines a set of filters that can be applied to a connection. These are currently used by Gemini Enterprise connections. */
 export interface GoogleCloudConnectorsV1AdminFilters {
@@ -7442,7 +7362,7 @@ export interface GoogleCloudConnectorsV1AdminFilters {
   /** Optional. A single string value. */
   stringValue?: string;
 }
-export const GoogleCloudConnectorsV1AdminFilters = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1AdminFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intValue: S.optional(S.String),
     stringListValues: S.optional(GoogleCloudConnectorsV1AdminFiltersStringListValues),
@@ -7455,7 +7375,7 @@ export const GoogleCloudConnectorsV1AdminFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudConnectorsV1AdminFilters>;
 
 export type GoogleCloudConnectorsV1AdminFiltersList = Array<GoogleCloudConnectorsV1AdminFilters>;
-export const GoogleCloudConnectorsV1AdminFiltersList = /*@__PURE__*/ S.Array(
+const GoogleCloudConnectorsV1AdminFiltersList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1AdminFilters,
 ) as any as S.Schema<GoogleCloudConnectorsV1AdminFiltersList>;
 
@@ -7534,7 +7454,7 @@ export interface GoogleCloudConnectorsV1Connection {
   /** Optional. Admin filters for the connection. These are used by Gemini Enterprise. */
   adminFilters?: GoogleCloudConnectorsV1AdminFiltersList;
 }
-export const GoogleCloudConnectorsV1Connection = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudConnectorsV1Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventingConfig: S.optional(GoogleCloudConnectorsV1EventingConfig),
     nodeConfig: S.optional(GoogleCloudConnectorsV1NodeConfig),
@@ -7580,7 +7500,7 @@ export const GoogleCloudConnectorsV1Connection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudConnectorsV1Connection>;
 
 export type GoogleCloudConnectorsV1ConnectionList = Array<GoogleCloudConnectorsV1Connection>;
-export const GoogleCloudConnectorsV1ConnectionList = /*@__PURE__*/ S.Array(
+const GoogleCloudConnectorsV1ConnectionList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1Connection,
 ) as any as S.Schema<GoogleCloudConnectorsV1ConnectionList>;
 
@@ -7591,7 +7511,7 @@ export interface GoogleCloudIntegrationsV1alphaListConnectionsResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connections: S.optional(GoogleCloudConnectorsV1ConnectionList),
     nextPageToken: S.optional(S.String),
@@ -7610,20 +7530,19 @@ export interface ListProjectsLocationsConnectionsRuntimeActionSchemasRequest {
   /** Required. Parent resource of RuntimeActionSchema. Format: projects/{project}/locations/{location}/connections/{connection} */
   parent: string;
 }
-export const ListProjectsLocationsConnectionsRuntimeActionSchemasRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/runtimeActionSchemas",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsConnectionsRuntimeActionSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/runtimeActionSchemas",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsConnectionsRuntimeActionSchemasRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>;
@@ -7637,7 +7556,7 @@ export interface GoogleCloudIntegrationsV1alphaRuntimeActionSchema {
   /** Name of the action. */
   action?: string;
 }
-export const GoogleCloudIntegrationsV1alphaRuntimeActionSchema = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaRuntimeActionSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputSchema: S.optional(S.String),
     outputSchema: S.optional(S.String),
@@ -7649,7 +7568,7 @@ export const GoogleCloudIntegrationsV1alphaRuntimeActionSchema = /*@__PURE__*/ S
 
 export type GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList =
   Array<GoogleCloudIntegrationsV1alphaRuntimeActionSchema>;
-export const GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaRuntimeActionSchema,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList>;
 
@@ -7660,15 +7579,14 @@ export interface GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse 
   /** Runtime action schemas. */
   runtimeActionSchemas?: GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList;
 }
-export const GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextPageToken: S.optional(S.String),
-      runtimeActionSchemas: S.optional(GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse>;
+const GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextPageToken: S.optional(S.String),
+    runtimeActionSchemas: S.optional(GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse>;
 
 export interface ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest {
   /** Required. Parent resource of RuntimeEntitySchema. Format: projects/{project}/locations/{location}/connections/{connection} */
@@ -7680,20 +7598,19 @@ export interface ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest {
   /** Filter. Only the entity field with literal equality operator is supported. */
   filter?: string;
 }
-export const ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/runtimeEntitySchemas",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/runtimeEntitySchemas",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>;
@@ -7707,7 +7624,7 @@ export interface GoogleCloudIntegrationsV1alphaRuntimeEntitySchema {
   /** List of fields in the entity. */
   fieldSchema?: string;
 }
-export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(S.String),
     arrayFieldSchema: S.optional(S.String),
@@ -7719,7 +7636,7 @@ export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema = /*@__PURE__*/ S
 
 export type GoogleCloudIntegrationsV1alphaRuntimeEntitySchemaList =
   Array<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema>;
-export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchemaList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaRuntimeEntitySchemaList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaRuntimeEntitySchema,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaRuntimeEntitySchemaList>;
 
@@ -7730,15 +7647,14 @@ export interface GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse 
   /** Next page token. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      runtimeEntitySchemas: S.optional(GoogleCloudIntegrationsV1alphaRuntimeEntitySchemaList),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse>;
+const GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runtimeEntitySchemas: S.optional(GoogleCloudIntegrationsV1alphaRuntimeEntitySchemaList),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse>;
 
 export interface ListProjectsLocationsIntegrationsRequest {
   /** The page size for the resquest. */
@@ -7752,7 +7668,7 @@ export interface ListProjectsLocationsIntegrationsRequest {
   /** Required. Project and location from which the integrations should be listed. Format: projects/{project} */
   parent: string;
 }
-export const ListProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -7787,7 +7703,7 @@ export interface GoogleCloudIntegrationsV1alphaIntegration {
   /** Required. The last modifier of this integration */
   lastModifierEmail?: string;
 }
-export const GoogleCloudIntegrationsV1alphaIntegration = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     active: S.optional(S.Boolean),
@@ -7803,7 +7719,7 @@ export const GoogleCloudIntegrationsV1alphaIntegration = /*@__PURE__*/ S.suspend
 
 export type GoogleCloudIntegrationsV1alphaIntegrationList =
   Array<GoogleCloudIntegrationsV1alphaIntegration>;
-export const GoogleCloudIntegrationsV1alphaIntegrationList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaIntegrationList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaIntegration,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationList>;
 
@@ -7814,7 +7730,7 @@ export interface GoogleCloudIntegrationsV1alphaListIntegrationsResponse {
   /** The next page token for the response. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrations: S.optional(GoogleCloudIntegrationsV1alphaIntegrationList),
     nextPageToken: S.optional(S.String),
@@ -7867,7 +7783,7 @@ export interface ListProjectsLocationsIntegrationsExecutionsRequest {
   /** Param key in the key value pair filter. */
   "filterParams.parameterPairKey"?: string;
 }
-export const ListProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "filterParams.executionId": S.optional(S.String.pipe(T.Query())),
     "filterParams.parameterKey": S.optional(S.String.pipe(T.Query())),
@@ -7908,7 +7824,7 @@ export type EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoPostMethodEnum 
   | "SCHEDULE"
   | "POST_BY_EVENT_CONFIG_ID"
   | "POST_WITH_EVENT_DETAILS";
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoPostMethodEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoPostMethodEnum = S.String;
 
 export type EnterpriseCrmFrontendsEventbusProtoEventExecutionDetailsEventExecutionStateEnum =
   | "UNSPECIFIED"
@@ -7919,8 +7835,7 @@ export type EnterpriseCrmFrontendsEventbusProtoEventExecutionDetailsEventExecuti
   | "CANCELED"
   | "RETRY_ON_HOLD"
   | "SUSPENDED";
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetailsEventExecutionStateEnum =
-  S.String;
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetailsEventExecutionStateEnum = S.String;
 
 export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
   /** All of the task execution details at the given point of time. */
@@ -7943,29 +7858,28 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot {
   /** All of the computed conditions that been calculated. */
   conditionResults?: EnterpriseCrmEventbusProtoConditionResultList;
 }
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      taskExecutionDetails: S.optional(EnterpriseCrmEventbusProtoTaskExecutionDetailsList),
-      eventExecutionSnapshotMetadata: S.optional(
-        EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata,
-      ),
-      diffParams: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
-      eventExecutionSnapshotId: S.optional(S.String),
-      eventParams: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
-      snapshotTime: S.optional(S.String),
-      eventExecutionInfoId: S.optional(S.String),
-      taskName: S.optional(S.String),
-      checkpointTaskNumber: S.optional(S.String),
-      conditionResults: S.optional(EnterpriseCrmEventbusProtoConditionResultList),
-    }),
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskExecutionDetails: S.optional(EnterpriseCrmEventbusProtoTaskExecutionDetailsList),
+    eventExecutionSnapshotMetadata: S.optional(
+      EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata,
+    ),
+    diffParams: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
+    eventExecutionSnapshotId: S.optional(S.String),
+    eventParams: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
+    snapshotTime: S.optional(S.String),
+    eventExecutionInfoId: S.optional(S.String),
+    taskName: S.optional(S.String),
+    checkpointTaskNumber: S.optional(S.String),
+    conditionResults: S.optional(EnterpriseCrmEventbusProtoConditionResultList),
+  }),
 ).annotate({
   identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot",
 }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>;
 
 export type EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshotList =
   Array<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>;
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshotList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshotList = /*@__PURE__*/ S.Array(
   EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot,
 ) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshotList>;
 
@@ -7991,26 +7905,25 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails {
   /** Total size of all event_execution_snapshots for an execution */
   eventExecutionSnapshotsSize?: string;
 }
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      eventExecutionState: S.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventExecutionDetailsEventExecutionStateEnum,
-      ),
-      nextExecutionTime: S.optional(S.String),
-      eventRetriesFromBeginningCount: S.optional(S.Number),
-      eventExecutionSnapshot: S.optional(
-        EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshotList,
-      ),
-      ryeLockUnheldCount: S.optional(S.Number),
-      cancelReason: S.optional(S.String),
-      eventAttemptStats: S.optional(
-        EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList,
-      ),
-      logFilePath: S.optional(S.String),
-      networkAddress: S.optional(S.String),
-      eventExecutionSnapshotsSize: S.optional(S.String),
-    }),
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventExecutionState: S.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventExecutionDetailsEventExecutionStateEnum,
+    ),
+    nextExecutionTime: S.optional(S.String),
+    eventRetriesFromBeginningCount: S.optional(S.Number),
+    eventExecutionSnapshot: S.optional(
+      EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshotList,
+    ),
+    ryeLockUnheldCount: S.optional(S.Number),
+    cancelReason: S.optional(S.String),
+    eventAttemptStats: S.optional(
+      EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList,
+    ),
+    logFilePath: S.optional(S.String),
+    networkAddress: S.optional(S.String),
+    eventExecutionSnapshotsSize: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails",
 }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails>;
@@ -8078,13 +7991,13 @@ export type CrmlogErrorCodeCommonErrorCodeEnum =
   | "TRANSFORM_EXPRESSION_EVALUATION_ERROR"
   | "HTTP_EXCEPTION"
   | "EXECUTION_CANCELLED";
-export const CrmlogErrorCodeCommonErrorCodeEnum = S.String;
+const CrmlogErrorCodeCommonErrorCodeEnum = S.String;
 
 /** Registered ids for errors, as "oneof" enums. Each task or logical grouping of tasks may share the same enum. */
 export interface CrmlogErrorCode {
   commonErrorCode?: CrmlogErrorCodeCommonErrorCodeEnum;
 }
-export const CrmlogErrorCode = /*@__PURE__*/ S.suspend(() =>
+const CrmlogErrorCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commonErrorCode: S.optional(CrmlogErrorCodeCommonErrorCodeEnum),
   }),
@@ -8097,7 +8010,7 @@ export interface EnterpriseCrmEventbusProtoExecutionTraceInfo {
   /** Used to aggregate ExecutionTraceInfo. */
   traceId?: string;
 }
-export const EnterpriseCrmEventbusProtoExecutionTraceInfo = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoExecutionTraceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentEventExecutionInfoId: S.optional(S.String),
     traceId: S.optional(S.String),
@@ -8111,14 +8024,14 @@ export type EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoProductEnum =
   | "IP"
   | "APIGEE"
   | "SECURITY";
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoProductEnum = S.String;
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoProductEnum = S.String;
 
 export type EnterpriseCrmEventbusProtoCloudLoggingDetailsCloudLoggingSeverityEnum =
   | "CLOUD_LOGGING_SEVERITY_UNSPECIFIED"
   | "INFO"
   | "ERROR"
   | "WARNING";
-export const EnterpriseCrmEventbusProtoCloudLoggingDetailsCloudLoggingSeverityEnum = S.String;
+const EnterpriseCrmEventbusProtoCloudLoggingDetailsCloudLoggingSeverityEnum = S.String;
 
 /** Cloud Logging details, selected by the user for the integration version (workflow). This message field will be also used in ExecutionInfo, to indicate the CloudLoggingDetails config at the time of workflow (integration version) execution, since this field value can be changed for an unpublished workflow. */
 export interface EnterpriseCrmEventbusProtoCloudLoggingDetails {
@@ -8127,7 +8040,7 @@ export interface EnterpriseCrmEventbusProtoCloudLoggingDetails {
   /** Status of whether Cloud Logging is enabled or not for the integration version getting executed. */
   enableCloudLogging?: boolean;
 }
-export const EnterpriseCrmEventbusProtoCloudLoggingDetails = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoCloudLoggingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudLoggingSeverity: S.optional(
       EnterpriseCrmEventbusProtoCloudLoggingDetailsCloudLoggingSeverityEnum,
@@ -8142,8 +8055,7 @@ export type EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfoRepla
   | "REPLAY_MODE_UNSPECIFIED"
   | "REPLAY_MODE_FROM_BEGINNING"
   | "REPLAY_MODE_POINT_OF_FAILURE";
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfoReplayModeEnum =
-  S.String;
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfoReplayModeEnum = S.String;
 
 /** Contains the details of the execution info: this includes the replay reason and replay tree connecting executions in a parent-child relationship */
 export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo {
@@ -8156,8 +8068,8 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo
   /** If this execution has been replayed, then this field contains the execution ids of the replayed executions. */
   replayedExecutionInfoIds?: StringList;
 }
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo =
-  /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       replayMode: S.optional(
         EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfoReplayModeEnum,
@@ -8166,16 +8078,16 @@ export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo =
       originalExecutionInfoId: S.optional(S.String),
       replayedExecutionInfoIds: S.optional(StringList),
     }),
-  ).annotate({
-    identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo",
-  }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo>;
+).annotate({
+  identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo",
+}) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo>;
 
 export type EnterpriseCrmEventbusProtoErrorDetailSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARN"
   | "INFO";
-export const EnterpriseCrmEventbusProtoErrorDetailSeverityEnum = S.String;
+const EnterpriseCrmEventbusProtoErrorDetailSeverityEnum = S.String;
 
 /** An error, warning, or information message associated with a workflow. */
 export interface EnterpriseCrmEventbusProtoErrorDetail {
@@ -8188,7 +8100,7 @@ export interface EnterpriseCrmEventbusProtoErrorDetail {
   /** The task try-number, in which, the error occurred. If zero, the error happened at the event level. */
   taskNumber?: number;
 }
-export const EnterpriseCrmEventbusProtoErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(EnterpriseCrmEventbusProtoErrorDetailSeverityEnum),
     errorMessage: S.optional(S.String),
@@ -8201,7 +8113,7 @@ export const EnterpriseCrmEventbusProtoErrorDetail = /*@__PURE__*/ S.suspend(() 
 
 export type EnterpriseCrmEventbusProtoErrorDetailList =
   Array<EnterpriseCrmEventbusProtoErrorDetail>;
-export const EnterpriseCrmEventbusProtoErrorDetailList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoErrorDetailList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoErrorDetail,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoErrorDetailList>;
 
@@ -8252,7 +8164,7 @@ export interface EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo {
   /** Errors, warnings, and informationals associated with the workflow/task. The order in which the errors were added by the workflow/task is maintained. */
   errors?: EnterpriseCrmEventbusProtoErrorDetailList;
 }
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestParams: S.optional(EnterpriseCrmFrontendsEventbusProtoEventParameters),
     snapshotNumber: S.optional(S.String),
@@ -8283,7 +8195,7 @@ export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo = /*@__PURE__
 
 export type EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoList =
   Array<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo>;
-export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoList = /*@__PURE__*/ S.Array(
   EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo,
 ) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoList>;
 
@@ -8296,7 +8208,7 @@ export interface GoogleCloudIntegrationsV1alphaListExecutionsResponse {
   /** The detailed information of requested executions */
   executions?: GoogleCloudIntegrationsV1alphaExecutionList;
 }
-export const GoogleCloudIntegrationsV1alphaListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionInfos: S.optional(EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoList),
     nextPageToken: S.optional(S.String),
@@ -8318,38 +8230,37 @@ export interface ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest {
   /** Token to retrieve a specific page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/suspensions",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
-  }) as any as S.Schema<ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
+const ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/suspensions",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
+}) as any as S.Schema<ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
 export interface EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity {
   emailAddress?: string;
   gaiaId?: string;
 }
-export const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity =
-  /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       emailAddress: S.optional(S.String),
       gaiaId: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity",
-  }) as any as S.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity>;
+).annotate({
+  identifier: "EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity",
+}) as any as S.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity>;
 
 /** LINT.IfChange */
 export interface EnterpriseCrmEventbusProtoSuspensionAuthPermissions {
@@ -8359,7 +8270,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionAuthPermissions {
   loasRole?: string;
   googleGroup?: EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity;
 }
-export const EnterpriseCrmEventbusProtoSuspensionAuthPermissions = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoSuspensionAuthPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gaiaIdentity: S.optional(EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity),
     mdbGroup: S.optional(S.String),
@@ -8372,7 +8283,7 @@ export const EnterpriseCrmEventbusProtoSuspensionAuthPermissions = /*@__PURE__*/
 
 export type EnterpriseCrmEventbusProtoSuspensionAuthPermissionsList =
   Array<EnterpriseCrmEventbusProtoSuspensionAuthPermissions>;
-export const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoSuspensionAuthPermissions,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissionsList>;
 
@@ -8384,7 +8295,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionExpiration {
   /** Milliseconds after which the previous suspension action reminder, if any, is sent using the selected notification option, for a suspension which is still PENDING_UNSPECIFIED. */
   remindAfterMs?: number;
 }
-export const EnterpriseCrmEventbusProtoSuspensionExpiration = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoSuspensionExpiration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     liftWhenExpired: S.optional(S.Boolean),
     expireAfterMs: S.optional(S.Number),
@@ -8398,7 +8309,7 @@ export interface EnterpriseCrmEventbusProtoToken {
   value?: string;
   name?: string;
 }
-export const EnterpriseCrmEventbusProtoToken = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     name: S.optional(S.String),
@@ -8408,7 +8319,7 @@ export const EnterpriseCrmEventbusProtoToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterpriseCrmEventbusProtoToken>;
 
 export type EnterpriseCrmEventbusProtoTokenList = Array<EnterpriseCrmEventbusProtoToken>;
-export const EnterpriseCrmEventbusProtoTokenList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoTokenList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoToken,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoTokenList>;
 
@@ -8419,7 +8330,7 @@ export interface EnterpriseCrmEventbusProtoAddress {
   /** Required. */
   email?: string;
 }
-export const EnterpriseCrmEventbusProtoAddress = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     tokens: S.optional(EnterpriseCrmEventbusProtoTokenList),
@@ -8435,7 +8346,7 @@ export type GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequestPrior
   | "SHEDDABLE_PLUS"
   | "CRITICAL"
   | "CRITICAL_PLUS";
-export const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequestPriorityEnum = S.String;
+const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequestPriorityEnum = S.String;
 
 /** LINT.IfChange Use this request to post all workflows associated with a given trigger id. Next available id: 14 */
 export interface GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest {
@@ -8468,8 +8379,8 @@ export interface GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest
   /** Optional. This is used to de-dup incoming request: if the duplicate request was detected, the response from the previous execution is returned. Must have no more than 36 characters and contain only alphanumeric characters and hyphens. */
   requestId?: string;
 }
-export const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       workflowName: S.optional(S.String),
       clientId: S.optional(S.String),
@@ -8487,9 +8398,9 @@ export const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest =
       parameters: S.optional(EnterpriseCrmEventbusProtoEventParameters),
       requestId: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest",
-  }) as any as S.Schema<GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest>;
+).annotate({
+  identifier: "GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest",
+}) as any as S.Schema<GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest>;
 
 export interface EnterpriseCrmEventbusProtoCustomSuspensionRequest {
   /** Request to fire an event containing the SuspensionInfo message. */
@@ -8497,7 +8408,7 @@ export interface EnterpriseCrmEventbusProtoCustomSuspensionRequest {
   /** In the fired event, set the SuspensionInfo message as the value for this key. */
   suspensionInfoEventParameterKey?: string;
 }
-export const EnterpriseCrmEventbusProtoCustomSuspensionRequest = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoCustomSuspensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postToQueueWithTriggerIdRequest: S.optional(
       GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest,
@@ -8518,7 +8429,7 @@ export interface EnterpriseCrmEventbusProtoBuganizerNotification {
   /** ID of the buganizer component within which to create a new issue. Required. */
   componentId?: string;
 }
-export const EnterpriseCrmEventbusProtoBuganizerNotification = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoBuganizerNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     templateId: S.optional(S.String),
@@ -8537,7 +8448,7 @@ export interface EnterpriseCrmEventbusProtoNotification {
   buganizerNotification?: EnterpriseCrmEventbusProtoBuganizerNotification;
   pubsubTopic?: string;
 }
-export const EnterpriseCrmEventbusProtoNotification = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: S.optional(EnterpriseCrmEventbusProtoAddress),
     request: S.optional(EnterpriseCrmEventbusProtoCustomSuspensionRequest),
@@ -8551,7 +8462,7 @@ export const EnterpriseCrmEventbusProtoNotification = /*@__PURE__*/ S.suspend(()
 
 export type EnterpriseCrmEventbusProtoNotificationList =
   Array<EnterpriseCrmEventbusProtoNotification>;
-export const EnterpriseCrmEventbusProtoNotificationList = /*@__PURE__*/ S.Array(
+const EnterpriseCrmEventbusProtoNotificationList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoNotification,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoNotificationList>;
 
@@ -8564,7 +8475,7 @@ export interface EnterpriseCrmEventbusProtoSuspensionConfig {
   suspensionExpiration?: EnterpriseCrmEventbusProtoSuspensionExpiration;
   notifications?: EnterpriseCrmEventbusProtoNotificationList;
 }
-export const EnterpriseCrmEventbusProtoSuspensionConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseCrmEventbusProtoSuspensionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customMessage: S.optional(S.String),
     whoMayResolve: S.optional(EnterpriseCrmEventbusProtoSuspensionAuthPermissionsList),
@@ -8582,7 +8493,7 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionAudit {
   /** Email address of the person who resolved this suspension. */
   resolver?: string;
 }
-export const GoogleCloudIntegrationsV1alphaSuspensionAudit = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaSuspensionAudit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resolveTime: S.optional(S.String),
     resolver: S.optional(S.String),
@@ -8596,7 +8507,7 @@ export type GoogleCloudIntegrationsV1alphaSuspensionStateEnum =
   | "PENDING"
   | "REJECTED"
   | "LIFTED";
-export const GoogleCloudIntegrationsV1alphaSuspensionStateEnum = S.String;
+const GoogleCloudIntegrationsV1alphaSuspensionStateEnum = S.String;
 
 /** Expiration configs for the approval request. */
 export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration {
@@ -8607,13 +8518,12 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration {
   /** Whether the suspension will be REJECTED or LIFTED upon expiration. REJECTED is the default behavior. */
   liftWhenExpired?: boolean;
 }
-export const GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      remindTime: S.optional(S.String),
-      expireTime: S.optional(S.String),
-      liftWhenExpired: S.optional(S.Boolean),
-    }),
+const GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    remindTime: S.optional(S.String),
+    expireTime: S.optional(S.String),
+    liftWhenExpired: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration>;
@@ -8627,7 +8537,7 @@ export interface GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig {
   /** Email addresses to send approval request to. */
   emailAddresses?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiration: S.optional(GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration),
     customMessage: S.optional(S.String),
@@ -8660,7 +8570,7 @@ export interface GoogleCloudIntegrationsV1alphaSuspension {
   /** Required. Task id of the associated SuspensionTask. */
   taskId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaSuspension = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaSuspension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suspensionConfig: S.optional(EnterpriseCrmEventbusProtoSuspensionConfig),
     audit: S.optional(GoogleCloudIntegrationsV1alphaSuspensionAudit),
@@ -8679,7 +8589,7 @@ export const GoogleCloudIntegrationsV1alphaSuspension = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudIntegrationsV1alphaSuspensionList =
   Array<GoogleCloudIntegrationsV1alphaSuspension>;
-export const GoogleCloudIntegrationsV1alphaSuspensionList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaSuspensionList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaSuspension,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaSuspensionList>;
 
@@ -8690,7 +8600,7 @@ export interface GoogleCloudIntegrationsV1alphaListSuspensionsResponse {
   /** Token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListSuspensionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListSuspensionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suspensions: S.optional(GoogleCloudIntegrationsV1alphaSuspensionList),
     nextPageToken: S.optional(S.String),
@@ -8713,7 +8623,7 @@ export interface ListProjectsLocationsIntegrationsVersionsRequest {
   /** Filter on fields of IntegrationVersion. Fields can be compared with literal values by use of ":" (containment), "=" (equality), ">" (greater), "<" (less than), >=" (greater than or equal to), "<=" (less than or equal to), and "!=" (inequality) operators. Negation, conjunction, and disjunction are written using NOT, AND, and OR keywords. For example, organization_id=\"1\" AND state=ACTIVE AND description:"test". Filtering cannot be performed on repeated fields like `task_config`. */
   filter?: string;
 }
-export const ListProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -8741,16 +8651,15 @@ export interface GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integrationVersions: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersionList),
-      noPermission: S.optional(S.Boolean),
-      nextPageToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse>;
+const GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationVersions: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersionList),
+    noPermission: S.optional(S.Boolean),
+    nextPageToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse>;
 
 export interface ListProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Optional. The results would be returned in order specified here. Currently supported sort keys are: Descending sort order for "last_modified_time", "created_time". Ascending sort order for "name". */
@@ -8766,29 +8675,28 @@ export interface ListProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Required. The parent resource where this TestCase was created. */
   parent: string;
 }
-export const ListProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      readMask: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/testCases",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    readMask: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/testCases",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsIntegrationsVersionsTestCasesRequest",
 }) as any as S.Schema<ListProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type GoogleCloudIntegrationsV1alphaTestCaseList =
   Array<GoogleCloudIntegrationsV1alphaTestCase>;
-export const GoogleCloudIntegrationsV1alphaTestCaseList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaTestCaseList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTestCase,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCaseList>;
 
@@ -8799,7 +8707,7 @@ export interface GoogleCloudIntegrationsV1alphaListTestCasesResponse {
   /** The test cases corresponding to the specified filter */
   testCases?: GoogleCloudIntegrationsV1alphaTestCaseList;
 }
-export const GoogleCloudIntegrationsV1alphaListTestCasesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListTestCasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     testCases: S.optional(GoogleCloudIntegrationsV1alphaTestCaseList),
@@ -8820,7 +8728,7 @@ export interface ListProjectsLocationsProductsAuthConfigsRequest {
   /** Required. The client, which owns this collection of AuthConfigs. */
   parent: string;
 }
-export const ListProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -8850,7 +8758,7 @@ export interface ListProjectsLocationsProductsCertificatesRequest {
   /** The size of entries in the response. If unspecified, defaults to 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readMask: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -8880,7 +8788,7 @@ export interface ListProjectsLocationsProductsIntegrationsRequest {
   /** The page token for the resquest. */
   pageToken?: string;
 }
-export const ListProjectsLocationsProductsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsProductsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8942,37 +8850,36 @@ export interface ListProjectsLocationsProductsIntegrationsExecutionsRequest {
   /** Optional. View mask for the response data. If set, only the field specified will be returned as part of the result. If not set, all fields in Execution will be filled and returned. Supported fields: trigger_id execution_method create_time update_time execution_details execution_details.state execution_details.execution_snapshots execution_details.attempt_stats execution_details.event_execution_snapshots_size request_parameters cloud_logging_details snapshot_number replay_info */
   readMask?: string;
 }
-export const ListProjectsLocationsProductsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      refreshAcl: S.optional(S.Boolean.pipe(T.Query())),
-      "filterParams.startTime": S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      "filterParams.customFilter": S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      "filterParams.parameterPairValue": S.optional(S.String.pipe(T.Query())),
-      "filterParams.parameterValue": S.optional(S.String.pipe(T.Query())),
-      "filterParams.taskStatuses": S.optional(StringList.pipe(T.Query())),
-      truncateParams: S.optional(S.Boolean.pipe(T.Query())),
-      "filterParams.parameterType": S.optional(S.String.pipe(T.Query())),
-      "filterParams.parameterKey": S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      snapshotMetadataWithoutParams: S.optional(S.Boolean.pipe(T.Query())),
-      "filterParams.workflowName": S.optional(S.String.pipe(T.Query())),
-      "filterParams.executionId": S.optional(S.String.pipe(T.Query())),
-      "filterParams.endTime": S.optional(S.String.pipe(T.Query())),
-      "filterParams.parameterPairKey": S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      "filterParams.eventStatuses": S.optional(StringList.pipe(T.Query())),
-      readMask: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/executions",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsProductsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    refreshAcl: S.optional(S.Boolean.pipe(T.Query())),
+    "filterParams.startTime": S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    "filterParams.customFilter": S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    "filterParams.parameterPairValue": S.optional(S.String.pipe(T.Query())),
+    "filterParams.parameterValue": S.optional(S.String.pipe(T.Query())),
+    "filterParams.taskStatuses": S.optional(StringList.pipe(T.Query())),
+    truncateParams: S.optional(S.Boolean.pipe(T.Query())),
+    "filterParams.parameterType": S.optional(S.String.pipe(T.Query())),
+    "filterParams.parameterKey": S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    snapshotMetadataWithoutParams: S.optional(S.Boolean.pipe(T.Query())),
+    "filterParams.workflowName": S.optional(S.String.pipe(T.Query())),
+    "filterParams.executionId": S.optional(S.String.pipe(T.Query())),
+    "filterParams.endTime": S.optional(S.String.pipe(T.Query())),
+    "filterParams.parameterPairKey": S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    "filterParams.eventStatuses": S.optional(StringList.pipe(T.Query())),
+    readMask: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/executions",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsProductsIntegrationsExecutionsRequest",
 }) as any as S.Schema<ListProjectsLocationsProductsIntegrationsExecutionsRequest>;
@@ -8989,7 +8896,7 @@ export interface ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsR
   /** Standard filter field. */
   filter?: string;
 }
-export const ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest =
+const ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -9022,22 +8929,21 @@ export interface ListProjectsLocationsProductsIntegrationsVersionsRequest {
   /** The results would be returned in order you specified here. Currently supported sort keys are: Descending sort order for "last\_modified\_time", "created\_time", and "snapshot\_number". Ascending sort order for `name`. */
   orderBy?: string;
 }
-export const ListProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      fieldMask: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/versions",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    fieldMask: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/versions",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsProductsIntegrationsVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsProductsIntegrationsVersionsRequest>;
@@ -9054,7 +8960,7 @@ export interface ListProjectsLocationsProductsSfdcInstancesRequest {
   /** The size of entries in the response. If unspecified, defaults to 100. */
   pageSize?: number;
 }
-export const ListProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -9074,7 +8980,7 @@ export const ListProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S
 
 export type GoogleCloudIntegrationsV1alphaSfdcInstanceList =
   Array<GoogleCloudIntegrationsV1alphaSfdcInstance>;
-export const GoogleCloudIntegrationsV1alphaSfdcInstanceList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaSfdcInstanceList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaSfdcInstance,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstanceList>;
 
@@ -9085,7 +8991,7 @@ export interface GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse {
   /** The token used to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sfdcInstances: S.optional(GoogleCloudIntegrationsV1alphaSfdcInstanceList),
     nextPageToken: S.optional(S.String),
@@ -9106,28 +9012,27 @@ export interface ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest {
   /** Required. The client, which owns this collection of SfdcChannels. */
   parent: string;
 }
-export const ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      readMask: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/sfdcChannels",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
-  }) as any as S.Schema<ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+const ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    readMask: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/sfdcChannels",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
+}) as any as S.Schema<ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export type GoogleCloudIntegrationsV1alphaSfdcChannelList =
   Array<GoogleCloudIntegrationsV1alphaSfdcChannel>;
-export const GoogleCloudIntegrationsV1alphaSfdcChannelList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaSfdcChannelList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaSfdcChannel,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannelList>;
 
@@ -9138,7 +9043,7 @@ export interface GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse {
   /** The token used to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sfdcChannels: S.optional(GoogleCloudIntegrationsV1alphaSfdcChannelList),
     nextPageToken: S.optional(S.String),
@@ -9159,7 +9064,7 @@ export interface ListProjectsLocationsSfdcInstancesRequest {
   /** Filtering as supported in https://developers.google.com/authorized-buyers/apis/guides/list-filters. */
   filter?: string;
 }
-export const ListProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -9189,7 +9094,7 @@ export interface ListProjectsLocationsSfdcInstancesSfdcChannelsRequest {
   /** The mask which specifies fields that need to be returned in the SfdcChannel's response. */
   readMask?: string;
 }
-export const ListProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -9221,7 +9126,7 @@ export interface ListProjectsLocationsTemplatesRequest {
   /** Optional. The size of the response entries. If unspecified, defaults to 100. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readMask: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -9242,7 +9147,7 @@ export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleCloudIntegrationsV1alphaTemplateList =
   Array<GoogleCloudIntegrationsV1alphaTemplate>;
-export const GoogleCloudIntegrationsV1alphaTemplateList = /*@__PURE__*/ S.Array(
+const GoogleCloudIntegrationsV1alphaTemplateList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTemplate,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplateList>;
 
@@ -9253,7 +9158,7 @@ export interface GoogleCloudIntegrationsV1alphaListTemplatesResponse {
   /** The token used to retrieve the next page results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templates: S.optional(GoogleCloudIntegrationsV1alphaTemplateList),
     nextPageToken: S.optional(S.String),
@@ -9276,7 +9181,7 @@ export interface PatchProjectsLocationsAuthConfigsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaAuthConfig;
 }
-export const PatchProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "clientCertificate.passphrase": S.optional(S.String.pipe(T.Query())),
@@ -9299,7 +9204,7 @@ export interface PatchProjectsLocationsCertificatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaCertificate;
 }
-export const PatchProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9319,7 +9224,7 @@ export interface PatchProjectsLocationsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const PatchProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9339,19 +9244,18 @@ export interface PatchProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaTestCase;
 }
-export const PatchProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudIntegrationsV1alphaTestCase.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudIntegrationsV1alphaTestCase.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsIntegrationsVersionsTestCasesRequest",
 }) as any as S.Schema<PatchProjectsLocationsIntegrationsVersionsTestCasesRequest>;
@@ -9370,7 +9274,7 @@ export interface PatchProjectsLocationsProductsAuthConfigsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaAuthConfig;
 }
-export const PatchProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsProductsAuthConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9393,7 +9297,7 @@ export interface PatchProjectsLocationsProductsCertificatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaCertificate;
 }
-export const PatchProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsProductsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9413,19 +9317,18 @@ export interface PatchProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const PatchProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const PatchProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsProductsIntegrationsVersionsRequest",
 }) as any as S.Schema<PatchProjectsLocationsProductsIntegrationsVersionsRequest>;
@@ -9438,7 +9341,7 @@ export interface PatchProjectsLocationsProductsSfdcInstancesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSfdcInstance;
 }
-export const PatchProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsProductsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9458,22 +9361,21 @@ export interface PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest 
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSfdcChannel;
 }
-export const PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(GoogleCloudIntegrationsV1alphaSfdcChannel.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+name}",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
+const PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(GoogleCloudIntegrationsV1alphaSfdcChannel.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+name}",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
+}) as any as S.Schema<PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export interface PatchProjectsLocationsSfdcInstancesRequest {
   /** Resource name of the SFDC instance projects/{project}/locations/{location}/sfdcInstances/{sfdcInstance}. */
@@ -9483,7 +9385,7 @@ export interface PatchProjectsLocationsSfdcInstancesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSfdcInstance;
 }
-export const PatchProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSfdcInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9503,7 +9405,7 @@ export interface PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSfdcChannel;
 }
-export const PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9523,7 +9425,7 @@ export interface PatchProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaTemplate;
 }
-export const PatchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9539,15 +9441,12 @@ export type GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWor
   | "SAMPLE_INTEGRATIONS_UNSPECIFIED"
   | "SAMPLE_WORKFLOW_ECOM_PROCESSING"
   | "EXECUTE_CONNECTOR_TOOL_WORKFLOW";
-export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum =
-  S.String;
-
 export type GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList =
   Array<
     | GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum
     | (string & {})
   >;
-export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList =
+const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList =
   DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList>;
 
 /** Request for PostProvisioning rpc call. */
@@ -9555,16 +9454,16 @@ export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorReque
   /** Optional. Indicate which workflows to create */
   workflows?: GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList;
 }
-export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       workflows: S.optional(
         GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest>;
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest>;
 
 export interface ProvisionClientPostProcessorProjectsLocationsClientsRequest {
   /** Required. Required: The ID of the GCP Project to be provisioned. */
@@ -9572,30 +9471,30 @@ export interface ProvisionClientPostProcessorProjectsLocationsClientsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest;
 }
-export const ProvisionClientPostProcessorProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/clients:provisionClientPostProcessor",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
+const ProvisionClientPostProcessorProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/clients:provisionClientPostProcessor",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ProvisionClientPostProcessorProjectsLocationsClientsRequest",
 }) as any as S.Schema<ProvisionClientPostProcessorProjectsLocationsClientsRequest>;
 
 /** Response for PostProvisioning rpc call. */
 export interface GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse {}
-export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse>;
+const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse>;
 
 /** Request for the Provision rpc */
 export interface GoogleCloudIntegrationsV1alphaProvisionClientRequest {
@@ -9614,7 +9513,7 @@ export interface GoogleCloudIntegrationsV1alphaProvisionClientRequest {
   /** Optional. Indicates if the client should be allowed to make HTTP calls. */
   enableHttpCall?: boolean;
 }
-export const GoogleCloudIntegrationsV1alphaProvisionClientRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaProvisionClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableManagedAiFeatures: S.optional(S.Boolean),
     cloudKmsConfig: S.optional(GoogleCloudIntegrationsV1alphaCloudKmsConfig),
@@ -9634,7 +9533,7 @@ export interface ProvisionProjectsLocationsClientsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaProvisionClientRequest;
 }
-export const ProvisionProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaProvisionClientRequest.pipe(T.HttpBody())),
@@ -9654,14 +9553,13 @@ export interface GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest 
   /** Optional. Config parameters used during integration execution. */
   configParameters?: DocumentMap;
 }
-export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configParameters: S.optional(DocumentMap),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest>;
+const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configParameters: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest>;
 
 export interface PublishProjectsLocationsIntegrationsVersionsRequest {
   /** Required. The version to publish. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
@@ -9669,7 +9567,7 @@ export interface PublishProjectsLocationsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest;
 }
-export const PublishProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
@@ -9688,7 +9586,7 @@ export const PublishProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/
 
 /** Response for PublishIntegrationVersion. */
 export interface GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse {}
-export const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse =
+const GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse =
   GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse>;
 
 export interface PublishProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -9697,20 +9595,19 @@ export interface PublishProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest;
 }
-export const PublishProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:publish",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
+const PublishProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:publish",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PublishProjectsLocationsProductsIntegrationsVersionsRequest",
 }) as any as S.Schema<PublishProjectsLocationsProductsIntegrationsVersionsRequest>;
@@ -9720,11 +9617,10 @@ export interface GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest {
   /** Required. REQUIRED: Run-as service account to be updated */
   runAsServiceAccount?: string;
 }
-export const GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      runAsServiceAccount: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runAsServiceAccount: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest>;
@@ -9735,7 +9631,7 @@ export interface ReplaceProjectsLocationsClientsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest;
 }
-export const ReplaceProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest.pipe(T.HttpBody())),
@@ -9754,7 +9650,7 @@ export type GoogleCloudIntegrationsV1alphaReplayExecutionRequestReplayModeEnum =
   | "REPLAY_MODE_UNSPECIFIED"
   | "REPLAY_MODE_FROM_BEGINNING"
   | "REPLAY_MODE_POINT_OF_FAILURE";
-export const GoogleCloudIntegrationsV1alphaReplayExecutionRequestReplayModeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaReplayExecutionRequestReplayModeEnum = S.String;
 
 /** Request for replaying an execution. */
 export interface GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
@@ -9767,7 +9663,7 @@ export interface GoogleCloudIntegrationsV1alphaReplayExecutionRequest {
   /** Optional. The list of parameters to be updated. - If the `update_mask` is not specified, all the parameters from original execution will be ignored and only the `modified_parameters` will be used. - It is an error to include a parameter in `update_mask` but not in `modified_parameters`. - Updating nested fields in a JSON parameter is not supported, please provide the complete JSON in the `modified_parameters`. */
   updateMask?: string;
 }
-export const GoogleCloudIntegrationsV1alphaReplayExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaReplayExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replayMode: S.optional(GoogleCloudIntegrationsV1alphaReplayExecutionRequestReplayModeEnum),
     modifiedParameters: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
@@ -9784,7 +9680,7 @@ export interface ReplayProjectsLocationsIntegrationsExecutionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaReplayExecutionRequest;
 }
-export const ReplayProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplayProjectsLocationsIntegrationsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaReplayExecutionRequest.pipe(T.HttpBody())),
@@ -9808,7 +9704,7 @@ export interface GoogleCloudIntegrationsV1alphaReplayExecutionResponse {
   /** The execution id which is replayed. */
   replayedExecutionId?: string;
 }
-export const GoogleCloudIntegrationsV1alphaReplayExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaReplayExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionId: S.optional(S.String),
     outputParameters: S.optional(DocumentMap),
@@ -9823,7 +9719,7 @@ export interface GoogleCloudIntegrationsV1alphaResolveSuspensionRequest {
   /** Suspension, containing the event_execution_info_id, task_id, and state to set on the corresponding suspension record. */
   suspension?: GoogleCloudIntegrationsV1alphaSuspension;
 }
-export const GoogleCloudIntegrationsV1alphaResolveSuspensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaResolveSuspensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suspension: S.optional(GoogleCloudIntegrationsV1alphaSuspension),
   }),
@@ -9837,8 +9733,8 @@ export interface ResolveProjectsLocationsIntegrationsExecutionsSuspensionsReques
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaResolveSuspensionRequest;
 }
-export const ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(GoogleCloudIntegrationsV1alphaResolveSuspensionRequest.pipe(T.HttpBody())),
@@ -9849,13 +9745,13 @@ export const ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest =
         baseUrl: "https://integrations.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
-  }) as any as S.Schema<ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
+).annotate({
+  identifier: "ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
+}) as any as S.Schema<ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest>;
 
 /** Response for Suspensions.ResolveSuspensions. */
 export interface GoogleCloudIntegrationsV1alphaResolveSuspensionResponse {}
-export const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse =
+const GoogleCloudIntegrationsV1alphaResolveSuspensionResponse =
   GoogleCloudIntegrationsV1alphaDeprovisionClientRequest as any as S.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse>;
 
 export interface ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest {
@@ -9864,7 +9760,7 @@ export interface ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensio
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaResolveSuspensionRequest;
 }
-export const ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest =
+const ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -9897,17 +9793,16 @@ export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest {
   /** The time that the integration should be executed. If the time is less or equal to the current time, the integration is executed immediately. */
   scheduleTime?: string;
 }
-export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      triggerId: S.optional(S.String),
-      parameters: S.optional(EnterpriseCrmEventbusProtoEventParameters),
-      inputParameters: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
-      userGeneratedExecutionId: S.optional(S.String),
-      parameterEntries: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterEntryList),
-      requestId: S.optional(S.String),
-      scheduleTime: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    triggerId: S.optional(S.String),
+    parameters: S.optional(EnterpriseCrmEventbusProtoEventParameters),
+    inputParameters: S.optional(GoogleCloudIntegrationsV1alphaValueTypeMap),
+    userGeneratedExecutionId: S.optional(S.String),
+    parameterEntries: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterEntryList),
+    requestId: S.optional(S.String),
+    scheduleTime: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest>;
@@ -9918,7 +9813,7 @@ export interface ScheduleProjectsLocationsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest;
 }
-export const ScheduleProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.pipe(T.HttpBody())),
@@ -9938,11 +9833,10 @@ export interface GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse {
   /** The execution info id for the executed integrations. */
   executionInfoIds?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionInfoIds: S.optional(StringList),
-    }),
+const GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionInfoIds: S.optional(StringList),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse>;
@@ -9953,7 +9847,7 @@ export interface ScheduleProjectsLocationsProductsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest;
 }
-export const ScheduleProjectsLocationsProductsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleProjectsLocationsProductsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest.pipe(T.HttpBody())),
@@ -9982,7 +9876,7 @@ export interface SearchProjectsLocationsIntegrationsRequest {
   /** Optional. The pre-filter to be applied to the search. This should follow the expressions defined in https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata. For example, "status:ANY("ACTIVE")" will return all the resources whose status contains the "ACTIVE". */
   filter?: string;
 }
-export const SearchProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -10007,7 +9901,7 @@ export type GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationS
   | "ACTIVE"
   | "ARCHIVED"
   | "SNAPSHOT";
-export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultStatusEnum =
+const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultStatusEnum =
   S.String;
 
 /** The integration search result with integration level information. */
@@ -10029,7 +9923,7 @@ export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegra
   /** The version of the integration version. */
   version?: string;
 }
-export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult =
+const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.optional(
@@ -10049,7 +9943,7 @@ export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegration
 
 export type GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultList =
   Array<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult>;
-export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultList =
+const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultList>;
@@ -10061,14 +9955,13 @@ export interface GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      integrations: S.optional(
-        GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultList,
-      ),
-      nextPageToken: S.optional(S.String),
-    }),
+const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrations: S.optional(
+      GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultList,
+    ),
+    nextPageToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse>;
@@ -10091,7 +9984,7 @@ export interface SearchProjectsLocationsTemplatesRequest {
   /** Optional. The search query that will be passed to Vertex search service. */
   query?: string;
 }
-export const SearchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readMask: S.optional(S.String.pipe(T.Query())),
     enableNaturalLanguageQueryUnderstanding: S.optional(S.Boolean.pipe(T.Query())),
@@ -10119,7 +10012,7 @@ export interface GoogleCloudIntegrationsV1alphaSearchTemplatesResponse {
   /** The token used to retrieve the next page results. */
   nextPageToken?: string;
 }
-export const GoogleCloudIntegrationsV1alphaSearchTemplatesResponse =
+const GoogleCloudIntegrationsV1alphaSearchTemplatesResponse =
   GoogleCloudIntegrationsV1alphaListTemplatesResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse>;
 
 /** Request to Share template */
@@ -10127,7 +10020,7 @@ export interface GoogleCloudIntegrationsV1alphaShareTemplateRequest {
   /** Optional. Project name resources to share the template. The project names is expected in resource format Ex: projects/{project-number} or organization/{org-id} */
   resourceNames?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaShareTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaShareTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceNames: S.optional(StringList),
   }),
@@ -10141,7 +10034,7 @@ export interface ShareProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaShareTemplateRequest;
 }
-export const ShareProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ShareProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaShareTemplateRequest.pipe(T.HttpBody())),
@@ -10161,7 +10054,7 @@ export interface GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest {
   /** Required. REQUIRED: Cloud KMS config for AuthModule to encrypt/decrypt credentials. */
   cloudKmsConfig?: GoogleCloudIntegrationsV1alphaCloudKmsConfig;
 }
-export const GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudKmsConfig: S.optional(GoogleCloudIntegrationsV1alphaCloudKmsConfig),
   }),
@@ -10175,7 +10068,7 @@ export interface SwitchProjectsLocationsClientsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest;
 }
-export const SwitchProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const SwitchProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest.pipe(T.HttpBody())),
@@ -10195,11 +10088,10 @@ export interface GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest {
   /** Required. REQUIRED: True if variable masking feature should be turned on for this region */
   enableVariableMasking?: boolean;
 }
-export const GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enableVariableMasking: S.optional(S.Boolean),
-    }),
+const GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enableVariableMasking: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest",
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest>;
@@ -10210,7 +10102,7 @@ export interface SwitchVariableMaskingProjectsLocationsClientsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest;
 }
-export const SwitchVariableMaskingProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const SwitchVariableMaskingProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest.pipe(T.HttpBody())),
@@ -10228,16 +10120,13 @@ export const SwitchVariableMaskingProjectsLocationsClientsRequest = /*@__PURE__*
 /** Request for TakeoverTestCaseEditLock. */
 export type GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest =
   GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
-export const GoogleCloudIntegrationsV1alphaTakeoverTestCaseEditLockRequest =
-  GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
-
 export interface TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Required. The ID of test case to takeover edit lock. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{integration_version}/testCases/{test_case_id} */
   name: string;
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
 }
-export const TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest =
+const TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -10256,16 +10145,13 @@ export const TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesReque
 /** Request for TakeoverEditLock. */
 export type GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest =
   GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
-export const GoogleCloudIntegrationsV1alphaTakeoverEditLockRequest =
-  GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
-
 export interface TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Required. The version to take over edit lock. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
   integrationVersion: string;
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
 }
-export const TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest =
+const TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       integrationVersion: S.String.pipe(T.Label()),
@@ -10286,7 +10172,7 @@ export interface GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse {
   /** Version after the lock is acquired by the new user. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
   }),
@@ -10298,7 +10184,7 @@ export type GoogleCloudIntegrationsV1alphaTestIntegrationsRequestCredentialModeE
   | "CREDENTIAL_MODE_UNSPECIFIED"
   | "CREDENTIAL_MODE_CURRENT"
   | "CREDENTIAL_MODE_HARDENED";
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsRequestCredentialModeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTestIntegrationsRequestCredentialModeEnum = S.String;
 
 /** The request for testing an integration. */
 export interface GoogleCloudIntegrationsV1alphaTestIntegrationsRequest {
@@ -10325,7 +10211,7 @@ export interface GoogleCloudIntegrationsV1alphaTestIntegrationsRequest {
   /** Optional. Passed in as parameters to each integration execution. */
   parameters?: EnterpriseCrmFrontendsEventbusProtoEventParameters;
 }
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTestIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configParameters: S.optional(DocumentMap),
     integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
@@ -10350,7 +10236,7 @@ export interface TestProjectsLocationsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaTestIntegrationsRequest;
 }
-export const TestProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestProjectsLocationsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.pipe(T.HttpBody())),
@@ -10369,25 +10255,22 @@ export type GoogleCloudIntegrationsV1alphaTestIntegrationsResponseCredentialMode
   | "CREDENTIAL_MODE_UNSPECIFIED"
   | "CREDENTIAL_MODE_CURRENT"
   | "CREDENTIAL_MODE_HARDENED";
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseCredentialModeEnum = S.String;
+const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseCredentialModeEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaTestIntegrationsResponseEucHardeningDispositionEnum =
   | "EUC_HARDENING_DISPOSITION_UNSPECIFIED"
   | "LEGACY"
   | "HARDENED";
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseEucHardeningDispositionEnum =
-  S.String;
+const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseEucHardeningDispositionEnum = S.String;
 
 export type GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnum =
   | "HARDENED_PATH_UNSPECIFIED"
   | "SCRIPT_EVAL"
   | "STUBBY_CALLER"
   | "SUB_INTEGRATION";
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnum = S.String;
-
 export type GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnumList =
   Array<GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnum>;
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnumList =
+const GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnumList =
   DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList as any as S.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponseHardenedPathsItemEnumList>;
 
 /** The response for testing an integration. */
@@ -10409,7 +10292,7 @@ export interface GoogleCloudIntegrationsV1alphaTestIntegrationsResponse {
   /** Optional. Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution. */
   parameters?: GoogleCloudIntegrationsV1alphaValueTypeMap;
 }
-export const GoogleCloudIntegrationsV1alphaTestIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaTestIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameterEntries: S.optional(EnterpriseCrmFrontendsEventbusProtoParameterEntryList),
     credentialMode: S.optional(
@@ -10436,7 +10319,7 @@ export interface TestProjectsLocationsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaTestIntegrationsRequest;
 }
-export const TestProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.pipe(T.HttpBody())),
@@ -10457,7 +10340,7 @@ export interface TestProjectsLocationsProductsIntegrationsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaTestIntegrationsRequest;
 }
-export const TestProjectsLocationsProductsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestProjectsLocationsProductsIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaTestIntegrationsRequest.pipe(T.HttpBody())),
@@ -10477,7 +10360,7 @@ export interface GoogleCloudIntegrationsV1alphaToggleHttpRequest {
   /** Required. REQUIRED: True if http call feature should be turned on for this region */
   enableHttpCall?: boolean;
 }
-export const GoogleCloudIntegrationsV1alphaToggleHttpRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaToggleHttpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableHttpCall: S.optional(S.Boolean),
   }),
@@ -10491,7 +10374,7 @@ export interface ToggleHttpProjectsLocationsClientsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaToggleHttpRequest;
 }
-export const ToggleHttpProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const ToggleHttpProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaToggleHttpRequest.pipe(T.HttpBody())),
@@ -10509,16 +10392,13 @@ export const ToggleHttpProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend
 /** Request for UnpublishIntegrationVersion. */
 export type GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest =
   GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
-export const GoogleCloudIntegrationsV1alphaUnpublishIntegrationVersionRequest =
-  GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
-
 export interface UnpublishProjectsLocationsIntegrationsVersionsRequest {
   /** Required. The version to deactivate. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} */
   name: string;
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
 }
-export const UnpublishProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpublishProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.pipe(T.HttpBody())),
@@ -10539,28 +10419,27 @@ export interface UnpublishProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaDeprovisionClientRequest;
 }
-export const UnpublishProjectsLocationsProductsIntegrationsVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:unpublish",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UnpublishProjectsLocationsProductsIntegrationsVersionsRequest",
-  }) as any as S.Schema<UnpublishProjectsLocationsProductsIntegrationsVersionsRequest>;
+const UnpublishProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudIntegrationsV1alphaDeprovisionClientRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:unpublish",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UnpublishProjectsLocationsProductsIntegrationsVersionsRequest",
+}) as any as S.Schema<UnpublishProjectsLocationsProductsIntegrationsVersionsRequest>;
 
 /** Request to Unshare template */
 export interface GoogleCloudIntegrationsV1alphaUnshareTemplateRequest {
   /** Optional. Project name resources to unshare the template. The project names is expected in resource format Ex: projects/{project-number} */
   resourceNames?: StringList;
 }
-export const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest =
+const GoogleCloudIntegrationsV1alphaUnshareTemplateRequest =
   GoogleCloudIntegrationsV1alphaShareTemplateRequest as any as S.Schema<GoogleCloudIntegrationsV1alphaUnshareTemplateRequest>;
 
 export interface UnshareProjectsLocationsTemplatesRequest {
@@ -10569,7 +10448,7 @@ export interface UnshareProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaUnshareTemplateRequest;
 }
-export const UnshareProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const UnshareProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaUnshareTemplateRequest.pipe(T.HttpBody())),
@@ -10588,7 +10467,7 @@ export type GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequestFileFor
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
   | "YAML";
-export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequestFileFormatEnum = S.String;
+const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequestFileFormatEnum = S.String;
 
 /** Request for UploadIntegrationVersion. */
 export interface GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest {
@@ -10599,17 +10478,16 @@ export interface GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest {
     | GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequestFileFormatEnum
     | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.optional(S.String),
-      fileFormat: S.optional(
-        GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequestFileFormatEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest>;
+const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.String),
+    fileFormat: S.optional(
+      GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequestFileFormatEnum,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest>;
 
 export interface UploadProjectsLocationsIntegrationsVersionsRequest {
   /** Required. The version to upload. Format: projects/{project}/locations/{location}/integrations/{integration} */
@@ -10617,7 +10495,7 @@ export interface UploadProjectsLocationsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest;
 }
-export const UploadProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadProjectsLocationsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(
@@ -10639,20 +10517,19 @@ export interface GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse 
   /** The uploaded integration. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse",
-  }) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse>;
+const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    integrationVersion: S.optional(GoogleCloudIntegrationsV1alphaIntegrationVersion),
+  }),
+).annotate({
+  identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse",
+}) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse>;
 
 export type GoogleCloudIntegrationsV1alphaUploadTestCaseRequestFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
   | "YAML";
-export const GoogleCloudIntegrationsV1alphaUploadTestCaseRequestFileFormatEnum = S.String;
+const GoogleCloudIntegrationsV1alphaUploadTestCaseRequestFileFormatEnum = S.String;
 
 /** Request for UploadTestCase. */
 export interface GoogleCloudIntegrationsV1alphaUploadTestCaseRequest {
@@ -10661,7 +10538,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadTestCaseRequest {
   /** The textproto of the test case. */
   content?: string;
 }
-export const GoogleCloudIntegrationsV1alphaUploadTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaUploadTestCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileFormat: S.optional(GoogleCloudIntegrationsV1alphaUploadTestCaseRequestFileFormatEnum),
     content: S.optional(S.String),
@@ -10676,18 +10553,17 @@ export interface UploadProjectsLocationsIntegrationsVersionsTestCasesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaUploadTestCaseRequest;
 }
-export const UploadProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(GoogleCloudIntegrationsV1alphaUploadTestCaseRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/testCases:upload",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
-    ),
+const UploadProjectsLocationsIntegrationsVersionsTestCasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(GoogleCloudIntegrationsV1alphaUploadTestCaseRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/testCases:upload",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UploadProjectsLocationsIntegrationsVersionsTestCasesRequest",
 }) as any as S.Schema<UploadProjectsLocationsIntegrationsVersionsTestCasesRequest>;
@@ -10697,7 +10573,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadTestCaseResponse {
   /** The uploaded TestCase */
   testCase?: GoogleCloudIntegrationsV1alphaTestCase;
 }
-export const GoogleCloudIntegrationsV1alphaUploadTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaUploadTestCaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testCase: S.optional(GoogleCloudIntegrationsV1alphaTestCase),
   }),
@@ -10711,20 +10587,19 @@ export interface UploadProjectsLocationsProductsIntegrationsVersionsRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest;
 }
-export const UploadProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/versions:upload",
-        baseUrl: "https://integrations.googleapis.com/",
-      }),
+const UploadProjectsLocationsProductsIntegrationsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(
+      GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest.pipe(T.HttpBody()),
     ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/versions:upload",
+      baseUrl: "https://integrations.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UploadProjectsLocationsProductsIntegrationsVersionsRequest",
 }) as any as S.Schema<UploadProjectsLocationsProductsIntegrationsVersionsRequest>;
@@ -10733,7 +10608,7 @@ export type GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
   | "YAML";
-export const GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum = S.String;
+const GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum = S.String;
 
 /** Request for UploadTemplate. */
 export interface GoogleCloudIntegrationsV1alphaUploadTemplateRequest {
@@ -10742,7 +10617,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadTemplateRequest {
   /** Required. File format for upload request. */
   fileFormat?: GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum | (string & {});
 }
-export const GoogleCloudIntegrationsV1alphaUploadTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaUploadTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     fileFormat: S.optional(GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum),
@@ -10757,7 +10632,7 @@ export interface UploadProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaUploadTemplateRequest;
 }
-export const UploadProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaUploadTemplateRequest.pipe(T.HttpBody())),
@@ -10777,7 +10652,7 @@ export interface GoogleCloudIntegrationsV1alphaUploadTemplateResponse {
   /** The uploaded Template */
   template?: GoogleCloudIntegrationsV1alphaTemplate;
 }
-export const GoogleCloudIntegrationsV1alphaUploadTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaUploadTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template: S.optional(GoogleCloudIntegrationsV1alphaTemplate),
   }),
@@ -10794,7 +10669,7 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateRequest {
   /** Required. The region of the Integration to be created. */
   integrationRegion?: string;
 }
-export const GoogleCloudIntegrationsV1alphaUseTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudIntegrationsV1alphaUseTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subIntegrations: S.optional(
       GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetailsMap,
@@ -10814,7 +10689,7 @@ export interface UseProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: GoogleCloudIntegrationsV1alphaUseTemplateRequest;
 }
-export const UseProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const UseProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudIntegrationsV1alphaUseTemplateRequest.pipe(T.HttpBody())),
@@ -10836,7 +10711,7 @@ export interface GoogleCloudIntegrationsV1alphaUseTemplateResponse {
   /** IntegrationVersion which is created. */
   integrationVersion?: GoogleCloudIntegrationsV1alphaIntegrationVersion;
 }
-export const GoogleCloudIntegrationsV1alphaUseTemplateResponse =
+const GoogleCloudIntegrationsV1alphaUseTemplateResponse =
   GoogleCloudIntegrationsV1alphaImportTemplateResponse as any as S.Schema<GoogleCloudIntegrationsV1alphaUseTemplateResponse>;
 
 export type CancelProjectsLocationsIntegrationsExecutionsError =

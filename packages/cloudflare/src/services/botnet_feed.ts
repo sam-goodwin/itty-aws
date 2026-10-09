@@ -23,7 +23,7 @@ export interface DayReportAsnRequest {
   asnId: number;
   date?: string;
 }
-export const DayReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
+const DayReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     asnId: S.Number.pipe(T.Label("asn_id")),
@@ -45,7 +45,7 @@ export interface DayReportAsnResponse {
   date?: string | null;
   offenseCount?: number | null;
 }
-export const DayReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
+const DayReportAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.optional(S.NullOr(S.String)),
     date: S.optional(S.NullOr(S.String)),
@@ -58,7 +58,7 @@ export interface DeleteConfigAsnRequest {
   accountId: string;
   asnId: number;
 }
-export const DeleteConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     asnId: S.Number.pipe(T.Label("asn_id")),
@@ -77,7 +77,7 @@ export const DeleteConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConfigAsnResponse {
   asn?: number | null;
 }
-export const DeleteConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigAsnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asn: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -88,7 +88,7 @@ export interface FullReportAsnRequest {
   accountId: string;
   asnId: number;
 }
-export const FullReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
+const FullReportAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     asnId: S.Number.pipe(T.Label("asn_id")),
@@ -109,13 +109,13 @@ export interface FullReportAsnResponse {
   date?: string | null;
   offenseCount?: number | null;
 }
-export const FullReportAsnResponse = DayReportAsnResponse as any as S.Schema<FullReportAsnResponse>;
+const FullReportAsnResponse = DayReportAsnResponse as any as S.Schema<FullReportAsnResponse>;
 
 export interface GetConfigAsnRequest {
   /** Identifier. */
   accountId: string;
 }
-export const GetConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -129,8 +129,7 @@ export const GetConfigAsnRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigAsnResponse {
   asn?: number | null;
 }
-export const GetConfigAsnResponse =
-  DeleteConfigAsnResponse as any as S.Schema<GetConfigAsnResponse>;
+const GetConfigAsnResponse = DeleteConfigAsnResponse as any as S.Schema<GetConfigAsnResponse>;
 
 export type DayReportAsnError = CloudflareOpError;
 /** Gets all the data the botnet tracking database has for a given ASN registered to user account for given date. If no date is given, it will return results for the previous day. */

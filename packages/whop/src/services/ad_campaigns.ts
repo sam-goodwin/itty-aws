@@ -38,15 +38,15 @@ export class NotFound
 
 /** How delivery bids in the ad auction: `minimum_cost` gets the most results for the budget, `average_target` holds an average cost per result, `maximum_target` never bids above a cap. Only for campaigns that own the budget. */
 export type CreateAdCampaignRequestBidType = "minimum_cost" | "average_target" | "maximum_target";
-export const CreateAdCampaignRequestBidType = S.String;
+const CreateAdCampaignRequestBidType = S.String;
 
 /** Which level owns the budget: the whole campaign (`ad_campaign`) or each ad group individually (`ad_group`). Defaults to `ad_group`. */
 export type CreateAdCampaignRequestBudgetOptimization = "ad_campaign" | "ad_group";
-export const CreateAdCampaignRequestBudgetOptimization = S.String;
+const CreateAdCampaignRequestBudgetOptimization = S.String;
 
 /** Whether the budget is spent per day (`daily`) or over the campaign's full run (`lifetime`). Defaults to `daily`. */
 export type CreateAdCampaignRequestBudgetType = "daily" | "lifetime";
-export const CreateAdCampaignRequestBudgetType = S.String;
+const CreateAdCampaignRequestBudgetType = S.String;
 
 /** The goal the campaign optimizes toward. */
 export type CreateAdCampaignRequestObjective =
@@ -55,24 +55,24 @@ export type CreateAdCampaignRequestObjective =
   | "engagement"
   | "leads"
   | "sales";
-export const CreateAdCampaignRequestObjective = S.String;
+const CreateAdCampaignRequestObjective = S.String;
 
 /** The ad network the campaign runs on. */
 export type CreateAdCampaignRequestPlatform = "meta";
-export const CreateAdCampaignRequestPlatform = S.String;
+const CreateAdCampaignRequestPlatform = S.String;
 
 export type CreateAdCampaignRequestSpecialAdCategoriesItem =
   | "housing"
   | "employment"
   | "financial_products"
   | "politics";
-export const CreateAdCampaignRequestSpecialAdCategoriesItem = S.String;
+const CreateAdCampaignRequestSpecialAdCategoriesItem = S.String;
 
 /** Regulated categories the campaign falls under. Ads in these categories are subject to extra targeting restrictions. */
 export type CreateAdCampaignRequestSpecialAdCategoriesList = Array<
   CreateAdCampaignRequestSpecialAdCategoriesItem | (string & {})
 >;
-export const CreateAdCampaignRequestSpecialAdCategoriesList = /*@__PURE__*/ S.Array(
+const CreateAdCampaignRequestSpecialAdCategoriesList = /*@__PURE__*/ S.Array(
   CreateAdCampaignRequestSpecialAdCategoriesItem,
 ) as any as S.Schema<CreateAdCampaignRequestSpecialAdCategoriesList>;
 
@@ -106,7 +106,7 @@ export interface CreateAdCampaignRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     bid_type: S.optional(CreateAdCampaignRequestBidType),
@@ -127,15 +127,15 @@ export const CreateAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** How delivery bids in the ad auction: `minimum_cost` gets the most results for the budget, `average_target` holds an average cost per result, and `maximum_target` never bids above a cap. */
 export type AdCampaignBidType = "minimum_cost" | "average_target" | "maximum_target";
-export const AdCampaignBidType = S.String;
+const AdCampaignBidType = S.String;
 
 /** Which level owns the budget: the whole campaign (`ad_campaign`) or each ad group individually (`ad_group`). */
 export type AdCampaignBudgetOptimization = "ad_campaign" | "ad_group";
-export const AdCampaignBudgetOptimization = S.String;
+const AdCampaignBudgetOptimization = S.String;
 
 /** Whether `budget_amount` is spent per day (`daily`) or over the campaign's full run (`lifetime`). */
 export type AdCampaignBudgetType = "daily" | "lifetime";
-export const AdCampaignBudgetType = S.String;
+const AdCampaignBudgetType = S.String;
 
 /** Whether the campaign's ads are delivering right now, and if not, why. Account billing failures set payment_failed without changing the configured status. Successful payment retry clears that block and recalculates delivery. When several states apply at once, the highest-precedence one is returned. */
 export type AdCampaignDeliveryStatus =
@@ -152,11 +152,11 @@ export type AdCampaignDeliveryStatus =
   | "completed"
   | "ad_groups_off"
   | "active";
-export const AdCampaignDeliveryStatus = S.String;
+const AdCampaignDeliveryStatus = S.String;
 
 /** The type of resource the issue is attached to. */
 export type AdPlatformIssueResourceType = "ad_campaign" | "ad_group" | "ad";
-export const AdPlatformIssueResourceType = S.String;
+const AdPlatformIssueResourceType = S.String;
 
 export interface AdPlatformIssue {
   /** Unique identifier for the issue. */
@@ -168,7 +168,7 @@ export interface AdPlatformIssue {
   /** The type of resource the issue is attached to. */
   resource_type: AdPlatformIssueResourceType;
 }
-export const AdPlatformIssue = /*@__PURE__*/ S.suspend(() =>
+const AdPlatformIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     message: S.String,
@@ -178,17 +178,17 @@ export const AdPlatformIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AdPlatformIssue" }) as any as S.Schema<AdPlatformIssue>;
 
 export type AdCampaignIssuesList = Array<AdPlatformIssue>;
-export const AdCampaignIssuesList = /*@__PURE__*/ S.Array(
+const AdCampaignIssuesList = /*@__PURE__*/ S.Array(
   AdPlatformIssue,
 ) as any as S.Schema<AdCampaignIssuesList>;
 
 /** The goal the campaign optimizes toward. */
 export type AdCampaignObjective = "awareness" | "traffic" | "engagement" | "leads" | "sales";
-export const AdCampaignObjective = S.String;
+const AdCampaignObjective = S.String;
 
 /** The ad network the campaign runs on. */
 export type AdCampaignPlatform = "meta" | "tiktok" | "google";
-export const AdCampaignPlatform = S.String;
+const AdCampaignPlatform = S.String;
 
 /** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
 export type AdCampaignResultEvent =
@@ -202,7 +202,7 @@ export type AdCampaignResultEvent =
   | "add_to_cart"
   | "custom"
   | "messaging_conversation";
-export const AdCampaignResultEvent = S.String;
+const AdCampaignResultEvent = S.String;
 
 /** Regulated categories the campaign is declared under. Ads in these categories are subject to extra targeting restrictions. Empty when none apply. */
 export type AdCampaignSpecialAdCategoriesItem =
@@ -210,10 +210,8 @@ export type AdCampaignSpecialAdCategoriesItem =
   | "employment"
   | "financial_products"
   | "politics";
-export const AdCampaignSpecialAdCategoriesItem = S.String;
-
 export type AdCampaignSpecialAdCategoriesList = Array<AdCampaignSpecialAdCategoriesItem>;
-export const AdCampaignSpecialAdCategoriesList =
+const AdCampaignSpecialAdCategoriesList =
   CreateAdCampaignRequestSpecialAdCategoriesList as any as S.Schema<AdCampaignSpecialAdCategoriesList>;
 
 /** The configured lifecycle status of the ad campaign. Billing failures preserve active or paused here and set delivery_status to payment_failed. */
@@ -230,7 +228,7 @@ export type AdCampaignStatus =
   | "importing"
   | "imported"
   | "duplicating";
-export const AdCampaignStatus = S.String;
+const AdCampaignStatus = S.String;
 
 export interface AdCampaign {
   /** USD value attributed to add-to-cart events. Sums the value sent with each event, normalized to USD; events without a value contribute 0. */
@@ -362,7 +360,7 @@ export interface AdCampaign {
   /** Whop pixel-attributed view-content events, last-click. */
   viewed_contents: number;
 }
-export const AdCampaign = /*@__PURE__*/ S.suspend(() =>
+const AdCampaign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     added_to_cart_value: S.Number,
     added_to_carts: S.Number,
@@ -436,7 +434,7 @@ export interface DeleteAdCampaignRequest {
   /** The ad campaign ID. */
   id: string;
 }
-export const DeleteAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/ad_campaigns/{id}", code: 200 })),
@@ -448,7 +446,7 @@ export interface DeleteAdCampaignResponse {
   /** ID of the deleted ad campaign. */
   id: string;
 }
-export const DeleteAdCampaignResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdCampaignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -465,7 +463,7 @@ export interface DuplicateAdCampaignRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const DuplicateAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     count: S.optional(S.Number),
@@ -477,14 +475,14 @@ export const DuplicateAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateAdCampaignRequest>;
 
 export type DuplicateAdCampaignResponseDataList = Array<AdCampaign>;
-export const DuplicateAdCampaignResponseDataList = /*@__PURE__*/ S.Array(
+const DuplicateAdCampaignResponseDataList = /*@__PURE__*/ S.Array(
   AdCampaign,
 ) as any as S.Schema<DuplicateAdCampaignResponseDataList>;
 
 export interface DuplicateAdCampaignResponse {
   data: DuplicateAdCampaignResponseDataList;
 }
-export const DuplicateAdCampaignResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateAdCampaignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DuplicateAdCampaignResponseDataList,
   }),
@@ -493,7 +491,7 @@ export const DuplicateAdCampaignResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateAdCampaignResponse>;
 
 export type GetAdCampaignRequestAttributionModel = "last_touch" | "first_touch";
-export const GetAdCampaignRequestAttributionModel = S.String;
+const GetAdCampaignRequestAttributionModel = S.String;
 
 export interface GetAdCampaignRequest {
   /** The ad campaign ID. */
@@ -507,7 +505,7 @@ export interface GetAdCampaignRequest {
   /** Attribution model the conversion stats count under (defaults to last_touch). Under both models a journey with any whop ad touch attributes to whop; the model picks which whop touch credits the entity and which non-whop source wins otherwise. */
   attribution_model?: GetAdCampaignRequestAttributionModel | (string & {});
 }
-export const GetAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     stats_from: S.optional(S.String.pipe(T.Query())),
@@ -518,7 +516,7 @@ export const GetAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAdCampaignRequest" }) as any as S.Schema<GetAdCampaignRequest>;
 
 export type ListAdCampaignsRequestStatus = "draft" | "active" | "paused" | "payment_failed";
-export const ListAdCampaignsRequestStatus = S.String;
+const ListAdCampaignsRequestStatus = S.String;
 
 export type ListAdCampaignsRequestOrder =
   | "created_at"
@@ -536,13 +534,13 @@ export type ListAdCampaignsRequestOrder =
   | "cost_per_click"
   | "cost_per_result"
   | "return_on_ad_spend";
-export const ListAdCampaignsRequestOrder = S.String;
+const ListAdCampaignsRequestOrder = S.String;
 
 export type ListAdCampaignsRequestDirection = "asc" | "desc";
-export const ListAdCampaignsRequestDirection = S.String;
+const ListAdCampaignsRequestDirection = S.String;
 
 export type ListAdCampaignsRequestAttributionModel = "last_touch" | "first_touch";
-export const ListAdCampaignsRequestAttributionModel = S.String;
+const ListAdCampaignsRequestAttributionModel = S.String;
 
 export interface ListAdCampaignsRequest {
   /** The account the campaigns belong to. Defaults to the account-scoped key's own account. */
@@ -576,7 +574,7 @@ export interface ListAdCampaignsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListAdCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListAdCampaignsRequestStatus.pipe(T.Query())),
@@ -597,7 +595,7 @@ export const ListAdCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAdCampaignsRequest" }) as any as S.Schema<ListAdCampaignsRequest>;
 
 export type ListAdCampaignsResponseDataList = Array<AdCampaign>;
-export const ListAdCampaignsResponseDataList =
+const ListAdCampaignsResponseDataList =
   DuplicateAdCampaignResponseDataList as any as S.Schema<ListAdCampaignsResponseDataList>;
 
 export interface ListAdCampaignsResponsePageInfo {
@@ -606,7 +604,7 @@ export interface ListAdCampaignsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListAdCampaignsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListAdCampaignsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -621,7 +619,7 @@ export interface ListAdCampaignsResponse {
   data: ListAdCampaignsResponseDataList;
   page_info: ListAdCampaignsResponsePageInfo;
 }
-export const ListAdCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAdCampaignsResponseDataList,
     page_info: ListAdCampaignsResponsePageInfo,
@@ -634,7 +632,7 @@ export interface PauseAdCampaignRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const PauseAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -647,7 +645,7 @@ export interface UnpauseAdCampaignRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const UnpauseAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpauseAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -656,33 +654,31 @@ export const UnpauseAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** How delivery bids in the ad auction: `minimum_cost` gets the most results for the budget, `average_target` holds an average cost per result, `maximum_target` never bids above a cap. Switching to `minimum_cost` clears the cap amounts stored on the campaign's ad groups. Only for campaigns that own the budget. */
 export type UpdateAdCampaignRequestBidType = "minimum_cost" | "average_target" | "maximum_target";
-export const UpdateAdCampaignRequestBidType = S.String;
+const UpdateAdCampaignRequestBidType = S.String;
 
 /** Which level owns the budget: the whole campaign (`ad_campaign`) or each ad group individually (`ad_group`). Only changeable before the campaign is live on the ad network; switching to `ad_campaign` requires budget_amount in the same request, and switching to `ad_group` clears the campaign budget. */
 export type UpdateAdCampaignRequestBudgetOptimization = "ad_campaign" | "ad_group";
-export const UpdateAdCampaignRequestBudgetOptimization = S.String;
+const UpdateAdCampaignRequestBudgetOptimization = S.String;
 
 /** Whether `budget_amount` is spent per day (`daily`) or over the campaign's full run (`lifetime`). Only changeable while the campaign is a draft; send budget_amount in the same request so the amount lands on the new type. */
 export type UpdateAdCampaignRequestBudgetType = "daily" | "lifetime";
-export const UpdateAdCampaignRequestBudgetType = S.String;
+const UpdateAdCampaignRequestBudgetType = S.String;
 
 export type UpdateAdCampaignRequestSpecialAdCategoriesItem =
   | "housing"
   | "employment"
   | "financial_products"
   | "politics";
-export const UpdateAdCampaignRequestSpecialAdCategoriesItem = S.String;
-
 /** Regulated categories the campaign falls under. Editable on any campaign, draft or launched; pass an empty array to clear. */
 export type UpdateAdCampaignRequestSpecialAdCategoriesList = Array<
   UpdateAdCampaignRequestSpecialAdCategoriesItem | (string & {})
 >;
-export const UpdateAdCampaignRequestSpecialAdCategoriesList =
+const UpdateAdCampaignRequestSpecialAdCategoriesList =
   CreateAdCampaignRequestSpecialAdCategoriesList as any as S.Schema<UpdateAdCampaignRequestSpecialAdCategoriesList>;
 
 /** Set to active to launch a draft campaign (moderates and pushes it live). Live-campaign pause and resume use the pause and unpause actions. */
 export type UpdateAdCampaignRequestStatus = "active";
-export const UpdateAdCampaignRequestStatus = S.String;
+const UpdateAdCampaignRequestStatus = S.String;
 
 export interface UpdateAdCampaignRequest {
   /** The ad campaign ID. */
@@ -708,7 +704,7 @@ export interface UpdateAdCampaignRequest {
   /** The name of the campaign. */
   title?: string;
 }
-export const UpdateAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAdCampaignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     bid_type: S.optional(UpdateAdCampaignRequestBidType),

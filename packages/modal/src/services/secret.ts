@@ -11,14 +11,14 @@ export type { ModalOpError, ModalOpContext };
 export interface DeleteSecretRequest {
   secretId?: string;
 }
-export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretDelete", code: 200 })),
 ).annotate({ identifier: "DeleteSecretRequest" }) as any as S.Schema<DeleteSecretRequest>;
 
 export interface DeleteSecretResponse {}
-export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSecretResponse",
 }) as any as S.Schema<DeleteSecretResponse>;
 
@@ -26,7 +26,7 @@ export interface ListPagination {
   maxObjects?: number;
   createdBefore?: number;
 }
-export const ListPagination = /*@__PURE__*/ S.suspend(() =>
+const ListPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxObjects: S.optional(S.Number),
     createdBefore: S.optional(S.Number),
@@ -37,7 +37,7 @@ export interface ListSecretRequest {
   environmentName?: string;
   pagination?: ListPagination;
 }
-export const ListSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     pagination: S.optional(ListPagination),
@@ -50,7 +50,7 @@ export interface CreationInfo {
   /** Timestamp of resource creation */
   createdBy?: string;
 }
-export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
+const CreationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Number),
     createdBy: S.optional(S.String),
@@ -58,7 +58,7 @@ export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreationInfo" }) as any as S.Schema<CreationInfo>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface SecretMetadata {
   name?: string;
@@ -66,7 +66,7 @@ export interface SecretMetadata {
   keys?: StringList;
   environmentName?: string;
 }
-export const SecretMetadata = /*@__PURE__*/ S.suspend(() =>
+const SecretMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     creationInfo: S.optional(CreationInfo),
@@ -85,7 +85,7 @@ export interface SecretListItem {
   secretId?: string;
   metadata?: SecretMetadata;
 }
-export const SecretListItem = /*@__PURE__*/ S.suspend(() =>
+const SecretListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -97,7 +97,7 @@ export const SecretListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretListItem" }) as any as S.Schema<SecretListItem>;
 
 export type SecretListItemList = Array<SecretListItem>;
-export const SecretListItemList = /*@__PURE__*/ S.Array(
+const SecretListItemList = /*@__PURE__*/ S.Array(
   SecretListItem,
 ) as any as S.Schema<SecretListItemList>;
 
@@ -105,7 +105,7 @@ export interface ListSecretResponse {
   items?: SecretListItemList;
   environmentName?: string;
 }
-export const ListSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(SecretListItemList),
     environmentName: S.optional(S.String),
@@ -115,7 +115,7 @@ export const ListSecretResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SecretGetInfoRequest {
   secretId?: string;
 }
-export const SecretGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const SecretGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/SecretGetInfo", code: 200 })),
@@ -124,7 +124,7 @@ export const SecretGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SecretGetInfoResponse {
   metadata?: SecretMetadata;
 }
-export const SecretGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const SecretGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SecretMetadata),
   }),
@@ -137,10 +137,10 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-export const ObjectCreationType = S.String;
+const ObjectCreationType = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface SecretGetOrCreateRequest {
   deploymentName?: string;
@@ -153,7 +153,7 @@ export interface SecretGetOrCreateRequest {
   /** only used with OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP */
   requiredKeys?: StringList;
 }
-export const SecretGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SecretGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -170,7 +170,7 @@ export interface SecretGetOrCreateResponse {
   secretId?: string;
   metadata?: SecretMetadata;
 }
-export const SecretGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const SecretGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.optional(S.String),
     metadata: S.optional(SecretMetadata),
@@ -183,7 +183,7 @@ export interface UpdateSecretRequestUpdate {
   key?: string;
   value?: string;
 }
-export const UpdateSecretRequestUpdate = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretRequestUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -193,7 +193,7 @@ export const UpdateSecretRequestUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSecretRequestUpdate>;
 
 export type UpdateSecretRequestUpdateList = Array<UpdateSecretRequestUpdate>;
-export const UpdateSecretRequestUpdateList = /*@__PURE__*/ S.Array(
+const UpdateSecretRequestUpdateList = /*@__PURE__*/ S.Array(
   UpdateSecretRequestUpdate,
 ) as any as S.Schema<UpdateSecretRequestUpdateList>;
 
@@ -202,7 +202,7 @@ export interface UpdateSecretRequest {
   secretId?: string;
   updates?: UpdateSecretRequestUpdateList;
 }
-export const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.optional(S.String),
     updates: S.optional(UpdateSecretRequestUpdateList),
@@ -210,7 +210,7 @@ export const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSecretRequest" }) as any as S.Schema<UpdateSecretRequest>;
 
 export interface UpdateSecretResponse {}
-export const UpdateSecretResponse = DeleteSecretResponse as any as S.Schema<UpdateSecretResponse>;
+const UpdateSecretResponse = DeleteSecretResponse as any as S.Schema<UpdateSecretResponse>;
 
 export type DeleteSecretError = ModalOpError;
 /** Secrets */

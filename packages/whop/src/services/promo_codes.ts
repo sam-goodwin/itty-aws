@@ -60,7 +60,7 @@ export interface ActivatePromoCodeRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ActivatePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivatePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -73,7 +73,7 @@ export interface AccountSummary {
   /** Account display name. */
   title: string;
 }
-export const AccountSummary = /*@__PURE__*/ S.suspend(() =>
+const AccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -172,11 +172,11 @@ export type PromoCodeCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-export const PromoCodeCurrency = S.String;
+const PromoCodeCurrency = S.String;
 
 /** How long the discount applies. */
 export type PromoCodeDuration = "forever" | "once" | "repeating";
-export const PromoCodeDuration = S.String;
+const PromoCodeDuration = S.String;
 
 export interface PromoCodeProduct {
   /** Product ID, prefixed `prod_`. */
@@ -184,15 +184,15 @@ export interface PromoCodeProduct {
   /** Product display name. */
   title: string;
 }
-export const PromoCodeProduct = AccountSummary as any as S.Schema<PromoCodeProduct>;
+const PromoCodeProduct = AccountSummary as any as S.Schema<PromoCodeProduct>;
 
 /** Whether the discount is percentage-based or a fixed amount. */
 export type PromoCodePromoType = "percentage" | "flat_amount";
-export const PromoCodePromoType = S.String;
+const PromoCodePromoType = S.String;
 
 /** Promo code lifecycle status. */
 export type PromoCodeStatus = "active" | "inactive" | "archived";
-export const PromoCodeStatus = S.String;
+const PromoCodeStatus = S.String;
 
 export interface PromoCode {
   /** Account that owns the promo code. */
@@ -238,7 +238,7 @@ export interface PromoCode {
   /** Memberships that used the promo code. */
   uses: number;
 }
-export const PromoCode = /*@__PURE__*/ S.suspend(() =>
+const PromoCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: AccountSummary,
     amount_off: S.Number,
@@ -355,15 +355,15 @@ export type CreatePromoCodeRequestBaseCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-export const CreatePromoCodeRequestBaseCurrency = S.String;
+const CreatePromoCodeRequestBaseCurrency = S.String;
 
 export type CreatePromoCodeRequestPlanIdsList = Array<string>;
-export const CreatePromoCodeRequestPlanIdsList = /*@__PURE__*/ S.Array(
+const CreatePromoCodeRequestPlanIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreatePromoCodeRequestPlanIdsList>;
 
 export type CreatePromoCodeRequestPromoType = "percentage" | "flat_amount";
-export const CreatePromoCodeRequestPromoType = S.String;
+const CreatePromoCodeRequestPromoType = S.String;
 
 export interface CreatePromoCodeRequest {
   account_id: string;
@@ -384,7 +384,7 @@ export interface CreatePromoCodeRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreatePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     amount_off: S.Number,
@@ -411,7 +411,7 @@ export interface DeactivatePromoCodeRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const DeactivatePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivatePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -424,7 +424,7 @@ export interface DeletePromoCodeRequest {
   /** Promo code ID (`promo_` tag). */
   id: string;
 }
-export const DeletePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/promo_codes/{id}", code: 200 })),
@@ -434,7 +434,7 @@ export interface DeletePromoCodeResponse {
   deleted: boolean;
   id: string;
 }
-export const DeletePromoCodeResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePromoCodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -445,28 +445,28 @@ export interface GetPromoCodeRequest {
   /** Promo code ID (`promo_` tag). */
   id: string;
 }
-export const GetPromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/promo_codes/{id}", code: 200 })),
 ).annotate({ identifier: "GetPromoCodeRequest" }) as any as S.Schema<GetPromoCodeRequest>;
 
 export type ListPromoCodesRequestStatus = "active" | "inactive" | "archived" | "expired";
-export const ListPromoCodesRequestStatus = S.String;
+const ListPromoCodesRequestStatus = S.String;
 
 export type ListPromoCodesRequestProductIdsList = Array<string>;
-export const ListPromoCodesRequestProductIdsList =
+const ListPromoCodesRequestProductIdsList =
   CreatePromoCodeRequestPlanIdsList as any as S.Schema<ListPromoCodesRequestProductIdsList>;
 
 export type ListPromoCodesRequestPlanIdsList = Array<string>;
-export const ListPromoCodesRequestPlanIdsList =
+const ListPromoCodesRequestPlanIdsList =
   CreatePromoCodeRequestPlanIdsList as any as S.Schema<ListPromoCodesRequestPlanIdsList>;
 
 export type ListPromoCodesRequestOrder = "created_at";
-export const ListPromoCodesRequestOrder = S.String;
+const ListPromoCodesRequestOrder = S.String;
 
 export type ListPromoCodesRequestDirection = "asc" | "desc";
-export const ListPromoCodesRequestDirection = S.String;
+const ListPromoCodesRequestDirection = S.String;
 
 export interface ListPromoCodesRequest {
   /** Account whose promo codes are listed (`biz_` tag). */
@@ -494,7 +494,7 @@ export interface ListPromoCodesRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListPromoCodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPromoCodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Query()),
     status: S.optional(ListPromoCodesRequestStatus.pipe(T.Query())),
@@ -603,19 +603,19 @@ export type PromoCodeListItemCurrency =
   | "awg"
   | "whop_usd"
   | "xau";
-export const PromoCodeListItemCurrency = S.String;
+const PromoCodeListItemCurrency = S.String;
 
 /** How long the discount applies. */
 export type PromoCodeListItemDuration = "forever" | "once" | "repeating";
-export const PromoCodeListItemDuration = S.String;
+const PromoCodeListItemDuration = S.String;
 
 /** Whether the discount is percentage-based or a fixed amount. */
 export type PromoCodeListItemPromoType = "percentage" | "flat_amount";
-export const PromoCodeListItemPromoType = S.String;
+const PromoCodeListItemPromoType = S.String;
 
 /** Promo code lifecycle status. */
 export type PromoCodeListItemStatus = "active" | "inactive" | "archived";
-export const PromoCodeListItemStatus = S.String;
+const PromoCodeListItemStatus = S.String;
 
 export interface PromoCodeListItem {
   /** Discount amount. Percentage discounts are represented as a decimal fraction. */
@@ -659,7 +659,7 @@ export interface PromoCodeListItem {
   /** Memberships that used the promo code. */
   uses: number;
 }
-export const PromoCodeListItem = /*@__PURE__*/ S.suspend(() =>
+const PromoCodeListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount_off: S.Number,
     churned_users_only: S.Boolean,
@@ -685,7 +685,7 @@ export const PromoCodeListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PromoCodeListItem" }) as any as S.Schema<PromoCodeListItem>;
 
 export type ListPromoCodesResponseDataList = Array<PromoCodeListItem>;
-export const ListPromoCodesResponseDataList = /*@__PURE__*/ S.Array(
+const ListPromoCodesResponseDataList = /*@__PURE__*/ S.Array(
   PromoCodeListItem,
 ) as any as S.Schema<ListPromoCodesResponseDataList>;
 
@@ -695,7 +695,7 @@ export interface ListPromoCodesResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListPromoCodesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListPromoCodesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -710,7 +710,7 @@ export interface ListPromoCodesResponse {
   data: ListPromoCodesResponseDataList;
   page_info: ListPromoCodesResponsePageInfo;
 }
-export const ListPromoCodesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPromoCodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPromoCodesResponseDataList,
     page_info: ListPromoCodesResponsePageInfo,
@@ -719,7 +719,7 @@ export const ListPromoCodesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Statuses that can be applied to promo codes through update operations. */
 export type PromoCodeUpdateStatus = "active" | "inactive";
-export const PromoCodeUpdateStatus = S.String;
+const PromoCodeUpdateStatus = S.String;
 
 export interface UpdatePromoCodeRequest {
   /** The unique identifier of the promo code to update. */
@@ -727,7 +727,7 @@ export interface UpdatePromoCodeRequest {
   /** The status to apply to the promo code. */
   status: PromoCodeUpdateStatus | (string & {});
 }
-export const UpdatePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePromoCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     status: PromoCodeUpdateStatus,
@@ -741,7 +741,7 @@ export interface LegacyPromoCodeCompany {
   /** The written name of the company. */
   title: string;
 }
-export const LegacyPromoCodeCompany = AccountSummary as any as S.Schema<LegacyPromoCodeCompany>;
+const LegacyPromoCodeCompany = AccountSummary as any as S.Schema<LegacyPromoCodeCompany>;
 
 /** The available currencies on the platform */
 export type LegacyCurrencies =
@@ -835,11 +835,11 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-export const LegacyCurrencies = S.String;
+const LegacyCurrencies = S.String;
 
 /** The duration setting for the promo code */
 export type PromoDurations = "forever" | "once" | "repeating";
-export const PromoDurations = S.String;
+const PromoDurations = S.String;
 
 /** The product this promo code applies to */
 export interface LegacyPromoCodeProduct {
@@ -848,15 +848,15 @@ export interface LegacyPromoCodeProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const LegacyPromoCodeProduct = AccountSummary as any as S.Schema<LegacyPromoCodeProduct>;
+const LegacyPromoCodeProduct = AccountSummary as any as S.Schema<LegacyPromoCodeProduct>;
 
 /** The type of promo code used to discount a plan */
 export type PromoTypes = "percentage" | "flat_amount";
-export const PromoTypes = S.String;
+const PromoTypes = S.String;
 
 /** Statuses for promo codes */
 export type PromoCodeStatus2 = "active" | "inactive" | "archived";
-export const PromoCodeStatus2 = S.String;
+const PromoCodeStatus2 = S.String;
 
 /** A promo code applies a discount to a plan during checkout. Promo codes can be percentage-based or fixed-amount, and can have usage limits and expiration dates. */
 export interface LegacyPromoCode {
@@ -899,7 +899,7 @@ export interface LegacyPromoCode {
   /** The amount of times the promo codes has been used. */
   uses: number;
 }
-export const LegacyPromoCode = /*@__PURE__*/ S.suspend(() =>
+const LegacyPromoCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount_off: S.Number,
     churned_users_only: S.Boolean,

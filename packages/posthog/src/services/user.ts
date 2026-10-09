@@ -27,7 +27,7 @@ export class Forbidden
   ) {}
 
 export interface GetUserToolbarEntitlementRequest {}
-export const GetUserToolbarEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserToolbarEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/user/toolbar_entitlements/", code: 200 })),
 ).annotate({
   identifier: "GetUserToolbarEntitlementRequest",
@@ -35,7 +35,7 @@ export const GetUserToolbarEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the current organization has each toolbar plan entitlement, keyed by feature name. */
 export type ToolbarEntitlementsEntitlementsMap = { [key: string]: boolean | undefined };
-export const ToolbarEntitlementsEntitlementsMap = /*@__PURE__*/ S.Record(
+const ToolbarEntitlementsEntitlementsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Boolean,
 ) as any as S.Schema<ToolbarEntitlementsEntitlementsMap>;
@@ -44,7 +44,7 @@ export interface ToolbarEntitlements {
   /** Whether the current organization has each toolbar plan entitlement, keyed by feature name. */
   entitlements: ToolbarEntitlementsEntitlementsMap;
 }
-export const ToolbarEntitlements = /*@__PURE__*/ S.suspend(() =>
+const ToolbarEntitlements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entitlements: ToolbarEntitlementsEntitlementsMap,
   }),

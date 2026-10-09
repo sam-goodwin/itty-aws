@@ -66,10 +66,10 @@ export type AggregatedProjectsJobsViewEnum =
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
-export const AggregatedProjectsJobsViewEnum = S.String;
+const AggregatedProjectsJobsViewEnum = S.String;
 
 export type AggregatedProjectsJobsFilterEnum = "UNKNOWN" | "ALL" | "TERMINATED" | "ACTIVE";
-export const AggregatedProjectsJobsFilterEnum = S.String;
+const AggregatedProjectsJobsFilterEnum = S.String;
 
 export interface AggregatedProjectsJobsRequest {
   /** The project which owns the jobs. */
@@ -89,7 +89,7 @@ export interface AggregatedProjectsJobsRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. */
   location?: string;
 }
-export const AggregatedProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregatedProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     name: S.optional(S.String.pipe(T.Query())),
@@ -115,25 +115,22 @@ export interface FailedLocation {
   /** The name of the [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond. */
   name?: string;
 }
-export const FailedLocation = /*@__PURE__*/ S.suspend(() =>
+const FailedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "FailedLocation" }) as any as S.Schema<FailedLocation>;
 
 export type FailedLocationList = Array<FailedLocation>;
-export const FailedLocationList = /*@__PURE__*/ S.Array(
+const FailedLocationList = /*@__PURE__*/ S.Array(
   FailedLocation,
 ) as any as S.Schema<FailedLocationList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type StringList_ = Array<string>;
-export const StringList_ = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList_>;
+const StringList_ = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList_>;
 
 /** Defines an SDK harness container for executing Dataflow pipelines. */
 export interface SdkHarnessContainerImage {
@@ -146,7 +143,7 @@ export interface SdkHarnessContainerImage {
   /** The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto) */
   capabilities?: StringList_;
 }
-export const SdkHarnessContainerImage = /*@__PURE__*/ S.suspend(() =>
+const SdkHarnessContainerImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     useSingleCorePerContainer: S.optional(S.Boolean),
@@ -156,7 +153,7 @@ export const SdkHarnessContainerImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SdkHarnessContainerImage" }) as any as S.Schema<SdkHarnessContainerImage>;
 
 export type SdkHarnessContainerImageList = Array<SdkHarnessContainerImage>;
-export const SdkHarnessContainerImageList = /*@__PURE__*/ S.Array(
+const SdkHarnessContainerImageList = /*@__PURE__*/ S.Array(
   SdkHarnessContainerImage,
 ) as any as S.Schema<SdkHarnessContainerImageList>;
 
@@ -165,16 +162,16 @@ export type WorkerPoolTeardownPolicyEnum =
   | "TEARDOWN_ALWAYS"
   | "TEARDOWN_ON_SUCCESS"
   | "TEARDOWN_NEVER";
-export const WorkerPoolTeardownPolicyEnum = S.String;
+const WorkerPoolTeardownPolicyEnum = S.String;
 
 export type WorkerPoolIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
   | "WORKER_IP_PRIVATE";
-export const WorkerPoolIpConfigurationEnum = S.String;
+const WorkerPoolIpConfigurationEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run. */
 export interface Package {
@@ -185,7 +182,7 @@ export interface Package {
   /** The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/ */
   location?: string;
 }
-export const Package = /*@__PURE__*/ S.suspend(() =>
+const Package = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256: S.optional(S.String),
     name: S.optional(S.String),
@@ -194,14 +191,14 @@ export const Package = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Package" }) as any as S.Schema<Package>;
 
 export type PackageList = Array<Package>;
-export const PackageList = /*@__PURE__*/ S.Array(Package) as any as S.Schema<PackageList>;
+const PackageList = /*@__PURE__*/ S.Array(Package) as any as S.Schema<PackageList>;
 
 export type WorkerPoolDefaultPackageSetEnum =
   | "DEFAULT_PACKAGE_SET_UNKNOWN"
   | "DEFAULT_PACKAGE_SET_NONE"
   | "DEFAULT_PACKAGE_SET_JAVA"
   | "DEFAULT_PACKAGE_SET_PYTHON";
-export const WorkerPoolDefaultPackageSetEnum = S.String;
+const WorkerPoolDefaultPackageSetEnum = S.String;
 
 /** Describes the data disk used by a workflow job. */
 export interface Disk {
@@ -212,7 +209,7 @@ export interface Disk {
   /** Directory in a VM where disk is mounted. */
   mountPoint?: string;
 }
-export const Disk = /*@__PURE__*/ S.suspend(() =>
+const Disk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeGb: S.optional(S.Number),
     diskType: S.optional(S.String),
@@ -221,7 +218,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 export type DiskList = Array<Disk>;
-export const DiskList = /*@__PURE__*/ S.Array(Disk) as any as S.Schema<DiskList>;
+const DiskList = /*@__PURE__*/ S.Array(Disk) as any as S.Schema<DiskList>;
 
 /** Provides data to pass through to the worker harness. */
 export interface WorkerSettings {
@@ -238,7 +235,7 @@ export interface WorkerSettings {
   /** The ID of the worker running this pipeline. */
   workerId?: string;
 }
-export const WorkerSettings = /*@__PURE__*/ S.suspend(() =>
+const WorkerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicePath: S.optional(S.String),
     baseUrl: S.optional(S.String),
@@ -290,7 +287,7 @@ export interface TaskRunnerSettings {
   /** The command to launch the worker harness. */
   harnessCommand?: string;
 }
-export const TaskRunnerSettings = /*@__PURE__*/ S.suspend(() =>
+const TaskRunnerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseUrl: S.optional(S.String),
     languageHint: S.optional(S.String),
@@ -318,7 +315,7 @@ export type AutoscalingSettingsAlgorithmEnum =
   | "AUTOSCALING_ALGORITHM_UNKNOWN"
   | "AUTOSCALING_ALGORITHM_NONE"
   | "AUTOSCALING_ALGORITHM_BASIC";
-export const AutoscalingSettingsAlgorithmEnum = S.String;
+const AutoscalingSettingsAlgorithmEnum = S.String;
 
 /** Settings for WorkerPool autoscaling. */
 export interface AutoscalingSettings {
@@ -327,7 +324,7 @@ export interface AutoscalingSettings {
   /** The maximum number of workers to cap scaling at. */
   maxNumWorkers?: number;
 }
-export const AutoscalingSettings = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.optional(AutoscalingSettingsAlgorithmEnum),
     maxNumWorkers: S.optional(S.Number),
@@ -385,7 +382,7 @@ export interface WorkerPool {
   /** Extra arguments for this worker pool. */
   poolArgs?: DocumentMap;
 }
-export const WorkerPool = /*@__PURE__*/ S.suspend(() =>
+const WorkerPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdkHarnessContainerImages: S.optional(SdkHarnessContainerImageList),
     subnetwork: S.optional(S.String),
@@ -415,19 +412,19 @@ export const WorkerPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkerPool" }) as any as S.Schema<WorkerPool>;
 
 export type WorkerPoolList = Array<WorkerPool>;
-export const WorkerPoolList = /*@__PURE__*/ S.Array(WorkerPool) as any as S.Schema<WorkerPoolList>;
+const WorkerPoolList = /*@__PURE__*/ S.Array(WorkerPool) as any as S.Schema<WorkerPoolList>;
 
 export type DataSamplingConfigBehaviorsItemEnum =
   | "DATA_SAMPLING_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ALWAYS_ON"
   | "EXCEPTIONS";
-export const DataSamplingConfigBehaviorsItemEnum = S.String;
+const DataSamplingConfigBehaviorsItemEnum = S.String;
 
 export type DataSamplingConfigBehaviorsItemEnumList = Array<
   DataSamplingConfigBehaviorsItemEnum | (string & {})
 >;
-export const DataSamplingConfigBehaviorsItemEnumList = /*@__PURE__*/ S.Array(
+const DataSamplingConfigBehaviorsItemEnumList = /*@__PURE__*/ S.Array(
   DataSamplingConfigBehaviorsItemEnum,
 ) as any as S.Schema<DataSamplingConfigBehaviorsItemEnumList>;
 
@@ -436,7 +433,7 @@ export interface DataSamplingConfig {
   /** List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter. */
   behaviors?: DataSamplingConfigBehaviorsItemEnumList;
 }
-export const DataSamplingConfig = /*@__PURE__*/ S.suspend(() =>
+const DataSamplingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     behaviors: S.optional(DataSamplingConfigBehaviorsItemEnumList),
   }),
@@ -449,7 +446,7 @@ export interface DebugOptions {
   /** Optional. When true, enables the logging of the literal hot key to the user's Cloud Logging. */
   enableHotKeyLogging?: boolean;
 }
-export const DebugOptions = /*@__PURE__*/ S.suspend(() =>
+const DebugOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSampling: S.optional(DataSamplingConfig),
     enableHotKeyLogging: S.optional(S.Boolean),
@@ -457,19 +454,19 @@ export const DebugOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DebugOptions" }) as any as S.Schema<DebugOptions>;
 
 export type EnvironmentShuffleModeEnum = "SHUFFLE_MODE_UNSPECIFIED" | "VM_BASED" | "SERVICE_BASED";
-export const EnvironmentShuffleModeEnum = S.String;
+const EnvironmentShuffleModeEnum = S.String;
 
 export type EnvironmentFlexResourceSchedulingGoalEnum =
   | "FLEXRS_UNSPECIFIED"
   | "FLEXRS_SPEED_OPTIMIZED"
   | "FLEXRS_COST_OPTIMIZED";
-export const EnvironmentFlexResourceSchedulingGoalEnum = S.String;
+const EnvironmentFlexResourceSchedulingGoalEnum = S.String;
 
 export type EnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
   | "STREAMING_MODE_AT_LEAST_ONCE";
-export const EnvironmentStreamingModeEnum = S.String;
+const EnvironmentStreamingModeEnum = S.String;
 
 /** Describes the environment in which a Dataflow Job runs. */
 export interface Environment {
@@ -514,7 +511,7 @@ export interface Environment {
   /** Optional. The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). */
   serviceOptions?: StringList_;
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAgent: S.optional(DocumentMap),
     clusterManagerApiService: S.optional(S.String),
@@ -555,7 +552,7 @@ export type JobRequestedStateEnum =
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
   | "JOB_STATE_PAUSED";
-export const JobRequestedStateEnum = S.String;
+const JobRequestedStateEnum = S.String;
 
 /** Metadata for a BigQuery connector used by the job. */
 export interface BigQueryIODetails {
@@ -568,7 +565,7 @@ export interface BigQueryIODetails {
   /** Query used to access data in the connection. */
   query?: string;
 }
-export const BigQueryIODetails = /*@__PURE__*/ S.suspend(() =>
+const BigQueryIODetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     dataset: S.optional(S.String),
@@ -578,7 +575,7 @@ export const BigQueryIODetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BigQueryIODetails" }) as any as S.Schema<BigQueryIODetails>;
 
 export type BigQueryIODetailsList = Array<BigQueryIODetails>;
-export const BigQueryIODetailsList = /*@__PURE__*/ S.Array(
+const BigQueryIODetailsList = /*@__PURE__*/ S.Array(
   BigQueryIODetails,
 ) as any as S.Schema<BigQueryIODetailsList>;
 
@@ -587,14 +584,14 @@ export interface FileIODetails {
   /** File Pattern used to access files by the connector. */
   filePattern?: string;
 }
-export const FileIODetails = /*@__PURE__*/ S.suspend(() =>
+const FileIODetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filePattern: S.optional(S.String),
   }),
 ).annotate({ identifier: "FileIODetails" }) as any as S.Schema<FileIODetails>;
 
 export type FileIODetailsList = Array<FileIODetails>;
-export const FileIODetailsList = /*@__PURE__*/ S.Array(
+const FileIODetailsList = /*@__PURE__*/ S.Array(
   FileIODetails,
 ) as any as S.Schema<FileIODetailsList>;
 
@@ -607,7 +604,7 @@ export interface BigTableIODetails {
   /** ProjectId accessed in the connection. */
   projectId?: string;
 }
-export const BigTableIODetails = /*@__PURE__*/ S.suspend(() =>
+const BigTableIODetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.optional(S.String),
     tableId: S.optional(S.String),
@@ -616,15 +613,15 @@ export const BigTableIODetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BigTableIODetails" }) as any as S.Schema<BigTableIODetails>;
 
 export type BigTableIODetailsList = Array<BigTableIODetails>;
-export const BigTableIODetailsList = /*@__PURE__*/ S.Array(
+const BigTableIODetailsList = /*@__PURE__*/ S.Array(
   BigTableIODetails,
 ) as any as S.Schema<BigTableIODetailsList>;
 
 export type SdkBugSeverityEnum = "SEVERITY_UNSPECIFIED" | "NOTICE" | "WARNING" | "SEVERE";
-export const SdkBugSeverityEnum = S.String;
+const SdkBugSeverityEnum = S.String;
 
 export type SdkBugTypeEnum = "TYPE_UNSPECIFIED" | "GENERAL" | "PERFORMANCE" | "DATALOSS";
-export const SdkBugTypeEnum = S.String;
+const SdkBugTypeEnum = S.String;
 
 /** A bug found in the Dataflow SDK. */
 export interface SdkBug {
@@ -635,7 +632,7 @@ export interface SdkBug {
   /** Output only. Describes the impact of this SDK bug. */
   type?: SdkBugTypeEnum | (string & {});
 }
-export const SdkBug = /*@__PURE__*/ S.suspend(() =>
+const SdkBug = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(SdkBugSeverityEnum),
     uri: S.optional(S.String),
@@ -644,7 +641,7 @@ export const SdkBug = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SdkBug" }) as any as S.Schema<SdkBug>;
 
 export type SdkBugList = Array<SdkBug>;
-export const SdkBugList = /*@__PURE__*/ S.Array(SdkBug) as any as S.Schema<SdkBugList>;
+const SdkBugList = /*@__PURE__*/ S.Array(SdkBug) as any as S.Schema<SdkBugList>;
 
 export type SdkVersionSdkSupportStatusEnum =
   | "UNKNOWN"
@@ -652,7 +649,7 @@ export type SdkVersionSdkSupportStatusEnum =
   | "STALE"
   | "DEPRECATED"
   | "UNSUPPORTED";
-export const SdkVersionSdkSupportStatusEnum = S.String;
+const SdkVersionSdkSupportStatusEnum = S.String;
 
 /** The version of the SDK used to run the job. */
 export interface SdkVersion {
@@ -665,7 +662,7 @@ export interface SdkVersion {
   /** The support status for this SDK version. */
   sdkSupportStatus?: SdkVersionSdkSupportStatusEnum | (string & {});
 }
-export const SdkVersion = /*@__PURE__*/ S.suspend(() =>
+const SdkVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bugs: S.optional(SdkBugList),
     versionDisplayName: S.optional(S.String),
@@ -681,7 +678,7 @@ export interface PubSubIODetails {
   /** Topic accessed in the connection. */
   topic?: string;
 }
-export const PubSubIODetails = /*@__PURE__*/ S.suspend(() =>
+const PubSubIODetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.optional(S.String),
     topic: S.optional(S.String),
@@ -689,7 +686,7 @@ export const PubSubIODetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PubSubIODetails" }) as any as S.Schema<PubSubIODetails>;
 
 export type PubSubIODetailsList = Array<PubSubIODetails>;
-export const PubSubIODetailsList = /*@__PURE__*/ S.Array(
+const PubSubIODetailsList = /*@__PURE__*/ S.Array(
   PubSubIODetails,
 ) as any as S.Schema<PubSubIODetailsList>;
 
@@ -700,7 +697,7 @@ export interface DatastoreIODetails {
   /** ProjectId accessed in the connection. */
   projectId?: string;
 }
-export const DatastoreIODetails = /*@__PURE__*/ S.suspend(() =>
+const DatastoreIODetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -708,7 +705,7 @@ export const DatastoreIODetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatastoreIODetails" }) as any as S.Schema<DatastoreIODetails>;
 
 export type DatastoreIODetailsList = Array<DatastoreIODetails>;
-export const DatastoreIODetailsList = /*@__PURE__*/ S.Array(
+const DatastoreIODetailsList = /*@__PURE__*/ S.Array(
   DatastoreIODetails,
 ) as any as S.Schema<DatastoreIODetailsList>;
 
@@ -721,7 +718,7 @@ export interface SpannerIODetails {
   /** DatabaseId accessed in the connection. */
   databaseId?: string;
 }
-export const SpannerIODetails = /*@__PURE__*/ S.suspend(() =>
+const SpannerIODetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     instanceId: S.optional(S.String),
@@ -730,7 +727,7 @@ export const SpannerIODetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpannerIODetails" }) as any as S.Schema<SpannerIODetails>;
 
 export type SpannerIODetailsList = Array<SpannerIODetails>;
-export const SpannerIODetailsList = /*@__PURE__*/ S.Array(
+const SpannerIODetailsList = /*@__PURE__*/ S.Array(
   SpannerIODetails,
 ) as any as S.Schema<SpannerIODetailsList>;
 
@@ -753,7 +750,7 @@ export interface JobMetadata {
   /** Identification of a Spanner source used in the Dataflow job. */
   spannerDetails?: SpannerIODetailsList;
 }
-export const JobMetadata = /*@__PURE__*/ S.suspend(() =>
+const JobMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userDisplayProperties: S.optional(StringMap),
     bigqueryDetails: S.optional(BigQueryIODetailsList),
@@ -782,7 +779,7 @@ export type JobCurrentStateEnum =
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
   | "JOB_STATE_PAUSED";
-export const JobCurrentStateEnum = S.String;
+const JobCurrentStateEnum = S.String;
 
 /** Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. **Note:** The properties of this object are not stable and might change. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce. */
 export interface Step {
@@ -793,7 +790,7 @@ export interface Step {
   /** The kind of step in the Cloud Dataflow job. */
   kind?: string;
 }
-export const Step = /*@__PURE__*/ S.suspend(() =>
+const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     properties: S.optional(DocumentMap),
@@ -802,7 +799,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
 export type StepList = Array<Step>;
-export const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
+const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
 
 /** Data provided with a pipeline or transform to provide descriptive info. */
 export interface DisplayData {
@@ -831,7 +828,7 @@ export interface DisplayData {
   /** Contains value if the data is of duration type. */
   durationValue?: string;
 }
-export const DisplayData = /*@__PURE__*/ S.suspend(() =>
+const DisplayData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     url: S.optional(S.String),
@@ -849,9 +846,7 @@ export const DisplayData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisplayData" }) as any as S.Schema<DisplayData>;
 
 export type DisplayDataList = Array<DisplayData>;
-export const DisplayDataList = /*@__PURE__*/ S.Array(
-  DisplayData,
-) as any as S.Schema<DisplayDataList>;
+const DisplayDataList = /*@__PURE__*/ S.Array(DisplayData) as any as S.Schema<DisplayDataList>;
 
 export type TransformSummaryKindEnum =
   | "UNKNOWN_KIND"
@@ -863,7 +858,7 @@ export type TransformSummaryKindEnum =
   | "CONSTANT_KIND"
   | "SINGLETON_KIND"
   | "SHUFFLE_KIND";
-export const TransformSummaryKindEnum = S.String;
+const TransformSummaryKindEnum = S.String;
 
 /** Description of the type, names/ids, and input/outputs for a transform. */
 export interface TransformSummary {
@@ -880,7 +875,7 @@ export interface TransformSummary {
   /** User names for all collection outputs to this transform. */
   outputCollectionName?: StringList_;
 }
-export const TransformSummary = /*@__PURE__*/ S.suspend(() =>
+const TransformSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayData: S.optional(DisplayDataList),
     name: S.optional(S.String),
@@ -892,7 +887,7 @@ export const TransformSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransformSummary" }) as any as S.Schema<TransformSummary>;
 
 export type TransformSummaryList = Array<TransformSummary>;
-export const TransformSummaryList = /*@__PURE__*/ S.Array(
+const TransformSummaryList = /*@__PURE__*/ S.Array(
   TransformSummary,
 ) as any as S.Schema<TransformSummaryList>;
 
@@ -907,7 +902,7 @@ export interface StageSource {
   /** Size of the source, if measurable. */
   sizeBytes?: string;
 }
-export const StageSource = /*@__PURE__*/ S.suspend(() =>
+const StageSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userName: S.optional(S.String),
     originalTransformOrCollection: S.optional(S.String),
@@ -917,9 +912,7 @@ export const StageSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageSource" }) as any as S.Schema<StageSource>;
 
 export type StageSourceList = Array<StageSource>;
-export const StageSourceList = /*@__PURE__*/ S.Array(
-  StageSource,
-) as any as S.Schema<StageSourceList>;
+const StageSourceList = /*@__PURE__*/ S.Array(StageSource) as any as S.Schema<StageSourceList>;
 
 export type ExecutionStageSummaryKindEnum =
   | "UNKNOWN_KIND"
@@ -931,7 +924,7 @@ export type ExecutionStageSummaryKindEnum =
   | "CONSTANT_KIND"
   | "SINGLETON_KIND"
   | "SHUFFLE_KIND";
-export const ExecutionStageSummaryKindEnum = S.String;
+const ExecutionStageSummaryKindEnum = S.String;
 
 /** Description of a transform executed as part of an execution stage. */
 export interface ComponentTransform {
@@ -942,7 +935,7 @@ export interface ComponentTransform {
   /** Dataflow service generated name for this source. */
   name?: string;
 }
-export const ComponentTransform = /*@__PURE__*/ S.suspend(() =>
+const ComponentTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userName: S.optional(S.String),
     originalTransform: S.optional(S.String),
@@ -951,7 +944,7 @@ export const ComponentTransform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ComponentTransform" }) as any as S.Schema<ComponentTransform>;
 
 export type ComponentTransformList = Array<ComponentTransform>;
-export const ComponentTransformList = /*@__PURE__*/ S.Array(
+const ComponentTransformList = /*@__PURE__*/ S.Array(
   ComponentTransform,
 ) as any as S.Schema<ComponentTransformList>;
 
@@ -964,7 +957,7 @@ export interface ComponentSource {
   /** Human-readable name for this transform; may be user or system generated. */
   userName?: string;
 }
-export const ComponentSource = /*@__PURE__*/ S.suspend(() =>
+const ComponentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     originalTransformOrCollection: S.optional(S.String),
@@ -973,7 +966,7 @@ export const ComponentSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ComponentSource" }) as any as S.Schema<ComponentSource>;
 
 export type ComponentSourceList = Array<ComponentSource>;
-export const ComponentSourceList = /*@__PURE__*/ S.Array(
+const ComponentSourceList = /*@__PURE__*/ S.Array(
   ComponentSource,
 ) as any as S.Schema<ComponentSourceList>;
 
@@ -996,7 +989,7 @@ export interface ExecutionStageSummary {
   /** Dataflow service generated name for this stage. */
   name?: string;
 }
-export const ExecutionStageSummary = /*@__PURE__*/ S.suspend(() =>
+const ExecutionStageSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputSource: S.optional(StageSourceList),
     kind: S.optional(ExecutionStageSummaryKindEnum),
@@ -1010,7 +1003,7 @@ export const ExecutionStageSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecutionStageSummary" }) as any as S.Schema<ExecutionStageSummary>;
 
 export type ExecutionStageSummaryList = Array<ExecutionStageSummary>;
-export const ExecutionStageSummaryList = /*@__PURE__*/ S.Array(
+const ExecutionStageSummaryList = /*@__PURE__*/ S.Array(
   ExecutionStageSummary,
 ) as any as S.Schema<ExecutionStageSummaryList>;
 
@@ -1025,7 +1018,7 @@ export interface PipelineDescription {
   /** Description of each stage of execution of the pipeline. */
   executionPipelineStage?: ExecutionStageSummaryList;
 }
-export const PipelineDescription = /*@__PURE__*/ S.suspend(() =>
+const PipelineDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalPipelineTransform: S.optional(TransformSummaryList),
     displayData: S.optional(DisplayDataList),
@@ -1039,7 +1032,7 @@ export interface ServiceResources {
   /** Output only. List of Cloud Zones being used by the Dataflow Service for this job. Example: us-central1-c */
   zones?: StringList_;
 }
-export const ServiceResources = /*@__PURE__*/ S.suspend(() =>
+const ServiceResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zones: S.optional(StringList_),
   }),
@@ -1061,7 +1054,7 @@ export type ExecutionStageStateExecutionStageStateEnum =
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
   | "JOB_STATE_PAUSED";
-export const ExecutionStageStateExecutionStageStateEnum = S.String;
+const ExecutionStageStateExecutionStageStateEnum = S.String;
 
 /** A message describing the state of a particular execution stage. */
 export interface ExecutionStageState {
@@ -1072,7 +1065,7 @@ export interface ExecutionStageState {
   /** Executions stage states allow the same set of values as JobState. */
   executionStageState?: ExecutionStageStateExecutionStageStateEnum | (string & {});
 }
-export const ExecutionStageState = /*@__PURE__*/ S.suspend(() =>
+const ExecutionStageState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionStageName: S.optional(S.String),
     currentStateTime: S.optional(S.String),
@@ -1081,7 +1074,7 @@ export const ExecutionStageState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecutionStageState" }) as any as S.Schema<ExecutionStageState>;
 
 export type ExecutionStageStateList = Array<ExecutionStageState>;
-export const ExecutionStageStateList = /*@__PURE__*/ S.Array(
+const ExecutionStageStateList = /*@__PURE__*/ S.Array(
   ExecutionStageState,
 ) as any as S.Schema<ExecutionStageStateList>;
 
@@ -1096,7 +1089,7 @@ export interface Parameters {
   /** Optional. The maximum number of workers for this schedule. */
   maxWorkerCount?: number;
 }
-export const Parameters = /*@__PURE__*/ S.suspend(() =>
+const Parameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minWorkerCount: S.optional(S.Number),
     cpuUtilizationTarget: S.optional(S.Number),
@@ -1122,7 +1115,7 @@ export interface AutoscalingSchedule {
   /** Optional. The name of the schedule. */
   name?: string;
 }
-export const AutoscalingSchedule = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priority: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -1135,7 +1128,7 @@ export const AutoscalingSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoscalingSchedule" }) as any as S.Schema<AutoscalingSchedule>;
 
 export type AutoscalingScheduleList = Array<AutoscalingSchedule>;
-export const AutoscalingScheduleList = /*@__PURE__*/ S.Array(
+const AutoscalingScheduleList = /*@__PURE__*/ S.Array(
   AutoscalingSchedule,
 ) as any as S.Schema<AutoscalingScheduleList>;
 
@@ -1156,7 +1149,7 @@ export interface RuntimeUpdatableParams {
   /** Optional. The backlog threshold tier for autoscaling. Value must be one of "low-latency", "medium-latency", or "high-latency". */
   latencyTier?: string;
 }
-export const RuntimeUpdatableParams = /*@__PURE__*/ S.suspend(() =>
+const RuntimeUpdatableParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoscalingTier: S.optional(S.String),
     acceptableBacklogDuration: S.optional(S.String),
@@ -1173,14 +1166,14 @@ export interface JobExecutionStageInfo {
   /** The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage. */
   stepName?: StringList_;
 }
-export const JobExecutionStageInfo = /*@__PURE__*/ S.suspend(() =>
+const JobExecutionStageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stepName: S.optional(StringList_),
   }),
 ).annotate({ identifier: "JobExecutionStageInfo" }) as any as S.Schema<JobExecutionStageInfo>;
 
 export type JobExecutionStageInfoMap = { [key: string]: JobExecutionStageInfo | undefined };
-export const JobExecutionStageInfoMap = /*@__PURE__*/ S.Record(
+const JobExecutionStageInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   JobExecutionStageInfo,
 ) as any as S.Schema<JobExecutionStageInfoMap>;
@@ -1190,14 +1183,14 @@ export interface JobExecutionInfo {
   /** A mapping from each stage to the information about that stage. */
   stages?: JobExecutionStageInfoMap;
 }
-export const JobExecutionInfo = /*@__PURE__*/ S.suspend(() =>
+const JobExecutionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stages: S.optional(JobExecutionStageInfoMap),
   }),
 ).annotate({ identifier: "JobExecutionInfo" }) as any as S.Schema<JobExecutionInfo>;
 
 export type JobTypeEnum = "JOB_TYPE_UNKNOWN" | "JOB_TYPE_BATCH" | "JOB_TYPE_STREAMING";
-export const JobTypeEnum = S.String;
+const JobTypeEnum = S.String;
 
 /** Defines a job to be run by the Cloud Dataflow service. Do not enter confidential information when you supply string values using the API. */
 export interface Job {
@@ -1260,7 +1253,7 @@ export interface Job {
   /** Optional. The type of Dataflow job. */
   type?: JobTypeEnum | (string & {});
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     replacedByJobId: S.optional(S.String),
@@ -1295,7 +1288,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 export type JobList = Array<Job>;
-export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
+const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Response to a request to list Cloud Dataflow jobs in a project. This might be a partial response, depending on the page size in the ListJobsRequest. However, if the project does not have any jobs, an instance of ListJobsResponse is not returned and the requests's response body is empty {}. */
 export interface ListJobsResponse {
@@ -1306,7 +1299,7 @@ export interface ListJobsResponse {
   /** Set if there may be more results than fit in this response. */
   nextPageToken?: string;
 }
-export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failedLocation: S.optional(FailedLocationList),
     jobs: S.optional(JobList),
@@ -1321,7 +1314,7 @@ export interface ConfigStoreSettingValue {
   /** Represents a string value. */
   stringValue?: string;
 }
-export const ConfigStoreSettingValue = /*@__PURE__*/ S.suspend(() =>
+const ConfigStoreSettingValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boolValue: S.optional(S.Boolean),
     stringValue: S.optional(S.String),
@@ -1335,7 +1328,7 @@ export interface ConfigStoreSetting {
   /** Required. The dynamic value of the setting. */
   value?: ConfigStoreSettingValue;
 }
-export const ConfigStoreSetting = /*@__PURE__*/ S.suspend(() =>
+const ConfigStoreSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(ConfigStoreSettingValue),
@@ -1350,7 +1343,7 @@ export interface CreateFoldersLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ConfigStoreSetting;
 }
-export const CreateFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     configStoreSettingId: S.optional(S.String.pipe(T.Query())),
@@ -1374,7 +1367,7 @@ export interface CreateOrganizationsLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ConfigStoreSetting;
 }
-export const CreateOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configStoreSettingId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1395,7 +1388,7 @@ export type CreateProjectsJobsViewEnum =
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
-export const CreateProjectsJobsViewEnum = S.String;
+const CreateProjectsJobsViewEnum = S.String;
 
 export interface CreateProjectsJobsRequest {
   /** The level of information requested in response. */
@@ -1409,7 +1402,7 @@ export interface CreateProjectsJobsRequest {
   /** Request body */
   body?: Job;
 }
-export const CreateProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(CreateProjectsJobsViewEnum.pipe(T.Query())),
     location: S.optional(S.String.pipe(T.Query())),
@@ -1435,7 +1428,7 @@ export interface CreateProjectsLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ConfigStoreSetting;
 }
-export const CreateProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     configStoreSettingId: S.optional(S.String.pipe(T.Query())),
@@ -1456,7 +1449,7 @@ export type CreateProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
-export const CreateProjectsLocationsJobsViewEnum = S.String;
+const CreateProjectsLocationsJobsViewEnum = S.String;
 
 export interface CreateProjectsLocationsJobsRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. */
@@ -1470,7 +1463,7 @@ export interface CreateProjectsLocationsJobsRequest {
   /** Request body */
   body?: Job;
 }
-export const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     replaceJobId: S.optional(S.String.pipe(T.Query())),
@@ -1492,13 +1485,13 @@ export type RuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
   | "WORKER_IP_PRIVATE";
-export const RuntimeEnvironmentIpConfigurationEnum = S.String;
+const RuntimeEnvironmentIpConfigurationEnum = S.String;
 
 export type RuntimeEnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
   | "STREAMING_MODE_AT_LEAST_ONCE";
-export const RuntimeEnvironmentStreamingModeEnum = S.String;
+const RuntimeEnvironmentStreamingModeEnum = S.String;
 
 /** The environment values to set at runtime. */
 export interface RuntimeEnvironment {
@@ -1541,7 +1534,7 @@ export interface RuntimeEnvironment {
   /** Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence. */
   workerZone?: string;
 }
-export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
+const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machineType: S.optional(S.String),
     additionalPipelineOptions: S.optional(StringList_),
@@ -1578,7 +1571,7 @@ export interface CreateJobFromTemplateRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. */
   location?: string;
 }
-export const CreateJobFromTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobFromTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobName: S.optional(S.String),
     gcsPath: S.optional(S.String),
@@ -1598,7 +1591,7 @@ export interface CreateProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: CreateJobFromTemplateRequest;
 }
-export const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1620,7 +1613,7 @@ export interface CreateProjectsTemplatesRequest {
   /** Request body */
   body?: CreateJobFromTemplateRequest;
 }
-export const CreateProjectsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(CreateJobFromTemplateRequest.pipe(T.HttpBody())),
@@ -1639,7 +1632,7 @@ export interface DeleteFoldersLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to delete. */
   name: string;
 }
-export const DeleteFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1651,7 +1644,7 @@ export const DeleteFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -1659,7 +1652,7 @@ export interface DeleteOrganizationsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to delete. */
   name: string;
 }
-export const DeleteOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1673,7 +1666,7 @@ export interface DeleteProjectsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1691,7 +1684,7 @@ export interface DeleteProjectsLocationsSnapshotsRequest {
   /** The ID of the Cloud Platform project that the snapshot belongs to. */
   projectId: string;
 }
-export const DeleteProjectsLocationsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1709,7 +1702,7 @@ export const DeleteProjectsLocationsSnapshotsRequest = /*@__PURE__*/ S.suspend((
 
 /** Response from deleting a snapshot. */
 export interface DeleteSnapshotResponse {}
-export const DeleteSnapshotResponse = Empty as any as S.Schema<DeleteSnapshotResponse>;
+const DeleteSnapshotResponse = Empty as any as S.Schema<DeleteSnapshotResponse>;
 
 export interface DeleteSnapshotsProjectsRequest {
   /** The ID of the snapshot. */
@@ -1719,7 +1712,7 @@ export interface DeleteSnapshotsProjectsRequest {
   /** The location that contains this snapshot. */
   location?: string;
 }
-export const DeleteSnapshotsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSnapshotsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String.pipe(T.Query())),
     projectId: S.String.pipe(T.Label()),
@@ -1744,7 +1737,7 @@ export interface GetDebugConfigRequest {
   /** The internal component id for which debug configuration is requested. */
   componentId?: string;
 }
-export const GetDebugConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDebugConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerId: S.optional(S.String),
     location: S.optional(S.String),
@@ -1760,7 +1753,7 @@ export interface GetConfigProjectsJobsDebugRequest {
   /** Request body */
   body?: GetDebugConfigRequest;
 }
-export const GetConfigProjectsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -1781,7 +1774,7 @@ export interface GetDebugConfigResponse {
   /** The encoded debug configuration for the requested component. */
   config?: string;
 }
-export const GetDebugConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDebugConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(S.String),
   }),
@@ -1797,7 +1790,7 @@ export interface GetConfigProjectsLocationsJobsDebugRequest {
   /** Request body */
   body?: GetDebugConfigRequest;
 }
-export const GetConfigProjectsLocationsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigProjectsLocationsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -1826,7 +1819,7 @@ export interface GetExecutionDetailsProjectsLocationsJobsRequest {
   /** If specified, determines the maximum number of stages to return. If unspecified, the service may choose an appropriate default, or may return an arbitrarily large number of results. */
   pageSize?: number;
 }
-export const GetExecutionDetailsProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExecutionDetailsProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1851,7 +1844,7 @@ export interface Point {
   /** The timestamp of the point. */
   time?: string;
 }
-export const Point = /*@__PURE__*/ S.suspend(() =>
+const Point = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Number),
     time: S.optional(S.String),
@@ -1859,7 +1852,7 @@ export const Point = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Point" }) as any as S.Schema<Point>;
 
 export type PointList = Array<Point>;
-export const PointList = /*@__PURE__*/ S.Array(Point) as any as S.Schema<PointList>;
+const PointList = /*@__PURE__*/ S.Array(Point) as any as S.Schema<PointList>;
 
 /** Information about the progress of some component of job execution. */
 export interface ProgressTimeseries {
@@ -1868,7 +1861,7 @@ export interface ProgressTimeseries {
   /** The current progress of the component, in the range [0,1]. */
   currentProgress?: number;
 }
-export const ProgressTimeseries = /*@__PURE__*/ S.suspend(() =>
+const ProgressTimeseries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataPoints: S.optional(PointList),
     currentProgress: S.optional(S.Number),
@@ -1882,7 +1875,7 @@ export type StageSummaryStateEnum =
   | "EXECUTION_STATE_SUCCEEDED"
   | "EXECUTION_STATE_FAILED"
   | "EXECUTION_STATE_CANCELLED";
-export const StageSummaryStateEnum = S.String;
+const StageSummaryStateEnum = S.String;
 
 /** Identifies a metric, by describing the source which generated the metric. */
 export interface MetricStructuredName {
@@ -1893,7 +1886,7 @@ export interface MetricStructuredName {
   /** Zero or more labeled fields which identify the part of the job this metric is associated with, such as the name of a step or collection. For example, built-in counters associated with steps will have context['step'] = . Counters associated with PCollections in the SDK will have context['pcollection'] = . */
   context?: StringMap;
 }
-export const MetricStructuredName = /*@__PURE__*/ S.suspend(() =>
+const MetricStructuredName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin: S.optional(S.String),
     name: S.optional(S.String),
@@ -1930,7 +1923,7 @@ export interface MetricUpdate {
   /** Metric aggregation kind. The possible metric aggregation kinds are "Sum", "Max", "Min", "Mean", "Set", "And", "Or", and "Distribution". The specified aggregation kind is case-insensitive. If omitted, this is not an aggregated value but instead a single metric sample value. */
   kind?: string;
 }
-export const MetricUpdate = /*@__PURE__*/ S.suspend(() =>
+const MetricUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meanCount: S.optional(S.Unknown),
     name: S.optional(MetricStructuredName),
@@ -1949,9 +1942,7 @@ export const MetricUpdate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricUpdate" }) as any as S.Schema<MetricUpdate>;
 
 export type MetricUpdateList = Array<MetricUpdate>;
-export const MetricUpdateList = /*@__PURE__*/ S.Array(
-  MetricUpdate,
-) as any as S.Schema<MetricUpdateList>;
+const MetricUpdateList = /*@__PURE__*/ S.Array(MetricUpdate) as any as S.Schema<MetricUpdateList>;
 
 /** Information about a hot key. */
 export interface HotKeyInfo {
@@ -1962,7 +1953,7 @@ export interface HotKeyInfo {
   /** A detected hot key that is causing limited parallelism. This field will be populated only if the following flag is set to true: "--enable_hot_key_logging". */
   key?: string;
 }
-export const HotKeyInfo = /*@__PURE__*/ S.suspend(() =>
+const HotKeyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyTruncated: S.optional(S.Boolean),
     hotKeyAge: S.optional(S.String),
@@ -1971,7 +1962,7 @@ export const HotKeyInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HotKeyInfo" }) as any as S.Schema<HotKeyInfo>;
 
 export type HotKeyInfoMap = { [key: string]: HotKeyInfo | undefined };
-export const HotKeyInfoMap = /*@__PURE__*/ S.Record(
+const HotKeyInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   HotKeyInfo,
 ) as any as S.Schema<HotKeyInfoMap>;
@@ -1981,7 +1972,7 @@ export interface HotKeyDebuggingInfo {
   /** Debugging information for each detected hot key. Keyed by a hash of the key. */
   detectedHotKeys?: HotKeyInfoMap;
 }
-export const HotKeyDebuggingInfo = /*@__PURE__*/ S.suspend(() =>
+const HotKeyDebuggingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectedHotKeys: S.optional(HotKeyInfoMap),
   }),
@@ -1992,14 +1983,14 @@ export interface StragglerDebuggingInfo {
   /** Hot key debugging details. */
   hotKey?: HotKeyDebuggingInfo;
 }
-export const StragglerDebuggingInfo = /*@__PURE__*/ S.suspend(() =>
+const StragglerDebuggingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hotKey: S.optional(HotKeyDebuggingInfo),
   }),
 ).annotate({ identifier: "StragglerDebuggingInfo" }) as any as S.Schema<StragglerDebuggingInfo>;
 
 export type StragglerDebuggingInfoMap = { [key: string]: StragglerDebuggingInfo | undefined };
-export const StragglerDebuggingInfoMap = /*@__PURE__*/ S.Record(
+const StragglerDebuggingInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   StragglerDebuggingInfo,
 ) as any as S.Schema<StragglerDebuggingInfoMap>;
@@ -2011,7 +2002,7 @@ export interface StragglerInfo {
   /** The straggler causes, keyed by the string representation of the StragglerCause enum and contains specialized debugging information for each straggler cause. */
   causes?: StragglerDebuggingInfoMap;
 }
-export const StragglerInfo = /*@__PURE__*/ S.suspend(() =>
+const StragglerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     causes: S.optional(StragglerDebuggingInfoMap),
@@ -2031,7 +2022,7 @@ export interface StreamingStragglerInfo {
   /** The event-time watermark lag at the time of the straggler detection. */
   dataWatermarkLag?: string;
 }
-export const StreamingStragglerInfo = /*@__PURE__*/ S.suspend(() =>
+const StreamingStragglerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemWatermarkLag: S.optional(S.String),
     workerName: S.optional(S.String),
@@ -2048,7 +2039,7 @@ export interface Straggler {
   /** Streaming straggler identification and debugging information. */
   streamingStraggler?: StreamingStragglerInfo;
 }
-export const Straggler = /*@__PURE__*/ S.suspend(() =>
+const Straggler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchStraggler: S.optional(StragglerInfo),
     streamingStraggler: S.optional(StreamingStragglerInfo),
@@ -2056,7 +2047,7 @@ export const Straggler = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Straggler" }) as any as S.Schema<Straggler>;
 
 export type StragglerList = Array<Straggler>;
-export const StragglerList = /*@__PURE__*/ S.Array(Straggler) as any as S.Schema<StragglerList>;
+const StragglerList = /*@__PURE__*/ S.Array(Straggler) as any as S.Schema<StragglerList>;
 
 /** Summarized straggler identification details. */
 export interface StragglerSummary {
@@ -2067,7 +2058,7 @@ export interface StragglerSummary {
   /** The most recent stragglers. */
   recentStragglers?: StragglerList;
 }
-export const StragglerSummary = /*@__PURE__*/ S.suspend(() =>
+const StragglerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalStragglerCount: S.optional(S.String),
     stragglerCauseCount: S.optional(StringMap),
@@ -2092,7 +2083,7 @@ export interface StageSummary {
   /** End time of this stage. If the work item is completed, this is the actual end time of the stage. Otherwise, it is the predicted end time. */
   endTime?: string;
 }
-export const StageSummary = /*@__PURE__*/ S.suspend(() =>
+const StageSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     progress: S.optional(ProgressTimeseries),
     state: S.optional(StageSummaryStateEnum),
@@ -2105,9 +2096,7 @@ export const StageSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageSummary" }) as any as S.Schema<StageSummary>;
 
 export type StageSummaryList = Array<StageSummary>;
-export const StageSummaryList = /*@__PURE__*/ S.Array(
-  StageSummary,
-) as any as S.Schema<StageSummaryList>;
+const StageSummaryList = /*@__PURE__*/ S.Array(StageSummary) as any as S.Schema<StageSummaryList>;
 
 /** Information about the execution of a job. */
 export interface JobExecutionDetails {
@@ -2116,7 +2105,7 @@ export interface JobExecutionDetails {
   /** If present, this response does not contain all requested tasks. To obtain the next page of results, repeat the request with page_token set to this value. */
   nextPageToken?: string;
 }
-export const JobExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const JobExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stages: S.optional(StageSummaryList),
     nextPageToken: S.optional(S.String),
@@ -2141,7 +2130,7 @@ export interface GetExecutionDetailsProjectsLocationsJobsStagesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. */
   location: string;
 }
-export const GetExecutionDetailsProjectsLocationsJobsStagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExecutionDetailsProjectsLocationsJobsStagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2169,7 +2158,7 @@ export type WorkItemDetailsStateEnum =
   | "EXECUTION_STATE_SUCCEEDED"
   | "EXECUTION_STATE_FAILED"
   | "EXECUTION_STATE_CANCELLED";
-export const WorkItemDetailsStateEnum = S.String;
+const WorkItemDetailsStateEnum = S.String;
 
 /** Information about an individual work item execution. */
 export interface WorkItemDetails {
@@ -2190,7 +2179,7 @@ export interface WorkItemDetails {
   /** Progress of this work item. */
   progress?: ProgressTimeseries;
 }
-export const WorkItemDetails = /*@__PURE__*/ S.suspend(() =>
+const WorkItemDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     taskId: S.optional(S.String),
@@ -2204,7 +2193,7 @@ export const WorkItemDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkItemDetails" }) as any as S.Schema<WorkItemDetails>;
 
 export type WorkItemDetailsList = Array<WorkItemDetails>;
-export const WorkItemDetailsList = /*@__PURE__*/ S.Array(
+const WorkItemDetailsList = /*@__PURE__*/ S.Array(
   WorkItemDetails,
 ) as any as S.Schema<WorkItemDetailsList>;
 
@@ -2215,7 +2204,7 @@ export interface WorkerDetails {
   /** Name of this worker */
   workerName?: string;
 }
-export const WorkerDetails = /*@__PURE__*/ S.suspend(() =>
+const WorkerDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workItems: S.optional(WorkItemDetailsList),
     workerName: S.optional(S.String),
@@ -2223,7 +2212,7 @@ export const WorkerDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkerDetails" }) as any as S.Schema<WorkerDetails>;
 
 export type WorkerDetailsList = Array<WorkerDetails>;
-export const WorkerDetailsList = /*@__PURE__*/ S.Array(
+const WorkerDetailsList = /*@__PURE__*/ S.Array(
   WorkerDetails,
 ) as any as S.Schema<WorkerDetailsList>;
 
@@ -2234,7 +2223,7 @@ export interface StageExecutionDetails {
   /** If present, this response does not contain all requested tasks. To obtain the next page of results, repeat the request with page_token set to this value. */
   nextPageToken?: string;
 }
-export const StageExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const StageExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workers: S.optional(WorkerDetailsList),
     nextPageToken: S.optional(S.String),
@@ -2245,7 +2234,7 @@ export interface GetFoldersLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to retrieve. */
   name: string;
 }
-export const GetFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2265,7 +2254,7 @@ export interface GetMetricsProjectsJobsRequest {
   /** The job to get metrics for. */
   jobId: string;
 }
-export const GetMetricsProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     projectId: S.String.pipe(T.Label()),
@@ -2289,7 +2278,7 @@ export interface JobMetrics {
   /** All metrics for this job. */
   metrics?: MetricUpdateList;
 }
-export const JobMetrics = /*@__PURE__*/ S.suspend(() =>
+const JobMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricTime: S.optional(S.String),
     metrics: S.optional(MetricUpdateList),
@@ -2306,7 +2295,7 @@ export interface GetMetricsProjectsLocationsJobsRequest {
   /** Return only metric data that has changed since this time. Default is to return all information about all metrics for the job. */
   startTime?: string;
 }
-export const GetMetricsProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2327,7 +2316,7 @@ export interface GetOrganizationsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to retrieve. */
   name: string;
 }
-export const GetOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2342,7 +2331,7 @@ export type GetProjectsJobsViewEnum =
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
-export const GetProjectsJobsViewEnum = S.String;
+const GetProjectsJobsViewEnum = S.String;
 
 export interface GetProjectsJobsRequest {
   /** The ID of the Cloud Platform project that the job belongs to. */
@@ -2354,7 +2343,7 @@ export interface GetProjectsJobsRequest {
   /** The job ID. */
   jobId: string;
 }
-export const GetProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -2373,7 +2362,7 @@ export interface GetProjectsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2388,7 +2377,7 @@ export type GetProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
-export const GetProjectsLocationsJobsViewEnum = S.String;
+const GetProjectsLocationsJobsViewEnum = S.String;
 
 export interface GetProjectsLocationsJobsRequest {
   /** The job ID. */
@@ -2400,7 +2389,7 @@ export interface GetProjectsLocationsJobsRequest {
   /** The level of information requested in response. */
   view?: GetProjectsLocationsJobsViewEnum | (string & {});
 }
-export const GetProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2425,7 +2414,7 @@ export interface GetProjectsLocationsSnapshotsRequest {
   /** The ID of the Cloud Platform project that the snapshot belongs to. */
   projectId: string;
 }
-export const GetProjectsLocationsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2448,7 +2437,7 @@ export type SnapshotStateEnum =
   | "READY"
   | "FAILED"
   | "DELETED";
-export const SnapshotStateEnum = S.String;
+const SnapshotStateEnum = S.String;
 
 /** Represents a Pubsub snapshot. */
 export interface PubsubSnapshotMetadata {
@@ -2459,7 +2448,7 @@ export interface PubsubSnapshotMetadata {
   /** The name of the Pubsub snapshot. */
   snapshotName?: string;
 }
-export const PubsubSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
+const PubsubSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String),
     expireTime: S.optional(S.String),
@@ -2468,7 +2457,7 @@ export const PubsubSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PubsubSnapshotMetadata" }) as any as S.Schema<PubsubSnapshotMetadata>;
 
 export type PubsubSnapshotMetadataList = Array<PubsubSnapshotMetadata>;
-export const PubsubSnapshotMetadataList = /*@__PURE__*/ S.Array(
+const PubsubSnapshotMetadataList = /*@__PURE__*/ S.Array(
   PubsubSnapshotMetadata,
 ) as any as S.Schema<PubsubSnapshotMetadataList>;
 
@@ -2495,7 +2484,7 @@ export interface Snapshot {
   /** The time this snapshot was created. */
   creationTime?: string;
 }
-export const Snapshot = /*@__PURE__*/ S.suspend(() =>
+const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SnapshotStateEnum),
     description: S.optional(S.String),
@@ -2511,7 +2500,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 export type GetProjectsLocationsTemplatesViewEnum = "METADATA_ONLY";
-export const GetProjectsLocationsTemplatesViewEnum = S.String;
+const GetProjectsLocationsTemplatesViewEnum = S.String;
 
 export interface GetProjectsLocationsTemplatesRequest {
   /** Required. A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL, beginning with 'gs://'. */
@@ -2523,7 +2512,7 @@ export interface GetProjectsLocationsTemplatesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. */
   location: string;
 }
-export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsPath: S.optional(S.String.pipe(T.Query())),
     view: S.optional(GetProjectsLocationsTemplatesViewEnum.pipe(T.Query())),
@@ -2549,7 +2538,7 @@ export interface ParameterMetadataEnumOption {
   /** Optional. The label to display for the enum option. */
   label?: string;
 }
-export const ParameterMetadataEnumOption = /*@__PURE__*/ S.suspend(() =>
+const ParameterMetadataEnumOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     description: S.optional(S.String),
@@ -2560,7 +2549,7 @@ export const ParameterMetadataEnumOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParameterMetadataEnumOption>;
 
 export type ParameterMetadataEnumOptionList = Array<ParameterMetadataEnumOption>;
-export const ParameterMetadataEnumOptionList = /*@__PURE__*/ S.Array(
+const ParameterMetadataEnumOptionList = /*@__PURE__*/ S.Array(
   ParameterMetadataEnumOption,
 ) as any as S.Schema<ParameterMetadataEnumOptionList>;
 
@@ -2588,7 +2577,7 @@ export type ParameterMetadataParamTypeEnum =
   | "KAFKA_TOPIC"
   | "KAFKA_READ_TOPIC"
   | "KAFKA_WRITE_TOPIC";
-export const ParameterMetadataParamTypeEnum = S.String;
+const ParameterMetadataParamTypeEnum = S.String;
 
 /** Metadata for a specific parameter. */
 export interface ParameterMetadata {
@@ -2619,7 +2608,7 @@ export interface ParameterMetadata {
   /** Required. The name of the parameter. */
   name?: string;
 }
-export const ParameterMetadata = /*@__PURE__*/ S.suspend(() =>
+const ParameterMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentTriggerValues: S.optional(StringList_),
     enumOptions: S.optional(ParameterMetadataEnumOptionList),
@@ -2638,7 +2627,7 @@ export const ParameterMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ParameterMetadata" }) as any as S.Schema<ParameterMetadata>;
 
 export type ParameterMetadataList = Array<ParameterMetadata>;
-export const ParameterMetadataList = /*@__PURE__*/ S.Array(
+const ParameterMetadataList = /*@__PURE__*/ S.Array(
   ParameterMetadata,
 ) as any as S.Schema<ParameterMetadataList>;
 
@@ -2661,7 +2650,7 @@ export interface TemplateMetadata {
   /** Optional. Indicates if the streaming template supports at least once mode. */
   supportsAtLeastOnce?: boolean;
 }
-export const TemplateMetadata = /*@__PURE__*/ S.suspend(() =>
+const TemplateMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportsExactlyOnce: S.optional(S.Boolean),
     defaultStreamingMode: S.optional(S.String),
@@ -2675,10 +2664,10 @@ export const TemplateMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateMetadata" }) as any as S.Schema<TemplateMetadata>;
 
 export type GetTemplateResponseTemplateTypeEnum = "UNKNOWN" | "LEGACY" | "FLEX";
-export const GetTemplateResponseTemplateTypeEnum = S.String;
+const GetTemplateResponseTemplateTypeEnum = S.String;
 
 export type SDKInfoLanguageEnum = "UNKNOWN" | "JAVA" | "PYTHON" | "GO" | "YAML";
-export const SDKInfoLanguageEnum = S.String;
+const SDKInfoLanguageEnum = S.String;
 
 /** SDK Information. */
 export interface SDKInfo {
@@ -2687,7 +2676,7 @@ export interface SDKInfo {
   /** Optional. The SDK version. */
   version?: string;
 }
-export const SDKInfo = /*@__PURE__*/ S.suspend(() =>
+const SDKInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.optional(SDKInfoLanguageEnum),
     version: S.optional(S.String),
@@ -2701,7 +2690,7 @@ export interface RuntimeMetadata {
   /** The parameters for the template. */
   parameters?: ParameterMetadataList;
 }
-export const RuntimeMetadata = /*@__PURE__*/ S.suspend(() =>
+const RuntimeMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdkInfo: S.optional(SDKInfo),
     parameters: S.optional(ParameterMetadataList),
@@ -2709,9 +2698,7 @@ export const RuntimeMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuntimeMetadata" }) as any as S.Schema<RuntimeMetadata>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -2722,7 +2709,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -2741,7 +2728,7 @@ export interface GetTemplateResponse {
   /** The status of the get template request. Any problems with the request will be indicated in the error_details. */
   status?: Status;
 }
-export const GetTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(TemplateMetadata),
     templateType: S.optional(GetTemplateResponseTemplateTypeEnum),
@@ -2758,7 +2745,7 @@ export interface GetProjectsSnapshotsRequest {
   /** The ID of the Cloud Platform project that the snapshot belongs to. */
   projectId: string;
 }
-export const GetProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -2775,7 +2762,7 @@ export const GetProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsSnapshotsRequest>;
 
 export type GetProjectsTemplatesViewEnum = "METADATA_ONLY";
-export const GetProjectsTemplatesViewEnum = S.String;
+const GetProjectsTemplatesViewEnum = S.String;
 
 export interface GetProjectsTemplatesRequest {
   /** Required. The ID of the Cloud Platform project that the job belongs to. */
@@ -2787,7 +2774,7 @@ export interface GetProjectsTemplatesRequest {
   /** The view to retrieve. Defaults to METADATA_ONLY. */
   view?: GetProjectsTemplatesViewEnum | (string & {});
 }
-export const GetProjectsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -2811,7 +2798,7 @@ export interface GetWorkerStacktracesRequest {
   /** The end time for the stacktrace query. The returned stacktraces will be a recent stack trace at or shortly before this time. */
   endTime?: string;
 }
-export const GetWorkerStacktracesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerStacktracesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerId: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -2830,7 +2817,7 @@ export interface GetWorkerStacktracesProjectsLocationsJobsDebugRequest {
   /** Request body */
   body?: GetWorkerStacktracesRequest;
 }
-export const GetWorkerStacktracesProjectsLocationsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerStacktracesProjectsLocationsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -2860,7 +2847,7 @@ export interface Stack {
   /** The state of the thread. For example, "WAITING". */
   threadState?: string;
 }
-export const Stack = /*@__PURE__*/ S.suspend(() =>
+const Stack = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threadName: S.optional(S.String),
     threadCount: S.optional(S.Number),
@@ -2871,7 +2858,7 @@ export const Stack = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Stack" }) as any as S.Schema<Stack>;
 
 export type StackList = Array<Stack>;
-export const StackList = /*@__PURE__*/ S.Array(Stack) as any as S.Schema<StackList>;
+const StackList = /*@__PURE__*/ S.Array(Stack) as any as S.Schema<StackList>;
 
 /** A structured representation of an SDK. */
 export interface Sdk {
@@ -2880,7 +2867,7 @@ export interface Sdk {
   /** The SDK harness id. */
   sdkId?: string;
 }
-export const Sdk = /*@__PURE__*/ S.suspend(() =>
+const Sdk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stacks: S.optional(StackList),
     sdkId: S.optional(S.String),
@@ -2888,14 +2875,14 @@ export const Sdk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sdk" }) as any as S.Schema<Sdk>;
 
 export type SdkList = Array<Sdk>;
-export const SdkList = /*@__PURE__*/ S.Array(Sdk) as any as S.Schema<SdkList>;
+const SdkList = /*@__PURE__*/ S.Array(Sdk) as any as S.Schema<SdkList>;
 
 /** Response to get worker stacktraces from debug capture. */
 export interface GetWorkerStacktracesResponse {
   /** Repeated as unified worker may have multiple SDK processes. */
   sdks?: SdkList;
 }
-export const GetWorkerStacktracesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerStacktracesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdks: S.optional(SdkList),
   }),
@@ -2907,25 +2894,25 @@ export type FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
   | "FLEXRS_UNSPECIFIED"
   | "FLEXRS_SPEED_OPTIMIZED"
   | "FLEXRS_COST_OPTIMIZED";
-export const FlexTemplateRuntimeEnvironmentFlexrsGoalEnum = S.String;
+const FlexTemplateRuntimeEnvironmentFlexrsGoalEnum = S.String;
 
 export type FlexTemplateRuntimeEnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
   | "STREAMING_MODE_AT_LEAST_ONCE";
-export const FlexTemplateRuntimeEnvironmentStreamingModeEnum = S.String;
+const FlexTemplateRuntimeEnvironmentStreamingModeEnum = S.String;
 
 export type FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
   | "WORKER_IP_PRIVATE";
-export const FlexTemplateRuntimeEnvironmentIpConfigurationEnum = S.String;
+const FlexTemplateRuntimeEnvironmentIpConfigurationEnum = S.String;
 
 export type FlexTemplateRuntimeEnvironmentAutoscalingAlgorithmEnum =
   | "AUTOSCALING_ALGORITHM_UNKNOWN"
   | "AUTOSCALING_ALGORITHM_NONE"
   | "AUTOSCALING_ALGORITHM_BASIC";
-export const FlexTemplateRuntimeEnvironmentAutoscalingAlgorithmEnum = S.String;
+const FlexTemplateRuntimeEnvironmentAutoscalingAlgorithmEnum = S.String;
 
 /** The environment values to be set at runtime for flex template. */
 export interface FlexTemplateRuntimeEnvironment {
@@ -2982,7 +2969,7 @@ export interface FlexTemplateRuntimeEnvironment {
   /** Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL. */
   subnetwork?: string;
 }
-export const FlexTemplateRuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
+const FlexTemplateRuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flexrsGoal: S.optional(FlexTemplateRuntimeEnvironmentFlexrsGoalEnum),
     enableLauncherVmSerialPortLogging: S.optional(S.Boolean),
@@ -3032,7 +3019,7 @@ export interface ContainerSpec {
   /** Cloud Storage path to self-signed certificate of private registry. */
   imageRepositoryCertPath?: string;
 }
-export const ContainerSpec = /*@__PURE__*/ S.suspend(() =>
+const ContainerSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultEnvironment: S.optional(FlexTemplateRuntimeEnvironment),
     metadata: S.optional(TemplateMetadata),
@@ -3063,7 +3050,7 @@ export interface LaunchFlexTemplateParameter {
   /** Cloud Storage path to a file with json serialized ContainerSpec as content. */
   containerSpecGcsPath?: string;
 }
-export const LaunchFlexTemplateParameter = /*@__PURE__*/ S.suspend(() =>
+const LaunchFlexTemplateParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(StringMap),
     jobName: S.optional(S.String),
@@ -3085,7 +3072,7 @@ export interface LaunchFlexTemplateRequest {
   /** If true, the request is validated but not actually executed. Defaults to false. */
   validateOnly?: boolean;
 }
-export const LaunchFlexTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const LaunchFlexTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     launchParameter: S.optional(LaunchFlexTemplateParameter),
     validateOnly: S.optional(S.Boolean),
@@ -3102,7 +3089,7 @@ export interface LaunchProjectsLocationsFlexTemplatesRequest {
   /** Request body */
   body?: LaunchFlexTemplateRequest;
 }
-export const LaunchProjectsLocationsFlexTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const LaunchProjectsLocationsFlexTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -3123,7 +3110,7 @@ export interface LaunchFlexTemplateResponse {
   /** The job that was launched, if the request was not a dry run and the job was successfully launched. */
   job?: Job;
 }
-export const LaunchFlexTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const LaunchFlexTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: S.optional(Job),
   }),
@@ -3144,7 +3131,7 @@ export interface LaunchTemplateParameters {
   /** Required. The job name to use for the created job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?` */
   jobName?: string;
 }
-export const LaunchTemplateParameters = /*@__PURE__*/ S.suspend(() =>
+const LaunchTemplateParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(StringMap),
     transformNameMapping: S.optional(StringMap),
@@ -3170,7 +3157,7 @@ export interface LaunchProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: LaunchTemplateParameters;
 }
-export const LaunchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const LaunchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     location: S.String.pipe(T.Label()),
@@ -3195,7 +3182,7 @@ export interface LaunchTemplateResponse {
   /** The job that was launched, if the request was not a dry run and the job was successfully launched. */
   job?: Job;
 }
-export const LaunchTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const LaunchTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: S.optional(Job),
   }),
@@ -3217,7 +3204,7 @@ export interface LaunchProjectsTemplatesRequest {
   /** Request body */
   body?: LaunchTemplateParameters;
 }
-export const LaunchProjectsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const LaunchProjectsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     projectId: S.String.pipe(T.Label()),
@@ -3256,7 +3243,7 @@ export interface LeaseWorkItemRequest {
   /** Identifies the worker leasing work -- typically the ID of the virtual machine running the worker. */
   workerId?: string;
 }
-export const LeaseWorkItemRequest = /*@__PURE__*/ S.suspend(() =>
+const LeaseWorkItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedLeaseDuration: S.optional(S.String),
     workerCapabilities: S.optional(StringList_),
@@ -3277,7 +3264,7 @@ export interface LeaseProjectsJobsWorkItemsRequest {
   /** Request body */
   body?: LeaseWorkItemRequest;
 }
-export const LeaseProjectsJobsWorkItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const LeaseProjectsJobsWorkItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -3312,7 +3299,7 @@ export interface StreamingOperationalLimits {
   /** The maximum size for an element in bag state. */
   maxBagElementBytes?: string;
 }
-export const StreamingOperationalLimits = /*@__PURE__*/ S.suspend(() =>
+const StreamingOperationalLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxGlobalDataBytes: S.optional(S.String),
     maxValueBytes: S.optional(S.String),
@@ -3334,7 +3321,7 @@ export interface InstructionInput {
   /** The output index (origin zero) within the producer. */
   outputNum?: number;
 }
-export const InstructionInput = /*@__PURE__*/ S.suspend(() =>
+const InstructionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     producerInstructionIndex: S.optional(S.Number),
     outputNum: S.optional(S.Number),
@@ -3348,7 +3335,7 @@ export interface Sink {
   /** The codec to use to encode data written to the sink. */
   codec?: DocumentMap;
 }
-export const Sink = /*@__PURE__*/ S.suspend(() =>
+const Sink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spec: S.optional(DocumentMap),
     codec: S.optional(DocumentMap),
@@ -3362,7 +3349,7 @@ export interface WriteInstruction {
   /** The sink to write to. */
   sink?: Sink;
 }
-export const WriteInstruction = /*@__PURE__*/ S.suspend(() =>
+const WriteInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: S.optional(InstructionInput),
     sink: S.optional(Sink),
@@ -3378,7 +3365,7 @@ export interface SourceMetadata {
   /** An estimate of the total size (in bytes) of the data that would be read from this source. This estimate is in terms of external storage size, before any decompression or other processing done by the reader. */
   estimatedSizeBytes?: string;
 }
-export const SourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const SourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     producesSortedKeys: S.optional(S.Boolean),
     infinite: S.optional(S.Boolean),
@@ -3399,7 +3386,7 @@ export interface Source {
   /** Optionally, metadata for this source can be supplied right away, avoiding a SourceGetMetadataOperation roundtrip (see SourceOperationRequest). This field is meaningful only in the Source objects populated by the user (e.g. when filling in a DerivedSource). Source objects supplied by the framework to the user don't have this field populated. */
   metadata?: SourceMetadata;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codec: S.optional(DocumentMap),
     doesNotNeedSplitting: S.optional(S.Boolean),
@@ -3414,14 +3401,14 @@ export interface ReadInstruction {
   /** The source to read from. */
   source?: Source;
 }
-export const ReadInstruction = /*@__PURE__*/ S.suspend(() =>
+const ReadInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
   }),
 ).annotate({ identifier: "ReadInstruction" }) as any as S.Schema<ReadInstruction>;
 
 export type SourceList = Array<Source>;
-export const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
+const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
 
 /** Information about a side input of a DoFn or an input of a SeqDoFn. */
 export interface SideInputInfo {
@@ -3432,7 +3419,7 @@ export interface SideInputInfo {
   /** The id of the tag the user code will access this side input by; this should correspond to the tag of some MultiOutputInfo. */
   tag?: string;
 }
-export const SideInputInfo = /*@__PURE__*/ S.suspend(() =>
+const SideInputInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sources: S.optional(SourceList),
     kind: S.optional(DocumentMap),
@@ -3441,7 +3428,7 @@ export const SideInputInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SideInputInfo" }) as any as S.Schema<SideInputInfo>;
 
 export type SideInputInfoList = Array<SideInputInfo>;
-export const SideInputInfoList = /*@__PURE__*/ S.Array(
+const SideInputInfoList = /*@__PURE__*/ S.Array(
   SideInputInfo,
 ) as any as S.Schema<SideInputInfoList>;
 
@@ -3460,7 +3447,7 @@ export interface PartialGroupByKeyInstruction {
   /** The value combining function to invoke. */
   valueCombiningFn?: DocumentMap;
 }
-export const PartialGroupByKeyInstruction = /*@__PURE__*/ S.suspend(() =>
+const PartialGroupByKeyInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalCombineValuesInputStoreName: S.optional(S.String),
     originalCombineValuesStepName: S.optional(S.String),
@@ -3474,7 +3461,7 @@ export const PartialGroupByKeyInstruction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialGroupByKeyInstruction>;
 
 export type InstructionInputList = Array<InstructionInput>;
-export const InstructionInputList = /*@__PURE__*/ S.Array(
+const InstructionInputList = /*@__PURE__*/ S.Array(
   InstructionInput,
 ) as any as S.Schema<InstructionInputList>;
 
@@ -3483,7 +3470,7 @@ export interface FlattenInstruction {
   /** Describes the inputs to the flatten instruction. */
   inputs?: InstructionInputList;
 }
-export const FlattenInstruction = /*@__PURE__*/ S.suspend(() =>
+const FlattenInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputs: S.optional(InstructionInputList),
   }),
@@ -3504,7 +3491,7 @@ export interface InstructionOutput {
   /** System-defined name for this output in the original workflow graph. Outputs that do not contribute to an original instruction do not set this. */
   originalName?: string;
 }
-export const InstructionOutput = /*@__PURE__*/ S.suspend(() =>
+const InstructionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codec: S.optional(DocumentMap),
     systemName: S.optional(S.String),
@@ -3516,7 +3503,7 @@ export const InstructionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstructionOutput" }) as any as S.Schema<InstructionOutput>;
 
 export type InstructionOutputList = Array<InstructionOutput>;
-export const InstructionOutputList = /*@__PURE__*/ S.Array(
+const InstructionOutputList = /*@__PURE__*/ S.Array(
   InstructionOutput,
 ) as any as S.Schema<InstructionOutputList>;
 
@@ -3525,14 +3512,14 @@ export interface MultiOutputInfo {
   /** The id of the tag the user code will emit to this output by; this should correspond to the tag of some SideInputInfo. */
   tag?: string;
 }
-export const MultiOutputInfo = /*@__PURE__*/ S.suspend(() =>
+const MultiOutputInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
   }),
 ).annotate({ identifier: "MultiOutputInfo" }) as any as S.Schema<MultiOutputInfo>;
 
 export type MultiOutputInfoList = Array<MultiOutputInfo>;
-export const MultiOutputInfoList = /*@__PURE__*/ S.Array(
+const MultiOutputInfoList = /*@__PURE__*/ S.Array(
   MultiOutputInfo,
 ) as any as S.Schema<MultiOutputInfoList>;
 
@@ -3549,7 +3536,7 @@ export interface ParDoInstruction {
   /** The input. */
   input?: InstructionInput;
 }
-export const ParDoInstruction = /*@__PURE__*/ S.suspend(() =>
+const ParDoInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiOutputInfos: S.optional(MultiOutputInfoList),
     numOutputs: S.optional(S.Number),
@@ -3580,7 +3567,7 @@ export interface ParallelInstruction {
   /** System-defined name for the operation in the original workflow graph. */
   originalName?: string;
 }
-export const ParallelInstruction = /*@__PURE__*/ S.suspend(() =>
+const ParallelInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     write: S.optional(WriteInstruction),
     name: S.optional(S.String),
@@ -3595,7 +3582,7 @@ export const ParallelInstruction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ParallelInstruction" }) as any as S.Schema<ParallelInstruction>;
 
 export type ParallelInstructionList = Array<ParallelInstruction>;
-export const ParallelInstructionList = /*@__PURE__*/ S.Array(
+const ParallelInstructionList = /*@__PURE__*/ S.Array(
   ParallelInstruction,
 ) as any as S.Schema<ParallelInstructionList>;
 
@@ -3612,7 +3599,7 @@ export interface StreamingComputationConfig {
   /** Instructions that comprise the computation. */
   instructions?: ParallelInstructionList;
 }
-export const StreamingComputationConfig = /*@__PURE__*/ S.suspend(() =>
+const StreamingComputationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemName: S.optional(S.String),
     stageName: S.optional(S.String),
@@ -3625,7 +3612,7 @@ export const StreamingComputationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamingComputationConfig>;
 
 export type StreamingComputationConfigList = Array<StreamingComputationConfig>;
-export const StreamingComputationConfigList = /*@__PURE__*/ S.Array(
+const StreamingComputationConfigList = /*@__PURE__*/ S.Array(
   StreamingComputationConfig,
 ) as any as S.Schema<StreamingComputationConfigList>;
 
@@ -3654,7 +3641,7 @@ export interface StreamingConfigTask {
   /** If present, the worker must use this endpoint to communicate with Windmill Service dispatchers, otherwise the worker must continue to use whatever endpoint it had been using. */
   windmillServiceEndpoint?: string;
 }
-export const StreamingConfigTask = /*@__PURE__*/ S.suspend(() =>
+const StreamingConfigTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationalLimits: S.optional(StreamingOperationalLimits),
     windmillServicePort: S.optional(S.String),
@@ -3681,7 +3668,7 @@ export interface MapTask {
   /** System-defined name of this MapTask. Unique across the workflow. */
   systemName?: string;
 }
-export const MapTask = /*@__PURE__*/ S.suspend(() =>
+const MapTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instructions: S.optional(ParallelInstructionList),
     stageName: S.optional(S.String),
@@ -3697,7 +3684,7 @@ export interface SeqMapTaskOutputInfo {
   /** The id of the TupleTag the user code will tag the output value by. */
   tag?: string;
 }
-export const SeqMapTaskOutputInfo = /*@__PURE__*/ S.suspend(() =>
+const SeqMapTaskOutputInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sink: S.optional(Sink),
     tag: S.optional(S.String),
@@ -3705,7 +3692,7 @@ export const SeqMapTaskOutputInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SeqMapTaskOutputInfo" }) as any as S.Schema<SeqMapTaskOutputInfo>;
 
 export type SeqMapTaskOutputInfoList = Array<SeqMapTaskOutputInfo>;
-export const SeqMapTaskOutputInfoList = /*@__PURE__*/ S.Array(
+const SeqMapTaskOutputInfoList = /*@__PURE__*/ S.Array(
   SeqMapTaskOutputInfo,
 ) as any as S.Schema<SeqMapTaskOutputInfoList>;
 
@@ -3724,7 +3711,7 @@ export interface SeqMapTask {
   /** The user-provided name of the SeqDo operation. */
   name?: string;
 }
-export const SeqMapTask = /*@__PURE__*/ S.suspend(() =>
+const SeqMapTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemName: S.optional(S.String),
     outputInfos: S.optional(SeqMapTaskOutputInfoList),
@@ -3742,7 +3729,7 @@ export interface ShellTask {
   /** Exit code for the task. */
   exitCode?: number;
 }
-export const ShellTask = /*@__PURE__*/ S.suspend(() =>
+const ShellTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(S.String),
     exitCode: S.optional(S.Number),
@@ -3756,7 +3743,7 @@ export interface SourceSplitOptions {
   /** The source should be split into a set of bundles where the estimated size of each is approximately this many bytes. */
   desiredBundleSizeBytes?: string;
 }
-export const SourceSplitOptions = /*@__PURE__*/ S.suspend(() =>
+const SourceSplitOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     desiredShardSizeBytes: S.optional(S.String),
     desiredBundleSizeBytes: S.optional(S.String),
@@ -3770,7 +3757,7 @@ export interface SourceSplitRequest {
   /** Hints for tuning the splitting process. */
   options?: SourceSplitOptions;
 }
-export const SourceSplitRequest = /*@__PURE__*/ S.suspend(() =>
+const SourceSplitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     options: S.optional(SourceSplitOptions),
@@ -3782,8 +3769,7 @@ export interface SourceGetMetadataRequest {
   /** Specification of the source whose metadata should be computed. */
   source?: Source;
 }
-export const SourceGetMetadataRequest =
-  ReadInstruction as any as S.Schema<SourceGetMetadataRequest>;
+const SourceGetMetadataRequest = ReadInstruction as any as S.Schema<SourceGetMetadataRequest>;
 
 /** A work item that represents the different operations that can be performed on a user-defined Source specification. */
 export interface SourceOperationRequest {
@@ -3800,7 +3786,7 @@ export interface SourceOperationRequest {
   /** System-defined name for the Read instruction for this source in the original workflow graph. */
   originalName?: string;
 }
-export const SourceOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const SourceOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     split: S.optional(SourceSplitRequest),
     systemName: S.optional(S.String),
@@ -3818,7 +3804,7 @@ export interface StreamingApplianceSnapshotConfig {
   /** Indicates which endpoint is used to import appliance state. */
   importStateEndpoint?: string;
 }
-export const StreamingApplianceSnapshotConfig = /*@__PURE__*/ S.suspend(() =>
+const StreamingApplianceSnapshotConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
     importStateEndpoint: S.optional(S.String),
@@ -3834,7 +3820,7 @@ export interface DataDiskAssignment {
   /** Mounted data disks. The order is important a data disk's 0-based index in this list defines which persistent directory the disk is mounted to, for example the list of { "myproject-1014-104817-4c2-harness-0-disk-0" }, { "myproject-1014-104817-4c2-harness-0-disk-1" }. */
   dataDisks?: StringList_;
 }
-export const DataDiskAssignment = /*@__PURE__*/ S.suspend(() =>
+const DataDiskAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmInstance: S.optional(S.String),
     dataDisks: S.optional(StringList_),
@@ -3842,7 +3828,7 @@ export const DataDiskAssignment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataDiskAssignment" }) as any as S.Schema<DataDiskAssignment>;
 
 export type DataDiskAssignmentList = Array<DataDiskAssignment>;
-export const DataDiskAssignmentList = /*@__PURE__*/ S.Array(
+const DataDiskAssignmentList = /*@__PURE__*/ S.Array(
   DataDiskAssignment,
 ) as any as S.Schema<DataDiskAssignmentList>;
 
@@ -3853,7 +3839,7 @@ export interface StateFamilyConfig {
   /** If true, this family corresponds to a read operation. */
   isRead?: boolean;
 }
-export const StateFamilyConfig = /*@__PURE__*/ S.suspend(() =>
+const StateFamilyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateFamily: S.optional(S.String),
     isRead: S.optional(S.Boolean),
@@ -3861,7 +3847,7 @@ export const StateFamilyConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StateFamilyConfig" }) as any as S.Schema<StateFamilyConfig>;
 
 export type StateFamilyConfigList = Array<StateFamilyConfig>;
-export const StateFamilyConfigList = /*@__PURE__*/ S.Array(
+const StateFamilyConfigList = /*@__PURE__*/ S.Array(
   StateFamilyConfig,
 ) as any as S.Schema<StateFamilyConfigList>;
 
@@ -3878,7 +3864,7 @@ export interface KeyRangeLocation {
   /** The physical location of this range assignment to be used for streaming computation cross-worker message delivery. */
   deliveryEndpoint?: string;
 }
-export const KeyRangeLocation = /*@__PURE__*/ S.suspend(() =>
+const KeyRangeLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDisk: S.optional(S.String),
     start: S.optional(S.String),
@@ -3889,7 +3875,7 @@ export const KeyRangeLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyRangeLocation" }) as any as S.Schema<KeyRangeLocation>;
 
 export type KeyRangeLocationList = Array<KeyRangeLocation>;
-export const KeyRangeLocationList = /*@__PURE__*/ S.Array(
+const KeyRangeLocationList = /*@__PURE__*/ S.Array(
   KeyRangeLocation,
 ) as any as S.Schema<KeyRangeLocationList>;
 
@@ -3898,7 +3884,7 @@ export interface CustomSourceLocation {
   /** Whether this source is stateful. */
   stateful?: boolean;
 }
-export const CustomSourceLocation = /*@__PURE__*/ S.suspend(() =>
+const CustomSourceLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateful: S.optional(S.Boolean),
   }),
@@ -3911,7 +3897,7 @@ export interface StreamingSideInputLocation {
   /** Identifies the state family where this side input is stored. */
   stateFamily?: string;
 }
-export const StreamingSideInputLocation = /*@__PURE__*/ S.suspend(() =>
+const StreamingSideInputLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     stateFamily: S.optional(S.String),
@@ -3925,7 +3911,7 @@ export interface StreamingStageLocation {
   /** Identifies the particular stream within the streaming Dataflow job. */
   streamId?: string;
 }
-export const StreamingStageLocation = /*@__PURE__*/ S.suspend(() =>
+const StreamingStageLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.optional(S.String),
   }),
@@ -3950,7 +3936,7 @@ export interface PubsubLocation {
   /** A pubsub topic, in the form of "pubsub.googleapis.com/topics//" */
   topic?: string;
 }
-export const PubsubLocation = /*@__PURE__*/ S.suspend(() =>
+const PubsubLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dynamicDestinations: S.optional(S.Boolean),
     idLabel: S.optional(S.String),
@@ -3974,7 +3960,7 @@ export interface StreamLocation {
   /** The stream is a pubsub stream. */
   pubsubLocation?: PubsubLocation;
 }
-export const StreamLocation = /*@__PURE__*/ S.suspend(() =>
+const StreamLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customSourceLocation: S.optional(CustomSourceLocation),
     sideInputLocation: S.optional(StreamingSideInputLocation),
@@ -3984,7 +3970,7 @@ export const StreamLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamLocation" }) as any as S.Schema<StreamLocation>;
 
 export type StreamLocationList = Array<StreamLocation>;
-export const StreamLocationList = /*@__PURE__*/ S.Array(
+const StreamLocationList = /*@__PURE__*/ S.Array(
   StreamLocation,
 ) as any as S.Schema<StreamLocationList>;
 
@@ -4003,7 +3989,7 @@ export interface ComputationTopology {
   /** The outputs from the computation. */
   outputs?: StreamLocationList;
 }
-export const ComputationTopology = /*@__PURE__*/ S.suspend(() =>
+const ComputationTopology = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stateFamilies: S.optional(StateFamilyConfigList),
     computationId: S.optional(S.String),
@@ -4015,7 +4001,7 @@ export const ComputationTopology = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ComputationTopology" }) as any as S.Schema<ComputationTopology>;
 
 export type ComputationTopologyList = Array<ComputationTopology>;
-export const ComputationTopologyList = /*@__PURE__*/ S.Array(
+const ComputationTopologyList = /*@__PURE__*/ S.Array(
   ComputationTopology,
 ) as any as S.Schema<ComputationTopologyList>;
 
@@ -4032,7 +4018,7 @@ export interface TopologyConfig {
   /** Version number for persistent state. */
   persistentStateVersion?: number;
 }
-export const TopologyConfig = /*@__PURE__*/ S.suspend(() =>
+const TopologyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDiskAssignments: S.optional(DataDiskAssignmentList),
     userStageToComputationNameMap: S.optional(StringMap),
@@ -4055,7 +4041,7 @@ export interface StreamingSetupTask {
   /** The TCP port on which the worker should listen for messages from other streaming computation workers. */
   receiveWorkPort?: number;
 }
-export const StreamingSetupTask = /*@__PURE__*/ S.suspend(() =>
+const StreamingSetupTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotConfig: S.optional(StreamingApplianceSnapshotConfig),
     streamingComputationTopology: S.optional(TopologyConfig),
@@ -4069,7 +4055,7 @@ export type StreamingComputationTaskTaskTypeEnum =
   | "STREAMING_COMPUTATION_TASK_UNKNOWN"
   | "STREAMING_COMPUTATION_TASK_STOP"
   | "STREAMING_COMPUTATION_TASK_START";
-export const StreamingComputationTaskTaskTypeEnum = S.String;
+const StreamingComputationTaskTaskTypeEnum = S.String;
 
 /** Data disk assignment information for a specific key-range of a sharded computation. Currently we only support UTF-8 character splits to simplify encoding into JSON. */
 export interface KeyRangeDataDiskAssignment {
@@ -4080,7 +4066,7 @@ export interface KeyRangeDataDiskAssignment {
   /** The name of the data disk where data for this range is stored. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1". */
   dataDisk?: string;
 }
-export const KeyRangeDataDiskAssignment = /*@__PURE__*/ S.suspend(() =>
+const KeyRangeDataDiskAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     end: S.optional(S.String),
@@ -4091,7 +4077,7 @@ export const KeyRangeDataDiskAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyRangeDataDiskAssignment>;
 
 export type KeyRangeDataDiskAssignmentList = Array<KeyRangeDataDiskAssignment>;
-export const KeyRangeDataDiskAssignmentList = /*@__PURE__*/ S.Array(
+const KeyRangeDataDiskAssignmentList = /*@__PURE__*/ S.Array(
   KeyRangeDataDiskAssignment,
 ) as any as S.Schema<KeyRangeDataDiskAssignmentList>;
 
@@ -4102,7 +4088,7 @@ export interface StreamingComputationRanges {
   /** The ID of the computation. */
   computationId?: string;
 }
-export const StreamingComputationRanges = /*@__PURE__*/ S.suspend(() =>
+const StreamingComputationRanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rangeAssignments: S.optional(KeyRangeDataDiskAssignmentList),
     computationId: S.optional(S.String),
@@ -4112,7 +4098,7 @@ export const StreamingComputationRanges = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamingComputationRanges>;
 
 export type StreamingComputationRangesList = Array<StreamingComputationRanges>;
-export const StreamingComputationRangesList = /*@__PURE__*/ S.Array(
+const StreamingComputationRangesList = /*@__PURE__*/ S.Array(
   StreamingComputationRanges,
 ) as any as S.Schema<StreamingComputationRangesList>;
 
@@ -4121,14 +4107,14 @@ export interface MountedDataDisk {
   /** The name of the data disk. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1". */
   dataDisk?: string;
 }
-export const MountedDataDisk = /*@__PURE__*/ S.suspend(() =>
+const MountedDataDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataDisk: S.optional(S.String),
   }),
 ).annotate({ identifier: "MountedDataDisk" }) as any as S.Schema<MountedDataDisk>;
 
 export type MountedDataDiskList = Array<MountedDataDisk>;
-export const MountedDataDiskList = /*@__PURE__*/ S.Array(
+const MountedDataDiskList = /*@__PURE__*/ S.Array(
   MountedDataDisk,
 ) as any as S.Schema<MountedDataDiskList>;
 
@@ -4141,7 +4127,7 @@ export interface StreamingComputationTask {
   /** Describes the set of data disks this task should apply to. */
   dataDisks?: MountedDataDiskList;
 }
-export const StreamingComputationTask = /*@__PURE__*/ S.suspend(() =>
+const StreamingComputationTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskType: S.optional(StreamingComputationTaskTaskTypeEnum),
     computationRanges: S.optional(StreamingComputationRangesList),
@@ -4182,7 +4168,7 @@ export interface WorkItem {
   /** Additional information for StreamingComputationTask WorkItems. */
   streamingComputationTask?: StreamingComputationTask;
 }
-export const WorkItem = /*@__PURE__*/ S.suspend(() =>
+const WorkItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     initialReportIndex: S.optional(S.String),
@@ -4203,7 +4189,7 @@ export const WorkItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkItem" }) as any as S.Schema<WorkItem>;
 
 export type WorkItemList = Array<WorkItem>;
-export const WorkItemList = /*@__PURE__*/ S.Array(WorkItem) as any as S.Schema<WorkItemList>;
+const WorkItemList = /*@__PURE__*/ S.Array(WorkItem) as any as S.Schema<WorkItemList>;
 
 /** Response to a request to lease WorkItems. */
 export interface LeaseWorkItemResponse {
@@ -4212,7 +4198,7 @@ export interface LeaseWorkItemResponse {
   /** Untranslated bag-of-bytes WorkResponse for UnifiedWorker. */
   unifiedWorkerResponse?: DocumentMap;
 }
-export const LeaseWorkItemResponse = /*@__PURE__*/ S.suspend(() =>
+const LeaseWorkItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workItems: S.optional(WorkItemList),
     unifiedWorkerResponse: S.optional(DocumentMap),
@@ -4229,7 +4215,7 @@ export interface LeaseProjectsLocationsJobsWorkItemsRequest {
   /** Request body */
   body?: LeaseWorkItemRequest;
 }
-export const LeaseProjectsLocationsJobsWorkItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const LeaseProjectsLocationsJobsWorkItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -4254,7 +4240,7 @@ export interface ListFoldersLocationsConfigStoreSettingsRequest {
   /** Required. The parent resource whose settings are being listed. */
   parent: string;
 }
-export const ListFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4271,7 +4257,7 @@ export const ListFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListFoldersLocationsConfigStoreSettingsRequest>;
 
 export type ConfigStoreSettingList = Array<ConfigStoreSetting>;
-export const ConfigStoreSettingList = /*@__PURE__*/ S.Array(
+const ConfigStoreSettingList = /*@__PURE__*/ S.Array(
   ConfigStoreSetting,
 ) as any as S.Schema<ConfigStoreSettingList>;
 
@@ -4282,7 +4268,7 @@ export interface ListConfigStoreSettingsResponse {
   /** The list of ConfigStoreSettings. */
   configStoreSettings?: ConfigStoreSettingList;
 }
-export const ListConfigStoreSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfigStoreSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     configStoreSettings: S.optional(ConfigStoreSettingList),
@@ -4299,7 +4285,7 @@ export interface ListOrganizationsLocationsConfigStoreSettingsRequest {
   /** Optional. A page token, received from a previous `ListConfigStoreSettings` call. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4320,10 +4306,10 @@ export type ListProjectsJobsViewEnum =
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
-export const ListProjectsJobsViewEnum = S.String;
+const ListProjectsJobsViewEnum = S.String;
 
 export type ListProjectsJobsFilterEnum = "UNKNOWN" | "ALL" | "TERMINATED" | "ACTIVE";
-export const ListProjectsJobsFilterEnum = S.String;
+const ListProjectsJobsFilterEnum = S.String;
 
 export interface ListProjectsJobsRequest {
   /** Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews. */
@@ -4343,7 +4329,7 @@ export interface ListProjectsJobsRequest {
   /** Set this to the 'next_page_token' field of a previous response to request additional results in a long list. */
   pageToken?: string;
 }
-export const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListProjectsJobsViewEnum.pipe(T.Query())),
     filter: S.optional(ListProjectsJobsFilterEnum.pipe(T.Query())),
@@ -4369,7 +4355,7 @@ export type ListProjectsJobsMessagesMinimumImportanceEnum =
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
   | "JOB_MESSAGE_ERROR";
-export const ListProjectsJobsMessagesMinimumImportanceEnum = S.String;
+const ListProjectsJobsMessagesMinimumImportanceEnum = S.String;
 
 export interface ListProjectsJobsMessagesRequest {
   /** Return only messages with timestamps < end_time. The default is now (i.e. return up to the latest messages available). */
@@ -4389,7 +4375,7 @@ export interface ListProjectsJobsMessagesRequest {
   /** If specified, return only messages with timestamps >= start_time. The default is the job creation time (i.e. beginning of messages). */
   startTime?: string;
 }
-export const ListProjectsJobsMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsJobsMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String.pipe(T.Query())),
     location: S.optional(S.String.pipe(T.Query())),
@@ -4417,7 +4403,7 @@ export type JobMessageMessageImportanceEnum =
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
   | "JOB_MESSAGE_ERROR";
-export const JobMessageMessageImportanceEnum = S.String;
+const JobMessageMessageImportanceEnum = S.String;
 
 /** A particular message pertaining to a Dataflow job. */
 export interface JobMessage {
@@ -4430,7 +4416,7 @@ export interface JobMessage {
   /** The timestamp of the message. */
   time?: string;
 }
-export const JobMessage = /*@__PURE__*/ S.suspend(() =>
+const JobMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageImportance: S.optional(JobMessageMessageImportanceEnum),
     id: S.optional(S.String),
@@ -4440,7 +4426,7 @@ export const JobMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobMessage" }) as any as S.Schema<JobMessage>;
 
 export type JobMessageList = Array<JobMessage>;
-export const JobMessageList = /*@__PURE__*/ S.Array(JobMessage) as any as S.Schema<JobMessageList>;
+const JobMessageList = /*@__PURE__*/ S.Array(JobMessage) as any as S.Schema<JobMessageList>;
 
 export type AutoscalingEventEventTypeEnum =
   | "TYPE_UNKNOWN"
@@ -4448,7 +4434,7 @@ export type AutoscalingEventEventTypeEnum =
   | "CURRENT_NUM_WORKERS_CHANGED"
   | "ACTUATION_FAILURE"
   | "NO_CHANGE";
-export const AutoscalingEventEventTypeEnum = S.String;
+const AutoscalingEventEventTypeEnum = S.String;
 
 /** Structured data associated with this message. */
 export interface Parameter {
@@ -4457,7 +4443,7 @@ export interface Parameter {
   /** Key or name for this parameter. */
   key?: string;
 }
-export const Parameter = /*@__PURE__*/ S.suspend(() =>
+const Parameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Unknown),
     key: S.optional(S.String),
@@ -4465,7 +4451,7 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 
 export type ParameterList = Array<Parameter>;
-export const ParameterList = /*@__PURE__*/ S.Array(Parameter) as any as S.Schema<ParameterList>;
+const ParameterList = /*@__PURE__*/ S.Array(Parameter) as any as S.Schema<ParameterList>;
 
 /** A rich message format, including a human readable string, a key for identifying the message, and structured data associated with the message for programmatic consumption. */
 export interface StructuredMessage {
@@ -4476,7 +4462,7 @@ export interface StructuredMessage {
   /** Identifier for this message type. Used by external systems to internationalize or personalize message. */
   messageKey?: string;
 }
-export const StructuredMessage = /*@__PURE__*/ S.suspend(() =>
+const StructuredMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageText: S.optional(S.String),
     parameters: S.optional(ParameterList),
@@ -4499,7 +4485,7 @@ export interface AutoscalingEvent {
   /** The target number of workers the worker pool wants to resize to use. */
   targetNumWorkers?: string;
 }
-export const AutoscalingEvent = /*@__PURE__*/ S.suspend(() =>
+const AutoscalingEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentNumWorkers: S.optional(S.String),
     eventType: S.optional(AutoscalingEventEventTypeEnum),
@@ -4511,7 +4497,7 @@ export const AutoscalingEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoscalingEvent" }) as any as S.Schema<AutoscalingEvent>;
 
 export type AutoscalingEventList = Array<AutoscalingEvent>;
-export const AutoscalingEventList = /*@__PURE__*/ S.Array(
+const AutoscalingEventList = /*@__PURE__*/ S.Array(
   AutoscalingEvent,
 ) as any as S.Schema<AutoscalingEventList>;
 
@@ -4524,7 +4510,7 @@ export interface ListJobMessagesResponse {
   /** Autoscaling events in ascending timestamp order. */
   autoscalingEvents?: AutoscalingEventList;
 }
-export const ListJobMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobMessages: S.optional(JobMessageList),
     nextPageToken: S.optional(S.String),
@@ -4540,7 +4526,7 @@ export interface ListProjectsLocationsConfigStoreSettingsRequest {
   /** Optional. The maximum number of settings to return. */
   pageSize?: number;
 }
-export const ListProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4561,10 +4547,10 @@ export type ListProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
-export const ListProjectsLocationsJobsViewEnum = S.String;
+const ListProjectsLocationsJobsViewEnum = S.String;
 
 export type ListProjectsLocationsJobsFilterEnum = "UNKNOWN" | "ALL" | "TERMINATED" | "ACTIVE";
-export const ListProjectsLocationsJobsFilterEnum = S.String;
+const ListProjectsLocationsJobsFilterEnum = S.String;
 
 export interface ListProjectsLocationsJobsRequest {
   /** Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews. */
@@ -4584,7 +4570,7 @@ export interface ListProjectsLocationsJobsRequest {
   /** Set this to the 'next_page_token' field of a previous response to request additional results in a long list. */
   pageToken?: string;
 }
-export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListProjectsLocationsJobsViewEnum.pipe(T.Query())),
     regionalFanoutRequested: S.optional(S.Boolean.pipe(T.Query())),
@@ -4612,7 +4598,7 @@ export type ListProjectsLocationsJobsMessagesMinimumImportanceEnum =
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
   | "JOB_MESSAGE_ERROR";
-export const ListProjectsLocationsJobsMessagesMinimumImportanceEnum = S.String;
+const ListProjectsLocationsJobsMessagesMinimumImportanceEnum = S.String;
 
 export interface ListProjectsLocationsJobsMessagesRequest {
   /** If supplied, this should be the value of next_page_token returned by an earlier call. This will cause the next page of results to be returned. */
@@ -4632,7 +4618,7 @@ export interface ListProjectsLocationsJobsMessagesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. */
   location: string;
 }
-export const ListProjectsLocationsJobsMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsJobsMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     startTime: S.optional(S.String.pipe(T.Query())),
@@ -4663,7 +4649,7 @@ export interface ListProjectsLocationsJobsSnapshotsRequest {
   /** If specified, list snapshots created from this job. */
   jobId: string;
 }
-export const ListProjectsLocationsJobsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsJobsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -4680,14 +4666,14 @@ export const ListProjectsLocationsJobsSnapshotsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsJobsSnapshotsRequest>;
 
 export type SnapshotList = Array<Snapshot>;
-export const SnapshotList = /*@__PURE__*/ S.Array(Snapshot) as any as S.Schema<SnapshotList>;
+const SnapshotList = /*@__PURE__*/ S.Array(Snapshot) as any as S.Schema<SnapshotList>;
 
 /** List of snapshots. */
 export interface ListSnapshotsResponse {
   /** Returned snapshots. */
   snapshots?: SnapshotList;
 }
-export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshots: S.optional(SnapshotList),
   }),
@@ -4701,7 +4687,7 @@ export interface ListProjectsLocationsSnapshotsRequest {
   /** The location to list snapshots in. */
   location: string;
 }
-export const ListProjectsLocationsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String.pipe(T.Query())),
     projectId: S.String.pipe(T.Label()),
@@ -4725,7 +4711,7 @@ export interface ListProjectsSnapshotsRequest {
   /** The project ID to list snapshots for. */
   projectId: string;
 }
-export const ListProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String.pipe(T.Query())),
     location: S.optional(S.String.pipe(T.Query())),
@@ -4742,20 +4728,20 @@ export const ListProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsSnapshotsRequest>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 export type SourceSplitResponseOutcomeEnum =
   | "SOURCE_SPLIT_OUTCOME_UNKNOWN"
   | "SOURCE_SPLIT_OUTCOME_USE_CURRENT"
   | "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED";
-export const SourceSplitResponseOutcomeEnum = S.String;
+const SourceSplitResponseOutcomeEnum = S.String;
 
 export type DerivedSourceDerivationModeEnum =
   | "SOURCE_DERIVATION_MODE_UNKNOWN"
   | "SOURCE_DERIVATION_MODE_INDEPENDENT"
   | "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
   | "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT";
-export const DerivedSourceDerivationModeEnum = S.String;
+const DerivedSourceDerivationModeEnum = S.String;
 
 /** Specification of one of the bundles produced as a result of splitting a Source (e.g. when executing a SourceSplitRequest, or when splitting an active task using WorkItemStatus.dynamic_source_split), relative to the source being split. */
 export interface DerivedSource {
@@ -4764,7 +4750,7 @@ export interface DerivedSource {
   /** What source to base the produced source on (if any). */
   derivationMode?: DerivedSourceDerivationModeEnum | (string & {});
 }
-export const DerivedSource = /*@__PURE__*/ S.suspend(() =>
+const DerivedSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     derivationMode: S.optional(DerivedSourceDerivationModeEnum),
@@ -4772,7 +4758,7 @@ export const DerivedSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DerivedSource" }) as any as S.Schema<DerivedSource>;
 
 export type DerivedSourceList = Array<DerivedSource>;
-export const DerivedSourceList = /*@__PURE__*/ S.Array(
+const DerivedSourceList = /*@__PURE__*/ S.Array(
   DerivedSource,
 ) as any as S.Schema<DerivedSourceList>;
 
@@ -4781,7 +4767,7 @@ export type SourceSplitShardDerivationModeEnum =
   | "SOURCE_DERIVATION_MODE_INDEPENDENT"
   | "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
   | "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT";
-export const SourceSplitShardDerivationModeEnum = S.String;
+const SourceSplitShardDerivationModeEnum = S.String;
 
 /** DEPRECATED in favor of DerivedSource. */
 export interface SourceSplitShard {
@@ -4790,7 +4776,7 @@ export interface SourceSplitShard {
   /** DEPRECATED */
   source?: Source;
 }
-export const SourceSplitShard = /*@__PURE__*/ S.suspend(() =>
+const SourceSplitShard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     derivationMode: S.optional(SourceSplitShardDerivationModeEnum),
     source: S.optional(Source),
@@ -4798,7 +4784,7 @@ export const SourceSplitShard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceSplitShard" }) as any as S.Schema<SourceSplitShard>;
 
 export type SourceSplitShardList = Array<SourceSplitShard>;
-export const SourceSplitShardList = /*@__PURE__*/ S.Array(
+const SourceSplitShardList = /*@__PURE__*/ S.Array(
   SourceSplitShard,
 ) as any as S.Schema<SourceSplitShardList>;
 
@@ -4811,7 +4797,7 @@ export interface SourceSplitResponse {
   /** DEPRECATED in favor of bundles. */
   shards?: SourceSplitShardList;
 }
-export const SourceSplitResponse = /*@__PURE__*/ S.suspend(() =>
+const SourceSplitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outcome: S.optional(SourceSplitResponseOutcomeEnum),
     bundles: S.optional(DerivedSourceList),
@@ -4824,7 +4810,7 @@ export interface SourceGetMetadataResponse {
   /** The computed metadata. */
   metadata?: SourceMetadata;
 }
-export const SourceGetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const SourceGetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SourceMetadata),
   }),
@@ -4839,7 +4825,7 @@ export interface SourceOperationResponse {
   /** A response to a request to get metadata about a source. */
   getMetadata?: SourceGetMetadataResponse;
 }
-export const SourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const SourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     split: S.optional(SourceSplitResponse),
     getMetadata: S.optional(SourceGetMetadataResponse),
@@ -4857,7 +4843,7 @@ export type CounterMetadataKindEnum =
   | "SET"
   | "DISTRIBUTION"
   | "LATEST_VALUE";
-export const CounterMetadataKindEnum = S.String;
+const CounterMetadataKindEnum = S.String;
 
 export type CounterMetadataStandardUnitsEnum =
   | "BYTES"
@@ -4868,7 +4854,7 @@ export type CounterMetadataStandardUnitsEnum =
   | "TIMESTAMP_MSEC"
   | "TIMESTAMP_USEC"
   | "TIMESTAMP_NSEC";
-export const CounterMetadataStandardUnitsEnum = S.String;
+const CounterMetadataStandardUnitsEnum = S.String;
 
 /** CounterMetadata includes all static non-name non-value counter attributes. */
 export interface CounterMetadata {
@@ -4881,7 +4867,7 @@ export interface CounterMetadata {
   /** Human-readable description of the counter semantics. */
   description?: string;
 }
-export const CounterMetadata = /*@__PURE__*/ S.suspend(() =>
+const CounterMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(CounterMetadataKindEnum),
     otherUnits: S.optional(S.String),
@@ -4891,10 +4877,10 @@ export const CounterMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CounterMetadata" }) as any as S.Schema<CounterMetadata>;
 
 export type CounterStructuredNameOriginEnum = "SYSTEM" | "USER";
-export const CounterStructuredNameOriginEnum = S.String;
+const CounterStructuredNameOriginEnum = S.String;
 
 export type CounterStructuredNamePortionEnum = "ALL" | "KEY" | "VALUE";
-export const CounterStructuredNamePortionEnum = S.String;
+const CounterStructuredNamePortionEnum = S.String;
 
 /** Identifies a counter within a per-job namespace. Counters whose structured names are the same get merged into a single value for the job. */
 export interface CounterStructuredName {
@@ -4919,7 +4905,7 @@ export interface CounterStructuredName {
   /** Index of an input collection that's being read from/written to as a side input. The index identifies a step's side inputs starting by 1 (e.g. the first side input has input_index 1, the third has input_index 3). Side inputs are identified by a pair of (original_step_name, input_index). This field helps uniquely identify them. */
   inputIndex?: number;
 }
-export const CounterStructuredName = /*@__PURE__*/ S.suspend(() =>
+const CounterStructuredName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     componentStepName: S.optional(S.String),
@@ -4941,7 +4927,7 @@ export interface CounterStructuredNameAndMetadata {
   /** Structured name of the counter. */
   name?: CounterStructuredName;
 }
-export const CounterStructuredNameAndMetadata = /*@__PURE__*/ S.suspend(() =>
+const CounterStructuredNameAndMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(CounterMetadata),
     name: S.optional(CounterStructuredName),
@@ -4957,7 +4943,7 @@ export interface SplitInt64 {
   /** The high order bits, including the sign: n >> 32. */
   highBits?: number;
 }
-export const SplitInt64 = /*@__PURE__*/ S.suspend(() =>
+const SplitInt64 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lowBits: S.optional(S.Number),
     highBits: S.optional(S.Number),
@@ -4971,7 +4957,7 @@ export interface Histogram {
   /** Starting index of first stored bucket. The non-inclusive upper-bound of the ith bucket is given by: pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3] */
   firstBucketOffset?: number;
 }
-export const Histogram = /*@__PURE__*/ S.suspend(() =>
+const Histogram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketCounts: S.optional(StringList_),
     firstBucketOffset: S.optional(S.Number),
@@ -4993,7 +4979,7 @@ export interface DistributionUpdate {
   /** (Optional) Histogram of value counts for the distribution. */
   histogram?: Histogram;
 }
-export const DistributionUpdate = /*@__PURE__*/ S.suspend(() =>
+const DistributionUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sum: S.optional(SplitInt64),
     count: S.optional(SplitInt64),
@@ -5011,7 +4997,7 @@ export interface FloatingPointMean {
   /** The sum of all values being aggregated. */
   sum?: number;
 }
-export const FloatingPointMean = /*@__PURE__*/ S.suspend(() =>
+const FloatingPointMean = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(SplitInt64),
     sum: S.optional(S.Number),
@@ -5019,7 +5005,7 @@ export const FloatingPointMean = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FloatingPointMean" }) as any as S.Schema<FloatingPointMean>;
 
 export type BoundedTrieNodeMap = { [key: string]: BoundedTrieNode | undefined };
-export const BoundedTrieNodeMap = /*@__PURE__*/ S.Record(
+const BoundedTrieNodeMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.suspend(() => BoundedTrieNode),
 ) as any as S.Schema<BoundedTrieNodeMap>;
@@ -5031,7 +5017,7 @@ export interface BoundedTrieNode {
   /** Whether this node has been truncated. A truncated leaf represents possibly many children with the same prefix. */
   truncated?: boolean;
 }
-export const BoundedTrieNode = /*@__PURE__*/ S.suspend(() =>
+const BoundedTrieNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     children: S.optional(BoundedTrieNodeMap),
     truncated: S.optional(S.Boolean),
@@ -5047,7 +5033,7 @@ export interface BoundedTrie {
   /** A more efficient representation for metrics consisting of a single value. */
   singleton?: StringList_;
 }
-export const BoundedTrie = /*@__PURE__*/ S.suspend(() =>
+const BoundedTrie = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     root: S.optional(BoundedTrieNode),
     bound: S.optional(S.Number),
@@ -5062,7 +5048,7 @@ export interface IntegerGauge {
   /** The time at which this value was measured. Measured as msecs from epoch. */
   timestamp?: string;
 }
-export const IntegerGauge = /*@__PURE__*/ S.suspend(() =>
+const IntegerGauge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SplitInt64),
     timestamp: S.optional(S.String),
@@ -5074,7 +5060,7 @@ export interface StringList {
   /** Elements of the list. */
   elements?: StringList_;
 }
-export const StringList = /*@__PURE__*/ S.suspend(() =>
+const StringList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elements: S.optional(StringList_),
   }),
@@ -5091,7 +5077,7 @@ export type NameAndKindKindEnum =
   | "SET"
   | "DISTRIBUTION"
   | "LATEST_VALUE";
-export const NameAndKindKindEnum = S.String;
+const NameAndKindKindEnum = S.String;
 
 /** Basic metadata about a counter. */
 export interface NameAndKind {
@@ -5100,7 +5086,7 @@ export interface NameAndKind {
   /** Counter aggregation kind. */
   kind?: NameAndKindKindEnum | (string & {});
 }
-export const NameAndKind = /*@__PURE__*/ S.suspend(() =>
+const NameAndKind = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     kind: S.optional(NameAndKindKindEnum),
@@ -5114,7 +5100,7 @@ export interface IntegerMean {
   /** The number of values being aggregated. */
   count?: SplitInt64;
 }
-export const IntegerMean = /*@__PURE__*/ S.suspend(() =>
+const IntegerMean = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sum: S.optional(SplitInt64),
     count: S.optional(SplitInt64),
@@ -5122,28 +5108,28 @@ export const IntegerMean = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IntegerMean" }) as any as S.Schema<IntegerMean>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** A metric value representing a list of floating point numbers. */
 export interface FloatingPointList {
   /** Elements of the list. */
   elements?: DoubleList;
 }
-export const FloatingPointList = /*@__PURE__*/ S.suspend(() =>
+const FloatingPointList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elements: S.optional(DoubleList),
   }),
 ).annotate({ identifier: "FloatingPointList" }) as any as S.Schema<FloatingPointList>;
 
 export type SplitInt64List = Array<SplitInt64>;
-export const SplitInt64List = /*@__PURE__*/ S.Array(SplitInt64) as any as S.Schema<SplitInt64List>;
+const SplitInt64List = /*@__PURE__*/ S.Array(SplitInt64) as any as S.Schema<SplitInt64List>;
 
 /** A metric value representing a list of integers. */
 export interface IntegerList {
   /** Elements of the list. */
   elements?: SplitInt64List;
 }
-export const IntegerList = /*@__PURE__*/ S.suspend(() =>
+const IntegerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elements: S.optional(SplitInt64List),
   }),
@@ -5184,7 +5170,7 @@ export interface CounterUpdate {
   /** List of integers, for Set. */
   integerList?: IntegerList;
 }
-export const CounterUpdate = /*@__PURE__*/ S.suspend(() =>
+const CounterUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structuredNameAndMetadata: S.optional(CounterStructuredNameAndMetadata),
     shortId: S.optional(S.String),
@@ -5206,7 +5192,7 @@ export const CounterUpdate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CounterUpdate" }) as any as S.Schema<CounterUpdate>;
 
 export type CounterUpdateList = Array<CounterUpdate>;
-export const CounterUpdateList = /*@__PURE__*/ S.Array(
+const CounterUpdateList = /*@__PURE__*/ S.Array(
   CounterUpdate,
 ) as any as S.Schema<CounterUpdateList>;
 
@@ -5217,7 +5203,7 @@ export interface ConcatPosition {
   /** Position within the inner source. */
   position?: Position;
 }
-export const ConcatPosition = /*@__PURE__*/ S.suspend(() =>
+const ConcatPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.Number),
     position: S.optional(S.suspend(() => Position)),
@@ -5239,7 +5225,7 @@ export interface Position {
   /** CloudPosition is a concat position. */
   concatPosition?: ConcatPosition;
 }
-export const Position = /*@__PURE__*/ S.suspend(() =>
+const Position = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shufflePosition: S.optional(S.String),
     recordIndex: S.optional(S.String),
@@ -5257,7 +5243,7 @@ export interface ReportedParallelism {
   /** Specifies whether the parallelism is infinite. If true, "value" is ignored. Infinite parallelism means the service will assume that the work item can always be split into more non-empty work items by dynamic splitting. This is a work-around for lack of support for infinity by the current JSON-based Java RPC stack. */
   isInfinite?: boolean;
 }
-export const ReportedParallelism = /*@__PURE__*/ S.suspend(() =>
+const ReportedParallelism = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Number),
     isInfinite: S.optional(S.Boolean),
@@ -5275,7 +5261,7 @@ export interface ApproximateReportedProgress {
   /** A Position within the work to represent a progress. */
   position?: Position;
 }
-export const ApproximateReportedProgress = /*@__PURE__*/ S.suspend(() =>
+const ApproximateReportedProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fractionConsumed: S.optional(S.Number),
     remainingParallelism: S.optional(ReportedParallelism),
@@ -5293,7 +5279,7 @@ export interface DynamicSourceSplit {
   /** Residual part (returned to the pool of work). Specified relative to the previously-current source. */
   residual?: DerivedSource;
 }
-export const DynamicSourceSplit = /*@__PURE__*/ S.suspend(() =>
+const DynamicSourceSplit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(DerivedSource),
     residual: S.optional(DerivedSource),
@@ -5309,7 +5295,7 @@ export interface ApproximateProgress {
   /** Obsolete. */
   remainingTime?: string;
 }
-export const ApproximateProgress = /*@__PURE__*/ S.suspend(() =>
+const ApproximateProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.optional(S.Number),
     position: S.optional(Position),
@@ -5328,7 +5314,7 @@ export interface SourceFork {
   /** DEPRECATED */
   primarySource?: DerivedSource;
 }
-export const SourceFork = /*@__PURE__*/ S.suspend(() =>
+const SourceFork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(SourceSplitShard),
     residualSource: S.optional(DerivedSource),
@@ -5368,7 +5354,7 @@ export interface WorkItemStatus {
   /** Total time the worker spent being throttled by external systems. */
   totalThrottlerWaitTimeSeconds?: number;
 }
-export const WorkItemStatus = /*@__PURE__*/ S.suspend(() =>
+const WorkItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(StatusList),
     requestedLeaseDuration: S.optional(S.String),
@@ -5388,7 +5374,7 @@ export const WorkItemStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkItemStatus" }) as any as S.Schema<WorkItemStatus>;
 
 export type WorkItemStatusList = Array<WorkItemStatus>;
-export const WorkItemStatusList = /*@__PURE__*/ S.Array(
+const WorkItemStatusList = /*@__PURE__*/ S.Array(
   WorkItemStatus,
 ) as any as S.Schema<WorkItemStatusList>;
 
@@ -5407,7 +5393,7 @@ export interface ReportWorkItemStatusRequest {
   /** Optional. The project number of the project which owns the WorkItem's job. */
   projectNumber?: string;
 }
-export const ReportWorkItemStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportWorkItemStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerId: S.optional(S.String),
     unifiedWorkerRequest: S.optional(DocumentMap),
@@ -5428,7 +5414,7 @@ export interface ReportStatusProjectsJobsWorkItemsRequest {
   /** Request body */
   body?: ReportWorkItemStatusRequest;
 }
-export const ReportStatusProjectsJobsWorkItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportStatusProjectsJobsWorkItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -5451,7 +5437,7 @@ export interface MetricShortId {
   /** The index of the corresponding metric in the ReportWorkItemStatusRequest. Required. */
   metricIndex?: number;
 }
-export const MetricShortId = /*@__PURE__*/ S.suspend(() =>
+const MetricShortId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shortId: S.optional(S.String),
     metricIndex: S.optional(S.Number),
@@ -5459,7 +5445,7 @@ export const MetricShortId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricShortId" }) as any as S.Schema<MetricShortId>;
 
 export type MetricShortIdList = Array<MetricShortId>;
-export const MetricShortIdList = /*@__PURE__*/ S.Array(
+const MetricShortIdList = /*@__PURE__*/ S.Array(
   MetricShortId,
 ) as any as S.Schema<MetricShortIdList>;
 
@@ -5472,7 +5458,7 @@ export interface ApproximateSplitRequest {
   /** A fraction at which to split the work item, from 0.0 (beginning of the input) to 1.0 (end of the input). */
   fractionConsumed?: number;
 }
-export const ApproximateSplitRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproximateSplitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fractionOfRemainder: S.optional(S.Number),
     position: S.optional(Position),
@@ -5489,7 +5475,7 @@ export interface HotKeyDetection {
   /** User-provided name of the step that contains this hot key. */
   userStepName?: string;
 }
-export const HotKeyDetection = /*@__PURE__*/ S.suspend(() =>
+const HotKeyDetection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemName: S.optional(S.String),
     hotKeyAge: S.optional(S.String),
@@ -5520,7 +5506,7 @@ export interface WorkItemServiceState {
   /** The index value to use for the next report sent by the worker. Note: If the report call fails for whatever reason, the worker should reuse this index for subsequent report attempts. */
   nextReportIndex?: string;
 }
-export const WorkItemServiceState = /*@__PURE__*/ S.suspend(() =>
+const WorkItemServiceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedStopPosition: S.optional(Position),
     leaseExpireTime: S.optional(S.String),
@@ -5536,7 +5522,7 @@ export const WorkItemServiceState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkItemServiceState" }) as any as S.Schema<WorkItemServiceState>;
 
 export type WorkItemServiceStateList = Array<WorkItemServiceState>;
-export const WorkItemServiceStateList = /*@__PURE__*/ S.Array(
+const WorkItemServiceStateList = /*@__PURE__*/ S.Array(
   WorkItemServiceState,
 ) as any as S.Schema<WorkItemServiceStateList>;
 
@@ -5547,7 +5533,7 @@ export interface ReportWorkItemStatusResponse {
   /** Untranslated bag-of-bytes WorkProgressUpdateResponse for UnifiedWorker. */
   unifiedWorkerResponse?: DocumentMap;
 }
-export const ReportWorkItemStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ReportWorkItemStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workItemServiceStates: S.optional(WorkItemServiceStateList),
     unifiedWorkerResponse: S.optional(DocumentMap),
@@ -5566,7 +5552,7 @@ export interface ReportStatusProjectsLocationsJobsWorkItemsRequest {
   /** Request body */
   body?: ReportWorkItemStatusRequest;
 }
-export const ReportStatusProjectsLocationsJobsWorkItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportStatusProjectsLocationsJobsWorkItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -5585,9 +5571,7 @@ export const ReportStatusProjectsLocationsJobsWorkItemsRequest = /*@__PURE__*/ S
 
 /** Request message for ResolveConfigStoreSetting. */
 export interface ResolveConfigStoreSettingRequest {}
-export const ResolveConfigStoreSettingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ResolveConfigStoreSettingRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ResolveConfigStoreSettingRequest",
 }) as any as S.Schema<ResolveConfigStoreSettingRequest>;
 
@@ -5597,7 +5581,7 @@ export interface ResolveFoldersLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ResolveConfigStoreSettingRequest;
 }
-export const ResolveFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ResolveConfigStoreSettingRequest.pipe(T.HttpBody())),
@@ -5619,7 +5603,7 @@ export interface ResolveConfigStoreSettingResponse {
   /** The dry-run setting result. */
   setting?: ConfigStoreSetting;
 }
-export const ResolveConfigStoreSettingResponse = /*@__PURE__*/ S.suspend(() =>
+const ResolveConfigStoreSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choices: S.optional(ConfigStoreSettingList),
     setting: S.optional(ConfigStoreSetting),
@@ -5634,7 +5618,7 @@ export interface ResolveOrganizationsLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ResolveConfigStoreSettingRequest;
 }
-export const ResolveOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ResolveConfigStoreSettingRequest.pipe(T.HttpBody())),
@@ -5655,7 +5639,7 @@ export interface ResolveProjectsLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ResolveConfigStoreSettingRequest;
 }
-export const ResolveProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ResolveConfigStoreSettingRequest.pipe(T.HttpBody())),
@@ -5676,7 +5660,7 @@ export type SendDebugCaptureRequestDataFormatEnum =
   | "JSON"
   | "ZLIB"
   | "BROTLI";
-export const SendDebugCaptureRequestDataFormatEnum = S.String;
+const SendDebugCaptureRequestDataFormatEnum = S.String;
 
 /** Request to send encoded debug information. Next ID: 8 */
 export interface SendDebugCaptureRequest {
@@ -5691,7 +5675,7 @@ export interface SendDebugCaptureRequest {
   /** Format for the data field above (id=5). */
   dataFormat?: SendDebugCaptureRequestDataFormatEnum | (string & {});
 }
-export const SendDebugCaptureRequest = /*@__PURE__*/ S.suspend(() =>
+const SendDebugCaptureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     componentId: S.optional(S.String),
@@ -5709,7 +5693,7 @@ export interface SendCaptureProjectsJobsDebugRequest {
   /** Request body */
   body?: SendDebugCaptureRequest;
 }
-export const SendCaptureProjectsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
+const SendCaptureProjectsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -5727,7 +5711,7 @@ export const SendCaptureProjectsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response to a send capture request. nothing */
 export interface SendDebugCaptureResponse {}
-export const SendDebugCaptureResponse = Empty as any as S.Schema<SendDebugCaptureResponse>;
+const SendDebugCaptureResponse = Empty as any as S.Schema<SendDebugCaptureResponse>;
 
 export interface SendCaptureProjectsLocationsJobsDebugRequest {
   /** The job id. */
@@ -5739,7 +5723,7 @@ export interface SendCaptureProjectsLocationsJobsDebugRequest {
   /** Request body */
   body?: SendDebugCaptureRequest;
 }
-export const SendCaptureProjectsLocationsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
+const SendCaptureProjectsLocationsJobsDebugRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -5767,7 +5751,7 @@ export interface SnapshotJobRequest {
   /** User specified description of the snapshot. Maybe empty. */
   description?: string;
 }
-export const SnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
+const SnapshotJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     snapshotSources: S.optional(S.Boolean),
@@ -5784,7 +5768,7 @@ export interface SnapshotProjectsJobsRequest {
   /** Request body */
   body?: SnapshotJobRequest;
 }
-export const SnapshotProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const SnapshotProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -5810,7 +5794,7 @@ export interface SnapshotProjectsLocationsJobsRequest {
   /** Request body */
   body?: SnapshotJobRequest;
 }
-export const SnapshotProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const SnapshotProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -5839,7 +5823,7 @@ export interface UpdateProjectsJobsRequest {
   /** Request body */
   body?: Job;
 }
-export const UpdateProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5869,7 +5853,7 @@ export interface UpdateProjectsLocationsJobsRequest {
   /** Request body */
   body?: Job;
 }
-export const UpdateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -5905,7 +5889,7 @@ export interface StreamingScalingReport {
   activeThreadCount?: number;
   activeBundleCount?: number;
 }
-export const StreamingScalingReport = /*@__PURE__*/ S.suspend(() =>
+const StreamingScalingReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outstandingBytesCount: S.optional(S.Number),
     maximumBytesCount: S.optional(S.Number),
@@ -5932,7 +5916,7 @@ export interface MemInfo {
   /** Instantenous memory limit in bytes. */
   currentLimitBytes?: string;
 }
-export const MemInfo = /*@__PURE__*/ S.suspend(() =>
+const MemInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalGbMs: S.optional(S.String),
     currentRssBytes: S.optional(S.String),
@@ -5943,10 +5927,10 @@ export const MemInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MemInfo" }) as any as S.Schema<MemInfo>;
 
 export type MemInfoList = Array<MemInfo>;
-export const MemInfoList = /*@__PURE__*/ S.Array(MemInfo) as any as S.Schema<MemInfoList>;
+const MemInfoList = /*@__PURE__*/ S.Array(MemInfo) as any as S.Schema<MemInfoList>;
 
 export type ResourceUtilizationReportMap = { [key: string]: ResourceUtilizationReport | undefined };
-export const ResourceUtilizationReportMap = /*@__PURE__*/ S.Record(
+const ResourceUtilizationReportMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.suspend(() => ResourceUtilizationReport),
 ) as any as S.Schema<ResourceUtilizationReportMap>;
@@ -5956,7 +5940,7 @@ export interface GPUUtilization {
   /** Required. GPU utilization rate of any kernel over the last sample period in the range of [0, 1]. */
   rate?: number;
 }
-export const GPUUtilization = /*@__PURE__*/ S.suspend(() =>
+const GPUUtilization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rate: S.optional(S.Number),
   }),
@@ -5969,7 +5953,7 @@ export interface GPUUsage {
   /** Required. Timestamp of the measurement. */
   timestamp?: string;
 }
-export const GPUUsage = /*@__PURE__*/ S.suspend(() =>
+const GPUUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     utilization: S.optional(GPUUtilization),
     timestamp: S.optional(S.String),
@@ -5977,7 +5961,7 @@ export const GPUUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GPUUsage" }) as any as S.Schema<GPUUsage>;
 
 export type GPUUsageList = Array<GPUUsage>;
-export const GPUUsageList = /*@__PURE__*/ S.Array(GPUUsage) as any as S.Schema<GPUUsageList>;
+const GPUUsageList = /*@__PURE__*/ S.Array(GPUUsage) as any as S.Schema<GPUUsageList>;
 
 /** Modeled after information exposed by /proc/stat. */
 export interface CPUTime {
@@ -5988,7 +5972,7 @@ export interface CPUTime {
   /** Average CPU utilization rate (% non-idle cpu / second) since previous sample. */
   rate?: number;
 }
-export const CPUTime = /*@__PURE__*/ S.suspend(() =>
+const CPUTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalMs: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -5997,7 +5981,7 @@ export const CPUTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CPUTime" }) as any as S.Schema<CPUTime>;
 
 export type CPUTimeList = Array<CPUTime>;
-export const CPUTimeList = /*@__PURE__*/ S.Array(CPUTime) as any as S.Schema<CPUTimeList>;
+const CPUTimeList = /*@__PURE__*/ S.Array(CPUTime) as any as S.Schema<CPUTimeList>;
 
 /** Worker metrics exported from workers. This contains resource utilization metrics accumulated from a variety of sources. For more information, see go/df-resource-signals. */
 export interface ResourceUtilizationReport {
@@ -6010,7 +5994,7 @@ export interface ResourceUtilizationReport {
   /** CPU utilization samples. */
   cpuTime?: CPUTimeList;
 }
-export const ResourceUtilizationReport = /*@__PURE__*/ S.suspend(() =>
+const ResourceUtilizationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryInfo: S.optional(MemInfoList),
     containers: S.optional(ResourceUtilizationReportMap),
@@ -6038,7 +6022,7 @@ export interface WorkerHealthReport {
   /** Whether the VM is currently healthy. */
   vmIsHealthy?: boolean;
 }
-export const WorkerHealthReport = /*@__PURE__*/ S.suspend(() =>
+const WorkerHealthReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmStartupTime: S.optional(S.String),
     pods: S.optional(DocumentMapList),
@@ -6067,7 +6051,7 @@ export interface DataSamplingReport {
   /** Optional. Delta of errors counts from persisting the samples from previous report. */
   persistenceErrorsCount?: string;
 }
-export const DataSamplingReport = /*@__PURE__*/ S.suspend(() =>
+const DataSamplingReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     translationErrorsCount: S.optional(S.String),
     elementsSampledBytes: S.optional(S.String),
@@ -6086,7 +6070,7 @@ export interface DataflowGaugeValue {
   /** The timestamp when the gauge was recorded. */
   measuredTime?: string;
 }
-export const DataflowGaugeValue = /*@__PURE__*/ S.suspend(() =>
+const DataflowGaugeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     measuredTime: S.optional(S.String),
@@ -6102,7 +6086,7 @@ export interface Linear {
   /** Lower bound of the first bucket. */
   start?: number;
 }
-export const Linear = /*@__PURE__*/ S.suspend(() =>
+const Linear = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(S.Number),
     numberOfBuckets: S.optional(S.Number),
@@ -6117,7 +6101,7 @@ export interface Base2Exponent {
   /** Must be between -3 and 3. This forces the growth factor of the bucket boundaries to be between `2^(1/8)` and `256`. */
   scale?: number;
 }
-export const Base2Exponent = /*@__PURE__*/ S.suspend(() =>
+const Base2Exponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberOfBuckets: S.optional(S.Number),
     scale: S.optional(S.Number),
@@ -6131,7 +6115,7 @@ export interface BucketOptions {
   /** Bucket boundaries grow exponentially. */
   exponential?: Base2Exponent;
 }
-export const BucketOptions = /*@__PURE__*/ S.suspend(() =>
+const BucketOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linear: S.optional(Linear),
     exponential: S.optional(Base2Exponent),
@@ -6149,7 +6133,7 @@ export interface OutlierStats {
   /** Number of values that are larger than the upper bound of the largest bucket. */
   overflowCount?: string;
 }
-export const OutlierStats = /*@__PURE__*/ S.suspend(() =>
+const OutlierStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     underflowCount: S.optional(S.String),
     overflowMean: S.optional(S.Number),
@@ -6169,7 +6153,7 @@ export interface DataflowHistogramValue {
   /** Statistics on the values recorded in the histogram that fall out of the bucket boundaries. */
   outlierStats?: OutlierStats;
 }
-export const DataflowHistogramValue = /*@__PURE__*/ S.suspend(() =>
+const DataflowHistogramValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketCounts: S.optional(StringList_),
     count: S.optional(S.String),
@@ -6191,7 +6175,7 @@ export interface MetricValue {
   /** Base name for this metric. */
   metric?: string;
 }
-export const MetricValue = /*@__PURE__*/ S.suspend(() =>
+const MetricValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueInt64: S.optional(S.String),
     valueGauge64: S.optional(DataflowGaugeValue),
@@ -6202,9 +6186,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
 export type MetricValueList = Array<MetricValue>;
-export const MetricValueList = /*@__PURE__*/ S.Array(
-  MetricValue,
-) as any as S.Schema<MetricValueList>;
+const MetricValueList = /*@__PURE__*/ S.Array(MetricValue) as any as S.Schema<MetricValueList>;
 
 /** Metrics for a particular unfused step and namespace. A metric is uniquely identified by the `metrics_namespace`, `original_step`, `metric name` and `metric_labels`. */
 export interface PerStepNamespaceMetrics {
@@ -6215,7 +6197,7 @@ export interface PerStepNamespaceMetrics {
   /** The namespace of these metrics on the worker. */
   metricsNamespace?: string;
 }
-export const PerStepNamespaceMetrics = /*@__PURE__*/ S.suspend(() =>
+const PerStepNamespaceMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalStep: S.optional(S.String),
     metricValues: S.optional(MetricValueList),
@@ -6224,7 +6206,7 @@ export const PerStepNamespaceMetrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PerStepNamespaceMetrics" }) as any as S.Schema<PerStepNamespaceMetrics>;
 
 export type PerStepNamespaceMetricsList = Array<PerStepNamespaceMetrics>;
-export const PerStepNamespaceMetricsList = /*@__PURE__*/ S.Array(
+const PerStepNamespaceMetricsList = /*@__PURE__*/ S.Array(
   PerStepNamespaceMetrics,
 ) as any as S.Schema<PerStepNamespaceMetricsList>;
 
@@ -6233,7 +6215,7 @@ export interface PerWorkerMetrics {
   /** Optional. Metrics for a particular unfused step and namespace. */
   perStepNamespaceMetrics?: PerStepNamespaceMetricsList;
 }
-export const PerWorkerMetrics = /*@__PURE__*/ S.suspend(() =>
+const PerWorkerMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     perStepNamespaceMetrics: S.optional(PerStepNamespaceMetricsList),
   }),
@@ -6244,7 +6226,7 @@ export interface WorkerShutdownNotice {
   /** The reason for the worker shutdown. Current possible values are: "UNKNOWN": shutdown reason is unknown. "PREEMPTION": shutdown reason is preemption. Other possible reasons may be added in the future. */
   reason?: string;
 }
-export const WorkerShutdownNotice = /*@__PURE__*/ S.suspend(() =>
+const WorkerShutdownNotice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
   }),
@@ -6257,7 +6239,7 @@ export interface WorkerMessageCode {
   /** Parameters contains specific information about the code. This is a struct to allow parameters of different types. Examples: 1. For a "HARNESS_STARTED" message parameters might provide the name of the worker and additional data like timing information. 2. For a "GCS_DOWNLOAD_ERROR" parameters might contain fields listing the Cloud Storage objects being downloaded and fields containing errors. In general complex data structures should be avoided. If a worker needs to send a specific and complicated data structure then please consider defining a new proto and adding it to the data oneof in WorkerMessageResponse. Conventions: Parameters should only be used for information that isn't typically passed as a label. hostname and other worker identifiers should almost always be passed as labels since they will be included on most messages. */
   parameters?: DocumentMap;
 }
-export const WorkerMessageCode = /*@__PURE__*/ S.suspend(() =>
+const WorkerMessageCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     parameters: S.optional(DocumentMap),
@@ -6273,7 +6255,7 @@ export type WorkerLifecycleEventEventEnum =
   | "STAGING_FILES_DOWNLOAD_FINISH"
   | "SDK_INSTALL_START"
   | "SDK_INSTALL_FINISH";
-export const WorkerLifecycleEventEventEnum = S.String;
+const WorkerLifecycleEventEventEnum = S.String;
 
 /** A report of an event in a worker's lifecycle. The proto contains one event, because the worker is expected to asynchronously send each message immediately after the event. Due to this asynchrony, messages may arrive out of order (or missing), and it is up to the consumer to interpret. The timestamp of the event is in the enclosing WorkerMessage proto. */
 export interface WorkerLifecycleEvent {
@@ -6284,7 +6266,7 @@ export interface WorkerLifecycleEvent {
   /** Other stats that can accompany an event. E.g. { "downloaded_bytes" : "123456" } */
   metadata?: StringMap;
 }
-export const WorkerLifecycleEvent = /*@__PURE__*/ S.suspend(() =>
+const WorkerLifecycleEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerStartTime: S.optional(S.String),
     event: S.optional(WorkerLifecycleEventEventEnum),
@@ -6297,7 +6279,7 @@ export interface WorkerThreadScalingReport {
   /** Current number of active threads in a worker. */
   currentThreadCount?: number;
 }
-export const WorkerThreadScalingReport = /*@__PURE__*/ S.suspend(() =>
+const WorkerThreadScalingReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentThreadCount: S.optional(S.Number),
   }),
@@ -6330,7 +6312,7 @@ export interface WorkerMessage {
   /** Thread scaling information reported by workers. */
   workerThreadScalingReport?: WorkerThreadScalingReport;
 }
-export const WorkerMessage = /*@__PURE__*/ S.suspend(() =>
+const WorkerMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(S.String),
     streamingScalingReport: S.optional(StreamingScalingReport),
@@ -6347,7 +6329,7 @@ export const WorkerMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkerMessage" }) as any as S.Schema<WorkerMessage>;
 
 export type WorkerMessageList = Array<WorkerMessage>;
-export const WorkerMessageList = /*@__PURE__*/ S.Array(
+const WorkerMessageList = /*@__PURE__*/ S.Array(
   WorkerMessage,
 ) as any as S.Schema<WorkerMessageList>;
 
@@ -6358,7 +6340,7 @@ export interface SendWorkerMessagesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job. */
   location?: string;
 }
-export const SendWorkerMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const SendWorkerMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerMessages: S.optional(WorkerMessageList),
     location: S.optional(S.String),
@@ -6373,7 +6355,7 @@ export interface WorkerMessagesProjectsRequest {
   /** Request body */
   body?: SendWorkerMessagesRequest;
 }
-export const WorkerMessagesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkerMessagesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(SendWorkerMessagesRequest.pipe(T.HttpBody())),
@@ -6393,7 +6375,7 @@ export interface StreamingScalingReportResponse {
   /** Maximum thread count limit; */
   maximumThreadCount?: number;
 }
-export const StreamingScalingReportResponse = /*@__PURE__*/ S.suspend(() =>
+const StreamingScalingReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maximumThreadCount: S.optional(S.Number),
   }),
@@ -6406,7 +6388,7 @@ export interface WorkerHealthReportResponse {
   /** A positive value indicates the worker should change its reporting interval to the specified value. The default value of zero means no change in report rate is requested by the server. */
   reportInterval?: string;
 }
-export const WorkerHealthReportResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkerHealthReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportInterval: S.optional(S.String),
   }),
@@ -6419,7 +6401,7 @@ export interface WorkerThreadScalingReportResponse {
   /** Recommended number of threads for a worker. */
   recommendedThreadCount?: number;
 }
-export const WorkerThreadScalingReportResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkerThreadScalingReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendedThreadCount: S.optional(S.Number),
   }),
@@ -6429,12 +6411,8 @@ export const WorkerThreadScalingReportResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Service-side response to WorkerMessage reporting resource utilization. */
 export type ResourceUtilizationReportResponse = ResolveConfigStoreSettingRequest;
-export const ResourceUtilizationReportResponse = ResolveConfigStoreSettingRequest;
-
 /** Service-side response to WorkerMessage issuing shutdown notice. */
 export type WorkerShutdownNoticeResponse = ResolveConfigStoreSettingRequest;
-export const WorkerShutdownNoticeResponse = ResolveConfigStoreSettingRequest;
-
 /** A worker_message response allows the server to pass information to the sender. */
 export interface WorkerMessageResponse {
   /** Service's streaming scaling response for workers. */
@@ -6448,7 +6426,7 @@ export interface WorkerMessageResponse {
   /** Service's response to shutdown notice (currently empty). */
   workerShutdownNoticeResponse?: ResolveConfigStoreSettingRequest;
 }
-export const WorkerMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkerMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamingScalingReportResponse: S.optional(StreamingScalingReportResponse),
     workerHealthReportResponse: S.optional(WorkerHealthReportResponse),
@@ -6459,7 +6437,7 @@ export const WorkerMessageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkerMessageResponse" }) as any as S.Schema<WorkerMessageResponse>;
 
 export type WorkerMessageResponseList = Array<WorkerMessageResponse>;
-export const WorkerMessageResponseList = /*@__PURE__*/ S.Array(
+const WorkerMessageResponseList = /*@__PURE__*/ S.Array(
   WorkerMessageResponse,
 ) as any as S.Schema<WorkerMessageResponseList>;
 
@@ -6468,7 +6446,7 @@ export interface SendWorkerMessagesResponse {
   /** The servers response to the worker messages. */
   workerMessageResponses?: WorkerMessageResponseList;
 }
-export const SendWorkerMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+const SendWorkerMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerMessageResponses: S.optional(WorkerMessageResponseList),
   }),
@@ -6484,7 +6462,7 @@ export interface WorkerMessagesProjectsLocationsRequest {
   /** Request body */
   body?: SendWorkerMessagesRequest;
 }
-export const WorkerMessagesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkerMessagesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),

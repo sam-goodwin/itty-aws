@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type ContactProfilesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ContactProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ContactProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ContactProfilesCreateOrUpdateRequestTagsMap>;
@@ -23,21 +23,21 @@ export type ProvisioningStateInput =
   | "canceled"
   | "updating"
   | "deleting";
-export const ProvisioningStateInput = S.String;
+const ProvisioningStateInput = S.String;
 
 /** Auto-tracking configuration. */
 export type ContactProfilesPropertiesInputAutoTrackingConfiguration =
   | "disabled"
   | "xBand"
   | "sBand";
-export const ContactProfilesPropertiesInputAutoTrackingConfiguration = S.String;
+const ContactProfilesPropertiesInputAutoTrackingConfiguration = S.String;
 
 /** Network configuration of customer virtual network. */
 export interface ContactProfilesPropertiesInputNetworkConfiguration {
   /** ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it. */
   subnetId: string;
 }
-export const ContactProfilesPropertiesInputNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ContactProfilesPropertiesInputNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.String,
   }),
@@ -52,7 +52,7 @@ export interface ContactProfileThirdPartyConfiguration {
   /** Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network. */
   missionConfiguration: string;
 }
-export const ContactProfileThirdPartyConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ContactProfileThirdPartyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     providerName: S.String,
     missionConfiguration: S.String,
@@ -64,7 +64,7 @@ export const ContactProfileThirdPartyConfiguration = /*@__PURE__*/ S.suspend(() 
 /** Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesInputThirdPartyConfigurationsList =
   Array<ContactProfileThirdPartyConfiguration>;
-export const ContactProfilesPropertiesInputThirdPartyConfigurationsList = /*@__PURE__*/ S.Array(
+const ContactProfilesPropertiesInputThirdPartyConfigurationsList = /*@__PURE__*/ S.Array(
   ContactProfileThirdPartyConfiguration,
 ) as any as S.Schema<ContactProfilesPropertiesInputThirdPartyConfigurationsList>;
 
@@ -74,15 +74,15 @@ export type ContactProfileLinkPolarization =
   | "LHCP"
   | "linearVertical"
   | "linearHorizontal";
-export const ContactProfileLinkPolarization = S.String;
+const ContactProfileLinkPolarization = S.String;
 
 /** Direction (Uplink or Downlink). */
 export type ContactProfileLinkDirection = "Uplink" | "Downlink";
-export const ContactProfileLinkDirection = S.String;
+const ContactProfileLinkDirection = S.String;
 
 /** Protocol either UDP or TCP. */
 export type EndPointProtocol = "TCP" | "UDP";
-export const EndPointProtocol = S.String;
+const EndPointProtocol = S.String;
 
 /** Customer end point to store and retrieve data during a contact with the spacecraft. */
 export interface EndPoint {
@@ -95,7 +95,7 @@ export interface EndPoint {
   /** Protocol either UDP or TCP. */
   protocol: EndPointProtocol | (string & {});
 }
-export const EndPoint = /*@__PURE__*/ S.suspend(() =>
+const EndPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.String,
     endPointName: S.String,
@@ -122,7 +122,7 @@ export interface ContactProfileLinkChannel {
   /** Currently unused. */
   decodingConfiguration?: string;
 }
-export const ContactProfileLinkChannel = /*@__PURE__*/ S.suspend(() =>
+const ContactProfileLinkChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     centerFrequencyMHz: S.Number,
@@ -139,7 +139,7 @@ export const ContactProfileLinkChannel = /*@__PURE__*/ S.suspend(() =>
 
 /** Contact Profile Link Channel. */
 export type ContactProfileLinkChannelsList = Array<ContactProfileLinkChannel>;
-export const ContactProfileLinkChannelsList = /*@__PURE__*/ S.Array(
+const ContactProfileLinkChannelsList = /*@__PURE__*/ S.Array(
   ContactProfileLinkChannel,
 ) as any as S.Schema<ContactProfileLinkChannelsList>;
 
@@ -158,7 +158,7 @@ export interface ContactProfileLink {
   /** Contact Profile Link Channel. */
   channels: ContactProfileLinkChannelsList;
 }
-export const ContactProfileLink = /*@__PURE__*/ S.suspend(() =>
+const ContactProfileLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     polarization: ContactProfileLinkPolarization,
@@ -171,7 +171,7 @@ export const ContactProfileLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesInputLinksList = Array<ContactProfileLink>;
-export const ContactProfilesPropertiesInputLinksList = /*@__PURE__*/ S.Array(
+const ContactProfilesPropertiesInputLinksList = /*@__PURE__*/ S.Array(
   ContactProfileLink,
 ) as any as S.Schema<ContactProfilesPropertiesInputLinksList>;
 
@@ -196,7 +196,7 @@ export interface ContactProfilesPropertiesInput {
   /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
   links: ContactProfilesPropertiesInputLinksList;
 }
-export const ContactProfilesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContactProfilesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningStateInput),
     minimumViableContactDuration: S.optional(S.String),
@@ -227,7 +227,7 @@ export interface ContactProfilesCreateOrUpdateRequest {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesPropertiesInput;
 }
-export const ContactProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ContactProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -249,11 +249,11 @@ export const ContactProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -270,7 +270,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -283,7 +283,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ContactProfilesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ContactProfilesCreateOrUpdateResponseTagsMap =
+const ContactProfilesCreateOrUpdateResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ContactProfilesCreateOrUpdateResponseTagsMap>;
 
 /** The current state of the resource's creation, deletion, or modification. */
@@ -294,27 +294,24 @@ export type ProvisioningState =
   | "canceled"
   | "updating"
   | "deleting";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Auto-tracking configuration. */
 export type ContactProfilesPropertiesAutoTrackingConfiguration = "disabled" | "xBand" | "sBand";
-export const ContactProfilesPropertiesAutoTrackingConfiguration = S.String;
+const ContactProfilesPropertiesAutoTrackingConfiguration = S.String;
 
 /** Network configuration of customer virtual network. */
 export type ContactProfilesPropertiesNetworkConfiguration =
   ContactProfilesPropertiesInputNetworkConfiguration;
-export const ContactProfilesPropertiesNetworkConfiguration =
-  ContactProfilesPropertiesInputNetworkConfiguration;
-
 /** Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesThirdPartyConfigurationsList =
   Array<ContactProfileThirdPartyConfiguration>;
-export const ContactProfilesPropertiesThirdPartyConfigurationsList =
+const ContactProfilesPropertiesThirdPartyConfigurationsList =
   ContactProfilesPropertiesInputThirdPartyConfigurationsList as any as S.Schema<ContactProfilesPropertiesThirdPartyConfigurationsList>;
 
 /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesLinksList = Array<ContactProfileLink>;
-export const ContactProfilesPropertiesLinksList =
+const ContactProfilesPropertiesLinksList =
   ContactProfilesPropertiesInputLinksList as any as S.Schema<ContactProfilesPropertiesLinksList>;
 
 /** List of Contact Profile Resource Properties. */
@@ -336,7 +333,7 @@ export interface ContactProfilesProperties {
   /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
   links: ContactProfilesPropertiesLinksList;
 }
-export const ContactProfilesProperties = /*@__PURE__*/ S.suspend(() =>
+const ContactProfilesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     minimumViableContactDuration: S.optional(S.String),
@@ -367,7 +364,7 @@ export interface ContactProfilesCreateOrUpdateResponse {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
 }
-export const ContactProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ContactProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -386,7 +383,7 @@ export interface ResourceReference {
   /** Resource ID. */
   id: string;
 }
-export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
+const ResourceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -405,7 +402,7 @@ export interface ContactsPropertiesInput {
   /** The reference to the contact profile resource. */
   contactProfile: ResourceReference;
 }
-export const ContactsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContactsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningStateInput),
     reservationStartTime: S.String,
@@ -426,7 +423,7 @@ export interface CreateContactRequest {
   contactName: string;
   properties: ContactsPropertiesInput;
 }
-export const CreateContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -450,11 +447,11 @@ export type ContactsPropertiesStatus =
   | "succeeded"
   | "failed"
   | "providerCancelled";
-export const ContactsPropertiesStatus = S.String;
+const ContactsPropertiesStatus = S.String;
 
 /** List of Source IP */
 export type ContactsPropertiesAntennaConfigurationSourceIpsList = Array<string>;
-export const ContactsPropertiesAntennaConfigurationSourceIpsList = /*@__PURE__*/ S.Array(
+const ContactsPropertiesAntennaConfigurationSourceIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactsPropertiesAntennaConfigurationSourceIpsList>;
 
@@ -465,7 +462,7 @@ export interface ContactsPropertiesAntennaConfiguration {
   /** List of Source IP */
   sourceIps?: ContactsPropertiesAntennaConfigurationSourceIpsList;
 }
-export const ContactsPropertiesAntennaConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ContactsPropertiesAntennaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationIp: S.optional(S.String),
     sourceIps: S.optional(ContactsPropertiesAntennaConfigurationSourceIpsList),
@@ -511,7 +508,7 @@ export interface ContactsProperties {
   /** The reference to the contact profile resource. */
   contactProfile: ResourceReference;
 }
-export const ContactsProperties = /*@__PURE__*/ S.suspend(() =>
+const ContactsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     status: S.optional(ContactsPropertiesStatus),
@@ -544,7 +541,7 @@ export interface CreateContactResponse {
   systemData?: SystemData;
   properties: ContactsProperties;
 }
-export const CreateContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateContactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -564,7 +561,7 @@ export interface DeleteContactRequest {
   /** Contact name. */
   contactName: string;
 }
-export const DeleteContactRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -581,7 +578,7 @@ export const DeleteContactRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContactRequest" }) as any as S.Schema<DeleteContactRequest>;
 
 export interface DeleteContactResponse {}
-export const DeleteContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteContactResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteContactResponse",
 }) as any as S.Schema<DeleteContactResponse>;
 
@@ -593,7 +590,7 @@ export interface DeleteContactProfileRequest {
   /** Contact Profile name. */
   contactProfileName: string;
 }
-export const DeleteContactProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContactProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -611,7 +608,7 @@ export const DeleteContactProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContactProfileRequest>;
 
 export interface DeleteContactProfileResponse {}
-export const DeleteContactProfileResponse =
+const DeleteContactProfileResponse =
   DeleteContactResponse as any as S.Schema<DeleteContactProfileResponse>;
 
 export interface DeleteEdgeSiteRequest {
@@ -622,7 +619,7 @@ export interface DeleteEdgeSiteRequest {
   /** Edge site name. */
   edgeSiteName: string;
 }
-export const DeleteEdgeSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEdgeSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -638,8 +635,7 @@ export const DeleteEdgeSiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEdgeSiteRequest" }) as any as S.Schema<DeleteEdgeSiteRequest>;
 
 export interface DeleteEdgeSiteResponse {}
-export const DeleteEdgeSiteResponse =
-  DeleteContactResponse as any as S.Schema<DeleteEdgeSiteResponse>;
+const DeleteEdgeSiteResponse = DeleteContactResponse as any as S.Schema<DeleteEdgeSiteResponse>;
 
 export interface DeleteGroundStationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -649,7 +645,7 @@ export interface DeleteGroundStationRequest {
   /** Ground Station name. */
   groundStationName: string;
 }
-export const DeleteGroundStationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroundStationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -667,7 +663,7 @@ export const DeleteGroundStationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroundStationRequest>;
 
 export interface DeleteGroundStationResponse {}
-export const DeleteGroundStationResponse =
+const DeleteGroundStationResponse =
   DeleteContactResponse as any as S.Schema<DeleteGroundStationResponse>;
 
 export interface DeleteL2ConnectionRequest {
@@ -678,7 +674,7 @@ export interface DeleteL2ConnectionRequest {
   /** L2 Connection name. */
   l2ConnectionName: string;
 }
-export const DeleteL2ConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteL2ConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -696,7 +692,7 @@ export const DeleteL2ConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteL2ConnectionRequest>;
 
 export interface DeleteL2ConnectionResponse {}
-export const DeleteL2ConnectionResponse =
+const DeleteL2ConnectionResponse =
   DeleteContactResponse as any as S.Schema<DeleteL2ConnectionResponse>;
 
 export interface DeleteSpacecraftRequest {
@@ -707,7 +703,7 @@ export interface DeleteSpacecraftRequest {
   /** Spacecraft ID. */
   spacecraftName: string;
 }
-export const DeleteSpacecraftRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSpacecraftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -723,12 +719,11 @@ export const DeleteSpacecraftRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSpacecraftRequest" }) as any as S.Schema<DeleteSpacecraftRequest>;
 
 export interface DeleteSpacecraftResponse {}
-export const DeleteSpacecraftResponse =
-  DeleteContactResponse as any as S.Schema<DeleteSpacecraftResponse>;
+const DeleteSpacecraftResponse = DeleteContactResponse as any as S.Schema<DeleteSpacecraftResponse>;
 
 /** Resource tags. */
 export type EdgeSitesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const EdgeSitesCreateOrUpdateRequestTagsMap =
+const EdgeSitesCreateOrUpdateRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<EdgeSitesCreateOrUpdateRequestTagsMap>;
 
 /** Properties object for an edge site. */
@@ -736,7 +731,7 @@ export interface EdgeSitesProperties {
   /** A reference to global communications site. */
   globalCommunicationsSite: ResourceReference;
 }
-export const EdgeSitesProperties = /*@__PURE__*/ S.suspend(() =>
+const EdgeSitesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     globalCommunicationsSite: ResourceReference,
   }),
@@ -756,7 +751,7 @@ export interface EdgeSitesCreateOrUpdateRequest {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
-export const EdgeSitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EdgeSitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -778,7 +773,7 @@ export const EdgeSitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EdgeSitesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const EdgeSitesCreateOrUpdateResponseTagsMap =
+const EdgeSitesCreateOrUpdateResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<EdgeSitesCreateOrUpdateResponseTagsMap>;
 
 export interface EdgeSitesCreateOrUpdateResponse {
@@ -797,7 +792,7 @@ export interface EdgeSitesCreateOrUpdateResponse {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
-export const EdgeSitesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EdgeSitesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -821,7 +816,7 @@ export interface GetContactRequest {
   /** Contact name. */
   contactName: string;
 }
-export const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -848,7 +843,7 @@ export interface GetContactResponse {
   systemData?: SystemData;
   properties: ContactsProperties;
 }
-export const GetContactResponse = CreateContactResponse as any as S.Schema<GetContactResponse>;
+const GetContactResponse = CreateContactResponse as any as S.Schema<GetContactResponse>;
 
 export interface GetContactProfileRequest {
   /** The ID of the target subscription. */
@@ -858,7 +853,7 @@ export interface GetContactProfileRequest {
   /** Contact Profile name. */
   contactProfileName: string;
 }
-export const GetContactProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContactProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -875,9 +870,6 @@ export const GetContactProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetContactProfileResponseTagsMap = { [key: string]: string | undefined };
-export const GetContactProfileResponseTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetContactProfileResponseTagsMap>;
-
 export interface GetContactProfileResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -894,7 +886,7 @@ export interface GetContactProfileResponse {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
 }
-export const GetContactProfileResponse =
+const GetContactProfileResponse =
   ContactProfilesCreateOrUpdateResponse as any as S.Schema<GetContactProfileResponse>;
 
 export interface GetEdgeSiteRequest {
@@ -905,7 +897,7 @@ export interface GetEdgeSiteRequest {
   /** Edge site name. */
   edgeSiteName: string;
 }
-export const GetEdgeSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -922,7 +914,7 @@ export const GetEdgeSiteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetEdgeSiteResponseTagsMap = { [key: string]: string | undefined };
-export const GetEdgeSiteResponseTagsMap =
+const GetEdgeSiteResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEdgeSiteResponseTagsMap>;
 
 export interface GetEdgeSiteResponse {
@@ -941,7 +933,7 @@ export interface GetEdgeSiteResponse {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
-export const GetEdgeSiteResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeSiteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -961,7 +953,7 @@ export interface GetGroundStationRequest {
   /** Ground Station name. */
   groundStationName: string;
 }
-export const GetGroundStationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroundStationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -978,22 +970,22 @@ export const GetGroundStationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetGroundStationResponseTagsMap = { [key: string]: string | undefined };
-export const GetGroundStationResponseTagsMap =
+const GetGroundStationResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetGroundStationResponseTagsMap>;
 
 /** Capability of the Ground Station. */
 export type Capability = "EarthObservation" | "Communication";
-export const Capability = S.String;
+const Capability = S.String;
 
 /** Ground station capabilities. */
 export type GroundStationsPropertiesCapabilitiesList = Array<Capability>;
-export const GroundStationsPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
+const GroundStationsPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<GroundStationsPropertiesCapabilitiesList>;
 
 /** Release Status of a ground station. */
 export type GroundStationsPropertiesReleaseMode = "Preview" | "GA";
-export const GroundStationsPropertiesReleaseMode = S.String;
+const GroundStationsPropertiesReleaseMode = S.String;
 
 /** List of ground station resource properties. */
 export interface GroundStationsProperties {
@@ -1014,7 +1006,7 @@ export interface GroundStationsProperties {
   /** A reference to global communications site. */
   globalCommunicationsSite: ResourceReference;
 }
-export const GroundStationsProperties = /*@__PURE__*/ S.suspend(() =>
+const GroundStationsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     capabilities: GroundStationsPropertiesCapabilitiesList,
@@ -1043,7 +1035,7 @@ export interface GetGroundStationResponse {
   /** Properties of the Ground Station. */
   properties?: GroundStationsProperties;
 }
-export const GetGroundStationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGroundStationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1063,7 +1055,7 @@ export interface GetL2ConnectionRequest {
   /** L2 Connection name. */
   l2ConnectionName: string;
 }
-export const GetL2ConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetL2ConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1080,7 +1072,7 @@ export const GetL2ConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetL2ConnectionResponseTagsMap = { [key: string]: string | undefined };
-export const GetL2ConnectionResponseTagsMap =
+const GetL2ConnectionResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetL2ConnectionResponseTagsMap>;
 
 /** The current state of the resource's creation, deletion, or modification. */
@@ -1091,14 +1083,14 @@ export type ProvisioningState_2 =
   | "Canceled"
   | "Updating"
   | "Deleting";
-export const ProvisioningState_2 = S.String;
+const ProvisioningState_2 = S.String;
 
 /** The name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
 export interface L2ConnectionsPropertiesEdgeSitePartnerRouter {
   /** The unique name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
   name: string;
 }
-export const L2ConnectionsPropertiesEdgeSitePartnerRouter = /*@__PURE__*/ S.suspend(() =>
+const L2ConnectionsPropertiesEdgeSitePartnerRouter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -1111,7 +1103,7 @@ export interface L2ConnectionsPropertiesGroundStationPartnerRouter {
   /** The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site. */
   name: string;
 }
-export const L2ConnectionsPropertiesGroundStationPartnerRouter =
+const L2ConnectionsPropertiesGroundStationPartnerRouter =
   L2ConnectionsPropertiesEdgeSitePartnerRouter as any as S.Schema<L2ConnectionsPropertiesGroundStationPartnerRouter>;
 
 /** Properties object for an L2 Connection. */
@@ -1131,7 +1123,7 @@ export interface L2ConnectionsProperties {
   /** The VLAN ID for the L2 connection. */
   vlanId: number;
 }
-export const L2ConnectionsProperties = /*@__PURE__*/ S.suspend(() =>
+const L2ConnectionsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState_2),
     circuitId: S.optional(S.String),
@@ -1159,7 +1151,7 @@ export interface GetL2ConnectionResponse {
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
 }
-export const GetL2ConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetL2ConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1179,7 +1171,7 @@ export interface GetOperationsResultRequest {
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
-export const GetOperationsResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1198,11 +1190,11 @@ export const GetOperationsResultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of operation. */
 export type Status = "Succeeded" | "Canceled" | "Failed" | "Running";
-export const Status = S.String;
+const Status = S.String;
 
 /** A list of results when the operation returns multiple results. */
 export type OperationResultValueList = Array<unknown>;
-export const OperationResultValueList = /*@__PURE__*/ S.Array(
+const OperationResultValueList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OperationResultValueList>;
 
@@ -1213,7 +1205,7 @@ export interface OperationResultErrorProperties {
   /** The error message. */
   message?: string;
 }
-export const OperationResultErrorProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationResultErrorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1242,7 +1234,7 @@ export interface OperationResult {
   properties?: unknown;
   error?: OperationResultErrorProperties;
 }
-export const OperationResult = /*@__PURE__*/ S.suspend(() =>
+const OperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1265,7 +1257,7 @@ export interface GetSpacecraftRequest {
   /** Spacecraft ID. */
   spacecraftName: string;
 }
-export const GetSpacecraftRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpacecraftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1282,16 +1274,16 @@ export const GetSpacecraftRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetSpacecraftResponseTagsMap = { [key: string]: string | undefined };
-export const GetSpacecraftResponseTagsMap =
+const GetSpacecraftResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSpacecraftResponseTagsMap>;
 
 /** Direction (Uplink or Downlink). */
 export type SpacecraftLinkDirection = "Uplink" | "Downlink";
-export const SpacecraftLinkDirection = S.String;
+const SpacecraftLinkDirection = S.String;
 
 /** Polarization. e.g. (RHCP, LHCP). */
 export type SpacecraftLinkPolarization = "RHCP" | "LHCP" | "linearVertical" | "linearHorizontal";
-export const SpacecraftLinkPolarization = S.String;
+const SpacecraftLinkPolarization = S.String;
 
 /** Authorized groundstation. */
 export interface AuthorizedGroundstation {
@@ -1300,7 +1292,7 @@ export interface AuthorizedGroundstation {
   /** Date of authorization expiration. */
   expirationDate: string;
 }
-export const AuthorizedGroundstation = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedGroundstation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundStation: S.String,
     expirationDate: S.String,
@@ -1309,7 +1301,7 @@ export const AuthorizedGroundstation = /*@__PURE__*/ S.suspend(() =>
 
 /** Authorized Ground Stations */
 export type SpacecraftLinkAuthorizationsList = Array<AuthorizedGroundstation>;
-export const SpacecraftLinkAuthorizationsList = /*@__PURE__*/ S.Array(
+const SpacecraftLinkAuthorizationsList = /*@__PURE__*/ S.Array(
   AuthorizedGroundstation,
 ) as any as S.Schema<SpacecraftLinkAuthorizationsList>;
 
@@ -1328,7 +1320,7 @@ export interface SpacecraftLink {
   /** Authorized Ground Stations */
   authorizations?: SpacecraftLinkAuthorizationsList;
 }
-export const SpacecraftLink = /*@__PURE__*/ S.suspend(() =>
+const SpacecraftLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     centerFrequencyMHz: S.Number,
@@ -1341,7 +1333,7 @@ export const SpacecraftLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Immutable list of Spacecraft links. */
 export type SpacecraftsPropertiesLinksList = Array<SpacecraftLink>;
-export const SpacecraftsPropertiesLinksList = /*@__PURE__*/ S.Array(
+const SpacecraftsPropertiesLinksList = /*@__PURE__*/ S.Array(
   SpacecraftLink,
 ) as any as S.Schema<SpacecraftsPropertiesLinksList>;
 
@@ -1360,7 +1352,7 @@ export interface SpacecraftsProperties {
   /** Immutable list of Spacecraft links. */
   links: SpacecraftsPropertiesLinksList;
 }
-export const SpacecraftsProperties = /*@__PURE__*/ S.suspend(() =>
+const SpacecraftsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     noradId: S.optional(S.String),
@@ -1387,7 +1379,7 @@ export interface GetSpacecraftResponse {
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
 }
-export const GetSpacecraftResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSpacecraftResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1401,12 +1393,12 @@ export const GetSpacecraftResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GroundStationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const GroundStationsCreateOrUpdateRequestTagsMap =
+const GroundStationsCreateOrUpdateRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GroundStationsCreateOrUpdateRequestTagsMap>;
 
 /** Ground station capabilities. */
 export type GroundStationsPropertiesInputCapabilitiesList = Array<Capability | (string & {})>;
-export const GroundStationsPropertiesInputCapabilitiesList =
+const GroundStationsPropertiesInputCapabilitiesList =
   GroundStationsPropertiesCapabilitiesList as any as S.Schema<GroundStationsPropertiesInputCapabilitiesList>;
 
 /** List of ground station resource properties. */
@@ -1426,7 +1418,7 @@ export interface GroundStationsPropertiesInput {
   /** A reference to global communications site. */
   globalCommunicationsSite: ResourceReference;
 }
-export const GroundStationsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GroundStationsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     capabilities: GroundStationsPropertiesInputCapabilitiesList,
@@ -1454,7 +1446,7 @@ export interface GroundStationsCreateOrUpdateRequest {
   /** Properties of the Ground Station. */
   properties?: GroundStationsPropertiesInput;
 }
-export const GroundStationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GroundStationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1476,7 +1468,7 @@ export const GroundStationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GroundStationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const GroundStationsCreateOrUpdateResponseTagsMap =
+const GroundStationsCreateOrUpdateResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GroundStationsCreateOrUpdateResponseTagsMap>;
 
 export interface GroundStationsCreateOrUpdateResponse {
@@ -1495,7 +1487,7 @@ export interface GroundStationsCreateOrUpdateResponse {
   /** Properties of the Ground Station. */
   properties?: GroundStationsProperties;
 }
-export const GroundStationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const GroundStationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1511,21 +1503,15 @@ export const GroundStationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Resource tags. */
 export type L2ConnectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const L2ConnectionsCreateOrUpdateRequestTagsMap =
+const L2ConnectionsCreateOrUpdateRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<L2ConnectionsCreateOrUpdateRequestTagsMap>;
 
 /** The name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
 export type L2ConnectionsPropertiesInputEdgeSitePartnerRouter =
   L2ConnectionsPropertiesEdgeSitePartnerRouter;
-export const L2ConnectionsPropertiesInputEdgeSitePartnerRouter =
-  L2ConnectionsPropertiesEdgeSitePartnerRouter;
-
 /** The name of the partner router to establish a connection to within the ground station. */
 export type L2ConnectionsPropertiesInputGroundStationPartnerRouter =
   L2ConnectionsPropertiesGroundStationPartnerRouter;
-export const L2ConnectionsPropertiesInputGroundStationPartnerRouter =
-  L2ConnectionsPropertiesGroundStationPartnerRouter;
-
 /** Properties object for an L2 Connection. */
 export interface L2ConnectionsPropertiesInput {
   /** A reference to an Microsoft.Orbital/edgeSites resource to route traffic for. */
@@ -1539,7 +1525,7 @@ export interface L2ConnectionsPropertiesInput {
   /** The VLAN ID for the L2 connection. */
   vlanId: number;
 }
-export const L2ConnectionsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const L2ConnectionsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edgeSite: ResourceReference,
     edgeSitePartnerRouter: L2ConnectionsPropertiesEdgeSitePartnerRouter,
@@ -1565,7 +1551,7 @@ export interface L2ConnectionsCreateOrUpdateRequest {
   /** The properties bag for this resource. */
   properties: L2ConnectionsPropertiesInput;
 }
-export const L2ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const L2ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1587,7 +1573,7 @@ export const L2ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type L2ConnectionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const L2ConnectionsCreateOrUpdateResponseTagsMap =
+const L2ConnectionsCreateOrUpdateResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<L2ConnectionsCreateOrUpdateResponseTagsMap>;
 
 export interface L2ConnectionsCreateOrUpdateResponse {
@@ -1606,7 +1592,7 @@ export interface L2ConnectionsCreateOrUpdateResponse {
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
 }
-export const L2ConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const L2ConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1623,7 +1609,7 @@ export const L2ConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListAvailableGroundStationByCapabilityRequestCapability =
   | "EarthObservation"
   | "Communication";
-export const ListAvailableGroundStationByCapabilityRequestCapability = S.String;
+const ListAvailableGroundStationByCapabilityRequestCapability = S.String;
 
 export interface ListAvailableGroundStationByCapabilityRequest {
   /** The ID of the target subscription. */
@@ -1631,7 +1617,7 @@ export interface ListAvailableGroundStationByCapabilityRequest {
   /** Ground Station Capability. */
   capability: ListAvailableGroundStationByCapabilityRequestCapability | (string & {});
 }
-export const ListAvailableGroundStationByCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableGroundStationByCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     capability: ListAvailableGroundStationByCapabilityRequestCapability.pipe(T.Query()),
@@ -1649,7 +1635,7 @@ export const ListAvailableGroundStationByCapabilityRequest = /*@__PURE__*/ S.sus
 
 /** Release Status of a ground station. */
 export type AvailableGroundStationPropertiesReleaseMode = "Preview" | "GA";
-export const AvailableGroundStationPropertiesReleaseMode = S.String;
+const AvailableGroundStationPropertiesReleaseMode = S.String;
 
 /** Properties object for Available groundstation. */
 export interface AvailableGroundStationProperties {
@@ -1666,7 +1652,7 @@ export interface AvailableGroundStationProperties {
   /** Release Status of a ground station. */
   releaseMode?: AvailableGroundStationPropertiesReleaseMode;
 }
-export const AvailableGroundStationProperties = /*@__PURE__*/ S.suspend(() =>
+const AvailableGroundStationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.String),
     providerName: S.optional(S.String),
@@ -1692,7 +1678,7 @@ export interface AvailableGroundStation {
   /** The properties bag for this resource. */
   properties: AvailableGroundStationProperties;
 }
-export const AvailableGroundStation = /*@__PURE__*/ S.suspend(() =>
+const AvailableGroundStation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1704,7 +1690,7 @@ export const AvailableGroundStation = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of ground station resources. */
 export type AvailableGroundStationListResultValueList = Array<AvailableGroundStation>;
-export const AvailableGroundStationListResultValueList = /*@__PURE__*/ S.Array(
+const AvailableGroundStationListResultValueList = /*@__PURE__*/ S.Array(
   AvailableGroundStation,
 ) as any as S.Schema<AvailableGroundStationListResultValueList>;
 
@@ -1715,7 +1701,7 @@ export interface AvailableGroundStationListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const AvailableGroundStationListResult = /*@__PURE__*/ S.suspend(() =>
+const AvailableGroundStationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AvailableGroundStationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1730,7 +1716,7 @@ export interface ListContactProfileBySubscriptionRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListContactProfileBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContactProfileBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
@@ -1748,7 +1734,7 @@ export const ListContactProfileBySubscriptionRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags. */
 export type ContactProfileTagsMap = { [key: string]: string | undefined };
-export const ContactProfileTagsMap =
+const ContactProfileTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ContactProfileTagsMap>;
 
 /** Customer creates a Contact Profile Resource, which will contain all of the configurations required for scheduling a contact. */
@@ -1768,7 +1754,7 @@ export interface ContactProfile {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
 }
-export const ContactProfile = /*@__PURE__*/ S.suspend(() =>
+const ContactProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1782,7 +1768,7 @@ export const ContactProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of contact profile resources in a resource group. */
 export type ContactProfileListResultValueList = Array<ContactProfile>;
-export const ContactProfileListResultValueList = /*@__PURE__*/ S.Array(
+const ContactProfileListResultValueList = /*@__PURE__*/ S.Array(
   ContactProfile,
 ) as any as S.Schema<ContactProfileListResultValueList>;
 
@@ -1793,7 +1779,7 @@ export interface ContactProfileListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ContactProfileListResult = /*@__PURE__*/ S.suspend(() =>
+const ContactProfileListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ContactProfileListResultValueList),
     nextLink: S.optional(S.String),
@@ -1808,7 +1794,7 @@ export interface ListContactProfilesRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListContactProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContactProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1835,7 +1821,7 @@ export interface ListContactsRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1863,11 +1849,11 @@ export interface Contact {
   systemData?: SystemData;
   properties: ContactsProperties;
 }
-export const Contact = CreateContactResponse as any as S.Schema<Contact>;
+const Contact = CreateContactResponse as any as S.Schema<Contact>;
 
 /** A list of contact resources in a resource group. */
 export type ContactListResultValueList = Array<Contact>;
-export const ContactListResultValueList = /*@__PURE__*/ S.Array(
+const ContactListResultValueList = /*@__PURE__*/ S.Array(
   Contact,
 ) as any as S.Schema<ContactListResultValueList>;
 
@@ -1878,7 +1864,7 @@ export interface ContactListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ContactListResult = /*@__PURE__*/ S.suspend(() =>
+const ContactListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ContactListResultValueList),
     nextLink: S.optional(S.String),
@@ -1891,7 +1877,7 @@ export interface ListEdgeSiteBySubscriptionRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListEdgeSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
@@ -1909,9 +1895,6 @@ export const ListEdgeSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type EdgeSiteTagsMap = { [key: string]: string | undefined };
-export const EdgeSiteTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<EdgeSiteTagsMap>;
-
 /** A customer's reference to a global communications site site. */
 export interface EdgeSite {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1929,11 +1912,11 @@ export interface EdgeSite {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
-export const EdgeSite = GetEdgeSiteResponse as any as S.Schema<EdgeSite>;
+const EdgeSite = GetEdgeSiteResponse as any as S.Schema<EdgeSite>;
 
 /** A list of edge site resources. */
 export type EdgeSiteListResultValueList = Array<EdgeSite>;
-export const EdgeSiteListResultValueList = /*@__PURE__*/ S.Array(
+const EdgeSiteListResultValueList = /*@__PURE__*/ S.Array(
   EdgeSite,
 ) as any as S.Schema<EdgeSiteListResultValueList>;
 
@@ -1944,7 +1927,7 @@ export interface EdgeSiteListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const EdgeSiteListResult = /*@__PURE__*/ S.suspend(() =>
+const EdgeSiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EdgeSiteListResultValueList),
     nextLink: S.optional(S.String),
@@ -1959,7 +1942,7 @@ export interface ListEdgeSiteL2ConnectionsRequest {
   /** Edge site name. */
   edgeSiteName: string;
 }
-export const ListEdgeSiteL2ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeSiteL2ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1980,7 +1963,7 @@ export interface ResourceIdListResultValueItem {
   /** The Azure Resource ID. */
   id?: string;
 }
-export const ResourceIdListResultValueItem = /*@__PURE__*/ S.suspend(() =>
+const ResourceIdListResultValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -1990,7 +1973,7 @@ export const ResourceIdListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Azure Resource IDs. */
 export type ResourceIdListResultValueList = Array<ResourceIdListResultValueItem>;
-export const ResourceIdListResultValueList = /*@__PURE__*/ S.Array(
+const ResourceIdListResultValueList = /*@__PURE__*/ S.Array(
   ResourceIdListResultValueItem,
 ) as any as S.Schema<ResourceIdListResultValueList>;
 
@@ -2001,7 +1984,7 @@ export interface ResourceIdListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const ResourceIdListResult = /*@__PURE__*/ S.suspend(() =>
+const ResourceIdListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ResourceIdListResultValueList),
     nextLink: S.optional(S.String),
@@ -2016,7 +1999,7 @@ export interface ListEdgeSitesRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListEdgeSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEdgeSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2035,7 +2018,7 @@ export interface ListGlobalCommunicationsSiteBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListGlobalCommunicationsSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGlobalCommunicationsSiteBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2063,7 +2046,7 @@ export interface LocationData {
   /** Any extra information needed to uniquely identify the location (e.g., zip code). */
   extra?: string | null;
 }
-export const LocationData = /*@__PURE__*/ S.suspend(() =>
+const LocationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.String,
     district: S.String,
@@ -2075,14 +2058,14 @@ export const LocationData = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the global communications site. groundStations can only use sites of type GroundStation, and edgeSites can only use sites of type Edge. */
 export type GlobalCommunicationsSiteType = "Edge" | "GroundStation";
-export const GlobalCommunicationsSiteType = S.String;
+const GlobalCommunicationsSiteType = S.String;
 
 /** One of the partner routers within a global communications site. */
 export interface PartnerRouter {
   /** The unique name of the partnerRouter. */
   name?: string;
 }
-export const PartnerRouter = /*@__PURE__*/ S.suspend(() =>
+const PartnerRouter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -2090,7 +2073,7 @@ export const PartnerRouter = /*@__PURE__*/ S.suspend(() =>
 
 /** Partner routers connected to this site. */
 export type GlobalCommunicationsSitesPropertiesPartnerRoutersList = Array<PartnerRouter>;
-export const GlobalCommunicationsSitesPropertiesPartnerRoutersList = /*@__PURE__*/ S.Array(
+const GlobalCommunicationsSitesPropertiesPartnerRoutersList = /*@__PURE__*/ S.Array(
   PartnerRouter,
 ) as any as S.Schema<GlobalCommunicationsSitesPropertiesPartnerRoutersList>;
 
@@ -2105,7 +2088,7 @@ export interface GlobalCommunicationsSitesProperties {
   /** The bandwidth per partner router cross-connection at this global communications site, measured in bits per second. */
   partnerSiteBandwidth?: number;
 }
-export const GlobalCommunicationsSitesProperties = /*@__PURE__*/ S.suspend(() =>
+const GlobalCommunicationsSitesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationData: S.optional(LocationData),
     globalCommunicationsSiteType: S.optional(GlobalCommunicationsSiteType),
@@ -2129,7 +2112,7 @@ export interface GlobalCommunicationsSite {
   /** The properties bag for this resource. */
   properties?: GlobalCommunicationsSitesProperties;
 }
-export const GlobalCommunicationsSite = /*@__PURE__*/ S.suspend(() =>
+const GlobalCommunicationsSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2141,7 +2124,7 @@ export const GlobalCommunicationsSite = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of global communications sites. */
 export type GlobalCommunicationsSiteListResultValueList = Array<GlobalCommunicationsSite>;
-export const GlobalCommunicationsSiteListResultValueList = /*@__PURE__*/ S.Array(
+const GlobalCommunicationsSiteListResultValueList = /*@__PURE__*/ S.Array(
   GlobalCommunicationsSite,
 ) as any as S.Schema<GlobalCommunicationsSiteListResultValueList>;
 
@@ -2152,7 +2135,7 @@ export interface GlobalCommunicationsSiteListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const GlobalCommunicationsSiteListResult = /*@__PURE__*/ S.suspend(() =>
+const GlobalCommunicationsSiteListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GlobalCommunicationsSiteListResultValueList),
     nextLink: S.optional(S.String),
@@ -2167,7 +2150,7 @@ export interface ListGroundStationBySubscriptionRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListGroundStationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroundStationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
@@ -2185,9 +2168,6 @@ export const ListGroundStationBySubscriptionRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type GroundStationTagsMap = { [key: string]: string | undefined };
-export const GroundStationTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GroundStationTagsMap>;
-
 /** Ground Station contains one or more antennas. */
 export interface GroundStation {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2205,11 +2185,11 @@ export interface GroundStation {
   /** Properties of the Ground Station. */
   properties?: GroundStationsProperties;
 }
-export const GroundStation = GetGroundStationResponse as any as S.Schema<GroundStation>;
+const GroundStation = GetGroundStationResponse as any as S.Schema<GroundStation>;
 
 /** A list of ground station resources. */
 export type GroundStationListResultValueList = Array<GroundStation>;
-export const GroundStationListResultValueList = /*@__PURE__*/ S.Array(
+const GroundStationListResultValueList = /*@__PURE__*/ S.Array(
   GroundStation,
 ) as any as S.Schema<GroundStationListResultValueList>;
 
@@ -2220,7 +2200,7 @@ export interface GroundStationListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const GroundStationListResult = /*@__PURE__*/ S.suspend(() =>
+const GroundStationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GroundStationListResultValueList),
     nextLink: S.optional(S.String),
@@ -2235,7 +2215,7 @@ export interface ListGroundStationL2ConnectionsRequest {
   /** Ground Station name. */
   groundStationName: string;
 }
-export const ListGroundStationL2ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroundStationL2ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2260,7 +2240,7 @@ export interface ListGroundStationsRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListGroundStationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroundStationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2283,7 +2263,7 @@ export interface ListL2ConnectionBySubscriptionRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListL2ConnectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListL2ConnectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
@@ -2301,9 +2281,6 @@ export const ListL2ConnectionBySubscriptionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type L2ConnectionTagsMap = { [key: string]: string | undefined };
-export const L2ConnectionTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<L2ConnectionTagsMap>;
-
 /** Connects an edge site to an orbital gateway and describes what layer 2 traffic to forward between them. */
 export interface L2Connection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2321,11 +2298,11 @@ export interface L2Connection {
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
 }
-export const L2Connection = GetL2ConnectionResponse as any as S.Schema<L2Connection>;
+const L2Connection = GetL2ConnectionResponse as any as S.Schema<L2Connection>;
 
 /** A list of L2 Connection resources. */
 export type L2ConnectionListResultValueList = Array<L2Connection>;
-export const L2ConnectionListResultValueList = /*@__PURE__*/ S.Array(
+const L2ConnectionListResultValueList = /*@__PURE__*/ S.Array(
   L2Connection,
 ) as any as S.Schema<L2ConnectionListResultValueList>;
 
@@ -2336,7 +2313,7 @@ export interface L2ConnectionListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const L2ConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const L2ConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(L2ConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -2351,7 +2328,7 @@ export interface ListL2ConnectionsRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListL2ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListL2ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2367,7 +2344,7 @@ export const ListL2ConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListL2ConnectionsRequest" }) as any as S.Schema<ListL2ConnectionsRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2389,7 +2366,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2400,11 +2377,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -2419,7 +2396,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -2431,7 +2408,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -2441,7 +2418,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -2464,7 +2441,7 @@ export interface ListSpacecraftAvailableContactsRequest {
   /** End time of a contact (ISO 8601 UTC standard). */
   endTime: string;
 }
-export const ListSpacecraftAvailableContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpacecraftAvailableContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2506,7 +2483,7 @@ export interface ContactInstanceProperties {
   /** Spacecraft elevation above the horizon at contact end. */
   endElevationDegrees?: number;
 }
-export const ContactInstanceProperties = /*@__PURE__*/ S.suspend(() =>
+const ContactInstanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maximumElevationDegrees: S.optional(S.Number),
     txStartTime: S.optional(S.String),
@@ -2531,7 +2508,7 @@ export interface AvailableContacts {
   /** Properties of Contact resource. */
   properties?: ContactInstanceProperties;
 }
-export const AvailableContacts = /*@__PURE__*/ S.suspend(() =>
+const AvailableContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spacecraft: S.optional(ResourceReference),
     groundStationName: S.optional(S.String),
@@ -2541,7 +2518,7 @@ export const AvailableContacts = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of available contacts. */
 export type AvailableContactsListResultValueList = Array<AvailableContacts>;
-export const AvailableContactsListResultValueList = /*@__PURE__*/ S.Array(
+const AvailableContactsListResultValueList = /*@__PURE__*/ S.Array(
   AvailableContacts,
 ) as any as S.Schema<AvailableContactsListResultValueList>;
 
@@ -2552,7 +2529,7 @@ export interface AvailableContactsListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const AvailableContactsListResult = /*@__PURE__*/ S.suspend(() =>
+const AvailableContactsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AvailableContactsListResultValueList),
     nextLink: S.optional(S.String),
@@ -2567,7 +2544,7 @@ export interface ListSpacecraftBySubscriptionRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListSpacecraftBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpacecraftBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
@@ -2585,9 +2562,6 @@ export const ListSpacecraftBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SpacecraftTagsMap = { [key: string]: string | undefined };
-export const SpacecraftTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<SpacecraftTagsMap>;
-
 /** Customer creates a spacecraft resource to schedule a contact. */
 export interface Spacecraft {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2605,11 +2579,11 @@ export interface Spacecraft {
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
 }
-export const Spacecraft = GetSpacecraftResponse as any as S.Schema<Spacecraft>;
+const Spacecraft = GetSpacecraftResponse as any as S.Schema<Spacecraft>;
 
 /** A list of spacecraft resources in a resource group. */
 export type SpacecraftListResultValueList = Array<Spacecraft>;
-export const SpacecraftListResultValueList = /*@__PURE__*/ S.Array(
+const SpacecraftListResultValueList = /*@__PURE__*/ S.Array(
   Spacecraft,
 ) as any as S.Schema<SpacecraftListResultValueList>;
 
@@ -2620,7 +2594,7 @@ export interface SpacecraftListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
-export const SpacecraftListResult = /*@__PURE__*/ S.suspend(() =>
+const SpacecraftListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SpacecraftListResultValueList),
     nextLink: S.optional(S.String),
@@ -2635,7 +2609,7 @@ export interface ListSpacecraftsRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListSpacecraftsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpacecraftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2652,12 +2626,12 @@ export const ListSpacecraftsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SpacecraftsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const SpacecraftsCreateOrUpdateRequestTagsMap =
+const SpacecraftsCreateOrUpdateRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<SpacecraftsCreateOrUpdateRequestTagsMap>;
 
 /** Direction (Uplink or Downlink). */
 export type SpacecraftLinkInputDirection = "Uplink" | "Downlink";
-export const SpacecraftLinkInputDirection = S.String;
+const SpacecraftLinkInputDirection = S.String;
 
 /** Polarization. e.g. (RHCP, LHCP). */
 export type SpacecraftLinkInputPolarization =
@@ -2665,7 +2639,7 @@ export type SpacecraftLinkInputPolarization =
   | "LHCP"
   | "linearVertical"
   | "linearHorizontal";
-export const SpacecraftLinkInputPolarization = S.String;
+const SpacecraftLinkInputPolarization = S.String;
 
 /** List of authorized spacecraft links per ground station and the expiration date of the authorization. */
 export interface SpacecraftLinkInput {
@@ -2680,7 +2654,7 @@ export interface SpacecraftLinkInput {
   /** Polarization. e.g. (RHCP, LHCP). */
   polarization: SpacecraftLinkInputPolarization | (string & {});
 }
-export const SpacecraftLinkInput = /*@__PURE__*/ S.suspend(() =>
+const SpacecraftLinkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     centerFrequencyMHz: S.Number,
@@ -2692,7 +2666,7 @@ export const SpacecraftLinkInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Immutable list of Spacecraft links. */
 export type SpacecraftsPropertiesInputLinksList = Array<SpacecraftLinkInput>;
-export const SpacecraftsPropertiesInputLinksList = /*@__PURE__*/ S.Array(
+const SpacecraftsPropertiesInputLinksList = /*@__PURE__*/ S.Array(
   SpacecraftLinkInput,
 ) as any as S.Schema<SpacecraftsPropertiesInputLinksList>;
 
@@ -2711,7 +2685,7 @@ export interface SpacecraftsPropertiesInput {
   /** Immutable list of Spacecraft links. */
   links: SpacecraftsPropertiesInputLinksList;
 }
-export const SpacecraftsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SpacecraftsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningStateInput),
     noradId: S.optional(S.String),
@@ -2738,7 +2712,7 @@ export interface SpacecraftsCreateOrUpdateRequest {
   /** Spacecraft Properties */
   properties: SpacecraftsPropertiesInput;
 }
-export const SpacecraftsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SpacecraftsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2760,7 +2734,7 @@ export const SpacecraftsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type SpacecraftsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const SpacecraftsCreateOrUpdateResponseTagsMap =
+const SpacecraftsCreateOrUpdateResponseTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<SpacecraftsCreateOrUpdateResponseTagsMap>;
 
 export interface SpacecraftsCreateOrUpdateResponse {
@@ -2779,7 +2753,7 @@ export interface SpacecraftsCreateOrUpdateResponse {
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
 }
-export const SpacecraftsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SpacecraftsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2795,7 +2769,7 @@ export const SpacecraftsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateContactProfileTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateContactProfileTagsRequestTagsMap =
+const UpdateContactProfileTagsRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContactProfileTagsRequestTagsMap>;
 
 export interface UpdateContactProfileTagsRequest {
@@ -2808,7 +2782,7 @@ export interface UpdateContactProfileTagsRequest {
   /** Resource tags. */
   tags?: UpdateContactProfileTagsRequestTagsMap;
 }
-export const UpdateContactProfileTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContactProfileTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2828,9 +2802,6 @@ export const UpdateContactProfileTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateContactProfileTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateContactProfileTagsResponseTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContactProfileTagsResponseTagsMap>;
-
 export interface UpdateContactProfileTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2847,12 +2818,12 @@ export interface UpdateContactProfileTagsResponse {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
 }
-export const UpdateContactProfileTagsResponse =
+const UpdateContactProfileTagsResponse =
   ContactProfilesCreateOrUpdateResponse as any as S.Schema<UpdateContactProfileTagsResponse>;
 
 /** Resource tags. */
 export type UpdateEdgeSiteTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateEdgeSiteTagsRequestTagsMap =
+const UpdateEdgeSiteTagsRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEdgeSiteTagsRequestTagsMap>;
 
 export interface UpdateEdgeSiteTagsRequest {
@@ -2865,7 +2836,7 @@ export interface UpdateEdgeSiteTagsRequest {
   /** Resource tags. */
   tags?: UpdateEdgeSiteTagsRequestTagsMap;
 }
-export const UpdateEdgeSiteTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEdgeSiteTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2885,9 +2856,6 @@ export const UpdateEdgeSiteTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateEdgeSiteTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateEdgeSiteTagsResponseTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEdgeSiteTagsResponseTagsMap>;
-
 export interface UpdateEdgeSiteTagsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2904,12 +2872,12 @@ export interface UpdateEdgeSiteTagsResponse {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
-export const UpdateEdgeSiteTagsResponse =
+const UpdateEdgeSiteTagsResponse =
   EdgeSitesCreateOrUpdateResponse as any as S.Schema<UpdateEdgeSiteTagsResponse>;
 
 /** Resource tags. */
 export type UpdateGroundStationTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateGroundStationTagsRequestTagsMap =
+const UpdateGroundStationTagsRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateGroundStationTagsRequestTagsMap>;
 
 export interface UpdateGroundStationTagsRequest {
@@ -2922,7 +2890,7 @@ export interface UpdateGroundStationTagsRequest {
   /** Resource tags. */
   tags?: UpdateGroundStationTagsRequestTagsMap;
 }
-export const UpdateGroundStationTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroundStationTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2942,9 +2910,6 @@ export const UpdateGroundStationTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateGroundStationTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateGroundStationTagsResponseTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateGroundStationTagsResponseTagsMap>;
-
 export interface UpdateGroundStationTagsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2961,12 +2926,12 @@ export interface UpdateGroundStationTagsResponse {
   /** Properties of the Ground Station. */
   properties?: GroundStationsProperties;
 }
-export const UpdateGroundStationTagsResponse =
+const UpdateGroundStationTagsResponse =
   GroundStationsCreateOrUpdateResponse as any as S.Schema<UpdateGroundStationTagsResponse>;
 
 /** Resource tags. */
 export type UpdateL2ConnectionTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateL2ConnectionTagsRequestTagsMap =
+const UpdateL2ConnectionTagsRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateL2ConnectionTagsRequestTagsMap>;
 
 export interface UpdateL2ConnectionTagsRequest {
@@ -2979,7 +2944,7 @@ export interface UpdateL2ConnectionTagsRequest {
   /** Resource tags. */
   tags?: UpdateL2ConnectionTagsRequestTagsMap;
 }
-export const UpdateL2ConnectionTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateL2ConnectionTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2999,9 +2964,6 @@ export const UpdateL2ConnectionTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateL2ConnectionTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateL2ConnectionTagsResponseTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateL2ConnectionTagsResponseTagsMap>;
-
 export interface UpdateL2ConnectionTagsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3018,12 +2980,12 @@ export interface UpdateL2ConnectionTagsResponse {
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
 }
-export const UpdateL2ConnectionTagsResponse =
+const UpdateL2ConnectionTagsResponse =
   L2ConnectionsCreateOrUpdateResponse as any as S.Schema<UpdateL2ConnectionTagsResponse>;
 
 /** Resource tags. */
 export type UpdateSpacecraftTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateSpacecraftTagsRequestTagsMap =
+const UpdateSpacecraftTagsRequestTagsMap =
   ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSpacecraftTagsRequestTagsMap>;
 
 export interface UpdateSpacecraftTagsRequest {
@@ -3036,7 +2998,7 @@ export interface UpdateSpacecraftTagsRequest {
   /** Resource tags. */
   tags?: UpdateSpacecraftTagsRequestTagsMap;
 }
-export const UpdateSpacecraftTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSpacecraftTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3056,9 +3018,6 @@ export const UpdateSpacecraftTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateSpacecraftTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateSpacecraftTagsResponseTagsMap =
-  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSpacecraftTagsResponseTagsMap>;
-
 export interface UpdateSpacecraftTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3075,7 +3034,7 @@ export interface UpdateSpacecraftTagsResponse {
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
 }
-export const UpdateSpacecraftTagsResponse =
+const UpdateSpacecraftTagsResponse =
   SpacecraftsCreateOrUpdateResponse as any as S.Schema<UpdateSpacecraftTagsResponse>;
 
 export type ContactProfilesCreateOrUpdateError = AzureOpError;

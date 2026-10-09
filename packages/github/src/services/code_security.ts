@@ -51,11 +51,11 @@ export type AttachConfigurationRequestScope =
   | "public"
   | "private_or_internal"
   | "selected";
-export const AttachConfigurationRequestScope = S.String;
+const AttachConfigurationRequestScope = S.String;
 
 /** An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`. */
 export type AttachConfigurationRequestSelectedRepositoryIdsList = Array<number>;
-export const AttachConfigurationRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
+const AttachConfigurationRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AttachConfigurationRequestSelectedRepositoryIdsList>;
 
@@ -69,7 +69,7 @@ export interface AttachConfigurationRequest {
   /** An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`. */
   selected_repository_ids?: AttachConfigurationRequestSelectedRepositoryIdsList;
 }
-export const AttachConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -87,13 +87,13 @@ export const AttachConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttachConfigurationRequest>;
 
 export interface AttachConfigurationResponse {}
-export const AttachConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AttachConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AttachConfigurationResponse",
 }) as any as S.Schema<AttachConfigurationResponse>;
 
 /** The type of repositories to attach the configuration to. */
 export type AttachEnterpriseConfigurationRequestScope = "all" | "all_without_configurations";
-export const AttachEnterpriseConfigurationRequestScope = S.String;
+const AttachEnterpriseConfigurationRequestScope = S.String;
 
 export interface AttachEnterpriseConfigurationRequest {
   /** The slug version of the enterprise name. */
@@ -103,7 +103,7 @@ export interface AttachEnterpriseConfigurationRequest {
   /** The type of repositories to attach the configuration to. */
   scope: AttachEnterpriseConfigurationRequestScope | (string & {});
 }
-export const AttachEnterpriseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachEnterpriseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -120,9 +120,7 @@ export const AttachEnterpriseConfigurationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AttachEnterpriseConfigurationRequest>;
 
 export interface AttachEnterpriseConfigurationResponse {}
-export const AttachEnterpriseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AttachEnterpriseConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AttachEnterpriseConfigurationResponse",
 }) as any as S.Schema<AttachEnterpriseConfigurationResponse>;
 
@@ -132,61 +130,61 @@ export type CreateConfigurationRequestAdvancedSecurity =
   | "disabled"
   | "code_security"
   | "secret_protection";
-export const CreateConfigurationRequestAdvancedSecurity = S.String;
+const CreateConfigurationRequestAdvancedSecurity = S.String;
 
 /** The enablement status of GitHub Code Security features. */
 export type CreateConfigurationRequestCodeSecurity = "enabled" | "disabled" | "not_set";
-export const CreateConfigurationRequestCodeSecurity = S.String;
+const CreateConfigurationRequestCodeSecurity = S.String;
 
 /** The enablement status of Dependency Graph */
 export type CreateConfigurationRequestDependencyGraph = "enabled" | "disabled" | "not_set";
-export const CreateConfigurationRequestDependencyGraph = S.String;
+const CreateConfigurationRequestDependencyGraph = S.String;
 
 /** The enablement status of Automatic dependency submission */
 export type CreateConfigurationRequestDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestDependencyGraphAutosubmitAction = S.String;
+const CreateConfigurationRequestDependencyGraphAutosubmitAction = S.String;
 
 /** Feature options for Automatic dependency submission */
 export interface CreateConfigurationRequestDependencyGraphAutosubmitActionOptions {
   /** Whether to use runners labeled with 'dependency-submission' or standard GitHub runners. */
   labeled_runners?: boolean;
 }
-export const CreateConfigurationRequestDependencyGraphAutosubmitActionOptions =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationRequestDependencyGraphAutosubmitActionOptions = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       labeled_runners: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "CreateConfigurationRequestDependencyGraphAutosubmitActionOptions",
-  }) as any as S.Schema<CreateConfigurationRequestDependencyGraphAutosubmitActionOptions>;
+).annotate({
+  identifier: "CreateConfigurationRequestDependencyGraphAutosubmitActionOptions",
+}) as any as S.Schema<CreateConfigurationRequestDependencyGraphAutosubmitActionOptions>;
 
 /** The enablement status of Dependabot alerts */
 export type CreateConfigurationRequestDependabotAlerts = "enabled" | "disabled" | "not_set";
-export const CreateConfigurationRequestDependabotAlerts = S.String;
+const CreateConfigurationRequestDependabotAlerts = S.String;
 
 /** The enablement status of Dependabot security updates */
 export type CreateConfigurationRequestDependabotSecurityUpdates =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestDependabotSecurityUpdates = S.String;
+const CreateConfigurationRequestDependabotSecurityUpdates = S.String;
 
 /** The enablement status of Dependabot delegated alert dismissal. Requires Dependabot alerts to be enabled. */
 export type CreateConfigurationRequestDependabotDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestDependabotDelegatedAlertDismissal = S.String;
+const CreateConfigurationRequestDependabotDelegatedAlertDismissal = S.String;
 
 /** Security Configuration feature options for code scanning */
 export interface CodeScanningOptions {
   /** Whether to allow repos which use advanced setup */
   allow_advanced?: boolean | null;
 }
-export const CodeScanningOptions = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_advanced: S.optional(S.NullOr(S.Boolean)),
   }),
@@ -194,11 +192,11 @@ export const CodeScanningOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The enablement status of code scanning default setup */
 export type CreateConfigurationRequestCodeScanningDefaultSetup = "enabled" | "disabled" | "not_set";
-export const CreateConfigurationRequestCodeScanningDefaultSetup = S.String;
+const CreateConfigurationRequestCodeScanningDefaultSetup = S.String;
 
 /** Whether to use labeled runners or standard GitHub runners. */
 export type CodeScanningDefaultSetupOptionsRunnerType = "standard" | "labeled" | "not_set";
-export const CodeScanningDefaultSetupOptionsRunnerType = S.String;
+const CodeScanningDefaultSetupOptionsRunnerType = S.String;
 
 /** Feature options for code scanning default setup */
 export interface CodeScanningDefaultSetupOptions {
@@ -207,7 +205,7 @@ export interface CodeScanningDefaultSetupOptions {
   /** The label of the runner to use for code scanning default setup when runner_type is 'labeled'. */
   runner_label?: string | null;
 }
-export const CodeScanningDefaultSetupOptions = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningDefaultSetupOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runner_type: S.optional(CodeScanningDefaultSetupOptionsRunnerType),
     runner_label: S.optional(S.NullOr(S.String)),
@@ -221,43 +219,42 @@ export type CreateConfigurationRequestCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
+const CreateConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of GitHub Secret Protection features. */
 export type CreateConfigurationRequestSecretProtection = "enabled" | "disabled" | "not_set";
-export const CreateConfigurationRequestSecretProtection = S.String;
+const CreateConfigurationRequestSecretProtection = S.String;
 
 /** The enablement status of secret scanning */
 export type CreateConfigurationRequestSecretScanning = "enabled" | "disabled" | "not_set";
-export const CreateConfigurationRequestSecretScanning = S.String;
+const CreateConfigurationRequestSecretScanning = S.String;
 
 /** The enablement status of secret scanning push protection */
 export type CreateConfigurationRequestSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestSecretScanningPushProtection = S.String;
+const CreateConfigurationRequestSecretScanningPushProtection = S.String;
 
 /** The enablement status of secret scanning delegated bypass */
 export type CreateConfigurationRequestSecretScanningDelegatedBypass =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestSecretScanningDelegatedBypass = S.String;
+const CreateConfigurationRequestSecretScanningDelegatedBypass = S.String;
 
 /** The type of the bypass reviewer */
 export type CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
+const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   S.String;
 
 /** The bypass mode for the reviewer */
 export type CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  S.String;
+const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -271,7 +268,7 @@ export interface CreateConfigurationRequestSecretScanningDelegatedBypassOptionsR
     | CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode
     | (string & {});
 }
-export const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem =
+const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -288,7 +285,7 @@ export const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsRevie
 /** The bypass reviewers for secret scanning delegated bypass */
 export type CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
   Array<CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
+const CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
   /*@__PURE__*/ S.Array(
     CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem,
   ) as any as S.Schema<CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList>;
@@ -298,62 +295,61 @@ export interface CreateConfigurationRequestSecretScanningDelegatedBypassOptions 
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const CreateConfigurationRequestSecretScanningDelegatedBypassOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reviewers: S.optional(
-        CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateConfigurationRequestSecretScanningDelegatedBypassOptions",
-  }) as any as S.Schema<CreateConfigurationRequestSecretScanningDelegatedBypassOptions>;
+const CreateConfigurationRequestSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reviewers: S.optional(
+      CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList,
+    ),
+  }),
+).annotate({
+  identifier: "CreateConfigurationRequestSecretScanningDelegatedBypassOptions",
+}) as any as S.Schema<CreateConfigurationRequestSecretScanningDelegatedBypassOptions>;
 
 /** The enablement status of secret scanning validity checks */
 export type CreateConfigurationRequestSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestSecretScanningValidityChecks = S.String;
+const CreateConfigurationRequestSecretScanningValidityChecks = S.String;
 
 /** The enablement status of secret scanning non provider patterns */
 export type CreateConfigurationRequestSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestSecretScanningNonProviderPatterns = S.String;
+const CreateConfigurationRequestSecretScanningNonProviderPatterns = S.String;
 
 /** The enablement status of Copilot secret scanning */
 export type CreateConfigurationRequestSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestSecretScanningGenericSecrets = S.String;
+const CreateConfigurationRequestSecretScanningGenericSecrets = S.String;
 
 /** The enablement status of secret scanning delegated alert dismissal */
 export type CreateConfigurationRequestSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
+const CreateConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of secret scanning extended metadata */
 export type CreateConfigurationRequestSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestSecretScanningExtendedMetadata = S.String;
+const CreateConfigurationRequestSecretScanningExtendedMetadata = S.String;
 
 /** The enablement status of private vulnerability reporting */
 export type CreateConfigurationRequestPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationRequestPrivateVulnerabilityReporting = S.String;
+const CreateConfigurationRequestPrivateVulnerabilityReporting = S.String;
 
 /** The enforcement status for a security configuration */
 export type CreateConfigurationRequestEnforcement = "enforced" | "unenforced";
-export const CreateConfigurationRequestEnforcement = S.String;
+const CreateConfigurationRequestEnforcement = S.String;
 
 export interface CreateConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -431,7 +427,7 @@ export interface CreateConfigurationRequest {
   /** The enforcement status for a security configuration */
   enforcement?: CreateConfigurationRequestEnforcement | (string & {});
 }
-export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     name: S.String,
@@ -493,7 +489,7 @@ export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the code security configuration. */
 export type CodeSecurityConfigurationTargetType = "global" | "organization" | "enterprise";
-export const CodeSecurityConfigurationTargetType = S.String;
+const CodeSecurityConfigurationTargetType = S.String;
 
 /** The enablement status of GitHub Advanced Security */
 export type CodeSecurityConfigurationAdvancedSecurity =
@@ -501,54 +497,49 @@ export type CodeSecurityConfigurationAdvancedSecurity =
   | "disabled"
   | "code_security"
   | "secret_protection";
-export const CodeSecurityConfigurationAdvancedSecurity = S.String;
+const CodeSecurityConfigurationAdvancedSecurity = S.String;
 
 /** The enablement status of Dependency Graph */
 export type CodeSecurityConfigurationDependencyGraph = "enabled" | "disabled" | "not_set";
-export const CodeSecurityConfigurationDependencyGraph = S.String;
+const CodeSecurityConfigurationDependencyGraph = S.String;
 
 /** The enablement status of Automatic dependency submission */
 export type CodeSecurityConfigurationDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationDependencyGraphAutosubmitAction = S.String;
+const CodeSecurityConfigurationDependencyGraphAutosubmitAction = S.String;
 
 /** Feature options for Automatic dependency submission */
 export type CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions =
   CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
-export const CodeSecurityConfigurationDependencyGraphAutosubmitActionOptions =
-  CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
-
 /** The enablement status of Dependabot alerts */
 export type CodeSecurityConfigurationDependabotAlerts = "enabled" | "disabled" | "not_set";
-export const CodeSecurityConfigurationDependabotAlerts = S.String;
+const CodeSecurityConfigurationDependabotAlerts = S.String;
 
 /** The enablement status of Dependabot security updates */
 export type CodeSecurityConfigurationDependabotSecurityUpdates = "enabled" | "disabled" | "not_set";
-export const CodeSecurityConfigurationDependabotSecurityUpdates = S.String;
+const CodeSecurityConfigurationDependabotSecurityUpdates = S.String;
 
 /** The enablement status of Dependabot delegated alert dismissal */
 export type CodeSecurityConfigurationDependabotDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationDependabotDelegatedAlertDismissal = S.String;
+const CodeSecurityConfigurationDependabotDelegatedAlertDismissal = S.String;
 
 /** Feature options for code scanning */
 export type CodeSecurityConfigurationCodeScanningOptions = CodeScanningOptions;
-export const CodeSecurityConfigurationCodeScanningOptions = CodeScanningOptions;
-
 /** The enablement status of code scanning default setup */
 export type CodeSecurityConfigurationCodeScanningDefaultSetup = "enabled" | "disabled" | "not_set";
-export const CodeSecurityConfigurationCodeScanningDefaultSetup = S.String;
+const CodeSecurityConfigurationCodeScanningDefaultSetup = S.String;
 
 /** Whether to use labeled runners or standard GitHub runners. */
 export type CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType =
   | "standard"
   | "labeled"
   | "not_set";
-export const CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType = S.String;
+const CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType = S.String;
 
 /** Feature options for code scanning default setup */
 export interface CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
@@ -557,14 +548,13 @@ export interface CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
   /** The label of the runner to use for code scanning when runner_type is 'labeled'. */
   runner_label?: string | null;
 }
-export const CodeSecurityConfigurationCodeScanningDefaultSetupOptions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      runner_type: S.optional(
-        S.NullOr(CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType),
-      ),
-      runner_label: S.optional(S.NullOr(S.String)),
-    }),
+const CodeSecurityConfigurationCodeScanningDefaultSetupOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runner_type: S.optional(
+      S.NullOr(CodeSecurityConfigurationCodeScanningDefaultSetupOptionsRunnerType),
+    ),
+    runner_label: S.optional(S.NullOr(S.String)),
+  }),
 ).annotate({
   identifier: "CodeSecurityConfigurationCodeScanningDefaultSetupOptions",
 }) as any as S.Schema<CodeSecurityConfigurationCodeScanningDefaultSetupOptions>;
@@ -574,39 +564,38 @@ export type CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal = S.String;
+const CodeSecurityConfigurationCodeScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of secret scanning */
 export type CodeSecurityConfigurationSecretScanning = "enabled" | "disabled" | "not_set";
-export const CodeSecurityConfigurationSecretScanning = S.String;
+const CodeSecurityConfigurationSecretScanning = S.String;
 
 /** The enablement status of secret scanning push protection */
 export type CodeSecurityConfigurationSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationSecretScanningPushProtection = S.String;
+const CodeSecurityConfigurationSecretScanningPushProtection = S.String;
 
 /** The enablement status of secret scanning delegated bypass */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypass =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationSecretScanningDelegatedBypass = S.String;
+const CodeSecurityConfigurationSecretScanningDelegatedBypass = S.String;
 
 /** The type of the bypass reviewer */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
+const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   S.String;
 
 /** The bypass mode for the reviewer */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  S.String;
+const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -618,7 +607,7 @@ export interface CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsRe
   /** The ID of the security configuration associated with this bypass reviewer */
   security_configuration_id?: number;
 }
-export const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem =
+const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -636,7 +625,7 @@ export const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReview
 /** The bypass reviewers for secret scanning delegated bypass */
 export type CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList =
   Array<CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList =
+const CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList =
   /*@__PURE__*/ S.Array(
     CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersItem,
   ) as any as S.Schema<CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList>;
@@ -646,65 +635,64 @@ export interface CodeSecurityConfigurationSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const CodeSecurityConfigurationSecretScanningDelegatedBypassOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reviewers: S.optional(
-        CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList,
-      ),
-    }),
-  ).annotate({
-    identifier: "CodeSecurityConfigurationSecretScanningDelegatedBypassOptions",
-  }) as any as S.Schema<CodeSecurityConfigurationSecretScanningDelegatedBypassOptions>;
+const CodeSecurityConfigurationSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reviewers: S.optional(
+      CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersList,
+    ),
+  }),
+).annotate({
+  identifier: "CodeSecurityConfigurationSecretScanningDelegatedBypassOptions",
+}) as any as S.Schema<CodeSecurityConfigurationSecretScanningDelegatedBypassOptions>;
 
 /** The enablement status of secret scanning validity checks */
 export type CodeSecurityConfigurationSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationSecretScanningValidityChecks = S.String;
+const CodeSecurityConfigurationSecretScanningValidityChecks = S.String;
 
 /** The enablement status of secret scanning non-provider patterns */
 export type CodeSecurityConfigurationSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationSecretScanningNonProviderPatterns = S.String;
+const CodeSecurityConfigurationSecretScanningNonProviderPatterns = S.String;
 
 /** The enablement status of Copilot secret scanning */
 export type CodeSecurityConfigurationSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationSecretScanningGenericSecrets = S.String;
+const CodeSecurityConfigurationSecretScanningGenericSecrets = S.String;
 
 /** The enablement status of secret scanning delegated alert dismissal */
 export type CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal = S.String;
+const CodeSecurityConfigurationSecretScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of secret scanning extended metadata */
 export type CodeSecurityConfigurationSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationSecretScanningExtendedMetadata = S.String;
+const CodeSecurityConfigurationSecretScanningExtendedMetadata = S.String;
 
 /** The enablement status of private vulnerability reporting */
 export type CodeSecurityConfigurationPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CodeSecurityConfigurationPrivateVulnerabilityReporting = S.String;
+const CodeSecurityConfigurationPrivateVulnerabilityReporting = S.String;
 
 /** The enforcement status for a security configuration */
 export type CodeSecurityConfigurationEnforcement =
   | "enforced"
   | "unenforced"
   | "enterprise_enforced";
-export const CodeSecurityConfigurationEnforcement = S.String;
+const CodeSecurityConfigurationEnforcement = S.String;
 
 /** A code security configuration */
 export interface CodeSecurityConfiguration {
@@ -767,7 +755,7 @@ export interface CodeSecurityConfiguration {
   created_at?: string;
   updated_at?: string;
 }
-export const CodeSecurityConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CodeSecurityConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -838,133 +826,129 @@ export type CreateConfigurationForEnterpriseRequestAdvancedSecurity =
   | "disabled"
   | "code_security"
   | "secret_protection";
-export const CreateConfigurationForEnterpriseRequestAdvancedSecurity = S.String;
+const CreateConfigurationForEnterpriseRequestAdvancedSecurity = S.String;
 
 /** The enablement status of GitHub Code Security features. */
 export type CreateConfigurationForEnterpriseRequestCodeSecurity =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestCodeSecurity = S.String;
+const CreateConfigurationForEnterpriseRequestCodeSecurity = S.String;
 
 /** The enablement status of Dependency Graph */
 export type CreateConfigurationForEnterpriseRequestDependencyGraph =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestDependencyGraph = S.String;
+const CreateConfigurationForEnterpriseRequestDependencyGraph = S.String;
 
 /** The enablement status of Automatic dependency submission */
 export type CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitAction = S.String;
+const CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitAction = S.String;
 
 /** Feature options for Automatic dependency submission */
 export type CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitActionOptions =
   CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
-export const CreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitActionOptions =
-  CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
-
 /** The enablement status of Dependabot alerts */
 export type CreateConfigurationForEnterpriseRequestDependabotAlerts =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestDependabotAlerts = S.String;
+const CreateConfigurationForEnterpriseRequestDependabotAlerts = S.String;
 
 /** The enablement status of Dependabot security updates */
 export type CreateConfigurationForEnterpriseRequestDependabotSecurityUpdates =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestDependabotSecurityUpdates = S.String;
+const CreateConfigurationForEnterpriseRequestDependabotSecurityUpdates = S.String;
 
 /** The enablement status of code scanning default setup */
 export type CreateConfigurationForEnterpriseRequestCodeScanningDefaultSetup =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestCodeScanningDefaultSetup = S.String;
+const CreateConfigurationForEnterpriseRequestCodeScanningDefaultSetup = S.String;
 
 /** The enablement status of code scanning delegated alert dismissal */
 export type CreateConfigurationForEnterpriseRequestCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestCodeScanningDelegatedAlertDismissal = S.String;
+const CreateConfigurationForEnterpriseRequestCodeScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of GitHub Secret Protection features. */
 export type CreateConfigurationForEnterpriseRequestSecretProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestSecretProtection = S.String;
+const CreateConfigurationForEnterpriseRequestSecretProtection = S.String;
 
 /** The enablement status of secret scanning */
 export type CreateConfigurationForEnterpriseRequestSecretScanning =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestSecretScanning = S.String;
+const CreateConfigurationForEnterpriseRequestSecretScanning = S.String;
 
 /** The enablement status of secret scanning push protection */
 export type CreateConfigurationForEnterpriseRequestSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestSecretScanningPushProtection = S.String;
+const CreateConfigurationForEnterpriseRequestSecretScanningPushProtection = S.String;
 
 /** The enablement status of secret scanning validity checks */
 export type CreateConfigurationForEnterpriseRequestSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestSecretScanningValidityChecks = S.String;
+const CreateConfigurationForEnterpriseRequestSecretScanningValidityChecks = S.String;
 
 /** The enablement status of secret scanning non provider patterns */
 export type CreateConfigurationForEnterpriseRequestSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestSecretScanningNonProviderPatterns = S.String;
+const CreateConfigurationForEnterpriseRequestSecretScanningNonProviderPatterns = S.String;
 
 /** The enablement status of Copilot secret scanning */
 export type CreateConfigurationForEnterpriseRequestSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestSecretScanningGenericSecrets = S.String;
+const CreateConfigurationForEnterpriseRequestSecretScanningGenericSecrets = S.String;
 
 /** The enablement status of secret scanning delegated alert dismissal */
 export type CreateConfigurationForEnterpriseRequestSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestSecretScanningDelegatedAlertDismissal =
-  S.String;
+const CreateConfigurationForEnterpriseRequestSecretScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of secret scanning extended metadata */
 export type CreateConfigurationForEnterpriseRequestSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestSecretScanningExtendedMetadata = S.String;
+const CreateConfigurationForEnterpriseRequestSecretScanningExtendedMetadata = S.String;
 
 /** The enablement status of private vulnerability reporting */
 export type CreateConfigurationForEnterpriseRequestPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-export const CreateConfigurationForEnterpriseRequestPrivateVulnerabilityReporting = S.String;
+const CreateConfigurationForEnterpriseRequestPrivateVulnerabilityReporting = S.String;
 
 /** The enforcement status for a security configuration */
 export type CreateConfigurationForEnterpriseRequestEnforcement =
   | "enforced"
   | "unenforced"
   | "enterprise_enforced";
-export const CreateConfigurationForEnterpriseRequestEnforcement = S.String;
+const CreateConfigurationForEnterpriseRequestEnforcement = S.String;
 
 export interface CreateConfigurationForEnterpriseRequest {
   /** The slug version of the enterprise name. */
@@ -1036,7 +1020,7 @@ export interface CreateConfigurationForEnterpriseRequest {
   /** The enforcement status for a security configuration */
   enforcement?: CreateConfigurationForEnterpriseRequestEnforcement | (string & {});
 }
-export const CreateConfigurationForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     name: S.String,
@@ -1103,7 +1087,7 @@ export interface DeleteConfigurationRequest {
   /** The unique identifier of the code security configuration. */
   configuration_id: number;
 }
-export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -1119,7 +1103,7 @@ export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigurationRequest>;
 
 export interface DeleteConfigurationResponse {}
-export const DeleteConfigurationResponse =
+const DeleteConfigurationResponse =
   AttachConfigurationResponse as any as S.Schema<DeleteConfigurationResponse>;
 
 export interface DeleteConfigurationForEnterpriseRequest {
@@ -1128,7 +1112,7 @@ export interface DeleteConfigurationForEnterpriseRequest {
   /** The unique identifier of the code security configuration. */
   configuration_id: number;
 }
-export const DeleteConfigurationForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -1144,12 +1128,12 @@ export const DeleteConfigurationForEnterpriseRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteConfigurationForEnterpriseRequest>;
 
 export interface DeleteConfigurationForEnterpriseResponse {}
-export const DeleteConfigurationForEnterpriseResponse =
+const DeleteConfigurationForEnterpriseResponse =
   AttachEnterpriseConfigurationResponse as any as S.Schema<DeleteConfigurationForEnterpriseResponse>;
 
 /** An array of repository IDs to detach from configurations. Up to 250 IDs can be provided. */
 export type DetachConfigurationRequestSelectedRepositoryIdsList = Array<number>;
-export const DetachConfigurationRequestSelectedRepositoryIdsList =
+const DetachConfigurationRequestSelectedRepositoryIdsList =
   AttachConfigurationRequestSelectedRepositoryIdsList as any as S.Schema<DetachConfigurationRequestSelectedRepositoryIdsList>;
 
 export interface DetachConfigurationRequest {
@@ -1158,7 +1142,7 @@ export interface DetachConfigurationRequest {
   /** An array of repository IDs to detach from configurations. Up to 250 IDs can be provided. */
   selected_repository_ids: DetachConfigurationRequestSelectedRepositoryIdsList;
 }
-export const DetachConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     selected_repository_ids: DetachConfigurationRequestSelectedRepositoryIdsList,
@@ -1170,7 +1154,7 @@ export const DetachConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetachConfigurationRequest>;
 
 export interface DetachConfigurationResponse {}
-export const DetachConfigurationResponse =
+const DetachConfigurationResponse =
   AttachConfigurationResponse as any as S.Schema<DetachConfigurationResponse>;
 
 export interface GetConfigurationRequest {
@@ -1179,7 +1163,7 @@ export interface GetConfigurationRequest {
   /** The unique identifier of the code security configuration. */
   configuration_id: number;
 }
-export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -1198,7 +1182,7 @@ export interface GetConfigurationForRepositoryRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetConfigurationForRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationForRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1220,7 +1204,7 @@ export type CodeSecurityConfigurationForRepositoryStatus =
   | "updating"
   | "removed_by_enterprise"
   | "enterprise_enforced";
-export const CodeSecurityConfigurationForRepositoryStatus = S.String;
+const CodeSecurityConfigurationForRepositoryStatus = S.String;
 
 /** Code security configuration associated with a repository and attachment status */
 export interface CodeSecurityConfigurationForRepository {
@@ -1228,7 +1212,7 @@ export interface CodeSecurityConfigurationForRepository {
   status?: CodeSecurityConfigurationForRepositoryStatus;
   configuration?: CodeSecurityConfiguration;
 }
-export const CodeSecurityConfigurationForRepository = /*@__PURE__*/ S.suspend(() =>
+const CodeSecurityConfigurationForRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CodeSecurityConfigurationForRepositoryStatus),
     configuration: S.optional(CodeSecurityConfiguration),
@@ -1247,7 +1231,7 @@ export interface GetConfigurationsForEnterpriseRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-export const GetConfigurationsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1265,19 +1249,19 @@ export const GetConfigurationsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetConfigurationsForEnterpriseRequest>;
 
 export type GetConfigurationsForEnterpriseResponseBodyList = Array<CodeSecurityConfiguration>;
-export const GetConfigurationsForEnterpriseResponseBodyList = /*@__PURE__*/ S.Array(
+const GetConfigurationsForEnterpriseResponseBodyList = /*@__PURE__*/ S.Array(
   CodeSecurityConfiguration,
 ) as any as S.Schema<GetConfigurationsForEnterpriseResponseBodyList>;
 
 export type GetConfigurationsForEnterpriseResponse = GetConfigurationsForEnterpriseResponseBodyList;
-export const GetConfigurationsForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationsForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
   GetConfigurationsForEnterpriseResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetConfigurationsForEnterpriseResponse",
 }) as any as S.Schema<GetConfigurationsForEnterpriseResponse>;
 
 export type GetConfigurationsForOrgRequestTargetType = "global" | "all";
-export const GetConfigurationsForOrgRequestTargetType = S.String;
+const GetConfigurationsForOrgRequestTargetType = S.String;
 
 export interface GetConfigurationsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1291,7 +1275,7 @@ export interface GetConfigurationsForOrgRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-export const GetConfigurationsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     target_type: S.optional(GetConfigurationsForOrgRequestTargetType.pipe(T.Query())),
@@ -1304,18 +1288,15 @@ export const GetConfigurationsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConfigurationsForOrgRequest>;
 
 export type GetConfigurationsForOrgResponseBodyList = Array<CodeSecurityConfiguration>;
-export const GetConfigurationsForOrgResponseBodyList =
-  GetConfigurationsForEnterpriseResponseBodyList as any as S.Schema<GetConfigurationsForOrgResponseBodyList>;
-
 export type GetConfigurationsForOrgResponse = GetConfigurationsForOrgResponseBodyList;
-export const GetConfigurationsForOrgResponse =
+const GetConfigurationsForOrgResponse =
   GetConfigurationsForEnterpriseResponse as any as S.Schema<GetConfigurationsForOrgResponse>;
 
 export interface GetDefaultConfigurationsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetDefaultConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(
@@ -1330,14 +1311,14 @@ export type CodeSecurityDefaultConfigurationsItemDefaultForNewRepos =
   | "public"
   | "private_and_internal"
   | "all";
-export const CodeSecurityDefaultConfigurationsItemDefaultForNewRepos = S.String;
+const CodeSecurityDefaultConfigurationsItemDefaultForNewRepos = S.String;
 
 export interface CodeSecurityDefaultConfigurationsItem {
   /** The visibility of newly created repositories for which the code security configuration will be applied to by default */
   default_for_new_repos?: CodeSecurityDefaultConfigurationsItemDefaultForNewRepos;
   configuration?: CodeSecurityConfiguration;
 }
-export const CodeSecurityDefaultConfigurationsItem = /*@__PURE__*/ S.suspend(() =>
+const CodeSecurityDefaultConfigurationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_for_new_repos: S.optional(CodeSecurityDefaultConfigurationsItemDefaultForNewRepos),
     configuration: S.optional(CodeSecurityConfiguration),
@@ -1348,12 +1329,12 @@ export const CodeSecurityDefaultConfigurationsItem = /*@__PURE__*/ S.suspend(() 
 
 /** A list of default code security configurations */
 export type CodeSecurityDefaultConfigurations = Array<CodeSecurityDefaultConfigurationsItem>;
-export const CodeSecurityDefaultConfigurations = /*@__PURE__*/ S.Array(
+const CodeSecurityDefaultConfigurations = /*@__PURE__*/ S.Array(
   CodeSecurityDefaultConfigurationsItem,
 ) as any as S.Schema<CodeSecurityDefaultConfigurations>;
 
 export type GetDefaultConfigurationsResponse = CodeSecurityDefaultConfigurations;
-export const GetDefaultConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   CodeSecurityDefaultConfigurations.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDefaultConfigurationsResponse",
@@ -1363,7 +1344,7 @@ export interface GetDefaultConfigurationsForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
 }
-export const GetDefaultConfigurationsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultConfigurationsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
   }).pipe(
@@ -1378,7 +1359,7 @@ export const GetDefaultConfigurationsForEnterpriseRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetDefaultConfigurationsForEnterpriseRequest>;
 
 export type GetDefaultConfigurationsForEnterpriseResponse = CodeSecurityDefaultConfigurations;
-export const GetDefaultConfigurationsForEnterpriseResponse =
+const GetDefaultConfigurationsForEnterpriseResponse =
   GetDefaultConfigurationsResponse as any as S.Schema<GetDefaultConfigurationsForEnterpriseResponse>;
 
 export interface GetRepositoriesForConfigurationRequest {
@@ -1395,7 +1376,7 @@ export interface GetRepositoriesForConfigurationRequest {
   /** A comma-separated list of statuses. If specified, only repositories with these attachment statuses will be returned. Can be: `all`, `attached`, `attaching`, `detached`, `removed`, `enforced`, `failed`, `updating`, `removed_by_enterprise`, `enterprise_enforced` */
   status?: string;
 }
-export const GetRepositoriesForConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepositoriesForConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -1425,7 +1406,7 @@ export type CodeSecurityConfigurationRepositoriesStatus =
   | "updating"
   | "removed_by_enterprise"
   | "enterprise_enforced";
-export const CodeSecurityConfigurationRepositoriesStatus = S.String;
+const CodeSecurityConfigurationRepositoriesStatus = S.String;
 
 /** A GitHub user. */
 export interface SimpleUser {
@@ -1452,7 +1433,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -1573,7 +1554,7 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
-export const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
+const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1630,7 +1611,7 @@ export interface CodeSecurityConfigurationRepositories {
   status?: CodeSecurityConfigurationRepositoriesStatus;
   repository?: SimpleRepository;
 }
-export const CodeSecurityConfigurationRepositories = /*@__PURE__*/ S.suspend(() =>
+const CodeSecurityConfigurationRepositories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CodeSecurityConfigurationRepositoriesStatus),
     repository: S.optional(SimpleRepository),
@@ -1641,13 +1622,13 @@ export const CodeSecurityConfigurationRepositories = /*@__PURE__*/ S.suspend(() 
 
 export type GetRepositoriesForConfigurationResponseBodyList =
   Array<CodeSecurityConfigurationRepositories>;
-export const GetRepositoriesForConfigurationResponseBodyList = /*@__PURE__*/ S.Array(
+const GetRepositoriesForConfigurationResponseBodyList = /*@__PURE__*/ S.Array(
   CodeSecurityConfigurationRepositories,
 ) as any as S.Schema<GetRepositoriesForConfigurationResponseBodyList>;
 
 export type GetRepositoriesForConfigurationResponse =
   GetRepositoriesForConfigurationResponseBodyList;
-export const GetRepositoriesForConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRepositoriesForConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   GetRepositoriesForConfigurationResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetRepositoriesForConfigurationResponse",
@@ -1667,7 +1648,7 @@ export interface GetRepositoriesForEnterpriseConfigurationRequest {
   /** A comma-separated list of statuses. If specified, only repositories with these attachment statuses will be returned. Can be: `all`, `attached`, `attaching`, `removed`, `enforced`, `failed`, `updating`, `removed_by_enterprise`, `enterprise_enforced` */
   status?: string;
 }
-export const GetRepositoriesForEnterpriseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepositoriesForEnterpriseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -1688,12 +1669,9 @@ export const GetRepositoriesForEnterpriseConfigurationRequest = /*@__PURE__*/ S.
 
 export type GetRepositoriesForEnterpriseConfigurationResponseBodyList =
   Array<CodeSecurityConfigurationRepositories>;
-export const GetRepositoriesForEnterpriseConfigurationResponseBodyList =
-  GetRepositoriesForConfigurationResponseBodyList as any as S.Schema<GetRepositoriesForEnterpriseConfigurationResponseBodyList>;
-
 export type GetRepositoriesForEnterpriseConfigurationResponse =
   GetRepositoriesForEnterpriseConfigurationResponseBodyList;
-export const GetRepositoriesForEnterpriseConfigurationResponse =
+const GetRepositoriesForEnterpriseConfigurationResponse =
   GetRepositoriesForConfigurationResponse as any as S.Schema<GetRepositoriesForEnterpriseConfigurationResponse>;
 
 export interface GetSingleConfigurationForEnterpriseRequest {
@@ -1702,7 +1680,7 @@ export interface GetSingleConfigurationForEnterpriseRequest {
   /** The unique identifier of the code security configuration. */
   configuration_id: number;
 }
-export const GetSingleConfigurationForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSingleConfigurationForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -1723,7 +1701,7 @@ export type SetConfigurationAsDefaultRequestDefaultForNewRepos =
   | "none"
   | "private_and_internal"
   | "public";
-export const SetConfigurationAsDefaultRequestDefaultForNewRepos = S.String;
+const SetConfigurationAsDefaultRequestDefaultForNewRepos = S.String;
 
 export interface SetConfigurationAsDefaultRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1733,7 +1711,7 @@ export interface SetConfigurationAsDefaultRequest {
   /** Specify which types of repository this security configuration should be applied to by default. */
   default_for_new_repos?: SetConfigurationAsDefaultRequestDefaultForNewRepos | (string & {});
 }
-export const SetConfigurationAsDefaultRequest = /*@__PURE__*/ S.suspend(() =>
+const SetConfigurationAsDefaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -1755,14 +1733,12 @@ export type SetConfigurationAsDefaultResponseDefaultForNewRepos =
   | "none"
   | "private_and_internal"
   | "public";
-export const SetConfigurationAsDefaultResponseDefaultForNewRepos = S.String;
-
 export interface SetConfigurationAsDefaultResponse {
   /** Specifies which types of repository this security configuration is applied to by default. */
   default_for_new_repos?: SetConfigurationAsDefaultResponseDefaultForNewRepos;
   configuration?: CodeSecurityConfiguration;
 }
-export const SetConfigurationAsDefaultResponse =
+const SetConfigurationAsDefaultResponse =
   CodeSecurityDefaultConfigurationsItem as any as S.Schema<SetConfigurationAsDefaultResponse>;
 
 /** Specify which types of repository this security configuration should be applied to by default. */
@@ -1771,7 +1747,7 @@ export type SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos =
   | "none"
   | "private_and_internal"
   | "public";
-export const SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos = S.String;
+const SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos = S.String;
 
 export interface SetConfigurationAsDefaultForEnterpriseRequest {
   /** The slug version of the enterprise name. */
@@ -1783,7 +1759,7 @@ export interface SetConfigurationAsDefaultForEnterpriseRequest {
     | SetConfigurationAsDefaultForEnterpriseRequestDefaultForNewRepos
     | (string & {});
 }
-export const SetConfigurationAsDefaultForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const SetConfigurationAsDefaultForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -1807,14 +1783,14 @@ export type SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos =
   | "none"
   | "private_and_internal"
   | "public";
-export const SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos = S.String;
+const SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos = S.String;
 
 export interface SetConfigurationAsDefaultForEnterpriseResponse {
   /** Specifies which types of repository this security configuration is applied to by default. */
   default_for_new_repos?: SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos;
   configuration?: CodeSecurityConfiguration;
 }
-export const SetConfigurationAsDefaultForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
+const SetConfigurationAsDefaultForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_for_new_repos: S.optional(
       SetConfigurationAsDefaultForEnterpriseResponseDefaultForNewRepos,
@@ -1831,94 +1807,85 @@ export type UpdateConfigurationRequestAdvancedSecurity =
   | "disabled"
   | "code_security"
   | "secret_protection";
-export const UpdateConfigurationRequestAdvancedSecurity = S.String;
+const UpdateConfigurationRequestAdvancedSecurity = S.String;
 
 /** The enablement status of GitHub Code Security features. */
 export type UpdateConfigurationRequestCodeSecurity = "enabled" | "disabled" | "not_set";
-export const UpdateConfigurationRequestCodeSecurity = S.String;
+const UpdateConfigurationRequestCodeSecurity = S.String;
 
 /** The enablement status of Dependency Graph */
 export type UpdateConfigurationRequestDependencyGraph = "enabled" | "disabled" | "not_set";
-export const UpdateConfigurationRequestDependencyGraph = S.String;
+const UpdateConfigurationRequestDependencyGraph = S.String;
 
 /** The enablement status of Automatic dependency submission */
 export type UpdateConfigurationRequestDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestDependencyGraphAutosubmitAction = S.String;
+const UpdateConfigurationRequestDependencyGraphAutosubmitAction = S.String;
 
 /** Feature options for Automatic dependency submission */
 export type UpdateConfigurationRequestDependencyGraphAutosubmitActionOptions =
   CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
-export const UpdateConfigurationRequestDependencyGraphAutosubmitActionOptions =
-  CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
-
 /** The enablement status of Dependabot alerts */
 export type UpdateConfigurationRequestDependabotAlerts = "enabled" | "disabled" | "not_set";
-export const UpdateConfigurationRequestDependabotAlerts = S.String;
+const UpdateConfigurationRequestDependabotAlerts = S.String;
 
 /** The enablement status of Dependabot security updates */
 export type UpdateConfigurationRequestDependabotSecurityUpdates =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestDependabotSecurityUpdates = S.String;
+const UpdateConfigurationRequestDependabotSecurityUpdates = S.String;
 
 /** The enablement status of Dependabot delegated alert dismissal. Requires Dependabot alerts to be enabled. */
 export type UpdateConfigurationRequestDependabotDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestDependabotDelegatedAlertDismissal = S.String;
+const UpdateConfigurationRequestDependabotDelegatedAlertDismissal = S.String;
 
 /** The enablement status of code scanning default setup */
 export type UpdateConfigurationRequestCodeScanningDefaultSetup = "enabled" | "disabled" | "not_set";
-export const UpdateConfigurationRequestCodeScanningDefaultSetup = S.String;
+const UpdateConfigurationRequestCodeScanningDefaultSetup = S.String;
 
 /** The enablement status of code scanning delegated alert dismissal */
 export type UpdateConfigurationRequestCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
+const UpdateConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of GitHub Secret Protection features. */
 export type UpdateConfigurationRequestSecretProtection = "enabled" | "disabled" | "not_set";
-export const UpdateConfigurationRequestSecretProtection = S.String;
+const UpdateConfigurationRequestSecretProtection = S.String;
 
 /** The enablement status of secret scanning */
 export type UpdateConfigurationRequestSecretScanning = "enabled" | "disabled" | "not_set";
-export const UpdateConfigurationRequestSecretScanning = S.String;
+const UpdateConfigurationRequestSecretScanning = S.String;
 
 /** The enablement status of secret scanning push protection */
 export type UpdateConfigurationRequestSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestSecretScanningPushProtection = S.String;
+const UpdateConfigurationRequestSecretScanningPushProtection = S.String;
 
 /** The enablement status of secret scanning delegated bypass */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypass =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestSecretScanningDelegatedBypass = S.String;
+const UpdateConfigurationRequestSecretScanningDelegatedBypass = S.String;
 
 /** The type of the bypass reviewer */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
-
 /** The bypass mode for the reviewer */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode =
-  S.String;
-
 export interface UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -1931,21 +1898,15 @@ export interface UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsR
     | UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItemMode
     | (string & {});
 }
-export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem =
-  CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
   Array<UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList =
-  CreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList>;
-
 /** Feature options for secret scanning delegated bypass */
 export interface UpdateConfigurationRequestSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: UpdateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const UpdateConfigurationRequestSecretScanningDelegatedBypassOptions =
+const UpdateConfigurationRequestSecretScanningDelegatedBypassOptions =
   CreateConfigurationRequestSecretScanningDelegatedBypassOptions as any as S.Schema<UpdateConfigurationRequestSecretScanningDelegatedBypassOptions>;
 
 /** The enablement status of secret scanning validity checks */
@@ -1953,46 +1914,46 @@ export type UpdateConfigurationRequestSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestSecretScanningValidityChecks = S.String;
+const UpdateConfigurationRequestSecretScanningValidityChecks = S.String;
 
 /** The enablement status of secret scanning non-provider patterns */
 export type UpdateConfigurationRequestSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestSecretScanningNonProviderPatterns = S.String;
+const UpdateConfigurationRequestSecretScanningNonProviderPatterns = S.String;
 
 /** The enablement status of Copilot secret scanning */
 export type UpdateConfigurationRequestSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestSecretScanningGenericSecrets = S.String;
+const UpdateConfigurationRequestSecretScanningGenericSecrets = S.String;
 
 /** The enablement status of secret scanning delegated alert dismissal */
 export type UpdateConfigurationRequestSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
+const UpdateConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of secret scanning extended metadata */
 export type UpdateConfigurationRequestSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestSecretScanningExtendedMetadata = S.String;
+const UpdateConfigurationRequestSecretScanningExtendedMetadata = S.String;
 
 /** The enablement status of private vulnerability reporting */
 export type UpdateConfigurationRequestPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateConfigurationRequestPrivateVulnerabilityReporting = S.String;
+const UpdateConfigurationRequestPrivateVulnerabilityReporting = S.String;
 
 /** The enforcement status for a security configuration */
 export type UpdateConfigurationRequestEnforcement = "enforced" | "unenforced";
-export const UpdateConfigurationRequestEnforcement = S.String;
+const UpdateConfigurationRequestEnforcement = S.String;
 
 export interface UpdateConfigurationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2072,7 +2033,7 @@ export interface UpdateConfigurationRequest {
   /** The enforcement status for a security configuration */
   enforcement?: UpdateConfigurationRequestEnforcement | (string & {});
 }
-export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),
@@ -2145,126 +2106,123 @@ export type UpdateEnterpriseConfigurationRequestAdvancedSecurity =
   | "disabled"
   | "code_security"
   | "secret_protection";
-export const UpdateEnterpriseConfigurationRequestAdvancedSecurity = S.String;
+const UpdateEnterpriseConfigurationRequestAdvancedSecurity = S.String;
 
 /** The enablement status of GitHub Code Security features. */
 export type UpdateEnterpriseConfigurationRequestCodeSecurity = "enabled" | "disabled" | "not_set";
-export const UpdateEnterpriseConfigurationRequestCodeSecurity = S.String;
+const UpdateEnterpriseConfigurationRequestCodeSecurity = S.String;
 
 /** The enablement status of Dependency Graph */
 export type UpdateEnterpriseConfigurationRequestDependencyGraph =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestDependencyGraph = S.String;
+const UpdateEnterpriseConfigurationRequestDependencyGraph = S.String;
 
 /** The enablement status of Automatic dependency submission */
 export type UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitAction =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitAction = S.String;
+const UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitAction = S.String;
 
 /** Feature options for Automatic dependency submission */
 export type UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions =
   CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
-export const UpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions =
-  CreateConfigurationRequestDependencyGraphAutosubmitActionOptions;
-
 /** The enablement status of Dependabot alerts */
 export type UpdateEnterpriseConfigurationRequestDependabotAlerts =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestDependabotAlerts = S.String;
+const UpdateEnterpriseConfigurationRequestDependabotAlerts = S.String;
 
 /** The enablement status of Dependabot security updates */
 export type UpdateEnterpriseConfigurationRequestDependabotSecurityUpdates =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestDependabotSecurityUpdates = S.String;
+const UpdateEnterpriseConfigurationRequestDependabotSecurityUpdates = S.String;
 
 /** The enablement status of code scanning default setup */
 export type UpdateEnterpriseConfigurationRequestCodeScanningDefaultSetup =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestCodeScanningDefaultSetup = S.String;
+const UpdateEnterpriseConfigurationRequestCodeScanningDefaultSetup = S.String;
 
 /** The enablement status of code scanning delegated alert dismissal */
 export type UpdateEnterpriseConfigurationRequestCodeScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
+const UpdateEnterpriseConfigurationRequestCodeScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of GitHub Secret Protection features. */
 export type UpdateEnterpriseConfigurationRequestSecretProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestSecretProtection = S.String;
+const UpdateEnterpriseConfigurationRequestSecretProtection = S.String;
 
 /** The enablement status of secret scanning */
 export type UpdateEnterpriseConfigurationRequestSecretScanning = "enabled" | "disabled" | "not_set";
-export const UpdateEnterpriseConfigurationRequestSecretScanning = S.String;
+const UpdateEnterpriseConfigurationRequestSecretScanning = S.String;
 
 /** The enablement status of secret scanning push protection */
 export type UpdateEnterpriseConfigurationRequestSecretScanningPushProtection =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestSecretScanningPushProtection = S.String;
+const UpdateEnterpriseConfigurationRequestSecretScanningPushProtection = S.String;
 
 /** The enablement status of secret scanning validity checks */
 export type UpdateEnterpriseConfigurationRequestSecretScanningValidityChecks =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestSecretScanningValidityChecks = S.String;
+const UpdateEnterpriseConfigurationRequestSecretScanningValidityChecks = S.String;
 
 /** The enablement status of secret scanning non-provider patterns */
 export type UpdateEnterpriseConfigurationRequestSecretScanningNonProviderPatterns =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestSecretScanningNonProviderPatterns = S.String;
+const UpdateEnterpriseConfigurationRequestSecretScanningNonProviderPatterns = S.String;
 
 /** The enablement status of Copilot secret scanning */
 export type UpdateEnterpriseConfigurationRequestSecretScanningGenericSecrets =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestSecretScanningGenericSecrets = S.String;
+const UpdateEnterpriseConfigurationRequestSecretScanningGenericSecrets = S.String;
 
 /** The enablement status of secret scanning delegated alert dismissal */
 export type UpdateEnterpriseConfigurationRequestSecretScanningDelegatedAlertDismissal =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
+const UpdateEnterpriseConfigurationRequestSecretScanningDelegatedAlertDismissal = S.String;
 
 /** The enablement status of secret scanning extended metadata */
 export type UpdateEnterpriseConfigurationRequestSecretScanningExtendedMetadata =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestSecretScanningExtendedMetadata = S.String;
+const UpdateEnterpriseConfigurationRequestSecretScanningExtendedMetadata = S.String;
 
 /** The enablement status of private vulnerability reporting */
 export type UpdateEnterpriseConfigurationRequestPrivateVulnerabilityReporting =
   | "enabled"
   | "disabled"
   | "not_set";
-export const UpdateEnterpriseConfigurationRequestPrivateVulnerabilityReporting = S.String;
+const UpdateEnterpriseConfigurationRequestPrivateVulnerabilityReporting = S.String;
 
 /** The enforcement status for a security configuration */
 export type UpdateEnterpriseConfigurationRequestEnforcement =
   | "enforced"
   | "unenforced"
   | "enterprise_enforced";
-export const UpdateEnterpriseConfigurationRequestEnforcement = S.String;
+const UpdateEnterpriseConfigurationRequestEnforcement = S.String;
 
 export interface UpdateEnterpriseConfigurationRequest {
   /** The slug version of the enterprise name. */
@@ -2338,7 +2296,7 @@ export interface UpdateEnterpriseConfigurationRequest {
   /** The enforcement status for a security configuration */
   enforcement?: UpdateEnterpriseConfigurationRequestEnforcement | (string & {});
 }
-export const UpdateEnterpriseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnterpriseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     configuration_id: S.Number.pipe(T.Label()),

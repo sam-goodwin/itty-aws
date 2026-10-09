@@ -65,7 +65,7 @@ export interface AcceptInvitationsRequest {
   /** Identifier of the invitation to accept. */
   id: string;
 }
-export const AcceptInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -79,7 +79,7 @@ export const AcceptInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -92,7 +92,7 @@ export interface Link {
   /** URL of a thumbnail image of the target URL. Read-only. */
   thumbnailUrl?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     title: S.optional(S.String),
@@ -111,7 +111,7 @@ export interface YouTubeVideo {
   /** URL of a thumbnail image of the YouTube video. Read-only. */
   thumbnailUrl?: string;
 }
-export const YouTubeVideo = /*@__PURE__*/ S.suspend(() =>
+const YouTubeVideo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     id: S.optional(S.String),
@@ -131,7 +131,7 @@ export interface Form {
   /** URL of the form responses document. Only set if responses have been recorded and only when the requesting user is an editor of the form. Read-only. */
   responseUrl?: string;
 }
-export const Form = /*@__PURE__*/ S.suspend(() =>
+const Form = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formUrl: S.optional(S.String),
     title: S.optional(S.String),
@@ -151,7 +151,7 @@ export interface DriveFile {
   /** URL that can be used to access the Drive item. Read-only. */
   alternateLink?: string;
 }
-export const DriveFile = /*@__PURE__*/ S.suspend(() =>
+const DriveFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -171,7 +171,7 @@ export interface CourseMaterial {
   /** Google Drive file attachment. */
   driveFile?: DriveFile;
 }
-export const CourseMaterial = /*@__PURE__*/ S.suspend(() =>
+const CourseMaterial = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(Link),
     youTubeVideo: S.optional(YouTubeVideo),
@@ -181,7 +181,7 @@ export const CourseMaterial = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CourseMaterial" }) as any as S.Schema<CourseMaterial>;
 
 export type CourseMaterialList = Array<CourseMaterial>;
-export const CourseMaterialList = /*@__PURE__*/ S.Array(
+const CourseMaterialList = /*@__PURE__*/ S.Array(
   CourseMaterial,
 ) as any as S.Schema<CourseMaterialList>;
 
@@ -192,7 +192,7 @@ export interface CourseMaterialSet {
   /** Materials attached to this set. */
   materials?: CourseMaterialList;
 }
-export const CourseMaterialSet = /*@__PURE__*/ S.suspend(() =>
+const CourseMaterialSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     materials: S.optional(CourseMaterialList),
@@ -200,7 +200,7 @@ export const CourseMaterialSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CourseMaterialSet" }) as any as S.Schema<CourseMaterialSet>;
 
 export type CourseMaterialSetList = Array<CourseMaterialSet>;
-export const CourseMaterialSetList = /*@__PURE__*/ S.Array(
+const CourseMaterialSetList = /*@__PURE__*/ S.Array(
   CourseMaterialSet,
 ) as any as S.Schema<CourseMaterialSetList>;
 
@@ -211,7 +211,7 @@ export type CourseCourseStateEnum =
   | "PROVISIONED"
   | "DECLINED"
   | "SUSPENDED";
-export const CourseCourseStateEnum = S.String;
+const CourseCourseStateEnum = S.String;
 
 /** Representation of a Google Drive folder. */
 export interface DriveFolder {
@@ -222,7 +222,7 @@ export interface DriveFolder {
   /** Title of the Drive folder. Read-only. */
   title?: string;
 }
-export const DriveFolder = /*@__PURE__*/ S.suspend(() =>
+const DriveFolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternateLink: S.optional(S.String),
     id: S.optional(S.String),
@@ -241,7 +241,7 @@ export interface GradeCategory {
   /** The weight of the category average as part of overall average. A weight of 12.34% is represented as 123400 (100% is 1,000,000). The last two digits should always be zero since we use two decimal precision. Only applicable when grade calculation type is WEIGHTED_CATEGORIES. */
   weight?: number;
 }
-export const GradeCategory = /*@__PURE__*/ S.suspend(() =>
+const GradeCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultGradeDenominator: S.optional(S.Number),
     name: S.optional(S.String),
@@ -251,7 +251,7 @@ export const GradeCategory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GradeCategory" }) as any as S.Schema<GradeCategory>;
 
 export type GradeCategoryList = Array<GradeCategory>;
-export const GradeCategoryList = /*@__PURE__*/ S.Array(
+const GradeCategoryList = /*@__PURE__*/ S.Array(
   GradeCategory,
 ) as any as S.Schema<GradeCategoryList>;
 
@@ -259,14 +259,14 @@ export type GradebookSettingsCalculationTypeEnum =
   | "CALCULATION_TYPE_UNSPECIFIED"
   | "TOTAL_POINTS"
   | "WEIGHTED_CATEGORIES";
-export const GradebookSettingsCalculationTypeEnum = S.String;
+const GradebookSettingsCalculationTypeEnum = S.String;
 
 export type GradebookSettingsDisplaySettingEnum =
   | "DISPLAY_SETTING_UNSPECIFIED"
   | "SHOW_OVERALL_GRADE"
   | "HIDE_OVERALL_GRADE"
   | "SHOW_TEACHERS_ONLY";
-export const GradebookSettingsDisplaySettingEnum = S.String;
+const GradebookSettingsDisplaySettingEnum = S.String;
 
 /** The gradebook settings for a course. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
 export interface GradebookSettings {
@@ -277,7 +277,7 @@ export interface GradebookSettings {
   /** Indicates who can see the overall grade.. */
   displaySetting?: GradebookSettingsDisplaySettingEnum | (string & {});
 }
-export const GradebookSettings = /*@__PURE__*/ S.suspend(() =>
+const GradebookSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gradeCategories: S.optional(GradeCategoryList),
     calculationType: S.optional(GradebookSettingsCalculationTypeEnum),
@@ -330,7 +330,7 @@ export interface Course {
   /** The email address of a Google group containing all teachers of the course. This group does not accept email and can only be used for permissions. Read-only. */
   teacherGroupEmail?: string;
 }
-export const Course = /*@__PURE__*/ S.suspend(() =>
+const Course = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternateLink: S.optional(S.String),
     section: S.optional(S.String),
@@ -360,7 +360,7 @@ export interface CreateCoursesRequest {
   /** Request body */
   body?: Course;
 }
-export const CreateCoursesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Course.pipe(T.HttpBody())),
   }).pipe(
@@ -373,7 +373,7 @@ export interface CourseAlias {
   /** Alias string. The format of the string indicates the desired alias scoping. * `d:` indicates a domain-scoped alias. Example: `d:math_101` * `p:` indicates a project-scoped alias. Example: `p:abc123` This field has a maximum length of 256 characters. */
   alias?: string;
 }
-export const CourseAlias = /*@__PURE__*/ S.suspend(() =>
+const CourseAlias = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
   }),
@@ -385,7 +385,7 @@ export interface CreateCoursesAliasesRequest {
   /** Request body */
   body?: CourseAlias;
 }
-export const CreateCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     body: S.optional(CourseAlias.pipe(T.HttpBody())),
@@ -409,7 +409,7 @@ export interface GeminiGem {
   /** Gems resource id. */
   id?: string;
 }
-export const GeminiGem = /*@__PURE__*/ S.suspend(() =>
+const GeminiGem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     url: S.optional(S.String),
@@ -418,7 +418,7 @@ export const GeminiGem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeminiGem" }) as any as S.Schema<GeminiGem>;
 
 export type SharedDriveFileShareModeEnum = "UNKNOWN_SHARE_MODE" | "VIEW" | "EDIT" | "STUDENT_COPY";
-export const SharedDriveFileShareModeEnum = S.String;
+const SharedDriveFileShareModeEnum = S.String;
 
 /** Drive file that is used as material for course work. */
 export interface SharedDriveFile {
@@ -427,7 +427,7 @@ export interface SharedDriveFile {
   /** Drive file details. */
   driveFile?: DriveFile;
 }
-export const SharedDriveFile = /*@__PURE__*/ S.suspend(() =>
+const SharedDriveFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shareMode: S.optional(SharedDriveFileShareModeEnum),
     driveFile: S.optional(DriveFile),
@@ -443,7 +443,7 @@ export interface NotebookLmNotebook {
   /** Notebook resource id. */
   id?: string;
 }
-export const NotebookLmNotebook = /*@__PURE__*/ S.suspend(() =>
+const NotebookLmNotebook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     title: S.optional(S.String),
@@ -466,7 +466,7 @@ export interface Material {
   /** Google Forms material. Read-only. */
   form?: Form;
 }
-export const Material = /*@__PURE__*/ S.suspend(() =>
+const Material = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(Link),
     gem: S.optional(GeminiGem),
@@ -478,23 +478,23 @@ export const Material = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Material" }) as any as S.Schema<Material>;
 
 export type MaterialList = Array<Material>;
-export const MaterialList = /*@__PURE__*/ S.Array(Material) as any as S.Schema<MaterialList>;
+const MaterialList = /*@__PURE__*/ S.Array(Material) as any as S.Schema<MaterialList>;
 
 export type AnnouncementAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-export const AnnouncementAssigneeModeEnum = S.String;
+const AnnouncementAssigneeModeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Assignee details about a coursework/announcement. This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. */
 export interface IndividualStudentsOptions {
   /** Identifiers for the students that have access to the coursework/announcement. */
   studentIds?: StringList;
 }
-export const IndividualStudentsOptions = /*@__PURE__*/ S.suspend(() =>
+const IndividualStudentsOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentIds: S.optional(StringList),
   }),
@@ -507,7 +507,7 @@ export type AnnouncementStateEnum =
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-export const AnnouncementStateEnum = S.String;
+const AnnouncementStateEnum = S.String;
 
 /** Announcement created by a teacher for students of the course */
 export interface Announcement {
@@ -536,7 +536,7 @@ export interface Announcement {
   /** Status of this announcement. If unspecified, the default state is `DRAFT`. */
   state?: AnnouncementStateEnum | (string & {});
 }
-export const Announcement = /*@__PURE__*/ S.suspend(() =>
+const Announcement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     materials: S.optional(MaterialList),
@@ -559,7 +559,7 @@ export interface CreateCoursesAnnouncementsRequest {
   /** Request body */
   body?: Announcement;
 }
-export const CreateCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     body: S.optional(Announcement.pipe(T.HttpBody())),
@@ -585,7 +585,7 @@ export interface CopyHistory {
   /** Immutable. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const CopyHistory = /*@__PURE__*/ S.suspend(() =>
+const CopyHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.optional(S.String),
     courseId: S.optional(S.String),
@@ -595,16 +595,14 @@ export const CopyHistory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CopyHistory" }) as any as S.Schema<CopyHistory>;
 
 export type CopyHistoryList = Array<CopyHistory>;
-export const CopyHistoryList = /*@__PURE__*/ S.Array(
-  CopyHistory,
-) as any as S.Schema<CopyHistoryList>;
+const CopyHistoryList = /*@__PURE__*/ S.Array(CopyHistory) as any as S.Schema<CopyHistoryList>;
 
 /** URI to be iframed after being populated with query parameters. */
 export interface EmbedUri {
   /** Required. URI to be iframed after being populated with query parameters. This must be a valid UTF-8 string containing between 1 and 1800 characters. */
   uri?: string;
 }
-export const EmbedUri = /*@__PURE__*/ S.suspend(() =>
+const EmbedUri = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -619,7 +617,7 @@ export interface Classroom_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-export const Classroom_Date = /*@__PURE__*/ S.suspend(() =>
+const Classroom_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -638,7 +636,7 @@ export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hours: S.optional(S.Number),
     nanos: S.optional(S.Number),
@@ -674,7 +672,7 @@ export interface AddOnAttachment {
   /** Immutable. Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. Unique per course. */
   itemId?: string;
 }
-export const AddOnAttachment = /*@__PURE__*/ S.suspend(() =>
+const AddOnAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     copyHistory: S.optional(CopyHistoryList),
     courseId: S.optional(S.String),
@@ -703,7 +701,7 @@ export interface CreateCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const CreateCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -726,27 +724,27 @@ export type CourseWorkWorkTypeEnum =
   | "ASSIGNMENT"
   | "SHORT_ANSWER_QUESTION"
   | "MULTIPLE_CHOICE_QUESTION";
-export const CourseWorkWorkTypeEnum = S.String;
+const CourseWorkWorkTypeEnum = S.String;
 
 export type CourseWorkStateEnum =
   | "COURSE_WORK_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-export const CourseWorkStateEnum = S.String;
+const CourseWorkStateEnum = S.String;
 
 export type CourseWorkSubmissionModificationModeEnum =
   | "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED"
   | "MODIFIABLE_UNTIL_TURNED_IN"
   | "MODIFIABLE";
-export const CourseWorkSubmissionModificationModeEnum = S.String;
+const CourseWorkSubmissionModificationModeEnum = S.String;
 
 /** Additional details for multiple-choice questions. */
 export interface MultipleChoiceQuestion {
   /** Possible choices. */
   choices?: StringList;
 }
-export const MultipleChoiceQuestion = /*@__PURE__*/ S.suspend(() =>
+const MultipleChoiceQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choices: S.optional(StringList),
   }),
@@ -756,14 +754,14 @@ export type CourseWorkAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-export const CourseWorkAssigneeModeEnum = S.String;
+const CourseWorkAssigneeModeEnum = S.String;
 
 /** Additional details for assignments. */
 export interface Assignment {
   /** Drive folder where attachments from student submissions are placed. This is only populated for course teachers and administrators. */
   studentWorkFolder?: DriveFolder;
 }
-export const Assignment = /*@__PURE__*/ S.suspend(() =>
+const Assignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentWorkFolder: S.optional(DriveFolder),
   }),
@@ -820,7 +818,7 @@ export interface CourseWork {
   /** Assignment details. This is populated only when `work_type` is `ASSIGNMENT`. Read-only. */
   assignment?: Assignment;
 }
-export const CourseWork = /*@__PURE__*/ S.suspend(() =>
+const CourseWork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicId: S.optional(S.String),
     scheduledTime: S.optional(S.String),
@@ -855,7 +853,7 @@ export interface CreateCoursesCourseWorkRequest {
   /** Request body */
   body?: CourseWork;
 }
-export const CreateCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     body: S.optional(CourseWork.pipe(T.HttpBody())),
@@ -882,7 +880,7 @@ export interface CreateCoursesCourseWorkAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const CreateCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -904,14 +902,14 @@ export type CourseWorkMaterialAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-export const CourseWorkMaterialAssigneeModeEnum = S.String;
+const CourseWorkMaterialAssigneeModeEnum = S.String;
 
 export type CourseWorkMaterialStateEnum =
   | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-export const CourseWorkMaterialStateEnum = S.String;
+const CourseWorkMaterialStateEnum = S.String;
 
 /** Course work material created by a teacher for students of the course */
 export interface CourseWorkMaterial {
@@ -944,7 +942,7 @@ export interface CourseWorkMaterial {
   /** Identifiers of students with access to the course work material. This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in this field can see the course work material. */
   individualStudentsOptions?: IndividualStudentsOptions;
 }
-export const CourseWorkMaterial = /*@__PURE__*/ S.suspend(() =>
+const CourseWorkMaterial = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     alternateLink: S.optional(S.String),
@@ -969,7 +967,7 @@ export interface CreateCoursesCourseWorkMaterialsRequest {
   /** Request body */
   body?: CourseWorkMaterial;
 }
-export const CreateCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     body: S.optional(CourseWorkMaterial.pipe(T.HttpBody())),
@@ -996,7 +994,7 @@ export interface CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postId: S.optional(S.String.pipe(T.Query())),
     itemId: S.String.pipe(T.Label()),
@@ -1025,7 +1023,7 @@ export interface Level {
   /** Optional points associated with this level. If set, all levels within the rubric must specify points and the value must be distinct across all levels within a single criterion. 0 is distinct from no points. */
   points?: number;
 }
-export const Level = /*@__PURE__*/ S.suspend(() =>
+const Level = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
@@ -1035,7 +1033,7 @@ export const Level = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Level" }) as any as S.Schema<Level>;
 
 export type LevelList = Array<Level>;
-export const LevelList = /*@__PURE__*/ S.Array(Level) as any as S.Schema<LevelList>;
+const LevelList = /*@__PURE__*/ S.Array(Level) as any as S.Schema<LevelList>;
 
 /** A rubric criterion. Each criterion is a dimension on which performance is rated. */
 export interface Criterion {
@@ -1048,7 +1046,7 @@ export interface Criterion {
   /** The criterion ID. On creation, an ID is assigned. */
   id?: string;
 }
-export const Criterion = /*@__PURE__*/ S.suspend(() =>
+const Criterion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     levels: S.optional(LevelList),
     description: S.optional(S.String),
@@ -1058,7 +1056,7 @@ export const Criterion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Criterion" }) as any as S.Schema<Criterion>;
 
 export type CriterionList = Array<Criterion>;
-export const CriterionList = /*@__PURE__*/ S.Array(Criterion) as any as S.Schema<CriterionList>;
+const CriterionList = /*@__PURE__*/ S.Array(Criterion) as any as S.Schema<CriterionList>;
 
 /** The rubric of the course work. A rubric is a scoring guide used to evaluate student work and give feedback. For further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). */
 export interface Rubric {
@@ -1077,7 +1075,7 @@ export interface Rubric {
   /** Input only. Immutable. Google Sheets ID of the spreadsheet. This spreadsheet must contain formatted rubric settings. See [Create or reuse a rubric for an assignment](https://support.google.com/edu/classroom/answer/9335069). Use of this field requires the `https://www.googleapis.com/auth/spreadsheets.readonly` or `https://www.googleapis.com/auth/spreadsheets` scope. */
   sourceSpreadsheetId?: string;
 }
-export const Rubric = /*@__PURE__*/ S.suspend(() =>
+const Rubric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criteria: S.optional(CriterionList),
     id: S.optional(S.String),
@@ -1097,7 +1095,7 @@ export interface CreateCoursesCourseWorkRubricsRequest {
   /** Request body */
   body?: Rubric;
 }
-export const CreateCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseWorkId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -1125,7 +1123,7 @@ export interface CreateCoursesPostsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const CreateCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnToken: S.optional(S.String.pipe(T.Query())),
     postId: S.String.pipe(T.Label()),
@@ -1152,7 +1150,7 @@ export interface StudentGroup {
   /** The title of the student group. */
   title?: string;
 }
-export const StudentGroup = /*@__PURE__*/ S.suspend(() =>
+const StudentGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     courseId: S.optional(S.String),
@@ -1166,7 +1164,7 @@ export interface CreateCoursesStudentGroupsRequest {
   /** Request body */
   body?: StudentGroup;
 }
-export const CreateCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     body: S.optional(StudentGroup.pipe(T.HttpBody())),
@@ -1190,7 +1188,7 @@ export interface StudentGroupMember {
   /** Identifier of the student. */
   userId?: string;
 }
-export const StudentGroupMember = /*@__PURE__*/ S.suspend(() =>
+const StudentGroupMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.optional(S.String),
     studentGroupId: S.optional(S.String),
@@ -1206,7 +1204,7 @@ export interface CreateCoursesStudentGroupsStudentGroupMembersRequest {
   /** Request body */
   body?: StudentGroupMember;
 }
-export const CreateCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     studentGroupId: S.String.pipe(T.Label()),
@@ -1223,21 +1221,21 @@ export const CreateCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*
 }) as any as S.Schema<CreateCoursesStudentGroupsStudentGroupMembersRequest>;
 
 export type GlobalPermissionPermissionEnum = "PERMISSION_UNSPECIFIED" | "CREATE_COURSE";
-export const GlobalPermissionPermissionEnum = S.String;
+const GlobalPermissionPermissionEnum = S.String;
 
 /** Global user permission description. */
 export interface GlobalPermission {
   /** Permission value. */
   permission?: GlobalPermissionPermissionEnum | (string & {});
 }
-export const GlobalPermission = /*@__PURE__*/ S.suspend(() =>
+const GlobalPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission: S.optional(GlobalPermissionPermissionEnum),
   }),
 ).annotate({ identifier: "GlobalPermission" }) as any as S.Schema<GlobalPermission>;
 
 export type GlobalPermissionList = Array<GlobalPermission>;
-export const GlobalPermissionList = /*@__PURE__*/ S.Array(
+const GlobalPermissionList = /*@__PURE__*/ S.Array(
   GlobalPermission,
 ) as any as S.Schema<GlobalPermissionList>;
 
@@ -1250,7 +1248,7 @@ export interface Name {
   /** The user's first name. Read-only. */
   givenName?: string;
 }
-export const Name = /*@__PURE__*/ S.suspend(() =>
+const Name = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullName: S.optional(S.String),
     familyName: S.optional(S.String),
@@ -1273,7 +1271,7 @@ export interface UserProfile {
   /** Represents whether a Google Workspace for Education user's domain administrator has explicitly verified them as being a teacher. This field is always false if the user is not a member of a Google Workspace for Education domain. Read-only */
   verifiedTeacher?: boolean;
 }
-export const UserProfile = /*@__PURE__*/ S.suspend(() =>
+const UserProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     photoUrl: S.optional(S.String),
     permissions: S.optional(GlobalPermissionList),
@@ -1295,7 +1293,7 @@ export interface Student {
   /** Identifier of the course. Read-only. */
   courseId?: string;
 }
-export const Student = /*@__PURE__*/ S.suspend(() =>
+const Student = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     profile: S.optional(UserProfile),
@@ -1312,7 +1310,7 @@ export interface CreateCoursesStudentsRequest {
   /** Request body */
   body?: Student;
 }
-export const CreateCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     enrollmentCode: S.optional(S.String.pipe(T.Query())),
@@ -1337,7 +1335,7 @@ export interface Teacher {
   /** Global user information for the teacher. Read-only. */
   profile?: UserProfile;
 }
-export const Teacher = /*@__PURE__*/ S.suspend(() =>
+const Teacher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.optional(S.String),
     userId: S.optional(S.String),
@@ -1351,7 +1349,7 @@ export interface CreateCoursesTeachersRequest {
   /** Request body */
   body?: Teacher;
 }
-export const CreateCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     body: S.optional(Teacher.pipe(T.HttpBody())),
@@ -1377,7 +1375,7 @@ export interface Topic {
   /** The name of the topic, generated by the user. Leading and trailing whitespaces, if any, are trimmed. Also, multiple consecutive whitespaces are collapsed into one inside the name. The result must be a non-empty string. Topic names are case sensitive, and must be no longer than 100 characters. */
   name?: string;
 }
-export const Topic = /*@__PURE__*/ S.suspend(() =>
+const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicId: S.optional(S.String),
     courseId: S.optional(S.String),
@@ -1392,7 +1390,7 @@ export interface CreateCoursesTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-export const CreateCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     body: S.optional(Topic.pipe(T.HttpBody())),
@@ -1408,7 +1406,7 @@ export const CreateCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCoursesTopicsRequest>;
 
 export type InvitationRoleEnum = "COURSE_ROLE_UNSPECIFIED" | "STUDENT" | "TEACHER" | "OWNER";
-export const InvitationRoleEnum = S.String;
+const InvitationRoleEnum = S.String;
 
 /** An invitation to join a course. */
 export interface Invitation {
@@ -1421,7 +1419,7 @@ export interface Invitation {
   /** Identifier assigned by Classroom. Read-only. */
   id?: string;
 }
-export const Invitation = /*@__PURE__*/ S.suspend(() =>
+const Invitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.optional(S.String),
     role: S.optional(InvitationRoleEnum),
@@ -1434,7 +1432,7 @@ export interface CreateInvitationsRequest {
   /** Request body */
   body?: Invitation;
 }
-export const CreateInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Invitation.pipe(T.HttpBody())),
   }).pipe(
@@ -1447,7 +1445,7 @@ export interface CloudPubsubTopic {
   /** The `name` field of a Cloud Pub/Sub [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic). */
   topicName?: string;
 }
-export const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
+const CloudPubsubTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String),
   }),
@@ -1458,7 +1456,7 @@ export interface CourseWorkChangesInfo {
   /** The `course_id` of the course to subscribe to work changes for. */
   courseId?: string;
 }
-export const CourseWorkChangesInfo = /*@__PURE__*/ S.suspend(() =>
+const CourseWorkChangesInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.optional(S.String),
   }),
@@ -1469,15 +1467,14 @@ export type FeedFeedTypeEnum =
   | "DOMAIN_ROSTER_CHANGES"
   | "COURSE_ROSTER_CHANGES"
   | "COURSE_WORK_CHANGES";
-export const FeedFeedTypeEnum = S.String;
+const FeedFeedTypeEnum = S.String;
 
 /** Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`. */
 export interface CourseRosterChangesInfo {
   /** The `course_id` of the course to subscribe to roster changes for. */
   courseId?: string;
 }
-export const CourseRosterChangesInfo =
-  CourseWorkChangesInfo as any as S.Schema<CourseRosterChangesInfo>;
+const CourseRosterChangesInfo = CourseWorkChangesInfo as any as S.Schema<CourseRosterChangesInfo>;
 
 /** A class of notifications that an application can register to receive. For example: "all roster changes for a domain". */
 export interface Feed {
@@ -1488,7 +1485,7 @@ export interface Feed {
   /** Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`. This field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`. */
   courseRosterChangesInfo?: CourseRosterChangesInfo;
 }
-export const Feed = /*@__PURE__*/ S.suspend(() =>
+const Feed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseWorkChangesInfo: S.optional(CourseWorkChangesInfo),
     feedType: S.optional(FeedFeedTypeEnum),
@@ -1507,7 +1504,7 @@ export interface Registration {
   /** Specification for the class of notifications that Classroom should deliver to the destination. */
   feed?: Feed;
 }
-export const Registration = /*@__PURE__*/ S.suspend(() =>
+const Registration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudPubsubTopic: S.optional(CloudPubsubTopic),
     registrationId: S.optional(S.String),
@@ -1520,7 +1517,7 @@ export interface CreateRegistrationsRequest {
   /** Request body */
   body?: Registration;
 }
-export const CreateRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Registration.pipe(T.HttpBody())),
   }).pipe(
@@ -1538,7 +1535,7 @@ export type GuardianInvitationStateEnum =
   | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
   | "PENDING"
   | "COMPLETE";
-export const GuardianInvitationStateEnum = S.String;
+const GuardianInvitationStateEnum = S.String;
 
 /** An invitation to become the guardian of a specified user, sent to a specified email address. */
 export interface GuardianInvitation {
@@ -1553,7 +1550,7 @@ export interface GuardianInvitation {
   /** Email address that the invitation was sent to. This field is only visible to domain administrators. */
   invitedEmailAddress?: string;
 }
-export const GuardianInvitation = /*@__PURE__*/ S.suspend(() =>
+const GuardianInvitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentId: S.optional(S.String),
     invitationId: S.optional(S.String),
@@ -1569,7 +1566,7 @@ export interface CreateUserProfilesGuardianInvitationsRequest {
   /** Request body */
   body?: GuardianInvitation;
 }
-export const CreateUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentId: S.String.pipe(T.Label()),
     body: S.optional(GuardianInvitation.pipe(T.HttpBody())),
@@ -1588,7 +1585,7 @@ export interface DeleteCoursesRequest {
   /** Identifier of the course to delete. This identifier can be either the Classroom-assigned identifier or an alias. */
   id: string;
 }
-export const DeleteCoursesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1606,7 +1603,7 @@ export interface DeleteCoursesAliasesRequest {
   /** Alias to delete. This may not be the Classroom-assigned identifier. */
   alias: string;
 }
-export const DeleteCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     alias: S.String.pipe(T.Label()),
@@ -1627,7 +1624,7 @@ export interface DeleteCoursesAnnouncementsRequest {
   /** Identifier of the announcement to delete. This identifier is a Classroom-assigned identifier. */
   id: string;
 }
-export const DeleteCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1652,7 +1649,7 @@ export interface DeleteCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const DeleteCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.String.pipe(T.Label()),
     attachmentId: S.String.pipe(T.Label()),
@@ -1675,7 +1672,7 @@ export interface DeleteCoursesCourseWorkRequest {
   /** Identifier of the course work to delete. This identifier is a Classroom-assigned identifier. */
   id: string;
 }
-export const DeleteCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1700,7 +1697,7 @@ export interface DeleteCoursesCourseWorkAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const DeleteCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -1723,7 +1720,7 @@ export interface DeleteCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course work material to delete. This identifier is a Classroom-assigned identifier. */
   id: string;
 }
-export const DeleteCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1748,7 +1745,7 @@ export interface DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -1773,7 +1770,7 @@ export interface DeleteCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course work. */
   courseWorkId: string;
 }
-export const DeleteCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1799,7 +1796,7 @@ export interface DeleteCoursesPostsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId?: string;
 }
-export const DeleteCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachmentId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -1822,7 +1819,7 @@ export interface DeleteCoursesStudentGroupsRequest {
   /** Required. The identifier of the course containing the student group to delete. */
   courseId: string;
 }
-export const DeleteCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -1845,7 +1842,7 @@ export interface DeleteCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the student group member to delete. */
   userId: string;
 }
-export const DeleteCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     studentGroupId: S.String.pipe(T.Label()),
@@ -1867,7 +1864,7 @@ export interface DeleteCoursesStudentsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const DeleteCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -1888,7 +1885,7 @@ export interface DeleteCoursesTeachersRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const DeleteCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -1909,7 +1906,7 @@ export interface DeleteCoursesTopicsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const DeleteCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -1928,7 +1925,7 @@ export interface DeleteInvitationsRequest {
   /** Identifier of the invitation to delete. */
   id: string;
 }
-export const DeleteInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1944,7 +1941,7 @@ export interface DeleteRegistrationsRequest {
   /** The `registration_id` of the `Registration` to be deleted. */
   registrationId: string;
 }
-export const DeleteRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1964,7 +1961,7 @@ export interface DeleteUserProfilesGuardiansRequest {
   /** The `id` field from a `Guardian`. */
   guardianId: string;
 }
-export const DeleteUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentId: S.String.pipe(T.Label()),
     guardianId: S.String.pipe(T.Label()),
@@ -1991,7 +1988,7 @@ export interface GetAddOnContextCoursesAnnouncementsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const GetAddOnContextCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddOnContextCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachmentId: S.optional(S.String.pipe(T.Query())),
     itemId: S.String.pipe(T.Label()),
@@ -2014,7 +2011,7 @@ export interface StudentContext {
   /** Requesting user's submission id to be used for grade passback and to identify the student when showing student work to the teacher. This is set exactly when `supportsStudentWork` is `true`. */
   submissionId?: string;
 }
-export const StudentContext = /*@__PURE__*/ S.suspend(() =>
+const StudentContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     submissionId: S.optional(S.String),
   }),
@@ -2022,7 +2019,7 @@ export const StudentContext = /*@__PURE__*/ S.suspend(() =>
 
 /** Role-specific context if the requesting user is a teacher. */
 export interface TeacherContext {}
-export const TeacherContext = Empty as any as S.Schema<TeacherContext>;
+const TeacherContext = Empty as any as S.Schema<TeacherContext>;
 
 /** Attachment-relevant metadata for Classroom add-ons in the context of a specific post. */
 export interface AddOnContext {
@@ -2039,7 +2036,7 @@ export interface AddOnContext {
   /** Add-on context corresponding to the requesting user's role as a teacher. Its presence implies that the requesting user is a teacher in the course. */
   teacherContext?: TeacherContext;
 }
-export const AddOnContext = /*@__PURE__*/ S.suspend(() =>
+const AddOnContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.optional(S.String),
     postId: S.optional(S.String),
@@ -2062,7 +2059,7 @@ export interface GetAddOnContextCoursesCourseWorkRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const GetAddOnContextCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddOnContextCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachmentId: S.optional(S.String.pipe(T.Query())),
     itemId: S.String.pipe(T.Label()),
@@ -2092,7 +2089,7 @@ export interface GetAddOnContextCoursesCourseWorkMaterialsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const GetAddOnContextCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddOnContextCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachmentId: S.optional(S.String.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -2122,7 +2119,7 @@ export interface GetAddOnContextCoursesPostsRequest {
   /** Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. */
   addOnToken?: string;
 }
-export const GetAddOnContextCoursesPostsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddOnContextCoursesPostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -2144,7 +2141,7 @@ export interface GetCoursesRequest {
   /** Identifier of the course to return. This identifier can be either the Classroom-assigned identifier or an alias. */
   id: string;
 }
-export const GetCoursesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2158,7 +2155,7 @@ export interface GetCoursesAnnouncementsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const GetCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -2183,7 +2180,7 @@ export interface GetCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const GetCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.String.pipe(T.Label()),
     attachmentId: S.String.pipe(T.Label()),
@@ -2206,7 +2203,7 @@ export interface GetCoursesCourseWorkRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const GetCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -2231,7 +2228,7 @@ export interface GetCoursesCourseWorkAddOnAttachmentsRequest {
   /** Required. Identifier of the course. */
   courseId: string;
 }
-export const GetCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postId: S.optional(S.String.pipe(T.Query())),
     itemId: S.String.pipe(T.Label()),
@@ -2260,24 +2257,23 @@ export interface GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId: string;
 }
-export const GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      postId: S.optional(S.String.pipe(T.Query())),
-      attachmentId: S.String.pipe(T.Label()),
-      submissionId: S.String.pipe(T.Label()),
-      courseId: S.String.pipe(T.Label()),
-      itemId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
-        baseUrl: "https://classroom.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest",
-  }) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
+const GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    postId: S.optional(S.String.pipe(T.Query())),
+    attachmentId: S.String.pipe(T.Label()),
+    submissionId: S.String.pipe(T.Label()),
+    courseId: S.String.pipe(T.Label()),
+    itemId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest",
+}) as any as S.Schema<GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
 
 export type AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
   | "SUBMISSION_STATE_UNSPECIFIED"
@@ -2286,7 +2282,7 @@ export type AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
   | "TURNED_IN"
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT";
-export const AddOnAttachmentStudentSubmissionPostSubmissionStateEnum = S.String;
+const AddOnAttachmentStudentSubmissionPostSubmissionStateEnum = S.String;
 
 /** Payload for grade update requests. */
 export interface AddOnAttachmentStudentSubmission {
@@ -2301,7 +2297,7 @@ export interface AddOnAttachmentStudentSubmission {
   /** Submission state of add-on attachment's parent post (i.e. assignment). */
   postSubmissionState?: AddOnAttachmentStudentSubmissionPostSubmissionStateEnum | (string & {});
 }
-export const AddOnAttachmentStudentSubmission = /*@__PURE__*/ S.suspend(() =>
+const AddOnAttachmentStudentSubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseWorkSubmissionId: S.optional(S.String),
     userId: S.optional(S.String),
@@ -2319,7 +2315,7 @@ export interface GetCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course work material. */
   id: string;
 }
-export const GetCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2344,7 +2340,7 @@ export interface GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Required. Identifier of the attachment. */
   attachmentId: string;
 }
-export const GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     itemId: S.String.pipe(T.Label()),
@@ -2369,7 +2365,7 @@ export interface GetCoursesCourseWorkRubricsRequest {
   /** Required. Identifier of the course work. */
   courseWorkId: string;
 }
-export const GetCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -2393,7 +2389,7 @@ export interface GetCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the student submission. */
   id: string;
 }
-export const GetCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseWorkId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -2414,7 +2410,7 @@ export interface ShortAnswerSubmission {
   /** Student response to a short-answer question. */
   answer?: string;
 }
-export const ShortAnswerSubmission = /*@__PURE__*/ S.suspend(() =>
+const ShortAnswerSubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer: S.optional(S.String),
   }),
@@ -2425,15 +2421,14 @@ export interface MultipleChoiceSubmission {
   /** Student's select choice. */
   answer?: string;
 }
-export const MultipleChoiceSubmission =
-  ShortAnswerSubmission as any as S.Schema<MultipleChoiceSubmission>;
+const MultipleChoiceSubmission = ShortAnswerSubmission as any as S.Schema<MultipleChoiceSubmission>;
 
 export type GradeHistoryGradeChangeTypeEnum =
   | "UNKNOWN_GRADE_CHANGE_TYPE"
   | "DRAFT_GRADE_POINTS_EARNED_CHANGE"
   | "ASSIGNED_GRADE_POINTS_EARNED_CHANGE"
   | "MAX_POINTS_CHANGE";
-export const GradeHistoryGradeChangeTypeEnum = S.String;
+const GradeHistoryGradeChangeTypeEnum = S.String;
 
 /** The history of each grade on this submission. */
 export interface GradeHistory {
@@ -2448,7 +2443,7 @@ export interface GradeHistory {
   /** The denominator of the grade at this time in the submission grade history. */
   maxPoints?: number;
 }
-export const GradeHistory = /*@__PURE__*/ S.suspend(() =>
+const GradeHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gradeChangeType: S.optional(GradeHistoryGradeChangeTypeEnum),
     pointsEarned: S.optional(S.Number),
@@ -2465,7 +2460,7 @@ export type StateHistoryStateEnum =
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT"
   | "STUDENT_EDITED_AFTER_TURN_IN";
-export const StateHistoryStateEnum = S.String;
+const StateHistoryStateEnum = S.String;
 
 /** The history of each state this submission has been in. */
 export interface StateHistory {
@@ -2476,7 +2471,7 @@ export interface StateHistory {
   /** When the submission entered this state. */
   stateTimestamp?: string;
 }
-export const StateHistory = /*@__PURE__*/ S.suspend(() =>
+const StateHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actorUserId: S.optional(S.String),
     state: S.optional(StateHistoryStateEnum),
@@ -2491,7 +2486,7 @@ export interface SubmissionHistory {
   /** The state history information of the submission, if present. */
   stateHistory?: StateHistory;
 }
-export const SubmissionHistory = /*@__PURE__*/ S.suspend(() =>
+const SubmissionHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gradeHistory: S.optional(GradeHistory),
     stateHistory: S.optional(StateHistory),
@@ -2499,7 +2494,7 @@ export const SubmissionHistory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubmissionHistory" }) as any as S.Schema<SubmissionHistory>;
 
 export type SubmissionHistoryList = Array<SubmissionHistory>;
-export const SubmissionHistoryList = /*@__PURE__*/ S.Array(
+const SubmissionHistoryList = /*@__PURE__*/ S.Array(
   SubmissionHistory,
 ) as any as S.Schema<SubmissionHistoryList>;
 
@@ -2512,7 +2507,7 @@ export interface RubricGrade {
   /** Optional. Criterion ID. */
   criterionId?: string;
 }
-export const RubricGrade = /*@__PURE__*/ S.suspend(() =>
+const RubricGrade = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     levelId: S.optional(S.String),
     points: S.optional(S.Number),
@@ -2521,7 +2516,7 @@ export const RubricGrade = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RubricGrade" }) as any as S.Schema<RubricGrade>;
 
 export type RubricGradeMap = { [key: string]: RubricGrade | undefined };
-export const RubricGradeMap = /*@__PURE__*/ S.Record(
+const RubricGradeMap = /*@__PURE__*/ S.Record(
   S.String,
   RubricGrade,
 ) as any as S.Schema<RubricGradeMap>;
@@ -2537,7 +2532,7 @@ export interface Attachment {
   /** Youtube video attachment. */
   youTubeVideo?: YouTubeVideo;
 }
-export const Attachment = /*@__PURE__*/ S.suspend(() =>
+const Attachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     form: S.optional(Form),
     driveFile: S.optional(DriveFile),
@@ -2547,14 +2542,14 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export type AttachmentList = Array<Attachment>;
-export const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
+const AttachmentList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<AttachmentList>;
 
 /** Student work for an assignment. */
 export interface AssignmentSubmission {
   /** Attachments added by the student. Drive files that correspond to materials with a share mode of STUDENT_COPY may not exist yet if the student has not accessed the assignment in Classroom. Some attachment metadata is only populated if the requesting user has permission to access it. Identifier and alternate_link fields are always available, but others (for example, title) may not be. */
   attachments?: AttachmentList;
 }
-export const AssignmentSubmission = /*@__PURE__*/ S.suspend(() =>
+const AssignmentSubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: S.optional(AttachmentList),
   }),
@@ -2565,7 +2560,7 @@ export type StudentSubmissionCourseWorkTypeEnum =
   | "ASSIGNMENT"
   | "SHORT_ANSWER_QUESTION"
   | "MULTIPLE_CHOICE_QUESTION";
-export const StudentSubmissionCourseWorkTypeEnum = S.String;
+const StudentSubmissionCourseWorkTypeEnum = S.String;
 
 export type StudentSubmissionStateEnum =
   | "SUBMISSION_STATE_UNSPECIFIED"
@@ -2574,7 +2569,7 @@ export type StudentSubmissionStateEnum =
   | "TURNED_IN"
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT";
-export const StudentSubmissionStateEnum = S.String;
+const StudentSubmissionStateEnum = S.String;
 
 /** Student submission for course work. `StudentSubmission` items are generated when a `CourseWork` item is created. Student submissions that have never been accessed (i.e. with `state` = NEW) may not have a creation time or update time. */
 export interface StudentSubmission {
@@ -2617,7 +2612,7 @@ export interface StudentSubmission {
   /** State of this submission. Read-only. */
   state?: StudentSubmissionStateEnum | (string & {});
 }
-export const StudentSubmission = /*@__PURE__*/ S.suspend(() =>
+const StudentSubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shortAnswerSubmission: S.optional(ShortAnswerSubmission),
     multipleChoiceSubmission: S.optional(MultipleChoiceSubmission),
@@ -2651,7 +2646,7 @@ export interface GetCoursesPostsAddOnAttachmentsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId: string;
 }
-export const GetCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachmentId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -2680,21 +2675,20 @@ export interface GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Optional. Deprecated, use `item_id` instead. */
   postId: string;
 }
-export const GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      courseId: S.String.pipe(T.Label()),
-      itemId: S.optional(S.String.pipe(T.Query())),
-      attachmentId: S.String.pipe(T.Label()),
-      submissionId: S.String.pipe(T.Label()),
-      postId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
-        baseUrl: "https://classroom.googleapis.com/",
-      }),
-    ),
+const GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    itemId: S.optional(S.String.pipe(T.Query())),
+    attachmentId: S.String.pipe(T.Label()),
+    submissionId: S.String.pipe(T.Label()),
+    postId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest",
 }) as any as S.Schema<GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
@@ -2705,7 +2699,7 @@ export interface GetCoursesStudentsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const GetCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -2726,7 +2720,7 @@ export interface GetCoursesTeachersRequest {
   /** Identifier of the teacher to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId: string;
 }
-export const GetCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -2747,7 +2741,7 @@ export interface GetCoursesTopicsRequest {
   /** Identifier of the topic. */
   id: string;
 }
-export const GetCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2764,7 +2758,7 @@ export interface GetGradingPeriodSettingsCoursesRequest {
   /** Required. The identifier of the course. */
   courseId: string;
 }
-export const GetGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2789,7 +2783,7 @@ export interface GradingPeriod {
   /** Required. End date, in UTC, of the grading period. Inclusive. */
   endDate?: Classroom_Date;
 }
-export const GradingPeriod = /*@__PURE__*/ S.suspend(() =>
+const GradingPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -2799,7 +2793,7 @@ export const GradingPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GradingPeriod" }) as any as S.Schema<GradingPeriod>;
 
 export type GradingPeriodList = Array<GradingPeriod>;
-export const GradingPeriodList = /*@__PURE__*/ S.Array(
+const GradingPeriodList = /*@__PURE__*/ S.Array(
   GradingPeriod,
 ) as any as S.Schema<GradingPeriodList>;
 
@@ -2810,7 +2804,7 @@ export interface GradingPeriodSettings {
   /** The list of grading periods in a specific course. Grading periods must not have overlapping date ranges and must be listed in chronological order. Each grading period must have a unique title within a course. */
   gradingPeriods?: GradingPeriodList;
 }
-export const GradingPeriodSettings = /*@__PURE__*/ S.suspend(() =>
+const GradingPeriodSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applyToExistingCoursework: S.optional(S.Boolean),
     gradingPeriods: S.optional(GradingPeriodList),
@@ -2821,7 +2815,7 @@ export interface GetInvitationsRequest {
   /** Identifier of the invitation to return. */
   id: string;
 }
-export const GetInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2837,7 +2831,7 @@ export interface GetUserProfilesRequest {
   /** Identifier of the profile to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   userId: string;
 }
-export const GetUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2855,7 +2849,7 @@ export interface GetUserProfilesGuardianInvitationsRequest {
   /** The ID of the student whose guardian invitation is being requested. */
   studentId: string;
 }
-export const GetUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitationId: S.String.pipe(T.Label()),
     studentId: S.String.pipe(T.Label()),
@@ -2876,7 +2870,7 @@ export interface GetUserProfilesGuardiansRequest {
   /** The student whose guardian is being requested. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
   studentId: string;
 }
-export const GetUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guardianId: S.String.pipe(T.Label()),
     studentId: S.String.pipe(T.Label()),
@@ -2902,7 +2896,7 @@ export interface Guardian {
   /** The email address to which the initial guardian invitation was sent. This field is only visible to domain administrators. */
   invitedEmailAddress?: string;
 }
-export const Guardian = /*@__PURE__*/ S.suspend(() =>
+const Guardian = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentId: S.optional(S.String),
     guardianProfile: S.optional(UserProfile),
@@ -2918,10 +2912,10 @@ export type ListCoursesCourseStatesEnum =
   | "PROVISIONED"
   | "DECLINED"
   | "SUSPENDED";
-export const ListCoursesCourseStatesEnum = S.String;
+const ListCoursesCourseStatesEnum = S.String;
 
 export type ListCoursesCourseStatesEnumList = Array<ListCoursesCourseStatesEnum | (string & {})>;
-export const ListCoursesCourseStatesEnumList = /*@__PURE__*/ S.Array(
+const ListCoursesCourseStatesEnumList = /*@__PURE__*/ S.Array(
   ListCoursesCourseStatesEnum,
 ) as any as S.Schema<ListCoursesCourseStatesEnumList>;
 
@@ -2937,7 +2931,7 @@ export interface ListCoursesRequest {
   /** Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user If specified, `student_id` must be empty. */
   teacherId?: string;
 }
-export const ListCoursesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentId: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2950,7 +2944,7 @@ export const ListCoursesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCoursesRequest" }) as any as S.Schema<ListCoursesRequest>;
 
 export type CourseList = Array<Course>;
-export const CourseList = /*@__PURE__*/ S.Array(Course) as any as S.Schema<CourseList>;
+const CourseList = /*@__PURE__*/ S.Array(Course) as any as S.Schema<CourseList>;
 
 /** Response when listing courses. */
 export interface ListCoursesResponse {
@@ -2959,7 +2953,7 @@ export interface ListCoursesResponse {
   /** Courses that match the list request. */
   courses?: CourseList;
 }
-export const ListCoursesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     courses: S.optional(CourseList),
@@ -2974,7 +2968,7 @@ export interface ListCoursesAliasesRequest {
   /** The identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const ListCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2991,9 +2985,7 @@ export const ListCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoursesAliasesRequest>;
 
 export type CourseAliasList = Array<CourseAlias>;
-export const CourseAliasList = /*@__PURE__*/ S.Array(
-  CourseAlias,
-) as any as S.Schema<CourseAliasList>;
+const CourseAliasList = /*@__PURE__*/ S.Array(CourseAlias) as any as S.Schema<CourseAliasList>;
 
 /** Response when listing course aliases. */
 export interface ListCourseAliasesResponse {
@@ -3002,7 +2994,7 @@ export interface ListCourseAliasesResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-export const ListCourseAliasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCourseAliasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliases: S.optional(CourseAliasList),
     nextPageToken: S.optional(S.String),
@@ -3016,12 +3008,10 @@ export type ListCoursesAnnouncementsAnnouncementStatesEnum =
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-export const ListCoursesAnnouncementsAnnouncementStatesEnum = S.String;
-
 export type ListCoursesAnnouncementsAnnouncementStatesEnumList = Array<
   ListCoursesAnnouncementsAnnouncementStatesEnum | (string & {})
 >;
-export const ListCoursesAnnouncementsAnnouncementStatesEnumList =
+const ListCoursesAnnouncementsAnnouncementStatesEnumList =
   ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesAnnouncementsAnnouncementStatesEnumList>;
 
 export interface ListCoursesAnnouncementsRequest {
@@ -3036,7 +3026,7 @@ export interface ListCoursesAnnouncementsRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-export const ListCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     announcementStates: S.optional(
@@ -3057,9 +3047,7 @@ export const ListCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoursesAnnouncementsRequest>;
 
 export type AnnouncementList = Array<Announcement>;
-export const AnnouncementList = /*@__PURE__*/ S.Array(
-  Announcement,
-) as any as S.Schema<AnnouncementList>;
+const AnnouncementList = /*@__PURE__*/ S.Array(Announcement) as any as S.Schema<AnnouncementList>;
 
 /** Response when listing course work. */
 export interface ListAnnouncementsResponse {
@@ -3068,7 +3056,7 @@ export interface ListAnnouncementsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-export const ListAnnouncementsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAnnouncementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     announcements: S.optional(AnnouncementList),
     nextPageToken: S.optional(S.String),
@@ -3089,7 +3077,7 @@ export interface ListCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. */
   postId?: string;
 }
-export const ListCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -3108,7 +3096,7 @@ export const ListCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListCoursesAnnouncementsAddOnAttachmentsRequest>;
 
 export type AddOnAttachmentList = Array<AddOnAttachment>;
-export const AddOnAttachmentList = /*@__PURE__*/ S.Array(
+const AddOnAttachmentList = /*@__PURE__*/ S.Array(
   AddOnAttachment,
 ) as any as S.Schema<AddOnAttachmentList>;
 
@@ -3119,7 +3107,7 @@ export interface ListAddOnAttachmentsResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAddOnAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAddOnAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnAttachments: S.optional(AddOnAttachmentList),
     nextPageToken: S.optional(S.String),
@@ -3133,12 +3121,10 @@ export type ListCoursesCourseWorkCourseWorkStatesEnum =
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-export const ListCoursesCourseWorkCourseWorkStatesEnum = S.String;
-
 export type ListCoursesCourseWorkCourseWorkStatesEnumList = Array<
   ListCoursesCourseWorkCourseWorkStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkCourseWorkStatesEnumList =
+const ListCoursesCourseWorkCourseWorkStatesEnumList =
   ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkCourseWorkStatesEnumList>;
 
 export interface ListCoursesCourseWorkRequest {
@@ -3153,7 +3139,7 @@ export interface ListCoursesCourseWorkRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-export const ListCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -3172,7 +3158,7 @@ export const ListCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoursesCourseWorkRequest>;
 
 export type CourseWorkList = Array<CourseWork>;
-export const CourseWorkList = /*@__PURE__*/ S.Array(CourseWork) as any as S.Schema<CourseWorkList>;
+const CourseWorkList = /*@__PURE__*/ S.Array(CourseWork) as any as S.Schema<CourseWorkList>;
 
 /** Response when listing course work. */
 export interface ListCourseWorkResponse {
@@ -3181,7 +3167,7 @@ export interface ListCourseWorkResponse {
   /** Course work items that match the request. */
   courseWork?: CourseWorkList;
 }
-export const ListCourseWorkResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCourseWorkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     courseWork: S.optional(CourseWorkList),
@@ -3200,7 +3186,7 @@ export interface ListCoursesCourseWorkAddOnAttachmentsRequest {
   /** The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. */
   pageSize?: number;
 }
-export const ListCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3223,12 +3209,10 @@ export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
   | "PUBLISHED"
   | "DRAFT"
   | "DELETED";
-export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum = S.String;
-
 export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList = Array<
   ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
+const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
   ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList>;
 
 export interface ListCoursesCourseWorkMaterialsRequest {
@@ -3247,7 +3231,7 @@ export interface ListCoursesCourseWorkMaterialsRequest {
   /** Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` */
   orderBy?: string;
 }
-export const ListCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     materialDriveId: S.optional(S.String.pipe(T.Query())),
     materialLink: S.optional(S.String.pipe(T.Query())),
@@ -3270,7 +3254,7 @@ export const ListCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListCoursesCourseWorkMaterialsRequest>;
 
 export type CourseWorkMaterialList = Array<CourseWorkMaterial>;
-export const CourseWorkMaterialList = /*@__PURE__*/ S.Array(
+const CourseWorkMaterialList = /*@__PURE__*/ S.Array(
   CourseWorkMaterial,
 ) as any as S.Schema<CourseWorkMaterialList>;
 
@@ -3281,7 +3265,7 @@ export interface ListCourseWorkMaterialResponse {
   /** Course work material items that match the request. */
   courseWorkMaterial?: CourseWorkMaterialList;
 }
-export const ListCourseWorkMaterialResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCourseWorkMaterialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     courseWorkMaterial: S.optional(CourseWorkMaterialList),
@@ -3302,7 +3286,7 @@ export interface ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. */
   pageSize?: number;
 }
-export const ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     postId: S.optional(S.String.pipe(T.Query())),
@@ -3330,7 +3314,7 @@ export interface ListCoursesCourseWorkRubricsRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-export const ListCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     courseWorkId: S.String.pipe(T.Label()),
@@ -3348,7 +3332,7 @@ export const ListCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoursesCourseWorkRubricsRequest>;
 
 export type RubricList = Array<Rubric>;
-export const RubricList = /*@__PURE__*/ S.Array(Rubric) as any as S.Schema<RubricList>;
+const RubricList = /*@__PURE__*/ S.Array(Rubric) as any as S.Schema<RubricList>;
 
 /** Response when listing rubrics. */
 export interface ListRubricsResponse {
@@ -3357,7 +3341,7 @@ export interface ListRubricsResponse {
   /** Rubrics that match the request. */
   rubrics?: RubricList;
 }
-export const ListRubricsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRubricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     rubrics: S.optional(RubricList),
@@ -3371,19 +3355,17 @@ export type ListCoursesCourseWorkStudentSubmissionsStatesEnum =
   | "TURNED_IN"
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT";
-export const ListCoursesCourseWorkStudentSubmissionsStatesEnum = S.String;
-
 export type ListCoursesCourseWorkStudentSubmissionsStatesEnumList = Array<
   ListCoursesCourseWorkStudentSubmissionsStatesEnum | (string & {})
 >;
-export const ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
+const ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
   ListCoursesCourseStatesEnumList as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsStatesEnumList>;
 
 export type ListCoursesCourseWorkStudentSubmissionsLateEnum =
   | "LATE_VALUES_UNSPECIFIED"
   | "LATE_ONLY"
   | "NOT_LATE_ONLY";
-export const ListCoursesCourseWorkStudentSubmissionsLateEnum = S.String;
+const ListCoursesCourseWorkStudentSubmissionsLateEnum = S.String;
 
 export interface ListCoursesCourseWorkStudentSubmissionsRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
@@ -3401,7 +3383,7 @@ export interface ListCoursesCourseWorkStudentSubmissionsRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-export const ListCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     userId: S.optional(S.String.pipe(T.Query())),
@@ -3422,7 +3404,7 @@ export const ListCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsRequest>;
 
 export type StudentSubmissionList = Array<StudentSubmission>;
-export const StudentSubmissionList = /*@__PURE__*/ S.Array(
+const StudentSubmissionList = /*@__PURE__*/ S.Array(
   StudentSubmission,
 ) as any as S.Schema<StudentSubmissionList>;
 
@@ -3433,7 +3415,7 @@ export interface ListStudentSubmissionsResponse {
   /** Student work that matches the request. */
   studentSubmissions?: StudentSubmissionList;
 }
-export const ListStudentSubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStudentSubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     studentSubmissions: S.optional(StudentSubmissionList),
@@ -3454,7 +3436,7 @@ export interface ListCoursesPostsAddOnAttachmentsRequest {
   /** Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. */
   itemId?: string;
 }
-export const ListCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     postId: S.String.pipe(T.Label()),
@@ -3480,7 +3462,7 @@ export interface ListCoursesStudentGroupsRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum, which is currently set to 75 items. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-export const ListCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3497,9 +3479,7 @@ export const ListCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoursesStudentGroupsRequest>;
 
 export type StudentGroupList = Array<StudentGroup>;
-export const StudentGroupList = /*@__PURE__*/ S.Array(
-  StudentGroup,
-) as any as S.Schema<StudentGroupList>;
+const StudentGroupList = /*@__PURE__*/ S.Array(StudentGroup) as any as S.Schema<StudentGroupList>;
 
 /** Response when listing student groups. */
 export interface ListStudentGroupsResponse {
@@ -3508,7 +3488,7 @@ export interface ListStudentGroupsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-export const ListStudentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStudentGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentGroups: S.optional(StudentGroupList),
     nextPageToken: S.optional(S.String),
@@ -3527,7 +3507,7 @@ export interface ListCoursesStudentGroupsStudentGroupMembersRequest {
   /** Required. The identifier of the student group. */
   studentGroupId: string;
 }
-export const ListCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -3545,7 +3525,7 @@ export const ListCoursesStudentGroupsStudentGroupMembersRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListCoursesStudentGroupsStudentGroupMembersRequest>;
 
 export type StudentGroupMemberList = Array<StudentGroupMember>;
-export const StudentGroupMemberList = /*@__PURE__*/ S.Array(
+const StudentGroupMemberList = /*@__PURE__*/ S.Array(
   StudentGroupMember,
 ) as any as S.Schema<StudentGroupMemberList>;
 
@@ -3556,7 +3536,7 @@ export interface ListStudentGroupMembersResponse {
   /** The student group members. */
   studentGroupMembers?: StudentGroupMemberList;
 }
-export const ListStudentGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStudentGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     studentGroupMembers: S.optional(StudentGroupMemberList),
@@ -3573,7 +3553,7 @@ export interface ListCoursesStudentsRequest {
   /** Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-export const ListCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -3590,7 +3570,7 @@ export const ListCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoursesStudentsRequest>;
 
 export type StudentList = Array<Student>;
-export const StudentList = /*@__PURE__*/ S.Array(Student) as any as S.Schema<StudentList>;
+const StudentList = /*@__PURE__*/ S.Array(Student) as any as S.Schema<StudentList>;
 
 /** Response when listing students. */
 export interface ListStudentsResponse {
@@ -3599,7 +3579,7 @@ export interface ListStudentsResponse {
   /** Students who match the list request. */
   students?: StudentList;
 }
-export const ListStudentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStudentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     students: S.optional(StudentList),
@@ -3614,7 +3594,7 @@ export interface ListCoursesTeachersRequest {
   /** nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. */
   pageToken?: string;
 }
-export const ListCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3631,7 +3611,7 @@ export const ListCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoursesTeachersRequest>;
 
 export type TeacherList = Array<Teacher>;
-export const TeacherList = /*@__PURE__*/ S.Array(Teacher) as any as S.Schema<TeacherList>;
+const TeacherList = /*@__PURE__*/ S.Array(Teacher) as any as S.Schema<TeacherList>;
 
 /** Response when listing teachers. */
 export interface ListTeachersResponse {
@@ -3640,7 +3620,7 @@ export interface ListTeachersResponse {
   /** Teachers who match the list request. */
   teachers?: TeacherList;
 }
-export const ListTeachersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTeachersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     teachers: S.optional(TeacherList),
@@ -3655,7 +3635,7 @@ export interface ListCoursesTopicsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
 }
-export const ListCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3670,7 +3650,7 @@ export const ListCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCoursesTopicsRequest" }) as any as S.Schema<ListCoursesTopicsRequest>;
 
 export type TopicList = Array<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
 
 /** Response when listing topics. */
 export interface ListTopicResponse {
@@ -3679,7 +3659,7 @@ export interface ListTopicResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-export const ListTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(TopicList),
     nextPageToken: S.optional(S.String),
@@ -3696,7 +3676,7 @@ export interface ListInvitationsRequest {
   /** Maximum number of items to return. The default is 500 if unspecified or `0`. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.optional(S.String.pipe(T.Query())),
     userId: S.optional(S.String.pipe(T.Query())),
@@ -3708,7 +3688,7 @@ export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInvitationsRequest" }) as any as S.Schema<ListInvitationsRequest>;
 
 export type InvitationList = Array<Invitation>;
-export const InvitationList = /*@__PURE__*/ S.Array(Invitation) as any as S.Schema<InvitationList>;
+const InvitationList = /*@__PURE__*/ S.Array(Invitation) as any as S.Schema<InvitationList>;
 
 /** Response when listing invitations. */
 export interface ListInvitationsResponse {
@@ -3717,7 +3697,7 @@ export interface ListInvitationsResponse {
   /** Invitations that match the list request. */
   invitations?: InvitationList;
 }
-export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     invitations: S.optional(InvitationList),
@@ -3728,12 +3708,10 @@ export type ListUserProfilesGuardianInvitationsStatesEnum =
   | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
   | "PENDING"
   | "COMPLETE";
-export const ListUserProfilesGuardianInvitationsStatesEnum = S.String;
-
 export type ListUserProfilesGuardianInvitationsStatesEnumList = Array<
   ListUserProfilesGuardianInvitationsStatesEnum | (string & {})
 >;
-export const ListUserProfilesGuardianInvitationsStatesEnumList =
+const ListUserProfilesGuardianInvitationsStatesEnumList =
   ListCoursesCourseStatesEnumList as any as S.Schema<ListUserProfilesGuardianInvitationsStatesEnumList>;
 
 export interface ListUserProfilesGuardianInvitationsRequest {
@@ -3748,7 +3726,7 @@ export interface ListUserProfilesGuardianInvitationsRequest {
   /** If specified, only results with the specified `invited_email_address` are returned. */
   invitedEmailAddress?: string;
 }
-export const ListUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     studentId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3767,7 +3745,7 @@ export const ListUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListUserProfilesGuardianInvitationsRequest>;
 
 export type GuardianInvitationList = Array<GuardianInvitation>;
-export const GuardianInvitationList = /*@__PURE__*/ S.Array(
+const GuardianInvitationList = /*@__PURE__*/ S.Array(
   GuardianInvitation,
 ) as any as S.Schema<GuardianInvitationList>;
 
@@ -3778,7 +3756,7 @@ export interface ListGuardianInvitationsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-export const ListGuardianInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGuardianInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guardianInvitations: S.optional(GuardianInvitationList),
     nextPageToken: S.optional(S.String),
@@ -3797,7 +3775,7 @@ export interface ListUserProfilesGuardiansRequest {
   /** Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. */
   pageSize?: number;
 }
-export const ListUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitedEmailAddress: S.optional(S.String.pipe(T.Query())),
     studentId: S.String.pipe(T.Label()),
@@ -3815,7 +3793,7 @@ export const ListUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserProfilesGuardiansRequest>;
 
 export type GuardianList = Array<Guardian>;
-export const GuardianList = /*@__PURE__*/ S.Array(Guardian) as any as S.Schema<GuardianList>;
+const GuardianList = /*@__PURE__*/ S.Array(Guardian) as any as S.Schema<GuardianList>;
 
 /** Response when listing guardians. */
 export interface ListGuardiansResponse {
@@ -3824,7 +3802,7 @@ export interface ListGuardiansResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
-export const ListGuardiansResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGuardiansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guardians: S.optional(GuardianList),
     nextPageToken: S.optional(S.String),
@@ -3835,7 +3813,7 @@ export type ModifyAnnouncementAssigneesRequestAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-export const ModifyAnnouncementAssigneesRequestAssigneeModeEnum = S.String;
+const ModifyAnnouncementAssigneesRequestAssigneeModeEnum = S.String;
 
 /** Contains fields to add or remove students from a course work or announcement where the `assigneeMode` is set to `INDIVIDUAL_STUDENTS`. */
 export interface ModifyIndividualStudentsOptions {
@@ -3844,7 +3822,7 @@ export interface ModifyIndividualStudentsOptions {
   /** IDs of students to be removed from having access to this coursework/announcement. */
   removeStudentIds?: StringList;
 }
-export const ModifyIndividualStudentsOptions = /*@__PURE__*/ S.suspend(() =>
+const ModifyIndividualStudentsOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addStudentIds: S.optional(StringList),
     removeStudentIds: S.optional(StringList),
@@ -3860,7 +3838,7 @@ export interface ModifyAnnouncementAssigneesRequest {
   /** Set which students can view or cannot view the announcement. Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`. */
   modifyIndividualStudentsOptions?: ModifyIndividualStudentsOptions;
 }
-export const ModifyAnnouncementAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyAnnouncementAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assigneeMode: S.optional(ModifyAnnouncementAssigneesRequestAssigneeModeEnum),
     modifyIndividualStudentsOptions: S.optional(ModifyIndividualStudentsOptions),
@@ -3877,7 +3855,7 @@ export interface ModifyAssigneesCoursesAnnouncementsRequest {
   /** Request body */
   body?: ModifyAnnouncementAssigneesRequest;
 }
-export const ModifyAssigneesCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyAssigneesCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3897,7 +3875,7 @@ export type ModifyCourseWorkAssigneesRequestAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
   | "INDIVIDUAL_STUDENTS";
-export const ModifyCourseWorkAssigneesRequestAssigneeModeEnum = S.String;
+const ModifyCourseWorkAssigneesRequestAssigneeModeEnum = S.String;
 
 /** Request to modify assignee mode and options of a coursework. */
 export interface ModifyCourseWorkAssigneesRequest {
@@ -3906,7 +3884,7 @@ export interface ModifyCourseWorkAssigneesRequest {
   /** Mode of the coursework describing whether it will be assigned to all students or specified individual students. */
   assigneeMode?: ModifyCourseWorkAssigneesRequestAssigneeModeEnum | (string & {});
 }
-export const ModifyCourseWorkAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyCourseWorkAssigneesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modifyIndividualStudentsOptions: S.optional(ModifyIndividualStudentsOptions),
     assigneeMode: S.optional(ModifyCourseWorkAssigneesRequestAssigneeModeEnum),
@@ -3923,7 +3901,7 @@ export interface ModifyAssigneesCoursesCourseWorkRequest {
   /** Request body */
   body?: ModifyCourseWorkAssigneesRequest;
 }
-export const ModifyAssigneesCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyAssigneesCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3944,7 +3922,7 @@ export interface ModifyAttachmentsRequest {
   /** Attachments to add. A student submission may not have more than 20 attachments. Form attachments are not supported. */
   addAttachments?: AttachmentList;
 }
-export const ModifyAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addAttachments: S.optional(AttachmentList),
   }),
@@ -3960,20 +3938,19 @@ export interface ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: ModifyAttachmentsRequest;
 }
-export const ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      courseId: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      courseWorkId: S.String.pipe(T.Label()),
-      body: S.optional(ModifyAttachmentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments",
-        baseUrl: "https://classroom.googleapis.com/",
-      }),
-    ),
+const ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    courseId: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    courseWorkId: S.String.pipe(T.Label()),
+    body: S.optional(ModifyAttachmentsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest",
 }) as any as S.Schema<ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest>;
@@ -3986,7 +3963,7 @@ export interface PatchCoursesRequest {
   /** Request body */
   body?: Course;
 }
-export const PatchCoursesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4010,7 +3987,7 @@ export interface PatchCoursesAnnouncementsRequest {
   /** Request body */
   body?: Announcement;
 }
-export const PatchCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -4041,7 +4018,7 @@ export interface PatchCoursesAnnouncementsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const PatchCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesAnnouncementsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postId: S.optional(S.String.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -4070,7 +4047,7 @@ export interface PatchCoursesCourseWorkRequest {
   /** Request body */
   body?: CourseWork;
 }
-export const PatchCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -4101,7 +4078,7 @@ export interface PatchCoursesCourseWorkAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const PatchCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesCourseWorkAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postId: S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4136,8 +4113,8 @@ export interface PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest
   /** Request body */
   body?: AddOnAttachmentStudentSubmission;
 }
-export const PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       postId: S.optional(S.String.pipe(T.Query())),
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4153,9 +4130,9 @@ export const PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest =
         baseUrl: "https://classroom.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest",
-  }) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
+).annotate({
+  identifier: "PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest",
+}) as any as S.Schema<PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest>;
 
 export interface PatchCoursesCourseWorkMaterialsRequest {
   /** Identifier of the course work material. */
@@ -4167,7 +4144,7 @@ export interface PatchCoursesCourseWorkMaterialsRequest {
   /** Request body */
   body?: CourseWorkMaterial;
 }
-export const PatchCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4198,7 +4175,7 @@ export interface PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     itemId: S.String.pipe(T.Label()),
@@ -4229,7 +4206,7 @@ export interface PatchCoursesCourseWorkRubricsRequest {
   /** Request body */
   body?: Rubric;
 }
-export const PatchCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     courseWorkId: S.String.pipe(T.Label()),
@@ -4259,7 +4236,7 @@ export interface PatchCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: StudentSubmission;
 }
-export const PatchCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4291,7 +4268,7 @@ export interface PatchCoursesPostsAddOnAttachmentsRequest {
   /** Request body */
   body?: AddOnAttachment;
 }
-export const PatchCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesPostsAddOnAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.optional(S.String.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -4326,23 +4303,22 @@ export interface PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
   /** Request body */
   body?: AddOnAttachmentStudentSubmission;
 }
-export const PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      postId: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      courseId: S.String.pipe(T.Label()),
-      itemId: S.optional(S.String.pipe(T.Query())),
-      attachmentId: S.String.pipe(T.Label()),
-      submissionId: S.String.pipe(T.Label()),
-      body: S.optional(AddOnAttachmentStudentSubmission.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
-        baseUrl: "https://classroom.googleapis.com/",
-      }),
-    ),
+const PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    postId: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    courseId: S.String.pipe(T.Label()),
+    itemId: S.optional(S.String.pipe(T.Query())),
+    attachmentId: S.String.pipe(T.Label()),
+    submissionId: S.String.pipe(T.Label()),
+    body: S.optional(AddOnAttachmentStudentSubmission.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}",
+      baseUrl: "https://classroom.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest",
 }) as any as S.Schema<PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest>;
@@ -4357,7 +4333,7 @@ export interface PatchCoursesStudentGroupsRequest {
   /** Request body */
   body?: StudentGroup;
 }
-export const PatchCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     id: S.String.pipe(T.Label()),
@@ -4384,7 +4360,7 @@ export interface PatchCoursesTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-export const PatchCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4411,7 +4387,7 @@ export interface PatchUserProfilesGuardianInvitationsRequest {
   /** Request body */
   body?: GuardianInvitation;
 }
-export const PatchUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitationId: S.String.pipe(T.Label()),
     studentId: S.String.pipe(T.Label()),
@@ -4430,8 +4406,6 @@ export const PatchUserProfilesGuardianInvitationsRequest = /*@__PURE__*/ S.suspe
 
 /** Request to reclaim a student submission. */
 export type ReclaimStudentSubmissionRequest = TeacherContext;
-export const ReclaimStudentSubmissionRequest = TeacherContext;
-
 export interface ReclaimCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -4442,7 +4416,7 @@ export interface ReclaimCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: TeacherContext;
 }
-export const ReclaimCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReclaimCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4461,8 +4435,6 @@ export const ReclaimCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S
 
 /** Request to return a student submission. */
 export type ReturnStudentSubmissionRequest = TeacherContext;
-export const ReturnStudentSubmissionRequest = TeacherContext;
-
 export interface ReturnCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. */
   courseId: string;
@@ -4473,7 +4445,7 @@ export interface ReturnCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: TeacherContext;
 }
-export const ReturnCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReturnCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     courseId: S.String.pipe(T.Label()),
     courseWorkId: S.String.pipe(T.Label()),
@@ -4492,8 +4464,6 @@ export const ReturnCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.
 
 /** Request to turn in a student submission. */
 export type TurnInStudentSubmissionRequest = TeacherContext;
-export const TurnInStudentSubmissionRequest = TeacherContext;
-
 export interface TurnInCoursesCourseWorkStudentSubmissionsRequest {
   /** Identifier of the student submission. */
   id: string;
@@ -4504,7 +4474,7 @@ export interface TurnInCoursesCourseWorkStudentSubmissionsRequest {
   /** Request body */
   body?: TeacherContext;
 }
-export const TurnInCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TurnInCoursesCourseWorkStudentSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     courseId: S.String.pipe(T.Label()),
@@ -4527,7 +4497,7 @@ export interface UpdateCoursesRequest {
   /** Request body */
   body?: Course;
 }
-export const UpdateCoursesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(Course.pipe(T.HttpBody())),
@@ -4544,7 +4514,7 @@ export interface UpdateGradingPeriodSettingsCoursesRequest {
   /** Request body */
   body?: GradingPeriodSettings;
 }
-export const UpdateGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGradingPeriodSettingsCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),
@@ -4572,7 +4542,7 @@ export interface UpdateRubricCoursesCourseWorkRequest {
   /** Request body */
   body?: Rubric;
 }
-export const UpdateRubricCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRubricCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     courseId: S.String.pipe(T.Label()),

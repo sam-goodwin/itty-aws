@@ -56,7 +56,7 @@ export interface ActivateKmsSigningKeyRequest {
   /** How many hours after activation the previously-active key should stop being used. Defaults to a 1 hour grace period so already-issued tokens keep verifying. */
   revokePreviousAfterHours?: number;
 }
-export const ActivateKmsSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateKmsSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     keyId: S.String.pipe(T.Label()),
@@ -71,13 +71,13 @@ export const ActivateKmsSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateKmsSigningKeyRequest>;
 
 export type ActivateKmsSigningKeyResponsePublicKeyKeyOpsList = Array<string>;
-export const ActivateKmsSigningKeyResponsePublicKeyKeyOpsList = /*@__PURE__*/ S.Array(
+const ActivateKmsSigningKeyResponsePublicKeyKeyOpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActivateKmsSigningKeyResponsePublicKeyKeyOpsList>;
 
 /** The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`. */
 export type ActivateKmsSigningKeyResponsePublicKeyX5cList = Array<string>;
-export const ActivateKmsSigningKeyResponsePublicKeyX5cList =
+const ActivateKmsSigningKeyResponsePublicKeyX5cList =
   ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<ActivateKmsSigningKeyResponsePublicKeyX5cList>;
 
 export interface ActivateKmsSigningKeyResponsePublicKey {
@@ -91,7 +91,7 @@ export interface ActivateKmsSigningKeyResponsePublicKey {
   /** The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9). */
   x5t_S256?: string;
 }
-export const ActivateKmsSigningKeyResponsePublicKey = /*@__PURE__*/ S.suspend(() =>
+const ActivateKmsSigningKeyResponsePublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alg: S.optional(S.String),
     key_ops: S.optional(ActivateKmsSigningKeyResponsePublicKeyKeyOpsList),
@@ -106,7 +106,7 @@ export const ActivateKmsSigningKeyResponsePublicKey = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ActivateKmsSigningKeyResponsePublicKey>;
 
 export type ActivateKmsSigningKeyResponseStatus = "active" | "pending" | "revoking";
-export const ActivateKmsSigningKeyResponseStatus = S.String;
+const ActivateKmsSigningKeyResponseStatus = S.String;
 
 export interface ActivateKmsSigningKeyResponse {
   activateAt?: string;
@@ -129,7 +129,7 @@ export interface ActivateKmsSigningKeyResponse {
   status: ActivateKmsSigningKeyResponseStatus;
   updatedAt: string;
 }
-export const ActivateKmsSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivateKmsSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateAt: S.optional(S.String),
     activatedAt: S.optional(S.String),
@@ -161,30 +161,22 @@ export type CreateKmsIssuerRequestAlgorithm =
   | "ES256"
   | "ES384"
   | "ES512";
-export const CreateKmsIssuerRequestAlgorithm = S.String;
+const CreateKmsIssuerRequestAlgorithm = S.String;
 
 /** A JSON Schema used to validate the resolved token claims when signing tokens for this issuer. */
 export type CreateKmsIssuerRequestClaimsSchemaMap = { [key: string]: unknown | undefined };
-export const CreateKmsIssuerRequestClaimsSchemaMap = /*@__PURE__*/ S.Record(
+const CreateKmsIssuerRequestClaimsSchemaMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateKmsIssuerRequestClaimsSchemaMap>;
 
 export type CreateKmsIssuerRequestPolicyCase0Kind = "project-grant";
-export const CreateKmsIssuerRequestPolicyCase0Kind = S.String;
-
 /** The environments for the project grant policy. Each entry is a system environment (production, preview, development) or a custom environment ID (env_...). */
 export type CreateKmsIssuerRequestPolicyCase0EnvironmentsList = Array<string>;
-export const CreateKmsIssuerRequestPolicyCase0EnvironmentsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<CreateKmsIssuerRequestPolicyCase0EnvironmentsList>;
-
 /** The claims that KMS should include in signed JWTs for this policy. */
 export type CreateKmsIssuerRequestPolicyCase0TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateKmsIssuerRequestPolicyCase0TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<CreateKmsIssuerRequestPolicyCase0TokenClaimsMap>;
-
 export interface CreateKmsIssuerRequestPolicyCase0 {
   kind: CreateKmsIssuerRequestPolicyCase0Kind;
   /** The team ID for the project grant policy. */
@@ -196,28 +188,11 @@ export interface CreateKmsIssuerRequestPolicyCase0 {
   /** The claims that KMS should include in signed JWTs for this policy. */
   tokenClaims?: CreateKmsIssuerRequestPolicyCase0TokenClaimsMap;
 }
-export const CreateKmsIssuerRequestPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CreateKmsIssuerRequestPolicyCase0Kind,
-    teamId: S.String,
-    projectId: S.String,
-    environments: CreateKmsIssuerRequestPolicyCase0EnvironmentsList,
-    tokenClaims: S.optional(CreateKmsIssuerRequestPolicyCase0TokenClaimsMap),
-  }),
-).annotate({
-  identifier: "CreateKmsIssuerRequestPolicyCase0",
-}) as any as S.Schema<CreateKmsIssuerRequestPolicyCase0>;
-
 export type CreateKmsIssuerRequestPolicyCase1Kind = "connex-grant";
-export const CreateKmsIssuerRequestPolicyCase1Kind = S.String;
-
 /** The claims that KMS should include in signed JWTs for this policy. */
 export type CreateKmsIssuerRequestPolicyCase1TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateKmsIssuerRequestPolicyCase1TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<CreateKmsIssuerRequestPolicyCase1TokenClaimsMap>;
-
 export interface CreateKmsIssuerRequestPolicyCase1 {
   kind: CreateKmsIssuerRequestPolicyCase1Kind;
   /** The Connex client ID for the Connex grant policy. */
@@ -225,21 +200,10 @@ export interface CreateKmsIssuerRequestPolicyCase1 {
   /** The claims that KMS should include in signed JWTs for this policy. */
   tokenClaims?: CreateKmsIssuerRequestPolicyCase1TokenClaimsMap;
 }
-export const CreateKmsIssuerRequestPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: CreateKmsIssuerRequestPolicyCase1Kind,
-    clientId: S.String,
-    tokenClaims: S.optional(CreateKmsIssuerRequestPolicyCase1TokenClaimsMap),
-  }),
-).annotate({
-  identifier: "CreateKmsIssuerRequestPolicyCase1",
-}) as any as S.Schema<CreateKmsIssuerRequestPolicyCase1>;
-
 export type CreateKmsIssuerRequestPolicy =
   | CreateKmsIssuerRequestPolicyCase0
   | CreateKmsIssuerRequestPolicyCase1;
-export const CreateKmsIssuerRequestPolicy =
-  S.Unknown as any as S.Schema<CreateKmsIssuerRequestPolicy>;
+const CreateKmsIssuerRequestPolicy = S.Unknown as any as S.Schema<CreateKmsIssuerRequestPolicy>;
 
 export interface CreateKmsIssuerRequest {
   /** The Team identifier to perform the request on behalf of. */
@@ -258,7 +222,7 @@ export interface CreateKmsIssuerRequest {
   /** The key id to use as the imported key's JWT/JWKS `kid`. Only allowed when `importKey` is provided. Not required to be unique; the addressable key id is the server-minted `keyId` returned in the response. */
   importKeyId?: string;
 }
-export const CreateKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -281,29 +245,21 @@ export type CreateKmsIssuerResponseAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-export const CreateKmsIssuerResponseAlgorithm = S.String;
+const CreateKmsIssuerResponseAlgorithm = S.String;
 
 export type CreateKmsIssuerResponseClaimsSchemaMap = { [key: string]: unknown | undefined };
-export const CreateKmsIssuerResponseClaimsSchemaMap =
+const CreateKmsIssuerResponseClaimsSchemaMap =
   CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<CreateKmsIssuerResponseClaimsSchemaMap>;
 
 export type CreateKmsIssuerResponseOrigin = "external" | "vercel";
-export const CreateKmsIssuerResponseOrigin = S.String;
+const CreateKmsIssuerResponseOrigin = S.String;
 
 /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
 export type CreateKmsIssuerResponsePoliciesItemCase0EnvironmentsList = Array<string>;
-export const CreateKmsIssuerResponsePoliciesItemCase0EnvironmentsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<CreateKmsIssuerResponsePoliciesItemCase0EnvironmentsList>;
-
 export type CreateKmsIssuerResponsePoliciesItemCase0Kind = "project-grant";
-export const CreateKmsIssuerResponsePoliciesItemCase0Kind = S.String;
-
 export type CreateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<CreateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap>;
-
 export interface CreateKmsIssuerResponsePoliciesItemCase0 {
   createdAt: string;
   /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
@@ -314,29 +270,10 @@ export interface CreateKmsIssuerResponsePoliciesItemCase0 {
   tokenClaims?: CreateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap;
   updatedAt: string;
 }
-export const CreateKmsIssuerResponsePoliciesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environments: CreateKmsIssuerResponsePoliciesItemCase0EnvironmentsList,
-    kind: CreateKmsIssuerResponsePoliciesItemCase0Kind,
-    projectId: S.String,
-    teamId: S.String,
-    tokenClaims: S.optional(CreateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "CreateKmsIssuerResponsePoliciesItemCase0",
-}) as any as S.Schema<CreateKmsIssuerResponsePoliciesItemCase0>;
-
 export type CreateKmsIssuerResponsePoliciesItemCase1Kind = "connex-grant";
-export const CreateKmsIssuerResponsePoliciesItemCase1Kind = S.String;
-
 export type CreateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<CreateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap>;
-
 export interface CreateKmsIssuerResponsePoliciesItemCase1 {
   clientId: string;
   createdAt: string;
@@ -344,38 +281,20 @@ export interface CreateKmsIssuerResponsePoliciesItemCase1 {
   tokenClaims?: CreateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap;
   updatedAt: string;
 }
-export const CreateKmsIssuerResponsePoliciesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    createdAt: S.String,
-    kind: CreateKmsIssuerResponsePoliciesItemCase1Kind,
-    tokenClaims: S.optional(CreateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "CreateKmsIssuerResponsePoliciesItemCase1",
-}) as any as S.Schema<CreateKmsIssuerResponsePoliciesItemCase1>;
-
 export type CreateKmsIssuerResponsePoliciesItem =
   | CreateKmsIssuerResponsePoliciesItemCase0
   | CreateKmsIssuerResponsePoliciesItemCase1;
-export const CreateKmsIssuerResponsePoliciesItem =
+const CreateKmsIssuerResponsePoliciesItem =
   S.Unknown as any as S.Schema<CreateKmsIssuerResponsePoliciesItem>;
 
 export type CreateKmsIssuerResponsePoliciesList = Array<CreateKmsIssuerResponsePoliciesItem>;
-export const CreateKmsIssuerResponsePoliciesList = /*@__PURE__*/ S.Array(
+const CreateKmsIssuerResponsePoliciesList = /*@__PURE__*/ S.Array(
   CreateKmsIssuerResponsePoliciesItem,
 ) as any as S.Schema<CreateKmsIssuerResponsePoliciesList>;
 
 export type CreateKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList = Array<string>;
-export const CreateKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<CreateKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList>;
-
 /** The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`. */
 export type CreateKmsIssuerResponseSigningKeysItemPublicKeyX5cList = Array<string>;
-export const CreateKmsIssuerResponseSigningKeysItemPublicKeyX5cList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<CreateKmsIssuerResponseSigningKeysItemPublicKeyX5cList>;
-
 export interface CreateKmsIssuerResponseSigningKeysItemPublicKey {
   alg?: string;
   key_ops?: CreateKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList;
@@ -387,11 +306,11 @@ export interface CreateKmsIssuerResponseSigningKeysItemPublicKey {
   /** The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9). */
   x5t_S256?: string;
 }
-export const CreateKmsIssuerResponseSigningKeysItemPublicKey =
+const CreateKmsIssuerResponseSigningKeysItemPublicKey =
   ActivateKmsSigningKeyResponsePublicKey as any as S.Schema<CreateKmsIssuerResponseSigningKeysItemPublicKey>;
 
 export type CreateKmsIssuerResponseSigningKeysItemStatus = "active" | "pending" | "revoking";
-export const CreateKmsIssuerResponseSigningKeysItemStatus = S.String;
+const CreateKmsIssuerResponseSigningKeysItemStatus = S.String;
 
 export interface CreateKmsIssuerResponseSigningKeysItem {
   activateAt?: string;
@@ -414,7 +333,7 @@ export interface CreateKmsIssuerResponseSigningKeysItem {
   status: CreateKmsIssuerResponseSigningKeysItemStatus;
   updatedAt: string;
 }
-export const CreateKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
+const CreateKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateAt: S.optional(S.String),
     activatedAt: S.optional(S.String),
@@ -436,7 +355,7 @@ export const CreateKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateKmsIssuerResponseSigningKeysItem>;
 
 export type CreateKmsIssuerResponseSigningKeysList = Array<CreateKmsIssuerResponseSigningKeysItem>;
-export const CreateKmsIssuerResponseSigningKeysList = /*@__PURE__*/ S.Array(
+const CreateKmsIssuerResponseSigningKeysList = /*@__PURE__*/ S.Array(
   CreateKmsIssuerResponseSigningKeysItem,
 ) as any as S.Schema<CreateKmsIssuerResponseSigningKeysList>;
 
@@ -453,7 +372,7 @@ export interface CreateKmsIssuerResponse {
   signingKeys: CreateKmsIssuerResponseSigningKeysList;
   updatedAt: string;
 }
-export const CreateKmsIssuerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateKmsIssuerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: CreateKmsIssuerResponseAlgorithm,
     claimsSchema: S.optional(CreateKmsIssuerResponseClaimsSchemaMap),
@@ -470,16 +389,16 @@ export const CreateKmsIssuerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateKmsIssuerResponse" }) as any as S.Schema<CreateKmsIssuerResponse>;
 
 export type CreateKmsIssuerPolicyRequestKind = "project-grant";
-export const CreateKmsIssuerPolicyRequestKind = S.String;
+const CreateKmsIssuerPolicyRequestKind = S.String;
 
 /** The environments for the project grant policy. Each entry is a system environment (production, preview, development) or a custom environment ID (env_...). */
 export type CreateKmsIssuerPolicyRequestEnvironmentsList = Array<string>;
-export const CreateKmsIssuerPolicyRequestEnvironmentsList =
+const CreateKmsIssuerPolicyRequestEnvironmentsList =
   ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<CreateKmsIssuerPolicyRequestEnvironmentsList>;
 
 /** The claims that KMS should include in signed JWTs for this policy. */
 export type CreateKmsIssuerPolicyRequestTokenClaimsMap = { [key: string]: unknown | undefined };
-export const CreateKmsIssuerPolicyRequestTokenClaimsMap =
+const CreateKmsIssuerPolicyRequestTokenClaimsMap =
   CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<CreateKmsIssuerPolicyRequestTokenClaimsMap>;
 
 export interface CreateKmsIssuerPolicyRequest {
@@ -497,7 +416,7 @@ export interface CreateKmsIssuerPolicyRequest {
   /** The claims that KMS should include in signed JWTs for this policy. */
   tokenClaims?: CreateKmsIssuerPolicyRequestTokenClaimsMap;
 }
-export const CreateKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -513,18 +432,10 @@ export const CreateKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
 export type CreateKmsIssuerPolicyResponseBodyCase0EnvironmentsList = Array<string>;
-export const CreateKmsIssuerPolicyResponseBodyCase0EnvironmentsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<CreateKmsIssuerPolicyResponseBodyCase0EnvironmentsList>;
-
 export type CreateKmsIssuerPolicyResponseBodyCase0Kind = "project-grant";
-export const CreateKmsIssuerPolicyResponseBodyCase0Kind = S.String;
-
 export type CreateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<CreateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap>;
-
 export interface CreateKmsIssuerPolicyResponseBodyCase0 {
   createdAt: string;
   /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
@@ -535,29 +446,10 @@ export interface CreateKmsIssuerPolicyResponseBodyCase0 {
   tokenClaims?: CreateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap;
   updatedAt: string;
 }
-export const CreateKmsIssuerPolicyResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environments: CreateKmsIssuerPolicyResponseBodyCase0EnvironmentsList,
-    kind: CreateKmsIssuerPolicyResponseBodyCase0Kind,
-    projectId: S.String,
-    teamId: S.String,
-    tokenClaims: S.optional(CreateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "CreateKmsIssuerPolicyResponseBodyCase0",
-}) as any as S.Schema<CreateKmsIssuerPolicyResponseBodyCase0>;
-
 export type CreateKmsIssuerPolicyResponseBodyCase1Kind = "connex-grant";
-export const CreateKmsIssuerPolicyResponseBodyCase1Kind = S.String;
-
 export type CreateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<CreateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap>;
-
 export interface CreateKmsIssuerPolicyResponseBodyCase1 {
   clientId: string;
   createdAt: string;
@@ -565,26 +457,14 @@ export interface CreateKmsIssuerPolicyResponseBodyCase1 {
   tokenClaims?: CreateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap;
   updatedAt: string;
 }
-export const CreateKmsIssuerPolicyResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    createdAt: S.String,
-    kind: CreateKmsIssuerPolicyResponseBodyCase1Kind,
-    tokenClaims: S.optional(CreateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "CreateKmsIssuerPolicyResponseBodyCase1",
-}) as any as S.Schema<CreateKmsIssuerPolicyResponseBodyCase1>;
-
 export type CreateKmsIssuerPolicyResponseBody =
   | CreateKmsIssuerPolicyResponseBodyCase0
   | CreateKmsIssuerPolicyResponseBodyCase1;
-export const CreateKmsIssuerPolicyResponseBody =
+const CreateKmsIssuerPolicyResponseBody =
   S.Unknown as any as S.Schema<CreateKmsIssuerPolicyResponseBody>;
 
 export type CreateKmsIssuerPolicyResponse = CreateKmsIssuerPolicyResponseBody;
-export const CreateKmsIssuerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateKmsIssuerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   CreateKmsIssuerPolicyResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateKmsIssuerPolicyResponse",
@@ -592,11 +472,11 @@ export const CreateKmsIssuerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the new key is activated automatically after its public key has propagated, or manually via the activate endpoint. Defaults to `automatic`. */
 export type CreateKmsSigningKeyRequestActivation = "automatic" | "manual";
-export const CreateKmsSigningKeyRequestActivation = S.String;
+const CreateKmsSigningKeyRequestActivation = S.String;
 
 /** Deprecated. The ISO date string or timestamp when the previous signing key should stop being used. Converted to a relative grace and applied at activation, not creation. Prefer revokePreviousAfterHours. */
 export type CreateKmsSigningKeyRequestRevokePreviousAt = string | number;
-export const CreateKmsSigningKeyRequestRevokePreviousAt =
+const CreateKmsSigningKeyRequestRevokePreviousAt =
   S.Unknown as any as S.Schema<CreateKmsSigningKeyRequestRevokePreviousAt>;
 
 export interface CreateKmsSigningKeyRequest {
@@ -617,7 +497,7 @@ export interface CreateKmsSigningKeyRequest {
   /** The key id to use as the imported key's JWT/JWKS `kid`. Only allowed when `importKey` is provided. Not required to be unique; the addressable key id is the server-minted `keyId` returned in the response. */
   importKeyId?: string;
 }
-export const CreateKmsSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateKmsSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -633,14 +513,8 @@ export const CreateKmsSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateKmsSigningKeyRequest>;
 
 export type CreateKmsSigningKeyResponsePublicKeyKeyOpsList = Array<string>;
-export const CreateKmsSigningKeyResponsePublicKeyKeyOpsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<CreateKmsSigningKeyResponsePublicKeyKeyOpsList>;
-
 /** The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`. */
 export type CreateKmsSigningKeyResponsePublicKeyX5cList = Array<string>;
-export const CreateKmsSigningKeyResponsePublicKeyX5cList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<CreateKmsSigningKeyResponsePublicKeyX5cList>;
-
 export interface CreateKmsSigningKeyResponsePublicKey {
   alg?: string;
   key_ops?: CreateKmsSigningKeyResponsePublicKeyKeyOpsList;
@@ -652,11 +526,11 @@ export interface CreateKmsSigningKeyResponsePublicKey {
   /** The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9). */
   x5t_S256?: string;
 }
-export const CreateKmsSigningKeyResponsePublicKey =
+const CreateKmsSigningKeyResponsePublicKey =
   ActivateKmsSigningKeyResponsePublicKey as any as S.Schema<CreateKmsSigningKeyResponsePublicKey>;
 
 export type CreateKmsSigningKeyResponseStatus = "active" | "pending" | "revoking";
-export const CreateKmsSigningKeyResponseStatus = S.String;
+const CreateKmsSigningKeyResponseStatus = S.String;
 
 export interface CreateKmsSigningKeyResponse {
   activateAt?: string;
@@ -679,7 +553,7 @@ export interface CreateKmsSigningKeyResponse {
   status: CreateKmsSigningKeyResponseStatus;
   updatedAt: string;
 }
-export const CreateKmsSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateKmsSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateAt: S.optional(S.String),
     activatedAt: S.optional(S.String),
@@ -708,7 +582,7 @@ export interface DeleteKmsIssuerRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -717,13 +591,13 @@ export const DeleteKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteKmsIssuerRequest" }) as any as S.Schema<DeleteKmsIssuerRequest>;
 
 export interface DeleteKmsIssuerResponse {}
-export const DeleteKmsIssuerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteKmsIssuerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteKmsIssuerResponse",
 }) as any as S.Schema<DeleteKmsIssuerResponse>;
 
 /** The issuer policy kind. */
 export type DeleteKmsIssuerPolicyRequestKind = "project-grant" | "connex-grant";
-export const DeleteKmsIssuerPolicyRequestKind = S.String;
+const DeleteKmsIssuerPolicyRequestKind = S.String;
 
 export interface DeleteKmsIssuerPolicyRequest {
   /** The ID of the issuer. */
@@ -737,7 +611,7 @@ export interface DeleteKmsIssuerPolicyRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     kind: DeleteKmsIssuerPolicyRequestKind.pipe(T.Label()),
@@ -756,7 +630,7 @@ export const DeleteKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteKmsIssuerPolicyRequest>;
 
 export interface DeleteKmsIssuerPolicyResponse {}
-export const DeleteKmsIssuerPolicyResponse =
+const DeleteKmsIssuerPolicyResponse =
   DeleteKmsIssuerResponse as any as S.Schema<DeleteKmsIssuerPolicyResponse>;
 
 export interface GetKmsIssuerRequest {
@@ -767,7 +641,7 @@ export interface GetKmsIssuerRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -785,29 +659,21 @@ export type GetKmsIssuerResponseAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-export const GetKmsIssuerResponseAlgorithm = S.String;
+const GetKmsIssuerResponseAlgorithm = S.String;
 
 export type GetKmsIssuerResponseClaimsSchemaMap = { [key: string]: unknown | undefined };
-export const GetKmsIssuerResponseClaimsSchemaMap =
+const GetKmsIssuerResponseClaimsSchemaMap =
   CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<GetKmsIssuerResponseClaimsSchemaMap>;
 
 export type GetKmsIssuerResponseOrigin = "external" | "vercel";
-export const GetKmsIssuerResponseOrigin = S.String;
+const GetKmsIssuerResponseOrigin = S.String;
 
 /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
 export type GetKmsIssuerResponsePoliciesItemCase0EnvironmentsList = Array<string>;
-export const GetKmsIssuerResponsePoliciesItemCase0EnvironmentsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<GetKmsIssuerResponsePoliciesItemCase0EnvironmentsList>;
-
 export type GetKmsIssuerResponsePoliciesItemCase0Kind = "project-grant";
-export const GetKmsIssuerResponsePoliciesItemCase0Kind = S.String;
-
 export type GetKmsIssuerResponsePoliciesItemCase0TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetKmsIssuerResponsePoliciesItemCase0TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<GetKmsIssuerResponsePoliciesItemCase0TokenClaimsMap>;
-
 export interface GetKmsIssuerResponsePoliciesItemCase0 {
   createdAt: string;
   /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
@@ -818,29 +684,10 @@ export interface GetKmsIssuerResponsePoliciesItemCase0 {
   tokenClaims?: GetKmsIssuerResponsePoliciesItemCase0TokenClaimsMap;
   updatedAt: string;
 }
-export const GetKmsIssuerResponsePoliciesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environments: GetKmsIssuerResponsePoliciesItemCase0EnvironmentsList,
-    kind: GetKmsIssuerResponsePoliciesItemCase0Kind,
-    projectId: S.String,
-    teamId: S.String,
-    tokenClaims: S.optional(GetKmsIssuerResponsePoliciesItemCase0TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "GetKmsIssuerResponsePoliciesItemCase0",
-}) as any as S.Schema<GetKmsIssuerResponsePoliciesItemCase0>;
-
 export type GetKmsIssuerResponsePoliciesItemCase1Kind = "connex-grant";
-export const GetKmsIssuerResponsePoliciesItemCase1Kind = S.String;
-
 export type GetKmsIssuerResponsePoliciesItemCase1TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const GetKmsIssuerResponsePoliciesItemCase1TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<GetKmsIssuerResponsePoliciesItemCase1TokenClaimsMap>;
-
 export interface GetKmsIssuerResponsePoliciesItemCase1 {
   clientId: string;
   createdAt: string;
@@ -848,38 +695,20 @@ export interface GetKmsIssuerResponsePoliciesItemCase1 {
   tokenClaims?: GetKmsIssuerResponsePoliciesItemCase1TokenClaimsMap;
   updatedAt: string;
 }
-export const GetKmsIssuerResponsePoliciesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    createdAt: S.String,
-    kind: GetKmsIssuerResponsePoliciesItemCase1Kind,
-    tokenClaims: S.optional(GetKmsIssuerResponsePoliciesItemCase1TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "GetKmsIssuerResponsePoliciesItemCase1",
-}) as any as S.Schema<GetKmsIssuerResponsePoliciesItemCase1>;
-
 export type GetKmsIssuerResponsePoliciesItem =
   | GetKmsIssuerResponsePoliciesItemCase0
   | GetKmsIssuerResponsePoliciesItemCase1;
-export const GetKmsIssuerResponsePoliciesItem =
+const GetKmsIssuerResponsePoliciesItem =
   S.Unknown as any as S.Schema<GetKmsIssuerResponsePoliciesItem>;
 
 export type GetKmsIssuerResponsePoliciesList = Array<GetKmsIssuerResponsePoliciesItem>;
-export const GetKmsIssuerResponsePoliciesList = /*@__PURE__*/ S.Array(
+const GetKmsIssuerResponsePoliciesList = /*@__PURE__*/ S.Array(
   GetKmsIssuerResponsePoliciesItem,
 ) as any as S.Schema<GetKmsIssuerResponsePoliciesList>;
 
 export type GetKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList = Array<string>;
-export const GetKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<GetKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList>;
-
 /** The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`. */
 export type GetKmsIssuerResponseSigningKeysItemPublicKeyX5cList = Array<string>;
-export const GetKmsIssuerResponseSigningKeysItemPublicKeyX5cList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<GetKmsIssuerResponseSigningKeysItemPublicKeyX5cList>;
-
 export interface GetKmsIssuerResponseSigningKeysItemPublicKey {
   alg?: string;
   key_ops?: GetKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList;
@@ -891,11 +720,11 @@ export interface GetKmsIssuerResponseSigningKeysItemPublicKey {
   /** The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9). */
   x5t_S256?: string;
 }
-export const GetKmsIssuerResponseSigningKeysItemPublicKey =
+const GetKmsIssuerResponseSigningKeysItemPublicKey =
   ActivateKmsSigningKeyResponsePublicKey as any as S.Schema<GetKmsIssuerResponseSigningKeysItemPublicKey>;
 
 export type GetKmsIssuerResponseSigningKeysItemStatus = "active" | "pending" | "revoking";
-export const GetKmsIssuerResponseSigningKeysItemStatus = S.String;
+const GetKmsIssuerResponseSigningKeysItemStatus = S.String;
 
 export interface GetKmsIssuerResponseSigningKeysItem {
   activateAt?: string;
@@ -918,7 +747,7 @@ export interface GetKmsIssuerResponseSigningKeysItem {
   status: GetKmsIssuerResponseSigningKeysItemStatus;
   updatedAt: string;
 }
-export const GetKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
+const GetKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateAt: S.optional(S.String),
     activatedAt: S.optional(S.String),
@@ -940,7 +769,7 @@ export const GetKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetKmsIssuerResponseSigningKeysItem>;
 
 export type GetKmsIssuerResponseSigningKeysList = Array<GetKmsIssuerResponseSigningKeysItem>;
-export const GetKmsIssuerResponseSigningKeysList = /*@__PURE__*/ S.Array(
+const GetKmsIssuerResponseSigningKeysList = /*@__PURE__*/ S.Array(
   GetKmsIssuerResponseSigningKeysItem,
 ) as any as S.Schema<GetKmsIssuerResponseSigningKeysList>;
 
@@ -957,7 +786,7 @@ export interface GetKmsIssuerResponse {
   signingKeys: GetKmsIssuerResponseSigningKeysList;
   updatedAt: string;
 }
-export const GetKmsIssuerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetKmsIssuerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: GetKmsIssuerResponseAlgorithm,
     claimsSchema: S.optional(GetKmsIssuerResponseClaimsSchemaMap),
@@ -983,7 +812,7 @@ export interface ListKmsIssuersRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ListKmsIssuersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKmsIssuersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     next: S.optional(S.String.pipe(T.Query())),
@@ -1002,36 +831,27 @@ export type ListKmsIssuersResponseIssuersItemAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-export const ListKmsIssuersResponseIssuersItemAlgorithm = S.String;
+const ListKmsIssuersResponseIssuersItemAlgorithm = S.String;
 
 export type ListKmsIssuersResponseIssuersItemClaimsSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const ListKmsIssuersResponseIssuersItemClaimsSchemaMap =
+const ListKmsIssuersResponseIssuersItemClaimsSchemaMap =
   CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<ListKmsIssuersResponseIssuersItemClaimsSchemaMap>;
 
 export type ListKmsIssuersResponseIssuersItemOrigin = "external" | "vercel";
-export const ListKmsIssuersResponseIssuersItemOrigin = S.String;
+const ListKmsIssuersResponseIssuersItemOrigin = S.String;
 
 /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
 export type ListKmsIssuersResponseIssuersItemPoliciesItemCase0EnvironmentsList = Array<string>;
-export const ListKmsIssuersResponseIssuersItemPoliciesItemCase0EnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListKmsIssuersResponseIssuersItemPoliciesItemCase0EnvironmentsList>;
+const ListKmsIssuersResponseIssuersItemPoliciesItemCase0EnvironmentsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListKmsIssuersResponseIssuersItemPoliciesItemCase0EnvironmentsList>;
 
 export type ListKmsIssuersResponseIssuersItemPoliciesItemCase0Kind = "project-grant";
-export const ListKmsIssuersResponseIssuersItemPoliciesItemCase0Kind = S.String;
-
 export type ListKmsIssuersResponseIssuersItemPoliciesItemCase0TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListKmsIssuersResponseIssuersItemPoliciesItemCase0TokenClaimsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ListKmsIssuersResponseIssuersItemPoliciesItemCase0TokenClaimsMap>;
-
 export interface ListKmsIssuersResponseIssuersItemPoliciesItemCase0 {
   createdAt: string;
   /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
@@ -1042,29 +862,10 @@ export interface ListKmsIssuersResponseIssuersItemPoliciesItemCase0 {
   tokenClaims?: ListKmsIssuersResponseIssuersItemPoliciesItemCase0TokenClaimsMap;
   updatedAt: string;
 }
-export const ListKmsIssuersResponseIssuersItemPoliciesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environments: ListKmsIssuersResponseIssuersItemPoliciesItemCase0EnvironmentsList,
-    kind: ListKmsIssuersResponseIssuersItemPoliciesItemCase0Kind,
-    projectId: S.String,
-    teamId: S.String,
-    tokenClaims: S.optional(ListKmsIssuersResponseIssuersItemPoliciesItemCase0TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "ListKmsIssuersResponseIssuersItemPoliciesItemCase0",
-}) as any as S.Schema<ListKmsIssuersResponseIssuersItemPoliciesItemCase0>;
-
 export type ListKmsIssuersResponseIssuersItemPoliciesItemCase1Kind = "connex-grant";
-export const ListKmsIssuersResponseIssuersItemPoliciesItemCase1Kind = S.String;
-
 export type ListKmsIssuersResponseIssuersItemPoliciesItemCase1TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListKmsIssuersResponseIssuersItemPoliciesItemCase1TokenClaimsMap =
-  ListKmsIssuersResponseIssuersItemPoliciesItemCase0TokenClaimsMap as any as S.Schema<ListKmsIssuersResponseIssuersItemPoliciesItemCase1TokenClaimsMap>;
-
 export interface ListKmsIssuersResponseIssuersItemPoliciesItemCase1 {
   clientId: string;
   createdAt: string;
@@ -1072,37 +873,25 @@ export interface ListKmsIssuersResponseIssuersItemPoliciesItemCase1 {
   tokenClaims?: ListKmsIssuersResponseIssuersItemPoliciesItemCase1TokenClaimsMap;
   updatedAt: string;
 }
-export const ListKmsIssuersResponseIssuersItemPoliciesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    createdAt: S.String,
-    kind: ListKmsIssuersResponseIssuersItemPoliciesItemCase1Kind,
-    tokenClaims: S.optional(ListKmsIssuersResponseIssuersItemPoliciesItemCase1TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "ListKmsIssuersResponseIssuersItemPoliciesItemCase1",
-}) as any as S.Schema<ListKmsIssuersResponseIssuersItemPoliciesItemCase1>;
-
 export type ListKmsIssuersResponseIssuersItemPoliciesItem =
   | ListKmsIssuersResponseIssuersItemPoliciesItemCase0
   | ListKmsIssuersResponseIssuersItemPoliciesItemCase1;
-export const ListKmsIssuersResponseIssuersItemPoliciesItem =
+const ListKmsIssuersResponseIssuersItemPoliciesItem =
   S.Unknown as any as S.Schema<ListKmsIssuersResponseIssuersItemPoliciesItem>;
 
 export type ListKmsIssuersResponseIssuersItemPoliciesList =
   Array<ListKmsIssuersResponseIssuersItemPoliciesItem>;
-export const ListKmsIssuersResponseIssuersItemPoliciesList = /*@__PURE__*/ S.Array(
+const ListKmsIssuersResponseIssuersItemPoliciesList = /*@__PURE__*/ S.Array(
   ListKmsIssuersResponseIssuersItemPoliciesItem,
 ) as any as S.Schema<ListKmsIssuersResponseIssuersItemPoliciesList>;
 
 export type ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyKeyOpsList = Array<string>;
-export const ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyKeyOpsList =
+const ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyKeyOpsList =
   ListKmsIssuersResponseIssuersItemPoliciesItemCase0EnvironmentsList as any as S.Schema<ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyKeyOpsList>;
 
 /** The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`. */
 export type ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyX5cList = Array<string>;
-export const ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyX5cList =
+const ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyX5cList =
   ListKmsIssuersResponseIssuersItemPoliciesItemCase0EnvironmentsList as any as S.Schema<ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyX5cList>;
 
 export interface ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKey {
@@ -1116,17 +905,16 @@ export interface ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKey {
   /** The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9). */
   x5t_S256?: string;
 }
-export const ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKey = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      alg: S.optional(S.String),
-      key_ops: S.optional(ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyKeyOpsList),
-      kid: S.optional(S.String),
-      kty: S.optional(S.String),
-      use: S.optional(S.String),
-      x5c: S.optional(ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyX5cList),
-      x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-    }),
+const ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    alg: S.optional(S.String),
+    key_ops: S.optional(ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyKeyOpsList),
+    kid: S.optional(S.String),
+    kty: S.optional(S.String),
+    use: S.optional(S.String),
+    x5c: S.optional(ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKeyX5cList),
+    x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
+  }),
 ).annotate({
   identifier: "ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKey",
 }) as any as S.Schema<ListKmsIssuersResponseIssuersItemSigningKeysItemPublicKey>;
@@ -1135,7 +923,7 @@ export type ListKmsIssuersResponseIssuersItemSigningKeysItemStatus =
   | "active"
   | "pending"
   | "revoking";
-export const ListKmsIssuersResponseIssuersItemSigningKeysItemStatus = S.String;
+const ListKmsIssuersResponseIssuersItemSigningKeysItemStatus = S.String;
 
 export interface ListKmsIssuersResponseIssuersItemSigningKeysItem {
   activateAt?: string;
@@ -1158,7 +946,7 @@ export interface ListKmsIssuersResponseIssuersItemSigningKeysItem {
   status: ListKmsIssuersResponseIssuersItemSigningKeysItemStatus;
   updatedAt: string;
 }
-export const ListKmsIssuersResponseIssuersItemSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
+const ListKmsIssuersResponseIssuersItemSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateAt: S.optional(S.String),
     activatedAt: S.optional(S.String),
@@ -1181,7 +969,7 @@ export const ListKmsIssuersResponseIssuersItemSigningKeysItem = /*@__PURE__*/ S.
 
 export type ListKmsIssuersResponseIssuersItemSigningKeysList =
   Array<ListKmsIssuersResponseIssuersItemSigningKeysItem>;
-export const ListKmsIssuersResponseIssuersItemSigningKeysList = /*@__PURE__*/ S.Array(
+const ListKmsIssuersResponseIssuersItemSigningKeysList = /*@__PURE__*/ S.Array(
   ListKmsIssuersResponseIssuersItemSigningKeysItem,
 ) as any as S.Schema<ListKmsIssuersResponseIssuersItemSigningKeysList>;
 
@@ -1198,7 +986,7 @@ export interface ListKmsIssuersResponseIssuersItem {
   signingKeys: ListKmsIssuersResponseIssuersItemSigningKeysList;
   updatedAt: string;
 }
-export const ListKmsIssuersResponseIssuersItem = /*@__PURE__*/ S.suspend(() =>
+const ListKmsIssuersResponseIssuersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: ListKmsIssuersResponseIssuersItemAlgorithm,
     claimsSchema: S.optional(ListKmsIssuersResponseIssuersItemClaimsSchemaMap),
@@ -1217,7 +1005,7 @@ export const ListKmsIssuersResponseIssuersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKmsIssuersResponseIssuersItem>;
 
 export type ListKmsIssuersResponseIssuersList = Array<ListKmsIssuersResponseIssuersItem>;
-export const ListKmsIssuersResponseIssuersList = /*@__PURE__*/ S.Array(
+const ListKmsIssuersResponseIssuersList = /*@__PURE__*/ S.Array(
   ListKmsIssuersResponseIssuersItem,
 ) as any as S.Schema<ListKmsIssuersResponseIssuersList>;
 
@@ -1225,7 +1013,7 @@ export interface ListKmsIssuersResponsePagination {
   count: number;
   next: string | null;
 }
-export const ListKmsIssuersResponsePagination = /*@__PURE__*/ S.suspend(() =>
+const ListKmsIssuersResponsePagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.NullOr(S.String),
@@ -1238,7 +1026,7 @@ export interface ListKmsIssuersResponse {
   issuers: ListKmsIssuersResponseIssuersList;
   pagination: ListKmsIssuersResponsePagination;
 }
-export const ListKmsIssuersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListKmsIssuersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuers: ListKmsIssuersResponseIssuersList,
     pagination: ListKmsIssuersResponsePagination,
@@ -1255,7 +1043,7 @@ export interface RevokeKmsSigningKeyRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const RevokeKmsSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeKmsSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     keyId: S.String.pipe(T.Label()),
@@ -1278,29 +1066,21 @@ export type RevokeKmsSigningKeyResponseAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-export const RevokeKmsSigningKeyResponseAlgorithm = S.String;
+const RevokeKmsSigningKeyResponseAlgorithm = S.String;
 
 export type RevokeKmsSigningKeyResponseClaimsSchemaMap = { [key: string]: unknown | undefined };
-export const RevokeKmsSigningKeyResponseClaimsSchemaMap =
+const RevokeKmsSigningKeyResponseClaimsSchemaMap =
   CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<RevokeKmsSigningKeyResponseClaimsSchemaMap>;
 
 export type RevokeKmsSigningKeyResponseOrigin = "external" | "vercel";
-export const RevokeKmsSigningKeyResponseOrigin = S.String;
+const RevokeKmsSigningKeyResponseOrigin = S.String;
 
 /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
 export type RevokeKmsSigningKeyResponsePoliciesItemCase0EnvironmentsList = Array<string>;
-export const RevokeKmsSigningKeyResponsePoliciesItemCase0EnvironmentsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<RevokeKmsSigningKeyResponsePoliciesItemCase0EnvironmentsList>;
-
 export type RevokeKmsSigningKeyResponsePoliciesItemCase0Kind = "project-grant";
-export const RevokeKmsSigningKeyResponsePoliciesItemCase0Kind = S.String;
-
 export type RevokeKmsSigningKeyResponsePoliciesItemCase0TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const RevokeKmsSigningKeyResponsePoliciesItemCase0TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<RevokeKmsSigningKeyResponsePoliciesItemCase0TokenClaimsMap>;
-
 export interface RevokeKmsSigningKeyResponsePoliciesItemCase0 {
   createdAt: string;
   /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
@@ -1311,29 +1091,10 @@ export interface RevokeKmsSigningKeyResponsePoliciesItemCase0 {
   tokenClaims?: RevokeKmsSigningKeyResponsePoliciesItemCase0TokenClaimsMap;
   updatedAt: string;
 }
-export const RevokeKmsSigningKeyResponsePoliciesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environments: RevokeKmsSigningKeyResponsePoliciesItemCase0EnvironmentsList,
-    kind: RevokeKmsSigningKeyResponsePoliciesItemCase0Kind,
-    projectId: S.String,
-    teamId: S.String,
-    tokenClaims: S.optional(RevokeKmsSigningKeyResponsePoliciesItemCase0TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "RevokeKmsSigningKeyResponsePoliciesItemCase0",
-}) as any as S.Schema<RevokeKmsSigningKeyResponsePoliciesItemCase0>;
-
 export type RevokeKmsSigningKeyResponsePoliciesItemCase1Kind = "connex-grant";
-export const RevokeKmsSigningKeyResponsePoliciesItemCase1Kind = S.String;
-
 export type RevokeKmsSigningKeyResponsePoliciesItemCase1TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const RevokeKmsSigningKeyResponsePoliciesItemCase1TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<RevokeKmsSigningKeyResponsePoliciesItemCase1TokenClaimsMap>;
-
 export interface RevokeKmsSigningKeyResponsePoliciesItemCase1 {
   clientId: string;
   createdAt: string;
@@ -1341,39 +1102,21 @@ export interface RevokeKmsSigningKeyResponsePoliciesItemCase1 {
   tokenClaims?: RevokeKmsSigningKeyResponsePoliciesItemCase1TokenClaimsMap;
   updatedAt: string;
 }
-export const RevokeKmsSigningKeyResponsePoliciesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    createdAt: S.String,
-    kind: RevokeKmsSigningKeyResponsePoliciesItemCase1Kind,
-    tokenClaims: S.optional(RevokeKmsSigningKeyResponsePoliciesItemCase1TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "RevokeKmsSigningKeyResponsePoliciesItemCase1",
-}) as any as S.Schema<RevokeKmsSigningKeyResponsePoliciesItemCase1>;
-
 export type RevokeKmsSigningKeyResponsePoliciesItem =
   | RevokeKmsSigningKeyResponsePoliciesItemCase0
   | RevokeKmsSigningKeyResponsePoliciesItemCase1;
-export const RevokeKmsSigningKeyResponsePoliciesItem =
+const RevokeKmsSigningKeyResponsePoliciesItem =
   S.Unknown as any as S.Schema<RevokeKmsSigningKeyResponsePoliciesItem>;
 
 export type RevokeKmsSigningKeyResponsePoliciesList =
   Array<RevokeKmsSigningKeyResponsePoliciesItem>;
-export const RevokeKmsSigningKeyResponsePoliciesList = /*@__PURE__*/ S.Array(
+const RevokeKmsSigningKeyResponsePoliciesList = /*@__PURE__*/ S.Array(
   RevokeKmsSigningKeyResponsePoliciesItem,
 ) as any as S.Schema<RevokeKmsSigningKeyResponsePoliciesList>;
 
 export type RevokeKmsSigningKeyResponseSigningKeysItemPublicKeyKeyOpsList = Array<string>;
-export const RevokeKmsSigningKeyResponseSigningKeysItemPublicKeyKeyOpsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<RevokeKmsSigningKeyResponseSigningKeysItemPublicKeyKeyOpsList>;
-
 /** The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`. */
 export type RevokeKmsSigningKeyResponseSigningKeysItemPublicKeyX5cList = Array<string>;
-export const RevokeKmsSigningKeyResponseSigningKeysItemPublicKeyX5cList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<RevokeKmsSigningKeyResponseSigningKeysItemPublicKeyX5cList>;
-
 export interface RevokeKmsSigningKeyResponseSigningKeysItemPublicKey {
   alg?: string;
   key_ops?: RevokeKmsSigningKeyResponseSigningKeysItemPublicKeyKeyOpsList;
@@ -1385,11 +1128,11 @@ export interface RevokeKmsSigningKeyResponseSigningKeysItemPublicKey {
   /** The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9). */
   x5t_S256?: string;
 }
-export const RevokeKmsSigningKeyResponseSigningKeysItemPublicKey =
+const RevokeKmsSigningKeyResponseSigningKeysItemPublicKey =
   ActivateKmsSigningKeyResponsePublicKey as any as S.Schema<RevokeKmsSigningKeyResponseSigningKeysItemPublicKey>;
 
 export type RevokeKmsSigningKeyResponseSigningKeysItemStatus = "active" | "pending" | "revoking";
-export const RevokeKmsSigningKeyResponseSigningKeysItemStatus = S.String;
+const RevokeKmsSigningKeyResponseSigningKeysItemStatus = S.String;
 
 export interface RevokeKmsSigningKeyResponseSigningKeysItem {
   activateAt?: string;
@@ -1412,7 +1155,7 @@ export interface RevokeKmsSigningKeyResponseSigningKeysItem {
   status: RevokeKmsSigningKeyResponseSigningKeysItemStatus;
   updatedAt: string;
 }
-export const RevokeKmsSigningKeyResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
+const RevokeKmsSigningKeyResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateAt: S.optional(S.String),
     activatedAt: S.optional(S.String),
@@ -1435,7 +1178,7 @@ export const RevokeKmsSigningKeyResponseSigningKeysItem = /*@__PURE__*/ S.suspen
 
 export type RevokeKmsSigningKeyResponseSigningKeysList =
   Array<RevokeKmsSigningKeyResponseSigningKeysItem>;
-export const RevokeKmsSigningKeyResponseSigningKeysList = /*@__PURE__*/ S.Array(
+const RevokeKmsSigningKeyResponseSigningKeysList = /*@__PURE__*/ S.Array(
   RevokeKmsSigningKeyResponseSigningKeysItem,
 ) as any as S.Schema<RevokeKmsSigningKeyResponseSigningKeysList>;
 
@@ -1452,7 +1195,7 @@ export interface RevokeKmsSigningKeyResponse {
   signingKeys: RevokeKmsSigningKeyResponseSigningKeysList;
   updatedAt: string;
 }
-export const RevokeKmsSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeKmsSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: RevokeKmsSigningKeyResponseAlgorithm,
     claimsSchema: S.optional(RevokeKmsSigningKeyResponseClaimsSchemaMap),
@@ -1476,7 +1219,7 @@ export interface SignKmsMessageRequest {
   /** Base64-encoded message to be signed. */
   message: string;
 }
-export const SignKmsMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SignKmsMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     message: S.String,
@@ -1493,7 +1236,7 @@ export interface SignKmsMessageResponse {
   /** Standard-base64 encoding of the raw signature over the decoded message bytes. */
   signature: string;
 }
-export const SignKmsMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const SignKmsMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.String,
     fingerprint: S.String,
@@ -1512,7 +1255,7 @@ export interface SignKmsTokenRequest {
   /** The time-to-live for the token, in seconds. */
   ttl?: number | null;
 }
-export const SignKmsTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const SignKmsTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     claims: S.optional(S.Unknown),
@@ -1531,7 +1274,7 @@ export interface SignKmsTokenResponse {
   /** Compact JWT signed by the issuer's active signing key. */
   token: string;
 }
-export const SignKmsTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const SignKmsTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.String,
     fingerprint: S.String,
@@ -1542,7 +1285,7 @@ export const SignKmsTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A JSON Schema used to validate the resolved token claims when signing tokens for this issuer. Pass null to remove it. */
 export type UpdateKmsIssuerRequestClaimsSchemaMap = { [key: string]: unknown | undefined };
-export const UpdateKmsIssuerRequestClaimsSchemaMap =
+const UpdateKmsIssuerRequestClaimsSchemaMap =
   CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<UpdateKmsIssuerRequestClaimsSchemaMap>;
 
 export interface UpdateKmsIssuerRequest {
@@ -1557,7 +1300,7 @@ export interface UpdateKmsIssuerRequest {
   /** A JSON Schema used to validate the resolved token claims when signing tokens for this issuer. Pass null to remove it. */
   claimsSchema?: UpdateKmsIssuerRequestClaimsSchemaMap | null;
 }
-export const UpdateKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateKmsIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1577,29 +1320,21 @@ export type UpdateKmsIssuerResponseAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-export const UpdateKmsIssuerResponseAlgorithm = S.String;
+const UpdateKmsIssuerResponseAlgorithm = S.String;
 
 export type UpdateKmsIssuerResponseClaimsSchemaMap = { [key: string]: unknown | undefined };
-export const UpdateKmsIssuerResponseClaimsSchemaMap =
+const UpdateKmsIssuerResponseClaimsSchemaMap =
   CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<UpdateKmsIssuerResponseClaimsSchemaMap>;
 
 export type UpdateKmsIssuerResponseOrigin = "external" | "vercel";
-export const UpdateKmsIssuerResponseOrigin = S.String;
+const UpdateKmsIssuerResponseOrigin = S.String;
 
 /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
 export type UpdateKmsIssuerResponsePoliciesItemCase0EnvironmentsList = Array<string>;
-export const UpdateKmsIssuerResponsePoliciesItemCase0EnvironmentsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<UpdateKmsIssuerResponsePoliciesItemCase0EnvironmentsList>;
-
 export type UpdateKmsIssuerResponsePoliciesItemCase0Kind = "project-grant";
-export const UpdateKmsIssuerResponsePoliciesItemCase0Kind = S.String;
-
 export type UpdateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<UpdateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap>;
-
 export interface UpdateKmsIssuerResponsePoliciesItemCase0 {
   createdAt: string;
   /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
@@ -1610,29 +1345,10 @@ export interface UpdateKmsIssuerResponsePoliciesItemCase0 {
   tokenClaims?: UpdateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap;
   updatedAt: string;
 }
-export const UpdateKmsIssuerResponsePoliciesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environments: UpdateKmsIssuerResponsePoliciesItemCase0EnvironmentsList,
-    kind: UpdateKmsIssuerResponsePoliciesItemCase0Kind,
-    projectId: S.String,
-    teamId: S.String,
-    tokenClaims: S.optional(UpdateKmsIssuerResponsePoliciesItemCase0TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "UpdateKmsIssuerResponsePoliciesItemCase0",
-}) as any as S.Schema<UpdateKmsIssuerResponsePoliciesItemCase0>;
-
 export type UpdateKmsIssuerResponsePoliciesItemCase1Kind = "connex-grant";
-export const UpdateKmsIssuerResponsePoliciesItemCase1Kind = S.String;
-
 export type UpdateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<UpdateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap>;
-
 export interface UpdateKmsIssuerResponsePoliciesItemCase1 {
   clientId: string;
   createdAt: string;
@@ -1640,38 +1356,20 @@ export interface UpdateKmsIssuerResponsePoliciesItemCase1 {
   tokenClaims?: UpdateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap;
   updatedAt: string;
 }
-export const UpdateKmsIssuerResponsePoliciesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    createdAt: S.String,
-    kind: UpdateKmsIssuerResponsePoliciesItemCase1Kind,
-    tokenClaims: S.optional(UpdateKmsIssuerResponsePoliciesItemCase1TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "UpdateKmsIssuerResponsePoliciesItemCase1",
-}) as any as S.Schema<UpdateKmsIssuerResponsePoliciesItemCase1>;
-
 export type UpdateKmsIssuerResponsePoliciesItem =
   | UpdateKmsIssuerResponsePoliciesItemCase0
   | UpdateKmsIssuerResponsePoliciesItemCase1;
-export const UpdateKmsIssuerResponsePoliciesItem =
+const UpdateKmsIssuerResponsePoliciesItem =
   S.Unknown as any as S.Schema<UpdateKmsIssuerResponsePoliciesItem>;
 
 export type UpdateKmsIssuerResponsePoliciesList = Array<UpdateKmsIssuerResponsePoliciesItem>;
-export const UpdateKmsIssuerResponsePoliciesList = /*@__PURE__*/ S.Array(
+const UpdateKmsIssuerResponsePoliciesList = /*@__PURE__*/ S.Array(
   UpdateKmsIssuerResponsePoliciesItem,
 ) as any as S.Schema<UpdateKmsIssuerResponsePoliciesList>;
 
 export type UpdateKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList = Array<string>;
-export const UpdateKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<UpdateKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList>;
-
 /** The X.509 certificate chain (RFC 7517 §4.7). Each entry is the base64 DER (not base64url) of a certificate. For keys minted with a stored certificate this holds the single self-signed cert as `[x5c]`. */
 export type UpdateKmsIssuerResponseSigningKeysItemPublicKeyX5cList = Array<string>;
-export const UpdateKmsIssuerResponseSigningKeysItemPublicKeyX5cList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<UpdateKmsIssuerResponseSigningKeysItemPublicKeyX5cList>;
-
 export interface UpdateKmsIssuerResponseSigningKeysItemPublicKey {
   alg?: string;
   key_ops?: UpdateKmsIssuerResponseSigningKeysItemPublicKeyKeyOpsList;
@@ -1683,11 +1381,11 @@ export interface UpdateKmsIssuerResponseSigningKeysItemPublicKey {
   /** The base64url SHA-256 thumbprint of the DER certificate in `x5c[0]` (RFC 7517 §4.9). */
   x5t_S256?: string;
 }
-export const UpdateKmsIssuerResponseSigningKeysItemPublicKey =
+const UpdateKmsIssuerResponseSigningKeysItemPublicKey =
   ActivateKmsSigningKeyResponsePublicKey as any as S.Schema<UpdateKmsIssuerResponseSigningKeysItemPublicKey>;
 
 export type UpdateKmsIssuerResponseSigningKeysItemStatus = "active" | "pending" | "revoking";
-export const UpdateKmsIssuerResponseSigningKeysItemStatus = S.String;
+const UpdateKmsIssuerResponseSigningKeysItemStatus = S.String;
 
 export interface UpdateKmsIssuerResponseSigningKeysItem {
   activateAt?: string;
@@ -1710,7 +1408,7 @@ export interface UpdateKmsIssuerResponseSigningKeysItem {
   status: UpdateKmsIssuerResponseSigningKeysItemStatus;
   updatedAt: string;
 }
-export const UpdateKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateAt: S.optional(S.String),
     activatedAt: S.optional(S.String),
@@ -1732,7 +1430,7 @@ export const UpdateKmsIssuerResponseSigningKeysItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateKmsIssuerResponseSigningKeysItem>;
 
 export type UpdateKmsIssuerResponseSigningKeysList = Array<UpdateKmsIssuerResponseSigningKeysItem>;
-export const UpdateKmsIssuerResponseSigningKeysList = /*@__PURE__*/ S.Array(
+const UpdateKmsIssuerResponseSigningKeysList = /*@__PURE__*/ S.Array(
   UpdateKmsIssuerResponseSigningKeysItem,
 ) as any as S.Schema<UpdateKmsIssuerResponseSigningKeysList>;
 
@@ -1749,7 +1447,7 @@ export interface UpdateKmsIssuerResponse {
   signingKeys: UpdateKmsIssuerResponseSigningKeysList;
   updatedAt: string;
 }
-export const UpdateKmsIssuerResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateKmsIssuerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: UpdateKmsIssuerResponseAlgorithm,
     claimsSchema: S.optional(UpdateKmsIssuerResponseClaimsSchemaMap),
@@ -1767,16 +1465,16 @@ export const UpdateKmsIssuerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The issuer policy kind. */
 export type UpdateKmsIssuerPolicyRequestKind = "project-grant";
-export const UpdateKmsIssuerPolicyRequestKind = S.String;
+const UpdateKmsIssuerPolicyRequestKind = S.String;
 
 /** The environments for the project grant policy. Each entry is a system environment (production, preview, development) or a custom environment ID (env_...). */
 export type UpdateKmsIssuerPolicyRequestEnvironmentsList = Array<string>;
-export const UpdateKmsIssuerPolicyRequestEnvironmentsList =
+const UpdateKmsIssuerPolicyRequestEnvironmentsList =
   ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<UpdateKmsIssuerPolicyRequestEnvironmentsList>;
 
 /** The claims that KMS should include in signed JWTs for this policy. Pass null to remove them. */
 export type UpdateKmsIssuerPolicyRequestTokenClaimsMap = { [key: string]: unknown | undefined };
-export const UpdateKmsIssuerPolicyRequestTokenClaimsMap =
+const UpdateKmsIssuerPolicyRequestTokenClaimsMap =
   CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<UpdateKmsIssuerPolicyRequestTokenClaimsMap>;
 
 export interface UpdateKmsIssuerPolicyRequest {
@@ -1795,7 +1493,7 @@ export interface UpdateKmsIssuerPolicyRequest {
   /** The claims that KMS should include in signed JWTs for this policy. Pass null to remove them. */
   tokenClaims?: UpdateKmsIssuerPolicyRequestTokenClaimsMap | null;
 }
-export const UpdateKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerId: S.String.pipe(T.Label()),
     kind: UpdateKmsIssuerPolicyRequestKind.pipe(T.Label()),
@@ -1817,18 +1515,10 @@ export const UpdateKmsIssuerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
 export type UpdateKmsIssuerPolicyResponseBodyCase0EnvironmentsList = Array<string>;
-export const UpdateKmsIssuerPolicyResponseBodyCase0EnvironmentsList =
-  ActivateKmsSigningKeyResponsePublicKeyKeyOpsList as any as S.Schema<UpdateKmsIssuerPolicyResponseBodyCase0EnvironmentsList>;
-
 export type UpdateKmsIssuerPolicyResponseBodyCase0Kind = "project-grant";
-export const UpdateKmsIssuerPolicyResponseBodyCase0Kind = S.String;
-
 export type UpdateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<UpdateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap>;
-
 export interface UpdateKmsIssuerPolicyResponseBodyCase0 {
   createdAt: string;
   /** Environments whose OIDC tokens this grant authorizes. Each entry is either a system environment slug (`production`, `preview`, `development`) or a custom environment ID (prefixed `env_`). Custom environments are matched against the token's `custom_environment_id` claim (the stable ID); system environments against its `environment` claim. */
@@ -1839,29 +1529,10 @@ export interface UpdateKmsIssuerPolicyResponseBodyCase0 {
   tokenClaims?: UpdateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap;
   updatedAt: string;
 }
-export const UpdateKmsIssuerPolicyResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environments: UpdateKmsIssuerPolicyResponseBodyCase0EnvironmentsList,
-    kind: UpdateKmsIssuerPolicyResponseBodyCase0Kind,
-    projectId: S.String,
-    teamId: S.String,
-    tokenClaims: S.optional(UpdateKmsIssuerPolicyResponseBodyCase0TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "UpdateKmsIssuerPolicyResponseBodyCase0",
-}) as any as S.Schema<UpdateKmsIssuerPolicyResponseBodyCase0>;
-
 export type UpdateKmsIssuerPolicyResponseBodyCase1Kind = "connex-grant";
-export const UpdateKmsIssuerPolicyResponseBodyCase1Kind = S.String;
-
 export type UpdateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap =
-  CreateKmsIssuerRequestClaimsSchemaMap as any as S.Schema<UpdateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap>;
-
 export interface UpdateKmsIssuerPolicyResponseBodyCase1 {
   clientId: string;
   createdAt: string;
@@ -1869,26 +1540,14 @@ export interface UpdateKmsIssuerPolicyResponseBodyCase1 {
   tokenClaims?: UpdateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap;
   updatedAt: string;
 }
-export const UpdateKmsIssuerPolicyResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    createdAt: S.String,
-    kind: UpdateKmsIssuerPolicyResponseBodyCase1Kind,
-    tokenClaims: S.optional(UpdateKmsIssuerPolicyResponseBodyCase1TokenClaimsMap),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "UpdateKmsIssuerPolicyResponseBodyCase1",
-}) as any as S.Schema<UpdateKmsIssuerPolicyResponseBodyCase1>;
-
 export type UpdateKmsIssuerPolicyResponseBody =
   | UpdateKmsIssuerPolicyResponseBodyCase0
   | UpdateKmsIssuerPolicyResponseBodyCase1;
-export const UpdateKmsIssuerPolicyResponseBody =
+const UpdateKmsIssuerPolicyResponseBody =
   S.Unknown as any as S.Schema<UpdateKmsIssuerPolicyResponseBody>;
 
 export type UpdateKmsIssuerPolicyResponse = UpdateKmsIssuerPolicyResponseBody;
-export const UpdateKmsIssuerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateKmsIssuerPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateKmsIssuerPolicyResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateKmsIssuerPolicyResponse",

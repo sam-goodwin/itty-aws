@@ -91,7 +91,7 @@ export type Partial = boolean;
 export type Query = string;
 export type QueryOptions = string;
 export type QueryParser = "simple" | "structured" | "lucene" | "dismax" | (string & {});
-export const QueryParser = S.String;
+const QueryParser = S.String;
 
 export type Return = string;
 export type Size = number;
@@ -114,7 +114,7 @@ export interface SearchRequest {
   start?: number;
   stats?: string;
 }
-export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String).pipe(T.HttpQuery("cursor")),
     expr: S.optional(S.String).pipe(T.HttpQuery("expr")),
@@ -146,24 +146,24 @@ export interface SearchStatus {
   timems?: number;
   rid?: string;
 }
-export const SearchStatus = /*@__PURE__*/ S.suspend(() =>
+const SearchStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ timems: S.optional(S.Number), rid: S.optional(S.String) }),
 ).annotate({ identifier: "SearchStatus" }) as any as S.Schema<SearchStatus>;
 export type FieldValue = string[];
-export const FieldValue = /*@__PURE__*/ S.Array(S.String);
+const FieldValue = /*@__PURE__*/ S.Array(S.String);
 export type Fields = { [key: string]: string[] | undefined };
-export const Fields = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldValue.pipe(S.optional));
+const Fields = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldValue.pipe(S.optional));
 export type Exprs = { [key: string]: string | undefined };
-export const Exprs = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Exprs = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type Highlights = { [key: string]: string | undefined };
-export const Highlights = Exprs as any as S.Schema<Highlights>;
+const Highlights = Exprs as any as S.Schema<Highlights>;
 export interface Hit {
   id?: string;
   fields?: { [key: string]: string[] | undefined };
   exprs?: { [key: string]: string | undefined };
   highlights?: { [key: string]: string | undefined };
 }
-export const Hit = /*@__PURE__*/ S.suspend(() =>
+const Hit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     fields: S.optional(Fields),
@@ -172,14 +172,14 @@ export const Hit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hit" }) as any as S.Schema<Hit>;
 export type HitList = Hit[];
-export const HitList = /*@__PURE__*/ S.Array(Hit);
+const HitList = /*@__PURE__*/ S.Array(Hit);
 export interface Hits {
   found?: number;
   start?: number;
   cursor?: string;
   hit?: Hit[];
 }
-export const Hits = /*@__PURE__*/ S.suspend(() =>
+const Hits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.optional(S.Number),
     start: S.optional(S.Number),
@@ -191,19 +191,19 @@ export interface Bucket {
   value?: string;
   count?: number;
 }
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
+const Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.optional(S.String), count: S.optional(S.Number) }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 export type BucketList = Bucket[];
-export const BucketList = /*@__PURE__*/ S.Array(Bucket);
+const BucketList = /*@__PURE__*/ S.Array(Bucket);
 export interface BucketInfo {
   buckets?: Bucket[];
 }
-export const BucketInfo = /*@__PURE__*/ S.suspend(() =>
+const BucketInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ buckets: S.optional(BucketList) }),
 ).annotate({ identifier: "BucketInfo" }) as any as S.Schema<BucketInfo>;
 export type Facets = { [key: string]: BucketInfo | undefined };
-export const Facets = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ BucketInfo.pipe(S.optional));
+const Facets = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ BucketInfo.pipe(S.optional));
 export interface FieldStats {
   min?: string;
   max?: string;
@@ -214,7 +214,7 @@ export interface FieldStats {
   mean?: string;
   stddev?: number;
 }
-export const FieldStats = /*@__PURE__*/ S.suspend(() =>
+const FieldStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.optional(S.String),
     max: S.optional(S.String),
@@ -227,14 +227,14 @@ export const FieldStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldStats" }) as any as S.Schema<FieldStats>;
 export type Stats = { [key: string]: FieldStats | undefined };
-export const Stats = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldStats.pipe(S.optional));
+const Stats = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ FieldStats.pipe(S.optional));
 export interface SearchResponse {
   status?: SearchStatus;
   hits?: Hits;
   facets?: { [key: string]: BucketInfo | undefined };
   stats?: { [key: string]: FieldStats | undefined };
 }
-export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SearchStatus),
     hits: S.optional(Hits),
@@ -249,7 +249,7 @@ export interface SuggestRequest {
   suggester: string;
   size?: number;
 }
-export const SuggestRequest = /*@__PURE__*/ S.suspend(() =>
+const SuggestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.String.pipe(T.HttpQuery("q")),
     suggester: S.String.pipe(T.HttpQuery("suggester")),
@@ -270,13 +270,13 @@ export interface SuggestStatus {
   timems?: number;
   rid?: string;
 }
-export const SuggestStatus = SearchStatus as any as S.Schema<SuggestStatus>;
+const SuggestStatus = SearchStatus as any as S.Schema<SuggestStatus>;
 export interface SuggestionMatch {
   suggestion?: string;
   score?: number;
   id?: string;
 }
-export const SuggestionMatch = /*@__PURE__*/ S.suspend(() =>
+const SuggestionMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestion: S.optional(S.String),
     score: S.optional(S.Number),
@@ -284,13 +284,13 @@ export const SuggestionMatch = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SuggestionMatch" }) as any as S.Schema<SuggestionMatch>;
 export type Suggestions = SuggestionMatch[];
-export const Suggestions = /*@__PURE__*/ S.Array(SuggestionMatch);
+const Suggestions = /*@__PURE__*/ S.Array(SuggestionMatch);
 export interface SuggestModel {
   query?: string;
   found?: number;
   suggestions?: SuggestionMatch[];
 }
-export const SuggestModel = /*@__PURE__*/ S.suspend(() =>
+const SuggestModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     found: S.optional(S.Number),
@@ -301,17 +301,17 @@ export interface SuggestResponse {
   status?: SuggestStatus;
   suggest?: SuggestModel;
 }
-export const SuggestResponse = /*@__PURE__*/ S.suspend(() =>
+const SuggestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(SuggestStatus), suggest: S.optional(SuggestModel) }).pipe(ns),
 ).annotate({ identifier: "SuggestResponse" }) as any as S.Schema<SuggestResponse>;
 export type ContentType = "application/json" | "application/xml" | (string & {});
-export const ContentType = S.String;
+const ContentType = S.String;
 
 export interface UploadDocumentsRequest {
   documents: T.StreamingInputBody;
   contentType: ContentType;
 }
-export const UploadDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documents: T.StreamingInput.pipe(T.HttpPayload()),
     contentType: ContentType.pipe(T.HttpHeader("Content-Type")),
@@ -332,18 +332,18 @@ export type Deletes = number;
 export interface DocumentServiceWarning {
   message?: string;
 }
-export const DocumentServiceWarning = /*@__PURE__*/ S.suspend(() =>
+const DocumentServiceWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ message: S.optional(S.String) }),
 ).annotate({ identifier: "DocumentServiceWarning" }) as any as S.Schema<DocumentServiceWarning>;
 export type DocumentServiceWarnings = DocumentServiceWarning[];
-export const DocumentServiceWarnings = /*@__PURE__*/ S.Array(DocumentServiceWarning);
+const DocumentServiceWarnings = /*@__PURE__*/ S.Array(DocumentServiceWarning);
 export interface UploadDocumentsResponse {
   status?: string;
   adds?: number;
   deletes?: number;
   warnings?: DocumentServiceWarning[];
 }
-export const UploadDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     adds: S.optional(S.Number),

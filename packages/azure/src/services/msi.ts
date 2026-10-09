@@ -18,7 +18,7 @@ export interface DeleteFederatedIdentityCredentialsRequest {
   /** The name of the federated identity credential resource. */
   federatedIdentityCredentialResourceName: string;
 }
-export const DeleteFederatedIdentityCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFederatedIdentityCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -37,7 +37,7 @@ export const DeleteFederatedIdentityCredentialsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteFederatedIdentityCredentialsRequest>;
 
 export interface DeleteFederatedIdentityCredentialsResponse {}
-export const DeleteFederatedIdentityCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteFederatedIdentityCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteFederatedIdentityCredentialsResponse",
@@ -51,7 +51,7 @@ export interface DeleteUserAssignedIdentityRequest {
   /** The name of the identity resource. */
   resourceName: string;
 }
-export const DeleteUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -69,12 +69,12 @@ export const DeleteUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUserAssignedIdentityRequest>;
 
 export interface DeleteUserAssignedIdentityResponse {}
-export const DeleteUserAssignedIdentityResponse =
+const DeleteUserAssignedIdentityResponse =
   DeleteFederatedIdentityCredentialsResponse as any as S.Schema<DeleteUserAssignedIdentityResponse>;
 
 /** The list of audiences that can appear in the issued token. */
 export type FederatedIdentityCredentialPropertiesAudiencesList = Array<string>;
-export const FederatedIdentityCredentialPropertiesAudiencesList = /*@__PURE__*/ S.Array(
+const FederatedIdentityCredentialPropertiesAudiencesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FederatedIdentityCredentialPropertiesAudiencesList>;
 
@@ -87,7 +87,7 @@ export interface FederatedIdentityCredentialProperties {
   /** The list of audiences that can appear in the issued token. */
   audiences: FederatedIdentityCredentialPropertiesAudiencesList;
 }
-export const FederatedIdentityCredentialProperties = /*@__PURE__*/ S.suspend(() =>
+const FederatedIdentityCredentialProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.String,
     subject: S.String,
@@ -109,7 +109,7 @@ export interface FederatedIdentityCredentialsCreateOrUpdateRequest {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-export const FederatedIdentityCredentialsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FederatedIdentityCredentialsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -130,11 +130,11 @@ export const FederatedIdentityCredentialsCreateOrUpdateRequest = /*@__PURE__*/ S
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -151,7 +151,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -174,7 +174,7 @@ export interface FederatedIdentityCredentialsCreateOrUpdateResponse {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-export const FederatedIdentityCredentialsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const FederatedIdentityCredentialsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -196,7 +196,7 @@ export interface GetFederatedIdentityCredentialsRequest {
   /** The name of the federated identity credential resource. */
   federatedIdentityCredentialResourceName: string;
 }
-export const GetFederatedIdentityCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFederatedIdentityCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -226,14 +226,14 @@ export interface GetFederatedIdentityCredentialsResponse {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-export const GetFederatedIdentityCredentialsResponse =
+const GetFederatedIdentityCredentialsResponse =
   FederatedIdentityCredentialsCreateOrUpdateResponse as any as S.Schema<GetFederatedIdentityCredentialsResponse>;
 
 export interface GetSystemAssignedIdentityByScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
 }
-export const GetSystemAssignedIdentityByScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSystemAssignedIdentityByScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -259,7 +259,7 @@ export interface SystemAssignedIdentityProperties {
   /** The ManagedServiceIdentity DataPlane URL that can be queried to obtain the identity credentials. */
   clientSecretUrl?: string;
 }
-export const SystemAssignedIdentityProperties = /*@__PURE__*/ S.suspend(() =>
+const SystemAssignedIdentityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     principalId: S.optional(S.String),
@@ -271,7 +271,7 @@ export const SystemAssignedIdentityProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SystemAssignedIdentityProperties>;
 
 export type GetSystemAssignedIdentityByScopeResponseTagsMap = { [key: string]: string | undefined };
-export const GetSystemAssignedIdentityByScopeResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetSystemAssignedIdentityByScopeResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetSystemAssignedIdentityByScopeResponseTagsMap>;
@@ -290,7 +290,7 @@ export interface GetSystemAssignedIdentityByScopeResponse {
   location: string;
   tags?: GetSystemAssignedIdentityByScopeResponseTagsMap;
 }
-export const GetSystemAssignedIdentityByScopeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSystemAssignedIdentityByScopeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -312,7 +312,7 @@ export interface GetUserAssignedIdentityRequest {
   /** The name of the identity resource. */
   resourceName: string;
 }
-export const GetUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -331,12 +331,12 @@ export const GetUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetUserAssignedIdentityResponseTagsMap = { [key: string]: string | undefined };
-export const GetUserAssignedIdentityResponseTagsMap =
+const GetUserAssignedIdentityResponseTagsMap =
   GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<GetUserAssignedIdentityResponseTagsMap>;
 
 /** Enum to configure regional restrictions on identity assignment, as necessary. */
 export type IsolationScope = "None" | "Regional";
-export const IsolationScope = S.String;
+const IsolationScope = S.String;
 
 /** The properties associated with the user assigned identity. */
 export interface UserAssignedIdentityProperties {
@@ -349,7 +349,7 @@ export interface UserAssignedIdentityProperties {
   /** Enum to configure regional restrictions on identity assignment, as necessary. */
   isolationScope?: IsolationScope | (string & {});
 }
-export const UserAssignedIdentityProperties = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     principalId: S.optional(S.String),
@@ -376,7 +376,7 @@ export interface GetUserAssignedIdentityResponse {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-export const GetUserAssignedIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserAssignedIdentityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -402,7 +402,7 @@ export interface ListFederatedIdentityCredentialsRequest {
   /** A skip token is used to continue retrieving items after an operation returns a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListFederatedIdentityCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFederatedIdentityCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -434,12 +434,12 @@ export interface FederatedIdentityCredential {
   /** The properties associated with the federated identity credential. */
   properties?: FederatedIdentityCredentialProperties;
 }
-export const FederatedIdentityCredential =
+const FederatedIdentityCredential =
   FederatedIdentityCredentialsCreateOrUpdateResponse as any as S.Schema<FederatedIdentityCredential>;
 
 /** The FederatedIdentityCredential items on this page */
 export type FederatedIdentityCredentialsListResultValueList = Array<FederatedIdentityCredential>;
-export const FederatedIdentityCredentialsListResultValueList = /*@__PURE__*/ S.Array(
+const FederatedIdentityCredentialsListResultValueList = /*@__PURE__*/ S.Array(
   FederatedIdentityCredential,
 ) as any as S.Schema<FederatedIdentityCredentialsListResultValueList>;
 
@@ -450,7 +450,7 @@ export interface FederatedIdentityCredentialsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FederatedIdentityCredentialsListResult = /*@__PURE__*/ S.suspend(() =>
+const FederatedIdentityCredentialsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FederatedIdentityCredentialsListResultValueList,
     nextLink: S.optional(S.String),
@@ -460,7 +460,7 @@ export const FederatedIdentityCredentialsListResult = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<FederatedIdentityCredentialsListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -482,7 +482,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     operation: S.optional(S.String),
@@ -498,7 +498,7 @@ export interface Operation {
   /** Localized display information for this particular operation. */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -507,7 +507,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -518,7 +518,7 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
     nextLink: S.optional(S.String),
@@ -531,7 +531,7 @@ export interface ListUserAssignedIdentityByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListUserAssignedIdentityByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserAssignedIdentityByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -549,7 +549,7 @@ export const ListUserAssignedIdentityByResourceGroupRequest = /*@__PURE__*/ S.su
 
 /** Resource tags. */
 export type IdentityTagsMap = { [key: string]: string | undefined };
-export const IdentityTagsMap =
+const IdentityTagsMap =
   GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<IdentityTagsMap>;
 
 /** Describes an identity resource. */
@@ -569,7 +569,7 @@ export interface Identity {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-export const Identity = /*@__PURE__*/ S.suspend(() =>
+const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -583,7 +583,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 
 /** The Identity items on this page */
 export type UserAssignedIdentitiesListResultValueList = Array<Identity>;
-export const UserAssignedIdentitiesListResultValueList = /*@__PURE__*/ S.Array(
+const UserAssignedIdentitiesListResultValueList = /*@__PURE__*/ S.Array(
   Identity,
 ) as any as S.Schema<UserAssignedIdentitiesListResultValueList>;
 
@@ -594,7 +594,7 @@ export interface UserAssignedIdentitiesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const UserAssignedIdentitiesListResult = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentitiesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: UserAssignedIdentitiesListResultValueList,
     nextLink: S.optional(S.String),
@@ -607,7 +607,7 @@ export interface ListUserAssignedIdentityBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListUserAssignedIdentityBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserAssignedIdentityBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -624,7 +624,7 @@ export const ListUserAssignedIdentityBySubscriptionRequest = /*@__PURE__*/ S.sus
 
 /** Resource tags */
 export type UpdateUserAssignedIdentityRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateUserAssignedIdentityRequestTagsMap =
+const UpdateUserAssignedIdentityRequestTagsMap =
   GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UpdateUserAssignedIdentityRequestTagsMap>;
 
 export interface UpdateUserAssignedIdentityRequest {
@@ -641,7 +641,7 @@ export interface UpdateUserAssignedIdentityRequest {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-export const UpdateUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -663,9 +663,6 @@ export const UpdateUserAssignedIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateUserAssignedIdentityResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateUserAssignedIdentityResponseTagsMap =
-  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UpdateUserAssignedIdentityResponseTagsMap>;
-
 export interface UpdateUserAssignedIdentityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -682,14 +679,14 @@ export interface UpdateUserAssignedIdentityResponse {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-export const UpdateUserAssignedIdentityResponse =
+const UpdateUserAssignedIdentityResponse =
   GetUserAssignedIdentityResponse as any as S.Schema<UpdateUserAssignedIdentityResponse>;
 
 /** Resource tags. */
 export type UserAssignedIdentitiesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UserAssignedIdentitiesCreateOrUpdateRequestTagsMap =
+const UserAssignedIdentitiesCreateOrUpdateRequestTagsMap =
   GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequestTagsMap>;
 
 export interface UserAssignedIdentitiesCreateOrUpdateRequest {
@@ -706,7 +703,7 @@ export interface UserAssignedIdentitiesCreateOrUpdateRequest {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-export const UserAssignedIdentitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -730,9 +727,6 @@ export const UserAssignedIdentitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspe
 export type UserAssignedIdentitiesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const UserAssignedIdentitiesCreateOrUpdateResponseTagsMap =
-  GetSystemAssignedIdentityByScopeResponseTagsMap as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponseTagsMap>;
-
 export interface UserAssignedIdentitiesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -749,7 +743,7 @@ export interface UserAssignedIdentitiesCreateOrUpdateResponse {
   /** The properties associated with the identity. */
   properties?: UserAssignedIdentityProperties;
 }
-export const UserAssignedIdentitiesCreateOrUpdateResponse =
+const UserAssignedIdentitiesCreateOrUpdateResponse =
   GetUserAssignedIdentityResponse as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponse>;
 
 export type DeleteFederatedIdentityCredentialsError = AzureOpError;

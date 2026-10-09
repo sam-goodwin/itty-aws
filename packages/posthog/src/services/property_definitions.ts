@@ -41,7 +41,7 @@ export interface GetPropertyDefinitionRequest {
   /** A UUID string identifying this property definition. */
   id: string;
 }
-export const GetPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -57,12 +57,12 @@ export const GetPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPropertyDefinitionRequest>;
 
 export type EnterprisePropertyDefinitionTagsList = Array<unknown>;
-export const EnterprisePropertyDefinitionTagsList = /*@__PURE__*/ S.Array(
+const EnterprisePropertyDefinitionTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EnterprisePropertyDefinitionTagsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -78,14 +78,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -98,7 +93,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -114,10 +109,8 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** * `DateTime` - DateTime * `String` - String * `Numeric` - Numeric * `Boolean` - Boolean * `Duration` - Duration */
 export type PropertyTypeEnum = "DateTime" | "String" | "Numeric" | "Boolean" | "Duration";
-export const PropertyTypeEnum = S.String;
-
 export type EnterprisePropertyDefinitionPropertyType = PropertyTypeEnum | BlankEnum;
-export const EnterprisePropertyDefinitionPropertyType =
+const EnterprisePropertyDefinitionPropertyType =
   S.Unknown as any as S.Schema<EnterprisePropertyDefinitionPropertyType>;
 
 /** Serializer mixin that handles tags for objects. */
@@ -138,7 +131,7 @@ export interface EnterprisePropertyDefinition {
   /** Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only. */
   warehouse_origin?: unknown;
 }
-export const EnterprisePropertyDefinition = /*@__PURE__*/ S.suspend(() =>
+const EnterprisePropertyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -163,7 +156,7 @@ export interface GetPropertyDefinitionsSeenTogetherRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetPropertyDefinitionsSeenTogetherRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPropertyDefinitionsSeenTogetherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -178,14 +171,14 @@ export const GetPropertyDefinitionsSeenTogetherRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetPropertyDefinitionsSeenTogetherRequest>;
 
 export interface GetPropertyDefinitionsSeenTogetherResponse {}
-export const GetPropertyDefinitionsSeenTogetherResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPropertyDefinitionsSeenTogetherResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GetPropertyDefinitionsSeenTogetherResponse",
 }) as any as S.Schema<GetPropertyDefinitionsSeenTogetherResponse>;
 
 export type ListPropertyDefinitionsRequestType = "event" | "person" | "group" | "session";
-export const ListPropertyDefinitionsRequestType = S.String;
+const ListPropertyDefinitionsRequestType = S.String;
 
 export interface ListPropertyDefinitionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -221,7 +214,7 @@ export interface ListPropertyDefinitionsRequest {
   /** Filter by verified status. True returns only verified, false returns only unverified. */
   verified?: boolean;
 }
-export const ListPropertyDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPropertyDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event_names: S.optional(S.String.pipe(T.Query())),
@@ -248,7 +241,7 @@ export const ListPropertyDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedEnterprisePropertyDefinitionListResultsList =
   Array<EnterprisePropertyDefinition>;
-export const PaginatedEnterprisePropertyDefinitionListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedEnterprisePropertyDefinitionListResultsList = /*@__PURE__*/ S.Array(
   EnterprisePropertyDefinition,
 ) as any as S.Schema<PaginatedEnterprisePropertyDefinitionListResultsList>;
 
@@ -258,7 +251,7 @@ export interface PaginatedEnterprisePropertyDefinitionList {
   previous?: string | null;
   results?: PaginatedEnterprisePropertyDefinitionListResultsList;
 }
-export const PaginatedEnterprisePropertyDefinitionList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedEnterprisePropertyDefinitionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -271,17 +264,17 @@ export const PaginatedEnterprisePropertyDefinitionList = /*@__PURE__*/ S.suspend
 
 /** List of object IDs to update tags on. */
 export type PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList = Array<number>;
-export const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
+const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-export const BulkUpdateTagsActionEnum = S.String;
+const BulkUpdateTagsActionEnum = S.String;
 
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-export const PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList = /*@__PURE__*/ S.Array(
+const PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList>;
 
@@ -295,7 +288,7 @@ export interface PropertyDefinitionsBulkUpdateTagsCreateRequest {
   /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
   tags?: PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList;
 }
-export const PropertyDefinitionsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const PropertyDefinitionsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ids: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList),
@@ -313,14 +306,14 @@ export const PropertyDefinitionsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>;
 
 export type BulkUpdateTagsItemTagsList = Array<string>;
-export const BulkUpdateTagsItemTagsList =
+const BulkUpdateTagsItemTagsList =
   PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList as any as S.Schema<BulkUpdateTagsItemTagsList>;
 
 export interface BulkUpdateTagsItem {
   id?: number;
   tags?: BulkUpdateTagsItemTagsList;
 }
-export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     tags: S.optional(BulkUpdateTagsItemTagsList),
@@ -328,7 +321,7 @@ export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkUpdateTagsItem" }) as any as S.Schema<BulkUpdateTagsItem>;
 
 export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
-export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
+const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsItem,
 ) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
 
@@ -336,7 +329,7 @@ export interface BulkUpdateTagsError {
   id?: number;
   reason?: string;
 }
-export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     reason: S.optional(S.String),
@@ -344,7 +337,7 @@ export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkUpdateTagsError" }) as any as S.Schema<BulkUpdateTagsError>;
 
 export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
-export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
+const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsError,
 ) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
 
@@ -352,7 +345,7 @@ export interface BulkUpdateTagsResponse {
   updated?: BulkUpdateTagsResponseUpdatedList;
   skipped?: BulkUpdateTagsResponseSkippedList;
 }
-export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: S.optional(BulkUpdateTagsResponseUpdatedList),
     skipped: S.optional(BulkUpdateTagsResponseSkippedList),
@@ -365,7 +358,7 @@ export interface PropertyDefinitionsDestroyRequest {
   /** A UUID string identifying this property definition. */
   id: string;
 }
-export const PropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const PropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -381,15 +374,15 @@ export const PropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PropertyDefinitionsDestroyRequest>;
 
 export interface PropertyDefinitionsDestroyResponse {}
-export const PropertyDefinitionsDestroyResponse =
+const PropertyDefinitionsDestroyResponse =
   GetPropertyDefinitionsSeenTogetherResponse as any as S.Schema<PropertyDefinitionsDestroyResponse>;
 
 export type UpdatePropertyDefinitionRequestTagsList = Array<unknown>;
-export const UpdatePropertyDefinitionRequestTagsList =
+const UpdatePropertyDefinitionRequestTagsList =
   EnterprisePropertyDefinitionTagsList as any as S.Schema<UpdatePropertyDefinitionRequestTagsList>;
 
 export type UpdatePropertyDefinitionRequestPropertyType = PropertyTypeEnum | BlankEnum;
-export const UpdatePropertyDefinitionRequestPropertyType =
+const UpdatePropertyDefinitionRequestPropertyType =
   S.Unknown as any as S.Schema<UpdatePropertyDefinitionRequestPropertyType>;
 
 export interface UpdatePropertyDefinitionRequest {
@@ -403,7 +396,7 @@ export interface UpdatePropertyDefinitionRequest {
   verified?: boolean;
   hidden?: boolean | null;
 }
-export const UpdatePropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -424,11 +417,11 @@ export const UpdatePropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePropertyDefinitionRequest>;
 
 export type UpdatePropertyDefinitionsPartialRequestTagsList = Array<unknown>;
-export const UpdatePropertyDefinitionsPartialRequestTagsList =
+const UpdatePropertyDefinitionsPartialRequestTagsList =
   EnterprisePropertyDefinitionTagsList as any as S.Schema<UpdatePropertyDefinitionsPartialRequestTagsList>;
 
 export type UpdatePropertyDefinitionsPartialRequestPropertyType = PropertyTypeEnum | BlankEnum;
-export const UpdatePropertyDefinitionsPartialRequestPropertyType =
+const UpdatePropertyDefinitionsPartialRequestPropertyType =
   S.Unknown as any as S.Schema<UpdatePropertyDefinitionsPartialRequestPropertyType>;
 
 export interface UpdatePropertyDefinitionsPartialRequest {
@@ -442,7 +435,7 @@ export interface UpdatePropertyDefinitionsPartialRequest {
   verified?: boolean;
   hidden?: boolean | null;
 }
-export const UpdatePropertyDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePropertyDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

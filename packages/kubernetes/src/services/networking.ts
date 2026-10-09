@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -203,7 +203,7 @@ export interface IoK8sApiNetworkingV1IngressClassParametersReference {
   /** scope represents if this refers to a cluster or namespace scoped resource. This may be set to "Cluster" (default) or "Namespace". */
   scope?: string;
 }
-export const IoK8sApiNetworkingV1IngressClassParametersReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressClassParametersReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroup: S.optional(S.String),
     kind: S.String,
@@ -222,7 +222,7 @@ export interface IoK8sApiNetworkingV1IngressClassSpec {
   /** parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters. */
   parameters?: IoK8sApiNetworkingV1IngressClassParametersReference;
 }
-export const IoK8sApiNetworkingV1IngressClassSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressClassSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controller: S.String,
     parameters: S.optional(IoK8sApiNetworkingV1IngressClassParametersReference),
@@ -249,7 +249,7 @@ export interface CreateNetworkingV1IngressClassRequest {
   /** spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IngressClassSpec;
 }
-export const CreateNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -275,7 +275,7 @@ export interface IoK8sApiNetworkingV1IngressClass {
   /** spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IngressClassSpec;
 }
-export const IoK8sApiNetworkingV1IngressClass = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -297,7 +297,7 @@ export interface IoK8sApiNetworkingV1ParentReference {
   /** resource is the resource of the object being referenced. */
   resource: string;
 }
-export const IoK8sApiNetworkingV1ParentReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1ParentReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     name: S.String,
@@ -313,7 +313,7 @@ export interface IoK8sApiNetworkingV1IPAddressSpec {
   /** parentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object. */
   parentRef: IoK8sApiNetworkingV1ParentReference;
 }
-export const IoK8sApiNetworkingV1IPAddressSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IPAddressSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentRef: IoK8sApiNetworkingV1ParentReference,
   }),
@@ -339,7 +339,7 @@ export interface CreateNetworkingV1IPAddressRequest {
   /** spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IPAddressSpec;
 }
-export const CreateNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -365,7 +365,7 @@ export interface IoK8sApiNetworkingV1IPAddress {
   /** spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IPAddressSpec;
 }
-export const IoK8sApiNetworkingV1IPAddress = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IPAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -385,7 +385,7 @@ export interface IoK8sApiCoreV1TypedLocalObjectReference {
   /** name is the name of resource being referenced */
   name: string;
 }
-export const IoK8sApiCoreV1TypedLocalObjectReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoreV1TypedLocalObjectReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroup: S.optional(S.String),
     kind: S.String,
@@ -402,7 +402,7 @@ export interface IoK8sApiNetworkingV1ServiceBackendPort {
   /** number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with "Name". */
   number?: number;
 }
-export const IoK8sApiNetworkingV1ServiceBackendPort = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1ServiceBackendPort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     number: S.optional(S.Number),
@@ -418,7 +418,7 @@ export interface IoK8sApiNetworkingV1IngressServiceBackend {
   /** port of the referenced service. A port name or port number is required for a IngressServiceBackend. */
   port?: IoK8sApiNetworkingV1ServiceBackendPort;
 }
-export const IoK8sApiNetworkingV1IngressServiceBackend = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressServiceBackend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     port: S.optional(IoK8sApiNetworkingV1ServiceBackendPort),
@@ -434,7 +434,7 @@ export interface IoK8sApiNetworkingV1IngressBackend {
   /** service references a service as a backend. This is a mutually exclusive setting with "Resource". */
   service?: IoK8sApiNetworkingV1IngressServiceBackend;
 }
-export const IoK8sApiNetworkingV1IngressBackend = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressBackend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(IoK8sApiCoreV1TypedLocalObjectReference),
     service: S.optional(IoK8sApiNetworkingV1IngressServiceBackend),
@@ -452,7 +452,7 @@ export interface IoK8sApiNetworkingV1HTTPIngressPath {
   /** pathType determines the interpretation of the path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is done on a path element by element basis. A path element refers is the list of labels in the path split by the '/' separator. A request is a match for path p if every p is an element-wise prefix of p of the request path. Note that if the last element of the path is a substring of the last element in request path, it is not a match (e.g. /foo/bar matches /foo/bar/baz, but does not match /foo/barbaz). * ImplementationSpecific: Interpretation of the Path matching is up to the IngressClass. Implementations can treat this as a separate PathType or treat it identically to Prefix or Exact path types. Implementations are required to support all path types. */
   pathType: string;
 }
-export const IoK8sApiNetworkingV1HTTPIngressPath = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1HTTPIngressPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backend: IoK8sApiNetworkingV1IngressBackend,
     path: S.optional(S.String),
@@ -465,7 +465,7 @@ export const IoK8sApiNetworkingV1HTTPIngressPath = /*@__PURE__*/ S.suspend(() =>
 /** paths is a collection of paths that map requests to backends. */
 export type IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList =
   Array<IoK8sApiNetworkingV1HTTPIngressPath>;
-export const IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1HTTPIngressPath,
 ) as any as S.Schema<IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList>;
 
@@ -474,7 +474,7 @@ export interface IoK8sApiNetworkingV1HTTPIngressRuleValue {
   /** paths is a collection of paths that map requests to backends. */
   paths: IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList;
 }
-export const IoK8sApiNetworkingV1HTTPIngressRuleValue = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1HTTPIngressRuleValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList,
   }),
@@ -489,7 +489,7 @@ export interface IoK8sApiNetworkingV1IngressRule {
   /** http is a HTTP IngressRuleValue, which contains a list of http selectors */
   http?: IoK8sApiNetworkingV1HTTPIngressRuleValue;
 }
-export const IoK8sApiNetworkingV1IngressRule = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     http: S.optional(IoK8sApiNetworkingV1HTTPIngressRuleValue),
@@ -500,13 +500,13 @@ export const IoK8sApiNetworkingV1IngressRule = /*@__PURE__*/ S.suspend(() =>
 
 /** rules is a list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend. */
 export type IoK8sApiNetworkingV1IngressSpecRulesList = Array<IoK8sApiNetworkingV1IngressRule>;
-export const IoK8sApiNetworkingV1IngressSpecRulesList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1IngressSpecRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1IngressRule,
 ) as any as S.Schema<IoK8sApiNetworkingV1IngressSpecRulesList>;
 
 /** hosts is a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified. */
 export type IoK8sApiNetworkingV1IngressTLSHostsList = Array<string>;
-export const IoK8sApiNetworkingV1IngressTLSHostsList =
+const IoK8sApiNetworkingV1IngressTLSHostsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1IngressTLSHostsList>;
 
 /** IngressTLS describes the transport layer security associated with an ingress. */
@@ -516,7 +516,7 @@ export interface IoK8sApiNetworkingV1IngressTLS {
   /** secretName is the name of the secret used to terminate TLS traffic on port 443. Field is left optional to allow TLS routing based on SNI hostname alone. If the SNI host in a listener conflicts with the "Host" header field used by an IngressRule, the SNI host is used for termination and value of the "Host" header is used for routing. */
   secretName?: string;
 }
-export const IoK8sApiNetworkingV1IngressTLS = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressTLS = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hosts: S.optional(IoK8sApiNetworkingV1IngressTLSHostsList),
     secretName: S.optional(S.String),
@@ -527,7 +527,7 @@ export const IoK8sApiNetworkingV1IngressTLS = /*@__PURE__*/ S.suspend(() =>
 
 /** tls represents the TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI. */
 export type IoK8sApiNetworkingV1IngressSpecTlsList = Array<IoK8sApiNetworkingV1IngressTLS>;
-export const IoK8sApiNetworkingV1IngressSpecTlsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1IngressSpecTlsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1IngressTLS,
 ) as any as S.Schema<IoK8sApiNetworkingV1IngressSpecTlsList>;
 
@@ -542,7 +542,7 @@ export interface IoK8sApiNetworkingV1IngressSpec {
   /** tls represents the TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI. */
   tls?: IoK8sApiNetworkingV1IngressSpecTlsList;
 }
-export const IoK8sApiNetworkingV1IngressSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultBackend: S.optional(IoK8sApiNetworkingV1IngressBackend),
     ingressClassName: S.optional(S.String),
@@ -562,7 +562,7 @@ export interface IoK8sApiNetworkingV1IngressPortStatus {
   /** protocol is the protocol of the ingress port. The supported values are: "TCP", "UDP", "SCTP" */
   protocol?: string;
 }
-export const IoK8sApiNetworkingV1IngressPortStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressPortStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.String),
     port: S.optional(S.Number),
@@ -575,7 +575,7 @@ export const IoK8sApiNetworkingV1IngressPortStatus = /*@__PURE__*/ S.suspend(() 
 /** ports provides information about the ports exposed by this LoadBalancer. */
 export type IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList =
   Array<IoK8sApiNetworkingV1IngressPortStatus>;
-export const IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1IngressPortStatus,
 ) as any as S.Schema<IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList>;
 
@@ -588,7 +588,7 @@ export interface IoK8sApiNetworkingV1IngressLoadBalancerIngress {
   /** ports provides information about the ports exposed by this LoadBalancer. */
   ports?: IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList;
 }
-export const IoK8sApiNetworkingV1IngressLoadBalancerIngress = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressLoadBalancerIngress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostname: S.optional(S.String),
     ip: S.optional(S.String),
@@ -601,7 +601,7 @@ export const IoK8sApiNetworkingV1IngressLoadBalancerIngress = /*@__PURE__*/ S.su
 /** ingress is a list containing ingress points for the load-balancer. */
 export type IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList =
   Array<IoK8sApiNetworkingV1IngressLoadBalancerIngress>;
-export const IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1IngressLoadBalancerIngress,
 ) as any as S.Schema<IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList>;
 
@@ -610,7 +610,7 @@ export interface IoK8sApiNetworkingV1IngressLoadBalancerStatus {
   /** ingress is a list containing ingress points for the load-balancer. */
   ingress?: IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList;
 }
-export const IoK8sApiNetworkingV1IngressLoadBalancerStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressLoadBalancerStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingress: S.optional(IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList),
   }),
@@ -623,7 +623,7 @@ export interface IoK8sApiNetworkingV1IngressStatus {
   /** loadBalancer contains the current status of the load-balancer. */
   loadBalancer?: IoK8sApiNetworkingV1IngressLoadBalancerStatus;
 }
-export const IoK8sApiNetworkingV1IngressStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loadBalancer: S.optional(IoK8sApiNetworkingV1IngressLoadBalancerStatus),
   }),
@@ -653,7 +653,7 @@ export interface CreateNetworkingV1NamespacedIngressRequest {
   /** status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1IngressStatus;
 }
-export const CreateNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -689,7 +689,7 @@ export interface IoK8sApiNetworkingV1Ingress {
   /** status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1IngressStatus;
 }
-export const IoK8sApiNetworkingV1Ingress = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1Ingress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -710,7 +710,7 @@ export interface IoK8sApiNetworkingV1NetworkPolicyPort {
   /** protocol represents the protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP. */
   protocol?: string;
 }
-export const IoK8sApiNetworkingV1NetworkPolicyPort = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1NetworkPolicyPort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endPort: S.optional(S.Number),
     port: S.optional(S.String),
@@ -723,13 +723,13 @@ export const IoK8sApiNetworkingV1NetworkPolicyPort = /*@__PURE__*/ S.suspend(() 
 /** ports is a list of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list. */
 export type IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPort>;
-export const IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1NetworkPolicyPort,
 ) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList>;
 
 /** except is a slice of CIDRs that should not be included within an IPBlock Valid examples are "192.168.1.0/24" or "2001:db8::/64" Except values will be rejected if they are outside the cidr range */
 export type IoK8sApiNetworkingV1IPBlockExceptList = Array<string>;
-export const IoK8sApiNetworkingV1IPBlockExceptList =
+const IoK8sApiNetworkingV1IPBlockExceptList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1IPBlockExceptList>;
 
 /** IPBlock describes a particular CIDR (Ex. "192.168.1.0/24","2001:db8::/64") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule. */
@@ -739,7 +739,7 @@ export interface IoK8sApiNetworkingV1IPBlock {
   /** except is a slice of CIDRs that should not be included within an IPBlock Valid examples are "192.168.1.0/24" or "2001:db8::/64" Except values will be rejected if they are outside the cidr range */
   except?: IoK8sApiNetworkingV1IPBlockExceptList;
 }
-export const IoK8sApiNetworkingV1IPBlock = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IPBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.String,
     except: S.optional(IoK8sApiNetworkingV1IPBlockExceptList),
@@ -750,10 +750,9 @@ export const IoK8sApiNetworkingV1IPBlock = /*@__PURE__*/ S.suspend(() =>
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
 
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
@@ -764,7 +763,7 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     operator: S.String,
@@ -777,16 +776,15 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE_
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
 
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
 
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
@@ -796,7 +794,7 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchExpressions: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList),
     matchLabels: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap),
@@ -814,7 +812,7 @@ export interface IoK8sApiNetworkingV1NetworkPolicyPeer {
   /** podSelector is a label selector which selects pods. This field follows standard label selector semantics; if present but empty, it selects all pods. If namespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the pods matching podSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the pods matching podSelector in the policy's own namespace. */
   podSelector?: IoK8sApimachineryPkgApisMetaV1LabelSelector;
 }
-export const IoK8sApiNetworkingV1NetworkPolicyPeer = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1NetworkPolicyPeer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipBlock: S.optional(IoK8sApiNetworkingV1IPBlock),
     namespaceSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
@@ -827,7 +825,7 @@ export const IoK8sApiNetworkingV1NetworkPolicyPeer = /*@__PURE__*/ S.suspend(() 
 /** to is a list of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list. */
 export type IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPeer>;
-export const IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1NetworkPolicyPeer,
 ) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList>;
 
@@ -838,7 +836,7 @@ export interface IoK8sApiNetworkingV1NetworkPolicyEgressRule {
   /** to is a list of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list. */
   to?: IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList;
 }
-export const IoK8sApiNetworkingV1NetworkPolicyEgressRule = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1NetworkPolicyEgressRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: S.optional(IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList),
     to: S.optional(IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList),
@@ -850,20 +848,20 @@ export const IoK8sApiNetworkingV1NetworkPolicyEgressRule = /*@__PURE__*/ S.suspe
 /** egress is a list of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8 */
 export type IoK8sApiNetworkingV1NetworkPolicySpecEgressList =
   Array<IoK8sApiNetworkingV1NetworkPolicyEgressRule>;
-export const IoK8sApiNetworkingV1NetworkPolicySpecEgressList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1NetworkPolicySpecEgressList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1NetworkPolicyEgressRule,
 ) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpecEgressList>;
 
 /** from is a list of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list. */
 export type IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPeer>;
-export const IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList =
+const IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList =
   IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList>;
 
 /** ports is a list of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list. */
 export type IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPort>;
-export const IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList =
+const IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList =
   IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList>;
 
 /** NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from. */
@@ -873,7 +871,7 @@ export interface IoK8sApiNetworkingV1NetworkPolicyIngressRule {
   /** ports is a list of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list. */
   ports?: IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList;
 }
-export const IoK8sApiNetworkingV1NetworkPolicyIngressRule = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1NetworkPolicyIngressRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList),
     ports: S.optional(IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList),
@@ -885,13 +883,13 @@ export const IoK8sApiNetworkingV1NetworkPolicyIngressRule = /*@__PURE__*/ S.susp
 /** ingress is a list of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default) */
 export type IoK8sApiNetworkingV1NetworkPolicySpecIngressList =
   Array<IoK8sApiNetworkingV1NetworkPolicyIngressRule>;
-export const IoK8sApiNetworkingV1NetworkPolicySpecIngressList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1NetworkPolicySpecIngressList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1NetworkPolicyIngressRule,
 ) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpecIngressList>;
 
 /** policyTypes is a list of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of ingress or egress rules; policies that contain an egress section are assumed to affect egress, and all policies (whether or not they contain an ingress section) are assumed to affect ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8 */
 export type IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList = Array<string>;
-export const IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList =
+const IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList>;
 
 /** NetworkPolicySpec provides the specification of a NetworkPolicy */
@@ -905,7 +903,7 @@ export interface IoK8sApiNetworkingV1NetworkPolicySpec {
   /** policyTypes is a list of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of ingress or egress rules; policies that contain an egress section are assumed to affect egress, and all policies (whether or not they contain an ingress section) are assumed to affect ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8 */
   policyTypes?: IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList;
 }
-export const IoK8sApiNetworkingV1NetworkPolicySpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1NetworkPolicySpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     egress: S.optional(IoK8sApiNetworkingV1NetworkPolicySpecEgressList),
     ingress: S.optional(IoK8sApiNetworkingV1NetworkPolicySpecIngressList),
@@ -936,7 +934,7 @@ export interface CreateNetworkingV1NamespacedNetworkPolicyRequest {
   /** spec represents the specification of the desired behavior for this NetworkPolicy. */
   spec?: IoK8sApiNetworkingV1NetworkPolicySpec;
 }
-export const CreateNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -969,7 +967,7 @@ export interface IoK8sApiNetworkingV1NetworkPolicy {
   /** spec represents the specification of the desired behavior for this NetworkPolicy. */
   spec?: IoK8sApiNetworkingV1NetworkPolicySpec;
 }
-export const IoK8sApiNetworkingV1NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -982,7 +980,7 @@ export const IoK8sApiNetworkingV1NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** cidrs defines the IP blocks in CIDR notation (e.g. "192.168.0.0/24" or "2001:db8::/64") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable. */
 export type IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList = Array<string>;
-export const IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList =
+const IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList>;
 
 /** ServiceCIDRSpec define the CIDRs the user wants to use for allocating ClusterIPs for Services. */
@@ -990,7 +988,7 @@ export interface IoK8sApiNetworkingV1ServiceCIDRSpec {
   /** cidrs defines the IP blocks in CIDR notation (e.g. "192.168.0.0/24" or "2001:db8::/64") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable. */
   cidrs?: IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList;
 }
-export const IoK8sApiNetworkingV1ServiceCIDRSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1ServiceCIDRSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidrs: S.optional(IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList),
   }),
@@ -1013,7 +1011,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Condition {
   /** type of condition in CamelCase or in foo.example.com/CamelCase. */
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastTransitionTime: S.String,
     message: S.optional(S.String),
@@ -1029,7 +1027,7 @@ export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend((
 /** conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state */
 export type IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1Condition,
 ) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList>;
 
@@ -1038,7 +1036,7 @@ export interface IoK8sApiNetworkingV1ServiceCIDRStatus {
   /** conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state */
   conditions?: IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList;
 }
-export const IoK8sApiNetworkingV1ServiceCIDRStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1ServiceCIDRStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList),
   }),
@@ -1066,7 +1064,7 @@ export interface CreateNetworkingV1ServiceCIDRRequest {
   /** status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1ServiceCIDRStatus;
 }
-export const CreateNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -1095,7 +1093,7 @@ export interface IoK8sApiNetworkingV1ServiceCIDR {
   /** status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1ServiceCIDRStatus;
 }
-export const IoK8sApiNetworkingV1ServiceCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1ServiceCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1114,7 +1112,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -1161,7 +1159,7 @@ export interface DeleteNetworkingV1CollectionIngressClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1CollectionIngressClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1CollectionIngressClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -1197,7 +1195,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -1210,7 +1208,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -1229,7 +1227,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -1247,7 +1245,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -1268,7 +1266,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -1299,7 +1297,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -1352,7 +1350,7 @@ export interface DeleteNetworkingV1CollectionIPAddressRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1CollectionIPAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1CollectionIPAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -1417,7 +1415,7 @@ export interface DeleteNetworkingV1CollectionNamespacedIngressRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1CollectionNamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1CollectionNamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1489,35 +1487,34 @@ export interface DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
-        code: 200,
-      }),
-    ),
+const DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest",
 }) as any as S.Schema<DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest>;
@@ -1560,7 +1557,7 @@ export interface DeleteNetworkingV1CollectionServiceCIDRRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1CollectionServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1CollectionServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -1607,7 +1604,7 @@ export interface DeleteNetworkingV1IngressClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1652,7 +1649,7 @@ export interface DeleteNetworkingV1IPAddressRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1695,7 +1692,7 @@ export interface DeleteNetworkingV1NamespacedIngressRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1743,7 +1740,7 @@ export interface DeleteNetworkingV1NamespacedNetworkPolicyRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1789,7 +1786,7 @@ export interface DeleteNetworkingV1ServiceCIDRRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1809,7 +1806,7 @@ export const DeleteNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteNetworkingV1ServiceCIDRRequest>;
 
 export interface GetNetworkingAPIGroupRequest {}
-export const GetNetworkingAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkingAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/networking.k8s.io/", code: 200 })),
 ).annotate({
   identifier: "GetNetworkingAPIGroupRequest",
@@ -1822,7 +1819,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -1838,7 +1835,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -1850,15 +1847,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -1877,7 +1873,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1893,7 +1889,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetNetworkingV1APIResourcesRequest {}
-export const GetNetworkingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/networking.k8s.io/v1/", code: 200 })),
 ).annotate({
   identifier: "GetNetworkingV1APIResourcesRequest",
@@ -1901,17 +1897,17 @@ export const GetNetworkingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -1937,7 +1933,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -1957,7 +1953,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -1972,7 +1968,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -2009,7 +2005,7 @@ export interface ListNetworkingV1IngressClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2030,7 +2026,7 @@ export const ListNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** items is the list of IngressClasses. */
 export type IoK8sApiNetworkingV1IngressClassListItemsList = Array<IoK8sApiNetworkingV1IngressClass>;
-export const IoK8sApiNetworkingV1IngressClassListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1IngressClassListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1IngressClass,
 ) as any as S.Schema<IoK8sApiNetworkingV1IngressClassListItemsList>;
 
@@ -2045,7 +2041,7 @@ export interface IoK8sApiNetworkingV1IngressClassList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiNetworkingV1IngressClassList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressClassList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiNetworkingV1IngressClassListItemsList,
@@ -2082,7 +2078,7 @@ export interface ListNetworkingV1IngressForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListNetworkingV1IngressForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkingV1IngressForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -2103,7 +2099,7 @@ export const ListNetworkingV1IngressForAllNamespacesRequest = /*@__PURE__*/ S.su
 
 /** items is the list of Ingress. */
 export type IoK8sApiNetworkingV1IngressListItemsList = Array<IoK8sApiNetworkingV1Ingress>;
-export const IoK8sApiNetworkingV1IngressListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1IngressListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1Ingress,
 ) as any as S.Schema<IoK8sApiNetworkingV1IngressListItemsList>;
 
@@ -2118,7 +2114,7 @@ export interface IoK8sApiNetworkingV1IngressList {
   /** Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiNetworkingV1IngressList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IngressList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiNetworkingV1IngressListItemsList,
@@ -2155,7 +2151,7 @@ export interface ListNetworkingV1IPAddressRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2176,7 +2172,7 @@ export const ListNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** items is the list of IPAddresses. */
 export type IoK8sApiNetworkingV1IPAddressListItemsList = Array<IoK8sApiNetworkingV1IPAddress>;
-export const IoK8sApiNetworkingV1IPAddressListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1IPAddressListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1IPAddress,
 ) as any as S.Schema<IoK8sApiNetworkingV1IPAddressListItemsList>;
 
@@ -2191,7 +2187,7 @@ export interface IoK8sApiNetworkingV1IPAddressList {
   /** Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiNetworkingV1IPAddressList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1IPAddressList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiNetworkingV1IPAddressListItemsList,
@@ -2230,7 +2226,7 @@ export interface ListNetworkingV1NamespacedIngressRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2284,7 +2280,7 @@ export interface ListNetworkingV1NamespacedNetworkPolicyRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2313,7 +2309,7 @@ export const ListNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.su
 /** items is a list of schema objects. */
 export type IoK8sApiNetworkingV1NetworkPolicyListItemsList =
   Array<IoK8sApiNetworkingV1NetworkPolicy>;
-export const IoK8sApiNetworkingV1NetworkPolicyListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1NetworkPolicyListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1NetworkPolicy,
 ) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyListItemsList>;
 
@@ -2328,7 +2324,7 @@ export interface IoK8sApiNetworkingV1NetworkPolicyList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiNetworkingV1NetworkPolicyList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1NetworkPolicyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiNetworkingV1NetworkPolicyListItemsList,
@@ -2365,7 +2361,7 @@ export interface ListNetworkingV1NetworkPolicyForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListNetworkingV1NetworkPolicyForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkingV1NetworkPolicyForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -2410,7 +2406,7 @@ export interface ListNetworkingV1ServiceCIDRRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2431,7 +2427,7 @@ export const ListNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** items is the list of ServiceCIDRs. */
 export type IoK8sApiNetworkingV1ServiceCIDRListItemsList = Array<IoK8sApiNetworkingV1ServiceCIDR>;
-export const IoK8sApiNetworkingV1ServiceCIDRListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiNetworkingV1ServiceCIDRListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiNetworkingV1ServiceCIDR,
 ) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRListItemsList>;
 
@@ -2446,7 +2442,7 @@ export interface IoK8sApiNetworkingV1ServiceCIDRList {
   /** Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiNetworkingV1ServiceCIDRList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiNetworkingV1ServiceCIDRList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiNetworkingV1ServiceCIDRListItemsList,
@@ -2471,7 +2467,7 @@ export interface PatchNetworkingV1IngressClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2500,7 +2496,7 @@ export interface PatchNetworkingV1IPAddressRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2531,7 +2527,7 @@ export interface PatchNetworkingV1NamespacedIngressRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2567,7 +2563,7 @@ export interface PatchNetworkingV1NamespacedIngressStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2603,7 +2599,7 @@ export interface PatchNetworkingV1NamespacedNetworkPolicyRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2637,7 +2633,7 @@ export interface PatchNetworkingV1ServiceCIDRRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2666,7 +2662,7 @@ export interface PatchNetworkingV1ServiceCIDRStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2691,7 +2687,7 @@ export interface ReadNetworkingV1IngressClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2708,7 +2704,7 @@ export interface ReadNetworkingV1IPAddressRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2727,7 +2723,7 @@ export interface ReadNetworkingV1NamespacedIngressRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2751,7 +2747,7 @@ export interface ReadNetworkingV1NamespacedIngressStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2775,7 +2771,7 @@ export interface ReadNetworkingV1NamespacedNetworkPolicyRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2797,7 +2793,7 @@ export interface ReadNetworkingV1ServiceCIDRRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2814,7 +2810,7 @@ export interface ReadNetworkingV1ServiceCIDRStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2849,7 +2845,7 @@ export interface ReplaceNetworkingV1IngressClassRequest {
   /** spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IngressClassSpec;
 }
-export const ReplaceNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2887,7 +2883,7 @@ export interface ReplaceNetworkingV1IPAddressRequest {
   /** spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IPAddressSpec;
 }
-export const ReplaceNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2929,7 +2925,7 @@ export interface ReplaceNetworkingV1NamespacedIngressRequest {
   /** status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1IngressStatus;
 }
-export const ReplaceNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2977,7 +2973,7 @@ export interface ReplaceNetworkingV1NamespacedIngressStatusRequest {
   /** status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1IngressStatus;
 }
-export const ReplaceNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3023,7 +3019,7 @@ export interface ReplaceNetworkingV1NamespacedNetworkPolicyRequest {
   /** spec represents the specification of the desired behavior for this NetworkPolicy. */
   spec?: IoK8sApiNetworkingV1NetworkPolicySpec;
 }
-export const ReplaceNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3068,7 +3064,7 @@ export interface ReplaceNetworkingV1ServiceCIDRRequest {
   /** status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1ServiceCIDRStatus;
 }
-export const ReplaceNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -3109,7 +3105,7 @@ export interface ReplaceNetworkingV1ServiceCIDRStatusRequest {
   /** status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1ServiceCIDRStatus;
 }
-export const ReplaceNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -3160,7 +3156,7 @@ export interface WatchNetworkingV1IngressClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1IngressClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3192,7 +3188,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -3227,7 +3223,7 @@ export interface WatchNetworkingV1IngressClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1IngressClassListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1IngressClassListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -3274,7 +3270,7 @@ export interface WatchNetworkingV1IngressListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1IngressListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1IngressListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -3321,7 +3317,7 @@ export interface WatchNetworkingV1IPAddressRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1IPAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3373,7 +3369,7 @@ export interface WatchNetworkingV1IPAddressListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1IPAddressListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1IPAddressListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -3424,7 +3420,7 @@ export interface WatchNetworkingV1NamespacedIngressRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3479,7 +3475,7 @@ export interface WatchNetworkingV1NamespacedIngressListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1NamespacedIngressListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1NamespacedIngressListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3535,7 +3531,7 @@ export interface WatchNetworkingV1NamespacedNetworkPolicyRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3590,7 +3586,7 @@ export interface WatchNetworkingV1NamespacedNetworkPolicyListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1NamespacedNetworkPolicyListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1NamespacedNetworkPolicyListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3642,24 +3638,23 @@ export interface WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/apis/networking.k8s.io/v1/watch/networkpolicies", code: 200 }),
-    ),
+const WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/apis/networking.k8s.io/v1/watch/networkpolicies", code: 200 }),
+  ),
 ).annotate({
   identifier: "WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest",
 }) as any as S.Schema<WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest>;
@@ -3692,7 +3687,7 @@ export interface WatchNetworkingV1ServiceCIDRRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3744,7 +3739,7 @@ export interface WatchNetworkingV1ServiceCIDRListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchNetworkingV1ServiceCIDRListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchNetworkingV1ServiceCIDRListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),

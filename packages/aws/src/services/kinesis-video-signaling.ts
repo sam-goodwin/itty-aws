@@ -114,7 +114,7 @@ export class SessionExpiredException
 export type ResourceARN = string;
 export type ClientId = string;
 export type Service = "TURN" | (string & {});
-export const Service = S.String;
+const Service = S.String;
 
 export type Username = string;
 export interface GetIceServerConfigRequest {
@@ -123,7 +123,7 @@ export interface GetIceServerConfigRequest {
   Service?: Service;
   Username?: string;
 }
-export const GetIceServerConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIceServerConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelARN: S.optional(S.String),
     ClientId: S.optional(S.String),
@@ -144,7 +144,7 @@ export const GetIceServerConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIceServerConfigRequest>;
 export type Uri = string;
 export type Uris = string[];
-export const Uris = /*@__PURE__*/ S.Array(S.String);
+const Uris = /*@__PURE__*/ S.Array(S.String);
 export type Password = string;
 export type Ttl = number;
 export interface IceServer {
@@ -153,7 +153,7 @@ export interface IceServer {
   Password?: string | redacted.Redacted<string>;
   Ttl?: number;
 }
-export const IceServer = /*@__PURE__*/ S.suspend(() =>
+const IceServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Uris: S.optional(Uris),
     Username: S.optional(S.String),
@@ -162,11 +162,11 @@ export const IceServer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IceServer" }) as any as S.Schema<IceServer>;
 export type IceServerList = IceServer[];
-export const IceServerList = /*@__PURE__*/ S.Array(IceServer);
+const IceServerList = /*@__PURE__*/ S.Array(IceServer);
 export interface GetIceServerConfigResponse {
   IceServerList?: IceServer[];
 }
-export const GetIceServerConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIceServerConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IceServerList: S.optional(IceServerList) }),
 ).annotate({
   identifier: "GetIceServerConfigResponse",
@@ -177,7 +177,7 @@ export interface SendAlexaOfferToMasterRequest {
   SenderClientId?: string;
   MessagePayload?: string;
 }
-export const SendAlexaOfferToMasterRequest = /*@__PURE__*/ S.suspend(() =>
+const SendAlexaOfferToMasterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelARN: S.optional(S.String),
     SenderClientId: S.optional(S.String),
@@ -199,7 +199,7 @@ export type Answer = string;
 export interface SendAlexaOfferToMasterResponse {
   Answer?: string;
 }
-export const SendAlexaOfferToMasterResponse = /*@__PURE__*/ S.suspend(() =>
+const SendAlexaOfferToMasterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Answer: S.optional(S.String) }),
 ).annotate({
   identifier: "SendAlexaOfferToMasterResponse",

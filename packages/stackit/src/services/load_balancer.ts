@@ -56,7 +56,7 @@ export interface CreateCredentialsRequest {
   /** A valid username used for an existing STACKIT Observability instance, which is used during basic auth. */
   username?: string;
 }
-export const CreateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -83,7 +83,7 @@ export interface CredentialsResponse {
   /** The username used for the STACKIT Observability instance */
   username?: string;
 }
-export const CredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const CredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsRef: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -95,7 +95,7 @@ export const CredentialsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateCredentialsResponse {
   credential?: CredentialsResponse;
 }
-export const CreateCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credential: S.optional(CredentialsResponse),
   }),
@@ -105,7 +105,7 @@ export const CreateCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per LB. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type CreateLoadBalancerRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateLoadBalancerRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreateLoadBalancerRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateLoadBalancerRequestLabelsMap>;
@@ -117,13 +117,13 @@ export type ListenerInputProtocol =
   | "PROTOCOL_UDP"
   | "PROTOCOL_TCP_PROXY"
   | "PROTOCOL_TLS_PASSTHROUGH";
-export const ListenerInputProtocol = S.String;
+const ListenerInputProtocol = S.String;
 
 export interface ServerNameIndicator {
   /** The domain name for this SNI config. */
   name?: string;
 }
-export const ServerNameIndicator = /*@__PURE__*/ S.suspend(() =>
+const ServerNameIndicator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -131,7 +131,7 @@ export const ServerNameIndicator = /*@__PURE__*/ S.suspend(() =>
 
 /** Server Name Indicators config for domains to be routed to the desired target pool for this listener. */
 export type ListenerInputServerNameIndicatorsList = Array<ServerNameIndicator>;
-export const ListenerInputServerNameIndicatorsList = /*@__PURE__*/ S.Array(
+const ListenerInputServerNameIndicatorsList = /*@__PURE__*/ S.Array(
   ServerNameIndicator,
 ) as any as S.Schema<ListenerInputServerNameIndicatorsList>;
 
@@ -140,7 +140,7 @@ export interface OptionsTCP {
   /** The connection idle timeout to be used with the protocol. The default value is set to 5 minutes, and the maximum value is one hour. */
   idleTimeout?: string;
 }
-export const OptionsTCP = /*@__PURE__*/ S.suspend(() =>
+const OptionsTCP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idleTimeout: S.optional(S.String),
   }),
@@ -151,7 +151,7 @@ export interface OptionsUDP {
   /** The connection idle timeout to be used with the protocol. The default value is set to 1 minute, and the maximum value is 2 minutes. */
   idleTimeout?: string;
 }
-export const OptionsUDP = OptionsTCP as any as S.Schema<OptionsUDP>;
+const OptionsUDP = OptionsTCP as any as S.Schema<OptionsUDP>;
 
 export interface ListenerInput {
   displayName?: string;
@@ -166,7 +166,7 @@ export interface ListenerInput {
   tcp?: OptionsTCP;
   udp?: OptionsUDP;
 }
-export const ListenerInput = /*@__PURE__*/ S.suspend(() =>
+const ListenerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     port: S.optional(S.Number),
@@ -180,7 +180,7 @@ export const ListenerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** There is a maximum listener count of 20. Port and protocol limitations: - UDP listeners cannot have the same port. - TCP-derived listeners cannot have the same port. A TCP-derived listener is any listener that listens on a TCP port. As of now those are: TCP, TCP_PROXY, and PROTOCOL_TLS_PASSTHROUGH. The only exception is, if all listeners for the same port are PROTOCOL_TLS_PASSTHROUGH. - PROTOCOL_TLS_PASSTHROUGH listeners cannot have the same port and at least one common domain name. - PROTOCOL_TLS_PASSTHROUGH listeners can have the same domain name and different ports though (e.g. ports 443 and 8443 for domain example.com). - PROTOCOL_TLS_PASSTHROUGH listeners without a domain name serve as a default listener and you can have only one default listener. */
 export type CreateLoadBalancerRequestListenersList = Array<ListenerInput>;
-export const CreateLoadBalancerRequestListenersList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerRequestListenersList = /*@__PURE__*/ S.Array(
   ListenerInput,
 ) as any as S.Schema<CreateLoadBalancerRequestListenersList>;
 
@@ -190,7 +190,7 @@ export type NetworkRole =
   | "ROLE_LISTENERS_AND_TARGETS"
   | "ROLE_LISTENERS"
   | "ROLE_TARGETS";
-export const NetworkRole = S.String;
+const NetworkRole = S.String;
 
 export interface Network {
   /** Openstack network ID */
@@ -198,7 +198,7 @@ export interface Network {
   /** The role defines how the load balancer is using the network. Currently only ROLE_LISTENERS_AND_TARGETS is supported. */
   role?: NetworkRole | (string & {});
 }
-export const Network = /*@__PURE__*/ S.suspend(() =>
+const Network = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkId: S.optional(S.String),
     role: S.optional(NetworkRole),
@@ -207,13 +207,13 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
 
 /** List of networks that listeners and targets reside in. Currently limited to one. Not changeable after creation. */
 export type CreateLoadBalancerRequestNetworksList = Array<Network>;
-export const CreateLoadBalancerRequestNetworksList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerRequestNetworksList = /*@__PURE__*/ S.Array(
   Network,
 ) as any as S.Schema<CreateLoadBalancerRequestNetworksList>;
 
 /** Load Balancer is accessible only from an IP address in this range */
 export type LoadbalancerOptionAccessControlAllowedSourceRangesList = Array<string>;
-export const LoadbalancerOptionAccessControlAllowedSourceRangesList = /*@__PURE__*/ S.Array(
+const LoadbalancerOptionAccessControlAllowedSourceRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoadbalancerOptionAccessControlAllowedSourceRangesList>;
 
@@ -222,7 +222,7 @@ export interface LoadbalancerOptionAccessControl {
   /** Load Balancer is accessible only from an IP address in this range */
   allowedSourceRanges?: LoadbalancerOptionAccessControlAllowedSourceRangesList;
 }
-export const LoadbalancerOptionAccessControl = /*@__PURE__*/ S.suspend(() =>
+const LoadbalancerOptionAccessControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedSourceRanges: S.optional(LoadbalancerOptionAccessControlAllowedSourceRangesList),
   }),
@@ -236,7 +236,7 @@ export interface LoadbalancerOptionLogs {
   /** The Observability(Logs)/Loki remote write Push URL you want the logs to be shipped to. */
   pushUrl?: string;
 }
-export const LoadbalancerOptionLogs = /*@__PURE__*/ S.suspend(() =>
+const LoadbalancerOptionLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsRef: S.optional(S.String),
     pushUrl: S.optional(S.String),
@@ -249,7 +249,7 @@ export interface LoadbalancerOptionMetrics {
   /** The Observability(Metrics)/Prometheus remote write push URL you want the metrics to be shipped to. */
   pushUrl?: string;
 }
-export const LoadbalancerOptionMetrics = /*@__PURE__*/ S.suspend(() =>
+const LoadbalancerOptionMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsRef: S.optional(S.String),
     pushUrl: S.optional(S.String),
@@ -263,7 +263,7 @@ export interface LoadbalancerOptionObservability {
   logs?: LoadbalancerOptionLogs;
   metrics?: LoadbalancerOptionMetrics;
 }
-export const LoadbalancerOptionObservability = /*@__PURE__*/ S.suspend(() =>
+const LoadbalancerOptionObservability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: S.optional(LoadbalancerOptionLogs),
     metrics: S.optional(LoadbalancerOptionMetrics),
@@ -280,7 +280,7 @@ export interface LoadBalancerOptions {
   /** Load Balancer is accessible only via a private network ip address. Not changeable after creation. */
   privateNetworkOnly?: boolean;
 }
-export const LoadBalancerOptions = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControl: S.optional(LoadbalancerOptionAccessControl),
     ephemeralAddress: S.optional(S.Boolean),
@@ -291,7 +291,7 @@ export const LoadBalancerOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** List of HTTP status codes that indicate a healthy response */
 export type HttpHealthChecksOkStatusesList = Array<string>;
-export const HttpHealthChecksOkStatusesList =
+const HttpHealthChecksOkStatusesList =
   LoadbalancerOptionAccessControlAllowedSourceRangesList as any as S.Schema<HttpHealthChecksOkStatusesList>;
 
 /** Set this to configure TLS settings. */
@@ -303,7 +303,7 @@ export interface TlsConfig {
   /** Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only! */
   skipCertificateValidation?: boolean;
 }
-export const TlsConfig = /*@__PURE__*/ S.suspend(() =>
+const TlsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customCa: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -319,7 +319,7 @@ export interface HttpHealthChecks {
   path?: string;
   tls?: TlsConfig;
 }
-export const HttpHealthChecks = /*@__PURE__*/ S.suspend(() =>
+const HttpHealthChecks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     okStatuses: S.optional(HttpHealthChecksOkStatusesList),
     path: S.optional(S.String),
@@ -342,7 +342,7 @@ export interface ActiveHealthCheck {
   /** Unhealthy threshold of the health checking */
   unhealthyThreshold?: number;
 }
-export const ActiveHealthCheck = /*@__PURE__*/ S.suspend(() =>
+const ActiveHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     altPort: S.optional(S.Number),
     healthyThreshold: S.optional(S.Number),
@@ -358,7 +358,7 @@ export interface SessionPersistence {
   /** If enabled then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev. */
   useSourceIpAddress?: boolean;
 }
-export const SessionPersistence = /*@__PURE__*/ S.suspend(() =>
+const SessionPersistence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useSourceIpAddress: S.optional(S.Boolean),
   }),
@@ -370,7 +370,7 @@ export interface Target {
   /** Target IP. Must by unique within a target pool. */
   ip?: string;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
+const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     ip: S.optional(S.String),
@@ -379,7 +379,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all targets which will be used in the pool. Limited to 250. */
 export type TargetPoolTargetsList = Array<Target>;
-export const TargetPoolTargetsList = /*@__PURE__*/ S.Array(
+const TargetPoolTargetsList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetPoolTargetsList>;
 
@@ -393,7 +393,7 @@ export interface TargetPool {
   /** List of all targets which will be used in the pool. Limited to 250. */
   targets?: TargetPoolTargetsList;
 }
-export const TargetPool = /*@__PURE__*/ S.suspend(() =>
+const TargetPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeHealthCheck: S.optional(ActiveHealthCheck),
     name: S.optional(S.String),
@@ -405,7 +405,7 @@ export const TargetPool = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all target pools which will be used in the load balancer. Limited to 20. */
 export type CreateLoadBalancerRequestTargetPoolsList = Array<TargetPool>;
-export const CreateLoadBalancerRequestTargetPoolsList = /*@__PURE__*/ S.Array(
+const CreateLoadBalancerRequestTargetPoolsList = /*@__PURE__*/ S.Array(
   TargetPool,
 ) as any as S.Schema<CreateLoadBalancerRequestTargetPoolsList>;
 
@@ -432,7 +432,7 @@ export interface CreateLoadBalancerRequest {
   /** Load balancer resource version. Must be empty or unset for creating load balancers, non-empty for updating load balancers. Semantics: While retrieving load balancers, this is the current version of this load balancer resource that changes during updates of the load balancers. On updates this field specified the load balancer version you calculated your update for instead of the future version to enable concurrency safe updates. Update calls will then report the new version in their result as you would see with a load balancer retrieval call later. There exist no total order of the version, so you can only compare it for equality, but not for less/greater than another version. Since the creation of load balancer is always intended to create the first version of it, there should be no existing version. That's why this field must by empty of not present in that case. */
   version?: string;
 }
-export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -473,7 +473,7 @@ export type LoadBalancerErrorType =
   | "TYPE_IP_EXHAUSTED"
   | "TYPE_DNS_NOT_CONFIGURED"
   | "TYPE_VM_PORT_NOT_CONFIGURED";
-export const LoadBalancerErrorType = S.String;
+const LoadBalancerErrorType = S.String;
 
 export interface LoadBalancerError {
   /** The error description contains additional helpful user information to fix the error state of the load balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found or if the IP was deleted then you will get a proper error message. */
@@ -481,7 +481,7 @@ export interface LoadBalancerError {
   /** The error type specifies which part of the load balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the load balancer with try to use the provided IP and if not available reports TYPE_FIP_NOT_CONFIGURED error or TYPE_FIP_NOT_FOUND if the IP was deleted. */
   type?: LoadBalancerErrorType;
 }
-export const LoadBalancerError = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     type: S.optional(LoadBalancerErrorType),
@@ -490,13 +490,13 @@ export const LoadBalancerError = /*@__PURE__*/ S.suspend(() =>
 
 /** Reports all errors a load balancer has. */
 export type LoadBalancerErrorsList = Array<LoadBalancerError>;
-export const LoadBalancerErrorsList = /*@__PURE__*/ S.Array(
+const LoadBalancerErrorsList = /*@__PURE__*/ S.Array(
   LoadBalancerError,
 ) as any as S.Schema<LoadBalancerErrorsList>;
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per LB. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type LoadBalancerLabelsMap = { [key: string]: string | undefined };
-export const LoadBalancerLabelsMap =
+const LoadBalancerLabelsMap =
   CreateLoadBalancerRequestLabelsMap as any as S.Schema<LoadBalancerLabelsMap>;
 
 /** Protocol is the highest network protocol we understand to load balance. Currently only PROTOCOL_TCP, PROTOCOL_TCP_PROXY and PROTOCOL_TLS_PASSTHROUGH are supported. */
@@ -506,11 +506,11 @@ export type ListenerProtocol =
   | "PROTOCOL_UDP"
   | "PROTOCOL_TCP_PROXY"
   | "PROTOCOL_TLS_PASSTHROUGH";
-export const ListenerProtocol = S.String;
+const ListenerProtocol = S.String;
 
 /** Server Name Indicators config for domains to be routed to the desired target pool for this listener. */
 export type ListenerServerNameIndicatorsList = Array<ServerNameIndicator>;
-export const ListenerServerNameIndicatorsList =
+const ListenerServerNameIndicatorsList =
   ListenerInputServerNameIndicatorsList as any as S.Schema<ListenerServerNameIndicatorsList>;
 
 export interface Listener {
@@ -528,7 +528,7 @@ export interface Listener {
   tcp?: OptionsTCP;
   udp?: OptionsUDP;
 }
-export const Listener = /*@__PURE__*/ S.suspend(() =>
+const Listener = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     name: S.optional(S.String),
@@ -543,7 +543,7 @@ export const Listener = /*@__PURE__*/ S.suspend(() =>
 
 /** There is a maximum listener count of 20. Port and protocol limitations: - UDP listeners cannot have the same port. - TCP-derived listeners cannot have the same port. A TCP-derived listener is any listener that listens on a TCP port. As of now those are: TCP, TCP_PROXY, and PROTOCOL_TLS_PASSTHROUGH. The only exception is, if all listeners for the same port are PROTOCOL_TLS_PASSTHROUGH. - PROTOCOL_TLS_PASSTHROUGH listeners cannot have the same port and at least one common domain name. - PROTOCOL_TLS_PASSTHROUGH listeners can have the same domain name and different ports though (e.g. ports 443 and 8443 for domain example.com). - PROTOCOL_TLS_PASSTHROUGH listeners without a domain name serve as a default listener and you can have only one default listener. */
 export type LoadBalancerListenersList = Array<Listener>;
-export const LoadBalancerListenersList = /*@__PURE__*/ S.Array(
+const LoadBalancerListenersList = /*@__PURE__*/ S.Array(
   Listener,
 ) as any as S.Schema<LoadBalancerListenersList>;
 
@@ -553,7 +553,7 @@ export interface SecurityGroup {
   /** Name of the security Group */
   name?: string;
 }
-export const SecurityGroup = /*@__PURE__*/ S.suspend(() =>
+const SecurityGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -562,7 +562,7 @@ export const SecurityGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of networks that listeners and targets reside in. Currently limited to one. Not changeable after creation. */
 export type LoadBalancerNetworksList = Array<Network>;
-export const LoadBalancerNetworksList =
+const LoadBalancerNetworksList =
   CreateLoadBalancerRequestNetworksList as any as S.Schema<LoadBalancerNetworksList>;
 
 export type LoadBalancerStatus =
@@ -571,11 +571,11 @@ export type LoadBalancerStatus =
   | "STATUS_READY"
   | "STATUS_ERROR"
   | "STATUS_TERMINATING";
-export const LoadBalancerStatus = S.String;
+const LoadBalancerStatus = S.String;
 
 /** List of all target pools which will be used in the load balancer. Limited to 20. */
 export type LoadBalancerTargetPoolsList = Array<TargetPool>;
-export const LoadBalancerTargetPoolsList =
+const LoadBalancerTargetPoolsList =
   CreateLoadBalancerRequestTargetPoolsList as any as S.Schema<LoadBalancerTargetPoolsList>;
 
 export interface LoadBalancer2 {
@@ -610,7 +610,7 @@ export interface LoadBalancer2 {
   /** Load balancer resource version. Must be empty or unset for creating load balancers, non-empty for updating load balancers. Semantics: While retrieving load balancers, this is the current version of this load balancer resource that changes during updates of the load balancers. On updates this field specified the load balancer version you calculated your update for instead of the future version to enable concurrency safe updates. Update calls will then report the new version in their result as you would see with a load balancer retrieval call later. There exist no total order of the version, so you can only compare it for equality, but not for less/greater than another version. Since the creation of load balancer is always intended to create the first version of it, there should be no existing version. That's why this field must by empty of not present in that case. */
   version?: string;
 }
-export const LoadBalancer2 = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancer2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableTargetSecurityGroupAssignment: S.optional(S.Boolean),
     errors: S.optional(LoadBalancerErrorsList),
@@ -636,7 +636,7 @@ export interface DeleteCredentialsRequest {
   region: string;
   credentialsRef: string;
 }
-export const DeleteCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -652,7 +652,7 @@ export const DeleteCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCredentialsRequest" }) as any as S.Schema<DeleteCredentialsRequest>;
 
 export type DeleteCredentialsResponse2 = unknown;
-export const DeleteCredentialsResponse2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialsResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteCredentialsResponse2",
@@ -663,7 +663,7 @@ export interface DeleteLoadBalancerRequest {
   region: string;
   name: string;
 }
-export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -681,7 +681,7 @@ export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLoadBalancerRequest>;
 
 export type DeleteLoadBalancerResponse2 = unknown;
-export const DeleteLoadBalancerResponse2 =
+const DeleteLoadBalancerResponse2 =
   DeleteCredentialsResponse2 as any as S.Schema<DeleteLoadBalancerResponse2>;
 
 export interface GetCredentialsRequest {
@@ -689,7 +689,7 @@ export interface GetCredentialsRequest {
   region: string;
   credentialsRef: string;
 }
-export const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -707,7 +707,7 @@ export const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCredentialsResponse {
   credential?: CredentialsResponse;
 }
-export const GetCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credential: S.optional(CredentialsResponse),
   }),
@@ -718,7 +718,7 @@ export interface GetLoadBalancerRequest {
   region: string;
   name: string;
 }
-export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -737,7 +737,7 @@ export interface GetQuotaRequest {
   projectId: string;
   region: string;
 }
-export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -765,7 +765,7 @@ export interface GetQuotaResponse {
   /** The number of load balancing servers that are currently existing in this project. */
   usedLoadBalancers?: number;
 }
-export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxCredentials: S.optional(S.Number),
     maxLoadBalancers: S.optional(S.Number),
@@ -780,7 +780,7 @@ export interface ListCredentialsRequest {
   projectId: string;
   region: string;
 }
-export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -795,14 +795,14 @@ export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCredentialsRequest" }) as any as S.Schema<ListCredentialsRequest>;
 
 export type ListCredentialsResponseCredentialsList = Array<CredentialsResponse>;
-export const ListCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
+const ListCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
   CredentialsResponse,
 ) as any as S.Schema<ListCredentialsResponseCredentialsList>;
 
 export interface ListCredentialsResponse {
   credentials?: ListCredentialsResponseCredentialsList;
 }
-export const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(ListCredentialsResponseCredentialsList),
   }),
@@ -816,7 +816,7 @@ export interface ListLoadBalancersRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -833,7 +833,7 @@ export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLoadBalancersRequest" }) as any as S.Schema<ListLoadBalancersRequest>;
 
 export type ListLoadBalancersResponseLoadBalancersList = Array<LoadBalancer2>;
-export const ListLoadBalancersResponseLoadBalancersList = /*@__PURE__*/ S.Array(
+const ListLoadBalancersResponseLoadBalancersList = /*@__PURE__*/ S.Array(
   LoadBalancer2,
 ) as any as S.Schema<ListLoadBalancersResponseLoadBalancersList>;
 
@@ -842,7 +842,7 @@ export interface ListLoadBalancersResponse {
   /** Continue token from the ListLoadBalancerResponse with Limit option */
   nextPageId?: string;
 }
-export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loadBalancers: S.optional(ListLoadBalancersResponseLoadBalancersList),
     nextPageId: S.optional(S.String),
@@ -854,7 +854,7 @@ export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListPlansRequest {
   region: string;
 }
-export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.String.pipe(T.Label()),
   }).pipe(
@@ -881,7 +881,7 @@ export interface PlanDetails {
   /** Region this Plan is available in */
   region?: string;
 }
-export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
+const PlanDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     flavorName: S.optional(S.String),
@@ -893,14 +893,14 @@ export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanDetails" }) as any as S.Schema<PlanDetails>;
 
 export type ListPlansResponseValidPlansList = Array<PlanDetails>;
-export const ListPlansResponseValidPlansList = /*@__PURE__*/ S.Array(
+const ListPlansResponseValidPlansList = /*@__PURE__*/ S.Array(
   PlanDetails,
 ) as any as S.Schema<ListPlansResponseValidPlansList>;
 
 export interface ListPlansResponse {
   validPlans?: ListPlansResponseValidPlansList;
 }
-export const ListPlansResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validPlans: S.optional(ListPlansResponseValidPlansList),
   }),
@@ -917,7 +917,7 @@ export interface UpdateCredentialsRequest {
   /** A valid username used for an existing STACKIT Observability instance, which is used during basic auth. */
   username?: string;
 }
-export const UpdateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -938,27 +938,27 @@ export const UpdateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateCredentialsResponse {
   credential?: CredentialsResponse;
 }
-export const UpdateCredentialsResponse =
+const UpdateCredentialsResponse =
   CreateCredentialsResponse as any as S.Schema<UpdateCredentialsResponse>;
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per LB. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type UpdateLoadBalancerRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateLoadBalancerRequestLabelsMap =
+const UpdateLoadBalancerRequestLabelsMap =
   CreateLoadBalancerRequestLabelsMap as any as S.Schema<UpdateLoadBalancerRequestLabelsMap>;
 
 /** There is a maximum listener count of 20. Port and protocol limitations: - UDP listeners cannot have the same port. - TCP-derived listeners cannot have the same port. A TCP-derived listener is any listener that listens on a TCP port. As of now those are: TCP, TCP_PROXY, and PROTOCOL_TLS_PASSTHROUGH. The only exception is, if all listeners for the same port are PROTOCOL_TLS_PASSTHROUGH. - PROTOCOL_TLS_PASSTHROUGH listeners cannot have the same port and at least one common domain name. - PROTOCOL_TLS_PASSTHROUGH listeners can have the same domain name and different ports though (e.g. ports 443 and 8443 for domain example.com). - PROTOCOL_TLS_PASSTHROUGH listeners without a domain name serve as a default listener and you can have only one default listener. */
 export type UpdateLoadBalancerRequestListenersList = Array<ListenerInput>;
-export const UpdateLoadBalancerRequestListenersList =
+const UpdateLoadBalancerRequestListenersList =
   CreateLoadBalancerRequestListenersList as any as S.Schema<UpdateLoadBalancerRequestListenersList>;
 
 /** List of networks that listeners and targets reside in. Currently limited to one. Not changeable after creation. */
 export type UpdateLoadBalancerRequestNetworksList = Array<Network>;
-export const UpdateLoadBalancerRequestNetworksList =
+const UpdateLoadBalancerRequestNetworksList =
   CreateLoadBalancerRequestNetworksList as any as S.Schema<UpdateLoadBalancerRequestNetworksList>;
 
 /** List of all target pools which will be used in the load balancer. Limited to 20. */
 export type UpdateLoadBalancerRequestTargetPoolsList = Array<TargetPool>;
-export const UpdateLoadBalancerRequestTargetPoolsList =
+const UpdateLoadBalancerRequestTargetPoolsList =
   CreateLoadBalancerRequestTargetPoolsList as any as S.Schema<UpdateLoadBalancerRequestTargetPoolsList>;
 
 export interface UpdateLoadBalancerRequest {
@@ -983,7 +983,7 @@ export interface UpdateLoadBalancerRequest {
   /** Load balancer resource version. Must be empty or unset for creating load balancers, non-empty for updating load balancers. Semantics: While retrieving load balancers, this is the current version of this load balancer resource that changes during updates of the load balancers. On updates this field specified the load balancer version you calculated your update for instead of the future version to enable concurrency safe updates. Update calls will then report the new version in their result as you would see with a load balancer retrieval call later. There exist no total order of the version, so you can only compare it for equality, but not for less/greater than another version. Since the creation of load balancer is always intended to create the first version of it, there should be no existing version. That's why this field must by empty of not present in that case. */
   version?: string;
 }
-export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1011,7 +1011,7 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of all targets which will be used in the pool. Limited to 250. */
 export type UpdateTargetPoolRequestTargetsList = Array<Target>;
-export const UpdateTargetPoolRequestTargetsList =
+const UpdateTargetPoolRequestTargetsList =
   TargetPoolTargetsList as any as S.Schema<UpdateTargetPoolRequestTargetsList>;
 
 export interface UpdateTargetPoolRequest {
@@ -1026,7 +1026,7 @@ export interface UpdateTargetPoolRequest {
   /** List of all targets which will be used in the pool. Limited to 250. */
   targets?: UpdateTargetPoolRequestTargetsList;
 }
-export const UpdateTargetPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTargetPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),

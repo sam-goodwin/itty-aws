@@ -13,7 +13,7 @@ export interface GetPushAccessRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetPushAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPushAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
   }).pipe(T.Http({ method: "GET", uri: "/object-storage/push-access", code: 200 })),
@@ -35,7 +35,7 @@ export interface StorageAccessDto {
   /** Region for the storage backend (e.g. "us-east-2") */
   region: string;
 }
-export const StorageAccessDto = /*@__PURE__*/ S.suspend(() =>
+const StorageAccessDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKey: S.String,
     secret: S.String.pipe(T.SensitiveValue({})),

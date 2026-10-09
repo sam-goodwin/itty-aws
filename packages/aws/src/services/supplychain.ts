@@ -124,7 +124,7 @@ export interface CreateBillOfMaterialsImportJobRequest {
   s3uri: string;
   clientToken?: string;
 }
-export const CreateBillOfMaterialsImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillOfMaterialsImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     s3uri: S.String,
@@ -148,25 +148,25 @@ export const CreateBillOfMaterialsImportJobRequest = /*@__PURE__*/ S.suspend(() 
 export interface CreateBillOfMaterialsImportJobResponse {
   jobId: string;
 }
-export const CreateBillOfMaterialsImportJobResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBillOfMaterialsImportJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jobId: S.String }),
 ).annotate({
   identifier: "CreateBillOfMaterialsImportJobResponse",
 }) as any as S.Schema<CreateBillOfMaterialsImportJobResponse>;
 export type DataIntegrationFlowName = string;
 export type DataIntegrationFlowSourceType = "S3" | "DATASET" | (string & {});
-export const DataIntegrationFlowSourceType = S.String;
+const DataIntegrationFlowSourceType = S.String;
 
 export type DataIntegrationFlowSourceName = string;
 export type S3BucketName = string;
 export type DataIntegrationFlowS3Prefix = string;
 export type DataIntegrationFlowFileType = "CSV" | "PARQUET" | "JSON" | (string & {});
-export const DataIntegrationFlowFileType = S.String;
+const DataIntegrationFlowFileType = S.String;
 
 export interface DataIntegrationFlowS3Options {
   fileType?: DataIntegrationFlowFileType;
 }
-export const DataIntegrationFlowS3Options = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowS3Options = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileType: S.optional(DataIntegrationFlowFileType) }),
 ).annotate({
   identifier: "DataIntegrationFlowS3Options",
@@ -176,7 +176,7 @@ export interface DataIntegrationFlowS3SourceConfiguration {
   prefix: string;
   options?: DataIntegrationFlowS3Options;
 }
-export const DataIntegrationFlowS3SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowS3SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.String,
     prefix: S.String,
@@ -187,34 +187,34 @@ export const DataIntegrationFlowS3SourceConfiguration = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataIntegrationFlowS3SourceConfiguration>;
 export type DatasetIdentifier = string;
 export type DataIntegrationFlowLoadType = "INCREMENTAL" | "REPLACE" | (string & {});
-export const DataIntegrationFlowLoadType = S.String;
+const DataIntegrationFlowLoadType = S.String;
 
 export type DataIntegrationFlowDedupeStrategyType = "FIELD_PRIORITY" | (string & {});
-export const DataIntegrationFlowDedupeStrategyType = S.String;
+const DataIntegrationFlowDedupeStrategyType = S.String;
 
 export type DataIntegrationFlowFieldPriorityDedupeFieldName = string;
 export type DataIntegrationFlowFieldPriorityDedupeSortOrder = "ASC" | "DESC" | (string & {});
-export const DataIntegrationFlowFieldPriorityDedupeSortOrder = S.String;
+const DataIntegrationFlowFieldPriorityDedupeSortOrder = S.String;
 
 export interface DataIntegrationFlowFieldPriorityDedupeField {
   name: string;
   sortOrder: DataIntegrationFlowFieldPriorityDedupeSortOrder;
 }
-export const DataIntegrationFlowFieldPriorityDedupeField = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowFieldPriorityDedupeField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, sortOrder: DataIntegrationFlowFieldPriorityDedupeSortOrder }),
 ).annotate({
   identifier: "DataIntegrationFlowFieldPriorityDedupeField",
 }) as any as S.Schema<DataIntegrationFlowFieldPriorityDedupeField>;
 export type DataIntegrationFlowFieldPriorityDedupeFieldList =
   DataIntegrationFlowFieldPriorityDedupeField[];
-export const DataIntegrationFlowFieldPriorityDedupeFieldList = /*@__PURE__*/ S.Array(
+const DataIntegrationFlowFieldPriorityDedupeFieldList = /*@__PURE__*/ S.Array(
   DataIntegrationFlowFieldPriorityDedupeField,
 );
 export interface DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration {
   fields: DataIntegrationFlowFieldPriorityDedupeField[];
 }
-export const DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ fields: DataIntegrationFlowFieldPriorityDedupeFieldList }),
+const DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fields: DataIntegrationFlowFieldPriorityDedupeFieldList }),
 ).annotate({
   identifier: "DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration",
 }) as any as S.Schema<DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration>;
@@ -222,7 +222,7 @@ export interface DataIntegrationFlowDedupeStrategy {
   type: DataIntegrationFlowDedupeStrategyType;
   fieldPriority?: DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration;
 }
-export const DataIntegrationFlowDedupeStrategy = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowDedupeStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DataIntegrationFlowDedupeStrategyType,
     fieldPriority: S.optional(DataIntegrationFlowFieldPriorityDedupeStrategyConfiguration),
@@ -235,7 +235,7 @@ export interface DataIntegrationFlowDatasetOptions {
   dedupeRecords?: boolean;
   dedupeStrategy?: DataIntegrationFlowDedupeStrategy;
 }
-export const DataIntegrationFlowDatasetOptions = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowDatasetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loadType: S.optional(DataIntegrationFlowLoadType),
     dedupeRecords: S.optional(S.Boolean),
@@ -248,7 +248,7 @@ export interface DataIntegrationFlowDatasetSourceConfiguration {
   datasetIdentifier: string;
   options?: DataIntegrationFlowDatasetOptions;
 }
-export const DataIntegrationFlowDatasetSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowDatasetSourceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasetIdentifier: S.String, options: S.optional(DataIntegrationFlowDatasetOptions) }),
 ).annotate({
   identifier: "DataIntegrationFlowDatasetSourceConfiguration",
@@ -259,7 +259,7 @@ export interface DataIntegrationFlowSource {
   s3Source?: DataIntegrationFlowS3SourceConfiguration;
   datasetSource?: DataIntegrationFlowDatasetSourceConfiguration;
 }
-export const DataIntegrationFlowSource = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: DataIntegrationFlowSourceType,
     sourceName: S.String,
@@ -270,15 +270,15 @@ export const DataIntegrationFlowSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataIntegrationFlowSource",
 }) as any as S.Schema<DataIntegrationFlowSource>;
 export type DataIntegrationFlowSourceList = DataIntegrationFlowSource[];
-export const DataIntegrationFlowSourceList = /*@__PURE__*/ S.Array(DataIntegrationFlowSource);
+const DataIntegrationFlowSourceList = /*@__PURE__*/ S.Array(DataIntegrationFlowSource);
 export type DataIntegrationFlowTransformationType = "SQL" | "NONE" | (string & {});
-export const DataIntegrationFlowTransformationType = S.String;
+const DataIntegrationFlowTransformationType = S.String;
 
 export type DataIntegrationFlowSQLQuery = string | redacted.Redacted<string>;
 export interface DataIntegrationFlowSQLTransformationConfiguration {
   query: string | redacted.Redacted<string>;
 }
-export const DataIntegrationFlowSQLTransformationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowSQLTransformationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ query: SensitiveString }),
 ).annotate({
   identifier: "DataIntegrationFlowSQLTransformationConfiguration",
@@ -287,7 +287,7 @@ export interface DataIntegrationFlowTransformation {
   transformationType: DataIntegrationFlowTransformationType;
   sqlTransformation?: DataIntegrationFlowSQLTransformationConfiguration;
 }
-export const DataIntegrationFlowTransformation = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowTransformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transformationType: DataIntegrationFlowTransformationType,
     sqlTransformation: S.optional(DataIntegrationFlowSQLTransformationConfiguration),
@@ -296,27 +296,27 @@ export const DataIntegrationFlowTransformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataIntegrationFlowTransformation",
 }) as any as S.Schema<DataIntegrationFlowTransformation>;
 export type DataIntegrationFlowTargetType = "S3" | "DATASET" | (string & {});
-export const DataIntegrationFlowTargetType = S.String;
+const DataIntegrationFlowTargetType = S.String;
 
 export interface DataIntegrationFlowS3TargetConfiguration {
   bucketName: string;
   prefix: string;
   options?: DataIntegrationFlowS3Options;
 }
-export const DataIntegrationFlowS3TargetConfiguration =
+const DataIntegrationFlowS3TargetConfiguration =
   DataIntegrationFlowS3SourceConfiguration as any as S.Schema<DataIntegrationFlowS3TargetConfiguration>;
 export interface DataIntegrationFlowDatasetTargetConfiguration {
   datasetIdentifier: string;
   options?: DataIntegrationFlowDatasetOptions;
 }
-export const DataIntegrationFlowDatasetTargetConfiguration =
+const DataIntegrationFlowDatasetTargetConfiguration =
   DataIntegrationFlowDatasetSourceConfiguration as any as S.Schema<DataIntegrationFlowDatasetTargetConfiguration>;
 export interface DataIntegrationFlowTarget {
   targetType: DataIntegrationFlowTargetType;
   s3Target?: DataIntegrationFlowS3TargetConfiguration;
   datasetTarget?: DataIntegrationFlowDatasetTargetConfiguration;
 }
-export const DataIntegrationFlowTarget = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetType: DataIntegrationFlowTargetType,
     s3Target: S.optional(DataIntegrationFlowS3TargetConfiguration),
@@ -328,7 +328,7 @@ export const DataIntegrationFlowTarget = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
@@ -337,7 +337,7 @@ export interface CreateDataIntegrationFlowRequest {
   target: DataIntegrationFlowTarget;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -365,7 +365,7 @@ export interface CreateDataIntegrationFlowResponse {
   instanceId: string;
   name: string;
 }
-export const CreateDataIntegrationFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDataIntegrationFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceId: S.String, name: S.String }),
 ).annotate({
   identifier: "CreateDataIntegrationFlowResponse",
@@ -381,38 +381,36 @@ export type DataLakeDatasetSchemaFieldType =
   | "TIMESTAMP"
   | "LONG"
   | (string & {});
-export const DataLakeDatasetSchemaFieldType = S.String;
+const DataLakeDatasetSchemaFieldType = S.String;
 
 export interface DataLakeDatasetSchemaField {
   name: string;
   type: DataLakeDatasetSchemaFieldType;
   isRequired: boolean;
 }
-export const DataLakeDatasetSchemaField = /*@__PURE__*/ S.suspend(() =>
+const DataLakeDatasetSchemaField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, type: DataLakeDatasetSchemaFieldType, isRequired: S.Boolean }),
 ).annotate({
   identifier: "DataLakeDatasetSchemaField",
 }) as any as S.Schema<DataLakeDatasetSchemaField>;
 export type DataLakeDatasetSchemaFieldList = DataLakeDatasetSchemaField[];
-export const DataLakeDatasetSchemaFieldList = /*@__PURE__*/ S.Array(DataLakeDatasetSchemaField);
+const DataLakeDatasetSchemaFieldList = /*@__PURE__*/ S.Array(DataLakeDatasetSchemaField);
 export interface DataLakeDatasetPrimaryKeyField {
   name: string;
 }
-export const DataLakeDatasetPrimaryKeyField = /*@__PURE__*/ S.suspend(() =>
+const DataLakeDatasetPrimaryKeyField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String }),
 ).annotate({
   identifier: "DataLakeDatasetPrimaryKeyField",
 }) as any as S.Schema<DataLakeDatasetPrimaryKeyField>;
 export type DataLakeDatasetPrimaryKeyFieldList = DataLakeDatasetPrimaryKeyField[];
-export const DataLakeDatasetPrimaryKeyFieldList = /*@__PURE__*/ S.Array(
-  DataLakeDatasetPrimaryKeyField,
-);
+const DataLakeDatasetPrimaryKeyFieldList = /*@__PURE__*/ S.Array(DataLakeDatasetPrimaryKeyField);
 export interface DataLakeDatasetSchema {
   name: string;
   fields: DataLakeDatasetSchemaField[];
   primaryKeys?: DataLakeDatasetPrimaryKeyField[];
 }
-export const DataLakeDatasetSchema = /*@__PURE__*/ S.suspend(() =>
+const DataLakeDatasetSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     fields: DataLakeDatasetSchemaFieldList,
@@ -427,12 +425,12 @@ export type DataLakeDatasetPartitionTransformType =
   | "HOUR"
   | "IDENTITY"
   | (string & {});
-export const DataLakeDatasetPartitionTransformType = S.String;
+const DataLakeDatasetPartitionTransformType = S.String;
 
 export interface DataLakeDatasetPartitionFieldTransform {
   type: DataLakeDatasetPartitionTransformType;
 }
-export const DataLakeDatasetPartitionFieldTransform = /*@__PURE__*/ S.suspend(() =>
+const DataLakeDatasetPartitionFieldTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: DataLakeDatasetPartitionTransformType }),
 ).annotate({
   identifier: "DataLakeDatasetPartitionFieldTransform",
@@ -441,19 +439,17 @@ export interface DataLakeDatasetPartitionField {
   name: string;
   transform: DataLakeDatasetPartitionFieldTransform;
 }
-export const DataLakeDatasetPartitionField = /*@__PURE__*/ S.suspend(() =>
+const DataLakeDatasetPartitionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, transform: DataLakeDatasetPartitionFieldTransform }),
 ).annotate({
   identifier: "DataLakeDatasetPartitionField",
 }) as any as S.Schema<DataLakeDatasetPartitionField>;
 export type DataLakeDatasetPartitionFieldList = DataLakeDatasetPartitionField[];
-export const DataLakeDatasetPartitionFieldList = /*@__PURE__*/ S.Array(
-  DataLakeDatasetPartitionField,
-);
+const DataLakeDatasetPartitionFieldList = /*@__PURE__*/ S.Array(DataLakeDatasetPartitionField);
 export interface DataLakeDatasetPartitionSpec {
   fields: DataLakeDatasetPartitionField[];
 }
-export const DataLakeDatasetPartitionSpec = /*@__PURE__*/ S.suspend(() =>
+const DataLakeDatasetPartitionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fields: DataLakeDatasetPartitionFieldList }),
 ).annotate({
   identifier: "DataLakeDatasetPartitionSpec",
@@ -467,7 +463,7 @@ export interface CreateDataLakeDatasetRequest {
   partitionSpec?: DataLakeDatasetPartitionSpec;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -504,7 +500,7 @@ export interface DataLakeDataset {
   createdTime: Date;
   lastModifiedTime: Date;
 }
-export const DataLakeDataset = /*@__PURE__*/ S.suspend(() =>
+const DataLakeDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
     namespace: S.String,
@@ -520,7 +516,7 @@ export const DataLakeDataset = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataLakeDatasetResponse {
   dataset: DataLakeDataset;
 }
-export const CreateDataLakeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDataLakeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataset: DataLakeDataset }),
 ).annotate({
   identifier: "CreateDataLakeDatasetResponse",
@@ -532,7 +528,7 @@ export interface CreateDataLakeNamespaceRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -559,7 +555,7 @@ export interface DataLakeNamespace {
   createdTime: Date;
   lastModifiedTime: Date;
 }
-export const DataLakeNamespace = /*@__PURE__*/ S.suspend(() =>
+const DataLakeNamespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
     name: S.String,
@@ -572,7 +568,7 @@ export const DataLakeNamespace = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataLakeNamespaceResponse {
   namespace: DataLakeNamespace;
 }
-export const CreateDataLakeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDataLakeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ namespace: DataLakeNamespace }),
 ).annotate({
   identifier: "CreateDataLakeNamespaceResponse",
@@ -589,7 +585,7 @@ export interface CreateInstanceRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceName: S.optional(S.String),
     instanceDescription: S.optional(S.String),
@@ -608,7 +604,7 @@ export type InstanceState =
   | "Deleting"
   | "Deleted"
   | (string & {});
-export const InstanceState = S.String;
+const InstanceState = S.String;
 
 export interface Instance {
   instanceId: string;
@@ -623,7 +619,7 @@ export interface Instance {
   kmsKeyArn?: string;
   versionNumber?: number;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
     awsAccountId: S.String,
@@ -641,14 +637,14 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInstanceResponse {
   instance: Instance;
 }
-export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instance: Instance }),
 ).annotate({ identifier: "CreateInstanceResponse" }) as any as S.Schema<CreateInstanceResponse>;
 export interface DeleteDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
 }
-export const DeleteDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -672,14 +668,14 @@ export interface DeleteDataIntegrationFlowResponse {
   instanceId: string;
   name: string;
 }
-export const DeleteDataIntegrationFlowResponse =
+const DeleteDataIntegrationFlowResponse =
   CreateDataIntegrationFlowResponse as any as S.Schema<DeleteDataIntegrationFlowResponse>;
 export interface DeleteDataLakeDatasetRequest {
   instanceId: string;
   namespace: string;
   name: string;
 }
-export const DeleteDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -705,7 +701,7 @@ export interface DeleteDataLakeDatasetResponse {
   namespace: string;
   name: string;
 }
-export const DeleteDataLakeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataLakeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceId: S.String, namespace: S.String, name: S.String }),
 ).annotate({
   identifier: "DeleteDataLakeDatasetResponse",
@@ -714,7 +710,7 @@ export interface DeleteDataLakeNamespaceRequest {
   instanceId: string;
   name: string;
 }
-export const DeleteDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -735,12 +731,12 @@ export interface DeleteDataLakeNamespaceResponse {
   instanceId: string;
   name: string;
 }
-export const DeleteDataLakeNamespaceResponse =
+const DeleteDataLakeNamespaceResponse =
   CreateDataIntegrationFlowResponse as any as S.Schema<DeleteDataLakeNamespaceResponse>;
 export interface DeleteInstanceRequest {
   instanceId: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceId: S.String.pipe(T.HttpLabel("instanceId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/api/instance/{instanceId}" }),
@@ -755,13 +751,12 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteInstanceResponse {
   instance: Instance;
 }
-export const DeleteInstanceResponse =
-  CreateInstanceResponse as any as S.Schema<DeleteInstanceResponse>;
+const DeleteInstanceResponse = CreateInstanceResponse as any as S.Schema<DeleteInstanceResponse>;
 export interface GetBillOfMaterialsImportJobRequest {
   instanceId: string;
   jobId: string;
 }
-export const GetBillOfMaterialsImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillOfMaterialsImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     jobId: S.String.pipe(T.HttpLabel("jobId")),
@@ -788,7 +783,7 @@ export type ConfigurationJobStatus =
   | "QUEUED"
   | "SUCCESS"
   | (string & {});
-export const ConfigurationJobStatus = S.String;
+const ConfigurationJobStatus = S.String;
 
 export interface BillOfMaterialsImportJob {
   instanceId: string;
@@ -797,7 +792,7 @@ export interface BillOfMaterialsImportJob {
   s3uri: string;
   message?: string;
 }
-export const BillOfMaterialsImportJob = /*@__PURE__*/ S.suspend(() =>
+const BillOfMaterialsImportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
     jobId: S.String,
@@ -809,7 +804,7 @@ export const BillOfMaterialsImportJob = /*@__PURE__*/ S.suspend(() =>
 export interface GetBillOfMaterialsImportJobResponse {
   job: BillOfMaterialsImportJob;
 }
-export const GetBillOfMaterialsImportJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBillOfMaterialsImportJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ job: BillOfMaterialsImportJob }),
 ).annotate({
   identifier: "GetBillOfMaterialsImportJobResponse",
@@ -818,7 +813,7 @@ export interface GetDataIntegrationEventRequest {
   instanceId: string;
   eventId: string;
 }
-export const GetDataIntegrationEventRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     eventId: S.String.pipe(T.HttpLabel("eventId")),
@@ -856,7 +851,7 @@ export type DataIntegrationEventType =
   | "scn.data.supplyplan"
   | "scn.data.dataset"
   | (string & {});
-export const DataIntegrationEventType = S.String;
+const DataIntegrationEventType = S.String;
 
 export type DataIntegrationEventGroupId = string;
 export type DataIntegrationDatasetArn = string;
@@ -865,20 +860,20 @@ export type DataIntegrationEventDatasetOperationType =
   | "UPSERT"
   | "DELETE"
   | (string & {});
-export const DataIntegrationEventDatasetOperationType = S.String;
+const DataIntegrationEventDatasetOperationType = S.String;
 
 export type DataIntegrationEventDatasetLoadStatus =
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
-export const DataIntegrationEventDatasetLoadStatus = S.String;
+const DataIntegrationEventDatasetLoadStatus = S.String;
 
 export interface DataIntegrationEventDatasetLoadExecutionDetails {
   status: DataIntegrationEventDatasetLoadStatus;
   message?: string;
 }
-export const DataIntegrationEventDatasetLoadExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationEventDatasetLoadExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: DataIntegrationEventDatasetLoadStatus, message: S.optional(S.String) }),
 ).annotate({
   identifier: "DataIntegrationEventDatasetLoadExecutionDetails",
@@ -888,7 +883,7 @@ export interface DataIntegrationEventDatasetTargetDetails {
   operationType: DataIntegrationEventDatasetOperationType;
   datasetLoadExecution: DataIntegrationEventDatasetLoadExecutionDetails;
 }
-export const DataIntegrationEventDatasetTargetDetails = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationEventDatasetTargetDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetIdentifier: S.String,
     operationType: DataIntegrationEventDatasetOperationType,
@@ -905,7 +900,7 @@ export interface DataIntegrationEvent {
   eventTimestamp: Date;
   datasetTargetDetails?: DataIntegrationEventDatasetTargetDetails;
 }
-export const DataIntegrationEvent = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
     eventId: S.String,
@@ -918,7 +913,7 @@ export const DataIntegrationEvent = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataIntegrationEventResponse {
   event: DataIntegrationEvent;
 }
-export const GetDataIntegrationEventResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ event: DataIntegrationEvent }),
 ).annotate({
   identifier: "GetDataIntegrationEventResponse",
@@ -927,7 +922,7 @@ export interface GetDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
 }
-export const GetDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -956,7 +951,7 @@ export interface DataIntegrationFlow {
   createdTime: Date;
   lastModifiedTime: Date;
 }
-export const DataIntegrationFlow = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
     name: S.String,
@@ -970,7 +965,7 @@ export const DataIntegrationFlow = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataIntegrationFlowResponse {
   flow: DataIntegrationFlow;
 }
-export const GetDataIntegrationFlowResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationFlowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flow: DataIntegrationFlow }),
 ).annotate({
   identifier: "GetDataIntegrationFlowResponse",
@@ -980,7 +975,7 @@ export interface GetDataIntegrationFlowExecutionRequest {
   flowName: string;
   executionId: string;
 }
-export const GetDataIntegrationFlowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationFlowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     flowName: S.String.pipe(T.HttpLabel("flowName")),
@@ -1006,14 +1001,14 @@ export type DataIntegrationFlowExecutionStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
-export const DataIntegrationFlowExecutionStatus = S.String;
+const DataIntegrationFlowExecutionStatus = S.String;
 
 export type DataIntegrationS3ObjectKey = string;
 export interface DataIntegrationFlowS3Source {
   bucketName: string;
   key: string;
 }
-export const DataIntegrationFlowS3Source = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowS3Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketName: S.String, key: S.String }),
 ).annotate({
   identifier: "DataIntegrationFlowS3Source",
@@ -1021,7 +1016,7 @@ export const DataIntegrationFlowS3Source = /*@__PURE__*/ S.suspend(() =>
 export interface DataIntegrationFlowDatasetSource {
   datasetIdentifier: string;
 }
-export const DataIntegrationFlowDatasetSource = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowDatasetSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasetIdentifier: S.String }),
 ).annotate({
   identifier: "DataIntegrationFlowDatasetSource",
@@ -1031,7 +1026,7 @@ export interface DataIntegrationFlowExecutionSourceInfo {
   s3Source?: DataIntegrationFlowS3Source;
   datasetSource?: DataIntegrationFlowDatasetSource;
 }
-export const DataIntegrationFlowExecutionSourceInfo = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowExecutionSourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: DataIntegrationFlowSourceType,
     s3Source: S.optional(DataIntegrationFlowS3Source),
@@ -1044,7 +1039,7 @@ export type DataIntegrationFlowExecutionDiagnosticReportsRootS3URI = string;
 export interface DataIntegrationFlowExecutionOutputMetadata {
   diagnosticReportsRootS3URI?: string;
 }
-export const DataIntegrationFlowExecutionOutputMetadata = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowExecutionOutputMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ diagnosticReportsRootS3URI: S.optional(S.String) }),
 ).annotate({
   identifier: "DataIntegrationFlowExecutionOutputMetadata",
@@ -1060,7 +1055,7 @@ export interface DataIntegrationFlowExecution {
   endTime?: Date;
   outputMetadata?: DataIntegrationFlowExecutionOutputMetadata;
 }
-export const DataIntegrationFlowExecution = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationFlowExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
     flowName: S.String,
@@ -1078,7 +1073,7 @@ export const DataIntegrationFlowExecution = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataIntegrationFlowExecutionResponse {
   flowExecution: DataIntegrationFlowExecution;
 }
-export const GetDataIntegrationFlowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationFlowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowExecution: DataIntegrationFlowExecution }),
 ).annotate({
   identifier: "GetDataIntegrationFlowExecutionResponse",
@@ -1088,7 +1083,7 @@ export interface GetDataLakeDatasetRequest {
   namespace: string;
   name: string;
 }
-export const GetDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -1112,13 +1107,13 @@ export const GetDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataLakeDatasetResponse {
   dataset: DataLakeDataset;
 }
-export const GetDataLakeDatasetResponse =
+const GetDataLakeDatasetResponse =
   CreateDataLakeDatasetResponse as any as S.Schema<GetDataLakeDatasetResponse>;
 export interface GetDataLakeNamespaceRequest {
   instanceId: string;
   name: string;
 }
-export const GetDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1138,12 +1133,12 @@ export const GetDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataLakeNamespaceResponse {
   namespace: DataLakeNamespace;
 }
-export const GetDataLakeNamespaceResponse =
+const GetDataLakeNamespaceResponse =
   CreateDataLakeNamespaceResponse as any as S.Schema<GetDataLakeNamespaceResponse>;
 export interface GetInstanceRequest {
   instanceId: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instanceId: S.String.pipe(T.HttpLabel("instanceId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/api/instance/{instanceId}" }),
@@ -1158,7 +1153,7 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetInstanceResponse {
   instance: Instance;
 }
-export const GetInstanceResponse = CreateInstanceResponse as any as S.Schema<GetInstanceResponse>;
+const GetInstanceResponse = CreateInstanceResponse as any as S.Schema<GetInstanceResponse>;
 export type DataIntegrationEventNextToken = string;
 export type DataIntegrationEventMaxResults = number;
 export interface ListDataIntegrationEventsRequest {
@@ -1167,7 +1162,7 @@ export interface ListDataIntegrationEventsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDataIntegrationEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataIntegrationEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     eventType: S.optional(DataIntegrationEventType).pipe(T.HttpQuery("eventType")),
@@ -1190,12 +1185,12 @@ export const ListDataIntegrationEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataIntegrationEventsRequest",
 }) as any as S.Schema<ListDataIntegrationEventsRequest>;
 export type DataIntegrationEventList = DataIntegrationEvent[];
-export const DataIntegrationEventList = /*@__PURE__*/ S.Array(DataIntegrationEvent);
+const DataIntegrationEventList = /*@__PURE__*/ S.Array(DataIntegrationEvent);
 export interface ListDataIntegrationEventsResponse {
   events: DataIntegrationEvent[];
   nextToken?: string;
 }
-export const ListDataIntegrationEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataIntegrationEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ events: DataIntegrationEventList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDataIntegrationEventsResponse",
@@ -1208,7 +1203,7 @@ export interface ListDataIntegrationFlowExecutionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDataIntegrationFlowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataIntegrationFlowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     flowName: S.String.pipe(T.HttpLabel("flowName")),
@@ -1231,12 +1226,12 @@ export const ListDataIntegrationFlowExecutionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListDataIntegrationFlowExecutionsRequest",
 }) as any as S.Schema<ListDataIntegrationFlowExecutionsRequest>;
 export type DataIntegrationFlowExecutionList = DataIntegrationFlowExecution[];
-export const DataIntegrationFlowExecutionList = /*@__PURE__*/ S.Array(DataIntegrationFlowExecution);
+const DataIntegrationFlowExecutionList = /*@__PURE__*/ S.Array(DataIntegrationFlowExecution);
 export interface ListDataIntegrationFlowExecutionsResponse {
   flowExecutions: DataIntegrationFlowExecution[];
   nextToken?: string;
 }
-export const ListDataIntegrationFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataIntegrationFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flowExecutions: DataIntegrationFlowExecutionList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDataIntegrationFlowExecutionsResponse",
@@ -1248,7 +1243,7 @@ export interface ListDataIntegrationFlowsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDataIntegrationFlowsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataIntegrationFlowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1270,12 +1265,12 @@ export const ListDataIntegrationFlowsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataIntegrationFlowsRequest",
 }) as any as S.Schema<ListDataIntegrationFlowsRequest>;
 export type DataIntegrationFlowList = DataIntegrationFlow[];
-export const DataIntegrationFlowList = /*@__PURE__*/ S.Array(DataIntegrationFlow);
+const DataIntegrationFlowList = /*@__PURE__*/ S.Array(DataIntegrationFlow);
 export interface ListDataIntegrationFlowsResponse {
   flows: DataIntegrationFlow[];
   nextToken?: string;
 }
-export const ListDataIntegrationFlowsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataIntegrationFlowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ flows: DataIntegrationFlowList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDataIntegrationFlowsResponse",
@@ -1288,7 +1283,7 @@ export interface ListDataLakeDatasetsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDataLakeDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataLakeDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -1311,12 +1306,12 @@ export const ListDataLakeDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataLakeDatasetsRequest",
 }) as any as S.Schema<ListDataLakeDatasetsRequest>;
 export type DataLakeDatasetList = DataLakeDataset[];
-export const DataLakeDatasetList = /*@__PURE__*/ S.Array(DataLakeDataset);
+const DataLakeDatasetList = /*@__PURE__*/ S.Array(DataLakeDataset);
 export interface ListDataLakeDatasetsResponse {
   datasets: DataLakeDataset[];
   nextToken?: string;
 }
-export const ListDataLakeDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataLakeDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasets: DataLakeDatasetList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDataLakeDatasetsResponse",
@@ -1328,7 +1323,7 @@ export interface ListDataLakeNamespacesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDataLakeNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataLakeNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1347,12 +1342,12 @@ export const ListDataLakeNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataLakeNamespacesRequest",
 }) as any as S.Schema<ListDataLakeNamespacesRequest>;
 export type DataLakeNamespaceList = DataLakeNamespace[];
-export const DataLakeNamespaceList = /*@__PURE__*/ S.Array(DataLakeNamespace);
+const DataLakeNamespaceList = /*@__PURE__*/ S.Array(DataLakeNamespace);
 export interface ListDataLakeNamespacesResponse {
   namespaces: DataLakeNamespace[];
   nextToken?: string;
 }
-export const ListDataLakeNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataLakeNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ namespaces: DataLakeNamespaceList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDataLakeNamespacesResponse",
@@ -1360,16 +1355,16 @@ export const ListDataLakeNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
 export type InstanceNextToken = string;
 export type InstanceMaxResults = number;
 export type InstanceNameList = string[];
-export const InstanceNameList = /*@__PURE__*/ S.Array(S.String);
+const InstanceNameList = /*@__PURE__*/ S.Array(S.String);
 export type InstanceStateList = InstanceState[];
-export const InstanceStateList = /*@__PURE__*/ S.Array(InstanceState);
+const InstanceStateList = /*@__PURE__*/ S.Array(InstanceState);
 export interface ListInstancesRequest {
   nextToken?: string;
   maxResults?: number;
   instanceNameFilter?: string[];
   instanceStateFilter?: InstanceState[];
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1378,18 +1373,18 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "GET", uri: "/api/instance" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListInstancesRequest" }) as any as S.Schema<ListInstancesRequest>;
 export type InstanceList = Instance[];
-export const InstanceList = /*@__PURE__*/ S.Array(Instance);
+const InstanceList = /*@__PURE__*/ S.Array(Instance);
 export interface ListInstancesResponse {
   instances: Instance[];
   nextToken?: string;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instances: InstanceList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListInstancesResponse" }) as any as S.Schema<ListInstancesResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/api/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1399,7 +1394,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: TagMap }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -1409,7 +1404,7 @@ export interface DataIntegrationEventDatasetTargetConfiguration {
   datasetIdentifier: string;
   operationType: DataIntegrationEventDatasetOperationType;
 }
-export const DataIntegrationEventDatasetTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DataIntegrationEventDatasetTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetIdentifier: S.String,
     operationType: DataIntegrationEventDatasetOperationType,
@@ -1426,7 +1421,7 @@ export interface SendDataIntegrationEventRequest {
   clientToken?: string;
   datasetTarget?: DataIntegrationEventDatasetTargetConfiguration;
 }
-export const SendDataIntegrationEventRequest = /*@__PURE__*/ S.suspend(() =>
+const SendDataIntegrationEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     eventType: DataIntegrationEventType,
@@ -1454,7 +1449,7 @@ export const SendDataIntegrationEventRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SendDataIntegrationEventResponse {
   eventId: string;
 }
-export const SendDataIntegrationEventResponse = /*@__PURE__*/ S.suspend(() =>
+const SendDataIntegrationEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ eventId: S.String }),
 ).annotate({
   identifier: "SendDataIntegrationEventResponse",
@@ -1463,22 +1458,22 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/api/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = InstanceNameList as any as S.Schema<TagKeyList>;
+const TagKeyList = InstanceNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1494,7 +1489,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDataIntegrationFlowRequest {
   instanceId: string;
   name: string;
@@ -1502,7 +1497,7 @@ export interface UpdateDataIntegrationFlowRequest {
   transformation?: DataIntegrationFlowTransformation;
   target?: DataIntegrationFlowTarget;
 }
-export const UpdateDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1528,7 +1523,7 @@ export const UpdateDataIntegrationFlowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataIntegrationFlowResponse {
   flow: DataIntegrationFlow;
 }
-export const UpdateDataIntegrationFlowResponse =
+const UpdateDataIntegrationFlowResponse =
   GetDataIntegrationFlowResponse as any as S.Schema<UpdateDataIntegrationFlowResponse>;
 export interface UpdateDataLakeDatasetRequest {
   instanceId: string;
@@ -1536,7 +1531,7 @@ export interface UpdateDataLakeDatasetRequest {
   name: string;
   description?: string;
 }
-export const UpdateDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -1561,14 +1556,14 @@ export const UpdateDataLakeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataLakeDatasetResponse {
   dataset: DataLakeDataset;
 }
-export const UpdateDataLakeDatasetResponse =
+const UpdateDataLakeDatasetResponse =
   CreateDataLakeDatasetResponse as any as S.Schema<UpdateDataLakeDatasetResponse>;
 export interface UpdateDataLakeNamespaceRequest {
   instanceId: string;
   name: string;
   description?: string;
 }
-export const UpdateDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1589,14 +1584,14 @@ export const UpdateDataLakeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataLakeNamespaceResponse {
   namespace: DataLakeNamespace;
 }
-export const UpdateDataLakeNamespaceResponse =
+const UpdateDataLakeNamespaceResponse =
   CreateDataLakeNamespaceResponse as any as S.Schema<UpdateDataLakeNamespaceResponse>;
 export interface UpdateInstanceRequest {
   instanceId: string;
   instanceName?: string;
   instanceDescription?: string;
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String.pipe(T.HttpLabel("instanceId")),
     instanceName: S.optional(S.String),
@@ -1615,8 +1610,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateInstanceResponse {
   instance: Instance;
 }
-export const UpdateInstanceResponse =
-  CreateInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
+const UpdateInstanceResponse = CreateInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 export type CreateBillOfMaterialsImportJobError =
   | AccessDeniedException
   | ConflictException

@@ -13,7 +13,7 @@ export interface SearchDocRequest {
   /** Natural-language description of what to find in the PostHog documentation. Inkeep performs hybrid (semantic + full-text) RAG, so phrase the query the way a user would ask the question. */
   query: string;
 }
-export const SearchDocRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDocRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.String,
@@ -26,7 +26,7 @@ export interface DocsSearchResponse {
   /** Markdown-formatted documentation results. Each block has a title, URL and excerpt; an empty result set returns guidance to navigate to https://posthog.com/docs. */
   content: string;
 }
-export const DocsSearchResponse = /*@__PURE__*/ S.suspend(() =>
+const DocsSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
   }),

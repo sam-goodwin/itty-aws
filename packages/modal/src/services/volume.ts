@@ -14,7 +14,7 @@ export interface CommitVolumeRequest {
   /** Set by the runtime when committing a volume mounted in a sandbox sidecar container (used for runtime-driven commit-on-exit). Unset targets the task's main container. */
   containerId?: string;
 }
-export const CommitVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     containerId: S.optional(S.String),
@@ -24,7 +24,7 @@ export const CommitVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CommitVolumeResponse {
   skipReload?: boolean;
 }
-export const CommitVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skipReload: S.optional(S.Boolean),
   }),
@@ -34,7 +34,7 @@ export interface DeleteVolumeRequest {
   volumeId?: string;
   environmentName?: string;
 }
-export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -42,7 +42,7 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteVolumeResponse",
 }) as any as S.Schema<DeleteVolumeResponse>;
 
@@ -50,7 +50,7 @@ export interface ListPagination {
   maxObjects?: number;
   createdBefore?: number;
 }
-export const ListPagination = /*@__PURE__*/ S.suspend(() =>
+const ListPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxObjects: S.optional(S.Number),
     createdBefore: S.optional(S.Number),
@@ -61,7 +61,7 @@ export interface ListVolumeRequest {
   environmentName?: string;
   pagination?: ListPagination;
 }
-export const ListVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     pagination: S.optional(ListPagination),
@@ -73,7 +73,7 @@ export type VolumeFsVersion =
   | "VOLUME_FS_VERSION_UNSPECIFIED"
   | "VOLUME_FS_VERSION_V1"
   | "VOLUME_FS_VERSION_V2";
-export const VolumeFsVersion = S.String;
+const VolumeFsVersion = S.String;
 
 export interface CreationInfo {
   /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
@@ -81,7 +81,7 @@ export interface CreationInfo {
   /** Timestamp of resource creation */
   createdBy?: string;
 }
-export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
+const CreationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Number),
     createdBy: S.optional(S.String),
@@ -93,7 +93,7 @@ export interface VolumeMetadata {
   name?: string;
   creationInfo?: CreationInfo;
 }
-export const VolumeMetadata = /*@__PURE__*/ S.suspend(() =>
+const VolumeMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(VolumeFsVersion),
     name: S.optional(S.String),
@@ -109,7 +109,7 @@ export interface VolumeListItem {
   /** Superseded by metadata, used by clients up to 1.1.2 */
   metadata?: VolumeMetadata;
 }
-export const VolumeListItem = /*@__PURE__*/ S.suspend(() =>
+const VolumeListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     volumeId: S.optional(S.String),
@@ -119,7 +119,7 @@ export const VolumeListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeListItem" }) as any as S.Schema<VolumeListItem>;
 
 export type VolumeListItemList = Array<VolumeListItem>;
-export const VolumeListItemList = /*@__PURE__*/ S.Array(
+const VolumeListItemList = /*@__PURE__*/ S.Array(
   VolumeListItem,
 ) as any as S.Schema<VolumeListItemList>;
 
@@ -127,7 +127,7 @@ export interface ListVolumeResponse {
   items?: VolumeListItemList;
   environmentName?: string;
 }
-export const ListVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(VolumeListItemList),
     environmentName: S.optional(S.String),
@@ -138,7 +138,7 @@ export interface RenameVolumeRequest {
   volumeId?: string;
   name?: string;
 }
-export const RenameVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     name: S.optional(S.String),
@@ -146,10 +146,10 @@ export const RenameVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenameVolumeRequest" }) as any as S.Schema<RenameVolumeRequest>;
 
 export interface RenameVolumeResponse {}
-export const RenameVolumeResponse = DeleteVolumeResponse as any as S.Schema<RenameVolumeResponse>;
+const RenameVolumeResponse = DeleteVolumeResponse as any as S.Schema<RenameVolumeResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface VolumeCopyFilesRequest {
   volumeId?: string;
@@ -157,7 +157,7 @@ export interface VolumeCopyFilesRequest {
   dstPath?: string;
   recursive?: boolean;
 }
-export const VolumeCopyFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const VolumeCopyFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     srcPaths: S.optional(StringList),
@@ -167,8 +167,7 @@ export const VolumeCopyFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeCopyFilesRequest" }) as any as S.Schema<VolumeCopyFilesRequest>;
 
 export interface VolumeCopyFilesResponse {}
-export const VolumeCopyFilesResponse =
-  DeleteVolumeResponse as any as S.Schema<VolumeCopyFilesResponse>;
+const VolumeCopyFilesResponse = DeleteVolumeResponse as any as S.Schema<VolumeCopyFilesResponse>;
 
 export interface VolumeCopyFiles2Request {
   volumeId?: string;
@@ -176,7 +175,7 @@ export interface VolumeCopyFiles2Request {
   dstPath?: string;
   recursive?: boolean;
 }
-export const VolumeCopyFiles2Request = /*@__PURE__*/ S.suspend(() =>
+const VolumeCopyFiles2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     srcPaths: S.optional(StringList),
@@ -186,13 +185,12 @@ export const VolumeCopyFiles2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeCopyFiles2Request" }) as any as S.Schema<VolumeCopyFiles2Request>;
 
 export interface VolumeCopyFiles2Response {}
-export const VolumeCopyFiles2Response =
-  DeleteVolumeResponse as any as S.Schema<VolumeCopyFiles2Response>;
+const VolumeCopyFiles2Response = DeleteVolumeResponse as any as S.Schema<VolumeCopyFiles2Response>;
 
 export interface VolumeGetByIdRequest {
   volumeId?: string;
 }
-export const VolumeGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const VolumeGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeGetById", code: 200 })),
@@ -202,7 +200,7 @@ export interface VolumeGetByIdResponse {
   volumeId?: string;
   metadata?: VolumeMetadata;
 }
-export const VolumeGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
+const VolumeGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     metadata: S.optional(VolumeMetadata),
@@ -215,7 +213,7 @@ export interface VolumeGetFileRequest {
   start?: string;
   len?: string;
 }
-export const VolumeGetFileRequest = /*@__PURE__*/ S.suspend(() =>
+const VolumeGetFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -233,7 +231,7 @@ export interface VolumeGetFileResponse {
   /** file position of first byte returned */
   len?: string;
 }
-export const VolumeGetFileResponse = /*@__PURE__*/ S.suspend(() =>
+const VolumeGetFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     dataBlobId: S.optional(S.String),
@@ -251,7 +249,7 @@ export interface VolumeGetFile2Request {
   /** 0 is interpreted as 'read to end' The client extends each block body it downloads with zero bytes up to the block's expected length, so responses may omit trailing zero bytes. */
   clientPadsBlocks?: boolean;
 }
-export const VolumeGetFile2Request = /*@__PURE__*/ S.suspend(() =>
+const VolumeGetFile2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -269,7 +267,7 @@ export interface VolumeGetFile2Response {
   /** file position of first byte returned */
   len?: string;
 }
-export const VolumeGetFile2Response = /*@__PURE__*/ S.suspend(() =>
+const VolumeGetFile2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     getUrls: S.optional(StringList),
     size: S.optional(S.String),
@@ -285,15 +283,15 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-export const ObjectCreationType = S.String;
+const ObjectCreationType = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface VolumeCreateOptions {
   experimentalOptions?: StringMap;
 }
-export const VolumeCreateOptions = /*@__PURE__*/ S.suspend(() =>
+const VolumeCreateOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experimentalOptions: S.optional(StringMap),
   }),
@@ -309,7 +307,7 @@ export interface VolumeGetOrCreateRequest {
   version?: VolumeFsVersion | (string & {});
   createOptions?: VolumeCreateOptions;
 }
-export const VolumeGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VolumeGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -328,7 +326,7 @@ export interface VolumeGetOrCreateResponse {
   /** Not used directly; version is part of the metadata */
   metadata?: VolumeMetadata;
 }
-export const VolumeGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const VolumeGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     version: S.optional(VolumeFsVersion),
@@ -341,15 +339,14 @@ export const VolumeGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface VolumeHeartbeatRequest {
   volumeId?: string;
 }
-export const VolumeHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const VolumeHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeHeartbeat", code: 200 })),
 ).annotate({ identifier: "VolumeHeartbeatRequest" }) as any as S.Schema<VolumeHeartbeatRequest>;
 
 export interface VolumeHeartbeatResponse {}
-export const VolumeHeartbeatResponse =
-  DeleteVolumeResponse as any as S.Schema<VolumeHeartbeatResponse>;
+const VolumeHeartbeatResponse = DeleteVolumeResponse as any as S.Schema<VolumeHeartbeatResponse>;
 
 export interface MountFile {
   filename?: string;
@@ -359,7 +356,7 @@ export interface MountFile {
   /** Size of the file in bytes -- ignored in MountBuild(). */
   mode?: number;
 }
-export const MountFile = /*@__PURE__*/ S.suspend(() =>
+const MountFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     sha256Hex: S.optional(S.String),
@@ -369,7 +366,7 @@ export const MountFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MountFile" }) as any as S.Schema<MountFile>;
 
 export type MountFileList = Array<MountFile>;
-export const MountFileList = /*@__PURE__*/ S.Array(MountFile) as any as S.Schema<MountFileList>;
+const MountFileList = /*@__PURE__*/ S.Array(MountFile) as any as S.Schema<MountFileList>;
 
 export interface VolumePutFilesRequest {
   volumeId?: string;
@@ -378,7 +375,7 @@ export interface VolumePutFilesRequest {
   /** If set to true, prevent overwriting existing files. (Note that we don't allow overwriting existing directories with uploaded files regardless.) */
   disallowOverwriteExistingFiles?: boolean;
 }
-export const VolumePutFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const VolumePutFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     files: S.optional(MountFileList),
@@ -387,8 +384,7 @@ export const VolumePutFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumePutFilesRequest" }) as any as S.Schema<VolumePutFilesRequest>;
 
 export interface VolumePutFilesResponse {}
-export const VolumePutFilesResponse =
-  DeleteVolumeResponse as any as S.Schema<VolumePutFilesResponse>;
+const VolumePutFilesResponse = DeleteVolumeResponse as any as S.Schema<VolumePutFilesResponse>;
 
 export interface VolumePutFiles2RequestBlock {
   /** The SHA256 digest of the contents of this block, in raw (ie. 32 bytes) form for compactness. */
@@ -396,7 +392,7 @@ export interface VolumePutFiles2RequestBlock {
   /** From a previous call to `VolumePutFiles2`, we might have gotten a response indicating that this block was missing. For such a block, this field contains the raw bytes of the body that was returned from the HTTP PUT request when the client made a request for the `put_url` returned in the previous `VolumePutFiles2Response`. */
   putResponse?: string;
 }
-export const VolumePutFiles2RequestBlock = /*@__PURE__*/ S.suspend(() =>
+const VolumePutFiles2RequestBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentsSha256: S.optional(S.String),
     putResponse: S.optional(S.String),
@@ -406,7 +402,7 @@ export const VolumePutFiles2RequestBlock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumePutFiles2RequestBlock>;
 
 export type VolumePutFiles2RequestBlockList = Array<VolumePutFiles2RequestBlock>;
-export const VolumePutFiles2RequestBlockList = /*@__PURE__*/ S.Array(
+const VolumePutFiles2RequestBlockList = /*@__PURE__*/ S.Array(
   VolumePutFiles2RequestBlock,
 ) as any as S.Schema<VolumePutFiles2RequestBlockList>;
 
@@ -420,7 +416,7 @@ export interface VolumePutFiles2RequestFile {
   /** Unix file permission bits `st_mode`. */
   mode?: number;
 }
-export const VolumePutFiles2RequestFile = /*@__PURE__*/ S.suspend(() =>
+const VolumePutFiles2RequestFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     size: S.optional(S.String),
@@ -432,7 +428,7 @@ export const VolumePutFiles2RequestFile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumePutFiles2RequestFile>;
 
 export type VolumePutFiles2RequestFileList = Array<VolumePutFiles2RequestFile>;
-export const VolumePutFiles2RequestFileList = /*@__PURE__*/ S.Array(
+const VolumePutFiles2RequestFileList = /*@__PURE__*/ S.Array(
   VolumePutFiles2RequestFile,
 ) as any as S.Schema<VolumePutFiles2RequestFileList>;
 
@@ -444,7 +440,7 @@ export interface VolumePutFiles2Request {
   /** If set to true, prevent overwriting existing files. (Note that we don't allow overwriting existing directories with uploaded files regardless.) */
   disallowOverwriteExistingFiles?: boolean;
 }
-export const VolumePutFiles2Request = /*@__PURE__*/ S.suspend(() =>
+const VolumePutFiles2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     files: S.optional(VolumePutFiles2RequestFileList),
@@ -460,7 +456,7 @@ export interface VolumePutFiles2ResponseMissingBlock {
   /** Make a HTTP PUT request to this endpoint with the blocks' contents as the body. */
   putUrl?: string;
 }
-export const VolumePutFiles2ResponseMissingBlock = /*@__PURE__*/ S.suspend(() =>
+const VolumePutFiles2ResponseMissingBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileIndex: S.optional(S.String),
     blockIndex: S.optional(S.String),
@@ -471,7 +467,7 @@ export const VolumePutFiles2ResponseMissingBlock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumePutFiles2ResponseMissingBlock>;
 
 export type VolumePutFiles2ResponseMissingBlockList = Array<VolumePutFiles2ResponseMissingBlock>;
-export const VolumePutFiles2ResponseMissingBlockList = /*@__PURE__*/ S.Array(
+const VolumePutFiles2ResponseMissingBlockList = /*@__PURE__*/ S.Array(
   VolumePutFiles2ResponseMissingBlock,
 ) as any as S.Schema<VolumePutFiles2ResponseMissingBlockList>;
 
@@ -479,7 +475,7 @@ export interface VolumePutFiles2Response {
   /** Blocks that are currently missing in the volume, because the file did not exist, or because the block checksum from `blocks_sha256` in the request did not match the current contents of the file. Values will be returned sorted by `(file_index, block_index)`. If this field is empty, it means that the files were uploaded successfully and/or that the request was an idempotent no-op. */
   missingBlocks?: VolumePutFiles2ResponseMissingBlockList;
 }
-export const VolumePutFiles2Response = /*@__PURE__*/ S.suspend(() =>
+const VolumePutFiles2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missingBlocks: S.optional(VolumePutFiles2ResponseMissingBlockList),
   }),
@@ -489,21 +485,21 @@ export interface VolumeReloadRequest {
   /** NOTE(staffan): Mounting a volume in multiple locations is not supported, so volume_id alone uniquely identifies a volume mount. */
   volumeId?: string;
 }
-export const VolumeReloadRequest = /*@__PURE__*/ S.suspend(() =>
+const VolumeReloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/VolumeReload", code: 200 })),
 ).annotate({ identifier: "VolumeReloadRequest" }) as any as S.Schema<VolumeReloadRequest>;
 
 export interface VolumeReloadResponse {}
-export const VolumeReloadResponse = DeleteVolumeResponse as any as S.Schema<VolumeReloadResponse>;
+const VolumeReloadResponse = DeleteVolumeResponse as any as S.Schema<VolumeReloadResponse>;
 
 export interface VolumeRemoveFileRequest {
   volumeId?: string;
   path?: string;
   recursive?: boolean;
 }
-export const VolumeRemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
+const VolumeRemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -512,15 +508,14 @@ export const VolumeRemoveFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeRemoveFileRequest" }) as any as S.Schema<VolumeRemoveFileRequest>;
 
 export interface VolumeRemoveFileResponse {}
-export const VolumeRemoveFileResponse =
-  DeleteVolumeResponse as any as S.Schema<VolumeRemoveFileResponse>;
+const VolumeRemoveFileResponse = DeleteVolumeResponse as any as S.Schema<VolumeRemoveFileResponse>;
 
 export interface VolumeRemoveFile2Request {
   volumeId?: string;
   path?: string;
   recursive?: boolean;
 }
-export const VolumeRemoveFile2Request = /*@__PURE__*/ S.suspend(() =>
+const VolumeRemoveFile2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     path: S.optional(S.String),
@@ -531,7 +526,7 @@ export const VolumeRemoveFile2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeRemoveFile2Request" }) as any as S.Schema<VolumeRemoveFile2Request>;
 
 export interface VolumeRemoveFile2Response {}
-export const VolumeRemoveFile2Response =
+const VolumeRemoveFile2Response =
   DeleteVolumeResponse as any as S.Schema<VolumeRemoveFile2Response>;
 
 export type CommitVolumeError = ModalOpError;

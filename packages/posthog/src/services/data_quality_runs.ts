@@ -9,13 +9,13 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** Ids of the checks to run. Omit to run every enabled check in the project. */
 export type CreateDataQualityRunRequestCheckIdsList = Array<string>;
-export const CreateDataQualityRunRequestCheckIdsList = /*@__PURE__*/ S.Array(
+const CreateDataQualityRunRequestCheckIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateDataQualityRunRequestCheckIdsList>;
 
 /** * `table` - table * `view` - view * `metric` - metric * `posthog_table` - posthog_table */
 export type SubjectTypeEnum = "table" | "view" | "metric" | "posthog_table";
-export const SubjectTypeEnum = S.String;
+const SubjectTypeEnum = S.String;
 
 export interface CreateDataQualityRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -27,7 +27,7 @@ export interface CreateDataQualityRunRequest {
   /** Id of the subject to run every enabled check on. Pass subject_type with it. */
   subject_uuid?: string;
 }
-export const CreateDataQualityRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataQualityRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     check_ids: S.optional(CreateDataQualityRunRequestCheckIdsList),
@@ -61,7 +61,7 @@ export interface DataQualitySuiteRun {
   error: string;
   created_at: string;
 }
-export const DataQualitySuiteRun = /*@__PURE__*/ S.suspend(() =>
+const DataQualitySuiteRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     trigger: S.String,
@@ -86,7 +86,7 @@ export interface GetDataQualityRunRequest {
   /** A UUID string identifying this data quality suite run. */
   id: string;
 }
-export const GetDataQualityRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataQualityRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -96,7 +96,7 @@ export const GetDataQualityRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDataQualityRunRequest" }) as any as S.Schema<GetDataQualityRunRequest>;
 
 export type ListDataQualityRunsRequestSubjectType = "metric" | "posthog_table" | "table" | "view";
-export const ListDataQualityRunsRequestSubjectType = S.String;
+const ListDataQualityRunsRequestSubjectType = S.String;
 
 export interface ListDataQualityRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -110,7 +110,7 @@ export interface ListDataQualityRunsRequest {
   /** Id of the table, view, metric, or PostHog table. */
   subject_uuid?: string;
 }
-export const ListDataQualityRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataQualityRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -125,7 +125,7 @@ export const ListDataQualityRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDataQualityRunsRequest>;
 
 export type PaginatedDataQualitySuiteRunListResultsList = Array<DataQualitySuiteRun>;
-export const PaginatedDataQualitySuiteRunListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDataQualitySuiteRunListResultsList = /*@__PURE__*/ S.Array(
   DataQualitySuiteRun,
 ) as any as S.Schema<PaginatedDataQualitySuiteRunListResultsList>;
 
@@ -135,7 +135,7 @@ export interface PaginatedDataQualitySuiteRunList {
   previous?: string | null;
   results: PaginatedDataQualitySuiteRunListResultsList;
 }
-export const PaginatedDataQualitySuiteRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataQualitySuiteRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -152,7 +152,7 @@ export interface ListDataQualityRunsCheckRunsRequest {
   /** A UUID string identifying this data quality suite run. */
   id: string;
 }
-export const ListDataQualityRunsCheckRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataQualityRunsCheckRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -176,18 +176,18 @@ export type CheckTypeEnum =
   | "row_count"
   | "freshness"
   | "custom_sql";
-export const CheckTypeEnum = S.String;
+const CheckTypeEnum = S.String;
 
 /** Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not 'same as the check has now'. */
 export type DataQualityCheckRunCheckConfigMap = { [key: string]: unknown | undefined };
-export const DataQualityCheckRunCheckConfigMap = /*@__PURE__*/ S.Record(
+const DataQualityCheckRunCheckConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<DataQualityCheckRunCheckConfigMap>;
 
 /** * `error` - error * `warn` - warn */
 export type DataQualityCheckSeverityEnum = "error" | "warn";
-export const DataQualityCheckSeverityEnum = S.String;
+const DataQualityCheckSeverityEnum = S.String;
 
 export interface DataQualityCheckRun {
   id: string;
@@ -223,7 +223,7 @@ export interface DataQualityCheckRun {
   finished_at: string | null;
   created_at: string;
 }
-export const DataQualityCheckRun = /*@__PURE__*/ S.suspend(() =>
+const DataQualityCheckRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     quality_check: S.NullOr(S.String),
@@ -250,12 +250,12 @@ export const DataQualityCheckRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataQualityCheckRun" }) as any as S.Schema<DataQualityCheckRun>;
 
 export type ListDataQualityRunsCheckRunsResponseBodyList = Array<DataQualityCheckRun>;
-export const ListDataQualityRunsCheckRunsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDataQualityRunsCheckRunsResponseBodyList = /*@__PURE__*/ S.Array(
   DataQualityCheckRun,
 ) as any as S.Schema<ListDataQualityRunsCheckRunsResponseBodyList>;
 
 export type ListDataQualityRunsCheckRunsResponse = ListDataQualityRunsCheckRunsResponseBodyList;
-export const ListDataQualityRunsCheckRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataQualityRunsCheckRunsResponse = /*@__PURE__*/ S.suspend(() =>
   ListDataQualityRunsCheckRunsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDataQualityRunsCheckRunsResponse",

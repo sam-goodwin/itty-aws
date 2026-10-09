@@ -47,7 +47,7 @@ export interface CreateDbaasLogChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateDbaasLogChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -59,12 +59,12 @@ export const CreateDbaasLogChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDbaasLogChangeContactRequest>;
 
 export type CreateDbaasLogChangeContactResponseBodyList = Array<number>;
-export const CreateDbaasLogChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateDbaasLogChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateDbaasLogChangeContactResponseBodyList>;
 
 export type CreateDbaasLogChangeContactResponse = CreateDbaasLogChangeContactResponseBodyList;
-export const CreateDbaasLogChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateDbaasLogChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateDbaasLogChangeContactResponse",
@@ -80,7 +80,7 @@ export interface CreateDbaasLogEncryptionKeyRequest {
   /** Encryption Key title */
   title: string;
 }
-export const CreateDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     content: S.String,
@@ -101,7 +101,7 @@ export type DbaasLogsOperationStateEnum =
   | "RUNNING"
   | "STARTED"
   | "SUCCESS";
-export const DbaasLogsOperationStateEnum = S.String;
+const DbaasLogsOperationStateEnum = S.String;
 
 /** Asynchronous operation */
 export interface DbaasLogsOperation {
@@ -138,7 +138,7 @@ export interface DbaasLogsOperation {
   /** Operation last update */
   updatedAt?: string | null;
 }
-export const DbaasLogsOperation = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasId: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.String),
@@ -161,7 +161,7 @@ export const DbaasLogsOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** IP blocks */
 export type CreateDbaasLogInputRequestAllowedNetworksList = Array<string>;
-export const CreateDbaasLogInputRequestAllowedNetworksList = /*@__PURE__*/ S.Array(
+const CreateDbaasLogInputRequestAllowedNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateDbaasLogInputRequestAllowedNetworksList>;
 
@@ -191,7 +191,7 @@ export interface CreateDbaasLogInputRequest {
   /** Title */
   title: string;
 }
-export const CreateDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     allowedNetworks: S.optional(S.NullOr(CreateDbaasLogInputRequestAllowedNetworksList)),
@@ -216,7 +216,7 @@ export interface CreateDbaasLogInputConfigtestRequest {
   /** Input ID */
   inputId: string;
 }
-export const CreateDbaasLogInputConfigtestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogInputConfigtestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -237,7 +237,7 @@ export interface CreateDbaasLogInputEndRequest {
   /** Input ID */
   inputId: string;
 }
-export const CreateDbaasLogInputEndRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogInputEndRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -254,7 +254,7 @@ export interface CreateDbaasLogInputLogUrlRequest {
   /** Input ID */
   inputId: string;
 }
-export const CreateDbaasLogInputLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogInputLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -276,7 +276,7 @@ export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
-export const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     url: S.optional(S.String),
@@ -293,7 +293,7 @@ export interface CreateDbaasLogOutputGraylogDashboardRequest {
   /** Title */
   title: string;
 }
-export const CreateDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.String,
@@ -311,15 +311,15 @@ export const CreateDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspe
 
 /** Possible values for StreamColdStorageCompressionEnum */
 export type DbaasLogsStreamColdStorageCompressionEnum = "DEFLATED" | "GZIP" | "LZMA" | "ZSTD";
-export const DbaasLogsStreamColdStorageCompressionEnum = S.String;
+const DbaasLogsStreamColdStorageCompressionEnum = S.String;
 
 /** Possible values for StreamColdStorageContentEnum */
 export type DbaasLogsStreamColdStorageContentEnum = "ALL" | "GELF" | "PLAIN";
-export const DbaasLogsStreamColdStorageContentEnum = S.String;
+const DbaasLogsStreamColdStorageContentEnum = S.String;
 
 /** Encryption keys used to encrypt stream archives */
 export type CreateDbaasLogOutputGraylogStreamRequestEncryptionKeysIdsList = Array<string>;
-export const CreateDbaasLogOutputGraylogStreamRequestEncryptionKeysIdsList =
+const CreateDbaasLogOutputGraylogStreamRequestEncryptionKeysIdsList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<CreateDbaasLogOutputGraylogStreamRequestEncryptionKeysIdsList>;
 
 export interface CreateDbaasLogOutputGraylogStreamRequest {
@@ -356,7 +356,7 @@ export interface CreateDbaasLogOutputGraylogStreamRequest {
   /** Web Socket enabled */
   webSocketEnabled?: boolean | null;
 }
-export const CreateDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     coldStorageCompression: S.optional(S.NullOr(DbaasLogsStreamColdStorageCompressionEnum)),
@@ -388,7 +388,7 @@ export type DbaasLogsStreamAlertConditionConditionTypeEnum =
   | "FIELD_CONTENT_VALUE"
   | "FIELD_VALUE"
   | "MESSAGE_COUNT";
-export const DbaasLogsStreamAlertConditionConditionTypeEnum = S.String;
+const DbaasLogsStreamAlertConditionConditionTypeEnum = S.String;
 
 /** Possible values for StreamAlertConditionConstraintTypeEnum */
 export type DbaasLogsStreamAlertConditionConstraintTypeEnum =
@@ -397,11 +397,11 @@ export type DbaasLogsStreamAlertConditionConstraintTypeEnum =
   | "MIN"
   | "STDLABEU"
   | "SUM";
-export const DbaasLogsStreamAlertConditionConstraintTypeEnum = S.String;
+const DbaasLogsStreamAlertConditionConstraintTypeEnum = S.String;
 
 /** Possible values for StreamAlertConditionThresholdTypeEnum */
 export type DbaasLogsStreamAlertConditionThresholdTypeEnum = "EQ" | "GT" | "GTE" | "LT" | "LTE";
-export const DbaasLogsStreamAlertConditionThresholdTypeEnum = S.String;
+const DbaasLogsStreamAlertConditionThresholdTypeEnum = S.String;
 
 export interface CreateDbaasLogOutputGraylogStreamAlertRequest {
   /** Service name */
@@ -433,7 +433,7 @@ export interface CreateDbaasLogOutputGraylogStreamAlertRequest {
   /** Value */
   value?: string | null;
 }
-export const CreateDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -468,7 +468,7 @@ export interface CreateDbaasLogOutputGraylogStreamArchiveUrlRequest {
   /** Archive ID */
   archiveId: string;
 }
-export const CreateDbaasLogOutputGraylogStreamArchiveUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputGraylogStreamArchiveUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -491,7 +491,7 @@ export interface DbaasLogsArchiveUrl {
   /** Temporary URL to get archive */
   url?: string;
 }
-export const DbaasLogsArchiveUrl = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsArchiveUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     url: S.optional(S.String),
@@ -504,7 +504,7 @@ export type DbaasLogsStreamRuleOperatorEnum =
   | "GREATER_THAN"
   | "MATCH_EXACTLY"
   | "SMALLER_THAN";
-export const DbaasLogsStreamRuleOperatorEnum = S.String;
+const DbaasLogsStreamRuleOperatorEnum = S.String;
 
 export interface CreateDbaasLogOutputGraylogStreamRuleRequest {
   /** Service name */
@@ -520,7 +520,7 @@ export interface CreateDbaasLogOutputGraylogStreamRuleRequest {
   /** Field value */
   value: string;
 }
-export const CreateDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -551,7 +551,7 @@ export interface CreateDbaasLogOutputMetricTenantRequest {
   /** Metric tenant title */
   title: string;
 }
-export const CreateDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.String,
@@ -573,7 +573,7 @@ export interface CreateDbaasLogOutputOpensearchAliasRequest {
   /** Suffix */
   suffix: string;
 }
-export const CreateDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.String,
@@ -593,7 +593,7 @@ export interface CreateDbaasLogOutputOpensearchAliasIndexRequest {
   /** Index ID */
   indexId: string;
 }
-export const CreateDbaasLogOutputOpensearchAliasIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputOpensearchAliasIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -617,7 +617,7 @@ export interface CreateDbaasLogOutputOpensearchAliasStreamRequest {
   /** Stream ID */
   streamId: string;
 }
-export const CreateDbaasLogOutputOpensearchAliasStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputOpensearchAliasStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -645,7 +645,7 @@ export interface CreateDbaasLogOutputOpensearchIndexRequest {
   /** Suffix */
   suffix: string;
 }
-export const CreateDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     alertNotifyEnabled: S.optional(S.NullOr(S.Boolean)),
@@ -665,7 +665,7 @@ export interface CreateDbaasLogOutputOpensearchOsdRequest {
   /** Description */
   description: string;
 }
-export const CreateDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.String,
@@ -684,7 +684,7 @@ export interface CreateDbaasLogRoleRequest {
   /** Name */
   name: string;
 }
-export const CreateDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.String,
@@ -704,7 +704,7 @@ export interface CreateDbaasLogRoleMemberRequest {
   /** Username */
   username: string;
 }
-export const CreateDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -725,7 +725,7 @@ export interface CreateDbaasLogRolePermissionAliasRequest {
   /** Alias ID */
   aliasId: string;
 }
-export const CreateDbaasLogRolePermissionAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogRolePermissionAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -743,7 +743,7 @@ export const CreateDbaasLogRolePermissionAliasRequest = /*@__PURE__*/ S.suspend(
 
 /** Possible values for PermissionTypeEnum */
 export type DbaasLogsPermissionTypeEnum = "READ_ONLY" | "READ_WRITE";
-export const DbaasLogsPermissionTypeEnum = S.String;
+const DbaasLogsPermissionTypeEnum = S.String;
 
 export interface CreateDbaasLogRolePermissionDashboardRequest {
   /** Service name */
@@ -755,7 +755,7 @@ export interface CreateDbaasLogRolePermissionDashboardRequest {
   /** Permission type */
   permissionType?: DbaasLogsPermissionTypeEnum | (string & {}) | null;
 }
-export const CreateDbaasLogRolePermissionDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogRolePermissionDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -782,7 +782,7 @@ export interface CreateDbaasLogRolePermissionIndexRequest {
   /** Permission type */
   permissionType?: DbaasLogsPermissionTypeEnum | (string & {}) | null;
 }
-export const CreateDbaasLogRolePermissionIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogRolePermissionIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -809,7 +809,7 @@ export interface CreateDbaasLogRolePermissionOsdRequest {
   /** Permission type */
   permissionType?: DbaasLogsPermissionTypeEnum | (string & {}) | null;
 }
-export const CreateDbaasLogRolePermissionOsdRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogRolePermissionOsdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -834,7 +834,7 @@ export interface CreateDbaasLogRolePermissionStreamRequest {
   /** Stream ID */
   streamId: string;
 }
-export const CreateDbaasLogRolePermissionStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogRolePermissionStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -858,7 +858,7 @@ export interface CreateDbaasLogTokenRequest {
   /** Token name */
   name: string;
 }
-export const CreateDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     clusterId: S.optional(S.NullOr(S.String)),
@@ -874,7 +874,7 @@ export interface CreateDbaasLogUserChangePasswordRequest {
   /** Password must be at least 12 characters long contain a number, an uppercase, a lowercase and a special letter */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateDbaasLogUserChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDbaasLogUserChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -891,7 +891,7 @@ export interface DeleteDbaasLogEncryptionKeyRequest {
   /** Encryption key ID */
   encryptionKeyId: string;
 }
-export const DeleteDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     encryptionKeyId: S.String.pipe(T.Label()),
@@ -912,7 +912,7 @@ export interface DeleteDbaasLogInputRequest {
   /** Input ID */
   inputId: string;
 }
-export const DeleteDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -929,7 +929,7 @@ export interface DeleteDbaasLogOutputGraylogDashboardRequest {
   /** Dashboard ID */
   dashboardId: string;
 }
-export const DeleteDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dashboardId: S.String.pipe(T.Label()),
@@ -950,7 +950,7 @@ export interface DeleteDbaasLogOutputGraylogStreamRequest {
   /** Stream ID */
   streamId: string;
 }
-export const DeleteDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -973,7 +973,7 @@ export interface DeleteDbaasLogOutputGraylogStreamAlertRequest {
   /** Alert ID */
   alertId: string;
 }
-export const DeleteDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -997,7 +997,7 @@ export interface DeleteDbaasLogOutputGraylogStreamRuleRequest {
   /** Rule ID */
   ruleId: string;
 }
-export const DeleteDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -1021,7 +1021,7 @@ export interface DeleteDbaasLogOutputGraylogStreamSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const DeleteDbaasLogOutputGraylogStreamSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputGraylogStreamSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -1043,7 +1043,7 @@ export interface DeleteDbaasLogOutputMetricTenantRequest {
   /** Tenant ID */
   tenantId: string;
 }
-export const DeleteDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tenantId: S.String.pipe(T.Label()),
@@ -1066,7 +1066,7 @@ export interface DeleteDbaasLogOutputMetricTenantSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const DeleteDbaasLogOutputMetricTenantSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputMetricTenantSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tenantId: S.String.pipe(T.Label()),
@@ -1088,7 +1088,7 @@ export interface DeleteDbaasLogOutputOpensearchAliasRequest {
   /** Alias ID */
   aliasId: string;
 }
-export const DeleteDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -1111,7 +1111,7 @@ export interface DeleteDbaasLogOutputOpensearchAliasIndexRequest {
   /** Index ID */
   indexId: string;
 }
-export const DeleteDbaasLogOutputOpensearchAliasIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputOpensearchAliasIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -1135,7 +1135,7 @@ export interface DeleteDbaasLogOutputOpensearchAliasStreamRequest {
   /** Stream ID */
   streamId: string;
 }
-export const DeleteDbaasLogOutputOpensearchAliasStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputOpensearchAliasStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -1157,7 +1157,7 @@ export interface DeleteDbaasLogOutputOpensearchIndexRequest {
   /** Index ID */
   indexId: string;
 }
-export const DeleteDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     indexId: S.String.pipe(T.Label()),
@@ -1178,7 +1178,7 @@ export interface DeleteDbaasLogOutputOpensearchOsdRequest {
   /** Osd ID */
   osdId: string;
 }
-export const DeleteDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     osdId: S.String.pipe(T.Label()),
@@ -1199,7 +1199,7 @@ export interface DeleteDbaasLogRoleRequest {
   /** Role ID */
   roleId: string;
 }
-export const DeleteDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -1216,7 +1216,7 @@ export interface DeleteDbaasLogRoleMemberRequest {
   /** Username */
   username: string;
 }
-export const DeleteDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -1240,7 +1240,7 @@ export interface DeleteDbaasLogRolePermissionRequest {
   /** Permission ID */
   permissionId: string;
 }
-export const DeleteDbaasLogRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -1262,7 +1262,7 @@ export interface DeleteDbaasLogTokenRequest {
   /** Token ID */
   tokenId: string;
 }
-export const DeleteDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tokenId: S.String.pipe(T.Label()),
@@ -1285,7 +1285,7 @@ export interface DuplicateDbaasLogsOutputGraylogDashboardRequest {
   /** Title */
   title: string;
 }
-export const DuplicateDbaasLogsOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateDbaasLogsOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dashboardId: S.String.pipe(T.Label()),
@@ -1307,7 +1307,7 @@ export interface GetDbaasLogRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetDbaasLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dbaas/logs/{serviceName}", code: 200 })),
@@ -1315,7 +1315,7 @@ export const GetDbaasLogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -1331,7 +1331,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -1342,11 +1342,11 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for ServicePlanEnum */
 export type DbaasLogsServicePlanEnum = "ENTERPRISE" | "STANDARD";
-export const DbaasLogsServicePlanEnum = S.String;
+const DbaasLogsServicePlanEnum = S.String;
 
 /** Possible values for ServiceStateEnum */
 export type DbaasLogsServiceStateEnum = "DISABLED" | "ENABLED" | "INIT" | "TO_CONFIG";
-export const DbaasLogsServiceStateEnum = S.String;
+const DbaasLogsServiceStateEnum = S.String;
 
 /** Service */
 export interface DbaasLogsServiceWithIAM {
@@ -1371,7 +1371,7 @@ export interface DbaasLogsServiceWithIAM {
   /** Username on DBaaS Logs */
   username?: string;
 }
-export const DbaasLogsServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     displayName: S.optional(S.NullOr(S.String)),
@@ -1392,7 +1392,7 @@ export interface GetDbaasLogClusterRequest {
   /** Cluster ID */
   clusterId: string;
 }
-export const GetDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     clusterId: S.String.pipe(T.Label()),
@@ -1405,7 +1405,7 @@ export const GetDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed networks for ARCHIVE flow type */
 export type DbaasLogsClusterArchiveAllowedNetworksList = Array<string>;
-export const DbaasLogsClusterArchiveAllowedNetworksList =
+const DbaasLogsClusterArchiveAllowedNetworksList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<DbaasLogsClusterArchiveAllowedNetworksList>;
 
 /** Possible values for CertificationLevelEnum */
@@ -1416,25 +1416,25 @@ export type DbaasLogsCertificationLevelEnum =
   | "SOC2"
   | "STANDARD"
   | "TRUSTED_ZONE";
-export const DbaasLogsCertificationLevelEnum = S.String;
+const DbaasLogsCertificationLevelEnum = S.String;
 
 /** Possible values for ClusterClusterTypeEnum */
 export type DbaasLogsClusterClusterTypeEnum = "DEDICATED" | "SHARED";
-export const DbaasLogsClusterClusterTypeEnum = S.String;
+const DbaasLogsClusterClusterTypeEnum = S.String;
 
 /** Allowed networks for DIRECT_INPUT flow type */
 export type DbaasLogsClusterDirectInputAllowedNetworksList = Array<string>;
-export const DbaasLogsClusterDirectInputAllowedNetworksList =
+const DbaasLogsClusterDirectInputAllowedNetworksList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<DbaasLogsClusterDirectInputAllowedNetworksList>;
 
 /** Allowed networks for QUERY flow type */
 export type DbaasLogsClusterQueryAllowedNetworksList = Array<string>;
-export const DbaasLogsClusterQueryAllowedNetworksList =
+const DbaasLogsClusterQueryAllowedNetworksList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<DbaasLogsClusterQueryAllowedNetworksList>;
 
 /** Possible values for ClusterRegionEnum */
 export type DbaasLogsClusterRegionEnum = "BHS" | "GRA" | "P-19" | "RBX" | "SBG";
-export const DbaasLogsClusterRegionEnum = S.String;
+const DbaasLogsClusterRegionEnum = S.String;
 
 /** Cluster */
 export interface DbaasLogsCluster {
@@ -1465,7 +1465,7 @@ export interface DbaasLogsCluster {
   /** Data center localization */
   region?: DbaasLogsClusterRegionEnum;
 }
-export const DbaasLogsCluster = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archiveAllowedNetworks: S.optional(DbaasLogsClusterArchiveAllowedNetworksList),
     certificationLevel: S.optional(DbaasLogsCertificationLevelEnum),
@@ -1491,7 +1491,7 @@ export interface GetDbaasLogClusterRetentionRequest {
   /** Retention ID */
   retentionId: string;
 }
-export const GetDbaasLogClusterRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogClusterRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     clusterId: S.String.pipe(T.Label()),
@@ -1509,7 +1509,7 @@ export const GetDbaasLogClusterRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for RetentionTypeEnum */
 export type DbaasLogsRetentionTypeEnum = "LOGS_COLD_STORAGE" | "LOGS_INDEXING" | "METRICS_TENANT";
-export const DbaasLogsRetentionTypeEnum = S.String;
+const DbaasLogsRetentionTypeEnum = S.String;
 
 /** Cluster retention */
 export interface DbaasLogsClusterRetention {
@@ -1522,7 +1522,7 @@ export interface DbaasLogsClusterRetention {
   /** Retention type */
   retentionType?: DbaasLogsRetentionTypeEnum;
 }
-export const DbaasLogsClusterRetention = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsClusterRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.NullOr(S.String)),
     isSupported: S.optional(S.Boolean),
@@ -1539,7 +1539,7 @@ export interface GetDbaasLogEncryptionKeyRequest {
   /** Encryption key ID */
   encryptionKeyId: string;
 }
-export const GetDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     encryptionKeyId: S.String.pipe(T.Label()),
@@ -1556,7 +1556,7 @@ export const GetDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for EncryptionKeyAlgorithmEnum */
 export type DbaasLogsEncryptionKeyAlgorithmEnum = "ECC25519" | "RSA4096";
-export const DbaasLogsEncryptionKeyAlgorithmEnum = S.String;
+const DbaasLogsEncryptionKeyAlgorithmEnum = S.String;
 
 /** Encryption key */
 export interface DbaasLogsEncryptionKey {
@@ -1579,7 +1579,7 @@ export interface DbaasLogsEncryptionKey {
   /** Encryption Key user ID */
   uid?: string;
 }
-export const DbaasLogsEncryptionKey = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsEncryptionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.optional(DbaasLogsEncryptionKeyAlgorithmEnum),
     content: S.String,
@@ -1599,7 +1599,7 @@ export interface GetDbaasLogInputRequest {
   /** Input ID */
   inputId: string;
 }
-export const GetDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -1608,12 +1608,12 @@ export const GetDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IP blocks */
 export type DbaasLogsInputAllowedNetworksList = Array<string>;
-export const DbaasLogsInputAllowedNetworksList =
+const DbaasLogsInputAllowedNetworksList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<DbaasLogsInputAllowedNetworksList>;
 
 /** Possible values for InputStatusEnum */
 export type DbaasLogsInputStatusEnum = "INIT" | "PENDING" | "PROCESSING" | "RUNNING";
-export const DbaasLogsInputStatusEnum = S.String;
+const DbaasLogsInputStatusEnum = S.String;
 
 /** Input */
 export interface DbaasLogsInput {
@@ -1656,7 +1656,7 @@ export interface DbaasLogsInput {
   /** Input last update */
   updatedAt?: string | null;
 }
-export const DbaasLogsInput = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedNetworks: S.optional(S.NullOr(DbaasLogsInputAllowedNetworksList)),
     autoscale: S.optional(S.NullOr(S.Boolean)),
@@ -1686,7 +1686,7 @@ export interface GetDbaasLogInputConfigtestResultRequest {
   /** Input ID */
   inputId: string;
 }
-export const GetDbaasLogInputConfigtestResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogInputConfigtestResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -1712,7 +1712,7 @@ export interface DbaasLogsTestResult {
   /** Last config test update */
   updatedAt?: string | null;
 }
-export const DbaasLogsTestResult = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsTestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isValid: S.optional(S.Boolean),
     stderr: S.optional(S.NullOr(S.String)),
@@ -1727,7 +1727,7 @@ export interface GetDbaasLogInputConfigurationFlowggerRequest {
   /** Input ID */
   inputId: string;
 }
-export const GetDbaasLogInputConfigurationFlowggerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogInputConfigurationFlowggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -1744,11 +1744,11 @@ export const GetDbaasLogInputConfigurationFlowggerRequest = /*@__PURE__*/ S.susp
 
 /** Possible values for FlowggerConfigurationLogFormatEnum */
 export type DbaasLogsFlowggerConfigurationLogFormatEnum = "CAPNP" | "GELF" | "LTSV" | "RFC5424";
-export const DbaasLogsFlowggerConfigurationLogFormatEnum = S.String;
+const DbaasLogsFlowggerConfigurationLogFormatEnum = S.String;
 
 /** Possible values for FlowggerConfigurationLogFramingEnum */
 export type DbaasLogsFlowggerConfigurationLogFramingEnum = "CAPNP" | "LINE" | "NUL" | "SYSLEN";
-export const DbaasLogsFlowggerConfigurationLogFramingEnum = S.String;
+const DbaasLogsFlowggerConfigurationLogFramingEnum = S.String;
 
 /** Flowgger configuration */
 export interface DbaasLogsFlowggerConfiguration {
@@ -1757,7 +1757,7 @@ export interface DbaasLogsFlowggerConfiguration {
   /** Indicates how messages are delimited */
   logFraming?: DbaasLogsFlowggerConfigurationLogFramingEnum;
 }
-export const DbaasLogsFlowggerConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsFlowggerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logFormat: S.optional(DbaasLogsFlowggerConfigurationLogFormatEnum),
     logFraming: S.optional(DbaasLogsFlowggerConfigurationLogFramingEnum),
@@ -1772,7 +1772,7 @@ export interface GetDbaasLogInputConfigurationLogstashRequest {
   /** Input ID */
   inputId: string;
 }
-export const GetDbaasLogInputConfigurationLogstashRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogInputConfigurationLogstashRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -1796,7 +1796,7 @@ export interface DbaasLogsLogstashConfiguration {
   /** The list of customs Grok patterns */
   patternSection?: string | null;
 }
-export const DbaasLogsLogstashConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogstashConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterSection: S.optional(S.NullOr(S.String)),
     inputSection: S.optional(S.String),
@@ -1812,7 +1812,7 @@ export interface GetDbaasLogInputEngineRequest {
   /** Engine ID */
   engineId: string;
 }
-export const GetDbaasLogInputEngineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogInputEngineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     engineId: S.String.pipe(T.Label()),
@@ -1825,7 +1825,7 @@ export const GetDbaasLogInputEngineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for EngineNameEnum */
 export type DbaasLogsEngineNameEnum = "FLOWGGER" | "LOGSTASH" | "TEST";
-export const DbaasLogsEngineNameEnum = S.String;
+const DbaasLogsEngineNameEnum = S.String;
 
 /** Input engine */
 export interface DbaasLogsEngine {
@@ -1838,7 +1838,7 @@ export interface DbaasLogsEngine {
   /** Software version */
   version?: string;
 }
-export const DbaasLogsEngine = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsEngine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engineId: S.optional(S.String),
     isDeprecated: S.optional(S.Boolean),
@@ -1855,7 +1855,7 @@ export interface GetDbaasLogInputEngineHelperRequest {
   /** Helper ID */
   helperId: string;
 }
-export const GetDbaasLogInputEngineHelperRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogInputEngineHelperRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     engineId: S.String.pipe(T.Label()),
@@ -1876,7 +1876,7 @@ export type DbaasLogsHelperSectionNameEnum =
   | "LOGSTASH_FILTER"
   | "LOGSTASH_INPUT"
   | "LOGSTASH_PATTERN";
-export const DbaasLogsHelperSectionNameEnum = S.String;
+const DbaasLogsHelperSectionNameEnum = S.String;
 
 /** Helper section */
 export interface DbaasLogsHelperSection {
@@ -1885,7 +1885,7 @@ export interface DbaasLogsHelperSection {
   /** Section name */
   name?: DbaasLogsHelperSectionNameEnum;
 }
-export const DbaasLogsHelperSection = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsHelperSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     name: S.optional(DbaasLogsHelperSectionNameEnum),
@@ -1894,7 +1894,7 @@ export const DbaasLogsHelperSection = /*@__PURE__*/ S.suspend(() =>
 
 /** Helper sections */
 export type DbaasLogsHelperSectionsList = Array<DbaasLogsHelperSection>;
-export const DbaasLogsHelperSectionsList = /*@__PURE__*/ S.Array(
+const DbaasLogsHelperSectionsList = /*@__PURE__*/ S.Array(
   DbaasLogsHelperSection,
 ) as any as S.Schema<DbaasLogsHelperSectionsList>;
 
@@ -1911,7 +1911,7 @@ export interface DbaasLogsHelper {
   /** Helper title */
   title?: string;
 }
-export const DbaasLogsHelper = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsHelper = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     engineId: S.optional(S.String),
@@ -1925,7 +1925,7 @@ export interface GetDbaasLogMetricsRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetDbaasLogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dbaas/logs/{serviceName}/metrics", code: 200 })),
@@ -1940,7 +1940,7 @@ export interface DbaasLogsServiceMetric {
   /** Metrics credentials */
   token?: string;
 }
-export const DbaasLogsServiceMetric = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsServiceMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     token: S.optional(S.String),
@@ -1953,7 +1953,7 @@ export interface GetDbaasLogOperationRequest {
   /** Operation ID */
   operationId: string;
 }
-export const GetDbaasLogOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -1970,7 +1970,7 @@ export interface GetDbaasLogOutputGraylogDashboardRequest {
   /** Dashboard ID */
   dashboardId: string;
 }
-export const GetDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dashboardId: S.String.pipe(T.Label()),
@@ -2000,7 +2000,7 @@ export interface DbaasLogsDashboard {
   /** Dashboard last update */
   updatedAt?: string | null;
 }
-export const DbaasLogsDashboard = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsDashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     dashboardId: S.optional(S.String),
@@ -2017,7 +2017,7 @@ export interface GetDbaasLogOutputGraylogStreamRequest {
   /** Stream ID */
   streamId: string;
 }
-export const GetDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -2034,7 +2034,7 @@ export const GetDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Encryption keys used to encrypt stream archives */
 export type DbaasLogsStreamEncryptionKeysIdsList = Array<string>;
-export const DbaasLogsStreamEncryptionKeysIdsList =
+const DbaasLogsStreamEncryptionKeysIdsList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<DbaasLogsStreamEncryptionKeysIdsList>;
 
 /** Graylog stream */
@@ -2090,7 +2090,7 @@ export interface DbaasLogsStream {
   /** Enable Websocket */
   webSocketEnabled?: boolean | null;
 }
-export const DbaasLogsStream = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canAlert: S.optional(S.Boolean),
     clusterId: S.optional(S.String),
@@ -2128,7 +2128,7 @@ export interface GetDbaasLogOutputGraylogStreamAlertRequest {
   /** Alert ID */
   alertId: string;
 }
-export const GetDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -2173,7 +2173,7 @@ export interface DbaasLogsStreamAlertCondition {
   /** Field value */
   value?: string | null;
 }
-export const DbaasLogsStreamAlertCondition = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsStreamAlertCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(S.String),
     backlog: S.optional(S.Number),
@@ -2201,7 +2201,7 @@ export interface GetDbaasLogOutputGraylogStreamArchiveRequest {
   /** Archive ID */
   archiveId: string;
 }
-export const GetDbaasLogOutputGraylogStreamArchiveRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputGraylogStreamArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -2219,7 +2219,7 @@ export const GetDbaasLogOutputGraylogStreamArchiveRequest = /*@__PURE__*/ S.susp
 
 /** Possible values for ArchiveRetrievalStateEnum */
 export type DbaasLogsArchiveRetrievalStateEnum = "sealed" | "unsealed" | "unsealing";
-export const DbaasLogsArchiveRetrievalStateEnum = S.String;
+const DbaasLogsArchiveRetrievalStateEnum = S.String;
 
 /** Stream archive */
 export interface DbaasLogsArchive {
@@ -2240,7 +2240,7 @@ export interface DbaasLogsArchive {
   /** File size in bytes */
   size?: number;
 }
-export const DbaasLogsArchive = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsArchive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archiveId: S.optional(S.String),
     createdAt: S.optional(S.NullOr(S.String)),
@@ -2261,7 +2261,7 @@ export interface GetDbaasLogOutputGraylogStreamRuleRequest {
   /** Rule ID */
   ruleId: string;
 }
-export const GetDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -2290,7 +2290,7 @@ export interface DbaasLogsStreamRule {
   /** Field value */
   value?: string;
 }
-export const DbaasLogsStreamRule = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsStreamRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     isInverted: S.optional(S.NullOr(S.Boolean)),
@@ -2308,7 +2308,7 @@ export interface GetDbaasLogOutputGraylogStreamSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const GetDbaasLogOutputGraylogStreamSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputGraylogStreamSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -2331,7 +2331,7 @@ export interface DbaasLogsLogSubscriptionResource {
   /** Type of subscribed resource */
   type?: string;
 }
-export const DbaasLogsLogSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -2357,7 +2357,7 @@ export interface DbaasLogsLogSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
-export const DbaasLogsLogSubscription = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2375,7 +2375,7 @@ export interface GetDbaasLogOutputMetricTenantRequest {
   /** Tenant ID */
   tenantId: string;
 }
-export const GetDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tenantId: S.String.pipe(T.Label()),
@@ -2392,7 +2392,7 @@ export const GetDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Possible values for DeliveryStatusEnum */
 export type DbaasLogsDeliveryStatusEnum = "DELETING" | "DELIVERING" | "READY" | "UPDATING";
-export const DbaasLogsDeliveryStatusEnum = S.String;
+const DbaasLogsDeliveryStatusEnum = S.String;
 
 /** Metric Tenant */
 export interface DbaasLogsMetricTenant {
@@ -2413,7 +2413,7 @@ export interface DbaasLogsMetricTenant {
   /** Metric tenant last update */
   updatedAt?: string | null;
 }
-export const DbaasLogsMetricTenant = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsMetricTenant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     deliveryStatus: S.optional(DbaasLogsDeliveryStatusEnum),
@@ -2434,7 +2434,7 @@ export interface GetDbaasLogOutputMetricTenantSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const GetDbaasLogOutputMetricTenantSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputMetricTenantSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tenantId: S.String.pipe(T.Label()),
@@ -2467,7 +2467,7 @@ export interface DbaasLogsMetricSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
-export const DbaasLogsMetricSubscription = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsMetricSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2487,7 +2487,7 @@ export interface GetDbaasLogOutputOpensearchAliasRequest {
   /** Alias ID */
   aliasId: string;
 }
-export const GetDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -2521,7 +2521,7 @@ export interface DbaasLogsAlias {
   /** Input last update */
   updatedAt?: string | null;
 }
-export const DbaasLogsAlias = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsAlias = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasId: S.optional(S.String),
     createdAt: S.optional(S.String),
@@ -2540,7 +2540,7 @@ export interface GetDbaasLogOutputOpensearchIndexRequest {
   /** Index ID */
   indexId: string;
 }
-export const GetDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     indexId: S.String.pipe(T.Label()),
@@ -2578,7 +2578,7 @@ export interface DbaasLogsIndex {
   /** Index last update */
   updatedAt?: string | null;
 }
-export const DbaasLogsIndex = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsIndex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertNotifyEnabled: S.optional(S.NullOr(S.Boolean)),
     createdAt: S.optional(S.String),
@@ -2599,7 +2599,7 @@ export interface GetDbaasLogOutputOpensearchOsdRequest {
   /** Osd ID */
   osdId: string;
 }
-export const GetDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     osdId: S.String.pipe(T.Label()),
@@ -2631,7 +2631,7 @@ export interface DbaasLogsOsd {
   /** OpenSearch Dashboards last update */
   updatedAt?: string | null;
 }
-export const DbaasLogsOsd = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsOsd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     deliveryStatus: S.optional(DbaasLogsDeliveryStatusEnum),
@@ -2649,7 +2649,7 @@ export interface GetDbaasLogRoleRequest {
   /** Role ID */
   roleId: string;
 }
-export const GetDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -2673,7 +2673,7 @@ export interface DbaasLogsRole {
   /** Role last update */
   updatedAt?: string | null;
 }
-export const DbaasLogsRole = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     description: S.optional(S.String),
@@ -2693,7 +2693,7 @@ export interface GetDbaasLogRoleMemberRequest {
   /** Username */
   username: string;
 }
-export const GetDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -2718,7 +2718,7 @@ export interface DbaasLogsMember {
   /** Username on DBaaS Logs */
   username?: string;
 }
-export const DbaasLogsMember = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     note: S.optional(S.NullOr(S.String)),
@@ -2734,7 +2734,7 @@ export interface GetDbaasLogRolePermissionRequest {
   /** Permission ID */
   permissionId: string;
 }
-export const GetDbaasLogRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -2767,7 +2767,7 @@ export interface DbaasLogsPermission {
   /** Associated Graylog stream */
   streamId?: string | null;
 }
-export const DbaasLogsPermission = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasId: S.optional(S.NullOr(S.String)),
     dashboardId: S.optional(S.NullOr(S.String)),
@@ -2783,7 +2783,7 @@ export interface GetDbaasLogServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetDbaasLogServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dbaas/logs/{serviceName}/serviceInfos", code: 200 })),
@@ -2793,7 +2793,7 @@ export const GetDbaasLogServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateDbaasLogChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -2809,7 +2809,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -2828,7 +2828,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 /** service.StateEnum */
 export type ServiceStateEnum =
@@ -2838,7 +2838,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -2859,7 +2859,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -2883,7 +2883,7 @@ export interface GetDbaasLogTokenRequest {
   /** Token ID */
   tokenId: string;
 }
-export const GetDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tokenId: S.String.pipe(T.Label()),
@@ -2905,7 +2905,7 @@ export interface DbaasLogsToken {
   /** Token value */
   value?: string;
 }
-export const DbaasLogsToken = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterId: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.String),
@@ -2922,7 +2922,7 @@ export interface ListDbaasLogClusterRequest {
   /** Filter by name (like) */
   namePattern?: string;
 }
-export const ListDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     namePattern: S.optional(S.String.pipe(T.Query())),
@@ -2932,11 +2932,11 @@ export const ListDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDbaasLogClusterRequest>;
 
 export type ListDbaasLogClusterResponseBodyList = Array<string>;
-export const ListDbaasLogClusterResponseBodyList =
+const ListDbaasLogClusterResponseBodyList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogClusterResponseBodyList>;
 
 export type ListDbaasLogClusterResponse = ListDbaasLogClusterResponseBodyList;
-export const ListDbaasLogClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogClusterResponse = /*@__PURE__*/ S.suspend(() =>
   ListDbaasLogClusterResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDbaasLogClusterResponse",
@@ -2948,7 +2948,7 @@ export interface ListDbaasLogClusterRetentionRequest {
   /** Cluster ID */
   clusterId: string;
 }
-export const ListDbaasLogClusterRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogClusterRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     clusterId: S.String.pipe(T.Label()),
@@ -2964,11 +2964,8 @@ export const ListDbaasLogClusterRetentionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDbaasLogClusterRetentionRequest>;
 
 export type ListDbaasLogClusterRetentionResponseBodyList = Array<string>;
-export const ListDbaasLogClusterRetentionResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogClusterRetentionResponseBodyList>;
-
 export type ListDbaasLogClusterRetentionResponse = ListDbaasLogClusterRetentionResponseBodyList;
-export const ListDbaasLogClusterRetentionResponse =
+const ListDbaasLogClusterRetentionResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogClusterRetentionResponse>;
 
 export interface ListDbaasLogEncryptionKeyRequest {
@@ -2977,7 +2974,7 @@ export interface ListDbaasLogEncryptionKeyRequest {
   /** Filter by title (like) */
   titlePattern?: string;
 }
-export const ListDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     titlePattern: S.optional(S.String.pipe(T.Query())),
@@ -2987,11 +2984,8 @@ export const ListDbaasLogEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDbaasLogEncryptionKeyRequest>;
 
 export type ListDbaasLogEncryptionKeyResponseBodyList = Array<string>;
-export const ListDbaasLogEncryptionKeyResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogEncryptionKeyResponseBodyList>;
-
 export type ListDbaasLogEncryptionKeyResponse = ListDbaasLogEncryptionKeyResponseBodyList;
-export const ListDbaasLogEncryptionKeyResponse =
+const ListDbaasLogEncryptionKeyResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogEncryptionKeyResponse>;
 
 export interface ListDbaasLogInputRequest {
@@ -3000,7 +2994,7 @@ export interface ListDbaasLogInputRequest {
   /** Filter by title (like) */
   titlePattern?: string;
 }
-export const ListDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     titlePattern: S.optional(S.String.pipe(T.Query())),
@@ -3008,11 +3002,8 @@ export const ListDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDbaasLogInputRequest" }) as any as S.Schema<ListDbaasLogInputRequest>;
 
 export type ListDbaasLogInputResponseBodyList = Array<string>;
-export const ListDbaasLogInputResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogInputResponseBodyList>;
-
 export type ListDbaasLogInputResponse = ListDbaasLogInputResponseBodyList;
-export const ListDbaasLogInputResponse =
+const ListDbaasLogInputResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogInputResponse>;
 
 export interface ListDbaasLogInputActionRequest {
@@ -3021,7 +3012,7 @@ export interface ListDbaasLogInputActionRequest {
   /** Input ID */
   inputId: string;
 }
-export const ListDbaasLogInputActionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogInputActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -3034,7 +3025,7 @@ export const ListDbaasLogInputActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for InputActionTypeEnum */
 export type DbaasLogsInputActionTypeEnum = "DESTROY" | "END" | "LOG" | "RESTART" | "START" | "TEST";
-export const DbaasLogsInputActionTypeEnum = S.String;
+const DbaasLogsInputActionTypeEnum = S.String;
 
 /** Action on input */
 export interface DbaasLogsInputAction {
@@ -3043,7 +3034,7 @@ export interface DbaasLogsInputAction {
   /** Action type */
   type?: DbaasLogsInputActionTypeEnum;
 }
-export const DbaasLogsInputAction = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsInputAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAllowed: S.optional(S.Boolean),
     type: S.optional(DbaasLogsInputActionTypeEnum),
@@ -3051,12 +3042,12 @@ export const DbaasLogsInputAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DbaasLogsInputAction" }) as any as S.Schema<DbaasLogsInputAction>;
 
 export type ListDbaasLogInputActionResponseBodyList = Array<DbaasLogsInputAction>;
-export const ListDbaasLogInputActionResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDbaasLogInputActionResponseBodyList = /*@__PURE__*/ S.Array(
   DbaasLogsInputAction,
 ) as any as S.Schema<ListDbaasLogInputActionResponseBodyList>;
 
 export type ListDbaasLogInputActionResponse = ListDbaasLogInputActionResponseBodyList;
-export const ListDbaasLogInputActionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogInputActionResponse = /*@__PURE__*/ S.suspend(() =>
   ListDbaasLogInputActionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDbaasLogInputActionResponse",
@@ -3066,7 +3057,7 @@ export interface ListDbaasLogInputEngineRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDbaasLogInputEngineRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogInputEngineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dbaas/logs/{serviceName}/input/engine", code: 200 })),
@@ -3075,11 +3066,8 @@ export const ListDbaasLogInputEngineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDbaasLogInputEngineRequest>;
 
 export type ListDbaasLogInputEngineResponseBodyList = Array<string>;
-export const ListDbaasLogInputEngineResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogInputEngineResponseBodyList>;
-
 export type ListDbaasLogInputEngineResponse = ListDbaasLogInputEngineResponseBodyList;
-export const ListDbaasLogInputEngineResponse =
+const ListDbaasLogInputEngineResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogInputEngineResponse>;
 
 export interface ListDbaasLogInputEngineHelperRequest {
@@ -3088,7 +3076,7 @@ export interface ListDbaasLogInputEngineHelperRequest {
   /** Engine ID */
   engineId: string;
 }
-export const ListDbaasLogInputEngineHelperRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogInputEngineHelperRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     engineId: S.String.pipe(T.Label()),
@@ -3104,11 +3092,8 @@ export const ListDbaasLogInputEngineHelperRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListDbaasLogInputEngineHelperRequest>;
 
 export type ListDbaasLogInputEngineHelperResponseBodyList = Array<string>;
-export const ListDbaasLogInputEngineHelperResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogInputEngineHelperResponseBodyList>;
-
 export type ListDbaasLogInputEngineHelperResponse = ListDbaasLogInputEngineHelperResponseBodyList;
-export const ListDbaasLogInputEngineHelperResponse =
+const ListDbaasLogInputEngineHelperResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogInputEngineHelperResponse>;
 
 export interface ListDbaasLogInputUrlRequest {
@@ -3117,7 +3102,7 @@ export interface ListDbaasLogInputUrlRequest {
   /** Input ID */
   inputId: string;
 }
-export const ListDbaasLogInputUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogInputUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -3159,7 +3144,7 @@ export type DbaasLogsUrlTypeEnum =
   | "UDP_LTSV_NUL"
   | "UDP_RFC5424"
   | "WEB_SOCKET";
-export const DbaasLogsUrlTypeEnum = S.String;
+const DbaasLogsUrlTypeEnum = S.String;
 
 /** Web address */
 export interface DbaasLogsUrl {
@@ -3168,7 +3153,7 @@ export interface DbaasLogsUrl {
   /** Service type */
   type?: DbaasLogsUrlTypeEnum;
 }
-export const DbaasLogsUrl = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.String),
     type: S.optional(DbaasLogsUrlTypeEnum),
@@ -3176,12 +3161,12 @@ export const DbaasLogsUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DbaasLogsUrl" }) as any as S.Schema<DbaasLogsUrl>;
 
 export type ListDbaasLogInputUrlResponseBodyList = Array<DbaasLogsUrl>;
-export const ListDbaasLogInputUrlResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDbaasLogInputUrlResponseBodyList = /*@__PURE__*/ S.Array(
   DbaasLogsUrl,
 ) as any as S.Schema<ListDbaasLogInputUrlResponseBodyList>;
 
 export type ListDbaasLogInputUrlResponse = ListDbaasLogInputUrlResponseBodyList;
-export const ListDbaasLogInputUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogInputUrlResponse = /*@__PURE__*/ S.suspend(() =>
   ListDbaasLogInputUrlResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDbaasLogInputUrlResponse",
@@ -3191,7 +3176,7 @@ export interface ListDbaasLogOperationRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDbaasLogOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dbaas/logs/{serviceName}/operation", code: 200 })),
@@ -3200,11 +3185,8 @@ export const ListDbaasLogOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDbaasLogOperationRequest>;
 
 export type ListDbaasLogOperationResponseBodyList = Array<string>;
-export const ListDbaasLogOperationResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOperationResponseBodyList>;
-
 export type ListDbaasLogOperationResponse = ListDbaasLogOperationResponseBodyList;
-export const ListDbaasLogOperationResponse =
+const ListDbaasLogOperationResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOperationResponse>;
 
 export interface ListDbaasLogOutputGraylogDashboardRequest {
@@ -3213,7 +3195,7 @@ export interface ListDbaasLogOutputGraylogDashboardRequest {
   /** Filter by title (like) */
   titlePattern?: string;
 }
-export const ListDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     titlePattern: S.optional(S.String.pipe(T.Query())),
@@ -3225,12 +3207,9 @@ export const ListDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListDbaasLogOutputGraylogDashboardRequest>;
 
 export type ListDbaasLogOutputGraylogDashboardResponseBodyList = Array<string>;
-export const ListDbaasLogOutputGraylogDashboardResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputGraylogDashboardResponseBodyList>;
-
 export type ListDbaasLogOutputGraylogDashboardResponse =
   ListDbaasLogOutputGraylogDashboardResponseBodyList;
-export const ListDbaasLogOutputGraylogDashboardResponse =
+const ListDbaasLogOutputGraylogDashboardResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputGraylogDashboardResponse>;
 
 export interface ListDbaasLogOutputGraylogDashboardUrlRequest {
@@ -3239,7 +3218,7 @@ export interface ListDbaasLogOutputGraylogDashboardUrlRequest {
   /** Dashboard ID */
   dashboardId: string;
 }
-export const ListDbaasLogOutputGraylogDashboardUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputGraylogDashboardUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dashboardId: S.String.pipe(T.Label()),
@@ -3255,12 +3234,9 @@ export const ListDbaasLogOutputGraylogDashboardUrlRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListDbaasLogOutputGraylogDashboardUrlRequest>;
 
 export type ListDbaasLogOutputGraylogDashboardUrlResponseBodyList = Array<DbaasLogsUrl>;
-export const ListDbaasLogOutputGraylogDashboardUrlResponseBodyList =
-  ListDbaasLogInputUrlResponseBodyList as any as S.Schema<ListDbaasLogOutputGraylogDashboardUrlResponseBodyList>;
-
 export type ListDbaasLogOutputGraylogDashboardUrlResponse =
   ListDbaasLogOutputGraylogDashboardUrlResponseBodyList;
-export const ListDbaasLogOutputGraylogDashboardUrlResponse =
+const ListDbaasLogOutputGraylogDashboardUrlResponse =
   ListDbaasLogInputUrlResponse as any as S.Schema<ListDbaasLogOutputGraylogDashboardUrlResponse>;
 
 export interface ListDbaasLogOutputGraylogStreamRequest {
@@ -3269,7 +3245,7 @@ export interface ListDbaasLogOutputGraylogStreamRequest {
   /** Filter by title (like) */
   titlePattern?: string;
 }
-export const ListDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     titlePattern: S.optional(S.String.pipe(T.Query())),
@@ -3281,12 +3257,9 @@ export const ListDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListDbaasLogOutputGraylogStreamRequest>;
 
 export type ListDbaasLogOutputGraylogStreamResponseBodyList = Array<string>;
-export const ListDbaasLogOutputGraylogStreamResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputGraylogStreamResponseBodyList>;
-
 export type ListDbaasLogOutputGraylogStreamResponse =
   ListDbaasLogOutputGraylogStreamResponseBodyList;
-export const ListDbaasLogOutputGraylogStreamResponse =
+const ListDbaasLogOutputGraylogStreamResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputGraylogStreamResponse>;
 
 export interface ListDbaasLogOutputGraylogStreamAlertRequest {
@@ -3295,7 +3268,7 @@ export interface ListDbaasLogOutputGraylogStreamAlertRequest {
   /** Stream ID */
   streamId: string;
 }
-export const ListDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -3311,12 +3284,9 @@ export const ListDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListDbaasLogOutputGraylogStreamAlertRequest>;
 
 export type ListDbaasLogOutputGraylogStreamAlertResponseBodyList = Array<string>;
-export const ListDbaasLogOutputGraylogStreamAlertResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputGraylogStreamAlertResponseBodyList>;
-
 export type ListDbaasLogOutputGraylogStreamAlertResponse =
   ListDbaasLogOutputGraylogStreamAlertResponseBodyList;
-export const ListDbaasLogOutputGraylogStreamAlertResponse =
+const ListDbaasLogOutputGraylogStreamAlertResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputGraylogStreamAlertResponse>;
 
 export interface ListDbaasLogOutputGraylogStreamArchiveRequest {
@@ -3325,7 +3295,7 @@ export interface ListDbaasLogOutputGraylogStreamArchiveRequest {
   /** Stream ID */
   streamId: string;
 }
-export const ListDbaasLogOutputGraylogStreamArchiveRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputGraylogStreamArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -3341,12 +3311,9 @@ export const ListDbaasLogOutputGraylogStreamArchiveRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListDbaasLogOutputGraylogStreamArchiveRequest>;
 
 export type ListDbaasLogOutputGraylogStreamArchiveResponseBodyList = Array<string>;
-export const ListDbaasLogOutputGraylogStreamArchiveResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputGraylogStreamArchiveResponseBodyList>;
-
 export type ListDbaasLogOutputGraylogStreamArchiveResponse =
   ListDbaasLogOutputGraylogStreamArchiveResponseBodyList;
-export const ListDbaasLogOutputGraylogStreamArchiveResponse =
+const ListDbaasLogOutputGraylogStreamArchiveResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputGraylogStreamArchiveResponse>;
 
 export interface ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyRequest {
@@ -3357,34 +3324,31 @@ export interface ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyRequest {
   /** Archive ID */
   archiveId: string;
 }
-export const ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      streamId: S.String.pipe(T.Label()),
-      archiveId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/encryptionKey",
-        code: 200,
-      }),
-    ),
+const ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    streamId: S.String.pipe(T.Label()),
+    archiveId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/dbaas/logs/{serviceName}/output/graylog/stream/{streamId}/archive/{archiveId}/encryptionKey",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyRequest",
 }) as any as S.Schema<ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyRequest>;
 
 export type ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponseBodyList = Array<string>;
-export const ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponseBodyList>;
+const ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponseBodyList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponseBodyList>;
 
 export type ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponse =
   ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponseBodyList;
-export const ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponseBodyList.pipe(T.RawResponseRoot()),
+const ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponse",
 }) as any as S.Schema<ListDbaasLogOutputGraylogStreamArchiveEncryptionKeyResponse>;
@@ -3395,7 +3359,7 @@ export interface ListDbaasLogOutputGraylogStreamRuleRequest {
   /** Stream ID */
   streamId: string;
 }
-export const ListDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -3411,12 +3375,9 @@ export const ListDbaasLogOutputGraylogStreamRuleRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListDbaasLogOutputGraylogStreamRuleRequest>;
 
 export type ListDbaasLogOutputGraylogStreamRuleResponseBodyList = Array<string>;
-export const ListDbaasLogOutputGraylogStreamRuleResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputGraylogStreamRuleResponseBodyList>;
-
 export type ListDbaasLogOutputGraylogStreamRuleResponse =
   ListDbaasLogOutputGraylogStreamRuleResponseBodyList;
-export const ListDbaasLogOutputGraylogStreamRuleResponse =
+const ListDbaasLogOutputGraylogStreamRuleResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputGraylogStreamRuleResponse>;
 
 export interface ListDbaasLogOutputGraylogStreamSubscriptionRequest {
@@ -3429,7 +3390,7 @@ export interface ListDbaasLogOutputGraylogStreamSubscriptionRequest {
   /** Filter by resource type (like) */
   resourceType?: string;
 }
-export const ListDbaasLogOutputGraylogStreamSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputGraylogStreamSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -3447,12 +3408,9 @@ export const ListDbaasLogOutputGraylogStreamSubscriptionRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListDbaasLogOutputGraylogStreamSubscriptionRequest>;
 
 export type ListDbaasLogOutputGraylogStreamSubscriptionResponseBodyList = Array<string>;
-export const ListDbaasLogOutputGraylogStreamSubscriptionResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputGraylogStreamSubscriptionResponseBodyList>;
-
 export type ListDbaasLogOutputGraylogStreamSubscriptionResponse =
   ListDbaasLogOutputGraylogStreamSubscriptionResponseBodyList;
-export const ListDbaasLogOutputGraylogStreamSubscriptionResponse =
+const ListDbaasLogOutputGraylogStreamSubscriptionResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputGraylogStreamSubscriptionResponse>;
 
 export interface ListDbaasLogOutputGraylogStreamUrlRequest {
@@ -3461,7 +3419,7 @@ export interface ListDbaasLogOutputGraylogStreamUrlRequest {
   /** Stream ID */
   streamId: string;
 }
-export const ListDbaasLogOutputGraylogStreamUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputGraylogStreamUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -3477,19 +3435,16 @@ export const ListDbaasLogOutputGraylogStreamUrlRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListDbaasLogOutputGraylogStreamUrlRequest>;
 
 export type ListDbaasLogOutputGraylogStreamUrlResponseBodyList = Array<DbaasLogsUrl>;
-export const ListDbaasLogOutputGraylogStreamUrlResponseBodyList =
-  ListDbaasLogInputUrlResponseBodyList as any as S.Schema<ListDbaasLogOutputGraylogStreamUrlResponseBodyList>;
-
 export type ListDbaasLogOutputGraylogStreamUrlResponse =
   ListDbaasLogOutputGraylogStreamUrlResponseBodyList;
-export const ListDbaasLogOutputGraylogStreamUrlResponse =
+const ListDbaasLogOutputGraylogStreamUrlResponse =
   ListDbaasLogInputUrlResponse as any as S.Schema<ListDbaasLogOutputGraylogStreamUrlResponse>;
 
 export interface ListDbaasLogOutputMetricTenantRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3500,11 +3455,8 @@ export const ListDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListDbaasLogOutputMetricTenantRequest>;
 
 export type ListDbaasLogOutputMetricTenantResponseBodyList = Array<string>;
-export const ListDbaasLogOutputMetricTenantResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputMetricTenantResponseBodyList>;
-
 export type ListDbaasLogOutputMetricTenantResponse = ListDbaasLogOutputMetricTenantResponseBodyList;
-export const ListDbaasLogOutputMetricTenantResponse =
+const ListDbaasLogOutputMetricTenantResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputMetricTenantResponse>;
 
 export interface ListDbaasLogOutputMetricTenantSubscriptionRequest {
@@ -3517,7 +3469,7 @@ export interface ListDbaasLogOutputMetricTenantSubscriptionRequest {
   /** Filter by resource type (like) */
   resourceType?: string;
 }
-export const ListDbaasLogOutputMetricTenantSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputMetricTenantSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tenantId: S.String.pipe(T.Label()),
@@ -3535,12 +3487,9 @@ export const ListDbaasLogOutputMetricTenantSubscriptionRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListDbaasLogOutputMetricTenantSubscriptionRequest>;
 
 export type ListDbaasLogOutputMetricTenantSubscriptionResponseBodyList = Array<string>;
-export const ListDbaasLogOutputMetricTenantSubscriptionResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputMetricTenantSubscriptionResponseBodyList>;
-
 export type ListDbaasLogOutputMetricTenantSubscriptionResponse =
   ListDbaasLogOutputMetricTenantSubscriptionResponseBodyList;
-export const ListDbaasLogOutputMetricTenantSubscriptionResponse =
+const ListDbaasLogOutputMetricTenantSubscriptionResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputMetricTenantSubscriptionResponse>;
 
 export interface ListDbaasLogOutputMetricTenantUrlRequest {
@@ -3549,7 +3498,7 @@ export interface ListDbaasLogOutputMetricTenantUrlRequest {
   /** Tenant ID */
   tenantId: string;
 }
-export const ListDbaasLogOutputMetricTenantUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputMetricTenantUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tenantId: S.String.pipe(T.Label()),
@@ -3565,12 +3514,9 @@ export const ListDbaasLogOutputMetricTenantUrlRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListDbaasLogOutputMetricTenantUrlRequest>;
 
 export type ListDbaasLogOutputMetricTenantUrlResponseBodyList = Array<DbaasLogsUrl>;
-export const ListDbaasLogOutputMetricTenantUrlResponseBodyList =
-  ListDbaasLogInputUrlResponseBodyList as any as S.Schema<ListDbaasLogOutputMetricTenantUrlResponseBodyList>;
-
 export type ListDbaasLogOutputMetricTenantUrlResponse =
   ListDbaasLogOutputMetricTenantUrlResponseBodyList;
-export const ListDbaasLogOutputMetricTenantUrlResponse =
+const ListDbaasLogOutputMetricTenantUrlResponse =
   ListDbaasLogInputUrlResponse as any as S.Schema<ListDbaasLogOutputMetricTenantUrlResponse>;
 
 export interface ListDbaasLogOutputOpensearchAliasRequest {
@@ -3579,7 +3525,7 @@ export interface ListDbaasLogOutputOpensearchAliasRequest {
   /** Filter by name (like) */
   namePattern?: string;
 }
-export const ListDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     namePattern: S.optional(S.String.pipe(T.Query())),
@@ -3591,12 +3537,9 @@ export const ListDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListDbaasLogOutputOpensearchAliasRequest>;
 
 export type ListDbaasLogOutputOpensearchAliasResponseBodyList = Array<string>;
-export const ListDbaasLogOutputOpensearchAliasResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputOpensearchAliasResponseBodyList>;
-
 export type ListDbaasLogOutputOpensearchAliasResponse =
   ListDbaasLogOutputOpensearchAliasResponseBodyList;
-export const ListDbaasLogOutputOpensearchAliasResponse =
+const ListDbaasLogOutputOpensearchAliasResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputOpensearchAliasResponse>;
 
 export interface ListDbaasLogOutputOpensearchAliasIndexRequest {
@@ -3605,7 +3548,7 @@ export interface ListDbaasLogOutputOpensearchAliasIndexRequest {
   /** Alias ID */
   aliasId: string;
 }
-export const ListDbaasLogOutputOpensearchAliasIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputOpensearchAliasIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -3621,12 +3564,9 @@ export const ListDbaasLogOutputOpensearchAliasIndexRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListDbaasLogOutputOpensearchAliasIndexRequest>;
 
 export type ListDbaasLogOutputOpensearchAliasIndexResponseBodyList = Array<string>;
-export const ListDbaasLogOutputOpensearchAliasIndexResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputOpensearchAliasIndexResponseBodyList>;
-
 export type ListDbaasLogOutputOpensearchAliasIndexResponse =
   ListDbaasLogOutputOpensearchAliasIndexResponseBodyList;
-export const ListDbaasLogOutputOpensearchAliasIndexResponse =
+const ListDbaasLogOutputOpensearchAliasIndexResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputOpensearchAliasIndexResponse>;
 
 export interface ListDbaasLogOutputOpensearchAliasStreamRequest {
@@ -3635,7 +3575,7 @@ export interface ListDbaasLogOutputOpensearchAliasStreamRequest {
   /** Alias ID */
   aliasId: string;
 }
-export const ListDbaasLogOutputOpensearchAliasStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputOpensearchAliasStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -3651,12 +3591,9 @@ export const ListDbaasLogOutputOpensearchAliasStreamRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListDbaasLogOutputOpensearchAliasStreamRequest>;
 
 export type ListDbaasLogOutputOpensearchAliasStreamResponseBodyList = Array<string>;
-export const ListDbaasLogOutputOpensearchAliasStreamResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputOpensearchAliasStreamResponseBodyList>;
-
 export type ListDbaasLogOutputOpensearchAliasStreamResponse =
   ListDbaasLogOutputOpensearchAliasStreamResponseBodyList;
-export const ListDbaasLogOutputOpensearchAliasStreamResponse =
+const ListDbaasLogOutputOpensearchAliasStreamResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputOpensearchAliasStreamResponse>;
 
 export interface ListDbaasLogOutputOpensearchAliasUrlRequest {
@@ -3665,7 +3602,7 @@ export interface ListDbaasLogOutputOpensearchAliasUrlRequest {
   /** Alias ID */
   aliasId: string;
 }
-export const ListDbaasLogOutputOpensearchAliasUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputOpensearchAliasUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -3681,12 +3618,9 @@ export const ListDbaasLogOutputOpensearchAliasUrlRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListDbaasLogOutputOpensearchAliasUrlRequest>;
 
 export type ListDbaasLogOutputOpensearchAliasUrlResponseBodyList = Array<DbaasLogsUrl>;
-export const ListDbaasLogOutputOpensearchAliasUrlResponseBodyList =
-  ListDbaasLogInputUrlResponseBodyList as any as S.Schema<ListDbaasLogOutputOpensearchAliasUrlResponseBodyList>;
-
 export type ListDbaasLogOutputOpensearchAliasUrlResponse =
   ListDbaasLogOutputOpensearchAliasUrlResponseBodyList;
-export const ListDbaasLogOutputOpensearchAliasUrlResponse =
+const ListDbaasLogOutputOpensearchAliasUrlResponse =
   ListDbaasLogInputUrlResponse as any as S.Schema<ListDbaasLogOutputOpensearchAliasUrlResponse>;
 
 export interface ListDbaasLogOutputOpensearchIndexRequest {
@@ -3695,7 +3629,7 @@ export interface ListDbaasLogOutputOpensearchIndexRequest {
   /** Filter by name (like) */
   namePattern?: string;
 }
-export const ListDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     namePattern: S.optional(S.String.pipe(T.Query())),
@@ -3707,12 +3641,9 @@ export const ListDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListDbaasLogOutputOpensearchIndexRequest>;
 
 export type ListDbaasLogOutputOpensearchIndexResponseBodyList = Array<string>;
-export const ListDbaasLogOutputOpensearchIndexResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputOpensearchIndexResponseBodyList>;
-
 export type ListDbaasLogOutputOpensearchIndexResponse =
   ListDbaasLogOutputOpensearchIndexResponseBodyList;
-export const ListDbaasLogOutputOpensearchIndexResponse =
+const ListDbaasLogOutputOpensearchIndexResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputOpensearchIndexResponse>;
 
 export interface ListDbaasLogOutputOpensearchIndexUrlRequest {
@@ -3721,7 +3652,7 @@ export interface ListDbaasLogOutputOpensearchIndexUrlRequest {
   /** Index ID */
   indexId: string;
 }
-export const ListDbaasLogOutputOpensearchIndexUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputOpensearchIndexUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     indexId: S.String.pipe(T.Label()),
@@ -3737,19 +3668,16 @@ export const ListDbaasLogOutputOpensearchIndexUrlRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListDbaasLogOutputOpensearchIndexUrlRequest>;
 
 export type ListDbaasLogOutputOpensearchIndexUrlResponseBodyList = Array<DbaasLogsUrl>;
-export const ListDbaasLogOutputOpensearchIndexUrlResponseBodyList =
-  ListDbaasLogInputUrlResponseBodyList as any as S.Schema<ListDbaasLogOutputOpensearchIndexUrlResponseBodyList>;
-
 export type ListDbaasLogOutputOpensearchIndexUrlResponse =
   ListDbaasLogOutputOpensearchIndexUrlResponseBodyList;
-export const ListDbaasLogOutputOpensearchIndexUrlResponse =
+const ListDbaasLogOutputOpensearchIndexUrlResponse =
   ListDbaasLogInputUrlResponse as any as S.Schema<ListDbaasLogOutputOpensearchIndexUrlResponse>;
 
 export interface ListDbaasLogOutputOpensearchOsdRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3760,12 +3688,9 @@ export const ListDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListDbaasLogOutputOpensearchOsdRequest>;
 
 export type ListDbaasLogOutputOpensearchOsdResponseBodyList = Array<string>;
-export const ListDbaasLogOutputOpensearchOsdResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogOutputOpensearchOsdResponseBodyList>;
-
 export type ListDbaasLogOutputOpensearchOsdResponse =
   ListDbaasLogOutputOpensearchOsdResponseBodyList;
-export const ListDbaasLogOutputOpensearchOsdResponse =
+const ListDbaasLogOutputOpensearchOsdResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogOutputOpensearchOsdResponse>;
 
 export interface ListDbaasLogOutputOpensearchOsdUrlRequest {
@@ -3774,7 +3699,7 @@ export interface ListDbaasLogOutputOpensearchOsdUrlRequest {
   /** Osd ID */
   osdId: string;
 }
-export const ListDbaasLogOutputOpensearchOsdUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogOutputOpensearchOsdUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     osdId: S.String.pipe(T.Label()),
@@ -3790,12 +3715,9 @@ export const ListDbaasLogOutputOpensearchOsdUrlRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListDbaasLogOutputOpensearchOsdUrlRequest>;
 
 export type ListDbaasLogOutputOpensearchOsdUrlResponseBodyList = Array<DbaasLogsUrl>;
-export const ListDbaasLogOutputOpensearchOsdUrlResponseBodyList =
-  ListDbaasLogInputUrlResponseBodyList as any as S.Schema<ListDbaasLogOutputOpensearchOsdUrlResponseBodyList>;
-
 export type ListDbaasLogOutputOpensearchOsdUrlResponse =
   ListDbaasLogOutputOpensearchOsdUrlResponseBodyList;
-export const ListDbaasLogOutputOpensearchOsdUrlResponse =
+const ListDbaasLogOutputOpensearchOsdUrlResponse =
   ListDbaasLogInputUrlResponse as any as S.Schema<ListDbaasLogOutputOpensearchOsdUrlResponse>;
 
 export interface ListDbaasLogRoleRequest {
@@ -3804,7 +3726,7 @@ export interface ListDbaasLogRoleRequest {
   /** Filter by name (like) */
   namePattern?: string;
 }
-export const ListDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     namePattern: S.optional(S.String.pipe(T.Query())),
@@ -3812,11 +3734,11 @@ export const ListDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDbaasLogRoleRequest" }) as any as S.Schema<ListDbaasLogRoleRequest>;
 
 export type ListDbaasLogRoleResponseBodyList = Array<string>;
-export const ListDbaasLogRoleResponseBodyList =
+const ListDbaasLogRoleResponseBodyList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogRoleResponseBodyList>;
 
 export type ListDbaasLogRoleResponse = ListDbaasLogRoleResponseBodyList;
-export const ListDbaasLogRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogRoleResponse = /*@__PURE__*/ S.suspend(() =>
   ListDbaasLogRoleResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDbaasLogRoleResponse" }) as any as S.Schema<ListDbaasLogRoleResponse>;
 
@@ -3826,7 +3748,7 @@ export interface ListDbaasLogRoleMemberRequest {
   /** Role ID */
   roleId: string;
 }
-export const ListDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -3838,11 +3760,8 @@ export const ListDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDbaasLogRoleMemberRequest>;
 
 export type ListDbaasLogRoleMemberResponseBodyList = Array<string>;
-export const ListDbaasLogRoleMemberResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogRoleMemberResponseBodyList>;
-
 export type ListDbaasLogRoleMemberResponse = ListDbaasLogRoleMemberResponseBodyList;
-export const ListDbaasLogRoleMemberResponse =
+const ListDbaasLogRoleMemberResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogRoleMemberResponse>;
 
 export interface ListDbaasLogRolePermissionRequest {
@@ -3851,7 +3770,7 @@ export interface ListDbaasLogRolePermissionRequest {
   /** Role ID */
   roleId: string;
 }
-export const ListDbaasLogRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -3863,28 +3782,25 @@ export const ListDbaasLogRolePermissionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDbaasLogRolePermissionRequest>;
 
 export type ListDbaasLogRolePermissionResponseBodyList = Array<string>;
-export const ListDbaasLogRolePermissionResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogRolePermissionResponseBodyList>;
-
 export type ListDbaasLogRolePermissionResponse = ListDbaasLogRolePermissionResponseBodyList;
-export const ListDbaasLogRolePermissionResponse =
+const ListDbaasLogRolePermissionResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogRolePermissionResponse>;
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListDbaasLogsRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListDbaasLogsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListDbaasLogsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListDbaasLogsRequestIamTagsValueList>;
 
 export type ListDbaasLogsRequestIamTagsMap = {
   [key: string]: ListDbaasLogsRequestIamTagsValueList | undefined;
 };
-export const ListDbaasLogsRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListDbaasLogsRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListDbaasLogsRequestIamTagsValueList,
 ) as any as S.Schema<ListDbaasLogsRequestIamTagsMap>;
@@ -3893,19 +3809,15 @@ export interface ListDbaasLogsRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListDbaasLogsRequestIamTagsMap;
 }
-export const ListDbaasLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListDbaasLogsRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/dbaas/logs", code: 200 })),
 ).annotate({ identifier: "ListDbaasLogsRequest" }) as any as S.Schema<ListDbaasLogsRequest>;
 
 export type ListDbaasLogsResponseBodyList = Array<string>;
-export const ListDbaasLogsResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogsResponseBodyList>;
-
 export type ListDbaasLogsResponse = ListDbaasLogsResponseBodyList;
-export const ListDbaasLogsResponse =
-  ListDbaasLogRoleResponse as any as S.Schema<ListDbaasLogsResponse>;
+const ListDbaasLogsResponse = ListDbaasLogRoleResponse as any as S.Schema<ListDbaasLogsResponse>;
 
 export interface ListDbaasLogTokenRequest {
   /** Service name */
@@ -3913,7 +3825,7 @@ export interface ListDbaasLogTokenRequest {
   /** Filter by name (like) */
   namePattern?: string;
 }
-export const ListDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     namePattern: S.optional(S.String.pipe(T.Query())),
@@ -3921,29 +3833,26 @@ export const ListDbaasLogTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDbaasLogTokenRequest" }) as any as S.Schema<ListDbaasLogTokenRequest>;
 
 export type ListDbaasLogTokenResponseBodyList = Array<string>;
-export const ListDbaasLogTokenResponseBodyList =
-  CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<ListDbaasLogTokenResponseBodyList>;
-
 export type ListDbaasLogTokenResponse = ListDbaasLogTokenResponseBodyList;
-export const ListDbaasLogTokenResponse =
+const ListDbaasLogTokenResponse =
   ListDbaasLogClusterResponse as any as S.Schema<ListDbaasLogTokenResponse>;
 
 export interface ListDbaasLogUrlRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDbaasLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dbaas/logs/{serviceName}/url", code: 200 })),
 ).annotate({ identifier: "ListDbaasLogUrlRequest" }) as any as S.Schema<ListDbaasLogUrlRequest>;
 
 export type ListDbaasLogUrlResponseBodyList = Array<DbaasLogsUrl>;
-export const ListDbaasLogUrlResponseBodyList =
+const ListDbaasLogUrlResponseBodyList =
   ListDbaasLogInputUrlResponseBodyList as any as S.Schema<ListDbaasLogUrlResponseBodyList>;
 
 export type ListDbaasLogUrlResponse = ListDbaasLogUrlResponseBodyList;
-export const ListDbaasLogUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDbaasLogUrlResponse = /*@__PURE__*/ S.suspend(() =>
   ListDbaasLogUrlResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDbaasLogUrlResponse" }) as any as S.Schema<ListDbaasLogUrlResponse>;
 
@@ -3955,7 +3864,7 @@ export interface PutDbaasLogRequest {
   /** Enable IAM for this service */
   enableIam?: boolean | null;
 }
-export const PutDbaasLogRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     displayName: S.optional(S.NullOr(S.String)),
@@ -3965,17 +3874,17 @@ export const PutDbaasLogRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed networks for ARCHIVE flow type */
 export type PutDbaasLogClusterRequestArchiveAllowedNetworksList = Array<string>;
-export const PutDbaasLogClusterRequestArchiveAllowedNetworksList =
+const PutDbaasLogClusterRequestArchiveAllowedNetworksList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<PutDbaasLogClusterRequestArchiveAllowedNetworksList>;
 
 /** Allowed networks for DIRECT_INPUT flow type */
 export type PutDbaasLogClusterRequestDirectInputAllowedNetworksList = Array<string>;
-export const PutDbaasLogClusterRequestDirectInputAllowedNetworksList =
+const PutDbaasLogClusterRequestDirectInputAllowedNetworksList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<PutDbaasLogClusterRequestDirectInputAllowedNetworksList>;
 
 /** Allowed networks for QUERY flow type */
 export type PutDbaasLogClusterRequestQueryAllowedNetworksList = Array<string>;
-export const PutDbaasLogClusterRequestQueryAllowedNetworksList =
+const PutDbaasLogClusterRequestQueryAllowedNetworksList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<PutDbaasLogClusterRequestQueryAllowedNetworksList>;
 
 export interface PutDbaasLogClusterRequest {
@@ -3990,7 +3899,7 @@ export interface PutDbaasLogClusterRequest {
   /** Allowed networks for QUERY flow type */
   queryAllowedNetworks?: PutDbaasLogClusterRequestQueryAllowedNetworksList | null;
 }
-export const PutDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     clusterId: S.String.pipe(T.Label()),
@@ -4010,7 +3919,7 @@ export const PutDbaasLogClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IP blocks */
 export type PutDbaasLogInputRequestAllowedNetworksList = Array<string>;
-export const PutDbaasLogInputRequestAllowedNetworksList =
+const PutDbaasLogInputRequestAllowedNetworksList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<PutDbaasLogInputRequestAllowedNetworksList>;
 
 export interface PutDbaasLogInputRequest {
@@ -4041,7 +3950,7 @@ export interface PutDbaasLogInputRequest {
   /** Title */
   title: string;
 }
-export const PutDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -4069,7 +3978,7 @@ export interface PutDbaasLogInputConfigurationFlowggerRequest {
   /** Log framing */
   logFraming: DbaasLogsFlowggerConfigurationLogFramingEnum | (string & {});
 }
-export const PutDbaasLogInputConfigurationFlowggerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogInputConfigurationFlowggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -4098,7 +4007,7 @@ export interface PutDbaasLogInputConfigurationLogstashRequest {
   /** Pattern section */
   patternSection?: string | null;
 }
-export const PutDbaasLogInputConfigurationLogstashRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogInputConfigurationLogstashRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -4126,7 +4035,7 @@ export interface PutDbaasLogOutputGraylogDashboardRequest {
   /** Title */
   title: string;
 }
-export const PutDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dashboardId: S.String.pipe(T.Label()),
@@ -4145,7 +4054,7 @@ export const PutDbaasLogOutputGraylogDashboardRequest = /*@__PURE__*/ S.suspend(
 
 /** Encryption keys used to encrypt stream archives */
 export type PutDbaasLogOutputGraylogStreamRequestEncryptionKeysIdsList = Array<string>;
-export const PutDbaasLogOutputGraylogStreamRequestEncryptionKeysIdsList =
+const PutDbaasLogOutputGraylogStreamRequestEncryptionKeysIdsList =
   CreateDbaasLogInputRequestAllowedNetworksList as any as S.Schema<PutDbaasLogOutputGraylogStreamRequestEncryptionKeysIdsList>;
 
 export interface PutDbaasLogOutputGraylogStreamRequest {
@@ -4180,7 +4089,7 @@ export interface PutDbaasLogOutputGraylogStreamRequest {
   /** Web socket enabled */
   webSocketEnabled?: boolean | null;
 }
-export const PutDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogOutputGraylogStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -4242,7 +4151,7 @@ export interface PutDbaasLogOutputGraylogStreamAlertRequest {
   /** Value */
   value?: string | null;
 }
-export const PutDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogOutputGraylogStreamAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     streamId: S.String.pipe(T.Label()),
@@ -4284,7 +4193,7 @@ export interface PutDbaasLogOutputMetricTenantRequest {
   /** Metric tenant title */
   title: string;
 }
-export const PutDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogOutputMetricTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tenantId: S.String.pipe(T.Label()),
@@ -4311,7 +4220,7 @@ export interface PutDbaasLogOutputOpensearchAliasRequest {
   /** Description */
   description: string;
 }
-export const PutDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogOutputOpensearchAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     aliasId: S.String.pipe(T.Label()),
@@ -4337,7 +4246,7 @@ export interface PutDbaasLogOutputOpensearchIndexRequest {
   /** Description */
   description: string;
 }
-export const PutDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogOutputOpensearchIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     indexId: S.String.pipe(T.Label()),
@@ -4362,7 +4271,7 @@ export interface PutDbaasLogOutputOpensearchOsdRequest {
   /** Description */
   description: string;
 }
-export const PutDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogOutputOpensearchOsdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     osdId: S.String.pipe(T.Label()),
@@ -4388,7 +4297,7 @@ export interface PutDbaasLogRoleRequest {
   /** Name */
   name: string;
 }
-export const PutDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -4407,7 +4316,7 @@ export interface PutDbaasLogRoleMemberRequest {
   /** Custom note */
   note?: string | null;
 }
-export const PutDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogRoleMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -4430,7 +4339,7 @@ export interface PutDbaasLogServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutDbaasLogServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDbaasLogServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -4440,9 +4349,9 @@ export const PutDbaasLogServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDbaasLogServiceInfosRequest>;
 
 export interface PutDbaasLogServiceInfosResponse {}
-export const PutDbaasLogServiceInfosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutDbaasLogServiceInfosResponse" },
-) as any as S.Schema<PutDbaasLogServiceInfosResponse>;
+const PutDbaasLogServiceInfosResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "PutDbaasLogServiceInfosResponse",
+}) as any as S.Schema<PutDbaasLogServiceInfosResponse>;
 
 export interface RestartDbaasLogsInputRequest {
   /** Service name */
@@ -4450,7 +4359,7 @@ export interface RestartDbaasLogsInputRequest {
   /** Input ID */
   inputId: string;
 }
-export const RestartDbaasLogsInputRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartDbaasLogsInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),
@@ -4467,7 +4376,7 @@ export interface StartDbaasLogsInputRequest {
   /** Input ID */
   inputId: string;
 }
-export const StartDbaasLogsInputRequest = /*@__PURE__*/ S.suspend(() =>
+const StartDbaasLogsInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     inputId: S.String.pipe(T.Label()),

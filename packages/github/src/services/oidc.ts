@@ -50,7 +50,7 @@ export interface CreateOidcCustomPropertyInclusionForEnterpriseRequest {
   /** The name of the custom property to include in the OIDC token */
   custom_property_name: string;
 }
-export const CreateOidcCustomPropertyInclusionForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOidcCustomPropertyInclusionForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     custom_property_name: S.String,
@@ -67,7 +67,7 @@ export const CreateOidcCustomPropertyInclusionForEnterpriseRequest = /*@__PURE__
 
 /** Whether the inclusion was defined at the organization or enterprise level */
 export type OidcCustomPropertyInclusionInclusionSource = "organization" | "enterprise";
-export const OidcCustomPropertyInclusionInclusionSource = S.String;
+const OidcCustomPropertyInclusionInclusionSource = S.String;
 
 /** An OIDC custom property inclusion for repository properties */
 export interface OidcCustomPropertyInclusion {
@@ -76,7 +76,7 @@ export interface OidcCustomPropertyInclusion {
   /** Whether the inclusion was defined at the organization or enterprise level */
   inclusion_source: OidcCustomPropertyInclusionInclusionSource;
 }
-export const OidcCustomPropertyInclusion = /*@__PURE__*/ S.suspend(() =>
+const OidcCustomPropertyInclusion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_property_name: S.String,
     inclusion_source: OidcCustomPropertyInclusionInclusionSource,
@@ -91,7 +91,7 @@ export interface CreateOidcCustomPropertyInclusionForOrgRequest {
   /** The name of the custom property to include in the OIDC token */
   custom_property_name: string;
 }
-export const CreateOidcCustomPropertyInclusionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOidcCustomPropertyInclusionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     custom_property_name: S.String,
@@ -112,7 +112,7 @@ export interface DeleteOidcCustomPropertyInclusionForEnterpriseRequest {
   /** The name of the custom property to remove from OIDC token inclusion */
   custom_property_name: string;
 }
-export const DeleteOidcCustomPropertyInclusionForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOidcCustomPropertyInclusionForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     custom_property_name: S.String.pipe(T.Label()),
@@ -128,7 +128,7 @@ export const DeleteOidcCustomPropertyInclusionForEnterpriseRequest = /*@__PURE__
 }) as any as S.Schema<DeleteOidcCustomPropertyInclusionForEnterpriseRequest>;
 
 export interface DeleteOidcCustomPropertyInclusionForEnterpriseResponse {}
-export const DeleteOidcCustomPropertyInclusionForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteOidcCustomPropertyInclusionForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteOidcCustomPropertyInclusionForEnterpriseResponse",
@@ -140,7 +140,7 @@ export interface DeleteOidcCustomPropertyInclusionForOrgRequest {
   /** The name of the custom property to remove from OIDC token inclusion */
   custom_property_name: string;
 }
-export const DeleteOidcCustomPropertyInclusionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOidcCustomPropertyInclusionForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     custom_property_name: S.String.pipe(T.Label()),
@@ -156,14 +156,14 @@ export const DeleteOidcCustomPropertyInclusionForOrgRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgRequest>;
 
 export interface DeleteOidcCustomPropertyInclusionForOrgResponse {}
-export const DeleteOidcCustomPropertyInclusionForOrgResponse =
+const DeleteOidcCustomPropertyInclusionForOrgResponse =
   DeleteOidcCustomPropertyInclusionForEnterpriseResponse as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgResponse>;
 
 export interface GetOidcCustomSubTemplateForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetOidcCustomSubTemplateForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOidcCustomSubTemplateForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/oidc/customization/sub", code: 200 })),
@@ -173,7 +173,7 @@ export const GetOidcCustomSubTemplateForOrgRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Array of unique strings. Each claim key can only contain alphanumeric characters and underscores. */
 export type OidcCustomSubIncludeClaimKeysList = Array<string>;
-export const OidcCustomSubIncludeClaimKeysList = /*@__PURE__*/ S.Array(
+const OidcCustomSubIncludeClaimKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OidcCustomSubIncludeClaimKeysList>;
 
@@ -184,7 +184,7 @@ export interface OidcCustomSub {
   /** Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format. */
   use_immutable_subject?: boolean;
 }
-export const OidcCustomSub = /*@__PURE__*/ S.suspend(() =>
+const OidcCustomSub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_claim_keys: OidcCustomSubIncludeClaimKeysList,
     use_immutable_subject: S.optional(S.Boolean),
@@ -195,7 +195,7 @@ export interface ListOidcCustomPropertyInclusionsForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
 }
-export const ListOidcCustomPropertyInclusionsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOidcCustomPropertyInclusionsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
   }).pipe(
@@ -211,13 +211,13 @@ export const ListOidcCustomPropertyInclusionsForEnterpriseRequest = /*@__PURE__*
 
 export type ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList =
   Array<OidcCustomPropertyInclusion>;
-export const ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList = /*@__PURE__*/ S.Array(
   OidcCustomPropertyInclusion,
 ) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList>;
 
 export type ListOidcCustomPropertyInclusionsForEnterpriseResponse =
   ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList;
-export const ListOidcCustomPropertyInclusionsForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOidcCustomPropertyInclusionsForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
   ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOidcCustomPropertyInclusionsForEnterpriseResponse",
@@ -227,7 +227,7 @@ export interface ListOidcCustomPropertyInclusionsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const ListOidcCustomPropertyInclusionsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOidcCustomPropertyInclusionsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(
@@ -243,17 +243,14 @@ export const ListOidcCustomPropertyInclusionsForOrgRequest = /*@__PURE__*/ S.sus
 
 export type ListOidcCustomPropertyInclusionsForOrgResponseBodyList =
   Array<OidcCustomPropertyInclusion>;
-export const ListOidcCustomPropertyInclusionsForOrgResponseBodyList =
-  ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponseBodyList>;
-
 export type ListOidcCustomPropertyInclusionsForOrgResponse =
   ListOidcCustomPropertyInclusionsForOrgResponseBodyList;
-export const ListOidcCustomPropertyInclusionsForOrgResponse =
+const ListOidcCustomPropertyInclusionsForOrgResponse =
   ListOidcCustomPropertyInclusionsForEnterpriseResponse as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponse>;
 
 /** Array of unique strings. Each claim key can only contain alphanumeric characters and underscores. */
 export type UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList = Array<string>;
-export const UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList =
+const UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList =
   OidcCustomSubIncludeClaimKeysList as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList>;
 
 export interface UpdateOidcCustomSubTemplateForOrgRequest {
@@ -264,7 +261,7 @@ export interface UpdateOidcCustomSubTemplateForOrgRequest {
   /** Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format. */
   use_immutable_subject?: boolean;
 }
-export const UpdateOidcCustomSubTemplateForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOidcCustomSubTemplateForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     include_claim_keys: S.optional(UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList),
@@ -275,7 +272,7 @@ export const UpdateOidcCustomSubTemplateForOrgRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequest>;
 
 export type UpdateOidcCustomSubTemplateForOrgResponse = unknown;
-export const UpdateOidcCustomSubTemplateForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateOidcCustomSubTemplateForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateOidcCustomSubTemplateForOrgResponse",

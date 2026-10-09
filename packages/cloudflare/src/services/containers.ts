@@ -113,7 +113,7 @@ export interface EnvironmentVariable {
   name: string;
   value: string;
 }
-export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -121,15 +121,15 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnvironmentVariable" }) as any as S.Schema<EnvironmentVariable>;
 
 export type EnvironmentVariableList = Array<EnvironmentVariable>;
-export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
+const EnvironmentVariableList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<EnvironmentVariableList>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ContainerConfiguration {
   image: string;
@@ -150,7 +150,7 @@ export interface ContainerConfiguration {
   dns?: unknown;
   sshPublicKeyIds?: StringList;
 }
-export const ContainerConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ContainerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.String,
     instanceType: S.optional(S.String.pipe(T.Body("instance_type"))),
@@ -175,7 +175,7 @@ export const ContainerConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface DurableObjectsRef {
   namespaceId: string;
 }
-export const DurableObjectsRef = /*@__PURE__*/ S.suspend(() =>
+const DurableObjectsRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespaceId: S.String.pipe(T.Body("namespace_id")),
   }),
@@ -193,7 +193,7 @@ export interface CreateContainerApplicationRequest {
   affinities?: unknown;
   jobs?: boolean;
 }
-export const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -217,7 +217,7 @@ export interface WranglerSSHConfiguration {
   enabled: boolean;
   port?: number | null;
 }
-export const WranglerSSHConfiguration = /*@__PURE__*/ S.suspend(() =>
+const WranglerSSHConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     port: S.optional(S.NullOr(S.Number)),
@@ -229,7 +229,7 @@ export interface UserSSHPublicKey {
   name?: string | null;
   publicKey: string;
 }
-export const UserSSHPublicKey = /*@__PURE__*/ S.suspend(() =>
+const UserSSHPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     publicKey: S.String.pipe(T.Body("public_key")),
@@ -237,7 +237,7 @@ export const UserSSHPublicKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSSHPublicKey" }) as any as S.Schema<UserSSHPublicKey>;
 
 export type UserSSHPublicKeyList = Array<UserSSHPublicKey>;
-export const UserSSHPublicKeyList = /*@__PURE__*/ S.Array(
+const UserSSHPublicKeyList = /*@__PURE__*/ S.Array(
   UserSSHPublicKey,
 ) as any as S.Schema<UserSSHPublicKeyList>;
 
@@ -263,7 +263,7 @@ export interface ContainerApplicationConfiguration {
   authorizedKeys?: UserSSHPublicKeyList | null;
   experimentalFlags?: StringList | null;
 }
-export const ContainerApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ContainerApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.NullOr(S.String)),
     instanceType: S.optional(S.NullOr(S.String).pipe(T.Body("instance_type"))),
@@ -295,7 +295,7 @@ export const ContainerApplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface ContainerApplicationLogs {
   enabled?: boolean | null;
 }
-export const ContainerApplicationLogs = /*@__PURE__*/ S.suspend(() =>
+const ContainerApplicationLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
   }),
@@ -304,7 +304,7 @@ export const ContainerApplicationLogs = /*@__PURE__*/ S.suspend(() =>
 export interface ContainerApplicationObservability {
   logs?: ContainerApplicationLogs | null;
 }
-export const ContainerApplicationObservability = /*@__PURE__*/ S.suspend(() =>
+const ContainerApplicationObservability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: S.optional(S.NullOr(ContainerApplicationLogs)),
   }),
@@ -329,7 +329,7 @@ export interface ContainerApplicationItem {
   version?: number | null;
   observability?: ContainerApplicationObservability | null;
 }
-export const ContainerApplicationItem = /*@__PURE__*/ S.suspend(() =>
+const ContainerApplicationItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -348,7 +348,7 @@ export const ContainerApplicationItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerApplicationItem" }) as any as S.Schema<ContainerApplicationItem>;
 
 export type CreateContainerApplicationResponse = ContainerApplicationItem;
-export const CreateContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   ContainerApplicationItem.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateContainerApplicationResponse",
@@ -363,7 +363,7 @@ export interface CreateContainerApplicationRolloutRequest {
   stepPercentage?: number;
   targetConfiguration?: ContainerConfiguration;
 }
-export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     applicationId: S.String.pipe(T.Label("application_id")),
@@ -384,7 +384,7 @@ export const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateContainerApplicationRolloutRequest>;
 
 export type CreateContainerApplicationRolloutResponse = ContainerApplicationItem;
-export const CreateContainerApplicationRolloutResponse =
+const CreateContainerApplicationRolloutResponse =
   CreateContainerApplicationResponse as any as S.Schema<CreateContainerApplicationRolloutResponse>;
 
 export interface CreateContainerRegistryCredentialsRequest {
@@ -393,7 +393,7 @@ export interface CreateContainerRegistryCredentialsRequest {
   permissions: StringList;
   expirationMinutes: number;
 }
-export const CreateContainerRegistryCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContainerRegistryCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     registryId: S.String.pipe(T.Label("registry_id")),
@@ -416,7 +416,7 @@ export interface CreateContainerRegistryCredentialsResult {
   username?: string | null;
   password: string;
 }
-export const CreateContainerRegistryCredentialsResult = /*@__PURE__*/ S.suspend(() =>
+const CreateContainerRegistryCredentialsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.NullOr(S.String)),
     username: S.optional(S.NullOr(S.String)),
@@ -427,21 +427,21 @@ export const CreateContainerRegistryCredentialsResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateContainerRegistryCredentialsResult>;
 
 export type CreateContainerRegistryCredentialsResponse = CreateContainerRegistryCredentialsResult;
-export const CreateContainerRegistryCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateContainerRegistryCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   CreateContainerRegistryCredentialsResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreateContainerRegistryCredentialsResponse",
 }) as any as S.Schema<CreateContainerRegistryCredentialsResponse>;
 
 export type DurableObjectSchedulingPolicy = "durable_object";
-export const DurableObjectSchedulingPolicy = S.String;
+const DurableObjectSchedulingPolicy = S.String;
 
 export interface DurableObjectContainerConfiguration {
   wranglerSsh?: WranglerSSHConfiguration;
   authorizedKeys?: UserSSHPublicKeyList;
   experimentalFlags?: StringList;
 }
-export const DurableObjectContainerConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DurableObjectContainerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wranglerSsh: S.optional(WranglerSSHConfiguration.pipe(T.Body("wrangler_ssh"))),
     authorizedKeys: S.optional(UserSSHPublicKeyList.pipe(T.Body("authorized_keys"))),
@@ -459,7 +459,7 @@ export interface CreateDurableObjectContainerApplicationRequest {
   configuration?: DurableObjectContainerConfiguration;
   observability?: ContainerApplicationObservability;
 }
-export const CreateDurableObjectContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDurableObjectContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -475,14 +475,14 @@ export const CreateDurableObjectContainerApplicationRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreateDurableObjectContainerApplicationRequest>;
 
 export type CreateDurableObjectContainerApplicationResponse = ContainerApplicationItem;
-export const CreateDurableObjectContainerApplicationResponse =
+const CreateDurableObjectContainerApplicationResponse =
   CreateContainerApplicationResponse as any as S.Schema<CreateDurableObjectContainerApplicationResponse>;
 
 export interface DeleteContainerApplicationRequest {
   accountId: string;
   applicationId: string;
 }
-export const DeleteContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     applicationId: S.String.pipe(T.Label("application_id")),
@@ -498,7 +498,7 @@ export const DeleteContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteContainerApplicationRequest>;
 
 export type DeleteContainerApplicationResponse = unknown;
-export const DeleteContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteContainerApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteContainerApplicationResponse",
@@ -508,7 +508,7 @@ export interface GetContainerApplicationRequest {
   accountId: string;
   applicationId: string;
 }
-export const GetContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     applicationId: S.String.pipe(T.Label("application_id")),
@@ -524,13 +524,13 @@ export const GetContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContainerApplicationRequest>;
 
 export type GetContainerApplicationResponse = ContainerApplicationItem;
-export const GetContainerApplicationResponse =
+const GetContainerApplicationResponse =
   CreateContainerApplicationResponse as any as S.Schema<GetContainerApplicationResponse>;
 
 export interface GetContainerIdentityRequest {
   accountId: string;
 }
-export const GetContainerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContainerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/containers/me", code: 200 })),
@@ -539,13 +539,13 @@ export const GetContainerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContainerIdentityRequest>;
 
 export type GetContainerIdentityResponse = unknown;
-export const GetContainerIdentityResponse =
+const GetContainerIdentityResponse =
   DeleteContainerApplicationResponse as any as S.Schema<GetContainerIdentityResponse>;
 
 export interface ListContainerApplicationsRequest {
   accountId: string;
 }
-export const ListContainerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContainerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -556,12 +556,12 @@ export const ListContainerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListContainerApplicationsRequest>;
 
 export type ContainerApplicationItemList = Array<ContainerApplicationItem>;
-export const ContainerApplicationItemList = /*@__PURE__*/ S.Array(
+const ContainerApplicationItemList = /*@__PURE__*/ S.Array(
   ContainerApplicationItem,
 ) as any as S.Schema<ContainerApplicationItemList>;
 
 export type ListContainerApplicationsResponse = ContainerApplicationItemList;
-export const ListContainerApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContainerApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
   ContainerApplicationItemList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListContainerApplicationsResponse",
@@ -571,7 +571,7 @@ export interface PrepareContainerImageRequest {
   accountId: string;
   image: string;
 }
-export const PrepareContainerImageRequest = /*@__PURE__*/ S.suspend(() =>
+const PrepareContainerImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     image: S.String,
@@ -587,7 +587,7 @@ export const PrepareContainerImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrepareContainerImageRequest>;
 
 export type ContainerImagePreparationStatus = "pending" | "ready" | "error";
-export const ContainerImagePreparationStatus = S.String;
+const ContainerImagePreparationStatus = S.String;
 
 export interface ContainerImagePreparation {
   image: string;
@@ -595,7 +595,7 @@ export interface ContainerImagePreparation {
   artifactDigest?: string | null;
   reason?: string | null;
 }
-export const ContainerImagePreparation = /*@__PURE__*/ S.suspend(() =>
+const ContainerImagePreparation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.String,
     status: ContainerImagePreparationStatus,
@@ -607,7 +607,7 @@ export const ContainerImagePreparation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerImagePreparation>;
 
 export type PrepareContainerImageResponse = ContainerImagePreparation;
-export const PrepareContainerImageResponse = /*@__PURE__*/ S.suspend(() =>
+const PrepareContainerImageResponse = /*@__PURE__*/ S.suspend(() =>
   ContainerImagePreparation.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PrepareContainerImageResponse",
@@ -624,7 +624,7 @@ export interface UpdateContainerApplicationRequest {
   affinities?: unknown;
   observability?: ContainerApplicationObservability;
 }
-export const UpdateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     applicationId: S.String.pipe(T.Label("application_id")),
@@ -647,7 +647,7 @@ export const UpdateContainerApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateContainerApplicationRequest>;
 
 export type UpdateContainerApplicationResponse = ContainerApplicationItem;
-export const UpdateContainerApplicationResponse =
+const UpdateContainerApplicationResponse =
   CreateContainerApplicationResponse as any as S.Schema<UpdateContainerApplicationResponse>;
 
 export type CreateContainerApplicationError =

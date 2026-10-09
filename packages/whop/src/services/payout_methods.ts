@@ -49,7 +49,7 @@ export interface GetPayoutMethodRequest {
   /** The unique identifier of the payout method to retrieve. */
   id: string;
 }
-export const GetPayoutMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayoutMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/payout_methods/{id}", code: 200 })),
@@ -60,7 +60,7 @@ export interface PayoutMethodCompany {
   /** The unique identifier for the company. */
   id: string;
 }
-export const PayoutMethodCompany = /*@__PURE__*/ S.suspend(() =>
+const PayoutMethodCompany = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -74,7 +74,7 @@ export type PayoutDestinationCategory =
   | "bank_wire"
   | "digital_wallet"
   | "unknown";
-export const PayoutDestinationCategory = S.String;
+const PayoutDestinationCategory = S.String;
 
 /** The payout destination configuration linked to this token. Null if not yet configured. */
 export interface PayoutMethodDestination {
@@ -85,7 +85,7 @@ export interface PayoutMethodDestination {
   /** The name of the payer associated with the payout destination */
   name: string;
 }
-export const PayoutMethodDestination = /*@__PURE__*/ S.suspend(() =>
+const PayoutMethodDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: PayoutDestinationCategory,
     country_code: S.String,
@@ -114,7 +114,7 @@ export interface PayoutMethod {
   /** A user-defined label to help identify this payout destination. Not sent to the provider. Null if no nickname has been set. */
   nickname: string | null;
 }
-export const PayoutMethod = /*@__PURE__*/ S.suspend(() =>
+const PayoutMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_reference: S.NullOr(S.String),
     company: S.NullOr(PayoutMethodCompany),
@@ -135,7 +135,7 @@ export interface ListPayoutMethodRequest {
   last?: number;
   account_id: string;
 }
-export const ListPayoutMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPayoutMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -147,12 +147,8 @@ export const ListPayoutMethodRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The company associated with this payout destination. Null if not linked to a specific company. */
 export type PayoutMethodListItemCompany = PayoutMethodCompany;
-export const PayoutMethodListItemCompany = PayoutMethodCompany;
-
 /** The payout destination configuration linked to this token. Null if not yet configured. */
 export type PayoutMethodListItemDestination = PayoutMethodDestination;
-export const PayoutMethodListItemDestination = PayoutMethodDestination;
-
 /** A configured payout destination where a user receives earned funds, such as a bank account or digital wallet. */
 export interface PayoutMethodListItem {
   /** A masked identifier for the payout destination, such as the last four digits of a bank account or an email address. Null if no reference is available. */
@@ -174,11 +170,11 @@ export interface PayoutMethodListItem {
   /** A user-defined label to help identify this payout destination. Not sent to the provider. Null if no nickname has been set. */
   nickname: string | null;
 }
-export const PayoutMethodListItem = PayoutMethod as any as S.Schema<PayoutMethodListItem>;
+const PayoutMethodListItem = PayoutMethod as any as S.Schema<PayoutMethodListItem>;
 
 /** A list of nodes. */
 export type ListPayoutMethodResponseDataList = Array<PayoutMethodListItem>;
-export const ListPayoutMethodResponseDataList = /*@__PURE__*/ S.Array(
+const ListPayoutMethodResponseDataList = /*@__PURE__*/ S.Array(
   PayoutMethodListItem,
 ) as any as S.Schema<ListPayoutMethodResponseDataList>;
 
@@ -193,7 +189,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -208,7 +204,7 @@ export interface ListPayoutMethodResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListPayoutMethodResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPayoutMethodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPayoutMethodResponseDataList,
     page_info: PageInfo,

@@ -101,13 +101,13 @@ export type ChannelArn = string;
 export interface JoinStorageSessionInput {
   channelArn: string;
 }
-export const JoinStorageSessionInput = /*@__PURE__*/ S.suspend(() =>
+const JoinStorageSessionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/joinStorageSession" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "JoinStorageSessionInput" }) as any as S.Schema<JoinStorageSessionInput>;
 export interface JoinStorageSessionResponse {}
-export const JoinStorageSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const JoinStorageSessionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "JoinStorageSessionResponse",
 }) as any as S.Schema<JoinStorageSessionResponse>;
 export type ClientId = string;
@@ -115,7 +115,7 @@ export interface JoinStorageSessionAsViewerInput {
   channelArn: string;
   clientId: string;
 }
-export const JoinStorageSessionAsViewerInput = /*@__PURE__*/ S.suspend(() =>
+const JoinStorageSessionAsViewerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelArn: S.String, clientId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/joinStorageSessionAsViewer" }),
@@ -130,9 +130,7 @@ export const JoinStorageSessionAsViewerInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "JoinStorageSessionAsViewerInput",
 }) as any as S.Schema<JoinStorageSessionAsViewerInput>;
 export interface JoinStorageSessionAsViewerResponse {}
-export const JoinStorageSessionAsViewerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const JoinStorageSessionAsViewerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "JoinStorageSessionAsViewerResponse",
 }) as any as S.Schema<JoinStorageSessionAsViewerResponse>;
 export type JoinStorageSessionError =

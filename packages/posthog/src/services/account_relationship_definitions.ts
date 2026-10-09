@@ -12,7 +12,7 @@ export interface AccountRelationshipDefinitionsDestroyRequest {
   project_id: string;
   id: string;
 }
-export const AccountRelationshipDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountRelationshipDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -28,7 +28,7 @@ export const AccountRelationshipDefinitionsDestroyRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<AccountRelationshipDefinitionsDestroyRequest>;
 
 export interface AccountRelationshipDefinitionsDestroyResponse {}
-export const AccountRelationshipDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountRelationshipDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AccountRelationshipDefinitionsDestroyResponse",
@@ -44,7 +44,7 @@ export interface CreateAccountRelationshipDefinitionRequest {
   /** Whether only one user can hold this relationship per account at a time, e.g. a single CSM per account. */
   is_single_holder?: boolean;
 }
-export const CreateAccountRelationshipDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountRelationshipDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -74,7 +74,7 @@ export interface AccountRelationshipDefinition {
   /** Whether customer analytics can take control of this relationship per account. Rows under a controlled relationship can't be deleted. On an account where control has started, only a person can change the relationship and an empty relationship is a deliberate decision. Set by project operators, not through this API. */
   is_controlled: boolean;
 }
-export const AccountRelationshipDefinition = /*@__PURE__*/ S.suspend(() =>
+const AccountRelationshipDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -91,7 +91,7 @@ export interface GetAccountRelationshipDefinitionRequest {
   project_id: string;
   id: string;
 }
-export const GetAccountRelationshipDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountRelationshipDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -114,7 +114,7 @@ export interface ListAccountRelationshipDefinitionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAccountRelationshipDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountRelationshipDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -132,7 +132,7 @@ export const ListAccountRelationshipDefinitionsRequest = /*@__PURE__*/ S.suspend
 
 export type PaginatedAccountRelationshipDefinitionListResultsList =
   Array<AccountRelationshipDefinition>;
-export const PaginatedAccountRelationshipDefinitionListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAccountRelationshipDefinitionListResultsList = /*@__PURE__*/ S.Array(
   AccountRelationshipDefinition,
 ) as any as S.Schema<PaginatedAccountRelationshipDefinitionListResultsList>;
 
@@ -142,7 +142,7 @@ export interface PaginatedAccountRelationshipDefinitionList {
   previous?: string | null;
   results: PaginatedAccountRelationshipDefinitionListResultsList;
 }
-export const PaginatedAccountRelationshipDefinitionList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAccountRelationshipDefinitionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -164,7 +164,7 @@ export interface UpdateAccountRelationshipDefinitionRequest {
   /** Whether only one user can hold this relationship per account at a time, e.g. a single CSM per account. */
   is_single_holder?: boolean;
 }
-export const UpdateAccountRelationshipDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRelationshipDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -193,7 +193,7 @@ export interface UpdateAccountRelationshipDefinitionsPartialRequest {
   /** Whether only one user can hold this relationship per account at a time, e.g. a single CSM per account. */
   is_single_holder?: boolean;
 }
-export const UpdateAccountRelationshipDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRelationshipDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

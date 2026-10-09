@@ -9,13 +9,13 @@ import * as T from "../traits.ts";
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface ListSharedRegionsRequest {}
-export const ListSharedRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharedRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/shared-regions", code: 200 })),
 ).annotate({ identifier: "ListSharedRegionsRequest" }) as any as S.Schema<ListSharedRegionsRequest>;
 
 /** The type of the region */
 export type RegionType = "shared" | "dedicated" | "custom";
-export const RegionType = S.String;
+const RegionType = S.String;
 
 export interface Region {
   /** Region ID */
@@ -39,7 +39,7 @@ export interface Region {
   /** OTel collector endpoint for sandboxes created in this region. When set, sandbox OTel data is sent to this endpoint instead of the Daytona-hosted collector and will not be available in the Daytona analytics API or dashboard. */
   otelEndpoint?: string | null;
 }
-export const Region = /*@__PURE__*/ S.suspend(() =>
+const Region = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -55,12 +55,12 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 export type ListSharedRegionsResponseBodyList = Array<Region>;
-export const ListSharedRegionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSharedRegionsResponseBodyList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<ListSharedRegionsResponseBodyList>;
 
 export type ListSharedRegionsResponse = ListSharedRegionsResponseBodyList;
-export const ListSharedRegionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSharedRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSharedRegionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSharedRegionsResponse",

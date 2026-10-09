@@ -15,7 +15,7 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-export const ServiceTerminationFutureUseEnum = S.String;
+const ServiceTerminationFutureUseEnum = S.String;
 
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
@@ -33,7 +33,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmDedicatedNashaTerminationRequest {
   /** The internal name of your storage */
@@ -47,7 +47,7 @@ export interface ConfirmDedicatedNashaTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-export const ConfirmDedicatedNashaTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmDedicatedNashaTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -62,7 +62,7 @@ export const ConfirmDedicatedNashaTerminationRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ConfirmDedicatedNashaTerminationRequest>;
 
 export type ConfirmDedicatedNashaTerminationResponse = string;
-export const ConfirmDedicatedNashaTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmDedicatedNashaTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmDedicatedNashaTerminationResponse",
@@ -78,7 +78,7 @@ export interface CreateDedicatedNashaChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateDedicatedNashaChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedNashaChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -92,13 +92,13 @@ export const CreateDedicatedNashaChangeContactRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateDedicatedNashaChangeContactRequest>;
 
 export type CreateDedicatedNashaChangeContactResponseBodyList = Array<number>;
-export const CreateDedicatedNashaChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateDedicatedNashaChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateDedicatedNashaChangeContactResponseBodyList>;
 
 export type CreateDedicatedNashaChangeContactResponse =
   CreateDedicatedNashaChangeContactResponseBodyList;
-export const CreateDedicatedNashaChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedNashaChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateDedicatedNashaChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateDedicatedNashaChangeContactResponse",
@@ -106,7 +106,7 @@ export const CreateDedicatedNashaChangeContactResponse = /*@__PURE__*/ S.suspend
 
 /** Partition Protocol */
 export type DedicatedStorageProtocolEnum = "CIFS" | "NFS" | "NFS_CIFS";
-export const DedicatedStorageProtocolEnum = S.String;
+const DedicatedStorageProtocolEnum = S.String;
 
 export interface CreateDedicatedNashaPartitionRequest {
   /** The internal name of your storage */
@@ -120,7 +120,7 @@ export interface CreateDedicatedNashaPartitionRequest {
   /** Partition size */
   size: number;
 }
-export const CreateDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionDescription: S.optional(S.String),
@@ -155,7 +155,7 @@ export type DedicatedStorageTaskFunctionEnum =
   | "nasPartitionUpdate"
   | "nasQuotaUpdate"
   | "remoteBackupRecursiveDestroy";
-export const DedicatedStorageTaskFunctionEnum = S.String;
+const DedicatedStorageTaskFunctionEnum = S.String;
 
 /** different task status */
 export type DedicatedTaskStatusEnum =
@@ -166,7 +166,7 @@ export type DedicatedTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-export const DedicatedTaskStatusEnum = S.String;
+const DedicatedTaskStatusEnum = S.String;
 
 /** Storage task */
 export interface DedicatedNasTaskTask {
@@ -189,7 +189,7 @@ export interface DedicatedNasTaskTask {
   /** Insertion of task in the todo */
   todoDate?: string | null;
 }
-export const DedicatedNasTaskTask = /*@__PURE__*/ S.suspend(() =>
+const DedicatedNasTaskTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(S.NullOr(S.String)),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -205,7 +205,7 @@ export const DedicatedNasTaskTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Acl Type */
 export type DedicatedStorageAclTypeEnum = "readonly" | "readwrite";
-export const DedicatedStorageAclTypeEnum = S.String;
+const DedicatedStorageAclTypeEnum = S.String;
 
 export interface CreateDedicatedNashaPartitionAccessRequest {
   /** The internal name of your storage */
@@ -219,7 +219,7 @@ export interface CreateDedicatedNashaPartitionAccessRequest {
   /** ACL type */
   type?: DedicatedStorageAclTypeEnum | (string & {});
 }
-export const CreateDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -247,7 +247,7 @@ export interface CreateDedicatedNashaPartitionCustomSnapshotRequest {
   /** the name of the snapshot */
   name: string;
 }
-export const CreateDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -266,7 +266,7 @@ export const CreateDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ 
 
 /** Atime values */
 export type DedicatedStorageAtimeEnum = "off" | "on";
-export const DedicatedStorageAtimeEnum = S.String;
+const DedicatedStorageAtimeEnum = S.String;
 
 /** Recordsize values */
 export type DedicatedStorageRecordSizeEnum =
@@ -277,11 +277,11 @@ export type DedicatedStorageRecordSizeEnum =
   | "4096"
   | "65536"
   | "8192";
-export const DedicatedStorageRecordSizeEnum = S.String;
+const DedicatedStorageRecordSizeEnum = S.String;
 
 /** Sync values */
 export type DedicatedStorageSyncEnum = "always" | "disabled" | "standard";
-export const DedicatedStorageSyncEnum = S.String;
+const DedicatedStorageSyncEnum = S.String;
 
 /** The template enumeration available for your partition. */
 export type DedicatedStorageTemplateUsageOptionsEnum =
@@ -289,7 +289,7 @@ export type DedicatedStorageTemplateUsageOptionsEnum =
   | "Default"
   | "File Systems (big files)"
   | "Virtual machines";
-export const DedicatedStorageTemplateUsageOptionsEnum = S.String;
+const DedicatedStorageTemplateUsageOptionsEnum = S.String;
 
 export interface CreateDedicatedNashaPartitionOptionRequest {
   /** The internal name of your storage */
@@ -305,7 +305,7 @@ export interface CreateDedicatedNashaPartitionOptionRequest {
   /** The name of the usage template to apply for this partition. */
   templateName?: DedicatedStorageTemplateUsageOptionsEnum | (string & {});
 }
-export const CreateDedicatedNashaPartitionOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedNashaPartitionOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -334,7 +334,7 @@ export interface CreateDedicatedNashaPartitionQuotaRequest {
   /** the uid to set quota on */
   uid: number;
 }
-export const CreateDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -359,7 +359,7 @@ export type DedicatedStorageSnapshotEnum =
   | "day-7"
   | "hour-1"
   | "hour-6";
-export const DedicatedStorageSnapshotEnum = S.String;
+const DedicatedStorageSnapshotEnum = S.String;
 
 export interface CreateDedicatedNashaPartitionSnapshotRequest {
   /** The internal name of your storage */
@@ -369,7 +369,7 @@ export interface CreateDedicatedNashaPartitionSnapshotRequest {
   /** Snapshot interval to add */
   snapshotType: DedicatedStorageSnapshotEnum | (string & {});
 }
-export const CreateDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -391,7 +391,7 @@ export interface DeleteDedicatedNashaPartitionRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const DeleteDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -414,7 +414,7 @@ export interface DeleteDedicatedNashaPartitionAccessRequest {
   /** the ip in root on storage */
   ip: string;
 }
-export const DeleteDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -438,7 +438,7 @@ export interface DeleteDedicatedNashaPartitionCustomSnapshotRequest {
   /** name of the snapshot */
   name: string;
 }
-export const DeleteDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -462,7 +462,7 @@ export interface DeleteDedicatedNashaPartitionQuotaRequest {
   /** the uid to set quota on */
   uid: number;
 }
-export const DeleteDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -486,7 +486,7 @@ export type DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType =
   | "day-7"
   | "hour-1"
   | "hour-6";
-export const DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType = S.String;
+const DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType = S.String;
 
 export interface DeleteDedicatedNashaPartitionSnapshotRequest {
   /** The internal name of your storage */
@@ -496,7 +496,7 @@ export interface DeleteDedicatedNashaPartitionSnapshotRequest {
   /** the interval of snapshot */
   snapshotType: DeleteDedicatedNashaPartitionSnapshotRequestSnapshotType | (string & {});
 }
-export const DeleteDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -516,7 +516,7 @@ export interface GetDedicatedNashaRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-export const GetDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}", code: 200 })),
@@ -524,11 +524,11 @@ export const GetDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the disk type of the nasHa */
 export type DedicatedStorageDiskTypeEnum = "hdd" | "nvme" | "ssd";
-export const DedicatedStorageDiskTypeEnum = S.String;
+const DedicatedStorageDiskTypeEnum = S.String;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -544,7 +544,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -576,7 +576,7 @@ export interface DedicatedNashaStorageWithIAM {
   /** the size of the nas */
   zpoolSize?: number;
 }
-export const DedicatedNashaStorageWithIAM = /*@__PURE__*/ S.suspend(() =>
+const DedicatedNashaStorageWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canCreatePartition: S.optional(S.Boolean),
     customName: S.optional(S.NullOr(S.String)),
@@ -597,7 +597,7 @@ export interface GetDedicatedNashaMetricsTokenRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-export const GetDedicatedNashaMetricsTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaMetricsTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/metricsToken", code: 200 })),
@@ -612,7 +612,7 @@ export interface DedicatedStorageMetricsTokenResult {
   /** The token value */
   token?: string;
 }
-export const DedicatedStorageMetricsTokenResult = /*@__PURE__*/ S.suspend(() =>
+const DedicatedStorageMetricsTokenResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     token: S.optional(S.String),
@@ -627,7 +627,7 @@ export interface GetDedicatedNashaPartitionRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const GetDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -657,7 +657,7 @@ export interface DedicatedNashaPartition {
   /** percentage of partition space used by snapshots, in % */
   usedBySnapshots?: number | null;
 }
-export const DedicatedNashaPartition = /*@__PURE__*/ S.suspend(() =>
+const DedicatedNashaPartition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionCapacity: S.optional(S.NullOr(S.Number)),
     partitionDescription: S.optional(S.NullOr(S.String)),
@@ -676,7 +676,7 @@ export interface GetDedicatedNashaPartitionAccessRequest {
   /** the ip in root on storage */
   ip: string;
 }
-export const GetDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -703,7 +703,7 @@ export interface DedicatedNashaAccess {
   /** ACL type */
   type?: DedicatedStorageAclTypeEnum;
 }
-export const DedicatedNashaAccess = /*@__PURE__*/ S.suspend(() =>
+const DedicatedNashaAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessId: S.optional(S.Number),
     aclDescription: S.optional(S.NullOr(S.String)),
@@ -720,7 +720,7 @@ export interface GetDedicatedNashaPartitionCustomSnapshotRequest {
   /** name of the snapshot */
   name: string;
 }
-export const GetDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -743,7 +743,7 @@ export interface DedicatedNashaCustomSnap {
   /** name of the snapshot */
   name?: string;
 }
-export const DedicatedNashaCustomSnap = /*@__PURE__*/ S.suspend(() =>
+const DedicatedNashaCustomSnap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiration: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -756,7 +756,7 @@ export interface GetDedicatedNashaPartitionOptionsRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const GetDedicatedNashaPartitionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaPartitionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -784,7 +784,7 @@ export interface DedicatedNashaOptions {
   /** the template name */
   templateName?: DedicatedStorageTemplateUsageOptionsEnum | null;
 }
-export const DedicatedNashaOptions = /*@__PURE__*/ S.suspend(() =>
+const DedicatedNashaOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     atime: S.optional(S.String),
     id: S.optional(S.Number),
@@ -802,7 +802,7 @@ export interface GetDedicatedNashaPartitionQuotaRequest {
   /** the uid to set quota on */
   uid: number;
 }
-export const GetDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -825,7 +825,7 @@ export interface DedicatedNashaQuota {
   /** the uid to set quota on */
   uid?: number;
 }
-export const DedicatedNashaQuota = /*@__PURE__*/ S.suspend(() =>
+const DedicatedNashaQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(S.Number),
     uid: S.optional(S.Number),
@@ -840,7 +840,7 @@ export type GetDedicatedNashaPartitionSnapshotRequestSnapshotType =
   | "day-7"
   | "hour-1"
   | "hour-6";
-export const GetDedicatedNashaPartitionSnapshotRequestSnapshotType = S.String;
+const GetDedicatedNashaPartitionSnapshotRequestSnapshotType = S.String;
 
 export interface GetDedicatedNashaPartitionSnapshotRequest {
   /** The internal name of your storage */
@@ -850,7 +850,7 @@ export interface GetDedicatedNashaPartitionSnapshotRequest {
   /** the interval of snapshot */
   snapshotType: GetDedicatedNashaPartitionSnapshotRequestSnapshotType | (string & {});
 }
-export const GetDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -871,7 +871,7 @@ export interface DedicatedNashaSnapshot {
   /** the interval of snapshot */
   snapshotType?: DedicatedStorageSnapshotEnum;
 }
-export const DedicatedNashaSnapshot = /*@__PURE__*/ S.suspend(() =>
+const DedicatedNashaSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotType: S.optional(DedicatedStorageSnapshotEnum),
   }),
@@ -879,7 +879,7 @@ export const DedicatedNashaSnapshot = /*@__PURE__*/ S.suspend(() =>
 
 /** Available types for NAS partition usage */
 export type DedicatedStoragePartitionUsageTypeEnum = "size" | "used" | "usedbysnapshots";
-export const DedicatedStoragePartitionUsageTypeEnum = S.String;
+const DedicatedStoragePartitionUsageTypeEnum = S.String;
 
 export interface GetDedicatedNashaPartitionUseRequest {
   /** The internal name of your storage */
@@ -889,7 +889,7 @@ export interface GetDedicatedNashaPartitionUseRequest {
   /** The type of statistic to be fetched */
   type: DedicatedStoragePartitionUsageTypeEnum | (string & {});
 }
-export const GetDedicatedNashaPartitionUseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaPartitionUseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -910,7 +910,7 @@ export interface ComplexTypeUnitAndValueDouble {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -923,7 +923,7 @@ export interface GetDedicatedNashaServiceInfosRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-export const GetDedicatedNashaServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/serviceInfos", code: 200 })),
@@ -933,7 +933,7 @@ export const GetDedicatedNashaServiceInfosRequest = /*@__PURE__*/ S.suspend(() =
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateDedicatedNashaChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -949,7 +949,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -969,7 +969,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -978,7 +978,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -999,7 +999,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -1023,7 +1023,7 @@ export interface GetDedicatedNashaTaskRequest {
   /** id of the task */
   taskId: number;
 }
-export const GetDedicatedNashaTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     taskId: S.Number.pipe(T.Label()),
@@ -1036,7 +1036,7 @@ export const GetDedicatedNashaTaskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Available types for NAS usage */
 export type DedicatedStorageNasUsageTypeEnum = "size" | "used" | "usedbysnapshots";
-export const DedicatedStorageNasUsageTypeEnum = S.String;
+const DedicatedStorageNasUsageTypeEnum = S.String;
 
 export interface GetDedicatedNashaUseRequest {
   /** The internal name of your storage */
@@ -1044,7 +1044,7 @@ export interface GetDedicatedNashaUseRequest {
   /** The type of statistic to be fetched */
   type: DedicatedStorageNasUsageTypeEnum | (string & {});
 }
-export const GetDedicatedNashaUseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedNashaUseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     type: DedicatedStorageNasUsageTypeEnum.pipe(T.Query()),
@@ -1055,19 +1055,19 @@ export const GetDedicatedNashaUseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListDedicatedNashaRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListDedicatedNashaRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListDedicatedNashaRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListDedicatedNashaRequestIamTagsValueList>;
 
 export type ListDedicatedNashaRequestIamTagsMap = {
   [key: string]: ListDedicatedNashaRequestIamTagsValueList | undefined;
 };
-export const ListDedicatedNashaRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListDedicatedNashaRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListDedicatedNashaRequestIamTagsValueList,
 ) as any as S.Schema<ListDedicatedNashaRequestIamTagsMap>;
@@ -1076,7 +1076,7 @@ export interface ListDedicatedNashaRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListDedicatedNashaRequestIamTagsMap;
 }
-export const ListDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListDedicatedNashaRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha", code: 200 })),
@@ -1085,12 +1085,12 @@ export const ListDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedNashaRequest>;
 
 export type ListDedicatedNashaResponseBodyList = Array<string>;
-export const ListDedicatedNashaResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedNashaResponseBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListDedicatedNashaResponseBodyList>;
 
 export type ListDedicatedNashaResponse = ListDedicatedNashaResponseBodyList;
-export const ListDedicatedNashaResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedNashaResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedNashaResponse",
@@ -1100,7 +1100,7 @@ export interface ListDedicatedNashaPartitionRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-export const ListDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dedicated/nasha/{serviceName}/partition", code: 200 })),
@@ -1109,11 +1109,8 @@ export const ListDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedNashaPartitionRequest>;
 
 export type ListDedicatedNashaPartitionResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionResponseBodyList =
-  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionResponseBodyList>;
-
 export type ListDedicatedNashaPartitionResponse = ListDedicatedNashaPartitionResponseBodyList;
-export const ListDedicatedNashaPartitionResponse =
+const ListDedicatedNashaPartitionResponse =
   ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionResponse>;
 
 export interface ListDedicatedNashaPartitionAccessRequest {
@@ -1122,7 +1119,7 @@ export interface ListDedicatedNashaPartitionAccessRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const ListDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -1138,12 +1135,9 @@ export const ListDedicatedNashaPartitionAccessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListDedicatedNashaPartitionAccessRequest>;
 
 export type ListDedicatedNashaPartitionAccessResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionAccessResponseBodyList =
-  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionAccessResponseBodyList>;
-
 export type ListDedicatedNashaPartitionAccessResponse =
   ListDedicatedNashaPartitionAccessResponseBodyList;
-export const ListDedicatedNashaPartitionAccessResponse =
+const ListDedicatedNashaPartitionAccessResponse =
   ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAccessResponse>;
 
 export interface ListDedicatedNashaPartitionAuthorizableBlocksRequest {
@@ -1152,7 +1146,7 @@ export interface ListDedicatedNashaPartitionAuthorizableBlocksRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const ListDedicatedNashaPartitionAuthorizableBlocksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionAuthorizableBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -1168,12 +1162,9 @@ export const ListDedicatedNashaPartitionAuthorizableBlocksRequest = /*@__PURE__*
 }) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksRequest>;
 
 export type ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList =
-  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList>;
-
 export type ListDedicatedNashaPartitionAuthorizableBlocksResponse =
   ListDedicatedNashaPartitionAuthorizableBlocksResponseBodyList;
-export const ListDedicatedNashaPartitionAuthorizableBlocksResponse =
+const ListDedicatedNashaPartitionAuthorizableBlocksResponse =
   ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAuthorizableBlocksResponse>;
 
 export interface ListDedicatedNashaPartitionAuthorizableIpsRequest {
@@ -1182,7 +1173,7 @@ export interface ListDedicatedNashaPartitionAuthorizableIpsRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const ListDedicatedNashaPartitionAuthorizableIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionAuthorizableIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -1198,12 +1189,9 @@ export const ListDedicatedNashaPartitionAuthorizableIpsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsRequest>;
 
 export type ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList =
-  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList>;
-
 export type ListDedicatedNashaPartitionAuthorizableIpsResponse =
   ListDedicatedNashaPartitionAuthorizableIpsResponseBodyList;
-export const ListDedicatedNashaPartitionAuthorizableIpsResponse =
+const ListDedicatedNashaPartitionAuthorizableIpsResponse =
   ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionAuthorizableIpsResponse>;
 
 export interface ListDedicatedNashaPartitionCustomSnapshotRequest {
@@ -1212,7 +1200,7 @@ export interface ListDedicatedNashaPartitionCustomSnapshotRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const ListDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -1228,12 +1216,9 @@ export const ListDedicatedNashaPartitionCustomSnapshotRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotRequest>;
 
 export type ListDedicatedNashaPartitionCustomSnapshotResponseBodyList = Array<string>;
-export const ListDedicatedNashaPartitionCustomSnapshotResponseBodyList =
-  ListDedicatedNashaResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponseBodyList>;
-
 export type ListDedicatedNashaPartitionCustomSnapshotResponse =
   ListDedicatedNashaPartitionCustomSnapshotResponseBodyList;
-export const ListDedicatedNashaPartitionCustomSnapshotResponse =
+const ListDedicatedNashaPartitionCustomSnapshotResponse =
   ListDedicatedNashaResponse as any as S.Schema<ListDedicatedNashaPartitionCustomSnapshotResponse>;
 
 export interface ListDedicatedNashaPartitionQuotaRequest {
@@ -1242,7 +1227,7 @@ export interface ListDedicatedNashaPartitionQuotaRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const ListDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -1258,12 +1243,9 @@ export const ListDedicatedNashaPartitionQuotaRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListDedicatedNashaPartitionQuotaRequest>;
 
 export type ListDedicatedNashaPartitionQuotaResponseBodyList = Array<number>;
-export const ListDedicatedNashaPartitionQuotaResponseBodyList =
-  CreateDedicatedNashaChangeContactResponseBodyList as any as S.Schema<ListDedicatedNashaPartitionQuotaResponseBodyList>;
-
 export type ListDedicatedNashaPartitionQuotaResponse =
   ListDedicatedNashaPartitionQuotaResponseBodyList;
-export const ListDedicatedNashaPartitionQuotaResponse =
+const ListDedicatedNashaPartitionQuotaResponse =
   CreateDedicatedNashaChangeContactResponse as any as S.Schema<ListDedicatedNashaPartitionQuotaResponse>;
 
 export interface ListDedicatedNashaPartitionSnapshotRequest {
@@ -1272,7 +1254,7 @@ export interface ListDedicatedNashaPartitionSnapshotRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const ListDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -1289,13 +1271,13 @@ export const ListDedicatedNashaPartitionSnapshotRequest = /*@__PURE__*/ S.suspen
 
 export type ListDedicatedNashaPartitionSnapshotResponseBodyList =
   Array<DedicatedStorageSnapshotEnum>;
-export const ListDedicatedNashaPartitionSnapshotResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedNashaPartitionSnapshotResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedStorageSnapshotEnum,
 ) as any as S.Schema<ListDedicatedNashaPartitionSnapshotResponseBodyList>;
 
 export type ListDedicatedNashaPartitionSnapshotResponse =
   ListDedicatedNashaPartitionSnapshotResponseBodyList;
-export const ListDedicatedNashaPartitionSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedNashaPartitionSnapshotResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedNashaPartitionSnapshotResponse",
@@ -1307,7 +1289,7 @@ export interface ListDedicatedNashaPartitionTemplateUsageRequest {
   /** the given name of partition */
   partitionName: string;
 }
-export const ListDedicatedNashaPartitionTemplateUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionTemplateUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -1329,7 +1311,7 @@ export interface DedicatedStorageTemplateUsageOptionsDetails {
   /** The name of the template */
   name?: string;
 }
-export const DedicatedStorageTemplateUsageOptionsDetails = /*@__PURE__*/ S.suspend(() =>
+const DedicatedStorageTemplateUsageOptionsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -1340,13 +1322,13 @@ export const DedicatedStorageTemplateUsageOptionsDetails = /*@__PURE__*/ S.suspe
 
 export type ListDedicatedNashaPartitionTemplateUsageResponseBodyList =
   Array<DedicatedStorageTemplateUsageOptionsDetails>;
-export const ListDedicatedNashaPartitionTemplateUsageResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDedicatedNashaPartitionTemplateUsageResponseBodyList = /*@__PURE__*/ S.Array(
   DedicatedStorageTemplateUsageOptionsDetails,
 ) as any as S.Schema<ListDedicatedNashaPartitionTemplateUsageResponseBodyList>;
 
 export type ListDedicatedNashaPartitionTemplateUsageResponse =
   ListDedicatedNashaPartitionTemplateUsageResponseBodyList;
-export const ListDedicatedNashaPartitionTemplateUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaPartitionTemplateUsageResponse = /*@__PURE__*/ S.suspend(() =>
   ListDedicatedNashaPartitionTemplateUsageResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDedicatedNashaPartitionTemplateUsageResponse",
@@ -1360,7 +1342,7 @@ export interface ListDedicatedNashaTaskRequest {
   /** Filter the value of status property (=) */
   status?: DedicatedTaskStatusEnum | (string & {});
 }
-export const ListDedicatedNashaTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedNashaTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     operation: S.optional(DedicatedStorageTaskFunctionEnum.pipe(T.Query())),
@@ -1371,11 +1353,8 @@ export const ListDedicatedNashaTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDedicatedNashaTaskRequest>;
 
 export type ListDedicatedNashaTaskResponseBodyList = Array<number>;
-export const ListDedicatedNashaTaskResponseBodyList =
-  CreateDedicatedNashaChangeContactResponseBodyList as any as S.Schema<ListDedicatedNashaTaskResponseBodyList>;
-
 export type ListDedicatedNashaTaskResponse = ListDedicatedNashaTaskResponseBodyList;
-export const ListDedicatedNashaTaskResponse =
+const ListDedicatedNashaTaskResponse =
   CreateDedicatedNashaChangeContactResponse as any as S.Schema<ListDedicatedNashaTaskResponse>;
 
 export interface PutDedicatedNashaRequest {
@@ -1386,7 +1365,7 @@ export interface PutDedicatedNashaRequest {
   /** Send an email to customer if any issue is detected */
   monitored?: boolean;
 }
-export const PutDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     customName: S.optional(S.NullOr(S.String)),
@@ -1395,7 +1374,7 @@ export const PutDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDedicatedNashaRequest" }) as any as S.Schema<PutDedicatedNashaRequest>;
 
 export interface PutDedicatedNashaResponse {}
-export const PutDedicatedNashaResponse =
+const PutDedicatedNashaResponse =
   IamResourceTagFilterInput as any as S.Schema<PutDedicatedNashaResponse>;
 
 export interface PutDedicatedNashaPartitionRequest {
@@ -1408,7 +1387,7 @@ export interface PutDedicatedNashaPartitionRequest {
   /** Partition size */
   size?: number;
 }
-export const PutDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     partitionName: S.String.pipe(T.Label()),
@@ -1426,9 +1405,7 @@ export const PutDedicatedNashaPartitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDedicatedNashaPartitionRequest>;
 
 export interface PutDedicatedNashaPartitionResponse {}
-export const PutDedicatedNashaPartitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const PutDedicatedNashaPartitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PutDedicatedNashaPartitionResponse",
 }) as any as S.Schema<PutDedicatedNashaPartitionResponse>;
 
@@ -1438,7 +1415,7 @@ export interface PutDedicatedNashaServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutDedicatedNashaServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDedicatedNashaServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -1448,14 +1425,14 @@ export const PutDedicatedNashaServiceInfosRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutDedicatedNashaServiceInfosRequest>;
 
 export interface PutDedicatedNashaServiceInfosResponse {}
-export const PutDedicatedNashaServiceInfosResponse =
+const PutDedicatedNashaServiceInfosResponse =
   PutDedicatedNashaPartitionResponse as any as S.Schema<PutDedicatedNashaServiceInfosResponse>;
 
 export interface TerminateDedicatedNashaRequest {
   /** The internal name of your storage */
   serviceName: string;
 }
-export const TerminateDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/dedicated/nasha/{serviceName}/terminate", code: 200 })),
@@ -1464,7 +1441,7 @@ export const TerminateDedicatedNashaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateDedicatedNashaRequest>;
 
 export type TerminateDedicatedNashaResponse = string;
-export const TerminateDedicatedNashaResponse =
+const TerminateDedicatedNashaResponse =
   ConfirmDedicatedNashaTerminationResponse as any as S.Schema<TerminateDedicatedNashaResponse>;
 
 export type ConfirmDedicatedNashaTerminationError = OvhOpError;

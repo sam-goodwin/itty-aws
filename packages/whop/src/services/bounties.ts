@@ -51,7 +51,7 @@ export interface CancelBountyRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CancelBountyRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelBountyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -60,10 +60,10 @@ export const CancelBountyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The deliverable shapes this bounty accepts. Every bounty accepts any combination of `content_url` (posted links) and `media` (uploaded files), except `data_capture` bounties, whose proof is clips recorded in the Whop app that accumulate on the attempt. */
 export type BountyAcceptedDeliverableTypesItem = "content_url" | "media" | "data_capture";
-export const BountyAcceptedDeliverableTypesItem = S.String;
+const BountyAcceptedDeliverableTypesItem = S.String;
 
 export type BountyAcceptedDeliverableTypesList = Array<BountyAcceptedDeliverableTypesItem>;
-export const BountyAcceptedDeliverableTypesList = /*@__PURE__*/ S.Array(
+const BountyAcceptedDeliverableTypesList = /*@__PURE__*/ S.Array(
   BountyAcceptedDeliverableTypesItem,
 ) as any as S.Schema<BountyAcceptedDeliverableTypesList>;
 
@@ -71,7 +71,7 @@ export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
+const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -87,7 +87,7 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-export const UserSummary = /*@__PURE__*/ S.suspend(() =>
+const UserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -104,7 +104,7 @@ export interface BountyActiveLivestreamFeed {
   /** Display title for the proof livestream. */
   title: string;
 }
-export const BountyActiveLivestreamFeed = /*@__PURE__*/ S.suspend(() =>
+const BountyActiveLivestreamFeed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.NullOr(UserSummary),
     id: S.String,
@@ -115,12 +115,12 @@ export const BountyActiveLivestreamFeed = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BountyActiveLivestreamFeed>;
 
 export type BountyActiveProofLivestreamFeedsList = Array<BountyActiveLivestreamFeed>;
-export const BountyActiveProofLivestreamFeedsList = /*@__PURE__*/ S.Array(
+const BountyActiveProofLivestreamFeedsList = /*@__PURE__*/ S.Array(
   BountyActiveLivestreamFeed,
 ) as any as S.Schema<BountyActiveProofLivestreamFeedsList>;
 
 export type BountyAllowedCountryCodesList = Array<string>;
-export const BountyAllowedCountryCodesList = /*@__PURE__*/ S.Array(
+const BountyAllowedCountryCodesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BountyAllowedCountryCodesList>;
 
@@ -133,7 +133,7 @@ export type BountyBusinessGoalType =
   | "local_activation"
   | "data_capture"
   | "other";
-export const BountyBusinessGoalType = S.String;
+const BountyBusinessGoalType = S.String;
 
 export interface CaptureSpecImu {
   /** Units for the device-motion channels, as a compact key=unit string. */
@@ -149,7 +149,7 @@ export interface CaptureSpecImu {
   /** Startup window, in nanoseconds, during which the relaxed warmup rate applies. */
   warmup_ns: number;
 }
-export const CaptureSpecImu = /*@__PURE__*/ S.suspend(() =>
+const CaptureSpecImu = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device_motion_units: S.String,
     magnetometer_units: S.String,
@@ -161,16 +161,16 @@ export const CaptureSpecImu = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CaptureSpecImu" }) as any as S.Schema<CaptureSpecImu>;
 
 export type CaptureSpecRequiredMetadataFieldsList = Array<string>;
-export const CaptureSpecRequiredMetadataFieldsList =
+const CaptureSpecRequiredMetadataFieldsList =
   BountyAllowedCountryCodesList as any as S.Schema<CaptureSpecRequiredMetadataFieldsList>;
 
 export type CaptureSpecVideoCodecsList = Array<string>;
-export const CaptureSpecVideoCodecsList =
+const CaptureSpecVideoCodecsList =
   BountyAllowedCountryCodesList as any as S.Schema<CaptureSpecVideoCodecsList>;
 
 /** How the client must configure video stabilization: `off` disables EIS so raw motion is preserved for pose extraction, `on` requires it, `any` leaves the device default. */
 export type CaptureSpecVideoStabilizationMode = "off" | "on" | "any";
-export const CaptureSpecVideoStabilizationMode = S.String;
+const CaptureSpecVideoStabilizationMode = S.String;
 
 export interface CaptureSpecVideo {
   /** Maximum acceptable average bitrate, in megabits per second. */
@@ -203,7 +203,7 @@ export interface CaptureSpecVideo {
   /** Required frame width in pixels -- recorded footage must match exactly. */
   width: number;
 }
-export const CaptureSpecVideo = /*@__PURE__*/ S.suspend(() =>
+const CaptureSpecVideo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bitrate_ceiling_mbps: S.Number,
     bitrate_floor_mbps: S.Number,
@@ -240,7 +240,7 @@ export interface CaptureSpec {
   /** Video recording requirements. */
   video: CaptureSpecVideo;
 }
-export const CaptureSpec = /*@__PURE__*/ S.suspend(() =>
+const CaptureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename_pattern: S.String,
     imu: CaptureSpecImu,
@@ -339,7 +339,7 @@ export type BountyCurrency =
   | "cny"
   | "kzt"
   | "awg";
-export const BountyCurrency = S.String;
+const BountyCurrency = S.String;
 
 export interface AccountSummary {
   /** Account ID, prefixed `biz_`. */
@@ -347,7 +347,7 @@ export interface AccountSummary {
   /** Account display name. */
   title: string;
 }
-export const AccountSummary = /*@__PURE__*/ S.suspend(() =>
+const AccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -364,7 +364,7 @@ export interface StorefrontAccount {
   /** Account display name. */
   title: string;
 }
-export const StorefrontAccount = /*@__PURE__*/ S.suspend(() =>
+const StorefrontAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     logo_url: S.NullOr(S.String),
@@ -375,11 +375,11 @@ export const StorefrontAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** How often the schedule creates a new bounty. Each occurrence is a separate bounty; the original is not republished. */
 export type BountyScheduledFrequency = "once" | "hourly" | "daily" | "weekly" | "monthly";
-export const BountyScheduledFrequency = S.String;
+const BountyScheduledFrequency = S.String;
 
 /** Lifecycle state. `scheduled` bounties are unpublished drafts, visible to their poster and the account's authorized managers; `open` bounties accept new submissions; `closed` bounties are live but no longer accept new submissions; `completed` bounties paid out every winner slot; `canceled` bounties ended before filling their slots. */
 export type BountyStatus = "scheduled" | "open" | "closed" | "completed" | "canceled";
-export const BountyStatus = S.String;
+const BountyStatus = S.String;
 
 export interface Bounty {
   accepted_deliverable_types: BountyAcceptedDeliverableTypesList;
@@ -454,7 +454,7 @@ export interface Bounty {
   /** How many winner slots the authenticated user has already won on this bounty. Read against `accepted_submissions_per_user_limit` to show a worker their remaining allowance. `0` when the request has no authenticated user. */
   viewer_accepted_submissions_count: number;
 }
-export const Bounty = /*@__PURE__*/ S.suspend(() =>
+const Bounty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted_deliverable_types: BountyAcceptedDeliverableTypesList,
     accepted_submissions_count: S.Number,
@@ -498,7 +498,7 @@ export const Bounty = /*@__PURE__*/ S.suspend(() =>
 
 /** Countries whose residents can work the bounty, as ISO 3166 alpha-2 codes. Empty means worldwide. */
 export type CreateBountyRequestAllowedCountryCodesList = Array<string>;
-export const CreateBountyRequestAllowedCountryCodesList =
+const CreateBountyRequestAllowedCountryCodesList =
   BountyAllowedCountryCodesList as any as S.Schema<CreateBountyRequestAllowedCountryCodesList>;
 
 /** What the poster wants the work to achieve, declared once here. */
@@ -510,11 +510,11 @@ export type CreateBountyRequestBusinessGoalType =
   | "local_activation"
   | "data_capture"
   | "other";
-export const CreateBountyRequestBusinessGoalType = S.String;
+const CreateBountyRequestBusinessGoalType = S.String;
 
 /** How the recorder configures video stabilization. `off` preserves raw motion for pose extraction. */
 export type CreateBountyRequestCaptureSpecStabilizationMode = "off" | "on" | "any";
-export const CreateBountyRequestCaptureSpecStabilizationMode = S.String;
+const CreateBountyRequestCaptureSpecStabilizationMode = S.String;
 
 /** Per-bounty overrides of the served capture contract. Only accepted when `business_goal_type` is `data_capture`; omitted fields keep the platform defaults, and the resulting contract is echoed back as `capture_spec` on the bounty. */
 export interface CreateBountyRequestCaptureSpec {
@@ -531,7 +531,7 @@ export interface CreateBountyRequestCaptureSpec {
   /** How the recorder configures video stabilization. `off` preserves raw motion for pose extraction. */
   stabilization_mode?: CreateBountyRequestCaptureSpecStabilizationMode | (string & {});
 }
-export const CreateBountyRequestCaptureSpec = /*@__PURE__*/ S.suspend(() =>
+const CreateBountyRequestCaptureSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bitrate_target_mbps: S.optional(S.Number),
     embed_camera_metadata: S.optional(S.Boolean),
@@ -546,7 +546,7 @@ export const CreateBountyRequestCaptureSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** How often the schedule creates a new bounty. Each occurrence is a separate bounty. Defaults to `once`; only applies with `publish_at`. */
 export type CreateBountyRequestFrequency = "once" | "hourly" | "daily" | "weekly" | "monthly";
-export const CreateBountyRequestFrequency = S.String;
+const CreateBountyRequestFrequency = S.String;
 
 export interface CreateBountyRequest {
   /** Number of submissions that can be accepted (winner slots). Defaults to 1. The escrowed total is `gross_reward_amount` times this limit and must be at least $5. */
@@ -578,7 +578,7 @@ export interface CreateBountyRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateBountyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBountyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted_submissions_limit: S.optional(S.NullOr(S.Number)),
     accepted_submissions_per_user_limit: S.optional(S.NullOr(S.Number)),
@@ -601,7 +601,7 @@ export interface GetBountyRequest {
   /** Bounty ID (`bnty_` tag). */
   id: string;
 }
-export const GetBountyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBountyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/bounties/{id}", code: 200 })),
@@ -613,7 +613,7 @@ export interface GetPublicBountySubmissionRequest {
   /** The submission to retrieve (`btys_` tag). */
   id: string;
 }
-export const GetPublicBountySubmissionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicBountySubmissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounty_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -628,7 +628,7 @@ export type BountySubmissionLivestreamFeedRecordingStatus =
   | "processing"
   | "completed"
   | "failed";
-export const BountySubmissionLivestreamFeedRecordingStatus = S.String;
+const BountySubmissionLivestreamFeedRecordingStatus = S.String;
 
 export interface BountySubmissionLivestreamFeed {
   /** When the proof livestream ended, as an ISO 8601 timestamp. `null` while it is still live -- a feed with a `started_at` and no `ended_at` is streaming right now. */
@@ -646,7 +646,7 @@ export interface BountySubmissionLivestreamFeed {
   /** Display title for the proof livestream. */
   title: string;
 }
-export const BountySubmissionLivestreamFeed = /*@__PURE__*/ S.suspend(() =>
+const BountySubmissionLivestreamFeed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ended_at: S.NullOr(S.String),
     id: S.String,
@@ -662,7 +662,7 @@ export const BountySubmissionLivestreamFeed = /*@__PURE__*/ S.suspend(() =>
 
 /** Lifecycle state. `submitted` submissions await review; `approved` submissions were accepted and paid; `denied` submissions were rejected. In-progress attempts never appear on the public list. */
 export type PublicBountySubmissionStatus = "submitted" | "approved" | "denied";
-export const PublicBountySubmissionStatus = S.String;
+const PublicBountySubmissionStatus = S.String;
 
 export interface PublicBountySubmission {
   /** The bounty the work was submitted to, prefixed `bnty_`. */
@@ -688,7 +688,7 @@ export interface PublicBountySubmission {
   /** User who submitted the work. */
   worker: UserSummary;
 }
-export const PublicBountySubmission = /*@__PURE__*/ S.suspend(() =>
+const PublicBountySubmission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounty_id: S.String,
     claimed_at: S.NullOr(S.String),
@@ -705,7 +705,7 @@ export const PublicBountySubmission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicBountySubmission" }) as any as S.Schema<PublicBountySubmission>;
 
 export type ListBountiesRequestStatus = "scheduled" | "open" | "closed" | "completed" | "canceled";
-export const ListBountiesRequestStatus = S.String;
+const ListBountiesRequestStatus = S.String;
 
 export type ListBountiesRequestBusinessGoalType =
   | "clipping"
@@ -715,16 +715,16 @@ export type ListBountiesRequestBusinessGoalType =
   | "local_activation"
   | "data_capture"
   | "other";
-export const ListBountiesRequestBusinessGoalType = S.String;
+const ListBountiesRequestBusinessGoalType = S.String;
 
 export type ListBountiesRequestOrder =
   | "created_at"
   | "gross_paid_out_amount"
   | "gross_reward_amount";
-export const ListBountiesRequestOrder = S.String;
+const ListBountiesRequestOrder = S.String;
 
 export type ListBountiesRequestDirection = "asc" | "desc";
-export const ListBountiesRequestDirection = S.String;
+const ListBountiesRequestDirection = S.String;
 
 export interface ListBountiesRequest {
   /** Scope the list to this account (`biz_` tag). Requires read access to the account; account API keys may pass their own account or a connected account. */
@@ -758,7 +758,7 @@ export interface ListBountiesRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListBountiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBountiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     user_id: S.optional(S.String.pipe(T.Query())),
@@ -780,15 +780,13 @@ export const ListBountiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The deliverable shapes this bounty accepts. Every bounty accepts any combination of `content_url` (posted links) and `media` (uploaded files), except `data_capture` bounties, whose proof is clips recorded in the Whop app that accumulate on the attempt. */
 export type BountyListItemAcceptedDeliverableTypesItem = "content_url" | "media" | "data_capture";
-export const BountyListItemAcceptedDeliverableTypesItem = S.String;
-
 export type BountyListItemAcceptedDeliverableTypesList =
   Array<BountyListItemAcceptedDeliverableTypesItem>;
-export const BountyListItemAcceptedDeliverableTypesList =
+const BountyListItemAcceptedDeliverableTypesList =
   BountyAcceptedDeliverableTypesList as any as S.Schema<BountyListItemAcceptedDeliverableTypesList>;
 
 export type BountyListItemAllowedCountryCodesList = Array<string>;
-export const BountyListItemAllowedCountryCodesList =
+const BountyListItemAllowedCountryCodesList =
   BountyAllowedCountryCodesList as any as S.Schema<BountyListItemAllowedCountryCodesList>;
 
 /** What the poster wants the work to achieve, declared once at create. `null` for bounties created before the taxonomy rolled out. */
@@ -800,15 +798,15 @@ export type BountyListItemBusinessGoalType =
   | "local_activation"
   | "data_capture"
   | "other";
-export const BountyListItemBusinessGoalType = S.String;
+const BountyListItemBusinessGoalType = S.String;
 
 /** How often the schedule creates a new bounty. Each occurrence is a separate bounty; the original is not republished. */
 export type BountyListItemScheduledFrequency = "once" | "hourly" | "daily" | "weekly" | "monthly";
-export const BountyListItemScheduledFrequency = S.String;
+const BountyListItemScheduledFrequency = S.String;
 
 /** Lifecycle state. `scheduled` bounties are unpublished drafts, visible to their poster and the account's authorized managers; `open` bounties accept new submissions; `closed` bounties are live but no longer accept new submissions; `completed` bounties paid out every winner slot; `canceled` bounties ended before filling their slots. */
 export type BountyListItemStatus = "scheduled" | "open" | "closed" | "completed" | "canceled";
-export const BountyListItemStatus = S.String;
+const BountyListItemStatus = S.String;
 
 export interface BountyListItem {
   accepted_deliverable_types: BountyListItemAcceptedDeliverableTypesList;
@@ -876,7 +874,7 @@ export interface BountyListItem {
   /** How many winner slots the authenticated user has already won on this bounty. Read against `accepted_submissions_per_user_limit` to show a worker their remaining allowance. `0` when the request has no authenticated user. */
   viewer_accepted_submissions_count: number;
 }
-export const BountyListItem = /*@__PURE__*/ S.suspend(() =>
+const BountyListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted_deliverable_types: BountyListItemAcceptedDeliverableTypesList,
     accepted_submissions_count: S.Number,
@@ -915,7 +913,7 @@ export const BountyListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BountyListItem" }) as any as S.Schema<BountyListItem>;
 
 export type ListBountiesResponseDataList = Array<BountyListItem>;
-export const ListBountiesResponseDataList = /*@__PURE__*/ S.Array(
+const ListBountiesResponseDataList = /*@__PURE__*/ S.Array(
   BountyListItem,
 ) as any as S.Schema<ListBountiesResponseDataList>;
 
@@ -925,7 +923,7 @@ export interface ListBountiesResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListBountiesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListBountiesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -940,7 +938,7 @@ export interface ListBountiesResponse {
   data: ListBountiesResponseDataList;
   page_info: ListBountiesResponsePageInfo;
 }
-export const ListBountiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBountiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListBountiesResponseDataList,
     page_info: ListBountiesResponsePageInfo,
@@ -948,13 +946,13 @@ export const ListBountiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBountiesResponse" }) as any as S.Schema<ListBountiesResponse>;
 
 export type ListPublicBountySubmissionsRequestStatus = "submitted" | "approved" | "denied";
-export const ListPublicBountySubmissionsRequestStatus = S.String;
+const ListPublicBountySubmissionsRequestStatus = S.String;
 
 export type ListPublicBountySubmissionsRequestOrder = "created_at" | "updated_at";
-export const ListPublicBountySubmissionsRequestOrder = S.String;
+const ListPublicBountySubmissionsRequestOrder = S.String;
 
 export type ListPublicBountySubmissionsRequestDirection = "asc" | "desc";
-export const ListPublicBountySubmissionsRequestDirection = S.String;
+const ListPublicBountySubmissionsRequestDirection = S.String;
 
 export interface ListPublicBountySubmissionsRequest {
   /** The bounty whose public submissions to list (`bnty_` tag). */
@@ -978,7 +976,7 @@ export interface ListPublicBountySubmissionsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListPublicBountySubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicBountySubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounty_id: S.String.pipe(T.Label()),
     status: S.optional(ListPublicBountySubmissionsRequestStatus.pipe(T.Query())),
@@ -996,18 +994,16 @@ export const ListPublicBountySubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPublicBountySubmissionsRequest>;
 
 export type ListPublicBountySubmissionsResponseDataList = Array<PublicBountySubmission>;
-export const ListPublicBountySubmissionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListPublicBountySubmissionsResponseDataList = /*@__PURE__*/ S.Array(
   PublicBountySubmission,
 ) as any as S.Schema<ListPublicBountySubmissionsResponseDataList>;
 
 export type ListPublicBountySubmissionsResponsePageInfo = ListBountiesResponsePageInfo;
-export const ListPublicBountySubmissionsResponsePageInfo = ListBountiesResponsePageInfo;
-
 export interface ListPublicBountySubmissionsResponse {
   data: ListPublicBountySubmissionsResponseDataList;
   page_info: ListBountiesResponsePageInfo;
 }
-export const ListPublicBountySubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublicBountySubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPublicBountySubmissionsResponseDataList,
     page_info: ListBountiesResponsePageInfo,
@@ -1018,7 +1014,7 @@ export const ListPublicBountySubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replace the countries whose residents can work the bounty, as ISO 3166 alpha-2 codes. Empty means worldwide. */
 export type UpdateBountyRequestAllowedCountryCodesList = Array<string>;
-export const UpdateBountyRequestAllowedCountryCodesList =
+const UpdateBountyRequestAllowedCountryCodesList =
   BountyAllowedCountryCodesList as any as S.Schema<UpdateBountyRequestAllowedCountryCodesList>;
 
 /** What the poster wants the work to achieve, declared once here. */
@@ -1030,11 +1026,11 @@ export type UpdateBountyRequestBusinessGoalType =
   | "local_activation"
   | "data_capture"
   | "other";
-export const UpdateBountyRequestBusinessGoalType = S.String;
+const UpdateBountyRequestBusinessGoalType = S.String;
 
 /** Scheduled drafts only. How often the schedule creates a new bounty. */
 export type UpdateBountyRequestFrequency = "once" | "hourly" | "daily" | "weekly" | "monthly";
-export const UpdateBountyRequestFrequency = S.String;
+const UpdateBountyRequestFrequency = S.String;
 
 export interface UpdateBountyRequest {
   /** Bounty ID (`bnty_` tag). */
@@ -1060,7 +1056,7 @@ export interface UpdateBountyRequest {
   /** New short name of the task. */
   title?: string;
 }
-export const UpdateBountyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBountyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     accepted_submissions_limit: S.optional(S.NullOr(S.Number)),

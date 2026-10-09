@@ -62,7 +62,7 @@ export interface DeleteAccountTagRequest {
   /** Identifier of the Worker to remove tags from. */
   workerId?: string;
 }
-export const DeleteAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
@@ -75,7 +75,7 @@ export const DeleteAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountTagRequest" }) as any as S.Schema<DeleteAccountTagRequest>;
 
 export interface DeleteAccountTagResponse {}
-export const DeleteAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteAccountTagResponse" }) as any as S.Schema<DeleteAccountTagResponse>;
 
@@ -90,7 +90,7 @@ export interface DeleteZoneTagRequest {
   /** Identifier of the Access application to remove tags from. */
   accessApplicationId?: string;
 }
-export const DeleteZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ifMatch: S.optional(S.String.pipe(T.Header("If-Match"))),
@@ -103,8 +103,7 @@ export const DeleteZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteZoneTagRequest" }) as any as S.Schema<DeleteZoneTagRequest>;
 
 export interface DeleteZoneTagResponse {}
-export const DeleteZoneTagResponse =
-  DeleteAccountTagResponse as any as S.Schema<DeleteZoneTagResponse>;
+const DeleteZoneTagResponse = DeleteAccountTagResponse as any as S.Schema<DeleteZoneTagResponse>;
 
 export type AccountTagsGetRequestResourceType =
   | "access_application"
@@ -138,7 +137,7 @@ export type AccountTagsGetRequestResourceType =
   | "vectorize_index"
   | "worker"
   | "worker_version";
-export const AccountTagsGetRequestResourceType = S.String;
+const AccountTagsGetRequestResourceType = S.String;
 
 export interface GetAccountTagRequest {
   /** Identifier. */
@@ -150,7 +149,7 @@ export interface GetAccountTagRequest {
   /** Worker identifier. Required for worker_version resources. */
   workerId?: string;
 }
-export const GetAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     resourceId: S.String.pipe(T.Query("resource_id")),
@@ -162,14 +161,12 @@ export const GetAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAccountTagRequest" }) as any as S.Schema<GetAccountTagRequest>;
 
 export type AccountTagsGetResultAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAccessApplicationTagsMap = /*@__PURE__*/ S.Record(
+const AccountTagsGetResultAccessApplicationTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AccountTagsGetResultAccessApplicationTagsMap>;
 
 export type AccountTagsGetResultAccessApplicationType = "access_application";
-export const AccountTagsGetResultAccessApplicationType = S.String;
-
 export interface AccountTagsGetResultAccessApplication {
   /** Identifies the unique resource. */
   id: string;
@@ -183,28 +180,10 @@ export interface AccountTagsGetResultAccessApplication {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAccessApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAccessApplicationTagsMap,
-    type: AccountTagsGetResultAccessApplicationType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAccessApplication",
-}) as any as S.Schema<AccountTagsGetResultAccessApplication>;
-
 export type AccountTagsGetResultAccessApplicationPolicyTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsGetResultAccessApplicationPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAccessApplicationPolicyTagsMap>;
-
 export type AccountTagsGetResultAccessApplicationPolicyType = "access_application_policy";
-export const AccountTagsGetResultAccessApplicationPolicyType = S.String;
-
 export interface AccountTagsGetResultAccessApplicationPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -222,28 +201,8 @@ export interface AccountTagsGetResultAccessApplicationPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAccessApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accessApplicationId: S.String.pipe(T.Body("access_application_id")),
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAccessApplicationPolicyTagsMap,
-    type: AccountTagsGetResultAccessApplicationPolicyType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAccessApplicationPolicy",
-}) as any as S.Schema<AccountTagsGetResultAccessApplicationPolicy>;
-
 export type AccountTagsGetResultAccessGroupTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAccessGroupTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAccessGroupTagsMap>;
-
 export type AccountTagsGetResultAccessGroupType = "access_group";
-export const AccountTagsGetResultAccessGroupType = S.String;
-
 export interface AccountTagsGetResultAccessGroup {
   /** Identifies the unique resource. */
   id: string;
@@ -257,26 +216,8 @@ export interface AccountTagsGetResultAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAccessGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAccessGroupTagsMap,
-    type: AccountTagsGetResultAccessGroupType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAccessGroup",
-}) as any as S.Schema<AccountTagsGetResultAccessGroup>;
-
 export type AccountTagsGetResultAccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAccountTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAccountTagsMap>;
-
 export type AccountTagsGetResultAccountType = "account";
-export const AccountTagsGetResultAccountType = S.String;
-
 export interface AccountTagsGetResultAccount {
   /** Identifies the unique resource. */
   id: string;
@@ -290,26 +231,8 @@ export interface AccountTagsGetResultAccount {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAccountTagsMap,
-    type: AccountTagsGetResultAccountType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAccount",
-}) as any as S.Schema<AccountTagsGetResultAccount>;
-
 export type AccountTagsGetResultAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAccountRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAccountRulesetTagsMap>;
-
 export type AccountTagsGetResultAccountRulesetType = "account_ruleset";
-export const AccountTagsGetResultAccountRulesetType = S.String;
-
 export interface AccountTagsGetResultAccountRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -323,26 +246,8 @@ export interface AccountTagsGetResultAccountRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAccountRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAccountRulesetTagsMap,
-    type: AccountTagsGetResultAccountRulesetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAccountRuleset",
-}) as any as S.Schema<AccountTagsGetResultAccountRuleset>;
-
 export type AccountTagsGetResultAIGatewayTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAIGatewayTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAIGatewayTagsMap>;
-
 export type AccountTagsGetResultAIGatewayType = "ai_gateway";
-export const AccountTagsGetResultAIGatewayType = S.String;
-
 export interface AccountTagsGetResultAIGateway {
   /** Identifies the unique resource. */
   id: string;
@@ -356,26 +261,8 @@ export interface AccountTagsGetResultAIGateway {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAIGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAIGatewayTagsMap,
-    type: AccountTagsGetResultAIGatewayType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAIGateway",
-}) as any as S.Schema<AccountTagsGetResultAIGateway>;
-
 export type AccountTagsGetResultAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAlertingPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAlertingPolicyTagsMap>;
-
 export type AccountTagsGetResultAlertingPolicyType = "alerting_policy";
-export const AccountTagsGetResultAlertingPolicyType = S.String;
-
 export interface AccountTagsGetResultAlertingPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -389,26 +276,8 @@ export interface AccountTagsGetResultAlertingPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAlertingPolicyTagsMap,
-    type: AccountTagsGetResultAlertingPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAlertingPolicy",
-}) as any as S.Schema<AccountTagsGetResultAlertingPolicy>;
-
 export type AccountTagsGetResultAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAlertingWebhookTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAlertingWebhookTagsMap>;
-
 export type AccountTagsGetResultAlertingWebhookType = "alerting_webhook";
-export const AccountTagsGetResultAlertingWebhookType = S.String;
-
 export interface AccountTagsGetResultAlertingWebhook {
   /** Identifies the unique resource. */
   id: string;
@@ -422,26 +291,8 @@ export interface AccountTagsGetResultAlertingWebhook {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAlertingWebhookTagsMap,
-    type: AccountTagsGetResultAlertingWebhookType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAlertingWebhook",
-}) as any as S.Schema<AccountTagsGetResultAlertingWebhook>;
-
 export type AccountTagsGetResultAPIGatewayOperationTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultAPIGatewayOperationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultAPIGatewayOperationTagsMap>;
-
 export type AccountTagsGetResultAPIGatewayOperationType = "api_gateway_operation";
-export const AccountTagsGetResultAPIGatewayOperationType = S.String;
-
 export interface AccountTagsGetResultAPIGatewayOperation {
   /** Identifies the unique resource. */
   id: string;
@@ -457,27 +308,8 @@ export interface AccountTagsGetResultAPIGatewayOperation {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultAPIGatewayOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultAPIGatewayOperationTagsMap,
-    type: AccountTagsGetResultAPIGatewayOperationType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultAPIGatewayOperation",
-}) as any as S.Schema<AccountTagsGetResultAPIGatewayOperation>;
-
 export type AccountTagsGetResultCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCloudflaredTunnelTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCloudflaredTunnelTagsMap>;
-
 export type AccountTagsGetResultCloudflaredTunnelType = "cloudflared_tunnel";
-export const AccountTagsGetResultCloudflaredTunnelType = S.String;
-
 export interface AccountTagsGetResultCloudflaredTunnel {
   /** Identifies the unique resource. */
   id: string;
@@ -491,26 +323,8 @@ export interface AccountTagsGetResultCloudflaredTunnel {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultCloudflaredTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultCloudflaredTunnelTagsMap,
-    type: AccountTagsGetResultCloudflaredTunnelType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultCloudflaredTunnel",
-}) as any as S.Schema<AccountTagsGetResultCloudflaredTunnel>;
-
 export type AccountTagsGetResultCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCustomCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCustomCertificateTagsMap>;
-
 export type AccountTagsGetResultCustomCertificateType = "custom_certificate";
-export const AccountTagsGetResultCustomCertificateType = S.String;
-
 export interface AccountTagsGetResultCustomCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -526,27 +340,8 @@ export interface AccountTagsGetResultCustomCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultCustomCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultCustomCertificateTagsMap,
-    type: AccountTagsGetResultCustomCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultCustomCertificate",
-}) as any as S.Schema<AccountTagsGetResultCustomCertificate>;
-
 export type AccountTagsGetResultCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCustomHostnameTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCustomHostnameTagsMap>;
-
 export type AccountTagsGetResultCustomHostnameType = "custom_hostname";
-export const AccountTagsGetResultCustomHostnameType = S.String;
-
 export interface AccountTagsGetResultCustomHostname {
   /** Identifies the unique resource. */
   id: string;
@@ -562,27 +357,8 @@ export interface AccountTagsGetResultCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultCustomHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultCustomHostnameTagsMap,
-    type: AccountTagsGetResultCustomHostnameType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultCustomHostname",
-}) as any as S.Schema<AccountTagsGetResultCustomHostname>;
-
 export type AccountTagsGetResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCwsDeploymentTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCwsDeploymentTagsMap>;
-
 export type AccountTagsGetResultCwsDeploymentType = "cws_deployment";
-export const AccountTagsGetResultCwsDeploymentType = S.String;
-
 export interface AccountTagsGetResultCwsDeployment {
   /** Identifies the unique resource. */
   id: string;
@@ -596,26 +372,8 @@ export interface AccountTagsGetResultCwsDeployment {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultCwsDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultCwsDeploymentTagsMap,
-    type: AccountTagsGetResultCwsDeploymentType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultCwsDeployment",
-}) as any as S.Schema<AccountTagsGetResultCwsDeployment>;
-
 export type AccountTagsGetResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCwsPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCwsPolicyTagsMap>;
-
 export type AccountTagsGetResultCwsPolicyType = "cws_policy";
-export const AccountTagsGetResultCwsPolicyType = S.String;
-
 export interface AccountTagsGetResultCwsPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -629,26 +387,8 @@ export interface AccountTagsGetResultCwsPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultCwsPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultCwsPolicyTagsMap,
-    type: AccountTagsGetResultCwsPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultCwsPolicy",
-}) as any as S.Schema<AccountTagsGetResultCwsPolicy>;
-
 export type AccountTagsGetResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCwsPolicySetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCwsPolicySetTagsMap>;
-
 export type AccountTagsGetResultCwsPolicySetType = "cws_policy_set";
-export const AccountTagsGetResultCwsPolicySetType = S.String;
-
 export interface AccountTagsGetResultCwsPolicySet {
   /** Identifies the unique resource. */
   id: string;
@@ -662,26 +402,8 @@ export interface AccountTagsGetResultCwsPolicySet {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultCwsPolicySetTagsMap,
-    type: AccountTagsGetResultCwsPolicySetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultCwsPolicySet",
-}) as any as S.Schema<AccountTagsGetResultCwsPolicySet>;
-
 export type AccountTagsGetResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultCwsWorkloadTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultCwsWorkloadTagsMap>;
-
 export type AccountTagsGetResultCwsWorkloadType = "cws_workload";
-export const AccountTagsGetResultCwsWorkloadType = S.String;
-
 export interface AccountTagsGetResultCwsWorkload {
   /** Identifies the unique resource. */
   id: string;
@@ -695,26 +417,8 @@ export interface AccountTagsGetResultCwsWorkload {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultCwsWorkload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultCwsWorkloadTagsMap,
-    type: AccountTagsGetResultCwsWorkloadType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultCwsWorkload",
-}) as any as S.Schema<AccountTagsGetResultCwsWorkload>;
-
 export type AccountTagsGetResultD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultD1DatabaseTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultD1DatabaseTagsMap>;
-
 export type AccountTagsGetResultD1DatabaseType = "d1_database";
-export const AccountTagsGetResultD1DatabaseType = S.String;
-
 export interface AccountTagsGetResultD1Database {
   /** Identifies the unique resource. */
   id: string;
@@ -728,26 +432,8 @@ export interface AccountTagsGetResultD1Database {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultD1Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultD1DatabaseTagsMap,
-    type: AccountTagsGetResultD1DatabaseType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultD1Database",
-}) as any as S.Schema<AccountTagsGetResultD1Database>;
-
 export type AccountTagsGetResultDeviceTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultDeviceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultDeviceTagsMap>;
-
 export type AccountTagsGetResultDeviceType = "device";
-export const AccountTagsGetResultDeviceType = S.String;
-
 export interface AccountTagsGetResultDevice {
   /** Identifies the unique resource. */
   id: string;
@@ -761,26 +447,8 @@ export interface AccountTagsGetResultDevice {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultDeviceTagsMap,
-    type: AccountTagsGetResultDeviceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultDevice",
-}) as any as S.Schema<AccountTagsGetResultDevice>;
-
 export type AccountTagsGetResultDNSRecordTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultDNSRecordTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultDNSRecordTagsMap>;
-
 export type AccountTagsGetResultDNSRecordType = "dns_record";
-export const AccountTagsGetResultDNSRecordType = S.String;
-
 export interface AccountTagsGetResultDNSRecord {
   /** Identifies the unique resource. */
   id: string;
@@ -796,29 +464,10 @@ export interface AccountTagsGetResultDNSRecord {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultDNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultDNSRecordTagsMap,
-    type: AccountTagsGetResultDNSRecordType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultDNSRecord",
-}) as any as S.Schema<AccountTagsGetResultDNSRecord>;
-
 export type AccountTagsGetResultDurableObjectNamespaceTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsGetResultDurableObjectNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultDurableObjectNamespaceTagsMap>;
-
 export type AccountTagsGetResultDurableObjectNamespaceType = "durable_object_namespace";
-export const AccountTagsGetResultDurableObjectNamespaceType = S.String;
-
 export interface AccountTagsGetResultDurableObjectNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -832,26 +481,8 @@ export interface AccountTagsGetResultDurableObjectNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultDurableObjectNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultDurableObjectNamespaceTagsMap,
-    type: AccountTagsGetResultDurableObjectNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultDurableObjectNamespace",
-}) as any as S.Schema<AccountTagsGetResultDurableObjectNamespace>;
-
 export type AccountTagsGetResultGatewayListTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultGatewayListTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultGatewayListTagsMap>;
-
 export type AccountTagsGetResultGatewayListType = "gateway_list";
-export const AccountTagsGetResultGatewayListType = S.String;
-
 export interface AccountTagsGetResultGatewayList {
   /** Identifies the unique resource. */
   id: string;
@@ -865,26 +496,8 @@ export interface AccountTagsGetResultGatewayList {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultGatewayList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultGatewayListTagsMap,
-    type: AccountTagsGetResultGatewayListType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultGatewayList",
-}) as any as S.Schema<AccountTagsGetResultGatewayList>;
-
 export type AccountTagsGetResultGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultGatewayRuleTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultGatewayRuleTagsMap>;
-
 export type AccountTagsGetResultGatewayRuleType = "gateway_rule";
-export const AccountTagsGetResultGatewayRuleType = S.String;
-
 export interface AccountTagsGetResultGatewayRule {
   /** Identifies the unique resource. */
   id: string;
@@ -898,26 +511,8 @@ export interface AccountTagsGetResultGatewayRule {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultGatewayRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultGatewayRuleTagsMap,
-    type: AccountTagsGetResultGatewayRuleType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultGatewayRule",
-}) as any as S.Schema<AccountTagsGetResultGatewayRule>;
-
 export type AccountTagsGetResultHealthcheckTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultHealthcheckTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultHealthcheckTagsMap>;
-
 export type AccountTagsGetResultHealthcheckType = "healthcheck";
-export const AccountTagsGetResultHealthcheckType = S.String;
-
 export interface AccountTagsGetResultHealthcheck {
   /** Identifies the unique resource. */
   id: string;
@@ -933,27 +528,8 @@ export interface AccountTagsGetResultHealthcheck {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultHealthcheckTagsMap,
-    type: AccountTagsGetResultHealthcheckType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultHealthcheck",
-}) as any as S.Schema<AccountTagsGetResultHealthcheck>;
-
 export type AccountTagsGetResultImageTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultImageTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultImageTagsMap>;
-
 export type AccountTagsGetResultImageType = "image";
-export const AccountTagsGetResultImageType = S.String;
-
 export interface AccountTagsGetResultImage {
   /** Identifies the unique resource. */
   id: string;
@@ -967,26 +543,8 @@ export interface AccountTagsGetResultImage {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultImageTagsMap,
-    type: AccountTagsGetResultImageType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultImage",
-}) as any as S.Schema<AccountTagsGetResultImage>;
-
 export type AccountTagsGetResultInfrastructureTargetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultInfrastructureTargetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultInfrastructureTargetTagsMap>;
-
 export type AccountTagsGetResultInfrastructureTargetType = "infrastructure_target";
-export const AccountTagsGetResultInfrastructureTargetType = S.String;
-
 export interface AccountTagsGetResultInfrastructureTarget {
   /** Identifies the unique resource. */
   id: string;
@@ -1000,26 +558,8 @@ export interface AccountTagsGetResultInfrastructureTarget {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultInfrastructureTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultInfrastructureTargetTagsMap,
-    type: AccountTagsGetResultInfrastructureTargetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultInfrastructureTarget",
-}) as any as S.Schema<AccountTagsGetResultInfrastructureTarget>;
-
 export type AccountTagsGetResultKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultKVNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultKVNamespaceTagsMap>;
-
 export type AccountTagsGetResultKVNamespaceType = "kv_namespace";
-export const AccountTagsGetResultKVNamespaceType = S.String;
-
 export interface AccountTagsGetResultKVNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -1033,26 +573,8 @@ export interface AccountTagsGetResultKVNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultKVNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultKVNamespaceTagsMap,
-    type: AccountTagsGetResultKVNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultKVNamespace",
-}) as any as S.Schema<AccountTagsGetResultKVNamespace>;
-
 export type AccountTagsGetResultLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultLoadBalancerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultLoadBalancerTagsMap>;
-
 export type AccountTagsGetResultLoadBalancerType = "load_balancer";
-export const AccountTagsGetResultLoadBalancerType = S.String;
-
 export interface AccountTagsGetResultLoadBalancer {
   /** Identifies the unique resource. */
   id: string;
@@ -1068,27 +590,8 @@ export interface AccountTagsGetResultLoadBalancer {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultLoadBalancerTagsMap,
-    type: AccountTagsGetResultLoadBalancerType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultLoadBalancer",
-}) as any as S.Schema<AccountTagsGetResultLoadBalancer>;
-
 export type AccountTagsGetResultLoadBalancerMonitorTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultLoadBalancerMonitorTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultLoadBalancerMonitorTagsMap>;
-
 export type AccountTagsGetResultLoadBalancerMonitorType = "load_balancer_monitor";
-export const AccountTagsGetResultLoadBalancerMonitorType = S.String;
-
 export interface AccountTagsGetResultLoadBalancerMonitor {
   /** Identifies the unique resource. */
   id: string;
@@ -1102,26 +605,8 @@ export interface AccountTagsGetResultLoadBalancerMonitor {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultLoadBalancerMonitor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultLoadBalancerMonitorTagsMap,
-    type: AccountTagsGetResultLoadBalancerMonitorType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultLoadBalancerMonitor",
-}) as any as S.Schema<AccountTagsGetResultLoadBalancerMonitor>;
-
 export type AccountTagsGetResultLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultLoadBalancerPoolTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultLoadBalancerPoolTagsMap>;
-
 export type AccountTagsGetResultLoadBalancerPoolType = "load_balancer_pool";
-export const AccountTagsGetResultLoadBalancerPoolType = S.String;
-
 export interface AccountTagsGetResultLoadBalancerPool {
   /** Identifies the unique resource. */
   id: string;
@@ -1135,28 +620,10 @@ export interface AccountTagsGetResultLoadBalancerPool {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultLoadBalancerPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultLoadBalancerPoolTagsMap,
-    type: AccountTagsGetResultLoadBalancerPoolType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultLoadBalancerPool",
-}) as any as S.Schema<AccountTagsGetResultLoadBalancerPool>;
-
 export type AccountTagsGetResultManagedClientCertificateTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsGetResultManagedClientCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultManagedClientCertificateTagsMap>;
-
 export type AccountTagsGetResultManagedClientCertificateType = "managed_client_certificate";
-export const AccountTagsGetResultManagedClientCertificateType = S.String;
-
 export interface AccountTagsGetResultManagedClientCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -1172,27 +639,8 @@ export interface AccountTagsGetResultManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultManagedClientCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultManagedClientCertificateTagsMap,
-    type: AccountTagsGetResultManagedClientCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultManagedClientCertificate",
-}) as any as S.Schema<AccountTagsGetResultManagedClientCertificate>;
-
 export type AccountTagsGetResultPagesProjectTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultPagesProjectTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultPagesProjectTagsMap>;
-
 export type AccountTagsGetResultPagesProjectType = "pages_project";
-export const AccountTagsGetResultPagesProjectType = S.String;
-
 export interface AccountTagsGetResultPagesProject {
   /** Identifies the unique resource. */
   id: string;
@@ -1206,26 +654,8 @@ export interface AccountTagsGetResultPagesProject {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultPagesProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultPagesProjectTagsMap,
-    type: AccountTagsGetResultPagesProjectType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultPagesProject",
-}) as any as S.Schema<AccountTagsGetResultPagesProject>;
-
 export type AccountTagsGetResultQueueTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultQueueTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultQueueTagsMap>;
-
 export type AccountTagsGetResultQueueType = "queue";
-export const AccountTagsGetResultQueueType = S.String;
-
 export interface AccountTagsGetResultQueue {
   /** Identifies the unique resource. */
   id: string;
@@ -1239,26 +669,8 @@ export interface AccountTagsGetResultQueue {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultQueueTagsMap,
-    type: AccountTagsGetResultQueueType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultQueue",
-}) as any as S.Schema<AccountTagsGetResultQueue>;
-
 export type AccountTagsGetResultR2BucketTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultR2BucketTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultR2BucketTagsMap>;
-
 export type AccountTagsGetResultR2BucketType = "r2_bucket";
-export const AccountTagsGetResultR2BucketType = S.String;
-
 export interface AccountTagsGetResultR2Bucket {
   /** Identifies the unique resource. */
   id: string;
@@ -1272,26 +684,8 @@ export interface AccountTagsGetResultR2Bucket {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultR2BucketTagsMap,
-    type: AccountTagsGetResultR2BucketType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultR2Bucket",
-}) as any as S.Schema<AccountTagsGetResultR2Bucket>;
-
 export type AccountTagsGetResultResourceShareTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultResourceShareTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultResourceShareTagsMap>;
-
 export type AccountTagsGetResultResourceShareType = "resource_share";
-export const AccountTagsGetResultResourceShareType = S.String;
-
 export interface AccountTagsGetResultResourceShare {
   /** Identifies the unique resource. */
   id: string;
@@ -1305,26 +699,8 @@ export interface AccountTagsGetResultResourceShare {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultResourceShare = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultResourceShareTagsMap,
-    type: AccountTagsGetResultResourceShareType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultResourceShare",
-}) as any as S.Schema<AccountTagsGetResultResourceShare>;
-
 export type AccountTagsGetResultStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultStreamLiveInputTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultStreamLiveInputTagsMap>;
-
 export type AccountTagsGetResultStreamLiveInputType = "stream_live_input";
-export const AccountTagsGetResultStreamLiveInputType = S.String;
-
 export interface AccountTagsGetResultStreamLiveInput {
   /** Identifies the unique resource. */
   id: string;
@@ -1338,26 +714,8 @@ export interface AccountTagsGetResultStreamLiveInput {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultStreamLiveInputTagsMap,
-    type: AccountTagsGetResultStreamLiveInputType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultStreamLiveInput",
-}) as any as S.Schema<AccountTagsGetResultStreamLiveInput>;
-
 export type AccountTagsGetResultStreamVideoTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultStreamVideoTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultStreamVideoTagsMap>;
-
 export type AccountTagsGetResultStreamVideoType = "stream_video";
-export const AccountTagsGetResultStreamVideoType = S.String;
-
 export interface AccountTagsGetResultStreamVideo {
   /** Identifies the unique resource. */
   id: string;
@@ -1371,26 +729,8 @@ export interface AccountTagsGetResultStreamVideo {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultStreamVideo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultStreamVideoTagsMap,
-    type: AccountTagsGetResultStreamVideoType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultStreamVideo",
-}) as any as S.Schema<AccountTagsGetResultStreamVideo>;
-
 export type AccountTagsGetResultVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultVectorizeIndexTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultVectorizeIndexTagsMap>;
-
 export type AccountTagsGetResultVectorizeIndexType = "vectorize_index";
-export const AccountTagsGetResultVectorizeIndexType = S.String;
-
 export interface AccountTagsGetResultVectorizeIndex {
   /** Identifies the unique resource. */
   id: string;
@@ -1404,26 +744,8 @@ export interface AccountTagsGetResultVectorizeIndex {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultVectorizeIndexTagsMap,
-    type: AccountTagsGetResultVectorizeIndexType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultVectorizeIndex",
-}) as any as S.Schema<AccountTagsGetResultVectorizeIndex>;
-
 export type AccountTagsGetResultWorkerTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultWorkerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultWorkerTagsMap>;
-
 export type AccountTagsGetResultWorkerType = "worker";
-export const AccountTagsGetResultWorkerType = S.String;
-
 export interface AccountTagsGetResultWorker {
   /** Identifies the unique resource. */
   id: string;
@@ -1437,26 +759,8 @@ export interface AccountTagsGetResultWorker {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultWorkerTagsMap,
-    type: AccountTagsGetResultWorkerType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultWorker",
-}) as any as S.Schema<AccountTagsGetResultWorker>;
-
 export type AccountTagsGetResultWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultWorkerRouteTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultWorkerRouteTagsMap>;
-
 export type AccountTagsGetResultWorkerRouteType = "worker_route";
-export const AccountTagsGetResultWorkerRouteType = S.String;
-
 export interface AccountTagsGetResultWorkerRoute {
   /** Identifies the unique resource. */
   id: string;
@@ -1472,27 +776,8 @@ export interface AccountTagsGetResultWorkerRoute {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultWorkerRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultWorkerRouteTagsMap,
-    type: AccountTagsGetResultWorkerRouteType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultWorkerRoute",
-}) as any as S.Schema<AccountTagsGetResultWorkerRoute>;
-
 export type AccountTagsGetResultWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultWorkerVersionTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultWorkerVersionTagsMap>;
-
 export type AccountTagsGetResultWorkerVersionType = "worker_version";
-export const AccountTagsGetResultWorkerVersionType = S.String;
-
 export interface AccountTagsGetResultWorkerVersion {
   /** Identifies the unique resource. */
   id: string;
@@ -1508,27 +793,8 @@ export interface AccountTagsGetResultWorkerVersion {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultWorkerVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultWorkerVersionTagsMap,
-    type: AccountTagsGetResultWorkerVersionType,
-    workerId: S.String.pipe(T.Body("worker_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultWorkerVersion",
-}) as any as S.Schema<AccountTagsGetResultWorkerVersion>;
-
 export type AccountTagsGetResultZoneTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultZoneTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultZoneTagsMap>;
-
 export type AccountTagsGetResultZoneType = "zone";
-export const AccountTagsGetResultZoneType = S.String;
-
 export interface AccountTagsGetResultZone {
   /** Identifies the unique resource. */
   id: string;
@@ -1544,25 +810,8 @@ export interface AccountTagsGetResultZone {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultZoneTagsMap,
-    type: AccountTagsGetResultZoneType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "AccountTagsGetResultZone" }) as any as S.Schema<AccountTagsGetResultZone>;
-
 export type AccountTagsGetResultZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsGetResultZoneRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsGetResultZoneRulesetTagsMap>;
-
 export type AccountTagsGetResultZoneRulesetType = "zone_ruleset";
-export const AccountTagsGetResultZoneRulesetType = S.String;
-
 export interface AccountTagsGetResultZoneRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -1578,20 +827,6 @@ export interface AccountTagsGetResultZoneRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsGetResultZoneRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsGetResultZoneRulesetTagsMap,
-    type: AccountTagsGetResultZoneRulesetType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsGetResultZoneRuleset",
-}) as any as S.Schema<AccountTagsGetResultZoneRuleset>;
-
 export type AccountTagsGetResult =
   | AccountTagsGetResultAccessApplication
   | AccountTagsGetResultAccessApplicationPolicy
@@ -1635,7 +870,7 @@ export type AccountTagsGetResult =
   | AccountTagsGetResultWorkerVersion
   | AccountTagsGetResultZone
   | AccountTagsGetResultZoneRuleset;
-export const AccountTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const AccountTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -1732,7 +967,7 @@ export const AccountTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type GetAccountTagResponse = AccountTagsGetResult;
-export const GetAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
   AccountTagsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetAccountTagResponse" }) as any as S.Schema<GetAccountTagResponse>;
 
@@ -1742,7 +977,7 @@ export interface GetSummaryRequest {
   /** Cursor for pagination. */
   cursor?: string;
 }
-export const GetSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1752,7 +987,7 @@ export const GetSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSummaryRequest" }) as any as S.Schema<GetSummaryRequest>;
 
 export type GetSummaryResultItemValuesList = Array<string>;
-export const GetSummaryResultItemValuesList = /*@__PURE__*/ S.Array(
+const GetSummaryResultItemValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetSummaryResultItemValuesList>;
 
@@ -1762,7 +997,7 @@ export interface GetSummaryResultItem {
   /** All distinct values for this tag key. */
   values: GetSummaryResultItemValuesList;
 }
-export const GetSummaryResultItem = /*@__PURE__*/ S.suspend(() =>
+const GetSummaryResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     values: GetSummaryResultItemValuesList,
@@ -1770,12 +1005,12 @@ export const GetSummaryResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSummaryResultItem" }) as any as S.Schema<GetSummaryResultItem>;
 
 export type GetSummaryResultList = Array<GetSummaryResultItem>;
-export const GetSummaryResultList = /*@__PURE__*/ S.Array(
+const GetSummaryResultList = /*@__PURE__*/ S.Array(
   GetSummaryResultItem,
 ) as any as S.Schema<GetSummaryResultList>;
 
 export type GetSummaryResponse = GetSummaryResultList;
-export const GetSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   GetSummaryResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetSummaryResponse" }) as any as S.Schema<GetSummaryResponse>;
 
@@ -1791,7 +1026,7 @@ export type ZoneTagsGetRequestResourceType =
   | "worker_route"
   | "zone"
   | "zone_ruleset";
-export const ZoneTagsGetRequestResourceType = S.String;
+const ZoneTagsGetRequestResourceType = S.String;
 
 export interface GetZoneTagRequest {
   /** Zone ID is required only for zone-level resources */
@@ -1803,7 +1038,7 @@ export interface GetZoneTagRequest {
   /** Access application ID identifier. Required for access_application_policy resources. */
   accessApplicationId?: string;
 }
-export const GetZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     resourceId: S.String.pipe(T.Query("resource_id")),
@@ -1815,12 +1050,7 @@ export const GetZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetZoneTagRequest" }) as any as S.Schema<GetZoneTagRequest>;
 
 export type ZoneTagsGetResultAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccessApplicationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccessApplicationTagsMap>;
-
 export type ZoneTagsGetResultAccessApplicationType = "access_application";
-export const ZoneTagsGetResultAccessApplicationType = S.String;
-
 export interface ZoneTagsGetResultAccessApplication {
   /** Identifies the unique resource. */
   id: string;
@@ -1834,26 +1064,8 @@ export interface ZoneTagsGetResultAccessApplication {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAccessApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAccessApplicationTagsMap,
-    type: ZoneTagsGetResultAccessApplicationType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultAccessApplication",
-}) as any as S.Schema<ZoneTagsGetResultAccessApplication>;
-
 export type ZoneTagsGetResultAccessApplicationPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccessApplicationPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccessApplicationPolicyTagsMap>;
-
 export type ZoneTagsGetResultAccessApplicationPolicyType = "access_application_policy";
-export const ZoneTagsGetResultAccessApplicationPolicyType = S.String;
-
 export interface ZoneTagsGetResultAccessApplicationPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -1871,28 +1083,8 @@ export interface ZoneTagsGetResultAccessApplicationPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAccessApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accessApplicationId: S.String.pipe(T.Body("access_application_id")),
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAccessApplicationPolicyTagsMap,
-    type: ZoneTagsGetResultAccessApplicationPolicyType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultAccessApplicationPolicy",
-}) as any as S.Schema<ZoneTagsGetResultAccessApplicationPolicy>;
-
 export type ZoneTagsGetResultAccessGroupTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccessGroupTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccessGroupTagsMap>;
-
 export type ZoneTagsGetResultAccessGroupType = "access_group";
-export const ZoneTagsGetResultAccessGroupType = S.String;
-
 export interface ZoneTagsGetResultAccessGroup {
   /** Identifies the unique resource. */
   id: string;
@@ -1906,26 +1098,8 @@ export interface ZoneTagsGetResultAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAccessGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAccessGroupTagsMap,
-    type: ZoneTagsGetResultAccessGroupType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultAccessGroup",
-}) as any as S.Schema<ZoneTagsGetResultAccessGroup>;
-
 export type ZoneTagsGetResultAccountTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccountTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccountTagsMap>;
-
 export type ZoneTagsGetResultAccountType = "account";
-export const ZoneTagsGetResultAccountType = S.String;
-
 export interface ZoneTagsGetResultAccount {
   /** Identifies the unique resource. */
   id: string;
@@ -1939,24 +1113,8 @@ export interface ZoneTagsGetResultAccount {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAccountTagsMap,
-    type: ZoneTagsGetResultAccountType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ZoneTagsGetResultAccount" }) as any as S.Schema<ZoneTagsGetResultAccount>;
-
 export type ZoneTagsGetResultAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAccountRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAccountRulesetTagsMap>;
-
 export type ZoneTagsGetResultAccountRulesetType = "account_ruleset";
-export const ZoneTagsGetResultAccountRulesetType = S.String;
-
 export interface ZoneTagsGetResultAccountRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -1970,26 +1128,8 @@ export interface ZoneTagsGetResultAccountRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAccountRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAccountRulesetTagsMap,
-    type: ZoneTagsGetResultAccountRulesetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultAccountRuleset",
-}) as any as S.Schema<ZoneTagsGetResultAccountRuleset>;
-
 export type ZoneTagsGetResultAIGatewayTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAIGatewayTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAIGatewayTagsMap>;
-
 export type ZoneTagsGetResultAIGatewayType = "ai_gateway";
-export const ZoneTagsGetResultAIGatewayType = S.String;
-
 export interface ZoneTagsGetResultAIGateway {
   /** Identifies the unique resource. */
   id: string;
@@ -2003,26 +1143,8 @@ export interface ZoneTagsGetResultAIGateway {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAIGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAIGatewayTagsMap,
-    type: ZoneTagsGetResultAIGatewayType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultAIGateway",
-}) as any as S.Schema<ZoneTagsGetResultAIGateway>;
-
 export type ZoneTagsGetResultAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAlertingPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAlertingPolicyTagsMap>;
-
 export type ZoneTagsGetResultAlertingPolicyType = "alerting_policy";
-export const ZoneTagsGetResultAlertingPolicyType = S.String;
-
 export interface ZoneTagsGetResultAlertingPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -2036,26 +1158,8 @@ export interface ZoneTagsGetResultAlertingPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAlertingPolicyTagsMap,
-    type: ZoneTagsGetResultAlertingPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultAlertingPolicy",
-}) as any as S.Schema<ZoneTagsGetResultAlertingPolicy>;
-
 export type ZoneTagsGetResultAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAlertingWebhookTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAlertingWebhookTagsMap>;
-
 export type ZoneTagsGetResultAlertingWebhookType = "alerting_webhook";
-export const ZoneTagsGetResultAlertingWebhookType = S.String;
-
 export interface ZoneTagsGetResultAlertingWebhook {
   /** Identifies the unique resource. */
   id: string;
@@ -2069,26 +1173,8 @@ export interface ZoneTagsGetResultAlertingWebhook {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAlertingWebhookTagsMap,
-    type: ZoneTagsGetResultAlertingWebhookType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultAlertingWebhook",
-}) as any as S.Schema<ZoneTagsGetResultAlertingWebhook>;
-
 export type ZoneTagsGetResultAPIGatewayOperationTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultAPIGatewayOperationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultAPIGatewayOperationTagsMap>;
-
 export type ZoneTagsGetResultAPIGatewayOperationType = "api_gateway_operation";
-export const ZoneTagsGetResultAPIGatewayOperationType = S.String;
-
 export interface ZoneTagsGetResultAPIGatewayOperation {
   /** Identifies the unique resource. */
   id: string;
@@ -2104,27 +1190,8 @@ export interface ZoneTagsGetResultAPIGatewayOperation {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultAPIGatewayOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultAPIGatewayOperationTagsMap,
-    type: ZoneTagsGetResultAPIGatewayOperationType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultAPIGatewayOperation",
-}) as any as S.Schema<ZoneTagsGetResultAPIGatewayOperation>;
-
 export type ZoneTagsGetResultCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCloudflaredTunnelTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCloudflaredTunnelTagsMap>;
-
 export type ZoneTagsGetResultCloudflaredTunnelType = "cloudflared_tunnel";
-export const ZoneTagsGetResultCloudflaredTunnelType = S.String;
-
 export interface ZoneTagsGetResultCloudflaredTunnel {
   /** Identifies the unique resource. */
   id: string;
@@ -2138,26 +1205,8 @@ export interface ZoneTagsGetResultCloudflaredTunnel {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultCloudflaredTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultCloudflaredTunnelTagsMap,
-    type: ZoneTagsGetResultCloudflaredTunnelType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultCloudflaredTunnel",
-}) as any as S.Schema<ZoneTagsGetResultCloudflaredTunnel>;
-
 export type ZoneTagsGetResultCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCustomCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCustomCertificateTagsMap>;
-
 export type ZoneTagsGetResultCustomCertificateType = "custom_certificate";
-export const ZoneTagsGetResultCustomCertificateType = S.String;
-
 export interface ZoneTagsGetResultCustomCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -2173,27 +1222,8 @@ export interface ZoneTagsGetResultCustomCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultCustomCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultCustomCertificateTagsMap,
-    type: ZoneTagsGetResultCustomCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultCustomCertificate",
-}) as any as S.Schema<ZoneTagsGetResultCustomCertificate>;
-
 export type ZoneTagsGetResultCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCustomHostnameTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCustomHostnameTagsMap>;
-
 export type ZoneTagsGetResultCustomHostnameType = "custom_hostname";
-export const ZoneTagsGetResultCustomHostnameType = S.String;
-
 export interface ZoneTagsGetResultCustomHostname {
   /** Identifies the unique resource. */
   id: string;
@@ -2209,27 +1239,8 @@ export interface ZoneTagsGetResultCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultCustomHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultCustomHostnameTagsMap,
-    type: ZoneTagsGetResultCustomHostnameType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultCustomHostname",
-}) as any as S.Schema<ZoneTagsGetResultCustomHostname>;
-
 export type ZoneTagsGetResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCwsDeploymentTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCwsDeploymentTagsMap>;
-
 export type ZoneTagsGetResultCwsDeploymentType = "cws_deployment";
-export const ZoneTagsGetResultCwsDeploymentType = S.String;
-
 export interface ZoneTagsGetResultCwsDeployment {
   /** Identifies the unique resource. */
   id: string;
@@ -2243,26 +1254,8 @@ export interface ZoneTagsGetResultCwsDeployment {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultCwsDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultCwsDeploymentTagsMap,
-    type: ZoneTagsGetResultCwsDeploymentType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultCwsDeployment",
-}) as any as S.Schema<ZoneTagsGetResultCwsDeployment>;
-
 export type ZoneTagsGetResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCwsPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCwsPolicyTagsMap>;
-
 export type ZoneTagsGetResultCwsPolicyType = "cws_policy";
-export const ZoneTagsGetResultCwsPolicyType = S.String;
-
 export interface ZoneTagsGetResultCwsPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -2276,26 +1269,8 @@ export interface ZoneTagsGetResultCwsPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultCwsPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultCwsPolicyTagsMap,
-    type: ZoneTagsGetResultCwsPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultCwsPolicy",
-}) as any as S.Schema<ZoneTagsGetResultCwsPolicy>;
-
 export type ZoneTagsGetResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCwsPolicySetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCwsPolicySetTagsMap>;
-
 export type ZoneTagsGetResultCwsPolicySetType = "cws_policy_set";
-export const ZoneTagsGetResultCwsPolicySetType = S.String;
-
 export interface ZoneTagsGetResultCwsPolicySet {
   /** Identifies the unique resource. */
   id: string;
@@ -2309,26 +1284,8 @@ export interface ZoneTagsGetResultCwsPolicySet {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultCwsPolicySetTagsMap,
-    type: ZoneTagsGetResultCwsPolicySetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultCwsPolicySet",
-}) as any as S.Schema<ZoneTagsGetResultCwsPolicySet>;
-
 export type ZoneTagsGetResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultCwsWorkloadTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultCwsWorkloadTagsMap>;
-
 export type ZoneTagsGetResultCwsWorkloadType = "cws_workload";
-export const ZoneTagsGetResultCwsWorkloadType = S.String;
-
 export interface ZoneTagsGetResultCwsWorkload {
   /** Identifies the unique resource. */
   id: string;
@@ -2342,26 +1299,8 @@ export interface ZoneTagsGetResultCwsWorkload {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultCwsWorkload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultCwsWorkloadTagsMap,
-    type: ZoneTagsGetResultCwsWorkloadType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultCwsWorkload",
-}) as any as S.Schema<ZoneTagsGetResultCwsWorkload>;
-
 export type ZoneTagsGetResultD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultD1DatabaseTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultD1DatabaseTagsMap>;
-
 export type ZoneTagsGetResultD1DatabaseType = "d1_database";
-export const ZoneTagsGetResultD1DatabaseType = S.String;
-
 export interface ZoneTagsGetResultD1Database {
   /** Identifies the unique resource. */
   id: string;
@@ -2375,26 +1314,8 @@ export interface ZoneTagsGetResultD1Database {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultD1Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultD1DatabaseTagsMap,
-    type: ZoneTagsGetResultD1DatabaseType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultD1Database",
-}) as any as S.Schema<ZoneTagsGetResultD1Database>;
-
 export type ZoneTagsGetResultDeviceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultDeviceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultDeviceTagsMap>;
-
 export type ZoneTagsGetResultDeviceType = "device";
-export const ZoneTagsGetResultDeviceType = S.String;
-
 export interface ZoneTagsGetResultDevice {
   /** Identifies the unique resource. */
   id: string;
@@ -2408,24 +1329,8 @@ export interface ZoneTagsGetResultDevice {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultDeviceTagsMap,
-    type: ZoneTagsGetResultDeviceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ZoneTagsGetResultDevice" }) as any as S.Schema<ZoneTagsGetResultDevice>;
-
 export type ZoneTagsGetResultDNSRecordTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultDNSRecordTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultDNSRecordTagsMap>;
-
 export type ZoneTagsGetResultDNSRecordType = "dns_record";
-export const ZoneTagsGetResultDNSRecordType = S.String;
-
 export interface ZoneTagsGetResultDNSRecord {
   /** Identifies the unique resource. */
   id: string;
@@ -2441,27 +1346,8 @@ export interface ZoneTagsGetResultDNSRecord {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultDNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultDNSRecordTagsMap,
-    type: ZoneTagsGetResultDNSRecordType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultDNSRecord",
-}) as any as S.Schema<ZoneTagsGetResultDNSRecord>;
-
 export type ZoneTagsGetResultDurableObjectNamespaceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultDurableObjectNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultDurableObjectNamespaceTagsMap>;
-
 export type ZoneTagsGetResultDurableObjectNamespaceType = "durable_object_namespace";
-export const ZoneTagsGetResultDurableObjectNamespaceType = S.String;
-
 export interface ZoneTagsGetResultDurableObjectNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -2475,26 +1361,8 @@ export interface ZoneTagsGetResultDurableObjectNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultDurableObjectNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultDurableObjectNamespaceTagsMap,
-    type: ZoneTagsGetResultDurableObjectNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultDurableObjectNamespace",
-}) as any as S.Schema<ZoneTagsGetResultDurableObjectNamespace>;
-
 export type ZoneTagsGetResultGatewayListTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultGatewayListTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultGatewayListTagsMap>;
-
 export type ZoneTagsGetResultGatewayListType = "gateway_list";
-export const ZoneTagsGetResultGatewayListType = S.String;
-
 export interface ZoneTagsGetResultGatewayList {
   /** Identifies the unique resource. */
   id: string;
@@ -2508,26 +1376,8 @@ export interface ZoneTagsGetResultGatewayList {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultGatewayList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultGatewayListTagsMap,
-    type: ZoneTagsGetResultGatewayListType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultGatewayList",
-}) as any as S.Schema<ZoneTagsGetResultGatewayList>;
-
 export type ZoneTagsGetResultGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultGatewayRuleTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultGatewayRuleTagsMap>;
-
 export type ZoneTagsGetResultGatewayRuleType = "gateway_rule";
-export const ZoneTagsGetResultGatewayRuleType = S.String;
-
 export interface ZoneTagsGetResultGatewayRule {
   /** Identifies the unique resource. */
   id: string;
@@ -2541,26 +1391,8 @@ export interface ZoneTagsGetResultGatewayRule {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultGatewayRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultGatewayRuleTagsMap,
-    type: ZoneTagsGetResultGatewayRuleType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultGatewayRule",
-}) as any as S.Schema<ZoneTagsGetResultGatewayRule>;
-
 export type ZoneTagsGetResultHealthcheckTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultHealthcheckTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultHealthcheckTagsMap>;
-
 export type ZoneTagsGetResultHealthcheckType = "healthcheck";
-export const ZoneTagsGetResultHealthcheckType = S.String;
-
 export interface ZoneTagsGetResultHealthcheck {
   /** Identifies the unique resource. */
   id: string;
@@ -2576,27 +1408,8 @@ export interface ZoneTagsGetResultHealthcheck {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultHealthcheckTagsMap,
-    type: ZoneTagsGetResultHealthcheckType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultHealthcheck",
-}) as any as S.Schema<ZoneTagsGetResultHealthcheck>;
-
 export type ZoneTagsGetResultImageTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultImageTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultImageTagsMap>;
-
 export type ZoneTagsGetResultImageType = "image";
-export const ZoneTagsGetResultImageType = S.String;
-
 export interface ZoneTagsGetResultImage {
   /** Identifies the unique resource. */
   id: string;
@@ -2610,24 +1423,8 @@ export interface ZoneTagsGetResultImage {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultImageTagsMap,
-    type: ZoneTagsGetResultImageType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ZoneTagsGetResultImage" }) as any as S.Schema<ZoneTagsGetResultImage>;
-
 export type ZoneTagsGetResultInfrastructureTargetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultInfrastructureTargetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultInfrastructureTargetTagsMap>;
-
 export type ZoneTagsGetResultInfrastructureTargetType = "infrastructure_target";
-export const ZoneTagsGetResultInfrastructureTargetType = S.String;
-
 export interface ZoneTagsGetResultInfrastructureTarget {
   /** Identifies the unique resource. */
   id: string;
@@ -2641,26 +1438,8 @@ export interface ZoneTagsGetResultInfrastructureTarget {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultInfrastructureTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultInfrastructureTargetTagsMap,
-    type: ZoneTagsGetResultInfrastructureTargetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultInfrastructureTarget",
-}) as any as S.Schema<ZoneTagsGetResultInfrastructureTarget>;
-
 export type ZoneTagsGetResultKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultKVNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultKVNamespaceTagsMap>;
-
 export type ZoneTagsGetResultKVNamespaceType = "kv_namespace";
-export const ZoneTagsGetResultKVNamespaceType = S.String;
-
 export interface ZoneTagsGetResultKVNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -2674,26 +1453,8 @@ export interface ZoneTagsGetResultKVNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultKVNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultKVNamespaceTagsMap,
-    type: ZoneTagsGetResultKVNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultKVNamespace",
-}) as any as S.Schema<ZoneTagsGetResultKVNamespace>;
-
 export type ZoneTagsGetResultLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultLoadBalancerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultLoadBalancerTagsMap>;
-
 export type ZoneTagsGetResultLoadBalancerType = "load_balancer";
-export const ZoneTagsGetResultLoadBalancerType = S.String;
-
 export interface ZoneTagsGetResultLoadBalancer {
   /** Identifies the unique resource. */
   id: string;
@@ -2709,27 +1470,8 @@ export interface ZoneTagsGetResultLoadBalancer {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultLoadBalancerTagsMap,
-    type: ZoneTagsGetResultLoadBalancerType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultLoadBalancer",
-}) as any as S.Schema<ZoneTagsGetResultLoadBalancer>;
-
 export type ZoneTagsGetResultLoadBalancerMonitorTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultLoadBalancerMonitorTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultLoadBalancerMonitorTagsMap>;
-
 export type ZoneTagsGetResultLoadBalancerMonitorType = "load_balancer_monitor";
-export const ZoneTagsGetResultLoadBalancerMonitorType = S.String;
-
 export interface ZoneTagsGetResultLoadBalancerMonitor {
   /** Identifies the unique resource. */
   id: string;
@@ -2743,26 +1485,8 @@ export interface ZoneTagsGetResultLoadBalancerMonitor {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultLoadBalancerMonitor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultLoadBalancerMonitorTagsMap,
-    type: ZoneTagsGetResultLoadBalancerMonitorType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultLoadBalancerMonitor",
-}) as any as S.Schema<ZoneTagsGetResultLoadBalancerMonitor>;
-
 export type ZoneTagsGetResultLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultLoadBalancerPoolTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultLoadBalancerPoolTagsMap>;
-
 export type ZoneTagsGetResultLoadBalancerPoolType = "load_balancer_pool";
-export const ZoneTagsGetResultLoadBalancerPoolType = S.String;
-
 export interface ZoneTagsGetResultLoadBalancerPool {
   /** Identifies the unique resource. */
   id: string;
@@ -2776,28 +1500,10 @@ export interface ZoneTagsGetResultLoadBalancerPool {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultLoadBalancerPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultLoadBalancerPoolTagsMap,
-    type: ZoneTagsGetResultLoadBalancerPoolType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultLoadBalancerPool",
-}) as any as S.Schema<ZoneTagsGetResultLoadBalancerPool>;
-
 export type ZoneTagsGetResultManagedClientCertificateTagsMap = {
   [key: string]: string | undefined;
 };
-export const ZoneTagsGetResultManagedClientCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultManagedClientCertificateTagsMap>;
-
 export type ZoneTagsGetResultManagedClientCertificateType = "managed_client_certificate";
-export const ZoneTagsGetResultManagedClientCertificateType = S.String;
-
 export interface ZoneTagsGetResultManagedClientCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -2813,27 +1519,8 @@ export interface ZoneTagsGetResultManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultManagedClientCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultManagedClientCertificateTagsMap,
-    type: ZoneTagsGetResultManagedClientCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultManagedClientCertificate",
-}) as any as S.Schema<ZoneTagsGetResultManagedClientCertificate>;
-
 export type ZoneTagsGetResultPagesProjectTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultPagesProjectTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultPagesProjectTagsMap>;
-
 export type ZoneTagsGetResultPagesProjectType = "pages_project";
-export const ZoneTagsGetResultPagesProjectType = S.String;
-
 export interface ZoneTagsGetResultPagesProject {
   /** Identifies the unique resource. */
   id: string;
@@ -2847,26 +1534,8 @@ export interface ZoneTagsGetResultPagesProject {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultPagesProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultPagesProjectTagsMap,
-    type: ZoneTagsGetResultPagesProjectType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultPagesProject",
-}) as any as S.Schema<ZoneTagsGetResultPagesProject>;
-
 export type ZoneTagsGetResultQueueTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultQueueTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultQueueTagsMap>;
-
 export type ZoneTagsGetResultQueueType = "queue";
-export const ZoneTagsGetResultQueueType = S.String;
-
 export interface ZoneTagsGetResultQueue {
   /** Identifies the unique resource. */
   id: string;
@@ -2880,24 +1549,8 @@ export interface ZoneTagsGetResultQueue {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultQueueTagsMap,
-    type: ZoneTagsGetResultQueueType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ZoneTagsGetResultQueue" }) as any as S.Schema<ZoneTagsGetResultQueue>;
-
 export type ZoneTagsGetResultR2BucketTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultR2BucketTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultR2BucketTagsMap>;
-
 export type ZoneTagsGetResultR2BucketType = "r2_bucket";
-export const ZoneTagsGetResultR2BucketType = S.String;
-
 export interface ZoneTagsGetResultR2Bucket {
   /** Identifies the unique resource. */
   id: string;
@@ -2911,26 +1564,8 @@ export interface ZoneTagsGetResultR2Bucket {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultR2BucketTagsMap,
-    type: ZoneTagsGetResultR2BucketType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultR2Bucket",
-}) as any as S.Schema<ZoneTagsGetResultR2Bucket>;
-
 export type ZoneTagsGetResultResourceShareTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultResourceShareTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultResourceShareTagsMap>;
-
 export type ZoneTagsGetResultResourceShareType = "resource_share";
-export const ZoneTagsGetResultResourceShareType = S.String;
-
 export interface ZoneTagsGetResultResourceShare {
   /** Identifies the unique resource. */
   id: string;
@@ -2944,26 +1579,8 @@ export interface ZoneTagsGetResultResourceShare {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultResourceShare = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultResourceShareTagsMap,
-    type: ZoneTagsGetResultResourceShareType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultResourceShare",
-}) as any as S.Schema<ZoneTagsGetResultResourceShare>;
-
 export type ZoneTagsGetResultStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultStreamLiveInputTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultStreamLiveInputTagsMap>;
-
 export type ZoneTagsGetResultStreamLiveInputType = "stream_live_input";
-export const ZoneTagsGetResultStreamLiveInputType = S.String;
-
 export interface ZoneTagsGetResultStreamLiveInput {
   /** Identifies the unique resource. */
   id: string;
@@ -2977,26 +1594,8 @@ export interface ZoneTagsGetResultStreamLiveInput {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultStreamLiveInputTagsMap,
-    type: ZoneTagsGetResultStreamLiveInputType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultStreamLiveInput",
-}) as any as S.Schema<ZoneTagsGetResultStreamLiveInput>;
-
 export type ZoneTagsGetResultStreamVideoTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultStreamVideoTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultStreamVideoTagsMap>;
-
 export type ZoneTagsGetResultStreamVideoType = "stream_video";
-export const ZoneTagsGetResultStreamVideoType = S.String;
-
 export interface ZoneTagsGetResultStreamVideo {
   /** Identifies the unique resource. */
   id: string;
@@ -3010,26 +1609,8 @@ export interface ZoneTagsGetResultStreamVideo {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultStreamVideo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultStreamVideoTagsMap,
-    type: ZoneTagsGetResultStreamVideoType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultStreamVideo",
-}) as any as S.Schema<ZoneTagsGetResultStreamVideo>;
-
 export type ZoneTagsGetResultVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultVectorizeIndexTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultVectorizeIndexTagsMap>;
-
 export type ZoneTagsGetResultVectorizeIndexType = "vectorize_index";
-export const ZoneTagsGetResultVectorizeIndexType = S.String;
-
 export interface ZoneTagsGetResultVectorizeIndex {
   /** Identifies the unique resource. */
   id: string;
@@ -3043,26 +1624,8 @@ export interface ZoneTagsGetResultVectorizeIndex {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultVectorizeIndexTagsMap,
-    type: ZoneTagsGetResultVectorizeIndexType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultVectorizeIndex",
-}) as any as S.Schema<ZoneTagsGetResultVectorizeIndex>;
-
 export type ZoneTagsGetResultWorkerTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultWorkerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultWorkerTagsMap>;
-
 export type ZoneTagsGetResultWorkerType = "worker";
-export const ZoneTagsGetResultWorkerType = S.String;
-
 export interface ZoneTagsGetResultWorker {
   /** Identifies the unique resource. */
   id: string;
@@ -3076,24 +1639,8 @@ export interface ZoneTagsGetResultWorker {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultWorkerTagsMap,
-    type: ZoneTagsGetResultWorkerType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ZoneTagsGetResultWorker" }) as any as S.Schema<ZoneTagsGetResultWorker>;
-
 export type ZoneTagsGetResultWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultWorkerRouteTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultWorkerRouteTagsMap>;
-
 export type ZoneTagsGetResultWorkerRouteType = "worker_route";
-export const ZoneTagsGetResultWorkerRouteType = S.String;
-
 export interface ZoneTagsGetResultWorkerRoute {
   /** Identifies the unique resource. */
   id: string;
@@ -3109,27 +1656,8 @@ export interface ZoneTagsGetResultWorkerRoute {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultWorkerRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultWorkerRouteTagsMap,
-    type: ZoneTagsGetResultWorkerRouteType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultWorkerRoute",
-}) as any as S.Schema<ZoneTagsGetResultWorkerRoute>;
-
 export type ZoneTagsGetResultWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultWorkerVersionTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultWorkerVersionTagsMap>;
-
 export type ZoneTagsGetResultWorkerVersionType = "worker_version";
-export const ZoneTagsGetResultWorkerVersionType = S.String;
-
 export interface ZoneTagsGetResultWorkerVersion {
   /** Identifies the unique resource. */
   id: string;
@@ -3145,27 +1673,8 @@ export interface ZoneTagsGetResultWorkerVersion {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultWorkerVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultWorkerVersionTagsMap,
-    type: ZoneTagsGetResultWorkerVersionType,
-    workerId: S.String.pipe(T.Body("worker_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultWorkerVersion",
-}) as any as S.Schema<ZoneTagsGetResultWorkerVersion>;
-
 export type ZoneTagsGetResultZoneTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultZoneTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultZoneTagsMap>;
-
 export type ZoneTagsGetResultZoneType = "zone";
-export const ZoneTagsGetResultZoneType = S.String;
-
 export interface ZoneTagsGetResultZone {
   /** Identifies the unique resource. */
   id: string;
@@ -3181,25 +1690,8 @@ export interface ZoneTagsGetResultZone {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultZoneTagsMap,
-    type: ZoneTagsGetResultZoneType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ZoneTagsGetResultZone" }) as any as S.Schema<ZoneTagsGetResultZone>;
-
 export type ZoneTagsGetResultZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsGetResultZoneRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsGetResultZoneRulesetTagsMap>;
-
 export type ZoneTagsGetResultZoneRulesetType = "zone_ruleset";
-export const ZoneTagsGetResultZoneRulesetType = S.String;
-
 export interface ZoneTagsGetResultZoneRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -3215,20 +1707,6 @@ export interface ZoneTagsGetResultZoneRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsGetResultZoneRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsGetResultZoneRulesetTagsMap,
-    type: ZoneTagsGetResultZoneRulesetType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsGetResultZoneRuleset",
-}) as any as S.Schema<ZoneTagsGetResultZoneRuleset>;
-
 export type ZoneTagsGetResult =
   | ZoneTagsGetResultAccessApplication
   | ZoneTagsGetResultAccessApplicationPolicy
@@ -3272,7 +1750,7 @@ export type ZoneTagsGetResult =
   | ZoneTagsGetResultWorkerVersion
   | ZoneTagsGetResultZone
   | ZoneTagsGetResultZoneRuleset;
-export const ZoneTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const ZoneTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -3369,7 +1847,7 @@ export const ZoneTagsGetResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type GetZoneTagResponse = ZoneTagsGetResult;
-export const GetZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
+const GetZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
   ZoneTagsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetZoneTagResponse" }) as any as S.Schema<GetZoneTagResponse>;
 
@@ -3379,7 +1857,7 @@ export interface ListKeysRequest {
   /** Cursor for pagination. */
   cursor?: string;
 }
-export const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -3389,8 +1867,7 @@ export const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListKeysRequest" }) as any as S.Schema<ListKeysRequest>;
 
 export type KeysListResultList = Array<string>;
-export const KeysListResultList =
-  GetSummaryResultItemValuesList as any as S.Schema<KeysListResultList>;
+const KeysListResultList = GetSummaryResultItemValuesList as any as S.Schema<KeysListResultList>;
 
 export interface ListKeysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -3398,7 +1875,7 @@ export interface ListKeysResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: KeysListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -3406,12 +1883,10 @@ export const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListKeysResponse" }) as any as S.Schema<ListKeysResponse>;
 
 export type ListRequestIdList = Array<string>;
-export const ListRequestIdList =
-  GetSummaryResultItemValuesList as any as S.Schema<ListRequestIdList>;
+const ListRequestIdList = GetSummaryResultItemValuesList as any as S.Schema<ListRequestIdList>;
 
 export type ListRequestTagList = Array<string>;
-export const ListRequestTagList =
-  GetSummaryResultItemValuesList as any as S.Schema<ListRequestTagList>;
+const ListRequestTagList = GetSummaryResultItemValuesList as any as S.Schema<ListRequestTagList>;
 
 export type ListRequestType =
   | "access_application"
@@ -3456,10 +1931,10 @@ export type ListRequestType =
   | "worker_version"
   | "zone"
   | "zone_ruleset";
-export const ListRequestType = S.String;
+const ListRequestType = S.String;
 
 export type ListRequestTypeList = Array<ListRequestType | (string & {})>;
-export const ListRequestTypeList = /*@__PURE__*/ S.Array(
+const ListRequestTypeList = /*@__PURE__*/ S.Array(
   ListRequestType,
 ) as any as S.Schema<ListRequestTypeList>;
 
@@ -3479,7 +1954,7 @@ export interface ListResourceTaggingsRequest {
   /** Filter by resource type. Can be repeated to filter by multiple types (OR logic). Example: ?type=zone&amp;type=worker */
   type?: ListRequestTypeList;
 }
-export const ListResourceTaggingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourceTaggingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(ListRequestIdList.pipe(T.Query())),
@@ -3496,12 +1971,7 @@ export const ListResourceTaggingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourceTaggingsRequest>;
 
 export type ListResultItemAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccessApplicationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccessApplicationTagsMap>;
-
 export type ListResultItemAccessApplicationType = "access_application";
-export const ListResultItemAccessApplicationType = S.String;
-
 export interface ListResultItemAccessApplication {
   /** Identifies the unique resource. */
   id: string;
@@ -3515,26 +1985,8 @@ export interface ListResultItemAccessApplication {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAccessApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAccessApplicationTagsMap,
-    type: ListResultItemAccessApplicationType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemAccessApplication",
-}) as any as S.Schema<ListResultItemAccessApplication>;
-
 export type ListResultItemAccessApplicationPolicyTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccessApplicationPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccessApplicationPolicyTagsMap>;
-
 export type ListResultItemAccessApplicationPolicyType = "access_application_policy";
-export const ListResultItemAccessApplicationPolicyType = S.String;
-
 export interface ListResultItemAccessApplicationPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -3552,28 +2004,8 @@ export interface ListResultItemAccessApplicationPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAccessApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accessApplicationId: S.String.pipe(T.Body("access_application_id")),
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAccessApplicationPolicyTagsMap,
-    type: ListResultItemAccessApplicationPolicyType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemAccessApplicationPolicy",
-}) as any as S.Schema<ListResultItemAccessApplicationPolicy>;
-
 export type ListResultItemAccessGroupTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccessGroupTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccessGroupTagsMap>;
-
 export type ListResultItemAccessGroupType = "access_group";
-export const ListResultItemAccessGroupType = S.String;
-
 export interface ListResultItemAccessGroup {
   /** Identifies the unique resource. */
   id: string;
@@ -3587,26 +2019,8 @@ export interface ListResultItemAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAccessGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAccessGroupTagsMap,
-    type: ListResultItemAccessGroupType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemAccessGroup",
-}) as any as S.Schema<ListResultItemAccessGroup>;
-
 export type ListResultItemAccountTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccountTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccountTagsMap>;
-
 export type ListResultItemAccountType = "account";
-export const ListResultItemAccountType = S.String;
-
 export interface ListResultItemAccount {
   /** Identifies the unique resource. */
   id: string;
@@ -3620,24 +2034,8 @@ export interface ListResultItemAccount {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAccountTagsMap,
-    type: ListResultItemAccountType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemAccount" }) as any as S.Schema<ListResultItemAccount>;
-
 export type ListResultItemAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAccountRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAccountRulesetTagsMap>;
-
 export type ListResultItemAccountRulesetType = "account_ruleset";
-export const ListResultItemAccountRulesetType = S.String;
-
 export interface ListResultItemAccountRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -3651,26 +2049,8 @@ export interface ListResultItemAccountRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAccountRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAccountRulesetTagsMap,
-    type: ListResultItemAccountRulesetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemAccountRuleset",
-}) as any as S.Schema<ListResultItemAccountRuleset>;
-
 export type ListResultItemAIGatewayTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAIGatewayTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAIGatewayTagsMap>;
-
 export type ListResultItemAIGatewayType = "ai_gateway";
-export const ListResultItemAIGatewayType = S.String;
-
 export interface ListResultItemAIGateway {
   /** Identifies the unique resource. */
   id: string;
@@ -3684,24 +2064,8 @@ export interface ListResultItemAIGateway {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAIGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAIGatewayTagsMap,
-    type: ListResultItemAIGatewayType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemAIGateway" }) as any as S.Schema<ListResultItemAIGateway>;
-
 export type ListResultItemAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAlertingPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAlertingPolicyTagsMap>;
-
 export type ListResultItemAlertingPolicyType = "alerting_policy";
-export const ListResultItemAlertingPolicyType = S.String;
-
 export interface ListResultItemAlertingPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -3715,26 +2079,8 @@ export interface ListResultItemAlertingPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAlertingPolicyTagsMap,
-    type: ListResultItemAlertingPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemAlertingPolicy",
-}) as any as S.Schema<ListResultItemAlertingPolicy>;
-
 export type ListResultItemAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAlertingWebhookTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAlertingWebhookTagsMap>;
-
 export type ListResultItemAlertingWebhookType = "alerting_webhook";
-export const ListResultItemAlertingWebhookType = S.String;
-
 export interface ListResultItemAlertingWebhook {
   /** Identifies the unique resource. */
   id: string;
@@ -3748,26 +2094,8 @@ export interface ListResultItemAlertingWebhook {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAlertingWebhookTagsMap,
-    type: ListResultItemAlertingWebhookType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemAlertingWebhook",
-}) as any as S.Schema<ListResultItemAlertingWebhook>;
-
 export type ListResultItemAPIGatewayOperationTagsMap = { [key: string]: string | undefined };
-export const ListResultItemAPIGatewayOperationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemAPIGatewayOperationTagsMap>;
-
 export type ListResultItemAPIGatewayOperationType = "api_gateway_operation";
-export const ListResultItemAPIGatewayOperationType = S.String;
-
 export interface ListResultItemAPIGatewayOperation {
   /** Identifies the unique resource. */
   id: string;
@@ -3783,27 +2111,8 @@ export interface ListResultItemAPIGatewayOperation {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemAPIGatewayOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemAPIGatewayOperationTagsMap,
-    type: ListResultItemAPIGatewayOperationType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemAPIGatewayOperation",
-}) as any as S.Schema<ListResultItemAPIGatewayOperation>;
-
 export type ListResultItemCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCloudflaredTunnelTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCloudflaredTunnelTagsMap>;
-
 export type ListResultItemCloudflaredTunnelType = "cloudflared_tunnel";
-export const ListResultItemCloudflaredTunnelType = S.String;
-
 export interface ListResultItemCloudflaredTunnel {
   /** Identifies the unique resource. */
   id: string;
@@ -3817,26 +2126,8 @@ export interface ListResultItemCloudflaredTunnel {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemCloudflaredTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemCloudflaredTunnelTagsMap,
-    type: ListResultItemCloudflaredTunnelType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemCloudflaredTunnel",
-}) as any as S.Schema<ListResultItemCloudflaredTunnel>;
-
 export type ListResultItemCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCustomCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCustomCertificateTagsMap>;
-
 export type ListResultItemCustomCertificateType = "custom_certificate";
-export const ListResultItemCustomCertificateType = S.String;
-
 export interface ListResultItemCustomCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -3852,27 +2143,8 @@ export interface ListResultItemCustomCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemCustomCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemCustomCertificateTagsMap,
-    type: ListResultItemCustomCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemCustomCertificate",
-}) as any as S.Schema<ListResultItemCustomCertificate>;
-
 export type ListResultItemCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCustomHostnameTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCustomHostnameTagsMap>;
-
 export type ListResultItemCustomHostnameType = "custom_hostname";
-export const ListResultItemCustomHostnameType = S.String;
-
 export interface ListResultItemCustomHostname {
   /** Identifies the unique resource. */
   id: string;
@@ -3888,27 +2160,8 @@ export interface ListResultItemCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemCustomHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemCustomHostnameTagsMap,
-    type: ListResultItemCustomHostnameType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemCustomHostname",
-}) as any as S.Schema<ListResultItemCustomHostname>;
-
 export type ListResultItemCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCwsDeploymentTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCwsDeploymentTagsMap>;
-
 export type ListResultItemCwsDeploymentType = "cws_deployment";
-export const ListResultItemCwsDeploymentType = S.String;
-
 export interface ListResultItemCwsDeployment {
   /** Identifies the unique resource. */
   id: string;
@@ -3922,26 +2175,8 @@ export interface ListResultItemCwsDeployment {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemCwsDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemCwsDeploymentTagsMap,
-    type: ListResultItemCwsDeploymentType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemCwsDeployment",
-}) as any as S.Schema<ListResultItemCwsDeployment>;
-
 export type ListResultItemCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCwsPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCwsPolicyTagsMap>;
-
 export type ListResultItemCwsPolicyType = "cws_policy";
-export const ListResultItemCwsPolicyType = S.String;
-
 export interface ListResultItemCwsPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -3955,24 +2190,8 @@ export interface ListResultItemCwsPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemCwsPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemCwsPolicyTagsMap,
-    type: ListResultItemCwsPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemCwsPolicy" }) as any as S.Schema<ListResultItemCwsPolicy>;
-
 export type ListResultItemCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCwsPolicySetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCwsPolicySetTagsMap>;
-
 export type ListResultItemCwsPolicySetType = "cws_policy_set";
-export const ListResultItemCwsPolicySetType = S.String;
-
 export interface ListResultItemCwsPolicySet {
   /** Identifies the unique resource. */
   id: string;
@@ -3986,26 +2205,8 @@ export interface ListResultItemCwsPolicySet {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemCwsPolicySetTagsMap,
-    type: ListResultItemCwsPolicySetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemCwsPolicySet",
-}) as any as S.Schema<ListResultItemCwsPolicySet>;
-
 export type ListResultItemCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const ListResultItemCwsWorkloadTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemCwsWorkloadTagsMap>;
-
 export type ListResultItemCwsWorkloadType = "cws_workload";
-export const ListResultItemCwsWorkloadType = S.String;
-
 export interface ListResultItemCwsWorkload {
   /** Identifies the unique resource. */
   id: string;
@@ -4019,26 +2220,8 @@ export interface ListResultItemCwsWorkload {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemCwsWorkload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemCwsWorkloadTagsMap,
-    type: ListResultItemCwsWorkloadType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemCwsWorkload",
-}) as any as S.Schema<ListResultItemCwsWorkload>;
-
 export type ListResultItemD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const ListResultItemD1DatabaseTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemD1DatabaseTagsMap>;
-
 export type ListResultItemD1DatabaseType = "d1_database";
-export const ListResultItemD1DatabaseType = S.String;
-
 export interface ListResultItemD1Database {
   /** Identifies the unique resource. */
   id: string;
@@ -4052,24 +2235,8 @@ export interface ListResultItemD1Database {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemD1Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemD1DatabaseTagsMap,
-    type: ListResultItemD1DatabaseType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemD1Database" }) as any as S.Schema<ListResultItemD1Database>;
-
 export type ListResultItemDeviceTagsMap = { [key: string]: string | undefined };
-export const ListResultItemDeviceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemDeviceTagsMap>;
-
 export type ListResultItemDeviceType = "device";
-export const ListResultItemDeviceType = S.String;
-
 export interface ListResultItemDevice {
   /** Identifies the unique resource. */
   id: string;
@@ -4083,24 +2250,8 @@ export interface ListResultItemDevice {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemDeviceTagsMap,
-    type: ListResultItemDeviceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemDevice" }) as any as S.Schema<ListResultItemDevice>;
-
 export type ListResultItemDNSRecordTagsMap = { [key: string]: string | undefined };
-export const ListResultItemDNSRecordTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemDNSRecordTagsMap>;
-
 export type ListResultItemDNSRecordType = "dns_record";
-export const ListResultItemDNSRecordType = S.String;
-
 export interface ListResultItemDNSRecord {
   /** Identifies the unique resource. */
   id: string;
@@ -4116,25 +2267,8 @@ export interface ListResultItemDNSRecord {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemDNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemDNSRecordTagsMap,
-    type: ListResultItemDNSRecordType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemDNSRecord" }) as any as S.Schema<ListResultItemDNSRecord>;
-
 export type ListResultItemDurableObjectNamespaceTagsMap = { [key: string]: string | undefined };
-export const ListResultItemDurableObjectNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemDurableObjectNamespaceTagsMap>;
-
 export type ListResultItemDurableObjectNamespaceType = "durable_object_namespace";
-export const ListResultItemDurableObjectNamespaceType = S.String;
-
 export interface ListResultItemDurableObjectNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -4148,26 +2282,8 @@ export interface ListResultItemDurableObjectNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemDurableObjectNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemDurableObjectNamespaceTagsMap,
-    type: ListResultItemDurableObjectNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemDurableObjectNamespace",
-}) as any as S.Schema<ListResultItemDurableObjectNamespace>;
-
 export type ListResultItemGatewayListTagsMap = { [key: string]: string | undefined };
-export const ListResultItemGatewayListTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemGatewayListTagsMap>;
-
 export type ListResultItemGatewayListType = "gateway_list";
-export const ListResultItemGatewayListType = S.String;
-
 export interface ListResultItemGatewayList {
   /** Identifies the unique resource. */
   id: string;
@@ -4181,26 +2297,8 @@ export interface ListResultItemGatewayList {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemGatewayList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemGatewayListTagsMap,
-    type: ListResultItemGatewayListType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemGatewayList",
-}) as any as S.Schema<ListResultItemGatewayList>;
-
 export type ListResultItemGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const ListResultItemGatewayRuleTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemGatewayRuleTagsMap>;
-
 export type ListResultItemGatewayRuleType = "gateway_rule";
-export const ListResultItemGatewayRuleType = S.String;
-
 export interface ListResultItemGatewayRule {
   /** Identifies the unique resource. */
   id: string;
@@ -4214,26 +2312,8 @@ export interface ListResultItemGatewayRule {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemGatewayRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemGatewayRuleTagsMap,
-    type: ListResultItemGatewayRuleType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemGatewayRule",
-}) as any as S.Schema<ListResultItemGatewayRule>;
-
 export type ListResultItemHealthcheckTagsMap = { [key: string]: string | undefined };
-export const ListResultItemHealthcheckTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemHealthcheckTagsMap>;
-
 export type ListResultItemHealthcheckType = "healthcheck";
-export const ListResultItemHealthcheckType = S.String;
-
 export interface ListResultItemHealthcheck {
   /** Identifies the unique resource. */
   id: string;
@@ -4249,27 +2329,8 @@ export interface ListResultItemHealthcheck {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemHealthcheckTagsMap,
-    type: ListResultItemHealthcheckType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemHealthcheck",
-}) as any as S.Schema<ListResultItemHealthcheck>;
-
 export type ListResultItemImageTagsMap = { [key: string]: string | undefined };
-export const ListResultItemImageTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemImageTagsMap>;
-
 export type ListResultItemImageType = "image";
-export const ListResultItemImageType = S.String;
-
 export interface ListResultItemImage {
   /** Identifies the unique resource. */
   id: string;
@@ -4283,24 +2344,8 @@ export interface ListResultItemImage {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemImageTagsMap,
-    type: ListResultItemImageType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemImage" }) as any as S.Schema<ListResultItemImage>;
-
 export type ListResultItemInfrastructureTargetTagsMap = { [key: string]: string | undefined };
-export const ListResultItemInfrastructureTargetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemInfrastructureTargetTagsMap>;
-
 export type ListResultItemInfrastructureTargetType = "infrastructure_target";
-export const ListResultItemInfrastructureTargetType = S.String;
-
 export interface ListResultItemInfrastructureTarget {
   /** Identifies the unique resource. */
   id: string;
@@ -4314,26 +2359,8 @@ export interface ListResultItemInfrastructureTarget {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemInfrastructureTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemInfrastructureTargetTagsMap,
-    type: ListResultItemInfrastructureTargetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemInfrastructureTarget",
-}) as any as S.Schema<ListResultItemInfrastructureTarget>;
-
 export type ListResultItemKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const ListResultItemKVNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemKVNamespaceTagsMap>;
-
 export type ListResultItemKVNamespaceType = "kv_namespace";
-export const ListResultItemKVNamespaceType = S.String;
-
 export interface ListResultItemKVNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -4347,26 +2374,8 @@ export interface ListResultItemKVNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemKVNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemKVNamespaceTagsMap,
-    type: ListResultItemKVNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemKVNamespace",
-}) as any as S.Schema<ListResultItemKVNamespace>;
-
 export type ListResultItemLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const ListResultItemLoadBalancerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemLoadBalancerTagsMap>;
-
 export type ListResultItemLoadBalancerType = "load_balancer";
-export const ListResultItemLoadBalancerType = S.String;
-
 export interface ListResultItemLoadBalancer {
   /** Identifies the unique resource. */
   id: string;
@@ -4382,27 +2391,8 @@ export interface ListResultItemLoadBalancer {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemLoadBalancerTagsMap,
-    type: ListResultItemLoadBalancerType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemLoadBalancer",
-}) as any as S.Schema<ListResultItemLoadBalancer>;
-
 export type ListResultItemLoadBalancerMonitorTagsMap = { [key: string]: string | undefined };
-export const ListResultItemLoadBalancerMonitorTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemLoadBalancerMonitorTagsMap>;
-
 export type ListResultItemLoadBalancerMonitorType = "load_balancer_monitor";
-export const ListResultItemLoadBalancerMonitorType = S.String;
-
 export interface ListResultItemLoadBalancerMonitor {
   /** Identifies the unique resource. */
   id: string;
@@ -4416,26 +2406,8 @@ export interface ListResultItemLoadBalancerMonitor {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemLoadBalancerMonitor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemLoadBalancerMonitorTagsMap,
-    type: ListResultItemLoadBalancerMonitorType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemLoadBalancerMonitor",
-}) as any as S.Schema<ListResultItemLoadBalancerMonitor>;
-
 export type ListResultItemLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const ListResultItemLoadBalancerPoolTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemLoadBalancerPoolTagsMap>;
-
 export type ListResultItemLoadBalancerPoolType = "load_balancer_pool";
-export const ListResultItemLoadBalancerPoolType = S.String;
-
 export interface ListResultItemLoadBalancerPool {
   /** Identifies the unique resource. */
   id: string;
@@ -4449,26 +2421,8 @@ export interface ListResultItemLoadBalancerPool {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemLoadBalancerPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemLoadBalancerPoolTagsMap,
-    type: ListResultItemLoadBalancerPoolType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemLoadBalancerPool",
-}) as any as S.Schema<ListResultItemLoadBalancerPool>;
-
 export type ListResultItemManagedClientCertificateTagsMap = { [key: string]: string | undefined };
-export const ListResultItemManagedClientCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemManagedClientCertificateTagsMap>;
-
 export type ListResultItemManagedClientCertificateType = "managed_client_certificate";
-export const ListResultItemManagedClientCertificateType = S.String;
-
 export interface ListResultItemManagedClientCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -4484,27 +2438,8 @@ export interface ListResultItemManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemManagedClientCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemManagedClientCertificateTagsMap,
-    type: ListResultItemManagedClientCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemManagedClientCertificate",
-}) as any as S.Schema<ListResultItemManagedClientCertificate>;
-
 export type ListResultItemPagesProjectTagsMap = { [key: string]: string | undefined };
-export const ListResultItemPagesProjectTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemPagesProjectTagsMap>;
-
 export type ListResultItemPagesProjectType = "pages_project";
-export const ListResultItemPagesProjectType = S.String;
-
 export interface ListResultItemPagesProject {
   /** Identifies the unique resource. */
   id: string;
@@ -4518,26 +2453,8 @@ export interface ListResultItemPagesProject {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemPagesProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemPagesProjectTagsMap,
-    type: ListResultItemPagesProjectType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemPagesProject",
-}) as any as S.Schema<ListResultItemPagesProject>;
-
 export type ListResultItemQueueTagsMap = { [key: string]: string | undefined };
-export const ListResultItemQueueTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemQueueTagsMap>;
-
 export type ListResultItemQueueType = "queue";
-export const ListResultItemQueueType = S.String;
-
 export interface ListResultItemQueue {
   /** Identifies the unique resource. */
   id: string;
@@ -4551,24 +2468,8 @@ export interface ListResultItemQueue {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemQueueTagsMap,
-    type: ListResultItemQueueType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemQueue" }) as any as S.Schema<ListResultItemQueue>;
-
 export type ListResultItemR2BucketTagsMap = { [key: string]: string | undefined };
-export const ListResultItemR2BucketTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemR2BucketTagsMap>;
-
 export type ListResultItemR2BucketType = "r2_bucket";
-export const ListResultItemR2BucketType = S.String;
-
 export interface ListResultItemR2Bucket {
   /** Identifies the unique resource. */
   id: string;
@@ -4582,24 +2483,8 @@ export interface ListResultItemR2Bucket {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemR2BucketTagsMap,
-    type: ListResultItemR2BucketType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemR2Bucket" }) as any as S.Schema<ListResultItemR2Bucket>;
-
 export type ListResultItemResourceShareTagsMap = { [key: string]: string | undefined };
-export const ListResultItemResourceShareTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemResourceShareTagsMap>;
-
 export type ListResultItemResourceShareType = "resource_share";
-export const ListResultItemResourceShareType = S.String;
-
 export interface ListResultItemResourceShare {
   /** Identifies the unique resource. */
   id: string;
@@ -4613,26 +2498,8 @@ export interface ListResultItemResourceShare {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemResourceShare = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemResourceShareTagsMap,
-    type: ListResultItemResourceShareType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemResourceShare",
-}) as any as S.Schema<ListResultItemResourceShare>;
-
 export type ListResultItemStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const ListResultItemStreamLiveInputTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemStreamLiveInputTagsMap>;
-
 export type ListResultItemStreamLiveInputType = "stream_live_input";
-export const ListResultItemStreamLiveInputType = S.String;
-
 export interface ListResultItemStreamLiveInput {
   /** Identifies the unique resource. */
   id: string;
@@ -4646,26 +2513,8 @@ export interface ListResultItemStreamLiveInput {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemStreamLiveInputTagsMap,
-    type: ListResultItemStreamLiveInputType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemStreamLiveInput",
-}) as any as S.Schema<ListResultItemStreamLiveInput>;
-
 export type ListResultItemStreamVideoTagsMap = { [key: string]: string | undefined };
-export const ListResultItemStreamVideoTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemStreamVideoTagsMap>;
-
 export type ListResultItemStreamVideoType = "stream_video";
-export const ListResultItemStreamVideoType = S.String;
-
 export interface ListResultItemStreamVideo {
   /** Identifies the unique resource. */
   id: string;
@@ -4679,26 +2528,8 @@ export interface ListResultItemStreamVideo {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemStreamVideo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemStreamVideoTagsMap,
-    type: ListResultItemStreamVideoType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemStreamVideo",
-}) as any as S.Schema<ListResultItemStreamVideo>;
-
 export type ListResultItemVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const ListResultItemVectorizeIndexTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemVectorizeIndexTagsMap>;
-
 export type ListResultItemVectorizeIndexType = "vectorize_index";
-export const ListResultItemVectorizeIndexType = S.String;
-
 export interface ListResultItemVectorizeIndex {
   /** Identifies the unique resource. */
   id: string;
@@ -4712,26 +2543,8 @@ export interface ListResultItemVectorizeIndex {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemVectorizeIndexTagsMap,
-    type: ListResultItemVectorizeIndexType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemVectorizeIndex",
-}) as any as S.Schema<ListResultItemVectorizeIndex>;
-
 export type ListResultItemWorkerTagsMap = { [key: string]: string | undefined };
-export const ListResultItemWorkerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemWorkerTagsMap>;
-
 export type ListResultItemWorkerType = "worker";
-export const ListResultItemWorkerType = S.String;
-
 export interface ListResultItemWorker {
   /** Identifies the unique resource. */
   id: string;
@@ -4745,24 +2558,8 @@ export interface ListResultItemWorker {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemWorkerTagsMap,
-    type: ListResultItemWorkerType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemWorker" }) as any as S.Schema<ListResultItemWorker>;
-
 export type ListResultItemWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const ListResultItemWorkerRouteTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemWorkerRouteTagsMap>;
-
 export type ListResultItemWorkerRouteType = "worker_route";
-export const ListResultItemWorkerRouteType = S.String;
-
 export interface ListResultItemWorkerRoute {
   /** Identifies the unique resource. */
   id: string;
@@ -4778,27 +2575,8 @@ export interface ListResultItemWorkerRoute {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemWorkerRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemWorkerRouteTagsMap,
-    type: ListResultItemWorkerRouteType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemWorkerRoute",
-}) as any as S.Schema<ListResultItemWorkerRoute>;
-
 export type ListResultItemWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const ListResultItemWorkerVersionTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemWorkerVersionTagsMap>;
-
 export type ListResultItemWorkerVersionType = "worker_version";
-export const ListResultItemWorkerVersionType = S.String;
-
 export interface ListResultItemWorkerVersion {
   /** Identifies the unique resource. */
   id: string;
@@ -4814,27 +2592,8 @@ export interface ListResultItemWorkerVersion {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemWorkerVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemWorkerVersionTagsMap,
-    type: ListResultItemWorkerVersionType,
-    workerId: S.String.pipe(T.Body("worker_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemWorkerVersion",
-}) as any as S.Schema<ListResultItemWorkerVersion>;
-
 export type ListResultItemZoneTagsMap = { [key: string]: string | undefined };
-export const ListResultItemZoneTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemZoneTagsMap>;
-
 export type ListResultItemZoneType = "zone";
-export const ListResultItemZoneType = S.String;
-
 export interface ListResultItemZone {
   /** Identifies the unique resource. */
   id: string;
@@ -4850,25 +2609,8 @@ export interface ListResultItemZone {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemZoneTagsMap,
-    type: ListResultItemZoneType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ListResultItemZone" }) as any as S.Schema<ListResultItemZone>;
-
 export type ListResultItemZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const ListResultItemZoneRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ListResultItemZoneRulesetTagsMap>;
-
 export type ListResultItemZoneRulesetType = "zone_ruleset";
-export const ListResultItemZoneRulesetType = S.String;
-
 export interface ListResultItemZoneRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -4884,20 +2626,6 @@ export interface ListResultItemZoneRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ListResultItemZoneRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ListResultItemZoneRulesetTagsMap,
-    type: ListResultItemZoneRulesetType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ListResultItemZoneRuleset",
-}) as any as S.Schema<ListResultItemZoneRuleset>;
-
 export type ListResultItem =
   | ListResultItemAccessApplication
   | ListResultItemAccessApplicationPolicy
@@ -4941,7 +2669,7 @@ export type ListResultItem =
   | ListResultItemWorkerVersion
   | ListResultItemZone
   | ListResultItemZoneRuleset;
-export const ListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+const ListResultItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -5038,9 +2766,7 @@ export const ListResultItem = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListResourceTaggingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -5048,7 +2774,7 @@ export interface ListResourceTaggingsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListResourceTaggingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourceTaggingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -5100,7 +2826,7 @@ export type ValuesListRequestType =
   | "worker_version"
   | "zone"
   | "zone_ruleset";
-export const ValuesListRequestType = S.String;
+const ValuesListRequestType = S.String;
 
 export interface ListValuesRequest {
   /** Identifier. */
@@ -5111,7 +2837,7 @@ export interface ListValuesRequest {
   /** Filter by resource type. */
   type?: ValuesListRequestType | (string & {});
 }
-export const ListValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tagKey: S.String.pipe(T.Label("tag_key")),
@@ -5123,16 +2849,13 @@ export const ListValuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListValuesRequest" }) as any as S.Schema<ListValuesRequest>;
 
 export type ValuesListResultList = Array<string>;
-export const ValuesListResultList =
-  GetSummaryResultItemValuesList as any as S.Schema<ValuesListResultList>;
-
 export interface ListValuesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ValuesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListValuesResponse = ListKeysResponse as any as S.Schema<ListValuesResponse>;
+const ListValuesResponse = ListKeysResponse as any as S.Schema<ListValuesResponse>;
 
 export type AccountTagsUpdateRequestResourceType =
   | "worker_version"
@@ -5166,10 +2889,10 @@ export type AccountTagsUpdateRequestResourceType =
   | "stream_video"
   | "vectorize_index"
   | "worker";
-export const AccountTagsUpdateRequestResourceType = S.String;
+const AccountTagsUpdateRequestResourceType = S.String;
 
 export type AccountTagsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateRequestTagsMap =
+const AccountTagsUpdateRequestTagsMap =
   AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateRequestTagsMap>;
 
 export interface PutAccountTagRequest {
@@ -5185,7 +2908,7 @@ export interface PutAccountTagRequest {
   tags?: AccountTagsUpdateRequestTagsMap;
   ifMatch?: string;
 }
-export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     resourceId: S.String.pipe(T.Body("resource_id")),
@@ -5199,12 +2922,7 @@ export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAccountTagRequest" }) as any as S.Schema<PutAccountTagRequest>;
 
 export type AccountTagsUpdateResultAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAccessApplicationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccessApplicationTagsMap>;
-
 export type AccountTagsUpdateResultAccessApplicationType = "access_application";
-export const AccountTagsUpdateResultAccessApplicationType = S.String;
-
 export interface AccountTagsUpdateResultAccessApplication {
   /** Identifies the unique resource. */
   id: string;
@@ -5218,28 +2936,10 @@ export interface AccountTagsUpdateResultAccessApplication {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAccessApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAccessApplicationTagsMap,
-    type: AccountTagsUpdateResultAccessApplicationType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAccessApplication",
-}) as any as S.Schema<AccountTagsUpdateResultAccessApplication>;
-
 export type AccountTagsUpdateResultAccessApplicationPolicyTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultAccessApplicationPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccessApplicationPolicyTagsMap>;
-
 export type AccountTagsUpdateResultAccessApplicationPolicyType = "access_application_policy";
-export const AccountTagsUpdateResultAccessApplicationPolicyType = S.String;
-
 export interface AccountTagsUpdateResultAccessApplicationPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -5257,28 +2957,8 @@ export interface AccountTagsUpdateResultAccessApplicationPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAccessApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accessApplicationId: S.String.pipe(T.Body("access_application_id")),
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAccessApplicationPolicyTagsMap,
-    type: AccountTagsUpdateResultAccessApplicationPolicyType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAccessApplicationPolicy",
-}) as any as S.Schema<AccountTagsUpdateResultAccessApplicationPolicy>;
-
 export type AccountTagsUpdateResultAccessGroupTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAccessGroupTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccessGroupTagsMap>;
-
 export type AccountTagsUpdateResultAccessGroupType = "access_group";
-export const AccountTagsUpdateResultAccessGroupType = S.String;
-
 export interface AccountTagsUpdateResultAccessGroup {
   /** Identifies the unique resource. */
   id: string;
@@ -5292,26 +2972,8 @@ export interface AccountTagsUpdateResultAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAccessGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAccessGroupTagsMap,
-    type: AccountTagsUpdateResultAccessGroupType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAccessGroup",
-}) as any as S.Schema<AccountTagsUpdateResultAccessGroup>;
-
 export type AccountTagsUpdateResultAccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAccountTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccountTagsMap>;
-
 export type AccountTagsUpdateResultAccountType = "account";
-export const AccountTagsUpdateResultAccountType = S.String;
-
 export interface AccountTagsUpdateResultAccount {
   /** Identifies the unique resource. */
   id: string;
@@ -5325,26 +2987,8 @@ export interface AccountTagsUpdateResultAccount {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAccountTagsMap,
-    type: AccountTagsUpdateResultAccountType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAccount",
-}) as any as S.Schema<AccountTagsUpdateResultAccount>;
-
 export type AccountTagsUpdateResultAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAccountRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAccountRulesetTagsMap>;
-
 export type AccountTagsUpdateResultAccountRulesetType = "account_ruleset";
-export const AccountTagsUpdateResultAccountRulesetType = S.String;
-
 export interface AccountTagsUpdateResultAccountRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -5358,26 +3002,8 @@ export interface AccountTagsUpdateResultAccountRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAccountRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAccountRulesetTagsMap,
-    type: AccountTagsUpdateResultAccountRulesetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAccountRuleset",
-}) as any as S.Schema<AccountTagsUpdateResultAccountRuleset>;
-
 export type AccountTagsUpdateResultAIGatewayTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAIGatewayTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAIGatewayTagsMap>;
-
 export type AccountTagsUpdateResultAIGatewayType = "ai_gateway";
-export const AccountTagsUpdateResultAIGatewayType = S.String;
-
 export interface AccountTagsUpdateResultAIGateway {
   /** Identifies the unique resource. */
   id: string;
@@ -5391,26 +3017,8 @@ export interface AccountTagsUpdateResultAIGateway {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAIGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAIGatewayTagsMap,
-    type: AccountTagsUpdateResultAIGatewayType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAIGateway",
-}) as any as S.Schema<AccountTagsUpdateResultAIGateway>;
-
 export type AccountTagsUpdateResultAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAlertingPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAlertingPolicyTagsMap>;
-
 export type AccountTagsUpdateResultAlertingPolicyType = "alerting_policy";
-export const AccountTagsUpdateResultAlertingPolicyType = S.String;
-
 export interface AccountTagsUpdateResultAlertingPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -5424,26 +3032,8 @@ export interface AccountTagsUpdateResultAlertingPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAlertingPolicyTagsMap,
-    type: AccountTagsUpdateResultAlertingPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAlertingPolicy",
-}) as any as S.Schema<AccountTagsUpdateResultAlertingPolicy>;
-
 export type AccountTagsUpdateResultAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultAlertingWebhookTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAlertingWebhookTagsMap>;
-
 export type AccountTagsUpdateResultAlertingWebhookType = "alerting_webhook";
-export const AccountTagsUpdateResultAlertingWebhookType = S.String;
-
 export interface AccountTagsUpdateResultAlertingWebhook {
   /** Identifies the unique resource. */
   id: string;
@@ -5457,28 +3047,10 @@ export interface AccountTagsUpdateResultAlertingWebhook {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAlertingWebhookTagsMap,
-    type: AccountTagsUpdateResultAlertingWebhookType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAlertingWebhook",
-}) as any as S.Schema<AccountTagsUpdateResultAlertingWebhook>;
-
 export type AccountTagsUpdateResultAPIGatewayOperationTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultAPIGatewayOperationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultAPIGatewayOperationTagsMap>;
-
 export type AccountTagsUpdateResultAPIGatewayOperationType = "api_gateway_operation";
-export const AccountTagsUpdateResultAPIGatewayOperationType = S.String;
-
 export interface AccountTagsUpdateResultAPIGatewayOperation {
   /** Identifies the unique resource. */
   id: string;
@@ -5494,27 +3066,8 @@ export interface AccountTagsUpdateResultAPIGatewayOperation {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultAPIGatewayOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultAPIGatewayOperationTagsMap,
-    type: AccountTagsUpdateResultAPIGatewayOperationType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultAPIGatewayOperation",
-}) as any as S.Schema<AccountTagsUpdateResultAPIGatewayOperation>;
-
 export type AccountTagsUpdateResultCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCloudflaredTunnelTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCloudflaredTunnelTagsMap>;
-
 export type AccountTagsUpdateResultCloudflaredTunnelType = "cloudflared_tunnel";
-export const AccountTagsUpdateResultCloudflaredTunnelType = S.String;
-
 export interface AccountTagsUpdateResultCloudflaredTunnel {
   /** Identifies the unique resource. */
   id: string;
@@ -5528,26 +3081,8 @@ export interface AccountTagsUpdateResultCloudflaredTunnel {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultCloudflaredTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultCloudflaredTunnelTagsMap,
-    type: AccountTagsUpdateResultCloudflaredTunnelType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultCloudflaredTunnel",
-}) as any as S.Schema<AccountTagsUpdateResultCloudflaredTunnel>;
-
 export type AccountTagsUpdateResultCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCustomCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCustomCertificateTagsMap>;
-
 export type AccountTagsUpdateResultCustomCertificateType = "custom_certificate";
-export const AccountTagsUpdateResultCustomCertificateType = S.String;
-
 export interface AccountTagsUpdateResultCustomCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -5563,27 +3098,8 @@ export interface AccountTagsUpdateResultCustomCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultCustomCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultCustomCertificateTagsMap,
-    type: AccountTagsUpdateResultCustomCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultCustomCertificate",
-}) as any as S.Schema<AccountTagsUpdateResultCustomCertificate>;
-
 export type AccountTagsUpdateResultCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCustomHostnameTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCustomHostnameTagsMap>;
-
 export type AccountTagsUpdateResultCustomHostnameType = "custom_hostname";
-export const AccountTagsUpdateResultCustomHostnameType = S.String;
-
 export interface AccountTagsUpdateResultCustomHostname {
   /** Identifies the unique resource. */
   id: string;
@@ -5599,27 +3115,8 @@ export interface AccountTagsUpdateResultCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultCustomHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultCustomHostnameTagsMap,
-    type: AccountTagsUpdateResultCustomHostnameType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultCustomHostname",
-}) as any as S.Schema<AccountTagsUpdateResultCustomHostname>;
-
 export type AccountTagsUpdateResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCwsDeploymentTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCwsDeploymentTagsMap>;
-
 export type AccountTagsUpdateResultCwsDeploymentType = "cws_deployment";
-export const AccountTagsUpdateResultCwsDeploymentType = S.String;
-
 export interface AccountTagsUpdateResultCwsDeployment {
   /** Identifies the unique resource. */
   id: string;
@@ -5633,26 +3130,8 @@ export interface AccountTagsUpdateResultCwsDeployment {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultCwsDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultCwsDeploymentTagsMap,
-    type: AccountTagsUpdateResultCwsDeploymentType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultCwsDeployment",
-}) as any as S.Schema<AccountTagsUpdateResultCwsDeployment>;
-
 export type AccountTagsUpdateResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCwsPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCwsPolicyTagsMap>;
-
 export type AccountTagsUpdateResultCwsPolicyType = "cws_policy";
-export const AccountTagsUpdateResultCwsPolicyType = S.String;
-
 export interface AccountTagsUpdateResultCwsPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -5666,26 +3145,8 @@ export interface AccountTagsUpdateResultCwsPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultCwsPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultCwsPolicyTagsMap,
-    type: AccountTagsUpdateResultCwsPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultCwsPolicy",
-}) as any as S.Schema<AccountTagsUpdateResultCwsPolicy>;
-
 export type AccountTagsUpdateResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCwsPolicySetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCwsPolicySetTagsMap>;
-
 export type AccountTagsUpdateResultCwsPolicySetType = "cws_policy_set";
-export const AccountTagsUpdateResultCwsPolicySetType = S.String;
-
 export interface AccountTagsUpdateResultCwsPolicySet {
   /** Identifies the unique resource. */
   id: string;
@@ -5699,26 +3160,8 @@ export interface AccountTagsUpdateResultCwsPolicySet {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultCwsPolicySetTagsMap,
-    type: AccountTagsUpdateResultCwsPolicySetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultCwsPolicySet",
-}) as any as S.Schema<AccountTagsUpdateResultCwsPolicySet>;
-
 export type AccountTagsUpdateResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultCwsWorkloadTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultCwsWorkloadTagsMap>;
-
 export type AccountTagsUpdateResultCwsWorkloadType = "cws_workload";
-export const AccountTagsUpdateResultCwsWorkloadType = S.String;
-
 export interface AccountTagsUpdateResultCwsWorkload {
   /** Identifies the unique resource. */
   id: string;
@@ -5732,26 +3175,8 @@ export interface AccountTagsUpdateResultCwsWorkload {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultCwsWorkload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultCwsWorkloadTagsMap,
-    type: AccountTagsUpdateResultCwsWorkloadType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultCwsWorkload",
-}) as any as S.Schema<AccountTagsUpdateResultCwsWorkload>;
-
 export type AccountTagsUpdateResultD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultD1DatabaseTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultD1DatabaseTagsMap>;
-
 export type AccountTagsUpdateResultD1DatabaseType = "d1_database";
-export const AccountTagsUpdateResultD1DatabaseType = S.String;
-
 export interface AccountTagsUpdateResultD1Database {
   /** Identifies the unique resource. */
   id: string;
@@ -5765,26 +3190,8 @@ export interface AccountTagsUpdateResultD1Database {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultD1Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultD1DatabaseTagsMap,
-    type: AccountTagsUpdateResultD1DatabaseType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultD1Database",
-}) as any as S.Schema<AccountTagsUpdateResultD1Database>;
-
 export type AccountTagsUpdateResultDeviceTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultDeviceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultDeviceTagsMap>;
-
 export type AccountTagsUpdateResultDeviceType = "device";
-export const AccountTagsUpdateResultDeviceType = S.String;
-
 export interface AccountTagsUpdateResultDevice {
   /** Identifies the unique resource. */
   id: string;
@@ -5798,26 +3205,8 @@ export interface AccountTagsUpdateResultDevice {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultDeviceTagsMap,
-    type: AccountTagsUpdateResultDeviceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultDevice",
-}) as any as S.Schema<AccountTagsUpdateResultDevice>;
-
 export type AccountTagsUpdateResultDNSRecordTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultDNSRecordTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultDNSRecordTagsMap>;
-
 export type AccountTagsUpdateResultDNSRecordType = "dns_record";
-export const AccountTagsUpdateResultDNSRecordType = S.String;
-
 export interface AccountTagsUpdateResultDNSRecord {
   /** Identifies the unique resource. */
   id: string;
@@ -5833,29 +3222,10 @@ export interface AccountTagsUpdateResultDNSRecord {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultDNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultDNSRecordTagsMap,
-    type: AccountTagsUpdateResultDNSRecordType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultDNSRecord",
-}) as any as S.Schema<AccountTagsUpdateResultDNSRecord>;
-
 export type AccountTagsUpdateResultDurableObjectNamespaceTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultDurableObjectNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultDurableObjectNamespaceTagsMap>;
-
 export type AccountTagsUpdateResultDurableObjectNamespaceType = "durable_object_namespace";
-export const AccountTagsUpdateResultDurableObjectNamespaceType = S.String;
-
 export interface AccountTagsUpdateResultDurableObjectNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -5869,26 +3239,8 @@ export interface AccountTagsUpdateResultDurableObjectNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultDurableObjectNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultDurableObjectNamespaceTagsMap,
-    type: AccountTagsUpdateResultDurableObjectNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultDurableObjectNamespace",
-}) as any as S.Schema<AccountTagsUpdateResultDurableObjectNamespace>;
-
 export type AccountTagsUpdateResultGatewayListTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultGatewayListTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultGatewayListTagsMap>;
-
 export type AccountTagsUpdateResultGatewayListType = "gateway_list";
-export const AccountTagsUpdateResultGatewayListType = S.String;
-
 export interface AccountTagsUpdateResultGatewayList {
   /** Identifies the unique resource. */
   id: string;
@@ -5902,26 +3254,8 @@ export interface AccountTagsUpdateResultGatewayList {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultGatewayList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultGatewayListTagsMap,
-    type: AccountTagsUpdateResultGatewayListType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultGatewayList",
-}) as any as S.Schema<AccountTagsUpdateResultGatewayList>;
-
 export type AccountTagsUpdateResultGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultGatewayRuleTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultGatewayRuleTagsMap>;
-
 export type AccountTagsUpdateResultGatewayRuleType = "gateway_rule";
-export const AccountTagsUpdateResultGatewayRuleType = S.String;
-
 export interface AccountTagsUpdateResultGatewayRule {
   /** Identifies the unique resource. */
   id: string;
@@ -5935,26 +3269,8 @@ export interface AccountTagsUpdateResultGatewayRule {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultGatewayRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultGatewayRuleTagsMap,
-    type: AccountTagsUpdateResultGatewayRuleType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultGatewayRule",
-}) as any as S.Schema<AccountTagsUpdateResultGatewayRule>;
-
 export type AccountTagsUpdateResultHealthcheckTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultHealthcheckTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultHealthcheckTagsMap>;
-
 export type AccountTagsUpdateResultHealthcheckType = "healthcheck";
-export const AccountTagsUpdateResultHealthcheckType = S.String;
-
 export interface AccountTagsUpdateResultHealthcheck {
   /** Identifies the unique resource. */
   id: string;
@@ -5970,27 +3286,8 @@ export interface AccountTagsUpdateResultHealthcheck {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultHealthcheckTagsMap,
-    type: AccountTagsUpdateResultHealthcheckType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultHealthcheck",
-}) as any as S.Schema<AccountTagsUpdateResultHealthcheck>;
-
 export type AccountTagsUpdateResultImageTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultImageTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultImageTagsMap>;
-
 export type AccountTagsUpdateResultImageType = "image";
-export const AccountTagsUpdateResultImageType = S.String;
-
 export interface AccountTagsUpdateResultImage {
   /** Identifies the unique resource. */
   id: string;
@@ -6004,28 +3301,10 @@ export interface AccountTagsUpdateResultImage {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultImageTagsMap,
-    type: AccountTagsUpdateResultImageType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultImage",
-}) as any as S.Schema<AccountTagsUpdateResultImage>;
-
 export type AccountTagsUpdateResultInfrastructureTargetTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultInfrastructureTargetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultInfrastructureTargetTagsMap>;
-
 export type AccountTagsUpdateResultInfrastructureTargetType = "infrastructure_target";
-export const AccountTagsUpdateResultInfrastructureTargetType = S.String;
-
 export interface AccountTagsUpdateResultInfrastructureTarget {
   /** Identifies the unique resource. */
   id: string;
@@ -6039,26 +3318,8 @@ export interface AccountTagsUpdateResultInfrastructureTarget {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultInfrastructureTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultInfrastructureTargetTagsMap,
-    type: AccountTagsUpdateResultInfrastructureTargetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultInfrastructureTarget",
-}) as any as S.Schema<AccountTagsUpdateResultInfrastructureTarget>;
-
 export type AccountTagsUpdateResultKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultKVNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultKVNamespaceTagsMap>;
-
 export type AccountTagsUpdateResultKVNamespaceType = "kv_namespace";
-export const AccountTagsUpdateResultKVNamespaceType = S.String;
-
 export interface AccountTagsUpdateResultKVNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -6072,26 +3333,8 @@ export interface AccountTagsUpdateResultKVNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultKVNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultKVNamespaceTagsMap,
-    type: AccountTagsUpdateResultKVNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultKVNamespace",
-}) as any as S.Schema<AccountTagsUpdateResultKVNamespace>;
-
 export type AccountTagsUpdateResultLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultLoadBalancerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultLoadBalancerTagsMap>;
-
 export type AccountTagsUpdateResultLoadBalancerType = "load_balancer";
-export const AccountTagsUpdateResultLoadBalancerType = S.String;
-
 export interface AccountTagsUpdateResultLoadBalancer {
   /** Identifies the unique resource. */
   id: string;
@@ -6107,29 +3350,10 @@ export interface AccountTagsUpdateResultLoadBalancer {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultLoadBalancerTagsMap,
-    type: AccountTagsUpdateResultLoadBalancerType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultLoadBalancer",
-}) as any as S.Schema<AccountTagsUpdateResultLoadBalancer>;
-
 export type AccountTagsUpdateResultLoadBalancerMonitorTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultLoadBalancerMonitorTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultLoadBalancerMonitorTagsMap>;
-
 export type AccountTagsUpdateResultLoadBalancerMonitorType = "load_balancer_monitor";
-export const AccountTagsUpdateResultLoadBalancerMonitorType = S.String;
-
 export interface AccountTagsUpdateResultLoadBalancerMonitor {
   /** Identifies the unique resource. */
   id: string;
@@ -6143,26 +3367,8 @@ export interface AccountTagsUpdateResultLoadBalancerMonitor {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultLoadBalancerMonitor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultLoadBalancerMonitorTagsMap,
-    type: AccountTagsUpdateResultLoadBalancerMonitorType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultLoadBalancerMonitor",
-}) as any as S.Schema<AccountTagsUpdateResultLoadBalancerMonitor>;
-
 export type AccountTagsUpdateResultLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultLoadBalancerPoolTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultLoadBalancerPoolTagsMap>;
-
 export type AccountTagsUpdateResultLoadBalancerPoolType = "load_balancer_pool";
-export const AccountTagsUpdateResultLoadBalancerPoolType = S.String;
-
 export interface AccountTagsUpdateResultLoadBalancerPool {
   /** Identifies the unique resource. */
   id: string;
@@ -6176,28 +3382,10 @@ export interface AccountTagsUpdateResultLoadBalancerPool {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultLoadBalancerPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultLoadBalancerPoolTagsMap,
-    type: AccountTagsUpdateResultLoadBalancerPoolType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultLoadBalancerPool",
-}) as any as S.Schema<AccountTagsUpdateResultLoadBalancerPool>;
-
 export type AccountTagsUpdateResultManagedClientCertificateTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountTagsUpdateResultManagedClientCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultManagedClientCertificateTagsMap>;
-
 export type AccountTagsUpdateResultManagedClientCertificateType = "managed_client_certificate";
-export const AccountTagsUpdateResultManagedClientCertificateType = S.String;
-
 export interface AccountTagsUpdateResultManagedClientCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -6213,27 +3401,8 @@ export interface AccountTagsUpdateResultManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultManagedClientCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultManagedClientCertificateTagsMap,
-    type: AccountTagsUpdateResultManagedClientCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultManagedClientCertificate",
-}) as any as S.Schema<AccountTagsUpdateResultManagedClientCertificate>;
-
 export type AccountTagsUpdateResultPagesProjectTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultPagesProjectTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultPagesProjectTagsMap>;
-
 export type AccountTagsUpdateResultPagesProjectType = "pages_project";
-export const AccountTagsUpdateResultPagesProjectType = S.String;
-
 export interface AccountTagsUpdateResultPagesProject {
   /** Identifies the unique resource. */
   id: string;
@@ -6247,26 +3416,8 @@ export interface AccountTagsUpdateResultPagesProject {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultPagesProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultPagesProjectTagsMap,
-    type: AccountTagsUpdateResultPagesProjectType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultPagesProject",
-}) as any as S.Schema<AccountTagsUpdateResultPagesProject>;
-
 export type AccountTagsUpdateResultQueueTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultQueueTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultQueueTagsMap>;
-
 export type AccountTagsUpdateResultQueueType = "queue";
-export const AccountTagsUpdateResultQueueType = S.String;
-
 export interface AccountTagsUpdateResultQueue {
   /** Identifies the unique resource. */
   id: string;
@@ -6280,26 +3431,8 @@ export interface AccountTagsUpdateResultQueue {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultQueueTagsMap,
-    type: AccountTagsUpdateResultQueueType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultQueue",
-}) as any as S.Schema<AccountTagsUpdateResultQueue>;
-
 export type AccountTagsUpdateResultR2BucketTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultR2BucketTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultR2BucketTagsMap>;
-
 export type AccountTagsUpdateResultR2BucketType = "r2_bucket";
-export const AccountTagsUpdateResultR2BucketType = S.String;
-
 export interface AccountTagsUpdateResultR2Bucket {
   /** Identifies the unique resource. */
   id: string;
@@ -6313,26 +3446,8 @@ export interface AccountTagsUpdateResultR2Bucket {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultR2BucketTagsMap,
-    type: AccountTagsUpdateResultR2BucketType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultR2Bucket",
-}) as any as S.Schema<AccountTagsUpdateResultR2Bucket>;
-
 export type AccountTagsUpdateResultResourceShareTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultResourceShareTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultResourceShareTagsMap>;
-
 export type AccountTagsUpdateResultResourceShareType = "resource_share";
-export const AccountTagsUpdateResultResourceShareType = S.String;
-
 export interface AccountTagsUpdateResultResourceShare {
   /** Identifies the unique resource. */
   id: string;
@@ -6346,26 +3461,8 @@ export interface AccountTagsUpdateResultResourceShare {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultResourceShare = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultResourceShareTagsMap,
-    type: AccountTagsUpdateResultResourceShareType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultResourceShare",
-}) as any as S.Schema<AccountTagsUpdateResultResourceShare>;
-
 export type AccountTagsUpdateResultStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultStreamLiveInputTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultStreamLiveInputTagsMap>;
-
 export type AccountTagsUpdateResultStreamLiveInputType = "stream_live_input";
-export const AccountTagsUpdateResultStreamLiveInputType = S.String;
-
 export interface AccountTagsUpdateResultStreamLiveInput {
   /** Identifies the unique resource. */
   id: string;
@@ -6379,26 +3476,8 @@ export interface AccountTagsUpdateResultStreamLiveInput {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultStreamLiveInputTagsMap,
-    type: AccountTagsUpdateResultStreamLiveInputType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultStreamLiveInput",
-}) as any as S.Schema<AccountTagsUpdateResultStreamLiveInput>;
-
 export type AccountTagsUpdateResultStreamVideoTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultStreamVideoTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultStreamVideoTagsMap>;
-
 export type AccountTagsUpdateResultStreamVideoType = "stream_video";
-export const AccountTagsUpdateResultStreamVideoType = S.String;
-
 export interface AccountTagsUpdateResultStreamVideo {
   /** Identifies the unique resource. */
   id: string;
@@ -6412,26 +3491,8 @@ export interface AccountTagsUpdateResultStreamVideo {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultStreamVideo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultStreamVideoTagsMap,
-    type: AccountTagsUpdateResultStreamVideoType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultStreamVideo",
-}) as any as S.Schema<AccountTagsUpdateResultStreamVideo>;
-
 export type AccountTagsUpdateResultVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultVectorizeIndexTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultVectorizeIndexTagsMap>;
-
 export type AccountTagsUpdateResultVectorizeIndexType = "vectorize_index";
-export const AccountTagsUpdateResultVectorizeIndexType = S.String;
-
 export interface AccountTagsUpdateResultVectorizeIndex {
   /** Identifies the unique resource. */
   id: string;
@@ -6445,26 +3506,8 @@ export interface AccountTagsUpdateResultVectorizeIndex {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultVectorizeIndexTagsMap,
-    type: AccountTagsUpdateResultVectorizeIndexType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultVectorizeIndex",
-}) as any as S.Schema<AccountTagsUpdateResultVectorizeIndex>;
-
 export type AccountTagsUpdateResultWorkerTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultWorkerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultWorkerTagsMap>;
-
 export type AccountTagsUpdateResultWorkerType = "worker";
-export const AccountTagsUpdateResultWorkerType = S.String;
-
 export interface AccountTagsUpdateResultWorker {
   /** Identifies the unique resource. */
   id: string;
@@ -6478,26 +3521,8 @@ export interface AccountTagsUpdateResultWorker {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultWorkerTagsMap,
-    type: AccountTagsUpdateResultWorkerType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultWorker",
-}) as any as S.Schema<AccountTagsUpdateResultWorker>;
-
 export type AccountTagsUpdateResultWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultWorkerRouteTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultWorkerRouteTagsMap>;
-
 export type AccountTagsUpdateResultWorkerRouteType = "worker_route";
-export const AccountTagsUpdateResultWorkerRouteType = S.String;
-
 export interface AccountTagsUpdateResultWorkerRoute {
   /** Identifies the unique resource. */
   id: string;
@@ -6513,27 +3538,8 @@ export interface AccountTagsUpdateResultWorkerRoute {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultWorkerRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultWorkerRouteTagsMap,
-    type: AccountTagsUpdateResultWorkerRouteType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultWorkerRoute",
-}) as any as S.Schema<AccountTagsUpdateResultWorkerRoute>;
-
 export type AccountTagsUpdateResultWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultWorkerVersionTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultWorkerVersionTagsMap>;
-
 export type AccountTagsUpdateResultWorkerVersionType = "worker_version";
-export const AccountTagsUpdateResultWorkerVersionType = S.String;
-
 export interface AccountTagsUpdateResultWorkerVersion {
   /** Identifies the unique resource. */
   id: string;
@@ -6549,27 +3555,8 @@ export interface AccountTagsUpdateResultWorkerVersion {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultWorkerVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultWorkerVersionTagsMap,
-    type: AccountTagsUpdateResultWorkerVersionType,
-    workerId: S.String.pipe(T.Body("worker_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultWorkerVersion",
-}) as any as S.Schema<AccountTagsUpdateResultWorkerVersion>;
-
 export type AccountTagsUpdateResultZoneTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultZoneTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultZoneTagsMap>;
-
 export type AccountTagsUpdateResultZoneType = "zone";
-export const AccountTagsUpdateResultZoneType = S.String;
-
 export interface AccountTagsUpdateResultZone {
   /** Identifies the unique resource. */
   id: string;
@@ -6585,27 +3572,8 @@ export interface AccountTagsUpdateResultZone {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultZoneTagsMap,
-    type: AccountTagsUpdateResultZoneType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultZone",
-}) as any as S.Schema<AccountTagsUpdateResultZone>;
-
 export type AccountTagsUpdateResultZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const AccountTagsUpdateResultZoneRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<AccountTagsUpdateResultZoneRulesetTagsMap>;
-
 export type AccountTagsUpdateResultZoneRulesetType = "zone_ruleset";
-export const AccountTagsUpdateResultZoneRulesetType = S.String;
-
 export interface AccountTagsUpdateResultZoneRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -6621,20 +3589,6 @@ export interface AccountTagsUpdateResultZoneRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const AccountTagsUpdateResultZoneRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: AccountTagsUpdateResultZoneRulesetTagsMap,
-    type: AccountTagsUpdateResultZoneRulesetType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateResultZoneRuleset",
-}) as any as S.Schema<AccountTagsUpdateResultZoneRuleset>;
-
 export type AccountTagsUpdateResult =
   | AccountTagsUpdateResultAccessApplication
   | AccountTagsUpdateResultAccessApplicationPolicy
@@ -6678,7 +3632,7 @@ export type AccountTagsUpdateResult =
   | AccountTagsUpdateResultWorkerVersion
   | AccountTagsUpdateResultZone
   | AccountTagsUpdateResultZoneRuleset;
-export const AccountTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+const AccountTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -6775,7 +3729,7 @@ export const AccountTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type PutAccountTagResponse = AccountTagsUpdateResult;
-export const PutAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
+const PutAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
   AccountTagsUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PutAccountTagResponse" }) as any as S.Schema<PutAccountTagResponse>;
 
@@ -6791,10 +3745,10 @@ export type ZoneTagsUpdateRequestResourceType =
   | "worker_route"
   | "zone"
   | "zone_ruleset";
-export const ZoneTagsUpdateRequestResourceType = S.String;
+const ZoneTagsUpdateRequestResourceType = S.String;
 
 export type ZoneTagsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateRequestTagsMap =
+const ZoneTagsUpdateRequestTagsMap =
   AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateRequestTagsMap>;
 
 export interface PutZoneTagRequest {
@@ -6810,7 +3764,7 @@ export interface PutZoneTagRequest {
   accessApplicationId?: string;
   ifMatch?: string;
 }
-export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
+const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     resourceId: S.String.pipe(T.Body("resource_id")),
@@ -6824,12 +3778,7 @@ export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutZoneTagRequest" }) as any as S.Schema<PutZoneTagRequest>;
 
 export type ZoneTagsUpdateResultAccessApplicationTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAccessApplicationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccessApplicationTagsMap>;
-
 export type ZoneTagsUpdateResultAccessApplicationType = "access_application";
-export const ZoneTagsUpdateResultAccessApplicationType = S.String;
-
 export interface ZoneTagsUpdateResultAccessApplication {
   /** Identifies the unique resource. */
   id: string;
@@ -6843,28 +3792,10 @@ export interface ZoneTagsUpdateResultAccessApplication {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAccessApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAccessApplicationTagsMap,
-    type: ZoneTagsUpdateResultAccessApplicationType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAccessApplication",
-}) as any as S.Schema<ZoneTagsUpdateResultAccessApplication>;
-
 export type ZoneTagsUpdateResultAccessApplicationPolicyTagsMap = {
   [key: string]: string | undefined;
 };
-export const ZoneTagsUpdateResultAccessApplicationPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccessApplicationPolicyTagsMap>;
-
 export type ZoneTagsUpdateResultAccessApplicationPolicyType = "access_application_policy";
-export const ZoneTagsUpdateResultAccessApplicationPolicyType = S.String;
-
 export interface ZoneTagsUpdateResultAccessApplicationPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -6882,28 +3813,8 @@ export interface ZoneTagsUpdateResultAccessApplicationPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAccessApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accessApplicationId: S.String.pipe(T.Body("access_application_id")),
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAccessApplicationPolicyTagsMap,
-    type: ZoneTagsUpdateResultAccessApplicationPolicyType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAccessApplicationPolicy",
-}) as any as S.Schema<ZoneTagsUpdateResultAccessApplicationPolicy>;
-
 export type ZoneTagsUpdateResultAccessGroupTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAccessGroupTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccessGroupTagsMap>;
-
 export type ZoneTagsUpdateResultAccessGroupType = "access_group";
-export const ZoneTagsUpdateResultAccessGroupType = S.String;
-
 export interface ZoneTagsUpdateResultAccessGroup {
   /** Identifies the unique resource. */
   id: string;
@@ -6917,26 +3828,8 @@ export interface ZoneTagsUpdateResultAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAccessGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAccessGroupTagsMap,
-    type: ZoneTagsUpdateResultAccessGroupType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAccessGroup",
-}) as any as S.Schema<ZoneTagsUpdateResultAccessGroup>;
-
 export type ZoneTagsUpdateResultAccountTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAccountTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccountTagsMap>;
-
 export type ZoneTagsUpdateResultAccountType = "account";
-export const ZoneTagsUpdateResultAccountType = S.String;
-
 export interface ZoneTagsUpdateResultAccount {
   /** Identifies the unique resource. */
   id: string;
@@ -6950,26 +3843,8 @@ export interface ZoneTagsUpdateResultAccount {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAccountTagsMap,
-    type: ZoneTagsUpdateResultAccountType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAccount",
-}) as any as S.Schema<ZoneTagsUpdateResultAccount>;
-
 export type ZoneTagsUpdateResultAccountRulesetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAccountRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAccountRulesetTagsMap>;
-
 export type ZoneTagsUpdateResultAccountRulesetType = "account_ruleset";
-export const ZoneTagsUpdateResultAccountRulesetType = S.String;
-
 export interface ZoneTagsUpdateResultAccountRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -6983,26 +3858,8 @@ export interface ZoneTagsUpdateResultAccountRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAccountRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAccountRulesetTagsMap,
-    type: ZoneTagsUpdateResultAccountRulesetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAccountRuleset",
-}) as any as S.Schema<ZoneTagsUpdateResultAccountRuleset>;
-
 export type ZoneTagsUpdateResultAIGatewayTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAIGatewayTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAIGatewayTagsMap>;
-
 export type ZoneTagsUpdateResultAIGatewayType = "ai_gateway";
-export const ZoneTagsUpdateResultAIGatewayType = S.String;
-
 export interface ZoneTagsUpdateResultAIGateway {
   /** Identifies the unique resource. */
   id: string;
@@ -7016,26 +3873,8 @@ export interface ZoneTagsUpdateResultAIGateway {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAIGateway = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAIGatewayTagsMap,
-    type: ZoneTagsUpdateResultAIGatewayType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAIGateway",
-}) as any as S.Schema<ZoneTagsUpdateResultAIGateway>;
-
 export type ZoneTagsUpdateResultAlertingPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAlertingPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAlertingPolicyTagsMap>;
-
 export type ZoneTagsUpdateResultAlertingPolicyType = "alerting_policy";
-export const ZoneTagsUpdateResultAlertingPolicyType = S.String;
-
 export interface ZoneTagsUpdateResultAlertingPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -7049,26 +3888,8 @@ export interface ZoneTagsUpdateResultAlertingPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAlertingPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAlertingPolicyTagsMap,
-    type: ZoneTagsUpdateResultAlertingPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAlertingPolicy",
-}) as any as S.Schema<ZoneTagsUpdateResultAlertingPolicy>;
-
 export type ZoneTagsUpdateResultAlertingWebhookTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAlertingWebhookTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAlertingWebhookTagsMap>;
-
 export type ZoneTagsUpdateResultAlertingWebhookType = "alerting_webhook";
-export const ZoneTagsUpdateResultAlertingWebhookType = S.String;
-
 export interface ZoneTagsUpdateResultAlertingWebhook {
   /** Identifies the unique resource. */
   id: string;
@@ -7082,26 +3903,8 @@ export interface ZoneTagsUpdateResultAlertingWebhook {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAlertingWebhook = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAlertingWebhookTagsMap,
-    type: ZoneTagsUpdateResultAlertingWebhookType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAlertingWebhook",
-}) as any as S.Schema<ZoneTagsUpdateResultAlertingWebhook>;
-
 export type ZoneTagsUpdateResultAPIGatewayOperationTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultAPIGatewayOperationTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultAPIGatewayOperationTagsMap>;
-
 export type ZoneTagsUpdateResultAPIGatewayOperationType = "api_gateway_operation";
-export const ZoneTagsUpdateResultAPIGatewayOperationType = S.String;
-
 export interface ZoneTagsUpdateResultAPIGatewayOperation {
   /** Identifies the unique resource. */
   id: string;
@@ -7117,27 +3920,8 @@ export interface ZoneTagsUpdateResultAPIGatewayOperation {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultAPIGatewayOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultAPIGatewayOperationTagsMap,
-    type: ZoneTagsUpdateResultAPIGatewayOperationType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultAPIGatewayOperation",
-}) as any as S.Schema<ZoneTagsUpdateResultAPIGatewayOperation>;
-
 export type ZoneTagsUpdateResultCloudflaredTunnelTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCloudflaredTunnelTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCloudflaredTunnelTagsMap>;
-
 export type ZoneTagsUpdateResultCloudflaredTunnelType = "cloudflared_tunnel";
-export const ZoneTagsUpdateResultCloudflaredTunnelType = S.String;
-
 export interface ZoneTagsUpdateResultCloudflaredTunnel {
   /** Identifies the unique resource. */
   id: string;
@@ -7151,26 +3935,8 @@ export interface ZoneTagsUpdateResultCloudflaredTunnel {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultCloudflaredTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultCloudflaredTunnelTagsMap,
-    type: ZoneTagsUpdateResultCloudflaredTunnelType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultCloudflaredTunnel",
-}) as any as S.Schema<ZoneTagsUpdateResultCloudflaredTunnel>;
-
 export type ZoneTagsUpdateResultCustomCertificateTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCustomCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCustomCertificateTagsMap>;
-
 export type ZoneTagsUpdateResultCustomCertificateType = "custom_certificate";
-export const ZoneTagsUpdateResultCustomCertificateType = S.String;
-
 export interface ZoneTagsUpdateResultCustomCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -7186,27 +3952,8 @@ export interface ZoneTagsUpdateResultCustomCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultCustomCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultCustomCertificateTagsMap,
-    type: ZoneTagsUpdateResultCustomCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultCustomCertificate",
-}) as any as S.Schema<ZoneTagsUpdateResultCustomCertificate>;
-
 export type ZoneTagsUpdateResultCustomHostnameTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCustomHostnameTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCustomHostnameTagsMap>;
-
 export type ZoneTagsUpdateResultCustomHostnameType = "custom_hostname";
-export const ZoneTagsUpdateResultCustomHostnameType = S.String;
-
 export interface ZoneTagsUpdateResultCustomHostname {
   /** Identifies the unique resource. */
   id: string;
@@ -7222,27 +3969,8 @@ export interface ZoneTagsUpdateResultCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultCustomHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultCustomHostnameTagsMap,
-    type: ZoneTagsUpdateResultCustomHostnameType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultCustomHostname",
-}) as any as S.Schema<ZoneTagsUpdateResultCustomHostname>;
-
 export type ZoneTagsUpdateResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCwsDeploymentTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCwsDeploymentTagsMap>;
-
 export type ZoneTagsUpdateResultCwsDeploymentType = "cws_deployment";
-export const ZoneTagsUpdateResultCwsDeploymentType = S.String;
-
 export interface ZoneTagsUpdateResultCwsDeployment {
   /** Identifies the unique resource. */
   id: string;
@@ -7256,26 +3984,8 @@ export interface ZoneTagsUpdateResultCwsDeployment {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultCwsDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultCwsDeploymentTagsMap,
-    type: ZoneTagsUpdateResultCwsDeploymentType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultCwsDeployment",
-}) as any as S.Schema<ZoneTagsUpdateResultCwsDeployment>;
-
 export type ZoneTagsUpdateResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCwsPolicyTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCwsPolicyTagsMap>;
-
 export type ZoneTagsUpdateResultCwsPolicyType = "cws_policy";
-export const ZoneTagsUpdateResultCwsPolicyType = S.String;
-
 export interface ZoneTagsUpdateResultCwsPolicy {
   /** Identifies the unique resource. */
   id: string;
@@ -7289,26 +3999,8 @@ export interface ZoneTagsUpdateResultCwsPolicy {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultCwsPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultCwsPolicyTagsMap,
-    type: ZoneTagsUpdateResultCwsPolicyType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultCwsPolicy",
-}) as any as S.Schema<ZoneTagsUpdateResultCwsPolicy>;
-
 export type ZoneTagsUpdateResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCwsPolicySetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCwsPolicySetTagsMap>;
-
 export type ZoneTagsUpdateResultCwsPolicySetType = "cws_policy_set";
-export const ZoneTagsUpdateResultCwsPolicySetType = S.String;
-
 export interface ZoneTagsUpdateResultCwsPolicySet {
   /** Identifies the unique resource. */
   id: string;
@@ -7322,26 +4014,8 @@ export interface ZoneTagsUpdateResultCwsPolicySet {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultCwsPolicySet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultCwsPolicySetTagsMap,
-    type: ZoneTagsUpdateResultCwsPolicySetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultCwsPolicySet",
-}) as any as S.Schema<ZoneTagsUpdateResultCwsPolicySet>;
-
 export type ZoneTagsUpdateResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultCwsWorkloadTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultCwsWorkloadTagsMap>;
-
 export type ZoneTagsUpdateResultCwsWorkloadType = "cws_workload";
-export const ZoneTagsUpdateResultCwsWorkloadType = S.String;
-
 export interface ZoneTagsUpdateResultCwsWorkload {
   /** Identifies the unique resource. */
   id: string;
@@ -7355,26 +4029,8 @@ export interface ZoneTagsUpdateResultCwsWorkload {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultCwsWorkload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultCwsWorkloadTagsMap,
-    type: ZoneTagsUpdateResultCwsWorkloadType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultCwsWorkload",
-}) as any as S.Schema<ZoneTagsUpdateResultCwsWorkload>;
-
 export type ZoneTagsUpdateResultD1DatabaseTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultD1DatabaseTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultD1DatabaseTagsMap>;
-
 export type ZoneTagsUpdateResultD1DatabaseType = "d1_database";
-export const ZoneTagsUpdateResultD1DatabaseType = S.String;
-
 export interface ZoneTagsUpdateResultD1Database {
   /** Identifies the unique resource. */
   id: string;
@@ -7388,26 +4044,8 @@ export interface ZoneTagsUpdateResultD1Database {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultD1Database = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultD1DatabaseTagsMap,
-    type: ZoneTagsUpdateResultD1DatabaseType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultD1Database",
-}) as any as S.Schema<ZoneTagsUpdateResultD1Database>;
-
 export type ZoneTagsUpdateResultDeviceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultDeviceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultDeviceTagsMap>;
-
 export type ZoneTagsUpdateResultDeviceType = "device";
-export const ZoneTagsUpdateResultDeviceType = S.String;
-
 export interface ZoneTagsUpdateResultDevice {
   /** Identifies the unique resource. */
   id: string;
@@ -7421,26 +4059,8 @@ export interface ZoneTagsUpdateResultDevice {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultDeviceTagsMap,
-    type: ZoneTagsUpdateResultDeviceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultDevice",
-}) as any as S.Schema<ZoneTagsUpdateResultDevice>;
-
 export type ZoneTagsUpdateResultDNSRecordTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultDNSRecordTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultDNSRecordTagsMap>;
-
 export type ZoneTagsUpdateResultDNSRecordType = "dns_record";
-export const ZoneTagsUpdateResultDNSRecordType = S.String;
-
 export interface ZoneTagsUpdateResultDNSRecord {
   /** Identifies the unique resource. */
   id: string;
@@ -7456,29 +4076,10 @@ export interface ZoneTagsUpdateResultDNSRecord {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultDNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultDNSRecordTagsMap,
-    type: ZoneTagsUpdateResultDNSRecordType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultDNSRecord",
-}) as any as S.Schema<ZoneTagsUpdateResultDNSRecord>;
-
 export type ZoneTagsUpdateResultDurableObjectNamespaceTagsMap = {
   [key: string]: string | undefined;
 };
-export const ZoneTagsUpdateResultDurableObjectNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultDurableObjectNamespaceTagsMap>;
-
 export type ZoneTagsUpdateResultDurableObjectNamespaceType = "durable_object_namespace";
-export const ZoneTagsUpdateResultDurableObjectNamespaceType = S.String;
-
 export interface ZoneTagsUpdateResultDurableObjectNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -7492,26 +4093,8 @@ export interface ZoneTagsUpdateResultDurableObjectNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultDurableObjectNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultDurableObjectNamespaceTagsMap,
-    type: ZoneTagsUpdateResultDurableObjectNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultDurableObjectNamespace",
-}) as any as S.Schema<ZoneTagsUpdateResultDurableObjectNamespace>;
-
 export type ZoneTagsUpdateResultGatewayListTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultGatewayListTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultGatewayListTagsMap>;
-
 export type ZoneTagsUpdateResultGatewayListType = "gateway_list";
-export const ZoneTagsUpdateResultGatewayListType = S.String;
-
 export interface ZoneTagsUpdateResultGatewayList {
   /** Identifies the unique resource. */
   id: string;
@@ -7525,26 +4108,8 @@ export interface ZoneTagsUpdateResultGatewayList {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultGatewayList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultGatewayListTagsMap,
-    type: ZoneTagsUpdateResultGatewayListType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultGatewayList",
-}) as any as S.Schema<ZoneTagsUpdateResultGatewayList>;
-
 export type ZoneTagsUpdateResultGatewayRuleTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultGatewayRuleTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultGatewayRuleTagsMap>;
-
 export type ZoneTagsUpdateResultGatewayRuleType = "gateway_rule";
-export const ZoneTagsUpdateResultGatewayRuleType = S.String;
-
 export interface ZoneTagsUpdateResultGatewayRule {
   /** Identifies the unique resource. */
   id: string;
@@ -7558,26 +4123,8 @@ export interface ZoneTagsUpdateResultGatewayRule {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultGatewayRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultGatewayRuleTagsMap,
-    type: ZoneTagsUpdateResultGatewayRuleType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultGatewayRule",
-}) as any as S.Schema<ZoneTagsUpdateResultGatewayRule>;
-
 export type ZoneTagsUpdateResultHealthcheckTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultHealthcheckTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultHealthcheckTagsMap>;
-
 export type ZoneTagsUpdateResultHealthcheckType = "healthcheck";
-export const ZoneTagsUpdateResultHealthcheckType = S.String;
-
 export interface ZoneTagsUpdateResultHealthcheck {
   /** Identifies the unique resource. */
   id: string;
@@ -7593,27 +4140,8 @@ export interface ZoneTagsUpdateResultHealthcheck {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultHealthcheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultHealthcheckTagsMap,
-    type: ZoneTagsUpdateResultHealthcheckType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultHealthcheck",
-}) as any as S.Schema<ZoneTagsUpdateResultHealthcheck>;
-
 export type ZoneTagsUpdateResultImageTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultImageTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultImageTagsMap>;
-
 export type ZoneTagsUpdateResultImageType = "image";
-export const ZoneTagsUpdateResultImageType = S.String;
-
 export interface ZoneTagsUpdateResultImage {
   /** Identifies the unique resource. */
   id: string;
@@ -7627,26 +4155,8 @@ export interface ZoneTagsUpdateResultImage {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultImage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultImageTagsMap,
-    type: ZoneTagsUpdateResultImageType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultImage",
-}) as any as S.Schema<ZoneTagsUpdateResultImage>;
-
 export type ZoneTagsUpdateResultInfrastructureTargetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultInfrastructureTargetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultInfrastructureTargetTagsMap>;
-
 export type ZoneTagsUpdateResultInfrastructureTargetType = "infrastructure_target";
-export const ZoneTagsUpdateResultInfrastructureTargetType = S.String;
-
 export interface ZoneTagsUpdateResultInfrastructureTarget {
   /** Identifies the unique resource. */
   id: string;
@@ -7660,26 +4170,8 @@ export interface ZoneTagsUpdateResultInfrastructureTarget {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultInfrastructureTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultInfrastructureTargetTagsMap,
-    type: ZoneTagsUpdateResultInfrastructureTargetType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultInfrastructureTarget",
-}) as any as S.Schema<ZoneTagsUpdateResultInfrastructureTarget>;
-
 export type ZoneTagsUpdateResultKVNamespaceTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultKVNamespaceTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultKVNamespaceTagsMap>;
-
 export type ZoneTagsUpdateResultKVNamespaceType = "kv_namespace";
-export const ZoneTagsUpdateResultKVNamespaceType = S.String;
-
 export interface ZoneTagsUpdateResultKVNamespace {
   /** Identifies the unique resource. */
   id: string;
@@ -7693,26 +4185,8 @@ export interface ZoneTagsUpdateResultKVNamespace {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultKVNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultKVNamespaceTagsMap,
-    type: ZoneTagsUpdateResultKVNamespaceType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultKVNamespace",
-}) as any as S.Schema<ZoneTagsUpdateResultKVNamespace>;
-
 export type ZoneTagsUpdateResultLoadBalancerTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultLoadBalancerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultLoadBalancerTagsMap>;
-
 export type ZoneTagsUpdateResultLoadBalancerType = "load_balancer";
-export const ZoneTagsUpdateResultLoadBalancerType = S.String;
-
 export interface ZoneTagsUpdateResultLoadBalancer {
   /** Identifies the unique resource. */
   id: string;
@@ -7728,27 +4202,8 @@ export interface ZoneTagsUpdateResultLoadBalancer {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultLoadBalancer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultLoadBalancerTagsMap,
-    type: ZoneTagsUpdateResultLoadBalancerType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultLoadBalancer",
-}) as any as S.Schema<ZoneTagsUpdateResultLoadBalancer>;
-
 export type ZoneTagsUpdateResultLoadBalancerMonitorTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultLoadBalancerMonitorTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultLoadBalancerMonitorTagsMap>;
-
 export type ZoneTagsUpdateResultLoadBalancerMonitorType = "load_balancer_monitor";
-export const ZoneTagsUpdateResultLoadBalancerMonitorType = S.String;
-
 export interface ZoneTagsUpdateResultLoadBalancerMonitor {
   /** Identifies the unique resource. */
   id: string;
@@ -7762,26 +4217,8 @@ export interface ZoneTagsUpdateResultLoadBalancerMonitor {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultLoadBalancerMonitor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultLoadBalancerMonitorTagsMap,
-    type: ZoneTagsUpdateResultLoadBalancerMonitorType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultLoadBalancerMonitor",
-}) as any as S.Schema<ZoneTagsUpdateResultLoadBalancerMonitor>;
-
 export type ZoneTagsUpdateResultLoadBalancerPoolTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultLoadBalancerPoolTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultLoadBalancerPoolTagsMap>;
-
 export type ZoneTagsUpdateResultLoadBalancerPoolType = "load_balancer_pool";
-export const ZoneTagsUpdateResultLoadBalancerPoolType = S.String;
-
 export interface ZoneTagsUpdateResultLoadBalancerPool {
   /** Identifies the unique resource. */
   id: string;
@@ -7795,28 +4232,10 @@ export interface ZoneTagsUpdateResultLoadBalancerPool {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultLoadBalancerPool = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultLoadBalancerPoolTagsMap,
-    type: ZoneTagsUpdateResultLoadBalancerPoolType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultLoadBalancerPool",
-}) as any as S.Schema<ZoneTagsUpdateResultLoadBalancerPool>;
-
 export type ZoneTagsUpdateResultManagedClientCertificateTagsMap = {
   [key: string]: string | undefined;
 };
-export const ZoneTagsUpdateResultManagedClientCertificateTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultManagedClientCertificateTagsMap>;
-
 export type ZoneTagsUpdateResultManagedClientCertificateType = "managed_client_certificate";
-export const ZoneTagsUpdateResultManagedClientCertificateType = S.String;
-
 export interface ZoneTagsUpdateResultManagedClientCertificate {
   /** Identifies the unique resource. */
   id: string;
@@ -7832,27 +4251,8 @@ export interface ZoneTagsUpdateResultManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultManagedClientCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultManagedClientCertificateTagsMap,
-    type: ZoneTagsUpdateResultManagedClientCertificateType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultManagedClientCertificate",
-}) as any as S.Schema<ZoneTagsUpdateResultManagedClientCertificate>;
-
 export type ZoneTagsUpdateResultPagesProjectTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultPagesProjectTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultPagesProjectTagsMap>;
-
 export type ZoneTagsUpdateResultPagesProjectType = "pages_project";
-export const ZoneTagsUpdateResultPagesProjectType = S.String;
-
 export interface ZoneTagsUpdateResultPagesProject {
   /** Identifies the unique resource. */
   id: string;
@@ -7866,26 +4266,8 @@ export interface ZoneTagsUpdateResultPagesProject {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultPagesProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultPagesProjectTagsMap,
-    type: ZoneTagsUpdateResultPagesProjectType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultPagesProject",
-}) as any as S.Schema<ZoneTagsUpdateResultPagesProject>;
-
 export type ZoneTagsUpdateResultQueueTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultQueueTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultQueueTagsMap>;
-
 export type ZoneTagsUpdateResultQueueType = "queue";
-export const ZoneTagsUpdateResultQueueType = S.String;
-
 export interface ZoneTagsUpdateResultQueue {
   /** Identifies the unique resource. */
   id: string;
@@ -7899,26 +4281,8 @@ export interface ZoneTagsUpdateResultQueue {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultQueueTagsMap,
-    type: ZoneTagsUpdateResultQueueType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultQueue",
-}) as any as S.Schema<ZoneTagsUpdateResultQueue>;
-
 export type ZoneTagsUpdateResultR2BucketTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultR2BucketTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultR2BucketTagsMap>;
-
 export type ZoneTagsUpdateResultR2BucketType = "r2_bucket";
-export const ZoneTagsUpdateResultR2BucketType = S.String;
-
 export interface ZoneTagsUpdateResultR2Bucket {
   /** Identifies the unique resource. */
   id: string;
@@ -7932,26 +4296,8 @@ export interface ZoneTagsUpdateResultR2Bucket {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultR2BucketTagsMap,
-    type: ZoneTagsUpdateResultR2BucketType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultR2Bucket",
-}) as any as S.Schema<ZoneTagsUpdateResultR2Bucket>;
-
 export type ZoneTagsUpdateResultResourceShareTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultResourceShareTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultResourceShareTagsMap>;
-
 export type ZoneTagsUpdateResultResourceShareType = "resource_share";
-export const ZoneTagsUpdateResultResourceShareType = S.String;
-
 export interface ZoneTagsUpdateResultResourceShare {
   /** Identifies the unique resource. */
   id: string;
@@ -7965,26 +4311,8 @@ export interface ZoneTagsUpdateResultResourceShare {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultResourceShare = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultResourceShareTagsMap,
-    type: ZoneTagsUpdateResultResourceShareType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultResourceShare",
-}) as any as S.Schema<ZoneTagsUpdateResultResourceShare>;
-
 export type ZoneTagsUpdateResultStreamLiveInputTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultStreamLiveInputTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultStreamLiveInputTagsMap>;
-
 export type ZoneTagsUpdateResultStreamLiveInputType = "stream_live_input";
-export const ZoneTagsUpdateResultStreamLiveInputType = S.String;
-
 export interface ZoneTagsUpdateResultStreamLiveInput {
   /** Identifies the unique resource. */
   id: string;
@@ -7998,26 +4326,8 @@ export interface ZoneTagsUpdateResultStreamLiveInput {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultStreamLiveInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultStreamLiveInputTagsMap,
-    type: ZoneTagsUpdateResultStreamLiveInputType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultStreamLiveInput",
-}) as any as S.Schema<ZoneTagsUpdateResultStreamLiveInput>;
-
 export type ZoneTagsUpdateResultStreamVideoTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultStreamVideoTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultStreamVideoTagsMap>;
-
 export type ZoneTagsUpdateResultStreamVideoType = "stream_video";
-export const ZoneTagsUpdateResultStreamVideoType = S.String;
-
 export interface ZoneTagsUpdateResultStreamVideo {
   /** Identifies the unique resource. */
   id: string;
@@ -8031,26 +4341,8 @@ export interface ZoneTagsUpdateResultStreamVideo {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultStreamVideo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultStreamVideoTagsMap,
-    type: ZoneTagsUpdateResultStreamVideoType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultStreamVideo",
-}) as any as S.Schema<ZoneTagsUpdateResultStreamVideo>;
-
 export type ZoneTagsUpdateResultVectorizeIndexTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultVectorizeIndexTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultVectorizeIndexTagsMap>;
-
 export type ZoneTagsUpdateResultVectorizeIndexType = "vectorize_index";
-export const ZoneTagsUpdateResultVectorizeIndexType = S.String;
-
 export interface ZoneTagsUpdateResultVectorizeIndex {
   /** Identifies the unique resource. */
   id: string;
@@ -8064,26 +4356,8 @@ export interface ZoneTagsUpdateResultVectorizeIndex {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultVectorizeIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultVectorizeIndexTagsMap,
-    type: ZoneTagsUpdateResultVectorizeIndexType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultVectorizeIndex",
-}) as any as S.Schema<ZoneTagsUpdateResultVectorizeIndex>;
-
 export type ZoneTagsUpdateResultWorkerTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultWorkerTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultWorkerTagsMap>;
-
 export type ZoneTagsUpdateResultWorkerType = "worker";
-export const ZoneTagsUpdateResultWorkerType = S.String;
-
 export interface ZoneTagsUpdateResultWorker {
   /** Identifies the unique resource. */
   id: string;
@@ -8097,26 +4371,8 @@ export interface ZoneTagsUpdateResultWorker {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultWorker = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultWorkerTagsMap,
-    type: ZoneTagsUpdateResultWorkerType,
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultWorker",
-}) as any as S.Schema<ZoneTagsUpdateResultWorker>;
-
 export type ZoneTagsUpdateResultWorkerRouteTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultWorkerRouteTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultWorkerRouteTagsMap>;
-
 export type ZoneTagsUpdateResultWorkerRouteType = "worker_route";
-export const ZoneTagsUpdateResultWorkerRouteType = S.String;
-
 export interface ZoneTagsUpdateResultWorkerRoute {
   /** Identifies the unique resource. */
   id: string;
@@ -8132,27 +4388,8 @@ export interface ZoneTagsUpdateResultWorkerRoute {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultWorkerRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultWorkerRouteTagsMap,
-    type: ZoneTagsUpdateResultWorkerRouteType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultWorkerRoute",
-}) as any as S.Schema<ZoneTagsUpdateResultWorkerRoute>;
-
 export type ZoneTagsUpdateResultWorkerVersionTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultWorkerVersionTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultWorkerVersionTagsMap>;
-
 export type ZoneTagsUpdateResultWorkerVersionType = "worker_version";
-export const ZoneTagsUpdateResultWorkerVersionType = S.String;
-
 export interface ZoneTagsUpdateResultWorkerVersion {
   /** Identifies the unique resource. */
   id: string;
@@ -8168,27 +4405,8 @@ export interface ZoneTagsUpdateResultWorkerVersion {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultWorkerVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultWorkerVersionTagsMap,
-    type: ZoneTagsUpdateResultWorkerVersionType,
-    workerId: S.String.pipe(T.Body("worker_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultWorkerVersion",
-}) as any as S.Schema<ZoneTagsUpdateResultWorkerVersion>;
-
 export type ZoneTagsUpdateResultZoneTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultZoneTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultZoneTagsMap>;
-
 export type ZoneTagsUpdateResultZoneType = "zone";
-export const ZoneTagsUpdateResultZoneType = S.String;
-
 export interface ZoneTagsUpdateResultZone {
   /** Identifies the unique resource. */
   id: string;
@@ -8204,25 +4422,8 @@ export interface ZoneTagsUpdateResultZone {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultZoneTagsMap,
-    type: ZoneTagsUpdateResultZoneType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({ identifier: "ZoneTagsUpdateResultZone" }) as any as S.Schema<ZoneTagsUpdateResultZone>;
-
 export type ZoneTagsUpdateResultZoneRulesetTagsMap = { [key: string]: string | undefined };
-export const ZoneTagsUpdateResultZoneRulesetTagsMap =
-  AccountTagsGetResultAccessApplicationTagsMap as any as S.Schema<ZoneTagsUpdateResultZoneRulesetTagsMap>;
-
 export type ZoneTagsUpdateResultZoneRulesetType = "zone_ruleset";
-export const ZoneTagsUpdateResultZoneRulesetType = S.String;
-
 export interface ZoneTagsUpdateResultZoneRuleset {
   /** Identifies the unique resource. */
   id: string;
@@ -8238,20 +4439,6 @@ export interface ZoneTagsUpdateResultZoneRuleset {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export const ZoneTagsUpdateResultZoneRuleset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    etag: S.String,
-    name: S.String,
-    tags: ZoneTagsUpdateResultZoneRulesetTagsMap,
-    type: ZoneTagsUpdateResultZoneRulesetType,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    tagsUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("tags_updated_at"))),
-  }),
-).annotate({
-  identifier: "ZoneTagsUpdateResultZoneRuleset",
-}) as any as S.Schema<ZoneTagsUpdateResultZoneRuleset>;
-
 export type ZoneTagsUpdateResult =
   | ZoneTagsUpdateResultAccessApplication
   | ZoneTagsUpdateResultAccessApplicationPolicy
@@ -8295,7 +4482,7 @@ export type ZoneTagsUpdateResult =
   | ZoneTagsUpdateResultWorkerVersion
   | ZoneTagsUpdateResultZone
   | ZoneTagsUpdateResultZoneRuleset;
-export const ZoneTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+const ZoneTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -8392,7 +4579,7 @@ export const ZoneTagsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type PutZoneTagResponse = ZoneTagsUpdateResult;
-export const PutZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
+const PutZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
   ZoneTagsUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PutZoneTagResponse" }) as any as S.Schema<PutZoneTagResponse>;
 

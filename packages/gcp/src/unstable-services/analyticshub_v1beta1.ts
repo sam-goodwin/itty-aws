@@ -78,7 +78,7 @@ export interface DataExchange {
   /** Optional. Documentation describing the data exchange. */
   documentation?: string;
 }
-export const DataExchange = /*@__PURE__*/ S.suspend(() =>
+const DataExchange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryContact: S.optional(S.String),
     name: S.optional(S.String),
@@ -98,7 +98,7 @@ export interface CreateProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: DataExchange;
 }
-export const CreateProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     dataExchangeId: S.optional(S.String.pipe(T.Query())),
@@ -121,7 +121,7 @@ export interface DataProvider {
   /** Optional. Name of the data provider. */
   name?: string;
 }
-export const DataProvider = /*@__PURE__*/ S.suspend(() =>
+const DataProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryContact: S.optional(S.String),
     name: S.optional(S.String),
@@ -133,7 +133,7 @@ export interface BigQueryDatasetSource {
   /** Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123` */
   dataset?: string;
 }
-export const BigQueryDatasetSource = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDatasetSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(S.String),
   }),
@@ -148,7 +148,7 @@ export interface RestrictedExportConfig {
   /** Optional. If true, enable restricted export. */
   enabled?: boolean;
 }
-export const RestrictedExportConfig = /*@__PURE__*/ S.suspend(() =>
+const RestrictedExportConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restrictDirectTableAccess: S.optional(S.Boolean),
     restrictQueryResult: S.optional(S.Boolean),
@@ -157,7 +157,7 @@ export const RestrictedExportConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestrictedExportConfig" }) as any as S.Schema<RestrictedExportConfig>;
 
 export type ListingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
-export const ListingStateEnum = S.String;
+const ListingStateEnum = S.String;
 
 export type ListingCategoriesItemEnum =
   | "CATEGORY_UNSPECIFIED"
@@ -181,10 +181,10 @@ export type ListingCategoriesItemEnum =
   | "CATEGORY_TRANSPORTATION_AND_LOGISTICS"
   | "CATEGORY_TRAVEL_AND_TOURISM"
   | "CATEGORY_GOOGLE_EARTH_ENGINE";
-export const ListingCategoriesItemEnum = S.String;
+const ListingCategoriesItemEnum = S.String;
 
 export type ListingCategoriesItemEnumList = Array<ListingCategoriesItemEnum | (string & {})>;
-export const ListingCategoriesItemEnumList = /*@__PURE__*/ S.Array(
+const ListingCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   ListingCategoriesItemEnum,
 ) as any as S.Schema<ListingCategoriesItemEnumList>;
 
@@ -195,7 +195,7 @@ export interface Publisher {
   /** Optional. Name of the listing publisher. */
   name?: string;
 }
-export const Publisher = DataProvider as any as S.Schema<Publisher>;
+const Publisher = DataProvider as any as S.Schema<Publisher>;
 
 /** A listing is what gets published into a data exchange that a subscriber can subscribe to. It contains a reference to the data source along with descriptive information that will help subscribers find and subscribe the data. */
 export interface Listing {
@@ -228,7 +228,7 @@ export interface Listing {
   /** Optional. Base64 encoded image representing the listing. Max Size: 3.0MiB Expected image dimensions are 512x512 pixels, however the API only performs validation on size of the encoded data. Note: For byte fields, the contents of the field are base64-encoded (which increases the size of the data by 33-36%) when using JSON on the wire. */
   icon?: string;
 }
-export const Listing = /*@__PURE__*/ S.suspend(() =>
+const Listing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     dataProvider: S.optional(DataProvider),
@@ -255,7 +255,7 @@ export interface CreateProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: Listing;
 }
-export const CreateProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     listingId: S.optional(S.String.pipe(T.Query())),
@@ -275,7 +275,7 @@ export interface DeleteProjectsLocationsDataExchangesRequest {
   /** Required. The full name of the data exchange resource that you want to delete. For example, `projects/myproject/locations/us/dataExchanges/123`. */
   name: string;
 }
-export const DeleteProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -291,7 +291,7 @@ export const DeleteProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspe
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -299,7 +299,7 @@ export interface DeleteProjectsLocationsDataExchangesListingsRequest {
   /** Required. Resource name of the listing to delete. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. */
   name: string;
 }
-export const DeleteProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -318,7 +318,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -329,7 +329,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -341,7 +341,7 @@ export interface GetIamPolicyProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -357,7 +357,7 @@ export const GetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetIamPolicyProjectsLocationsDataExchangesRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -370,7 +370,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     title: S.optional(S.String),
@@ -388,7 +388,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -397,14 +397,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -413,7 +413,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -421,7 +421,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -432,7 +432,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -440,9 +440,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -455,7 +453,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
@@ -470,18 +468,17 @@ export interface GetIamPolicyProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:getIamPolicy",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const GetIamPolicyProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:getIamPolicy",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetIamPolicyProjectsLocationsDataExchangesListingsRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsDataExchangesListingsRequest>;
@@ -490,7 +487,7 @@ export interface GetProjectsLocationsDataExchangesRequest {
   /** Required. The resource name of the data exchange. e.g. `projects/myproject/locations/us/dataExchanges/123`. */
   name: string;
 }
-export const GetProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -508,7 +505,7 @@ export interface GetProjectsLocationsDataExchangesListingsRequest {
   /** Required. The resource name of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. */
   name: string;
 }
-export const GetProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -530,7 +527,7 @@ export interface ListOrganizationsLocationsDataExchangesRequest {
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     organization: S.String.pipe(T.Label()),
@@ -547,9 +544,7 @@ export const ListOrganizationsLocationsDataExchangesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListOrganizationsLocationsDataExchangesRequest>;
 
 export type DataExchangeList = Array<DataExchange>;
-export const DataExchangeList = /*@__PURE__*/ S.Array(
-  DataExchange,
-) as any as S.Schema<DataExchangeList>;
+const DataExchangeList = /*@__PURE__*/ S.Array(DataExchange) as any as S.Schema<DataExchangeList>;
 
 /** Message for response to listing data exchanges in an organization and location. */
 export interface ListOrgDataExchangesResponse {
@@ -558,7 +553,7 @@ export interface ListOrgDataExchangesResponse {
   /** The list of data exchanges. */
   dataExchanges?: DataExchangeList;
 }
-export const ListOrgDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     dataExchanges: S.optional(DataExchangeList),
@@ -575,7 +570,7 @@ export interface ListProjectsLocationsDataExchangesRequest {
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -598,7 +593,7 @@ export interface ListDataExchangesResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
-export const ListDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataExchangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataExchanges: S.optional(DataExchangeList),
     nextPageToken: S.optional(S.String),
@@ -615,7 +610,7 @@ export interface ListProjectsLocationsDataExchangesListingsRequest {
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -632,7 +627,7 @@ export const ListProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsDataExchangesListingsRequest>;
 
 export type ListingList = Array<Listing>;
-export const ListingList = /*@__PURE__*/ S.Array(Listing) as any as S.Schema<ListingList>;
+const ListingList = /*@__PURE__*/ S.Array(Listing) as any as S.Schema<ListingList>;
 
 /** Message for response to the list of Listings. */
 export interface ListListingsResponse {
@@ -641,7 +636,7 @@ export interface ListListingsResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
-export const ListListingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListListingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listings: S.optional(ListingList),
     nextPageToken: S.optional(S.String),
@@ -656,7 +651,7 @@ export interface PatchProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: DataExchange;
 }
-export const PatchProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -680,7 +675,7 @@ export interface PatchProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: Listing;
 }
-export const PatchProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -703,7 +698,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -716,7 +711,7 @@ export interface SetIamPolicyProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -737,24 +732,23 @@ export interface SetIamPolicyProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+resource}:setIamPolicy",
-        baseUrl: "https://analyticshub.googleapis.com/",
-      }),
-    ),
+const SetIamPolicyProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+resource}:setIamPolicy",
+      baseUrl: "https://analyticshub.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SetIamPolicyProjectsLocationsDataExchangesListingsRequest",
 }) as any as S.Schema<SetIamPolicyProjectsLocationsDataExchangesListingsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference {
   /** Required. A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters. */
@@ -762,15 +756,15 @@ export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReferen
   /** Required. The ID of the project containing this dataset. */
   projectId?: string;
 }
-export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       datasetId: S.optional(S.String),
       projectId: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference",
-  }) as any as S.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference>;
+).annotate({
+  identifier: "GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference",
+}) as any as S.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference>;
 
 /** Defines the destination bigquery dataset. */
 export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset {
@@ -785,17 +779,14 @@ export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset {
   /** Optional. A user-friendly description of the dataset. */
   description?: string;
 }
-export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      labels: S.optional(StringMap),
-      friendlyName: S.optional(S.String),
-      datasetReference: S.optional(
-        GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference,
-      ),
-      location: S.optional(S.String),
-      description: S.optional(S.String),
-    }),
+const GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    labels: S.optional(StringMap),
+    friendlyName: S.optional(S.String),
+    datasetReference: S.optional(GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference),
+    location: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset",
 }) as any as S.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset>;
@@ -805,7 +796,7 @@ export interface SubscribeListingRequest {
   /** BigQuery destination dataset to create for the subscriber. */
   destinationDataset?: GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset;
 }
-export const SubscribeListingRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeListingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationDataset: S.optional(GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset),
   }),
@@ -817,7 +808,7 @@ export interface SubscribeProjectsLocationsDataExchangesListingsRequest {
   /** Request body */
   body?: SubscribeListingRequest;
 }
-export const SubscribeProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SubscribeListingRequest.pipe(T.HttpBody())),
@@ -834,14 +825,14 @@ export const SubscribeProjectsLocationsDataExchangesListingsRequest = /*@__PURE_
 
 /** Message for response when you subscribe to a listing. */
 export interface SubscribeListingResponse {}
-export const SubscribeListingResponse = Empty as any as S.Schema<SubscribeListingResponse>;
+const SubscribeListingResponse = Empty as any as S.Schema<SubscribeListingResponse>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -855,7 +846,7 @@ export interface TestIamPermissionsProjectsLocationsDataExchangesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDataExchangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -875,7 +866,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsDataExchangesListingsRequest {
@@ -884,8 +875,8 @@ export interface TestIamPermissionsProjectsLocationsDataExchangesListingsRequest
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDataExchangesListingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDataExchangesListingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -896,9 +887,9 @@ export const TestIamPermissionsProjectsLocationsDataExchangesListingsRequest =
         baseUrl: "https://analyticshub.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsDataExchangesListingsRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsDataExchangesListingsRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsDataExchangesListingsRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsDataExchangesListingsRequest>;
 
 export type CreateProjectsLocationsDataExchangesError =
   | NotFound

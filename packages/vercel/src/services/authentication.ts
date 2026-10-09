@@ -51,16 +51,16 @@ export type CreateApiKeysRequestAiGatewayQuotaRefreshPeriod =
   | "weekly"
   | "monthly"
   | "none";
-export const CreateApiKeysRequestAiGatewayQuotaRefreshPeriod = S.String;
+const CreateApiKeysRequestAiGatewayQuotaRefreshPeriod = S.String;
 
 export type CreateApiKeysRequestAiGatewayQuotaAlertThresholdsItem = 50 | 75 | 100;
-export const CreateApiKeysRequestAiGatewayQuotaAlertThresholdsItem = S.Number;
+const CreateApiKeysRequestAiGatewayQuotaAlertThresholdsItem = S.Number;
 
 /** Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. */
 export type CreateApiKeysRequestAiGatewayQuotaAlertThresholdsList = Array<
   CreateApiKeysRequestAiGatewayQuotaAlertThresholdsItem | (number & {})
 >;
-export const CreateApiKeysRequestAiGatewayQuotaAlertThresholdsList = /*@__PURE__*/ S.Array(
+const CreateApiKeysRequestAiGatewayQuotaAlertThresholdsList = /*@__PURE__*/ S.Array(
   CreateApiKeysRequestAiGatewayQuotaAlertThresholdsItem,
 ) as any as S.Schema<CreateApiKeysRequestAiGatewayQuotaAlertThresholdsList>;
 
@@ -75,7 +75,7 @@ export interface CreateApiKeysRequestAiGatewayQuota {
   /** Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. */
   alertThresholds?: CreateApiKeysRequestAiGatewayQuotaAlertThresholdsList;
 }
-export const CreateApiKeysRequestAiGatewayQuota = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeysRequestAiGatewayQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limitAmount: S.Number,
     includeByokInQuota: S.optional(S.Boolean),
@@ -88,7 +88,7 @@ export const CreateApiKeysRequestAiGatewayQuota = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional generic metadata for the API key. The accepted shape depends on the key's `purpose` and is validated on creation; for `ai-gateway` keys this accepts `environment`. */
 export type CreateApiKeysRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateApiKeysRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateApiKeysRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateApiKeysRequestMetadataMap>;
@@ -107,7 +107,7 @@ export interface CreateApiKeysRequest {
   /** Optional generic metadata for the API key. The accepted shape depends on the key's `purpose` and is validated on creation; for `ai-gateway` keys this accepts `environment`. */
   metadata?: CreateApiKeysRequestMetadataMap;
 }
-export const CreateApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purpose: S.String,
     projectId: S.optional(S.String),
@@ -120,7 +120,7 @@ export const CreateApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. Empty or undefined disables alerts. */
 export type APIKeyQuotaAlertThresholdsList = Array<number>;
-export const APIKeyQuotaAlertThresholdsList = /*@__PURE__*/ S.Array(
+const APIKeyQuotaAlertThresholdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<APIKeyQuotaAlertThresholdsList>;
 
@@ -149,7 +149,7 @@ export interface APIKeyQuota {
   /** Timestamp (in milliseconds) of when the quota was last updated. */
   updatedAt: number;
 }
-export const APIKeyQuota = /*@__PURE__*/ S.suspend(() =>
+const APIKeyQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaEntityId: S.String,
     limitAmount: S.Number,
@@ -197,7 +197,7 @@ export interface APIKey {
   /** Generic metadata attached to the API key. The accepted shape depends on the key's `purpose` and is validated when the key is created. For `ai-gateway` keys this carries `environment` and `spendAttribution`. */
   metadata?: unknown;
 }
-export const APIKey = /*@__PURE__*/ S.suspend(() =>
+const APIKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -222,7 +222,7 @@ export interface CreateApiKeysResponse {
   apiKeyString: string;
   apiKey: APIKey;
 }
-export const CreateApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyString: S.String,
     apiKey: APIKey,
@@ -239,7 +239,7 @@ export interface CreateAuthTokenRequest {
   /** The ID of the project to scope this token to */
   projectId?: string;
 }
-export const CreateAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -267,8 +267,6 @@ export type AuthTokenScopesItemCase0Origin =
   | "saml"
   | "sms"
   | "token-exchange-oidc";
-export const AuthTokenScopesItemCase0Origin = S.String;
-
 /** Possible step-up auth origins */
 export type AuthTokenScopesItemCase0SudoOrigin =
   | "email-otp"
@@ -276,27 +274,13 @@ export type AuthTokenScopesItemCase0SudoOrigin =
   | "recovery-code"
   | "totp"
   | "webauthn";
-export const AuthTokenScopesItemCase0SudoOrigin = S.String;
-
 export interface AuthTokenScopesItemCase0Sudo {
   expiresAt: number;
   /** Possible step-up auth origins */
   origin: AuthTokenScopesItemCase0SudoOrigin;
   verifiedAt?: number;
 }
-export const AuthTokenScopesItemCase0Sudo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expiresAt: S.Number,
-    origin: AuthTokenScopesItemCase0SudoOrigin,
-    verifiedAt: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AuthTokenScopesItemCase0Sudo",
-}) as any as S.Schema<AuthTokenScopesItemCase0Sudo>;
-
 export type AuthTokenScopesItemCase0Type = "user";
-export const AuthTokenScopesItemCase0Type = S.String;
-
 /** The access scopes granted to the token. */
 export interface AuthTokenScopesItemCase0 {
   createdAt: number;
@@ -305,16 +289,6 @@ export interface AuthTokenScopesItemCase0 {
   sudo?: AuthTokenScopesItemCase0Sudo;
   type: AuthTokenScopesItemCase0Type;
 }
-export const AuthTokenScopesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    expiresAt: S.optional(S.Number),
-    origin: S.optional(AuthTokenScopesItemCase0Origin),
-    sudo: S.optional(AuthTokenScopesItemCase0Sudo),
-    type: AuthTokenScopesItemCase0Type,
-  }),
-).annotate({ identifier: "AuthTokenScopesItemCase0" }) as any as S.Schema<AuthTokenScopesItemCase0>;
-
 export type AuthTokenScopesItemCase1Origin =
   | "app"
   | "apple"
@@ -333,11 +307,7 @@ export type AuthTokenScopesItemCase1Origin =
   | "saml"
   | "sms"
   | "token-exchange-oidc";
-export const AuthTokenScopesItemCase1Origin = S.String;
-
 export type AuthTokenScopesItemCase1Type = "team";
-export const AuthTokenScopesItemCase1Type = S.String;
-
 /** The access scopes granted to the token. */
 export interface AuthTokenScopesItemCase1 {
   createdAt: number;
@@ -346,22 +316,12 @@ export interface AuthTokenScopesItemCase1 {
   teamId: string;
   type: AuthTokenScopesItemCase1Type;
 }
-export const AuthTokenScopesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.Number,
-    expiresAt: S.optional(S.Number),
-    origin: S.optional(AuthTokenScopesItemCase1Origin),
-    teamId: S.String,
-    type: AuthTokenScopesItemCase1Type,
-  }),
-).annotate({ identifier: "AuthTokenScopesItemCase1" }) as any as S.Schema<AuthTokenScopesItemCase1>;
-
 export type AuthTokenScopesItem = AuthTokenScopesItemCase0 | AuthTokenScopesItemCase1;
-export const AuthTokenScopesItem = S.Unknown as any as S.Schema<AuthTokenScopesItem>;
+const AuthTokenScopesItem = S.Unknown as any as S.Schema<AuthTokenScopesItem>;
 
 /** The access scopes granted to the token. */
 export type AuthTokenScopesList = Array<AuthTokenScopesItem>;
-export const AuthTokenScopesList = /*@__PURE__*/ S.Array(
+const AuthTokenScopesList = /*@__PURE__*/ S.Array(
   AuthTokenScopesItem,
 ) as any as S.Schema<AuthTokenScopesList>;
 
@@ -394,7 +354,7 @@ export interface AuthToken {
   /** The type of the token. */
   type: string;
 }
-export const AuthToken = /*@__PURE__*/ S.suspend(() =>
+const AuthToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeAt: S.Number,
     createdAt: S.Number,
@@ -417,7 +377,7 @@ export interface CreateAuthTokenResponse {
   bearerToken: string;
   token: AuthToken;
 }
-export const CreateAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bearerToken: S.String,
     token: AuthToken,
@@ -428,7 +388,7 @@ export interface DeleteAuthTokenRequest {
   /** The identifier of the token to invalidate. The special value "current" may be supplied, which invalidates the token that the HTTP request was authenticated with. */
   tokenId: string;
 }
-export const DeleteAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v3/user/tokens/{tokenId}", code: 200 })),
@@ -438,7 +398,7 @@ export interface DeleteAuthTokenResponse {
   /** The unique identifier of the token that was deleted. */
   tokenId: string;
 }
-export const DeleteAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String,
   }),
@@ -446,8 +406,6 @@ export const DeleteAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The grant type, when using x-www-form-urlencoded content type */
 export type ExchangeSsoTokenRequestBodyCase0GrantType = "authorization_code";
-export const ExchangeSsoTokenRequestBodyCase0GrantType = S.String;
-
 export interface ExchangeSsoTokenRequestBodyCase0 {
   /** The sensitive code received from Vercel */
   code: string;
@@ -462,23 +420,8 @@ export interface ExchangeSsoTokenRequestBodyCase0 {
   /** The grant type, when using x-www-form-urlencoded content type */
   grant_type: ExchangeSsoTokenRequestBodyCase0GrantType;
 }
-export const ExchangeSsoTokenRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    state: S.optional(S.String),
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    redirect_uri: S.optional(S.String),
-    grant_type: ExchangeSsoTokenRequestBodyCase0GrantType,
-  }),
-).annotate({
-  identifier: "ExchangeSsoTokenRequestBodyCase0",
-}) as any as S.Schema<ExchangeSsoTokenRequestBodyCase0>;
-
 /** The grant type, when using x-www-form-urlencoded content type */
 export type ExchangeSsoTokenRequestBodyCase1GrantType = "refresh_token";
-export const ExchangeSsoTokenRequestBodyCase1GrantType = S.String;
-
 export interface ExchangeSsoTokenRequestBodyCase1 {
   /** The refresh token received from previous token exchange */
   refresh_token: string | Redacted.Redacted<string>;
@@ -489,27 +432,15 @@ export interface ExchangeSsoTokenRequestBodyCase1 {
   /** The grant type, when using x-www-form-urlencoded content type */
   grant_type: ExchangeSsoTokenRequestBodyCase1GrantType;
 }
-export const ExchangeSsoTokenRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refresh_token: S.String.pipe(T.SensitiveValue({})),
-    client_id: S.String,
-    client_secret: S.String.pipe(T.SensitiveValue({})),
-    grant_type: ExchangeSsoTokenRequestBodyCase1GrantType,
-  }),
-).annotate({
-  identifier: "ExchangeSsoTokenRequestBodyCase1",
-}) as any as S.Schema<ExchangeSsoTokenRequestBodyCase1>;
-
 export type ExchangeSsoTokenRequestBody =
   | ExchangeSsoTokenRequestBodyCase0
   | ExchangeSsoTokenRequestBodyCase1;
-export const ExchangeSsoTokenRequestBody =
-  S.Unknown as any as S.Schema<ExchangeSsoTokenRequestBody>;
+const ExchangeSsoTokenRequestBody = S.Unknown as any as S.Schema<ExchangeSsoTokenRequestBody>;
 
 export interface ExchangeSsoTokenRequest {
   body: ExchangeSsoTokenRequestBody;
 }
-export const ExchangeSsoTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ExchangeSsoTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: ExchangeSsoTokenRequestBody.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/integrations/sso/token", code: 200 })),
@@ -522,18 +453,6 @@ export interface ExchangeSsoTokenResponseBodyCase0 {
   refresh_token?: string | Redacted.Redacted<string>;
   token_type: string | null;
 }
-export const ExchangeSsoTokenResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access_token: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    expires_in: S.optional(S.Number),
-    id_token: S.String,
-    refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    token_type: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ExchangeSsoTokenResponseBodyCase0",
-}) as any as S.Schema<ExchangeSsoTokenResponseBodyCase0>;
-
 export interface ExchangeSsoTokenResponseBodyCase1 {
   access_token: string | Redacted.Redacted<string>;
   expires_in: number;
@@ -541,26 +460,13 @@ export interface ExchangeSsoTokenResponseBodyCase1 {
   refresh_token: string | Redacted.Redacted<string>;
   token_type: string;
 }
-export const ExchangeSsoTokenResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access_token: S.String.pipe(T.SensitiveValue({})),
-    expires_in: S.Number,
-    id_token: S.String,
-    refresh_token: S.String.pipe(T.SensitiveValue({})),
-    token_type: S.String,
-  }),
-).annotate({
-  identifier: "ExchangeSsoTokenResponseBodyCase1",
-}) as any as S.Schema<ExchangeSsoTokenResponseBodyCase1>;
-
 export type ExchangeSsoTokenResponseBody =
   | ExchangeSsoTokenResponseBodyCase0
   | ExchangeSsoTokenResponseBodyCase1;
-export const ExchangeSsoTokenResponseBody =
-  S.Unknown as any as S.Schema<ExchangeSsoTokenResponseBody>;
+const ExchangeSsoTokenResponseBody = S.Unknown as any as S.Schema<ExchangeSsoTokenResponseBody>;
 
 export type ExchangeSsoTokenResponse = ExchangeSsoTokenResponseBody;
-export const ExchangeSsoTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const ExchangeSsoTokenResponse = /*@__PURE__*/ S.suspend(() =>
   ExchangeSsoTokenResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ExchangeSsoTokenResponse" }) as any as S.Schema<ExchangeSsoTokenResponse>;
 
@@ -568,7 +474,7 @@ export interface GetAuthTokenRequest {
   /** The identifier of the token to retrieve. The special value "current" may be supplied, which returns the metadata for the token that the current HTTP request is authenticated with. */
   tokenId: string;
 }
-export const GetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v5/user/tokens/{tokenId}", code: 200 })),
@@ -577,14 +483,14 @@ export const GetAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetAuthTokenResponse {
   token: AuthToken;
 }
-export const GetAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: AuthToken,
   }),
 ).annotate({ identifier: "GetAuthTokenResponse" }) as any as S.Schema<GetAuthTokenResponse>;
 
 export interface ListAuthTokensRequest {}
-export const ListAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v6/user/tokens", code: 200 })),
 ).annotate({ identifier: "ListAuthTokensRequest" }) as any as S.Schema<ListAuthTokensRequest>;
 
@@ -593,34 +499,11 @@ export interface ListAuthTokensResponseBodyCase0Pagination {
   next: string | null;
   prev: string | null;
 }
-export const ListAuthTokensResponseBodyCase0Pagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.NullOr(S.String),
-    prev: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ListAuthTokensResponseBodyCase0Pagination",
-}) as any as S.Schema<ListAuthTokensResponseBodyCase0Pagination>;
-
 export type ListAuthTokensResponseBodyCase0TokensList = Array<AuthToken>;
-export const ListAuthTokensResponseBodyCase0TokensList = /*@__PURE__*/ S.Array(
-  AuthToken,
-) as any as S.Schema<ListAuthTokensResponseBodyCase0TokensList>;
-
 export interface ListAuthTokensResponseBodyCase0 {
   pagination: ListAuthTokensResponseBodyCase0Pagination;
   tokens: ListAuthTokensResponseBodyCase0TokensList;
 }
-export const ListAuthTokensResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pagination: ListAuthTokensResponseBodyCase0Pagination,
-    tokens: ListAuthTokensResponseBodyCase0TokensList,
-  }),
-).annotate({
-  identifier: "ListAuthTokensResponseBodyCase0",
-}) as any as S.Schema<ListAuthTokensResponseBodyCase0>;
-
 /** This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data. */
 export interface Pagination {
   /** Amount of items in the current page. */
@@ -630,38 +513,18 @@ export interface Pagination {
   /** Timestamp that must be used to request the previous page. */
   prev: number | null;
 }
-export const Pagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.NullOr(S.Number),
-    prev: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "Pagination" }) as any as S.Schema<Pagination>;
-
 export type ListAuthTokensResponseBodyCase1TokensList = Array<AuthToken>;
-export const ListAuthTokensResponseBodyCase1TokensList =
-  ListAuthTokensResponseBodyCase0TokensList as any as S.Schema<ListAuthTokensResponseBodyCase1TokensList>;
-
 export interface ListAuthTokensResponseBodyCase1 {
   pagination: Pagination;
   tokens: ListAuthTokensResponseBodyCase1TokensList;
 }
-export const ListAuthTokensResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pagination: Pagination,
-    tokens: ListAuthTokensResponseBodyCase1TokensList,
-  }),
-).annotate({
-  identifier: "ListAuthTokensResponseBodyCase1",
-}) as any as S.Schema<ListAuthTokensResponseBodyCase1>;
-
 export type ListAuthTokensResponseBody =
   | ListAuthTokensResponseBodyCase0
   | ListAuthTokensResponseBodyCase1;
-export const ListAuthTokensResponseBody = S.Unknown as any as S.Schema<ListAuthTokensResponseBody>;
+const ListAuthTokensResponseBody = S.Unknown as any as S.Schema<ListAuthTokensResponseBody>;
 
 export type ListAuthTokensResponse = ListAuthTokensResponseBody;
-export const ListAuthTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthTokensResponse = /*@__PURE__*/ S.suspend(() =>
   ListAuthTokensResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListAuthTokensResponse" }) as any as S.Schema<ListAuthTokensResponse>;
 

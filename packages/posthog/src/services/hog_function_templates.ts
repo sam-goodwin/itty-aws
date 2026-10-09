@@ -40,7 +40,7 @@ export interface GetHogFunctionTemplateRequest {
   project_id: string;
   template_id: string;
 }
-export const GetHogFunctionTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHogFunctionTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     template_id: S.String.pipe(T.Label()),
@@ -69,7 +69,7 @@ export interface HogFunctionMappingTemplate {
   /** Additional input schema fields specific to this mapping. */
   inputs_schema?: unknown;
 }
-export const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     include_by_default: S.optional(S.NullOr(S.Boolean)),
@@ -84,7 +84,7 @@ export const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** Pre-defined mapping configurations for destination templates. */
 export type HogFunctionTemplateMappingTemplatesList = Array<HogFunctionMappingTemplate>;
-export const HogFunctionTemplateMappingTemplatesList = /*@__PURE__*/ S.Array(
+const HogFunctionTemplateMappingTemplatesList = /*@__PURE__*/ S.Array(
   HogFunctionMappingTemplate,
 ) as any as S.Schema<HogFunctionTemplateMappingTemplatesList>;
 
@@ -118,7 +118,7 @@ export interface HogFunctionTemplate {
   /** Pre-defined mapping configurations for destination templates. */
   mapping_templates?: HogFunctionTemplateMappingTemplatesList | null;
 }
-export const HogFunctionTemplate = /*@__PURE__*/ S.suspend(() =>
+const HogFunctionTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -151,7 +151,7 @@ export interface ListHogFunctionTemplatesRequest {
   /** Comma-separated list of template types to include (e.g. destination,email,sms_provider). */
   types?: string;
 }
-export const ListHogFunctionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHogFunctionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -167,7 +167,7 @@ export const ListHogFunctionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHogFunctionTemplatesRequest>;
 
 export type PaginatedHogFunctionTemplateListResultsList = Array<HogFunctionTemplate>;
-export const PaginatedHogFunctionTemplateListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedHogFunctionTemplateListResultsList = /*@__PURE__*/ S.Array(
   HogFunctionTemplate,
 ) as any as S.Schema<PaginatedHogFunctionTemplateListResultsList>;
 
@@ -177,7 +177,7 @@ export interface PaginatedHogFunctionTemplateList {
   previous?: string | null;
   results?: PaginatedHogFunctionTemplateListResultsList;
 }
-export const PaginatedHogFunctionTemplateList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedHogFunctionTemplateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -200,7 +200,7 @@ export interface ListPublicHogFunctionTemplatesRequest {
   /** Comma-separated list of template types to include (e.g. destination,email,sms_provider). */
   types?: string;
 }
-export const ListPublicHogFunctionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicHogFunctionTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),

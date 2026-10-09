@@ -195,7 +195,7 @@ export type IdentityPoolId = string;
 export interface BulkPublishRequest {
   IdentityPoolId: string;
 }
-export const BulkPublishRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkPublishRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
     T.all(
       ns,
@@ -211,7 +211,7 @@ export const BulkPublishRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BulkPublishResponse {
   IdentityPoolId?: string;
 }
-export const BulkPublishResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkPublishResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityPoolId: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "BulkPublishResponse" }) as any as S.Schema<BulkPublishResponse>;
 export type IdentityId = string;
@@ -221,7 +221,7 @@ export interface DeleteDatasetRequest {
   IdentityId: string;
   DatasetName: string;
 }
-export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -250,7 +250,7 @@ export interface Dataset {
   DataStorage?: number;
   NumRecords?: number;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityId: S.optional(S.String),
     DatasetName: S.optional(S.String),
@@ -264,7 +264,7 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDatasetResponse {
   Dataset?: Dataset;
 }
-export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Dataset: S.optional(Dataset) }).pipe(ns),
 ).annotate({ identifier: "DeleteDatasetResponse" }) as any as S.Schema<DeleteDatasetResponse>;
 export interface DescribeDatasetRequest {
@@ -272,7 +272,7 @@ export interface DescribeDatasetRequest {
   IdentityId: string;
   DatasetName: string;
 }
-export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -295,12 +295,11 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDatasetResponse {
   Dataset?: Dataset;
 }
-export const DescribeDatasetResponse =
-  DeleteDatasetResponse as any as S.Schema<DescribeDatasetResponse>;
+const DescribeDatasetResponse = DeleteDatasetResponse as any as S.Schema<DescribeDatasetResponse>;
 export interface DescribeIdentityPoolUsageRequest {
   IdentityPoolId: string;
 }
-export const DescribeIdentityPoolUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeIdentityPoolUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
     T.all(
       ns,
@@ -321,7 +320,7 @@ export interface IdentityPoolUsage {
   DataStorage?: number;
   LastModifiedDate?: Date;
 }
-export const IdentityPoolUsage = /*@__PURE__*/ S.suspend(() =>
+const IdentityPoolUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.optional(S.String),
     SyncSessionsCount: S.optional(S.Number),
@@ -332,7 +331,7 @@ export const IdentityPoolUsage = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeIdentityPoolUsageResponse {
   IdentityPoolUsage?: IdentityPoolUsage;
 }
-export const DescribeIdentityPoolUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeIdentityPoolUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityPoolUsage: S.optional(IdentityPoolUsage) }).pipe(ns),
 ).annotate({
   identifier: "DescribeIdentityPoolUsageResponse",
@@ -341,7 +340,7 @@ export interface DescribeIdentityUsageRequest {
   IdentityPoolId: string;
   IdentityId: string;
 }
-export const DescribeIdentityUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeIdentityUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -366,7 +365,7 @@ export interface IdentityUsage {
   DatasetCount?: number;
   DataStorage?: number;
 }
-export const IdentityUsage = /*@__PURE__*/ S.suspend(() =>
+const IdentityUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityId: S.optional(S.String),
     IdentityPoolId: S.optional(S.String),
@@ -378,7 +377,7 @@ export const IdentityUsage = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeIdentityUsageResponse {
   IdentityUsage?: IdentityUsage;
 }
-export const DescribeIdentityUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeIdentityUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityUsage: S.optional(IdentityUsage) }).pipe(ns),
 ).annotate({
   identifier: "DescribeIdentityUsageResponse",
@@ -386,7 +385,7 @@ export const DescribeIdentityUsageResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetBulkPublishDetailsRequest {
   IdentityPoolId: string;
 }
-export const GetBulkPublishDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBulkPublishDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
     T.all(
       ns,
@@ -407,7 +406,7 @@ export type BulkPublishStatus =
   | "FAILED"
   | "SUCCEEDED"
   | (string & {});
-export const BulkPublishStatus = S.String;
+const BulkPublishStatus = S.String;
 
 export interface GetBulkPublishDetailsResponse {
   IdentityPoolId?: string;
@@ -416,7 +415,7 @@ export interface GetBulkPublishDetailsResponse {
   BulkPublishStatus?: BulkPublishStatus;
   FailureMessage?: string;
 }
-export const GetBulkPublishDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBulkPublishDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.optional(S.String),
     BulkPublishStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -430,7 +429,7 @@ export const GetBulkPublishDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCognitoEventsRequest {
   IdentityPoolId: string;
 }
-export const GetCognitoEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCognitoEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
     T.all(
       ns,
@@ -446,17 +445,17 @@ export const GetCognitoEventsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CognitoEventType = string;
 export type LambdaFunctionArn = string;
 export type Events = { [key: string]: string | undefined };
-export const Events = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Events = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface GetCognitoEventsResponse {
   Events?: { [key: string]: string | undefined };
 }
-export const GetCognitoEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCognitoEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Events: S.optional(Events) }).pipe(ns),
 ).annotate({ identifier: "GetCognitoEventsResponse" }) as any as S.Schema<GetCognitoEventsResponse>;
 export interface GetIdentityPoolConfigurationRequest {
   IdentityPoolId: string;
 }
-export const GetIdentityPoolConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIdentityPoolConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")) }).pipe(
     T.all(
       ns,
@@ -473,25 +472,25 @@ export const GetIdentityPoolConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIdentityPoolConfigurationRequest>;
 export type ApplicationArn = string;
 export type ApplicationArnList = string[];
-export const ApplicationArnList = /*@__PURE__*/ S.Array(S.String);
+const ApplicationArnList = /*@__PURE__*/ S.Array(S.String);
 export type AssumeRoleArn = string;
 export interface PushSync {
   ApplicationArns?: string[];
   RoleArn?: string;
 }
-export const PushSync = /*@__PURE__*/ S.suspend(() =>
+const PushSync = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApplicationArns: S.optional(ApplicationArnList), RoleArn: S.optional(S.String) }),
 ).annotate({ identifier: "PushSync" }) as any as S.Schema<PushSync>;
 export type StreamName = string;
 export type StreamingStatus = "ENABLED" | "DISABLED" | (string & {});
-export const StreamingStatus = S.String;
+const StreamingStatus = S.String;
 
 export interface CognitoStreams {
   StreamName?: string;
   RoleArn?: string;
   StreamingStatus?: StreamingStatus;
 }
-export const CognitoStreams = /*@__PURE__*/ S.suspend(() =>
+const CognitoStreams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     RoleArn: S.optional(S.String),
@@ -503,7 +502,7 @@ export interface GetIdentityPoolConfigurationResponse {
   PushSync?: PushSync;
   CognitoStreams?: CognitoStreams;
 }
-export const GetIdentityPoolConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIdentityPoolConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.optional(S.String),
     PushSync: S.optional(PushSync),
@@ -519,7 +518,7 @@ export interface ListDatasetsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -541,13 +540,13 @@ export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListDatasetsRequest" }) as any as S.Schema<ListDatasetsRequest>;
 export type DatasetList = Dataset[];
-export const DatasetList = /*@__PURE__*/ S.Array(Dataset);
+const DatasetList = /*@__PURE__*/ S.Array(Dataset);
 export interface ListDatasetsResponse {
   Datasets?: Dataset[];
   Count?: number;
   NextToken?: string;
 }
-export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Datasets: S.optional(DatasetList),
     Count: S.optional(S.Number),
@@ -558,7 +557,7 @@ export interface ListIdentityPoolUsageRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListIdentityPoolUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIdentityPoolUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -569,14 +568,14 @@ export const ListIdentityPoolUsageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListIdentityPoolUsageRequest",
 }) as any as S.Schema<ListIdentityPoolUsageRequest>;
 export type IdentityPoolUsageList = IdentityPoolUsage[];
-export const IdentityPoolUsageList = /*@__PURE__*/ S.Array(IdentityPoolUsage);
+const IdentityPoolUsageList = /*@__PURE__*/ S.Array(IdentityPoolUsage);
 export interface ListIdentityPoolUsageResponse {
   IdentityPoolUsages?: IdentityPoolUsage[];
   MaxResults?: number;
   Count?: number;
   NextToken?: string;
 }
-export const ListIdentityPoolUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIdentityPoolUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolUsages: S.optional(IdentityPoolUsageList),
     MaxResults: S.optional(S.Number),
@@ -596,7 +595,7 @@ export interface ListRecordsRequest {
   MaxResults?: number;
   SyncSessionToken?: string;
 }
-export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -630,7 +629,7 @@ export interface Record {
   LastModifiedBy?: string;
   DeviceLastModifiedDate?: Date;
 }
-export const Record = /*@__PURE__*/ S.suspend(() =>
+const Record = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Key: S.optional(S.String),
     Value: S.optional(S.String),
@@ -641,9 +640,9 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type RecordList = Record[];
-export const RecordList = /*@__PURE__*/ S.Array(Record);
+const RecordList = /*@__PURE__*/ S.Array(Record);
 export type MergedDatasetNameList = string[];
-export const MergedDatasetNameList = ApplicationArnList as any as S.Schema<MergedDatasetNameList>;
+const MergedDatasetNameList = ApplicationArnList as any as S.Schema<MergedDatasetNameList>;
 export interface ListRecordsResponse {
   Records?: Record[];
   NextToken?: string;
@@ -655,7 +654,7 @@ export interface ListRecordsResponse {
   DatasetDeletedAfterRequestedSyncCount?: boolean;
   SyncSessionToken?: string;
 }
-export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Records: S.optional(RecordList),
     NextToken: S.optional(S.String),
@@ -669,7 +668,7 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "ListRecordsResponse" }) as any as S.Schema<ListRecordsResponse>;
 export type Platform = "APNS" | "APNS_SANDBOX" | "GCM" | "ADM" | (string & {});
-export const Platform = S.String;
+const Platform = S.String;
 
 export type PushToken = string;
 export interface RegisterDeviceRequest {
@@ -678,7 +677,7 @@ export interface RegisterDeviceRequest {
   Platform: Platform;
   Token: string;
 }
-export const RegisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -703,14 +702,14 @@ export type DeviceId = string;
 export interface RegisterDeviceResponse {
   DeviceId?: string;
 }
-export const RegisterDeviceResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterDeviceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DeviceId: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "RegisterDeviceResponse" }) as any as S.Schema<RegisterDeviceResponse>;
 export interface SetCognitoEventsRequest {
   IdentityPoolId: string;
   Events: { [key: string]: string | undefined };
 }
-export const SetCognitoEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetCognitoEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")), Events: Events }).pipe(
     T.all(
       ns,
@@ -724,15 +723,15 @@ export const SetCognitoEventsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SetCognitoEventsRequest" }) as any as S.Schema<SetCognitoEventsRequest>;
 export interface SetCognitoEventsResponse {}
-export const SetCognitoEventsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "SetCognitoEventsResponse" }) as any as S.Schema<SetCognitoEventsResponse>;
+const SetCognitoEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  identifier: "SetCognitoEventsResponse",
+}) as any as S.Schema<SetCognitoEventsResponse>;
 export interface SetIdentityPoolConfigurationRequest {
   IdentityPoolId: string;
   PushSync?: PushSync;
   CognitoStreams?: CognitoStreams;
 }
-export const SetIdentityPoolConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIdentityPoolConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     PushSync: S.optional(PushSync),
@@ -756,7 +755,7 @@ export interface SetIdentityPoolConfigurationResponse {
   PushSync?: PushSync;
   CognitoStreams?: CognitoStreams;
 }
-export const SetIdentityPoolConfigurationResponse =
+const SetIdentityPoolConfigurationResponse =
   GetIdentityPoolConfigurationResponse as any as S.Schema<SetIdentityPoolConfigurationResponse>;
 export interface SubscribeToDatasetRequest {
   IdentityPoolId: string;
@@ -764,7 +763,7 @@ export interface SubscribeToDatasetRequest {
   DatasetName: string;
   DeviceId: string;
 }
-export const SubscribeToDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeToDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -788,9 +787,7 @@ export const SubscribeToDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscribeToDatasetRequest",
 }) as any as S.Schema<SubscribeToDatasetRequest>;
 export interface SubscribeToDatasetResponse {}
-export const SubscribeToDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
+const SubscribeToDatasetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "SubscribeToDatasetResponse",
 }) as any as S.Schema<SubscribeToDatasetResponse>;
 export interface UnsubscribeFromDatasetRequest {
@@ -799,7 +796,7 @@ export interface UnsubscribeFromDatasetRequest {
   DatasetName: string;
   DeviceId: string;
 }
-export const UnsubscribeFromDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const UnsubscribeFromDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -823,10 +820,10 @@ export const UnsubscribeFromDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnsubscribeFromDatasetRequest",
 }) as any as S.Schema<UnsubscribeFromDatasetRequest>;
 export interface UnsubscribeFromDatasetResponse {}
-export const UnsubscribeFromDatasetResponse =
+const UnsubscribeFromDatasetResponse =
   SubscribeToDatasetResponse as any as S.Schema<UnsubscribeFromDatasetResponse>;
 export type Operation = "replace" | "remove" | (string & {});
-export const Operation = S.String;
+const Operation = S.String;
 
 export interface RecordPatch {
   Op: Operation;
@@ -835,7 +832,7 @@ export interface RecordPatch {
   SyncCount: number;
   DeviceLastModifiedDate?: Date;
 }
-export const RecordPatch = /*@__PURE__*/ S.suspend(() =>
+const RecordPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Op: Operation,
     Key: S.String,
@@ -845,7 +842,7 @@ export const RecordPatch = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RecordPatch" }) as any as S.Schema<RecordPatch>;
 export type RecordPatchList = RecordPatch[];
-export const RecordPatchList = /*@__PURE__*/ S.Array(RecordPatch);
+const RecordPatchList = /*@__PURE__*/ S.Array(RecordPatch);
 export type ClientContext = string;
 export interface UpdateRecordsRequest {
   IdentityPoolId: string;
@@ -856,7 +853,7 @@ export interface UpdateRecordsRequest {
   SyncSessionToken: string;
   ClientContext?: string;
 }
-export const UpdateRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityPoolId: S.String.pipe(T.HttpLabel("IdentityPoolId")),
     IdentityId: S.String.pipe(T.HttpLabel("IdentityId")),
@@ -883,7 +880,7 @@ export const UpdateRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRecordsResponse {
   Records?: Record[];
 }
-export const UpdateRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Records: S.optional(RecordList) }).pipe(ns),
 ).annotate({ identifier: "UpdateRecordsResponse" }) as any as S.Schema<UpdateRecordsResponse>;
 export type ExceptionMessage = string;

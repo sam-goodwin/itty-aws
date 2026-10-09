@@ -11,7 +11,7 @@ export type { ModalOpError, ModalOpContext };
 export interface ContainerCheckpointRequest {
   checkpointId?: string;
 }
-export const ContainerCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkpointId: S.optional(S.String),
   }).pipe(
@@ -22,7 +22,7 @@ export const ContainerCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerCheckpointRequest>;
 
 export interface ContainerCheckpointResponse {}
-export const ContainerCheckpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ContainerCheckpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ContainerCheckpointResponse",
 }) as any as S.Schema<ContainerCheckpointResponse>;
 
@@ -32,7 +32,7 @@ export interface RuntimeInputMessage {
   messageIndex?: string;
   eof?: boolean;
 }
-export const RuntimeInputMessage = /*@__PURE__*/ S.suspend(() =>
+const RuntimeInputMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     messageIndex: S.optional(S.String),
@@ -44,7 +44,7 @@ export interface ContainerExecPutInputRequest {
   execId?: string;
   input?: RuntimeInputMessage;
 }
-export const ContainerExecPutInputRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerExecPutInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     execId: S.optional(S.String),
     input: S.optional(RuntimeInputMessage),
@@ -56,14 +56,14 @@ export const ContainerExecPutInputRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerExecPutInputRequest>;
 
 export interface ContainerExecPutInputResponse {}
-export const ContainerExecPutInputResponse =
+const ContainerExecPutInputResponse =
   ContainerCheckpointResponse as any as S.Schema<ContainerExecPutInputResponse>;
 
 export interface ContainerExecWaitRequest {
   execId?: string;
   timeout?: number;
 }
-export const ContainerExecWaitRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerExecWaitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     execId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -76,7 +76,7 @@ export interface ContainerExecWaitResponse {
   exitCode?: number;
   completed?: boolean;
 }
-export const ContainerExecWaitResponse = /*@__PURE__*/ S.suspend(() =>
+const ContainerExecWaitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exitCode: S.optional(S.Number),
     completed: S.optional(S.Boolean),
@@ -90,7 +90,7 @@ export interface ContainerHeartbeatRequest {
   /** Bad client version. */
   canceledInputsReturnOutputsV2?: boolean;
 }
-export const ContainerHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canceledInputsReturnOutputs: S.optional(S.Boolean),
     canceledInputsReturnOutputsV2: S.optional(S.Boolean),
@@ -102,14 +102,14 @@ export const ContainerHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerHeartbeatRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface CancelInputEvent {
   inputIds?: StringList;
   terminateContainers?: boolean;
   cancellationReason?: string;
 }
-export const CancelInputEvent = /*@__PURE__*/ S.suspend(() =>
+const CancelInputEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputIds: S.optional(StringList),
     terminateContainers: S.optional(S.Boolean),
@@ -120,7 +120,7 @@ export const CancelInputEvent = /*@__PURE__*/ S.suspend(() =>
 export interface ContainerHeartbeatResponse {
   cancelInputEvent?: CancelInputEvent;
 }
-export const ContainerHeartbeatResponse = /*@__PURE__*/ S.suspend(() =>
+const ContainerHeartbeatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelInputEvent: S.optional(CancelInputEvent),
   }),
@@ -129,14 +129,14 @@ export const ContainerHeartbeatResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerHeartbeatResponse>;
 
 export interface ContainerHelloRequest {}
-export const ContainerHelloRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerHelloRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerHello", code: 200 }),
   ),
 ).annotate({ identifier: "ContainerHelloRequest" }) as any as S.Schema<ContainerHelloRequest>;
 
 export interface ContainerHelloResponse {}
-export const ContainerHelloResponse =
+const ContainerHelloResponse =
   ContainerCheckpointResponse as any as S.Schema<ContainerHelloResponse>;
 
 export type TaskState =
@@ -152,17 +152,17 @@ export type TaskState =
   | "TASK_STATE_PREEMPTIBLE"
   | "TASK_STATE_PREEMPTED"
   | "TASK_STATE_LOADING_CHECKPOINT_IMAGE";
-export const TaskState = S.String;
+const TaskState = S.String;
 
 export type FileDescriptor =
   | "FILE_DESCRIPTOR_UNSPECIFIED"
   | "FILE_DESCRIPTOR_STDOUT"
   | "FILE_DESCRIPTOR_STDERR"
   | "FILE_DESCRIPTOR_INFO";
-export const FileDescriptor = S.String;
+const FileDescriptor = S.String;
 
 export type ProgressType = "IMAGE_SNAPSHOT_UPLOAD" | "FUNCTION_QUEUED";
-export const ProgressType = S.String;
+const ProgressType = S.String;
 
 export interface TaskProgress {
   len?: string;
@@ -170,7 +170,7 @@ export interface TaskProgress {
   progressType?: ProgressType | (string & {});
   description?: string;
 }
-export const TaskProgress = /*@__PURE__*/ S.suspend(() =>
+const TaskProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     len: S.optional(S.String),
     pos: S.optional(S.String),
@@ -191,7 +191,7 @@ export interface TaskLogs {
   containerId?: string;
   containerName?: string;
 }
-export const TaskLogs = /*@__PURE__*/ S.suspend(() =>
+const TaskLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     taskState: S.optional(TaskState),
@@ -207,25 +207,24 @@ export const TaskLogs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskLogs" }) as any as S.Schema<TaskLogs>;
 
 export type TaskLogsList = Array<TaskLogs>;
-export const TaskLogsList = /*@__PURE__*/ S.Array(TaskLogs) as any as S.Schema<TaskLogsList>;
+const TaskLogsList = /*@__PURE__*/ S.Array(TaskLogs) as any as S.Schema<TaskLogsList>;
 
 export interface ContainerLogRequest {
   logs?: TaskLogsList;
 }
-export const ContainerLogRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: S.optional(TaskLogsList),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerLog", code: 200 })),
 ).annotate({ identifier: "ContainerLogRequest" }) as any as S.Schema<ContainerLogRequest>;
 
 export interface ContainerLogResponse {}
-export const ContainerLogResponse =
-  ContainerCheckpointResponse as any as S.Schema<ContainerLogResponse>;
+const ContainerLogResponse = ContainerCheckpointResponse as any as S.Schema<ContainerLogResponse>;
 
 export interface ContainerReloadVolumesRequest {
   taskId?: string;
 }
-export const ContainerReloadVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerReloadVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
   }).pipe(
@@ -236,11 +235,11 @@ export const ContainerReloadVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerReloadVolumesRequest>;
 
 export interface ContainerReloadVolumesResponse {}
-export const ContainerReloadVolumesResponse =
+const ContainerReloadVolumesResponse =
   ContainerCheckpointResponse as any as S.Schema<ContainerReloadVolumesResponse>;
 
 export interface ContainerServerLifecycleReadyRequest {}
-export const ContainerServerLifecycleReadyRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerServerLifecycleReadyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -253,14 +252,12 @@ export const ContainerServerLifecycleReadyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ContainerServerLifecycleReadyRequest>;
 
 export interface ContainerServerLifecycleReadyResponse {}
-export const ContainerServerLifecycleReadyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ContainerServerLifecycleReadyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ContainerServerLifecycleReadyResponse",
 }) as any as S.Schema<ContainerServerLifecycleReadyResponse>;
 
 export type PTYInfoPTYType = "PTY_TYPE_UNSPECIFIED" | "PTY_TYPE_FUNCTION" | "PTY_TYPE_SHELL";
-export const PTYInfoPTYType = S.String;
+const PTYInfoPTYType = S.String;
 
 export interface PTYInfo {
   enabled?: boolean;
@@ -274,7 +271,7 @@ export interface PTYInfo {
   ptyType?: PTYInfoPTYType | (string & {});
   noTerminateOnIdleStdin?: boolean;
 }
-export const PTYInfo = /*@__PURE__*/ S.suspend(() =>
+const PTYInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     winszRows: S.optional(S.Number),
@@ -292,7 +289,7 @@ export type ExecOutputOption =
   | "EXEC_OUTPUT_OPTION_DEVNULL"
   | "EXEC_OUTPUT_OPTION_PIPE"
   | "EXEC_OUTPUT_OPTION_STDOUT";
-export const ExecOutputOption = S.String;
+const ExecOutputOption = S.String;
 
 export interface ExecContainerRequest {
   taskId?: string;
@@ -309,7 +306,7 @@ export interface ExecContainerRequest {
   workdir?: string;
   secretIds?: StringList;
 }
-export const ExecContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     command: S.optional(StringList),
@@ -327,7 +324,7 @@ export const ExecContainerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ExecContainerResponse {
   execId?: string;
 }
-export const ExecContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     execId: S.optional(S.String),
   }),
@@ -339,7 +336,7 @@ export interface ContainerFileOpenRequest {
   path?: string;
   mode?: string;
 }
-export const ContainerFileOpenRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileOpenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDescriptor: S.optional(S.String),
     path: S.optional(S.String),
@@ -351,7 +348,7 @@ export interface ContainerFileWriteRequest {
   fileDescriptor?: string;
   data?: string;
 }
-export const ContainerFileWriteRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileWriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDescriptor: S.optional(S.String),
     data: S.optional(S.String),
@@ -364,7 +361,7 @@ export interface ContainerFileReadRequest {
   fileDescriptor?: string;
   n?: number;
 }
-export const ContainerFileReadRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileReadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDescriptor: S.optional(S.String),
     n: S.optional(S.Number),
@@ -374,7 +371,7 @@ export const ContainerFileReadRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ContainerFileFlushRequest {
   fileDescriptor?: string;
 }
-export const ContainerFileFlushRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileFlushRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDescriptor: S.optional(S.String),
   }),
@@ -383,17 +380,15 @@ export const ContainerFileFlushRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerFileFlushRequest>;
 
 export type ContainerFileReadLineRequest = ContainerFileFlushRequest;
-export const ContainerFileReadLineRequest = ContainerFileFlushRequest;
-
 export type SeekWhence = "SEEK_SET" | "SEEK_CUR" | "SEEK_END";
-export const SeekWhence = S.String;
+const SeekWhence = S.String;
 
 export interface ContainerFileSeekRequest {
   fileDescriptor?: string;
   offset?: number;
   whence?: SeekWhence | (string & {});
 }
-export const ContainerFileSeekRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileSeekRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDescriptor: S.optional(S.String),
     offset: S.optional(S.Number),
@@ -406,7 +401,7 @@ export interface ContainerFileDeleteBytesRequest {
   startInclusive?: number;
   endExclusive?: number;
 }
-export const ContainerFileDeleteBytesRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileDeleteBytesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDescriptor: S.optional(S.String),
     startInclusive: S.optional(S.Number),
@@ -422,7 +417,7 @@ export interface ContainerFileWriteReplaceBytesRequest {
   startInclusive?: number;
   endExclusive?: number;
 }
-export const ContainerFileWriteReplaceBytesRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileWriteReplaceBytesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDescriptor: S.optional(S.String),
     data: S.optional(S.String),
@@ -434,12 +429,10 @@ export const ContainerFileWriteReplaceBytesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ContainerFileWriteReplaceBytesRequest>;
 
 export type ContainerFileCloseRequest = ContainerFileFlushRequest;
-export const ContainerFileCloseRequest = ContainerFileFlushRequest;
-
 export interface ContainerFileLsRequest {
   path?: string;
 }
-export const ContainerFileLsRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileLsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
   }),
@@ -449,7 +442,7 @@ export interface ContainerFileMkdirRequest {
   path?: string;
   makeParents?: boolean;
 }
-export const ContainerFileMkdirRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileMkdirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     makeParents: S.optional(S.Boolean),
@@ -462,7 +455,7 @@ export interface ContainerFileRmRequest {
   path?: string;
   recursive?: boolean;
 }
-export const ContainerFileRmRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileRmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     recursive: S.optional(S.Boolean),
@@ -474,7 +467,7 @@ export interface ContainerFileWatchRequest {
   recursive?: boolean;
   timeoutSecs?: string;
 }
-export const ContainerFileWatchRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainerFileWatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     recursive: S.optional(S.Boolean),
@@ -500,7 +493,7 @@ export interface ExecContainerFilesystemRequest {
   fileWatchRequest?: ContainerFileWatchRequest;
   taskId?: string;
 }
-export const ExecContainerFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecContainerFilesystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileOpenRequest: S.optional(ContainerFileOpenRequest),
     fileWriteRequest: S.optional(ContainerFileWriteRequest),
@@ -528,7 +521,7 @@ export interface ExecContainerFilesystemResponse {
   /** only set when the request opens a new file, i.e., ContainerFileOpenRequest */
   fileDescriptor?: string;
 }
-export const ExecContainerFilesystemResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecContainerFilesystemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     execId: S.optional(S.String),
     fileDescriptor: S.optional(S.String),
@@ -541,7 +534,7 @@ export interface StopContainerRequest {
   taskId?: string;
   graceful?: boolean;
 }
-export const StopContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const StopContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     graceful: S.optional(S.Boolean),
@@ -549,8 +542,7 @@ export const StopContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopContainerRequest" }) as any as S.Schema<StopContainerRequest>;
 
 export interface StopContainerResponse {}
-export const StopContainerResponse =
-  ContainerCheckpointResponse as any as S.Schema<StopContainerResponse>;
+const StopContainerResponse = ContainerCheckpointResponse as any as S.Schema<StopContainerResponse>;
 
 export type ContainerCheckpointError = ModalOpError;
 /** Container */

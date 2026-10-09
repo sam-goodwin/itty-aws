@@ -12,7 +12,7 @@ export interface GetMcpRegistryServerRequest {
   project_id: string;
   id: string;
 }
-export const GetMcpRegistryServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMcpRegistryServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -31,7 +31,7 @@ export interface MCPRegistryServerDetailRemotesItem {
   type?: string;
   url?: string;
 }
-export const MCPRegistryServerDetailRemotesItem = /*@__PURE__*/ S.suspend(() =>
+const MCPRegistryServerDetailRemotesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     url: S.optional(S.String),
@@ -42,7 +42,7 @@ export const MCPRegistryServerDetailRemotesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** All hosted remotes: [{type, url}]. */
 export type MCPRegistryServerDetailRemotesList = Array<MCPRegistryServerDetailRemotesItem>;
-export const MCPRegistryServerDetailRemotesList = /*@__PURE__*/ S.Array(
+const MCPRegistryServerDetailRemotesList = /*@__PURE__*/ S.Array(
   MCPRegistryServerDetailRemotesItem,
 ) as any as S.Schema<MCPRegistryServerDetailRemotesList>;
 
@@ -50,7 +50,7 @@ export interface MCPRegistryServerDetailPackagesItem {
   registry_type?: string;
   identifier?: string;
 }
-export const MCPRegistryServerDetailPackagesItem = /*@__PURE__*/ S.suspend(() =>
+const MCPRegistryServerDetailPackagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registry_type: S.optional(S.String),
     identifier: S.optional(S.String),
@@ -61,44 +61,38 @@ export const MCPRegistryServerDetailPackagesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Published packages: [{registry_type, identifier}]. */
 export type MCPRegistryServerDetailPackagesList = Array<MCPRegistryServerDetailPackagesItem>;
-export const MCPRegistryServerDetailPackagesList = /*@__PURE__*/ S.Array(
+const MCPRegistryServerDetailPackagesList = /*@__PURE__*/ S.Array(
   MCPRegistryServerDetailPackagesItem,
 ) as any as S.Schema<MCPRegistryServerDetailPackagesList>;
 
 export type MCPRegistryServerDetailToolsItemMap = { [key: string]: unknown | undefined };
-export const MCPRegistryServerDetailToolsItemMap = /*@__PURE__*/ S.Record(
+const MCPRegistryServerDetailToolsItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MCPRegistryServerDetailToolsItemMap>;
 
 /** Known tools, fused from probes and analytics. A tool known only from another project's traffic is limited to callers who may see that project's measurements. */
 export type MCPRegistryServerDetailToolsList = Array<MCPRegistryServerDetailToolsItemMap>;
-export const MCPRegistryServerDetailToolsList = /*@__PURE__*/ S.Array(
+const MCPRegistryServerDetailToolsList = /*@__PURE__*/ S.Array(
   MCPRegistryServerDetailToolsItemMap,
 ) as any as S.Schema<MCPRegistryServerDetailToolsList>;
 
 export type MCPRegistryServerDetailMeasuredStatsItemMap = { [key: string]: unknown | undefined };
-export const MCPRegistryServerDetailMeasuredStatsItemMap =
-  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPRegistryServerDetailMeasuredStatsItemMap>;
-
 /** Behavioral aggregates, one per measured MCP Analytics project. Limited to this project's own measurements unless the server is marked measured_public. */
 export type MCPRegistryServerDetailMeasuredStatsList =
   Array<MCPRegistryServerDetailMeasuredStatsItemMap>;
-export const MCPRegistryServerDetailMeasuredStatsList =
+const MCPRegistryServerDetailMeasuredStatsList =
   MCPRegistryServerDetailToolsList as any as S.Schema<MCPRegistryServerDetailMeasuredStatsList>;
 
 export type MCPRegistryServerDetailScoresItemMap = { [key: string]: unknown | undefined };
-export const MCPRegistryServerDetailScoresItemMap =
-  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPRegistryServerDetailScoresItemMap>;
-
 /** Latest score under every ranking version with a completed run. */
 export type MCPRegistryServerDetailScoresList = Array<MCPRegistryServerDetailScoresItemMap>;
-export const MCPRegistryServerDetailScoresList =
+const MCPRegistryServerDetailScoresList =
   MCPRegistryServerDetailToolsList as any as S.Schema<MCPRegistryServerDetailScoresList>;
 
 /** Connection instructions: methods ordered most-automated first, steps typed by actor (agent executes; human steps are narrated to the user). */
 export type MCPRegistryServerDetailConnectMap = { [key: string]: unknown | undefined };
-export const MCPRegistryServerDetailConnectMap =
+const MCPRegistryServerDetailConnectMap =
   MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPRegistryServerDetailConnectMap>;
 
 export interface MCPRegistryServerDetail {
@@ -141,7 +135,7 @@ export interface MCPRegistryServerDetail {
   /** Connection instructions: methods ordered most-automated first, steps typed by actor (agent executes; human steps are narrated to the user). */
   connect: MCPRegistryServerDetailConnectMap;
 }
-export const MCPRegistryServerDetail = /*@__PURE__*/ S.suspend(() =>
+const MCPRegistryServerDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     registry_name: S.String,
@@ -175,7 +169,7 @@ export interface GetMcpRegistryServersCompareRequest {
   /** Comma-separated ranking versions to compare (2+). */
   versions: string;
 }
-export const GetMcpRegistryServersCompareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMcpRegistryServersCompareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -193,11 +187,11 @@ export const GetMcpRegistryServersCompareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMcpRegistryServersCompareRequest>;
 
 export type GetMcpRegistryServersCompareResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetMcpRegistryServersCompareResponseBodyMap =
+const GetMcpRegistryServersCompareResponseBodyMap =
   MCPRegistryServerDetailToolsItemMap as any as S.Schema<GetMcpRegistryServersCompareResponseBodyMap>;
 
 export type GetMcpRegistryServersCompareResponse = GetMcpRegistryServersCompareResponseBodyMap;
-export const GetMcpRegistryServersCompareResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMcpRegistryServersCompareResponse = /*@__PURE__*/ S.suspend(() =>
   GetMcpRegistryServersCompareResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetMcpRegistryServersCompareResponse",
@@ -213,7 +207,7 @@ export interface GetMcpRegistryServersDiscoverRequest {
   /** Ranking version to rank candidates by. */
   version?: string;
 }
-export const GetMcpRegistryServersDiscoverRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMcpRegistryServersDiscoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     intent: S.String.pipe(T.Query()),
@@ -232,12 +226,12 @@ export const GetMcpRegistryServersDiscoverRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Score breakdown so an agent can explain its choice: fit, liveness, trust, and whether real usage signal contributed. */
 export type MCPDiscoverCandidateWhyMap = { [key: string]: unknown | undefined };
-export const MCPDiscoverCandidateWhyMap =
+const MCPDiscoverCandidateWhyMap =
   MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateWhyMap>;
 
 /** Real MCP Analytics aggregates when the server is measured, otherwise null: calls, sessions, error_rate_pct, intent_coverage_pct, harness_count. */
 export type MCPDiscoverCandidateMeasuredMap = { [key: string]: unknown | undefined };
-export const MCPDiscoverCandidateMeasuredMap =
+const MCPDiscoverCandidateMeasuredMap =
   MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateMeasuredMap>;
 
 export interface MCPDiscoverCandidateMatchedToolsItem {
@@ -245,7 +239,7 @@ export interface MCPDiscoverCandidateMatchedToolsItem {
   description?: string;
   source?: string;
 }
-export const MCPDiscoverCandidateMatchedToolsItem = /*@__PURE__*/ S.suspend(() =>
+const MCPDiscoverCandidateMatchedToolsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -257,13 +251,13 @@ export const MCPDiscoverCandidateMatchedToolsItem = /*@__PURE__*/ S.suspend(() =
 
 /** Tools that matched the intent: [{name, description, source}]. Empty when only the server description matched. */
 export type MCPDiscoverCandidateMatchedToolsList = Array<MCPDiscoverCandidateMatchedToolsItem>;
-export const MCPDiscoverCandidateMatchedToolsList = /*@__PURE__*/ S.Array(
+const MCPDiscoverCandidateMatchedToolsList = /*@__PURE__*/ S.Array(
   MCPDiscoverCandidateMatchedToolsItem,
 ) as any as S.Schema<MCPDiscoverCandidateMatchedToolsList>;
 
 /** Connection instructions, most-automated method first, steps typed by actor so the agent runs its own steps and narrates the human ones. */
 export type MCPDiscoverCandidateConnectMap = { [key: string]: unknown | undefined };
-export const MCPDiscoverCandidateConnectMap =
+const MCPDiscoverCandidateConnectMap =
   MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateConnectMap>;
 
 /** One ranked candidate in a discover response, with everything an agent needs to act. */
@@ -297,7 +291,7 @@ export interface MCPDiscoverCandidate {
   /** Connection instructions, most-automated method first, steps typed by actor so the agent runs its own steps and narrates the human ones. */
   connect: MCPDiscoverCandidateConnectMap;
 }
-export const MCPDiscoverCandidate = /*@__PURE__*/ S.suspend(() =>
+const MCPDiscoverCandidate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rank: S.Number,
     id: S.String,
@@ -318,7 +312,7 @@ export const MCPDiscoverCandidate = /*@__PURE__*/ S.suspend(() =>
 
 /** Servers most likely to do the thing, best first. */
 export type MCPDiscoverResponseCandidatesList = Array<MCPDiscoverCandidate>;
-export const MCPDiscoverResponseCandidatesList = /*@__PURE__*/ S.Array(
+const MCPDiscoverResponseCandidatesList = /*@__PURE__*/ S.Array(
   MCPDiscoverCandidate,
 ) as any as S.Schema<MCPDiscoverResponseCandidatesList>;
 
@@ -331,7 +325,7 @@ export interface MCPDiscoverResponse {
   /** Servers most likely to do the thing, best first. */
   candidates: MCPDiscoverResponseCandidatesList;
 }
-export const MCPDiscoverResponse = /*@__PURE__*/ S.suspend(() =>
+const MCPDiscoverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intent: S.String,
     ranking_version: S.String,
@@ -353,7 +347,7 @@ export interface ListMcpRegistryServersRequest {
   /** Ranking version ordering the results; defaults to the current default version. */
   version?: string;
 }
-export const ListMcpRegistryServersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMcpRegistryServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -390,7 +384,7 @@ export interface MCPRegistryServerList {
   /** Static score under the requested ranking version; null when the version has no completed run. */
   rank_score: number | null;
 }
-export const MCPRegistryServerList = /*@__PURE__*/ S.suspend(() =>
+const MCPRegistryServerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     registry_name: S.String,
@@ -406,7 +400,7 @@ export const MCPRegistryServerList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MCPRegistryServerList" }) as any as S.Schema<MCPRegistryServerList>;
 
 export type PaginatedMCPRegistryServerListListResultsList = Array<MCPRegistryServerList>;
-export const PaginatedMCPRegistryServerListListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedMCPRegistryServerListListResultsList = /*@__PURE__*/ S.Array(
   MCPRegistryServerList,
 ) as any as S.Schema<PaginatedMCPRegistryServerListListResultsList>;
 
@@ -416,7 +410,7 @@ export interface PaginatedMCPRegistryServerListList {
   previous?: string | null;
   results: PaginatedMCPRegistryServerListListResultsList;
 }
-export const PaginatedMCPRegistryServerListList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedMCPRegistryServerListList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -431,7 +425,7 @@ export interface ListMcpRegistryServersMeasuredProjectsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListMcpRegistryServersMeasuredProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMcpRegistryServersMeasuredProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -454,7 +448,7 @@ export interface MCPMeasuredProject {
   /** Tool calls this project contributes across those servers. */
   calls: number;
 }
-export const MCPMeasuredProject = /*@__PURE__*/ S.suspend(() =>
+const MCPMeasuredProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.Number,
     servers: S.Number,
@@ -463,13 +457,13 @@ export const MCPMeasuredProject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MCPMeasuredProject" }) as any as S.Schema<MCPMeasuredProject>;
 
 export type ListMcpRegistryServersMeasuredProjectsResponseBodyList = Array<MCPMeasuredProject>;
-export const ListMcpRegistryServersMeasuredProjectsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMcpRegistryServersMeasuredProjectsResponseBodyList = /*@__PURE__*/ S.Array(
   MCPMeasuredProject,
 ) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsResponseBodyList>;
 
 export type ListMcpRegistryServersMeasuredProjectsResponse =
   ListMcpRegistryServersMeasuredProjectsResponseBodyList;
-export const ListMcpRegistryServersMeasuredProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMcpRegistryServersMeasuredProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMcpRegistryServersMeasuredProjectsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMcpRegistryServersMeasuredProjectsResponse",
@@ -479,7 +473,7 @@ export interface ListMcpRegistryServersVersionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListMcpRegistryServersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMcpRegistryServersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -502,7 +496,7 @@ export interface MCPRankingRun {
   /** When the run completed. */
   computed_at: string | null;
 }
-export const MCPRankingRun = /*@__PURE__*/ S.suspend(() =>
+const MCPRankingRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     server_count: S.Number,
@@ -521,7 +515,7 @@ export interface MCPRankingVersion {
   /** Latest completed run; null when the version never ran. */
   latest_run: MCPRankingRun | null;
 }
-export const MCPRankingVersion = /*@__PURE__*/ S.suspend(() =>
+const MCPRankingVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
     description: S.String,
@@ -531,12 +525,12 @@ export const MCPRankingVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MCPRankingVersion" }) as any as S.Schema<MCPRankingVersion>;
 
 export type ListMcpRegistryServersVersionsResponseBodyList = Array<MCPRankingVersion>;
-export const ListMcpRegistryServersVersionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListMcpRegistryServersVersionsResponseBodyList = /*@__PURE__*/ S.Array(
   MCPRankingVersion,
 ) as any as S.Schema<ListMcpRegistryServersVersionsResponseBodyList>;
 
 export type ListMcpRegistryServersVersionsResponse = ListMcpRegistryServersVersionsResponseBodyList;
-export const ListMcpRegistryServersVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMcpRegistryServersVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListMcpRegistryServersVersionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListMcpRegistryServersVersionsResponse",

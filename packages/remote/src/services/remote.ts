@@ -57,59 +57,30 @@ export class UnprocessableEntity
 
 /** The Authorization flow */
 export type AuthorizationCodeParamsGrantType = "authorization_code";
-export const AuthorizationCodeParamsGrantType = S.String;
-
 export interface AuthorizationCodeParams {
   /** The authorization code generated in Authorization Code flow */
   code: string;
   /** The Authorization flow */
   grant_type: AuthorizationCodeParamsGrantType;
 }
-export const AuthorizationCodeParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    grant_type: AuthorizationCodeParamsGrantType,
-  }),
-).annotate({ identifier: "AuthorizationCodeParams" }) as any as S.Schema<AuthorizationCodeParams>;
-
 /** The Authorization flow */
 export type ClientCredentialsParamsGrantType = "client_credentials";
-export const ClientCredentialsParamsGrantType = S.String;
-
 export interface ClientCredentialsParams {
   /** The client id generated during registration. Optional here - it can instead be sent via the Basic auth header, which is always required for this grant type. */
   client_id?: string;
   /** The Authorization flow */
   grant_type: ClientCredentialsParamsGrantType;
 }
-export const ClientCredentialsParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.optional(S.String),
-    grant_type: ClientCredentialsParamsGrantType,
-  }),
-).annotate({ identifier: "ClientCredentialsParams" }) as any as S.Schema<ClientCredentialsParams>;
-
 /** The Authorization flow */
 export type RefreshTokenParamsGrantType = "refresh_token";
-export const RefreshTokenParamsGrantType = S.String;
-
 export interface RefreshTokenParams {
   /** The Authorization flow */
   grant_type: RefreshTokenParamsGrantType;
   /** The refresh token generated in the Authorization Code flow */
   refresh_token: string | Redacted.Redacted<string>;
 }
-export const RefreshTokenParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grant_type: RefreshTokenParamsGrantType,
-    refresh_token: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({ identifier: "RefreshTokenParams" }) as any as S.Schema<RefreshTokenParams>;
-
 /** The Assertion flow grant type */
 export type AssertionTokenParamsGrantType = "urn:ietf:params:oauth:grant-type:jwt-bearer";
-export const AssertionTokenParamsGrantType = S.String;
-
 /** The assertion token is a JWT token that contains the following claims: - `sub`: The subject of the token, in one of the following formats: - `urn:remote-api:employment:<employment_id>` -- mints an **employee-role** access token whose `sub` is the employment owner's user slug. Scopes are restricted to those valid for the employee role (e.g. `personal_detail:read`, `timeoff:write`). - `urn:remote-api:employee:employment:<employment_id>` -- same as above; the recommended format for new integrations. Use this when issuing a token on behalf of an employee so they can submit their own onboarding data (e.g. `PUT /v1/employee/address`). - `urn:remote-api:company-manager:user:<user_id>` -- mints a **company_manager-role** access token. Scopes are restricted to those valid for the company-manager role. - `iss`: The issuer of the token, which is the client ID - `aud`: The audience of the token, which is the OAuth audience - `exp`: The expiration time of the token (max 10 minutes in the future) - `iat`: The issued at time of the token - `scope`: The scope of the token (space-separated). Optional. If omitted, the minted access token defaults to `all:write` for the subject's role. If provided, every scope must be valid for the subject's role or the assertion is rejected. The assertion must be signed with the client secret (HS256). **Example -- minting an employee token to submit a residential address:** ``` sub: urn:remote-api:employee:employment:emp_2t3h9 iss: <your client_id> aud: <configured OAuth audience> exp: <now + 300 seconds> iat: <now> scope: address:write ``` The resulting access token can be used at `PUT /v1/employee/address` to submit the address for that employment. */
 export interface AssertionTokenParams {
   /** The assertion token */
@@ -117,24 +88,17 @@ export interface AssertionTokenParams {
   /** The Assertion flow grant type */
   grant_type: AssertionTokenParamsGrantType;
 }
-export const AssertionTokenParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assertion: S.String,
-    grant_type: AssertionTokenParamsGrantType,
-  }),
-).annotate({ identifier: "AssertionTokenParams" }) as any as S.Schema<AssertionTokenParams>;
-
 export type OAuth2TokenParams =
   | AuthorizationCodeParams
   | ClientCredentialsParams
   | RefreshTokenParams
   | AssertionTokenParams;
-export const OAuth2TokenParams = S.Unknown as any as S.Schema<OAuth2TokenParams>;
+const OAuth2TokenParams = S.Unknown as any as S.Schema<OAuth2TokenParams>;
 
 export interface CreateAuthOauth2TokenRequest {
   body?: OAuth2TokenParams;
 }
-export const CreateAuthOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthOauth2TokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(OAuth2TokenParams.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "/auth/oauth2/token", code: 200 })),
@@ -156,19 +120,6 @@ export interface AuthorizationCodeResponse {
   /** The ID of the user who connected the company. */
   user_id?: string;
 }
-export const AuthorizationCodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    expires_in: S.optional(S.Number),
-    token_type: S.optional(S.String),
-    company_id: S.optional(S.String),
-    refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    user_id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthorizationCodeResponse",
-}) as any as S.Schema<AuthorizationCodeResponse>;
-
 export interface BaseTokenResponse {
   /** A JWT token. */
   access_token?: string | Redacted.Redacted<string>;
@@ -177,14 +128,6 @@ export interface BaseTokenResponse {
   /** The type of the token. For now, always `Bearer`. */
   token_type?: string;
 }
-export const BaseTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    expires_in: S.optional(S.Number),
-    token_type: S.optional(S.String),
-  }),
-).annotate({ identifier: "BaseTokenResponse" }) as any as S.Schema<BaseTokenResponse>;
-
 export interface RefreshTokenResponse {
   /** A JWT token. */
   access_token?: string | Redacted.Redacted<string>;
@@ -195,20 +138,11 @@ export interface RefreshTokenResponse {
   /** The refresh token */
   refresh_token?: string | Redacted.Redacted<string>;
 }
-export const RefreshTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    expires_in: S.optional(S.Number),
-    token_type: S.optional(S.String),
-    refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({ identifier: "RefreshTokenResponse" }) as any as S.Schema<RefreshTokenResponse>;
-
 export type OAuth2Tokens = AuthorizationCodeResponse | BaseTokenResponse | RefreshTokenResponse;
-export const OAuth2Tokens = S.Unknown as any as S.Schema<OAuth2Tokens>;
+const OAuth2Tokens = S.Unknown as any as S.Schema<OAuth2Tokens>;
 
 export type CreateAuthOauth2TokenResponse = OAuth2Tokens;
-export const CreateAuthOauth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthOauth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
   OAuth2Tokens.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateAuthOauth2TokenResponse",
@@ -220,7 +154,7 @@ export interface BulkEmploymentEmployeePayload {
   /** Per-employee override for onboarding invitations. Takes precedence over the batch-level `send_invitation` value when present. */
   send_invitation?: boolean;
 }
-export const BulkEmploymentEmployeePayload = /*@__PURE__*/ S.suspend(() =>
+const BulkEmploymentEmployeePayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activate_global_payroll: S.optional(S.Boolean),
     send_invitation: S.optional(S.Boolean),
@@ -230,7 +164,7 @@ export const BulkEmploymentEmployeePayload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkEmploymentEmployeePayload>;
 
 export type CreateBulkEmploymentJobRequestEmployeesList = Array<BulkEmploymentEmployeePayload>;
-export const CreateBulkEmploymentJobRequestEmployeesList = /*@__PURE__*/ S.Array(
+const CreateBulkEmploymentJobRequestEmployeesList = /*@__PURE__*/ S.Array(
   BulkEmploymentEmployeePayload,
 ) as any as S.Schema<CreateBulkEmploymentJobRequestEmployeesList>;
 
@@ -240,7 +174,7 @@ export interface CreateBulkEmploymentJobRequest {
   /** Batch default for onboarding invitations. Each employee can override it with their own `send_invitation` value. Defaults to `false` when omitted. */
   send_invitation?: boolean;
 }
-export const CreateBulkEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBulkEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String,
     employees: CreateBulkEmploymentJobRequestEmployeesList,
@@ -251,28 +185,24 @@ export const CreateBulkEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBulkEmploymentJobRequest>;
 
 export interface CreateBulkEmploymentJobResponse {}
-export const CreateBulkEmploymentJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateBulkEmploymentJobResponse" },
-) as any as S.Schema<CreateBulkEmploymentJobResponse>;
+const CreateBulkEmploymentJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "CreateBulkEmploymentJobResponse",
+}) as any as S.Schema<CreateBulkEmploymentJobResponse>;
 
 /** Use latest version */
 export type CreateCompanyRequestAddressDetailsJsonSchemaVersionCase1 = "latest";
-export const CreateCompanyRequestAddressDetailsJsonSchemaVersionCase1 = S.String;
-
 export type CreateCompanyRequestAddressDetailsJsonSchemaVersion =
   | number
   | CreateCompanyRequestAddressDetailsJsonSchemaVersionCase1;
-export const CreateCompanyRequestAddressDetailsJsonSchemaVersion =
+const CreateCompanyRequestAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<CreateCompanyRequestAddressDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type CreateCompanyRequestBankAccountDetailsJsonSchemaVersionCase1 = "latest";
-export const CreateCompanyRequestBankAccountDetailsJsonSchemaVersionCase1 = S.String;
-
 export type CreateCompanyRequestBankAccountDetailsJsonSchemaVersion =
   | number
   | CreateCompanyRequestBankAccountDetailsJsonSchemaVersionCase1;
-export const CreateCompanyRequestBankAccountDetailsJsonSchemaVersion =
+const CreateCompanyRequestBankAccountDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<CreateCompanyRequestBankAccountDetailsJsonSchemaVersion>;
 
 /** Desired currency for invoicing and displaying converted salaries in Remote UI regardless of the employee's country. */
@@ -289,7 +219,7 @@ export type CreateCompanyRequestDesiredCurrency =
   | "SEK"
   | "SGD"
   | "USD";
-export const CreateCompanyRequestDesiredCurrency = S.String;
+const CreateCompanyRequestDesiredCurrency = S.String;
 
 export interface CreateCompanyRequest {
   /** Version of the address_details form schema */
@@ -329,7 +259,7 @@ export interface CreateCompanyRequest {
   /** The company registration number. Exactly one of this field or `tax_number` must be submitted, not both. */
   registration_number?: string;
 }
-export const CreateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_details_json_schema_version: S.optional(
       CreateCompanyRequestAddressDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -365,11 +295,11 @@ export type CompanyDefaultLegalEntityCreditRiskStatus =
   | "fail"
   | "deposit_required"
   | "no_deposit_required";
-export const CompanyDefaultLegalEntityCreditRiskStatus = S.String;
+const CompanyDefaultLegalEntityCreditRiskStatus = S.String;
 
 /** The company status determines what a company is allowed to do: - `pending`: The company has been created and the company owner invited. Remote is waiting for the company owner to complete onboarding. - `review`: The company is under review. In rare occasions, a company may not automatically get created in `active` status because Remote needs to manually review the company that was created. The company will become `active` once the review is completed and no further action is necessary through the Remote API. - `active`: The company owner has completed onboarding and the company is ready to employ. - `archived`: The company is no longer active on the Remote platform and no changes can be made to the company. */
 export type CompanyStatus = "pending" | "review" | "active" | "archived";
-export const CompanyStatus = S.String;
+const CompanyStatus = S.String;
 
 export interface Company {
   /** Fields can vary depending on the country. Please, check the required fields structure using the [Show form schema endpoint](#operation/get_show_form_country). Use the desired country and `address_details` as the form name for the placeholders. The response complies with the [JSON Schema](https://developer.remote.com/docs/how-json-schemas-work) specification. */
@@ -409,7 +339,7 @@ export interface Company {
   /** The timestamp when the company record was last updated. */
   updated_at: string;
 }
-export const Company = /*@__PURE__*/ S.suspend(() =>
+const Company = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_details: S.Unknown,
     bank_account_details: S.optional(S.Unknown),
@@ -435,7 +365,7 @@ export const Company = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyResponseData {
   company?: Company;
 }
-export const CompanyResponseData = /*@__PURE__*/ S.suspend(() =>
+const CompanyResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company: S.optional(Company),
   }),
@@ -445,7 +375,7 @@ export const CompanyResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyResponse {
   data: CompanyResponseData;
 }
-export const CompanyResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CompanyResponseData,
   }),
@@ -456,23 +386,13 @@ export interface CompanyWithTokensResponse {
   company?: Company;
   tokens?: OAuth2Tokens;
 }
-export const CompanyWithTokensResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    company: S.optional(Company),
-    tokens: S.optional(OAuth2Tokens),
-  }),
-).annotate({
-  identifier: "CompanyWithTokensResponse",
-}) as any as S.Schema<CompanyWithTokensResponse>;
-
 export type CompanyCreationResponseData = CompanyResponse | CompanyWithTokensResponse;
-export const CompanyCreationResponseData =
-  S.Unknown as any as S.Schema<CompanyCreationResponseData>;
+const CompanyCreationResponseData = S.Unknown as any as S.Schema<CompanyCreationResponseData>;
 
 export interface CompanyCreationResponse {
   data?: CompanyCreationResponseData;
 }
-export const CompanyCreationResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyCreationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(CompanyCreationResponseData),
   }),
@@ -484,7 +404,7 @@ export interface CreateCompanyCreateTokenRequest {
   /** The scope of the token */
   scope?: string;
 }
-export const CreateCompanyCreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCompanyCreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     scope: S.optional(S.String.pipe(T.Query())),
@@ -502,7 +422,7 @@ export interface CompanyTokenResponse {
   /** The refresh token used to obtain a new access token when the current one expires. */
   refresh_token: string | Redacted.Redacted<string>;
 }
-export const CompanyTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.String.pipe(T.SensitiveValue({})),
     expires_in: S.Number,
@@ -516,7 +436,7 @@ export interface CreateCompanyDepartmentRequest {
   /** The name of the company department. May be non-unique and limited to 255 characters, maximum. */
   name: string;
 }
-export const CreateCompanyDepartmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCompanyDepartmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String,
     name: S.String,
@@ -533,7 +453,7 @@ export interface CompanyDepartment {
   /** The name of the department (e.g., "Marketing", "Engineering"). */
   name: string;
 }
-export const CompanyDepartment = /*@__PURE__*/ S.suspend(() =>
+const CompanyDepartment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String,
     id: S.String,
@@ -544,7 +464,7 @@ export const CompanyDepartment = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyDepartmentCreatedResponse {
   company_department?: CompanyDepartment;
 }
-export const CompanyDepartmentCreatedResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyDepartmentCreatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_department: S.optional(CompanyDepartment),
   }),
@@ -564,7 +484,7 @@ export interface CreateCompanyManagerRequest {
   /** The role assigned for the new manager. The value should be one of the following: - `admin`: an Admin can manage most of the resources in remote. - `onboarding_manager`: an Onboarding Manager can add, see and manage new hires. - `people_manager`: a People Manager can view employee profiles of the team members they manage and approve and decline time off and expenses for their employees. */
   role: string;
 }
-export const CreateCompanyManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCompanyManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(S.String.pipe(T.Query())),
     company_id: S.optional(S.String),
@@ -584,7 +504,7 @@ export interface CompanyManagerBillingContactStatus {
   /** Slug of the legal entity */
   legal_entity_slug: string;
 }
-export const CompanyManagerBillingContactStatus = /*@__PURE__*/ S.suspend(() =>
+const CompanyManagerBillingContactStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_pending_primary_billing_contact: S.Boolean,
     is_primary_billing_contact: S.Boolean,
@@ -596,7 +516,7 @@ export const CompanyManagerBillingContactStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The legal entities this manager is a billing contact for. */
 export type CompanyManagerBillingContactsList = Array<CompanyManagerBillingContactStatus>;
-export const CompanyManagerBillingContactsList = /*@__PURE__*/ S.Array(
+const CompanyManagerBillingContactsList = /*@__PURE__*/ S.Array(
   CompanyManagerBillingContactStatus,
 ) as any as S.Schema<CompanyManagerBillingContactsList>;
 
@@ -614,7 +534,7 @@ export interface CompanyManager {
   /** User's name */
   user_name: string;
 }
-export const CompanyManager = /*@__PURE__*/ S.suspend(() =>
+const CompanyManager = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_contacts: CompanyManagerBillingContactsList,
     company_id: S.String,
@@ -628,7 +548,7 @@ export const CompanyManager = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyManagerData {
   company_manager: CompanyManager;
 }
-export const CompanyManagerData = /*@__PURE__*/ S.suspend(() =>
+const CompanyManagerData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_manager: CompanyManager,
   }),
@@ -643,16 +563,6 @@ export interface CreatePricingPlanWithoutPartnerTemplateParams {
   /** The product price ID */
   product_price_id: string;
 }
-export const CreatePricingPlanWithoutPartnerTemplateParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.Number,
-    currency_code: S.String,
-    product_price_id: S.String,
-  }),
-).annotate({
-  identifier: "CreatePricingPlanWithoutPartnerTemplateParams",
-}) as any as S.Schema<CreatePricingPlanWithoutPartnerTemplateParams>;
-
 /** Parameters for creating a pricing plan with a partner template */
 export interface CreatePricingPlanWithPartnerTemplateParams {
   /** The pricing plan partner template ID */
@@ -660,27 +570,18 @@ export interface CreatePricingPlanWithPartnerTemplateParams {
   /** The start date of the pricing plan */
   start_date?: string;
 }
-export const CreatePricingPlanWithPartnerTemplateParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pricing_plan_partner_template_id: S.String,
-    start_date: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreatePricingPlanWithPartnerTemplateParams",
-}) as any as S.Schema<CreatePricingPlanWithPartnerTemplateParams>;
-
 /** Parameters for creating a pricing plan */
 export type CreatePricingPlanParams =
   | CreatePricingPlanWithoutPartnerTemplateParams
   | CreatePricingPlanWithPartnerTemplateParams;
-export const CreatePricingPlanParams = S.Unknown as any as S.Schema<CreatePricingPlanParams>;
+const CreatePricingPlanParams = S.Unknown as any as S.Schema<CreatePricingPlanParams>;
 
 export interface CreateCompanyPricingPlanRequest {
   /** Company ID */
   company_id: string;
   body: CreatePricingPlanParams;
 }
-export const CreateCompanyPricingPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCompanyPricingPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     body: CreatePricingPlanParams.pipe(T.HttpBody()),
@@ -695,7 +596,7 @@ export interface CurrencyDefinition {
   name: string;
   symbol: string;
 }
-export const CurrencyDefinition = /*@__PURE__*/ S.suspend(() =>
+const CurrencyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     name: S.String,
@@ -709,7 +610,7 @@ export interface Price {
   amount: number;
   currency: CurrencyDefinition;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     currency: CurrencyDefinition,
@@ -718,9 +619,7 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
 
 /** Features included in this product tier. */
 export type ProductFeaturesList = Array<string>;
-export const ProductFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ProductFeaturesList>;
+const ProductFeaturesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ProductFeaturesList>;
 
 /** A Remote product offering (e.g., EOR, Contractor Management) with its tier and billing frequency. */
 export interface Product {
@@ -739,7 +638,7 @@ export interface Product {
   /** The product tier (e.g., "standard", "premium"). */
   tier: string;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     features: S.optional(ProductFeaturesList),
@@ -765,7 +664,7 @@ export interface PricingPlan {
   /** The pricing plan type (e.g., "termed" for fixed-term, "evergreen" for ongoing). */
   type: string;
 }
-export const PricingPlan = /*@__PURE__*/ S.suspend(() =>
+const PricingPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base_price: Price,
     end_date: S.NullOr(S.String),
@@ -780,7 +679,7 @@ export const PricingPlan = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePricingPlanResponseData {
   pricing_plan: PricingPlan;
 }
-export const CreatePricingPlanResponseData = /*@__PURE__*/ S.suspend(() =>
+const CreatePricingPlanResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing_plan: PricingPlan,
   }),
@@ -792,7 +691,7 @@ export const CreatePricingPlanResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePricingPlanResponse {
   data: CreatePricingPlanResponseData;
 }
-export const CreatePricingPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePricingPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreatePricingPlanResponseData,
   }),
@@ -802,12 +701,10 @@ export const CreatePricingPlanResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type CreateContractAmendmentRequestJsonSchemaVersionCase1 = "latest";
-export const CreateContractAmendmentRequestJsonSchemaVersionCase1 = S.String;
-
 export type CreateContractAmendmentRequestJsonSchemaVersion =
   | number
   | CreateContractAmendmentRequestJsonSchemaVersionCase1;
-export const CreateContractAmendmentRequestJsonSchemaVersion =
+const CreateContractAmendmentRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<CreateContractAmendmentRequestJsonSchemaVersion>;
 
 export interface CreateContractAmendmentRequest {
@@ -820,7 +717,7 @@ export interface CreateContractAmendmentRequest {
   /** The employment ID that is related to the contract amendment request. */
   employment_id: string;
 }
-export const CreateContractAmendmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContractAmendmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     json_schema_version: S.optional(
       CreateContractAmendmentRequestJsonSchemaVersion.pipe(T.Query()),
@@ -840,7 +737,7 @@ export type RequestDetailsReasonForChange =
   | "job_change_reevaluation"
   | "promotion"
   | "other";
-export const RequestDetailsReasonForChange = S.String;
+const RequestDetailsReasonForChange = S.String;
 
 export type SalaryDecreaseDetailsSalaryDecreaseReason =
   | "change_in_working_hours"
@@ -849,7 +746,7 @@ export type SalaryDecreaseDetailsSalaryDecreaseReason =
   | "role_change_or_demotion"
   | "compensation_restructure"
   | "other";
-export const SalaryDecreaseDetailsSalaryDecreaseReason = S.String;
+const SalaryDecreaseDetailsSalaryDecreaseReason = S.String;
 
 /** The details of the salary decrease request if there is one */
 export interface SalaryDecreaseDetails {
@@ -857,7 +754,7 @@ export interface SalaryDecreaseDetails {
   salary_decrease_reason_description?: string | null;
   was_employee_informed?: string;
 }
-export const SalaryDecreaseDetails = /*@__PURE__*/ S.suspend(() =>
+const SalaryDecreaseDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     salary_decrease_reason: S.optional(SalaryDecreaseDetailsSalaryDecreaseReason),
     salary_decrease_reason_description: S.optional(S.NullOr(S.String)),
@@ -874,7 +771,7 @@ export interface RequestDetails {
   reason_for_change_description?: string | null;
   salary_decrease_details?: SalaryDecreaseDetails | null;
 }
-export const RequestDetails = /*@__PURE__*/ S.suspend(() =>
+const RequestDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additional_comments: S.optional(S.NullOr(S.String)),
     effective_date: S.optional(S.String),
@@ -886,7 +783,7 @@ export const RequestDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The current status of a contract amendment request. - `submitted`: The amendment has been submitted and is awaiting Remote's review. - `in_review`: Remote is reviewing the amendment for compliance and feasibility. - `done`: The amendment has been approved and applied to the contract. - `canceled`: The amendment request was canceled before completion. - `deleted`: The amendment request was deleted. */
 export type ContractAmendmentStatus = "submitted" | "in_review" | "done" | "canceled" | "deleted";
-export const ContractAmendmentStatus = S.String;
+const ContractAmendmentStatus = S.String;
 
 /** A full contract amendment record, including the requested changes with their previous and current values. */
 export interface ContractAmendment {
@@ -907,7 +804,7 @@ export interface ContractAmendment {
   /** A link to the support ticket associated with this amendment, if one was created. Null otherwise. */
   zendesk_ticket_url: string | null;
 }
-export const ContractAmendment = /*@__PURE__*/ S.suspend(() =>
+const ContractAmendment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amendment_contract_id: S.NullOr(S.String),
     changes: S.Unknown,
@@ -924,7 +821,7 @@ export const ContractAmendment = /*@__PURE__*/ S.suspend(() =>
 export interface ContractAmendmentResponseData {
   contract_amendment: ContractAmendment;
 }
-export const ContractAmendmentResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractAmendmentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contract_amendment: ContractAmendment,
   }),
@@ -936,7 +833,7 @@ export const ContractAmendmentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ContractAmendmentResponse {
   data?: ContractAmendmentResponseData;
 }
-export const ContractAmendmentResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractAmendmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ContractAmendmentResponseData),
   }),
@@ -946,12 +843,10 @@ export const ContractAmendmentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type CreateContractAmendmentsAutomatableRequestJsonSchemaVersionCase1 = "latest";
-export const CreateContractAmendmentsAutomatableRequestJsonSchemaVersionCase1 = S.String;
-
 export type CreateContractAmendmentsAutomatableRequestJsonSchemaVersion =
   | number
   | CreateContractAmendmentsAutomatableRequestJsonSchemaVersionCase1;
-export const CreateContractAmendmentsAutomatableRequestJsonSchemaVersion =
+const CreateContractAmendmentsAutomatableRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<CreateContractAmendmentsAutomatableRequestJsonSchemaVersion>;
 
 export interface CreateContractAmendmentsAutomatableRequest {
@@ -964,7 +859,7 @@ export interface CreateContractAmendmentsAutomatableRequest {
   /** The employment ID that is related to the contract amendment request. */
   employment_id: string;
 }
-export const CreateContractAmendmentsAutomatableRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContractAmendmentsAutomatableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     json_schema_version: S.optional(
       CreateContractAmendmentsAutomatableRequestJsonSchemaVersion.pipe(T.Query()),
@@ -983,7 +878,7 @@ export interface ContractAmendmentAutomatableResponseData {
   /** The message to explain how the contract amendment request will be processed depending if it is automatable or not. */
   message?: string;
 }
-export const ContractAmendmentAutomatableResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractAmendmentAutomatableResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatable: S.optional(S.Boolean),
     message: S.optional(S.String),
@@ -996,7 +891,7 @@ export const ContractAmendmentAutomatableResponseData = /*@__PURE__*/ S.suspend(
 export interface ContractAmendmentAutomatableResponse {
   data?: ContractAmendmentAutomatableResponseData;
 }
-export const ContractAmendmentAutomatableResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractAmendmentAutomatableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ContractAmendmentAutomatableResponseData),
   }),
@@ -1006,7 +901,7 @@ export const ContractAmendmentAutomatableResponse = /*@__PURE__*/ S.suspend(() =
 
 /** The two calendar days of the month on which invoices are generated. Only applies when `periodicity` is `semi_monthly`; must be omitted (or `null`) for every other periodicity. When omitted for a `semi_monthly` schedule, the two days are derived from `start_date`: the start day and the day 14 days apart from it. Supply this field only to pick a cycle other than that default. One of the two days must be the day of `start_date`, the days must be distinct, and they cannot resolve to the same day within a month. */
 export type ContractorInvoiceScheduleCustomDays = Array<number>;
-export const ContractorInvoiceScheduleCustomDays = /*@__PURE__*/ S.Array(
+const ContractorInvoiceScheduleCustomDays = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ContractorInvoiceScheduleCustomDays>;
 
@@ -1017,7 +912,7 @@ export interface ContractorInvoiceScheduleItem {
   /** Describes invoice item intent. */
   description: string;
 }
-export const ContractorInvoiceScheduleItem = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceScheduleItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     description: S.String,
@@ -1028,7 +923,7 @@ export const ContractorInvoiceScheduleItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of invoice items that composes the overall invoice amount. */
 export type ContractorInvoiceScheduleCreateParamsItemsList = Array<ContractorInvoiceScheduleItem>;
-export const ContractorInvoiceScheduleCreateParamsItemsList = /*@__PURE__*/ S.Array(
+const ContractorInvoiceScheduleCreateParamsItemsList = /*@__PURE__*/ S.Array(
   ContractorInvoiceScheduleItem,
 ) as any as S.Schema<ContractorInvoiceScheduleCreateParamsItemsList>;
 
@@ -1038,7 +933,7 @@ export type ContractorInvoiceSchedulePeriodicity =
   | "monthly"
   | "semi_monthly"
   | "weekly";
-export const ContractorInvoiceSchedulePeriodicity = S.String;
+const ContractorInvoiceSchedulePeriodicity = S.String;
 
 /** Payload shape used to create invoice schedules. */
 export interface ContractorInvoiceScheduleCreateParams {
@@ -1058,7 +953,7 @@ export interface ContractorInvoiceScheduleCreateParams {
   /** Date of the first contractor invoice generation. */
   start_date: string;
 }
-export const ContractorInvoiceScheduleCreateParams = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceScheduleCreateParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.NullOr(S.String),
     custom_days: S.optional(S.NullOr(ContractorInvoiceScheduleCustomDays)),
@@ -1077,16 +972,15 @@ export const ContractorInvoiceScheduleCreateParams = /*@__PURE__*/ S.suspend(() 
 /** List of invoice schedules payload. */
 export type CreateContractorInvoiceScheduleRequestContractorInvoiceSchedulesList =
   Array<ContractorInvoiceScheduleCreateParams>;
-export const CreateContractorInvoiceScheduleRequestContractorInvoiceSchedulesList =
-  /*@__PURE__*/ S.Array(
-    ContractorInvoiceScheduleCreateParams,
-  ) as any as S.Schema<CreateContractorInvoiceScheduleRequestContractorInvoiceSchedulesList>;
+const CreateContractorInvoiceScheduleRequestContractorInvoiceSchedulesList = /*@__PURE__*/ S.Array(
+  ContractorInvoiceScheduleCreateParams,
+) as any as S.Schema<CreateContractorInvoiceScheduleRequestContractorInvoiceSchedulesList>;
 
 export interface CreateContractorInvoiceScheduleRequest {
   /** List of invoice schedules payload. */
   contractor_invoice_schedules: CreateContractorInvoiceScheduleRequestContractorInvoiceSchedulesList;
 }
-export const CreateContractorInvoiceScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContractorInvoiceScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractor_invoice_schedules:
       CreateContractorInvoiceScheduleRequestContractorInvoiceSchedulesList,
@@ -1096,68 +990,66 @@ export const CreateContractorInvoiceScheduleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateContractorInvoiceScheduleRequest>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList>;
+const ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsEmploymentIdList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsEmploymentIdList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsEmploymentIdList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsEmploymentIdList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList =
   Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList>;
 
 export interface ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem {
   amount?: ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList;
   description?: ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList;
 }
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.optional(ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList),
-      description: S.optional(
-        ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem",
-  }) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem>;
+const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amount: S.optional(ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemAmountList),
+    description: S.optional(
+      ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItemDescriptionList,
+    ),
+  }),
+).annotate({
+  identifier: "ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem",
+}) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsItemsList =
   Array<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsList = /*@__PURE__*/ S.Array(
+const ContractorInvoiceScheduleCreateResponseFailureErrorsItemsList = /*@__PURE__*/ S.Array(
   ContractorInvoiceScheduleCreateResponseFailureErrorsItemsItem,
 ) as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsItemsList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList =
   ProductFeaturesList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNoteList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsNrOccurrencesList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsNrOccurrencesList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsNrOccurrencesList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNrOccurrencesList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList =
   ProductFeaturesList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsNumberList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList>;
 
 export type ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList = Array<string>;
-export const ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList =
+const ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList>;
 
 export interface ContractorInvoiceScheduleCreateResponseFailureErrors {
@@ -1171,7 +1063,7 @@ export interface ContractorInvoiceScheduleCreateResponseFailureErrors {
   periodicity?: ContractorInvoiceScheduleCreateResponseFailureErrorsPeriodicityList;
   start_date?: ContractorInvoiceScheduleCreateResponseFailureErrorsStartDateList;
 }
-export const ContractorInvoiceScheduleCreateResponseFailureErrors = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceScheduleCreateResponseFailureErrors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList),
     custom_days: S.optional(ContractorInvoiceScheduleCreateResponseFailureErrorsCustomDaysList),
@@ -1192,7 +1084,7 @@ export const ContractorInvoiceScheduleCreateResponseFailureErrors = /*@__PURE__*
 /** List of invoice items that composes the overall invoice amount. */
 export type ContractorInvoiceScheduleCreateResponseFailureItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const ContractorInvoiceScheduleCreateResponseFailureItemsList =
+const ContractorInvoiceScheduleCreateResponseFailureItemsList =
   ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<ContractorInvoiceScheduleCreateResponseFailureItemsList>;
 
 /** Set of invoice schedule attributes with failed validation. */
@@ -1214,7 +1106,7 @@ export interface ContractorInvoiceScheduleCreateResponseFailure {
   /** Date of the first contractor invoice generation. */
   start_date: string;
 }
-export const ContractorInvoiceScheduleCreateResponseFailure = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceScheduleCreateResponseFailure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.NullOr(S.String),
     custom_days: S.optional(S.NullOr(ContractorInvoiceScheduleCustomDays)),
@@ -1233,14 +1125,14 @@ export const ContractorInvoiceScheduleCreateResponseFailure = /*@__PURE__*/ S.su
 
 export type CreateContractorInvoiceScheduleResponseDataFailuresList =
   Array<ContractorInvoiceScheduleCreateResponseFailure>;
-export const CreateContractorInvoiceScheduleResponseDataFailuresList = /*@__PURE__*/ S.Array(
+const CreateContractorInvoiceScheduleResponseDataFailuresList = /*@__PURE__*/ S.Array(
   ContractorInvoiceScheduleCreateResponseFailure,
 ) as any as S.Schema<CreateContractorInvoiceScheduleResponseDataFailuresList>;
 
 /** List of invoice items that composes the overall invoice amount. */
 export type ContractorInvoiceScheduleCreateResponseSuccessItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const ContractorInvoiceScheduleCreateResponseSuccessItemsList =
+const ContractorInvoiceScheduleCreateResponseSuccessItemsList =
   ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<ContractorInvoiceScheduleCreateResponseSuccessItemsList>;
 
 /** Set of invoice schedule attributes that were successfully created. */
@@ -1262,7 +1154,7 @@ export interface ContractorInvoiceScheduleCreateResponseSuccess {
   /** Date of the first contractor invoice generation. */
   start_date: string;
 }
-export const ContractorInvoiceScheduleCreateResponseSuccess = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceScheduleCreateResponseSuccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.NullOr(S.String),
     custom_days: S.optional(S.NullOr(ContractorInvoiceScheduleCustomDays)),
@@ -1281,7 +1173,7 @@ export const ContractorInvoiceScheduleCreateResponseSuccess = /*@__PURE__*/ S.su
 
 export type CreateContractorInvoiceScheduleResponseDataSuccessesList =
   Array<ContractorInvoiceScheduleCreateResponseSuccess>;
-export const CreateContractorInvoiceScheduleResponseDataSuccessesList = /*@__PURE__*/ S.Array(
+const CreateContractorInvoiceScheduleResponseDataSuccessesList = /*@__PURE__*/ S.Array(
   ContractorInvoiceScheduleCreateResponseSuccess,
 ) as any as S.Schema<CreateContractorInvoiceScheduleResponseDataSuccessesList>;
 
@@ -1289,7 +1181,7 @@ export interface CreateContractorInvoiceScheduleResponseData {
   failures: CreateContractorInvoiceScheduleResponseDataFailuresList;
   successes: CreateContractorInvoiceScheduleResponseDataSuccessesList;
 }
-export const CreateContractorInvoiceScheduleResponseData = /*@__PURE__*/ S.suspend(() =>
+const CreateContractorInvoiceScheduleResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failures: CreateContractorInvoiceScheduleResponseDataFailuresList,
     successes: CreateContractorInvoiceScheduleResponseDataSuccessesList,
@@ -1301,7 +1193,7 @@ export const CreateContractorInvoiceScheduleResponseData = /*@__PURE__*/ S.suspe
 export interface CreateContractorInvoiceScheduleResponse {
   data: CreateContractorInvoiceScheduleResponseData;
 }
-export const CreateContractorInvoiceScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateContractorInvoiceScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreateContractorInvoiceScheduleResponseData,
   }),
@@ -1311,25 +1203,23 @@ export const CreateContractorInvoiceScheduleResponse = /*@__PURE__*/ S.suspend((
 
 /** Use latest version */
 export type CreateContractorsEligibilityQuestionnaireRequestJsonSchemaVersionCase1 = "latest";
-export const CreateContractorsEligibilityQuestionnaireRequestJsonSchemaVersionCase1 = S.String;
-
 export type CreateContractorsEligibilityQuestionnaireRequestJsonSchemaVersion =
   | number
   | CreateContractorsEligibilityQuestionnaireRequestJsonSchemaVersionCase1;
-export const CreateContractorsEligibilityQuestionnaireRequestJsonSchemaVersion =
+const CreateContractorsEligibilityQuestionnaireRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<CreateContractorsEligibilityQuestionnaireRequestJsonSchemaVersion>;
 
 /** Responses to the questionnaire questions */
 export type CreateContractorsEligibilityQuestionnaireRequestResponsesMap = {
   [key: string]: string | undefined;
 };
-export const CreateContractorsEligibilityQuestionnaireRequestResponsesMap = /*@__PURE__*/ S.Record(
+const CreateContractorsEligibilityQuestionnaireRequestResponsesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateContractorsEligibilityQuestionnaireRequestResponsesMap>;
 
 export type CreateContractorsEligibilityQuestionnaireRequestType = "contractor_of_record";
-export const CreateContractorsEligibilityQuestionnaireRequestType = S.String;
+const CreateContractorsEligibilityQuestionnaireRequestType = S.String;
 
 export interface CreateContractorsEligibilityQuestionnaireRequest {
   /** Version of the form schema */
@@ -1340,7 +1230,7 @@ export interface CreateContractorsEligibilityQuestionnaireRequest {
   responses: CreateContractorsEligibilityQuestionnaireRequestResponsesMap;
   type: CreateContractorsEligibilityQuestionnaireRequestType | (string & {});
 }
-export const CreateContractorsEligibilityQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContractorsEligibilityQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     json_schema_version: S.optional(
       CreateContractorsEligibilityQuestionnaireRequestJsonSchemaVersion.pipe(T.Query()),
@@ -1354,7 +1244,7 @@ export const CreateContractorsEligibilityQuestionnaireRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateContractorsEligibilityQuestionnaireRequest>;
 
 export type EligibilityQuestionnaireType = "contractor_of_record";
-export const EligibilityQuestionnaireType = S.String;
+const EligibilityQuestionnaireType = S.String;
 
 export interface EligibilityQuestionnaire {
   /** Whether the questionnaire blocks further progress if failed */
@@ -1367,7 +1257,7 @@ export interface EligibilityQuestionnaire {
   submitted_at: string;
   type: EligibilityQuestionnaireType;
 }
-export const EligibilityQuestionnaire = /*@__PURE__*/ S.suspend(() =>
+const EligibilityQuestionnaire = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_blocking: S.Boolean,
     questions: S.Unknown,
@@ -1381,7 +1271,7 @@ export const EligibilityQuestionnaire = /*@__PURE__*/ S.suspend(() =>
 export interface EligibilityQuestionnaireResponse {
   data: EligibilityQuestionnaire;
 }
-export const EligibilityQuestionnaireResponse = /*@__PURE__*/ S.suspend(() =>
+const EligibilityQuestionnaireResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EligibilityQuestionnaire,
   }),
@@ -1397,7 +1287,7 @@ export interface CreateContractorsEmploymentContractDocumentRequest {
   /** When true, skips AI-based compliance checks (e.g. services and deliverables classification). Defaults to false. */
   skip_ai_checks?: boolean;
 }
-export const CreateContractorsEmploymentContractDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContractorsEmploymentContractDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     contract_document: S.Unknown,
@@ -1419,7 +1309,7 @@ export type ContractorContractDocumentStatus =
   | "awaiting_signatures"
   | "deadline_passed"
   | "finished";
-export const ContractorContractDocumentStatus = S.String;
+const ContractorContractDocumentStatus = S.String;
 
 /** A contract document for a contractor employment, tracking its signing status. */
 export interface ContractDocument {
@@ -1427,7 +1317,7 @@ export interface ContractDocument {
   id: string;
   status: ContractorContractDocumentStatus;
 }
-export const ContractDocument = /*@__PURE__*/ S.suspend(() =>
+const ContractDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: ContractorContractDocumentStatus,
@@ -1437,7 +1327,7 @@ export const ContractDocument = /*@__PURE__*/ S.suspend(() =>
 export interface CreateContractDocumentResponseData {
   contract_document: ContractDocument;
 }
-export const CreateContractDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
+const CreateContractDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contract_document: ContractDocument,
   }),
@@ -1449,7 +1339,7 @@ export const CreateContractDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CreateContractDocumentResponse {
   data: CreateContractDocumentResponseData;
 }
-export const CreateContractDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateContractDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreateContractDocumentResponseData,
   }),
@@ -1465,7 +1355,7 @@ export interface CreateContractorsEmploymentContractDocumentSignRequest {
   /** The signer's full legal name as their electronic signature. */
   signature: string;
 }
-export const CreateContractorsEmploymentContractDocumentSignRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContractorsEmploymentContractDocumentSignRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     contract_document_id: S.String.pipe(T.Label()),
@@ -1485,7 +1375,7 @@ export interface SuccessResponseData {
   /** The result status. Always `"ok"` for successful operations. */
   status?: string;
 }
-export const SuccessResponseData = /*@__PURE__*/ S.suspend(() =>
+const SuccessResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -1495,7 +1385,7 @@ export const SuccessResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface SuccessResponse {
   data: SuccessResponseData;
 }
-export const SuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const SuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: SuccessResponseData,
   }),
@@ -1505,17 +1395,16 @@ export interface CreateContractorsEmploymentContractorCorSubscriptionRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const CreateContractorsEmploymentContractorCorSubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      employment_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/v1/contractors/employments/{employment_id}/contractor-cor-subscription",
-        code: 200,
-      }),
-    ),
+const CreateContractorsEmploymentContractorCorSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    employment_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/v1/contractors/employments/{employment_id}/contractor-cor-subscription",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateContractorsEmploymentContractorCorSubscriptionRequest",
 }) as any as S.Schema<CreateContractorsEmploymentContractorCorSubscriptionRequest>;
@@ -1523,25 +1412,24 @@ export const CreateContractorsEmploymentContractorCorSubscriptionRequest = /*@__
 export type CreateContractorsEmploymentContractorPlusSubscriptionRequestOperation =
   | "upgrade"
   | "downgrade";
-export const CreateContractorsEmploymentContractorPlusSubscriptionRequestOperation = S.String;
+const CreateContractorsEmploymentContractorPlusSubscriptionRequestOperation = S.String;
 
 export interface CreateContractorsEmploymentContractorPlusSubscriptionRequest {
   /** Employment ID */
   employment_id: string;
   operation: CreateContractorsEmploymentContractorPlusSubscriptionRequestOperation | (string & {});
 }
-export const CreateContractorsEmploymentContractorPlusSubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      employment_id: S.String.pipe(T.Label()),
-      operation: CreateContractorsEmploymentContractorPlusSubscriptionRequestOperation,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/v1/contractors/employments/{employment_id}/contractor-plus-subscription",
-        code: 200,
-      }),
-    ),
+const CreateContractorsEmploymentContractorPlusSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    employment_id: S.String.pipe(T.Label()),
+    operation: CreateContractorsEmploymentContractorPlusSubscriptionRequestOperation,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/v1/contractors/employments/{employment_id}/contractor-plus-subscription",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateContractorsEmploymentContractorPlusSubscriptionRequest",
 }) as any as S.Schema<CreateContractorsEmploymentContractorPlusSubscriptionRequest>;
@@ -1550,7 +1438,7 @@ export interface CreateContractorsEmploymentCorTerminationRequestRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const CreateContractorsEmploymentCorTerminationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContractorsEmploymentCorTerminationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1566,7 +1454,7 @@ export const CreateContractorsEmploymentCorTerminationRequestRequest = /*@__PURE
 
 /** Current status of the termination request. */
 export type CorTerminationRequestCreatedResponseDataStatus = "initiated" | "executed" | "cancelled";
-export const CorTerminationRequestCreatedResponseDataStatus = S.String;
+const CorTerminationRequestCreatedResponseDataStatus = S.String;
 
 export interface CorTerminationRequestCreatedResponseData {
   /** The date on which the contractor employment will be deactivated. */
@@ -1578,7 +1466,7 @@ export interface CorTerminationRequestCreatedResponseData {
   /** The date when the termination was initiated. */
   termination_date: string | null;
 }
-export const CorTerminationRequestCreatedResponseData = /*@__PURE__*/ S.suspend(() =>
+const CorTerminationRequestCreatedResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_deactivation_date: S.NullOr(S.String),
     id: S.String,
@@ -1592,7 +1480,7 @@ export const CorTerminationRequestCreatedResponseData = /*@__PURE__*/ S.suspend(
 export interface CorTerminationRequestCreatedResponse {
   data: CorTerminationRequestCreatedResponseData;
 }
-export const CorTerminationRequestCreatedResponse = /*@__PURE__*/ S.suspend(() =>
+const CorTerminationRequestCreatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CorTerminationRequestCreatedResponseData,
   }),
@@ -1602,7 +1490,7 @@ export const CorTerminationRequestCreatedResponse = /*@__PURE__*/ S.suspend(() =
 
 /** The category of time being tracked. Contractors are restricted to `regular_hours`, `on_call`, or `break`. */
 export type ContractorTimeTrackingParamsType = "regular_hours" | "on_call" | "break";
-export const ContractorTimeTrackingParamsType = S.String;
+const ContractorTimeTrackingParamsType = S.String;
 
 /** Parameters for a single time tracking entry on a contractor timesheet. Allowed `type` values are restricted to the contractor subset. */
 export interface ContractorTimeTrackingParams {
@@ -1614,7 +1502,7 @@ export interface ContractorTimeTrackingParams {
   /** The category of time being tracked. Contractors are restricted to `regular_hours`, `on_call`, or `break`. */
   type: ContractorTimeTrackingParamsType | (string & {});
 }
-export const ContractorTimeTrackingParams = /*@__PURE__*/ S.suspend(() =>
+const ContractorTimeTrackingParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clock_in: S.String,
     clock_out: S.String,
@@ -1629,7 +1517,7 @@ export const ContractorTimeTrackingParams = /*@__PURE__*/ S.suspend(() =>
 /** One or more time tracking entries to include in the timesheet. */
 export type CreateContractorsEmploymentTimesheetRequestTimeTrackingsList =
   Array<ContractorTimeTrackingParams>;
-export const CreateContractorsEmploymentTimesheetRequestTimeTrackingsList = /*@__PURE__*/ S.Array(
+const CreateContractorsEmploymentTimesheetRequestTimeTrackingsList = /*@__PURE__*/ S.Array(
   ContractorTimeTrackingParams,
 ) as any as S.Schema<CreateContractorsEmploymentTimesheetRequestTimeTrackingsList>;
 
@@ -1641,7 +1529,7 @@ export interface CreateContractorsEmploymentTimesheetRequest {
   /** One or more time tracking entries to include in the timesheet. */
   time_trackings: CreateContractorsEmploymentTimesheetRequestTimeTrackingsList;
 }
-export const CreateContractorsEmploymentTimesheetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContractorsEmploymentTimesheetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     end_date: S.String,
@@ -1665,7 +1553,7 @@ export interface HoursAndMinutes {
   /** The number of remaining minutes (0-59). */
   minutes?: number;
 }
-export const HoursAndMinutes = /*@__PURE__*/ S.suspend(() =>
+const HoursAndMinutes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hours: S.optional(S.Number),
     minutes: S.optional(S.Number),
@@ -1674,7 +1562,7 @@ export const HoursAndMinutes = /*@__PURE__*/ S.suspend(() =>
 
 /** The category of time being tracked. One of `regular_hours`, `on_call`, `break`. */
 export type ContractorTimeTrackingType = "regular_hours" | "on_call" | "break";
-export const ContractorTimeTrackingType = S.String;
+const ContractorTimeTrackingType = S.String;
 
 /** A single time tracking entry on a contractor timesheet. */
 export interface ContractorTimeTracking {
@@ -1687,7 +1575,7 @@ export interface ContractorTimeTracking {
   /** The category of time being tracked. One of `regular_hours`, `on_call`, `break`. */
   type: ContractorTimeTrackingType;
 }
-export const ContractorTimeTracking = /*@__PURE__*/ S.suspend(() =>
+const ContractorTimeTracking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clock_in: S.String,
     clock_out: S.String,
@@ -1700,7 +1588,7 @@ export const ContractorTimeTracking = /*@__PURE__*/ S.suspend(() =>
 
 /** The individual time tracking entries that make up this timesheet. */
 export type ContractorTimesheetTimeTrackingsList = Array<ContractorTimeTracking>;
-export const ContractorTimesheetTimeTrackingsList = /*@__PURE__*/ S.Array(
+const ContractorTimesheetTimeTrackingsList = /*@__PURE__*/ S.Array(
   ContractorTimeTracking,
 ) as any as S.Schema<ContractorTimesheetTimeTrackingsList>;
 
@@ -1722,7 +1610,7 @@ export interface ContractorTimesheet {
   time_trackings: ContractorTimesheetTimeTrackingsList;
   total_hours: HoursAndMinutes;
 }
-export const ContractorTimesheet = /*@__PURE__*/ S.suspend(() =>
+const ContractorTimesheet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     break_hours: HoursAndMinutes,
     country_code: S.String,
@@ -1742,7 +1630,7 @@ export const ContractorTimesheet = /*@__PURE__*/ S.suspend(() =>
 export interface ContractorTimesheetResponseData {
   timesheet: ContractorTimesheet;
 }
-export const ContractorTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractorTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timesheet: ContractorTimesheet,
   }),
@@ -1754,7 +1642,7 @@ export const ContractorTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ContractorTimesheetResponse {
   data?: ContractorTimesheetResponseData;
 }
-export const ContractorTimesheetResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorTimesheetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ContractorTimesheetResponseData),
   }),
@@ -1768,7 +1656,7 @@ export interface CostCalculatorBenefitParam {
   /** The unique identifier (slug) of the benefit tier within the group. Determines the level of coverage and cost. */
   benefit_tier_slug: string;
 }
-export const CostCalculatorBenefitParam = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorBenefitParam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_group_slug: S.String,
     benefit_tier_slug: S.String,
@@ -1779,7 +1667,7 @@ export const CostCalculatorBenefitParam = /*@__PURE__*/ S.suspend(() =>
 
 /** Specific benefit selections to include in the estimate. */
 export type CostCalculatorEmploymentParamBenefitsList = Array<CostCalculatorBenefitParam>;
-export const CostCalculatorEmploymentParamBenefitsList = /*@__PURE__*/ S.Array(
+const CostCalculatorEmploymentParamBenefitsList = /*@__PURE__*/ S.Array(
   CostCalculatorBenefitParam,
 ) as any as S.Schema<CostCalculatorEmploymentParamBenefitsList>;
 
@@ -1796,7 +1684,7 @@ export interface CostCalculatorDiscount {
   /** A human-readable label for the discount (e.g., "10% Discount"). */
   text: string;
 }
-export const CostCalculatorDiscount = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorDiscount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     months: S.optional(S.Number),
@@ -1807,7 +1695,7 @@ export const CostCalculatorDiscount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CostCalculatorDiscount" }) as any as S.Schema<CostCalculatorDiscount>;
 
 export type EmploymentTermType = "fixed" | "indefinite";
-export const EmploymentTermType = S.String;
+const EmploymentTermType = S.String;
 
 /** Parameters for a single employment to include in the cost estimate. Provide the region and salary (or total cost) -- the calculator will compute all employer costs, contributions, and benefits. */
 export interface CostCalculatorEmploymentParam {
@@ -1832,7 +1720,7 @@ export interface CostCalculatorEmploymentParam {
   /** An optional label for this employment in the estimate (e.g., the job title or role name). */
   title?: string;
 }
-export const CostCalculatorEmploymentParam = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorEmploymentParam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     age: S.optional(S.Number),
     annual_gross_salary: S.optional(S.Number),
@@ -1853,7 +1741,7 @@ export const CostCalculatorEmploymentParam = /*@__PURE__*/ S.suspend(() =>
 /** One or more employments to estimate costs for. */
 export type CreateCostCalculatorEstimationRequestEmploymentsList =
   Array<CostCalculatorEmploymentParam>;
-export const CreateCostCalculatorEstimationRequestEmploymentsList = /*@__PURE__*/ S.Array(
+const CreateCostCalculatorEstimationRequestEmploymentsList = /*@__PURE__*/ S.Array(
   CostCalculatorEmploymentParam,
 ) as any as S.Schema<CreateCostCalculatorEstimationRequestEmploymentsList>;
 
@@ -1874,7 +1762,7 @@ export interface CreateCostCalculatorEstimationRequest {
   /** Whether to include premium benefit options in the estimate. */
   include_premium_benefits?: boolean;
 }
-export const CreateCostCalculatorEstimationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCostCalculatorEstimationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_name: S.optional(S.String),
     employer_currency_slug: S.String,
@@ -1891,7 +1779,7 @@ export const CreateCostCalculatorEstimationRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Feature flags indicating which Remote services are available in this country. */
 export type MinimalCountryFeaturesList = Array<string>;
-export const MinimalCountryFeaturesList =
+const MinimalCountryFeaturesList =
   ProductFeaturesList as any as S.Schema<MinimalCountryFeaturesList>;
 
 /** A lightweight country representation with basic identification fields. */
@@ -1907,7 +1795,7 @@ export interface MinimalCountry {
   /** A unique URL-friendly identifier for the country. */
   slug: string;
 }
-export const MinimalCountry = /*@__PURE__*/ S.suspend(() =>
+const MinimalCountry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alpha_2_code: S.String,
     code: S.String,
@@ -1930,7 +1818,7 @@ export interface CostCalculatorCost {
   /** A link to a help article with more information about this cost, if available. */
   zendesk_article_url: string | null;
 }
-export const CostCalculatorCost = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     description: S.NullOr(S.String),
@@ -1942,13 +1830,13 @@ export const CostCalculatorCost = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of all annual benefit costs */
 export type CostCalculatorCostsAnnualBenefitsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsAnnualBenefitsBreakdownList = /*@__PURE__*/ S.Array(
+const CostCalculatorCostsAnnualBenefitsBreakdownList = /*@__PURE__*/ S.Array(
   CostCalculatorCost,
 ) as any as S.Schema<CostCalculatorCostsAnnualBenefitsBreakdownList>;
 
 /** The list of all annual employer contribution costs */
 export type CostCalculatorCostsAnnualContributionsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsAnnualContributionsBreakdownList =
+const CostCalculatorCostsAnnualContributionsBreakdownList =
   CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsAnnualContributionsBreakdownList>;
 
 /** The type of money in general use in a particular country */
@@ -1958,7 +1846,7 @@ export interface Currency {
   slug: string;
   symbol: string;
 }
-export const Currency = /*@__PURE__*/ S.suspend(() =>
+const Currency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     name: S.optional(S.String),
@@ -1978,7 +1866,7 @@ export interface CostCalculatorDiscountResponse {
   /** A human-readable label for the discount. */
   text: string;
 }
-export const CostCalculatorDiscountResponse = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorDiscountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annual_amount: S.Number,
     monthly_amount: S.Number,
@@ -1991,27 +1879,27 @@ export const CostCalculatorDiscountResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of all annual extra statutory payment costs */
 export type CostCalculatorCostsExtraStatutoryPaymentsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsExtraStatutoryPaymentsBreakdownList =
+const CostCalculatorCostsExtraStatutoryPaymentsBreakdownList =
   CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsExtraStatutoryPaymentsBreakdownList>;
 
 /** The list of all annual fringe benefits tax costs */
 export type CostCalculatorCostsFringeBenefitsTaxBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsFringeBenefitsTaxBreakdownList =
+const CostCalculatorCostsFringeBenefitsTaxBreakdownList =
   CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsFringeBenefitsTaxBreakdownList>;
 
 /** The list of all monthly benefit costs */
 export type CostCalculatorCostsMonthlyBenefitsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsMonthlyBenefitsBreakdownList =
+const CostCalculatorCostsMonthlyBenefitsBreakdownList =
   CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsMonthlyBenefitsBreakdownList>;
 
 /** The list of all monthly employer contribution costs */
 export type CostCalculatorCostsMonthlyContributionsBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsMonthlyContributionsBreakdownList =
+const CostCalculatorCostsMonthlyContributionsBreakdownList =
   CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsMonthlyContributionsBreakdownList>;
 
 /** The list of all monthly fringe benefits tax costs */
 export type CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList = Array<CostCalculatorCost>;
-export const CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList =
+const CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList =
   CostCalculatorCostsAnnualBenefitsBreakdownList as any as S.Schema<CostCalculatorCostsMonthlyFringeBenefitsTaxBreakdownList>;
 
 export interface CostCalculatorCosts {
@@ -2064,7 +1952,7 @@ export interface CostCalculatorCosts {
   /** Monthly gross salary + monthly contributions + monthly fee */
   monthly_total: number;
 }
-export const CostCalculatorCosts = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorCosts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annual_benefits_breakdown: S.optional(CostCalculatorCostsAnnualBenefitsBreakdownList),
     annual_benefits_total: S.optional(S.Number),
@@ -2101,12 +1989,12 @@ export const CostCalculatorCosts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CostCalculatorCosts" }) as any as S.Schema<CostCalculatorCosts>;
 
 export type MinimalRegionChildRegionsList = Array<MinimalRegion>;
-export const MinimalRegionChildRegionsList = /*@__PURE__*/ S.Array(
+const MinimalRegionChildRegionsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => MinimalRegion),
 ) as any as S.Schema<MinimalRegionChildRegionsList>;
 
 export type RegionStatus = "active" | "inactive";
-export const RegionStatus = S.String;
+const RegionStatus = S.String;
 
 export interface MinimalRegion {
   child_regions?: MinimalRegionChildRegionsList;
@@ -2115,7 +2003,7 @@ export interface MinimalRegion {
   slug: string;
   status?: RegionStatus | null;
 }
-export const MinimalRegion = /*@__PURE__*/ S.suspend(() =>
+const MinimalRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     child_regions: S.optional(MinimalRegionChildRegionsList),
     code: S.optional(S.NullOr(S.String)),
@@ -2142,7 +2030,7 @@ export interface CostCalculatorEmployment {
   region: MinimalRegion;
   regional_currency_costs: CostCalculatorCosts;
 }
-export const CostCalculatorEmployment = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: MinimalCountry,
     country_benefits_details_url: S.NullOr(S.String),
@@ -2157,14 +2045,14 @@ export const CostCalculatorEmployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CostCalculatorEmployment" }) as any as S.Schema<CostCalculatorEmployment>;
 
 export type CostCalculatorEstimateResponseDataEmploymentsList = Array<CostCalculatorEmployment>;
-export const CostCalculatorEstimateResponseDataEmploymentsList = /*@__PURE__*/ S.Array(
+const CostCalculatorEstimateResponseDataEmploymentsList = /*@__PURE__*/ S.Array(
   CostCalculatorEmployment,
 ) as any as S.Schema<CostCalculatorEstimateResponseDataEmploymentsList>;
 
 export interface CostCalculatorEstimateResponseData {
   employments?: CostCalculatorEstimateResponseDataEmploymentsList;
 }
-export const CostCalculatorEstimateResponseData = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorEstimateResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employments: S.optional(CostCalculatorEstimateResponseDataEmploymentsList),
   }),
@@ -2175,7 +2063,7 @@ export const CostCalculatorEstimateResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CostCalculatorEstimateResponse {
   data: CostCalculatorEstimateResponseData;
 }
-export const CostCalculatorEstimateResponse = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorEstimateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CostCalculatorEstimateResponseData,
   }),
@@ -2186,7 +2074,7 @@ export const CostCalculatorEstimateResponse = /*@__PURE__*/ S.suspend(() =>
 /** One or more employments to estimate costs for. */
 export type CreateCostCalculatorEstimationCsvRequestEmploymentsList =
   Array<CostCalculatorEmploymentParam>;
-export const CreateCostCalculatorEstimationCsvRequestEmploymentsList =
+const CreateCostCalculatorEstimationCsvRequestEmploymentsList =
   CreateCostCalculatorEstimationRequestEmploymentsList as any as S.Schema<CreateCostCalculatorEstimationCsvRequestEmploymentsList>;
 
 export interface CreateCostCalculatorEstimationCsvRequest {
@@ -2206,7 +2094,7 @@ export interface CreateCostCalculatorEstimationCsvRequest {
   /** Whether to include premium benefit options in the estimate. */
   include_premium_benefits?: boolean;
 }
-export const CreateCostCalculatorEstimationCsvRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCostCalculatorEstimationCsvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_name: S.optional(S.String),
     employer_currency_slug: S.String,
@@ -2224,7 +2112,7 @@ export const CreateCostCalculatorEstimationCsvRequest = /*@__PURE__*/ S.suspend(
 export interface CostCalculatorEstimateCSVResponseData {
   content: string;
 }
-export const CostCalculatorEstimateCSVResponseData = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorEstimateCSVResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
   }),
@@ -2235,7 +2123,7 @@ export const CostCalculatorEstimateCSVResponseData = /*@__PURE__*/ S.suspend(() 
 export interface CostCalculatorEstimateCSVResponse {
   data: CostCalculatorEstimateCSVResponseData;
 }
-export const CostCalculatorEstimateCSVResponse = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorEstimateCSVResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CostCalculatorEstimateCSVResponseData,
   }),
@@ -2246,7 +2134,7 @@ export const CostCalculatorEstimateCSVResponse = /*@__PURE__*/ S.suspend(() =>
 /** One or more employments to estimate costs for. */
 export type CreateCostCalculatorEstimationPdfRequestEmploymentsList =
   Array<CostCalculatorEmploymentParam>;
-export const CreateCostCalculatorEstimationPdfRequestEmploymentsList =
+const CreateCostCalculatorEstimationPdfRequestEmploymentsList =
   CreateCostCalculatorEstimationRequestEmploymentsList as any as S.Schema<CreateCostCalculatorEstimationPdfRequestEmploymentsList>;
 
 export interface CreateCostCalculatorEstimationPdfRequest {
@@ -2266,7 +2154,7 @@ export interface CreateCostCalculatorEstimationPdfRequest {
   /** Whether to include premium benefit options in the estimate. */
   include_premium_benefits?: boolean;
 }
-export const CreateCostCalculatorEstimationPdfRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCostCalculatorEstimationPdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_name: S.optional(S.String),
     employer_currency_slug: S.String,
@@ -2282,12 +2170,10 @@ export const CreateCostCalculatorEstimationPdfRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateCostCalculatorEstimationPdfRequest>;
 
 export type CostCalculatorEstimatePDFResponseData = CostCalculatorEstimateCSVResponseData;
-export const CostCalculatorEstimatePDFResponseData = CostCalculatorEstimateCSVResponseData;
-
 export interface CostCalculatorEstimatePDFResponse {
   data: CostCalculatorEstimateCSVResponseData;
 }
-export const CostCalculatorEstimatePDFResponse =
+const CostCalculatorEstimatePDFResponse =
   CostCalculatorEstimateCSVResponse as any as S.Schema<CostCalculatorEstimatePDFResponse>;
 
 export interface CreateCurrencyConverterEffectiveRequest {
@@ -2298,7 +2184,7 @@ export interface CreateCurrencyConverterEffectiveRequest {
   /** The currency code to convert to */
   target_currency: string;
 }
-export const CreateCurrencyConverterEffectiveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCurrencyConverterEffectiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     source_currency: S.String,
@@ -2319,7 +2205,7 @@ export interface ConvertCurrency {
   target_amount: number;
   target_currency: CurrencyDefinition;
 }
-export const ConvertCurrency = /*@__PURE__*/ S.suspend(() =>
+const ConvertCurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exchange_rate: S.Number,
     source_amount: S.Number,
@@ -2332,7 +2218,7 @@ export const ConvertCurrency = /*@__PURE__*/ S.suspend(() =>
 export interface ConvertCurrencyResponseData {
   conversion_data: ConvertCurrency;
 }
-export const ConvertCurrencyResponseData = /*@__PURE__*/ S.suspend(() =>
+const ConvertCurrencyResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversion_data: ConvertCurrency,
   }),
@@ -2344,7 +2230,7 @@ export const ConvertCurrencyResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ConvertCurrencyResponse {
   data: ConvertCurrencyResponseData;
 }
-export const ConvertCurrencyResponse = /*@__PURE__*/ S.suspend(() =>
+const ConvertCurrencyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ConvertCurrencyResponseData,
   }),
@@ -2358,7 +2244,7 @@ export interface CreateCurrencyConverterRawRequest {
   /** The currency code to convert to */
   target_currency: string;
 }
-export const CreateCurrencyConverterRawRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCurrencyConverterRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     source_currency: S.String,
@@ -2370,7 +2256,7 @@ export const CreateCurrencyConverterRawRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Who can enter or edit values for this custom field. Controls which users see the field as editable vs read-only. */
 export type CustomFieldDataEntryAccess = "company_admin_only" | "employee_only" | "everyone";
-export const CustomFieldDataEntryAccess = S.String;
+const CustomFieldDataEntryAccess = S.String;
 
 /** The datatype of the custom field */
 export type CustomFieldSimpleDataType =
@@ -2382,11 +2268,9 @@ export type CustomFieldSimpleDataType =
   | "percentage"
   | "decimal"
   | "link";
-export const CustomFieldSimpleDataType = S.String;
-
 /** Who can see this custom field and its values. Controls visibility across different user roles. */
 export type CustomFieldVisibilityScope = "company_admin_only" | "everyone";
-export const CustomFieldVisibilityScope = S.String;
+const CustomFieldVisibilityScope = S.String;
 
 /** Schema for creating a general custom field definition */
 export interface CreateGeneralCustomFieldDefinitionParams {
@@ -2396,35 +2280,12 @@ export interface CreateGeneralCustomFieldDefinitionParams {
   type: CustomFieldSimpleDataType | (string & {});
   visibility_scope: CustomFieldVisibilityScope | (string & {});
 }
-export const CreateGeneralCustomFieldDefinitionParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_entry_access: CustomFieldDataEntryAccess,
-    name: S.String,
-    required: S.Boolean,
-    type: CustomFieldSimpleDataType,
-    visibility_scope: CustomFieldVisibilityScope,
-  }),
-).annotate({
-  identifier: "CreateGeneralCustomFieldDefinitionParams",
-}) as any as S.Schema<CreateGeneralCustomFieldDefinitionParams>;
-
 export type SingleSelectMetadataOptionsList = Array<string>;
-export const SingleSelectMetadataOptionsList =
-  ProductFeaturesList as any as S.Schema<SingleSelectMetadataOptionsList>;
-
 /** The metadata for a single select custom field */
 export interface SingleSelectMetadata {
   options: SingleSelectMetadataOptionsList;
 }
-export const SingleSelectMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: SingleSelectMetadataOptionsList,
-  }),
-).annotate({ identifier: "SingleSelectMetadata" }) as any as S.Schema<SingleSelectMetadata>;
-
 export type CreateSingleSelectCustomFieldDefinitionParamsType = "single_select";
-export const CreateSingleSelectCustomFieldDefinitionParamsType = S.String;
-
 /** Schema for creating a single select custom field definition */
 export interface CreateSingleSelectCustomFieldDefinitionParams {
   data_entry_access: CustomFieldDataEntryAccess | (string & {});
@@ -2434,33 +2295,10 @@ export interface CreateSingleSelectCustomFieldDefinitionParams {
   type: CreateSingleSelectCustomFieldDefinitionParamsType;
   visibility_scope: CustomFieldVisibilityScope | (string & {});
 }
-export const CreateSingleSelectCustomFieldDefinitionParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_entry_access: CustomFieldDataEntryAccess,
-    metadata: SingleSelectMetadata,
-    name: S.String,
-    required: S.Boolean,
-    type: CreateSingleSelectCustomFieldDefinitionParamsType,
-    visibility_scope: CustomFieldVisibilityScope,
-  }),
-).annotate({
-  identifier: "CreateSingleSelectCustomFieldDefinitionParams",
-}) as any as S.Schema<CreateSingleSelectCustomFieldDefinitionParams>;
-
 export interface CreateCurrencyCustomFieldDefinitionParamsMetadata {
   currency?: string | null;
 }
-export const CreateCurrencyCustomFieldDefinitionParamsMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currency: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CreateCurrencyCustomFieldDefinitionParamsMetadata",
-}) as any as S.Schema<CreateCurrencyCustomFieldDefinitionParamsMetadata>;
-
 export type CreateCurrencyCustomFieldDefinitionParamsType = "currency";
-export const CreateCurrencyCustomFieldDefinitionParamsType = S.String;
-
 /** Schema for creating a currency custom field definition */
 export interface CreateCurrencyCustomFieldDefinitionParams {
   data_entry_access: CustomFieldDataEntryAccess | (string & {});
@@ -2470,31 +2308,18 @@ export interface CreateCurrencyCustomFieldDefinitionParams {
   type: CreateCurrencyCustomFieldDefinitionParamsType;
   visibility_scope: CustomFieldVisibilityScope | (string & {});
 }
-export const CreateCurrencyCustomFieldDefinitionParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_entry_access: CustomFieldDataEntryAccess,
-    metadata: CreateCurrencyCustomFieldDefinitionParamsMetadata,
-    name: S.String,
-    required: S.Boolean,
-    type: CreateCurrencyCustomFieldDefinitionParamsType,
-    visibility_scope: CustomFieldVisibilityScope,
-  }),
-).annotate({
-  identifier: "CreateCurrencyCustomFieldDefinitionParams",
-}) as any as S.Schema<CreateCurrencyCustomFieldDefinitionParams>;
-
 /** Schema for creating a custom field definition */
 export type CreateCustomFieldDefinitionParams =
   | CreateGeneralCustomFieldDefinitionParams
   | CreateSingleSelectCustomFieldDefinitionParams
   | CreateCurrencyCustomFieldDefinitionParams;
-export const CreateCustomFieldDefinitionParams =
+const CreateCustomFieldDefinitionParams =
   S.Unknown as any as S.Schema<CreateCustomFieldDefinitionParams>;
 
 export interface CreateCustomFieldRequest {
   body: CreateCustomFieldDefinitionParams;
 }
-export const CreateCustomFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: CreateCustomFieldDefinitionParams.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/custom-fields", code: 200 })),
@@ -2512,7 +2337,7 @@ export type CustomFieldDataType =
   | "link"
   | "currency"
   | "single_select";
-export const CustomFieldDataType = S.String;
+const CustomFieldDataType = S.String;
 
 /** A custom field definition that can be applied to employments within a company. Custom fields allow you to store additional structured data on employments beyond the standard fields. */
 export interface EmploymentCustomField {
@@ -2528,7 +2353,7 @@ export interface EmploymentCustomField {
   type: CustomFieldDataType;
   visibility_scope: CustomFieldVisibilityScope;
 }
-export const EmploymentCustomField = /*@__PURE__*/ S.suspend(() =>
+const EmploymentCustomField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_entry_access: CustomFieldDataEntryAccess,
     id: S.String,
@@ -2543,7 +2368,7 @@ export const EmploymentCustomField = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEmploymentCustomFieldResponseData {
   custom_field: EmploymentCustomField;
 }
-export const CreateEmploymentCustomFieldResponseData = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentCustomFieldResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_field: EmploymentCustomField,
   }),
@@ -2555,7 +2380,7 @@ export const CreateEmploymentCustomFieldResponseData = /*@__PURE__*/ S.suspend((
 export interface CreateEmploymentCustomFieldResponse {
   data: CreateEmploymentCustomFieldResponseData;
 }
-export const CreateEmploymentCustomFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentCustomFieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreateEmploymentCustomFieldResponseData,
   }),
@@ -2573,7 +2398,7 @@ export interface CreateDocumentRequest {
   /** The broad category of the file (e.g., "contract", "id", "tax_document"). */
   type?: string;
 }
-export const CreateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String,
     file: S.String,
@@ -2594,7 +2419,7 @@ export interface File {
   /** The broad category of the file (e.g., "id", "contract", "tax_document"). */
   type: string;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
+const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     inserted_at: S.String,
@@ -2607,7 +2432,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
 export interface UploadFileResponseData {
   file: File;
 }
-export const UploadFileResponseData = /*@__PURE__*/ S.suspend(() =>
+const UploadFileResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: File,
   }),
@@ -2617,7 +2442,7 @@ export const UploadFileResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface UploadFileResponse {
   data?: UploadFileResponseData;
 }
-export const UploadFileResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(UploadFileResponseData),
   }),
@@ -2631,7 +2456,7 @@ export interface CreateEmployeeDocumentRequest {
   /** The broad category of the file (e.g., "id", "tax_document"). */
   type?: string;
 }
-export const CreateEmployeeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmployeeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: S.String,
     sub_type: S.optional(S.String),
@@ -2669,7 +2494,7 @@ export type CreateEmployeeExpensRequestCategory =
   | "home_office"
   | "phone_utilities"
   | "travel";
-export const CreateEmployeeExpensRequestCategory = S.String;
+const CreateEmployeeExpensRequestCategory = S.String;
 
 /** All the params needed upload a base64 file. */
 export interface Base64File {
@@ -2678,7 +2503,7 @@ export interface Base64File {
   /** The file name. */
   name: string;
 }
-export const Base64File = /*@__PURE__*/ S.suspend(() =>
+const Base64File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     name: S.String,
@@ -2686,7 +2511,7 @@ export const Base64File = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Base64File" }) as any as S.Schema<Base64File>;
 
 export type CreateEmployeeExpensRequestReceiptsList = Array<Base64File>;
-export const CreateEmployeeExpensRequestReceiptsList = /*@__PURE__*/ S.Array(
+const CreateEmployeeExpensRequestReceiptsList = /*@__PURE__*/ S.Array(
   Base64File,
 ) as any as S.Schema<CreateEmployeeExpensRequestReceiptsList>;
 
@@ -2709,7 +2534,7 @@ export interface CreateEmployeeExpensRequest {
   /** A short description of the expense (e.g., "New keyboard", "Team dinner"). */
   title: string;
 }
-export const CreateEmployeeExpensRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmployeeExpensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     category: S.optional(S.NullOr(CreateEmployeeExpensRequestCategory)),
@@ -2733,14 +2558,14 @@ export interface TimeoffDocumentParams {
   /** The file name of the document */
   name: string;
 }
-export const TimeoffDocumentParams = Base64File as any as S.Schema<TimeoffDocumentParams>;
+const TimeoffDocumentParams = Base64File as any as S.Schema<TimeoffDocumentParams>;
 
 /** Timeoff days params */
 export interface TimeoffDaysParams {
   day?: string;
   hours?: number;
 }
-export const TimeoffDaysParams = /*@__PURE__*/ S.suspend(() =>
+const TimeoffDaysParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.String),
     hours: S.optional(S.Number),
@@ -2748,7 +2573,7 @@ export const TimeoffDaysParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeoffDaysParams" }) as any as S.Schema<TimeoffDaysParams>;
 
 export type CreateEmployeeTimeoffRequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const CreateEmployeeTimeoffRequestTimeoffDaysList = /*@__PURE__*/ S.Array(
+const CreateEmployeeTimeoffRequestTimeoffDaysList = /*@__PURE__*/ S.Array(
   TimeoffDaysParams,
 ) as any as S.Schema<CreateEmployeeTimeoffRequestTimeoffDaysList>;
 
@@ -2761,7 +2586,7 @@ export interface CreateEmployeeTimeoffRequest {
   timeoff_days: CreateEmployeeTimeoffRequestTimeoffDaysList;
   timezone: string;
 }
-export const CreateEmployeeTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmployeeTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(TimeoffDocumentParams),
     end_date: S.String,
@@ -2825,7 +2650,7 @@ export type ResponseTimeoffType =
   | "business_trip_non_eu"
   | "training"
   | "sustainable_employability";
-export const ResponseTimeoffType = S.String;
+const ResponseTimeoffType = S.String;
 
 /** The leave policy associated with a time off request. Policies define the rules and entitlements for specific types of leave. */
 export interface LeavePolicy {
@@ -2835,7 +2660,7 @@ export interface LeavePolicy {
   /** The display name of the leave policy (e.g., "Self-Care", "Annual Leave"). */
   name: string;
 }
-export const LeavePolicy = /*@__PURE__*/ S.suspend(() =>
+const LeavePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     leave_policy_variant_slug: S.String,
     leave_type: ResponseTimeoffType,
@@ -2851,7 +2676,7 @@ export type TimeoffStatus =
   | "declined"
   | "taken"
   | "cancel_requested";
-export const TimeoffStatus = S.String;
+const TimeoffStatus = S.String;
 
 /** A single day within a time off request, specifying the date and the number of hours taken off that day. */
 export interface TimeoffDay {
@@ -2861,7 +2686,7 @@ export interface TimeoffDay {
   /** The number of minutes taken off on this day (e.g., 480 for a full 8-hour day, 450 for 7 hours 30 minutes). Minute-precision counterpart of `hours`. */
   minutes: number;
 }
-export const TimeoffDay = /*@__PURE__*/ S.suspend(() =>
+const TimeoffDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.String,
     hours: S.Number,
@@ -2871,7 +2696,7 @@ export const TimeoffDay = /*@__PURE__*/ S.suspend(() =>
 
 /** The individual days and hours within this time off period. */
 export type TimeoffTimeoffDaysList = Array<TimeoffDay>;
-export const TimeoffTimeoffDaysList = /*@__PURE__*/ S.Array(
+const TimeoffTimeoffDaysList = /*@__PURE__*/ S.Array(
   TimeoffDay,
 ) as any as S.Schema<TimeoffTimeoffDaysList>;
 
@@ -2908,7 +2733,7 @@ export interface Timeoff {
   /** The total number of minutes taken off across all `timeoff_days`. Always equals the sum of the per-day `minutes` values. */
   total_minutes: number;
 }
-export const Timeoff = /*@__PURE__*/ S.suspend(() =>
+const Timeoff = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approved_at: S.optional(S.NullOr(S.String)),
     approver_id: S.optional(S.NullOr(S.String)),
@@ -2934,7 +2759,7 @@ export const Timeoff = /*@__PURE__*/ S.suspend(() =>
 export interface TimeoffResponseData {
   timeoff: Timeoff;
 }
-export const TimeoffResponseData = /*@__PURE__*/ S.suspend(() =>
+const TimeoffResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoff: Timeoff,
   }),
@@ -2944,7 +2769,7 @@ export const TimeoffResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface TimeoffResponse {
   data: TimeoffResponseData;
 }
-export const TimeoffResponse = /*@__PURE__*/ S.suspend(() =>
+const TimeoffResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: TimeoffResponseData,
   }),
@@ -2955,7 +2780,7 @@ export interface CreateEmployeeTimeoffCancelRequest {
   id: string;
   cancel_reason: string;
 }
-export const CreateEmployeeTimeoffCancelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmployeeTimeoffCancelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     cancel_reason: S.String,
@@ -2966,12 +2791,10 @@ export const CreateEmployeeTimeoffCancelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type CreateEmploymentRequestJsonSchemaVersionCase1 = "latest";
-export const CreateEmploymentRequestJsonSchemaVersionCase1 = S.String;
-
 export type CreateEmploymentRequestJsonSchemaVersion =
   | number
   | CreateEmploymentRequestJsonSchemaVersionCase1;
-export const CreateEmploymentRequestJsonSchemaVersion =
+const CreateEmploymentRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<CreateEmploymentRequestJsonSchemaVersion>;
 
 /** If not provided, it will default to `employee`. */
@@ -2980,7 +2803,7 @@ export type CreateEmploymentRequestType =
   | "contractor"
   | "global_payroll_employee"
   | "hris";
-export const CreateEmploymentRequestType = S.String;
+const CreateEmploymentRequestType = S.String;
 
 export interface CreateEmploymentRequest {
   /** Version of the form schema */
@@ -3004,7 +2827,7 @@ export interface CreateEmploymentRequest {
   /** If not provided, it will default to `employee`. */
   type?: CreateEmploymentRequestType | (string & {});
 }
-export const CreateEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     json_schema_version: S.optional(CreateEmploymentRequestJsonSchemaVersion.pipe(T.Query())),
     basic_information: S.Unknown,
@@ -3028,11 +2851,11 @@ export type EmploymentLifecycleStage =
   | "remote_enrollment"
   | "onboarded"
   | "offboarded";
-export const EmploymentLifecycleStage = S.String;
+const EmploymentLifecycleStage = S.String;
 
 /** The type of employment. */
 export type EmploymentBasicResponseType = "employee" | "contractor";
-export const EmploymentBasicResponseType = S.String;
+const EmploymentBasicResponseType = S.String;
 
 /** A lightweight employment representation returned after creation. Contains basic identification, country, and status fields but not the full onboarding details or country-specific form data. */
 export interface EmploymentBasicResponse {
@@ -3063,7 +2886,7 @@ export interface EmploymentBasicResponse {
   /** When this employment was last updated. */
   updated_at?: string;
 }
-export const EmploymentBasicResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentBasicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basic_information: S.optional(S.Unknown),
     company_id: S.optional(S.String),
@@ -3085,7 +2908,7 @@ export const EmploymentBasicResponse = /*@__PURE__*/ S.suspend(() =>
 export interface EmploymentCreationResponseData {
   employment?: EmploymentBasicResponse;
 }
-export const EmploymentCreationResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentCreationResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment: S.optional(EmploymentBasicResponse),
   }),
@@ -3096,7 +2919,7 @@ export const EmploymentCreationResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface EmploymentCreationResponse {
   data?: EmploymentCreationResponseData;
 }
-export const EmploymentCreationResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentCreationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EmploymentCreationResponseData),
   }),
@@ -3109,7 +2932,7 @@ export type CreateEmploymentContractEligibilityRequestEligibleToWorkInResidingCo
   | "citizen"
   | "permanent_resident"
   | "temporary_resident";
-export const CreateEmploymentContractEligibilityRequestEligibleToWorkInResidingCountry = S.String;
+const CreateEmploymentContractEligibilityRequestEligibleToWorkInResidingCountry = S.String;
 
 export interface CreateEmploymentContractEligibilityRequest {
   /** Employment ID */
@@ -3121,7 +2944,7 @@ export interface CreateEmploymentContractEligibilityRequest {
   /** whether the employer or work restrictions apply */
   employer_or_work_restrictions: boolean;
 }
-export const CreateEmploymentContractEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentContractEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     eligible_to_work_in_residing_country:
@@ -3142,7 +2965,7 @@ export type CreateEmploymentContractOriginRequestContractOrigin =
   | "remote_contract"
   | "custom_remote_contract"
   | "provided_by_customer";
-export const CreateEmploymentContractOriginRequestContractOrigin = S.String;
+const CreateEmploymentContractOriginRequestContractOrigin = S.String;
 
 /** Required when contract_origin is remote_contract or custom_remote_contract, ignored when provided_by_customer */
 export type CreateEmploymentContractOriginRequestTemplateType =
@@ -3151,7 +2974,7 @@ export type CreateEmploymentContractOriginRequestTemplateType =
   | "contractor_statement_of_work"
   | "custom_contractor_agreement"
   | "custom_contractor_agreement_v2";
-export const CreateEmploymentContractOriginRequestTemplateType = S.String;
+const CreateEmploymentContractOriginRequestTemplateType = S.String;
 
 export interface CreateEmploymentContractOriginRequest {
   /** Employment ID */
@@ -3160,7 +2983,7 @@ export interface CreateEmploymentContractOriginRequest {
   /** Required when contract_origin is remote_contract or custom_remote_contract, ignored when provided_by_customer */
   template_type: CreateEmploymentContractOriginRequestTemplateType | (string & {});
 }
-export const CreateEmploymentContractOriginRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentContractOriginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     contract_origin: CreateEmploymentContractOriginRequestContractOrigin,
@@ -3175,7 +2998,7 @@ export const CreateEmploymentContractOriginRequest = /*@__PURE__*/ S.suspend(() 
 /** List of invoice items that composes the overall invoice amount. */
 export type CreateEmploymentContractorInvoicesPreviewRequestItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const CreateEmploymentContractorInvoicesPreviewRequestItemsList =
+const CreateEmploymentContractorInvoicesPreviewRequestItemsList =
   ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<CreateEmploymentContractorInvoicesPreviewRequestItemsList>;
 
 export interface CreateEmploymentContractorInvoicesPreviewRequest {
@@ -3190,7 +3013,7 @@ export interface CreateEmploymentContractorInvoicesPreviewRequest {
   number?: string | null;
   start_date: string;
 }
-export const CreateEmploymentContractorInvoicesPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentContractorInvoicesPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     currency: S.NullOr(S.String),
@@ -3213,12 +3036,11 @@ export interface ContractorInvoicePreviewResponseDataContractorInvoicePreview {
   content: string;
   name: string;
 }
-export const ContractorInvoicePreviewResponseDataContractorInvoicePreview = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      content: S.String,
-      name: S.String,
-    }),
+const ContractorInvoicePreviewResponseDataContractorInvoicePreview = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.String,
+    name: S.String,
+  }),
 ).annotate({
   identifier: "ContractorInvoicePreviewResponseDataContractorInvoicePreview",
 }) as any as S.Schema<ContractorInvoicePreviewResponseDataContractorInvoicePreview>;
@@ -3226,7 +3048,7 @@ export const ContractorInvoicePreviewResponseDataContractorInvoicePreview = /*@_
 export interface ContractorInvoicePreviewResponseData {
   contractor_invoice_preview: ContractorInvoicePreviewResponseDataContractorInvoicePreview;
 }
-export const ContractorInvoicePreviewResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoicePreviewResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractor_invoice_preview: ContractorInvoicePreviewResponseDataContractorInvoicePreview,
   }),
@@ -3238,7 +3060,7 @@ export const ContractorInvoicePreviewResponseData = /*@__PURE__*/ S.suspend(() =
 export interface ContractorInvoicePreviewResponse {
   data: ContractorInvoicePreviewResponseData;
 }
-export const ContractorInvoicePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoicePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractorInvoicePreviewResponseData,
   }),
@@ -3248,7 +3070,7 @@ export const ContractorInvoicePreviewResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList =
   Array<string>;
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList =
+const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList>;
 
 /** A file attached to the engagement agreement details. To upload a new file, send its `name` and its base64-encoded `content`. To keep a file uploaded previously, send back the `name` and `id` returned by the show endpoint instead. Every entry must do one or the other -- an entry carrying neither is rejected, and an `id` that does not belong to this record is rejected too. Files that are not included in the payload are deleted. Only the properties below are accepted; any other one is rejected. In particular a file's `sub_type` is derived from the field it is attached to and cannot be set by the caller. */
@@ -3264,7 +3086,7 @@ export interface EngagementAgreementDetailsFileParams {
   /** The file's media type. */
   type?: string;
 }
-export const EngagementAgreementDetailsFileParams = /*@__PURE__*/ S.suspend(() =>
+const EngagementAgreementDetailsFileParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     id: S.optional(S.String),
@@ -3278,19 +3100,19 @@ export const EngagementAgreementDetailsFileParams = /*@__PURE__*/ S.suspend(() =
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList =
   Array<EngagementAgreementDetailsFileParams>;
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList =
+const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList =
   /*@__PURE__*/ S.Array(
     EngagementAgreementDetailsFileParams,
   ) as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList>;
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList =
   Array<string>;
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList =
+const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList>;
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList =
   Array<string>;
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList =
+const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList>;
 
 export interface CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails {
@@ -3326,7 +3148,7 @@ export interface CreateEmploymentEngagementAgreementDetailRequestEngagementAgree
   work_hours_per_week?: number | null;
   working_days?: CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList | null;
 }
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails =
+const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowances_details: S.optional(
@@ -3387,7 +3209,7 @@ export interface CreateEmploymentEngagementAgreementDetailRequest {
   /** Engagement agreement details params. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_v1_countries_country_code_form) endpoint passing the country code and the `engagement_agreement_details` form name. */
   engagement_agreement_details: CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails;
 }
-export const CreateEmploymentEngagementAgreementDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentEngagementAgreementDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     engagement_agreement_details:
@@ -3405,24 +3227,12 @@ export const CreateEmploymentEngagementAgreementDetailRequest = /*@__PURE__*/ S.
 
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2 =
   Array<string>;
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2 =
-  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2>;
-
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList2 =
   Array<EngagementAgreementDetailsFileParams>;
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList2 =
-  CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCbaDocumentList2>;
-
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList2 =
   Array<string>;
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList2 =
-  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsCovenantsList2>;
-
 export type CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2 =
   Array<string>;
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2 =
-  ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2>;
-
 export interface CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2 {
   allowances_details?: CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsAllowancesDetailsList2 | null;
   available_pto?: number | null;
@@ -3456,7 +3266,7 @@ export interface CreateEmploymentEngagementAgreementDetailRequestEngagementAgree
   work_hours_per_week?: number | null;
   working_days?: CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetailsWorkingDaysList2 | null;
 }
-export const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2 =
+const CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2 =
   CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails as any as S.Schema<CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2>;
 
 export interface CreateEmploymentEngagementAgreementDetailRequest2 {
@@ -3465,7 +3275,7 @@ export interface CreateEmploymentEngagementAgreementDetailRequest2 {
   /** Engagement agreement details params. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_v1_countries_country_code_form) endpoint passing the country code and the `engagement_agreement_details` form name. */
   engagement_agreement_details: CreateEmploymentEngagementAgreementDetailRequestEngagementAgreementDetails2;
 }
-export const CreateEmploymentEngagementAgreementDetailRequest2 = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentEngagementAgreementDetailRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     engagement_agreement_details:
@@ -3485,7 +3295,7 @@ export interface CreateEmploymentInviteRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const CreateEmploymentInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/employments/{employment_id}/invite", code: 200 })),
@@ -3498,14 +3308,14 @@ export type CreateEmploymentJobTitleEligibilityCheckRequestRoleIsOnsite =
   | "yes"
   | "no"
   | "not_applicable";
-export const CreateEmploymentJobTitleEligibilityCheckRequestRoleIsOnsite = S.String;
+const CreateEmploymentJobTitleEligibilityCheckRequestRoleIsOnsite = S.String;
 
 /** Whether the role requires a professional license. */
 export type CreateEmploymentJobTitleEligibilityCheckRequestRoleRequiresLicense =
   | "yes"
   | "no"
   | "not_applicable";
-export const CreateEmploymentJobTitleEligibilityCheckRequestRoleRequiresLicense = S.String;
+const CreateEmploymentJobTitleEligibilityCheckRequestRoleRequiresLicense = S.String;
 
 export interface CreateEmploymentJobTitleEligibilityCheckRequest {
   /** Employment ID */
@@ -3521,7 +3331,7 @@ export interface CreateEmploymentJobTitleEligibilityCheckRequest {
     | CreateEmploymentJobTitleEligibilityCheckRequestRoleRequiresLicense
     | (string & {});
 }
-export const CreateEmploymentJobTitleEligibilityCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmploymentJobTitleEligibilityCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     job_title: S.optional(S.String),
@@ -3548,7 +3358,7 @@ export type JobTitleEligibilityCheckVerdict =
   | "needs_review"
   | "eligible_with_risk_acknowledgement"
   | "not_assessed";
-export const JobTitleEligibilityCheckVerdict = S.String;
+const JobTitleEligibilityCheckVerdict = S.String;
 
 export interface JobTitleEligibilityCheck {
   /** The identifier of the recorded check. When present it is **required**: send it back as `additional_job_title_eligibility_check_slug` when submitting contract details, or the submission is rejected. Run this check again if the job title or any role answer changes, since the identifier only vouches for the answers it was given. `null` when the job title alone settled the verdict and there is nothing to send. */
@@ -3556,7 +3366,7 @@ export interface JobTitleEligibilityCheck {
   /** The eligibility verdict for the submitted job title and role. `eligible` means contract details can be submitted as normal. `not_eligible` means Remote cannot employ this role: the title has to change. `needs_review` means submitting will place the employment in a human review before the employee can be invited. `eligible_with_risk_acknowledgement` means the submission must carry `employer_acknowledges_risk` set to `acknowledged`. `not_assessed` means the check did not run for this employment and no verdict was formed, so treat it as unknown rather than as a pass: submitting is not blocked, but nothing has screened the title. When the verdict is `eligible_with_risk_acknowledgement`, present Remote's responsibility statement to the employer and obtain their acceptance before sending `employer_acknowledges_risk`. Sending it asserts that the employer was informed of, and accepted, responsibility for, as applicable, employee safety, training, health checks, any incidents connected to the employee's work environment, and the employee holding the licensing the role requires. */
   verdict: JobTitleEligibilityCheckVerdict;
 }
-export const JobTitleEligibilityCheck = /*@__PURE__*/ S.suspend(() =>
+const JobTitleEligibilityCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     check_id: S.optional(S.NullOr(S.String)),
     verdict: JobTitleEligibilityCheckVerdict,
@@ -3566,7 +3376,7 @@ export const JobTitleEligibilityCheck = /*@__PURE__*/ S.suspend(() =>
 export interface JobTitleEligibilityCheckResponseData {
   job_title_eligibility_check: JobTitleEligibilityCheck;
 }
-export const JobTitleEligibilityCheckResponseData = /*@__PURE__*/ S.suspend(() =>
+const JobTitleEligibilityCheckResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_title_eligibility_check: JobTitleEligibilityCheck,
   }),
@@ -3577,7 +3387,7 @@ export const JobTitleEligibilityCheckResponseData = /*@__PURE__*/ S.suspend(() =
 export interface JobTitleEligibilityCheckResponse {
   data: JobTitleEligibilityCheckResponseData;
 }
-export const JobTitleEligibilityCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const JobTitleEligibilityCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: JobTitleEligibilityCheckResponseData,
   }),
@@ -3611,10 +3421,10 @@ export type CreateExpensRequestCategory =
   | "home_office"
   | "phone_utilities"
   | "travel";
-export const CreateExpensRequestCategory = S.String;
+const CreateExpensRequestCategory = S.String;
 
 export type CreateExpensRequestReceiptsList = Array<Base64File>;
-export const CreateExpensRequestReceiptsList =
+const CreateExpensRequestReceiptsList =
   CreateEmployeeExpensRequestReceiptsList as any as S.Schema<CreateExpensRequestReceiptsList>;
 
 export interface CreateExpensRequest {
@@ -3642,7 +3452,7 @@ export interface CreateExpensRequest {
   /** A short description of the expense (e.g., "New keyboard", "Team dinner"). */
   title: string;
 }
-export const CreateExpensRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExpensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     category: S.optional(S.NullOr(CreateExpensRequestCategory)),
@@ -3688,8 +3498,6 @@ export type ExpenseCategory =
   | "home_office"
   | "phone_utilities"
   | "travel";
-export const ExpenseCategory = S.String;
-
 /** New hierarchical expense category (recommended) */
 export interface ExpenseExpenseCategory {
   /** Internal category code (e.g., 'travel.flights') */
@@ -3699,19 +3507,9 @@ export interface ExpenseExpenseCategory {
   /** Human-readable category name */
   title?: string;
 }
-export const ExpenseExpenseCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    slug: S.optional(S.String),
-    title: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExpenseExpenseCategory" }) as any as S.Schema<ExpenseExpenseCategory>;
-
 /** Uploaded receipt files for this expense. Maximum 5 receipts. */
 export type ExpenseReceiptsList = Array<File>;
-export const ExpenseReceiptsList = /*@__PURE__*/ S.Array(
-  File,
-) as any as S.Schema<ExpenseReceiptsList>;
+const ExpenseReceiptsList = /*@__PURE__*/ S.Array(File) as any as S.Schema<ExpenseReceiptsList>;
 
 /** The person who reviewed (approved or declined) this expense. Null if not yet reviewed. */
 export interface ExpenseReviewer {
@@ -3722,14 +3520,6 @@ export interface ExpenseReviewer {
   /** The reviewer's full name. */
   user_name?: string;
 }
-export const ExpenseReviewer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    user_email: S.optional(S.String),
-    user_id: S.optional(S.String),
-    user_name: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExpenseReviewer" }) as any as S.Schema<ExpenseReviewer>;
-
 /** The current status of the expense. - `pending`: Submitted and awaiting approval. - `approved`: Approved by a reviewer and queued for reimbursement. - `declined`: Declined by a reviewer. See `reason` for details. - `canceled`: Canceled by the employee before approval. - `processing`: Being processed as part of a payroll run. - `reimbursed`: Successfully reimbursed to the employee. */
 export type ExpenseStatus =
   | "canceled"
@@ -3738,8 +3528,6 @@ export type ExpenseStatus =
   | "approved"
   | "processing"
   | "reimbursed";
-export const ExpenseStatus = S.String;
-
 /** A submitted expense record with complete data. All monetary amounts are integers in the currency's minor unit (cents). */
 export interface Expense {
   /** The expense amount in the original currency, in cents. */
@@ -3779,30 +3567,6 @@ export interface Expense {
   /** A short description of the expense (e.g., "New keyboard", "Team dinner"). */
   title: string;
 }
-export const Expense = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.Number,
-    category: S.optional(S.NullOr(ExpenseCategory)),
-    converted_amount: S.Number,
-    converted_currency: CurrencyDefinition,
-    converted_tax_amount: S.Number,
-    currency: CurrencyDefinition,
-    employment_id: S.String,
-    expense_category: S.optional(S.NullOr(ExpenseExpenseCategory)),
-    expense_date: S.String,
-    id: S.String,
-    invoice_period: S.optional(S.NullOr(S.String)),
-    notes: S.optional(S.NullOr(S.String)),
-    reason: S.optional(S.NullOr(S.String)),
-    receipts: S.optional(ExpenseReceiptsList),
-    reviewed_at: S.optional(S.NullOr(S.String)),
-    reviewer: S.optional(S.NullOr(ExpenseReviewer)),
-    status: S.optional(ExpenseStatus),
-    tax_amount: S.Number,
-    title: S.String,
-  }),
-).annotate({ identifier: "Expense" }) as any as S.Schema<Expense>;
-
 /** Categories allowed for an expense (legacy, deprecated) */
 export type DraftExpenseCategory =
   | "car_rental"
@@ -3831,25 +3595,14 @@ export type DraftExpenseCategory =
   | "home_office"
   | "phone_utilities"
   | "travel";
-export const DraftExpenseCategory = S.String;
-
 /** New hierarchical expense category (recommended) */
 export type DraftExpenseExpenseCategory = ExpenseExpenseCategory;
-export const DraftExpenseExpenseCategory = ExpenseExpenseCategory;
-
 /** Uploaded receipt files. May be empty for drafts. Maximum 5 receipts. */
 export type DraftExpenseReceiptsList = Array<File>;
-export const DraftExpenseReceiptsList =
-  ExpenseReceiptsList as any as S.Schema<DraftExpenseReceiptsList>;
-
 /** Not applicable for draft expenses. Always null. */
 export type DraftExpenseReviewer = ExpenseReviewer;
-export const DraftExpenseReviewer = ExpenseReviewer;
-
 /** The draft status. - `draft`: The expense is saved as a draft by the employee and not submitted for approval. - `archived`: The draft was soft-deleted by the employee. */
 export type DraftExpenseStatus = "draft" | "archived";
-export const DraftExpenseStatus = S.String;
-
 /** A draft expense that the employee has saved but not yet submitted for approval. Draft expenses may have incomplete (null) data since the employee hasn't finalized them yet. All monetary amounts are integers in the currency's minor unit (cents) when present. */
 export interface DraftExpense {
   /** The expense amount in the original currency, in cents. Null if not yet entered. */
@@ -3889,38 +3642,14 @@ export interface DraftExpense {
   /** A short description of the expense. May be null in drafts. */
   title: string | null;
 }
-export const DraftExpense = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.NullOr(S.Number),
-    category: S.optional(S.NullOr(DraftExpenseCategory)),
-    converted_amount: S.NullOr(S.Number),
-    converted_currency: S.NullOr(CurrencyDefinition),
-    converted_tax_amount: S.NullOr(S.Number),
-    currency: S.NullOr(CurrencyDefinition),
-    employment_id: S.String,
-    expense_category: S.optional(S.NullOr(ExpenseExpenseCategory)),
-    expense_date: S.NullOr(S.String),
-    id: S.String,
-    invoice_period: S.optional(S.NullOr(S.String)),
-    notes: S.optional(S.NullOr(S.String)),
-    reason: S.optional(S.NullOr(S.String)),
-    receipts: S.optional(DraftExpenseReceiptsList),
-    reviewed_at: S.optional(S.NullOr(S.String)),
-    reviewer: S.optional(S.NullOr(ExpenseReviewer)),
-    status: S.optional(DraftExpenseStatus),
-    tax_amount: S.NullOr(S.Number),
-    title: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "DraftExpense" }) as any as S.Schema<DraftExpense>;
-
 /** An expense or a draft object, depending on the status. Drafts (status `draft` or `archived`) may have incomplete(null) data. The expense status `draft` occurs when users want to save expenses but don't want them to be considered for approval just yet. Only expenses in `pending` status can be approved or declined. It is possible to update a pending expense to status draft, or vice versa. There are no flows that change the status of an expense to `draft` automatically. This is purely a manual action by the employee. */
 export type ExpenseOrDraft = Expense | DraftExpense;
-export const ExpenseOrDraft = S.Unknown as any as S.Schema<ExpenseOrDraft>;
+const ExpenseOrDraft = S.Unknown as any as S.Schema<ExpenseOrDraft>;
 
 export interface ExpenseResponseData {
   expense: ExpenseOrDraft;
 }
-export const ExpenseResponseData = /*@__PURE__*/ S.suspend(() =>
+const ExpenseResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expense: ExpenseOrDraft,
   }),
@@ -3930,7 +3659,7 @@ export const ExpenseResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ExpenseResponse {
   data: ExpenseResponseData;
 }
-export const ExpenseResponse = /*@__PURE__*/ S.suspend(() =>
+const ExpenseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ExpenseResponseData,
   }),
@@ -3940,7 +3669,7 @@ export interface CreateIdentityVerificationDeclineRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const CreateIdentityVerificationDeclineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIdentityVerificationDeclineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -3954,7 +3683,7 @@ export interface CreateIdentityVerificationVerifyRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const CreateIdentityVerificationVerifyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIdentityVerificationVerifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -3966,7 +3695,7 @@ export const CreateIdentityVerificationVerifyRequest = /*@__PURE__*/ S.suspend((
 
 /** Whether the amount given accounts for taxes or not. `gross` indicates that the amount given is the amount to be paid before taxes are subtracted. `net` indicates that the amount given is the amount which will be paid to the employee after taxes. Remote will gross this up to ensure the taxes are included and employee receives the amount requested without further reduction. */
 export type AmountTaxType = "gross" | "net";
-export const AmountTaxType = S.String;
+const AmountTaxType = S.String;
 
 export type CreateIncentiveRequestType =
   | "acting_up_allowance"
@@ -3990,7 +3719,7 @@ export type CreateIncentiveRequestType =
   | "overtime"
   | "stipend"
   | "signing_bonus";
-export const CreateIncentiveRequestType = S.String;
+const CreateIncentiveRequestType = S.String;
 
 export interface CreateIncentiveRequest {
   /** The amount (in the currency of the employment) to be given to the employee. This field accepts fractional amounts as well. However to avoid precision issues and errors that can arise from storing fractional amounts, the Remote API only accepts currencies and their fractional amounts as integers. This means you should append fractional amounts to the end of the amount you're passing in with this field. For example, if the incentive you're offering is EUR 500.25, you would specify `50025` as the amount for this field. */
@@ -4004,7 +3733,7 @@ export interface CreateIncentiveRequest {
   period_start?: string | null;
   type: CreateIncentiveRequestType | (string & {});
 }
-export const CreateIncentiveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIncentiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     amount_tax_type: AmountTaxType,
@@ -4047,7 +3776,7 @@ export interface Incentive {
   /** The human-readable label for `type` (e.g., "Signing bonus", "Commission", "Severance"). */
   type_label?: string;
 }
-export const Incentive = /*@__PURE__*/ S.suspend(() =>
+const Incentive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     amount_tax_type: AmountTaxType,
@@ -4069,7 +3798,7 @@ export const Incentive = /*@__PURE__*/ S.suspend(() =>
 export interface IncentiveResponseData {
   incentive: Incentive;
 }
-export const IncentiveResponseData = /*@__PURE__*/ S.suspend(() =>
+const IncentiveResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incentive: Incentive,
   }),
@@ -4079,7 +3808,7 @@ export const IncentiveResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface IncentiveResponse {
   data?: IncentiveResponseData;
 }
-export const IncentiveResponse = /*@__PURE__*/ S.suspend(() =>
+const IncentiveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(IncentiveResponseData),
   }),
@@ -4106,7 +3835,7 @@ export type CreateIncentivesRecurringRequestType =
   | "other"
   | "overtime"
   | "stipend";
-export const CreateIncentivesRecurringRequestType = S.String;
+const CreateIncentivesRecurringRequestType = S.String;
 
 export interface CreateIncentivesRecurringRequest {
   /** The amount (in the currency of the employment) to be given to the employee. This field accepts fractional amounts as well. However to avoid precision issues and errors that can arise from storing fractional amounts, the Remote API only accepts currencies and their fractional amounts as integers. This means you should append fractional amounts to the end of the amount you're passing in with this field. For example, if the incentive you're offering is EUR 500.25, you would specify `50025` as the amount for this field. */
@@ -4120,7 +3849,7 @@ export interface CreateIncentivesRecurringRequest {
   employment_id: string;
   type: CreateIncentivesRecurringRequestType | (string & {});
 }
-export const CreateIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     amount_tax_type: AmountTaxType,
@@ -4136,7 +3865,7 @@ export const CreateIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether this recurring incentive is currently active and generating payments, or inactive (paused/ended). */
 export type RecurringIncentiveStatus = "active" | "inactive";
-export const RecurringIncentiveStatus = S.String;
+const RecurringIncentiveStatus = S.String;
 
 /** The type of recurring incentive (e.g., "meal_allowance", "housing_allowance"). */
 export type RecurringIncentiveType =
@@ -4160,7 +3889,7 @@ export type RecurringIncentiveType =
   | "other"
   | "overtime"
   | "stipend";
-export const RecurringIncentiveType = S.String;
+const RecurringIncentiveType = S.String;
 
 /** A recurring incentive (e.g., monthly meal allowance, housing stipend) that automatically generates individual incentive payments on a monthly schedule. */
 export interface RecurringIncentive {
@@ -4182,7 +3911,7 @@ export interface RecurringIncentive {
   /** The type of recurring incentive (e.g., "meal_allowance", "housing_allowance"). */
   type: RecurringIncentiveType;
 }
-export const RecurringIncentive = /*@__PURE__*/ S.suspend(() =>
+const RecurringIncentive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     amount_tax_type: AmountTaxType,
@@ -4199,7 +3928,7 @@ export const RecurringIncentive = /*@__PURE__*/ S.suspend(() =>
 export interface RecurringIncentiveResponseData {
   recurring_incentive: RecurringIncentive;
 }
-export const RecurringIncentiveResponseData = /*@__PURE__*/ S.suspend(() =>
+const RecurringIncentiveResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recurring_incentive: RecurringIncentive,
   }),
@@ -4211,7 +3940,7 @@ export const RecurringIncentiveResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface RecurringIncentiveResponse {
   data?: RecurringIncentiveResponseData;
 }
-export const RecurringIncentiveResponse = /*@__PURE__*/ S.suspend(() =>
+const RecurringIncentiveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(RecurringIncentiveResponseData),
   }),
@@ -4221,14 +3950,14 @@ export const RecurringIncentiveResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the role is onsite. */
 export type CreateJobTitleScreeningRequestItemsItemRoleIsOnsite = "yes" | "no" | "not_applicable";
-export const CreateJobTitleScreeningRequestItemsItemRoleIsOnsite = S.String;
+const CreateJobTitleScreeningRequestItemsItemRoleIsOnsite = S.String;
 
 /** Whether the role requires a license. */
 export type CreateJobTitleScreeningRequestItemsItemRoleRequiresLicense =
   | "yes"
   | "no"
   | "not_applicable";
-export const CreateJobTitleScreeningRequestItemsItemRoleRequiresLicense = S.String;
+const CreateJobTitleScreeningRequestItemsItemRoleRequiresLicense = S.String;
 
 export interface CreateJobTitleScreeningRequestItemsItem {
   /** The job title to screen. */
@@ -4242,7 +3971,7 @@ export interface CreateJobTitleScreeningRequestItemsItem {
     | CreateJobTitleScreeningRequestItemsItemRoleRequiresLicense
     | (string & {});
 }
-export const CreateJobTitleScreeningRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateJobTitleScreeningRequestItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_title: S.String,
     role_description: S.optional(S.String),
@@ -4256,7 +3985,7 @@ export const CreateJobTitleScreeningRequestItemsItem = /*@__PURE__*/ S.suspend((
 /** The job titles to screen. `role_description`, `role_is_onsite` and `role_requires_license` are optional but must be provided together; when present they allow an ambiguous title to be resolved without a human review. */
 export type CreateJobTitleScreeningRequestItemsList =
   Array<CreateJobTitleScreeningRequestItemsItem>;
-export const CreateJobTitleScreeningRequestItemsList = /*@__PURE__*/ S.Array(
+const CreateJobTitleScreeningRequestItemsList = /*@__PURE__*/ S.Array(
   CreateJobTitleScreeningRequestItemsItem,
 ) as any as S.Schema<CreateJobTitleScreeningRequestItemsList>;
 
@@ -4264,7 +3993,7 @@ export interface CreateJobTitleScreeningRequest {
   /** The job titles to screen. `role_description`, `role_is_onsite` and `role_requires_license` are optional but must be provided together; when present they allow an ambiguous title to be resolved without a human review. */
   items: CreateJobTitleScreeningRequestItemsList;
 }
-export const CreateJobTitleScreeningRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobTitleScreeningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: CreateJobTitleScreeningRequestItemsList,
   }).pipe(T.Http({ method: "POST", uri: "/v1/job-title-screenings", code: 200 })),
@@ -4273,7 +4002,7 @@ export const CreateJobTitleScreeningRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateJobTitleScreeningRequest>;
 
 export interface CreateJobTitleScreeningResponse {}
-export const CreateJobTitleScreeningResponse =
+const CreateJobTitleScreeningResponse =
   CreateBulkEmploymentJobResponse as any as S.Schema<CreateJobTitleScreeningResponse>;
 
 export interface MagicLinkParamsCase0 {
@@ -4281,33 +4010,19 @@ export interface MagicLinkParamsCase0 {
   path?: string;
   user_id: string;
 }
-export const MagicLinkParamsCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    user_id: S.String,
-  }),
-).annotate({ identifier: "MagicLinkParamsCase0" }) as any as S.Schema<MagicLinkParamsCase0>;
-
 export interface MagicLinkParamsCase1 {
   employment_id: string;
   /** The path to which the user will be redirected to after login. This field has a max length of 2000 characters. If not specified, `/dashboard` will be used by default. Must begin with a forward slash (`/`) and, at least one path segment is required (`/dashboard` e.g.). An ending forward slash (`/`) is not allowed and path segments can only include alphanumeric characters, underscore (`_`) and hyphen (`-`). An optional query string can be specified too. If present, the query string must start with a question mark (`?`) and must include at least one key value pair. Both, keys and values, can only include alphanumeric characters, underscore (`_`), hyphen (`-`) or percent encoded values such as `%20` (space character). Additional key value pairs are allowed using ampersand (`&`). Query keys require at least one alphanumeric, underscore (`_`), hyphen (`-`) or valid percent encoded. Query values are optional, the actual value may be empty and the equals sign (`=`) may be missing too. Some **Valid** examples for `path`: - o `/dashboard` - o `/dashboard/people/new/full_time/663e0b79-c893-45ff-a1b2-f6dcabc098b5` - o `/dashboard/people/hiring?filters%5B0%5D%5Bid%5D=status&filters%5B0%5D%5Bvalue%5D=active` - o `/dashboard?key=value&foo=bar` Some **Invalid** examples for `path`: - x `missing_forward_slash` - x `/invalid//path` - x `//some` - x `/?key=value` - x `/some/i.n:valid*` - x `/invalid/end/slash/` - x `/some?malformed_percent_encoded_key%1=value` */
   path?: string;
 }
-export const MagicLinkParamsCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    employment_id: S.String,
-    path: S.optional(S.String),
-  }),
-).annotate({ identifier: "MagicLinkParamsCase1" }) as any as S.Schema<MagicLinkParamsCase1>;
-
 /** Magic link params */
 export type MagicLinkParams = MagicLinkParamsCase0 | MagicLinkParamsCase1;
-export const MagicLinkParams = S.Unknown as any as S.Schema<MagicLinkParams>;
+const MagicLinkParams = S.Unknown as any as S.Schema<MagicLinkParams>;
 
 export interface CreateMagicLinkRequest {
   body: MagicLinkParams;
 }
-export const CreateMagicLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMagicLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: MagicLinkParams.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/magic-link", code: 200 })),
@@ -4316,7 +4031,7 @@ export const CreateMagicLinkRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MagicLinkResponseData {
   url: string;
 }
-export const MagicLinkResponseData = /*@__PURE__*/ S.suspend(() =>
+const MagicLinkResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -4325,7 +4040,7 @@ export const MagicLinkResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface MagicLinkResponse {
   data: MagicLinkResponseData;
 }
-export const MagicLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const MagicLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: MagicLinkResponseData,
   }),
@@ -4338,7 +4053,7 @@ export interface TerminationDetailsParamsEmployeeAwareness {
   /** Notes describing how the termination was shared with the employee. Remote advises being as specific as possible, and include details about the employee's response, if applicable. */
   note?: string | null;
 }
-export const TerminationDetailsParamsEmployeeAwareness = /*@__PURE__*/ S.suspend(() =>
+const TerminationDetailsParamsEmployeeAwareness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.NullOr(S.String)),
     note: S.optional(S.NullOr(S.String)),
@@ -4357,13 +4072,13 @@ export type TerminationDetailsParamsRiskAssessmentReasonsItem =
   | "reported_concerns_with_workplace"
   | "requested_medical_or_family_leave"
   | "sick_leave";
-export const TerminationDetailsParamsRiskAssessmentReasonsItem = S.String;
+const TerminationDetailsParamsRiskAssessmentReasonsItem = S.String;
 
 /** Possible reasons for offboarding risk assessment */
 export type TerminationDetailsParamsRiskAssessmentReasonsList = Array<
   TerminationDetailsParamsRiskAssessmentReasonsItem | (string & {})
 >;
-export const TerminationDetailsParamsRiskAssessmentReasonsList = /*@__PURE__*/ S.Array(
+const TerminationDetailsParamsRiskAssessmentReasonsList = /*@__PURE__*/ S.Array(
   TerminationDetailsParamsRiskAssessmentReasonsItem,
 ) as any as S.Schema<TerminationDetailsParamsRiskAssessmentReasonsList>;
 
@@ -4390,7 +4105,7 @@ export type TerminationDetailsParamsTerminationReason =
   | "performance"
   | "values"
   | "workforce_reduction";
-export const TerminationDetailsParamsTerminationReason = S.String;
+const TerminationDetailsParamsTerminationReason = S.String;
 
 export interface OffboardingFile {
   /** The content in base64 encoding */
@@ -4398,11 +4113,11 @@ export interface OffboardingFile {
   /** The file name */
   name: string;
 }
-export const OffboardingFile = Base64File as any as S.Schema<OffboardingFile>;
+const OffboardingFile = Base64File as any as S.Schema<OffboardingFile>;
 
 /** Any supporting documents regarding the termination reason */
 export type TerminationDetailsParamsTerminationReasonFilesList = Array<OffboardingFile>;
-export const TerminationDetailsParamsTerminationReasonFilesList =
+const TerminationDetailsParamsTerminationReasonFilesList =
   CreateEmployeeExpensRequestReceiptsList as any as S.Schema<TerminationDetailsParamsTerminationReasonFilesList>;
 
 export interface TerminationDetailsParams {
@@ -4439,7 +4154,7 @@ export interface TerminationDetailsParams {
   /** If it is likely that the employee will challenge their termination, please provide additional details explaining the risk */
   will_challenge_termination_description?: string;
 }
-export const TerminationDetailsParams = /*@__PURE__*/ S.suspend(() =>
+const TerminationDetailsParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledge_termination_procedure: S.optional(S.NullOr(S.Boolean)),
     additional_comments: S.optional(S.NullOr(S.String)),
@@ -4462,7 +4177,7 @@ export const TerminationDetailsParams = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the offboarding request. For now, only `termination` is allowed. */
 export type CreateOffboardingRequestType = "termination";
-export const CreateOffboardingRequestType = S.String;
+const CreateOffboardingRequestType = S.String;
 
 export interface CreateOffboardingRequest {
   /** The unique identifier (UUID) of the employment to be terminated. */
@@ -4471,7 +4186,7 @@ export interface CreateOffboardingRequest {
   /** The type of the offboarding request. For now, only `termination` is allowed. */
   type: CreateOffboardingRequestType | (string & {});
 }
-export const CreateOffboardingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOffboardingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String,
     termination_details: TerminationDetailsParams,
@@ -4505,16 +4220,10 @@ export type ResignationOffboardingResignationReason =
   | "transfer_between_remote_customer"
   | "transfer_from_remote_to_customer"
   | "transfer_from_remote_to_other_eor";
-export const ResignationOffboardingResignationReason = S.String;
-
 /** The current status of the offboarding request. - `submitted`: The resignation has been submitted and is awaiting review. - `in_review`: Remote is processing the resignation. - `done`: The offboarding has been completed. - `canceled`: The resignation was withdrawn or canceled. */
 export type ResignationOffboardingStatus = "submitted" | "in_review" | "done" | "canceled";
-export const ResignationOffboardingStatus = S.String;
-
 /** The type of offboarding. Always `"resignation"` for employee-initiated resignations. */
 export type ResignationOffboardingType = "resignation";
-export const ResignationOffboardingType = S.String;
-
 /** An offboarding request initiated by the employee (a resignation). Includes the employee's proposed last working day, reason, and status tracking through Remote's process. */
 export interface ResignationOffboarding {
   /** Additional comments or context about the resignation. */
@@ -4546,25 +4255,6 @@ export interface ResignationOffboarding {
   /** The type of offboarding. Always `"resignation"` for employee-initiated resignations. */
   type: ResignationOffboardingType;
 }
-export const ResignationOffboarding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additional_comments: S.optional(S.NullOr(S.String)),
-    agrees_to_pto_amount: S.optional(S.Boolean),
-    employer_awareness: S.optional(S.String),
-    employment_id: S.String,
-    id: S.String,
-    offboarding_id: S.optional(S.NullOr(S.String)),
-    proposed_last_working_day: S.String,
-    reason_description: S.optional(S.String),
-    requested_by: S.String,
-    resignation_reason: ResignationOffboardingResignationReason,
-    status: ResignationOffboardingStatus,
-    submitted_at: S.String,
-    termination_date: S.NullOr(S.String),
-    type: ResignationOffboardingType,
-  }),
-).annotate({ identifier: "ResignationOffboarding" }) as any as S.Schema<ResignationOffboarding>;
-
 /** Details about whether and when the employee was informed about their termination. Only present if the employee was informed before the offboarding request was submitted. */
 export interface TerminationOffboardingEmployeeAwareness {
   /** The date when the employee was told about the termination. */
@@ -4572,9 +4262,6 @@ export interface TerminationOffboardingEmployeeAwareness {
   /** Notes about how the termination was communicated to the employee. */
   note?: string | null;
 }
-export const TerminationOffboardingEmployeeAwareness =
-  TerminationDetailsParamsEmployeeAwareness as any as S.Schema<TerminationOffboardingEmployeeAwareness>;
-
 export type TerminationOffboardingRiskAssessmentReasonsItem =
   | "caring_responsibilities"
   | "disabled_or_health_condition"
@@ -4585,18 +4272,11 @@ export type TerminationOffboardingRiskAssessmentReasonsItem =
   | "reported_concerns_with_workplace"
   | "requested_medical_or_family_leave"
   | "sick_leave";
-export const TerminationOffboardingRiskAssessmentReasonsItem = S.String;
-
 /** Reasons that may increase the legal risk of this termination (e.g., the employee is pregnant, on family leave, etc.). */
 export type TerminationOffboardingRiskAssessmentReasonsList =
   Array<TerminationOffboardingRiskAssessmentReasonsItem>;
-export const TerminationOffboardingRiskAssessmentReasonsList =
-  TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<TerminationOffboardingRiskAssessmentReasonsList>;
-
 /** The current status of the offboarding request. - `submitted`: The request has been submitted and is awaiting review by Remote. - `in_review`: Remote is reviewing the request for legal compliance and risks. - `done`: The offboarding has been completed and the employment is terminated. - `canceled`: The offboarding request was canceled before completion. */
 export type TerminationOffboardingStatus = "submitted" | "in_review" | "done" | "canceled";
-export const TerminationOffboardingStatus = S.String;
-
 /** The reason for the termination, as submitted by the employer. */
 export type TerminationOffboardingTerminationReason =
   | "cancellation_before_start_date"
@@ -4620,12 +4300,8 @@ export type TerminationOffboardingTerminationReason =
   | "performance"
   | "values"
   | "workforce_reduction";
-export const TerminationOffboardingTerminationReason = S.String;
-
 /** The type of offboarding. Always `"termination"` for employer-initiated terminations. */
 export type TerminationOffboardingType = "termination";
-export const TerminationOffboardingType = S.String;
-
 /** An offboarding request initiated by the employer to terminate an employment. Includes termination details, risk assessment, and status tracking through Remote's review process. */
 export interface TerminationOffboarding {
   /** Additional comments or context about the termination provided by the employer. */
@@ -4667,39 +4343,15 @@ export interface TerminationOffboarding {
   /** Additional details about why the employee may challenge the termination, if applicable. */
   will_challenge_termination_description?: string;
 }
-export const TerminationOffboarding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additional_comments: S.NullOr(S.String),
-    agrees_to_pto_amount: S.optional(S.Boolean),
-    confidential: S.Boolean,
-    employee_awareness: S.optional(TerminationOffboardingEmployeeAwareness),
-    employment_id: S.String,
-    id: S.String,
-    offboarding_id: S.optional(S.NullOr(S.String)),
-    personal_email: S.optional(S.String),
-    proposed_termination_date: S.String,
-    reason_description: S.String,
-    requested_by: S.String,
-    risk_assessment_reasons: TerminationOffboardingRiskAssessmentReasonsList,
-    status: TerminationOffboardingStatus,
-    submitted_at: S.String,
-    termination_date: S.NullOr(S.String),
-    termination_reason: TerminationOffboardingTerminationReason,
-    type: TerminationOffboardingType,
-    will_challenge_termination: S.Boolean,
-    will_challenge_termination_description: S.optional(S.String),
-  }),
-).annotate({ identifier: "TerminationOffboarding" }) as any as S.Schema<TerminationOffboarding>;
-
 export type ResignationOrTerminationOffboarding = ResignationOffboarding | TerminationOffboarding;
-export const ResignationOrTerminationOffboarding =
+const ResignationOrTerminationOffboarding =
   S.Unknown as any as S.Schema<ResignationOrTerminationOffboarding>;
 
 /** A wrapper containing an offboarding record, which can be either a termination (employer-initiated) or a resignation (employee-initiated). */
 export interface Offboarding {
   offboarding?: ResignationOrTerminationOffboarding;
 }
-export const Offboarding = /*@__PURE__*/ S.suspend(() =>
+const Offboarding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offboarding: S.optional(ResignationOrTerminationOffboarding),
   }),
@@ -4709,7 +4361,7 @@ export const Offboarding = /*@__PURE__*/ S.suspend(() =>
 export interface OffboardingResponse {
   data?: Offboarding;
 }
-export const OffboardingResponse = /*@__PURE__*/ S.suspend(() =>
+const OffboardingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(Offboarding),
   }),
@@ -4723,19 +4375,18 @@ export interface CreateOnboardingEmploymentPreOnboardingDocumentSignRequest {
   /** The signer's full legal name as their electronic signature. */
   signature: string;
 }
-export const CreateOnboardingEmploymentPreOnboardingDocumentSignRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      employment_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      signature: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-documents/{id}/sign",
-        code: 200,
-      }),
-    ),
+const CreateOnboardingEmploymentPreOnboardingDocumentSignRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    employment_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    signature: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/v1/onboarding/employments/{employment_id}/pre-onboarding-documents/{id}/sign",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateOnboardingEmploymentPreOnboardingDocumentSignRequest",
 }) as any as S.Schema<CreateOnboardingEmploymentPreOnboardingDocumentSignRequest>;
@@ -4746,7 +4397,7 @@ export interface CreateOnboardingEmploymentPreOnboardingRequirementAcknowledgeRe
   /** Pre-onboarding requirement slug */
   requirement_slug: string;
 }
-export const CreateOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest =
+const CreateOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       employment_id: S.String.pipe(T.Label()),
@@ -4765,7 +4416,7 @@ export const CreateOnboardingEmploymentPreOnboardingRequirementAcknowledgeReques
 export interface CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement {
   id: string;
 }
-export const CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement =
+const CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
@@ -4777,7 +4428,7 @@ export const CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowle
 export interface CreatePreOnboardingAcknowledgementResponseData {
   pre_onboarding_acknowledgement: CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement;
 }
-export const CreatePreOnboardingAcknowledgementResponseData = /*@__PURE__*/ S.suspend(() =>
+const CreatePreOnboardingAcknowledgementResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pre_onboarding_acknowledgement:
       CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement,
@@ -4790,7 +4441,7 @@ export const CreatePreOnboardingAcknowledgementResponseData = /*@__PURE__*/ S.su
 export interface CreatePreOnboardingAcknowledgementResponse {
   data: CreatePreOnboardingAcknowledgementResponseData;
 }
-export const CreatePreOnboardingAcknowledgementResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePreOnboardingAcknowledgementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreatePreOnboardingAcknowledgementResponseData,
   }),
@@ -4806,8 +4457,8 @@ export interface CreateOnboardingEmploymentPreOnboardingRequirementDocumentReque
   /** When `true`, skips the email that asks the company signatory to sign the newly created document. Signature reminders are still sent while the document remains unsigned. The company signatory is the authenticated user when they are allowed to sign, otherwise the company's legal representative or owner. This parameter only takes effect when the signatory is the authenticated user, who is about to sign the document themselves. When the signatory is someone else, they are emailed right away as usual, since they still need to know about the document. */
   skip_initial_signature_email?: boolean;
 }
-export const CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       employment_id: S.String.pipe(T.Label()),
       requirement_slug: S.String.pipe(T.Label()),
@@ -4819,19 +4470,16 @@ export const CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest",
-  }) as any as S.Schema<CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest>;
+).annotate({
+  identifier: "CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest",
+}) as any as S.Schema<CreateOnboardingEmploymentPreOnboardingRequirementDocumentRequest>;
 
 export type CreatePreOnboardingDocumentResponseDataPreOnboardingDocument =
   CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement;
-export const CreatePreOnboardingDocumentResponseDataPreOnboardingDocument =
-  CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement;
-
 export interface CreatePreOnboardingDocumentResponseData {
   pre_onboarding_document: CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement;
 }
-export const CreatePreOnboardingDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
+const CreatePreOnboardingDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pre_onboarding_document:
       CreatePreOnboardingAcknowledgementResponseDataPreOnboardingAcknowledgement,
@@ -4844,7 +4492,7 @@ export const CreatePreOnboardingDocumentResponseData = /*@__PURE__*/ S.suspend((
 export interface CreatePreOnboardingDocumentResponse {
   data: CreatePreOnboardingDocumentResponseData;
 }
-export const CreatePreOnboardingDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePreOnboardingDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreatePreOnboardingDocumentResponseData,
   }),
@@ -4873,7 +4521,7 @@ export interface PayItemProviderDataParams {
   /** Expected work day duration in seconds */
   work_day_duration?: number;
 }
-export const PayItemProviderDataParams = /*@__PURE__*/ S.suspend(() =>
+const PayItemProviderDataParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adjustment_effective_date: S.optional(S.String),
     correction_effective_date: S.optional(S.String),
@@ -4906,7 +4554,7 @@ export interface PayItemParams {
   external_import_code?: string;
   provider_data?: PayItemProviderDataParams;
 }
-export const PayItemParams = /*@__PURE__*/ S.suspend(() =>
+const PayItemParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     code: S.optional(S.String),
@@ -4920,14 +4568,14 @@ export const PayItemParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayItemParams" }) as any as S.Schema<PayItemParams>;
 
 export type CreatePayItemsBulkRequestPayItemsList = Array<PayItemParams>;
-export const CreatePayItemsBulkRequestPayItemsList = /*@__PURE__*/ S.Array(
+const CreatePayItemsBulkRequestPayItemsList = /*@__PURE__*/ S.Array(
   PayItemParams,
 ) as any as S.Schema<CreatePayItemsBulkRequestPayItemsList>;
 
 export interface CreatePayItemsBulkRequest {
   pay_items: CreatePayItemsBulkRequestPayItemsList;
 }
-export const CreatePayItemsBulkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePayItemsBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pay_items: CreatePayItemsBulkRequestPayItemsList,
   }).pipe(T.Http({ method: "POST", uri: "/v1/pay-items/bulk", code: 200 })),
@@ -4941,40 +4589,22 @@ export interface PayItemBulkCreateFailureDetail {
   /** Human-readable detail for the failure reason. */
   message: string;
 }
-export const PayItemBulkCreateFailureDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "PayItemBulkCreateFailureDetail",
-}) as any as S.Schema<PayItemBulkCreateFailureDetail>;
-
 export interface PayItemBulkCreateFailuresErrorCase2 {
   errors: unknown;
 }
-export const PayItemBulkCreateFailuresErrorCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.Unknown,
-  }),
-).annotate({
-  identifier: "PayItemBulkCreateFailuresErrorCase2",
-}) as any as S.Schema<PayItemBulkCreateFailuresErrorCase2>;
-
 /** Failure reason. Includes `employment_not_global_payroll` when the provided employment is not Global Payroll, `pay_item_code_not_allowed` / `pay_item_external_import_code_not_allowed` when the given identifier does not resolve to an allowed pay element, and `effective_date_after_termination_date` (as a `code`/`message` pair) when a `time_attendance` pay item's `effective_date` falls after the employment's termination date. */
 export type PayItemBulkCreateFailuresError =
   | string
   | PayItemBulkCreateFailureDetail
   | PayItemBulkCreateFailuresErrorCase2;
-export const PayItemBulkCreateFailuresError =
-  S.Unknown as any as S.Schema<PayItemBulkCreateFailuresError>;
+const PayItemBulkCreateFailuresError = S.Unknown as any as S.Schema<PayItemBulkCreateFailuresError>;
 
 export interface PayItemBulkCreateFailures {
   /** Failure reason. Includes `employment_not_global_payroll` when the provided employment is not Global Payroll, `pay_item_code_not_allowed` / `pay_item_external_import_code_not_allowed` when the given identifier does not resolve to an allowed pay element, and `effective_date_after_termination_date` (as a `code`/`message` pair) when a `time_attendance` pay item's `effective_date` falls after the employment's termination date. */
   error?: PayItemBulkCreateFailuresError;
   row_number?: number;
 }
-export const PayItemBulkCreateFailures = /*@__PURE__*/ S.suspend(() =>
+const PayItemBulkCreateFailures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(PayItemBulkCreateFailuresError),
     row_number: S.optional(S.Number),
@@ -4984,7 +4614,7 @@ export const PayItemBulkCreateFailures = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayItemBulkCreateFailures>;
 
 export type BulkCreatePayItemsResponseDataFailuresList = Array<PayItemBulkCreateFailures>;
-export const BulkCreatePayItemsResponseDataFailuresList = /*@__PURE__*/ S.Array(
+const BulkCreatePayItemsResponseDataFailuresList = /*@__PURE__*/ S.Array(
   PayItemBulkCreateFailures,
 ) as any as S.Schema<BulkCreatePayItemsResponseDataFailuresList>;
 
@@ -5001,7 +4631,7 @@ export interface PayItemProviderData {
   /** Expected work day duration in seconds */
   work_day_duration?: number;
 }
-export const PayItemProviderData = /*@__PURE__*/ S.suspend(() =>
+const PayItemProviderData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     correction_effective_date: S.optional(S.String),
     hourly_rate: S.optional(S.Number),
@@ -5014,8 +4644,7 @@ export const PayItemProviderData = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of pay items this one has replaced, oldest first. Empty if this pay item has never been edited. */
 export type PayItemReplacedIdsList = Array<string>;
-export const PayItemReplacedIdsList =
-  ProductFeaturesList as any as S.Schema<PayItemReplacedIdsList>;
+const PayItemReplacedIdsList = ProductFeaturesList as any as S.Schema<PayItemReplacedIdsList>;
 
 export interface PayItem {
   /** Value of the pay item. Its unit depends on the `type` of the pay code (see GET /v1/companies/:company_id/legal-entities/:legal_entity_id/pay-codes): `amount` in cents, `percentage` in basis points, `unit` as a raw count, `hours` as a whole number of hours, `duration` in seconds. */
@@ -5034,7 +4663,7 @@ export interface PayItem {
   /** Ids of pay items this one has replaced, oldest first. Empty if this pay item has never been edited. */
   replaced_ids: PayItemReplacedIdsList;
 }
-export const PayItem = /*@__PURE__*/ S.suspend(() =>
+const PayItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     code: S.String,
@@ -5051,7 +4680,7 @@ export interface PayItemBulkCreateSuccesses {
   pay_item: PayItem;
   row_number: number;
 }
-export const PayItemBulkCreateSuccesses = /*@__PURE__*/ S.suspend(() =>
+const PayItemBulkCreateSuccesses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pay_item: PayItem,
     row_number: S.Number,
@@ -5061,7 +4690,7 @@ export const PayItemBulkCreateSuccesses = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PayItemBulkCreateSuccesses>;
 
 export type BulkCreatePayItemsResponseDataSuccessesList = Array<PayItemBulkCreateSuccesses>;
-export const BulkCreatePayItemsResponseDataSuccessesList = /*@__PURE__*/ S.Array(
+const BulkCreatePayItemsResponseDataSuccessesList = /*@__PURE__*/ S.Array(
   PayItemBulkCreateSuccesses,
 ) as any as S.Schema<BulkCreatePayItemsResponseDataSuccessesList>;
 
@@ -5069,7 +4698,7 @@ export interface BulkCreatePayItemsResponseData {
   failures: BulkCreatePayItemsResponseDataFailuresList;
   successes: BulkCreatePayItemsResponseDataSuccessesList;
 }
-export const BulkCreatePayItemsResponseData = /*@__PURE__*/ S.suspend(() =>
+const BulkCreatePayItemsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failures: BulkCreatePayItemsResponseDataFailuresList,
     successes: BulkCreatePayItemsResponseDataSuccessesList,
@@ -5081,7 +4710,7 @@ export const BulkCreatePayItemsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface BulkCreatePayItemsResponse {
   data: BulkCreatePayItemsResponseData;
 }
-export const BulkCreatePayItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkCreatePayItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BulkCreatePayItemsResponseData,
   }),
@@ -5091,7 +4720,7 @@ export const BulkCreatePayItemsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of GL report to generate. */
 export type CreatePayrollRunGlReportRequestType = "summary" | "by_department" | "employee_detail";
-export const CreatePayrollRunGlReportRequestType = S.String;
+const CreatePayrollRunGlReportRequestType = S.String;
 
 export interface CreatePayrollRunGlReportRequest {
   /** The payroll run's ID */
@@ -5099,7 +4728,7 @@ export interface CreatePayrollRunGlReportRequest {
   /** The type of GL report to generate. */
   type: CreatePayrollRunGlReportRequestType | (string & {});
 }
-export const CreatePayrollRunGlReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePayrollRunGlReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payroll_run_id: S.String.pipe(T.Label()),
     type: CreatePayrollRunGlReportRequestType,
@@ -5112,11 +4741,11 @@ export const CreatePayrollRunGlReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current generation status of the report. */
 export type GLReportStatus = "pending" | "completed" | "failed";
-export const GLReportStatus = S.String;
+const GLReportStatus = S.String;
 
 /** The type of GL report. */
 export type GLReportType = "summary" | "by_department" | "employee_detail";
-export const GLReportType = S.String;
+const GLReportType = S.String;
 
 /** A General Ledger report generation request and its current status. */
 export interface GLReport {
@@ -5129,7 +4758,7 @@ export interface GLReport {
   /** The type of GL report. */
   type: GLReportType;
 }
-export const GLReport = /*@__PURE__*/ S.suspend(() =>
+const GLReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     inserted_at: S.String,
@@ -5141,7 +4770,7 @@ export const GLReport = /*@__PURE__*/ S.suspend(() =>
 export interface GLReportResponseData {
   gl_report?: GLReport;
 }
-export const GLReportResponseData = /*@__PURE__*/ S.suspend(() =>
+const GLReportResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gl_report: S.optional(GLReport),
   }),
@@ -5150,7 +4779,7 @@ export const GLReportResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface GLReportResponse {
   data?: GLReportResponseData;
 }
-export const GLReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GLReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(GLReportResponseData),
   }),
@@ -5160,7 +4789,7 @@ export interface CreateProbationCompletionLetterRequest {
   /** The employment ID. */
   employment_id: string;
 }
-export const CreateProbationCompletionLetterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProbationCompletionLetterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/v1/probation-completion-letter", code: 200 })),
@@ -5170,15 +4799,13 @@ export const CreateProbationCompletionLetterRequest = /*@__PURE__*/ S.suspend(()
 
 /** A file associated with an employment, such as a contract, tax document, or identity document. */
 export type ProbationCompletionLetterFile = File;
-export const ProbationCompletionLetterFile = File;
-
 export type ProbationCompletionLetterStatus =
   | "submitted"
   | "in_review"
   | "done"
   | "canceled"
   | "deleted";
-export const ProbationCompletionLetterStatus = S.String;
+const ProbationCompletionLetterStatus = S.String;
 
 /** Probation completion letter request */
 export interface ProbationCompletionLetter {
@@ -5189,7 +4816,7 @@ export interface ProbationCompletionLetter {
   submitted_at: string;
   zendesk_ticket_url: string | null;
 }
-export const ProbationCompletionLetter = /*@__PURE__*/ S.suspend(() =>
+const ProbationCompletionLetter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String,
     id: S.String,
@@ -5205,7 +4832,7 @@ export const ProbationCompletionLetter = /*@__PURE__*/ S.suspend(() =>
 export interface ProbationCompletionLetterResponseData {
   probation_completion_letter: ProbationCompletionLetter;
 }
-export const ProbationCompletionLetterResponseData = /*@__PURE__*/ S.suspend(() =>
+const ProbationCompletionLetterResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     probation_completion_letter: ProbationCompletionLetter,
   }),
@@ -5217,7 +4844,7 @@ export const ProbationCompletionLetterResponseData = /*@__PURE__*/ S.suspend(() 
 export interface ProbationCompletionLetterResponse {
   data: ProbationCompletionLetterResponseData;
 }
-export const ProbationCompletionLetterResponse = /*@__PURE__*/ S.suspend(() =>
+const ProbationCompletionLetterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ProbationCompletionLetterResponseData,
   }),
@@ -5231,7 +4858,7 @@ export interface ProbationExtensionFile {
   /** The name of the file. */
   name: string;
 }
-export const ProbationExtensionFile = Base64File as any as S.Schema<ProbationExtensionFile>;
+const ProbationExtensionFile = Base64File as any as S.Schema<ProbationExtensionFile>;
 
 export interface CreateProbationExtensionRequest {
   /** Any additional details that need to be considered for the probation extension. */
@@ -5249,7 +4876,7 @@ export interface CreateProbationExtensionRequest {
   /** Whether the employee was informed about the probation extension. */
   was_employee_informed: boolean;
 }
-export const CreateProbationExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProbationExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additional_details: S.optional(S.String),
     date_of_discussion_with_employee: S.optional(S.String),
@@ -5265,7 +4892,7 @@ export const CreateProbationExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current status of a probation extension request. - `submitted`: The request has been submitted and is awaiting review. - `in_review`: Remote is reviewing the request for compliance. - `done`: The probation extension has been approved and applied. - `canceled`: The request was canceled. - `deleted`: The request was deleted. */
 export type ProbationExtensionStatus = "submitted" | "in_review" | "done" | "canceled" | "deleted";
-export const ProbationExtensionStatus = S.String;
+const ProbationExtensionStatus = S.String;
 
 /** A request to extend an employee's probation period. Requires Remote's review for compliance with local labor laws. */
 export interface ProbationExtension {
@@ -5281,7 +4908,7 @@ export interface ProbationExtension {
   /** A link to the support ticket for this extension, if one was created. Null otherwise. */
   zendesk_ticket_url: string | null;
 }
-export const ProbationExtension = /*@__PURE__*/ S.suspend(() =>
+const ProbationExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String,
     id: S.String,
@@ -5295,7 +4922,7 @@ export const ProbationExtension = /*@__PURE__*/ S.suspend(() =>
 export interface ProbationExtensionResponseData {
   probation_extension: ProbationExtension;
 }
-export const ProbationExtensionResponseData = /*@__PURE__*/ S.suspend(() =>
+const ProbationExtensionResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     probation_extension: ProbationExtension,
   }),
@@ -5307,7 +4934,7 @@ export const ProbationExtensionResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ProbationExtensionResponse {
   data?: ProbationExtensionResponseData;
 }
-export const ProbationExtensionResponse = /*@__PURE__*/ S.suspend(() =>
+const ProbationExtensionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ProbationExtensionResponseData),
   }),
@@ -5327,7 +4954,7 @@ export interface CreateProjectRequest {
   /** Date when the project starts. */
   start_date?: string | null;
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -5343,7 +4970,7 @@ export interface ProjectBudget {
   amount: number;
   currency: string | null;
 }
-export const ProjectBudget = /*@__PURE__*/ S.suspend(() =>
+const ProjectBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     currency: S.NullOr(S.String),
@@ -5352,15 +4979,14 @@ export const ProjectBudget = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs of the company admins assigned as the project's leads. These are user IDs, unlike `team_member_ids`, which are employment IDs. */
 export type ProjectLeadIdsList = Array<string>;
-export const ProjectLeadIdsList = ProductFeaturesList as any as S.Schema<ProjectLeadIdsList>;
+const ProjectLeadIdsList = ProductFeaturesList as any as S.Schema<ProjectLeadIdsList>;
 
 export type ProjectStatus = "active" | "archived" | "completed";
-export const ProjectStatus = S.String;
+const ProjectStatus = S.String;
 
 /** Employment IDs of the contractors assigned to the project as team members. These are employment IDs, unlike `lead_ids`, which are user IDs. */
 export type ProjectTeamMemberIdsList = Array<string>;
-export const ProjectTeamMemberIdsList =
-  ProductFeaturesList as any as S.Schema<ProjectTeamMemberIdsList>;
+const ProjectTeamMemberIdsList = ProductFeaturesList as any as S.Schema<ProjectTeamMemberIdsList>;
 
 /** Company project */
 export interface Project {
@@ -5384,7 +5010,7 @@ export interface Project {
   /** Employment IDs of the contractors assigned to the project as team members. These are employment IDs, unlike `lead_ids`, which are user IDs. */
   team_member_ids: ProjectTeamMemberIdsList;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budget: S.NullOr(ProjectBudget),
     code: S.String,
@@ -5402,7 +5028,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectResponseData {
   project?: Project;
 }
-export const ProjectResponseData = /*@__PURE__*/ S.suspend(() =>
+const ProjectResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(Project),
   }),
@@ -5412,7 +5038,7 @@ export const ProjectResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectResponse {
   data: ProjectResponseData;
 }
-export const ProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ProjectResponseData,
   }),
@@ -5422,7 +5048,7 @@ export interface CreateRiskReserveRequest {
   /** The unique identifier (UUID) of the employment to create a risk reserve for. The employment must exist and be in a state that allows risk reserve creation. */
   employment_slug: string;
 }
-export const CreateRiskReserveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRiskReserveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_slug: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/v1/risk-reserve", code: 200 })),
@@ -5432,7 +5058,7 @@ export interface CreateSandboxBenefitRenewalRequestRequest {
   /** The unique identifier (UUID) of the benefit group to create a renewal request for. */
   benefit_group_id: string;
 }
-export const CreateSandboxBenefitRenewalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxBenefitRenewalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_group_id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/v1/sandbox/benefit-renewal-requests", code: 200 })),
@@ -5449,7 +5075,7 @@ export interface BenefitRenewalRequestsMinimalBenefitGroup {
   /** The name of the benefit group (e.g., "Health", "Life Insurance"). */
   name: string;
 }
-export const BenefitRenewalRequestsMinimalBenefitGroup = /*@__PURE__*/ S.suspend(() =>
+const BenefitRenewalRequestsMinimalBenefitGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String,
     id: S.String,
@@ -5469,7 +5095,7 @@ export interface NullableMinimalBenefitTier {
   /** The name of the benefit tier (e.g., "Premium", "Standard"). */
   name: string;
 }
-export const NullableMinimalBenefitTier = /*@__PURE__*/ S.suspend(() =>
+const NullableMinimalBenefitTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     display_cost: S.optional(S.NullOr(S.String)),
@@ -5484,7 +5110,7 @@ export interface BenefitRenewalRequestsMinimalBenefitRenewalResponse {
   benefit_tier: NullableMinimalBenefitTier | null;
   updated_at: string;
 }
-export const BenefitRenewalRequestsMinimalBenefitRenewalResponse = /*@__PURE__*/ S.suspend(() =>
+const BenefitRenewalRequestsMinimalBenefitRenewalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_tier: S.NullOr(NullableMinimalBenefitTier),
     updated_at: S.String,
@@ -5508,7 +5134,7 @@ export interface BenefitRenewalRequestsBenefitRenewalRequest {
   renewal_selection_instructions: string;
   renewal_selection_start_date: string;
 }
-export const BenefitRenewalRequestsBenefitRenewalRequest = /*@__PURE__*/ S.suspend(() =>
+const BenefitRenewalRequestsBenefitRenewalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_group: BenefitRenewalRequestsMinimalBenefitGroup,
     benefit_renewal_response: S.NullOr(BenefitRenewalRequestsMinimalBenefitRenewalResponse),
@@ -5528,24 +5154,22 @@ export const BenefitRenewalRequestsBenefitRenewalRequest = /*@__PURE__*/ S.suspe
 export interface BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData {
   benefit_renewal_request: BenefitRenewalRequestsBenefitRenewalRequest;
 }
-export const BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      benefit_renewal_request: BenefitRenewalRequestsBenefitRenewalRequest,
-    }),
-  ).annotate({
-    identifier: "BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData",
-  }) as any as S.Schema<BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData>;
+const BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    benefit_renewal_request: BenefitRenewalRequestsBenefitRenewalRequest,
+  }),
+).annotate({
+  identifier: "BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData",
+}) as any as S.Schema<BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData>;
 
 /** Create Benefit Renewal Request Response */
 export interface BenefitRenewalRequestsCreateBenefitRenewalRequestResponse {
   data: BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData;
 }
-export const BenefitRenewalRequestsCreateBenefitRenewalRequestResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData,
-    }),
+const BenefitRenewalRequestsCreateBenefitRenewalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData,
+  }),
 ).annotate({
   identifier: "BenefitRenewalRequestsCreateBenefitRenewalRequestResponse",
 }) as any as S.Schema<BenefitRenewalRequestsCreateBenefitRenewalRequestResponse>;
@@ -5554,7 +5178,7 @@ export interface CreateSandboxCompanyBypassEligibilityCheckRequest {
   /** Company ID */
   company_id: string;
 }
-export const CreateSandboxCompanyBypassEligibilityCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxCompanyBypassEligibilityCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -5574,7 +5198,7 @@ export interface CreateSandboxCompanyLegalEntityRequest {
   /** ISO 3166-1 alpha-3 country code */
   country_code: string;
 }
-export const CreateSandboxCompanyLegalEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxCompanyLegalEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     country_code: S.String,
@@ -5593,7 +5217,7 @@ export interface CreateSandboxCompanyLegalEntityResponseData {
   /** Legal entity status */
   status?: string;
 }
-export const CreateSandboxCompanyLegalEntityResponseData = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxCompanyLegalEntityResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     legal_entity_id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5606,7 +5230,7 @@ export const CreateSandboxCompanyLegalEntityResponseData = /*@__PURE__*/ S.suspe
 export interface CreateSandboxCompanyLegalEntityResponse {
   data?: CreateSandboxCompanyLegalEntityResponseData;
 }
-export const CreateSandboxCompanyLegalEntityResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxCompanyLegalEntityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(CreateSandboxCompanyLegalEntityResponseData),
   }),
@@ -5620,18 +5244,17 @@ export interface CreateSandboxCompanyLegalEntityActivateGlobalPayrollRequest {
   /** Legal Entity ID to activate Global Payroll on */
   legal_entity_id: string;
 }
-export const CreateSandboxCompanyLegalEntityActivateGlobalPayrollRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      company_id: S.String.pipe(T.Label()),
-      legal_entity_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/v1/sandbox/companies/{company_id}/legal-entities/{legal_entity_id}/activate-global-payroll",
-        code: 200,
-      }),
-    ),
+const CreateSandboxCompanyLegalEntityActivateGlobalPayrollRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    company_id: S.String.pipe(T.Label()),
+    legal_entity_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/v1/sandbox/companies/{company_id}/legal-entities/{legal_entity_id}/activate-global-payroll",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateSandboxCompanyLegalEntityActivateGlobalPayrollRequest",
 }) as any as S.Schema<CreateSandboxCompanyLegalEntityActivateGlobalPayrollRequest>;
@@ -5644,19 +5267,18 @@ export interface CreateSandboxCompanyLegalEntitySetCreditRiskStatusRequest {
   /** Credit risk status to set. */
   credit_risk_status: string;
 }
-export const CreateSandboxCompanyLegalEntitySetCreditRiskStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      company_id: S.String.pipe(T.Label()),
-      legal_entity_id: S.String.pipe(T.Label()),
-      credit_risk_status: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/v1/sandbox/companies/{company_id}/legal-entities/{legal_entity_id}/set-credit-risk-status",
-        code: 200,
-      }),
-    ),
+const CreateSandboxCompanyLegalEntitySetCreditRiskStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    company_id: S.String.pipe(T.Label()),
+    legal_entity_id: S.String.pipe(T.Label()),
+    credit_risk_status: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/v1/sandbox/companies/{company_id}/legal-entities/{legal_entity_id}/set-credit-risk-status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateSandboxCompanyLegalEntitySetCreditRiskStatusRequest",
 }) as any as S.Schema<CreateSandboxCompanyLegalEntitySetCreditRiskStatusRequest>;
@@ -5667,7 +5289,7 @@ export type CreateSandboxContractorsEmploymentRateRequestPayFrequency =
   | "bi_weekly"
   | "semi_monthly"
   | "monthly";
-export const CreateSandboxContractorsEmploymentRateRequestPayFrequency = S.String;
+const CreateSandboxContractorsEmploymentRateRequestPayFrequency = S.String;
 
 /** The unit the amount is paid per. */
 export type CreateSandboxContractorsEmploymentRateRequestType =
@@ -5676,7 +5298,7 @@ export type CreateSandboxContractorsEmploymentRateRequestType =
   | "weekly"
   | "monthly"
   | "one_off";
-export const CreateSandboxContractorsEmploymentRateRequestType = S.String;
+const CreateSandboxContractorsEmploymentRateRequestType = S.String;
 
 export interface CreateSandboxContractorsEmploymentRateRequest {
   /** Contractor employment ID */
@@ -5688,7 +5310,7 @@ export interface CreateSandboxContractorsEmploymentRateRequest {
   /** The unit the amount is paid per. */
   type: CreateSandboxContractorsEmploymentRateRequestType | (string & {});
 }
-export const CreateSandboxContractorsEmploymentRateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxContractorsEmploymentRateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     amount: S.String,
@@ -5707,14 +5329,12 @@ export const CreateSandboxContractorsEmploymentRateRequest = /*@__PURE__*/ S.sus
 
 /** Currency structure without the slug, eg: built from ex_money */
 export type CurrencyWithoutSlug = CurrencyDefinition;
-export const CurrencyWithoutSlug = CurrencyDefinition;
-
 /** Monetary amount and currency. `amount` is a decimal string in the major unit, e.g. 109.87. */
 export interface MoneyResponse {
   amount: string;
   currency: CurrencyDefinition;
 }
-export const MoneyResponse = /*@__PURE__*/ S.suspend(() =>
+const MoneyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: CurrencyDefinition,
@@ -5723,11 +5343,11 @@ export const MoneyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** How often the contractor is paid. Always null for `one_off` rates. Can be null for a recurring rate when the company did not record a frequency. */
 export type ContractorRatePayFrequency = "weekly" | "bi_weekly" | "semi_monthly" | "monthly";
-export const ContractorRatePayFrequency = S.String;
+const ContractorRatePayFrequency = S.String;
 
 /** The unit the amount is paid per. */
 export type ContractorRateType = "hourly" | "daily" | "weekly" | "monthly" | "one_off";
-export const ContractorRateType = S.String;
+const ContractorRateType = S.String;
 
 /** A rate configured for a contractor, with the dates of the contract it is paid under and, when a Statement of Work established it, that Statement of Work's service dates. `type` discriminates the payment mode: `one_off` is a single payment on completion of services; any other value is paid per pay period, where `type` is the calculation unit and `pay_frequency` the invoicing cadence. `type` and `pay_frequency` list every value Remote stores. A new value is announced as an API change before it appears. */
 export interface ContractorRate {
@@ -5747,7 +5367,7 @@ export interface ContractorRate {
   /** The unit the amount is paid per. */
   type: ContractorRateType;
 }
-export const ContractorRate = /*@__PURE__*/ S.suspend(() =>
+const ContractorRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: MoneyResponse,
     contract_expiration_date: S.NullOr(S.String),
@@ -5764,7 +5384,7 @@ export const ContractorRate = /*@__PURE__*/ S.suspend(() =>
 export interface SandboxContractorRateResponse {
   data: ContractorRate;
 }
-export const SandboxContractorRateResponse = /*@__PURE__*/ S.suspend(() =>
+const SandboxContractorRateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractorRate,
   }),
@@ -5778,7 +5398,7 @@ export type CreateSandboxEmploymentRequestType =
   | "contractor"
   | "global_payroll_employee"
   | "hris";
-export const CreateSandboxEmploymentRequestType = S.String;
+const CreateSandboxEmploymentRequestType = S.String;
 
 export interface CreateSandboxEmploymentRequest {
   /** Employment basic information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `employment_basic_information` as path parameters. */
@@ -5800,7 +5420,7 @@ export interface CreateSandboxEmploymentRequest {
   /** If not provided, it will default to `employee`. */
   type?: CreateSandboxEmploymentRequestType | (string & {});
 }
-export const CreateSandboxEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basic_information: S.Unknown,
     bill_to_legal_entity_id: S.optional(S.String),
@@ -5822,7 +5442,7 @@ export type CreateSandboxEmploymentJobTitleEligibilityCheckRequestVerdict =
   | "not_eligible"
   | "needs_review"
   | "eligible_with_risk_acknowledgement";
-export const CreateSandboxEmploymentJobTitleEligibilityCheckRequestVerdict = S.String;
+const CreateSandboxEmploymentJobTitleEligibilityCheckRequestVerdict = S.String;
 
 export interface CreateSandboxEmploymentJobTitleEligibilityCheckRequest {
   /** Employment ID */
@@ -5834,7 +5454,7 @@ export interface CreateSandboxEmploymentJobTitleEligibilityCheckRequest {
   /** The verdict the employment's next contract-details submission should act on. */
   verdict: CreateSandboxEmploymentJobTitleEligibilityCheckRequestVerdict | (string & {});
 }
-export const CreateSandboxEmploymentJobTitleEligibilityCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxEmploymentJobTitleEligibilityCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     job_title: S.optional(S.String),
@@ -5857,7 +5477,7 @@ export interface CreateSandboxEmploymentJobTitleReviewApproveRequest {
   /** The reviewer's notes, recorded on the employment as a Remote admin's would be. */
   notes?: string;
 }
-export const CreateSandboxEmploymentJobTitleReviewApproveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxEmploymentJobTitleReviewApproveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     notes: S.optional(S.String),
@@ -5876,7 +5496,7 @@ export interface JobTitleReviewDecisionResponseDataJobTitleReview {
   /** The employment's status after the decision. An approval restores the status the employment held before it entered review. */
   employment_status: string;
 }
-export const JobTitleReviewDecisionResponseDataJobTitleReview = /*@__PURE__*/ S.suspend(() =>
+const JobTitleReviewDecisionResponseDataJobTitleReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_status: S.String,
   }),
@@ -5887,7 +5507,7 @@ export const JobTitleReviewDecisionResponseDataJobTitleReview = /*@__PURE__*/ S.
 export interface JobTitleReviewDecisionResponseData {
   job_title_review: JobTitleReviewDecisionResponseDataJobTitleReview;
 }
-export const JobTitleReviewDecisionResponseData = /*@__PURE__*/ S.suspend(() =>
+const JobTitleReviewDecisionResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_title_review: JobTitleReviewDecisionResponseDataJobTitleReview,
   }),
@@ -5898,7 +5518,7 @@ export const JobTitleReviewDecisionResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface JobTitleReviewDecisionResponse {
   data: JobTitleReviewDecisionResponseData;
 }
-export const JobTitleReviewDecisionResponse = /*@__PURE__*/ S.suspend(() =>
+const JobTitleReviewDecisionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: JobTitleReviewDecisionResponseData,
   }),
@@ -5912,7 +5532,7 @@ export interface CreateSandboxEmploymentJobTitleReviewRejectRequest {
   /** The reviewer's notes, recorded on the employment as a Remote admin's would be. */
   notes?: string;
 }
-export const CreateSandboxEmploymentJobTitleReviewRejectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxEmploymentJobTitleReviewRejectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     notes: S.optional(S.String),
@@ -6047,21 +5667,10 @@ export type WebhookTriggerEmploymentParamsEventType =
   | "work_authorization.declined_by_manager"
   | "work_authorization.declined_by_remote"
   | "work_authorization.requested";
-export const WebhookTriggerEmploymentParamsEventType = S.String;
-
 export interface WebhookTriggerEmploymentParams {
   employment_id: string;
   event_type: WebhookTriggerEmploymentParamsEventType | (string & {});
 }
-export const WebhookTriggerEmploymentParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    employment_id: S.String,
-    event_type: WebhookTriggerEmploymentParamsEventType,
-  }),
-).annotate({
-  identifier: "WebhookTriggerEmploymentParams",
-}) as any as S.Schema<WebhookTriggerEmploymentParams>;
-
 export type WebhookTriggerBillingParamsDocumentType =
   | "supplemental_service_invoice"
   | "prefunding_invoice"
@@ -6078,32 +5687,19 @@ export type WebhookTriggerBillingParamsDocumentType =
   | "remote_plan_invoice"
   | "peo_payroll_invoice"
   | "peo_service_invoice";
-export const WebhookTriggerBillingParamsDocumentType = S.String;
-
 export type WebhookTriggerBillingParamsEventType = "billing_document.issued";
-export const WebhookTriggerBillingParamsEventType = S.String;
-
 export interface WebhookTriggerBillingParams {
   document_type: WebhookTriggerBillingParamsDocumentType | (string & {});
   event_type: WebhookTriggerBillingParamsEventType;
 }
-export const WebhookTriggerBillingParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    document_type: WebhookTriggerBillingParamsDocumentType,
-    event_type: WebhookTriggerBillingParamsEventType,
-  }),
-).annotate({
-  identifier: "WebhookTriggerBillingParams",
-}) as any as S.Schema<WebhookTriggerBillingParams>;
-
 /** Required params to trigger a webhook event in the Sandbox environment */
 export type WebhookTriggerParams = WebhookTriggerEmploymentParams | WebhookTriggerBillingParams;
-export const WebhookTriggerParams = S.Unknown as any as S.Schema<WebhookTriggerParams>;
+const WebhookTriggerParams = S.Unknown as any as S.Schema<WebhookTriggerParams>;
 
 export interface CreateSandboxWebhookCallbacksTriggerRequest {
   body?: WebhookTriggerParams;
 }
-export const CreateSandboxWebhookCallbacksTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxWebhookCallbacksTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(WebhookTriggerParams.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "/v1/sandbox/webhook-callbacks/trigger", code: 200 })),
@@ -6120,16 +5716,16 @@ export type CreateSdkTelemetryErrorRequestErrorCategory =
   | "HOOK_ERROR"
   | "RUNTIME_ERROR"
   | "UNKNOWN_ERROR";
-export const CreateSdkTelemetryErrorRequestErrorCategory = S.String;
+const CreateSdkTelemetryErrorRequestErrorCategory = S.String;
 
 /** Component Stack */
 export type CreateSdkTelemetryErrorRequestErrorComponentStackList = Array<string>;
-export const CreateSdkTelemetryErrorRequestErrorComponentStackList =
+const CreateSdkTelemetryErrorRequestErrorComponentStackList =
   ProductFeaturesList as any as S.Schema<CreateSdkTelemetryErrorRequestErrorComponentStackList>;
 
 /** Error severity */
 export type CreateSdkTelemetryErrorRequestErrorSeverity = "critical" | "error" | "warning" | "info";
-export const CreateSdkTelemetryErrorRequestErrorSeverity = S.String;
+const CreateSdkTelemetryErrorRequestErrorSeverity = S.String;
 
 export interface CreateSdkTelemetryErrorRequestError {
   /** Error category */
@@ -6145,7 +5741,7 @@ export interface CreateSdkTelemetryErrorRequestError {
   /** Stack Trace */
   stack?: string | null;
 }
-export const CreateSdkTelemetryErrorRequestError = /*@__PURE__*/ S.suspend(() =>
+const CreateSdkTelemetryErrorRequestError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: CreateSdkTelemetryErrorRequestErrorCategory,
     component_stack: S.optional(S.NullOr(CreateSdkTelemetryErrorRequestErrorComponentStackList)),
@@ -6165,7 +5761,7 @@ export type CreateSdkTelemetryErrorRequestMetadataEnvironment =
   | "local"
   | "partners"
   | "sandbox";
-export const CreateSdkTelemetryErrorRequestMetadataEnvironment = S.String;
+const CreateSdkTelemetryErrorRequestMetadataEnvironment = S.String;
 
 export interface CreateSdkTelemetryErrorRequestMetadata {
   /** SDK runtime environment */
@@ -6179,7 +5775,7 @@ export interface CreateSdkTelemetryErrorRequestMetadata {
   /** User Agent */
   user_agent: string;
 }
-export const CreateSdkTelemetryErrorRequestMetadata = /*@__PURE__*/ S.suspend(() =>
+const CreateSdkTelemetryErrorRequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: CreateSdkTelemetryErrorRequestMetadataEnvironment,
     sdk_version: S.String,
@@ -6197,7 +5793,7 @@ export interface CreateSdkTelemetryErrorRequest {
   error: CreateSdkTelemetryErrorRequestError;
   metadata: CreateSdkTelemetryErrorRequestMetadata;
 }
-export const CreateSdkTelemetryErrorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSdkTelemetryErrorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.NullOr(S.Unknown)),
     error: CreateSdkTelemetryErrorRequestError,
@@ -6208,7 +5804,7 @@ export const CreateSdkTelemetryErrorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSdkTelemetryErrorRequest>;
 
 export interface CreateSdkTelemetryErrorResponse {}
-export const CreateSdkTelemetryErrorResponse =
+const CreateSdkTelemetryErrorResponse =
   CreateBulkEmploymentJobResponse as any as S.Schema<CreateSdkTelemetryErrorResponse>;
 
 export interface CreateSsoConfigurationRequest {
@@ -6219,7 +5815,7 @@ export interface CreateSsoConfigurationRequest {
   /** The URL of the SAML identity provider login endpoint. */
   identity_provider_url: string;
 }
-export const CreateSsoConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSsoConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate: S.String,
     domain: S.String,
@@ -6236,7 +5832,7 @@ export interface CreateSSOConfigurationResult {
   identity_provider_url: string;
   sso_url: string;
 }
-export const CreateSSOConfigurationResult = /*@__PURE__*/ S.suspend(() =>
+const CreateSSOConfigurationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience_uri: S.String,
     certificate: S.String,
@@ -6251,7 +5847,7 @@ export const CreateSSOConfigurationResult = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSSOConfigurationResponse {
   data: CreateSSOConfigurationResult;
 }
-export const CreateSSOConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSSOConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreateSSOConfigurationResult,
   }),
@@ -6260,7 +5856,7 @@ export const CreateSSOConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSSOConfigurationResponse>;
 
 export type CreateTimeoffRequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const CreateTimeoffRequestTimeoffDaysList =
+const CreateTimeoffRequestTimeoffDaysList =
   CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<CreateTimeoffRequestTimeoffDaysList>;
 
 /** The type of leave accepted when creating a time off record. It is fixed once the record exists and cannot be changed by updating it. */
@@ -6283,10 +5879,10 @@ export type TimeoffType =
   | "casual_leave"
   | "rol"
   | "ex_festivita";
-export const TimeoffType = S.String;
+const TimeoffType = S.String;
 
 export type CreateTimeoffRequestStatus = "approved";
-export const CreateTimeoffRequestStatus = S.String;
+const CreateTimeoffRequestStatus = S.String;
 
 export interface CreateTimeoffRequest {
   document?: TimeoffDocumentParams;
@@ -6303,7 +5899,7 @@ export interface CreateTimeoffRequest {
   approver_id: string | null;
   status: CreateTimeoffRequestStatus | (string & {});
 }
-export const CreateTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(TimeoffDocumentParams),
     employment_id: S.String,
@@ -6325,7 +5921,7 @@ export interface CreateTimeoffApproveRequest {
   timeoff_id: string;
   approver_id: string | null;
 }
-export const CreateTimeoffApproveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTimeoffApproveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoff_id: S.String.pipe(T.Label()),
     approver_id: S.NullOr(S.String),
@@ -6339,7 +5935,7 @@ export interface CreateTimeoffCancelRequest {
   timeoff_id: string;
   cancel_reason: string;
 }
-export const CreateTimeoffCancelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTimeoffCancelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoff_id: S.String.pipe(T.Label()),
     cancel_reason: S.String,
@@ -6352,7 +5948,7 @@ export interface CreateTimeoffCancelRequestApproveRequest {
   /** Time Off ID */
   timeoff_id: string;
 }
-export const CreateTimeoffCancelRequestApproveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTimeoffCancelRequestApproveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoff_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -6367,7 +5963,7 @@ export interface CreateTimeoffCancelRequestDeclineRequest {
   timeoff_id: string;
   decline_reason: string | null;
 }
-export const CreateTimeoffCancelRequestDeclineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTimeoffCancelRequestDeclineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoff_id: S.String.pipe(T.Label()),
     decline_reason: S.NullOr(S.String),
@@ -6383,7 +5979,7 @@ export interface CreateTimeoffDeclineRequest {
   timeoff_id: string;
   decline_reason: string | null;
 }
-export const CreateTimeoffDeclineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTimeoffDeclineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoff_id: S.String.pipe(T.Label()),
     decline_reason: S.NullOr(S.String),
@@ -6396,7 +5992,7 @@ export interface CreateTimesheetApproveRequest {
   /** Timesheet ID */
   timesheet_id: string;
 }
-export const CreateTimesheetApproveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTimesheetApproveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timesheet_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/timesheets/{timesheet_id}/approve", code: 200 })),
@@ -6406,7 +6002,7 @@ export const CreateTimesheetApproveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current status of a timesheet in its lifecycle. - `open`: The timesheet is a draft and only visible to the employee. It has not been submitted yet. - `submitted`: The employee has submitted the timesheet for review. It is awaiting approval. - `approved`: The timesheet has been approved and will be included in the next payroll run. - `in_calibration`: The timesheet was sent back to the employee for revision. The employee needs to correct and resubmit it. - `processed`: The timesheet has been processed as part of a payroll run. This is a terminal state. */
 export type TimesheetStatus = "open" | "submitted" | "approved" | "in_calibration" | "processed";
-export const TimesheetStatus = S.String;
+const TimesheetStatus = S.String;
 
 /** A lightweight timesheet representation returned after create and approve operations. Contains basic identification and status fields but not the detailed hours breakdown or time tracking entries. */
 export interface MinimalTimesheet {
@@ -6423,7 +6019,7 @@ export interface MinimalTimesheet {
   /** The timestamp when the employee submitted this timesheet. Null if not yet submitted. */
   submitted_at: string | null;
 }
-export const MinimalTimesheet = /*@__PURE__*/ S.suspend(() =>
+const MinimalTimesheet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approval_required: S.Boolean,
     country_code: S.String,
@@ -6440,7 +6036,7 @@ export const MinimalTimesheet = /*@__PURE__*/ S.suspend(() =>
 export interface MinimalTimesheetResponseData {
   timesheet: MinimalTimesheet;
 }
-export const MinimalTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
+const MinimalTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timesheet: MinimalTimesheet,
   }),
@@ -6452,7 +6048,7 @@ export const MinimalTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface MinimalTimesheetResponse {
   data?: MinimalTimesheetResponseData;
 }
-export const MinimalTimesheetResponse = /*@__PURE__*/ S.suspend(() =>
+const MinimalTimesheetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MinimalTimesheetResponseData),
   }),
@@ -6464,7 +6060,7 @@ export interface CreateTimesheetSendBackRequest {
   /** A required explanation of why the timesheet is being sent back. This will be visible to the employee. */
   sent_back_reason: string;
 }
-export const CreateTimesheetSendBackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTimesheetSendBackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timesheet_id: S.String.pipe(T.Label()),
     sent_back_reason: S.String,
@@ -6482,7 +6078,7 @@ export interface SentBackTimesheet {
   sent_back_reason: string;
   status: TimesheetStatus;
 }
-export const SentBackTimesheet = /*@__PURE__*/ S.suspend(() =>
+const SentBackTimesheet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     sent_back: S.Boolean,
@@ -6494,7 +6090,7 @@ export const SentBackTimesheet = /*@__PURE__*/ S.suspend(() =>
 export interface SentBackTimesheetResponseData {
   timesheet: SentBackTimesheet;
 }
-export const SentBackTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
+const SentBackTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timesheet: SentBackTimesheet,
   }),
@@ -6506,7 +6102,7 @@ export const SentBackTimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface SentBackTimesheetResponse {
   data?: SentBackTimesheetResponseData;
 }
-export const SentBackTimesheetResponse = /*@__PURE__*/ S.suspend(() =>
+const SentBackTimesheetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SentBackTimesheetResponseData),
   }),
@@ -6635,12 +6231,10 @@ export type CreateWebhookCallbackRequestSubscribedEventsItem =
   | "work_authorization.declined_by_manager"
   | "work_authorization.declined_by_remote"
   | "work_authorization.requested";
-export const CreateWebhookCallbackRequestSubscribedEventsItem = S.String;
-
 export type CreateWebhookCallbackRequestSubscribedEventsList = Array<
   CreateWebhookCallbackRequestSubscribedEventsItem | (string & {})
 >;
-export const CreateWebhookCallbackRequestSubscribedEventsList =
+const CreateWebhookCallbackRequestSubscribedEventsList =
   TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<CreateWebhookCallbackRequestSubscribedEventsList>;
 
 export interface CreateWebhookCallbackRequest {
@@ -6649,7 +6243,7 @@ export interface CreateWebhookCallbackRequest {
   subscribed_events?: CreateWebhookCallbackRequestSubscribedEventsList;
   url: string;
 }
-export const CreateWebhookCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscribe_to_all_events: S.optional(S.Boolean),
     subscribed_events: S.optional(CreateWebhookCallbackRequestSubscribedEventsList),
@@ -6780,10 +6374,8 @@ export type WebhookCallbackSubscribedEventsItem =
   | "work_authorization.declined_by_manager"
   | "work_authorization.declined_by_remote"
   | "work_authorization.requested";
-export const WebhookCallbackSubscribedEventsItem = S.String;
-
 export type WebhookCallbackSubscribedEventsList = Array<WebhookCallbackSubscribedEventsItem>;
-export const WebhookCallbackSubscribedEventsList =
+const WebhookCallbackSubscribedEventsList =
   TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<WebhookCallbackSubscribedEventsList>;
 
 /** A registered webhook callback endpoint. Remote sends HTTP POST requests to the configured URL when subscribed events occur. */
@@ -6798,7 +6390,7 @@ export interface WebhookCallback {
   /** The HTTPS URL where Remote will send webhook event payloads. */
   url: string;
 }
-export const WebhookCallback = /*@__PURE__*/ S.suspend(() =>
+const WebhookCallback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     signing_key: S.optional(S.String),
@@ -6811,7 +6403,7 @@ export const WebhookCallback = /*@__PURE__*/ S.suspend(() =>
 export interface WebhookCallbackResponseData {
   webhook_callback: WebhookCallback;
 }
-export const WebhookCallbackResponseData = /*@__PURE__*/ S.suspend(() =>
+const WebhookCallbackResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_callback: WebhookCallback,
   }),
@@ -6823,7 +6415,7 @@ export const WebhookCallbackResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface WebhookCallbackResponse {
   data: WebhookCallbackResponseData;
 }
-export const WebhookCallbackResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookCallbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhookCallbackResponseData,
   }),
@@ -6831,19 +6423,10 @@ export const WebhookCallbackResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of webhook event IDs to replay. */
 export type IdsRequiredParamsIdsList = Array<string>;
-export const IdsRequiredParamsIdsList =
-  ProductFeaturesList as any as S.Schema<IdsRequiredParamsIdsList>;
-
 export interface IdsRequiredParams {
   /** A list of webhook event IDs to replay. */
   ids: IdsRequiredParamsIdsList;
 }
-export const IdsRequiredParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ids: IdsRequiredParamsIdsList,
-  }),
-).annotate({ identifier: "IdsRequiredParams" }) as any as S.Schema<IdsRequiredParams>;
-
 export interface BeforeAfterRequiredParams {
   /** Only replay events triggered after this timestamp (ISO 8601). */
   after: string;
@@ -6856,26 +6439,14 @@ export interface BeforeAfterRequiredParams {
   /** Optional filter by delivery status. Set to false to replay only failed deliveries. */
   successfully_delivered?: boolean;
 }
-export const BeforeAfterRequiredParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    after: S.String,
-    before: S.String,
-    company_id: S.optional(S.String),
-    event_type: S.optional(S.String),
-    successfully_delivered: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BeforeAfterRequiredParams",
-}) as any as S.Schema<BeforeAfterRequiredParams>;
-
 /** Replay webhook events params */
 export type ReplayWebhookEventsParams = IdsRequiredParams | BeforeAfterRequiredParams;
-export const ReplayWebhookEventsParams = S.Unknown as any as S.Schema<ReplayWebhookEventsParams>;
+const ReplayWebhookEventsParams = S.Unknown as any as S.Schema<ReplayWebhookEventsParams>;
 
 export interface CreateWebhookEventsReplayRequest {
   body: ReplayWebhookEventsParams;
 }
-export const CreateWebhookEventsReplayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookEventsReplayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: ReplayWebhookEventsParams.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/webhook-events/replay", code: 200 })),
@@ -6887,7 +6458,7 @@ export interface DeleteCompanyManagerRequest {
   /** User ID */
   user_id: string;
 }
-export const DeleteCompanyManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCompanyManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/company-managers/{user_id}", code: 200 })),
@@ -6899,24 +6470,23 @@ export interface DeleteContractorsEmploymentContractorCorSubscriptionRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const DeleteContractorsEmploymentContractorCorSubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      employment_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/v1/contractors/employments/{employment_id}/contractor-cor-subscription",
-        code: 200,
-      }),
-    ),
+const DeleteContractorsEmploymentContractorCorSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    employment_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/v1/contractors/employments/{employment_id}/contractor-cor-subscription",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteContractorsEmploymentContractorCorSubscriptionRequest",
 }) as any as S.Schema<DeleteContractorsEmploymentContractorCorSubscriptionRequest>;
 
 export interface DeleteContractorsEmploymentContractorCorSubscriptionResponse {}
-export const DeleteContractorsEmploymentContractorCorSubscriptionResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const DeleteContractorsEmploymentContractorCorSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteContractorsEmploymentContractorCorSubscriptionResponse",
 }) as any as S.Schema<DeleteContractorsEmploymentContractorCorSubscriptionResponse>;
@@ -6925,7 +6495,7 @@ export interface DeleteIncentiveRequest {
   /** Incentive ID */
   id: string;
 }
-export const DeleteIncentiveRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIncentiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/incentives/{id}", code: 200 })),
@@ -6935,7 +6505,7 @@ export interface DeleteIncentivesRecurringRequest {
   /** Recurring Incentive ID */
   id: string;
 }
-export const DeleteIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/incentives/recurring/{id}", code: 200 })),
@@ -6944,16 +6514,15 @@ export const DeleteIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIncentivesRecurringRequest>;
 
 export type DeleteRecurringIncentiveResponseDataAlreadyScheduledIncentivesList = Array<Incentive>;
-export const DeleteRecurringIncentiveResponseDataAlreadyScheduledIncentivesList =
-  /*@__PURE__*/ S.Array(
-    Incentive,
-  ) as any as S.Schema<DeleteRecurringIncentiveResponseDataAlreadyScheduledIncentivesList>;
+const DeleteRecurringIncentiveResponseDataAlreadyScheduledIncentivesList = /*@__PURE__*/ S.Array(
+  Incentive,
+) as any as S.Schema<DeleteRecurringIncentiveResponseDataAlreadyScheduledIncentivesList>;
 
 export interface DeleteRecurringIncentiveResponseData {
   already_scheduled_incentives: DeleteRecurringIncentiveResponseDataAlreadyScheduledIncentivesList;
   status?: string;
 }
-export const DeleteRecurringIncentiveResponseData = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecurringIncentiveResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     already_scheduled_incentives:
       DeleteRecurringIncentiveResponseDataAlreadyScheduledIncentivesList,
@@ -6967,7 +6536,7 @@ export const DeleteRecurringIncentiveResponseData = /*@__PURE__*/ S.suspend(() =
 export interface DeleteRecurringIncentiveResponse {
   data: DeleteRecurringIncentiveResponseData;
 }
-export const DeleteRecurringIncentiveResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecurringIncentiveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DeleteRecurringIncentiveResponseData,
   }),
@@ -6981,7 +6550,7 @@ export interface DeleteOnboardingEmploymentPreOnboardingRequirementAcknowledgeRe
   /** Pre-onboarding requirement slug */
   requirement_slug: string;
 }
-export const DeleteOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest =
+const DeleteOnboardingEmploymentPreOnboardingRequirementAcknowledgeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       employment_id: S.String.pipe(T.Label()),
@@ -7001,7 +6570,7 @@ export interface DeletePayItemRequest {
   /** Pay item ID */
   id: string;
 }
-export const DeletePayItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePayItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/pay-items/{id}", code: 200 })),
@@ -7011,7 +6580,7 @@ export interface DeleteSandboxEmploymentRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const DeleteSandboxEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSandboxEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/sandbox/employments/{employment_id}", code: 200 })),
@@ -7023,7 +6592,7 @@ export interface DeleteWebhookCallbackRequest {
   /** Webhook Callback ID */
   id: string;
 }
-export const DeleteWebhookCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/webhook-callbacks/{id}", code: 200 })),
@@ -7035,7 +6604,7 @@ export interface GetAdpSubscriptionCancellationsRequest {
   /** URL ADP provides to fetch the event payload from. Absent for ADP's own connectivity/test calls, which are acked without a fetch. */
   eventUrl?: string;
 }
-export const GetAdpSubscriptionCancellationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdpSubscriptionCancellationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventUrl: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-cancellations", code: 200 })),
@@ -7047,7 +6616,7 @@ export interface GetAdpSubscriptionChangesRequest {
   /** URL ADP provides to fetch the event payload from. Absent for ADP's own connectivity/test calls, which are acked without a fetch. */
   eventUrl?: string;
 }
-export const GetAdpSubscriptionChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdpSubscriptionChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventUrl: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-changes", code: 200 })),
@@ -7059,7 +6628,7 @@ export interface GetAdpSubscriptionOrdersRequest {
   /** URL ADP provides to fetch the event payload from. Absent for ADP's own connectivity/test calls, which are acked without a fetch. */
   eventUrl?: string;
 }
-export const GetAdpSubscriptionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdpSubscriptionOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventUrl: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-orders", code: 200 })),
@@ -7071,7 +6640,7 @@ export interface GetAdpSubscriptionStatusRequest {
   /** URL ADP provides to fetch the event payload from. Absent for ADP's own connectivity/test calls, which are acked without a fetch. */
   eventUrl?: string;
 }
-export const GetAdpSubscriptionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdpSubscriptionStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventUrl: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/adp/subscription-status", code: 200 })),
@@ -7083,7 +6652,7 @@ export interface GetAdpUserAssignmentsRequest {
   /** URL ADP provides to fetch the event payload from. Absent for ADP's own connectivity/test calls, which are acked without a fetch. */
   eventUrl?: string;
 }
-export const GetAdpUserAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdpUserAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventUrl: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/adp/user-assignments", code: 200 })),
@@ -7095,7 +6664,7 @@ export interface GetAdpUserUnassignmentsRequest {
   /** URL ADP provides to fetch the event payload from. Absent for ADP's own connectivity/test calls, which are acked without a fetch. */
   eventUrl?: string;
 }
-export const GetAdpUserUnassignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdpUserUnassignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventUrl: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/adp/user-unassignments", code: 200 })),
@@ -7104,7 +6673,7 @@ export const GetAdpUserUnassignmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAdpUserUnassignmentsRequest>;
 
 export interface GetBenefitOffersRequest {}
-export const GetBenefitOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBenefitOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/benefit-offers", code: 200 })),
 ).annotate({ identifier: "GetBenefitOffersRequest" }) as any as S.Schema<GetBenefitOffersRequest>;
 
@@ -7119,7 +6688,7 @@ export interface BenefitGroup {
   /** The date when the policy period begins for this benefit group (ISO 8601 format). */
   policy_start_date: string;
 }
-export const BenefitGroup = /*@__PURE__*/ S.suspend(() =>
+const BenefitGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -7135,7 +6704,7 @@ export interface BenefitProvider {
   /** The name of the insurance carrier or benefit provider (e.g., "Allianz", "Bupa"). */
   name: string;
 }
-export const BenefitProvider = /*@__PURE__*/ S.suspend(() =>
+const BenefitProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -7144,7 +6713,7 @@ export const BenefitProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** The insurance carriers or providers associated with this tier. */
 export type BenefitTierProvidersList = Array<BenefitProvider | null>;
-export const BenefitTierProvidersList = /*@__PURE__*/ S.Array(
+const BenefitTierProvidersList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(BenefitProvider),
 ) as any as S.Schema<BenefitTierProvidersList>;
 
@@ -7159,7 +6728,7 @@ export interface BenefitTier {
   /** The insurance carriers or providers associated with this tier. */
   providers: BenefitTierProvidersList;
 }
-export const BenefitTier = /*@__PURE__*/ S.suspend(() =>
+const BenefitTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     id: S.String,
@@ -7175,7 +6744,7 @@ export interface Costs {
   /** The employer's portion of the benefit cost, in cents. */
   employer_cost: number;
 }
-export const Costs = /*@__PURE__*/ S.suspend(() =>
+const Costs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employee_cost: S.Number,
     employer_cost: S.Number,
@@ -7184,7 +6753,7 @@ export const Costs = /*@__PURE__*/ S.suspend(() =>
 
 /** The enrollment status of this benefit for the employee. - `offered`: The benefit has been offered but the employee has not yet enrolled. - `enrolled`: The employee is actively enrolled in this benefit. - `waived`: The employee declined or opted out of this benefit. */
 export type BenefitStatus = "offered" | "enrolled" | "waived";
-export const BenefitStatus = S.String;
+const BenefitStatus = S.String;
 
 /** Benefits with status enrolled have their summed costs in costs. Benefits with status offered have their summed costs in projected_costs. Benefit-offers where the employer opted-out have benefit_tier: null in the response. */
 export interface Benefit {
@@ -7204,7 +6773,7 @@ export interface Benefit {
   /** The type/category of the benefit. */
   type: string;
 }
-export const Benefit = /*@__PURE__*/ S.suspend(() =>
+const Benefit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     costs: S.NullOr(Costs),
     coverage_end_date: S.String,
@@ -7219,7 +6788,7 @@ export const Benefit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Benefit" }) as any as S.Schema<Benefit>;
 
 export type BenefitOfferBenefitsList = Array<Benefit>;
-export const BenefitOfferBenefitsList = /*@__PURE__*/ S.Array(
+const BenefitOfferBenefitsList = /*@__PURE__*/ S.Array(
   Benefit,
 ) as any as S.Schema<BenefitOfferBenefitsList>;
 
@@ -7229,7 +6798,7 @@ export interface BenefitOffer {
   benefits: BenefitOfferBenefitsList;
   costs: Costs | null;
 }
-export const BenefitOffer = /*@__PURE__*/ S.suspend(() =>
+const BenefitOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_group: BenefitGroup,
     benefit_tier: S.NullOr(BenefitTier),
@@ -7239,18 +6808,16 @@ export const BenefitOffer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BenefitOffer" }) as any as S.Schema<BenefitOffer>;
 
 export type BenefitOffersByEmploymentBenefitOffersList = Array<BenefitOffer>;
-export const BenefitOffersByEmploymentBenefitOffersList = /*@__PURE__*/ S.Array(
+const BenefitOffersByEmploymentBenefitOffersList = /*@__PURE__*/ S.Array(
   BenefitOffer,
 ) as any as S.Schema<BenefitOffersByEmploymentBenefitOffersList>;
 
 export type CountryContractorProductsAvailableItem = "standard" | "plus" | "cor";
-export const CountryContractorProductsAvailableItem = S.String;
-
 /** Contractor product names available for this country */
 export type CountryContractorProductsAvailableList = Array<
   CountryContractorProductsAvailableItem | (string & {})
 >;
-export const CountryContractorProductsAvailableList =
+const CountryContractorProductsAvailableList =
   TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<CountryContractorProductsAvailableList>;
 
 /** A subdivision of a supported country on Remote */
@@ -7262,7 +6829,7 @@ export interface CountrySubdivision {
   /** The type of subdivision (e.g., "District", "State", "Province"). */
   subdivision_type?: string;
 }
-export const CountrySubdivision = /*@__PURE__*/ S.suspend(() =>
+const CountrySubdivision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     name: S.String,
@@ -7272,13 +6839,13 @@ export const CountrySubdivision = /*@__PURE__*/ S.suspend(() =>
 
 /** Administrative subdivisions of the country (e.g., states, provinces, districts). Null if the country has no subdivisions relevant to Remote's services. */
 export type CountryCountrySubdivisionsList = Array<CountrySubdivision>;
-export const CountryCountrySubdivisionsList = /*@__PURE__*/ S.Array(
+const CountryCountrySubdivisionsList = /*@__PURE__*/ S.Array(
   CountrySubdivision,
 ) as any as S.Schema<CountryCountrySubdivisionsList>;
 
 /** The list of JSON schema form names available for this country (e.g., "address_details", "contract_details"). Use these with the Show form schema endpoint to get country-specific field requirements. */
 export type CountrySupportedJsonSchemasList = Array<string>;
-export const CountrySupportedJsonSchemasList =
+const CountrySupportedJsonSchemasList =
   ProductFeaturesList as any as S.Schema<CountrySupportedJsonSchemasList>;
 
 /** A supported country on Remote */
@@ -7306,7 +6873,7 @@ export interface Country {
   /** The list of JSON schema form names available for this country (e.g., "address_details", "contract_details"). Use these with the Show form schema endpoint to get country-specific field requirements. */
   supported_json_schemas?: CountrySupportedJsonSchemasList;
 }
-export const Country = /*@__PURE__*/ S.suspend(() =>
+const Country = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alpha_2_code: S.String,
     code: S.String,
@@ -7334,7 +6901,7 @@ export interface BenefitOffersEmployment {
   /** The employee's surname (last name). Null if not available. */
   surname: string | null;
 }
-export const BenefitOffersEmployment = /*@__PURE__*/ S.suspend(() =>
+const BenefitOffersEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: Country,
     given_name: S.NullOr(S.String),
@@ -7349,7 +6916,7 @@ export interface BenefitOffersByEmployment {
   costs: Costs | null;
   employment: BenefitOffersEmployment;
 }
-export const BenefitOffersByEmployment = /*@__PURE__*/ S.suspend(() =>
+const BenefitOffersByEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_offers: BenefitOffersByEmploymentBenefitOffersList,
     costs: S.NullOr(Costs),
@@ -7361,10 +6928,9 @@ export const BenefitOffersByEmployment = /*@__PURE__*/ S.suspend(() =>
 
 export type BenefitOfferByEmploymentResponseDataBenefitOffersByEmploymentList =
   Array<BenefitOffersByEmployment>;
-export const BenefitOfferByEmploymentResponseDataBenefitOffersByEmploymentList =
-  /*@__PURE__*/ S.Array(
-    BenefitOffersByEmployment,
-  ) as any as S.Schema<BenefitOfferByEmploymentResponseDataBenefitOffersByEmploymentList>;
+const BenefitOfferByEmploymentResponseDataBenefitOffersByEmploymentList = /*@__PURE__*/ S.Array(
+  BenefitOffersByEmployment,
+) as any as S.Schema<BenefitOfferByEmploymentResponseDataBenefitOffersByEmploymentList>;
 
 export interface BenefitOfferByEmploymentResponseData {
   benefit_offers_by_employment: BenefitOfferByEmploymentResponseDataBenefitOffersByEmploymentList;
@@ -7372,7 +6938,7 @@ export interface BenefitOfferByEmploymentResponseData {
   company_id: string;
   currency: Currency;
 }
-export const BenefitOfferByEmploymentResponseData = /*@__PURE__*/ S.suspend(() =>
+const BenefitOfferByEmploymentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_offers_by_employment: BenefitOfferByEmploymentResponseDataBenefitOffersByEmploymentList,
     company_id: S.String,
@@ -7385,7 +6951,7 @@ export const BenefitOfferByEmploymentResponseData = /*@__PURE__*/ S.suspend(() =
 export interface BenefitOfferByEmploymentResponse {
   data: BenefitOfferByEmploymentResponseData;
 }
-export const BenefitOfferByEmploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const BenefitOfferByEmploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BenefitOfferByEmploymentResponseData,
   }),
@@ -7394,7 +6960,7 @@ export const BenefitOfferByEmploymentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenefitOfferByEmploymentResponse>;
 
 export interface GetBenefitOffersCountrySummariesRequest {}
-export const GetBenefitOffersCountrySummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBenefitOffersCountrySummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/v1/benefit-offers/country-summaries", code: 200 }),
   ),
@@ -7409,7 +6975,7 @@ export interface EmployeeStats {
   /** The total number of employees who have been offered this benefit. An employee is counted as offered once a benefit offer record exists, regardless of whether they have enrolled. */
   number_of_employees_offered: number;
 }
-export const EmployeeStats = /*@__PURE__*/ S.suspend(() =>
+const EmployeeStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number_of_employees_enrolled: S.Number,
     number_of_employees_offered: S.Number,
@@ -7421,7 +6987,7 @@ export interface OfferedBenefitTier {
   benefit_tier: BenefitTier;
   employee_stats: EmployeeStats;
 }
-export const OfferedBenefitTier = /*@__PURE__*/ S.suspend(() =>
+const OfferedBenefitTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_tier: BenefitTier,
     employee_stats: EmployeeStats,
@@ -7430,7 +6996,7 @@ export const OfferedBenefitTier = /*@__PURE__*/ S.suspend(() =>
 
 /** The individual tiers within this group that have been offered, each with their own enrollment statistics. */
 export type OfferedBenefitGroupOfferedBenefitTiersList = Array<OfferedBenefitTier>;
-export const OfferedBenefitGroupOfferedBenefitTiersList = /*@__PURE__*/ S.Array(
+const OfferedBenefitGroupOfferedBenefitTiersList = /*@__PURE__*/ S.Array(
   OfferedBenefitTier,
 ) as any as S.Schema<OfferedBenefitGroupOfferedBenefitTiersList>;
 
@@ -7441,7 +7007,7 @@ export interface OfferedBenefitGroup {
   /** The individual tiers within this group that have been offered, each with their own enrollment statistics. */
   offered_benefit_tiers: OfferedBenefitGroupOfferedBenefitTiersList;
 }
-export const OfferedBenefitGroup = /*@__PURE__*/ S.suspend(() =>
+const OfferedBenefitGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_group: BenefitGroup,
     employee_stats: EmployeeStats,
@@ -7451,7 +7017,7 @@ export const OfferedBenefitGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** All benefit groups that have been offered to employees in this country. */
 export type CountrySummaryOfferedBenefitGroupsList = Array<OfferedBenefitGroup>;
-export const CountrySummaryOfferedBenefitGroupsList = /*@__PURE__*/ S.Array(
+const CountrySummaryOfferedBenefitGroupsList = /*@__PURE__*/ S.Array(
   OfferedBenefitGroup,
 ) as any as S.Schema<CountrySummaryOfferedBenefitGroupsList>;
 
@@ -7462,7 +7028,7 @@ export interface CountrySummary {
   /** All benefit groups that have been offered to employees in this country. */
   offered_benefit_groups: CountrySummaryOfferedBenefitGroupsList;
 }
-export const CountrySummary = /*@__PURE__*/ S.suspend(() =>
+const CountrySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: Country,
     employee_stats: EmployeeStats,
@@ -7472,7 +7038,7 @@ export const CountrySummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Benefit offering summaries for each country where the company has employees. */
 export type CountrySummariesResponseDataCountrySummariesList = Array<CountrySummary>;
-export const CountrySummariesResponseDataCountrySummariesList = /*@__PURE__*/ S.Array(
+const CountrySummariesResponseDataCountrySummariesList = /*@__PURE__*/ S.Array(
   CountrySummary,
 ) as any as S.Schema<CountrySummariesResponseDataCountrySummariesList>;
 
@@ -7482,7 +7048,7 @@ export interface CountrySummariesResponseData {
   /** Benefit offering summaries for each country where the company has employees. */
   country_summaries: CountrySummariesResponseDataCountrySummariesList;
 }
-export const CountrySummariesResponseData = /*@__PURE__*/ S.suspend(() =>
+const CountrySummariesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String,
     country_summaries: CountrySummariesResponseDataCountrySummariesList,
@@ -7495,7 +7061,7 @@ export const CountrySummariesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CountrySummariesResponse {
   data: CountrySummariesResponseData;
 }
-export const CountrySummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const CountrySummariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CountrySummariesResponseData,
   }),
@@ -7505,7 +7071,7 @@ export interface GetBenefitRenewalRequestRequest {
   /** Benefit Renewal Request Id */
   benefit_renewal_request_id: string;
 }
-export const GetBenefitRenewalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBenefitRenewalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_renewal_request_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -7521,14 +7087,11 @@ export const GetBenefitRenewalRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type BenefitRenewalRequestsBenefitRenewalRequestResponseData =
   BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData;
-export const BenefitRenewalRequestsBenefitRenewalRequestResponseData =
-  BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData;
-
 /** Benefit Renewal Request Response */
 export interface BenefitRenewalRequestsBenefitRenewalRequestResponse {
   data: BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData;
 }
-export const BenefitRenewalRequestsBenefitRenewalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const BenefitRenewalRequestsBenefitRenewalRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BenefitRenewalRequestsCreateBenefitRenewalRequestResponseData,
   }),
@@ -7542,7 +7105,7 @@ export interface GetBenefitRenewalRequestsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetBenefitRenewalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBenefitRenewalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -7553,7 +7116,7 @@ export const GetBenefitRenewalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type BenefitRenewalRequestsListBenefitRenewalRequestResponseDataBenefitRenewalRequestsList =
   Array<BenefitRenewalRequestsBenefitRenewalRequest>;
-export const BenefitRenewalRequestsListBenefitRenewalRequestResponseDataBenefitRenewalRequestsList =
+const BenefitRenewalRequestsListBenefitRenewalRequestResponseDataBenefitRenewalRequestsList =
   /*@__PURE__*/ S.Array(
     BenefitRenewalRequestsBenefitRenewalRequest,
   ) as any as S.Schema<BenefitRenewalRequestsListBenefitRenewalRequestResponseDataBenefitRenewalRequestsList>;
@@ -7567,16 +7130,15 @@ export interface BenefitRenewalRequestsListBenefitRenewalRequestResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const BenefitRenewalRequestsListBenefitRenewalRequestResponseData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      benefit_renewal_requests: S.optional(
-        BenefitRenewalRequestsListBenefitRenewalRequestResponseDataBenefitRenewalRequestsList,
-      ),
-      current_page: S.optional(S.Number),
-      total_count: S.optional(S.Number),
-      total_pages: S.optional(S.Number),
-    }),
+const BenefitRenewalRequestsListBenefitRenewalRequestResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    benefit_renewal_requests: S.optional(
+      BenefitRenewalRequestsListBenefitRenewalRequestResponseDataBenefitRenewalRequestsList,
+    ),
+    current_page: S.optional(S.Number),
+    total_count: S.optional(S.Number),
+    total_pages: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "BenefitRenewalRequestsListBenefitRenewalRequestResponseData",
 }) as any as S.Schema<BenefitRenewalRequestsListBenefitRenewalRequestResponseData>;
@@ -7585,7 +7147,7 @@ export const BenefitRenewalRequestsListBenefitRenewalRequestResponseData = /*@__
 export interface BenefitRenewalRequestsListBenefitRenewalRequestResponse {
   data?: BenefitRenewalRequestsListBenefitRenewalRequestResponseData;
 }
-export const BenefitRenewalRequestsListBenefitRenewalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const BenefitRenewalRequestsListBenefitRenewalRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(BenefitRenewalRequestsListBenefitRenewalRequestResponseData),
   }),
@@ -7595,12 +7157,10 @@ export const BenefitRenewalRequestsListBenefitRenewalRequestResponse = /*@__PURE
 
 /** Use latest version */
 export type GetBenefitRenewalRequestSchemaRequestJsonSchemaVersionCase1 = "latest";
-export const GetBenefitRenewalRequestSchemaRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetBenefitRenewalRequestSchemaRequestJsonSchemaVersion =
   | number
   | GetBenefitRenewalRequestSchemaRequestJsonSchemaVersionCase1;
-export const GetBenefitRenewalRequestSchemaRequestJsonSchemaVersion =
+const GetBenefitRenewalRequestSchemaRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetBenefitRenewalRequestSchemaRequestJsonSchemaVersion>;
 
 export interface GetBenefitRenewalRequestSchemaRequest {
@@ -7609,7 +7169,7 @@ export interface GetBenefitRenewalRequestSchemaRequest {
   /** Version of the form schema */
   json_schema_version?: GetBenefitRenewalRequestSchemaRequestJsonSchemaVersion;
 }
-export const GetBenefitRenewalRequestSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBenefitRenewalRequestSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_renewal_request_id: S.String.pipe(T.Label()),
     json_schema_version: S.optional(
@@ -7630,7 +7190,7 @@ export const GetBenefitRenewalRequestSchemaRequest = /*@__PURE__*/ S.suspend(() 
 export interface BenefitRenewalRequestsBenefitRenewalRequestFormResponse {
   data?: unknown;
 }
-export const BenefitRenewalRequestsBenefitRenewalRequestFormResponse = /*@__PURE__*/ S.suspend(() =>
+const BenefitRenewalRequestsBenefitRenewalRequestFormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.Unknown),
   }),
@@ -7646,7 +7206,7 @@ export interface GetBillingDocumentRequest {
   /** When true, includes billing document items whose type is not part of the standard set for the invoice type. */
   include_unrecognized_types?: boolean;
 }
-export const GetBillingDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_document_id: S.String.pipe(T.Label()),
     company_id: S.optional(S.String.pipe(T.Query())),
@@ -7671,7 +7231,7 @@ export interface BillingDocumentAmountItem {
   /** The cost category for this line item (e.g., "base_salary", "allowances", "bonuses", "deductions", "taxes"). */
   type: string;
 }
-export const BillingDocumentAmountItem = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentAmountItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_document_amount: S.Number,
     billing_document_currency: S.NullOr(S.String),
@@ -7686,7 +7246,7 @@ export const BillingDocumentAmountItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The line items that make up this billing document. */
 export type BillingDocumentItemsList = Array<BillingDocumentAmountItem>;
-export const BillingDocumentItemsList = /*@__PURE__*/ S.Array(
+const BillingDocumentItemsList = /*@__PURE__*/ S.Array(
   BillingDocumentAmountItem,
 ) as any as S.Schema<BillingDocumentItemsList>;
 
@@ -7711,7 +7271,7 @@ export interface BillingDocument {
   /** The total amount of the billing document, in cents. */
   total: number;
 }
-export const BillingDocument = /*@__PURE__*/ S.suspend(() =>
+const BillingDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_document_currency: S.String,
     billing_document_number: S.String,
@@ -7728,7 +7288,7 @@ export const BillingDocument = /*@__PURE__*/ S.suspend(() =>
 export interface BillingDocumentResponseData {
   billing_document: BillingDocument;
 }
-export const BillingDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_document: BillingDocument,
   }),
@@ -7740,7 +7300,7 @@ export const BillingDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface BillingDocumentResponse {
   data: BillingDocumentResponseData;
 }
-export const BillingDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BillingDocumentResponseData,
   }),
@@ -7752,7 +7312,7 @@ export interface GetBillingDocumentBreakdownRequest {
   /** Filters the results by the type of the billing breakdown item. Matched exactly against the `type` field of the returned items, so unrecognised values yield an empty list. Card spend is reported as `Card expenses`, separately from payroll-reimbursed `Expenses`. Other Compensation is reported as `Other compensation`, separately from `Base salary`. Payslip benefits can be returned as `Payslip benefits` for existing breakdown items, or as `Payslip Benefit Cash` and `Payslip Benefit Non-Cash` for newly generated items. */
   type?: string;
 }
-export const GetBillingDocumentBreakdownRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingDocumentBreakdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_document_id: S.String.pipe(T.Label()),
     type: S.optional(S.String.pipe(T.Query())),
@@ -7794,7 +7354,7 @@ export interface BillingDocumentBreakdownItem {
   /** Variance from invoice amount in cents */
   variance_from_invoice_amount: number | null;
 }
-export const BillingDocumentBreakdownItem = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentBreakdownItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.NullOr(S.String),
     description: S.String,
@@ -7816,15 +7376,14 @@ export const BillingDocumentBreakdownItem = /*@__PURE__*/ S.suspend(() =>
 
 export type BillingDocumentBreakdownResponseDataBillingDocumentBreakdownList =
   Array<BillingDocumentBreakdownItem>;
-export const BillingDocumentBreakdownResponseDataBillingDocumentBreakdownList =
-  /*@__PURE__*/ S.Array(
-    BillingDocumentBreakdownItem,
-  ) as any as S.Schema<BillingDocumentBreakdownResponseDataBillingDocumentBreakdownList>;
+const BillingDocumentBreakdownResponseDataBillingDocumentBreakdownList = /*@__PURE__*/ S.Array(
+  BillingDocumentBreakdownItem,
+) as any as S.Schema<BillingDocumentBreakdownResponseDataBillingDocumentBreakdownList>;
 
 export interface BillingDocumentBreakdownResponseData {
   billing_document_breakdown: BillingDocumentBreakdownResponseDataBillingDocumentBreakdownList;
 }
-export const BillingDocumentBreakdownResponseData = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentBreakdownResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_document_breakdown: BillingDocumentBreakdownResponseDataBillingDocumentBreakdownList,
   }),
@@ -7836,7 +7395,7 @@ export const BillingDocumentBreakdownResponseData = /*@__PURE__*/ S.suspend(() =
 export interface BillingDocumentBreakdownResponse {
   data: BillingDocumentBreakdownResponseData;
 }
-export const BillingDocumentBreakdownResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentBreakdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BillingDocumentBreakdownResponseData,
   }),
@@ -7848,7 +7407,7 @@ export interface GetBillingDocumentPdfRequest {
   /** The billing document's ID */
   billing_document_id: string;
 }
-export const GetBillingDocumentPdfRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingDocumentPdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_document_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -7859,7 +7418,7 @@ export const GetBillingDocumentPdfRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBillingDocumentPdfRequest>;
 
 export type GetBillingDocumentPdfResponse = string;
-export const GetBillingDocumentPdfResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBillingDocumentPdfResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetBillingDocumentPdfResponse",
@@ -7881,7 +7440,7 @@ export type GetBillingDocumentsRequestType =
   | "remote_plan_invoice"
   | "peo_payroll_invoice"
   | "peo_service_invoice";
-export const GetBillingDocumentsRequestType = S.String;
+const GetBillingDocumentsRequestType = S.String;
 
 export interface GetBillingDocumentsRequest {
   /** The month for the billing documents (in ISO-8601 format) */
@@ -7893,7 +7452,7 @@ export interface GetBillingDocumentsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetBillingDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period: S.optional(S.String.pipe(T.Query())),
     type: S.optional(GetBillingDocumentsRequestType.pipe(T.Query())),
@@ -7920,7 +7479,7 @@ export type BillingDocumentsResponseDataBillingDocumentsItemBillingDocumentType 
   | "remote_plan_invoice"
   | "peo_payroll_invoice"
   | "peo_service_invoice";
-export const BillingDocumentsResponseDataBillingDocumentsItemBillingDocumentType = S.String;
+const BillingDocumentsResponseDataBillingDocumentsItemBillingDocumentType = S.String;
 
 export interface BillingDocumentsResponseDataBillingDocumentsItem {
   /** The entity issuing the billing document. Null if not applicable. */
@@ -7931,7 +7490,7 @@ export interface BillingDocumentsResponseDataBillingDocumentsItem {
   /** The unique identifier (UUID) of the billing document. */
   id?: string;
 }
-export const BillingDocumentsResponseDataBillingDocumentsItem = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentsResponseDataBillingDocumentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bill_from: S.optional(S.NullOr(S.String)),
     billing_document_period: S.optional(S.String),
@@ -7946,7 +7505,7 @@ export const BillingDocumentsResponseDataBillingDocumentsItem = /*@__PURE__*/ S.
 
 export type BillingDocumentsResponseDataBillingDocumentsList =
   Array<BillingDocumentsResponseDataBillingDocumentsItem>;
-export const BillingDocumentsResponseDataBillingDocumentsList = /*@__PURE__*/ S.Array(
+const BillingDocumentsResponseDataBillingDocumentsList = /*@__PURE__*/ S.Array(
   BillingDocumentsResponseDataBillingDocumentsItem,
 ) as any as S.Schema<BillingDocumentsResponseDataBillingDocumentsList>;
 
@@ -7959,7 +7518,7 @@ export interface BillingDocumentsResponseData {
   /** The total number of pages the user can go through */
   total_pages: number;
 }
-export const BillingDocumentsResponseData = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_documents: BillingDocumentsResponseDataBillingDocumentsList,
     current_page: S.Number,
@@ -7974,7 +7533,7 @@ export const BillingDocumentsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface BillingDocumentsResponse {
   data: BillingDocumentsResponseData;
 }
-export const BillingDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BillingDocumentsResponseData,
   }),
@@ -7984,7 +7543,7 @@ export interface GetBulkEmploymentJobRequest {
   /** Bulk employment job id */
   job_id: string;
 }
-export const GetBulkEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBulkEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/bulk-employment-jobs/{job_id}", code: 200 })),
@@ -7994,7 +7553,7 @@ export const GetBulkEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The column names that have been automatically mapped by Tiger (rawr!) and maybe also by AI. */
 export type BulkEmploymentImportJobColumnMappingAutoMappedColumnsList = Array<string>;
-export const BulkEmploymentImportJobColumnMappingAutoMappedColumnsList =
+const BulkEmploymentImportJobColumnMappingAutoMappedColumnsList =
   ProductFeaturesList as any as S.Schema<BulkEmploymentImportJobColumnMappingAutoMappedColumnsList>;
 
 export interface BulkEmploymentImportJobColumnMappingSourceColumnsItem {
@@ -8005,7 +7564,7 @@ export interface BulkEmploymentImportJobColumnMappingSourceColumnsItem {
   /** A sample data value from the data column */
   sample_data?: string | null;
 }
-export const BulkEmploymentImportJobColumnMappingSourceColumnsItem = /*@__PURE__*/ S.suspend(() =>
+const BulkEmploymentImportJobColumnMappingSourceColumnsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.Number,
     name: S.String,
@@ -8018,7 +7577,7 @@ export const BulkEmploymentImportJobColumnMappingSourceColumnsItem = /*@__PURE__
 /** The data columns to map to */
 export type BulkEmploymentImportJobColumnMappingSourceColumnsList =
   Array<BulkEmploymentImportJobColumnMappingSourceColumnsItem>;
-export const BulkEmploymentImportJobColumnMappingSourceColumnsList = /*@__PURE__*/ S.Array(
+const BulkEmploymentImportJobColumnMappingSourceColumnsList = /*@__PURE__*/ S.Array(
   BulkEmploymentImportJobColumnMappingSourceColumnsItem,
 ) as any as S.Schema<BulkEmploymentImportJobColumnMappingSourceColumnsList>;
 
@@ -8035,7 +7594,7 @@ export interface BulkEmploymentImportJobColumnMapping {
   /** The number of required schema field paths that have not been mapped */
   unmapped_required_field_count: number;
 }
-export const BulkEmploymentImportJobColumnMapping = /*@__PURE__*/ S.suspend(() =>
+const BulkEmploymentImportJobColumnMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto_mapped_columns: S.optional(BulkEmploymentImportJobColumnMappingAutoMappedColumnsList),
     mapping: S.Unknown,
@@ -8048,21 +7607,13 @@ export const BulkEmploymentImportJobColumnMapping = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<BulkEmploymentImportJobColumnMapping>;
 
 export type BulkEmploymentImportJobErrorsList = Array<string>;
-export const BulkEmploymentImportJobErrorsList =
+const BulkEmploymentImportJobErrorsList =
   ProductFeaturesList as any as S.Schema<BulkEmploymentImportJobErrorsList>;
 
 export type PersonalDetailsNationalityList = Array<string>;
-export const PersonalDetailsNationalityList =
-  ProductFeaturesList as any as S.Schema<PersonalDetailsNationalityList>;
-
 /** Names of fields redacted because the caller lacks the required attribute permission */
 export type PersonalDetailsRedactedFieldsList = Array<string>;
-export const PersonalDetailsRedactedFieldsList =
-  ProductFeaturesList as any as S.Schema<PersonalDetailsRedactedFieldsList>;
-
 export type PersonalDetailsTitle = "mr" | "mrs" | "miss" | "ms" | "mx";
-export const PersonalDetailsTitle = S.String;
-
 /** Personal details for a user, includes sensitive information */
 export interface PersonalDetails {
   birthdate?: string;
@@ -8082,26 +7633,6 @@ export interface PersonalDetails {
   surname?: string | null;
   title?: PersonalDetailsTitle | null;
 }
-export const PersonalDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    birthdate: S.optional(S.String),
-    full_preferred_name: S.optional(S.NullOr(S.String)),
-    gender: S.optional(S.NullOr(S.String)),
-    gender_description: S.optional(S.NullOr(S.String)),
-    given_name: S.optional(S.NullOr(S.String)),
-    is_us_person: S.optional(S.NullOr(S.Boolean)),
-    mobile_number: S.optional(S.String),
-    nationality: S.optional(PersonalDetailsNationalityList),
-    preferred_name: S.optional(S.NullOr(S.String)),
-    preferred_pronouns: S.optional(S.NullOr(S.String)),
-    recovery_number: S.optional(S.NullOr(S.String)),
-    redacted_fields: S.optional(PersonalDetailsRedactedFieldsList),
-    sex: S.optional(S.NullOr(S.String)),
-    surname: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(PersonalDetailsTitle)),
-  }),
-).annotate({ identifier: "PersonalDetails" }) as any as S.Schema<PersonalDetails>;
-
 export type MinimalUserStatus =
   | "active"
   | "cancelled"
@@ -8111,8 +7642,6 @@ export type MinimalUserStatus =
   | "created"
   | "invited"
   | "initiated";
-export const MinimalUserStatus = S.String;
-
 export interface MinimalUser {
   /** The email used for authentication. It may be hidden in case no permission is given to see sensible data. */
   email?: string | null;
@@ -8122,23 +7651,8 @@ export interface MinimalUser {
   slug: string;
   status?: MinimalUserStatus;
 }
-export const MinimalUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.NullOr(S.String)),
-    name: S.String,
-    personal_details: S.optional(S.NullOr(PersonalDetails)),
-    profile_picture: S.optional(S.NullOr(S.String)),
-    slug: S.String,
-    status: S.optional(MinimalUserStatus),
-  }),
-).annotate({ identifier: "MinimalUser" }) as any as S.Schema<MinimalUser>;
-
 export type EmailStatus = "pending" | "confirmed" | "deleted";
-export const EmailStatus = S.String;
-
 export type EmailType = "login" | "personal" | "work";
-export const EmailType = S.String;
-
 export interface Email {
   address: string;
   confirmed_at?: string | null;
@@ -8147,28 +7661,10 @@ export interface Email {
   type?: EmailType;
   unconfirmed_address?: string | null;
 }
-export const Email = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.String,
-    confirmed_at: S.optional(S.NullOr(S.String)),
-    login_synced: S.optional(S.Boolean),
-    status: S.optional(EmailStatus),
-    type: S.optional(EmailType),
-    unconfirmed_address: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "Email" }) as any as S.Schema<Email>;
-
 /** Indicates which email type the account login is synchronized with. */
 export type AccountsLoginSyncedWith = "none" | "personal" | "work";
-export const AccountsLoginSyncedWith = S.String;
-
 export type AccountsAccountPersonalEmail = string | Email;
-export const AccountsAccountPersonalEmail =
-  S.Unknown as any as S.Schema<AccountsAccountPersonalEmail>;
-
 export type AccountsAccountStatus = "created" | "active" | "deleted" | "locked";
-export const AccountsAccountStatus = S.String;
-
 /** An Account */
 export interface AccountsAccount {
   login_email?: Email | null;
@@ -8177,16 +7673,6 @@ export interface AccountsAccount {
   slug: string;
   status?: AccountsAccountStatus;
 }
-export const AccountsAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    login_email: S.optional(S.NullOr(Email)),
-    login_synced_with: S.optional(S.NullOr(AccountsLoginSyncedWith)),
-    personal_email: S.optional(S.NullOr(AccountsAccountPersonalEmail)),
-    slug: S.String,
-    status: S.optional(AccountsAccountStatus),
-  }),
-).annotate({ identifier: "AccountsAccount" }) as any as S.Schema<AccountsAccount>;
-
 export type AccountsAssignedRolesItemDataScope =
   | "all"
   | "employment_entities"
@@ -8201,52 +7687,21 @@ export type AccountsAssignedRolesItemDataScope =
   | "employment_company_structure_nodes"
   | "onboarding_reports"
   | "assigned_billing_legal_entities";
-export const AccountsAssignedRolesItemDataScope = S.String;
-
 export type AccountsAssignedRolesItemType = "default" | "custom" | "template" | "owner";
-export const AccountsAssignedRolesItemType = S.String;
-
 export interface AccountsAssignedRolesItem {
   data_scope?: AccountsAssignedRolesItemDataScope;
   name: string;
   slug: string;
   type?: AccountsAssignedRolesItemType;
 }
-export const AccountsAssignedRolesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data_scope: S.optional(AccountsAssignedRolesItemDataScope),
-    name: S.String,
-    slug: S.String,
-    type: S.optional(AccountsAssignedRolesItemType),
-  }),
-).annotate({
-  identifier: "AccountsAssignedRolesItem",
-}) as any as S.Schema<AccountsAssignedRolesItem>;
-
 export type AccountsAssignedRoles = Array<AccountsAssignedRolesItem>;
-export const AccountsAssignedRoles = /*@__PURE__*/ S.Array(
-  AccountsAssignedRolesItem,
-) as any as S.Schema<AccountsAssignedRoles>;
-
 export interface AccountUserIntegrationUserIntegration {
   name: string;
 }
-export const AccountUserIntegrationUserIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "AccountUserIntegrationUserIntegration",
-}) as any as S.Schema<AccountUserIntegrationUserIntegration>;
-
 /** Whether this mapping represents a synced employee or a company admin */
 export type AccountUserIntegrationUserRole = "employee" | "employer";
-export const AccountUserIntegrationUserRole = S.String;
-
 /** Whether the employee should be synced to Remote based on the sync_to_remote flag in the external HRIS */
 export type AccountUserIntegrationUserSyncToRemoteStatus = "enabled" | "disabled";
-export const AccountUserIntegrationUserSyncToRemoteStatus = S.String;
-
 export interface AccountUserIntegrationUser {
   external_user_id: string;
   integration: AccountUserIntegrationUserIntegration;
@@ -8255,38 +7710,13 @@ export interface AccountUserIntegrationUser {
   /** Whether the employee should be synced to Remote based on the sync_to_remote flag in the external HRIS */
   sync_to_remote_status?: AccountUserIntegrationUserSyncToRemoteStatus | null;
 }
-export const AccountUserIntegrationUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    external_user_id: S.String,
-    integration: AccountUserIntegrationUserIntegration,
-    role: AccountUserIntegrationUserRole,
-    sync_to_remote_status: S.optional(S.NullOr(AccountUserIntegrationUserSyncToRemoteStatus)),
-  }),
-).annotate({
-  identifier: "AccountUserIntegrationUser",
-}) as any as S.Schema<AccountUserIntegrationUser>;
-
 export type BulkEmploymentImportJobInsertedByCase1IntegrationUsersList =
   Array<AccountUserIntegrationUser>;
-export const BulkEmploymentImportJobInsertedByCase1IntegrationUsersList = /*@__PURE__*/ S.Array(
-  AccountUserIntegrationUser,
-) as any as S.Schema<BulkEmploymentImportJobInsertedByCase1IntegrationUsersList>;
-
 export interface AccountsMinimalCompanyAdmin {
   job_title?: string | null;
   name?: string;
   slug?: string;
 }
-export const AccountsMinimalCompanyAdmin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job_title: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.String),
-    slug: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountsMinimalCompanyAdmin",
-}) as any as S.Schema<AccountsMinimalCompanyAdmin>;
-
 export type BulkEmploymentImportJobInsertedByCase1Role =
   | "admin"
   | "employer"
@@ -8294,8 +7724,6 @@ export type BulkEmploymentImportJobInsertedByCase1Role =
   | "freelancer"
   | "service_provider"
   | "candidate";
-export const BulkEmploymentImportJobInsertedByCase1Role = S.String;
-
 export interface BulkEmploymentImportJobInsertedByCase1 {
   account?: AccountsAccount | null;
   assigned_roles?: AccountsAssignedRoles | null;
@@ -8307,34 +7735,18 @@ export interface BulkEmploymentImportJobInsertedByCase1 {
   role?: BulkEmploymentImportJobInsertedByCase1Role;
   signup_source?: string | null;
 }
-export const BulkEmploymentImportJobInsertedByCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account: S.optional(S.NullOr(AccountsAccount)),
-    assigned_roles: S.optional(S.NullOr(AccountsAssignedRoles)),
-    integration_users: S.optional(BulkEmploymentImportJobInsertedByCase1IntegrationUsersList),
-    invited_by: S.optional(S.NullOr(AccountsMinimalCompanyAdmin)),
-    job_title: S.optional(S.NullOr(S.String)),
-    login_synced_with: S.optional(S.NullOr(AccountsLoginSyncedWith)),
-    raw_email: S.optional(S.String),
-    role: S.optional(BulkEmploymentImportJobInsertedByCase1Role),
-    signup_source: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BulkEmploymentImportJobInsertedByCase1",
-}) as any as S.Schema<BulkEmploymentImportJobInsertedByCase1>;
-
 /** Someone registered in Remote using a unique email address. */
 export type BulkEmploymentImportJobInsertedBy =
   | MinimalUser
   | BulkEmploymentImportJobInsertedByCase1;
-export const BulkEmploymentImportJobInsertedBy =
+const BulkEmploymentImportJobInsertedBy =
   S.Unknown as any as S.Schema<BulkEmploymentImportJobInsertedBy>;
 
 export interface BulkEmploymentImportJobLegalEntity {
   name?: string;
   slug?: string;
 }
-export const BulkEmploymentImportJobLegalEntity = /*@__PURE__*/ S.suspend(() =>
+const BulkEmploymentImportJobLegalEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -8349,7 +7761,7 @@ export type BulkEmploymentImportJobStage =
   | "column_mapping"
   | "validation"
   | "submission";
-export const BulkEmploymentImportJobStage = S.String;
+const BulkEmploymentImportJobStage = S.String;
 
 /** * `draft` - **Deprecated**, the import job data has been uploaded and the job created, but not yet started * `uploaded` - **Deprecated**, replaced by the `draft` status * `in_progress` - Data is actively being imported * `finished` - The import job has finished processing * `failed` - The import job has failed completely, nothing has been imported */
 export type BulkEmploymentImportJobStatus =
@@ -8358,7 +7770,7 @@ export type BulkEmploymentImportJobStatus =
   | "in_progress"
   | "finished"
   | "failed";
-export const BulkEmploymentImportJobStatus = S.String;
+const BulkEmploymentImportJobStatus = S.String;
 
 export interface BulkEmploymentImportJob {
   /** The column mapping for the import job. For times when imported data columns do not match the schema fields and need to be manually mapped to the correct schema fields. */
@@ -8389,7 +7801,7 @@ export interface BulkEmploymentImportJob {
   total_count: number;
   updated_at: string;
 }
-export const BulkEmploymentImportJob = /*@__PURE__*/ S.suspend(() =>
+const BulkEmploymentImportJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column_mapping: S.optional(S.NullOr(BulkEmploymentImportJobColumnMapping)),
     display_name: S.optional(S.String),
@@ -8414,7 +7826,7 @@ export const BulkEmploymentImportJob = /*@__PURE__*/ S.suspend(() =>
 export interface BulkEmploymentImportJobResponse {
   data: BulkEmploymentImportJob;
 }
-export const BulkEmploymentImportJobResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkEmploymentImportJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BulkEmploymentImportJob,
   }),
@@ -8430,7 +7842,7 @@ export interface GetBulkEmploymentJobRowsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetBulkEmploymentJobRowsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBulkEmploymentJobRowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -8446,7 +7858,7 @@ export type ImportJobRowsResponseDataAggregatesTeamMemberCountsJobStage =
   | "column_mapping"
   | "validation"
   | "submission";
-export const ImportJobRowsResponseDataAggregatesTeamMemberCountsJobStage = S.String;
+const ImportJobRowsResponseDataAggregatesTeamMemberCountsJobStage = S.String;
 
 /** Distinct team members across the complete import job, counted once even when they are split across several table records. `needs_changes` and `ready_to_submit` are mutually exclusive; `successfully_assigned` and `failed_to_assign` are subsets of `ready_to_submit`. The counts describe the job as of `job_stage`: the same rows count as needing changes before submission and as failed to assign afterwards. */
 export interface ImportJobRowsResponseDataAggregatesTeamMemberCounts {
@@ -8463,7 +7875,7 @@ export interface ImportJobRowsResponseDataAggregatesTeamMemberCounts {
   /** Distinct team members in the job. Rows with no employee are counted as one unidentified team member */
   total: number;
 }
-export const ImportJobRowsResponseDataAggregatesTeamMemberCounts = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowsResponseDataAggregatesTeamMemberCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failed_to_assign: S.Number,
     job_stage: ImportJobRowsResponseDataAggregatesTeamMemberCountsJobStage,
@@ -8481,7 +7893,7 @@ export interface ImportJobRowsResponseDataAggregates {
   /** Distinct team members across the complete import job, counted once even when they are split across several table records. `needs_changes` and `ready_to_submit` are mutually exclusive; `successfully_assigned` and `failed_to_assign` are subsets of `ready_to_submit`. The counts describe the job as of `job_stage`: the same rows count as needing changes before submission and as failed to assign afterwards. */
   team_member_counts?: ImportJobRowsResponseDataAggregatesTeamMemberCounts;
 }
-export const ImportJobRowsResponseDataAggregates = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowsResponseDataAggregates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_member_counts: S.optional(ImportJobRowsResponseDataAggregatesTeamMemberCounts),
   }),
@@ -8493,7 +7905,7 @@ export interface ImportJobRowsResponseDataCountsByColumnValue {
   error: number;
   valid: number;
 }
-export const ImportJobRowsResponseDataCountsByColumnValue = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowsResponseDataCountsByColumnValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.Number,
     valid: S.Number,
@@ -8506,7 +7918,7 @@ export const ImportJobRowsResponseDataCountsByColumnValue = /*@__PURE__*/ S.susp
 export type ImportJobRowsResponseDataCountsByColumnMap = {
   [key: string]: ImportJobRowsResponseDataCountsByColumnValue | undefined;
 };
-export const ImportJobRowsResponseDataCountsByColumnMap = /*@__PURE__*/ S.Record(
+const ImportJobRowsResponseDataCountsByColumnMap = /*@__PURE__*/ S.Record(
   S.String,
   ImportJobRowsResponseDataCountsByColumnValue,
 ) as any as S.Schema<ImportJobRowsResponseDataCountsByColumnMap>;
@@ -8521,7 +7933,7 @@ export interface ImportJobRowsResponseDataCountsByStatus {
   successful: number;
   unprocessable: number;
 }
-export const ImportJobRowsResponseDataCountsByStatus = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowsResponseDataCountsByStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Number,
     error: S.Number,
@@ -8537,26 +7949,20 @@ export const ImportJobRowsResponseDataCountsByStatus = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ImportJobRowsResponseDataCountsByStatus>;
 
 export type ImportJobRowsResponseDataOrderedRowsList = Array<number>;
-export const ImportJobRowsResponseDataOrderedRowsList =
+const ImportJobRowsResponseDataOrderedRowsList =
   ContractorInvoiceScheduleCustomDays as any as S.Schema<ImportJobRowsResponseDataOrderedRowsList>;
 
 export type ImportDataRow = { [key: string]: unknown | undefined };
-export const ImportDataRow = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ImportDataRow>;
+const ImportDataRow = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<ImportDataRow>;
 
 /** An array of error messages for the given field */
 export type ImportJobRowErrorsValueCase0List = Array<string>;
-export const ImportJobRowErrorsValueCase0List =
-  ProductFeaturesList as any as S.Schema<ImportJobRowErrorsValueCase0List>;
-
 export type ImportJobRowErrorsValue = ImportJobRowErrorsValueCase0List | unknown;
-export const ImportJobRowErrorsValue = S.Unknown as any as S.Schema<ImportJobRowErrorsValue>;
+const ImportJobRowErrorsValue = S.Unknown as any as S.Schema<ImportJobRowErrorsValue>;
 
 /** Fields with their error messages */
 export type ImportJobRowErrorsMap = { [key: string]: ImportJobRowErrorsValue | undefined };
-export const ImportJobRowErrorsMap = /*@__PURE__*/ S.Record(
+const ImportJobRowErrorsMap = /*@__PURE__*/ S.Record(
   S.String,
   ImportJobRowErrorsValue,
 ) as any as S.Schema<ImportJobRowErrorsMap>;
@@ -8564,7 +7970,7 @@ export const ImportJobRowErrorsMap = /*@__PURE__*/ S.Record(
 export interface ImportJobRowMetadataLoginEmailSignalsPersonal {
   registered?: boolean;
 }
-export const ImportJobRowMetadataLoginEmailSignalsPersonal = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowMetadataLoginEmailSignalsPersonal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registered: S.optional(S.Boolean),
   }),
@@ -8574,16 +7980,13 @@ export const ImportJobRowMetadataLoginEmailSignalsPersonal = /*@__PURE__*/ S.sus
 
 export type ImportJobRowMetadataLoginEmailSignalsWork =
   ImportJobRowMetadataLoginEmailSignalsPersonal;
-export const ImportJobRowMetadataLoginEmailSignalsWork =
-  ImportJobRowMetadataLoginEmailSignalsPersonal;
-
 /** Per-row review-step signals for login email selection, present only when the feature is enabled. `sso_enforced` reflects whether SSO login is enforced for the row's category. `personal` and `work` report, for each provided email, whether it is already registered on another account. */
 export interface ImportJobRowMetadataLoginEmailSignals {
   personal?: ImportJobRowMetadataLoginEmailSignalsPersonal;
   sso_enforced?: boolean;
   work?: ImportJobRowMetadataLoginEmailSignalsPersonal;
 }
-export const ImportJobRowMetadataLoginEmailSignals = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowMetadataLoginEmailSignals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personal: S.optional(ImportJobRowMetadataLoginEmailSignalsPersonal),
     sso_enforced: S.optional(S.Boolean),
@@ -8598,7 +8001,7 @@ export interface ImportJobRowMetadata {
   /** Per-row review-step signals for login email selection, present only when the feature is enabled. `sso_enforced` reflects whether SSO login is enforced for the row's category. `personal` and `work` report, for each provided email, whether it is already registered on another account. */
   login_email_signals?: ImportJobRowMetadataLoginEmailSignals;
 }
-export const ImportJobRowMetadata = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login_email_signals: S.optional(ImportJobRowMetadataLoginEmailSignals),
   }),
@@ -8608,7 +8011,7 @@ export interface ImportJobRowRowErrorDetailsAmbiguousItemCreatedBy {
   name: string;
   slug: string;
 }
-export const ImportJobRowRowErrorDetailsAmbiguousItemCreatedBy = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowRowErrorDetailsAmbiguousItemCreatedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     slug: S.String,
@@ -8628,7 +8031,7 @@ export interface ImportJobRowRowErrorDetailsAmbiguousItem {
   pay_item: string | null;
   slug: string;
 }
-export const ImportJobRowRowErrorDetailsAmbiguousItem = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowRowErrorDetailsAmbiguousItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.NullOr(S.Number),
     created_by: S.NullOr(ImportJobRowRowErrorDetailsAmbiguousItemCreatedBy),
@@ -8646,14 +8049,14 @@ export const ImportJobRowRowErrorDetailsAmbiguousItem = /*@__PURE__*/ S.suspend(
 
 export type ImportJobRowRowErrorDetailsAmbiguousList =
   Array<ImportJobRowRowErrorDetailsAmbiguousItem>;
-export const ImportJobRowRowErrorDetailsAmbiguousList = /*@__PURE__*/ S.Array(
+const ImportJobRowRowErrorDetailsAmbiguousList = /*@__PURE__*/ S.Array(
   ImportJobRowRowErrorDetailsAmbiguousItem,
 ) as any as S.Schema<ImportJobRowRowErrorDetailsAmbiguousList>;
 
 export interface ImportJobRowRowErrorDetails {
   ambiguous?: ImportJobRowRowErrorDetailsAmbiguousList;
 }
-export const ImportJobRowRowErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowRowErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ambiguous: S.optional(ImportJobRowRowErrorDetailsAmbiguousList),
   }),
@@ -8670,10 +8073,10 @@ export type ImportJobRowStatus =
   | "deleted"
   | "skipped"
   | "retryable";
-export const ImportJobRowStatus = S.String;
+const ImportJobRowStatus = S.String;
 
 export type ImportJobRowErrorMessagesList = Array<string>;
-export const ImportJobRowErrorMessagesList =
+const ImportJobRowErrorMessagesList =
   ProductFeaturesList as any as S.Schema<ImportJobRowErrorMessagesList>;
 
 export interface ImportJobRowError {
@@ -8681,7 +8084,7 @@ export interface ImportJobRowError {
   field_name?: string | null;
   messages: ImportJobRowErrorMessagesList;
 }
-export const ImportJobRowError = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.NullOr(S.String)),
     field_name: S.optional(S.NullOr(S.String)),
@@ -8690,7 +8093,7 @@ export const ImportJobRowError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportJobRowError" }) as any as S.Schema<ImportJobRowError>;
 
 export type ImportJobRowSubmissionErrorsList = Array<ImportJobRowError>;
-export const ImportJobRowSubmissionErrorsList = /*@__PURE__*/ S.Array(
+const ImportJobRowSubmissionErrorsList = /*@__PURE__*/ S.Array(
   ImportJobRowError,
 ) as any as S.Schema<ImportJobRowSubmissionErrorsList>;
 
@@ -8708,7 +8111,7 @@ export interface ImportJobRow {
   status?: ImportJobRowStatus;
   submission_errors?: ImportJobRowSubmissionErrorsList;
 }
-export const ImportJobRow = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ImportDataRow,
     errors: ImportJobRowErrorsMap,
@@ -8723,32 +8126,32 @@ export const ImportJobRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportJobRow" }) as any as S.Schema<ImportJobRow>;
 
 export type ImportJobRowsResponseDataRowsFailuresList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsFailuresList = /*@__PURE__*/ S.Array(
+const ImportJobRowsResponseDataRowsFailuresList = /*@__PURE__*/ S.Array(
   ImportJobRow,
 ) as any as S.Schema<ImportJobRowsResponseDataRowsFailuresList>;
 
 export type ImportJobRowsResponseDataRowsImportedList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsImportedList =
+const ImportJobRowsResponseDataRowsImportedList =
   ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsImportedList>;
 
 export type ImportJobRowsResponseDataRowsPendingList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsPendingList =
+const ImportJobRowsResponseDataRowsPendingList =
   ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsPendingList>;
 
 export type ImportJobRowsResponseDataRowsRetryableList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsRetryableList =
+const ImportJobRowsResponseDataRowsRetryableList =
   ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsRetryableList>;
 
 export type ImportJobRowsResponseDataRowsSkippedList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsSkippedList =
+const ImportJobRowsResponseDataRowsSkippedList =
   ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsSkippedList>;
 
 export type ImportJobRowsResponseDataRowsSuccessesList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsSuccessesList =
+const ImportJobRowsResponseDataRowsSuccessesList =
   ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsSuccessesList>;
 
 export type ImportJobRowsResponseDataRowsUnprocessableList = Array<ImportJobRow>;
-export const ImportJobRowsResponseDataRowsUnprocessableList =
+const ImportJobRowsResponseDataRowsUnprocessableList =
   ImportJobRowsResponseDataRowsFailuresList as any as S.Schema<ImportJobRowsResponseDataRowsUnprocessableList>;
 
 export interface ImportJobRowsResponseDataRows {
@@ -8760,7 +8163,7 @@ export interface ImportJobRowsResponseDataRows {
   successes: ImportJobRowsResponseDataRowsSuccessesList;
   unprocessable: ImportJobRowsResponseDataRowsUnprocessableList;
 }
-export const ImportJobRowsResponseDataRows = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowsResponseDataRows = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failures: ImportJobRowsResponseDataRowsFailuresList,
     imported: ImportJobRowsResponseDataRowsImportedList,
@@ -8786,7 +8189,7 @@ export interface ImportJobRowsResponseData {
   total_count: number;
   total_pages: number;
 }
-export const ImportJobRowsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregates: S.optional(ImportJobRowsResponseDataAggregates),
     counts_by_column: S.optional(ImportJobRowsResponseDataCountsByColumnMap),
@@ -8804,7 +8207,7 @@ export const ImportJobRowsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ImportJobRowsResponse {
   data: ImportJobRowsResponseData;
 }
-export const ImportJobRowsResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportJobRowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ImportJobRowsResponseData,
   }),
@@ -8814,14 +8217,14 @@ export interface GetCompaniesRequest {
   /** External ID */
   external_id?: string;
 }
-export const GetCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/companies", code: 200 })),
 ).annotate({ identifier: "GetCompaniesRequest" }) as any as S.Schema<GetCompaniesRequest>;
 
 export type CompaniesResponseCompaniesList = Array<Company>;
-export const CompaniesResponseCompaniesList = /*@__PURE__*/ S.Array(
+const CompaniesResponseCompaniesList = /*@__PURE__*/ S.Array(
   Company,
 ) as any as S.Schema<CompaniesResponseCompaniesList>;
 
@@ -8829,23 +8232,21 @@ export const CompaniesResponseCompaniesList = /*@__PURE__*/ S.Array(
 export interface CompaniesResponse {
   companies?: CompaniesResponseCompaniesList;
 }
-export const CompaniesResponse = /*@__PURE__*/ S.suspend(() =>
+const CompaniesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     companies: S.optional(CompaniesResponseCompaniesList),
   }),
 ).annotate({ identifier: "CompaniesResponse" }) as any as S.Schema<CompaniesResponse>;
 
 export type GetCompaniesSchemaRequestForm = "address_details";
-export const GetCompaniesSchemaRequestForm = S.String;
+const GetCompaniesSchemaRequestForm = S.String;
 
 /** Use latest version */
 export type GetCompaniesSchemaRequestJsonSchemaVersionCase1 = "latest";
-export const GetCompaniesSchemaRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetCompaniesSchemaRequestJsonSchemaVersion =
   | number
   | GetCompaniesSchemaRequestJsonSchemaVersionCase1;
-export const GetCompaniesSchemaRequestJsonSchemaVersion =
+const GetCompaniesSchemaRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetCompaniesSchemaRequestJsonSchemaVersion>;
 
 export interface GetCompaniesSchemaRequest {
@@ -8856,7 +8257,7 @@ export interface GetCompaniesSchemaRequest {
   /** Version of the form schema */
   json_schema_version?: GetCompaniesSchemaRequestJsonSchemaVersion;
 }
-export const GetCompaniesSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompaniesSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String.pipe(T.Query()),
     form: GetCompaniesSchemaRequestForm.pipe(T.Query()),
@@ -8870,7 +8271,7 @@ export const GetCompaniesSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyFormResponse {
   data?: unknown;
 }
-export const CompanyFormResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyFormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.Unknown),
   }),
@@ -8880,7 +8281,7 @@ export interface GetCompanyRequest {
   /** Company ID */
   company_id: string;
 }
-export const GetCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/companies/{company_id}", code: 200 })),
@@ -8890,7 +8291,7 @@ export interface GetCompanyActionsRequest {
   /** Company ID */
   company_id: string;
 }
-export const GetCompanyActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/companies/{company_id}/actions", code: 200 })),
@@ -8898,7 +8299,7 @@ export const GetCompanyActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The action the company still needs to complete. */
 export type CompanyActionType = "verify_company" | "setup_remote_payments";
-export const CompanyActionType = S.String;
+const CompanyActionType = S.String;
 
 /** A pending company-level action (e.g. for Contractor Management Review-step banners). */
 export interface CompanyAction {
@@ -8909,7 +8310,7 @@ export interface CompanyAction {
   /** The action the company still needs to complete. */
   type: CompanyActionType;
 }
-export const CompanyAction = /*@__PURE__*/ S.suspend(() =>
+const CompanyAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     legal_entity_id: S.optional(S.NullOr(S.String)),
     required: S.Boolean,
@@ -8918,14 +8319,14 @@ export const CompanyAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompanyAction" }) as any as S.Schema<CompanyAction>;
 
 export type CompanyActionsResponseDataActionsList = Array<CompanyAction>;
-export const CompanyActionsResponseDataActionsList = /*@__PURE__*/ S.Array(
+const CompanyActionsResponseDataActionsList = /*@__PURE__*/ S.Array(
   CompanyAction,
 ) as any as S.Schema<CompanyActionsResponseDataActionsList>;
 
 export interface CompanyActionsResponseData {
   actions?: CompanyActionsResponseDataActionsList;
 }
-export const CompanyActionsResponseData = /*@__PURE__*/ S.suspend(() =>
+const CompanyActionsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(CompanyActionsResponseDataActionsList),
   }),
@@ -8937,7 +8338,7 @@ export const CompanyActionsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyActionsResponse {
   data: CompanyActionsResponseData;
 }
-export const CompanyActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CompanyActionsResponseData,
   }),
@@ -8947,7 +8348,7 @@ export interface GetCompanyComplianceProfileRequest {
   /** Company ID */
   company_id: string;
 }
-export const GetCompanyComplianceProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyComplianceProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -8966,7 +8367,7 @@ export type CompanyComplianceProfileCreditRiskStatus =
   | "fail"
   | "deposit_required"
   | "no_deposit_required";
-export const CompanyComplianceProfileCreditRiskStatus = S.String;
+const CompanyComplianceProfileCreditRiskStatus = S.String;
 
 /** Status of the LegalEntity's internal KYB/BOC process */
 export type CompanyComplianceProfileKybStatus =
@@ -8977,7 +8378,7 @@ export type CompanyComplianceProfileKybStatus =
   | "pass"
   | "fail"
   | "unresponsive";
-export const CompanyComplianceProfileKybStatus = S.String;
+const CompanyComplianceProfileKybStatus = S.String;
 
 export interface CompanyComplianceProfile {
   /** Credit risk status of the LegalEntity */
@@ -8985,7 +8386,7 @@ export interface CompanyComplianceProfile {
   /** Status of the LegalEntity's internal KYB/BOC process */
   kyb_status: CompanyComplianceProfileKybStatus;
 }
-export const CompanyComplianceProfile = /*@__PURE__*/ S.suspend(() =>
+const CompanyComplianceProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credit_risk_status: CompanyComplianceProfileCreditRiskStatus,
     kyb_status: CompanyComplianceProfileKybStatus,
@@ -8995,7 +8396,7 @@ export const CompanyComplianceProfile = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyComplianceProfileResponseData {
   compliance_profile: CompanyComplianceProfile;
 }
-export const CompanyComplianceProfileResponseData = /*@__PURE__*/ S.suspend(() =>
+const CompanyComplianceProfileResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compliance_profile: CompanyComplianceProfile,
   }),
@@ -9006,7 +8407,7 @@ export const CompanyComplianceProfileResponseData = /*@__PURE__*/ S.suspend(() =
 export interface CompanyComplianceProfileResponse {
   data?: CompanyComplianceProfileResponseData;
 }
-export const CompanyComplianceProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyComplianceProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(CompanyComplianceProfileResponseData),
   }),
@@ -9015,7 +8416,7 @@ export const CompanyComplianceProfileResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompanyComplianceProfileResponse>;
 
 export type GetCompanyCostCenterAllocationsRequestStatus = "active" | "scheduled" | "expired";
-export const GetCompanyCostCenterAllocationsRequestStatus = S.String;
+const GetCompanyCostCenterAllocationsRequestStatus = S.String;
 
 export interface GetCompanyCostCenterAllocationsRequest {
   /** Company ID */
@@ -9027,7 +8428,7 @@ export interface GetCompanyCostCenterAllocationsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetCompanyCostCenterAllocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyCostCenterAllocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     status: S.optional(GetCompanyCostCenterAllocationsRequestStatus.pipe(T.Query())),
@@ -9049,7 +8450,7 @@ export interface CostCenter {
   /** Unique identifier of the cost center. */
   slug: string;
 }
-export const CostCenter = /*@__PURE__*/ S.suspend(() =>
+const CostCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.NullOr(S.String),
     name: S.String,
@@ -9059,7 +8460,7 @@ export const CostCenter = /*@__PURE__*/ S.suspend(() =>
 
 /** Allocation status, derived from the effective period. */
 export type CostCenterAllocationStatus = "active" | "scheduled" | "expired";
-export const CostCenterAllocationStatus = S.String;
+const CostCenterAllocationStatus = S.String;
 
 /** A cost center allocation for an employment, including the allocated percentage and effective period. */
 export interface CostCenterAllocation {
@@ -9075,7 +8476,7 @@ export interface CostCenterAllocation {
   /** Allocation status, derived from the effective period. */
   status: CostCenterAllocationStatus;
 }
-export const CostCenterAllocation = /*@__PURE__*/ S.suspend(() =>
+const CostCenterAllocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cost_center: CostCenter,
     effective_from: S.NullOr(S.String),
@@ -9089,7 +8490,7 @@ export const CostCenterAllocation = /*@__PURE__*/ S.suspend(() =>
 /** The cost center allocations for this employment. */
 export type EmploymentWithCostCenterAllocationsCostCenterAllocationsList =
   Array<CostCenterAllocation>;
-export const EmploymentWithCostCenterAllocationsCostCenterAllocationsList = /*@__PURE__*/ S.Array(
+const EmploymentWithCostCenterAllocationsCostCenterAllocationsList = /*@__PURE__*/ S.Array(
   CostCenterAllocation,
 ) as any as S.Schema<EmploymentWithCostCenterAllocationsCostCenterAllocationsList>;
 
@@ -9104,7 +8505,7 @@ export interface EmploymentWithCostCenterAllocations {
   /** Unique identifier of the legal entity that employs this employment. */
   engaged_by_legal_entity_id?: string | null;
 }
-export const EmploymentWithCostCenterAllocations = /*@__PURE__*/ S.suspend(() =>
+const EmploymentWithCostCenterAllocations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bill_to_legal_entity_id: S.optional(S.NullOr(S.String)),
     cost_center_allocations: EmploymentWithCostCenterAllocationsCostCenterAllocationsList,
@@ -9117,7 +8518,7 @@ export const EmploymentWithCostCenterAllocations = /*@__PURE__*/ S.suspend(() =>
 
 export type ListCompanyCostCenterAllocationsResponseDataEmploymentsList =
   Array<EmploymentWithCostCenterAllocations>;
-export const ListCompanyCostCenterAllocationsResponseDataEmploymentsList = /*@__PURE__*/ S.Array(
+const ListCompanyCostCenterAllocationsResponseDataEmploymentsList = /*@__PURE__*/ S.Array(
   EmploymentWithCostCenterAllocations,
 ) as any as S.Schema<ListCompanyCostCenterAllocationsResponseDataEmploymentsList>;
 
@@ -9130,7 +8531,7 @@ export interface ListCompanyCostCenterAllocationsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListCompanyCostCenterAllocationsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyCostCenterAllocationsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     employments: S.optional(ListCompanyCostCenterAllocationsResponseDataEmploymentsList),
@@ -9145,7 +8546,7 @@ export const ListCompanyCostCenterAllocationsResponseData = /*@__PURE__*/ S.susp
 export interface ListCompanyCostCenterAllocationsResponse {
   data?: ListCompanyCostCenterAllocationsResponseData;
 }
-export const ListCompanyCostCenterAllocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyCostCenterAllocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListCompanyCostCenterAllocationsResponseData),
   }),
@@ -9154,7 +8555,7 @@ export const ListCompanyCostCenterAllocationsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCompanyCostCenterAllocationsResponse>;
 
 export interface GetCompanyCurrenciesRequest {}
-export const GetCompanyCurrenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyCurrenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/company-currencies", code: 200 })),
 ).annotate({
   identifier: "GetCompanyCurrenciesRequest",
@@ -9167,7 +8568,7 @@ export interface CompanyCurrency {
   /** A URL-friendly identifier for the currency (e.g., "usd", "eur"). */
   slug: string;
 }
-export const CompanyCurrency = /*@__PURE__*/ S.suspend(() =>
+const CompanyCurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     slug: S.String,
@@ -9175,14 +8576,14 @@ export const CompanyCurrency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompanyCurrency" }) as any as S.Schema<CompanyCurrency>;
 
 export type CompanyCurrenciesResponseDataCompanyCurrenciesList = Array<CompanyCurrency>;
-export const CompanyCurrenciesResponseDataCompanyCurrenciesList = /*@__PURE__*/ S.Array(
+const CompanyCurrenciesResponseDataCompanyCurrenciesList = /*@__PURE__*/ S.Array(
   CompanyCurrency,
 ) as any as S.Schema<CompanyCurrenciesResponseDataCompanyCurrenciesList>;
 
 export interface CompanyCurrenciesResponseData {
   company_currencies: CompanyCurrenciesResponseDataCompanyCurrenciesList;
 }
-export const CompanyCurrenciesResponseData = /*@__PURE__*/ S.suspend(() =>
+const CompanyCurrenciesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_currencies: CompanyCurrenciesResponseDataCompanyCurrenciesList,
   }),
@@ -9194,7 +8595,7 @@ export const CompanyCurrenciesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyCurrenciesResponse {
   data?: CompanyCurrenciesResponseData;
 }
-export const CompanyCurrenciesResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyCurrenciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(CompanyCurrenciesResponseData),
   }),
@@ -9212,7 +8613,7 @@ export interface GetCompanyDepartmentsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetCompanyDepartmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyDepartmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Query()),
     paginate: S.optional(S.Boolean.pipe(T.Query())),
@@ -9225,15 +8626,14 @@ export const GetCompanyDepartmentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListCompanyDepartmentsPaginatedResponseDataCompanyDepartmentsList =
   Array<CompanyDepartment>;
-export const ListCompanyDepartmentsPaginatedResponseDataCompanyDepartmentsList =
-  /*@__PURE__*/ S.Array(
-    CompanyDepartment,
-  ) as any as S.Schema<ListCompanyDepartmentsPaginatedResponseDataCompanyDepartmentsList>;
+const ListCompanyDepartmentsPaginatedResponseDataCompanyDepartmentsList = /*@__PURE__*/ S.Array(
+  CompanyDepartment,
+) as any as S.Schema<ListCompanyDepartmentsPaginatedResponseDataCompanyDepartmentsList>;
 
 export interface ListCompanyDepartmentsPaginatedResponseData {
   company_departments: ListCompanyDepartmentsPaginatedResponseDataCompanyDepartmentsList;
 }
-export const ListCompanyDepartmentsPaginatedResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyDepartmentsPaginatedResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_departments: ListCompanyDepartmentsPaginatedResponseDataCompanyDepartmentsList,
   }),
@@ -9247,7 +8647,7 @@ export interface ListCompanyDepartmentsPaginatedResponse {
   total_count: number;
   total_pages: number;
 }
-export const ListCompanyDepartmentsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyDepartmentsPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.Number,
     data: ListCompanyDepartmentsPaginatedResponseData,
@@ -9264,7 +8664,7 @@ export interface GetCompanyEmploymentOnboardingReservesStatusRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetCompanyEmploymentOnboardingReservesStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyEmploymentOnboardingReservesStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     employment_id: S.String.pipe(T.Label()),
@@ -9281,7 +8681,7 @@ export const GetCompanyEmploymentOnboardingReservesStatusRequest = /*@__PURE__*/
 
 /** List of applicable onboarding reserves policies */
 export type OnboardingReservesStatusPoliciesList = Array<string>;
-export const OnboardingReservesStatusPoliciesList =
+const OnboardingReservesStatusPoliciesList =
   ProductFeaturesList as any as S.Schema<OnboardingReservesStatusPoliciesList>;
 
 /** Onboarding reserves status (same as credit risk status but takes onboarding reserves policies into account) */
@@ -9293,7 +8693,7 @@ export type OnboardingReservesStatusStatus =
   | "fail"
   | "deposit_required"
   | "no_deposit_required";
-export const OnboardingReservesStatusStatus = S.String;
+const OnboardingReservesStatusStatus = S.String;
 
 export interface OnboardingReservesStatus {
   /** List of applicable onboarding reserves policies */
@@ -9301,7 +8701,7 @@ export interface OnboardingReservesStatus {
   /** Onboarding reserves status (same as credit risk status but takes onboarding reserves policies into account) */
   status: OnboardingReservesStatusStatus;
 }
-export const OnboardingReservesStatus = /*@__PURE__*/ S.suspend(() =>
+const OnboardingReservesStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policies: OnboardingReservesStatusPoliciesList,
     status: OnboardingReservesStatusStatus,
@@ -9311,7 +8711,7 @@ export const OnboardingReservesStatus = /*@__PURE__*/ S.suspend(() =>
 export interface OnboardingReservesStatusResponse {
   data: OnboardingReservesStatus;
 }
-export const OnboardingReservesStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const OnboardingReservesStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: OnboardingReservesStatus,
   }),
@@ -9327,7 +8727,7 @@ export interface GetCompanyLegalEntitiesRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetCompanyLegalEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyLegalEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -9349,7 +8749,7 @@ export interface CompanyLegalEntity {
   /** The registered name of the legal entity. */
   name: string;
 }
-export const CompanyLegalEntity = /*@__PURE__*/ S.suspend(() =>
+const CompanyLegalEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.optional(S.NullOr(S.String)),
     global_payroll_enabled: S.Boolean,
@@ -9360,7 +8760,7 @@ export const CompanyLegalEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompanyLegalEntity" }) as any as S.Schema<CompanyLegalEntity>;
 
 export type ListCompanyLegalEntitiesResponseDataLegalEntitiesList = Array<CompanyLegalEntity>;
-export const ListCompanyLegalEntitiesResponseDataLegalEntitiesList = /*@__PURE__*/ S.Array(
+const ListCompanyLegalEntitiesResponseDataLegalEntitiesList = /*@__PURE__*/ S.Array(
   CompanyLegalEntity,
 ) as any as S.Schema<ListCompanyLegalEntitiesResponseDataLegalEntitiesList>;
 
@@ -9373,7 +8773,7 @@ export interface ListCompanyLegalEntitiesResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListCompanyLegalEntitiesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyLegalEntitiesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     legal_entities: S.optional(ListCompanyLegalEntitiesResponseDataLegalEntitiesList),
@@ -9388,7 +8788,7 @@ export const ListCompanyLegalEntitiesResponseData = /*@__PURE__*/ S.suspend(() =
 export interface ListCompanyLegalEntitiesResponse {
   data?: ListCompanyLegalEntitiesResponseData;
 }
-export const ListCompanyLegalEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyLegalEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListCompanyLegalEntitiesResponseData),
   }),
@@ -9402,7 +8802,7 @@ export interface GetCompanyLegalEntityAdministrativeDetailsRequest {
   /** Legal entity ID */
   legal_entity_id: string;
 }
-export const GetCompanyLegalEntityAdministrativeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyLegalEntityAdministrativeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     legal_entity_id: S.String.pipe(T.Label()),
@@ -9420,7 +8820,7 @@ export const GetCompanyLegalEntityAdministrativeDetailsRequest = /*@__PURE__*/ S
 export interface GetCompanyLegalEntityAdministrativeDetailsResponse {
   data: unknown;
 }
-export const GetCompanyLegalEntityAdministrativeDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyLegalEntityAdministrativeDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.Unknown,
   }),
@@ -9434,7 +8834,7 @@ export interface GetCompanyLegalEntityContractorEligibilityRequest {
   /** Legal entity ID */
   legal_entity_id: string;
 }
-export const GetCompanyLegalEntityContractorEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyLegalEntityContractorEligibilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     legal_entity_id: S.String.pipe(T.Label()),
@@ -9451,17 +8851,17 @@ export const GetCompanyLegalEntityContractorEligibilityRequest = /*@__PURE__*/ S
 
 export type ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList =
   Array<string>;
-export const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList =
+const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList>;
 
 export type ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList =
   Array<string>;
-export const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList =
+const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList>;
 
 export type ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList =
   Array<string>;
-export const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList =
+const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList>;
 
 /** Per-product lists of reasons why the legal entity is ineligible. Empty list means eligible. */
@@ -9470,7 +8870,7 @@ export interface ContractorEligibilityResponseDataContractorEligibilityIneligibi
   plus: ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsPlusList;
   standard: ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsStandardList;
 }
-export const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasons =
+const ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasons =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cor: ContractorEligibilityResponseDataContractorEligibilityIneligibilityReasonsCorList,
@@ -9490,7 +8890,7 @@ export interface ContractorEligibilityResponseDataContractorEligibility {
   plus: boolean;
   standard: boolean;
 }
-export const ContractorEligibilityResponseDataContractorEligibility = /*@__PURE__*/ S.suspend(() =>
+const ContractorEligibilityResponseDataContractorEligibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cor: S.Boolean,
     ineligibility_reasons:
@@ -9504,7 +8904,7 @@ export const ContractorEligibilityResponseDataContractorEligibility = /*@__PURE_
 
 /** ISO 3166-1 alpha-3 country codes where COR is supported for this legal entity. Empty when not COR-eligible. */
 export type ContractorEligibilityResponseDataCorSupportedCountryCodesList = Array<string>;
-export const ContractorEligibilityResponseDataCorSupportedCountryCodesList =
+const ContractorEligibilityResponseDataCorSupportedCountryCodesList =
   ProductFeaturesList as any as S.Schema<ContractorEligibilityResponseDataCorSupportedCountryCodesList>;
 
 export interface ContractorEligibilityResponseData {
@@ -9513,7 +8913,7 @@ export interface ContractorEligibilityResponseData {
   /** ISO 3166-1 alpha-3 country codes where COR is supported for this legal entity. Empty when not COR-eligible. */
   cor_supported_country_codes: ContractorEligibilityResponseDataCorSupportedCountryCodesList;
 }
-export const ContractorEligibilityResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractorEligibilityResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractor_eligibility: ContractorEligibilityResponseDataContractorEligibility,
     cor_supported_country_codes: ContractorEligibilityResponseDataCorSupportedCountryCodesList,
@@ -9525,7 +8925,7 @@ export const ContractorEligibilityResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ContractorEligibilityResponse {
   data: ContractorEligibilityResponseData;
 }
-export const ContractorEligibilityResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorEligibilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractorEligibilityResponseData,
   }),
@@ -9543,7 +8943,7 @@ export interface GetCompanyLegalEntityPayCodesRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetCompanyLegalEntityPayCodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyLegalEntityPayCodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     legal_entity_id: S.String.pipe(T.Label()),
@@ -9576,7 +8976,7 @@ export interface PayCode {
   /** How the `amount` field on POST /v1/pay-items/bulk must be encoded for this pay code: `amount` in cents, `percentage` in basis points, `unit` as a raw count, `hours` as a whole number of hours, `duration` in seconds. */
   type: string;
 }
-export const PayCode = /*@__PURE__*/ S.suspend(() =>
+const PayCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.String,
     code: S.String,
@@ -9589,7 +8989,7 @@ export const PayCode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayCode" }) as any as S.Schema<PayCode>;
 
 export type ListPayCodesResponseDataPayCodesList = Array<PayCode>;
-export const ListPayCodesResponseDataPayCodesList = /*@__PURE__*/ S.Array(
+const ListPayCodesResponseDataPayCodesList = /*@__PURE__*/ S.Array(
   PayCode,
 ) as any as S.Schema<ListPayCodesResponseDataPayCodesList>;
 
@@ -9602,7 +9002,7 @@ export interface ListPayCodesResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListPayCodesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListPayCodesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     pay_codes: S.optional(ListPayCodesResponseDataPayCodesList),
@@ -9615,7 +9015,7 @@ export const ListPayCodesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListPayCodesResponse {
   data?: ListPayCodesResponseData;
 }
-export const ListPayCodesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPayCodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPayCodesResponseData),
   }),
@@ -9625,7 +9025,7 @@ export interface GetCompanyManagerRequest {
   /** User ID */
   user_id: string;
 }
-export const GetCompanyManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/company-managers/{user_id}", code: 200 })),
@@ -9634,7 +9034,7 @@ export const GetCompanyManagerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyManagerResponse {
   data: CompanyManagerData;
 }
-export const CompanyManagerResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyManagerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CompanyManagerData,
   }),
@@ -9648,7 +9048,7 @@ export interface GetCompanyManagersRequest {
   /** Change the amount of records returned per page, defaults to 20, limited to 100 */
   page_size?: number;
 }
-export const GetCompanyManagersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyManagersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -9659,7 +9059,7 @@ export const GetCompanyManagersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCompanyManagersRequest>;
 
 export type CompanyManagersResponseDataCompanyManagersList = Array<CompanyManager>;
-export const CompanyManagersResponseDataCompanyManagersList = /*@__PURE__*/ S.Array(
+const CompanyManagersResponseDataCompanyManagersList = /*@__PURE__*/ S.Array(
   CompanyManager,
 ) as any as S.Schema<CompanyManagersResponseDataCompanyManagersList>;
 
@@ -9672,7 +9072,7 @@ export interface CompanyManagersResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const CompanyManagersResponseData = /*@__PURE__*/ S.suspend(() =>
+const CompanyManagersResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_managers: S.optional(CompanyManagersResponseDataCompanyManagersList),
     current_page: S.optional(S.Number),
@@ -9687,7 +9087,7 @@ export const CompanyManagersResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyManagersResponse {
   data?: CompanyManagersResponseData;
 }
-export const CompanyManagersResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyManagersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(CompanyManagersResponseData),
   }),
@@ -9697,7 +9097,7 @@ export interface GetCompanyPricingPlansRequest {
   /** Company ID */
   company_id: string;
 }
-export const GetCompanyPricingPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyPricingPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/companies/{company_id}/pricing-plans", code: 200 })),
@@ -9706,14 +9106,14 @@ export const GetCompanyPricingPlansRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCompanyPricingPlansRequest>;
 
 export type ListCompanyPricingPlansResponseDataPricingPlansList = Array<PricingPlan>;
-export const ListCompanyPricingPlansResponseDataPricingPlansList = /*@__PURE__*/ S.Array(
+const ListCompanyPricingPlansResponseDataPricingPlansList = /*@__PURE__*/ S.Array(
   PricingPlan,
 ) as any as S.Schema<ListCompanyPricingPlansResponseDataPricingPlansList>;
 
 export interface ListCompanyPricingPlansResponseData {
   pricing_plans: ListCompanyPricingPlansResponseDataPricingPlansList;
 }
-export const ListCompanyPricingPlansResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyPricingPlansResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing_plans: ListCompanyPricingPlansResponseDataPricingPlansList,
   }),
@@ -9725,7 +9125,7 @@ export const ListCompanyPricingPlansResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListCompanyPricingPlansResponse {
   data: ListCompanyPricingPlansResponseData;
 }
-export const ListCompanyPricingPlansResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCompanyPricingPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCompanyPricingPlansResponseData,
   }),
@@ -9737,7 +9137,7 @@ export interface GetCompanyProductPricesRequest {
   /** Company ID */
   company_id: string;
 }
-export const GetCompanyProductPricesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyProductPricesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/companies/{company_id}/product-prices", code: 200 })),
@@ -9752,7 +9152,7 @@ export interface ProductPrice {
   /** The product price name */
   name: string;
 }
-export const ProductPrice = /*@__PURE__*/ S.suspend(() =>
+const ProductPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base_price: Price,
     id: S.String,
@@ -9761,14 +9161,14 @@ export const ProductPrice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductPrice" }) as any as S.Schema<ProductPrice>;
 
 export type ListProductPricesResponseDataProductPricesList = Array<ProductPrice>;
-export const ListProductPricesResponseDataProductPricesList = /*@__PURE__*/ S.Array(
+const ListProductPricesResponseDataProductPricesList = /*@__PURE__*/ S.Array(
   ProductPrice,
 ) as any as S.Schema<ListProductPricesResponseDataProductPricesList>;
 
 export interface ListProductPricesResponseData {
   product_prices: ListProductPricesResponseDataProductPricesList;
 }
-export const ListProductPricesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListProductPricesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product_prices: ListProductPricesResponseDataProductPricesList,
   }),
@@ -9779,7 +9179,7 @@ export const ListProductPricesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListProductPricesResponse {
   data: ListProductPricesResponseData;
 }
-export const ListProductPricesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProductPricesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListProductPricesResponseData,
   }),
@@ -9791,7 +9191,7 @@ export interface GetCompanyWebhookCallbacksRequest {
   /** Company ID */
   company_id: string;
 }
-export const GetCompanyWebhookCallbacksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompanyWebhookCallbacksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -9802,14 +9202,14 @@ export const GetCompanyWebhookCallbacksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCompanyWebhookCallbacksRequest>;
 
 export type ListWebhookCallbacksResponseDataList = Array<WebhookCallback>;
-export const ListWebhookCallbacksResponseDataList = /*@__PURE__*/ S.Array(
+const ListWebhookCallbacksResponseDataList = /*@__PURE__*/ S.Array(
   WebhookCallback,
 ) as any as S.Schema<ListWebhookCallbacksResponseDataList>;
 
 export interface ListWebhookCallbacksResponse {
   data: ListWebhookCallbacksResponseDataList;
 }
-export const ListWebhookCallbacksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookCallbacksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListWebhookCallbacksResponseDataList,
   }),
@@ -9821,7 +9221,7 @@ export interface GetContractAmendmentRequest {
   /** Contract amendment request ID */
   id: string;
 }
-export const GetContractAmendmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractAmendmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/contract-amendments/{id}", code: 200 })),
@@ -9839,7 +9239,7 @@ export interface GetContractAmendmentsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetContractAmendmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractAmendmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ContractAmendmentStatus.pipe(T.Query())),
@@ -9857,7 +9257,7 @@ export type MinimalContractAmendmentReasonForChange =
   | "job_change_reevaluation"
   | "promotion"
   | "other";
-export const MinimalContractAmendmentReasonForChange = S.String;
+const MinimalContractAmendmentReasonForChange = S.String;
 
 /** A lightweight contract amendment representation used in list responses. */
 export interface MinimalContractAmendment {
@@ -9876,7 +9276,7 @@ export interface MinimalContractAmendment {
   /** The timestamp when the amendment was submitted. */
   submitted_at: string;
 }
-export const MinimalContractAmendment = /*@__PURE__*/ S.suspend(() =>
+const MinimalContractAmendment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String,
     id: S.String,
@@ -9891,7 +9291,7 @@ export const MinimalContractAmendment = /*@__PURE__*/ S.suspend(() =>
 
 export type ListContractAmendmentResponseDataContractAmendmentsList =
   Array<MinimalContractAmendment>;
-export const ListContractAmendmentResponseDataContractAmendmentsList = /*@__PURE__*/ S.Array(
+const ListContractAmendmentResponseDataContractAmendmentsList = /*@__PURE__*/ S.Array(
   MinimalContractAmendment,
 ) as any as S.Schema<ListContractAmendmentResponseDataContractAmendmentsList>;
 
@@ -9904,7 +9304,7 @@ export interface ListContractAmendmentResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListContractAmendmentResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListContractAmendmentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contract_amendments: S.optional(ListContractAmendmentResponseDataContractAmendmentsList),
     current_page: S.optional(S.Number),
@@ -9919,7 +9319,7 @@ export const ListContractAmendmentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListContractAmendmentResponse {
   data?: ListContractAmendmentResponseData;
 }
-export const ListContractAmendmentResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContractAmendmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListContractAmendmentResponseData),
   }),
@@ -9928,16 +9328,14 @@ export const ListContractAmendmentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListContractAmendmentResponse>;
 
 export type GetContractAmendmentsSchemaRequestForm = "contract_amendment";
-export const GetContractAmendmentsSchemaRequestForm = S.String;
+const GetContractAmendmentsSchemaRequestForm = S.String;
 
 /** Use latest version */
 export type GetContractAmendmentsSchemaRequestJsonSchemaVersionCase1 = "latest";
-export const GetContractAmendmentsSchemaRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetContractAmendmentsSchemaRequestJsonSchemaVersion =
   | number
   | GetContractAmendmentsSchemaRequestJsonSchemaVersionCase1;
-export const GetContractAmendmentsSchemaRequestJsonSchemaVersion =
+const GetContractAmendmentsSchemaRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetContractAmendmentsSchemaRequestJsonSchemaVersion>;
 
 export interface GetContractAmendmentsSchemaRequest {
@@ -9950,7 +9348,7 @@ export interface GetContractAmendmentsSchemaRequest {
   /** Version of the form schema */
   json_schema_version?: GetContractAmendmentsSchemaRequestJsonSchemaVersion;
 }
-export const GetContractAmendmentsSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractAmendmentsSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Query()),
     country_code: S.String.pipe(T.Query()),
@@ -9967,14 +9365,14 @@ export const GetContractAmendmentsSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ContractAmendmentFormResponse {
   data?: unknown;
 }
-export const ContractAmendmentFormResponse =
+const ContractAmendmentFormResponse =
   BenefitRenewalRequestsBenefitRenewalRequestFormResponse as any as S.Schema<ContractAmendmentFormResponse>;
 
 export interface GetContractorInvoiceRequest {
   /** Resource unique identifier */
   id: string;
 }
-export const GetContractorInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/contractor-invoices/{id}", code: 200 })),
@@ -9984,7 +9382,7 @@ export const GetContractorInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current types. - `manual`: Item manually entered when creating invoice. - `time_tracking`: Item generated by time tracking. - `expense`: Item that represents an expense included in the invoice. */
 export type ContractorInvoiceItemType = "manual" | "time_tracking" | "expense";
-export const ContractorInvoiceItemType = S.String;
+const ContractorInvoiceItemType = S.String;
 
 /** Line Item schema for a Contractor Invoice. */
 export interface ContractorInvoiceItem {
@@ -9994,7 +9392,7 @@ export interface ContractorInvoiceItem {
   description: string;
   type: ContractorInvoiceItemType;
 }
-export const ContractorInvoiceItem = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     description: S.String,
@@ -10004,13 +9402,13 @@ export const ContractorInvoiceItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Invoice line items. */
 export type ContractorInvoiceItemsList = Array<ContractorInvoiceItem>;
-export const ContractorInvoiceItemsList = /*@__PURE__*/ S.Array(
+const ContractorInvoiceItemsList = /*@__PURE__*/ S.Array(
   ContractorInvoiceItem,
 ) as any as S.Schema<ContractorInvoiceItemsList>;
 
 /** Payment method used for the payout: local (e.g. bank transfer), swift (SHA), or swift_our (OUR). Only present for guaranteed payout invoices. */
 export type ContractorInvoicePayOutMethod = "local" | "swift" | "swift_our";
-export const ContractorInvoicePayOutMethod = S.String;
+const ContractorInvoicePayOutMethod = S.String;
 
 /** How Remote collects this payment: `bank_transfer` when the company wires it, `direct_debit` for a mandate-based collection, `card`, `prefunding_credit` when prefunded balance covers it, and `other` for anything else. Wire when this reads `bank_transfer`; Remote collects `direct_debit`, `card` and `prefunding_credit` itself and a transfer would pay twice. `not_selected` means Remote has not recorded a collection method: for Contractor of Record that lasts until the company starts the payment, so confirm the arrangement before wiring. */
 export type ContractorInvoicePayInMethod =
@@ -10020,7 +9418,7 @@ export type ContractorInvoicePayInMethod =
   | "prefunding_credit"
   | "other"
   | "not_selected";
-export const ContractorInvoicePayInMethod = S.String;
+const ContractorInvoicePayInMethod = S.String;
 
 /** Where the payment stands: `awaiting_payment` means Remote has not received the funds and the payment is still expected, `processing` that a collection is in flight, and `paid` that Remote has received the funds. `partially_paid` means Remote received some of the amount but not all of it, because the company underpaid or part of a collection failed after the rest settled; `amount_due` still shows the original total rather than what remains, and Remote follows up with the company on the outstanding balance directly. `blocked` means the payment is on a compliance hold: the reference stays valid, and the payment returns to `awaiting_payment` once Remote lifts it. */
 export type ContractorInvoicePaymentStatus =
@@ -10029,7 +9427,7 @@ export type ContractorInvoicePaymentStatus =
   | "blocked"
   | "processing"
   | "paid";
-export const ContractorInvoicePaymentStatus = S.String;
+const ContractorInvoicePaymentStatus = S.String;
 
 /** The payment that settles this invoice, or `null` while no payment does. `reference` is the transaction receipt (TR) number for Contractor Management and the Remote invoice number for Contractor of Record; it changes when a payment is reset and re-initiated. `amount_due` is the total of the payment this invoice belongs to, shared by every invoice in it. `status` says where the payment stands and `pay_in_method` how Remote collects it; the invoice's pay-in details are the authority on whether and where to wire. */
 export interface ContractorInvoicePayment {
@@ -10042,7 +9440,7 @@ export interface ContractorInvoicePayment {
   reference: string;
   status: ContractorInvoicePaymentStatus;
 }
-export const ContractorInvoicePayment = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoicePayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount_due: S.Number,
     billing_document_id: S.NullOr(S.String),
@@ -10056,7 +9454,7 @@ export const ContractorInvoicePayment = /*@__PURE__*/ S.suspend(() =>
 
 /** Entity responsible for paying the SWIFT fee. Only present when processing_fee is set. */
 export type ContractorInvoiceProcessingFeePayer = "company" | "contractor";
-export const ContractorInvoiceProcessingFeePayer = S.String;
+const ContractorInvoiceProcessingFeePayer = S.String;
 
 /** Current record state. - `enqueued`: An outstanding payment is enqueued to complete the invoice payment. - `externally_paid`: The invoice was paid outside the platform and the employer reported that the contractor was paid. - `issued`: This invoice has been uploaded by the contractor. - `in_review`: This invoice has been uploaded by the contractor and is in the process of review by Remote. This is only expected for Contractor of Record invoices. - `paid_out`: This invoice has been paid out to contractor. This is the final expected stage of a contractor invoice. - `pay_out_failed`: There were issues paying out to the contractor. This is usually caused by a balance issue, an issue with the contractor's bank account, or another type error that comes from payment partner. - `pending_payment`: An outstanding payment has been created for this invoice and is awaiting the company payment before payout begins. - `processing`: The invoice is being processed for pay out. This status should only exist for a few seconds. - `rejected`: This invoice has been rejected by the the company or Remote support team, when requested by customers. It cannot be rejected if it's already paid. - `rejected_by_remote`: This invoice has been rejected by Remote during the Contractor of Record approval process. - `funds_returned`: A pay out was successfully attempted for the invoice, but the funds were rejected by the contractor's bank, either due to incorrect details or some other reason. - `manual_payout`: The invoice is not supported by our automated systems and must instead be manually paid by internal Remote teams. - `blocked`: The invoice is marked as blocked. It will not be paid out. */
 export type ContractorInvoiceStatus =
@@ -10078,7 +9476,7 @@ export type ContractorInvoiceStatus =
   | "paid_out"
   | "pay_out_failed"
   | "funds_returned";
-export const ContractorInvoiceStatus = S.String;
+const ContractorInvoiceStatus = S.String;
 
 /** Contractor Invoice */
 export interface ContractorInvoice {
@@ -10125,7 +9523,7 @@ export interface ContractorInvoice {
   /** Currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. */
   target_currency?: string | null;
 }
-export const ContractorInvoice = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     approved_at: S.optional(S.NullOr(S.String)),
@@ -10156,7 +9554,7 @@ export const ContractorInvoice = /*@__PURE__*/ S.suspend(() =>
 export interface ContractorInvoiceResponseData {
   contractor_invoice: ContractorInvoice;
 }
-export const ContractorInvoiceResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractor_invoice: ContractorInvoice,
   }),
@@ -10168,7 +9566,7 @@ export const ContractorInvoiceResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ContractorInvoiceResponse {
   data: ContractorInvoiceResponseData;
 }
-export const ContractorInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractorInvoiceResponseData,
   }),
@@ -10181,10 +9579,10 @@ export type GetContractorInvoicesRequestSortBy =
   | "due_date"
   | "approved_at"
   | "paid_out_at";
-export const GetContractorInvoicesRequestSortBy = S.String;
+const GetContractorInvoicesRequestSortBy = S.String;
 
 export type GetContractorInvoicesRequestOrder = "asc" | "desc";
-export const GetContractorInvoicesRequestOrder = S.String;
+const GetContractorInvoicesRequestOrder = S.String;
 
 export interface GetContractorInvoicesRequest {
   /** Filters contractor invoices by status matching the value. */
@@ -10216,7 +9614,7 @@ export interface GetContractorInvoicesRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetContractorInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ContractorInvoiceStatus.pipe(T.Query())),
     contractor_invoice_schedule_id: S.optional(S.String.pipe(T.Query())),
@@ -10238,7 +9636,7 @@ export const GetContractorInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContractorInvoicesRequest>;
 
 export type ListContractorInvoicesResponseDataContractorInvoicesList = Array<ContractorInvoice>;
-export const ListContractorInvoicesResponseDataContractorInvoicesList = /*@__PURE__*/ S.Array(
+const ListContractorInvoicesResponseDataContractorInvoicesList = /*@__PURE__*/ S.Array(
   ContractorInvoice,
 ) as any as S.Schema<ListContractorInvoicesResponseDataContractorInvoicesList>;
 
@@ -10251,7 +9649,7 @@ export interface ListContractorInvoicesResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListContractorInvoicesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListContractorInvoicesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractor_invoices: S.optional(ListContractorInvoicesResponseDataContractorInvoicesList),
     current_page: S.optional(S.Number),
@@ -10266,7 +9664,7 @@ export const ListContractorInvoicesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListContractorInvoicesResponse {
   data?: ListContractorInvoicesResponseData;
 }
-export const ListContractorInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContractorInvoicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListContractorInvoicesResponseData),
   }),
@@ -10278,7 +9676,7 @@ export interface GetContractorInvoiceScheduleRequest {
   /** Resource unique identifier */
   id: string;
 }
-export const GetContractorInvoiceScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorInvoiceScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/contractor-invoice-schedules/{id}", code: 200 })),
@@ -10288,7 +9686,7 @@ export const GetContractorInvoiceScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of invoice items that composes the overall invoice amount. */
 export type ContractorInvoiceScheduleItemsList = Array<ContractorInvoiceScheduleItem>;
-export const ContractorInvoiceScheduleItemsList =
+const ContractorInvoiceScheduleItemsList =
   ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<ContractorInvoiceScheduleItemsList>;
 
 /** Current record state. - `active`: Once an invoice is generated, and a withdrawal method has been set, then it's set to active. - `processing`: Ephemeral status indicating that we are currently attempting to generate a contractor invoice from the scheduled contractor invoice. - `pending_company_action`: Company needs to trigger some actions related to payment configuration. - `pending_contractor_action`: When schedule is blocked by contractor onboarding or invoice generation failed due to withdrawal methods issues that needs contractor action. - `generation_failed_unrelated_to_withdrawal_method`: Generation failed for any other reason. - `completed`: Number of generated contractor invoices has been reached. - `inactive`: Does not create any further contractor invoices but it's still possible for the employer to activate it again. - `deleted`: The schedule was cancelled and will not generate any further contractor invoices. */
@@ -10301,7 +9699,7 @@ export type ContractorInvoiceScheduleStatus =
   | "pending_company_action"
   | "pending_contractor_action"
   | "generation_failed_unrelated_to_withdrawal_method";
-export const ContractorInvoiceScheduleStatus = S.String;
+const ContractorInvoiceScheduleStatus = S.String;
 
 /** Contractor Invoice Schedule. */
 export interface ContractorInvoiceSchedule {
@@ -10328,7 +9726,7 @@ export interface ContractorInvoiceSchedule {
   /** Overall amount that is calculated by summing all invoice items. */
   total_amount: number;
 }
-export const ContractorInvoiceSchedule = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.NullOr(S.String),
     custom_days: S.optional(S.NullOr(ContractorInvoiceScheduleCustomDays)),
@@ -10351,7 +9749,7 @@ export const ContractorInvoiceSchedule = /*@__PURE__*/ S.suspend(() =>
 export interface ContractorInvoiceScheduleResponseData {
   contractor_invoice_schedule: ContractorInvoiceSchedule;
 }
-export const ContractorInvoiceScheduleResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceScheduleResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractor_invoice_schedule: ContractorInvoiceSchedule,
   }),
@@ -10363,7 +9761,7 @@ export const ContractorInvoiceScheduleResponseData = /*@__PURE__*/ S.suspend(() 
 export interface ContractorInvoiceScheduleResponse {
   data: ContractorInvoiceScheduleResponseData;
 }
-export const ContractorInvoiceScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoiceScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractorInvoiceScheduleResponseData,
   }),
@@ -10380,7 +9778,7 @@ export type ContractorInvoiceScheduleStatusFilter =
   | "pending_company_action"
   | "pending_contractor_action"
   | "generation_failed_unrelated_to_withdrawal_method";
-export const ContractorInvoiceScheduleStatusFilter = S.String;
+const ContractorInvoiceScheduleStatusFilter = S.String;
 
 export type GetContractorInvoiceSchedulesRequestSortBy =
   | "number"
@@ -10388,10 +9786,10 @@ export type GetContractorInvoiceSchedulesRequestSortBy =
   | "next_invoice_at"
   | "start_date"
   | "nr_occurrences";
-export const GetContractorInvoiceSchedulesRequestSortBy = S.String;
+const GetContractorInvoiceSchedulesRequestSortBy = S.String;
 
 export type GetContractorInvoiceSchedulesRequestOrder = "asc" | "desc";
-export const GetContractorInvoiceSchedulesRequestOrder = S.String;
+const GetContractorInvoiceSchedulesRequestOrder = S.String;
 
 export interface GetContractorInvoiceSchedulesRequest {
   /** Filters contractor invoice schedules by start date greater than or equal to the value. */
@@ -10419,7 +9817,7 @@ export interface GetContractorInvoiceSchedulesRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetContractorInvoiceSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorInvoiceSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start_date_from: S.optional(S.String.pipe(T.Query())),
     start_date_to: S.optional(S.String.pipe(T.Query())),
@@ -10440,7 +9838,7 @@ export const GetContractorInvoiceSchedulesRequest = /*@__PURE__*/ S.suspend(() =
 
 export type ListContractorInvoiceSchedulesResponseDataContractorInvoiceSchedulesList =
   Array<ContractorInvoiceSchedule>;
-export const ListContractorInvoiceSchedulesResponseDataContractorInvoiceSchedulesList =
+const ListContractorInvoiceSchedulesResponseDataContractorInvoiceSchedulesList =
   /*@__PURE__*/ S.Array(
     ContractorInvoiceSchedule,
   ) as any as S.Schema<ListContractorInvoiceSchedulesResponseDataContractorInvoiceSchedulesList>;
@@ -10454,7 +9852,7 @@ export interface ListContractorInvoiceSchedulesResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListContractorInvoiceSchedulesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListContractorInvoiceSchedulesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractor_invoice_schedules: S.optional(
       ListContractorInvoiceSchedulesResponseDataContractorInvoiceSchedulesList,
@@ -10471,7 +9869,7 @@ export const ListContractorInvoiceSchedulesResponseData = /*@__PURE__*/ S.suspen
 export interface ListContractorInvoiceSchedulesResponse {
   data?: ListContractorInvoiceSchedulesResponseData;
 }
-export const ListContractorInvoiceSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContractorInvoiceSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListContractorInvoiceSchedulesResponseData),
   }),
@@ -10483,7 +9881,7 @@ export type GetContractorsCorTerminationRequestsRequestStatus =
   | "initiated"
   | "executed"
   | "cancelled";
-export const GetContractorsCorTerminationRequestsRequestStatus = S.String;
+const GetContractorsCorTerminationRequestsRequestStatus = S.String;
 
 export interface GetContractorsCorTerminationRequestsRequest {
   /** Filter termination requests by employment ID. */
@@ -10495,7 +9893,7 @@ export interface GetContractorsCorTerminationRequestsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetContractorsCorTerminationRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorsCorTerminationRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     status: S.optional(GetContractorsCorTerminationRequestsRequestStatus.pipe(T.Query())),
@@ -10508,7 +9906,7 @@ export const GetContractorsCorTerminationRequestsRequest = /*@__PURE__*/ S.suspe
 
 /** Current status of the termination request. */
 export type CorTerminationRequestStatus = "initiated" | "executed" | "cancelled";
-export const CorTerminationRequestStatus = S.String;
+const CorTerminationRequestStatus = S.String;
 
 export interface CorTerminationRequest {
   /** Timestamp of when the termination was cancelled. Null if not cancelled. */
@@ -10528,7 +9926,7 @@ export interface CorTerminationRequest {
   /** The date when the termination was initiated. */
   termination_date: string | null;
 }
-export const CorTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const CorTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelled_at: S.NullOr(S.String),
     employment_deactivation_date: S.NullOr(S.String),
@@ -10543,7 +9941,7 @@ export const CorTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type IndexCorTerminationRequestsResponseDataTerminationRequestsList =
   Array<CorTerminationRequest>;
-export const IndexCorTerminationRequestsResponseDataTerminationRequestsList = /*@__PURE__*/ S.Array(
+const IndexCorTerminationRequestsResponseDataTerminationRequestsList = /*@__PURE__*/ S.Array(
   CorTerminationRequest,
 ) as any as S.Schema<IndexCorTerminationRequestsResponseDataTerminationRequestsList>;
 
@@ -10556,7 +9954,7 @@ export interface IndexCorTerminationRequestsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const IndexCorTerminationRequestsResponseData = /*@__PURE__*/ S.suspend(() =>
+const IndexCorTerminationRequestsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     termination_requests: S.optional(
@@ -10573,7 +9971,7 @@ export const IndexCorTerminationRequestsResponseData = /*@__PURE__*/ S.suspend((
 export interface IndexCorTerminationRequestsResponse {
   data?: IndexCorTerminationRequestsResponseData;
 }
-export const IndexCorTerminationRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const IndexCorTerminationRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(IndexCorTerminationRequestsResponseData),
   }),
@@ -10587,7 +9985,7 @@ export interface GetContractorsEmploymentContractDocumentRequest {
   /** Document ID */
   id: string;
 }
-export const GetContractorsEmploymentContractDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorsEmploymentContractDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -10604,19 +10002,19 @@ export const GetContractorsEmploymentContractDocumentRequest = /*@__PURE__*/ S.s
 
 /** Signing method used by this signatory */
 export type SignatorySignatureMethod = "in_platform" | "docusign";
-export const SignatorySignatureMethod = S.String;
+const SignatorySignatureMethod = S.String;
 
 /** Legal signature level applied when signing */
 export type SignatorySignatureType = "standard" | "qes" | "aes" | "ses";
-export const SignatorySignatureType = S.String;
+const SignatorySignatureType = S.String;
 
 /** Current signing status of this signatory */
 export type SignatoryStatus = "pending" | "signed" | "unassigned";
-export const SignatoryStatus = S.String;
+const SignatoryStatus = S.String;
 
 /** The role of this signatory in the contract signing process */
 export type SignatoryType = "company" | "employee" | "admin" | "external" | "unknown";
-export const SignatoryType = S.String;
+const SignatoryType = S.String;
 
 /** A signatory on a contract document. For company and employee signatories, `user_id` is provided. For other signatory types, `user_id` is null. */
 export interface Signatory {
@@ -10637,7 +10035,7 @@ export interface Signatory {
   /** User identifier for internal signatories, null for external signatories */
   user_id?: string | null;
 }
-export const Signatory = /*@__PURE__*/ S.suspend(() =>
+const Signatory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -10652,7 +10050,7 @@ export const Signatory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Signatory" }) as any as S.Schema<Signatory>;
 
 export type ContractDocumentResponseDataContractDocumentSignatoriesList = Array<Signatory>;
-export const ContractDocumentResponseDataContractDocumentSignatoriesList = /*@__PURE__*/ S.Array(
+const ContractDocumentResponseDataContractDocumentSignatoriesList = /*@__PURE__*/ S.Array(
   Signatory,
 ) as any as S.Schema<ContractDocumentResponseDataContractDocumentSignatoriesList>;
 
@@ -10662,7 +10060,7 @@ export interface ContractDocumentResponseDataContractDocument {
   signatories: ContractDocumentResponseDataContractDocumentSignatoriesList;
   status: ContractorContractDocumentStatus;
 }
-export const ContractDocumentResponseDataContractDocument = /*@__PURE__*/ S.suspend(() =>
+const ContractDocumentResponseDataContractDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     name: S.String,
@@ -10676,7 +10074,7 @@ export const ContractDocumentResponseDataContractDocument = /*@__PURE__*/ S.susp
 export interface ContractDocumentResponseData {
   contract_document: ContractDocumentResponseDataContractDocument;
 }
-export const ContractDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contract_document: ContractDocumentResponseDataContractDocument,
   }),
@@ -10688,7 +10086,7 @@ export const ContractDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ContractDocumentResponse {
   data: ContractDocumentResponseData;
 }
-export const ContractDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractDocumentResponseData,
   }),
@@ -10700,7 +10098,7 @@ export interface GetContractorsEmploymentContractorCurrenciesRequest {
   /** Restrict to currencies which payout is guaranteed (default: true) */
   restrict_to_guaranteed_pay_out_currencies?: boolean;
 }
-export const GetContractorsEmploymentContractorCurrenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorsEmploymentContractorCurrenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     restrict_to_guaranteed_pay_out_currencies: S.optional(S.Boolean.pipe(T.Query())),
@@ -10719,7 +10117,7 @@ export interface ContractorCurrencyItem {
   code: string;
   source: string;
 }
-export const ContractorCurrencyItem = /*@__PURE__*/ S.suspend(() =>
+const ContractorCurrencyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     source: S.String,
@@ -10727,7 +10125,7 @@ export const ContractorCurrencyItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContractorCurrencyItem" }) as any as S.Schema<ContractorCurrencyItem>;
 
 export type ContractorCurrencyResponseDataList = Array<ContractorCurrencyItem>;
-export const ContractorCurrencyResponseDataList = /*@__PURE__*/ S.Array(
+const ContractorCurrencyResponseDataList = /*@__PURE__*/ S.Array(
   ContractorCurrencyItem,
 ) as any as S.Schema<ContractorCurrencyResponseDataList>;
 
@@ -10735,7 +10133,7 @@ export const ContractorCurrencyResponseDataList = /*@__PURE__*/ S.Array(
 export interface ContractorCurrencyResponse {
   data: ContractorCurrencyResponseDataList;
 }
-export const ContractorCurrencyResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorCurrencyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractorCurrencyResponseDataList,
   }),
@@ -10747,7 +10145,7 @@ export interface GetContractorsEmploymentContractorSubscriptionsRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetContractorsEmploymentContractorSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorsEmploymentContractorSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -10764,7 +10162,7 @@ export const GetContractorsEmploymentContractorSubscriptionsRequest = /*@__PURE_
 export interface ContractorSubscriptionsSummaryCompanyProduct {
   slug?: string;
 }
-export const ContractorSubscriptionsSummaryCompanyProduct = /*@__PURE__*/ S.suspend(() =>
+const ContractorSubscriptionsSummaryCompanyProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
   }),
@@ -10776,7 +10174,7 @@ export interface ContractorSubscriptionsSummaryCompanyProductDiscount {
   expiration_date?: string;
   percent?: string;
 }
-export const ContractorSubscriptionsSummaryCompanyProductDiscount = /*@__PURE__*/ S.suspend(() =>
+const ContractorSubscriptionsSummaryCompanyProductDiscount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiration_date: S.optional(S.String),
     percent: S.optional(S.String),
@@ -10790,7 +10188,7 @@ export interface ContractorSubscriptionsSummaryPrice {
   /** The price after applying the company discount, in cents */
   final_amount?: number;
 }
-export const ContractorSubscriptionsSummaryPrice = /*@__PURE__*/ S.suspend(() =>
+const ContractorSubscriptionsSummaryPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     final_amount: S.optional(S.Number),
@@ -10812,7 +10210,7 @@ export interface ContractorSubscriptionsSummary {
   total_in_advance?: number;
   total_prorated?: number;
 }
-export const ContractorSubscriptionsSummary = /*@__PURE__*/ S.suspend(() =>
+const ContractorSubscriptionsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_product: ContractorSubscriptionsSummaryCompanyProduct,
     company_product_discount: ContractorSubscriptionsSummaryCompanyProductDiscount,
@@ -10831,7 +10229,7 @@ export const ContractorSubscriptionsSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContractorSubscriptionsSummary>;
 
 export type ContractorSubscriptionSummariesResponseDataList = Array<ContractorSubscriptionsSummary>;
-export const ContractorSubscriptionSummariesResponseDataList = /*@__PURE__*/ S.Array(
+const ContractorSubscriptionSummariesResponseDataList = /*@__PURE__*/ S.Array(
   ContractorSubscriptionsSummary,
 ) as any as S.Schema<ContractorSubscriptionSummariesResponseDataList>;
 
@@ -10839,7 +10237,7 @@ export const ContractorSubscriptionSummariesResponseDataList = /*@__PURE__*/ S.A
 export interface ContractorSubscriptionSummariesResponse {
   data: ContractorSubscriptionSummariesResponseDataList;
 }
-export const ContractorSubscriptionSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorSubscriptionSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractorSubscriptionSummariesResponseDataList,
   }),
@@ -10853,7 +10251,7 @@ export interface GetContractorsEmploymentCorTerminationRequestRequest {
   /** Termination Request ID */
   termination_request_id: string;
 }
-export const GetContractorsEmploymentCorTerminationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorsEmploymentCorTerminationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     termination_request_id: S.String.pipe(T.Label()),
@@ -10871,7 +10269,7 @@ export const GetContractorsEmploymentCorTerminationRequestRequest = /*@__PURE__*
 export interface CorTerminationRequestResponse {
   data: CorTerminationRequest;
 }
-export const CorTerminationRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const CorTerminationRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CorTerminationRequest,
   }),
@@ -10883,7 +10281,7 @@ export interface GetContractorsEmploymentRatesRequest {
   /** Contractor employment ID */
   employment_id: string;
 }
-export const GetContractorsEmploymentRatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorsEmploymentRatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -10894,14 +10292,14 @@ export const GetContractorsEmploymentRatesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetContractorsEmploymentRatesRequest>;
 
 export type ListContractorRatesResponseDataRatesList = Array<ContractorRate>;
-export const ListContractorRatesResponseDataRatesList = /*@__PURE__*/ S.Array(
+const ListContractorRatesResponseDataRatesList = /*@__PURE__*/ S.Array(
   ContractorRate,
 ) as any as S.Schema<ListContractorRatesResponseDataRatesList>;
 
 export interface ListContractorRatesResponseData {
   rates: ListContractorRatesResponseDataRatesList;
 }
-export const ListContractorRatesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListContractorRatesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rates: ListContractorRatesResponseDataRatesList,
   }),
@@ -10913,7 +10311,7 @@ export const ListContractorRatesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListContractorRatesResponse {
   data: ListContractorRatesResponseData;
 }
-export const ListContractorRatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContractorRatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListContractorRatesResponseData,
   }),
@@ -10922,16 +10320,14 @@ export const ListContractorRatesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListContractorRatesResponse>;
 
 export type GetContractorsSchemasEligibilityQuestionnaireRequestType = "contractor_of_record";
-export const GetContractorsSchemasEligibilityQuestionnaireRequestType = S.String;
+const GetContractorsSchemasEligibilityQuestionnaireRequestType = S.String;
 
 /** Use latest version */
 export type GetContractorsSchemasEligibilityQuestionnaireRequestJsonSchemaVersionCase1 = "latest";
-export const GetContractorsSchemasEligibilityQuestionnaireRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetContractorsSchemasEligibilityQuestionnaireRequestJsonSchemaVersion =
   | number
   | GetContractorsSchemasEligibilityQuestionnaireRequestJsonSchemaVersionCase1;
-export const GetContractorsSchemasEligibilityQuestionnaireRequestJsonSchemaVersion =
+const GetContractorsSchemasEligibilityQuestionnaireRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetContractorsSchemasEligibilityQuestionnaireRequestJsonSchemaVersion>;
 
 export interface GetContractorsSchemasEligibilityQuestionnaireRequest {
@@ -10940,7 +10336,7 @@ export interface GetContractorsSchemasEligibilityQuestionnaireRequest {
   /** Version of the form schema */
   json_schema_version?: GetContractorsSchemasEligibilityQuestionnaireRequestJsonSchemaVersion;
 }
-export const GetContractorsSchemasEligibilityQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContractorsSchemasEligibilityQuestionnaireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: GetContractorsSchemasEligibilityQuestionnaireRequestType.pipe(T.Query()),
     json_schema_version: S.optional(
@@ -10961,7 +10357,7 @@ export interface EligibilityQuestionnaireJSONSchemaResponseData {
   /** The version of the JSON Schema */
   version?: number;
 }
-export const EligibilityQuestionnaireJSONSchemaResponseData = /*@__PURE__*/ S.suspend(() =>
+const EligibilityQuestionnaireJSONSchemaResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(S.Unknown),
     schema: S.optional(S.Unknown),
@@ -10975,7 +10371,7 @@ export const EligibilityQuestionnaireJSONSchemaResponseData = /*@__PURE__*/ S.su
 export interface EligibilityQuestionnaireJSONSchemaResponse {
   data?: EligibilityQuestionnaireJSONSchemaResponseData;
 }
-export const EligibilityQuestionnaireJSONSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const EligibilityQuestionnaireJSONSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EligibilityQuestionnaireJSONSchemaResponseData),
   }),
@@ -10987,7 +10383,7 @@ export interface GetCostCalculatorCountriesRequest {
   /** If the premium benefits should be included in the response */
   include_premium_benefits?: boolean;
 }
-export const GetCostCalculatorCountriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCostCalculatorCountriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_premium_benefits: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/cost-calculator/countries", code: 200 })),
@@ -10997,10 +10393,10 @@ export const GetCostCalculatorCountriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** - active: country is ready to onboard employee - coming_soon: country is in process of getting ready */
 export type CostCalculatorCountryAvailability = "active" | "coming_soon";
-export const CostCalculatorCountryAvailability = S.String;
+const CostCalculatorCountryAvailability = S.String;
 
 export type CostCalculatorCountryLevelRegionChildRegionsList = Array<MinimalRegion>;
-export const CostCalculatorCountryLevelRegionChildRegionsList = /*@__PURE__*/ S.Array(
+const CostCalculatorCountryLevelRegionChildRegionsList = /*@__PURE__*/ S.Array(
   MinimalRegion,
 ) as any as S.Schema<CostCalculatorCountryLevelRegionChildRegionsList>;
 
@@ -11015,7 +10411,7 @@ export interface CostCalculatorCountryLevelRegion {
   original_country_slug: string;
   region_slug: string;
 }
-export const CostCalculatorCountryLevelRegion = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorCountryLevelRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: CostCalculatorCountryAvailability,
     child_regions: CostCalculatorCountryLevelRegionChildRegionsList,
@@ -11031,14 +10427,14 @@ export const CostCalculatorCountryLevelRegion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CostCalculatorCountryLevelRegion>;
 
 export type CostCalculatorListCountryResponseDataList = Array<CostCalculatorCountryLevelRegion>;
-export const CostCalculatorListCountryResponseDataList = /*@__PURE__*/ S.Array(
+const CostCalculatorListCountryResponseDataList = /*@__PURE__*/ S.Array(
   CostCalculatorCountryLevelRegion,
 ) as any as S.Schema<CostCalculatorListCountryResponseDataList>;
 
 export interface CostCalculatorListCountryResponse {
   data: CostCalculatorListCountryResponseDataList;
 }
-export const CostCalculatorListCountryResponse = /*@__PURE__*/ S.suspend(() =>
+const CostCalculatorListCountryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CostCalculatorListCountryResponseDataList,
   }),
@@ -11052,7 +10448,7 @@ export interface GetCostCalculatorRegionFieldsRequest {
   /** If the premium benefits should be included in the response */
   include_premium_benefits?: boolean;
 }
-export const GetCostCalculatorRegionFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCostCalculatorRegionFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     include_premium_benefits: S.optional(S.Boolean.pipe(T.Query())),
@@ -11062,15 +10458,15 @@ export const GetCostCalculatorRegionFieldsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetCostCalculatorRegionFieldsRequest>;
 
 export type JSONSchemaResponseDataSchemaPropertiesMap = { [key: string]: unknown | undefined };
-export const JSONSchemaResponseDataSchemaPropertiesMap =
+const JSONSchemaResponseDataSchemaPropertiesMap =
   ImportDataRow as any as S.Schema<JSONSchemaResponseDataSchemaPropertiesMap>;
 
 export type JSONSchemaResponseDataSchemaRequiredList = Array<string>;
-export const JSONSchemaResponseDataSchemaRequiredList =
+const JSONSchemaResponseDataSchemaRequiredList =
   ProductFeaturesList as any as S.Schema<JSONSchemaResponseDataSchemaRequiredList>;
 
 export type JSONSchemaResponseDataSchemaXJsfOrderList = Array<string>;
-export const JSONSchemaResponseDataSchemaXJsfOrderList =
+const JSONSchemaResponseDataSchemaXJsfOrderList =
   ProductFeaturesList as any as S.Schema<JSONSchemaResponseDataSchemaXJsfOrderList>;
 
 export interface JSONSchemaResponseDataSchema {
@@ -11078,7 +10474,7 @@ export interface JSONSchemaResponseDataSchema {
   required?: JSONSchemaResponseDataSchemaRequiredList;
   x_jsf_order?: JSONSchemaResponseDataSchemaXJsfOrderList;
 }
-export const JSONSchemaResponseDataSchema = /*@__PURE__*/ S.suspend(() =>
+const JSONSchemaResponseDataSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: JSONSchemaResponseDataSchemaPropertiesMap,
     required: S.optional(JSONSchemaResponseDataSchemaRequiredList),
@@ -11093,7 +10489,7 @@ export interface JSONSchemaResponseData {
   schema?: JSONSchemaResponseDataSchema;
   version?: number;
 }
-export const JSONSchemaResponseData = /*@__PURE__*/ S.suspend(() =>
+const JSONSchemaResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: S.optional(JSONSchemaResponseDataSchema),
     version: S.optional(S.Number),
@@ -11105,19 +10501,19 @@ export interface JSONSchemaResponse {
   /** JSON Schema */
   data?: JSONSchemaResponseData;
 }
-export const JSONSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const JSONSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(JSONSchemaResponseData),
   }),
 ).annotate({ identifier: "JSONSchemaResponse" }) as any as S.Schema<JSONSchemaResponse>;
 
 export interface GetCountriesRequest {}
-export const GetCountriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCountriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/countries", code: 200 })),
 ).annotate({ identifier: "GetCountriesRequest" }) as any as S.Schema<GetCountriesRequest>;
 
 export type CountriesResponseDataList = Array<Country>;
-export const CountriesResponseDataList = /*@__PURE__*/ S.Array(
+const CountriesResponseDataList = /*@__PURE__*/ S.Array(
   Country,
 ) as any as S.Schema<CountriesResponseDataList>;
 
@@ -11125,7 +10521,7 @@ export const CountriesResponseDataList = /*@__PURE__*/ S.Array(
 export interface CountriesResponse {
   data?: CountriesResponseDataList;
 }
-export const CountriesResponse = /*@__PURE__*/ S.suspend(() =>
+const CountriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(CountriesResponseDataList),
   }),
@@ -11133,10 +10529,8 @@ export const CountriesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type GetCountryRequestJsonSchemaVersionCase1 = "latest";
-export const GetCountryRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetCountryRequestJsonSchemaVersion = number | GetCountryRequestJsonSchemaVersionCase1;
-export const GetCountryRequestJsonSchemaVersion =
+const GetCountryRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetCountryRequestJsonSchemaVersion>;
 
 export interface GetCountryRequest {
@@ -11155,7 +10549,7 @@ export interface GetCountryRequest {
   /** Version of the form schema */
   json_schema_version?: GetCountryRequestJsonSchemaVersion;
 }
-export const GetCountryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCountryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String.pipe(T.Label()),
     form: S.String.pipe(T.Label()),
@@ -11171,16 +10565,14 @@ export const GetCountryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CountryFormResponse {
   data?: unknown;
 }
-export const CountryFormResponse = CompanyFormResponse as any as S.Schema<CountryFormResponse>;
+const CountryFormResponse = CompanyFormResponse as any as S.Schema<CountryFormResponse>;
 
 /** Use latest version */
 export type GetCountryContractorContractDetailsRequestJsonSchemaVersionCase1 = "latest";
-export const GetCountryContractorContractDetailsRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetCountryContractorContractDetailsRequestJsonSchemaVersion =
   | number
   | GetCountryContractorContractDetailsRequestJsonSchemaVersionCase1;
-export const GetCountryContractorContractDetailsRequestJsonSchemaVersion =
+const GetCountryContractorContractDetailsRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetCountryContractorContractDetailsRequestJsonSchemaVersion>;
 
 export interface GetCountryContractorContractDetailsRequest {
@@ -11191,7 +10583,7 @@ export interface GetCountryContractorContractDetailsRequest {
   /** Version of the form schema */
   json_schema_version?: GetCountryContractorContractDetailsRequestJsonSchemaVersion;
 }
-export const GetCountryContractorContractDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCountryContractorContractDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String.pipe(T.Label()),
     employment_id: S.optional(S.String.pipe(T.Query())),
@@ -11211,7 +10603,7 @@ export const GetCountryContractorContractDetailsRequest = /*@__PURE__*/ S.suspen
 
 /** Contract details schema object with variable fields based on country */
 export type ContractorContractDetailsResponseDataSchemaMap = { [key: string]: unknown | undefined };
-export const ContractorContractDetailsResponseDataSchemaMap =
+const ContractorContractDetailsResponseDataSchemaMap =
   ImportDataRow as any as S.Schema<ContractorContractDetailsResponseDataSchemaMap>;
 
 /** Contractor contract details response data */
@@ -11221,7 +10613,7 @@ export interface ContractorContractDetailsResponseData {
   /** JSON schema version number */
   version: number;
 }
-export const ContractorContractDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractorContractDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: ContractorContractDetailsResponseDataSchemaMap,
     version: S.Number,
@@ -11235,7 +10627,7 @@ export interface ContractorContractDetailsResponse {
   /** Contractor contract details response data */
   data?: ContractorContractDetailsResponseData;
 }
-export const ContractorContractDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorContractDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ContractorContractDetailsResponseData),
   }),
@@ -11251,7 +10643,7 @@ export interface GetCountryHolidayRequest {
   /** Country subdivision code according to ISO 3166-2 codes */
   country_subdivision_code?: string;
 }
-export const GetCountryHolidayRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCountryHolidayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String.pipe(T.Label()),
     year: S.String.pipe(T.Label()),
@@ -11271,7 +10663,7 @@ export interface Holiday {
   /** Date when the holiday is observed */
   observed_day?: string | null;
 }
-export const Holiday = /*@__PURE__*/ S.suspend(() =>
+const Holiday = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.String,
     name: S.String,
@@ -11281,7 +10673,7 @@ export const Holiday = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Holiday" }) as any as S.Schema<Holiday>;
 
 export type HolidaysResponseDataList = Array<Holiday>;
-export const HolidaysResponseDataList = /*@__PURE__*/ S.Array(
+const HolidaysResponseDataList = /*@__PURE__*/ S.Array(
   Holiday,
 ) as any as S.Schema<HolidaysResponseDataList>;
 
@@ -11289,23 +10681,21 @@ export const HolidaysResponseDataList = /*@__PURE__*/ S.Array(
 export interface HolidaysResponse {
   data?: HolidaysResponseDataList;
 }
-export const HolidaysResponse = /*@__PURE__*/ S.suspend(() =>
+const HolidaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(HolidaysResponseDataList),
   }),
 ).annotate({ identifier: "HolidaysResponse" }) as any as S.Schema<HolidaysResponse>;
 
 export type GetCountryLegalEntityFormRequestProductType = "peo" | "global_payroll" | "e2e_payroll";
-export const GetCountryLegalEntityFormRequestProductType = S.String;
+const GetCountryLegalEntityFormRequestProductType = S.String;
 
 /** Use latest version */
 export type GetCountryLegalEntityFormRequestJsonSchemaVersionCase1 = "latest";
-export const GetCountryLegalEntityFormRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetCountryLegalEntityFormRequestJsonSchemaVersion =
   | number
   | GetCountryLegalEntityFormRequestJsonSchemaVersionCase1;
-export const GetCountryLegalEntityFormRequestJsonSchemaVersion =
+const GetCountryLegalEntityFormRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetCountryLegalEntityFormRequestJsonSchemaVersion>;
 
 export interface GetCountryLegalEntityFormRequest {
@@ -11320,7 +10710,7 @@ export interface GetCountryLegalEntityFormRequest {
   /** Version of the form schema */
   json_schema_version?: GetCountryLegalEntityFormRequestJsonSchemaVersion;
 }
-export const GetCountryLegalEntityFormRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCountryLegalEntityFormRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String.pipe(T.Label()),
     form: S.String.pipe(T.Label()),
@@ -11348,7 +10738,7 @@ export interface GetCustomFieldsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetCustomFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -11357,7 +10747,7 @@ export const GetCustomFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCustomFieldsRequest" }) as any as S.Schema<GetCustomFieldsRequest>;
 
 export type ListEmploymentCustomFieldsResponseDataCustomFieldsList = Array<EmploymentCustomField>;
-export const ListEmploymentCustomFieldsResponseDataCustomFieldsList = /*@__PURE__*/ S.Array(
+const ListEmploymentCustomFieldsResponseDataCustomFieldsList = /*@__PURE__*/ S.Array(
   EmploymentCustomField,
 ) as any as S.Schema<ListEmploymentCustomFieldsResponseDataCustomFieldsList>;
 
@@ -11370,7 +10760,7 @@ export interface ListEmploymentCustomFieldsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListEmploymentCustomFieldsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentCustomFieldsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     custom_fields: S.optional(ListEmploymentCustomFieldsResponseDataCustomFieldsList),
@@ -11385,7 +10775,7 @@ export const ListEmploymentCustomFieldsResponseData = /*@__PURE__*/ S.suspend(()
 export interface ListEmploymentCustomFieldsResponse {
   data?: ListEmploymentCustomFieldsResponseData;
 }
-export const ListEmploymentCustomFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentCustomFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListEmploymentCustomFieldsResponseData),
   }),
@@ -11399,7 +10789,7 @@ export interface GetCustomFieldValueRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetCustomFieldValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomFieldValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_field_id: S.String.pipe(T.Label()),
     employment_id: S.String.pipe(T.Label()),
@@ -11421,22 +10811,13 @@ export interface EmploymentCustomFieldValueJsonValue {
   /** The human-readable label of the selected option (e.g., "XL"). */
   selected_option_label: string;
 }
-export const EmploymentCustomFieldValueJsonValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    selected_option: S.String,
-    selected_option_label: S.String,
-  }),
-).annotate({
-  identifier: "EmploymentCustomFieldValueJsonValue",
-}) as any as S.Schema<EmploymentCustomFieldValueJsonValue>;
-
 export type EmploymentCustomFieldValueValue =
   | string
   | number
   | boolean
   | number
   | EmploymentCustomFieldValueJsonValue;
-export const EmploymentCustomFieldValueValue =
+const EmploymentCustomFieldValueValue =
   S.Unknown as any as S.Schema<EmploymentCustomFieldValueValue>;
 
 /** The value of a custom field for a specific employment. The type of `value` depends on the custom field's data type. */
@@ -11445,7 +10826,7 @@ export interface EmploymentCustomFieldValue {
   custom_field_id: string;
   value: EmploymentCustomFieldValueValue | null;
 }
-export const EmploymentCustomFieldValue = /*@__PURE__*/ S.suspend(() =>
+const EmploymentCustomFieldValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_field_id: S.String,
     value: S.NullOr(EmploymentCustomFieldValueValue),
@@ -11457,7 +10838,7 @@ export const EmploymentCustomFieldValue = /*@__PURE__*/ S.suspend(() =>
 export interface EmploymentCustomFieldValueResponseData {
   custom_field_value: EmploymentCustomFieldValue;
 }
-export const EmploymentCustomFieldValueResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentCustomFieldValueResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_field_value: EmploymentCustomFieldValue,
   }),
@@ -11469,7 +10850,7 @@ export const EmploymentCustomFieldValueResponseData = /*@__PURE__*/ S.suspend(()
 export interface EmploymentCustomFieldValueResponse {
   data: EmploymentCustomFieldValueResponseData;
 }
-export const EmploymentCustomFieldValueResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentCustomFieldValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentCustomFieldValueResponseData,
   }),
@@ -11478,7 +10859,7 @@ export const EmploymentCustomFieldValueResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EmploymentCustomFieldValueResponse>;
 
 export type GetDirectOffboardingsRequestEmploymentModel = "global_payroll";
-export const GetDirectOffboardingsRequestEmploymentModel = S.String;
+const GetDirectOffboardingsRequestEmploymentModel = S.String;
 
 export interface GetDirectOffboardingsRequest {
   /** Filter by employment ID */
@@ -11490,7 +10871,7 @@ export interface GetDirectOffboardingsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetDirectOffboardingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDirectOffboardingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     employment_model: S.optional(GetDirectOffboardingsRequestEmploymentModel.pipe(T.Query())),
@@ -11509,7 +10890,7 @@ export type DirectOffboardingStatus =
   | "pending_payment_details"
   | "pending_payment"
   | "completed";
-export const DirectOffboardingStatus = S.String;
+const DirectOffboardingStatus = S.String;
 
 /** The type of offboarding. */
 export type DirectOffboardingType =
@@ -11518,7 +10899,7 @@ export type DirectOffboardingType =
   | "mutual_agreement"
   | "retirement"
   | "end_of_contract";
-export const DirectOffboardingType = S.String;
+const DirectOffboardingType = S.String;
 
 /** A Global Payroll employment's offboarding record. */
 export interface DirectOffboarding {
@@ -11537,7 +10918,7 @@ export interface DirectOffboarding {
   /** The type of offboarding. */
   type: DirectOffboardingType;
 }
-export const DirectOffboarding = /*@__PURE__*/ S.suspend(() =>
+const DirectOffboarding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String,
     id: S.String,
@@ -11550,7 +10931,7 @@ export const DirectOffboarding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DirectOffboarding" }) as any as S.Schema<DirectOffboarding>;
 
 export type ListDirectOffboardingResponseDataDirectOffboardingsList = Array<DirectOffboarding>;
-export const ListDirectOffboardingResponseDataDirectOffboardingsList = /*@__PURE__*/ S.Array(
+const ListDirectOffboardingResponseDataDirectOffboardingsList = /*@__PURE__*/ S.Array(
   DirectOffboarding,
 ) as any as S.Schema<ListDirectOffboardingResponseDataDirectOffboardingsList>;
 
@@ -11563,7 +10944,7 @@ export interface ListDirectOffboardingResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListDirectOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListDirectOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     direct_offboardings: S.optional(ListDirectOffboardingResponseDataDirectOffboardingsList),
@@ -11578,7 +10959,7 @@ export const ListDirectOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListDirectOffboardingResponse {
   data?: ListDirectOffboardingResponseData;
 }
-export const ListDirectOffboardingResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDirectOffboardingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListDirectOffboardingResponseData),
   }),
@@ -11588,19 +10969,17 @@ export const ListDirectOffboardingResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type GetEmployeeAddressRequestAddressDetailsJsonSchemaVersionCase1 = "latest";
-export const GetEmployeeAddressRequestAddressDetailsJsonSchemaVersionCase1 = S.String;
-
 export type GetEmployeeAddressRequestAddressDetailsJsonSchemaVersion =
   | number
   | GetEmployeeAddressRequestAddressDetailsJsonSchemaVersionCase1;
-export const GetEmployeeAddressRequestAddressDetailsJsonSchemaVersion =
+const GetEmployeeAddressRequestAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetEmployeeAddressRequestAddressDetailsJsonSchemaVersion>;
 
 export interface GetEmployeeAddressRequest {
   /** Version of the address_details form schema */
   address_details_json_schema_version?: GetEmployeeAddressRequestAddressDetailsJsonSchemaVersion;
 }
-export const GetEmployeeAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_details_json_schema_version: S.optional(
       GetEmployeeAddressRequestAddressDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -11611,17 +10990,16 @@ export const GetEmployeeAddressRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeAddressRequest>;
 
 export type EmploymentDetailsOnlyResponseDataEmploymentBankAccountDetailsList = Array<unknown>;
-export const EmploymentDetailsOnlyResponseDataEmploymentBankAccountDetailsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<EmploymentDetailsOnlyResponseDataEmploymentBankAccountDetailsList>;
+const EmploymentDetailsOnlyResponseDataEmploymentBankAccountDetailsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<EmploymentDetailsOnlyResponseDataEmploymentBankAccountDetailsList>;
 
 /** Origin of the employment contract. Returned by the basic information endpoint. */
 export type EmploymentDetailsOnlyResponseDataEmploymentContractOrigin =
   | "remote_contract"
   | "custom_remote_contract"
   | "provided_by_customer";
-export const EmploymentDetailsOnlyResponseDataEmploymentContractOrigin = S.String;
+const EmploymentDetailsOnlyResponseDataEmploymentContractOrigin = S.String;
 
 /** The current status of the employment record. - `active`: The employee is fully onboarded and actively working. - `created`: The employment has been created but onboarding has not started. - `pre_hire`: A pre-hire employment record, created before formal onboarding begins. - `created_awaiting_reserve`: The employment is created but waiting for a risk reserve deposit to be paid. - `created_reserve_paid`: The risk reserve has been paid and the employment can proceed with onboarding. - `initiated`: Onboarding has been started by the employer. - `invited`: The employee has been invited to complete their self-enrollment on Remote. - `pending`: The employment is pending review or further action before it can become active. - `review`: The employment is under review by Remote (e.g., contract or compliance review). - `job_title_review`: The job title is pending verification by Remote; once approved, the employment returns to `created`. - `pending_post_self_enrollment_actions`: Self-enrollment is complete, but some actions are still missing before the employment can be activated. - `archived`: The employment has been terminated or offboarded. - `deleted`: The employment record has been deleted. */
 export type EmploymentStatus =
@@ -11638,7 +11016,7 @@ export type EmploymentStatus =
   | "pending_post_self_enrollment_actions"
   | "archived"
   | "deleted";
-export const EmploymentStatus = S.String;
+const EmploymentStatus = S.String;
 
 /** The type of employment. */
 export type EmploymentDetailsOnlyResponseDataEmploymentType =
@@ -11646,7 +11024,7 @@ export type EmploymentDetailsOnlyResponseDataEmploymentType =
   | "contractor"
   | "direct_employee"
   | "global_payroll_employee";
-export const EmploymentDetailsOnlyResponseDataEmploymentType = S.String;
+const EmploymentDetailsOnlyResponseDataEmploymentType = S.String;
 
 /** The status of the user account associated with this employment. - `active`: The user account is active and the user can log in. - `created`: The user account has been created but not yet activated. - `invited`: The user has been invited but has not accepted the invitation yet. - `initiated`: The user has been invited but has not completed registration. - `cancelled`: The user account was cancelled before activation. - `inactive`: The user account has been deactivated (e.g., after offboarding). - `deleted`: The user account has been deleted. */
 export type UserStatus =
@@ -11657,7 +11035,7 @@ export type UserStatus =
   | "cancelled"
   | "inactive"
   | "deleted";
-export const UserStatus = S.String;
+const UserStatus = S.String;
 
 export interface EmploymentDetailsOnlyResponseDataEmployment {
   /** Home address information. Its properties may vary depending on the country. Null if the employee has not submitted their address yet. */
@@ -11688,7 +11066,7 @@ export interface EmploymentDetailsOnlyResponseDataEmployment {
   updated_at: string;
   user_status: UserStatus;
 }
-export const EmploymentDetailsOnlyResponseDataEmployment = /*@__PURE__*/ S.suspend(() =>
+const EmploymentDetailsOnlyResponseDataEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_details: S.optional(S.NullOr(S.Unknown)),
     administrative_details: S.optional(S.Unknown),
@@ -11717,7 +11095,7 @@ export const EmploymentDetailsOnlyResponseDataEmployment = /*@__PURE__*/ S.suspe
 export interface EmploymentDetailsOnlyResponseData {
   employment?: EmploymentDetailsOnlyResponseDataEmployment;
 }
-export const EmploymentDetailsOnlyResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentDetailsOnlyResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment: S.optional(EmploymentDetailsOnlyResponseDataEmployment),
   }),
@@ -11729,7 +11107,7 @@ export const EmploymentDetailsOnlyResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface EmploymentDetailsOnlyResponse {
   data: EmploymentDetailsOnlyResponseData;
 }
-export const EmploymentDetailsOnlyResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentDetailsOnlyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentDetailsOnlyResponseData,
   }),
@@ -11739,19 +11117,17 @@ export const EmploymentDetailsOnlyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersionCase1 = "latest";
-export const GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersionCase1 = S.String;
-
 export type GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion =
   | number
   | GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersionCase1;
-export const GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion =
+const GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion>;
 
 export interface GetEmployeeBankAccountRequest {
   /** Version of the bank_account_details form schema */
   bank_account_details_json_schema_version?: GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion;
 }
-export const GetEmployeeBankAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeBankAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bank_account_details_json_schema_version: S.optional(
       GetEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -11762,7 +11138,7 @@ export const GetEmployeeBankAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeBankAccountRequest>;
 
 export interface GetEmployeeCurrentRequest {}
-export const GetEmployeeCurrentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeCurrentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/employee/current", code: 200 })),
 ).annotate({
   identifier: "GetEmployeeCurrentRequest",
@@ -11772,7 +11148,7 @@ export interface GetEmployeeDocumentRequest {
   /** Document ID */
   id: string;
 }
-export const GetEmployeeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/employee/documents/{id}", code: 200 })),
@@ -11793,7 +11169,7 @@ export interface DownloadDocumentResponseDataDocument {
   /** The broad category of the document. */
   type?: string;
 }
-export const DownloadDocumentResponseDataDocument = /*@__PURE__*/ S.suspend(() =>
+const DownloadDocumentResponseDataDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     id: S.optional(S.String),
@@ -11809,7 +11185,7 @@ export const DownloadDocumentResponseDataDocument = /*@__PURE__*/ S.suspend(() =
 export interface DownloadDocumentResponseData {
   document?: DownloadDocumentResponseDataDocument;
 }
-export const DownloadDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
+const DownloadDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(DownloadDocumentResponseDataDocument),
   }),
@@ -11821,7 +11197,7 @@ export const DownloadDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface DownloadDocumentResponse {
   data: DownloadDocumentResponseData;
 }
-export const DownloadDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DownloadDocumentResponseData,
   }),
@@ -11837,10 +11213,10 @@ export type GetEmployeeDocumentsRequestSortBy =
   | "related_to"
   | "sub_type"
   | "uploaded_by";
-export const GetEmployeeDocumentsRequestSortBy = S.String;
+const GetEmployeeDocumentsRequestSortBy = S.String;
 
 export type GetEmployeeDocumentsRequestOrder = "asc" | "desc";
-export const GetEmployeeDocumentsRequestOrder = S.String;
+const GetEmployeeDocumentsRequestOrder = S.String;
 
 export interface GetEmployeeDocumentsRequest {
   /** Starts fetching records after the given page */
@@ -11858,7 +11234,7 @@ export interface GetEmployeeDocumentsRequest {
   /** Sort order */
   order?: GetEmployeeDocumentsRequestOrder | (string & {});
 }
-export const GetEmployeeDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -11873,7 +11249,7 @@ export const GetEmployeeDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeDocumentsRequest>;
 
 export type ListDocumentsResponseDataDocumentsList = Array<File>;
-export const ListDocumentsResponseDataDocumentsList =
+const ListDocumentsResponseDataDocumentsList =
   ExpenseReceiptsList as any as S.Schema<ListDocumentsResponseDataDocumentsList>;
 
 export interface ListDocumentsResponseData {
@@ -11885,7 +11261,7 @@ export interface ListDocumentsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListDocumentsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListDocumentsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     documents: S.optional(ListDocumentsResponseDataDocumentsList),
@@ -11900,7 +11276,7 @@ export const ListDocumentsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListDocumentsResponse {
   data?: ListDocumentsResponseData;
 }
-export const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListDocumentsResponseData),
   }),
@@ -11909,20 +11285,17 @@ export const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
 /** Use latest version */
 export type GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1 =
   "latest";
-export const GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
   | number
   | GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1;
-export const GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
+const GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion>;
 
 export interface GetEmployeeEmergencyContactRequest {
   /** Version of the emergency_contact_details form schema */
   emergency_contact_details_json_schema_version?: GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion;
 }
-export const GetEmployeeEmergencyContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeEmergencyContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emergency_contact_details_json_schema_version: S.optional(
       GetEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -11938,7 +11311,7 @@ export interface GetEmployeeExpenseCategoriesRequest {
   /** Expense ID (slug) whose category should be included in the result, even if it is not selectable by default */
   expense_id?: string;
 }
-export const GetEmployeeExpenseCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeExpenseCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_parents: S.optional(S.Boolean.pipe(T.Query())),
     expense_id: S.optional(S.String.pipe(T.Query())),
@@ -11956,7 +11329,7 @@ export interface ExpenseCategoryNodeParent {
   /** Parent category title */
   title?: string;
 }
-export const ExpenseCategoryNodeParent = /*@__PURE__*/ S.suspend(() =>
+const ExpenseCategoryNodeParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     slug: S.optional(S.String),
@@ -11989,7 +11362,7 @@ export interface ExpenseCategoryNode {
   /** Human-readable category name */
   title?: string;
 }
-export const ExpenseCategoryNode = /*@__PURE__*/ S.suspend(() =>
+const ExpenseCategoryNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
@@ -12005,7 +11378,7 @@ export const ExpenseCategoryNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpenseCategoryNode" }) as any as S.Schema<ExpenseCategoryNode>;
 
 export type ListExpenseCategoriesResponseDataList = Array<ExpenseCategoryNode>;
-export const ListExpenseCategoriesResponseDataList = /*@__PURE__*/ S.Array(
+const ListExpenseCategoriesResponseDataList = /*@__PURE__*/ S.Array(
   ExpenseCategoryNode,
 ) as any as S.Schema<ListExpenseCategoriesResponseDataList>;
 
@@ -12013,7 +11386,7 @@ export const ListExpenseCategoriesResponseDataList = /*@__PURE__*/ S.Array(
 export interface ListExpenseCategoriesResponse {
   data?: ListExpenseCategoriesResponseDataList;
 }
-export const ListExpenseCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExpenseCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListExpenseCategoriesResponseDataList),
   }),
@@ -12022,21 +11395,21 @@ export const ListExpenseCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExpenseCategoriesResponse>;
 
 export interface GetEmployeeExpensesRequest {}
-export const GetEmployeeExpensesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeExpensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/employee/expenses", code: 200 })),
 ).annotate({
   identifier: "GetEmployeeExpensesRequest",
 }) as any as S.Schema<GetEmployeeExpensesRequest>;
 
 export interface GetEmployeeIncentivesRequest {}
-export const GetEmployeeIncentivesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeIncentivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/employee/incentives", code: 200 })),
 ).annotate({
   identifier: "GetEmployeeIncentivesRequest",
 }) as any as S.Schema<GetEmployeeIncentivesRequest>;
 
 export interface GetEmployeeLeavePoliciesRequest {}
-export const GetEmployeeLeavePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeLeavePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/employee/leave-policies", code: 200 })),
 ).annotate({
   identifier: "GetEmployeeLeavePoliciesRequest",
@@ -12092,13 +11465,11 @@ export type LeavePolicyDetailsLeavePolicyVariantIdCase1 =
   | "business_trip_non_eu"
   | "training"
   | "sustainable_employability";
-export const LeavePolicyDetailsLeavePolicyVariantIdCase1 = S.String;
-
 /** The ID of the leave policy variant */
 export type LeavePolicyDetailsLeavePolicyVariantId =
   | string
   | LeavePolicyDetailsLeavePolicyVariantIdCase1;
-export const LeavePolicyDetailsLeavePolicyVariantId =
+const LeavePolicyDetailsLeavePolicyVariantId =
   S.Unknown as any as S.Schema<LeavePolicyDetailsLeavePolicyVariantId>;
 
 /** Leave Policy Details */
@@ -12110,7 +11481,7 @@ export interface LeavePolicyDetails {
   /** Whether leave balance is determined by accruals */
   uses_accrual_as_balance?: boolean;
 }
-export const LeavePolicyDetails = /*@__PURE__*/ S.suspend(() =>
+const LeavePolicyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom: S.Boolean,
     leave_policy_variant_id: LeavePolicyDetailsLeavePolicyVariantId,
@@ -12120,7 +11491,7 @@ export const LeavePolicyDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LeavePolicyDetails" }) as any as S.Schema<LeavePolicyDetails>;
 
 export type ListLeavePoliciesDetailsResponseDataList = Array<LeavePolicyDetails>;
-export const ListLeavePoliciesDetailsResponseDataList = /*@__PURE__*/ S.Array(
+const ListLeavePoliciesDetailsResponseDataList = /*@__PURE__*/ S.Array(
   LeavePolicyDetails,
 ) as any as S.Schema<ListLeavePoliciesDetailsResponseDataList>;
 
@@ -12128,7 +11499,7 @@ export const ListLeavePoliciesDetailsResponseDataList = /*@__PURE__*/ S.Array(
 export interface ListLeavePoliciesDetailsResponse {
   data: ListLeavePoliciesDetailsResponseDataList;
 }
-export const ListLeavePoliciesDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLeavePoliciesDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListLeavePoliciesDetailsResponseDataList,
   }),
@@ -12137,7 +11508,7 @@ export const ListLeavePoliciesDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLeavePoliciesDetailsResponse>;
 
 export interface GetEmployeeLeavePoliciesSummaryRequest {}
-export const GetEmployeeLeavePoliciesSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeLeavePoliciesSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/v1/employee/leave-policies/summary", code: 200 }),
   ),
@@ -12146,21 +11517,11 @@ export const GetEmployeeLeavePoliciesSummaryRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetEmployeeLeavePoliciesSummaryRequest>;
 
 export type UnlimitedDaysandHoursResponseType = "unlimited";
-export const UnlimitedDaysandHoursResponseType = S.String;
-
 export interface UnlimitedDaysandHoursResponse {
   type: UnlimitedDaysandHoursResponseType;
 }
-export const UnlimitedDaysandHoursResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: UnlimitedDaysandHoursResponseType,
-  }),
-).annotate({
-  identifier: "UnlimitedDaysandHoursResponse",
-}) as any as S.Schema<UnlimitedDaysandHoursResponse>;
-
 export type LimitedDaysandHoursResponseType = "limited";
-export const LimitedDaysandHoursResponseType = S.String;
+const LimitedDaysandHoursResponseType = S.String;
 
 /** Includes requested timeoffs (not approved) in the past or in the future. */
 export interface LimitedDaysandHoursResponse {
@@ -12168,7 +11529,7 @@ export interface LimitedDaysandHoursResponse {
   hours: number;
   type: LimitedDaysandHoursResponseType;
 }
-export const LimitedDaysandHoursResponse = /*@__PURE__*/ S.suspend(() =>
+const LimitedDaysandHoursResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     days: S.Number,
     hours: S.Number,
@@ -12182,22 +11543,22 @@ export const LimitedDaysandHoursResponse = /*@__PURE__*/ S.suspend(() =>
 export type LeavePolicySummaryAnnualBalance =
   | UnlimitedDaysandHoursResponse
   | LimitedDaysandHoursResponse;
-export const LeavePolicySummaryAnnualBalance =
+const LeavePolicySummaryAnnualBalance =
   S.Unknown as any as S.Schema<LeavePolicySummaryAnnualBalance>;
 
 /** The annual entitlement represents what an employee is entitled to in the current entitlement period. It does not account for any accrued value. */
 export type LeavePolicySummaryAnnualEntitlement =
   | UnlimitedDaysandHoursResponse
   | LimitedDaysandHoursResponse;
-export const LeavePolicySummaryAnnualEntitlement =
+const LeavePolicySummaryAnnualEntitlement =
   S.Unknown as any as S.Schema<LeavePolicySummaryAnnualEntitlement>;
 
 /** The balance is the entitlement minus the taken timeoff (i.e 10 entitlement - 3 taken = 7 balance) */
 export type LeavePolicySummaryBalance = UnlimitedDaysandHoursResponse | LimitedDaysandHoursResponse;
-export const LeavePolicySummaryBalance = S.Unknown as any as S.Schema<LeavePolicySummaryBalance>;
+const LeavePolicySummaryBalance = S.Unknown as any as S.Schema<LeavePolicySummaryBalance>;
 
 export type LeavePolicySummaryBookedType = "limited";
-export const LeavePolicySummaryBookedType = S.String;
+const LeavePolicySummaryBookedType = S.String;
 
 /** Includes all upcoming requested time off. */
 export interface LeavePolicySummaryBooked {
@@ -12205,7 +11566,7 @@ export interface LeavePolicySummaryBooked {
   hours: number;
   type: LeavePolicySummaryBookedType;
 }
-export const LeavePolicySummaryBooked = /*@__PURE__*/ S.suspend(() =>
+const LeavePolicySummaryBooked = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     days: S.Number,
     hours: S.Number,
@@ -12217,7 +11578,7 @@ export const LeavePolicySummaryBooked = /*@__PURE__*/ S.suspend(() =>
 export type LeavePolicySummaryCurrentEntitlement =
   | UnlimitedDaysandHoursResponse
   | LimitedDaysandHoursResponse;
-export const LeavePolicySummaryCurrentEntitlement =
+const LeavePolicySummaryCurrentEntitlement =
   S.Unknown as any as S.Schema<LeavePolicySummaryCurrentEntitlement>;
 
 /** The type of leave a time off record or leave policy represents. Responses may return any of these values. The set is a superset of the values accepted when creating a time off record (see `TimeoffType`): employments on the newer leave-type model can hold leave types that are not bookable by name. */
@@ -12270,17 +11631,15 @@ export type EmployeeLeavePolicyLeavePolicyVariantIdCase1 =
   | "business_trip_non_eu"
   | "training"
   | "sustainable_employability";
-export const EmployeeLeavePolicyLeavePolicyVariantIdCase1 = S.String;
-
 /** The ID of the leave policy variant */
 export type EmployeeLeavePolicyLeavePolicyVariantId =
   | string
   | EmployeeLeavePolicyLeavePolicyVariantIdCase1;
-export const EmployeeLeavePolicyLeavePolicyVariantId =
+const EmployeeLeavePolicyLeavePolicyVariantId =
   S.Unknown as any as S.Schema<EmployeeLeavePolicyLeavePolicyVariantId>;
 
 export type EmployeeLeavePolicyUnit = "days" | "hours" | "unlimited";
-export const EmployeeLeavePolicyUnit = S.String;
+const EmployeeLeavePolicyUnit = S.String;
 
 /** Leave Policy abstraction representation for the employee */
 export interface EmployeeLeavePolicy {
@@ -12291,7 +11650,7 @@ export interface EmployeeLeavePolicy {
   name: string;
   unit: EmployeeLeavePolicyUnit;
 }
-export const EmployeeLeavePolicy = /*@__PURE__*/ S.suspend(() =>
+const EmployeeLeavePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.NullOr(S.String),
     leave_policy_variant_id: EmployeeLeavePolicyLeavePolicyVariantId,
@@ -12302,64 +11661,53 @@ export const EmployeeLeavePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmployeeLeavePolicy" }) as any as S.Schema<EmployeeLeavePolicy>;
 
 export type LeavePolicySummaryPendingApprovalType = "limited";
-export const LeavePolicySummaryPendingApprovalType = S.String;
-
 /** Includes requested timeoffs (not approved) in the past or in the future. */
 export interface LeavePolicySummaryPendingApproval {
   days: number;
   hours: number;
   type: LeavePolicySummaryPendingApprovalType;
 }
-export const LeavePolicySummaryPendingApproval =
+const LeavePolicySummaryPendingApproval =
   LimitedDaysandHoursResponse as any as S.Schema<LeavePolicySummaryPendingApproval>;
 
 export type LeavePolicySummaryTakenType = "limited";
-export const LeavePolicySummaryTakenType = S.String;
-
 /** Includes all time off (past and future, pending or approved). */
 export interface LeavePolicySummaryTaken {
   days: number;
   hours: number;
   type: LeavePolicySummaryTakenType;
 }
-export const LeavePolicySummaryTaken =
+const LeavePolicySummaryTaken =
   LeavePolicySummaryBooked as any as S.Schema<LeavePolicySummaryTaken>;
 
 export type LeavePolicySummaryUpcomingApprovedType = "limited";
-export const LeavePolicySummaryUpcomingApprovedType = S.String;
-
 /** Includes all upcoming approved time off. */
 export interface LeavePolicySummaryUpcomingApproved {
   days: number;
   hours: number;
   type: LeavePolicySummaryUpcomingApprovedType;
 }
-export const LeavePolicySummaryUpcomingApproved =
+const LeavePolicySummaryUpcomingApproved =
   LimitedDaysandHoursResponse as any as S.Schema<LeavePolicySummaryUpcomingApproved>;
 
 export type LeavePolicySummaryUpcomingRequestedType = "limited";
-export const LeavePolicySummaryUpcomingRequestedType = S.String;
-
 /** Includes all upcoming requested time off. */
 export interface LeavePolicySummaryUpcomingRequested {
   days: number;
   hours: number;
   type: LeavePolicySummaryUpcomingRequestedType;
 }
-export const LeavePolicySummaryUpcomingRequested =
+const LeavePolicySummaryUpcomingRequested =
   LimitedDaysandHoursResponse as any as S.Schema<LeavePolicySummaryUpcomingRequested>;
 
 export type LeavePolicySummaryUsedType = "limited";
-export const LeavePolicySummaryUsedType = S.String;
-
 /** Includes only approved time off in the past. */
 export interface LeavePolicySummaryUsed {
   days: number;
   hours: number;
   type: LeavePolicySummaryUsedType;
 }
-export const LeavePolicySummaryUsed =
-  LeavePolicySummaryBooked as any as S.Schema<LeavePolicySummaryUsed>;
+const LeavePolicySummaryUsed = LeavePolicySummaryBooked as any as S.Schema<LeavePolicySummaryUsed>;
 
 /** Leave Policy Summary */
 export interface LeavePolicySummary {
@@ -12386,7 +11734,7 @@ export interface LeavePolicySummary {
   used: LeavePolicySummaryUsed;
   working_hours_per_day: number;
 }
-export const LeavePolicySummary = /*@__PURE__*/ S.suspend(() =>
+const LeavePolicySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annual_balance: LeavePolicySummaryAnnualBalance,
     annual_entitlement: LeavePolicySummaryAnnualEntitlement,
@@ -12404,7 +11752,7 @@ export const LeavePolicySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LeavePolicySummary" }) as any as S.Schema<LeavePolicySummary>;
 
 export type ListLeavePoliciesSummaryResponseDataList = Array<LeavePolicySummary>;
-export const ListLeavePoliciesSummaryResponseDataList = /*@__PURE__*/ S.Array(
+const ListLeavePoliciesSummaryResponseDataList = /*@__PURE__*/ S.Array(
   LeavePolicySummary,
 ) as any as S.Schema<ListLeavePoliciesSummaryResponseDataList>;
 
@@ -12412,7 +11760,7 @@ export const ListLeavePoliciesSummaryResponseDataList = /*@__PURE__*/ S.Array(
 export interface ListLeavePoliciesSummaryResponse {
   data: ListLeavePoliciesSummaryResponseDataList;
 }
-export const ListLeavePoliciesSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLeavePoliciesSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListLeavePoliciesSummaryResponseDataList,
   }),
@@ -12426,7 +11774,7 @@ export interface GetEmployeePayslipFilesRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmployeePayslipFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeePayslipFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -12440,7 +11788,7 @@ export interface PayslipFileCurrency {
   /** The currency symbol */
   symbol: string;
 }
-export const PayslipFileCurrency = /*@__PURE__*/ S.suspend(() =>
+const PayslipFileCurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.NullOr(S.String),
     symbol: S.String,
@@ -12455,7 +11803,7 @@ export interface PayslipFileNetSalary {
   rate?: string;
   source_amount?: number | null;
 }
-export const PayslipFileNetSalary = /*@__PURE__*/ S.suspend(() =>
+const PayslipFileNetSalary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     converted_amount: S.optional(S.NullOr(S.Number)),
     converter: S.optional(S.NullOr(S.String)),
@@ -12475,7 +11823,7 @@ export interface PayslipFile {
   period_end?: string | null;
   period_start?: string | null;
 }
-export const PayslipFile = /*@__PURE__*/ S.suspend(() =>
+const PayslipFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.NullOr(PayslipFileCurrency)),
     id: S.String,
@@ -12487,7 +11835,7 @@ export const PayslipFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayslipFile" }) as any as S.Schema<PayslipFile>;
 
 export type ListPayslipFilesResponseDataPayslipFilesList = Array<PayslipFile>;
-export const ListPayslipFilesResponseDataPayslipFilesList = /*@__PURE__*/ S.Array(
+const ListPayslipFilesResponseDataPayslipFilesList = /*@__PURE__*/ S.Array(
   PayslipFile,
 ) as any as S.Schema<ListPayslipFilesResponseDataPayslipFilesList>;
 
@@ -12500,7 +11848,7 @@ export interface ListPayslipFilesResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListPayslipFilesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListPayslipFilesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     payslip_files: S.optional(ListPayslipFilesResponseDataPayslipFilesList),
@@ -12515,7 +11863,7 @@ export const ListPayslipFilesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListPayslipFilesResponse {
   data?: ListPayslipFilesResponseData;
 }
-export const ListPayslipFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPayslipFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPayslipFilesResponseData),
   }),
@@ -12527,7 +11875,7 @@ export interface GetEmployeePayslipsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmployeePayslipsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeePayslipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -12542,7 +11890,7 @@ export interface PayslipItemFile {
   name?: string;
   slug?: string;
 }
-export const PayslipItemFile = /*@__PURE__*/ S.suspend(() =>
+const PayslipItemFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inserted_at: S.optional(S.String),
     name: S.optional(S.String),
@@ -12557,7 +11905,7 @@ export interface PayslipItemPayrollRun {
   period_start?: string;
   type?: string;
 }
-export const PayslipItemPayrollRun = /*@__PURE__*/ S.suspend(() =>
+const PayslipItemPayrollRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expected_payout_date: S.optional(S.NullOr(S.String)),
     period_end: S.optional(S.String),
@@ -12575,7 +11923,7 @@ export interface PayslipItemPayslip {
   net_salary?: unknown | null;
   slug?: string;
 }
-export const PayslipItemPayslip = /*@__PURE__*/ S.suspend(() =>
+const PayslipItemPayslip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_compensation: S.optional(S.NullOr(S.Unknown)),
     has_content_layout: S.optional(S.Boolean),
@@ -12596,7 +11944,7 @@ export interface PayslipItem {
   /** Payslip data */
   payslip: PayslipItemPayslip;
 }
-export const PayslipItem = /*@__PURE__*/ S.suspend(() =>
+const PayslipItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: PayslipItemFile,
     has_employee_payroll_overviews: S.Boolean,
@@ -12607,7 +11955,7 @@ export const PayslipItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayslipItem" }) as any as S.Schema<PayslipItem>;
 
 export type ListEmployeePayslipsResponseDataPayslipsList = Array<PayslipItem>;
-export const ListEmployeePayslipsResponseDataPayslipsList = /*@__PURE__*/ S.Array(
+const ListEmployeePayslipsResponseDataPayslipsList = /*@__PURE__*/ S.Array(
   PayslipItem,
 ) as any as S.Schema<ListEmployeePayslipsResponseDataPayslipsList>;
 
@@ -12620,7 +11968,7 @@ export interface ListEmployeePayslipsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListEmployeePayslipsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListEmployeePayslipsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     payslips: S.optional(ListEmployeePayslipsResponseDataPayslipsList),
@@ -12635,7 +11983,7 @@ export const ListEmployeePayslipsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListEmployeePayslipsResponse {
   data?: ListEmployeePayslipsResponseData;
 }
-export const ListEmployeePayslipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmployeePayslipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListEmployeePayslipsResponseData),
   }),
@@ -12645,19 +11993,17 @@ export const ListEmployeePayslipsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1 = "latest";
-export const GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1 = S.String;
-
 export type GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
   | number
   | GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1;
-export const GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
+const GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion>;
 
 export interface GetEmployeePersonalDetailsRequest {
   /** Version of the personal_details form schema */
   personal_details_json_schema_version?: GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion;
 }
-export const GetEmployeePersonalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeePersonalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personal_details_json_schema_version: S.optional(
       GetEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -12668,7 +12014,7 @@ export const GetEmployeePersonalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeePersonalDetailsRequest>;
 
 export interface GetEmployeePersonalInformationRequest {}
-export const GetEmployeePersonalInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeePersonalInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/employee/personal-information", code: 200 })),
 ).annotate({
   identifier: "GetEmployeePersonalInformationRequest",
@@ -12680,7 +12026,7 @@ export interface GetEmployeeTimeoffRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmployeeTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -12690,7 +12036,7 @@ export const GetEmployeeTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEmployeeTimeoffRequest>;
 
 export type ListTimeoffResponseDataTimeoffsList = Array<Timeoff>;
-export const ListTimeoffResponseDataTimeoffsList = /*@__PURE__*/ S.Array(
+const ListTimeoffResponseDataTimeoffsList = /*@__PURE__*/ S.Array(
   Timeoff,
 ) as any as S.Schema<ListTimeoffResponseDataTimeoffsList>;
 
@@ -12703,7 +12049,7 @@ export interface ListTimeoffResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListTimeoffResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListTimeoffResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     timeoffs: S.optional(ListTimeoffResponseDataTimeoffsList),
@@ -12716,7 +12062,7 @@ export const ListTimeoffResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListTimeoffResponse {
   data?: ListTimeoffResponseData;
 }
-export const ListTimeoffResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTimeoffResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListTimeoffResponseData),
   }),
@@ -12728,7 +12074,7 @@ export interface GetEmployeeTimesheetsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmployeeTimesheetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmployeeTimesheetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -12743,7 +12089,7 @@ export interface GetEmploymentRequest {
   /** Whether files should be excluded */
   exclude_files?: boolean;
 }
-export const GetEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     exclude_files: S.optional(S.Boolean.pipe(T.Query())),
@@ -12752,14 +12098,14 @@ export const GetEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** How often Remote bills the employer for management fees. Annual billing typically offers a discount. */
 export type PricingPlanDetailsFrequency = "annually" | "monthly";
-export const PricingPlanDetailsFrequency = S.String;
+const PricingPlanDetailsFrequency = S.String;
 
 /** Selected type of payment. */
 export interface PricingPlanDetails {
   /** How often Remote bills the employer for management fees. Annual billing typically offers a discount. */
   frequency: PricingPlanDetailsFrequency;
 }
-export const PricingPlanDetails = /*@__PURE__*/ S.suspend(() =>
+const PricingPlanDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequency: PricingPlanDetailsFrequency,
   }),
@@ -12771,7 +12117,7 @@ export type EmploymentShowResponseDataEmploymentType =
   | "contractor"
   | "direct_employee"
   | "global_payroll_employee";
-export const EmploymentShowResponseDataEmploymentType = S.String;
+const EmploymentShowResponseDataEmploymentType = S.String;
 
 /** Contractor-specific settings. Only present for contractor employments. */
 export interface EmploymentShowResponseDataEmploymentContractorSettings {
@@ -12780,7 +12126,7 @@ export interface EmploymentShowResponseDataEmploymentContractorSettings {
   /** Whether the contractor requires work confirmation before submitting invoices. */
   requires_work_confirmation?: boolean;
 }
-export const EmploymentShowResponseDataEmploymentContractorSettings = /*@__PURE__*/ S.suspend(() =>
+const EmploymentShowResponseDataEmploymentContractorSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     charges_vat: S.optional(S.Boolean),
     requires_work_confirmation: S.optional(S.Boolean),
@@ -12791,32 +12137,31 @@ export const EmploymentShowResponseDataEmploymentContractorSettings = /*@__PURE_
 
 /** Type of contractor product. Only present for contractor employments. 'standard' for Contractor Standard, 'cor' for Contractor of Record, 'plus' for Contractor Plus. */
 export type EmploymentShowResponseDataEmploymentContractorType = "standard" | "cor" | "plus";
-export const EmploymentShowResponseDataEmploymentContractorType = S.String;
+const EmploymentShowResponseDataEmploymentContractorType = S.String;
 
 export interface EmploymentShowResponseDataEmploymentContractorRateAmountCurrency {
   /** Currency code (e.g., USD, EUR) */
   code?: string;
 }
-export const EmploymentShowResponseDataEmploymentContractorRateAmountCurrency =
-  /*@__PURE__*/ S.suspend(() =>
+const EmploymentShowResponseDataEmploymentContractorRateAmountCurrency = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       code: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "EmploymentShowResponseDataEmploymentContractorRateAmountCurrency",
-  }) as any as S.Schema<EmploymentShowResponseDataEmploymentContractorRateAmountCurrency>;
+).annotate({
+  identifier: "EmploymentShowResponseDataEmploymentContractorRateAmountCurrency",
+}) as any as S.Schema<EmploymentShowResponseDataEmploymentContractorRateAmountCurrency>;
 
 export interface EmploymentShowResponseDataEmploymentContractorRateAmount {
   /** Rate amount as decimal */
   amount?: number;
   currency?: EmploymentShowResponseDataEmploymentContractorRateAmountCurrency;
 }
-export const EmploymentShowResponseDataEmploymentContractorRateAmount = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      amount: S.optional(S.Number),
-      currency: S.optional(EmploymentShowResponseDataEmploymentContractorRateAmountCurrency),
-    }),
+const EmploymentShowResponseDataEmploymentContractorRateAmount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amount: S.optional(S.Number),
+    currency: S.optional(EmploymentShowResponseDataEmploymentContractorRateAmountCurrency),
+  }),
 ).annotate({
   identifier: "EmploymentShowResponseDataEmploymentContractorRateAmount",
 }) as any as S.Schema<EmploymentShowResponseDataEmploymentContractorRateAmount>;
@@ -12827,7 +12172,7 @@ export type EmploymentShowResponseDataEmploymentContractorRatePayFrequency =
   | "bi_weekly"
   | "semi_monthly"
   | "monthly";
-export const EmploymentShowResponseDataEmploymentContractorRatePayFrequency = S.String;
+const EmploymentShowResponseDataEmploymentContractorRatePayFrequency = S.String;
 
 /** Rate type indicating billing frequency */
 export type EmploymentShowResponseDataEmploymentContractorRateType =
@@ -12836,7 +12181,7 @@ export type EmploymentShowResponseDataEmploymentContractorRateType =
   | "weekly"
   | "monthly"
   | "one_off";
-export const EmploymentShowResponseDataEmploymentContractorRateType = S.String;
+const EmploymentShowResponseDataEmploymentContractorRateType = S.String;
 
 /** Contractor compensation rate details. Only present for contractor employments when rate is configured. */
 export interface EmploymentShowResponseDataEmploymentContractorRate {
@@ -12848,7 +12193,7 @@ export interface EmploymentShowResponseDataEmploymentContractorRate {
   /** Rate type indicating billing frequency */
   type?: EmploymentShowResponseDataEmploymentContractorRateType;
 }
-export const EmploymentShowResponseDataEmploymentContractorRate = /*@__PURE__*/ S.suspend(() =>
+const EmploymentShowResponseDataEmploymentContractorRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(EmploymentShowResponseDataEmploymentContractorRateAmount),
     pay_frequency: S.optional(
@@ -12863,25 +12208,23 @@ export const EmploymentShowResponseDataEmploymentContractorRate = /*@__PURE__*/ 
 
 /** For the employment models `peo` and `global_payroll`, only [List employments](#operation/get_index_employment) and [Show employment](#operation/get_show_employment) operations are available. */
 export type EmploymentShowResponseDataEmploymentEmploymentModel = "global_payroll" | "peo" | "eor";
-export const EmploymentShowResponseDataEmploymentEmploymentModel = S.String;
+const EmploymentShowResponseDataEmploymentEmploymentModel = S.String;
 
 export type NullableCountryContractorProductsAvailableItem = "standard" | "plus" | "cor";
-export const NullableCountryContractorProductsAvailableItem = S.String;
-
 /** Contractor product names available for this country */
 export type NullableCountryContractorProductsAvailableList =
   Array<NullableCountryContractorProductsAvailableItem>;
-export const NullableCountryContractorProductsAvailableList =
+const NullableCountryContractorProductsAvailableList =
   TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<NullableCountryContractorProductsAvailableList>;
 
 /** Administrative subdivisions of the country (e.g., states, provinces, districts). Null if the country has no subdivisions relevant to Remote's services. */
 export type NullableCountryCountrySubdivisionsList = Array<CountrySubdivision>;
-export const NullableCountryCountrySubdivisionsList =
+const NullableCountryCountrySubdivisionsList =
   CountryCountrySubdivisionsList as any as S.Schema<NullableCountryCountrySubdivisionsList>;
 
 /** The list of JSON schema form names available for this country (e.g., "address_details", "contract_details"). Use these with the Show form schema endpoint to get country-specific field requirements. */
 export type NullableCountrySupportedJsonSchemasList = Array<string>;
-export const NullableCountrySupportedJsonSchemasList =
+const NullableCountrySupportedJsonSchemasList =
   ProductFeaturesList as any as S.Schema<NullableCountrySupportedJsonSchemasList>;
 
 /** A supported country on Remote */
@@ -12909,7 +12252,7 @@ export interface NullableCountry {
   /** The list of JSON schema form names available for this country (e.g., "address_details", "contract_details"). Use these with the Show form schema endpoint to get country-specific field requirements. */
   supported_json_schemas?: NullableCountrySupportedJsonSchemasList;
 }
-export const NullableCountry = /*@__PURE__*/ S.suspend(() =>
+const NullableCountry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alpha_2_code: S.String,
     code: S.String,
@@ -12926,18 +12269,18 @@ export const NullableCountry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NullableCountry" }) as any as S.Schema<NullableCountry>;
 
 export type EmploymentShowResponseDataEmploymentBankAccountDetailsList = Array<unknown>;
-export const EmploymentShowResponseDataEmploymentBankAccountDetailsList = /*@__PURE__*/ S.Array(
+const EmploymentShowResponseDataEmploymentBankAccountDetailsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EmploymentShowResponseDataEmploymentBankAccountDetailsList>;
 
 /** Documents associated with this employment (e.g., contracts, tax forms, identity documents). */
 export type EmploymentShowResponseDataEmploymentFilesList = Array<File>;
-export const EmploymentShowResponseDataEmploymentFilesList =
+const EmploymentShowResponseDataEmploymentFilesList =
   ExpenseReceiptsList as any as S.Schema<EmploymentShowResponseDataEmploymentFilesList>;
 
 /** The status of the task */
 export type TaskDescriptionStatus = "completed" | "pending";
-export const TaskDescriptionStatus = S.String;
+const TaskDescriptionStatus = S.String;
 
 /** Description and status of an onboarding task. */
 export interface TaskDescription {
@@ -12946,7 +12289,7 @@ export interface TaskDescription {
   /** The status of the task */
   status?: TaskDescriptionStatus;
 }
-export const TaskDescription = /*@__PURE__*/ S.suspend(() =>
+const TaskDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     status: S.optional(TaskDescriptionStatus),
@@ -12965,7 +12308,7 @@ export interface OnboardingTasks {
   personal_details: TaskDescription;
   pricing_plan_details: TaskDescription;
 }
-export const OnboardingTasks = /*@__PURE__*/ S.suspend(() =>
+const OnboardingTasks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_details: TaskDescription,
     administrative_details: TaskDescription,
@@ -13065,7 +12408,7 @@ export interface EmploymentShowResponseDataEmployment {
   /** Most updated termination date for the offboarding. This date is subject to change through the offboarding process even after it is finalized. */
   termination_date?: string | null;
 }
-export const EmploymentShowResponseDataEmployment = /*@__PURE__*/ S.suspend(() =>
+const EmploymentShowResponseDataEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personal_details: S.Unknown,
     short_id: S.optional(S.String),
@@ -13124,7 +12467,7 @@ export const EmploymentShowResponseDataEmployment = /*@__PURE__*/ S.suspend(() =
 export interface EmploymentShowResponseData {
   employment?: EmploymentShowResponseDataEmployment;
 }
-export const EmploymentShowResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentShowResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment: S.optional(EmploymentShowResponseDataEmployment),
   }),
@@ -13136,7 +12479,7 @@ export const EmploymentShowResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface EmploymentShowResponse {
   data: EmploymentShowResponseData;
 }
-export const EmploymentShowResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentShowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentShowResponseData,
   }),
@@ -13148,7 +12491,7 @@ export interface GetEmploymentBackgroundCheckRequest {
   /** Background Check Id */
   background_check_id: string;
 }
-export const GetEmploymentBackgroundCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentBackgroundCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     background_check_id: S.String.pipe(T.Label()),
@@ -13173,7 +12516,7 @@ export type BackgroundChecksBackgroundCheckRequestItemStatus =
   | "approved"
   | "rejected"
   | "canceled";
-export const BackgroundChecksBackgroundCheckRequestItemStatus = S.String;
+const BackgroundChecksBackgroundCheckRequestItemStatus = S.String;
 
 export interface BackgroundChecksBackgroundCheckRequestItem {
   /** Unique identifier of the background check request item */
@@ -13185,7 +12528,7 @@ export interface BackgroundChecksBackgroundCheckRequestItem {
   /** Type of background check (e.g. criminal, education) */
   type: string;
 }
-export const BackgroundChecksBackgroundCheckRequestItem = /*@__PURE__*/ S.suspend(() =>
+const BackgroundChecksBackgroundCheckRequestItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: BackgroundChecksBackgroundCheckRequestItemStatus,
@@ -13199,7 +12542,7 @@ export const BackgroundChecksBackgroundCheckRequestItem = /*@__PURE__*/ S.suspen
 /** Individual checks that make up this background check request */
 export type BackgroundChecksBackgroundCheckBackgroundCheckRequestItemsList =
   Array<BackgroundChecksBackgroundCheckRequestItem>;
-export const BackgroundChecksBackgroundCheckBackgroundCheckRequestItemsList = /*@__PURE__*/ S.Array(
+const BackgroundChecksBackgroundCheckBackgroundCheckRequestItemsList = /*@__PURE__*/ S.Array(
   BackgroundChecksBackgroundCheckRequestItem,
 ) as any as S.Schema<BackgroundChecksBackgroundCheckBackgroundCheckRequestItemsList>;
 
@@ -13212,7 +12555,7 @@ export type BackgroundChecksBackgroundCheckStatus =
   | "rejected"
   | "canceled"
   | "submission_failed";
-export const BackgroundChecksBackgroundCheckStatus = S.String;
+const BackgroundChecksBackgroundCheckStatus = S.String;
 
 export interface BackgroundChecksBackgroundCheck {
   /** Individual checks that make up this background check request */
@@ -13225,7 +12568,7 @@ export interface BackgroundChecksBackgroundCheck {
   /** Overall status of the background check request */
   status: BackgroundChecksBackgroundCheckStatus;
 }
-export const BackgroundChecksBackgroundCheck = /*@__PURE__*/ S.suspend(() =>
+const BackgroundChecksBackgroundCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     background_check_request_items: BackgroundChecksBackgroundCheckBackgroundCheckRequestItemsList,
     created_at: S.String,
@@ -13240,7 +12583,7 @@ export const BackgroundChecksBackgroundCheck = /*@__PURE__*/ S.suspend(() =>
 export interface BackgroundChecksBackgroundCheckResponseData {
   background_check: BackgroundChecksBackgroundCheck;
 }
-export const BackgroundChecksBackgroundCheckResponseData = /*@__PURE__*/ S.suspend(() =>
+const BackgroundChecksBackgroundCheckResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     background_check: BackgroundChecksBackgroundCheck,
   }),
@@ -13252,7 +12595,7 @@ export const BackgroundChecksBackgroundCheckResponseData = /*@__PURE__*/ S.suspe
 export interface BackgroundChecksBackgroundCheckResponse {
   data: BackgroundChecksBackgroundCheckResponseData;
 }
-export const BackgroundChecksBackgroundCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const BackgroundChecksBackgroundCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BackgroundChecksBackgroundCheckResponseData,
   }),
@@ -13263,13 +12606,10 @@ export const BackgroundChecksBackgroundCheckResponse = /*@__PURE__*/ S.suspend((
 /** Use latest version */
 export type GetEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersionCase1 =
   "latest";
-export const GetEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersionCase1 =
-  S.String;
-
 export type GetEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersion =
   | number
   | GetEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersionCase1;
-export const GetEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersion =
+const GetEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersion>;
 
 export interface GetEmploymentBasicInformationRequest {
@@ -13280,7 +12620,7 @@ export interface GetEmploymentBasicInformationRequest {
   /** When true, returns `tax_servicing_countries` grouped into global/regions/subregions instead of a flat list of country names. */
   group_tax_servicing_countries?: boolean;
 }
-export const GetEmploymentBasicInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentBasicInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     employment_basic_information_json_schema_version: S.optional(
@@ -13304,7 +12644,7 @@ export interface GetEmploymentBenefitOffersRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmploymentBenefitOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentBenefitOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -13320,7 +12660,7 @@ export interface UnifiedMinimalBenefitGroup {
   name: string | null;
   slug: string;
 }
-export const UnifiedMinimalBenefitGroup = /*@__PURE__*/ S.suspend(() =>
+const UnifiedMinimalBenefitGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.NullOr(S.String),
     slug: S.String,
@@ -13334,7 +12674,7 @@ export interface UnifiedEmploymentBenefitGroup {
   name: string | null;
   slug: string;
 }
-export const UnifiedEmploymentBenefitGroup = /*@__PURE__*/ S.suspend(() =>
+const UnifiedEmploymentBenefitGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.NullOr(UnifiedMinimalBenefitGroup),
     name: S.NullOr(S.String),
@@ -13349,7 +12689,7 @@ export interface UnifiedEmploymentBenefitTier {
   name?: string;
   slug?: string;
 }
-export const UnifiedEmploymentBenefitTier = /*@__PURE__*/ S.suspend(() =>
+const UnifiedEmploymentBenefitTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display_cost: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -13364,7 +12704,7 @@ export interface UnifiedEmploymentBenefitOffer {
   benefit_group: UnifiedEmploymentBenefitGroup;
   benefit_tier: UnifiedEmploymentBenefitTier | null;
 }
-export const UnifiedEmploymentBenefitOffer = /*@__PURE__*/ S.suspend(() =>
+const UnifiedEmploymentBenefitOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_group: UnifiedEmploymentBenefitGroup,
     benefit_tier: S.NullOr(UnifiedEmploymentBenefitTier),
@@ -13375,7 +12715,7 @@ export const UnifiedEmploymentBenefitOffer = /*@__PURE__*/ S.suspend(() =>
 
 export type EmploymentsBenefitOffersListBenefitOffersDataList =
   Array<UnifiedEmploymentBenefitOffer>;
-export const EmploymentsBenefitOffersListBenefitOffersDataList = /*@__PURE__*/ S.Array(
+const EmploymentsBenefitOffersListBenefitOffersDataList = /*@__PURE__*/ S.Array(
   UnifiedEmploymentBenefitOffer,
 ) as any as S.Schema<EmploymentsBenefitOffersListBenefitOffersDataList>;
 
@@ -13383,7 +12723,7 @@ export const EmploymentsBenefitOffersListBenefitOffersDataList = /*@__PURE__*/ S
 export interface EmploymentsBenefitOffersListBenefitOffers {
   data: EmploymentsBenefitOffersListBenefitOffersDataList;
 }
-export const EmploymentsBenefitOffersListBenefitOffers = /*@__PURE__*/ S.suspend(() =>
+const EmploymentsBenefitOffersListBenefitOffers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentsBenefitOffersListBenefitOffersDataList,
   }),
@@ -13393,12 +12733,10 @@ export const EmploymentsBenefitOffersListBenefitOffers = /*@__PURE__*/ S.suspend
 
 /** Use latest version */
 export type GetEmploymentBenefitOffersSchemaRequestJsonSchemaVersionCase1 = "latest";
-export const GetEmploymentBenefitOffersSchemaRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetEmploymentBenefitOffersSchemaRequestJsonSchemaVersion =
   | number
   | GetEmploymentBenefitOffersSchemaRequestJsonSchemaVersionCase1;
-export const GetEmploymentBenefitOffersSchemaRequestJsonSchemaVersion =
+const GetEmploymentBenefitOffersSchemaRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetEmploymentBenefitOffersSchemaRequestJsonSchemaVersion>;
 
 export interface GetEmploymentBenefitOffersSchemaRequest {
@@ -13407,7 +12745,7 @@ export interface GetEmploymentBenefitOffersSchemaRequest {
   /** Version of the form schema */
   json_schema_version?: GetEmploymentBenefitOffersSchemaRequestJsonSchemaVersion;
 }
-export const GetEmploymentBenefitOffersSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentBenefitOffersSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     json_schema_version: S.optional(
@@ -13427,19 +12765,19 @@ export const GetEmploymentBenefitOffersSchemaRequest = /*@__PURE__*/ S.suspend((
 export type UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaPropertiesMap =
+const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaPropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
   ) as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaPropertiesMap>;
 
 export type UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList = Array<string>;
-export const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList =
+const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList>;
 
 export type UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList =
   Array<string>;
-export const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList =
+const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList>;
 
 export interface UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema {
@@ -13447,17 +12785,16 @@ export interface UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema {
   required?: UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList;
   x_jsf_order?: UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList;
 }
-export const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      properties: UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaPropertiesMap,
-      required: S.optional(UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList),
-      x_jsf_order: S.optional(
-        UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList.pipe(
-          T.Body("x-jsf-order"),
-        ),
+const UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaPropertiesMap,
+    required: S.optional(UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaRequiredList),
+    x_jsf_order: S.optional(
+      UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchemaXJsfOrderList.pipe(
+        T.Body("x-jsf-order"),
       ),
-    }),
+    ),
+  }),
 ).annotate({
   identifier: "UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema",
 }) as any as S.Schema<UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema>;
@@ -13467,7 +12804,7 @@ export interface UnifiedEmploymentsBenefitOffersJSONSchemaResponseData {
   schema?: UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema;
   version?: number;
 }
-export const UnifiedEmploymentsBenefitOffersJSONSchemaResponseData = /*@__PURE__*/ S.suspend(() =>
+const UnifiedEmploymentsBenefitOffersJSONSchemaResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: S.optional(UnifiedEmploymentsBenefitOffersJSONSchemaResponseDataSchema),
     version: S.optional(S.Number),
@@ -13481,7 +12818,7 @@ export interface UnifiedEmploymentsBenefitOffersJSONSchemaResponse {
   /** JSON Schema */
   data?: UnifiedEmploymentsBenefitOffersJSONSchemaResponseData;
 }
-export const UnifiedEmploymentsBenefitOffersJSONSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const UnifiedEmploymentsBenefitOffersJSONSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(UnifiedEmploymentsBenefitOffersJSONSchemaResponseData),
   }),
@@ -13493,7 +12830,7 @@ export interface GetEmploymentCompanyStructureNodesRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetEmploymentCompanyStructureNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentCompanyStructureNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -13509,14 +12846,14 @@ export const GetEmploymentCompanyStructureNodesRequest = /*@__PURE__*/ S.suspend
 
 /** Arbitrary attributes including legal entity code */
 export type CompanyStructureNodeAttributesMap = { [key: string]: unknown | undefined };
-export const CompanyStructureNodeAttributesMap =
+const CompanyStructureNodeAttributesMap =
   ImportDataRow as any as S.Schema<CompanyStructureNodeAttributesMap>;
 
 export interface CompanyStructureNodeCompanyStructure {
   id?: string;
   name?: string;
 }
-export const CompanyStructureNodeCompanyStructure = /*@__PURE__*/ S.suspend(() =>
+const CompanyStructureNodeCompanyStructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -13527,7 +12864,7 @@ export const CompanyStructureNodeCompanyStructure = /*@__PURE__*/ S.suspend(() =
 
 /** Arbitrary attributes including cost_center */
 export type CompanyStructureNodeParentAttributesMap = { [key: string]: unknown | undefined };
-export const CompanyStructureNodeParentAttributesMap =
+const CompanyStructureNodeParentAttributesMap =
   ImportDataRow as any as S.Schema<CompanyStructureNodeParentAttributesMap>;
 
 export interface CompanyStructureNodeParent {
@@ -13536,7 +12873,7 @@ export interface CompanyStructureNodeParent {
   id?: string;
   name?: string;
 }
-export const CompanyStructureNodeParent = /*@__PURE__*/ S.suspend(() =>
+const CompanyStructureNodeParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(CompanyStructureNodeParentAttributesMap),
     id: S.optional(S.String),
@@ -13553,7 +12890,7 @@ export interface CompanyStructureNode {
   id: string;
   parent?: CompanyStructureNodeParent | null;
 }
-export const CompanyStructureNode = /*@__PURE__*/ S.suspend(() =>
+const CompanyStructureNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(CompanyStructureNodeAttributesMap),
     company_structure: S.optional(CompanyStructureNodeCompanyStructure),
@@ -13564,14 +12901,14 @@ export const CompanyStructureNode = /*@__PURE__*/ S.suspend(() =>
 
 export type CompanyStructureNodesResponseDataCompanyStructureNodesList =
   Array<CompanyStructureNode>;
-export const CompanyStructureNodesResponseDataCompanyStructureNodesList = /*@__PURE__*/ S.Array(
+const CompanyStructureNodesResponseDataCompanyStructureNodesList = /*@__PURE__*/ S.Array(
   CompanyStructureNode,
 ) as any as S.Schema<CompanyStructureNodesResponseDataCompanyStructureNodesList>;
 
 export interface CompanyStructureNodesResponseData {
   company_structure_nodes: CompanyStructureNodesResponseDataCompanyStructureNodesList;
 }
-export const CompanyStructureNodesResponseData = /*@__PURE__*/ S.suspend(() =>
+const CompanyStructureNodesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_structure_nodes: CompanyStructureNodesResponseDataCompanyStructureNodesList,
   }),
@@ -13582,7 +12919,7 @@ export const CompanyStructureNodesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface CompanyStructureNodesResponse {
   data: CompanyStructureNodesResponseData;
 }
-export const CompanyStructureNodesResponse = /*@__PURE__*/ S.suspend(() =>
+const CompanyStructureNodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CompanyStructureNodesResponseData,
   }),
@@ -13593,13 +12930,13 @@ export const CompanyStructureNodesResponse = /*@__PURE__*/ S.suspend(() =>
 export type GetEmploymentContractDocumentsRequestStatusesList = Array<
   ContractorContractDocumentStatus | (string & {})
 >;
-export const GetEmploymentContractDocumentsRequestStatusesList =
+const GetEmploymentContractDocumentsRequestStatusesList =
   TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<GetEmploymentContractDocumentsRequestStatusesList>;
 
 export type GetEmploymentContractDocumentsRequestExceptStatusesList = Array<
   ContractorContractDocumentStatus | (string & {})
 >;
-export const GetEmploymentContractDocumentsRequestExceptStatusesList =
+const GetEmploymentContractDocumentsRequestExceptStatusesList =
   GetEmploymentContractDocumentsRequestStatusesList as any as S.Schema<GetEmploymentContractDocumentsRequestExceptStatusesList>;
 
 export interface GetEmploymentContractDocumentsRequest {
@@ -13614,7 +12951,7 @@ export interface GetEmploymentContractDocumentsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmploymentContractDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentContractDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     statuses: S.optional(GetEmploymentContractDocumentsRequestStatusesList.pipe(T.Query())),
@@ -13632,11 +12969,11 @@ export const GetEmploymentContractDocumentsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Signing method used by this signatory */
 export type ListSignatorySignatureMethod = "in_platform" | "docusign";
-export const ListSignatorySignatureMethod = S.String;
+const ListSignatorySignatureMethod = S.String;
 
 /** Legal signature level applied when signing */
 export type ListSignatorySignatureType = "standard" | "qes" | "aes" | "ses";
-export const ListSignatorySignatureType = S.String;
+const ListSignatorySignatureType = S.String;
 
 /** A signatory on a contract document. For company and employee signatories, `user_id` is provided. For other signatory types, `user_id` is null. */
 export interface ListSignatory {
@@ -13655,7 +12992,7 @@ export interface ListSignatory {
   /** User identifier for internal signatories, null for external signatories */
   user_id?: string | null;
 }
-export const ListSignatory = /*@__PURE__*/ S.suspend(() =>
+const ListSignatory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -13670,7 +13007,7 @@ export const ListSignatory = /*@__PURE__*/ S.suspend(() =>
 
 /** List of signatories for this contract document */
 export type ContractDocumentItemSignatoriesList = Array<ListSignatory>;
-export const ContractDocumentItemSignatoriesList = /*@__PURE__*/ S.Array(
+const ContractDocumentItemSignatoriesList = /*@__PURE__*/ S.Array(
   ListSignatory,
 ) as any as S.Schema<ContractDocumentItemSignatoriesList>;
 
@@ -13690,7 +13027,7 @@ export interface ContractDocumentItem {
   /** Last updated timestamp */
   updated_at: string | null;
 }
-export const ContractDocumentItem = /*@__PURE__*/ S.suspend(() =>
+const ContractDocumentItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     inserted_at: S.String,
@@ -13704,7 +13041,7 @@ export const ContractDocumentItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of contract documents */
 export type IndexContractDocumentsContractDocumentsList = Array<ContractDocumentItem>;
-export const IndexContractDocumentsContractDocumentsList = /*@__PURE__*/ S.Array(
+const IndexContractDocumentsContractDocumentsList = /*@__PURE__*/ S.Array(
   ContractDocumentItem,
 ) as any as S.Schema<IndexContractDocumentsContractDocumentsList>;
 
@@ -13719,7 +13056,7 @@ export interface IndexContractDocuments {
   /** Total number of pages */
   total_pages: number;
 }
-export const IndexContractDocuments = /*@__PURE__*/ S.suspend(() =>
+const IndexContractDocuments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contract_documents: IndexContractDocumentsContractDocumentsList,
     current_page: S.Number,
@@ -13732,7 +13069,7 @@ export const IndexContractDocuments = /*@__PURE__*/ S.suspend(() =>
 export interface IndexContractDocumentsResponse {
   data: IndexContractDocuments;
 }
-export const IndexContractDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const IndexContractDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: IndexContractDocuments,
   }),
@@ -13746,7 +13083,7 @@ export interface GetEmploymentContractsRequest {
   /** Only Active */
   only_active?: boolean;
 }
-export const GetEmploymentContractsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentContractsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Query()),
     only_active: S.optional(S.Boolean.pipe(T.Query())),
@@ -13757,7 +13094,7 @@ export const GetEmploymentContractsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the employee is paid hourly or on a salary basis. Null if not yet set. */
 export type CompensationWageType = "hourly" | "salary";
-export const CompensationWageType = S.String;
+const CompensationWageType = S.String;
 
 export interface Compensation {
   /** The compensation amount in cents. Null if compensation is not yet set. */
@@ -13767,7 +13104,7 @@ export interface Compensation {
   /** Whether the employee is paid hourly or on a salary basis. Null if not yet set. */
   wage_type: CompensationWageType | null;
 }
-export const Compensation = /*@__PURE__*/ S.suspend(() =>
+const Compensation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.NullOr(S.Number),
     currency_code: S.NullOr(S.String),
@@ -13777,7 +13114,7 @@ export const Compensation = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of the employment contract. */
 export type EmploymentContractStatus = "active" | "inactive" | "pending";
-export const EmploymentContractStatus = S.String;
+const EmploymentContractStatus = S.String;
 
 export interface EmploymentContract {
   activated_at: string;
@@ -13794,7 +13131,7 @@ export interface EmploymentContract {
   job_title: string;
   status: EmploymentContractStatus;
 }
-export const EmploymentContract = /*@__PURE__*/ S.suspend(() =>
+const EmploymentContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activated_at: S.String,
     amendment_contract_id: S.NullOr(S.String),
@@ -13809,14 +13146,14 @@ export const EmploymentContract = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmploymentContract" }) as any as S.Schema<EmploymentContract>;
 
 export type ListEmploymentContractResponseDataEmploymentContractsList = Array<EmploymentContract>;
-export const ListEmploymentContractResponseDataEmploymentContractsList = /*@__PURE__*/ S.Array(
+const ListEmploymentContractResponseDataEmploymentContractsList = /*@__PURE__*/ S.Array(
   EmploymentContract,
 ) as any as S.Schema<ListEmploymentContractResponseDataEmploymentContractsList>;
 
 export interface ListEmploymentContractResponseData {
   employment_contracts: ListEmploymentContractResponseDataEmploymentContractsList;
 }
-export const ListEmploymentContractResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentContractResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_contracts: ListEmploymentContractResponseDataEmploymentContractsList,
   }),
@@ -13827,7 +13164,7 @@ export const ListEmploymentContractResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListEmploymentContractResponse {
   data: ListEmploymentContractResponseData;
 }
-export const ListEmploymentContractResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentContractResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListEmploymentContractResponseData,
   }),
@@ -13839,7 +13176,7 @@ export interface GetEmploymentContractsEmploymentPendingChangesRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetEmploymentContractsEmploymentPendingChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentContractsEmploymentPendingChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -13861,7 +13198,7 @@ export interface ContractPendingChanges {
   /** Indicates if the contract is pending an action to be activated when effective_at is reached. If true, it means that an action needs to be performed, either a verification by Remote or a signature from the employer or the employee. If false, then the contract will be active when effective_at is reached. */
   pending_action_for_activation?: boolean;
 }
-export const ContractPendingChanges = /*@__PURE__*/ S.suspend(() =>
+const ContractPendingChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changes: S.Unknown,
     contract_id: S.String,
@@ -13872,14 +13209,14 @@ export const ContractPendingChanges = /*@__PURE__*/ S.suspend(() =>
 
 export type EmploymentContractPendingChangesResponseDataPendingChangesList =
   Array<ContractPendingChanges>;
-export const EmploymentContractPendingChangesResponseDataPendingChangesList = /*@__PURE__*/ S.Array(
+const EmploymentContractPendingChangesResponseDataPendingChangesList = /*@__PURE__*/ S.Array(
   ContractPendingChanges,
 ) as any as S.Schema<EmploymentContractPendingChangesResponseDataPendingChangesList>;
 
 export interface EmploymentContractPendingChangesResponseData {
   pending_changes: EmploymentContractPendingChangesResponseDataPendingChangesList;
 }
-export const EmploymentContractPendingChangesResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentContractPendingChangesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pending_changes: EmploymentContractPendingChangesResponseDataPendingChangesList,
   }),
@@ -13890,7 +13227,7 @@ export const EmploymentContractPendingChangesResponseData = /*@__PURE__*/ S.susp
 export interface EmploymentContractPendingChangesResponse {
   data: EmploymentContractPendingChangesResponseData;
 }
-export const EmploymentContractPendingChangesResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentContractPendingChangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentContractPendingChangesResponseData,
   }),
@@ -13899,7 +13236,7 @@ export const EmploymentContractPendingChangesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EmploymentContractPendingChangesResponse>;
 
 export type GetEmploymentCostCenterAllocationsRequestStatus = "active" | "scheduled" | "expired";
-export const GetEmploymentCostCenterAllocationsRequestStatus = S.String;
+const GetEmploymentCostCenterAllocationsRequestStatus = S.String;
 
 export interface GetEmploymentCostCenterAllocationsRequest {
   /** Employment ID */
@@ -13907,7 +13244,7 @@ export interface GetEmploymentCostCenterAllocationsRequest {
   /** Filters allocations by status. When omitted, allocations of every status are returned. */
   status?: GetEmploymentCostCenterAllocationsRequestStatus | (string & {});
 }
-export const GetEmploymentCostCenterAllocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentCostCenterAllocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     status: S.optional(GetEmploymentCostCenterAllocationsRequestStatus.pipe(T.Query())),
@@ -13924,13 +13261,13 @@ export const GetEmploymentCostCenterAllocationsRequest = /*@__PURE__*/ S.suspend
 
 export type ListCostCenterAllocationsResponseDataCostCenterAllocationsList =
   Array<CostCenterAllocation>;
-export const ListCostCenterAllocationsResponseDataCostCenterAllocationsList =
+const ListCostCenterAllocationsResponseDataCostCenterAllocationsList =
   EmploymentWithCostCenterAllocationsCostCenterAllocationsList as any as S.Schema<ListCostCenterAllocationsResponseDataCostCenterAllocationsList>;
 
 export interface ListCostCenterAllocationsResponseData {
   cost_center_allocations: ListCostCenterAllocationsResponseDataCostCenterAllocationsList;
 }
-export const ListCostCenterAllocationsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListCostCenterAllocationsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cost_center_allocations: ListCostCenterAllocationsResponseDataCostCenterAllocationsList,
   }),
@@ -13942,7 +13279,7 @@ export const ListCostCenterAllocationsResponseData = /*@__PURE__*/ S.suspend(() 
 export interface ListCostCenterAllocationsResponse {
   data: ListCostCenterAllocationsResponseData;
 }
-export const ListCostCenterAllocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCostCenterAllocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCostCenterAllocationsResponseData,
   }),
@@ -13958,7 +13295,7 @@ export interface GetEmploymentCustomFieldsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmploymentCustomFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentCustomFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -13976,7 +13313,7 @@ export type ListEmploymentCustomFieldValueResponseValue =
   | boolean
   | number
   | EmploymentCustomFieldValueJsonValue;
-export const ListEmploymentCustomFieldValueResponseValue =
+const ListEmploymentCustomFieldValueResponseValue =
   S.Unknown as any as S.Schema<ListEmploymentCustomFieldValueResponseValue>;
 
 /** A custom field value as returned in list responses, including the field definition details alongside the value. */
@@ -13989,7 +13326,7 @@ export interface ListEmploymentCustomFieldValueResponse {
   type: string;
   value: ListEmploymentCustomFieldValueResponseValue | null;
 }
-export const ListEmploymentCustomFieldValueResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentCustomFieldValueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_field_id: S.String,
     name: S.String,
@@ -14002,7 +13339,7 @@ export const ListEmploymentCustomFieldValueResponse = /*@__PURE__*/ S.suspend(()
 
 export type ListEmploymentCustomFieldValuePaginatedResponseDataCustomFieldValuesList =
   Array<ListEmploymentCustomFieldValueResponse>;
-export const ListEmploymentCustomFieldValuePaginatedResponseDataCustomFieldValuesList =
+const ListEmploymentCustomFieldValuePaginatedResponseDataCustomFieldValuesList =
   /*@__PURE__*/ S.Array(
     ListEmploymentCustomFieldValueResponse,
   ) as any as S.Schema<ListEmploymentCustomFieldValuePaginatedResponseDataCustomFieldValuesList>;
@@ -14016,7 +13353,7 @@ export interface ListEmploymentCustomFieldValuePaginatedResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListEmploymentCustomFieldValuePaginatedResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentCustomFieldValuePaginatedResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     custom_field_values: S.optional(
@@ -14033,7 +13370,7 @@ export const ListEmploymentCustomFieldValuePaginatedResponseData = /*@__PURE__*/
 export interface ListEmploymentCustomFieldValuePaginatedResponse {
   data?: ListEmploymentCustomFieldValuePaginatedResponseData;
 }
-export const ListEmploymentCustomFieldValuePaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentCustomFieldValuePaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListEmploymentCustomFieldValuePaginatedResponseData),
   }),
@@ -14045,7 +13382,7 @@ export interface GetEmploymentEmploymentAgreementDownloadRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetEmploymentEmploymentAgreementDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentEmploymentAgreementDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -14060,14 +13397,14 @@ export const GetEmploymentEmploymentAgreementDownloadRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetEmploymentEmploymentAgreementDownloadRequest>;
 
 export type GetEmploymentEmploymentAgreementDownloadResponse = string;
-export const GetEmploymentEmploymentAgreementDownloadResponse =
+const GetEmploymentEmploymentAgreementDownloadResponse =
   GetBillingDocumentPdfResponse as any as S.Schema<GetEmploymentEmploymentAgreementDownloadResponse>;
 
 export interface GetEmploymentEmploymentAgreementPreviewRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetEmploymentEmploymentAgreementPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentEmploymentAgreementPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -14083,13 +13420,10 @@ export const GetEmploymentEmploymentAgreementPreviewRequest = /*@__PURE__*/ S.su
 
 export type EmploymentAgreementPreviewResponseDataEmploymentAgreement =
   ContractorInvoicePreviewResponseDataContractorInvoicePreview;
-export const EmploymentAgreementPreviewResponseDataEmploymentAgreement =
-  ContractorInvoicePreviewResponseDataContractorInvoicePreview;
-
 export interface EmploymentAgreementPreviewResponseData {
   employment_agreement: ContractorInvoicePreviewResponseDataContractorInvoicePreview;
 }
-export const EmploymentAgreementPreviewResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentAgreementPreviewResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_agreement: ContractorInvoicePreviewResponseDataContractorInvoicePreview,
   }),
@@ -14101,7 +13435,7 @@ export const EmploymentAgreementPreviewResponseData = /*@__PURE__*/ S.suspend(()
 export interface EmploymentAgreementPreviewResponse {
   data: EmploymentAgreementPreviewResponseData;
 }
-export const EmploymentAgreementPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentAgreementPreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentAgreementPreviewResponseData,
   }),
@@ -14113,7 +13447,7 @@ export interface GetEmploymentEngagementAgreementDetailsRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetEmploymentEngagementAgreementDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentEngagementAgreementDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -14129,7 +13463,7 @@ export const GetEmploymentEngagementAgreementDetailsRequest = /*@__PURE__*/ S.su
 
 export type EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList =
   Array<string>;
-export const EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList =
+const EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList>;
 
 /** A file attached to the engagement agreement details. */
@@ -14139,7 +13473,7 @@ export interface EngagementAgreementDetailsFile {
   /** The file name, including its extension. */
   name: string;
 }
-export const EngagementAgreementDetailsFile = /*@__PURE__*/ S.suspend(() =>
+const EngagementAgreementDetailsFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -14150,17 +13484,17 @@ export const EngagementAgreementDetailsFile = /*@__PURE__*/ S.suspend(() =>
 
 export type EmploymentEngagementAgreementDetailsResponseDataDetailsCbaDocumentList =
   Array<EngagementAgreementDetailsFile>;
-export const EmploymentEngagementAgreementDetailsResponseDataDetailsCbaDocumentList =
+const EmploymentEngagementAgreementDetailsResponseDataDetailsCbaDocumentList =
   /*@__PURE__*/ S.Array(
     EngagementAgreementDetailsFile,
   ) as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsCbaDocumentList>;
 
 export type EmploymentEngagementAgreementDetailsResponseDataDetailsCovenantsList = Array<string>;
-export const EmploymentEngagementAgreementDetailsResponseDataDetailsCovenantsList =
+const EmploymentEngagementAgreementDetailsResponseDataDetailsCovenantsList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsCovenantsList>;
 
 export type EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList = Array<string>;
-export const EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList =
+const EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList =
   ContractorInvoiceScheduleCreateResponseFailureErrorsCurrencyList as any as S.Schema<EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList>;
 
 export interface EmploymentEngagementAgreementDetailsResponseDataDetails {
@@ -14196,7 +13530,7 @@ export interface EmploymentEngagementAgreementDetailsResponseDataDetails {
   work_hours_per_week?: number | null;
   working_days?: EmploymentEngagementAgreementDetailsResponseDataDetailsWorkingDaysList | null;
 }
-export const EmploymentEngagementAgreementDetailsResponseDataDetails = /*@__PURE__*/ S.suspend(() =>
+const EmploymentEngagementAgreementDetailsResponseDataDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowances_details: S.optional(
       S.NullOr(EmploymentEngagementAgreementDetailsResponseDataDetailsAllowancesDetailsList),
@@ -14246,7 +13580,7 @@ export interface EmploymentEngagementAgreementDetailsResponseData {
   details: EmploymentEngagementAgreementDetailsResponseDataDetails;
   slug: string;
 }
-export const EmploymentEngagementAgreementDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentEngagementAgreementDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: EmploymentEngagementAgreementDetailsResponseDataDetails,
     slug: S.String,
@@ -14258,7 +13592,7 @@ export const EmploymentEngagementAgreementDetailsResponseData = /*@__PURE__*/ S.
 export interface EmploymentEngagementAgreementDetailsResponse {
   data: EmploymentEngagementAgreementDetailsResponseData;
 }
-export const EmploymentEngagementAgreementDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentEngagementAgreementDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentEngagementAgreementDetailsResponseData,
   }),
@@ -14270,7 +13604,7 @@ export interface GetEmploymentEngagementAgreementDetailsRequest2 {
   /** Employment ID */
   employment_id: string;
 }
-export const GetEmploymentEngagementAgreementDetailsRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentEngagementAgreementDetailsRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -14296,7 +13630,7 @@ export interface GetEmploymentFilesRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmploymentFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     type: S.optional(S.String.pipe(T.Query())),
@@ -14348,7 +13682,7 @@ export type EmploymentFileType =
   | "termination_reason_file"
   | "timesheet"
   | "visa";
-export const EmploymentFileType = S.String;
+const EmploymentFileType = S.String;
 
 /** A file associated with an employment, such as a contract, tax document, or identity document. */
 export interface EmploymentFile {
@@ -14362,7 +13696,7 @@ export interface EmploymentFile {
   /** The broad category of the file. Contractor Services Agreements (CSAs) are reported here with type "contract" -- see the /contract-documents endpoint for contract-document-specific types. */
   type: EmploymentFileType;
 }
-export const EmploymentFile = /*@__PURE__*/ S.suspend(() =>
+const EmploymentFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     inserted_at: S.String,
@@ -14373,7 +13707,7 @@ export const EmploymentFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmploymentFile" }) as any as S.Schema<EmploymentFile>;
 
 export type ListFilesResponseDataFilesList = Array<EmploymentFile>;
-export const ListFilesResponseDataFilesList = /*@__PURE__*/ S.Array(
+const ListFilesResponseDataFilesList = /*@__PURE__*/ S.Array(
   EmploymentFile,
 ) as any as S.Schema<ListFilesResponseDataFilesList>;
 
@@ -14386,7 +13720,7 @@ export interface ListFilesResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListFilesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     files: S.optional(ListFilesResponseDataFilesList),
@@ -14399,7 +13733,7 @@ export const ListFilesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListFilesResponse {
   data?: ListFilesResponseData;
 }
-export const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListFilesResponseData),
   }),
@@ -14409,7 +13743,7 @@ export interface GetEmploymentJobRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/employments/{employment_id}/job", code: 200 })),
@@ -14422,7 +13756,7 @@ export interface JobAssociation {
   /** The human-readable name of the associated entity. */
   label?: string;
 }
-export const JobAssociation = /*@__PURE__*/ S.suspend(() =>
+const JobAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     label: S.optional(S.String),
@@ -14434,7 +13768,7 @@ export interface JobCustomFieldValuesItemDefinition {
   title?: string;
   type?: string;
 }
-export const JobCustomFieldValuesItemDefinition = /*@__PURE__*/ S.suspend(() =>
+const JobCustomFieldValuesItemDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -14445,14 +13779,13 @@ export const JobCustomFieldValuesItemDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobCustomFieldValuesItemDefinition>;
 
 export type JobCustomFieldValuesItemValue = string | number | boolean;
-export const JobCustomFieldValuesItemValue =
-  S.Unknown as any as S.Schema<JobCustomFieldValuesItemValue>;
+const JobCustomFieldValuesItemValue = S.Unknown as any as S.Schema<JobCustomFieldValuesItemValue>;
 
 export interface JobCustomFieldValuesItem {
   definition?: JobCustomFieldValuesItemDefinition;
   value?: JobCustomFieldValuesItemValue;
 }
-export const JobCustomFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
+const JobCustomFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition: S.optional(JobCustomFieldValuesItemDefinition),
     value: S.optional(JobCustomFieldValuesItemValue),
@@ -14460,7 +13793,7 @@ export const JobCustomFieldValuesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobCustomFieldValuesItem" }) as any as S.Schema<JobCustomFieldValuesItem>;
 
 export type JobCustomFieldValuesList = Array<JobCustomFieldValuesItem>;
-export const JobCustomFieldValuesList = /*@__PURE__*/ S.Array(
+const JobCustomFieldValuesList = /*@__PURE__*/ S.Array(
   JobCustomFieldValuesItem,
 ) as any as S.Schema<JobCustomFieldValuesList>;
 
@@ -14482,7 +13815,7 @@ export interface Job {
   /** The display name of the job (e.g., "Senior Backend Engineer"). */
   label: string;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     career_track: S.optional(S.NullOr(JobAssociation)),
     code: S.optional(S.NullOr(S.String)),
@@ -14500,7 +13833,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 export interface EmploymentJobResponse {
   data: Job;
 }
-export const EmploymentJobResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: Job,
   }),
@@ -14510,7 +13843,7 @@ export interface GetEmploymentOnboardingStepsRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetEmploymentOnboardingStepsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentOnboardingStepsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -14522,11 +13855,11 @@ export const GetEmploymentOnboardingStepsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Step status */
 export type StepStatus = "not_started" | "in_progress" | "completed" | "failed";
-export const StepStatus = S.String;
+const StepStatus = S.String;
 
 /** Substep status */
 export type SubStepStatus = "not_started" | "in_progress" | "completed" | "failed";
-export const SubStepStatus = S.String;
+const SubStepStatus = S.String;
 
 export interface SubStep {
   completed_at?: string | null;
@@ -14544,7 +13877,7 @@ export interface SubStep {
   /** Substep type identifier */
   type: string;
 }
-export const SubStep = /*@__PURE__*/ S.suspend(() =>
+const SubStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed_at: S.optional(S.NullOr(S.String)),
     id: S.String,
@@ -14559,7 +13892,7 @@ export const SubStep = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of substeps for this step */
 export type StepSubStepsList = Array<SubStep>;
-export const StepSubStepsList = /*@__PURE__*/ S.Array(SubStep) as any as S.Schema<StepSubStepsList>;
+const StepSubStepsList = /*@__PURE__*/ S.Array(SubStep) as any as S.Schema<StepSubStepsList>;
 
 export interface Step {
   completed_at?: string | null;
@@ -14576,7 +13909,7 @@ export interface Step {
   /** Step type identifier */
   type: string;
 }
-export const Step = /*@__PURE__*/ S.suspend(() =>
+const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed_at: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -14590,14 +13923,14 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
 export type EmploymentOnboardingStepsResponseDataStepsList = Array<Step>;
-export const EmploymentOnboardingStepsResponseDataStepsList = /*@__PURE__*/ S.Array(
+const EmploymentOnboardingStepsResponseDataStepsList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<EmploymentOnboardingStepsResponseDataStepsList>;
 
 export interface EmploymentOnboardingStepsResponseData {
   steps: EmploymentOnboardingStepsResponseDataStepsList;
 }
-export const EmploymentOnboardingStepsResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentOnboardingStepsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: EmploymentOnboardingStepsResponseDataStepsList,
   }),
@@ -14608,7 +13941,7 @@ export const EmploymentOnboardingStepsResponseData = /*@__PURE__*/ S.suspend(() 
 export interface EmploymentOnboardingStepsResponse {
   data: EmploymentOnboardingStepsResponseData;
 }
-export const EmploymentOnboardingStepsResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentOnboardingStepsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentOnboardingStepsResponseData,
   }),
@@ -14617,7 +13950,7 @@ export const EmploymentOnboardingStepsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EmploymentOnboardingStepsResponse>;
 
 export type GetEmploymentsRequestEmploymentModel = "global_payroll" | "peo" | "eor";
-export const GetEmploymentsRequestEmploymentModel = S.String;
+const GetEmploymentsRequestEmploymentModel = S.String;
 
 export interface GetEmploymentsRequest {
   /** Company ID */
@@ -14641,7 +13974,7 @@ export interface GetEmploymentsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetEmploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.optional(S.String.pipe(T.Query())),
     email: S.optional(S.String.pipe(T.Query())),
@@ -14658,7 +13991,7 @@ export const GetEmploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The employment model. `eor` (Employer of Record), `peo` (Professional Employer Organization), or `global_payroll`. */
 export type MinimalEmploymentEmploymentModel = "eor" | "peo" | "global_payroll";
-export const MinimalEmploymentEmploymentModel = S.String;
+const MinimalEmploymentEmploymentModel = S.String;
 
 /** The type of employment. */
 export type MinimalEmploymentType =
@@ -14666,7 +13999,7 @@ export type MinimalEmploymentType =
   | "contractor"
   | "direct_employee"
   | "global_payroll_employee";
-export const MinimalEmploymentType = S.String;
+const MinimalEmploymentType = S.String;
 
 /** A lightweight employment representation used in list responses. Contains key identification, status, and type fields but not the full onboarding details or country-specific form data. */
 export interface MinimalEmployment {
@@ -14701,7 +14034,7 @@ export interface MinimalEmployment {
   /** The employee's work email address. Null if not set. */
   work_email: string | null;
 }
-export const MinimalEmployment = /*@__PURE__*/ S.suspend(() =>
+const MinimalEmployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.NullOr(NullableCountry),
     department: S.optional(S.NullOr(S.String)),
@@ -14724,7 +14057,7 @@ export const MinimalEmployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalEmployment" }) as any as S.Schema<MinimalEmployment>;
 
 export type ListEmploymentsResponseDataEmploymentsList = Array<MinimalEmployment>;
-export const ListEmploymentsResponseDataEmploymentsList = /*@__PURE__*/ S.Array(
+const ListEmploymentsResponseDataEmploymentsList = /*@__PURE__*/ S.Array(
   MinimalEmployment,
 ) as any as S.Schema<ListEmploymentsResponseDataEmploymentsList>;
 
@@ -14737,7 +14070,7 @@ export interface ListEmploymentsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListEmploymentsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     employments: S.optional(ListEmploymentsResponseDataEmploymentsList),
@@ -14752,7 +14085,7 @@ export const ListEmploymentsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListEmploymentsResponse {
   data?: ListEmploymentsResponseData;
 }
-export const ListEmploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListEmploymentsResponseData),
   }),
@@ -14766,7 +14099,7 @@ export interface GetEmploymentsBulkRequest {
   /** Number of employments to return per page (max 100, default 50). */
   limit?: number;
 }
-export const GetEmploymentsBulkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmploymentsBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.optional(S.String.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -14782,37 +14115,29 @@ export type EmploymentType =
   | "contractor"
   | "direct_employee"
   | "global_payroll_employee";
-export const EmploymentType = S.String;
+const EmploymentType = S.String;
 
 /** Contractor-specific settings. Only present for contractor employments. */
 export type EmploymentContractorSettings = EmploymentShowResponseDataEmploymentContractorSettings;
-export const EmploymentContractorSettings = EmploymentShowResponseDataEmploymentContractorSettings;
-
 /** Type of contractor product. Only present for contractor employments. 'standard' for Contractor Standard, 'cor' for Contractor of Record, 'plus' for Contractor Plus. */
 export type EmploymentContractorType = "standard" | "cor" | "plus";
-export const EmploymentContractorType = S.String;
+const EmploymentContractorType = S.String;
 
 export type EmploymentContractorRateAmountCurrency =
   EmploymentShowResponseDataEmploymentContractorRateAmountCurrency;
-export const EmploymentContractorRateAmountCurrency =
-  EmploymentShowResponseDataEmploymentContractorRateAmountCurrency;
-
 export type EmploymentContractorRateAmount =
   EmploymentShowResponseDataEmploymentContractorRateAmount;
-export const EmploymentContractorRateAmount =
-  EmploymentShowResponseDataEmploymentContractorRateAmount;
-
 /** Payment frequency cadence */
 export type EmploymentContractorRatePayFrequency =
   | "weekly"
   | "bi_weekly"
   | "semi_monthly"
   | "monthly";
-export const EmploymentContractorRatePayFrequency = S.String;
+const EmploymentContractorRatePayFrequency = S.String;
 
 /** Rate type indicating billing frequency */
 export type EmploymentContractorRateType = "hourly" | "daily" | "weekly" | "monthly" | "one_off";
-export const EmploymentContractorRateType = S.String;
+const EmploymentContractorRateType = S.String;
 
 /** Contractor compensation rate details. Only present for contractor employments when rate is configured. */
 export interface EmploymentContractorRate {
@@ -14824,7 +14149,7 @@ export interface EmploymentContractorRate {
   /** Rate type indicating billing frequency */
   type?: EmploymentContractorRateType;
 }
-export const EmploymentContractorRate = /*@__PURE__*/ S.suspend(() =>
+const EmploymentContractorRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(EmploymentShowResponseDataEmploymentContractorRateAmount),
     pay_frequency: S.optional(S.NullOr(EmploymentContractorRatePayFrequency)),
@@ -14835,15 +14160,15 @@ export const EmploymentContractorRate = /*@__PURE__*/ S.suspend(() =>
 
 /** For the employment models `peo` and `global_payroll`, only [List employments](#operation/get_index_employment) and [Show employment](#operation/get_show_employment) operations are available. */
 export type EmploymentEmploymentModel = "global_payroll" | "peo" | "eor";
-export const EmploymentEmploymentModel = S.String;
+const EmploymentEmploymentModel = S.String;
 
 export type EmploymentBankAccountDetailsList = Array<unknown>;
-export const EmploymentBankAccountDetailsList =
+const EmploymentBankAccountDetailsList =
   EmploymentShowResponseDataEmploymentBankAccountDetailsList as any as S.Schema<EmploymentBankAccountDetailsList>;
 
 /** Documents associated with this employment (e.g., contracts, tax forms, identity documents). */
 export type EmploymentFilesList = Array<File>;
-export const EmploymentFilesList = ExpenseReceiptsList as any as S.Schema<EmploymentFilesList>;
+const EmploymentFilesList = ExpenseReceiptsList as any as S.Schema<EmploymentFilesList>;
 
 /** Complete information of an employment, including all onboarding task statuses, country-specific form data (address, contract, administrative, etc.), and contractor-specific settings where applicable. */
 export interface Employment {
@@ -14930,7 +14255,7 @@ export interface Employment {
   /** The timestamp when this employment record was created. */
   created_at: string;
 }
-export const Employment = /*@__PURE__*/ S.suspend(() =>
+const Employment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personal_details: S.Unknown,
     short_id: S.optional(S.String),
@@ -14984,7 +14309,7 @@ export const Employment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Employment" }) as any as S.Schema<Employment>;
 
 export type EmploymentsBulkResponseDataList = Array<Employment>;
-export const EmploymentsBulkResponseDataList = /*@__PURE__*/ S.Array(
+const EmploymentsBulkResponseDataList = /*@__PURE__*/ S.Array(
   Employment,
 ) as any as S.Schema<EmploymentsBulkResponseDataList>;
 
@@ -14994,7 +14319,7 @@ export interface EmploymentsBulkResponse {
   /** Opaque cursor to pass as the `cursor` query parameter to fetch the next page. `null` once the last page has been reached. */
   next_cursor: string | null;
 }
-export const EmploymentsBulkResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentsBulkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentsBulkResponseDataList,
     next_cursor: S.NullOr(S.String),
@@ -15005,7 +14330,7 @@ export interface GetExpensRequest {
   /** Expense ID */
   id: string;
 }
-export const GetExpensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExpensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/expenses/{id}", code: 200 })),
@@ -15017,7 +14342,7 @@ export interface GetExpensesRequest {
   /** Change the amount of records returned per page, defaults to 20, limited to 100 */
   page_size?: number;
 }
-export const GetExpensesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExpensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -15025,7 +14350,7 @@ export const GetExpensesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetExpensesRequest" }) as any as S.Schema<GetExpensesRequest>;
 
 export type ListExpenseResponseDataExpensesList = Array<ExpenseOrDraft>;
-export const ListExpenseResponseDataExpensesList = /*@__PURE__*/ S.Array(
+const ListExpenseResponseDataExpensesList = /*@__PURE__*/ S.Array(
   ExpenseOrDraft,
 ) as any as S.Schema<ListExpenseResponseDataExpensesList>;
 
@@ -15038,7 +14363,7 @@ export interface ListExpenseResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListExpenseResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListExpenseResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     expenses: S.optional(ListExpenseResponseDataExpensesList),
@@ -15051,7 +14376,7 @@ export const ListExpenseResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListExpenseResponse {
   data?: ListExpenseResponseData;
 }
-export const ListExpenseResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExpenseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListExpenseResponseData),
   }),
@@ -15067,7 +14392,7 @@ export interface GetExpensesCategoriesRequest {
   /** Filter categories by country (ISO 3166-1 alpha-3 code, e.g. "GBR"). Only used when neither employment_id nor expense_id is provided. */
   country_code?: string;
 }
-export const GetExpensesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExpensesCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     expense_id: S.optional(S.String.pipe(T.Query())),
@@ -15084,7 +14409,7 @@ export interface GetExpensReceiptRequest {
   /** The receipt ID */
   receipt_id: string;
 }
-export const GetExpensReceiptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExpensReceiptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expense_id: S.String.pipe(T.Label()),
     receipt_id: S.String.pipe(T.Label()),
@@ -15094,7 +14419,7 @@ export const GetExpensReceiptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetExpensReceiptRequest" }) as any as S.Schema<GetExpensReceiptRequest>;
 
 export interface GetExpensReceiptResponse {}
-export const GetExpensReceiptResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetExpensReceiptResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetExpensReceiptResponse",
 }) as any as S.Schema<GetExpensReceiptResponse>;
 
@@ -15102,7 +14427,7 @@ export interface GetFileRequest {
   /** File ID */
   id: string;
 }
-export const GetFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/files/{id}", code: 200 })),
@@ -15116,7 +14441,7 @@ export interface DownloadFileResponseDataFile {
   sub_type?: string | null;
   type: string;
 }
-export const DownloadFileResponseDataFile = /*@__PURE__*/ S.suspend(() =>
+const DownloadFileResponseDataFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     id: S.String,
@@ -15132,7 +14457,7 @@ export const DownloadFileResponseDataFile = /*@__PURE__*/ S.suspend(() =>
 export interface DownloadFileResponseData {
   file: DownloadFileResponseDataFile;
 }
-export const DownloadFileResponseData = /*@__PURE__*/ S.suspend(() =>
+const DownloadFileResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file: DownloadFileResponseDataFile,
   }),
@@ -15142,7 +14467,7 @@ export const DownloadFileResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface DownloadFileResponse {
   data: DownloadFileResponseData;
 }
-export const DownloadFileResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DownloadFileResponseData,
   }),
@@ -15152,7 +14477,7 @@ export interface GetHelpCenterArticleRequest {
   /** Help Center Article Zendesk ID */
   id: number;
 }
-export const GetHelpCenterArticleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHelpCenterArticleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/help-center-articles/{id}", code: 200 })),
@@ -15171,7 +14496,7 @@ export interface HelpCenterArticle {
   /** Zendesk ID of the article */
   zendesk_id: number;
 }
-export const HelpCenterArticle = /*@__PURE__*/ S.suspend(() =>
+const HelpCenterArticle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.String,
     html_url: S.String,
@@ -15183,7 +14508,7 @@ export const HelpCenterArticle = /*@__PURE__*/ S.suspend(() =>
 export interface HelpCenterArticleResponseData {
   help_center_article: HelpCenterArticle;
 }
-export const HelpCenterArticleResponseData = /*@__PURE__*/ S.suspend(() =>
+const HelpCenterArticleResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     help_center_article: HelpCenterArticle,
   }),
@@ -15195,7 +14520,7 @@ export const HelpCenterArticleResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface HelpCenterArticleResponse {
   data: HelpCenterArticleResponseData;
 }
-export const HelpCenterArticleResponse = /*@__PURE__*/ S.suspend(() =>
+const HelpCenterArticleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: HelpCenterArticleResponseData,
   }),
@@ -15204,7 +14529,7 @@ export const HelpCenterArticleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HelpCenterArticleResponse>;
 
 export interface GetIdentityCurrentRequest {}
-export const GetIdentityCurrentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIdentityCurrentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/identity/current", code: 200 })),
 ).annotate({
   identifier: "GetIdentityCurrentRequest",
@@ -15219,40 +14544,15 @@ export interface IdentityIntegration {
   /** The unique machine-readable identifier for the integration partner. Used internally to reference this integration. */
   name: string;
 }
-export const IdentityIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contact_email: S.String,
-    display_name: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "IdentityIntegration" }) as any as S.Schema<IdentityIntegration>;
-
 export interface IdentityClientCredentialsResponseData {
   /** The OAuth2 client ID used to obtain this token. */
   client_id: string;
   integration: IdentityIntegration;
 }
-export const IdentityClientCredentialsResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    integration: IdentityIntegration,
-  }),
-).annotate({
-  identifier: "IdentityClientCredentialsResponseData",
-}) as any as S.Schema<IdentityClientCredentialsResponseData>;
-
 /** Returned when the current token was obtained via the OAuth2 Client Credentials flow. Contains the integration's client ID and details, but no company or user information since client credentials tokens are not scoped to a specific company. */
 export interface IdentityClientCredentialsResponse {
   data: IdentityClientCredentialsResponseData;
 }
-export const IdentityClientCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: IdentityClientCredentialsResponseData,
-  }),
-).annotate({
-  identifier: "IdentityClientCredentialsResponse",
-}) as any as S.Schema<IdentityClientCredentialsResponse>;
-
 /** The company that the current authentication token is scoped to. Only present when using a company-scoped access token or customer API token. */
 export interface IdentityCompany {
   /** The unique identifier (UUID) of the company. Use this ID when making subsequent API calls that require a company reference. */
@@ -15260,8 +14560,6 @@ export interface IdentityCompany {
   /** The registered name of the company on the Remote platform. */
   name: string;
 }
-export const IdentityCompany = BenefitProvider as any as S.Schema<IdentityCompany>;
-
 /** The user (company manager) associated with the current authentication token. Represents the person who authorized access to the company's data. */
 export interface IdentityUser {
   /** The email address of the user who authorized the token. */
@@ -15273,15 +14571,6 @@ export interface IdentityUser {
   /** The current account status of the user on the Remote platform. */
   status: string;
 }
-export const IdentityUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.String,
-    id: S.String,
-    name: S.String,
-    status: S.String,
-  }),
-).annotate({ identifier: "IdentityUser" }) as any as S.Schema<IdentityUser>;
-
 export interface IdentityCompanyAccessTokenResponseData {
   /** The OAuth2 client ID of the integration partner that obtained this token. */
   client_id: string;
@@ -15289,63 +14578,27 @@ export interface IdentityCompanyAccessTokenResponseData {
   integration: IdentityIntegration;
   user: IdentityUser;
 }
-export const IdentityCompanyAccessTokenResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    client_id: S.String,
-    company: IdentityCompany,
-    integration: IdentityIntegration,
-    user: IdentityUser,
-  }),
-).annotate({
-  identifier: "IdentityCompanyAccessTokenResponseData",
-}) as any as S.Schema<IdentityCompanyAccessTokenResponseData>;
-
 /** Returned when the current token was obtained via the OAuth2 Authorization Code flow and is scoped to a specific company managed by an integration partner. Contains the full context: the integration's credentials, the company being accessed, and the user who authorized access. */
 export interface IdentityCompanyAccessTokenResponse {
   data: IdentityCompanyAccessTokenResponseData;
 }
-export const IdentityCompanyAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: IdentityCompanyAccessTokenResponseData,
-  }),
-).annotate({
-  identifier: "IdentityCompanyAccessTokenResponse",
-}) as any as S.Schema<IdentityCompanyAccessTokenResponse>;
-
 export interface IdentityCustomerAccessTokenResponseData {
   company: IdentityCompany;
   user: IdentityUser;
 }
-export const IdentityCustomerAccessTokenResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    company: IdentityCompany,
-    user: IdentityUser,
-  }),
-).annotate({
-  identifier: "IdentityCustomerAccessTokenResponseData",
-}) as any as S.Schema<IdentityCustomerAccessTokenResponseData>;
-
 /** Returned when the current token is a Customer API Token. These tokens are used by companies accessing their own data directly (not through an integration partner), so only company and user information is included -- there are no integration credentials. */
 export interface IdentityCustomerAccessTokenResponse {
   data: IdentityCustomerAccessTokenResponseData;
 }
-export const IdentityCustomerAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: IdentityCustomerAccessTokenResponseData,
-  }),
-).annotate({
-  identifier: "IdentityCustomerAccessTokenResponse",
-}) as any as S.Schema<IdentityCustomerAccessTokenResponse>;
-
 /** The response from `GET /v1/identity/current`. Returns information about the entities associated with the current authentication token. The shape of the response depends on the type of token used: - **Client Credentials Token**: Returns the integration's `client_id` and details. No company or user context. - **Company Access Token** (Authorization Code flow): Returns full context -- integration credentials, the company being accessed, and the authorizing user. - **Customer API Token**: Returns only the company and user. No integration credentials since the company is accessing its own data directly. */
 export type IdentityCurrentResponse =
   | IdentityClientCredentialsResponse
   | IdentityCompanyAccessTokenResponse
   | IdentityCustomerAccessTokenResponse;
-export const IdentityCurrentResponse = S.Unknown as any as S.Schema<IdentityCurrentResponse>;
+const IdentityCurrentResponse = S.Unknown as any as S.Schema<IdentityCurrentResponse>;
 
 export type GetIdentityCurrentResponse = IdentityCurrentResponse;
-export const GetIdentityCurrentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIdentityCurrentResponse = /*@__PURE__*/ S.suspend(() =>
   IdentityCurrentResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetIdentityCurrentResponse",
@@ -15355,7 +14608,7 @@ export interface GetIdentityVerificationRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetIdentityVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIdentityVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/identity-verification/{employment_id}", code: 200 })),
@@ -15365,12 +14618,8 @@ export const GetIdentityVerificationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A file associated with an employment, such as a contract, tax document, or identity document. */
 export type EmploymentDocument = File;
-export const EmploymentDocument = File;
-
 /** A file associated with an employment, such as a contract, tax document, or identity document. */
 export type EmploymentImage = File;
-export const EmploymentImage = File;
-
 /** Identity Verification */
 export interface IdentityVerification {
   contract_id: string;
@@ -15378,7 +14627,7 @@ export interface IdentityVerification {
   employment_image: File | null;
   status: string;
 }
-export const IdentityVerification = /*@__PURE__*/ S.suspend(() =>
+const IdentityVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contract_id: S.String,
     employment_document: S.NullOr(File),
@@ -15390,7 +14639,7 @@ export const IdentityVerification = /*@__PURE__*/ S.suspend(() =>
 export interface IdentityVerificationResponseData {
   identity_verification_data?: IdentityVerification;
 }
-export const IdentityVerificationResponseData = /*@__PURE__*/ S.suspend(() =>
+const IdentityVerificationResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity_verification_data: S.optional(IdentityVerification),
   }),
@@ -15402,7 +14651,7 @@ export const IdentityVerificationResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface IdentityVerificationResponse {
   data: IdentityVerificationResponseData;
 }
-export const IdentityVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+const IdentityVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: IdentityVerificationResponseData,
   }),
@@ -15414,7 +14663,7 @@ export interface GetIncentiveRequest {
   /** Incentive ID */
   id: string;
 }
-export const GetIncentiveRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIncentiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/incentives/{id}", code: 200 })),
@@ -15434,7 +14683,7 @@ export interface GetIncentivesRequest {
   /** Change the amount of records returned per page, defaults to 20, limited to 100 */
   page_size?: number;
 }
-export const GetIncentivesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIncentivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     status: S.optional(S.String.pipe(T.Query())),
@@ -15446,7 +14695,7 @@ export const GetIncentivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIncentivesRequest" }) as any as S.Schema<GetIncentivesRequest>;
 
 export type ListIncentivesResponseDataIncentivesList = Array<Incentive>;
-export const ListIncentivesResponseDataIncentivesList = /*@__PURE__*/ S.Array(
+const ListIncentivesResponseDataIncentivesList = /*@__PURE__*/ S.Array(
   Incentive,
 ) as any as S.Schema<ListIncentivesResponseDataIncentivesList>;
 
@@ -15459,7 +14708,7 @@ export interface ListIncentivesResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListIncentivesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListIncentivesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     incentives: S.optional(ListIncentivesResponseDataIncentivesList),
@@ -15474,7 +14723,7 @@ export const ListIncentivesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListIncentivesResponse {
   data?: ListIncentivesResponseData;
 }
-export const ListIncentivesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIncentivesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListIncentivesResponseData),
   }),
@@ -15492,7 +14741,7 @@ export interface GetIncentivesRecurringRequest {
   /** Change the amount of records returned per page, defaults to 20, limited to 100 */
   page_size?: number;
 }
-export const GetIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String.pipe(T.Query())),
     type: S.optional(S.String.pipe(T.Query())),
@@ -15505,7 +14754,7 @@ export const GetIncentivesRecurringRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIncentivesRecurringRequest>;
 
 export type ListRecurringIncentivesResponseDataRecurringIncentivesList = Array<RecurringIncentive>;
-export const ListRecurringIncentivesResponseDataRecurringIncentivesList = /*@__PURE__*/ S.Array(
+const ListRecurringIncentivesResponseDataRecurringIncentivesList = /*@__PURE__*/ S.Array(
   RecurringIncentive,
 ) as any as S.Schema<ListRecurringIncentivesResponseDataRecurringIncentivesList>;
 
@@ -15518,7 +14767,7 @@ export interface ListRecurringIncentivesResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListRecurringIncentivesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListRecurringIncentivesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     recurring_incentives: S.optional(ListRecurringIncentivesResponseDataRecurringIncentivesList),
@@ -15533,7 +14782,7 @@ export const ListRecurringIncentivesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListRecurringIncentivesResponse {
   data?: ListRecurringIncentivesResponseData;
 }
-export const ListRecurringIncentivesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecurringIncentivesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListRecurringIncentivesResponseData),
   }),
@@ -15545,7 +14794,7 @@ export interface GetJobTitleScreeningRequest {
   /** Job title screening id */
   id: string;
 }
-export const GetJobTitleScreeningRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobTitleScreeningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/job-title-screenings/{id}", code: 200 })),
@@ -15555,11 +14804,11 @@ export const GetJobTitleScreeningRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the role is onsite, if provided. */
 export type JobTitleScreeningItemRoleIsOnsite = "yes" | "no" | "not_applicable";
-export const JobTitleScreeningItemRoleIsOnsite = S.String;
+const JobTitleScreeningItemRoleIsOnsite = S.String;
 
 /** Whether the role requires a license, if provided. */
 export type JobTitleScreeningItemRoleRequiresLicense = "yes" | "no" | "not_applicable";
-export const JobTitleScreeningItemRoleRequiresLicense = S.String;
+const JobTitleScreeningItemRoleRequiresLicense = S.String;
 
 /** The screening verdict. `pending` while the screening is processing; `eligible` and `not_eligible` are definitive; `needs_review` means the title will require a human review during onboarding; `eligible_with_risk_acknowledgement` means the title is eligible once the employer acknowledges the risk during onboarding. Verdicts are advisory and reflect the eligibility policy at the time of screening: the policy evolves over time and the same checks re-run during onboarding, so the onboarding outcome may differ from an earlier screening verdict for the same title. */
 export type JobTitleScreeningItemVerdict =
@@ -15568,7 +14817,7 @@ export type JobTitleScreeningItemVerdict =
   | "not_eligible"
   | "needs_review"
   | "eligible_with_risk_acknowledgement";
-export const JobTitleScreeningItemVerdict = S.String;
+const JobTitleScreeningItemVerdict = S.String;
 
 export interface JobTitleScreeningItem {
   /** The screened job title. */
@@ -15582,7 +14831,7 @@ export interface JobTitleScreeningItem {
   /** The screening verdict. `pending` while the screening is processing; `eligible` and `not_eligible` are definitive; `needs_review` means the title will require a human review during onboarding; `eligible_with_risk_acknowledgement` means the title is eligible once the employer acknowledges the risk during onboarding. Verdicts are advisory and reflect the eligibility policy at the time of screening: the policy evolves over time and the same checks re-run during onboarding, so the onboarding outcome may differ from an earlier screening verdict for the same title. */
   verdict: JobTitleScreeningItemVerdict;
 }
-export const JobTitleScreeningItem = /*@__PURE__*/ S.suspend(() =>
+const JobTitleScreeningItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_title: S.String,
     role_description: S.optional(S.NullOr(S.String)),
@@ -15593,13 +14842,13 @@ export const JobTitleScreeningItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobTitleScreeningItem" }) as any as S.Schema<JobTitleScreeningItem>;
 
 export type JobTitleScreeningItemsList = Array<JobTitleScreeningItem>;
-export const JobTitleScreeningItemsList = /*@__PURE__*/ S.Array(
+const JobTitleScreeningItemsList = /*@__PURE__*/ S.Array(
   JobTitleScreeningItem,
 ) as any as S.Schema<JobTitleScreeningItemsList>;
 
 /** The processing status of the screening request. Poll until `completed` or `failed`. A `failed` screening gave up after retries; unscreened items stay `pending` and the batch should be resubmitted as a new screening. */
 export type JobTitleScreeningStatus = "processing" | "completed" | "failed";
-export const JobTitleScreeningStatus = S.String;
+const JobTitleScreeningStatus = S.String;
 
 export interface JobTitleScreening {
   /** The timestamp when the screening request was created. */
@@ -15612,7 +14861,7 @@ export interface JobTitleScreening {
   /** The timestamp of the last update to the screening request. */
   updated_at: string;
 }
-export const JobTitleScreening = /*@__PURE__*/ S.suspend(() =>
+const JobTitleScreening = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     id: S.String,
@@ -15625,7 +14874,7 @@ export const JobTitleScreening = /*@__PURE__*/ S.suspend(() =>
 export interface JobTitleScreeningResponseData {
   job_title_screening?: JobTitleScreening;
 }
-export const JobTitleScreeningResponseData = /*@__PURE__*/ S.suspend(() =>
+const JobTitleScreeningResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_title_screening: S.optional(JobTitleScreening),
   }),
@@ -15636,7 +14885,7 @@ export const JobTitleScreeningResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface JobTitleScreeningResponse {
   data?: JobTitleScreeningResponseData;
 }
-export const JobTitleScreeningResponse = /*@__PURE__*/ S.suspend(() =>
+const JobTitleScreeningResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(JobTitleScreeningResponseData),
   }),
@@ -15648,7 +14897,7 @@ export interface GetLeavePoliciesDetailRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetLeavePoliciesDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLeavePoliciesDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/leave-policies/details/{employment_id}", code: 200 })),
@@ -15660,7 +14909,7 @@ export interface GetLeavePoliciesSummaryRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetLeavePoliciesSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLeavePoliciesSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/leave-policies/summary/{employment_id}", code: 200 })),
@@ -15672,7 +14921,7 @@ export interface GetOffboardingRequest {
   /** Offboarding request ID */
   id: string;
 }
-export const GetOffboardingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOffboardingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/offboardings/{id}", code: 200 })),
@@ -15682,7 +14931,7 @@ export interface GetOffboardingByIdRequest {
   /** Offboarding ID */
   id: string;
 }
-export const GetOffboardingByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOffboardingByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/offboardings/{id}", code: 200 })),
@@ -15695,14 +14944,8 @@ export interface V2TerminationRequestEmployeeAwareness {
   date?: string | null;
   note?: string | null;
 }
-export const V2TerminationRequestEmployeeAwareness =
-  TerminationDetailsParamsEmployeeAwareness as any as S.Schema<V2TerminationRequestEmployeeAwareness>;
-
 /** Risk-assessment flags submitted by the requester. */
 export type V2TerminationRequestRiskAssessmentReasonsList = Array<string>;
-export const V2TerminationRequestRiskAssessmentReasonsList =
-  ProductFeaturesList as any as S.Schema<V2TerminationRequestRiskAssessmentReasonsList>;
-
 /** Snapshot of the inputs submitted when a `termination` offboarding was created. These fields do not change as the offboarding progresses. */
 export interface V2TerminationRequest {
   /** Free-text additional comments submitted by the requester. */
@@ -15722,19 +14965,6 @@ export interface V2TerminationRequest {
   /** Additional context the requester provided about a potential challenge. */
   will_challenge_termination_description?: string | null;
 }
-export const V2TerminationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additional_comments: S.optional(S.NullOr(S.String)),
-    agrees_to_pto_amount: S.optional(S.NullOr(S.Boolean)),
-    employee_awareness: S.optional(S.NullOr(V2TerminationRequestEmployeeAwareness)),
-    proposed_termination_date: S.optional(S.NullOr(S.String)),
-    reason_description: S.optional(S.NullOr(S.String)),
-    risk_assessment_reasons: S.optional(S.NullOr(V2TerminationRequestRiskAssessmentReasonsList)),
-    will_challenge_termination: S.optional(S.NullOr(S.Boolean)),
-    will_challenge_termination_description: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "V2TerminationRequest" }) as any as S.Schema<V2TerminationRequest>;
-
 /** Snapshot of the inputs submitted when a `resignation` offboarding was created. These fields do not change as the offboarding progresses. */
 export interface V2ResignationRequest {
   /** Free-text additional comments submitted by the employee. */
@@ -15746,22 +14976,13 @@ export interface V2ResignationRequest {
   /** Free-text description of the resignation reason submitted by the employee. */
   reason_description?: string | null;
 }
-export const V2ResignationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additional_comments: S.optional(S.NullOr(S.String)),
-    employer_awareness: S.optional(S.NullOr(S.String)),
-    proposed_last_working_day: S.optional(S.NullOr(S.String)),
-    reason_description: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "V2ResignationRequest" }) as any as S.Schema<V2ResignationRequest>;
-
 /** The shape depends on the originating request: offboardings that originated from a termination carry a `V2TerminationRequest`; those that originated from a resignation carry a `V2ResignationRequest`. */
 export type V2OffboardingRequest = V2TerminationRequest | V2ResignationRequest;
-export const V2OffboardingRequest = S.Unknown as any as S.Schema<V2OffboardingRequest>;
+const V2OffboardingRequest = S.Unknown as any as S.Schema<V2OffboardingRequest>;
 
 /** The current processing status of the offboarding. - `requested`: The offboarding request has been received and is awaiting review. - `in_review`: Remote is reviewing the request for legal compliance and risks. - `pending_payment`: The offboarding has been approved and submitted to payroll; the employee's final payment is being processed. - `completed`: The offboarding is complete and the employment has been terminated. */
 export type V2OffboardingStatus = "requested" | "in_review" | "pending_payment" | "completed";
-export const V2OffboardingStatus = S.String;
+const V2OffboardingStatus = S.String;
 
 /** The offboarding type. */
 export type V2OffboardingType =
@@ -15771,7 +14992,7 @@ export type V2OffboardingType =
   | "relocation"
   | "transfer"
   | "conversion";
-export const V2OffboardingType = S.String;
+const V2OffboardingType = S.String;
 
 /** An offboarding record. Top-level fields hold the offboarding's lifecycle state. The nested `request` object holds the immutable creation snapshot of the inputs submitted when the offboarding was created. */
 export interface V2Offboarding {
@@ -15793,7 +15014,7 @@ export interface V2Offboarding {
   /** The offboarding type. */
   type: V2OffboardingType;
 }
-export const V2Offboarding = /*@__PURE__*/ S.suspend(() =>
+const V2Offboarding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confidential: S.optional(S.NullOr(S.Boolean)),
     employment_id: S.String,
@@ -15810,7 +15031,7 @@ export const V2Offboarding = /*@__PURE__*/ S.suspend(() =>
 export interface V2OffboardingResponseData {
   offboarding?: V2Offboarding;
 }
-export const V2OffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
+const V2OffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offboarding: S.optional(V2Offboarding),
   }),
@@ -15822,7 +15043,7 @@ export const V2OffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface V2OffboardingResponse {
   data?: V2OffboardingResponseData;
 }
-export const V2OffboardingResponse = /*@__PURE__*/ S.suspend(() =>
+const V2OffboardingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2OffboardingResponseData),
   }),
@@ -15840,7 +15061,7 @@ export interface GetOffboardingsRequest {
   /** Change the amount of records returned per page, defaults to 20, limited to 100 */
   page_size?: number;
 }
-export const GetOffboardingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOffboardingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     type: S.optional(S.String.pipe(T.Query())),
@@ -15852,7 +15073,7 @@ export const GetOffboardingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListOffboardingResponseDataOffboardingsList =
   Array<ResignationOrTerminationOffboarding>;
-export const ListOffboardingResponseDataOffboardingsList = /*@__PURE__*/ S.Array(
+const ListOffboardingResponseDataOffboardingsList = /*@__PURE__*/ S.Array(
   ResignationOrTerminationOffboarding,
 ) as any as S.Schema<ListOffboardingResponseDataOffboardingsList>;
 
@@ -15865,7 +15086,7 @@ export interface ListOffboardingResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     offboardings: S.optional(ListOffboardingResponseDataOffboardingsList),
@@ -15880,7 +15101,7 @@ export const ListOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListOffboardingResponse {
   data?: ListOffboardingResponseData;
 }
-export const ListOffboardingResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOffboardingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListOffboardingResponseData),
   }),
@@ -15893,7 +15114,7 @@ export type GetOffboardingsRequestType =
   | "relocation"
   | "transfer"
   | "conversion";
-export const GetOffboardingsRequestType = S.String;
+const GetOffboardingsRequestType = S.String;
 
 export interface GetOffboardingsRequest2 {
   /** Filter by Employment ID */
@@ -15907,7 +15128,7 @@ export interface GetOffboardingsRequest2 {
   /** Change the amount of records returned per page, defaults to 20, limited to 100 */
   page_size?: number;
 }
-export const GetOffboardingsRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetOffboardingsRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     type: S.optional(GetOffboardingsRequestType.pipe(T.Query())),
@@ -15918,7 +15139,7 @@ export const GetOffboardingsRequest2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetOffboardingsRequest2" }) as any as S.Schema<GetOffboardingsRequest2>;
 
 export type V2ListOffboardingResponseDataOffboardingsList = Array<V2Offboarding>;
-export const V2ListOffboardingResponseDataOffboardingsList = /*@__PURE__*/ S.Array(
+const V2ListOffboardingResponseDataOffboardingsList = /*@__PURE__*/ S.Array(
   V2Offboarding,
 ) as any as S.Schema<V2ListOffboardingResponseDataOffboardingsList>;
 
@@ -15931,7 +15152,7 @@ export interface V2ListOffboardingResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const V2ListOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
+const V2ListOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     offboardings: S.optional(V2ListOffboardingResponseDataOffboardingsList),
@@ -15946,7 +15167,7 @@ export const V2ListOffboardingResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface V2ListOffboardingResponse {
   data?: V2ListOffboardingResponseData;
 }
-export const V2ListOffboardingResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListOffboardingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2ListOffboardingResponseData),
   }),
@@ -15962,7 +15183,7 @@ export interface GetOffboardingsEmploymentRequest {
   /** Change the amount of records returned per page, defaults to 20, limited to 100 */
   page_size?: number;
 }
-export const GetOffboardingsEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOffboardingsEmploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -15980,7 +15201,7 @@ export interface GetOnboardingEmploymentPreOnboardingDocumentRequest {
   /** Pre-onboarding document ID */
   id: string;
 }
-export const GetOnboardingEmploymentPreOnboardingDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOnboardingEmploymentPreOnboardingDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -15998,7 +15219,7 @@ export const GetOnboardingEmploymentPreOnboardingDocumentRequest = /*@__PURE__*/
 /** Parties that must sign or have signed the document. */
 export type ShowPreOnboardingDocumentResponseDataPreOnboardingDocumentSignatoriesList =
   Array<Signatory>;
-export const ShowPreOnboardingDocumentResponseDataPreOnboardingDocumentSignatoriesList =
+const ShowPreOnboardingDocumentResponseDataPreOnboardingDocumentSignatoriesList =
   /*@__PURE__*/ S.Array(
     Signatory,
   ) as any as S.Schema<ShowPreOnboardingDocumentResponseDataPreOnboardingDocumentSignatoriesList>;
@@ -16012,14 +15233,13 @@ export interface ShowPreOnboardingDocumentResponseDataPreOnboardingDocument {
   signatories: ShowPreOnboardingDocumentResponseDataPreOnboardingDocumentSignatoriesList;
   status: ContractorContractDocumentStatus;
 }
-export const ShowPreOnboardingDocumentResponseDataPreOnboardingDocument = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      content: S.String,
-      name: S.String,
-      signatories: ShowPreOnboardingDocumentResponseDataPreOnboardingDocumentSignatoriesList,
-      status: ContractorContractDocumentStatus,
-    }),
+const ShowPreOnboardingDocumentResponseDataPreOnboardingDocument = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.String,
+    name: S.String,
+    signatories: ShowPreOnboardingDocumentResponseDataPreOnboardingDocumentSignatoriesList,
+    status: ContractorContractDocumentStatus,
+  }),
 ).annotate({
   identifier: "ShowPreOnboardingDocumentResponseDataPreOnboardingDocument",
 }) as any as S.Schema<ShowPreOnboardingDocumentResponseDataPreOnboardingDocument>;
@@ -16027,7 +15247,7 @@ export const ShowPreOnboardingDocumentResponseDataPreOnboardingDocument = /*@__P
 export interface ShowPreOnboardingDocumentResponseData {
   pre_onboarding_document: ShowPreOnboardingDocumentResponseDataPreOnboardingDocument;
 }
-export const ShowPreOnboardingDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
+const ShowPreOnboardingDocumentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pre_onboarding_document: ShowPreOnboardingDocumentResponseDataPreOnboardingDocument,
   }),
@@ -16039,7 +15259,7 @@ export const ShowPreOnboardingDocumentResponseData = /*@__PURE__*/ S.suspend(() 
 export interface ShowPreOnboardingDocumentResponse {
   data: ShowPreOnboardingDocumentResponseData;
 }
-export const ShowPreOnboardingDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const ShowPreOnboardingDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ShowPreOnboardingDocumentResponseData,
   }),
@@ -16051,7 +15271,7 @@ export interface GetOnboardingEmploymentPreOnboardingRequirementsRequest {
   /** Employment ID */
   employment_id: string;
 }
-export const GetOnboardingEmploymentPreOnboardingRequirementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOnboardingEmploymentPreOnboardingRequirementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -16067,11 +15287,11 @@ export const GetOnboardingEmploymentPreOnboardingRequirementsRequest = /*@__PURE
 
 /** Current status of this requirement for the given employment. */
 export type PreOnboardingRequirementStatus = "blocked" | "awaiting" | "finished" | "revised";
-export const PreOnboardingRequirementStatus = S.String;
+const PreOnboardingRequirementStatus = S.String;
 
 /** The requirement type. */
 export type PreOnboardingRequirementType = "document" | "acknowledgement";
-export const PreOnboardingRequirementType = S.String;
+const PreOnboardingRequirementType = S.String;
 
 /** A pre-onboarding requirement (document or acknowledgement) that must be fulfilled before an employee can be onboarded. */
 export interface PreOnboardingRequirement {
@@ -16093,7 +15313,7 @@ export interface PreOnboardingRequirement {
   /** The requirement type. */
   type: PreOnboardingRequirementType;
 }
-export const PreOnboardingRequirement = /*@__PURE__*/ S.suspend(() =>
+const PreOnboardingRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     depends_on_requirement: S.NullOr(PreOnboardingRequirement),
     description: S.String,
@@ -16108,7 +15328,7 @@ export const PreOnboardingRequirement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PreOnboardingRequirement" }) as any as S.Schema<PreOnboardingRequirement>;
 
 export type IndexPreOnboardingRequirementsResponseDataList = Array<PreOnboardingRequirement>;
-export const IndexPreOnboardingRequirementsResponseDataList = /*@__PURE__*/ S.Array(
+const IndexPreOnboardingRequirementsResponseDataList = /*@__PURE__*/ S.Array(
   PreOnboardingRequirement,
 ) as any as S.Schema<IndexPreOnboardingRequirementsResponseDataList>;
 
@@ -16116,7 +15336,7 @@ export const IndexPreOnboardingRequirementsResponseDataList = /*@__PURE__*/ S.Ar
 export interface IndexPreOnboardingRequirementsResponse {
   data: IndexPreOnboardingRequirementsResponseDataList;
 }
-export const IndexPreOnboardingRequirementsResponse = /*@__PURE__*/ S.suspend(() =>
+const IndexPreOnboardingRequirementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: IndexPreOnboardingRequirementsResponseDataList,
   }),
@@ -16138,7 +15358,7 @@ export interface GetPayItemsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetPayItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_slug: S.optional(S.String.pipe(T.Query())),
     legal_entity_id: S.optional(S.String.pipe(T.Query())),
@@ -16151,7 +15371,7 @@ export const GetPayItemsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of pay items */
 export type ListPayItemsResponseDataPayItemsList = Array<PayItem>;
-export const ListPayItemsResponseDataPayItemsList = /*@__PURE__*/ S.Array(
+const ListPayItemsResponseDataPayItemsList = /*@__PURE__*/ S.Array(
   PayItem,
 ) as any as S.Schema<ListPayItemsResponseDataPayItemsList>;
 
@@ -16165,7 +15385,7 @@ export interface ListPayItemsResponseData {
   /** Total number of pages */
   total_pages: number;
 }
-export const ListPayItemsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListPayItemsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.Number,
     pay_items: ListPayItemsResponseDataPayItemsList,
@@ -16177,7 +15397,7 @@ export const ListPayItemsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListPayItemsResponse {
   data: ListPayItemsResponseData;
 }
-export const ListPayItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPayItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPayItemsResponseData,
   }),
@@ -16191,7 +15411,7 @@ export interface GetPayrollCalendarRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetPayrollCalendarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayrollCalendarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cycle: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -16203,7 +15423,7 @@ export const GetPayrollCalendarRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The frequency at which the payroll calendar is run. */
 export type CycleFrequency = "monthly" | "bi_monthly" | "bi_weekly" | "weekly";
-export const CycleFrequency = S.String;
+const CycleFrequency = S.String;
 
 export interface Cycle {
   employee_inclusion_cutoff_date?: string;
@@ -16212,7 +15432,7 @@ export interface Cycle {
   payment_date?: string;
   start_date?: string;
 }
-export const Cycle = /*@__PURE__*/ S.suspend(() =>
+const Cycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employee_inclusion_cutoff_date: S.optional(S.String),
     end_date: S.optional(S.String),
@@ -16223,7 +15443,7 @@ export const Cycle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cycle" }) as any as S.Schema<Cycle>;
 
 export type PayrollCalendarCyclesList = Array<Cycle>;
-export const PayrollCalendarCyclesList = /*@__PURE__*/ S.Array(
+const PayrollCalendarCyclesList = /*@__PURE__*/ S.Array(
   Cycle,
 ) as any as S.Schema<PayrollCalendarCyclesList>;
 
@@ -16233,7 +15453,7 @@ export interface PayrollCalendar {
   cycles: PayrollCalendarCyclesList;
   owned_by_remote: boolean;
 }
-export const PayrollCalendar = /*@__PURE__*/ S.suspend(() =>
+const PayrollCalendar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: Country,
     cycle_frequency: CycleFrequency,
@@ -16243,7 +15463,7 @@ export const PayrollCalendar = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayrollCalendar" }) as any as S.Schema<PayrollCalendar>;
 
 export type PayrollCalendarsResponseDataPayrollCalendarsList = Array<PayrollCalendar>;
-export const PayrollCalendarsResponseDataPayrollCalendarsList = /*@__PURE__*/ S.Array(
+const PayrollCalendarsResponseDataPayrollCalendarsList = /*@__PURE__*/ S.Array(
   PayrollCalendar,
 ) as any as S.Schema<PayrollCalendarsResponseDataPayrollCalendarsList>;
 
@@ -16256,7 +15476,7 @@ export interface PayrollCalendarsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const PayrollCalendarsResponseData = /*@__PURE__*/ S.suspend(() =>
+const PayrollCalendarsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     payroll_calendars: S.optional(PayrollCalendarsResponseDataPayrollCalendarsList),
@@ -16271,7 +15491,7 @@ export const PayrollCalendarsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface PayrollCalendarsResponse {
   data?: PayrollCalendarsResponseData;
 }
-export const PayrollCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
+const PayrollCalendarsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(PayrollCalendarsResponseData),
   }),
@@ -16287,7 +15507,7 @@ export interface GetPayrollCalendarsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetPayrollCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayrollCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.optional(S.String.pipe(T.Query())),
     year: S.optional(S.String.pipe(T.Query())),
@@ -16299,7 +15519,7 @@ export const GetPayrollCalendarsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPayrollCalendarsRequest>;
 
 export type PayrollCalendarEORCyclesList = Array<Cycle>;
-export const PayrollCalendarEORCyclesList =
+const PayrollCalendarEORCyclesList =
   PayrollCalendarCyclesList as any as S.Schema<PayrollCalendarEORCyclesList>;
 
 export interface PayrollCalendarEOR {
@@ -16308,7 +15528,7 @@ export interface PayrollCalendarEOR {
   cycles: PayrollCalendarEORCyclesList;
   id: string;
 }
-export const PayrollCalendarEOR = /*@__PURE__*/ S.suspend(() =>
+const PayrollCalendarEOR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: Country,
     cycle_frequency: CycleFrequency,
@@ -16318,7 +15538,7 @@ export const PayrollCalendarEOR = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PayrollCalendarEOR" }) as any as S.Schema<PayrollCalendarEOR>;
 
 export type PayrollCalendarsEORResponseDataPayrollCalendarsList = Array<PayrollCalendarEOR>;
-export const PayrollCalendarsEORResponseDataPayrollCalendarsList = /*@__PURE__*/ S.Array(
+const PayrollCalendarsEORResponseDataPayrollCalendarsList = /*@__PURE__*/ S.Array(
   PayrollCalendarEOR,
 ) as any as S.Schema<PayrollCalendarsEORResponseDataPayrollCalendarsList>;
 
@@ -16331,7 +15551,7 @@ export interface PayrollCalendarsEORResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const PayrollCalendarsEORResponseData = /*@__PURE__*/ S.suspend(() =>
+const PayrollCalendarsEORResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     payroll_calendars: S.optional(PayrollCalendarsEORResponseDataPayrollCalendarsList),
@@ -16346,7 +15566,7 @@ export const PayrollCalendarsEORResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface PayrollCalendarsEORResponse {
   data?: PayrollCalendarsEORResponseData;
 }
-export const PayrollCalendarsEORResponse = /*@__PURE__*/ S.suspend(() =>
+const PayrollCalendarsEORResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(PayrollCalendarsEORResponseData),
   }),
@@ -16358,7 +15578,7 @@ export interface GetPayrollRunRequest {
   /** Payroll run ID */
   payroll_run_id: string;
 }
-export const GetPayrollRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayrollRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payroll_run_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/payroll-runs/{payroll_run_id}", code: 200 })),
@@ -16371,7 +15591,7 @@ export interface EmployeeDetailsBaseSalary {
   /** ISO 4217 currency code. */
   currency?: string;
 }
-export const EmployeeDetailsBaseSalary = /*@__PURE__*/ S.suspend(() =>
+const EmployeeDetailsBaseSalary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     currency: S.optional(S.String),
@@ -16382,40 +15602,22 @@ export const EmployeeDetailsBaseSalary = /*@__PURE__*/ S.suspend(() =>
 
 /** Total cost of employee benefits (health insurance, pension, etc.) for this payroll run. Amount in cents. */
 export type EmployeeDetailsBenefits = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsBenefits = EmployeeDetailsBaseSalary;
-
 /** Total deductions from the employee's gross pay, including taxes and social contributions. Amount in cents. */
 export type EmployeeDetailsDeductions = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsDeductions = EmployeeDetailsBaseSalary;
-
 /** Total employer-side contributions and costs (employer social contributions, taxes, etc.) beyond the employee's gross pay. Amount in cents. */
 export type EmployeeDetailsEmployerCosts = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsEmployerCosts = EmployeeDetailsBaseSalary;
-
 /** Total approved expenses reimbursed to the employee in this payroll run. Amount in cents. */
 export type EmployeeDetailsExpenses = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsExpenses = EmployeeDetailsBaseSalary;
-
 /** The employee's gross pay before any deductions. Amount in cents. */
 export type EmployeeDetailsGrossPay = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsGrossPay = EmployeeDetailsBaseSalary;
-
 /** Total incentives (bonuses, commissions, etc.) paid to the employee in this payroll run. Amount in cents. */
 export type EmployeeDetailsIncentives = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsIncentives = EmployeeDetailsBaseSalary;
-
 /** The net amount paid to the employee after all deductions (taxes, social contributions, etc.). Amount in cents. */
 export type EmployeeDetailsNetPay = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsNetPay = EmployeeDetailsBaseSalary;
-
 /** Any other payroll components not categorized as salary, benefits, expenses, or incentives. Amount in cents. */
 export type EmployeeDetailsOther = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsOther = EmployeeDetailsBaseSalary;
-
 /** The total cost to the employer for this employee in this payroll run, including salary, benefits, employer contributions, expenses, and incentives. Amount in cents. */
 export type EmployeeDetailsTotalCost = EmployeeDetailsBaseSalary;
-export const EmployeeDetailsTotalCost = EmployeeDetailsBaseSalary;
-
 /** Payroll cost breakdown for a single employee within a payroll run. All monetary amounts are represented as an object with `amount` (integer, in cents) and `currency` (ISO 4217 code). */
 export interface EmployeeDetails {
   /** The employee's base salary component for this payroll period. When the payroll run is in `preparing` or `processing` status, this is an estimate that may change after final payroll calculations. Amount in cents. */
@@ -16445,7 +15647,7 @@ export interface EmployeeDetails {
   /** The total cost to the employer for this employee in this payroll run, including salary, benefits, employer contributions, expenses, and incentives. Amount in cents. */
   total_cost: EmployeeDetailsBaseSalary;
 }
-export const EmployeeDetails = /*@__PURE__*/ S.suspend(() =>
+const EmployeeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base_salary: EmployeeDetailsBaseSalary,
     benefits: EmployeeDetailsBaseSalary,
@@ -16465,7 +15667,7 @@ export const EmployeeDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-employee cost breakdown for this payroll run. Deprecated -- use the dedicated `GET /v1/payroll-runs/{payroll_run_id}/employee-details` endpoint instead, which supports pagination. */
 export type PayrollRunEmployeeDetailsList = Array<EmployeeDetails>;
-export const PayrollRunEmployeeDetailsList = /*@__PURE__*/ S.Array(
+const PayrollRunEmployeeDetailsList = /*@__PURE__*/ S.Array(
   EmployeeDetails,
 ) as any as S.Schema<PayrollRunEmployeeDetailsList>;
 
@@ -16477,7 +15679,7 @@ export type PayrollRunStatus =
   | "finalized"
   | "waiting_for_customer_approval"
   | "rejected";
-export const PayrollRunStatus = S.String;
+const PayrollRunStatus = S.String;
 
 /** The type of payroll run. - `main`: The regular recurring payroll for the period. - `one_off`: An ad-hoc payroll run outside the regular cycle, typically for off-cycle payments. - `pro_forma`: A simulated payroll run used for cost estimation purposes. Not actually processed. - `tax_documents`: A payroll run for generating tax-related documents only. - `expenses`: A payroll run dedicated to reimbursing approved expenses. - `parallel`: A supplementary payroll run that runs alongside the main payroll for the same period. */
 export type PayrollRunType =
@@ -16488,7 +15690,7 @@ export type PayrollRunType =
   | "year_end_reports"
   | "expenses"
   | "parallel";
-export const PayrollRunType = S.String;
+const PayrollRunType = S.String;
 
 /** A payroll run represents a single payroll processing cycle for a company in a specific country and period. It progresses through statuses from preparation to finalization, and contains cost totals aggregated across all employees included in the run. */
 export interface PayrollRun {
@@ -16522,7 +15724,7 @@ export interface PayrollRun {
   /** The type of payroll run. - `main`: The regular recurring payroll for the period. - `one_off`: An ad-hoc payroll run outside the regular cycle, typically for off-cycle payments. - `pro_forma`: A simulated payroll run used for cost estimation purposes. Not actually processed. - `tax_documents`: A payroll run for generating tax-related documents only. - `expenses`: A payroll run dedicated to reimbursing approved expenses. - `parallel`: A supplementary payroll run that runs alongside the main payroll for the same period. */
   type?: PayrollRunType;
 }
-export const PayrollRun = /*@__PURE__*/ S.suspend(() =>
+const PayrollRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approval_date: S.NullOr(S.String),
     benefits_total: S.Number,
@@ -16549,7 +15751,7 @@ export const PayrollRun = /*@__PURE__*/ S.suspend(() =>
 export interface PayrollRunResponse {
   payroll_run?: PayrollRun;
 }
-export const PayrollRunResponse = /*@__PURE__*/ S.suspend(() =>
+const PayrollRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payroll_run: S.optional(PayrollRun),
   }),
@@ -16563,7 +15765,7 @@ export interface GetPayrollRunEmployeeDetailsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetPayrollRunEmployeeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayrollRunEmployeeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payroll_run_id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -16577,14 +15779,14 @@ export const GetPayrollRunEmployeeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of per-employee cost breakdowns for the payroll run. */
 export type EmployeeDetailsResponseDataEmployeeDetailsList = Array<EmployeeDetails>;
-export const EmployeeDetailsResponseDataEmployeeDetailsList =
+const EmployeeDetailsResponseDataEmployeeDetailsList =
   PayrollRunEmployeeDetailsList as any as S.Schema<EmployeeDetailsResponseDataEmployeeDetailsList>;
 
 export interface EmployeeDetailsResponseData {
   /** List of per-employee cost breakdowns for the payroll run. */
   employee_details: EmployeeDetailsResponseDataEmployeeDetailsList;
 }
-export const EmployeeDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmployeeDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employee_details: EmployeeDetailsResponseDataEmployeeDetailsList,
   }),
@@ -16596,7 +15798,7 @@ export const EmployeeDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface EmployeeDetailsResponse {
   data: EmployeeDetailsResponseData;
 }
-export const EmployeeDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const EmployeeDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmployeeDetailsResponseData,
   }),
@@ -16608,7 +15810,7 @@ export interface GetPayrollRunGlReportRequest {
   /** The GL report's ID */
   gl_report_id: string;
 }
-export const GetPayrollRunGlReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayrollRunGlReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payroll_run_id: S.String.pipe(T.Label()),
     gl_report_id: S.String.pipe(T.Label()),
@@ -16629,7 +15831,7 @@ export interface GetPayrollRunGlReportDownloadRequest {
   /** The GL report's ID */
   gl_report_id: string;
 }
-export const GetPayrollRunGlReportDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayrollRunGlReportDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payroll_run_id: S.String.pipe(T.Label()),
     gl_report_id: S.String.pipe(T.Label()),
@@ -16645,7 +15847,7 @@ export const GetPayrollRunGlReportDownloadRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetPayrollRunGlReportDownloadRequest>;
 
 export type GetPayrollRunGlReportDownloadResponse = string;
-export const GetPayrollRunGlReportDownloadResponse =
+const GetPayrollRunGlReportDownloadResponse =
   GetBillingDocumentPdfResponse as any as S.Schema<GetPayrollRunGlReportDownloadResponse>;
 
 export interface GetPayrollRunsRequest {
@@ -16656,7 +15858,7 @@ export interface GetPayrollRunsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetPayrollRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayrollRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payroll_period: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -16672,7 +15874,7 @@ export type MinimalPayrollRunStatus =
   | "finalized"
   | "waiting_for_customer_approval"
   | "rejected";
-export const MinimalPayrollRunStatus = S.String;
+const MinimalPayrollRunStatus = S.String;
 
 /** The type of payroll run. - `main`: Regular recurring payroll. - `one_off`: Ad-hoc off-cycle payment. - `pro_forma`: Simulated run for cost estimation. - `tax_documents`: Tax document generation only. - `expenses`: Dedicated expense reimbursement run. - `parallel`: Supplementary run alongside the main payroll. */
 export type MinimalPayrollRunType =
@@ -16683,7 +15885,7 @@ export type MinimalPayrollRunType =
   | "year_end_reports"
   | "expenses"
   | "parallel";
-export const MinimalPayrollRunType = S.String;
+const MinimalPayrollRunType = S.String;
 
 /** A lightweight representation of a payroll run used in list responses. Contains summary information and the total cost, but not the per-employee breakdown or cost category totals. */
 export interface MinimalPayrollRun {
@@ -16703,7 +15905,7 @@ export interface MinimalPayrollRun {
   /** The type of payroll run. - `main`: Regular recurring payroll. - `one_off`: Ad-hoc off-cycle payment. - `pro_forma`: Simulated run for cost estimation. - `tax_documents`: Tax document generation only. - `expenses`: Dedicated expense reimbursement run. - `parallel`: Supplementary run alongside the main payroll. */
   type: MinimalPayrollRunType;
 }
-export const MinimalPayrollRun = /*@__PURE__*/ S.suspend(() =>
+const MinimalPayrollRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approval_date: S.NullOr(S.String),
     country: Country,
@@ -16721,7 +15923,7 @@ export const MinimalPayrollRun = /*@__PURE__*/ S.suspend(() =>
 
 /** List of payroll runs matching the query filters. */
 export type ListPayrollRunResponsePayrollRunsList = Array<MinimalPayrollRun>;
-export const ListPayrollRunResponsePayrollRunsList = /*@__PURE__*/ S.Array(
+const ListPayrollRunResponsePayrollRunsList = /*@__PURE__*/ S.Array(
   MinimalPayrollRun,
 ) as any as S.Schema<ListPayrollRunResponsePayrollRunsList>;
 
@@ -16730,7 +15932,7 @@ export interface ListPayrollRunResponse {
   /** List of payroll runs matching the query filters. */
   payroll_runs?: ListPayrollRunResponsePayrollRunsList;
 }
-export const ListPayrollRunResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPayrollRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payroll_runs: S.optional(ListPayrollRunResponsePayrollRunsList),
   }),
@@ -16740,14 +15942,14 @@ export interface GetPayslipPdfRequest {
   /** Payslip ID */
   payslip_id: string;
 }
-export const GetPayslipPdfRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayslipPdfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payslip_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/payslips/{payslip_id}/pdf", code: 200 })),
 ).annotate({ identifier: "GetPayslipPdfRequest" }) as any as S.Schema<GetPayslipPdfRequest>;
 
 export type GetPayslipPdfResponse = string;
-export const GetPayslipPdfResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPayslipPdfResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetPayslipPdfResponse" }) as any as S.Schema<GetPayslipPdfResponse>;
 
@@ -16767,7 +15969,7 @@ export interface GetPayslipsRequest {
   /** Change the amount of records returned per page, defaults to 20, limited to 100 */
   page_size?: number;
 }
-export const GetPayslipsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayslipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     start_date: S.optional(S.String.pipe(T.Query())),
@@ -16793,7 +15995,7 @@ export interface Payslip {
   /** The net pay amount in the source (local) currency, in cents. Only shown if available. */
   net_pay_source_amount?: number;
 }
-export const Payslip = /*@__PURE__*/ S.suspend(() =>
+const Payslip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String,
     expected_payout_date: S.optional(S.NullOr(S.String)),
@@ -16805,7 +16007,7 @@ export const Payslip = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Payslip" }) as any as S.Schema<Payslip>;
 
 export type ListPayslipsResponseDataPayslipsList = Array<Payslip>;
-export const ListPayslipsResponseDataPayslipsList = /*@__PURE__*/ S.Array(
+const ListPayslipsResponseDataPayslipsList = /*@__PURE__*/ S.Array(
   Payslip,
 ) as any as S.Schema<ListPayslipsResponseDataPayslipsList>;
 
@@ -16818,7 +16020,7 @@ export interface ListPayslipsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListPayslipsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListPayslipsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     payslips: S.optional(ListPayslipsResponseDataPayslipsList),
@@ -16831,14 +16033,14 @@ export const ListPayslipsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListPayslipsResponse {
   data?: ListPayslipsResponseData;
 }
-export const ListPayslipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPayslipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListPayslipsResponseData),
   }),
 ).annotate({ identifier: "ListPayslipsResponse" }) as any as S.Schema<ListPayslipsResponse>;
 
 export interface GetPricingPlanPartnerTemplatesRequest {}
-export const GetPricingPlanPartnerTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPricingPlanPartnerTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/v1/pricing-plan-partner-templates", code: 200 }),
   ),
@@ -16857,7 +16059,7 @@ export interface PricingPlanPartnerTemplate {
   /** Whether the template is unlimited in time (do not expire) */
   unlimited?: boolean;
 }
-export const PricingPlanPartnerTemplate = /*@__PURE__*/ S.suspend(() =>
+const PricingPlanPartnerTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base_price: Price,
     id: S.String,
@@ -16872,7 +16074,7 @@ export const PricingPlanPartnerTemplate = /*@__PURE__*/ S.suspend(() =>
 
 export type ListPricingPlanPartnerTemplatesResponseDataPricingPlanPartnerTemplatesList =
   Array<PricingPlanPartnerTemplate>;
-export const ListPricingPlanPartnerTemplatesResponseDataPricingPlanPartnerTemplatesList =
+const ListPricingPlanPartnerTemplatesResponseDataPricingPlanPartnerTemplatesList =
   /*@__PURE__*/ S.Array(
     PricingPlanPartnerTemplate,
   ) as any as S.Schema<ListPricingPlanPartnerTemplatesResponseDataPricingPlanPartnerTemplatesList>;
@@ -16880,7 +16082,7 @@ export const ListPricingPlanPartnerTemplatesResponseDataPricingPlanPartnerTempla
 export interface ListPricingPlanPartnerTemplatesResponseData {
   pricing_plan_partner_templates: ListPricingPlanPartnerTemplatesResponseDataPricingPlanPartnerTemplatesList;
 }
-export const ListPricingPlanPartnerTemplatesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListPricingPlanPartnerTemplatesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing_plan_partner_templates:
       ListPricingPlanPartnerTemplatesResponseDataPricingPlanPartnerTemplatesList,
@@ -16893,7 +16095,7 @@ export const ListPricingPlanPartnerTemplatesResponseData = /*@__PURE__*/ S.suspe
 export interface ListPricingPlanPartnerTemplatesResponse {
   data: ListPricingPlanPartnerTemplatesResponseData;
 }
-export const ListPricingPlanPartnerTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPricingPlanPartnerTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPricingPlanPartnerTemplatesResponseData,
   }),
@@ -16905,7 +16107,7 @@ export interface GetProbationCompletionLetterRequest {
   /** probation completion letter ID */
   id: string;
 }
-export const GetProbationCompletionLetterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProbationCompletionLetterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/probation-completion-letter/{id}", code: 200 })),
@@ -16917,7 +16119,7 @@ export interface GetProbationExtensionRequest {
   /** Probation Extension Request ID */
   id: string;
 }
-export const GetProbationExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProbationExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/probation-extensions/{id}", code: 200 })),
@@ -16929,14 +16131,14 @@ export interface GetProjectRequest {
   /** Project identifier */
   id: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{id}", code: 200 })),
 ).annotate({ identifier: "GetProjectRequest" }) as any as S.Schema<GetProjectRequest>;
 
 export interface GetProjectEligibleLeadsRequest {}
-export const GetProjectEligibleLeadsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectEligibleLeadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/project-eligible-leads", code: 200 })),
 ).annotate({
   identifier: "GetProjectEligibleLeadsRequest",
@@ -16949,10 +16151,10 @@ export interface EligibleLead {
   /** Name of the user. */
   name: string;
 }
-export const EligibleLead = BenefitProvider as any as S.Schema<EligibleLead>;
+const EligibleLead = BenefitProvider as any as S.Schema<EligibleLead>;
 
 export type ListEligibleLeadsResponseDataList = Array<EligibleLead>;
-export const ListEligibleLeadsResponseDataList = /*@__PURE__*/ S.Array(
+const ListEligibleLeadsResponseDataList = /*@__PURE__*/ S.Array(
   EligibleLead,
 ) as any as S.Schema<ListEligibleLeadsResponseDataList>;
 
@@ -16960,7 +16162,7 @@ export const ListEligibleLeadsResponseDataList = /*@__PURE__*/ S.Array(
 export interface ListEligibleLeadsResponse {
   data: ListEligibleLeadsResponseDataList;
 }
-export const ListEligibleLeadsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEligibleLeadsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListEligibleLeadsResponseDataList,
   }),
@@ -16976,7 +16178,7 @@ export interface GetProjectsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ProjectStatus.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -16985,7 +16187,7 @@ export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectsRequest" }) as any as S.Schema<GetProjectsRequest>;
 
 export type ListProjectsResponseDataProjectsList = Array<Project>;
-export const ListProjectsResponseDataProjectsList = /*@__PURE__*/ S.Array(
+const ListProjectsResponseDataProjectsList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ListProjectsResponseDataProjectsList>;
 
@@ -16998,7 +16200,7 @@ export interface ListProjectsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListProjectsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     projects: S.optional(ListProjectsResponseDataProjectsList),
@@ -17011,7 +16213,7 @@ export const ListProjectsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListProjectsResponse {
   data?: ListProjectsResponseData;
 }
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListProjectsResponseData),
   }),
@@ -17021,7 +16223,7 @@ export interface GetResignationRequest {
   /** Offboarding request ID */
   offboarding_request_id: string;
 }
-export const GetResignationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResignationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offboarding_request_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/resignations/{offboarding_request_id}", code: 200 })),
@@ -17038,22 +16240,8 @@ export interface ResignationBeforeStartDate {
   /** A human-readable label describing the reason for resignation (e.g., "Decided not to join before starting"). */
   resignation_reason_label: string;
 }
-export const ResignationBeforeStartDate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contract_job_title: S.String,
-    contract_start_date: S.String,
-    resignation_date: S.String,
-    resignation_reason_label: S.String,
-  }),
-).annotate({
-  identifier: "ResignationBeforeStartDate",
-}) as any as S.Schema<ResignationBeforeStartDate>;
-
 /** Human-readable breakdown of the employee's paid time off usage and balance (e.g., "Used until today: 60 days", "Waiting for approval: 0 days"). */
 export type ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList = Array<string>;
-export const ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList =
-  ProductFeaturesList as any as S.Schema<ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList>;
-
 /** Resignation details for an employee who resigned after their employment start date. Includes contract terms, notice period calculations, and PTO breakdown needed for the employer to validate the resignation. */
 export interface ResignationAfterStartDate {
   /** The ISO 4217 currency code of the employee's contract (used for any reimbursement calculations). */
@@ -17077,31 +16265,14 @@ export interface ResignationAfterStartDate {
   /** A human-readable label describing the reason for resignation (e.g., "Retirement", "Other job opportunity"). */
   resignation_reason_label: string;
 }
-export const ResignationAfterStartDate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contract_currency_code: S.String,
-    contract_job_title: S.String,
-    contract_proabtion_period_passed: S.Boolean,
-    contract_probation_period_end_date: S.NullOr(S.String),
-    contract_start_date: S.String,
-    days_of_notice: S.Number,
-    paid_timeoffs_breakdown_labels: ResignationAfterStartDatePaidTimeoffsBreakdownLabelsList,
-    proposed_last_day: S.String,
-    resignation_date: S.String,
-    resignation_reason_label: S.String,
-  }),
-).annotate({
-  identifier: "ResignationAfterStartDate",
-}) as any as S.Schema<ResignationAfterStartDate>;
-
 export type ResignationResignation = ResignationBeforeStartDate | ResignationAfterStartDate;
-export const ResignationResignation = S.Unknown as any as S.Schema<ResignationResignation>;
+const ResignationResignation = S.Unknown as any as S.Schema<ResignationResignation>;
 
 /** Resignation details for an offboarding request. The shape depends on whether the employee resigned before or after their employment start date. */
 export interface Resignation {
   resignation?: ResignationResignation;
 }
-export const Resignation = /*@__PURE__*/ S.suspend(() =>
+const Resignation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resignation: S.optional(ResignationResignation),
   }),
@@ -17111,7 +16282,7 @@ export const Resignation = /*@__PURE__*/ S.suspend(() =>
 export interface ResignationResponse {
   data?: Resignation;
 }
-export const ResignationResponse = /*@__PURE__*/ S.suspend(() =>
+const ResignationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(Resignation),
   }),
@@ -17121,7 +16292,7 @@ export interface GetResignationResignationLetterRequest {
   /** Offboarding request ID */
   offboarding_request_id: string;
 }
-export const GetResignationResignationLetterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResignationResignationLetterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offboarding_request_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -17136,7 +16307,7 @@ export const GetResignationResignationLetterRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetResignationResignationLetterRequest>;
 
 export interface GetResignationResignationLetterResponse {}
-export const GetResignationResignationLetterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResignationResignationLetterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GetResignationResignationLetterResponse",
@@ -17146,7 +16317,7 @@ export interface GetScimGroupRequest {
   /** Group ID (slug) */
   id: string;
 }
-export const GetScimGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScimGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/scim/v2/Groups/{id}", code: 200 })),
@@ -17160,7 +16331,7 @@ export interface IntegrationsScimGroupMembersItem {
   /** User ID (slug) */
   value: string;
 }
-export const IntegrationsScimGroupMembersItem = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsScimGroupMembersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _ref: S.optional(S.String.pipe(T.Body("$ref"))),
     display: S.optional(S.String),
@@ -17172,7 +16343,7 @@ export const IntegrationsScimGroupMembersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of group members (per RFC 7643) */
 export type IntegrationsScimGroupMembersList = Array<IntegrationsScimGroupMembersItem>;
-export const IntegrationsScimGroupMembersList = /*@__PURE__*/ S.Array(
+const IntegrationsScimGroupMembersList = /*@__PURE__*/ S.Array(
   IntegrationsScimGroupMembersItem,
 ) as any as S.Schema<IntegrationsScimGroupMembersList>;
 
@@ -17184,7 +16355,7 @@ export interface IntegrationsScimGroupMeta {
   /** Resource type */
   resourceType?: string;
 }
-export const IntegrationsScimGroupMeta = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsScimGroupMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     lastModified: S.optional(S.String),
@@ -17196,7 +16367,7 @@ export const IntegrationsScimGroupMeta = /*@__PURE__*/ S.suspend(() =>
 
 /** SCIM schema identifiers */
 export type IntegrationsScimGroupSchemasList = Array<string>;
-export const IntegrationsScimGroupSchemasList =
+const IntegrationsScimGroupSchemasList =
   ProductFeaturesList as any as S.Schema<IntegrationsScimGroupSchemasList>;
 
 export interface IntegrationsScimGroup {
@@ -17210,7 +16381,7 @@ export interface IntegrationsScimGroup {
   /** SCIM schema identifiers */
   schemas: IntegrationsScimGroupSchemasList;
 }
-export const IntegrationsScimGroup = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsScimGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     id: S.String,
@@ -17228,7 +16399,7 @@ export interface GetScimGroupsRequest {
   /** Filter expression for attributes (supports eq, ne, co, sw, ew, pr, lt, le, gt, ge) */
   filter?: string;
 }
-export const GetScimGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScimGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.Number.pipe(T.Query())),
     count: S.optional(S.Number.pipe(T.Query())),
@@ -17238,13 +16409,13 @@ export const GetScimGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of group resources */
 export type IntegrationsScimGroupListResponseResourcesList = Array<IntegrationsScimGroup>;
-export const IntegrationsScimGroupListResponseResourcesList = /*@__PURE__*/ S.Array(
+const IntegrationsScimGroupListResponseResourcesList = /*@__PURE__*/ S.Array(
   IntegrationsScimGroup,
 ) as any as S.Schema<IntegrationsScimGroupListResponseResourcesList>;
 
 /** SCIM schema identifiers */
 export type IntegrationsScimGroupListResponseSchemasList = Array<string>;
-export const IntegrationsScimGroupListResponseSchemasList =
+const IntegrationsScimGroupListResponseSchemasList =
   ProductFeaturesList as any as S.Schema<IntegrationsScimGroupListResponseSchemasList>;
 
 export interface IntegrationsScimGroupListResponse {
@@ -17259,7 +16430,7 @@ export interface IntegrationsScimGroupListResponse {
   /** Total number of results matching the query */
   totalResults: number;
 }
-export const IntegrationsScimGroupListResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsScimGroupListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Resources: IntegrationsScimGroupListResponseResourcesList,
     itemsPerPage: S.Number,
@@ -17275,7 +16446,7 @@ export interface GetScimUserRequest {
   /** User ID (slug) */
   id: string;
 }
-export const GetScimUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScimUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/scim/v2/Users/{id}", code: 200 })),
@@ -17289,7 +16460,7 @@ export interface IntegrationsScimUserEmailsItem {
   /** Email address */
   value: string;
 }
-export const IntegrationsScimUserEmailsItem = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsScimUserEmailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(S.Boolean),
     type: S.String,
@@ -17300,13 +16471,11 @@ export const IntegrationsScimUserEmailsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationsScimUserEmailsItem>;
 
 export type IntegrationsScimUserEmailsList = Array<IntegrationsScimUserEmailsItem>;
-export const IntegrationsScimUserEmailsList = /*@__PURE__*/ S.Array(
+const IntegrationsScimUserEmailsList = /*@__PURE__*/ S.Array(
   IntegrationsScimUserEmailsItem,
 ) as any as S.Schema<IntegrationsScimUserEmailsList>;
 
 export type IntegrationsScimUserMeta = IntegrationsScimGroupMeta;
-export const IntegrationsScimUserMeta = IntegrationsScimGroupMeta;
-
 export interface IntegrationsScimUserName {
   /** Last name */
   familyName: string;
@@ -17317,7 +16486,7 @@ export interface IntegrationsScimUserName {
   /** Salutation, e.g. 'Ms', 'Mr' */
   honorificPrefix?: string;
 }
-export const IntegrationsScimUserName = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsScimUserName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     familyName: S.String,
     formatted: S.optional(S.String),
@@ -17328,7 +16497,7 @@ export const IntegrationsScimUserName = /*@__PURE__*/ S.suspend(() =>
 
 /** SCIM schema identifiers */
 export type IntegrationsScimUserSchemasList = Array<string>;
-export const IntegrationsScimUserSchemasList =
+const IntegrationsScimUserSchemasList =
   ProductFeaturesList as any as S.Schema<IntegrationsScimUserSchemasList>;
 
 /** The user's manager */
@@ -17340,7 +16509,7 @@ export interface IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise
   /** The id of the SCIM resource representing the user's manager */
   value?: string;
 }
-export const IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise20UserManager =
+const IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise20UserManager =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       _ref: S.optional(S.String.pipe(T.Body("$ref"))),
@@ -17360,7 +16529,7 @@ export interface IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise
   /** The user's manager */
   manager?: IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise20UserManager;
 }
-export const IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise20User =
+const IntegrationsScimUserUrnIetfParamsScimSchemasExtensionEnterprise20User =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       department: S.optional(S.String),
@@ -17392,7 +16561,7 @@ export interface IntegrationsScimUser {
   /** Username for the user */
   userName: string;
 }
-export const IntegrationsScimUser = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsScimUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.Boolean,
     displayName: S.optional(S.String),
@@ -17419,7 +16588,7 @@ export interface GetScimUsersRequest {
   /** Filter expression for attributes (supports eq, ne, co, sw, ew, pr, lt, le, gt, ge) */
   filter?: string;
 }
-export const GetScimUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScimUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.Number.pipe(T.Query())),
     count: S.optional(S.Number.pipe(T.Query())),
@@ -17429,13 +16598,13 @@ export const GetScimUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user resources */
 export type IntegrationsScimUserListResponseResourcesList = Array<IntegrationsScimUser>;
-export const IntegrationsScimUserListResponseResourcesList = /*@__PURE__*/ S.Array(
+const IntegrationsScimUserListResponseResourcesList = /*@__PURE__*/ S.Array(
   IntegrationsScimUser,
 ) as any as S.Schema<IntegrationsScimUserListResponseResourcesList>;
 
 /** SCIM schema identifiers */
 export type IntegrationsScimUserListResponseSchemasList = Array<string>;
-export const IntegrationsScimUserListResponseSchemasList =
+const IntegrationsScimUserListResponseSchemasList =
   ProductFeaturesList as any as S.Schema<IntegrationsScimUserListResponseSchemasList>;
 
 export interface IntegrationsScimUserListResponse {
@@ -17450,7 +16619,7 @@ export interface IntegrationsScimUserListResponse {
   /** Total number of results matching the query */
   totalResults: number;
 }
-export const IntegrationsScimUserListResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationsScimUserListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Resources: IntegrationsScimUserListResponseResourcesList,
     itemsPerPage: S.Number,
@@ -17463,7 +16632,7 @@ export const IntegrationsScimUserListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntegrationsScimUserListResponse>;
 
 export interface GetSsoConfigurationRequest {}
-export const GetSsoConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSsoConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/sso-configuration", code: 200 })),
 ).annotate({
   identifier: "GetSsoConfigurationRequest",
@@ -17480,7 +16649,7 @@ export interface SSOConfiguration {
   /** The SSO login callback URL (Assertion Consumer Service URL). */
   sso_url: string;
 }
-export const SSOConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SSOConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience_uri: S.String,
     domain: S.String,
@@ -17493,14 +16662,14 @@ export const SSOConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface SSOConfigurationResponse {
   data?: SSOConfiguration;
 }
-export const SSOConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const SSOConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SSOConfiguration),
   }),
 ).annotate({ identifier: "SSOConfigurationResponse" }) as any as S.Schema<SSOConfigurationResponse>;
 
 export interface GetSsoConfigurationDetailsRequest {}
-export const GetSsoConfigurationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSsoConfigurationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/sso-configuration/details", code: 200 })),
 ).annotate({
   identifier: "GetSsoConfigurationDetailsRequest",
@@ -17513,7 +16682,7 @@ export interface SSOConfigurationDetails {
   /** The SSO login callback URL. Configure this as the Assertion Consumer Service (ACS) URL in your identity provider. */
   sso_url: string;
 }
-export const SSOConfigurationDetails = /*@__PURE__*/ S.suspend(() =>
+const SSOConfigurationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience_uri: S.String,
     sso_url: S.String,
@@ -17524,7 +16693,7 @@ export const SSOConfigurationDetails = /*@__PURE__*/ S.suspend(() =>
 export interface SSOConfigurationDetailsResponse {
   data?: SSOConfigurationDetails;
 }
-export const SSOConfigurationDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const SSOConfigurationDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SSOConfigurationDetails),
   }),
@@ -17534,19 +16703,17 @@ export const SSOConfigurationDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type GetTestSchemaRequestJsonSchemaVersionCase1 = "latest";
-export const GetTestSchemaRequestJsonSchemaVersionCase1 = S.String;
-
 export type GetTestSchemaRequestJsonSchemaVersion =
   | number
   | GetTestSchemaRequestJsonSchemaVersionCase1;
-export const GetTestSchemaRequestJsonSchemaVersion =
+const GetTestSchemaRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<GetTestSchemaRequestJsonSchemaVersion>;
 
 export interface GetTestSchemaRequest {
   /** Version of the form schema */
   json_schema_version?: GetTestSchemaRequestJsonSchemaVersion;
 }
-export const GetTestSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTestSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     json_schema_version: S.optional(GetTestSchemaRequestJsonSchemaVersion.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/test-schema", code: 200 })),
@@ -17560,13 +16727,13 @@ export type TimeoffStatus2 =
   | "requested"
   | "taken"
   | "cancel_requested";
-export const TimeoffStatus2 = S.String;
+const TimeoffStatus2 = S.String;
 
 export type GetTimeoffRequestOrder = "asc" | "desc";
-export const GetTimeoffRequestOrder = S.String;
+const GetTimeoffRequestOrder = S.String;
 
 export type GetTimeoffRequestSortBy = "timeoff_type" | "status";
-export const GetTimeoffRequestSortBy = S.String;
+const GetTimeoffRequestSortBy = S.String;
 
 export interface GetTimeoffRequest {
   /** Only show time off for a specific employment */
@@ -17588,7 +16755,7 @@ export interface GetTimeoffRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTimeoffRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.optional(S.String.pipe(T.Query())),
     timeoff_type: S.optional(ResponseTimeoffType.pipe(T.Query())),
@@ -17606,7 +16773,7 @@ export interface GetTimeoffByIdRequest {
   /** Timeoff ID */
   id: string;
 }
-export const GetTimeoffByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTimeoffByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/timeoff/{id}", code: 200 })),
@@ -17614,13 +16781,13 @@ export const GetTimeoffByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional query parameter for the List Time Off Types endpoint. - `contractor` -- time off types for contractor employments (e.g. includes `time_off`). - `full_time` -- time off types for full-time employments (e.g. includes `paid_time_off`). When omitted, the response is unchanged from previous API versions (full-time types). */
 export type TimeoffTypesEmploymentType = "contractor" | "full_time";
-export const TimeoffTypesEmploymentType = S.String;
+const TimeoffTypesEmploymentType = S.String;
 
 export interface GetTimeoffTypesRequest {
   /** Optional. Employment type to list time off types for: `contractor` or `full_time`. Omit for backward-compatible behavior (full-time types). */
   type?: TimeoffTypesEmploymentType | (string & {});
 }
-export const GetTimeoffTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTimeoffTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(TimeoffTypesEmploymentType.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/timeoff/types", code: 200 })),
@@ -17631,7 +16798,7 @@ export interface TimeoffTypeResponse {
   description?: string | null;
   name: TimeoffType;
 }
-export const TimeoffTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const TimeoffTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     name: TimeoffType,
@@ -17640,7 +16807,7 @@ export const TimeoffTypeResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of time off types available for the requested employment type */
 export type ListTimeoffTypesResponseDataTimeoffTypesList = Array<TimeoffTypeResponse>;
-export const ListTimeoffTypesResponseDataTimeoffTypesList = /*@__PURE__*/ S.Array(
+const ListTimeoffTypesResponseDataTimeoffTypesList = /*@__PURE__*/ S.Array(
   TimeoffTypeResponse,
 ) as any as S.Schema<ListTimeoffTypesResponseDataTimeoffTypesList>;
 
@@ -17648,7 +16815,7 @@ export interface ListTimeoffTypesResponseData {
   /** List of time off types available for the requested employment type */
   timeoff_types: ListTimeoffTypesResponseDataTimeoffTypesList;
 }
-export const ListTimeoffTypesResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListTimeoffTypesResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoff_types: ListTimeoffTypesResponseDataTimeoffTypesList,
   }),
@@ -17660,7 +16827,7 @@ export const ListTimeoffTypesResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListTimeoffTypesResponse {
   data?: ListTimeoffTypesResponseData;
 }
-export const ListTimeoffTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTimeoffTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListTimeoffTypesResponseData),
   }),
@@ -17670,7 +16837,7 @@ export interface GetTimesheetRequest {
   /** Timesheet ID */
   id: string;
 }
-export const GetTimesheetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTimesheetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/timesheets/{id}", code: 200 })),
@@ -17682,7 +16849,7 @@ export interface TypeOfDayBreakdown {
   regular: HoursAndMinutes;
   weekend: HoursAndMinutes;
 }
-export const TypeOfDayBreakdown = /*@__PURE__*/ S.suspend(() =>
+const TypeOfDayBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     holiday: HoursAndMinutes,
     regular: HoursAndMinutes,
@@ -17695,7 +16862,7 @@ export interface TimeBreakdown {
   day: TypeOfDayBreakdown;
   night: TypeOfDayBreakdown;
 }
-export const TimeBreakdown = /*@__PURE__*/ S.suspend(() =>
+const TimeBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: TypeOfDayBreakdown,
     night: TypeOfDayBreakdown,
@@ -17711,7 +16878,7 @@ export type TimeTrackingType =
   | "unpaid_break"
   | "time_off"
   | "public_holiday";
-export const TimeTrackingType = S.String;
+const TimeTrackingType = S.String;
 
 /** A single time tracking entry within a timesheet, representing a block of work with clock-in/out times. Includes detailed breakdowns of hours by type (regular, overtime, night, weekend, holiday). */
 export interface TimeTracking {
@@ -17734,7 +16901,7 @@ export interface TimeTracking {
   type: TimeTrackingType;
   weekend_hours: HoursAndMinutes;
 }
-export const TimeTracking = /*@__PURE__*/ S.suspend(() =>
+const TimeTracking = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clock_in: S.String,
     clock_out: S.String,
@@ -17754,7 +16921,7 @@ export const TimeTracking = /*@__PURE__*/ S.suspend(() =>
 
 /** The individual time tracking entries that make up this timesheet. */
 export type TimesheetTimeTrackingsList = Array<TimeTracking>;
-export const TimesheetTimeTrackingsList = /*@__PURE__*/ S.Array(
+const TimesheetTimeTrackingsList = /*@__PURE__*/ S.Array(
   TimeTracking,
 ) as any as S.Schema<TimesheetTimeTrackingsList>;
 
@@ -17785,7 +16952,7 @@ export interface Timesheet {
   unpaid_break_hours: HoursAndMinutes;
   weekend_hours: HoursAndMinutes;
 }
-export const Timesheet = /*@__PURE__*/ S.suspend(() =>
+const Timesheet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approval_required: S.Boolean,
     break_hours: HoursAndMinutes,
@@ -17813,7 +16980,7 @@ export const Timesheet = /*@__PURE__*/ S.suspend(() =>
 export interface TimesheetResponseData {
   timesheet: Timesheet;
 }
-export const TimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
+const TimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timesheet: Timesheet,
   }),
@@ -17823,17 +16990,17 @@ export const TimesheetResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface TimesheetResponse {
   data?: TimesheetResponseData;
 }
-export const TimesheetResponse = /*@__PURE__*/ S.suspend(() =>
+const TimesheetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(TimesheetResponseData),
   }),
 ).annotate({ identifier: "TimesheetResponse" }) as any as S.Schema<TimesheetResponse>;
 
 export type GetTimesheetsRequestOrder = "asc" | "desc";
-export const GetTimesheetsRequestOrder = S.String;
+const GetTimesheetsRequestOrder = S.String;
 
 export type GetTimesheetsRequestSortBy = "submitted_at";
-export const GetTimesheetsRequestSortBy = S.String;
+const GetTimesheetsRequestSortBy = S.String;
 
 export interface GetTimesheetsRequest {
   /** Filter timesheets by their status */
@@ -17847,7 +17014,7 @@ export interface GetTimesheetsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetTimesheetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTimesheetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(TimesheetStatus.pipe(T.Query())),
     order: S.optional(GetTimesheetsRequestOrder.pipe(T.Query())),
@@ -17858,7 +17025,7 @@ export const GetTimesheetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTimesheetsRequest" }) as any as S.Schema<GetTimesheetsRequest>;
 
 export type ListTimesheetsResponseDataTimesheetsList = Array<Timesheet>;
-export const ListTimesheetsResponseDataTimesheetsList = /*@__PURE__*/ S.Array(
+const ListTimesheetsResponseDataTimesheetsList = /*@__PURE__*/ S.Array(
   Timesheet,
 ) as any as S.Schema<ListTimesheetsResponseDataTimesheetsList>;
 
@@ -17871,7 +17038,7 @@ export interface ListTimesheetsResponseData {
   /** The total number of pages the user can go through */
   total_pages?: number;
 }
-export const ListTimesheetsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListTimesheetsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     timesheets: S.optional(ListTimesheetsResponseDataTimesheetsList),
@@ -17886,7 +17053,7 @@ export const ListTimesheetsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListTimesheetsResponse {
   data?: ListTimesheetsResponseData;
 }
-export const ListTimesheetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTimesheetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListTimesheetsResponseData),
   }),
@@ -17896,7 +17063,7 @@ export interface GetTravelLetterRequestRequest {
   /** travel letter request ID */
   id: string;
 }
-export const GetTravelLetterRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTravelLetterRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/travel-letter-requests/{id}", code: 200 })),
@@ -17913,7 +17080,7 @@ export interface TravelLetterUser {
   /** The user's full name. */
   name: string;
 }
-export const TravelLetterUser = /*@__PURE__*/ S.suspend(() =>
+const TravelLetterUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     id: S.String,
@@ -17923,15 +17090,15 @@ export const TravelLetterUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Who is responsible for accommodation costs during the trip. Set by the employer during approval. Null if not yet approved. */
 export type TravelLetterRequestResponsibleForAccommodationCost = "employee" | "employer";
-export const TravelLetterRequestResponsibleForAccommodationCost = S.String;
+const TravelLetterRequestResponsibleForAccommodationCost = S.String;
 
 /** Who is responsible for meal costs during the trip. Set by the employer during approval. Null if not yet approved. */
 export type TravelLetterRequestResponsibleForMealCost = "employee" | "employer";
-export const TravelLetterRequestResponsibleForMealCost = S.String;
+const TravelLetterRequestResponsibleForMealCost = S.String;
 
 /** Who is responsible for transportation costs. Set by the employer during approval. Null if not yet approved. */
 export type TravelLetterRequestResponsibleForTravelCost = "employee" | "employer";
-export const TravelLetterRequestResponsibleForTravelCost = S.String;
+const TravelLetterRequestResponsibleForTravelCost = S.String;
 
 /** The current status of the travel letter request. - `pending`: Submitted by the employee and awaiting manager review. - `cancelled`: Cancelled by the employee before approval. - `declined_by_manager`: The employer manager declined the request. - `declined_by_remote`: Remote declined the request after manager approval (e.g., compliance reasons). - `approved_by_manager`: Approved by the employer manager, awaiting Remote's review. - `approved_by_remote`: Fully approved by both the manager and Remote. The travel letter will be generated. */
 export type TravelLetterRequestStatus =
@@ -17941,7 +17108,7 @@ export type TravelLetterRequestStatus =
   | "declined_by_remote"
   | "approved_by_manager"
   | "approved_by_remote";
-export const TravelLetterRequestStatus = S.String;
+const TravelLetterRequestStatus = S.String;
 
 /** A travel letter request submitted by an employee who needs a formal letter from their employer to support a visa or travel application. The request goes through a two-stage approval: first by the employer manager, then by Remote. */
 export interface TravelLetterRequest {
@@ -17980,7 +17147,7 @@ export interface TravelLetterRequest {
   travel_reason_details: string;
   user: TravelLetterUser | null;
 }
-export const TravelLetterRequest = /*@__PURE__*/ S.suspend(() =>
+const TravelLetterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additional_information: S.String,
     destination_country: Country,
@@ -18010,7 +17177,7 @@ export const TravelLetterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TravelLetterResponseData {
   travel_letter_request: TravelLetterRequest;
 }
-export const TravelLetterResponseData = /*@__PURE__*/ S.suspend(() =>
+const TravelLetterResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     travel_letter_request: TravelLetterRequest,
   }),
@@ -18020,7 +17187,7 @@ export const TravelLetterResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface TravelLetterResponse {
   data: TravelLetterResponseData;
 }
-export const TravelLetterResponse = /*@__PURE__*/ S.suspend(() =>
+const TravelLetterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: TravelLetterResponseData,
   }),
@@ -18033,13 +17200,13 @@ export type GetTravelLetterRequestsRequestStatus =
   | "declined_by_remote"
   | "approved_by_manager"
   | "approved_by_remote";
-export const GetTravelLetterRequestsRequestStatus = S.String;
+const GetTravelLetterRequestsRequestStatus = S.String;
 
 export type GetTravelLetterRequestsRequestOrder = "asc" | "desc";
-export const GetTravelLetterRequestsRequestOrder = S.String;
+const GetTravelLetterRequestsRequestOrder = S.String;
 
 export type GetTravelLetterRequestsRequestSortBy = "submitted_at";
-export const GetTravelLetterRequestsRequestSortBy = S.String;
+const GetTravelLetterRequestsRequestSortBy = S.String;
 
 export interface GetTravelLetterRequestsRequest {
   /** Filter results on the given status */
@@ -18057,7 +17224,7 @@ export interface GetTravelLetterRequestsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetTravelLetterRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTravelLetterRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GetTravelLetterRequestsRequestStatus.pipe(T.Query())),
     employment_id: S.optional(S.String.pipe(T.Query())),
@@ -18072,7 +17239,7 @@ export const GetTravelLetterRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTravelLetterRequestsRequest>;
 
 export type ListTravelLettersResponseDataTravelLetterRequestsList = Array<TravelLetterRequest>;
-export const ListTravelLettersResponseDataTravelLetterRequestsList = /*@__PURE__*/ S.Array(
+const ListTravelLettersResponseDataTravelLetterRequestsList = /*@__PURE__*/ S.Array(
   TravelLetterRequest,
 ) as any as S.Schema<ListTravelLettersResponseDataTravelLetterRequestsList>;
 
@@ -18085,7 +17252,7 @@ export interface ListTravelLettersResponseData {
   total_pages?: number;
   travel_letter_requests?: ListTravelLettersResponseDataTravelLetterRequestsList;
 }
-export const ListTravelLettersResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListTravelLettersResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     total_count: S.optional(S.Number),
@@ -18100,7 +17267,7 @@ export const ListTravelLettersResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListTravelLettersResponse {
   data?: ListTravelLettersResponseData;
 }
-export const ListTravelLettersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTravelLettersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListTravelLettersResponseData),
   }),
@@ -18112,7 +17279,7 @@ export interface GetV1ContractorInvoicesIdPayInDetailsRequest {
   /** Contractor invoice identifier */
   id: string;
 }
-export const GetV1ContractorInvoicesIdPayInDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV1ContractorInvoicesIdPayInDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/contractor-invoices/{id}/pay-in-details", code: 200 })),
@@ -18130,7 +17297,7 @@ export interface PayInBankAccountAddress {
   state: string | null;
   street: string | null;
 }
-export const PayInBankAccountAddress = /*@__PURE__*/ S.suspend(() =>
+const PayInBankAccountAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.NullOr(S.String),
     country: S.NullOr(S.String),
@@ -18143,7 +17310,7 @@ export const PayInBankAccountAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of charge to select when sending the wire, so the full amount reaches Remote. */
 export type PayInBankAccountCharge = "OUR" | "BEN" | "SHA";
-export const PayInBankAccountCharge = S.String;
+const PayInBankAccountCharge = S.String;
 
 /** One of Remote's receiving accounts for this payment. Every key is always present and is `null` when the account does not carry it, so a program can bind to a fixed key set. This differs from the employer API's pay-in details in three ways: `address` is an object rather than a formatted string, each identifier has exactly one spelling, and the key set never varies by rail. */
 export interface PayInBankAccount {
@@ -18169,7 +17336,7 @@ export interface PayInBankAccount {
   transit_number: string | null;
   wire_routing_number: string | null;
 }
-export const PayInBankAccount = /*@__PURE__*/ S.suspend(() =>
+const PayInBankAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_holder: S.NullOr(S.String),
     account_number: S.NullOr(S.String),
@@ -18196,7 +17363,7 @@ export const PayInBankAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Remote's receiving accounts for this payment, present while `status` is `awaiting_payment` and the rail can publish them. Null for every other status, including `partially_paid`: `amount_due` there overstates what remains, so wiring against it would pay twice, and Remote follows up with the balance directly. Whether you should wire is a separate question that `pay_in_method` answers: Remote collects direct debit, card and prefunded payments itself. */
 export type ContractorInvoicePayInDetailsBankAccountsList = Array<PayInBankAccount>;
-export const ContractorInvoicePayInDetailsBankAccountsList = /*@__PURE__*/ S.Array(
+const ContractorInvoicePayInDetailsBankAccountsList = /*@__PURE__*/ S.Array(
   PayInBankAccount,
 ) as any as S.Schema<ContractorInvoicePayInDetailsBankAccountsList>;
 
@@ -18211,7 +17378,7 @@ export interface ContractorInvoicePayInDetails {
   reference: string;
   status: ContractorInvoicePaymentStatus;
 }
-export const ContractorInvoicePayInDetails = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoicePayInDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount_due: S.Number,
     bank_accounts: S.NullOr(ContractorInvoicePayInDetailsBankAccountsList),
@@ -18228,7 +17395,7 @@ export const ContractorInvoicePayInDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ContractorInvoicePayInDetailsResponseData {
   pay_in_details: ContractorInvoicePayInDetails;
 }
-export const ContractorInvoicePayInDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoicePayInDetailsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pay_in_details: ContractorInvoicePayInDetails,
   }),
@@ -18240,7 +17407,7 @@ export const ContractorInvoicePayInDetailsResponseData = /*@__PURE__*/ S.suspend
 export interface ContractorInvoicePayInDetailsResponse {
   data: ContractorInvoicePayInDetailsResponseData;
 }
-export const ContractorInvoicePayInDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ContractorInvoicePayInDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ContractorInvoicePayInDetailsResponseData,
   }),
@@ -18249,10 +17416,10 @@ export const ContractorInvoicePayInDetailsResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ContractorInvoicePayInDetailsResponse>;
 
 export type GetWebhookEventsRequestOrder = "asc" | "desc";
-export const GetWebhookEventsRequestOrder = S.String;
+const GetWebhookEventsRequestOrder = S.String;
 
 export type GetWebhookEventsRequestSortBy = "first_triggered_at";
-export const GetWebhookEventsRequestSortBy = S.String;
+const GetWebhookEventsRequestSortBy = S.String;
 
 export interface GetWebhookEventsRequest {
   /** Filter by webhook event type */
@@ -18274,7 +17441,7 @@ export interface GetWebhookEventsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetWebhookEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_type: S.optional(S.String.pipe(T.Query())),
     successfully_delivered: S.optional(S.Boolean.pipe(T.Query())),
@@ -18302,7 +17469,7 @@ export interface WebhookEvent {
   /** Whether the webhook event was successfully delivered to the callback URL (received a 2XX response). */
   successfully_delivered: boolean;
 }
-export const WebhookEvent = /*@__PURE__*/ S.suspend(() =>
+const WebhookEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String,
     event_type: S.String,
@@ -18314,7 +17481,7 @@ export const WebhookEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookEvent" }) as any as S.Schema<WebhookEvent>;
 
 export type ListWebhookEventsResponseDataWebhookEventsList = Array<WebhookEvent>;
-export const ListWebhookEventsResponseDataWebhookEventsList = /*@__PURE__*/ S.Array(
+const ListWebhookEventsResponseDataWebhookEventsList = /*@__PURE__*/ S.Array(
   WebhookEvent,
 ) as any as S.Schema<ListWebhookEventsResponseDataWebhookEventsList>;
 
@@ -18327,7 +17494,7 @@ export interface ListWebhookEventsResponseData {
   total_pages?: number;
   webhook_events?: ListWebhookEventsResponseDataWebhookEventsList;
 }
-export const ListWebhookEventsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookEventsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     total_count: S.optional(S.Number),
@@ -18342,7 +17509,7 @@ export const ListWebhookEventsResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface ListWebhookEventsResponse {
   data?: ListWebhookEventsResponseData;
 }
-export const ListWebhookEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListWebhookEventsResponseData),
   }),
@@ -18354,7 +17521,7 @@ export interface GetWorkAuthorizationRequestRequest {
   /** work authorization request ID */
   id: string;
 }
-export const GetWorkAuthorizationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkAuthorizationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/work-authorization-requests/{id}", code: 200 })),
@@ -18364,8 +17531,6 @@ export const GetWorkAuthorizationRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A user associated with a work authorization request (either the employee or the employer approver). */
 export type WorkAuthorizationUser = TravelLetterUser;
-export const WorkAuthorizationUser = TravelLetterUser;
-
 /** The current status of the work authorization request. - `pending`: Submitted and awaiting manager review. - `cancelled`: Cancelled by the employee. - `declined_by_manager`: Declined by the employer manager. - `declined_by_remote`: Declined by Remote after manager approval. - `approved_by_manager`: Approved by the manager, awaiting Remote's review. - `approved_by_remote`: Fully approved by both manager and Remote. */
 export type WorkAuthorizationRequestStatus =
   | "pending"
@@ -18374,7 +17539,7 @@ export type WorkAuthorizationRequestStatus =
   | "declined_by_remote"
   | "approved_by_manager"
   | "approved_by_remote";
-export const WorkAuthorizationRequestStatus = S.String;
+const WorkAuthorizationRequestStatus = S.String;
 
 /** A work authorization request submitted by an employee who needs authorization to work in a different country. Similar to a travel letter request but specifically for work authorization purposes. */
 export interface WorkAuthorizationRequest {
@@ -18401,7 +17566,7 @@ export interface WorkAuthorizationRequest {
   /** The specific work location or address in the destination country. Null if not specified. */
   work_location: string | null;
 }
-export const WorkAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additional_information: S.String,
     destination_country: Country,
@@ -18423,7 +17588,7 @@ export const WorkAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface WorkAuthorizationRequestResponseData {
   work_authorization_request: WorkAuthorizationRequest;
 }
-export const WorkAuthorizationRequestResponseData = /*@__PURE__*/ S.suspend(() =>
+const WorkAuthorizationRequestResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     work_authorization_request: WorkAuthorizationRequest,
   }),
@@ -18435,7 +17600,7 @@ export const WorkAuthorizationRequestResponseData = /*@__PURE__*/ S.suspend(() =
 export interface WorkAuthorizationRequestResponse {
   data: WorkAuthorizationRequestResponseData;
 }
-export const WorkAuthorizationRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkAuthorizationRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WorkAuthorizationRequestResponseData,
   }),
@@ -18450,13 +17615,13 @@ export type GetWorkAuthorizationRequestsRequestStatus =
   | "declined_by_remote"
   | "approved_by_manager"
   | "approved_by_remote";
-export const GetWorkAuthorizationRequestsRequestStatus = S.String;
+const GetWorkAuthorizationRequestsRequestStatus = S.String;
 
 export type GetWorkAuthorizationRequestsRequestOrder = "asc" | "desc";
-export const GetWorkAuthorizationRequestsRequestOrder = S.String;
+const GetWorkAuthorizationRequestsRequestOrder = S.String;
 
 export type GetWorkAuthorizationRequestsRequestSortBy = "submitted_at";
-export const GetWorkAuthorizationRequestsRequestSortBy = S.String;
+const GetWorkAuthorizationRequestsRequestSortBy = S.String;
 
 export interface GetWorkAuthorizationRequestsRequest {
   /** Filter results on the given status */
@@ -18474,7 +17639,7 @@ export interface GetWorkAuthorizationRequestsRequest {
   /** Number of items per page */
   page_size?: number;
 }
-export const GetWorkAuthorizationRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkAuthorizationRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GetWorkAuthorizationRequestsRequestStatus.pipe(T.Query())),
     employment_id: S.optional(S.String.pipe(T.Query())),
@@ -18490,7 +17655,7 @@ export const GetWorkAuthorizationRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListWorkAuthorizationRequestsResponseDataWorkAuthorizationRequestsList =
   Array<WorkAuthorizationRequest>;
-export const ListWorkAuthorizationRequestsResponseDataWorkAuthorizationRequestsList =
+const ListWorkAuthorizationRequestsResponseDataWorkAuthorizationRequestsList =
   /*@__PURE__*/ S.Array(
     WorkAuthorizationRequest,
   ) as any as S.Schema<ListWorkAuthorizationRequestsResponseDataWorkAuthorizationRequestsList>;
@@ -18504,7 +17669,7 @@ export interface ListWorkAuthorizationRequestsResponseData {
   total_pages?: number;
   work_authorization_requests?: ListWorkAuthorizationRequestsResponseDataWorkAuthorizationRequestsList;
 }
-export const ListWorkAuthorizationRequestsResponseData = /*@__PURE__*/ S.suspend(() =>
+const ListWorkAuthorizationRequestsResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     total_count: S.optional(S.Number),
@@ -18521,7 +17686,7 @@ export const ListWorkAuthorizationRequestsResponseData = /*@__PURE__*/ S.suspend
 export interface ListWorkAuthorizationRequestsResponse {
   data?: ListWorkAuthorizationRequestsResponseData;
 }
-export const ListWorkAuthorizationRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkAuthorizationRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListWorkAuthorizationRequestsResponseData),
   }),
@@ -18531,22 +17696,18 @@ export const ListWorkAuthorizationRequestsResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Use latest version */
 export type PatchV1CompaniesCompanyIdRequestAddressDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1CompaniesCompanyIdRequestAddressDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1CompaniesCompanyIdRequestAddressDetailsJsonSchemaVersion =
   | number
   | PatchV1CompaniesCompanyIdRequestAddressDetailsJsonSchemaVersionCase1;
-export const PatchV1CompaniesCompanyIdRequestAddressDetailsJsonSchemaVersion =
+const PatchV1CompaniesCompanyIdRequestAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1CompaniesCompanyIdRequestAddressDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1CompaniesCompanyIdRequestBankAccountDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1CompaniesCompanyIdRequestBankAccountDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1CompaniesCompanyIdRequestBankAccountDetailsJsonSchemaVersion =
   | number
   | PatchV1CompaniesCompanyIdRequestBankAccountDetailsJsonSchemaVersionCase1;
-export const PatchV1CompaniesCompanyIdRequestBankAccountDetailsJsonSchemaVersion =
+const PatchV1CompaniesCompanyIdRequestBankAccountDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1CompaniesCompanyIdRequestBankAccountDetailsJsonSchemaVersion>;
 
 /** Desired currency for invoicing and displaying converted salaries in Remote UI regardless of the employee's country. This field is only accepted if company is in status `pending`. Please contact Remote if you wish to update it. */
@@ -18563,7 +17724,7 @@ export type PatchV1CompaniesCompanyIdRequestDesiredCurrency =
   | "SEK"
   | "SGD"
   | "USD";
-export const PatchV1CompaniesCompanyIdRequestDesiredCurrency = S.String;
+const PatchV1CompaniesCompanyIdRequestDesiredCurrency = S.String;
 
 export interface PatchV1CompaniesCompanyIdRequest {
   /** Company ID */
@@ -18589,7 +17750,7 @@ export interface PatchV1CompaniesCompanyIdRequest {
   /** The tax identifier of the company. This field or registration_number (but not both) should be submitted. This field is only accepted if company is in status `pending`. */
   tax_number?: string;
 }
-export const PatchV1CompaniesCompanyIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1CompaniesCompanyIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     address_details_json_schema_version: S.optional(
@@ -18613,22 +17774,18 @@ export const PatchV1CompaniesCompanyIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type PatchV1CompaniesCompanyId2RequestAddressDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1CompaniesCompanyId2RequestAddressDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1CompaniesCompanyId2RequestAddressDetailsJsonSchemaVersion =
   | number
   | PatchV1CompaniesCompanyId2RequestAddressDetailsJsonSchemaVersionCase1;
-export const PatchV1CompaniesCompanyId2RequestAddressDetailsJsonSchemaVersion =
+const PatchV1CompaniesCompanyId2RequestAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1CompaniesCompanyId2RequestAddressDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1CompaniesCompanyId2RequestBankAccountDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1CompaniesCompanyId2RequestBankAccountDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1CompaniesCompanyId2RequestBankAccountDetailsJsonSchemaVersion =
   | number
   | PatchV1CompaniesCompanyId2RequestBankAccountDetailsJsonSchemaVersionCase1;
-export const PatchV1CompaniesCompanyId2RequestBankAccountDetailsJsonSchemaVersion =
+const PatchV1CompaniesCompanyId2RequestBankAccountDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1CompaniesCompanyId2RequestBankAccountDetailsJsonSchemaVersion>;
 
 /** Desired currency for invoicing and displaying converted salaries in Remote UI regardless of the employee's country. This field is only accepted if company is in status `pending`. Please contact Remote if you wish to update it. */
@@ -18645,7 +17802,7 @@ export type PatchV1CompaniesCompanyId2RequestDesiredCurrency =
   | "SEK"
   | "SGD"
   | "USD";
-export const PatchV1CompaniesCompanyId2RequestDesiredCurrency = S.String;
+const PatchV1CompaniesCompanyId2RequestDesiredCurrency = S.String;
 
 export interface PatchV1CompaniesCompanyId2Request {
   /** Company ID */
@@ -18671,7 +17828,7 @@ export interface PatchV1CompaniesCompanyId2Request {
   /** The tax identifier of the company. This field or registration_number (but not both) should be submitted. This field is only accepted if company is in status `pending`. */
   tax_number?: string;
 }
-export const PatchV1CompaniesCompanyId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1CompaniesCompanyId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     address_details_json_schema_version: S.optional(
@@ -18699,7 +17856,7 @@ export interface CompanyManagerBillingContact {
   /** Slug of the legal entity */
   legal_entity_slug: string;
 }
-export const CompanyManagerBillingContact = /*@__PURE__*/ S.suspend(() =>
+const CompanyManagerBillingContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_primary_billing_contact: S.Boolean,
     legal_entity_slug: S.String,
@@ -18711,7 +17868,7 @@ export const CompanyManagerBillingContact = /*@__PURE__*/ S.suspend(() =>
 /** The legal entities to assign or unassign this manager as billing contact for. */
 export type PatchV1CompanyManagersUserIdRequestBillingContactForList =
   Array<CompanyManagerBillingContact>;
-export const PatchV1CompanyManagersUserIdRequestBillingContactForList = /*@__PURE__*/ S.Array(
+const PatchV1CompanyManagersUserIdRequestBillingContactForList = /*@__PURE__*/ S.Array(
   CompanyManagerBillingContact,
 ) as any as S.Schema<PatchV1CompanyManagersUserIdRequestBillingContactForList>;
 
@@ -18721,7 +17878,7 @@ export interface PatchV1CompanyManagersUserIdRequest {
   /** The legal entities to assign or unassign this manager as billing contact for. */
   billing_contact_for: PatchV1CompanyManagersUserIdRequestBillingContactForList;
 }
-export const PatchV1CompanyManagersUserIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1CompanyManagersUserIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     billing_contact_for: PatchV1CompanyManagersUserIdRequestBillingContactForList,
@@ -18733,7 +17890,7 @@ export const PatchV1CompanyManagersUserIdRequest = /*@__PURE__*/ S.suspend(() =>
 /** The legal entities to assign or unassign this manager as billing contact for. */
 export type PatchV1CompanyManagersUserId2RequestBillingContactForList =
   Array<CompanyManagerBillingContact>;
-export const PatchV1CompanyManagersUserId2RequestBillingContactForList =
+const PatchV1CompanyManagersUserId2RequestBillingContactForList =
   PatchV1CompanyManagersUserIdRequestBillingContactForList as any as S.Schema<PatchV1CompanyManagersUserId2RequestBillingContactForList>;
 
 export interface PatchV1CompanyManagersUserId2Request {
@@ -18742,7 +17899,7 @@ export interface PatchV1CompanyManagersUserId2Request {
   /** The legal entities to assign or unassign this manager as billing contact for. */
   billing_contact_for: PatchV1CompanyManagersUserId2RequestBillingContactForList;
 }
-export const PatchV1CompanyManagersUserId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1CompanyManagersUserId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     billing_contact_for: PatchV1CompanyManagersUserId2RequestBillingContactForList,
@@ -18754,7 +17911,7 @@ export const PatchV1CompanyManagersUserId2Request = /*@__PURE__*/ S.suspend(() =
 /** List of invoice items that composes the overall invoice amount. */
 export type PatchV1ContractorInvoiceSchedulesIdRequestItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const PatchV1ContractorInvoiceSchedulesIdRequestItemsList =
+const PatchV1ContractorInvoiceSchedulesIdRequestItemsList =
   ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<PatchV1ContractorInvoiceSchedulesIdRequestItemsList>;
 
 export type PatchV1ContractorInvoiceSchedulesIdRequestStatus =
@@ -18762,7 +17919,7 @@ export type PatchV1ContractorInvoiceSchedulesIdRequestStatus =
   | "deleted"
   | "active"
   | "processing";
-export const PatchV1ContractorInvoiceSchedulesIdRequestStatus = S.String;
+const PatchV1ContractorInvoiceSchedulesIdRequestStatus = S.String;
 
 export interface PatchV1ContractorInvoiceSchedulesIdRequest {
   /** Resource unique identifier */
@@ -18781,7 +17938,7 @@ export interface PatchV1ContractorInvoiceSchedulesIdRequest {
   start_date?: string;
   status?: PatchV1ContractorInvoiceSchedulesIdRequestStatus | (string & {});
 }
-export const PatchV1ContractorInvoiceSchedulesIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1ContractorInvoiceSchedulesIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     currency: S.optional(S.NullOr(S.String)),
@@ -18801,7 +17958,7 @@ export const PatchV1ContractorInvoiceSchedulesIdRequest = /*@__PURE__*/ S.suspen
 /** List of invoice items that composes the overall invoice amount. */
 export type PatchV1ContractorInvoiceSchedulesId2RequestItemsList =
   Array<ContractorInvoiceScheduleItem>;
-export const PatchV1ContractorInvoiceSchedulesId2RequestItemsList =
+const PatchV1ContractorInvoiceSchedulesId2RequestItemsList =
   ContractorInvoiceScheduleCreateParamsItemsList as any as S.Schema<PatchV1ContractorInvoiceSchedulesId2RequestItemsList>;
 
 export type PatchV1ContractorInvoiceSchedulesId2RequestStatus =
@@ -18809,7 +17966,7 @@ export type PatchV1ContractorInvoiceSchedulesId2RequestStatus =
   | "deleted"
   | "active"
   | "processing";
-export const PatchV1ContractorInvoiceSchedulesId2RequestStatus = S.String;
+const PatchV1ContractorInvoiceSchedulesId2RequestStatus = S.String;
 
 export interface PatchV1ContractorInvoiceSchedulesId2Request {
   /** Resource unique identifier */
@@ -18828,7 +17985,7 @@ export interface PatchV1ContractorInvoiceSchedulesId2Request {
   start_date?: string;
   status?: PatchV1ContractorInvoiceSchedulesId2RequestStatus | (string & {});
 }
-export const PatchV1ContractorInvoiceSchedulesId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1ContractorInvoiceSchedulesId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     currency: S.optional(S.NullOr(S.String)),
@@ -18849,7 +18006,7 @@ export type PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequestValue =
   | string
   | number
   | boolean;
-export const PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequestValue =
+const PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequestValue =
   S.Unknown as any as S.Schema<PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequestValue>;
 
 export interface PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequest {
@@ -18859,19 +18016,18 @@ export interface PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequest {
   employment_id: string;
   value: PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequestValue;
 }
-export const PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      custom_field_id: S.String.pipe(T.Label()),
-      employment_id: S.String.pipe(T.Label()),
-      value: PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequestValue,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/v1/custom-fields/{custom_field_id}/values/{employment_id}",
-        code: 200,
-      }),
-    ),
+const PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    custom_field_id: S.String.pipe(T.Label()),
+    employment_id: S.String.pipe(T.Label()),
+    value: PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequestValue,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/v1/custom-fields/{custom_field_id}/values/{employment_id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequest",
 }) as any as S.Schema<PatchV1CustomFieldsCustomFieldIdValuesEmploymentIdRequest>;
@@ -18880,7 +18036,7 @@ export type PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2RequestValue =
   | string
   | number
   | boolean;
-export const PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2RequestValue =
+const PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2RequestValue =
   S.Unknown as any as S.Schema<PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2RequestValue>;
 
 export interface PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request {
@@ -18890,25 +18046,24 @@ export interface PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request {
   employment_id: string;
   value: PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2RequestValue;
 }
-export const PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      custom_field_id: S.String.pipe(T.Label()),
-      employment_id: S.String.pipe(T.Label()),
-      value: PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2RequestValue,
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/v1/custom-fields/{custom_field_id}/values/{employment_id}",
-        code: 200,
-      }),
-    ),
+const PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    custom_field_id: S.String.pipe(T.Label()),
+    employment_id: S.String.pipe(T.Label()),
+    value: PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2RequestValue,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/v1/custom-fields/{custom_field_id}/values/{employment_id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request",
 }) as any as S.Schema<PatchV1CustomFieldsCustomFieldIdValuesEmploymentId2Request>;
 
 export type PatchV1EmployeeTimeoffIdRequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const PatchV1EmployeeTimeoffIdRequestTimeoffDaysList =
+const PatchV1EmployeeTimeoffIdRequestTimeoffDaysList =
   CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<PatchV1EmployeeTimeoffIdRequestTimeoffDaysList>;
 
 export interface PatchV1EmployeeTimeoffIdRequest {
@@ -18924,7 +18079,7 @@ export interface PatchV1EmployeeTimeoffIdRequest {
   timeoff_days?: PatchV1EmployeeTimeoffIdRequestTimeoffDaysList;
   timezone?: string;
 }
-export const PatchV1EmployeeTimeoffIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1EmployeeTimeoffIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     document: S.optional(TimeoffDocumentParams),
@@ -18941,7 +18096,7 @@ export const PatchV1EmployeeTimeoffIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchV1EmployeeTimeoffIdRequest>;
 
 export type PatchV1EmployeeTimeoffId2RequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const PatchV1EmployeeTimeoffId2RequestTimeoffDaysList =
+const PatchV1EmployeeTimeoffId2RequestTimeoffDaysList =
   CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<PatchV1EmployeeTimeoffId2RequestTimeoffDaysList>;
 
 export interface PatchV1EmployeeTimeoffId2Request {
@@ -18957,7 +18112,7 @@ export interface PatchV1EmployeeTimeoffId2Request {
   timeoff_days?: PatchV1EmployeeTimeoffId2RequestTimeoffDaysList;
   timezone?: string;
 }
-export const PatchV1EmployeeTimeoffId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1EmployeeTimeoffId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     document: S.optional(TimeoffDocumentParams),
@@ -18975,109 +18130,85 @@ export const PatchV1EmployeeTimeoffId2Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestAddressDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1EmploymentsEmploymentIdRequestAddressDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestAddressDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestAddressDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestAddressDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestAddressDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestAdministrativeDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentIdRequestAdministrativeDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestAdministrativeDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestAdministrativeDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestAdministrativeDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestAdministrativeDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestAdministrativeDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestBankAccountDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentIdRequestBankAccountDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestBankAccountDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestBankAccountDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestBankAccountDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestBankAccountDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestBankAccountDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestEmploymentBasicInformationJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentIdRequestEmploymentBasicInformationJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestEmploymentBasicInformationJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestEmploymentBasicInformationJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestEmploymentBasicInformationJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestEmploymentBasicInformationJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestEmploymentBasicInformationJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestBillingAddressDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentIdRequestBillingAddressDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestBillingAddressDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestBillingAddressDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestBillingAddressDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestBillingAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestBillingAddressDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestContractDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1EmploymentsEmploymentIdRequestContractDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestContractDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestContractDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestContractDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestContractDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestContractDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestEmergencyContactDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentIdRequestEmergencyContactDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestEmergencyContactDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestEmergencyContactDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestEmergencyContactDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestEmergencyContactDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestEmergencyContactDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestPersonalDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1EmploymentsEmploymentIdRequestPersonalDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestPersonalDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestPersonalDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestPersonalDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestPersonalDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestPersonalDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentIdRequestPricingPlanDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentIdRequestPricingPlanDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentIdRequestPricingPlanDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentIdRequestPricingPlanDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentIdRequestPricingPlanDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentIdRequestPricingPlanDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentIdRequestPricingPlanDetailsJsonSchemaVersion>;
 
 /** If not provided, it will default to `employee`. */
 export type PatchV1EmploymentsEmploymentIdRequestType = "employee" | "contractor";
-export const PatchV1EmploymentsEmploymentIdRequestType = S.String;
+const PatchV1EmploymentsEmploymentIdRequestType = S.String;
 
 export interface PatchV1EmploymentsEmploymentIdRequest {
   /** Employment ID */
@@ -19140,7 +18271,7 @@ export interface PatchV1EmploymentsEmploymentIdRequest {
   /** The work email of the employment. */
   work_email?: string;
 }
-export const PatchV1EmploymentsEmploymentIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1EmploymentsEmploymentIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     address_details_json_schema_version: S.optional(
@@ -19200,7 +18331,7 @@ export const PatchV1EmploymentsEmploymentIdRequest = /*@__PURE__*/ S.suspend(() 
 export interface EmploymentResponseData {
   employment?: Employment;
 }
-export const EmploymentResponseData = /*@__PURE__*/ S.suspend(() =>
+const EmploymentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment: S.optional(Employment),
   }),
@@ -19210,7 +18341,7 @@ export const EmploymentResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface EmploymentResponse {
   data: EmploymentResponseData;
 }
-export const EmploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const EmploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EmploymentResponseData,
   }),
@@ -19218,109 +18349,85 @@ export const EmploymentResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestAddressDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1EmploymentsEmploymentId2RequestAddressDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestAddressDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestAddressDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestAddressDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestAddressDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestAdministrativeDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentId2RequestAdministrativeDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestAdministrativeDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestAdministrativeDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestAdministrativeDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestAdministrativeDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestAdministrativeDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestBankAccountDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentId2RequestBankAccountDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestBankAccountDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestBankAccountDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestBankAccountDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestBankAccountDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestBankAccountDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestEmploymentBasicInformationJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentId2RequestEmploymentBasicInformationJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestEmploymentBasicInformationJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestEmploymentBasicInformationJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestEmploymentBasicInformationJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestEmploymentBasicInformationJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestEmploymentBasicInformationJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestBillingAddressDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentId2RequestBillingAddressDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestBillingAddressDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestBillingAddressDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestBillingAddressDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestBillingAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestBillingAddressDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestContractDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1EmploymentsEmploymentId2RequestContractDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestContractDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestContractDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestContractDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestContractDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestContractDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestEmergencyContactDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentId2RequestEmergencyContactDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestEmergencyContactDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestEmergencyContactDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestEmergencyContactDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestEmergencyContactDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestEmergencyContactDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestPersonalDetailsJsonSchemaVersionCase1 = "latest";
-export const PatchV1EmploymentsEmploymentId2RequestPersonalDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestPersonalDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestPersonalDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestPersonalDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestPersonalDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestPersonalDetailsJsonSchemaVersion>;
 
 /** Use latest version */
 export type PatchV1EmploymentsEmploymentId2RequestPricingPlanDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PatchV1EmploymentsEmploymentId2RequestPricingPlanDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PatchV1EmploymentsEmploymentId2RequestPricingPlanDetailsJsonSchemaVersion =
   | number
   | PatchV1EmploymentsEmploymentId2RequestPricingPlanDetailsJsonSchemaVersionCase1;
-export const PatchV1EmploymentsEmploymentId2RequestPricingPlanDetailsJsonSchemaVersion =
+const PatchV1EmploymentsEmploymentId2RequestPricingPlanDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PatchV1EmploymentsEmploymentId2RequestPricingPlanDetailsJsonSchemaVersion>;
 
 /** If not provided, it will default to `employee`. */
 export type PatchV1EmploymentsEmploymentId2RequestType = "employee" | "contractor";
-export const PatchV1EmploymentsEmploymentId2RequestType = S.String;
+const PatchV1EmploymentsEmploymentId2RequestType = S.String;
 
 export interface PatchV1EmploymentsEmploymentId2Request {
   /** Employment ID */
@@ -19383,7 +18490,7 @@ export interface PatchV1EmploymentsEmploymentId2Request {
   /** The work email of the employment. */
   work_email?: string;
 }
-export const PatchV1EmploymentsEmploymentId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1EmploymentsEmploymentId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     address_details_json_schema_version: S.optional(
@@ -19443,44 +18550,27 @@ export const PatchV1EmploymentsEmploymentId2Request = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PatchV1EmploymentsEmploymentId2Request>;
 
 export type ApproveExpenseParamsStatus = "approved";
-export const ApproveExpenseParamsStatus = S.String;
-
 /** Approve an expense */
 export interface ApproveExpenseParams {
   status: ApproveExpenseParamsStatus;
 }
-export const ApproveExpenseParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: ApproveExpenseParamsStatus,
-  }),
-).annotate({ identifier: "ApproveExpenseParams" }) as any as S.Schema<ApproveExpenseParams>;
-
 export type DeclineExpenseParamsStatus = "declined";
-export const DeclineExpenseParamsStatus = S.String;
-
 /** Decline an expense */
 export interface DeclineExpenseParams {
   /** Reason for declination. */
   reason: string;
   status: DeclineExpenseParamsStatus;
 }
-export const DeclineExpenseParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.String,
-    status: DeclineExpenseParamsStatus,
-  }),
-).annotate({ identifier: "DeclineExpenseParams" }) as any as S.Schema<DeclineExpenseParams>;
-
 /** Update expense params */
 export type UpdateExpenseParams = ApproveExpenseParams | DeclineExpenseParams;
-export const UpdateExpenseParams = S.Unknown as any as S.Schema<UpdateExpenseParams>;
+const UpdateExpenseParams = S.Unknown as any as S.Schema<UpdateExpenseParams>;
 
 export interface PatchV1ExpensesIdRequest {
   /** Expense ID */
   id: string;
   body?: UpdateExpenseParams;
 }
-export const PatchV1ExpensesIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1ExpensesIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(UpdateExpenseParams.pipe(T.HttpBody())),
@@ -19492,7 +18582,7 @@ export interface PatchV1ExpensesId2Request {
   id: string;
   body?: UpdateExpenseParams;
 }
-export const PatchV1ExpensesId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1ExpensesId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(UpdateExpenseParams.pipe(T.HttpBody())),
@@ -19517,7 +18607,7 @@ export interface PatchV1IncentivesIdRequest {
   /** A valid type according to the payment frequency */
   type?: string;
 }
-export const PatchV1IncentivesIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1IncentivesIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     amount: S.optional(S.Number),
@@ -19548,7 +18638,7 @@ export interface PatchV1IncentivesId2Request {
   /** A valid type according to the payment frequency */
   type?: string;
 }
-export const PatchV1IncentivesId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1IncentivesId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     amount: S.optional(S.Number),
@@ -19569,7 +18659,7 @@ export interface PatchV1SandboxEmploymentsEmploymentIdRequest {
   provisional_start_date?: string;
   status?: EmploymentStatus | (string & {});
 }
-export const PatchV1SandboxEmploymentsEmploymentIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1SandboxEmploymentsEmploymentIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     provisional_start_date: S.optional(S.String),
@@ -19585,7 +18675,7 @@ export interface PatchV1SandboxEmploymentsEmploymentId2Request {
   provisional_start_date?: string;
   status?: EmploymentStatus | (string & {});
 }
-export const PatchV1SandboxEmploymentsEmploymentId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1SandboxEmploymentsEmploymentId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     provisional_start_date: S.optional(S.String),
@@ -19596,10 +18686,10 @@ export const PatchV1SandboxEmploymentsEmploymentId2Request = /*@__PURE__*/ S.sus
 }) as any as S.Schema<PatchV1SandboxEmploymentsEmploymentId2Request>;
 
 export type PatchV1TimeoffIdRequestStatus = "approved" | "cancelled";
-export const PatchV1TimeoffIdRequestStatus = S.String;
+const PatchV1TimeoffIdRequestStatus = S.String;
 
 export type PatchV1TimeoffIdRequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const PatchV1TimeoffIdRequestTimeoffDaysList =
+const PatchV1TimeoffIdRequestTimeoffDaysList =
   CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<PatchV1TimeoffIdRequestTimeoffDaysList>;
 
 export interface PatchV1TimeoffIdRequest {
@@ -19619,7 +18709,7 @@ export interface PatchV1TimeoffIdRequest {
   timeoff_days?: PatchV1TimeoffIdRequestTimeoffDaysList;
   timezone?: string;
 }
-export const PatchV1TimeoffIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1TimeoffIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     approved_at: S.optional(S.String),
@@ -19637,10 +18727,10 @@ export const PatchV1TimeoffIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchV1TimeoffIdRequest" }) as any as S.Schema<PatchV1TimeoffIdRequest>;
 
 export type PatchV1TimeoffId2RequestStatus = "approved" | "cancelled";
-export const PatchV1TimeoffId2RequestStatus = S.String;
+const PatchV1TimeoffId2RequestStatus = S.String;
 
 export type PatchV1TimeoffId2RequestTimeoffDaysList = Array<TimeoffDaysParams>;
-export const PatchV1TimeoffId2RequestTimeoffDaysList =
+const PatchV1TimeoffId2RequestTimeoffDaysList =
   CreateEmployeeTimeoffRequestTimeoffDaysList as any as S.Schema<PatchV1TimeoffId2RequestTimeoffDaysList>;
 
 export interface PatchV1TimeoffId2Request {
@@ -19660,7 +18750,7 @@ export interface PatchV1TimeoffId2Request {
   timeoff_days?: PatchV1TimeoffId2RequestTimeoffDaysList;
   timezone?: string;
 }
-export const PatchV1TimeoffId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1TimeoffId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     approved_at: S.optional(S.String),
@@ -19678,17 +18768,9 @@ export const PatchV1TimeoffId2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchV1TimeoffId2Request" }) as any as S.Schema<PatchV1TimeoffId2Request>;
 
 export type ApprovedTravelLetterResponsibleForAccommodationCost = "employee" | "employer";
-export const ApprovedTravelLetterResponsibleForAccommodationCost = S.String;
-
 export type ApprovedTravelLetterResponsibleForMealCost = "employee" | "employer";
-export const ApprovedTravelLetterResponsibleForMealCost = S.String;
-
 export type ApprovedTravelLetterResponsibleForTravelCost = "employee" | "employer";
-export const ApprovedTravelLetterResponsibleForTravelCost = S.String;
-
 export type ApprovedTravelLetterStatus = "approved_by_manager";
-export const ApprovedTravelLetterStatus = S.String;
-
 /** Schema for approved travel letter */
 export interface ApprovedTravelLetter {
   employer_special_instructions?: string | null;
@@ -19699,36 +18781,16 @@ export interface ApprovedTravelLetter {
   responsible_for_travel_cost: ApprovedTravelLetterResponsibleForTravelCost | (string & {});
   status: ApprovedTravelLetterStatus;
 }
-export const ApprovedTravelLetter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    employer_special_instructions: S.optional(S.NullOr(S.String)),
-    responsible_for_accommodation_cost: ApprovedTravelLetterResponsibleForAccommodationCost,
-    responsible_for_meal_cost: ApprovedTravelLetterResponsibleForMealCost,
-    responsible_for_travel_cost: ApprovedTravelLetterResponsibleForTravelCost,
-    status: ApprovedTravelLetterStatus,
-  }),
-).annotate({ identifier: "ApprovedTravelLetter" }) as any as S.Schema<ApprovedTravelLetter>;
-
 export type DeclinedTravelLetterStatus = "declined_by_manager";
-export const DeclinedTravelLetterStatus = S.String;
-
 /** Schema for declined travel letter */
 export interface DeclinedTravelLetter {
   employer_special_instructions?: string | null;
   reason: string;
   status: DeclinedTravelLetterStatus;
 }
-export const DeclinedTravelLetter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    employer_special_instructions: S.optional(S.NullOr(S.String)),
-    reason: S.String,
-    status: DeclinedTravelLetterStatus,
-  }),
-).annotate({ identifier: "DeclinedTravelLetter" }) as any as S.Schema<DeclinedTravelLetter>;
-
 /** Schema for updating travel letter request parameters */
 export type UpdateTravelLetterRequestParams = ApprovedTravelLetter | DeclinedTravelLetter;
-export const UpdateTravelLetterRequestParams =
+const UpdateTravelLetterRequestParams =
   S.Unknown as any as S.Schema<UpdateTravelLetterRequestParams>;
 
 export interface PatchV1TravelLetterRequestsIdRequest {
@@ -19736,7 +18798,7 @@ export interface PatchV1TravelLetterRequestsIdRequest {
   id: string;
   body: UpdateTravelLetterRequestParams;
 }
-export const PatchV1TravelLetterRequestsIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1TravelLetterRequestsIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: UpdateTravelLetterRequestParams.pipe(T.HttpBody()),
@@ -19750,7 +18812,7 @@ export interface PatchV1TravelLetterRequestsId2Request {
   id: string;
   body: UpdateTravelLetterRequestParams;
 }
-export const PatchV1TravelLetterRequestsId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1TravelLetterRequestsId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: UpdateTravelLetterRequestParams.pipe(T.HttpBody()),
@@ -19760,37 +18822,23 @@ export const PatchV1TravelLetterRequestsId2Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PatchV1TravelLetterRequestsId2Request>;
 
 export type ApprovedWorkAuthozationStatus = "approved_by_manager";
-export const ApprovedWorkAuthozationStatus = S.String;
-
 /** Schema for approved work authorization */
 export interface ApprovedWorkAuthozation {
   employer_special_instructions?: string | null;
   status: ApprovedWorkAuthozationStatus;
 }
-export const ApprovedWorkAuthozation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    employer_special_instructions: S.optional(S.NullOr(S.String)),
-    status: ApprovedWorkAuthozationStatus,
-  }),
-).annotate({ identifier: "ApprovedWorkAuthozation" }) as any as S.Schema<ApprovedWorkAuthozation>;
-
 export type DeclinedWorkAuthozationStatus = "declined_by_manager";
-export const DeclinedWorkAuthozationStatus = S.String;
-
 /** Schema for declined work authorization */
 export interface DeclinedWorkAuthozation {
   employer_special_instructions?: string | null;
   reason: string;
   status: DeclinedWorkAuthozationStatus;
 }
-export const DeclinedWorkAuthozation =
-  DeclinedTravelLetter as any as S.Schema<DeclinedWorkAuthozation>;
-
 /** Schema for updating a work authorization request */
 export type UpdateWorkAuthorizationRequestParams =
   | ApprovedWorkAuthozation
   | DeclinedWorkAuthozation;
-export const UpdateWorkAuthorizationRequestParams =
+const UpdateWorkAuthorizationRequestParams =
   S.Unknown as any as S.Schema<UpdateWorkAuthorizationRequestParams>;
 
 export interface PatchV1WorkAuthorizationRequestsIdRequest {
@@ -19798,7 +18846,7 @@ export interface PatchV1WorkAuthorizationRequestsIdRequest {
   id: string;
   body: UpdateWorkAuthorizationRequestParams;
 }
-export const PatchV1WorkAuthorizationRequestsIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV1WorkAuthorizationRequestsIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: UpdateWorkAuthorizationRequestParams.pipe(T.HttpBody()),
@@ -19812,7 +18860,7 @@ export interface PatchV1WorkAuthorizationRequestsId2Request {
   id: string;
   body: UpdateWorkAuthorizationRequestParams;
 }
-export const PatchV1WorkAuthorizationRequestsId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV1WorkAuthorizationRequestsId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: UpdateWorkAuthorizationRequestParams.pipe(T.HttpBody()),
@@ -19835,7 +18883,7 @@ export interface PatchV2EmploymentsEmploymentIdRequest {
   /** The work email of the employment. */
   work_email?: string;
 }
-export const PatchV2EmploymentsEmploymentIdRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV2EmploymentsEmploymentIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     department_id: S.optional(S.NullOr(S.String)),
@@ -19862,7 +18910,7 @@ export interface PatchV2EmploymentsEmploymentId2Request {
   /** The work email of the employment. */
   work_email?: string;
 }
-export const PatchV2EmploymentsEmploymentId2Request = /*@__PURE__*/ S.suspend(() =>
+const PatchV2EmploymentsEmploymentId2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     department_id: S.optional(S.NullOr(S.String)),
@@ -19883,7 +18931,7 @@ export interface PostV1CurrencyConverterEffective2Request {
   /** The currency code to convert to */
   target_currency: string;
 }
-export const PostV1CurrencyConverterEffective2Request = /*@__PURE__*/ S.suspend(() =>
+const PostV1CurrencyConverterEffective2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     source_currency: S.String,
@@ -19899,22 +18947,21 @@ export interface PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest 
   /** The proof of payment file (PDF) */
   file: string;
 }
-export const PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      employment_id: S.String.pipe(T.Label()),
-      file: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/v1/employments/{employment_id}/risk-reserve-proof-of-payments",
-        code: 200,
-        contentType: "multipart",
-      }),
-    ),
-  ).annotate({
-    identifier: "PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest",
-  }) as any as S.Schema<PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest>;
+const PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    employment_id: S.String.pipe(T.Label()),
+    file: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/v1/employments/{employment_id}/risk-reserve-proof-of-payments",
+      code: 200,
+      contentType: "multipart",
+    }),
+  ),
+).annotate({
+  identifier: "PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest",
+}) as any as S.Schema<PostV1EmploymentsEmploymentIdRiskReserveProofOfPaymentsRequest>;
 
 /** Current status of the proof of payment */
 export type RiskReserveProofOfPaymentResponseDataStatus =
@@ -19923,7 +18970,7 @@ export type RiskReserveProofOfPaymentResponseDataStatus =
   | "manual_review"
   | "approved"
   | "rejected";
-export const RiskReserveProofOfPaymentResponseDataStatus = S.String;
+const RiskReserveProofOfPaymentResponseDataStatus = S.String;
 
 export interface RiskReserveProofOfPaymentResponseData {
   /** Proof of payment ID */
@@ -19931,7 +18978,7 @@ export interface RiskReserveProofOfPaymentResponseData {
   /** Current status of the proof of payment */
   status?: RiskReserveProofOfPaymentResponseDataStatus;
 }
-export const RiskReserveProofOfPaymentResponseData = /*@__PURE__*/ S.suspend(() =>
+const RiskReserveProofOfPaymentResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     status: S.optional(RiskReserveProofOfPaymentResponseDataStatus),
@@ -19943,7 +18990,7 @@ export const RiskReserveProofOfPaymentResponseData = /*@__PURE__*/ S.suspend(() 
 export interface RiskReserveProofOfPaymentResponse {
   data?: RiskReserveProofOfPaymentResponseData;
 }
-export const RiskReserveProofOfPaymentResponse = /*@__PURE__*/ S.suspend(() =>
+const RiskReserveProofOfPaymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(RiskReserveProofOfPaymentResponseData),
   }),
@@ -19955,7 +19002,7 @@ export interface PostV1SandboxEmploymentsEmploymentIdRiskReserveProofOfPaymentsA
   /** Employment ID */
   employment_id: string;
 }
-export const PostV1SandboxEmploymentsEmploymentIdRiskReserveProofOfPaymentsApproveRequest =
+const PostV1SandboxEmploymentsEmploymentIdRiskReserveProofOfPaymentsApproveRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       employment_id: S.String.pipe(T.Label()),
@@ -19974,7 +19021,7 @@ export type PutCompanyLegalEntityAdministrativeDetailsRequestProductType =
   | "peo"
   | "global_payroll"
   | "e2e_payroll";
-export const PutCompanyLegalEntityAdministrativeDetailsRequestProductType = S.String;
+const PutCompanyLegalEntityAdministrativeDetailsRequestProductType = S.String;
 
 export interface PutCompanyLegalEntityAdministrativeDetailsRequest {
   /** Company ID */
@@ -19985,7 +19032,7 @@ export interface PutCompanyLegalEntityAdministrativeDetailsRequest {
   administrative_details: unknown;
   product_type: PutCompanyLegalEntityAdministrativeDetailsRequestProductType | (string & {});
 }
-export const PutCompanyLegalEntityAdministrativeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutCompanyLegalEntityAdministrativeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     legal_entity_id: S.String.pipe(T.Label()),
@@ -20005,17 +19052,15 @@ export const PutCompanyLegalEntityAdministrativeDetailsRequest = /*@__PURE__*/ S
 export interface PutCompanyLegalEntityAdministrativeDetailsResponse {
   data: unknown;
 }
-export const PutCompanyLegalEntityAdministrativeDetailsResponse =
+const PutCompanyLegalEntityAdministrativeDetailsResponse =
   GetCompanyLegalEntityAdministrativeDetailsResponse as any as S.Schema<PutCompanyLegalEntityAdministrativeDetailsResponse>;
 
 /** Use latest version */
 export type PutEmployeeAddressRequestAddressDetailsJsonSchemaVersionCase1 = "latest";
-export const PutEmployeeAddressRequestAddressDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PutEmployeeAddressRequestAddressDetailsJsonSchemaVersion =
   | number
   | PutEmployeeAddressRequestAddressDetailsJsonSchemaVersionCase1;
-export const PutEmployeeAddressRequestAddressDetailsJsonSchemaVersion =
+const PutEmployeeAddressRequestAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmployeeAddressRequestAddressDetailsJsonSchemaVersion>;
 
 export interface PutEmployeeAddressRequest {
@@ -20024,7 +19069,7 @@ export interface PutEmployeeAddressRequest {
   /** Home address information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `address_details` as path parameters. */
   address_details: unknown;
 }
-export const PutEmployeeAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmployeeAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_details_json_schema_version: S.optional(
       PutEmployeeAddressRequestAddressDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -20037,12 +19082,10 @@ export const PutEmployeeAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type PutEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersionCase1 = "latest";
-export const PutEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PutEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion =
   | number
   | PutEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersionCase1;
-export const PutEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion =
+const PutEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion>;
 
 export interface PutEmployeeBankAccountRequest {
@@ -20051,7 +19094,7 @@ export interface PutEmployeeBankAccountRequest {
   /** Bank account information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `bank_account_details` as path parameters. */
   bank_account_details: unknown;
 }
-export const PutEmployeeBankAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmployeeBankAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bank_account_details_json_schema_version: S.optional(
       PutEmployeeBankAccountRequestBankAccountDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -20065,13 +19108,10 @@ export const PutEmployeeBankAccountRequest = /*@__PURE__*/ S.suspend(() =>
 /** Use latest version */
 export type PutEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PutEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PutEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
   | number
   | PutEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1;
-export const PutEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
+const PutEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion>;
 
 export interface PutEmployeeEmergencyContactRequest {
@@ -20080,7 +19120,7 @@ export interface PutEmployeeEmergencyContactRequest {
   /** Emergency contact information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `emergency_contact_details` as path parameters. */
   emergency_contact_details: unknown;
 }
-export const PutEmployeeEmergencyContactRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmployeeEmergencyContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emergency_contact_details_json_schema_version: S.optional(
       PutEmployeeEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -20095,7 +19135,7 @@ export interface PutEmployeeFederalTaxesRequest {
   /** Federal taxes params. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `global_payroll_federal_taxes` as path parameters. */
   federal_taxes: unknown;
 }
-export const PutEmployeeFederalTaxesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmployeeFederalTaxesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     federal_taxes: S.Unknown,
   }).pipe(T.Http({ method: "PUT", uri: "/v1/employee/federal-taxes", code: 200 })),
@@ -20105,12 +19145,10 @@ export const PutEmployeeFederalTaxesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type PutEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1 = "latest";
-export const PutEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PutEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
   | number
   | PutEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1;
-export const PutEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
+const PutEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion>;
 
 export interface PutEmployeePersonalDetailsRequest {
@@ -20119,7 +19157,7 @@ export interface PutEmployeePersonalDetailsRequest {
   /** Employment personal details. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `employment_basic_information` as path parameters. */
   personal_details: unknown;
 }
-export const PutEmployeePersonalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmployeePersonalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     personal_details_json_schema_version: S.optional(
       PutEmployeePersonalDetailsRequestPersonalDetailsJsonSchemaVersion.pipe(T.Query()),
@@ -20136,7 +19174,7 @@ export interface PutEmployeeStateTaxRequest {
   /** State taxes params for the jurisdiction in the path. As its properties vary depending on the country and jurisdiction, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `global_payroll_state_taxes` as path parameters. */
   state_taxes: unknown;
 }
-export const PutEmployeeStateTaxRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmployeeStateTaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jurisdiction: S.String.pipe(T.Label()),
     state_taxes: S.Unknown,
@@ -20147,12 +19185,10 @@ export const PutEmployeeStateTaxRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type PutEmploymentAddressDetailsRequestAddressDetailsJsonSchemaVersionCase1 = "latest";
-export const PutEmploymentAddressDetailsRequestAddressDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PutEmploymentAddressDetailsRequestAddressDetailsJsonSchemaVersion =
   | number
   | PutEmploymentAddressDetailsRequestAddressDetailsJsonSchemaVersionCase1;
-export const PutEmploymentAddressDetailsRequestAddressDetailsJsonSchemaVersion =
+const PutEmploymentAddressDetailsRequestAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentAddressDetailsRequestAddressDetailsJsonSchemaVersion>;
 
 export interface PutEmploymentAddressDetailsRequest {
@@ -20163,7 +19199,7 @@ export interface PutEmploymentAddressDetailsRequest {
   /** Home address information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `address_details` as path parameters. */
   address_details: unknown;
 }
-export const PutEmploymentAddressDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentAddressDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     address_details_json_schema_version: S.optional(
@@ -20183,7 +19219,7 @@ export interface PutEmploymentAdministrativeDetailsRequest {
   /** Administrative information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `administrative_details` as path parameters. */
   administrative_details: unknown;
 }
-export const PutEmploymentAdministrativeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentAdministrativeDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     administrative_details: S.Unknown,
@@ -20201,13 +19237,10 @@ export const PutEmploymentAdministrativeDetailsRequest = /*@__PURE__*/ S.suspend
 /** Use latest version */
 export type PutEmploymentBankAccountDetailsRequestBankAccountDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PutEmploymentBankAccountDetailsRequestBankAccountDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PutEmploymentBankAccountDetailsRequestBankAccountDetailsJsonSchemaVersion =
   | number
   | PutEmploymentBankAccountDetailsRequestBankAccountDetailsJsonSchemaVersionCase1;
-export const PutEmploymentBankAccountDetailsRequestBankAccountDetailsJsonSchemaVersion =
+const PutEmploymentBankAccountDetailsRequestBankAccountDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentBankAccountDetailsRequestBankAccountDetailsJsonSchemaVersion>;
 
 export interface PutEmploymentBankAccountDetailsRequest {
@@ -20218,7 +19251,7 @@ export interface PutEmploymentBankAccountDetailsRequest {
   /** Bank account information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `bank_account_details` as path parameters. */
   bank_account_details: unknown;
 }
-export const PutEmploymentBankAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentBankAccountDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     bank_account_details_json_schema_version: S.optional(
@@ -20244,7 +19277,7 @@ export interface PutEmploymentBasicInformationRequest {
   /** Employment basic information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `employment_basic_information` as path parameters. */
   basic_information: unknown;
 }
-export const PutEmploymentBasicInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentBasicInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     group_tax_servicing_countries: S.optional(S.Boolean.pipe(T.Query())),
@@ -20259,13 +19292,10 @@ export const PutEmploymentBasicInformationRequest = /*@__PURE__*/ S.suspend(() =
 /** Use latest version */
 export type PutEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersionCase1 =
   "latest";
-export const PutEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersionCase1 =
-  S.String;
-
 export type PutEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersion =
   | number
   | PutEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersionCase1;
-export const PutEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersion =
+const PutEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentBasicInformationRequestEmploymentBasicInformationJsonSchemaVersion>;
 
 export interface PutEmploymentBasicInformationRequest2 {
@@ -20278,7 +19308,7 @@ export interface PutEmploymentBasicInformationRequest2 {
   /** Employment basic information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `employment_basic_information` as path parameters. */
   basic_information: unknown;
 }
-export const PutEmploymentBasicInformationRequest2 = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentBasicInformationRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     employment_basic_information_json_schema_version: S.optional(
@@ -20297,12 +19327,10 @@ export const PutEmploymentBasicInformationRequest2 = /*@__PURE__*/ S.suspend(() 
 
 /** Use latest version */
 export type PutEmploymentBenefitOffersRequestJsonSchemaVersionCase1 = "latest";
-export const PutEmploymentBenefitOffersRequestJsonSchemaVersionCase1 = S.String;
-
 export type PutEmploymentBenefitOffersRequestJsonSchemaVersion =
   | number
   | PutEmploymentBenefitOffersRequestJsonSchemaVersionCase1;
-export const PutEmploymentBenefitOffersRequestJsonSchemaVersion =
+const PutEmploymentBenefitOffersRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentBenefitOffersRequestJsonSchemaVersion>;
 
 export interface PutEmploymentBenefitOffersRequest {
@@ -20311,7 +19339,7 @@ export interface PutEmploymentBenefitOffersRequest {
   /** Version of the form schema */
   json_schema_version?: PutEmploymentBenefitOffersRequestJsonSchemaVersion;
 }
-export const PutEmploymentBenefitOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentBenefitOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     json_schema_version: S.optional(
@@ -20327,13 +19355,10 @@ export const PutEmploymentBenefitOffersRequest = /*@__PURE__*/ S.suspend(() =>
 /** Use latest version */
 export type PutEmploymentBillingAddressDetailsRequestBillingAddressDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PutEmploymentBillingAddressDetailsRequestBillingAddressDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PutEmploymentBillingAddressDetailsRequestBillingAddressDetailsJsonSchemaVersion =
   | number
   | PutEmploymentBillingAddressDetailsRequestBillingAddressDetailsJsonSchemaVersionCase1;
-export const PutEmploymentBillingAddressDetailsRequestBillingAddressDetailsJsonSchemaVersion =
+const PutEmploymentBillingAddressDetailsRequestBillingAddressDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentBillingAddressDetailsRequestBillingAddressDetailsJsonSchemaVersion>;
 
 export interface PutEmploymentBillingAddressDetailsRequest {
@@ -20344,7 +19369,7 @@ export interface PutEmploymentBillingAddressDetailsRequest {
   /** Billing address information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `billing_address_details` as path parameters. */
   billing_address_details: unknown;
 }
-export const PutEmploymentBillingAddressDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentBillingAddressDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     billing_address_details_json_schema_version: S.optional(
@@ -20366,12 +19391,10 @@ export const PutEmploymentBillingAddressDetailsRequest = /*@__PURE__*/ S.suspend
 
 /** Use latest version */
 export type PutEmploymentContractDetailsRequestContractDetailsJsonSchemaVersionCase1 = "latest";
-export const PutEmploymentContractDetailsRequestContractDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PutEmploymentContractDetailsRequestContractDetailsJsonSchemaVersion =
   | number
   | PutEmploymentContractDetailsRequestContractDetailsJsonSchemaVersionCase1;
-export const PutEmploymentContractDetailsRequestContractDetailsJsonSchemaVersion =
+const PutEmploymentContractDetailsRequestContractDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentContractDetailsRequestContractDetailsJsonSchemaVersion>;
 
 export interface PutEmploymentContractDetailsRequest {
@@ -20384,7 +19407,7 @@ export interface PutEmploymentContractDetailsRequest {
   /** Contract information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `contract_details` as path parameters. When the job title eligibility check requires an acknowledgement, present Remote's responsibility statement to the employer and obtain their acceptance before sending `employer_acknowledges_risk` as `acknowledged`. Sending it asserts that the employer was informed of, and accepted, responsibility for, as applicable, employee safety, training, health checks, any incidents connected to the employee's work environment, and the employee holding the licensing the role requires. */
   contract_details: unknown;
 }
-export const PutEmploymentContractDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentContractDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     contract_details_json_schema_version: S.optional(
@@ -20402,13 +19425,10 @@ export const PutEmploymentContractDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Use latest version */
 export type PutEmploymentEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PutEmploymentEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PutEmploymentEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
   | number
   | PutEmploymentEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersionCase1;
-export const PutEmploymentEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
+const PutEmploymentEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentEmergencyContactRequestEmergencyContactDetailsJsonSchemaVersion>;
 
 export interface PutEmploymentEmergencyContactRequest {
@@ -20419,7 +19439,7 @@ export interface PutEmploymentEmergencyContactRequest {
   /** Emergency contact information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `emergency_contact_details` as path parameters. */
   emergency_contact_details: unknown;
 }
-export const PutEmploymentEmergencyContactRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentEmergencyContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     emergency_contact_details_json_schema_version: S.optional(
@@ -20439,7 +19459,7 @@ export interface PutEmploymentFederalTaxesRequest {
   /** Federal taxes params. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `global_payroll_federal_taxes` as path parameters. */
   federal_taxes: unknown;
 }
-export const PutEmploymentFederalTaxesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentFederalTaxesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     federal_taxes: S.Unknown,
@@ -20456,7 +19476,7 @@ export interface PutEmploymentFederalTaxesRequest2 {
   /** Federal taxes params. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `global_payroll_federal_taxes` as path parameters. */
   federal_taxes: unknown;
 }
-export const PutEmploymentFederalTaxesRequest2 = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentFederalTaxesRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     federal_taxes: S.Unknown,
@@ -20473,7 +19493,7 @@ export interface PutEmploymentPersonalDetailsRequest {
   /** Employment personal details. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `employment_basic_information` as path parameters. */
   personal_details: unknown;
 }
-export const PutEmploymentPersonalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentPersonalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     personal_details: S.Unknown,
@@ -20486,12 +19506,10 @@ export const PutEmploymentPersonalDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Use latest version */
 export type PutEmploymentPersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1 = "latest";
-export const PutEmploymentPersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1 = S.String;
-
 export type PutEmploymentPersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
   | number
   | PutEmploymentPersonalDetailsRequestPersonalDetailsJsonSchemaVersionCase1;
-export const PutEmploymentPersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
+const PutEmploymentPersonalDetailsRequestPersonalDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentPersonalDetailsRequestPersonalDetailsJsonSchemaVersion>;
 
 export interface PutEmploymentPersonalDetailsRequest2 {
@@ -20502,7 +19520,7 @@ export interface PutEmploymentPersonalDetailsRequest2 {
   /** Employment personal details. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `employment_basic_information` as path parameters. */
   personal_details: unknown;
 }
-export const PutEmploymentPersonalDetailsRequest2 = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentPersonalDetailsRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     personal_details_json_schema_version: S.optional(
@@ -20519,13 +19537,10 @@ export const PutEmploymentPersonalDetailsRequest2 = /*@__PURE__*/ S.suspend(() =
 /** Use latest version */
 export type PutEmploymentPricingPlanDetailsRequestPricingPlanDetailsJsonSchemaVersionCase1 =
   "latest";
-export const PutEmploymentPricingPlanDetailsRequestPricingPlanDetailsJsonSchemaVersionCase1 =
-  S.String;
-
 export type PutEmploymentPricingPlanDetailsRequestPricingPlanDetailsJsonSchemaVersion =
   | number
   | PutEmploymentPricingPlanDetailsRequestPricingPlanDetailsJsonSchemaVersionCase1;
-export const PutEmploymentPricingPlanDetailsRequestPricingPlanDetailsJsonSchemaVersion =
+const PutEmploymentPricingPlanDetailsRequestPricingPlanDetailsJsonSchemaVersion =
   S.Unknown as any as S.Schema<PutEmploymentPricingPlanDetailsRequestPricingPlanDetailsJsonSchemaVersion>;
 
 export interface PutEmploymentPricingPlanDetailsRequest {
@@ -20536,7 +19551,7 @@ export interface PutEmploymentPricingPlanDetailsRequest {
   /** Pricing plan details information. As its properties may vary depending on the country, you must query the [Show form schema](#tag/Countries/operation/get_show_form_country) endpoint passing the country code and `pricing_plan_details` as path parameters. */
   pricing_plan_details: unknown;
 }
-export const PutEmploymentPricingPlanDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutEmploymentPricingPlanDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     pricing_plan_details_json_schema_version: S.optional(
@@ -20560,33 +19575,12 @@ export interface ResignationAfterStartDateRequestParamsOwedOutstandingReimbursem
   amount?: number;
   notes?: string;
 }
-export const ResignationAfterStartDateRequestParamsOwedOutstandingReimbursements =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.optional(S.Number),
-      notes: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ResignationAfterStartDateRequestParamsOwedOutstandingReimbursements",
-  }) as any as S.Schema<ResignationAfterStartDateRequestParamsOwedOutstandingReimbursements>;
-
 /** Required if `accepts_proposed_notice` is set to false. */
 export interface ResignationAfterStartDateRequestParamsProposedLastDate {
   date?: string;
   notes?: string;
 }
-export const ResignationAfterStartDateRequestParamsProposedLastDate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date: S.optional(S.String),
-    notes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResignationAfterStartDateRequestParamsProposedLastDate",
-}) as any as S.Schema<ResignationAfterStartDateRequestParamsProposedLastDate>;
-
 export type ResignationFile = OffboardingFile;
-export const ResignationFile = OffboardingFile;
-
 export interface ResignationAfterStartDateRequestParams {
   /** Whether the employer accepts the proposed notice period and last working day. If false, provide an alternative `proposed_last_date`. */
   accepts_proposed_notice: boolean;
@@ -20619,49 +19613,16 @@ export interface ResignationAfterStartDateRequestParams {
   /** required if `will_take_more_pto` is set to true. */
   will_take_more_pto_notes?: string;
 }
-export const ResignationAfterStartDateRequestParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accepts_proposed_notice: S.Boolean,
-    agrees_to_pto_amount: S.Boolean,
-    agrees_to_pto_amount_notes: S.optional(S.String),
-    agrees_to_resignation_reason: S.Boolean,
-    agrees_to_resignation_reason_notes: S.optional(S.String),
-    has_additional_information: S.Boolean,
-    has_additional_information_notes: S.optional(S.String),
-    has_more_salary_info: S.Boolean,
-    has_more_salary_info_notes: S.optional(S.String),
-    is_owed_outstanding_reimbursements: S.Boolean,
-    owed_outstanding_reimbursements: S.optional(
-      ResignationAfterStartDateRequestParamsOwedOutstandingReimbursements,
-    ),
-    proposed_last_date: S.optional(ResignationAfterStartDateRequestParamsProposedLastDate),
-    timesheet_file: S.optional(OffboardingFile),
-    will_take_more_pto: S.Boolean,
-    will_take_more_pto_notes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResignationAfterStartDateRequestParams",
-}) as any as S.Schema<ResignationAfterStartDateRequestParams>;
-
 export interface ResignationBeforeStartDateRequestParams {
   /** Whether the employer accepts the employee's resignation. If false, notes are required explaining why. */
   proposed_resignation_accepted: boolean;
   /** Required if `proposed_resignation_accepted` is set to false. */
   proposed_resignation_accepted_notes?: string;
 }
-export const ResignationBeforeStartDateRequestParams = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proposed_resignation_accepted: S.Boolean,
-    proposed_resignation_accepted_notes: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResignationBeforeStartDateRequestParams",
-}) as any as S.Schema<ResignationBeforeStartDateRequestParams>;
-
 export type ValidateResignationRequestParams =
   | ResignationAfterStartDateRequestParams
   | ResignationBeforeStartDateRequestParams;
-export const ValidateResignationRequestParams =
+const ValidateResignationRequestParams =
   S.Unknown as any as S.Schema<ValidateResignationRequestParams>;
 
 export interface PutResignationValidateRequest {
@@ -20669,7 +19630,7 @@ export interface PutResignationValidateRequest {
   offboarding_request_id: string;
   body: ValidateResignationRequestParams;
 }
-export const PutResignationValidateRequest = /*@__PURE__*/ S.suspend(() =>
+const PutResignationValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offboarding_request_id: S.String.pipe(T.Label()),
     body: ValidateResignationRequestParams.pipe(T.HttpBody()),
@@ -20686,7 +19647,7 @@ export interface PutSandboxCompanyDefaultLegalEntityRequest {
   /** Legal Entity ID to set as the new default */
   legal_entity_id: string;
 }
-export const PutSandboxCompanyDefaultLegalEntityRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSandboxCompanyDefaultLegalEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company_id: S.String.pipe(T.Label()),
     legal_entity_id: S.String.pipe(T.Label()),
@@ -20705,7 +19666,7 @@ export interface PutSandboxContractAmendmentApproveRequest {
   /** Contract amendment request ID */
   contract_amendment_request_id: string;
 }
-export const PutSandboxContractAmendmentApproveRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSandboxContractAmendmentApproveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contract_amendment_request_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -20723,7 +19684,7 @@ export interface PutSandboxContractAmendmentCancelRequest {
   /** Contract amendment request ID */
   contract_amendment_request_id: string;
 }
-export const PutSandboxContractAmendmentCancelRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSandboxContractAmendmentCancelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contract_amendment_request_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -20739,12 +19700,10 @@ export const PutSandboxContractAmendmentCancelRequest = /*@__PURE__*/ S.suspend(
 
 /** Use latest version */
 export type UpdateBenefitRenewalRequestRequestJsonSchemaVersionCase1 = "latest";
-export const UpdateBenefitRenewalRequestRequestJsonSchemaVersionCase1 = S.String;
-
 export type UpdateBenefitRenewalRequestRequestJsonSchemaVersion =
   | number
   | UpdateBenefitRenewalRequestRequestJsonSchemaVersionCase1;
-export const UpdateBenefitRenewalRequestRequestJsonSchemaVersion =
+const UpdateBenefitRenewalRequestRequestJsonSchemaVersion =
   S.Unknown as any as S.Schema<UpdateBenefitRenewalRequestRequestJsonSchemaVersion>;
 
 export interface UpdateBenefitRenewalRequestRequest {
@@ -20753,7 +19712,7 @@ export interface UpdateBenefitRenewalRequestRequest {
   /** Version of the form schema */
   json_schema_version?: UpdateBenefitRenewalRequestRequestJsonSchemaVersion;
 }
-export const UpdateBenefitRenewalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBenefitRenewalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benefit_renewal_request_id: S.String.pipe(T.Label()),
     json_schema_version: S.optional(
@@ -20776,7 +19735,7 @@ export interface UpdateCancelOnboardingRequest {
   /** Whether the request should be performed async */
   async?: boolean;
 }
-export const UpdateCancelOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCancelOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     employment_id: S.String.pipe(T.Label()),
     async: S.optional(S.Boolean.pipe(T.Query())),
@@ -20796,7 +19755,7 @@ export interface UpdatePayItemRequest {
   end_date?: string | null;
   provider_data?: PayItemProviderDataParams;
 }
-export const UpdatePayItemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePayItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     amount: S.optional(S.Number),
@@ -20809,7 +19768,7 @@ export const UpdatePayItemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PayItemResponseData {
   pay_item: PayItem;
 }
-export const PayItemResponseData = /*@__PURE__*/ S.suspend(() =>
+const PayItemResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pay_item: PayItem,
   }),
@@ -20818,7 +19777,7 @@ export const PayItemResponseData = /*@__PURE__*/ S.suspend(() =>
 export interface PayItemResponse {
   data: PayItemResponseData;
 }
-export const PayItemResponse = /*@__PURE__*/ S.suspend(() =>
+const PayItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PayItemResponseData,
   }),
@@ -20826,12 +19785,12 @@ export const PayItemResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User IDs of the company admins to assign as the project's leads, replacing the current set. These are user IDs, unlike `team_member_ids`, which are employment IDs. */
 export type UpdateProjectRequestLeadIdsList = Array<string>;
-export const UpdateProjectRequestLeadIdsList =
+const UpdateProjectRequestLeadIdsList =
   ProductFeaturesList as any as S.Schema<UpdateProjectRequestLeadIdsList>;
 
 /** Employment IDs of the contractors to assign as the project's team members, replacing the current set. These are employment IDs, unlike `lead_ids`, which are user IDs. Each must be an active contractor of the project's company. */
 export type UpdateProjectRequestTeamMemberIdsList = Array<string>;
-export const UpdateProjectRequestTeamMemberIdsList =
+const UpdateProjectRequestTeamMemberIdsList =
   ProductFeaturesList as any as S.Schema<UpdateProjectRequestTeamMemberIdsList>;
 
 export interface UpdateProjectRequest {
@@ -20851,7 +19810,7 @@ export interface UpdateProjectRequest {
   /** Employment IDs of the contractors to assign as the project's team members, replacing the current set. These are employment IDs, unlike `lead_ids`, which are user IDs. Each must be an active contractor of the project's company. */
   team_member_ids?: UpdateProjectRequestTeamMemberIdsList;
 }
-export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -20985,12 +19944,10 @@ export type UpdateWebhookCallbackRequestSubscribedEventsItem =
   | "work_authorization.declined_by_manager"
   | "work_authorization.declined_by_remote"
   | "work_authorization.requested";
-export const UpdateWebhookCallbackRequestSubscribedEventsItem = S.String;
-
 export type UpdateWebhookCallbackRequestSubscribedEventsList = Array<
   UpdateWebhookCallbackRequestSubscribedEventsItem | (string & {})
 >;
-export const UpdateWebhookCallbackRequestSubscribedEventsList =
+const UpdateWebhookCallbackRequestSubscribedEventsList =
   TerminationDetailsParamsRiskAssessmentReasonsList as any as S.Schema<UpdateWebhookCallbackRequestSubscribedEventsList>;
 
 export interface UpdateWebhookCallbackRequest {
@@ -21001,7 +19958,7 @@ export interface UpdateWebhookCallbackRequest {
   subscribed_events?: UpdateWebhookCallbackRequestSubscribedEventsList;
   url?: string;
 }
-export const UpdateWebhookCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     subscribe_to_all_events: S.optional(S.Boolean),

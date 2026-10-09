@@ -57,20 +57,17 @@ export type ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItemCase
   | "production"
   | "preview"
   | "development";
-export const ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItemCase0 = S.String;
-
 export type ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem =
   | ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItemCase0
   | string;
-export const ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem =
+const ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem =
   S.Unknown as any as S.Schema<ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem>;
 
 export type ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList =
   Array<ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem>;
-export const ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList =
-  /*@__PURE__*/ S.Array(
-    ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem,
-  ) as any as S.Schema<ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList>;
+const ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList = /*@__PURE__*/ S.Array(
+  ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem,
+) as any as S.Schema<ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList>;
 
 export interface ConnectIntegrationResourceToProjectRequest {
   integrationConfigurationId: string;
@@ -83,7 +80,7 @@ export interface ConnectIntegrationResourceToProjectRequest {
   envVarEnvironments?: ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList;
   makeEnvVarsSensitive?: boolean;
 }
-export const ConnectIntegrationResourceToProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectIntegrationResourceToProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     resourceId: S.String.pipe(T.Label()),
@@ -106,36 +103,28 @@ export const ConnectIntegrationResourceToProjectRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ConnectIntegrationResourceToProjectRequest>;
 
 export interface ConnectIntegrationResourceToProjectResponse {}
-export const ConnectIntegrationResourceToProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectIntegrationResourceToProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ConnectIntegrationResourceToProjectResponse",
 }) as any as S.Schema<ConnectIntegrationResourceToProjectResponse>;
 
 export type CreateIntegrationStoreDirectRequestMetadataValueCase3List = Array<string>;
-export const CreateIntegrationStoreDirectRequestMetadataValueCase3List = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateIntegrationStoreDirectRequestMetadataValueCase3List>;
-
 export type CreateIntegrationStoreDirectRequestMetadataValueCase4List = Array<number>;
-export const CreateIntegrationStoreDirectRequestMetadataValueCase4List = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<CreateIntegrationStoreDirectRequestMetadataValueCase4List>;
-
 export type CreateIntegrationStoreDirectRequestMetadataValue =
   | string
   | number
   | boolean
   | CreateIntegrationStoreDirectRequestMetadataValueCase3List
   | CreateIntegrationStoreDirectRequestMetadataValueCase4List;
-export const CreateIntegrationStoreDirectRequestMetadataValue =
+const CreateIntegrationStoreDirectRequestMetadataValue =
   S.Unknown as any as S.Schema<CreateIntegrationStoreDirectRequestMetadataValue>;
 
 /** Optional key-value pairs for resource metadata */
 export type CreateIntegrationStoreDirectRequestMetadataMap = {
   [key: string]: CreateIntegrationStoreDirectRequestMetadataValue | undefined;
 };
-export const CreateIntegrationStoreDirectRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateIntegrationStoreDirectRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateIntegrationStoreDirectRequestMetadataValue,
 ) as any as S.Schema<CreateIntegrationStoreDirectRequestMetadataMap>;
@@ -144,7 +133,7 @@ export const CreateIntegrationStoreDirectRequestMetadataMap = /*@__PURE__*/ S.Re
 export type CreateIntegrationStoreDirectRequestProtocolSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateIntegrationStoreDirectRequestProtocolSettingsMap = /*@__PURE__*/ S.Record(
+const CreateIntegrationStoreDirectRequestProtocolSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateIntegrationStoreDirectRequestProtocolSettingsMap>;
@@ -161,7 +150,7 @@ export type CreateIntegrationStoreDirectRequestSource =
   | "backoffice"
   | "import-recommended-integrations"
   | "organization";
-export const CreateIntegrationStoreDirectRequestSource = S.String;
+const CreateIntegrationStoreDirectRequestSource = S.String;
 
 export interface CreateIntegrationStoreDirectRequest {
   /** The Team identifier to perform the request on behalf of. */
@@ -189,7 +178,7 @@ export interface CreateIntegrationStoreDirectRequest {
   /** Amount in cents for prepayment billing plans. Required only for prepayment plans with variable amounts. */
   prepaymentAmountCents?: number;
 }
-export const CreateIntegrationStoreDirectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -209,35 +198,32 @@ export const CreateIntegrationStoreDirectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIntegrationStoreDirectRequest>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList = Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList>;
+const CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item = S.String;
+const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item = S.String;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List =
   Array<CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item>;
-export const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List =
+const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List =
   /*@__PURE__*/ S.Array(
     CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item,
   ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase1 = "*";
-export const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase1 = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders =
   | CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List
   | CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase1;
-export const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders =
+const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders =
   S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList = Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList =
+const CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProjectFilterGit {
@@ -245,13 +231,12 @@ export interface CreateIntegrationStoreDirectResponseStoreProjectFilterGit {
   providers: CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders;
   repos?: CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList;
 }
-export const CreateIntegrationStoreDirectResponseStoreProjectFilterGit = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      owners: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList),
-      providers: CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders,
-      repos: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList),
-    }),
+const CreateIntegrationStoreDirectResponseStoreProjectFilterGit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    owners: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList),
+    providers: CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders,
+    repos: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList),
+  }),
 ).annotate({
   identifier: "CreateIntegrationStoreDirectResponseStoreProjectFilterGit",
 }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGit>;
@@ -259,7 +244,7 @@ export const CreateIntegrationStoreDirectResponseStoreProjectFilterGit = /*@__PU
 export interface CreateIntegrationStoreDirectResponseStoreProjectFilter {
   git?: CreateIntegrationStoreDirectResponseStoreProjectFilterGit;
 }
-export const CreateIntegrationStoreDirectResponseStoreProjectFilter = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreProjectFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     git: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilterGit),
   }),
@@ -269,14 +254,14 @@ export const CreateIntegrationStoreDirectResponseStoreProjectFilter = /*@__PURE_
 
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem {
   environments: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList;
   slug: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem =
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       environments:
@@ -290,7 +275,7 @@ export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploy
 
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList =
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList =
   /*@__PURE__*/ S.Array(
     CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem,
   ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList>;
@@ -299,7 +284,7 @@ export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDe
   actions: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList;
   required: boolean;
 }
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments =
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       actions: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList,
@@ -311,12 +296,12 @@ export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploy
 
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList =
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList =
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework =
@@ -394,7 +379,7 @@ export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramewo
   | "vuepress"
   | "xmcp"
   | "zola";
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework = S.String;
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework = S.String;
 
 export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem {
   deployments?: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments;
@@ -408,32 +393,31 @@ export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem {
   name: string;
   projectId: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deployments: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments,
-      ),
-      environments: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList,
-      environmentVariables:
-        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList,
-      envVarPrefix: S.NullOr(S.String),
-      framework: S.optional(
-        S.NullOr(CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework),
-      ),
-      id: S.String,
-      latestDeployment: S.optional(S.String),
-      makeEnvVarsSensitive: S.optional(S.Boolean),
-      name: S.String,
-      projectId: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem>;
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deployments: S.optional(
+      CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments,
+    ),
+    environments: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList,
+    environmentVariables:
+      CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList,
+    envVarPrefix: S.NullOr(S.String),
+    framework: S.optional(
+      S.NullOr(CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework),
+    ),
+    id: S.String,
+    latestDeployment: S.optional(S.String),
+    makeEnvVarsSensitive: S.optional(S.Boolean),
+    name: S.String,
+    projectId: S.String,
+  }),
+).annotate({
+  identifier: "CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem",
+}) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem>;
 
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataList =
   Array<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem>;
-export const CreateIntegrationStoreDirectResponseStoreProjectsMetadataList = /*@__PURE__*/ S.Array(
+const CreateIntegrationStoreDirectResponseStoreProjectsMetadataList = /*@__PURE__*/ S.Array(
   CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem,
 ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataList>;
 
@@ -446,66 +430,61 @@ export type CreateIntegrationStoreDirectResponseStoreStatus =
   | "onboarding"
   | "suspended"
   | "uninstalled";
-export const CreateIntegrationStoreDirectResponseStoreStatus = S.String;
+const CreateIntegrationStoreDirectResponseStoreStatus = S.String;
 
 export interface CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem {
   label: string;
   value?: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       label: S.String,
       value: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
+).annotate({
+  identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem",
+}) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
 
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-export const CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList>;
+const CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList = /*@__PURE__*/ S.Array(
+  CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem,
+) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList>;
 
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
-export const CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsItem =
-  CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
-
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-export const CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList =
+const CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList =
   CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem {
   amount: string;
   line: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.String,
-      line: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem>;
+const CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amount: S.String,
+    line: S.String,
+  }),
+).annotate({
+  identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem",
+}) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem>;
 
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem>;
-export const CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList = /*@__PURE__*/ S.Array(
+const CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList = /*@__PURE__*/ S.Array(
   CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem,
 ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList>;
 
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanScope = "installation" | "resource";
-export const CreateIntegrationStoreDirectResponseStoreBillingPlanScope = S.String;
+const CreateIntegrationStoreDirectResponseStoreBillingPlanScope = S.String;
 
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanType =
   | "prepayment"
   | "subscription";
-export const CreateIntegrationStoreDirectResponseStoreBillingPlanType = S.String;
+const CreateIntegrationStoreDirectResponseStoreBillingPlanType = S.String;
 
 export interface CreateIntegrationStoreDirectResponseStoreBillingPlan {
   cost?: string;
@@ -526,7 +505,7 @@ export interface CreateIntegrationStoreDirectResponseStoreBillingPlan {
   scope: CreateIntegrationStoreDirectResponseStoreBillingPlanScope;
   type: CreateIntegrationStoreDirectResponseStoreBillingPlanType;
 }
-export const CreateIntegrationStoreDirectResponseStoreBillingPlan = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreBillingPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cost: S.optional(S.String),
     description: S.String,
@@ -556,20 +535,10 @@ export interface CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRota
   customRotationWarning?: string;
   maxDelayHours: number;
 }
-export const CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customRotationWarning: S.optional(S.String),
-      maxDelayHours: S.Number,
-    }),
-  ).annotate({
-    identifier: "CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0>;
-
 export type CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation =
   | CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0
   | boolean;
-export const CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation =
+const CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation =
   S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation>;
 
 export interface CreateIntegrationStoreDirectResponseStoreCapabilities {
@@ -585,7 +554,7 @@ export interface CreateIntegrationStoreDirectResponseStoreCapabilities {
   transferable?: boolean;
   v0?: boolean;
 }
-export const CreateIntegrationStoreDirectResponseStoreCapabilities = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentTools: S.optional(S.Boolean),
     autoSensitive: S.optional(S.Boolean),
@@ -611,37 +580,29 @@ export type CreateIntegrationStoreDirectResponseStoreExternalResourceStatus =
   | "resumed"
   | "suspended"
   | "uninstalled";
-export const CreateIntegrationStoreDirectResponseStoreExternalResourceStatus = S.String;
+const CreateIntegrationStoreDirectResponseStoreExternalResourceStatus = S.String;
 
 export type CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List = Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List>;
-
 export type CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List = Array<number>;
-export const CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List>;
-
 export type CreateIntegrationStoreDirectResponseStoreMetadataValue =
   | string
   | number
   | CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List
   | CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List
   | boolean;
-export const CreateIntegrationStoreDirectResponseStoreMetadataValue =
+const CreateIntegrationStoreDirectResponseStoreMetadataValue =
   S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreMetadataValue>;
 
 export type CreateIntegrationStoreDirectResponseStoreMetadataMap = {
   [key: string]: CreateIntegrationStoreDirectResponseStoreMetadataValue | undefined;
 };
-export const CreateIntegrationStoreDirectResponseStoreMetadataMap = /*@__PURE__*/ S.Record(
+const CreateIntegrationStoreDirectResponseStoreMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateIntegrationStoreDirectResponseStoreMetadataValue,
 ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreMetadataMap>;
 
 export type CreateIntegrationStoreDirectResponseStoreNotificationLevel = "error" | "info" | "warn";
-export const CreateIntegrationStoreDirectResponseStoreNotificationLevel = S.String;
+const CreateIntegrationStoreDirectResponseStoreNotificationLevel = S.String;
 
 export interface CreateIntegrationStoreDirectResponseStoreNotification {
   href?: string;
@@ -649,7 +610,7 @@ export interface CreateIntegrationStoreDirectResponseStoreNotification {
   message?: string;
   title: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreNotification = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.optional(S.String),
     level: CreateIntegrationStoreDirectResponseStoreNotificationLevel,
@@ -661,22 +622,19 @@ export const CreateIntegrationStoreDirectResponseStoreNotification = /*@__PURE__
 }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreNotification>;
 
 export type CreateIntegrationStoreDirectResponseStoreOwnership = "linked" | "owned" | "sandbox";
-export const CreateIntegrationStoreDirectResponseStoreOwnership = S.String;
+const CreateIntegrationStoreDirectResponseStoreOwnership = S.String;
 
 /** URLs to skills/guides for how AI agents should use this product. Providers can specify these to help agents understand how to interact with their integration. */
 export type CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList = Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList =
+const CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotationCase0 =
   CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0;
-export const CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotationCase0 =
-  CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0;
-
 export type CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation =
   | CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0
   | boolean;
-export const CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation =
+const CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation =
   S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductCapabilities {
@@ -699,127 +657,74 @@ export interface CreateIntegrationStoreDirectResponseStoreProductCapabilities {
   v0?: boolean;
   v0Flavors?: boolean;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductCapabilities = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      agentTools: S.optional(S.Boolean),
-      autoSensitive: S.optional(S.Boolean),
-      billable: S.optional(S.Boolean),
-      connectedImportResource: S.optional(S.Boolean),
-      databaseUI: S.optional(S.Boolean),
-      importResource: S.optional(S.Boolean),
-      linking: S.optional(S.Boolean),
-      mcp: S.optional(S.Boolean),
-      mcpReadonly: S.optional(S.Boolean),
-      nativeImportResource: S.optional(S.Boolean),
-      projects: S.optional(S.Boolean),
-      sandbox: S.optional(S.Boolean),
-      secretRotation: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation,
-      ),
-      secretsSync: S.optional(S.Boolean),
-      sso: S.optional(S.Boolean),
-      transferable: S.optional(S.Boolean),
-      v0: S.optional(S.Boolean),
-      v0Flavors: S.optional(S.Boolean),
-    }),
+const CreateIntegrationStoreDirectResponseStoreProductCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentTools: S.optional(S.Boolean),
+    autoSensitive: S.optional(S.Boolean),
+    billable: S.optional(S.Boolean),
+    connectedImportResource: S.optional(S.Boolean),
+    databaseUI: S.optional(S.Boolean),
+    importResource: S.optional(S.Boolean),
+    linking: S.optional(S.Boolean),
+    mcp: S.optional(S.Boolean),
+    mcpReadonly: S.optional(S.Boolean),
+    nativeImportResource: S.optional(S.Boolean),
+    projects: S.optional(S.Boolean),
+    sandbox: S.optional(S.Boolean),
+    secretRotation: S.optional(
+      CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation,
+    ),
+    secretsSync: S.optional(S.Boolean),
+    sso: S.optional(S.Boolean),
+    transferable: S.optional(S.Boolean),
+    v0: S.optional(S.Boolean),
+    v0Flavors: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "CreateIntegrationStoreDirectResponseStoreProductCapabilities",
 }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductCapabilities>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0Type =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiControl =
   "input";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiControl =
-  S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1 {
   expr: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expr: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0 {
   default?: string;
   description?: string;
@@ -838,136 +743,44 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1Type =
   "number";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiControl =
   "input";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1 {
   default?: number;
   description?: string;
@@ -986,134 +799,44 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.Number),
-      description: S.optional(S.String),
-      exclusiveMaximum: S.optional(S.Number),
-      exclusiveMinimum: S.optional(S.Number),
-      maximum: S.optional(S.Number),
-      minimum: S.optional(S.Number),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2Type =
   "boolean";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiControl =
   "toggle";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2 {
   default?: boolean;
   description?: string;
@@ -1127,59 +850,10 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_paid_only?: boolean;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.Boolean),
-      description: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase2>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList =
   Array<number>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList =
-  CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3ItemsType =
   "number";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3ItemsType =
-  S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Items {
   default?: number;
   description?: string;
@@ -1189,107 +863,46 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   minimum?: number;
   type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3ItemsType;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Items =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.Number),
-      description: S.optional(S.String),
-      exclusiveMaximum: S.optional(S.Number),
-      exclusiveMinimum: S.optional(S.Number),
-      maximum: S.optional(S.Number),
-      minimum: S.optional(S.Number),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3ItemsType,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Items",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Items>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Type =
   "array";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiControl =
   "slider";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnly>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList =
   Array<number>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList =
-  CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3 {
   default?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList;
   description?: string;
@@ -1307,162 +920,55 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnly;
   ui_steps: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3DefaultList,
-      ),
-      description: S.optional(S.String),
-      items:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Items,
-      maxItems: S.optional(S.Number),
-      minItems: S.optional(S.Number),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-      ui_steps:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3UiStepsList.pipe(
-          T.Body("ui:steps"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4EnumList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4EnumList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4Type =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiControl =
   "select";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItem {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled;
@@ -1470,49 +976,17 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   label: string;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItemHidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItem",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4 {
   default?: string;
   description?: string;
@@ -1532,163 +1006,55 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase4>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5EnumList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5EnumList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5Type =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiControl =
   "radio-button";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItem {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled;
@@ -1696,49 +1062,17 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   label: string;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItemHidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItem",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5 {
   default?: string;
   description?: string;
@@ -1758,80 +1092,14 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase5>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ExampleList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ExampleList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ExampleList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsEnumList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsEnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsEnumList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsType =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsType =
-  S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6Items {
   default?: string;
   description?: string;
@@ -1841,122 +1109,53 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   pattern?: string;
   type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsType;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6Items =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsEnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ItemsType,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6Items",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6Items>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6Type =
   "array";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiControl =
   "multi-select";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItem {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled;
@@ -1964,49 +1163,17 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   label: string;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItemHidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItem",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6 {
   default?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList;
   description?: string;
@@ -2026,166 +1193,55 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6DefaultList,
-      ),
-      description: S.optional(S.String),
-      example: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6ExampleList,
-      ),
-      items:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6Items,
-      maxItems: S.optional(S.Number),
-      minItems: S.optional(S.Number),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase6>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7EnumList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7EnumList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7Type =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiControl =
   "vercel-region";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Hidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Hidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0 {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled;
@@ -2193,115 +1249,45 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   label: string;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Hidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2 {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled;
   hidden?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItem =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase0
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItemCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItem =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7 {
   default?: string;
   description?: string;
@@ -2321,80 +1307,14 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase7>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ExampleList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ExampleList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ExampleList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsEnumList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsEnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsEnumList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsType =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsType =
-  S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8Items {
   default?: string;
   description?: string;
@@ -2404,122 +1324,53 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   pattern?: string;
   type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsType;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8Items =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsEnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ItemsType,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8Items",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8Items>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8Type =
   "array";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiControl =
   "multi-vercel-region";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Hidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Hidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0 {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled;
@@ -2527,115 +1378,45 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   label: string;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Hidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2 {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled;
   hidden?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItem =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase0
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItemCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItem =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8 {
   default?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList;
   description?: string;
@@ -2655,166 +1436,55 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8DefaultList,
-      ),
-      description: S.optional(S.String),
-      example: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8ExampleList,
-      ),
-      items:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8Items,
-      maxItems: S.optional(S.Number),
-      minItems: S.optional(S.Number),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase8>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9EnumList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9EnumList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9Type =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiControl =
   "vercel-country";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Hidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Hidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0 {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled;
@@ -2822,115 +1492,45 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   label: string;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Hidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2 {
   description?: string;
   disabled?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled;
   hidden?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden;
   value: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled,
-      ),
-      hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItem =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase0
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItemCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItem =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9 {
   default?: string;
   description?: string;
@@ -2950,145 +1550,46 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10EnumList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10EnumList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10Type =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiControl =
   "domain";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10 {
   default?: string;
   description?: string;
@@ -3107,148 +1608,50 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersItem =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersItem =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList =
   Array<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11Type =
   "string";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11Type =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiControl =
   "git-namespace";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiControl =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDescription =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDescription>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabledCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabledCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabledCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabled =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabled>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHiddenCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHiddenCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHiddenCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHidden =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHidden>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnlyCase2 =
   | "create"
   | "update";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnlyCase2 =
-  S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnlyCase2;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnly =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnly>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11 {
   description?: string;
   git_providers?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList;
@@ -3263,54 +1666,6 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaP
   ui_placeholder?: string;
   ui_read_only?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnly;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      git_providers: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11GitProvidersList.pipe(
-          T.Body("git:providers"),
-        ),
-      ),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11Type,
-      ui_control:
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase1
@@ -3324,7 +1679,7 @@ export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaProper
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue =
+const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue =
   S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap = {
@@ -3332,7 +1687,7 @@ export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaProper
     | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue
     | undefined;
 };
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap =
+const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue,
@@ -3340,15 +1695,15 @@ export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPrope
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList =
+const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType = "object";
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType = S.String;
+const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType = S.String;
 
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList =
   Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList =
+const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchema {
@@ -3357,23 +1712,22 @@ export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchema 
   type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType;
   ui_order?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductMetadataSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      properties: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap,
-      required: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList,
+const CreateIntegrationStoreDirectResponseStoreProductMetadataSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap,
+    required: S.optional(
+      CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList,
+    ),
+    type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType,
+    ui_order: S.optional(
+      CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList.pipe(
+        T.Body("ui:order"),
       ),
-      type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType,
-      ui_order: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList.pipe(
-          T.Body("ui:order"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateIntegrationStoreDirectResponseStoreProductMetadataSchema",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchema>;
+    ),
+  }),
+).annotate({
+  identifier: "CreateIntegrationStoreDirectResponseStoreProductMetadataSchema",
+}) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchema>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesItem =
   | "read-write:deployment"
@@ -3388,33 +1742,30 @@ export type CreateIntegrationStoreDirectResponseStoreProductProjectConnectionSco
   | "read:deployment"
   | "read:domain"
   | "read:project";
-export const CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesItem = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList =
   Array<CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList =
+const CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem {
   href: string;
   title: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       href: S.String,
       title: S.String,
     }),
-  ).annotate({
-    identifier: "CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem>;
+).annotate({
+  identifier: "CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem",
+}) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductResourceLinksList =
   Array<CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductResourceLinksList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductResourceLinksList>;
+const CreateIntegrationStoreDirectResponseStoreProductResourceLinksList = /*@__PURE__*/ S.Array(
+  CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem,
+) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductResourceLinksList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductTagsItem =
   | "ai"
@@ -3474,11 +1825,11 @@ export type CreateIntegrationStoreDirectResponseStoreProductTagsItem =
   | "vector"
   | "video"
   | "workflow";
-export const CreateIntegrationStoreDirectResponseStoreProductTagsItem = S.String;
+const CreateIntegrationStoreDirectResponseStoreProductTagsItem = S.String;
 
 export type CreateIntegrationStoreDirectResponseStoreProductTagsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductTagsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductTagsList = /*@__PURE__*/ S.Array(
+const CreateIntegrationStoreDirectResponseStoreProductTagsList = /*@__PURE__*/ S.Array(
   CreateIntegrationStoreDirectResponseStoreProductTagsItem,
 ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductTagsList>;
 
@@ -3487,7 +1838,7 @@ export interface CreateIntegrationStoreDirectResponseStoreProductRepl {
   supportsReadOnlyMode: boolean;
   welcomeMessage?: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductRepl = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreProductRepl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     supportsReadOnlyMode: S.Boolean,
@@ -3501,13 +1852,12 @@ export type CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemA
   | "add_drain"
   | "configure_project_connections"
   | "connect_to_project";
-export const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItemType =
-  S.String;
+const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItemType = S.String;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem {
   type: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItemType;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem =
+const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItemType,
@@ -3518,7 +1868,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem
 
 export type CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList =
+const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList =
   /*@__PURE__*/ S.Array(
     CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem,
   ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList>;
@@ -3528,8 +1878,8 @@ export interface CreateIntegrationStoreDirectResponseStoreProductGuidesItemSteps
   content: string;
   title: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       actions: S.optional(
         CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList,
@@ -3537,48 +1887,43 @@ export const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem
       content: S.String,
       title: S.String,
     }),
-  ).annotate({
-    identifier: "CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem",
-  }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem>;
+).annotate({
+  identifier: "CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem",
+}) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList =
-  /*@__PURE__*/ S.Array(
-    CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList>;
+const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList = /*@__PURE__*/ S.Array(
+  CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem,
+) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductGuidesItem {
   framework: string;
   steps: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList;
   title: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductGuidesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      framework: S.String,
-      steps: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList,
-      title: S.String,
-    }),
+const CreateIntegrationStoreDirectResponseStoreProductGuidesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    framework: S.String,
+    steps: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList,
+    title: S.String,
+  }),
 ).annotate({
   identifier: "CreateIntegrationStoreDirectResponseStoreProductGuidesItem",
 }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItem>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductGuidesList =
   Array<CreateIntegrationStoreDirectResponseStoreProductGuidesItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductGuidesList = /*@__PURE__*/ S.Array(
+const CreateIntegrationStoreDirectResponseStoreProductGuidesList = /*@__PURE__*/ S.Array(
   CreateIntegrationStoreDirectResponseStoreProductGuidesItem,
 ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesList>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotationCase0 =
   CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0;
-export const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotationCase0 =
-  CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0;
-
 export type CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotation =
   | CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0
   | boolean;
-export const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotation =
+const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotation =
   S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotation>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities {
@@ -3602,7 +1947,7 @@ export interface CreateIntegrationStoreDirectResponseStoreProductIntegrationCapa
   updateConfiguration?: boolean;
   v0Flavors?: boolean;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities =
+const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billable: S.optional(S.Boolean),
@@ -3632,7 +1977,7 @@ export const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabili
   }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList = Array<string>;
-export const CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList =
+const CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProductIntegration {
@@ -3644,25 +1989,24 @@ export interface CreateIntegrationStoreDirectResponseStoreProductIntegration {
   slug: string;
   supportsInstallationBillingPlans?: boolean;
 }
-export const CreateIntegrationStoreDirectResponseStoreProductIntegration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      capabilities: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities,
-      ),
-      flags: S.optional(CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList),
-      icon: S.String,
-      id: S.String,
-      name: S.String,
-      slug: S.String,
-      supportsInstallationBillingPlans: S.optional(S.Boolean),
-    }),
+const CreateIntegrationStoreDirectResponseStoreProductIntegration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capabilities: S.optional(
+      CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities,
+    ),
+    flags: S.optional(CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList),
+    icon: S.String,
+    id: S.String,
+    name: S.String,
+    slug: S.String,
+    supportsInstallationBillingPlans: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "CreateIntegrationStoreDirectResponseStoreProductIntegration",
 }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegration>;
 
 export type CreateIntegrationStoreDirectResponseStoreProductLogDrainStatus = "disabled" | "enabled";
-export const CreateIntegrationStoreDirectResponseStoreProductLogDrainStatus = S.String;
+const CreateIntegrationStoreDirectResponseStoreProductLogDrainStatus = S.String;
 
 export type CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol =
   | "ai"
@@ -3677,7 +2021,7 @@ export type CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol =
   | "traceDrain"
   | "video"
   | "workflow";
-export const CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol = S.String;
+const CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol = S.String;
 
 export type CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsItem =
   | "ai"
@@ -3692,11 +2036,9 @@ export type CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsIt
   | "traceDrain"
   | "video"
   | "workflow";
-export const CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsItem = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList =
+const CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList>;
 
 export interface CreateIntegrationStoreDirectResponseStoreProduct {
@@ -3724,7 +2066,7 @@ export interface CreateIntegrationStoreDirectResponseStoreProduct {
   primaryProtocol?: CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol;
   supportedProtocols: CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList;
 }
-export const CreateIntegrationStoreDirectResponseStoreProduct = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSkills: S.optional(CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList),
     capabilities: S.optional(CreateIntegrationStoreDirectResponseStoreProductCapabilities),
@@ -3758,14 +2100,14 @@ export type CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticat
   | "development"
   | "preview"
   | "production";
-export const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItemTarget =
+const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItemTarget =
   S.String;
 
 export interface CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem {
   target: CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItemTarget;
   url: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem =
+const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       target:
@@ -3779,7 +2121,7 @@ export const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentica
 
 export type CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList =
   Array<CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem>;
-export const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList =
+const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList =
   /*@__PURE__*/ S.Array(
     CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem,
   ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList>;
@@ -3787,7 +2129,7 @@ export const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentica
 export interface CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication {
   appUrls?: CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList;
 }
-export const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication =
+const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       appUrls: S.optional(
@@ -3805,7 +2147,7 @@ export interface CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperi
   globalConfigId?: string;
   globalConfigSyncingEnabled?: boolean;
 }
-export const CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation =
+const CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       edgeConfigId: S.optional(S.String),
@@ -3822,16 +2164,15 @@ export interface CreateIntegrationStoreDirectResponseStoreProtocolSettings {
   authentication?: CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication;
   experimentation?: CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation;
 }
-export const CreateIntegrationStoreDirectResponseStoreProtocolSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      authentication: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication,
-      ),
-      experimentation: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation,
-      ),
-    }),
+const CreateIntegrationStoreDirectResponseStoreProtocolSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authentication: S.optional(
+      CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication,
+    ),
+    experimentation: S.optional(
+      CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation,
+    ),
+  }),
 ).annotate({
   identifier: "CreateIntegrationStoreDirectResponseStoreProtocolSettings",
 }) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProtocolSettings>;
@@ -3841,7 +2182,7 @@ export interface CreateIntegrationStoreDirectResponseStoreSecretsItem {
   length: number;
   name: string;
 }
-export const CreateIntegrationStoreDirectResponseStoreSecretsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStoreSecretsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frameworkPublishable: S.optional(S.Boolean),
     length: S.Number,
@@ -3853,7 +2194,7 @@ export const CreateIntegrationStoreDirectResponseStoreSecretsItem = /*@__PURE__*
 
 export type CreateIntegrationStoreDirectResponseStoreSecretsList =
   Array<CreateIntegrationStoreDirectResponseStoreSecretsItem>;
-export const CreateIntegrationStoreDirectResponseStoreSecretsList = /*@__PURE__*/ S.Array(
+const CreateIntegrationStoreDirectResponseStoreSecretsList = /*@__PURE__*/ S.Array(
   CreateIntegrationStoreDirectResponseStoreSecretsItem,
 ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreSecretsList>;
 
@@ -3862,12 +2203,10 @@ export type CreateIntegrationStoreDirectResponseStoreTargetsItem =
   | "development"
   | "preview"
   | "production";
-export const CreateIntegrationStoreDirectResponseStoreTargetsItem = S.String;
-
 /** The deployment targets that this resource is available for. */
 export type CreateIntegrationStoreDirectResponseStoreTargetsList =
   Array<CreateIntegrationStoreDirectResponseStoreTargetsItem>;
-export const CreateIntegrationStoreDirectResponseStoreTargetsList =
+const CreateIntegrationStoreDirectResponseStoreTargetsList =
   CreateIntegrationStoreDirectResponseStoreProductTagsList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreTargetsList>;
 
 export interface CreateIntegrationStoreDirectResponseStore {
@@ -3900,7 +2239,7 @@ export interface CreateIntegrationStoreDirectResponseStore {
   /** The deployment targets that this resource is available for. */
   targets?: CreateIntegrationStoreDirectResponseStoreTargetsList;
 }
-export const CreateIntegrationStoreDirectResponseStore = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponseStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectFilter: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilter),
     projectsMetadata: CreateIntegrationStoreDirectResponseStoreProjectsMetadataList,
@@ -3934,7 +2273,7 @@ export const CreateIntegrationStoreDirectResponseStore = /*@__PURE__*/ S.suspend
 export interface CreateIntegrationStoreDirectResponse {
   store: CreateIntegrationStoreDirectResponseStore | null;
 }
-export const CreateIntegrationStoreDirectResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationStoreDirectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store: S.NullOr(CreateIntegrationStoreDirectResponseStore),
   }),
@@ -3949,7 +2288,7 @@ export interface DeleteConfigurationRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -3960,7 +2299,7 @@ export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigurationRequest>;
 
 export interface DeleteConfigurationResponse {}
-export const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteConfigurationResponse",
 }) as any as S.Schema<DeleteConfigurationResponse>;
 
@@ -3975,7 +2314,7 @@ export type GetBillingPlansRequestSource =
   | "backoffice"
   | "import-recommended-integrations"
   | "organization";
-export const GetBillingPlansRequestSource = S.String;
+const GetBillingPlansRequestSource = S.String;
 
 export interface GetBillingPlansRequest {
   integrationIdOrSlug: string;
@@ -3988,7 +2327,7 @@ export interface GetBillingPlansRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetBillingPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationIdOrSlug: S.String.pipe(T.Label()),
     productIdOrSlug: S.String.pipe(T.Label()),
@@ -4008,40 +2347,31 @@ export const GetBillingPlansRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetBillingPlansResponsePlansItemDetailsItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
-export const GetBillingPlansResponsePlansItemDetailsItem =
-  CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
-
 export type GetBillingPlansResponsePlansItemDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-export const GetBillingPlansResponsePlansItemDetailsList = /*@__PURE__*/ S.Array(
+const GetBillingPlansResponsePlansItemDetailsList = /*@__PURE__*/ S.Array(
   CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem,
 ) as any as S.Schema<GetBillingPlansResponsePlansItemDetailsList>;
 
 export type GetBillingPlansResponsePlansItemHighlightedDetailsItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
-export const GetBillingPlansResponsePlansItemHighlightedDetailsItem =
-  CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
-
 export type GetBillingPlansResponsePlansItemHighlightedDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-export const GetBillingPlansResponsePlansItemHighlightedDetailsList =
+const GetBillingPlansResponsePlansItemHighlightedDetailsList =
   GetBillingPlansResponsePlansItemDetailsList as any as S.Schema<GetBillingPlansResponsePlansItemHighlightedDetailsList>;
 
 export type GetBillingPlansResponsePlansItemQuoteItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem;
-export const GetBillingPlansResponsePlansItemQuoteItem =
-  CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem;
-
 export type GetBillingPlansResponsePlansItemQuoteList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem>;
-export const GetBillingPlansResponsePlansItemQuoteList =
+const GetBillingPlansResponsePlansItemQuoteList =
   CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList as any as S.Schema<GetBillingPlansResponsePlansItemQuoteList>;
 
 export type GetBillingPlansResponsePlansItemScope = "installation" | "resource";
-export const GetBillingPlansResponsePlansItemScope = S.String;
+const GetBillingPlansResponsePlansItemScope = S.String;
 
 export type GetBillingPlansResponsePlansItemType = "prepayment" | "subscription";
-export const GetBillingPlansResponsePlansItemType = S.String;
+const GetBillingPlansResponsePlansItemType = S.String;
 
 export interface GetBillingPlansResponsePlansItem {
   cost?: string;
@@ -4062,7 +2392,7 @@ export interface GetBillingPlansResponsePlansItem {
   scope: GetBillingPlansResponsePlansItemScope;
   type: GetBillingPlansResponsePlansItemType;
 }
-export const GetBillingPlansResponsePlansItem = /*@__PURE__*/ S.suspend(() =>
+const GetBillingPlansResponsePlansItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cost: S.optional(S.String),
     description: S.String,
@@ -4087,14 +2417,14 @@ export const GetBillingPlansResponsePlansItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBillingPlansResponsePlansItem>;
 
 export type GetBillingPlansResponsePlansList = Array<GetBillingPlansResponsePlansItem>;
-export const GetBillingPlansResponsePlansList = /*@__PURE__*/ S.Array(
+const GetBillingPlansResponsePlansList = /*@__PURE__*/ S.Array(
   GetBillingPlansResponsePlansItem,
 ) as any as S.Schema<GetBillingPlansResponsePlansList>;
 
 export interface GetBillingPlansResponse {
   plans: GetBillingPlansResponsePlansList;
 }
-export const GetBillingPlansResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBillingPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plans: GetBillingPlansResponsePlansList,
   }),
@@ -4108,7 +2438,7 @@ export interface GetConfigurationRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -4123,38 +2453,21 @@ export type GetConfigurationResponseBodyCase0DisabledReason =
   | "feature-not-available"
   | "original-owner-left-the-team"
   | "original-owner-role-downgraded";
-export const GetConfigurationResponseBodyCase0DisabledReason = S.String;
-
 /** Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external' */
 export type GetConfigurationResponseBodyCase0InstallationType = "external" | "marketplace";
-export const GetConfigurationResponseBodyCase0InstallationType = S.String;
-
 export type GetConfigurationResponseBodyCase0NotificationLevel = "error" | "info" | "warn";
-export const GetConfigurationResponseBodyCase0NotificationLevel = S.String;
-
 export interface GetConfigurationResponseBodyCase0Notification {
   href?: string;
   level: GetConfigurationResponseBodyCase0NotificationLevel;
   message?: string;
   title: string;
 }
-export const GetConfigurationResponseBodyCase0Notification =
-  CreateIntegrationStoreDirectResponseStoreNotification as any as S.Schema<GetConfigurationResponseBodyCase0Notification>;
-
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationResponseBodyCase0ProjectsList = Array<string>;
-export const GetConfigurationResponseBodyCase0ProjectsList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase0ProjectsList>;
-
 /** A string representing the permission for projects. Possible values are `all` or `selected`. */
 export type GetConfigurationResponseBodyCase0ProjectSelection = "all" | "selected";
-export const GetConfigurationResponseBodyCase0ProjectSelection = S.String;
-
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationResponseBodyCase0ScopesList = Array<string>;
-export const GetConfigurationResponseBodyCase0ScopesList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase0ScopesList>;
-
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationResponseBodyCase0Source =
   | "backoffice"
@@ -4167,8 +2480,6 @@ export type GetConfigurationResponseBodyCase0Source =
   | "organization"
   | "resource-claims"
   | "v0";
-export const GetConfigurationResponseBodyCase0Source = S.String;
-
 /** The configuration status. Optional. If not defined, assume 'ready'. */
 export type GetConfigurationResponseBodyCase0Status =
   | "error"
@@ -4178,18 +2489,12 @@ export type GetConfigurationResponseBodyCase0Status =
   | "resumed"
   | "suspended"
   | "uninstalled";
-export const GetConfigurationResponseBodyCase0Status = S.String;
-
 export type GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlanScope =
   | "installation"
   | "resource";
-export const GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlanScope = S.String;
-
 export type GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlanType =
   | "prepayment"
   | "subscription";
-export const GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlanType = S.String;
-
 export interface GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlan {
   description: string;
   id: string;
@@ -4199,47 +2504,14 @@ export interface GetConfigurationResponseBodyCase0TransferRequestCase0BillingPla
   scope?: GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlanScope;
   type: GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlanType;
 }
-export const GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlan =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.String,
-      id: S.String,
-      name: S.String,
-      paymentMethodRequired: S.optional(S.Boolean),
-      preauthorizationAmount: S.optional(S.Number),
-      scope: S.optional(GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlanScope),
-      type: GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlanType,
-    }),
-  ).annotate({
-    identifier: "GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlan",
-  }) as any as S.Schema<GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlan>;
-
 export type GetConfigurationResponseBodyCase0TransferRequestCase0Kind = "transfer-to-marketplace";
-export const GetConfigurationResponseBodyCase0TransferRequestCase0Kind = S.String;
-
 export type GetConfigurationResponseBodyCase0TransferRequestCase0MetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const GetConfigurationResponseBodyCase0TransferRequestCase0MetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<GetConfigurationResponseBodyCase0TransferRequestCase0MetadataMap>;
-
 export interface GetConfigurationResponseBodyCase0TransferRequestCase0Requester {
   email?: string;
   name: string;
 }
-export const GetConfigurationResponseBodyCase0TransferRequestCase0Requester =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.optional(S.String),
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetConfigurationResponseBodyCase0TransferRequestCase0Requester",
-  }) as any as S.Schema<GetConfigurationResponseBodyCase0TransferRequestCase0Requester>;
-
 export interface GetConfigurationResponseBodyCase0TransferRequestCase0 {
   approvedAt?: number;
   approvedBy?: string;
@@ -4255,34 +2527,9 @@ export interface GetConfigurationResponseBodyCase0TransferRequestCase0 {
   requestId: string;
   transferId: string;
 }
-export const GetConfigurationResponseBodyCase0TransferRequestCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvedAt: S.optional(S.Number),
-    approvedBy: S.optional(S.String),
-    authorizationId: S.optional(S.String),
-    billingPlan: S.optional(GetConfigurationResponseBodyCase0TransferRequestCase0BillingPlan),
-    createdAt: S.Number,
-    discardedAt: S.optional(S.Number),
-    discardedBy: S.optional(S.String),
-    expiresAt: S.Number,
-    kind: GetConfigurationResponseBodyCase0TransferRequestCase0Kind,
-    metadata: S.optional(GetConfigurationResponseBodyCase0TransferRequestCase0MetadataMap),
-    requester: GetConfigurationResponseBodyCase0TransferRequestCase0Requester,
-    requestId: S.String,
-    transferId: S.String,
-  }),
-).annotate({
-  identifier: "GetConfigurationResponseBodyCase0TransferRequestCase0",
-}) as any as S.Schema<GetConfigurationResponseBodyCase0TransferRequestCase0>;
-
 export type GetConfigurationResponseBodyCase0TransferRequestCase1Kind = "transfer-from-marketplace";
-export const GetConfigurationResponseBodyCase0TransferRequestCase1Kind = S.String;
-
 export type GetConfigurationResponseBodyCase0TransferRequestCase1Requester =
   GetConfigurationResponseBodyCase0TransferRequestCase0Requester;
-export const GetConfigurationResponseBodyCase0TransferRequestCase1Requester =
-  GetConfigurationResponseBodyCase0TransferRequestCase0Requester;
-
 export interface GetConfigurationResponseBodyCase0TransferRequestCase1 {
   approvedAt?: number;
   approvedBy?: string;
@@ -4296,33 +2543,10 @@ export interface GetConfigurationResponseBodyCase0TransferRequestCase1 {
   requestId: string;
   transferId: string;
 }
-export const GetConfigurationResponseBodyCase0TransferRequestCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvedAt: S.optional(S.Number),
-    approvedBy: S.optional(S.String),
-    authorizationId: S.optional(S.String),
-    createdAt: S.Number,
-    discardedAt: S.optional(S.Number),
-    discardedBy: S.optional(S.String),
-    expiresAt: S.Number,
-    kind: GetConfigurationResponseBodyCase0TransferRequestCase1Kind,
-    requester: GetConfigurationResponseBodyCase0TransferRequestCase0Requester,
-    requestId: S.String,
-    transferId: S.String,
-  }),
-).annotate({
-  identifier: "GetConfigurationResponseBodyCase0TransferRequestCase1",
-}) as any as S.Schema<GetConfigurationResponseBodyCase0TransferRequestCase1>;
-
 export type GetConfigurationResponseBodyCase0TransferRequest =
   | GetConfigurationResponseBodyCase0TransferRequestCase0
   | GetConfigurationResponseBodyCase0TransferRequestCase1;
-export const GetConfigurationResponseBodyCase0TransferRequest =
-  S.Unknown as any as S.Schema<GetConfigurationResponseBodyCase0TransferRequest>;
-
 export type GetConfigurationResponseBodyCase0Type = "integration-configuration";
-export const GetConfigurationResponseBodyCase0Type = S.String;
-
 export interface GetConfigurationResponseBodyCase0 {
   /** Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth. */
   acceptedPoliciesInheritedFromInstallationId?: string;
@@ -4372,39 +2596,6 @@ export interface GetConfigurationResponseBodyCase0 {
   /** The ID of the user that created the configuration. */
   userId: string;
 }
-export const GetConfigurationResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceptedPoliciesInheritedFromInstallationId: S.optional(S.String),
-    canConfigureOpenTelemetry: S.optional(S.Boolean),
-    completedAt: S.optional(S.Number),
-    createdAt: S.Number,
-    customerDeleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    deletedAt: S.optional(S.NullOr(S.Number)),
-    deleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    disabledAt: S.optional(S.Number),
-    disabledReason: S.optional(GetConfigurationResponseBodyCase0DisabledReason),
-    externalId: S.optional(S.String),
-    id: S.String,
-    installationType: S.optional(GetConfigurationResponseBodyCase0InstallationType),
-    integrationId: S.String,
-    notification: GetConfigurationResponseBodyCase0Notification,
-    ownerId: S.String,
-    projects: S.optional(GetConfigurationResponseBodyCase0ProjectsList),
-    projectSelection: GetConfigurationResponseBodyCase0ProjectSelection,
-    scopes: GetConfigurationResponseBodyCase0ScopesList,
-    slug: S.String,
-    source: S.optional(GetConfigurationResponseBodyCase0Source),
-    status: S.optional(GetConfigurationResponseBodyCase0Status),
-    teamId: S.optional(S.NullOr(S.String)),
-    transferRequest: GetConfigurationResponseBodyCase0TransferRequest,
-    type: GetConfigurationResponseBodyCase0Type,
-    updatedAt: S.Number,
-    userId: S.String,
-  }),
-).annotate({
-  identifier: "GetConfigurationResponseBodyCase0",
-}) as any as S.Schema<GetConfigurationResponseBodyCase0>;
-
 export type GetConfigurationResponseBodyCase1DisabledReason =
   | "account-plan-downgrade"
   | "disabled-by-admin"
@@ -4412,22 +2603,12 @@ export type GetConfigurationResponseBodyCase1DisabledReason =
   | "feature-not-available"
   | "original-owner-left-the-team"
   | "original-owner-role-downgraded";
-export const GetConfigurationResponseBodyCase1DisabledReason = S.String;
-
 /** Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external' */
 export type GetConfigurationResponseBodyCase1InstallationType = "external" | "marketplace";
-export const GetConfigurationResponseBodyCase1InstallationType = S.String;
-
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationResponseBodyCase1ProjectsList = Array<string>;
-export const GetConfigurationResponseBodyCase1ProjectsList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase1ProjectsList>;
-
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationResponseBodyCase1ScopesList = Array<string>;
-export const GetConfigurationResponseBodyCase1ScopesList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase1ScopesList>;
-
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationResponseBodyCase1Source =
   | "backoffice"
@@ -4440,8 +2621,6 @@ export type GetConfigurationResponseBodyCase1Source =
   | "organization"
   | "resource-claims"
   | "v0";
-export const GetConfigurationResponseBodyCase1Source = S.String;
-
 /** The configuration status. Optional. If not defined, assume 'ready'. */
 export type GetConfigurationResponseBodyCase1Status =
   | "error"
@@ -4451,11 +2630,7 @@ export type GetConfigurationResponseBodyCase1Status =
   | "resumed"
   | "suspended"
   | "uninstalled";
-export const GetConfigurationResponseBodyCase1Status = S.String;
-
 export type GetConfigurationResponseBodyCase1Type = "integration-configuration";
-export const GetConfigurationResponseBodyCase1Type = S.String;
-
 /** The configuration with the provided id */
 export interface GetConfigurationResponseBodyCase1 {
   /** Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth. */
@@ -4501,35 +2676,6 @@ export interface GetConfigurationResponseBodyCase1 {
   /** The ID of the user that created the configuration. */
   userId: string;
 }
-export const GetConfigurationResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceptedPoliciesInheritedFromInstallationId: S.optional(S.String),
-    completedAt: S.optional(S.Number),
-    createdAt: S.Number,
-    customerDeleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    deletedAt: S.optional(S.NullOr(S.Number)),
-    deleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    disabledAt: S.optional(S.Number),
-    disabledReason: S.optional(GetConfigurationResponseBodyCase1DisabledReason),
-    externalId: S.optional(S.String),
-    id: S.String,
-    installationType: S.optional(GetConfigurationResponseBodyCase1InstallationType),
-    integrationId: S.String,
-    ownerId: S.String,
-    projects: S.optional(GetConfigurationResponseBodyCase1ProjectsList),
-    scopes: GetConfigurationResponseBodyCase1ScopesList,
-    slug: S.String,
-    source: S.optional(GetConfigurationResponseBodyCase1Source),
-    status: S.optional(GetConfigurationResponseBodyCase1Status),
-    teamId: S.optional(S.NullOr(S.String)),
-    type: GetConfigurationResponseBodyCase1Type,
-    updatedAt: S.Number,
-    userId: S.String,
-  }),
-).annotate({
-  identifier: "GetConfigurationResponseBodyCase1",
-}) as any as S.Schema<GetConfigurationResponseBodyCase1>;
-
 export type GetConfigurationResponseBodyCase2DisabledReason =
   | "account-plan-downgrade"
   | "disabled-by-admin"
@@ -4537,22 +2683,12 @@ export type GetConfigurationResponseBodyCase2DisabledReason =
   | "feature-not-available"
   | "original-owner-left-the-team"
   | "original-owner-role-downgraded";
-export const GetConfigurationResponseBodyCase2DisabledReason = S.String;
-
 /** Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external' */
 export type GetConfigurationResponseBodyCase2InstallationType = "external" | "marketplace";
-export const GetConfigurationResponseBodyCase2InstallationType = S.String;
-
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationResponseBodyCase2ProjectsList = Array<string>;
-export const GetConfigurationResponseBodyCase2ProjectsList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase2ProjectsList>;
-
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationResponseBodyCase2ScopesList = Array<string>;
-export const GetConfigurationResponseBodyCase2ScopesList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationResponseBodyCase2ScopesList>;
-
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationResponseBodyCase2Source =
   | "backoffice"
@@ -4565,8 +2701,6 @@ export type GetConfigurationResponseBodyCase2Source =
   | "organization"
   | "resource-claims"
   | "v0";
-export const GetConfigurationResponseBodyCase2Source = S.String;
-
 /** The configuration status. Optional. If not defined, assume 'ready'. */
 export type GetConfigurationResponseBodyCase2Status =
   | "error"
@@ -4576,11 +2710,7 @@ export type GetConfigurationResponseBodyCase2Status =
   | "resumed"
   | "suspended"
   | "uninstalled";
-export const GetConfigurationResponseBodyCase2Status = S.String;
-
 export type GetConfigurationResponseBodyCase2Type = "integration-configuration";
-export const GetConfigurationResponseBodyCase2Type = S.String;
-
 /** A configuration represents information about a single installation of an integration within an individual or team account */
 export interface GetConfigurationResponseBodyCase2 {
   /** Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth. */
@@ -4626,44 +2756,14 @@ export interface GetConfigurationResponseBodyCase2 {
   /** The ID of the user that created the configuration. */
   userId?: string;
 }
-export const GetConfigurationResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceptedPoliciesInheritedFromInstallationId: S.optional(S.String),
-    completedAt: S.optional(S.Number),
-    createdAt: S.optional(S.Number),
-    customerDeleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    deletedAt: S.optional(S.NullOr(S.Number)),
-    deleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    disabledAt: S.optional(S.Number),
-    disabledReason: S.optional(GetConfigurationResponseBodyCase2DisabledReason),
-    externalId: S.optional(S.String),
-    id: S.optional(S.String),
-    installationType: S.optional(GetConfigurationResponseBodyCase2InstallationType),
-    integrationId: S.optional(S.String),
-    ownerId: S.optional(S.String),
-    projects: S.optional(GetConfigurationResponseBodyCase2ProjectsList),
-    scopes: S.optional(GetConfigurationResponseBodyCase2ScopesList),
-    slug: S.optional(S.String),
-    source: S.optional(GetConfigurationResponseBodyCase2Source),
-    status: S.optional(GetConfigurationResponseBodyCase2Status),
-    teamId: S.optional(S.NullOr(S.String)),
-    type: S.optional(GetConfigurationResponseBodyCase2Type),
-    updatedAt: S.optional(S.Number),
-    userId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationResponseBodyCase2",
-}) as any as S.Schema<GetConfigurationResponseBodyCase2>;
-
 export type GetConfigurationResponseBody =
   | GetConfigurationResponseBodyCase0
   | GetConfigurationResponseBodyCase1
   | GetConfigurationResponseBodyCase2;
-export const GetConfigurationResponseBody =
-  S.Unknown as any as S.Schema<GetConfigurationResponseBody>;
+const GetConfigurationResponseBody = S.Unknown as any as S.Schema<GetConfigurationResponseBody>;
 
 export type GetConfigurationResponse = GetConfigurationResponseBody;
-export const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   GetConfigurationResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetConfigurationResponse" }) as any as S.Schema<GetConfigurationResponse>;
 
@@ -4675,7 +2775,7 @@ export interface GetConfigurationProductsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetConfigurationProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -4690,7 +2790,7 @@ export const GetConfigurationProductsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetConfigurationProductsResponseConfiguration {
   id: string;
 }
-export const GetConfigurationProductsResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -4703,7 +2803,7 @@ export interface GetConfigurationProductsResponseIntegration {
   name: string;
   slug: string;
 }
-export const GetConfigurationProductsResponseIntegration = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsResponseIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -4715,89 +2815,44 @@ export const GetConfigurationProductsResponseIntegration = /*@__PURE__*/ S.suspe
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0Type =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiControl =
   "input";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0 {
   default?: string;
   description?: string;
@@ -4816,135 +2871,44 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1Type =
   "number";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiControl =
   "input";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1 {
   default?: number;
   description?: string;
@@ -4963,133 +2927,44 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.Number),
-      description: S.optional(S.String),
-      exclusiveMaximum: S.optional(S.Number),
-      exclusiveMinimum: S.optional(S.Number),
-      maximum: S.optional(S.Number),
-      minimum: S.optional(S.Number),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2Type =
   "boolean";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiControl =
   "toggle";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2 {
   default?: boolean;
   description?: string;
@@ -5103,58 +2978,10 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_paid_only?: boolean;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.Boolean),
-      description: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase2>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList =
   Array<number>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList =
-  CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3ItemsType =
   "number";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3ItemsType =
-  S.String;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Items {
   default?: number;
   description?: string;
@@ -5164,94 +2991,46 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   minimum?: number;
   type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3ItemsType;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Items =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase3Items as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Items>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Type =
   "array";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiControl =
   "slider";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnly>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList =
   Array<number>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList =
-  CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3 {
   default?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList;
   description?: string;
@@ -5269,160 +3048,55 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnly;
   ui_steps: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3DefaultList,
-      ),
-      description: S.optional(S.String),
-      items: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Items,
-      maxItems: S.optional(S.Number),
-      minItems: S.optional(S.Number),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-      ui_steps:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3UiStepsList.pipe(
-          T.Body("ui:steps"),
-        ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase3>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4EnumList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4EnumList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4Type =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiControl =
   "select";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItem {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled;
@@ -5430,49 +3104,17 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   label: string;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemDisabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItemHidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItem",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItem>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsList =
   Array<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItem>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsItem,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4 {
   default?: string;
   description?: string;
@@ -5492,162 +3134,55 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase4>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5EnumList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5EnumList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5Type =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiControl =
   "radio-button";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItem {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled;
@@ -5655,49 +3190,17 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   label: string;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemDisabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItemHidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItem",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItem>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsList =
   Array<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItem>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsItem,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5 {
   default?: string;
   description?: string;
@@ -5717,79 +3220,14 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase5>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ExampleList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ExampleList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ExampleList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsEnumList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsEnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsEnumList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsType =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsType =
-  S.String;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6Items {
   default?: string;
   description?: string;
@@ -5799,122 +3237,53 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   pattern?: string;
   type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsType;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6Items =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsEnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ItemsType,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6Items",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6Items>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6Type =
   "array";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiControl =
   "multi-select";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItem {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled;
@@ -5922,49 +3291,17 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   label: string;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemDisabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItemHidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItem",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItem>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsList =
   Array<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItem>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsItem,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6 {
   default?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList;
   description?: string;
@@ -5984,164 +3321,55 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6DefaultList,
-      ),
-      description: S.optional(S.String),
-      example: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6ExampleList,
-      ),
-      items: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6Items,
-      maxItems: S.optional(S.Number),
-      minItems: S.optional(S.Number),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase6>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7EnumList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7EnumList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7Type =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiControl =
   "vercel-region";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0DisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0HiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Hidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Hidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0 {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled;
@@ -6149,115 +3377,45 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   label: string;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Disabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0Hidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2DisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2HiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2 {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled;
   hidden?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Disabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2Hidden,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItem =
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase0
   | string
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItemCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItem =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItem>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsList =
   Array<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItem>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsItem,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7 {
   default?: string;
   description?: string;
@@ -6277,79 +3435,14 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase7>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ExampleList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ExampleList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ExampleList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsEnumList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsEnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsEnumList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsType =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsType =
-  S.String;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8Items {
   default?: string;
   description?: string;
@@ -6359,122 +3452,53 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   pattern?: string;
   type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsType;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8Items =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsEnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ItemsType,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8Items",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8Items>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8Type =
   "array";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiControl =
   "multi-vercel-region";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0DisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0HiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Hidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Hidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0 {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled;
@@ -6482,115 +3506,45 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   label: string;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Disabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0Hidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2DisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2HiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2 {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled;
   hidden?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Disabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2Hidden,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItem =
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase0
   | string
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItemCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItem =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItem>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsList =
   Array<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItem>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsItem,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8 {
   default?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList;
   description?: string;
@@ -6610,164 +3564,55 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8DefaultList,
-      ),
-      description: S.optional(S.String),
-      example: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8ExampleList,
-      ),
-      items: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8Items,
-      maxItems: S.optional(S.Number),
-      minItems: S.optional(S.Number),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase8>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9EnumList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9EnumList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9Type =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiControl =
   "vercel-country";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0DisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0HiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Hidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Hidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0 {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled;
@@ -6775,115 +3620,45 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   label: string;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Disabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0Hidden,
-      ),
-      label: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2DisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2HiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2 {
   description?: string;
   disabled?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled;
   hidden?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden;
   value: string;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Disabled,
-      ),
-      hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2Hidden,
-      ),
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItem =
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase0
   | string
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItemCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItem =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItem>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsList =
   Array<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItem>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsList =
-  /*@__PURE__*/ S.Array(
-    GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsItem,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9 {
   default?: string;
   description?: string;
@@ -6903,144 +3678,46 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_options:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiOptionsList.pipe(
-          T.Body("ui:options"),
-        ),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10EnumList =
   Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10EnumList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10EnumList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10Type =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiControl =
   "domain";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10 {
   default?: string;
   description?: string;
@@ -7059,147 +3736,50 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      default: S.optional(S.String),
-      description: S.optional(S.String),
-      enum: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10EnumList,
-      ),
-      maxLength: S.optional(S.Number),
-      minLength: S.optional(S.Number),
-      pattern: S.optional(S.String),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersItem =
   | "bitbucket"
   | "github"
   | "gitlab";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersItem =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList =
   Array<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersItem>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11Type =
   "string";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11Type =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiControl =
   "git-namespace";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiControl =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDescriptionCase1 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDescriptionCase1 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDescription =
   | string
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDescription =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDescription>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabledCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabledCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabledCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabledCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabled =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabledCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabled =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabled>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiFormattedValue =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiFormattedValue =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHiddenCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHiddenCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHiddenCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHiddenCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHidden =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHiddenCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHidden =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHidden>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnlyCase0 =
   CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnlyCase0 =
-  CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnlyCase2 =
   | "create"
   | "update";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnlyCase2 =
-  S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnly =
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1
   | boolean
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnlyCase2;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnly =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnly>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11 {
   description?: string;
   git_providers?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList;
@@ -7214,53 +3794,6 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchemaPrope
   ui_placeholder?: string;
   ui_read_only?: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnly;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description: S.optional(S.String),
-      git_providers: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11GitProvidersList.pipe(
-          T.Body("git:providers"),
-        ),
-      ),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11Type,
-      ui_control:
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiControl.pipe(
-          T.Body("ui:control"),
-        ),
-      ui_description: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDescription.pipe(
-          T.Body("ui:description"),
-        ),
-      ),
-      ui_disabled: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiDisabled.pipe(
-          T.Body("ui:disabled"),
-        ),
-      ),
-      ui_formatted_value: S.optional(
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0UiDescriptionCase1.pipe(
-          T.Body("ui:formatted-value"),
-        ),
-      ),
-      ui_hidden: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiHidden.pipe(
-          T.Body("ui:hidden"),
-        ),
-      ),
-      ui_label: S.optional(S.String.pipe(T.Body("ui:label"))),
-      ui_paid_only: S.optional(S.Boolean.pipe(T.Body("ui:paid-only"))),
-      ui_placeholder: S.optional(S.String.pipe(T.Body("ui:placeholder"))),
-      ui_read_only: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11UiReadOnly.pipe(
-          T.Body("ui:read-only"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue =
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase1
@@ -7274,7 +3807,7 @@ export type GetConfigurationProductsResponseProductsItemMetadataSchemaProperties
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue =
+const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue =
   S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap = {
@@ -7282,21 +3815,21 @@ export type GetConfigurationProductsResponseProductsItemMetadataSchemaProperties
     | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue
     | undefined;
 };
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap =
+const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue,
   ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList = Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList =
+const GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList>;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaType = "object";
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaType = S.String;
+const GetConfigurationProductsResponseProductsItemMetadataSchemaType = S.String;
 
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList = Array<string>;
-export const GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList =
+const GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList =
   CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList>;
 
 export interface GetConfigurationProductsResponseProductsItemMetadataSchema {
@@ -7305,18 +3838,17 @@ export interface GetConfigurationProductsResponseProductsItemMetadataSchema {
   type: GetConfigurationProductsResponseProductsItemMetadataSchemaType;
   ui_order?: GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList;
 }
-export const GetConfigurationProductsResponseProductsItemMetadataSchema = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      properties: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap,
-      required: S.optional(GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList),
-      type: GetConfigurationProductsResponseProductsItemMetadataSchemaType,
-      ui_order: S.optional(
-        GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList.pipe(
-          T.Body("ui:order"),
-        ),
+const GetConfigurationProductsResponseProductsItemMetadataSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap,
+    required: S.optional(GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList),
+    type: GetConfigurationProductsResponseProductsItemMetadataSchemaType,
+    ui_order: S.optional(
+      GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList.pipe(
+        T.Body("ui:order"),
       ),
-    }),
+    ),
+  }),
 ).annotate({
   identifier: "GetConfigurationProductsResponseProductsItemMetadataSchema",
 }) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchema>;
@@ -7334,15 +3866,15 @@ export type GetConfigurationProductsResponseProductsItemPrimaryProtocol =
   | "traceDrain"
   | "video"
   | "workflow";
-export const GetConfigurationProductsResponseProductsItemPrimaryProtocol = S.String;
+const GetConfigurationProductsResponseProductsItemPrimaryProtocol = S.String;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsAiStatus = "disabled" | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsAiStatus = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsAiStatus = S.String;
 
 export interface GetConfigurationProductsResponseProductsItemProtocolsAi {
   status: GetConfigurationProductsResponseProductsItemProtocolsAiStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsAi = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsResponseProductsItemProtocolsAi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: GetConfigurationProductsResponseProductsItemProtocolsAiStatus,
   }),
@@ -7353,36 +3885,35 @@ export const GetConfigurationProductsResponseProductsItemProtocolsAi = /*@__PURE
 export type GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus = S.String;
 
 export interface GetConfigurationProductsResponseProductsItemProtocolsAuthentication {
   status: GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus;
   /** The partner accepts Vercel-managed app URLs via `protocolSettings.authentication.appUrls` on provision-resource and update-resource, and reconciles them into its trusted-origin / redirect-URL allowlist. When absent, consumers surface the URL for a one-time manual registration instead. */
   appUrlRegistrationSupport?: boolean;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsAuthentication =
-  /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsResponseProductsItemProtocolsAuthentication = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       status: GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus,
       appUrlRegistrationSupport: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemProtocolsAuthentication",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsAuthentication>;
+).annotate({
+  identifier: "GetConfigurationProductsResponseProductsItemProtocolsAuthentication",
+}) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsAuthentication>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsChecksStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsChecksStatus = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsChecksStatus = S.String;
 
 export interface GetConfigurationProductsResponseProductsItemProtocolsChecks {
   status: GetConfigurationProductsResponseProductsItemProtocolsChecksStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsChecks = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: GetConfigurationProductsResponseProductsItemProtocolsChecksStatus,
-    }),
+const GetConfigurationProductsResponseProductsItemProtocolsChecks = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: GetConfigurationProductsResponseProductsItemProtocolsChecksStatus,
+  }),
 ).annotate({
   identifier: "GetConfigurationProductsResponseProductsItemProtocolsChecks",
 }) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsChecks>;
@@ -7390,13 +3921,13 @@ export const GetConfigurationProductsResponseProductsItemProtocolsChecks = /*@__
 export type GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus = S.String;
 
 export interface GetConfigurationProductsResponseProductsItemProtocolsExperimentation {
   status: GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus;
   edgeConfigSyncingSupport?: boolean;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsExperimentation =
+const GetConfigurationProductsResponseProductsItemProtocolsExperimentation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus,
@@ -7409,19 +3940,19 @@ export const GetConfigurationProductsResponseProductsItemProtocolsExperimentatio
 export type GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus = S.String;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap =
+const GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
   ) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat = "json" | "ndjson";
-export const GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat = S.String;
 
 export interface GetConfigurationProductsResponseProductsItemProtocolsLogDrain {
   status: GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus;
@@ -7429,77 +3960,67 @@ export interface GetConfigurationProductsResponseProductsItemProtocolsLogDrain {
   headers?: GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap;
   format: GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsLogDrain =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus,
-      endpoint: S.String,
-      headers: S.optional(GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap),
-      format: GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat,
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemProtocolsLogDrain",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsLogDrain>;
+const GetConfigurationProductsResponseProductsItemProtocolsLogDrain = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus,
+    endpoint: S.String,
+    headers: S.optional(GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap),
+    format: GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat,
+  }),
+).annotate({
+  identifier: "GetConfigurationProductsResponseProductsItemProtocolsLogDrain",
+}) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsLogDrain>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus = S.String;
 
 export interface GetConfigurationProductsResponseProductsItemProtocolsMessaging {
   status: GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsMessaging =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus,
-    }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemProtocolsMessaging",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsMessaging>;
+const GetConfigurationProductsResponseProductsItemProtocolsMessaging = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus,
+  }),
+).annotate({
+  identifier: "GetConfigurationProductsResponseProductsItemProtocolsMessaging",
+}) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsMessaging>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsObservabilityStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsObservabilityStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsObservability {
   status: GetConfigurationProductsResponseProductsItemProtocolsObservabilityStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsObservability =
+const GetConfigurationProductsResponseProductsItemProtocolsObservability =
   GetConfigurationProductsResponseProductsItemProtocolsMessaging as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsObservability>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsOtherStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsOtherStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsOther {
   status: GetConfigurationProductsResponseProductsItemProtocolsOtherStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsOther =
+const GetConfigurationProductsResponseProductsItemProtocolsOther =
   GetConfigurationProductsResponseProductsItemProtocolsChecks as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsOther>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsStorageStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsStorageStatus = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsStorageStatus = S.String;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsStorageRepl =
   CreateIntegrationStoreDirectResponseStoreProductRepl;
-export const GetConfigurationProductsResponseProductsItemProtocolsStorageRepl =
-  CreateIntegrationStoreDirectResponseStoreProductRepl;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsStorage {
   status: GetConfigurationProductsResponseProductsItemProtocolsStorageStatus;
   repl?: CreateIntegrationStoreDirectResponseStoreProductRepl;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsStorage = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: GetConfigurationProductsResponseProductsItemProtocolsStorageStatus,
-      repl: S.optional(CreateIntegrationStoreDirectResponseStoreProductRepl),
-    }),
+const GetConfigurationProductsResponseProductsItemProtocolsStorage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: GetConfigurationProductsResponseProductsItemProtocolsStorageStatus,
+    repl: S.optional(CreateIntegrationStoreDirectResponseStoreProductRepl),
+  }),
 ).annotate({
   identifier: "GetConfigurationProductsResponseProductsItemProtocolsStorage",
 }) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsStorage>;
@@ -7507,18 +4028,18 @@ export const GetConfigurationProductsResponseProductsItemProtocolsStorage = /*@_
 export type GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus = S.String;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap = {
   [key: string]: string | undefined;
 };
-export const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap =
+const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap =
   GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat =
   | "json"
   | "proto";
-export const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat = S.String;
+const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat = S.String;
 
 export interface GetConfigurationProductsResponseProductsItemProtocolsTraceDrain {
   status: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus;
@@ -7526,8 +4047,8 @@ export interface GetConfigurationProductsResponseProductsItemProtocolsTraceDrain
   headers?: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap;
   format: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsTraceDrain =
-  /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsResponseProductsItemProtocolsTraceDrain = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       status: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus,
       endpoint: S.String,
@@ -7536,30 +4057,26 @@ export const GetConfigurationProductsResponseProductsItemProtocolsTraceDrain =
       ),
       format: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat,
     }),
-  ).annotate({
-    identifier: "GetConfigurationProductsResponseProductsItemProtocolsTraceDrain",
-  }) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsTraceDrain>;
+).annotate({
+  identifier: "GetConfigurationProductsResponseProductsItemProtocolsTraceDrain",
+}) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsTraceDrain>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsVideoStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsVideoStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsVideo {
   status: GetConfigurationProductsResponseProductsItemProtocolsVideoStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsVideo =
+const GetConfigurationProductsResponseProductsItemProtocolsVideo =
   GetConfigurationProductsResponseProductsItemProtocolsChecks as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsVideo>;
 
 export type GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus =
   | "disabled"
   | "enabled";
-export const GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsWorkflow {
   status: GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus;
 }
-export const GetConfigurationProductsResponseProductsItemProtocolsWorkflow =
+const GetConfigurationProductsResponseProductsItemProtocolsWorkflow =
   GetConfigurationProductsResponseProductsItemProtocolsMessaging as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsWorkflow>;
 
 export interface GetConfigurationProductsResponseProductsItemProtocols {
@@ -7576,7 +4093,7 @@ export interface GetConfigurationProductsResponseProductsItemProtocols {
   video?: GetConfigurationProductsResponseProductsItemProtocolsVideo;
   workflow?: GetConfigurationProductsResponseProductsItemProtocolsWorkflow;
 }
-export const GetConfigurationProductsResponseProductsItemProtocols = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsResponseProductsItemProtocols = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ai: S.optional(GetConfigurationProductsResponseProductsItemProtocolsAi),
     authentication: S.optional(GetConfigurationProductsResponseProductsItemProtocolsAuthentication),
@@ -7605,7 +4122,7 @@ export interface GetConfigurationProductsResponseProductsItem {
   protocols: GetConfigurationProductsResponseProductsItemProtocols;
   slug: string;
 }
-export const GetConfigurationProductsResponseProductsItem = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsResponseProductsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     metadataSchema: GetConfigurationProductsResponseProductsItemMetadataSchema,
@@ -7620,7 +4137,7 @@ export const GetConfigurationProductsResponseProductsItem = /*@__PURE__*/ S.susp
 
 export type GetConfigurationProductsResponseProductsList =
   Array<GetConfigurationProductsResponseProductsItem>;
-export const GetConfigurationProductsResponseProductsList = /*@__PURE__*/ S.Array(
+const GetConfigurationProductsResponseProductsList = /*@__PURE__*/ S.Array(
   GetConfigurationProductsResponseProductsItem,
 ) as any as S.Schema<GetConfigurationProductsResponseProductsList>;
 
@@ -7629,7 +4146,7 @@ export interface GetConfigurationProductsResponse {
   integration: GetConfigurationProductsResponseIntegration;
   products: GetConfigurationProductsResponseProductsList;
 }
-export const GetConfigurationProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: GetConfigurationProductsResponseConfiguration,
     integration: GetConfigurationProductsResponseIntegration,
@@ -7640,10 +4157,10 @@ export const GetConfigurationProductsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConfigurationProductsResponse>;
 
 export type GetConfigurationsRequestView = "account" | "project";
-export const GetConfigurationsRequestView = S.String;
+const GetConfigurationsRequestView = S.String;
 
 export type GetConfigurationsRequestInstallationType = "marketplace" | "external" | "provisioning";
-export const GetConfigurationsRequestInstallationType = S.String;
+const GetConfigurationsRequestInstallationType = S.String;
 
 export interface GetConfigurationsRequest {
   view: GetConfigurationsRequestView | (string & {});
@@ -7655,7 +4172,7 @@ export interface GetConfigurationsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: GetConfigurationsRequestView.pipe(T.Query()),
     installationType: S.optional(GetConfigurationsRequestInstallationType.pipe(T.Query())),
@@ -7672,22 +4189,12 @@ export type GetConfigurationsResponseBodyCase0ItemDisabledReason =
   | "feature-not-available"
   | "original-owner-left-the-team"
   | "original-owner-role-downgraded";
-export const GetConfigurationsResponseBodyCase0ItemDisabledReason = S.String;
-
 /** Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external' */
 export type GetConfigurationsResponseBodyCase0ItemInstallationType = "external" | "marketplace";
-export const GetConfigurationsResponseBodyCase0ItemInstallationType = S.String;
-
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationsResponseBodyCase0ItemProjectsList = Array<string>;
-export const GetConfigurationsResponseBodyCase0ItemProjectsList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase0ItemProjectsList>;
-
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationsResponseBodyCase0ItemScopesList = Array<string>;
-export const GetConfigurationsResponseBodyCase0ItemScopesList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase0ItemScopesList>;
-
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationsResponseBodyCase0ItemSource =
   | "backoffice"
@@ -7700,8 +4207,6 @@ export type GetConfigurationsResponseBodyCase0ItemSource =
   | "organization"
   | "resource-claims"
   | "v0";
-export const GetConfigurationsResponseBodyCase0ItemSource = S.String;
-
 /** The configuration status. Optional. If not defined, assume 'ready'. */
 export type GetConfigurationsResponseBodyCase0ItemStatus =
   | "error"
@@ -7711,11 +4216,7 @@ export type GetConfigurationsResponseBodyCase0ItemStatus =
   | "resumed"
   | "suspended"
   | "uninstalled";
-export const GetConfigurationsResponseBodyCase0ItemStatus = S.String;
-
 export type GetConfigurationsResponseBodyCase0ItemType = "integration-configuration";
-export const GetConfigurationsResponseBodyCase0ItemType = S.String;
-
 /** The list of configurations for the authenticated user */
 export interface GetConfigurationsResponseBodyCase0Item {
   /** Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth. */
@@ -7761,41 +4262,8 @@ export interface GetConfigurationsResponseBodyCase0Item {
   /** The ID of the user that created the configuration. */
   userId?: string;
 }
-export const GetConfigurationsResponseBodyCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceptedPoliciesInheritedFromInstallationId: S.optional(S.String),
-    completedAt: S.optional(S.Number),
-    createdAt: S.optional(S.Number),
-    customerDeleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    deletedAt: S.optional(S.NullOr(S.Number)),
-    deleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    disabledAt: S.optional(S.Number),
-    disabledReason: S.optional(GetConfigurationsResponseBodyCase0ItemDisabledReason),
-    externalId: S.optional(S.String),
-    id: S.optional(S.String),
-    installationType: S.optional(GetConfigurationsResponseBodyCase0ItemInstallationType),
-    integrationId: S.optional(S.String),
-    ownerId: S.optional(S.String),
-    projects: S.optional(GetConfigurationsResponseBodyCase0ItemProjectsList),
-    scopes: S.optional(GetConfigurationsResponseBodyCase0ItemScopesList),
-    slug: S.optional(S.String),
-    source: S.optional(GetConfigurationsResponseBodyCase0ItemSource),
-    status: S.optional(GetConfigurationsResponseBodyCase0ItemStatus),
-    teamId: S.optional(S.NullOr(S.String)),
-    type: S.optional(GetConfigurationsResponseBodyCase0ItemType),
-    updatedAt: S.optional(S.Number),
-    userId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationsResponseBodyCase0Item",
-}) as any as S.Schema<GetConfigurationsResponseBodyCase0Item>;
-
 /** The list of configurations for the authenticated user */
 export type GetConfigurationsResponseBodyCase0List = Array<GetConfigurationsResponseBodyCase0Item>;
-export const GetConfigurationsResponseBodyCase0List = /*@__PURE__*/ S.Array(
-  GetConfigurationsResponseBodyCase0Item,
-) as any as S.Schema<GetConfigurationsResponseBodyCase0List>;
-
 export type GetConfigurationsResponseBodyCase1ItemDisabledReason =
   | "account-plan-downgrade"
   | "disabled-by-admin"
@@ -7803,16 +4271,9 @@ export type GetConfigurationsResponseBodyCase1ItemDisabledReason =
   | "feature-not-available"
   | "original-owner-left-the-team"
   | "original-owner-role-downgraded";
-export const GetConfigurationsResponseBodyCase1ItemDisabledReason = S.String;
-
 /** Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external' */
 export type GetConfigurationsResponseBodyCase1ItemInstallationType = "external" | "marketplace";
-export const GetConfigurationsResponseBodyCase1ItemInstallationType = S.String;
-
 export type GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList = Array<string>;
-export const GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList>;
-
 export type GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsItem =
   | "tag_agents"
   | "tag_ai"
@@ -7842,13 +4303,8 @@ export type GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsItem =
   | "tag_video"
   | "tag_web_automation"
   | "tag_workflow";
-export const GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsItem = S.String;
-
 export type GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList =
   Array<GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsItem>;
-export const GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList =
-  CreateIntegrationStoreDirectResponseStoreProductTagsList as any as S.Schema<GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList>;
-
 export interface GetConfigurationsResponseBodyCase1ItemIntegration {
   assignedBetaLabelAt?: number;
   flags?: GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList;
@@ -7857,29 +4313,10 @@ export interface GetConfigurationsResponseBodyCase1ItemIntegration {
   name: string;
   tagIds?: GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList;
 }
-export const GetConfigurationsResponseBodyCase1ItemIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assignedBetaLabelAt: S.optional(S.Number),
-    flags: S.optional(GetConfigurationsResponseBodyCase1ItemIntegrationFlagsList),
-    icon: S.String,
-    isLegacy: S.Boolean,
-    name: S.String,
-    tagIds: S.optional(GetConfigurationsResponseBodyCase1ItemIntegrationTagIdsList),
-  }),
-).annotate({
-  identifier: "GetConfigurationsResponseBodyCase1ItemIntegration",
-}) as any as S.Schema<GetConfigurationsResponseBodyCase1ItemIntegration>;
-
 /** When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access. */
 export type GetConfigurationsResponseBodyCase1ItemProjectsList = Array<string>;
-export const GetConfigurationsResponseBodyCase1ItemProjectsList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase1ItemProjectsList>;
-
 /** The resources that are allowed to be accessed by the configuration. */
 export type GetConfigurationsResponseBodyCase1ItemScopesList = Array<string>;
-export const GetConfigurationsResponseBodyCase1ItemScopesList =
-  CreateIntegrationStoreDirectRequestMetadataValueCase3List as any as S.Schema<GetConfigurationsResponseBodyCase1ItemScopesList>;
-
 /** Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics. */
 export type GetConfigurationsResponseBodyCase1ItemSource =
   | "backoffice"
@@ -7892,8 +4329,6 @@ export type GetConfigurationsResponseBodyCase1ItemSource =
   | "organization"
   | "resource-claims"
   | "v0";
-export const GetConfigurationsResponseBodyCase1ItemSource = S.String;
-
 /** The configuration status. Optional. If not defined, assume 'ready'. */
 export type GetConfigurationsResponseBodyCase1ItemStatus =
   | "error"
@@ -7903,11 +4338,7 @@ export type GetConfigurationsResponseBodyCase1ItemStatus =
   | "resumed"
   | "suspended"
   | "uninstalled";
-export const GetConfigurationsResponseBodyCase1ItemStatus = S.String;
-
 export type GetConfigurationsResponseBodyCase1ItemType = "integration-configuration";
-export const GetConfigurationsResponseBodyCase1ItemType = S.String;
-
 export interface GetConfigurationsResponseBodyCase1Item {
   /** Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth. */
   acceptedPoliciesInheritedFromInstallationId?: string;
@@ -7953,49 +4384,14 @@ export interface GetConfigurationsResponseBodyCase1Item {
   /** The ID of the user that created the configuration. */
   userId: string;
 }
-export const GetConfigurationsResponseBodyCase1Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceptedPoliciesInheritedFromInstallationId: S.optional(S.String),
-    completedAt: S.optional(S.Number),
-    createdAt: S.Number,
-    customerDeleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    deletedAt: S.optional(S.NullOr(S.Number)),
-    deleteRequestedAt: S.optional(S.NullOr(S.Number)),
-    disabledAt: S.optional(S.Number),
-    disabledReason: S.optional(GetConfigurationsResponseBodyCase1ItemDisabledReason),
-    externalId: S.optional(S.String),
-    id: S.String,
-    installationType: S.optional(GetConfigurationsResponseBodyCase1ItemInstallationType),
-    integration: GetConfigurationsResponseBodyCase1ItemIntegration,
-    integrationId: S.String,
-    ownerId: S.String,
-    projects: S.optional(GetConfigurationsResponseBodyCase1ItemProjectsList),
-    scopes: GetConfigurationsResponseBodyCase1ItemScopesList,
-    slug: S.String,
-    source: S.optional(GetConfigurationsResponseBodyCase1ItemSource),
-    status: S.optional(GetConfigurationsResponseBodyCase1ItemStatus),
-    teamId: S.optional(S.NullOr(S.String)),
-    type: GetConfigurationsResponseBodyCase1ItemType,
-    updatedAt: S.Number,
-    userId: S.String,
-  }),
-).annotate({
-  identifier: "GetConfigurationsResponseBodyCase1Item",
-}) as any as S.Schema<GetConfigurationsResponseBodyCase1Item>;
-
 export type GetConfigurationsResponseBodyCase1List = Array<GetConfigurationsResponseBodyCase1Item>;
-export const GetConfigurationsResponseBodyCase1List = /*@__PURE__*/ S.Array(
-  GetConfigurationsResponseBodyCase1Item,
-) as any as S.Schema<GetConfigurationsResponseBodyCase1List>;
-
 export type GetConfigurationsResponseBody =
   | GetConfigurationsResponseBodyCase0List
   | GetConfigurationsResponseBodyCase1List;
-export const GetConfigurationsResponseBody =
-  S.Unknown as any as S.Schema<GetConfigurationsResponseBody>;
+const GetConfigurationsResponseBody = S.Unknown as any as S.Schema<GetConfigurationsResponseBody>;
 
 export type GetConfigurationsResponse = GetConfigurationsResponseBody;
-export const GetConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   GetConfigurationsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetConfigurationsResponse",
@@ -8007,7 +4403,7 @@ export type GitNamespacesRequestProvider =
   | "github-custom-host"
   | "gitlab"
   | "bitbucket";
-export const GitNamespacesRequestProvider = S.String;
+const GitNamespacesRequestProvider = S.String;
 
 export interface GitNamespacesRequest {
   /** The custom Git host if using a custom Git provider, like GitHub Enterprise Server */
@@ -8016,7 +4412,7 @@ export interface GitNamespacesRequest {
   /** When true, includes the viewer object for each namespace. */
   viewerMetadata?: boolean;
 }
-export const GitNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const GitNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String.pipe(T.Query())),
     provider: S.optional(GitNamespacesRequestProvider.pipe(T.Query())),
@@ -8025,18 +4421,18 @@ export const GitNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitNamespacesRequest" }) as any as S.Schema<GitNamespacesRequest>;
 
 export type GitNamespacesResponseBodyItemId = string | number;
-export const GitNamespacesResponseBodyItemId =
+const GitNamespacesResponseBodyItemId =
   S.Unknown as any as S.Schema<GitNamespacesResponseBodyItemId>;
 
 export type GitNamespacesResponseBodyItemViewerRole = string | number;
-export const GitNamespacesResponseBodyItemViewerRole =
+const GitNamespacesResponseBodyItemViewerRole =
   S.Unknown as any as S.Schema<GitNamespacesResponseBodyItemViewerRole>;
 
 export interface GitNamespacesResponseBodyItemViewer {
   canCreateApp?: boolean;
   role?: GitNamespacesResponseBodyItemViewerRole;
 }
-export const GitNamespacesResponseBodyItemViewer = /*@__PURE__*/ S.suspend(() =>
+const GitNamespacesResponseBodyItemViewer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canCreateApp: S.optional(S.Boolean),
     role: S.optional(GitNamespacesResponseBodyItemViewerRole),
@@ -8056,7 +4452,7 @@ export interface GitNamespacesResponseBodyItem {
   slug: string;
   viewer?: GitNamespacesResponseBodyItemViewer;
 }
-export const GitNamespacesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GitNamespacesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: GitNamespacesResponseBodyItemId,
     installationId: S.optional(S.Number),
@@ -8073,18 +4469,17 @@ export const GitNamespacesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GitNamespacesResponseBodyItem>;
 
 export type GitNamespacesResponseBodyList = Array<GitNamespacesResponseBodyItem>;
-export const GitNamespacesResponseBodyList = /*@__PURE__*/ S.Array(
+const GitNamespacesResponseBodyList = /*@__PURE__*/ S.Array(
   GitNamespacesResponseBodyItem,
 ) as any as S.Schema<GitNamespacesResponseBodyList>;
 
 export type GitNamespacesResponse = GitNamespacesResponseBodyList;
-export const GitNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const GitNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   GitNamespacesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GitNamespacesResponse" }) as any as S.Schema<GitNamespacesResponse>;
 
 export type SearchRepoRequestNamespaceId = string | number;
-export const SearchRepoRequestNamespaceId =
-  S.Unknown as any as S.Schema<SearchRepoRequestNamespaceId>;
+const SearchRepoRequestNamespaceId = S.Unknown as any as S.Schema<SearchRepoRequestNamespaceId>;
 
 export type SearchRepoRequestProvider =
   | "github"
@@ -8093,7 +4488,7 @@ export type SearchRepoRequestProvider =
   | "gitlab"
   | "bitbucket"
   | "cursor-origin";
-export const SearchRepoRequestProvider = S.String;
+const SearchRepoRequestProvider = S.String;
 
 export interface SearchRepoRequest {
   query?: string;
@@ -8107,7 +4502,7 @@ export interface SearchRepoRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const SearchRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     namespaceId: S.optional(SearchRepoRequestNamespaceId.pipe(T.Query())),
@@ -8120,64 +4515,23 @@ export const SearchRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRepoRequest" }) as any as S.Schema<SearchRepoRequest>;
 
 export type SearchRepoResponseBodyCase1ErrorCode = "installation_not_found";
-export const SearchRepoResponseBodyCase1ErrorCode = S.String;
-
 export interface SearchRepoResponseBodyCase1Error {
   code: SearchRepoResponseBodyCase1ErrorCode;
   message: string;
 }
-export const SearchRepoResponseBodyCase1Error = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: SearchRepoResponseBodyCase1ErrorCode,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase1Error",
-}) as any as S.Schema<SearchRepoResponseBodyCase1Error>;
-
 export interface SearchRepoResponseBodyCase1 {
   error: SearchRepoResponseBodyCase1Error;
 }
-export const SearchRepoResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: SearchRepoResponseBodyCase1Error,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase1",
-}) as any as S.Schema<SearchRepoResponseBodyCase1>;
-
 export interface SearchRepoResponseBodyCase2GitAccount {
   namespaceId: string | null;
   provider: string;
 }
-export const SearchRepoResponseBodyCase2GitAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaceId: S.NullOr(S.String),
-    provider: S.String,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase2GitAccount",
-}) as any as S.Schema<SearchRepoResponseBodyCase2GitAccount>;
-
 export interface SearchRepoResponseBodyCase2ReposItemOwner {
   id: string;
   name: string;
 }
-export const SearchRepoResponseBodyCase2ReposItemOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase2ReposItemOwner",
-}) as any as S.Schema<SearchRepoResponseBodyCase2ReposItemOwner>;
-
 export type SearchRepoResponseBodyCase2ReposItemOwnerType = "team" | "user";
-export const SearchRepoResponseBodyCase2ReposItemOwnerType = S.String;
-
 export type SearchRepoResponseBodyCase2ReposItemProvider = "cursor-origin";
-export const SearchRepoResponseBodyCase2ReposItemProvider = S.String;
-
 export interface SearchRepoResponseBodyCase2ReposItem {
   defaultBranch: string;
   id: string;
@@ -8191,46 +4545,12 @@ export interface SearchRepoResponseBodyCase2ReposItem {
   updatedAt: number;
   url: string;
 }
-export const SearchRepoResponseBodyCase2ReposItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    id: S.String,
-    name: S.String,
-    namespace: S.String,
-    owner: SearchRepoResponseBodyCase2ReposItemOwner,
-    ownerType: SearchRepoResponseBodyCase2ReposItemOwnerType,
-    private: S.Boolean,
-    provider: SearchRepoResponseBodyCase2ReposItemProvider,
-    slug: S.String,
-    updatedAt: S.Number,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase2ReposItem",
-}) as any as S.Schema<SearchRepoResponseBodyCase2ReposItem>;
-
 export type SearchRepoResponseBodyCase2ReposList = Array<SearchRepoResponseBodyCase2ReposItem>;
-export const SearchRepoResponseBodyCase2ReposList = /*@__PURE__*/ S.Array(
-  SearchRepoResponseBodyCase2ReposItem,
-) as any as S.Schema<SearchRepoResponseBodyCase2ReposList>;
-
 export interface SearchRepoResponseBodyCase2 {
   gitAccount: SearchRepoResponseBodyCase2GitAccount;
   repos: SearchRepoResponseBodyCase2ReposList;
 }
-export const SearchRepoResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitAccount: SearchRepoResponseBodyCase2GitAccount,
-    repos: SearchRepoResponseBodyCase2ReposList,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase2",
-}) as any as S.Schema<SearchRepoResponseBodyCase2>;
-
 export type SearchRepoResponseBodyCase3GitAccountNamespaceId = string | number;
-export const SearchRepoResponseBodyCase3GitAccountNamespaceId =
-  S.Unknown as any as S.Schema<SearchRepoResponseBodyCase3GitAccountNamespaceId>;
-
 export type SearchRepoResponseBodyCase3GitAccountProvider =
   | "bitbucket"
   | "cursor-origin"
@@ -8239,45 +4559,17 @@ export type SearchRepoResponseBodyCase3GitAccountProvider =
   | "github-limited"
   | "gitlab"
   | "vercel";
-export const SearchRepoResponseBodyCase3GitAccountProvider = S.String;
-
 export interface SearchRepoResponseBodyCase3GitAccount {
   namespaceId: SearchRepoResponseBodyCase3GitAccountNamespaceId | null;
   provider: SearchRepoResponseBodyCase3GitAccountProvider;
 }
-export const SearchRepoResponseBodyCase3GitAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaceId: S.NullOr(SearchRepoResponseBodyCase3GitAccountNamespaceId),
-    provider: SearchRepoResponseBodyCase3GitAccountProvider,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase3GitAccount",
-}) as any as S.Schema<SearchRepoResponseBodyCase3GitAccount>;
-
 export type SearchRepoResponseBodyCase3ReposItemId = string | number;
-export const SearchRepoResponseBodyCase3ReposItemId =
-  S.Unknown as any as S.Schema<SearchRepoResponseBodyCase3ReposItemId>;
-
 export type SearchRepoResponseBodyCase3ReposItemOwnerId = string | number;
-export const SearchRepoResponseBodyCase3ReposItemOwnerId =
-  S.Unknown as any as S.Schema<SearchRepoResponseBodyCase3ReposItemOwnerId>;
-
 export interface SearchRepoResponseBodyCase3ReposItemOwner {
   id: SearchRepoResponseBodyCase3ReposItemOwnerId;
   name: string;
 }
-export const SearchRepoResponseBodyCase3ReposItemOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: SearchRepoResponseBodyCase3ReposItemOwnerId,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase3ReposItemOwner",
-}) as any as S.Schema<SearchRepoResponseBodyCase3ReposItemOwner>;
-
 export type SearchRepoResponseBodyCase3ReposItemOwnerType = "team" | "user";
-export const SearchRepoResponseBodyCase3ReposItemOwnerType = S.String;
-
 export type SearchRepoResponseBodyCase3ReposItemProvider =
   | "bitbucket"
   | "cursor-origin"
@@ -8286,8 +4578,6 @@ export type SearchRepoResponseBodyCase3ReposItemProvider =
   | "github-limited"
   | "gitlab"
   | "vercel";
-export const SearchRepoResponseBodyCase3ReposItemProvider = S.String;
-
 export interface SearchRepoResponseBodyCase3ReposItem {
   defaultBranch: string;
   id: SearchRepoResponseBodyCase3ReposItemId;
@@ -8301,51 +4591,20 @@ export interface SearchRepoResponseBodyCase3ReposItem {
   updatedAt: number;
   url: string;
 }
-export const SearchRepoResponseBodyCase3ReposItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultBranch: S.String,
-    id: SearchRepoResponseBodyCase3ReposItemId,
-    name: S.String,
-    namespace: S.String,
-    owner: SearchRepoResponseBodyCase3ReposItemOwner,
-    ownerType: SearchRepoResponseBodyCase3ReposItemOwnerType,
-    private: S.Boolean,
-    provider: SearchRepoResponseBodyCase3ReposItemProvider,
-    slug: S.String,
-    updatedAt: S.Number,
-    url: S.String,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase3ReposItem",
-}) as any as S.Schema<SearchRepoResponseBodyCase3ReposItem>;
-
 export type SearchRepoResponseBodyCase3ReposList = Array<SearchRepoResponseBodyCase3ReposItem>;
-export const SearchRepoResponseBodyCase3ReposList = /*@__PURE__*/ S.Array(
-  SearchRepoResponseBodyCase3ReposItem,
-) as any as S.Schema<SearchRepoResponseBodyCase3ReposList>;
-
 export interface SearchRepoResponseBodyCase3 {
   gitAccount: SearchRepoResponseBodyCase3GitAccount;
   repos: SearchRepoResponseBodyCase3ReposList;
 }
-export const SearchRepoResponseBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gitAccount: SearchRepoResponseBodyCase3GitAccount,
-    repos: SearchRepoResponseBodyCase3ReposList,
-  }),
-).annotate({
-  identifier: "SearchRepoResponseBodyCase3",
-}) as any as S.Schema<SearchRepoResponseBodyCase3>;
-
 export type SearchRepoResponseBody =
   | unknown
   | SearchRepoResponseBodyCase1
   | SearchRepoResponseBodyCase2
   | SearchRepoResponseBodyCase3;
-export const SearchRepoResponseBody = S.Unknown as any as S.Schema<SearchRepoResponseBody>;
+const SearchRepoResponseBody = S.Unknown as any as S.Schema<SearchRepoResponseBody>;
 
 export type SearchRepoResponse = SearchRepoResponseBody;
-export const SearchRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchRepoResponse = /*@__PURE__*/ S.suspend(() =>
   SearchRepoResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "SearchRepoResponse" }) as any as S.Schema<SearchRepoResponse>;
 

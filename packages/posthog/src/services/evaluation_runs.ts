@@ -21,7 +21,7 @@ export interface CreateEvaluationRunRequest {
   /** Distinct ID of the event (optional, improves lookup performance). */
   distinct_id?: string | null;
 }
-export const CreateEvaluationRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEvaluationRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation_id: S.optional(S.String),
@@ -37,7 +37,7 @@ export const CreateEvaluationRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEvaluationRunRequest>;
 
 export interface CreateEvaluationRunResponse {}
-export const CreateEvaluationRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateEvaluationRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateEvaluationRunResponse",
 }) as any as S.Schema<CreateEvaluationRunResponse>;
 

@@ -65,7 +65,7 @@ export interface DeleteAccountsProductsLocalInventoriesRequest {
   /** Required. The name of the local inventory for the given product to delete. Format: `accounts/{account}/products/{product}/localInventories/{store_code}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123` for `store_code` "store123", the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the local inventory would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw/localInventories/store123`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. */
   name: string;
 }
-export const DeleteAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -81,7 +81,7 @@ export const DeleteAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -89,7 +89,7 @@ export interface DeleteAccountsProductsRegionalInventoriesRequest {
   /** Required. The name of the `RegionalInventory` resource to delete. Format: `accounts/{account}/products/{product}/regionalInventories/{region}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an **unpadded base64url** encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123` for `region` "region123", the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the regional inventory would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw/regionalInventories/region123`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. */
   name: string;
 }
-export const DeleteAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -110,7 +110,7 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -124,7 +124,7 @@ export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
   startTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -140,7 +140,7 @@ export interface CustomAttribute {
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
   value?: string;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupValues: S.optional(S.suspend(() => CustomAttributeList)),
     name: S.optional(S.String),
@@ -149,7 +149,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = Array<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
+const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
 
@@ -182,7 +182,7 @@ export interface LocalInventory {
   /** Output only. The account that owns the product. This field will be ignored if set by the client. */
   account?: string;
 }
-export const LocalInventory = /*@__PURE__*/ S.suspend(() =>
+const LocalInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pickupSla: S.optional(S.String),
     base64EncodedName: S.optional(S.String),
@@ -206,7 +206,7 @@ export interface InsertAccountsProductsLocalInventoriesRequest {
   /** Request body */
   body?: LocalInventory;
 }
-export const InsertAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LocalInventory.pipe(T.HttpBody())),
@@ -242,7 +242,7 @@ export interface RegionalInventory {
   /** Output only. The unpadded base64url encoded name of the `RegionalInventory` resource. Format: `accounts/{account}/products/{product}/regionalInventories/{region}` where the `{product}` segment is the unpadded base64url encoded value of the identifier of the form `content_language~feed_label~offer_id`. Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw/regionalInventories/region123` for the decoded product ID `en~US~sku/123` and `region` "region123". Can be used directly as input to the API methods that require the product identifier within the regional inventory name to be encoded if it contains special characters, for example [`GetRegionalInventory`](https://developers.google.com/merchant/api/reference/rest/inventories_v1beta/accounts.products.regionalInventories/get). */
   base64EncodedName?: string;
 }
-export const RegionalInventory = /*@__PURE__*/ S.suspend(() =>
+const RegionalInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     salePriceEffectiveDate: S.optional(Interval),
@@ -262,7 +262,7 @@ export interface InsertAccountsProductsRegionalInventoriesRequest {
   /** Request body */
   body?: RegionalInventory;
 }
-export const InsertAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RegionalInventory.pipe(T.HttpBody())),
@@ -285,7 +285,7 @@ export interface ListAccountsProductsLocalInventoriesRequest {
   /** A page token, received from a previous `ListLocalInventories` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLocalInventories` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request. */
   pageToken?: string;
 }
-export const ListAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -302,7 +302,7 @@ export const ListAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListAccountsProductsLocalInventoriesRequest>;
 
 export type LocalInventoryList = Array<LocalInventory>;
-export const LocalInventoryList = /*@__PURE__*/ S.Array(
+const LocalInventoryList = /*@__PURE__*/ S.Array(
   LocalInventory,
 ) as any as S.Schema<LocalInventoryList>;
 
@@ -313,7 +313,7 @@ export interface ListLocalInventoriesResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListLocalInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocalInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localInventories: S.optional(LocalInventoryList),
     nextPageToken: S.optional(S.String),
@@ -330,7 +330,7 @@ export interface ListAccountsProductsRegionalInventoriesRequest {
   /** Required. The `name` of the parent product to list `RegionalInventory` resources for. Format: `accounts/{account}/products/{product}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an **unpadded base64url** encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123`, the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the product would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. */
   parent: string;
 }
-export const ListAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -347,7 +347,7 @@ export const ListAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListAccountsProductsRegionalInventoriesRequest>;
 
 export type RegionalInventoryList = Array<RegionalInventory>;
-export const RegionalInventoryList = /*@__PURE__*/ S.Array(
+const RegionalInventoryList = /*@__PURE__*/ S.Array(
   RegionalInventory,
 ) as any as S.Schema<RegionalInventoryList>;
 
@@ -358,7 +358,7 @@ export interface ListRegionalInventoriesResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListRegionalInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalInventories: S.optional(RegionalInventoryList),
     nextPageToken: S.optional(S.String),

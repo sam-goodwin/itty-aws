@@ -66,7 +66,7 @@ export interface OutputConfig {
   /** Required. The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" */
   destination?: string;
 }
-export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
+const OutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(S.String),
   }),
@@ -81,7 +81,7 @@ export interface TraceSink {
   /** Output only. A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and to write data, this account needs the `dataEditor` role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com" */
   writerIdentity?: string;
 }
-export const TraceSink = /*@__PURE__*/ S.suspend(() =>
+const TraceSink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     outputConfig: S.optional(OutputConfig),
@@ -95,7 +95,7 @@ export interface CreateProjectsTraceSinksRequest {
   /** Request body */
   body?: TraceSink;
 }
-export const CreateProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(TraceSink.pipe(T.HttpBody())),
@@ -114,7 +114,7 @@ export interface DeleteProjectsTraceSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
   name: string;
 }
-export const DeleteProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -130,7 +130,7 @@ export const DeleteProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -138,7 +138,7 @@ export interface GetProjectsTraceSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
   name: string;
 }
-export const GetProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -160,7 +160,7 @@ export interface ListProjectsTraceSinksRequest {
   /** Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]" */
   parent: string;
 }
-export const ListProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -177,7 +177,7 @@ export const ListProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsTraceSinksRequest>;
 
 export type TraceSinkList = Array<TraceSink>;
-export const TraceSinkList = /*@__PURE__*/ S.Array(TraceSink) as any as S.Schema<TraceSinkList>;
+const TraceSinkList = /*@__PURE__*/ S.Array(TraceSink) as any as S.Schema<TraceSinkList>;
 
 /** Result returned from `ListTraceSinks`. */
 export interface ListTraceSinksResponse {
@@ -186,7 +186,7 @@ export interface ListTraceSinksResponse {
   /** A list of sinks. */
   sinks?: TraceSinkList;
 }
-export const ListTraceSinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTraceSinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     sinks: S.optional(TraceSinkList),
@@ -201,7 +201,7 @@ export interface PatchProjectsTraceSinksRequest {
   /** Request body */
   body?: TraceSink;
 }
-export const PatchProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsTraceSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

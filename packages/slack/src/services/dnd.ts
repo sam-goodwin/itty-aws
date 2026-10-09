@@ -14,7 +14,7 @@ export interface DndInfoRequest {
   /** Encoded team id where passed in user param belongs, required if org token is used. If no user param is passed, then a team which has access to the app should be passed */
   team_id?: string;
 }
-export const DndInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const DndInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.String.pipe(T.Query())),
     team_id: S.optional(S.String.pipe(T.Query())),
@@ -33,7 +33,7 @@ export interface DndInfoResponse {
   snooze_is_indefinite?: boolean;
   dnd_profile_status?: unknown;
 }
-export const DndInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const DndInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     dnd_enabled: S.Boolean,
@@ -48,7 +48,7 @@ export const DndInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DndInfoResponse" }) as any as S.Schema<DndInfoResponse>;
 
 export interface EndDndRequest {}
-export const EndDndRequest = /*@__PURE__*/ S.suspend(() =>
+const EndDndRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dnd.endDnd", code: 200 })),
 ).annotate({ identifier: "EndDndRequest" }) as any as S.Schema<EndDndRequest>;
 
@@ -56,14 +56,14 @@ export interface EndDndResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const EndDndResponse = /*@__PURE__*/ S.suspend(() =>
+const EndDndResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
 ).annotate({ identifier: "EndDndResponse" }) as any as S.Schema<EndDndResponse>;
 
 export interface EndSnoozeRequest {}
-export const EndSnoozeRequest = /*@__PURE__*/ S.suspend(() =>
+const EndSnoozeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dnd.endSnooze", code: 200 })),
 ).annotate({ identifier: "EndSnoozeRequest" }) as any as S.Schema<EndSnoozeRequest>;
 
@@ -78,7 +78,7 @@ export interface EndSnoozeResponse {
   snooze_remaining?: number;
   dnd_profile_status?: unknown;
 }
-export const EndSnoozeResponse = /*@__PURE__*/ S.suspend(() =>
+const EndSnoozeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     snooze_enabled: S.Boolean,
@@ -95,7 +95,7 @@ export interface SetSnoozeRequest {
   /** This argument is required. Number of minutes, from now, to snooze until. */
   num_minutes: string;
 }
-export const SetSnoozeRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSnoozeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     num_minutes: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/dnd.setSnooze", code: 200 })),
@@ -109,7 +109,7 @@ export interface SetSnoozeResponse {
   snooze_remaining?: number;
   snooze_is_indefinite?: boolean;
 }
-export const SetSnoozeResponse = /*@__PURE__*/ S.suspend(() =>
+const SetSnoozeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     snooze_endtime: S.optional(S.Number),
@@ -125,7 +125,7 @@ export interface TeamInfoRequest {
   /** Encoded team id where passed in users belong, required if org token is used */
   team_id?: string;
 }
-export const TeamInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const TeamInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.String.pipe(T.Query()),
     team_id: S.optional(S.String.pipe(T.Query())),
@@ -133,7 +133,7 @@ export const TeamInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamInfoRequest" }) as any as S.Schema<TeamInfoRequest>;
 
 export type TeamInfoResponseUsersMap = { [key: string]: unknown | undefined };
-export const TeamInfoResponseUsersMap = /*@__PURE__*/ S.Record(
+const TeamInfoResponseUsersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TeamInfoResponseUsersMap>;
@@ -143,7 +143,7 @@ export interface TeamInfoResponse {
   ok: boolean;
   users: TeamInfoResponseUsersMap;
 }
-export const TeamInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const TeamInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     users: TeamInfoResponseUsersMap,

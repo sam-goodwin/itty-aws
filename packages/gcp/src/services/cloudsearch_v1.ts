@@ -83,7 +83,7 @@ export interface GSuitePrincipal {
   /** This principal references a Google Workspace group name. */
   gsuiteGroupEmail?: string;
 }
-export const GSuitePrincipal = /*@__PURE__*/ S.suspend(() =>
+const GSuitePrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gsuiteUserEmail: S.optional(S.String),
     gsuiteDomain: S.optional(S.Boolean),
@@ -100,7 +100,7 @@ export interface Principal {
   /** This principal is a group identified using an external identity. The name field must specify the group resource name with this format: identitysources/{source_id}/groups/{ID} */
   groupResourceName?: string;
 }
-export const Principal = /*@__PURE__*/ S.suspend(() =>
+const Principal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gsuitePrincipal: S.optional(GSuitePrincipal),
     userResourceName: S.optional(S.String),
@@ -116,7 +116,7 @@ export interface CheckAccessDebugDatasourcesItemsRequest {
   /** Request body */
   body?: Principal;
 }
-export const CheckAccessDebugDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAccessDebugDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
@@ -136,17 +136,17 @@ export interface CheckAccessResponse {
   /** Returns true if principal has access. Returns false otherwise. */
   hasAccess?: boolean;
 }
-export const CheckAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasAccess: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "CheckAccessResponse" }) as any as S.Schema<CheckAccessResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GSuitePrincipalList = Array<GSuitePrincipal>;
-export const GSuitePrincipalList = /*@__PURE__*/ S.Array(
+const GSuitePrincipalList = /*@__PURE__*/ S.Array(
   GSuitePrincipal,
 ) as any as S.Schema<GSuitePrincipalList>;
 
@@ -171,7 +171,7 @@ export interface DataSource {
   /** A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters. */
   shortName?: string;
 }
-export const DataSource = /*@__PURE__*/ S.suspend(() =>
+const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(StringList),
     returnThumbnailUrls: S.optional(S.Boolean),
@@ -189,7 +189,7 @@ export interface CreateSettingsDatasourcesRequest {
   /** Request body */
   body?: DataSource;
 }
-export const CreateSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(DataSource.pipe(T.HttpBody())),
   }).pipe(
@@ -204,15 +204,10 @@ export const CreateSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSettingsDatasourcesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -223,7 +218,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -244,7 +239,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     name: S.optional(S.String),
@@ -261,7 +256,7 @@ export interface ScoringConfig {
   /** Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI. */
   disableFreshness?: boolean;
 }
-export const ScoringConfig = /*@__PURE__*/ S.suspend(() =>
+const ScoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disablePersonalization: S.optional(S.Boolean),
     disableFreshness: S.optional(S.Boolean),
@@ -278,7 +273,7 @@ export type SourcePredefinedSourceEnum =
   | "GOOGLE_GROUPS"
   | "GOOGLE_CALENDAR"
   | "GOOGLE_KEEP";
-export const SourcePredefinedSourceEnum = S.String;
+const SourcePredefinedSourceEnum = S.String;
 
 /** Defines sources for the suggest/search APIs. */
 export interface Source {
@@ -287,7 +282,7 @@ export interface Source {
   /** Predefined content source for Google Apps. */
   predefinedSource?: SourcePredefinedSourceEnum | (string & {});
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     predefinedSource: S.optional(SourcePredefinedSourceEnum),
@@ -301,7 +296,7 @@ export interface SourceCrowdingConfig {
   /** Maximum number of suggestions allowed from a source. No limits will be set on results if this value is less than or equal to 0. */
   numSuggestions?: number;
 }
-export const SourceCrowdingConfig = /*@__PURE__*/ S.suspend(() =>
+const SourceCrowdingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numResults: S.optional(S.Number),
     numSuggestions: S.optional(S.Number),
@@ -309,14 +304,14 @@ export const SourceCrowdingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceCrowdingConfig" }) as any as S.Schema<SourceCrowdingConfig>;
 
 export type SourceScoringConfigSourceImportanceEnum = "DEFAULT" | "LOW" | "HIGH";
-export const SourceScoringConfigSourceImportanceEnum = S.String;
+const SourceScoringConfigSourceImportanceEnum = S.String;
 
 /** Set the scoring configuration. This allows modifying the ranking of results for a source. */
 export interface SourceScoringConfig {
   /** Importance of the source. */
   sourceImportance?: SourceScoringConfigSourceImportanceEnum | (string & {});
 }
-export const SourceScoringConfig = /*@__PURE__*/ S.suspend(() =>
+const SourceScoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceImportance: S.optional(SourceScoringConfigSourceImportanceEnum),
   }),
@@ -331,7 +326,7 @@ export interface SourceConfig {
   /** The scoring configuration for the source. */
   scoringConfig?: SourceScoringConfig;
 }
-export const SourceConfig = /*@__PURE__*/ S.suspend(() =>
+const SourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     crowdingConfig: S.optional(SourceCrowdingConfig),
@@ -340,16 +335,14 @@ export const SourceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceConfig" }) as any as S.Schema<SourceConfig>;
 
 export type SourceConfigList = Array<SourceConfig>;
-export const SourceConfigList = /*@__PURE__*/ S.Array(
-  SourceConfig,
-) as any as S.Schema<SourceConfigList>;
+const SourceConfigList = /*@__PURE__*/ S.Array(SourceConfig) as any as S.Schema<SourceConfigList>;
 
 /** Used to specify integer faceting options. */
 export interface IntegerFacetingOptions {
   /** Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}. */
   integerBuckets?: StringList;
 }
-export const IntegerFacetingOptions = /*@__PURE__*/ S.suspend(() =>
+const IntegerFacetingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integerBuckets: S.optional(StringList),
   }),
@@ -368,7 +361,7 @@ export interface FacetOptions {
   /** If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets. */
   integerFacetingOptions?: IntegerFacetingOptions;
 }
-export const FacetOptions = /*@__PURE__*/ S.suspend(() =>
+const FacetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numFacetBuckets: S.optional(S.Number),
     sourceName: S.optional(S.String),
@@ -379,12 +372,10 @@ export const FacetOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetOptions" }) as any as S.Schema<FacetOptions>;
 
 export type FacetOptionsList = Array<FacetOptions>;
-export const FacetOptionsList = /*@__PURE__*/ S.Array(
-  FacetOptions,
-) as any as S.Schema<FacetOptionsList>;
+const FacetOptionsList = /*@__PURE__*/ S.Array(FacetOptions) as any as S.Schema<FacetOptionsList>;
 
 export type SortOptionsSortOrderEnum = "ASCENDING" | "DESCENDING";
-export const SortOptionsSortOrderEnum = S.String;
+const SortOptionsSortOrderEnum = S.String;
 
 export interface SortOptions {
   /** Ascending is the default sort order */
@@ -392,7 +383,7 @@ export interface SortOptions {
   /** The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable. */
   operatorName?: string;
 }
-export const SortOptions = /*@__PURE__*/ S.suspend(() =>
+const SortOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortOrder: S.optional(SortOptionsSortOrderEnum),
     operatorName: S.optional(S.String),
@@ -406,7 +397,7 @@ export interface QueryInterpretationConfig {
   /** Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results. */
   forceDisableSupplementalResults?: boolean;
 }
-export const QueryInterpretationConfig = /*@__PURE__*/ S.suspend(() =>
+const QueryInterpretationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forceVerbatimMode: S.optional(S.Boolean),
     forceDisableSupplementalResults: S.optional(S.Boolean),
@@ -416,12 +407,12 @@ export const QueryInterpretationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryInterpretationConfig>;
 
 export type FilterList = Array<Filter>;
-export const FilterList = /*@__PURE__*/ S.Array(
+const FilterList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => Filter),
 ) as any as S.Schema<FilterList>;
 
 export type CompositeFilterLogicOperatorEnum = "AND" | "OR" | "NOT";
-export const CompositeFilterLogicOperatorEnum = S.String;
+const CompositeFilterLogicOperatorEnum = S.String;
 
 export interface CompositeFilter {
   /** Sub filters. */
@@ -429,7 +420,7 @@ export interface CompositeFilter {
   /** The logic operator of the sub filter. */
   logicOperator?: CompositeFilterLogicOperatorEnum | (string & {});
 }
-export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
+const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subFilters: S.optional(FilterList),
     logicOperator: S.optional(CompositeFilterLogicOperatorEnum),
@@ -445,7 +436,7 @@ export interface Cloudsearch_Date {
   /** Year of date. Must be from 1 to 9999. */
   year?: number;
 }
-export const Cloudsearch_Date = /*@__PURE__*/ S.suspend(() =>
+const Cloudsearch_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.Number),
     month: S.optional(S.Number),
@@ -462,7 +453,7 @@ export interface Value {
   timestampValue?: string;
   stringValue?: string;
 }
-export const Value = /*@__PURE__*/ S.suspend(() =>
+const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dateValue: S.optional(Cloudsearch_Date),
     integerValue: S.optional(S.String),
@@ -479,7 +470,7 @@ export interface ValueFilter {
   /** The value to be compared with. */
   value?: Value;
 }
-export const ValueFilter = /*@__PURE__*/ S.suspend(() =>
+const ValueFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorName: S.optional(S.String),
     value: S.optional(Value),
@@ -491,7 +482,7 @@ export interface Filter {
   compositeFilter?: CompositeFilter;
   valueFilter?: ValueFilter;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compositeFilter: S.optional(CompositeFilter),
     valueFilter: S.optional(ValueFilter),
@@ -505,7 +496,7 @@ export interface FilterOptions {
   /** Generic filter to restrict the search, such as `lang:en`, `site:xyz`. */
   filter?: Filter;
 }
-export const FilterOptions = /*@__PURE__*/ S.suspend(() =>
+const FilterOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectType: S.optional(S.String),
     filter: S.optional(Filter),
@@ -513,7 +504,7 @@ export const FilterOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterOptions" }) as any as S.Schema<FilterOptions>;
 
 export type FilterOptionsList = Array<FilterOptions>;
-export const FilterOptionsList = /*@__PURE__*/ S.Array(
+const FilterOptionsList = /*@__PURE__*/ S.Array(
   FilterOptions,
 ) as any as S.Schema<FilterOptionsList>;
 
@@ -524,7 +515,7 @@ export interface DataSourceRestriction {
   /** Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions. */
   filterOptions?: FilterOptionsList;
 }
-export const DataSourceRestriction = /*@__PURE__*/ S.suspend(() =>
+const DataSourceRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     filterOptions: S.optional(FilterOptionsList),
@@ -532,7 +523,7 @@ export const DataSourceRestriction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSourceRestriction" }) as any as S.Schema<DataSourceRestriction>;
 
 export type DataSourceRestrictionList = Array<DataSourceRestriction>;
-export const DataSourceRestrictionList = /*@__PURE__*/ S.Array(
+const DataSourceRestrictionList = /*@__PURE__*/ S.Array(
   DataSourceRestriction,
 ) as any as S.Schema<DataSourceRestrictionList>;
 
@@ -561,7 +552,7 @@ export interface SearchApplication {
   /** With each result we should return the URI for its thumbnail (when applicable) */
   returnResultThumbnailUrls?: boolean;
 }
-export const SearchApplication = /*@__PURE__*/ S.suspend(() =>
+const SearchApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scoringConfig: S.optional(ScoringConfig),
     displayName: S.optional(S.String),
@@ -581,7 +572,7 @@ export interface CreateSettingsSearchapplicationsRequest {
   /** Request body */
   body?: SearchApplication;
 }
-export const CreateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SearchApplication.pipe(T.HttpBody())),
   }).pipe(
@@ -596,7 +587,7 @@ export const CreateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateSettingsSearchapplicationsRequest>;
 
 export type DeleteIndexingDatasourcesItemsModeEnum = "UNSPECIFIED" | "SYNCHRONOUS" | "ASYNCHRONOUS";
-export const DeleteIndexingDatasourcesItemsModeEnum = S.String;
+const DeleteIndexingDatasourcesItemsModeEnum = S.String;
 
 export interface DeleteIndexingDatasourcesItemsRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
@@ -610,7 +601,7 @@ export interface DeleteIndexingDatasourcesItemsRequest {
   /** Required. The name of the item to delete. Format: datasources/{source_id}/items/{item_id} */
   name: string;
 }
-export const DeleteIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
     mode: S.optional(DeleteIndexingDatasourcesItemsModeEnum.pipe(T.Query())),
@@ -633,7 +624,7 @@ export interface DebugOptions {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   enableDebugging?: boolean;
 }
-export const DebugOptions = /*@__PURE__*/ S.suspend(() =>
+const DebugOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableDebugging: S.optional(S.Boolean),
   }),
@@ -647,7 +638,7 @@ export interface DeleteQueueItemsRequest {
   /** The name of a queue to delete items from. */
   queue?: string;
 }
-export const DeleteQueueItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueueItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugOptions: S.optional(DebugOptions),
     connectorName: S.optional(S.String),
@@ -661,7 +652,7 @@ export interface DeleteQueueItemsIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: DeleteQueueItemsRequest;
 }
-export const DeleteQueueItemsIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueueItemsIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DeleteQueueItemsRequest.pipe(T.HttpBody())),
@@ -682,7 +673,7 @@ export interface DeleteSchemaIndexingDatasourcesRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const DeleteSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
@@ -703,7 +694,7 @@ export interface DeleteSettingsDatasourcesRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const DeleteSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
@@ -724,7 +715,7 @@ export interface DeleteSettingsSearchapplicationsRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const DeleteSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
@@ -740,7 +731,7 @@ export const DeleteSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteSettingsSearchapplicationsRequest>;
 
 export interface GetCustomerSettingsRequest {}
-export const GetCustomerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -756,7 +747,7 @@ export interface VPCSettings {
   /** The resource name of the GCP Project to be used for VPC SC policy check. VPC security settings on this project will be honored for Cloud Search APIs after project_name has been updated through CustomerService. Format: projects/{project_id} */
   project?: string;
 }
-export const VPCSettings = /*@__PURE__*/ S.suspend(() =>
+const VPCSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
   }),
@@ -773,7 +764,7 @@ export interface AuditLoggingSettings {
   /** Indicates whether audit logging is on/off for admin activity read APIs i.e. Get/List DataSources, Get/List SearchApplications etc. */
   logAdminReadActions?: boolean;
 }
-export const AuditLoggingSettings = /*@__PURE__*/ S.suspend(() =>
+const AuditLoggingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logDataReadActions: S.optional(S.Boolean),
     project: S.optional(S.String),
@@ -789,7 +780,7 @@ export interface CustomerSettings {
   /** Audit Logging settings for the customer. If update_mask is empty then this field will be updated based on UpdateCustomerSettings request. */
   auditLoggingSettings?: AuditLoggingSettings;
 }
-export const CustomerSettings = /*@__PURE__*/ S.suspend(() =>
+const CustomerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcSettings: S.optional(VPCSettings),
     auditLoggingSettings: S.optional(AuditLoggingSettings),
@@ -804,7 +795,7 @@ export interface GetIndexingDatasourcesItemsRequest {
   /** The name of connector making this call. Format: datasources/{source_id}/connectors/{ID} */
   connectorName?: string;
 }
-export const GetIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -825,10 +816,10 @@ export type ItemAclAclInheritanceTypeEnum =
   | "CHILD_OVERRIDE"
   | "PARENT_OVERRIDE"
   | "BOTH_PERMIT";
-export const ItemAclAclInheritanceTypeEnum = S.String;
+const ItemAclAclInheritanceTypeEnum = S.String;
 
 export type PrincipalList = Array<Principal>;
-export const PrincipalList = /*@__PURE__*/ S.Array(Principal) as any as S.Schema<PrincipalList>;
+const PrincipalList = /*@__PURE__*/ S.Array(Principal) as any as S.Schema<PrincipalList>;
 
 /** Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls). */
 export interface ItemAcl {
@@ -843,7 +834,7 @@ export interface ItemAcl {
   /** Optional. List of owners for the item. This field has no bearing on document access permissions. It does, however, offer a slight ranking boosts items where the querying user is an owner. The maximum number of elements is 5. */
   owners?: PrincipalList;
 }
-export const ItemAcl = /*@__PURE__*/ S.suspend(() =>
+const ItemAcl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inheritAclFrom: S.optional(S.String),
     aclInheritanceType: S.optional(ItemAclAclInheritanceTypeEnum),
@@ -858,14 +849,14 @@ export interface SearchQualityMetadata {
   /** An indication of the quality of the item, used to influence search quality. Value should be between 0.0 (lowest quality) and 1.0 (highest quality). The default value is 0.0. */
   quality?: number;
 }
-export const SearchQualityMetadata = /*@__PURE__*/ S.suspend(() =>
+const SearchQualityMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quality: S.optional(S.Number),
   }),
 ).annotate({ identifier: "SearchQualityMetadata" }) as any as S.Schema<SearchQualityMetadata>;
 
 export type InteractionTypeEnum = "UNSPECIFIED" | "VIEW" | "EDIT";
-export const InteractionTypeEnum = S.String;
+const InteractionTypeEnum = S.String;
 
 /** Represents an interaction between a user and an item. */
 export interface Interaction {
@@ -875,7 +866,7 @@ export interface Interaction {
   /** The user that acted on the item. */
   principal?: Principal;
 }
-export const Interaction = /*@__PURE__*/ S.suspend(() =>
+const Interaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(InteractionTypeEnum),
     interactionTime: S.optional(S.String),
@@ -884,9 +875,7 @@ export const Interaction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Interaction" }) as any as S.Schema<Interaction>;
 
 export type InteractionList = Array<Interaction>;
-export const InteractionList = /*@__PURE__*/ S.Array(
-  Interaction,
-) as any as S.Schema<InteractionList>;
+const InteractionList = /*@__PURE__*/ S.Array(Interaction) as any as S.Schema<InteractionList>;
 
 /** A named attribute associated with an item which can be used for influencing the ranking of the item based on the context in the request. */
 export interface ContextAttribute {
@@ -895,7 +884,7 @@ export interface ContextAttribute {
   /** Text values of the attribute. The maximum number of elements is 10. The maximum length of an element in the array is 32 characters. The value will be normalized (lower-cased) before being matched. */
   values?: StringList;
 }
-export const ContextAttribute = /*@__PURE__*/ S.suspend(() =>
+const ContextAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     values: S.optional(StringList),
@@ -903,7 +892,7 @@ export const ContextAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContextAttribute" }) as any as S.Schema<ContextAttribute>;
 
 export type ContextAttributeList = Array<ContextAttribute>;
-export const ContextAttributeList = /*@__PURE__*/ S.Array(
+const ContextAttributeList = /*@__PURE__*/ S.Array(
   ContextAttribute,
 ) as any as S.Schema<ContextAttributeList>;
 
@@ -936,7 +925,7 @@ export interface ItemMetadata {
   /** Additional keywords or phrases that should match the item. Used internally for user generated content. The maximum number of elements is 100. The maximum length is 8192 characters. */
   keywords?: StringList;
 }
-export const ItemMetadata = /*@__PURE__*/ S.suspend(() =>
+const ItemMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     containerName: S.optional(S.String),
@@ -959,14 +948,14 @@ export interface UploadItemRef {
   /** The name of the content reference. The maximum length is 2048 characters. */
   name?: string;
 }
-export const UploadItemRef = /*@__PURE__*/ S.suspend(() =>
+const UploadItemRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "UploadItemRef" }) as any as S.Schema<UploadItemRef>;
 
 export type ItemContentContentFormatEnum = "UNSPECIFIED" | "HTML" | "TEXT" | "RAW";
-export const ItemContentContentFormatEnum = S.String;
+const ItemContentContentFormatEnum = S.String;
 
 /** Content of an item to be indexed and surfaced by Cloud Search. Only UTF-8 encoded strings are allowed as inlineContent. If the content is uploaded and not binary, it must be UTF-8 encoded. */
 export interface ItemContent {
@@ -978,7 +967,7 @@ export interface ItemContent {
   /** Hashing info calculated and provided by the API client for content. Can be used with the items.push method to calculate modified state. The maximum length is 2048 characters. */
   hash?: string;
 }
-export const ItemContent = /*@__PURE__*/ S.suspend(() =>
+const ItemContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentDataRef: S.optional(UploadItemRef),
     contentFormat: S.optional(ItemContentContentFormatEnum),
@@ -998,7 +987,7 @@ export type RepositoryErrorTypeEnum =
   | "QUOTA_EXCEEDED"
   | "SERVICE_UNAVAILABLE"
   | "CLIENT_ERROR";
-export const RepositoryErrorTypeEnum = S.String;
+const RepositoryErrorTypeEnum = S.String;
 
 /** Errors when the connector is communicating to the source repository. */
 export interface RepositoryError {
@@ -1009,7 +998,7 @@ export interface RepositoryError {
   /** The type of error. */
   type?: RepositoryErrorTypeEnum | (string & {});
 }
-export const RepositoryError = /*@__PURE__*/ S.suspend(() =>
+const RepositoryError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpStatusCode: S.optional(S.Number),
     errorMessage: S.optional(S.String),
@@ -1018,7 +1007,7 @@ export const RepositoryError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryError" }) as any as S.Schema<RepositoryError>;
 
 export type RepositoryErrorList = Array<RepositoryError>;
-export const RepositoryErrorList = /*@__PURE__*/ S.Array(
+const RepositoryErrorList = /*@__PURE__*/ S.Array(
   RepositoryError,
 ) as any as S.Schema<RepositoryErrorList>;
 
@@ -1028,7 +1017,7 @@ export type ItemStatusCodeEnum =
   | "MODIFIED"
   | "NEW_ITEM"
   | "ACCEPTED";
-export const ItemStatusCodeEnum = S.String;
+const ItemStatusCodeEnum = S.String;
 
 export type ProcessingErrorCodeEnum =
   | "PROCESSING_ERROR_CODE_UNSPECIFIED"
@@ -1036,7 +1025,7 @@ export type ProcessingErrorCodeEnum =
   | "UNSUPPORTED_CONTENT_FORMAT"
   | "INDIRECT_BROKEN_ACL"
   | "ACL_CYCLE";
-export const ProcessingErrorCodeEnum = S.String;
+const ProcessingErrorCodeEnum = S.String;
 
 export interface FieldViolation {
   /** Path of field with violation. */
@@ -1044,7 +1033,7 @@ export interface FieldViolation {
   /** The description of the error. */
   description?: string;
 }
-export const FieldViolation = /*@__PURE__*/ S.suspend(() =>
+const FieldViolation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     description: S.optional(S.String),
@@ -1052,7 +1041,7 @@ export const FieldViolation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldViolation" }) as any as S.Schema<FieldViolation>;
 
 export type FieldViolationList = Array<FieldViolation>;
-export const FieldViolationList = /*@__PURE__*/ S.Array(
+const FieldViolationList = /*@__PURE__*/ S.Array(
   FieldViolation,
 ) as any as S.Schema<FieldViolationList>;
 
@@ -1064,7 +1053,7 @@ export interface ProcessingError {
   /** The description of the error. */
   errorMessage?: string;
 }
-export const ProcessingError = /*@__PURE__*/ S.suspend(() =>
+const ProcessingError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(ProcessingErrorCodeEnum),
     fieldViolations: S.optional(FieldViolationList),
@@ -1073,7 +1062,7 @@ export const ProcessingError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProcessingError" }) as any as S.Schema<ProcessingError>;
 
 export type ProcessingErrorList = Array<ProcessingError>;
-export const ProcessingErrorList = /*@__PURE__*/ S.Array(
+const ProcessingErrorList = /*@__PURE__*/ S.Array(
   ProcessingError,
 ) as any as S.Schema<ProcessingErrorList>;
 
@@ -1086,7 +1075,7 @@ export interface ItemStatus {
   /** Error details in case the item is in ERROR state. */
   processingErrors?: ProcessingErrorList;
 }
-export const ItemStatus = /*@__PURE__*/ S.suspend(() =>
+const ItemStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryErrors: S.optional(RepositoryErrorList),
     code: S.optional(ItemStatusCodeEnum),
@@ -1099,14 +1088,14 @@ export interface EnumValues {
   /** The maximum allowable length for string values is 32 characters. */
   values?: StringList;
 }
-export const EnumValues = /*@__PURE__*/ S.suspend(() =>
+const EnumValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
   }),
 ).annotate({ identifier: "EnumValues" }) as any as S.Schema<EnumValues>;
 
 export type Cloudsearch_DateList = Array<Cloudsearch_Date>;
-export const Cloudsearch_DateList = /*@__PURE__*/ S.Array(
+const Cloudsearch_DateList = /*@__PURE__*/ S.Array(
   Cloudsearch_Date,
 ) as any as S.Schema<Cloudsearch_DateList>;
 
@@ -1114,14 +1103,14 @@ export const Cloudsearch_DateList = /*@__PURE__*/ S.Array(
 export interface DateValues {
   values?: Cloudsearch_DateList;
 }
-export const DateValues = /*@__PURE__*/ S.suspend(() =>
+const DateValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(Cloudsearch_DateList),
   }),
 ).annotate({ identifier: "DateValues" }) as any as S.Schema<DateValues>;
 
 export type StructuredDataObjectList = Array<StructuredDataObject>;
-export const StructuredDataObjectList = /*@__PURE__*/ S.Array(
+const StructuredDataObjectList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => StructuredDataObject),
 ) as any as S.Schema<StructuredDataObjectList>;
 
@@ -1129,20 +1118,20 @@ export const StructuredDataObjectList = /*@__PURE__*/ S.Array(
 export interface ObjectValues {
   values?: StructuredDataObjectList;
 }
-export const ObjectValues = /*@__PURE__*/ S.suspend(() =>
+const ObjectValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StructuredDataObjectList),
   }),
 ).annotate({ identifier: "ObjectValues" }) as any as S.Schema<ObjectValues>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** List of double values. */
 export interface DoubleValues {
   values?: DoubleList;
 }
-export const DoubleValues = /*@__PURE__*/ S.suspend(() =>
+const DoubleValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(DoubleList),
   }),
@@ -1153,24 +1142,22 @@ export interface HtmlValues {
   /** The maximum allowable length for html values is 2048 characters. */
   values?: StringList;
 }
-export const HtmlValues = EnumValues as any as S.Schema<HtmlValues>;
+const HtmlValues = EnumValues as any as S.Schema<HtmlValues>;
 
 /** List of integer values. */
 export interface IntegerValues {
   values?: StringList;
 }
-export const IntegerValues = EnumValues as any as S.Schema<IntegerValues>;
+const IntegerValues = EnumValues as any as S.Schema<IntegerValues>;
 
 /** List of timestamp values. */
 export type TimestampValues = IntegerValues;
-export const TimestampValues = IntegerValues;
-
 /** List of text values. */
 export interface TextValues {
   /** The maximum allowable length for text values is 2048 characters. */
   values?: StringList;
 }
-export const TextValues = EnumValues as any as S.Schema<TextValues>;
+const TextValues = EnumValues as any as S.Schema<TextValues>;
 
 /** A typed name-value pair for structured data. The type of the value should be the same as the registered type for the `name` property in the object definition of `objectType`. */
 export interface NamedProperty {
@@ -1186,7 +1173,7 @@ export interface NamedProperty {
   /** The name of the property. This name should correspond to the name of the property that was registered for object definition in the schema. The maximum allowable length for this property is 256 characters. */
   name?: string;
 }
-export const NamedProperty = /*@__PURE__*/ S.suspend(() =>
+const NamedProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enumValues: S.optional(EnumValues),
     dateValues: S.optional(DateValues),
@@ -1202,7 +1189,7 @@ export const NamedProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamedProperty" }) as any as S.Schema<NamedProperty>;
 
 export type NamedPropertyList = Array<NamedProperty>;
-export const NamedPropertyList = /*@__PURE__*/ S.Array(
+const NamedPropertyList = /*@__PURE__*/ S.Array(
   NamedProperty,
 ) as any as S.Schema<NamedPropertyList>;
 
@@ -1211,7 +1198,7 @@ export interface StructuredDataObject {
   /** The properties for the object. The maximum number of elements is 1000. */
   properties?: NamedPropertyList;
 }
-export const StructuredDataObject = /*@__PURE__*/ S.suspend(() =>
+const StructuredDataObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(NamedPropertyList),
   }),
@@ -1224,7 +1211,7 @@ export interface ItemStructuredData {
   /** Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters. */
   hash?: string;
 }
-export const ItemStructuredData = /*@__PURE__*/ S.suspend(() =>
+const ItemStructuredData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(StructuredDataObject),
     hash: S.optional(S.String),
@@ -1236,7 +1223,7 @@ export type ItemItemTypeEnum =
   | "CONTENT_ITEM"
   | "CONTAINER_ITEM"
   | "VIRTUAL_CONTAINER_ITEM";
-export const ItemItemTypeEnum = S.String;
+const ItemItemTypeEnum = S.String;
 
 /** Represents a single object that is an item in the search index, such as a file, folder, or a database record. */
 export interface Item {
@@ -1261,7 +1248,7 @@ export interface Item {
   /** Required. The indexing system stores the version from the datasource as a byte string and compares the Item version in the index to the version of the queued Item using lexical ordering. Cloud Search Indexing won't index or delete any queued item with a version value that is less than or equal to the version of the currently indexed item. The maximum length for this field is 1024 bytes. For information on how item version affects the deletion process, refer to [Handle revisions after manual deletes](https://developers.google.com/workspace/cloud-search/docs/guides/operations). */
   version?: string;
 }
-export const Item = /*@__PURE__*/ S.suspend(() =>
+const Item = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.optional(ItemAcl),
     queue: S.optional(S.String),
@@ -1290,7 +1277,7 @@ export interface GetIndexStatsRequest {
   /** Day of month. Must be from 1 to 31 and valid for the year and month. */
   "toDate.day"?: number;
 }
-export const GetIndexStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIndexStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "toDate.month": S.optional(S.Number.pipe(T.Query())),
     "toDate.year": S.optional(S.Number.pipe(T.Query())),
@@ -1313,7 +1300,7 @@ export type ItemCountByStatusStatusCodeEnum =
   | "MODIFIED"
   | "NEW_ITEM"
   | "ACCEPTED";
-export const ItemCountByStatusStatusCodeEnum = S.String;
+const ItemCountByStatusStatusCodeEnum = S.String;
 
 export interface ItemCountByStatus {
   /** Number of items matching the status code. */
@@ -1323,7 +1310,7 @@ export interface ItemCountByStatus {
   /** Status of the items. */
   statusCode?: ItemCountByStatusStatusCodeEnum;
 }
-export const ItemCountByStatus = /*@__PURE__*/ S.suspend(() =>
+const ItemCountByStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     indexedItemsCount: S.optional(S.String),
@@ -1332,7 +1319,7 @@ export const ItemCountByStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemCountByStatus" }) as any as S.Schema<ItemCountByStatus>;
 
 export type ItemCountByStatusList = Array<ItemCountByStatus>;
-export const ItemCountByStatusList = /*@__PURE__*/ S.Array(
+const ItemCountByStatusList = /*@__PURE__*/ S.Array(
   ItemCountByStatus,
 ) as any as S.Schema<ItemCountByStatusList>;
 
@@ -1343,7 +1330,7 @@ export interface CustomerIndexStats {
   /** Number of items aggregrated by status code. */
   itemCountByStatus?: ItemCountByStatusList;
 }
-export const CustomerIndexStats = /*@__PURE__*/ S.suspend(() =>
+const CustomerIndexStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(Cloudsearch_Date),
     itemCountByStatus: S.optional(ItemCountByStatusList),
@@ -1351,7 +1338,7 @@ export const CustomerIndexStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerIndexStats" }) as any as S.Schema<CustomerIndexStats>;
 
 export type CustomerIndexStatsList = Array<CustomerIndexStats>;
-export const CustomerIndexStatsList = /*@__PURE__*/ S.Array(
+const CustomerIndexStatsList = /*@__PURE__*/ S.Array(
   CustomerIndexStats,
 ) as any as S.Schema<CustomerIndexStatsList>;
 
@@ -1361,7 +1348,7 @@ export interface GetCustomerIndexStatsResponse {
   /** Summary of indexed item counts, one for each day in the requested range. */
   stats?: CustomerIndexStatsList;
 }
-export const GetCustomerIndexStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerIndexStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     averageIndexedItemCount: S.optional(S.String),
     stats: S.optional(CustomerIndexStatsList),
@@ -1374,7 +1361,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1396,7 +1383,7 @@ export interface GetQueryStatsRequest {
   /** Year of date. Must be from 1 to 9999. */
   "fromDate.year"?: number;
 }
-export const GetQueryStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueryStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "fromDate.day": S.optional(S.Number.pipe(T.Query())),
     "fromDate.month": S.optional(S.Number.pipe(T.Query())),
@@ -1418,7 +1405,7 @@ export interface QueryCountByStatus {
   /** This represents the http status code. */
   statusCode?: number;
 }
-export const QueryCountByStatus = /*@__PURE__*/ S.suspend(() =>
+const QueryCountByStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     statusCode: S.optional(S.Number),
@@ -1426,7 +1413,7 @@ export const QueryCountByStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryCountByStatus" }) as any as S.Schema<QueryCountByStatus>;
 
 export type QueryCountByStatusList = Array<QueryCountByStatus>;
-export const QueryCountByStatusList = /*@__PURE__*/ S.Array(
+const QueryCountByStatusList = /*@__PURE__*/ S.Array(
   QueryCountByStatus,
 ) as any as S.Schema<QueryCountByStatusList>;
 
@@ -1435,7 +1422,7 @@ export interface CustomerQueryStats {
   date?: Cloudsearch_Date;
   queryCountByStatus?: QueryCountByStatusList;
 }
-export const CustomerQueryStats = /*@__PURE__*/ S.suspend(() =>
+const CustomerQueryStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(Cloudsearch_Date),
     queryCountByStatus: S.optional(QueryCountByStatusList),
@@ -1443,7 +1430,7 @@ export const CustomerQueryStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerQueryStats" }) as any as S.Schema<CustomerQueryStats>;
 
 export type CustomerQueryStatsList = Array<CustomerQueryStats>;
-export const CustomerQueryStatsList = /*@__PURE__*/ S.Array(
+const CustomerQueryStatsList = /*@__PURE__*/ S.Array(
   CustomerQueryStats,
 ) as any as S.Schema<CustomerQueryStatsList>;
 
@@ -1452,7 +1439,7 @@ export interface GetCustomerQueryStatsResponse {
   /** Total successful query count (status code 200) for the given date range. */
   totalQueryCount?: string;
 }
-export const GetCustomerQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stats: S.optional(CustomerQueryStatsList),
     totalQueryCount: S.optional(S.String),
@@ -1467,7 +1454,7 @@ export interface GetSchemaIndexingDatasourcesRequest {
   /** The name of the data source to get Schema. Format: datasources/{source_id} */
   name: string;
 }
-export const GetSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1487,7 +1474,7 @@ export interface DoubleOperatorOptions {
   /** Indicates the operator name required in the query in order to use the double property in sorting or as a facet. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const DoubleOperatorOptions = /*@__PURE__*/ S.suspend(() =>
+const DoubleOperatorOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorName: S.optional(S.String),
   }),
@@ -1498,7 +1485,7 @@ export interface DoublePropertyOptions {
   /** If set, describes how the double should be used as a search operator. */
   operatorOptions?: DoubleOperatorOptions;
 }
-export const DoublePropertyOptions = /*@__PURE__*/ S.suspend(() =>
+const DoublePropertyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorOptions: S.optional(DoubleOperatorOptions),
   }),
@@ -1509,20 +1496,20 @@ export interface PropertyDisplayOptions {
   /** The user friendly label for the property that is used if the property is specified to be displayed in ObjectDisplayOptions. If provided, the display label is shown in front of the property values when the property is part of the object display options. For example, if the property value is '1', the value by itself may not be useful context for the user. If the display name given was 'priority', then the user sees 'priority : 1' in the search results which provides clear context to search users. This is OPTIONAL; if not given, only the property values are displayed. The maximum length is 64 characters. */
   displayLabel?: string;
 }
-export const PropertyDisplayOptions = /*@__PURE__*/ S.suspend(() =>
+const PropertyDisplayOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayLabel: S.optional(S.String),
   }),
 ).annotate({ identifier: "PropertyDisplayOptions" }) as any as S.Schema<PropertyDisplayOptions>;
 
 export type RetrievalImportanceImportanceEnum = "DEFAULT" | "HIGHEST" | "HIGH" | "LOW" | "NONE";
-export const RetrievalImportanceImportanceEnum = S.String;
+const RetrievalImportanceImportanceEnum = S.String;
 
 export interface RetrievalImportance {
   /** Indicates the ranking importance given to property when it is matched during retrieval. Once set, the token importance of a property cannot be changed. */
   importance?: RetrievalImportanceImportanceEnum | (string & {});
 }
-export const RetrievalImportance = /*@__PURE__*/ S.suspend(() =>
+const RetrievalImportance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     importance: S.optional(RetrievalImportanceImportanceEnum),
   }),
@@ -1533,7 +1520,7 @@ export interface HtmlOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the html property. For example, if operatorName is *subject* and the property's name is *subjectLine*, then queries like *subject:<value>* show results only where the value of the property named *subjectLine* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator return all items where *<value>* matches the value of any html properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const HtmlOperatorOptions = DoubleOperatorOptions as any as S.Schema<HtmlOperatorOptions>;
+const HtmlOperatorOptions = DoubleOperatorOptions as any as S.Schema<HtmlOperatorOptions>;
 
 /** The options for html properties. */
 export interface HtmlPropertyOptions {
@@ -1542,7 +1529,7 @@ export interface HtmlPropertyOptions {
   /** If set, describes how the property should be used as a search operator. */
   operatorOptions?: HtmlOperatorOptions;
 }
-export const HtmlPropertyOptions = /*@__PURE__*/ S.suspend(() =>
+const HtmlPropertyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retrievalImportance: S.optional(RetrievalImportance),
     operatorOptions: S.optional(HtmlOperatorOptions),
@@ -1556,7 +1543,7 @@ export interface TextOperatorOptions {
   /** If true, the text value is tokenized as one atomic value in operator searches and facet matches. For example, if the operator name is "genre" and the value is "science-fiction" the query restrictions "genre:science" and "genre:fiction" doesn't match the item; "genre:science-fiction" does. Text value matching is case-sensitive and does not remove special characters. If false, the text is tokenized. For example, if the value is "science-fiction" the queries "genre:science" and "genre:fiction" matches the item. */
   exactMatchWithOperator?: boolean;
 }
-export const TextOperatorOptions = /*@__PURE__*/ S.suspend(() =>
+const TextOperatorOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorName: S.optional(S.String),
     exactMatchWithOperator: S.optional(S.Boolean),
@@ -1570,7 +1557,7 @@ export interface TextPropertyOptions {
   /** Indicates the search quality importance of the tokens within the field when used for retrieval. */
   retrievalImportance?: RetrievalImportance;
 }
-export const TextPropertyOptions = /*@__PURE__*/ S.suspend(() =>
+const TextPropertyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorOptions: S.optional(TextOperatorOptions),
     retrievalImportance: S.optional(RetrievalImportance),
@@ -1586,7 +1573,7 @@ export interface TimestampOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the timestamp property using the less-than operator. For example, if lessThanOperatorName is *closedbefore* and the property's name is *closeDate*, then queries like *closedbefore:<value>* show results only where the value of the property named *closeDate* is earlier than *<value>*. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   lessThanOperatorName?: string;
 }
-export const TimestampOperatorOptions = /*@__PURE__*/ S.suspend(() =>
+const TimestampOperatorOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorName: S.optional(S.String),
     greaterThanOperatorName: S.optional(S.String),
@@ -1599,7 +1586,7 @@ export interface TimestampPropertyOptions {
   /** If set, describes how the timestamp should be used as a search operator. */
   operatorOptions?: TimestampOperatorOptions;
 }
-export const TimestampPropertyOptions = /*@__PURE__*/ S.suspend(() =>
+const TimestampPropertyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorOptions: S.optional(TimestampOperatorOptions),
   }),
@@ -1610,7 +1597,7 @@ export interface ObjectPropertyOptions {
   /** The properties of the sub-object. These properties represent a nested object. For example, if this property represents a postal address, the subobjectProperties might be named *street*, *city*, and *state*. The maximum number of elements is 1000. */
   subobjectProperties?: PropertyDefinitionList;
 }
-export const ObjectPropertyOptions = /*@__PURE__*/ S.suspend(() =>
+const ObjectPropertyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subobjectProperties: S.optional(S.suspend(() => PropertyDefinitionList)),
   }),
@@ -1623,7 +1610,7 @@ export interface EnumValuePair {
   /** The integer value of the EnumValuePair which must be non-negative. Optional. */
   integerValue?: number;
 }
-export const EnumValuePair = /*@__PURE__*/ S.suspend(() =>
+const EnumValuePair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringValue: S.optional(S.String),
     integerValue: S.optional(S.Number),
@@ -1631,19 +1618,19 @@ export const EnumValuePair = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnumValuePair" }) as any as S.Schema<EnumValuePair>;
 
 export type EnumValuePairList = Array<EnumValuePair>;
-export const EnumValuePairList = /*@__PURE__*/ S.Array(
+const EnumValuePairList = /*@__PURE__*/ S.Array(
   EnumValuePair,
 ) as any as S.Schema<EnumValuePairList>;
 
 export type EnumPropertyOptionsOrderedRankingEnum = "NO_ORDER" | "ASCENDING" | "DESCENDING";
-export const EnumPropertyOptionsOrderedRankingEnum = S.String;
+const EnumPropertyOptionsOrderedRankingEnum = S.String;
 
 /** Used to provide a search operator for enum properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. For example, if you provide no operator for a *priority* enum property with possible values *p0* and *p1*, a query that contains the term *p0* returns items that have *p0* as the value of the *priority* property, as well as any items that contain the string *p0* in other fields. If you provide an operator name for the enum, such as *priority*, then search users can use that operator to refine results to only items that have *p0* as this property's value, with the query *priority:p0*. */
 export interface EnumOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the enum property. For example, if operatorName is *priority* and the property's name is *priorityVal*, then queries like *priority:<value>* show results only where the value of the property named *priorityVal* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const EnumOperatorOptions = DoubleOperatorOptions as any as S.Schema<EnumOperatorOptions>;
+const EnumOperatorOptions = DoubleOperatorOptions as any as S.Schema<EnumOperatorOptions>;
 
 /** The options for enum properties, which allow you to define a restricted set of strings to match user queries, set rankings for those string values, and define an operator name to be paired with those strings so that users can narrow results to only items with a specific value. For example, for items in a request tracking system with priority information, you could define *p0* as an allowable enum value and tie this enum to the operator name *priority* so that search users could add *priority:p0* to their query to restrict the set of results to only those items indexed with the value *p0*. */
 export interface EnumPropertyOptions {
@@ -1654,7 +1641,7 @@ export interface EnumPropertyOptions {
   /** If set, describes how the enum should be used as a search operator. */
   operatorOptions?: EnumOperatorOptions;
 }
-export const EnumPropertyOptions = /*@__PURE__*/ S.suspend(() =>
+const EnumPropertyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     possibleValues: S.optional(EnumValuePairList),
     orderedRanking: S.optional(EnumPropertyOptionsOrderedRankingEnum),
@@ -1663,7 +1650,7 @@ export const EnumPropertyOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnumPropertyOptions" }) as any as S.Schema<EnumPropertyOptions>;
 
 export type IntegerPropertyOptionsOrderedRankingEnum = "NO_ORDER" | "ASCENDING" | "DESCENDING";
-export const IntegerPropertyOptionsOrderedRankingEnum = S.String;
+const IntegerPropertyOptionsOrderedRankingEnum = S.String;
 
 /** Used to provide a search operator for integer properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. */
 export interface IntegerOperatorOptions {
@@ -1674,7 +1661,7 @@ export interface IntegerOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the integer property using the greater-than operator. For example, if greaterThanOperatorName is *priorityabove* and the property's name is *priorityVal*, then queries like *priorityabove:<value>* show results only where the value of the property named *priorityVal* is greater than *<value>*. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   greaterThanOperatorName?: string;
 }
-export const IntegerOperatorOptions = /*@__PURE__*/ S.suspend(() =>
+const IntegerOperatorOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lessThanOperatorName: S.optional(S.String),
     operatorName: S.optional(S.String),
@@ -1695,7 +1682,7 @@ export interface IntegerPropertyOptions {
   /** If set, describes how the integer should be used as a search operator. */
   operatorOptions?: IntegerOperatorOptions;
 }
-export const IntegerPropertyOptions = /*@__PURE__*/ S.suspend(() =>
+const IntegerPropertyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumValue: S.optional(S.String),
     maximumValue: S.optional(S.String),
@@ -1714,7 +1701,7 @@ export interface DateOperatorOptions {
   /** Indicates the actual string required in the query in order to isolate the date property. For example, suppose an issue tracking schema object has a property named *closeDate* that specifies an operator with an operatorName of *closedon*. For searches on that data, queries like *closedon:<value>* show results only where the value of the *closeDate* property matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the indexed datasource. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const DateOperatorOptions = /*@__PURE__*/ S.suspend(() =>
+const DateOperatorOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lessThanOperatorName: S.optional(S.String),
     greaterThanOperatorName: S.optional(S.String),
@@ -1727,7 +1714,7 @@ export interface DatePropertyOptions {
   /** If set, describes how the date should be used as a search operator. */
   operatorOptions?: DateOperatorOptions;
 }
-export const DatePropertyOptions = /*@__PURE__*/ S.suspend(() =>
+const DatePropertyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorOptions: S.optional(DateOperatorOptions),
   }),
@@ -1738,16 +1725,12 @@ export interface BooleanOperatorOptions {
   /** Indicates the operator name required in the query in order to isolate the boolean property. For example, if operatorName is *closed* and the property's name is *isClosed*, then queries like *closed:<value>* show results only where the value of the property named *isClosed* matches *<value>*. By contrast, a search that uses the same *<value>* without an operator returns all items where *<value>* matches the value of any String properties or text within the content field for the item. The operator name can only contain lowercase letters (a-z). The maximum length is 32 characters. */
   operatorName?: string;
 }
-export const BooleanOperatorOptions =
-  DoubleOperatorOptions as any as S.Schema<BooleanOperatorOptions>;
-
 /** The options for boolean properties. */
 export interface BooleanPropertyOptions {
   /** If set, describes how the boolean should be used as a search operator. */
   operatorOptions?: BooleanOperatorOptions;
 }
-export const BooleanPropertyOptions =
-  DoublePropertyOptions as any as S.Schema<BooleanPropertyOptions>;
+const BooleanPropertyOptions = DoublePropertyOptions as any as S.Schema<BooleanPropertyOptions>;
 
 /** The definition of a property within an object. */
 export interface PropertyDefinition {
@@ -1777,7 +1760,7 @@ export interface PropertyDefinition {
   datePropertyOptions?: DatePropertyOptions;
   booleanPropertyOptions?: BooleanPropertyOptions;
 }
-export const PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
+const PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     doublePropertyOptions: S.optional(DoublePropertyOptions),
@@ -1800,7 +1783,7 @@ export const PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyDefinition" }) as any as S.Schema<PropertyDefinition>;
 
 export type PropertyDefinitionList = Array<PropertyDefinition>;
-export const PropertyDefinitionList = /*@__PURE__*/ S.Array(
+const PropertyDefinitionList = /*@__PURE__*/ S.Array(
   PropertyDefinition,
 ) as any as S.Schema<PropertyDefinitionList>;
 
@@ -1809,14 +1792,14 @@ export interface DisplayedProperty {
   /** The name of the top-level property as defined in a property definition for the object. If the name is not a defined property in the schema, an error is given when attempting to update the schema. */
   propertyName?: string;
 }
-export const DisplayedProperty = /*@__PURE__*/ S.suspend(() =>
+const DisplayedProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyName: S.optional(S.String),
   }),
 ).annotate({ identifier: "DisplayedProperty" }) as any as S.Schema<DisplayedProperty>;
 
 export type DisplayedPropertyList = Array<DisplayedProperty>;
-export const DisplayedPropertyList = /*@__PURE__*/ S.Array(
+const DisplayedPropertyList = /*@__PURE__*/ S.Array(
   DisplayedProperty,
 ) as any as S.Schema<DisplayedPropertyList>;
 
@@ -1825,14 +1808,14 @@ export interface Metaline {
   /** The list of displayed properties for the metaline. The maximum number of properties is 5. */
   properties?: DisplayedPropertyList;
 }
-export const Metaline = /*@__PURE__*/ S.suspend(() =>
+const Metaline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(DisplayedPropertyList),
   }),
 ).annotate({ identifier: "Metaline" }) as any as S.Schema<Metaline>;
 
 export type MetalineList = Array<Metaline>;
-export const MetalineList = /*@__PURE__*/ S.Array(Metaline) as any as S.Schema<MetalineList>;
+const MetalineList = /*@__PURE__*/ S.Array(Metaline) as any as S.Schema<MetalineList>;
 
 /** The display options for an object. */
 export interface ObjectDisplayOptions {
@@ -1841,7 +1824,7 @@ export interface ObjectDisplayOptions {
   /** Defines the properties that are displayed in the metalines of the search results. The property values are displayed in the order given here. If a property holds multiple values, all of the values are displayed before the next properties. For this reason, it is a good practice to specify singular properties before repeated properties in this list. All of the properties must set is_returnable to true. The maximum number of metalines is 3. */
   metalines?: MetalineList;
 }
-export const ObjectDisplayOptions = /*@__PURE__*/ S.suspend(() =>
+const ObjectDisplayOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectDisplayLabel: S.optional(S.String),
     metalines: S.optional(MetalineList),
@@ -1855,7 +1838,7 @@ export interface FreshnessOptions {
   /** The duration after which an object should be considered stale. The default value is 180 days (in seconds). */
   freshnessDuration?: string;
 }
-export const FreshnessOptions = /*@__PURE__*/ S.suspend(() =>
+const FreshnessOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     freshnessProperty: S.optional(S.String),
     freshnessDuration: S.optional(S.String),
@@ -1871,7 +1854,7 @@ export interface ObjectOptions {
   /** The freshness options for an object. */
   freshnessOptions?: FreshnessOptions;
 }
-export const ObjectOptions = /*@__PURE__*/ S.suspend(() =>
+const ObjectOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestionFilteringOperators: S.optional(StringList),
     displayOptions: S.optional(ObjectDisplayOptions),
@@ -1888,7 +1871,7 @@ export interface ObjectDefinition {
   /** The optional object-specific options. */
   options?: ObjectOptions;
 }
-export const ObjectDefinition = /*@__PURE__*/ S.suspend(() =>
+const ObjectDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyDefinitions: S.optional(PropertyDefinitionList),
     name: S.optional(S.String),
@@ -1897,7 +1880,7 @@ export const ObjectDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectDefinition" }) as any as S.Schema<ObjectDefinition>;
 
 export type ObjectDefinitionList = Array<ObjectDefinition>;
-export const ObjectDefinitionList = /*@__PURE__*/ S.Array(
+const ObjectDefinitionList = /*@__PURE__*/ S.Array(
   ObjectDefinition,
 ) as any as S.Schema<ObjectDefinitionList>;
 
@@ -1908,7 +1891,7 @@ export interface Cloudsearch_Schema {
   /** The list of top-level objects for the data source. The maximum number of elements is 10. */
   objectDefinitions?: ObjectDefinitionList;
 }
-export const Cloudsearch_Schema = /*@__PURE__*/ S.suspend(() =>
+const Cloudsearch_Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(StringList),
     objectDefinitions: S.optional(ObjectDefinitionList),
@@ -1929,7 +1912,7 @@ export interface GetSearchapplicationStatsRequest {
   /** Year of date. Must be from 1 to 9999. */
   "endDate.year"?: number;
 }
-export const GetSearchapplicationStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSearchapplicationStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "startDate.month": S.optional(S.Number.pipe(T.Query())),
     "startDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -1955,7 +1938,7 @@ export interface CustomerSearchApplicationStats {
   /** The count of search applications for the date. */
   count?: string;
 }
-export const CustomerSearchApplicationStats = /*@__PURE__*/ S.suspend(() =>
+const CustomerSearchApplicationStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(Cloudsearch_Date),
     count: S.optional(S.String),
@@ -1965,7 +1948,7 @@ export const CustomerSearchApplicationStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerSearchApplicationStats>;
 
 export type CustomerSearchApplicationStatsList = Array<CustomerSearchApplicationStats>;
-export const CustomerSearchApplicationStatsList = /*@__PURE__*/ S.Array(
+const CustomerSearchApplicationStatsList = /*@__PURE__*/ S.Array(
   CustomerSearchApplicationStats,
 ) as any as S.Schema<CustomerSearchApplicationStatsList>;
 
@@ -1976,7 +1959,7 @@ export interface GetCustomerSearchApplicationStatsResponse {
   /** Search application stats by date. */
   stats?: CustomerSearchApplicationStatsList;
 }
-export const GetCustomerSearchApplicationStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerSearchApplicationStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     averageSearchApplicationCount: S.optional(S.String),
     stats: S.optional(CustomerSearchApplicationStatsList),
@@ -1999,7 +1982,7 @@ export interface GetSessionStatsRequest {
   /** Month of date. Must be from 1 to 12. */
   "toDate.month"?: number;
 }
-export const GetSessionStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "fromDate.month": S.optional(S.Number.pipe(T.Query())),
     "fromDate.year": S.optional(S.Number.pipe(T.Query())),
@@ -2022,7 +2005,7 @@ export interface CustomerSessionStats {
   /** The count of search sessions on the day */
   searchSessionsCount?: string;
 }
-export const CustomerSessionStats = /*@__PURE__*/ S.suspend(() =>
+const CustomerSessionStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(Cloudsearch_Date),
     searchSessionsCount: S.optional(S.String),
@@ -2030,14 +2013,14 @@ export const CustomerSessionStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerSessionStats" }) as any as S.Schema<CustomerSessionStats>;
 
 export type CustomerSessionStatsList = Array<CustomerSessionStats>;
-export const CustomerSessionStatsList = /*@__PURE__*/ S.Array(
+const CustomerSessionStatsList = /*@__PURE__*/ S.Array(
   CustomerSessionStats,
 ) as any as S.Schema<CustomerSessionStatsList>;
 
 export interface GetCustomerSessionStatsResponse {
   stats?: CustomerSessionStatsList;
 }
-export const GetCustomerSessionStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerSessionStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stats: S.optional(CustomerSessionStatsList),
   }),
@@ -2051,7 +2034,7 @@ export interface GetSettingsDatasourcesRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const GetSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
@@ -2072,7 +2055,7 @@ export interface GetSettingsSearchapplicationsRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const GetSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
@@ -2103,7 +2086,7 @@ export interface GetStatsIndexDatasourcesRequest {
   /** Month of date. Must be from 1 to 12. */
   "fromDate.month"?: number;
 }
-export const GetStatsIndexDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatsIndexDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "toDate.month": S.optional(S.Number.pipe(T.Query())),
     "fromDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -2130,7 +2113,7 @@ export interface DataSourceIndexStats {
   /** The date for which index stats were calculated. If the date of request is not the current date then stats calculated on the next day are returned. Stats are calculated close to mid night in this case. If date of request is current date, then real time stats are returned. */
   date?: Cloudsearch_Date;
 }
-export const DataSourceIndexStats = /*@__PURE__*/ S.suspend(() =>
+const DataSourceIndexStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemCountByStatus: S.optional(ItemCountByStatusList),
     date: S.optional(Cloudsearch_Date),
@@ -2138,7 +2121,7 @@ export const DataSourceIndexStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSourceIndexStats" }) as any as S.Schema<DataSourceIndexStats>;
 
 export type DataSourceIndexStatsList = Array<DataSourceIndexStats>;
-export const DataSourceIndexStatsList = /*@__PURE__*/ S.Array(
+const DataSourceIndexStatsList = /*@__PURE__*/ S.Array(
   DataSourceIndexStats,
 ) as any as S.Schema<DataSourceIndexStatsList>;
 
@@ -2148,7 +2131,7 @@ export interface GetDataSourceIndexStatsResponse {
   /** Average item count for the given date range for which billing is done. */
   averageIndexedItemCount?: string;
 }
-export const GetDataSourceIndexStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataSourceIndexStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stats: S.optional(DataSourceIndexStatsList),
     averageIndexedItemCount: S.optional(S.String),
@@ -2173,7 +2156,7 @@ export interface GetStatsQuerySearchapplicationsRequest {
   /** Month of date. Must be from 1 to 12. */
   "toDate.month"?: number;
 }
-export const GetStatsQuerySearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatsQuerySearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "fromDate.month": S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2195,10 +2178,8 @@ export const GetStatsQuerySearchapplicationsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Search application level query stats per date */
 export type SearchApplicationQueryStats = CustomerQueryStats;
-export const SearchApplicationQueryStats = CustomerQueryStats;
-
 export type SearchApplicationQueryStatsList = Array<CustomerQueryStats>;
-export const SearchApplicationQueryStatsList =
+const SearchApplicationQueryStatsList =
   CustomerQueryStatsList as any as S.Schema<SearchApplicationQueryStatsList>;
 
 /** Response format for getting query stats for a search application between given dates. */
@@ -2208,7 +2189,7 @@ export interface GetSearchApplicationQueryStatsResponse {
   /** Query stats per date for a search application. */
   stats?: SearchApplicationQueryStatsList;
 }
-export const GetSearchApplicationQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSearchApplicationQueryStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalQueryCount: S.optional(S.String),
     stats: S.optional(SearchApplicationQueryStatsList),
@@ -2233,7 +2214,7 @@ export interface GetStatsSessionSearchapplicationsRequest {
   /** Year of date. Must be from 1 to 9999. */
   "toDate.year"?: number;
 }
-export const GetStatsSessionSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatsSessionSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "fromDate.month": S.optional(S.Number.pipe(T.Query())),
     "toDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -2259,7 +2240,7 @@ export interface SearchApplicationSessionStats {
   /** The date for which session stats were calculated. Stats are calculated on the following day, close to midnight PST, and then returned. */
   date?: Cloudsearch_Date;
 }
-export const SearchApplicationSessionStats = /*@__PURE__*/ S.suspend(() =>
+const SearchApplicationSessionStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchSessionsCount: S.optional(S.String),
     date: S.optional(Cloudsearch_Date),
@@ -2269,14 +2250,14 @@ export const SearchApplicationSessionStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchApplicationSessionStats>;
 
 export type SearchApplicationSessionStatsList = Array<SearchApplicationSessionStats>;
-export const SearchApplicationSessionStatsList = /*@__PURE__*/ S.Array(
+const SearchApplicationSessionStatsList = /*@__PURE__*/ S.Array(
   SearchApplicationSessionStats,
 ) as any as S.Schema<SearchApplicationSessionStatsList>;
 
 export interface GetSearchApplicationSessionStatsResponse {
   stats?: SearchApplicationSessionStatsList;
 }
-export const GetSearchApplicationSessionStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSearchApplicationSessionStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stats: S.optional(SearchApplicationSessionStatsList),
   }),
@@ -2300,7 +2281,7 @@ export interface GetStatsUserSearchapplicationsRequest {
   /** Month of date. Must be from 1 to 12. */
   "fromDate.month"?: number;
 }
-export const GetStatsUserSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatsUserSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "fromDate.year": S.optional(S.Number.pipe(T.Query())),
     "toDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -2330,7 +2311,7 @@ export interface SearchApplicationUserStats {
   /** The count of unique active users in the past one day */
   oneDayActiveUsersCount?: string;
 }
-export const SearchApplicationUserStats = /*@__PURE__*/ S.suspend(() =>
+const SearchApplicationUserStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thirtyDaysActiveUsersCount: S.optional(S.String),
     sevenDaysActiveUsersCount: S.optional(S.String),
@@ -2342,14 +2323,14 @@ export const SearchApplicationUserStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchApplicationUserStats>;
 
 export type SearchApplicationUserStatsList = Array<SearchApplicationUserStats>;
-export const SearchApplicationUserStatsList = /*@__PURE__*/ S.Array(
+const SearchApplicationUserStatsList = /*@__PURE__*/ S.Array(
   SearchApplicationUserStats,
 ) as any as S.Schema<SearchApplicationUserStatsList>;
 
 export interface GetSearchApplicationUserStatsResponse {
   stats?: SearchApplicationUserStatsList;
 }
-export const GetSearchApplicationUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSearchApplicationUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stats: S.optional(SearchApplicationUserStatsList),
   }),
@@ -2371,7 +2352,7 @@ export interface GetUserStatsRequest {
   /** Year of date. Must be from 1 to 9999. */
   "fromDate.year"?: number;
 }
-export const GetUserStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "toDate.day": S.optional(S.Number.pipe(T.Query())),
     "fromDate.month": S.optional(S.Number.pipe(T.Query())),
@@ -2394,7 +2375,7 @@ export interface CustomerUserStats {
   /** The count of unique active users in the past thirty days */
   thirtyDaysActiveUsersCount?: string;
 }
-export const CustomerUserStats = /*@__PURE__*/ S.suspend(() =>
+const CustomerUserStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(Cloudsearch_Date),
     oneDayActiveUsersCount: S.optional(S.String),
@@ -2404,14 +2385,14 @@ export const CustomerUserStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerUserStats" }) as any as S.Schema<CustomerUserStats>;
 
 export type CustomerUserStatsList = Array<CustomerUserStats>;
-export const CustomerUserStatsList = /*@__PURE__*/ S.Array(
+const CustomerUserStatsList = /*@__PURE__*/ S.Array(
   CustomerUserStats,
 ) as any as S.Schema<CustomerUserStatsList>;
 
 export interface GetCustomerUserStatsResponse {
   stats?: CustomerUserStatsList;
 }
-export const GetCustomerUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stats: S.optional(CustomerUserStatsList),
   }),
@@ -2420,13 +2401,13 @@ export const GetCustomerUserStatsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomerUserStatsResponse>;
 
 export type IndexItemRequestModeEnum = "UNSPECIFIED" | "SYNCHRONOUS" | "ASYNCHRONOUS";
-export const IndexItemRequestModeEnum = S.String;
+const IndexItemRequestModeEnum = S.String;
 
 export interface IndexItemOptions {
   /** Specifies if the index request should allow Google Workspace principals that do not exist or are deleted. */
   allowUnknownGsuitePrincipals?: boolean;
 }
-export const IndexItemOptions = /*@__PURE__*/ S.suspend(() =>
+const IndexItemOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowUnknownGsuitePrincipals: S.optional(S.Boolean),
   }),
@@ -2443,7 +2424,7 @@ export interface IndexItemRequest {
   /** The name of the item. Format: datasources/{source_id}/items/{item_id} */
   item?: Item;
 }
-export const IndexItemRequest = /*@__PURE__*/ S.suspend(() =>
+const IndexItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugOptions: S.optional(DebugOptions),
     connectorName: S.optional(S.String),
@@ -2459,7 +2440,7 @@ export interface IndexIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: IndexItemRequest;
 }
-export const IndexIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const IndexIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(IndexItemRequest.pipe(T.HttpBody())),
@@ -2476,7 +2457,7 @@ export const IndexIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Request message for `InitializeCustomer` method. */
 export interface InitializeCustomerRequest {}
-export const InitializeCustomerRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const InitializeCustomerRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "InitializeCustomerRequest",
 }) as any as S.Schema<InitializeCustomerRequest>;
 
@@ -2484,7 +2465,7 @@ export interface InitializeCustomerV1Request {
   /** Request body */
   body?: InitializeCustomerRequest;
 }
-export const InitializeCustomerV1Request = /*@__PURE__*/ S.suspend(() =>
+const InitializeCustomerV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(InitializeCustomerRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2508,7 +2489,7 @@ export interface ListDebugDatasourcesItemsUnmappedidsRequest {
   /** If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. */
   "debugOptions.enableDebugging"?: boolean;
 }
-export const ListDebugDatasourcesItemsUnmappedidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDebugDatasourcesItemsUnmappedidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2532,7 +2513,7 @@ export type UnmappedIdentityResolutionStatusCodeEnum =
   | "IDENTITY_SOURCE_MISCONFIGURED"
   | "TOO_MANY_MAPPINGS_FOUND"
   | "INTERNAL_ERROR";
-export const UnmappedIdentityResolutionStatusCodeEnum = S.String;
+const UnmappedIdentityResolutionStatusCodeEnum = S.String;
 
 export interface UnmappedIdentity {
   /** The resolution status for the external identity. */
@@ -2540,7 +2521,7 @@ export interface UnmappedIdentity {
   /** The resource name for an external user. */
   externalIdentity?: Principal;
 }
-export const UnmappedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UnmappedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resolutionStatusCode: S.optional(UnmappedIdentityResolutionStatusCodeEnum),
     externalIdentity: S.optional(Principal),
@@ -2548,7 +2529,7 @@ export const UnmappedIdentity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnmappedIdentity" }) as any as S.Schema<UnmappedIdentity>;
 
 export type UnmappedIdentityList = Array<UnmappedIdentity>;
-export const UnmappedIdentityList = /*@__PURE__*/ S.Array(
+const UnmappedIdentityList = /*@__PURE__*/ S.Array(
   UnmappedIdentity,
 ) as any as S.Schema<UnmappedIdentityList>;
 
@@ -2557,7 +2538,7 @@ export interface ListUnmappedIdentitiesResponse {
   nextPageToken?: string;
   unmappedIdentities?: UnmappedIdentityList;
 }
-export const ListUnmappedIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUnmappedIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unmappedIdentities: S.optional(UnmappedIdentityList),
@@ -2573,7 +2554,7 @@ export type ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum =
   | "IDENTITY_SOURCE_MISCONFIGURED"
   | "TOO_MANY_MAPPINGS_FOUND"
   | "INTERNAL_ERROR";
-export const ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum = S.String;
+const ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum = S.String;
 
 export interface ListDebugIdentitysourcesUnmappedidsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
@@ -2589,7 +2570,7 @@ export interface ListDebugIdentitysourcesUnmappedidsRequest {
   /** The name of the identity source, in the following format: identitysources/{source_id} */
   parent: string;
 }
-export const ListDebugIdentitysourcesUnmappedidsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDebugIdentitysourcesUnmappedidsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     resolutionStatusCode: S.optional(
@@ -2621,7 +2602,7 @@ export interface ListForunmappedidentityDebugIdentitysourcesItemsRequest {
   /** The name of the identity source, in the following format: identitysources/{source_id}} */
   parent: string;
 }
-export const ListForunmappedidentityDebugIdentitysourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForunmappedidentityDebugIdentitysourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2645,7 +2626,7 @@ export interface ListItemNamesForUnmappedIdentityResponse {
   nextPageToken?: string;
   itemNames?: StringList;
 }
-export const ListItemNamesForUnmappedIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+const ListItemNamesForUnmappedIdentityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     itemNames: S.optional(StringList),
@@ -2668,7 +2649,7 @@ export interface ListIndexingDatasourcesItemsRequest {
   /** The name of the Data Source to list Items. Format: datasources/{source_id} */
   name: string;
 }
-export const ListIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     connectorName: S.optional(S.String.pipe(T.Query())),
@@ -2688,14 +2669,14 @@ export const ListIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIndexingDatasourcesItemsRequest>;
 
 export type ItemList = Array<Item>;
-export const ItemList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<ItemList>;
+const ItemList = /*@__PURE__*/ S.Array(Item) as any as S.Schema<ItemList>;
 
 export interface ListItemsResponse {
   items: ItemList;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ItemList,
     nextPageToken: S.optional(S.String),
@@ -2714,7 +2695,7 @@ export interface ListOperationsLroRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListOperationsLroRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsLroRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2731,7 +2712,7 @@ export const ListOperationsLroRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperationsLroRequest" }) as any as S.Schema<ListOperationsLroRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2742,7 +2723,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -2766,7 +2747,7 @@ export interface ListQuerySourcesRequest {
   /** The ID generated when you create a search application using the [admin console](https://support.google.com/a/answer/9043922). */
   "requestOptions.searchApplicationId"?: string;
 }
-export const ListQuerySourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuerySourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "requestOptions.debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
     "requestOptions.timeZone": S.optional(S.String.pipe(T.Query())),
@@ -2794,7 +2775,7 @@ export type QueryOperatorTypeEnum =
   | "DATE"
   | "TEXT"
   | "HTML";
-export const QueryOperatorTypeEnum = S.String;
+const QueryOperatorTypeEnum = S.String;
 
 /** The definition of a operator that can be used in a Search/Suggest request. */
 export interface QueryOperator {
@@ -2823,7 +2804,7 @@ export interface QueryOperator {
   /** Indicates the operator name that can be used to isolate the property using the greater-than operator. */
   greaterThanOperatorName?: string;
 }
-export const QueryOperator = /*@__PURE__*/ S.suspend(() =>
+const QueryOperator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isSortable: S.optional(S.Boolean),
     objectType: S.optional(S.String),
@@ -2841,7 +2822,7 @@ export const QueryOperator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryOperator" }) as any as S.Schema<QueryOperator>;
 
 export type QueryOperatorList = Array<QueryOperator>;
-export const QueryOperatorList = /*@__PURE__*/ S.Array(
+const QueryOperatorList = /*@__PURE__*/ S.Array(
   QueryOperator,
 ) as any as S.Schema<QueryOperatorList>;
 
@@ -2856,7 +2837,7 @@ export interface QuerySource {
   /** Display name of the data source. */
   displayName?: string;
 }
-export const QuerySource = /*@__PURE__*/ S.suspend(() =>
+const QuerySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shortName: S.optional(S.String),
     source: S.optional(Source),
@@ -2866,16 +2847,14 @@ export const QuerySource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuerySource" }) as any as S.Schema<QuerySource>;
 
 export type QuerySourceList = Array<QuerySource>;
-export const QuerySourceList = /*@__PURE__*/ S.Array(
-  QuerySource,
-) as any as S.Schema<QuerySourceList>;
+const QuerySourceList = /*@__PURE__*/ S.Array(QuerySource) as any as S.Schema<QuerySourceList>;
 
 /** List sources response. */
 export interface ListQuerySourcesResponse {
   nextPageToken?: string;
   sources?: QuerySourceList;
 }
-export const ListQuerySourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQuerySourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     sources: S.optional(QuerySourceList),
@@ -2890,7 +2869,7 @@ export interface ListSettingsDatasourcesRequest {
   /** Starting index of the results. */
   pageToken?: string;
 }
-export const ListSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
@@ -2907,14 +2886,14 @@ export const ListSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSettingsDatasourcesRequest>;
 
 export type DataSourceList = Array<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
 
 export interface ListDataSourceResponse {
   sources?: DataSourceList;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sources: S.optional(DataSourceList),
     nextPageToken: S.optional(S.String),
@@ -2929,7 +2908,7 @@ export interface ListSettingsSearchapplicationsRequest {
   /** The next_page_token value returned from a previous List request, if any. The default value is 10 */
   pageToken?: string;
 }
-export const ListSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     "debugOptions.enableDebugging": S.optional(S.Boolean.pipe(T.Query())),
@@ -2946,7 +2925,7 @@ export const ListSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListSettingsSearchapplicationsRequest>;
 
 export type SearchApplicationList = Array<SearchApplication>;
-export const SearchApplicationList = /*@__PURE__*/ S.Array(
+const SearchApplicationList = /*@__PURE__*/ S.Array(
   SearchApplication,
 ) as any as S.Schema<SearchApplicationList>;
 
@@ -2955,7 +2934,7 @@ export interface ListSearchApplicationsResponse {
   nextPageToken?: string;
   searchApplications?: SearchApplicationList;
 }
-export const ListSearchApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSearchApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     searchApplications: S.optional(SearchApplicationList),
@@ -2974,7 +2953,7 @@ export interface PatchSettingsDatasourcesRequest {
   /** Request body */
   body?: DataSource;
 }
-export const PatchSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2999,7 +2978,7 @@ export interface PatchSettingsSearchapplicationsRequest {
   /** Request body */
   body?: SearchApplication;
 }
-export const PatchSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3021,12 +3000,12 @@ export type PollItemsRequestStatusCodesItemEnum =
   | "MODIFIED"
   | "NEW_ITEM"
   | "ACCEPTED";
-export const PollItemsRequestStatusCodesItemEnum = S.String;
+const PollItemsRequestStatusCodesItemEnum = S.String;
 
 export type PollItemsRequestStatusCodesItemEnumList = Array<
   PollItemsRequestStatusCodesItemEnum | (string & {})
 >;
-export const PollItemsRequestStatusCodesItemEnumList = /*@__PURE__*/ S.Array(
+const PollItemsRequestStatusCodesItemEnumList = /*@__PURE__*/ S.Array(
   PollItemsRequestStatusCodesItemEnum,
 ) as any as S.Schema<PollItemsRequestStatusCodesItemEnumList>;
 
@@ -3042,7 +3021,7 @@ export interface PollItemsRequest {
   /** Maximum number of items to return. The maximum value is 100 and the default value is 20. */
   limit?: number;
 }
-export const PollItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const PollItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugOptions: S.optional(DebugOptions),
     connectorName: S.optional(S.String),
@@ -3058,7 +3037,7 @@ export interface PollIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: PollItemsRequest;
 }
-export const PollIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const PollIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PollItemsRequest.pipe(T.HttpBody())),
@@ -3077,7 +3056,7 @@ export interface PollItemsResponse {
   /** Set of items from the queue available for connector to process. These items have the following subset of fields populated: version metadata.hash structured_data.hash content.hash payload status queue */
   items?: ItemList;
 }
-export const PollItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const PollItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ItemList),
   }),
@@ -3089,7 +3068,7 @@ export type PushItemTypeEnum =
   | "NOT_MODIFIED"
   | "REPOSITORY_ERROR"
   | "REQUEUE";
-export const PushItemTypeEnum = S.String;
+const PushItemTypeEnum = S.String;
 
 /** Represents an item to be pushed to the indexing queue. */
 export interface PushItem {
@@ -3108,7 +3087,7 @@ export interface PushItem {
   /** Content hash of the item according to the repository. If specified, this is used to determine how to modify this item's status. Setting this field and the type field results in argument error. The maximum length is 2048 characters. */
   contentHash?: string;
 }
-export const PushItem = /*@__PURE__*/ S.suspend(() =>
+const PushItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryError: S.optional(RepositoryError),
     payload: S.optional(S.String),
@@ -3128,7 +3107,7 @@ export interface PushItemRequest {
   /** Item to push onto the queue. */
   item?: PushItem;
 }
-export const PushItemRequest = /*@__PURE__*/ S.suspend(() =>
+const PushItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorName: S.optional(S.String),
     debugOptions: S.optional(DebugOptions),
@@ -3142,7 +3121,7 @@ export interface PushIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: PushItemRequest;
 }
-export const PushIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const PushIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PushItemRequest.pipe(T.HttpBody())),
@@ -3162,7 +3141,7 @@ export interface QueryActivity {
   /** User input query to be logged/removed. */
   query?: string;
 }
-export const QueryActivity = /*@__PURE__*/ S.suspend(() =>
+const QueryActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
   }),
@@ -3173,7 +3152,7 @@ export interface UserActivity {
   /** Contains data which needs to be logged/removed. */
   queryActivity?: QueryActivity;
 }
-export const UserActivity = /*@__PURE__*/ S.suspend(() =>
+const UserActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryActivity: S.optional(QueryActivity),
   }),
@@ -3194,7 +3173,7 @@ export interface RequestOptions {
   /** Current user's time zone id, such as "America/Los_Angeles" or "Australia/Sydney". These IDs are defined by [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/) project, and currently available in the file [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml). This field is used to correctly interpret date and time queries. If this field is not specified, the default time zone (UTC) is used. */
   timeZone?: string;
 }
-export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
+const RequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugOptions: S.optional(DebugOptions),
     searchApplicationId: S.optional(S.String),
@@ -3212,7 +3191,7 @@ export interface RemoveActivityRequest {
   /** Request options, such as the search application and clientId. */
   requestOptions?: RequestOptions;
 }
-export const RemoveActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userActivity: S.optional(UserActivity),
     requestOptions: S.optional(RequestOptions),
@@ -3223,7 +3202,7 @@ export interface RemoveActivityQueryRequest {
   /** Request body */
   body?: RemoveActivityRequest;
 }
-export const RemoveActivityQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveActivityQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(RemoveActivityRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3239,14 +3218,13 @@ export const RemoveActivityQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Remove Logged Activity Response. will return an empty response for now. Will be revisited in later phases. */
 export interface RemoveActivityResponse {}
-export const RemoveActivityResponse =
-  InitializeCustomerRequest as any as S.Schema<RemoveActivityResponse>;
+const RemoveActivityResponse = InitializeCustomerRequest as any as S.Schema<RemoveActivityResponse>;
 
 export interface ResetSearchApplicationRequest {
   /** Common debug options. */
   debugOptions?: DebugOptions;
 }
-export const ResetSearchApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetSearchApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugOptions: S.optional(DebugOptions),
   }),
@@ -3260,7 +3238,7 @@ export interface ResetSettingsSearchapplicationsRequest {
   /** Request body */
   body?: ResetSearchApplicationRequest;
 }
-export const ResetSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ResetSearchApplicationRequest.pipe(T.HttpBody())),
@@ -3283,7 +3261,7 @@ export interface SearchItemsByViewUrlRequest {
   /** Common debug options. */
   debugOptions?: DebugOptions;
 }
-export const SearchItemsByViewUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchItemsByViewUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String),
     viewUrl: S.optional(S.String),
@@ -3299,7 +3277,7 @@ export interface SearchByViewUrlDebugDatasourcesItemsRequest {
   /** Request body */
   body?: SearchItemsByViewUrlRequest;
 }
-export const SearchByViewUrlDebugDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchByViewUrlDebugDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SearchItemsByViewUrlRequest.pipe(T.HttpBody())),
@@ -3319,7 +3297,7 @@ export interface SearchItemsByViewUrlResponse {
   nextPageToken?: string;
   items?: ItemList;
 }
-export const SearchItemsByViewUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchItemsByViewUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     items: S.optional(ItemList),
@@ -3337,7 +3315,7 @@ export interface QueryInterpretationOptions {
   /** Flag to disable natural language (NL) interpretation of queries. Default is false, Set to true to disable natural language interpretation. NL interpretation only applies to predefined datasources. */
   disableNlInterpretation?: boolean;
 }
-export const QueryInterpretationOptions = /*@__PURE__*/ S.suspend(() =>
+const QueryInterpretationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableVerbatimMode: S.optional(S.Boolean),
     disableSupplementalResults: S.optional(S.Boolean),
@@ -3367,7 +3345,7 @@ export interface SearchRequest {
   /** Maximum number of search results to return in one page. Valid values are between 1 and 100, inclusive. Default value is 10. Minimum value is 50 when results beyond 2000 are requested. */
   pageSize?: number;
 }
-export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     sortOptions: S.optional(SortOptions),
@@ -3385,7 +3363,7 @@ export interface SearchQueryRequest {
   /** Request body */
   body?: SearchRequest;
 }
-export const SearchQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SearchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3408,7 +3386,7 @@ export interface SourceResultCount {
   /** The estimated result count for this source. */
   resultCountEstimate?: string;
 }
-export const SourceResultCount = /*@__PURE__*/ S.suspend(() =>
+const SourceResultCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     resultCountExact: S.optional(S.String),
@@ -3418,7 +3396,7 @@ export const SourceResultCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceResultCount" }) as any as S.Schema<SourceResultCount>;
 
 export type SourceResultCountList = Array<SourceResultCount>;
-export const SourceResultCountList = /*@__PURE__*/ S.Array(
+const SourceResultCountList = /*@__PURE__*/ S.Array(
   SourceResultCount,
 ) as any as S.Schema<SourceResultCountList>;
 
@@ -3427,7 +3405,7 @@ export interface ResultCounts {
   /** Result count information for each source with results. */
   sourceResultCounts?: SourceResultCountList;
 }
-export const ResultCounts = /*@__PURE__*/ S.suspend(() =>
+const ResultCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceResultCounts: S.optional(SourceResultCountList),
   }),
@@ -3438,17 +3416,17 @@ export interface Name {
   /** The read-only display name formatted according to the locale specified by the viewer's account or the `Accept-Language` HTTP header. */
   displayName?: string;
 }
-export const Name = /*@__PURE__*/ S.suspend(() =>
+const Name = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
 ).annotate({ identifier: "Name" }) as any as S.Schema<Name>;
 
 export type NameList = Array<Name>;
-export const NameList = /*@__PURE__*/ S.Array(Name) as any as S.Schema<NameList>;
+const NameList = /*@__PURE__*/ S.Array(Name) as any as S.Schema<NameList>;
 
 export type PhoneNumberTypeEnum = "OTHER" | "MOBILE" | "OFFICE";
-export const PhoneNumberTypeEnum = S.String;
+const PhoneNumberTypeEnum = S.String;
 
 /** A person's Phone Number */
 export interface PhoneNumber {
@@ -3456,7 +3434,7 @@ export interface PhoneNumber {
   phoneNumber?: string;
   type?: PhoneNumberTypeEnum;
 }
-export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
+const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneNumber: S.optional(S.String),
     type: S.optional(PhoneNumberTypeEnum),
@@ -3464,9 +3442,7 @@ export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhoneNumber" }) as any as S.Schema<PhoneNumber>;
 
 export type PhoneNumberList = Array<PhoneNumber>;
-export const PhoneNumberList = /*@__PURE__*/ S.Array(
-  PhoneNumber,
-) as any as S.Schema<PhoneNumberList>;
+const PhoneNumberList = /*@__PURE__*/ S.Array(PhoneNumber) as any as S.Schema<PhoneNumberList>;
 
 /** A person's email address. */
 export interface EmailAddress {
@@ -3481,7 +3457,7 @@ export interface EmailAddress {
   /** If the value of type is custom, this property contains the custom type string. */
   customType?: string;
 }
-export const EmailAddress = /*@__PURE__*/ S.suspend(() =>
+const EmailAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(S.Boolean),
     type: S.optional(S.String),
@@ -3492,23 +3468,21 @@ export const EmailAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmailAddress" }) as any as S.Schema<EmailAddress>;
 
 export type EmailAddressList = Array<EmailAddress>;
-export const EmailAddressList = /*@__PURE__*/ S.Array(
-  EmailAddress,
-) as any as S.Schema<EmailAddressList>;
+const EmailAddressList = /*@__PURE__*/ S.Array(EmailAddress) as any as S.Schema<EmailAddressList>;
 
 /** A person's photo. */
 export interface Photo {
   /** The URL of the photo. */
   url?: string;
 }
-export const Photo = /*@__PURE__*/ S.suspend(() =>
+const Photo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
 ).annotate({ identifier: "Photo" }) as any as S.Schema<Photo>;
 
 export type PhotoList = Array<Photo>;
-export const PhotoList = /*@__PURE__*/ S.Array(Photo) as any as S.Schema<PhotoList>;
+const PhotoList = /*@__PURE__*/ S.Array(Photo) as any as S.Schema<PhotoList>;
 
 /** Object to represent a person. */
 export interface Person {
@@ -3525,7 +3499,7 @@ export interface Person {
   /** A person's read-only photo. A picture shown next to the person's name to help others recognize the person in search results. */
   photos?: PhotoList;
 }
-export const Person = /*@__PURE__*/ S.suspend(() =>
+const Person = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     personNames: S.optional(NameList),
@@ -3541,14 +3515,14 @@ export interface StructuredResult {
   /** Representation of a person */
   person?: Person;
 }
-export const StructuredResult = /*@__PURE__*/ S.suspend(() =>
+const StructuredResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     person: S.optional(Person),
   }),
 ).annotate({ identifier: "StructuredResult" }) as any as S.Schema<StructuredResult>;
 
 export type StructuredResultList = Array<StructuredResult>;
-export const StructuredResultList = /*@__PURE__*/ S.Array(
+const StructuredResultList = /*@__PURE__*/ S.Array(
   StructuredResult,
 ) as any as S.Schema<StructuredResultList>;
 
@@ -3562,7 +3536,7 @@ export interface FacetBucket {
   count?: number;
   value?: Value;
 }
-export const FacetBucket = /*@__PURE__*/ S.suspend(() =>
+const FacetBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(Filter),
     percentage: S.optional(S.Number),
@@ -3572,9 +3546,7 @@ export const FacetBucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetBucket" }) as any as S.Schema<FacetBucket>;
 
 export type FacetBucketList = Array<FacetBucket>;
-export const FacetBucketList = /*@__PURE__*/ S.Array(
-  FacetBucket,
-) as any as S.Schema<FacetBucketList>;
+const FacetBucketList = /*@__PURE__*/ S.Array(FacetBucket) as any as S.Schema<FacetBucketList>;
 
 /** Source specific facet response */
 export interface FacetResult {
@@ -3587,7 +3559,7 @@ export interface FacetResult {
   /** The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions */
   operatorName?: string;
 }
-export const FacetResult = /*@__PURE__*/ S.suspend(() =>
+const FacetResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: S.optional(FacetBucketList),
     objectType: S.optional(S.String),
@@ -3597,16 +3569,14 @@ export const FacetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetResult" }) as any as S.Schema<FacetResult>;
 
 export type FacetResultList = Array<FacetResult>;
-export const FacetResultList = /*@__PURE__*/ S.Array(
-  FacetResult,
-) as any as S.Schema<FacetResultList>;
+const FacetResultList = /*@__PURE__*/ S.Array(FacetResult) as any as S.Schema<FacetResultList>;
 
 /** Debugging information about the response. */
 export interface ResponseDebugInfo {
   /** General debug info formatted for display. */
   formattedDebugInfo?: string;
 }
-export const ResponseDebugInfo = /*@__PURE__*/ S.suspend(() =>
+const ResponseDebugInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     formattedDebugInfo: S.optional(S.String),
   }),
@@ -3617,7 +3587,7 @@ export interface ErrorMessage {
   errorMessage?: string;
   source?: Source;
 }
-export const ErrorMessage = /*@__PURE__*/ S.suspend(() =>
+const ErrorMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     source: S.optional(Source),
@@ -3625,15 +3595,13 @@ export const ErrorMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorMessage" }) as any as S.Schema<ErrorMessage>;
 
 export type ErrorMessageList = Array<ErrorMessage>;
-export const ErrorMessageList = /*@__PURE__*/ S.Array(
-  ErrorMessage,
-) as any as S.Schema<ErrorMessageList>;
+const ErrorMessageList = /*@__PURE__*/ S.Array(ErrorMessage) as any as S.Schema<ErrorMessageList>;
 
 /** Error information about the response. */
 export interface ErrorInfo {
   errorMessages?: ErrorMessageList;
 }
-export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessages: S.optional(ErrorMessageList),
   }),
@@ -3646,7 +3614,7 @@ export interface MatchRange {
   /** End of the match in the snippet. */
   end?: number;
 }
-export const MatchRange = /*@__PURE__*/ S.suspend(() =>
+const MatchRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.Number),
     end: S.optional(S.Number),
@@ -3654,7 +3622,7 @@ export const MatchRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MatchRange" }) as any as S.Schema<MatchRange>;
 
 export type MatchRangeList = Array<MatchRange>;
-export const MatchRangeList = /*@__PURE__*/ S.Array(MatchRange) as any as S.Schema<MatchRangeList>;
+const MatchRangeList = /*@__PURE__*/ S.Array(MatchRange) as any as S.Schema<MatchRangeList>;
 
 /** Snippet of the search result, which summarizes the content of the resulting page. */
 export interface Snippet {
@@ -3663,7 +3631,7 @@ export interface Snippet {
   /** The matched ranges in the snippet. */
   matchRanges?: MatchRangeList;
 }
-export const Snippet = /*@__PURE__*/ S.suspend(() =>
+const Snippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snippet: S.optional(S.String),
     matchRanges: S.optional(MatchRangeList),
@@ -3672,8 +3640,6 @@ export const Snippet = /*@__PURE__*/ S.suspend(() =>
 
 /** Debugging information about the result. */
 export type ResultDebugInfo = ResponseDebugInfo;
-export const ResultDebugInfo = ResponseDebugInfo;
-
 /** Display Fields for Search Results */
 export interface ResultDisplayField {
   /** The display label for the property. */
@@ -3683,7 +3649,7 @@ export interface ResultDisplayField {
   /** The operator name of the property. */
   operatorName?: string;
 }
-export const ResultDisplayField = /*@__PURE__*/ S.suspend(() =>
+const ResultDisplayField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     property: S.optional(NamedProperty),
@@ -3692,7 +3658,7 @@ export const ResultDisplayField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResultDisplayField" }) as any as S.Schema<ResultDisplayField>;
 
 export type ResultDisplayFieldList = Array<ResultDisplayField>;
-export const ResultDisplayFieldList = /*@__PURE__*/ S.Array(
+const ResultDisplayFieldList = /*@__PURE__*/ S.Array(
   ResultDisplayField,
 ) as any as S.Schema<ResultDisplayFieldList>;
 
@@ -3700,14 +3666,14 @@ export const ResultDisplayFieldList = /*@__PURE__*/ S.Array(
 export interface ResultDisplayLine {
   fields?: ResultDisplayFieldList;
 }
-export const ResultDisplayLine = /*@__PURE__*/ S.suspend(() =>
+const ResultDisplayLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(ResultDisplayFieldList),
   }),
 ).annotate({ identifier: "ResultDisplayLine" }) as any as S.Schema<ResultDisplayLine>;
 
 export type ResultDisplayLineList = Array<ResultDisplayLine>;
-export const ResultDisplayLineList = /*@__PURE__*/ S.Array(
+const ResultDisplayLineList = /*@__PURE__*/ S.Array(
   ResultDisplayLine,
 ) as any as S.Schema<ResultDisplayLineList>;
 
@@ -3717,7 +3683,7 @@ export interface ResultDisplayMetadata {
   /** The display label for the object. */
   objectTypeLabel?: string;
 }
-export const ResultDisplayMetadata = /*@__PURE__*/ S.suspend(() =>
+const ResultDisplayMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metalines: S.optional(ResultDisplayLineList),
     objectTypeLabel: S.optional(S.String),
@@ -3745,7 +3711,7 @@ export interface Metadata {
   /** Owner (usually creator) of the document or object of the search result. */
   owner?: Person;
 }
-export const Metadata = /*@__PURE__*/ S.suspend(() =>
+const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayOptions: S.optional(ResultDisplayMetadata),
     mimeType: S.optional(S.String),
@@ -3774,7 +3740,7 @@ export interface SearchResult {
   /** If source is clustered, provide list of clustered results. There will only be one level of clustered results. If current source is not enabled for clustering, this field will be empty. */
   clusteredResults?: SearchResultList;
 }
-export const SearchResult = /*@__PURE__*/ S.suspend(() =>
+const SearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     snippet: S.optional(Snippet),
@@ -3786,18 +3752,16 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
 export type SearchResultList = Array<SearchResult>;
-export const SearchResultList = /*@__PURE__*/ S.Array(
-  SearchResult,
-) as any as S.Schema<SearchResultList>;
+const SearchResultList = /*@__PURE__*/ S.Array(SearchResult) as any as S.Schema<SearchResultList>;
 
 export type QueryInterpretationInterpretationTypeEnum = "NONE" | "BLEND" | "REPLACE";
-export const QueryInterpretationInterpretationTypeEnum = S.String;
+const QueryInterpretationInterpretationTypeEnum = S.String;
 
 export type QueryInterpretationReasonEnum =
   | "UNSPECIFIED"
   | "QUERY_HAS_NATURAL_LANGUAGE_INTENT"
   | "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY";
-export const QueryInterpretationReasonEnum = S.String;
+const QueryInterpretationReasonEnum = S.String;
 
 export interface QueryInterpretation {
   /** The actual number of results returned by the interpreted query. */
@@ -3810,7 +3774,7 @@ export interface QueryInterpretation {
   /** The reason for interpretation of the query. This field will not be UNSPECIFIED if the interpretation type is not NONE. */
   reason?: QueryInterpretationReasonEnum;
 }
-export const QueryInterpretation = /*@__PURE__*/ S.suspend(() =>
+const QueryInterpretation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interpretedQueryActualResultCount: S.optional(S.Number),
     interpretedQueryEstimatedResultCount: S.optional(S.String),
@@ -3824,14 +3788,14 @@ export type SpellResultSuggestionTypeEnum =
   | "SUGGESTION_TYPE_UNSPECIFIED"
   | "NON_EMPTY_RESULTS_SPELL_SUGGESTION"
   | "ZERO_RESULTS_FULL_PAGE_REPLACEMENT";
-export const SpellResultSuggestionTypeEnum = S.String;
+const SpellResultSuggestionTypeEnum = S.String;
 
 /** IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept it in RPC requests. */
 export interface SafeHtmlProto {
   /** IMPORTANT: Never set or read this field, even from tests, it is private. See documentation at the top of .proto file for programming language packages with which to create or read this message. */
   privateDoNotAccessOrElseSafeHtmlWrappedValue?: string;
 }
-export const SafeHtmlProto = /*@__PURE__*/ S.suspend(() =>
+const SafeHtmlProto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateDoNotAccessOrElseSafeHtmlWrappedValue: S.optional(S.String),
   }),
@@ -3845,7 +3809,7 @@ export interface SpellResult {
   /** The sanitized HTML representing the spell corrected query that can be used in the UI. This usually has language-specific tags to mark up parts of the query that are spell checked. */
   suggestedQueryHtml?: SafeHtmlProto;
 }
-export const SpellResult = /*@__PURE__*/ S.suspend(() =>
+const SpellResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestedQuery: S.optional(S.String),
     suggestionType: S.optional(SpellResultSuggestionTypeEnum),
@@ -3854,9 +3818,7 @@ export const SpellResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpellResult" }) as any as S.Schema<SpellResult>;
 
 export type SpellResultList = Array<SpellResult>;
-export const SpellResultList = /*@__PURE__*/ S.Array(
-  SpellResult,
-) as any as S.Schema<SpellResultList>;
+const SpellResultList = /*@__PURE__*/ S.Array(SpellResult) as any as S.Schema<SpellResultList>;
 
 /** The search API response. NEXT ID: 20 */
 export interface SearchResponse {
@@ -3883,7 +3845,7 @@ export interface SearchResponse {
   /** The exact result count for this query. */
   resultCountExact?: string;
 }
-export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resultCounts: S.optional(ResultCounts),
     hasMoreResults: S.optional(S.Boolean),
@@ -3908,7 +3870,7 @@ export interface SuggestRequest {
   /** The sources to use for suggestions. If not specified, the data sources are taken from the current search application. NOTE: Suggestions are only supported for the following sources: * Third-party data sources * PredefinedSource.PERSON * PredefinedSource.GOOGLE_DRIVE */
   dataSourceRestrictions?: DataSourceRestrictionList;
 }
-export const SuggestRequest = /*@__PURE__*/ S.suspend(() =>
+const SuggestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestOptions: S.optional(RequestOptions),
     query: S.optional(S.String),
@@ -3920,7 +3882,7 @@ export interface SuggestQueryRequest {
   /** Request body */
   body?: SuggestRequest;
 }
-export const SuggestQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const SuggestQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SuggestRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3938,7 +3900,7 @@ export type QuerySuggestionSourceCorpusEnum =
   | "DRIVE"
   | "CHAT"
   | "CALENDAR";
-export const QuerySuggestionSourceCorpusEnum = S.String;
+const QuerySuggestionSourceCorpusEnum = S.String;
 
 export interface QuerySuggestion {
   /** Source corpus of the suggestion. */
@@ -3946,7 +3908,7 @@ export interface QuerySuggestion {
   /** Last query time of the suggestion for query history suggestions. */
   lastQueryTime?: string;
 }
-export const QuerySuggestion = /*@__PURE__*/ S.suspend(() =>
+const QuerySuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceCorpus: S.optional(QuerySuggestionSourceCorpusEnum),
     lastQueryTime: S.optional(S.String),
@@ -3958,7 +3920,7 @@ export interface PeopleSuggestion {
   /** Suggested person. All fields of the person object might not be populated. */
   person?: Person;
 }
-export const PeopleSuggestion = StructuredResult as any as S.Schema<PeopleSuggestion>;
+const PeopleSuggestion = StructuredResult as any as S.Schema<PeopleSuggestion>;
 
 /** One suggestion result. */
 export interface SuggestResult {
@@ -3971,7 +3933,7 @@ export interface SuggestResult {
   /** The suggested query that will be used for search, when the user clicks on the suggestion */
   suggestedQuery?: string;
 }
-export const SuggestResult = /*@__PURE__*/ S.suspend(() =>
+const SuggestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     querySuggestion: S.optional(QuerySuggestion),
     source: S.optional(Source),
@@ -3981,7 +3943,7 @@ export const SuggestResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuggestResult" }) as any as S.Schema<SuggestResult>;
 
 export type SuggestResultList = Array<SuggestResult>;
-export const SuggestResultList = /*@__PURE__*/ S.Array(
+const SuggestResultList = /*@__PURE__*/ S.Array(
   SuggestResult,
 ) as any as S.Schema<SuggestResultList>;
 
@@ -3990,7 +3952,7 @@ export interface SuggestResponse {
   /** List of suggestions. */
   suggestResults?: SuggestResultList;
 }
-export const SuggestResponse = /*@__PURE__*/ S.suspend(() =>
+const SuggestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestResults: S.optional(SuggestResultList),
   }),
@@ -4004,8 +3966,7 @@ export interface UnreserveItemsRequest {
   /** The name of a queue to unreserve items from. */
   queue?: string;
 }
-export const UnreserveItemsRequest =
-  DeleteQueueItemsRequest as any as S.Schema<UnreserveItemsRequest>;
+const UnreserveItemsRequest = DeleteQueueItemsRequest as any as S.Schema<UnreserveItemsRequest>;
 
 export interface UnreserveIndexingDatasourcesItemsRequest {
   /** The name of the Data Source to unreserve all items. Format: datasources/{source_id} */
@@ -4013,7 +3974,7 @@ export interface UnreserveIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: UnreserveItemsRequest;
 }
-export const UnreserveIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const UnreserveIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UnreserveItemsRequest.pipe(T.HttpBody())),
@@ -4034,7 +3995,7 @@ export interface UpdateCustomerSettingsRequest {
   /** Request body */
   body?: CustomerSettings;
 }
-export const UpdateCustomerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     body: S.optional(CustomerSettings.pipe(T.HttpBody())),
@@ -4057,7 +4018,7 @@ export interface UpdateSchemaRequest {
   /** The new schema for the source. */
   schema?: Cloudsearch_Schema;
 }
-export const UpdateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     debugOptions: S.optional(DebugOptions),
@@ -4071,7 +4032,7 @@ export interface UpdateSchemaIndexingDatasourcesRequest {
   /** Request body */
   body?: UpdateSchemaRequest;
 }
-export const UpdateSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSchemaIndexingDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateSchemaRequest.pipe(T.HttpBody())),
@@ -4093,7 +4054,7 @@ export interface UpdateDataSourceRequest {
   /** Only applies to [`settings.datasources.patch`](https://developers.google.com/workspace/cloud-search/docs/reference/rest/v1/settings.datasources/patch). Update mask to control which fields to update. Example field paths: `name`, `displayName`. * If `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its value in the source, that field is cleared. * If the `update_mask` is not present or empty or has the value `*`, then all fields are updated. */
   updateMask?: string;
 }
-export const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugOptions: S.optional(DebugOptions),
     source: S.optional(DataSource),
@@ -4107,7 +4068,7 @@ export interface UpdateSettingsDatasourcesRequest {
   /** Request body */
   body?: UpdateDataSourceRequest;
 }
-export const UpdateSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateDataSourceRequest.pipe(T.HttpBody())),
@@ -4130,7 +4091,7 @@ export interface UpdateSettingsSearchapplicationsRequest {
   /** Request body */
   body?: SearchApplication;
 }
-export const UpdateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4153,7 +4114,7 @@ export interface StartUploadItemRequest {
   /** Common debug options. */
   debugOptions?: DebugOptions;
 }
-export const StartUploadItemRequest = /*@__PURE__*/ S.suspend(() =>
+const StartUploadItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorName: S.optional(S.String),
     debugOptions: S.optional(DebugOptions),
@@ -4166,7 +4127,7 @@ export interface UploadIndexingDatasourcesItemsRequest {
   /** Request body */
   body?: StartUploadItemRequest;
 }
-export const UploadIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(StartUploadItemRequest.pipe(T.HttpBody())),
@@ -4186,7 +4147,7 @@ export interface Media {
   /** Name of the media resource. */
   resourceName?: string;
 }
-export const Media = /*@__PURE__*/ S.suspend(() =>
+const Media = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
   }),
@@ -4198,7 +4159,7 @@ export interface UploadMediaRequest {
   /** Request body */
   body?: Media;
 }
-export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.String.pipe(T.Label()),
     body: S.optional(Media.pipe(T.HttpBody())),

@@ -32,7 +32,7 @@ export interface GetRecommendedActionRequest {
   /** Account ID, prefixed `biz_`. Defaults to the API key's own account. */
   account_id?: string;
 }
-export const GetRecommendedActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecommendedActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -48,7 +48,7 @@ export type AccountRecommendedActionChainStepStatus =
   | "running"
   | "succeeded"
   | "failed";
-export const AccountRecommendedActionChainStepStatus = S.String;
+const AccountRecommendedActionChainStepStatus = S.String;
 
 export interface AccountRecommendedActionChainStep {
   /** The action definition key this step runs; new values may be added, so handle unknown actions gracefully */
@@ -74,7 +74,7 @@ export interface AccountRecommendedActionChainStep {
   /** Headline for the step */
   title: string;
 }
-export const AccountRecommendedActionChainStep = /*@__PURE__*/ S.suspend(() =>
+const AccountRecommendedActionChainStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     cta: S.String,
@@ -93,7 +93,7 @@ export const AccountRecommendedActionChainStep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountRecommendedActionChainStep>;
 
 export type AccountRecommendedActionChainActionsList = Array<AccountRecommendedActionChainStep>;
-export const AccountRecommendedActionChainActionsList = /*@__PURE__*/ S.Array(
+const AccountRecommendedActionChainActionsList = /*@__PURE__*/ S.Array(
   AccountRecommendedActionChainStep,
 ) as any as S.Schema<AccountRecommendedActionChainActionsList>;
 
@@ -108,7 +108,7 @@ export interface AccountRecommendedActionChain {
   /** Headline for the chain */
   title: string;
 }
-export const AccountRecommendedActionChain = /*@__PURE__*/ S.suspend(() =>
+const AccountRecommendedActionChain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: AccountRecommendedActionChainActionsList,
     description: S.String,
@@ -126,7 +126,7 @@ export interface ListRecommendedActionExecutionsRequest {
   /** Account ID, prefixed `biz_`. Defaults to the API key's own account. */
   account_id?: string;
 }
-export const ListRecommendedActionExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendedActionExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -142,7 +142,7 @@ export type RecommendedActionExecutionStatus =
   | "running"
   | "succeeded"
   | "failed";
-export const RecommendedActionExecutionStatus = S.String;
+const RecommendedActionExecutionStatus = S.String;
 
 export interface RecommendedActionExecution {
   /** The action definition key the step ran */
@@ -160,7 +160,7 @@ export interface RecommendedActionExecution {
   /** Where the step currently stands */
   status: RecommendedActionExecutionStatus;
 }
-export const RecommendedActionExecution = /*@__PURE__*/ S.suspend(() =>
+const RecommendedActionExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     completed_at: S.NullOr(S.String),
@@ -177,7 +177,7 @@ export const RecommendedActionExecution = /*@__PURE__*/ S.suspend(() =>
 /** One entry per run step, in position order. */
 export type ListRecommendedActionExecutionsResponseExecutionsList =
   Array<RecommendedActionExecution>;
-export const ListRecommendedActionExecutionsResponseExecutionsList = /*@__PURE__*/ S.Array(
+const ListRecommendedActionExecutionsResponseExecutionsList = /*@__PURE__*/ S.Array(
   RecommendedActionExecution,
 ) as any as S.Schema<ListRecommendedActionExecutionsResponseExecutionsList>;
 
@@ -187,7 +187,7 @@ export interface ListRecommendedActionExecutionsResponse {
   /** One entry per run step, in position order. */
   executions: ListRecommendedActionExecutionsResponseExecutionsList;
 }
-export const ListRecommendedActionExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendedActionExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chain_id: S.String,
     executions: ListRecommendedActionExecutionsResponseExecutionsList,
@@ -200,7 +200,7 @@ export interface ListRecommendedActionsRequest {
   /** Account ID, prefixed `biz_`. Defaults to the API key's own account. */
   account_id?: string;
 }
-export const ListRecommendedActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendedActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/recommended_actions", code: 200 })),
@@ -209,14 +209,14 @@ export const ListRecommendedActionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRecommendedActionsRequest>;
 
 export type ListRecommendedActionsResponseDataList = Array<AccountRecommendedActionChain>;
-export const ListRecommendedActionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListRecommendedActionsResponseDataList = /*@__PURE__*/ S.Array(
   AccountRecommendedActionChain,
 ) as any as S.Schema<ListRecommendedActionsResponseDataList>;
 
 export interface ListRecommendedActionsResponse {
   data: ListRecommendedActionsResponseDataList;
 }
-export const ListRecommendedActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendedActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListRecommendedActionsResponseDataList,
   }),
@@ -232,7 +232,7 @@ export interface RunRecommendedActionRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const RunRecommendedActionRequest = /*@__PURE__*/ S.suspend(() =>
+const RunRecommendedActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -243,13 +243,13 @@ export const RunRecommendedActionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunRecommendedActionRequest>;
 
 export type RunRecommendedActionResponseExecution = "redirect" | "executed";
-export const RunRecommendedActionResponseExecution = S.String;
+const RunRecommendedActionResponseExecution = S.String;
 
 export interface RunRecommendedActionResponse {
   chain_id: string;
   execution: RunRecommendedActionResponseExecution;
 }
-export const RunRecommendedActionResponse = /*@__PURE__*/ S.suspend(() =>
+const RunRecommendedActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chain_id: S.String,
     execution: RunRecommendedActionResponseExecution,

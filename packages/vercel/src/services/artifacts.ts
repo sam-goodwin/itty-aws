@@ -52,7 +52,7 @@ export interface ArtifactExistsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const ArtifactExistsRequest = /*@__PURE__*/ S.suspend(() =>
+const ArtifactExistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -61,13 +61,13 @@ export const ArtifactExistsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArtifactExistsRequest" }) as any as S.Schema<ArtifactExistsRequest>;
 
 export interface ArtifactExistsResponse {}
-export const ArtifactExistsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ArtifactExistsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ArtifactExistsResponse",
 }) as any as S.Schema<ArtifactExistsResponse>;
 
 /** artifact hashes */
 export type ArtifactQueryRequestHashesList = Array<string>;
-export const ArtifactQueryRequestHashesList = /*@__PURE__*/ S.Array(
+const ArtifactQueryRequestHashesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ArtifactQueryRequestHashesList>;
 
@@ -79,7 +79,7 @@ export interface ArtifactQueryRequest {
   /** artifact hashes */
   hashes: ArtifactQueryRequestHashesList;
 }
-export const ArtifactQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const ArtifactQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -94,56 +94,27 @@ export interface ArtifactQueryResponseBodyValueCase0 {
   tag?: string;
   taskDurationMs: number;
 }
-export const ArtifactQueryResponseBodyValueCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dirtyHash: S.optional(S.String),
-    sha: S.optional(S.String),
-    size: S.Number,
-    tag: S.optional(S.String),
-    taskDurationMs: S.Number,
-  }),
-).annotate({
-  identifier: "ArtifactQueryResponseBodyValueCase0",
-}) as any as S.Schema<ArtifactQueryResponseBodyValueCase0>;
-
 export interface ArtifactQueryResponseBodyValueCase1Error {
   message: string;
 }
-export const ArtifactQueryResponseBodyValueCase1Error = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-  }),
-).annotate({
-  identifier: "ArtifactQueryResponseBodyValueCase1Error",
-}) as any as S.Schema<ArtifactQueryResponseBodyValueCase1Error>;
-
 export interface ArtifactQueryResponseBodyValueCase1 {
   error: ArtifactQueryResponseBodyValueCase1Error;
 }
-export const ArtifactQueryResponseBodyValueCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: ArtifactQueryResponseBodyValueCase1Error,
-  }),
-).annotate({
-  identifier: "ArtifactQueryResponseBodyValueCase1",
-}) as any as S.Schema<ArtifactQueryResponseBodyValueCase1>;
-
 export type ArtifactQueryResponseBodyValue =
   | ArtifactQueryResponseBodyValueCase0
   | ArtifactQueryResponseBodyValueCase1;
-export const ArtifactQueryResponseBodyValue =
-  S.Unknown as any as S.Schema<ArtifactQueryResponseBodyValue>;
+const ArtifactQueryResponseBodyValue = S.Unknown as any as S.Schema<ArtifactQueryResponseBodyValue>;
 
 export type ArtifactQueryResponseBodyMap = {
   [key: string]: ArtifactQueryResponseBodyValue | null | undefined;
 };
-export const ArtifactQueryResponseBodyMap = /*@__PURE__*/ S.Record(
+const ArtifactQueryResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(ArtifactQueryResponseBodyValue),
 ) as any as S.Schema<ArtifactQueryResponseBodyMap>;
 
 export type ArtifactQueryResponse = ArtifactQueryResponseBodyMap;
-export const ArtifactQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const ArtifactQueryResponse = /*@__PURE__*/ S.suspend(() =>
   ArtifactQueryResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ArtifactQueryResponse" }) as any as S.Schema<ArtifactQueryResponse>;
 
@@ -153,7 +124,7 @@ export interface DeleteAllArtifactsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteAllArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAllArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -165,7 +136,7 @@ export const DeleteAllArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteAllArtifactsResponse {
   deletedCount: number;
 }
-export const DeleteAllArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAllArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletedCount: S.Number,
   }),
@@ -185,7 +156,7 @@ export interface DownloadArtifactRequest {
   /** 1 if the client is an interactive shell. Otherwise 0 */
   xArtifactClientInteractive?: number;
 }
-export const DownloadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -198,17 +169,17 @@ export const DownloadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadArtifactRequest" }) as any as S.Schema<DownloadArtifactRequest>;
 
 export type DownloadArtifactResponse = string;
-export const DownloadArtifactResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadArtifactResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DownloadArtifactResponse" }) as any as S.Schema<DownloadArtifactResponse>;
 
 /** One of `LOCAL` or `REMOTE`. `LOCAL` specifies that the cache event was from the user's filesystem cache. `REMOTE` specifies that the cache event is from a remote cache. */
 export type RecordEventsRequestBodyItemSource = "LOCAL" | "REMOTE";
-export const RecordEventsRequestBodyItemSource = S.String;
+const RecordEventsRequestBodyItemSource = S.String;
 
 /** One of `HIT` or `MISS`. `HIT` specifies that a cached artifact for `hash` was found in the cache. `MISS` specifies that a cached artifact with `hash` was not found. */
 export type RecordEventsRequestBodyItemEvent = "HIT" | "MISS";
-export const RecordEventsRequestBodyItemEvent = S.String;
+const RecordEventsRequestBodyItemEvent = S.String;
 
 export interface RecordEventsRequestBodyItem {
   /** A UUID (universally unique identifer) for the session that generated this event. */
@@ -222,7 +193,7 @@ export interface RecordEventsRequestBodyItem {
   /** The time taken to generate the artifact. This should be sent as a body parameter on `HIT` events. */
   duration?: number;
 }
-export const RecordEventsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const RecordEventsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.String,
     source: RecordEventsRequestBodyItemSource,
@@ -235,7 +206,7 @@ export const RecordEventsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordEventsRequestBodyItem>;
 
 export type RecordEventsRequestBodyList = Array<RecordEventsRequestBodyItem>;
-export const RecordEventsRequestBodyList = /*@__PURE__*/ S.Array(
+const RecordEventsRequestBodyList = /*@__PURE__*/ S.Array(
   RecordEventsRequestBodyItem,
 ) as any as S.Schema<RecordEventsRequestBodyList>;
 
@@ -250,7 +221,7 @@ export interface RecordEventsRequest {
   xArtifactClientInteractive?: number;
   body: RecordEventsRequestBodyList;
 }
-export const RecordEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const RecordEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -263,7 +234,7 @@ export const RecordEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordEventsRequest" }) as any as S.Schema<RecordEventsRequest>;
 
 export interface RecordEventsResponse {}
-export const RecordEventsResponse = ArtifactExistsResponse as any as S.Schema<RecordEventsResponse>;
+const RecordEventsResponse = ArtifactExistsResponse as any as S.Schema<RecordEventsResponse>;
 
 export interface StatusRequest {
   /** The Team identifier to perform the request on behalf of. */
@@ -271,7 +242,7 @@ export interface StatusRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const StatusRequest = /*@__PURE__*/ S.suspend(() =>
+const StatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
@@ -281,29 +252,15 @@ export const StatusRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StatusResponseBodyCase0 {
   status: string;
 }
-export const StatusResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.String,
-  }),
-).annotate({ identifier: "StatusResponseBodyCase0" }) as any as S.Schema<StatusResponseBodyCase0>;
-
 export type StatusResponseBodyCase1Status = "disabled" | "enabled" | "over_limit" | "paused";
-export const StatusResponseBodyCase1Status = S.String;
-
 export interface StatusResponseBodyCase1 {
   status: StatusResponseBodyCase1Status;
 }
-export const StatusResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: StatusResponseBodyCase1Status,
-  }),
-).annotate({ identifier: "StatusResponseBodyCase1" }) as any as S.Schema<StatusResponseBodyCase1>;
-
 export type StatusResponseBody = StatusResponseBodyCase0 | StatusResponseBodyCase1;
-export const StatusResponseBody = S.Unknown as any as S.Schema<StatusResponseBody>;
+const StatusResponseBody = S.Unknown as any as S.Schema<StatusResponseBody>;
 
 export type StatusResponse = StatusResponseBody;
-export const StatusResponse = /*@__PURE__*/ S.suspend(() =>
+const StatusResponse = /*@__PURE__*/ S.suspend(() =>
   StatusResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "StatusResponse" }) as any as S.Schema<StatusResponse>;
 
@@ -329,7 +286,7 @@ export interface UploadArtifactRequest {
   /** A hash representing uncommitted changes in the working directory when this artifact was generated. */
   xArtifactDirtyHash?: string;
 }
-export const UploadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -348,14 +305,14 @@ export const UploadArtifactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of URLs where the artifact was updated */
 export type UploadArtifactResponseUrlsList = Array<string>;
-export const UploadArtifactResponseUrlsList =
+const UploadArtifactResponseUrlsList =
   ArtifactQueryRequestHashesList as any as S.Schema<UploadArtifactResponseUrlsList>;
 
 export interface UploadArtifactResponse {
   /** Array of URLs where the artifact was updated */
   urls: UploadArtifactResponseUrlsList;
 }
-export const UploadArtifactResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadArtifactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urls: UploadArtifactResponseUrlsList,
   }),

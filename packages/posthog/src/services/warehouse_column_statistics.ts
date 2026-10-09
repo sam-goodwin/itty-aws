@@ -13,7 +13,7 @@ export interface GetWarehouseColumnStatisticsRequest {
   /** A UUID string identifying this warehouse column statistics. */
   id: string;
 }
-export const GetWarehouseColumnStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseColumnStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -57,7 +57,7 @@ export interface WarehouseColumnStatistics2 {
   created_at: string;
   updated_at: string | null;
 }
-export const WarehouseColumnStatistics2 = /*@__PURE__*/ S.suspend(() =>
+const WarehouseColumnStatistics2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     table: S.String,
@@ -89,7 +89,7 @@ export interface ListWarehouseColumnStatisticsRequest {
   /** Only return statistics for this data warehouse table. */
   table_id?: string;
 }
-export const ListWarehouseColumnStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWarehouseColumnStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -107,7 +107,7 @@ export const ListWarehouseColumnStatisticsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListWarehouseColumnStatisticsRequest>;
 
 export type PaginatedWarehouseColumnStatisticsListResultsList = Array<WarehouseColumnStatistics2>;
-export const PaginatedWarehouseColumnStatisticsListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedWarehouseColumnStatisticsListResultsList = /*@__PURE__*/ S.Array(
   WarehouseColumnStatistics2,
 ) as any as S.Schema<PaginatedWarehouseColumnStatisticsListResultsList>;
 
@@ -117,7 +117,7 @@ export interface PaginatedWarehouseColumnStatisticsList {
   previous?: string | null;
   results: PaginatedWarehouseColumnStatisticsListResultsList;
 }
-export const PaginatedWarehouseColumnStatisticsList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedWarehouseColumnStatisticsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),

@@ -76,7 +76,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /** Corresponds to `ClaimReview.reviewRating.ratingExplanation`. */
   ratingExplanation?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating = /*@__PURE__*/ S.suspend(() =>
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUrl: S.optional(S.String),
     textualRating: S.optional(S.String),
@@ -100,7 +100,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   /** Corresponds to `ClaimReview.itemReviewed.author.jobTitle`. */
   jobTitle?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor = /*@__PURE__*/ S.suspend(() =>
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     sameAs: S.optional(S.String),
@@ -112,7 +112,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor = /*@__PURE__*/
 }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Fields for an individual `ClaimReview` element. Except for sub-messages that group fields together, each of these fields correspond those in https://schema.org/ClaimReview. We list the precise mapping for each field. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
@@ -133,25 +133,24 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   /** A list of links to works in which this claim appears, aside from the one specified in `claim_first_appearance`. Corresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`. */
   claimAppearances?: StringList;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      rating: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating),
-      claimFirstAppearance: S.optional(S.String),
-      url: S.optional(S.String),
-      claimReviewed: S.optional(S.String),
-      claimLocation: S.optional(S.String),
-      claimDate: S.optional(S.String),
-      claimAuthor: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor),
-      claimAppearances: S.optional(StringList),
-    }),
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rating: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating),
+    claimFirstAppearance: S.optional(S.String),
+    url: S.optional(S.String),
+    claimReviewed: S.optional(S.String),
+    claimLocation: S.optional(S.String),
+    claimDate: S.optional(S.String),
+    claimAuthor: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor),
+    claimAppearances: S.optional(StringList),
+  }),
 ).annotate({
   identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup",
 }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList =
   Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList = /*@__PURE__*/ S.Array(
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList = /*@__PURE__*/ S.Array(
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup,
 ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList>;
 
@@ -162,12 +161,11 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   /** Name of the organization that is publishing the fact check. Corresponds to `ClaimReview.author.name`. */
   name?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      imageUrl: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageUrl: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor",
 }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor>;
@@ -187,25 +185,24 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   /** The date when the fact check was published. Similar to the URL, semantically this is a page-level field, and each `ClaimReview` on this page will contain the same value. Corresponds to `ClaimReview.datePublished` */
   publishDate?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      claimReviewMarkups: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList),
-      versionId: S.optional(S.String),
-      pageUrl: S.optional(S.String),
-      name: S.optional(S.String),
-      claimReviewAuthor: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor),
-      publishDate: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage",
-  }) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    claimReviewMarkups: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupList),
+    versionId: S.optional(S.String),
+    pageUrl: S.optional(S.String),
+    name: S.optional(S.String),
+    claimReviewAuthor: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor),
+    publishDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage",
+}) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
 
 export interface CreatePagesRequest {
   /** Request body */
   body?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 }
-export const CreatePagesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(
       GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage.pipe(T.HttpBody()),
@@ -223,7 +220,7 @@ export interface DeletePagesRequest {
   /** The name of the resource to delete, in the form of `pages/{page_id}`. */
   name: string;
 }
-export const DeletePagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -237,7 +234,7 @@ export const DeletePagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -245,7 +242,7 @@ export interface GetPagesRequest {
   /** The name of the resource to get, in the form of `pages/{page_id}`. */
   name: string;
 }
-export const GetPagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -269,7 +266,7 @@ export interface ImageSearchClaimsRequest {
   /** Required. The URI of the source image. This must be a publicly-accessible image HTTP/HTTPS URL. When fetching images from HTTP/HTTPS URLs, Google cannot guarantee that the request will be completed. Your request may fail if the specified host denies the request (e.g. due to request throttling or DOS prevention), or if Google throttles requests to the site for abuse prevention. You should not depend on externally-hosted images for production applications. */
   imageUri?: string;
 }
-export const ImageSearchClaimsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImageSearchClaimsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -292,7 +289,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
   /** Host-level site name, without the protocol or "www" prefix. For instance, "awesomefactchecks.com". This value of this field is based purely on the claim review URL. */
   site?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1Publisher = /*@__PURE__*/ S.suspend(() =>
+const GoogleFactcheckingFactchecktoolsV1alpha1Publisher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     site: S.optional(S.String),
@@ -316,7 +313,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   /** The language this review was written in. For instance, "en" or "de". */
   languageCode?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview = /*@__PURE__*/ S.suspend(() =>
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewDate: S.optional(S.String),
     title: S.optional(S.String),
@@ -331,7 +328,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview = /*@__PURE__*/
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList =
   Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList = /*@__PURE__*/ S.Array(
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList = /*@__PURE__*/ S.Array(
   GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview,
 ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewList>;
 
@@ -346,7 +343,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   /** The claim text. For instance, "Crime has doubled in the last 2 years." */
   text?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1Claim = /*@__PURE__*/ S.suspend(() =>
+const GoogleFactcheckingFactchecktoolsV1alpha1Claim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claimDate: S.optional(S.String),
     claimant: S.optional(S.String),
@@ -362,7 +359,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSe
   /** A claim which matched the query. */
   claim?: GoogleFactcheckingFactchecktoolsV1alpha1Claim;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult =
+const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       claim: S.optional(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
@@ -373,7 +370,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearch
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList =
   Array<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList =
+const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList =
   /*@__PURE__*/ S.Array(
     GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult,
   ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList>;
@@ -385,7 +382,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSe
   /** The list of claims and all of their associated information. */
   results?: GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResultList;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse =
+const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextPageToken: S.optional(S.String),
@@ -409,7 +406,7 @@ export interface ListPagesRequest {
   /** An integer that specifies the current offset (that is, starting result location) in search results. This field is only considered if `page_token` is unset, and if the request is not for a specific URL. For example, 0 means to return results starting from the first matching result, and 10 means to return from the 11th result. */
   offset?: number;
 }
-export const ListPagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     url: S.optional(S.String.pipe(T.Query())),
@@ -427,10 +424,9 @@ export const ListPagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList =
   Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList =
-  /*@__PURE__*/ S.Array(
-    GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
-  ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList>;
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList = /*@__PURE__*/ S.Array(
+  GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
+) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPageList>;
 
 /** Response from listing `ClaimReview` markup. */
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse {
@@ -439,7 +435,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPa
   /** The next pagination token in the Search response. It should be used as the `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse =
+const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       claimReviewMarkupPages: S.optional(
@@ -467,7 +463,7 @@ export interface SearchClaimsRequest {
   /** The pagination size. We will return up to that many results. Defaults to 10 if not set. */
   pageSize?: number;
 }
-export const SearchClaimsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchClaimsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     maxAgeDays: S.optional(S.Number.pipe(T.Query())),
@@ -487,7 +483,7 @@ export const SearchClaimsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleFactcheckingFactchecktoolsV1alpha1ClaimList =
   Array<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimList = /*@__PURE__*/ S.Array(
+const GoogleFactcheckingFactchecktoolsV1alpha1ClaimList = /*@__PURE__*/ S.Array(
   GoogleFactcheckingFactchecktoolsV1alpha1Claim,
 ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimList>;
 
@@ -498,7 +494,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchR
   /** The list of claims and all of their associated information. */
   claims?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimList;
 }
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse =
+const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextPageToken: S.optional(S.String),
@@ -514,7 +510,7 @@ export interface UpdatePagesRequest {
   /** Request body */
   body?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 }
-export const UpdatePagesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(

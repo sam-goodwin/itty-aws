@@ -9,14 +9,14 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export type TunnelType = "TUNNEL_TYPE_UNSPECIFIED" | "TUNNEL_TYPE_H2";
-export const TunnelType = S.String;
+const TunnelType = S.String;
 
 export interface StartTunnelRequest {
   port?: number;
   unencrypted?: boolean;
   tunnelType?: TunnelType | (string & {});
 }
-export const StartTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+const StartTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     unencrypted: S.optional(S.Boolean),
@@ -30,7 +30,7 @@ export interface StartTunnelResponse {
   unencryptedHost?: string;
   unencryptedPort?: number;
 }
-export const StartTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+const StartTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     port: S.optional(S.Number),
@@ -42,7 +42,7 @@ export const StartTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StopTunnelRequest {
   port?: number;
 }
-export const StopTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+const StopTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/TunnelStop", code: 200 })),
@@ -51,7 +51,7 @@ export const StopTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StopTunnelResponse {
   exists?: boolean;
 }
-export const StopTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+const StopTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exists: S.optional(S.Boolean),
   }),

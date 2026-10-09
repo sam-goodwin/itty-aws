@@ -18,7 +18,7 @@ export interface CreateWarmPoolRequest {
   /** Target region for the warm pool. Defaults to the organization default region. */
   target?: string;
 }
-export const CreateWarmPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarmPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
     snapshot: S.String,
@@ -28,7 +28,7 @@ export const CreateWarmPoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateWarmPoolRequest" }) as any as S.Schema<CreateWarmPoolRequest>;
 
 export type WarmPoolEnvMap = { [key: string]: string | undefined };
-export const WarmPoolEnvMap = /*@__PURE__*/ S.Record(
+const WarmPoolEnvMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<WarmPoolEnvMap>;
@@ -51,7 +51,7 @@ export interface WarmPool {
   createdAt: string;
   updatedAt: string;
 }
-export const WarmPool = /*@__PURE__*/ S.suspend(() =>
+const WarmPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     organizationId: S.String,
@@ -76,7 +76,7 @@ export interface DeleteWarmPoolRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const DeleteWarmPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWarmPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -84,7 +84,7 @@ export const DeleteWarmPoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWarmPoolRequest" }) as any as S.Schema<DeleteWarmPoolRequest>;
 
 export interface DeleteWarmPoolResponse {}
-export const DeleteWarmPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteWarmPoolResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteWarmPoolResponse",
 }) as any as S.Schema<DeleteWarmPoolResponse>;
 
@@ -92,19 +92,19 @@ export interface ListWarmPoolsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const ListWarmPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWarmPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
   }).pipe(T.Http({ method: "GET", uri: "/warm-pools", code: 200 })),
 ).annotate({ identifier: "ListWarmPoolsRequest" }) as any as S.Schema<ListWarmPoolsRequest>;
 
 export type ListWarmPoolsResponseBodyList = Array<WarmPool>;
-export const ListWarmPoolsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWarmPoolsResponseBodyList = /*@__PURE__*/ S.Array(
   WarmPool,
 ) as any as S.Schema<ListWarmPoolsResponseBodyList>;
 
 export type ListWarmPoolsResponse = ListWarmPoolsResponseBodyList;
-export const ListWarmPoolsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWarmPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   ListWarmPoolsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListWarmPoolsResponse" }) as any as S.Schema<ListWarmPoolsResponse>;
 
@@ -116,7 +116,7 @@ export interface UpdateWarmPoolRequest {
   /** New desired number of warm sandboxes (0 drains the pool) */
   pool: number;
 }
-export const UpdateWarmPoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarmPoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
